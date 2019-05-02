@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c81b0926b88ad2f1dbb3af7c1a2c51e8a79430f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ee721558e0e643a4b5fdcfa4cf0fe9c2195fa479
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59736892"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64736979"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -299,7 +299,7 @@ Azure 高级存储提供了八个 GA 磁盘大小和当前处于预览状态的�
 1. 在托管日志文件的高级存储磁盘上将缓存配置为“无”。  
    a.  日志文件主要是进行频繁的写入操作。 因此，将缓存设置为 ReadOnly 对其无用。
 
-### <a name="optimize-performance-on-linux-vms"></a>优化 Linux Vm 的性能
+## <a name="optimize-performance-on-linux-vms"></a>优化 Linux Vm 的性能
 
 对于缓存设置为 ReadOnly 或 None 的所有高级存储 SSD 或极致磁盘，必须在装入文件系统时禁用“屏障”。 在此方案中不需要屏障，因为写入高级存储磁盘对于这些缓存设置是持久性的。 成功完成写入请求时，数据已写入持久存储。 若要禁用“屏障”，请使用以下方法之一： 选择适用于文件系统的方法：
   
@@ -328,7 +328,7 @@ Azure 高级存储提供了八个 GA 磁盘大小和当前处于预览状态的�
 | Oracle | 7.0-7.1 | &nbsp; | UEK4 或 RHCK w/[LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 | Oracle | 6.4-6.7 | &nbsp; | UEK4 或 RHCK w/[LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
-## <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 的 LIS 驱动程序
+### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 的 LIS 驱动程序
 
 运行 OpenLogic CentOS VM 时，请运行以下命令来安装最新的驱动程序：
 

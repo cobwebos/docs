@@ -1,25 +1,18 @@
 ---
-title: Azure 应用程序提供“市场”选项卡 | Microsoft Docs
+title: Azure 应用程序产品/服务 Marketplace 选项卡
 description: 使用“市场”选项卡来标识适用于 Azure 应用程序套餐的营销资产。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 1203f33458c83bbde7a263022b78563bad183143
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 7ea6e6be0597a114b02fad8c41e37d21ce1f6028
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60745274"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942969"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure 应用程序的“市场”选项卡
 
@@ -31,18 +24,20 @@ ms.locfileid: "60745274"
 
 ![“概览”窗体](./media/azureapp-marketplace-overview.png)
 
-下表介绍的设置用于为套餐创建店面。
+下表介绍的设置用于为套餐创建店面。   追加一个星号的字段是必需的。
 
-|    **字段**       |  **说明**  |
+|      字段         |    描述    |
 |  ---------------   |  ---------------  |
-|        标题            |        套餐的标题。 将在市场中突出显示。 最大长度为 50 个字符。           |
-|         摘要           |        套餐的简短摘要。 最大长度为 100 个字符。           |
-|         长摘要           |        套餐的较长摘要（不过，其内容可与“摘要”相同）。 最大长度为 256 个字符。           |
-|       描述            |         套餐的说明。 最大长度为 3000 个字符。 允许简单的 HTML 格式化，包括 &lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; 和标头标记。           |
-|        营销标识符            |         与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。 为服务选择一个短且易记的营销标识符。 此项将用在此套餐的市场 URL 中。 例如，如果发布者 ID 为“contoso”，营销标识符为“sampleApp”，则套餐在 Azure 市场中的 URL 为 https://azuremarketplace.microsoft.com/en-us/marketplace/apps/contoso.sampleApp          |
-|        预览订阅 ID            |         为预览器添加 1 到 100 个订阅标识符。 在预览版套餐发布之后，这些已加入允许列表的订阅将有权在套餐上线之前访问该套餐。          |
-|         有用链接           |        可以为套餐用户提供各种资源（例如支持、文档、论坛等）的链接。请务必至少添加一个文档链接。            |
-|         建议的类别（最多 5 个）           |         最多选择 5 个类别。 所选类别用于将套餐映射到在 Azure 市场和 Azure 门户中提供的产品类别。 这些类别将显示在浏览页和产品详细信息页上。          |
+| **标题\***        | 套餐的标题。 将在市场中突出显示。 最大长度为 50 个字符。 |
+| **摘要\***      | 套餐的简短摘要。 最大长度为 100 个字符。           |
+| **长摘要\*** | 套餐的较长摘要（不过，其内容可与“摘要”相同）。 最大长度为 256 个字符。           |
+| **说明\***  | 套餐的说明。 最大长度为 3000 个字符。 允许简单的 HTML 格式化，包括 &lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; 和标头标记。  |
+| **市场营销标识符\*** | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。 为服务选择一个短且易记的营销标识符。 此项将用在此套餐的市场 URL 中。 例如，如果发布者 ID 为“contoso”，营销标识符为“sampleApp”，则套餐在 Azure 市场中的 URL 为 https://azuremarketplace.microsoft.com/en-us/marketplace/apps/contoso.sampleApp  
+| **预览订阅 Id\*** | 为预览器添加 1 到 100 个订阅标识符。 在预览版套餐发布之后，这些已加入允许列表的订阅将有权在套餐上线之前访问该套餐。          |
+| **有用链接**    | （可选） 你可以为产品/服务，例如支持、 文档、 论坛等的用户提供各种资源的链接。建议将至少一个链接添加到您的文档。            |
+| **建议的类别 （最多 5 个）\*** | 选择一到五个类别。 所选类别用于将套餐映射到在 Azure 市场和 Azure 门户中提供的产品类别。 这些类别将显示在浏览页和产品详细信息页上。 |
+|  |  |
+
 
 ## <a name="marketing-artifacts"></a>营销项目
 
@@ -52,15 +47,17 @@ ms.locfileid: "60745274"
 
 下表描述了营销项目。
 
-|    **字段**       |  **说明**  |
+|      字段         |    描述    |
 |  ---------------   |  ---------------  |
-|       小型             |        40x40 像素，PNG 格式           |
-|       中型             |        90x90 像素，PNG 格式           |
-|       大型             |        115x115 像素，PNG 格式         |
-|       宽型             |        255x115 像素，PNG 格式           |
-|       英雄             |        815x290 像素，PNG 格式。 可选。 **注意：** 特大图标在上传后无法删除。           |
-|       屏幕截图（最多 5 个）             |        屏幕截图显示在产品详细信息页上。 它们能够十分直观地展示应用的作用及其工作原理。 例如，可以显示体系结构关系图或用例插图。 屏幕截图为可选，其限制为每个 SKU 5 个屏幕截图。 若要添加屏幕截图，请执行以下操作：<ul><li>选择“+ 添加屏幕截图”，打开“屏幕截图”窗口</li><li>**名称** - 输入名称/标题（最大长度为 100 字符）。</li><li>**上传** - 上传图像。 图像必须为 PNG 格式，大小为 533 x 324 像素。</li></ul>           |
-|        添加视频            |        视频显示在产品详细信息页上。 它们能够十分直观地展示应用程序的作用及其工作原理。 若要添加视频，请执行以下操作： <ul><li>选择“+ 添加视频”，打开“视频”窗口</li><li>**名称** - 输入名称/标题（最大长度为 100 字符）。</li><li>**链接** - 输入托管视频的站点（YouTube 或 Vimeo）的 URL</li><li>**缩略图** - 上传缩略图。 图像必须为 PNG 格式，大小为 533 x 324 像素。</li></ul>          |
+| **小型\***        | 小徽标：40x40 像素，PNG 格式     |
+| **中型\***       | 中等徽标：90 x 90 像素的 PNG 格式    |
+| **大型\***        | 大型徽标：115x115 像素的 PNG 格式   |
+| **宽\***         | 宽徽标：255x115 像素的 PNG 格式    |
+| **主图**           | 可选特大徽标：PNG 格式为 815 x 290 像素。 **注意：** 特大图标在上传后无法删除。 |
+| **屏幕截图（最多 5 个）** |        屏幕截图显示在产品详细信息页上。 它们能够十分直观地展示应用的作用及其工作原理。 例如，可以显示体系结构关系图或用例插图。 屏幕截图为可选，其限制为每个 SKU 5 个屏幕截图。 若要添加屏幕截图，请执行以下操作：<ul><li>选择“+ 添加屏幕截图”，打开“屏幕截图”窗口</li><li>**名称** - 输入名称/标题（最大长度为 100 字符）。</li><li>**上传** - 上传图像。 图像必须为 PNG 格式，大小为 533 x 324 像素。</li></ul>           |
+| **添加视频**      | 可选的视频显示产品详细信息页上。 它们能够十分直观地展示应用程序的作用及其工作原理。 若要添加视频，请执行以下操作： <ul><li>选择“+ 添加视频”，打开“视频”窗口</li><li>**名称** - 输入名称/标题（最大长度为 100 字符）。</li><li>**链接** - 输入托管视频的站点（YouTube 或 Vimeo）的 URL</li><li>**缩略图** - 上传缩略图。 图像必须为 PNG 格式，大小为 533 x 324 像素。</li></ul>          |
+|  |  |
+
 
 ### <a name="artifact-examples-in-azure-marketplace"></a>Azure 市场中的项目示例
 
@@ -72,6 +69,7 @@ ms.locfileid: "60745274"
 
 ![市场套餐搜索结果详细信息](./media/azureapp-marketplace-example-details.png)
 
+
 ### <a name="artifact-examples-in-azure-portal"></a>Azure 门户中的项目示例
 
 以下屏幕捕获内容显示套餐在 Azure 门户中的显示情况。 若要查找此示例中的应用程序套餐，请浏览到“市场”>“所有内容”>“开发 + 测试”>“Jenkins”。 Jenkins 套餐显示徽标、标题、发布者显示名称。
@@ -82,6 +80,7 @@ ms.locfileid: "60745274"
 
 ![Azure 门户中的套餐详细信息](./media/azureapp-portal-artifacts-jenkins-details.png)
 
+
 ### <a name="logo-guidelines"></a>徽标准则
 
 上传到云合作伙伴门户中的所有徽标都应遵循以下准则：
@@ -91,6 +90,7 @@ ms.locfileid: "60745274"
 - 不要在徽标上使用渐变背景。
 - 避免在徽标上放置文本，即使是公司或品牌名称也不可以。 徽标的外观应“平整”，并且应避免渐变。
 - 不要拉伸徽标。
+
 
 #### <a name="hero-logo"></a>特大徽标
 
@@ -106,6 +106,7 @@ ms.locfileid: "60745274"
 - 设计徽标时请避免使用过多的文本。 列出套餐后，发布者名称、计划标题、套餐详细摘要和“创建”按钮以编程方式嵌入在徽标内。
 - 在主图徽标的右侧留出一个不使用的矩形空间。 此空白区域为 415x100 像素，与左侧相距 370 像素。
 
+
 ## <a name="lead-management"></a>线索管理
 
 “潜在顾客管理”窗体有一个可选字段，用于配置潜在顾客管理。 若要配置潜在顾客管理，请从下拉列表中选择“潜在顾客目标”。 接下来的屏幕截图显示可用的目标。
@@ -115,8 +116,8 @@ ms.locfileid: "60745274"
 >[!TIP]
 >选择信息图标以查看此消息：“选择用于存储潜在顾客的系统。 在[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)了解如何连接 CRM 系统。”
 
-
 有关详细信息，请参阅[配置潜在顾客](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)。
+
 
 ## <a name="legal"></a>合法
 
@@ -124,10 +125,11 @@ ms.locfileid: "60745274"
 
 提供以下信息：
 
-- **隐私策略 URL** - 输入应用的隐私策略的链接。
-- **使用条款** - 输入应用的使用条款。 客户必须接受这些条款才能试用应用。
+- **隐私策略 URL\***  – 输入到应用的隐私策略的链接。
+- **使用条款\*** – 输入您的应用程序使用的条款。 客户必须接受这些条款才能试用应用。
 
 ![“法律”窗体](./media/azureapp-marketplace-legal.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 

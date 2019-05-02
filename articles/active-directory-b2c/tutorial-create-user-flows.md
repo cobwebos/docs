@@ -3,19 +3,19 @@ title: 教程 - 创建用户流 - Azure Active Directory B2C | Microsoft Docs
 description: 了解如何使用 Azure 门户在 Azure Active Directory B2C 中创建应用程序的用户流。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b76d56b17973c04992a8855917c814ced649bd0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e12b3cbcb8f7a433b37c450c84bd34745f68a22d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418750"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711509"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 

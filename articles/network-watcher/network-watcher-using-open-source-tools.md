@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 7c239bbf577645ddb8ab12c525d1b3a8832421df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60680463"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64936011"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用开源工具将传入和传出 VM 的网络流量模式可视化
 
@@ -76,7 +76,7 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
 1. Geomap
 
-    此窗格提供网络流量的地图视图，其中使用颜色来按比例显示来自每个国家/地区的流量。 选择突出显示的国家/地区可以查看更多流统计数据，例如，该国家/地区的 IP 发送和接收的数据比例。
+    使用颜色缩放到的流量从每个国家/地区中，此窗格提供您的网络流量的地图视图。 您可以选择突出显示国家/地区/区域，以查看更多流统计信息，例如发送和接收来自 Ip 的国家/地区中的数据的组成部分。
 
     ![Geomap][8]
 

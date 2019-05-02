@@ -10,21 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 178747ffddbadb06751ce0db7d16701c3cea7416
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513711"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712816"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
 
 > [!NOTE]
 > 此方法已弃用。 它在文本翻译 API V3.0 中不可用。
 > 
-> 以前可用于文本翻译 API V2.0 的协作性翻译框架 (CTF) 自 2018 年 2 月 1 日起被弃用。 AddTranslation 和 AddTranslationArray 函数允许用户通过协作性翻译框架启用更正。 在 2018 年 1 月 31 日之后，这两个函数不接受新的句子提交，并且用户会收到错误消息。 这些函数已被停用，并且不可替代。
-> 
-> Translator Hub API 提供类似的功能，允许你使用术语和样式生成自定义翻译系统，并且可以使用文本翻译 API 中的类别 ID 调用它。 Translator Hub：[https://hub.microsofttranslator.com](https://hub.microsofttranslator.com)。 Translator Hub API：[https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
+> 以前可用于文本翻译 API V2.0 的协作性翻译框架 (CTF) 自 2018 年 2 月 1 日起被弃用。 AddTranslation 和 AddTranslationArray 函数允许用户通过协作性翻译框架启用更正。 在 2018 年 1 月 31 日之后，这两个函数不接受新的句子提交，并且用户会收到错误消息。 这些函数已停用，不会替换。
 
 协作性翻译框架 (CTF) 报告 API 返回 CTF 存储中的统计信息和实际内容。 此 API 与 GetTranslations() 方法不同，因为它：
 * 仅从你的帐户（appId 或 Azure 市场帐户）返回已翻译的内容及其总计数。
@@ -36,7 +34,7 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 
 
 ## <a name="methods"></a>方法
-| Name |    描述|
+| 名称 |    描述|
 |:---|:---|
 | GetUserTranslationCounts 方法 | 获取用户创建的翻译计数。 |
 | GetUserTranslations 方法 | 检索用户创建的翻译。 |

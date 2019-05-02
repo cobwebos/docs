@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7cc3a4d98901e618369c98ceee8125d2abbe94e3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60851147"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919973"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -107,7 +107,7 @@ const io = require('socket.io')(server,{
 
 **是否支持未编译的 .NET Core 应用？**
 
-可以。
+是的。
 
 **是否支持将 Composer 用作 PHP 应用的依赖关系管理器？**
 
@@ -136,7 +136,7 @@ const io = require('socket.io')(server,{
 
 **是否可以在自定义容器映像上公开多个端口？**
 
-目前不支持公开多个端口。
+我们不支持公开多个端口。
 
 **可以自带存储吗？**
 
@@ -154,11 +154,11 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 
 不需要，平台会处理共享前端上的 HTTPS 终止。
 
-## <a name="multi-container-with-docker-compose-and-kubernetes"></a>多容器与 Docker Compose 和 Kubernetes 结合使用
+## <a name="multi-container-with-docker-compose"></a>多容器 docker Compose
 
-**如何将 Azure 容器注册表 (ACR) 配置为用于多容器？**
+**如何将 Azure 容器注册表 (ACR) 配置为用于多容器？** 
 
-若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 在将它们托管在同一台注册表服务器上之后，需要创建应用程序设置，然后更新 Docker Compose 或 Kubernetes 配置文件以包含 ACR 映像名称。
+若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 一旦它们位于相同的注册表服务器上，你将需要创建应用程序设置，然后更新 Docker Compose 配置文件包含 ACR 映像名称。
 
 创建以下应用程序设置：
 

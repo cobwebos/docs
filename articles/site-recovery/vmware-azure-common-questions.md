@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/23/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: dffbb2c52b4e43eefe6b4f377bd7af529bae8cc5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 22d3bdf8c60e6682c360395b44fe6f1dcc1207b0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125553"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925522"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -93,8 +93,8 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 
 Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管磁盘。
 - Site Recovery 进程服务器将复制日志写入到目标区域中的缓存存储帐户。
-- 这些日志用于在托管磁盘上创建恢复点。
-- 故障转移时，你选择的恢复点用于创建目标托管的磁盘。
+- 这些日志用于在 Azure 上创建恢复点托管磁盘具有 asrseeddisk 前缀。
+- 故障转移时，你选择的恢复点用于创建新的目标托管的磁盘。 此托管的磁盘附加到 Azure 中的 VM。
 - 以前已复制到存储帐户 （之前年 3 月 2019) 的 Vm 不会受到影响。
 
 
@@ -111,7 +111,7 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>受保护计算机后是否可以更改托管的磁盘类型？
 
-是的您可以轻松地[更改托管磁盘的类型](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)。 之前更改的类型，请确保你通过 Azure 门户上转到托管磁盘资源撤销磁盘 SAS URL。 概述边栏选项卡中，取消正在进行的任何导出。 撤消 SAS URL 后, 接下来的几分钟内更改磁盘类型。 但是，如果您更改托管的磁盘类型，请等待要生成的 Azure Site Recovery 的最新恢复点。 针对任何测试故障转移或故障转移今后使用新的恢复点。
+是的您可以轻松地[更改托管磁盘的类型](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)为正在进行的复制。 然后再更改类型，请确保没有 SAS URL 托管磁盘上生成。 在 Azure 门户上转到托管磁盘资源和检查您是否拥有 SAS URL 横幅上的概述边栏选项卡。 如果存在，请单击它以取消正在进行导出。 完成后，接下来的几分钟内更改磁盘类型。 但是，如果您更改托管的磁盘类型，请等待要生成的 Azure Site Recovery 的最新恢复点。 针对任何测试故障转移或故障转移今后使用新的恢复点。
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>是否可以切换到非托管磁盘复制托管磁盘？
 
@@ -133,6 +133,10 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>是否可以执行脱机初始复制？
 不支持此操作。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。
+
+
+### <a name="what-is-asrseeddisk"></a>什么是 asrseeddisk？
+对于每个源的磁盘，数据将复制到 Azure 中的托管磁盘。 此磁盘的 asrseeddisk 的前缀。 它存储源磁盘和所有恢复点快照的副本。
 
 ### <a name="can-i-exclude-disks-from-replication"></a>可以从复制中排除磁盘？
 是的可以排除磁盘。
@@ -220,7 +224,7 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>设置配置服务器时，是否可以手动下载并安装 MySQL？
 
-可以。 请下载 MySQL 并将其置于 **C:\Temp\ASRSetup** 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。
+是的。 请下载 MySQL 并将其置于 **C:\Temp\ASRSetup** 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>我是否可以避免下载 MySQL 但让 Site Recovery 安装它？
 
@@ -249,7 +253,7 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ### <a name="unable-to-select-process-server-during-enable-replication"></a>无法在启用复制过程中选择进程服务器
 
-从 9.24 版本，增强了提供[在产品指南](vmware-azure-manage-process-server.md#process-server-selection-guidance)何时设置横向扩展进程服务器。 这是为了避免进程服务器的限制，并避免的不正常的进程服务器使用情况。
+从 9.24 版本，增强了提供[处理服务器警报](vmware-physical-azure-monitor-process-server.md#process-server-alerts)何时设置横向扩展进程服务器。 这是为了避免进程服务器的限制，并避免的不正常的进程服务器使用情况。
 
 ### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>应该我做什么才能获取准确的运行状况状态的进程服务器？
 
@@ -291,7 +295,7 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到
 ## <a name="automation-and-scripting"></a>自动化和脚本
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>是否可以使用脚本设置复制？
-可以。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。[了解详细信息](vmware-azure-disaster-recovery-powershell.md)。
+是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。[了解详细信息](vmware-azure-disaster-recovery-powershell.md)。
 
 ## <a name="performance-and-capacity"></a>性能和容量
 ### <a name="can-i-throttle-replication-bandwidth"></a>是否可以限制复制带宽？

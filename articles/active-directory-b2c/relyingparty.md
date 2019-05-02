@@ -3,19 +3,19 @@ title: RelyingParty - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 RelyingParty 元素。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5d42568a738d946d7df65601044b9797a35f6b1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca78e7a9ce44b492dafcc00c1663d54718ca7fac
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60360395"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705081"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -178,7 +178,7 @@ ContentDefinitionParameters 元素包含以下属性：
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的名称。 |
 | 描述 | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的说明。 |
-| 协议 | 1:1 | 用于联合的协议。 |
+| Protocol | 1:1 | 用于联合的协议。 |
 | 元数据 | 0:1 | 一个键/值对项集合，由协议在事务过程中与终结点进行通信，以配置依赖方与其他社区参与者之间的交互。 |
 | OutputClaims | 0:1 | 作为技术配置文件中的输出的声明类型列表。 这些元素中的每一个都包含对已在 ClaimsSchema 部分或策略文件继承自的策略中定义的 ClaimType。 |
 | SubjectNamingInfo | 0:1 | 在令牌中使用的使用者名称。 |

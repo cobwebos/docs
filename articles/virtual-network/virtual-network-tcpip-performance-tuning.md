@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 31ca0ee666ff37afa37fb9636860c557d92a52c7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61032445"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924792"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP 的性能优化 Azure Vm
 
@@ -304,7 +304,7 @@ Azure 提供了各种 VM 大小和类型，每个都有各种不同的性能。 
 
 Azure 虚拟机都至少一个网络接口附加到它们。 它们可能具有多个。 分配给虚拟机的带宽是流经所有网络接口附加到计算机的所有出站流量的总和。 换而言之，在每个虚拟机基础，无论多少个网络接口附加到计算机上分配带宽。
 
-中详细描述了预期的出站吞吐量和每个 VM 大小支持的网络接口数[大小的 Windows Azure 中的虚拟机](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要查看的最大吞吐量，请选择一种类型，如**常规用途**，并找到有关上生成的页面 （例如，"Dv2-系列"） 的大小系列的部分。 对于每个序列没有表提供了网络中的标题为的最后一列规范"最大 nic 数 / 预期网络带宽 (Mbps)。"
+中详细描述了预期的出站吞吐量和每个 VM 大小支持的网络接口数[大小的 Windows Azure 中的虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要查看的最大吞吐量，请选择一种类型，如**常规用途**，并找到有关上生成的页面 （例如，"Dv2-系列"） 的大小系列的部分。 对于每个序列没有表提供了网络中的标题为的最后一列规范"最大 nic 数 / 预期网络带宽 (Mbps)。"
 
 吞吐量限制适用于虚拟机。 吞吐量不受这些因素：
 
@@ -388,4 +388,4 @@ NTttcp 是用于测试的 Linux 或 Windows VM 的 TCP 性能的工具。 可以
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解有关 Azure Vm 的 TCP/IP 性能优化，你可能想要阅读有关的其他注意事项[规划虚拟网络](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm)或[了解有关连接和配置虚拟网络的详细信息](https://docs.microsoft.com/en-us/azure/virtual-network/).
+现在，你已了解有关 Azure Vm 的 TCP/IP 性能优化，你可能想要阅读有关的其他注意事项[规划虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)或[了解有关连接和配置虚拟网络的详细信息](https://docs.microsoft.com/azure/virtual-network/).

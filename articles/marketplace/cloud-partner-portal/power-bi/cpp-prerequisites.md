@@ -1,25 +1,18 @@
 ---
-title: Power BI 应用提供系统必备组件的 Azure Marketplace |Microsoft Docs
+title: Power BI 应用提供系统必备组件 |Azure Marketplace
 description: 提供用于将 Power BI 应用发布到 AppSource 的先决条件。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 5014a9cdf9a8811aa6081476f9ec6c41be0ff906
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: c6b9f54d073b671b55f259bfbb2aa70d9eacfdc4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60725629"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943309"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Power BI 应用提供系统必备组件
 

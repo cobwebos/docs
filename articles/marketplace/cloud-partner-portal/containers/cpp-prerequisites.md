@@ -1,25 +1,18 @@
 ---
-title: Azure 容器产品/服务先决条件 | Microsoft Docs
+title: Azure 容器提供系统必备组件 |Azure Marketplace
 description: 发布 Azure 容器的先决条件。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 09c9afcf3126f7f84c20f5514bc038a65b2ea1b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 87727d23b407853aa9dad8a52c0a1cea446353bd
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472781"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942559"
 ---
 # <a name="container-publishing-prerequisites"></a>容器发布先决条件
 

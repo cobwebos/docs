@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3485639062f33d013152cd30f6785df4d1c79790
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ae0e87fddabee9f42cbb5506dce4cd7a5f4f082
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350239"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918857"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>将 Azure AD Connect 数据库从 SQL Server Express 移到 SQL Server 
 
@@ -25,7 +25,7 @@ ms.locfileid: "60350239"
 ## <a name="about-this-scenario"></a>关于此方案
 下面简单介绍此方案。  在此方案中，Azure AD Connect 版本 (1.1.819.0) 安装在单个 Windows Server 2016 域控制器上。  它使用内置的适用于其数据库的 SQL Server 2012 Express Edition。  此数据库将移到 SQL Server 2017 服务器。
 
-![](media/how-to-connect-install-move-db/move1.png)
+![方案体系结构](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>移动 Azure AD Connect 数据库
 请执行以下步骤，将 Azure AD Connect 数据库移到远程 SQL Server。
@@ -37,7 +37,7 @@ ms.locfileid: "60350239"
 5. 在远程 SQL Server 上，打开 SQL Server Management Studio。
 6. 在“数据库”上右键单击，然后选择“附加”。
 7. 在“附加数据库”屏幕上单击“添加”，导航到 ADSync.mdf 文件。  单击“确定”。
-   ![](media/how-to-connect-install-move-db/move2.png)
+   ![附加数据库](media/how-to-connect-install-move-db/move2.png)
 
 8. 附加数据库以后，请返回到 Azure AD Connect 服务器并安装 Azure AD Connect。
 9. MSI 安装完成后，将启动 Azure AD Connect 向导，进入快速模式安装。 单击“退出”图标关闭屏幕。

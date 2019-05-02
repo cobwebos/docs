@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/17/2019
+ms.date: 4/23/2019
 ms.author: b-juche
-ms.openlocfilehash: 3c59fb6abe9c26e6886706dae360ff40787e8faa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549178"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719437"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建卷
 
@@ -44,7 +44,7 @@ ms.locfileid: "59549178"
     * **卷名**      
         指定要创建的卷的名称。   
 
-        名称在资源组中必须唯一。 它的长度必须至少为三个字符。  可以使用任何字母数字字符。
+        卷名必须是每个容量池内唯一的。 它的长度必须至少为三个字符。 可以使用任何字母数字字符。
 
     * **容量池**  
         指定想要创建的卷的容量池。
@@ -72,7 +72,9 @@ ms.locfileid: "59549178"
 4. 单击**协议**，然后选择**NFS**作为该卷的协议类型。   
     * 指定**文件路径**将用于创建新卷导出路径。 导出路径用来装载并访问卷。
 
-        文件路径名只能包含字母、数字和连字符 ("-")。 它的长度必须介于 16 到 40 个字符之间。  
+        文件路径名只能包含字母、数字和连字符 ("-")。 它的长度必须介于 16 到 40 个字符之间。 
+
+        文件路径必须是在每个订阅和每个区域中唯一的。 
 
     * （可选）[配置导出策略的 NFS 卷](azure-netapp-files-configure-export-policy.md)
 
@@ -89,6 +91,33 @@ ms.locfileid: "59549178"
 Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创建 Active Directory 连接。 
 
 ### <a name="create-an-active-directory-connection"></a>创建 Active Directory 连接
+
+1. 请确保满足以下 requiements: 
+
+    * 所使用的管理员帐户必须能够在您将指定的组织单位 (OU) 路径中创建计算机帐户。
+    * 必须在适用的 Windows Active Directory (AD) 服务器上打开正确的端口。  
+        所需的端口是按如下所示： 
+
+        |     服务           |     端口     |     Protocol     |
+        |-----------------------|--------------|------------------|
+        |    AD Web 服务    |    9389      |    TCP           |
+        |    DNS                |    53        |    TCP           |
+        |    DNS                |    53        |    UDP           |
+        |    ICMPv4             |    不适用       |    回送答复    |
+        |    Kerberos           |    464       |    TCP           |
+        |    Kerberos           |    464       |    UDP           |
+        |    Kerberos           |    88        |    TCP           |
+        |    Kerberos           |    88        |    UDP           |
+        |    LDAP               |    389       |    TCP           |
+        |    LDAP               |    389       |    UDP           |
+        |    LDAP               |    3268      |    TCP           |
+        |    NetBIOS 名称       |    138       |    UDP           |
+        |    SAM/LSA            |    445       |    TCP           |
+        |    SAM/LSA            |    445       |    UDP           |
+        |    安全 LDAP        |    636       |    TCP           |
+        |    安全 LDAP        |    3269      |    TCP           |
+        |    w32time            |    123       |    UDP           |
+
 
 1. 在 NetApp 帐户中，单击**Active Directory 连接**，然后单击**加入**。  
 
@@ -134,12 +163,7 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
     * **卷名**      
         指定要创建的卷的名称。   
 
-        名称在资源组中必须唯一。 它的长度必须至少为三个字符。  可以使用任何字母数字字符。
-
-    * **文件路径**  
-        指定将用来创建新卷的导出路径的文件路径。 导出路径用来装载并访问卷。   
-     
-        文件路径名只能包含字母、数字和连字符 ("-")。 它的长度必须介于 16 到 40 个字符之间。  
+        卷名必须是每个容量池内唯一的。 它的长度必须至少为三个字符。 可以使用任何字母数字字符。
 
     * **容量池**  
         指定想要创建的卷的容量池。

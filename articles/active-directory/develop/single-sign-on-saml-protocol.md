@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d976a43173ce4f9deee0a723a895b40678e173b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 033740d1ae75bb6f6fe8509d9ad123d55d9c6770
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250501"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705005"
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 
@@ -90,7 +90,7 @@ Azure AD 还会忽略 `AuthnRequest` 中的 `Conditions` 元素。
 Azure AD 将忽略 `AllowCreate` 属性。
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` 元素指定所需的身份验证方法。 在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。 Azure AD 只支持一个 `AuthnContextClassRef` 值：`urn:oasis:names:tc:SAML:2.0:ac:classes:Password`
+`RequestedAuthnContext` 元素指定所需的身份验证方法。 在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。 Azure AD 支持`AuthnContextClassRef`值如`urn:oasis:names:tc:SAML:2.0:ac:classes:Password`。
 
 ### <a name="scoping"></a>Scoping
 包含标识提供者列表的 `Scoping` 元素在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。

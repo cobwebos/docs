@@ -8,41 +8,35 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-origin.date: 02/18/2019
-ms.date: 04/26/2019
-ms.author: v-junlch
-ms.openlocfilehash: 5534086d5754691f650370e465fa2c63210e0dc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 02/25/2019
+ms.author: cshoe
+ms.openlocfilehash: 802e177b6f3844abe4d24c26b7ea2d0d4fb1688c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61437848"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697010"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>注册 Azure Functions 绑定扩展
 
-Azure Functions 支持 HTTP 和现成的计时器。 若要使用其他服务，你需要安装或*注册*[绑定](./functions-triggers-bindings.md)扩展。 绑定扩展是通过 Azure Core Tools 或 NuGet 程序包提供的。 
+从 Azure Functions 版本 2.x 中，[绑定](./functions-triggers-bindings.md)都可用作函数运行时中的单独包。 虽然.NET 函数访问绑定通过 NuGet 包，扩展捆绑包将允许通过配置设置的所有绑定到其他函数的访问。
+
+请考虑与绑定扩展相关的以下项：
+
+- 在 Functions 1.x 中，除了[使用 Visual Studio 2017 创建 C# 类库](#local-csharp)时，绑定扩展不是显式注册的。
+
+- HTTP 和计时器触发器支持默认情况下，不需要扩展。
 
 下表指明了何时以及如何注册绑定。
 
 | 开发环境 |注册<br/> Functions 1.x 中注册  |注册<br/> Functions 2.x 中注册  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure 门户|自动|[自动，带有提示](#azure-portal-development)|
-|非 .NET 语言或本地 Azure Core Tools 开发|自动|[使用 Core Tools CLI 命令](#local-development-azure-functions-core-tools)|
+|Azure 门户|自动|自动|
+|非 .NET 语言或本地 Azure Core Tools 开发|自动|[使用 Azure Functions 核心工具和扩展捆绑包](#local-development-with-azure-functions-core-tools-and-extension-bundles)|
 |使用 Visual Studio 2017 的 C# 类库|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|
 |使用 Visual Studio Code 的 C# 类库|不适用|[使用 .NET Core CLI](#c-class-library-with-visual-studio-code)|
 
-以下绑定类型例外，它们不需要显式注册，因为它们会在所有版本和环境中自动注册：HTTP 和计时器。
-
-> [!IMPORTANT]
-> 本文的其余内容仅适用于 Functions 2.x。 在 Functions 1.x 中，除了[使用 Visual Studio 2017 创建 C# 类库](#local-csharp)时，绑定扩展不是显式注册的。
-
-## <a name="azure-portal-development"></a>使用 Azure 门户进行开发
-
-创建函数或添加绑定时，如果触发器或绑定的扩展需要注册，则系统会显示提示。 单击“安装”注册扩展，以响应提示。 在消耗计划中，安装最多需要 10 分钟。 
-
-对于给定的函数应用，只需安装每个扩展一次。 若要获取门户中不可用的受支持绑定，或要更新已安装扩展，也可以[在门户中手动安装或更新 Azure Functions 绑定扩展](install-update-binding-extensions-manual.md)。  
-
-## <a name="local-development-azure-functions-core-tools"></a>使用 Azure Functions Core Tools 进行本地开发
+## <a name="local-development-with-azure-functions-core-tools-and-extension-bundles"></a>使用 Azure Functions 核心工具和扩展捆绑包的本地开发
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -52,29 +46,28 @@ Azure Functions 支持 HTTP 和现成的计时器。 若要使用其他服务，
 在“Visual Studio 2017”中，可使用 [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) 命令从包管理器控制台安装包，如以下示例所示：
 
 ```powershell
-Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <target_version>
+Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
+该绑定的情况下，参考文章中提供的针对给定的绑定使用的包名称。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
 
-将示例中的 `<target_version>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
+将示例中的 `<TARGET_VERSION>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
 
 ## <a name="c-class-library-with-visual-studio-code"></a>使用 Visual Studio Code 的 C# 类库
 
 在“Visual Studio Code”中，可在 .NET Core CLI 中，通过命令提示符使用 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令来安装包，如以下示例所示：
 
 ```terminal
-dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <target_version>
+dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <TARGET_VERSION>
 ```
 
 .NET Core CLI 只能用于 Azure Functions 2.x 开发。
 
 用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
 
-将示例中的 `<target_version>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
+将示例中的 `<TARGET_VERSION>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [Azure Functions 触发器和绑定示例](./functions-bindings-example.md)
-
 

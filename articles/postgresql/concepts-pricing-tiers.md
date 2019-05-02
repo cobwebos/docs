@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: a8dbb2c06d3622dcde19f298ee12fa49afb4cd4b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4109679c03b13303c16cef8edd92ecddb6ca5e5f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559833"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712369"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -41,31 +41,25 @@ ms.locfileid: "60559833"
 
 计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 目前提供两代计算（第 4 代和第 5 代）供你选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器。 第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器。 可在以下区域获取第 4 代和第 5 代（“X”表示可用）。 
 
-> [!IMPORTANT]
-> 从 2018 年 12 月 12 日开始，新客户将无法在巴西南部、加拿大中部、加拿大东部、东亚、美国东部 2、印度中部、印度西部、日本西部、美国中北部、美国西部预配第 4 计算代系服务器。 从 2019 年 2 月 1 日起，这些区域中此前创建的第 4 计算代系服务器将迁移到第 5 计算代系。
->
-> [!IMPORTANT]
-> 从 2019 年 2 月 19 日，新客户将无法再预配在美国中部、 美国东部、 日本东部、 欧洲北部、 美国中南部、 亚洲东南部、 欧洲西部的计算第 4 代服务器。 以前创建的计算生成 4 个服务器都将迁移来计算生成 5 从 2019 年 4 月 1 日开始在这些区域中。
-
 | **Azure 区域** | **第 4 代** | **第 5 代** |
 |:---|:----------:|:--------------------:|
 | 美国中部 |  | X |
 | 美国东部 |  | X |
 | 美国东部 2 |  | X |
 | 美国中北部 |  | X |
-| 美国中南部 | X | X |
+| 美国中南部 |  | X |
 | 美国西部 |  | X |
 | 美国西部 2 |  | X |
 | 巴西南部 |  | X |
 | 加拿大中部 |  | X |
 | 加拿大东部 |  | X |
-| 北欧 | X | X |
+| 北欧 |  | X |
 | 西欧 |  | X |
 | 法国中部 |  | X |
 | 英国南部 |  | X |
 | 英国西部 |  | X |
 | 东亚 |  | X |
-| 东南亚 | X | X |
+| 东南亚 |  | X |
 | 澳大利亚东部 |  | X |
 | 澳大利亚中部 |  | X |
 | 澳大利亚中部 2 |  | X |
@@ -73,7 +67,7 @@ ms.locfileid: "60559833"
 | 印度中部 |  | X |
 | 印度南部 |  | X |
 | 印度西部 |  | X |
-| 日本东部 | X | X |
+| 日本东部 |  | X |
 | 日本西部 |  | X |
 | 韩国中部 |  | X |
 | 韩国南部 |  | X |

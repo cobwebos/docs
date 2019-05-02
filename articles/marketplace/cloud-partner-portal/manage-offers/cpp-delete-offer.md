@@ -1,25 +1,18 @@
 ---
-title: 删除市场套餐 - Azure 市场 | Microsoft Docs
+title: 删除 marketplace 产品/服务 |Azure Marketplace
 description: 使用云合作伙伴门户删除 Azure 和 AppSource 市场中的套餐
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 1d5d02d65dd3dcf5978639818fba4ebe36ffaaff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 542bc611ac8820385c3f749aa151afc1dcdf6db5
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825143"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942139"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>删除 Azure 市场和 AppSource 套餐或 SKU
 
@@ -28,7 +21,7 @@ ms.locfileid: "60825143"
 - “套餐删除”可确保新客户不再能够购买或部署该套餐，但对现有客户不起作用，因为仍然必须根据许可协议和相关法律为现有客户提供支持。 
 - “套餐终止”是终止该服务和/或你与现有客户之间许可协议的过程。 
 
-指南和相关产品/服务删除和终止的策略均由[Microsoft Marketplace 发布方协议](https://go.microsoft.com/fwlink/?LinkID=699560)并[参与策略](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)(部分[产品/服务挂起和删除](https://docs.microsoft.com/en-us/legal/marketplace/participation-policy#offering-suspension-and-removal))。 
+指南和相关产品/服务删除和终止的策略均由[Microsoft Marketplace 发布方协议](https://go.microsoft.com/fwlink/?LinkID=699560)并[参与策略](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)(部分[产品/服务挂起和删除](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal))。 
 
 本文探讨支持的不同删除方案，以及执行每种方案所要采取的步骤。  
 

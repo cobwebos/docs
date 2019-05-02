@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 04/29/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9b63fb963408b8f22453c7ea78e36a49402273a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e2bcd92ffc8799b2edf04251b6ce160e96c7609c
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60906022"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875606"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略
  
@@ -41,12 +41,11 @@ ms.locfileid: "60906022"
 ## <a name="customize-the-information-protection-policy"></a>自定义信息保护策略
 要自定义 Azure 租户的信息保护策略，需要拥有[租户根管理组的管理权限](security-center-management-groups.md)。 
  
-1. 在安全中心主菜单中，选择“安全策略”。
-2. 选择“层次结构视图 (预览)”，然后在“租户根组”下，单击“编辑设置”。
- 
+1. 在安全中心主菜单下**资源安全净化**转到**数据和存储器**，然后单击**SQL 信息保护**按钮。
+
    ![配置信息保护策略](./media/security-center-info-protection-policy/security-policy.png) 
  
-3. 在“策略组件”下，单击“信息保护”。 在“信息保护设置”页中，可以查看当前的标签集。 这些是用于对数据的敏感度级别进行分类的主要分类属性。 此处，可以为租户配置信息保护标签和信息类型。 
+2. 在中**SQL 信息保护**页上，可以查看您当前组的标签。 这些是用于对数据的敏感度级别进行分类的主要分类属性。 此处，可以为租户配置信息保护标签和信息类型。 
  
 ### <a name="customizing-labels"></a>自定义标签
  

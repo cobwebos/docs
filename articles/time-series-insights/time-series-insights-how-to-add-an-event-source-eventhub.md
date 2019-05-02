@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: d4a80358535429f53b582abe8560757028159070
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f2b307f662c0c9b94edc6bb8eb3ca299f5ad4620
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197775"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702640"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>将事件中心事件源添加到时序见解环境
 
@@ -108,5 +108,7 @@ ms.locfileid: "60197775"
 ## <a name="next-steps"></a>后续步骤
 
 * [定义数据访问策略](time-series-insights-data-access.md)，以保护数据。
+
 * [发送事件](time-series-insights-send-events.md)到事件源。
+
 * 在[时序见解资源管理器中访问环境](https://insights.timeseries.azure.com)。

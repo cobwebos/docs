@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 41a5f08be833d1235146d6e748580751af2c9d73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311023"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707138"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 
@@ -41,6 +41,48 @@ ms.locfileid: "60311023"
 使用分区实体时不保证排序。 如果某个分区不可用，仍可从其他分区发送和接收消息。
 
  [高级 SKU](service-bus-premium-messaging.md) 中不再支持分区实体。 
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
+使用 Azure 服务总线中，可以使用以下协议来发送和接收消息：
+
+- 高级消息队列协议 (AMQP)
+- 服务总线邮件协议 (SBMP)
+- HTTP
+
+请参阅下表中的所需打开以显示使用这些协议进行通信和 Azure 事件中心的出站端口。 
+
+| Protocol | 端口 | 详细信息 | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 和端口 5672 | 请参阅[AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
+| SBMP | 9350 至 9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| HTTP、HTTPS | 80、443 | 
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>哪些 IP 地址需要加入允许列表？
+若要查找你连接到允许列表的正确 IP 地址，请执行以下步骤：
+
+1. 从命令提示符处运行以下命令： 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. 记下中返回的 IP 地址`Non-authoritative answer`。 此 IP 地址是静态的。 它将更改时间的唯一点是如果还原到不同的群集的命名空间。
+
+如果你的命名空间为使用区域冗余，需要执行一些其他步骤： 
+
+1. 首先，在命名空间上运行 nslookup。
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. 记下中的名称**非权威应答**部分中，这是采用以下格式之一： 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. 为每个后缀 s1、 s2 和 s3 以获取在三个可用性区域中运行的所有三个实例的 IP 地址与运行 nslookup 
+
 
 ## <a name="best-practices"></a>最佳做法
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure 服务总线的最佳实践有哪些？

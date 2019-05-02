@@ -8,18 +8,18 @@ ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 233b26b330fabe7da8664114ba1857f74feea4bc
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764278"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706330"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>使用自定义映像创建虚拟机池 
 
 使用虚拟机配置创建 Azure Batch 池时，需指定一个虚拟机 (VM) 映像，为池中每个计算节点提供操作系统。 可以使用受支持的 Azure 市场映像或自定义映像（自行创建并配置的 VM 映像）创建虚拟机池。 自定义映像必须是 Batch 帐户所在的同一个 Azure 订阅和区域中的托管映像资源。
 
-## <a name="why-use-a-custom-image"></a>为何使用自定义映像？
+## <a name="benefits-of-custom-images"></a>自定义映像的优点
 
 提供自定义映像时，可以控制操作系统配置，以及要使用的操作系统和数据磁盘的类型。 自定义映像可以包含应用程序和引用数据，Batch 池节点预配好后即可使用这些数据。
 
@@ -32,12 +32,11 @@ ms.locfileid: "63764278"
 - **节省 VM 上的重新启动时间。** 安装应用程序通常需要重新启动 VM，这是一个耗时的过程。 预安装应用程序可节省重新启动时间。 
 - **一次复制极大量的数据。** 将静态数据复制到托管映像的数据磁盘，使这些数据成为托管的自定义映像的一部分。 只需执行此操作一次，然后，数据可供池的每个节点使用。
 - **选择磁盘类型。** 可以为 OS 磁盘和数据磁盘使用高级存储。
-- **扩大池的大小。** 使用托管的自定义映像创建池时，该池可以扩大，而无需创建映像 Blob VHD 的副本。 
-
+- **扩大池的大小。** 使用托管的自定义映像创建池时，该池可以扩大，而无需创建映像 Blob VHD 的副本。
 
 ## <a name="prerequisites"></a>必备组件
 
-- **托管映像资源**。 若要使用自定义映像创建虚拟机池，需在 Batch 帐户所在的同一 Azure 订阅和区域中使用或创建托管映像资源。 应该基于 VM 的 OS 磁盘快照及其附加的数据磁盘（可选）创建该映像。 有关准备托管映像的详细信息和步骤，请参阅以下部分。 
+- **托管映像资源**。 若要使用自定义映像创建虚拟机池，需在 Batch 帐户所在的同一 Azure 订阅和区域中使用或创建托管映像资源。 应该基于 VM 的 OS 磁盘快照及其附加的数据磁盘（可选）创建该映像。 有关准备托管映像的详细信息和步骤，请参阅以下部分。
   - 对创建的每个池使用唯一的自定义映像。
   - 若要使用 Batch API 创建包含映像的池，请指定映像的**资源 ID**，其格式为 `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`。 若要使用门户，请使用映像的**名称**。  
   - 托管映像资源应该在池的生存期内存在，以便能够纵向扩展，并可在删除池后将其删除。
@@ -46,7 +45,7 @@ ms.locfileid: "63764278"
 
 ## <a name="prepare-a-custom-image"></a>准备自定义映像
 
-在 Azure 中，可以基于 Azure VM 的 OS 和数据磁盘快照、包含托管磁盘的通用化 Azure VM 或者上传的通用化本地 VHD 来准备托管映像。 若要使用自定义映像可靠缩放 Batch 池，我们建议仅使用第一种方法创建托管映像：使用 VM 磁盘的快照。 参阅以下步骤来准备 VM、创建快照，然后基于该快照创建映像。 
+在 Azure 中，可以基于 Azure VM 的 OS 和数据磁盘快照、包含托管磁盘的通用化 Azure VM 或者上传的通用化本地 VHD 来准备托管映像。 若要使用自定义映像可靠缩放 Batch 池，我们建议仅使用第一种方法创建托管映像：使用 VM 磁盘的快照。 参阅以下步骤来准备 VM、创建快照，然后基于该快照创建映像。
 
 ### <a name="prepare-a-vm"></a>准备 VM
 
@@ -60,6 +59,7 @@ ms.locfileid: "63764278"
 
 * 确保使用托管磁盘创建 VM。 这是创建 VM 时的默认存储设置。
 * 不要在 VM 上安装自定义脚本扩展等 Azure 扩展。 如果映像包含预装的扩展，在部署 Batch 池时 Azure 可能会遇到问题。
+* 使用附加数据磁盘，需要装载和使用它们在 VM 内的从磁盘进行格式化。
 * 确保所提供的基础 OS 映像使用默认临时驱动器。 Batch 节点代理目前需要使用默认的临时驱动器。
 * VM 开始运行后，请通过 RDP（适用于 Windows）或 SSH（适用于 Linux）进行连接。 安装所需的任何软件，或复制所需的数据。  
 

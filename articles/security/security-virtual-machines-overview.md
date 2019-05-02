@@ -1,5 +1,5 @@
 ---
-title: 与 Azure 虚拟机配合使用的 Azure 安全功能 | Microsoft Docs
+title: 安全功能的 Azure 虚拟机-使用 Azure 安全 |Microsoft Docs
 description: 本文概述了能够与 Azure 虚拟机配合使用的核心 Azure 安全功能。
 services: security
 documentationcenter: na
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c0a4a8ae270c8d8f6f3c2e86db9deed4e14f668e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3467050214cba6ce5723c2747d2c13e40e86609b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444242"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872016"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
+本文提供的核心概述可与虚拟机的 Azure 安全功能。
 
 可使用 Azure 虚拟机灵活地部署各种计算解决方案。 该服务支持 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk Services。 因此，几乎可在任何操作系统上部署任何工作负载和任何语言。
 
@@ -33,9 +34,7 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 * 加密敏感数据。
 * 保护网络流量的安全。
 * 识别和检测威胁。
-* 满足符合性要求。
-
-本文旨在概述能与虚拟机配合使用的核心 Azure 安全功能。 此外还提供了一些文章链接，这些文章详细介绍了每个功能，可从中了解更多信息。  
+* 满足符合性要求。  
 
 ## <a name="antimalware"></a>反恶意软件
 
@@ -77,14 +76,14 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 * [管理和 API](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft 威胁防护](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
-了解更多： 
+了解更多：
 
 * [WDATP 入门](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/get-started)  
 * [WDATP 功能概述](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview)  
 
 ## <a name="hardware-security-module"></a>硬件安全模块
 
-提高密钥安全性可增强加密和身份验证保护。 通过将关键密码和密钥存储在 Azure 密钥保管库中，可以简化此类密码和密钥的管理和保护。 
+提高密钥安全性可增强加密和身份验证保护。 通过将关键密码和密钥存储在 Azure 密钥保管库中，可以简化此类密码和密钥的管理和保护。
 
 密钥保管库提供将密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中的选项。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。
 
@@ -133,7 +132,7 @@ Site Recovery：
 
 ## <a name="virtual-networking"></a>虚拟网络
 
-虚拟机需要网络连接。 若要支持该需求，Azure 要求将虚拟机连接到 Azure 虚拟网络。 
+虚拟机需要网络连接。 若要支持该需求，Azure 要求将虚拟机连接到 Azure 虚拟网络。
 
 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑 Azure 虚拟网络都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
 
@@ -169,14 +168,13 @@ Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关�
 
 ## <a name="confidential-computing"></a>机密计算
 
-虽然机密计算在技术方面不是虚拟机安全性的一部分，但是虚拟机安全性的主题属于“计算”安全性的更高级别的主题。 机密计算属于“计算”安全性类别。 
+虽然机密计算在技术方面不是虚拟机安全性的一部分，但是虚拟机安全性的主题属于“计算”安全性的更高级别的主题。 机密计算属于“计算”安全性类别。
 
 当数据“采用明文”（这是进行高效处理所必需的）时，机密计算可确保数据在可信执行环境 https://en.wikipedia.org/wiki/Trusted_execution_environment（TEE - 也称为飞地）中受到保护，下图显示了一个这样的示例。  
 
-TEE 可以确保无法从外部查看数据或执行操作，即使通过调试程序也不可以。 它们甚至可以确保只有经过授权的代码才能访问数据。 如果代码被更改或篡改，则会拒绝操作并禁用环境。 TEE 会在代码在它中执行的整个过程中实施这些保护。 
+TEE 可以确保无法从外部查看数据或执行操作，即使通过调试程序也不可以。 它们甚至可以确保只有经过授权的代码才能访问数据。 如果代码被更改或篡改，则会拒绝操作并禁用环境。 TEE 会在代码在它中执行的整个过程中实施这些保护。
 
 了解更多：
 
 * [Azure 机密计算介绍](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure 机密计算](https://azure.microsoft.com/blog/azure-confidential-computing/)  
-

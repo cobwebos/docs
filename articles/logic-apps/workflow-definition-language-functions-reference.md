@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e69d43b8bec7945c5aa1b394ce7402338f6fbbfb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502241"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693249"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure 逻辑应用和 Microsoft Flow 中的工作流定义语言的函数参考
 
@@ -1344,7 +1344,7 @@ dataUri('hello')
 
 返回数据统一资源标识符 (URI) 的二进制版本。
 请使用此函数而非 [decodeDataUri()](#decodeDataUri)。
-虽然这两个函数的工作方式相同，但首选 `decodeDataUri()`。
+虽然这两个函数的工作方式相同，但首选 `dataUriBinary()`。
 
 ```
 dataUriToBinary('<value>')

@@ -8,16 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 04/01/2019
-ms.author: v-biyu
+ms.date: 12/06/2018
+ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d5d3d7031f9795db0ae04bc707bd9e7707137210
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4360150064d2f42cc2dc2cc3ef9f7783a5cb175
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60481945"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866551"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>录制语音样本用于创建自定义语音
 
@@ -110,7 +109,7 @@ ms.locfileid: "60481945"
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|约 1100 个句子，选自专用于语音合成项目的无版权作品。 首先使用这类句子是很可取的。|
 |作品不再<br>受版权保护|通常是 1923 年之前出版的作品。 在英语方面，[Project Gutenberg](https://www.gutenberg.org/)（古腾堡计划）提供了数以万计的此类作品。 你可能想要关注较新的作品，因为语言将更接近现代英语。|
-|政府作品&nbsp;|美国政府创作的作品在美国不受版权保护，但政府可能在其他国家/地区声明版权所有。|
+|政府作品&nbsp;|不在美国，版权由美国政府版创建的工作原理，尽管政府部门可能会声称在其他国家/地区的版权。|
 |公共域|已明确放弃版权或专用于公共域的作品。 在某些司法管辖区可能无法完全放弃版权。|
 |许可作品|根据 Creative Commons 或 GNU 自由文档许可证 (GFDL) 等许可分发的作品。 维基百科使用 GFDL。 但是，某些许可证会可能对影响自定义语音模型创建的许可内容的表演施加约束，因此请仔细阅读许可证。|
 

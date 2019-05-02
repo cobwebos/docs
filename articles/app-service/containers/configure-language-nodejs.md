@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 43dc76e6d1e1ec2a6167f1d3e3cc7b8780f843db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3074048dd4426a10e706e37e6d375ea4995fcbbb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850161"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919781"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux Node.js 应用
 
@@ -55,7 +55,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="configure-nodejs-server"></a>配置 Node.js 服务器
 
-Node.js 容器附带[PM2](http://pm2.keymetrics.io/)，生产流程管理器。 你可以配置应用以启动 PM2，或 NPM，或自定义命令。
+Node.js 容器附带[PM2](https://pm2.keymetrics.io/)，生产流程管理器。 你可以配置应用以启动 PM2，或 NPM，或自定义命令。
 
 - [运行自定义命令](#run-custom-command)
 - [运行 npm start](#run-npm-start)
@@ -99,12 +99,12 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 - *app.js*
 - *index.js*
 - *hostingstart.js*
-- 以下值之一[PM2 文件](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json*和*ecosystem.config.js*
+- 以下值之一[PM2 文件](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json*和*ecosystem.config.js*
 
 此外可以使用以下扩展配置的自定义启动文件：
 
 - 一个 *.js*文件
-- 一个[PM2 文件](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)扩展名 *.json*， *。 config.js*， *.yaml*，或 *.yml*
+- 一个[PM2 文件](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)扩展名 *.json*， *。 config.js*， *.yaml*，或 *.yml*
 
 若要添加自定义启动文件，请运行以下命令[Cloud Shell](https://shell.azure.com):
 
@@ -226,7 +226,7 @@ fi
 
 在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
-使用常用 Web 框架可以访问采用标准应用模式的 `X-Forwarded-*` 信息。 在中[Express](https://expressjs.com/)，可以使用[信任代理](http://expressjs.com/guide/behind-proxies.html)。 例如：
+使用常用 Web 框架可以访问采用标准应用模式的 `X-Forwarded-*` 信息。 在中[Express](https://expressjs.com/)，可以使用[信任代理](https://expressjs.com/guide/behind-proxies.html)。 例如：
 
 ```javascript
 app.set('trust proxy', 1)
@@ -253,7 +253,7 @@ if (req.secure) {
     - 具体取决于你*package.json*，可能会为生产模式下安装不同的包 (`dependencies`与`devDependencies`)。
     - 某些 web 框架可以部署在生产模式下以不同的方式的静态文件。
     - 在生产模式下运行时，某些 web 框架可能会使用自定义启动脚本。
-- 在开发模式下，在应用服务中运行你的应用。 例如，在[MEAN.js](http://meanjs.org/)，可以将您的应用程序设置为在运行时中的开发模式[设置`NODE_ENV`应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。
+- 在开发模式下，在应用服务中运行你的应用。 例如，在[MEAN.js](https://meanjs.org/)，可以将您的应用程序设置为在运行时中的开发模式[设置`NODE_ENV`应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 

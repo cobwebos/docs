@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253a5e247dbbea5fc7e0e556d8619328b43bff58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc38e2096b6a761060fab09a8ce2518808b370e1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300138"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713356"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：提供向 Azure AD 应用程序的可选声明
 
@@ -52,12 +52,12 @@ ms.locfileid: "60300138"
 
 **表 2：V1.0 和 V2.0 可选声明集**
 
-| Name                       |  描述   | 令牌类型 | 用户类型 | 说明  |
+| 名称                       |  描述   | 令牌类型 | 用户类型 | 说明  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
 | `home_oid`                 | 对于来宾用户，表示该用户在用户主租户中的对象 ID。| JWT        |           | |
-| `sid`                      | 用于每个会话用户注销的会话 ID。 | JWT        |           |         |
+| `sid`                      | 用于每个会话用户注销的会话 ID。 | JWT        |  个人和 Azure AD 帐户。   |         |
 | `platf`                    | 设备平台    | JWT        |           | 限制为可以验证设备类型的托管设备。|
 | `verified_primary_email`   | 源自用户的 PrimaryAuthoritativeEmail      | JWT        |           |         |
 | `verified_secondary_email` | 源自用户的 SecondaryAuthoritativeEmail   | JWT        |           |        |
@@ -80,7 +80,7 @@ ms.locfileid: "60300138"
 
 **表 3：仅限 V2.0 的可选声明**
 
-| JWT 声明     | Name                            | 描述                                | 说明 |
+| JWT 声明     | 名称                            | 描述                                | 说明 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
 | `onprem_sid`  | 本地安全标识符 |                                             |       |
@@ -91,7 +91,6 @@ ms.locfileid: "60300138"
 | `family_name` | 姓氏                       | 提供了最后一个名称、 姓氏或家族名称的用户的用户对象中定义。 <br>"family_name":"Miller" | MSA 和 AAD 中受支持   |
 | `given_name`  | 名字                      | 提供了第一个或用户对象上设置为"给定"的用户的名称。<br>"given_name":"Frank"                   | MSA 和 AAD 中受支持  |
 | `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于关键数据。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 |
-| `sid`         | 会话 ID                      | GUID 会话标识符，用于跟踪与 MSA 的身份验证会话。 | 仅 MSA。  将不会包括有关 Azure AD 帐户。 | 
 
 
 ### <a name="additional-properties-of-optional-claims"></a>可选声明的附加属性
@@ -164,7 +163,7 @@ ms.locfileid: "60300138"
 
 **表 5：OptionalClaims 类型属性**
 
-| Name        | 类型                       | 描述                                           |
+| 名称        | 类型                       | 描述                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | 集合 (OptionalClaim) | 在 JWT ID 令牌中返回的可选声明。 |
 | `accessToken` | 集合 (OptionalClaim) | 在 JWT 访问令牌中返回的可选声明。 |
@@ -177,7 +176,7 @@ ms.locfileid: "60300138"
 
 **表 6：OptionalClaim 类型属性**
 
-| Name                 | 类型                    | 描述                                                                                                                                                                                                                                                                                                   |
+| 名称                 | 类型                    | 描述                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |

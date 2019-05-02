@@ -1,25 +1,19 @@
 ---
-title: 在发布门户中设置应用程序 | Microsoft Docs
+title: 在发布门户中设置应用程序
 description: 有关如何在云发布门户中设置应用程序的说明。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60483155"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943564"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>在发布门户中设置应用程序
 
@@ -59,7 +53,7 @@ ms.locfileid: "60483155"
 
 通过此下拉列表，可以选择要在其下发布此产品/服务的发布者个人资料。 此字段在套餐推出后处于锁定状态。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名称
 
 这是产品/服务的显示名称。 这是显示在 [AppSource](https://appsource.microsoft.com/) 中的名称。 该名称不能超过 50 个字符。
 
@@ -88,7 +82,7 @@ ms.locfileid: "60483155"
 
 ### <a name="crm-package-availability"></a>CRM 包可用性
 
-在此部分，选择可以使用该包的 CRM 区域。 有关哪些区域为哪些国家/地区提供服务的信息，请参阅以下链接：[https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+在此部分，选择可以使用该包的 CRM 区域。 有关信息的 CRM 区域提供服务的国家/地区，请参阅链接： [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 请注意:部署到德国主权云和 US Gov 主权云需要特殊权限，且在认证期间需要验证
 

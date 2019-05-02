@@ -1,25 +1,18 @@
 ---
-title: Azure 应用程序产品/服务先决条件 | Microsoft Docs
+title: Azure 应用程序产品/服务先决条件 |Azure Marketplace
 description: 在 Azure 市场上发布 Azure 应用程序产品/服务的先决条件。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 296f843f9d09b57e12e867700f456126eca128b3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744918"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942884"
 ---
 # <a name="azure-application-prerequisites"></a>Azure 应用程序先决条件
 
@@ -36,7 +29,7 @@ ms.locfileid: "60744918"
 * Azure 快速入门模板。<br> 有关详细信息，请参阅：
 
   * [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)。 使用社区提供的模板通过 Azure 资源管理器部署 Azure 资源以执行更多操作。 Azure 资源管理器可让你使用声明性模板预配应用程序。 在单个模板中，你可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
-  * [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)。 此存储库包含由社区提供的所有当前可用的 Azure 资源管理器模板。 https://azure.microsoft.com/en-us/documentation/templates/ 中维护了一个可搜索的模板索引。
+  * [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)。 此存储库包含由社区提供的所有当前可用的 Azure 资源管理器模板。 https://azure.microsoft.com/documentation/templates/ 中维护了一个可搜索的模板索引。
 * 创建 UI 定义<br>
 有关详细信息，请参阅[为托管应用程序创建 Azure 门户用户界面](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)。 本文介绍了 createUiDefinition.json 文件的核心概念。 Azure 门户使用此文件生成用于创建托管应用程序的用户界面。
 
@@ -50,7 +43,7 @@ ms.locfileid: "60744918"
 >[!NOTE]
 >应当使用相同的 Microsoft Developer Center 注册帐户登录到云合作伙伴门户。 对于 Azure 市场产品/服务，只应具有一个 Microsoft 帐户。 此帐户不应特定于个别服务或产品/服务。
 
-* 公司（或其子公司）必须位于 Azure 市场支持的销售国家/地区。 有关这些国家/地区的当前列表，请参阅 [Microsoft Azure 市场参与政策](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)。
+* 你的公司 （或其子公司） 必须是销售-从-国家/地区中支持的 Azure Marketplace。 这些国家/地区的当前列表，请参阅[Microsoft Azure Marketplace 参与政策](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)。
 * 产品必须以兼容 Azure 市场支持的计费模型的方式获得许可。 有关详细信息，请参阅 Azure 市场中的[计费选项](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations)。
 * 你需要以商业上合理的方式负责向客户提供技术支持。 支持可以采用免费、付费或社区支持等多种方式。
 * 负责获得自己的软件和任何第三方软件依赖项的许可。

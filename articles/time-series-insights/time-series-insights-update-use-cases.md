@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: f4e14435c2ccab98619bec57fef0e121e2df4403
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 677d0458acb9fa29f91a7fb849da56cb3cd67678
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431596"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707079"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure 时序见解预览版用例
 
@@ -32,7 +32,7 @@ ms.locfileid: "57431596"
 
 ## <a name="introduction"></a>简介
 
-时序见解是一种端到端的平台即服务产品/服务。 它用于引入、处理、存储和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和操作分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
+时序见解是一种端到端的平台即服务产品/服务。 它用于引入、处理、存储和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>数据浏览和直观异常检测
 
@@ -93,7 +93,9 @@ ms.locfileid: "57431596"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)的详细信息。
+
 - 要规划环境，请阅读[时序见解预览版规划](./time-series-insights-update-plan.md)。
+
 - 阅读[时序见解客户端](https://github.com/Microsoft/tsiclient)文档。
 
 <!-- Images -->

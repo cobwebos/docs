@@ -4,24 +4,24 @@ titlesuffix: Azure Virtual Network
 description: 了解如何将关联到虚拟机的公共 IP 地址。
 services: virtual-network
 documentationcenter: ''
-author: jimdial
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
-ms.author: jdial
-ms.openlocfilehash: ce573ff8fe61f2e1d4c88963e0f21fc9402776e9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: kumud
+ms.openlocfilehash: 69460a111e6fd879807b4025d6832b3ac515a9b4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083209"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691986"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>将关联到虚拟机的公共 IP 地址
 
-在本文中，您将了解如何将关联到现有的虚拟机 (VM) 的公共 IP 地址。 如果你想要从 internet 连接到 VM，VM 必须具有与之关联的公共 IP 地址。 如果你想要创建新的 VM 具有公共 IP 地址，你可以使用来完成[Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)，则[Azure 命令行接口 (CLI)](virtual-network-deploy-static-pip-arm-cli.md)，或[PowerShell](virtual-network-deploy-static-pip-arm-ps.md)。 公共 IP 地址会产生少许费用。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。 没有为每个订阅可以使用的公共 IP 地址数限制。 有关详细信息，请参阅[限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits-1)。
+在本文中，您将了解如何将关联到现有的虚拟机 (VM) 的公共 IP 地址。 如果你想要从 internet 连接到 VM，VM 必须具有与之关联的公共 IP 地址。 如果你想要创建新的 VM 具有公共 IP 地址，你可以使用来完成[Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)，则[Azure 命令行接口 (CLI)](virtual-network-deploy-static-pip-arm-cli.md)，或[PowerShell](virtual-network-deploy-static-pip-arm-ps.md)。 公共 IP 地址会产生少许费用。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。 没有为每个订阅可以使用的公共 IP 地址数限制。 有关详细信息，请参阅[限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address)。
 
 可以使用[Azure 门户](#azure-portal)，Azure[命令行界面](#azure-cli)(CLI) 或[PowerShell](#powershell)要关联到 VM 的公共 IP 地址。
 

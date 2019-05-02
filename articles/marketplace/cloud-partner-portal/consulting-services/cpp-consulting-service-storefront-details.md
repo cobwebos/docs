@@ -1,25 +1,18 @@
 ---
-title: Azure 和 Dynamcis 365 咨询服务套餐 - 输入店面详细信息 | Microsoft Docs
-description: 有关在云合作伙伴门户中为 Azure 或 Dynamics 365 咨询服务套餐定义店面详细信息的指导。
+title: 咨询服务产品/服务输入店面详细信息 |Azure Marketplace
+description: 在 Azure 或 Dynamics 365 咨询服务产品/服务在云合作伙伴门户中定义店面详细信息。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ac383c85938f5cb7dfe4f711714f5bacd0c96b89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 1b028fe016d6ae3df8c1dfce548fc0c11479d5a6
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865353"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942716"
 ---
 # <a name="storefront-details-tab"></a>“店面详细信息”选项卡
 
@@ -32,14 +25,16 @@ ms.locfileid: "60865353"
 
 ![创建新的咨询服务套餐 -“店面详细信息”选项卡](media/consultingoffer-storefront-details.png)
 
+
 ## <a name="offer-details"></a>套餐详细信息
 
 “套餐详细信息”部分包含以下输入框：
 
--   **套餐摘要**
--   **产品/服务描述**
+-   **产品/服务摘要\***
+-   **产品/服务描述\***
 
-### <a name="offer-summary"></a>套餐摘要
+
+### <a name="offer-summary"></a>产品/服务摘要\*
 
 套餐摘要是套餐的简要说明，紧靠在套餐名称的下面显示。 请使用纯文本输入套餐摘要，不要换行。 下面是适当的套餐摘要及其相应套餐名称的示例。
 
@@ -68,7 +63,8 @@ ms.locfileid: "60865353"
 -   **套餐名称**：Dynamics 和项目：3 日评估
 -   **套餐摘要**：针对 ERP 解决方案的需求收集与评估，该解决方案专为专业服务公司和项目驱动型企业而设计。
 
-### <a name="offer-description"></a>套餐说明
+
+### <a name="offer-description"></a>产品/服务描述\*
 
 在“套餐说明”框中输入咨询服务套餐的说明。 合理的套餐说明包括互动功能的具体详细信息，以及最终向客户交付的内容。 此说明应该可以帮助客户明确了解他们会得到的服务。 说明该套餐与你要为其提供咨询服务的 Microsoft 产品的关系。
 
@@ -144,6 +140,7 @@ ms.locfileid: "60865353"
 输入机密密钥，以便在套餐上线之前，在 AppSource 中对其进行预览。
 此标识符并非密码。
 
+
 ## <a name="listing-details"></a>商品详细信息
 
 **咨询服务类型**
@@ -166,7 +163,7 @@ Microsoft 专门侧重于提供给单个客户的固定范围、固定持续时�
 选择提供此咨询服务套餐的国家和地区。 单个套餐不能在多个国家/地区发布。 必须为每个国家或地区创建一个新套餐。
 
 >[!Note]
->AppSource 咨询服务目前在美国、英国和加拿大开展。 可为某个国家/地区提交一项尚未提供的套餐，该套餐在经过审核后就可以提供。 若要开拓新的国家/地区，至少需要提供一定数量的套餐，因此我们鼓励用户为此类国家/地区提供套餐。
+>AppSource 咨询服务目前在美国、英国和加拿大开展。 可以提交产品/服务尚未提供实时，某个国家/地区并将进行审查和已准备好进行发布。 准备好进行发布的产品/服务的最少需要打开新国家/地区，因此，建议不是实时的国家/地区的产品/服务。
 
 **行业**
 
@@ -207,6 +204,7 @@ Microsoft 专门侧重于提供给单个客户的固定范围、固定持续时�
 **屏幕截图（限制为 5 个）**
 
 最多上传五个图像，以提供有关套餐、套餐交付件或公司的详细信息。 例如，营销手册的片段、演示文稿中的相关幻灯片，或者展示公司发展势头或专业知识的图像。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414998"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694844"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -85,9 +85,6 @@ ms.locfileid: "60414998"
    * Active Directory 连接器对象与 MV 的链接必须设有同步规则 `Microsoft.InfromADUserAccountEnabled.xxx`。
    
    当云中有调用发出时，同步引擎使用 cloudAnchor 属性，查找 Azure Active Directory 连接器空间对象。 然后，它依次链接回 MV 对象和 Active Directory 对象。 由于同一用户可能有多个 Active Directory 对象（多林），因此同步引擎依赖 `Microsoft.InfromADUserAccountEnabled.xxx` 链接选取正确的对象。
-
-   > [!Note]
-   > 鉴于有此逻辑，Azure AD Connect 必须能够与主域控制器 (PDC) 仿真器进行通信，这样密码写回服务才能正常运行。 如果需要手动启用此通信，可以将 Azure AD Connect 连接到 PDC 仿真器。 右键单击 Active Directory 同步连接器的“属性”，再选择“配置目录分区”。 随后，查找“域控制器连接设置”部分，并选中“仅使用首选域控制器”框。 即使首选域控制器不是 PDC 仿真器，Azure AD Connect 也会尝试连接到 PDC 来执行密码写回。
 
 1. 找到用户帐户后，将尝试直接在相应的 Active Directory 林中重置密码。
 1. 如果密码设置操作成功，将告知用户其密码已更改。

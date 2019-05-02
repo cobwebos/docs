@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 926f470b8a4dbdb6d6cbfe09ee61349a819600e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cac42505cd015cb018664b765e88f40667b1759
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464513"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920462"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -33,7 +33,7 @@ ms.locfileid: "60464513"
 
 一个 AKS 群集部署到单个区域中。 为防止区域故障，可以跨不同区域将应用程序部署到多个 AKS 群集中。 当计划在哪些区域部署 AKS 群集时，应注意以下事项：
 
-* [AKS 区域可用性](https://docs.microsoft.com/azure/aks/container-service-quotas#region-availability)
+* [AKS 区域可用性](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability)
   * 选择靠近用户的区域。 AKS 正不断向新区域扩展。
 * [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * 对于你的地理区域，选择两个相互配对的区域。 这些区域协调平台更新，并在需要时确定恢复工作的优先级。
@@ -62,7 +62,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 ### <a name="layer-7-application-routing-with-azure-front-door"></a>第 7 层应用程序路由与 Azure Front Door
 
-Azure 流量管理器使用 DNS（第 3 层）来塑造流量。 [Azure Front Door（目前为预览版）](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供了一个 HTTP/HTTPS（第 7 层）路由选项。 Front Door 的附加功能包括 SSL 终止、自定义域、Web 应用程序防火墙、URL 重写和会话相关性。
+Azure 流量管理器使用 DNS（第 3 层）来塑造流量。 [Azure 的第一道防线](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供了一个 HTTP/HTTPS （第 7 层） 路由选项。 Front Door 的附加功能包括 SSL 终止、自定义域、Web 应用程序防火墙、URL 重写和会话相关性。
 
 查看应用程序流量的需求，以了解哪种解决方案是最合适。
 

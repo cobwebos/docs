@@ -5,15 +5,15 @@ services: storage
 author: yzheng-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 4/29/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f1fdd1b239301a5340716e1d5d098487afe27f9f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392460"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938565"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -42,7 +42,7 @@ ms.locfileid: "60392460"
 
 ## <a name="add-or-remove-a-policy"></a>添加或删除策略 
 
-可以添加、 编辑或删除策略通过使用 Azure 门户中， [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)，Azure CLI [REST Api](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies)，或客户端工具。 本文介绍如何使用门户和 PowerShell 方法管理策略。  
+可以添加、 编辑或删除策略通过使用 Azure 门户中， [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)，Azure CLI [REST Api](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)，或客户端工具。 本文介绍如何使用门户和 PowerShell 方法管理策略。  
 
 > [!NOTE]
 > 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 可以通过提供例外来取消阻止这些请求。 需要绕过是： `Logging,  Metrics,  AzureServices`。 有关详细信息，请参阅[配置防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)中的“例外”部分。
@@ -80,7 +80,47 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 
 ```
+## <a name="arm-template-with-lifecycle-management-policy"></a>ARM 模板提供生命周期管理策略
 
+您可以定义和部署 Azure 解决方案部署使用 ARM 模板的一部分的生命周期管理。 以下是示例模板来部署 RA-GRS GPv2 存储帐户与生命周期管理策略。 
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "storageAccountName": "[uniqueString(resourceGroup().id)]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2019-04-01",
+      "sku": {
+        "name": "Standard_RAGRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "networkAcls": {}
+      }
+    },
+    {
+      "name": "[concat(variables('storageAccountName'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/managementPolicies",
+      "apiVersion": "2019-04-01",
+      "dependsOn": [
+        "[variables('storageAccountName')]"
+      ],
+      "properties": {
+        "policy": {...}
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
 
 ## <a name="policy"></a>策略
 
@@ -305,8 +345,8 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
   ]
 }
 ```
-## <a name="faq---i-created-a-new-policy-why-are-the-actions-not-run-immediately"></a>常见问题 - 我创建了一个新策略，为什么操作没有立即运行？ 
-
+## <a name="faq"></a>常见问题解答 
+**我创建了新的策略，原因操作不立即运行？**  
 平台每天运行一次生命周期策略。 一旦配置策略时，它可能需要最多 24 小时的某些操作 （如分层和删除） 以运行适用于第一次。  
 
 ## <a name="next-steps"></a>后续步骤

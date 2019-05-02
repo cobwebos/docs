@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/22/2019
 ms.author: victorh
-ms.openlocfilehash: 7c31801156ee321fe93d73de41fc68179835261a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 06930171552843a5620d9a2bfb379a60e91a3915
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831106"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946746"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-using-azure-powershell"></a>配置 SSL 终止与使用 Azure PowerShell 的 Key Vault 证书
 
@@ -21,9 +21,6 @@ ms.locfileid: "60831106"
 有关详细信息，请参阅[使用密钥保管库证书的 SSL 终止](key-vault-certs.md)。
 
 本文介绍了与应用程序网关的 SSL 终止证书集成 Key Vault 的 Azure PowerShell 脚本。
-
-> [!IMPORTANT]
-> 应用程序网关密钥保管库集成当前处于公共预览状态。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

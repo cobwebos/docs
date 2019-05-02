@@ -9,18 +9,18 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 221bcbfb2517efae41005641321a651dfdf8e39f
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: e008d9fd2734af6a355771c321ecaea9150bcc33
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63759442"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722988"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure 逻辑应用的连接器
 
 连接器提供的快速访问从 Azure 逻辑应用到事件、 数据和操作跨其他应用程序、 服务、 系统、 协议和平台。 通过逻辑应用中使用连接器，您可以展开在本地和云应用程序使用的数据，创建并已执行任务的功能。
 
-虽然逻辑应用提供[约 200 多个连接器](https://docs.microsoft.com/connectors)，但本文只介绍一些流行的和较常用的连接器，数千个应用和数百万次执行已成功使用这些连接器来处理数据与信息。 若要查找的连接器和每个连接器的参考信息的完整列表，例如触发器、 操作和限制，查看连接器引用下的页面[连接器概述](https://docs.microsoft.com/connectors)。 此外，详细了解如何[触发器和操作](#triggers-actions)。
+虽然逻辑应用提供[约 200 多个连接器](https://docs.microsoft.com/connectors)，但本文只介绍一些流行的和较常用的连接器，数千个应用和数百万次执行已成功使用这些连接器来处理数据与信息。 若要查找的完整列表的连接器和每个连接器的参考信息，如触发器、 操作和限制，查看连接器参考页下的[连接器概述](https://docs.microsoft.com/connectors)。 此外，详细了解如何[触发器和操作](#triggers-actions)。
 
 > [!NOTE]
 > 若要使用的服务或没有连接器的 API 集成，您可以直接通过 HTTP 等协议调用服务或创建[自定义连接器](#custom)。
@@ -29,27 +29,32 @@ ms.locfileid: "63759442"
 
 * [**内置操作**](#built-ins)：这些内置的操作和触发器是"本机"到 Azure 逻辑应用，帮助您创建逻辑应用的自定义计划上运行，与其他终结点进行通信、 接收和响应的请求，并调用 Azure functions、 Azure API 应用 （Web 应用），你自己的 Api托管和使用已发布 Azure API 管理，以及嵌套的逻辑应用可以接收请求。 还可以使用内置操作来帮助组织和控制逻辑应用工作流及处理数据。
 
-* **托管连接器**：部署和由 Microsoft 管理，这些连接器提供触发器和用于访问其他服务和 Office 365、 Azure Blob 存储、 SQL Server、 Salesforce 等系统的操作。 某些连接器需要首先创建连接，由 Azure 逻辑应用管理。 托管的连接器组织成以下组：
+* **托管连接器**：部署和由 Microsoft 管理，这些连接器提供触发器和操作用于访问云服务、 在本地系统，或两者，包括 Office 365、 Azure Blob 存储、 SQL Server、 Dynamics、 Salesforce、 SharePoint 和的详细信息。 某些连接器专门支持企业到企业 (B2B) 通信方案，并需要[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)链接到逻辑应用。 在使用之前某些连接器，可能需要首先创建连接，由 Azure 逻辑应用管理。 
+
+  例如，如果您使用 Microsoft BizTalk Server，逻辑应用可以连接到并使用与 BizTalk Server 进行通信[BizTalk Server 的本地连接器](#on-premises-connectors)。 
+  然后，可以使用[集成帐户连接器](#integration-account-connectors)在逻辑应用中扩展或执行类似于 BizTalk 的操作。
+
+  连接器分类为“标准”或“企业”连接器。 
+  [企业连接器](#enterprise-connectors)提供到企业系统，例如 SAP、 IBM MQ 和 IBM 3270 花费额外的费用的访问权限。 若要确定连接器是 Standard 或 Enterprise，请参阅下的每个连接器的参考页中的技术详细信息[连接器概述](https://docs.microsoft.com/connectors)。 
+  
+  尽管某些连接器可以跨多个类别，还可以通过使用这些类别中，标识连接器。 
+  例如，SAP 是企业连接器和本地连接器：
 
   |   |   |
   |---|---|
-  | [**托管的 API 连接器**](#managed-api-connectors) | 创建使用 Azure Blob 存储、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online 等服务的逻辑应用。 | 
-  | [**本地连接器**](#on-premises-connectors) | 安装并设置[本地数据网关][gateway-doc]后，这些连接器可以帮助逻辑应用访问 SQL Server、SharePoint Server、Oracle DB、文件共享等本地系统。 | 
-  | [**集成帐户连接器**](#integration-account-connectors) | 创建和付费购买集成帐户时可以使用这些连接器，它们会转换和验证 XML、编码和解码平面文件，以及使用 AS2、EDIFACT 和 X12 协议处理企业到企业 (B2B) 消息。 | 
-  | [**企业连接器**](#enterprise-connectors) | 提供对 SAP 和 IBM MQ 等企业系统的访问，但会产生额外的费用。 |
-  ||| 
-
-  例如，如果你使用 Microsoft BizTalk Server，则逻辑应用可以使用 [BizTalk Server 连接器](#on-premises-connectors)连接到 BizTalk Server 并与其通信。 
-  然后，可以使用[集成帐户连接器](#integration-account-connectors)在逻辑应用中扩展或执行类似于 BizTalk 的操作。 
+  | [**托管的 API 连接器**](#managed-api-connectors) | 创建使用 Azure Blob 存储、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online 等服务的逻辑应用。 |
+  | [**本地连接器**](#on-premises-connectors) | 安装并设置[本地数据网关][gateway-doc]后，这些连接器可以帮助逻辑应用访问 SQL Server、SharePoint Server、Oracle DB、文件共享等本地系统。 |
+  | [**集成帐户连接器**](#integration-account-connectors) | 创建和付费购买集成帐户时可以使用这些连接器，它们会转换和验证 XML、编码和解码平面文件，以及使用 AS2、EDIFACT 和 X12 协议处理企业到企业 (B2B) 消息。 |
+  |||
 
 > [!NOTE]
-> 有关连接器的完整列表以及每个连接器的参考信息（例如由 Swagger 说明定义的操作和任何触发器以及任何限制），可以在[连接器概述](/connectors/)下找到完整列表。 有关定价信息，请参阅[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)和[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。 
+> 通过将 OpenAPI 所定义的连接器和每个连接器的参考信息，如操作和任何触发器的完整列表 (以前称为 Swagger) 说明，以及任何限制，可以找到下的完整列表[连接器概述](/connectors/). 有关定价信息，请参阅[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)和[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。 
 
 <a name="built-ins"></a>
 
 ## <a name="built-ins"></a>内置操作
 
-逻辑应用提供内置触发器和操作，因此你可以创建基于计划的工作流、帮助逻辑应用与其他应用和服务通信、通过逻辑应用控制工作流，以及管理或处理数据。 
+逻辑应用提供内置触发器和操作，因此你可以创建基于计划的工作流、帮助逻辑应用与其他应用和服务通信、通过逻辑应用控制工作流，以及管理或处理数据。
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -128,10 +133,10 @@ ms.locfileid: "63759442"
 
 逻辑应用可以访问 SAP 和 IBM MQ 等企业系统：
 
-|   |   | 
-|---|---| 
-| [![API 图标][ibm-mq-icon]<br/>**IBM MQ**][ibm-mq-doc] | [![API 图标][sap-icon]<br/>**SAP**][sap-connector-doc] |
-||| 
+|   |   |   | 
+|---|---|---| 
+| [![API 图标][ibm-3270-icon]<br/>**IBM 3270**][ibm-3270-doc] | [![API 图标][ibm-mq-icon]<br/>**IBM MQ**][ibm-mq-doc] | [![API 图标][sap-icon]<br/>**SAP**][sap-connector-doc] |
+|||| 
 
 <a name="triggers-actions"></a>
 
@@ -156,9 +161,9 @@ ms.locfileid: "63759442"
 
 每个连接器的触发器和操作提供可用于配置其自己的属性。 多个连接器还要求您首先创建*连接*向目标服务或系统，并提供身份验证凭据或其他配置详细信息，然后才能在逻辑应用中使用触发器或操作。 例如，必须先授权到 Twitter 帐户用于访问数据，或者你的名义发布的连接。 
 
-对于使用 OAuth 的连接器，创建连接意味着登录该服务，例如 Office 365、 Salesforce 或 GitHub，其中你的访问令牌加密，并安全地存储在 Azure 机密存储中。 其他连接器，如 FTP 和 SQL，需要具有配置的详细信息，例如服务器地址、 用户名和密码的连接。 此连接配置详细信息同样加密并安全地存储。 
+对于使用 OAuth 的连接器，创建连接意味着登录该服务，例如 Office 365、 Salesforce 或 GitHub，其中你的访问令牌加密，并安全地存储在 Azure 机密存储中。 其他连接器，如 FTP 和 SQL，需要具有配置的详细信息，例如服务器地址、 用户名和密码的连接。 这些连接配置详细信息同样加密并安全存储。 
 
-只要该服务或系统允许，连接可以访问目标服务或系统。 使用 Azure Active Directory (AD) OAuth 连接，例如 Office 365 和 Dynamics 的服务的 Azure 逻辑应用将无限期地刷新访问令牌。 其他服务可能在多长时间，Azure 逻辑应用可以刷新的情况下使用令牌进行限制。 通常情况下，某些操作会使所有访问令牌，例如，更改你的密码都无效。
+只要该服务或系统允许，连接可以访问目标服务或系统。 使用 Azure Active Directory (AD) OAuth 连接，例如 Office 365 和 Dynamics 的服务的 Azure 逻辑应用将无限期地刷新访问令牌。 其他服务可能有多长时间，Azure 逻辑应用可以刷新的情况下使用令牌限制。 通常情况下，某些操作会使所有访问令牌，例如，更改你的密码都无效。
 
 <a name="custom"></a>
 
@@ -222,6 +227,7 @@ ms.locfileid: "63759442"
 [google-drive-doc]: ./connectors-create-api-googledrive.md "连接到 GoogleDrive，以便使用数据"
 [google-sheets-doc]: ./connectors-create-api-googlesheet.md "连接到 Google Sheets 以便可以修改表单"
 [google-tasks-doc]: ./connectors-create-api-googletasks.md "连接到 Google Tasks，以便管理任务"
+[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "连接到 IBM 大型机上 3270 应用"
 [ibm-db2-doc]: ./connectors-create-api-db2.md "连接到云中或本地的 IBM DB2。更新行、获取表，等等"
 [ibm-informix-doc]: ./connectors-create-api-informix.md "连接到云中或本地的 Informix。读取行、列出表，等等"
 [ibm-mq-doc]: ./connectors-create-api-mq.md "连接到本地或 Azure 中的 IBM MQ 以发送和接收消息"
@@ -328,6 +334,7 @@ ms.locfileid: "63759442"
 [google-sheets-icon]: ./media/apis-list/google-sheet.png
 [google-tasks-icon]: ./media/apis-list/google-tasks.png
 [hipchat-icon]: ./media/apis-list/hipchat.png
+[ibm-3270-icon]: ./media/apis-list/ibm-3270.png
 [ibm-db2-icon]: ./media/apis-list/ibm-db2.png
 [ibm-informix-icon]: ./media/apis-list/ibm-informix.png
 [ibm-mq-icon]: ./media/apis-list/ibm-mq.png

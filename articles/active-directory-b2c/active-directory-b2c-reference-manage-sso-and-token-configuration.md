@@ -3,20 +3,19 @@ title: 在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令�
 description: 了解在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 10/09/2018
-ms.date: 04/01/2019
-ms.author: v-junlch
+ms.date: 10/09/2018
+ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2033d37a4a847380003fb95243138082df804bbf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317167"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703384"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
 
@@ -24,7 +23,11 @@ ms.locfileid: "60317167"
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>令牌生存期和声明配置
 
-若要更改令牌生存期的设置，需要在想要影响的策略的信赖方文件中添加 [ClaimsProviders](claimsproviders.md) 元素。  **ClaimsProviders** 元素是 [TrustFrameworkPolicy](trustframeworkpolicy.md) 元素的子代。 在该元素中，需要放置影响令牌生存期的信息。 XML 如以下示例所示：
+若要更改令牌生存期的设置，需要在想要影响的策略的信赖方文件中添加 [ClaimsProviders](claimsproviders.md) 元素。  **ClaimsProviders** 元素是 [TrustFrameworkPolicy](trustframeworkpolicy.md) 元素的子代。 
+
+插入 BasePolicy 元素之间的信赖方文件的 RelyingParty 元素 ClaimsProviders 元素。
+
+在该元素中，需要放置影响令牌生存期的信息。 XML 如以下示例所示：
 
 ```XML
 <ClaimsProviders>
@@ -101,4 +104,3 @@ ms.locfileid: "60317167"
 - **单一登录 (SSO)** - 单一登录是通过 **SingleSignOn** 配置的。 适用的值为 `Tenant`、`Application`、`Policy` 和 `Suppressed`。 
 - **Web 应用会话生存期（分钟）**- Web 应用会话生存期是通过 **SessionExpiryInSeconds** 元素设置的。 默认值为 86400 秒（1440 分钟）。
 - **Web 应用会话超时** - Web 应用会话超时是通过 **SessionExpiryType** 元素设置的。 适用的值为 `Absolute` 和 `Rolling`。
-

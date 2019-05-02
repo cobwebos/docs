@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务实时传送视频流概述 | Microsoft Docs
+title: 概述使用 Azure 媒体服务 v3 进行流式传输实时 |Microsoft Docs
 description: 本文概述如何使用 Azure 媒体服务 v3 实时传送视频流。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: juliako
-ms.openlocfilehash: ad8e84d84665b20bfff53cf09473bc8bce9760d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0157cdc8062d7c53aaeb3ff01762e9562aa9c394
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322452"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866337"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -26,7 +26,7 @@ ms.locfileid: "60322452"
 
 - 一个相机，用于捕获实时事件。<br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
 
-    如果您没有对相机的访问，这样的工具[Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm)可以使用从视频文件生成的实时源。
+    如果您没有对相机的访问，这样的工具[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm)可以使用从视频文件生成的实时源。
 - 一个实时视频编码器，用于将相机（或其他设备，例如便携式计算机）的信号转换为可发送到媒体服务的贡献源。 贡献源可包括与广告相关的信号，例如 SCTE-35 标记。<br/>有关推荐的实时传送视频流编码器的列表，请参阅[实时传送视频流编码器](recommended-on-premises-live-encoders.md)。 另外，请查看以下博客：[采用 OBS 的实时传送视频流生产](https://link.medium.com/ttuwHpaJeT)。
 - 媒体服务中的组件，用于引入、预览、打包、记录、加密实时事件并将其广播给客户，或者广播给 CDN 进行进一步分发。
 
@@ -37,7 +37,7 @@ ms.locfileid: "60322452"
 
 ## <a name="dynamic-packaging"></a>动态打包
 
-使用媒体服务时，您可以充分利用可用于预览和广播实时流中的动态 Packaging](dynamic-packaging-overview.md) [MPEG DASH、 HLS 和平滑流式处理格式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)从所占比例向服务发送的源。 观看者可以使用任何与 HLS、DASH 或平滑流式处理兼容的播放器播放实时流。 可以使用 Web 应用程序或移动应用程序中的 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) 传送采用上述任何协议的流。
+使用媒体服务时，可以充分利用[动态打包](dynamic-packaging-overview.md)，可用于预览和广播实时流中的[MPEG DASH、 HLS 和平滑流式处理格式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)从贡献源正在向服务发送的。 观看者可以使用任何与 HLS、DASH 或平滑流式处理兼容的播放器播放实时流。 可以使用 Web 应用程序或移动应用程序中的 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) 传送采用上述任何协议的流。
 
 ## <a name="dynamic-encryption"></a>动态加密
 
@@ -73,7 +73,7 @@ ms.locfileid: "60322452"
 
 ### <a name="general-steps"></a>常规步骤
 
-1. 在媒体服务帐户中，确保“流式处理终结点”正在运行。 
+1. 在媒体服务帐户，请确保**流式处理终结点**(Origin) 正在运行。 
 2. 创建[实时事件](live-events-outputs-concept.md)。 <br/>创建事件时，可以将其启动方式指定为自动启动。 或者，可以在准备好开始流式传输后，启动事件。<br/> 如果将 autostart 设置为 true，则实时事件会在创建后立即启动。 只要实时事件开始运行，就会开始计费。 必须显式对实时事件资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
 3. 获取的引入 URL，并配置本地编码器使用的 URL 发送贡献源。<br/>请参阅[推荐的实时编码器](recommended-on-premises-live-encoders.md)。
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
@@ -81,7 +81,7 @@ ms.locfileid: "60322452"
 6. 创建**实时输出**并使用创建的资产名称。<br/>**实时输出**会将流存档到**资产**中。
 7. 使用内置的**流式处理策略**类型创建**流式处理定位符**。<br/>如果想要加密内容，请查看[内容保护概述](content-protection-overview.md)。
 8. 列出流式处理定位器的路径，以取回要使用的 URL（这些是确定性的）。
-9. 获取要从中流式传输的“流式处理终结点”的主机名。
+9. 获取的主机名**流式处理终结点**想要从 （源）。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
 11. 如果希望停止查看**实时事件**，则需要停止流式处理事件并删除**流式处理定位符**。
 
@@ -92,6 +92,10 @@ ms.locfileid: "60322452"
 - [实时事件类型功能比较](live-event-types-comparison.md)
 - [状态和计费](live-event-states-billing.md)
 - [延迟](live-event-latency.md)
+
+## <a name="provide-feedback"></a>提供反馈
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
 ## <a name="next-steps"></a>后续步骤
 

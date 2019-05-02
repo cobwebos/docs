@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 380cd84cc5ec56fe54c12201b9c1db810ac457bf
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61022046"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875926"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -41,6 +41,9 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
 ### <a name="v2"></a>2.x 版
 
 2.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时 2.x。 .NET Core 2.x 支持的所有平台（包括 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)）都支持此版本。 必须先安装 .NET Core 2.x SDK。
+
+> [!IMPORTANT]
+> 当启用扩展项目的 host.json 文件中的捆绑包时，不需要安装.NET Core 2.x SDK。 有关详细信息，请参阅[使用 Azure Functions 核心工具和扩展捆绑包的本地开发](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 扩展捆绑包需要版本 2.6.1071 的核心工具或更高版本。
 
 #### <a name="windows-npm"></a>Windows
 
@@ -310,6 +313,7 @@ func host start
 | **`--script-root --prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
 | **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
 | **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
+| **`--enableAuth`** | 启用完整的身份验证处理管道。|
 
 对于 C# 类库项目 (.csproj)，必须包含 `--build` 选项才能生成库 .dll。
 

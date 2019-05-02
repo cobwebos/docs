@@ -2,24 +2,18 @@
 title: 确定 Azure 市场中的发布选项 | Azure
 description: 本文为希望了解如何将应用发布到 Azure 市场的合作伙伴介绍了合格条件和发布要求。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2755232ea81f1551477431f4eb1f0aeab8b8bfe8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb306a32a9388113a9c81fa363a6e1ee2c3b30ad
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726634"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938101"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 为套餐选择的发布选项直接关系到资格要求和市场 GTM 权益。 更重要的是，在云合作伙伴门户中选择的发布选项和套餐类型定义了用户如何与市场套餐进行交互。

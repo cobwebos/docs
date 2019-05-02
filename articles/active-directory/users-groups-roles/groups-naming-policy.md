@@ -10,33 +10,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/13/2019
+ms.date: 04/22/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bce8a9e4018f24022fcc45733d64ce47d07ba771
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 846eb3a43955fe05531f619869878b3978ad5b9d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471342"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690242"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory"></a>实施为 Azure Active Directory 中的 Office 365 组命名策略
 
 要为用户创建或编辑的 Office 365 组实施一致的命名约定，请为 Azure Active Directory (Azure AD) 中的租户设置组命名策略。 例如，可以使用命名策略传达组的功能、成员身份、地理区域或创建组的人员。 使用命名策略还可帮助对通讯簿中的组分类。 可以使用策略来阻止组名称和别名中使用特定字词。
 
 > [!IMPORTANT]
-> 使用 Office 365 组命名策略的每个唯一用户是一个或多个 Office 365 组的成员需要 Azure Active Directory Premium P1 许可证或 Azure AD Basic EDU 许可证。
+> 为 Office 365 组使用 Azure AD 命名策略要求你拥有，但不是一定分配 Azure Active Directory Premium P1 许可证或每个唯一的用户将一个或多个 Office 365 组的成员的 Azure AD Basic EDU 许可证。
 
-命名策略应用于创建组或编辑跨工作负荷（例如 Outlook、Microsoft Teams、SharePoint、Exchange 或 Planner）创建的组。 它应用于组名和组别名。 如果在 Azure AD 中设置命名策略，且已有 Exchange 组命名策略，则应用 Azure AD 命名策略。
+命名策略应用于创建组或编辑跨工作负荷（例如 Outlook、Microsoft Teams、SharePoint、Exchange 或 Planner）创建的组。 它应用于组名和组别名。 如果在 Azure AD 中设置命名策略，并且必须有 Exchange 组命名策略，Azure AD 命名策略将强制在组织中。
 
 ## <a name="naming-policy-features"></a>命名策略功能
-可通过两种不同的方法对 Office 365 组实施命名策略：
 
--   **前后缀命名策略** 可以定义前缀或后缀，稍后会自动添加这些前缀或后缀，以对组实施命名约定（例如，在组名称“GRP\_JAPAN\_My Group\_Engineering”中，GRP\_JAPAN\_ 是前缀，\_Engineering 是后缀）。 
+两个不同的方式，可以强制为组命名策略：
 
--   **自定义阻止字词** 可上传一组特定于组织的阻止字词，将在用户创建的组中阻止这些字词（例如，“CEO、工资单、HR”）。
+- **前后缀命名策略** 可以定义前缀或后缀，稍后会自动添加这些前缀或后缀，以对组实施命名约定（例如，在组名称“GRP\_JAPAN\_My Group\_Engineering”中，GRP\_JAPAN\_ 是前缀，\_Engineering 是后缀）。 
+
+- **自定义阻止字词** 可上传一组特定于组织的阻止字词，将在用户创建的组中阻止这些字词（例如，“CEO、工资单、HR”）。
 
 ### <a name="prefix-suffix-naming-policy"></a>前后缀命名策略
 
@@ -75,48 +76,74 @@ ms.locfileid: "60471342"
 - 用户管理员
 - 目录写入者
 
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>配置租户使用 Azure 门户 （预览版） 的命名策略的组
+
+1. 使用用户管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 选择**组**，然后选择**命名策略**打开命名策略页。
+
+    ![在管理中心中打开命名策略页](./media/groups-naming-policy/policy-preview.png)
+
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>查看或编辑前后缀命名策略
+
+1. 上**命名策略**页上，选择**组命名策略**。
+1. 您可以查看或编辑当前的前缀或后缀命名策略单独选择的属性或你想要强制实施命名策略的一部分的字符串。
+1. 若要从列表中删除前缀或后缀，选择的前缀或后缀，然后选择**删除**。 可以同时删除多个项。
+1. 保存新策略的生效通过选择所做的更改**保存**。
+
+### <a name="view-or-edit-the-custom-blocked-words"></a>查看或编辑自定义阻止的字词
+
+1. 上**命名策略**页上，选择**阻止字词**。
+
+    ![编辑和上传的命名策略阻止的字词列表](./media/groups-naming-policy/blockedwords-preview.png)
+
+1. 查看或编辑通过选择当前的自定义阻止字词列表**下载**。
+1. 选择文件图标上传新的自定义阻止字词列表。
+1. 保存新策略的生效通过选择所做的更改**保存**。
+
 ## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>安装 PowerShell cmdlet 以配置命名策略
 
-请先确保卸载任意较早版本的适用于 Windows PowerShell 的 Azure Active Directory PowerShell for Graph 模块，并安装 [Azure Active Directory PowerShell for Graph - 公共预览版 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)，然后再运行 PowerShell 命令。 
+请先确保卸载任意较早版本的适用于 Windows PowerShell 的 Azure Active Directory PowerShell for Graph 模块，并安装 [Azure Active Directory PowerShell for Graph - 公共预览版 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)，然后再运行 PowerShell 命令。
 
 1. 以管理员身份打开 Windows PowerShell 应用。
 2. 卸载任何以前版本的 AzureADPreview。
   
-   ```
+   ```powershell
    Uninstall-Module AzureADPreview
    ```
+
 3. 安装最新版本的 AzureADPreview。
   
-   ```
+   ```powershell
    Install-Module AzureADPreview
    ```
-   如果系统提示访问的是不受信任的存储库，请键入 Y。安装新模块可能需要几分钟。
+
+   如果系统提示您有关访问不受信任的存储库，请输入**Y**。安装新模块可能需要几分钟。
 
 ## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 为租户配置组命名策略
 
 1. 在计算机上打开 Windows PowerShell 窗口。 无需提升的权限即可打开该窗口。
 
-2. 运行以下命令，准备运行 cmdlet。
+1. 运行以下命令，准备运行 cmdlet。
   
-   ```
+   ```powershell
    Import-Module AzureADPreview
    Connect-AzureAD
    ```
    在打开的“登录到你的帐户”屏幕上，输入管理员帐户和密码以连接到服务，然后选择“登录”。
 
-3. 按照[用于配置组设置的 Azure Active Directory cmdlet](groups-settings-cmdlets.md) 中的步骤创建此租户的组设置。
+1. 按照[用于配置组设置的 Azure Active Directory cmdlet](groups-settings-cmdlets.md) 中的步骤创建此租户的组设置。
 
 ### <a name="view-the-current-settings"></a>查看当前设置
 
 1. 提取当前命名策略，查看当前设置。
   
-   ```
+   ```powershell
    $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
    ```
   
-2. 显示当前组设置。
+1. 显示当前组设置。
   
-   ```
+   ```powershell
    $Setting.Values
    ```
   
@@ -124,38 +151,38 @@ ms.locfileid: "60471342"
 
 1. 在 Azure AD PowerShell 中设置组名前缀和后缀。 要使功能正常工作，必须在设置中包含 [GroupName]。
   
-   ```
+   ```powershell
    $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
    ```
   
-2. 设置要限制的自定义阻止字词。 下面的示例演示如何添加自己的自定义字词。
+1. 设置要限制的自定义阻止字词。 下面的示例演示如何添加自己的自定义字词。
   
-   ```
+   ```powershell
    $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
    ```
   
-3. 保存设置，使新策略生效，如在下面的示例所示。
+1. 保存新策略生效，如下面的示例中的设置。
   
-   ```
+   ```powershell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
   
 就这么简单。 现已设置了命名策略，并添加了阻止字词。
 
-## <a name="export-or-import-the-list-of-custom-blocked-words"></a>导出或导入自定义阻止字词列表
+## <a name="export-or-import-the-list-of-custom-blocked-words-using-azure-ad-powershell"></a>导出或导入的使用 Azure AD PowerShell 的自定义阻止字词列表
 
 有关详细信息，请参阅[用于配置组设置的 Azure Active Directory cmdlet](groups-settings-cmdlets.md) 一文。
 
 下面的 PowerShell 脚本示例可导出多个阻止字词：
 
-```
+```powershell
 $Words = (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value CustomBlockedWordsList -EQ 
 Add-Content "c:\work\currentblockedwordslist.txt" -Value $words.value.Split(",").Replace("`"","")  
 ```
 
 下面的 PowerShell 脚本示例可导入多个阻止字词：
 
-```
+```powershell
 $BadWords = Get-Content "C:\work\currentblockedwordslist.txt"
 $BadWords = [string]::join(",", $BadWords)
 $Settings = Get-AzureADDirectorySetting | Where-Object {$_.DisplayName -eq "Group.Unified"}
@@ -171,31 +198,37 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="remove-the-naming-policy"></a>删除命名策略
 
+### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>删除命名策略使用 Azure 门户 （预览版）
+
+1. 上**命名策略**页上，选择**删除策略**。
+1. 确认删除后，删除命名策略，包括所有的前后缀命名策略和任何自定义阻止的字词。
+
+### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>删除命名策略使用 Azure AD Powershell
+
 1. 清空 Azure AD PowerShell 中的组名前缀和后缀。
   
-   ```
+   ```powershell
    $Setting["PrefixSuffixNamingRequirement"] =""
    ```
   
-2. 清空自定义阻止字词。 
+1. 清空自定义阻止字词。
   
-   ```
+   ```powershell
    $Setting["CustomBlockedWordsList"]=""
    ```
   
-3. 保存设置。
+1. 保存设置。
   
-   ```
+   ```powershell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>跨 Office 365 应用的命名策略体验
 
-在 Azure AD 中设置组命名策略后，用户在 Office 365 应用中创建组时会看到： 
+在 Azure AD 中设置组命名策略后，用户在 Office 365 应用中创建组时会看到：
 
-* 在用户键入组名后立即看到随命名策略而定的名称预览（包括前缀和后缀）
-* 如果用户输入阻止字词，可看到一条错误消息，因此可删除阻止字词。
+- 在用户键入组名后立即看到随命名策略而定的名称预览（包括前缀和后缀）
+- 如果用户输入阻止字词，可看到一条错误消息，因此可删除阻止字词。
 
 工作负荷 | 合规性
 ----------- | -------------------------------
@@ -221,11 +254,12 @@ Exchange 管理中心 | Exchange 管理中心遵循命名策略。 如果用户�
 Microsoft 365 管理中心 | Microsoft 365 管理中心遵循命名策略。 当用户创建或编辑组名时，会自动应用命名策略，并且用户会在输入自定义阻止字词时收到相应的错误消息。 Microsoft 365 管理中心内当前不会显示命名策略预览，并在用户输入组名称时不会返回自定义阻止的字词错误。
 
 ## <a name="next-steps"></a>后续步骤
+
 以下文章提供有关 Azure AD 组的更多信息。
 
-* [查看现有组](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Office 365 组的到期策略](groups-lifecycle.md)
-* [管理组的设置](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [管理组的成员](../fundamentals/active-directory-groups-members-azure-portal.md)
-* [管理组的成员身份](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [管理组中用户的动态规则](groups-dynamic-membership.md)
+- [查看现有组](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Office 365 组的到期策略](groups-lifecycle.md)
+- [管理组的设置](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [管理组的成员](../fundamentals/active-directory-groups-members-azure-portal.md)
+- [管理组的成员身份](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [管理组中用户的动态规则](groups-dynamic-membership.md)

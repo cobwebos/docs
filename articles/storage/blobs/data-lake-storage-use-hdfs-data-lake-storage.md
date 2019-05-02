@@ -2,18 +2,19 @@
 title: 将 HDFS CLI 与 Azure Data Lake Storage Gen2 配合使用
 description: 适用于 Azure Data Lake Storage Gen2 的 HDFS CLI 简介
 services: storage
-author: artemuwka
+author: normesta
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: artek
+ms.author: normesta
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d1c9eff08a7b9cc50ccdca4ce798ac4d0f3d35f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.reviewer: artek
+ms.openlocfilehash: 24123278ff353860ff2af59f4fd77645dfc189e3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61481779"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938857"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
 

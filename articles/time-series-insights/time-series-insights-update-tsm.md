@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6126a9d56059435be32299bcd1f03050f031f81b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: eeab01146c938ec118deae08a30af85af4186a2e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507806"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714059"
 ---
 # <a name="time-series-model"></a>时序模型
 
@@ -203,9 +203,9 @@ ms.locfileid: "55507806"
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 [Azure 时序见解预览存储和入口](./time-series-insights-update-storage-ingress.md)
+- 参阅 [Azure 时序见解预览存储和入口](./time-series-insights-update-storage-ingress.md)
 
-了解新的[时序模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)。
+- 了解新的[时序模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)。
 
 <!-- Images -->
 [1]: media/v2-update-tsm/tsm.png

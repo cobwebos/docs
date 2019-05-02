@@ -4,16 +4,16 @@ description: 在 Microsoft Flow 中使用 IoT Central 连接器，触发工作�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 2c4ee6a2feb737bcafc64b1c8503c03757a53364
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5d1e9941244defbf84b20f95e9f2e0402bbe19f2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887581"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693599"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>在 Microsoft Flow 中使用 IoT Central 连接器生成工作流
 
@@ -101,9 +101,12 @@ ms.locfileid: "60887581"
 
 1. 添加新操作。 搜索“Azure IoT Central - 更新设备”操作。
 
-1. 从下拉菜单中选取应用程序。 现在需要 ID，该 ID 属于要更新的现有设备。 可以从 **Device Explorer** 中获得 IoT Central 设备的 ID
+1. 从下拉菜单中选取应用程序。 现在需要 ID，该 ID 属于要更新的现有设备。 
 
-    ![IoT Central Device Explorer 设备 ID](./media/howto-add-microsoft-flow/iotcdeviceid.png)
+    > [!NOTE] 
+    > **必须使用在 URL 中找到的 ID**想要更新的设备的设备详细信息页上。 设备的设备资源管理器的列表中找到的设备 ID 不适合在 Microsoft Flow 中使用。
+
+    ![从 URL 的 IoT 中心 ID](./media/howto-add-microsoft-flow/iotcdeviceidurl.png)
 
 1. 可以更新设备名称。 若要更新设备的属性和设置，必须在“设备模板”下拉列表中选择要更新的设备对应的设备模板。 此时操作磁贴会展开，显示可更新的所有属性和设置。
 
@@ -117,19 +120,32 @@ ms.locfileid: "60887581"
 
 ## <a name="get-device-information-in-a-workflow"></a>在工作流中获取设备信息
 
-就可以通过其设备 ID 将使用的设备信息**Azure IoT Central-获取设备**操作。 可以获取设备名称、 设备模板名称、 属性值和设置的值传递到更高版本在工作流中的操作等信息。 下面是从设备的客户名称属性值一起传递到 Microsoft Teams 的示例工作流。
+就可以通过其 ID 将使用的设备信息**Azure IoT Central-获取设备**操作。 
+> [!NOTE] 
+> **必须使用在 URL 中找到的 ID**想要更新的设备的设备详细信息页上。 设备的设备资源管理器的列表中找到的设备 ID 不适合在 Microsoft Flow 中使用。
+
+可以获取设备名称、 设备模板名称、 属性值和设置的值传递到更高版本在工作流中的操作等信息。 下面是从设备的客户名称属性值一起传递到 Microsoft Teams 的示例工作流。
 
    ![流获取设备工作流](./media/howto-add-microsoft-flow/flowgetdevice.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>在工作流中的设备上运行命令
-可以通过使用其设备 ID 指定在设备上运行命令**Azure IoT Central-运行命令**操作。 可以选取要运行并通过此操作在该命令的参数中传递的命令。 下面是从 Microsoft Flow 移动应用中的按钮运行设备重新启动命令的示例工作流。
+可以通过使用其 ID 指定在设备上运行命令**Azure IoT Central-运行命令**操作。 
+
+> [!NOTE] 
+> **必须使用在 URL 中找到的 ID**想要更新的设备的设备详细信息页上。 设备的设备资源管理器的列表中找到的设备 ID 不适合在 Microsoft Flow 中使用。
+    
+可以选取要运行并通过此操作在该命令的参数中传递的命令。 下面是从 Microsoft Flow 移动应用中的按钮运行设备重新启动命令的示例工作流。
 
    ![流获取设备工作流](./media/howto-add-microsoft-flow/flowrunacommand.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>在工作流中删除设备
 
-可以使用“Azure IoT Central - 删除设备”操作按设备 ID 删除设备。 下面是一个示例工作流，此工作流在 Microsoft Flow 移动应用中通过按钮来删除设备。
+可以删除其 ID 使用的设备**Azure IoT Central-删除设备**操作。 
+> [!NOTE] 
+> **必须使用在 URL 中找到的 ID**想要更新的设备的设备详细信息页上。 设备的设备资源管理器的列表中找到的设备 ID 不适合在 Microsoft Flow 中使用。
+
+下面是一个示例工作流，此工作流在 Microsoft Flow 移动应用中通过按钮来删除设备。
 
    ![Flow 的删除设备工作流](./media/howto-add-microsoft-flow/flowdeletedevice.png)
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fafa791039397e93e9bf8ab6be04a2190e8ed784
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60789834"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699082"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -221,7 +221,17 @@ ms.locfileid: "60789834"
 
 如果问题持续出现，请联系支持人员。
 
+## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>一个或多个磁盘都可用于保护 （错误代码 153039）
+- **可能的原因** </br>
+  - 如果一个或多个磁盘保护后最近添加到虚拟机。 
+  - 如果一个或多个磁盘已初始化后的虚拟机的保护。
 
+### <a name="fix-the-problem"></a>解决问题
+您可以选择要保护的磁盘或忽略该警告可再次正常运行的 VM 的复制状态。</br>
+1. 若要保护的磁盘。 导航到复制的项 > VM > 磁盘 > 未受保护的磁盘上单击 > 启用复制。
+ ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
+2. 若要解除该警告。 转到复制的项 > VM > 单击概述部分下取消警报。
+![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
 ## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>在“启用复制”选项中看不到 Azure VM
 
  **原因 1：资源组和源虚拟机位于不同的位置** <br>

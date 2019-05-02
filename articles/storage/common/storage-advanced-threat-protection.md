@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c42867ff7aea2210f20a2cd2adb5c067b8f36c80
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484105"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926508"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级威胁防护
 
@@ -23,7 +23,7 @@ Azure 存储高级威胁防护提供额外的一层安全智能，用于检测�
 
 > [!NOTE]
 > * 目前仅适用于 Blob 存储的 Azure 存储高级的威胁防护。
-> * 有关定价详细信息，包括 30 天免费试用版，请参阅[Azure 安全中心定价页]( https://azure.microsoft.com/en-us/pricing/details/security-center/)。
+> * 有关定价详细信息，包括 30 天免费试用版，请参阅[Azure 安全中心定价页]( https://azure.microsoft.com/pricing/details/security-center/)。
 > * Azure 存储功能的 ATP 目前不在 Azure 政府版和主权云区域中可用。
 
 Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删除 Blob 存储进行威胁检测到的请求。 若要调查的警报从高级威胁防护，可以查看相关的存储活动使用存储分析日志记录。 有关详细信息，请参阅如何[配置存储分析日志记录](storage-monitor-storage-account.md#configure-logging)。

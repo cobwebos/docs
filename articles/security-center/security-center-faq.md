@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: 79faab0dcf2dd4c5592fe0543fa63f2538facf36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e21ed77a80892da22c380787dc64ea07db756fdf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60909510"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917638"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
 此 FAQ 解答有关 Azure 安全中心的问题。Azure 安全中心可帮助预防、检测和响应威胁，同时增加 Microsoft Azure 资源的可见性和安全方面的可控性。
@@ -77,7 +77,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 - 当前未在该 VM 上安装 Microsoft Monitoring Agent 扩展。
 - 该 VM 处于正在运行状态。
-- Windows 或 Linux [Azure 虚拟机代理](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows)安装。
+- Windows 或 Linux [Azure 虚拟机代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)安装。
 - 该 VM 未用作应用程序，例如 Web 防火墙或下一代防火墙。
 
 ### <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>是否可以删除安全中心创建的默认工作区？

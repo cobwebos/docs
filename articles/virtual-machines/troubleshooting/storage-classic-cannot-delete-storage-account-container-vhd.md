@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60864213"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926235"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>排查经典存储资源删除错误
 请遵循本文中的指导排查在尝试删除 Azure 存储帐户、容器或 *.vhd 页 Blob 文件时发生的以下错误之一。 
@@ -37,7 +37,7 @@ ms.locfileid: "60864213"
 3. 中断磁盘租约后，可以删除页 Blob 本身。 删除存储帐户或容器中的所有“磁盘”资源后，可以删除该存储帐户或容器。
 
 >[!NOTE] 
->如果用户删除 VM 但不删除 VHD，页 Blob *.vhd 文件仍会产生存储费用。 费用根据存储帐户类型计算，有关更多详细信息，请查看[定价页](https://azure.microsoft.com/en-us/pricing/details/storage/)。 如果用户不再打算使用 VHD，请将其删除以免将来产生费用。 
+>如果用户删除 VM 但不删除 VHD，页 Blob *.vhd 文件仍会产生存储费用。 费用根据存储帐户类型计算，有关更多详细信息，请查看[定价页](https://azure.microsoft.com/pricing/details/storage/)。 如果用户不再打算使用 VHD，请将其删除以免将来产生费用。 
 
 ## <a name="unable-to-delete-storage-account"></a>无法删除存储帐户 
 

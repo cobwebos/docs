@@ -1,23 +1,22 @@
 ---
 title: 使用 Azure Site Recovery 的 Azure 区域之间的 Azure Vm 灾难恢复的支持矩阵 |Microsoft Docs
-description: 总结了 Azure Site Recovery 在不同区域之间复制 Azure 虚拟机 (VM) 以满足灾难恢复 (DR) 需求时支持的操作系统和配置。
-services: site-recovery
+description: 总结了先决条件和支持的 Azure Vm 从一个区域到另一个使用 Azure Site Recovery 灾难恢复
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: c64148fbc0432bd25c5b02fb20b3e44134c1d9d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b905d532dfe71fea7c4ec0377eb53b9e3073907
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502076"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926586"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>从一个区域的 Azure Vm 复制到另一个支持矩阵
 
-本文总结了使用 [Azure Site Recovery](site-recovery-overview.md) 服务在不同 Azure 区域之间通过 Azure VM 复制、故障转移和恢复来部署灾难恢复时所支持的配置和组件。
+本文汇总了支持和必备组件时设置的灾难恢复 Azure Vm 从一个 Azure 区域到另一个，并使用[Azure Site Recovery](site-recovery-overview.md)服务。
 
 
 ## <a name="deployment-method-support"></a>部署方法支持
@@ -96,10 +95,10 @@ Windows Server 2008 R2 | 运行 SP1 或更高版本
 Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
 CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
 Ubuntu 14.04 LTS Server | [受支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Ubuntu 16.04 LTS Server | [受支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用基于密码的身份验证和登录的 Ubuntu 服务器以及用于配置云 VM 的 cloud-init 包可能会在故障转移时禁用基于密码的登录（具体取决于 cloudinit 配置）。 通过从“支持”>“故障排除”>“设置”菜单（Azure 门户中的故障转移 VM）重置密码，可以在虚拟机上重新启用基于密码的登录。
+Ubuntu 16.04 LTS Server | [受支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu 服务器如果使用基于密码的身份验证和登录、 和的 cloud-init 包配置云虚拟机，可能会基于密码的登录中上 （具体取决于 cloudinit 配置） 的故障转移的已禁用。 基于密码的登录中可以通过从支持的密码重置虚拟机上重新启用 > 故障排除 > 设置菜单 （在故障转移的 VM 在 Azure 门户中。
 Debian 7 | [受支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [受支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1,SP2,SP3,SP4. [（受支持的内核版本）](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1、 SP2、 SP3、 SP4。 [（受支持的内核版本）](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支持将复制计算机从 SP3 升级到 SP4。 如果已升级复制的计算机，则需要禁用复制并在升级后重新启用复制。
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 <br/><br/> 运行与 Red Hat 兼容的内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)。
@@ -133,7 +132,7 @@ Debian 8 | 9.21, 9.22, 9.23, 9.24 | 3.16.0-4-amd64 到 3.16.0-7-amd64、4.9.0-0.
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 （SP1、 SP2、 SP3、 SP4） | 9.24 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>到 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>到 4.4.175-94.79-default SP3 4.4.73-5-default</br></br>到 4.12.14-95.6-default SP4 4.12.14-94.41-default |
 SUSE Linux Enterprise Server 12 （SP1、 SP2、 SP3、 SP4） | 9.23 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>到 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.69-default</br></br>到 4.12.14-95.6-default SP4 4.12.14-94.41-default |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.22 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.72-default |
+SUSE Linux Enterprise Server 12 (SP1、 SP2、 SP3) | 9.22 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.21 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.72-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>复制的计算机 - Linux 文件系统/来宾存储
@@ -148,7 +147,7 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.21 | SP1 3.12.49-11-def
 **设置** | **支持** | **详细信息**
 --- | --- | ---
 大小 | 具有至少 2 个 CPU 内核和 1 GB RAM 的任意 Azure VM 大小 | 验证 [Azure 虚拟机大小](../virtual-machines/windows/sizes.md)。
-可用性集 | 支持 | 如果启用使用默认选项复制 Azure VM，则会根据源区域设置自动创建可用性集。 可以修改这些设置。
+可用性集 | 支持 | 如果你启用复制 Azure VM 中使用的默认选项，可用性集根据源区域设置自动创建。 可以修改这些设置。
 可用性区域 | 支持 |
 混合使用权益 (HUB) | 支持 | 如果源 VM 启用了 HUB 许可证，则测试故障转移或故障转移 VM 也使用 HUB 许可证。
 VM 规模集 | 不支持 |
@@ -191,7 +190,8 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 静态加密 (SSE) | 支持 | SSE 是存储帐户的默认设置。   
 适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持为[使用 Azure AD 应用的加密](https://aka.ms/ade-aad-app)启用的 VM |
 适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 不支持 |
-热添加/移除磁盘 | 不支持 | 如果在 VM 上添加或删除数据磁盘，则需为 VM 禁用复制后重新启用复制。
+热添加 | 支持 | 启用复制的数据磁盘添加到复制的 Azure VM 使用托管的磁盘的 Vm 支持。
+热删除磁盘 | 不支持 | 如果删除 VM 上的数据磁盘，需要禁用复制并再次为 VM 启用复制。
 排除磁盘 | 支持。 必须使用[Powershell](azure-to-azure-exclude-disks.md)配置。 |  默认情况下排除临时磁盘。
 存储空间直通  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
 横向扩展文件服务器  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
@@ -241,7 +241,7 @@ Azure DNS | 支持 |
 自定义 DNS  | 支持 |
 未经身份验证的代理 | 支持 | [了解详细信息]。(site-recovery-azure-to-azure-networking-guidance.md)   
 经过身份验证的代理 | 不支持 | 如果 VM 对出站连接使用经过身份验证的代理，则不能使用 Azure Site Recovery 复制该 VM。    
-VPN 站点到站点连接到本地<br/><br/>（带或不带 ExpressRoute）| 支持 | 确保按以下方式配置 UDR 和 NSG：Site Recovery 流量不路由到本地网络。 [了解详细信息](site-recovery-azure-to-azure-networking-guidance.md)    
+VPN 站点到站点连接到本地<br/><br/>（带或不带 ExpressRoute）| 支持 | 请确保 Site Recovery 流量不路由到本地的这种方式配置 Udr 和 Nsg。 [了解详细信息](site-recovery-azure-to-azure-networking-guidance.md)    
 VNET 到 VNET 连接 | 支持 | [了解详细信息](site-recovery-azure-to-azure-networking-guidance.md)  
 虚拟网络服务终结点 | 支持 | 若要限制对存储帐户的虚拟网络访问，请确保允许受信任的 Microsoft 服务访问存储帐户。
 加速网络 | 支持 | 必须在源 VM 上启用加速网络。 [了解详细信息](azure-vm-disaster-recovery-with-accelerated-networking.md)。

@@ -1,23 +1,23 @@
 ---
-title: Azure Data Box 门户管理员指南 | Microsoft Docs
+title: 通过 Azure 门户管理 Azure Data Box |Microsoft Docs
 description: 介绍如何使用 Azure 门户管理 Azure Data Box。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 483e1e0f6a472132446b20a161d012e69d83c4ac
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: HT
+ms.openlocfilehash: bf1d810733df4eaae17d092caba42888a63cc59f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607103"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919262"
 ---
-# <a name="use-the-azure-portal-to-administer-your-data-box"></a>使用 Azure 门户管理 Data Box
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>使用 Azure 门户管理 Azure Data Box
 
-本文介绍了可对 Data Box 执行的一些复杂工作流和管理任务。 你可以通过 Azure 门户和本地 Web UI 管理 Data Box。 
+本文介绍的一些复杂的工作流和可在 Azure Data Box 执行的管理任务。 你可以通过 Azure 门户和本地 Web UI 管理 Data Box。
 
 本文重点介绍可以使用 Azure 门户执行的任务。 使用 Azure 门户可以管理订单、管理 Data Box，以及跟踪订单在从头到尾的处理过程中的状态。
 
@@ -48,7 +48,7 @@ ms.locfileid: "59607103"
 
     ![克隆订单 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击“创建”。
+2.  订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击**创建**。
 
 几分钟后将会创建克隆的订单，并且门户会更新，以显示新订单。
 
@@ -197,7 +197,7 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 
 当设备状态在门户中发生更改时，你会通过电子邮件收到通知。
 
-|订单状态 |说明 |
+|订单状态 |描述 |
 |---------|---------|
 |已订购     | 已成功下单。 <br>如果设备有货，Microsoft 会确定要发货的设备，并准备设备。 <br> 如果不是可以立即提供设备，则将在有设备可用时处理订单。 订单可能需要花费几天到几个月的时间来进行处理。 如果不能在 90 天内履行订单，则订单将取消并且会向你发送通知。         |
 |已处理     | 订单处理已完成。 根据你的订单，在数据中心内做好了设备的发货准备工作。         |

@@ -1,28 +1,19 @@
 ---
 title: Azure HDInsight 中的 Spark 流式处理
 description: 如何在 HDInsight Spark 群集上使用 Spark 流式处理应用程序。
-services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 03/11/2019
-ms.date: 04/15/2019
-ms.author: v-yiso
+ms.topic: conceptual
+ms.date: 03/11/2019
 ms.openlocfilehash: 19d77d4aa49008232a01cd3ac2761a796505a35c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098212"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712012"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
 
@@ -42,7 +33,7 @@ DStream 可提供基于原始事件数据的抽象层。
 
 每个 RDD 表示在用户定义的时间范围（称为*批处理间隔*）内收集的事件。 每个批处理间隔后，将生成新的 RDD，其中包含该间隔的所有数据。 连续的 RDD 集将被收集到 DStream。 例如，如果批处理间隔为 1 秒，则 DStream 将每秒发出一个批处理，其中包含一个 RDD（包含该秒期间引入的所有数据）。 处理 DStream 时，温度事件将出现在其中一个批处理中。 Spark 流式处理应用程序处理包含事件的批处理并最终作用于每个 RDD 中存储的数据。
 
-![温度事件的示例 DStream ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+![温度事件的示例 DStream](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Spark 流式处理应用程序的结构
 
@@ -62,7 +53,8 @@ Spark 流式处理应用程序是一个长时间运行的应用程序，从引�
 此定义是静态的，且在运行该应用程序前没有处理任何数据。
 
 #### <a name="create-a-streamingcontext"></a>创建 StreamingContext
-从指向群集的 SparkContext 创建 StreamingContext。 创建 StreamingContext 时，指定批处理的大小（以秒为单位），例如：
+
+从指向群集的 SparkContext 创建 StreamingContext。 创建 StreamingContext 时，指定批处理的大小（以秒为单位），例如：  
 
 ```
 import org.apache.spark._
@@ -98,6 +90,7 @@ wordCounts.print()
 ```
 
 ### <a name="run-the-application"></a>运行应用程序
+
 启动流式处理应用程序并运行，直到收到终止信号。
 
 ```
@@ -112,44 +105,44 @@ ssc.awaitTermination()
 ```
 class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
 
-        /** Start the thread that simulates receiving data */
-        def onStart() {
-            new Thread("Dummy Source") { override def run() { receive() } }.start()
-        }
+    /** Start the thread that simulates receiving data */
+    def onStart() {
+        new Thread("Dummy Source") { override def run() { receive() } }.start()
+    }
 
-        def onStop() {  }
+    def onStop() {  }
 
-        /** Periodically generate a random number from 0 to 9, and the timestamp */
-        private def receive() {
-            var counter = 0  
-            while(!isStopped()) {
+    /** Periodically generate a random number from 0 to 9, and the timestamp */
+    private def receive() {
+        var counter = 0  
+        while(!isStopped()) {
             store(Iterator((counter, System.currentTimeMillis)))
             counter += 1
             Thread.sleep(5000)
-            }
         }
     }
+}
 
-    // A batch is created every 30 seconds
-    val ssc = new org.apache.spark.streaming.StreamingContext(spark.sparkContext, org.apache.spark.streaming.Seconds(30))
+// A batch is created every 30 seconds
+val ssc = new org.apache.spark.streaming.StreamingContext(spark.sparkContext, org.apache.spark.streaming.Seconds(30))
 
-    // Set the active SQLContext so that we can access it statically within the foreachRDD
-    org.apache.spark.sql.SQLContext.setActive(spark.sqlContext)
+// Set the active SQLContext so that we can access it statically within the foreachRDD
+org.apache.spark.sql.SQLContext.setActive(spark.sqlContext)
 
-    // Create the stream
-    val stream = ssc.receiverStream(new DummySource())
+// Create the stream
+val stream = ssc.receiverStream(new DummySource())
 
-    // Process RDDs in the batch
-    stream.foreachRDD { rdd =>
+// Process RDDs in the batch
+stream.foreachRDD { rdd =>
 
-        // Access the SQLContext and create a table called demo_numbers we can query
-        val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
-        _sqlContext.createDataFrame(rdd).toDF("value", "time")
-            .registerTempTable("demo_numbers")
-    } 
+    // Access the SQLContext and create a table called demo_numbers we can query
+    val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
+    _sqlContext.createDataFrame(rdd).toDF("value", "time")
+        .registerTempTable("demo_numbers")
+} 
 
-    // Start the stream processing
-    ssc.start()
+// Start the stream processing
+ssc.start()
 ```
 
 在启动上面的应用程序以后，等待约 30 秒钟。  然后，你可以定期查询 DataFrame 来查看批处理中存在的当前值集，例如，使用以下 SQL 查询：
@@ -231,7 +224,7 @@ ssc.start()
 
 | value | time |
 | --- | --- |
-| 第 | 1497316294139 |
+| 1 | 1497316294139 |
 | 2 | 1497316299158
 | 3 | 1497316304178
 | 4 | 1497316309204

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: b81dccf3c71fbaff7b0cbb9ba00f13b458156e73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f9f15c558e507742a641239ed25ba136dca0671a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61074484"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919996"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -62,8 +62,8 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 ### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 
-可以通过 Azure 资源管理器模板部署 Azure 虚拟机和加入到 Azure Automation State Configuration。 有关将现有 VM 加入 Azure Automation State Configuration 的示例模板，请参阅 [Desired State Configuration 管理的服务器](https://azure.microsoft.com/en-us/resources/templates/101-automation-configuration/)。
-如果你正在管理虚拟机规模集，请参阅示例模板 [Azure 自动化管理的 VM 规模集配置](https://azure.microsoft.com/en-us/resources/templates/201-vmss-automation-dsc/)。
+可以通过 Azure 资源管理器模板部署 Azure 虚拟机和加入到 Azure Automation State Configuration。 有关将现有 VM 加入 Azure Automation State Configuration 的示例模板，请参阅 [Desired State Configuration 管理的服务器](https://azure.microsoft.com/resources/templates/101-automation-configuration/)。
+如果你正在管理虚拟机规模集，请参阅示例模板 [Azure 自动化管理的 VM 规模集配置](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/)。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -72,7 +72,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>跨 Azure 订阅注册虚拟机
 
 注册其他 Azure 订阅中的虚拟机的最佳方法是使用 Azure 资源管理器部署模板中的 DSC 扩展。
-[Desired State Configuration 扩展与 Azure 资源管理器模板](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/dsc-template)中提供了示例。
+[Desired State Configuration 扩展与 Azure 资源管理器模板](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)中提供了示例。
 若要查找在模板中用作参数的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
 
 ## <a name="azure-virtual-machines-classic"></a>Azure 虚拟机（经典）

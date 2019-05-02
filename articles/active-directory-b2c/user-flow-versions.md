@@ -3,20 +3,19 @@ title: Azure Active Directory B2C 中的用户流版本 | Microsoft Docs
 description: 了解 Azure Active Directory B2C 中可用的用户流版本。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 11/09/2018
-ms.date: 04/04/2019
-ms.author: v-junlch
+ms.date: 11/09/2018
+ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b3750768eb7346938faec7e3c1ead232923a68bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af44658b42e9132ea89aadcbff29bdba1c13f46d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359749"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689659"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流版本
 
@@ -46,4 +45,3 @@ Azure Active Directory (Azure AD) B2C 中的用户流可帮助设置完全描述
 | 登录 v2 | 否 | 允许用户登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](active-directory-b2c-reference-mfa.md)</li><li>[令牌生存期](active-directory-b2c-reference-tokens.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](basic-age-gating.md)</li><li>登录页自定义</li></ul> |
 | 注册 v2 | 否 | 允许用户创建账户。 使用此用户流，可配置： <ul><li>[多重身份验证](active-directory-b2c-reference-mfa.md)</li><li>[令牌生存期](active-directory-b2c-reference-tokens.md)</li><li>令牌兼容性设置</li><li>会话行为</li><li>[年龄限制](basic-age-gating.md)</li><li>[密码复杂性要求](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | 注册和登录 v2 | 否 | 允许用户创建帐户或登录帐户。 使用此用户流，可配置： <ul><li>[多重身份验证](active-directory-b2c-reference-mfa.md)</li><li>[年龄限制](basic-age-gating.md)</li><li>[密码复杂性要求](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-

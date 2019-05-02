@@ -1,25 +1,18 @@
 ---
-title: Power BI 应用产品/服务的技术信息 - Azure 市场 | Microsoft Docs
+title: 对于 Power BI 应用的产品的技术信息 |Azure Marketplace
 description: 配置 Power BI 应用产品/服务在 Microsoft AppSource 市场中的“技术信息”字段。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.author: pbutlerm
-ms.openlocfilehash: ca77da897eed51c8d832cad7052c2144d6ada562
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 15f4e2a76724a70c15411dea767cc9bc433e4d4a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60725750"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943217"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Power BI 应用“技术信息”选项卡
 
@@ -34,7 +27,7 @@ ms.locfileid: "60725750"
 
 |        字段          |  描述                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **安装程序 URL**     | 发布应用程序和提升到生产环境时，power BI 会生成此 URL。  有关详细信息，请参阅[在 Power BI 中发布应用程序仪表板和报表](https://docs.microsoft.com/power-bi/service-create-distribute-apps)。  |
+| **安装程序 URL\***     | 发布应用程序和提升到生产环境时，power BI 会生成此 URL。  有关详细信息，请参阅[在 Power BI 中发布应用程序仪表板和报表](https://docs.microsoft.com/power-bi/service-create-distribute-apps)。  |
 |  **验证说明**  |  如果你想添加说明 （最多 3,000 个字符），帮助 Microsoft 验证团队配置、 连接和测试您的应用程序。 包括典型配置设置、 帐户、 参数或其他可用于测试连接的数据选项的信息。 此信息仅对验证团队可见，它仅用于验证目的。  |
 | **此应用是否以 Power BI 内容包的形式创建？** | 目前，仅在内部使用此字段。 保留默认设置**否**。 如果您将设置更改为**是**，可以停止在发布过程。  |  
 |  |  |

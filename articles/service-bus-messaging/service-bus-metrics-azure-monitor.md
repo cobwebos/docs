@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: 175d5d5d4495986c29b75427a325088c14279e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d5f5c1d9b1884c6e9975ceb0ce28ecd5f25e89b2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308513"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716096"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 服务总线指标（预览版）
 
@@ -83,14 +83,14 @@ Azure Monitor 提供多种访问指标的方法。 你可以通过访问指标[A
 |传出的消息数（预览版）|在指定的期间内从服务总线收到的事件或消息数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
 | 消息数（预览版） | 队列/主题中的消息计数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 维度：EntityName |
 | 活动消息数（预览版） | 队列/主题中的活动消息的计数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 维度：EntityName |
+| 死消息数 （预览版） | 死消息队列/主题中的计数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/>维度：EntityName |
+| 计划的消息数 （预览版） | 计划的消息队列/主题中的计数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值  <br/> 维度：EntityName |
 
 ## <a name="connection-metrics"></a>连接指标
 
 | 指标名称 | 描述 |
 | ------------------- | ----------------- |
 |ActiveConnections（预览版）|命名空间以及实体上的活动连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|打开的连接数（预览版）|打开的连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|关闭的连接数（预览版）|关闭的连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName |
 
 ## <a name="resource-usage-metrics"></a>资源使用情况指标
 
@@ -115,7 +115,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
 1. 在“服务总线命名空间”页面的“指标”选项卡上，选择“配置警报”。 
 
     ![“指标”页面 - 配置警报菜单](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
-2. 选择“选择目标”，并在“选择资源”页面上执行以下操作： 
+2. 选择**选择目标**选项，然后执行以下操作上**选择一个资源**页： 
     1. 对于“按资源类型筛选”字段，选择“服务总线命名空间”。 
     2. 对于“按订阅筛选”字段，选择你的订阅。
     3. 从列表中选择“服务总线命名空间”。 

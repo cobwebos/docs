@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87f86f861ffc036077b25a2514fbd2d0c57da735
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311635"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716771"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -66,7 +66,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 }
 ```
 
-所有 Azure Policy 示例均位于[策略示例](../samples/index.md)内。
+所有 Azure 策略示例都位于[Azure 策略示例](../samples/index.md)。
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -99,6 +99,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
   - `description`：说明参数的用途。 可以用来提供可接受值的示例。
   - `displayName`：在门户中显示的用于参数的友好名称。
   - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
+  - `assignPermissions`：（可选）将设置为 _，则返回 true_能够在分配策略期间创建角色分配的 Azure 门户。 在您想要分配的分配作用域之外的权限的情况下，此属性很有用。 没有一个角色分配每个策略中的角色定义 （或每个角色定义中的所有计划的策略）。 参数值必须是有效的资源或作用域。
 - `defaultValue`：（可选）设置分配的参数的值（如果值未给定）。 在更新已分配的现有策略定义时必须使用此项。
 - `allowedValues`：（可选）提供了一个参数接受在分配过程的值数组。
 
@@ -148,6 +149,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - `omsWorkspace`
 - `Microsoft.EventHub/Namespaces/EventHubs`
 - `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
+- `Microsoft.EventHub/Namespaces/AuthorizationRules`
 - `Microsoft.RecoveryServices/vaults`
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -287,7 +289,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>值
 
 也可使用 **value** 来形成条件。 **value** 会针对[参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。
 **value** 可与任何支持的[条件](#conditions)配对。
@@ -375,7 +377,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 ### <a name="effect"></a>效果
 
-策略支持以下类型的效果：
+Azure 策略支持以下类型的效果：
 
 - **Deny**：会在活动日志中生成一个事件，并使请求失败
 - **Audit**：会在活动日志中生成一个警告事件，但不会使请求失败
@@ -410,7 +412,7 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 }
 ```
 
-有关每种效果、评估顺序、属性和示例的完整详细信息，请参阅[了解策略效果](effects.md)。
+有关完整详细信息每个效果，顺序评估、 属性和示例，请参阅[了解 Azure 策略效果](effects.md)。
 
 ### <a name="policy-functions"></a>策略函数
 
@@ -593,9 +595,9 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Azure Policy 示例](../samples/index.md)中查看示例
-- 查看[了解策略效果](effects.md)
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)
-- 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)
-- 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组
+- 查看示例[Azure 策略示例](../samples/index.md)。
+- 查看[了解策略效果](effects.md)。
+- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[修正的不合规资源](../how-to/remediate-resources.md)。
+- 查看管理组与[使用 Azure 管理组组织资源](../../management-groups/overview.md)。

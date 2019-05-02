@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: 了解什么是网络接口，以及如何创建、删除网络接口及更改其设置。
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
-ms.author: jdial
-ms.openlocfilehash: 8840944f6757813b10b01c8e512b1ef64c05a85f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.author: kumud
+ms.openlocfilehash: a3cb6e1b20e405cedddae8684a4b91fcb8a5514a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888281"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695346"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
 
@@ -57,7 +58,7 @@ ms.locfileid: "56888281"
     |专用 IP 地址 (IPv6)|否| 如果选中此复选框，除了分配到网络接口的 IPv4 地址外，还会分配一个 IPv6 地址到网络接口。 请参阅本文的 IPv6 部分，了解有关 IPv6 和网络接口搭配使用的重要信息。 无法为 IPv6 地址选择分配方法。 如果选择分配 IPv6 地址，则会使用动态方法分配它。
     |IPv6 名称（仅在选中“专用 IP 地址 (IPv6)”复选框时出现） |是，如果选中“专用 IP 地址 (IPv6)”复选框。| 此名称将分配给网络接口的辅助 IP 配置。 若要了解有关 IP 配置的详细信息，请参阅[查看网络接口设置](#view-network-interface-settings)。|
     |资源组|是|选择现有的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)或创建一个资源组。 网络接口可与它附加到的虚拟机或者连接到的虚拟网络位于相同或不同的资源组中。|
-    |位置|是|网络接口附加到的虚拟机及其连接到的虚拟网络必须位于同一[位置](https://azure.microsoft.com/regions)（也称为区域）中。|
+    |Location|是|网络接口附加到的虚拟机及其连接到的虚拟网络必须位于同一[位置](https://azure.microsoft.com/regions)（也称为区域）中。|
 
 创建网络接口时，门户不会提供向接口分配公共 IP 地址的选项，但使用门户创建虚拟机时，门户会创建一个公共 IP 地址并将其分配到网络接口。 若要了解创建网络接口后如何向其添加公共 IP 地址，请参阅[管理 IP 地址](virtual-network-network-interface-addresses.md)。 若要使用公共 IP 地址创建网络接口，必须使用 CLI 或 PowerShell 创建网络接口。
 

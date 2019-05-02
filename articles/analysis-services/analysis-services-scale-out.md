@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 04/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8c226608f6c1c776463aa05c02b1d3cc04b699ec
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 42cdf230379665c596761f9846e52454a3d99680
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63766829"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939674"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -39,13 +39,13 @@ ms.locfileid: "63766829"
 
 执行后续的横向扩展操作时（例如，将查询池中的副本数从两个增加到五个），新副本将与 Blob 存储中第二组文件内的数据合成。 不会发生同步。 如果在横向扩展后执行同步，则查询池中的新副本将合成两次 - 多余的合成。 执行后续的横向扩展操作时，请务必记住：
 
-* 先执行同步，再执行横向扩展操作，以免多余地合成添加的副本。
+* 先执行同步，再执行横向扩展操作，以免多余地合成添加的副本。 不允许并发同步和在同一时间运行的向外缩放操作。
 
 * 将处理操作和横向扩展操作自动化时，必须先处理主服务器上的数据，再执行同步，然后执行横向扩展操作。 遵循此顺序可确保尽量减轻对 QPU 和内存资源造成的影响。
 
 * 即使查询池中没有副本，也允许同步。 如果在主服务器上通过处理操作将包含新数据的副本数从零个横向扩展为一个或多个，请先在查询池中不包含任何副本的情况下执行同步，然后再横向扩展。在横向扩展之前执行同步可以避免多余地合成新添加的副本。
 
-* 从主服务器中删除模型数据库时，不会自动从查询池中的副本内删除该数据库。 必须使用 [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令执行同步操作。该命令会从副本的共享 Blob 存储位置删除该数据库的文件，然后删除查询池中的副本内的模型数据库。
+* 从主服务器中删除模型数据库时，不会自动从查询池中的副本内删除该数据库。 必须使用 [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令执行同步操作。该命令会从副本的共享 Blob 存储位置删除该数据库的文件，然后删除查询池中的副本内的模型数据库。 若要确定在查询池中的副本上，但不是主服务器上是否存在某一模型数据库，请确保**从查询池分离处理服务器**设置为**是**。 然后使用 SSMS 连接到主服务器使用`:rw`限定符以查看数据库是否存在。 然后通过连接而无需连接到在查询池中的副本`:rw`限定符以查看是否还存在同一个数据库。 如果数据库存在在查询池中的副本上，但不是主服务器上，运行同步操作。   
 
 * 重命名主服务器上的数据库时，需要执行一个额外的步骤来确保数据库正确同步到所有副本。 重命名后，使用 [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) 并使用旧数据库名称指定 `-Database` 参数，来执行同步。 这种同步会从所有副本中删除使用旧名称的数据库和文件。 然后，使用新数据库名称指定 `-Database` 参数，来执行另一次同步。 第二次同步会将新命名的数据库复制到第二组文件，并合成所有副本。 无法在门户中使用“同步模型”命令执行这些同步。
 
@@ -58,6 +58,8 @@ ms.locfileid: "63766829"
 若要确定服务器是否必须进行横向扩展，请在 Azure 门户中使用指标监视服务器。 如果 QPU 经常超过上限，则表示针对模型的查询数量超出了计划的 QPU 限制。 查询线程池队列中的查询数量超过可用的 QPU 时，查询池作业队列长度指标也会增加。 
 
 可监视的另一个很好指标是按 ServerResourceType 列出的平均 QPU。 此指标将主服务器的平均 QPU 与查询池的平均 QPU 进行比较。 
+
+![查询横向扩展指标](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
 ### <a name="to-configure-qpu-by-serverresourcetype"></a>按 ServerResourceType 配置 QPU
 1. 在“指标”折线图中，单击“添加指标”。 
@@ -146,6 +148,8 @@ ms.locfileid: "63766829"
 **问题：** 用户收到错误“在连接模式 "ReadOnly" 下找不到服务器“\<服务器名称>”实例”。
 
 **解决方案：** 选择“从查询池隔离处理服务器”选项时，使用默认连接字符串（不带 `:rw`）的客户端连接将重定向到查询池副本。 如果查询池中的副本因尚未完成同步而尚未联机，则重定向的客户端连接可能会失败。 若要防止连接失败，执行同步时查询池中必须至少有两个服务器。 每个服务器单独同步，而其他服务器保持联机。 如果在处理期间选择在查询池中没有处理服务器，则可以选择将其从池中删除以进行处理，然后在处理完成后但在同步之前将其添加回池中。 可以使用内存和 QPU 指标来监视同步状态。
+
+
 
 ## <a name="related-information"></a>相关信息
 

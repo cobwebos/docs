@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: e5cf89b7fe01946de9944a7026ec448cd55dd6dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 26ddb0cdd2728f9dff5d45494a14841cdc1a20cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741433"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922879"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
 可将 System Center Configuration Manager 环境连接到 Azure Monitor 以同步设备集合数据，并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
@@ -67,7 +67,7 @@ Azure Monitor 支持 System Center Configuration Manager 当前分支版本 1606
    
 2. 在“常规”屏幕上，确认已完成以下操作，并且具有每个项的详细信息，然后选择“下一步”。
 
-   1. 在 Azure 门户中，已经将配置管理器注册为 Web 应用程序和/或 Web API 应用，并且有[在注册时收到的客户端 ID](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md)。
+   1. 在 Azure 门户中，已经将配置管理器注册为 Web 应用程序和/或 Web API 应用，并且有[在注册时收到的客户端 ID](../../active-directory/develop/quickstart-register-app.md)。
    2. 在 Azure 门户中，已经为 Azure Active Directory 中注册的应用创建了应用密钥。  
    3. 在 Azure 门户中，已为注册的 Web 应用提供访问 Azure Monitor 中 Log Analytics 工作区的权限。  
       ![连接到 Log Analytics 向导常规页](./media/collect-sccm/sccm-console-general01.png)

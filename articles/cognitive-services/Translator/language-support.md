@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577582"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690149"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -28,7 +28,7 @@ ms.locfileid: "59577582"
 **V2 Translator API**
 
 > [!NOTE]
-> V2 已于 2018 年 4 月 30 日弃用，并将在 2019 年 4 月 30 日彻底淘汰。
+> 第 2 版已于 2018 年 4 月 30 日弃用。 请请在应用程序迁移到 V3 以便充分利用以独占方式 V3 中提供的新功能。
 
 * 仅统计：没有可用于该语言的神经系统。
 * 神经可用：神经系统可用。 使用参数 `category=generalnn` 可访问神经系统。
@@ -230,14 +230,17 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 印度尼西亚语|   `id`    |
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
+|斯瓦希里语| `sw`    |
 | 韩语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
+|马达加斯加语|  `mg`    |
 | 挪威语      | `nb`          |
 | 波兰语      | `pl`          |
 | 葡萄牙语      | `pt`          |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
+|萨摩亚语|    `sm`    |
 | 塞尔维亚语(拉丁语系)      | `sr-Latn`          |
 | 斯洛伐克语     | `sk`          |
 | 斯洛文尼亚语      | `sl`          |

@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中的自定义策略中定义 OAuth1 技�
 description: 在 Azure Active Directory B2C 中的自定义策略中定义 OAuth1 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3fe839de8cbaa0b321b0b0602b000b7575224dde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b3d579e9d4ceb92ee961778ba6083292461c144
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361092"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699823"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
@@ -23,7 +23,7 @@ ms.locfileid: "60361092"
 
 Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.org/html/rfc5849)标识提供者提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 OAuth1 技术配置文件，您可以联合使用 OAuth1 基于的标识提供程序，如 Twitter。 与标识提供者联合允许用户使用其现有的社交登录或企业标识。
 
-## <a name="protocol"></a>协议
+## <a name="protocol"></a>Protocol
 
 “Protocol”元素的“Name”属性必须设置为 `OAuth1`。 例如，**Twitter-OAUTH1** 技术配置文件的协议为 `OAuth1`。
 

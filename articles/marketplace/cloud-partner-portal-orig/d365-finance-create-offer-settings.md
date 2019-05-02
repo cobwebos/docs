@@ -1,25 +1,18 @@
 ---
-title: 如何填写产品/服务设置窗体 | Microsoft Docs
+title: 如何填写产品/服务设置窗体 |Azure Marketplace
 description: 介绍了“产品/服务设置”窗体中需要填写值的各个字段（对于新的 Dynamics 365 Business Central 应用程序）。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a050a8cfdd67f662786fc0b9b7ed5451c88dccb1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: d29b17e1a109b37a51a0e6bd2af2a7bb02b977a9
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397815"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64934904"
 ---
 <a name="how-to-fill-out-the-offer-settings-form"></a>如何填写产品/服务设置表单
 =======================================
@@ -42,7 +35,7 @@ ms.locfileid: "60397815"
 通过此下拉列表，可以选择要在其下发布此产品/服务的发布者个人资料。 此字段在套餐推出后处于锁定状态。
 
 
-### <a name="name"></a>Name
+### <a name="name"></a>名称
 
 它是应用/产品/服务的显示名称，该名称将显示在 Microsoft [AppSource](https://appsource.microsoft.com/) 中。 该名称不能超过 50 个字符。
 

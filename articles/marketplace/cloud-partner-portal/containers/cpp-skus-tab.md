@@ -1,25 +1,18 @@
 ---
-title: Azure 容器映像的 SKU | Microsoft Docs
+title: Azure 容器映像的 Sku |Azure Marketplace
 description: 配置 Azure 容器的 SKU。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 81f7e46e626bb061881be53e8cace36e1478e0e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 6953329bfabe99fc4bb28f2494cb412ba9cbbba0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472804"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942908"
 ---
 # <a name="container-skus-tab"></a>“容器 SKU”选项卡
 
@@ -38,11 +31,13 @@ ms.locfileid: "61472804"
     -   SKU 元数据
     -   容器元数据
 
+
 ### <a name="sku-metadata"></a>SKU 元数据
 
 SKU 元数据包含用于列出容器的店面显示信息。
 
 ![SKU 元数据](./media/containers-sku-details.png)
+
 
 ### <a name="container-metadata"></a>容器元数据
 
@@ -50,29 +45,31 @@ SKU 元数据包含用于列出容器的店面显示信息。
 
 ![容器元数据](./media/containers-image-repository.png)
     
-上一屏幕截图中的“映像存储库详细信息”包含以下字段：
+**映像存储库详细信息**捕获上一屏幕中包含以下字段。  必填字段用星号 (*) 表示。
 
--   **订阅 ID** - ACR 所在的 Azure 订阅 ID。
--   **资源组名称** - ACR 的资源组名称。
--   **注册表名称** - ACR 名称。
--   **存储库名称** - 存储库名称。 设置此名称后，无法更改此值。 请使用唯一名称以避免与你的帐户中的其他产品/服务冲突。
--   **用户名** - 与 ACR 映像关联的用户名（管理员用户名）。
--   **密码** - 与 ACR 映像关联的密码。
+-   **订阅 ID\***  -ACR 所在的 Azure 订阅 ID。
+-   **资源组名称\*** -ACR 的资源组名称。
+-   **注册表名称\*** 的 ACR 名称。
+-   **存储库名称\*** -存储库名称。 设置此名称后，无法更改此值。 请使用唯一名称以避免与你的帐户中的其他产品/服务冲突。
+-   **用户名\*** -与 ACR 映像关联的用户名 （管理员用户名）。
+-   **密码\*** -与 ACR 映像相关联的密码。
 
     >[!NOTE]
     >必须指定用户名和密码，以确保合作伙伴在发布过程中能够访问所述的 ACR。
+
 
 ### <a name="image-version"></a>映像版本
 
 在发布容器映像时，可以提供一个或多个映像标记和 SHA 摘要。
 
-**映像标记或摘要**
+**图像标记\*或摘要**
  
 - 此标记或摘要必须包括一个 `latest` 标记和一个版本标记（例如，从 `xx.xx.xx-` 开始，其中 xx 是一个数字）。 它们应是面向多个平台的[清单标记](https://github.com/estesp/manifest-tool)。 还必须添加清单标记引用的所有标记，使我们能够上传这些映像。 
 - 可以使用标记添加容器的多个版本。 所有清单标记（`latest` 除外）必须以 `X.Y-` 或 `X.Y.Z-` 开头，其中，X、Y、Z 为整数。 <br/> 例如，如果 `latest` 标记指向 `1.0.1-linux-x64`、`1.0.1-linux-arm32` 和 `1.0.1-windows-arm32`，则需要在此处添加这些标记。
 
 >[!NOTE]
 >请记得向你的映像添加一个**测试标记**，以便在测试期间可以标识该映像。
+
 
 ## <a name="next-steps"></a>后续步骤
 

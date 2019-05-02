@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f19d193bef718bd4ad3d98f2112a7e705051b729
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852695"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920064"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -112,7 +112,7 @@ az webapp log tail --name webappname --resource-group myResourceGroup
 
 优化应用程序堆设置时，请查看应用服务计划详细信息，并考虑多个应用程序和部署槽位方面的需求，以得出最佳内存分配。
 
-如果要部署的 JAR 应用程序，它应被命名为`app.jar`以便内置映像可以正确地标识您的应用程序。 （的 Maven 插件情况执行此重命名自动）。如果不希望重命名为 JAR `app.jar`，可以上传包含要运行 JAR 的命令的 shell 脚本。 然后粘贴到此脚本中的完整路径[启动文件](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file)在门户的配置部分中的文本框。
+如果要部署的 JAR 应用程序，它应被命名为`app.jar`以便内置映像可以正确地标识您的应用程序。 （的 Maven 插件情况执行此重命名自动）。如果不希望重命名为 JAR `app.jar`，可以上传包含要运行 JAR 的命令的 shell 脚本。 然后粘贴到此脚本中的完整路径[启动文件](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file)在门户的配置部分中的文本框。
 
 ### <a name="turn-on-web-sockets"></a>启用 Web 套接字
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21c75c0f377f55614e2c7fa0bb27628cf598e3e7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61291583"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924584"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
@@ -34,7 +34,7 @@ ms.locfileid: "61291583"
 ## <a name="sample-code-and-demo"></a>代码示例和演示
 本文使用作业搜索门户作为示例。 该示例作为 ASP.NET MVC 应用程序实现。
 
--   请参阅并测试 [Azure 搜索作业门户演示](http://azjobsdemo.azurewebsites.net/)中的在线实践演示。
+-   请参阅并测试 [Azure 搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的在线实践演示。
 
 -   从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
 

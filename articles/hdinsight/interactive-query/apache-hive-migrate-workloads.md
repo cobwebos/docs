@@ -2,17 +2,17 @@
 title: Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 description: 了解如何将 Apache Hive 在 HDInsight 3.6 上的工作负荷迁移到 HDInsight 4.0。
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
+author: msft-tacox
+ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: howto
-ms.date: 04/15/2019
-ms.openlocfilehash: 144e0ada0ce3a15a5dcd13b31f46f50162750a74
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: b181edc08c51a5afa8682858b330acc84da7d73d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126556"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707010"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
@@ -98,6 +98,8 @@ HDInsight 3.6 自 HDInsight 与 Azure Active Directory 使用 HDInsight 企业�
 在 HDInsight 3.6 中使用 Hive 服务器交互的 GUI 客户端是 Ambari Hive 视图。 HDInsight 4.0 替换 Hive 视图与 Hortonworks 数据分析 Studio (DAS)。 DAS 没有随附 HDInsight 群集的现成可用，并不是受支持的包。 但是，DAS 可以在群集上安装，如下所示：
 
 执行的节点类型以启动对群集，使用"头节点"脚本操作。 将以下 URI 粘贴到标记为"Bash 脚本 URI"文本框中： https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
+
+数据分析 Studio 可以使用 URL 启动应用： https://<clustername>.azurehdinsight.net/das/
 
 
 

@@ -1,25 +1,18 @@
 ---
-title: 查看市场套餐的状态 - Azure 市场 | Microsoft Docs
+title: 查看 marketplace 产品/服务的状态 |Azure Marketplace
 description: 使用云合作伙伴门户查看 Azure 和 AppSource 市场中套餐的状态
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: pbutlerm
-ms.openlocfilehash: bdec2d699e8448c8e2303dfbabcb4d176a9ca389
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: b8113552edf9dd2f886b5752b2ebc69afc0fda08
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729732"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942409"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>查看 Azure 市场和 AppSource 套餐的发布状态
 

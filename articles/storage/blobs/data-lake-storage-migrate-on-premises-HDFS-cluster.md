@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: d0908e9edce8efb7a378ee04b6076b61cae2d2bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1eac7ecce88dc817b9bd7bd5330d10b019cc7dd2
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708649"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939260"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>使用 Azure Data Box 将数据从本地 HDFS 存储迁移到 Azure 存储
 
@@ -70,14 +70,32 @@ ms.locfileid: "60708649"
     ```
     如果为 DNS 使用其他一些机制，则应确保可以解析终结点数据。
     
-3. 设置 shell 变量`azjars`以指向`hadoop-azure`和`microsoft-windowsazure-storage-sdk`jar 文件。 这些文件是 Hadoop 安装目录下 (您可以检查这些文件是否存在使用此命令`ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`其中`<hadoop_install_dir>`是 Hadoop 安装的目录) 使用的完整路径。 
+4. 设置 shell 变量`azjars`以指向`hadoop-azure`和`microsoft-windowsazure-storage-sdk`jar 文件。 这些文件是 Hadoop 安装目录下 (您可以检查这些文件是否存在使用此命令`ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`其中`<hadoop_install_dir>`是 Hadoop 安装的目录) 使用的完整路径。 
     
     ```
     # azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar
     # azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar
     ```
 
-4. 将数据从 Hadoop HDFS 复制到数据框 Blob 存储。
+5. 创建想要用于数据复制的存储容器。 此命令的一部分，你还应指定目标文件夹。 此时，这可能是虚拟的目标文件夹。
+
+    ```
+    # hadoop fs -libjars $azjars \
+    -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
+    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
+    -mkdir -p  wasb://[container_name]@[blob_service_endpoint]/[destination_folder]
+    ```
+
+6. 运行 list 命令以确保已创建了容器和文件夹。
+
+    ```
+    # hadoop fs -libjars $azjars \
+    -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
+    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
+    -ls -R  wasb://[container_name]@[blob_service_endpoint]/
+    ```
+
+7. 到前面创建的容器，可将数据 Hadoop HDFS 复制到数据框 Blob 存储。 如果找不到要复制到的文件夹，该命令会自动创建它。
 
     ```
     # hadoop distcp \

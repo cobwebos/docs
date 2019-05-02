@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 2ed92486b55aa4fd7dce32f54f0b6567c7bb3cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab0aefd5650aada9c301115813a80747ddd1f2ac
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710993"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926324"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -48,7 +48,7 @@ ms.locfileid: "60710993"
 - 平台启动维护（例如主机 OS 更新）
 - 降级的硬件
 - 用户启动的维护（例如，用户重启或重新部署 VM）
-- [低优先级 VM 逐出](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets)中缩放设置
+- [低优先级 VM 逐出](https://azure.microsoft.com/blog/low-priority-scale-sets)中缩放设置
 
 ## <a name="the-basics"></a>基础知识  
 

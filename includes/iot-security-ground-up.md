@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b952763378de562f35c2e1ecaf49c56f0145c559
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626449"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951502"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>从头开始讲解物联网 (IoT) 的安全性
 
@@ -33,7 +33,7 @@ ms.locfileid: "60626449"
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>安全基础结构基础知识
 
-[Microsoft 云](https://azure.microsoft.com)基础结构支持 127 个国家/地区十亿个以上的客户。 使用 Microsoft 数十年之久构建企业软件的体验，并在世界各地运行一些大型在线服务，相较于多数客户可自行实现，Microsoft 云提供更高级别的增强安全、隐私权、合规性及威胁缓解实践。
+[Microsoft 云](https://azure.microsoft.com)基础结构支持 127 的国家/地区十亿个以上的客户。 使用 Microsoft 数十年之久构建企业软件的体验，并在世界各地运行一些大型在线服务，相较于多数客户可自行实现，Microsoft 云提供更高级别的增强安全、隐私权、合规性及威胁缓解实践。
 
 [安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/) 提供必要的全企业开发过程，将安全要求嵌入整个软件生命周期中。 为了帮助确保运行活动遵循一致的安全优先级，SDL 使用 Microsoft 运行安全保证 (OSA) 流程中规定的严苛安全指导方针。 Microsoft 还与第三方审核机构合作以持续验证其符合法规遵循义务，并通过创建卓越的中心（包括 Microsoft 反数字犯罪部门、Microsoft 安全响应中心和 Microsoft 恶意软件防护中心），致力于产生广泛的安全成果。
 

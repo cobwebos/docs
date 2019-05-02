@@ -3,19 +3,19 @@ title: 使用 OpenID Connect 进行 Web 登录 - Azure Active Directory B2C | Mi
 description: 构建 web 应用程序在 Azure Active Directory B2C 中使用的 OpenID Connect 身份验证协议。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6285a90a9dca305f3a9cd909af6c084c747daf99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4137360fadab0206c6569b58d6a9a0519ce74450
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317116"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703949"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -77,7 +77,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id | 是 | 应用程序 ID [Azure 门户](https://portal.azure.com/)分配给你的应用程序。 |
 | response_type | 是 | 必须包括用于 OpenID Connect ID 令牌。 如果 web 应用程序还需要使用令牌来调用 web API，则可以使用`code+id_token`。 |
 | redirect_uri | 否 | `redirect_uri`参数的应用程序中，可以发送和接收的应用程序身份验证响应。 它必须完全匹配的一个`redirect_uri`，但它必须编码的 URL 在 Azure 门户中注册的参数。 |
-| 作用域 | 是 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 `offline_access`作用域取决于您的 web 应用程序。 它表示您的应用程序需要*刷新令牌*扩展访问资源。 |
+| scope | 是 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 `offline_access`作用域取决于您的 web 应用程序。 它表示您的应用程序需要*刷新令牌*扩展访问资源。 |
 | response_mode | 否 | 用于将生成的授权代码发送回您的应用程序的方法。 这可以是 `query`、`form_post` 或 `fragment`。  建议使用 `form_post` 响应模式以获得最佳安全性。 |
 | state | 否 | 也会在令牌响应中返回在请求中包含的值。 它可以是用户想要的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 状态也用于之前发生身份验证请求，例如，它们之前所在的页面编码应用程序中的用户的状态信息。 |
 | nonce | 是 | （由应用程序生成） 中生成的 ID 令牌以声明方式包含在请求中包含的值。 然后，应用程序可以验证此值以缓解令牌重放攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 |
@@ -167,7 +167,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | p | 是 | 用于获取授权代码的用户流。 在此请求中，不能使用不同的用户流。 添加此参数的查询字符串，而不 POST 正文。 |
 | client_id | 是 | 应用程序 ID [Azure 门户](https://portal.azure.com/)分配给你的应用程序。 |
 | grant_type | 是 | 授予类型，该类型必须是授权代码流的 `authorization_code`。 |
-| 作用域 | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可以用于获取应用程序自身的后端 web API，由客户端相同的应用程序 ID 表示的令牌。 `offline_access`作用域表示应用程序需要扩展访问资源刷新令牌。 |
+| scope | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可以用于获取应用程序自身的后端 web API，由客户端相同的应用程序 ID 表示的令牌。 `offline_access`作用域表示应用程序需要扩展访问资源刷新令牌。 |
 | 代码 | 是 | 在用户流的开头获取授权代码。 |
 | redirect_uri | 是 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
 | client_secret | 是 | 在生成的应用程序机密[Azure 门户](https://portal.azure.com/)。 此应用程序密码是重要的安全项目。 应将其安全地存储在服务器上。 更改定期更新此客户端密码。 |
@@ -189,7 +189,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | not_before | epoch 时间中令牌被视为有效的时间。 |
 | token_type | 令牌类型值。 `Bearer` 是唯一支持的类型。 |
 | access_token | 请求的已签名的 JWT 令牌。 |
-| 作用域 | 令牌的有效范围。 |
+| scope | 令牌的有效范围。 |
 | expires_in | 访问令牌有效的时间长度（以秒为单位）。 |
 | refresh_token | OAuth 2.0 刷新令牌。 应用程序可以使用此令牌在当前令牌过期之后获取其他令牌。 刷新令牌可用于更长时间保留资源访问权限。 作用域`offline_access`必须已使用授权和令牌请求中才能接收刷新令牌。 |
 
@@ -234,7 +234,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | p | 是 | 用于获取原始刷新令牌的用户流。 在此请求中，不能使用不同的用户流。 添加此参数的查询字符串，而不 POST 正文。 |
 | client_id | 是 | 应用程序 ID [Azure 门户](https://portal.azure.com/)分配给你的应用程序。 |
 | grant_type | 是 | 授予，它必须是授权代码流的此部分的刷新令牌的类型。 |
-| 作用域 | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可以用于将令牌发送到应用程序自身的后端 web API，由客户端相同的应用程序 ID 表示。 `offline_access`作用域表示应用程序需要扩展访问资源刷新令牌。 |
+| scope | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 它可以用于将令牌发送到应用程序自身的后端 web API，由客户端相同的应用程序 ID 表示。 `offline_access`作用域表示应用程序需要扩展访问资源刷新令牌。 |
 | redirect_uri | 否 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
 | refresh_token | 是 | 流的第二部分中获取原始刷新令牌。 `offline_access`作用域必须使用授权和令牌请求中才能接收刷新令牌。 |
 | client_secret | 是 | 在生成的应用程序机密[Azure 门户](https://portal.azure.com/)。 此应用程序密码是重要的安全项目。 应将其安全地存储在服务器上。 更改定期更新此客户端密码。 |
@@ -256,7 +256,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | not_before | epoch 时间中令牌被视为有效的时间。 |
 | token_type | 令牌类型值。 `Bearer` 是唯一支持的类型。 |
 | access_token | 请求已签名的 JWT 令牌。 |
-| 作用域 | 令牌的有效范围。 |
+| scope | 令牌的有效范围。 |
 | expires_in | 访问令牌有效的时间长度（以秒为单位）。 |
 | refresh_token | OAuth 2.0 刷新令牌。 应用程序可以使用此令牌在当前令牌过期之后获取其他令牌。 刷新令牌可用于更长时间保留资源访问权限。 |
 

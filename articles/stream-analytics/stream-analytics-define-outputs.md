@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03871c3f3627e85cc2af2f05a5fba38bd8069a15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9663fb502d9eda4810c54a89a94481b7d00cd43
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61481066"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926061"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 本文介绍可用于 Azure Stream Analytics 作业输出的类型。 输出可帮助存储和保存流分析作业的结果。 通过使用输出数据，您可以执行更多业务分析和数据仓库的数据。
@@ -182,7 +182,7 @@ Power BI 使用的先入先出 (FIFO) 保留策略。 数据将收集在表中�
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>将从 Stream Analytics 的数据类型转换为 Power BI
 如果输出架构更改，Azure 流分析会在运行时动态更新数据模型。 列名称更改、列类型更改，以及添加或删除列，这些都会进行跟踪。
 
-此表涵盖了从的数据类型转换[Stream Analytics 的数据类型](https://msdn.microsoft.com/library/azure/dn835065.aspx)到 Power BI[实体数据模型 (EDM) 类型](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/entity-data-model)，如果 Power BI 数据集和表不存在。
+此表涵盖了从的数据类型转换[Stream Analytics 的数据类型](https://msdn.microsoft.com/library/azure/dn835065.aspx)到 Power BI[实体数据模型 (EDM) 类型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)，如果 Power BI 数据集和表不存在。
 
 从流分析 | 到 Power BI
 -----|-----

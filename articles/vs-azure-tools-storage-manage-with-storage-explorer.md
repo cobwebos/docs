@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 3db1d638aa1e0d8488c310593a593465c2b9b336
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 4ee91a91a20cbffebf7453ba573266962aa35806
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128273"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924737"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -55,7 +55,7 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 
 Azure 存储资源管理器也许可以在其他发行版上使用，但只有上面列出的是正式受支持的。
 
-如需如何在 Linux 上安装存储资源管理器的更多帮助，请参阅[故障排除指南](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies)。
+如需如何在 Linux 上安装存储资源管理器的更多帮助，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies)。
 
 Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)包含用于某些发行版的特定步骤。
 

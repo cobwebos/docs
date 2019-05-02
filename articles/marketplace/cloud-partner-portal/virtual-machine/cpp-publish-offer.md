@@ -1,25 +1,18 @@
 ---
-title: 在 Azure 市场中发布虚拟机产品/服务 | Microsoft Docs
+title: 在 Azure Marketplace 中发布虚拟机产品/服务
 description: 列出了在 Azure 市场中发布现有的虚拟机产品/服务所需的步骤。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 3cf6a3d9bcb9470fd3a6bd4fef964c1966adfa1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 6796c2871cf8a5928beed2ab557cefdfe8ecaae9
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844237"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938599"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>发布虚拟机产品/服务
 

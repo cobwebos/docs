@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 0ea34fe4862941bde882b3ea8ed5dbaa111ac742
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 9b86df3d08ec6dfcb3100cff333c4dc5653ee1c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731507"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688342"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -21,6 +21,10 @@ ms.locfileid: "57731507"
 有关活动日志警报的详细信息，请参阅如何[创建 Azure 活动日志警报](activity-log-alerts.md)。
 
 有关操作组的信息，请参阅如何[创建操作组](../../azure-monitor/platform/action-groups.md)。
+
+> [!NOTE]
+> 此外可以使用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，它提供一个可扩展的优势和 Azure Monitor 中服务的 webhook 集成的跨所有警报的统一警报有效负载。 [了解常见的警报的架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
+
 
 ## <a name="authenticate-the-webhook"></a>对 webhook 进行身份验证
 Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 webhook URI 具有令牌 ID，例如，`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`。
@@ -178,7 +182,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | timestamp |处理请求的 Azure 服务生成事件的时间。 |
 | resourceId |受影响资源的资源 ID。 |
 | resourceGroupName |受影响资源的资源组的名称。 |
-| 属性 |一组包含事件详细信息的 `<Key, Value>` 对（即 `Dictionary<String, String>`）。 |
+| properties |一组包含事件详细信息的 `<Key, Value>` 对（即 `Dictionary<String, String>`）。 |
 | event |包含有关事件的元数据的元素。 |
 | authorization |事件的基于角色的访问控制属性。 这些属性通常包括“action”、“role”和“scope”。 |
 | category |事件的类别。 支持的值包括“Administrative”、“Alert”、“Security”、“ServiceHealth”和“Recommendation”。 |
@@ -191,7 +195,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | 级别 |以下值之一：Critical、Error、Warning 和 Informational。 |
 | operationId |通常是在与单个操作对应的事件之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| 属性 |事件的属性。 |
+| properties |事件的属性。 |
 | status |字符串。 操作的状态。 常见值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
 | subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括“正常(HTTP 状态代码: 200)”、“已创建(HTTP 状态代码: 201)、已接受(HTTP 状态代码:202)、没有任何内容(HTTP 状态代码:204)、错误的请求(HTTP 状态代码:400)、找不到(HTTP 状态代码:404)、冲突(HTTP 状态代码:409)、内部服务器错误(HTTP 状态代码:500)”、“服务不可用(HTTP 状态代码: 503)”和“网关超时(HTTP 状态代码: 504)”。 |
 

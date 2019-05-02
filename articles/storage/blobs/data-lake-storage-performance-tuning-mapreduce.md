@@ -2,18 +2,19 @@
 title: Data Lake Storage Gen2 MapReduce 性能优化指南 | Microsoft Docs
 description: Data Lake Storage Gen2 MapReduce 性能优化指南
 services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
-ms.openlocfilehash: 1df7765f4f006d3d79f867fbf23929f6b9b0cf08
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: 7d20f1b398c50a3b98ee862332338dbf3aaece59
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127151"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939382"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>MapReduce on HDInsight 和 Azure Data Lake Storage Gen2 性能优化指南
 

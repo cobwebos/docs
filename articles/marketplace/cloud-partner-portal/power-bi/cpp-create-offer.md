@@ -1,25 +1,18 @@
 ---
-title: 创建 Power BI 应用产品/服务 - Azure 市场 | Microsoft Docs
+title: 创建 Power BI 应用产品/服务 |Azure Marketplace
 description: 如何针对 Microsoft AppSource 市场创建 Power BI 应用产品/服务。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 6a4f7daa337618278c3652fad3053c20557a9e28
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: pabutler
+ms.openlocfilehash: 702be34a5be69c050b809713a5742c2189892a27
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62102044"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943317"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用产品/服务
 

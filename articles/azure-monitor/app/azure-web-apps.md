@@ -7,14 +7,14 @@ author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c447a14f72c56e3e1e244011aa215a33b3f222a6
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489616"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922463"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -40,6 +40,10 @@ ms.locfileid: "59489616"
 > 如果基于代理的监视和手动 SDK 基于检测是检测到仅手动检测设置将起作用。 这是为了防止重复的数据从发送。 若要详细了解此签出[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)下面。
 
 ## <a name="enable-agent-based-monitoring-net"></a>启用基于代理的监视.NET
+
+> [!NOTE]
+> 不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression 的组合。 有关详细信息，请参阅中的说明[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
+
 
 1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
 
@@ -352,6 +356,15 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | 此值指示扩展检测到对引用`Microsoft.AspNet.TelemetryCorrelation`在应用程序，并将回退。 | 删除的引用。
 |`AppContainsDiagnosticSourceAssembly**:true`|此值指示扩展检测到对引用`System.Diagnostics.DiagnosticSource`在应用程序，并将回退。| 删除的引用。
 |`IKeyExists:false`|此值指示的检测密钥不存在 AppSetting 中`APPINSIGHTS_INSTRUMENTATIONKEY`。 可能的原因：值可能已被意外删除，忘记了在自动化脚本等设置的值。 | 请确保该设置位于应用服务应用程序设置。
+
+### <a name="appinsightsjavascriptenabled-and-urlcompression-is-not-supported"></a>不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression
+
+如果使用 APPINSIGHTS_JAVASCRIPT_ENABLED = true 内容进行编码的情况下，可能会收到错误，如： 
+
+- 500 URL 重写错误
+- 500.53 在 HTTP 响应的内容是编码 (gzip) 时，不能应用 URL 重写模块错误，消息的出站重写规则。 
+
+这是由于 APPINSIGHTS_JAVASCRIPT_ENABLED 应用程序设置设置为 true 和内容编码正在同时存在。 尚不支持此方案。 解决方法是从应用程序设置中删除 APPINSIGHTS_JAVASCRIPT_ENABLED。 遗憾的是，这意味着，如果仍需要客户端/浏览器端 JavaScript 检测，手动 SDK 引用所需你的网页。 请按照[说明](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup)进行手动检测使用 JavaScript SDK。
 
 有关 Application Insights 代理/扩展的最新信息，请参阅[发行说明](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)。
 

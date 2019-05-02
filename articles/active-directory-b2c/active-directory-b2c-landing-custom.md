@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 自定义策略 | Microsoft Docs
 description: 通过自定义策略使用 Azure Active Directory B2C 开发面向用户的应用程序。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 5/06/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: bca20bdcf682b040a2fe0b14bf06bc6ca59528b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e09fd32b56c553d60f68060471f28c1d8e5ef12
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317439"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703185"
 ---
 # <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略在应用程序中注册用户和让用户登录
 

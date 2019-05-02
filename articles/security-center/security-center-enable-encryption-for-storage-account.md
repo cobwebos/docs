@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: cadf375b541900600be82e76673637ff01a8ad96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703922"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696069"
 ---
 # <a name="encryption-for-azure-storage-account-in-azure-security-center"></a>在 Azure 安全中心的 Azure 存储帐户的加密
 

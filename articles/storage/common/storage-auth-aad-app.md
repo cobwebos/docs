@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c4959d6abd1b33c81f731ad0479bd59d271c7797
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 979019da60c1129c6c6ef0bec42d9f9096735c1b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483914"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926040"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>从进行身份验证与 Azure Active Directory 应用程序可访问 blob 和队列
 
@@ -37,7 +37,7 @@ ms.locfileid: "61483914"
 
 注册应用程序时，需要向 Azure AD 提供关于应用程序的信息。 Azure AD 随后会提供客户端 ID（也称为*应用程序 ID*）。在运行时，可以使用该 ID 将应用程序与 Azure AD 关联。 若要详细了解客户端 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要注册 Azure 存储应用程序，请遵循[将应用程序与 Azure Active Directory 集成](../../active-directory/active-directory-integrating-applications.md)的[添加应用程序](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md)部分中的步骤。 如果将应用程序注册为本机应用程序，可以为**重定向 URI** 指定任何有效的 URI。 该值不需要是真实的终结点。
+若要注册 Azure 存储应用程序，请遵循[将应用程序与 Azure Active Directory 集成](../../active-directory/active-directory-integrating-applications.md)的[添加应用程序](../../active-directory/develop/quickstart-register-app.md)部分中的步骤。 如果将应用程序注册为本机应用程序，可以为**重定向 URI** 指定任何有效的 URI。 该值不需要是真实的终结点。
 
 ![显示如何使用 Azure AD 注册应用程序的屏幕截图](./media/storage-auth-aad-app/app-registration.png)
 

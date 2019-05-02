@@ -3,20 +3,19 @@ title: Azure Active Directory B2C 标识体验框架架构的布尔型声明转�
 description: Azure Active Directory B2C 标识体验框架架构的布尔型声明转换示例。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 04/03/2019
-ms.author: v-junlch
+ms.date: 09/10/2018
+ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fea0f8c2c2bcab94202916594e66514f2ec87396
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8afe530a2194fd8c2137f6d4aa7ac97fa8ed9a53
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60314612"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695105"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -174,5 +173,4 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
     - **inputClaim2**: false
 - 输出声明：
     - **outputClaim**: true
-
 

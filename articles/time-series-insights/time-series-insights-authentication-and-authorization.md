@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: seodec18
 ms.openlocfilehash: 66a3c40bf1e1e1dc6253520a555e19ebf011297c
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761620"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698577"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7885473d029556e10663675a9886c7ea3b9c709c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 0b1c43cb82d6dc2b7f0708dee8471f077befe349
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555415"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722158"
 ---
 # <a name="data-querying"></a>数据查询
 
@@ -75,11 +75,11 @@ Azure 时序见解预览版允许通过公共 Surface API 对存储在环境中�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解：
+- 详细了解如何[存储和入口](./time-series-insights-update-storage-ingress.md)Azure 时间系列 Insights 预览版中。
 
-- [Azure 时序见解预览版存储和入口](./time-series-insights-update-storage-ingress.md)
-- [数据建模](./time-series-insights-update-tsm.md)
-- [选择时序 ID 时的最佳做法](./time-series-insights-update-how-to-id.md)
+- 读取时间系列 Insights 预览版[数据建模](./time-series-insights-update-tsm.md)一文。
+
+- 发现[选择时间序列 ID 时的最佳做法](./time-series-insights-update-how-to-id.md)。
 
 <!-- Images -->
 [1]: media/v2-update-tsq/tsq.png

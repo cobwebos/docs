@@ -15,11 +15,11 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: include file
 ms.openlocfilehash: 971ae8cd44f1b345d3a71b8fa4f256c8f25ef961
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
+ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59503011"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951345"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>从 iOS 应用程序调用 Microsoft Graph API
 
@@ -27,7 +27,7 @@ ms.locfileid: "59503011"
 
 完成本指南中的练习后，你的应用程序可以从任何具有 Azure AD 的公司或组织调用受保护的 API。 应用程序可以使用个人帐户（如 outlook.com、live.com 等）以及工作或学校帐户调用受保护的 API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - XCode 版本 10.x 是在本指南中创建的示例所必需的。 可从 [iTunes 网站](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下载 URL") 下载 XCode。
 - [Carthage](https://github.com/Carthage/Carthage) 依赖项管理器是包管理所必需的。
@@ -50,6 +50,6 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 本指南使用以下库：
 
-|库|说明|
+|库|描述|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|适用于 iOS 的 Microsoft 身份验证库预览|

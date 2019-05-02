@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: ae92a5c894b186a1c8b471c1b446a88299742aec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04ed95317311b81af49f5d96addb203b7cfeb74a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466369"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725652"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -53,10 +53,27 @@ ms.locfileid: "60466369"
 
 每个 AKS 部署都跨越两个资源组：
 
-- 第一个资源组由你创建，仅包含 Kubernetes 服务资源。 AKS 资源提供程序在部署期间自动创建第二个资源组，例如 MC_myResourceGroup_myAKSCluster_eastus。
+- 第一个资源组由你创建，仅包含 Kubernetes 服务资源。 AKS 资源提供程序在部署期间自动创建第二个资源组，例如 MC_myResourceGroup_myAKSCluster_eastus。 有关如何指定此第二个资源组的名称的信息，请参阅下一节。
 - 第二个资源组（例如 MC_myResourceGroup_myAKSCluster_eastus）包含与该群集关联的所有基础结构资源。 这些资源包括 Kubernetes 节点 VM、虚拟网络和存储。 创建这个单独资源组的目的是简化资源清理。
 
 如果创建用于 AKS 群集的资源（例如存储帐户或保留的公用 IP 地址），请将它们放在自动生成的资源组中。
+
+## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>可以提供我自己 AKS 基础结构资源组的名称？
+
+可以。 默认情况下，AKS 资源提供程序会自动创建的辅助资源组在部署期间，如*于 MC_myResourceGroup_myAKSCluster_eastus*。 若要符合公司策略，您可以自己为此托管群集的名称 (*MC_*) 的资源组。
+
+若要指定资源组名称，请安装[aks 预览版][ aks-preview-cli] Azure CLI 扩展版本*0.3.2*或更高版本。 创建 AKS 群集使用时[az aks 创建][ az-aks-create]命令，使用 *-节点资源组*参数并指定资源组的名称。 如果您[使用 Azure 资源管理器模板][ aks-rm-template]若要部署 AKS 群集，可以定义资源组名称使用*nodeResourceGroup*属性。
+
+* 在自己的订阅中的 Azure 资源提供程序会自动创建此资源组。
+* 创建群集时，仅可以指定自定义资源组名称。
+
+不支持以下方案：
+
+* 不能指定现有的资源组*MC_* 组。
+* 不能指定不同的订阅*MC_* 资源组。
+* 不能更改*MC_* 后创建群集资源组名称。
+* 不能指定为中的托管资源的名称*MC_* 资源组。
+* 不能修改或删除中的托管资源标记*MC_* 资源组 （请参阅下一节中的其他信息）。
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>我可以修改 MC_* 资源组中 AKS 资源的标记和其他属性吗？
 
@@ -93,13 +110,16 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 
 <!-- LINKS - internal -->
 
-[aks-regions]: ./container-service-quotas.md#region-availability
+[aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
 [virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md
+[aks-preview-cli]: /cli/azure/ext/aks-preview/aks
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
 
 <!-- LINKS - external -->
 
@@ -108,4 +128,3 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
-

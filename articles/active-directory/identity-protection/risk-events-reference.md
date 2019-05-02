@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d009022d4ec03990d3ed0321ebcb13c72c674ed8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e988d03b60469940d8750cc07188a61fc7ab8b3a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294202"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709611"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection 风险事件参考
 
@@ -80,10 +80,16 @@ ms.locfileid: "60294202"
 
 ## <a name="unfamiliar-sign-in-properties"></a>不熟悉的登录属性
 
-**检测类型：** 实时  
-**旧名称：** 从不熟悉的位置登录
+**检测类型：** 实时**旧名称：** 从不熟悉的位置登录
 
 此风险事件类型方法使用过去的登录历史记录 (IP、 纬度 / 经度和 ASN) 来查找异常的登录名。系统会存储用户以前的登录位置信息，并将其视为“熟悉”位置。 当从尚未在熟悉位置列表中列出的位置登录时，将触发此风险事件。 新创建的用户将以"学习模式"一段时间中哪些不熟悉的单一登录属性时我们的算法了解用户的行为将关闭状态的风险事件。 学习模式持续时间是动态的取决于在时间上所花费的算法来收集有关用户的登录模式的足够信息。 最短持续时间为 5 天。 用户可以返回到学习模式在长时间处于非活动状态。 系统还会忽略从常用设备和接近熟悉位置的地理位置进行登录。 
 
 我们还对基本身份验证（或旧版协议）运行此检测。 由于这些协议没有新型属性（如客户端 ID），因此用来减少误报的遥测数据较为有限。 建议客户采用新式身份验证。
 
+
+## <a name="azure-ad-threat-intelligence"></a>Azure AD 威胁智能
+
+**检测类型：** 脱机 <br>
+**旧名称：** 此检测将 （标记为存在风险，风险事件的用户） 在旧版 Azure AD Identity Protection 报告中显示为已泄漏凭据的用户
+
+此风险事件类型指示并不常见的给定用户或符合已知的攻击模式基于 Microsoft 的内部和外部威胁智能源的用户活动。

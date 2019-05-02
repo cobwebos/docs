@@ -1,25 +1,18 @@
 ---
-title: Azure 市场中的 Dynamics 365 for Customer Engagement 产品/服务 | Microsoft Docs
+title: Dynamics 365 for Customer Engagement 为 Azure Marketplace 产品/服务
 description: 介绍了如何使用云合作伙伴门户为 AppSource 市场创建 Dynamics 365 for Customer Engagement 产品/服务。
 services: Dynamics 365 for Customer Engagement, AppSource Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9189b7ce44f9808b245a99a42443e97a45d7ae75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: c8a743076fa803623191b0501de4d90e415fd9c6
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61227075"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942479"
 ---
 # <a name="dynamics-365-for-customer-engagement-offer"></a>Dynamics 365 for Customer Engagement 产品/服务
 

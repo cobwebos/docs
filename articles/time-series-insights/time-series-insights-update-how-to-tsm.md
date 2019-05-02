@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1686b52c9dacf5c78335f76bd19b41c4c7d15cee
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: df94290c5e62b898b6490c78ef0ae1ee79437240
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555398"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716947"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据建模
 
@@ -40,7 +40,7 @@ ms.locfileid: "53555398"
 
 1. 选择“上传 JSON”。
 1. 选择包含类型有效负载的文件。
-1. 选择“上传”。
+1. 选择 **“上传”**。
 
     ![Portal_three][3]
 
@@ -80,7 +80,7 @@ ms.locfileid: "53555398"
 
 1. 选择“上传 JSON”。
 1. 选择包含层次结构有效负载的文件。
-1. 选择“上传”。
+1. 选择 **“上传”**。
 
     ![Portal_ten][10]
 
@@ -117,7 +117,7 @@ ms.locfileid: "53555398"
 
     ![Portal_fifteen][15]
 
-1. 选择“上传”。
+1. 选择 **“上传”**。
 
 ### <a name="edit-a-single-instance"></a>编辑单个实例
 
@@ -132,7 +132,9 @@ ms.locfileid: "53555398"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关时序模型的详细信息，请阅读[数据建模](./time-series-insights-update-tsm.md)。
+
 - 若要详细了解预览版，请阅读[在 Azure 时序见解预览版资源管理器中可视化数据](./time-series-insights-update-explorer.md)。
+
 - 若要了解支持的 JSON 配置，请阅读[支持的 JSON 配置](./time-series-insights-send-events.md#json)。
 
 <!-- Images -->

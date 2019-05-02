@@ -2,22 +2,19 @@
 title: Azure Key Vault 限制指南
 description: Key Vault 限制可限制并发调用数，以防止过度使用资源。
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 tags: ''
-ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
-ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06b96ac6ea0202b74638b9331d754c0e0cc28ad0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304925"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695247"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -34,7 +31,7 @@ Key Vault 中的服务限制用于防止资源滥用，确保所有 Key Vault �
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>如何针对服务限制来限制应用
 
-以下是**最佳做法**应实现你的服务受到限制时：
+以下是在服务受到限制时应实施的**最佳做法**：
 - 减少每个请求的操作数。
 - 减少请求频率。
 - 避免立即重试。 
@@ -115,7 +112,7 @@ Key Vault 中的服务限制用于防止资源滥用，确保所有 Key Vault �
 ```
 
 
-在客户端 C 中使用此代码\#应用程序非常简单。 下面的示例演示使用 HttpClient 类的方法。
+在客户端 C\# 应用程序中使用此代码很简单。 下面的示例演示使用 HttpClient 类的方法。
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)

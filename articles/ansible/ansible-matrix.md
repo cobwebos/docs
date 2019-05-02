@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/22/2019
-ms.openlocfilehash: 3f5bda36368ee1fe1f37527422c6072c3ffda177
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 721179e12ed7f21312fe848a6bef1a8e19bc8083
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763324"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866048"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible 模块和版本矩阵
 
@@ -53,11 +53,10 @@ Ansible 包括一套用于使用模块中预配和配置 Azure 资源。 这些�
 | azure_rm_virtualmachinescalesetinstance_facts | -            | -                         | -            | -            | 是          | 是          |
 | **网络**                              |              |                             |              |              |              |              |
 | azure_rm_appgateway                         | -            | -                           | -            | 是          | 是          | 是          |
-| azure_rm_appgwroute                         | -            | -                           | -            | -            | 是          | 是          |
-| azure_rm_appgwroute                         | -            | -                           | -            | -            | 是          | 是          |
-| azure_rm_appgwroute_facts                   | -            | -                           | -            | -            | 是          | 是          |
-| azure_rm_appgwroutetable                    | -            | -                           | -            | -            | 是          | 是          |
-| azure_rm_appgwroutetable_facts              | -            | -                           | -            | -            | 是          | 是          |
+| azure_rm_appgwroute                         | -            | -                           | -            | -            | -          | 是          |
+| azure_rm_appgwroute_facts                   | -            | -                           | -            | -            | -          | 是          |
+| azure_rm_appgwroutetable                    | -            | -                           | -            | -            | -          | 是          |
+| azure_rm_appgwroutetable_facts              | -            | -                           | -            | -            | -          | 是          |
 | azure_rm_applicationsecuritygroup           | -            | -                           | -            | -            | 是          | 是          |
 | azure_rm_applicationsecuritygroup_facts     | -            | -                           | -            | -            | 是          | 是          |
 | azure_rm_cdnendpoint                        | -            | -                         | -          | -            | 是          | 是          |

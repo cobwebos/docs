@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 6cca6692da37714c76f5241ed14e24c967b00563
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467691"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920448"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -88,11 +88,11 @@ Azure 区域可支持最多 250 每个订阅的存储帐户。 达到限制后�
 低缓存命中率可能会导致速度较慢的查询性能和更高的 IOPS。 这可能是由于错误的查询计划或运行内存密集型工作负荷。 修复的查询计划或 [将内存增加](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)的 Azure Database for PostgreSQL 数据库服务器、 Azure MySQL 数据库服务器或 Azure MariaDB 服务器，将有助于优化数据库工作负荷的执行。 Azure 顾问标识由于此高缓冲区池改动受影响的服务器，并建议修复查询计划中，转到更高的 SKU 具有更多内存或增加存储大小，以获取更多 IOPS。
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>使用 Azure MySQL 或 Azure PostgreSQL 读取副本来横向扩展读取密集型工作负荷的读取
-Azure 顾问利用基于工作负荷的试探法如读取与写入服务器上标识读取密集型工作负荷在过去七天内的比率。 PostgreSQL 资源的 Azure 数据库或 MySQL 资源非常高的读/写比率的 Azure 数据库会导致查询性能变慢的 CPU 和/或内存争用。 添加 [副本](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)中扩大到副本服务器，防止在主服务器上的 CPU 和/或内存约束的读取将有所帮助。 顾问将识别的服务器使用此类高读取密集型工作负荷并建议将添加 [读取副本](https://docs.microsoft.com/en-us/azure/postgresql/concepts-read-replicas) 来分担一些的读取工作负荷。
+Azure 顾问利用基于工作负荷的试探法如读取与写入服务器上标识读取密集型工作负荷在过去七天内的比率。 PostgreSQL 资源的 Azure 数据库或 MySQL 资源非常高的读/写比率的 Azure 数据库会导致查询性能变慢的 CPU 和/或内存争用。 添加 [副本](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)中扩大到副本服务器，防止在主服务器上的 CPU 和/或内存约束的读取将有所帮助。 顾问将识别的服务器使用此类高读取密集型工作负荷并建议将添加 [读取副本](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) 来分担一些的读取工作负荷。
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>缩放到更高的 SKU，以防止连接约束 Azure MySQL、 Azure PostgreSQL 或 Azure MariaDB 服务器
-每个新连接到数据库服务器占用一些内存。 在数据库服务器的性能下降，如果连接到服务器失败由于 [上限](https://docs.microsoft.com/en-us/azure/postgresql/concepts-limits)在内存中。 Azure 顾问将识别运行具有许多连接故障的服务器，并建议升级你的服务器的连接限制，以通过纵向扩展计算或使用内存优化的 Sku，其具有更多计算每个核心提供到您的服务器的更多内存。
+每个新连接到数据库服务器占用一些内存。 在数据库服务器的性能下降，如果连接到服务器失败由于 [上限](https://docs.microsoft.com/azure/postgresql/concepts-limits)在内存中。 Azure 顾问将识别运行具有许多连接故障的服务器，并建议升级你的服务器的连接限制，以通过纵向扩展计算或使用内存优化的 Sku，其具有更多计算每个核心提供到您的服务器的更多内存。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议
 

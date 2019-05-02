@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为
 description: 在 Azure Active Directory B2C 中使用 SAML 协议和自定义策略设置 ADFS 2016
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 85a339d2638e2223815a4ae539f37c439a4eac91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91db42a003bdbb7614faba2122c30826b62ee20f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387088"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698665"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 

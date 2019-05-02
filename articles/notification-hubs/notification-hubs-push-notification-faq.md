@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 642e586371a0ce6abe362f8b10b54bfd8baff678
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8af545f5700e90303562174a3c27cc5438b28e24
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60872031"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925883"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -183,7 +183,7 @@ Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dot
 
 ### <a name="is-there-audit-log-capability"></a>是否有审核日志功能？
 
-可以。 所有通知中心管理操作都会更新 [Azure 门户]中公开的 Azure 活动日志。 Azure 活动日志可使用户了解对订阅中的资源执行的操作。 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的内容、执行者和时间。 还可以了解操作和其他相关属性的状态。 但是， 活动日志不包括读取 (GET) 操作。
+是的。 所有通知中心管理操作都会更新 [Azure 门户]中公开的 Azure 活动日志。 Azure 活动日志可使用户了解对订阅中的资源执行的操作。 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的内容、执行者和时间。 还可以了解操作和其他相关属性的状态。 但是， 活动日志不包括读取 (GET) 操作。
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
@@ -218,7 +218,7 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 [通知中心安全推送教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [通知中心故障排除]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [通知中心指标]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[注册信息导出/导入]: https://docs.microsoft.com/en-us/azure/notification-hubs/export-modify-registrations-bulk
+[注册信息导出/导入]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure 门户]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [移动应用]: https://azure.microsoft.com/services/app-service/mobile/

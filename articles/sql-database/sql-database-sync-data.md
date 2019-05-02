@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a887c79a51c7a239e7057171e51e67a53af2f84b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f83eb87d2eecb91aa18b1caceb42f9d8bd6c2a0e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60580217"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939591"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -32,7 +32,7 @@ ms.locfileid: "60580217"
 
 - **混合数据同步：** 借助数据同步，可以在本地数据库和 Azure SQL 数据库之间保持数据同步，以便启用混合应用程序。 此功能可能会吸引在考虑迁移到云中，并希望启用 Azure 应用程序的客户。
 - **分布式应用程序：** 在许多情况下，跨各个数据库分散不同的工作负载会大有裨益。 例如，如果有大型生产数据库，但还需要对此数据运行报表或分析工作负载，那么使用第二个数据库来处理此额外工作负载将会有所帮助。 这种方法可最大限度地减轻对生产工作负载造成的性能影响。 可以使用 SQL 数据同步来同步这两个数据库。
-- **全球分布的应用程序：** 许多企业的业务分布在多个区域，甚至是多个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
+- **全球分布的应用程序：** 许多企业跨越多个区域，甚至是多个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
 
 数据同步不是以下场景的首选解决方案：
 
@@ -180,14 +180,14 @@ SQL 数据同步在所有区域中都可用。
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>是否可以使用数据同步在属于不同订阅的 SQL 数据库之间进行同步
 
-可以。 可以在由不同订阅拥有的资源组中的 SQL 数据库之间进行同步。
+是的。 可以在由不同订阅拥有的资源组中的 SQL 数据库之间进行同步。
 
 - 如果订阅属于同一租户，并且你对所有订阅都有权限，则可以在 Azure 门户中配置同步组。
 - 否则，必须使用 PowerShell 来添加属于不同订阅的同步成员。
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china"></a>是否可以使用数据同步在属于不同云（例如 Azure 公有云和 Azure 中国）的 SQL 数据库之间进行同步
 
-可以。 可以在属于不同云的 SQL 数据库之间进行同步，但必须使用 PowerShell 添加属于不同订阅的同步成员。
+是的。 可以在属于不同云的 SQL 数据库之间进行同步，但必须使用 PowerShell 添加属于不同订阅的同步成员。
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>是否可以使用数据同步将生产数据库中的数据种子植入到空数据库，然后将这两个数据库同步
 

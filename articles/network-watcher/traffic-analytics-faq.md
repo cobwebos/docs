@@ -3,8 +3,8 @@ title: Azure 流量分析常见问题解答 | Microsoft Docs
 description: 获取有关流量分析的常见问题的解答。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: jdial
-ms.openlocfilehash: 0a5bbc0bb4b934ae9e60cbd8233b5efbae2a6e6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: 88acfebcc6dd8489703014d790f09313ab9302ec
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60236618"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939908"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -113,7 +113,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>是否可以在单个工作区中配置多个 NSG？
 
-可以。
+是的。
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
@@ -241,7 +241,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析如何经常处理的数据？
 
-请参阅[数据聚合部分](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation)流量分析架构和数据聚合文档中
+请参阅[数据聚合部分](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)流量分析架构和数据聚合文档中
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何决定 IP 是恶意活动？ 
 
@@ -253,14 +253,14 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 - 为流量分析中的 Log Analytics，可以使用短链接。 
 - 使用[此处介绍架构](traffic-analytics-schema.md)编写查询 
 - 单击"新建警报规则"以创建警报
-- 请参阅[文档的日志警报](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log)创建警报
+- 请参阅[文档的日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)创建警报
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>如何在地图视图中使用键盘导航？
 
 地图页面包含两个主要部分：
     
-- **标题**：地图顶部的标题提供用于选择流量分配筛选器（例如，“部署”、“来自国家/地区的流量”和“恶意”）的按钮。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
-- **地图**：标题下的地图部分显示 Azure 数据中心和国家/地区之间的流量分配。
+- **标题**：在地理位置地图顶部的横幅提供按钮，选择流量分布筛选器 （例如，部署，从国家/地区的流量和恶意）。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
+- **地图**：标记中，下面的映射部分显示在 Azure 数据中心和国家/地区之间的流量分布。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>标题中的键盘导航
     

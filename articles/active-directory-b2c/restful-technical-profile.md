@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义 RESTful 技术
 description: 在 Azure Active Directory B2C 的自定义策略中定义 RESTful 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7ff14af756a55ccc6bbf40dd39d49c5168f4af1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0726c22e436658d51419b9e32d73f48db99ba805
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418276"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705308"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 - **验证技术配置文件** - 验证技术配置文件调用 RESTful 服务。 在用户旅程继续执行之前，验证技术配置文件将验证用户提供的数据。 使用验证技术配置文件时，错误消息将显示在自我断言的页面上，并在输出声明中返回。
 - **声明交换** - 通过业务流程步骤调用 RESTful 服务。 在此方案中，不会在任何用户界面中呈现错误消息。 如果 REST API 返回错误，则将用户重定向回到信赖方应用程序并显示错误消息。
 
-## <a name="protocol"></a>协议
+## <a name="protocol"></a>Protocol
 
 “Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 

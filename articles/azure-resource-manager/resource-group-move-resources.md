@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 04/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: dfe2a103005cc48860c7bbeb3036afe94ff3a559
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e94bc7686203bfbcd93200e5a1fb65b43ceeb91
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239145"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698491"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -222,6 +222,22 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 - 资源组中的所有应用服务资源必须一起移动。
 - 只能从最初创建应用服务资源的资源组中移动它们。 如果某个应用服务资源不再位于其原始资源组中，则必须首先将其移动回该原始资源组，然后才能将其在订阅之间移动。
 
+如果不记得原始资源组，可以通过诊断来找到它。 对于 web 应用，选择**诊断并解决问题**。 然后，选择**配置和管理**。
+
+![选择诊断](./media/resource-group-move-resources/select-diagnostics.png)
+
+选择**迁移选项**。
+
+![选择迁移选项](./media/resource-group-move-resources/select-migration.png)
+
+选择要移动 web 应用的建议步骤的选项。
+
+![选择建议的步骤](./media/resource-group-move-resources/recommended-steps.png)
+
+请参阅移动资源之前需要采取的建议的操作。 这些信息包括 web 应用的原始资源组。
+
+![建议](./media/resource-group-move-resources/recommendations.png)
+
 ### <a name="app-service-certificate-limitations"></a>应用服务证书限制
 
 可将应用服务证书移动到新的资源组或订阅。 如果应用服务证书已绑定到某个 Web 应用，必须先执行一些步骤，然后才能将资源移到新的订阅中。 移动资源之前，请在 Web 应用中删除 SSL 绑定和专用证书。 应用服务证书不需删除，只需删除 Web 应用中的专用证书。
@@ -251,7 +267,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 * 目标订阅不得包含任何其他经典资源。
 * 只能通过独立的适用于经典移动的 REST API 来请求移动。 将经典资源移到新订阅时，不能使用标准的资源管理器移动命令。
 
-要将经典资源移动到新订阅，请使用特定于经典资源的 REST 操作。 若要使用 REST，请执行以下步骤：
+要将经典资源移动到新订阅，请使用特定于经典资源的 REST 操作。 若要使用 REST，请执行以下步骤操作：
 
 1. 检查源订阅是否可以参与跨订阅移动。 使用以下操作：
 

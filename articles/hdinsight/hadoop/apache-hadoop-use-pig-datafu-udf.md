@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
 ms.openlocfilehash: 59065c1eefedc2dce9eb56394c4c7db862744366
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62110823"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691839"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>将 Apache DataFu Pig 与 Apache Pig on HDInsight 配合使用
 

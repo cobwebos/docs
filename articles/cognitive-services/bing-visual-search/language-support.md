@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 511a95eaea65c1a0e67973ef56942bc05bb43f81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1639b8066f3c9943bc42f5151fcb456585441baf
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511323"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866235"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>必应视觉搜索 API 的语言和区域支持
 
@@ -34,7 +34,7 @@ ms.locfileid: "60511323"
 > - 美食、购物及包括这些页面的见解仅在美国市场中可用。
 
 
-## <a name="countries"></a>国家/地区
+## <a name="countriesregions"></a>国家/地区
 
 |国家/地区|代码|
 |-------|----|

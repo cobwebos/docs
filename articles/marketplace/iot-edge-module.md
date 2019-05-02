@@ -2,24 +2,18 @@
 title: Azure IoT Edge 模块
 description: Azure 市场中的 IoT Edge 模块套餐适用于应用和服务发布者。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge module offer
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: f13d3f780e24d71babb1bda48a9b85d1208e3c4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f4ad704de83e5971b5bc10083aefeec5d28374b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709291"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937853"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 

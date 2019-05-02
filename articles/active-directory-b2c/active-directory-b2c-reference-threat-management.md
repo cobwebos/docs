@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中管理对资源和数据的威胁 | Mic
 description: 了解 Azure Active Directory B2C 中用于拒绝服务攻击和密码攻击的检测和缓解技术。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 65c74b7451c5a605ca8c2e866296c87c0320b730
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e4c145409579e2e3a833494008656d4d0e8e49e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60316895"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703771"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理对资源和数据的威胁
 

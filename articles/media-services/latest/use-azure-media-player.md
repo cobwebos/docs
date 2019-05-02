@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466610"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926517"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player 概述
 
@@ -24,7 +24,7 @@ Azure Media Player 是一种 Web 视频播放器，用于在各种浏览器和�
 
 Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提供的内容。 Azure 媒体播放器会考虑这些不同的格式并基于平台/浏览器功能自动播放最佳链接。 媒体服务还允许使用 PlayReady 加密或 AES 128 位信封加密对资产进行动态加密。 Azure 媒体播放器在合理配置时允许对 PlayReady 和 AES-128 位加密的内容进行解密。 
 
-[开始免费试用](https://azure.microsoft.com/en-us/pricing/free-trial/)
+[开始免费试用](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>使用 Azure Media Player 演示页
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 172e6f53b25a1aeef67afea0c1769e6fcaf497cd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 3b6c4b8cebdff772ea1bd4ac95e4c8c06043f5d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487866"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728165"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -63,13 +63,13 @@ ms.locfileid: "58487866"
 
 `timeSeriesDefinitions=<collection of term objects>` 参数指定时序见解视图的术语，其中：
 
-- "name":"<string>"
+- "name":"\<string>"
   - 术语的名称。
-- "splitBy":"<string>"
+- "splitBy":"\<string>"
   - 要按其进行拆分的列名。
-- "measureName":"<string>"
+- "measureName":"\<string>"
   - 度量值的列名。
-- "predicate":"<string>"
+- "predicate":"\<string>"
   - 用于服务器端筛选的 where 子句。
 - "useSum":"true"
   - 这是一个可选参数，指定对度量值使用总和。  注意，如果所选度量值为“事件”，则默认选择计数。  如果未选择“事件”，则默认选择平均值。  
@@ -121,4 +121,5 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 ![图表视图](media/parameterized-url/url2.png)
 
 ## <a name="next-steps"></a>后续步骤
-[使用 C# 查询数据](time-series-insights-query-data-csharp.md)
+
+- 了解如何[查询的数据使用C# ](time-series-insights-query-data-csharp.md)。

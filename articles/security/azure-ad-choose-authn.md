@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 1f950841946b65d618c7335ea3d8d42993a89481
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 773d4dd28da3165261d75e4f800750c1f54377d0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805255"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702287"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
@@ -49,7 +49,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 ### <a name="cloud-authentication"></a>云身份验证
 选择此身份验证方法时，Azure AD 会处理用户的登录过程。 结合使用无缝单一登录 (SSO)，用户可以登录到云应用，无需重新输入其凭据。 如果使用的是云身份验证，可以从以下两个选项中选择： 
 
-**Azure AD 密码哈希同步**。 这是在 Azure AD 中为本地目录对象启用身份验证的最简单方法。 用户可以使用其在本地使用的同一用户名和密码，不必部署任何其他基础结构。 某些 Azure AD 高级功能（例如 Identity Protection）需要密码哈希同步，无论选择哪种身份验证方法均是如此。
+**Azure AD 密码哈希同步**。 这是在 Azure AD 中为本地目录对象启用身份验证的最简单方法。 用户可以使用其在本地使用的同一用户名和密码，不必部署任何其他基础结构。 Azure AD 中，一些高级功能，例如 Identity Protection 和[Azure AD 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync)，需要密码哈希同步，无论哪种身份验证方法选择了。
 
 > [!NOTE] 
 > 请勿以明文形式存储密码，或者使用 Azure AD 不可逆算法加密。 有关密码哈希同步实际过程的详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)。 
@@ -92,7 +92,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **用户体验**。 若要改善用户的登录体验，请将无缝 SSO 随密码哈希同步一起部署。 在用户登录时，无缝 SSO 将消除不必要的提示。
 
-* **高级方案**。 如果组织选择，可以将来自标识的见解与 Azure AD Premium P2 的 Azure AD Identity Protection 报告配合使用。 例如已泄漏凭据报告。 Windows hello 企业版具有[时使用密码哈希同步的特定要求](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)。 
+* **高级方案**。 如果组织选择，可以将来自标识的见解与 Azure AD Premium P2 的 Azure AD Identity Protection 报告配合使用。 例如已泄漏凭据报告。 Windows hello 企业版具有[时使用密码哈希同步的特定要求](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)。 [Azure AD 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync)要求来设置用户使用其公司凭据在托管域中的密码哈希同步。
 
     需要将密码哈希同步与多重身份验证配合使用的组织必须使用 Azure AD 多重身份验证。 这些组织不能使用第三方或本地多重身份验证方法。
 

@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b59471cd8af02513186fa4437a2249b056cc324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12d603ddbba9e36d562c8dcd6e3844af28c91255
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354393"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918830"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
@@ -135,7 +135,11 @@ Azure AD 联接：
 
 ### <a name="management-platform"></a>管理平台
 
-Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM CSP。 Windows 10 提供适用于所有兼容 MDM 解决方案的内置 MDM 代理。
+Azure AD 加入设备的设备管理基于 MDM 平台，如 Intune 和 MDM Csp。 Windows 10 提供适用于所有兼容 MDM 解决方案的内置 MDM 代理。
+
+> [!NOTE]
+> 如未连接到本地 Active Directory 中已加入 Azure AD 的设备不支持组策略。 管理 Azure AD 加入设备时，才能通过 MDM
+
 
 管理 Azure AD 联接设备有两种方法：
 
@@ -143,7 +147,6 @@ Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM CSP
 
 - **共同管理** - MDM 提供程序和 SCCM 托管设备。 使用这种方法，在 MDM 托管设备上安装 SCCM 代理来管理某些特性。
 
-由于 Azure AD 联接设备未连接到本地 Active Directory，所以不支持组策略。
 
 
 如果要使用组策略，请使用 [MDM 迁移分析工具 (MMAT)](https://github.com/WindowsDeviceManagement/MMAT) 评估 MDM 策略奇偶校验。 

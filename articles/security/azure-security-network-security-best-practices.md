@@ -1,9 +1,8 @@
 ---
-title: Azure 网络安全最佳实践 | Microsoft Docs
+title: 网络安全性-Microsoft Azure 的最佳做法
 description: 本文提供一系列有关使用内置 Azure 功能提高网络安全性的最佳实践。
 services: security
-documentationcenter: na
-author: TomShinder
+author: TerryLanfear
 manager: barbkess
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
@@ -12,18 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/17/2018
+ms.date: 04/28/2019
 ms.author: TomSh
-ms.openlocfilehash: b644a175814fb28563a2524e27f52d0285415d66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bec7db1c4409165242416df16e437b121381b49
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610965"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872566"
 ---
 # <a name="azure-network-security-best-practices"></a>Azure 网络安全最佳实践
-你可以将 [Azure虚拟机 (VM)](https://azure.microsoft.com/services/virtual-machines/) 和设备放在 [Azure虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)上，从而将它们连接到其他网络设备。 也就是说，可以将虚拟网络接口卡连接到虚拟网络，允许启用了网络的设备之间进行基于 TCP/IP 的通信。 连接到 Azure 虚拟网络的虚拟机能够连接到相同虚拟网络、不同虚拟网络、Internet 或自己的本地网络上的设备。
-
 本文介绍一系列 Azure 网络安全最佳实践。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
 
 对于每项最佳实践，本文将说明：
@@ -35,8 +32,6 @@ ms.locfileid: "60610965"
 * 如何学习启用最佳实践
 
 这篇 Azure 网络安全最佳实践以共识以及 Azure 平台功能和特性集（因为在编写本文时已存在）为基础。 看法和技术将随着时间改变，本文会定期更新以反映这些更改。
-
-以下部分介绍了针对网络安全性的最佳做法。
 
 ## <a name="logically-segment-subnets"></a>以逻辑方式分段子网
 Azure 虚拟网络类似于本地网络上的 LAN。 Azure 虚拟网络背后的思路是创建单个基于空间的专用 IP 地址网络，以将所有Azure 虚拟机置于其上。 可用的专用 IP 地址空间位于类别 A (10.0.0.0/8)、类别 B (172.16.0.0/12) 和类别 C (192.168.0.0/16) 范围内。

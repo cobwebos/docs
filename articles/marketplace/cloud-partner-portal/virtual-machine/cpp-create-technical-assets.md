@@ -1,25 +1,18 @@
 ---
-title: 为 Azure 市场虚拟机套餐创建技术资产 | Microsoft Docs
+title: 为 Azure Marketplace 创建虚拟机产品/服务的技术资产
 description: 介绍如何为 Azure 市场中的虚拟机套餐创建技术资产。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/20/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 6f1a93c3d3059e612d8c309b263e263dbb84c67f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 6113c10cd152a22bd31e7212d86925b0c2107e58
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050095"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938414"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>为虚拟机套餐创建技术资产
 

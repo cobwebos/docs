@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d79154a8792b9017b98f9d21a2ab0360b7304d1c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820038"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697857"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时间序列预测的模型
 
@@ -67,7 +67,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > 在用于预测未来的值为模型定型，确保所有运行在预期范围的预测时，可以使用培训中使用的功能。 例如，在创建预测的需求，包括当前股价的功能可能大规模会增加训练准确性。 但是，如果你想要预测的长时间范围，您可能不能准确地预测未来与将来的时间序列点相对应的股票值和模型准确性可能会受到影响。
 
-## <a name="configure-experiment"></a>配置试验
+## <a name="configure-and-run-experiment"></a>配置和运行试验
 
 预测任务，自动化的机器学习使用预处理和估计特定于时间序列数据的步骤。 将执行以下预处理步骤：
 
@@ -126,6 +126,20 @@ best_run, fitted_model = local_run.get_output()
 > [!NOTE]
 > 有关交叉验证 (CV) 过程中，时间系列数据可以违反规范的 K-折叠交叉验证策略的基本统计假设以便自动的机器学习实现滚动源验证过程中创建时间序列数据的交叉验证折叠。 若要使用此过程，指定`n_cross_validations`中的参数`AutoMLConfig`对象。 您可以绕过验证并使用自己的验证设置与`X_valid`和`y_valid`参数。
 
+### <a name="view-feature-engineering-summary"></a>查看功能工程摘要
+
+对于时序任务自动化的机器学习中的类型，可以查看特征工程过程中的详细信息。 下面的代码显示了每个原始功能以及以下属性：
+
+* 原始功能名称
+* 退出此原始功能而构成的工程特征号
+* 检测到类型
+* 是否删除功能
+* 原始特征的功能转换的列表
+
+```python
+fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+```
+
 ## <a name="forecasting-with-best-model"></a>通过最佳的模型预测
 
 使用最佳的模型迭代预测的测试数据集的值。
@@ -133,6 +147,16 @@ best_run, fitted_model = local_run.get_output()
 ```python
 y_predict = fitted_model.predict(X_test)
 y_actual = y_test.flatten()
+```
+
+或者，可以使用`forecast()`函数而不是`predict()`，以便预测何时应开始的规范。 在以下示例中，首先替换中的所有值`y_pred`与`NaN`。 预测的源将需要在定型数据的末尾在这种情况下，因为它通常将使用时`predict()`。 但是，如果替换的第二部分仅`y_pred`与`NaN`，该函数会使数字值处于前半部分修改，但预测`NaN`后半部分中的值。 该函数返回预测的值和对齐的功能。
+
+此外可以使用`forecast_destination`中的参数`forecast()`函数来预测在指定日期之前的值。
+
+```python
+y_query = y_test.copy().astype(np.float)
+y_query.fill(np.nan)
+y_fcst, X_trans = fitted_pipeline.forecast(X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
 计算 RMSE （方根误差） 之间`y_test`实际值和预测的值中`y_pred`。

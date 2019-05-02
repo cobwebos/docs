@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 72059862b3faf155bf08c5e2ca643fc32582c6a1
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 8c0a27ff623626b5a5ceb1897fa0f9f60ad80a3c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696127"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705119"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>使用 C# 查询 Azure 时序见解环境中的数据
 
@@ -456,5 +456,5 @@ namespace TimeSeriesInsightsQuerySample
 ```
 
 ## <a name="next-steps"></a>后续步骤
-> [!div class="nextstepaction"]
-> [查询 API 引用](/rest/api/time-series-insights/ga-query-api)。
+
+- 若要了解有关查询的详细信息，请阅读[查询 API 参考](/rest/api/time-series-insights/ga-query-api)。

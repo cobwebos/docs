@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 29d53c7fbd26d3c8e2356ce82ff25c7e1b165728
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 998fcba50636cd92b14bdbe1633c2548e84a6bfc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540786"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696416"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>通过 Azure 逻辑应用连接到 SQL Server 或 Azure SQL 数据库
 
@@ -116,23 +116,26 @@ ms.locfileid: "60540786"
 
 [!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
 
-## <a name="process-data-in-bulk"></a>批量处理数据
+## <a name="handle-bulk-data"></a>处理大容量数据
 
-如果处理的结果集很大，以致连接器无法一次性返回所有结果，或者需要更好地控制结果集的大小和结构，则可使用分页，以较小的集来管理这些结果。 
+有时，可能需要使用连接器不会在相同时，返回所有结果或所需的大小和结构的更好地控制对您的结果集太大的结果集。 下面是一些方法，可以处理这种较大的结果集：
 
-[!INCLUDE [Set up pagination for results exceeding default page size](../../includes/connectors-pagination-bulk-data-transfer.md)]
+* 为了帮助您管理与较小的集的结果，开启*分页*。 有关详细信息，请参阅[使用分页获取大容量数据、 记录和项](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)。
 
-### <a name="create-a-stored-procedure"></a>创建存储过程
+* 创建所需的方式组织其结果的存储的过程。
 
-获取或插入多个行时，逻辑应用可以在这些[限制](../logic-apps/logic-apps-limits-and-config.md)中使用 [*until loop*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) 来循环访问这些项。 但是，有时候逻辑应用需要处理的记录集很大（例如行的数目达到数千或数百万的地步），需要尽量减少针对数据库的调用的成本。 
+  逻辑应用时收到或插入多行，可以循环访问这些行通过使用[ *until 循环*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)内这些[限制](../logic-apps/logic-apps-limits-and-config.md)。 
+  但是，当逻辑应用必须使用记录集太大，例如，数千或数百万行，你想要最大程度减少数据库调用所导致的成本。
 
-可以改为创建一个<a href="https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine" target="blank">*存储过程*</a>，该过程在 SQL 实例中运行，并使用 **SELECT - ORDER BY** 语句按你所需要的方式来组织结果。 此解决方案可以更好地控制结果的大小和结构。 逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。 
+  若要组织中所需的方法的结果，可以创建[*存储过程*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine)会在 SQL 实例中运行，并使用**SELECT-ORDER BY**语句。 
+  此解决方案可以更好地控制结果的大小和结构。 
+  逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。
 
-如需解决方案详细信息，请参阅以下文章：
+  如需解决方案详细信息，请参阅以下文章：
 
-* <a href="https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx" target="_blank">SQL Pagination for bulk data transfer with Logic Apps</a>（通过 SQL 分页使用逻辑应用进行批量数据传输）
+  * [SQL Pagination for bulk data transfer with Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)（通过 SQL 分页使用逻辑应用进行批量数据传输）
 
-* <a href="https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql" target="_blank">SELECT - ORDER BY 子句</a>
+  * [SELECT - ORDER BY 子句](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 

@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: b09de67cddcec26a1083bb64d13b9bbc47c3d5e5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ae6547b7940ee4007c747847e6cec7b0c67a9d3c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998475"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717445"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间推移，将扩展和更新，包含更多服务列表。
@@ -77,6 +77,7 @@ ms.locfileid: "59998475"
 * [IoT 中心](#iot-hub-limits)
 * [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
+* [负载均衡器](#load-balancer)
 * [Log Analytics](#log-analytics-limits)
 * [媒体服务](#media-services-limits)
 * [移动服务](#mobile-services-limits)
@@ -84,6 +85,7 @@ ms.locfileid: "59998475"
 * [网络](#networking-limits)
 * [网络观察程序](#network-watcher-limits)
 * [通知中心](#notification-hubs-limits)
+* [公共 IP 地址](#publicip-address)
 * [资源组](#resource-group-limits)
 * [基于角色的访问控制](#role-based-access-control-limits)
 * [计划程序](#scheduler-limits)
@@ -137,10 +139,10 @@ ms.locfileid: "59998475"
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="networking-limits"></a>网络限制
-[!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
-
-#### <a name="networking-limits"></a>网络限制
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
+
+#### <a name="expressroute-limits"></a>ExpressRoute 限制
+[!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
 
 #### <a name="application-gateway-limits"></a>应用程序网关限制
 

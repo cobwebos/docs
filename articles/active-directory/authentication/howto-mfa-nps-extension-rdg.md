@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44cd18be888b18e8b045114b420ddd48ec909e3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 638703e4d67cbd004f0bd616ba31475f507dfd8a
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60360561"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873428"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -37,7 +37,7 @@ Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多�
 
 通常情况下，组织使用 NPS (RADIUS) 来简化和集中管理 VPN 策略。 然而，许多组织也会使用 NPS 简化和集中 RD 桌面连接授权策略 (RD CAP) 的管理。
 
-另外，组织还可以将 NPS 与 Azure MFA 进行集成，以增强安全性并提供高级别的符合性。 这将有助于确保用户建立双重验证以登录到远程桌面网关。 已授予访问权限的用户，他们必须提供其用户名/密码组合与用户已有的信息。 此信息必须受信任且不容易复制，例如手机号码、座机号码、移动设备上的应用程序等等。 有关支持的身份验证方法的详细信息，请参阅[决定你的用户可以使用哪些身份验证方法](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)部分。
+另外，组织还可以将 NPS 与 Azure MFA 进行集成，以增强安全性并提供高级别的符合性。 这将有助于确保用户建立双重验证以登录到远程桌面网关。 已授予访问权限的用户，他们必须提供其用户名/密码组合与用户已有的信息。 此信息必须受信任且不容易复制，例如手机号码、座机号码、移动设备上的应用程序等等。 RDG 目前 2fa 支持电话呼叫和来自 Microsoft 验证器应用方法的推送通知 有关支持的身份验证方法的详细信息，请参阅[决定你的用户可以使用哪些身份验证方法](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)部分。
 
 在为 Azure 提供 NPS 扩展之前，希望对集成的 NPS 和 Azure MFA 环境实施双重验证的客户，必须在本地环境中配置和维护单独的 MFA 服务器，如[使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器](howto-mfaserver-nps-rdg.md)中所述。
 

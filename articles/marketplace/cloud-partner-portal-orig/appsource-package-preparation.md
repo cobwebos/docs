@@ -1,25 +1,19 @@
 ---
-title: AppSource 包准备 | Microsoft Docs
+title: AppSource 包准备 |Azure Marketplace
 description: 介绍如何准备和生成 AppSource 包。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60625407"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935645"
 ---
 # <a name="appsource-package-preparation"></a>AppSource 包准备
 
@@ -117,7 +111,7 @@ AppSource 包需要几个附加的文件。
 |SolutionAnchorName |Package Deployer 中用于显示名称和解决方案资产说明的解决方案 zip 文件的名称。|
 | StartDate| 这是解决方案包可供使用的日期。 格式为 MM/DD/YYYY|
 |EndDate|这是解决方案包不再可供使用的日期。 格式为 MM/DD/YYYY |
-|SupportedCountries |这是可以看到此包的国家/地区的逗号分隔列表。 请联系联机服务部门获取所有最新国家/地区代码的列表。 当时，撰写本文列表为：AE，AL，AM，AO，AR，会在、 澳大利亚，AZ、 BA、 BB、 BD，，BG、 BH、 BM、 BN、 BO、 巴西，由 CA，CH，CI，CL，CM，CO、 CR、 CV，CW，CY、 CZ，DE、 DK、 执行、 DZ、 EC、 EE，例如，ES、 FI、 FR、 GB、 GE、 GH、 GR、 GT、 香港特别行政区HN、 HR、 HU、 ID、 IE、 IL、 IN、 IQ，是，它，JM、 JO、 JP、 KE、 KG、 KN、 韩国、 KW，肯塔基州，KZ、 LB、 LK、 L T、 LU、 LV、 LY，MA、 MC，MD、 我、 MK，MN，月，MT，MU，MX，我，NG，NI、 NL、 否、 新西兰、 OM、 PA，PE、 P HPK、 PL、 拉取请求、 PS、 PT、 上一年度、 QA、 RO、 RS、 RU、 RW、 SA、 SE、 SG、 SI，SK、 SN、 SV、 TH、 TM，TN、 TR、 TT、 TW、 UA、 美国、 UY、 UZ、 VE、 VI、 VN、 ZA、 ZW |
+|SupportedCountries |这是国家/地区，应会看到此包的以逗号分隔列表。 请联系联机服务部门获取所有最新国家/地区代码的列表。 当时，撰写本文列表为：AE，AL，AM，AO，AR，会在、 澳大利亚，AZ、 BA、 BB、 BD，，BG、 BH、 BM、 BN、 BO、 巴西，由 CA，CH，CI，CL，CM，CO、 CR、 CV，CW，CY、 CZ，DE、 DK、 执行、 DZ、 EC、 EE，例如，ES、 FI、 FR、 GB、 GE、 GH、 GR、 GT、 香港特别行政区HN、 HR、 HU、 ID、 IE、 IL、 IN、 IQ，是，它，JM、 JO、 JP、 KE、 KG、 KN、 韩国、 KW，肯塔基州，KZ、 LB、 LK、 L T、 LU、 LV、 LY，MA、 MC，MD、 我、 MK，MN，月，MT，MU，MX，我，NG，NI、 NL、 否、 新西兰、 OM、 PA，PE、 P HPK、 PL、 拉取请求、 PS、 PT、 上一年度、 QA、 RO、 RS、 RU、 RW、 SA、 SE、 SG、 SI，SK、 SN、 SV、 TH、 TM，TN、 TR、 TT、 TW、 UA、 美国、 UY、 UZ、 VE、 VI、 VN、 ZA、 ZW |
 |LearnMoreLink | 此包的详细信息页的 URL。 |
 |Locales|此节点的一个实例，适用于你要在首选解决方案 UX 中支持的每种 UX 语言。 此节点包含描述每种语言的区域设置、徽标和条款的子级|
 |区域设置：PackageLocale.Code|此节点的语言 LCID。 示例：美国英语为 1033|

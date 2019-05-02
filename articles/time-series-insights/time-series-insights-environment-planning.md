@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: ce31b22dcbf3fbe79192647e9a21983911e77a9c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: f73f814321abbb75624ac18c9191c69a99cfe925
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556027"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693578"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>计划 Azure 时序见解环境
 
 本文介绍了如何基于预期入口速率和数据保留要求计划 Azure 时序见解环境。
 
-## <a name="video"></a>视频： 
+## <a name="video"></a>视频
 
 ### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>在本视频中，我们将介绍时序见解数据保留以及如何规划它。</br>
 
@@ -35,17 +35,20 @@ ms.locfileid: "53556027"
 
 有关时序见解 SKU 的容量和保留期的详细信息，请参阅[时序见解定价](https://azure.microsoft.com/pricing/details/time-series-insights/)。
 
-为取得长期成功，请考虑以下属性，计划最佳的环境： 
+为取得长期成功，请考虑以下属性，计划最佳的环境：
+
 - 存储容量
 - 数据保留期
-- 入口容量 
+- 入口容量
 - 调整您的事件
 - 确保已具有参考数据
 
 ## <a name="understand-storage-capacity"></a>了解存储容量
+
 默认情况下，时序见解根据已预配的存储量（每个单位的存储时长）和入口来保留数据。
 
 ## <a name="understand-data-retention"></a>了解数据保留
+
 可配置时序见解环境的“数据保留期”设置，启用最长 400 天的保留期。  时序见解有两种模式，一种针对确保环境具有最新数据进行优化（默认情况下启用），另一种针对确保满足保留期限制进行优化，如果达到该环境的整体存储容量，则暂停流入。  可在 Azure 门户的环境配置页面中调整保留期并在这两种模式之间切换。
 
 可在时序见解环境中配置最长 400 天的数据保留。
@@ -88,15 +91,17 @@ ms.locfileid: "53556027"
 - 确认入口容量高于平均每分钟的速率，并且环境足够大，能够在 1 小时内处理相当于两倍容量的预期入口。
 
 - 如果入口激增持续时间超过 1 小时，则使用激增速率作为平均值，并预配容量足以处理激增速率的环境。
- 
+
 ### <a name="mitigate-throttling-and-latency"></a>缓解限制和延迟
 
 有关如何避免限制和延迟的信息，请参阅[缓解限制和延迟](time-series-insights-environment-mitigate-latency.md)。
 
 ## <a name="shaping-your-events"></a>调整您的事件
+
 请务必确保向 TSI 发送事件时采用的方法支持你在预配的环境的规模（反过来，可以将环境的规模映射为 TSI 可以读取的事件数和每个事件的大小）。  同样，请务必考虑在查询数据时你可能希望对其进分片以及作为筛选依据的属性。  为此，建议查看[发送事件文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events)中的 JSON 成型部分。  它在页面底部附近。  
 
 ## <a name="ensuring-you-have-reference-data-in-place"></a>确保已具有参考数据
+
 参考数据集是各种项的集合，这些项对事件源中的事件进行了增强。 时序见解入口引擎将事件源中的每个事件与参考数据集中的相应数据行联接到一起。 然后即可使用此增强的事件进行查询。 该联接基于在参考数据集中定义的主键列。
 
 请注意，参考数据不以追溯方式进行联接。 这意味着在配置并上传数据后，只会将当前和将来的入口数据匹配并联接到参考数据集。  如果打算向 TSI 发送大量历史数据并且不先在 TSI 中上传或创建参考数据，则可能必须重做你的工作（这意味着很无趣）。  
@@ -104,6 +109,7 @@ ms.locfileid: "53556027"
 若要详细了解如何在 TSI 中创建、上传和管理参考数据，请转至[参考数据集文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)。
 
 ## <a name="business-disaster-recovery"></a>业务灾难恢复
+
 作为一项 Azure 服务，时序见解在 Azure 区域级别使用冗余来提供高可用性 (HA)，而解决方案不需要执行任何额外的工作。 此外，Microsoft Azure 平台还包含了相关功能来帮助你构建提供灾难恢复 (DR) 功能或跨区域可用性的解决方案。 若要为设备或用户提供全局性的跨区域高可用性，请利用这些 Azure DR 功能。 [Azure 业务持续性技术指南](../resiliency/resiliency-technical-guidance.md)一文描述了针对业务连续性和 DR 的 Azure 内置功能。 [Azure 应用程序的灾难恢复和高可用性](https://docs.microsoft.com/azure/architecture/resiliency/index)一文针对 Azure 应用程序的 HA 和 DR 实现策略提供了体系结构指导。
 
 Azure 时序见解没有内置业务灾难恢复 (BCDR) 功能。
@@ -116,12 +122,14 @@ Azure 时序见解没有内置业务灾难恢复 (BCDR) 功能。
 但是，需要 BCDR 的客户仍然可以使用以下方法来实现恢复策略。
 通过在备份 Azure 区域中创建第二个时序见解环境，然后利用第二个专用使用者组，根据主要事件源的 BCDR 指南将事件从该事件源发送到此辅助环境。  
 
-1.  在第二个区域中创建环境。  在[此处](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)了解有关创建时序见解环境的更多信息。
-2.  为事件源创建第二个专用使用者组，并将该事件源连接到新环境。  请务必指定第二个专用使用者组。  可以参考 [IoT 中心文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)或[事件中心文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access)了解有关详细信息。
-3.  如果主要区域在灾难事件期间发生故障，请将操作切换到备用时序见解环境。  
+1. 在第二个区域中创建环境。  在[此处](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)了解有关创建时序见解环境的更多信息。
+1. 为事件源创建第二个专用使用者组，并将该事件源连接到新环境。  请务必指定第二个专用使用者组。  可以参考 [IoT 中心文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)或[事件中心文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access)了解有关详细信息。
+1. 如果主要区域在灾难事件期间发生故障，请将操作切换到备用时序见解环境。  
 
 在任何故障转移方案期间，需要注意的是，在 TSI 可以重新开始处理消息之前可能会有延迟：这可能导致消息处理激增。 有关详细信息，请参阅[本文档](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)
 
 ## <a name="next-steps"></a>后续步骤
-- [如何添加事件中心事件源](time-series-insights-how-to-add-an-event-source-eventhub.md)
-- [如何添加 IoT 中心事件源](time-series-insights-how-to-add-an-event-source-iothub.md)
+
+- 了解如何[添加事件中心事件源](time-series-insights-how-to-add-an-event-source-eventhub.md)向时序见解。
+
+- 阅读有关如何[配置 IoT 中心事件源](time-series-insights-how-to-add-an-event-source-iothub.md)。

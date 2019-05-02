@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0d520a9dc8d60a386d25694d441931fbc3ed38e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dec40f7ec21a4a059c6e4a7c75f6378f9757a479
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457451"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916848"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>语音设备 SDK 入门
 
@@ -28,7 +28,7 @@ ms.locfileid: "61457451"
 
 在使用语音设备 SDK 开始开发之前，收集需要的信息和软件：
 
-* [从 ROOBO 获取开发工具包](http://ddk.roobo.com/)。 工具包可用于线性或环形麦克风数组配置。 根据需要选择正确的配置。
+* [从 ROOBO 获取开发工具包](https://ddk.roobo.com/)。 工具包可用于线性或环形麦克风数组配置。 根据需要选择正确的配置。
 
     |开发工具包配置|扬声器位置|
     |-----------------------------|------------|
@@ -199,4 +199,4 @@ ms.locfileid: "61457451"
 
 ### <a name="audio"></a>音频
 
-ROOBO 提供一个工具用于将所有音频捕获到闪存。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 在 [ROOBO 站点](http://ddk.roobo.com/)上选择你的设备，然后选择页面底部的“ROOBO 工具”链接。
+ROOBO 提供一个工具用于将所有音频捕获到闪存。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 在 [ROOBO 站点](https://ddk.roobo.com/)上选择你的设备，然后选择页面底部的“ROOBO 工具”链接。

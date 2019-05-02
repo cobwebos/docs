@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: raynew
-ms.openlocfilehash: 5ee1328dddb6ae1e1c878384097b0e10aa32feeb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 61bcc0565d57f9c64c453f79f319fc56d5a6de18
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776282"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925063"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -126,7 +126,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 **更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 更新 Site Recovery 代理和提供程序 （如所述汇总）
-**适用于 Linux 的灾难恢复** | **Azure VM**：添加受支持的 RedHat Enterprise Linux 6.10;CentOS 6.10。<br/><br/> **VMware Vm**:RedHat Enterprise Linux 6.10; CentOS 6.10.<br/><br/> 基于 Linux 的虚拟机现在支持使用在传统的 BIOS 兼容性模式中的 GUID 分区表 (GPT) 分区样式。 请参阅[有关 Azure IaaS VM 磁盘常见问题解答](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/faq-for-disks)有关详细信息。 
+**适用于 Linux 的灾难恢复** | **Azure VM**：添加受支持的 RedHat Enterprise Linux 6.10;CentOS 6.10。<br/><br/> **VMware Vm**:RedHat Enterprise Linux 6.10; CentOS 6.10.<br/><br/> 基于 Linux 的虚拟机现在支持使用在传统的 BIOS 兼容性模式中的 GUID 分区表 (GPT) 分区样式。 请参阅[有关 Azure IaaS VM 磁盘常见问题解答](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks)有关详细信息。 
 **云支持** | 支持在德国云中的 Azure Vm 灾难恢复。
 **跨订阅灾难恢复** | 将一个区域中的 Azure Vm 复制到在不同订阅中，同一 Azure Active Directory 租户中的另一个区域的支持。 [了解详细信息](https://aka.ms/cross-sub-blog)。
 **Windows Server 2008** | 对迁移的支持计算机正在运行 Windows Server 2008 R2/2008年 64 位和 32 位。<br/><br/> 仅适用于迁移 （复制和故障转移）。 不支持故障回复。

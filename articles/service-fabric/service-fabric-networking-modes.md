@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 6f14b3184cabd1dfd84f04260f6b8c831037cbcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ecb7ac4d3359142d3aef247e4b918f517e10c3bb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718149"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926133"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
@@ -30,7 +30,7 @@ ms.locfileid: "60718149"
 容器服务重启或移动到群集中的另一个节点时，IP 地址会发生更改。 为此，不建议使用动态分配的 IP 地址来发现容器服务。 应仅使用 Service Fabric 命名服务或 DNS 服务来发现服务。 
 
 >[!WARNING]
->Azure 允许每个虚拟网络包含 65356 Ip 的总计。 节点数和容器服务实例 （即使用开放模式） 数的总和不能超过虚拟网络中包含 65356 Ip。 对于高密度方案，建议使用 nat 网络模式。 此外，例如负载均衡器的其他依赖项将具有其他[限制](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)需要考虑。 每个节点的当前最多为 50 Ip 已测试并证明了稳定性。 
+>Azure 允许每个虚拟网络包含 65356 Ip 的总计。 节点数和容器服务实例 （即使用开放模式） 数的总和不能超过虚拟网络中包含 65356 Ip。 对于高密度方案，建议使用 nat 网络模式。 此外，例如负载均衡器的其他依赖项将具有其他[限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)需要考虑。 每个节点的当前最多为 50 Ip 已测试并证明了稳定性。 
 >
 
 ## <a name="set-up-open-networking-mode"></a>设置开放网络模式

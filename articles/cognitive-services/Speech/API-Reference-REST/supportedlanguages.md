@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 044c0355b6ec9f064cae74ffd5259d457cb49147
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2cce7203d23d5de77200fdf75ab31042d9608352
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60515409"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866369"
 ---
 # <a name="supported-languages"></a>支持的语言
 
@@ -29,7 +29,7 @@ Microsoft 语音识别 API 在 `interactive` 和 `dictation` 模式下支持以�
 |代码 | 语言 | 代码 | 语言 |
 |-----|-----|-----|-----|
 | ar-EG | 阿拉伯语(埃及)，现代标准 | hi-IN | 印地语(印度) |
-| ca-ES | 加泰罗尼亚语(西班牙) | it-IT | 意大利语(意大利)  |
+| ca-ES | 加泰罗尼亚语 | it-IT | 意大利语(意大利)  |
 | da-DK | 丹麦语(丹麦) | ja-JP | 日语(日本) |
 | de-DE | 德语(德国) |ko-KR | 韩语(韩国) |
 | en-AU | 英语(澳大利亚) |nb-NO | 书面挪威语(挪威)  |

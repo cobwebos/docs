@@ -11,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 172bf201e2327f5ae8db0ac3c82f2f07e3f0ffc9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: b33561ad80207a5d649ac1fd497c9d6c7add78c6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997472"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723992"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>使用 R （预览版） 的 azure SQL 数据库机器学习服务
 
@@ -69,6 +69,6 @@ In addition to the pre-installed packages, you can [install additional packages]
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[与 SQL Server 机器学习服务的主要区别](sql-database-machine-learning-services-differences.md)。
-- 如需了解如何在 Azure SQL 数据库中使用机器学习服务（使用 R），请参阅[快速入门指南](sql-database-connect-query-r.md)。
-- 有关详细信息，请参阅 [SQL Server R 语言教程](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sql-server-r-tutorials)
+- 请参阅[主要从 SQL Server 机器学习服务的差别](sql-database-machine-learning-services-differences.md)。
+- 若要了解如何使用 R 来查询 Azure SQL 数据库机器学习服务 （预览版），请参阅[快速入门指南](sql-database-connect-query-r.md)。
+- 若要开始使用一些简单的 R 脚本，请参阅[创建并运行的 Azure SQL 数据库机器学习服务 （预览版） 中的简单 R 脚本](sql-database-quickstart-r-create-script.md)。

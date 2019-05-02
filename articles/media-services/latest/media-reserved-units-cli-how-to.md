@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/24/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0dcfa4e7cd792f61d1620a57330f87c5c86e6c9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e7b3b316a8a6dcde95bdf872dbda4cd1372f072
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322526"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721808"
 ---
 # <a name="scaling-media-processing"></a>缩放媒体处理能力
 
@@ -33,9 +33,9 @@ ms.locfileid: "60322526"
 
 |RU 类型|场景|[7 分钟 1080p 视频](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)的示例结果|
 |---|---|---|
-| **S1**|单比特率编码。 <br/>具有 SD 或更低分辨率的文件，不具有高时效性，成本低。|使用“H264 单比特率 SD 16x9”编码为单比特率 SD 分辨率 MP4 文件需要 10 分钟。|
-| **S2**|单比特率和多比特率编码。<br/>SD 和 HD 编码的正常使用情况。|预设为“H264 单比特率 720p”的编码大约需要 8 分钟。<br/><br/>预设为“H264 多比特率 720p”的编码大约需要 16.8 分钟。|
-| **S3**|单比特率和多比特率编码。<br/>全高清和 4K 分辨率视频。 对时间敏感，更快的编码周转。|预设为“H264 单比特率 1080p”的编码大约需要 4 分钟。<br/><br/>预设为“H264 多比特率 1080p”的编码大约需要 8 分钟。|
+| **S1**|单比特率编码。 <br/>具有 SD 或更低分辨率的文件，不具有高时效性，成本低。|编码为单比特率 SD 解析 MP4 文件使用"H264 单一比特率标清 16x9"大约需要 7 分钟。|
+| **S2**|单比特率和多比特率编码。<br/>SD 和 HD 编码的正常使用情况。|编码为"H264 单比特率 720p"预设需要大约 6 分钟。<br/><br/>使用编码"H264 多比特率 720p"预设需要约 12 分钟的时间。|
+| **S3**|单比特率和多比特率编码。<br/>全高清和 4K 分辨率视频。 对时间敏感，更快的编码周转。|编码为"H264 单比特率 1080p"预设需要约 3 分钟时间。<br/><br/>使用编码"H264 多比特率 1080p"预设需要大约 8 分钟。|
 
 ## <a name="considerations"></a>注意事项
 
@@ -62,7 +62,7 @@ ms.locfileid: "60322526"
 以下 [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) 命令使用 **count** 和 **type** 参数在“amsaccount”帐户上设置媒体保留单位。
 
 ```azurecli
-az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
+az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 ```
 
 ## <a name="billing"></a>计费

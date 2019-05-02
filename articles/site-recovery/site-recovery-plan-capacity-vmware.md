@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 7b10db06ab4ade1b23985b1a259d82d4818941b1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 9a77b3982d8aed6ae694c32baecd7ae194c51724
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124960"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924834"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
 
@@ -120,7 +120,7 @@ CPU | 内存 | 缓存磁盘大小 | 数据更改率 | 受保护的计算机
 
 ## <a name="deploy-additional-process-servers"></a>部署附加的进程服务器
 
-如果将部署扩展到 200 台以上的源计算机，或者每日总变动率超过 2 TB，则必须添加进程服务器来处理流量。 提供了增强的产品中 9.24 版本提供[在产品指南](vmware-azure-manage-process-server.md#process-server-selection-guidance)何时设置横向扩展进程服务器。 [设置进程服务器](vmware-azure-set-up-process-server-scale.md)来保护新的源计算机或[平衡负载](vmware-azure-manage-process-server.md#balance-the-load-on-process-server)。
+如果将部署扩展到 200 台以上的源计算机，或者每日总变动率超过 2 TB，则必须添加进程服务器来处理流量。 提供了增强的产品中 9.24 版本提供[处理服务器警报](vmware-physical-azure-monitor-process-server.md#process-server-alerts)何时设置横向扩展进程服务器。 [设置进程服务器](vmware-azure-set-up-process-server-scale.md)来保护新的源计算机或[平衡负载](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>对计算机进行迁移，以使用新的进程服务器
 

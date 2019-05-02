@@ -3,20 +3,19 @@ title: Azure Active Directory B2C 标识体验框架架构的整数声明转换�
 description: Azure Active Directory B2C 标识体验框架架构的整数声明转换示例。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 04/04/2019
-ms.author: v-junlch
+ms.date: 09/10/2018
+ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 358ee07b8fd32edded084d406e490cae9f557fdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 20c109f188acfe37292aa31dfe057ced8b73199b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397135"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694752"
 ---
 # <a name="integer-claims-transformations"></a>整数声明转换
 
@@ -52,5 +51,4 @@ ms.locfileid: "60397135"
     - **inputClaim**：12334 (long)
 - 输出声明： 
     - **outputClaim**："12334" (string)
-
 

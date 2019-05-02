@@ -1,25 +1,18 @@
 ---
-title: Azure SaaS 应用程序产品/服务体验版配置 |Microsoft Docs
+title: Azure SaaS 应用程序产品/服务测试驱动器配置 |Azure Marketplace
 description: 在 Azure 市场上为 SaaS 应用程序产品/服务配置体验版。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pbutlerm
-ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: c76290d6c96108ff04799151c82334264a4c3dd0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594238"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941714"
 ---
 # <a name="saas-application-test-drive-tab"></a>SaaS 应用程序“体验版”选项卡
 

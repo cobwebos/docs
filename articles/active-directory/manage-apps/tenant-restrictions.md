@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: celested
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b78897e2e03085a20f07ce8724226f0e0171861e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa4eeb0a21525d636c7c1193c125d525774fa3fe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291224"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707173"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制来管理对 SaaS 云应用程序的访问
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 解决这个难题是名为租户限制的功�
 
 3. **客户端软件**:若要支持租户限制，客户端软件必须请求令牌直接从 Azure AD，使代理基础结构可以截获流量。 基于浏览器的 Office 365 应用程序目前支持租户限制，使用 OAuth 2.0 等新式身份验证的 Office 客户端。
 
-4. **新式身份验证**:云服务必须使用新式身份验证来使用租户限制，阻止对所有不允许的租户的访问。 必须配置 Office 365 云服务，默认情况下使用新式身份验证协议。 有关 Office 365 对新式身份验证的支持的最新信息，请阅读 [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)（更新的 Office 365 新式身份验证）。
+4. **新式身份验证**:云服务必须使用新式身份验证来使用租户限制，阻止对所有不允许的租户的访问。 必须配置 Office 365 云服务，默认情况下使用新式身份验证协议。 有关 Office 365 对新式身份验证的支持的最新信息，请阅读 [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)（更新的 Office 365 新式身份验证）。
 
 下图演示了大致的流量流。 租户限制需要仅在流量到 Azure AD 上，而不是 Office 365 云服务上的 SSL 检查。 这一区别很重要，因为 Azure AD 身份验证的流量卷是通常比 SaaS 应用程序，如 Exchange Online 和 SharePoint Online 的通信流量低得多。
 
@@ -128,7 +128,7 @@ Office 365 应用程序必须满足两个条件才能完全支持租户限制：
 1. 使用的客户端支持新式身份验证。
 2. 已启用新式身份验证作为云服务的默认身份验证协议。
 
-有关哪些 Office 客户端目前支持新式身份验证的最新信息，请参阅 [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)（更新的 Office 365 新式身份验证）。 该页面还包含有关如何在特定的 Exchange Online 和 Skype for Business Online 租户中启用新式身份验证的说明文档链接。 SharePoint Online 已启用新式身份验证默认情况下。
+有关哪些 Office 客户端目前支持新式身份验证的最新信息，请参阅 [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)（更新的 Office 365 新式身份验证）。 该页面还包含有关如何在特定的 Exchange Online 和 Skype for Business Online 租户中启用新式身份验证的说明文档链接。 SharePoint Online 已启用新式身份验证默认情况下。
 
 Office 365 基于浏览器的应用程序 （Office 门户、 Yammer、 SharePoint 网站、 Outlook Web 应用程序和的详细信息） 目前支持租户限制。 仅当使用新式身份验证时，胖客户端 （Outlook、 Skype 的业务、 Word、 Excel、 PowerPoint 和的详细信息） 可以强制实施租户限制。  
 
@@ -185,5 +185,5 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读 [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)（更新的 Office 365 新式身份验证）
+- 阅读 [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)（更新的 Office 365 新式身份验证）
 - 查看 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)

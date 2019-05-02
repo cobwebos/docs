@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 71856865eb7a0445cdcf39def9c0fc89c1f8dcec
+ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468356"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951431"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
@@ -43,7 +43,7 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 > [!NOTE]
-> Microsoft Translator 中心将于 2019 年 4 月 30 日停用旧。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
+> Microsoft Translator 中心将于 2019 年 5 月 17 日，停用旧。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 ## <a name="custom-translator-versus-hub"></a>自定义翻译与 Hub
 
@@ -60,8 +60,6 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 
 > [!NOTE]
 > 自 2018 年 2 月 1 日起，AddTranslation() 和 AddTranslationArray() 不再可用于文本翻译 API V2.0。 这些方法将失败，不会写入任何内容。 文本翻译 API V3.0 不支持这些方法。
-> 
-> Translator Hub API 中提供了类似的功能。 请参阅 [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
 
 ## <a name="next-steps"></a>后续步骤
 

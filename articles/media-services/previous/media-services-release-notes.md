@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 25da9fd787c467bdddb7c8dcd68b9df518d018b7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621424"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728031"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>签出的最新版本[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 我们希望能够倾听客户的心声，以便努力解决对客户造成影响的问题。 要报告问题或提出问题，请将在 [Azure 媒体服务 MSDN 论坛]提交问题。 
 
@@ -321,10 +321,6 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 * 当前，无法通过 SSL 连接摄取 RTMP 实时流。
 * 仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可通过 SSL 流式传输内容。 如果流式处理 URL 是基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含“origin.mediaservices.windows.net”（旧格式）的流式处理 URL 不支持 SSL。 如果 URL 采用旧格式，并且希望通过 SSL 流式传输内容，请[创建新的流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。 若要通过 SSL 流式传输内容，请使用基于新流式处理终结点的 URL。
 
-## <a id="october_changes_14"></a>2014 年 10 月版本
-### <a id="new_encoder_release"></a>媒体服务编码器版本
- 宣布推出新版媒体服务 Azure 媒体编码器。 使用最新 Media Encoder，仅针对输出 GB 数进行收费。 除此之外，新版编码器的功能与旧版编码器兼容。 有关详细信息，请参阅[媒体服务定价详细信息]。
-
 ### <a id="oct_sdk"></a>媒体服务 .NET SDK
 适用于 .NET 的媒体服务 SDK 扩展当前版本为 2.0.0.3。
 
@@ -396,14 +392,6 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
   * 收到 Web 异常时（例如在访问控制服务令牌请求过程中），灾难性错误现将更快失败。
 
 有关详细信息，请参阅[适用于 .NET 的媒体服务 SDK 中的重试逻辑]。
-
-## <a id="april_changes_14"></a>2014 年 4 月编码器版本
-### <a name="april_14_enocer_changes"></a>媒体服务编码器更新
-* 添加了对引入使用 Grass Valley EDIUS 非线性编辑器创作的 AVI 文件的支持。 在此过程中，使用 Grass Valley HQ/HQX 编解码器轻微压缩了视频。 有关详细信息，请参阅 [Grass Valley 宣布通过云对 EDIUS 7 进行流式处理]。
-*  添加了对指定媒体服务编码器所生成文件命名约定的支持。 有关详细信息，请参阅[控制媒体服务编码器输出文件名](https://msdn.microsoft.com/library/azure/dn303341.aspx)。
-*  增加了对视频和/或音频覆盖的支持。 有关详细信息，请参阅[创建覆盖层](https://msdn.microsoft.com/library/azure/dn640496.aspx)。
-*  增加了对拼接多个视频片段的支持。 有关详细信息，请参阅[拼结视频片段](https://msdn.microsoft.com/library/azure/dn640504.aspx)。
-* 修复了与转码 MP4 时以 MPEG-1 音频层 3（也称为 MP3）格式编码音频相关的 bug。
 
 ## <a id="jan_feb_changes_14"></a>2014 年 1/2 月版本
 ### <a name="jan_fab_14_donnet_changes"></a>媒体服务 .NET SDK 3.0.0.1、3.0.0.2 和 3.0.0.3
@@ -556,7 +544,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 <!--- URLs. --->
 [Azure 媒体服务 MSDN 论坛]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Azure 媒体服务 REST API 参考]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
-[媒体服务定价详细信息]: https://azure.microsoft.com/pricing/details/media-services/
+[Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [输入元数据]: https://msdn.microsoft.com/library/azure/dn783120.aspx
 [输出元数据]: https://msdn.microsoft.com/library/azure/dn783217.aspx
 [Deliver content]: https://msdn.microsoft.com/library/azure/hh973618.aspx
@@ -573,7 +561,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: https://msdn.microsoft.com/library/azure/dn189154.aspx
 [适用于 .NET 的媒体服务 SDK 中的重试逻辑]: https://msdn.microsoft.com/library/azure/dn745650.aspx
-[Grass Valley 宣布通过云对 EDIUS 7 进行流式处理]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: https://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: https://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: https://msdn.microsoft.com/library/azure/dn640504.aspx

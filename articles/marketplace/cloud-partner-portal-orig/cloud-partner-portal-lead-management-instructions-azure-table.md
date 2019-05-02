@@ -1,25 +1,18 @@
 ---
-title: Azure 表 | Microsoft Docs
+title: Azure 表 |Azure Marketplace
 description: 为 Azure 表配置潜在顾客管理。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2a8ae3ab71b258d92d9761cc813b168717e44d82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: af582e51875f84503116f4ec7131464d51e54a99
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61066405"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935845"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Azure 表的潜在客户管理说明
 

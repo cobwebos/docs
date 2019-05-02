@@ -5,15 +5,15 @@ services: virtual-machines
 author: jpconnock
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/18/2018
+ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: ca4063d31d93aab3814abed202b6b91b7726185f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f60b5421f2bc66cf09ede4178ce18e2394030264
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542913"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64929349"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移
 本文介绍如何将基础结构即服务 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure 资源管理器功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 
@@ -74,7 +74,20 @@ ms.locfileid: "60542913"
 
 > [!NOTE]
 > Resource Manager 部署模型没有经典映像和磁盘的概念。 迁移存储帐户时，经典映像和磁盘不在 Resource Manager 堆栈中可见，但后备 VHD 保留在存储帐户中。
->
+
+以下屏幕截图显示如何将经典存储帐户升级为使用 Azure 门户的 Azure 资源管理器存储帐户：
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 导航到存储帐户。
+3. 在中**设置**部分中，单击**迁移到 ARM**。
+4. 单击**验证**来确定迁移可行性。
+5. 如果通过了验证，请单击**准备**创建已迁移的存储帐户。
+6. 类型**是**以确认迁移，然后单击**提交**以完成迁移。
+
+    ![验证存储帐户](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
+    
+    ![准备存储帐户](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
+    
+    ![完成存储帐户迁移](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
 
 ### <a name="migration-of-unattached-resources"></a>未附加资源的迁移
 没有关联的磁盘或虚拟机数据的存储帐户可以单独迁移。
@@ -102,7 +115,7 @@ ms.locfileid: "60542913"
 
 | 服务 | 配置 | 建议 |
 | --- | --- | --- |
-| 资源管理器 |经典资源的基于角色的访问控制 (RBAC) |由于资源的 URI 在迁移后会进行修改，因此建议用户规划需要在迁移后进行的 RBAC 策略更新。 |
+| 资源管理器 |基于角色的访问控制 (RBAC) 的经典资源 |由于资源的 URI 在迁移后会进行修改，因此建议用户规划需要在迁移后进行的 RBAC 策略更新。 |
 | 计算 |与 VM 关联的多个子网 |将子网配置更新为只引用一个子网。 这可能需要从 VM 中删除辅助 NIC（该 NIC 引用另一个子网） ，完成迁移后再将其重新附加。 |
 | 计算 |属于虚拟网络，但未分配显式子网的虚拟机 |可以选择性地删除 VM。 |
 | 计算 |具有警报、自动缩放策略的虚拟机 |迁移进行下去时，这些设置会删除。 强烈建议用户在进行迁移之前先评估其环境。 或者，也可以在迁移完成之后重新配置警报设置。 |

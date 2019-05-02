@@ -1,25 +1,18 @@
 ---
-title: 为 Azure 应用程序产品/服务配置 SKU | Microsoft Docs
+title: 配置 Azure 应用程序产品/服务 Sku |Azure Marketplace
 description: 如何为 Azure 托管应用程序和 Azure 解决方案模板配置 SKU。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5d6ec0197699f603c79f414e015cdebcde6b9f60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: ef4ea2419c64d0376023ea5d291460df48a51c63
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744985"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943409"
 ---
 # <a name="azure-application-skus-tab"></a>Azure 应用程序 SKU 选项卡
 
@@ -44,22 +37,25 @@ ms.locfileid: "60744985"
 
 ### <a name="sku-details-for-a-solution-template"></a>解决方案模板的 SKU 详细信息
 
-提供以下 SKU 设置：
+下一步的屏幕截图显示 SKU 详细信息窗体的解决方案模板。
 
-- **标题** - SKU 的标题。 此标题将显示在此项的库中。
-- **摘要** - SKU 的简短摘要说明。 （最大长度为 100 个字符。）
-- **说明** - SKU 的详细说明。
-- **SKU 类型** - 含以下值的下拉列表：“解决方案模板”和“托管应用程序”。 对于本方案，请选择“解决方案模板”。
-- **云可用性** - SKU 的位置。 默认值为“公共 Azure”。
-公共 Azure - 客户可以在集成了市场的所有公共 Azure 区域中部署此虚拟机。
-- **Azure 政府云** - 将在 Azure 政府云中部署此虚拟机。 微软建议发布者先测试并验证他们的解决方案在环境中是否按预期工作，然后再发布到 [Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。
+![解决方案模板的 SKU 详细信息窗体](./media/azureapp-sku-details-solutiontemplate.png)
 
-  >[!NOTE] 
-  >Microsoft Azure 政府是政府社区云，美国联邦、州、地方或部落客户和有资格服务于这些实体的合作伙伴对政府社区云具有受控访问权限。
+提供以下 SKU 值。  追加一个星号的字段是必需的。
 
-- **是否为专用 SKU?** - 如果此 SKU 仅供一组特定客户使用，选择“是”。
+|    字段         |       描述                                                            |
+|  ---------       |     ---------------                                                          |
+|  **标题\***     | Sku 标题。 此标题将显示在此项的库中。   |
+| **摘要\***    | SKU 的简短摘要说明。 （最大长度为 100 个字符。）  |
+| **说明\*** | SKU 的详细的说明。 支持基本的 HTML。                 | 
+| **SKU 类型\***   | 类型的 Azure 应用程序解决方案，选择 ***解决方案模板**对于此方案。 |
+| **云可用性\*** | SKU 的位置。 默认值为“公共 Azure”。  <b/>   **公共 Azure** -应用程序为可部署到集成了 marketplace 的所有公共 Azure 区域中的客户。  <b/>   **Azure 政府版云**-将在 Azure 政府版云中部署应用。 之前发布到[Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)，Microsoft 建议发布者测试并验证其解决方案的工作原理，此环境中的预期。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。  |
+| **这是一种专用的 SKU？\*** | 选择**是**如果此 SKU 仅供一组精选的客户。 |
+|   |   |
 
-    ![解决方案模板的 SKU 详细信息窗体](./media/azureapp-sku-details-solutiontemplate.png)
+  > [!NOTE] 
+  > Microsoft Azure 政府是政府社区云，美国联邦、州、地方或部落客户和有资格服务于这些实体的合作伙伴对政府社区云具有受控访问权限。
+
 
 ### <a name="sku-details-for-managed-application"></a>托管应用程序的 SKU 详细信息
 
@@ -67,51 +63,45 @@ ms.locfileid: "60744985"
 
    ![托管应用程序的 SKU 详细信息窗体](./media/azureapp-sku-details-managedapplication.png)
 
-配置以下 SKU 设置：
+配置以下 SKU 设置。 追加一个星号的字段是必需的。
 
-- **标题** - SKU 的标题。 此标题将显示在此项的库中。
-- **摘要** - SKU 的简短摘要说明。 （最大长度为 100 个字符。）
-- **说明** - SKU 的详细说明。
-- **SKU 类型** - 含以下值的下拉列表：“解决方案模板”和“托管应用程序”。 对于本方案，请选择“托管应用程序”。
-- **云可用性** - SKU 的位置。 默认值为“公共 Azure”。
-- **公共 Azure** - 客户可以在集成了市场的所有公共 Azure 区域中部署此虚拟机。
-- **Azure 政府云** - 将在 Azure 政府云中部署此虚拟机。 微软建议发布者先测试并验证他们的解决方案在环境中是否按预期工作，然后再发布到 [Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。
+|    字段         |       描述                                                            |
+|  ---------       |     ---------------                                                          |
+|  **标题\***     | Sku 标题。 此标题将显示在此项的库中。   |
+| **摘要\***    | SKU 的简短摘要说明。 （最大长度为 100 个字符。）  |
+| **说明\*** | SKU 的详细的说明。 支持基本的 HTML。                 | 
+| **SKU 类型\***   | 类型的 Azure 应用程序解决方案，选择 ***托管应用程序**对于此方案。 
+| **云可用性\*** | SKU 的位置。 默认值为“公共 Azure”。  <b/>   **公共 Azure** -应用程序为可部署到集成了 marketplace 的所有公共 Azure 区域中的客户。  <b/>   **Azure 政府版云**-将在 Azure 政府版云中部署应用。 之前发布到[Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)，Microsoft 建议发布者测试并验证其解决方案的工作原理，此环境中的预期。 若要暂存和测试，可请求一个[试用帐户](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)。   Microsoft Azure 政府是政府社区云，美国联邦、州、地方或部落客户和有资格服务于这些实体的合作伙伴对政府社区云具有受控访问权限。 |
+| **这是一种专用的 SKU？\*** | 选择**是**如果此 SKU 仅供一组精选的客户。 |
+| **国家/地区/区域可用性\*** | 使用**选择区域**若要查看可用的国家/地区的列表。 勾选国家/地区，然后选择“确定”保存你的选择。  <b/>   ![国家/地区和区域可用性列表](./media/azure-app-select-country-region.png)  |
+| **旧的定价\*** | 每月的以美元为单位的 sku 价格。 配置时，使用当前汇率换算为以本地货币为单位的价格。 请验证这些设置，因为它们最终归你所有。 若要单独设置或查看每个国家/地区的价格，请导出定价电子表格并导入应用了自定义定价的表格。  必须保存定价更改以便导出/导入的定价数据。  |
+| **简化的货币定价\*** | 每月的以美元为单位的 sku 价格。 这与旧定价相同。 有关详细信息，请参阅[简化的货币定价](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer)。 |
+|  |  |
 
-  >[!NOTE] 
-  >Microsoft Azure 政府是政府社区云，美国联邦、州、地方或部落客户和有资格服务于这些实体的合作伙伴对政府社区云具有受控访问权限。
-
-- **是否为专用 SKU?** - 如果此 SKU 仅供一组特定客户使用，选择“是”。
-- **国家/地区可用性** - 通过“选择区域”查看可用的国家/地区的列表。 勾选国家/地区，然后选择“确定”保存你的选择。 
-
-   ![国家/地区可用性列表](./media/azure-app-select-country-region.png)
-
-- **旧定价** - 输入 SKU 的价格，单位为“美元/月”。 配置时，使用当前汇率换算为以本地货币为单位的价格。 请验证这些设置，因为它们最终归你所有。 若要单独设置或查看每个国家/地区的价格，请导出定价电子表格并导入应用了自定义定价的表格。
-
-  >[!NOTE]
-  >保存定价更改，实现定价数据的导出/导入。
-
-- **简化的货币定价** - 输入 SKU 的价格，单位为“美元/月”。 这与旧定价相同。 有关详细信息，请参阅[简化的货币定价](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer)。
 
 ### <a name="package-details-for-solution-template"></a>解决方案模板的包详细信息
 
-提供以下包详细信息：
+   ![解决方案模板的包详细信息](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
-- **版本** - 要上传的包版本。 版本标记必须采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。
-- **包文件 (.zip)** - 此包包含以下文件，这些文件保存在一个 .zip 文件中。
+提供以下**包的详细信息**值。  追加一个星号的字段是必需的。
+
+- **版本\*** -将上传的包的版本。 版本标记必须采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。
+- **包文件 (.zip)\***  -此包包含以下文件，保存在.zip 文件。
   - MainTemplate.json - 部署模板文件，用于部署解决方案/应用程序并创建针对解决方案定义的资源。 有关详细信息，请参阅[如何创作部署模板文件](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)。
   - createUIDefinition.json - Azure 门户使用此文件生成用于预配此解决方案/应用程序的用户界面。 有关详细信息，请参阅[为托管应用程序创建 Azure 门户用户界面](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)。
 
   >[!IMPORTANT] 
   >此包应该包含预配此应用程序所需的任何嵌套模板或脚本。 MainTemplate.json 和 createUIDefinition.json 必须位于根文件夹中。
 
-   ![解决方案模板的包详细信息](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 ### <a name="package-details-for-managed-application"></a>托管应用程序的包详细信息
 
-提供以下包详细信息：
+   ![托管应用程序的包详细信息](./media/azureapp-sku-pkgdetails-managedapplication.png)
 
-- **版本** - 要上传的包版本。 版本标记必须采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。
-- **包文件 (.zip)** - 此包包含以下文件，这些文件保存在一个 .zip 文件中。
+提供以下包详细信息。  追加一个星号的字段是必需的。
+
+- **版本\*** -将上传的包的版本。 版本标记必须采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。
+- **包文件 (.zip)\***  -此包包含以下文件，保存在.zip 文件。
   - applianceMainTemplate.json - 部署模板文件，用于部署解决方案/应用程序并创建定义的资源。 有关详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。 
   - applianceCreateUIDefinition.json - Azure 门户使用此文件生成用于预配此解决方案/应用程序的用户界面。 有关详细信息，请参阅[为托管应用程序创建 Azure 门户用户界面](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)。
   - mainTemplate.json - 仅包含 Microsoft.Solution/appliances 资源的模板文件。 有关详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)。 <br>
@@ -123,24 +113,23 @@ ms.locfileid: "60744985"
   >[!IMPORTANT] 
   >此包应该包含预配此应用程序所需的任何嵌套模板或脚本。 以下文件必须位于根文件夹中：MainTemplate.json、applianceMainTemplate.json 和 applianceCreateUIDefinition.json。
 
-- **租户 Id** - 组织的 Azure Active Directory 租户的 ID。
-- **启用 JIT 访问?** - 选择“是”可通过此产品/服务为客户部署启用实时管理访问。
+- **租户 Id\***  -你的组织的 Azure Active Directory 租户 id。
+- **启用 JIT 访问？\***  – 选择**是**若要启用实时中使用此产品/服务的客户部署的管理访问权限。
 
   >[!NOTE] 
   >如果启用 JIT，你必须更新 CreateUiDefinition.json 文件以支持 JIT 访问。
 
-   ![托管应用程序的包详细信息](./media/azureapp-sku-pkgdetails-managedapplication.png)
-
 对于托管应用程序，必须配置授权和策略设置。
+
 
 #### <a name="authorization"></a>授权
 
 添加要授予对托管资源组的访问权限的用户、组或应用程序的 Azure Active Directory 标识符。 角色定义 ID 指示授予的权限。它可能是所有者、 参与者或任何自定义角色。
 
+
 #### <a name="policy-settings"></a>策略设置
 
 添加托管应用符合的策略。 详细了解 Azure 资源策略，请参阅[什么是 Azure Policy？](../../../governance/policy/overview.md)
-
 
    ![托管应用程序的授权和策略设置](./media/azureapp-sku-details-managedapp-auth-policy.png)
 
@@ -163,6 +152,7 @@ ms.locfileid: "60744985"
 
 4. 在“策略 SKU”处，选择“免费”或“标准”作为策略 SKU 类型。 审核策略需选择标准 SKU。
 
+
 ## <a name="next-steps"></a>后续步骤
 
-[“市场”选项卡](./cpp-marketplace-tab.md)
+您将进一步介绍产品/服务和提供中的市场营销资产[Marketplace 选项卡](./cpp-marketplace-tab.md)。 

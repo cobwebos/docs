@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: sachdevaswati
 ms.openlocfilehash: 08eff24dc42f594424d109b82933b01b5c1be454
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62733894"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690072"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 

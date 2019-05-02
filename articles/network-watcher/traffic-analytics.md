@@ -3,8 +3,8 @@ title: Azure 流量分析 | Microsoft Docs
 description: 了解如何使用流量分析来分析 Azure 网络安全组流日志。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: yagup;jdial
-ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: yagup;kumud
+ms.openlocfilehash: a4ae997398c85dc99af8711f1c6ce4e743592d73
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60429716"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939891"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -176,7 +176,7 @@ New-AzStorageAccount `
 
     ![选择存储帐户和 Log Analytics 工作区并启用流量分析](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
-针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。
+针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据发送到工作区，因此请确保当地法律和法规您所在国家/地区允许在工作区所在的区域中的数据存储。
 
 此外可以配置使用流量分析[集 AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) Azure PowerShell 中的 PowerShell cmdlet。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
@@ -270,13 +270,13 @@ New-AzStorageAccount `
 
     ![展示流量分布的仪表板](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- 使用地图顶部的功能区可以选择参数，例如数据中心（已部署/未部署/活动/非活动/已启用流量分析/未启用流量分析），以及向活动部署分配良性/恶意流量的国家/地区：
+- 地理位置的地图显示顶部的功能区选择参数，例如数据中心 （启用了已部署/否-部署/活动/非活动/流量分析/未启用流量分析） 和国家/地区提供到活动的良性/恶意流量部署：
 
     ![展示活动部署的地图视图](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 
-- 地图中显示了不同国家/地区和大洲在与数据中心通信时分配的流量情况，蓝线表示良性流量，红线表示恶意流量。
+- 地理位置的地图到数据中心中显示的流量分布，从国家/地区和大洲中为该蓝色 （良性流量） 和红色 （恶意流量） 线表示进行通信：
 
-    ![展示不同国家/地区和大洲流量分布的地图视图](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
+    ![展示流量分布到国家/地区和大洲地图视图](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
 
     ![日志搜索中流量分布的流详细信息](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
 

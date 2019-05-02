@@ -1,25 +1,19 @@
 ---
-title: 管理云合作伙伴门户的 Azure Marketplace 上的用户 |Microsoft Docs
+title: 管理云合作伙伴门户上的用户 |Azure Marketplace
 description: 管理云合作伙伴门户上的用户
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
 manager: pbutlerm
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 6ab010a5fb8399fb14d3f45c8bb3b4571657d883
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 21c49ad0d73721dd204a7a3899d11cf10d43521b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60333710"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942094"
 ---
 # <a name="managing-users-on-the-cloud-partner-portal"></a>管理云合作伙伴门户上的用户
 

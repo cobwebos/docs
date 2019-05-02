@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6771cf093f62ef7823e57ced8223e4cc6c0dc57e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c4ef16457181b4147b763233c54bcca6598b05a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354621"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917681"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件是什么？ 
 
@@ -50,16 +50,13 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 - **IP 范围** - 采用 CIDR 格式的一个或多个 IPv4 地址范围。 不支持指定的 IPv6 地址范围。
 
    > [!NOTE]
-   > 当前不能在命名的 locationThis measn IPv6 不能从条件性访问策略中删除范围中包含 IPv6 地址 rangess。
+   > IPv6 地址 rangess 当前不能包含在命名的位置。 不能从条件性访问策略中删除此 measn IPv6 范围。
 
 - **标记为可信位置** - 可为命名位置设置标志，以指示它是可信的位置。 通常，可信位置是由 IT 部门控制的网络区域。 除条件访问以外，Azure Identity Protection 和 Azure AD 安全报告也使用可信命名位置来减少[误报](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)。
 - **国家/地区** - 使用此选项可以选择一个或多个国家或地区，以定义命名位置。
 - **包含未知区域** - 某些 IP 地址未映射到特定的国家/地区。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
-可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 你可以配置位置基于以下限制：
-
-- 一个命名位置最多可以有 1200 个 IP 范围。
-- 最多可有 90 个命名位置，其中每个都分配有一个 IP 范围。
+可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 组织可以配置最高达到 90 lamed 的位置，每个配置了最多 12000 IP 范围。
 
 条件性访问策略适用于 IPv4 和 IPv6 通信。 当前命名的位置不允许进行配置的 IPv6 范围。 此限制会导致以下情况：
 

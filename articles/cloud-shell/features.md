@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f873f20f97b822e1f4dee716cb69535b0522dc2c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614319"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866516"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -50,6 +50,18 @@ Cloud Shell 中的 PowerShell 在启动时会打开 Azure 驱动器 (`Azure:`)�
 直接在 Azure 门户中或者通过 Azure PowerShell cmdlet 对 Azure 资源所做的任何更改会反映在 Azure 驱动器中。  可以运行 `dir -Force` 刷新资源。
 
 ![](media/features-powershell/azure-drive.png)
+
+### <a name="manage-exchange-online"></a>Manage Exchange Online
+
+PowerShell Cloud Shell 中的包含 Exchange Online 的模块的专用版本。  运行`Connect-EXOPSSession`获取 Exchange cmdlet。
+
+![](media/features-powershell/exchangeonline.png)
+
+ 运行 `Get-Command -Module tmp_*`
+> [!NOTE]
+> 模块名称应以开头`tmp_`，如果具有相同的前缀，已安装模块，还会显示其 cmdlet。 
+
+![](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>与开源工具深度集成
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: thweiss
-ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a089d8bd4f2197c93d43e70742743db29944b910
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61046312"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872672"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -68,6 +68,8 @@ Azure Cosmos DB 支持两种索引模式：
 
 - 包括要有选择性地排除不需要要编制索引的路径的根路径。 这是建议的方法，它可以让 Azure Cosmos DB 主动索引可能会添加到您的模型的任何新属性。
 - 排除要有选择性地包含需要编制索引的路径的根路径。
+
+- 有关路径替换为包含的常规字符： 字母数字字符和 _ （下划线），无需转义围绕双引号括起来 （例如，"/ 路径 /？"） 的路径字符串。 对于与其他特殊字符的路径，您需要进行转义围绕双引号括起来的路径字符串 (例如，"/\"路径 abc\"/？")。 如果希望在你的路径中特殊字符，可转义每个路径的安全性。 功能上，如果转义 Vs 不仅仅具有特殊字符的每个路径，它不起作用。
 
 请参阅[本节](how-to-manage-indexing-policy.md#indexing-policy-examples)为索引策略示例。
 

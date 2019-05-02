@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8793f6f4d135d6099541d24aa5f5cfc0b6c21b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec87bdadc0e7f77cdeebb16403758026fd956c30
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61290042"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939855"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>如何在 Azure 搜索中生成分面筛选器 
 
@@ -35,7 +35,7 @@ ms.locfileid: "61290042"
 
 ## <a name="choose-fields"></a>选择字段
 
-可通过单值字段以及集合计算分面。 适合分面导航的字段的多重性较低：搜索语料库（例如，颜色、国家/地区或品牌名列表）的文档中重复的不同值较少。 
+可通过单值字段以及集合计算分面。 适合分面导航中的字段具有较小的基数： 少量的文档中搜索语料库 （例如，颜色、 国家/地区或品牌名列表） 重复的非重复值。 
 
 通过将以下属性设置为 True，便可在创建索引时逐字段启用分面：`filterable`、`facetable`。 只有可筛选的字段才可分面。
 

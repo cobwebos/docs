@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: a26f61eb199d8f370e1a9dd010932dc868b74ae4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/29/2019
+ms.openlocfilehash: 8a78a9b8f0772a83e45ac2b926878e61e6ee2e61
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61041252"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926330"
 ---
 # <a name="server-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的服务器日志
 在 Azure Database for MariaDB 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
@@ -23,7 +23,7 @@ ms.locfileid: "61041252"
 
 在 Azure 门户中，选择 Azure Database for MariaDB 服务器。 在“监视”标题下，选择“服务器日志”页面。
 
-<!-- For more information on Azure CLI, see [Configure and access server logs using Azure CLI](howto-configure-server-logs-in-cli.md).-->
+有关 Azure CLI 的详细信息，请参阅[使用 Azure CLI 配置和访问服务器日志](howto-configure-server-logs-cli.md)。
 
 ## <a name="log-retention"></a>日志保留期
 日志从其创建时开始算起，最多可保留七天。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。
@@ -41,6 +41,42 @@ ms.locfileid: "61041252"
 - **log_throttle_queries_not_using_indexes**：此参数限制可以写入到慢查询日志的非索引查询的数目。 当 log_queries_not_using_indexes 设置为 ON 时，此参数生效。
 
 有关慢查询日志参数的完整说明，请参阅 MariaDB [慢查询日志文档](https://mariadb.com/kb/en/library/slow-query-log-overview/)。
+
+## <a name="diagnostic-logs"></a>诊断日志
+Azure Database for MariaDB 与 Azure Monitor 诊断日志集成。 一旦 MariaDB 服务器上启用慢查询日志，您可以选择将它们发送至 Azure Monitor 日志、 事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/diagnostic-logs-overview.md)中的操作说明部分。
+
+> [!IMPORTANT]
+> 服务器日志的此诊断功能仅适用于“常规用途”和“内存优化”的[定价层](concepts-pricing-tiers.md)。
+
+下表介绍了每个日志中的内容。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
+
+| **属性** | **说明** |
+|---|---|
+| `TenantId` | 租户 ID |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated` [UTC] | 记录日志时的时间戳 (UTC) |
+| `Type` | 日志类型。 始终是 `AzureDiagnostics` |
+| `SubscriptionId` | 服务器所属的订阅的 GUID |
+| `ResourceGroup` | 服务器所属的资源组的名称 |
+| `ResourceProvider` | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMARIADB` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | 资源 URI |
+| `Resource` | 服务器的名称 |
+| `Category` | `MySqlSlowLogs` |
+| `OperationName` | `LogEvent` |
+| `Logical_server_name_s` | 服务器的名称 |
+| `start_time_t` [UTC] | 查询开始时间 |
+| `query_time_s` | 查询执行所用的总时间 |
+| `lock_time_s` | 查询锁定的总时间 |
+| `user_host_s` | 用户名 |
+| `rows_sent_s` | 发送的行数 |
+| `rows_examined_s` | 检查的行数 |
+| `last_insert_id_s` | [last_insert_id](https://mariadb.com/kb/en/library/last_insert_id/) |
+| `insert_id_s` | 插入 ID |
+| `sql_text_s` | 完整的查询 |
+| `server_id_s` | 服务器 ID |
+| `thread_id_s` | 线程 ID |
+| `\_ResourceId` | 资源 URI |
 
 ## <a name="next-steps"></a>后续步骤
 - [如何通过 Azure 门户配置和访问服务器日志](howto-configure-server-logs-portal.md)。

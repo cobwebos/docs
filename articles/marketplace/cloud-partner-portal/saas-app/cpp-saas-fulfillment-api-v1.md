@@ -1,26 +1,19 @@
 ---
-title: SaaS 履行 API V1-Azure 应用商店 |Microsoft Docs
+title: SaaS 履行 API V1 |Azure Marketplace
 description: 介绍如何创建使用相关联的履行 V1 Api 在 Azure marketplace SaaS 产品/服务。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 03/28/2019
-ms.author: pbutlerm
+ms.author: pabutler
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4908233280c69a37ea470eed2ef077cb220a7930
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 816bdc61f85fdf171870a5b552661b816ec65e2f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101092"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943143"
 ---
 # <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS 履行 Api 版本 1 （已弃用）
 

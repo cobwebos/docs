@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory 中更改企业应用的名称或徽标 | Microsoft Docs
-description: 如何在 Azure Active Directory 中更改自定义企业应用的名称或徽标
+title: 更改名称或徽标的 Azure Active Directory 中企业应用程序 |Microsoft Docs
+description: 如何更改名称或徽标在 Azure Active Directory 中的自定义企业应用程序
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -11,39 +11,43 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62578fe037dc1c9672bd0a4cf28500c658344c53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dbebc528227ebb06bd66e31b802dd4fd618d6a99
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440347"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718752"
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中更改企业应用的名称或徽标
-在 Azure Active Directory (Azure AD) 中更改自定义企业应用程序的名称或徽标很容易。 必须具有适当的权限才能进行这些更改，并且必须是自定义应用的创建者。
+# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>更改名称或徽标的 Azure Active Directory 中企业应用程序
 
-## <a name="how-do-i-change-an-enterprise-apps-name-or-logo"></a>如何更改企业应用的名称或徽标？
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
-3. 在“Azure Active Directory - *directoryname*”窗格（即，正在管理的目录的 Azure AD 窗格）中，选择“企业应用程序”。
+在 Azure Active Directory (Azure AD) 中更改自定义企业应用程序的名称或徽标很容易。 必须具有适当的权限来进行这些更改，并且您必须是自定义应用程序的创建者。
 
-    ![打开企业应用](./media/change-name-or-logo-portal/open-enterprise-apps.png)
-4. 在“企业应用程序”窗格中，选择“所有应用程序”。 此时会显示可管理应用的列表。
-5. 在“企业应用程序 - 所有应用程序”窗格中，选择一个应用。
-6. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“属性”。
+## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>如何更改企业应用程序的名称或徽标？
 
-    ![选择属性命令](./media/change-name-or-logo-portal/select-app.png)
-7. 在“***appname*** - 属性”窗格中，浏览找到可用作新徽标的文件，并/或编辑应用名称。
+1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)目录的全局管理员的帐户。 **Azure Active Directory 管理中心**页将出现。
+2. 在左窗格中，选择“企业应用程序”。 显示企业应用程序的列表。
+3. 选择一个应用程序。 将显示应用程序概述页。
+4. 在应用程序概述窗格中下,**管理**标题下方，选择**属性**。 **属性**页将出现。
+5. 如果你想要更改名称，选择**名称**框中，键入新名称，然后按**Enter**。
+6. 如果你想要更改的徽标，找到**徽标**字段，然后选择文件夹图标旁**选择一个文件**框中，这低于应用程序的当前徽标图像。
 
-    ![更改应用徽标或 nameproperties 命令](./media/change-name-or-logo-portal/change-logo.png)
-8. 选择“保存”命令。
+   ![选择属性命令](./media/change-name-or-logo-portal/change-logo.png)
+
+   否则，如果不更改徽标，请转到步骤 8。
+7. 在文件选取器中，选择作为新徽标的所需的文件。 当前的徽标图像下方的框中显示的文件的名称。
+
+   > [!NOTE]
+   > Azure 需要徽标图像是 PNG 文件，并且它应用上的宽度、 高度和文件大小限制。
+8. 选择“保存”。 如果选择了新徽标**徽标**字段的图像发生更改以反映新的徽标文件。
 
 ## <a name="next-steps"></a>后续步骤
-* [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
+
+* [快速入门：在 Azure Active Directory 中查看你的组织组和成员](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [向企业应用分配用户或组](assign-user-or-group-access-portal.md)
 * [删除企业应用的用户或组分配](remove-user-or-group-access-portal.md)
 * [Disable user sign-ins for an enterprise app](disable-user-sign-in-portal.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9bf4f604386b47e4ca36df69fb140124b097f548
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2573ad64830247d232bbd6d156fac7f50d65f410
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60912521"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925091"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure 安全中心的自定义警报规则（预览版）
 本文档介绍了如何在 Azure 安全中心创建自定义警报规则。
@@ -29,17 +29,17 @@ ms.locfileid: "60912521"
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>停用的自定义警报规则在 Azure 安全中心
 
-自定义警报体验将在停用 2019 年 6 月 30 日，由于停用的 Azure Monitor 经典警报服务。 在之前不推荐使用时间范围内，用户将能够编辑现有的自定义警报规则，但将不能添加新的。
-建议用户将启用[Azure Sentinel](https://azure.microsoft.com/en-us/services/azure-sentinel/)与单击一次载入自动迁移其现有的警报并创建新的或或者重新创建其使用 Azure Monitor 警报的日志警报。
+自定义警报体验将在停用 2019 年 6 月 30 日，由于它基于对底层基础结构的停用。 在之前不推荐使用时间范围内，用户将能够编辑现有的自定义警报规则，但将不能添加新的。
+建议用户将启用[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)与单击一次载入自动迁移其现有的警报并创建新的或或者重新创建其使用 Azure Monitor 警报的日志警报。
                                      
 若要保留现有警报并将其迁移到 Azure Sentinel，请[启动 Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview)。 第一步，选择自定义警报的存储位置工作区，然后选择分析菜单项将自动迁移你的警报。
 
 > [!NOTE]
 > 自定义警报迁移到 Azure Sentinel 是所选工作区中所有自定义警报的一次性迁移。 迁移完成后，不会通过 Azure 安全中心可访问该所选工作区的自定义警报。
 >
-> 使用自定义警报[搜索](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/search-queries)或[Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html)语句查询 Azure Sentinel 中不支持和不会迁移。 请执行迁移之前，编辑这些警报。
+> 使用自定义警报[搜索](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries)或[Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html)语句查询 Azure Sentinel 中不支持和不会迁移。 请执行迁移之前，编辑这些警报。
 
-若要重新创建你使用 Azure Monitor 日志警报的警报，请参阅：[创建、 查看和管理使用 Azure Monitor 的日志警报](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log)有关如何创建日志警报的说明。 Azure Monitor 中的日志警报的一般概述，请单击[此处](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-unified-log)。
+若要重新创建你使用 Azure Monitor 日志警报的警报，请参阅：[创建、 查看和管理使用 Azure Monitor 的日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)有关如何创建日志警报的说明。 Azure Monitor 中的日志警报的一般概述，请单击[此处](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)。
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>安全中心的自定义警报规则是什么？
 

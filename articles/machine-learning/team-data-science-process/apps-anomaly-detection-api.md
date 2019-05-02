@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326545"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926185"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 
 > [!NOTE]
-> 此项处于维护状态。 我们鼓励您使用[异常情况检测器 API 服务](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/)下 Azure 认知服务，以检测异常从业务、 运营和 IoT 指标库的机器学习算法为后盾。
+> 此项处于维护状态。 我们鼓励您使用[异常情况检测器 API 服务](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/)下 Azure 认知服务，以检测异常从业务、 运营和 IoT 指标库的机器学习算法为后盾。
 
 ## <a name="overview"></a>概述
 [异常情况检测 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) 是一个示例，使用 Azure 机器学习构建，检测时序数据和均匀分布在时间中的数字值的异常情况。
@@ -170,7 +170,7 @@ ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情�
 | tspikedetector.sensitivity |TSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
 | zspikedetector.sensitivity |ZSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
 | seasonality.enable |是否要执行季节性分析 |true |boolean |true、false |时间序列依赖项 |
-| seasonality.numSeasonality |检测到的定期周期的最大数量 |1 |integer |1, 2 |1-2 |
+| seasonality.numSeasonality |检测到的定期周期的最大数量 |第 |integer |1, 2 |1-2 |
 | seasonality.transform |是否应在应用异常检测前删除季节性（和）趋势组件 |deseason |枚举 |none, deseason, deseasontrend |不适用 |
 | postprocess.tailRows |保留输出结果中的最新数据点的数量 |0 |integer |0（保留所有数据点），或指定要保留在结果中的点的数量 |不适用 |
 

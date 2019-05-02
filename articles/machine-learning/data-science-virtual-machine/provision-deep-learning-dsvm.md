@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1fc4a4024893c29c35b4369d13227830cfbbca84
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578549"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943924"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>在 Azure 上预配深度学习虚拟机 
 
@@ -35,10 +35,11 @@ DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（
 )中导航到虚拟机列表。
 2. 选择底部的“创建”按钮进入向导。![create-dlvm](./media/dlvm-provision-wizard.PNG)
 3. 用于创建 DLVM 的向导要求针对上图右侧列举的每个步骤（共有**四个步骤**）提供**输入**。 以下是配置每个步骤所需的输入：
-   
+
+   <a name="basics"></a>   
    1. **基础知识**
       
-      1. **名称**：待创建的数据科学服务器的名称。
+      1. **名称**：要创建的数据科学服务器的名称。
       2. **选择深度学习 VM 的 OS 类型**：选择 Windows 或 Linux（适用于基于 Windows 2016 和 Ubuntu Linux 的 DSVM）
       2. **用户名**：管理员帐户登录 ID。
       3. **密码**：管理员帐户密码。
@@ -46,13 +47,14 @@ DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（
       5. **资源组**：可以创建一个新资源组，也可以使用订阅中现有的空 Azure 资源组。
       6. **位置**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近实际位置以实现最快的网络访问。 
       
-> [!NOTE]
-> DLVM 支持所有 NC 和 ND 系列 GPU VM 实例。 预配 DLVM 时，必须在 Azure 中选择一个具有 GPU 的位置。 在 [Azure 产品（按区域）](https://azure.microsoft.com/regions/services/)页中查看是否有可用位置，并在“计算”下查找 **NC 系列**、**NCv2 系列**、**NCv3 系列**或 **ND 系列**。 
+      > [!NOTE]
+      > DLVM 支持所有 NC 和 ND 系列 GPU VM 实例。 预配 DLVM 时，必须在 Azure 中选择一个具有 GPU 的位置。 在 [Azure 产品（按区域）](https://azure.microsoft.com/regions/services/)页中查看是否有可用位置，并在“计算”下查找 **NC 系列**、**NCv2 系列**、**NCv3 系列**或 **ND 系列**。 
 
-1. **设置**：选择 NC 系列（NC、NCv2、NCv3）或 ND 系列中满足功能要求和成本约束的 GPU 虚拟机大小之一。 为 VM 创建存储帐户。  ![dlvm 设置](./media/dlvm-provision-step-2.PNG)
+   1. **设置**：选择 NC 系列（NC、NCv2、NCv3）或 ND 系列中满足功能要求和成本约束的 GPU 虚拟机大小之一。 为 VM 创建存储帐户。  ![dlvm 设置](./media/dlvm-provision-step-2.PNG)
    
-1. **汇总**：验证输入的所有信息是否正确。
-1. **购买**：单击“购买”开始预配。 此时会显示交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
+   1. **汇总**：验证输入的所有信息是否正确。
+
+   1. **购买**：单击“购买”开始预配。 此时会显示交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
 
 > [!NOTE]
 > 预配约需要 10 到 20 分钟。 预配的状态在 Azure 门户上显示。
@@ -66,7 +68,7 @@ DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（
 
 ### <a name="linux-edition"></a>Linux 版
 
-创建 VM 后，可使用 SSH 登录。 使用在步骤 3 的**基本信息**部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 客户端上下载 [Putty](https://www.putty.org) 之类的 SSH 客户端工具。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。
+创建 VM 后，可使用 SSH 登录。 使用你在中创建的帐户凭据[**基础知识**](#basics)部分步骤 3 为文本 shell 接口。 连接到 Azure Vm 的 SSH 连接有关的详细信息，请参阅[安装和配置远程桌面以连接到 Azure 中的 Linux VM](/azure/virtual-machines/linux/use-remote-desktop)。 在 Windows 客户端，您可以下载之类的 SSH 客户端工具[Putty](http://www.putty.org)。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。 
 
 > [!NOTE]
 > 在我们的测试中，X2Go 客户端的性能优于 X11 转发。 建议对图形桌面界面使用 X2Go 客户端。

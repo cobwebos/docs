@@ -1,64 +1,60 @@
 ---
-title: Azure 云合作伙伴门户中的虚拟机“市场”选项卡 | Microsoft Docs
+title: Azure Marketplace 的云合作伙伴门户中的虚拟机 Marketplace 选项卡
 description: 介绍用于创建 Azure 市场 VM 套餐的“市场”选项卡。
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: b1b62c68ef4e18f4d4d36a78078ad7431717b754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/25/2019
+ms.author: pabutler
+ms.openlocfilehash: d9b259ba93be369658638d034f109a3a6ba4c4a4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332705"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938188"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>虚拟机“市场”选项卡
 
-在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。 此长格式被划分为四个部分：**概述**，**市场营销项目**，**潜在客户管理**，并且**法律**。 
+在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。 此长格式被划分为四个部分：**概述**，**市场营销项目**，**潜在客户管理**，并且**法律**。
+
 
 ## <a name="overview-section"></a>“概述”部分
 在此部分输入有关 Azure 市场套餐的常规信息。  名称旁边附有星号 (*) 的字段表示必填字段。
 
-![虚拟机“新建套餐”窗体上“市场”选项卡的“概述”部分](./media/publishvm_008.png)
+![为虚拟机的 Marketplace 选项卡的概述部分](./media/publishvm_008.png)
 
-下表描述了这些字段的用途和内容。
+下表描述了这些字段的用途和内容。 必填字段用星号 (*) 表示。
 
 |  **字段**                |     **说明**                                                          |
 |  ---------                |     ---------------                                                          |
-| **标题**                 | 套餐的标题，通常是较长的正式名称。 此标题将在市场中突出显示。  最大长度为 50 个字符。 |
-| **摘要**               | 解决方案用途或功能的简短描述。  最大长度为 100 个字符。 |
-| **长摘要**          | 解决方案的用途或功能。  最大长度为 256 个字符。 |
-| **说明**           | 解决方案的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。 |
-| **Microsoft CSP 经销商渠道** | 云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。 |
-| **营销标识符**  | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **预览订阅 ID** | 为预览版添加 1 到 100 个订阅标识符。 在套餐发布之后、上线之前，这些已加入允许列表的订阅将有权访问该套餐。 |
+| **标题\***                 | 套餐的标题，通常是较长的正式名称。 此标题将在市场中突出显示。  最大长度为 50 个字符。 |
+| **摘要\***               | 解决方案用途或功能的简短描述。  最大长度为 100 个字符。 |
+| **长摘要\***          | 解决方案的用途或功能。  最大长度为 256 个字符。 |
+| **说明\***           | 解决方案的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。 |
+| **Microsoft CSP 经销商渠道\*** | 云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。 |
+| **市场营销标识符\***  | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **预览订阅 Id\*** | 为预览版添加 1 到 100 个订阅标识符。 在套餐发布之后、上线之前，这些已加入允许列表的订阅将有权访问该套餐。 |
 | **有用链接**          | 将 URL 添加到文档、发行说明、常见问题解答等内容。 |
-| **建议的类别（最多 5 个）** | 可能最适合与该套餐关联的企业和技术类别的多项选择。  最多允许选择五个链接。  |
+| **建议的类别 （最多 5 个）\*** | 可能最适合与该套餐关联的企业和技术类别的多项选择。  最多允许选择五个链接。  |
 |  |  |
 
 
 ## <a name="marketing-artifacts-section"></a>“营销项目”部分
 
-此第二个部分分为三个小节：**徽标**，**屏幕截图**，和**视频**。 只有徽标是必需的营销项目，但为了充分吸引客户的注意，我们强烈建议填写所有这些字段。
+此第二个部分分为三个小节：**徽标**，**屏幕截图**，和**视频**。 只有徽标是必需的营销项目，但为了充分吸引客户的注意，我们强烈建议填写所有这些字段。 
 
 ![虚拟机“新建套餐”窗体中“市场”选项卡的“营销项目”部分](./media/publishvm_009.png)
+
+下表描述了这些字段的用途和内容。 必填字段用星号 (*) 表示。
 
 |  **字段**                |     **说明**                                                          |
 |  ---------                |     ---------------                                                          |
 | *徽标*  |  |
-| **小型**                 | 40x40 像素 .ico 位图                                                      |
-| **中型**                | 90x90 像素 .ico 位图                                                      |
-| **大型**                 | 115x115 像素 .ico 位图                                                   |
-| **宽型**                  | 255x115 像素 .ico 位图                                                    |
+| **小型\***                 | 40x40 像素 .ico 位图                                                      |
+| **中型\***                | 90x90 像素 .ico 位图                                                      |
+| **大型\***                 | 115x115 像素 .ico 位图                                                   |
+| **宽\***                  | 255x115 像素 .ico 位图                                                    |
 | **主图**                  | 815x290 位图  此徽标是可选的，但是，一旦上传主图，就无法将其删除。 |
 | *屏幕截图*  | 屏幕截图是可选的，最多可为每个 SKU 上传 5 个屏幕快照。 |
 | **名称**                  | 名称或标题 <!-- TODO - max char length? none specified in UI -->                               |
@@ -67,8 +63,7 @@ ms.locfileid: "60332705"
 | **名称**                  | 名称或标题  <!-- TODO - max char length? -->                              |
 | **链接**                  | 视频 URL，托管在 YouTube 或 Vimeo 中                                        |
 | **缩略图**             | 533x324 位图                                                               |
-|  |  |
-
+|   |   |
 
 ### <a name="logo-guidelines"></a>徽标准则
 
@@ -105,7 +100,6 @@ ms.locfileid: "60332705"
 
 
 ## <a name="lead-management-section"></a>“潜在顾客管理”部分
-<!-- this all should be referenced in a common location for lead management, not in this file. nothing unique for a vm specifically. -->
 
 在第三个部分可以收集从 Azure 市场套餐生成的潜在顾客。 其中为此潜在顾客信息提供了以下存储选项（在下拉列表中）。
 
@@ -122,15 +116,16 @@ ms.locfileid: "60332705"
 
 ## <a name="legal-section"></a>“法律”部分
 
-最后一部分，可提供所需的每个产品/服务的两个法律文档：“隐私策略”和“使用条款”。
+最后一部分，可提供所需的法律文档所需的每个产品/服务。  
 
-|  **字段**                |     **说明**                                                          |
-|  ---------                |     ---------------                                                          |
-| **隐私政策 URL**    | 已发布的隐私政策的 URL                                            |
-| **使用条款**          | 纯文本或简单 HTML 格式的政策。  <!-- TODO - max char length? -->       |
+|  **字段**                    |     **说明**                                        |
+|  ---------                    |     ---------------                                        |
+| **隐私策略 URL\***      | 已发布的隐私政策的 URL                          |
+| **使用标准约定？\***  |   |
+| **使用条款\***            | 纯文本或简单 HTML 格式的政策。                       |
 |  |  |
 
-<br/>
+
+## <a name="next-steps"></a>后续步骤
 
 在后面的 [支持](./cpp-support-tab.md) 选项卡中，提供套餐的技术资源和用户支持资源。
-

@@ -1,25 +1,18 @@
 ---
-title: Seller Insights 入门 | Microsoft Docs
+title: Seller Insights 入门
 description: 云合作伙伴门户的 Seller Insights 功能简介。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f9bcc05fb02d2324d0546f2ed8286b27e5f8e296
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 6c903c87bc153864381a3f1763afaeeb7796090a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60745122"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943058"
 ---
 <a name="getting-started-with-seller-insights"></a>Seller Insights 入门
 ====================================

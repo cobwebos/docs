@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 644054960e12979c231bbf50a5979bc12d343f89
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415848"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694768"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>为 Windows Server Active Directory 强制执行 Azure AD 密码保护
 
-Azure AD 密码保护是一项功能，增强了在组织中的密码策略。 在本地部署密码保护使用这两个全局和自定义受禁密码列表存储在 Azure AD 中。 它执行相同检查在本地与 Azure AD 进行基于云的更改。
+Azure AD 密码保护是一项功能，增强了在组织中的密码策略。 密码保护的内部部署使用这两个全局和自定义受禁密码列表存储在 Azure AD 中。 它执行相同检查在本地与 Azure AD 进行基于云的更改。
 
 ## <a name="design-principles"></a>设计原理
 

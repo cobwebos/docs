@@ -3,8 +3,8 @@ title: 诊断虚拟机网络流量筛选器问题 | Microsoft Docs
 description: 了解如何通过查看虚拟机的有效的安全规则来诊断虚拟机网络流量筛选器问题。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
-ms.author: jdial
-ms.openlocfilehash: fecab4dc3a0674b0b64638676f4538af145b52ac
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: f84e8a24e8f28cdccc987afbd1449cb17422ce0c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652639"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712663"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
 
@@ -174,7 +174,7 @@ az vm show \
 | 源端口范围      | 任意                                                                                |
 | 目标             | VM 的 IP 地址、IP 地址范围，或子网中的所有地址。 |
 | 目标端口范围 | 80                                                                                 |
-| 协议                | TCP                                                                                |
+| Protocol                | TCP                                                                                |
 | 操作                  | 允许                                                                              |
 | 优先度                | 100                                                                                |
 | 名称                    | Allow-HTTP-All                                                                     |

@@ -1,27 +1,20 @@
 ---
-title: Azure 和 Dynamcis 365 咨询服务套餐 - 创建套餐 | Microsoft Docs
-description: 有关在云合作伙伴门户中创建 Azure 或 Dynamics 365 咨询服务套餐的指导。
+title: 创建咨询产品/服务 |Azure Marketplace
+description: 在云合作伙伴门户中创建 Azure 或 Dynamics 365 的顾问服务产品，为 Azure Marketplace。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f130f20643ba80bf706b8b5ba8f4b7eab0acaa59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 09b9dce8e30ed3ba5ad0bac58929cd2c6d71793c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865387"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942835"
 ---
-# <a name="create-an-offer"></a>创建产品
+# <a name="create-a-consulting-offer"></a>创建咨询产品/服务
 
 本文介绍如何创建和发布咨询服务套餐。
 

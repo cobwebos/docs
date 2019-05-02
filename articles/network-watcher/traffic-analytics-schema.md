@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 246c5256f56fd0b891d4e7d642c421b1e340fc6d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 491f19abfd87c28ede45e98a24f31fe7e599b18b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799314"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691420"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
 
@@ -35,7 +35,7 @@ ms.locfileid: "59799314"
 1. 在"FlowIntervalStartTime_t"和"FlowIntervalEndTime_t"之间的 NSG 的所有流日志都捕获每隔一分钟的存储帐户中作为 blob 处理的流量分析之前。 
 2. 流量分析的默认处理时间间隔为 60 分钟。 这意味着，流量分析会从用于聚合的存储 blob 选取每隔 60 分钟。
 3. 流，将同一源 IP、 目标 IP、 目标端口、 NSG 名称、 NSG 规则、 流方向和传输层协议 （TCP 或 UDP） (注意：源端口排除的聚合） 都组合到单个流使用流量分析
-4. 此单个记录的修饰名 （在下面的部分中的详细信息） 和流量分析由 Log Analytics 数据引入量。
+4. 此单个记录是修饰 （详细信息在下面的部分中） 和中引入的日志分析流量 Analytics.This 过程可能需要最多 1 小时最大值。
 5. FlowStartTime_t 字段中的流日志处理间隔"FlowIntervalStartTime_t"和"FlowIntervalEndTime_t"指示此类的聚合流 （相同四元组） 的第一个匹配项。 
 6. TA 中任何资源，指示在 UI 中的流的流总计看到的 NSG，但在日志 Anlaytics 用户将看到只有单个，约记录。 若要查看所有流，请使用 blob_id 字段中，可以从存储中引用。 总流计数的记录将匹配在 blob 中看到的各个流。
 
@@ -50,7 +50,7 @@ ms.locfileid: "59799314"
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | 流量 Anlaytics 数据的表
 | SubType_s | FlowLog | 流日志的子类型 |
-| FASchemaVersion_s |   1   | 列名版本。 不会反映 NSG 流日志版本 |
+| FASchemaVersion_s |   第   | 列名版本。 不会反映 NSG 流日志版本 |
 | TimeProcessed_t   | 日期和时间 UTC  | 流量分析处理从存储帐户的原始流日志时间 |
 | FlowIntervalStartTime_t | 日期和时间 UTC |  流日志处理间隔的开始时间。 这是从其测量流间隔时间 |
 | FlowIntervalEndTime_t | 日期和时间 UTC | 流日志处理间隔的结束时间 |
@@ -60,7 +60,7 @@ ms.locfileid: "59799314"
 | SrcIP_s | 源 IP 地址 | 将为空时 AzurePublic 以及 ExternalPublic 流 |
 | DestIP_s | 目标 IP 地址 | 将为空时 AzurePublic 以及 ExternalPublic 流 |
 | VMIP_s | VM 的 IP | 用于 AzurePublic 和 ExternalPublic 流 |
-| PublicIP_S | 公共 IP 地址 | 用于 AzurePublic 和 ExternalPublic 流 |
+| PublicIP_s | 公共 IP 地址 | 用于 AzurePublic 和 ExternalPublic 流 |
 | DestPort_d | Destination Port | 流量是传入的端口 | 
 | L4Protocol_s  | * T <br> * U  | 传输协议。 T = TCP <br> U = UDP | 
 | L7Protocol_s  | 协议名称 | 派生自目标端口 |
@@ -121,6 +121,7 @@ ms.locfileid: "59799314"
 1. MaliciousFlow-的一个 IP 地址属于 azure 虚拟网络的其他 IP 地址时，不是在 Azure 中并被报告为恶意流量分析处理间隔之间使用 ASC 源中的公共 IP"FlowIntervalStartTime_t"和"FlowIntervalEndTime_t"。 
 1. UnknownPrivate-的一个 IP 地址属于 Azure 虚拟网络时的其他 IP 地址属于专用 IP 范围，如在 RFC 1918 中定义和不可以映射到客户拥有的站点或 Azure 虚拟网络流量分析。
 1. 未知-无法映射的一个 IP 地址与在 Azure 中的客户拓扑在流中，以及本地 （站点）。
+1. 具有 _s 或 _d 追加某些字段名称。 这些不执行操作表示源和目标。
 
 ### <a name="next-steps"></a>后续步骤
 若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.md)若要查看有关功能的详细信息，请参阅[流量分析文档](traffic-analytics.md)

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 933d411f67655b49b4aef7bf413dfe5f87e4ff08
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: ee52cde6feeb69f9140df497a9abee300c93fd71
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556724"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692105"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>向时序见解环境添加 IoT 中心事件源
 
@@ -25,7 +25,7 @@ ms.locfileid: "53556724"
 > [!NOTE]
 > 本文中的说明适用于 Azure 时序见解 GA 版和时序见解预览版环境。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 创建 [Azure 时序见解环境](time-series-insights-update-create-environment.md)。
 * [使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
@@ -73,7 +73,7 @@ ms.locfileid: "53556724"
 
    ![“新建事件源”窗格 - 需要在“通过可用订阅使用 IoT 中心”选项中设置的属性][4]
 
-   | 属性 | Description |
+   | 属性 | 描述 |
    | --- | --- |
    | 订阅 ID | 选择已在其中创建此 IoT 中心的订阅。
    | IoT 中心名称 | 选择 IoT 中心的名称。
@@ -85,7 +85,7 @@ ms.locfileid: "53556724"
 
 1. 下表介绍“手动提供 IoT 中心设置”所需的属性：
 
-   | 属性 | Description |
+   | 属性 | 描述 |
    | --- | --- |
    | 订阅 ID | 在其中创建了此 IoT 中心的订阅。
    | 资源组 | 在其中创建了此 IoT 中心的资源组名称。
@@ -107,7 +107,9 @@ ms.locfileid: "53556724"
 ## <a name="next-steps"></a>后续步骤
 
 * [定义数据访问策略](time-series-insights-data-access.md)，以保护数据。
+
 * [发送事件](time-series-insights-send-events.md)到事件源。
+
 * 在[时序见解资源管理器中访问环境](https://insights.timeseries.azure.com)。
 
 <!-- Images -->

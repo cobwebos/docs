@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 01/08/2019
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2e6bc0fd9de4fdba1188b40c49ebf9459d684d38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3ec3e915c26abf38653d1bddfe0a5ba44d5e6de1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819912"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914893"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -359,6 +359,7 @@ response = requests.post(published_pipeline1.endpoint,
     json={"ExperimentName": "My_Pipeline",
         "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
 ## <a name="view-results"></a>查看结果
 
 查看所有管道的列表及其运行详细信息：
@@ -368,6 +369,25 @@ response = requests.post(published_pipeline1.endpoint,
  ![机器学习管道列表](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. 选择特定的管道以查看运行结果。
+
+## <a name="caching--reuse"></a>缓存和重用  
+
+为了优化和自定义的管道可以做一些事情围绕缓存和重复使用的行为。 例如，你可以选择：
++ **关闭步骤运行输出的默认重用**通过设置`allow_reuse=False`期间[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
++ **扩展超出了该脚本哈希**，以便同时包含绝对路径或相对路径的其他文件和目录使用 source_directory `hash_paths=['<file or directory']` 
++ **强制在运行中的所有步骤的输出重新生成**与 `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
+
+默认情况下，步骤重新使用已启用，仅主要脚本文件进行哈希运算。 因此，如果给定步骤的脚本将保持不变 (`script_name`，输入和参数)、 运行上一步的输出中将重复使用、 该作业不提交到计算，和从以前的运行结果可立即供下一步改为.  
+
+```python
+step = PythonScriptStep(name="Hello World", 
+                        script_name="hello_world.py",  
+                        compute_target=aml_compute,  
+                        source_directory= source_directory, 
+                        allow_reuse=False, 
+                        hash_paths=['hello_world.ipynb']) 
+```
+ 
 
 ## <a name="next-steps"></a>后续步骤
 - 使用 [GitHub 上的这些 Jupyter Notebook](https://aka.ms/aml-pipeline-readme) 以进一步探索机器学习管道。

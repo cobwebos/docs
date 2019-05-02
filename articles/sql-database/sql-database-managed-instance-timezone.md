@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库托管实例所在的时区 |Microsoft Docs"
-description: 了解 Azure SQL 数据库托管实例所在的时区具体情况
+title: Azure SQL 数据库托管实例的时区 |Microsoft Docs"
+description: 了解 Azure SQL 数据库托管实例的时区具体情况
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -10,40 +10,40 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/10/2019
-ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/25/2019
+ms.openlocfilehash: 6d7d065f45bca38cedd2c276bdd9b98dfd9675df
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487388"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866948"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Azure SQL 数据库托管实例 （预览版） 中的时区
+# <a name="time-zones-in-azure-sql-database-managed-instance-preview"></a>Azure SQL 数据库托管实例 （预览版） 中的时区
 
-尽管使用协调世界时 (UTC) 的云解决方案的数据层推荐的做法是，Azure SQL 数据库托管实例提供时区的选择，以满足存储日期和时间值和呼叫日期的现有应用程序的需求和与特定时区的隐式上下文的时间函数。
+协调世界时 (UTC) 是云解决方案的数据层的建议的时间区域。 Azure SQL 数据库托管实例还提供了时区的时间选择，以满足存储日期和时间值和调用日期和时间函数与某个特定时区的隐式上下文的现有应用程序的需求。
 
-T-SQL 的功能类似于[getdate （)](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql)或 CLR 代码观察级别的实例上设置的时区。 SQL 代理作业按照计划根据实例的时区。
+T-SQL 的功能类似于[getdate （)](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql)或 CLR 代码观察级别的实例上设置的时区。 SQL Server 代理作业按照计划根据实例的时区。
 
   >[!NOTE]
   > 托管的实例是支持的时区设置的 Azure SQL 数据库的仅限的部署选项。 其他部署选项应始终遵循 UTC。
-使用[AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)中单一数据库与入池 SQL 数据库如果您需要解释在非 UTC 时区的日期和时间信息。
+使用[AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)中单一数据库与入池 SQL 数据库如果您需要解释非 UTC 时区中的日期和时间信息。
 
 ## <a name="supported-time-zones"></a>受支持的时区
 
-受支持的时区的一组继承自托管实例的基础操作系统，它正在定期更新，以获取新的时区定义并反映对现有的更改。
+一组受支持的时间区域从托管实例的基础操作系统继承。 它定期进行更新以获取新的时区定义并反映对现有的更改。 
 
 通过公开的受支持的时区名称的列表[sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)系统视图。
 
-## <a name="setting-time-zone"></a>设置时区
+## <a name="set-a-time-zone"></a>设置时区
 
-可以只创建实例期间设置的托管实例的时区。 默认时区为协调世界时 (UTC)。
+可以只创建实例期间设置的托管实例的时区。 默认时区为 UTC。
 
   >[!NOTE]
   > 不能更改现有的托管实例的时区。
 
-### <a name="setting-the-time-zone-through-azure-portal"></a>通过 Azure 门户的时区设置
+### <a name="set-the-time-zone-through-the-azure-portal"></a>设置通过 Azure 门户的时区
 
-输入参数的新实例，同时从受支持的时间区域列表中选择时区:
+当新的实例的输入参数时，请从受支持的时间区域的列表中选择时区。 
   
 ![在创建实例期间设置时区](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -66,11 +66,11 @@ T-SQL 的功能类似于[getdate （)](https://docs.microsoft.com/sql/t-sql/func
 
 ```
 
-可以在本文末尾找到 timezoneId 属性支持的值的列表。
+在本文末尾是 timezoneId 属性支持的值的列表。
 
-如果未指定，将会设置时区为 UTC。
+如果未指定，则将时区设置为 UTC。
 
-## <a name="checking-the-time-zone-of-instance"></a>检查实例的时区
+## <a name="check-the-time-zone-of-an-instance"></a>检查实例的时区
 
 [CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)函数返回的实例的时区的显示名称。
 
@@ -78,24 +78,23 @@ T-SQL 的功能类似于[getdate （)](https://docs.microsoft.com/sql/t-sql/func
 
 ### <a name="restore-and-import"></a>还原和导入
 
-可以还原的备份文件或数据导入到托管实例从实例或服务器具有不同的时区设置。 但是，请务必谨慎使用此，并分析应用程序行为和结果的查询和报表，就像在一样具有不同的时区设置的两个 SQL Server 实例之间传输数据时。
+您可以还原备份文件或数据导入到的托管实例从实例或服务器具有不同的时区设置。 请确保为此，请谨慎。 分析应用程序行为和结果的查询和报表，就像使用不同的时区设置的两个 SQL Server 实例之间传输数据时。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
-执行时间点还原时，若要还原到的时间被解释为 UTC 时间，以避免由于夏时制和其潜在更改任何多义性。
+当你执行时点还原时，还原到的时间被解释为 UTC 时间。 此设置可避免由于夏时制和其潜在更改不明确性。
 
 ### <a name="auto-failover-groups"></a>自动故障转移组
 
-在故障转移中的主要和次要实例使用相同的时区组不强制执行，但强烈建议。
-  >[!IMPORTANT]
-  > 虽然有上具有不同的时区的有效方案异地辅助数据库实例用于仅读取缩放，请注意，在手动或自动故障转移到辅助实例的情况下它将保留其原始时区。
+在故障转移组中的主要和次要实例使用相同的时区不强制性，但我们强烈建议。
+
+  >[!WARNING]
+  > 我们强烈建议使用故障转移组中的主要和次要实例相同的时区。 由于某些极少数情况下，在主要和次要实例之间保持相同的时区不是强制执行。 请务必了解，是在手动或自动故障转移，辅助实例将保留其原始时区。
 
 ## <a name="limitations"></a>限制
 
 - 不能更改现有的托管实例的时区。
-- 从 SQL 代理作业启动外部进程确实发现该实例的时区。
-- 托管的实例的本地[新建 AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance) PowerShell cmdlet 不支持的传递时间区域参数尚未。 具有使用 PowerShell 包装[资源管理器模板](https://aka.ms/sql-mi-create-arm-posh)相反。
-- CLI 命令[az sql mi 创建](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-create)尚不支持时区参数。
+- 从 SQL Server 代理作业启动外部进程看不到的实例的时区。
 
 ## <a name="list-of-supported-time-zones"></a>受支持的时区列表
 
@@ -240,7 +239,7 @@ T-SQL 的功能类似于[getdate （)](https://docs.microsoft.com/sql/t-sql/func
 | 萨摩亚群岛标准时间 | (UTC+13:00) 萨摩亚 |
 | 莱恩群岛标准时间 | (UTC+14:00) 基里巴斯岛 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另请参阅 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

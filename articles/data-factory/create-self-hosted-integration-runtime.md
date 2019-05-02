@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 6e88d8f1c16e7c73f5c62325e41701e6f0ea97fb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565494"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728084"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -40,7 +40,7 @@ ms.locfileid: "59565494"
 
     ```powershell
 
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
 
     ```
 
@@ -63,7 +63,7 @@ ms.locfileid: "59565494"
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>使用自承载 IR 的注意事项
 
 - 单个自承载集成运行时可用于多个本地数据源。 单个自承载集成运行时可与同一 Azure Active Directory 租户中的另一个数据工厂共享。 有关详细信息，请参阅[共享自承载集成运行时](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)。
-- 在一台计算机上只能安装一个自承载集成运行时实例。 如果您有两个需要访问本地数据源的数据工厂，则需要两个在本地计算机上每个数据工厂从安装自承载的集成运行时或使用[自承载 IR 共享功能](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)与另一个数据工厂共享自承载的集成运行时。  
+- 在一台计算机上只能安装一个自承载集成运行时实例。 如果您有两个数据工厂需要访问本地数据源，或者使用[自我托管 IR 共享功能](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)共享自承载的集成运行时，或对两个安装自承载的集成运行时在本地计算机，另一个用于每个数据工厂。  
 - 自承载集成运行时不需要位于数据源所在的计算机上。 但是，使自承载集成运行时更接近于数据源会减少自承载集成运行时连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装自承载集成运行时。 当自承载集成运行时和数据源位于不同的计算机上时，自承载集成运行时不会与数据源竞争资源。
 - 可将不同计算机上的多个自承载集成运行时连接到同一本地数据源。 例如，可以让两个自承载集成运行时服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
 - 如果已在计算机中安装了为 Power BI 方案提供服务的网关，那么在其他计算机上安装用于 Azure 数据工厂的单独自承载集成运行时。

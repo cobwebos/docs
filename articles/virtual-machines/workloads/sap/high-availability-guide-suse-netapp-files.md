@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd2479aed1e348a27c5cba56c6d809ffb24e4fc0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711114"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925774"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>使用 Azure NetApp 文件的 SAP 应用程序的 SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 的高可用性
 
@@ -29,9 +29,9 @@ ms.locfileid: "60711114"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/
-[anf-avail-matrix]:https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage&regions=all
-[anf-register]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register
+[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
+[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -58,7 +58,7 @@ ms.locfileid: "60711114"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-本文介绍如何部署虚拟机、 虚拟机配置、 安装群集框架和安装高度可用的 SAP NetWeaver 7.50 系统，使用[（在公共预览版） 的 Azure NetApp 文件](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/)。
+本文介绍如何部署虚拟机、 虚拟机配置、 安装群集框架和安装高度可用的 SAP NetWeaver 7.50 系统，使用[（在公共预览版） 的 Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)。
 在示例配置、 安装命令等、 ASCS 实例编号为 00，ERS 实例编号 01、 主应用程序实例 (PAS) 是 02，应用程序实例 (AAS) 是 03。 使用 SAP 系统 ID QAS。 
 
 此文章介绍了如何使用 Azure NetApp 文件实现高可用性 SAP NetWeaver 应用程序。 数据库层并不在本文中详细介绍。
@@ -92,12 +92,12 @@ ms.locfileid: "60711114"
 为 SAP Netweaver 中心服务的高 availability(HA) 需要共享的存储。
 为实现此目的在 SUSE Linux 上目前为止它已生成单独的高可用性 NFS 群集所必需。 
 
-现在，可以通过来实现 SAP Netweaver HA 使用部署在 Azure 的 NetApp 文件上的共享的存储。 使用 Azure NetApp 文件的共享的存储不需要额外[NFS 群集](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)。 HA 的 SAP Netweaver 中央 services(ASCS/SCS) 仍需要使用 pacemaker。
+现在，可以通过来实现 SAP Netweaver HA 使用部署在 Azure 的 NetApp 文件上的共享的存储。 使用 Azure NetApp 文件的共享的存储不需要额外[NFS 群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)。 HA 的 SAP Netweaver 中央 services(ASCS/SCS) 仍需要使用 pacemaker。
 
 
 ![SAP NetWeaver 高可用性概述](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
-SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，[负载均衡器](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview)需使用虚拟 IP 地址。 以下列表显示 (A)SCS 和 ERS 负载均衡器的配置。
+SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，[负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)需使用虚拟 IP 地址。 以下列表显示 (A)SCS 和 ERS 负载均衡器的配置。
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -138,17 +138,17 @@ Azure NetApp 文件功能为多个 Azure 区域的公共预览版。 在部署�
 
 ### <a name="deploy-azure-netapp-files-resources"></a>部署 Azure NetApp 文件资源  
 
-已部署的步骤假设[Azure 虚拟网络](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)。 请记住，必须在同一 Azure 虚拟网络中部署 Azure NetApp 文件资源和 Vm，装载 Azure NetApp 文件资源的位置。  
+已部署的步骤假设[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。 请记住，必须在同一 Azure 虚拟网络中部署 Azure NetApp 文件资源和 Vm，装载 Azure NetApp 文件资源的位置。  
 
-1. 如果尚未完成的操作，请求[注册 Azure NetApp 预览版](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register)。  
+1. 如果尚未完成的操作，请求[注册 Azure NetApp 预览版](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)。  
 
-2. 按照所选 Azure 区域中创建的 NetApp 帐户[说明创建 NetApp 帐户](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)。  
-3. 设置 Azure NetApp 文件容量池，遵循[说明如何设置 Azure NetApp 文件容量池](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)。  
+2. 按照所选 Azure 区域中创建的 NetApp 帐户[说明创建 NetApp 帐户](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)。  
+3. 设置 Azure NetApp 文件容量池，遵循[说明如何设置 Azure NetApp 文件容量池](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)。  
 本文中介绍的 SAP Netweaver 体系结构使用单个 Azure NetApp 文件容量池，高级 SKU。 我们建议在 Azure 上的 SAP Netweaver 应用程序工作负荷的 Azure NetApp 文件高级 SKU。  
 
-4. 委托到 Azure 的 NetApp 文件的子网中所述[说明委托到 Azure NetApp 文件中的子网](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)。  
+4. 委托到 Azure 的 NetApp 文件的子网中所述[说明委托到 Azure NetApp 文件中的子网](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)。  
 
-5. 部署 Azure NetApp 文件卷，以下[如何为 Azure NetApp 文件创建一个卷](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-volumes)。 部署中指定的 Azure NetApp 文件的卷[子网](https://docs.microsoft.com/en-us/rest/api/virtualnetwork/subnets)。 请记住，Azure NetApp 文件资源和 Azure Vm 必须位于同一 Azure 虚拟网络。 例如 sapmnt<b>QAS</b>，usrsap<b>QAS</b>等是卷名和 sapmnt<b>qas</b>，usrsap<b>qas</b>等 filepaths 是适用于 AzureNetApp 文件的卷。  
+5. 部署 Azure NetApp 文件卷，以下[如何为 Azure NetApp 文件创建一个卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)。 部署中指定的 Azure NetApp 文件的卷[子网](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)。 请记住，Azure NetApp 文件资源和 Azure Vm 必须位于同一 Azure 虚拟网络。 例如 sapmnt<b>QAS</b>，usrsap<b>QAS</b>等是卷名和 sapmnt<b>qas</b>，usrsap<b>qas</b>等 filepaths 是适用于 AzureNetApp 文件的卷。  
 
    1. 卷 sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
    2. 卷 usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
@@ -158,7 +158,7 @@ Azure NetApp 文件功能为多个 Azure 区域的公共预览版。 在部署�
    6. 卷 usrsap<b>QAS</b>pa (nfs://10.1.0.5/usrsap<b>qas</b>pa)
    7. 卷 usrsap<b>QAS</b>aas (nfs://10.1.0.4/usrsap<b>qas</b>aas)
    
-在此示例中，我们使用 Azure 的所有 SAP Netweaver 文件系统的 NetApp 文件演示如何使用 Azure NetApp 文件。 此外可以作为部署不需要通过 NFS 装入的 SAP 文件系统[Azure 磁盘存储](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#premium-ssd)。 在此示例中<b>-e</b>必须是对 Azure NetApp 文件并<b>f g</b> (即 /usr/sap/<b>QAS</b>/D<b>02</b>，/usr/sap/<b>QAS</b>/D<b>03</b>) 可以部署为 Azure 磁盘存储。 
+在此示例中，我们使用 Azure 的所有 SAP Netweaver 文件系统的 NetApp 文件演示如何使用 Azure NetApp 文件。 此外可以作为部署不需要通过 NFS 装入的 SAP 文件系统[Azure 磁盘存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)。 在此示例中<b>-e</b>必须是对 Azure NetApp 文件并<b>f g</b> (即 /usr/sap/<b>QAS</b>/D<b>02</b>，/usr/sap/<b>QAS</b>/D<b>03</b>) 可以部署为 Azure 磁盘存储。 
 
 ### <a name="important-considerations"></a>重要注意事项
 
@@ -166,10 +166,10 @@ Azure NetApp 文件功能为多个 Azure 区域的公共预览版。 在部署�
 
 - 最小容量池是 4 TiB。 容量池大小必须是 4 TiB 的倍数。
 - 最小的卷是 100 GiB
-- Azure 的 NetApp 文件和所有虚拟机，其中将装载 Azure NetApp 文件卷，必须在同一 Azure 虚拟网络中或在[虚拟网络对等互连](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)同一区域中。 现在支持通过 VNET 对等互连在同一区域中的 azure NetApp 文件访问。 尚不支持 azure 的 NetApp 访问通过全局对等互连。
+- Azure 的 NetApp 文件和所有虚拟机，其中将装载 Azure NetApp 文件卷，必须在同一 Azure 虚拟网络中或在[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)同一区域中。 现在支持通过 VNET 对等互连在同一区域中的 azure NetApp 文件访问。 尚不支持 azure 的 NetApp 访问通过全局对等互连。
 - 所选虚拟网络必须具有一个子网，委派给 Azure NetApp 文件。
 - Azure 的 NetApp 文件目前支持仅 NFSv3 
-- Azure 的 NetApp 文件提供[导出策略](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)： 可以控制允许的客户端访问类型 （读取和写入，Read Only，等等）。 
+- Azure 的 NetApp 文件提供[导出策略](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)： 可以控制允许的客户端访问类型 （读取和写入，Read Only，等等）。 
 - Azure 的 NetApp 文件功能尚未识别的区域。 当前 Azure NetApp 文件功能不被部署在 Azure 区域中的所有可用性区域中。 请注意在某些 Azure 区域中的潜在延迟影响。 
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux Vm
@@ -243,7 +243,7 @@ Azure NetApp 文件功能为多个 Azure 区域的公共预览版。 在部署�
          * 重复上述步骤"d"下的，对于端口 33**01**，5**01**13、 5**01**14、 5**01**16 和 TCP 为 ASCS ERS
 
 > [!IMPORTANT]
-> 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 

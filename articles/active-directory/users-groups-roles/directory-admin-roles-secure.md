@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4b61b661d9da0748bc354b8defa4e6d67a047a2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472787"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920486"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -261,7 +261,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>确定是否向基于密码的登录协议公开（如果使用 Exchange Online）
 
-在过去，协议假定用户名/密码组合已嵌入设备中、电子邮件帐户中、电话中，等等。 但现在，随着云中的网络攻击风险的增加，建议你确定每一位在其凭据泄漏的情况下可能会对组织造成灾难性后果的用户，通过实施强身份验证要求和条件访问，阻止其通过用户名/密码登录电子邮件。 你可以阻止[旧式身份验证使用条件性访问](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/block-legacy-authentication)。 请查看详细信息[如何阻止基本身份验证](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)通过 Exchnage 联机。 
+在过去，协议假定用户名/密码组合已嵌入设备中、电子邮件帐户中、电话中，等等。 但现在，随着云中的网络攻击风险的增加，建议你确定每一位在其凭据泄漏的情况下可能会对组织造成灾难性后果的用户，通过实施强身份验证要求和条件访问，阻止其通过用户名/密码登录电子邮件。 你可以阻止[旧式身份验证使用条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)。 请查看详细信息[如何阻止基本身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)通过 Exchnage 联机。 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>针对 Office 365 角色完成角色审核评估（如果使用 Office 365）
 

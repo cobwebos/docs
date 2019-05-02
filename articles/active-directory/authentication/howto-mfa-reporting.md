@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f78a3135fca290d50370652b33fe0a4d16a6f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 64d4c48697d38cfa5942e09cb672af37c27eede2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358767"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688677"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
@@ -122,7 +122,9 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 - 会话控制
 - 结果
 
-## <a name="powershell-reporting"></a>PowerShell 报告
+## <a name="powershell-reporting-on-users-registered-for-mfa"></a>PowerShell 报告关于用户的已注册 MFA
+
+首先，确保您拥有[MSOnline V1 PowerShell 模块](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0)安装。
 
 使用后面的 PowerShell 标识已注册 MFA 的用户。
 

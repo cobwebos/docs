@@ -2,25 +2,25 @@
 title: 快速入门 - 使用 Azure 应用程序网关配置端到端 SSL 加密 - Azure 门户 | Microsoft Docs
 description: 了解如何使用 Azure 门户创建启用端到端 SSL 加密的 Azure 应用程序网关。
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/19/2019
+ms.date: 4/30/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: e47a3e1231701f3339057e25ee4388aff0c9fbd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bd165f81b45e3ae0c121fb8876ed88e68d493195
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831941"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946803"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>在门户中使用应用程序网关配置端到端 SSL
 
 本文介绍如何在 Azure 门户中使用应用程序网关 v1 SKU 配置端到端 SSL 加密。  
 
 > [!NOTE]
-> 应用程序网关 v2 SKU 需要启用端到端配置的受信任的根证书。 门户支持添加受信任的根证书尚不可用。 因此，发生 V2 SKU 时，请参阅[配置使用 PowerShell 的端到端 SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
+> 应用程序网关 v2 SKU 需要启用端到端配置的受信任的根证书。 门户支持添加受信任的根证书尚不可用。 因此，如果 v2 SKU 看到[配置使用 PowerShell 的端到端 SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "60831941"
 
 ## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>创建启用端到端 SSL 的新应用程序网关
 
-若要创建启用端到端 SSL 加密的新应用程序网关，首先需要在创建新应用程序网关时启用 SSL 终止。 这会针对客户端与应用程序网关之间的通信启用 SSL 加密。 然后，需要在 HTTP 设置中将后端服务器的证书加入白名单，以针对应用程序网关与后端服务器之间的通信启用 SSL 加密，从而实现端到端的 SSL 加密。
+若要创建新的应用程序网关使用端到端 SSL 加密，将需要首先启用时创建新的应用程序网关的 SSL 终止。 这会针对客户端与应用程序网关之间的通信启用 SSL 加密。 然后，将需要列入允许列表作为后端 HTTP 设置中的服务器证书启用应用程序网关和后端服务器，完成端到端 SSL 加密之间的通信的 SSL 加密。
 
 ### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>创建新应用程序网关时启用 SSL 终止
 
@@ -61,9 +61,9 @@ ms.locfileid: "60831941"
 
 ## <a name="enable-end-to-end-ssl-for-existing-application-gateway"></a>为现有的应用程序网关启用端到端 SSL
 
-若要为现有的应用程序网关配置端到端 SSL 加密，首先需要在侦听器中启用 SSL 终止。 这会针对客户端与应用程序网关之间的通信启用 SSL 加密。 然后，需要将 HTTP 设置中后端服务器的证书加入白名单，以针对应用程序网关与后端服务器之间的通信启用 SSL 加密，从而实现端到端的 SSL 加密。
+若要使用的端到端 SSL 加密配置现有的应用程序网关，将需要在侦听器中的第一个启用 SSL 终止。 这会针对客户端与应用程序网关之间的通信启用 SSL 加密。 然后，将需要列入允许列表作为后端 HTTP 设置中的服务器证书启用应用程序网关和后端服务器，完成端到端 SSL 加密之间的通信的 SSL 加密。
 
-需要使用一个具有 HTTPS 协议和证书的侦听器来启用 SSL 终止。 无法更改现有侦听器的协议。 因此，可以选择使用具有 HTTPS 协议和证书的现有侦听器，或创建新的侦听器。 如果选择前一种做法，则可以忽略下面所述的“在现有应用程序网关中启用 SSL 终止”步骤，并直接转到“将后端服务器的证书加入白名单”部分。 如果选择后一种做法，请执行这些步骤。 
+你将需要使用 HTTPS 协议和证书用于启用 SSL 终止的侦听器。 不能更改现有侦听器的协议。 因此，您可以选择使用现有侦听器使用 HTTPS 协议和证书，或创建一个新的侦听器。 如果选择前一种做法，则可以忽略下面所述的“在现有应用程序网关中启用 SSL 终止”步骤，并直接转到“将后端服务器的证书加入白名单”部分。 如果您选择后者，使用以下步骤。
 
 ### <a name="enable-ssl-termination-in-existing-application-gateway"></a>在现有应用程序网关中启用 SSL 终止
 

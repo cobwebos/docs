@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 标识体验框架架构的 字符串声明转
 description: Azure Active Directory B2C 标识体验框架架构的字符串声明转换示例。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 32acee78b1aadbe5a461de6ea4475cf28503c325
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6c6b90cb2b24f6a87504a3a0dbd47f998b67ebc1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113021"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707461"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -29,9 +29,9 @@ ms.locfileid: "58113021"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | 字符串 | 要比较的第一个声明的类型。 |
-| inputClaim | inputClaim2 | 字符串 | 要比较的第二个声明的类型。 |
-| InputParameter | stringComparison | 字符串 | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
+| inputClaim | inputClaim1 | string | 要比较的第一个声明的类型。 |
+| inputClaim | inputClaim2 | string | 要比较的第二个声明的类型。 |
+| InputParameter | stringComparison | string | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 
 AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationStringsAreNotEqual 自断言技术配置文件元数据控制向用户显示的错误消息。
 
@@ -90,9 +90,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | 字符串 | 要更改的 ClaimType。 |
-| InputParameter | toCase | 字符串 | 以下值之一：`LOWER` 或 `UPPER`。 |
-| OutputClaim | outputClaim | 字符串 | 调用此声明转换后生成的 ClaimType。 |
+| InputClaim | inputClaim1 | string | 要更改的 ClaimType。 |
+| InputParameter | toCase | string | 以下值之一：`LOWER` 或 `UPPER`。 |
+| OutputClaim | outputClaim | string | 调用此声明转换后生成的 ClaimType。 |
 
 使用此声明转换将任何字符串 ClaimType 更改为小写或大写。  
 
@@ -125,8 +125,8 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | 值 | 字符串 | 要设置的字符串 |
-| OutputClaim | createdClaim | 字符串 | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
+| InputParameter | value | string | 要设置的字符串 |
+| OutputClaim | createdClaim | string | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
 
 使用此声明转换设置一个字符串 ClaimType 值。
 
@@ -154,11 +154,11 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | 字符串 | 要比较的第一个声明类型。 |
-| inputClaim | inputClaim2 | 字符串 | 要比较的第二个声明类型。 |
-| InputParameter | operator | 字符串 | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
-| InputParameter | ignoreCase | 布尔值 | 指定此比较是否应忽略所比较字符串的大小写。 |
-| OutputClaim | outputClaim | 布尔值 | 调用此声明转换后生成的 ClaimType。 |
+| inputClaim | inputClaim1 | string | 要比较的第一个声明类型。 |
+| inputClaim | inputClaim2 | string | 要比较的第二个声明类型。 |
+| InputParameter | operator | string | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
+| InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
+| OutputClaim | outputClaim | boolean | 调用此声明转换后生成的 ClaimType。 |
 
 使用此声明转换检查一个声明是否等于另一个声明。 例如，以下声明转换检查 email 声明的值是否等于 Verified.Email 声明的值。
 
@@ -195,11 +195,11 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | 字符串 | 要比较的声明类型。 |
-| InputParameter | operator | 字符串 | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
-| InputParameter | compareTo | 字符串 | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
-| InputParameter | ignoreCase | 布尔值 | 指定此比较是否应忽略所比较字符串的大小写。 |
-| OutputClaim | outputClaim | 布尔值 | 调用此声明转换后生成的 ClaimType。 |
+| inputClaim | inputClaim1 | string | 要比较的声明类型。 |
+| InputParameter | operator | string | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
+| InputParameter | compareTo | string | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
+| InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
+| OutputClaim | outputClaim | boolean | 调用此声明转换后生成的 ClaimType。 |
 
 可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion 声明的值是否等于 `v1`。
 
@@ -235,12 +235,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputParameter | randomGeneratorType | 字符串 | 指定要生成的随机值，`GUID`（全局唯一 ID）或 `INTEGER`（数字）。 |
-| InputParameter | stringFormat | 字符串 | [可选]格式化随机值。 |
-| InputParameter | base64 | 布尔值 | [可选]将随机值转换为 base64。 如果应用字符串格式，则字符串格式之后的值将被编码为 base64。 |
+| InputParameter | randomGeneratorType | string | 指定要生成的随机值，`GUID`（全局唯一 ID）或 `INTEGER`（数字）。 |
+| InputParameter | stringFormat | string | [可选]格式化随机值。 |
+| InputParameter | base64 | boolean | [可选]将随机值转换为 base64。 如果应用字符串格式，则字符串格式之后的值将被编码为 base64。 |
 | InputParameter | maximumNumber | int | [可选]仅限 `INTEGER` randomGeneratorType。 指定最大数。 |
 | InputParameter | 种子  | int | [可选]仅限 `INTEGER` randomGeneratorType。 指定随机值的种子。 注意：同一个种子生成相同的随机数字序列。 |
-| OutputClaim | outputClaim | 字符串 | 调用此声明转换后将生成的 ClaimTypes。 随机值。 |
+| OutputClaim | outputClaim | string | 调用此声明转换后将生成的 ClaimTypes。 随机值。 |
 
 下面的示例将生成全局唯一 ID。 此声明转换用于创建随机 UPN（用户主体名称）。
 
@@ -294,9 +294,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |字符串 |作为字符串格式 {0} 参数的 ClaimType。 |
-| InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 参数。 |
-| OutputClaim | outputClaim | 字符串 | 调用此声明转换后生成的 ClaimType。 |
+| InputClaim | inputClaim |string |作为字符串格式 {0} 参数的 ClaimType。 |
+| InputParameter | stringFormat | string | 字符串格式，包括 {0} 参数。 |
+| OutputClaim | outputClaim | string | 调用此声明转换后生成的 ClaimType。 |
 
 使用此声明转换格式化任何带一个参数 {0} 的字符串。 以下示例创建一个 userPrincipalName。 所有社交标识提供者技术配置文件（如 `Facebook-OAUTH`）都调用 CreateUserPrincipalName 来生成 userPrincipalName。   
 
@@ -329,10 +329,10 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |字符串 | 作为字符串格式 {0} 参数的 ClaimType。 |
-| InputClaim | inputClaim | 字符串 | 作为字符串格式 {1} 参数的 ClaimType。 |
-| InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 和 {1} 参数。 |
-| OutputClaim | outputClaim | 字符串 | 调用此声明转换后生成的 ClaimType。 |
+| InputClaim | inputClaim |string | 作为字符串格式 {0} 参数的 ClaimType。 |
+| InputClaim | inputClaim | string | 作为字符串格式 {1} 参数的 ClaimType。 |
+| InputParameter | stringFormat | string | 字符串格式，包括 {0} 和 {1} 参数。 |
+| OutputClaim | outputClaim | string | 调用此声明转换后生成的 ClaimType。 |
 
 使用此声明转换格式化任何带两个参数 {0} 和 {1} 的字符串。 下面的示例创建带指定格式的 displayName：
 
@@ -367,8 +367,8 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | mapFromClaim | 字符串 | 该声明包含要在带 Restriction 集合的 restrictionValueClaim 声明中查找的文本。  |
-| OutputClaim | restrictionValueClaim | 字符串 | 包含 Restriction 集合的声明。 在调用声明转换后，此声明的值将包含选定项的值。 |
+| InputClaim | mapFromClaim | string | 该声明包含要在带 Restriction 集合的 restrictionValueClaim 声明中查找的文本。  |
+| OutputClaim | restrictionValueClaim | string | 包含 Restriction 集合的声明。 在调用声明转换后，此声明的值将包含选定项的值。 |
 
 下面的示例基于错误密钥查找错误消息描述。 ResponseMsg 声明包含一系列要显示给最终用户或发送给信赖方的错误消息。
 
@@ -410,10 +410,10 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputParameterId | 字符串 | 包含查找值的声明 |
-| InputParameter | |字符串 | inputParameters 集合。 |
-| InputParameter | errorOnFailedLookup | 布尔值 | 控制在没有任何匹配查找时是否返回错误。 |
-| OutputClaim | inputParameterId | 字符串 | 调用此声明转换后将生成的 ClaimTypes。 匹配 ID 的值。 |
+| InputClaim | inputParameterId | string | 包含查找值的声明 |
+| InputParameter | |string | inputParameters 集合。 |
+| InputParameter | errorOnFailedLookup | boolean | 控制在没有任何匹配查找时是否返回错误。 |
+| OutputClaim | inputParameterId | string | 调用此声明转换后将生成的 ClaimTypes。 匹配 ID 的值。 |
 
 下面的示例在某一个 inputParameters 集合中查找域名。 声明转换查找标识符中的域名，并返回其值（应用程序 ID）。
 
@@ -452,7 +452,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | 字符串 | 其值为 NULL 的声明。 |
+| OutputClaim | claim_to_null | string | 其值为 NULL 的声明。 |
 
 使用此声明转换可从声明属性包中删除不必要的数据。 因此，会话 cookie 会比较小。 以下示例将删除 `TermsOfService` 声明类型的值。
 
@@ -475,8 +475,8 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | emailAddress | 字符串 | 包含电子邮件地址的 ClaimType。 |
-| OutputClaim | 域 | 字符串 | 调用此声明转换后生成的 ClaimType - 域。 |
+| InputClaim | emailAddress | string | 包含电子邮件地址的 ClaimType。 |
+| OutputClaim | 域 | string | 调用此声明转换后生成的 ClaimType - 域。 |
 
 使用此声明转换分析用户 @ 符号之后的域名。 这可以帮助从审核数据中删除个人身份信息 (PII)。 以下声明转换演示如何分析 email 声明中的域名。
 
@@ -504,14 +504,14 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | 字符串 | 要比较的声明类型。 |
-| InputParameter | matchTo | 字符串 | 要与 `inputClaim` 进行比较的字符串。 |
-| InputParameter | stringComparison | 字符串 | 可能的值：`Ordinal` 或 `OrdinalIgnoreCase`。 |
-| InputParameter | stringMatchMsg | 字符串 | 字符串相等情况下第一个要设置的值。 |
-| InputParameter | stringMatchMsgCode | 字符串 | 字符串相等情况下第二个要设置的值。 |
-| OutputClaim | outputClaim1 | 字符串 | 如果字符串相等，则此输出声明包含 `stringMatchMsg` 输入参数的值。 |
-| OutputClaim | outputClaim2 | 字符串 | 如果字符串相等，则此输出声明包含 `stringMatchMsgCode` 输入参数的值。 |
-| OutputClaim | stringCompareResultClaim | 布尔值 | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
+| inputClaim | inputClaim | string | 要比较的声明类型。 |
+| InputParameter | matchTo | string | 要与 `inputClaim` 进行比较的字符串。 |
+| InputParameter | stringComparison | string | 可能的值：`Ordinal` 或 `OrdinalIgnoreCase`。 |
+| InputParameter | stringMatchMsg | string | 字符串相等情况下第一个要设置的值。 |
+| InputParameter | stringMatchMsgCode | string | 字符串相等情况下第二个要设置的值。 |
+| OutputClaim | outputClaim1 | string | 如果字符串相等，则此输出声明包含 `stringMatchMsg` 输入参数的值。 |
+| OutputClaim | outputClaim2 | string | 如果字符串相等，则此输出声明包含 `stringMatchMsgCode` 输入参数的值。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
 
 可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion 声明的值是否等于 `v1`。 如果是，则将值更改为 `v2`。 
 
@@ -553,12 +553,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | claimToMatch | 字符串 | 要比较的声明类型。 |
-| InputParameter | matchTo | 字符串 | 要与 inputClaim 进行比较的字符串。 |
-| InputParameter | stringComparison | 字符串 | 可能的值：`Ordinal` 或 `OrdinalIgnoreCase`。 |
-| InputParameter | outputClaimIfMatched | 字符串 | 字符串相等情况下要设置的值。 |
-| OutputClaim | outputClaim | 字符串 | 如果字符串相等，则此输出声明包含 `outputClaimIfMatched` 输入参数的值。 或者如果字符串不匹配，则为 NULL。 |
-| OutputClaim | stringCompareResultClaim | 布尔值 | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
+| inputClaim | claimToMatch | string | 要比较的声明类型。 |
+| InputParameter | matchTo | string | 要与 inputClaim 进行比较的字符串。 |
+| InputParameter | stringComparison | string | 可能的值：`Ordinal` 或 `OrdinalIgnoreCase`。 |
+| InputParameter | outputClaimIfMatched | string | 字符串相等情况下要设置的值。 |
+| OutputClaim | outputClaim | string | 如果字符串相等，则此输出声明包含 `outputClaimIfMatched` 输入参数的值。 或者如果字符串不匹配，则为 NULL。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
 
 例如，以下声明转换检查 ageGroup 声明的值是否等于 `Minor`。 如果是，则返回 `B2C_V1_90001` 值。 
 

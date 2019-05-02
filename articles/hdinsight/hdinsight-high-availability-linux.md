@@ -7,22 +7,20 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 596b53d468a7dfc719c16dc6e6339492381d7f41
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763795"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704928"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
 HDInsight 群集提供了两个头节点，以提升 Apache Hadoop 服务和作业运行的可用性与可靠性。
 
 Hadoop 通过将服务和数据复制到群集的多个节点中来实现高可用性和可靠性。 不过，Hadoop 的标准分发功能通常只能有一个头节点。 单个头节点发生任何中断都可能导致群集停止工作。 HDInsight 提供了两个头节点来提高 Hadoop 的可靠性和可用性。
-
-[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="availability-and-reliability-of-nodes"></a>节点的可用性和可靠性
 
@@ -104,7 +102,7 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 ### <a name="ambari-web-ui"></a>Ambari Web UI
 
-可在 https://CLUSTERNAME.azurehdinsight.net 处查看 Ambari Web UI。 将 **CLUSTERNAME** 替换为群集名称。 如果出现提示，请输入群集的 HTTP 用户凭据。 默认 HTTP 用户名为 **admin**，密码是创建群集时输入的密码。
+可在 `https://CLUSTERNAME.azurehdinsight.net` 处查看 Ambari Web UI。 将 **CLUSTERNAME** 替换为群集名称。 如果出现提示，请输入群集的 HTTP 用户凭据。 默认 HTTP 用户名为 **admin**，密码是创建群集时输入的密码。
 
 出现 Ambari 页面时，该页的左侧将列出已安装的服务。
 
@@ -247,27 +245,25 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 ## <a name="how-to-configure-the-node-size"></a>如何配置节点大小
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 只能在创建群集期间选择节点大小。 可以在 [HDInsight 定价页](https://azure.microsoft.com/pricing/details/hdinsight/)上找到 HDInsight 可用的不同 VM 大小的列表。
 
-创建群集时，可以指定节点的大小。 以下信息介绍了如何使用 [Azure 门户][preview-portal]、[Azure PowerShell][azure-powershell] 和 [Azure 经典 CLI][azure-cli] 指定大小：
+创建群集时，可以指定节点的大小。 以下信息介绍了如何指定大小使用[Azure 门户][preview-portal]， [Azure PowerShell 模块 Az][azure-powershell]，并[Azure CLI][azure-cli]:
 
 * **Azure 门户**：创建群集时，可以设置群集所用节点的大小：
 
     ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure 经典 CLI**：使用 `azure hdinsight cluster create` 命令时，可以使用 `--headNodeSize`、`--workerNodeSize` 和 `--zookeeperNodeSize` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
+* **Azure CLI**：使用时[az hdinsight 创建](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令时，可以使用设置的头节点、 辅助角色与 ZooKeeper 节点大小`--headnode-size`， `--workernode-size`，和`--zookeepernode-size`参数。
 
-* **Azure PowerShell**：使用 `New-AzHDInsightCluster` cmdlet 时，可以使用 `-HeadNodeVMSize`、`-WorkerNodeSize` 和 `-ZookeeperNodeSize` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
+* **Azure PowerShell**：使用时[新建 AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet，你可以通过使用设置的头节点、 辅助角色与 ZooKeeper 节点大小`-HeadNodeSize`， `-WorkerNodeSize`，和`-ZookeeperNodeSize`参数。
 
 ## <a name="next-steps"></a>后续步骤
 
 请使用以下链接深入了解本文档中所述的内容。
 
 * [Apache Ambari REST 参考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [安装和配置 Azure 经典 CLI](../cli-install-nodejs.md)
-* [安装和配置 Azure PowerShell](/powershell/azure/overview)
+* [安装和配置 Azure CLI](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
+* [安装和配置 Azure PowerShell 模块 Az](/powershell/azure/overview)
 * [使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 * [配置基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 

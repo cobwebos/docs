@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a4c315d2696b081a4f2ac646d097e76ff9562380
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 57a96648e480c89d1112f069676edb1abcc7cfc3
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60917190"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869855"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>必应图像搜索 API 的语言和区域支持
 
@@ -32,7 +32,7 @@ ms.locfileid: "60917190"
 > - en-AU（英语，澳大利亚）
 > - zh-CN（中文，中国）
 
-## <a name="countries"></a>国家/地区
+## <a name="countriesregions"></a>国家/地区
 
 |国家/地区|代码|
 |-------|----|

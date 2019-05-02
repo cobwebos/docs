@@ -1,25 +1,18 @@
 ---
-title: Azure 和 Dynamcis 365 咨询服务产品/服务 - 定义产品/服务设置 | Microsoft Docs
-description: 有关在云合作伙伴门户中为 Azure 或 Dynamics 365 咨询服务产品/服务定义产品/服务设置的指导。
+title: 定义咨询服务产品/服务的产品/服务设置 |Azure Marketplace
+description: 为 Azure Marketplace 中 Azure 或 Dynamics 365 咨询服务产品/服务在云合作伙伴门户中定义产品/服务设置。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749629"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942778"
 ---
 # <a name="offer-settings-tab"></a>“产品/服务设置”选项卡
 
@@ -27,7 +20,8 @@ ms.locfileid: "60749629"
 
 ![创建新的咨询服务套餐 -“套餐设置”选项卡](media/consultingoffer-settings-tab.png)
 
-### <a name="offer-id"></a>产品/服务 ID
+
+### <a name="offer-id"></a>产品/服务 ID *
 
 此标识符是首次提交套餐时创建的唯一名称。 它只能包含小写的字母数字字符、短划线或下划线。 “套餐 ID”将显示在 URL 中，并会影响搜索引擎的结果。 例如，yourcompanyname_exampleservice。
 
@@ -36,11 +30,13 @@ ms.locfileid: "60749629"
 >[!Note]
 >套餐上线后，无法更新其标识符。
 
-### <a name="publisher-id"></a>发布者 ID
+
+### <a name="publisher-id"></a>发布者 ID *
 
 此标识符与你的帐户相关。 使用组织帐户登录后，“发布者 ID”将显示在下拉菜单中。
 
-### <a name="name"></a>名称
+
+### <a name="name"></a>名称*
 
 此字符串显示为 AppSource 或 Azure 市场中的套餐名称。 “名称”框被限制为最多包含 50 个字符。 审阅者可能需要编辑你的标题以在套餐名称后追加持续时间和套餐类型。
 

@@ -1,22 +1,19 @@
 ---
 title: 使用 JavaScript API 与报表交互 | Microsoft Docs
 description: Power BI JavaScript API 可轻松地将 Power BI 报表嵌入到应用程序中。
-services: power-bi-embedded
-author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: bdd885d3-1b00-4dcf-bdff-531eb1f97bfb
-ms.service: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
+author: rkarlin
+ms.author: rkarlin
 ms.topic: conceptual
 ms.workload: powerbi
-origin.date: 09/26/2018
-ms.date: 03/05/2019
-ms.author: v-junlch
+ms.date: 09/20/2017
 ms.openlocfilehash: 252296af8b2065ae22bed8b421d4d00718b78287
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62110446"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705512"
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>使用 JavaScript API 与 Power BI 报表交互
 
@@ -27,11 +24,11 @@ Power BI JavaScript API 可轻松地将 Power BI 报表嵌入到应用程序中�
 
 使用作为应用程序一部分托管的 IFrame 将 Power BI 报表嵌入到应用程序中。 IFrame 充当应用程序和报表之间的边界，如下图所示：
 
-![Power BI 工作区集合 iframe，无 Javascript API](./media/interact-with-reports/iframe-without-javacript.png)
+![Power BI 工作区集合 iframe，无 Javascript API](media/interact-with-reports/iframe-without-javacript.png)
 
 IFrame 使得嵌入过程更容易，但如果没有 JavaScript API，报表和应用程序将不能彼此交互。 缺乏交互会让人觉得报表不是应用程序的一部分。 报表和应用程序确实需要进行相互通信，如下图中所示：
 
-![Power BI 工作区集合 iframe，有 Javascript API](./media/interact-with-reports/iframe-with-javascript.png)
+![Power BI 工作区集合 iframe，有 Javascript API](media/interact-with-reports/iframe-with-javascript.png)
 
 Power BI JavaScript API 允许编写可以安全通过 IFrame 边界的代码。 这使应用程序可在报表中以编程方式执行某项操作，并侦听用户在报表中所做操作中的事件。
 
@@ -39,17 +36,17 @@ Power BI JavaScript API 允许编写可以安全通过 IFrame 边界的代码。
 
 使用 JavaScript API，可以管理报表、导航到报表中的页、筛选报表和处理嵌入事件。 下图显示了 API 的结构。
 
-![Power BI JavaScript API 图示](./media/interact-with-reports/javascript-api-diagram.png)
+![Power BI JavaScript API 图示](media/interact-with-reports/javascript-api-diagram.png)
 
 ### <a name="manage-reports"></a>管理报表
 Javascript API 允许管理报表和页级别的行为：
 
-- 在应用程序中安全地嵌入特定的 Power BI 报表 - 请尝试 [嵌入演示应用程序](https://azure-samples.github.io/powerbi-angular-client/#/scenario1)
-  - 设置访问令牌
-- 配置报表
-  - 启用和禁用筛选器窗格和页面导航窗格 - 请尝试 [更新设置演示应用程序](https://azure-samples.github.io/powerbi-angular-client/#/scenario6)
-  - 设置页面和筛选器的默认值 - 请尝试 [设置默认值演示](https://azure-samples.github.io/powerbi-angular-client/#/scenario5)
-- 进入和退出全屏模式
+* 在应用程序中安全地嵌入特定的 Power BI 报表 - 请尝试 [嵌入演示应用程序](https://azure-samples.github.io/powerbi-angular-client/#/scenario1)
+  * 设置访问令牌
+* 配置报表
+  * 启用和禁用筛选器窗格和页面导航窗格 - 请尝试 [更新设置演示应用程序](https://azure-samples.github.io/powerbi-angular-client/#/scenario6)
+  * 设置页面和筛选器的默认值 - 请尝试 [设置默认值演示](https://azure-samples.github.io/powerbi-angular-client/#/scenario5)
+* 进入和退出全屏模式
 
 [了解有关嵌入报表的详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embedding-Basics)
 
@@ -79,19 +76,19 @@ const basicFilter: pbi.models.IBasicFilter = {
 #### <a name="advanced-filters"></a>高级筛选器
 高级筛选器使用逻辑运算符 AND 或 OR，接受一个或两个条件，每个条件都有其自己的运算符和值。 支持的条件有：
 
-- 无
-- LessThan
-- LessThanOrEqual
-- GreaterThan
-- GreaterThanOrEqual
-- Contains
-- DoesNotContain
-- -StartsWith
-- DoesNotStartWith
-- Is
-- IsNot
-- IsBlank
-- IsNotBlank
+* 无
+* LessThan
+* LessThanOrEqual
+* GreaterThan
+* GreaterThanOrEqual
+* Contains
+* DoesNotContain
+* -StartsWith
+* DoesNotStartWith
+* Is
+* IsNot
+* IsBlank
+* IsNotBlank
 
 ```typescript
 const advancedFilter: pbi.models.IAdvancedFilter = {
@@ -120,12 +117,12 @@ const advancedFilter: pbi.models.IAdvancedFilter = {
 
 除了向 iframe 发送信息之外，应用程序还可以接收来自 iframe 的有关下列事件的信息：
 
-- Embed
-  - loaded
-  - error
-- 报告
-  - pageChanged
-  - dataSelected（即将推出）
+* Embed
+  * loaded
+  * error
+* 报告
+  * pageChanged
+  * dataSelected（即将推出）
 
 [了解有关处理事件的详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Handling-Events)
 
@@ -133,8 +130,6 @@ const advancedFilter: pbi.models.IAdvancedFilter = {
 
 有关 Power BI JavaScript API 的详细信息，请查看以下链接：
 
-- [JavaScript API Wiki](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
-- [对象模型参考](https://microsoft.github.io/powerbi-models/modules/_models_.html)
-- [在线演示](https://microsoft.github.io/PowerBI-JavaScript/demo/)
-
-<!-- Update_Description: update metedata properties -->
+* [JavaScript API Wiki](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
+* [对象模型参考](https://microsoft.github.io/powerbi-models/modules/_models_.html)
+* [在线演示](https://microsoft.github.io/PowerBI-JavaScript/demo/)

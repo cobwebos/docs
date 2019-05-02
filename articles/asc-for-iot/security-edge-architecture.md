@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c6ac3d9dbbb16caed51243fea852adea541b9f04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a71a0cd5888cec5c3af0e2853edf5a7f014939b4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505378"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919941"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge 安全模块
 
@@ -27,7 +27,7 @@ ms.locfileid: "60505378"
 > 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版本没有附带服务级别协议提供，不建议用于生产 worklo§1ads。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-[Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/)提供了强大的功能来管理和执行在边缘的业务工作流。
+[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)提供了强大的功能来管理和执行在边缘的业务工作流。
 IoT Edge 在 IoT 环境中扮演的关键部分使其成为尤其吸引人恶意执行组件。
 
 IoT 安全模块的 azure 安全中心 (ASC) 提供了 IoT Edge 设备的全面的安全解决方案。
@@ -44,7 +44,7 @@ IoT 安全 IoT Edge 模块的 ASC 提供以下功能：
 
 - IoT Edge 部署清单进行签名的分析。
 
-- 将原始安全事件聚合到通过发送的消息[IoT Edge 中心](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。
+- 将原始安全事件聚合到通过发送的消息[IoT Edge 中心](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。
 
 - 删除通过使用安全模块孪生的配置。
 

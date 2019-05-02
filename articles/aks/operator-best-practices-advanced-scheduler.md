@@ -2,18 +2,17 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的高级计划程序功能
 description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能（例如排斥 (taint) 和容许 (toleration)、节点选择器和关联，或 pod 间关联和反关联）的群集操作员最佳做法
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-origin.date: 11/26/2018
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/26/2018
+ms.author: iainfou
+ms.openlocfilehash: 9aa394a405e5b4392f900d1e7520d93e6d152e49
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464962"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690470"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
@@ -37,7 +36,7 @@ Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行
 * 将**排斥**应用到指明了只能计划特定 pod 的节点。
 * 然后，将**容许**应用到可以*容许*节点排斥的 pod。
 
-将 pod 部署到 AKS 群集时，Kubernetes 只会在容许与排斥相符的节点上计划 pod。 例如，假设你在 AKS 群集中为支持 GPU 的节点创建了一个节点池。 你定义了名称（例如 *gpu*），然后定义了计划值。 如果将此值设置为 *NoSchedule*，当 pod 未定义相应的容许时，Kubernetes 计划程序无法在节点上计划 pod。
+将 pod 部署到 AKS 群集时，Kubernetes 只会在容许与排斥相符的节点上计划 pod。 例如，假设你有支持 GPU 的节点在 AKS 群集中节点池。 你定义了名称（例如 *gpu*），然后定义了计划值。 如果将此值设置为 *NoSchedule*，当 pod 未定义相应的容许时，Kubernetes 计划程序无法在节点上计划 pod。
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -53,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
+    image: microsoft/samples-tf-mnist-demo:gpu
   resources:
     requests:
       cpu: 0.5
@@ -73,6 +72,23 @@ spec:
 应用排斥时，请与应用程序开发人员和所有者协作，让他们在其部署中定义所需的容许。
 
 有关排斥和容许的详细信息，请参阅[应用排斥和容许][k8s-taints-tolerations]。
+
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Taints 和 tolerations 在 AKS 中的行为
+
+当升级在 AKS 中的节点池时，taints 和 tolerations 按照组模式要应用到新节点：
+
+- **默认群集而不使用虚拟机扩展支持**
+  - 我们假设您有两个节点群集- *node1*并*node2*。 当您升级，其他节点 (*node3*) 创建。
+  - 从 taints *node1*应用于*node3*，然后*node1*就会被删除。
+  - 创建另一个新节点 (名为*node1*，上次*node1*已被删除)，和*node2* taints 应用于新*node1*. 然后， *node2*被删除。
+  - 实际上*node1*变得*node3*，并*node2*变得*node1*。
+
+- **群集使用的虚拟机规模集**（目前以预览版在 AKS 中）
+  - 同样，我们假设您有两个节点群集- *node1*并*node2*。 升级的节点池。
+  - 创建两个其他节点， *node3*并*节点 4*，而 taints 分别上传递。
+  - 原始*node1*并*node2*被删除。
+
+当你缩放在 AKS 中的节点池时，taints 和 tolerations 不携带转移设计。
 
 ## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>使用节点选择器和关联控制 pod 计划
 
@@ -96,7 +112,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
+    image: microsoft/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -126,7 +142,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
+    image: microsoft/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5

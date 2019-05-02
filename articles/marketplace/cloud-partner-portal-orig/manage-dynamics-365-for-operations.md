@@ -1,25 +1,19 @@
 ---
-title: 如何通过云合作伙伴门户创建 Dynamics 365 for Operations 套餐 | Microsoft Docs
+title: 如何通过云合作伙伴门户创建 Dynamics 365 for Operations 套餐
 description: 如何通过云合作伙伴门户创建 Dynamics 365 for Operations 套餐
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 93c70e038589667ae97acb86663a6179dcc81637
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: a9ada25641e2a56beb9083b145a507c8fd41a46f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776702"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935114"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>如何通过云合作伙伴门户创建 Dynamics 365 for Operations 套餐
 

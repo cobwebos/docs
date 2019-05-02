@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea2381287729579e10d457912c4147f59716bcc4
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61371810"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875712"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>在 QnA Maker 中以交互方式测试知识库
 
@@ -24,8 +24,8 @@ ms.locfileid: "61371810"
 
 ## <a name="test-answer-matching"></a>测试答案匹配
 
-1.  通过在“我的知识库” **** 页上选择知识库名称来访问知识库。
-2.  若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试” **** 。
+1.  通过在“我的知识库”页上选择知识库名称来访问知识库。
+2.  若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试”。
 
     ![访问测试面板](../media/qnamaker-how-to-test-kb/access-test.png)
 
@@ -35,17 +35,17 @@ ms.locfileid: "61371810"
 
 ## <a name="clear-test-panel"></a>清除测试面板
 
-若要从测试控制台中清除所有输入的测试查询及其结果，请选择“测试”面板左上角的“重新开始” **** 。
+若要从测试控制台中清除所有输入的测试查询及其结果，请选择“测试”面板左上角的“重新开始”。
 
 ## <a name="close-test-panel"></a>关闭测试面板
 
-若要关闭“测试”面板，请再次选择“测试” **** 按钮。 当“测试”面板处于打开状态时，无法编辑知识库内容。
+若要关闭“测试”面板，请再次选择“测试”按钮。 当“测试”面板处于打开状态时，无法编辑知识库内容。
 
 ## <a name="inspect-score"></a>检查分数
 
 在“检查”面板中检查测试结果的详细信息。
 
-1.  打开“测试”滑出面板后，选择“检查” **** 以获取有关该响应的更多详细信息。
+1.  打开“测试”滑出面板后，选择“检查”以获取有关该响应的更多详细信息。
 
     ![检查响应](../media/qnamaker-how-to-test-kb/inspect.png)
 

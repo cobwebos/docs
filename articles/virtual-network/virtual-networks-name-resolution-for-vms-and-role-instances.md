@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 763fc2952d7a1e2eac209cc9df53713c58ad83c9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640427"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925241"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -96,7 +96,7 @@ Azure 提供的名称解析包括以下功能：
   * 使用 `systemctl start dnsmasq.service` 启动 dnsmasq 服务。 
   * 编辑 **/etc/sysconfig/network/config** 并将 *NETCONFIG_DNS_FORWARDER=""* 更改为 *dnsmasq*。
   * 使用 `netconfig update` 更新 resolv.con，将缓存设置为本地 DNS 解析程序。
-* **OpenLogic（使用 NetworkManager）**：
+* **CentOS （使用 NetworkManager）**:
   * 使用 `sudo yum install dnsmasq` 安装 dnsmasq 包。
   * 使用 `systemctl enable dnsmasq.service` 启用 dnsmasq 服务。
   * 使用 `systemctl start dnsmasq.service` 启动 dnsmasq 服务。
@@ -129,7 +129,7 @@ resolv.conf 文件通常是自动生成的，不应进行编辑。 添加 *optio
 * **SUSE**（使用 netconf）：
   1. 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数。
   2. 运行 `netconfig update` 以进行更新。
-* **OpenLogic**（使用 NetworkManager）：
+* **CentOS** （使用 NetworkManager）：
   1. 将“echo "options timeout:1 attempts:5"”添加到“/etc/NetworkManager/dispatcher.d/11-dhclient”。
   2. 使用 `service network restart` 进行更新。
 

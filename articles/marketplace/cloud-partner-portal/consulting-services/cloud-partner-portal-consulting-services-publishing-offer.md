@@ -1,25 +1,18 @@
 ---
-title: Azure 和 Dynamics 365 咨询服务产品/服务 | Microsoft Docs
+title: Azure 和 Dynamics 365 咨询服务产品/服务 |Azure Marketplace
 description: 有关在云合作伙伴门户中定义和发布 Azure 或 Dynamics 365 咨询服务产品/服务的指导。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e543c24a8e3549bc53d6074c7008f3d01fcc96c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: a033ad80b59dc29b6d08624dee400d496eb28005
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334992"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942854"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 和 Dynamics 365 咨询服务产品/服务
 

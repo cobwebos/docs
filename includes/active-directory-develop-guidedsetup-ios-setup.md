@@ -15,11 +15,11 @@ ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
 ms.openlocfilehash: e72c4b0cf8f77a057ff07f8bce7acae4e834e28d
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
+ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59503151"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951380"
 ---
 ## <a name="setting-up-your-ios-application"></a>设置 iOS 应用程序
 
@@ -91,7 +91,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 
 项目模板中应自动创建了 Main.storyboard 文件。 请按照以下说明创建应用 UI：
 
-1.  按住 Ctrl 并单击 `Main.storyboard` 打开上下文菜单，然后单击：`Open As` > `Source Code`
+1.  按住 Control 键并单击 `Main.storyboard` 打开上下文菜单，然后单击：`Open As` > `Source Code`
 2.  用以下代码替换 `<scenes>` 节点：
 
 ```xml

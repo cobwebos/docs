@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: baa2a09adeba133c5348449b12e037d4a9cb3213
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: a9d8bc172eb5f5e0e119a0bde56fb167f7a0c2b2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683021"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699157"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS 指标和警报
 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 本文介绍了 Azure DNS 服务的指标和警报。
@@ -36,7 +36,7 @@ Azure DNS 为客户提供指标，使它们能够监视服务中托管其 DNS �
 >[!NOTE]
 > 这个时候，这些指标仅可用于 Azure DNS 中托管的公共 DNS 区域。 如果 Azure DNS 托管专用区域，那么这些指标不为这些区域提供数据。 此外，仅 Azure 公有云支持指标和警报功能。 对主权云的支持将会在稍后跟进。 
 
-这些指标的维度的粒度级是 DNS 区域。
+可以查看的指标的最高粒度元素是 DNS 区域。 当前无法看到在区域内的单独的资源记录的指标。
 
 ### <a name="query-volume"></a>查询量
 

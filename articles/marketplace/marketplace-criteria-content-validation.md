@@ -1,25 +1,19 @@
 ---
-title: 市场准则内容验证 - Azure | Microsoft Docs
+title: Marketplace 条件内容验证 |Azure Marketplace
 description: 本文介绍如何成为市场中的发布者。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: yijenj
 manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3345dd82a1de4f9144cdeb5acd5d3e506dc55de8
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61093193"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937829"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure 市场列表准则
 
@@ -32,7 +26,7 @@ ms.locfileid: "61093193"
 
 |  | 列表元素 | 基本要求 | 最佳要求 |
 |:--- |:--- |:--- |:--- |
-| 1 | 潜在客户目标 | 已配置潜在顾客目标| 合作伙伴解决方案选项卡中还列出了 OCP 目录的潜在顾客目标 CRM 信息 | 
+| 第 | 潜在客户目标 | 已配置潜在顾客目标| 合作伙伴解决方案选项卡中还列出了 OCP 目录的潜在顾客目标 CRM 信息 | 
 | 2 | 套餐标题 | 描述解决方案套餐。 匹配合作伙伴网站中的解决方案在线促销 | 包含搜索关键字 |
 | 3 | 徽标 | 徽标正常显示 | 徽标正常显示，并包含[大图](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish)（Azure 门户中的大格式图像） |
 | 4 |  套餐说明 | <br>• 2-3 个段落 <br>• 能够快速轻松地了解解决方案套餐 <br>• 套餐说明不存在拼写和语法错误 <br>• 套餐说明内容全面且突出重点：目标受众、用户类型、有价值的原因（价值主张） <br>• 套餐说明采用叙述性的段落，包含易于理解的短句 | <br>• 概述目标行业（如果相关） <br>• 每个段落标题采用适当的格式，后接一句话或短语式的汇总内容，并通过概括性的要点（如果适用）强调重要优势。 此处的目标是使读者无需阅读整个段落，就能通过格式快速轻松地了解套餐。 <br>• 采用类似于汽车销售手册的格式，在段落之间保留间距。 这意味着不需要插入技术特性或代码术语，而只是以简单的字词全面描述套餐。 | 
@@ -75,7 +69,7 @@ ms.locfileid: "61093193"
 
 |  | 列表元素 | 基本要求 | 最佳要求 | 
 |:--- |:--- |:--- |:--- |
-|第 |产品/服务设置 | <br>• 产品/服务 ID：最多 50 个字符 <br>• 发布者 ID：请从下拉列表中选择 <br>•   名称：最多 50 个字符 | 采用说明中所用的相同标题样式 - 标题不需要太长。 | 
+|1 |产品/服务设置 | <br>• 产品/服务 ID：最多 50 个字符 <br>• 发布者 ID：请从下拉列表中选择 <br>•   名称：最多 50 个字符 | 采用说明中所用的相同标题样式 - 标题不需要太长。 | 
 | 2 | SKU | 合作伙伴单击新 SKU| 采用说明中所用的相同标题样式 - 标题不需要太长。  |
 | 3 | 市场项目 | 徽标正常显示 |<br>• 徽标包含“大图”（Azure 门户中的大格式图像） <br>• 徽标：要求提供小型 (48x48) 和大型 (216x216) 图像 <br>• 大图要求： https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• 屏幕截图（最多 5 个）：CPP 需要分辨率为 1280 x 720 的 .png 图像。|
 | 4 | 线索管理 |<br>•    潜在顾客管理：选择用于存储潜在顾客的系统。 <br>• 在[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)了解如何连接 CRM 系统 | |

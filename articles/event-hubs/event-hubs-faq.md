@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d1ed16465efb6c70b4426f22e8b9983112142c79
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ce9c6a83d664bc9ad1798792f7762556c9a0d541
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162639"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690270"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -51,6 +51,47 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何监视事件中心？
 事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
 
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
+使用 Azure 服务总线中，可以使用以下协议来发送和接收消息：
+
+- 高级消息队列协议 (AMQP)
+- HTTP
+- Apache Kafka
+
+请参阅下表中的所需打开以显示使用这些协议进行通信和 Azure 事件中心的出站端口。 
+
+| Protocol | 端口 | 详细信息 | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 和端口 5672 | 请参阅[AMQP 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| HTTP、HTTPS | 80、443 |  |
+| Kafka | 9092 | 请参阅[从 Kafka 应用程序使用事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>哪些 IP 地址需要加入允许列表？
+若要查找你连接到允许列表的正确 IP 地址，请执行以下步骤：
+
+1. 从命令提示符处运行以下命令： 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. 记下中返回的 IP 地址`Non-authoritative answer`。 此 IP 地址是静态的。 它将更改时间的唯一点是如果还原到不同的群集的命名空间。
+
+如果你的命名空间为使用区域冗余，需要执行一些其他步骤： 
+
+1. 首先，在命名空间上运行 nslookup。
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. 记下中的名称**非权威应答**部分中，这是采用以下格式之一： 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. 为每个后缀 s1、 s2 和 s3 以获取在三个可用性区域中运行的所有三个实例的 IP 地址与运行 nslookup 
+
 ## <a name="apache-kafka-integration"></a>Apache Kafka 集成
 
 ### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>如何将现有的 Kafka 应用程序与事件中心集成？
@@ -65,7 +106,7 @@ bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.p
 
 bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
 
-注意：如果 sasl.jaas.config 不是框架中受支持的配置，请查找用于设置 SASL 用户名和密码的配置，并改为使用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
+请注意:如果 sasl.jaas.config 不是框架中受支持的配置，请查找用于设置 SASL 用户名和密码的配置，并改为使用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>支持 Kafka 的事件中心的消息/事件大小是多少？
 支持 Kafka 的事件中心允许的最大消息大小为 1MB。
@@ -119,7 +160,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
 | 100x1KB 批 | 2 | 400 MB/秒 | 400K 消息/秒 | 800 MB/秒 | 800K 消息/秒 | 400 TU | 100 TU | 
 | 10x10KB 批 | 2 | 666 MB/秒 | 66.6K 消息/秒 | 1.33 GB/秒 | 133K 消息/秒 | 666 TU | 166 TU |
-| 6x32KB 批 | 1 | 1.05 GB/秒 | 34K 消息/秒 | 1.05 GB/秒 | 34K 消息/秒 | 1000 TU | 250 TU |
+| 6x32KB 批 | 第 | 1.05 GB/秒 | 34K 消息/秒 | 1.05 GB/秒 | 34K 消息/秒 | 1000 TU | 250 TU |
 
 测试中使用了以下条件：
 
@@ -158,7 +199,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 ### <a name="how-are-event-hubs-ingress-events-calculated"></a>事件中心入口事件是怎样计算的？
 
-发送到事件中心的每个事件均计为一条可计费消息。 *入口事件*定义为小于等于 64 KB 的数据单位。 任何小于等于 64 KB 的事件均被视为一个计费事件。 如果该事件大于 64 KB，则根据事件大小按 64 KB 的倍数来计算计费事件的数量。 例如，发送到事件中心的 8-KB 事件按一个事件计费，而发送到事件中心的 96-KB 的消息则按两个事件计费。
+发送到事件中心的每个事件均计为一条可计费消息。 *入口事件* 定义为小于等于 64 KB 的数据单位。 任何小于等于 64 KB 的事件均被视为一个计费事件。 如果该事件大于 64 KB，则根据事件大小按 64 KB 的倍数来计算计费事件的数量。 例如，发送到事件中心的 8-KB 事件按一个事件计费，而发送到事件中心的 96-KB 的消息则按两个事件计费。
 
 从事件中心耗用的事件，以及管理操作和控制调用（例如检查点），不统计为计费入口事件，但会累计，上限为吞吐量单位限额。
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: 31755dcc247ea3be5fb38249afd98dc72dcbc544
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097093"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717115"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 生成机器学习应用程序并分析数据集
 

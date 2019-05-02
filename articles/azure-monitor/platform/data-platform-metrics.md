@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: c00f703c5cfa606eaeb6ea0dea5fe5d754d3de5d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108078"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867969"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
 > [!NOTE]
-> Azure Monitor 数据平台基于两种基本数据类型：指标和日志。 本文介绍指标。 有关日志的详细介绍，请参阅 [Azure Monitor 中的日志](data-platform-logs.md)；有关日志与指标的比较，请参阅 [Azure Monitor 数据平台](data-platform.md)。
+> Azure Monitor 数据平台基于两种基本数据类型：指标和日志。 本文介绍指标。 请参阅[Azure Monitor 中的日志](data-platform-logs.md)有关详细说明的日志和[Azure Monitor 数据平台](data-platform.md)有关的两个比较。
 
 Azure Monitor 中的指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。 本文将介绍指标的构建方式、可对指标执行哪些操作，以及如何识别需要在指标中存储数据的不同数据源。
 
