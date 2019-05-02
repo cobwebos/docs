@@ -3,8 +3,8 @@ title: 创建、更改或删除 Azure 虚拟网络对等互连 | Microsoft Docs
 description: 了解如何创建、更改或删除虚拟网络对等互连。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: 6bccb1e75dc999bcb0e8c6d909abe7bffffcec8c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 18d913339556c0d4b0a06bd62f4495da6a4d4223
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524033"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925926"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
 
@@ -112,7 +112,7 @@ ms.locfileid: "59524033"
 
 - <a name="cross-region"></a>可在相同区域或不同区域中的虚拟网络之间建立对等互连。 在不同区域的对等互连虚拟网络也称为*全局 VNet 对等互连*。 
 - 在创建全局对等互连时，对等互连的虚拟网络可以存在于任何 Azure 公有云区域或中国云区域或政府版云区域。 您不能对等互连跨云。 例如，不能与 Azure 中国云中 VNet 对等中 Azure 公有云的 VNet。
-- 一个虚拟网络中的资源无法与全局对等互连的虚拟网络中的基本内部负载均衡器的前端 IP 地址通信。 基本负载均衡器的支持仅存在于同一区域内。 同时，VNet 对等互连和全局 VNet 对等互连存在对标准负载均衡器的支持。
+- 一个虚拟网络中的资源无法与全局对等互连的虚拟网络中的基本内部负载均衡器的前端 IP 地址通信。 基本负载均衡器的支持仅存在于同一区域内。 同时，VNet 对等互连和全局 VNet 对等互连存在对标准负载均衡器的支持。 使用基本负载均衡器将不起作用通过全局 VNet 对等互连的服务均记录[此处。](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 - 可以使用远程网关或允许在全局对等互连的虚拟网络和本地对等互连的虚拟网络中的网关传输。
 - 虚拟网络可以位于相同或不同的订阅中。 如果对等虚拟网络位于不同的订阅中，两个订阅可关联到同一个或不同的 Azure Active Directory 租户。 如果还没有 AD 租户，则可以[创建一个](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant)。 门户中不支持通过与不同 Azure Active Directory 租户相关联的订阅跨虚拟网络进行对等互连。 可使用 CLI、PowerShell 或模板。
 - 进行对等互连的虚拟网络的 IP 地址空间不得重叠。

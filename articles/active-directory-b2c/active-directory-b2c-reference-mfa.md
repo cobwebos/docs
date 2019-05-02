@@ -3,20 +3,19 @@ title: Azure Active Directory B2C 中的多重身份验证 | Microsoft Docs
 description: 如何在由 Azure Active Directory B2C 保护的面向用户的应用程序中启用多重身份验证。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 11/30/2018
-ms.date: 04/02/2019
-ms.author: v-junlch
+ms.date: 11/30/2018
+ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 931fd0714977fb4c5f79aa32691881f9794a44cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cd9cdd2a63b91d0b72a73ba65f4fff87d2a3922
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317203"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715747"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用多重身份验证
 
@@ -48,6 +47,5 @@ Azure Active Directory (Azure AD) B2C 直接集成了 [Azure 多重身份验证]
 1. 打开用户流，然后选择“属性”。 
 2. 在“多重身份验证”旁边，选择“启用”。
 3. 单击页顶部的“保存”。
-
 
 

@@ -1,25 +1,18 @@
 ---
-title: 创建 Azure 容器映像技术资产 | Microsoft Docs
+title: 创建 Azure 容器映像技术资产 |Azure Marketplace
 description: 为 Azure 容器创建技术资产。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5a7531be73a872d9c088a0bf02a8686f947c220a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 32002f8b88a2fbeba29f15b3b9289ecf3d7560d0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472934"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942736"
 ---
 # <a name="prepare-your-container-technical-assets"></a>准备容器技术资产
 

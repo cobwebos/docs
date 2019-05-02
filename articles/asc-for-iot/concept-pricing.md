@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 00666e27c9251248aa6ecff75d88908baabf71f3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61360143"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919707"
 ---
 # <a name="pricing-and-associated-costs"></a>定价和关联的成本
 
@@ -40,7 +40,7 @@ ASC 为 IoT 定价模型包含两个部件，并后 IoT 中心是计费[启用](
   >[!Note]
   > 安全消息还将产生在 IoT 中心的配额使用情况。
 
-有关详细信息，请参阅[安全中心定价](https://azure.microsoft.com/en-us/pricing/details/security-center/)。
+有关详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ## <a name="associated-costs"></a>关联的成本
 
@@ -65,7 +65,7 @@ ASC 为 IoT 定价模型包含两个部件，并后 IoT 中心是计费[启用](
 |     | 使用情况 | 注释 |
 | --- | --- | --- |
 | **IoT 中心配额使用情况** |  |
-| [导出设备](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices)作业 （孪生导出） | 每天 1 次 | 禁用_孪生元数据集合_ |
+| [导出设备](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices)作业 （孪生导出） | 每天 1 次 | 禁用_孪生元数据集合_ |
 | **Log Analytics 存储** |  |
 | 设备的建议和警报| 安全建议和由服务生成的警报 | 不可选 |
 | 原始安全数据| 从 IoT 设备，安全代理收集的原始安全数据 | 禁用_存储原始设备安全事件_ |

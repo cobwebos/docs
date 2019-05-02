@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 72348085a69746306e40029bc7473df271b60221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bf5126360140580282ebc1cb2bf73e1afa4d8829
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946603"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920532"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -215,7 +215,7 @@ ms.locfileid: "60946603"
 ```
 
 > [!NOTE]
-> 后端实体可以通过管理 [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) 和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。
+> 后端实体可以通过管理 [API](https://docs.microsoft.com/rest/api/apimanagement/backend) 和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。
 
 ### <a name="example"></a>示例
 
@@ -270,7 +270,7 @@ ms.locfileid: "60946603"
 |名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|不适用|
-|backend-id|要路由到的后端标识符。 （后端实体通过 [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|不适用|
+|backend-id|要路由到的后端标识符。 （后端实体通过 [API](https://docs.microsoft.com/rest/api/apimanagement/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|不适用|
 |sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|不适用|
 |sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|不适用|
 |sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|不适用|

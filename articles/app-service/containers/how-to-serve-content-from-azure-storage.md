@@ -8,16 +8,16 @@ ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu-msft
-ms.openlocfilehash: 40aa032654d81c947e2c31e9d93954ee050f78a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 01e86d9769b07a57d44ae21b2c76d894ac29e8bc
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849942"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920042"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
 
-本指南展示了如何在 Linux 上的应用服务中使用 [Azure 存储](/azure/storage/common/storage-introduction)提供静态内容。 优势包括内容受保护，内容可移植，可以访问多个应用以及使用多种传输方法。 在本指南中，您将了解如何通过配置自定义存储在 Azure 存储空间提供的内容。
+本指南展示了如何在 Linux 上的应用服务中使用 [Azure 存储](/azure/storage/common/storage-introduction)提供静态内容。 优势包括内容受保护，内容可移植，可以访问多个应用以及使用多种传输方法。 
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -67,7 +67,20 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 将存储容器链接到 Web 应用后，可以通过运行以下命令验证此情况：
 
 ```azurecli
-az webapp config storage-account list --resource-group <group_name> --name <app_name>
+az webapp config storage-account list --resource-group <resource_group> --name <app_name>
+```
+
+## <a name="use-custom-storage-in-docker-compose"></a>使用自定义存储在 Docker Compose
+
+Azure 存储可装载的多容器应用使用自定义 id。若要查看自定义 id 名称，请运行[ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)。
+
+在你*docker-compose.yml*文件中，映射`volumes`选项设为`custom-id`。 例如：
+
+```yaml
+wordpress:
+  image: wordpress:latest
+  volumes:
+  - <custom-id>:<path_in_container>
 ```
 
 ## <a name="next-steps"></a>后续步骤

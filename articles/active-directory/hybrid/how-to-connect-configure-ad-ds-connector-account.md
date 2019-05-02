@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6911b19c680c2fdb8c372347c4dd0fca60bb0e0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff151ff8e14b5cf9602d4e7e2e9c6cb2118a8a65
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60245526"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918509"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
 
@@ -25,7 +25,7 @@ ms.locfileid: "60245526"
 ## <a name="overview"></a>概述 
 对于选择要在 Azure AD Connect 中启用的每个功能，可以使用以下 PowerShell cmdlet 设置 AD DS Connector 帐户的 Active Directory 权限。 为了防止出现任何问题，每当要使用自定义域帐户安装 Azure AD Connect 以连接林时，都应提前准备 Active Directory 权限。 部署 Azure AD Connect 后，此 ADSyncConfig 模块还可用于配置权限。
 
-![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![ad ds 帐户的概述](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
 对于 Azure AD Connect 快速安装，将在 Active Directory 中创建一个具有所有必需权限的自动生成的帐户 (MSOL_nnnnnnnnnn)，因此除非你已阻止对组织单位或要同步到 Azure AD 的特定 Active Directory 对象的权限继承，否则无需使用此 ADSyncConfig 模块。 
  

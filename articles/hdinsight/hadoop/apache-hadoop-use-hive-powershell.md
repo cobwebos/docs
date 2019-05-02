@@ -1,23 +1,19 @@
 ---
 title: 在 HDInsight 中将 Apache Hive 与 PowerShell 配合使用 - Azure
 description: 使用 PowerShell 在 HDInsight 上的 Apache Hadoop 中运行 Hive 查询。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-origin.date: 04/23/2018
-ms.date: 04/15/2019
-ms.author: v-yiso
+ms.date: 04/23/2018
+ms.author: hrasheed
 ms.openlocfilehash: 108a3e7d899eef4ca78ae7507bf4852b861e74d5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62095508"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722181"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 运行 Apache Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -33,7 +29,7 @@ ms.locfileid: "62095508"
 
 * 基于 Linux 的 Apache Hadoop on HDInsight 群集版本 3.4 或更高版本。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * 具有 Azure PowerShell 的客户端。
@@ -58,46 +54,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
 1. 使用编辑器将以下代码保存为 `hivejob.ps1`。
 
-    ```powershell
-    # Login to your Azure subscription
-    # Is there an active Azure subscription?
-    $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
-    if(-not($sub))
-    {
-        Add-AzureRmAccount -EnvironmentName AzureChinaCloud
-    }
-
-    #Get cluster info
-    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-    $creds=Get-Credential -Message "Enter the login for the cluster"
-
-    #HiveQL
-    #Note: set hive.execution.engine=tez; is not required for
-    #      Linux-based HDInsight
-    $queryString = "set hive.execution.engine=tez;" +
-                "DROP TABLE log4jLogs;" +
-                "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
-                "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
-
-    #Create an HDInsight Hive job definition
-    $hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString 
-
-    #Submit the job to the cluster
-    Write-Host "Start the Hive job..." -ForegroundColor Green
-
-    $hiveJob = Start-AzureRmHDInsightJob -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $creds
-
-    #Wait for the Hive job to complete
-    Write-Host "Wait for the job to complete..." -ForegroundColor Green
-    Wait-AzureRmHDInsightJob -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $creds
-
-    # Print the output
-    Write-Host "Display the standard output..." -ForegroundColor Green
-    Get-AzureRmHDInsightJobOutput `
-        -Clustername $clusterName `
-        -JobId $hiveJob.JobId `
-        -HttpCredential $creds
-    ```
+    [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
 
 2. 打开一个新的 **Azure PowerShell** 命令提示符。 将目录更改到 `hivejob.ps1` 文件的位置，并使用以下命令来运行脚本：
 
@@ -114,30 +71,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
 4. 如前所述，`Invoke-Hive` 可以用来运行查询，并等待响应。 使用以下脚本查看 Invoke-Hive 的工作原理：
 
-    ```powershell
-    # Login to your Azure subscription
-    # Is there an active Azure subscription?
-    $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
-    if(-not($sub))
-    {
-        Add-AzureRmAccount -EnvironmentName AzureChinaCloud
-    }
-
-    #Get cluster info
-    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-    $creds=Get-Credential -Message "Enter the login for the cluster"
-
-    # Set the cluster to use
-    Use-AzureRmHDInsightCluster -ClusterName $clusterName -HttpCredential $creds
-
-    $queryString = "set hive.execution.engine=tez;" +
-                "DROP TABLE log4jLogs;" +
-                "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION '/example/data/';" +
-                "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
-    Invoke-AzureRmHDInsightHiveJob `
-        -StatusFolder "statusout" `
-        -Query $queryString
-    ```
+    [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
 
     输出类似于以下文本：
 
@@ -145,7 +79,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
         2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
-   > [!NOTE]
+   > [!NOTE]  
    > 对于较长的 HiveQL 查询，可以使用 Azure PowerShell **Here-Strings** cmdlet 或 HiveQL 脚本文件。 以下代码段显示了如何使用 `Invoke-Hive` cmdlet 来运行 HiveQL 脚本文件。 HiveQL 脚本文件必须上传到 wasb://。
    >
    > `Invoke-AzHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`

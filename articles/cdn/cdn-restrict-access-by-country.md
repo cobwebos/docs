@@ -1,6 +1,6 @@
 ---
-title: 按国家/地区限制 Azure CDN 内容 | Microsoft Docs
-description: 了解如何使用地区筛选功能按国家/地区限制对 Azure CDN 内容的访问。
+title: 按国家/地区限制 Azure CDN 内容 |Microsoft Docs
+description: 了解如何限制访问按国家/地区对您的 Azure CDN 内容的使用地区筛选功能。
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: 248a51da76cdee06e55438a706c543c70dcf141e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 083d8f66a73471548c812e27325e1ec69ad5c45c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324585"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869588"
 ---
-# <a name="restrict-azure-cdn-content-by-country"></a>按国家/地区限制 Azure CDN 内容
+# <a name="restrict-azure-cdn-content-by-countryregion"></a>按国家/地区限制 Azure CDN 内容
 
 ## <a name="overview"></a>概述
-当用户请求内容时，默认情况下，无论发出请求的用户位于哪里，系统都会提供该内容。 但是，在某些情况下，可能需要按国家/地区限制对内容的访问。 使用“地区筛选”功能，可以在 CDN 终结点上的特定路径上创建规则以在所选的国家/地区允许或阻止内容。
+当用户请求内容时，默认情况下，无论发出请求的用户位于哪里，系统都会提供该内容。 但是，在某些情况下，你可能想要按国家/地区限制内容访问权限。 与*地区筛选*功能，您可以创建规则在特定路径上允许或阻止所选国家/地区中的内容在 CDN 终结点上。
 
 > [!IMPORTANT]
 > **Microsoft 的 Azure CDN 标准版**配置文件不支持基于路径的地区筛选。
@@ -56,16 +56,16 @@ ms.locfileid: "60324585"
 
 - **允许**:只有来自指定国家/地区的用户允许访问通过递归路径请求的资产。
 
-- **块**:资产的请求通过递归路径访问拒绝来自指定国家/地区的用户。 如果没有针对该位置配置其他国家/地区筛选选项，则所有其他用户都允许进行访问。
+- **块**:从指定的国家/地区的用户将无法访问所请求通过递归路径的资产。 如果已为该位置不配置任何其他国家/地区筛选选项，然后所有其他用户将允许进行访问。
 
 例如，用于阻止路径 */Photos/Strasbourg/* 的地区筛选规则将筛选以下文件：     
 *http:\//\<终结点 >.azureedge.net/Photos/Strasbourg/1000.jpg*
 *http:\//\<终结点 >.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
-### <a name="define-the-countries"></a>定义国家/地区
-从“国家/地区代码”列表中，针对该路径选择要阻止或允许的国家/地区。 
+### <a name="define-the-countriesregions"></a>定义国家/地区
+从**国家/地区代码**列表中，选择你想要阻止或允许的路径的国家/地区。 
 
-选择完国家/地区后，选择“保存”以激活新的地区筛选规则。 
+选择国家/地区完后，选择**保存**激活新的地区筛选规则。 
 
 ![地区筛选规则](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
@@ -89,14 +89,14 @@ ms.locfileid: "60324585"
 
     此时将显示“步骤二：”页面。 
 
-5. 从列表中选择一个或多个国家/地区，然后选择“完成”以激活规则。 
+5. 从列表中，选择一个或多个国家/地区，然后选择**完成**以启用该规则。 
     
     新规则将显示在“国家/地区筛选”页面上的表中。
 
     ![地区筛选规则](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>清理资源
-在国家/地区筛选规则表中，选择某个规则旁边的删除图标来将其删除，或者选择编辑图标来对其进行修改。
+在国家/地区筛选规则表中，选择删除图标旁边的规则将其删除或编辑图标，以对其进行修改。
 
 ## <a name="considerations"></a>注意事项
 * 对地区筛选配置的更改不会立即生效：
@@ -108,7 +108,7 @@ ms.locfileid: "60324585"
 
 * 与相对路径关联的地区筛选配置以递归方式应用于该路径。
 
-* 只能对相同相对路径应用一个规则。 也就是说，无法创建多个指向相同相对路径的国家/地区筛选器。 不过，因为国家/地区筛选器是递归的，所以一个文件夹可以有多个国家/地区筛选器。 换言之，即使某个文件夹此前已配置过，也可以向该文件夹的子文件夹分配其他国家/地区筛选器。
+* 只能对相同相对路径应用一个规则。 也就是说，不能创建指向同一个相对路径的多个国家/地区筛选器。 但是，由于国家/地区筛选器是递归的一个文件夹可以有多个国家/地区筛选器。 换而言之，以前配置的文件夹的子文件夹，可以分配不同的国家/地区筛选器。
 
-* 地区筛选功能使用国家/地区代码来为受保护的目录定义将在其中允许或阻止请求的国家/地区。 虽然 Akamai 和 Verizon 配置文件支持的大多数国家/地区代码相同，但还是有一些差别。 有关详细信息，请参阅 [Azure CDN 国家/地区代码](/previous-versions/azure/mt761717(v=azure.100))。 
+* 地区筛选功能使用国家/地区代码来定义从中请求是允许还是阻止受保护目录的国家/地区。 虽然 Akamai 和 Verizon 配置文件支持的大多数国家/地区代码相同，但还是有一些差别。 有关详细信息，请参阅 [Azure CDN 国家/地区代码](/previous-versions/azure/mt761717(v=azure.100))。 
 

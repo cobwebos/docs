@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b50d0c0ca9a4000cc0c725453a3ef04b4bed9275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c48703676dad16f5f86035400056a8c90f28f60
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61282437"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873120"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -60,7 +60,7 @@ ms.locfileid: "61282437"
 
 ## <a name="how-billing-works"></a>计费原理
 
-在 Azure 搜索中，有三种方法产生费用在 Aure 搜索中，并且没有固定和可变的组件。 反过来，本部分介绍在每个计费组件。
+在 Azure 搜索中，有三种方法产生费用在 Azure 搜索中，并且没有固定和可变的组件。 反过来，本部分介绍在每个计费组件。
 
 ### <a name="1-core-service-costs-fixed-and-variable"></a>1.核心服务成本 （固定和可变）
 

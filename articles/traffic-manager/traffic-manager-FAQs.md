@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b89e9a48ce20c7c00bd3282623919b8066e34b25
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803033"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717053"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -320,7 +320,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 流量管理器无法提供任何证书验证，包括：
 
 * 不验证服务器端证书
-* 不支持 SNI 服务器端证书
+* SNI 服务器端证书，不会验证
 * 不支持客户端证书
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>添加终结点时是否使用 IP 地址或 DNS 名称？
@@ -371,7 +371,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>如果应用程序不支持 HTTP 或 HTTPS，是否仍可使用流量管理器？
 
-可以。 可以将 TCP 指定为监视协议，而流量管理器可发起一个 TCP 连接，并等待来自终结点的响应。 如果终结点在超时期限内以建立连接为响应答复了连接请求，则将该终结点标记为正常。
+是的。 可以将 TCP 指定为监视协议，而流量管理器可发起一个 TCP 连接，并等待来自终结点的响应。 如果终结点在超时期限内以建立连接为响应答复了连接请求，则将该终结点标记为正常。
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>使用 TCP 监视时，需要终结点的哪些特定响应？
 
@@ -424,7 +424,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 ### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>能否在同一流量管理器配置文件中将其他终结点类型与嵌套式子配置文件混合在一起使用？
 
-是的。 至于如何在一个配置文件中组合使用不同类型的终结点，并无任何限制。
+可以。 至于如何在一个配置文件中组合使用不同类型的终结点，并无任何限制。
 
 ### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>嵌套式配置文件如何应用计费模型？
 

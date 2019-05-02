@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3628670d2393d7b6921c60317719ccf8e72a451
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581031"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866362"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
 
-当地企业搜索 API 向必应发送搜索查询，以获取包含餐厅、酒店或其他当地企业的结果。 对于地点，查询可以指定当地企业名称或类别（例如，我附近的餐厅）。 实体结果包括人员、位置或事物。 此上下文中的地点是企业实体、州/省、国家/地区，等等。  
+当地企业搜索 API 向必应发送搜索查询，以获取包含餐厅、酒店或其他当地企业的结果。 对于地点，查询可以指定当地企业名称或类别（例如，我附近的餐厅）。 实体结果包括人员、位置或事物。 在此上下文中的位置是业务实体、 状态、 国家/地区，等等。  
 
 本部分提供有关影响搜索结果的响应对象、查询参数和标头的技术详细信息。 有关演示如何发出请求的示例，请参阅[当地企业搜索 C# 快速入门](quickstarts/local-quickstart.md)或[当地企业搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)。 
   

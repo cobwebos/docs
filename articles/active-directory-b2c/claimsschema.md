@@ -3,19 +3,19 @@ title: ClaimsSchema - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 ClaimsSchema 元素。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5d7036f2c7301223b27c80402dace8e9ea05b7f1
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 81df3532ee466f32ee42f0010de9aa74dbeb6d85
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487815"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721745"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -65,7 +65,7 @@ DefaultPartnerClaimTypes 可能包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
-| 协议 | 0:n | 具有其默认合作伙伴声明类型名称的协议的列表。 |
+| Protocol | 0:n | 具有其默认合作伙伴声明类型名称的协议的列表。 |
 
 Protocol 元素包含以下属性：
 
@@ -161,7 +161,7 @@ Enumeration 元素包含以下属性：
 
 | 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| 文本 | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
+| Text | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
 |值 | 是 | 与此选项关联的声明值。 |
 | SelectByDefault | 否 | 指示默认情况下是否应在 UI 中选择此选项。 可能的值：True 或 False。 |
 

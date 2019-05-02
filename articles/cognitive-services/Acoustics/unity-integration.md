@@ -10,18 +10,18 @@ ms.subservice: acoustics
 ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: aa7c5c513d65310bf9bffab29c1d18e7e7a85b49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8605fe2ea86f875b5c5fd8ea451a287442dcd51b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389442"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922489"
 ---
 # <a name="project-acoustics-unity-integration"></a>项目噪声 Unity 集成
 本操作指南介绍了与你的 Unity 项目的项目噪声 Unity 插件集成。
 
 所需软件：
-* 用于 Windows 的 [Unity 2018.2 及更高版本](http://unity3d.com)
+* 用于 Windows 的 [Unity 2018.2 及更高版本](https://unity3d.com)
 * [项目噪声 Unity 包](https://www.microsoft.com/download/details.aspx?id=57346)
 
 ## <a name="import-the-plugin"></a>导入插件

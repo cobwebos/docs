@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361782"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720464"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
@@ -28,11 +28,15 @@ ms.locfileid: "59361782"
 
 | 存储服务 | 帐户类型 | Namespace 类型 | 支持的服务 | 支持的性能层 | 支持的访问层 | HDInsight 版本 | 群集类型 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 常规用途 V2 | 分层 （文件系统） | Blob | 标准 | 热、 冷、 存档 | 3.6+ | All |
-|Azure 存储| 常规用途 V2 | 对象 | Blob | 标准 | 热、 冷、 存档 | 3.6+ | All |
-|Azure 存储| 常规用途 V1 | 对象 | Blob | 标准 | 不适用 | All | All |
-|Azure 存储| Blob 存储 | 对象 | Blob | 标准 | 热、 冷、 存档 | All | All |
+|Azure Data Lake Storage Gen2| 常规用途 V2 | 分层 （文件系统） | Blob | 标准 | 热、 冷、 存档 | 3.6+ | 全部 |
+|Azure 存储| 常规用途 V2 | Object | Blob | 标准 | 热、 冷、 存档 | 3.6+ | 全部 |
+|Azure 存储| 常规用途 V1 | Object | Blob | 标准 | 不适用 | 全部 | 全部 |
+|Azure 存储| Blob 存储 * * | Object | 块 blob | 标准 | 热、 冷、 存档 | 全部 | 全部 |
 |Azure Data Lake Storage Gen1| 不适用 | 分层 （文件系统） | 不适用 | 不适用 | 不适用 | 仅 3.6 | 除 HBase |
+
+* * 对于 HDInsight 群集，只有辅助存储帐户可以是类型 BlobStorage。
+
+有关 Azure 存储帐户类型的详细信息，请参阅[Azure 存储帐户概述](../storage/common/storage-account-overview.md)
 
 有关 Azure 存储访问层的详细信息，请参阅[Azure Blob 存储：高级 （预览版）、 热、 冷和存档存储层](../storage/blobs/storage-blob-storage-tiers.md)
 
@@ -40,14 +44,14 @@ ms.locfileid: "59361782"
 
 | HDInsight 版本 | 主存储 | 辅助存储 | 支持 |
 |---|---|---|---|
-| 3.6 & 4.0 | 标准 Blob | 标准 Blob | 是 |
-| 3.6 & 4.0 | 标准 Blob | Data Lake Storage Gen2 | 否 |
-| 3.6 & 4.0 | 标准 Blob | Data Lake Storage Gen1 | 是 |
+| 3.6 & 4.0 | 常规用途 V1、 常规用途 V2 | 常规用途 V1、 常规用途 V2、 BlobStorage (块 Blob) | 是 |
+| 3.6 & 4.0 | 常规用途 V1、 常规用途 V2 | Data Lake Storage Gen2 | 否 |
+| 3.6 & 4.0 | 常规用途 V1、 常规用途 V2 | Data Lake Storage Gen1 | 是 |
 | 3.6 & 4.0 | Data Lake Storage Gen2* | Data Lake Storage Gen2 | 是 |
-| 3.6 & 4.0 | Data Lake Storage Gen2* | 标准 Blob | 是 |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | 常规用途 V1、 常规用途 V2、 BlobStorage (块 Blob) | 是 |
 | 3.6 & 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | 否 |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | 是 |
-| 3.6 | Data Lake Storage Gen1 | 标准 Blob | 是 |
+| 3.6 | Data Lake Storage Gen1 | 常规用途 V1、 常规用途 V2、 BlobStorage (块 Blob) | 是 |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | 否 |
 | 4.0 | Data Lake Storage Gen1 | 任意 | 否 |
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b353e3c0ed14c7ae42e6b1f2c8a92904bf0befd7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453092"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916279"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Log Analytics 用户从 OMS 门户转到 Azure 门户的常见问题
 Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理其配置并分析收集的数据。  此门户的所有功能已移至 Azure 门户，在其中继续进行开发。
@@ -97,9 +97,9 @@ OMS 门户的“设置”部分的许多设置在 Azure 门户的工作区的“
 | 自定义日志                  | 工作区的“高级设置”菜单。 |
 | Syslog                       | 工作区的“高级设置”菜单。 |
 | Application Insights         | 由于 Log Analytics 和 Application Insights 共享同一数据引擎，因此此解决方案已弃用。  |
-| Windows 文件跟踪        | Azure 自动化中的“更改跟踪”菜单。 有关详细信息，请参阅[使用更改跟踪解决方案跟踪环境中的更改](../../automation/automation-change-tracking.md)。 |
-| Windows 注册表跟踪        | Azure 自动化中的“更改跟踪”菜单。 有关详细信息，请参阅[使用更改跟踪解决方案跟踪环境中的更改](../../automation/automation-change-tracking.md)。 |
-| Linux 文件跟踪          | Azure 自动化中的“更改跟踪”菜单。 有关详细信息，请参阅[使用更改跟踪解决方案跟踪环境中的更改](../../automation/automation-change-tracking.md)。 |
+| Windows 文件跟踪        | Azure 自动化中的“更改跟踪”菜单。 有关详细信息，请参阅[使用更改跟踪解决方案跟踪环境中的更改](../../automation/change-tracking.md)。 |
+| Windows 注册表跟踪        | Azure 自动化中的“更改跟踪”菜单。 有关详细信息，请参阅[使用更改跟踪解决方案跟踪环境中的更改](../../automation/change-tracking.md)。 |
+| Linux 文件跟踪          | Azure 自动化中的“更改跟踪”菜单。 有关详细信息，请参阅[使用更改跟踪解决方案跟踪环境中的更改](../../automation/change-tracking.md)。 |
 
 ### <a name="solutions"></a>解决方案
 管理工作区的“解决方案”菜单中的解决方案。 

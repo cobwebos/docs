@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82afadef58310f46046c8c3168ed93a34769b316
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0811ce1509b7886bf0061cba955ca5e18990cd1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472390"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920498"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -58,6 +58,18 @@ ms.locfileid: "60472390"
   * 安全组和 Office 365 组所有者，可以管理组成员身份。 这些组可能会授予对 Azure AD 或其他位置敏感或私有信息或关键配置的访问权限。
   * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
   * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
+
+* **[B2C 用户流管理员](#b2c-user-flow-administrator)**:具有此角色的用户可以创建和管理 B2C 用户流 （也称为"内置"策略） 在 Azure 门户中。 通过创建或编辑用户流，这些用户可以更改 html/CSS/javascript 内容的用户体验、 更改每个用户的流的 MFA 要求、 更改令牌中的声明和调整会话的租户中的所有策略设置。 但是，此角色不包括能够查看用户数据或对租户架构中包含的属性进行更改。 将更改为标识体验框架 （也称为自定义） 策略也是此角色的作用域之外。
+
+* **[B2C 用户流属性管理员](#b2c-user-flow-attribute-administrator)**:具有此角色的用户添加或删除自定义属性可用于在租户中的所有用户流。 在这种情况下，具有此角色的用户可以更改或将新元素添加到最终用户架构和影响的所有用户流的行为并间接导致的更改，对可能最终用户的系统要求和最终发送到应用程序声明为哪些数据。 此角色不能编辑用户流。
+
+* **[B2C IEF 由键集管理员](#b2c-ief-keyset-administrator)**:  用户可以创建和管理策略密钥和用于令牌加密的机密令牌签名和声明加密/解密。 通过将新的密钥添加到现有的密钥容器，此受限制的管理员可以滚动更新机密，根据需要而不会影响现有应用程序。 此用户可以看到这些机密和甚至是在创建后的其到期日期的完整内容。
+    
+  <b>重要说明：</b> 这是一个敏感的角色。 由键集的管理员角色应仔细审核并在预生产环境和生产过程中分配谨慎。
+
+* **[B2C IEF 策略管理员](#b2c-ief-policy-administrator)**:此角色中的用户具有创建、 读取、 更新和删除 Azure AD B2C 中的所有自定义策略和因此中相关的 Azure AD B2C 租户中具有完全控制标识体验框架的功能。 通过编辑策略，此用户可以建立与外部标识提供者的直接联合身份验证，更改目录架构，更改所有面向用户的内容 (HTML、 CSS、 JavaScript)，更改才能完成身份验证、 创建新用户，将发送的要求将用户数据到外部系统，其中包括完整的迁移，和编辑所有用户信息包括敏感字段，例如密码和电话号码。 相反，此角色不能更改加密密钥，或编辑用于联合身份验证的租户中的机密。
+
+  <b>重要提示：</b>B2 IEF 策略管理员是高度敏感的角色，应在生产环境中的租户分配在非常有限的情况。 这些用户的活动应密切审核，尤其是对于在生产环境中的租户。
 
 * **[计费管理员](#billing-administrator)**：进行采购、管理订阅、管理支持票证，以及监视服务运行状况。
 
@@ -110,6 +122,9 @@ ms.locfileid: "60472390"
   > [!NOTE]
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Exchange 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“Exchange 管理员”。 它是 [Exchange 管理中心](https://go.microsoft.com/fwlink/p/?LinkID=529144)中的“Exchange Online 管理员”。 
 
+* **[外部标识提供程序管理器](#external-identity-provider-administrator)**:此管理员可以管理 Azure Active Directory 租户和外部标识提供者之间的联合身份验证。 使用此角色，用户可以添加新的标识提供程序和配置所有可用设置 （例如身份验证路径，分配密钥容器的服务 id）。 此用户可以启用要信任来自外部标识提供者的身份验证的租户。 最终用户体验受到的影响取决于租户的类型：
+  * 为员工和合作伙伴的 azure Active Directory 租户： 添加联合身份验证 （例如，使用 Gmail) 会立即影响所有尚未兑换的来宾邀请。 请参阅[为 B2B 来宾用户的标识提供程序添加 Google](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)。
+  * Azure Active Directory B2C 租户：添加联合身份验证 （例如通过 Facebook，或使用另一个 Azure Active Directory） 不会立即影响最终用户流之前标识提供者添加为用户流 （也称为内置策略） 中的一个选项。 请参阅[配置为标识提供程序的 Microsoft 帐户](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)有关的示例。 若要更改用户流，有限的"B2C 用户流管理员"角色是必需的。
 
 * **[全局管理员/公司管理员](#company-administrator)**：具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 只有全局管理员才能分配其他管理员角色。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
@@ -314,6 +329,34 @@ ms.locfileid: "60472390"
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+
+### <a name="b2c-user-flow-administrator"></a>B2C 用户流管理员
+创建和管理用户流的所有方面。
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.b2c/userFlows/allTasks | 读取和配置 Azure Active Directory B2C 中的用户流。 |
+
+### <a name="b2c-user-flow-attribute-administrator"></a>B2C 用户流属性管理员
+创建和管理可供所有用户流的属性架构。
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.b2c/userAttributes/allTasks | 读取和配置 Azure Active Directory B2C 中的用户属性。 |
+
+### <a name="b2c-ief-keyset-administrator"></a>B2C IEF 由键集管理员
+管理用于联合身份验证和标识体验框架中的加密的机密。
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/keySets/allTasks | 读取和配置 Azure Active Directory B2C 中的密钥集。 |
+
+### <a name="b2c-ief-policy-administrator"></a>B2C IEF 策略管理员
+创建和管理在标识体验框架信任框架策略。
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/policies/allTasks | 读取和配置 Azure Active Directory B2C 中的自定义策略。 |
 
 ### <a name="billing-administrator"></a>计费管理员
 可以执行与常见计费相关的任务，例如更新付款信息。
@@ -675,6 +718,13 @@ ms.locfileid: "60472390"
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的各个方面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+
+### <a name="external-identity-provider-administrator"></a>外部标识提供程序管理器
+配置直接联合身份验证中使用的标识提供程序。
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.aad.b2c/identityProviders/allTasks | 读取和配置 Azure Active Directory B2C 中的标识提供程序。 |
 
 ### <a name="guest-inviter"></a>来宾邀请者
 可以邀请与“成员可邀请来宾”设置无关的来宾用户。

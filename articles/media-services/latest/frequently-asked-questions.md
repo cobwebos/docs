@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/24/2019
 ms.author: juliako
-ms.openlocfilehash: d6e5142bec29f58671c553b7b32bb72202cae263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d99e3661fd51b481a20404cfeb55157ac803c220
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322696"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706152"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure 媒体服务 v3 常见问题
 
@@ -41,6 +41,10 @@ ms.locfileid: "60322696"
 ### <a name="how-does-pagination-work"></a>分页是如何工作的？
 
 使用分页时，应始终使用下一链接来枚举集合，而不依赖特定的页面大小。 有关详细信息和示例，请参阅[筛选、排序、分页](entities-overview.md)。
+
+### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>哪些功能尚不可用 Azure 媒体服务 v3 中？
+
+有关详细信息，请参阅[功能 v2 Api 方面的差距](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis)。
 
 ## <a name="live-streaming"></a>实时传送视频流 
 

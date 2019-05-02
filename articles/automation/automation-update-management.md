@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b39d9788372fb0f682bc1e5b737542b400dd4035
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61305841"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919716"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -54,7 +54,9 @@ ms.locfileid: "61305841"
 
 可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。
 
-计划的部署会通过显式指定计算机或通过根据特定的一组计算机的日志搜索结果来选择[计算机组](../azure-monitor/platform/computer-groups.md)，来定义哪些目标计算机接收适用更新。 也可以指定一个计划来批准并设置可以安装更新的一个时段。 这段时间称为维护时段。 如果需要重新启动，并且选择了适当的重启的选项，将为重新启动后保留十分钟的维护时段。 如果修补所花时间超过预期并且维护时段中有十分钟内，不会发生重新启动。
+在计划的部署定义通过显式指定计算机或通过选择接收适用更新目标计算机[计算机组](../azure-monitor/platform/computer-groups.md)基于日志搜索的一组特定的计算机，或[Azure 查询](#azure-machines)，它动态地选择基于指定条件的 Azure Vm。 这些组是从不同[作用域配置](../azure-monitor/insights/solution-targeting.md)，仅用于确定哪些计算机获取启用此解决方案的管理包。 
+
+也可以指定一个计划来批准并设置可以安装更新的一个时段。 这段时间称为维护时段。 如果需要重新启动，并且选择了适当的重启的选项，将为重新启动后保留十分钟的维护时段。 如果修补所花时间超过预期并且维护时段中有十分钟内，不会发生重新启动。
 
 通过 Azure 自动化中的 runbook 安装更新。 你无法查看这些 runbook，它们不需要任何配置。 创建更新部署时，更新部署会创建一个计划，该计划在指定的时间为所包括的计算机启动主更新 Runbook。 此主 Runbook 会在每个代理上启动一个子 Runbook 来安装必需的更新。
 
@@ -76,6 +78,9 @@ ms.locfileid: "61305841"
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |Ubuntu 14.04 LTS、16.04 LTS 和 18.04 (x86/x64)      |Linux 代理必须具有访问更新存储库的权限。         |
+
+> [!NOTE]
+> 使用更新管理可以管理 azure 虚拟机规模集。 更新管理实例本身并不在基本映像上的工作原理。 你将需要以增量方式，并同时更新所有 VM 实例计划更新。
 
 ### <a name="unsupported-client-types"></a>不支持的客户端类型
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 7679bbc450e5fa0761860aedbb37ed02b27ec828
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a877dde5602553cb98d440a860c3eb8bb30487e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60742224"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64929346"
 ---
 ## <a name="os-config"></a>将 IP 地址添加到 VM 操作系统
 
@@ -51,7 +51,7 @@ ping -S 10.0.0.5 hotmail.com
 >[!NOTE]
 >对于辅助 IP 配置，仅当该配置存在关联的 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
 
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
+### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
 
 1. 打开终端窗口。
 2. 请确保以 root 用户身份操作。 否则，请输入以下命令：

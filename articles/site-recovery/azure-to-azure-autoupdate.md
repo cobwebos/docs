@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/29/2098
 ms.author: rajanaki
-ms.openlocfilehash: 67eb01ad596393c9095d72670e61b8c09776c588
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aa135fef2850a692d45d932c15d4be74ccba5724
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792922"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925702"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务的自动更新
 
@@ -31,9 +31,10 @@ Azure Site Recovery 使用每月的发布节奏以修复任何问题和增强现
 默认 runbook 计划在每天上午 12:00 异地复制的 VM 的时区中重现。 此外可以更改通过自动化帐户 runbook 日程安排。
 
 > [!NOTE]
+> 从更新汇总 35 开始，可以选择要用于更新现有自动化帐户。 在此更新之前站点恢复默认情况下创建此帐户。 为 VM 启用复制时，此选项才可用。 如果更改该设置，它将应用在同一个保管库中受保护的所有 Azure vm。
+ 
 > 启用自动更新不需要重启 Azure Vm，或会影响正在进行的复制。
 
-> [!NOTE]
 > 作业中的自动化帐户的计费基于月份中使用作业运行时分钟数。 默认情况下，500 分钟是作为免费单位数的自动化帐户。 作业执行需要大约一分钟每一天到几秒钟，并介绍作为免费单位数。
 
 | 附免费单位数 （每个月） | 价格 |
@@ -63,7 +64,7 @@ Azure Site Recovery 使用每月的发布节奏以修复任何问题和增强现
 
 
 > [!Note]
-> 任一选项会通知你用于管理更新的自动化帐户。 如果第一次，在保管库中使用此功能，创建新的自动化帐户。 在同一个保管库中的所有后续启用复制使用以前创建的一个。
+> 任一选项会通知你用于管理更新的自动化帐户。 如果第一次，在保管库中使用此功能，默认情况下创建新的自动化帐户。 或者，可以自定义设置，并选择一个现有的自动化帐户。 在同一个保管库中的所有后续启用复制使用以前创建的一个。
 
 对于自定义自动化帐户，使用以下脚本：
 

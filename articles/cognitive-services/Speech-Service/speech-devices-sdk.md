@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: cb0e079eee78f865d472b55b162fb65b5eadaf44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9a1dadc29006a365f7e614db5722fa0e92e0129d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460435"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922507"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>关于语音设备 SDK（预览）
 
@@ -39,7 +39,7 @@ ms.locfileid: "61460435"
 
 |||
 |-|-|
-|[![ROOBO 徽标](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO 提供面向家用电器、汽车、机器人、玩具和其他行业的完整人工智能 (AI) 系统解决方案。 ROOBO 的参考设计大大减少了通过与 Azure 语音服务集成的开发市场的时间。 [访问 ROOBO](http://ddk.roobo.com/)。|
+|[![ROOBO 徽标](media/speech-devices-sdk/roobo-logo.png)](https://ddk.roobo.com/)|ROOBO 提供面向家用电器、汽车、机器人、玩具和其他行业的完整人工智能 (AI) 系统解决方案。 ROOBO 的参考设计大大减少了通过与 Azure 语音服务集成的开发市场的时间。 [访问 ROOBO](https://ddk.roobo.com/)。|
 
 ## <a name="next-steps"></a>后续步骤
 

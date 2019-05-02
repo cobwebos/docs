@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: add3521a3961f230188e04ff23dda5aac537571a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15d195361b9fe8523ae6e46ba035ca5927c4d242
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61418319"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924757"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -90,7 +90,7 @@ ms.locfileid: "61418319"
 5. **新建** - 现在有多个选项，可以用来配置写入审核日志的位置。 到 Azure 存储帐户、 Azure Monitor 日志由 Log Analytics 工作区或事件中心以便使用事件中心，可以编写日志。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
 
    > [!WARNING]
-   > 启用审核到 Log Analytics 将产生成本基于引入速率。 请特别注意与使用此相关的开销[选项](https://azure.microsoft.com/en-us/pricing/details/monitor/)，或者考虑在 Azure 存储帐户中存储审核日志。
+   > 启用审核到 Log Analytics 将产生成本基于引入速率。 请特别注意与使用此相关的开销[选项](https://azure.microsoft.com/pricing/details/monitor/)，或者考虑在 Azure 存储帐户中存储审核日志。
 
     ![存储选项](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 

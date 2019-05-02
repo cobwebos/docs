@@ -1,10 +1,10 @@
 ---
-title: Azure 安全管理和监视概述 | Microsoft Docs
+title: 管理和监视-Microsoft Azure 的安全功能 |Microsoft Docs
 description: 本文概述了 Azure 提供的安全功能和服务，以帮助管理和监视 Azure 云服务和虚拟机。
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: StevenPo
+manager: barbkess
 editor: TomSh
 ms.assetid: 5cf2827b-6cd3-434d-9100-d7411f7ed424
 ms.service: security
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f79f94c277b02a9f377b90bf74763ac617f65c16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f741f578ea44e27814ddfcde2fadc44a0e90536
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597925"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872072"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
+本文概述了 Azure 提供的安全功能和服务，以帮助管理和监视 Azure 云服务和虚拟机。
 
-Azure 提供安全机制来帮助管理和监视 Azure 云服务和虚拟机 (VM)。 本文概述了这些核心安全功能和服务。 提供了一些文章链接，其中每篇文章都包含详细的信息，方便用户了解更多内容。
+## <a name="shared-responsibility"></a>共担责任
 
 Microsoft 云服务的安全性是你与 Microsoft 之间的一个合作关系和共担责任。 Microsoft 负责 Azure 平台及其数据中心的物理安全（通过使用上锁的入口门、护栏和保安等安全保护措施）。 Azure 还在软件层提供了强级别的云安全，以满足其客户的安全、隐私及合规性需求。
 
@@ -64,7 +65,7 @@ Microsoft 云服务的安全性是你与 Microsoft 之间的一个合作关系�
 
 ## <a name="multi-factor-authentication"></a>多重身份验证
 
-Azure 多重身份验证是一种需要使用多种验证方法的身份验证方法。 它为用户登录和事务添加了关键的附加安全层。 
+Azure 多重身份验证是一种需要使用多种验证方法的身份验证方法。 它为用户登录和事务添加了关键的附加安全层。
 
 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码）和第三方 OATH 令牌来提供强大的身份验证。
 
@@ -80,7 +81,7 @@ Azure 多重身份验证是一种需要使用多种验证方法的身份验证�
 
 * 任意位置之间的 (IP VPN) 网络。
 * 点到点以太网。
-* 通过位于归置设施的连接服务提供商提供的虚拟交叉连接。 
+* 通过位于归置设施的连接服务提供商提供的虚拟交叉连接。
 
 ExpressRoute 连接不经过公共 Internet。 它们可提供可靠性、速度、延迟和安全性这几个方面均比基于 Internet 的典型连接更胜一筹的专用连接。
 
@@ -99,7 +100,7 @@ VPN 网关（也称为 Azure 虚拟网络网关）用于在虚拟网络和本地
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-用户有时候需要在 Azure 资源或者其他 SaaS 应用程序中执行特权操作。 这通常意味着，组织授予他们永久的 Azure Active Directory (Azure AD) 访问特权。 
+用户有时候需要在 Azure 资源或者其他 SaaS 应用程序中执行特权操作。 这通常意味着，组织授予他们永久的 Azure Active Directory (Azure AD) 访问特权。
 
 这会给云托管的资源不断增大安全风险，因为组织无法充分监视这些用户正在使用特权访问执行哪些操作。 此外，如果有访问特权的用户帐户被泄露，此安全漏洞可能会影响组织的总体云安全性。 Azure AD Privileged Identity Management 可通过降低特权的暴露时间和加强对使用情况的了解来帮助解决此风险。  
 
@@ -150,4 +151,3 @@ Intelligent Security Graph 在 Microsoft 产品和服务中提供实时威胁防
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
-

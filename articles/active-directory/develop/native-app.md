@@ -7,22 +7,22 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 12/29/2018
-ms.author: v-junlch
+ms.date: 09/24/2018
+ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 4c15890a5693235e8f2554ba8d0fdefc161770f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5e37e40cd0dbba7961cbde75b5dde44f2666dc21
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443887"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918618"
 ---
 # <a name="native-apps"></a>本机应用
 
@@ -52,10 +52,10 @@ ms.locfileid: "60443887"
 
 ## <a name="app-registration"></a>应用注册
 
-若要向 Azure AD v1.0 终结点注册应用程序，请参阅[向 Azure AD v1.0 终结点注册应用](quickstart-v1-add-azure-ad-app.md)。
+若要向 Azure AD v1.0 终结点注册应用程序，请参阅[注册应用](quickstart-register-app.md)。
 
-- 单租户 - 本机应用程序和 Web API 必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制本机应用程序对其资源的访问。 然后，客户端应用程序从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。
-- 多租户 - 首先，本机应用程序只在开发人员或发布者的目录中进行注册。 其次，本机应用程序在配置后会指示它在正常运行时所需的权限。 当目标目录中的用户或管理员表示许可应用程序的要求时（这会使应用程序可供其组织使用），此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，才会在其目录中注册该 Web API。 
+* 单租户 - 本机应用程序和 Web API 必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制本机应用程序对其资源的访问。 然后，客户端应用程序从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。
+* 多租户 - 首先，本机应用程序只在开发人员或发布者的目录中进行注册。 其次，本机应用程序在配置后会指示它在正常运行时所需的权限。 当目标目录中的用户或管理员表示许可应用程序的要求时（这会使应用程序可供其组织使用），此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，才会在其目录中注册该 Web API。 
 
 ## <a name="token-expiration"></a>令牌过期
 
@@ -65,5 +65,3 @@ ms.locfileid: "60443887"
 
 - 详细了解其他[应用程序类型和方案](app-types.md)
 - 了解 Azure AD [身份验证基础知识](authentication-scenarios.md)
-
-<!-- Update_Description: link update -->

@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 6ad4cf251ad09adb7e1f11ebd42d7eab0d6a9183
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3a29c6b4d0308b41e29f38fc29d79634727d593
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330909"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926007"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>使用 Azure Key Vault 中由客户管理的密钥进行 Azure SQL 透明数据加密：自带密钥支持
 
@@ -61,6 +61,7 @@ ms.locfileid: "60330909"
 - 确定要对所需的资源使用哪些订阅 – 以后跨订阅移动服务器需要重新设置支持 BYOK 的 TDE。 详细了解如何[移动资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 - 配置采用 Azure Key Vault 的 TDE 时，必须考虑到重复的包装/解包操作在密钥保管库中施加的负载。 例如，由于与 SQL 数据库服务器关联的所有数据库使用相同的 TDE 保护器，因此，该服务器的故障转移将会针对保管库触发密钥操作：服务器中有多少个数据库，就会触发多少次密钥操作。 根据我们的经验以及 [Key Vault 服务限制](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)中所述，我们建议将最多 500 个标准/常规用途库或 200 个高级/业务关键型数据库与单个订阅中的 1 个 Azure Key Vault 相关联，以确保在访问保管库中的 TDE 保护器时能够获得一致的高可用性。
 - 建议：在本地保留 TDE 保护器的副本。  这要求 HSM 设备在本地创建一个 TDE 保护器，并创建一个密钥托管系统来存储 TDE 保护器的本地副本。  了解[如何将密钥从本地 HSM 转移到 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
+- 有关与现有的配置问题，请参阅[进行故障排除的 TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/troubleshoot-tde)
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>有关配置 Azure Key Vault 的指导
 
@@ -72,7 +73,7 @@ ms.locfileid: "60330909"
 - 使用 SQL 数据库服务器的 Azure Active Directory (Azure AD) 标识授予其对密钥保管库的访问权限。  使用门户 UI 时，会自动创建 Azure AD 标识，并向服务器授予 Key Vault 访问权限。  使用 PowerShell 配置支持 BYOK 的 TDE 时，必须手动创建 Azure AD 标识，且验证完成进度。 有关使用 PowerShell 进行配置的详细分步说明，请参阅[配置支持 BYOK 的 TDE](transparent-data-encryption-byok-azure-sql-configure.md) 和[配置支持托管实例 BYOK 的 TDE](https://aka.ms/sqlmibyoktdepowershell)。
 
   > [!NOTE]
-  > 如果**意外删除了 Azure AD 标识，或使用 Key Vault 的访问策略撤销了服务器的权限**，服务器将失去 Key Vault 的访问权限，并且 TDE 加密的数据库在 24 小时内将无法访问。
+  > 如果 Azure AD Identity**意外删除或服务器的权限被吊销**使用密钥保管库的访问策略或无意中通过将服务器移动到其他订阅，服务器就会失去访问密钥保管库，并且在 24 小时内 TDE 加密数据库是不可访问。  
 
 - 借助 Azure Key Vault 使用防火墙和虚拟网络时，必须配置以下内容： 
   - 允许受信任的 Microsoft 服务跳过此防火墙 - 选择“是”

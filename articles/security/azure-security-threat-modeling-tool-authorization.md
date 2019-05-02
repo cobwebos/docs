@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c922556417ac92cc3667927fc8f846ace960a14a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121515"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935885"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -280,7 +280,7 @@ WHERE userID=:id < - session var
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - 表 |
 | **参考**              | [如何使用 SAS 来委派对 Azure 存储帐户中对象的访问权限](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
-| **步骤** | 在某些业务方案中，Azure 表存储可能需要存储面向不同当事方的敏感数据。 例如，与不同国家/地区相关的敏感数据。 在这种情况下，可以通过指定分区键和行键范围来构造 SAS 签名，使用户能够访问与特定国家/地区相关的数据。| 
+| **步骤** | 在某些业务方案中，Azure 表存储可能需要存储面向不同当事方的敏感数据。 例如，相关的敏感数据对不同国家/地区。 在这种情况下，SAS 签名可以通过构造指定的分区键和行键范围，以便用户可以访问特定于特定的国家/地区的数据。| 
 
 ## <a id="rbac-azure-manager"></a>使用 Azure 资源管理器对 Azure 存储帐户启用基于角色的访问控制 (RBAC)
 

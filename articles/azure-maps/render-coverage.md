@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5b6efce033efe99ed4463d6b04b24503de57407c
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63762778"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869997"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps 呈现覆盖区域
 
@@ -45,7 +45,6 @@ Azure Maps 使用光栅磁贴和矢量磁贴来创建地图。 采用其最低�
 | 中非共和国         | ✓ | Ø |
 | 乍得                             | ✓ | Ø |
 | 科摩罗联盟                          | ✓ | Ø |
-| 刚果                            | ✓ | ✓ |
 | 刚果民主共和国 | ✓ | ✓ |
 | 科特迪瓦                    | ✓ | Ø |
 | 吉布提                         | ✓ | Ø |
@@ -109,7 +108,6 @@ Azure Maps 使用光栅磁贴和矢量磁贴来创建地图。 采用其最低�
 | 加拿大                    | ✓ | ✓ |
 | 开曼群岛            | ✓ | ✓ |
 | 智利                     | ✓ | ✓ |
-| 克利珀顿岛         | ✓ | ✓ |
 | 哥伦比亚                  | ✓ | ✓ |
 | 哥斯达黎加                | ✓ | ✓ |
 | 古巴                      | ✓ | ✓ |

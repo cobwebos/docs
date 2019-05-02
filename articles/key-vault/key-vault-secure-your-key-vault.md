@@ -2,23 +2,19 @@
 title: 保护对密钥保管库的访问 - Azure 密钥保管库 | Microsoft Docs
 description: 管理 Azure Key Vault、密钥和机密的访问权限。 介绍 Key Vault 的身份验证和授权模型以及如何保护 Key Vault。
 services: key-vault
-documentationcenter: ''
 author: amitbapat
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 20c58647b8a6283de4ca2b90c830fe54db927095
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a88451403f242c39212c80e3c7425a901c6819cc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304942"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725287"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 

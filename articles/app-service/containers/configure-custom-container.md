@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853314"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919735"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义 Linux 容器
 
@@ -109,7 +109,6 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器，
 - [使用永久存储在 Docker Compose](#use-persistent-storage-in-docker-compose)
 - [预览版限制](#preview-limitations)
 - [Docker Compose 选项](#docker-compose-options)
-- [Kubernetes 配置选项](#kubernetes-configuration-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>使用永久存储在 Docker Compose
 
@@ -132,19 +131,6 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
-```
-
-### <a name="use-custom-storage-in-docker-compose"></a>使用自定义存储在 Docker Compose
-
-Azure 存储 （Azure 文件或 Azure Blob） 可以装载的多容器应用使用自定义 id。若要查看自定义 id 名称，请运行[ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)。
-
-在你*docker-compose.yml*文件中，映射`volumes`选项设为`custom-id`。 例如：
-
-```yaml
-wordpress:
-  image: wordpress:latest
-  volumes:
-  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>预览版限制
@@ -179,22 +165,6 @@ wordpress:
 
 > [!NOTE]
 > 在公共预览版中，将忽略不显式调出的任何其他选项。
-
-### <a name="kubernetes-configuration-options"></a>Kubernetes 配置选项
-
-Kubernetes 支持以下配置选项：
-
-- args
-- command
-- containers
-- image
-- 名称
-- ports
-- spec
-
-> [!NOTE]
-> 在公共预览版中不支持不显式调出的任何其他选项。
->
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,18 +3,18 @@ title: Azure 数据工厂中支持的文件格式 | Microsoft Docs
 description: 本主题说明 Azure 数据工厂中基于文件的连接器支持的文件格式和压缩代码。
 author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: d7e2ecd9c9c27140fff4d483e01eaaca632e929a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f117e02a063b93b8b1badbd9868f78da95c3c671
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394417"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925141"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
@@ -29,9 +29,12 @@ ms.locfileid: "60394417"
 * [Avro 格式](#avro-format)
 
 > [!TIP]
-> 了解复制活动如何从[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)将源数据映射到接收器，包括如何根据文件格式设置确定元数据以及有关何时指定 [dataset`structure`](concepts-datasets-linked-services.md#dataset-structure) 节的技巧。
+> 了解复制活动如何从[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)将源数据映射到接收器，包括如何根据文件格式设置确定元数据以及有关何时指定 [dataset`structure`](concepts-datasets-linked-services.md#dataset-structure-or-schema) 节的技巧。
 
 ## <a name="text-format"></a>文本格式
+
+>[!NOTE]
+>引入了新的数据工厂分隔文本格式对，请参阅[分隔符的文本格式](format-delimited-text.md)文章的详细信息。 基于文件的数据存储区数据集上的以下配置仍支持作为-用于向后 compabitility。 建议以使用新的模型继续。
 
 如果想要读取或写入某个文本文件，请将数据集的 `format` 节中的 `type` 属性设置为 **TextFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
 
@@ -97,7 +100,7 @@ ms.locfileid: "60394417"
 | nestingSeparator |用于分隔嵌套级别的字符。 默认值为“.”（点）。 |否 |
 
 >[!NOTE]
->情况下跨应用数组中的数据为多个行 (情况 1-> 中的示例 2 [JsonFormat 示例](#jsonformat-example))，您只能选择将展开使用属性的单个数组`jsonNodeReference`。 
+>情况下跨应用数组中的数据为多个行 (情况 1-> 中的示例 2 [JsonFormat 示例](#jsonformat-example))，您只能选择将展开使用属性的单个数组`jsonNodeReference`。
 
 ### <a name="json-file-patterns"></a>JSON 文件模式
 
@@ -196,7 +199,7 @@ ms.locfileid: "60394417"
 
 **示例 1：从对象和数组中提取数据**
 
-在此示例中，预期要将一个根 JSON 对象映射到表格结果中的单个记录。 如果 JSON 文件包含以下内容：  
+在此示例中，预期要将一个根 JSON 对象映射到表格结果中的单个记录。 如果 JSON 文件包含以下内容：
 
 ```json
 {
@@ -358,7 +361,7 @@ ms.locfileid: "60394417"
 
 | ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
-| 1 | 20170119 | 2000 | David |
+| 第 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
@@ -408,6 +411,9 @@ ms.locfileid: "60394417"
 
 ## <a name="parquet-format"></a>Parquet 格式
 
+>[!NOTE]
+>数据工厂引入了新的 Parquet 格式对，请参阅[Parquet 格式](format-delimited-text.md)文章的详细信息。 基于文件的数据存储区数据集上的以下配置仍支持作为-用于向后 compabitility。 建议以使用新的模型继续。
+
 若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
@@ -426,13 +432,13 @@ ms.locfileid: "60394417"
 > [!IMPORTANT]
 > 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是**按原样**复制 Parquet 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
 
-对于使用 Parquet 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。 
+对于使用 Parquet 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
 
 - **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
 
 >[!TIP]
->如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道。 
+>如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道。
 
 ![在自承载 IR 上设置 JVM 堆大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -483,7 +489,7 @@ ms.locfileid: "60394417"
 > [!IMPORTANT]
 > 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是**按原样**复制 ORC 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
 
-对于使用 ORC 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。 
+对于使用 ORC 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
 
 - **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
@@ -538,7 +544,7 @@ ms.locfileid: "60394417"
 * 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 使用值为 ZipDeflate 的 `compression` `type` 属性定义输入 FTP 数据集。
 * 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 使用设置为 GZIP 的 `compression` `type` 定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 定义输出数据集。
 
-若要为数据集指定压缩，请在数据集 JSON 中使用 **compression** 属性，如以下示例所示：   
+若要为数据集指定压缩，请在数据集 JSON 中使用 **compression** 属性，如以下示例所示：
 
 ```json
 {
@@ -579,11 +585,12 @@ ms.locfileid: "60394417"
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>不支持的文件类型和压缩格式
 
-可以使用 Azure 数据工厂的可扩展性功能来转换不受支持的文件。 两个选项包括使用 Azure Batch 的 Azure Functions 和自定义任务。
+可以使用 Azure 数据工厂的可扩展性功能来转换不受支持的文件。
+两个选项包括使用 Azure Batch 的 Azure Functions 和自定义任务。
 
 可以看到使用到的 Azure 函数的示例[提取 tar 文件内容](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)。 有关详细信息，请参阅[Azure Functions 活动](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)。
 
-此外可以构建自定义 dotnet 活动使用此功能。 提供了进一步的信息[此处](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)
+此外可以构建自定义 dotnet 活动使用此功能。 提供了进一步的信息[此处](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)
 
 ## <a name="next-steps"></a>后续步骤
 

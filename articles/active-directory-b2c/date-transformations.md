@@ -3,20 +3,19 @@ title: Azure Active Directory B2C 标识体验框架架构的日期声明转换�
 description: Azure Active Directory B2C 标识体验框架架构的日期声明转换示例。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 04/04/2019
-ms.author: v-junlch
+ms.date: 09/10/2018
+ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22484adcc709c1d2726d8086ac75300f189bcc41
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384215"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710438"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -177,4 +176,3 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
     - timeSpanInSeconds：7776000（90 天）
 - 输出声明：
     - 结果：true
-

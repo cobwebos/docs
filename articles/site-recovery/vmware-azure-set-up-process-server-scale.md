@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 678f9aa60d4970540ded8ba0bb1a4ddaa6281a49
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101891"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925476"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器缩放
 
@@ -24,7 +24,7 @@ ms.locfileid: "62101891"
 
 请确保已执行[容量规划](site-recovery-plan-capacity-vmware.md)以进行 VMware 复制。 这可帮助你确定如何以及何时应部署额外的进程服务器。
 
-从 9.24 版本，选择新的复制的进程服务器的过程中添加指导。 将标记为进程服务器，正常、 警告和关键基于特定条件。 若要了解不同的方案，可能会影响状态的进程服务器，请访问[过程服务器选择指南](vmware-azure-manage-process-server.md#process-server-selection-guidance)。
+从 9.24 版本，选择新的复制的进程服务器的过程中添加指导。 将标记为进程服务器，正常、 警告和严重基于特定条件。 若要了解不同的方案，可能会影响状态的进程服务器，请查看[处理服务器警报](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。
 
 > [!NOTE]
 > 不支持使用克隆的进程服务器组件。 按照本文中的步骤横向扩展每个 PS。

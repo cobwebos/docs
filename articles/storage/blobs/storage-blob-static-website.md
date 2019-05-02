@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/29/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 67d3dcad4ec73ee09ec40282b2fbdea945daefe4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 21944c62f09518e20619313cd6ac28fb2ad600c7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122670"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925284"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 使用 Azure 存储 GPv2 帐户可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 利用 Azure 存储中的托管，可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他 PaaS 服务。
@@ -52,16 +52,21 @@ https://contoso.z4.web.core.windows.net/image.png
 
 ## <a name="cdn-and-ssl-support"></a>CDN 和 SSL 支持
 
-若要通过 HTTPS 提供静态网站文件，请参阅[使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob](storage-https-custom-domain-cdn.md)。 在此过程中，需将 CDN 指向 Web 终结点而不是 Blob 终结点。 由于 CDN 配置不会立即执行，因此，可能需要等待几分钟才能看到内容。
+若要使你的静态网站文件通过自定义域和 HTTPS 上可用，请参阅[使用 Azure CDN 通过 HTTPS 访问包含自定义域的 blob](storage-https-custom-domain-cdn.md)。 在此过程中，需将 CDN 指向 Web 终结点而不是 Blob 终结点。 由于 CDN 配置不会立即执行，因此，可能需要等待几分钟才能看到内容。
 
 当更新静态网站时，请确保通过清除 CDN 终结点清除缓存在 CDN 边缘服务器上的内容。 有关详细信息，请参阅[清除 Azure CDN 终结点](../../cdn/cdn-purge-endpoint.md)。
+
+> [!NOTE]
+> 通过帐户 web 终结点以本机方式支持 HTTPS。 通过 HTTPS 自定义域使用要求在此时间的 Azure CDN 使用。 
+>
+> 通过 HTTPS 公共帐户 web 终结点： `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
 
 ## <a name="custom-domain-names"></a>自定义域名
 
 可[为 Azure 存储帐户配置自定义域名](storage-custom-domain-name.md)，以便通过自定义域提供静态网站。 有关如何在 Azure 中托管域的深入信息，请参阅[在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)。
 
 ## <a name="pricing"></a>定价
-静态网站托管无需额外付费。 如需详细了解 Azure Blob 存储价格，请参阅 [Azure Blob 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+启用静态网站托管是免费。 客户收取地利用的 blob 存储和操作成本。 如需详细了解 Azure Blob 存储价格，请参阅 [Azure Blob 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="quickstart"></a>快速入门
 
@@ -159,7 +164,10 @@ az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_N
 是，新 Web 终结点遵循为存储帐户配置的 VNET 和防火墙规则。
 
 **Web 终结点是区分大小写？**  
-是的，Web 终结点区分大小写，就像 Blob 终结点一样。 
+是的，Web 终结点区分大小写，就像 Blob 终结点一样。
+
+**是 web 终结点可通过 HTTP 和 HTTPS 访问？**
+是的可通过 HTTP 和 HTTPS 访问 web 终结点。 但是，如果存储帐户配置为通过 HTTPS 需要安全传输，用户必须使用 HTTPS 终结点。 有关详细信息，请参阅[需要在 Azure 存储中的安全传输](../common/storage-require-secure-transfer.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob](storage-https-custom-domain-cdn.md)

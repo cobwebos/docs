@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 9603c45443c6339a127f977600eeff2ba57a283f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228015"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922989"
 ---
 # <a name="configure-application-insights-profiler"></a>配置 Application Insights Profiler
 
@@ -41,7 +41,7 @@ ms.locfileid: "61228015"
 ## <a id="profileondemand"></a> 手动触发 Profiler
 
 ### <a name="minimum-requirements"></a>最低要求 
-若要手动触发探查器会话的用户他们需要最小值"写入"访问 Application Insights 组件及其角色。 在大多数情况下，可获得此自动和所需任何额外工作。 如果遇到问题，要添加的订阅作用域角色将是"Application Insights 组件参与者"角色。 [查看更多有关角色的访问控制与 Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/app/resources-roles-access-control)。
+若要手动触发探查器会话的用户他们需要最小值"写入"访问 Application Insights 组件及其角色。 在大多数情况下，可获得此自动和所需任何额外工作。 如果遇到问题，要添加的订阅作用域角色将是"Application Insights 组件参与者"角色。 [查看更多有关角色的访问控制与 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)。
 
 只需单击一下，即可手动触发 Profiler。 假设要运行 Web 性能测试。 你将需要跟踪来帮助了解 Web 应用在负载下的性能如何。 控制何时捕获跟踪至关重要，因为知道负载测试何时将运行。 但是随机采样间隔可能会错过捕获。
 

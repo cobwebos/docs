@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/29/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e07c53192ea2c8b792256af944c81c9c909dc55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1130885cc3168582935264ffaad9fd7a8ba3c60b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60469659"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920266"
 ---
-# <a name="consent-to-linkedin-account-connections-for-an-azure-active-directory-organization"></a>同意为 Azure Active Directory 组织的 LinkedIn 帐户连接
+# <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>集成 Azure Active Directory 中的 LinkedIn 帐户连接
 
 您可以允许用户在你的组织能够访问其某些 Microsoft 应用中的 LinkedIn 连接。 直到用户同意连接其帐户不共享任何数据。 您可以将你的组织中 Azure Active Directory (Azure AD) 集成[管理中心](https://aad.portal.azure.com)。
 
@@ -34,30 +34,67 @@ ms.locfileid: "60469659"
 >
 > 一旦你的组织启用了 LinkedIn 帐户连接，帐户连接工作后用户同意应用代表他们的公司数据访问。 有关用户同意的情况下设置的信息，请参阅[如何删除用户的访问权限的应用程序](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)。
 
-## <a name="use-the-azure-portal-to-enable-linkedin-account-connections"></a>使用 Azure 门户中启用 LinkedIn 帐户连接
+## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>启用在 Azure 门户中的 LinkedIn 帐户连接
 
 可以启用想要具有访问权限，只有你的组织中的所选用户到整个组织中用户的 LinkedIn 帐户连接。
 
 1. 登录到[Azure AD 管理中心](https://aad.portal.azure.com/)与 Azure AD 组织的全局管理员帐户。
-2. 选择“用户”。
-3. 在“用户”边栏选项卡中，选择“用户设置”。
-4. 下**LinkedIn 帐户连接**，允许用户连接其帐户以访问其某些 Microsoft 应用中的 LinkedIn 连接。 直到用户同意连接其帐户不共享任何数据。
+1. 选择“用户”。
+1. 在“用户”边栏选项卡中，选择“用户设置”。
+1. 下**LinkedIn 帐户连接**，允许用户连接其帐户以访问其某些 Microsoft 应用中的 LinkedIn 连接。 直到用户同意连接其帐户不共享任何数据。
 
-  * 选择**是**同意在组织中的所有用户的服务
-  * 选择**选定**以同意使用组织中的所选用户
-  * 选择**否**要撤销许可你的组织中的用户
+    * 选择**是**若要启用你的组织中的所有用户服务
+    * 选择**选定**可以使仅组织中的所选用户的组
+    * 选择**否**若要从你的组织中的所有用户撤销许可
 
     ![将集成在组织中的 LinkedIn 帐户连接](./media/linkedin-integration/linkedin-integration.png)
 
-5. 完成后，选择**保存**以保存设置。
-     
+1. 完成后，选择**保存**以保存设置。
+
+> [!Important]
+> LinkedIn 集成完全才会启用你的用户他们同意连接其帐户。 没有数据时为用户启用帐户的连接共享。
+
+### <a name="assign-selected-users-with-a-group"></a>使用组分配所选的用户
+我们已经取代了用于选择一组用户，以便你可以启用连接 LinkedIn 和 Microsoft 帐户而不是许多单个用户的单个组的功能的选项指定的用户列表的所选选项。 如果没有为所选的单个用户启用 LinkedIn 帐户连接，不需要执行任何操作。 如果以前已启用 LinkedIn 帐户连接，为所选的单个用户，您应该：
+
+1. 获取单个用户的当前列表
+1. 将当前已启用单个用户移动到组
+1. 从上一组用作在 Azure AD 管理员中心中设置的 LinkedIn 帐户连接中的所选组。
+
+> [!NOTE]
+> 即使不将你当前所选的单个用户移动到一个组，他们仍可以看到在 Microsoft 应用中的 LinkedIn 信息。
+
+### <a name="get-the-current-list-of-selected-users"></a>获取当前所选用户的列表
+
+1. 使用你的管理员帐户登录到 Microsoft 365。
+1. 转到  https://linkedinselectedusermigration.azurewebsites.net/ 。 您将看到为 LinkedIn 帐户连接选择的用户的列表。
+1. 将列表导出到 CSV 文件。
+
+### <a name="move-the-currently-selected-individual-users-to-a-group"></a>将当前所选的单个用户移动到组
+
+1. 启动 PowerShell
+1. 通过运行安装 Azure AD 模块 `Install-Module AzureAD`
+1. 运行以下脚本：
+
+  ``` PowerShell
+  $groupId = "GUID of the target group"
+  
+  $users = Get-Content 
+  Path to the CSV file
+  
+  $i = 1
+  foreach($user in $users} { Add-AzureADGroupMember -ObjectId $groupId -RefObjectId $user ; Write-Host $i Added $user ; $i++ ; Start-Sleep -Milliseconds 10 }
+  ```
+
+若要将用作在 Azure AD 管理员中心中设置的 LinkedIn 帐户连接中的所选组的步骤 2 中的组，请参阅[在 Azure 门户中的启用 LinkedIn 帐户连接](#enable-linkedin-account-connections-in-the-azure-portal)。
+
 ## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>使用组策略启用 LinkedIn 帐户连接
 
 1. 下载 [Office 2016 管理模板文件 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
-2. 提取 ADMX 文件然后将其复制到中央存储。
-3. 打开组策略管理。
-4. 使用以下设置创建一个组策略对象：“用户配置” > “管理模板” > “Microsoft Office 2016” > “杂项” > “在 Office 应用程序中显示 LinkedIn 的功能”。
-5. 选择“已启用”或“已禁用”。
+1. 提取 ADMX 文件然后将其复制到中央存储。
+1. 打开组策略管理。
+1. 使用以下设置创建一个组策略对象：“用户配置” > “管理模板” > “Microsoft Office 2016” > “杂项” > “在 Office 应用程序中显示 LinkedIn 的功能”。
+1. 选择“已启用”或“已禁用”。
   
    状态 | 效果
    ------ | ------

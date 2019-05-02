@@ -12,16 +12,16 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: sethm
 ms.custom: ''
-ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b0b5a74a6ca0085f945075a8896c05a724ff062c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733421"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717961"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>实验性识别内容的编码预设
 
-若要准备传送的内容[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，视频需要经过编码的多个比特率 （从高到低）。 为了确保妥善降级的质量，如降低比特率，因此是视频的分辨率。 这导致所谓的编码阶梯 – 表的分辨率和比特率，你可以看到在一些我们固定的编码预设，如[H264MultipleBitrate1080p](../previous/media-services-mes-preset-h264-multiple-bitrate-1080p.md)。
+若要准备传送的内容[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，视频需要经过编码的多个比特率 （从高到低）。 为了确保妥善降级的质量，如降低比特率，因此是视频的分辨率。 这会导致所谓的编码阶梯 – 的分辨率和比特率; 表请参阅 Media Services[内置的编码预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。
 
 ## <a name="overview"></a>概述
 

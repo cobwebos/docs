@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c3395345093ae9a3d35deb27a08f12d331c9f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bd117b79c2d103225e8f1f29b63eb6ae341031d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358151"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917665"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
 
@@ -42,7 +42,7 @@ ms.locfileid: "60358151"
 
 当管理员帐户的密码将使用替换新密码，例如使用 Active Directory 用户和计算机管理工具时，密码设置 （有时称为密码重置）。 此操作需要高级别的特权 （通常域管理员），并且通常执行该操作的人员没有知道旧密码。 技术支持方案通常执行此操作，例如当为忘记其密码的用户提供帮助。 您还会看到事件在第一次使用密码创建一个全新的用户帐户时设置的密码。
 
-密码验证策略行为而不考虑是否完成密码更改一个或一组相同。 Azure AD 密码保护 DC 代理服务会记录不同的事件来通知你是否密码更改或设置操作已完成。  请参阅[Azure AD 密码保护监视和日志记录](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)。
+密码验证策略行为而不考虑是否完成密码更改一个或一组相同。 Azure AD 密码保护 DC 代理服务会记录不同的事件来通知你是否密码更改或设置操作已完成。  请参阅[Azure AD 密码保护监视和日志记录](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)。
 
 **问：是否支持与其他基于密码筛选器的产品一同安装 Azure AD 密码保护？**
 

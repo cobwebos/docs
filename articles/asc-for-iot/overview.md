@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2019
+ms.date: 04/29/2019
 ms.author: mlottner
-ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 253585d71ab2704efa0b3e4a06456e1d505b46ad
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232823"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919658"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure 安全中心简介 iot
 
@@ -33,7 +33,7 @@ ms.locfileid: "60232823"
 
 ## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>保护针对不断演变的网络攻击的 IoT 和混合云工作负荷
 
-物联网正在迅速改变我们的世界。 来自连接的设备和后端系统能够为发现见解，现在可以转换这些强大的应用程序和服务来帮助组织实现前所未有的操作和业务的见解性能。 但是，如数十亿台新设备连接到 internet，并将其集成到我们在日常生活和公司业务;你的安全操作团队需要确保，足够快的速度发展其安全策略以覆盖这些新的攻击面。 如任何其他系统，保护 IoT 解决方案需要在每个阶段的实施的保护。 
+物联网正在迅速改变我们的世界。 能够发现从连接的设备和后端系统的见解，你现在可以转换这些强大的应用程序和服务来帮助组织获得了前所未有的操作级别和业务性能的见解。 但是，如数十亿台新设备连接到 internet，并将其集成到我们在日常生活和公司业务;你的安全操作团队需要确保，足够快的速度发展其安全策略以覆盖这些新的攻击面。 如任何其他系统，保护 IoT 解决方案需要在每个阶段的实施的保护。 
 
 适用于 IoT 的 azure 安全中心 (ASC) 通过跨工作负荷在边缘上，运行在本地，在 Azure 中，并在提供统一的可见性和控制、 自适应威胁防护和智能威胁检测和响应，简化了混合工作负荷保护其他云。 
 

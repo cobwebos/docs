@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62096159"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919172"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>用于 Azure AD Connect 的帐户
 
-![](media/reference-connect-accounts-permissions/account5.png)
+![帐户概述](media/reference-connect-accounts-permissions/account5.png)
 
 Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Active Directory 同步到 Azure Active Directory。  这些帐户是：
 
@@ -111,10 +111,10 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 | 安装同步服务，服务帐户选项 |AD 或本地用户帐户凭据 |用户，权限由安装向导授予 |如果管理员指定了帐户，则此帐户将用作同步服务的服务帐户。 |
 | 连接到 Azure AD |Azure AD 目录凭据 |Azure AD 中的全局管理员角色 |<li>在 Azure AD 目录中启用同步。</li>  <li>创建在 Azure AD 中用于持续同步操作的 Azure AD 连接器帐户。</li> |
 | 连接目录 |要连接到 Azure AD 的每个林的本地 Active Directory 凭据 |权限随所启用的功能而定，可在“创建 AD DS 连接器帐户”中查找 |在同步期间，将使用此帐户读取和写入目录信息。 |
-| AD FS 服务器 |对于列表中的每个服务器，如果运行向导的用户的登录凭据权限不足，因而无法连接，则向导会收集凭据 |域管理员 |安装和配置 AD FS 服务器角色。 |
-| Web 应用程序代理服务器 |对于列表中的每个服务器，如果运行向导的用户的登录凭据权限不足，因而无法连接，则向导会收集凭据 |目标计算机上的本地管理员 |安装和配置 WAP 服务器角色。 |
+| AD FS 服务器 |对于列表中每个服务器，则向导会收集凭据运行该向导的用户的登录凭据不足以连接时 |域管理员 |安装和配置 AD FS 服务器角色。 |
+| Web 应用程序代理服务器 |对于列表中每个服务器，则向导会收集凭据运行该向导的用户的登录凭据不足以连接时 |目标计算机上的本地管理员 |安装和配置 WAP 服务器角色。 |
 | 代理信任凭据 |联合身份验证服务信任凭据（代理用来注册 FS 信任证书的凭据） |作为 AD FS 服务器本地管理员的域帐户 |初始注册 FS-WAP 信任证书。 |
-| “AD FS 服务帐户”页上的“使用域用户帐户选项” |AD 用户帐户凭据 |域用户 |提供了其凭据的 AD 用户帐户将用作 AD FS 服务的登录帐户。 |
+| “AD FS 服务帐户”页上的“使用域用户帐户选项” |AD 用户帐户凭据 |域用户 |提供了其凭据的 Azure AD 用户帐户用作 AD FS 服务的登录帐户。 |
 
 ### <a name="create-the-ad-ds-connector-account"></a>创建 AD DS 连接器帐户
 
@@ -239,6 +239,11 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中获取现有 Azure AD 服务帐户的列表，请运行以下 Azure AD PowerShell cmdlet：`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 若要删除未使用的 Azure AD 服务帐户，请运行以下 Azure AD PowerShell cmdlet：`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+
+>[!NOTE]
+>可以使用上述 PowerShell 命令之前将需要安装[Azure Active Directory PowerShell for Graph 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module)并连接到你的 Azure AD 使用实例[Connect-azuread](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)
+
+有关如何管理或重置 Azure AD 连接器帐户的密码的其他信息请参阅[管理 Azure AD Connect 帐户](how-to-connect-azureadaccount.md)
 
 ## <a name="related-documentation"></a>相关文档
 如果尚未阅读文档了解如何[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)，请查看下表获取相关主题的链接。

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8bb790571e1499bd45fb8bee27f4f1896046cbc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a7fcd4deb0446577af310ff5380ffddf05ba87be
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749053"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719826"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -129,7 +129,7 @@ ms.locfileid: "60749053"
 
 2. 若要为 VM 生成 VSS 快照，请检查 VM 上是否已安装 Hyper-V Integration Services，并已启用备份 (VSS) 集成服务。
     - 确保 Integration Services VSS 服务/守护程序在来宾上运行，并处于“正常”状态。
-    - 可以在 Hyper-V 主机上权限提升的 PowerShell 会话中，使用命令 **et-VMIntegrationService -VMName<VMName>-Name VSS** 执行此项检查。也可以登录到来宾 VM 来获取此信息。 [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
+    - 可以从命令的 HYPER-V 主机上权限提升的 PowerShell 会话检查这**Et-vmintegrationservice-VMName\<VMName >-Name VSS**也可以通过登录到来宾 VM 中获取此信息。 [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - 确保 VM 上的备份/VSS Integration Services 正在运行且处于正常状态。 否则，请重启这些服务，并重启 Hyper-V 主机服务器上的 Hyper-V 卷影复制请求程序服务。
 
 ### <a name="common-errors"></a>常见错误

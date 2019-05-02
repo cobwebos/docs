@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: eb398ad621167ad9f9b245fb8aa98c6942b87668
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 344f3a8b1bdfb789251479baffeb4df15bbf2842
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557421"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718365"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 时序见解预览版塑造事件
 
@@ -110,7 +110,7 @@ ms.locfileid: "53557421"
 
 时序见解预览版会在查询时联接一个表（平展后）。 此表包含其他列，例如“类型”。 以下示例演示如何才能[塑造](./time-series-insights-send-events.md#json)遥测数据：
 
-| deviceId  | 类型 | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
+| deviceId  | Type | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | `FXXX` | Default_Type | REVOLT SIMULATOR | 电池系统 | 2018-01-17T01:17:00Z |    1.0172575712203979 |    34.7 |
 | `FXXX` | LINE_DATA    REVOLT | SIMULATOR |    电池系统 |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
@@ -129,6 +129,6 @@ ms.locfileid: "53557421"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要将这些指导原则付诸实践，请参阅 [Azure 时序见解预览版查询语法](./time-series-insights-query-data-csharp.md)。 可以详细了解时序见解预览版数据访问 REST API 的查询语法。
+- 若要将这些指导原则付诸实践，请参阅 [Azure 时序见解预览版查询语法](./time-series-insights-query-data-csharp.md)。 可以详细了解时序见解预览版数据访问 REST API 的查询语法。
 
-若要了解支持的 JSON 形状，请参与[支持的 JSON 形状](./time-series-insights-send-events.md#json)。
+- 若要了解支持的 JSON 形状，请参与[支持的 JSON 形状](./time-series-insights-send-events.md#json)。

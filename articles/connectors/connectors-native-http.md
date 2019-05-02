@@ -11,26 +11,28 @@ ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 01da06ca55199989a3a27012bec101580f5ef853
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22b21512c78a06f2639ca9339f3b7a20c7f5bfa3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60447538"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713812"
 ---
 # <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>使用 Azure 逻辑应用调用 HTTP 或 HTTPS 终结点
 
-使用 Azure 逻辑应用和超文本传输协议 (HTTP) 连接器，可以通过生成逻辑应用来自动完成与任何 HTTP 或 HTTPS 终结点通信的工作流。 例如，可以监视网站的服务终结点。 当该终结点上发生某个事件（例如，网站关闭）时，该事件会触发逻辑应用的工作流并运行指定的操作。 
+使用 Azure 逻辑应用和超文本传输协议 (HTTP) 连接器，可以通过生成逻辑应用来自动完成与任何 HTTP 或 HTTPS 终结点通信的工作流。 例如，可以监视网站的服务终结点。 当该终结点上发生某个事件（例如，网站关闭）时，该事件会触发逻辑应用的工作流并运行指定的操作。
 
 可将 HTTP 触发器用作工作流中的第一个步骤，用于定期检查或轮询某个终结点。 每次检查时，该触发器会向该终结点发送调用或请求。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将响应中的任何内容传递到逻辑应用中的操作。 
 
-可将 HTTP 操作用作工作流中的另一个步骤，用于调用所需的终结点。 该终结点的响应确定了工作流剩余操作的运行方式。
+可将 HTTP 操作用作工作流中的另一个步骤，用于调用所需的终结点。 该终结点的响应确定了工作流剩余操作的运行方式。 
+
+基于目标终结点的功能，此连接器支持传输层安全性 (TLS) 1.0、 1.1 和 1.2 的版本。 逻辑应用通过使用受支持的最高版本可能与终结点进行协商。 因此，例如，如果终结点支持 1.2，连接器将使用 1.2 第一次。 否则，连接器将使用的最高的受支持的版本。
 
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>必备组件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * 要调用的目标终结点的 URL 
 

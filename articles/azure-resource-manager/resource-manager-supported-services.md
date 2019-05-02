@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 520aeb8e47b5e94e6346e682f21f46cb0814f8f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a3c6eca548eb61d6b7b239b4292b9c77ca2dec6f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389601"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702704"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -31,6 +31,8 @@ ms.locfileid: "60389601"
 * 查看资源类型的有效 API 版本
 
 可以通过 Azure 门户、Azure PowerShell 或 Azure CLI 执行这些步骤。
+
+映射到 Azure 服务的资源提供程序的列表，请参阅[的 Azure 服务资源提供程序](azure-services-resource-providers.md)。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -291,5 +293,5 @@ West US
 
 * 若要了解如何创建资源管理器模板，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。 
 * 若要查看资源提供程序模板架构，请参阅[模板引用](/azure/templates/)。
-* 若要了解如何部署资源，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)。
+* 映射到 Azure 服务的资源提供程序的列表，请参阅[的 Azure 服务资源提供程序](azure-services-resource-providers.md)。
 * 若要查看资源提供程序的操作，请参阅 [Azure REST API](/rest/api/)。

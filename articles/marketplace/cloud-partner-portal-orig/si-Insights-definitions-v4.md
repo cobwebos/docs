@@ -1,25 +1,18 @@
 ---
-title: Seller Insights 定义 | Microsoft Docs
+title: Seller Insights 定义
 description: 提供的许多您将在卖方 Insights 中找到的术语的定义
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cc90ee0506203433a61fe68d97055ea32f061f11
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: e23297d8cd6cab5abeedc1a12fa1a37c93e94283
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709580"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943620"
 ---
 <a name="seller-insights-definitions"></a>Seller Insights 定义
 =======================

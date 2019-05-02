@@ -1,19 +1,19 @@
 ---
-title: 如何使用 Azure Maps Map Control | Microsoft Docs
+title: 开始使用 Azure Maps 中的 web 地图控件 |Microsoft Docs
 description: 了解如何使用 Azure Maps Map Control 客户端 Javascript 库。
-author: dsk-2015
-ms.author: dkshir
+author: walsehgal
+ms.author: v-musehg
 ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9e3a442a3d6c420c548979327c193628efbee5aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c346c51db2c06c2ef91b101255076b811dfea9e7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769866"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869748"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps Map Control
 

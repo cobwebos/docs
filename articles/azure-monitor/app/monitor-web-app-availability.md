@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 9f48303396d1ecd03fdffd2c6ab1e0c122615a21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fe8549027bb7fcf9fcfc2db26816c0b6646c9da6
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60701445"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916388"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
@@ -67,7 +67,7 @@ ms.locfileid: "60701445"
 
     **HTTP 响应**：视为成功的返回状态代码。 代码 200 指示返回了正常网页。
 
-    **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
+    **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。 **内容匹配当前支持只能使用英文字符。** 
 
 * **警报位置阈值**：建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置。
 
@@ -92,7 +92,7 @@ ms.locfileid: "60701445"
 
     ![在 Visual Studio Enterprise 版中，基于“Web 性能测试和负载测试”模板创建项目。](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
-   * *看不到 Web 性能与负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。
+ * *看不到 Web 性能与负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。
 
 2. 打开 .webtest 文件并开始录制。
 
@@ -273,6 +273,9 @@ Web 测试插件提供时间参数化方式。
   （Visual Studio 会尝试参数化测试，但无法正确参数化令牌。）
 
 ## <a name="performance-tests"></a>性能测试
+> [!NOTE]  
+> 不推荐使用基于云的负载测试服务。 可以找到有关不推荐使用、 服务可用性和其他服务的详细信息[此处](https://docs.microsoft.com/en-us/azure/devops/test/load-test/overview?view=azure-devops)。
+
 可以在网站上运行负载测试。 与可用性测试一样，可以从全球各地的站点发送简单请求或多步骤请求。 与可用性测试不同的是，发送的许多请求可以模拟多个并发用户。
 
 在“配置”下，转到“性能测试”并单击“新建”以创建测试。

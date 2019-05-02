@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/28/2019
+ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: cc2a78dd547681a4b20fea14cd8cd7f4fd9c2df5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9097fef88a2c3c667416761c341a2e320c790121
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711217"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919057"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
 Azure 实例元数据服务提供有关运行虚拟机实例的信息，这些实例可用于管理和配置虚拟机。
-这些信息中包括 SKU、网络配置和即将发送的维护事件等相关信息。 如要深入了解可用信息类型，请参阅[元数据类别](#instance-metadata-data-categories)。
+这些信息中包括 SKU、网络配置和即将发送的维护事件等相关信息。 哪种类型的信息是可用的详细信息，请参阅[元数据 Api](#metadata-apis)。
 
 Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)创建的所有 IaaS VM 使用。
 该终结点位于已知不可路由的 IP 地址 (`169.254.169.254`)，该地址只能从 VM 中访问。
 
 > [!IMPORTANT]
-> 此服务在所有 Azure 区域中提供有正式版。  它会定期更新，发布有关虚拟机实例的新信息。 此页反映了最新可用的[数据类别](#instance-metadata-data-categories)。
+> 此服务在所有 Azure 区域中提供有正式版。  它会定期更新，发布有关虚拟机实例的新信息。 此页反映了最新[元数据 Api](#metadata-apis)可用。
 
 ## <a name="service-availability"></a>服务可用性
 
@@ -39,12 +39,16 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 
 区域                                        | 可用性？                                 | 支持的版本
 -----------------------------------------------|-----------------------------------------------|-----------------
-[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | 正式版   | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
-[Azure 中国：](https://www.azure.cn/)                                                           | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+[Azure 中国：](https://www.azure.cn/)                                                     | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | 正式版 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+[美国中西部公开区域](https://azure.microsoft.com/regions/)                           | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01
 
 当有服务更新且/或有可用的新支持版本时，此表将更新。
+
+> [!NOTE]
+> 2019-02-01 当前推出和不久便会提供其他国家和地区。
 
 若要试用实例元数据服务，请在上述区域中从 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)或 [Azure 门户](https://portal.azure.com)创建一个 VM，并按照以下示例操作。
 
@@ -52,7 +56,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 
 ### <a name="versioning"></a>版本控制
 
-已对实例元数据服务进行了版本控制。 版本是必需的，全局 Azure 上的当前版本为 `2018-10-01`。 当前支持的版本为（2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01）
+已对实例元数据服务进行了版本控制。 版本是必需的，全局 Azure 上的当前版本为 `2018-10-01`。 当前支持的版本为（2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01）。
 
 在添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。
 
@@ -332,42 +336,61 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 }
 ```
 
-## <a name="instance-metadata-data-categories"></a>实例元数据数据类别
+## <a name="metadata-apis"></a>元数据 Api
 
-可通过实例元数据服务获取以下数据类别：
+#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>以下 Api 都可以通过元数据终结点：
+
+数据 | 描述 | 引入的版本
+-----|-------------|-----------------------
+attested | 请参阅[证明数据](#attested-data) | 2018-10-01
+identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+instance | 请参阅[实例 API](#instance-api) | 2017-04-02
+scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
+
+#### <a name="instance-api"></a>实例 API
+##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>以下计算类别都可以通过实例 API:
+
+> [!NOTE]
+> 通过实例/计算元数据终结点，通过以下几类进行访问
 
 数据 | 描述 | 引入的版本
 -----|-------------|-----------------------
 azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
+customData | 请参阅[自定义数据](#custom-data) | 2019-02-01
 位置 | 正在运行 VM 的 Azure 区域 | 2017-04-02
 名称 | VM 的名称 | 2017-04-02
 offer | 为 VM 映像提供信息。 仅为从 Azure 映像库部署的映像显示此值。 | 2017-04-02
-发布者 | VM 映像的发布者 | 2017-04-02
-sku | VM 映像的特定 SKU | 2017-04-02
-版本 | VM 映像的版本 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
-platformUpdateDomain |  正在运行 VM 的[更新域](manage-availability.md) | 2017-04-02
-platformFaultDomain | 正在运行 VM 的[容错域](manage-availability.md) | 2017-04-02
-vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
-vmSize | [VM 大小](sizes.md) | 2017-04-02
-subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
-标记 | 虚拟机的[标记](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
-resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 计划 | 在 Azure 市场映像中 VM 的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，包含名称、产品和发布者 | 2018-04-02
+platformUpdateDomain |  正在运行 VM 的[更新域](manage-availability.md) | 2017-04-02
+platformFaultDomain | 正在运行 VM 的[容错域](manage-availability.md) | 2017-04-02
 provider | VM 的提供商 | 2018-10-01
 publicKeys | [公钥的集合](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
+发布者 | VM 映像的发布者 | 2017-04-02
+resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
+sku | VM 映像的特定 SKU | 2017-04-02
+subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
+标记 | 虚拟机的[标记](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
+版本 | VM 映像的版本 | 2017-04-02
+vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
+vmSize | [VM 大小](sizes.md) | 2017-04-02
 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
+
+##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>以下网络类别都可以通过实例 API:
+
+> [!NOTE]
+> 元数据终结点，通过以下几类是通过实例/网络/接口访问
+
+数据 | 描述 | 引入的版本
+-----|-------------|-----------------------
 ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02
 ipv4/publicIpAddress | VM 的公共 IPv4 地址 | 2017-04-02
 subnet/address | VM 的子网地址 | 2017-04-02
 subnet/prefix | 子网前缀，例如 24 | 2017-04-02
 ipv6/ipaddress | VM 的本地 IPv6 地址 | 2017-04-02
 macAddress | VM mac 地址 | 2017-04-02
-scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
-identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-attested | 请参阅[证明数据](#attested-data) | 2018-10-01
 
 ## <a name="attested-data"></a>证明数据
 
@@ -375,7 +398,7 @@ attested | 请参阅[证明数据](#attested-data) | 2018-10-01
 
 ### <a name="example-attested-data"></a>示例证明数据
 
- > [!NOTE]
+> [!NOTE]
 > 所有 API 响应均为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
 
  **请求**
@@ -432,6 +455,7 @@ Nonce 是一个可选的 10 位字符串。 Nonce 可用于跟踪请求，如果
 ```
 
 > 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及 VM 详情，如 vmId、nonce、文档创建和到期的时间戳以及关于映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
+
 
 ## <a name="example-scenarios-for-usage"></a>用法的示例方案  
 
@@ -532,12 +556,17 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
+> [!NOTE]
+> 标记是以分号分隔。 如果分析器编写以编程方式提取标记，标记名称和值不应包含分号分析器才能正常工作的顺序。
+
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>验证 VM 是否在 Azure 中运行
 
- 市场供应商希望确保其软件仅许可在 Azure 中运行。 如果有人将 VHD 复制到本地，则应当有能力检测到这一情况。 通过调用实例元数据服务，市场供应商可以获得签名数据，以保证仅响应 Azure。
-**请求**
+市场供应商希望确保其软件仅许可在 Azure 中运行。 如果有人将 VHD 复制到本地，则应当有能力检测到这一情况。 通过调用实例元数据服务，市场供应商可以获得签名数据，以保证响应仅来自 Azure。
+
 > [!NOTE]
 > 需要安装 jq。
+
+**请求**
 
  ```bash
   # Get the signature
@@ -654,6 +683,27 @@ Network Destination        Netmask          Gateway       Interface  Metric
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
+```
+
+### <a name="custom-data"></a>自定义数据
+实例元数据服务提供的 VM 具有对其自定义数据的访问权限的功能。 二进制数据必须是小于 64 KB，并提供到 base64 编码窗体中的 VM。 有关如何创建具有自定义数据的 VM 的详细信息，请参阅[部署虚拟机使用 CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)。
+
+#### <a name="retrieving-custom-data-in-virtual-machine"></a>检索虚拟机中的自定义数据
+实例元数据服务提供到 base64 编码窗体中的 VM 的自定义数据。 下面的示例将解码的 base64 编码字符串。
+
+> [!NOTE]
+> 此示例中的自定义数据解释为 ASCII 字符串显示为"我的 super 机密数据。"。
+
+**请求**
+
+```bash
+curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/customData?api-version=2019-02-01&&format=text" | base64 --decode
+```
+
+**响应**
+
+```text
+My super secret data.
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>在 VM 内使用不同语言调用元数据服务的示例 

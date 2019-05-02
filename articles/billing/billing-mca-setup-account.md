@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371677"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919152"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>为 Microsoft 客户协议设置计费帐户
 
@@ -108,7 +108,7 @@ ms.locfileid: "60371677"
 
 新的帐户仅支持来自签名 Microsoft 客户协议时选定的租户的用户。 如果具有企业协议上的管理权限的用户是租户的成员，他们将在安装过程中获得新的计费帐户的访问权限。 如果它们不是租户的成员，它们将无法访问新的计费帐户，除非您邀请他们。
 
-当您邀请的用户时，它们作为来宾用户添加到租户，并获取计费帐户的访问权限。 若要邀请的用户，则租户的来宾访问权限必须打开。 有关详细信息，请参阅[控制在 Azure Active Directory 中的来宾访问](https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)。 如果来宾访问处于关闭状态，请联系你的租户以将其打开的全局管理员。 <!-- Todo - How can they find their global administrator -->
+当您邀请的用户时，它们作为来宾用户添加到租户，并获取计费帐户的访问权限。 若要邀请的用户，则租户的来宾访问权限必须打开。 有关详细信息，请参阅[控制在 Azure Active Directory 中的来宾访问](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)。 如果来宾访问处于关闭状态，请联系你的租户以将其打开的全局管理员。 <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-features-replaced-by-the-new-billing-account"></a>查看功能替换为新的计费帐户
 

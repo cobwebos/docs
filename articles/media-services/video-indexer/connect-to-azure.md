@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 08f2dac6317f294c3c7360cc00cf9aaa60c9a7ca
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796539"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715099"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -103,7 +103,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 1. 使用 [Azure](https://portal.azure.com/) 门户创建 Azure 媒体服务帐户，如[创建帐户](../previous/media-services-portal-create-account.md)中所述。
 
-    创建媒体服务帐户的存储帐户时，选择“StorageV2”作为帐户类型并在复制字段中选择“异地冗余(RGS)”。
+    在创建媒体服务帐户的存储帐户，选择**StorageV2**的帐户类型和**异地冗余 (GRS)** 复制字段。
 
     ![新建 AMS 帐户](./media/create-account/create-ams-account1.png)
 

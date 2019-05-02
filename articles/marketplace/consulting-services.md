@@ -2,24 +2,17 @@
 title: Azure 市场和 AppSource 咨询服务
 description: 本文介绍 Azure 市场中新咨询服务产品的合格条件和发布要求。
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: yijenj
-manager: nuno costa
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: e13111eb241c7734e25a28fcaeea55b1c70bc267
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121125"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938312"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -48,7 +41,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 > [!TIP]
 > 若要发布到 Azure 市场店面，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Azure”。 若要发布到 AppSource，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Dynamics 365”、“Power BI”或“Power Apps”。
 
-## <a name="eligible-partners-and-supported-countries"></a>符合条件的合作伙伴和受支持的国家/地区
+## <a name="eligible-partners-and-supported-countriesregions"></a>符合条件的合作伙伴和受支持的国家/地区
 
 合作伙伴需要在其服务的相关领域拥有银级或金级资质。 
 
@@ -74,7 +67,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 <b>有关详细信息，请参阅 [Microsoft 合作伙伴网络的资质](https://partner.microsoft.com/membership/competencies)。</b>
  
 
-**SI 合作伙伴可针对以下 18 个国家/地区提交咨询服务产品**
+**SI 合作伙伴可提交以下 18 个国家/地区的咨询服务产品**
 
 |符合条件的国家/地区 |   |   |   |
 |---------|----------|----------|----------|
@@ -84,7 +77,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 |丹麦   |意大利   |     挪威          |美国 |
 |芬兰   |日本   |     波兰          
 
-咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 由合作伙伴提交且由 Microsoft 批准一定数量的有吸引力服务产品选项后，面向其他国家/地区的目录将会推出。
+咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 面向其他国家/地区的目录将会推出后有意义数量和极具吸引力的服务产品选项已由合作伙伴提交并由 Microsoft 批准。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何在 Azure 市场和 AppSource 中注册咨询服务
 首先在市场中[注册](https://azuremarketplace.microsoft.com/sell/signup)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
@@ -124,7 +117,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 3. **提交**：提供说明中列出的必需信息。 所有内容和支持材料都必须以英文提交。 
 4. **评审**：我们的营销和编辑团队将会评审提交内容，并在可读性、语法和效果方面对其进行优化。 
 5. **暂存**：暂存提交内容以供查阅。 
-6. **发布**：在你和 Microsoft 都对暂存内容感到满意后，所列产品便可以在市场中推出。 列表推出日期取决于产品/服务中指定的国家/地区。 如果所选国家/地区的目录已在 Azure 市场或 AppSource 中推出，则所列产品会在几小时内显示。 否则，该目录一推出，就会显示列表。
+6. **发布**：在你和 Microsoft 都对暂存内容感到满意后，所列产品便可以在市场中推出。 用于列表推出日期取决于产品中指定国家/地区。 如果您选定的国家/地区的目录上的 Azure Marketplace 或 AppSource 已处于活动，您的列表将显示几个小时内。 否则，该目录一推出，就会显示列表。
 
 ## <a name="offer-listings-and-content-review-criteria"></a>产品列表和内容审核标准
 产品/服务必须属于以下五种服务类型之一（可以列出多个）： 

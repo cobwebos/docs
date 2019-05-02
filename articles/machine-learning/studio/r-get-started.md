@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 307636b019b53c8457c65261824adbf8e52ca0a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875509"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726526"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>开始使用 R 编程语言中 Azure 机器学习工作室
 
@@ -253,7 +253,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. 在[执行 R 脚本][execute-r-script]模块的代码窗口中键入具有 zip 文件名的 `source()` 函数。 在本例中我键入 `source("src/simpleplot.R")`。  
 
-1. 请确保选择**保存**。
+1. 请务必选择“保存”。
 
 这些步骤完成后，运行试验时，[执行 R 脚本][execute-r-script]模块将执行 zip 文件中的 R 脚本。 此时试验如图 5 所示。
 
@@ -1320,7 +1320,7 @@ RStudio 文档非常齐全。 以下是一些指向 RStudio 文档以帮助你�
 * **R 编程艺术：教程的统计软件设计**Norman Matloff 是极好在 R 中的编程简介  
 * **R Cookbook** Paul teetor 提供使用 R 的问题和解决方案方法  
 * **操作中的 R** Robert Kabacoff 是另一个有用的入门性书籍。 随附[的 Quick R 网站](https://www.statmethods.net/)是一个有用的资源。
-* **R Inferno** Patrick Burns 的是非常幽默的书，使用多个 R 编程中可能遇到的棘手而困难主题书此书是免费获取网址[R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/)。
+* **R Inferno** Patrick Burns 的是非常幽默的书，使用多个 R 编程中可能遇到的棘手而困难主题书此书是免费获取网址[R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/)。
 * 如果您想深入了解 R 主题，了解一下本书**高级 R** Hadley wickham。 本书的联机版本是免费获取网址[ http://adv-r.had.co.nz/ ](http://adv-r.had.co.nz/)。
 
 可以在中找到 R 时序包的目录[CRAN 任务视图：时序分析的时间](https://cran.r-project.org/web/views/TimeSeries.html)。 有关特定时序对象包的信息，请参考此包的文档。

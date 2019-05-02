@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 87505081f16008dff7da1f567c1265c695f3f0ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f25b0f2c7b5e3148bae778c4b50a3f0bd0c148da
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653766"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875950"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 
@@ -160,11 +160,55 @@ HTTP 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-本部分提供 HTTP 数据集支持的属性列表。 
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 
+- 有关**Parquet 和带分隔符的文本格式**，请参阅[Parquet 和带分隔符的文本格式的数据集](#parquet-and-delimited-text-format-dataset)部分。
+- 其他格式，例如**ORC/Avro/JSON/二进制格式**，请参阅[其他格式数据集](#other-format-dataset)部分。
 
-要从 HTTP 复制数据，请将数据集的 type 属性设置为“HttpFile”。 支持以下属性：
+### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet 和带分隔符的文本格式的数据集
+
+要从 HTTP 复制数据**Parquet 或带分隔符的文本格式**，请参阅[Parquet 格式](format-parquet.md)并[分隔符的文本格式](format-delimited-text.md)基于格式的数据集上的文章和支持设置。 在下的 http 支持以下属性`location`中基于格式的数据集的设置：
+
+| 属性    | 说明                                                  | 必选 |
+| ----------- | ------------------------------------------------------------ | -------- |
+| type        | 下面的类型属性`location`在数据集中必须设置为**HttpServerLocation**。 | 是      |
+| relativeUrl | 包含数据的资源的相对 URL。       | 否       |
+
+> [!NOTE]
+> 支持的 HTTP 请求有效负载大小约为 500 KB。 如果要传递给 Web 终结点的有效负载大小大于 500 KB，请考虑以更小的区块对该有效负载进行批处理。
+
+> [!NOTE]
+> **HttpFile**类型与下一节中所述的 Parquet/文本格式的数据集作为仍受支持的用于复制/查找活动的向后兼容性。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
+
+**示例：**
+
+```json
+{
+    "name": "DelimitedTextDataset",
+    "properties": {
+        "type": "DelimitedText",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "schema": [ < physical schema, optional, auto retrieved during authoring > ],
+        "typeProperties": {
+            "location": {
+                "type": "HttpServerLocation",
+                "relativeUrl": "<relative url>"
+            },
+            "columnDelimiter": ",",
+            "quoteChar": "\"",
+            "firstRowAsHeader": true,
+            "compressionCodec": "gzip"
+        }
+    }
+}
+```
+
+### <a name="other-format-dataset"></a>其他格式数据集
+
+若要将数据从 HTTP 中复制**ORC/Avro/JSON/二进制格式**，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -226,7 +270,69 @@ HTTP 链接的服务支持以下属性：
 
 ### <a name="http-as-source"></a>HTTP 作为源
 
-要从 HTTP 复制数据，请将复制活动中的源类型设置为“HttpSource”。 复制活动源部分支持以下属性：
+- 从副本**Parquet 和带分隔符的文本格式**，请参阅[Parquet 和带分隔符的文本格式源](#parquet-and-delimited-text-format-source)部分。
+- 从等其他格式的副本**ORC/Avro/JSON/二进制格式**，请参阅[其他格式源](#other-format-source)部分。
+
+#### <a name="parquet-and-delimited-text-format-source"></a>Parquet 和带分隔符的文本格式源
+
+要从 HTTP 复制数据**Parquet 或带分隔符的文本格式**，请参阅[Parquet 格式](format-parquet.md)并[分隔符的文本格式](format-delimited-text.md)上基于格式的复制活动源的文章和支持的设置。 在下的 http 支持以下属性`storeSettings`基于格式的复制源中的设置：
+
+| 属性                 | 说明                                                  | 必选 |
+| ------------------------ | ------------------------------------------------------------ | -------- |
+| type                     | 下面的类型属性`storeSettings`必须设置为**HttpReadSetting**。 | 是      |
+| requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post。 | 否       |
+| addtionalHeaders         | 附加的 HTTP 请求标头。                             | 否       |
+| requestBody              | HTTP 请求的正文。                               | 否       |
+| requestTimeout           | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。 | 否       |
+| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | 否       |
+
+> [!NOTE]
+> Parquet/分隔文本格式**HttpSource**作为仍受支持类型下一节中所述的复制活动源的是向后兼容性。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
+
+**示例：**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromHTTP",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Delimited text input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "DelimitedTextSource",
+                "formatSettings":{
+                    "type": "DelimitedTextReadSetting",
+                    "skipLineCount": 10
+                },
+                "storeSettings":{
+                    "type": "HttpReadSetting",
+                    "requestMethod": "Post",
+                    "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
+                    "requestBody": "<body for POST HTTP request>"
+                }
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+#### <a name="other-format-source"></a>其他格式源
+
+若要将数据从 HTTP 中复制**ORC/Avro/JSON/二进制格式**，将复制活动中支持以下属性**源**部分：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

@@ -3,19 +3,19 @@ title: 添加本机客户端应用程序 - Azure Active Directory B2C | Microsof
 description: 了解如何向 Active Directory B2C 租户添加本机客户端应用程序。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 3f988e61c152be820e7e490e13908fb4ab54e6c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 772b6b8a4d71b7d1c6418651ee0a4ee7b03af0cc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60314593"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703913"
 ---
 # <a name="add-a-native-client-application-to-your-azure-active-directory-b2c-tenant"></a>向 Azure Active Directory B2C 租户添加本机客户端应用程序
 

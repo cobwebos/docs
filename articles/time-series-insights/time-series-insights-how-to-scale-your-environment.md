@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: f6c2c8c49f34c707c7b0fb4d525337fbfa169a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: fcdfc78a62d901bdaf50c18e9286e6f2d30c5b13
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692419"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714129"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 
@@ -32,14 +32,14 @@ ms.locfileid: "55692419"
 
 | S1 SKU 容量 | 入口速率 | 最大存储容量
 | --- | --- | --- |
-| 1 | 1 GB（1 百万个事件） | 每月 30 GB（3 千万个事件） |
+| 第 | 1 GB（1 百万个事件） | 每月 30 GB（3 千万个事件） |
 | 10 | 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
 
 ## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 SKU 入口速率和容量
 
 | S2 SKU 容量 | 入口速率 | 最大存储容量
 | --- | --- | --- |
-| 1 | 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
+| 第 | 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
 | 10 | 100 GB（1 亿个事件） | 每月 3 TB（30 亿个事件） |
 
 容量呈线性增长，因此容量为 2 的 S1 SKU 每日入口速率支持 2 GB（2 百万）的事件，每月支持 60 GB（6 千万）的事件。
@@ -60,5 +60,5 @@ ms.locfileid: "55692419"
 4. 选择“保存”以缩放环境。 在提交更改之前，进度指示器会短暂显示。 
 
 ## <a name="next-steps"></a>后续步骤
-> [!div class="nextstepaction"]
-> [验证新容量是否足以防止出现限制情况](time-series-insights-diagnose-and-solve-problems.md)。
+
+- 验证新容量是否[足以防止出现限制](time-series-insights-diagnose-and-solve-problems.md)。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1a2d24be00b0e1224b5f8d52105e2969d64e5f64
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61059599"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922481"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
@@ -29,7 +29,7 @@ ms.locfileid: "61059599"
 与语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.com)创建订阅密钥。 如果计划从基线模型获取听录，则需要创建一个密钥。
 
 >[!NOTE]
-> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/)。
+> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ### <a name="custom-models"></a>自定义模式
 
@@ -72,7 +72,8 @@ Batch 听录 API 支持以下格式：
   "properties": {
     "ProfanityFilterMode": "Masked",
     "PunctuationMode": "DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True"
+    "AddWordLevelTimestamps" : "True",
+    "AddSentiment" : "True"
   }
 }
 ```
@@ -87,6 +88,7 @@ Batch 听录 API 支持以下格式：
 | `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `none`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置是 `masked`。 | 可选 |
 | `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `none`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 | 可选 |
  | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 | 可选 |
+ | `AddSentiment` | 指定情绪应添加到查询文本。 接受的值是`true`可让每个查询文本的情绪和`false`（默认值） 以禁用它。 | 可选 |
 
 ### <a name="storage"></a>存储
 
@@ -97,6 +99,57 @@ Batch 听录 API 支持以下格式：
 轮询听录状态不能性能最好，或提供最佳用户体验。 若要轮询状态，可以注册将在长时间运行的脚本任务已完成时通知客户端的回调。
 
 有关更多详细信息，请参阅[Webhook](webhooks.md)。
+
+## <a name="sentiment"></a>情绪
+
+情绪是批处理脚本 API 中的新功能和是调用 center 域中的重要功能。 客户可以使用`AddSentiment`为其请求的参数 
+
+1.  深入了解客户满意度
+2.  获取有关代理 （团队采用调用） 的性能的见解
+3.  当调用了一个轮次负方向中的时间找出的确切位置
+4.  找出启用负正调用时也发生了什么
+5.  标识客户喜欢什么以及什么他们不喜欢有关产品或服务
+
+情感评分音频段的每个音频段指查询文本 （偏移量） 的开始日期和检测出 silence 的字节流的末尾之间的时间推移。 在该时间段内的整个文本用于计算情绪。 我们不计算整个调用或每个通道的整个语音的任何聚合情绪值。 这些是从左到域所有者协作更多应用。
+
+情绪应用词法窗体上。
+
+JSON 输出示例类似于下面：
+
+```json
+{
+  "AudioFileResults": [
+    {
+      "AudioFileName": "Channel.0.wav",
+      "AudioFileUrl": null,
+      "SegmentResults": [
+        {
+          "RecognitionStatus": "Success",
+          "ChannelNumber": null,
+          "Offset": 400000,
+          "Duration": 13300000,
+          "NBest": [
+            {
+              "Confidence": 0.976174,
+              "Lexical": "what's the weather like",
+              "ITN": "what's the weather like",
+              "MaskedITN": "what's the weather like",
+              "Display": "What's the weather like?",
+              "Words": null,
+              "Sentiment": {
+                "Negative": 0.206194,
+                "Neutral": 0.793785,
+                "Positive": 0.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+用于当前处于测试阶段的情绪模型功能。
 
 ## <a name="sample-code"></a>代码示例
 

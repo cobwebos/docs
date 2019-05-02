@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: eac699a68558f0a8c9f94f0a8b75aabee561ebb3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113879"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869613"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>按缩写列出的 Azure CDN POP 位置
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ AMS | 荷兰阿姆斯特丹 | 欧洲
 ARN | 瑞典斯德哥尔摩 | 欧洲
 ATL | 美国佐治亚州亚特兰大市 | 北美地区：美国东海岸。
 BAQ | 哥伦比亚巴兰基亚 | 拉丁美洲
-BLR | 印度班加罗尔 | 亚洲
+BLR | Bengaluru （班加罗尔） 印度 | 亚洲
 BNJ | 美国新泽西州纽瓦克市 | 北美地区：美国东海岸。
 BOS | 美国马萨诸塞州波士顿市 | 北美地区：美国东海岸。
 BTH | 印度尼西亚巴淡岛 | 亚洲

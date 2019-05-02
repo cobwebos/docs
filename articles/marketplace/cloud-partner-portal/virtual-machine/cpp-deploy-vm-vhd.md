@@ -1,25 +1,18 @@
 ---
-title: 从 VHD 部署 Azure 市场 VM | Microsoft Docs
+title: 将 VM 从 Vhd 部署为 Azure Marketplace
 description: 介绍如何从 Azure 部署的 VHD 注册 VM。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: a393620f28d45ec494c4e899f01e7e9a92b3ceba
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046676"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938288"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
 
@@ -71,7 +64,7 @@ ms.locfileid: "59046676"
    | 管理员密码              | 新 VM 的管理员帐户的密码                                  |
    | OS 类型                     | VM 操作系统：`Windows` \| `Linux`                                    |
    | 订阅 ID             | 所选订阅的标识符                                      |
-   | 位置                    | 部署的地理位置                                        |
+   | Location                    | 部署的地理位置                                        |
    | VM 大小                     | [Azure VM 大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)，例如 `Standard_A2` |
    | 公共 IP 地址名称      | 公共 IP 地址的名称                                               |
    | VM 名称                     | 新 VM 的名称                                                           |

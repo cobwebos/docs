@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active D
 description: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b8dac47d1aa91eb8a8ee1ef9515809607b267437
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 433307791201e3799b3bc9e54aec765d9fbeb4af
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190695"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718705"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -23,7 +23,7 @@ ms.locfileid: "55190695"
 
 Azure Active Directory (Azure AD) B2C 为 Azure Active Directory 用户管理提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。
 
-## <a name="protocol"></a>协议
+## <a name="protocol"></a>Protocol
 
 “Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含协议处理程序程序集 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 的完全限定名称。
 
@@ -252,7 +252,7 @@ Azure Active Directory (Azure AD) B2C 为 Azure Active Directory 用户管理提
 ```
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | Operation | 是 | 要执行的操作。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 | 
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果目录中不存在该用户对象，则引发错误。 可能的值：`true` 或 `false`。 | 

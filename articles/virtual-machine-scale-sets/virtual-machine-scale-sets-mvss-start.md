@@ -1,10 +1,10 @@
 ---
 title: 了解虚拟机规模集模板 | Microsoft Docs
-description: 了解如何创建虚拟机规模集的最小可行规模集模板
+description: 了解如何创建虚拟机规模集的基本的规模集模板
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,27 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: d4a3dd6ae390fd48a8085cca33063a6bb74bd96c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8b6a6b78dc74572b22d397b5536efa1394401bbc
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60805577"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868905"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
-[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本系列教程演示如何创建最小的可行规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。 
+[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本的规模集模板以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
 
 此模板简单易用。 有关更完整的规模集模板的示例，请参阅 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)，并搜索包含字符串 `vmss` 的文件夹。
 
 如果已熟悉模板创建，则可以跳到“后续步骤”部分，查看如何修改此模板。
-
-## <a name="review-the-template"></a>查看模板
-
-使用 GitHub 查看最小可行规模集模板 [azuredeploy.json](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)。
-
-在本教程中，让我们研究 diff (`git diff master minimum-viable-scale-set`) 以逐个创建最小可行规模集模板。
 
 ## <a name="define-schema-and-contentversion"></a>定义 $schema 和 contentVersion
 首先，定义模板中的 `$schema` 和 `contentVersion`。 `$schema` 元素定义模板语言的版本，并用于 Visual Studio 语法突出显示和类似的验证功能。 `contentVersion` 元素不由 Azure 使用。 而是帮助跟踪模板版本。
@@ -43,6 +37,7 @@ ms.locfileid: "60805577"
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
 ```
+
 ## <a name="define-parameters"></a>定义参数
 接下来，定义两个参数：`adminUsername` 和 `adminPassword`。 参数是部署时指定的值。 `adminUsername` 参数只是一个 `string` 类型，但是由于 `adminPassword` 是一个机密，因此将其类型指定为 `securestring`。 稍后，这些参数会被传递到规模集配置。
 
@@ -70,13 +65,13 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
    "resources": [
 ```
 
-所有资源都需要 `type`、`name`、`apiVersion` 和 `location` 属性。 此示例的第一个资源具有类型 [Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)、名称 `myVnet` 和 apiVersion `2016-03-30`。 （若要查找资源类型的最新 API 版本，请参阅 [Azure 资源管理器模板参考](/azure/templates/)。）
+所有资源都需要 `type`、`name`、`apiVersion` 和 `location` 属性。 此示例的第一个资源具有类型 [Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)、名称 `myVnet` 和 apiVersion `2018-11-01`。 （若要查找资源类型的最新 API 版本，请参阅 [Azure 资源管理器模板参考](/azure/templates/)。）
 
 ```json
      {
        "type": "Microsoft.Network/virtualNetworks",
        "name": "myVnet",
-       "apiVersion": "2016-12-01",
+       "apiVersion": "2018-11-01",
 ```
 
 ## <a name="specify-location"></a>指定位置
@@ -117,7 +112,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
      {
        "type": "Microsoft.Compute/virtualMachineScaleSets",
        "name": "myScaleSet",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01",
        "location": "[resourceGroup().location]",
        "dependsOn": [
          "Microsoft.Network/virtualNetworks/myVnet"
@@ -136,7 +131,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 ```
 
 ### <a name="choose-type-of-updates"></a>选择更新类型
-规模集还需要知道如何处理规模集的更新。 当前有两个选项，即 `Manual` 和 `Automatic`。 有关这两者之间的区别的详细信息，请参阅文档[如何升级规模集](./virtual-machine-scale-sets-upgrade-scale-set.md)。
+规模集还需要知道如何处理规模集的更新。 目前，有三个选项， `Manual`，`Rolling`和`Automatic`。 有关这两者之间的区别的详细信息，请参阅文档[如何升级规模集](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)。
 
 ```json
        "properties": {

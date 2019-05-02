@@ -3,20 +3,19 @@ title: Azure Active Directory B2C 标识体验框架架构的 JSON 声明转换�
 description: Azure Active Directory B2C 标识体验框架架构的 JSON 声明转换示例。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 04/04/2019
-ms.author: v-junlch
+ms.date: 09/10/2018
+ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 88d447f86dd54fc9479a6d7d2006b9a8639ad09e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7574327f8acbd2215080e43a57b0b9c7cdd8b423
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60396841"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710234"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
@@ -228,5 +227,4 @@ ms.locfileid: "60396841"
   }
 }
 ```
-
 

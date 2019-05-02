@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中的自定义策略中定义的 OpenId C
 description: 在 Azure Active Directory B2C 中的自定义策略中定义的 OpenId Connect 的技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e8bfa5a3e60efe860b5e7197d96ebe5ce3a86030
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ec323d4596c866da33c4a8ff5499bf2ad92a8bd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418264"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710312"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义的 OpenId Connect 的技术配置文件
 
@@ -23,7 +23,7 @@ ms.locfileid: "60418264"
 
 Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) 协议标识提供者提供支持。 OpenID Connect 1.0 在 OAuth 2.0 基础上提供一个标识层，代表现代身份验证协议的最新技术。 使用 OpenId Connect 技术配置文件，您可以将 OpenId Connect 基于的标识提供者，例如 Azure AD 联合。 与标识提供者联合允许用户使用其现有的社交登录或企业标识。
 
-## <a name="protocol"></a>协议
+## <a name="protocol"></a>Protocol
 
 “Protocol”元素的“Name”属性必须设置为 `OpenIdConnect`。 例如，**MSA-OIDC** 技术配置文件的协议为 `OpenIdConnect`：
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](https://openid.net/20
 | ProviderName | 否 | 标识提供者的名称。 |
 | response_types | 否 | 符合 OpenID Connect Core 1.0 规范的响应类型。 可能的值：`id_token`、`code` 或 `token`。 |
 | response_mode | 否 | 标识提供者在将结果发送回 Azure AD B2C 时使用的方法。 可能的值：`query`、`form_post`（默认值）或 `fragment`。 |
-| 作用域 | 否 | 根据 OpenID Connect Core 1.0 规范定义请求的范围。 例如 `openid`、`profile` 和 `email`。 |
+| scope | 否 | 根据 OpenID Connect Core 1.0 规范定义请求的范围。 例如 `openid`、`profile` 和 `email`。 |
 | HttpBinding | 否 | 预期的 HTTP 绑定，绑定到访问令牌和声明令牌终结点。 可能的值：`GET` 或 `POST`。  |
 | ValidTokenIssuerPrefixes | 否 | 一个密钥，可以在使用多租户标识提供者（例如 Azure Active Directory）时用于登录到每个租户。 |
 | UsePolicyInRedirectUri | 否 | 指示在构造重定向 URI 时是否要使用策略。 在标识提供者中配置应用程序时，需指定重定向 URI。 重定向 URI 指向 Azure AD B2C `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`（login.microsoftonline.com 可能会变为 your-tenant-name.b2clogin.com）。  如果指定 `false`，需为每个使用的策略添加重定向 URI。 例如：`https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`。 |

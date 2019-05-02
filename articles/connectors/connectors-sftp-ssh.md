@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f82c654b443d58c9ce38c2fb0f48c1654daeb34
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537694"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922246"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -32,7 +32,7 @@ ms.locfileid: "60537694"
 
 ## <a name="limits"></a>限制
 
-* SFTP-SSH 操作可以读取或写入的文件*1 GB 或更小*的数据作为管理*50 MB 幅*，不 1 GB 部分。
+* SFTP-SSH 操作可以读取或写入的文件*1 GB 或更小*的数据作为管理*15 MB 部分*，不 1 GB 部分。
 
 * 文件*超过 1 GB*，可以使用操作[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 目前，SFTP-SSH 触发器不支持分块。
 
@@ -44,7 +44,7 @@ ms.locfileid: "60537694"
 
 下面是 SFTP-SSH 连接器与 SFTP 连接器（SFTP-SSH 连接器具有其功能）之间的其他重要差异：
 
-* 使用 <a href="https://github.com/sshnet/SSH.NET" target="_blank">**SSH.NET**</a> 库，该库是支持 .NET 的开源安全外壳 (SSH) 库。
+* 使用[SSH.NET 库](https://github.com/sshnet/SSH.NET)，这是支持.NET 的开放源代码安全外壳 (SSH) 库。
 
   > [!NOTE]
   >
@@ -54,7 +54,7 @@ ms.locfileid: "60537694"
   > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   > * **指纹**：MD5
 
-* 操作可以读取或写入文件*达 1 GB*相比 SFTP 连接器，而 50 MB 分块，而不是 1 GB 的句柄数据片段。 对于大于 1 GB 的文件，操作也可以使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 目前，SFTP-SSH 触发器不支持分块。
+* 操作可以读取或写入文件*达 1 GB*相比 SFTP 连接器，但 15 MB 分块，而不是 1 GB 的句柄数据片段。 对于大于 1 GB 的文件，操作也可以使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 目前，SFTP-SSH 触发器不支持分块。
 
 * 提供“创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
 
@@ -136,7 +136,7 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。 
 
-请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
+在请求文件内容时，触发器不获取文件大于 15 MB。 若要获取大于 15 MB 的文件，请遵循以下模式： 
 
 * 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
 
@@ -152,7 +152,7 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 **企业示例**：可以使用此触发器监视 SFTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 SFTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
 
-请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
+在请求文件内容时，触发器不获取文件大于 15 MB。 若要获取大于 15 MB 的文件，请遵循以下模式： 
 
 * 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
 
@@ -164,7 +164,7 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 此操作从 SFTP 服务器上的文件中获取内容。 例如，可以在前面的示例中添加触发器，并添加文件内容必须符合的条件。 如果条件为 true，则可以运行获取内容的操作。 
 
-请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
+在请求文件内容时，触发器不获取文件大于 15 MB。 若要获取大于 15 MB 的文件，请遵循以下模式： 
 
 * 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
 

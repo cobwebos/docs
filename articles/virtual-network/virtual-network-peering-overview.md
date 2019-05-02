@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: b65bad57a300d941774f5d3e5d01967f0c13d684
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22521abbc341fa9999738dd51301d3f84c18627a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60186815"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919312"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -78,7 +78,7 @@ VNet 对等互连和全局 VNet 对等互连支持网关传输。 仅当网关�
 ## <a name="requirements-and-constraints"></a>要求和约束
 
 仅当虚拟网络全局对等互连时，以下约束适用：
-- 一个虚拟网络中的资源无法与全局对等互连的虚拟网络中的基本内部负载均衡器的前端 IP 地址通信。 基本负载均衡器的支持仅存在于同一区域内。 标准负载均衡器的支持存在全局 VNet 对等互连。
+- 一个虚拟网络中的资源无法与全局对等互连的虚拟网络中的基本内部负载均衡器的前端 IP 地址通信。 基本负载均衡器的支持仅存在于同一区域内。 同时，VNet 对等互连和全局 VNet 对等互连存在对标准负载均衡器的支持。 使用基本负载均衡器将不起作用通过全局 VNet 对等互连的服务均记录[此处。](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
 若要详细了解要求和约束，请参阅[虚拟网络对等互连要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要了解可以为虚拟网络创建的对等互连的数目限制，请参阅 [Azure 网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 
 

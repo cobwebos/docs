@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 05/17/2017
-ms.openlocfilehash: 4d9d1ef6b7906ecebc399948a1ca0dcd590d5910
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: 5045c48a00c51a16d37dcf4b7f72f25633f23b3f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765818"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926029"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>使用 Windows 电脑在 HDInsight 上的 Apache Hadoop 生态系统中工作
 
@@ -29,11 +29,11 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 * [使用 PowerShell 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-powershell.md)。
 * [使用 PowerShell 管理群集](hdinsight-administer-use-powershell.md)。
 
-请遵循[安装和配置 Azure Powershell](https://docs.microsoft.com/powershell/azure/install-az-ps) 的步骤来获取最新版本。 如果脚本需要修改后才能使用 Azure 资源管理器的新 cmdlet，请参阅[迁移到基于 Azure 资源管理器的面向 HDInsight 群集的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)。
+请遵循[安装和配置 Azure Powershell](https://docs.microsoft.com/powershell/azure/install-az-ps) 的步骤来获取最新版本。
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>可在浏览器中运行的实用工具
 以下实用工具提供可在浏览器中运行的 Web UI：
-* [Azure Cloud Shell（预览）](https://docs.microsoft.com/azure/cloud-shell/quickstart)是可在浏览器和 Azure 门户中运行的交互式命令行 shell。
+* **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)** 是交互式命令行 shell，运行在浏览器中以及通过 Azure 门户。
 * **[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md)** 是 Azure 门户中提供的管理和监视实用工具，可用于管理不同类型的作业，例如：
     * [将 Apache Ambari 与 REST API 配合使用](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Apache Ambari 中的 Apache Hive 视图](hadoop/apache-hadoop-use-hive-ambari-view.md)
@@ -57,9 +57,6 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 * [使用 .NET SDK 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。
 * [在 Apache Hadoop 上将 C# 用户定义函数与 Apache Hive 和 Apache Pig 流式处理配合使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
 
-> [!TIP]
-> 如果在基于 Windows 的 HDInsight 群集中运行 .NET 解决方案，现在正好可以计划迁移到基于 Linux 的群集。 有关详细信息，请参阅[将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)。
-
 ## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>用于 Spark 群集的 Intellij IDEA 和 Eclipse IDE
 [Intellij IDEA](https://www.jetbrains.com/idea/download) 和 [Eclipse IDE](https://www.eclipse.org/downloads/) 都可用于：
 * 在 HDInsight Spark 群集中开发和提交 Scala Spark 应用程序。
@@ -77,14 +74,17 @@ HDInsight 中的 Apache Spark 群集包含可与 Jupyter Notebook 配合使用�
 * [了解如何将 Apache Spark 群集上的内核与 Jupyter Notebook 配合使用来测试 Spark 应用程序](spark/apache-spark-zeppelin-notebook.md)
 * [了解如何使用 Apache Spark 群集上的 Apache Zeppelin Notebook 来运行 Spark 作业](spark/apache-spark-jupyter-notebook-kernels.md) 
 
-
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>在 Windows 上运行基于 Linux 的工具和技术
 
 如果在某种情况下，必须使用的某种工具或技术只能在 Linux 上使用，请考虑以下选项：
 
-* **Windows 10 上的 bash (beta)** 在 Windows 上提供一个 Linux 子系统。 Bash 允许直接运行 Linux 实用工具，而无需维护专用的 Linux 安装。 [在 Windows 10 上安装和运行 Bash beta](https://msdn.microsoft.com/commandline/wsl/install_guide)
+* **基于 Windows 10 上的 Ubuntu bash**在 Windows 上提供一个 Linux 子系统。 Bash 允许直接运行 Linux 实用工具，而无需维护专用的 Linux 安装。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。
 * 使用**适用于 Windows 的 Docker** 可以访问许多基于 Linux 的工具，可以直接从 Windows 运行。 例如，可以直接在 Windows 中使用 Docker 来运行适用于 Hive 的 Beeline 客户端。 还可以使用 Docker 运行本地 Jupyter Notebook，以及远程连接到 Spark on HDInsight。 [适用于 Windows 的 Docker 入门](https://docs.docker.com/docker-for-windows/)
 * 使用 **[MobaXTerm](https://mobaxterm.mobatek.net/)** 可以通过 SSH 连接以图形方式浏览群集文件系统。
+
+## <a name="cross-platform-tools"></a>跨平台工具
+
+Azure 命令行接口 (CLI) 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。  有关详细信息，请参阅[Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
 ## <a name="next-steps"></a>后续步骤
 如果不太熟悉如何在基于 Linux 的群集中操作，请参阅以下文章：

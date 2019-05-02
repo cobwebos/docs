@@ -1,25 +1,18 @@
 ---
-title: SaaS 履行 API V2-Azure 应用商店 |Microsoft Docs
+title: SaaS 履行 API V2 |Azure Marketplace
 description: 介绍如何创建使用相关联的履行 V2 Api 在 Azure marketplace SaaS 产品/服务。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 437009079c1bebe3694aaa26f945bd726b3c9fb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: e1715c2cb66398ff7ca55c0ccdbfe50685fae76e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594771"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941982"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 Api 版本 2 
 
@@ -39,7 +32,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 
 #### <a name="provisioning"></a>设置
 
-当客户启动购买时，ISV 客户交互式网页上使用 URL 参数 AuthCode 中收到此信息。 AuthCode 可以验证和交换的需要将其预配的详细信息。  完成 SaaS 服务预配后，它将发送的激活调用以指示执行已完成并可以按客户进行计费。  下图显示了预配方案的 API 调用的顺序。  
+当客户启动购买时，ISV 客户交互式网页上使用 URL 参数返回身份验证代码中收到此信息。 例如： `https://contoso.com/signup?token=..`，其中合作伙伴中心中的登录页 URL 提供程序是`https://contoso.com/signup`。 可以验证以及交换有关需要通过调用解决 API 将其预配的详细信息的身份验证代码。  完成 SaaS 服务预配后，它将发送的激活调用以指示执行已完成并可以按客户进行计费。  下图显示了预配方案的 API 调用的顺序。  
 
 ![API 调用为预配 SaaS 服务。](./media/saas-post-provisioning-api-v2-calls.png)
 
@@ -87,15 +80,73 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 |     ----------------     |     ----------                         |
 | `subscriptionId`         | SaaS 资源的 GUID 标识符  |
 | `name`                   | 此资源的客户提供的友好名称 |
-| `publisherId`            | 为每个发布服务器，例如"conotosocorporation"自动生成的唯一字符串标识符 |
-| `offerId`                | 为每个产品/服务，例如"contosooffer1"自动生成的唯一字符串标识符  |
-| `planId`                 | 为每个计划和 sku，例如"contosobasicplan"自动生成的唯一字符串标识符 |
+| `publisherId`            | 对于每个发布服务器，例如"contoso"的唯一字符串标识符 |
+| `offerId`                | 每个产品/服务，例如"offer1"的唯一字符串标识符  |
+| `planId`                 | 每个计划和 sku，例如"silver"的唯一字符串标识符 |
 | `operationId`            | 某一特定操作的 GUID 标识符  |
-|  `action`                | 在资源上，可以执行的操作`subscribe`， `unsubscribe`， `suspend`， `reinstate`，或 `changePlan`  |
+|  `action`                | 在资源上，可以执行的操作`subscribe`， `unsubscribe`， `suspend`， `reinstate`，或`changePlan`， `changeQuantity`， `transfer`  |
 |   |   |
 
 全局唯一标识符 ([Guid](https://en.wikipedia.org/wiki/Universally_unique_identifier)) 通常会自动生成的 128 位 （32 十六进制） 号。 
 
+#### <a name="resolve-a-subscription"></a>解决订阅 
+
+解决终结点，发布服务器以解析 marketplace 令牌为永久性的资源 id。 资源 ID 是 SAAS 订阅的唯一标识符。  当用户重定向到 ISV 的网站时，URL 将在查询参数中包含一个令牌。 ISV 应当使用此令牌，并发出请求来解析它。 响应包含资源的唯一 SAAS 订阅 ID、名称、产品/服务 ID 和计划。 此令牌的有效期仅为一小时。 
+
+**发布：<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
+
+*查询参数：*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  ApiVersion        |  要用于此请求的操作版本  |
+
+*请求标头：*
+ 
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  Content-Type      | `application/json` |
+|  x-ms-requestid    |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
+|  x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  x-ms-marketplace-token  |  当用户重定向到 SaaS ISV 的网站与 Azure 在 URL 中的令牌查询参数 (对于例如： `https://contoso.com/signup?token=..`)。 *注意：* URL 解码然后再使用它从浏览器的令牌值。  |
+
+*响应代码：*
+
+代码：200<br>
+解析为 SaaS 订阅的不透明的令牌。<br>
+
+```json
+Response body:
+{
+    "subscriptionId": "<guid>",  
+    "subscriptionName": "Contoso Cloud Solution",
+    "offerId": "offer1",
+    "planId": "silver",
+    "quantity": "20" 
+}
+```
+
+代码：404<br>
+未找到
+
+代码：400<br>
+请求错误。 x ms marketplace 令牌已丢失、 格式不正确或已过期。
+
+代码：403<br>
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
+
+代码：500<br>
+内部服务器错误
+
+```json
+{
+    "error": {
+      "code": "UnexpectedError",
+      "message": "An unexpected error has occurred."
+    }
+}
+```
 
 ### <a name="subscription-api"></a>订阅 API
 
@@ -121,7 +172,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 | Content-Type       |  `application/json`  |
 | x-ms-requestid     |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-| authorization      |  JSON Web 令牌 (JWT) 持有者令牌。  |
+| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
@@ -135,7 +186,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
           "id": "<guid>",
           "name": "Contoso Cloud Solution",
           "publisherId": "contoso",
-          "offerId": "cont-cld-tier2",
+          "offerId": "offer1",
           "planId": "silver",
           "quantity": "10",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
@@ -159,7 +210,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 
 
 代码：403 <br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。 
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。 
 
 代码：500 内部服务器错误
 
@@ -192,7 +243,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 |  Content-Type      |  `application/json`  |
 |  x-ms-requestid    |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  JSON web 令牌 (JWT) 持有者令牌  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
@@ -205,9 +256,9 @@ Response Body:
         "id":"",
         "name":"Contoso Cloud Solution",
         "publisherId": "contoso",
-        "offerId": "cont-cld-tier2",
+        "offerId": "offer1",
         "planId": "silver",
-        "quantity": "10"",
+        "quantity": "10",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
               "tenantId": "<guid>"
           },
@@ -224,7 +275,7 @@ Response Body:
 未找到<br> 
 
 代码：403<br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
 代码：500<br>
 内部服务器错误<br>
@@ -239,7 +290,7 @@ Response Body:
 
 #### <a name="list-available-plans"></a>可用计划列表
 
-使用此调用来找出是否存在当前用户的任何私钥/公钥产品/服务。
+使用此调用来找出是否有任何私钥/公钥产品/服务的当前发布服务器。
 
 **获取：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`**
 
@@ -256,7 +307,7 @@ Response Body:
 |   Content-Type     |  `application/json` |
 |   x-ms-requestid   |   用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid  | 在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
-|  authorization     |  JSON web 令牌 (JWT) 持有者令牌 |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *响应代码：*
 
@@ -279,7 +330,7 @@ Response Body:
 未找到<br> 
 
 代码：403<br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。 <br> 
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。 <br> 
 
 代码：500<br>
 内部服务器错误<br>
@@ -290,66 +341,6 @@ Response Body:
       "code": "UnexpectedError", 
       "message": "An unexpected error has occurred." 
     } 
-```
-
-#### <a name="resolve-a-subscription"></a>解决订阅 
-
-解决终结点使用户能够解析 marketplace 令牌为永久性的资源 id。 资源 ID 是 SAAS 订阅的唯一标识符。  当用户重定向到 ISV 的网站时，URL 将在查询参数中包含一个令牌。 ISV 应当使用此令牌，并发出请求来解析它。 响应包含资源的唯一 SAAS 订阅 ID、名称、产品/服务 ID 和计划。 此令牌的有效期仅为一小时。 
-
-**发布：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
-
-*查询参数：*
-
-|                    |                   |
-|  ---------------   |  ---------------  |
-|  ApiVersion        |  要用于此请求的操作版本  |
-
-*请求标头：*
- 
-|                    |                   |
-|  ---------------   |  ---------------  |
-|  Content-Type      | `application/json` |
-|  x-ms-requestid    |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
-|  x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
-|  authorization     |  JSON web 令牌 (JWT) 持有者令牌  |
-|  x-ms-marketplace-token  |  当用户重定向到 SaaS ISV 网站从 Azure URL 中的令牌的查询参数。 *注意：* URL 解码然后再使用它从浏览器的令牌值。 |
-
-*响应代码：*
-
-代码：200<br>
-解析为 SaaS 订阅的不透明的令牌。<br>
-
-```json
-Response body:
-{
-    "subscriptionId": "<guid>",  
-    "subscriptionName": "Contoso Cloud Solution",
-    "offerId": "cont-cld-tier2",
-    "planId": "silver",
-    "quantity": "20",
-    "operationId": "<guid>"  
-}
-```
-
-代码：404<br>
-未找到
-
-代码：400<br>
-错误的请求验证失败
-
-代码：403<br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。
-
-代码：500<br>
-内部服务器错误
-
-```json
-{
-    "error": {
-      "code": "UnexpectedError",
-      "message": "An unexpected error has occurred."
-    }
-}
 ```
 
 #### <a name="activate-a-subscription"></a>激活订阅
@@ -370,7 +361,7 @@ Response body:
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | 用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid  | 在客户端上的操作的唯一字符串值。 此字符串将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  JSON web 令牌 (JWT) 持有者令牌 |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *请求：*
 
@@ -393,7 +384,7 @@ Response body:
 错误的请求验证失败
 
 代码：403<br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
 代码：500<br>
 内部服务器错误
@@ -407,9 +398,9 @@ Response body:
 }
 ```
 
-#### <a name="update-a-subscription"></a>更新订阅
+#### <a name="change-the-plan-on-the-subscription"></a>更改计划的订阅
 
-更新或更改具有提供的值的订阅计划。
+更新的订阅计划。
 
 **修补程序：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`**
 
@@ -427,15 +418,14 @@ Response body:
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。    |
-| authorization      |  JSON Web 令牌 (JWT) 持有者令牌。  |
+| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *请求有效负载：*
 
 ```json
 Request Body:
 {
-    "planId": "gold",
-    "quantity": ""
+    "planId": "gold"
 }
 ```
 
@@ -448,7 +438,7 @@ Request Body:
 *响应代码：*
 
 代码：202<br>
-更改计划，或者更改数量，ISV 启动。 <br>
+若要更改计划的请求已被接受。 ISV 应轮询操作位置来确定成功/失败。 <br>
 
 代码：404<br>
 未找到
@@ -460,7 +450,73 @@ Request Body:
 >仅对计划或数量可以一次修补，而不是两者。 对与某一订阅编辑**更新**不在`allowedCustomerOperations`。
 
 代码：403<br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
+
+代码：500<br>
+内部服务器错误
+
+```json
+{
+    "error": {
+      "code": "UnexpectedError",
+      "message": "An unexpected error has occurred."
+    }
+}
+```
+
+#### <a name="change-the-quantity-on-the-subscription"></a>更改的订阅数量
+
+更新订阅的数量。
+
+**修补程序：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`**
+
+*查询参数：*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  ApiVersion        |  用于此请求的操作的版本。  |
+| subscriptionId     | 解决使用解决 API 的令牌后获取的 SaaS 订阅的唯一标识符。  |
+
+*请求标头：*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  Content-Type      | `application/json` |
+|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
+|  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。    |
+| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+
+*请求有效负载：*
+
+```json
+Request Body:
+{
+    "quantity": 5
+}
+```
+
+*请求标头：*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+| Operation-Location | 链接到资源以获取操作的状态。   |
+
+*响应代码：*
+
+代码：202<br>
+已接受。 更改数量的请求已被接受。 ISV 应轮询操作位置来确定成功/失败。 <br>
+
+代码：404<br>
+未找到
+
+代码：400<br>
+错误的请求验证失败。
+
+>[!Note]
+>仅对计划或数量可以一次修补，而不是两者。 对与某一订阅编辑**更新**不在`allowedCustomerOperations`。
+
+代码：403<br>
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
 代码：500<br>
 内部服务器错误
@@ -494,7 +550,7 @@ Request Body:
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。   |
 |  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。   |
-|  authorization     |  JSON Web 令牌 (JWT) 持有者令牌。   |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
@@ -508,7 +564,7 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 对与某一订阅删除**删除**不在`allowedCustomerOperations`。
 
 代码：403<br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
 代码：500<br>
 内部服务器错误
@@ -527,10 +583,134 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 
 操作 API 支持以下修补程序和 Get 操作。
 
+#### <a name="list-outstanding-operations"></a>列出未完成操作 
 
-#### <a name="update-a-subscription"></a>更新订阅
+列出当前发布服务器的未完成操作。 
 
-使用提供的值更新订阅。
+**获取：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`**
+
+*查询参数：*
+
+|             |        |
+|  ---------------   |  ---------------  |
+|    ApiVersion                |   用于此请求的操作的版本。                |
+| subscriptionId     | 解决使用解决 API 的令牌后获取的 SaaS 订阅的唯一标识符。  |
+
+*请求标头：*
+ 
+|                    |                   |
+|  ---------------   |  ---------------  |
+|   Content-Type     |  `application/json` |
+|  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
+|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+
+*响应代码：*
+
+代码：200<br> 获取挂起的订阅上的操作的列表。<br>
+响应有效负载：
+
+```json
+[{
+    "id": "<guid>",  
+    "activityId": "<guid>",
+    "subscriptionId": "<guid>",
+    "offerId": "offer1",
+    "publisherId": "contoso",  
+    "planId": "silver",
+    "quantity": "20",
+    "action": "Convert",
+    "timeStamp": "2018-12-01T00:00:00",  
+    "status": "NotStarted"  
+}]
+```
+
+代码：404<br>
+未找到
+
+代码：400<br>
+错误的请求验证失败
+
+代码：403<br>
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
+
+代码：500<br>
+内部服务器错误
+
+```json
+{
+    "error": {
+      "code": "UnexpectedError",
+      "message": "An unexpected error has occurred."
+    }
+}
+
+```
+
+#### <a name="get-operation-status"></a>获取操作状态
+
+使发布服务器上，若要跟踪指定触发的异步操作状态 (订阅 / 取消订阅 / 更改计划 / 更改数量)。
+
+**获取：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
+
+*查询参数：*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  ApiVersion        |  用于此请求的操作的版本。  |
+
+*请求标头：*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  Content-Type      |  `application/json`   |
+|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
+|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
+|  authorization     |[获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+
+*响应代码：* 代码：200<br> 获取指定挂起 SaaS 操作<br>
+响应有效负载：
+
+```json
+Response body:
+{
+    "id  ": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "offer1",
+    "publisherId": "contoso",  
+    "planId": "silver",
+    "quantity": "20",
+    "action": "Convert",
+    "timeStamp": "2018-12-01T00:00:00",
+    "status": "NotStarted"
+}
+
+```
+
+代码：404<br>
+未找到
+
+代码：400<br>
+错误的请求验证失败
+
+代码：403<br>
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
+ 
+代码：500<br> 内部服务器错误
+
+```json
+{
+    "error": {
+      "code": "UnexpectedError",
+      "message": "An unexpected error has occurred."
+    }
+}
+
+```
+#### <a name="update-the-status-of-an-operation"></a>更新操作的状态
+
+更新操作以指示成功/失败与提供的值的状态。
 
 **修补程序：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
@@ -549,16 +729,17 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 |   Content-Type     | `application/json`   |
 |   x-ms-requestid   |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
-|  authorization     |  JSON Web 令牌 (JWT) 持有者令牌。  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *请求有效负载：*
 
 ```json
 {
-    "planId": "cont-cld-tier2",
+    "planId": "offer1",
     "quantity": "44",
     "status": "Success"    // Allowed Values: Success/Failure. Indicates the status of the operation.
 }
+
 ```
 
 *响应代码：*
@@ -572,137 +753,11 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 错误的请求验证失败
 
 代码：403<br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
 代码：409<br>
 冲突。 例如，已满足更高版本的事务
 
-代码：500<br> 内部服务器错误
-
-```json
-{
-    "error": {
-      "code": "UnexpectedError",
-      "message": "An unexpected error has occurred."
-    }
-}
-
-```
-
-#### <a name="list-outstanding-operations"></a>列出未完成操作 
-
-列出当前用户的未完成操作。 
-
-**获取：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`**
-
-*查询参数：*
-
-|             |        |
-|  ---------------   |  ---------------  |
-|    ApiVersion                |   用于此请求的操作的版本。                |
-| subscriptionId     | 解决使用解决 API 的令牌后获取的 SaaS 订阅的唯一标识符。  |
-
-*请求标头：*
- 
-|                    |                   |
-|  ---------------   |  ---------------  |
-|   Content-Type     |  `application/json` |
-|  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
-|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  JSON Web 令牌 (JWT) 持有者令牌。  |
-
-*响应代码：*
-
-代码：200<br> 获取挂起的订阅上的操作的列表。<br>
-响应有效负载：
-
-```json
-[{
-    "id": "<guid>",  
-    "activityId": "<guid>",
-    "subscriptionId": "<guid>",
-    "offerId": "cont-cld-tier2",
-    "publisherId": "contoso",  
-    "planId": "silver",
-    "quantity": "20",
-    "action": "Convert",
-    "timeStamp": "2018-12-01T00:00:00",  
-    "status": "NotStarted"  
-}]
-```
-
-代码：404<br>
-未找到
-
-代码：400<br>
-错误的请求验证失败
-
-代码：403<br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。
-
-代码：500<br>
-内部服务器错误
-
-```json
-{
-    "error": {
-      "code": "UnexpectedError",
-      "message": "An unexpected error has occurred."
-    }
-}
-
-```
-
-#### <a name="get-operation-status"></a>获取操作状态
-
-使用户能够跟踪指定触发的异步操作 （订阅 / 取消订阅 / 更改计划） 的状态。
-
-**获取：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
-
-*查询参数：*
-
-|                    |                   |
-|  ---------------   |  ---------------  |
-|  ApiVersion        |  用于此请求的操作的版本。  |
-
-*请求标头：*
-
-|                    |                   |
-|  ---------------   |  ---------------  |
-|  Content-Type      |  `application/json`   |
-|  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
-|  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     | JSON Web 令牌 (JWT) 持有者令牌。  |
-
-*响应代码：* 代码：200<br> 获取指定挂起 SaaS 操作<br>
-响应有效负载：
-
-```json
-Response body:
-{
-    "id  ": "<guid>",
-    "activityId": "<guid>",
-    "subscriptionId":"<guid>",
-    "offerId": "cont-cld-tier2",
-    "publisherId": "contoso",  
-    "planId": "silver",
-    "quantity": "20",
-    "action": "Convert",
-    "timeStamp": "2018-12-01T00:00:00",
-    "status": "NotStarted"
-}
-
-```
-
-代码：404<br>
-未找到
-
-代码：400<br>
-错误的请求验证失败
-
-代码：403<br>
-未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。
- 
 代码：500<br> 内部服务器错误
 
 ```json
@@ -724,14 +779,21 @@ Response body:
     "operationId": "<guid>",
     "activityId": "<guid>",
     "subscriptionId":"<guid>",
-    "offerId": "cont-cld-tier2",
+    "offerId": "offer1",
     "publisherId": "contoso",
     "planId": "silver",
     "quantity": "20"  ,
-    "action": "Activate",   // Activate/Delete/Suspend/Reinstate/Change[new]  
+    "action": "Subscribe",
     "timeStamp": "2018-12-01T00:00:00"
 }
 
+Where action can be one of these: 
+       Subscribe, (When the resource has been activated)
+       Unsubscribe, (When the resource has been deleted)
+       ChangePlan, (When the change plan operation has completed)
+       ChangeQuantity, (When the change quantity operation has completed),
+       Suspend, (When resource has been suspended)
+       Reinstate, (When resource has been reinstated after suspension)
 ```
 
 

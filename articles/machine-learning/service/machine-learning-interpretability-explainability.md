@@ -1,7 +1,7 @@
 ---
 title: 模型可解释性
 titleSuffix: Azure Machine Learning service
-description: 了解如何解释为什么您的模型进行预测使用 Azure 机器学习 Interpretability SDK。 它可以用于在定型和推断过程了解您的模型进行预测的方式。
+description: 了解如何解释为什么您的模型进行预测使用 Azure 机器学习 SDK。 它可以用于在定型和推断过程了解您的模型进行预测的方式。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,66 +9,61 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 04/09/2019
-ms.openlocfilehash: 668551603dfa2a9c42f4538fd9a66ee646e1feb7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/29/2019
+ms.openlocfilehash: 62d51a0075d8b6864e4b10fa6c1eb423a440d6d0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817246"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926432"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务的模型 interpretability
 
-在本文中，您将了解如何解释为什么您的模型进行预测其使用 Azure 机器学习 Interpretability SDK 进行的。 能够解释您的模型是重要原因如下：
+在本文中，您将了解如何解释为什么您的模型进行预测与 Azure 机器学习 Python SDK interpretability 包。
 
-* 客户和利益干系人想要知道**如果他们可以相信预测可让您的模型**。
-* 你想要了解为数据科学家**如何查询模型以寻找见解**。 你还需要工具来上做出明智的决策**如何改进您的模型**。
-* 作为一家公司，您需要了解**使用不同的模型的行为输入分发**并**模型的工作方式分析特定的输入时**。
+此包中使用的类和方法，可以获取：
++ 在大规模情况下，实际的数据集上训练时间和推断过程的 interpretability。 
++ 若要在定型时帮助你发现数据和说明中的模式中的交互式可视化效果
++ 功能重要性的值： 原始和工程功能
 
-机器学习 interpretability 非常重要的机器学习开发周期的两个阶段中： 
+在开发周期的训练阶段，可用于向利益干系人建立信任说明模型的输出模型设计人员和评估器。  它们也使用该模型的见解以进行调试，因此验证模型行为匹配其目标，并检查偏置。
 
-* 期间**培训**:模型设计人员和评估者需要 interpretability 工具以向利益干系人建立信任说明模型的输出。 它们还需要深入了解该模型，以便它们可以调试模型，并使决策的行为是否符合其目标。 最后，他们需要确保该模型不会有偏差。
+在推断阶段中，数据科学家可以使用 interpretability 解释预测到的人使用您的模型。 例如，为什么没有模型拒绝抵押贷款时，或预测投资组合会带来较高风险？
 
-* 期间**推断**:需要使用您的模型的人们可以解释预测。 例如，为什么没有模型拒绝抵押贷款时，或预测投资组合会带来较高风险？
+使用这些产品/服务，可以解释机器学习模型**上的所有数据从全球**，或**上的特定数据点的本地**易于使用且可缩放的方式使用先进的技术。
 
-Azure 机器学习 Interpretability SDK 集成了技术开发的 Microsoft 和经验证的第三方库 （例如，SHAP 和酸橙色）。 SDK 集成库之间创建一个通用 API，并将 Azure 机器学习服务集成。 使用此 SDK，可以解释机器学习模型**上的所有数据从全球**，或**上的特定数据点的本地**易于使用且可缩放的方式使用先进的技术。
+Interpretability 类都可通过两个 Python 包。 了解如何[适用于 Azure 机器学习安装 SDK 包](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
-## <a name="how-does-it-work"></a>工作原理
+* [`azureml.explain.model`](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py)包含由 Microsoft 支持的功能的主包。 
 
-Azure 机器学习 Interpretability 可用于了解模型的全局行为或特定的预测。 以前称为全局解释，后者调用本地说明。
+* `azureml.contrib.explain.model`预览并可以尝试的实验性功能。
 
-可以根据该方法是否是不可知的模型或模型特定还分类 azure 机器学习 Interpretability 方法。 某些方法针对特定类型的模型。 例如，SHAP 的树说明仅适用于基于树的模型。 某些方法视为黑盒子，如模拟说明或 SHAP 的内核说明该模型。 Azure 机器学习 Interpretability SDK 利用这些基于数据集、 模型类型和用例的不同方法。
+> [!IMPORTANT]
+> Contrib 中的内容不完全支持。 在实验性功能变得成熟，它们将逐渐将转移到主要包。
 
-Azure 机器学习 Interpretability 对模型进行其预测的方式返回一组的信息。 信息包括以下项：
+## <a name="how-to-interpret-your-model"></a>如何解释您的模型
 
+您可以应用 interpretability 类和方法来了解模型的全局行为或特定的预测。 以前称为全局解释，后者调用本地说明。
+
+可以根据该方法是否是不可知的模型或模型特定还分类方法。 某些方法针对特定类型的模型。 例如，SHAP 的树说明仅适用于基于树的模型。 某些方法视为黑盒子，如模拟说明或 SHAP 的内核说明该模型。 `explain`包利用这些基于数据集、 模型类型和用例的不同方法。 
+
+输出为一组给定的模型如进行其预测方式的信息：
 * 全局/本地相对特征重要性
+
 * 全局/本地功能和预测的关系
-
-## <a name="architecture"></a>体系结构
-
-Azure 机器学习 Interpretability SDK 是结构化到两个 Python 包：
-
-* [azureml.explain.model](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py) -主包，其中包含由 Microsoft 支持的功能。
-* `azureml.contrib.explain.model` -预览和可以尝试的实验性功能。
-
-    > [!IMPORTANT]
-    > Contrib 中的内容不完全支持。 在实验性功能变得成熟，它们将逐渐将转移到主要包。
 
 ### <a name="explainers"></a>Explainers
 
-Azure 机器学习 Interpretability SDK 引入了两套 explainers:直接 Explainers 和 Meta Explainers。
+有两个组的 explainers:SDK 中的直接 Explainers 和 Meta Explainers。
 
-__直接 explainers__来自集成的库。 SDK 可包装所有 explainers，以便它们公开的公共 API 和输出格式。 在 SDK 中提供直接 explainers 列表如下：
-
-> [!TIP]
-> 如果您是直接使用这些 explainers 起来更舒适，您可以直接调用它们而不是使用通用的 API 和输出格式。
+__直接 explainers__来自集成的库。 SDK 可包装所有 explainers，以便它们公开的公共 API 和输出格式。 如果您是直接使用这些 explainers 起来更舒适，您可以直接调用它们而不是使用通用的 API 和输出格式。 在 SDK 中提供直接 explainers 列表如下：
 
 * **树说明**:SHAP 的树说明，重点介绍多项式时间快速 SHAP 值估计算法特定于树和树的整体。
 * **深入说明**:基于从 SHAP，深入说明说明"是使用 DeepLIFT SHAP NIPS 文章所述生成在连接使用高速近似算法来 SHAP 深度学习模型中的值。 支持 TensorFlow 模型和使用 TensorFlow 后端的 Keras 模型 （还有 PyTorch 的初步支持）"。
 * **内核说明**:SHAP 的内核说明使用专门加权的本地线性回归用于估算 SHAP 任何模型的值。
 * **模拟说明**:模拟说明基于全局代理项模型的概念。 全局代理项模型是以尽可能准确地估计黑色方框模型的预测进行定型的本质上可解释模型。 数据科学家可以解释为代理项模型得出的黑色方框模型有关的结论。
-* **暗黄说明**:根据为浅，酸橙色说明使用先进的本地可解释不限模型的说明 （酸橙色） 算法来创建本地代理项的模型。 全局代理项与模型不同，酸橙色侧重于训练本地代理项模型来解释单个预测。
-* **HAN 文本说明**:HAN 文本说明用于为给定的黑色框文本模型获取从文本数据的模型说明使用分层网络。 我们为在给定的教师模型的预测输出 HAN 代理项模型定型。 定型后全局在文本语料库，我们添加了特定文档的 fine-tune 步骤以提高准确性的说明。 HAN 使用两个关注层，使用双向 RNN 句子和词引起注意。 DNN 是教师模型定型并对特定文档进行微调，我们可以关注层从提取 word importances。 我们发现 HAN 是比酸橙色或 SHAP 更准确的文本数据，但成本更高的定型时间也方面。 但是，我们已训练时间改进了通过为用户提供选项来初始化通过手套字词嵌入网络，虽然仍很慢。 可以通过在远程 Azure GPU VM 上运行 HAN 显著改进的训练时间。 层次结构的文档分类 （Yang et 都 2016年） 注意网络中描述的 HAN 实现 ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf))。
+* **暗黄说明**(`contrib`):根据为浅，酸橙色说明使用先进的本地可解释不限模型的说明 （酸橙色） 算法来创建本地代理项的模型。 全局代理项与模型不同，酸橙色侧重于训练本地代理项模型来解释单个预测。
+* **HAN 文本说明**(`contrib`):HAN 文本说明用于为给定的黑色框文本模型获取从文本数据的模型说明使用分层网络。 我们为在给定的教师模型的预测输出 HAN 代理项模型定型。 定型后全局在文本语料库，我们添加了特定文档的 fine-tune 步骤以提高准确性的说明。 HAN 使用两个关注层，使用双向 RNN 句子和词引起注意。 DNN 是教师模型定型并对特定文档进行微调，我们可以关注层从提取 word importances。 我们发现 HAN 是比酸橙色或 SHAP 更准确的文本数据，但成本更高的定型时间也方面。 但是，我们已训练时间改进了通过为用户提供选项来初始化通过手套字词嵌入网络，虽然仍很慢。 可以通过在远程 Azure GPU VM 上运行 HAN 显著改进的训练时间。 层次结构的文档分类 （Yang et 都 2016年） 注意网络中描述的 HAN 实现 ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf))。
 
 __元 explainers__自动选择合适的直接说明并生成基于给定的模型和数据集的最佳说明信息。 元 explainers 利用所有的库 （SHAP、 酸橙色，模仿等） 已集成或开发。 以下是元 explainers SDK 中提供：
 
@@ -96,15 +91,17 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
 ### <a name="models-supported"></a>支持的模型
 
-在 Python 中的数据集训练所有模型`numpy.array`， `pandas.DataFrame`， `iml.datatypes.DenseData`，或`scipy.sparse.csr_matrix`格式支持的机器学习 Interpretability SDK。
+在 Python 中的数据集训练所有模型`numpy.array`， `pandas.DataFrame`， `iml.datatypes.DenseData`，或`scipy.sparse.csr_matrix`格式受 interpretability`explain`的 sdk 包。
 
 说明函数接受作为输入模型和管道。 如果提供一个模型，则模型必须实现的预测函数`predict`或`predict_proba`符合 Scikit 约定。 如果提供的管道 （管道脚本的名称），则说明函数假定正在运行的管道脚本返回预测。
 
 ### <a name="local-and-remote-compute-target"></a>本地和远程计算目标
 
-机器学习 Interpretability SDK 用于处理这两个本地和远程计算目标。 如果本地运行，SDK 函数将不与任何 Azure 服务。 可以在 Azure 机器学习计算上远程运行说明并登录到 Azure 机器学习运行历史记录服务说明信息。 此信息在登录之后，报表和可视化效果中进行了说明是 Azure 机器学习工作区门户上随时可供用户分析。
+`explain`包设计为使用这两个本地和远程计算目标。 如果本地运行，SDK 函数将不与任何 Azure 服务。 可以在 Azure 机器学习计算上远程运行说明并登录到 Azure 机器学习运行历史记录服务说明信息。 此信息在登录之后，报表和可视化效果中进行了说明上很容易下载用户分析的 Azure 机器学习工作区门户。
 
-## <a name="train-and-explain-locally"></a>训练和本地说明
+## <a name="interpretability-in-training"></a>Interpretability 培训
+
+### <a name="train-and-explain-locally"></a>训练和本地说明
 
 1. 训练的模型中的本地 Jupyter 笔记本。 
 
@@ -122,23 +119,27 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     model = clf.fit(x_train, y_train)
     ```
 
-2. 调用说明：若要启动的说明对象，您需要传递模型、 定型数据、 感兴趣 （可选） 和输出的类名的功能 (如果分类) 到说明。 下面介绍了如何实例化说明对象使用[TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py)， [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py)，和`LimeExplainer`本地。 `TabularExplainer` 正在调用下面三个 explainers 之一 (`TreeExplainer`， `DeepExplainer`，或`KernelExplainer`)，并自动选择最适合的选项为你的用例。 但是，可以直接调用每个其三个基础 explainers。
+2. 调用说明：若要初始化的说明对象，您需要将您的模型和一些定型数据传递给说明的构造函数。 可以选择性地传递功能名称和输出类名称 （如果进行分类），用于使信息更丰富的说明和可视化效果中。 下面介绍了如何实例化说明对象使用[TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py)并[MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py)本地。 `TabularExplainer` 正在调用下面三个 explainers 之一 (`TreeExplainer`， `DeepExplainer`，或`KernelExplainer`)，并自动选择最适合的选项为你的用例。 但是，可以直接调用每个其三个基础 explainers。
 
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
+    # "features" and "classes" fields are optional
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     ```
     或
+    
     ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
+
+    # "features" and "classes" fields are optional
     explainer = MimicExplainer(model, x_train, LGBMExplainableModel, features=breast_cancer_data.feature_names, classes=classes)
     ```
 
 3. 获取全局功能重要性的值。
 
     ```python
-    # You can use the training data or the test data here. 
+    # You can use the training data or the test data here
     global_explanation = explainer.explain_global(x_train)
     # Sorted feature importance values and feature names
     sorted_global_importance_values = global_explanation.get_ranked_global_values()
@@ -150,7 +151,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
     ```python
     # explain the first data point in the test set
-    local_explanation = explainer.explain_local(x_test[0,:])
+    local_explanation = explainer.explain_local(x_test[0])
     
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
@@ -159,16 +160,16 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     或
     ```python
     # explain the first five data points in the test set
-    local_explanation = explainer.explain_local(x_test[0:4,:])
+    local_explanation = explainer.explain_local(x_test[0:4])
     
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
     ```
 
-## <a name="train-and-explain-remotely"></a>训练和远程解释
+### <a name="train-and-explain-remotely"></a>训练和远程解释
 
-虽然您可以在 Azure 机器学习服务支持的各种计算目标上进行训练，本部分中的示例演示如何使用 AMLCompute 执行此操作。
+虽然您可以在 Azure 机器学习服务支持的各种计算目标上进行训练，本部分中的示例演示如何实现此目的的 Azure 机器学习计算目标。
 
 1. 在本地 Jupyter 笔记本 (例如，run_explainer.py) 中创建训练脚本。
 
@@ -178,14 +179,15 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     
     # Train your model here
 
-    # explain predictions on your local machine    
+    # explain predictions on your local machine   
+    # "features" and "classes" fields are optional 
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     # explain overall model predictions (global explanation)
     global_explanation = explainer.explain_global(x_test)
     # explain local data points (individual instances)
-    local_explanation = explainer.explain_local(x_test[0,:])
+    local_explanation = explainer.explain_local(x_test[0])
     # upload global and local explanation objects to Run History
-    upload_model_explanation(run, local_explanation, top_k=2, comment='local explanation: top 2 features')
+    client.upload_model_explanation(run, local_explanation, top_k=2, comment='local explanation: top 2 features')
     # Uploading global model explanation data for storage or visualization in webUX
     # The explanation can then be downloaded on any compute
     # Multiple explanations can be uploaded
@@ -197,8 +199,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 2. 按照上的说明[设置用于为模型定型的计算目标](how-to-set-up-training-targets.md#amlcompute)若要了解有关如何设置 Azure 机器学习计算用作计算目标和提交训练运行。
 
 3. 下载本地 Jupyter 笔记本中的说明。 
-    > [!IMPORTANT]
-    > Contrib 中的内容不完全支持。 在实验性功能变得成熟，它们将逐渐将转移到主要包。
+
 
     ``` python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient
@@ -219,6 +220,227 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     print('global importance values: {}'.format(global_importance_values))
     print('global importance names: {}'.format(global_importance_names))
     ```
+
+## <a name="visualizations"></a>可视化效果
+
+使用可视化效果面板来了解和解释您的模型：
+
+### <a name="global-visualizations"></a>全局可视化效果
+
+以下图表提供经过训练的模型及其预测和说明的全局视图。
+
+|绘图|描述|
+|----|-----------|
+|数据浏览| 数据集并预测值的概述。|
+|全局重要性|全局范围内显示的 top K (可配置 K) 重要的功能。 此图表可用于了解全局基础模型的行为。|
+|说明探索|演示如何一项功能负责在模型的预测值 （或预测值的概率） 中进行更改。 |
+|摘要| 使用跨所有数据点值的有符号的本地功能重要性来显示的每个功能影响的预测值的分布。|
+
+[![全局可视化仪表板](./media/machine-learning-interpretability-explainability/global-charts.png)](./media/machine-learning-interpretability-explainability/global-charts.png#lightbox)
+
+### <a name="local-visualizations"></a>本地可视化效果
+您可以单击任何单个数据点在前面的图形加载给定的数据点将局部特征重要性任何的绘图时间。
+
+|绘图|描述|
+|----|-----------|
+|本地的重要性|全局范围内显示的 top K (可配置 K) 重要的功能。 此图表可用于了解特定的数据点上的基础模型的本地行为。|
+
+[![可视化效果的仪表板本地](./media/machine-learning-interpretability-explainability/local-charts.png)](./media/machine-learning-interpretability-explainability/local-charts.png#lightbox)
+
+若要加载的可视化效果的仪表板，请使用以下代码：
+
+```python
+from azureml.contrib.explain.model.visualize import ExplanationDashboard
+
+ExplanationDashboard(global_explanation, model, x_test)
+``` 
+
+## <a name="raw-feature-transformations"></a>原始功能转换
+
+（可选） 可以将你的功能转换管道传递到说明转换 （而非工程的特征） 副本接收的原始特征方面的说明。 如果您跳过这，说明提供了在工程特征方面的解释。 
+
+如中所述的其中一个受支持的转换的格式是相同[sklearn pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)。 一般情况下，只要它们对单个列，因此显然一对多支持任何转换。
+
+```python
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn_pandas import DataFrameMapper
+
+# Assume that we have created two arrays, numerical and categorical, which holds the numerical and categorical feature names
+
+numeric_transformations = [([f], Pipeline(steps=[('imputer', SimpleImputer(strategy='median')), ('scaler', StandardScaler())])) for f in numerical]
+
+categorical_transformations = [([f], OneHotEncoder(handle_unknown='ignore', sparse=False)) for f in categorical]
+
+transformations = numeric_transformations + categorical_transformations
+
+# Append model to preprocessing pipeline.
+# Now we have a full prediction pipeline.
+clf = Pipeline(steps=[('preprocessor', DataFrameMapper(transformations)),
+                    ('classifier', LogisticRegression(solver='lbfgs'))])
+
+# clf.steps[-1][1] returns the trained classification model
+# Pass transformation as an input to create the explanation object
+# "features" and "classes" fields are optional
+tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x_train, features=dataset_feature_names, classes=dataset_classes, transformations=transformations)
+```
+
+## <a name="interpretability-in-inferencing"></a>在推断 interpretability
+
+说明可以与原始模型一起部署，并可用于在评分时间提供本地说明信息。 部署评分的说明的过程类似于部署模型，包括以下步骤：
+
+1. 创建一个说明对象：
+   ```python
+   from azureml.contrib.explain.model.tabular_explainer import TabularExplainer
+
+   explainer = TabularExplainer(model, x_test)
+   ``` 
+
+1. 创建使用说明对象计分概要说明：
+   ```python
+   scoring_explainer = explainer.create_scoring_explainer(x_test)
+
+   # Pickle scoring explainer
+   scoring_explainer_path = scoring_explainer.save('scoring_explainer_deploy')
+   ``` 
+
+1. 配置和注册使用计分概要说明模型的图像。
+   ```python
+   # Register explainer model using the path from ScoringExplainer.save - could be done on remote compute
+   run.upload_file('breast_cancer_scoring_explainer.pkl', scoring_explainer_path)
+   model = run.register_model(model_name='breast_cancer_scoring_explainer', model_path='breast_cancer_scoring_explainer.pkl')
+   print(model.name, model.id, model.version, sep = '\t')
+   ``` 
+
+1. [可选]从云中检索评分的说明和测试说明
+   ```python
+   from azureml.contrib.explain.model.scoring.scoring_explainer import ScoringExplainer
+
+   # Retreive the scoring explainer model from cloud"
+   scoring_explainer_model = Model(ws, 'breast_cancer_scoring_explainer')
+   scoring_explainer_model_path = scoring_explainer_model.download(target_dir=os.getcwd(), exist_ok=True)
+
+   # Load scoring explainer from disk
+   scoring_explainer = ScoringExplainer.load(scoring_explainer_model_path)
+
+   # Test scoring explainer locally
+   preds = scoring_explainer.explain(x_test)
+   print(preds)
+   ```
+
+1. 将映像部署到计算目标：
+
+   1. 创建计分概要文件 (在此步骤中之前, 按照中的步骤[部署模型与 Azure 机器学习服务](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)注册原始预测模型)
+        ```python
+        %%writefile score.py
+        import json
+        import numpy as np
+        import os
+        import pickle
+        from sklearn.externals import joblib
+        from sklearn.linear_model import LogisticRegression
+        from azureml.core.model import Model
+
+        def init():
+
+            global original_model
+            global scoring_model
+
+            # Retrieve the path to the model file using the model name
+            # Assume original model is named original_prediction_model
+            original_model_path = Model.get_model_path('original_prediction_model')
+            scoring_explainer_path = Model.get_model_path('breast_cancer_scoring_explainer')
+
+            original_model = joblib.load(original_model_path)
+            scoring_explainer = joblib.load(scoring_explainer_path)
+
+        def run(raw_data):
+            # Get predictions and explanations for each data point
+            data = np.array(json.loads(raw_data)['data'])
+            # Make prediction
+            predictions = original_model.predict(data)
+            # Retrieve model explanations
+            local_importance_values = scoring_explainer.explain(data)
+            # You can return any data type as long as it is JSON-serializable
+            return {'predictions': predictions.tolist(), 'local_importance_values': local_importance_values}
+        ``` 
+    1. 定义部署配置 （此配置取决于您的模型的要求。 下面的示例定义一个 CPU 核心和 1 GB 的内存使用的配置）
+        ```python
+        from azureml.core.webservice import AciWebservice
+
+        aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
+                                                       memory_gb=1, 
+                                                       tags={"data": "breastcancer",  
+                                                             "method" : "local_explanation"}, 
+                                                       description='Get local explanations for breast cancer data')
+        ``` 
+
+    1. 创建具有环境依赖项的文件
+
+        ```python
+        from azureml.core.conda_dependencies import CondaDependencies 
+
+        # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
+
+
+        myenv = CondaDependencies.create(pip_packages=["azureml-defaults", "azureml-explain-model", "azureml-contrib-explain-model"], 
+                                        conda_packages=["scikit-learn"])
+
+        with open("myenv.yml","w") as f:
+            f.write(myenv.serialize_to_string())
+            
+        with open("myenv.yml","r") as f:
+            print(f.read())
+        ``` 
+    1. 使用 g + + 安装创建自定义 dockerfile
+
+        ```python
+        %%writefile dockerfile
+        RUN apt-get update && apt-get install -y g++  
+        ``` 
+    1. 部署创建的映像 (估计时间：5 分钟）
+        ```python
+        from azureml.core.webservice import Webservice
+        from azureml.core.image import ContainerImage
+
+        # Use the custom scoring, docker, and conda files we created above
+        image_config = ContainerImage.image_configuration(execution_script="score.py",
+                                                        docker_file="dockerfile", 
+                                                        runtime="python", 
+                                                        conda_file="myenv.yml")
+
+        # Use configs and models generated above
+        service = Webservice.deploy_from_model(workspace=ws,
+                                            name='model-scoring-service',
+                                            deployment_config=aciconfig,
+                                            models=[scoring_explainer_model, original_model],
+                                            image_config=image_config)
+
+        service.wait_for_deployment(show_output=True)
+        ``` 
+
+1. 测试部署
+    ```python
+    import requests
+
+    # Create data to test service with
+    x_list = x_test.tolist()
+    examples = x_list[:4]
+    input_data = "{\"data\": " + str(examples) + "}"
+
+    headers = {'Content-Type':'application/json'}
+
+    # send request to service
+    resp = requests.post(service.scoring_uri, input_data, headers=headers)
+
+    print("POST to url", service.scoring_uri)
+    # can covert back to Python objects from json string if desired
+    print("prediction:", resp.text)
+    ``` 
+
+1. 清理：若要删除已部署的 Web 服务，请使用 `service.delete()`。
 
 ## <a name="next-steps"></a>后续步骤
 

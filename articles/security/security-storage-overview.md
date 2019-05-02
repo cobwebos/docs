@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ec0e8ae1bf657cda59f3d133db23106436e184e3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 262ccc311b2b7ec634183eb4f914902048ba2c3b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120886"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872043"
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
 
-Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求的现代应用程序的云存储解决方案。 Azure 存储提供全面的安全功能。 可以：
+本文概述可与 Azure 存储配合使用的 Azure 安全功能。 Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求的现代应用程序的云存储解决方案。 Azure 存储提供全面的安全功能。 可以：
 
 * 使用基于角色的访问控制 (RBAC) 和 Azure Active Directory 对存储帐户进行安全保护。
 * 使用客户端加密、HTTPS 或 SMB 3.0 对应用程序和 Azure 之间传输的数据进行安全保护。
@@ -33,9 +33,6 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 * 使用分析来跟踪某人访问存储时使用的身份验证方法。
 
 有关 Azure 存储中安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/common/storage-security-guide.md)。 本指南深入介绍了 Azure 存储的安全功能。 这些功能包括存储帐户密钥、传输中和静态中的数据加密以及存储分析。
-
-
-本文概述可与 Azure 存储配合使用的 Azure 安全功能。 此外还提供了一些文章链接，这些文章详细介绍了每个功能，可从中了解更多信息。
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 

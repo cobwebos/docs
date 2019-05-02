@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 04/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b4d047f4266d11a5f6b77f33054eb93e31f7090b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791569"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717504"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>管理通过 Windows PowerShell 的 Azure 数据框边缘设备
 
@@ -24,7 +24,6 @@ Azure 数据框边缘解决方案，可处理数据并将其通过网络发送�
 本文包括以下过程：
 
 - 连接到 PowerShell 界面
-- 启动支持会话
 - 创建支持包
 - 上传证书
 - 将设备重置
@@ -59,7 +58,6 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 有关证书的详细信息，请转到[Azure IoT Edge 证书](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs)或[证书安装在网关上](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway)。
 
 ## <a name="view-device-information"></a>查看设备信息
-
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
@@ -90,6 +88,9 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 
 [!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
+## <a name="exit-the-remote-session"></a>退出远程会话
+
+若要退出远程 PowerShell 会话，请关闭 PowerShell 窗口。
 
 ## <a name="next-steps"></a>后续步骤
 

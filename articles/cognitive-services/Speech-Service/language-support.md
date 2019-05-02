@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d14200faa06bc30df45a2100635ed7dc697a339
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60696777"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868615"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>语音服务的语言和区域支持
 
@@ -29,7 +29,7 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
   代码 | 语言 | [声学适应](how-to-customize-acoustic-models.md) | [语言适应](how-to-customize-language-model.md) | [发音适应](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------
  ar-EG | 阿拉伯语(埃及)，现代标准 | 否 | 是 | 否
- ca-ES | 加泰罗尼亚语(西班牙) | 否 | 否 | 否
+ ca-ES | 加泰罗尼亚语 | 否 | 否 | 否
  da-DK | 丹麦语(丹麦) | 否 | 否 | 否
  de-DE | 德语(德国) | 是 | 是 | 否
  en-AU | 英语(澳大利亚) | 否 | 是 | 是
@@ -98,7 +98,7 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
 ar-EG\* | 阿拉伯语(埃及) | 女 | “Microsoft 服务器语音的文本转语音（ar-EG，Hoda）”
 ar-SA | 阿拉伯语(沙特阿拉伯) | 男 | “Microsoft 服务器语音的文本转语音（ar-SA，Naayf）”
 bg-BG | 保加利亚语 | 男 | “Microsoft 服务器语音的文本转语音（bg-BG，Ivan）”
-ca-ES | 加泰罗尼亚语(西班牙) | 女 | “Microsoft 服务器语音的文本转语音（ca-ES，HerenaRUS）”
+ca-ES | 加泰罗尼亚语 | 女 | “Microsoft 服务器语音的文本转语音（ca-ES，HerenaRUS）”
 cs-CZ | 捷克语 | 男 | “Microsoft 服务器语音的文本转语音（cs-CZ，Jakub）”
 da-DK | 丹麦语 | 女 | “Microsoft 服务器语音的文本转语音（da-DK，HelleRUS）”
 de-AT | 德语(奥地利) | 男 | “Microsoft 服务器语音的文本转语音（de-AT，Michael）”

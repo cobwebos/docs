@@ -8,12 +8,12 @@ ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3cfd6bd453cd06be4676a806997697a71afb0b59
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61002657"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727411"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 数据目录开发人员概念
 Microsoft **Azure 数据目录** 是一种完全托管的云服务，提供了数据源发现和众包数据源元数据的功能。 开发人员可通过其 REST API 使用此服务。 了解在服务中实现的概念对于开发人员能成功与 **Azure 数据目录**集成非常重要。
@@ -174,9 +174,9 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>协议</td><td>string</td><td>必需。 说明用于与数据源通信的协议。 例如：SQl Server 的 “tds”、Oracle 的“oracle”等。请参阅<a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">数据源引用规范 - DSL 结构</a>来查看目前支持的协议列表。</td></tr>
-<tr><td></td><td>地址</td><td>Dictionary<string, object></td><td>必需。 地址是一组特定于协议的数据，用于识别引用的数据源。 地址数据作用域为特定协议，意味着如果不知道协议，其将无意义。</td></tr>
+<tr><td></td><td>地址</td><td>字典&lt;字符串、 对象&gt;</td><td>必需。 地址是一组特定于协议的数据，用于识别引用的数据源。 地址数据作用域为特定协议，意味着如果不知道协议，其将无意义。</td></tr>
 <tr><td></td><td>authentication</td><td>string</td><td>可选。 用于与数据源通信的身份验证方案。 例如：windows、oauth 等。</td></tr>
-<tr><td></td><td>connectionProperties</td><td>Dictionary<string, object></td><td>可选。 有关如何连接到数据源的其他信息。</td></tr>
+<tr><td></td><td>connectionProperties</td><td>字典&lt;字符串、 对象&gt;</td><td>可选。 有关如何连接到数据源的其他信息。</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>后端在发布期间不针对 AAD 对提供的属性执行任何验证。</td></tr>
 <tr><td></td><td>upn</td><td>string</td><td>用户的唯一电子邮件地址。 如果不提供 objectId 或 在“lastRegisteredBy”属性上下文中必须进行指定，否则为可选。</td></tr>

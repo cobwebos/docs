@@ -18,12 +18,12 @@ ms.date: 03/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d2841d3be584cae45ef49ad9ff20da8a232c366
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9fa7bc84558d2b794a569261ce3dd2db5d54493f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60355069"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917409"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问策略来阻止旧身份验证   
 
@@ -142,4 +142,4 @@ Azure 具有一项安全功能，可阻止你创建此类策略，因为此配�
 
 - 如果你还不熟悉配置条件访问策略，请参见[通过 Azure Active Directory 条件访问要求特定应用进行多重身份验证](app-based-mfa.md)的示例。
 
-- 有关新式身份验证支持的详细信息，请参阅[对于 Office 2013 和 Office 2016 客户端应用程序的新式身份验证工作原理](https://docs.microsoft.com/en-us/office365/enterprise/modern-auth-for-office-2013-and-2016) 
+- 有关新式身份验证支持的详细信息，请参阅[对于 Office 2013 和 Office 2016 客户端应用程序的新式身份验证工作原理](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) 

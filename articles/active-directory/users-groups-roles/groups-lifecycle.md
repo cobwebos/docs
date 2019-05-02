@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c19ee3bdd14ee6a2c5b59294f475f6c18b570fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1be88f0938a16302be4cf2308ba463900c067104
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471915"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920151"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -86,7 +86,7 @@ ms.locfileid: "60471915"
 如果所还原的组包含文档、SharePoint 站点或其他持久对象，可能需要最多 24 小时才能完全还原该组及其内容。
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>如何检索 Office 365 组到期日期
-除了访问面板中的用户可以在其中查看组详细信息，包括到期日期和最后一个续订的日期，可以从 Microsoft Graph REST API Beta 检索的 Office 365 组到期日期。 Microsoft Graph Beta 中已启用 expirationDateTime 作为组属性。 可以使用 GET 请求对其进行检索。 有关更多详细信息，请参阅[本例](https://docs.microsoft.com/en-us/graph/api/group-get?view=graph-rest-beta#example)。
+除了访问面板中的用户可以在其中查看组详细信息，包括到期日期和最后一个续订的日期，可以从 Microsoft Graph REST API Beta 检索的 Office 365 组到期日期。 Microsoft Graph Beta 中已启用 expirationDateTime 作为组属性。 可以使用 GET 请求对其进行检索。 有关更多详细信息，请参阅[本例](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)。
 
 > [!NOTE]
 > 为了管理在访问面板上的组成员身份，需要设置为"否"在 Azure Active Directory 组常规设置"限制访问访问面板中的组"。
@@ -101,10 +101,10 @@ ms.locfileid: "60471915"
 ## <a name="powershell-examples"></a>PowerShell 示例
 以下是如何使用 PowerShell cmdlets 来为租户中的 Office 365 组配置到期设置的示例：
 
-1. 安装 PowerShell v2.0 预览版模块 (2.0.0.137) 并在 PowerShell 提示符处登录：
+1. 安装 PowerShell v2.0 模块并在 PowerShell 提示符处登录：
    ```powershell
-   Install-Module -Name AzureADPreview
-   connect-azuread 
+   Install-Module -Name AzureAD
+   Connect-AzureAD
    ```
 2. 配置到期设置 New-AzureADMSGroupLifecyclePolicy：此 cmdlet 将租户中所有 Office 365 组的生存期设置为 365 天。 没有所有者的 Office 365 组的续订通知将发送到“emailaddress@contoso.com”
   

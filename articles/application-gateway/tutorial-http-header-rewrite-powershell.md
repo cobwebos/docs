@@ -2,26 +2,23 @@
 title: 在 Azure 应用程序网关中重写 HTTP 标头
 description: 本文介绍如何使用 Azure PowerShell 创建 Azure 应用程序网关和重写 HTTP 标头
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 4/30/2019
 ms.author: absha
-ms.openlocfilehash: 4747d824dcf531ed883d476a0daad182ea081c39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715090"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947086"
 ---
-# <a name="tutorial-create-an-application-gateway-and-rewrite-http-headers"></a>教程：创建应用程序网关和重写 HTTP 标头
+# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>创建应用程序网关和重写 HTTP 标头
 
 可以使用 Azure PowerShell 在创建新的[自动缩放和区域冗余的应用程序网关 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) 时配置[重写 HTTP 请求和响应标头的规则](rewrite-http-headers.md)。
 
-> [!IMPORTANT] 
-> 自动缩放和区域冗余应用程序网关 SKU 目前处于公共预览状态。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
-
-本教程介绍如何执行下列操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 >
@@ -37,7 +34,7 @@ ms.locfileid: "60715090"
 
 ## <a name="prerequisites"></a>必备组件
 
-本教程要求在本地运行 Azure PowerShell。 必须安装 Az 模块 1.0.0 或更高版本。 依次运行 `Import-Module Az` 和 `Get-Module Az` 以查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
+本文需要在本地运行 Azure PowerShell。 必须安装 Az 模块 1.0.0 或更高版本。 依次运行 `Import-Module Az` 和 `Get-Module Az` 以查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -178,5 +175,4 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [使用基于 URL 路径的路由规则创建应用程序网关](./tutorial-url-route-powershell.md)
+- [使用基于 URL 路径的路由规则创建应用程序网关](./tutorial-url-route-powershell.md)

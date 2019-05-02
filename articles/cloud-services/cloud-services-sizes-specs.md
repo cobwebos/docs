@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 21fbfe22901de677209b55639cd8871ab408375b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406408"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719034"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。
@@ -85,8 +85,8 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 ## <a name="a-series"></a>A 系列
 | 大小            | CPU 核心数 | 内存：GiB  | 临时存储：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| 特小型      | 1         | 0.768        | 20                   | 1/低 |
-| 小型           | 1         | 1.75         | 225                  | 1/中 |
+| 特小型      | 第         | 0.768        | 20                   | 1/低 |
+| 小型           | 第         | 1.75         | 225                  | 1/中 |
 | 中型          | 2         | 3.5          | 490                  | 1/中 |
 | 大型           | 4         | 7            | 1000                 | 2/高 |
 | 超大型      | 8         | 14           | 2040                 | 4/高 |
@@ -134,7 +134,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 ## <a name="dv2-series"></a>Dv2 系列
 | 大小            | CPU 核心数 | 内存：GiB  | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_D1_v2  | 1         | 3.5          | 50                   | 1/中 |
+| Standard_D1_v2  | 第         | 3.5          | 50                   | 1/中 |
 | Standard_D2_v2  | 2         | 7            | 100                  | 2/高 |
 | Standard_D3_v2  | 4         | 14           | 200                  | 4/高 |
 | Standard_D4_v2  | 8         | 28           | 400                  | 8/高 |
@@ -172,7 +172,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 
 | 大小            | CPU 核心数 | 内存：GiB   | 临时存储 (SSD)：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
-| Standard_F1     | 1         | 2             | 16                   | 2 / 750  |
+| Standard_F1     | 第         | 2             | 16                   | 2 / 750  |
 | Standard_F2     | 2         | 4             | 32                   | 2 / 1500 |
 | Standard_F4     | 4         | 8             | 64                   | 4 / 3000 |
 | Standard_F8     | 8         | 16            | 128                  | 8 / 6000 |

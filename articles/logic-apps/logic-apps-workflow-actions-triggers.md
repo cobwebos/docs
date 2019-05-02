@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 76783ffd91a8ad17fca912ac9c3a66a5f0f15821
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844171"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691929"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>为 Azure 逻辑应用工作流定义语言中的触发器和操作类型的引用
 
@@ -1614,7 +1614,7 @@ ID,Product_Name
 
 以下为此操作创建的 HTML 表： 
 
-<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>苹果</td></tr><tr><td>1</td><td>Oranges</td></tr></tbody></table>
+<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>苹果</td></tr><tr><td>第</td><td>Oranges</td></tr></tbody></table>
 
 *示例 3*
 
@@ -2301,6 +2301,7 @@ ID,Product_Name
 | `runtimeConfiguration.concurrency.runs` | Integer | 更改[*默认限制*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)上可以运行在同一时间，或并行的工作流实例数。 此值可限制后端系统接收的请求数。 <p>将 `runs` 属性设置为 `1` 与将 `operationOptions` 属性设置为 `SingleInstance` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要更改此默认限制，请参阅[更改触发器并发](#change-trigger-concurrency)或[按顺序触发实例](#sequential-trigger)。 | 所有触发器 | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | 更改[*默认限制*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)上可等待您的工作流已在运行最大并发实例时运行的工作流实例数。 可在 `concurrency.runs` 属性中更改并发限制。 <p>若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 所有触发器 | 
 | `runtimeConfiguration.concurrency.repetitions` | Integer | 更改针对可同时或并行运行的“for each”循环迭代数的[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 <p>将 `repetitions` 属性设置为 `1` 与将 `operationOptions` 属性设置为 `SingleInstance` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要更改默认限制，请参阅[更改“for each”并发](#change-for-each-concurrency)或[按顺序运行“for each”循环](#sequential-for-each)。 | 操作： <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | 对于支持且已启用分页的特定操作，此值指定*最小*数字要检索的结果。 <p>若要启用分页，请参阅[使用分页获取大容量数据、 项或结果](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | 操作：随其而变化 |
 ||||| 
 
 <a name="operation-options"></a>
@@ -2651,7 +2652,7 @@ HTTP 终结点支持不同类型的身份验证。 可为以下 HTTP 触发器�
 
 对于 [Azure AD OAuth 身份验证](../active-directory/develop/authentication-scenarios.md)，触发器或操作定义可以包括 `authentication` JSON 对象，它具有下表指定的属性。 要在运行时访问参数值，可以使用[工作流定义语言](https://aka.ms/logicappsdocs)提供的 `@parameters('parameterName')` 表达式。
 
-| 属性 | 需要 | Value | 描述 |
+| 属性 | 需要 | 值 | 描述 |
 |----------|----------|-------|-------------|
 | type | 是 | `ActiveDirectoryOAuth` | 要使用的身份验证类型，即“ActiveDirectoryOAuth”（代表 Azure AD OAuth） |
 | **authority** | 否 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL |

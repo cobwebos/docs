@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 9258b58783d4670620a251fef866211f7634480f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cc598afbbdf7f3a1b12089b50ba747c5220ba1fa
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020366"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922926"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -111,7 +111,7 @@ public class Function {
 
 从 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下载和使用[适用于 Azure 的 Azul Zulu Enterprise](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK，以进行本地 Java 函数应用开发。 将函数应用部署到云时，Azure Functions 使用 Azul Java 8 JDK 运行时。
 
-对于 JDK 和函数应用的问题，[Azure 支持](https://azure.microsoft.com/en-us/support/)可通过[限定的支持计划](https://azure.microsoft.com/support/plans/)获得。
+对于 JDK 和函数应用的问题，[Azure 支持](https://azure.microsoft.com/support/)可通过[限定的支持计划](https://azure.microsoft.com/support/plans/)获得。
 
 ## <a name="third-party-libraries"></a>第三方库 
 

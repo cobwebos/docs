@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2017
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c5cad3f735494ee74156e22a9bf150911c36eb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05c1575781f280b3be1843abee0469af52baeb2d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381601"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918431"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
 在此任务中，会根据规定的业务要求，为混合标识解决方案定义数据保护策略。
@@ -89,7 +89,7 @@ ms.locfileid: "60381601"
 ## <a name="define-access-control-options"></a>定义访问控制选项
 公司可以借助 Azure AD 中提供的身份验证、授权和访问控制功能来使用中央标识存储库，同时允许用户与合作伙伴使用单一登录 (SSO)，如下图所示：
 
-![](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
+![集中式的管理](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
 
 集中式管理以及与其他目录的完全集成
 
@@ -115,7 +115,7 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
 使用 Azure AD 验证用户身份之后，必须评估用户将要获得的访问级别。 用户对资源的访问级别可能改变。 由于 Azure AD 可通过控制对某些资源的访问而增加额外的安全级别，因此请记住，资源本身也可能有其本身的访问控制列表，例如，对位于文件服务器中的文件的访问控制。 下图汇总了可以在混合方案中使用的访问控制级别：
 
-![](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
+![访问控制](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
 
 图 X 中显示的每个交互分别代表一个可在 Azure AD 中引入的访问控制方案。 每种方案的说明如下：
 

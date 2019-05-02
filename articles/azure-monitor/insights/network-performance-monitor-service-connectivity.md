@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 0c4b8d1646ba851acc6a0e2d9a3b920634098846
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 3eb53fa88a0757d22fc4575e9d9f402d6eebee13
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119329"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719302"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
 
@@ -59,7 +59,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 开始创建测试，以便监视与服务终结点建立的网络连接。
 
 1. 选择“服务连接监视器”选项卡。
-2. 选择“添加测试”并输入测试名称和说明。 
+2. 选择“添加测试”并输入测试名称和说明。 可以创建每个工作区的最大 450 测试。 
 3. 选择测试类型：<br>
 
     * 如果要监视响应 HTTP/S 请求的服务（例如 outlook.office365.com 或 bing.com）的连接，请选择“Web”。<br>

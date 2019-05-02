@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a354fdf8ea75d9446c2a5e5ee6a70489cf9dbfb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb426eb15d20a4bbd628897ed1c3b29c37f32afd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412130"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723302"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -152,7 +152,7 @@ ms.locfileid: "60412130"
 
 8. 更新“属性”表以定义角色声明的自定义映射。
 
-9. 在“单一登录”对话框的“用户属性和声明”部分中，按图中所示配置 SAML 令牌属性，然后执行以下步骤。
+9. 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 属性名称 | 属性值 |
     | -------------- | ----------------|
@@ -161,11 +161,11 @@ ms.locfileid: "60412130"
     >[!NOTE]
     >如果角色声明值为 null，然后 Azure AD 不会发送此值在令牌中，这是根据设计默认值。
 
-    a. 单击“编辑”按钮以打开“用户属性”对话框。
+    a. 单击**编辑**图标以打开**用户属性和声明**对话框。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. 选择“添加属性”以打开“管理用户声明”窗格。
+    b. 在中**管理用户声明**对话框中，通过单击添加 SAML 令牌属性**添加新声明**。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 

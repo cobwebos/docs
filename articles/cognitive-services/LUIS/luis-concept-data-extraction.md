@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3bad247263af09462a44e04329e7f911afa3ad5c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812809"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867720"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从与意图和实体的查询文本文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
@@ -441,7 +441,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="names-of-places"></a>地名
 
-地名是固定且已知的，例如市、县、州、省和国家/地区。 使用预生成的实体**[geographyV2](luis-reference-prebuilt-geographyv2.md)** 提取位置信息。
+设置和城市、 县、 状态、 省和国家/地区等的已知位置名称。 使用预生成的实体**[geographyV2](luis-reference-prebuilt-geographyv2.md)** 提取位置信息。
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
 

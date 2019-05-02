@@ -1,25 +1,18 @@
 ---
-title: 创建 Azure 容器产品/服务 | Microsoft Docs
+title: 创建 Azure 容器产品/服务 |Azure Marketplace
 description: 如何为市场发布新的容器产品/服务。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 3b2a34a5ed2c6b57bfce0b9a4cf35cdf14cff9c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 1a0a2bd9132ba5d018bc5d45699c052d10c30162
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473021"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942679"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>使用云合作伙伴门户创建新的容器产品/服务
 

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7471bb82aece2b4c11f5071b6b3746f1a55a4a60
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300157"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917341"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft 标识平台协议
 
@@ -51,7 +51,7 @@ Microsoft 标识平台的终结点标识为-服务与行业标准协议，OpenID
 * 用于将响应定向回应用的**重定向 URI** 或**包标识符**
 * 其他一些特定于方案的值。
 
-请了解如何 [注册应用](quickstart-v2-register-an-app.md)获取详细信息。
+请了解如何 [注册应用](quickstart-register-app.md)获取详细信息。
 
 ## <a name="endpoints"></a>终结点
 
@@ -64,7 +64,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 其中 `{tenant}` 可以接受以下四个不同值之一：
 
-| Value | 描述 |
+| 值 | 描述 |
 | --- | --- |
 | `common` | 允许用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure AD 登录应用程序。 |
 | `organizations` | 仅允许用户使用工作/学校帐户从 Azure AD 登录应用程序。 |

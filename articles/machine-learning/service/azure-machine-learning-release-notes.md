@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e79e610638b5ff271607da2e8855003707ea5932
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cdd639f690d98651661226fbd340964dfdc7861f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821295"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914928"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -69,7 +69,7 @@ ms.locfileid: "60821295"
 + **新功能**
   + Azure 机器学习 SDK 现在支持 Python 3.7。
   + Azure 机器学习 DNN 房产现在提供内置的多版本支持。 例如， `TensorFlow` 估算器现在接受`framework_version`参数，并且用户可以指定"1.10"或"1.12"版本。 对于当前的 SDK 版本支持的版本的列表，请调用`get_supported_versions()`需的框架类 (例如`TensorFlow.get_supported_versions()`)。
-  有关最新 SDK 版本支持的版本的列表，请参阅[DNN 估算器文档](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)。
+  有关最新 SDK 版本支持的版本的列表，请参阅[DNN 估算器文档](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure 机器学习数据准备 SDK v1.1.1
 
@@ -143,13 +143,13 @@ ms.locfileid: "60821295"
 
 + **新功能**
 
-  + Azure 机器学习现在为常用的 DNN 框架，链接器提供一流的支持。 使用[ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类用户可以轻松地训练和部署链接器模型。
+  + Azure 机器学习现在为常用的 DNN 框架，链接器提供一流的支持。 使用[ `Chainer` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类用户可以轻松地训练和部署链接器模型。
     + 了解如何[使用 ChainerMN 运行分布式的培训](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
     + 了解如何[运行链接器使用 HyperDrive 与超参数优化](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
   + Azure 机器学习管道添加管道运行基于数据存储的修改可以触发。 管道[计划 notebook](https://aka.ms/pl-schedule)会更新，以展示此功能。
 
 + **Bug 修复和改进**
-  + 我们添加了支持 Azure 机器学习管道为 source_directory_data_store 属性设置为的所需的数据存储 （如 blob 存储） 上[RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)提供给[PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)。 默认情况下步骤作为后备数据存储，可能会遇到限制问题，同时执行大量的步骤时使用 Azure 文件存储。
+  + 我们添加了支持 Azure 机器学习管道为 source_directory_data_store 属性设置为的所需的数据存储 （如 blob 存储） 上[RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)提供给[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)。 默认情况下步骤作为后备数据存储，可能会遇到限制问题，同时执行大量的步骤时使用 Azure 文件存储。
 
 ### <a name="azure-portal"></a>Azure 门户
 

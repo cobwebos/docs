@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: c403d809aa1fc6cdbb0555eef414f79b02ab5a8a
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 0216a8c7d4e52e89098979223e9b792398e25038
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764119"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920169"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>将 Azure Active Directory 集成通过使用 Azure CLI 的 Azure Kubernetes 服务
 
@@ -80,7 +80,6 @@ Azure AD 需要有权执行以下操作：
 
 * 读取目录数据
 * 登录并读取用户配置文件
-* 读取目录数据
 
 将使用这些权限分配[az ad 应用程序的权限添加][ az-ad-app-permission-add]命令：
 

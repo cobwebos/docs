@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0bb7032c2741cc8c407c8d7d0285e58647f0bfd5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291319"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918541"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -128,7 +128,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
      - `and`
 * 不需要区分大小写的匹配项中 SCIM，在特定的修补程序的结构化元素上`op`操作的值，如中所定义 https://tools.ietf.org/html/rfc7644#section-3.5.2。 Azure AD 发出操作的值作为`Add`， `Replace`，和`Remove`。
 * Microsoft Azure AD 发出请求以提取一个随机的用户和组，以确保终结点和凭据有效。 它还会作为的一部分**测试连接**流入[Azure 门户](https://portal.azure.com)。 
-* 可以在查询资源的属性应设置为匹配的属性中的应用程序[Azure 门户](https://portal.azure.com)。 有关详细信息，请参阅[自定义用户预配属性映射](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+* 可以在查询资源的属性应设置为匹配的属性中的应用程序[Azure 门户](https://portal.azure.com)。 有关详细信息，请参阅[自定义用户预配属性映射](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
 ### <a name="user-provisioning-and-de-provisioning"></a>用户预配和取消预配
 如下图所示，Azure Active Directory 将发送到 SCIM 服务以管理应用程序的标识存储中的用户的生命周期的消息。  
@@ -1173,7 +1173,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    * (PatchRequest as PatchRequest2).Operations.Count:1
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName:OperationName.Add
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Path.AttributePath: "manager"
-   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count:1
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count:第
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value:2819c223-7f76-453a-919d-413861904646
 

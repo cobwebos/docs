@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 772401c286a50774d201703cefcbbc12f0fcf88f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3773a3e121c3b0162b83ea075601b7386228e4d5
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775778"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876199"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Azure Monitor 中具有动态阈值的指标警报（公共预览版）
 
@@ -42,14 +42,14 @@ ms.locfileid: "60775778"
 如果与选择的阈值之间有偏差，则表示指标行为存在异常。
 
 > [!NOTE]
-> 季节性模式检测设置为小时、 天或一周的时间间隔。 这意味着其他模式，例如 bihourly 模式或 semiweekly 可能未检测到。
+> 季节性模式检测设置为小时、 天或周的间隔。 这意味着其他模式，例如 bihourly 模式或 semiweekly 可能未检测到。
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>动态阈值中的“敏感度”设置是指什么？
 
 警报阈值敏感度是一个高级概念，用于控制触发警报所要实现的指标行为的偏差量。
 无需具备指标的领域知识（例如静态阈值）就能使用此选项。 可用选项包括：
 
-- 高 - 阈值比较严格，并且与指标系列模式接近。 警报规则将在偏差最小时触发，因此会生成更多的警报。
+- 高 - 阈值比较严格，并且与指标系列模式接近。 上的最小的偏差，从而导致更多警报，将触发警报规则。
 - 中 – 不太严格且比较均衡的阈值，生成的警报比使用高敏感度（默认设置）时更少。
 - 低 – 阈值比较宽松，与指标系列模式的偏差更大。 警报规则将只触发上大偏差，从而导致较少警报。
 
@@ -83,7 +83,7 @@ ms.locfileid: "60775778"
 警报视图显示：
 
 - 动态阈值警报激发的那一刻的所有度量值详细信息。
-- 警报在其中已包含在某个时间点所使用的动态阈值的触发器的段的图表。
+- 触发警报的时间段，包括在某个时间点所使用的动态阈值的图表。
 - 若要在动态阈值警报和警报视图体验，这可能会提高将来检测提供反馈的功能。
 
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>指标中的慢速行为变更是否会触发警报？
@@ -92,7 +92,7 @@ ms.locfileid: "60775778"
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>需要使用多少数据来预览再计算阈值？
 
-计算显示在图中之前此度量值，在创建警报规则, 的阈值是基于足够历史数据来计算小时或每日季节性模式 （10 天）。 创建警报规则后，动态阈值将全部所需的历史数据，并且可将持续学习和擅长基于新数据以便更准确的阈值。 这意味着，后计算此图表还将显示每周模式。
+根据历史数据不足，无法计算小时或每日季节性模式 （10 天） 计算使其不显示在图中之前此度量值，在创建警报规则, 的阈值。 创建警报规则后，动态阈值将使用所有所需的历史数据的可用，并将持续学习和适应基于新数据，以便更准确的阈值。 这意味着，在此计算之后, 该图表还将显示每周模式。
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>需要多少数据以便在触发警报？
 

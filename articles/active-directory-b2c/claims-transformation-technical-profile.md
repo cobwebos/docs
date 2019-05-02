@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技
 description: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a204e8cdc20a6897c40d4d5f68217a2922371737
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a2904bec34978a33d25534c9e9b32552191ad88
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386697"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705320"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义声明转换技术配置文件
 
@@ -23,7 +23,7 @@ ms.locfileid: "60386697"
 
 使用声明转换技术配置文件，可以通过调用输出声明转换针对一组输出声明来操作声明值、验证声明或设置默认值。
 
-## <a name="protocol"></a>协议
+## <a name="protocol"></a>Protocol
 
 “Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 478446c834f5e6c811d78828868ba12a90e603ac
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 600577ebf05a8bc89dbec35d3b3ee5162aa246e1
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125825"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872727"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -37,7 +37,7 @@ ms.locfileid: "62125825"
 | 可以扩展和缩减工作负荷 |不适用 |
 | 消息大小最大为 1 MB |消息大小最大为 256 KB |
 
-**服务总线高级消息传送**在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 可以为每个服务总线高级命名空间购买 1、2 或 4 个消息传送单元。 单一工作负荷或实体可以跨多个消息传送单元，并且可以随意更改消息传送单元数。 从而为基于服务总线的解决方案提供可预测和稳定的性能。
+**服务总线高级消息传送**在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 你可以购买 1、 2、 4 或 8 消息传送单元的每个服务总线高级命名空间。 单一工作负荷或实体可以跨多个消息传送单元，并且可以随意更改消息传送单元数。 从而为基于服务总线的解决方案提供可预测和稳定的性能。
 
 此性能不仅更易于预测和实现，而且速度更快。 服务总线高级消息传送以在 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)引入的存储引擎为基础。 使用高级消息传送，峰值性能比使用标准层快得多。
 

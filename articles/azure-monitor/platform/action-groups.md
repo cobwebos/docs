@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 3d06024b7fa4356d4ad0e8b52c45c2ead62ef784
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1c772756a90c3eee4e2b3fb4fd4a0ec9e98fa0da
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60778312"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919091"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -78,7 +78,7 @@ ms.locfileid: "60778312"
 
 操作组中，可以有有限的数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文
 
-**ITSM**的可能数字限制有限的数量的 ITSM 操作一个操作组中。 ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-monitor/platform/itsmc-overview.md)。
+**ITSM** -一个操作组中可能有限的数量的 ITSM 操作。 ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-monitor/platform/itsmc-overview.md)。
 
 **逻辑应用**-一个操作组中可能有限的数量的逻辑应用操作。
 
@@ -105,15 +105,12 @@ ms.locfileid: "60778312"
  - 51.5.148.86
  - 51.5.149.19
 
-若要接收有关对这些 IP 地址，我们建议你更改更新配置 [服务运行状况警报，用于监视有关操作组服务的信息性通知。
-
+若要接收有关更改这些 IP 地址的更新，我们建议配置的服务运行状况警报，监视有关操作组服务的信息性通知。
 
 ## <a name="next-steps"></a>后续步骤 ##
-
 * 详细了解[短信警报行为](../../azure-monitor/platform/alerts-sms-behavior.md)。  
 * 获取[对活动日志警报 webhook 架构的了解](../../azure-monitor/platform/activity-log-alerts-webhook.md)。  
 * 了解有关 [ITSM 连接器](../../azure-monitor/platform/itsmc-overview.md)的详细信息
 * 详细了解有关警报的[速率限制](../../azure-monitor/platform/alerts-rate-limiting.md)。
 * 获取[活动日志警报概述](../../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。  
 * 了解如何[配置每次发布服务运行状况通知时的警报](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
-

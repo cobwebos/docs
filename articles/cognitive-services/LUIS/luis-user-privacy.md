@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: eb125133138c6de173fdeb90024a9e5d961a929d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a82452f4b41aee9c4ea6f269d92fbc91a5697d16
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597097"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916943"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在认知服务中的语言理解 (LUIS) 中导出和删除客户数据
 
@@ -58,7 +58,7 @@ LUIS 用户拥有完全控制在门户中，查看数据，但必须要导出通
 * [澳大利亚](#australia)
 * [美国](#united-states)
 
-主动学习 （详见下） 数据，除了遵循 LUIS[区域服务的数据存储方式](http://azuredatacentermap.azurewebsites.net/)。 
+主动学习 （详见下） 数据，除了遵循 LUIS[区域服务的数据存储方式](https://azuredatacentermap.azurewebsites.net/)。 
 
 ### <a name="europe"></a>欧洲
 

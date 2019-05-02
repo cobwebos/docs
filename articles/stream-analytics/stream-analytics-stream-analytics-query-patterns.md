@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 9c9a5f219af0d474e1608f98595abe027b894117
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef302ecaa6defc6ac0dc1dd58d4f8acc0f2fd263
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001741"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711448"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
 
@@ -224,7 +224,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
 | CountMake | 时间 |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000Z |
-| 第 |2015-01-01T00:00:04.000Z |
+| 1 |2015-01-01T00:00:04.000Z |
 
 **解决方案：**
 
@@ -493,7 +493,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 **输入**：
 
-| t | 值 |
+| t | value |
 | --- | --- |
 | "2014-01-01T06:01:00" |第 |
 | "2014-01-01T06:01:05" |2 |
@@ -537,7 +537,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 **输入**：
 
-| time | deviceId | sensorName | 值 |
+| time | deviceId | sensorName | value |
 | --- | --- | --- | --- |
 | "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
 | "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
@@ -605,7 +605,7 @@ WHERE
 **说明**：第一个查询 `max_power_during_last_3_mins` 使用[滑动窗口](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)查找在过去 3 分钟内每个设备的功率传感器最大值。 将第二个查询联接到第一个查询，以便在与当前事件有关的最近窗口中查找功率值。 然后，假如满足条件，将为设备生成警报。
 
 ## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>查询示例：处理与设备时钟偏差无关的事件（子流）
-**说明**：由于事件生成器之间的时钟偏差、分区之间的时钟偏差或网络延迟，事件可能会迟到或不按顺序到达。 在下面的示例中，TollID 2 的设备时钟比 TollID 1 慢 10 秒，TollID 3 的设备时钟比 TollID 1 慢 5 秒。 
+**说明**：由于事件生成器之间的时钟偏差、分区之间的时钟偏差或网络延迟，事件可能会迟到或不按顺序到达。 在以下示例中，针对 TollID 2 的设备时钟是延迟 TollID 1，5 （秒） 和 TollID 3 的设备时钟为十秒 TollID 1 后面。 
 
 
 **输入**：
@@ -627,7 +627,7 @@ WHERE
 | --- | --- |
 | 第 | 2 |
 | 2 | 2 |
-| 第 | 1 |
+| 1 | 1 |
 | 3 | 第 |
 | 2 | 第 |
 | 3 | 第 |

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 04/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a52749c78cd0f090e66220fe51e3d04985f96e7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60535314"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869535"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 
@@ -69,9 +69,6 @@ Dynamics 链接服务支持以下属性。
 | password | 指定为 username 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
 
->[!IMPORTANT]
->将数据复制到 Dynamics 时，不能使用默认 Azure 集成运行时执行复制。 换而言之，如果源链接服务未指定集成运行时，请使用靠近 Dynamics 实例的位置显式[创建 Azure 集成运行时](create-azure-integration-runtime.md#create-azure-ir)。 查找 Dynamics 实例的引用的位置[Dynamics 365 的区域列表](https://docs.microsoft.com/dynamics365/customer-engagement/admin/datacenter/new-datacenter-regions)。 按如下示例所示在 Dynamics 链接服务中关联该运行时。
-
 >[!NOTE]
 >Dynamics 连接器使用可选的“organizationName”属性来标识 Dynamics CRM/365 Online 实例。 虽然它保持正常工作，但建议改为指定新的“serviceUri”属性来获得更好的实例发现性能。
 
@@ -117,9 +114,6 @@ Dynamics 链接服务支持以下属性。
 | password | 指定为 username 指定的用户帐户的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“No”，对于接收器为“Yes” |
 
->[!IMPORTANT]
->若要将数据复制到 Dynamics，请使用靠近 Dynamics 实例的位置显式[创建 Azure 运行时](create-azure-integration-runtime.md#create-azure-ir)。 按如下示例所示在链接服务中关联该运行时。
-
 示例：**带有 IFD、使用 IFD 身份验证的本地 Dynamics**
 
 ```json
@@ -160,8 +154,8 @@ Dynamics 链接服务支持以下属性。
 | entityName | 要检索的实体的逻辑名称。 | 源为“No”（如果指定了活动源中的“query”），接收器为“Yes” |
 
 > [!IMPORTANT]
->- 从 Dynamics 复制数据时，Dynamics 数据集中的“结构”部分是可选的但建议使用，以确保确定性复制结果。 该节定义要复制的 Dynamics 数据的列名和数据类型。 有关详细信息，请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)。
->- 在创作 UI 中导入架构时，ADF 通过对 Dynamics 查询结果中的前几行进行采样来初始化结构构造，将省略其中不含任何值的列。 可以根据需要查看列并将更多列添加到 Dynamics 数据集架构/结构，这将在副本运行时起作用。
+>- 从 Dynamics 复制数据，"结构"部分时，可选的但高度 recommanded Dynamics 数据集中，以确保确定性复制结果。 该节定义要复制的 Dynamics 数据的列名和数据类型。 有关详细信息，请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure-or-schema)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)。
+>- 在创作 UI 中导入架构时，ADF 通过对 Dynamics 查询结果中的前几行进行采样来初始化结构构造，将省略其中不含任何值的列。 相同的行为适用于复制执行，如果没有显式结构定义。 可以根据需要查看列并将更多列添加到 Dynamics 数据集架构/结构，这将在副本运行时起作用。
 >- 向 Dynamics 复制数据时，Dynamics 数据集中的“structure”节是可选的。 要复制到哪些列由源数据架构确定。 如果源是不包含标头的 CSV 文件，请在输入数据集中指定包含列名称和数据类型的“结构”。 这些值将按顺序逐个映射到 CSV 文件中的字段。
 
 **示例：**
@@ -330,7 +324,7 @@ Dynamics 链接服务支持以下属性。
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Long | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
-| AttributeType.Customer | Guid | ✓ | | 
+| AttributeType.Customer | Guid | ✓ | |
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |

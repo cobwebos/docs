@@ -1,6 +1,6 @@
 ---
-title: Azure 基础结构可用性
-description: 本文介绍了可为客户数据提供最大可用性的冗余级别。
+title: Azure 基础结构可用性-Azure 安全性
+description: 本文提供了有关 Microsoft 作用来保护 Azure 基础结构并提供客户数据的最大可用性的信息。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d13c79152afe00cb326f69b523e9fd7f0c3550b0
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587183"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872608"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure 基础结构可用性
-Azure 基于通过虚拟化技术实现的全面冗余提供可靠的可用性。 Azure 提供多种级别的冗余，可为客户数据提供最大的可用性。
+本文提供了有关 Microsoft 作用来保护 Azure 基础结构并提供客户数据的最大可用性的信息。 Azure 基于通过虚拟化技术实现的全面冗余提供可靠的可用性。
 
 ## <a name="temporary-outages-and-natural-disaster"></a>临时停电和自然灾害
 Microsoft 云基础结构和运营团队设计、生成、运营云基础结构并提高其安全性。 该团队确保 Azure 基础结构提供高可用性和可靠性、高效率、智能可伸缩性。 该团队提供更安全、更专用且更受信任的云。

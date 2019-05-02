@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 84efdb0297a2dc69497baee5fb746fb51d02b1b7
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122653"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939519"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL 数据库的多模型功能
 
@@ -90,7 +90,7 @@ JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据�
 
 ## <a name="spatial-features"></a>空间功能
 
-空间数据表示有关物理位置和几何对象形状的信息。 这些对象可能是点位置或更复杂的对象，例如国家/地区、道路或湖泊。
+空间数据表示有关物理位置和几何对象形状的信息。 这些对象可以是点位置或国家/地区、 公路或湖泊等更复杂的对象。
 
 Azure SQL 数据库支持两种空间数据类型 - 几何数据类型和地理数据类型。
 - 几何类型在欧几里得（平面）坐标系中表示数据。

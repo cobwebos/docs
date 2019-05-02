@@ -1,25 +1,18 @@
 ---
-title: Azure 市场中的 Dynamics 365 for Finance and Operations 产品/服务 | Microsoft Docs
+title: 在 Azure marketplace 中销售的财务和运营的 Dynamics 365 产品/服务
 description: 介绍了如何在云合作伙伴门户中创建 Dynamics 365 for Finance and Operations 产品/服务。
 services: Azure Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 231df5fa10f0d3b4c085502432008ee6c37cc3e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: bd7a78730186e4ea3d34449fd7977f7575bb8180
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397970"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935229"
 ---
 # <a name="dynamics-365-for-finance-and-operations-offer"></a>Dynamics 365 for Finance and Operations 产品/服务
 

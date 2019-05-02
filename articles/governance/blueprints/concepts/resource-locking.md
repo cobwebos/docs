@@ -3,17 +3,17 @@ title: 了解资源锁定
 description: 了解用于在分配蓝图时保护资源的锁定选项。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/28/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 232d823f364f9f98d1da1bade50ba369b898a57d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60682998"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719755"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -53,6 +53,13 @@ ms.locfileid: "60682998"
 如果蓝图分配选择了“只读”或“不要删除”选项，则会在分配期间将 RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并防止在蓝图外部删除蓝图锁定。
 
 ![蓝图拒绝对资源组的分配](../media/resource-locking/blueprint-deny-assignment.png)
+
+[拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)的每种模式如下所示：
+
+|Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|-|-|-|-|-|-|
+|只读 |**\*** |**\*/read** |系统定制 (Everyone) |蓝图分配和用户定义中**excludedPrincipals** |资源组- _，则返回 true_;资源- _false_ |
+|不要删除 |**\*/delete** | |系统定制 (Everyone) |蓝图分配和用户定义中**excludedPrincipals** |资源组- _，则返回 true_;资源- _false_ |
 
 > [!IMPORTANT]
 > Azure 资源管理器可以将角色分配详细信息缓存最多 30 分钟。 因此，蓝图资源上的拒绝分配拒绝操作可能不会立即完全生效。 在此时间段内，可能无法删除将由蓝图锁保护的资源。

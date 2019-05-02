@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896256"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712430"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows Data Science Virtual Machine
 
@@ -116,7 +116,7 @@ DSVM 中随附以下工具：
 
 Machine Learning Server 支持各种大数据统计、预测建模和机器学习任务。 它支持各种类型的分析：探索、分析、可视化和建模。 通过利用和扩展开源 R 及 Python，Machine Learning Server 与 R 和 Python 脚本与函数兼容。 此外，它还与 CRAN、pip 和 Conda 包兼容，可分析企业级数据。
 
-Machine Learning Server 具有数据并行处理和区块式处理能力，可解决开源 R 的内存限制。 这意味着，可分析的数据量远远超过主内存的容量。 VM 中随附了 Visual Studio Community。 该产品包含针对 Visual Studio 的 R 工具和针对 Visual Studio 的 Python 工具 (PTVS) 扩展，提供可配合 R 或 Python 使用的完整 IDE。 我们还在 VM 上提供了其他 IDE，例如 [RStudio](http://www.rstudio.com) 和 [PyCharm Community Edition](https://www.jetbrains.com/pycharm/)。
+Machine Learning Server 具有数据并行处理和区块式处理能力，可解决开源 R 的内存限制。 这意味着，可分析的数据量远远超过主内存的容量。 VM 中随附了 Visual Studio Community。 该产品包含针对 Visual Studio 的 R 工具和针对 Visual Studio 的 Python 工具 (PTVS) 扩展，提供可配合 R 或 Python 使用的完整 IDE。 我们还在 VM 上提供了其他 IDE，例如 [RStudio](https://www.rstudio.com) 和 [PyCharm Community Edition](https://www.jetbrains.com/pycharm/)。
 
 ### <a name="python"></a>Python
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ff6e08929d5ede86ba0632e7cfb38d81d21ca7ec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 79c4530878783cbdb62cac630d81b65dc73c52a4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803405"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733817"
 ---
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "59803405"
 | 公共 IP 地址 (动态) |5 |联系支持人员。 |
 | 保留的公共 IP 地址 |20 |联系支持人员。 |
 | 每个部署的公共 VIP |5 |联系支持人员。 |
-| 每个部署的专用 VIP（内部负载均衡） |1 |1 |
+| 每个部署的专用 VIP（内部负载均衡） |第 |1 |
 | 终结点访问控制列表 (ACL) |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制-Azure 资源管理器
@@ -40,7 +40,7 @@ ms.locfileid: "59803405"
 > [!NOTE]
 > 我们最近将所有默认限制提高到了最大限制。 如果没有最大限制列，则资源没有可调整的限制。 如果过去已通过客户支持提高了这些上限，因此在以下表中看不到更新的限制，可[免费提交联机客户支持请求](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
-| 资源 | 默认限制 | 
+| 资源 | 默认限制/最大限制 | 
 | --- | --- |
 | 虚拟网络 |1,000 |
 | 每个虚拟网络的子网数 |3,000 |

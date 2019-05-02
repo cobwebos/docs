@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6d6ca1fe1256f1571079027ebd299492bfa62f41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 81904c4f205b9c5da2bb099d440e65ad63637bdc
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280734"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917013"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -354,11 +354,11 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 |Azure 开发测试实验室|Microsoft.DevTestLab|自定义映像创建和项目安装。 [了解详细信息](/azure/devtest-lab/devtest-lab-overview)。|
 |Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/azure/event-grid/event-sources)和[发布到队列](/azure/event-grid/event-handlers)的信息。|
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。|
-|Azure HDInsight|Microsoft.HDInsight|预配新的 HDInsight 群集的默认文件系统的初始内容。 [了解详细信息](https://azure.microsoft.com/en-us/blog/enhance-hdinsight-security-with-service-endpoints/)。|
+|Azure HDInsight|Microsoft.HDInsight|预配新的 HDInsight 群集的默认文件系统的初始内容。 [了解详细信息](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。|
 |Azure Monitor|Microsoft.Insights|允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
 |Azure 网络|Microsoft.Networking|存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。|
 |Azure Site Recovery|Microsoft.SiteRecovery |通过启用 Azure IaaS 虚拟机的复制来配置灾难恢复。 如果使用启用了防火墙的缓存存储帐户、源存储帐户或目标存储帐户，则这是必需的。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。|
-|Azure SQL 数据仓库|Microsoft.Sql|允许使用 PolyBase 的导入和导出方案。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
+|Azure SQL 数据仓库|Microsoft.Sql|允许导入和导出方案中使用 PolyBase 的特定 SQL 数据库实例。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问
 

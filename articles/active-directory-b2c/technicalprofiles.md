@@ -3,19 +3,19 @@ title: TechnicalProfiles | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 TechnicalProfiles 元素。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: da769093794a559e4b856f7ae4f211c3900632c6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60360123"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711047"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -85,7 +85,7 @@ ms.locfileid: "60360123"
 | 域 | 0:1 | 技术配置文件的域名。 例如，如果技术配置文件指定 Facebook 标识提供者，则域名是 Facebook.com。 |
 | DisplayName | 0:1 | 可向用户显示的技术配置文件名称。 |
 | 描述 | 0:1 | 可向用户显示的技术配置文件说明。 |
-| 协议 | 0:1 | 用来与另一方通信的协议。 |
+| Protocol | 0:1 | 用来与另一方通信的协议。 |
 | 元数据 | 0:1 | 在事务处理过程中，协议用来与终结点通信的键/值对集合。 |
 | InputTokenFormat | 0:1 | 输入令牌的格式。 可能的值：`JSON`、`JWT`、`SAML11` 或 `SAML2`。 `JWT` 值表示符合 IETF 规范的 JSON Web 令牌。 `SAML11` 值表示符合 OASIS 规范的 SAML 1.1 安全令牌。  `SAML2` 值表示符合 OASIS 规范的 SAML 2.0 安全令牌。 |
 | OutputTokenFormat | 0:1 | 输出令牌的格式。 可能的值：`JSON`、`JWT`、`SAML11` 或 `SAML2`。 |
@@ -102,7 +102,7 @@ ms.locfileid: "60360123"
 | UseTechnicalProfileForSessionManagement | 0:1 | 用于会话管理的另一个技术配置文件。 |
 |EnabledForUserJourneys| 0:1 |控制是否在用户旅程中执行技术配置文件。  |
 
-### <a name="protocol"></a>协议
+### <a name="protocol"></a>Protocol
 
 Protocol 元素包含以下属性：
 

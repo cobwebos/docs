@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: a3badf7772c6be6509608fbdb305dc3bc225acc0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: b4a1ba7536f0e899ef845bbac54b551125d35fb7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879982"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868540"
 ---
 # <a name="bing-news-search-api-endpoints"></a>必应新闻搜索 API 终结点
 

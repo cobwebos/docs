@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894387"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64923006"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -24,14 +24,14 @@ ms.locfileid: "57894387"
 Azure 备份使用 MARS 代理将数据从备份在本地计算机和 Azure Vm 到 Azure 的备份恢复服务保管库。 MARS 代理可以：
 - 在本地 Windows 计算机上运行，以便它们可以直接备份到 Azure 的备份恢复服务保管库。
 - 在 Windows Vm 上运行，以便它们可以直接备份到保管库。
-- 在 Microsoft Azure 备份服务器 (MABS) 或 System Center Data Protection Manager (DPM) 服务器上运行。 在此方案中，计算机和工作负荷备份到 MABS 或 DPM 服务器。 MARS 代理然后将此服务器备份到 Azure 中的保管库中。 
+- 在 Microsoft Azure 备份服务器 (MABS) 或 System Center Data Protection Manager (DPM) 服务器上运行。 在此方案中，计算机和工作负荷备份到 MABS 或 DPM 服务器。 MARS 代理然后将此服务器备份到 Azure 中的保管库中。
 
 备份选项取决于安装了代理。 有关详细信息，请参阅[使用 MARS 代理的 Azure 备份体系结构](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)。 MABS 和 DPM 备份的体系结构有关的信息，请参阅[备份到 DPM 或 MABS](backup-architecture.md#architecture-back-up-to-dpmmabs)。 另请参阅[要求](backup-support-matrix-mabs-dpm.md)备份体系结构。
 
 **安装** | **详细信息**
 --- | ---
 下载最新的 MARS 代理 | 可以从保管库下载最新版本的代理，或者[直接下载它](https://aka.ms/azurebackup_agent)。
-直接在一台计算机上安装 | 您可以直接在本地 Windows 服务器上或运行任何的 Windows VM 上安装 MARS 代理[受支持的操作系统](https://docs.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)。
+直接在一台计算机上安装 | 您可以直接在本地 Windows 服务器上或运行任何的 Windows VM 上安装 MARS 代理[受支持的操作系统](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)。
 备份服务器上安装 | 将 DPM 或 MABS 设置为备份到 Azure 时，可以在服务器上下载并安装 MARS 代理。 可以在安装代理[受支持的操作系统](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)备份服务器支持矩阵中。
 
 > [!NOTE]
@@ -45,8 +45,8 @@ Azure 备份使用 MARS 代理将数据从备份在本地计算机和 Azure Vm �
 
 **缓存** | **详细信息**
 --- | ---
-大小 |  缓存文件夹中的可用空间应至少 5 到 10%的备份数据的总体大小。 
-位置 | 缓存文件夹必须为要备份，在计算机上本地存储，并且它必须处于联机状态。 缓存文件夹不应为网络共享、 可移动媒体或脱机的卷上。 
+大小 |  缓存文件夹中的可用空间应至少 5 到 10%的备份数据的总体大小。
+Location | 缓存文件夹必须为要备份，在计算机上本地存储，并且它必须处于联机状态。 缓存文件夹不应为网络共享、 可移动媒体或脱机的卷上。
 Folder | 已删除重复卷上或文件夹的压缩，这就是稀疏，或具有包含重分析点，缓存文件夹应进行加密。
 位置的更改 | 可以通过停止备份引擎来更改缓存位置 (`net stop bengine`) 并将缓存文件夹复制到新的驱动器。 （确保新的驱动器具有足够的空间。）然后更新两个注册表项下的**HKLM\SOFTWARE\Microsoft\Windows Azure 备份**(**Config/ScratchLocation**和**Config/CloudBackupProvider ScratchLocation**) 到新位置并重新启动引擎。
 
@@ -103,9 +103,9 @@ Windows 7   | 1,700 GB
 
 ## <a name="supported-file-types-for-backup"></a>支持备份的文件类型
 
-类型 | **支持** 
---- | --- 
-加密   | 。 
+类型 | **支持**
+--- | ---
+加密   | 。
 压缩 | 。
 稀疏 | 。
 压缩和稀疏 | 。
@@ -114,7 +114,7 @@ Windows 7   | 1,700 GB
 加密和稀疏 |  不支持。 已跳过。
 压缩流   | 不支持。 已跳过。
 稀疏流   | 不支持。 已跳过。
-OneDrive （已同步的文件是稀疏流）  | 不支持。 
+OneDrive （已同步的文件是稀疏流）  | 不支持。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>支持的驱动器或卷的备份
 

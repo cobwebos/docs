@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: chackdan
 ms.author: chackdan
-ms.date: 12/12/2018
+ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 27cf4d31f11eaf861d1cafc093d912aa15c8bec0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 7f3bed454bce90d797ca5829043c7e5f8ce5b051
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979745"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728574"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
 
@@ -28,11 +28,11 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>参与预览版的成本是多少？
 
-当前，将应用程序或容器部署到网格预览版不收取任何费用。 但是，建议删除你部署的资源，不要让它们保持运行，除非正在主动测试这些资源。
+当前，将应用程序或容器部署到网格预览版不收取任何费用。 不过，我们建议您删除的资源将部署并不会使其保持运行，除非你积极地测试它们。
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>内核和 RAM 的数量是否有配额限制？
 
-是的。 每个订阅的配额是：
+可以。 每个订阅的配额是：
 
 - 应用程序数量：5
 - 每个应用程序的核心数：12
@@ -77,7 +77,9 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 若要删除资源组，请使用 `az group delete <nameOfResourceGroup>` 命令。
 
-## <a name="supported-container-os-images"></a>支持的容器 OS 映像
+## <a name="deployments"></a>部署
+
+### <a name="what-container-images-are-supported"></a>支持哪些容器映像？
 
 如果是在 Windows Fall Creators Update（版本 1709）计算机上进行开发，则只能使用 Windows 1709 版本的 Docker 映像。
 
@@ -90,6 +92,10 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
     - Windows Server 版本 1803
 - Linux
     - 无已知限制
+
+### <a name="what-types-of-applications-can-i-deploy"></a>可以部署哪些类型的应用程序？ 
+
+你可以部署为应用程序资源 （请参阅上面有关配额的详细信息） 放置在适合的限制范围内的容器中运行的任何内容。 如果我们检测到使用网格用于运行非法工作负荷或滥用系统 （即挖掘），然后我们保留终止您的部署和阻止列表从服务上运行你的订阅的权限。 请联系我们如果你有正在运行的特定工作负荷上的任何问题。 
 
 ## <a name="developer-experience-issues"></a>开发人员体验问题
 

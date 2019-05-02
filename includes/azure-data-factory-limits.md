@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 42c1856f30484532e1ace2e84187bcaaacdf4c72
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6d06ac6efd08c14f77fd963ddf2c67de54260959
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553286"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733755"
 ---
 Azure 数据工厂是一个具有以下默认限制到位，以确保客户订阅不会受到彼此工作负荷的多租户服务。 若要将提升到你的订阅的最大限制，请联系支持。
 
@@ -26,7 +26,7 @@ Azure 数据工厂是一个具有以下默认限制到位，以确保客户订�
 | Azure SSIS 集成运行时的一个订阅下的总 CPU 内核 | 256 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每在工厂中的所有管道之间共享的数据工厂的并行管道运行 | 10,000  | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每个管道，其中包括用于容器的内部活动的最大活动 | 40 | 40 |
-| 可以针对单个自承载的集成运行时创建的链接的集成运行时的最大数目 | 20 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| 可以针对单个自承载的集成运行时创建的链接的集成运行时的最大数目 | 100 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每个管道的最大参数 | 50 | 50 |
 | ForEach 项 | 100,000 | 100,000 |
 | ForEach 并行度 | 20 | 50 |

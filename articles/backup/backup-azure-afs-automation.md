@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: pullabhk
-ms.openlocfilehash: 83fe8d17699c19d442fd734d71d828eb9fd9d6ed
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 46719d3f72c57a44fb48489891e2348bb418da1e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258354"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918949"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>备份和还原 Azure 文件和 PowerShell
 
@@ -31,18 +31,18 @@ ms.locfileid: "58258354"
 
 ## <a name="before-you-start"></a>开始之前
 
-- [了解详细信息](backup-azure-recovery-services-vault-overview.md)有关恢复服务保管库。
+- [详细了解](backup-azure-recovery-services-vault-overview.md)恢复服务保管库。
 - 阅读有关预览功能的信息[Azure 文件共享备份](backup-azure-files.md)。
 - 查看恢复服务的 PowerShell 对象层次结构。
 
 
 ## <a name="recovery-services-object-hierarchy"></a>恢复服务对象层次结构
 
-下图总结了对象层次结构。
+下图汇总了对象层次结构。
 
 ![恢复服务对象层次结构](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-审阅**Az.RecoveryServices** [cmdlet 参考](/powershell/module/az.recoveryservices)Azure 库中的参考。
+查看 Azure 库中的 **Az.RecoveryServices** [cmdlet 参考](/powershell/module/az.recoveryservices)。
 
 
 ## <a name="set-up-and-install"></a>设置和安装
@@ -241,7 +241,7 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 使用[备份 AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0)运行按需备份受保护的 Azure 文件共享。
 
 1. 存储帐户和文件从共享容器保存备份数据与保管库中检索[Get AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)。
-2. 若要启动备份作业，你可以获取有关使用 VM 的信息[Get AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)。
+2. 若要启动备份作业，请使用 [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) 获取有关 VM 的信息。
 3. 使用按需备份的频率[备份 AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem)。
 
 运行按需备份，如下所示：
@@ -317,7 +317,7 @@ BackupManagementType : AzureStorage
 
 ### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>将 Azure 文件共享还原到备用位置
 
-使用[还原 AzRecoveryServicesBackupItem](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0)还原到所选的恢复点。 指定这些参数来标识备用位置： 
+使用[还原 AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0)还原到所选的恢复点。 指定这些参数来标识备用位置： 
 
 - **TargetStorageAccountName**：要将备份内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
 - **TargetFileShareName**：目标存储帐户中要将备份内容还原到的文件共享。
@@ -340,7 +340,7 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ### <a name="restore-an-azure-file-to-an-alternate-location"></a>将 Azure 文件还原到备用位置
 
-使用[还原 AzRecoveryServicesBackupItem](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0)还原到所选的恢复点。 指定这些参数来确定另一个位置，以及唯一标识你想要还原的文件。
+使用[还原 AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0)还原到所选的恢复点。 指定这些参数来确定另一个位置，以及唯一标识你想要还原的文件。
 
 * **TargetStorageAccountName**：要将备份内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
 * **TargetFileShareName**：目标存储帐户中要将备份内容还原到的文件共享。

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 251e95744f57d9b5e42df9bdc3743f4880ff5381
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0472f53d11ec4c990fcf6face633444fe66ba937
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076990"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702349"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>计划 Azure 时序见解预览版环境
 
@@ -90,9 +90,7 @@ ms.locfileid: "58076990"
 有关 Azure 中用于业务连续性和灾难恢复 (BCDR) 的内置功能的信息，请参阅 [Azure 业务连续性技术指南](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance)。 有关 Azure 应用程序的高可用性和灾难恢复实现策略的体系结构指南，请参阅 [Azure 应用程序的灾难恢复和高可用性](https://docs.microsoft.com/azure/architecture/resiliency/index)一文。
 
 > [!NOTE]
-> 
->  时序见解没有内置 BCDR。
-> 默认情况下，Azure 存储、Azure IoT 中心和 Azure 事件中心具有内置恢复功能。
+> 时序见解没有内置 BCDR。 默认情况下，Azure 存储、Azure IoT 中心和 Azure 事件中心具有内置恢复功能。
 
 若要了解详细信息，请阅读：
 
@@ -115,7 +113,6 @@ ms.locfileid: "58076990"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解详细信息，请阅读：
+- 详细了解[存储和入口](./time-series-insights-update-storage-ingress.md)中时间系列 Insights 预览版。
 
-- [Azure 时序见解预览版存储和入口](./time-series-insights-update-storage-ingress.md)
-- [数据建模](./time-series-insights-update-tsm.md)
+- 了解如何[数据建模](./time-series-insights-update-tsm.md)中时间系列 Insights 预览版。

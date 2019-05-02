@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d04bb965ddf9616aaa01f4c8822ac42aea6dab2d
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387665"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869573"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -54,7 +54,7 @@ ms.locfileid: "60387665"
 
 可以使用复制活动**复制**基于文件的两个数据存储间的文件，这种情况下，数据可以高效复制而无需任何序列化/反序列化。
 
-复制活动还支持以指定的格式读取和写入文件：**文本、 JSON、 Avro、 ORC 和 Parquet**，并使用以下编解码器进行压缩和 decompresing 文件：**GZip、 Deflate，BZip2 和 ZipDeflate**。 有关详细信息，请参阅[支持的文件和压缩格式](supported-file-formats-and-compression-codecs.md)。
+复制活动还支持以指定的格式读取和写入文件：**文本、 JSON、 Avro、 ORC 和 Parquet**，并进行压缩和解压缩文件使用以下编解码器：**GZip、 Deflate，BZip2 和 ZipDeflate**。 有关详细信息，请参阅[支持的文件和压缩格式](supported-file-formats-and-compression-codecs.md)。
 
 例如，可执行以下复制活动：
 
@@ -74,7 +74,7 @@ ms.locfileid: "60387665"
 
 1. **创建用于源数据存储和接收器数据存储的链接服务。** 有关如何配置支持的属性，请参阅连接器文章的“链接服务属性”部分。 受支持的连接器列表可以在[受支持的数据存储和格式](#supported-data-stores-and-formats)部分找到。
 2. **为源和接收器创建数据集。** 有关如何配置支持的属性，请参阅源和接收器连接器文章的“数据集属性”部分。
-3. **借助复制活动创建管道。** 接下来的部分将提供示例。  
+3. **借助复制活动创建管道。** 接下来的部分将提供示例。
 
 ### <a name="syntax"></a>语法
 
@@ -134,12 +134,12 @@ ms.locfileid: "60387665"
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
 | outputs | 指定创建的指向接收器数据的数据集。 复制活动仅支持单个输出。 | 是 |
 | typeProperties | 一组用来配置复制活动的属性。 | 是 |
-| 源 | 指定有关如何检索数据的复制源类型和相应的属性。<br/><br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
+| source | 指定有关如何检索数据的复制源类型和相应的属性。<br/><br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
 | 接收器 | 指定有关如何写入数据的复制接收器类型和相应的属性。<br/><br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
 | 转换器 | 指定从源到接收器的显式列映射。 当默认复制行为无法满足需求时适用。<br/><br/>有关详细信息，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。 | 否 |
 | dataIntegrationUnits | 指定 [Azure 集成运行时](concepts-integration-runtime.md)的强度来授权数据复制。 以前称为云数据移动单位 (DMU)。 <br/><br/>从[数据集成单位](copy-activity-performance.md#data-integration-units)了解详细信息。 | 否 |
 | parallelCopies | 指定从源读取数据和向接收器写入数据时想要复制活动使用的并行度。<br/><br/>详细信息请参阅[并行复制](copy-activity-performance.md#parallel-copy)。 | 否 |
-| enableStaging<br/>stagingSettings | 选择将临时数据分阶段存储在 aa blob 存储中，而不是将数据直接从源复制到接收器。<br/><br/>请参阅[暂存复制](copy-activity-performance.md#staged-copy)了解有用的方案和配置详细信息。 | 否 |
+| enableStaging<br/>stagingSettings | 选择暂存中而不是直接从源到接收器的复制数据的 blob 存储的临时数据。<br/><br/>请参阅[暂存复制](copy-activity-performance.md#staged-copy)了解有用的方案和配置详细信息。 | 否 |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| 选择将数据从源复制到接收器时如何处理不兼容的行。<br/><br/>有关详细信息，请参阅[容错](copy-activity-fault-tolerance.md)。 | 否 |
 
 ## <a name="monitoring"></a>监视
@@ -148,7 +148,7 @@ ms.locfileid: "60387665"
 
 ### <a name="monitor-visually"></a>直观地监视
 
-若要直观地监视复制活动运行，请转到数据工厂 ->“创作和监视” -> “监视”选项卡，可看到一个管道运行列表，其“操作”列中提供了“查看活动运行”链接。 
+若要直观地监视复制活动运行，请转到数据工厂 ->“创作和监视” -> “监视”选项卡，可看到一个管道运行列表，其“操作”列中提供了“查看活动运行”链接。
 
 ![监视管道运行](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 
@@ -156,7 +156,7 @@ ms.locfileid: "60387665"
 
 ![监视活动运行](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-单击“操作”下的“详细信息”链接，查看复制活动的执行详细信息和性能特征。 它显示复制方案的以下信息：从源复制到接收器的数据量/行/文件、吞吐量、所执行的步骤和相应的持续时间，以及使用的配置。 
+单击“操作”下的“详细信息”链接，查看复制活动的执行详细信息和性能特征。 它显示复制方案的以下信息：从源复制到接收器的数据量/行/文件、吞吐量、所执行的步骤和相应的持续时间，以及使用的配置。
 
 >[!TIP]
 >对于某些方案，你还会在复制监视页面的顶部看到“**性能优化提示**”，这告诉你所识别出的瓶颈并指导你进行一些更改来提升复制吞吐量，请参阅[此处](#performance-and-tuning)包含详细信息的示例。
@@ -241,12 +241,12 @@ ms.locfileid: "60387665"
 
 **示例：复制到 Azure SQL DB 时的性能优化提示**
 
-在此示例中，在复制运行期间，ADF 注意到接收器 Azure SQL DB 达到了很高的 DTU 利用率，这会减慢写入操作，因此，建议使用更多的 DTU 来增加 Azure SQL DB 层。 
+在此示例中，在复制运行期间，ADF 注意到接收器 Azure SQL DB 达到了很高的 DTU 利用率，这会减慢写入操作，因此，建议使用更多的 DTU 来增加 Azure SQL DB 层。
 
 ![包含性能优化提示的复制监视](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>增量复制 
-数据工厂支持以递增方式将增量数据从源数据存储复制到目标数据存储的方案。 请参阅[教程：以递增方式复制数据](tutorial-incremental-copy-overview.md)。 
+## <a name="incremental-copy"></a>增量复制
+数据工厂支持以递增方式将增量数据从源数据存储复制到目标数据存储的方案。 请参阅[教程：以递增方式复制数据](tutorial-incremental-copy-overview.md)。
 
 ## <a name="read-and-write-partitioned-data"></a>读取和写入分区数据
 在版本 1 中，Azure 数据工厂支持使用 SliceStart/SliceEnd/WindowStart/WindowEnd 系统变量读取或写入分区的数据。 在当前版本中，可使用管道参数和触发器的开始时间/计划时间作为参数值实现此行为。 有关详细信息，请参阅[如何读取或写入分区的数据](how-to-read-write-partitioned-data.md)。

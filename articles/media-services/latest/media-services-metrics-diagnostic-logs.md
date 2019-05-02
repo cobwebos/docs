@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 23c87ae92a0f22b4a1a31c054df730af2efc07d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ce57e1f8b2732ea909625c89f3e8148cb70635c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322091"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728845"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>监视媒体服务指标和诊断日志
 
@@ -34,7 +34,7 @@ ms.locfileid: "60322091"
 
 目前，以下媒体服务[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)azure 发出指标：
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |Requests|提供的服务的流式处理终结点请求总数的详细信息。|
 |流出量|总出口字节数。 例如，通过流式处理终结点流式传输的字节数。|
@@ -54,7 +54,7 @@ az monitor metrics list --resource \
 
 目前，可以获取以下诊断日志：
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |密钥传送服务请求|显示密钥传送服务请求信息的日志。 有关更多详细信息，请参阅[架构](media-services-diagnostic-logs-schema.md)。|
 

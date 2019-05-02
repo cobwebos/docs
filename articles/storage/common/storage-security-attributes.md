@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8fa43998d0b10eddacdc9e0dd512295559814255
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 7868b52fee991d4b9323fa0b7969aeca4dc83cdb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101930"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711954"
 ---
 # <a name="common-security-attributes-for-azure-storage"></a>Azure 存储的常见安全属性
 
@@ -27,7 +27,7 @@ ms.locfileid: "62101930"
 | 安全属性 | Yes/No | 说明 |
 |---|---|--|
 | 静态加密：<ul><li>服务器端加密</li><li>使用客户托管密钥的服务器端加密</li><li>其他加密功能（例如客户端、始终加密等）</ul>| 是 |  |
-| 传输中加密：<ul><li>快速路由加密</li><li>Vnet 中加密</li><li>VNet-VNet 加密</ul>| 是 | 支持标准的 HTTPS/TLS 机制。  传输到服务之前，用户还可以加密数据。 |
+| 传输中加密：<ul><li>快速路由加密</li><li>在 VNet 加密</li><li>VNet-VNet 加密</ul>| 是 | 支持标准的 HTTPS/TLS 机制。  传输到服务之前，用户还可以加密数据。 |
 | 加密密钥处理 （CMK，BYOK，等等。）| 是 | 请参阅[使用 Azure Key Vault 中客户托管密钥的存储服务加密](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。|
 | 列级加密 （Azure 数据服务）| 不适用 |  |
 | 加密的 API 调用| 是 |  |
@@ -37,7 +37,7 @@ ms.locfileid: "62101930"
 | 安全属性 | Yes/No | 说明 |
 |---|---|--|
 | 服务终结点支持| 是 |  |
-| vNET 注入支持| 不适用 |  |
+| VNet 注入支持| 不适用 |  |
 | 网络隔离和防火墙支持| 是 | |
 | 强制隧道支持| 不适用 |  |
 

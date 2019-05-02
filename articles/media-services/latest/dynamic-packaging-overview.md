@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 90af9d40f797e493696d52e4cd744b99e3b57911
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: a907e35e8e39b9dadd9106e7fd99063db28647a5
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104097"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869673"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
-Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和 XBOX）传送多种媒体源文件格式、媒体流格式和内容保护格式。 这些客户端可识别不同的协议，例如，iOS 需要 HTTP Live Streaming (HLS) 格式，Xbox 需要平滑流式处理。 如果有一组自适应比特率 （多码率） MP4 （ISO 基媒体 14496-12） 文件或一组自适应比特率平滑流式处理文件要提供给了解 HLS、 MPEG DASH 或平滑流式处理的客户端，您可以充分利用动态打包。 支持 SD/HD/UHD-4k、 打包是不可知的视频分辨率。
+Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和 XBOX）传送多种媒体源文件格式、媒体流格式和内容保护格式。 这些客户端可识别不同的协议，例如，iOS 需要 HTTP Live Streaming (HLS) 格式，Xbox 需要平滑流式处理。 如果你有一组自适应比特率 （多码率） MP4 （ISO 基媒体 14496-12） 文件或一组自适应比特率平滑流式处理文件要提供给了解 HLS、 MPEG DASH 或平滑流式处理的客户端，您可以充分利用**动态打包**。 支持 SD/HD/UHD-4k、 打包是不可知的视频分辨率。
 
-[流式处理终结点](streaming-endpoint-concept.md)是用于向客户端播放器提供媒体内容的媒体服务中的动态打包服务。 动态打包是一项功能提供对所有的标准**流式处理终结点**（标准或高级）。 
+在 Media Services[流式处理终结点](streaming-endpoint-concept.md)表示可直接向客户端播放器应用程序，使用其中一个常见的流式处理传送实时和按需内容的动态 （实时） 打包和原始服务媒体协议 （HLS 或 DASH）。 动态打包是一项功能提供对所有的标准**流式处理终结点**（标准或高级）。 
 
 若要充分利用**动态打包**，你需要准备**资产**具有一组自适应比特率 MP4 文件和所需的 Media Services 动态打包的流式处理配置文件。 获取这些文件的一种方式是使用媒体服务对夹层（源）文件进行编码。 若要使视频编码资产中播放的客户端，您必须创建**流式处理定位符**和生成流 Url。 然后，根据流式处理客户端清单 （HLS、 DASH 或平滑流） 中指定的格式，具有选定的协议接收流。
 
@@ -77,7 +77,7 @@ Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编�
 
 ## <a name="delivery-protocols"></a>传递协议
 
-|协议|示例|
+|Protocol|示例|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|

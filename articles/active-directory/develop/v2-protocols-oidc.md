@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f4a7f2a4fe0e1ca455b1140e83f31f6b30a7511
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bfac577d7582caa5b538f05273a02e4c3baf71ff
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250090"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918463"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
@@ -32,7 +32,7 @@ OpenID Connect 是在 OAuth 2.0 基础上构建的身份验证协议，可用于
 > [!NOTE]
 > Microsoft 标识平台终结点不支持所有 Azure Active Directory (Azure AD) 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读[Microsoft 标识平台限制](active-directory-v2-limitations.md)。
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 ID 令牌的概念，ID 令牌是一种可让客户端验证用户标识的安全令牌。 ID 令牌还可获取用户的基本个人资料信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。 Microsoft 标识平台终结点还允许与 Azure AD 颁发访问令牌的受保护的资源，例如 Web Api 注册的第三方应用。 有关如何设置应用程序来颁发访问令牌的详细信息，请参阅[如何使用 Microsoft 标识平台终结点注册应用](quickstart-v2-register-an-app.md)。 如果要构建在服务器上托管并通过浏览器访问的 [web 应用程序](v2-app-types.md#web-apps)，建议使用 OpenID Connect。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 ID 令牌的概念，ID 令牌是一种可让客户端验证用户标识的安全令牌。 ID 令牌还可获取用户的基本个人资料信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。 Microsoft 标识平台终结点还允许与 Azure AD 颁发访问令牌的受保护的资源，例如 Web Api 注册的第三方应用。 有关如何设置应用程序来颁发访问令牌的详细信息，请参阅[如何使用 Microsoft 标识平台终结点注册应用](quickstart-register-app.md)。 如果要构建在服务器上托管并通过浏览器访问的 [web 应用程序](v2-app-types.md#web-apps)，建议使用 OpenID Connect。
 
 ## <a name="protocol-diagram-sign-in"></a>协议图：登录
 
@@ -52,7 +52,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 `{tenant}` 可采用四个值的其中之一：
 
-| Value | 描述 |
+| 值 | 描述 |
 | --- | --- |
 | `common` |使用个人 Microsoft 帐户和 Azure AD 中的工作或学校帐户的用户可以登录到应用程序。 |
 | `organizations` |仅拥有工作/学校帐户的用户可以从 Azure AD 登录到应用程序。 |

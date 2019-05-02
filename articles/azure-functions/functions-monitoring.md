@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406568"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922963"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
 [Azure Functions](functions-overview.md)提供了与内置集成[Azure Application Insights](../azure-monitor/app/app-insights-overview.md)来监视函数。 本文介绍如何配置 Azure Functions 将由系统生成日志文件发送到 Application Insights。
 
-我们建议使用 Application Insights，因为它会收集日志、 性能和数据时出错。 它会自动检测性能异常并包括强大的分析工具帮助您诊断问题并了解如何使用你的函数。 Application Insights 有助于持续提高性能与可用性。 您甚至可以在本地函数应用项目开发过程中使用 Application Insights。 有关详细信息，请参阅[什么是 Application Insights？](../azure-monitor/app/app-insights-overview.md)
+我们建议使用 Application Insights，因为它会收集日志、 性能和数据时出错。 它会自动检测性能异常并包括强大的分析工具帮助您诊断问题并了解如何使用你的函数。 Application Insights 有助于持续提高性能与可用性。 您甚至可以在本地函数应用项目开发过程中使用 Application Insights。 有关详细信息，请参阅[什么是 Application Insights？](../azure-monitor/app/app-insights-overview.md)。
 
 根据所需的 Application Insights 检测内置 Azure Functions，只需要是有效的检测密钥，将函数应用程序连接到 Application Insights 资源。
 
@@ -626,7 +626,7 @@ Functions v2 会自动收集有关 HTTP 请求、 服务总线和 SQL 的依赖�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-可以使用启用流式处理日志[Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)。 对于 Azure CLI 中，使用以下命令登录，请选择订阅并流式传输日志文件：
+可以使用启用流式处理日志[Azure CLI](/cli/azure/install-azure-cli)。 使用以下命令登录，请选择订阅并流式传输日志文件：
 
 ```azurecli
 az login

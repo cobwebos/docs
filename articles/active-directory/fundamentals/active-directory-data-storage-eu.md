@@ -12,53 +12,41 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b21f82dc0a1eb8edf571da13e0d34fecae5f401b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93ac5ef5f03f800a8f90259db3e382b3bc5c5e2c
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249719"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875644"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
-Azure Active Directory (Azure AD) 可帮助管理用户标识，并创建智能化的访问策略用于帮助保护组织的资源。 标识数据的存储位置基于订阅服务时（例如，订阅 Office 365 或 Azure 时） 组织提供的地址。 有关标识数据存储位置的具体信息，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
+由 Azure AD 中标识数据存储在基于 Office 365 和 Azure 等 Microsoft Online 服务订阅时，你的组织提供的地址的地理位置时。 有关标识数据的存储位置的信息，可以使用[位于数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) Microsoft 信任中心部分。
 
-虽然大多数 Azure AD 相关欧洲标识数据将保留在欧洲数据中心中，有一些运营、 特定于服务的数据所需的常规 Azure AD 操作，这在美国存储和不包含任何个人数据。
+对于提供的地址在欧洲客户，Azure AD 会保留大多数欧洲数据中心内的标识数据。 本文档提供有关由 Azure AD 服务存储在欧洲之外的任何数据的信息。
 
-## <a name="data-stored-outside-of-european-datacenters-for-european-customers"></a>存储在欧洲数据中心外部的欧洲客户数据
-
-营业地址位于欧洲的组织的大部分 Azure AD 相关欧洲标识数据都会保留在欧洲数据中心。 存储在欧洲数据中心并复制到美国数据中心的 Azure AD 数据包括：
-
-- **Microsoft Azure 多重身份验证 (MFA) 和 Azure AD 自助密码重置 (SSPR)**
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多重身份验证 (MFA)
     
-    MFA 在欧洲数据中心存储所有用户静态数据。 但是，某些特定于 MFA 服务的数据存储在美国，包括：
+- 所有的双因素身份验证使用电话呼叫或短信来源于美国数据中心，并且也由全球提供商路由。
+- 推送通知使用 Microsoft Authenticator 应用源自美国数据中心。 此外，设备供应商特定的服务也可能会进入 play 和欧洲之外可能是这些服务。
+- OATH 代码始终在美国验证。 
+
+## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
+
+Azure AD B2C 策略配置数据和密钥容器存储在美国数据中心。 这些不包含任何用户个人数据。 有关策略配置的详细信息，请参阅 [Azure Active Directory B2C：内置策略](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)一文。
+
+## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
-    - 如果使用 MFA 或 SSPR，双重身份验证及其相关个人数据可能会存储在美国。
+Azure AD B2B 存储邀请与兑换链接，并将重定向 URL 在美国数据中心中的信息。 此外，取消订阅接收 B2B 邀请的用户的电子邮件地址也存储在美国数据中心中。
 
-        - 使用电话呼叫或短信的所有双重身份验证可能由美国的运营商完成。
-    
-        - 使用 Microsoft Authenticator 应用的推送通知需要从制造商的通知服务（Apple 或 Google）发送的通知，此过程可能在欧洲外部完成。
-    
-        - OATH 代码始终在美国验证。 
-    
-    - 某些 MFA 和 SSPR 日志在美国存储 30 天，不管身份验证类型是什么。
+## <a name="microsoft-azure-active-directory-domain-services-azure-ad-ds"></a>Microsoft Azure Active Directory 域服务 (Azure AD DS)
 
-- **Microsoft Azure Active Directory B2C (Azure AD B2C)**
+Azure AD DS 将用户数据存储在客户选择的 Azure 虚拟网络所在的同一位置。 因此，如果该网络位于欧洲外部，则会复制数据并将其存储在欧洲外部。
 
-    Azure AD B2C 在欧洲数据中心存储所有用户静态数据。 但是，操作日志（已删除个人数据）会保留在用户访问服务时所在的位置。 例如，如果某个 B2C 用户访问位于美国的服务，则操作日志会保留在美国。此外，不包含个人数据的所有策略配置数据只会存储在美国。有关策略配置的详细信息，请参阅 [Azure Active Directory B2C：内置策略](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)一文。
+## <a name="other-considerations"></a>其他注意事项
 
-- **Microsoft Azure Active Directory B2B (Azure AD B2B)** 
-    
-    Azure AD B2B 在欧洲数据中心存储所有用户静态数据。 但是，B2B 将表格中的非个人元数据存储在美国数据中心。 此表格包含 redeemUrl、invitationTicket、资源租户 ID、InviteRedirectUrl 和 InviterAppId 等字段。
+服务和与 Azure AD 集成的应用程序有权访问标识数据。 评估每个服务和应用程序，用于确定如何标识数据处理由该特定服务和应用程序，以及它们是否满足你公司的数据存储要求。
 
-- **Microsoft Azure Active Directory 域服务 (Azure AD DS)**
-
-    Azure AD DS 将用户数据存储在客户选择的 Azure 虚拟网络所在的同一位置。 因此，如果该网络位于欧洲外部，则会复制数据并将其存储在欧洲外部。
-
-- **与 Azure AD 集成的服务和应用**
-
-    与 Azure AD 集成的任何服务和应用都有权访问标识数据。 请评估每个服务和应用，以确定该特定服务和应用如何处理标识数据，以及它们是否满足公司的数据存储要求。
-
-    有关 Microsoft 服务的数据存放的详细信息，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
+有关 Microsoft 服务的数据存放的详细信息，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
 
 ## <a name="next-steps"></a>后续步骤
 有关上述任何功能的详细信息，请参阅以下文章：

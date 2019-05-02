@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef180fb444e32e8b055837fd418e21162ff58339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa4b68d48ec3f4fbb61c7144a133d9c42938c723
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411177"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917282"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的应用程序类型
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) 支持各种新型应用体系结构的身份�
   * **密钥** - 向 Azure AD 进行身份验证以调用 Web API 时会随应用程序 ID 一起发送的密钥。
 * Azure AD 需要确保应用程序具有访问目录数据、组织中的其他应用程序等内容所需的权限。
 
-有关详细信息，请了解如何[向 Azure AD v1.0 终结点注册应用](quickstart-v1-add-azure-ad-app.md)。
+有关详细信息，请了解如何[注册应用](quickstart-register-app.md)。
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>单租户应用和多租户应用
 
