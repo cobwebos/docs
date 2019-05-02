@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/18/2019
+ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 82d8a8085ca285c95a550678cdc534e586a4faa7
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 53f69b6b8eb6cbbb8082ea0777af9dbceb7bdba1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415958"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699690"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>教程：使用 .NET 上传、编码和流式传输视频
 
@@ -197,6 +197,10 @@ az group delete --name amsResourceGroup
 ## <a name="multithreading"></a>多线程处理
 
 Azure 媒体服务 v3 SDK 不是线程安全的。 开发多线程应用程序时，应在每个线程上生成并使用一个新的 AzureMediaServicesClient 对象。
+
+## <a name="provide-feedback"></a>提供反馈
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
 ## <a name="next-steps"></a>后续步骤
 

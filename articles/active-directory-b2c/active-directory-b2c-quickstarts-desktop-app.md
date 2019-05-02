@@ -3,7 +3,7 @@ title: 快速入门 - 使用 Azure Active Directory B2C 为桌面应用设置登
 description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例 ASP.NET 桌面应用程序。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 161c1ec72b14f4cc1b2517a0dc6282f0548575b3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 909b9db08b9ee0ed1af716a0847e09264fb9accc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182296"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697517"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为桌面应用设置登录 
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: hrasheed
 ms.openlocfilehash: 4ba77c04f1e7976f2843bbe7117de63c376960b5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62114624"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717832"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Hive 分析和处理 JSON 文档
 

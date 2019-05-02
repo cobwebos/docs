@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: a3fe14436a569a8354e4bfd58a9ba164881d8fe2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 956dfe54cec910a09ed16d7387bc3d32babd0876
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878675"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692399"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 上的 C++ 中识别语音
 
@@ -29,7 +29,7 @@ ms.locfileid: "57878675"
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
+[!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>添加示例代码
 

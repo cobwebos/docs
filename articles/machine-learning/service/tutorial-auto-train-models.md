@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee024d627efc42a87d7f6b1971fa8e2e92357a00
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4d09fca68af55b577c47316363ed386e98525baf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545223"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925757"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>教程：通过自动化机器学习来构建回归模型
 
@@ -101,7 +101,7 @@ import os
 
 ### <a name="configure-workspace"></a>配置工作区
 
-从现有工作区创建工作区对象。 [工作区](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。
+从现有工作区创建工作区对象。 [工作区](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。
 
 `Workspace.from_config()` 读取文件 config.json 并将详细信息加载到一个名为 `ws` 的对象。  在本教程中，`ws` 在代码的其余部分使用。
 
