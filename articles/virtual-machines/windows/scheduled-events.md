@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: ab0aefd5650aada9c301115813a80747ddd1f2ac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1a82b9256405e2cac12f4c5611ee3bdad459162b
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926324"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64992939"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -45,7 +45,7 @@ ms.locfileid: "64926324"
 使用计划事件，应用程序可以发现维护的发生，并触发任务以限制其影响。 启用计划事件可在执行维护活动之前为虚拟机提供最少的时间。 有关详细信息，请参阅下面的“事件计划”部分。
 
 预定事件提供以下用例中的事件：
-- 平台启动维护（例如主机 OS 更新）
+- [平台启动维护](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/maintenance-and-updates)（例如，VM 重启、 实时迁移或内存保留更新的主机）
 - 降级的硬件
 - 用户启动的维护（例如，用户重启或重新部署 VM）
 - [低优先级 VM 逐出](https://azure.microsoft.com/blog/low-priority-scale-sets)中缩放设置
@@ -119,7 +119,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 |属性  |  描述 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：计划将虚拟机暂停几秒。 暂停 CPU，但不会对内存、打开文件或网络连接造成影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li>`Preempt`：正在删除低优先级虚拟机 （临时磁盘将丢失）。|
+| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机将计划暂停几秒。 CPU 和网络连接可能会挂起，但不是会对内存或打开的文件没有影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li>`Preempt`：正在删除低优先级虚拟机 （临时磁盘将丢失）。|
 | ResourceType | 此事件影响的资源的类型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 资源| 此事件影响的资源的列表。 保证包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | 事件状态 | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 未提供 `Completed` 或相似状态；事件完成后，将不再返回。
@@ -136,7 +136,8 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 | 抢占 | 30 秒 |
 
 ### <a name="event-scope"></a>事件作用域     
-计划的事件传送到：        
+计划的事件传送到：
+ - 独立虚拟机
  - 云服务中的所有虚拟机      
  - 可用性集中的所有虚拟机      
  - 规模集位置组中的所有虚拟机。         

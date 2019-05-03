@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61126731"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025144"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>示例：将建议或自动完成功能添加到 Azure 搜索应用程序
 
@@ -23,7 +23,7 @@ ms.locfileid: "61126731"
 
 + *建议*建议结果生成在你键入时，其中每条建议是从与已键入内容相匹配的索引的单个结果。 
 
-+ *记忆式键入功能*，[预览功能](search-api-preview.md)，"完成"的单词或短语当前键入用户。 而不是返回结果，它将完成的查询，然后您可以执行返回的结果。 使用建议，因为已完成的词或短语查询中的都基于索引中的匹配项。 服务不会提供在索引中返回零个结果的查询。
++ *记忆式键入功能*"完成"的单词或短语当前键入用户。 而不是返回结果，它将完成的查询，然后您可以执行返回的结果。 使用建议，因为已完成的词或短语查询中的都基于索引中的匹配项。 服务不会提供在索引中返回零个结果的查询。
 
 可以下载并运行中的示例代码**DotNetHowToAutocomplete**来评估这些功能。 示例代码以填充的预建的索引为目标[NYCJobs 演示数据](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)。 NYCJobs 索引包含[建议器构造](index-add-suggesters.md)，这是对使用建议或自动完成功能的要求。 可以使用托管在沙盒服务中，已准备好的索引或[填充自己的索引](#configure-app)NYCJobs 示例解决方案中使用数据加载器。 
 

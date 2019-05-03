@@ -11,16 +11,33 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60752328"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021107"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure 机器学习服务的已知问题和故障排除
 
 本文可帮助你查找和更正使用 Azure 机器学习服务时遇到的错误或失败。
+
+## <a name="visual-interface-issues"></a>可视界面问题
+
+机器学习服务问题的可视界面。
+
+### <a name="long-compute-preparation-time"></a>长时间的计算准备时间
+
+创建新的计算或调用它保留计算会花费些时间，可能是数分钟或更长时间。 团队正在进行优化。
+
+
+### <a name="cannot-run-an-experiment-only-contains-dataset"></a>不能运行试验仅包含数据集 
+
+你可能想要运行试验仅包含要直观显示数据集的数据集。 但是，它具有不允许运行试验仅现在包含数据集。 我们一直在解决此问题。
+ 
+之前修复，可以将数据集连接到的任何数据转换模块 （选择的列，在数据集、 编辑元数据、 拆分数据等） 并运行此试验。 然后可以直观显示数据集。 
+
+下图显示了如何： ![visulize 数据](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK 安装问题
 

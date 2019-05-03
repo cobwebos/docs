@@ -10,22 +10,24 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 2/22/2019
+ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34dd20826928d1ab2ba1fc7980c7d47b796ea663
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819225"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024005"
 ---
-# <a name="load-and-read-data-with-azure-machine-learning"></a>使用 Azure 机器学习加载和读取数据
-
+# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>加载和使用 Azure 机器学习数据准备 SDK 读取数据
 在本文中，您将学习使用 Azure 机器学习数据准备 SDK 将数据加载不同的方法。 若要查看 SDK 的参考文档，请参阅[概述](https://aka.ms/data-prep-sdk)。 SDK 支持多个数据引入功能，包括：
 
 * 使用分析参数推理（编码、分隔符和标头）从多种文件类型进行加载
 * 在文件加载时使用推理进行类型转换
 * 支持 MS SQL Server 和 Azure Data Lake Storage 连接
+
+> [!Important]
+> 如果要构建一个新的解决方案，请尝试[Azure 机器学习数据集](how-to-explore-prepare-data.md)（预览），数据探索和准备工作。 数据集是数据准备 SDK，提供可用于管理 AI 解决方案中的数据集的扩展的功能的下一个版本。
 
 下表显示了一系列函数用于从常见的文件类型加载数据。
 
@@ -90,8 +92,8 @@ dflow.head(5)
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|-----|
 |0|stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|1|ALABAMA|1|101710|Hale County|10171002158| |
-|2|ALABAMA|第|101710|Hale County|10171002162| |
+|第|ALABAMA|1|101710|Hale County|10171002158| |
+|2|ALABAMA|1|101710|Hale County|10171002162| |
 
 
 若要在加载过程中排除行，请定义 `skip_rows` 参数。 此参数将跳过加载在 CSV 文件中以降序排列的行（使用基于 1 的索引）。
@@ -104,8 +106,8 @@ dflow.head(5)
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|
-|0|ALABAMA|第|101710|Hale County|10171002158|29|
-|第|ALABAMA|1|101710|Hale County|10171002162|40 |
+|0|ALABAMA|1|101710|Hale County|10171002158|29|
+|1|ALABAMA|第|101710|Hale County|10171002162|40 |
 
 运行以下代码，显示列数据类型。
 
@@ -160,7 +162,7 @@ dflow.head(5)
 |第|无|无|无|无|无|无|无|无|无| |
 |2|无|无|无|无|无|无|无|无|无| |
 |3|Rank|标题|工作室|全球|国内 / %|Column1|海外 / %|Column2|年份^| |
-|4|1|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|5|
+|4|第|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|5|
 
 输出显示第二个工作表中的数据在标头前有三个空行。 `read_excel()` 函数包含用于跳过行和使用标头的可选参数。 运行以下代码以跳过前三行，并将第四行用作标头。
 
@@ -170,8 +172,8 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_colu
 
 ||Rank|标题|工作室|全球|国内 / %|Column1|海外 / %|Column2|年份^|
 |------|------|------|-----|------|-----|-------|----|-----|-----|
-|0|1|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|
-|1|2|Titanic|Par.|2186.8|658.7|0.301|1528.1|0.699|1997^|
+|0|第|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|
+|第|2|Titanic|Par.|2186.8|658.7|0.301|1528.1|0.699|1997^|
 
 ## <a name="load-fixed-width-data-files"></a>加载固定宽度数据文件
 
@@ -306,7 +308,7 @@ dflow.to_pandas_dataframe().head()
 ||FMID|MarketName|网站|street|city|县|
 |----|------|-----|----|----|----|----|
 |0|1012063|喀里多尼亚农贸市场协会 - 丹维尔|https://sites.google.com/site/caledoniafarmers.. ||丹维尔|喀里多尼亚|
-|1|1011871|斯特恩斯家园农贸市场|http://Stearnshomestead.com |6975 Ridge Road|帕尔马|凯霍加河|
+|第|1011871|斯特恩斯家园农贸市场|http://Stearnshomestead.com |6975 Ridge Road|帕尔马|凯霍加河|
 |2|1011878|100 英里市场|https://www.pfcmarkets.com |507 哈里森街|卡拉马祖|卡拉马祖|
 |3|1009364|106 S. 主要街道农贸市场|http://thetownofsixmile.wordpress.com/ |106 S. 主要街道|六英里|||
 |4|1010691|第 10 街社区农贸市场|https://agrimissouri.com/.. |第十街和波普拉区|拉马尔|巴顿|

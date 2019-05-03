@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 92f04d80ea956f3036d7778a5d6de62e53b969ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817374"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023732"
 ---
-# <a name="write-and-configure-data-using-azure-machine-learning"></a>编写和配置使用 Azure 机器学习的数据
+# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>编写并使用 Azure 机器学习数据准备 SDK 配置数据
 
 在本文中，你将了解用于写入数据使用不同的方法[Azure 机器学习数据准备 Python SDK](https://aka.ms/data-prep-sdk)以及如何配置该数据以供试验使用[Azure 机器学习 SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  可以在数据流中的任何点写入输出数据。 写入会添加到生成的数据流，步骤和步骤运行每次运行数据流。 数据写入多个分区文件以实现并行写入。
+
+> [!Important]
+> 如果要构建一个新的解决方案，请尝试[Azure 机器学习数据集](how-to-explore-prepare-data.md)（预览版） 来转换数据、 快照数据和存储版本控制的数据集定义。 数据集是数据准备 SDK，提供可用于管理 AI 解决方案中的数据集的扩展的功能的下一个版本。
 
 由于对管道中有多少写步骤没有限制，因此你可以轻松添加更多写步骤来获取中间结果以用于故障排除或用于其他管道。
 
@@ -62,7 +65,7 @@ t.head(5)
 | | Column1 | Column2 | Column3 | Column4 | Column5 | Column6 | Column7 | Column8 | Column9 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 |0| 10000.0 | 99999.0 | 无 | 否 | 否 | ENRS | NaN | NaN | NaN |   
-|1| 10003.0 | 99999.0 | 无 | 否 | 否 | ENSO | NaN | NaN | NaN |   
+|第| 10003.0 | 99999.0 | 无 | 否 | 否 | ENSO | NaN | NaN | NaN |   
 |2| 10010.0 | 99999.0 | 无 | 否 | JN | ENJA | 70933.0 | -8667.0 | 90.0 |
 |3| 10013.0 | 99999.0 | 无 | 否 | 否 |      | NaN | NaN | NaN |
 |4| 10014.0 | 99999.0 | 无 | 否 | 否 | ENSO | 59783.0 | 5350.0 |  500.0|
@@ -110,7 +113,7 @@ written_files.head(5)
 | | Column1 | Column2 | Column3 | Column4 | Column5 | Column6 | Column7 | Column8 | Column9 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 |0| 10000.0 | 99999.0 | BadData | 否 | 否 | ENRS | NaN  | NaN | NaN |   
-|1| 10003.0 | 99999.0 | BadData | 否 | 否 | ENSO |  NaN | NaN | NaN |   
+|第| 10003.0 | 99999.0 | BadData | 否 | 否 | ENSO |  NaN | NaN | NaN |   
 |2| 10010.0 | 99999.0 | BadData | 否 | JN | ENJA |  70933.0 | -8667.0 | 90.0 |
 |3| 10013.0 | 99999.0 | BadData | 否 | 否 |   | NaN | NaN | NaN |
 |4| 10014.0 | 99999.0 | BadData | 否 | 否 | ENSO |  59783.0 | 5350.0 |  500.0|
@@ -138,7 +141,7 @@ written_parquet_files.head(5)
 |   | Column1 | Column2 | Column3 | Column4 | Column5 | Column6 | Column7 | Column8 | Column9 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |-------- |
 |0| 10000.0 | 99999.0 | MiscreantData | 否 | 否 | ENRS | MiscreantData | MiscreantData | MiscreantData |
-|1| 10003.0 | 99999.0 | MiscreantData | 否 | 否 | ENSO | MiscreantData | MiscreantData | MiscreantData |   
+|第| 10003.0 | 99999.0 | MiscreantData | 否 | 否 | ENSO | MiscreantData | MiscreantData | MiscreantData |   
 |2| 10010.0 | 99999.0 | MiscreantData | 否| JN| ENJA|   70933.0|    -8667.0 |90.0|
 |3| 10013.0 | 99999.0 | MiscreantData | 否| 否| |   MiscreantData|    MiscreantData|    MiscreantData|
 |4| 10014.0 | 99999.0 | MiscreantData | 否| 否| ENSO|   59783.0|    5350.0| 500.0|

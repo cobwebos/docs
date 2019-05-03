@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821278"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025241"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -68,7 +68,7 @@ ms.locfileid: "60821278"
 
 下图演示了工作区的分类：
 
-[![工作区分类](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![工作区分类](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>试验
 
@@ -106,6 +106,16 @@ Azure 机器学习服务与框架无关。 创建模型时，可以使用任何�
 
 有关示例运行配置，请参阅[选择并使用计算目标来训练模型](how-to-set-up-training-targets.md)。
 
+## <a name="dataset"></a>数据集
+
+Azure 机器学习数据集 （预览版） 使其更轻松地访问和使用你的数据。 数据集管理在各种情况下，例如模型训练数据和创建的管道。 使用 Azure 机器学习 SDK，可以访问基础存储、 探索和准备数据、 管理不同的数据集定义的生命周期和在培训和在生产环境中使用的数据集之间进行比较。
+
+数据集提供用于处理中常用的格式，例如，使用的数据的方法`from_delimited_files()`或`to_pandas_dataframe()`。
+
+有关详细信息，请参阅[创建和注册 Azure 机器学习数据集](how-to-create-register-datasets.md)。
+
+使用数据集的示例，请参阅[示例笔记本](https://aka.ms/dataset-tutorial)。
+
 ## <a name="datastore"></a>数据存储
 
 数据存储是通过 Azure 存储帐户进行的存储抽象。 数据存储可以使用 Azure blob 容器或 Azure 文件共享作为后端存储。 每个工作区都有默认数据存储，并且你可以注册其他数据存储。
@@ -127,7 +137,7 @@ Azure 机器学习服务与框架无关。 创建模型时，可以使用任何�
 | Azure 容器实例 | &nbsp; | ✓ |
 | Azure Kubernetes 服务 | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
-| Project Brainwave</br>（现场可编程门阵列） | &nbsp; | ✓ |
+| 现场可编程门阵列 (FPGA) | &nbsp; | ✓ |
 
 计算目标附加到工作区。 本地计算机以外的计算目标由工作区的用户共享。
 
@@ -189,8 +199,6 @@ Azure 机器学习可以创建两种类型的映像：
 * **Docker 映像**：部署到 FPGA 以外的计算目标时使用。 例如，部署到 Azure 容器实例和 Azure Kubernetes 服务时。
 
 Azure 机器学习服务提供了一个基本映像，默认情况下使用。 你还可以提供自己的自定义映像。
-
-有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#configureimage)的配置和注册映像部分。
 
 有关创建映像的示例，请参阅[在 Azure 容器实例中部署映像分类模型](tutorial-deploy-models-with-aml.md)。
 

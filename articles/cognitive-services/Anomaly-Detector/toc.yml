@@ -20,6 +20,14 @@
   items:
     - name: 识别数据中的异常
       href: how-to/identify-anomalies.md
+    - name: 使用容器
+      items:
+        - name: 安装并运行容器
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: anomaly-detector-container-howto.md
+        - name: 配置容器
+          href: anomaly-detector-container-configuration.md
+          displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
 - name: 概念
   items:
     - name: 异常情况检测 API 最佳做法
