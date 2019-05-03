@@ -11,18 +11,18 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 8b6d7f791300a970e71fda4f1d56354a45d07afd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 96abef29c5290770d296fb5053007e36d1eaf537
+ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029890"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035445"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>创建和浏览自动化的机器学习试验 （预览版） 在 Azure 门户中
 
- 在本文中，您将学习如何创建、 运行和了解自动化的机器学习试验中而无需一行代码在 Azure 门户。 自动化的机器学习会自动选择最佳算法使用为特定数据，因此可以快速生成机器学习模型的过程。 [了解有关自动化的机器学习的详细信息](https://docs.microsoft.com/azure/machine-learning/service/concept-automated-ml)。
+ 在本文中，您将学习如何创建、 运行和了解自动化的机器学习试验中而无需一行代码在 Azure 门户。 自动化的机器学习会自动选择最佳算法使用为特定数据，因此可以快速生成机器学习模型的过程。 [了解有关自动化的机器学习的详细信息](concept-automated-ml.md)。
 
- 如果希望使用更多的代码基于体验，你也可以[配置自动的机器学习中 Python 的试验](how-to-configure-auto-train.md)与[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
+ 如果需要更多基于代码的体验，你也可以[配置自动的机器学习中 Python 的试验](how-to-configure-auto-train.md)与[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -40,7 +40,7 @@ ms.locfileid: "65029890"
 
 ![Azure 门户试验登陆页面](media/how-to-create-portal-experiments/landing-page.png)
 
-否则，你将看到自动机器学习仪表板的所有自动化机器学习试验和运行，包括那些运行使用 SDK 的概述。 此处可以筛选和按日期浏览在运行过程中，试验名称，并运行状态。
+否则，你将看到自动机器学习仪表板与所有自动化机器学习试验，包括那些运行随 SDK 的概述。 此处可以筛选和按日期浏览在运行过程中，试验名称，并运行状态。
 
 ![Azure 门户试验仪表板](media/how-to-create-portal-experiments/dashboard.png)
 
@@ -148,8 +148,6 @@ ms.locfileid: "65029890"
 
 * **峰度**： 列的峰值。 功能与不相关的类型显示为空白条目。
 
-此外，您可以使用这些统计信息决定是否要包括或排除某些列。 通过切换上每个列选择器，可以控制自动机器学习实验将在其中使用列的作用域。
-
 <a name="preprocess"></a>
 
 ### <a name="advanced-preprocessing"></a>高级预处理
@@ -168,72 +166,24 @@ ms.locfileid: "65029890"
 |证据 （出错） 的权重|计算为分类列与目标列的关联的度量值出错。 它的计算方式的类在 vs 扩展类的概率的比率的日志。 此步骤中输出每个类的一个数字特征列，并且无需显式用户输入缺失值和离群值处理方法。|
 |分类距离|训练的 k 平均值聚类分析模型对所有数字列。  输出 k 新功能，每个群集，其中包含每个示例与每个群集的形心的距离的一个新数字功能。|
 
-## <a name="run-experiment"></a>运行试验
+## <a name="run-experiment-and-view-results"></a>运行实验并查看结果
 
-若要运行此试验，请单击开始按钮。
-  
-实验准备过程需要几分钟的时间。
+若要运行此试验，请单击开始。 实验准备过程需要几分钟的时间。
 
-## <a name="view-results"></a>查看结果
+### <a name="view-experiment-details"></a>查看实验详细信息
 
-实验准备阶段完成后，你将看到运行详细信息屏幕。 这将提供创建的模型的完整列表。 默认情况下，最高评分的模型基于您的参数将在列表的顶部。 训练作业尝试出更多的模型，你将看到它们添加到列表和图表。
-使用图表以获取到目前为止生成的模型的快速度量值的比较。
-
-![运行详细信息仪表板](media/how-to-create-portal-experiments/run-details.png)
-
-你将能够向下钻取的任何输出模型，这将打开该模型中包括的性能和分布的图表和指标的详细信息。 [了解有关图表的详细](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts)。
-
-![迭代详细信息](media/how-to-create-portal-experiments/dashboard.png)
+实验准备阶段完成后，你将看到运行详细信息屏幕。 这样，您创建的模型的完整列表。 默认情况下，最高评分的模型基于您的参数列表的顶部。 如训练作业尝试出更多的模型，则将它们添加到迭代列表和图表中。 使用迭代图表以获取到目前为止生成的模型的快速度量值的比较。
 
 训练作业可能需要每个管道完成运行一段时间。
 
-## <a name="deploy-model"></a>部署模型
+![运行详细信息仪表板](media/how-to-create-portal-experiments/run-details.png)
 
-一旦您手头有最佳模型，就可以将其部署为 web 服务，以便预测新数据。
+### <a name="view-training-run-details"></a>查看培训运行详细信息
 
-自动化机器学习可帮助您部署模型，而无需编写代码：
+向下钻取的任何输出模型，以查看运行详细信息，如性能指标和分发图表的培训。 [了解有关图表的详细](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts)。
 
-1. 在右侧的运行摘要窗格中，选择"注册模型"。
-
-    ![注册模型](media/how-to-create-portal-experiments/register-model.png)
-
-1. 模型注册后，你将能够下载要在部署期间使用的评分脚本。
-
-    ![下载评分脚本](media/how-to-create-portal-experiments/download-scoring-script.png)
-
-1. 评分脚本后，转到"模型"页 (在左侧的导航窗格下**资产**)。
-
-    ![模型导航窗格](media/how-to-create-portal-experiments/nav-pane-models.png)
-
-1. 选中你已注册，该模型旁边的复选框，然后选择"创建映像"。
-
-    您可识别模型根据它的描述，其中包括运行的 ID 和迭代数，采用以下格式： **< Run_ID > _ < Iteration_number > _Model**。
-
-1. 输入映像的名称并上传之前下载的计分概要文件。 [了解有关计分脚本](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where.md#script)。
-
-    可以使用你自己的评分脚本和 Conda 文件。 如果没有 Conda 文件[创建您自己](tutorial-deploy-models-with-aml.md#create-environment-file)并将其上载以及其他可能想要使用的其他文件。
-
-    ![创建的映像窗体](media/how-to-create-portal-experiments/create-image.png)
-
-1. 选择"创建"按钮以启动映像创建。 这将需要几分钟才能完成，完成后，将顶部栏上看到一条消息。
-
-1. 转到"映像"选项卡，选中你想要部署的映像旁边的复选框并选择"创建部署"。
-
-    ![创建部署屏幕图像](media/how-to-create-portal-experiments/images-create-deployment.png)
-
-1. 输入唯一的部署名称。
-
-1. （可选）输入部署的说明。
-
-1. 选择要使用的目标计算类型。 
-
-    ![创建部署窗体](media/how-to-create-portal-experiments/create-deployment.png)
-
-1. 选择"创建"来启动部署过程，这将需要几分钟才能完成。
-
-1. 就这么简单！ 有一个操作的 web 服务来生成预测。
+![迭代详细信息](media/how-to-create-portal-experiments/iteration-details.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何使用已部署的模型](how-to-consume-web-service.md)。
-* [收集在生产环境中的模型的数据](how-to-enable-data-collection.md)。
+* [了解有关自动化的机器学习的详细信息](concept-automated-ml.md)和 Azure 机器学习。
