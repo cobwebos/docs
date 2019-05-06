@@ -68,6 +68,8 @@
       href: resource-group-delete.md
     - name: 资源管理器部署和经典部署
       href: resource-manager-deployment-model.md
+    - name: Azure 的常见安全属性
+      href: azure-resource-manager-security-attributes.md
 - name: 如何
   items:
     - name: 创建模板
@@ -225,6 +227,8 @@
           href: move-support-resources.md
         - name: 标记支持
           href: tag-support.md
+    - name: 按服务分类的资源提供程序
+      href: azure-services-resource-providers.md
     - name: REST - 资源管理器
       href: /rest/api/resources/
     - name: REST - 部署管理器

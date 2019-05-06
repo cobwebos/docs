@@ -5,13 +5,13 @@
   expanded: false
   items:
     - name: 高级威胁检测
-      displayName: 'vulnerability, virus, ids, incident'
+      displayName: 'vulnerability, virus, IDs, incident'
       href: azure-threat-detection.md
     - name: Azure 日志记录和审核
       displayName: incident
       href: azure-log-audit.md
     - name: Azure 网络安全
-      displayName: 'firewall, ssl, vpn, ids, gateway, https, application gateway, azure application gateway, ips, waf'
+      displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
       href: abstract-azure-network-security.md
     - name: Azure 无服务器平台安全
       href: abstract-serverless-platform-security.md
@@ -50,7 +50,7 @@
         - name: IaaS VM 的磁盘加密
           items:
             - name: 关于 Azure 磁盘加密
-              displayName: 'bitlocker, bek'
+              displayName: 'Bitlocker, bek'
               href: azure-security-disk-encryption-overview.md
             - name: 快速入门
               items:
@@ -141,7 +141,7 @@
           displayName: identity
           href: azure-security-global-admin.md
     - name: 网络安全
-      displayName: 'firewall, ssl, vpn, ids, gateway, https, azure application gateway, application gateway, ips, waf'
+      displayName: 'firewall, ssl, vpn, IDs, gateway, https, azure application gateway, application gateway, ips, waf'
       href: security-network-overview.md
       items:
         - name: 最佳做法
@@ -270,6 +270,11 @@
           href: ./blueprints/pcidss-iaaswa-overview.md
         - name: PaaS Web 应用程序
           href: ./blueprints/pcidss-paaswa-overview.md
+    - name: SCCA
+      displayName: 'blueprint, privacy, certifications'
+      items:
+        - name: 保护 Azure 计算体系结构
+          href: ./compliance/secure-azure-computing-architecture.md
     - name: TIC
       displayName: 'blueprint, privacy, certifications'
       items:
@@ -327,7 +332,7 @@
         - name: 发行版本
           href: azure-security-threat-modeling-tool-releases.md
           items:
-            - name: Threat Modeling Tool GA 版 7.1.5091.2 - 2018 年 9 月 12 日
+            - name: Threat Modeling Tool 正式版 7.1.5091.2 - 2018 年 9 月 12 日
               href: azure-security-threat-modeling-tool-releases-71509112.md
             - name: Threat Modeling Tool 更新版 7.1.51023.1 - 2018 年 11 月 1 日
               href: azure-security-threat-modeling-tool-releases-71510231.md

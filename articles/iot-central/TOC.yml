@@ -113,6 +113,8 @@
           href: howto-personalize-dashboard.md
         - name: 管理首选项
           href: howto-manage-preferences.md
+        - name: 切换实时聊天
+          href: howto-show-hide-chat.md
 - name: 相关内容
   items:
     - name: 解决方案

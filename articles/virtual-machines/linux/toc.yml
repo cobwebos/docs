@@ -25,7 +25,7 @@
       href: tutorial-custom-images.md
     - name: 5 - 高度可用的 VM
       href: tutorial-availability-sets.md
-    - name: 6 - 创建 VM 规模集
+    - name: 6 - 创建规模集
       href: tutorial-create-vmss.md
     - name: 7 - 对 VM 进行负载均衡
       href: tutorial-load-balancer.md
@@ -259,6 +259,8 @@
               href: shared-image-galleries.md
             - name: 使用 CLI 创建共享映像
               href: shared-images.md
+            - name: 门户
+              href: shared-images-portal.md
             - name: 排查共享映像问题
               href: troubleshooting-shared-images.md
         - name: 查找和使用映像

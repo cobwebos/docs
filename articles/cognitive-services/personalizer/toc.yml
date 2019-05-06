@@ -1,0 +1,70 @@
+- name: 个性化体验创建服务文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是个性化体验创建服务？
+      href: what-is-personalizer.md
+      displayName: 'loop, context, feature, action, rank, reward, developer, use case'
+- name: 快速入门
+  items:
+    - name: 创建和使用反馈循环
+      href: csharp-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, c#'
+- name: 概念
+  items:
+    - name: 个性化体验创建服务的工作原理
+      href: how-personalizer-works.md
+      displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
+    - name: 可在哪种场合下使用个性化体验创建服务？
+      href: where-can-you-use-personalizer.md
+      displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: 道德和负责使用
+      href: ethics-responsible-use.md
+      displayName: 'best practice, design'
+    - name: 基本概念
+      items:
+        - name: 功能：操作和上下文
+          href: concepts-features.md
+          displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: 强化学习
+          href: concepts-reinforcement-learning.md
+          displayName: 'RL, contextual bandits, Vowpal Wabbit'
+    - name: 分析
+      items:
+        - name: 脱机评估
+          href: concepts-offline-evaluation.md
+          displayName: 'learning policy, Counterfactual, features'
+- name: 操作指南
+  items:
+    - name: 配置个性化体验创建服务
+      href: how-to-settings.md
+      displayName: 'azure, portal, settings, evaluation, offline, policy'
+    - name: 分析
+      items:
+        - name: 脱机评估
+          href: how-to-offline-evaluation.md
+- name: 引用
+  items:
+    - name: 示例
+      href: 'https://aka.ms/personalizer-samples'
+    - name: REST API 参考
+      href: 'https://aka.ms/personalizer-rest-api-docs'
+    - name: SDK
+      items:
+        - name: .NET SDK 参考
+          href: 'https://aka.ms/personalizer-dotnet-sdk-docs'
+        - name: NuGet 包
+          href: 'https://aka.ms/personalizer-nuget-sdk'
+- name: 资源
+  items:
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure 路线图
+      href: 'https://aka.ms/personalizer-roadmap'
+    - name: 定价
+      href: 'https://aka.ms/personalizer-pricing'
+    - name: 堆栈溢出
+      href: 'https://aka.ms/personalizer-stackoverflow'
+    - name: UserVoice
+      href: 'https://aka.ms/personalizer-uservoice'

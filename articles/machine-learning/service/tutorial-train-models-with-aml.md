@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 01/28/2019
+ms.date: 04/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 712b5a003d3542908698d7b69c636780f6cf1007
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361585"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021725"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务定型图像分类模型
 
@@ -45,31 +45,29 @@ ms.locfileid: "58361585"
 * 一个装有以下组件的 Python 3.6 Notebook 服务器：
     * 适用于 Python 的 Azure 机器学习 SDK
     * `matplotlib` 和 `scikit-learn`
-* 教程 Notebook 和文件 utils.py
-* 机器学习工作区 
-* Notebook 所在的同一目录中的工作区的配置文件 
+* 教程 Notebook 和文件 **utils.py**
+* 机器学习工作区
+* Notebook 所在的同一目录中的工作区的配置文件
 
 从以下任一部分获取所有这些必备组件。
  
-* 使用 [Azure Notebooks](#azure) 
+* 使用[工作区中的云 Notebook 服务器](#azure) 
 * 使用[自己的 Notebook 服务器](#server)
 
-### <a name="azure"></a>使用 Azure Notebooks：云中免费的 Jupyter Notebook
+### <a name="azure"></a>使用工作区中的云 Notebook 服务器
 
-Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks.azure.com/) 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)。 安装和未来的更新通过 Azure 服务自动管理。
-
-完成以下步骤后，运行**入门**项目中的 **tutorials/img-classification-part1-training.ipynb** Notebook。
+可以轻松地从你自己的基于云的 Notebook 服务器着手。 创建此云资源后，[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 就已为你安装和配置了。
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* 启动 Notebook 网页后，打开 **tutorials/img-classification-part1-training.ipynb** Notebook。
 
 
 ### <a name="server"></a>使用自己的 Jupyter Notebook 服务器
 
-执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。 
-
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
- 完成步骤后，运行 **tutorials/img-classification-part1-training.ipynb** Notebook。
+ 完成这些步骤后，从克隆的目录运行 **tutorials/img-classification-part1-training.ipynb** Notebook。
 
 ## <a name="start"></a>设置开发环境
 
@@ -315,18 +313,16 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 请注意该脚本获取数据和保存模型的方式：
 
-+ 定型脚本读取参数以查找包含数据的目录。 稍后提交作业时，请参考数据存储获取此参数：`parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`。
++ 定型脚本读取参数以查找包含数据的目录。 稍后提交作业时，请参考数据存储获取此参数：```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ 定型脚本将模型保存到一个名为“输出”的目录： <br/>
-`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`。<br/>
-此目录中编写的所有内容都会自动上传到你的工作区。 稍后，你将在本教程从此目录访问模型。
-从定型脚本中引用文件 `utils.py` 来正确加载数据集。 将此脚本复制到脚本文件夹，以便可以与远程资源上的定型脚本一起访问。
++ 训练脚本将模型保存到一个名为**outputs** 的目录中。 此目录中编写的所有内容都会自动上传到你的工作区。 稍后，你将在本教程从此目录访问模型。 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
++ 训练脚本需要使用文件 `utils.py` 来正确加载数据集。 以下代码将 `utils.py` 复制到 `script_folder` 中，以便可以与远程资源上的训练脚本一起访问该文件。
 
-```python
-import shutil
-shutil.copy('utils.py', script_folder)
-```
+  ```python
+  import shutil
+  shutil.copy('utils.py', script_folder)
+  ```
 
 
 ### <a name="create-an-estimator"></a>创建估算器

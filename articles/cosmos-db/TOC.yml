@@ -143,17 +143,6 @@
             - name: 索引策略
               displayName: 'consistent, none'
               href: index-policy.md
-        - name: 更改源
-          items:
-            - name: 概述
-              href: change-feed.md
-            - name: 读取更改源
-              href: read-change-feed.md
-            - name: 更改源处理器
-              href: change-feed-processor.md
-            - name: 触发 Azure Functions
-              displayName: change feed
-              href: change-feed-functions.md
         - name: 生存时间
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -498,6 +487,9 @@
           href: data-explorer.md
         - name: 管理索引策略
           href: how-to-manage-indexing-policy.md
+        - name: SQL 子查询示例
+          displayName: 'subquery, exists'
+          href: how-to-sql-subquery.md
     - name: 更改源
       items:
         - name: 多个 Azure Cosmos DB 触发器

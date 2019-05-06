@@ -14,20 +14,14 @@
         - name: 配置应用程序
           items:
             - name: 注册应用程序
-              href: quickstart-v1-add-azure-ad-app.md
-            - name: 更新应用
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: 删除应用
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: 注册应用（预览版）
               href: quickstart-register-app.md
-            - name: 配置应用以访问 Web API（预览版）
+            - name: 配置用于访问 Web API 的应用
               href: quickstart-configure-app-access-web-apis.md
-            - name: 配置应用以公开 Web API（预览版）
+            - name: 配置用于公开 Web API 的应用
               href: quickstart-configure-app-expose-web-apis.md
-            - name: 修改应用支持的帐户（预览版）
+            - name: 修改应用支持的帐户
               href: quickstart-modify-supported-accounts.md
-            - name: 删除应用（预览版）
+            - name: 删除应用
               href: quickstart-remove-app.md
         - name: 单页应用
           items:
@@ -243,20 +237,14 @@
         - name: 配置应用程序
           items:
             - name: 注册应用程序
-              href: quickstart-v2-register-an-app.md
-            - name: 更新应用
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: 删除应用
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: 注册应用（预览版）
               href: quickstart-register-app.md
-            - name: 配置应用以访问 Web API（预览版）
+            - name: 配置用于访问 Web API 的应用
               href: quickstart-configure-app-access-web-apis.md
-            - name: 配置应用以公开 Web API（预览版）
+            - name: 配置用于公开 Web API 的应用
               href: quickstart-configure-app-expose-web-apis.md
-            - name: 修改应用支持的帐户（预览版）
+            - name: 修改应用支持的帐户
               href: quickstart-modify-supported-accounts.md
-            - name: 删除应用（预览版）
+            - name: 删除应用
               href: quickstart-remove-app.md
         - name: 单页应用
           items:
@@ -350,6 +338,8 @@
               href: active-directory-certificate-credentials.md
         - name: 应用程序配置
           items:
+            - name: 应用注册培训指南
+              href: app-registrations-training-guide.md
             - name: 应用程序和服务主体
               href: app-objects-and-service-principals.md
             - name: 单租户和多租户应用

@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c1c00fec5f56fc81b2cb73404728b214b5aaf3f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698343"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025093"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
@@ -41,18 +41,16 @@ ms.locfileid: "59698343"
     * 适用于 Python 的 Azure 机器学习数据准备 SDK
 * 教程 Notebook
 
-从以下任一部分获取所有这些必备组件。
-
-* 使用 [Azure Notebooks](#azure)
+* 使用[工作区中的云 Notebook 服务器](#azure) 
 * 使用[自己的 Notebook 服务器](#server)
 
-### <a name="azure"></a>使用 Azure Notebooks：云中免费的 Jupyter Notebook
+### <a name="azure"></a>使用工作区中的云 Notebook 服务器
 
-Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks.azure.com/) 上安装并配置了 Azure 机器学习数据准备 SDK。 安装和未来的更新通过 Azure 服务自动管理。
-
-完成以下步骤后，运行**入门**项目中的 **tutorials/regression-part1-data-prep.ipynb** Notebook。
+可以轻松地从你自己的基于云的 Notebook 服务器着手。 创建此云资源后，[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 就已为你安装和配置了。
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* 启动 Notebook 网页后，运行 **tutorials/regression-part1-data-prep.ipynb** Notebook。
 
 ### <a name="server"></a>使用自己的 Jupyter Notebook 服务器
 

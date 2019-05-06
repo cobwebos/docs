@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 61f22568aa6e6cf04963b40ad7c47163e87b9800
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2e82e033e56af10bd8e676570e9409941753eb38
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010186"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020986"
 ---
 # <a name="what-are-the-speech-services"></a>什么是语音服务？
 
-Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 SDK](speech-sdk-reference.md)、[语音设备 SDK](speech-devices-sdk-qsg.md) 或 [REST API](rest-apis.md) 可以轻松在应用程序、工具和设备中启用语音。
+Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 SDK](speech-sdk-reference.md)、[语音设备 SDK](https://aka.ms/sdsdk-quickstart) 或 [REST API](rest-apis.md) 可以轻松在应用程序、工具和设备中启用语音。
 
 > [!IMPORTANT]
 > 语音服务已替代必应语音 API、语音翻译和自定义语音。 有关迁移说明，请参阅*操作指南 > 迁移*。
@@ -30,6 +30,7 @@ Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转�
 |---------|---------|-------------|-----|------|
 | [语音转文本](speech-to-text.md) | 语音转文本 | 语音转文本可将音频流实时听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [批量听录](batch-transcription.md) | 使用批量听录能够以异步方式对大量的数据进行语音转文本听录。 这是一个基于 REST 的服务，它使用的终结点与自定义和模型管理相同。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |
+| | [对话听录服务](conversation-transcription-service.md) | 启用实时语音识别、说话人识别和分割聚类。 它非常适合用于听录能够区分说话人的面对面会谈场景。 | 是 | 否 |
 | | [自定义](#customize-your-speech-experience) | 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |
 | [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可将输入文本转换为类似人类的合成语音。 可以选择标准语音或神经语音（请参阅[语言支持](language-support.md)）。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [自定义](#customize-your-speech-experience) | 创建专属于品牌或产品的自定义语音字体。 | 否 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -39,7 +40,8 @@ Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转�
 
 了解 Azure 语音服务的新增功能。
 
-* 2019 年 4 月 - 发布了语音 SDK 1.4.0，支持在 Windows 和 Linux 上使用 C++、C# 和 Java 进行文本到语音转换（Beta 版本）。 另外，SDK 现在对于 Linux 上的 C++ 和 C# 支持 MP3 和 Opus/Ogg 音频格式。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。 
+* 2019 年 5 月 - 发布了语音 SDK 1.5.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
+* 2019 年 4 月 - 发布了语音 SDK 1.4.0，支持在 Windows 和 Linux 上使用 C++、C# 和 Java 进行文本到语音转换（Beta 版本）。 另外，SDK 现在对于 Linux 上的 C++ 和 C# 支持 MP3 和 Opus/Ogg 音频格式。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
 * 2019 年 3 月 - 现在有一个新的用于文本到语音转换 (TTS) 的终结点可用，可以返回特定区域中可用语音的完整列表。 另外，TTS 现在支持新区域。 有关详细信息，请参阅[文本到语音转换 API 参考 (REST)](rest-text-to-speech.md)。
 * 2019 年 2 月 - 发布了支持 [Unity (beta)](quickstart-csharp-unity.md) 的语音 SDK 1.3.0。 添加了对 `AudioInput` 类的支持，使用该类可以选择音频流源。 有关增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
 * 2018 年 12 月 - 发布了支持 [Python](quickstart-python.md)、[Node.js](quickstart-js-node.md) 和 Ubuntu 18.04 LTS 的语音 SDK 1.2.0。 有关详细信息，请参阅[发行说明](releasenotes.md)。

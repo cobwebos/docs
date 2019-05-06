@@ -44,6 +44,18 @@
       href: delegated-access-virtual-desktop.md
     - name: 主机池负载均衡方法
       href: host-pool-load-balancing.md
+- name: 故障排除
+  items:
+    - name: 故障排除概述、反馈和支持
+      href: troubleshoot-set-up-overview.md
+    - name: 创建租户和主机池
+      href: troubleshoot-set-up-issues.md
+    - name: 会话主机虚拟机配置
+      href: troubleshoot-vm-configuration.md
+    - name: 远程桌面客户端连接
+      href: troubleshoot-client-connection.md
+    - name: Windows 虚拟桌面 PowerShell
+      href: troubleshoot-powershell.md
 - name: 引用
   items:
     - name: PowerShell

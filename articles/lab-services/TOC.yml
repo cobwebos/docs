@@ -107,7 +107,7 @@
               href: image-factory-save-distribute-custom-images.md
             - name: 设置保留策略并运行清理脚本
               href: image-factory-set-retention-policy-cleanup.md
-        - name: 设置企业中的开发测试实验室基础结构
+        - name: 企业中的开发测试实验室
           href: devtest-lab-guidance-prescriptive-adoption.md
           items:
             - name: 参考体系结构

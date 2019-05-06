@@ -7,10 +7,15 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 AKS 群集 - CLI
-      href: kubernetes-walkthrough.md
-    - name: 创建 AKS 群集 - 门户
-      href: kubernetes-walkthrough-portal.md
+    - name: 创建 AKS 群集
+      expanded: true
+      items:
+        - name: 使用 Azure CLI
+          href: kubernetes-walkthrough.md
+        - name: 使用 Azure 门户
+          href: kubernetes-walkthrough-portal.md
+        - name: 使用 Resource Manager 模板
+          href: kubernetes-walkthrough-rm-template.md
     - name: 开发应用程序
       expanded: true
       items:
@@ -87,7 +92,7 @@
             - name: Pod 安全性
               href: developer-best-practices-pod-security.md
     - name: 配额和区域限制
-      href: container-service-quotas.md
+      href: quotas-skus-regions.md
     - name: 从 ACS 迁移到 AKS
       href: acs-aks-migration.md
     - name: 受支持的 Kubernetes 版本

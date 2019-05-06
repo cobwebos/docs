@@ -152,6 +152,8 @@
         - name: vCPU 配额
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: 规模集常见问题解答
+      href: virtual-machine-scale-sets-faq.md
 - name: 如何
   items:
     - name: 规划和设计
@@ -183,6 +185,9 @@
               href: virtual-machine-scale-sets-autoscale-portal.md
             - name: 高级自动缩放
               href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              maintainContext: true
+            - name: 自动缩放疑难解答
+              href: virtual-machine-scale-sets-troubleshoot.md
         - name: 规模集中的应用程序
           href: virtual-machine-scale-sets-deploy-app.md
         - name: 规模集中的扩展
@@ -199,6 +204,9 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: 使用 Azure CLI
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
+            - name: 使用扩展序列化进行磁盘加密
+              href: ../security/azure-security-disk-encryption-extension-sequencing.md
+              maintainContext: true
         - name: 使用大型规模集
           href: virtual-machine-scale-sets-placement-groups.md
         - name: 将规模集模板转换为使用托管磁盘
@@ -247,14 +255,6 @@
         - name: 自动缩放规模集
           href: /azure/ansible/ansible-auto-scale-vmss
           maintainContext: true
-    - name: 故障排除
-      items:
-        - name: 自动缩放
-          href: virtual-machine-scale-sets-troubleshoot.md
-    - name: 常见问题解答
-      items:
-        - name: 规模集常见问题解答
-          href: virtual-machine-scale-sets-faq.md
 - name: 引用
   items:
     - name: Azure PowerShell
