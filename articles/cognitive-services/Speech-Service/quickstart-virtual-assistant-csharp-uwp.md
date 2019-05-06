@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 7dd469b07727e1efa326a1d92ea778bd3fb2cab1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ee7649dccf1ca50933e29cec9d40e4f5e16bd721
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025371"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074103"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>快速入门：使用语音 SDK 创建语音优先虚拟助手 (UWP)
 
@@ -31,7 +31,7 @@ ms.locfileid: "65025371"
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
-* 先前创建的并使用 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md)配置的机器人
+* 先前创建的并使用 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)配置的机器人
 
     > [!NOTE]
     > 在预览版中，Direct Line 语音通道目前仅支持 **westus2** 区域。
@@ -247,7 +247,7 @@ ms.locfileid: "65025371"
     > 在预览版中，Direct Line 语音通道目前仅支持 **westus2** 区域。
 
     > [!NOTE]
-    > 有关配置机器人和检索通道机密的信息，请参阅 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md)的 Bot Framework 文档。
+    > 有关配置机器人和检索通道机密的信息，请参阅 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot Framework 文档。
 
     ```csharp
     // create a BotConnectorConfig by providing a bot secret key and Cognitive Services subscription key

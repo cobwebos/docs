@@ -248,8 +248,8 @@ ms.locfileid: "61306302"
 
 |属性 | 描述|
 |----------|----------|
-|调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
-|类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。|
+|Caller |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
+|Category | 数据类型的分类。 对于自动化，该值为 JobLogs。|
 |CorrelationId | 用作 Runbook 作业相关性 ID 的 GUID。|
 |JobId | 用作 Runbook 作业 ID 的 GUID。|
 |operationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。|
@@ -263,14 +263,14 @@ ms.locfileid: "61306302"
 |SourceSystem | 指定所提交数据的源系统。 对于自动化，值为 OpsManager|
 |StreamType | 指定事件的类型。 可能的值包括：<br>- Verbose（详细）<br>- Output（输出）<br>- Error（错误）<br>- Warning（警告）|
 |SubscriptionId | 指定作业的订阅 ID。
-|时间 | 执行 Runbook 作业的日期和时间。|
+|Time | 执行 Runbook 作业的日期和时间。|
 
 ### <a name="job-streams"></a>作业流
 
 |属性 | 描述|
 |----------|----------|
-|调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
-|类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。|
+|Caller |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
+|Category | 数据类型的分类。 对于自动化，该值为 JobStreams。|
 |JobId | 用作 Runbook 作业 ID 的 GUID。|
 |operationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。|
 |resourceGroup | 指定 Runbook 作业的资源组名称。|
@@ -282,7 +282,7 @@ ms.locfileid: "61306302"
 |RunbookName | Runbook 的名称。|
 |SourceSystem | 指定所提交数据的源系统。 对于自动化，值为 OpsManager。|
 |StreamType | 作业流的类型。 可能的值包括：<br>- Progress（进度）<br>- Output（输出）<br>- Warning（警告）<br>- Error（错误）<br>- Debug（调试）<br>- Verbose（详细）|
-|时间 | 执行 Runbook 作业的日期和时间。|
+|Time | 执行 Runbook 作业的日期和时间。|
 
 如果执行的日志搜索返回 **JobLogs** 或 **JobStreams** 类别的记录时，可以选择 **JobLogs** 或 **JobStreams** 视图，其中显示了一组汇总搜索所返回的更新的磁贴。
 
