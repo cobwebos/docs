@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: c260273c647dd5dd6050f1fd543ebd5a5aa47b89
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e5d04fd136848684e866fae9768b252e3b6ca77f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922775"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137925"
 ---
 # <a name="action-rules-preview"></a>操作规则 （预览版）
 
@@ -184,8 +184,8 @@ Contoso 希望为所有日志生成的"计算机-01"警报抑制通知中 Contos
 
 * 问： 如果我在两个单独的操作规则监视的资源，会发生什么情况？ 获取一个或两个通知？ 例如，VM2 在此方案中：
 
-      action rule 'AR1' defined for 'VM1' and 'VM2' with action group 'AG1' 
-      action rule 'AR2' defined for 'VM2' and 'VM3' with action group 'AG1' 
+      action rule 'AR1' defined for 'VM1' and 'VM2' with action group 'AG1'
+      action rule 'AR2' defined for 'VM2' and 'VM3' with action group 'AG1'
 
     A. 对于 VM1 和 VM3 上的每个警报，将一次触发操作组 AG1。 对于 VM2 上的每个警报，操作组 AG1 会触发两次 (**操作规则不消除重复操作**)。 
 
@@ -198,9 +198,10 @@ Contoso 希望为所有日志生成的"计算机-01"警报抑制通知中 Contos
 
 * 问： 如果我的警报规则，并为相同资源调用不同的操作组定义的操作规则，会发生什么情况？ 例如，在此方案中的 VM1:
 
-     警报规则 rule1 上 VM1 操作组 AG2 操作规则使用 AR1 定义为 VM1，通过操作组 AG1  
+      alert rule  'rule1' on          'VM1' with action group 'AG2'
+      action rule 'AR1'   defined for 'VM1' with action group 'AG1' 
  
-    A. 对于 VM1 上的每个警报，将一次触发操作组 AG1。 每当触发警报规则 rule1 时，它还将另外触发 AG2。 (**操作组操作规则和警报规则中定义独立操作，与任何重复数据消除**) 
+    A. 对于 VM1 上的每个警报，将一次触发操作组 AG1。 每当触发警报规则 rule1 时，它还将另外触发 AG2。 **操作规则中定义的操作组和警报规则操作独立，与任何重复数据消除**。 
 
 ## <a name="next-steps"></a>后续步骤
 

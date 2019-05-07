@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 05/07/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a908185f2d8475afb642250d1499cffa539aca4d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 08d09680ee1797e73666c185f4430c7ef3079477
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573493"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153689"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
@@ -54,10 +54,12 @@ ms.locfileid: "64573493"
 
 ![编辑聊天内容 QnA](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
+若要查看元数据，请选择**视图选项**在工具栏中，然后选择**显示元数据**。
+
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>添加其他的聊天内容问题和解答
 可以添加新的不在预定义集中的聊天内容 QnA。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。 若要确保排名程序理解这是聊天内容，请添加元数据键/值对“编辑: 聊天内容”，如下图所示：
    
-![添加聊天内容 QnA](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)
+![![添加 chit 聊天变](../ media/qnamaker-how-to-chit-chat/add-new-chit-chat.png）](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>从现有 KB 中删除聊天内容
 选择 KB，导航到“设置”页。 特定的聊天内容源作为文件列出，使用所选的个性名称。 可以将其作为源文件删除。
