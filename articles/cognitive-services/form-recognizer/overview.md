@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: pafarley
-ms.openlocfilehash: df3db534550e709e40cc94d5f951056d93a1003e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2a120a59a58eb8d7a017cce0dd85c21038bdcf51
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025427"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143214"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -73,13 +73,7 @@ Azure 表单识别器是一个认知服务，它使用机器学习技术从表�
 
 ## <a name="data-privacy-and-security"></a>数据隐私和安全性
 
-该服务是根据[联机服务条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)以 Azure 服务[预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)的形式提供的。 你将保留自己数据的所有权，我们只会使用这些数据根据协议中所述提供联机服务：
-
-### <a name="processing-of-customer-data-ownership"></a>处理客户数据；所有权
-
-我们使用或处理客户数据的目的只是为了向客户提供联机服务，包括与提供这些服务相关的用途。 Microsoft 不会出于广告或者类似的商业目的使用或处理客户数据，或者从客户数据中衍生信息。 在签约双方之间，客户对客户数据保留所有权利、所有权和利益。 Microsoft 不会索取客户数据的权利，客户只会授权 Microsoft 向客户提供联机服务。
-
-与所有认知服务一样，使用表单识别器服务的开发人员应该了解 Microsoft 针对客户数据的政策。 请参阅 Microsoft 信任中心上的[“认知服务”页面](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)来了解详细信息。
+该服务是根据[联机服务条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)以 Azure 服务[预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)的形式提供的。 与所有认知服务一样，使用表单识别器服务的开发人员应该了解 Microsoft 针对客户数据的政策。 请参阅 Microsoft 信任中心上的[“认知服务”页面](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)来了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

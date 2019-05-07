@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 7497255dcad55cea86e0c640e2f1423d7d763a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737842"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143184"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
 
@@ -25,24 +25,6 @@ ms.locfileid: "60737842"
 要开始，请转到 [Azure 门户](https://portal.azure.com)，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，键入函数应用的名称，并从列表中将其选中。 选择 Function App 后，将看到以下页面：
 
 ![Azure 门户中 Function App 的概述](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
-
-## <a name="favorite"></a>门户中的收藏函数 
-
-有时，在 [Azure 门户]中查找资源可能很难。 为了更轻松地找到你创建的函数应用，请将函数应用添加到你在门户中的收藏夹。 
-
-1. 登录到 [Azure 门户]。
-
-2. 单击左下角的箭头以展开所有服务，在“筛选器”字段中键入 `Functions`，并单击“Function App”旁边的星形。  
- 
-    ![在 Azure 门户中创建 Function App](./media/functions-how-to-use-azure-function-app-settings/functions-favorite-function-apps.png)
-
-    这会在门户左侧的菜单中添加“函数”图标。
-
-3. 关闭菜单，向下滚动到底部才能看到“函数”图标。 单击该图标可查看所有 Function App 的列表。 单击 Function App 以在此应用中使用函数。 
- 
-    ![收藏夹中的函数应用](./media/functions-how-to-use-azure-function-app-settings/functions-function-apps-hub.png)
- 
-[Azure 门户]: https://portal.azure.com/
 
 ## <a name="manage-app-service-settings"></a>Function App 设置边栏选项卡
 

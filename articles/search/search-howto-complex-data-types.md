@@ -10,12 +10,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 397b3ea7fee67e25cd160f6b529a660e18c44046
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 00606ed5cbcd8681748241e9404c6e6e5aa95021
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024738"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147315"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>如何在 Azure 搜索中为复杂数据类型建模
 
@@ -28,7 +28,7 @@ Azure 搜索以本机方式支持复杂类型和集合。 在一起，这些类�
 > [!Note]
 > 对复杂类型的支持已在公开发布`api-version=2019-05-06`。 
 >
-> 如果你搜索的解决方案基于集合中的平展数据集的早期解决方法，应更改索引以包含复杂类型，如最新的 API 版本中受支持。 有关升级的 API 版本的详细信息，请参阅[升级到最新的 REST API 版本](search-api-migration.md)或[升级到最新的.NET SDK 版本](search-dotnet-sdk-migration.md)。
+> 如果你搜索的解决方案基于集合中的平展数据集的早期解决方法，应更改索引以包含复杂类型，如最新的 API 版本中受支持。 有关升级的 API 版本的详细信息，请参阅[升级到最新的 REST API 版本](search-api-migration.md)或[升级到最新的.NET SDK 版本](search-dotnet-sdk-migration-version-9.md)。
 
 ## <a name="example-of-a-complex-structure"></a>复杂结构示例
 
