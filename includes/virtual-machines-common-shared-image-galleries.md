@@ -5,22 +5,21 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: fd1dd1f8af8fee9b1fecb05405381dba879facde
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0fe1de9bb674c66d1b665de25ee579bc86e42c75
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149817"
+ms.locfileid: "65192366"
 ---
 共享映像库是可以帮助你围绕自定义托管 VM 映像生成结构和组织的服务。 提供了共享的图像库：
 
 - 管理全局复制的映像。
 - 版本控制和映像以更轻松地管理进行分组。
-- 更高版本的缩放限制。 自定义映像允许为 600 的并发 Vm 时为 1000 个并发 Vm 允许共享图像库。
-- 使用区域冗余存储高度可用的映像。 即使数据中心出现故障，你将在该区域中具有访问映像。
+- 在支持可用性区域的区域，使您的图像高度可用使用区域冗余存储 (ZRS) 帐户。 ZRS 提供了更好地防范区域性故障的复原能力。
 - 跨订阅、 和租户，使用 RBAC 甚至之间共享。
 
 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。 共享映像可以复制到多个区域，以便更快地扩展部署。
@@ -92,12 +91,10 @@ ms.locfileid: "65149817"
 
 ## <a name="limits"></a>限制 
 
-使用托管映像时，只能有 600 的并发 Vm，每个映像，使用共享图像库，这将增加到 1000 个并发 Vm，每个映像版本。
-
 有限制，对于每个订阅，使用共享映像库部署资源：
-- 每个区域每个订阅为 10 个共享映像库
-- 每个区域每个订阅为 200 个映像定义
-- 每个区域每个订阅为 2000 个映像版本
+- 每个订阅，每个区域 100 共享的图像库
+- 1,000 图像定义，每个订阅，每个区域
+- 每个订阅，每个区域 10,000 映像版本
 
 有关详细信息，请参阅[检查资源用量与限制](https://docs.microsoft.com/azure/networking/check-usage-against-limits)有关如何检查当前使用情况的示例。
  

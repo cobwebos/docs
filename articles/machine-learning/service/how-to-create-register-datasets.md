@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 4b3fa69156146037ff59a41eab8c8373f6e01dc4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 65a861c647c2dc92e416fa356075821aa5060042
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029110"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205040"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>创建并注册 Azure 机器学习数据集 （预览）
 
@@ -44,7 +44,7 @@ Azure 机器学习数据集 （预览版） 使其更轻松地访问和使用你
 * 推断和转换列数据类型。
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
@@ -60,7 +60,9 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 * 导入[ `Workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)并[ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition)和`Dataset`SDK 中的包。
 
 ```Python
-from azureml.core import Workspace, Datastore, Dataset
+from azureml.core.workspace import Workspace
+from azureml.core.datastore import Datastore
+from azureml.core.dataset import Dataset
 
 datastore_name = 'your datastore name'
 
@@ -74,7 +76,7 @@ workspace = Workspace.from_config()
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-使用`from_delimited_files()`方法来读取带分隔符的文件，并创建内存中数据集。
+使用`from_delimited_files()`方法来读取带分隔符的文件，并创建未注册的数据集。
 
 ```Python
 # create an in-memory Dataset on your local machine
@@ -85,10 +87,10 @@ dataset = Dataset.from_delimited_files(datapath)
 dataset.head(5)
 ```
 
-||ID|案例号|date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
+||ID|案例号|date|阻止|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
 |--|--|---|---|---|---|----|------|-------|------|-----|---|----|----|-----|-----|------|----|-----|----|----|-----
 |0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|欺骗性的做法|通过 300 美元的财务身份盗窃|OTHER|FALSE|FALSE|...|9|50|11|1183356|1831503|2016|5/11/2016 15:48|41.69283384|-87.60431945|(41.692833841, -87.60431945)|
-第|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT| 从构建|未成年人|FALSE|FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
+1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT| 从构建|未成年人|FALSE|FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
 2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|欺骗性的做法|财务身份盗窃 300 美元并在列表视图|未成年人|FALSE|FALSE|...|19|74|11|||2016|5/12/2016 15:50
 3|10519591|HZ261534|4/15/2016 9:00|113XX S PRAIRIE AVE|1120|欺骗性的做法|伪造|未成年人|FALSE|FALSE|...|9|49|10|||2016|5/13/2016 15:51
 4|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|从构建|学校，公共的构建|FALSE|FALSE|...|40|13|6|||2016|5/25/2016 15:59|
@@ -98,23 +100,22 @@ dataset.head(5)
 使用[ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)方法以将数据集注册到工作区以共享和重用您的组织内以及跨各种试验。
 
 ```Python
-dataset = dataset.register(workspace = 'workspace_name',
-                           name = "dataset_crime",
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
+
                            description = 'Training data',
                            exist_ok = False
                            )
 ```
 
 >[!NOTE]
-> 默认参数设置为`register()`是 exist_ok = False。 如果你尝试注册具有相同名称的数据集，而无需更改此设置会发生错误。
+> 默认参数设置为`register()`是`exist_ok = False`。 如果你尝试注册具有相同名称的数据集，而无需更改此设置会发生错误。
 
-`register()`方法参数的设置，使用更新的已注册的数据集定义`exist_ok = True`。
+`register()`方法返回与参数的设置，已注册的数据集`exist_ok = True`。
 
 ```Python
-dataset = dataset.register(workspace = workspace_name,
-                           name = "dataset_crime",
-                           description = 'Training data',
-                           exist_ok = True)
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
 ```
 
 使用`list()`若要查看所有工作区中已注册的数据集。
@@ -137,7 +138,7 @@ Dataset.list(workspace_name)
 ```Python
 workspace = Workspace.from_config()
 
-dataset = workspace.Datasets['dataset_crime']
+dataset = workspace.datasets['dataset_crime']
 ```
 
 ## <a name="next-steps"></a>后续步骤
