@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 30d18e1e23767ce3a179221714e001574f8e9778
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075485"
+ms.locfileid: "65205809"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure Cosmos DB etcd API （预览版） 简介
 
@@ -23,7 +23,7 @@ Azure Cosmos DB 是 Microsoft 的全球分布式多模型数据库服务的关�
 Azure Cosmos DB 中的 etcd API，可使用 Azure Cosmos DB 作为后端存储[Azure Kubernetes](../aks/index.yml)。 Azure Cosmos DB 中的 etcd API 目前处于预览状态。 Azure Cosmos DB 实现 etcd 线路协议。 Azure Cosmos DB 中 etcd API，开发人员将自动获得高度可靠[可用](high-availability.md)，[全球分布式](distribute-data-globally.md)Kubernetes。 此 API 允许开发人员在完全托管的云本机 PaaS 服务，可扩展 Kubernetes 状态管理。 
 
 > [!NOTE]
-> 与不同的 Azure Cosmos DB 中的其他 Api，则无法预配 etcd API 帐户通过 Azure 门户、 CLI 或 Sdk。 可以通过部署; 仅资源管理器模板来预配 etcd API 帐户有关详细步骤，请参阅[如何预配使用 Azure Cosmos DB 的 Azure Kubernetes](bootstrap-kubernetes-cluster.md)一文。  
+> 与不同的 Azure Cosmos DB 中的其他 Api，则无法预配 etcd API 帐户通过 Azure 门户、 CLI 或 Sdk。 可以通过部署; 仅资源管理器模板来预配 etcd API 帐户有关详细步骤，请参阅[如何预配使用 Azure Cosmos DB 的 Azure Kubernetes](bootstrap-kubernetes-cluster.md)一文。 Azure Cosmos DB etcd API 当前处于受限预览状态。 你可以[注册预览版](https://aka.ms/cosmosetcdapi-signup)，通过填写注册表单。
 
 ## <a name="wire-level-compatibility"></a>网络级别的兼容性
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: 0506ef82a00b46bf9be14757f15195bcbf8ab432
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148889"
+ms.locfileid: "65202916"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>自动缩放和区域冗余的应用程序网关 
 
@@ -22,6 +22,8 @@ ms.locfileid: "65148889"
 
 - 自动缩放：凭借自动缩放 SKU，应用程序网关或 WAF 部署可根据变化中的流量负载模式增加或减少。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 此 SKU 提供，则返回 true 的弹性。 在 Standard_v2 和 WAF_v2 SKU 中，应用程序网关可以同时在固定容量 （已禁用自动缩放） 和启用自动缩放模式下进行操作。 固定容量模式对具有一致性和可预测工作负荷的方案非常有用。 自动缩放模式为有益于应用程序，请参阅中的应用程序流量的变体。
 - **区域冗余**：应用程序网关或 WAF 部署可以跨多个可用性区域，无需预配每个区域使用流量管理器中的单独应用程序网关实例。 您可以选择一个区域或多个区域部署应用程序网关实例位置，这将发生区域故障更具弹性。 应用程序的后端池可以通过类似方式分布在多个可用性区域中。
+
+  区域冗余是可用仅 Azure 区域提供的。 在其他区域，支持所有其他功能。 有关详细信息，请参阅[在 Azure 中的可用性区域是什么？](../availability-zones/az-overview.md#services-support-by-region)
 - **静态 VIP**：应用程序网关 v2 SKU 支持静态 VIP 类型以独占方式。 这可确保与应用程序网关相关联的 VIP 不会更改的部署，即使在重启后的生命周期。
 - **标头重写**:应用程序网关，可添加、 删除或更新与 v2 SKU 的 HTTP 请求和响应标头。 有关详细信息，请参阅[重写 HTTP 标头与应用程序网关](rewrite-http-headers.md)
 - **密钥保管库集成 （预览版）**:应用程序网关 v2 支持的附加到启用 HTTPS 侦听器的服务器证书 （在公共预览版） 与密钥保管库集成。 有关详细信息，请参阅[使用密钥保管库证书的 SSL 终止](key-vault-certs.md)。

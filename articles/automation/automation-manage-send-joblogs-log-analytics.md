@@ -1,6 +1,6 @@
 ---
 title: 将 Azure 自动化作业数据转发到 Azure Monitor 日志
-description: 本文演示如何将作业状态和 Runbook 作业流发送到 Azure Monitor 日志，以提供更多见解和管理信息。
+description: 本文演示如何将作业状态和 runbook 作业流发送到 Azure Monitor 日志，以提供附加见解和管理。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8672bc28ea5e8562472408810a38ea0de6778cfd
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739095"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65200619"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>将作业状态和作业流从自动化转发到 Azure Monitor 日志
 
@@ -97,9 +97,9 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- New（新）<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Completed（已完成） |
-| Category | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
+| 类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
 | OperationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。 |
-| Resource | 自动化帐户的名称 |
+| 资源 | 自动化帐户的名称 |
 | SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为 Azure。 |
 | ResultDescription |描述 Runbook 作业结果状态。 可能的值包括：<br>- 作业已启动<br>- 作业失败<br>- 作业已完成 |
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |
@@ -120,9 +120,9 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- In Progress |
-| Category | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
+| 类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
 | OperationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。 |
-| Resource | 自动化帐户的名称 |
+| 资源 | 自动化帐户的名称 |
 | SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为 Azure。 |
 | ResultDescription |包括来自 Runbook 的输出流。 |
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |

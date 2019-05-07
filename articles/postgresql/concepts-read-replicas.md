@@ -1,20 +1,19 @@
 ---
-title: Azure Database for PostgreSQL 中的只读副本
-description: 本文介绍 Azure Database for PostgreSQL 中的只读副本功能。
-author: WenJason
-ms.author: v-jay
+title: Azure Database for PostgreSQL-单个服务器中读取副本
+description: 本文介绍用于 PostgreSQL 的单个服务器的 Azure 数据库中的读取的副本功能。
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 04/01/2019
-ms.date: 04/22/2019
-ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 1d75d01df74a239ba865d9a4e2b216a410e6069c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564351"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067435"
 ---
-# <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的只读副本
+# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单个服务器中读取副本
 
 使用只读副本功能可将数据从 Azure Database for PostgreSQL 服务器复制到只读服务器。 可将主服务器中的数据复制到同一 Azure 区域中的最多 5 个副本。 副本是使用 PostgreSQL 引擎的本机复制技术以异步方式更新的。
 
@@ -51,7 +50,7 @@ ms.locfileid: "60564351"
 可以使用主机名和有效的用户帐户连接到副本，就像在常规的 Azure Database for PostgreSQL 服务器上连接一样。 对于名称为 **myreplica**、管理员用户名为 **myadmin** 的服务器，可以使用 psql 连接到副本：
 
 ```
-psql -h myreplica.postgres.database.chinacloudapi.cn -U myadmin@myreplica -d postgres
+psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 ```
 
 在提示符下，输入用户帐户的密码。

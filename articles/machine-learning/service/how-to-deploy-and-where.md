@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1da232c2a81c9989cc78eccf1be97b5d75a48666
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 113c894122fe2b0673dfb47f8a9c0cbecf4c6290
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024492"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205063"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "65024492"
 | ----- | ----- | ----- |
 | [本地 web 服务](#local) | 测试/调试 | 适用于有限的测试和故障排除。
 | [Azure Kubernetes 服务 (AKS)](#aks) | 实时推理 | 非常适合用于大规模生产部署。 提供了自动缩放和快速的响应时间。 |
-| [Azure 容器实例 (ACI)](#aci) | 测试 | 非常适用于低规模，基于 CPU 的工作负荷。 |
+| [Azure 容器实例 (ACI)](#aci) | 正在测试 | 非常适用于低规模，基于 CPU 的工作负荷。 |
 | [Azure 机器学习计算](how-to-run-batch-predictions.md) | （预览版）批处理推理 | 运行批处理评分上无服务器计算。 支持的普通和低优先级 Vm。 |
 | [Azure IoT Edge](#iotedge) | （预览版）IoT 模块 | 部署和 IoT 设备上提供机器学习模型。 |
 
@@ -193,7 +193,7 @@ inference_config = InferenceConfig(source_directory="C:/abc",
 
 在此示例中，配置包含以下各项：
 
-* 包含执行推断所需的资产目录
+* 包含资产需要向推理的目录
 * 此模型需要 Python
 * [入口脚本](#script)，用于处理 web 请求发送到已部署的服务
 * 描述运行推断所需的 Python 包的 conda 文件
@@ -210,7 +210,7 @@ InferenceConfig 功能的信息，请参阅[高级的配置](#advanced-config)�
 
 | 计算目标 | 部署配置示例 |
 | ----- | ----- |
-| Local | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| 本地 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure 容器实例 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes 服务 | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 

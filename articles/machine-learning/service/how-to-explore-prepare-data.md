@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 683f916596b4c77ec1dbc2acf1f91876c0752c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f9087d1fda7574043879983e31d7b608dbe58798
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028825"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204972"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>探索和准备数据与数据集类 （预览版）
 
@@ -44,7 +44,7 @@ ms.locfileid: "65028825"
 需要你的数据以获取初始了解你的数据体系结构和内容的示例。 在此期间， [ `sample()` ](https://docs.microsoft.com//python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#sample-sample-strategy--arguments-)方法从数据集类支持 Top N、 简单随机的和 Stratified 采样策略。
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import random
 
 # create an in-memory Dataset from a local file
@@ -63,7 +63,7 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|date|街区|IUCR|主要类型|...|
+||ID|案例号|date|阻止|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|欺骗性的做法|...
 1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
@@ -80,10 +80,10 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|date|街区|IUCR|主要类型|...|
+||ID|案例号|date|阻止|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
-1|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|欺骗性的做法|...
+第|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|欺骗性的做法|...
 2|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|...
 
 ### <a name="stratified-sample"></a>分层的采样
@@ -103,12 +103,11 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|date|街区|IUCR|主要类型|...|
+||ID|案例号|date|阻止|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
-1|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|...
+第|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|...
 2|10535059|HZ278872|4/15/2016 4:30|004XX S KILBOURN AVE|810|THEFT|...
-
 
 ## <a name="explore-with-summary-statistics"></a>浏览具有汇总统计信息
 
@@ -123,7 +122,7 @@ dataset.get_profile()
 ID|FieldType.INTEGER|1.04986e+07|1.05351e+07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e+07|1.04992e+07|1.04986e+07|1.05166e+07|1.05209e+07|1.05259e+07|1.05351e+07|1.05351e+07|1.05351e+07|1.05195e+07|12302.7|1.51358e+08|-0.495701|-1.02814
 案例号|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-街区|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+阻止|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 主要类型|FieldType.STRING|欺骗性的做法|THEFT|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 描述|FieldType.STRING|虚假检查|通过 500 美元|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -152,7 +151,7 @@ Location|FieldType.STRING||(41.903206037, -87.676361925)|10.0|0.0|10.0|0.0|0.0|7
 首先，获取与数据集的最新定义[ `get_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-)和削减与数据[ `keep_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow)，因此，我们仅查看我们想要介绍的列。
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import azureml.dataprep as dprep
 
 # get the latest definition of Dataset
@@ -219,9 +218,8 @@ ds_def.head(3)
 ||ID|逮捕|纬度|经度
 -|---------|-----|---------|----------
 0|10498554|False|41.692834|-87.604319
-1|10516598|False|41.744107|-87.664494
+第|10516598|False|41.744107|-87.664494
 2|10519196|False|41.780049|-87.000000
-
 
 更新数据集定义一起使用， [ `update_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#update-definition-definition--definition-update-message-)保留执行的转换步骤。
 
@@ -240,12 +238,13 @@ dataset.head(3)
 
 通常情况下，将数据与我们合作时清理和准备数据是只是我们需要用于生产的总数据的子集。 因此，某些作为一部分我们清理我们做的假设可能会是 false。 例如，在不断更新数据集中，最初仅包含特定范围内的数字的列可能包含广泛的后续执行中的值。 通常，这些错误将导致中断的管道或错误数据。
 
-数据集支持管道执行计算的数据创建断言。 这些断言让我们验证是否对数据我们假设继续准确和时，相应地处理故障。
+管道执行计算的数据创建断言的数据集支持。 这些断言让我们验证是否对数据我们假设继续准确和时，相应地处理故障。
 
 例如，如果想要将限制`Latitude`并`Longitude`你的数据集特定的数值范围中的值[ `assert_value()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#assert-value-columns--multicolumnselection--expression--azureml-dataprep-api-expressions-expression--policy--azureml-dataprep-api-engineapi-typedefinitions-assertpolicy----assertpolicy-errorvalue--1---error-code--str----assertionfailed------azureml-dataprep-api-dataflow-dataflow)方法可确保这始终是这种情况。
 
 ```Python
 from azureml.dataprep import value
+from azureml.core.dataset import Dataset
 
 # get the latest definition of the Dataset
 ds_def = dataset.get_definition()
@@ -282,17 +281,17 @@ print(error.originalValue)
 数据集的更高级的工具之一是派生列使用的所需的结果示例的功能。 这样可提供 SDK 示例，以便它可以生成代码以实现预期的转换。
 
 ```Python
-from azureml.dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local file
 dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||ID|案例号|date|街区|...|
+||ID|案例号|date|阻止|...|
 -|---------|-----|---------|----|---
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|...
-1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|...
+第|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|...
 2|10519196|HZ261252|2016-04-15 10:00:00|104XX S SACRAMENTO AVE|...
 
 假设您需要转换的日期和时间格式为"2016年-04-04 晚上 10 点-凌晨 12 点。 在中[ `derive_column_by_example()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#derive-column-by-example-source-columns--sourcecolumns--new-column-name--str--example-data--exampledata-----azureml-dataprep-api-dataflow-dataflow)自变量，提供所需输出中的示例`example_data`参数按以下格式： *（原始输出、 所需的输出）*。
@@ -302,8 +301,8 @@ dataset.head(3)
 ```Python
 ds_def = dataset.get_definition()
 ds_def = ds_def.derive_column_by_example(
-        source_columns = "Date", 
-        new_column_name = "Date_Time_Range", 
+        source_columns = "Date",
+        new_column_name = "Date_Time_Range",
         example_data = [("2016-04-04 23:56:00", "2016-04-04 10PM-12AM"), ("2016-04-15 17:00:00", "2016-04-15 4PM-6PM")]
     )
 ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
@@ -329,7 +328,7 @@ dataset = dataset.update_definition(ds_def, 'Derive Date_Time_Range')
 例如，列`inspections.business.city`包含几种形式的城市名称"San Francisco"。
 
 ```Python
-from azureml.Dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local json file
 dataset = Dataset.auto_read_files('./data/city.json')
@@ -339,7 +338,7 @@ dataset.head(5)
 ||inspections.business.business_id|inspections.business_name|inspections.business.address|inspections.business.city|...|
 -|-----|-------------------------|------------|--|---
 0|16162|快速 N Ezee 印度食品|3861 24th St|SF|...
-第|67565|泰语的领军人打嗝声 Cafe|1541 TARAVAL St|旧金山|...
+1|67565|泰语的领军人打嗝声 Cafe|1541 TARAVAL St|旧金山|...
 2|67565|泰语的领军人打嗝声 Cafe|1541 TARAVAL St|旧金山|...
 3|68701|Grindz|832 clement St|SF|...
 4|69186|高级支持以迎合和事件，inc.|1255 5 月 22 日 St|S.F.|...
@@ -363,7 +362,7 @@ ds_def.head(5)
 ||inspections.business.business_id|inspections.business_name|inspections.business.address|inspections.business.city|city_grouped|similarity_score|...|
 -|-----|-------------------------|------------|--|---|---|---
 0|16162|快速 N Ezee 印度食品|3861 24th St|SF|旧金山|0.814806|...
-1|67565|泰语的领军人打嗝声 Cafe|1541 TARAVAL St|旧金山|旧金山|1.000000|...
+第|67565|泰语的领军人打嗝声 Cafe|1541 TARAVAL St|旧金山|旧金山|1.000000|...
 2|67565|泰语的领军人打嗝声 Cafe|1541 TARAVAL St|旧金山|旧金山|1.000000|...
 3|68701|Grindz|832 clement St|SF|旧金山|0.814806|...
 4|69186|高级支持以迎合和事件，inc.|1255 5 月 22 日 St|S.F.|旧金山|0.814806|...
