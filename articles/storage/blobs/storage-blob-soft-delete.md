@@ -2,18 +2,18 @@
 title: Azure 存储 blob 的软删除 | Microsoft Docs
 description: Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或其他存储帐户用户错误地修改或删除数据后可以更轻松地恢复数据。
 services: storage
-author: MichaelHauss
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2019
-ms.author: mihauss
+ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d9055b0c0decbeca0bb43969af4e854c396c3bb6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8c23e429966cf9a1e93ac46ea3ecd11744761872
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727416"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148622"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除
 Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或其他存储帐户用户错误地修改或删除数据后可以更轻松地恢复数据。
