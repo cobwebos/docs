@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/31/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61306302"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146045"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -46,6 +46,50 @@ ms.locfileid: "61306302"
 此解决方案的 Runbook 使用 [Azure 运行方式帐户](automation-create-runas-account.md)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
 
 建议使用单独的自动化帐户进行启动/停止 VM 解决方案。 这是因为频繁升级 Azure 模块版本，并且其参数可能会更改。 因此它可能无法使用它使用的 cmdlet 的较新版本，启动/停止 VM 解决方案不升级相同的频率。 建议在生产自动化帐户中将其导入之前测试自动化帐户中测试模块的更新。
+
+### <a name="permissions-needed-to-deploy"></a>部署所需的权限
+
+有某些权限的用户必须具有要部署在空闲时间解决方案启动/停止 Vm。 这些权限是不同，如果使用预先创建的自动化帐户和 Log Analytics 工作区或创建新的部署过程。
+
+#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>预先存在的自动化帐户和 Log Analytics 帐户
+
+若要将在空闲时间解决方案启动/停止 Vm 部署到自动化帐户和部署解决方案的用户在需要以下权限的 Log Analytics**资源组**。 若要了解有关角色的详细信息，请参阅[Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。
+
+| 权限 | 范围|
+| --- | --- |
+| Microsoft.Automation/automationAccounts/read | 资源组 |
+| Microsoft.Automation/automationAccounts/variables/write | 资源组 |
+| Microsoft.Automation/automationAccounts/schedules/write | 资源组 |
+| Microsoft.Automation/automationAccounts/runbooks/write | 资源组 |
+| Microsoft.Automation/automationAccounts/connections/write | 资源组 |
+| Microsoft.Automation/automationAccounts/certificates/write | 资源组 |
+| Microsoft.Automation/automationAccounts/modules/write | 资源组 |
+| Microsoft.Automation/automationAccounts/modules/read | 资源组 |
+| Microsoft.automation/automationAccounts/jobSchedules/write | 资源组 |
+| Microsoft.Automation/automationAccounts/jobs/write | 资源组 |
+| Microsoft.Automation/automationAccounts/jobs/read | 资源组 |
+| Microsoft.OperationsManagement/solutions/write | 资源组 |
+| Microsoft.OperationalInsights/workspaces/* | 资源组 |
+| Microsoft.Insights/diagnosticSettings/write | 资源组 |
+| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | 资源组 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | 资源组 |
+| Microsoft.Resources/deployments/* | 资源组 |
+
+### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>新的自动化帐户和新的 Log Analytics 工作区
+
+若要部署在空闲时间启动/停止 Vm 解决方案添加到新的自动化帐户和 Log Analytics 工作区部署解决方案的用户需要在前面的部分，以及以下权限中定义的权限：
+
+- 共同管理员的订阅-上需要这些信息来创建经典运行方式帐户
+- 是的一部分**应用程序开发人员**角色。 有关配置运行方式帐户的详细信息，请参阅[的权限来配置运行方式帐户](manage-runas-account.md#permissions)。
+
+| 权限 |范围|
+| --- | --- |
+| Microsoft.Authorization/roleAssignments/read | 订阅 |
+| Microsoft.Authorization/roleAssignments/write | 订阅 |
+| Microsoft.Automation/automationAccounts/connections/read | 资源组 |
+| Microsoft.Automation/automationAccounts/certificates/read | 资源组 |
+| Microsoft.Automation/automationAccounts/write | 资源组 |
+| Microsoft.OperationalInsights/workspaces/write | 资源组 |
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
@@ -292,8 +336,8 @@ ms.locfileid: "61306302"
 
 |Query | 描述|
 |----------|----------|
-|查找已成功完成 Runbook ScheduledStartStop_Parent 的作业 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|查找已成功完成 Runbook SequencedStartStop_Parent 的作业 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
+|查找已成功完成 Runbook ScheduledStartStop_Parent 的作业 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|查找已成功完成 Runbook SequencedStartStop_Parent 的作业 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="viewing-the-solution"></a>查看解决方案
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 3eb53fa88a0757d22fc4575e9d9f402d6eebee13
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 01410fb59135e9b1f54e4a3c75b206c7d30abeed
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719302"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145019"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
 
@@ -64,6 +64,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
     * 如果要监视响应 HTTP/S 请求的服务（例如 outlook.office365.com 或 bing.com）的连接，请选择“Web”。<br>
     * 如果要监视响应 TCP 请求，但不响应 HTTP/S 请求的服务（例如 SQL 服务器、FTP 服务器、SSH 端口等）的连接，请选择“网络”。 
+    * 例如：若要创建 web 测试到 blob 存储帐户，请选择**Web**并输入将目标为<your storageaccount>。 blob.core.windows.net。 同样，您可以创建其他表存储、 队列存储和 Azure 文件使用的测试[此链接。](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-endpoints)
 4. 如果你不希望执行网络度量（例如网络延迟、数据包丢失和拓扑发现），请清除“执行网络度量”复选框。 保持选中此项可以最大程度地利用此功能。 
 5. 在“目标”中，输入要监视其网络连接的目标 URL/FQDN/IP 地址。
 6. 在“端口号”中，输入目标服务的端口号。 

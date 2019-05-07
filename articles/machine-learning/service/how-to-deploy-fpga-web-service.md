@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: cfe21d2119b92665c5950d792dec6500257c6316
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 249a21bf9eeb3913826971fd1aae136197d264c4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024186"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149613"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务将模型部署为 FPGA 上的 Web 服务
 
@@ -31,20 +31,31 @@ ms.locfileid: "65024186"
 
 Fpga 在这些 Azure 区域均提供：
   - 美国东部
-  - 美国西部 2
-  - 西欧
   - 东南亚
+  - 西欧
+  - 美国西部 2
 
 > [!IMPORTANT]
 > 若要优化的延迟和吞吐量，您将数据发送到 FPGA 模型的客户端应为上面 （部署到该模型的一个） 的区域之一。
 
 ## <a name="prerequisites"></a>必备组件
 
-- 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+- Azure 订阅。  如果您确实有一个，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+
+- FPGA 配额。  使用 Azure CLI 查看是否有配额。
+    ```shell
+    az vm list-usage --location "eastus" -o table
+    ```
+
+    其他位置相距``southeastasia``， ``westeurope``，和``westus2``。
+
+    在"名称"列下，寻找"标准 PBS 系列 Vcpu"，并确保有最少为 6 Vcpu 下"CurrentValue。"
+
+    如果没有配额，则提交请求表单[此处](https://aka.ms/accelerateAI)。
 
 - 已安装 Azure 机器学习服务工作区，以及适用于 Python 的 Azure 机器学习 SDK。 了解如何通过[如何配置开发环境](how-to-configure-environment.md)一文满足这些先决条件。
  
-  - 安装适用于硬件加速的模型的 Python SDK:
+- 硬件加速的模型的 Python SDK:
 
     ```shell
     pip install --upgrade azureml-accel-models
@@ -52,7 +63,7 @@ Fpga 在这些 Azure 区域均提供：
 
 ## <a name="sample-notebooks"></a>示例笔记本
 
-为方便起见，[示例笔记本](https://aka.ms/aml-notebooks)可用于以下，此外还包括其他示例的示例。  说明-到-使用-azureml 和部署文件夹下查找的加速的模型。
+为方便起见，[示例笔记本](https://aka.ms/aml-accel-models-notebooks)适用于下面的示例和其他示例。
 
 ## <a name="create-and-containerize-your-model"></a>创建和容器化您的模型
 
@@ -61,6 +72,7 @@ Fpga 在这些 Azure 区域均提供：
 遵照说明操作：
 
 * 定义 TensorFlow 模型
+* 转换模型
 * 部署模型
 * 使用已部署的模型
 * 删除已部署的服务
@@ -74,7 +86,7 @@ import os
 import tensorflow as tf
  
 from azureml.core import Workspace
- 
+
 ws = Workspace.from_config()
 print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep = '\n')
 ```
@@ -86,6 +98,8 @@ Web 服务的输入是 JPEG 图像。  第一步是进行解码 JPEG 图像，�
 ```python
 # Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
 import azureml.accel.models.utils as utils
+tf.reset_default_graph()
+
 in_images = tf.placeholder(tf.string)
 image_tensors = utils.preprocess_array(in_images)
 print(image_tensors.shape)
@@ -124,15 +138,47 @@ print(classifier_output)
 
 ```python
 model_name = "resnet50"
-model_def_path = os.path.join(save_path, model_name)
-print("Saving model in {}".format(model_def_path))
+model_save_path = os.path.join(save_path, model_name)
+print("Saving model in {}".format(model_save_path))
 
 with tf.Session() as sess:
     model_graph.restore_weights(sess)
-    tf.saved_model.simple_save(sess, model_def_path,
+    tf.saved_model.simple_save(sess, model_save_path,
                                    inputs={'images': in_images},
                                    outputs={'output_alias': classifier_output})
 ```
+
+### <a name="save-input-and-output-tensors"></a>保存输入和输出 tensors
+在预处理和分类器步骤期间创建输入和输出 tensors 将需要为模型转换和推理。
+
+```python
+input_tensors = in_images.name
+output_tensors = classifier_output.name
+
+print(input_tensors)
+print(output_tensors)
+```
+
+> [!IMPORTANT]
+> 保存输入和输出 tensors，因为稍后需要它们的模型转换和推断请求。
+
+可用模型，并将相应的默认分类器的输出如下 tensors，这是你将使用在推断过程如果使用默认分类器。
+
++ Resnet50, QuantizedResnet50 ``
+output_tensors = "classifier_1/resnet_v1_50/predictions/Softmax:0"
+``
++ Resnet152 QuantizedResnet152 ``
+output_tensors = "classifier/resnet_v1_152/predictions/Softmax:0"
+``
++ Densenet121 QuantizedDensenet121 ``
+output_tensors = "classifier/densenet121/predictions/Softmax:0"
+``
++ Vgg16 QuantizedVgg16 ``
+output_tensors = "classifier/vgg_16/fc8/squeezed:0"
+``
++ SsdVgg QuantizedSsdVgg ``
+output_tensors = ['ssd_300_vgg/block4_box/Reshape_1:0', 'ssd_300_vgg/block7_box/Reshape_1:0', 'ssd_300_vgg/block8_box/Reshape_1:0', 'ssd_300_vgg/block9_box/Reshape_1:0', 'ssd_300_vgg/block10_box/Reshape_1:0', 'ssd_300_vgg/block11_box/Reshape_1:0', 'ssd_300_vgg/block4_box/Reshape:0', 'ssd_300_vgg/block7_box/Reshape:0', 'ssd_300_vgg/block8_box/Reshape:0', 'ssd_300_vgg/block9_box/Reshape:0', 'ssd_300_vgg/block10_box/Reshape:0', 'ssd_300_vgg/block11_box/Reshape:0']
+``
 
 ### <a name="register-model"></a>注册模型
 
@@ -141,8 +187,8 @@ with tf.Session() as sess:
 ```python
 from azureml.core.model import Model
 
-registered_model = Model.register(workspace = ws
-                                  model_path = model_def_path,
+registered_model = Model.register(workspace = ws,
+                                  model_path = model_save_path,
                                   model_name = model_name)
 
 print("Successfully registered: ", registered_model.name, registered_model.description, registered_model.version, sep = '\t')
@@ -160,44 +206,39 @@ print(registered_model.name, registered_model.description, registered_model.vers
 
 ### <a name="convert-model"></a>转换模型
 
-TensorFlow 图形需要转换为开放神经网络交换格式 ([ONNX](https://onnx.ai/))。  将需要提供的输入和输出 tensors 中，名称和你的客户端将使用这些名称，当您使用 web 服务。
+TensorFlow 图形转换为开放神经网络交换格式 ([ONNX](https://onnx.ai/))。  将需要提供的输入和输出 tensors 中，名称和你的客户端将使用这些名称，当您使用 web 服务。
 
 ```python
-input_tensor = in_images.name
-output_tensors = classifier_output.name
+from azureml.accel import AccelOnnxConverter
 
-print(input_tensor)
-print(output_tensors)
+convert_request = AccelOnnxConverter.convert_tf_model(ws, registered_model, input_tensors, output_tensors)
 
-
-from azureml.accel.accel_onnx_converter import AccelOnnxConverter
-
-convert_request = AccelOnnxConverter.convert_tf_model(ws, registered_model, input_tensor, output_tensors)
-convert_request.wait_for_completion(show_output=True)
+# If it fails, you can run wait_for_completion again with show_output=True.
+convert_request.wait_for_completion(show_output = False)
 
 # If the above call succeeded, get the converted model
 converted_model = convert_request.result
-print(converted_model.name, converted_model.url, converted_model.version, converted_model.id,converted_model.created_time)
+print("\nSuccessfully converted: ", converted_model.name, converted_model.url, converted_model.version, 
+      converted_model.id, converted_model.created_time, '\n')
 ```
 
 ### <a name="create-docker-image"></a>创建 Docker 映像
 
-转换后的模型和所有依赖项添加到 Docker 映像。  可部署和如在云中或支持的边缘设备中实例化此 Docker 映像[Azure 数据框边缘](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)。  此外可以为已注册的 Docker 映像中添加标记和说明。
+转换后的模型和所有依赖项添加到 Docker 映像。  然后，将此 Docker 映像部署，将其实例化。  支持的部署目标云或边缘设备中包括 AKS 如下所述[Azure 数据框边缘](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)。  此外可以为已注册的 Docker 映像中添加标记和说明。
 
 ```python
 from azureml.core.image import Image
-from azureml.accel.accel_container_image import AccelContainerImage
+from azureml.accel import AccelContainerImage
 
 image_config = AccelContainerImage.image_configuration()
+# Image name must be lowercase
 image_name = "{}-image".format(model_name)
 
 image = Image.create(name = image_name,
                      models = [converted_model],
                      image_config = image_config, 
                      workspace = ws)
-
-
-image.wait_for_creation(show_output = True)
+image.wait_for_creation(show_output = False)
 ```
 
 按标记中列出的映像并获取详细的日志的任何调试。
@@ -214,34 +255,44 @@ for i in Image.list(workspace = ws):
 若要将模型部署为大规模生产 Web 服务，请使用 Azure Kubernetes 服务 (AKS)。 可以创建新组使用 Azure 机器学习 SDK、 CLI 或 Azure 门户。
 
 ```python
-# Use the default configuration (can also provide parameters to customize)
-prov_config = AksCompute.provisioning_configuration()
+from azureml.core.compute import AksCompute, ComputeTarget
 
-aks_name = 'my-aks-9' 
+# Specify the Standard_PB6s Azure VM
+prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
+                                                    agent_count = 1)
+
+aks_name = 'my-aks-cluster'
 # Create the cluster
 aks_target = ComputeTarget.create(workspace = ws, 
                                   name = aks_name, 
                                   provisioning_configuration = prov_config)
+```
 
-%%time
+AKS 部署可能需要大约 15 分钟。  检查部署是否成功。
+
+```python
 aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
+```
 
-#Set the web service configuration (using default here)
-aks_config = AksWebservice.deploy_configuration()
+将容器部署到 AKS 群集。
+```python
+from azureml.core.webservice import Webservice, AksWebservice
 
-%%time
-aks_service_name ='aks-service-1'
+# For this deployment, set the web service configuration without enabling auto-scaling or authentication for testing
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
+                                                num_replicas=1,
+                                                auth_enabled = False)
 
-aks_service = Webservice.deploy_from_image(workspace = ws, 
+aks_service_name ='my-aks-service'
+
+aks_service = Webservice.deploy_from_image(workspace = ws,
                                            name = aks_service_name,
                                            image = image,
                                            deployment_config = aks_config,
                                            deployment_target = aks_target)
 aks_service.wait_for_deployment(show_output = True)
-print(aks_service.state)
-print(aks_service.scoring_uri)
 ```
 
 #### <a name="test-the-cloud-service"></a>测试云服务
@@ -252,12 +303,30 @@ Docker 映像支持 gRPC 和 TensorFlow 提供服务"预测"API。  使用示例
 如果你想要使用 TensorFlow 提供服务，则可以[下载示例客户端](https://www.tensorflow.org/serving/setup)。
 
 ```python
+# Using the grpc client in Azure ML Accelerated Models SDK package
+from azureml.accel.client import PredictionClient
+
+address = aks_service.scoring_uri
+ssl_enabled = address.startswith("https")
+address = address[address.find('/')+2:].strip('/')
+port = 443 if ssl_enabled else 80
+
+# Initialize AzureML Accelerated Models client
+client = PredictionClient(address=address,
+                          port=port,
+                          use_ssl=ssl_enabled,
+                          service_name=aks_service.name)
+```
+
+由于此分类器定型[ImageNet](http://www.image-net.org/)数据集，将类映射到用户可读的标签。
+
+```python
 import requests
 classes_entries = requests.get("https://raw.githubusercontent.com/Lasagne/Recipes/master/examples/resnet50/imagenet_classes.txt").text.splitlines()
 
-# Score image using input and output tensor names
+# Score image with input and output tensor names
 results = client.score_file(path="./snowleopardgaze.jpg", 
-                             input_name=input_tensor, 
+                             input_name=input_tensors, 
                              outputs=output_tensors)
 
 # map results [class_id] => [confidence]
@@ -274,6 +343,7 @@ for top in sorted_results[:5]:
 
 ```python
 aks_service.delete()
+aks_target.delete()
 image.delete()
 registered_model.delete()
 converted_model.delete()
@@ -287,3 +357,7 @@ converted_model.delete()
 ## <a name="secure-fpga-web-services"></a>保护 FPGA Web 服务
 
 有关如何保护 FPGA Web 服务的信息，请参阅[保护 Web 服务](how-to-secure-web-service.md)文档。
+
+## <a name="pbs-family-vms"></a>PBS 系列 Vm
+
+PBS 系列 Azure Vm 包含 Intel Arria 10 Fpga。  它将显示为"标准 PBS 系列 Vcpu"时检查 Azure 配额分配。  PB6 VM 具有六个 Vcpu，且一个 FPGA，并且它将自动预配的 Azure 机器学习模型部署到 FPGA 的一部分。  仅用于 Azure ML 中，并且它不能运行任意轨道。  例如，您将不能 flash 与轨道 FPGA，以执行加密、 编码等。 

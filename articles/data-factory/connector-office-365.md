@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（预览版）从 Office 365 复制数据 | Microsoft Docs
+title: 从 Office 365 使用 Azure 数据工厂复制数据 |Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Office 365 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 05/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 5d2d5948d817cbe80d00b74ef104ebaffcb511fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b8ffeb505f7d0978a736190b3d38c0246a38ebc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405964"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145007"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）将数据从 Office 365 复制到 Azure 
 

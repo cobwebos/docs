@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
-ms.openlocfilehash: 16e4bcbb1514cfd5bbddc22b663d636292095231
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8427417c9b579c7dfa21f834ce1ca77099159eb2
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025892"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072606"
 ---
 # <a name="voice-first-virtual-assistants-preview-frequently-asked-questions"></a>语音第一个虚拟助手预览：常见问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "65025892"
 
 **问：如何开始使用？**
 
-**答:** 最好的方式开始创建语音第一个虚拟助手是首先[创建 Bot Framework 智能机器人基本](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)。 接下来，连接到智能机器人[直接行语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md)。
+**答:** 最好的方式开始创建语音第一个虚拟助手是首先[创建 Bot Framework 智能机器人基本](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)。 接下来，连接到智能机器人[直接行语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)。
 
 ## <a name="debugging"></a>调试
 
@@ -41,7 +41,7 @@ ms.locfileid: "65025892"
 
 **问：我收到识别文本直接行语音，但我从我的智能机器人中看到"1011"错误和执行任何操作。为什么？**
 
-**答:** 此错误指示的智能机器人应用程序和直接行语音之间的通信问题。 确保你已经[连接直接行语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md)，[添加了流式处理协议支持](https://aka.ms/botframework/addstreamingprotocolsupport)到你的智能机器人应用程序 （具有相关 Web 套接字支持），并检查是否在智能机器人应用程序响应传入从通道的请求。
+**答:** 此错误指示的智能机器人应用程序和直接行语音之间的通信问题。 确保你已经[连接直接行语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)，[添加了流式处理协议支持](https://aka.ms/botframework/addstreamingprotocolsupport)到你的智能机器人应用程序 （具有相关 Web 套接字支持），并检查是否在智能机器人应用程序响应传入从通道的请求。
 
 **问：这仍然不起作用和/或我收到其他错误使用 SpeechBotConnector 时并不清楚我该怎么办。什么*应*我？**
 

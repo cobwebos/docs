@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 61d958ae4e53b5f2b123f3fa3660ef62a6cdcabe
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 241bda5c684197a43cc5564e950e924fed668b89
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021512"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147568"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
@@ -26,6 +26,7 @@ Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可�
 * [人脸](Face/Overview.md)
 * [窗体识别器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [语言理解](LUIS/luis-container-howto.md)(LUIS)
+* [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
 * [语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [文本分析](text-analytics/overview.md)
 
@@ -56,6 +57,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 |[人脸](Face/face-how-to-install-containers.md) |F0, S0|**人脸** |检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[窗体识别器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0, S0|**窗体识别器** |窗体了解应用机器学习技术来识别和提取窗体中的键 / 值对和表。<br>[请求访问权限](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)）|可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://www.luis.ai)以提高应用的预测准确性。|
+|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([映像](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。|
 |[语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**语音转文本** |将连续的实时语音转换为文本。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
 |[语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**文本转语音** |将文本转换为自然发音的语音。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
 |[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0 S|关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)） |提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
@@ -103,5 +105,6 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 * [人脸容器](Face/face-how-to-install-containers.md)
 * [窗体识别器容器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [语言理解 (LUIS) 容器](LUIS/luis-container-howto.md)
+* [Personalizer 容器](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 * [语音服务 API 容器](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [文本分析容器](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
