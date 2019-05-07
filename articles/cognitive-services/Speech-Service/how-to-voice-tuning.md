@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 2d56aba6d62d70c482ed1489a09276eeaa11f956
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6d602491c66669007ae220c3b8143ce3e805246f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025840"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147991"
 ---
-# <a name="fine-tune-text-to-speech-output"></a>微调文本到语音转换输出
+# <a name="fine-tune-text-to-speech-output"></a>微调文本转语音输出
 
 Azure 的语音服务，可以调整速度、 发音、 卷、 音调、 和的文本到语音转换输出使用轮廓[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。 使用标记来告知服务有关的哪项功能需要调整基于 XML 的标记语言为 SSML。 SSML 消息然后文本到语音转换服务的每个请求的正文中发送。 若要简化自定义过程，语音服务现在提供[语音优化](https://aka.ms/voicetuning)真实时间中的工具，它允许你以可视化方式检查并微调文本到语音转换输出。
 
@@ -43,7 +43,7 @@ Azure 的语音服务，可以调整速度、 发音、 卷、 音调、 和的�
    * 找到并选择**的所有订阅**。  
    * 选择“连接现有订阅”。  
      ![连接现有的订阅](./media/custom-voice/custom-voice-connect-subscription.png)。
-   * 从 Azure 门户中，输入 Azure 语音服务订阅密钥，然后选择**添加**。 在 Azure 门户中通过资源管理窗格中提供了订阅密钥。  您可以从语音优化门户中的订阅列表来获取密钥。
+   * 输入你 Azure 语音服务的订阅密钥，然后选择**添加**。 订阅密钥是从语音自定义门户中提供[订阅页](https://go.microsoft.com/fwlink/?linkid=2090458)。 此外可以在的资源管理窗格中获取的密钥[Azure 门户](https://portal.azure.com/)。 
    * 如果你有多个你打算使用的语音服务订阅，请为每个订阅重复这些步骤。
 
 ## <a name="customize-the-text-to-speech-output"></a>自定义文本到语音转换输出

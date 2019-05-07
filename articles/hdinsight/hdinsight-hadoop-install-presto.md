@@ -8,14 +8,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2bd5e1ae02ffbb62b9a5a95846aabeeab2b448b5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7ce2cf40dafc09d86d0c424a3954a334ae83143a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704818"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145485"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>在基于 Hadoop 的 HDInsight 群集上安装并使用 Presto
+
+> [!IMPORTANT]  
+> 请阅读：以下说明现已弃用。 中的最新指南，请参阅[星爆图案数据](http://docs.starburstdata.com/latest/azure.html)安装和运行在 Azure HDInsight 上的 Presto。  
 
 本文介绍如何使用脚本操作在基于 Hadoop 的 Azure HDInsight 群集上安装 Presto。 此外，还介绍如何在现有的 Presto HDInsight 群集上安装 Airpal。
 
