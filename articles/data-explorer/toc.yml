@@ -66,6 +66,10 @@
       items:
         - name: 引入示例数据
           href: ingest-sample-data.md
+    - name: 部署
+      items:
+        - name: DevOps 任务
+          href: devops.md
     - name: 查询数据
       items:
         - name: 编写查询

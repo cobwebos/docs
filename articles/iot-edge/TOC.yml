@@ -109,8 +109,14 @@
           href: how-to-install-iot-edge-linux-arm.md
         - name: Windows X64
           href: how-to-install-iot-edge-windows.md
+        - name: Windows X64 上的 Linux 容器
+          href: how-to-install-iot-edge-windows-with-linux.md
+        - name: Windows Server VM
+          href: how-to-install-iot-edge-windows-server-vm.md
         - name: Ubuntu VM
           href: how-to-install-iot-edge-ubuntuvm.md
+        - name: Kubernetes
+          href: how-to-install-iot-edge-kubernetes.md
         - name: 更新运行时版本
           href: how-to-update-iot-edge.md
     - name: 使用 DPS 进行自动预配

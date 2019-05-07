@@ -118,7 +118,7 @@
           href: samples/enforce-data-lake-store-encryption.md
     - name: 来宾配置
       items:
-        - name: 审核在 Linux 上安装的应用程序
+        - name: 审核应用程序未安装在 Linux 上
           displayName: 'audit, vm'
           href: samples/guest-configuration-applications-installed-linux.md
     - name: 密钥保管库

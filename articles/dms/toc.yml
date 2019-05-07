@@ -32,6 +32,8 @@
       href: tutorial-mongodb-cosmos-db.md
     - name: 以联机方式将 MongoDB 迁移到 Azure Cosmos DB Mongo API
       href: tutorial-mongodb-cosmos-db-online.md
+    - name: 将 Oracle 联机迁移到 Azure Database for PostgreSQL
+      href: tutorial-oracle-azure-postgresql-online.md
 - name: 操作指南
   items:
     - name: 使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB

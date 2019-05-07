@@ -174,8 +174,12 @@
               href: how-to-custom-speech-human-labeled-transcriptions.md
         - name: 文本转语音
           items:
-            - name: 创建语音字体（机器人品牌语音）
-              href: how-to-customize-voice-font.md
+            - name: 自定义语音入门
+              href: how-to-custom-voice.md
+            - name: 准备数据
+              href: how-to-custom-voice-prepare-data.md
+            - name: 创建并使用自定义语音模型
+              href: how-to-custom-voice-create-voice.md
             - name: 录制语音示例
               href: record-custom-voice-samples.md
             - name: 微调文本转语音输出

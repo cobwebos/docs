@@ -120,6 +120,8 @@
           href: sql-database-service-tiers-vcore.md
         - name: DTU 服务层级
           href: sql-database-service-tiers-dtu.md
+        - name: 无服务器计算层
+          href: sql-database-serverless.md
         - name: 为预留容量预付费
           href: sql-database-reserved-capacity.md
         - name: 从“高级 RS”服务层级迁移

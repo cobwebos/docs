@@ -6,9 +6,6 @@
     - name: 什么是 Azure 机器学习服务？
       displayName: AML services overview
       href: overview-what-is-azure-ml.md
-    - name: Workbench 发生了什么情况
-      displayName: desktop ui Workbench upgrade update transfer
-      href: overview-what-happened-to-workbench.md
 - name: 设置
   items:
     - name: 创建工作区
@@ -92,6 +89,8 @@
     - name: 模型可解释性
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
+    - name: 使用 GPU 加速
+      href: concept-accelerate-inferencing-with-gpus.md
     - name: 使用 FPGA 加速
       href: concept-accelerate-with-fpgas.md
     - name: 使用 ONNX 和 ONNX 运行时进行优化
@@ -117,6 +116,7 @@
         - name: 为工作区使用门户
           href: how-to-manage-workspace.md
         - name: 使用 Resource Manager 模板
+          displayName: arm
           href: how-to-create-workspace-template.md
     - name: "设置开发环境\_"
       items:
@@ -352,3 +352,6 @@
     - name: 比较我们的 ML 产品
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
       maintainContext: true
+    - name: Workbench 发生了什么情况
+      displayName: desktop ui Workbench upgrade update transfer
+      href: overview-what-happened-to-workbench.md

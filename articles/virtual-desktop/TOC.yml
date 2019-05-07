@@ -18,9 +18,9 @@
   items:
     - name: 连接到 Windows 虚拟桌面资源
       items:
-        - name: 使用 Windows 7 和 Windows 10 进行连接
+        - name: 从 Windows 10 或 Windows 7 进行连接
           href: connect-windows-7-and-10.md
-        - name: 使用 Web 客户端进行连接
+        - name: 从 Web 浏览器进行连接
           href: connect-web.md
     - name: 使用 Azure 资源管理器模板创建主机池
       href: create-host-pools-arm-template.md
@@ -34,6 +34,8 @@
       href: diagnostics-role-service.md
     - name: 准备和自定义主 VHD 映像
       href: set-up-customize-master-image.md
+    - name: 为 Windows 虚拟桌面配置 GPU
+      href: configure-vm-gpu.md
     - name: 自动缩放会话主机
       href: set-up-scaling-script.md
 - name: 概念

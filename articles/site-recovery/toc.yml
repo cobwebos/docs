@@ -167,6 +167,8 @@
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
             - name: 为 S2D VM 启用 Azure 到 Azure 复制
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
+            - name: 为添加的磁盘启用复制
+              href: azure-to-azure-enable-replication-added-disk.md
             - name: 排除磁盘
               href: azure-to-azure-exclude-disks.md
             - name: 故障转移后重新保护 Azure VM

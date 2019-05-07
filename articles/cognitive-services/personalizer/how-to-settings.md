@@ -10,28 +10,34 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 0cd08e1191c68c57975d3e68648134925155e7f2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bce260d2a6b897d3e45b231df4eecd7ecb31ba31
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025595"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143245"
 ---
 # <a name="personalizer-settings"></a>个性化体验创建服务设置
 
 服务配置包括服务处理奖励的方式、服务的探索频率、重新训练模型的频率，以及存储的数据量。
 
+## <a name="create-personalizer-resource"></a>创建个性化体验创建服务资源
+
 为每个反馈循环创建一个个性化体验创建服务资源。 
+
+1. 登录到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)。 上一链接会将你转到个性化体验创建服务的“创建”页。 
+1. 输入服务名称，选择订阅、位置、定价层和资源组。
+1. 选择确认，然后选择“创建”。
 
 ## <a name="configure-service-settings-in-the-azure-portal"></a>在 Azure 门户中配置服务设置
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)。
 1. 找到你的个性化体验创建服务资源。 
 1. 在“资源管理”部分选择“设置”。
 
-    ![登录到 Azure 门户。 找到你的个性化体验创建服务资源。 在“资源管理”部分选择“设置”。](media/settings/how-to-configure.png)
+    在离开 Azure 门户之前，请从“密钥”页复制某个资源密钥。 需要该密钥才能使用[个性化体验创建服务 SDK](https://aka.ms/personalizer-dotnet-sdk-docs)。
 
-### <a name="reward-settings-for-the-feedback-loop"></a>反馈循环的奖励设置
+### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>根据用例配置反馈循环的奖励设置
 
 配置服务的设置，使反馈循环使用奖励。 更改以下设置会重置当前个性化体验创建服务模型，并使用过去 2 天的数据重新训练模型：
 
@@ -81,4 +87,4 @@ ms.locfileid: "65025595"
 
 ## <a name="next-steps"></a>后续步骤
 
-[强化学习](concepts-reinforcement-learning.md) 
+[如何使用个性化体验创建服务容器](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)

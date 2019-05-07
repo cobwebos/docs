@@ -555,6 +555,8 @@
                   href: app/usage-workbooks.md
             - name: Web 应用分析解决方案
               href: insights/azure-web-apps-analytics.md
+            - name: Kubernetes 托管应用
+              href: app/kubernetes.md
         - name: 监视容器
           items:
             - name: 用于容器的 Azure Monitor
@@ -563,13 +565,19 @@
                   href: insights/container-insights-overview.md
                 - name: 常见问题解答
                   href: insights/container-insights-faq.md
-                - name: 上架
-                  href: insights/container-insights-onboard.md
+                - name: 启用监视
+                  items:
+                    - name: 启用监视概述
+                      href: insights/container-insights-onboard.md
+                    - name: 针对新群集启用
+                      href: insights/container-insights-enable-new-cluster.md
+                    - name: 针对现有群集启用
+                      href: insights/container-insights-enable-existing-clusters.md
                 - name: 分析
                   href: insights/container-insights-analyze.md
                 - name: 禁用监视
                   href: insights/container-insights-optout.md
-                - name: 查看容器实时日志
+                - name: 查看实时日志
                   href: insights/container-insights-live-logs.md
                 - name: 使用日志查询分析数据
                   href: insights/container-insights-log-search.md
@@ -585,8 +593,6 @@
               href: insights/containers.md
             - name: 监视 Docker 应用程序
               href: app/docker.md
-            - name: Application Insights for Kubernetes
-              href: app/kubernetes.md
         - name: 监视资源组
           href: insights/resource-group-insights.md
         - name: 监视数据库

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: c566d1fd4b151efc0d28b7059504e60a1451c034
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f0aca3e387d675064cf798b4efdeb66cfe906520
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025507"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153554"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>快速入门：使用 C# 个性化内容 
 
@@ -34,7 +34,7 @@ ms.locfileid: "65025507"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 需要订阅密钥和令牌颁发服务 URL。
+* 需要有[个性化体验创建服务](how-to-settings.md)才能获取订阅密钥和令牌颁发服务 URL。 
 * [Visual Studio 2015 或 2017](https://visualstudio.microsoft.com/downloads/)。
 * Microsoft.Azure.CognitiveServices.Personalization SDK NuGet 包。 下面提供了安装说明。
 

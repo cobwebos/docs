@@ -9,16 +9,16 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: cc6e8cdb7cd1719a8cd14cbfe6e576e07c34b32c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1afe9239dcc3f5a24d2e950ec7b563bf53d1f04c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025643"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143234"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>快速入门：使用 REST API 和 cURL 训练表单识别器模型并提取表单数据
 
-在本快速入门中，你将使用表单识别器的 REST API 和 cURL 来训练并评分表单，以提取键值对和表。
+在本快速入门中，我们将使用表单识别器的 REST API 和 cURL 来训练表单并为其评分，以提取键值对和表。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -90,7 +90,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "C
 
 接下来，分析某个文档并从中提取键值对和表。 执行以下 cURL 命令调用“模型 - 分析”API。 运行该命令之前请进行如下更改：
 
-* 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获取的终结点。 可以在表单识别器资源的概述选项卡中找到该终结点。
+* 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获取的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。
 * 将 `<modelID>` 替换为在执行前面的模型训练步骤时收到的模型 ID。
 * 将 `<path to your form>` 替换为表单的文件路径。
 * 将 `<subscription key>` 替换为订阅密钥。

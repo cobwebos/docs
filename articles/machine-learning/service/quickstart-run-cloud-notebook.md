@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4127226037bf28ba677a49f6444ca987118cb9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ecb97860e70141a744833aa9b9a4fcea3f3688f0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023886"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149831"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>快速入门：通过基于云的 Notebook 服务器开始使用 Azure 机器学习
 
@@ -25,11 +25,11 @@ ms.locfileid: "65023886"
  
 在本快速入门中，你将执行以下操作：
 
-* 在工作区中创建新的基于云的笔记本服务器
-* 启动 Jupyter Web 界面
+* 在工作区中创建新的基于云的笔记本服务器。
+* 启动 Jupyter Web 界面。
 * 打开一个笔记本，其中包含的代码可以在每次迭代时消除 pi 和日志错误。
 * 运行笔记本。
-* 在工作区中查看所记录的错误值。  该示例介绍如何通过工作区跟踪脚本中生成的信息。 
+* 在工作区中查看所记录的错误值。 该示例介绍如何通过工作区跟踪脚本中生成的信息。 
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -49,13 +49,15 @@ ms.locfileid: "65023886"
 
      ![选择“新建 VM”](./media/quickstart-run-cloud-notebook/add-workstation.png)
 
-1. 为 VM 提供一个名称。 然后选择“创建”。 
+1. 为 VM 提供一个名称。 然后选择“创建”。
+
+    > [!NOTE]
+    > 笔记本 VM 名称必须为 2 到 16 个字符。 有效字符为字母、数字和 - 字符。  名称还必须在 Azure 订阅中独一无二。
 
     ![创建新 VM](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
-1. 等待大约 4 到 5 分钟，然后选择“刷新”。  尝试每隔 30 秒左右刷新一次，直至状态变为“正在运行”。
+1. 等待约 4-5 分钟，直至状态更改为“正在运行”。
 
-    ![刷新](media/quickstart-run-cloud-notebook/refresh.png)
 
 ## <a name="launch-jupyter-web-interface"></a>启动 Jupyter Web 界面
 
@@ -67,7 +69,11 @@ ms.locfileid: "65023886"
 
     此链接启动笔记本服务器并在新的浏览器标签页中打开 Jupyter 笔记本网页。此链接将仅适用于创建 VM 的人。
 
-1. 在 Jupyter 笔记本网页上选择 **samples/quickstart** 文件夹，查看快速入门笔记本。
+1. 在 Jupyter 笔记本网页上，顶部文件夹名称为用户名。  选择该文件夹。
+
+1. samples 文件夹名称包含版本号，例如 **samples-1.0.33.1**。  选择 samples 文件夹。
+
+1. 选择**快速入门**笔记本。
 
 ## <a name="run-the-notebook"></a>运行笔记本
 
@@ -75,15 +81,7 @@ ms.locfileid: "65023886"
 
 1. 选择 **01.run-experiment.ipynb** 以打开笔记本。
 
-1. 可能会看到一条消息，指出内核尚未设置。  选择“Python 3.6 - AzureML”，然后选择“设置内核”。
-
-   ![设置内核](./media/quickstart-run-cloud-notebook/set-kernel.png)
-
-1. 状态区域会告知你等待，直至内核启动。 内核就绪以后，此消息会消失。
-
-    ![等待内核启动](./media/quickstart-run-cloud-notebook/wait-for-kernel.png)
-
-1.  单击第一个代码单元，然后选择“运行”。
+1. 单击第一个代码单元，然后选择“运行”。
 
     > [!NOTE]
     > 代码单元之前有括号。 如果括号是空的 (__[  ]__)，则表明代码尚未运行。 运行代码时，会看到一个星号 (__[*]__)。 代码完成后，会显示一个数字 **[1]**。  该数字表明单元的运行顺序。
@@ -94,16 +92,15 @@ ms.locfileid: "65023886"
 
 1. 运行第二个代码单元。 如果看到身份验证说明，请复制代码，然后单击登录链接。 登录后，浏览器会记住该设置。  
 
-    > [!TIP]
-    > 请确保不要复制代码后的空格。  
-
     ![身份验证](media/quickstart-run-cloud-notebook/authenticate.png)
 
 1. 完成后，会显示单元编号 __[2]__。  如果已登录过，则会看到一条表明身份验证成功的状态消息。   如果未登录过，则不会看到此单元的任何输出，只会看到编号，表明该单元已成功运行。
 
     ![成功消息](media/quickstart-run-cloud-notebook/success.png)
 
-1. 运行余下的代码单元。  当每个单元完成运行时，会看到其单元编号显示。 只有最后一个单元显示任意其他输出。  在最大的代码单元中，会看到 `run.log` 在多个位置使用。 每个 `run.log` 都会将其值添加到工作区。
+1. 运行余下的代码单元。  当每个单元完成运行时，会看到其单元编号显示。 只有最后一个单元显示任意其他输出。  
+
+    在最大的代码单元中，会看到 `run.log` 在多个位置使用。 每个 `run.log` 都会将其值添加到工作区。
 
 
 ## <a name="view-logged-values"></a>查看所记录的值
@@ -146,11 +143,13 @@ ms.locfileid: "65023886"
 
 在本快速入门中，我们完成了以下任务：
 
-* 创建笔记本 VM
-* 在笔记本 VM 上启动 Jupyter Notebook 服务器
+* 创建笔记本 VM。
+* 启动 Jupyter Web 界面。
 * 打开一个笔记本，其中包含的代码可以在每次迭代时消除 pi 和日志错误。
 * 运行笔记本。
 * 在工作区中查看所记录的错误值。  该示例介绍如何通过工作区跟踪脚本中生成的信息。 
+
+在 Jupyter Notebook 网页上浏览 samples 文件夹中的其他笔记本，详细了解 Azure 机器学习服务。
 
 若要深入体验工作流，请按照机器学习教程来训练和部署模型：  
 

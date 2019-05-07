@@ -16,6 +16,8 @@
   items:
     - name: 位置与合作伙伴
       href: virtual-wan-locations-partners.md
+    - name: 全局网络传输体系结构
+      href: virtual-wan-global-transit-architecture.md
     - name: 虚拟 WAN 中的 Office 365 控制平面
       href: virtual-wan-office365-overview.md
 - name: 操作指南
