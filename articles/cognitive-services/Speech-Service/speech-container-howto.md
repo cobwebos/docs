@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e000c034d10efc652f328fa8d1db8d1902fac693
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2adcbad55236917685ddcdbabe4809f36ab5a730
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026113"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153053"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装并运行语音服务容器
 
@@ -40,7 +40,7 @@ ms.locfileid: "65026113"
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
 |语音资源 |若要使用这些容器，必须具有：<br><br>一个_语音_Azure 资源以获取对关联的帐单密钥和计费终结点 URI。 这两个值都出现在 Azure 门户**语音**概述和密钥页和是否需要启动该容器。<br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
-## <a name="request-access-to-the-container-registry"></a>请求对容器注册表访问权限
+## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
 必须先完成并提交[认知服务语音容器请求窗体](https://aka.ms/speechcontainerspreview/)容器请求访问。 
 
@@ -171,14 +171,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 一旦容器位于[主计算机](#the-host-computer)上，请通过以下过程使用容器。
 
-1. [运行容器](#run-the-container-with-docker-run)，必需但未使用的计费设置。 提供 `docker run` 命令的多个[示例](speech-container-configuration.md#example-docker-run-commands)。 
+1. 使用所需的而不是所用的计费设置来[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](speech-container-configuration.md#example-docker-run-commands)。 
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。 
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 该命令使用以下参数：
 
-**在个人预览版期间**、 计费设置必须是有效来启动该容器，但不对计费使用情况。
+**在预览版期间**、 计费设置必须是有效来启动该容器，但您不按使用量计费。
 
 | 占位符 | 值 |
 |-------------|-------|
@@ -226,33 +226,33 @@ ApiKey={BILLING_KEY}
 
 ### <a name="speech-to-text"></a>语音转文本
 
-容器提供了基于 websocket 的查询终结点 Api，通过访问[语音服务 SDK 文档](https://docs.microsoft.com/azure/cognitive-services/speech-service/)。
+容器提供了基于 websocket 的查询终结点 Api，通过访问[Speech SDK](index.yml)。
 
-默认情况下，语音 SDK 使用联机语音服务。 若要使用的容器，需要更改的初始化方法。 请参阅下面的示例。
+默认情况下，语音 SDK 使用联机语音服务。 若要使用该容器，需要更改初始化方法。 请参阅下面的示例。
 
-#### <a name="for-c"></a>有关C#
+#### <a name="for-c"></a>对于 C#
 
-从使用此 Azure 云初始化调用更改：
+请从使用此 Azure 云初始化调用：
 
 ```C#
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-此调用使用容器终结点：
+更改为使用容器终结点发出此调用：
 
 ```C#
 var config = SpeechConfig.FromEndpoint("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1", "YourSubscriptionKey");
 ```
 
-#### <a name="for-python"></a>用于 Python
+#### <a name="for-python"></a>对于 Python
 
-从使用此 Azure 云初始化调用
+请从使用此 Azure 云初始化调用
 
 ```python
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 ```
 
-此调用使用容器终结点：
+更改为使用容器终结点发出此调用：
 
 ```python
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
@@ -272,7 +272,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://l
 
 ## <a name="troubleshooting"></a>故障排除
 
-运行时容器，容器将使用**stdout**并**stderr**有助于排查问题发生时启动或运行容器的输出信息。 
+运行该容器时，该容器将使用 **stdout** 和 **stderr** 来输出信息，这些信息有助于排查启动或运行容器时发生的问题。 
 
 ## <a name="billing"></a>计费
 
@@ -287,7 +287,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://l
 在本文中，已学习的概念和下载、 安装和运行语音的容器的工作流。 综上所述：
 
 * 语音提供 Docker，用于封装语音转文本和文本到语音转换的两个 Linux 容器。
-* 从专用容器注册表在 Azure 中下载容器映像。
+* 可从 Azure 中的专用容器注册表下载容器映像。
 * 容器映像在 Docker 中运行。
 * 可以使用 REST API 或 SDK 通过指定主机的容器的 URI 调用语音容器中的操作。
 * 必须在实例化容器时指定账单信息。

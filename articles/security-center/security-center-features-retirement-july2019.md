@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 392782310d8bc3b38a3dd1349cb1760ca287acd1
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: ac677a7f9586dbe893cbcbc480564aceac0149a0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875593"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147922"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>停用的安全中心功能 (2019 年 7 月)
 
@@ -155,7 +155,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 ### <a name="edit-security-configurations---new-experience"></a>编辑安全配置的新体验
 
-安全中心将支持[来宾内代理](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)在不久的将来，允许更丰富的功能集-包括支持其他操作系统和来宾配置与 Azure 策略 （来宾的集成策略）。 这将提供在规模较大的控制和自动应用新的资源的能力。
+安全中心将支持[来宾的配置代理](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)在不久的将来，允许更丰富的功能集-包括支持其他操作系统和来宾配置使用的 Azure 策略 （与集成在来宾策略）。 这将提供在规模较大的控制和自动应用新的资源的能力。
 
 ## 安全和审核仪表板 （最初在 OMS 门户中使用） 的 Log Analytics 工作区<a name="menu_securityomsdashboard"></a>
 

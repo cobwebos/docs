@@ -4,6 +4,8 @@
   items:
     - name: 关于通知中心
       href: notification-hubs-push-notification-overview.md
+    - name: 与应用服务移动应用集成
+      href: notification-hubs-app-service.md
 - name: 快速入门
   items:
     - name: 创建通知中心 - Azure 门户

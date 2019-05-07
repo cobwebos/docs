@@ -14,18 +14,113 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 68d16a7e25e6f9a294dee1f077d53aa4551cda5e
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c6416e36d7d2723577ca0d2009fb7bbad24f3b6a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924800"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154701"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
 本文包含 Azure 存储资源管理器 1.4.3 发行版及以前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
+
+## <a name="version-180"></a>版本为 1.8.0
+5/1/2019
+
+### <a name="download-azure-storage-explorer-180"></a>下载 Azure 存储资源管理器 1.8.0
+- [有关 Windows azure 存储资源管理 1.8.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure 存储资源管理器 1.8.0 for Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 azure 存储资源管理 1.8.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新建
+
+* 集成的 AzCopy 版本已更新到版本 10.1.0。
+* Ctrl / Cmd + R 现在可用于刷新当前具有焦点的编辑器。 [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* Azure Stack 存储 API 版本已更改为 2017年-04-17。
+* ADLS 第 2 代管理访问对话框将立即使掩码保持同步的方式类似于其他 POSIX 权限的工具。 UI 还会警告您如果进行的更改将导致超过掩码的边界的用户或组权限。 [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* 有关 AzCopy 上传，现已启用标志来计算和设置的 MD5 哈希。 [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+
+
+### <a name="preview-features"></a>预览功能
+
+* 设备代码流登录现在可供预览。 若要启用此功能，请转到“预览”→“使用设备代码流登录”。 我们鼓励所有在空白登录窗口中遇到问题的用户试用此功能，因为经过证实，它是一种更可靠的登录方式。
+* 与 AzCopy 集成的存储资源管理器目前可供预览。 若要启用此功能，请转到“预览”→“使用 AzCopy 来改善 Blob 上传和下载”。 使用 AzCopy 应该可以更快且更有效地完成 Blob 传输。
+
+### <a name="fixes"></a>修复项
+
+* 访问策略对话框中将不再在不具有过期时间的存储访问策略上设置到期日期。 [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* 进行一些更改已到生成 SAS 对话框以确保生成 SAS 时，正确使用存储访问策略。 [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* 当尝试将上传一个非-512 字节对齐的页 Blob 的文件时，存储资源管理器现在将公开更相关的错误。 [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* 复制 Blob 容器使用的显示名称，将会失败。 现在，使用 Blob 容器的实际名称。 [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* 尝试在 ADLS 第 2 代文件夹，必须在其名称中的 unicode 字符上执行某些操作会失败。 现在应处理的所有操作。 [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+
+### <a name="known-issues"></a>已知问题
+
+* 在执行非 AzCopy Blob 下载时，大型文件的 MD5 不正在验证。 这是因为存储 SDK 中的 bug。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
+* 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
+* 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
+* Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。 若要在向/从 Blob 容器上传或下载时解决此问题，可以使用试验性的 AzCopy 功能。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* Azure Stack 不支持以下功能。 在处理 Azure Stack 资源时尝试使用这些功能可能会导致意外错误。
+   * 文件共享
+   * 访问层级
+   * 软删除
+   * ADLS 第 2 代
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 检查存储资源管理器[故障排除指南](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)有关详细信息。
+
+## <a name="previous-releases"></a>以前的版本
+
+* [版本 1.7.0](#version-170)
+* [版本 1.6.2](#version-162)
+* [版本 1.6.1](#version-161)
+* [版本 1.6.0](#version-160)
+* [版本 1.5.0](#version-150)
+* [版本 1.4.4](#version-144)
+* [版本 1.4.3](#version-143)
+* [版本 1.4.2](#version-142)
+* [版本 1.4.1](#version-141)
+* [版本 1.3.0](#version-130)
+* [版本 1.2.0](#version-120)
+* [版本 1.1.0](#version-110)
+* [版本 1.0.0](#version-100)
+* [版本 0.9.6](#version-096)
+* [版本 0.9.5](#version-095)
+* [版本 0.9.4 和 0.9.3](#version-094-and-093)
+* [版本 0.9.2](#version-092)
+* [版本 0.9.1 和 0.9.0](#version-091-and-090)
+* [版本 0.8.16](#version-0816)
+* [版本 0.8.14](#version-0814)
+* [版本 0.8.13](#version-0813)
+* [版本 0.8.12、0.8.11 和 0.8.10](#version-0812-and-0811-and-0810)
+* [版本 0.8.9 和 0.8.8](#version-089-and-088)
+* [版本 0.8.7](#version-087)
+* [版本 0.8.6](#version-086)
+* [版本 0.8.5](#version-085)
+* [版本 0.8.4](#version-084)
+* [版本 0.8.3](#version-083)
+* [版本 0.8.2](#version-082)
+* [版本 0.8.0](#version-080)
+* [版本 0.7.20160509.0](#version-07201605090)
+* [版本 0.7.20160325.0](#version-07201603250)
+* [版本 0.7.20160129.1](#version-07201601291)
+* [版本 0.7.20160105.0](#version-07201601050)
+* [版本 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-170"></a>版本 1.7.0
 3/5/2019
@@ -96,43 +191,6 @@ ms.locfileid: "64924800"
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>以前的版本
-
-* [版本 1.6.2](#version-162)
-* [版本 1.6.1](#version-161)
-* [版本 1.6.0](#version-160)
-* [版本 1.5.0](#version-150)
-* [版本 1.4.4](#version-144)
-* [版本 1.4.3](#version-143)
-* [版本 1.4.2](#version-142)
-* [版本 1.4.1](#version-141)
-* [版本 1.3.0](#version-130)
-* [版本 1.2.0](#version-120)
-* [版本 1.1.0](#version-110)
-* [版本 1.0.0](#version-100)
-* [版本 0.9.6](#version-096)
-* [版本 0.9.5](#version-095)
-* [版本 0.9.4 和 0.9.3](#version-094-and-093)
-* [版本 0.9.2](#version-092)
-* [版本 0.9.1 和 0.9.0](#version-091-and-090)
-* [版本 0.8.16](#version-0816)
-* [版本 0.8.14](#version-0814)
-* [版本 0.8.13](#version-0813)
-* [版本 0.8.12、0.8.11 和 0.8.10](#version-0812-and-0811-and-0810)
-* [版本 0.8.9 和 0.8.8](#version-089-and-088)
-* [版本 0.8.7](#version-087)
-* [版本 0.8.6](#version-086)
-* [版本 0.8.5](#version-085)
-* [版本 0.8.4](#version-084)
-* [版本 0.8.3](#version-083)
-* [版本 0.8.2](#version-082)
-* [版本 0.8.0](#version-080)
-* [版本 0.7.20160509.0](#version-07201605090)
-* [版本 0.7.20160325.0](#version-07201603250)
-* [版本 0.7.20160129.1](#version-07201601291)
-* [版本 0.7.20160105.0](#version-07201601050)
-* [版本 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-162"></a>版本 1.6.2
 2019/1/9

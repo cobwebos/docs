@@ -10,18 +10,18 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ed1f251c8c09a52def517f4c94ed2ca1420eda8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b37f16ab914fe4062bc9720ae9cc0139c573fb93
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60778280"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154281"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL 数据仓库容量限制
 Azure SQL 数据仓库的各个组件允许的最大值。
 
 ## <a name="workload-management"></a>工作负荷管理
-| 类别 | 描述 | 最大值 |
+| Category | 描述 | 最大值 |
 |:--- |:--- |:--- |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个 SQL 数据仓库的最大 DWU | Gen1：DW6000<br></br>Gen2：DW30000c |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL Server（例如 myserver.database.windows.net）的 DTU 配额为 54,000，最多可以允许 DW6000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择“配额”作为请求类型来增加配额。  要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9.0。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW6000c x 9.0 = 54,000 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
@@ -31,7 +31,7 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 | [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100 399 GB。 因此，在 DWU1000 的情况下，tempdb 的大小为 3.99 TB。 |
 
 ## <a name="database-objects"></a>数据库对象
-| 类别 | 描述 | 最大值 |
+| Category | 描述 | 最大值 |
 |:--- |:--- |:--- |
 | 数据库 |最大大小 | Gen1：磁盘上压缩后 240 TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> Gen2：240TB 用于行存储，无限存储空间用于列存储表 |
 | 表 |最大大小 |磁盘上压缩后 60 TB |
@@ -52,9 +52,9 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 | 查看 |每个视图的列数 |1,024 |
 
 ## <a name="loads"></a>加载
-| 类别 | 描述 | 最大值 |
+| Category | 描述 | 最大值 |
 |:--- |:--- |:--- |
-| Polybase 加载 |每行 MB 数 |第<br/><br/>Polybase 仅加载到小于 1 MB 的行，并且无法加载到 VARCHAR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。<br/><br/> |
+| Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 加载小于 1MB 的行。<br/><br/> |
 
 ## <a name="queries"></a>查询
 | 类别 | 描述 | 最大值 |

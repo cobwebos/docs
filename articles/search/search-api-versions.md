@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: f361417f25579b0ca605b33bafa4a581f68b1798
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 21374e20a2ba2c9134ed12e4b1072ff5c320c75e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024392"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149780"
 ---
 # <a name="api-versions-in-azure-search"></a>Azure 搜索中的 API 版本
 Azure 搜索会定期发布功能更新。 这些更新有时（但并非总是）需要发布 API 的新版本，以保持后向兼容性。 发布新版本使你可以控制何时以及如何在代码中集成搜索服务更新。
@@ -32,8 +32,8 @@ Azure 搜索会定期发布功能更新。 这些更新有时（但并非总是�
 
 | 接口 | 最新的主要版本 | 状态 |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |通常，发布 2019 年 5。 内容是仍在构建。  |
-| [.NET SDK 预览版](https://aka.ms/search-sdk-preview) |8.0.0-preview |预览版，发布 2019 年 4 月。 内容是仍在构建。|
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |通常，发布 2019 年 5 |
+| [.NET SDK 预览版](https://aka.ms/search-sdk-preview) |8.0.0-preview |预览版，发布 2019 年 4 月 |
 | [服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |正式版 |
 | [Service REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-Preview |预览 |
 | [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |3.0 |正式版 |
@@ -57,6 +57,6 @@ Azure 搜索始终先通过 REST API 预发布实验功能，再通过 .NET SDK 
 
 出于这些原因，我们建议不要编写依赖预览版的生产代码。 如果使用的是旧版预览版，建议迁移到正式版 (GA)。
 
-对于 .NET SDK：代码迁移指南可在[升级 .NET SDK](search-dotnet-sdk-migration.md) 中找到。
+对于 .NET SDK：代码迁移指南可在[升级 .NET SDK](search-dotnet-sdk-migration-version-9.md) 中找到。
 
 正式版的推出意味着 Azure 搜索现在遵循服务级别协议 (SLA)。 可以在 [Azure 搜索服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)中找到 SLA。

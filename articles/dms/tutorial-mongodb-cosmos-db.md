@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 01a64345285149a50c226ebb344982425a813156
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/01/2019
+ms.openlocfilehash: 862592ed142da0c2f7bf753716fe6604da9a8fb0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995075"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153323"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 可以使用 Azure 数据库迁移服务将数据库从 MongoDB 的本地或云实例脱机（一次性）迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。
@@ -84,9 +84,7 @@ ms.locfileid: "59995075"
 
     有关成本和定价层的详细信息，请参阅[价格页](https://aka.ms/dms-pricing)。
 
-    如果在选择合适的 Azure 数据库迁移服务层时需要帮助，请参阅[此处](https://go.microsoft.com/fwlink/?linkid=861067)博客文章中的建议。  
-
-     ![配置 Azure 数据库迁移服务实例设置](media/tutorial-mongodb-to-cosmosdb/dms-settings2.png)
+    ![配置 Azure 数据库迁移服务实例设置](media/tutorial-mongodb-to-cosmosdb/dms-settings2.png)
 
 7.  选择“创建”来创建服务。
 
@@ -179,7 +177,7 @@ ms.locfileid: "59995075"
 
 ## <a name="post-migration-optimization"></a>迁移后优化
 
-将 MongoDB 数据库中存储的数据迁移到 Azure Cosmos DB 的 MongoDB API 后，你可以连接到 Azure Cosmos DB 并管理数据。 你还可以执行其他迁移后优化步骤，例如优化索引策略，为你的 Azure Cosmos DB 帐户更新默认一致性级别或配置全局分发。 有关更多详细信息，请参阅[迁移后优化](../cosmos-db/mongodb-post-migration.md)一文。 
+将 MongoDB 数据库中存储的数据迁移到 Azure Cosmos DB 的 API for MongoDB 后，你可以连接到 Azure Cosmos DB 并管理数据。 你还可以执行其他迁移后优化步骤，例如优化索引策略，为你的 Azure Cosmos DB 帐户更新默认一致性级别或配置全局分发。 有关更多详细信息，请参阅[迁移后优化](../cosmos-db/mongodb-post-migration.md)一文。 
 
 ## <a name="additional-resources"></a>其他资源
 
