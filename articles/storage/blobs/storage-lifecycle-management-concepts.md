@@ -2,18 +2,19 @@
 title: 管理 Azure 存储生命周期
 description: 了解如何创建生命周期策略规则，以将陈旧数据从热存储转移到冷存储和存档层。
 services: storage
-author: yzheng-msft
+author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.author: yzheng
+ms.author: mhopkins
+ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: f1fdd1b239301a5340716e1d5d098487afe27f9f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 130eb9cc8bec4681f5c0d165735c6c3b2357576c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938565"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148320"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -156,7 +157,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 | 参数名称 | 参数类型 | 说明 | 需要 |
 |----------------|----------------|-------|----------|
 | 名称           | String |规则名称可以包含最多 256 个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | True |
-| 已启用 | Boolean | 可选的布尔值，以允许规则以将临时禁用。 默认值为 true，如果未设置。 | False | 
+| enabled | Boolean | 可选的布尔值，以允许规则以将临时禁用。 默认值为 true，如果未设置。 | False | 
 | type           | 枚举值 | 当前的有效类型是`Lifecycle`。 | True |
 | 定义     | 定义生命周期规则的对象 | 每个定义均由筛选器集和操作集组成。 | True |
 
