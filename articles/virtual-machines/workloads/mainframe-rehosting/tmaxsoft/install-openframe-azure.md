@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7e6e7e2023c333207a3a17c3b6711d92de7d044
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800665"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187793"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>在 Azure 上安装 TmaxSoft OpenFrame
 
@@ -102,7 +102,7 @@ Windows 的 eclipse:开发平台支持的 TmaxSoft<br/>
 
 开始之前，请执行以下操作：
 
-- 获取从 TmaxSoft OpenFrame 安装介质。 如果你是现有 TmaxSoft 客户，请与的许可副本的 TmaxSoft 代表联系。 否则，请求从试用版[TmaxSoft](http://www.tmaxsoft.com/contact/)。
+- 获取从 TmaxSoft OpenFrame 安装介质。 如果你是现有 TmaxSoft 客户，请与的许可副本的 TmaxSoft 代表联系。 否则，请求从试用版[TmaxSoft](https://www.tmaxsoft.com/contact/)。
 
 - 通过发送电子邮件发送到请求 OpenFrame 文档<support@tmaxsoft.com>。
 
