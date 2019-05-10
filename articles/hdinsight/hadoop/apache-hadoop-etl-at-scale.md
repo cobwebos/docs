@@ -127,7 +127,7 @@ Sqoop 使用 MapReduce 导入和导出数据，可提供并行操作和容错。
 
 Apache Flume 是分布式、可靠且高度可用的服务，能够有效地收集、聚合与移动大量日志数据。 Flume 采用基于流式传输数据流的简单弹性体系结构。 Flume 既可靠又能容错，提供可优化的可靠性机制和许多故障转移与恢复机制。 Flume 使用一个允许联机分析应用程序的简单可扩展数据模型。
 
-Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Storage。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
+Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Storage。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
 
 ## <a name="transform"></a>转换
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202916"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510822"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>自动缩放和区域冗余的应用程序网关 
 
@@ -62,7 +62,7 @@ ms.locfileid: "65202916"
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-[定价页](https://azure.microsoft.com/en-us/pricing/details/application-gateway/)将更新以反映在 2019 年 5 月 14 日上, 区域的价格。 计费计划在 2019 年 6 月 1 日开始。
+[定价页](https://azure.microsoft.com/pricing/details/application-gateway/)将更新以反映在 2019 年 5 月 14 日上, 区域的价格。 计费计划在 2019 年 6 月 1 日开始。
 
 **示例 1**
 
@@ -93,7 +93,7 @@ ms.locfileid: "65202916"
 
 总价格 = $267.84 + $85.71 = $353.55
 
-[定价页](https://azure.microsoft.com/en-us/pricing/details/application-gateway/)将更新以反映在 2019 年 5 月 14 日上, 区域的价格。 计费计划在 2019 年 6 月 1 日开始。
+[定价页](https://azure.microsoft.com/pricing/details/application-gateway/)将更新以反映在 2019 年 5 月 14 日上, 区域的价格。 计费计划在 2019 年 6 月 1 日开始。
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>缩放应用程序网关和 WAF v2
 
@@ -112,7 +112,7 @@ ms.locfileid: "65202916"
 | 区域冗余                                   |          | &#x2713; |
 | 静态 VIP                                        |          | &#x2713; |
 | Azure Kubernetes 服务 (AKS) 入口控制器 |          | &#x2713; |
-| Azure 密钥保管库集成                       |          | &#x2713; |
+| Azure Key Vault 集成                       |          | &#x2713; |
 | 重写 HTTP (S) 标头                           |          | &#x2713; |
 | 基于 URL 的路由                                 | &#x2713; | &#x2713; |
 | 多站点托管                             | &#x2713; | &#x2713; |
@@ -124,7 +124,7 @@ ms.locfileid: "65202916"
 | 自定义错误页                                | &#x2713; | &#x2713; |
 | WebSocket 支持                                 | &#x2713; | &#x2713; |
 | HTTP/2 支持                                    | &#x2713; | &#x2713; |
-| 连接清空                               | &#x2713; | &#x2713; |
+| 连接排出                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > SKU 现在支持自动缩放 v2[默认运行状况探测](application-gateway-probe-overview.md#default-health-probe)自动监视后端池中的所有资源的运行状况并突出显示那些被视为不正常的后端成员。 为没有任何自定义探测配置的后端自动配置默认运行状况探测。 若要了解详细信息，请参阅[运行状况探测应用程序网关中](application-gateway-probe-overview.md)。

@@ -28,7 +28,7 @@ ms.locfileid: "64723387"
 
 | 有关以下方面的信息 | 请参阅以下文章： |
 | --- | --- |
-| HDInsight on Linux 和优化 | - [有关在 Linux 上使用 HDInsight 的信息](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop 内存和性能故障排除](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Apache Hive 查询性能](https://web.archive.org/web/20190217214250/ https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
+| HDInsight on Linux 和优化 | - [有关在 Linux 上使用 HDInsight 的信息](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop 内存和性能故障排除](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Apache Hive 查询性能](https://web.archive.org/web/20190217214250/https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
 | 日志和转储 | - [访问 Linux 上的 Apache Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [为 Linux 上的 Apache Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [分析 HDInsight 日志](hdinsight-debug-jobs.md)|
 | 错误 | - [了解和解决 WebHCat 错误](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [用于解决 OutofMemory 错误的 Apache Hive 设置](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | 工具 | - [优化 Apache Hive 查询](hdinsight-hadoop-optimize-hive-query.md)<br>- [HDInsight IntelliJ 工具](./spark/apache-spark-intellij-tool-plugin.md)<br>- [HDInsight Eclipse 工具](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight VSCode 工具](hdinsight-for-vscode.md)<br>- [HDInsight Visual Studio 工具](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |

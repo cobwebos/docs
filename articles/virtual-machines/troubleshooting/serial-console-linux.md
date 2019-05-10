@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: harijay
-ms.openlocfilehash: 7019d80c05a1953f4e57f0f42d46588310911791
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9577a81af3da98c6e8802c586ec468a6e44e46cf
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141090"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442044"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 azure 串行控制台
 
-在 Azure 门户中的串行控制台提供基于文本的控制台访问的 Linux 虚拟机 (Vm) 和虚拟机规模集 （虚拟机规模集） 实例。 此串行连接连接到 COM1 串行端口的 VM 或虚拟机规模集实例，提供对它独立于网络或操作系统状态的访问。 串行控制台只能使用 Azure 门户访问，并允许仅为这些用户具有访问权限角色的参与者或更高版本到 VM 或虚拟机规模集。
+在 Azure 门户中的串行控制台提供基于文本的控制台访问的 Linux 虚拟机 (Vm) 和虚拟机规模集实例。 此串行连接连接到 COM1 串行端口的 VM 或虚拟机规模集实例，提供对它独立于网络或操作系统状态的访问。 串行控制台只能使用 Azure 门户访问，并允许仅为这些用户具有访问权限角色的参与者或更高版本到 VM 或虚拟机规模集。
 
 串行控制台以相同方式适用于虚拟机和虚拟机规模集实例。 在此文档中所有提及到的 Vm 将隐式都包括虚拟机规模集实例，除非另有说明。
 
@@ -84,7 +84,7 @@ Vm 和虚拟机规模集的串行控制台可访问只能通过 Azure 门户：
 ## <a name="serial-console-linux-distribution-availability"></a>串行控制台 Linux 分发的可用性
 要使串行控制台正常运行，必须将来宾操作系统配置为向串行端口读取和写入控制台消息。 大多数[认可的 Azure Linux 分发版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)默认都已配置串行控制台。 在 Azure 门户的“支持 + 故障排除”部分选择“串行控制台”即可访问串行控制台。
 
-分发      | 串行控制台访问
+分发组      | 串行控制台访问
 :-----------|:---------------------
 Red Hat Enterprise Linux    | 默认已启用串行控制台访问。
 CentOS      | 默认已启用串行控制台访问。
@@ -168,7 +168,7 @@ SSH 配置问题 | 访问串行控制台并更改设置。 串行控制台可以
 > [!CAUTION]
 > 这意味着，断开连接的用户尚未注销。强制断开连接后的注销 （通过 SIGHUP 或类似机制） 的能力是仍在规划之中。 对于 Windows，特殊管理控制台 (SAC) 中会启用自动超时；但对于 Linux，可以配置终端超时设置。 为此，请将 `export TMOUT=600` 添加到用于登录控制台的用户的 *.bash_profile* 或 *.profile* 中。 此设置使会话在 10 分钟后超时。
 
-## <a name="accessibility"></a>可访问性
+## <a name="accessibility"></a>辅助功能
 可访问性是 Azure 串行控制台的一个重要关注点。 为此，我们会确保串行控制台的完全可访问性。
 
 ### <a name="keyboard-navigation"></a>键盘导航

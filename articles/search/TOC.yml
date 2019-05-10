@@ -131,7 +131,7 @@
           items:
             - name: 创建建议器
               href: index-add-suggesters.md
-            - name: 示例（建议、自动完成）
+            - name: 添加建议或自动完成
               href: search-autocomplete-tutorial.md
         - name: 同义词
           items:

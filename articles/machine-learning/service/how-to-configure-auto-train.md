@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72e43ac295fcb007dd58b2b7792a16c639ee9c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 64ba7096f181371a378708e024f46bce17449e98
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023710"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510587"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动化的机器学习实验
 
-在本指南中，了解如何定义自动化机器学习试验使用的各种配置设置[Azure 机器学习 SDK](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py)。 自动化机器学习将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置自动化机器学习试验。
+在本指南中，了解如何定义自动化机器学习试验使用的各种配置设置[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。 自动化机器学习将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置自动化机器学习试验。
 
 若要查看自动化机器学习试验的示例，请参阅[教程：使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)或[使用云中的自动化机器学习训练模型](how-to-auto-train-remote.md)。
 
@@ -137,7 +137,7 @@ cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行�
 >* 使用表达式添加列
 >* 估算缺失值
 >* 按示例派生列
->* Filtering
+>* 筛选
 >* 自定义 Python 转换
 
 若要了解 DataPrep SDK，请参阅[如何准备要建模的数据](how-to-load-data.md)一文。

@@ -67,7 +67,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 **缓解：**
 
-必须改用 Spark-HBase 连接器。 相关说明请参阅[如何使用 Spark-HBase 连接器](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
+必须改用 Spark-HBase 连接器。 相关说明请参阅[如何使用 Spark-HBase 连接器](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter 笔记本的相关问题
 下面是与 Jupyter 笔记本相关的一些已知问题。

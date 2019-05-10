@@ -9,12 +9,12 @@ ms.date: 09/14/2017
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: db366fea96967559c65559864ff8e367fa12ad65
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: dbaaade278073613a62eaf350146360651350244
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142586"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510232"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
@@ -103,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | select Name
 
 ## <a name="add-a-message-to-a-queue"></a>向队列添加消息
 
-影响队列中的实际消息的操作使用 PowerShell 中公开的 .NET 存储客户端库。 若要向队列添加一条消息，创建消息对象的新实例[Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.-ctor?redirectedfrom=MSDN&view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueueMessage__ctor_System_Byte___)类。 接下来，调用 [AddMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx) 方法。 可从字符串（UTF-8 格式）或字节数组创建 CloudQueueMessage。
+影响队列中的实际消息的操作使用 PowerShell 中公开的 .NET 存储客户端库。 若要在队列中添加消息，请创建消息对象 [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) 类的新实例。 接下来，调用 [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage) 方法。 可从字符串（UTF-8 格式）或字节数组创建 CloudQueueMessage。
 
 以下示例演示如何向队列中添加消息。
 
@@ -131,7 +131,7 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 **不可见超时**定义了消息在再次可供处理之前保持不可见的时间。 默认为 30 秒。 
 
-代码分两步从队列中读取消息。 当您调用[Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?redirectedfrom=MSDN&view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_GetMessage_System_Nullable_System_TimeSpan__Microsoft_WindowsAzure_Storage_Queue_QueueRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_)方法时，你在队列中获取下一条消息。 从 **GetMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 若要完成从队列中删除消息，请调用[Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?redirectedfrom=MSDN&view=azure-dotnet#overloads)方法。 
+代码分两步从队列中读取消息。 调用 [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) 方法时，将获取队列中的下一条消息。 从 **GetMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 若要完成从队列中删除消息，请调用 [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) 方法。 
 
 在以下示例中，你将读完三条队列消息，然后等待 10 秒（不可见超时）。 然后再次读取这三条消息，读取后，通过调用 DeleteMessage  删除该消息。 如果在删除消息后尝试读取队列，$queueMessage 将返回为 NULL。
 

@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8865c851f394d73b5446ac159b5a7799c0c9ed2
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0d5751ab96dc6b44229e2b18b832a570930058ca
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192352"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442347"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务的训练 TensorFlow 和 Keras 模型
 
@@ -24,11 +24,11 @@ ms.locfileid: "65192352"
 
 `TensorFlow`估算器还提供了一个抽象层，对执行，这意味着可以轻松地配置不同的计算目标上的参数化的运行而无需更改训练脚本。
 
-## <a name="getting-started"></a>入门
+## <a name="get-started"></a>开始使用
 
-提交的作业`TensorFlow`估算器是类似于使用基[ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)。 因此，我们建议首先阅读[估算器操作指南文章](how-to-train-ml-models.md)，首先了解总体概念。
+由于`TensorFlow`估算器类是类似于基[ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)，我们建议你第一次读取[估算器操作指南文章](how-to-train-ml-models.md)若要了解总体概念。
 
-如果你想要开始使用 Azure 机器学习服务[完成快速入门](quickstart-run-cloud-notebook.md)。 您必须使用的所有已加载的工作环境我们[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml)。
+若要开始使用 Azure 机器学习服务[完成快速入门](quickstart-run-cloud-notebook.md)。 完成后，您必须[Azure 机器学习工作区](concept-azure-machine-learning-architecture.md#workspace)及其所有我们[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml)其中包含用于定型 Dnn 使用 TensorFlow 和 Keras。
 
 ## <a name="single-node-training"></a>单节点训练
 
@@ -96,7 +96,7 @@ import tensorflow as tf
 import horovod
 ```
 
-### <a name="parameter-server"></a>参数服务器
+### <a name="parameter-server"></a>服务器参数
 
 此外，你还可以运行[本机分布式 TensorFlow](https://www.tensorflow.org/deploy/distributed)，它使用参数服务器模型。 在此方法中，你将在一组参数服务器和工作线程中进行训练。 工作线程在训练期间计算梯度，而参数服务器聚合梯度。
 

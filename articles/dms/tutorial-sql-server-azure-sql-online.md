@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: c01eccb63639a3838c9f726bc48400a76aba8cf0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/01/2019
+ms.openlocfilehash: 131b86fec5fb51c6ff6f29a8e0beed86145a24b7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799026"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136644"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
 
@@ -234,9 +234,7 @@ ms.locfileid: "59799026"
 
     有关成本和定价层的详细信息，请参阅[价格页](https://aka.ms/dms-pricing)。
 
-    如果选择合适的 Azure 数据库迁移服务层时需要帮助，请参阅[此处](https://go.microsoft.com/fwlink/?linkid=861067)帖子中的建议。  
-
-     ![配置 Azure 数据库迁移服务实例设置](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
+    ![配置 Azure 数据库迁移服务实例设置](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
 
 7. 选择“创建”以创建服务。
 
@@ -259,7 +257,7 @@ ms.locfileid: "59799026"
     ![创建数据库迁移服务项目](media/tutorial-sql-server-to-azure-sql-online/dms-create-project3.png)
 
     > [!NOTE]
-    > 也可现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
+    > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
 
 6. 选择“保存”。
 

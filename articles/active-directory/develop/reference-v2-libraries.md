@@ -20,7 +20,7 @@ ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fda17994f0279c975682b52449c71ef88a252401
 ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2019
 ms.locfileid: "65139313"
@@ -56,7 +56,7 @@ Azure AD v2.0 终结点适用于两种类型的库：
 
 | 平台 | 库 | 下载 | 源代码 | 示例 | 参考 | 概念文档 | 路线图 |
 | --- | --- | --- | --- | --- | --- | --- | ---|
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js（预览） | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  [单页应用](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [参考](https://htmlpreview.github.io/? https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/classes/_useragentapplication_.useragentapplication.html) | [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki)| [路线图](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js（预览） | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  [单页应用](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [参考](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/classes/_useragentapplication_.useragentapplication.html) | [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki)| [路线图](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 |![Angular JS](media/sample-v2-code/logo_angular.png) | MSAL Angular JS | [NPM](https://www.npmjs.com/package/@azure/msal-angularjs) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  |  | |
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL Angular（预览） | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
 | ![.NET framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL .NET（预览） |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [桌面应用](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#conceptual-documentation) | [路线图](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)

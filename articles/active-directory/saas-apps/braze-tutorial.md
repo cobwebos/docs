@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2701222df2649ea3de7f15fbffc0c8b62ba0efa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 69dac57118d7876ba08a562f5478b19465b37e07
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157185"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>教程：Azure Active Directory 与 Braze 集成
 
@@ -230,6 +230,6 @@ ms.locfileid: "65157185"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

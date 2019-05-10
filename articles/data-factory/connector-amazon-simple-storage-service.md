@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: ca764c7e78f6ffe221386d1d320582e394d0a78a
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: fcc867b1c4d1a995cd53233a814a999ae56efae7
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875876"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232457"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -242,10 +242,10 @@ Amazon S3 链接的服务支持以下属性：
 | wildcardFileName         | 包含在给定的存储桶 + folderPath/wildcardFolderPath 筛选器源文件的通配符字符的文件名。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 是如果`fileName`在数据集和`prefix`未指定 |
 | modifiedDatetimeStart    | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | 否                                                          |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                                          |
-| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | 否                                                          |
+| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | “否”                                                          |
 
 > [!NOTE]
-> Parquet/分隔文本格式**FileSystemSource**作为仍受支持类型下一节中所述的复制活动源的是向后兼容性。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
+> Parquet/分隔文本格式**FileSystemSource**作为仍受支持类型的复制活动源下一节中提到的是为了向后兼容。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
 
 **示例：**
 
