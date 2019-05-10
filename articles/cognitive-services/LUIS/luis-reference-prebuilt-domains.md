@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6c0ecf70935d4504472156f6bda726d94f130dbb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3265477108b7e74d65050408add6c5d5c94b4852
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148181"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233894"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS 应用的预构建的域参考
 此参考提供有关[预构建的域](luis-how-to-use-prebuilt-domains.md)的信息，这些参考是 LUIS 提供的意向和实体的预构建集合。
@@ -62,7 +62,6 @@ The table below summarizes the currently supported domains. Support for English 
 |场所|位置包括企业、 机构、 餐馆、 公共场所和地址。 域支持位置，查找和询问有关如位置、 操作系统小时和距离的公共位置的信息。|
 |餐位预订|餐馆预订域支持意向处理餐馆的保留项。|
 |ToDo|ToDo 域提供的用户可以添加、 标记和删除他们的 todo 项的任务列表的类型。|
-|ToDo_IPA|ToDo_IPA 根据 ToDo 域，是要展开 ToDo 中的实体的自定义的版本。 IPA 版本提供意图和实体以支持识别 todo 列表类型。 模型定义了三种类型的待办事项列表： 购物列表、 购物列表和待办事项列表涵盖其他情况。|
-|实用程序|实用程序是在所有 LUIS 之间常规域预构建的模型，其中包含常见意向和区别方案中的语音样本。|
+|公用事业|实用程序是在所有 LUIS 之间常规域预构建的模型，其中包含常见意向和区别方案中的语音样本。|
 |天气|天气域侧重于检查天气条件和建议的位置和时间或时间检查由天气条件。|
 |Web|Web 域提供意向和实体搜索网站。|

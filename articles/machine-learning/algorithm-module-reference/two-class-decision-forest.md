@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f3e7cab6e33fa9373095441685f6ecb04f1d91a5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 73b7822c56e2b07eeefdedce1bce6d410d110ebc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029365"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411468"
 ---
 # <a name="two-class-decision-forest-module"></a>双类决策林模型
 
@@ -46,7 +46,7 @@ ms.locfileid: "65029365"
 
 但是，简单的决策树可以度拟合数据，并且是树的整体比不到可归纳。
 
-有关详细信息，请参阅[决策林](http://go.microsoft.com/fwlink/?LinkId=403677)。  
+有关详细信息，请参阅[决策林](https://go.microsoft.com/fwlink/?LinkId=403677)。  
 
 ## <a name="how-to-configure"></a>如何配置
   

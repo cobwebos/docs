@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5ff1809886198f7f1e4f4b9c36f877ce61d512e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 10364d014431a500e7c38a02d47f432cd464feb6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029425"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411482"
 ---
 # <a name="multiclass-decision-forest-module"></a>多类决策林模块
 
@@ -36,7 +36,7 @@ ms.locfileid: "65029425"
 + 它们执行集成的特征选择和分类。
 + 它们是出现干扰特征时可复原。
 
-在 Azure 机器学习中的决策林分类器由决策树的系综构成。 通常情况下，系综模型提供更好的覆盖范围和与单一决策树相比的准确性。 有关详细信息，请参阅[决策树](http://go.microsoft.com/fwlink/?LinkId=403677)。
+在 Azure 机器学习中的决策林分类器由决策树的系综构成。 通常情况下，系综模型提供更好的覆盖范围和与单一决策树相比的准确性。 有关详细信息，请参阅[决策树](https://go.microsoft.com/fwlink/?LinkId=403677)。
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>如何配置多类决策林
 

@@ -131,6 +131,8 @@
           href: platform/alerts-common-schema.md
         - name: 操作规则
           href: platform/alerts-action-rules.md
+        - name: 更改分析
+          href: app/change-analysis.md
     - name: 可视化数据
       href: visualizations.md
     - name: 合作伙伴集成

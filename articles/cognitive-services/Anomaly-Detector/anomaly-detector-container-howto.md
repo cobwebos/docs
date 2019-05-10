@@ -9,12 +9,12 @@ ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: aahi
-ms.openlocfilehash: 5dcec0d5f313b1c746c0674d0f9bf4d30ed19e5c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: cc82e091ae4c033bda7f1d91c9aed36bb081de88
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026308"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233609"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>安装和运行异常情况检测程序容器
 
@@ -39,7 +39,7 @@ ms.locfileid: "65026308"
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
 |异常情况检测程序资源 |若要使用这些容器，必须具有：<br><br>_异常情况检测器_Azure 资源以获取对关联的帐单密钥和计费终结点 URI。 这两个值可在 Azure 门户的异常情况检测程序概述和密钥页上，并且要求来启动该容器。<br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus2.api.cognitive.microsoft.com`|
 
-## <a name="request-access-to-the-container-registry"></a>请求对容器注册表访问权限
+## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
 必须先完成并提交[异常情况检测器容器请求窗体](https://aka.ms/adcontainer)容器请求访问。
 
@@ -49,11 +49,8 @@ ms.locfileid: "65026308"
 
 ## <a name="the-host-computer"></a>主计算机
 
-主机是运行 docker 容器的计算机。 它可以是本地计算机或 Azure 中的 docker 托管服务，包括：
+[!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-* [Azure Kubernetes 服务](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
-* [Azure 容器实例](https://docs.microsoft.com/container-instances/index.yml)
-* 部署到 [Azure Stack](https://docs.microsoft.com/azure-stack/index.yml) 的 [Kubernetes](https://kubernetes.io/) 群集。 有关详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)。
 <!--* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/). For instructions of deploying Anomaly Detector module in IoT Edge, see [How to deploy Anomaly Detector module in IoT Edge](how-to-deploy-anomaly-detector-module-in-iot-edge.md).-->
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
@@ -129,7 +126,7 @@ ApiKey={BILLING_KEY}
 
 如果打算使用所公开的端口运行多个容器，请确保使用不同的端口运行每个容器。 例如，在端口 5000 上运行第一个容器，在端口 5001 上运行第二个容器。
 
-将 `<container-registry>` 和 `<container-name>` 替换为你使用的容器的值。 它们并非必须是同一容器。 可以有异常情况检测程序容器和 LUIS 容器主机上一起运行，或者你可以运行的多个异常情况检测程序容器。 
+请将 `<container-registry>` 和 `<container-name>` 替换为所用容器的值。 这些容器不需要是同一容器。 可以有异常情况检测程序容器和 LUIS 容器主机上一起运行，或者你可以运行的多个异常情况检测程序容器。 
 
 在端口 5000 上运行第一个容器。 
 
@@ -152,7 +149,7 @@ Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY}
 ```
 
-每个后续容器都应当位于不同的端口上。 
+每个后续容器应位于不同的端口上。 
 
 ## <a name="query-the-containers-prediction-endpoint"></a>查询容器的预测终结点
 

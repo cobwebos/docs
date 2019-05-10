@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 81d7572f800f191791158f2c1f99e1f072980116
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6b833ef56b890eb4ea0db6b48fe8c2622e211498
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151072"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233873"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>教程：使用 Azure 存储队列
 
@@ -206,7 +206,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 ## <a name="insert-messages-into-the-queue"></a>将消息插入队列
 
-创建一个新方法用于将消息发送到队列。 将以下方法添加到 **Program** 类。 此方法获取队列引用，然后通过调用 [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet) 创建一个新队列（如果尚不存在）。 然后，它通过调用 [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet) 将消息添加到该队列。
+创建一个新方法用于将消息发送到队列。 将以下方法添加到 **Program** 类。 此方法获取队列引用，然后通过调用 [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet) 创建一个新队列（如果尚不存在）。 然后，它通过调用 [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet) 将消息添加到该队列。
 
 1. 将以下 **SendMessageAsync** 方法添加到 **Program** 类。
 
@@ -229,7 +229,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 ## <a name="dequeue-messages"></a>取消消息的排队
 
-创建名为 **ReceiveMessageAsync** 的新方法。 此方法通过调用 [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet) 从队列接收消息。 成功收到消息后，必须从队列中删除该消息，以免再次处理该消息。 收到消息后，请调用 [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet) 从队列中删除该消息。
+创建名为 **ReceiveMessageAsync** 的新方法。 此方法通过调用 [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet) 从队列接收消息。 成功收到消息后，必须从队列中删除该消息，以免再次处理该消息。 收到消息后，请调用 [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet) 从队列中删除该消息。
 
 1. 将以下 **ReceiveMessageAsync** 方法添加到 **Program** 类。
 

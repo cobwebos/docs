@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 2ab8f272fc264f153144803be772d381c1780512
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7f850f309034d128efef89ea842db41d35b8491e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143273"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235740"
 ---
 # <a name="sql-database-serverless-preview"></a>SQL 数据库无服务器 （预览版）
 
@@ -72,7 +72,7 @@ SQL 数据库无服务器 （预览版） 是费用的计算基于每个第二�
 
 ## <a name="purchasing-model-and-service-tier"></a>购买模型和服务层
 
-无服务器的 SQL 数据库目前仅支持常规用途层中的购买模型的 vcore 生成 5 硬件上。
+无服务器的 SQL 数据库目前仅支持常规用途层中的购买模型的 vCore 生成 5 硬件上。
 
 ## <a name="autoscaling"></a>自动缩放
 
@@ -111,14 +111,14 @@ SQL 数据库无服务器 （预览版） 是费用的计算基于每个第二�
 |自动调整|自动调整建议，例如自动索引的应用和验证|
 |数据库复制|作为副本创建数据库<br>导出到 BACPAC 文件|
 |SQL 数据同步|中心和成员数据库的可配置计划上运行，或手动执行之间的同步|
-|修改特定数据库的元数据|添加数据库的新标记<br>更改最大 vcore 数，最小 vcore autopause 延迟|
+|修改特定数据库的元数据|添加数据库的新标记<br>更改最大 vcore 数，最小 Vcore autopause 延迟|
 |SQL Server Management Studio (SSMS)|使用 SSMS 版本 18 和在服务器中打开新查询窗口中的任何数据库将继续进行在同一台服务器中的任何已自动暂停数据库。 如果使用 SSMS 版本 17.9.1 intellisense 处于关闭状态的则此行为不会发生。|
 
-### <a name="connectivity"></a>连接
+### <a name="connectivity"></a>连接性
 
 如果暂停无服务器数据库，然后将恢复数据库首次登录并返回一个错误，指出数据库将不可用。 后恢复数据库时，该登录名必须重试建立连接。 数据库客户端连接重试逻辑应该不需要进行修改。
 
-### <a name="latency"></a>Latency
+### <a name="latency"></a>延迟
 
 自动暂停或 autoresume 无服务器数据库连接的延迟时间是通常大约 1 分钟。
 
