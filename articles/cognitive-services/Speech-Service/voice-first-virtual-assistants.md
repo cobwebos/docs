@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: c9ed6f898f4bcf8a5d4b2548cc1f3cf51f71bb2a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1344de526564ab623a51eb903951b6a2e866048d
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138169"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523479"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>有关自定义语音第一个虚拟助手预览
 
-使用 Azure 的语音服务的自定义虚拟助手授权开发人员创建为其应用程序和体验的自然的、 类似于人类的对话接口。 Bot Framework 直接行语音通道启用中、 低延迟、 高可靠性的交互的语音的语音兼容机器人提供协调、 安排好的入口点，从而增强了这些功能。 这些智能机器人可以使用 Microsoft 的语言理解 (LUIS) 进行自然语言交互。 通过使用语音软件开发工具包 (SDK) 的设备访问直接行语音。
+自定义虚拟助手使用 Azure 语音服务为开发人员助力，使开发人员可以为其应用程序和体验创建自然的、类似于人类的对话接口。 Bot Framework 的 Direct Line Speech 通道通过为兼容机器人提供协调的、安排好的入口点来实现延迟时间短、可靠性高的双向语音交互，从而增强了这些功能。 这些智能机器人可以使用 Microsoft 的语言理解 (LUIS) 进行自然语言交互。 通过使用语音软件开发工具包 (SDK) 的设备访问直接行语音。
 
    ![直拨电话语音业务流程服务流的概念图](media/voice-first-virtual-assistants/overview.png "语音通道流")
 
-直接行语音和它的相关的功能的自定义语音第一个虚拟助手是理想之选补充[虚拟助手解决方案](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction)并[企业级模板](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)。 尽管直接行语音可以使用任何兼容的智能机器人应用程序，这些资源的高质量的对话式体验，以及常见支持技能和模型的快速入门提供的可重用的基线。
+直接行语音和它的相关的功能的自定义语音第一个虚拟助手是理想之选补充[虚拟助手解决方案](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction)并[企业级模板](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction)。 尽管直接行语音可以使用任何兼容的智能机器人应用程序，这些资源的高质量的对话式体验，以及常见支持技能和模型的快速入门提供的可重用的基线。
 
 ## <a name="core-features"></a>核心功能
 
@@ -35,7 +35,7 @@ ms.locfileid: "65138169"
 |[文本到语音转换](text-to-speech.md) | 将使用合成文本响应从智能机器人[文本到语音转换](text-to-speech.md)从 Azure 语音服务。 此合成然后可向客户端应用程序为音频流。 Microsoft 提供的功能构建到自己的品牌，若要了解详细信息中提供语音自己自定义、 高质量神经 TTS 语音[联系我们](mailto:mstts@microsoft.com)。
 |[直拨电话语音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Bot Framework 内的信道，作为直接行语音允许客户端应用程序、 兼容智能机器人应用程序，以及 Azure 语音服务的功能之间的平稳、 无缝连接。 配置智能机器人使用直接行语音通道的详细信息，请参阅[Bot Framework 文档中的其页面](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)。
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 GitHub 上提供了用于创建语音第一个虚拟助手的示例代码。 这些示例涉及到几种常用编程语言中智能机器人连接的客户端应用程序。
 
