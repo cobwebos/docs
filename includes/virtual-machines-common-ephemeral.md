@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: d7737f73ee4eb9ae9dc8c4845020b7543a5b3495
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159160"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65468332"
 ---
 临时 OS 磁盘是本地的虚拟机 (VM) 存储上创建并不会保留到远程 Azure 存储。 临时 OS 磁盘适用于无状态工作负载，其中应用程序容错的单个 VM 失败，但更为关注大规模部署所需的时间或时间进行映像重置单个 VM 实例。 也很适合使用经典部署模型转移到 Resource Manager 部署模型部署的应用程序。 使用临时 OS 磁盘后，将观察到的 OS 磁盘和更快的 VM 重置映像较低的读取/写入延迟。 此外，临时 OS 磁盘是免费的则会产生的 OS 磁盘存储免费。 
  
@@ -30,12 +30,12 @@ ms.locfileid: "65159160"
 |                             | 持久性 OS 磁盘                          | 临时 OS 磁盘                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | OS 磁盘的大小限制      | 2 个 TiB                                                                                        | 缓存大小的 VM 大小或 2TiB，两者中较小- [DS](../articles/virtual-machines/linux/sizes-general.md)， [ES](../articles/virtual-machines/linux/sizes-memory.md)， [M](../articles/virtual-machines/linux/sizes-memory.md)， [FS](../articles/virtual-machines/linux/sizes-compute.md)，和[GS](../articles/virtual-machines/linux/sizes-memory.md)              |
-| 支持的 VM 大小          | 全部                                                                                          | DSv1、 DSv2、 DSv3、 Esv2、 Fs、 FsV2、 GS、 M                                               |
+| 支持的 VM 大小          | 全部                                                                                          | DSv1、 DSv2、 DSv3、 esv3 系列、 Fs、 FsV2、 GS、 M                                               |
 | 磁盘类型支持           | 托管和非托管 OS 磁盘                                                                | 托管的 OS 磁盘                                                               |
 | 区域支持              | 所有区域                                                                                  | 所有区域                              |
 | 数据暂留            | 写入到 OS 磁盘的 OS 磁盘数据存储在 Azure 存储                                  | 写入到 OS 磁盘的数据存储到的本地 VM 存储并不会保留到 Azure 存储。 |
 | 停止解除分配状态      | 可以停止解除分配，并从已停止解除分配状态重新启动 Vm 和规模集实例 | Vm 和规模集实例不能为已停止解除分配                                  |
-| 专用的 OS 磁盘支持 | 是                                                                                          | 否                                                                                 |
+| 专用的 OS 磁盘支持 | “是”                                                                                          | “否”                                                                                 |
 | OS 磁盘重设大小              | 支持的 VM 创建期间和之后 VM 处于停止解除分配                                | 仅在创建 VM 期间支持                                                  |
 | 为新的 VM 大小重设大小   | OS 磁盘数据保留                                                                    | OS 磁盘上的数据之后，操作系统是重新预配                                      |
 
@@ -48,13 +48,13 @@ ms.locfileid: "65159160"
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-Register-AzRmProviderFeature –FeatureName LocalDiffDiskPreview
+Register-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
 ```
 
 若要检查你注册预览版：
 
 ```azurepowershell-interactive
-Get-AzRmProviderFeature –FeatureName LocalDiffDiskPreview
+Get-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="cli"></a>CLI
@@ -67,7 +67,7 @@ az feature register --namespace Microsoft.Compute --name LocalDiffDiskPreview
 若要检查你注册预览版：
  
 ```azurecli-interactive
-az provider show –namespace ‘Microsoft.Compute’
+az provider show --namespace Microsoft.Compute
 ```
 
 

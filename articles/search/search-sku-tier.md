@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3e813b8a1709675d0d870d64df83428ab82e25b3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5b9e0dfb88c979618ce4cc5ed56e372cb0f65608
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024296"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472721"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -89,7 +89,7 @@ ms.locfileid: "65024296"
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3.AI 强化索引使用认知服务
 
-有关[AI 索引使用认知服务](cognitive-search-concept-intro.md)，您应计划将附加的处理即用即付定价层的可计费 S0 在认知服务资源。 没有任何"固定的费用"与附加认知服务相关联。 仅为所需的处理付费。
+有关[AI 索引使用认知服务](cognitive-search-concept-intro.md)，您应计划将附加 Azure 搜索中，与即用即付处理的 S0 定价层位于同一区域中的可计费的认知服务资源。 没有任何"固定的费用"与附加认知服务相关联。 仅为所需的处理付费。
 
 图像提取中的，在文档破解是 Azure 搜索的费用，计费基于从文档中提取的映像数量。 文本提取目前是免费的。 
 

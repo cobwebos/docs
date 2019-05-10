@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
-ms.openlocfilehash: f10883ca89c048d384eff9bddaf7642e22941109
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9443a50d130e6542672eb143bcb56d04d63959a4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160585"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235710"
 ---
 # <a name="media-services-job-error-codes"></a>媒体服务作业错误代码
 
@@ -28,13 +28,13 @@ ms.locfileid: "65160585"
 
 下面的 REST 文档详细的说明提供有关[作业错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、 提供反馈，获取更新
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
 ## <a name="see-also"></a>另请参阅
 
-- [原始错误代码](origin-error-codes.md)
+- [流式处理终结点错误代码](streaming-endpoint-error-codes.md)
 - [Azure 媒体服务概念](concepts-overview.md)
 - [配额和限制](limits-quotas-constraints.md)
 
