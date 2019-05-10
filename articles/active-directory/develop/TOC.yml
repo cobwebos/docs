@@ -342,6 +342,8 @@
               items:
                 - name: 从缓存获取令牌
                   href: msal-net-acquire-token-silently.md
+                - name: 清除令牌缓存
+                  href: msal-net-clear-token-cache.md
                 - name: 通过选项实例化公共客户端
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: 通过选项实例化机密客户端

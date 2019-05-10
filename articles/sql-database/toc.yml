@@ -462,6 +462,8 @@
           href: sql-database-managed-instance-create-vnet-subnet.md
         - name: 为托管实例配置现有 VNet 和子网
           href: sql-database-managed-instance-configure-vnet-subnet.md
+        - name: 在删除托管实例后删除子网
+          href: sql-database-managed-instance-delete-virtual-cluster.md
         - name: 配置自定义 DNS
           href: sql-database-managed-instance-custom-dns.md
         - name: 同步网络配置

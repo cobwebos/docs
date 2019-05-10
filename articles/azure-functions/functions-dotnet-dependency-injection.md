@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2019
 ms.author: jehollan
-ms.openlocfilehash: 1ef688dff65dc11f875f76e2f9127bf89af2f2b9
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 2044718d2ec7a7acc58e1e7ba9ba04ec5caf16b3
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074585"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408448"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在.NET Azure Functions 中使用依赖关系注入
 
@@ -65,7 +65,7 @@ namespace MyNamespace
 
 单例生存期服务建议使用连接和客户端，例如`SqlConnection`， `CloudBlobClient`，或`HttpClient`。
 
-查看或下载[示例的不同服务生存期](http://aka.ms/functions/di-sample)。
+查看或下载[示例的不同服务生存期](https://aka.ms/functions/di-sample)。
 
 ## <a name="logging-services"></a>日志记录服务
 
