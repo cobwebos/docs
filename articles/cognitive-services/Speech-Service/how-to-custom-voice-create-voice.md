@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad69c4108d747c44eccf37b81adf2c7c615cb58
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6189ea2866d1c16f994179df0179e29353e6c47d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156842"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410723"
 ---
 # <a name="create-a-custom-voice"></a>创建自定义语音
 
-在中[准备数据以自定义语音](how-to-custom-voice-prepare-data.md)，我们介绍了可用于训练的自定义语音和不同的格式要求的不同数据类型。 一旦你已准备好你的数据，您可以开始将它们上载到[自定义语音门户](http://aka.ms/custom-voice-portal)，或通过自定义语音训练 API。 此处介绍的训练通过门户自定义语音的步骤。
+在中[准备数据以自定义语音](how-to-custom-voice-prepare-data.md)，我们介绍了可用于训练的自定义语音和不同的格式要求的不同数据类型。 一旦你已准备好你的数据，您可以开始将它们上载到[自定义语音门户](https://aka.ms/custom-voice-portal)，或通过自定义语音训练 API。 此处介绍的训练通过门户自定义语音的步骤。
 
 > [!NOTE]
 > 此页面假定你已阅读[开始使用自定义语音](how-to-custom-voice.md)并[准备数据以自定义语音](how-to-custom-voice-prepare-data.md)，并已创建了自定义语音项目。
@@ -28,7 +28,7 @@ ms.locfileid: "65156842"
 
 ## <a name="upload-your-datasets"></a>上传数据集
 
-如果你已准备好将数据上传，请转到[自定义语音门户](http://aka.ms/custom-voice-portal)。 创建或选择自定义语音项目。 项目必须共享正确语言/区域设置和数据的性别属性您打算使用语音培训。 例如，选择`en-GB`如果的录音必须在英语中完成与英国重音。
+如果你已准备好将数据上传，请转到[自定义语音门户](https://aka.ms/custom-voice-portal)。 创建或选择自定义语音项目。 项目必须共享正确语言/区域设置和数据的性别属性您打算使用语音培训。 例如，选择`en-GB`如果的录音必须在英语中完成与英国重音。
 
 转到**数据**选项卡，单击**将数据上传**。 在向导中，选择正确的数据类型相匹配您已准备好。
 
@@ -46,7 +46,7 @@ ms.locfileid: "65156842"
 
 | 状态 | 含义 |
 | ----- | ------- |
-| Processing | 你的数据集已收到并处理。 |
+| 正在处理 | 你的数据集已收到并处理。 |
 | 已成功 | 你的数据集已验证，现在可能用于生成语音模型。 |
 | 已失败 | 你的数据集已在由于多种原因，例如文件错误、 数据问题或网络问题而导致处理过程已失败。 |
 
@@ -88,7 +88,7 @@ ms.locfileid: "65156842"
 
 | 状态 | 含义 |
 | ----- | ------- |
-| Processing | 正在创建你的语音模型。 |
+| 正在处理 | 正在创建你的语音模型。 |
 | 已成功 | 语音模型已创建，并且可部署。 |
 | 已失败 | 语音模型已定型由于多种原因，例如不可见的数据的问题或网络问题而失败。 |
 

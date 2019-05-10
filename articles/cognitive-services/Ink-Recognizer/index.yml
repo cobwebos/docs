@@ -59,7 +59,7 @@ sections:
       - type: paragraph
         text: 使用这些示例程序来了解如何将墨迹识别器 API 集成到应用程序中：
       - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089502">C# 和通用 Windows 平台 (UWP)</a>'
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089503">C# 和通用 Windows 平台 (UWP)</a>'
       - type: paragraph
         text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# 和 Windows Presentation Foundation(WPF)</a>'
       - type: paragraph

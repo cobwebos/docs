@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 113c894122fe2b0673dfb47f8a9c0cbecf4c6290
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 45421a249642abf37c89aa33e2e8a1b4a9e5e497
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205063"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507009"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -42,7 +42,7 @@ ms.locfileid: "65205063"
 
 ## <a name="prerequisites-for-deployment"></a>部署的先决条件
 
-- 模型。 如果你不具有定型的模型，可以使用模型中提供的依赖项文件[本教程](http://aka.ms/azml-deploy-cloud)。
+- 模型。 如果你不具有定型的模型，可以使用模型中提供的依赖项文件[本教程](https://aka.ms/azml-deploy-cloud)。
 
 - [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)，或[Azure 机器学习 Python SDK](https://aka.ms/aml-sdk)。
 
@@ -458,7 +458,7 @@ image_config.base_image = run.properties["AzureML.DerivedImageName"]
 使用 Azure 机器学习计算的批处理推理的演练，请阅读[如何运行批预测](how-to-run-batch-predictions.md)一文。
 
 ## <a id="iotedge"></a> IoT Edge 上的推理
-部署到 edge 设备的支持处于预览状态。 有关详细信息，请参阅[部署 Azure 机器学习作为 IoT Edge 模块](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-machine-learning)一文。
+部署到 edge 设备的支持处于预览状态。 有关详细信息，请参阅[部署 Azure 机器学习作为 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)一文。
 
 ## <a name="next-steps"></a>后续步骤
 * [部署故障排除](how-to-troubleshoot-deployment.md)

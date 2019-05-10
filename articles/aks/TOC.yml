@@ -140,6 +140,8 @@
           href: azure-files-dynamic-pv.md
         - name: Azure 文件 - 静态
           href: azure-files-volume.md
+        - name: NFS 服务器 - 静态
+          href: azure-nfs-volume.md
     - name: 配置网络
       items:
         - name: 创建虚拟网络或使用现有虚拟网络

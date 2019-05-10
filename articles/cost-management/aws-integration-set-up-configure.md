@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: a7a020284f44eda0da62f307866c74b0a8df493d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e87e95ec9e4e20ee4785c2b1f448a7ca5f442b8a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205699"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409196"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>设置和配置 AWS 成本和使用情况报表集成
 
@@ -38,7 +38,7 @@ ms.locfileid: "65205699"
 7. 有关**启用对支持**，没有选定内容是必需的。
 8. 有关**的数据刷新设置**，选择**自动刷新你的成本&amp;使用情况报告上一个月检测到费用时关闭帐单**。
 9. 单击“下一步”。
-10. 有关**Amazon S3 存储桶**，键入要传递到的报表的 Amazon S3 存储桶的名称，然后单击**验证**。 存储桶必须具有适当的权限有效。 有关将权限添加到存储桶的详细信息，请参阅[设置存储桶和对象的访问权限](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-permissions.html)。
+10. 有关**Amazon S3 存储桶**，键入要传递到的报表的 Amazon S3 存储桶的名称，然后单击**验证**。 存储桶必须具有适当的权限有效。 有关将权限添加到存储桶的详细信息，请参阅[设置存储桶和对象的访问权限](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-permissions.html)。
 11. 有关**报表路径前缀**，键入你想要添加到报表的名称的报表路径前缀。
 12. 有关**压缩**，选择**GZIP**。
 13. 单击“下一步”。

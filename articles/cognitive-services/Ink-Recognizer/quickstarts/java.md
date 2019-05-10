@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 43dc388c9f24e3975d6efddbeec6e096bf062548
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6237253922544dc47bb11aec4dd58139f99eb0da
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026269"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518613"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>快速入门：识别墨迹识别器 REST API 和 Java 与数字墨迹
 
@@ -30,13 +30,13 @@ ms.locfileid: "65026269"
 
 ## <a name="prerequisites"></a>必备组件
 
-- [Java&trade;开发 Kit(JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)或更高版本。
+- [Java&trade;开发 Kit(JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)或更高版本。
 
 - 从 Maven 存储库导入这些库
     - [在 Java 中的 JSON](https://mvnrepository.com/artifact/org.json/json)包
     - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient)包
 
-- 本快速入门示例墨迹笔划数据都位于[GitHub](https://go.microsoft.com/fwlink/?linkid=2089904)。
+- 本快速入门示例墨迹笔划数据都位于[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json)。
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
@@ -134,7 +134,7 @@ static void recognizeInk(String requestData) {
 
 ## <a name="run-the-application-and-view-the-response"></a>运行应用程序并查看响应
 
-运行应用程序。 JSON 格式返回成功的响应。 您还可以在找到 JSON 响应[GitHub](https://go.microsoft.com/fwlink/?linkid=2089904)。
+运行应用程序。 JSON 格式返回成功的响应。 您还可以在找到 JSON 响应[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -142,9 +142,9 @@ static void recognizeInk(String requestData) {
 > [REST API 参考](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
-若要查看数字的手写应用程序中的墨迹识别 API 工作原理，看一下以下示例应用程序在 GitHub 上：
-* [C#和通用 Windows Platform(UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#和 Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Javascript web 浏览器应用程序](https://go.microsoft.com/fwlink/?linkid=2089908)       
+若要了解墨迹识别 API 在数字墨迹应用中的工作原理，请查看 GitHub 上的以下示例应用程序：
+* [C# 和通用 Windows 平台 (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# 和 Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Javascript Web 浏览器应用](https://go.microsoft.com/fwlink/?linkid=2089908)       
 * [Java 和 Android 移动应用](https://go.microsoft.com/fwlink/?linkid=2089906)
 * [Swift 和 iOS 移动应用](https://go.microsoft.com/fwlink/?linkid=2089805)

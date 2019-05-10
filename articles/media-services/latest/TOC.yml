@@ -24,18 +24,13 @@
     - name: 实时流 - .NET
       href: stream-live-tutorial-with-api.md
     - name: 分析视频 - .NET
-      displayName: 'job, transform'
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
       href: analyze-videos-tutorial-with-api.md
     - name: 通过 AES-128 进行动态加密 - .NET
       href: protect-with-aes128.md
     - name: 通过 DRM 进行动态加密 - .NET
+      displayName: 'PlayReady, Widevine'
       href: protect-with-drm.md
-- name: 示例
-  items:
-    - name: Azure 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
-    - name: Azure CLI
-      href: cli-samples.md
 - name: 概念
   href: concepts-overview.md
   items:
@@ -52,6 +47,7 @@
           displayName: 'encoding, presets, jobs, adaptive, bitrate'
         - name: 转换和作业
           href: transforms-jobs-concept.md
+          displayName: 'preset, schema'
         - name: Media Encoder Standard 格式
           displayName: 'containers, codecs'
           href: media-encoder-standard-formats.md
@@ -75,7 +71,7 @@
         - name: 打包
           items:
             - name: 动态打包
-              displayName: packager
+              displayName: 'origin, packager'
               href: dynamic-packaging-overview.md
             - name: 动态清单
               href: filters-dynamic-manifest-overview.md
@@ -84,7 +80,7 @@
         - name: 内容保护
           items:
             - name: 流式处理协议和加密类型
-              displayName: Dynamic encryption
+              displayName: 'dynamic, encryption'
               href: content-protection-overview.md
             - name: 带有访问控制的多 DRM 系统
               href: design-multi-drm-system-with-access-control.md
@@ -97,7 +93,7 @@
                 - name: FairPlay 许可证要求
                   href: fairplay-license-overview.md
         - name: 流式处理终结点/源
-          displayName: 'origins, cdn'
+          displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
         - name: 流式处理定位符
           displayName: URLs
@@ -106,8 +102,8 @@
           href: streaming-policy-concept.md
         - name: 内容密钥策略
           href: content-key-policy-concept.md
-        - name: 原始错误代码
-          href: origin-error-codes.md
+        - name: 流式处理终结点错误代码
+          href: streaming-endpoint-error-codes.md
     - name: 实时传送视频流
       items:
         - name: 概述
@@ -141,6 +137,7 @@
           href: use-azure-media-player.md
     - name: 使用 v3 API 进行开发
       href: media-services-apis-overview.md
+      displayName: 'access, naming, long-running'
       items:
         - name: 对实体进行分页、筛选、排序
           href: entities-overview.md
@@ -148,8 +145,8 @@
           href: rbac-overview.md
         - name: 错误代码
           items:
-            - name: 原始错误代码
-              href: origin-error-codes.md
+            - name: 流式处理终结点错误代码
+              href: streaming-endpoint-error-codes.md
             - name: 作业错误代码
               href: job-error-codes.md
     - name: 从 v2 到 v3 的迁移指南
@@ -160,10 +157,14 @@
       items:
         - name: 创建帐户 - CLI
           href: create-account-cli-how-to.md
+        - name: 重置帐户凭据 - CLI
+          href: cli-reset-account-credentials.md
         - name: 访问 API - CLI
           href: access-api-cli-how-to.md
         - name: 缩放媒体保留单位 - CLI
           href: media-reserved-units-cli-how-to.md
+        - name: 创建资产 - CLI
+          href: cli-create-asset.md
         - name: 使用 REST 进行开发
           items:
             - name: 使用 Postman 进行连接
@@ -190,6 +191,14 @@
         - name: 从本地文件 - REST
           displayName: upload
           href: upload-files-rest-how-to.md
+        - name: 从本地文件 - CLI
+          href: cli-upload-file-asset.md
+    - name: 创建转换和作业
+      items:
+        - name: 创建转换 - CLI
+          href: cli-create-transform.md
+        - name: 创建作业 - CLI
+          href: cli-create-jobs.md
     - name: 对内容进行编码
       items:
         - name: HTTPS 作为作业输入 - .NET
@@ -230,10 +239,15 @@
           href: filters-dynamic-manifest-rest-howto.md
         - name: 使用 CLI
           href: filters-dynamic-manifest-cli-howto.md
+    - name: 传送内容
+      items:
+        - name: 发布资产 - CLI
+          href: cli-publish-asset.md
 - name: 引用
   items:
     - name: OpenAPI 规范 (Swagger)
       href: 'https://aka.ms/ams-v3-rest-sdk'
+      displayName: schema
     - name: REST
       href: 'https://aka.ms/ams-v3-rest-ref'
     - name: Azure CLI
@@ -254,8 +268,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: 错误代码
       items:
-        - name: 原始错误代码
-          href: origin-error-codes.md
+        - name: 流式处理终结点错误代码
+          href: streaming-endpoint-error-codes.md
         - name: 作业错误代码
           href: job-error-codes.md
 - name: 资源
@@ -285,7 +299,7 @@
           href: 'https://aka.ms/ams-v3-nodejs-sdk'
         - name: Ruby
           href: 'https://aka.ms/ams-v3-ruby-sdk'
-    - name: AMSE
+    - name: Azure 媒体服务浏览器
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: 发行说明
       href: release-notes.md
