@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 92f4616a415c4ddebd0d9b2e466536b2f30c486f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f8803a498e62958a5488f2ac8830137c37533e54
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146403"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413703"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>自动缩放 Azure HDInsight 群集（预览）
 
@@ -21,14 +21,17 @@ Azure HDInsight 群集自动缩放功能自动缩放辅助角色节点数在群�
 
 ## <a name="cluster-compatibility"></a>群集兼容性
 
+> [!Important]
+> 自动缩放功能仅适用于 2019 年 5 中功能的公开上市后创建的群集。 它不适用于预先存在的群集。
+
 下表介绍的群集类型和自动缩放功能与兼容的版本。
 
-| Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Version | Spark | Hive | LLAP | Hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3.6 而无需 ESP | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
-| HDInsight 4.0 而无需 ESP | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
-| 对于 ESP HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
-| 对于 ESP HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
+| HDInsight 3.6 而无需 ESP | “是” | 是 | 否 | 否 | 否 | 否 | “否” |
+| HDInsight 4.0 而无需 ESP | “是” | 是 | 否 | 否 | 否 | 否 | “否” |
+| 对于 ESP HDInsight 3.6 | “是” | 是 | 否 | 否 | 否 | 否 | “否” |
+| 对于 ESP HDInsight 3.6 | “是” | 是 | 否 | 否 | 否 | 否 | “否” |
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -200,7 +203,7 @@ HDInsight 服务计算多少新辅助角色节点所需满足的当前 CPU 和�
 | 群集状态 | 说明 |
 |---|---|
 | 正在运行 | 群集运行正常。 所有以前的自动缩放活动已成功完成。 |
-| 正在更新…  | 正在更新群集自动缩放配置。  |
+| 正在更新  | 正在更新群集自动缩放配置。  |
 | HDInsight 配置  | 群集增加或减少操作正在进行中。  |
 | 更新时出错  | HDInsight 自动缩放配置更新过程中遇到问题。 客户可以选择以重试更新或禁用自动缩放。  |
 | 错误  | 群集后，出错了，并且不可用。 删除此群集，并创建一个新。  |
