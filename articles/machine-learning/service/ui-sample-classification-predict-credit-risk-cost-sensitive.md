@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 03dfa250091b906ea1496fea3a4dd9b3753e0aaf
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 433c258f86705f66e0163100407be7996d68bc6b
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028645"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65440956"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>示例 4-分类：预测信用风险 （成本敏感）
 
@@ -52,7 +52,7 @@ ms.locfileid: "65028645"
 
 以下是实验的关系图：
 
-[ ![实验的关系图](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![实验的关系图](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>数据处理
 
@@ -85,7 +85,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 **执行 Python 脚本**模块将复制训练和测试数据集。
 
-### <a name="feature-engineering"></a>特性工程
+### <a name="feature-engineering"></a>特征工程
 
 **双类支持向量机**算法要求规范化的数据。 因此，我们使用**规范化数据**模块来规范化所有数值功能使用的范围`tanh`转换。 一个`tanh`转换同时还能保留的值的总体分布将所有数值功能转换为 0 和 1 的范围内的值。
 

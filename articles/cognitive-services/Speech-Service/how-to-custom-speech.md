@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: f2441d5660ed84a8680c1861e2e20a1a17ee4762
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ab33feb1ffdbced193afaba8f52719b3c215652f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025827"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511119"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 
@@ -43,7 +43,7 @@ ms.locfileid: "65025827"
 
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
-语音服务订阅是必需的然后才能使用自定义语音门户来创建自定义模型。 请按照以下说明创建标准的语音服务订阅操作：[创建语音订阅](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#new-azure-account)。
+语音服务订阅是必需的然后才能使用自定义语音门户来创建自定义模型。 请按照以下说明创建标准的语音服务订阅操作：[创建语音订阅](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account)。
 
 > [!NOTE]
 > 请务必创建标准 (S0) 订阅，不支持免费试用版 (F0) 订阅。

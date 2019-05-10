@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 77e0e11582808901b10877d0d9284637145aa6f2
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/08/2019
+ms.openlocfilehash: 881734caf855ccfc4f001693fe261b8448b49bc4
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65078665"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466203"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "65078665"
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>可以部署到现有虚拟网络的群集？
 
-可以。 创建群集时，可以部署到现有虚拟网络的 Azure Red Hat OpenShift 群集。 请参阅[群集的虚拟网络连接到现有的虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)有关详细信息。
+不。 但你可以连接到现有的 VNET 通过对等互连的 Azure Red Hat OpenShift 群集。 请参阅[群集的虚拟网络连接到现有的虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)有关详细信息。
 
 ## <a name="what-cluster-operations-are-available"></a>群集操作是否可用？
 

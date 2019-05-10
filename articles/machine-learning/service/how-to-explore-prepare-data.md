@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: f9087d1fda7574043879983e31d7b608dbe58798
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204972"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409826"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>探索和准备数据与数据集类 （预览版）
 
@@ -131,7 +131,7 @@ IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1
 国内|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 检测信号|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
 区|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
-病房|FieldType.INTEGER|第|48|10.0|0.0|10.0|0.0|0.0|0.0|第|5|第|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
+病房|FieldType.INTEGER|第|48|10.0|0.0|10.0|0.0|0.0|0.0|第|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
 社区范围|FieldType.INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37.5|71|77|77|77|41.2|26.6366|709.511|0.112157|-1.73379
 FBI 代码|FieldType.INTEGER|6|11|10.0|0.0|10.0|0.0|0.0|0.0|6|6|6|6|11|11|11|11|11|9.4|2.36643|5.6|-0.702685|-1.59582
 X 坐标|FieldType.INTEGER|1.16309e+06|1.18336e+06|10.0|7.0|3.0|0.7|0.0|0.0|1.16309e+06|1.16309e+06|1.16309e+06|1.16401e+06|1.16678e+06|1.17921e+06|1.18336e+06|1.18336e+06|1.18336e+06|1.17108e+06|10793.5|1.165e+08|0.335126|-2.33333
@@ -165,7 +165,7 @@ ds_def.head(3)
 ||ID|逮捕| 纬度|经度|
 -|---------|-----|---------|----------|
 |0|10498554|False|41.692834|-87.604319|
-|第|10516598|False| 41.744107 |-87.664494|
+|1|10516598|False| 41.744107 |-87.664494|
 |2|10519196|False| NaN|NaN|
 
 接下来，检查`MEAN`纬度列使用的值[ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow)函数。 此函数接受 `group_by_columns` 参数中的列数组以指定聚合级别。 `summary_columns`参数接受`SummaryColumnsValue`函数，它指定当前的列名称，新的计算的字段名称，和`SummaryFunction`来执行。
@@ -231,7 +231,7 @@ dataset.head(3)
 ||ID|逮捕|纬度|经度
 -|---------|-----|---------|----------
 0|10498554|False|41.692834|-87.604319
-第|10516598|False|41.744107|-87.664494
+1|10516598|False|41.744107|-87.664494
 2|10519196|False|41.780049|-87.000000
 
 ## <a name="create-assertion-rules"></a>创建声明规则
@@ -313,7 +313,7 @@ ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
 ||ID|date|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10PM-12AM
-第|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
+1|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
 2|10519196|2016-04-15 10:00:00|2016-04-15 10AM-12PM
 
 ```Python

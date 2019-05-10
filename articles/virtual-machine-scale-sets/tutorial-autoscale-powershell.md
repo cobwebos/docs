@@ -197,7 +197,7 @@ mstsc /v 52.168.121.216:50001
 登录后，从任务栏打开 Internet Explorer。
 
 - 选择“确定”，接受“使用推荐的安全性、隐私和兼容性设置”这一提示。
-- 在地址栏中键入 *http://download.sysinternals.com/files/CPUSTRES.zip*。
+- 在地址栏中键入 *http://download.sysinternals.com/files/CPUSTRES.zip* 。
 - 由于 Internet Explorer 增强型安全配置已启用，因此请选择“添加”，以便将 *http://download.sysinternals.com* 域添加到受信任站点的列表。
 - 提示查找下载的文件时，请选择“打开”，然后选择“运行”，以便运行 *CPUSTRES.EXE* 工具。
 

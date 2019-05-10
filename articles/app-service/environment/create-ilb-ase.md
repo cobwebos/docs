@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8508dbecceb9984f53a133d9634882603549cdd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573572"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199646"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
 
@@ -133,8 +133,8 @@ ILB ASE 与非 ILB ASE 稍有不同。 如先前所述，用户需要管理自�
 
 ILB ASE 需要有效的 SSL 证书。 可使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 无论 SSL 证书的来源如何，都需要正确配置以下证书属性：
 
-* **使用者**：此属性必须设置为 *.your-root-domain-here。
-* **使用者可选名称**：此属性必须同时包含 *.your-root-domain-here 和 *.scm.your-root-domain-here。 使用 *your-app-name.scm.your-root-domain-here* 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
+* **使用者**：此属性必须设置为 *\.your-root-domain-here。
+* **使用者可选名称**：此属性必须同时包含 .your-root-domain-here 和 .scm.your-root-domain-here。 使用 *your-app-name.scm.your-root-domain-here* 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
 
 将 SSL 证书转换/保存为 .pfx 文件。 .pfx 文件必须包括所有中间证书和根证书。 使用密码进行保护。
 

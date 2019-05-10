@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b4ebf1740ec2b0288d8052cb075a61b720b031a2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 67e54f10074ee566ce974dbd27485904bfe0a653
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028330"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411553"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>提升的决策树回归模块
 
@@ -45,7 +45,7 @@ ms.locfileid: "65028330"
 
     上渐进提升此维基百科文章提供了有关提升树的一些背景。 
   
--  [http://research.microsoft.com/apps/pubs/default.aspx?id=132652](http://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
+-  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
     Microsoft Research:从 RankNet 到 lambdarank 再到 LambdaMART:概述。 By J.C. Burges 撰写。
 

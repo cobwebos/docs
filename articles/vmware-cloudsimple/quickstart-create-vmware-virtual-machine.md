@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3940adfaa42de8ac9c3f32a9eadc8f6d643ce3ce
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c0bb8d7a5a1ea30b704b44c9337cd28043597ff7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149533"
+ms.locfileid: "65209528"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>快速入门-使用 Azure 上的 VMware Vm
 
@@ -69,12 +69,12 @@ ms.locfileid: "65149533"
 
     对于磁盘，请单击**添加磁盘**和配置下列设置。
 
-    | Item | 描述 | 
+    | 项 | 描述 | 
     | ------------ | ------------- | 
     | 名称 | 输入用于标识磁盘的名称。  | 
     | 大小 | 选择其中一个可用的大小。  | 
     | SCSI 控制器 | 选择该磁盘的 SCSI 控制器。  |
-    | Mode | 确定如何在快照中加入该磁盘。 选择以下选项之一： <br> 的永久独立于：向磁盘写入的所有数据将永久都写入。<br> 的非持久性独立于：当你关闭或重置虚拟机，向磁盘写入的更改将被丢弃。  独立的非持久性模式，可始终处于相同的状态重启 VM。 有关详细信息，请参阅<a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware 文档</a>。
+    | 模式 | 确定如何在快照中加入该磁盘。 选择以下选项之一： <br> 的永久独立于：向磁盘写入的所有数据将永久都写入。<br> 的非持久性独立于：当你关闭或重置虚拟机，向磁盘写入的更改将被丢弃。  独立的非持久性模式，可始终处于相同的状态重启 VM。 有关详细信息，请参阅<a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware 文档</a>。
 
 7. 完成验证后，查看设置，然后单击**创建**。 若要进行任何更改，请单击顶部的选项卡，或单击。
 
@@ -82,5 +82,5 @@ ms.locfileid: "65149533"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [查看 CloudSimple 虚拟机的列表](https://docs.azure.cloudsimple.com/azure-manage-vm/)
-* [从 Azure 管理 CloudSimple 虚拟机](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
+* [查看 CloudSimple 虚拟机的列表](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
+* [从 Azure 管理 CloudSimple 虚拟机](https://docs.azure.cloudsimple.com/azure-manage-vm/)

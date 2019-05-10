@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ada4323b0e61c6dc9fb87af133c40ec9c35e3834
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 986e2e0f8a481d61dc870af2548290658b44d2d3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074975"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231110"
 ---
 # <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API 调用 web Api-获取应用程序的令牌
 
@@ -49,7 +49,7 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` 类似于在本文中所看到的内容[Web API 调用 web Api 的应用配置](scenario-web-api-call-api-app-configuration.md)。 `BuildConfidentialClient()` 实例化`IConfidentialClientApplication`包含仅一个帐户信息的缓存。 该帐户是由提供`GetAccountIdentifier`方法。
+`BuildConfidentialClient()` 类似于在本文中所看到的内容[Web API 调用 web Api 的应用配置](scenario-web-api-call-api-app-configuration.md)。 `BuildConfidentialClient()` 实例化`IConfidentialClientApplication`包含仅一个帐户信息的缓存。 该帐户提供的`GetAccountIdentifier`方法。
 
 `GetAccountIdentifier`方法使用与 web API 收到的 JWT 的用户的标识关联的声明：
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: harijay
-ms.openlocfilehash: c6611c75e61f7e381efd2e437b8281cc70601215
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 31811d3d48f791e11bd6b709f59f5f6aaa18be0e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141055"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442109"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows azure 串行控制台
 
-在 Azure 门户中的串行控制台提供基于文本的控制台访问的 Windows 虚拟机 (Vm) 和虚拟机规模集 （虚拟机规模集） 实例。 此串行连接连接到 COM1 串行端口的 VM 或虚拟机规模集实例，提供对它独立于网络或操作系统状态的访问。 串行控制台只能使用 Azure 门户访问，并允许仅为这些用户具有访问权限角色的参与者或更高版本到 VM 或虚拟机规模集。
+在 Azure 门户中的串行控制台提供基于文本的控制台访问的 Windows 虚拟机 (Vm) 和虚拟机规模集实例。 此串行连接连接到 COM1 串行端口的 VM 或虚拟机规模集实例，提供对它独立于网络或操作系统状态的访问。 串行控制台只能使用 Azure 门户访问，并允许仅为这些用户具有访问权限角色的参与者或更高版本到 VM 或虚拟机规模集。
 
 串行控制台以相同方式适用于虚拟机和虚拟机规模集实例。 在此文档中所有提及到的 Vm 将隐式都包括虚拟机规模集实例，除非另有说明。
 
@@ -221,7 +221,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 > [!CAUTION]
 > 这意味着，断开连接的用户尚未注销。断开连接后强制注销（使用 SIGHUP 或类似机制）的功能目前仍在规划中。 对于 Windows，SAC 中会启用自动超时；对于 Linux，可以配置终端超时设置。
 
-## <a name="accessibility"></a>可访问性
+## <a name="accessibility"></a>辅助功能
 可访问性是 Azure 串行控制台的重点。 为此，我们已确保视听障碍者以及可能无法使用鼠标的用户能够访问串行控制台。
 
 ### <a name="keyboard-navigation"></a>键盘导航

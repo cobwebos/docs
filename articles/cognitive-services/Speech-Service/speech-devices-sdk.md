@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ca3f537ed52da547f64aa1fb98eb82c4ea73d81d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5f3b0094834b1ca547ba5ddf9726068c9ea36079
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021424"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409090"
 ---
 # <a name="about-the-speech-devices-sdk"></a>关于语音设备 SDK
 
@@ -32,7 +32,7 @@ ms.locfileid: "65021424"
 
 此外可以使用语音设备 SDK 来构建具有自己的环境设备[自定义唤醒文字](speech-devices-sdk-create-kws.md)以便启动用户交互提示仅适用于你的品牌。
 
-语音设备 SDK 简化各种已启用语音的方案，如[自定义语音第一个虚拟助手](https://aka.ms/sdsdk-assistant)、 驱动器-通过排序系统[会话听录](conversation-transcription-service.md)，和智能说话人。 可以使用文本回复用户、用默认或[自定义语音](how-to-customize-voice-font.md)回答用户、提供搜索结果以及[翻译](speech-translation.md)为其他语言等。 我们期待看到你的成果！
+语音设备 SDK 简化各种已启用语音的方案，如[自定义语音第一个虚拟助手](https://aka.ms/bots/speech/va)、 驱动器-通过排序系统[会话听录](conversation-transcription-service.md)，和智能说话人。 可以使用文本回复用户、用默认或[自定义语音](how-to-customize-voice-font.md)回答用户、提供搜索结果以及[翻译](speech-translation.md)为其他语言等。 我们期待看到你的成果！
 
 ## <a name="next-steps"></a>后续步骤
 

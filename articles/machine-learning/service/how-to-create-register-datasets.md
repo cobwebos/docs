@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 65a861c647c2dc92e416fa356075821aa5060042
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 938f13524b22f34f4becc936885d1611cb854df1
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205040"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510492"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>创建并注册 Azure 机器学习数据集 （预览）
 
@@ -90,7 +90,7 @@ dataset.head(5)
 ||ID|案例号|date|阻止|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
 |--|--|---|---|---|---|----|------|-------|------|-----|---|----|----|-----|-----|------|----|-----|----|----|-----
 |0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|欺骗性的做法|通过 300 美元的财务身份盗窃|OTHER|FALSE|FALSE|...|9|50|11|1183356|1831503|2016|5/11/2016 15:48|41.69283384|-87.60431945|(41.692833841, -87.60431945)|
-1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT| 从构建|未成年人|FALSE|FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
+第|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT| 从构建|未成年人|FALSE|FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
 2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|欺骗性的做法|财务身份盗窃 300 美元并在列表视图|未成年人|FALSE|FALSE|...|19|74|11|||2016|5/12/2016 15:50
 3|10519591|HZ261534|4/15/2016 9:00|113XX S PRAIRIE AVE|1120|欺骗性的做法|伪造|未成年人|FALSE|FALSE|...|9|49|10|||2016|5/13/2016 15:51
 4|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|从构建|学校，公共的构建|FALSE|FALSE|...|40|13|6|||2016|5/25/2016 15:59|
@@ -102,7 +102,6 @@ dataset.head(5)
 ```Python
 dataset = dataset.register(workspace = workspace,
                            name = 'dataset_crime',
-
                            description = 'Training data',
                            exist_ok = False
                            )
@@ -116,6 +115,9 @@ dataset = dataset.register(workspace = workspace,
 ```Python
 dataset = dataset.register(workspace = workspace,
                            name = 'dataset_crime',
+                           description = 'Training data',
+                           exist_ok = True
+                           )
 ```
 
 使用`list()`若要查看所有工作区中已注册的数据集。

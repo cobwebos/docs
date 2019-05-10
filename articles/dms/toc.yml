@@ -54,6 +54,8 @@
       href: resource-network-topologies.md
     - name: 已知问题
       items:
+        - name: 排查常见问题和错误
+          href: known-issues-troubleshooting-dms.md
         - name: 已知问题 - 联机迁移到 Azure SQL DB
           href: known-issues-azure-sql-online.md
         - name: 已知问题 - 联机迁移到 Azure DB for MySQL

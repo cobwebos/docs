@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 981198063b8e0951d4a4a4c4627d4b7966f34154
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c85ee31a54cdbbb09686a2d20200f65fdcd8994a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148981"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235918"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>在 vCore 的服务层之间进行选择，并将 DTU 服务层从迁移
 
@@ -44,7 +44,7 @@ vCore 模型提供了三个服务层级：“常规用途”、“业务关键�
 |计算|**预配计算**:<br/>Gen4：1 到 24 个 vCore<br/>Gen5：2 到 80 vCore<br/>**无服务器计算**<br/>Gen5：0.5 - 4 vCore|**预配计算**:<br/>Gen4：1 到 24 个 vCore<br/>Gen5：2 到 80 vCore|**预配计算**:<br/>Gen4：1 到 24 个 vCore<br/>Gen5：2 到 80 vCore|
 |内存|**预配计算**:<br/>Gen4：每个 vCore 7 GB<br/>Gen5：每个 vCore 5.1 GB<br/>**无服务器计算**<br/>Gen5：每个 vCore 3 GB|**预配计算**:<br/>Gen4：每个 vCore 7 GB<br/>Gen5：每个 vCore 5.1 GB |**预配计算**:<br/>Gen4：每个 vCore 7 GB<br/>Gen5：每个 vCore 5.1 GB|
 |存储|使用远程存储：<br/>**单个数据库预配计算**:<br/>5 GB – 4 TB<br/>**单个数据库无服务器计算**:<br/>5 GB - 1 TB<br/>**托管实例**:32 GB - 8 TB |使用本地 SSD 存储：<br/>**单个数据库预配计算**:<br/>5 GB – 4 TB<br/>**托管实例**:<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 支持高达 100 TB 存储及更多存储。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
-|内存|Gen4：每个核心 7 GB<br>Gen5：每个核心 5.1 GB | Gen4：每个核心 7 GB<br>Gen5：每个核心 5.1 GB |Gen5：每个核心 5.1 GB|
+|内存|Gen4：每个核心 7 GB<br>Gen5：每个核心 5.1 GB | Gen4：每个核心 7 GB<br>Gen5：每个核心 5.1 GB |Gen4：每个核心 7 GB<br>Gen5：每个核心 5.1 GB|
 |存储|使用远程存储：<br/>单一数据库：5 GB – 4 TB<br/>托管实例：32 GB - 8 TB |使用本地 SSD 存储：<br/>单一数据库：5 GB – 4 TB<br/>托管实例：32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 支持高达 100 TB 存储及更多存储。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
 |IO 吞吐量（近似）|单一数据库：每个 vCore 提供 500 IOPS，最大 7000 IOPS</br>托管实例：取决于[文件大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|每个 vCore 提供 5000 IOPS，最大 200,000 IOPS|TBD|
 |可用性|1 个副本，无读取缩放组|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余 HA|1 的读/写副本以及 0 到 4[读取缩放副本](sql-database-read-scale-out.md)|

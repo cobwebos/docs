@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f242afb717557a35b81515ab718971bdc398b5a
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 605206682cb70d430773cdbf9ff746eabf594103
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64992777"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190849"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>快速入门：通过 JavaScript 单页应用程序 (SPA) 登录用户并获取访问令牌
 
@@ -37,7 +37,7 @@ ms.locfileid: "64992777"
 * 若要通过 Node.js 服务器运行此项目，请执行以下操作：
     * 安装 [Node.js](https://nodejs.org/en/download/)
     * 安装 [Visual Studio Code](https://code.visualstudio.com/download)，以便编辑项目文件
-* 若要将项目作为 Visual Studio 解决方案运行，请安装 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
+* 若要将该项目作为 Visual Studio 解决方案运行，请安装 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>注册并下载快速入门应用程序
@@ -115,7 +115,7 @@ var msalConfig = {
 > - `Enter_the_Tenant_Info_Here` - 设置为以下选项之一：
 >   - 如果应用程序支持“此组织目录中的帐户”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为 `organizations`
->   - 如果应用程序支持**任何组织目录中的帐户以及 Microsoft 个人帐户**，请将该值替换为 `common`。 若支持*仅限 Microsoft 个人帐户*，请将该值替换为 `consumers`。
+>   - 如果应用支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为“`common`”。 若支持*仅限 Microsoft 个人帐户*，请将该值替换为 `consumers`。
 >
 > > [!TIP]
 > > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。
@@ -147,16 +147,16 @@ var msalConfig = {
 MSAL 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 本快速入门的 *index.html* 包含对库的引用：
 
 ```html
-<script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0-preview.4/js/msal.min.js"></script>
+<script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.min.js"></script>
 ```
 > [!TIP]
 > 可以在 [MSAL.js 版本](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)下将上面的版本替换为最新发布的版本。
 
 
-如果已安装 Node，则也可通过 npm 下载最新预览版：
+另外，如果已安装 Node，则可通过 npm 下载最新版本：
 
 ```batch
-npm install msal@preview
+npm install msal
 ```
 
 ### <a name="msal-initialization"></a>MSAL 初始化
@@ -192,11 +192,11 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 以下代码片段演示如何进行用户登录：
 
 ```javascript
-var request = {
+var requestObj = {
     scopes: ["user.read"]
 };
 
-myMSALObj.loginPopup(request).then(function (loginResponse) {
+myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
     //Login Success callback code here
 }).catch(function (error) {
     console.log(error);
@@ -219,11 +219,11 @@ MSAL 有三种用于获取令牌的方法，即 `acquireTokenRedirect`、`acquir
 `acquireTokenSilent` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `loginRedirect` 或 `loginPopup` 方法后，通常使用 `acquireTokenSilent` 方法获取用于访问受保护资源的令牌，以便进行后续调用。 进行请求或续订令牌的调用时，以静默方式进行。
 
 ```javascript
-var request = {
+var requestObj = {
     scopes: ["user.read"]
 };
 
-myMSALObj.acquireTokenSilent(request).then(function (tokenResponse) {
+myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
     // Callback code here
     console.log(tokenResponse.accessToken);
 }).catch(function (error) {
@@ -247,11 +247,11 @@ myMSALObj.acquireTokenSilent(request).then(function (tokenResponse) {
 调用 `acquireTokenPopup` 将导致显示一个用于登录的弹出窗口（调用 `acquireTokenRedirect` 则会导致将用户重定向到 Microsoft 标识平台终结点），在这种情况下，用户需要进行交互，即确认凭据、同意所需资源或完成双重身份验证。
 
 ```javascript
-var request = {
+var requestObj = {
     scopes: ["user.read"]
 };
 
-myMSALObj.acquireTokenPopup(request).then(function (tokenResponse) {
+myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
     // Callback code here
     console.log(tokenResponse.accessToken);
 }).catch(function (error) {

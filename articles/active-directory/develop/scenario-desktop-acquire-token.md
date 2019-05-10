@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4389af86e27ddb04f5a3e5f53c5509eeede005
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e1fe9594471c6e8f723afff2def940bb675e04fb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075335"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407006"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>调用 web Api-的桌面应用程序获取令牌
 
@@ -502,7 +502,7 @@ static async Task GetATokenForGraph()
   catch (MsalClientException ex) when (ex.ErrorCode == "unknown_user")
   {
    // the username was probably empty
-   // ex.Message = "Could not identify the user logged into the OS. See http://aka.ms/msal-net-iwa for details."
+   // ex.Message = "Could not identify the user logged into the OS. See https://aka.ms/msal-net-iwa for details."
    throw new ArgumentException("U/P: Wrong username", ex);
   }
   catch (MsalClientException ex) when (ex.ErrorCode == "parsing_wstrust_response_failed")
@@ -529,7 +529,7 @@ static async Task GetATokenForGraph()
 
 使用 Azure AD 的交互式身份验证需要 web 浏览器 (有关详细信息，请参阅[web 浏览器的使用情况](https://aka.ms/msal-net-uses-web-browser))。 但是，若要对设备或操作系统中不提供 Web 浏览器上的用户进行身份验证，设备代码流使用户能够使用另一台设备 （例如另一台计算机或移动电话） 进行签名以交互方式。 通过使用设备代码流，应用程序获取令牌通过专门设计用于这些设备/OS 一个两步过程。 此类应用程序的示例包括 iOT 或命令行工具 (CLI) 上运行的应用程序。 思路是：
 
-1. 每当用户身份验证是必需的应用程序提供的代码并要求用户使用其他设备 （如连接到 internet 的智能手机） 来导航到的 URL (例如， `http://microsoft.com/devicelogin`)，将提示用户输入的代码。 完成后，web 页面将引导用户完成了正常的身份验证体验，包括许可提示和多重身份验证，如有必要。
+1. 每当用户身份验证是必需的应用程序提供的代码并要求用户使用其他设备 （如连接到 internet 的智能手机） 来导航到的 URL (例如， `https://microsoft.com/devicelogin`)，将提示用户输入的代码。 完成后，web 页面将引导用户完成了正常的身份验证体验，包括许可提示和多重身份验证，如有必要。
 
 2. 身份验证成功后的命令行应用将收到通过返回通道所需的标记并将其用于执行其所需的 web API 调用。
 
@@ -634,7 +634,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
 
 ## <a name="file-based-token-cache"></a>基于文件的令牌缓存
 
-在 MSAL.NET，默认情况下提供内存中令牌缓存。
+在 MSAL.NET 中，默认会提供内存中令牌缓存。
 
 ### <a name="serialization-is-customizable-in-windows-desktop-apps-and-web-appsweb-apis"></a>序列化是 Windows 桌面应用程序和 web 应用/web Api 中可自定义
 
@@ -643,16 +643,16 @@ static async Task<AuthenticationResult> GetATokenForGraph()
 类和接口中令牌缓存序列化涉及是以下类型：
 
 - ``ITokenCache``用于定义事件以订阅令牌缓存的序列化请求，以及要序列化或反序列化处各种格式的缓存的方法 (ADAL v3.0，MSAL 2.x 和 MSAL 3.x = ADAL 5.0 版)
-- ``TokenCacheCallback`` 是一个回调传递的事件，以便可以处理序列化。 将类型的参数调用它们``TokenCacheNotificationArgs``。
+- ``TokenCacheCallback`` 是传递给事件的回调，可让你处理序列化。 将类型的参数调用它们``TokenCacheNotificationArgs``。
 - ``TokenCacheNotificationArgs`` 仅提供``ClientId``的应用程序和对用户为其标记为可用的引用
 
   ![image](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
 > [!IMPORTANT]
-> MSAL.NET 为你创建令牌缓存并且提供了`IToken`时调用应用程序的缓存`GetUserTokenCache`和`GetAppTokenCache`方法。 您不应该自行实现接口。 您有责任，实现自定义令牌缓存序列化时，可以：
+> MSAL.NET 将为你创建令牌缓存，当你调用应用程序的 `GetUserTokenCache` 和 `GetAppTokenCache` 方法时，它会提供 `IToken` 缓存。 您不应该自行实现接口。 实现自定义令牌缓存序列化时，你的责任是：
 >
-> - 做出反应`BeforeAccess`和`AfterAccess`"事件"。 `BeforeAccess`委托是负责反序列化缓存，而`AfterAccess`一种类型负责序列化缓存。
-> - 这些事件的一部分存储，或加载通过事件自变量传递给所需的任何存储的 blob。
+> - 对 `BeforeAccess` 和 `AfterAccess`“事件”做出反应。 `BeforeAccess`委托是负责反序列化缓存，而`AfterAccess`一种类型负责序列化缓存。
+> - 其中的一部分事件存储或加载 Blob，这些 Blob 将通过事件参数传递到所需的任何存储。
 
 如果您要编写一个公共客户端应用程序 （桌面版），或机密客户端应用程序 (web 应用/web API，守护程序应用) 的令牌缓存序列化具体取决于不同的策略包括。
 
@@ -660,9 +660,9 @@ MSAL V2.x 以来有多个选项，具体取决于你想要序列化仅为 MSAL.N
 
 自定义令牌缓存序列化以 SSO 之间共享状态 ADAL.NET 3.x，ADAL.NET 5.x 和 MSAL.NET 介绍部分的下面的示例： [active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)
 
-### <a name="simple-token-cache-serialization-msal-only"></a>简单令牌缓存序列化 (仅 MSAL)
+### <a name="simple-token-cache-serialization-msal-only"></a>简单令牌缓存序列化（仅限 MSAL）
 
-下面是自定义序列化的桌面应用程序的令牌缓存的简单实现的示例。 此处与应用程序相同的文件夹中的文件中的用户令牌缓存。
+下面是适用于桌面应用程序的令牌缓存的自定义序列化的简单实现示例。 此处与应用程序相同的文件夹中的文件中的用户令牌缓存。
 
 通过调用生成应用程序后，启用序列化``TokenCacheHelper.EnableSerialization()``传递应用程序 `UserTokenCache`
 
@@ -722,7 +722,7 @@ static class TokenCacheHelper
  }
 ```
 
-基于文件的序列化程序 （适用于 Windows、 Mac 和 linux 上运行的桌面应用程序） 的公共客户端应用程序是从可用的产品质量令牌缓存的预览[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal)开放源代码库。 可以将其包括在你的应用程序从以下 nuget 包：[Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
+基于文件的序列化程序 （适用于 Windows、 Mac 和 linux 上运行的桌面应用程序） 的公共客户端应用程序是从可用的产品质量令牌缓存的预览[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal)开放源代码库。 可以通过以下 Nuget 包将此程序包含在应用程序中：[Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
 
 > 免责声明。 Microsoft.Identity.Client.Extensions.Msal 库是通过 MSAL.NET 扩展。 这些库中的类可能会全面 MSAL.NET 以后，按原样或进行重大更改。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 82a2330aeadb14bb421260a290a25581232293e5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 82c0aa53fa8905e0e58cb784a478ade474ec5601
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073360"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232762"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -94,7 +94,7 @@ Azure 备份是可用于高级文件共享和 Azure Kubernetes 服务中 1.13 �
 
 最大限度地提供服务时，对于预配的存储，所有共享都可以突增到每 GiB 3 IOPS，持续 60 分钟或更长时间，具体取决于共享大小。 新共享将根据预配的容量以完全突增额度开始。
 
-以 1 GiB 为增量，必须预配共享。 最小大小为 100 GiB 下, 一步大小为 101 GIB，依此类推。
+以 1 GiB 为增量，必须预配共享。 最小大小为 100 GiB 下, 一步大小为 101 GiB，依此类推。
 
 > [!TIP]
 > 基线 IOPS = 1 * 预配 GiB。 （最多 max 100,000 IOPS)。

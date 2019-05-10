@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: normesta
-ms.openlocfilehash: 61d168a5f501923812db5945fa6df439ae7e70f9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 27adc0eeeabed2b1f2e86f301a60604a3d358b82
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145105"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464725"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -57,6 +57,7 @@ Blob 的存储 Api 已禁用，以防止意外的数据访问出现问题，因�
 | **AzCopy** | 特定于版本的支持 <br><br>仅使用最新版本的 AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。 不支持早期版本的 AzCopy，AzCopy v8.1，例如。|
 | **Azure Blob 存储生命周期管理策略** | 尚不支持 |
 | **Azure 内容分发网络 (CDN)** | 尚不支持|
+| **Azure 事件网格** | 尚不支持 |
 | **Azure 搜索** |尚不支持|
 | **Azure 存储资源管理器** | 特定于版本的支持 <br><br>使用唯一版本`1.6.0`或更高版本。 <br>版本`1.6.0`可用作[免费下载](https://azure.microsoft.com/features/storage-explorer/)。|
 | **Blob 容器的 Acl** |尚不支持|
@@ -65,7 +66,7 @@ Blob 的存储 Api 已禁用，以防止意外的数据访问出现问题，因�
 | **诊断日志** |尚不支持|
 | **文件系统资源管理器** | 有限的支持 |
 | **不可变的存储** |尚不支持 <br><br>不可变的存储，可以将数据存储在[（编写一次，曾读过） 蠕虫](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)状态。|
-| **对象级层** |尚不支持 <br><br>例如：Premium、 热、 冷和存档层。|
+| **对象级层** |尚不支持 <br><br>例如:Premium、 热、 冷和存档层。|
 | **Powershell 和 CLI 支持** | 有限的功能 <br><br>可以使用 Powershell 或 CLI 来创建一个帐户。 无法执行操作，或在文件系统、 目录和文件上设置访问控制列表。|
 | **静态网站** |尚不支持 <br><br>具体而言，能够满足文件复制到[静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)。|
 | **第三方应用程序** | 有限的支持 <br><br>使用 REST Api 处理的第三方应用程序将继续工作，如果它们使用的数据湖存储第 2 代。 <br>如果必须使用 Blob Api 的应用程序，该应用程序很可能会遇到问题，如果该应用程序使用数据湖存储第 2 代。 若要了解详细信息，请参阅[Blob 的存储 Api 的数据湖存储第 2 代存储帐户已禁用](#blob-apis-disabled)本文的部分。|

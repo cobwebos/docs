@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: e5d04fd136848684e866fae9768b252e3b6ca77f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137925"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227993"
 ---
 # <a name="action-rules-preview"></a>操作规则 （预览版）
 
@@ -142,11 +142,11 @@ Contoso 希望为所有日志生成的"计算机-01"警报抑制通知中 Contos
 
 ## <a name="best-practices"></a>最佳做法
 
-记录与创建的警报[结果数](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log)选项生成**单个警报实例**使用整个搜索结果 （这可能会在多台计算机为例）。 在此方案中，如果操作规则使用警报上下文 （有效负载） 筛选器，它将作用于警报实例，只要没有匹配项。 在方案 2 中前面所述，如果生成的日志警报的搜索结果包含"计算机-01"和"计算机-02"整个通知被取消 （即，处于不为"计算机-02"在所有生成显示通知）。
+记录与创建的警报[结果数](alerts-unified-log.md)选项生成**单个警报实例**使用整个搜索结果 （这可能会在多台计算机为例）。 在此方案中，如果操作规则使用警报上下文 （有效负载） 筛选器，它将作用于警报实例，只要没有匹配项。 在方案 2 中前面所述，如果生成的日志警报的搜索结果包含"计算机-01"和"计算机-02"整个通知被取消 （即，处于不为"计算机-02"在所有生成显示通知）。
 
 ![操作规则和日志警报 （结果数）](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-到最佳利用的日志警报使用操作规则，我们建议你创建的日志警报[指标度量](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log)选项。 使用此选项，根据定义的组字段生成单独的警报实例。 然后在方案 2 中，单独的警报实例生成的"计算机-01"和"计算机-02"。 使用方案中所述操作规则时，"计算机-02"的通知将继续照常触发时，将抑制仅对于"计算机-01"通知。
+到最佳利用的日志警报使用操作规则，我们建议你创建的日志警报[指标度量](alerts-unified-log.md)选项。 使用此选项，根据定义的组字段生成单独的警报实例。 然后在方案 2 中，单独的警报实例生成的"计算机-01"和"计算机-02"。 使用方案中所述操作规则时，"计算机-02"的通知将继续照常触发时，将抑制仅对于"计算机-01"通知。
 
 ![操作规则和日志警报 （结果数）](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 

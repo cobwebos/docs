@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6bda1af8095e7026c79b7d8ffe45b39f6cbb3508
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a8bc46011b00a0c63eddd2799ac1309b5754472e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028690"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442421"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建并加速机器学习模型
 
@@ -30,7 +30,7 @@ Microsoft 和合作伙伴社区创建 ONNX 为一个开放标准，用于表示�
 
 ONNX 运行时可在高缩放性 Microsoft 服务，例如必应、 Office 和认知服务。 性能提升取决于多种因素，但这些 Microsoft 服务看过__平均 2 倍的 CPU 上的性能增益__。 ONNX 运行时还用作数百个数以百万计的设备上的 Windows 机器学习的一部分。 使用 Azure 机器学习服务，可以使用运行时。 通过使用 ONNX 运行时，你可以从大量生产级优化，测试，并持续改进中受益。
 
-[![ONNX 数据流关系图显示培训、 转换器和部署](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
+[![ONNX 数据流关系图显示培训、 转换器和部署](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>获取 ONNX 模型
 
@@ -83,7 +83,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="more-info"></a>更多信息
+## <a name="more-info"></a>详细信息
 
 详细了解 ONNX 或为项目做出贡献：
 + [ONNX 项目网站](https://onnx.ai)

@@ -7,16 +7,16 @@ ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: e9a8a30d9f5f170073c0ad671a248703b1078864
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d29fa8700cb1f530cfe85f0bdf6852d75ec1613e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159490"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508159"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Linux 映像，并将其分发给共享映像库 
 
-本文介绍如何使用 Azure 映像生成器创建的映像版本中[共享映像库](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries)，然后将映像分发全局范围内。
+本文介绍如何使用 Azure 映像生成器创建的映像版本中[共享映像库](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)，然后将映像分发全局范围内。
 
 
 我们将使用示例.json 模板要配置的映像。 下面是我们正在使用的.json 文件： [helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json)。 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 188c17b4e8ef84f3907b63fd62bf110ee94b4d7f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143184"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511243"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
 
@@ -26,15 +26,23 @@ ms.locfileid: "65143184"
 
 ![Azure 门户中 Function App 的概述](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-## <a name="manage-app-service-settings"></a>Function App 设置边栏选项卡
+您可以导航到特别从概述页中，管理 function app 所需的一切**[应用程序设置](#settings)** 并**[平台功能](#platform-features)**.
 
-![Azure 门户中 Function App 的概述。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+## <a name="settings"></a>应用程序设置
 
-可在“设置”选项卡中更新 Function App 使用的 Functions 运行时版本。 也可在其中管理用于限制对 Function App 托管的所有函数的 HTTP 访问的主机密钥。
+**应用程序设置**选项卡上维护函数应用使用的设置。
 
-Functions 支持消耗托管计划和应用服务托管计划。 有关详细信息，请参阅[为 Azure Functions 选择正确的服务计划](functions-scale.md)。 为获得消耗计划更好的预测性，Functions 允许通过设置每日使用配额（以千兆字节/秒为单位），从而限制平台使用。 一旦达到每日使用配额，Function App 就会停止运行。 可在设置每日支出配额的同一上下文中重新启用因达到支出配额而停止的 Function App。 有关计费的详细信息，请参阅 [Azure Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。   
+![在 Azure 门户中 function app 设置。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-## <a name="platform-features-tab"></a>平台功能选项卡
+这些设置存储加密，并且你必须选择**显示值**若要查看在门户中的值。
+
+若要添加的设置，请选择**新的应用程序设置**并添加新的键 / 值对。
+
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
+
+当开发函数应用本地时，这些值会维护 local.settings.json 项目文件中。
+
+## <a name="platform-features"></a>平台功能
 
 ![Function App 平台功能选项卡。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
@@ -46,7 +54,6 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 本主题的其余部分侧重于 Azure 门户中以下可用于 Functions 的应用服务功能：
 
 + [应用服务编辑器](#editor)
-+ [应用程序设置](#settings) 
 + [Console](#console)
 + [高级工具 (Kudu)](#kudu)
 + [部署选项](#deployment)
@@ -63,14 +70,6 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 | ![Function App 应用服务编辑器。](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | 应用服务编辑器是一种高级的门户内编辑器，可用于修改诸如 JSON 配置文件和代码文件等内容。 选择此选项会启动单独的浏览器选项卡和基本编辑器。 借此，可与 Git 存储库集成、运行和调试代码，并可修改 Function App 设置。 同默认 Function App 边栏选项卡相比，此编辑器为 Functions 提供了增强的开发环境。    |
 
 ![应用服务编辑器](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
-
-### <a name="settings"></a>应用程序设置
-
-| | |
-|-|-|
-| ![Function App 应用程序设置。](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | 可在应用服务“应用程序设置”边栏选项卡中配置和管理框架版本、远程调试、应用设置和连接字符串。 将 Function App 与其他 Azure 和第三方服务集成时，可在此处修改这些设置。 若要删除设置，请滚动至右侧，并选择该行右端的 **X** 图标（未显示在下图中）。
-
-![配置应用程序设置](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
 ### <a name="console"></a>控制台
 

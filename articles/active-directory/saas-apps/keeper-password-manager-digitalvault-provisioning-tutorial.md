@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: b7b096bd1ecf0a4df37ed4de0cf618216dccc2bc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 445579eb780b49f536ef1a9e13e5ca43db6f98f6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159460"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508575"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>教程：将 Keeper Password Manager & Digital Vault 配置自动用户预配
 
@@ -84,7 +84,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 ### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>若要配置自动用户预配 Keeper Password Manager & Digital Vault 在 Azure AD 中：
 
-1. 登录到[Azure 门户](https://portal.azure.com)，然后选择**企业应用程序**，选择**所有应用程序**，然后选择**Keeper Password Manager & Digital保管库**。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 选择**企业应用程序**，然后选择**的所有应用程序**。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -104,19 +104,19 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 6. 登录到您[Keeper 管理控制台](https://keepersecurity.com/console/#login)。 单击**管理员**并选择现有节点或创建一个新。 导航到**预配**选项卡并选择**添加方法**。
 
-    ![Keeper 管理控制台](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![Keeper 管理控制台](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
     选择**SCIM (跨域标识管理系统**。
 
-    ![Keeper 添加 SCIM](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![Keeper 添加 SCIM](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
     单击**创建预配令牌**。
 
-    ![Keeper 创建终结点](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Keeper 创建终结点](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
     将复制的值**URL**并**令牌**，并将其粘贴**租户 URL**并**机密令牌**Azure AD 中。 单击**保存**完成 Keeper 上预配的设置。
 
-    ![Keeper 创建令牌](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Keeper 创建令牌](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
 7. 填入步骤 5 中所示的字段后，单击**测试连接**以确保 Azure AD 可以连接到 Keeper Password Manager & Digital Vault。 如果连接失败，请确保你 Keeper Password Manager & Digital Vault 的帐户具有管理员权限，然后重试。
 
@@ -130,19 +130,19 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 10. 下**映射**部分中，选择**Azure Active Directory 用户同步到 Keeper Password Manager & Digital Vault**。
 
-    ![Keeper 用户映射](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Keeper 用户映射](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
 11. 查看从 Azure AD 同步到 Keeper Password Manager & Digital Vault 中的用户属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配 Keeper Password Manager & Digital Vault 中以执行更新操作的用户帐户。 选择“保存”按钮以提交任何更改。
 
-    ![Keeper 用户属性](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Keeper 用户属性](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
 12. 下**映射**部分中，选择**Azure Active Directory 组同步到 Keeper Password Manager & Digital Vault**。
 
-    ![Keeper 组映射](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Keeper 组映射](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
 13. 查看从 Azure AD 同步到 Keeper Password Manager & Digital Vault 中的组属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配 Keeper Password Manager & Digital Vault 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-    ![Keeper 组属性](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Keeper 组属性](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
 14. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
@@ -176,7 +176,3 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 * [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

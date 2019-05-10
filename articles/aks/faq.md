@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: f365fcd61944fbae131ab79a1c3660aaf02fa8d7
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 17bc1d2b7a08314f19f1bf8f87d0c774afc37500
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073929"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508182"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -25,9 +25,7 @@ ms.locfileid: "65073929"
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS 是否支持节点自动缩放？
 
-支持，从 Kubernetes 1.10 开始，可以通过 [Kubernetes autoscaler][auto-scaler] 进行自动缩放。 有关如何手动配置和使用群集自动缩放程序的详细信息，请参阅[AKS 群集自动缩放][aks-cluster-autoscale]。
-
-您还可用于内置群集自动缩放程序 （目前以在 AKS 中的预览版） 管理的节点的缩放。 有关详细信息，请参阅[自动缩放以满足在 AKS 中的应用程序需求的群集][aks-cluster-autoscaler]。
+支持，从 Kubernetes 1.10 开始，可以通过 [Kubernetes autoscaler][auto-scaler] 进行自动缩放。 要详细了解如何配置和使用群集自动缩放程序，请参阅 [AKS 上的群集自动缩放][aks-cluster-autoscale]。
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>AKS 是否支持 Kubernetes 基于角色的访问控制 (RBAC)？
 
@@ -43,17 +41,13 @@ ms.locfileid: "65073929"
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>安全更新是否可应用于 AKS 代理节点？
 
-Azure 会自动适用于按夜间计划在群集中的 Linux 节点的安全修补程序。 但是，您有责任确保重新启动节点作为这些 Linux 所需。 执行节点重启具有多种选择：
+可以，Azure 会按照夜间计划自动将安全修补程序应用于群集中的节点。 但是，你有责任确保节点根据需要进行重启。 执行节点重启具有多种选择：
 
 - 通过 Azure 门户或 Azure CLI 手动执行。
 - 通过升级 AKS 群集。 群集自动升级 [cordon 和 drain 节点][cordon-drain]，然后使用最新的 Ubuntu 映像和新补丁版本或次要 Kubernetes 版本重新启动每个节点。 有关详细信息，请参阅[升级 AKS 群集][aks-upgrade]。
 - 使用 [Kured](https://github.com/weaveworks/kured)，一种适用于 Kubernetes 的开放源代码重启守护程序。 Kured 作为 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过将相同的 [cordon 和 drain 进程][cordon-drain]用作群集升级跨群集管理操作系统的重启。
 
 有关使用 kured 的详细信息，请参阅[将安全性和内核更新应用于 AKS 中的节点][node-updates-kured]。
-
-### <a name="windows-server-nodes"></a>Windows 服务器节点
-
-Windows Server 中的节点 （当前在 AKS 中的预览版），Windows 更新不会不会自动运行，并应用最新的更新。 有关在 Windows 更新发布周期和验证过程按定期计划，应在 AKS 群集中执行 Windows Server 节点池上的升级。 此升级过程创建节点运行的最新的 Windows Server 映像和修补程序，然后删除旧节点。 此过程的详细信息，请参阅[升级在 AKS 中的节点池][nodepool-upgrade]。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>为什么使用 AKS 创建两个资源组？
 
@@ -108,13 +102,24 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>是否可以在 AKS 上运行 Windows Server 容器？
 
-是的 Windows Server 容器是在预览版中可用。 若要在 AKS 中运行 Windows Server 容器，你创建运行 Windows Server 作为来宾 OS 的节点池。 Windows Server 容器只能使用 Windows Server 2019。 若要开始，[与 Windows Server 节点池创建 AKS 群集][aks-windows-cli]。
-
-窗口服务器节点池支持包括属于上游 Kubernetes 项目中的 Windows 服务器的一些限制。 有关这些限制的详细信息，请参阅[AKS 限制中的 Windows Server 容器][aks-windows-limitations]。
+若要运行 Windows Server 容器，需要运行基于 Windows Server 的节点。 基于 Windows Server 的节点目前在 AKS 中不可用。 但是，可以使用虚拟 Kubelet 在 Azure 容器实例上计划 Windows 容器，并将其作为 AKS 群集的一部分进行管理。 有关详细信息，请参阅[带有 AKS 的虚拟 Kubelet][virtual-kubelet]。
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服务级别协议？
 
 在服务级别协议 (SLA) 中，如果未满足已发布的服务级别，提供商同意向客户偿还服务费用。 由于 AKS 本身是免费的，没有费用需要偿还，因此也就没有正式的 SLA。 不过，AKS 会设法将 Kubernetes API 服务器的可用性维持在不小于 99.5% 的水平上。
+
+## <a name="why-can-i-not-set-maxpods-below-30"></a>为什么我不能设置`maxPods`下面 30？
+
+AKS 是否支持设置`maxPods`在通过 Azure CLI 和 Azure 资源管理器模板创建群集时的值。 但是，没有*最小值*（验证在创建时） 对于 Kubenet 和 Azure CNI，如下所示：
+
+| 网络 | 最小值 | 最大值 |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+由于 AKS 是一种托管的服务，我们提供加载项和 pod 我们作为部署和管理群集的一部分。 在过去，用户可以定义`maxPods`小于为托管的 pod 运行所需的值的值 (示例：30)，AKS 现在计算通过 pod 的最小数目: ((maxPods 或 (maxPods * vm_count)) > 托管外接程序 pod 最小值。
+
+用户可能不会替代所需的最低`maxPods`验证。
 
 <!-- LINKS - internal -->
 
@@ -128,10 +133,6 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
-[aks-cluster-autoscaler]: cluster-autoscaler.md
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
-[aks-windows-cli]: windows-container-cli.md
-[aks-windows-limitations]: windows-node-limitations.md
 
 <!-- LINKS - external -->
 

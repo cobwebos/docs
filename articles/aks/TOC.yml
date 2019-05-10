@@ -113,7 +113,7 @@
         - name: 删除 AKS 群集
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: 创建虚拟节点（预览版）
+        - name: 创建虚拟节点
           items:
             - name: Azure CLI
               href: virtual-nodes-cli.md
@@ -123,9 +123,13 @@
           href: virtual-kubelet.md
         - name: 使用群集自动缩放程序（预览版）
           href: cluster-autoscaler.md
+        - name: 使用多个节点池（预览版）
+          href: use-multiple-node-pools.md
         - name: 使用 Terraform 部署 AKS
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: 使用 Kubernetes 仪表板
+          href: kubernetes-dashboard.md
     - name: 配置数据卷
       items:
         - name: Azure 磁盘 - 动态
@@ -136,6 +140,8 @@
           href: azure-files-dynamic-pv.md
         - name: Azure 文件 - 静态
           href: azure-files-volume.md
+        - name: NFS 服务器 - 静态
+          href: azure-nfs-volume.md
     - name: 配置网络
       items:
         - name: 创建虚拟网络或使用现有虚拟网络
@@ -173,12 +179,16 @@
           href: kubernetes-service-principal.md
         - name: 限制对群集配置文件的访问
           href: control-kubeconfig-access.md
-        - name: 使用网络策略保护 Pod 流量（预览版）
+        - name: 使用网络策略保护 Pod 流量
           href: use-network-policies.md
         - name: 使用 pod 安全策略（预览版）
           href: use-pod-security-policies.md
+        - name: 定义 API 服务器授权 IP 范围（预览版）
+          href: api-server-authorized-ip-ranges.md
         - name: 更新群集服务主体凭据
           href: update-credentials.md
+        - name: 限制和控制群集出口流量
+          href: limit-egress-traffic.md
         - name: 实现 Azure Active Directory 集成
           items:
             - name: 使用 Azure CLI
@@ -285,10 +295,6 @@
         - name: Azure DevOps 项目
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
-    - name: Kubernetes 基础知识
-      items:
-        - name: 使用 Kubernetes 仪表板
-          href: kubernetes-dashboard.md
     - name: 故障排除
       items:
         - name: 常见问题

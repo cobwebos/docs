@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: cba01b5ad5c2cfea32f1faa6cb67c5ce7ee98fcd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 136141f5b598fd080edf3254fd01200f2742c763
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024906"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235827"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -90,7 +90,7 @@ ms.locfileid: "65024906"
 ## <a name="automated-ml-across-microsoft"></a>在 Microsoft 自动化机器学习
 
 自动化机器学习如现在还可供其他 Microsoft 解决方案：
-+ 使用 Visual Studio 和 Visual Studio Code 中通过.NET 应用程序中[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/what-is-mldotnet)
++ 使用 Visual Studio 和 Visual Studio Code 中通过.NET 应用程序中[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)
 + [在 HDInsight 上](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)，其中扩展中并行中的 HDInsight 群集的 Spark 上你自动机器学习训练作业。 
 + [在 Power BI 中](https://docs.microsoft.com/power-bi/service-machine-learning-automated)
 

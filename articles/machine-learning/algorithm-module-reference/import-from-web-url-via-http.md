@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2f0847e9dd90267d985b75be3c3a07ce8fae98a9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bff913efb38c9e5589c795386dfbbc480d799a37
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029665"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411442"
 ---
 # <a name="import-from-web-url-via-http-module"></a>通过 HTTP 模块从 Web URL 导入
 
@@ -56,7 +56,7 @@ ms.locfileid: "65029665"
 
     例如，以下页包含的机器学习的加利福尼亚大学欧文分校的存储库中的鸢尾花数据集：
 
-    `http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
+    `https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
 
 4. 有关**数据格式**，选择其中一个受支持的数据格式从列表中。
 

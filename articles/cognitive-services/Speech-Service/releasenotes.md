@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fa722d749ec27a72a8be3bf8fcfd8097a1404458
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020344"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465604"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -24,7 +24,7 @@ ms.locfileid: "65020344"
 
 **新功能**
 
-* 发现功能 (KWS) 的关键字是适用于 Windows 和 Linux。 KWS 功能可能会使用任何麦克风类型，官方 KWS 支持，但是，当前限制为麦克风阵列中找到 Azure Kinect DK 硬件或语音设备 SDK。
+* 唤醒字 (关键字发现/KWS) 功能现已可供 Windows 和 Linux。 KWS 功能可能会使用任何麦克风类型，官方 KWS 支持，但是，当前限制为麦克风阵列中找到 Azure Kinect DK 硬件或语音设备 SDK。
 * 可通过 SDK 短语提示功能。 有关详细信息，请参阅[此文](how-to-phrase-lists.md)。
 * 通过 SDK 提供了会话的脚本功能。 参阅[此处](conversation-transcription-service.md)。
 * 添加对语音第一个虚拟助手使用直接行语音通道的支持。
@@ -58,7 +58,7 @@ ms.locfileid: "65020344"
 **新功能** 
 
 * SDK 现在支持作为测试版的文本到语音转换服务。 支持 Windows 和 Linux 桌面从C++和C#。 有关详细信息，请[文本到语音转换概述](text-to-speech.md#get-started-with-text-to-speech)。
-* SDK 现在支持 MP3 和大作/Ogg 音频文件作为流输入文件。 此功能目前仅在从 Linux 上C++和C#和当前为 beta 版本 (更多详细信息[此处](how-to-use-compressed-audio-input-streams.md))。
+* SDK 现在支持 MP3 和大作/OGG 音频文件作为流输入文件。 此功能目前仅在从 Linux 上C++和C#和当前为 beta 版本 (更多详细信息[此处](how-to-use-codec-compressed-audio-input-streams.md))。
 * 适用于 Java、.NET core 的语音 SDK C++ ，Objective C 已获得 macOS 支持。 适用于 macOS 的 Objective C 支持目前处于 beta 版本。
 * iOS：适用于 iOS (OBJECTIVE-C) 的语音 SDK 现在还作为 CocoaPod 发布。
 * JavaScript：对非默认麦克风作为输入设备的支持。

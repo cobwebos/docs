@@ -117,7 +117,7 @@ Azure IoT 设备预配服务支持两类注册：
 4. 编辑 **register\_x509.js** 文件。 进行下述更改，然后保存文件。
     - 将 `provisioning host` 替换为在上面的“步骤 1”中注明的“全局设备终结点”。
     - 将 `id scope` 替换为在上面的“步骤 1”中注明的“ID 范围”。 
-    - 将 `registration id` 替换为在上一部分中记下的**_注册 ID_**。
+    - 将 `registration id` 替换为在上一部分中记下的 **_注册 ID_** 。
     - 将 `cert filename` 和 `key filename` 替换为在上面的“步骤 2”中复制的文件。 
 
 5. 执行脚本，验证该设备是否已成功预配。

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a355d18de875ad980e0c2b6c564d3379c2b90ee7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 186ecf055cdf7b10690fdb4cbc574778a841b85a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154286"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464808"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -42,6 +42,15 @@ ms.locfileid: "65154286"
 + 添加了的能够从 Azure 机器学习服务工作区的概述页中下载的 config.json 文件。
 + 支持从 Azure Databricks 工作区创建机器学习服务工作区 
 
+## <a name="2019-04-26"></a>2019-04-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1033"></a>Azure Machine Learning SDK for Python v1.0.33
++ **新功能**
+  + _Workspace.create_方法现在接受的 CPU 和 GPU 群集的默认群集配置。
+  + 如果工作区创建失败，因为已清除依赖的资源。
+  + 默认 Azure 容器注册表 SKU 切换到基本。
+  + 在需要运行或映像创建时，将延迟，创建 azure 容器注册表。
+  + 对训练运行环境的支持。
 
 ### <a name="notebook-virtual-machine"></a>Notebook 虚拟机 
 

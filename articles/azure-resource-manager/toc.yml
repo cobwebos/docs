@@ -40,6 +40,9 @@
     - name: 使用安全部署实践
       displayName: adm
       href: deployment-manager-tutorial.md
+    - name: 在部署管理器中使用运行状况检查
+      displayName: adm
+      href: deployment-manager-tutorial-health-check.md
     - name: 排查模板部署问题
       href: resource-manager-tutorial-troubleshoot.md
 - name: 示例
@@ -62,6 +65,9 @@
     - name: 部署管理器
       displayName: adm
       href: deployment-manager-overview.md
+    - name: 部署管理器运行状况检查
+      displayName: adm
+      href: deployment-manager-health-check.md
     - name: 部署模式
       href: deployment-modes.md
     - name: 资源的删除

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: 2fe350e890dc0c5ca1db17b851d336fa792be725
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 352f695f186b656ad0f6471d8ede905d53ad5274
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190239"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234098"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>教程：使用可视界面预测汽车价格
 
@@ -35,7 +35,7 @@ ms.locfileid: "65190239"
 > 我们提供了本教程的已完成版本作为示例试验。
 > 在“试验”页中，转到“新增” > “示例 1 - 回归:汽车价格预测(基本)”
 
-> [!VIDEO https://www.youtube.com/embed/VDKpDNX96aA]
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Build-zero-code-machine-learning-models-with-Azure-Machine-Learning-service/player]
 
 
 ## <a name="create-a-workspace"></a>创建工作区

@@ -10,32 +10,34 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecb97860e70141a744833aa9b9a4fcea3f3688f0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1a48f8620fb99f1cf8787dabc738d328a796d093
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149831"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510620"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>快速入门：通过基于云的 Notebook 服务器开始使用 Azure 机器学习
 
 创建基于云的笔记本服务器，然后使用它。  在本快速入门中，我们运行 Python 代码，在 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md)中记录值。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 
 
 本快速入门介绍如何在 Azure 机器学习工作区中创建云资源，该工作区已配置了运行 Azure 机器学习所需的 Python 环境。 若要改用自己的环境，请参阅[快速入门：通过自己的 Notebook 服务器开始使用 Azure 机器学习](quickstart-run-local-notebook.md)。  
- 
+
 在本快速入门中，你将执行以下操作：
 
 * 在工作区中创建新的基于云的笔记本服务器。
 * 启动 Jupyter Web 界面。
 * 打开一个笔记本，其中包含的代码可以在每次迭代时消除 pi 和日志错误。
 * 运行笔记本。
-* 在工作区中查看所记录的错误值。 该示例介绍如何通过工作区跟踪脚本中生成的信息。 
+* 在工作区中查看所记录的错误值。 该示例介绍如何通过工作区跟踪脚本中生成的信息。
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="create-a-workspace"></a>创建工作区
 
-- Azure 机器学习工作区。  立即[创建工作区](setup-create-workspace.md#portal)（如果还没有工作区）。
+如果你有一个 Azure 机器学习服务工作区，请跳至[下一部分](#create-a-cloud-based-notebook-server)。 否则，请立即创建一个。
+
+[!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
 ## <a name="create-a-cloud-based-notebook-server"></a>创建基于云的笔记本服务器
 
@@ -57,7 +59,6 @@ ms.locfileid: "65149831"
     ![创建新 VM](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. 等待约 4-5 分钟，直至状态更改为“正在运行”。
-
 
 ## <a name="launch-jupyter-web-interface"></a>启动 Jupyter Web 界面
 
@@ -102,10 +103,9 @@ ms.locfileid: "65149831"
 
     在最大的代码单元中，会看到 `run.log` 在多个位置使用。 每个 `run.log` 都会将其值添加到工作区。
 
-
 ## <a name="view-logged-values"></a>查看所记录的值
 
-1. `run` 单元的输出包含一个可以返回到 Azure 门户的链接，用于在工作区中查看试验结果。 
+1. `run` 单元的输出包含一个可以返回到 Azure 门户的链接，用于在工作区中查看试验结果。
 
     ![查看试验](./media/quickstart-run-cloud-notebook/view-exp.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "65149831"
 
 由于估算 pi 的代码使用随机值，因此绘图会显示不同的值。  
 
-## <a name="clean-up-resources"></a>清理资源 
+## <a name="clean-up-resources"></a>清理资源
 
 ### <a name="stop-the-notebook-vm"></a>停止笔记本 VM
 

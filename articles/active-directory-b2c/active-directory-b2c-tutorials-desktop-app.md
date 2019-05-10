@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 3df54c6805c5117e627afe0a2b4caa0ddd94b182
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7ca7a670e8d660efb43861312b2670efbaac6638
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723715"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190246"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在本机客户端应用程序中启用身份验证
 
@@ -33,7 +33,7 @@ ms.locfileid: "64723715"
 ## <a name="prerequisites"></a>先决条件
 
 - [创建用户流](tutorial-create-user-flows.md)，以便在应用程序中启用用户体验。 
-- 安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)，其中包含 **.NET 桌面开发**与 **ASP.NET 和 Web 开发**工作负荷。
+- 安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)，其中包含 **.NET 桌面开发**与 **ASP.NET 和 Web 开发**工作负荷。
 
 ## <a name="add-the-native-client-application"></a>添加本机客户端应用程序
 

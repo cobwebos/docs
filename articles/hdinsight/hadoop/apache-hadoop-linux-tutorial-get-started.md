@@ -81,7 +81,7 @@ ms.locfileid: "64729416"
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. 右键单击脚本编辑器，然后选择“HDInsight：Hive 交互”提交查询**。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 很快，查询结果将显示在新选项卡中。
+4. 右键单击脚本编辑器，然后选择“**HDInsight：Hive 交互”提交查询**。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 很快，查询结果将显示在新选项卡中。
 
    ![交互式 Hive 结果](./media/apache-hadoop-linux-tutorial-get-started/interactive-hive-result.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "64729416"
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. 右键单击脚本编辑器，然后选择“HDInsight：Hive Batch”提交 Hive 作业**。 
+4. 右键单击脚本编辑器，然后选择“**HDInsight：Hive Batch”提交 Hive 作业**。 
 
 5. 选择想要提交的群集。  
 
