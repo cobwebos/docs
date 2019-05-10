@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: febc6e72ed40541a230c606a3ec96a8bffef5036
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 651474fd538123e760022ac59efbbaf0b9b83d70
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026373"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519679"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>快速入门：识别使用手写识别器 REST API 和 JavaScript 数字墨迹
 
@@ -26,12 +26,12 @@ ms.locfileid: "65026373"
 
 ![手写文本图像的](../media/handwriting-sample.jpg)
 
-可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) 上找到此快速入门的源代码。
+可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905) 上找到此快速入门的源代码。
 
 ## <a name="prerequisites"></a>必备组件
 
 - Web 浏览器
-- 本快速入门示例墨迹笔划数据都位于[GitHub](https://go.microsoft.com/fwlink/?linkid=2089502)。
+- 本快速入门示例墨迹笔划数据都位于[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json)。
 
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
@@ -157,7 +157,7 @@ ms.locfileid: "65026373"
 
 ## Run the application and view the response
 
-This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502):
+This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
 
 ## Next steps
 

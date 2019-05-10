@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: be3cedc4b496f4f64a52217099f64092dfb49228
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 35e57dfcc7b1fd6f8de265ab75de29dedd8fdfc2
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149851"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501664"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>将 CLI 扩展用于 Azure 机器学习服务
 
@@ -36,6 +36,10 @@ CLI 不能取代 Azure 机器学习 SDK。 它是经过优化，可处理满足�
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
+## <a name="full-reference-docs"></a>完整的参考文档
+
+查找[完整的参考文档的 Azure CLI 的 azure cli ml 扩展名](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest)。
+
 ## <a name="install-the-extension"></a>安装扩展
 
 若要安装机器学习 CLI 扩展，请使用以下命令：
@@ -45,7 +49,7 @@ az extension add -n azure-cli-ml
 ```
 
 > [!TIP]
-> 可以找到示例文件，可以使用以下命令使用[此处](http://aka.ms/azml-deploy-cloud)。
+> 可以找到示例文件，可以使用以下命令使用[此处](https://aka.ms/azml-deploy-cloud)。
 
 出现提示时，选择 `y` 安装该扩展。
 
@@ -82,9 +86,12 @@ az extension remove -n azure-cli-ml
     有关详细信息，请参阅[az ml 工作区中创建](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)。
 
 + 将工作区配置附加到文件夹，以启用 CLI 上下文感知。
+
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
+
+    此命令将创建`.azureml`包含示例 runconfig 和 conda 环境文件的子目录。 它还包含`config.json`用于与 Azure 机器学习工作区进行通信的文件。
 
     有关详细信息，请参阅[az ml 文件夹附加](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)。
 
@@ -121,6 +128,13 @@ az extension remove -n azure-cli-ml
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
+    > [!TIP]
+    > `az ml folder attach`命令创建`.azureml`子目录，其中包含两个示例 runconfig 文件。 
+    >
+    > 如果您有一个 Python 脚本，用于以编程方式创建的运行的配置对象，则可以使用[RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-)以将其保存为 runconfig 文件。
+    >
+    > 有关更多示例 runconfig 文件，请参阅[ https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml ](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml)。
+
     有关详细信息，请参阅[az ml 运行提交脚本](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
 
 * 查看实验的列表：
@@ -156,9 +170,26 @@ az extension remove -n azure-cli-ml
     az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
     ```
 
+    以下是示例`inferenceconfig.json`文档：
+
+    ```json
+    {
+    "entryScript": "score.py",
+    "runtime": "python",
+    "condaFile": "myenv.yml",
+    "extraDockerfileSteps": null,
+    "sourceDirectory": null,
+    "enableGpu": false,
+    "baseImage": null,
+    "baseImageRegistry": null
+    }
+    ```
+
     有关详细信息，请参阅[az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [命令参考的机器学习 CLI 扩展](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest)。
+
+* [训练和部署机器学习模型使用 Azure 管道](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)

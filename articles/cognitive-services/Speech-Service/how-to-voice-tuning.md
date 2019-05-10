@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 6d602491c66669007ae220c3b8143ce3e805246f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2352594b168f5d37ddb6a46064f9ac5801fb035f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147991"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508401"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>微调文本转语音输出
 
@@ -28,9 +28,9 @@ Azure 的语音服务，可以调整速度、 发音、 卷、 音调、 和的�
 在可以开始微调文本到语音转换输出使用语音优化工具之前，您将需要完成以下步骤：
 
 1. 创建[免费的 Microsoft 帐户](https://account.microsoft.com/account)如果还没有一个。
-2. 创建[Azure 免费帐户](https://azure.microsoft.com/en-us/free/)如果还没有一个。 单击**免费开始**，并创建新的 Azure 帐户使用 Microsoft 帐户。
+2. 创建[Azure 免费帐户](https://azure.microsoft.com/free/)如果还没有一个。 单击**免费开始**，并创建新的 Azure 帐户使用 Microsoft 帐户。
 
-3. 在 Azure 门户中创建的语音服务订阅。 有关分步说明[如何创建语音资源](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)可用。
+3. 在 Azure 门户中创建的语音服务订阅。 有关分步说明[如何创建语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)可用。
    >[!NOTE]
    >当在 Azure 门户中创建语音资源时，需要匹配与 TTS 语音区域的 Azure 位置信息。 神经 TTS 语音支持的 Azure 位置的子组。 有关支持的完整列表，请参阅[区域](regions.md#text-to-speech)。
 
@@ -70,6 +70,6 @@ Azure 的语音服务，可以调整速度、 发音、 卷、 音调、 和的�
 > 优化语音工具提供了有关功能和优化的上下文信息。
 
 ## <a name="next-steps"></a>后续步骤
-* [在 Azure 中创建语音资源](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
+* [在 Azure 中创建语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
 * [启动语音优化](https://speech.microsoft.com/app.html#/VoiceTuning)
 * [语音合成标记语言 (SSML)](speech-synthesis-markup.md)

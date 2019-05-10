@@ -139,8 +139,8 @@
       displayName: 'recognize speech, speech recognition, speech-to-text, stt'
     - name: 使用音频输入流 (SDK)
       href: how-to-use-audio-input-streams.md
-    - name: 使用压缩的音频输入流 (SDK)
-      href: how-to-use-compressed-audio-input-streams.md
+    - name: 使用通过编解码器压缩的音频输入流 (SDK)
+      href: how-to-use-codec-compressed-audio-input-streams.md
       displayName: 'mp3, opus, ogg, flac'
     - name: 选择音频输入设备 (SDK)
       href: how-to-select-audio-input-devices.md
@@ -184,7 +184,7 @@
               href: record-custom-voice-samples.md
             - name: 微调文本转语音输出
               href: how-to-voice-tuning.md
-        - name: 创建自定义唤醒词（设备 SDK）
+        - name: 创建自定义唤醒词（关键字发现）
           href: speech-devices-sdk-create-kws.md
           displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
     - name: 迁移
@@ -195,9 +195,9 @@
           href: how-to-migrate-from-custom-speech-service.md
         - name: 从语音翻译 API
           href: how-to-migrate-from-translator-speech-api.md
-    - name: 使用容器
+    - name: 使用本地容器
       items:
-        - name: 安装并运行容器
+        - name: 安装和运行本地容器
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
           href: speech-container-howto.md
         - name: 配置容器
@@ -220,6 +220,8 @@
         - name: 概述
           href: speech-sdk.md
           displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
+        - name: 方案可用性
+          href: scenario-availability.md
         - name: 发行说明
           href: releasenotes.md
         - name: C++
@@ -255,6 +257,9 @@
         - name: 批处理听录和自定义
           href: 'https://westus.cris.ai/swagger/ui/index'
           displayName: 'Batch transcription, transcription, custom models, customization, model management'
+        - name: 对话听录
+          href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+          displayName: 'Conversation transcription, signature generation'
         - name: Webhook
           href: webhooks.md
           displayName: Webhooks

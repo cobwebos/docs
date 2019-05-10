@@ -7,18 +7,18 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: d10ee8c1af85de5eb79cd4a4af6882c7a8f084f1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b0a6c016b2be12ac6686b3748b4b16281899323e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159550"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511060"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>创建映像并使用用户分配的托管的标识来访问 Azure 存储中的文件 
 
 Azure 映像生成器支持使用脚本，或将文件从多个位置，例如 GitHub 和 Azure 存储等复制。若要使用这些模板，它们必须已从外部访问 Azure 映像生成器，但无法保护使用 SAS 令牌的 Azure 存储 blob。
 
-本文介绍如何创建使用 Azure VM 映像生成器，服务将使用的自定义的映像[用户分配的托管标识](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)来访问 Azure 存储中文件的映像自定义，而不无需做出可公开访问，或设置 SAS 令牌的文件。
+本文介绍如何创建使用 Azure VM 映像生成器，服务将使用的自定义的映像[用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)来访问 Azure 存储中文件的映像自定义，而不无需做出可公开访问，或设置 SAS 令牌的文件。
 
 在下面的示例中，您将创建两个资源组、 一个将用于自定义映像和其他将承载一个 Azure 存储帐户，其中包含的脚本文件。 这模拟真实方案中，您可能会生成项目或在不同的存储帐户中，映像生成器外部图像文件。 您将创建用户分配的标识，然后授予读取权限的脚本文件，但不是会将任何公共访问权限设置为该文件。 然后，将使用命令行程序自定义下载并运行该脚本从存储帐户。
 
@@ -130,7 +130,7 @@ az role assignment create \
 
 ## <a name="create-user-assigned-managed-identity"></a>创建用户分配托管的标识
 
-创建标识并分配权限的脚本存储帐户。 有关详细信息，请参阅[用户分配托管标识](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)。
+创建标识并分配权限的脚本存储帐户。 有关详细信息，请参阅[用户分配托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)。
 
 ```azurecli-interactive
 # Create the user assigned identity 

@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0275d27a0a27d0279886f6f7fd15b14d312a44ea
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023732"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472005"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>编写并使用 Azure 机器学习数据准备 SDK 配置数据
 
@@ -25,6 +25,7 @@ ms.locfileid: "65023732"
 
 > [!Important]
 > 如果要构建一个新的解决方案，请尝试[Azure 机器学习数据集](how-to-explore-prepare-data.md)（预览版） 来转换数据、 快照数据和存储版本控制的数据集定义。 数据集是数据准备 SDK，提供可用于管理 AI 解决方案中的数据集的扩展的功能的下一个版本。
+> 如果您使用`azureml-dataprep`包来创建数据流而不是使用转换与`azureml-datasets`的包装，以创建数据集，您将不能以供以后使用快照或版本控制的数据集。
 
 由于对管道中有多少写步骤没有限制，因此你可以轻松添加更多写步骤来获取中间结果以用于故障排除或用于其他管道。
 
@@ -39,7 +40,7 @@ ms.locfileid: "65023732"
 使用 Azure 机器学习数据准备 Python SDK，可以写入到的数据：
 + 本地文件系统
 + Azure Blob 存储
-+ Azure Data Lake 存储
++ Azure Data Lake Storage
 
 ## <a name="spark-considerations"></a>Spark 注意事项
 
@@ -89,11 +90,11 @@ written_files.head(5)
 
 | | Column1 | Column2 | Column3 | Column4 | Column5 | Column6 | Column7 | Column8 | Column9 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-|0| 10000.0 | 99999.0 | ERROR | 否 | 否 | ENRS | NaN    | NaN | NaN |   
-|第| 10003.0 | 99999.0 | ERROR | 否 | 否 | ENSO |    NaN | NaN | NaN |   
-|2| 10010.0 | 99999.0 | ERROR | 否 | JN | ENJA |    70933.0 | -8667.0 | 90.0 |
-|3| 10013.0 | 99999.0 | ERROR | 否 | 否 |     | NaN | NaN | NaN |
-|4| 10014.0 | 99999.0 | ERROR | 否 | 否 | ENSO |    59783.0 | 5350.0 |  500.0|
+|0| 10000.0 | 99999.0 | 错误 | 否 | 否 | ENRS | NaN    | NaN | NaN |   
+|第| 10003.0 | 99999.0 | 错误 | 否 | 否 | ENSO |    NaN | NaN | NaN |   
+|2| 10010.0 | 99999.0 | 错误 | 否 | JN | ENJA |    70933.0 | -8667.0 | 90.0 |
+|3| 10013.0 | 99999.0 | 错误 | 否 | 否 |     | NaN | NaN | NaN |
+|4| 10014.0 | 99999.0 | 错误 | 否 | 否 | ENSO |    59783.0 | 5350.0 |  500.0|
 
 在前面的输出中，由于未正确分析数字，数值列中出现了多个错误。 默认情况下，写入 CSV 时，NULL 值将替换为字符串“ERROR”。
 

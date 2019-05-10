@@ -643,8 +643,6 @@
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: 修补群集节点 (Windows)
                   href: service-fabric-patch-orchestration-application.md
-                - name: 修补群集节点 (Linux)
-                  href: service-fabric-patch-orchestration-application-linux.md
                 - name: 启用磁盘加密 (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: 启用磁盘加密 (Linux)

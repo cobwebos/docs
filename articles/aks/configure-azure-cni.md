@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 39e0547421c446c1ee48b93b30487ccb9358de02
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 61968265670c53ebc4187c983996caa8c94a4cde
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192076"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508007"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -64,11 +64,20 @@ AKS 群集中每个节点的最大 Pod 数为 110。 每个节点的默认最大
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | 是 （最多 250 个） |
 | 资源管理器模板 | 110 | 30 | 是 （最多 250 个） |
-| 门户 | 110 | 30 | 否 |
+| 门户 | 110 | 30 | “否” |
 
 ### <a name="configure-maximum---new-clusters"></a>配置最大值 - 新群集
 
-只能在群集部署时配置每个节点的最大 Pod 数。 如果部署使用 Azure CLI 或使用资源管理器模板，则可以设置每个节点值最高可达 250 的最大 pod。
+只能在群集部署时配置每个节点的最大 Pod 数。 如果部署使用 Azure CLI 或使用资源管理器模板，则可以设置每个节点值的最大 pod，根据需要在以下`maxPods`指导原则：
+
+| 网络 | 最小值 | 最大值 |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+> [!NOTE]
+> AKS 服务严格强制执行上表中的最小值。
+您可以设置 maxPods 值低于最小值显示为这样做可以防止群集启动。
 
 * **Azure CLI**：使用 [az aks create][az-aks-create] 命令部署群集时，指定 `--max-pods` 参数。 最大值为 250。
 * **资源管理器模板**：使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定 `maxPods` 属性。 最大值为 250。

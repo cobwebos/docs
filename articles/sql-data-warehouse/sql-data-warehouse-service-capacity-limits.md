@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a8512e128d757e2faf4c3f63c5ad113b1d67b4ee
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ad285d71c2bb90f4b5a59eba25c6cc6a6d8588d6
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204897"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501850"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL 数据仓库容量限制
 Azure SQL 数据仓库的各个组件允许的最大值。
@@ -42,8 +42,8 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 | 表 |每个表的分区数 |15,000<br/><br/>为了实现高性能，建议在满足业务需求的情况下尽量减少所需的分区数。 随着分区数目的增长，数据定义语言 (DDL) 和数据操作语言 (DML) 操作的开销也会增长，导致性能下降。 |
 | 表 |每个分区边界值的字符数。 |4000 |
 | 索引 |每个表的非聚集索引数。 |50<br/><br/>仅适用于行存储表。 |
-| 索引 |每个表的聚集索引数。 |1<br><br/>适用于行存储和列存储表。 |
-| 索引 |索引键大小。 |900 字节。<br/><br/>仅适用于行存储索引。<br/><br/>如果创建索引时列中的现有数据未超过 900 字节，那么可以创建最大大小超过 900 字节的 varchar 列上的索引。 但是，以后导致总大小超过 900 字节的对列的 INSERT 或 UPDATE 操作将失败。 |
+| 索引 |每个表的聚集索引数。 |1<br><br/>适用于行存储表和列存储表。 |
+| 索引 |索引键大小。 |900 字节。<br/><br/>仅适用于行存储索引。<br/><br/>如果创建索引时列中的现有数据未超过 900 字节，那么可以创建最大大小超过 900 字节的 varchar 列上的索引。 但是，以后导致总大小超过 900 字节的对列的 INSERT 或 UPDATE 操作会失败。 |
 | 索引 |每个索引的键列数。 |16<br/><br/>仅适用于行存储索引。 聚集列存储索引包括所有列。 |
 | 统计信息 |组合的列值的大小。 |900 字节。 |
 | 统计信息 |每个统计对象的列数。 |32 |
@@ -54,7 +54,7 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 ## <a name="loads"></a>加载
 | Category | 描述 | 最大值 |
 |:--- |:--- |:--- |
-| Polybase 加载 |每行 MB 数 |第<br/><br/>Polybase 加载小于 1MB 的行。<br/><br/> |
+| Polybase 加载 |每行 MB 数 |第<br/><br/>Polybase 加载小于 1MB 的行。 不支持加载到表具有聚集列存储索引 (CCI) LOB 数据类型。<br/><br/> |
 
 ## <a name="queries"></a>查询
 | 类别 | 描述 | 最大值 |
@@ -64,13 +64,13 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 | Query |系统视图的排队查询数。 |1000 |
 | Query |最大值参数 |2098 |
 | 批 |最大大小 |65,536*4096 |
-| SELECT 结果 |每个行的列数 |4096<br/><br/>在 SELECT 结果中每行的列数始终不得超过 4096。 无法保证最大值始终为 4096。 如果查询计划需要一个临时表，则可能应用每个表最多 1024 列的最大值。 |
+| SELECT 结果 |每个行的列数 |4096<br/><br/>在 SELECT 结果中每行的列数始终不得超过 4096。 无法保证最大值始终为 4096。 如果查询计划需要一个临时表，那么将应用每个表最多 1024 列的最大值。 |
 | SELECT |嵌套子查询 |32<br/><br/>在 SELECT 语句中的嵌套子查询数始终不得超过 32 个。 无法保证最大值始终为 32 个。 例如，JOIN 可以将子查询引入查询计划。 还可以通过可用内存来限制子查询的数量。 |
 | 选择 |每个 JOIN 的列数 |1024 个列<br/><br/>JOIN 中的列数始终不得超过 1024。 无法保证最大值始终为 1024。 如果 JOIN 计划需要列数多于 JOIN 结果的临时表，那么将 1024 限制应用于此临时表。 |
 | 选择 |每个 GROUP BY 列的字节数。 |8060<br/><br/>GROUP BY 子句中的列的字节数最大为 8060 字节。 |
 | 选择 |每个 ORDER BY 列的字节数 |8060 字节<br/><br/>ORDER BY 子句中的列的字节数最大为 8060 字节 |
-| 每个语句的标识符数 |被引用的标识符数 |65,535<br/><br/>SQL 数据仓库会限制一条查询的单个表达式中可包含的标识符数。 超过此数字会导致 SQL Server 错误 8632。 有关详细信息，请参阅[内部错误：已达到表达式服务限制](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)。 |
-| 字符串文本 | 一个语句中字符串文本的数量 | 20,000 <br/><br/>SQL 数据仓库会限制单个查询表达式中可包含的字符串常量数。 超过此数字会导致 SQL Server 错误 8632。|
+| 每个语句的标识符数 |被引用的标识符数 |65,535<br/><br/>SQL 数据仓库会限制一条查询的单个表达式中可包含的标识符数。 超过此数字将导致 SQL Server 错误 8632。 有关详细信息，请参阅[内部错误：已达到表达式服务限制](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)。 |
+| 字符串文本 | 一个语句中字符串文本的数量 | 20,000 <br/><br/>SQL 数据仓库会限制单个查询表达式中可包含的字符串常量数。 超过此数字将导致 SQL Server 错误 8632。|
 
 ## <a name="metadata"></a>元数据
 | 系统视图 | 最大行数 |

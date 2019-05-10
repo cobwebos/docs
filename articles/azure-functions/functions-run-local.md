@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 14990cd4a066c126b5e4d498c5a109dac1b8820a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 55c5a61be8dadd538b73bd6378c030b98d837341
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65140945"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508231"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -43,7 +43,7 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
 2.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时 2.x。 .NET Core 2.x 支持的所有平台（包括 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)）都支持此版本。 必须先安装 .NET Core 2.x SDK。
 
 > [!IMPORTANT]
-> 当启用扩展项目的 host.json 文件中的捆绑包时，不需要安装.NET Core 2.x SDK。 有关详细信息，请参阅[使用 Azure Functions 核心工具和扩展捆绑包的本地开发](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 扩展捆绑包需要版本 2.6.1071 的核心工具或更高版本。
+> 当启用扩展项目的 host.json 文件中的捆绑包时，不需要安装.NET Core 2.x SDK。 有关详细信息，请参阅[使用 Azure Functions 核心工具和扩展捆绑包的本地开发](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 扩展捆绑包需要使用 Core Tools 的 2.6.1071 版或更高版本。
 
 #### <a name="windows-npm"></a>Windows
 
@@ -193,13 +193,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`CORS`** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (\*)，它允许使用任何来源的请求。 |
 | **`ConnectionStrings`** | 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供通常从配置文件的 `ConnectionStrings` 节获取连接字符串的框架使用，例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 的环境中。 此集合中的项不使用其他应用设置发布到 Azure 中。 必须将这些值显式添加到函数应用设置的 `Connection strings` 集合中。 如果要在函数代码中创建 [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)，则应将连接字符串值与其他连接一起存储在门户的“应用程序设置”中。 |
 
-还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：
-
-* [预编译 C#](functions-dotnet-class-library.md#environment-variables)
-* [C# 脚本 (.csx)](functions-reference-csharp.md#environment-variables)
-* [F # 脚本 (.fsx)](functions-reference-fsharp.md#environment-variables)
-* [Java](functions-reference-java.md#environment-variables)
-* [JavaScript](functions-reference-node.md#environment-variables)
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 如果没有为 [`AzureWebJobsStorage`] 设置有效的存储连接字符串并且没有使用模拟器，则会显示以下错误消息：
 

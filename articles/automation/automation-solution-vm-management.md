@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/24/2019
+ms.date: 05/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146045"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501963"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -75,7 +75,7 @@ ms.locfileid: "65146045"
 | Microsoft.Resources/subscriptions/resourceGroups/read | 资源组 |
 | Microsoft.Resources/deployments/* | 资源组 |
 
-### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>新的自动化帐户和新的 Log Analytics 工作区
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>新的自动化帐户和新的 Log Analytics 工作区
 
 若要部署在空闲时间启动/停止 Vm 解决方案添加到新的自动化帐户和 Log Analytics 工作区部署解决方案的用户需要在前面的部分，以及以下权限中定义的权限：
 
@@ -91,6 +91,30 @@ ms.locfileid: "65146045"
 | Microsoft.Automation/automationAccounts/write | 资源组 |
 | Microsoft.OperationalInsights/workspaces/write | 资源组 |
 
+### <a name="region-mappings"></a>区域映射
+
+在启用时在非工作时间启动/停止 Vm，只有特定区域支持链接的 Log Analytics 工作区和自动化帐户。
+
+下表显示了受支持的映射：
+
+|**Log Analytics 工作区区域**|**Azure 自动化区域**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS<sup>1</sup>|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|西欧|西欧|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP 和 EastUS 映射到自动化帐户的 Log Analytics 工作区不精确的区域到另一个区域映射，但是正确的映射。
+
+<sup>2</sup>由于容量限制范围区域不可用时创建新的资源。 这包括自动化帐户和 Log Analytics 工作区。 但是，在区域中预先存在链接的资源应继续工作。
+
 ## <a name="deploy-the-solution"></a>部署解决方案
 
 执行以下步骤可将非工作时间启动/停止 VM 解决方案添加到自动化帐户，然后配置变量来自定义该解决方案。
@@ -101,6 +125,7 @@ ms.locfileid: "65146045"
 
    > [!NOTE]
    > 也可以单击“创建资源”，在 Azure 门户中的任意位置创建该解决方案。 在“市场”页面中，键入类似于“启动”或“启动/停止”的关键字。 开始键入时，会根据输入筛选该列表。 或者，可以键入解决方案完整名称中的一个或多个关键，然后按 Enter。 在搜索结果中选择“在空闲时间启动/停止 VM”。
+
 2. 在所选解决方案的“在空闲时间启动/停止 VM”页中查看摘要信息，并单击“创建”。
 
    ![Azure 门户](media/automation-solution-vm-management/azure-portal-01.png)

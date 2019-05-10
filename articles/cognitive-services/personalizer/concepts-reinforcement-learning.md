@@ -10,15 +10,14 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 30f009f76c25d80281d748e1e484175380ca9743
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b65073c0646db0cd0c27a71005bb4f74b091ae09
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025539"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506882"
 ---
 # <a name="what-is-reinforcement-learning"></a>什么是强化学习？
-
 
 强化学习是一种机器学习方法，它可以在使用机器学习的过程中通过获取反馈来学习行为。
  
@@ -64,7 +63,7 @@ John 还曾经编写了几篇教程来阐述联合预测 (ICML 2015)、上下文
 
 * [Making Contextual Decisions with Low Technical Debt](https://arxiv.org/abs/1606.03966)（做出上下文决策并降低技术债务）
 * [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453)（公平分类的化简方法）
-* [Efficient Contextual Bandits in Non-stationary Worlds](https://arxiv.org/abs/1708.01799ds)（非固定世界中的有效上下文赌博机）
+* [Efficient Contextual Bandits in Non-stationary Worlds](https://arxiv.org/abs/1708.01799)（非固定世界中的有效上下文赌博机）
 * [Residual Loss Prediction:Reinforcement: learning With No Incremental Feedback](https://openreview.net/pdf?id=HJNMYceCW)（残余损失预测：使用非增量反馈进行强化学习）
 * [Mapping Instructions and Visual Observations to Actions with Reinforcement Learning](https://arxiv.org/abs/1704.08795)（使用强化学习将指令和可视观测结果映射到操作）
 * [Learning to Search Better Than Your Teacher](https://arxiv.org/abs/1502.02206)（学会如何比老师更好地进行搜索）
