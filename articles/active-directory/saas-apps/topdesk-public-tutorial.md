@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: c4052dd3b4c8f49b19193109eb5e8d2306646960
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d5ecfcd249dd07dc94b3b17ea0a7a7de3559c681
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192554"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407940"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>教程：Azure Active Directory 与 TOPdesk - Public 集成
 
@@ -193,7 +193,7 @@ ms.locfileid: "65192554"
 
     c. 若要上载从 TOPdesk 支持团队获得的徽标文件，请在“徽标图标”下，单击“浏览”。
 
-    d. 在“用户名属性”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
+    d. 在“用户名属性”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
     e. 在“显示名称”文本框中，键入配置名称。
 
@@ -286,6 +286,6 @@ ms.locfileid: "65192554"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3073d34a6ffeadd1c1c0022b5c1636f06cc6210a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: df75d692bc61d155b35f5ce4e2bf08da6e4cbcc3
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190838"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507106"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -251,7 +251,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `correlation_id` | 可帮助跨组件进行诊断的请求的唯一标识符。 |
 
 > [!NOTE]
-> 为了使你的应用程序能够接收 v2 令牌可以更新从 azure 门户中的应用程序的清单文件。 可以将属性添加`accessTokenAcceptedVersion`并将值设置为 2 一样`"accessTokenAcceptedVersion": 2`。 请查看文章[应用程序清单](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest#manifest-reference)若要了解有关相同的详细信息。 默认情况下，应用程序当前收到 v1 令牌。 如果这未定义在应用程序/Web API 清单中，它在清单中此属性的值默认为 1，因此应用程序将收到 v1 令牌。  
+> 为了使你的应用程序能够接收 v2 令牌可以更新从 azure 门户中的应用程序的清单文件。 可以将属性添加`accessTokenAcceptedVersion`并将值设置为 2 一样`"accessTokenAcceptedVersion": 2`。 请查看文章[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference)若要了解有关相同的详细信息。 默认情况下，应用程序当前收到 v1 令牌。 如果这未定义在应用程序/Web API 清单中，它在清单中此属性的值默认为 1，因此应用程序将收到 v1 令牌。  
 
 
 ## <a name="use-a-token"></a>使用令牌

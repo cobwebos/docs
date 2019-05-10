@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 4416c30f57b469ee125400c696e8b34311a94926
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a200649493354f1264afb0df4cf74acb4a274017
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028180"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406408"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -65,7 +65,7 @@ Azure 区块链服务提供两个服务层：*基本*并*标准*。 每个层提
 
 ## <a name="develop-using-familiar-development-tools"></a>使用熟悉的开发工具进行开发
 
-基于开放源代码仲裁以太坊分类帐，你可以开发适用于 Azure 区块链服务应用程序相同的方式与现有以太坊应用程序一样的方式。 使用领先的行业合作伙伴，Azure 区块链开发工具包 Visual Studio Code 扩展允许开发人员可以使用熟悉的工具，如 Truffle 套件来构建智能协定。 使用 Azure 区块链开发工具包扩展插件，开发人员可以创建或连接到和现有联盟，以便可以生成和部署您的智能合同，所有从一个 IDE。 使用 Visual Studio Code 的 Azure 区块链扩展插件，可以创建或连接到现有联盟，以便可以生成和部署智能合约一个 IDE 中的所有内容。 有关详细信息，请参阅[VS Code marketplace 中的 Azure 区块链开发工具包](http://aka.ms/vscodebcextension)并[Azure 区块链开发工具包用户指南](http://aka.ms/vscodebcextensionwiki )。
+基于开放源代码仲裁以太坊分类帐，你可以开发适用于 Azure 区块链服务应用程序相同的方式与现有以太坊应用程序一样的方式。 使用领先的行业合作伙伴，Azure 区块链开发工具包 Visual Studio Code 扩展允许开发人员可以使用熟悉的工具，如 Truffle 套件来构建智能协定。 使用 Azure 区块链开发工具包扩展插件，开发人员可以创建或连接到和现有联盟，以便可以生成和部署您的智能合同，所有从一个 IDE。 使用 Visual Studio Code 的 Azure 区块链扩展插件，可以创建或连接到现有联盟，以便可以生成和部署智能合约一个 IDE 中的所有内容。 有关详细信息，请参阅[VS Code marketplace 中的 Azure 区块链开发工具包](https://aka.ms/vscodebcextension)并[Azure 区块链开发工具包用户指南](https://aka.ms/vscodebcextensionwiki )。
 
 ## <a name="support-and-feedback"></a>支持和反馈
 

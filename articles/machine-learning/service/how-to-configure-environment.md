@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8c0291997c1ce301083f7d5c19b5067a85cfd0f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4d588374c0195e7da373766f93f6829ac2160269
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024960"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471596"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -283,12 +283,12 @@ Azure Databricks 的工作原理与 Azure 机器学习服务：
 
 使用以下设置：
 
-| 设置 |适用于| 值 |
+| 设置 |应用于| 值 |
 |----|---|---|
 | 群集名称 |始终| yourclustername |
 | Databricks 运行时 |始终| 任何非机器学习运行时（非机器学习 4.x、5.x） |
 | Python 版本 |始终| 3 |
-| 工作节点 |始终| 2 个或以上 |
+| 辅助程序 |始终| 2 个或以上 |
 | 工作节点 VM 类型 <br>（确定并发迭代的数上限） |自动化机器学习<br>仅| 首选内存优化的 VM |
 | 启用自动缩放 |自动化机器学习<br>仅| 取消选中 |
 
@@ -344,7 +344,7 @@ SDK databricks **WITH**自动执行机器学习![SDK 自动安装在 Databricks 
 * 已安装 Azure 机器学习 SDK。
 * 在 Azure 门户中创建了 Azure 机器学习服务工作区之后，可以单击相应的按钮将 Azure Notebook 环境自动配置为使用该工作区。
 
-使用[Azure 门户](https://portal.azure.com)若要开始使用 Azure Notebook。  打开你的工作区以及从**概述**部分中，选择**开始使用 Azure Notebook**。
+使用 [Azure 门户](https://portal.azure.com)完成 Azure Notebooks 入门。  打开你的工作区以及从**概述**部分中，选择**开始使用 Azure Notebook**。
 
 默认情况下，Azure Notebooks 使用限制为 4GB 内存和 1GB 数据的免费服务层级。 不过，可以通过向 Azure Notebooks 项目附加 Data Science Virtual Machine 实例来解除这些限制。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
 
@@ -368,7 +368,7 @@ SDK databricks **WITH**自动执行机器学习![SDK 自动安装在 Databricks 
 
 * **按照中的步骤[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)**:将在 Azure Notebooks 库中创建一个 *config.json* 文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
 
-* **下载文件**:在中[Azure 门户](https://ms.portal.azure.com)，选择**下载 config.json**从**概述**部分中的工作区。
+* **下载文件**:在Azure 门户中，选择工作区的“概览”部分中的“下载 config.json”[](https://ms.portal.azure.com)。
 
      ![Azure 门户](./media/how-to-configure-environment/configure.png)
 
@@ -396,5 +396,5 @@ SDK databricks **WITH**自动执行机器学习![SDK 自动安装在 Databricks 
 
 - 在 Azure 机器学习中使用 MNIST 数据集[训练模型](tutorial-train-models-with-aml.md)
 - 查看[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 参考文档
-- 了解 [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk)
+- 了解有关[Azure 机器学习数据准备包](https://aka.ms/data-prep-sdk)
 - 
