@@ -10,15 +10,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 173343677d6c44135037978e1c5b60313251ba43
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/08/2019
+ms.openlocfilehash: af1e9df2e9afbd3b51736806fcd4bd8101d583df
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003830"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153413"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms-preview"></a>教程：使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API（预览版）
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教程：使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 可以使用 Azure 数据库迁移服务将数据库从 MongoDB 的本地或云实例联机（在几乎不停机的情况下）迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。
 
 本教程介绍如何执行下列操作：
@@ -96,9 +96,7 @@ ms.locfileid: "60003830"
     > [!NOTE]
     > 仅当使用“高级”层时，才支持联机迁移。 有关成本和定价层的详细信息，请参阅[价格页](https://aka.ms/dms-pricing)。
 
-    如果在选择合适的 Azure 数据库迁移服务层时需要帮助，请参阅[此处](https://go.microsoft.com/fwlink/?linkid=861067)博客文章中的建议。  
-
-     ![配置 Azure 数据库迁移服务实例设置](media/tutorial-mongodb-to-cosmosdb-online/dms-settings3.png)
+    ![配置 Azure 数据库迁移服务实例设置](media/tutorial-mongodb-to-cosmosdb-online/dms-settings3.png)
 
 7.  选择“创建”来创建服务。
 

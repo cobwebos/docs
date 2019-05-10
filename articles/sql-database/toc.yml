@@ -284,6 +284,8 @@
               href: transparent-data-encryption-azure-sql.md
             - name: 将 TDE 与自带密钥配合使用
               href: transparent-data-encryption-byok-azure-sql.md
+        - name: 安全属性
+          href: sql-database-security-attributes.md
     - name: 可伸缩性
       items:
         - name: 可伸缩性概述

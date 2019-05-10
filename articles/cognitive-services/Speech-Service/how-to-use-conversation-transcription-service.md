@@ -1,21 +1,21 @@
 ---
 title: 转录语音 SDK-语音服务与多个参与者对话
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用语音 SDK 会话脚本服务。 适用于C++， C#，和 Java。
+description: 了解如何使用语音 SDK 会话的脚本。 适用于C++， C#，和 Java。
 services: cognitive-services
 author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: jhakulin
-ms.openlocfilehash: 73ab4cfa92a1efc49dea16ba2941cf16b7a1cf3e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e9de4faf18c54f7c7582ef5a8ab0648629d4f48e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025788"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190155"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>转录语音 SDK 与多个参与者对话
 
@@ -24,7 +24,7 @@ Speech SDK **ConversationTranscriber** API 允许你能够添加、 删除和标
 ## <a name="limitations"></a>限制
 
 * 支持会话 transcriber C++， C#，并在 Windows、 Linux 和 Android 的 Java。
-* ROOBO DevKit 所支持的硬件环境，用于创建会话，因为提供循环多麦克风阵列可有效地利用说话人识别会话脚本服务。 [有关详细信息，请参阅语音设备 SDK](speech-devices-sdk.md)。 
+* ROOBO DevKit 所支持的硬件环境，用于创建会话，因为提供循环多麦克风阵列可有效地利用说话人识别会话脚本服务。 [有关详细信息，请参阅语音设备 SDK](speech-devices-sdk.md)。
 * 语音 SDK 支持仅限于使用的音频拉取和推送模式下使用八个频道的 PCM 音频流。
 
 ## <a name="prerequisites"></a>必备组件
@@ -78,7 +78,7 @@ class Program
 
 若要转录与多个参与者的对话，创建`ConversationTranscriber`与关联的对象`AudioConfig`对话会话中和音频流使用创建的对象`PullAudioInputStream`或`PushAudioInputStream`。
 
-我们假设您有一个名为 ConversationTranscriber 类`MyConversationTranscriber`。 你的代码可能如下所示： 
+我们假设您有一个名为 ConversationTranscriber 类`MyConversationTranscriber`。 你的代码可能如下所示：
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -97,7 +97,7 @@ public class MyConversationTranscriber
         var stopTranscription = new TaskCompletionSource<int>();
 
         // Create an audio stream from a wav file.
-        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback 
+        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
         using (var audioInput = Helper.OpenWavFile(@"8channelsOfRecordedPCMAudio.wav"))
         {
             // Creates a conversation transcriber using audio stream input.

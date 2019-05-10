@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 4e6f0317df2f0f631d2c8d3f8e5cefba06e154fd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1b3353cae73bb5710dc9343f1d211266d15743a2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027533"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153213"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C# 教程：在 Azure 搜索索引管道中调用认知服务 API
 
@@ -94,9 +94,9 @@ ms.locfileid: "65027533"
 
 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk) 由一些客户端库组成。借助这些库，不仅可以管理索引、数据源、索引器和技能集，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。 这些客户端库全部作为 NuGet 包进行分发。
 
-对于此项目，需要安装 `Microsoft.Azure.Search` NuGet 包的 7.x.x 预览版，以及最新的 `Microsoft.Extensions.Configuration.Json` NuGet 包。
+对于此项目，需要安装 `Microsoft.Azure.Search` NuGet 包的版本 9，以及最新的 `Microsoft.Extensions.Configuration.Json` NuGet 包。
 
-使用 Visual Studio 中的包管理器控制台来安装 `Microsoft.Azure.Search` NuGet 包。 若要打开包管理器控制台，请依次选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 若要获取要运行的命令，请转到 [Microsoft.Azure.Search NuGet 包页](https://www.nuget.org/packages/Microsoft.Azure.Search)，选择版“7.x.x 预览版”，并复制包管理器命令。 在包管理器控制台中，运行此命令。
+使用 Visual Studio 中的包管理器控制台来安装 `Microsoft.Azure.Search` NuGet 包。 若要打开包管理器控制台，请依次选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 若要获取要运行的命令，请导航到 [Microsoft.Azure.Search NuGet 包页](https://www.nuget.org/packages/Microsoft.Azure.Search)，选择版本 9，并复制包管理器命令。 在包管理器控制台中，运行此命令。
 
 若要在 Visual Studio 中安装 `Microsoft.Extensions.Configuration.Json` NuGet 包，请依次选择“工具” > “Nuget 包管理器” > “管理解决方案的 Nuget 包...”。选择“浏览”，并搜索“`Microsoft.Extensions.Configuration.Json` NuGet 包”。 找到此包后，依次选择它和项目，确认版本是否是最新稳定版，再选择“安装”。
 
@@ -137,13 +137,25 @@ using Microsoft.Extensions.Configuration;
 
 ## <a name="create-a-client"></a>创建客户端
 
-使用已添加到 `appsettings.json` 的信息，创建 `SearchServiceClient` 类的实例。
+创建的 `SearchServiceClient` 类的实例。
 
 ```csharp
 IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
 IConfigurationRoot configuration = builder.Build();
-
 SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
+```
+
+`CreateSearchServiceClient` 使用应用程序的配置文件 (appsettings.json) 中存储的值创建新的 `SearchServiceClient`。
+
+```csharp
+private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
+{
+   string searchServiceName = configuration["SearchServiceName"];
+   string adminApiKey = configuration["SearchServiceAdminApiKey"];
+
+   SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
+   return serviceClient;
+}
 ```
 
 > [!NOTE]
@@ -197,9 +209,9 @@ catch (Exception e)
 
 + [语言检测](cognitive-search-skill-language-detection.md)：识别内容的语言。
 
-+ [文本拆分](cognitive-search-skill-textsplit.md)：用于先将大段内容拆分为较小区块，再调用关键短语提取技能和命名实体识别技能。 关键短语提取和命名实体识别接受不超过 50,000 个字符的输入。 有几个示例文件需要拆分才能保留在此限制范围内。
++ [文本拆分](cognitive-search-skill-textsplit.md)：用于先将大段内容拆分为较小区块，再调用关键短语提取技能和实体识别技能。 关键短语提取和实体识别接受不超过 50,000 个字符的输入。 有几个示例文件需要拆分才能保留在此限制范围内。
 
-+ [命名实体识别](cognitive-search-skill-named-entity-recognition.md)：从 Blob 容器中的内容提取组织名称。
++ [实体识别](cognitive-search-skill-entity-recognition.md)：从 Blob 容器中的内容提取组织名称。
 
 + [关键短语提取](cognitive-search-skill-keyphrases.md)：取出最关键的短语。
 
@@ -225,7 +237,7 @@ outputMappings.Add(new OutputFieldMappingEntry(
     targetName: "text"));
 
 OcrSkill ocrSkill = new OcrSkill(
-    description: "Extract text (plain and structured) from image).",
+    description: "Extract text (plain and structured) from image",
     context: "/document/normalized_images/*",
     inputs: inputMappings,
     outputs: outputMappings,
@@ -279,7 +291,7 @@ outputMappings.Add(new OutputFieldMappingEntry(
     targetName: "languageCode"));
 
 LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
-    description: "Language detection skill",
+    description: "Detect the language used in the document",
     context: "/document",
     inputs: inputMappings,
     outputs: outputMappings);
@@ -312,9 +324,9 @@ SplitSkill splitSkill = new SplitSkill(
     maximumPageLength: 4000);
 ```
 
-### <a name="named-entity-recognition-skill"></a>命名实体识别技能
+### <a name="entity-recognition-skill"></a>实体识别技能
 
-设置此 `NamedEntityRecognitionSkill` 实例是为了识别类别类型 `organization`。 此外，命名实体识别技能还可以识别类别类型 `person` 和 `location`。
+设置此 `EntityRecognitionSkill` 实例是为了识别类别类型 `organization`。 此外，实体识别技能还可以识别类别类型 `person` 和 `location`。
 
 请注意，“context”字段设置为包含星号的 ```"/document/pages/*"```；也就是说，将对 ```"/document/pages"``` 下的每个页面都调用扩充步骤。
 
@@ -329,21 +341,21 @@ outputMappings.Add(new OutputFieldMappingEntry(
     name: "organizations",
     targetName: "organizations"));
 
-List<NamedEntityCategory> namedEntityCategory = new List<NamedEntityCategory>();
-namedEntityCategory.Add(NamedEntityCategory.Organization);
+List<EntityCategory> entityCategory = new List<EntityCategory>();
+entityCategory.Add(EntityCategory.Organization);
     
-NamedEntityRecognitionSkill namedEntityRecognition = new NamedEntityRecognitionSkill(
+EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
     description: "Recognize organizations",
     context: "/document/pages/*",
     inputs: inputMappings,
     outputs: outputMappings,
-    categories: namedEntityCategory,
-    defaultLanguageCode: NamedEntityRecognitionSkillLanguage.En);
+    categories: entityCategory,
+    defaultLanguageCode: EntityRecognitionSkillLanguage.En);
 ```
 
 ### <a name="key-phrase-extraction-skill"></a>关键短语提取技能
 
-与刚刚创建的 `NamedEntityRecognitionSkill` 实例一样，关键短语提取技能对文档的各个页面都调用。
+与刚刚创建的 `EntityRecognitionSkill` 实例一样，关键短语提取技能对文档的各个页面都调用。
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -368,7 +380,7 @@ KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill
 
 ### <a name="build-and-create-the-skillset"></a>生成并创建技能集
 
-使用已创建的技能来生成 `SkillSet`。
+使用已创建的技能来生成 `Skillset`。
 
 ```csharp
 List<Skill> skills = new List<Skill>();
@@ -376,12 +388,12 @@ skills.Add(ocrSkill);
 skills.Add(mergeSkill);
 skills.Add(languageDetectionSkill);
 skills.Add(splitSkill);
-skills.Add(namedEntityRecognition);
+skills.Add(entityRecognitionSkill);
 skills.Add(keyPhraseExtractionSkill);
 
-Skillset skillSet = new Skillset(
+Skillset skillset = new Skillset(
     name: "demoskillset",
-    description: "Demo Skillset",
+    description: "Demo skillset",
     skills: skills);
 ```
 
@@ -390,7 +402,7 @@ Skillset skillSet = new Skillset(
 ```csharp
 try
 {
-    serviceClient.Skillsets.CreateOrUpdate(skillSet);
+    serviceClient.Skillsets.CreateOrUpdate(skillset);
 }
 catch (Exception e)
 {
@@ -459,16 +471,24 @@ var index = new Index()
 };
 ```
 
-在测试期间，你可能会发现要多次尝试创建索引。 因此，请先检查要创建的索引是否已存在，再尝试创建索引。 
+在测试期间，你可能会发现要多次尝试创建索引。 因此，请先检查要创建的索引是否已存在，再尝试创建索引。
 
 ```csharp
-bool exists = serviceClient.Indexes.Exists(index.Name);
-if (exists)
+try
 {
-    serviceClient.Indexes.Delete(index.Name);
-}
+    bool exists = serviceClient.Indexes.Exists(index.Name);
 
-serviceClient.Indexes.Create(index);
+    if (exists)
+    {
+        serviceClient.Indexes.Delete(index.Name);
+    }
+
+    serviceClient.Indexes.Create(index);
+}
+catch (Exception e)
+{
+    // Handle exception
+}
 ```
 
 若要详细了解如何定义索引，请参阅[创建索引（Azure 搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
@@ -526,14 +546,15 @@ Indexer indexer = new Indexer(
     fieldMappings: fieldMappings,
     outputFieldMappings: outputMappings);
 
-bool exists = serviceClient.Indexers.Exists(indexer.Name);
-if (exists)
-{
-    serviceClient.Indexers.Delete(indexer.Name);
-}
-
 try
 {
+    bool exists = serviceClient.Indexers.Exists(indexer.Name);
+
+    if (exists)
+    {
+        serviceClient.Indexers.Delete(indexer.Name);
+    }
+
     serviceClient.Indexers.Create(indexer);
 }
 catch (Exception e)
@@ -560,21 +581,29 @@ catch (Exception e)
 定义索引器后，提交请求时会自动运行索引器。 根据定义的认知技能，索引编制花费的时间可能会超出预期。 若要确定索引器是否仍在运行，请使用 `GetStatus` 方法。
 
 ```csharp
-IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
-switch (demoIndexerExecutionInfo.Status)
+try
 {
-    case IndexerStatus.Error:
-        Console.WriteLine("Indexer has error status");
-        break;
-    case IndexerStatus.Running:
-        Console.WriteLine("Indexer is running");
-        break;
-    case IndexerStatus.Unknown:
-        Console.WriteLine("Indexer status is unknown");
-        break;
-    default:
-        Console.WriteLine("No indexer status information");
-        break;
+    IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
+
+    switch (demoIndexerExecutionInfo.Status)
+    {
+        case IndexerStatus.Error:
+            Console.WriteLine("Indexer has error status");
+            break;
+        case IndexerStatus.Running:
+            Console.WriteLine("Indexer is running");
+            break;
+        case IndexerStatus.Unknown:
+            Console.WriteLine("Indexer status is unknown");
+            break;
+        default:
+            Console.WriteLine("No indexer information");
+            break;
+    }
+}
+catch (Exception e)
+{
+    // Handle exception
 }
 ```
 
@@ -603,6 +632,19 @@ catch (Exception e)
 }
 ```
 
+`CreateSearchIndexClient` 使用应用程序的配置文件 (appsettings.json) 中存储的值创建新的 `SearchIndexClient`。 请注意，使用的是搜索服务查询 API 密钥而不是管理员密钥。
+
+```csharp
+private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
+{
+   string searchServiceName = configuration["SearchServiceName"];
+   string queryApiKey = configuration["SearchServiceQueryApiKey"];
+
+   SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "demoindex", new SearchCredentials(queryApiKey));
+   return indexClient;
+}
+```
+
 输出是索引架构，其中包含每个字段的名称、类型和特性。
 
 针对 `"*"` 提交另一个查询，以返回单个字段的所有内容，例如 `organizations`。
@@ -626,52 +668,11 @@ catch (Exception e)
 
 针对本练习中的其他字段（content、languageCode、keyPhrases 和 organizations）重复上述步骤。 可以使用逗号分隔列表通过 `$select` 返回多个字段。
 
-<a name="access-enriched-document"></a>
-
-## <a name="accessing-the-enriched-document"></a>访问扩充的文档
-
-认知搜索允许查看扩充文档的结构。 扩充的文档是在扩充期间创建的、然后在完成处理后删除的临时结构。
-
-若要捕获索引编制期间创建的扩充文档的快照，请将名为 ```enriched``` 的字段添加到索引。 索引器将作为该文档的所有扩充项的字符串表示形式自动转储到字段中。
-
-```enriched``` 字段将包含一个字符串，该字符串是内存中扩充文档的 JSON 逻辑表示形式，  但字段值是有效的 JSON 文档。 引号经过转义，因此，需将 `\"` 替换为 `"` 才能查看 JSON 格式的文档。  
-
-```enriched``` 字段用于调试目的，它只能帮助你了解求值表达式所针对的内容的逻辑形状。 它可能是用于了解和调试技能集的有用工具。
-
-重复上一个演练，并包含 `enriched` 字段以捕获扩充文档的内容：
-
-### <a name="request-body-syntax"></a>请求正文语法
-```csharp
-// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
-// It ensures that Pascal-case property names in the model class are mapped to camel-case
-// field names in the index.
-[SerializePropertyNamesAsCamelCase]
-public class DemoIndex
-{
-    [System.ComponentModel.DataAnnotations.Key]
-    [IsSearchable, IsSortable]
-    public string Id { get; set; }
-
-    [IsSearchable]
-    public string Content { get; set; }
-
-    [IsSearchable]
-    public string LanguageCode { get; set; }
-
-    [IsSearchable]
-    public string[] KeyPhrases { get; set; }
-
-    [IsSearchable]
-    public string[] Organizations { get; set; }
-
-    public string Enriched { get; set; }
-}
-```
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>重置并重新运行
 
-在开发的前期试验阶段，设计迭代的最实用方法是，删除 Azure 搜索中的对象，并允许代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。 
+在开发的前期试验阶段，设计迭代的最实用方法是，删除 Azure 搜索中的对象，并允许代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
 
 本教程涵盖了如何检查是否有现有索引器和索引，并删除它们（若有），以便能够重新运行代码。
 
@@ -685,7 +686,7 @@ public class DemoIndex
 
 其中介绍了[预定义的技能集](cognitive-search-predefined-skills.md)、技能集定义，以及通过输入和输出将技能链接在一起的机制。 此外，还提到需要使用索引器定义中的 `outputFieldMappings`，将管道中的扩充值路由到 Azure 搜索服务中的可搜索索引。
 
-最后，介绍了如何测试结果并重置系统以进一步迭代。 本教程提到，针对索引发出查询会返回扩充的索引管道创建的输出。 在此版本中，可以通过某个机制来查看内部构造（系统创建的扩充文档）。 此外，本教程还介绍了如何检查索引器状态，以及在重新运行管道之前要删除的对象。
+最后，介绍了如何测试结果并重置系统以进一步迭代。 本教程提到，针对索引发出查询会返回扩充的索引管道创建的输出。 此外，本教程还介绍了如何检查索引器状态，以及在重新运行管道之前要删除的对象。
 
 ## <a name="clean-up-resources"></a>清理资源
 

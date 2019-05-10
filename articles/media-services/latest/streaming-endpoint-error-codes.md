@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务打包和源错误 |Microsoft Docs
-description: 本主题描述了可能会收到来自 Azure 媒体服务打包服务的错误。
+description: 本主题描述了可能会收到来自 Azure 媒体服务流式处理终结点 (Orgin) 服务的错误。
 author: Juliako
 manager: femila
 editor: ''
@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: e30c51ff3526bb5ed193b65b3f36a64c552024ff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204149"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411375"
 ---
-# <a name="media-services-packaging-errors"></a>媒体服务包装错误 
+# <a name="streaming-endpoint-origin-errors"></a>流式处理终结点 （来源） 错误 
 
-本主题介绍可能会收到 Azure 媒体服务中的错误[打包服务](streaming-endpoint-concept.md)。
+本主题介绍可能会收到 Azure 媒体服务中的错误[流式处理终结点服务](streaming-endpoint-concept.md)。
 
 ## <a name="400-bad-request"></a>400 错误请求
 
@@ -36,7 +36,7 @@ ms.locfileid: "65204149"
 
 ## <a name="403-forbidden"></a>403 禁止访问
 
-出于以下原因之一，不允许该请求：
+出于以下原因之一，未允许该请求：
 
 |错误代码|十六进制值 |错误说明|
 |---|---|---|
@@ -171,7 +171,7 @@ ms.locfileid: "65204149"
 
 ## <a name="500-internal-server-error"></a>500 内部服务器错误
 
-在处理请求期间，媒体服务会遇到一些阻止处理继续执行的错误。  
+在处理请求期间，媒体服务遇到了某种错误，从而阻止继续处理请求。  
 
 |错误代码|十六进制值 |错误说明|
 |---|---|---|
@@ -184,17 +184,17 @@ ms.locfileid: "65204149"
 
 ## <a name="503-service-unavailable"></a>503 服务不可用
 
-服务器当前无法接收请求。 导致此错误的可能原因是向服务发出了过多的请求。 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。
+服务器当前无法接收请求。 服务请求过多可能引发此错误。 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。
 
 > [!NOTE]
-> 查看错误消息和错误代码字符串，获取收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
+> 检查错误消息和错误代码字符串以获取有关收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
 > 
 
 |错误代码|十六进制值 |错误说明|
 |---|---|---|
 |MPE_STORAGE_SERVER_BUSY|0x808900E8|存储操作错误，接收到 HTTP 服务器繁忙错误 503。|
 
-## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、 提供反馈，获取更新
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
