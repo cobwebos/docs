@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7db73ff8bef553b36408cfae90e32014f875bd3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 39f323c2ac86e8d42319b3d99221f6c20beff3e4
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191005"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406685"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -36,10 +36,10 @@ ms.locfileid: "65191005"
 | [On-behalf-of](#on-behalf-of) | 具有应用程序调用服务/web API，这又需要调用另一个服务 /web API。 思路是通过请求链传播委托用户标识和权限。 | [Web API](scenario-web-api-call-api-overview.md) |
 | [客户端凭据](#client-credentials) | 可以使用的应用程序的标识访问 web 托管资源。 通常用于服务器到服务器必须运行在后台，而无需直接与用户交互的交互。 | [守护程序应用](scenario-daemon-overview.md) |
 | [设备代码](#device-code) | 允许用户登录到输入受限的设备，例如智能电视、 IoT 设备或打印机。 | [桌面/移动应用](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
-| [集成的 Windows 身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication) | 允许应用程序域或 Azure AD 加入的计算机来获取令牌以无提示方式 （无任何来自用户的用户界面交互）。| [桌面/移动应用](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
+| [Windows 集成身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication) | 允许应用程序域或 Azure AD 加入的计算机来获取令牌以无提示方式 （无任何来自用户的用户界面交互）。| [桌面/移动应用](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
 | [用户名/密码](scenario-desktop-acquire-token.md#username--password) | 允许应用程序以登录用户，通过直接处理其密码。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token.md#username--password) | 
 
-## <a name="interactive"></a>交互
+## <a name="interactive"></a>交互式
 Msal 也支持能够以交互方式提示用户输入其凭据以登录并获取使用这些凭据的令牌。
 
 ![交互式流](media/msal-authentication-flows/interactive.png)
@@ -126,7 +126,7 @@ MSAL.NET 支持两种类型的客户端凭据。 这些客户端凭据需要注�
 
 ![设备代码流](media/msal-authentication-flows/device-code.png)
 
-1. 每当用户身份验证是必需的应用程序提供的代码并要求用户使用其他设备 （如连接到 internet 的智能手机） 来导航到的 URL (例如， http://microsoft.com/devicelogin)，将提示用户输入的代码。 完成后，web 页面将引导用户完成了正常的身份验证体验，包括许可提示和多重身份验证，如有必要。
+1. 每当用户身份验证是必需的应用程序提供的代码并要求用户使用其他设备 （如连接到 internet 的智能手机） 来导航到的 URL (例如， https://microsoft.com/devicelogin)，将提示用户输入的代码。 完成后，web 页面将引导用户完成了正常的身份验证体验，包括许可提示和多重身份验证，如有必要。
 
 2. 身份验证成功后的命令行应用将收到通过返回通道所需的标记并将其用于执行其所需的 web API 调用。
 
@@ -138,10 +138,10 @@ MSAL.NET 支持两种类型的客户端凭据。 这些客户端凭据需要注�
   - 或者，任何工作和学校帐户 (`https://login.microsoftonline.com/organizations/`)。
 - Microsoft 个人帐户尚不支持通过 Azure AD v2.0 终结点 (不能使用`/common`或`/consumers`租户)。
 
-## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
+## <a name="integrated-windows-authentication"></a>集成 Windows 身份验证
 为桌面但 msal 也支持集成 Windows 身份验证 (IWA)，或在已加入域或 Azure AD 运行的移动应用程序已加入 Windows 计算机。 使用 IWA，这些应用程序可以获取令牌以无提示方式 （无任何来自用户的用户界面交互）。 
 
-![Windows 集成身份验证](media/msal-authentication-flows/integrated-windows-authentication.png)
+![集成 Windows 身份验证](media/msal-authentication-flows/integrated-windows-authentication.png)
 
 1. 获取使用集成 Windows 身份验证的令牌。
 2. 使用令牌发出请求的资源。
@@ -161,7 +161,7 @@ IWA 未跳过 MFA （多重身份验证）。 如果配置了 MFA，IWA 可能�
 因为 IWA 是无提示的流程：
 - 应用程序的用户必须具有此前已表示同意使用应用程序。 
 - 或者，租户管理员必须具有以前同意使用应用程序的租户中的所有用户。
-- 这意味着：
+- 这表示：
     - 或者您作为开发人员已按下**授予**自己，在 Azure 门户上的按钮 
     - 或租户管理员已按下**Grant/revoke {租户域} 的管理员同意**按钮**API 权限**选项卡上的应用程序的注册 (请参阅[将权限添加到访问 web Api](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis))
     - 或者，提供了用户同意应用程序的 (请参阅[请求单个用户同意](v2-permissions-and-consent.md#requesting-individual-user-consent))

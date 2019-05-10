@@ -163,6 +163,8 @@
         - name: 触发 Azure Functions
           displayName: change feed
           href: change-feed-functions.md
+    - name: 使用 Apache Spark 进行分析
+      href: spark-api-introduction.md
     - name: 服务器端编程
       items:
         - name: 存储过程、触发器和 UDF
@@ -462,10 +464,6 @@
           href: etcd-api-introduction.md
         - name: 将 Azure Kubernetes 与 Azure Cosmos DB 配合使用
           href: bootstrap-kubernetes-cluster.md
-    - name: Spark API
-      items:
-        - name: 介绍
-          href: spark-api-introduction.md
 - name: 操作指南
   items:
     - name: 管理 Azure Cosmos 帐户

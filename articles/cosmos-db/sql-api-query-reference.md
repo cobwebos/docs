@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 1d874b9c8f14b1489ab5e5b8bbdddaff0669165e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 186e0365ae8aee3b7f92fcc06142e4d0496ffd08
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145195"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415461"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB SQL 语言参考 
 
@@ -35,7 +35,7 @@ SELECT <select_specification>
     [ OFFSET <offset_amount> LIMIT <limit_amount>]
 ```  
   
- **备注**  
+ **注释**  
   
  有关每个子句的详细信息，请参阅以下部分。  
   
@@ -114,7 +114,7 @@ SELECT <select_specification>
 
   表示要计算的值的表达式。 请参阅[标量表达式](#bk_scalar_expressions)部分，了解详细信息。  
   
-**备注**  
+**注释**  
   
 只有当 FROM 子句已声明一个别名时，`SELECT *` 语法才有效。 `SELECT *` 提供一个标识投影，在不需要投影的情况下会有所帮助。 只有当指定了 FROM 子句，并且该字句只引入单个输入源时，SELECT * 才有效。  
   
@@ -202,7 +202,7 @@ FROM <from_specification>
   
   指定应通过访问由指定容器表达式检索的所有文档的 `property_name` 属性或 array_index 数组元素来检索文档。  
   
-**备注**  
+**注释**  
   
 `<from_source>(`) 中提供或推断的所有别名必须唯一。 语法 `<container_expression>.`property_name 等同于 `<container_expression>' ['"property_name"']'`。 但是，如果属性名称包含非标识符字符，则可以使用后一种语法。  
   
@@ -337,7 +337,7 @@ WHERE <filter_condition>
   
    表示要计算的值的表达式。 请参阅[标量表达式](#bk_scalar_expressions)部分，了解详细信息。  
   
-  **备注**  
+  **注释**  
   
   为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有当布尔值为 true 才可以满足条件，任何其他值：未定义、null、false、数字、数组或对象均不满足条件。  
   
@@ -375,7 +375,7 @@ ORDER BY <sort_specification>
   
    指定在指定列中的值应按升序或降序排序。 ASC 采用从最低值到最高值的顺序排序。 DESC 采用从最高值到最低值的顺序排序。 ASC 是默认的排序顺序。 NULL 值被视为可能的最低值。  
   
-  **备注**  
+  **注释**  
   
    ORDER BY 子句需要索引策略，包括正在排序的字段的索引。 Azure Cosmos DB 查询运行时支持排序与属性名和不是针对计算的属性。 Azure Cosmos DB 支持多个 ORDER BY 属性。 若要运行查询具有多个 ORDER BY 属性，则应定义[组合索引](index-policy.md#composite-indexes)上正在排序的字段。
 
@@ -401,7 +401,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
    指定查询结果中应包含的项的整数数目
 
-  **备注**  
+  **注释**  
   
   偏移量的限制子句中需要的偏移量计数和限制计数。 如果可选的`ORDER BY`子句使用时，结果集生成的执行跳过操作的有序的值。 否则，查询将返回值的固定的顺序。
 
@@ -490,7 +490,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
    表示指定参数名称的值。 参数名称必须以单个 \@ 作为第一个字符。  
   
-  **备注**  
+  **注释**  
   
   调用内置或用户定义的标量函数时，必须定义所有参数。 如果未定义任何参数，则不会调用该函数，且结果也将为未定义。  
   
@@ -545,11 +545,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 |未定义|不可比较。|  
 |Null|单个值：null|  
 |**Number**|自然实数。<br /><br /> 负无穷大值小于任何其他数字值。<br /><br /> 正无穷大值大于任何其他数字值。NaN 值不可比较。 与 NaN 进行比较将产生“未定义”值。|  
-|**字符串**|字典顺序。|  
+|**String**|字典顺序。|  
 |数组|不排序，但可以相等。|  
 |**Object**|不排序，但可以相等。|  
   
- **备注**  
+ **注释**  
   
  在 Cosmos DB 中，通常在数据库中检索到值时，才知道其类型。 为了支持高效地执行查询，大多数运算符都具有严格的类型要求。 此外运算符本身也不执行隐式转换。  
   
@@ -702,7 +702,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
     |标识符|标识符。 仅允许以下字符：a-z A-Z 0-9 _第一个字符不能为数字。|  
     |“字符串”|带引号的字符串。 允许任何有效的字符串。 请参阅 string_literal 的说明。|  
     |“符号”|属于语法的一部分的文本符号。|  
-    |&#124;（垂直条形图）|语法项的替代项。 只可使用其中一个指定的项。|  
+    |&#124;（垂直条）|语法项的替代项。 只可使用其中一个指定的项。|  
     |[ ] /（括号）|括号项可将一个或多个可选项括起来。|  
     |[ ,...n ]|表示前面的项可以重复 n 次。 匹配项由逗号分隔。|  
     |[ ...n ]|表示上述项可重复 n 次。 匹配项由空格分隔。|  
@@ -1082,7 +1082,7 @@ EXP (<numeric_expression>)
   
   返回一个数值表达式。  
   
-  **备注**  
+  **注释**  
   
   常数 e  (2.718281…) 是自然对数的底数。  
   
@@ -1192,7 +1192,7 @@ LOG10 (<numeric_expression>)
   
   返回一个数值表达式。  
   
-  **备注**  
+  **注释**  
   
   LOG10 和 POWER 函数互为反函数。 例如，10 ^ LOG10(n) = n。  
   
@@ -1307,7 +1307,7 @@ RADIANS (<numeric_expression>)
 SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
 ```  
   
- 结果集如下。  
+  结果集如下。  
   
 ```  
 [{  
@@ -1336,7 +1336,18 @@ ROUND(<numeric_expression>)
   
   返回类型  
   
-  返回数值表达式。  
+  返回一个数值表达式。  
+  
+  **注释**
+  
+  执行舍入运算遵循远离零方向舍入的中点。 如果输入是一个数值表达式，此范围恰好两个整数结果将是从零开始的最接近的整数值。  
+  
+  |<numeric_expression>|舍入|
+  |-|-|
+  |-6.5000|-7|
+  |-0.5|-1|
+  |0.5|第|
+  |6.5000|7||
   
   **示例**  
   
@@ -1346,7 +1357,7 @@ ROUND(<numeric_expression>)
 SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, ROUND(-2.6) AS r5  
 ```  
   
- 结果集如下。  
+  结果集如下。  
   
 ```  
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
@@ -3157,7 +3168,7 @@ GetCurrentDateTime ()
   
   有关 ISO 8601 格式的更多详细信息，请参阅[ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
-  **备注**
+  **注释**
 
   GetCurrentDateTime 是非确定性函数。 
   
@@ -3192,7 +3203,7 @@ GetCurrentTimestamp ()
   
   返回数值的当前已经过自 Unix epoch 起经过即 00:00:00 星期四，1 1970 年 1 月起经过的毫秒数的毫秒数。
 
-  **备注**
+  **注释**
 
   GetCurrentTimestamp 是非确定性函数。 
   

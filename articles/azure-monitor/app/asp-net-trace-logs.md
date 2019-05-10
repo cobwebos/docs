@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 74cb1b3ec4e0570aa4316e6f45e99719f36815d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150699"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472055"
 ---
 # <a name="explore-netnet-core-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 .NET/.NET Core 跟踪日志
 
@@ -147,7 +147,7 @@ NuGet 包安装必要的程序集，并修改 web.config 或 app.config，如果
 
 TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 例如，可在此处对 POST 数据进行编码。
 
-您还可以向您的消息添加严重性级别。 并像其他遥测一样，您可以添加属性值，以帮助筛选或搜索不同跟踪集。 例如：
+您还可以向您的消息添加严重性级别。 并像其他遥测一样，您可以添加属性值，以帮助筛选或搜索不同跟踪集。 例如:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
@@ -177,8 +177,8 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 使用 [Java 日志适配器](../../azure-monitor/app/java-trace-logs.md)。
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>项目上下文菜单上没有 Application Insights 选项
-* 请确保在开发计算机上安装了 Application Insights Tools。 在 Visual Studio**工具** > **扩展和更新**，寻找**Application Insights Tools**。 如果在不是**已安装**选项卡上，打开**联机**选项卡并将其安装。
-* 这可能是 Application Insights 工具不支持的项目类型。 使用[手动安装](#manual-installation)。
+* 请确保 Developer Analytics Tools 安装在开发计算机上。 在 Visual Studio**工具** > **扩展和更新**，寻找**Developer Analytics Tools**。 如果在不是**已安装**选项卡上，打开**联机**选项卡并将其安装。
+* 这可能是 Devloper 分析工具不支持的项目类型。 使用[手动安装](#manual-installation)。
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>配置工具中没有日志适配器选项
 * 首先安装日志记录框架。

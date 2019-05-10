@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: c8bc11b8f81fe034ceaa93c7bd8a49771d9407f9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025775"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237002"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
 
@@ -29,9 +29,11 @@ ms.locfileid: "65025775"
 
 |          | 循环的数组    |       |  线性数组              |                |
 |----------|-------------------|-------------------|----------------|----------------|
-|          |![7 mic 循环数组](media/speech-devices-sdk/7-mic-c.png)|![4 个 mic 循环数组](media/speech-devices-sdk/4-mic-c.png)|![4 个 mic 线性数组](media/speech-devices-sdk/4-mic-l.png)|![2 个 mic 线性数组](media/speech-devices-sdk/2-mic-l.png)|
+|          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
 | \# Mics  | 7                 | 4                 | 4              | 2              |
 | 几何图形 | 6 的外部，1 Center、 半径 = 42.5 mm，均匀分布| 3 个外部，1 Center、 半径 = 42.5 mm，均匀分布 | 长度 = 120 mm 间距 = 40 mm | 间距 = 40 mm |
+
+应根据为每个数组，从 0 增加上面所示的编号排序麦克风通道。  Microsoft 音频堆栈将需要执行回声抵消的音频播放的附加引用流。
 
 ## <a name="component-selection"></a>选择组件
 
@@ -110,4 +112,4 @@ ms.locfileid: "65025775"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> 详细了解[语音设备 SDK](speech-devices-sdk.md)
+> [了解有关语音设备 SDK 的详细信息](speech-devices-sdk.md)

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67016582149824c8deb83b54102190a57bd19383
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d372adf75d46fdedb7a6f2b17e47822475d1f155
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028795"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442362"
 ---
 # <a name="decision-forest-regression-module"></a>决策林回归模块
 
@@ -39,7 +39,7 @@ ms.locfileid: "65028795"
 
 此回归模型由决策树的系综构成。 在回归决策林的每个树输出为预测高斯分布。 若要在模型中找到高斯分布所有树的组合分布到最接近的树的系综通过执行聚合。
 
-有关此算法，其实现的理论框架的详细信息，请参阅这篇文章：[决策林：用于分类、 回归、 密度估计的统一的框架集管学习和半监督式的学习 ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+有关此算法，其实现的理论框架的详细信息，请参阅这篇文章：[决策林：用于分类、 回归、 密度估计的统一的框架集管学习和半监督式的学习](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>如何配置决策林回归模型
 
@@ -53,7 +53,7 @@ ms.locfileid: "65028795"
 
     - **复制**:在复制中，每个树训练，则完全相同的输入数据。 为每个树节点的拆分的使用谓词决定保持随机，树将不同。
 
-         有关定型过程的详细信息**复制**选项，请参阅[决策林以进行计算机视觉和医疗图像分析。Criminisi 和 J.Shotton。Springer 2013。](http://research.microsoft.com/projects/decisionforests/).
+         有关定型过程的详细信息**复制**选项，请参阅[决策林以进行计算机视觉和医疗图像分析。Criminisi 和 J.Shotton。Springer 2013。](https://research.microsoft.com/projects/decisionforests/).
 
 3. 指定要通过设置训练的模型的方式**创建训练器模式**选项。
 

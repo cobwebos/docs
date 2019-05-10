@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 0e5dc73c1f24ccbc2032cecbb857587eb20c6806
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 7c1a13a44d9db8ed029ce798f0bb34944a1a65a7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026204"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409058"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>设备:Roobo 智能音频的开发人员工具包
 
@@ -67,9 +67,9 @@ ms.locfileid: "65026204"
 
 有关开发的详细信息，请参阅[Roobo 开发指南](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)。
 
-## <a name="audio"></a>音频
+## <a name="audio"></a>收听验证码
 
-Roobo 提供捕获所有音频闪存的工具。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 上[Roobo 站点](http://ddk.roobo.com/)，选择你的设备，并选择**Roobo 工具**在页面底部的链接。
+Roobo 提供捕获所有音频闪存的工具。 它可能有助于排查音频问题。 已针对每个开发工具包配置提供该工具的一个版本。 上[Roobo 站点](https://ddk.roobo.com/)，选择你的设备，并选择**Roobo 工具**在页面底部的链接。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6e13ec3d822ba8a8cd2484f42ea81e615bae268
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d4b4c4cd4dbab10a9d4796a8393cc7f479b90cc4
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190986"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406767"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>在 MSAL.NET 中使用 web 浏览器
 Web 浏览器所需的交互式身份验证。 默认情况下，支持 MSAL.NET[系统 web 浏览器](#system-web-browser-on-xamarinios-and-xamarinandroid)Xamarin.iOS 上和[Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser)。 但是[还可以启用嵌入式 Web 浏览器](#enable-embedded-webviews)具体取决于您的要求 （用户体验，实现单一登录 (SSO)、 安全需要） 进行[Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)并[Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)应用程序。 甚至可以[动态选择](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)哪些 web 浏览器使用基于是否存在 Chrome 或浏览器支持在 Android 中的 Chrome 自定义选项卡。
@@ -122,7 +122,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 根据此方法，而且您的要求返回的值，可以做出决策：
 
-- 您可以自定义错误消息返回给用户。 例如："请安装 Chrome 继续进行身份验证"-或-
+- 您可以自定义错误消息返回给用户。 例如:"请安装 Chrome 继续进行身份验证"-或-
 - 可以故障回复到嵌入式 web 视图选项并启动作为嵌入式 web 视图 UI。
 
 下面的代码显示了嵌入式 web 视图选项：

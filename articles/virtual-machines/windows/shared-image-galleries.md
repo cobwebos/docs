@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: dab2926a7baffd0020ba417c9d6c897000d4841e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6c19f26cd382c89e7fdb90473581d256e762cf5e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151127"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236488"
 ---
 # <a name="shared-image-gallery-overview"></a>共享映像库概述
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: 0f1b5f424a71aeccd4b1e57129c0f5b22ff158af
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e8414b9737e0ee7f847827a432dd9887931a2532
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159385"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470394"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>教程：配置自动用户预配 Comeet 招聘软件
 
@@ -84,7 +84,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 ### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>若要配置自动用户在 Azure AD 中预配 Comeet 招聘软件：
 
-1. 登录到[Azure 门户](https://portal.azure.com)，然后选择**企业应用程序**，选择**所有应用程序**，然后选择**Comeet 招聘软件**.
+1. 登录到 [Azure 门户](https://portal.azure.com)。 选择**企业应用程序**，然后选择**的所有应用程序**。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -104,8 +104,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 6. 在中[Comeet 招聘软件管理控制台](https://app.comeet.co/)，导航到**Comeet > 设置 > 身份验证 > Microsoft Azure**，并将复制**机密令牌为你的公司**值设为**机密令牌**Azure AD 中的字段。
 
-    ![Comeet 招聘软件设置](./media/comeetrecruitingsoftware-provisioning-tutorial/secret-token-1.png)
-    
+    ![Comeet 招聘软件设置](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
 7. 填入步骤 5 中所示的字段后，单击**测试连接**以确保 Azure AD 可以连接到 Comeet 招聘软件。 如果连接失败，请确保你 Comeet 招聘软件的帐户具有管理员权限，然后重试。
 
@@ -119,11 +118,11 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 10. 下**映射**部分中，选择**Azure Active Directory 用户同步到 Comeet**。
 
-    ![Comeet 招聘软件设置](./media/comeetrecruitingsoftware-provisioning-tutorial/user-mappings.png)
+    ![Comeet 招聘软件用户映射](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
 11. 查看从 Azure AD 同步到 Comeet 招聘软件中的用户属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配 Comeet 招聘软件中以执行更新操作的用户帐户。 选择“保存”按钮以提交任何更改。
 
-    ![Comeet 招聘软件设置](./media/comeetrecruitingsoftware-provisioning-tutorial/user-mapping-attributes.png)
+    ![Comeet 招聘软件组属性](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
@@ -156,7 +155,3 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 * [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

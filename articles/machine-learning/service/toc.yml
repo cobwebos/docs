@@ -224,6 +224,9 @@
       items:
         - name: 创建机器学习管道
           href: how-to-create-your-first-pipeline.md
+        - name: 使用 Azure Pipelines 训练和部署 ML 模型
+          href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
+          mainContext: true
     - name: 管理资源配额
       displayName: limits
       href: how-to-manage-quotas.md

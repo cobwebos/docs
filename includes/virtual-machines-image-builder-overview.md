@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: b9b2461d888f37b7ae72a3e097d77856255d7e2e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160000"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416257"
 ---
 标准化的虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中的一致性。 映像通常包括预定义的安全和配置设置和必要的软件。 设置映像管道需要时间、 基础结构和安装过程中，但使用 Azure VM 映像生成器，只需提供简单的配置描述你的映像、 将其提交到服务，和生成，并分发映像。
  
@@ -20,7 +20,7 @@ Azure VM 映像生成器 （Azure 映像生成器），可以使用 Windows 或�
 > Azure 映像生成器目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="preview-features"></a>预览功能
+## <a name="preview-features"></a>预览版功能
 
 对于预览版，支持这些功能：
 
@@ -95,7 +95,7 @@ az role assignment create \
  
 映像生成器创建所需的 vm 使用 D1v2 VM 大小和存储和网络的 VM。 这些资源将持续的生成过程的持续时间和映像生成器已完成创建映像会被删除。 
  
-Azure 映像生成器会将映像分发到所选的区域，其中可能会产生网络出口费用。
+Azure 映像生成器将映像分发到你所选区域，这可能会导致网络出口费用。
  
 ## <a name="next-steps"></a>后续步骤 
  

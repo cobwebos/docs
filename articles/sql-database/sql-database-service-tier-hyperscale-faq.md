@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 55b18051f2376a59fa79b11cccc9e71cad5debbc
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/06/2019
+ms.openlocfilehash: 4f0691dcc8a0c4b0ebbfe26a49b75b86fa50f597
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067809"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236017"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL“超大规模”数据库的常见问题解答
 
@@ -73,11 +73,7 @@ ms.locfileid: "65067809"
 
 ### <a name="what-regions-currently-support-hyperscale"></a>哪些区域当前支持“超大规模”
 
-Azure SQL 数据库超大规模层目前已在以下区域：
-
-澳大利亚东部、 澳大利亚东南部、 巴西南部、 加拿大中部、 美国中部、 亚洲东部、 美国东部、 东部我们 2、 法国中部、 日本东部、 日本西部、 北部美国中部、 北欧、 南非北部、 美国中南部、 东南亚、 英国南部、 英国西部、 欧洲西部美国西部、 美国西部 2
-
-请参阅[Azure SQL 数据库的超大规模概述](sql-database-service-tier-hyperscale-faq.md)如果你需要访问另一个区域中的过程。
+Azure SQL 数据库超大规模层目前已在下列出的区域[Azure SQL 数据库的超大规模概述](sql-database-service-tier-hyperscale.md#regions)。
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>能否为每个逻辑服务器创建多个“超大规模”数据库
 
