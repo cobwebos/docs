@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 08d09680ee1797e73666c185f4430c7ef3079477
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5d410e1015b751743c171adabda1d5bcbe68b491
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153689"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541004"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
@@ -24,17 +24,19 @@ ms.locfileid: "65153689"
 
 此数据集具有大约 100 个方案的 chit 聊天中的多个角色，如专业版、 友好和 Witty 声音。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。  
 
-下面是一些示例不同的个性。 您可以看到所有个人设置数据集以及详细信息的个性[此处](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)。
+下面是一些示例不同的个性。 您可以看到所有个性[数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)明个性的详细信息。
+
+为用户查询的`When is your birthday?`，每个个性具有带样式的响应：
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|用户查询|专业版|友好|与红|
-|--|--|--|--|
-|`You are awesome`|`I aim to serve.`|`Aw, I'm blushing.`|`Flattery. I like it.`|
-|`Are you hungry?`|`I don't need to eat.`|`I only do food for thought.`|`Eating would require a lot of things I don't have. Like a digestive system. And silverware.`|
-|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`Those who can, do. Those who can't, don't sing.`|
-|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Definitely didn't see that coming!`|`Sure. Take me to city hall. See what happens.`|
-
-
+|个性|示例|
+|--|--|
+|专业的|年龄不会真正适用于我。|
+|友好|我真的没有年龄。|
+|与红|我是年龄免费。|
+|关注|我没有年龄。|
+|热情|我智能机器人应用程序，因此我没有年龄。|
+||
 
 > [!NOTE]
 > 聊天内容支持目前仅提供英文形式。 

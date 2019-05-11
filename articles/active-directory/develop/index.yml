@@ -6,7 +6,7 @@ metadata:
   description: 了解如何才能使用 Microsoft 标识平台来生成应用，以便采用所有 Microsoft 标识安全地进行用户登录，以及获取令牌来调用 Microsoft Graph、其他 Microsoft API 或者开发人员生成的 API。
   services: active-directory
   author: CelesteDG
-  manager: mtillman
+  manager: CelesteDG
   ms.service: active-directory
   ms.subservice: develop
   ms.tgt_pltfrm: na
