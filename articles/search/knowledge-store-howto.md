@@ -6,20 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
-ms.openlocfilehash: 2a904cfb049af413887798c8aab449561bc2b73f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d9006e3fcfc9691b9f3eec4b86c545fd3fea9f8a
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030045"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471745"
 ---
 # <a name="how-to-get-started-with-knowledge-store"></a>如何开始使用知识存储
 
 [知识存储](knowledge-store-concept-intro.md)是 Azure 搜索中新增的一项预览功能，可保存索引管道中创建的 AI 扩充，以便在其他应用中进行知识挖掘。 还可以使用已保存的扩充来了解和优化 Azure 搜索索引管道。
 
-知识存储是通过技能集进行定义。 对于常规的 Azure 搜索全文搜索方案，技能集旨在提供 AI 扩充，让内容更易于搜索。 对于知识存储方案，技能集的作用是创建并填充多个数据结构，以进行知识挖掘。
+知识存储是通过技能集进行定义。 对于常规的 Azure 搜索全文搜索方案，技能集旨在提供 AI 扩充，让内容更易于搜索。 对于知识挖掘方案，技能集的作用是创建、填充和存储多个数据结构，用于在其他应用和流程中进行分析或建模。
 
 在本练习中，你将从示例数据、服务和工具入手，了解创建和使用首个知识存储的基本工作流（以技能集定义为重点）。
 
@@ -29,13 +29,13 @@ ms.locfileid: "65030045"
 
 + [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。 
 
-+ [创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，用于存储示例数据。 知识存储位于 Azure 存储中。
++ [创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，用于存储示例数据。 知识存储位于 Azure 存储中。 
 
-+ 在 S0 即用即付层[创建认知服务资源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)，用于广泛访问 AI 扩充中使用的一整套技能。
++ 在 S0 即用即付层[创建认知服务资源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)，用于广泛访问 AI 扩充中使用的一整套技能。 此资源和你的 Azure 搜索服务需位于同一区域。
 
 + 使用 [Postman 桌面应用](https://www.getpostman.com/)，将请求发送到 Azure 搜索。
 
-+ [Postman 集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/caselaw)，其中包含创建数据源、索引、技能集和索引器的已准备请求。 多个对象定义太长，无法添加到本文中。 必须获取此集合，才能完整查看索引和技能集定义。
++ [Postman 集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Caselaw)，其中包含创建数据源、索引、技能集和索引器的已准备请求。 多个对象定义太长，无法添加到本文中。 必须获取此集合，才能完整查看索引和技能集定义。
 
 + [Caselaw 示例数据](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)，源自 [Caselaw Access Project](https://case.law/bulk/download/)“公共批量数据”下载页。 具体而言，本练习使用首次下载（“阿肯色州”）的前 10 个文档。 对于本练习，我们将包含 10 个文档的示例上传到了 GitHub 中。
 
@@ -55,7 +55,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. [登录到 Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”。
 
-1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 可以将“公共访问级别”设为任何有效值。
+1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 使用容器名称“caselaw-test”。 可将“公共访问级别”设为任何有效值。
 
 1. 创建容器后，将其打开，然后在命令栏中选择“上传”。
 
@@ -66,19 +66,19 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="set-up-postman"></a>设置 Postman
 
-启动 Postman 并设置 HTTP 请求。 如果不熟悉此工具，请参阅[使用 Postman 探索 Azure 搜索 REST API](search-fiddler.md) 了解详细信息。
+启动 Postman 并导入 Caselaw Postman 集合。 或者设置一系列 HTTP 请求。 如果不熟悉此工具，请参阅[使用 Postman 探索 Azure 搜索 REST API](search-fiddler.md) 了解详细信息。
 
-+ 本演练中的每个调用的请求方法都是 POST。
++ 本演练中每个调用的请求方法是 **PUT** 或 **POST**。
 + 请求头 (2) 包括以下内容：“Content-type”设置为“application/json”，“api-key”设置为“管理密钥”（“管理密钥”是搜索主密钥的占位符）。 
 + 请求正文是调用的实际内容所在的位置。 
 
   ![半结构化搜索](media/search-semi-structured-data/postmanoverview.png)
 
-我们将使用 Postman 向搜索服务发出四个 API 调用，以创建数据源、索引、技能集和索引器。 数据源包含指向存储帐户和 JSON 数据的指针。 搜索服务在导入数据时建立连接。
+我们将使用 Postman 向搜索服务发出四个 API 调用，以依次创建数据源、索引、技能集和索引器。 数据源包含指向 Azure 存储帐户和 JSON 数据的指针。 搜索服务在导入数据时建立连接。
 
 [创建技能集](#create-skillset)是本演练的重点，它指定了扩充步骤，以及如何将数据暂留在知识存储中。
 
-URL 终结点必须指定 api-version，并且每个调用都应返回“201 已创建”。 用于创建支持知识存储的技能集的预览版 api-version 是 `2019-05-06-Preview`。
+URL 终结点必须指定 api-version，并且每个调用都应返回“201 已创建”。 用于创建支持知识存储的技能集的预览版 api-version 是 `2019-05-06-Preview`（区分大小写）。
 
 在 REST 客户端中，执行以下 API 调用。
 
@@ -101,10 +101,10 @@ URL 终结点必须指定 api-version，并且每个调用都应返回“201 已
         "type": "azureblob",
         "subtype": null,
         "credentials": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your storage key>;EndpointSuffix=core.windows.net"
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
         },
         "container": {
-            "name": "<your blob container name>",
+            "name": "<YOUR-BLOB-CONTAINER-NAME>",
             "query": null
         },
         "dataChangeDetectionPolicy": null,
@@ -318,24 +318,23 @@ URL 终结点必须指定 api-version，并且每个调用都应返回“201 已
    }
    ```
 
-3. 首先，设置 `cognitiveServices` 和 `knowledgeStore` 密钥以及连接字符串。 在此示例中，这些字符串位于技能集定义后面，靠近请求正文末尾。
+3. 首先，设置 `cognitiveServices` 和 `knowledgeStore` 密钥以及连接字符串。 在此示例中，这些字符串位于技能集定义后面，靠近请求正文末尾。 使用在 S0 层预配的、位于 Azure 搜索所在的同一区域中的认知服务资源。
 
     ```json
     "cognitiveServices": {
         "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-        "description": "<your cognitive services resource name>",
-        "key": "<your cognitive services key>"
+        "description": "YOUR-SAME-REGION-S0-COGNITIVE-SERVICES-RESOURCE",
+        "key": "YOUR-COGNITIVE-SERVICES-KEY"
     },
     "knowledgeStore": {
-        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your storage account name>;AccountKey=<your storage account key>;EndpointSuffix=core.windows.net",
+        "storageConnectionString": "YOUR-STORAGE-ACCOUNT-CONNECTION-STRING",
     ```
 
 3. 查看技能集合，特别是第 85 行和第 170 行上的整形程序技能。 整形程序技能非常重要，因为它汇编要用于知识挖掘的数据结构。 在技能集执行期间，这些结构仅在内存中，但在转到下一步时，你便会了解如何将此输出保存到知识存储中，以供进一步探索。
 
-   下面的代码片段截取自第 207 行。 
+   下面的代码片段截取自第 217 行。 
 
     ```json
-    {
     "name": "Opinions",
     "source": null,
     "sourceContext": "/document/casebody/data/opinions/*",
@@ -361,44 +360,46 @@ URL 终结点必须指定 api-version，并且每个调用都应返回“201 已
                     "name": "EntityType",
                     "source": "/document/casebody/data/opinions/*/text/pages/*/entities/*/category"
                 }
-             ]
-          }
-     ]
-   }
+            ]
+        }
+    ]
    . . .
    ```
 
-3. 查看 `knowledgeStore` 中的 `projections` 元素（从第 253 行开始）。 投影指定知识存储组合。 投影是在表对象对中进行指定，但目前一次只能指定一个。 正如首个投影所示，`tables` 已指定，但 `objects` 未指定。 在第二个投影中，正好相反。
+3. 查看 `knowledgeStore` 中的 `projections` 元素（从第 262 行开始）。 投影指定知识存储组合。 投影是在表对象对中进行指定，但目前一次只能指定一个。 正如首个投影所示，`tables` 已指定，但 `objects` 未指定。 在第二个投影中，正好相反。
 
    在 Azure 存储中，表是在你创建的每个表的表存储中进行创建，并且每个对象在 Blob 存储中都有一个容器。
 
-   对象通常包含扩充的完整表达式。 表通常包含部分扩充，采用按特定用途排列的组合形式。 此示例显示“事例”表，但不显示“实体”、“评判”和“观点”等其他表。
+   Blob 对象通常包含扩充的完整表达式。 表通常包含部分扩充，采用按特定用途排列的组合形式。 此示例显示了 Cases 表和 Opinions 表，但未显示 Entities、Attorneys、Judges 和 Parties 等其他表。
 
     ```json
     "projections": [
-    {
-        "tables": [
-            {
-              "tableName": "Opinions",
-              "generatedKeyName": "OpinionId",
-              "source": "/document/Case/OpinionsSnippets/*"
-            },
-          . . . 
-        ],
-        "objects": []
-    },
-    {
-        "tables": [],
-        "objects": [
-            {
-                "storageContainer": "enrichedcases",
-                "key": "/document/CaseFull/Id",
-                "source": "/document/CaseFull"
-            }
-          ]
+        {
+            "tables": [
+                {
+                    "tableName": "Cases",
+                    "generatedKeyName": "CaseId",
+                    "source": "/document/Case"
+                },
+                {
+                    "tableName": "Opinions",
+                    "generatedKeyName": "OpinionId",
+                    "source": "/document/Case/OpinionsSnippets/*"
+                }
+            ],
+            "objects": []
+        },
+        {
+            "tables": [],
+            "objects": [
+                {
+                    "storageContainer": "enrichedcases",
+                    
+                    "source": "/document/CaseFull"
+                }
+            ]
         }
-      ]
-    }
+    ]
     ```
 
 5. 发送请求。 响应应为“201”，如下面的示例（展示响应的第一个部分）所示。

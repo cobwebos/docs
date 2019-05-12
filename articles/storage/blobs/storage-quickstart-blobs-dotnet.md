@@ -6,15 +6,15 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/14/2018
+ms.date: 05/09/2019
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 0b7a7ac7b8a71f33871247a1117c16609bbbcd88
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2728ac93abd18f929dc6e82cfb471ce33fe8866f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191060"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508028"
 ---
 # <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>快速入门：使用 .NET 在对象存储中创建 blob
 
@@ -24,7 +24,7 @@ ms.locfileid: "65191060"
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-接下来，请下载并安装适用于操作系统的 .NET Core 2.0。 如果运行的是 Windows，可以安装 Visual Studio 并根据偏好使用 .NET Framework。 也可选择安装一个可以在操作系统中使用的编辑器。
+接下来，请下载并安装适用于操作系统的 .NET Core 2.1。 如果运行的是 Windows，可以安装 Visual Studio 并根据偏好使用 .NET Framework。 也可选择安装一个可以在操作系统中使用的编辑器。
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -288,8 +288,8 @@ File.Delete(destinationFile);
 
 ### <a name="binaries-and-source-code"></a>二进制文件和源代码
 
-- 下载 Azure 存储的最新版 [.NET 客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)的 NuGet 包。
-- 查看 GitHub 上的 [.NET 客户端库源代码](https://github.com/Azure/azure-storage-net)。
+- 下载 Azure Blob 存储的最新版 [.NET 客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)的 NuGet 包。
+- 查看 GitHub 上的[适用于 .NET 的 Microsoft Azure 存储 Blob SDK 源代码](https://github.com/Azure/azure-storage-net/tree/master/Blob)。
 
 ### <a name="client-library-reference-and-samples"></a>客户端库参考和示例
 
@@ -300,10 +300,10 @@ File.Delete(destinationFile);
 
 本快速入门介绍了如何使用 .NET 上传、下载和列出 Blob。
 
-若要了解如何创建一个 Web 应用，以便将映像上传到 Blob 存储，请继续学习[使用 Azure 存储将映像数据上传到云中](storage-upload-process-images.md)。
+若要了解如何创建一个 Web 应用，以便将映像上传到 Blob 存储，请继续学习：
 
 > [!div class="nextstepaction"]
-> [Blob 存储操作说明](storage-dotnet-how-to-use-blobs.md)
+> [上传和处理图像](storage-upload-process-images.md)
 
 - 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://www.microsoft.com/net/learn/get-started/)（.NET 10 分钟入门）。
 - 若要了解可以通过用于 Windows 的 Visual Studio 部署的示例应用程序，请参阅 [.NET Photo Gallery Web Application Sample with Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)（.NET 照片库 Web 应用程序示例与 Azure Blob 存储）。
