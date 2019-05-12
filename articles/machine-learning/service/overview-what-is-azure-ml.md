@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 201ee251b195845e33ed3829be8540664811f2ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c9ebacd8caf992874969106df58531538ea399ed
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025281"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510437"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -38,7 +38,7 @@ Azure 机器学习服务提供了一个基于云的环境，你可以使用这�
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>通过 Azure 机器学习服务，我可以执行哪些操作？
 
-将 <a href="https://aka.ms/aml-sdk" target="_blank">Azure 机器学习 Python SDK</a> 与开源 Python 包配合使用时，或者在使用[可视界面（预览版）](ui-quickstart-run-experiment.md)时，你自己就可以在 Azure 机器学习服务工作区中生成并训练高度精确的机器学习和深度学习模型。
+将 <a href="https://aka.ms/aml-sdk" target="_blank">Azure 机器学习 Python SDK</a> 与开源 Python 包配合使用，或者使用[可视界面（预览版）](ui-quickstart-run-experiment.md)，你自己可以在 Azure 机器学习服务工作区中生成并训练高度精确的机器学习和深度学习模型。
 
 可以从开源 Python 包中提供的许多机器学习组件（例如 <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>、<a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>、<a href="https://pytorch.org" target="_blank">PyTorch</a> 和 <a href="https://mxnet.io" target="_blank">MXNet</a>）中进行选择。
 
@@ -106,8 +106,6 @@ Azure 机器学习服务提供 SDK **和**可视界面（预览版），可以�
 - 按照完整的教程进行操作： 
   + [使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md) 
   + [准备数据并使用自动化机器学习来自动训练回归模型](tutorial-data-prep.md)
-
-- 使用 [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk) 准备数据。
 
 - 了解[机器学习管道](/azure/machine-learning/service/concept-ml-pipelines)，以便生成、优化和管理机器学习方案。
 

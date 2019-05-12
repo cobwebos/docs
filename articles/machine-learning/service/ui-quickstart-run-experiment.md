@@ -9,16 +9,16 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 985ad59a1ffa5bd68f97824f7f50af604174b543
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030055"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65440947"
 ---
-# <a name="quickstart-prepare-and-visualize-data-without-writing-code"></a>快速入门：在不编写代码的情况下准备数据并将其可视化
+# <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>快速入门：在 Azure 机器学习中在不编写代码的情况下准备数据并将其可视化
 
-使用拖放式用户界面准备数据并将其可视化。 将要使用的数据包含各种个人汽车的条目，包括制造商、车型、技术规格、价格等信息。  
+在 Azure 机器学习的拖放可视界面（预览版）中准备数据并将其可视化。 将要使用的数据包含各种个人汽车的条目，包括制造商、车型、技术规格、价格等信息。  
 
 在本快速入门中，我们将浏览并准备数据：
 

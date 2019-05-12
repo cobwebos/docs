@@ -11,14 +11,16 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: ee7649dccf1ca50933e29cec9d40e4f5e16bd721
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e2b25875a0dff12bba32b033bca0c35394d407aa
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074103"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465639"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>快速入门：使用语音 SDK 创建语音优先虚拟助手 (UWP)
+
+针对[语音转文本](quickstart-csharp-uwp.md)和[语音翻译](quickstart-translate-speech-uwp.md)也提供了快速入门。
 
 在本文中，你将使用[语音 SDK](speech-sdk.md) 开发一个 C# 通用 Windows 平台 (UWP) 应用程序。 该程序将连接到先前创作并配置的机器人，以从客户端应用程序启用语音优先虚拟助手体验。 该应用程序使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017（任何版本）生成。
 
@@ -80,16 +82,16 @@ ms.locfileid: "65074103"
             <MediaElement x:Name="mediaElement"/>
         </Grid>
     </Page>
-        ```
+    ```
 
-1. Open the code-behind source file `MainPage.xaml.cs`. You'll find it grouped under `MainPage.xaml`. Replace the contents with the code below. Here's what this sample covers: 
+1. 打开代码隐藏源文件 `MainPage.xaml.cs`。 你会发现它分组到 `MainPage.xaml` 下。 将内容替换为以下代码。 下面是此示例包含的内容： 
 
-    * Using statements for the Speech and Speech.Dialog namespaces
-    * A simple implementation to ensure microphone access, wired to a button handler
-    * Basic UI helpers to present messages and errors in the application
-    * A landing point for the initialization code path that will be populated later
-    * A helper to play back text-to-speech (without streaming support)
-    * An empty button handler to start listening that will be populated later
+    * 针对 Speech 和 Speech.Dialog 命名空间的 Using 语句
+    * 一个绑定到按钮处理程序的简单实现，用于确保麦克风访问
+    * 基本的 UI 帮助程序，用于在应用程序中提供消息和错误
+    * 初始化代码路径的登陆点，稍后将填充
+    * 用于播放文本转语音的帮助程序（没有流式处理支持）
+    * 一个用于启动侦听的空的按钮处理程序，稍后将填充
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -239,7 +241,7 @@ ms.locfileid: "65074103"
             }
         }
     }
-     ```
+    ```
 
 1. 接下来，使用订阅信息创建 `SpeechBotConnector`。 将以下代码添加到 `InitializeBotConnector` 的方法正文，并将字符串 `YourChannelSecret`、`YourSpeechSubscriptionKey` 和 `YourServiceRegion` 分别替换为自己的机器人、语音订阅和[区域](regions.md)值。
 

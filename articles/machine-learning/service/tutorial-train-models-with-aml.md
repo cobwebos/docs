@@ -1,23 +1,23 @@
 ---
 title: 图像分类教程：训练模型
 titleSuffix: Azure Machine Learning service
-description: 本教程介绍如何使用 Azure 机器学习服务在 Python Jupyter notebook 中使用 scikit-learn 训练映像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
+description: 学习如何使用 Azure 机器学习服务在 Python Jupyter notebook 中使用 scikit-learn 训练映像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 04/25/2019
+ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 712b5a003d3542908698d7b69c636780f6cf1007
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 097fb3422ce3868d9ef499ad6c92c8b7fa12e852
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021725"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442065"
 ---
-# <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务定型图像分类模型
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 
 在本教程中，你将在远程计算资源上训练一个机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习服务（预览）的定型和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
 

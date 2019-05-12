@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: c1b86199f13454f4785a6737b25e489d45dd53f8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b62a2690e5879e45a14d0b06a38e8c5171dda14e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027543"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442335"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>展示如何使用开放数据集来扩充数据的示例 Jupyter 笔记本 
 使用 Azure 开放数据集的示例 Jupyter 笔记本展示了如何加载开放数据集，并使用它们来扩充演示数据。 所涉及的技术包括使用 Apache Spark 和 Pandas 来处理数据。

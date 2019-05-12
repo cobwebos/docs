@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: yinhew
-ms.openlocfilehash: 211394186fe8fc0fd1514a5ce1dbc1e0efc10b7e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b5db21d40f1e270fb6771ba47af28a9e90228ea4
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020608"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465588"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>快速入门：在 Linux 上使用语音 SDK 通过 C++ 合成语音
+
+针对[语音识别](quickstart-cpp-linux.md)也提供了快速入门。
 
 在本文中，你将创建一个适用于 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）的 C++ 控制台应用程序。 使用认知服务[语音 SDK](speech-sdk.md) 实时从文本合成语音，并在电脑的扬声器上播放语音。 该应用程序是通过[适用于 Linux 的语音 SDK](https://aka.ms/csspeech/linuxbinary) 和你的 Linux 发行版的 C++ 编译器（例如 `g++`）构建的。
 

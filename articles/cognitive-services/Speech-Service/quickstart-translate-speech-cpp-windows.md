@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 9187863234dd62757efecf6f0817ff00da48064a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bf07e6a2daac7889e11df2cb5d689daef44266f9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685549"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465657"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>快速入门：使用适用于 C++ 的语音 SDK 翻译语音
+
+针对[语音识别](quickstart-cpp-windows.md)和[文本转语音](quickstart-text-to-speech-cpp-windows.md)也提供了快速入门。
 
 在本快速入门中，你将创建一个简单的 C++ 应用程序，该应用程序从计算机的麦克风中捕获用户语音，翻译语音，并将翻译后的文本实时转录到命令行。 此应用程序设计为在 64 位 Windows 上运行，并使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017 构建。
 

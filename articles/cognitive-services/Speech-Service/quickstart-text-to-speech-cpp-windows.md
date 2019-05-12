@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
-ms.openlocfilehash: a9613f0839735457cf172fdacb0ef6a943ca27de
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 7e9aebd3a49182f84e05473da9ed166499f34a28
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020804"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465708"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 上的 C++ 中合成语音
+
+针对[语音识别](quickstart-cpp-windows.md)和[语音翻译](quickstart-translate-speech-cpp-windows.md)也提供了快速入门。
 
 在本文中，请创建适用于 Windows 的 C++ 控制台应用程序。 使用认知服务[语音 SDK](speech-sdk.md) 实时从文本合成语音，并在电脑的扬声器上播放语音。 该应用程序是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017（任何版本）构建的。
 
