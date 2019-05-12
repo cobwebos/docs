@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: assafi
-ms.openlocfilehash: e7b07472623cc459c31906aeaa6ccfb4388b4b50
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c521be03f884227116a21c8c5396d47cdd1ae253
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146091"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466540"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 C# 调用文本分析认知服务
 <a name="HOLTop"></a>
@@ -136,17 +136,11 @@ ms.locfileid: "65146091"
 ## <a name="sentiment-analysis"></a>情绪分析
 
 1. 创建名为 `SentimentAnalysisExample()` 的新函数，该函数使用以前创建的客户端。
-2. 创建使用 `ApiKeyServiceClientCredentials` 作为参数的新 `TextAnalyticsClient` 对象，然后生成 `MultiLanguageInput` 对象（包含需要分析的文档）的列表。
+2. 生成 `MultiLanguageInput` 对象的列表，其中包含你要分析的文档。
 
     ```csharp
-    public static async Task SentimentAnalysisExample(string endpoint, string key)
+    public static async Task SentimentAnalysisExample(TextAnalyticsClient client)
     {
-        var credentials = new ApiKeyServiceClientCredentials(key);
-        var client = new TextAnalyticsClient(credentials)
-        {
-            Endpoint = endpoint
-        };
-
         // The documents to be analyzed. Add the language of the document. The ID can be any value.
         var inputDocuments = new MultiLanguageBatchInput(
             new List<MultiLanguageInput>
@@ -184,16 +178,11 @@ Document ID: 4 , Sentiment Score: 1.00
 ## <a name="language-detection"></a>语言检测
 
 1. 创建名为 `DetectLanguageExample()` 的新函数，该函数使用以前创建的客户端。
-2. 创建使用 `ApiKeyServiceClientCredentials` 作为参数的新 `TextAnalyticsClient` 对象，然后生成 `LanguageInput` 对象（包含文档）的列表。
+2. 生成 `LanguageInput` 对象的列表，其中包含你的文档。
 
     ```csharp
-    public static async Task DetectLanguageExample(string endpoint, string key)
+    public static async Task DetectLanguageExample(TextAnalyticsClient client)
     {
-        var credentials = new ApiKeyServiceClientCredentials(key);
-        var client = new TextAnalyticsClient(credentials)
-        {
-            Endpoint = endpoint
-        };
 
         // The documents to be submitted for language detection. The ID can be any value.
         var inputDocuments = new LanguageBatchInput(
@@ -231,16 +220,11 @@ Document ID: 3 , Language: Chinese_Simplified
 ## <a name="entity-recognition"></a>实体识别
 
 1. 创建名为 `RecognizeEntitiesExample()` 的新函数，该函数使用以前创建的客户端。
-2. 创建使用 `ApiKeyServiceClientCredentials` 作为参数的新 `TextAnalyticsClient` 对象，然后生成 `MultiLanguageBatchInput` 对象（包含文档）的列表。
+2. 生成 `MultiLanguageBatchInput` 对象的列表，其中包含你的文档。
 
     ```csharp
-    public static async Task RecognizeEntitiesExample(string endpoint, string key)
+    public static async Task RecognizeEntitiesExample(TextAnalyticsClient client)
     {
-        var credentials = new ApiKeyServiceClientCredentials(key);
-        var client = new TextAnalyticsClient(credentials)
-        {
-            Endpoint = endpoint
-        };
 
         // The documents to be submitted for entity recognition. The ID can be any value.
         var inputDocuments = new MultiLanguageBatchInput(
@@ -309,17 +293,11 @@ Document ID: 2
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
 1. 创建名为 `KeyPhraseExtractionExample()` 的新函数，该函数使用以前创建的客户端。
-2. 创建使用 `ApiKeyServiceClientCredentials` 作为参数的新 `TextAnalyticsClient` 对象，然后生成 `MultiLanguageBatchInput` 对象（包含文档）的列表。
+2. 生成 `MultiLanguageBatchInput` 对象的列表，其中包含你的文档。
 
     ```csharp
-    public static async Task KeyPhraseExtractionExample(string endpoint, string key)
+    public static async Task KeyPhraseExtractionExample(TextAnalyticsClient client)
     {
-        var credentials = new ApiKeyServiceClientCredentials(key);
-        var client = new TextAnalyticsClient(credentials)
-        {
-            Endpoint = endpoint
-        };
-
         var inputDocuments = new MultiLanguageBatchInput(
                     new List<MultiLanguageInput>
                     {

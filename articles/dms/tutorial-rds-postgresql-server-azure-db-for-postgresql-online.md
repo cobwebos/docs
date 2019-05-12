@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 3f1ab5c2cb30dd4067c07833529e6a6a0c71e286
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: 1ee4d546ce823f48a597331276813b42d91e01e4
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136661"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415985"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>教程：使用 DMS 以将 RDS PostgreSQL 联机迁移到 Azure Database for PostgreSQL
 
@@ -50,10 +50,10 @@ ms.locfileid: "65136661"
     另外，RDS PostgreSQL 版本必须与 Azure Database for PostgreSQL 版本相符。 例如，RDS PostgreSQL 9.5.11.5 只能迁移到 Azure Database for PostgreSQL 9.5.11，不能迁移到 9.6.7 版本。
 
     > [!NOTE]
-    > 对于 PostgreSQL 版本 10，DMS 目前仅支持将版本 10.3 迁移到 Azure Database for PostgreSQL。 不久之后，即可支持较新版本的 PostgreSQL。
+    > 对于 PostgreSQL 版本 10，DMS 目前仅支持将版本 10.3 迁移到 Azure Database for PostgreSQL。
 
 * 创建 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) 的实例。 有关如何使用 pgAdmin 连接到 PostgreSQL 服务器的详细信息，请参阅此文档[部分](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin)。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 * 请确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 PostgreSQL 服务器（默认情况下为 TCP 端口 5432）。
@@ -74,13 +74,13 @@ ms.locfileid: "65136661"
 1. 从源数据库提取架构并将其应用到目标数据库，以完成所有数据库对象（例如表架构、索引和存储过程）的迁移。
 
     仅迁移架构的最简单方法是结合 -s 选项使用 pg_dump。 有关详细信息，请参阅 Postgres pg_dump 教程中的[示例](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES)。
-    
+
     ```
     pg_dump -o -h hostname -U db_username -d db_name -s > your_schema.sql
     ```
-    
+
     例如，若要转储 **dvdrental** 数据库的架构文件，请使用以下命令：
-    
+
     ```
     pg_dump -o -h localhost -U postgres -d dvdrental -s  > dvdrentalSchema.sql
     ```
@@ -108,8 +108,8 @@ ms.locfileid: "65136661"
     SET group_concat_max_len = 8192;
         SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
         FROM
-        (SELECT 
-        KCU.REFERENCED_TABLE_SCHEMA as SchemaName,    
+        (SELECT
+        KCU.REFERENCED_TABLE_SCHEMA as SchemaName,
         KCU.TABLE_NAME,
         KCU.COLUMN_NAME,
         CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
@@ -121,7 +121,7 @@ ms.locfileid: "65136661"
       AND KCU.REFERENCED_TABLE_SCHEMA = 'sakila') Queries
       GROUP BY SchemaName;
     ```
-        
+
 5. 运行查询结果中的 drop foreign key（第二列），以删除外键。
 
 6. 如果数据中包含触发器（insert 或 update 触发器），该触发器会在从源复制数据之前在目标中强制实施数据完整性。 建议在迁移期间禁用目标的所有表中的触发器，然后在迁移完成后再启用这些触发器。
@@ -252,7 +252,7 @@ ms.locfileid: "65136661"
 1. 如果准备完成数据库迁移，请选择“启动直接转换”。
 
     ![开始交接](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-start-cutover.png)
- 
+
 2. 确保停止传入源数据库的所有事务；等到“挂起的更改”计数器显示 **0**。
 3. 选择“确认”，然后选择“应用”。
 4. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure Database for PostgreSQL 数据库。
@@ -261,6 +261,6 @@ ms.locfileid: "65136661"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解 Azure 数据库迁移服务，请参阅[什么是 Azure 数据库迁移服务？](https://docs.microsoft.com/azure/dms/dms-overview)一文。
-- 有关 Azure Database for PostgreSQL 的信息，请参阅[什么是 Azure Database for PostgreSQL？](https://docs.microsoft.com/azure/postgresql/overview)一文。
-- 如有其他问题，请向[咨询 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)别名发送电子邮件。
+* 若要了解 Azure 数据库迁移服务，请参阅[什么是 Azure 数据库迁移服务？](https://docs.microsoft.com/azure/dms/dms-overview)一文。
+* 有关 Azure Database for PostgreSQL 的信息，请参阅[什么是 Azure Database for PostgreSQL？](https://docs.microsoft.com/azure/postgresql/overview)一文。
+* 如有其他问题，请向[咨询 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)别名发送电子邮件。

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 550755b1215dd25045845d78ab3d6248ef840062
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c62ad66a29943e26d1cb2f15ca71631d2feabe3
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705951"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467432"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -93,6 +93,9 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
     | 资源组 | 选择“使用现有资源组”，然后选择“myResourceGroup” |
 
     创建存储帐户可能需要大约一分钟的时间。 在创建好存储帐户之前，请勿继续执行剩余的步骤。 如果使用现有的存储帐户而不是创建一个，请确保在存储帐户的“设置”下针对“防火墙和虚拟网络”选择了“所有网络”（默认设置）。
+    
+    > [!NOTE]
+    > 虽然 Azure 存储当前支持 Microsoft.Insight 和 Microsoft.Network 提供程序，但 NSG 流日志尚未完全上线。 在此功能完全上线之前，若要启用 NSG 流日志记录，还必须选择“所有网络”。 
 4. 在门户左上角选择“所有服务”。 在“筛选器”框中，键入“网络观察程序”。 搜索结果中出现“网络观察程序”后，将其选中。
 5. 在“日志”下选择“NSG 流日志”，如下图所示：
 

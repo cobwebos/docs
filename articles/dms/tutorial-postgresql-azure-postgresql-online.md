@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 67212986e0478a03ac2ef1b5f30488cc1c7f869d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: d7bd2555753df4c12404844c86be8f0339d88e23
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137418"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415689"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>教程：使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL
 
@@ -24,7 +24,6 @@ ms.locfileid: "65137418"
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
-
 > * 使用 pg_dump 实用程序迁移示例架构。
 > * 创建 Azure 数据库迁移服务的实例。
 > * 使用 Azure 数据库迁移服务创建迁移项目。
@@ -46,10 +45,10 @@ ms.locfileid: "65137418"
     另外，本地 PostgreSQL 版本必须与 Azure Database for PostgreSQL 版本相符。 例如，PostgreSQL 9.5.11.5 只能迁移到 Azure Database for PostgreSQL 9.5.11，不能迁移到 9.6.7 版本。
 
     > [!NOTE]
-    > 对于 PostgreSQL 版本 10，DMS 目前仅支持将版本 10.3 迁移到 Azure Database for PostgreSQL。 不久之后，即可支持较新版本的 PostgreSQL。
+    > 对于 PostgreSQL 版本 10，DMS 目前仅支持将版本 10.3 迁移到 Azure Database for PostgreSQL。
 
 * [在 Azure Database for PostgreSQL 中创建实例](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。  
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
     > 在 VNet 设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
@@ -65,6 +64,7 @@ ms.locfileid: "65137418"
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 * 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNet 子网范围。
 * 可以通过两种方法来调用 CLI：
+
     * 在 Azure 门户右上角选择“Cloud Shell”按钮：
 
        ![Azure 门户中的“Cloud Shell”按钮](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
@@ -210,6 +210,7 @@ ms.locfileid: "65137418"
    ```
 
    例如，以下命令会创建一项具有下述参数的服务：
+
    * 位置：美国东部 2
    * 订阅：97181df2-909d-420b-ab93-1bff15acb6b7
    * 资源组名称：PostgresDemo

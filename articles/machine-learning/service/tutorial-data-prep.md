@@ -11,16 +11,16 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6e7aa231cabea9fbd76cd028f9fdc698a4dac5d6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025093"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470268"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
-本教程介绍如何准备数据，以便使用[适用于 Python 的 Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk) 进行回归建模。 运行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。
+在本教程中，你将学习如何使用 [Azure 机器学习数据准备包](https://aka.ms/data-prep-sdk)来为回归建模准备数据。 运行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。
 
 本教程是由两个部分构成的系列教程的第一部分。 完成这一系列的教程以后，即可根据数据特性训练一个模型，以便预测出租车打车费用。 这些特性包括上车日期和时间、乘客数和上车位置。
 

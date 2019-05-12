@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: e92c0b5e02daf08100151e15314399722ffc8763
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: 409fa3a501b80e225fff299980f374f73f0dbf13
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148795"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415732"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 
@@ -37,25 +37,26 @@ ms.locfileid: "65148795"
 > 为获得最佳迁移体验，Microsoft 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
 
 ## <a name="prerequisites"></a>先决条件
+
 要完成本教程，需要：
 
 * 下载并安装 [MySQL 社区版](https://dev.mysql.com/downloads/mysql/) 5.6 或 5.7。 本地 MySQL 版本必须与 Azure Database for MySQL 版本相符。 例如，MySQL 5.6 只能迁移到 Azure Database for MySQL 5.6，不能升级到 5.7。
 * [在 Azure Database for MySQL 中创建一个实例](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)。 有关如何使用 Azure 门户连接和创建数据库的详细信息，请参阅[使用 MySQL Workbench 进行连接并查询数据](https://docs.microsoft.com/azure/mysql/connect-workbench)一文。  
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNET)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在 VNET 设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+    > 在 VNet 设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
     > * 服务总线终结点
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
 
-* 请确保 VNET 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
+* 请确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 MySQL Server（默认情况下为 TCP 端口 3306）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
-* 为 Azure Database for MySQL 创建服务器级[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNET 子网范围。
+* 为 Azure Database for MySQL 创建服务器级[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNet 子网范围。
 * 源 MySQL 必须使用支持的 MySQL 社区版。 若要确定 MySQL 实例的版本，请在 MySQL 实用程序或 MySQL Workbench 中运行以下命令：
 
     ```
@@ -74,8 +75,9 @@ ms.locfileid: "65148795"
     * **Expire_logs_days** = 5（建议不要使用零；仅适用于 MySQL 5.6）
     * **Binlog_row_image** = full（仅适用于 MySQL 5.6）
     * **log_slave_updates** = 1
- 
+
 * 用户必须具有 ReplicationAdmin 角色的以下权限：
+
     * **复制客户端** - 仅仅是“更改处理”任务所需的。 换句话说，“仅完整加载”任务不需要此权限。
     * **复制副本** - 仅仅是“更改处理”任务所需的。 换句话说，“仅完整加载”任务不需要此权限。
     * **超级** - 仅在 MySQL 5.6.6 之前的版本中需要。
@@ -167,11 +169,11 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
   
 3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称。
 
-4. 选择现有虚拟网络 (VNET) 或创建一个新的。
+4. 选择现有的 VNet，或新建一个 VNet。
 
-    VNET 为 Azure 数据库迁移服务提供源 SQL Server 和目标 Azure SQL 数据库实例的访问权限。
+    VNet 为 Azure 数据库迁移服务提供了对源 SQL Server 和目标 Azure SQL 数据库实例的访问权限。
 
-    若要深入了解如何在 Azure 门户中创建 VNET，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
+    若要详细了解如何在 Azure 门户中创建 VNet，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
 
 5. 选择定价层。
 

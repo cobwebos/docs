@@ -10,15 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 956dfe54cec910a09ed16d7387bc3d32babd0876
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 672a691cdad5c83583ea840907fa7dd193c7ae3a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692399"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466967"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 上的 C++ 中识别语音
 
+针对[文本转语音](quickstart-text-to-speech-cpp-windows.md)和[语音翻译](quickstart-translate-speech-cpp-windows.md)也提供了快速入门。
+
+如果需要，请选择不同的编程语言和/或环境：<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 在本文中，请创建适用于 Windows 的 C++ 控制台应用程序。 请使用认知服务[语音 SDK](speech-sdk.md)，通过电脑的麦克风实时将语音转录为文本。 该应用程序是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017（任何版本）构建的。

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 9aadfd1f3685466c8c0beb6dff3bb8d063f4bfd8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: e971fd160a43be088f6d3c4a9fb6fddc7dd769b0
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137399"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415675"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 将 RDS MySQL 联机迁移到 Azure Database for MySQL
 
@@ -24,7 +24,6 @@ ms.locfileid: "65137399"
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
->
 > * 使用 mysqldump 和 mysql 实用工具迁移示例架构。
 > * 创建 Azure 数据库迁移服务的实例。
 > * 使用 Azure 数据库迁移服务创建迁移项目。
@@ -55,7 +54,7 @@ ms.locfileid: "65137399"
 
 * 下载并安装 [MySQL **Employees** 示例数据库](https://dev.mysql.com/doc/employee/en/employees-installation.html)。
 * 创建 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal) 的实例。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 * 请确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 MySQL 服务器（默认情况下为 TCP 端口 3306）。
