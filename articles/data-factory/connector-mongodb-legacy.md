@@ -176,9 +176,9 @@ Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档*
 
 | MongoDB 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| 二进制 |Byte[] |
+| Binary |Byte[] |
 | Boolean |Boolean |
-| date |DateTime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
