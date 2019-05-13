@@ -58,7 +58,7 @@ HTTP 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| 类型 | type 属性必须设置为 HttpServer。 | “是” |
+| type | type 属性必须设置为 HttpServer。 | “是” |
 | url | Web 服务器的基 URL。 | “是” |
 | enableServerCertificateValidation | 指定连接到 HTTP 终结点时，是否启用服务器 SSL 证书验证。 HTTPS 服务器使用自签名证书时，将此属性设置为 false。 | “否”<br /> （默认值为 true） |
 | authenticationType | 指定身份验证类型。 允许的值为：Anonymous、Basic、Digest、Windows 和 ClientCertificate。 <br><br> 有关这些身份验证类型的更多属性和 JSON 示例，请参阅此表格下面的部分。 | “是” |
@@ -171,7 +171,7 @@ HTTP 链接的服务支持以下属性：
 
 | 属性    | 说明                                                  | 必选 |
 | ----------- | ------------------------------------------------------------ | -------- |
-| 类型        | 下面的类型属性`location`在数据集中必须设置为**HttpServerLocation**。 | “是”      |
+| type        | 下面的类型属性`location`在数据集中必须设置为**HttpServerLocation**。 | “是”      |
 | relativeUrl | 包含数据的资源的相对 URL。       | “否”       |
 
 > [!NOTE]
@@ -212,7 +212,7 @@ HTTP 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| 类型 | 数据集的 type 属性必须设置为 HttpFile。 | “是” |
+| type | 数据集的 type 属性必须设置为 HttpFile。 | “是” |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | “否” |
 | requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | “否” |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
@@ -279,7 +279,7 @@ HTTP 链接的服务支持以下属性：
 
 | 属性                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| 类型                     | 下面的类型属性`storeSettings`必须设置为**HttpReadSetting**。 | “是”      |
+| type                     | 下面的类型属性`storeSettings`必须设置为**HttpReadSetting**。 | “是”      |
 | requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post。 | “否”       |
 | addtionalHeaders         | 附加的 HTTP 请求标头。                             | 否       |
 | requestBody              | HTTP 请求的正文。                               | “否”       |
@@ -336,7 +336,7 @@ HTTP 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| 类型 | 复制活动源的 type 属性必须设置为：HttpSource。 | “是” |
+| type | 复制活动源的 type 属性必须设置为：HttpSource。 | “是” |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。  | “否” |
 
 **示例**
