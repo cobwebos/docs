@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/13/2019
 ms.author: diberry
-ms.openlocfilehash: 3e54e8dcb6efa9251262c651730376a0d04edcf9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f80e6a765cc165033a548ba6a5ee7bead0de872e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144977"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594078"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用 active 学习来改善您的知识库
 
@@ -60,9 +60,9 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 默认情况下，主动学习处于关闭状态。 启用它可以查看建议的问题。 
 
-1. 选择**发布**发布知识库。 主动学习查询从 GenerateAnswer API 预测终结点仅收集。 Qna Maker 门户中测试窗格中的查询不会影响主动学习。
+1. 选择**发布**发布知识库。 主动学习查询从 GenerateAnswer API 预测终结点仅收集。 QnA Maker 门户中测试窗格中的查询不会影响主动学习。
 
-1. 若要打开主动学习，请单击“名称”，转到 QnA Maker 门户右上角的“[服务设置](https://www.qnamaker.ai/UserSettings)”。  
+1. 若要打开 active 学习上，单击你**名称**，请转到[**服务设置**](https://www.qnamaker.ai/UserSettings) QnA Maker 门户右上角中。  
 
     ![打开主动学习建议的问题备选方法，从服务设置页。 在右上方菜单中，选择您的用户名称，然后选择服务设置。](../media/improve-knowledge-base/Endpoint-Keys.png)
 
@@ -173,15 +173,15 @@ Content-Type: application/json
 |--|--|--|--|
 |URL 路由参数|知识库 ID|string|知识库的 GUID。|
 |主机子域|QnAMaker 资源名称|string|在 Azure 订阅中将 QnA Maker 的主机名。 这是可在设置页上后发布该知识库。 |
-|标头|Content-Type|string|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
-|标头|授权|string|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|页眉|内容类型|string|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
+|页眉|授权|string|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|培训反馈|
 
 JSON 正文具有多个设置：
 
 |JSON 正文属性|Type|目的|
 |--|--|--|--|
-|`feedbackRecords`|数组|反馈的列表。|
+|`feedbackRecords`|阵列|反馈的列表。|
 |`userId`|string|接受建议的问题的人员的用户 ID。 用户 ID 格式是由您决定。 例如，电子邮件地址可以是您的体系结构中的有效用户 ID。 可选。|
 |`userQuestion`|string|问题的确切文本。 必需。|
 |`qnaID`|数字|在中找到的问题的 ID [GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)。 |
@@ -208,7 +208,7 @@ JSON 正文具有多个设置：
 
 当你的应用程序启用，主动学习和导出应用程序中， `SuggestedQuestions` tsv 文件中的列将保留主动学习数据。 
 
-`SuggestedQuestions`列为的隐式的信息的 JSON 对象 (`autosuggested`) 和显式 (`usersuggested`) 的反馈。 单个用户提交的问题此 JSON 对象的一个示例`help`是：
+`SuggestedQuestions`列为的隐式的信息的 JSON 对象`autosuggested`，并显式，`usersuggested`反馈。 单个用户提交的问题此 JSON 对象的一个示例`help`是：
 
 ```JSON
 [

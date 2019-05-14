@@ -59,6 +59,8 @@
     - name: VM 类型和大小
       href: sizes.md
       items:
+        - name: 第 2 代 VM
+          href: generation-2.md
         - name: 常规用途
           href: sizes-general.md
           displayName: Dsv3 Dv3 DSv2 Dv2 Av2

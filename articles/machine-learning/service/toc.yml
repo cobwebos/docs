@@ -226,7 +226,7 @@
           href: how-to-create-your-first-pipeline.md
         - name: 将 ML 工作流的 CI/CD 与 Azure Pipelines 配合使用
           displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
+          href: /azure/devops/pipelines/targets/azure-machine-learning
           mainContext: true
     - name: 管理资源配额
       displayName: limits

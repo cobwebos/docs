@@ -148,10 +148,6 @@
               href: 'https://docs.azure.cloudsimple.com/ha-ensuring/'
         - name: VMware 生态系统
           items:
-            - name: 灾难恢复解决方案
-              href: 'https://docs.azure.cloudsimple.com/zerto-solutionguide/'
-            - name: 使用 VMware SRM 进行的灾难恢复
-              href: 'https://docs.azure.cloudsimple.com/disaster-recovery-srm/'
             - name: 备份工作负荷虚拟机
               href: 'https://docs.azure.cloudsimple.com/veeam/'
             - name: VMware Horizon 解决方案指南

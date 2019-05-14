@@ -1,12 +1,17 @@
 - name: Azure HDInsight 文档
   href: /azure/hdinsight
-- name: HDInsight 上的交互式查询
+- name: 概述
   items:
     - name: HDInsight 上的 Apache Hadoop 组件
       href: ../hdinsight-component-versioning.md
       maintainContext: true
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+      maintainContext: true
+- name: 快速入门
+  items:
+    - name: 执行 Apache Hive 查询 - Apache Zeppelin
+      href: ../hdinsight-connect-hive-zeppelin.md
       maintainContext: true
 - name: 入门
   items:
@@ -37,9 +42,6 @@
           href: ../hadoop/hdinsight-use-hive.md
           maintainContext: true
           items:
-            - name: 使用 Apache Zeppelin
-              href: ../hdinsight-connect-hive-zeppelin.md
-              maintainContext: true
             - name: 适用于 Visual Studio 的工具
               href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
               maintainContext: true
@@ -180,7 +182,7 @@
             - name: 使用 cURL 和 Azure REST API
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: 使用 Azure 经典 CLI
+            - name: 使用 Azure CLI
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
             - name: 创建按需群集

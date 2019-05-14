@@ -314,8 +314,9 @@
                 - name: 状态监视器
                   href: app/monitor-performance-live-website-now.md
                 - name: 状态监视器 v2
-                  href: app/status-monitor-v2-overview.md
                   items:
+                    - name: 概述
+                      href: app/status-monitor-v2-overview.md
                     - name: 入门
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
@@ -557,7 +558,7 @@
                   href: app/usage-workbooks.md
             - name: Web 应用分析解决方案
               href: insights/azure-web-apps-analytics.md
-            - name: Kubernetes 托管应用
+            - name: 监视 Kubernetes 应用程序
               href: app/kubernetes.md
         - name: 监视容器
           items:
@@ -631,8 +632,18 @@
                   href: insights/vminsights-known-issues.md
                 - name: 常见问题解答
                   href: insights/vminsights-faq.md
-                - name: 上架
-                  href: insights/vminsights-onboard.md
+                - name: 启用监视
+                  items:
+                    - name: 启用监视概述
+                      href: insights/vminsights-enable-overview.md
+                    - name: 为单个 Azure VM 启用
+                      href: insights/vminsights-enable-single-vm.md
+                    - name: 使用 Azure Policy 启用
+                      href: insights/vminsights-enable-at-scale-policy.md
+                    - name: 使用 Azure PowerShell 启用
+                      href: insights/vminsights-enable-at-scale-powershell.md
+                    - name: 为混合环境启用
+                      href: insights/vminsights-enable-hybrid-cloud.md
                 - name: 监视运行状况
                   href: insights/vminsights-health.md
                 - name: 映射依赖项

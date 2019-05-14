@@ -160,6 +160,8 @@
           href: service-bus-end-to-end-tracing.md
         - name: 构建多层服务总线应用程序
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+        - name: 将 Java Enterprise Edition 应用程序迁移到 Azure
+          href: migrate-java-apps-wild-fly.md
     - name: 管理
       items:
         - name: 使用 Azure PowerShell 预配实体

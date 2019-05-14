@@ -39,7 +39,7 @@ ms.locfileid: "59268750"
 若要配置 Azure AD 与 Panopto 的集成，需要以下项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 Panopto 单一登录的订阅
+* 启用了单一登录的 Panopto 订阅
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -73,8 +73,8 @@ ms.locfileid: "59268750"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Panopto 的 Azure AD 单一登录。
-若要使单一登录有效，需要在 Azure AD 用户与 Panopto 相关用户之间建立链接关系。
+在本部分中，我们基于名为“Britta Simon”的测试用户为 Panopto 配置和测试 Azure AD 单一登录。
+若要使单一登录有效，需要在 Azure AD 用户与 Panopto 相关用户之间建立关联。
 
 若要配置并测试 Panopto 的 Azure AD 单一登录，需要完成以下构建基块：
 
@@ -82,14 +82,14 @@ ms.locfileid: "59268750"
 2. **[配置 Panopto 单一登录](#configure-panopto-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Panopto 测试用户](#create-panopto-test-user)** - 在 Panopto 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+5. **[创建 Panopto 测试用户](#create-panopto-test-user)** - 在 Panopto 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 Panopto 的 Azure AD 单一登录，请执行以下步骤：
+要为 Panopto 配置 Azure AD 单一登录，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“Panopto”应用程序集成页上，选择“单一登录”。
 

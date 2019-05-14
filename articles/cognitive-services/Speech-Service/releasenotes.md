@@ -8,17 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: fa722d749ec27a72a8be3bf8fcfd8097a1404458
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: f22b0fcac6099482addfcf56a20e0e828866326e
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465604"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606346"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="speech-sdk-151"></a>Speech SDK 1.5.1
+
+这是一个 Bug 修复版本，只影响本机/托管 SDK。 它不影响 SDK 的 JavaScript 版本。
+
+**Bug 修复**
+
+* 修复 FromSubscription 与会话的脚本一起使用时。
+* In 关键字为语音的第一个虚拟助手发现修复 bug。
+
 
 ## <a name="speech-sdk-150-2019-may-release"></a>语音 SDK 1.5.0:2019-5 月版本
 

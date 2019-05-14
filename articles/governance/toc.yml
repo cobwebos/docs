@@ -22,25 +22,12 @@
       href: policy/overview.md
     - name: 蓝图
       href: blueprints/overview.md
-- name: 实现形式
-  expanded: true
+- name: 云采用框架
   items:
-    - name: 企业云的采用
-      items:
-        - name: 什么是云资源调控？
-          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-        - name: Azure 中的资源访问调控
-          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-        - name: 适用于单个团队的调控设计
-          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-        - name: 适用于多个团队的调控设计
-          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-    - name: Azure 企业基架
-      items:
-        - name: 出于合规目的监管订阅
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-        - name: 实施 Azure 企业基架
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
+    - name: 概述
+      href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+    - name: 治理概述
+      href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
 - name: 资源
   items:
     - name: Azure 路线图

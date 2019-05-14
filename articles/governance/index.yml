@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: governance
   ms.topic: landing-page
-  ms.date: 09/18/2018
+  ms.date: 05/07/2019
   ms.author: dacoulte
 abstract:
   description: Azure 治理是一组概念和服务，旨在实现大规模管理各种 Azure 资源。 这些服务提供了以逻辑方式组织和构建订阅，创建和部署可重用的 Azure 本机资源包以及定义、审核和修复资源等功能。 可通过此页面了解有关这些概念和服务的更多信息，以及如何立即在环境中启用和使用每个概念和服务。
@@ -53,16 +53,16 @@ sections:
               alt: 蓝图
               src: ./media/blueprints-illustration.svg
             title: 蓝图
-  - title: 实现形式
+  - title: 云采用框架
   - items:
       - type: list
         style: cards
         className: cardsZ
         columns: 3
         items:
-          - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-            html: <p>在过去，企业必须全权拥有技术，并承担各种程度的责任，包括从基础结构到软件等各个方面。 现在，云提供了变革的潜力，可让企业通过预配和使用所需的资源来利用技术。</p>
-            title: 企业云的采用
-          - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-            html: <p>它能使管理员确保工作负荷满足组织的最低治理要求，同时又不妨碍业务小组和开发人员尽快实现自身的目标。<br /><br /></p>
-            title: 企业基架
+          - href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+            html: <p>“云采用框架”提供了适用于 Microsoft Azure 的技术指南。 由于客户可能还在选择云供应商，因此该框架提供了云的跨平台指导，以便于制定更高级别的决策（只要可能）。</p>
+            title: 概述
+          - href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
+            html: <p>对于具有治理本地 IT 环境的现有策略的组织，云治理应补充这些业务策略。<br /><br /></p>
+            title: 治理概述

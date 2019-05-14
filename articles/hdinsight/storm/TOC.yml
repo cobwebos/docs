@@ -106,7 +106,7 @@
             - name: 使用 cURL 和 Azure REST API
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: 使用 Azure 经典 CLI
+            - name: 使用 Azure CLI
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
             - name: 创建按需群集

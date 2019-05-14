@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85087ce5a4fa3dd733f47a35bc18d76f1f4bc652
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60642790"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606683"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
@@ -290,7 +290,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 |符号|描述|
 |------------|-----------------|
-|+|加|
+|+|添加|
 |-|减|
 |/|除|
 |*|乘|
@@ -330,7 +330,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 `timeZone` 应答提供位置的名称、指定位置的当前 UTC 日期和时间，以及 UTC 时差。 如果位置边界处于多个时区内，则该应答包含该边界内所有时区的当前 UTC 日期和时间。 例如，由于佛罗里达州跨两个时区，因此该应答包含这两个时区的本地日期和时间。  
 
-如果查询请求某个州/省或国家/地区的时间，必应将确定位置地理边界内的主要城市，并在 `primaryCityTime` 字段中返回该城市。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
+如果查询请求的状态或国家/地区的时间，必应确定主要城市位置的地理边界内，并返回它在`primaryCityTime`字段。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
 
 下面显示了返回 `timeZone` 应答的示例查询。
 
@@ -433,7 +433,7 @@ Query: What time is it in the U.S.
 
 ![必应拼写建议示例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头 
 
 来自必应 Web 搜索 API 的响应可能包含以下标头：
 

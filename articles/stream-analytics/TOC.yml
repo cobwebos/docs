@@ -175,6 +175,8 @@
           href: stream-analytics-troubleshoot-query.md
         - name: 活动日志和诊断日志
           href: stream-analytics-job-diagnostic-logs.md
+        - name: 数据错误
+          href: data-errors.md
     - name: 与机器学习集成
       items:
         - name: 使用 ML 模型进行情绪分析

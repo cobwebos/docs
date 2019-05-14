@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 797d0cdb8d164955991de321d8df22e43f5c6a40
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c3b2134fae86b988fb21e993cd01b77a90bd2896
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024327"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467065"
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
 Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 查询执行是通过用户定义的索引进行的。
@@ -33,7 +33,7 @@ Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 A
 
 ## <a name="feature-descriptions"></a>功能说明
 
-| 核心搜索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 功能 |
+| 核心搜索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 功能 |
 |-------------------|----------|
 |自由格式文本搜索 | [全文搜索](search-lucene-query-architecture.md)是大多数基于搜索的应用的主要用例。 查询可以使用支持的语法进行陈述。 <br/><br/>[简单查询语法](query-simple-syntax.md)提供逻辑运算符、短语搜索运算符、后缀运算符和优先运算符。<br/><br/>[Lucene 查询语法](query-lucene-syntax.md)包括简单语法中的所有操作，以及模糊搜索、邻近搜索、术语提升和正则表达式扩展。|
 | 相关性 | [**简单计分**](index-add-scoring-profiles.md)是 Azure 搜索的主要优势。 计分配置文件用于在文档中自行将相关性建模为值的函数。 例如，你可能希望较新产品或打折产品显示在搜索结果的顶部位置。 也可以基于已跟踪和单独存储的客户搜索首选项将标记用于个性化计分，来生成计分配置文件。 |
@@ -44,20 +44,20 @@ Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 A
 | AI&nbsp;扩充&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | 功能 |
 |-------------------|----------|
 |AI 扩充文档 | 适用于图像和文本分析的[认知搜索](cognitive-search-concept-intro.md)可以应用于索引管道，以从原始内容中提取文本信息。 [内置技术](cognitive-search-predefined-skills.md)的一些示例包括：光学字符识别（使扫描的 JPEG 变得可搜索）、实体识别（标识组织、名称或位置）、关键短语识别。 也可[将自定义技术编码](cognitive-search-create-custom-skill-example.md)，以便将其附加到管道。 |
-| 用于分析和使用的已存储扩充| [知识存储](knowledge-store-concept-intro.md)是基于 AI 的索引扩展。 通过将 Azure 存储用作后端，可以保存在编制索引期间创建的扩充。 这些项目可用于帮助你设计更好的技能集，或创建不含无固定结构或不明确数据的形状和结构。 可以创建定目标到特定工作负荷或用户的这些结构的投影。 还可以直接分析已提取的数据，或将它加载到其他应用中。<br/><br/> |
+| 用于分析和使用的已存储扩充| [**知识库（预览版）**](knowledge-store-concept-intro.md)是基于 AI 的索引编制的一个扩展。 通过将 Azure 存储用作后端，可以保存在编制索引期间创建的扩充。 这些项目可用于帮助你设计更好的技能集，或创建不含无固定结构或不明确数据的形状和结构。 可以创建定目标到特定工作负荷或用户的这些结构的投影。 还可以直接分析已提取的数据，或将它加载到其他应用中。<br/><br/> |
 
-| 数据导入/编制索引 | 功能 |
+| 数据导入/编制索引&nbsp; | 功能 |
 |----------------------------------|----------|
 | 数据源 | Azure 搜索索引接受来自任何源的数据，前提是以 JSON 数据结构提交这些数据。 <br/><br/> [索引器](search-indexer-overview.md)自动引入受支持的 Azure 数据源中的数据，并处理 JSON 序列化。 连接到 [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md) 或 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，以提取主要数据存储中的可搜索内容。 Azure Blob 索引器可以执行“文档破解”[从主要文件格式提取文本](search-howto-indexing-azure-blob-storage.md)，包括 Microsoft Office、PDF 和 HTML 文档。 |
 | 分层的嵌套数据结构 | 借助[复杂类型](search-howto-complex-data-types.md)和集合，可以将几乎所有类型的 JSON 结构建模为 Azure 搜索索引。 可以通过集合、复杂类型和复杂类型集合，以本机方式表示一对多和多对多基数。|
 | 语言分析 | 分析器是在编制索引和搜索操作期间用于处理文本的组件。 有两种类型。 <br/><br/>[自定义词汇分析器](index-add-custom-analyzers.md)用于使用拼音匹配和正则表达式的复杂搜索查询。 <br/><br/>Lucene 或 Microsoft 的[语言分析器](index-add-language-analyzers.md)用于智能处理特定于语言的语言学，包括谓词时态、词性、不规则复数名词（例如“mouse”与“mice”）、词取消复合、词拆分（对于不带空格的语言）等。 <br/><br/>|
 
 
-| 平台级别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 功能 |
+| 平台级别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 功能 |
 |-------------------|----------|
 | 用于原型制作和检查的工具 | 在门户中，可以使用[**导入数据向导**](search-import-data-portal.md)来配置索引器、索引设计器以建立索引，并可以使用[**搜索浏览器**](search-explorer.md)来测试查询并优化评分配置文件。 还可以打开任何索引来查看其架构。 |
 | 监视和诊断 | [启用监视功能](search-monitor-usage.md)可查看除门户中始终可见的一目了然指标外的其他指标。 门户页面中会捕获并报告关于每秒查询数、延迟和限制的指标，无需额外进行配置。 <br/><br/>[搜索流量分析](search-traffic-analytics.md)是另一种备用监视方法，可收集和分析服务器端数据和客户端数据，以挖掘有关什么用户正在搜索框中键入内容的见解。 |
-| 服务器端加密 | [Microsoft 托管的静态加密](search-security-overview.md#encrypted-transmission-and-storage)内置在内部存储层中，它是不可撤消的。 可以视需要使用[客户托管的加密密钥](search-security-manage-encryption-keys.md)来补充默认加密。 你在 Azure Key Vault 中创建和管理的密钥用于加密 Azure 搜索中的索引和同义词映射。 |
+| 服务器端加密 | [Microsoft 托管的静态加密](search-security-overview.md#encrypted-transmission-and-storage)内置在内部存储层中，它是不可撤消的。 （可选）你可以使用[**客户管理的加密密钥（预览版）**](search-security-manage-encryption-keys.md)来补充默认加密。 你在 Azure Key Vault 中创建和管理的密钥用于加密 Azure 搜索中的索引和同义词映射。 |
 | 基础结构 | **高可用性平台**确保极其可靠的搜索服务体验。 正确缩放时，[Azure 搜索可提供 99.9% SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。<br/><br/> 作为一种**完全托管且可缩放的**端到端解决方案，Azure 搜索绝对不需要基础结构管理。 通过在两个维度进行缩放以便处理更多文档存储和/或更高的查询负载，可以根据需求来定制服务。<br/><br/>|
 
 ## <a name="how-to-use-azure-search"></a>如何使用 Azure 搜索

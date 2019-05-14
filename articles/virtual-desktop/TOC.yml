@@ -34,6 +34,8 @@
       href: diagnostics-role-service.md
     - name: 准备和自定义主 VHD 映像
       href: set-up-customize-master-image.md
+    - name: 在主 VHD 映像中安装 Office
+      href: install-office-on-wvd-master-image.md
     - name: 为 Windows 虚拟桌面配置 GPU
       href: configure-vm-gpu.md
     - name: 自动缩放会话主机

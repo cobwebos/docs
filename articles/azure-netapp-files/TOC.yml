@@ -21,6 +21,10 @@
       href: azure-netapp-files-metrics.md
     - name: Azure NetApp 文件的性能基准
       href: azure-netapp-files-performance-benchmarks.md
+    - name: Azure NetApp 文件的成本模型
+      href: azure-netapp-files-cost-model.md
+    - name: Azure NetApp 文件网络规划指南
+      href: azure-netapp-files-network-topologies.md
 - name: 操作指南
   items:
     - name: 注册 Azure NetApp 文件

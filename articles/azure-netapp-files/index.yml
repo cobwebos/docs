@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/10/2019
 abstract:
-  description: 了解如何使用 Azure NetApp 文件来创建和管理 NetApp 帐户、容量池和卷，如何配置导出策略，如何为虚拟机装载卷，以及如何管理快照。 <p>使用 Azure NetApp 文件需要加入公共预览版计划。 还需要被添加到允许列表中才能访问 Microsoft.NetApp Azure 资源提供程序。 若要请求加入“公共预览版”计划，请参阅<a href="azure-netapp-files-register">注册 Azure NetApp 文件</a>。</p>
+  description: '了解如何使用 Azure NetApp 文件来创建和管理 NetApp 帐户、容量池和卷，如何配置导出策略，如何为虚拟机装载卷，以及如何管理快照。 <p>若要使用 Azure NetApp 文件，必须具有对 Azure NetApp 文件服务的访问权限。 若要请求访问权限，请参阅<a href="azure-netapp-files-register#waitlist">提交候补名单请求</a>。</p>'
 sections:
   - title: 5 分钟快速入门
     items:

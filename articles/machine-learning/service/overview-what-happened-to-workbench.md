@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8081be7f411b38d2418d893654a5691bd1ad7cc1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023651"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470631"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
@@ -68,7 +68,7 @@ ms.locfileid: "65023651"
 
 已有的数据准备文件不可移植到最新版本中，因为 Machine Learning Workbench 已遭弃用。 但你仍然可以为建模准备任何大小的数据集。   
 
-使用任何大小的数据集，可以在编写 Python 代码进行建模之前使用 [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk) 快速准备数据。 
+对于任意大小的数据集，在通过编写 Python 代码进行建模之前，你都可以使用 [Azure 机器学习数据准备包](https://aka.ms/data-prep-sdk)来快速准备数据。 
 
 可以按照[本教程](tutorial-data-prep.md)，深入了解如何使用 Azure 机器学习数据准备 SDK。
 

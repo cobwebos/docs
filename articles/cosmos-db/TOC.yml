@@ -163,7 +163,7 @@
         - name: 触发 Azure Functions
           displayName: change feed
           href: change-feed-functions.md
-    - name: 使用 Apache Spark 进行分析
+    - name: 将内置分析功能与 Apache Spark 配合使用
       href: spark-api-introduction.md
     - name: 服务器端编程
       items:
@@ -517,6 +517,8 @@
           href: how-to-sql-subquery.md
     - name: 更改源
       items:
+        - name: Azure Cosmos DB 触发器日志
+          href: how-to-configure-cosmos-db-trigger-logs.md
         - name: 多个 Azure Cosmos DB 触发器
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: 排查 Azure Cosmos DB 触发器问题

@@ -14,7 +14,7 @@ metadata:
   ms.date: 05/02/2019
   ms.author: heidist
 abstract:
-  description: 了解如何使用 Azure 搜索创建基于专用异类内容的企业搜索解决方案。 教程、API 参考和其他文档介绍了如何将从简单到高级的语法用于各种方案，以便将可搜索内容整合到单个可查询的快速索引中。 <p/><a href="/azure/search/cognitive-search-concept-intro">认知搜索<b></b></a>现已正式发布，支持将 AI 扩充用于生产方案。<p/><a href="/azure/search/knowledge-store-concept-intro">知识存储（预览版）<b></b></a>扩展了认知搜索。 将 AI 扩充保存到存储，随后可以在除 Azure 搜索以外的其他应用中查看、整形和使用扩充。 立即<a href="/azure/search/knowledge-store-howto">开始使用<b></b></a>。
+  description: 了解如何使用 Azure 搜索创建基于专用异类内容的企业搜索解决方案。 教程、API 参考和其他文档介绍了如何将从简单到高级的语法用于各种方案，以便将可搜索内容整合到单个可查询的快速索引中。 <p/><a href="/azure/search/cognitive-search-concept-intro"><b>认知搜索</b></a>现已正式发布，支持将 AI 扩充用于生产方案。<p/><a href="/azure/search/knowledge-store-concept-intro"><b>知识存储（预览版）</b></a>扩展了认知搜索。 将 AI 扩充保存到存储，随后可以在除 Azure 搜索以外的其他应用中查看、整形和使用扩充。 立即<a href="/azure/search/knowledge-store-howto">开始使用<b></b></a>。
   aside:
     image:
       alt: null
