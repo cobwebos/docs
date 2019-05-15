@@ -47,7 +47,7 @@ Presto 链接服务支持以下属性：
 | type | type 属性必须设置为：Presto | 是 |
 | host | Presto 服务器的 IP 地址或主机名。 （即 192.168.222.160）  | 是 |
 | serverVersion | Presto 服务器的版本。 （即 0.148-t）  | 是 |
-| 目录 | 针对服务器的所有请求的目录上下文。  | 是 |
+| catalog | 针对服务器的所有请求的目录上下文。  | 是 |
 | port | Presto 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8080。  | 否 |
 | authenticationType | 用于连接到 Presto 服务器的身份验证机制。 <br/>允许值包括：匿名、LDAP | 是 |
 | username | 用于连接到 Presto 服务器的用户名。  | 否 |
