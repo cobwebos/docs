@@ -165,7 +165,7 @@
           href: grant-access-to-create-subscription.md
         - name: 跨租户进行身份验证
           href: authenticate-multi-tenant.md
-    - name: 审核部署
+    - name: 审核更改
       items:
         - name: 查看活动日志
           href: resource-group-audit.md

@@ -512,6 +512,8 @@
           href: data-explorer.md
         - name: 管理索引策略
           href: how-to-manage-indexing-policy.md
+        - name: 定义唯一键
+          href: how-to-define-unique-keys.md
         - name: SQL 子查询示例
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md

@@ -280,6 +280,9 @@
     - name: 修正不符合资源
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
+    - name: 启用用于 VM 的 Azure Monitor（预览版）
+      displayName: 'insights, log analytics, builtin'
+      href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json
 - name: 引用
   items:
     - name: Azure CLI

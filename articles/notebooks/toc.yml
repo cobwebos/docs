@@ -44,5 +44,7 @@
       href: work-with-project-data-files.md
     - name: 访问数据资源
       href: access-data-resources-jupyter-notebooks.md
+    - name: 使用数据科学虚拟机
+      href: use-data-science-virtual-machine.md
     - name: 使用 Azure 机器学习服务
       href: use-machine-learning-services-jupyter-notebooks.md

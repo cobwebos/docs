@@ -27,9 +27,14 @@
         - name: 功能：操作和上下文
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: 奖励
+          href: concept-rewards.md
+          displayName: 'reward, wait time, default reward'
         - name: 强化学习
           href: concepts-reinforcement-learning.md
           displayName: 'RL, contextual bandits, Vowpal Wabbit'
+        - name: 浏览
+          href: concepts-exploration.md
     - name: 分析
       items:
         - name: 脱机评估

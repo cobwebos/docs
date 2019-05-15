@@ -270,7 +270,7 @@
             - name: 使用 cURL 和 Azure REST API
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: 使用 Azure 经典 CLI
+            - name: 使用 Azure CLI
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
         - name: 管理 HDInsight 群集
@@ -422,7 +422,8 @@
       items:
         - name: HDInsight 虚拟网络体系结构
           href: ../hdinsight-virtual-network-architecture.md
-          maintainContext: true
+        - name: HDInsight 限制出站流量
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: Azure VNet 中的 HDInsight
           href: ../hdinsight-extend-hadoop-virtual-network.md
           maintainContext: true
