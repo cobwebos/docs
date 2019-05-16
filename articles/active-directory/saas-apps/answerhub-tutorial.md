@@ -38,7 +38,7 @@ ms.locfileid: "56882784"
 
 若要配置 Azure AD 与 AnswerHub 的集成，需要具有以下项：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可开始使用[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以先使用[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 启用了单一登录的 AnswerHub 订阅。
 
 ## <a name="scenario-description"></a>方案描述
@@ -72,7 +72,7 @@ ms.locfileid: "56882784"
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>设置和测试 Azure AD 单一登录
 
 在本部分，我们使用名为 Britta Simon 的测试用户来配置并测试 AnswerHub 的 Azure AD 单一登录。
-对于单一登录，需要建立 Azure AD 用户与 AnswerHub 中对应用户之间的链接。
+对于单一登录，需要建立 Azure AD 用户与 AnswerHub 中对应用户之间的关联。
 
 若要配置和测试 AnswerHub 的 Azure AD 单一登录，需要完成以下任务：
 
@@ -80,7 +80,7 @@ ms.locfileid: "56882784"
 2. [配置 AnswerHub 单一登录](#configure-answerhub-single-sign-on)，从而在应用程序端配置单一登录设置。
 3. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，Britta Simon。
 4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 AnswerHub 测试用户](#create-answerhub-test-user)，该用户需对应且链接到 Azure AD 测试用户。
+5. [创建 AnswerHub 测试用户](#create-answerhub-test-user)，该用户需对应且关联到 Azure AD 测试用户。
 6. [测试单一登录](#test-single-sign-on)，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
