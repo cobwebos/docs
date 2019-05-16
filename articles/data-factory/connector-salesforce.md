@@ -315,25 +315,25 @@ Salesforce 链接服务支持以下属性。
 
 | Salesforce 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| 自动编号 |String |
-| 复选框 |Boolean |
-| 货币 |Decimal |
-| date |DateTime |
-| 日期/时间 |DateTime |
-| 电子邮件 |String |
-| ID |String |
-| 查找关系 |String |
-| 多选择列表 |String |
+| Auto Number |String |
+| Checkbox |Boolean |
+| Currency |Decimal |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
-| 百分比 |Decimal |
-| 电话 |String |
-| 选择列表 |String |
+| Percent |Decimal |
+| Phone |String |
+| Picklist |String |
 | Text |String |
-| 文本区域 |String |
-| 文本区域（长型值） |String |
-| 文本区域（丰富） |String |
-| 文本（加密） |String |
-| 代码 |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
