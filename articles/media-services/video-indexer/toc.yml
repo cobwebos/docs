@@ -46,8 +46,6 @@
       href: video-indexer-view-edit.md
     - name: 使用编辑器来创建项目
       href: use-editor-create-project.md
-    - name: 从现有视频创建视频见解
-      href: video-indexer-create-new.md
     - name: 将小组件嵌入应用程序
       href: video-indexer-embed-widgets.md
     - name: 自定义内容模型

@@ -144,7 +144,7 @@
 - name: 引用
   items:
     - name: REST API 参考
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
     - name: 常见问题解答
       href: faqs.md
     - name: 限制

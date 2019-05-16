@@ -6,8 +6,8 @@ metadata:
   title: 必应当地企业搜索 API 文档
   description: 必应当地企业搜索 API 是一种 RESTful 服务，该服务使应用程序可以基于搜索查询查找当地企业。
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.subservice: bing-local-business
   ms.tgt_pltfrm: na
   ms.devlang: na

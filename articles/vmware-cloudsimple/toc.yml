@@ -138,18 +138,16 @@
               href: 'https://docs.azure.cloudsimple.com/set-vcenter-identity/'
             - name: 将 Azure 应用程序网关与 VMware VM 配合使用
               href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
-            - name: 将 Azure 公共负载均衡器与 VMware VM 配合使用
-              href: 'https://docs.azure.cloudsimple.com/load-balancers/'
             - name: 将私有云 vCenter 服务器配置为 vRealize 自动化终结点
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: 将工作负荷 VM 迁移到私有云
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: 确保应用程序在 Azure 上的 VMware 中的高可用性
-              href: 'https://docs.azure.cloudsimple.com/ha-ensuring/'
+              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
         - name: VMware 生态系统
           items:
             - name: 备份工作负荷虚拟机
-              href: 'https://docs.azure.cloudsimple.com/veeam/'
+              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
             - name: VMware Horizon 解决方案指南
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: 为私有云配置 vSAN 加密
@@ -161,6 +159,6 @@
             - name: 私有云 vCenter 上的 Azure AD 标识源
               href: 'https://docs.azure.cloudsimple.com/azure-ad/'
             - name: 通过 ExpressRoute 进行的本地网络连接
-              href: 'https://docs.azure.cloudsimple.com/er-connection/'
+              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
             - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接
-              href: 'https://docs.azure.cloudsimple.com/azure-er-connection/'
+              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'

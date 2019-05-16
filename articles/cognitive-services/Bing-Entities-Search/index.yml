@@ -5,15 +5,15 @@ metadata:
   title: 必应实体搜索 API 文档 - 教程、快速入门和 API 参考 | Microsoft Docs
   description: 如何使用必应实体搜索 API 来获取有关人员、地点或其他已定义对象的信息。 教程介绍了如何构建使用该服务的应用。
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-entity-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/01/2019
-  ms.author: v-gedod
+  ms.author: aahi
 abstract:
   description: 必应实体搜索 API 使应用程序能够在搜索查询中获取有关检测到的实体的信息。 实体可以是个人、地点、媒体标题，等等。
 sections:
