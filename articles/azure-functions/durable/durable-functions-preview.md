@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3b49049ea1ed36a08fad9619183017b0f07d99
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 8ceb84ab9e9c41ff6a9cbde62571fb12ae67d790
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077735"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596076"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2.0 预览版 (Azure Functions)
 
@@ -36,7 +36,7 @@ Durable Functions 2.0 为已删除适用于.NET Framework （和 Functions 1.0�
 
 ### <a name="hostjson-schema"></a>Host.json 架构
 
-以下代码片段显示了 host.json 的新架构。 需要注意的我们的主要更改的新`"storageProvider"`部分中，和`"azureStorage"`其下面的部分。 此更改为了支持[备用存储提供程序](durable-functions-preview.md#alternate-storage-providers)。
+以下代码片段显示了 host.json 的新架构。 主要的更改需要注意的是新`"storageProvider"`部分中，和`"azureStorage"`其下面的部分。 此更改为了支持[备用存储提供程序](durable-functions-preview.md#alternate-storage-providers)。
 
 ```json
 {
@@ -93,11 +93,12 @@ Durable Functions 支持的各种"上下文"对象必须适合在单元测试中
 
 实体函数定义操作用于读取和更新的状态，称为少量*持久实体*。 业务流程协调程序函数，如实体函数是使用特殊触发器类型和函数*实体触发器*。 与业务流程协调程序函数，不同实体函数不具有任何特定代码约束。 实体函数还管理状态而隐式表示通过控制流的状态不是显式。
 
-下面的代码是定义一个简单实体函数的示例*计数器*实体。 函数定义三个操作`add`， `remove`，并`reset`，则每个的其中的更新整数值， `currentValue`。
+下面的代码是定义一个简单实体函数的示例*计数器*实体。 函数定义三个操作`add`， `subtract`，并`reset`，则每个的其中的更新整数值， `currentValue`。
 
 ```csharp
+[FunctionName("Counter")]
 public static async Task Counter(
-    [EntityTrigger(EntityName = "Counter")] IDurableEntityContext ctx)
+    [EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
     int operand = ctx.GetInput<int>();
@@ -200,21 +201,25 @@ public static async Task Counter(
 例如，考虑需要测试两个玩家是否可用，业务流程，然后为游戏同时分配。 可以使用关键节，如下所示来实现此任务：
 
 ```csharp
-
-EntityId player1 = /* ... */;
-EntityId player2 = /* ... */;
-
-using (await ctx.LockAsync(player1, player2))
+[FunctionName("Orchestrator")]
+public static async Task RunOrchestrator(
+    [OrchestrationTrigger] IDurableOrchestrationContext ctx)
 {
-    bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
-    bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
+    EntityId player1 = /* ... */;
+    EntityId player2 = /* ... */;
 
-    if (available1 && available2)
+    using (await ctx.LockAsync(player1, player2))
     {
-        Guid gameId = ctx.NewGuid();
+        bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
+        bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
 
-        await ctx.CallEntityAsync(player1, "assign-game", gameId);
-        await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        if (available1 && available2)
+        {
+            Guid gameId = ctx.NewGuid();
+
+            await ctx.CallEntityAsync(player1, "assign-game", gameId);
+            await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        }
     }
 }
 ```

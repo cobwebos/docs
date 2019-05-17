@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 881734caf855ccfc4f001693fe261b8448b49bc4
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 06051eff73a83ff97a733d1863580885c5d0e174
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466203"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551724"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -66,3 +66,7 @@ Docker 注册表可用于从`https://docker-registry.apps.<clustername>.<region>
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>主节点和基础结构节点抽取出来一样因为它们是使用 Azure Kubernetes 服务 (AKS)？
 
 不。 在客户订阅中运行所有资源，包括群集主节点中。 这些类型的资源放在只读资源组中。
+
+## <a name="is-open-service-broker-for-azure-osba-supported"></a>是 Open Service Broker for Azure (OSBA) 支持？
+
+可以。 您可以使用 OSBA 与 Azure Red Hat OpenShift。 请参阅[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template)有关详细信息。

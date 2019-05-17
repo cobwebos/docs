@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: a27f7597ddc934b925d63507a816ac5816b682d6
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5dbcf446a609adcd0f1902fcca2ac19ad87f17b1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151050"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779673"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>使用 Azure CLI 访问 Azure 媒体服务 API
  
@@ -45,14 +45,15 @@ ms.locfileid: "65151050"
 ## <a name="see-also"></a>另请参阅
 
 - [缩放媒体保留单位 - CLI](media-reserved-units-cli-how-to.md)
-- [创建媒体服务帐户 - CLI](./scripts/cli-create-account.md) 
-- [重置帐户凭据 - CLI](./scripts/cli-reset-account-credentials.md)
-- [创建资产 - CLI](./scripts/cli-create-asset.md)
-- [上传文件 - CLI](./scripts/cli-upload-file-asset.md)
-- [创建转换 - CLI](./scripts/cli-create-transform.md)
-- [创建作业 - CLI](./scripts/cli-create-jobs.md)
-- [创建 EventGrid - CLI](./scripts/cli-create-event-grid.md)
-- [发布资产 - CLI](./scripts/cli-publish-asset.md)
+- [创建媒体服务帐户 - CLI](create-account-cli-how-to.md) 
+- [重置帐户凭据 - CLI](cli-reset-account-credentials.md)
+- [创建资产 - CLI](cli-create-asset.md)
+- [上传文件 - CLI](cli-upload-file-asset.md)
+- [创建转换 - CLI](cli-create-transform.md)
+- [使用自定义转换-CLI 进行编码](custom-preset-cli-howto.md)
+- [创建作业 - CLI](cli-create-jobs.md)
+- [创建 EventGrid - CLI](job-state-events-cli-how-to.md)
+- [发布资产 - CLI](cli-publish-asset.md)
 - [筛选器 - CLI](filters-dynamic-manifest-cli-howto.md)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
@@ -60,5 +61,5 @@ ms.locfileid: "65151050"
 
 要流式传输内容的流式处理终结点必须处于运行状态。 以下 CLI 命令启动您的默认流式处理终结点：
 
-
 `az ams streaming-endpoint start -n default -a <amsaccount> -g <amsResourceGroup>`
+

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 618453ec9857254fe14608df8091bb79bd3815b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: ba4643118c5d90b91c3e51d569e9a628c84159fc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509967"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780018"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -50,7 +50,7 @@ ms.locfileid: "65509967"
 
 ![浮出控件](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>调查失败
+### <a name="investigate-failures"></a>调查故障
 
 选择“调查故障”以启动故障窗格。
 
@@ -110,7 +110,7 @@ namespace CustomInitializer.Telemetry
             {
                 //set custom role name here
                 telemetry.Context.Cloud.RoleName = "Custom RoleName";
-                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance"
+                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance";
             }
         }
     }

@@ -1,26 +1,26 @@
 ---
 title: 缩放群集大小 - Azure HDInsight
-description: 根据工作负荷缩放 HDInsight 群集。
+description: 缩放弹性以匹配你的工作负荷的 Azure HDInsight 群集。
 author: ashishthaps
+ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.author: ashish
-ms.openlocfilehash: a172024e4662e647b39fe999f1be3cfcef04b5ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/13/2019
+ms.openlocfilehash: 59b9c2bf6e17dadc0d084d3e3f257f8ad91073ca
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698245"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595852"
 ---
 # <a name="scale-hdinsight-clusters"></a>缩放 HDInsight 群集
 
 HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 这样，便可以在若干小时后或者在周末收缩群集，或者在业务高峰期扩展群集。
 
-例如，如果要每隔一天或每隔一个月执行某种批处理一次，则可以在该计划事件之前的几分钟扩展 HDInsight 群集，以便有足够的内存和 CPU 计算能力。  在完成处理并且用量再次下降后，可将 HDInsight 群集缩减为更少的工作节点。
+例如，如果您有某种批处理一天一次或每月一次发生这种情况，因此将有足够的内存和 CPU 计算能力可以在该计划事件之前的几分钟扩展 HDInsight 群集。  在完成处理并且用量再次下降后，可将 HDInsight 群集缩减为更少的工作节点。
 
+可以手动使用一种方法，如下所述的群集也可以使用[自动缩放](hdinsight-autoscale-clusters.md)选项以便让系统自动向上和向下缩放以响应 CPU、 内存和其他指标。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,8 +32,8 @@ Microsoft 提供以下实用程序来缩放群集：
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<群集名称> -TargetInstanceCount \<NewSize>|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<群集名称> -TargetInstanceCount \<NewSize>|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<资源组> --name \<群集名称> --target-instance-count \<NewSize>|
-|[Azure 经典 CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<目标实例计数>|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<资源组> --name \<群集名称> --target-instance-count \<NewSize>|
+|[Azure 经典 CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<目标实例计数> |
 |[Azure 门户](https://portal.azure.com)|打开 HDInsight 群集的窗格，在左侧菜单中选择“群集大小”，然后在“群集大小”窗格中键入工作节点数并选择“保存”。|  
 
 ![缩放群集](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
@@ -326,6 +326,6 @@ hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     
 ## <a name="next-steps"></a>后续步骤
 
+* [自动缩放 Azure HDInsight 群集](hdinsight-autoscale-clusters.md)
 * [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md)
 * [缩放群集](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)

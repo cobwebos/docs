@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: e85cfb6d7b44924ce7f17fdedb7f1b52350ab598
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8a85319a12f04a11e3914716d9ff84cdb6de8d8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392392"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787862"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>设置和检索属性与元数据
 
-Azure 存储中的对象支持系统属性和用户定义的元数据，除了该数据以外，它们还包含： 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)管理系统属性和用户定义元数据。
+Azure 存储中的对象支持系统属性和用户定义的元数据，除了该数据以外，它们还包含： 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)管理系统属性和用户定义元数据。
 
 * **系统属性**:系统属性存在于每个存储资源上。 其中一些属性是可以读取或设置的，而另一些属性是只读的。 事实上，有些系统属性与某些标准 HTTP 标头对应。 Azure 存储客户端库将保留这些属性。
 
@@ -99,5 +99,8 @@ public static async Task ListContainerMetadataAsync(CloudBlobContainer container
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [适用于 .NET 的 Azure 存储客户端库参考](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
-* [适用于 .NET NuGet 包的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Azure 存储客户端库.NET 参考](/dotnet/api/?term=Microsoft.Azure.Storage)
+* [.NET 包的 azure Blob 存储客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [.NET 包的 azure 队列存储客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+* [.NET 包的 azure 文件存储客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)
+

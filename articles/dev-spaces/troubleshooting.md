@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 508fe597a494ed89b4c2f406337c6b565943387a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d5b08a22aa3896fb7158ef3535b115e3e0189142
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728824"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596985"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -389,3 +389,18 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
     * 有关*分配访问权限*选择*Azure AD 用户、 组或服务主体*。
     * 有关*选择*搜索你想要授予权限的用户。
 1. 单击“ *保存*”。
+
+## <a name="controller-create-failing-due-to-controller-name-length"></a>创建控制器由于控制器名称长度而失败
+
+### <a name="reason"></a>原因
+Azure 开发人员空格控制器的名称不能超过 31 个字符。 如果控制器的名称超过 31 个字符，在 AKS 群集上启用开发人员空间或创建一个控制器时，将收到如下错误：
+
+*未能创建群集的开发空间控制器 a-controller-name-that-is-way-too-long-aks-east-us:Azure 开发人员空格控制器名称 a-controller-name-that-is-way-too-long-aks-east-us 是无效的。违反了约束：Azure 开发人员空格控制器名称只能是最多 31 个字符*
+
+### <a name="try"></a>尝试
+
+创建使用的备用名称的控制器：
+
+```cmd
+azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
+```

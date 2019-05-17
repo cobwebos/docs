@@ -9,31 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 05/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 937a032bffbad4e8a7d737360aa140e59760f8e2
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 25b3209bed98ea217db9e414caa6f08cee6d8c89
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472443"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761887"
 ---
 # <a name="encoding-with-media-services"></a>使用媒体服务进行编码
 
-Azure 媒体服务，可将高质量的数字媒体文件编码为自适应比特率 MP4 文件，因此可在各种浏览器和设备上播放内容。 成功的媒体服务编码作业创建一个输出资产的一组自适应比特率 mp4 和流式处理配置文件。 配置文件包括.ism、.ismc、.mpi 和其他不应修改的文件。 完成编码作业后，可以充分利用[动态打包](dynamic-packaging-overview.md)和启动流式处理。
+在媒体服务中的术语编码适用于转换包含数字视频和/或从一种标准格式到另一个，、 目的在于 （a） 减小文件的大小和/或 （b） 生成与兼容的格式的音频文件的过程广泛的设备和应用程序。 此过程也称为视频压缩或转码。 请参阅[数据压缩](https://en.wikipedia.org/wiki/Data_compression)并[什么是编码和转码？](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx)有关概念的进一步讨论。
 
-若要在输出中进行视频播放的客户端可用的资产，则必须创建**流式处理定位符**和生成流 Url。 然后，你的客户端根据清单中指定的格式，它们具有选定的协议接收流。
+视频通常情况下传递到设备和应用程序通过[渐进式下载](https://en.wikipedia.org/wiki/Progressive_download)或通过[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)。 
 
-下图显示了按需流式处理与动态打包工作流。
+* 若要通过渐进式下载传送，可以使用 Azure 媒体服务来转换数字媒体文件 （夹层） 到[MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)文件，其中包含已编码使用的视频[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)编解码器，和使用已编码的音频[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)编解码器。 此 MP4 文件写入到你的存储帐户中的资产。 可以使用 Azure 存储 Api 或 Sdk (例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md)， [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md)，或[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) 直接下载该文件。 如果您创建的输出资产的特定容器名称在存储中，使用该位置。 否则，可以使用媒体服务添加到[列出资产容器 Url](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。 
+* 若要准备的自适应比特率流式处理交付内容，需要将夹层文件 （从高到低） 的多个比特率进行编码。 若要确保质量的正常转换，如降低比特率，因此是视频的分辨率。 这会导致所谓的编码阶梯 – 表的分辨率和比特率 (请参阅[自动生成自适应比特率阶梯](autogen-bitrate-ladder.md))。 您可以使用媒体服务在多个比特率 – 在此过程中将夹层文件编码，你将收到一组 MP4 文件和关联流式处理的配置文件，写入到你的存储帐户中的资产。 然后，可以使用[动态打包](dynamic-packaging-overview.md)媒体服务中的功能将通过流式处理协议，如视频[MPEG DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP)并[HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)。 这需要你创建[流式处理定位符](streaming-locators-concept.md)和生成流 Url 对应于受支持的协议，然后可以传递给设备/应用程序基于其功能关闭。
 
-![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+下图显示了按需编码使用动态打包的工作流。
+
+![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 本主题介绍如何使用媒体服务 v3 对内容进行编码。
 
 ## <a name="transforms-and-jobs"></a>转换和作业
 
-若要使用媒体服务 v3 进行编码，需创建[转换](https://docs.microsoft.com/rest/api/media/transforms)和[作业](https://docs.microsoft.com/rest/api/media/jobs)。 转换用于定义编码设置和输出的配方，作业则是该配方的一个实例。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
+若要使用媒体服务 v3 进行编码，需创建[转换](https://docs.microsoft.com/rest/api/media/transforms)和[作业](https://docs.microsoft.com/rest/api/media/jobs)。 转换可定义一个方案，用于在编码的设置和输出;作业是该方案的实例。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
 使用媒体服务进行编码时，可以使用预设来指示编码器应如何处理输入媒体文件。 例如，可以在编码内容中指定所需的视频分辨率和/或音频信道数量。 
 

@@ -3,8 +3,8 @@ title: 为 Azure AD 中的企业应用程序自定义 SAML 令牌中颁发的声
 description: 了解如何为 Azure AD 中的企业应用程序自定义 SAML 令牌中颁发的声明。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4c1f8640918d433956935e9428e23aac59e36334
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231340"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764662"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -121,7 +121,7 @@ ms.locfileid: "65231340"
 | **Extract （)-之前匹配** | 返回子字符串，直到它与指定的值匹配。<br/>例如，如果输入的值为"BSimon_US"，匹配的值为"_US"，则声明的输出是"是 bsimon 作为用户名"。 |
 | **Extract （)-之间匹配** | 返回子字符串，直到它与指定的值匹配。<br/>例如，如果输入的值为"Finance_BSimon_US"，第一个匹配值是"Finance_"，第二个匹配的值为"_US"，则声明的输出是"是 bsimon 作为用户名"。 |
 | **ExtractAlpha()-前缀** | 返回前缀按字母顺序排列字符串的一部分。<br/>例如，如果输入的值为"BSimon_123"，然后它将返回"是 bsimon 作为用户名"。 |
-| **ExtractAlpha() - Suffix** | 返回字符串的后缀按字母顺序排列部分。<br/>例如，如果输入的值为"123_Simon"，然后它将返回"是 bsimon 作为用户名"。 |
+| **ExtractAlpha() - Suffix** | 返回字符串的后缀按字母顺序排列部分。<br/>例如，如果输入的值为"123_Simon"，然后它将返回"Simon"。 |
 | **ExtractNumeric() - Prefix** | 返回字符串的前缀数字部分。<br/>例如，如果输入的值为"123_BSimon"，然后它将返回"123"。 |
 | **ExtractNumeric() - Suffix** | 返回字符串的数字后缀部分。<br/>例如，如果输入的值为"BSimon_123"，然后它将返回"123"。 |
 | **IfEmpty()** | 如果输入为 null 或为空，输出的属性或常量。<br/>例如，如果你想要输出的属性存储在 extensionattribute 给定用户的 employeeid 是否为空。 若要执行此操作，需要配置以下值：<br/>参数 1(input): user.employeeid<br/>参数 2 （输出）： user.extensionattribute1<br/>参数 3 （如果没有匹配项，则为输出）： user.employeeid |

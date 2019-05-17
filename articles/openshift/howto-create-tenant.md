@@ -6,13 +6,13 @@ ms.author: twhitney
 ms.service: container-service
 manager: jeconnoc
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 3c7f0b263cc775b7f9fec62e4d5388250e5124fb
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/13/2019
+ms.openlocfilehash: 04d710f4d60b776f8059d87ea4d009bed6f7f8ba
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079115"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551717"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>创建 Azure Red Hat OpenShift 的 Azure AD 租户
 
@@ -34,7 +34,7 @@ Microsoft Azure Red Hat OpenShift 需要[Azure Active Directory (Azure AD)](http
 
     ![在右上角显示租户名称的门户屏幕截图][tenantcallout]  
 
-8. 请记下的*租户 ID*以便稍后可以指定要在其中创建 Azure Red Hat OpenShift 群集。 在门户中，为新租户，现在应看到 Azure Active Directory 概述边栏选项卡。 选择**属性**复制的值和你**Directory ID**。 我们将把此值作为`tenant id`中[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程。
+8. 请记下的*租户 ID*以便稍后可以指定要在其中创建 Azure Red Hat OpenShift 群集。 在门户中，为新租户，现在应看到 Azure Active Directory 概述边栏选项卡。 选择**属性**复制的值和你**Directory ID**。 我们将把此值作为`TENANT`中[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程。
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 

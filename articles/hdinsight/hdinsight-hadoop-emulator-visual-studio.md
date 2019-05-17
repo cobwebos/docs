@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8172da3f573f78365cbe76f435a4817e64bc136c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3286ca3b9c85236ff322eb19324bc5ac7a904e22
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700357"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605449"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用
 
@@ -25,7 +25,7 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
 
 * 在开发环境上的虚拟机中运行的 Hortonworks 沙盒。 本文档是根据 Oracle VirtualBox 中运行的沙盒编写和测试的， 有关设置沙盒的详细信息，请参阅 [Hortonworks 沙盒入门](hadoop/apache-hadoop-emulator-get-started.md) 文档。
 
-* Visual Studio 2013、Visual Studio 2015 或 Visual Studio 2017（任何版本）。
+* Visual Studio。
 
 * [用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/) 2.7.1 或更高版本。
 

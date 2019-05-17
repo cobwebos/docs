@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06337fef1a9d9b41fd41ff7c67611581639adc0a
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61272326"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619718"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
-应用服务域（预览版）是直接在 Azure 中管理的顶级域。 使用这些域可以轻松管理 [Azure 应用服务](overview.md)的自定义域。 本教程介绍如何购买应用服务域并将 DNS 名称分配到 Azure 应用服务。
+应用服务域是直接在 Azure 中管理的顶级域。 使用这些域可以轻松管理 [Azure 应用服务](overview.md)的自定义域。 本教程介绍如何购买应用服务域并将 DNS 名称分配到 Azure 应用服务。
 
 对于 Azure VM 或 Azure 存储，请查看[Assign App Service domain to Azure VM or Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/)（将应用服务分配到 Azure VM 或 Azure 存储）。 对于云服务，请查看[为 Azure 云服务配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。
 
@@ -80,7 +80,7 @@ ms.locfileid: "61272326"
 ## <a name="buy-the-domain"></a>购买域
 
 ### <a name="pricing-information"></a>定价信息
-有关 Azure 应用服务域的定价信息，请访问[应用服务定价页](https://azure.microsoft.com/pricing/details/app-service/windows/)并向下滚动到应用服务域。
+有关 Azure 应用服务域的定价信息，请访问[应用服务定价页](https://azure.microsoft.com/pricing/details/app-service/windows/)和向下的滚动至应用服务域。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 打开 [Azure 门户](https://portal.azure.com/)，然后使用 Azure 帐户登录。
@@ -150,7 +150,7 @@ ms.locfileid: "61272326"
 
 ## <a name="assign-hostnames-to-app"></a>将主机名分配到应用
 
-如果在购买过程中选择不将一个或多个默认主机名分配到应用，或者需要分配某个未列出的主机名，则随时可以分配主机名。
+如果你选择不在购买过程中，将一个或多个默认主机名分配到您的应用程序，或者如果需要分配主机名未列出，则可以随时分配主机名。
 
 还可以将应用服务域中的主机名分配到任何其他应用。 执行的步骤取决于应用服务域和应用是否属于同一个订阅。
 
@@ -278,7 +278,3 @@ ms.locfileid: "61272326"
 ## <a name="direct-default-url-to-a-custom-directory"></a>将默认 URL 定向到自定义目录
 
 默认情况下，应用服务将 Web 请求定向到应用代码的根目录下。 若要将它们定向到一个子目录，例如 `public`，请参阅[将默认 URL 定向到自定义目录](app-service-web-tutorial-custom-domain.md#virtualdir)。
-
-## <a name="more-resources"></a>更多资源
-
-[常见问题解答：应用服务域（预览版）和自定义域](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

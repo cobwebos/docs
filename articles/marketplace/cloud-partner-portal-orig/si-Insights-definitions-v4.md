@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e23297d8cd6cab5abeedc1a12fa1a37c93e94283
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943620"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606901"
 ---
 <a name="seller-insights-definitions"></a>Seller Insights 定义
 =======================
@@ -37,7 +37,7 @@ ms.locfileid: "64943620"
 | **客户城市**  | 提供由客户的城市名称。 这可能是不同于客户的 Azure 订阅中的城市。  |
 | **客户通信语言**        | 客户的首选通信语言。                                  |
 | **客户公司名称**                  | 提供由客户的公司名称。 这可能是不同于客户的 Azure 订阅中的城市。                                  |
-| **客户所在国家/地区**                       | 由客户提供的国家/地区名称。  这可能是不同于客户的 Azure 订阅中的国家/地区。                               |
+| **客户所在国家/地区**                       | 由客户提供的国家/地区名称。  这可能是不同于客户的 Azure 订阅中的国家/地区/区域。                               |
 | **客户货币 (CC)**                 | 客户首选的定价和计费货币。                            |
 | **客户电子邮件**                         | 提供最终客户的电子邮件地址。  这可能是不同于客户的 Azure 订阅中的电子邮件地址。                   |
 | **客户名字**                              | 由客户提供的第一个名称。  这可能是不同于客户的 Azure 订阅中提供的名称。                    |

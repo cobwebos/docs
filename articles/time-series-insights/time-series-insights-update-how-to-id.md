@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81877ad23728ad76cb5d4dc5084990511257c6df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4b2f538831ee9410eaf1a2d272f01fd30a9236e6
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695089"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519440"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -29,6 +29,7 @@ ms.locfileid: "64695089"
 > 时序 ID 需区分大小写，且不可更改（设置后不能更改）。
 
 考虑到这一点，选择合适的时序 ID 至关重要。 选择时序 ID 时，请考虑遵循以下最佳做法：
+
 * 选择的属性名称应具有范围较宽的值，并采用均衡的访问模式。 采用具有大量（例如，几百甚至几千个）非重复性值的分区键是最佳做法。 对许多客户而言，这与 JSON 中的 DeviceID 或 SensorID 类似。
 * 在[时序模型](./time-series-insights-update-tsm.md)的叶节点级别，时序 ID 应是唯一的。
 * 时序 ID 属性名称字符串最多可包含 128 个字符，时序 ID 属性值最多可包含 1024 个字符。
@@ -41,13 +42,13 @@ ms.locfileid: "64695089"
 
 以下方案介绍了选择多个键属性作为时序 ID 的情况：  
 
-### <a name="scenario-1"></a>方案 1
+### <a name="scenario-one"></a>方案 1
 
-* 拥有旧资产组，且每组资产都有一个唯一的密钥。 
-* 例如，一个组由唯一属性 deviceId 标识，另一个组的唯一属性为 objectId。 两个组都不包含对方的唯一属性。 在此示例中，将选择两个键 deviceId 和 objectId 作为唯一键。 
+* 拥有旧资产组，且每组资产都有一个唯一的密钥。
+* 例如，一个组由唯一属性 deviceId 标识，另一个组的唯一属性为 objectId。 两个组都不包含对方的唯一属性。 在此示例中，将选择两个键 deviceId 和 objectId 作为唯一键。
 * 我们接受 null 值，且如果事件负载中缺少属性，则计为 `null` 值。 向两个不同事件源发送数据时，这种方法同样合适，其中每个事件源中的数据具有唯一的时序 ID。
 
-### <a name="scenario-2"></a>方案 2
+### <a name="scenario-two"></a>方案二
 
 * 同一组资产中需要多个唯一的属性。 
 * 例如，假设你是智能建筑制造商，并且要在每个房间部署传感器。 通常每个房间的 sensorId 的值相同，例如 sensor1、sensor2 和 sensor3。

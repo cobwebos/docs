@@ -1,7 +1,7 @@
 ---
 title: 分类：预测信用风险
 titleSuffix: Azure Machine Learning service
-description: 此可视界面示例试验演示了如何执行二元分类以预测信用风险根据信用额度应用程序中提供信息。
+description: 了解如何生成机器学习的分类器，而无需编写一行代码使用直观的界面。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 3d4ec3c71aaed6bddb012fb17ee5bb96da00cd76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028525"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789403"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>示例 3-分类：预测信用风险
 
-此可视界面示例试验演示了如何执行二元分类以预测信用风险根据信用额度应用程序中提供信息。 它显示了如何执行基本分类，包括数据处理操作控件、 设置数据集拆分为训练和测试集，为模型定型、 测试数据集，评分和评估预测。
+了解如何生成机器学习的分类器，而无需编写一行代码使用直观的界面。 此示例训练**双类提升的决策树**来预测信用风险 （高或低） 根据信用额度信用历史记录、 年龄、 和的信用卡号等的应用程序信息。
+
+因为我们正在尝试回答问题"哪一种？" 这称为分类问题。 不过，您可以应用相同的基本过程解决任何类型的机器学习问题，无论是回归、 分类、 聚类分析，等等。
+
+下面是此实验的已完成关系图：
+
+![实验的关系图](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -40,7 +46,6 @@ ms.locfileid: "65028525"
 
 ## <a name="experiment-summary"></a>实验摘要
 
-
 我们按照以下步骤来创建实验：
 
 1. 将德国信用卡 UCI 数据数据集模块拖放到试验画布。
@@ -50,11 +55,10 @@ ms.locfileid: "65028525"
 1. 添加**训练模型**模块。 分类器从前面的步骤连接到的左侧输入端口**训练模型**。 添加训练集 (左侧输出端口**拆分数据**) 到右侧输入端口**训练模型**。 **训练模型**将训练分类器。
 1. 添加**评分模型**模块并连接**训练模型**模块添加到它。 然后添加测试集 (右侧端口**拆分数据**) 到**评分模型**。 **评分模型**将进行预测。 您可以选择其输出端口，以查看预测和正类概率。
 1. 添加**评估模型**模块并连接到其左侧输入端口的已评分数据集。 若要查看评估结果，请选择的输出端口**评估模型**模块，并选择**可视化**。
-    
+
 以下是完成实验关系图：
 
 ![实验的关系图](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
-
 
 ## <a name="results"></a>结果
 

@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b392fecd75f5c18793a6122b8d5d967a2e54afa
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60462289"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604445"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>为 Azure Data Box 开具支持票证 
 
@@ -56,7 +56,7 @@ ms.locfileid: "60462289"
 4. 在“新建支持请求”中，单击“步骤 3: 联系信息”。 在“联系信息”中执行以下步骤：
 
    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
-   2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”。
+   2. 在中**联系信息**，提供你的姓名、 电子邮件、 可选联系人、 国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”。
    3. 单击**创建**。
    
        ![联系信息](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   

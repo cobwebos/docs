@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: a200649493354f1264afb0df4cf74acb4a274017
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e370916d420a7bc4cd16d021c69a2f8609093d30
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406408"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544705"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -77,7 +77,7 @@ Azure 区块链服务提供两个服务层：*基本*并*标准*。 每个层提
 ## <a name="next-steps"></a>后续步骤
 
 若要开始，请尝试快速入门或了解从这些资源的更多详细信息。
-* [创建使用 Azure 门户的区块链成员](create-member.md)或[创建区块链成员使用 Azure CLI]()
+* [创建使用 Azure 门户的区块链成员](create-member.md)或[创建区块链成员使用 Azure CLI](create-member-cli.md)
 * 有关成本比较与计算器，请参阅[定价页](https://azure.microsoft.com/pricing/details/blockchain-service)。
 * 生成你的第一个应用程序使用[Azure 区块链开发工具包](https://github.com/Azure-Samples/blockchain-devkit)
 * Azure 区块链 VSCode 扩展[用户指南](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)

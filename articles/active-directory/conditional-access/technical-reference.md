@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3b10a91499dbe7e627025be8487efa15890861b9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301186"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764729"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -33,7 +33,7 @@ ms.locfileid: "60301186"
 
 ## <a name="cloud-apps-assignments"></a>云应用分配
 
-使用条件访问策略，可以控制用户如何访问你的[云应用](conditions.md#cloud-apps)。 配置条件访问策略时，至少需要一个云应用。 
+使用条件访问策略，可以控制用户如何访问你的[云应用](conditions.md#cloud-apps-and-actions)。 配置条件访问策略时，至少需要一个云应用。 
 
 ![为策略选择云应用](./media/technical-reference/09.png)
 
@@ -142,7 +142,7 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 |    |    |
 | --- | --- |
 | 路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
+| 名称 | 第 |
 | Type | REG_SZ (String) |
 | 数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
@@ -151,7 +151,7 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 |    |    |
 | --- | --- |
 | 路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
+| 名称 | 第 |
 | Type | REG_SZ (String) |
 | 数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
@@ -203,6 +203,7 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 此设置适用于以下客户端应用：
 
 - Microsoft Azure 信息保护
+- Microsoft Bookings
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
@@ -227,7 +228,7 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 - Microsoft Word
 - Microsoft Yammer
 
-**备注**
+**注释**
 
 - 批准的客户端应用支持 Intune 移动应用管理功能。
 - “需要批准的客户端应用”要求：
@@ -244,7 +245,7 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 - Microsoft OneDrive
 - Microsoft Outlook
 
-**备注**
+**注释**
 
 - 应用应用保护策略支持使用策略保护的 Intune 移动应用程序管理功能。
 - **需要应用保护策略**要求：

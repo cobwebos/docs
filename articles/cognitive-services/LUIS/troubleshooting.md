@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: fc05f285b286bd0f036c583c154a40cf64e144d4
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: b4c1de8edf04e15b540adeac01bcbf0cb1d1b8af
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522034"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65766932"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -64,13 +64,13 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>如何转让 LUIS 应用的所有权？
 若要将某个 LUIS 应用转让给另一 Azure 订阅，请导出该 LUIS 应用，然后使用新帐户来导入它。 在进行调用的客户端应用程序中更新 LUIS 应用 ID。 新应用返回的 LUIS 分数与原始应用返回的可能稍有不同。
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>预生成的实体标记中的示例查询文本，而不是我的自定义实体中。 如何修复此问题? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>预生成实体在示例话语中标记，而不是在我的自定义实体中标记。 如何修复此问题？ 
 
-请参阅[故障排除预生成的实体](luis-concept-entity-types.md#troubleshooting-prebuilt-entities)。
+请参阅[排查预生成实体问题](luis-concept-entity-types.md#troubleshooting-prebuilt-entities)。
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我尝试导入的应用程序或版本文件，但收到错误，发生了什么情况？ 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我尝试导入应用或版本文件，但收到了错误，发生了什么情况？ 
 
-详细了解[版本导入错误](luis-how-to-manage-versions.md#import-errors)并[应用程序导入错误](luis-how-to-start-new-app.md#import-errors)。
+详细了解[版本导入错误](luis-how-to-manage-versions.md#import-errors)和[应用导入错误](luis-how-to-start-new-app.md#import-errors)。
 
 <a name="luis-collaborating"></a>
 
@@ -295,6 +295,8 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 * [V3 API 迁移指南的预览](luis-migration-api-v3.md)
 * [改进的分析仪表板](luis-how-to-use-dashboard.md)
 * [改进了预生成的域](luis-reference-prebuilt-domains.md) 
+* [动态列表实体](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [外部实体](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="next-steps"></a>后续步骤
 

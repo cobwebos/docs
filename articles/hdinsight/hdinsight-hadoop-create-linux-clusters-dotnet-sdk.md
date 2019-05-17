@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 04760ab570ffc213950c28c22c499d8e9252d574
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42c3f0ce70467c6a90bcc4e2e6b8a21d7570edc4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690194"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606180"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集
 
@@ -33,11 +33,11 @@ ms.locfileid: "64690194"
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **Azure 存储帐户**。 请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
-* **Visual Studio 2013、Visual Studio 2015 或 Visual Studio 2017**。
+* **Visual Studio**。
 
 ## <a name="create-clusters"></a>创建群集
 
-1. 打开 Visual Studio 2017。
+1. 打开 Visual Studio。
 2. 创建新的 Visual C# 控制台应用程序。
 3. 在“工具”菜单中，单击“NuGet 包管理器”，并单击“包管理器控制台”。
 4. 在控制台中运行下列命令以安装程序包：

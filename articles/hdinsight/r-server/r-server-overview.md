@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 56a11a17de3c66a3d45edb71c72be20ce1a1c89e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8ed9d84cba7cb9eeca94a1376fc03f1d256afa85
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683756"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779222"
 ---
-# <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 ML Services 和开放源代码 R 功能简介
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的机器学习服务
 
 > [!NOTE]  
 > 2017 年 9 月，Microsoft R Server 以 Microsoft Machine Learning Server 或 ML Server 的新名称发布。 因此，HDInsight 上的 R Server 群集现称为 HDInsight 上的机器学习服务或 ML Services 群集。 有关 R Server 名称更改的详细信息，请参阅 [Microsoft R Server 现在是 Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server)。

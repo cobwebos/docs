@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 82b568d5a6abae1f061166afc1c80ef639df036c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 245e5ca6e2d7d1f48951d63ba6539180a35f1358
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371540"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604158"
 ---
 # <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>为 Microsoft 客户协议查看税务文档
 
@@ -36,7 +36,7 @@ ms.locfileid: "60371540"
 3. 选择“发票”。
 4. 在发票网格中，查找你想要下载的税务文档相对应的发票。
 5. 单击省略号 (`...`) 的行的末尾。
-6. 选择**税务文档**。 具体取决于你计费的配置文件的国家/地区，可能会看到多个每张发票的税务文档。
+6. 选择**税务文档**。 具体取决于你的账单资料国家/地区，可能会看到多个每张发票的税务文档。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

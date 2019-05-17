@@ -14,19 +14,19 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 6d4db402142441ed9b2bf62da48caa637195ad37
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 08d1f69294c4e330db79a1b5fecdb259dffe33cb
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074525"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550396"
 ---
 使应用程序很好：
 
-- 启用[日志记录](../articles/active-directory/develop/msal-logging.md)在应用程序中。
-- 启用应用程序中的遥测。
-- 启用[代理和自定义 HTTP 客户端](../articles/active-directory/develop/msal-net-provide-httpclient.md)。
+- 启用[日志记录](../articles/active-directory/develop/msal-logging.md)。
+- 启用遥测。
+- 启用[代理并自定义 HTTP 客户端](../articles/active-directory/develop/msal-net-provide-httpclient.md)。
 
 测试你的集成：
 
-- 请按照[Microsoft 标识平台集成清单](../articles/active-directory/develop/identity-platform-integration-checklist.md)。
+- 使用[Microsoft 标识平台集成清单](../articles/active-directory/develop/identity-platform-integration-checklist.md)。

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/11/2019
-ms.openlocfilehash: ba79e2b9552f0c27ac11501b2b125a126e40eb1d
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 7ab22a1d1b44327b28264ec5bd6ba0c44b1d65a7
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551623"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620148"
 ---
 # <a name="sql-database-serverless-preview"></a>SQL 数据库无服务器（预览版）
 
@@ -98,7 +98,7 @@ SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单�
 
 如果在任何时候，下面的任意条件成立，均会触发自动恢复：
 
-|功能|自动恢复触发器|
+|Feature|自动恢复触发器|
 |---|---|
 |身份验证和授权|登录|
 |威胁检测|启用/禁用数据库或服务器级别的威胁检测设置<br>修改数据库或服务器级别的威胁检测设置|
@@ -117,7 +117,7 @@ SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单�
 
 如果无服务器数据库处于暂停状态，则首次登录将恢复数据库，并返回一个错误，指出数据库将不可用，错误代码为 40613。 恢复数据库后，必须重新尝试登录以建立连接。 具有连接重试逻辑的数据库客户端应该不需要进行修改。
 
-### <a name="latency"></a>延迟
+### <a name="latency"></a>Latency
 
 自动暂停或自动恢复无服务器数据库的延迟时间通常为 1 分钟。
 
@@ -138,7 +138,7 @@ SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单�
 
    |服务目标名称|服务层|硬件代次|最大 vCore 数|
    |---|---|---|---|
-   |GP_S_Gen5_1|常规用途|Gen5|1|
+   |GP_S_Gen5_1|常规用途|Gen5|第|
    |GP_S_Gen5_2|常规用途|Gen5|2|
    |GP_S_Gen5_4|常规用途|Gen5|4|
 
@@ -204,11 +204,11 @@ Set-AzSqlDatabase
 
 ### <a name="minimum-vcores"></a>最小 vCore 数
 
-通过在 PowerShell 中使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) 命令，使用 `MinVcore` 参数来修改最大 vCore 数。
+使用修改的最小 Vcore 执行[集 AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)命令，在 PowerShell 中使用`MinVcore`参数。
 
 ### <a name="autopause-delay"></a>自动暂停延迟
 
-通过在 PowerShell 中使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) 命令，使用 `AutoPauseDelay` 参数来修改最大 vCore 数。
+修改自动暂停延迟执行通过[集 AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)命令，在 PowerShell 中使用`AutoPauseDelay`参数。
 
 ## <a name="monitor-serverless-database"></a>监视无服务器数据库
 
@@ -226,7 +226,7 @@ Set-AzSqlDatabase
 
 ### <a name="metrics"></a>度量值
 
-|实体|指标|说明|单位|
+|实体|指标|描述|单位|
 |---|---|---|---|
 |应用包|app_cpu_percent|应用使用的 vCore 数相对于应用允许的最大 vCore 数的百分比。|百分比|
 |应用包|app_cpu_billed|报告期内收取的应用计算费用。 在此期间支付的金额是此指标和 vCore 单位价格的乘积。 <br><br>此指标的值是通过将每秒使用的最大 CPU 和内存使用量按时间进行汇总来得到的。 如果使用的量小于按照最小 vCore 数和最小内存量预配的最小量，则按照预配的最小量进行计费。 为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。|vCore 秒|

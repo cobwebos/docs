@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b36d721896bd7b4f95d831eded500a96969937c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33becd46747f957cce67fb7b2ace170a9aa402ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631883"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606932"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
 
@@ -173,7 +173,7 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 ## <a name="ac-power-cord-compliance"></a>交流电源线符合性
 
-插头和整个电源线组件必须符合适用于设备所在国家/地区的标准，并且必须具有该国家/地区可接受的安全许可。 下表列出了美国和欧洲的标准。
+即插即用和完整的电源线套件程序集必须满足在其中使用该设备，国家/地区的相应标准，并且它们必须具有在该国家/地区可接受的安全审批。 下表列出了美国和欧洲的标准。
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>交流电源线 - 美国（必须在 NRTL 登记）
 

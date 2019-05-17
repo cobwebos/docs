@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 04/30/2018
-ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/13/2019
+ms.openlocfilehash: 3b0ad33ea6348f24079b3c88f972437244c0bc93
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60845728"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596757"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用
 
-当您创建了逻辑应用中的[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)，逻辑应用具有描述在逻辑应用中运行的实际逻辑的基础工作流定义。 该工作流定义使用[JSON](https://www.json.org/)并遵循由工作流定义语言架构验证的结构。 本参考提供有关此结构和架构如何定义工作流定义中的元素的概述。
+当您创建了逻辑应用中的[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)，逻辑应用具有描述在逻辑应用中运行的实际逻辑的基础工作流定义。 该工作流定义使用[JSON](https://www.json.org/)并遵循由工作流定义语言架构验证的结构。 本参考提供有关此结构，该架构如何定义工作流定义中的属性的概述。
 
 ## <a name="workflow-definition-structure"></a>工作流定义结构
 
@@ -29,24 +29,63 @@ ms.locfileid: "60845728"
 ```json
 "definition": {
   "$schema": "<workflow-definition-language-schema-version>",
-  "contentVersion": "<workflow-definition-version-number>",
-  "parameters": { "<workflow-parameter-definitions>" },
-  "triggers": { "<workflow-trigger-definitions>" },
   "actions": { "<workflow-action-definitions>" },
-  "outputs": { "<workflow-output-definitions>" }
+  "contentVersion": "<workflow-definition-version-number>",
+  "outputs": { "<workflow-output-definitions>" },
+  "parameters": { "<workflow-parameter-definitions>" },
+  "staticResults": { "<static-results-definitions>" },
+  "triggers": { "<workflow-trigger-definitions>" }
 }
 ```
 
-| 元素 | 需要 | 描述 |
-|---------|----------|-------------|
-| 定义 | 是 | 工作流定义的起始元素 |
-| $schema | 仅当在外部引用工作流定义时才使用 | 描述工作流定义语言版本的 JSON 架构文件的位置。可在以下位置找到该文件： <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| contentVersion | 否 | 工作流定义的版本号，默认为“1.0.0.0”。 为了帮助在部署工作流时识别并确认正确的定义，请指定要使用的值。 |
-| parameters | 否 | 用于将数据传入工作流的一个或多个参数的定义 <p><p>参数数量上限：50 |
-| 触发器 | 否 | 用于实例化工作流的一个或多个触发器的定义 可以定义多个触发器，但只能使用工作流定义语言来定义，而不能通过逻辑应用设计器以可视方式进行定义。 <p><p>触发器数量上限：10 |
-| actions | 否 | 要在工作流运行时执行的一个或多个操作的定义 <p><p>操作数量上限：250 |
-| outputs | 否 | 从工作流运行返回的输出的定义 <p><p>输出数量上限：10 |
+| 特性 | 需要 | 描述 |
+|-----------|----------|-------------|
+| `definition` | 是 | 工作流定义的起始元素 |
+| `$schema` | 仅当在外部引用工作流定义时才使用 | 描述工作流定义语言版本的 JSON 架构文件的位置。可在以下位置找到该文件： <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
+| `actions` | 否 | 一个或多个要在工作流运行时执行的操作的定义。 有关详细信息，请参阅[触发器和操作](#triggers-actions)。 <p><p>操作数量上限：250 |
+| `contentVersion` | 否 | 工作流定义的版本号，默认为“1.0.0.0”。 为了帮助在部署工作流时识别并确认正确的定义，请指定要使用的值。 |
+| `outputs` | 否 | 运行工作流中返回的输出定义。 有关详细信息，请参阅[输出](#outputs)。 <p><p>输出数量上限：10 |
+| `parameters` | 否 | 将数据传递到工作流中的一个或多个参数的定义。 有关详细信息，请参阅[参数](#parameters)。 <p><p>参数数量上限：50 |
+| `staticResults` | 否 | 操作返回的模拟输出作为这些操作在中启用静态结果时的一个或多个静态结果的定义。 在每个操作定义中，`runtimeConfiguration.staticResult.name`属性引用在相应的定义`staticResults`。 有关详细信息，请参阅[静态结果](#static-results)。 |
+| `triggers` | 否 | 用于实例化工作流的一个或多个触发器的定义 可以定义多个触发器，但只能使用工作流定义语言来定义，而不能通过逻辑应用设计器以可视方式进行定义。 有关详细信息，请参阅[触发器和操作](#triggers-actions)。 <p><p>触发器数量上限：10 |
 ||||
+
+<a name="triggers-actions"></a>
+
+## <a name="triggers-and-actions"></a>触发器和操作
+
+在工作流定义中，`triggers` 和 `actions` 节定义工作流执行期间发生的调用。 有关这些节的语法和详细信息，请参阅[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md)。
+
+<a name="outputs"></a>
+
+## <a name="outputs"></a>Outputs
+
+在 `outputs` 节中，定义工作流在完成运行时可以返回的数据。 例如，若要跟踪每次运行的特定状态或值，请指定工作流输出应返回该数据。
+
+> [!NOTE]
+> 在响应来自服务 REST API 的传入请求时，请不要使用 `outputs`。 请改用 `Response` 操作类型。 有关详细信息，请参阅[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md)。
+
+下面是输出定义的一般结构：
+
+```json
+"outputs": {
+  "<key-name>": {
+    "type": "<key-type>",
+    "value": "<key-value>"
+  }
+}
+```
+
+| 特性 | 需要 | Type | 描述 |
+|-----------|----------|------|-------------|
+| <*key-name*> | 是 | String | 输出返回值的密钥名称 |
+| <*key-type*> | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
+| <*key-value*> | 是 | 与相同 <*密钥类型*> | 输出返回值 |
+|||||
+
+若要运行工作流中获取输出，请查看逻辑应用的运行历史记录和在 Azure 门户中的详细信息，或使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。
+
+<a name="parameters"></a>
 
 ## <a name="parameters"></a>parameters
 
@@ -69,44 +108,94 @@ ms.locfileid: "60845728"
 },
 ```
 
-| 元素 | 需要 | Type | 描述 |
-|---------|----------|------|-------------|
-| type | 是 | int、float、string、securestring、bool、array、JSON 对象、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 和 `secureobject` 类型，因为 `GET` 操作不会返回这些类型。 有关保护参数的详细信息，请参阅[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | 参数的类型 |
-| defaultValue | 是 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值 |
-| allowedValues | 否 | 与 `type` 相同 | 包含参数可接受的值的数组 |
-| metadata | 否 | JSON 对象 | 任何其他参数的详细信息，例如，名称或逻辑应用或流中或使用 Visual Studio 或其他工具的设计时数据的可读说明 |
+| 特性 | 需要 | Type | 描述 |
+|-----------|----------|------|-------------|
+| <*parameter-type*> | 是 | int、float、string、securestring、bool、array、JSON 对象、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 和 `secureobject` 类型，因为 `GET` 操作不会返回这些类型。 有关保护参数的详细信息，请参阅[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | 参数的类型 |
+| <*default-parameter-values*> | 是 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值 |
+| <*array-with-permitted-parameter-values*> | 否 | Array | 包含参数可接受的值的数组 |
+| `metadata` | 否 | JSON 对象 | 任何其他参数的详细信息，例如，名称或逻辑应用或流中或使用 Visual Studio 或其他工具的设计时数据的可读说明 |
 ||||
 
-## <a name="triggers-and-actions"></a>触发器和操作
+<a name="static-results"></a>
 
-在工作流定义中，`triggers` 和 `actions` 节定义工作流执行期间发生的调用。 有关这些节的语法和详细信息，请参阅[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md)。
+## <a name="static-results"></a>静态结果
 
-## <a name="outputs"></a>Outputs
-
-在 `outputs` 节中，定义工作流在完成运行时可以返回的数据。 例如，若要跟踪每次运行的特定状态或值，请指定工作流输出应返回该数据。
-
-> [!NOTE]
-> 在响应来自服务 REST API 的传入请求时，请不要使用 `outputs`。 请改用 `Response` 操作类型。 有关详细信息，请参阅[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md)。
-
-下面是输出定义的一般结构：
+在中`staticResults`属性，定义操作的模拟`outputs`和`status`操作返回操作的静态结果设置开启时。 在操作的定义中，`runtimeConfiguration.staticResult.name`属性引用内部静态结果定义的名称`staticResults`。 了解如何[测试具有模拟数据的逻辑应用通过设置静态结果](../logic-apps/test-logic-apps-mock-data-static-results.md)。
 
 ```json
-"outputs": {
-  "<key-name>": {
-    "type": "<key-type>",
-    "value": "<key-value>"
-  }
+"definition": {
+   "$schema": "<...>",
+   "actions": { "<...>" },
+   "contentVersion": "<...>",
+   "outputs": { "<...>" },
+   "parameters": { "<...>" },
+   "staticResults": {
+      "<static-result-definition-name>": {
+         "outputs": {
+            <output-attributes-and-values-returned>,
+            "headers": { <header-values> },
+            "statusCode": "<status-code-returned>"
+         },
+         "status": "<action-status>"
+      }
+   },
+   "triggers": { "<...>" }
 }
 ```
 
-| 元素 | 需要 | Type | 描述 |
-|---------|----------|------|-------------|
-| <*key-name*> | 是 | String | 输出返回值的密钥名称 |
-| type | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
-| value | 是 | 与 `type` 相同 | 输出返回值 |
+| 特性 | 需要 | Type | 描述 |
+|-----------|----------|------|-------------|
+| <*static-result-definition-name*> | 是 | String | 操作定义可以通过引用静态结果定义的名称`runtimeConfiguration.staticResult`对象。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>可以使用任何所需的唯一名称。 默认情况下，此唯一名称后追加一个数字，其会相应增加。 |
+| <*output-attributes-and-values-returned*> | 是 | 多种多样 | 这些属性的要求因不同的条件。 例如，当`status`是`Succeeded`，则`outputs`属性包括属性和所返回的操作为模拟输出值。 如果`status`是`Failed`，则`outputs`属性包括`errors`特性，它是一个包含一个或多个错误的数组`message`具有错误的信息的对象。 |
+| <*header-values*> | 否 | JSON | 操作返回的任何标头值 |
+| <*status-code-returned*> | 是 | String | 返回由该操作的状态代码 |
+| <*action-status*> | 是 | String | 操作的状态，例如，`Succeeded`或 `Failed` |
 |||||
 
-若要运行工作流中获取输出，请查看逻辑应用的运行历史记录和在 Azure 门户中的详细信息，或使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。
+例如，在此 HTTP 操作定义中，`runtimeConfiguration.staticResult.name`属性引用`HTTP0`内`staticResults`其中定义该操作的模拟输出的属性。 `runtimeConfiguration.staticResult.staticResultOptions`属性指定静态结果设置为`Enabled`上 HTTP 操作。
+
+```json
+"actions": {
+   "HTTP": {
+      "inputs": {
+         "method": "GET",
+         "uri": "https://www.microsoft.com"
+      },
+      "runAfter": {},
+      "runtimeConfiguration": {
+         "staticResult": {
+            "name": "HTTP0",
+            "staticResultOptions": "Enabled"
+         }
+      },
+      "type": "Http"
+   }
+},
+```
+
+HTTP 操作返回中的输出`HTTP0`内部定义`staticResults`。 在此示例中，状态代码，用于模拟的输出是`OK`。 对于标头值，模拟的输出是`"Content-Type": "application/JSON"`。 有关操作的状态，模拟的输出是`Succeeded`。
+
+```json
+"definition": {
+   "$schema": "<...>",
+   "actions": { "<...>" },
+   "contentVersion": "<...>",
+   "outputs": { "<...>" },
+   "parameters": { "<...>" },
+   "staticResults": {
+      "HTTP0": {
+         "outputs": {
+            "headers": {
+               "Content-Type": "application/JSON"
+            },
+            "statusCode": "OK"
+         },
+         "status": "Succeeded"
+      }
+   },
+   "triggers": { "<...>" }
+},
+```
 
 <a name="expressions"></a>
 

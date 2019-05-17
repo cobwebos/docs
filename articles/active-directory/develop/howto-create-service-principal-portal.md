@@ -3,25 +3,25 @@ title: 在门户中为 Azure 应用创建标识 | Microsoft 文档
 description: 介绍如何创建新的 Azure Active Directory 应用程序和服务主体，在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用可以管理对资源的访问权限。
 services: active-directory
 documentationcenter: na
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/08/2019
-ms.author: celested
+ms.date: 05/14/2019
+ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9affec9ccc1b87f36d6f30aff4795d85532be8c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300689"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764905"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -106,18 +106,18 @@ ms.locfileid: "60300689"
 
    ![客户端 ID](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-1. 选择“设置”。
+1. 选择**证书和机密**。
 
-   ![选择设置](./media/howto-create-service-principal-portal/select-settings.png)
+   ![选择设置](./media/howto-create-service-principal-portal/select-certs-secrets.png)
 
-1. 选择“密钥”。
-1. 提供密钥说明和密钥持续时间。 完成后，选择“保存”。
+1. 选择**客户端机密-> 新的客户端机密**。
+1. 提供的密钥和持续时间的说明。 完成后，选择**添加**。
 
-   ![保存密钥](./media/howto-create-service-principal-portal/save-key.png)
+   ![将机密保存](./media/howto-create-service-principal-portal/save-secret.png)
 
-   保存密钥后, 会显示密钥的值。 复制此值，因为稍后不能检索密钥。 提供密钥值及应用程序 ID，以该应用程序的身份登录。 将密钥值存储在应用程序可检索的位置。
+   在保存后的客户端机密，显示客户端机密的值。 复制此值，因为稍后不能检索密钥。 提供密钥值及应用程序 ID，以该应用程序的身份登录。 将密钥值存储在应用程序可检索的位置。
 
-   ![保存的密钥](./media/howto-create-service-principal-portal/copy-key.png)
+   ![复制密码](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="required-permissions"></a>所需权限
 
@@ -146,7 +146,7 @@ ms.locfileid: "60300689"
 
 检查订阅权限的方法如下：
 
-1. 在右上角选择自己的帐户，然后选择“我的权限”。
+1. 右上角选择你的帐户，然后选择 **...-> 我的权限**。
 
    ![选择用户权限](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "60300689"
 
    ![查找用户](./media/howto-create-service-principal-portal/view-details.png)
 
-1. 查看分配到的角色，确定是否拥有足够的权限向角色分配 AD 应用。 如果没有，请要求订阅管理员你将添加到用户访问管理员角色。 在下图中，用户分配到了“所有者”角色，这意味着该用户具有足够的权限。
+1. 选择**角色分配**查看分配的角色，并确定你是否有足够的权限向角色分配 AD 应用。 如果没有，请要求订阅管理员你将添加到用户访问管理员角色。 在下图中，用户分配到了“所有者”角色，这意味着该用户具有足够的权限。
 
    ![显示权限](./media/howto-create-service-principal-portal/view-user-role.png)
 

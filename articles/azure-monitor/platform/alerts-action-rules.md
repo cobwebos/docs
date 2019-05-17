@@ -8,25 +8,28 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65227993"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620003"
 ---
 # <a name="action-rules-preview"></a>操作规则 （预览版）
 
-本文介绍了操作规则是什么，以及如何配置和管理它们。
-
-## <a name="what-are-action-rules"></a>操作规则是什么？
-
 操作规则，可在任何资源管理器作用域 （订阅、 资源组或资源） 中定义的操作 （或禁止显示的操作）。 它们具有多种筛选器，允许您缩小到需要采取措施的警报实例的特定子集。 
 
-使用操作规则可以：
+## <a name="why-and-when-should-you-use-action-rules"></a>为什么以及何时应使用操作规则？
 
-* 如果已进行了规划维护时段或周末/假日安排，而无需禁用每个警报规则单独，取消操作和通知。
-* 定义操作和大规模的通知：无需定义单独为每个警报规则的操作组，现在可以定义要在任何范围内生成的警报触发的操作组。 例如，我可以选择允许生成我的订阅中每个警报的操作组 ContosoActionGroup 触发器。
+### <a name="suppression-of-alerts"></a>禁止显示的警报
+
+通常，还有很多情况下，它将非常有用，若要禁止显示生成的警报，这些范围是从禁止显示在计划内的维护时段禁止显示在非工作时间到警报通知。 例如，负责 ContosoVM 的团队想要取消警报通知即将推出的周末，因为 ContosoVM 正在进行计划内的维护。 虽然它们可以禁用每个警报规则上 ContosoVM 手动配置 （和重新启用它后维护），它不是简单的体验。 操作规则，可定义警报抑制大规模能够灵活地配置禁止显示的段。 回到前面的示例，该团队现在可以定义 ContosoVM 将取消所有警报的通知显示周末的上一个操作规则。
+
+
+### <a name="actions-at-scale"></a>在规模较大的操作
+
+尽管警报规则允许你定义时将生成此警报触发的操作组，但客户往往会在其操作的作用域都具有一组常见的操作。 例如，一个团队负责的资源组 ContosoRG 可能将定义的相同的操作组，为 ContosoRG 中定义的所有警报规则。 操作规则，可通过允许您定义操作在规模较大，可以为配置的作用域上生成任何警报触发的操作组，从而简化此过程。 回到前面的示例，团队现在可以定义一个操作规则在 ContosoRG，将触发相同的操作组为在其中生成的所有警报。
+
 
 ## <a name="configuring-an-action-rule"></a>操作规则配置
 

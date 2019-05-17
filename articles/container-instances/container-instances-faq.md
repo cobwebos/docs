@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: dekapur
-ms.openlocfilehash: 5657ac9f10c42c2201641c9af447b7ad2e6a3507
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 99882bd23d7b94afc550247172e5b70deb23bec9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079010"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791399"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例常见问题
 
@@ -77,7 +77,7 @@ Azure 容器实例的目标是为无服务器的容器按需服务，因此我�
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>ACI 何时在特定区域？
 
-发布当前区域可用性[这里](container-instances-region-availability.md#availability---general)，并保持最新信息，请通过[列表功能](/rest/api/container-instances/listcapabilities)API。 如果有某个特定区域的需求，请联系 Azure 支持。
+发布当前区域可用性[此处](container-instances-region-availability.md#availability---general)。 如果有某个特定区域的需求，请联系 Azure 支持。
 
 ## <a name="features-and-scenarios"></a>功能和方案
 

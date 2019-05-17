@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.openlocfilehash: 5795cde35d53a64620c4fdb6c3af99a7f56b12d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0bfb66f54ec09e86b46a41499211e93a0083e8d1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61440644"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779917"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 
@@ -36,6 +36,9 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 * 从*根证书颁发机构 (CA)* 购买 X.509 证书。 建议在生产环境中使用此方法。
 
 * 使用 [OpenSSL](https://www.openssl.org/) 等第三方工具创建自己的 X.509 证书。 此方法适用于测试和开发目的。 有关使用 PowerShell 或 Bash 生成测试 CA 证书的信息，请参阅[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)。 本教程的其余部分使用按照[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的说明生成的测试 CA 证书。
+
+* 生成[X.509 中间 CA 证书](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust)现有的根 CA 证书签名并将其上传到 IoT 中心。 中间证书是上传并验证，如下所示，它可以使用到下面所述的根 CA 证书位置。 OpenSSL 等工具 ([openssl req](https://www.openssl.org/docs/manmaster/man1/openssl-req.html)并[openssl ca](https://www.openssl.org/docs/manmaster/man1/openssl-ca.html)) 可用于生成并中间 CA 证书进行签名。
+
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>将 X.509 CA 证书注册到 IoT 中心
 

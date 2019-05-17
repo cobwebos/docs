@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614513"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604359"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure Monitor 中收集 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Azure Monitor 进行收集并将其存储为[日志数据](data-platform.md)。
@@ -51,7 +51,7 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 | csUriStem |请求的目标，例如网页。 |
 | csUriQuery |客户端正在尝试执行的查询（如果有的话）。 |
 | ManagementGroupName |Operations Manager 代理的管理组的名称。  对于其他代理，这是 AOI-\<工作区 ID\> |
-| RemoteIPCountry |客户端 IP 地址的国家/地区。 |
+| RemoteIPCountry |国家/地区的客户端的 IP 地址。 |
 | RemoteIPLatitude |客户端 IP 地址的纬度。 |
 | RemoteIPLongitude |客户端 IP 地址的经度。 |
 | scStatus |HTTP 状态代码。 |

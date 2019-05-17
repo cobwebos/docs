@@ -1,6 +1,6 @@
 ---
-title: Azure 监视器-监视 kubernetes 托管的应用零检测应用程序 |Microsoft Docs
-description: 监视 Kubernetes 托管应用的零个检测应用程序是一个监视解决方案，允许您收集有关传入和传出请求到和从由在 Kubernetes 群集中运行的 pod 的 Application Insights 遥测数据使用服务网格技术称为 Istio。
+title: 使用 Application Insights 监视 Azure Kubernetes 服务 (AKS) 或其他 Kubernetes 托管的应用程序的 Azure Monitor |Microsoft Docs
+description: Azure 监视器上的 Kubernetes 群集，提供应用程序监视的任何托管的 Kubernetes 应用程序使用服务网格技术，Istio。 这允许您收集有关传入和传出请求与在群集中运行的 pod 的 Application Insights 遥测数据。
 services: application-insights
 author: tokaplan
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: alkaplan
-ms.openlocfilehash: 42b81ec0fa01841791a5b2651d1c1189db5e27ff
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: c94d589875195207ec6f71c35ad077cac281fda5
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408213"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555837"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Kubernetes 零检测应用程序监视托管应用程序
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes 零检测应用程序监视托管的应用程序
 
 > [!IMPORTANT]
 > 此功能当前处于公共预览状态。
