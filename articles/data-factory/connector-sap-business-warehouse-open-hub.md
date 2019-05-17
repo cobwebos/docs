@@ -103,7 +103,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
 | systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
-| 语言 | SAP 系统使用的语言。 | 否（默认值为 **EN**）|
+| language | SAP 系统使用的语言。 | 否（默认值为 **EN**）|
 | userName | 有权访问 SAP 服务器的用户名。 | 是 |
 | password | 用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
