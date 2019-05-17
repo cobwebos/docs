@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/16/2019
 ms.author: diberry
-ms.openlocfilehash: ea74dbd6cffa34e4462433cdfc51e7d5abac9a41
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 43e35e8074922f45493bc635455d1d176078ce51
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796672"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833531"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
@@ -26,9 +26,12 @@ Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可�
 * [人脸](Face/Overview.md)
 * [表单识别器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [语言理解](LUIS/luis-container-howto.md) (LUIS)
-* [个性化体验创建服务](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
 * [语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [文本分析](text-analytics/overview.md)
+
+<!--
+* [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
+-->
 
 容器化是一种软件分发方法，其中应用程序或服务（包括其依赖关系和配置）被一起打包为容器映像。 如果几乎不进行修改，可将容器映像部署在容器主机上。 容器彼此隔离并与基础操作系统隔离，内存占用小于虚拟机。 容器可以从容器映像中实例化以用于短期任务，并在不再需要时将其删除。
 
@@ -57,12 +60,15 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 |[人脸](Face/face-how-to-install-containers.md) |F0、S0|**人脸** |检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[表单识别器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0、S0|**表单识别器** |表单理解应用机器学习技术从表单中识别和提取键值对和表。<br>[请求访问权限](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS](LUIS/luis-container-howto.md) |F0、S0|**LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)）|可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://www.luis.ai)以提高应用的预测准确性。|
-|[个性化体验创建服务](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0、S0|**个性化体验创建服务**（[图像](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)）|Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。|
 |[语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0、S0|**语音转文本** |将连续的实时语音转换为文本。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
 |[语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0、S0|**文本转语音** |将文本转换为自然发音的语音。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
 |[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0、S|关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)） |提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
 |[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)） |针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
 |[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|情绪分析（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） |分析原始文本，获取正面或负面情绪的线索。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](./text-analytics/language-support.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 |
+
+<!--
+|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
+-->
 
 此外，认知服务[**一体化产品/服务**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)资源密钥支持某些容器。 可以为以下服务创建单个认知服务一体化资源，并在支持的服务之间使用相同的计费密钥：
 
@@ -97,7 +103,7 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 
 各容器还可以有其自己的要求，包括服务器和内存分配要求。
 
-## <a name="developer-samples"></a>开发人员示例
+## <a name="developer-samples"></a>开发者示例
 
 可在 [GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-containers-samples)中查看开发人员示例。
 
@@ -117,6 +123,8 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 * [人脸容器](Face/face-how-to-install-containers.md)
 * [表单识别器容器](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [语言理解 (LUIS) 容器](LUIS/luis-container-howto.md)
-* [个性化体验创建服务容器](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 * [语音服务 API 容器](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [文本分析容器](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
+
+<!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
+-->

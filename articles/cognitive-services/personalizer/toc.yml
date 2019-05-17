@@ -49,14 +49,6 @@
       items:
         - name: 脱机评估
           href: how-to-offline-evaluation.md
-    - name: 使用容器
-      items:
-        - name: 安装并运行容器
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, run, apikey'
-          href: personalizer-container-howto.md
-        - name: 配置容器
-          href: personalizer-container-configuration.md
-          displayName: 'docker, run, apikey'
 - name: 引用
   items:
     - name: 示例
