@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: c4ab209d63a01d9e1089eec351eff64fc116f403
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924978"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236791"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>教程：通过 Azure 市场创建主机池
 
@@ -70,7 +70,7 @@ ms.locfileid: "64924978"
 
 1. 输入包含你的租户的租户组的 **Windows 虚拟桌面租户组名称**。 如果你尚未想好具体的租户组名称，请将此字段保留默认值。
 2. 输入要在其中创建此主机池的租户的 **Windows 虚拟桌面租户名称**。
-3. 指定以 Windows 虚拟桌面租户 RDS 所有者身份进行身份验证时要使用的凭据类型。 如果选择“服务主体”，则还必须提供与服务主体关联的“Azure AD 租户 ID”。
+3. 指定以 Windows 虚拟桌面租户 RDS 所有者身份进行身份验证时要使用的凭据类型。 如果已完成[“使用 PowerShell 创建服务主体和角色分配”教程](./create-service-principal-role-powershell.md)，选择“服务主体”。 现在需要输入带有服务主体的 Azure Active Directory 的 Azure AD 租户 ID。
 4. 另请输入租户管理员帐户的凭据。 仅支持具有密码凭据的服务主体。
 5. 选择“确定”。
 

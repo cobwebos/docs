@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 1cecafb013b5d22557961e98935fc9a2fee2a79b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2bfca370e8e89d98f700c8c5adfd29129e810d9b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198850"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416253"
 ---
 1. 选择 Azure 门户左上角的“创建资源”按钮，然后选择“计算” > “函数应用”。
 
@@ -41,4 +41,4 @@ ms.locfileid: "65198850"
 
     ![定义新的函数应用设置](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
-5. 选择“转到资源”，查看新的函数应用。
+5. 选择“转到资源”，查看新的函数应用。 还可选择“固定到仪表板”。 固定可以更轻松地从仪表板返回此函数应用资源。

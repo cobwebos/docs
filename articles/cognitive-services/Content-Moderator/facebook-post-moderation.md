@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: pafarley
-ms.openlocfilehash: 662eca2a727f3112f169ab8d669bf18c81700275
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871022"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233809"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查 Facebook 帖子和评论
 
@@ -28,11 +28,14 @@ ms.locfileid: "57871022"
 > * 创建 Azure Functions，用于侦听来自内容审查器和 Facebook 的 HTTP 事件。
 > * 使用 Facebook 应用程序将 Facebook 页面链接到内容审查器。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 此图演示了此方案的每个组件：
 
 ![通过“FBListener”从 Facebook 接收信息，并通过“CMListener”发送信息的内容审查器示意图](images/tutorial-facebook-moderation.png)
+
+> [!IMPORTANT]
+> 2018 年，Facebook 对 Facebook 应用进行了更为严格的审查。 如果 Facebook 评审团队尚未评审并批准你的应用，你将无法完成本教程的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,65 +65,68 @@ ms.locfileid: "57871022"
 登录到 [Azure 门户](https://portal.azure.com/)并执行以下步骤：
 
 1. 按照 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) 页面所示，创建 Azure Function App。
-2. 打开新建的函数应用。
-3. 在该应用中，转到“平台功能”选项卡并选择“应用程序设置”。 在下一页的“应用程序设置”部分，滚动到列表底部并单击“添加新设置”。 添加以下键/值对
+1. 打开新建的函数应用。
+1. 在该应用中，转到“平台功能”选项卡并选择“配置”。 在下一页的“应用程序设置”部分中，选择“新的应用程序设置”来添加以下键/值对：
     
     | 应用设置名称 | 值   | 
     | -------------------- |-------------|
     | cm:TeamId   | 内容审查器 TeamId  | 
-    | cm:SubscriptionKey | 内容审查器的订阅密钥 - 请参阅[凭据](review-tool-user-guide/credentials.md) | 
-    | cm:Region | 内容审查器的区域名称，不含空格。 请参阅前面的说明。 |
+    | cm:SubscriptionKey | 内容审查器的订阅密钥 - 请参阅[凭据](review-tool-user-guide/credentials.md) |
+    | cm:Region | 内容审查器的区域名称，不含空格。 |
     | cm:ImageWorkflow | 对图像运行的工作流的名称 |
     | cm:TextWorkflow | 对文本运行的工作流的名称 |
-    | cm:CallbackEndpoint | 在本指南后面部分创建的 CMListener Function App 的 URL |
-    | fb:VerificationToken | 机密令牌，还用于订阅 Facebook 源事件 |
-    | fb:PageAccessToken | Facebook 图形 API 访问令牌不会过期，并允许函数代表你隐藏/删除帖子。 |
+    | cm:CallbackEndpoint | 将在本指南稍后部分创建的 CMListener Function App 的 URL |
+    | fb:VerificationToken | 你创建的机密令牌，用于订阅 Facebook 源事件 |
+    | fb:PageAccessToken | Facebook 图形 API 访问令牌不会过期，并允许函数代表你隐藏/删除帖子。 你将在之后的步骤中获取此令牌。 |
 
     单击页面顶部的“保存”按钮。
 
-1. 使用左窗格中的 **+** 按钮打开“新建函数”窗格。
+1. 返回到“平台功能”选项卡。使用左窗格上的“+”按钮打开“新建函数”窗格。 你即将创建的函数将通过 Facebook 接收事件。
 
     ![Azure Functions 窗格，其中已突出显示“添加函数”按钮。](images/new-function.png)
-
-    然后单击页面顶部的“+ 新建函数”。 此函数接收来自 Facebook 的事件。 通过执行以下步骤创建此函数：
 
     1. 单击显示了“HTTP 触发器”的磁贴。
     1. 输入名称 FBListener。 “授权级别”字段应设置为“函数”。
     1. 单击“创建”。
     1. 将 **run.csx** 的内容替换为 **FbListener/run.csx** 中的内容。
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-160)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
 1. 创建名为 **CMListener** 的新“HTTP 触发器”函数。 此函数接收来自内容审查器的事件。 将 **run.csx** 的内容替换为 **CMListener/run.csx** 中的内容。
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-106)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
 ---
 
 ## <a name="configure-the-facebook-page-and-app"></a>配置 Facebook 页面和应用
+
 1. 创建 Facebook 应用。
 
     ![Facebook 开发人员页面](images/facebook-developer-app.png)
 
     1. 导航到 [Facebook 开发人员网站](https://developers.facebook.com/)
-    2. 单击“我的应用”。
-    3. 添加新应用。
+    1. 单击“我的应用”。
+    1. 添加新应用。
     1. 为应用命名
     1. 选择“Webhook”->“设置”
     1. 在下拉菜单中选择“页面”，然后选择“订阅此对象”
     1. 提供 FBListener URL 作为回叫 URL，并在“Function App 设置”下提供配置的“验证令牌”
     1. 订阅后，向下滚动到源，然后选择“订阅”。
+    1. 单击“源”行的“测试”按钮，将测试消息发送到 FBListener Azure 函数，然后点击“发送到我的服务器”按钮。 FBListener 上应会显示收到的请求。
 
-2. 创建 Facebook 页面。
+1. 创建 Facebook 页面。
+
+    > [!IMPORTANT]
+    > 2018 年，Facebook 对 Facebook 应用进行了更为严格的审查。 如果 Facebook 评审团队尚未评审并批准你的应用，你将无法进行第 2、3 和 4 部分。
 
     1. 导航到 [Facebook](https://www.facebook.com/bookmarks/pages) 并创建新的 Facebook 页。
-    2. 执行以下步骤以允许 Facebook 应用访问此页面：
+    1. 执行以下步骤以允许 Facebook 应用访问此页面：
         1. 导航到[图形 API 资源管理器](https://developers.facebook.com/tools/explorer/)。
-        2. 选择“应用程序”。
-        3. 选择“页面访问令牌”，发送 Get 请求。
-        4. 单击响应中的“页面 ID”。
-        5. 现在，将 /subscribed_apps 追加到 URL 并发送 Get（空响应）请求。
-        6. 提交 Post 请求。 获取 success: true 形式的响应。
+        1. 选择“应用程序”。
+        1. 选择“页面访问令牌”，发送 Get 请求。
+        1. 单击响应中的“页面 ID”。
+        1. 现在，将 /subscribed_apps 追加到 URL 并发送 Get（空响应）请求。
+        1. 提交 Post 请求。 获取 success: true 形式的响应。
 
 3. 创建不会过期的图形 API 访问令牌。
 

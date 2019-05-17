@@ -1,47 +1,63 @@
 ---
-title: 使用 Ansible 在 Azure 中自动缩放虚拟机规模集
-description: 了解如何在 Azure 中使用 Ansible 通过自动缩放来缩放虚拟机规模集
-ms.service: azure
+title: 教程 - 使用 Ansible 在 Azure 中自动缩放虚拟机规模集 | Microsoft Docs
+description: 了解如何使用 Ansible 在 Azure 中通过自动缩放来缩放虚拟机规模集
 keywords: ansible, azure, devops, bash, playbook, 缩放, 自动缩放, 虚拟机, 虚拟机规模集, vmss
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/10/2018
-ms.openlocfilehash: 578ad3207f62e74805be056ca11d3bd9b46513da
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: 4f2cd66b7460fc6fe48cb55f45bf4bc309ae054c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792423"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231282"
 ---
-# <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>使用 Ansible 在 Azure 中自动缩放虚拟机规模集
-使用 Ansible 可以在环境中自动部署和配置资源。 可以在 Azure 中使用 Ansible 管理虚拟机规模集 (VMSS)，就像管理任何其他 Azure 资源一样。 
+# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>教程：使用 Ansible 在 Azure 中自动缩放虚拟机规模集
 
-创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。 本文介绍如何创建自动缩放设置并将其关联到现有的虚拟机规模集。 在自动缩放设置中，可以配置一项规则，根据需要进行横向的缩放。
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
+
+自动调整 VM 实例数量的功能被称为[自动缩放](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)。 自动缩放的优势在于减少监视和优化应用程序性能所产生的管理开销。 自动缩放可根据需求或规定计划进行配置。 通过 Ansible 可指定自动缩放规则，用于定义提供积极客户体验而可接受的性能。
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * 定义自动缩放配置文件
+> * 按定期计划自动缩放
+> * 按应用性能自动缩放
+> * 检索自动缩放设置信息 
+> * 禁用自动缩放设置
 
 ## <a name="prerequisites"></a>先决条件
-- **Azure 订阅** - 如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- 现有的 Azure 虚拟机规模集。 - 如果没有虚拟机规模集，请[在 Azure 中使用 Ansible 创建虚拟机规模集](https://docs.microsoft.com/azure/ansible/ansible-create-configure-vmss)。
 
-> [!Note]
-> 在本教程中运行以下示例 playbook 需要 Ansible 2.7。 
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
+[!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 
-## <a name="auto-scale-based-on-a-schedule"></a>按计划自动缩放   
+## <a name="autoscale-based-on-a-schedule"></a>按计划自动缩放
+
 若要在规模集上启用自动缩放，首先要定义自动缩放配置文件。 此配置文件定义默认、最小和最大规模集容量。 这些限制可让你通过不继续创建 VM 实例来控制成本，并可使用缩小事件中保留的最小数量的实例均衡可接受的性能。 
 
-可以按定期计划或特定日期缩放虚拟机规模集。 此部分介绍一个示例 Ansible playbook，它可以创建一项自动缩放设置，在每个星期一的 10:00（太平洋时区）将规模集中的 VM 实例数增加到 3。 
+通过 Ansible 可按特定日期或定期计划缩放规模集。
+
+本部分的 playbook 代码在每周一上午 10 点将 VM 实例数增加到 3 个。
+
+将以下 playbook 保存为 `vmss-auto-scale.yml`：
 
 ```yml
 ---
 - hosts: localhost
   vars:
     resource_group: myResourceGroup
-    vmss_name: myVMSS
+    vmss_name: myScaleSet
     name: autoscalesetting
   tasks: 
-    - name: Create auto scaling
+    - name: Create autoscaling
       azure_rm_autoscale:
          resource_group: "{{ resource_group }}"
          name: "{{ name }}"
@@ -65,23 +81,31 @@ ms.locfileid: "57792423"
               - '10'
 ```
 
-将此 playbook 另存为 *vmss-auto-scale.yml*。 若要运行 Ansible playbook，请使用 **ansible-playbook** 命令，如下所示：
+使用 `ansible-playbook` 命令运行 playbook：
 
 ```bash
 ansible-playbook vmss-auto-scale.yml
 ```
 
-## <a name="auto-scale-based-on-performance-data"></a>按性能数据自动缩放
-如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例及部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或磁盘）、应用程序负载必须处于给定阈值内的时间，以及要添加到规模集的 VM 实例数。
+## <a name="autoscale-based-on-performance-data"></a>按性能数据自动缩放
 
-可以根据性能指标阈值，按定期计划或特定日期缩放虚拟机规模集。 此部分介绍一个示例 Ansible playbook，它在每个星期一的 18:00（太平洋时区）检查过去 10 分钟的工作负荷，将规模集中的 VM 实例数扩大到 4 或者缩减到 1，具体取决于 CPU 百分比指标。 
+如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例并部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 通过 Ansible 可控制 CPU 使用情况、磁盘使用情况和应用加载时间等要监视的指标。 可根据性能指标阈值，按定期计划或特定日期缩放和扩展规模集。 
+
+本部分的 playbook 代码在每周一下午 6 点检查过去 10 分钟的 CPU 工作负载。 
+
+playbook 根据 CPU 百分比指标执行以下操作之一：
+
+- 将 VM 实例数扩展为 4 个
+- 将 VM 实例数缩减为 1 个
+
+将以下 playbook 保存为 `vmss-auto-scale-metrics.yml`：
 
 ```yml
 ---
 - hosts: localhost
   vars:
     resource_group: myResourceGroup
-    vmss_name: myVMSS
+    vmss_name: myScaleSet
     name: autoscalesetting
   tasks:
   - name: Get facts of the resource group
@@ -89,11 +113,11 @@ ansible-playbook vmss-auto-scale.yml
       name: "{{ resource_group }}"
     register: rg
 
-  - name: Get VMSS resource uri
+  - name: Get scale set resource uri
     set_fact:
       vmss_id: "{{ rg.ansible_facts.azure_resourcegroups[0].id }}/providers/Microsoft.Compute/virtualMachineScaleSets/{{ vmss_name }}"
     
-  - name: Create auto scaling
+  - name: Create autoscaling
     azure_rm_autoscale:
       resource_group: "{{ resource_group }}"
       name: "{{ name }}"
@@ -151,14 +175,17 @@ ansible-playbook vmss-auto-scale.yml
             value: '1'
 ```
 
-将此 playbook 另存为 *vmss-auto-scale-metrics.yml*。 若要运行 Ansible playbook，请使用 **ansible-playbook** 命令，如下所示：
+使用 `ansible-playbook` 命令运行 playbook：
 
 ```bash
 ansible-playbook vmss-auto-scale-metrics.yml
 ```
 
-## <a name="get-information-for-existing-autoscale-settings"></a>获取现有的自动缩放设置的信息
-可以使用 playbook 通过 *azure_rm_autoscale_facts* 模块获取自动缩放设置的详细信息，如下所示：
+## <a name="get-autoscale-settings-information"></a>获取自动缩放设置信息 
+
+本部分的 playbook 代码使用 `azure_rm_autoscale_facts` 模块来检索自动缩放设置的详细信息。
+
+将以下 playbook 保存为 `vmss-auto-scale-get-settings.yml`：
 
 ```yml
 - hosts: localhost
@@ -166,7 +193,7 @@ ansible-playbook vmss-auto-scale-metrics.yml
     resource_group: myResourceGroup
     name: autoscalesetting
   tasks: 
-    - name: Retrieve auto scale settings information
+    - name: Retrieve autoscale settings information
       azure_rm_autoscale_facts:
         resource_group: "{{ resource_group }}"
         name: "{{ name }}"
@@ -176,8 +203,19 @@ ansible-playbook vmss-auto-scale-metrics.yml
         var: autoscale_query.autoscales[0]
 ```
 
-## <a name="disable-the-autoscale-settings"></a>禁用自动缩放设置
-可以禁用自动缩放设置，方法是使用 playbook 将 `enabled: true` 更改为 `enabled: false` 或删除自动缩放设置，如下所示：
+使用 `ansible-playbook` 命令运行 playbook：
+
+```bash
+ansible-playbook vmss-auto-scale-get-settings.yml
+```
+
+## <a name="disable-autoscale-settings"></a>禁用自动缩放设置
+
+有两种方法可禁用自动缩放设置。 一种方法是将 `enabled` 密钥从 `true` 更改为 `false`。 另一种方法是删除该设置。
+
+本部分的 playbook 代码将删除自动缩放设置。 
+
+将以下 playbook 保存为 `vmss-auto-scale-delete-setting.yml`：
 
 ```yml
 - hosts: localhost
@@ -185,13 +223,20 @@ ansible-playbook vmss-auto-scale-metrics.yml
     resource_group: myResourceGroup
     name: autoscalesetting
   tasks: 
-    - name: Delete auto scaling
+    - name: Delete autoscaling
       azure_rm_autoscale:
          resource_group: "{{ resource_group }}"
          name: "{{ name }}"
          state: absent
 ```
 
+使用 `ansible-playbook` 命令运行 playbook：
+
+```bash
+vmss-auto-scale-delete-setting.yml
+```
+
 ## <a name="next-steps"></a>后续步骤
+
 > [!div class="nextstepaction"] 
-> [适用于虚拟机规模集的 Ansible 示例 playbook](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [教程：使用 Ansible 更新 Azure 虚拟机规模集的自定义映像](./ansible-vmss-update-image.md)

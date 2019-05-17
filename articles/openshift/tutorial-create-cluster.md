@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
-ms.date: 05/06/2019
-ms.openlocfilehash: 5bc71a2d0f29fed163fb5c93ebd27df7f66a1325
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/08/2019
+ms.openlocfilehash: baada8a5238725456ca4a2ec7e8257c229066115
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079472"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466180"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>教程：创建 Azure Red Hat OpenShift 群集
 
@@ -35,7 +35,7 @@ ms.locfileid: "65079472"
 在开始学习本教程之前：
 
 确保已[设置开发环境](howto-setup-environment.md)，包括：
-- 安装最新的 CLI
+- 安装最新版的 CLI（2.0.64 或更高版本）
 - 创建租户
 - 创建 Azure 应用程序对象
 - 创建 Active Directory 用户用于登录到群集上运行的应用。
@@ -101,7 +101,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>可选：将群集的虚拟网络连接到现有的虚拟网络
 
-如果不需要将所创建群集的虚拟网络 (VNET) 连接到现有 VNET，请跳过此步骤。
+如果不需要通过对等互连将所创建的群集的虚拟网络 (VNET) 连接到现有 VNET，请跳过此步骤。
 
 首先获取现有 VNET 的标识符。 该标识符采用以下格式：`/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`。
 
@@ -132,7 +132,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 
 ## <a name="step-3-sign-in-to-the-openshift-console"></a>步骤 3：登录到 OpenShift 控制台
 
-现在可以登录到新群集的 OpenShift 控制台。 使用 [OpenShift Web 控制台](https://docs.openshift.com/dedicated/architecture/infrastructure_components/web_console.html)可以可视化、浏览和管理 OpenShift 项目的内容。
+现可登录到新群集的 OpenShift 控制台。 使用 [OpenShift Web 控制台](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html)可以可视化、浏览和管理 OpenShift 项目的内容。
 
 我们将以创建的用于测试的[新 Azure AD 用户](howto-aad-app-configuration.md#create-a-new-active-directory-user)身份登录。 为此，需要一个全新的浏览器实例，其中尚未缓存平时用来登录 Azure 门户的标识。
 
@@ -147,13 +147,13 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 
 现已登录到群集控制台。
 
-[OpenShift 群集控制台的屏幕截图](./media/aro-console.png)
+![OpenShift 群集控制台的屏幕截图](./media/aro-console.png)
 
- 可以在 [Red Hat OpenShift](https://docs.openshift.com/dedicated/welcome/index.html) 文档中详细了解如何[使用 OpenShift 控制台](https://docs.openshift.com/dedicated/getting_started/developers_console.html)创建和生成映像。
+ 在 [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) 文档中详细了解如何[使用 OpenShift 控制台](https://docs.openshift.com/aro/getting_started/developers_console.html)来创建和生成映像。
 
 ## <a name="step-4-install-the-openshift-cli"></a>步骤 4：安装 OpenShift CLI
 
-[OpenShift CLI](https://docs.openshift.com/dedicated/cli_reference/get_started_cli.html)（或 OC 工具）提供了用于管理应用程序的命令，以及用于与 OpenShift 群集各组件进行交互的低级别实用工具。
+[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html)（或 OC 工具）提供了用于管理应用程序的命令，以及用于与 OpenShift 群集各组件进行交互的低级别实用工具。
 
 在 OpenShift 控制台中，单击右上角登录名旁边的问号，然后选择“命令行工具”。  单击“最新版本”链接下载并安装适用于 Linux、MacOS 或 Windows 的受支持 oc CLI。
 

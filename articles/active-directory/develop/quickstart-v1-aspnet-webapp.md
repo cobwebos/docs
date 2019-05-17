@@ -4,7 +4,7 @@ description: 了解如何使用 OpenID Connect 标准通过基于传统 Web 浏�
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f88643000b85965b2f275cc6e7494f427d0fe43e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191032"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231151"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -38,7 +38,7 @@ ms.locfileid: "65191032"
 
 要开始，请确保满足下列先决条件：
 
-* 已安装 Visual Studio 2015 Update 3 或 Visual Studio 2019。 尚未安装？ [免费下载 Visual Studio 2019](https://www.visualstudio.com/downloads/)
+* 安装 Visual Studio 2015 Update 3 或更高版本。 尚未安装？ [免费下载 Visual Studio 2019](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>场景：在 ASP.NET 应用中让用户使用工作和学校帐户登录
 
@@ -70,9 +70,10 @@ ms.locfileid: "65191032"
 ## <a name="step-2-create-your-aspnet-project"></a>步骤 2：创建 ASP.NET 项目
 
 1. 在 Visual Studio 中，转到“文件”>“新建”>“项目”。
-2. 在 Visual C#\Web 下，选择“ASP.NET Web 应用程序(.NET Framework)”。
-3. 为应用程序命名，并单击“确定”。
-4. 选择“空”并选中复选框，添加 MVC 引用。
+2. 对于“项目类型”，请选择“Web”，然后选择“ASP.NET Web 应用程序 (.NET Framework)”。
+3. 为应用程序命名，并单击“创建”。
+4. 选择“空”，然后在“添加文件夹和核心引用”下选择“MVC”以添加 MVC 引用。
+5. 选择“创建”。
 
 ## <a name="step-3-add-authentication-components"></a>步骤 3：添加身份验证组件
 
@@ -125,7 +126,7 @@ ms.locfileid: "65191032"
 创建新控制器来公开登录和注销方法。
 
 1.  右键单击“控制器”文件夹，并选择“添加”>“控制器”
-2.  选择“MVC (.NET 版本)控制器 - 空”。
+2.  选择“MVC {version} 控制器 - 空”。
 3.  选择 **添加** 。
 4.  将其命名为 `HomeController`，然后选择“添加”。
 5.  向该类添加 OWIN 命名空间：

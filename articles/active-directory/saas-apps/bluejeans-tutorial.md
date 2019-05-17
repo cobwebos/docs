@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 39e9f52948d035c72a6a019558915d8c92ceebeb
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698922"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463528"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>教程：Azure Active Directory 与 BlueJeans 集成
 
@@ -102,18 +102,17 @@ ms.locfileid: "59698922"
 
 3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+    ![编辑基本 SAML 配置](media/bluejeans-tutorial/edit-urls-bluejeans.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”对话框中，输入以下值：
 
-    ![BlueJeans 域和 URL 单一登录信息](common/sp-identifier.png)
+    ![BlueJeans 域和 URL 单一登录信息](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.BlueJeans.com`。
-
-    b. 在“标识符”文本框中键入 URL：`http://samlsp.bluejeans.com`
-
-    > [!NOTE]
-    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [BlueJeans 客户端支持团队](https://support.bluejeans.com/contact)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+   - 在“标识符”文本框中键入以下值：`https://samlsp.bluejeans.com`
+    
+   - 在“登录 URL”文本框中，输入 BlueJeans 提供的登录页 URL（要获取此值，可联系 [BlueJeans 客户技术支持](https://support.bluejeans.com/contact)）：`https://<companyname>.bluejeans.com`
+    
+   - 单击“ **保存**”。
 
 5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -161,9 +160,9 @@ ms.locfileid: "59698922"
 
     ![保存更改](./media/bluejeans-tutorial/ic785874.png "保存更改")
 
-    a. 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    a. 在“用户 ID”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
-    b. 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    b. 在“电子邮件”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
     c. 单击“保存更改”。
 

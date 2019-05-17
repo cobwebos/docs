@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146149"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236937"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>教程：使用 PowerShell 创建服务主体和角色分配
 
@@ -38,7 +38,7 @@ ms.locfileid: "65146149"
     Install-Module AzureAD
     ```
 
-2. 结合引号中的值（请将这些值替换为与会话相关的值）运行以下 cmdlet。
+2. 结合引号中的值（请将这些值替换为与会话相关的值）运行以下 cmdlet。 如果刚通过[“在 Windows 虚拟桌面中创建租户”教程](./tenant-setup-azure-active-directory.md)创建了 Windows 虚拟桌面租户，请将“默认租户组”用作租户组名称。
 
     ```powershell
     $myTenantGroupName = "<my-tenant-group-name>"
@@ -109,7 +109,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何创建服务主体，并使用它登录到 Windows 虚拟桌面。 若要详细了解如何登录到 Windows 虚拟桌面，请继续学习“连接到 Windows 虚拟桌面”操作指南。
+创建服务主体并在 Windows 虚拟桌面租户中为其分配角色后，可用它来创建主机池。 若要详细了解主机池，请继续学习有关在 Windows 虚拟桌面中创建主机池的教程。
 
-- [从 Windows 10 或 Windows 7 进行连接](connect-windows-7-and-10.md)
-- [从 Web 浏览器进行连接](connect-web.md)
+ > [!div class="nextstepaction"]
+ > [Windows 虚拟桌面主机池教程](./create-host-pools-azure-marketplace.md)

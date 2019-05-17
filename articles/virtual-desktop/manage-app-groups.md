@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578741"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233909"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>教程：管理 Windows 虚拟桌面预览版的应用组
 
@@ -73,7 +73,7 @@ ms.locfileid: "58578741"
 
 ## <a name="next-steps"></a>后续步骤
 
-创建应用组后，请创建服务主体并向用户分配角色。 若要了解如何执行此操作，请参阅有关如何使用 PowerShell 创建服务主体和角色分配的教程。
+在本教程中，学习了如何创建应用组、使用 RemoteApps 来填充它，还学习了如何向应用组分配用户。 若要详细了解如何登录到 Windows 虚拟桌面，请继续学习“连接到 Windows 虚拟桌面”操作指南。
 
-> [!div class="nextstepaction"]
-> [使用 PowerShell 创建服务主体和角色分配](create-service-principal-role-powershell.md)
+- [连接到 Windows 7 和 Windows 10 上的远程桌面客户端](connect-windows-7-and-10.md)
+- [连接到 Windows 虚拟桌面预览版 Web 客户端](connect-web.md)

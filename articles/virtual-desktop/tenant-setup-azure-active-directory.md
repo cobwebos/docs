@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 1c66b3de9e18cb74c43f20499e4065c7ec7ae5ca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 88b3ffa38eb42eef42c98920b2c3193661b1c0f5
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801668"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236177"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>教程：在 Windows 虚拟桌面预览版中创建租户
 
@@ -32,7 +32,7 @@ ms.locfileid: "58801668"
    * 这也适用于要为其客户创建 Windows 虚拟桌面租户的云解决方案提供商 (CSP) 组织。 CSP 组织必须能够以其客户的 Azure Active Directory 全局管理员身份登录。
    * 管理员帐户必须源自 Azure Active Directory 租户，你将在该租户中尝试创建 Windows 虚拟桌面租户。 此过程不支持 Azure Active Directory B2B（来宾）帐户。
    * 管理员帐户必须是工作或学校帐户。
-* Azure 订阅 ID
+* Azure 订阅
 
 ## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>向 Windows 虚拟桌面预览版服务授予 Azure Active Directory 权限
 
@@ -49,7 +49,7 @@ ms.locfileid: "58801668"
 4. 选择“接受”。
 5. 等待一分钟。
 6. 导航回到 [Windows 虚拟桌面许可页](https://rdweb.wvd.microsoft.com)。
-7. 转到“许可选项” > “客户端应用”，输入相同的 Azure AD 租户名称或目录 ID，然后选择“提交”。
+7. 转到“许可选项” > “客户端应用”，输入相同的 Azure Active Directory 租户名称或目录 ID，然后选择“提交”。
 8. 像在前面的步骤 3 中一样，以全局管理员的身份登录到 Windows 虚拟桌面许可页。
 9. 选择“接受”。
 
@@ -59,14 +59,42 @@ ms.locfileid: "58801668"
 
 使用全局管理员帐户分配 TenantCreator 应用程序角色：
 
-1. 打开浏览器，并使用全局管理员帐户连接到 [Azure Active Directory 门户](https://aad.portal.azure.com)。
-   - 如果你正在使用多个 Azure AD 租户，则最好是打开私密浏览器会话，然后复制 URL 并将其粘贴到地址栏中。
-2. 选择“企业应用程序”并搜索“Windows 虚拟桌面”。 将会看到在前一部分中提供了许可的两个应用程序。 在这两个应用中，选择“Windows 虚拟桌面”。
-3. 依次选择“用户和组”、“添加用户”。
-4. 在“添加分配”边栏选项卡中选择“用户和组”
-5. 搜索用于创建 Windows 虚拟桌面租户的用户帐户。
-   - 为简单起见，可以使用全局管理员帐户。
-6. 选择该用户帐户，单击“选择”按钮，然后选择“分配”。
+1. 打开浏览器，再使用全局管理员帐户连接到 [Azure 门户](https://portal.azure.com)。
+   - 如果使用多个 Azure Active Directory 租户，则最好打开私密浏览器会话，然后将 URL 复制粘贴到地址栏。
+2. 在 Azure 门户的搜索栏中，搜索“企业应用程序”，然后选择“服务”类别下显示的条目。
+3. 在企业应用程序中，搜索“Windows 虚拟桌面”。 将会看到在前一部分中提供了许可的两个应用程序。 在这两个应用中，选择“Windows 虚拟桌面”。
+        ![一张屏幕截图，其中显示在企业应用程序中搜索“Windows 虚拟桌面”时出现的搜索结果。 名为“Windows 虚拟桌面”的应用突出显示。](media/tenant-enterprise-app.png)
+4. 选择“用户和组”。 你可能会看到，已列出授予应用程序许可的管理员且已分配“默认访问”角色。 但这还不足以创建 Windows 虚拟桌面租户。 请继续按照这些说明向用户添加 TenantCreator 角色。
+        ![一张屏幕截图，其中显示负责管理“Windows 虚拟桌面”企业应用程序的用户和组。 屏幕截图仅显示“默认访问”的一项分配。](media/tenant-default-access.png)
+5. 选择“添加用户”，然后在“添加分配”边栏选项卡中选择“用户和组”。
+6. 搜索用于创建 Windows 虚拟桌面租户的用户帐户。 为简单起见，可以使用全局管理员帐户。
+
+    ![一张屏幕截图，其中显示选来添加为“TenantCreator”的用户。](media/tenant-assign-user.png)
+
+   > [!NOTE]
+   > 必须选择来自此 Azure Active Directory 的用户（或包含用户的组）。 无法选择来宾 (B2B) 用户或服务主体。
+
+7. 选择该用户帐户，勾选“选择”按钮，然后选择“分配”。
+8. 在“Windows 虚拟桌面 - 用户和组”页面上，验证是否看到有新条目显示向要创建 Windows 虚拟桌面租户的用户分配了 TenantCreator 角色。
+        ![一张屏幕截图，其中显示负责管理“Windows 虚拟桌面”企业应用程序的用户和组。 屏幕截图现还有一个条目显示向“TenantCreator”角色分配了用户。](media/tenant-tenant-creator-added.png)
+
+继续创建 Windows 虚拟桌面租户前，需提供下列两项信息：
+- Azure Active Directory 租户 ID（或目录 ID）
+- Azure 订阅 ID
+
+要查找 Azure Active Directory 租户 ID（或目录 ID），请执行以下操作：
+1. 在同一 Azure 门户会话的搜索栏中搜索 Azure Active Directory，然后选择“服务”类别下显示的条目。
+        ![一张屏幕截图，其中显示 Azure 门户中“Azure Active Directory”的搜索结果。 “服务”下的搜索结果突出显示。](media/tenant-search-azure-active-directory.png)
+2. 向下滚动直到找到“属性”，然后将其选中。
+3. 查找“目录 ID”，然后选择剪贴板图标。 将其粘贴到方便的位置，以便稍后可将其用作 AadTenantId。
+        ![Azure Active Directory 属性的屏幕截图。 将鼠标悬停在剪贴板图标上来复制粘贴“目录 ID”。](media/tenant-directory-id.png)
+
+要查找 Azure 订阅 ID，请执行以下操作：
+1. 在同一 Azure 门户会话的搜索栏中搜索“订阅”，然后选择“服务”类别下显示的条目。
+        ![一张屏幕截图，其中显示 Azure 门户中“Azure Active Directory”的搜索结果。 “服务”下的搜索结果突出显示。](media/tenant-search-subscription.png)
+2. 选择要用于接收 Windows 虚拟桌面服务通知的 Azure 订阅。
+3. 查找“订阅 ID”，然后将鼠标悬停在该值上，直到出现剪贴板图标。 选择剪贴板图标，再将其粘贴到方便的位置，以便稍后可将其用作 AzureSubscriptionId。
+        ![Azure 订阅属性的屏幕截图。 将鼠标悬停在剪贴板图标上来复制粘贴“订阅 ID”。](media/tenant-subscription-id.png)
 
 ## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>创建 Windows 虚拟桌面预览版租户
 
@@ -94,7 +122,7 @@ New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -A
 
 ## <a name="next-steps"></a>后续步骤
 
-创建租户后，需要创建主机池。 若要详细了解主机池，请继续学习有关在 Windows 虚拟桌面中创建主机池的教程。
+创建租户后，需要在 Azure Active Directory 中创建服务主体并在 Windows 虚拟桌面中为其分配角色。 通过服务主体可成功部署 Windows 虚拟桌面 Azure 市场产品/服务，从而创建主机池。 若要详细了解主机池，请继续学习有关在 Windows 虚拟桌面中创建主机池的教程。
 
 > [!div class="nextstepaction"]
-> [Windows 虚拟桌面主机池教程](./create-host-pools-azure-marketplace.md)
+> [使用 PowerShell 创建服务主体和角色分配](./create-service-principal-role-powershell.md)

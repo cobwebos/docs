@@ -6,23 +6,23 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 06/05/2018
+ms.date: 05/06/2019
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: 5e3005eb8f548e562e037431ae5fd89f82ec2100
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 8cb1d06872f7eae04bac934220da9d58982d0f4b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60150075"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233732"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
-为了帮助 Web 开发人员查询并可视化时序见解 (TSI) 中存储的数据，我们开发了基于 JavaScript D3 的 TSI 客户端库。  本教程使用一个示例 Web 应用程序来逐步讲解如何探索 TSI 客户端库和相关的编程模型。
+为了帮助 Web 开发人员查询并可视化时序见解 (TSI) 中存储的数据，我们开发了基于 JavaScript D3 的 TSI 客户端库。 本教程将使用托管示例应用引导你完成 TSI 客户端库和编程模型。
 
-可以参考本教程中的主题来体验该库，以了解如何访问 TSI 数据，以及使用图表控件来呈现和可视化数据。 本教程的目标是提供足够的详细信息，使你能够在自己的 Web 应用程序中使用该库。
+本教程将详细介绍如何使用库、如何访问 TSI 数据以及如何使用图表控件来呈现和可视化数据。 还将介绍如何尝试使用不同类型的图形来可视化数据。 在本教程结束时，你将能够使用客户端库将 TSI 功能合并到你自己的 Web 应用中。
 
-本教程的介绍内容包括：
+具体来说，将学习以下内容：
 
 > [!div class="checklist"]
 > * TSI 示例应用程序。
@@ -30,9 +30,11 @@ ms.locfileid: "60150075"
 > * 示例应用程序如何使用该库来可视化 TSI 数据。
 
 > [!NOTE]
-> 时序见解示例应用程序源文件可以在提供的 [GitHub 示例存储库](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)中找到。
+> * 该教程使用免费的托管[时序见解 Web 演示](https://insights.timeseries.azure.com/clientsample)。
+> * 时序见解示例应用源文件在 [GitHub 示例存储库](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)中提供。
+> * 请阅读 [TSI 客户端参考文档](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。
 
-## <a name="video"></a>视频： 
+## <a name="video"></a>视频
 
 ### <a name="in-this-video-we-introduce-the-open-source-time-series-insights-javascript-sdkbr"></a>本视频中，我们将介绍开源时序见解 JavaScript SDK。</br>
 
@@ -40,91 +42,104 @@ ms.locfileid: "60150075"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程使用最新型 Web 浏览器（包括 [Microsoft Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/) 等）中的“开发人员工具”功能（也称为 DevTools 或 F12）。 如果你不熟悉此功能，请先在浏览器中探索此功能，然后再继续。
+本教程使用浏览器的“开发人员工具”功能。 现代网络浏览器（[Microsoft Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/) 等）通常可以通过 `F12` 热键访问“Web 检查器视图”。 否则，可以通过右键单击网页并选择“检查元素”来访问该视图。
 
 ## <a name="time-series-insights-sample-application"></a>时序见解示例应用程序
 
-整篇教程使用了时序见解示例应用程序来探索应用程序背后的源代码，包括 TSI JavaScript 客户端库的用法。 该示例是一个单页 Web 应用程序 (SPA)，演示如何使用该库。 该示例展示如何从一个示例 TSI 环境查询和可视化数据。
+整篇教程都使用免费的托管时序见解示例应用来探索应用程序背后的源代码和 TSI JavaScript 客户端库。 通过该教程你将了解如何在 JavaScript 中与 TSI 进行交互并通过图表和图形可视化数据。
 
-1. 浏览到[时序见解示例应用程序](https://insights.timeseries.azure.com/clientsample)。 此时会出现下图所示的页面，其中显示了登录提示：
+1. 导航到[时序见解示例应用程序](https://insights.timeseries.azure.com/clientsample)。 将出现以下登录提示：
 
-   ![TSI 客户端示例登录提示](media/tutorial-explore-js-client-lib/tcs-sign-in.png)
+   [![TSI 客户端示例登录提示](media/tutorial-explore-js-client-lib/tcs-sign-in.png)](media/tutorial-explore-js-client-lib/tcs-sign-in.png#lightbox)
 
-2. 选择“登录”并输入或选择凭据。 使用企业或组织帐户 (Azure Active Directory) 或个人帐户（Microsoft 帐户，简称 MSA）。
+1. 选择“登录”，输入或选择凭据。 可使用企业组织帐户 (Azure Active Directory) 或个人帐户（Microsoft 帐户，简称 MSA）。
 
-   ![TSI 客户端示例凭据提示](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png)
+   [![TSI 客户端示例凭据提示](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png)](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png#lightbox)
 
-3. 成功登录后，会出现下图所示的页面。 该页显示填充了 TSI 数据的几款示例图表。 右上角显示了你自己的用户帐户和“注销”选项：
+1. 登录后，你将看到一个页面，其中包含几种用 TSI 数据填充的图表。 右上角显示了你自己的用户帐户和“注销”选项：
 
-   ![登录后的 TSI 客户端示例主页](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)
+   [![登录后的 TSI 客户端示例主页](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
 
 ### <a name="page-source-and-structure"></a>页面源代码和结构
 
-首先，让我们查看浏览器中呈现的页面背后的 [HTML 和 JavaScript 源代码](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html)。 我们不会逐个浏览所有的元素，而是了解主要的节，以便对页面工作原理有个大致的体会：
+首先，让我们查看呈现的网页的 [HTML 和 JavaScript 源代码](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html)：
 
 1. 在浏览器中打开“开发人员工具”。 查看构成当前页面的 HTML 元素（也称为 HTML 或 DOM 树）。
 
-2. 展开 `<head>` 和 `<body>` 元素并注意以下节：
+1. 展开 `<head>` 和 `<body>` 元素并观察以下节：
 
-   - 在 `<head>` 元素下，可以看到提取其他文件以帮助页面正常运行的元素：
-     - 用于引用 Azure Active Directory 身份验证库 **adal.min.js**（也称为 ADAL）的 `<script>` 元素。 ADAL 是一个 JavaScript 库，它提供 OAuth 2.0 身份验证（登录），并获取用于访问 API 的令牌。
-     - 样式表（也称为 CSS）（例如 **sampleStyles.css** 和 **tsiclient.css**）的多个 `<link>` 元素。 样式表用于控制视觉页面样式详细信息，例如颜色、字体、间距，等等。
-     - 用于引用 TSI 客户端 JavaScript 库 **tsiclient.js** 的 `<script>` 元素。 页面使用该库来调用 TSI 服务 API，并在页面上呈现图表控件。
+   * 在 `<head>` 元素下，你将找到允许应用运行的页面元数据和依赖项：
+     * 用于引用 Azure Active Directory 身份验证库 **adal.min.js**（也称为 ADAL）的 `<script>` 元素。 ADAL 是一个 JavaScript 库，它提供 OAuth 2.0 身份验证（登录），并获取用于访问 API 的令牌。
+     * 样式表（也称为 CSS）（例如 **sampleStyles.css** 和 **tsiclient.css**）的多个 `<link>` 元素。 样式表用于控制视觉页面样式详细信息，例如颜色、字体、间距，等等。
+     * 用于引用 TSI 客户端 JavaScript 库 **tsiclient.js** 的 `<script>` 元素。 页面使用该库来调用 TSI 服务 API，并在页面上呈现图表控件。
 
      >[!NOTE]
-     > [azure-activedirectory-library-for-js 存储库](https://github.com/AzureAD/azure-activedirectory-library-for-js)中提供了 ADAL JavaScript 库的源代码。
-     > [tsiclient 存储库](https://github.com/Microsoft/tsiclient)中提供了 TSI 客户端 JavaScript 库的源代码。
+     > * [azure-activedirectory-library-for-js 存储库](https://github.com/AzureAD/azure-activedirectory-library-for-js)中提供了 ADAL JavaScript 库的源代码。
+     > * [tsiclient 存储库](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)中提供了 TSI 客户端 JavaScript 库的源代码。
 
-   - 在 `<body>` 元素下，可以看到充当容器来定义页面上项布局的 `<div>` 元素，以及另一个 `<script>` 元素：
-     - 第一个 `<div>` 元素指定“登录”对话框 (`id="loginModal"`)。
-     - 第二个 `<div>` 元素充当以下对象的父级：
-       - 一个标头 `<div>` 元素，用于在页面顶部附近显示状态消息和登录信息 (`class="header"`)。
-       - 一个 `<div>` 元素，用于剩余的页面主体元素，包括所有图表 (`class="chartsWrapper"`)。
-       - 一个 `<script>` 节，其中包含用于控制页面的所有 JavaScript。
+   * 在 `<body>` 元素下，可看到帮助定义页面上项布局的 `<div>` 元素，以及另一个 `<script>` 元素：
+     * 第一个 `<div>` 元素指定“登录”对话框 (`id="loginModal"`)。
+     * 第二个 `<div>` 元素充当以下对象的父级：
+       * 一个标头 `<div>` 元素，用于在页面顶部附近显示状态消息和登录信息 (`class="header"`)。
+       * 一个 `<div>` 元素，用于剩余的页面主体元素，包括所有图表 (`class="chartsWrapper"`)。
+       * 一个 `<script>` 节，其中包含用于控制页面的所有 JavaScript。
 
    [![包含开发人员工具的 TSI 客户端示例](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-head-body.png#lightbox)
 
-3. 展开 `<div class="chartsWrapper">` 元素，将会看到其他 `<div>` 子元素。 这些元素用于定位每个图表控件示例。 请注意，有好几对 `<div>` 元素，每个图表示例各有一对：
+1. 展开 `<div class="chartsWrapper">` 元素，将看到其他 `<div>` 子元素。 这些元素用于定位每个图表控件示例。 请注意，有好几对 `<div>` 元素，每个图表示例各有一对：
 
-   - 第一个 (`class="rowOfCardsTitle"`) 元素包含描述性的标题，用于概括图表演示的内容。 例如：“包括完整大小图例的静态折线图。”
-   - 第二个 (`class="rowOfCards"`) 元素是父级，包含用于在行中定位实际图表控件的 `<div>` 子元素。
+   * 第一个 (`class="rowOfCardsTitle"`) 元素包含描述性的标题，用于概括图表演示的内容。 例如： `Static Line Charts With Full-Size Legends.`
+   * 第二个 (`class="rowOfCards"`) 元素是父级，包含用于在行中定位实际图表控件的 `<div>` 子元素。
 
-   ![正文 div 元素](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)
+   [![正文 div 元素](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png#lightbox)
 
-4. 现在，展开紧靠在 `<div class="chartsWrapper">` 元素下面的 `<script type="text/javascript">` 元素。 注意页面级 JavaScript 节的开头部分，它用于处理所有页面逻辑：身份验证、调用 TSI 服务 API、呈现图表控件，等等：
+1. 现在，展开紧靠在 `<div class="chartsWrapper">` 元素下面的 `<script type="text/javascript">` 元素。 注意页面级 JavaScript 节的开头部分，它用于处理所有页面逻辑（身份验证、调用 TSI 服务 API、呈现图表控件等）：
 
-   ![正文脚本](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)
+   [![正文脚本](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
 
 ## <a name="tsi-javascript-client-library-concepts"></a>TSI JavaScript 客户端库的概念
 
-尽管本文不会详细介绍 TSI 客户端库 **tsclient.js**，但从本质而言，该库为以下两个重要类别提供抽象：
+TSI 客户端库 (tsclient.js) 为两个重要的 JavaScript 功能提供抽象：
 
-- **用于调用 TSI 查询 API 的包装器方法**：用于通过聚合表达式查询 TSI 数据的 REST API。 这些方法组织在库的 `TsiClient.Server` 命名空间下。
-- **用于创建和填充多种图表控件的方法**：用于在网页中呈现 TSI 聚合数据的方法。 这些方法组织在库的 `TsiClient.UX` 命名空间下。
+* **用于调用 TSI 查询 API 的包装器方法**：用于通过聚合表达式查询 TSI 数据的 REST API。 这些方法组织在库的 `TsiClient.Server` 命名空间下。
 
-以下概念是通用的，广泛适用于 TSI 客户端库 API。
+* **用于创建和填充多种图表控件的方法**：用于在网页中呈现 TSI 聚合数据的方法。 这些方法组织在库的 `TsiClient.UX` 命名空间下。
+
+通过这些简化，开发人员可以更容易地构建使用 TSI 数据支持的 UI 图形和图表组件。
 
 ### <a name="authentication"></a>Authentication
 
-如前所述，本示例是一个 SPA，它使用 ADAL 中的 OAuth 2.0 支持进行用户身份验证。 下面是此脚本节中的一些关注点：
+[时序见解示例应用程序](https://insights.timeseries.azure.com/clientsample)是具有 ADAL OAuth 2.0 用户身份验证支持的单页应用：
 
-1. 使用 ADAL 进行身份验证时，客户端应用程序必须在 Azure Active Directory (Azure AD) 应用程序注册表中注册自身。 作为一个 SPA，此应用程序会注册为使用“隐式”OAuth 2.0 授权授予流。 相应地，此应用程序会在运行时指定一些注册属性（例如客户端 ID GUID (`clientId`) 和重定向 URI (`postLogoutRedirectUri`)）以参与流。
+1. 使用 ADAL 进行身份验证时，必须在 Azure Active Directory 中注册客户端应用。 注册单页应用是为了使用 [OAuth 2.0 隐式授权流](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-implicit-grant-flow)。
+1. 因此，应用程序必须在运行时指定一些注册属性。 这些属性包括客户端 GUID (`clientId`) 和重定向 URI (`postLogoutRedirectUri`)。
+1. 稍后，应用程序会从 Azure Active Directory 请求“访问令牌”。 将会针对特定的服务/API 标识符 (`https://api.timeseries.azure.com`) 颁发拥有有限权限集的访问令牌。 令牌权限是代表登录用户颁发的。 服务/API 的标识符是包含在应用的 Azure Active Directory 注册中的另一个属性。
+1. ADAL 向应用返回访问令牌后，在访问 TSI 服务 API 时，系统会将该令牌作为“持有者令牌”传递。
 
-2. 稍后，应用程序会从 Azure AD 请求“访问令牌”。 将会针对特定的服务/API 标识符 https://api.timeseries.azure.com 颁发拥有有限权限集的访问令牌。 服务/API 标识符也称为令牌“受众”。 令牌权限是代表登录用户颁发的。 服务/API 的标识符是包含在应用程序的 Azure AD 注册中的另一个属性。 ADAL 向应用程序返回访问令牌后，在访问 TSI 服务 API 时，系统会将该令牌作为“持有者令牌”传递。
+   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=3-7,34-37)]
 
-   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=4-9,36-39)]
+> [!TIP]
+> 要了解有关 Microsoft 支持的 ADAL 库的详细信息，请参阅 [ADAL 参考文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries)。
 
 ### <a name="control-identification"></a>控制标识
 
-如前所述，`<body>` 元素中的 `<div>` 元素为页面上演示的所有图表控件提供布局。 其中的每个 `<div>` 元素指定图表控件的位置和视觉特性的属性，包括 `id` 属性。 `id` 属性提供唯一的标识符，将在 JavaScript 代码中使用该标识符来标识和绑定到用于呈现和更新的每个控件。
+在提供的示例中，`<div>` 元素排列在父 `<body>` 元素中，以便为页面上呈现的所有图表控件提供合理的布局。
+
+其中的每个 `<div>` 元素指定图表控件的位置和视觉对象特性的属性。 HTML 元素 `id` 属性用作唯一标识符，用于绑定到特定控件以呈现和更新可视化数据。
 
 ### <a name="aggregate-expressions"></a>聚合表达式
 
-TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以构造一个或多个“搜索词”。 API 在设计上类似于[时序见解资源管理器](https://insights.timeseries.azure.com/demo)使用搜索范围、where 谓词、度量和 split-by 值。 大多数库 API 采用聚合表达式的数组，服务使用这些表达式来生成 TSI 数据查询。
+TSI 客户端库 API 使用聚合表达式：
+
+* 使用聚合表达式可以构造一个或多个“搜索词”。
+
+* 客户端 API 的设计目的是提供与另一个提供演示应用（[时序见解资源管理器](https://insights.timeseries.azure.com/demo)）类似的功能，后者使用搜索范围、where 谓词、度量值和 split-by 值。
+
+* 大多数客户端库 API 都采用聚合表达式的数组，服务使用这些表达式来生成 TSI 数据查询。
 
 ### <a name="call-pattern"></a>调用模式
 
-图表控件的填充和呈现遵循一种通用模式。 在实例化和加载 TSI 示例应用程序控件的整个页面 JavaScript 中，都会发现使用了此模式：
+图表控件的填充和呈现遵循一种常规模式。 此常规模式可在整个示例应用中观察得到，并在使用客户端库时为你提供帮助：
 
 1. 声明一个 `array` 用于保存一个或多个 TSI 聚合表达式：
 
@@ -132,7 +147,7 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
    var aes =  [];
    ```
 
-2. 生成 1 到 n 个聚合表达式对象，并将其添加到聚合表达式数组：
+1. 构建“1”到“n”聚合表达式对象。 然后将其添加到聚合表达式数组：
 
    ```javascript
    var ae = new tsiClient.ux.aggregateExpression(predicateObject, measureObject, measureTypes, searchSpan, splitByObject, color, alias, contextMenuActions);
@@ -150,9 +165,9 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
    | `splitByObject`   | 用作拆分依据的字符串属性（可选 – 可为 null）。 | `{property: 'Station', type: 'String'}` |
    | `color`         | 要呈现的对象的颜色。 | `'pink'` |
    | `alias`           | 聚合表达式的友好名称。 | `'Factory3Temperature'` |
-   | `contextMenuActions` | 要在可视化效果中绑定到时序对象的操作数组（可选）。 | 有关详细信息，请参阅“高级功能”部分中的“弹出上下文菜单”。 |
+   | `contextMenuActions` | 要在可视化效果中绑定到时序对象的操作数组（可选）。 | 有关详细信息，请参阅[弹出上下文菜单](#pop-up-context-menus)部分 |
 
-3. 使用 `TsiClient.Server` API 调用 TSI 查询以请求聚合数据：
+1. 使用 `TsiClient.Server` API 调用 TSI 查询以请求聚合数据：
 
    ```javascript
    tsiClient.server.getAggregates(token, envFQDN, aeTsxArray);
@@ -166,33 +181,42 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
    | `envFQDN`   | TSI 环境的完全限定域名 (FQDN)。 | 例如，Azure 门户中的 `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com`。 |
    | `aeTsxArray` | TSI 查询表达式的数组。 | 如前所述使用 `aes` 变量：`aes.map(function(ae){return ae.toTsx()}`。 |
 
-4. 将 TSI 查询返回的压缩结果转换为 JSON 以进行可视化。
+1. 将 TSI 查询返回的压缩结果转换为 JSON 以进行可视化。
 
    ```javascript
    var transformedResult = tsiClient.ux.transformAggregatesForVisualization(result, aes);
    ```
 
-5. 使用 `TsiClient.UX` API 创建图表控件，并将其绑定到页面上的某个 `<div>` 元素。
+1. 使用 `TsiClient.UX` API 创建图表控件，并将其绑定到页面上的某个 `<div>` 元素。
 
    ```javascript
-   var lineChart = new tsiClient.ux.BarChart(document.getElementById('chart3'));
+   var barChart = new tsiClient.ux.BarChart(document.getElementById('chart3'));
    ```
 
-6. 在图表控件中填充转换后的 JSON 数据对象，并在页面上呈现该控件。
+1. 在图表控件中填充转换后的 JSON 数据对象，并在页面上呈现该控件。
 
    ```javascript
-   lineChart.render(transformedResult, {grid: true, legend: 'compact', theme: 'light'}, aes);
+   barChart.render(transformedResult, {grid: true, legend: 'compact', theme: 'light'}, aes);
    ```
 
 ## <a name="rendering-controls"></a>呈现控件
 
-TSI 客户端库目前公开 8 个独特的分析控件：折线图、饼图、条形图、热度地图、层次结构控件、可访问的网格、离散事件时间线和状态转换时间线。
+TSI 客户端库提供了八个独特的，开箱即用的分析控件：
+
+* **折线图**
+* **饼图**
+* <bpt id="p1">**</bpt>bar chart<ept id="p1">**</ept>
+* **heatmap**
+* **层次结构控件**
+* **可访问网格**
+* **离散事件时间线**
+* **状态转换时间线**
 
 ### <a name="line-bar-pie-chart-examples"></a>折线图、饼图、条形图示例
 
-让我们看看应用程序中演示的某些标准图表控件背后的代码，以及用于创建这些控件的编程模型/模式。 具体而言，我们将查看 HTML 中 `// Example 3/4/5` 注释下面的节，其中呈现了 ID 值为 `chart3`、`chart4` 和 `chart5` 的控件。
+查看用于呈现某些标准图表控件的演示代码。 请注意用于创建这些控件的编程模型和模式。 具体而言，我们将查看 HTML 中 `// Example 3/4/5` 注释下面的节，其中呈现了 HTML `id` 值为 `chart3`、`chart4` 和 `chart5` 的控件。
 
-回顾[“页面源代码和结构”部分](#page-source-and-structure)所述的步骤 #3，图表控件在页面上按行排列，每个控件都有一个描述性的标题行。 在本示例中，要填充的三个图表都位于“同一数据中的多个图表类型”标题 `<div>` 元素下面，并已绑定到标题下面的三个 `<div>` 元素：
+回顾[页面源代码和结构部分](#page-source-and-structure)所述的“步骤 3”，图表控件在页面上按行排列，每个控件都有一个描述性的标题行。 在本示例中，要填充的三个图表都位于标题 `"Multiple Chart Types From the Same Data"` `<div>` 元素下面，并已绑定到标题下面的三个 `<div>` 元素：
 
 [!code-html[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
@@ -206,22 +230,22 @@ TSI 客户端库目前公开 8 个独特的分析控件：折线图、饼图、�
 
 ## <a name="advanced-features"></a>高级功能
 
-TSI 客户端库还会公开一些可按需使用的可选高级功能。
+TSI 客户端库具有一些其他功能，你可以使用它们创造性地实现数据可视化。
 
 ### <a name="states-and-events"></a>状态和事件
 
-提供的高级功能的一个示例是，将状态转换和离散事件添加到图表。 此功能可用于突出显示事件、警报，以及“开/关”等状态开关。
+其中一个高级功能是，将状态转换和离散事件添加到图表。 此功能可用于突出显示事件、发出警报，以及创建状态开关（例如启用/禁用开关）。
 
-查看 HTML 节中 `// Example 10` 注释后面的代码。 该代码在“具有多个序列类型的折线图”标题下面呈现一个线条控件，并将其绑定到 ID 值为 `chart10` 的 `<div>` 元素。
+查看 `// Example 10` 注释周围的代码。 该代码在 `"Line Charts with Multiple Series Types"` 标题下面呈现一个线条控件，并将其绑定到 HTML `id` 值为 `chart10` 的 `<div>` 元素。
 
 1. 首先定义一个名为 `events4` 的结构，用于保存要跟踪的状态更改元素。结构包含：
 
-   - 名为 `Component States` 的字符串键。
-   - 表示状态的值对象数组。 每个对象包括：
-     - 包含 JavaScript ISO 时间戳的字符串键。
-     - 包含状态特征的数组：颜色和说明。
+   * 名为 `Component States` 的字符串键。
+   * 表示状态的值对象数组。 每个对象包括：
+     * 包含 JavaScript ISO 时间戳的字符串键。
+     * 包含状态特征的数组：颜色和说明。
 
-2. 接下来，为保存要跟踪的事件元素数组的“事件”定义 `events5` 结构。数组结构的形状与概述的 `events4` 结构相同。
+2. 然后，为保存要跟踪的事件元素数组的 `Incidents` 定义 `events5` 结构。数组结构的形状与概述的 `events4` 结构相同。
 
 3. 最后呈现折线图，并结合图表选项参数传入两个结构：`events:` 和 `states:`。 请注意用于指定 `tooltip:`、`theme:` 或 `grid:` 的其他选项参数。
 
@@ -233,21 +257,23 @@ TSI 客户端库还会公开一些可按需使用的可选高级功能。
 
 ### <a name="pop-up-context-menus"></a>弹出上下文菜单
 
-高级功能的另一个示例是自定义的上下文菜单（右键单击弹出菜单）。 自定义的上下文菜单可用于在应用程序范围内启用操作和逻辑后续步骤。
+另一个高级功能是能够创建自定义上下文菜单（右键单击弹出菜单）。 自定义的上下文菜单可用于在应用程序范围内启用操作和逻辑后续步骤。
 
-查看 HTML 节中 `// Example 13/14/15` 注释后面的代码。 此代码最初在“包含用于创建饼图/条形图的上下文菜单的折线图”标题下面呈现折线图，该图表已绑定到 ID 值为 `chart13` 的 `<div>` 元素。 使用上下文菜单可在折线图中动态创建绑定到 ID 为 `chart14` 和 `chart15` 的 `<div>` 元素的饼图和条形图。 此外，饼图和条形图也使用上下文菜单来实现其自身的功能：分别是将数据从饼图复制到条形图，以及在浏览器控制台窗口中列显饼图数据。
+查看 `// Example 13/14/15` 注释周围的代码。 此代码最初在 `"Line Chart with Context Menu to Create Pie/Bar Chart"` 标题下面呈现折线图，该图表已绑定到 HTML `id` 值为 `chart13` 的 `<div>` 元素。
+
+使用上下文菜单可在折线图中动态创建绑定到 ID 为 `chart14` 和 `chart15` 的 `<div>` 元素的饼图和条形图。 此外，饼图和条形图也使用上下文菜单来实现其自身的功能：分别是将数据从饼图复制到条形图，以及在浏览器控制台窗口中列显饼图数据。
 
 1. 首先定义一系列自定义操作。 每个操作包含由一个或多个元素构成的数组。 每个元素定义单个上下文菜单项：
 
-   - `barChartActions`：此操作定义饼图的上下文菜单，该菜单包含一个元素用于定义单个项：
-     - `name`：用于菜单项的文本：“将参数输出到控制台。”
-     - `action`：与菜单项关联的操作。 该操作始终是一个匿名函数，根据用于创建图表的聚合表达式采用三个参数。 在本例中，这些参数将写入浏览器控制台窗口：
-       - `ae`：聚合表达式数组。
-       - `splitBy`：splitBy 值。
-       - `timestamp`：时间戳。
+   * `barChartActions`：此操作定义饼图的上下文菜单，该菜单包含一个元素用于定义单个项：
+     * `name`：用于菜单项的文本：“将参数输出到控制台。”
+     * `action`：与菜单项关联的操作。 该操作始终是一个匿名函数，根据用于创建图表的聚合表达式采用三个参数。 在本例中，这些参数将写入浏览器控制台窗口：
+       * `ae`：聚合表达式数组。
+       * `splitBy`：`splitBy` 值。
+       * `timestamp`：时间戳。
 
-   - `pieChartActions`：此操作定义条形图的上下文菜单，该菜单包含一个元素用于定义单个项。 形状和架构是前面所述的 `barChartActions` 元素相同，但请注意，`action` 函数明显不同：它实例化并呈现条形图。 另请注意，使用了 `ae` 参数指定聚合表达式数组，在运行时打开菜单项期间，会传递该数组。 该函数还使用 `barChartActions` 上下文菜单设置 `ae.contextMenu` 属性。
-   - `contextMenuActions`：此操作定义折线图的上下文菜单，其中包含用于定义三个菜单项的三个元素。 每个元素的形状和架构与前面所述的元素相同。 与 `barChartActions` 元素一样，第一个项将三个函数参数写入浏览器控制台窗口。 与 `pieChartActions` 元素一样，另外的两个项分别实例化并呈现饼图和条形图。 此外，另外的两个项分别使用 `pieChartActions` 和 `barChartActions` 上下文菜单设置其 `ae.contextMenu` 属性。
+   * `pieChartActions`：此操作定义条形图的上下文菜单，该菜单包含一个元素用于定义单个项。 形状和架构是前面所述的 `barChartActions` 元素相同，但请注意，`action` 函数明显不同：它实例化并呈现条形图。 另请注意，使用了 `ae` 参数指定聚合表达式数组，在运行时打开菜单项期间，会传递该数组。 该函数还使用 `barChartActions` 上下文菜单设置 `ae.contextMenu` 属性。
+   * `contextMenuActions`：此操作定义折线图的上下文菜单，其中包含用于定义三个菜单项的三个元素。 每个元素的形状和架构与前面所述的元素相同。 与 `barChartActions` 元素一样，第一个项将三个函数参数写入浏览器控制台窗口。 与 `pieChartActions` 元素一样，另外的两个项分别实例化并呈现饼图和条形图。 此外，另外的两个项分别使用 `pieChartActions` 和 `barChartActions` 上下文菜单设置其 `ae.contextMenu` 属性。
 
 2. 接下来，将两个聚合表达式推送到 `aes` 聚合表达式数组，并为每个项指定 `contextMenuActions` 数组。 将在折线图控件中使用这些表达式。
 
@@ -266,16 +292,16 @@ TSI 客户端库还会公开一些可按需使用的可选高级功能。
 前一示例“包含用于创建饼图/条形图的上下文菜单的折线图”（描述了“弹出上下文菜单”）中显示了用于演示画笔的代码。
 
 1. 画笔操作类似于上下文菜单，为画笔定义一系列自定义操作。 每个操作包含由一个或多个元素构成的数组。 每个元素定义单个上下文菜单项：
-   - `name`：用于菜单项的文本：“将参数输出到控制台。”
-   - `action`：与菜单项关联的操作，始终是采用两个参数的匿名函数。 在本例中，这些参数将写入浏览器控制台窗口：
-      - `fromTime`：画笔选项的“起始时间”时间戳。
-      - `toTime`：画笔选项的“截止时间”时间戳。
+   * `name`：用于菜单项的文本：“将参数输出到控制台。”
+   * `action`：与菜单项关联的操作，始终是采用两个参数的匿名函数。 在本例中，这些参数将写入浏览器控制台窗口：
+      * `fromTime`：画笔选项的 `from` 时间戳。
+      * `toTime`：画笔选项的 `to` 时间戳。
 
 2. 画笔操作将添加为另一个图表选项属性。 请注意传递给 `linechart.Render` 调用的 `brushContextMenuActions: brushActions` 属性。
 
 [!code-javascript[code-sample-brushes](~/samples-javascript/pages/tutorial/index.html?range=526-540&highlight=1,13)]
 
-![包含用于通过画笔创建饼图/条形图的上下文菜单的折线图](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)
+[![包含用于通过画笔创建饼图/条形图的上下文菜单的折线图](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -295,3 +321,8 @@ TSI 客户端库还会公开一些可按需使用的可选高级功能。
 
 > [!div class="nextstepaction"]
 > [TSI 示例应用存储库](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
+
+阅读 TSI 客户端 API 参考文档：
+
+> [!div class="nextstepaction"]
+> [ API 参考文档](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)

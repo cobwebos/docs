@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: 0e61f6a914c33842f4f42b2e1e4206b370a11dd4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3315af0898cb3b18af0334a433a94242b056a8bd
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099029"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236210"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>教程：获取话语的情绪
 
@@ -89,6 +89,8 @@ ms.locfileid: "58099029"
     |Denise Dillard 错过了六月份的评审会议。|
     |Mark Mathews 在哈佛进行了令人震撼的推销|
     |Walter Williams 在斯坦福的演讲做得很好|
+
+    选择“查看选项”，然后选择“显示实体值”来查看名称。
 
     [![在 EmployeeFeedback 意向中包含了示例陈述的 LUIS 应用的屏幕截图](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 

@@ -2,13 +2,13 @@
 author: tomarchermsft
 ms.service: ansible
 ms.topic: include
-ms.date: 04/22/2019
+ms.date: 05/06/2019
 ms.author: tarcher
-ms.openlocfilehash: c252717c9a59f003585872d38b940a68df80037d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 979c492e3094eedc3907e13daab17def71e44b83
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198859"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231039"
 ---
-**虚拟机规模集** - 如果还没有规模集，可以[使用 Ansible 创建规模集](../articles/ansible/ansible-create-configure-vmss.md)。
+- **虚拟机规模集**：如果还没有规模集，可以[使用 Ansible 创建规模集](../articles/ansible/ansible-create-configure-vmss.md)。

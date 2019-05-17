@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: edc75711d8f727d8b1c9359835c6d5ebd575ff71
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 8a0621d0261bfbc7ab396abf837ee7b1123352d1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678643"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233447"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>浏览 Azure IoT Central UI
 
@@ -33,7 +33,6 @@ ms.locfileid: "59678643"
 - 排查和修正设备问题。
 - 设置新设备。
 
-
 ## <a name="use-the-left-navigation-menu"></a>使用左侧导航菜单
 
 使用左侧导航菜单来访问应用程序的不同区域。 可以选择“<” 或“>”来展开或折叠导航栏：
@@ -51,11 +50,14 @@ ms.locfileid: "59678643"
 - 若要搜索设备模板和设备，请输入“搜索”值。
 - 若要更改 UI 语言或主题，请选择“设置”图标。
 - 若要从应用程序中注销，请选择“帐户”图标。
-- 若要获取帮助和支持，请选择**帮助**下拉列表以显示资源列表。
+- 若要获取帮助和支持，请选择**帮助**下拉列表以显示资源列表。 在试用版应用程序中，支持资源包括对[实时聊天](howto-show-hide-chat.md)的访问权限。
 
 可以为 UI 选择浅色主题或深色主题：
 
 ![为 UI 选择主题](media/overview-iot-central-tour/themes.png)
+
+> [!NOTE]
+> 如果管理员已为应用程序配置自定义主题，则无法在浅色主题和深色主题之间切换。
 
 ## <a name="dashboard"></a>仪表板
 

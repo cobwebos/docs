@@ -7,14 +7,14 @@ ms.author: twhitney
 ms.service: container-service
 manager: jeconnoc
 ms.topic: overview
-ms.date: 05/06/2019
+ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 6121c0f654a61a147e84f0697f3ddb06b7c5db92
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bfa3e63a433a6948f05ece7ec3c3a6180933510b
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079945"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466168"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -38,9 +38,9 @@ Azure Red Hat OpenShift 节点在 Azure 虚拟机上运行。 可以将存储连
 
 ## <a name="virtual-networks-and-ingress"></a>虚拟网络和入口
 
-可以将 Azure Red Hat OpenShift 群集部署到现有的虚拟网络。 在此配置中，群集中的每个 pod 在虚拟网络中分配有一个 IP 地址，可以直接与群集中的其他 pod 以及虚拟网络中的其他节点通信。 Pod 还可以连接到对等互连虚拟网络中的其他服务，通过 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) 或站点到站点 (S2S) VPN 连接连接到本地网络。
+可通过对等互连将 Azure Red Hat OpenShift 群集连接到现有虚拟网络。 使用此配置，Pod 可连接到对等互连虚拟网络中的其他服务，也可通过 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) 或站点到站点 (S2S) VPN 连接到本地网络。
 
-有关详细信息，请参阅[在 Azure 上创建 Microsoft Red Hat OpenShift 群集](tutorial-create-cluster.md)。
+有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。
 
 ## <a name="kubernetes-certification"></a>Kubernetes 认证
 
