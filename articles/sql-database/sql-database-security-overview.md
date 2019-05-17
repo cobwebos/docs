@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 584f30cc12aee722aed1079d5cefaee06d403cba
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 05/14/2019
+ms.openlocfilehash: 7916e9493a5d572f844bca23a1dd7806e5fbe572
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867669"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790164"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -125,17 +125,11 @@ SQL Server 始终对所有连接强制要求加密 (SSL/TLS)。 这样可以确�
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能旨在保护特定数据库列中存储的敏感数据不被访问（如信用卡号或、国民身份证号或视需要而定的数据）。 这包括数据库管理员或其他特权用户，他们被授权访问数据库以执行管理任务，但不需要访问加密列中的特定数据。 数据始终处于加密状态，这意味着加密数据只在有权访问加密密钥的客户端应用程序需要处理数据时才解密。  加密密钥从不暴露给 SQL，而且可以存储在 [Windows 证书存储区](sql-database-always-encrypted.md)或 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) 中。
 
-### <a name="masking"></a>掩码
+### <a name="dynamic-data-masking"></a>动态数据掩码
 
 ![azure-database-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
 
-#### <a name="dynamic-data-masking"></a>动态数据掩码
-
 SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来限制此类数据的泄露。 动态数据过滤可自动发现 Azure SQL 数据库中可能存在的敏感数据，提供实用建议来过滤这些字段，对应用程序层几乎没有任何影响。 它的工作原理是在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。 有关详细信息，请参阅 [SQL 数据库动态数据掩码入门](sql-database-dynamic-data-masking-get-started.md)。
-
-#### <a name="static-data-masking"></a>静态数据掩码
-
-[静态数据掩码](/sql/relational-databases/security/static-data-masking)是一款客户端工具，在 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 18.0 预览版 5 和更高版本中可用。  用户可通过静态数据掩码创建数据库副本，其中选定列中的数据已被永久屏蔽。 可用的掩码函数包括 NULL 掩码、单值掩码、shuffle 和组 shuffle 掩码，以及字符串复合掩码。 使用数据库的掩码副本，组织可以通过共享掩码副本来分离生产环境和测试环境。 敏感数据得到充分保护，并保留了所有其他数据库特征。 如果需要第三方访问数据库，建议使用掩码数据库。
 
 ## <a name="security-management"></a>安全管理
 

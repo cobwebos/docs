@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56ec4d867abd5f2767c64b0800eeb017c0fb9923
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626994"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793007"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -40,6 +40,11 @@ ms.locfileid: "60626994"
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="v2-builds"></a>v2 版本
+
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+* 改进的负载平衡方案的策略，获取所有租约时花费的时间超过租约过期的时间间隔，例如，由于网络问题：
+  * 在此方案中的负载平衡算法用于为已过期，错误地考虑租约活动所有者从导致窃取租约。 这可能会触发重新均衡的租用的很多不必要。
+  * 通过获取已过期的租约的所有者未发生更改以及 posponing 获取过期租约到下一步的负载平衡迭代时避免冲突时重试情况下，在此版本中修复此问题。
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * 改进了对观察者异常的处理。
@@ -163,6 +168,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.7](#2.2.7) |2019 年 5 月 14 日， |--- |
 | [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
 | [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
 | [2.2.4](#2.2.4) |2018 年 11 月 29 日 |--- |

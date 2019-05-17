@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 0e55c372c6f5dc3484bd64cf4f328479d2d0b245
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0b9d87fd7929607da8407ae5bbfb2f6dd6d69dab
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60461309"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65211930"
 ---
-## <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>密钥事务 (每个区域保管库在 10 秒内，每个允许的最大事务<sup>1</sup>):
+#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>密钥事务 (每个区域保管库在 10 秒内，每个允许的最大事务<sup>1</sup>):
 
 |密钥类型|HSM 密钥<br>创建密钥|HSM 密钥<br>所有其他事务|软件密钥<br>创建密钥|软件密钥<br>所有其他事务|
 |:---|---:|---:|---:|---:|
@@ -34,7 +34,7 @@ ms.locfileid: "60461309"
 > - 125 RSA 4096 位 HSM 密钥获取事务
 > - 124 RSA 4096 位的 HSM 密钥获取事务和 8 RSA 2048 位 HSM 密钥获取事务
 
-## <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>机密、 托管的存储帐户密钥和保管库事务：
+#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>机密、 托管的存储帐户密钥和保管库事务：
 | 事务类型 | 每个区域保管库在 10 秒内，每个允许的最大事务<sup>1</sup> |
 | --- | --- |
 | 所有事务 |2,000 |

@@ -3,18 +3,18 @@ title: 诊断 Azure Cosmos DB Java 异步 SDK 并对其进行故障排除
 description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查 Azure Cosmos DB 问题。
 author: moderakh
 ms.service: cosmos-db
-ms.topic: troubleshooting
 ms.date: 04/30/2019
 ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
+ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f0dc45f104e05fde083489604865aaae8282d6a2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146212"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519985"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>排查将 Java 异步 SDK 与 Azure Cosmos DB SQL API 帐户配合使用时出现的问题
 本文介绍了将 [Java 异步 SDK](sql-api-sdk-async-java.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。

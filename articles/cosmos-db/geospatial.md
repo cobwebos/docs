@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 9c6ea982d9a605696dad0c943aa6dd2ae155d6bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26eb43060a0a2b564a7274bb1579151e66b2bfee
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888663"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604211"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>在 Azure Cosmos DB SQL API 帐户中使用地理空间和 GeoJSON 位置数据
 
@@ -142,7 +142,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-如果没有经纬度信息，但有物理地址或位置名称，如城市或国家/地区，则可以使用必应地图 REST 服务等地理编码服务来查找实际的坐标。 在[此处](https://msdn.microsoft.com/library/ff701713.aspx)详细了解必应地图地理编码。
+如果您没有的纬度和经度信息，但具有物理地址或位置名称，如城市或国家/地区，可以通过使用必应地图 REST 服务等地理编码服务来查找实际的坐标。 在[此处](https://msdn.microsoft.com/library/ff701713.aspx)详细了解必应地图地理编码。
 
 ## <a name="querying-spatial-types"></a>查询空间类型
 我们已经探讨过如何插入地理空间数据，现在就来看看如何通过 SQL 和 LINQ 使用 Azure Cosmos DB 查询此数据。

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6fb95d43bff79ca91988549114daa91e5d41f358
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f034f31f2c8c49bbdfb88e2ba0a009ff5b795fa2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60649498"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789606"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -39,7 +39,7 @@ ms.locfileid: "60649498"
 
 ### <a name="before-you-start"></a>开始之前
 
-- 如果不想使用 HTTPS，可以[禁用默认设置](backup-azure-backup-server-vmware.md)。
+- 如果不想要使用 HTTPS 可以[禁用所有 VMware 服务器的 HTTPS 证书验证](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
 - 通常，你会使用 vSphere Web 客户端从 Azure 备份服务器计算机上的浏览器连接到 vCenter/ESXi 服务器。 首次执行此操作时，连接并不安全，会显示以下消息。
 - 必须了解 Azure 备份服务器处理备份的方式。
     - Azure 备份服务器首先将数据备份到本地磁盘存储。 对于保护的数据，Azure 备份服务器将使用存储池，即，Azure 备份服务器用来存储磁盘恢复点的一组磁盘和卷。 该存储池可以是直接附加存储 (DAS)、光纤通道 SAN，或者 iSCSI 存储设备或 SAN。 必须确保为 VMware VM 数据的本地备份提供足够的存储空间。
@@ -101,7 +101,7 @@ ms.locfileid: "60649498"
 
 
 
-### <a name="disable-default-https"></a>禁用默认 HTTPS
+### <a name="disable-https-certificate-validation"></a>禁用 HTTPS 证书验证
 
 如果你在组织中创建了安全边界并且不想要在 VMware 服务器与 Azure 备份服务器计算机之间使用 HTTPS 协议，请按如下所述禁用 HTTPS：
 1. 将以下文本复制并粘贴到 .txt 文件中。

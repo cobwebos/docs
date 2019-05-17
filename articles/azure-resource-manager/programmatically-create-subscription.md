@@ -2,21 +2,23 @@
 title: 以编程方式创建 Azure Enterprise 订阅 | Microsoft Docs
 description: 了解如何以编程方式创建其他 Azure Enterprise 或 Enterprise 开发/测试订阅。
 services: azure-resource-manager
-author: tfitzmac
+author: jureid
+manager: jureid
+editor: ''
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2019
-ms.author: tomfitz
-ms.openlocfilehash: 93df0c196d78a4685ff82108354b82a07d67695d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/10/2019
+ms.author: jureid
+ms.openlocfilehash: 7985451eb2bb5e9fd4fbcfb3d2fcf35149122c15
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256917"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796064"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>以编程方式创建 Azure Enterprise 订阅（预览版）
 
@@ -40,9 +42,9 @@ Azure [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreeme
 
 若要运行以下命令，必须登录到帐户所有者的主目录（默认在该目录中创建订阅）。
 
-# <a name="resttabrest"></a>[REST](#tab/rest)
+## <a name="resttabrest"></a>[REST](#tab/rest)
 
-列出所有注册帐户的请求：
+若要列出有权访问的所有注册帐户的请求：
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview
@@ -73,7 +75,11 @@ Azure 使用有访问权限的所有注册帐户列表做出响应：
 }
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+使用 `principalName` 属性标识想要对其收取订阅费用的帐户。 复制`name`的该帐户。 例如，如果你想要创建下的订阅SignUpEngineering@contoso.com注册帐户，会将复制```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将此值粘贴到某个位置，以便可以使用它作为在下一步`enrollmentAccountObjectId`。
+
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+打开[Azure Cloud Shell](https://shell.azure.com/)并选择 PowerShell。
 
 使用 [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) cmdlet 列出你可以访问的所有注册帐户。
 
@@ -81,15 +87,16 @@ Azure 使用有访问权限的所有注册帐户列表做出响应：
 Get-AzEnrollmentAccount
 ```
 
-Azure 使用对象 ID 和帐户电子邮件地址列表做出响应。
+Azure 使用有权访问注册帐户列表做出响应：
 
 ```azurepowershell
 ObjectId                               | PrincipalName
 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | SignUpEngineering@contoso.com
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
+使用 `principalName` 属性标识想要对其收取订阅费用的帐户。 复制`ObjectId`的该帐户。 例如，如果你想要创建下的订阅SignUpEngineering@contoso.com注册帐户，会将复制```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 将某个位置，以便可以使用它作为下一步中粘贴此对象 ID `enrollmentAccountObjectId`。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用 [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) 命令列出有访问权限的所有注册帐户。
 
@@ -97,45 +104,39 @@ ObjectId                               | PrincipalName
 az billing enrollment-account list
 ```
 
-Azure 使用对象 ID 和帐户电子邮件地址列表做出响应。
+Azure 使用有权访问注册帐户列表做出响应：
 
 ```json
-{
-  "value": [
-    {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "type": "Microsoft.Billing/enrollmentAccounts",
-      "properties": {
-        "principalName": "SignUpEngineering@contoso.com"
-      }
-    },
-    {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "type": "Microsoft.Billing/enrollmentAccounts",
-      "properties": {
-        "principalName": "BillingPlatformTeam@contoso.com"
-      }
-    }
-  ]
-}
+[
+  {
+    "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "principalName": "SignUpEngineering@contoso.com",
+    "type": "Microsoft.Billing/enrollmentAccounts",
+  },
+  {
+    "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "principalName": "BillingPlatformTeam@contoso.com",
+    "type": "Microsoft.Billing/enrollmentAccounts",
+  }
+]
 ```
+
+使用 `principalName` 属性标识想要对其收取订阅费用的帐户。 复制`name`的该帐户。 例如，如果你想要创建下的订阅SignUpEngineering@contoso.com注册帐户，会将复制```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```。 这是注册帐户的对象 ID。 将此值粘贴到某个位置，以便可以使用它作为在下一步`enrollmentAccountObjectId`。
 
 ---
 
-使用 `principalName` 属性标识想要对其收取订阅费用的帐户。 将 `id` 用作在下一步骤中创建订阅的 `enrollmentAccount` 值。
+## <a name="create-subscriptions-under-a-specific-enrollment-account"></a>在特定注册帐户下创建订阅
 
-## <a name="create-subscriptions-under-a-specific-enrollment-account"></a>在特定注册帐户下创建订阅 
-
-下面的示例创建请求创建名为“开发团队订阅”的订阅，订阅套餐为 MS-AZR-0017P（常规 EA）。 合约帐户为 `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx`（占位符值，此值为 GUID），是 SignUpEngineering@contoso.com 的合约帐户。 它也选择性地添加两个用户作为订阅的 RBAC 所有者。
+下面的示例创建名为的订阅*开发团队订阅*在上一步中选择的注册帐户。 订阅产品/服务*MS-条-0017 P* （常规 Microsoft 企业协议）。 它也选择性地添加两个用户作为订阅的 RBAC 所有者。
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 
-使用请求路径中 `enrollmentAccount` 的 `id` 创建订阅。
+下面的请求，请替换`<enrollmentAccountObjectId>`与`name`复制的第一步 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 如果你想要指定所有者，了解[如何获取用户对象 Id](grant-access-to-create-subscription.md#userObjectId)。
 
 ```json
-POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
+POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
 
 {
   "displayName": "Dev Team Subscription",
@@ -161,12 +162,12 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-要使用此预览版模块，请先运行 `Install-Module Az.Subscription -AllowPrerelease` 进行安装。 为了确保 `-AllowPrerelease` 有效，请从[获取 PowerShellGet 模块](/powershell/gallery/installing-psget)安装 PowerShellGet 最新版本。
+首先，通过运行安装此预览版模块`Install-Module Az.Subscription -AllowPrerelease`。 为了确保 `-AllowPrerelease` 有效，请从[获取 PowerShellGet 模块](/powershell/gallery/installing-psget)安装 PowerShellGet 最新版本。
 
-使用 [New-AzSubscription](/powershell/module/az.subscription) 并将 `enrollmentAccount` 对象 ID 作为创建新订阅的 `EnrollmentAccountObjectId` 参数。 
+运行[新建 AzSubscription](/powershell/module/az.subscription)下面，替换命令`<enrollmentAccountObjectId>`与`ObjectId`收集的第一步中 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 如果你想要指定所有者，了解[如何获取用户对象 Id](grant-access-to-create-subscription.md#userObjectId)。
 
 ```azurepowershell-interactive
-New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
+New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
 | 元素名称  | 需要 | Type   | 描述                                                                                               |
@@ -182,12 +183,12 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-要使用此预览版扩展，请先运行 `az extension add --name subscription` 进行安装。
+首先，通过运行安装此预览版扩展`az extension add --name subscription`。
 
-使用 [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) 并将 `enrollmentAccount` 对象 ID 作为创建新订阅的 `enrollment-account-object-id` 参数。
+运行[az 帐户创建](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)下面，替换命令`<enrollmentAccountObjectId>`与`name`第一步中复制 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```)。 如果你想要指定所有者，了解[如何获取用户对象 Id](grant-access-to-create-subscription.md#userObjectId)。
 
 ```azurecli-interactive 
-az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
+az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
 | 元素名称  | 需要 | Type   | 描述                                                                                               |
@@ -206,7 +207,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>对创建 Azure Enterprise 订阅的 API 限制
 
 - 仅 Azure Enterprise 订阅可以使用此 API 进行创建。
-- 每个帐户的订阅限制为 50 个。 超出此限制后，只能使用帐户中心创建订阅。
+- 一个初始限制为 50 个订阅每个注册帐户，但你可以[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)若要将限制增加到 200。 之后，可以仅创建订阅通过帐户中心。
 - 帐户下至少需要一个 EA 或 EA 开发/测试，这意味着帐户所有者至少经历过一次手动注册。
 - 不是帐户所有者但通过 RBAC 添加到合约帐户的用户不能使用帐户中心创建订阅。
 - 不能选择要在其中创建订阅的租户。 订阅始终在帐户所有者的主租户中进行创建。 若要将订阅移到不同的租户，请参阅[更改订阅租户](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。

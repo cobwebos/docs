@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412733"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768369"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
@@ -53,7 +53,7 @@ ms.locfileid: "60412733"
 
   ![显示邀请，其中包含邀请者姓名首字母缩写显示的屏幕截图](media/invitation-email-elements/inviters-initials.png)
 
-### <a name="body"></a>Body
+### <a name="body"></a>正文
 正文包含邀请者在[使用邀请 API](customize-invitation-api.md) [邀请来宾用户访问目录、组或应用](add-users-administrator.md)时撰写的消息。 这是文本区域，因此出于安全原因不会处理 HTML 标记。
 
   ![显示的邀请电子邮件正文的屏幕截图](media/invitation-email-elements/invitation-email-body.png)

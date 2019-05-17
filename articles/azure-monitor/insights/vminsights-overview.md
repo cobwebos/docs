@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: a60413ee6614b638db58748ee2c0aea5d7ea32ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7d86b3fe9aeddd603d0c40b1c760cabdee42e396
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60199897"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522112"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>什么是用于 VM 的 Azure Monitor（预览版）？
 
@@ -64,4 +64,4 @@ ms.locfileid: "60199897"
 日志大小因性能计数器的字符串长度，并且可能会提高与逻辑磁盘和网络适配器分配给 VM 的数量。 如果你已有一个工作区并且正在收集这些计数器，则不会重复收费。 如果已在使用服务映射，则你看到的唯一变化是发送到 Azure Monitor 的额外连接数据。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[部署用于 VM 的 Azure Monitor](vminsights-onboard.md)，了解有助于监视虚拟机的要求和方法。
+请参阅[部署用于 VM 的 Azure Monitor](vminsights-enable-overview.md)，了解有助于监视虚拟机的要求和方法。

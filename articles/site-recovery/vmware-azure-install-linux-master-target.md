@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bcfeca34eb11caaddac06971fe7f825a142586a2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60600186"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602069"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -83,7 +83,7 @@ ms.locfileid: "60600186"
 1. 选择“否”（默认选项），然后按 Enter。
 
      ![配置键盘](./media/vmware-azure-install-linux-master-target/image5.png)
-1. 选择“英语(美国)”作为键盘原产地语言，再按 Enter。
+1. 选择**英语 （美国）** 为键盘，并选择原点的国家/地区/区域**Enter**。
 
 1. 选择“英语(美国)”作为键盘布局，再按 Enter。
 
@@ -262,7 +262,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
     
     按 Insert 开始编辑文件。 创建新行并插入以下文本。 根据前一命令中突出显示的多路径 ID 编辑磁盘多路径 ID。
 
-    **/dev/mapper/<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
+    **/dev/映射器/\<保留磁盘多路径 id >/mnt/保留 ext4 rw 0 0**
 
     按 Esc，键入 :wq（写入并退出）来关闭编辑器窗口。
 

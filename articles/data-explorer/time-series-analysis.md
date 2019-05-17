@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: cb5e41feb9be978592a1c1708ade0188ba20d504
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873151"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604050"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 数据资源管理器中的时序分析
 

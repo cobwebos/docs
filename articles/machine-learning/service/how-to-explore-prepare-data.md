@@ -11,19 +11,19 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 70712605cc97670b625d32052bb79b4a666e4281
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409826"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603158"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>探索和准备数据与数据集类 （预览版）
 
 了解如何浏览和使用准备数据[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。 [数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)类 （预览版） 使你可以浏览和准备数据，通过提供函数，如： 采样、 汇总统计信息和智能的转换。 转换步骤保存在[数据集定义](how-to-manage-dataset-definitions.md)功能，以高度可缩放的方式处理不同的架构的多个大文件。
 
 > [!Important]
-> 某些数据集类 （预览版） 在数据准备 SDK (GA）) 上具有依赖项。 虽然转换函数可以直接通过 GA'ed[数据准备 SDK 函数](how-to-transform-data.md)，我们建议如果您要构建一个新的解决方案在本文中所述的数据集包包装。 Azure 机器学习数据集 （预览版） 允许将不仅转换你的数据，但还[快照数据](how-to-create-dataset-snapshots.md)并存储[版本控制的数据集定义](how-to-manage-dataset-definitions.md)。 数据集是数据准备 SDK，提供可用于管理 AI 解决方案中的数据集的扩展的功能的下一个版本。
+> 某些数据集类 （预览版） 具有依赖项[azureml dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包 (GA）)。 虽然转换函数可以直接通过 GA'ed[数据准备函数](how-to-transform-data.md)，我们建议如果您要构建一个新的解决方案在本文中所述的数据集包包装。 Azure 机器学习数据集 （预览版） 允许将不仅转换你的数据，但还[快照数据](how-to-create-dataset-snapshots.md)并存储[版本控制的数据集定义](how-to-manage-dataset-definitions.md)。 数据集是数据准备 SDK，提供可用于管理 AI 解决方案中的数据集的扩展的功能的下一个版本。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -63,10 +63,10 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|date|阻止|IUCR|主要类型|...|
+||ID|案例号|Date|街区|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|欺骗性的做法|...
-1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
+第|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
 2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|欺骗性的做法|...
 3|10519591|HZ261534|4/15/2016 9:00|113XX S PRAIRIE AVE|1120|欺骗性的做法|...
 4|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|...
@@ -80,7 +80,7 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|date|阻止|IUCR|主要类型|...|
+||ID|案例号|Date|街区|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
 第|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|欺骗性的做法|...
@@ -103,7 +103,7 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|date|阻止|IUCR|主要类型|...|
+||ID|案例号|Date|街区|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
 第|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|...
@@ -121,8 +121,8 @@ dataset.get_profile()
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 ID|FieldType.INTEGER|1.04986e+07|1.05351e+07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e+07|1.04992e+07|1.04986e+07|1.05166e+07|1.05209e+07|1.05259e+07|1.05351e+07|1.05351e+07|1.05351e+07|1.05195e+07|12302.7|1.51358e+08|-0.495701|-1.02814
 案例号|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-阻止|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+街区|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 主要类型|FieldType.STRING|欺骗性的做法|THEFT|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 描述|FieldType.STRING|虚假检查|通过 500 美元|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -131,7 +131,7 @@ IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1
 国内|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 检测信号|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
 区|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
-病房|FieldType.INTEGER|第|48|10.0|0.0|10.0|0.0|0.0|0.0|第|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
+病房|FieldType.INTEGER|第|48|10.0|0.0|10.0|0.0|0.0|0.0|第|5|第|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
 社区范围|FieldType.INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37.5|71|77|77|77|41.2|26.6366|709.511|0.112157|-1.73379
 FBI 代码|FieldType.INTEGER|6|11|10.0|0.0|10.0|0.0|0.0|0.0|6|6|6|6|11|11|11|11|11|9.4|2.36643|5.6|-0.702685|-1.59582
 X 坐标|FieldType.INTEGER|1.16309e+06|1.18336e+06|10.0|7.0|3.0|0.7|0.0|0.0|1.16309e+06|1.16309e+06|1.16309e+06|1.16401e+06|1.16678e+06|1.17921e+06|1.18336e+06|1.18336e+06|1.18336e+06|1.17108e+06|10793.5|1.165e+08|0.335126|-2.33333
@@ -165,7 +165,7 @@ ds_def.head(3)
 ||ID|逮捕| 纬度|经度|
 -|---------|-----|---------|----------|
 |0|10498554|False|41.692834|-87.604319|
-|1|10516598|False| 41.744107 |-87.664494|
+|第|10516598|False| 41.744107 |-87.664494|
 |2|10519196|False| NaN|NaN|
 
 接下来，检查`MEAN`纬度列使用的值[ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow)函数。 此函数接受 `group_by_columns` 参数中的列数组以指定聚合级别。 `summary_columns`参数接受`SummaryColumnsValue`函数，它指定当前的列名称，新的计算的字段名称，和`SummaryFunction`来执行。
@@ -231,7 +231,7 @@ dataset.head(3)
 ||ID|逮捕|纬度|经度
 -|---------|-----|---------|----------
 0|10498554|False|41.692834|-87.604319
-1|10516598|False|41.744107|-87.664494
+第|10516598|False|41.744107|-87.664494
 2|10519196|False|41.780049|-87.000000
 
 ## <a name="create-assertion-rules"></a>创建声明规则
@@ -288,7 +288,7 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||ID|案例号|date|阻止|...|
+||ID|案例号|Date|街区|...|
 -|---------|-----|---------|----|---
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|...
 第|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|...
@@ -310,10 +310,10 @@ ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
 
 在下表中，请注意，新列，Date_Time_Range 包含记录中指定的格式。
 
-||ID|date|Date_Time_Range
+||ID|Date|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10PM-12AM
-1|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
+第|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
 2|10519196|2016-04-15 10:00:00|2016-04-15 10AM-12PM
 
 ```Python
@@ -338,7 +338,7 @@ dataset.head(5)
 ||inspections.business.business_id|inspections.business_name|inspections.business.address|inspections.business.city|...|
 -|-----|-------------------------|------------|--|---
 0|16162|快速 N Ezee 印度食品|3861 24th St|SF|...
-1|67565|泰语的领军人打嗝声 Cafe|1541 TARAVAL St|旧金山|...
+第|67565|泰语的领军人打嗝声 Cafe|1541 TARAVAL St|旧金山|...
 2|67565|泰语的领军人打嗝声 Cafe|1541 TARAVAL St|旧金山|...
 3|68701|Grindz|832 clement St|SF|...
 4|69186|高级支持以迎合和事件，inc.|1255 5 月 22 日 St|S.F.|...

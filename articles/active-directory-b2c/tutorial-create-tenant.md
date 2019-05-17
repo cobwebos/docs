@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 12ce37579a6f93ba600c39416c7566ac673e9560
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6bcb8e8d5b8b6ef1ebac8141dd13964ecf62af6f
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723338"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601690"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教程：创建 Azure Active Directory B2C 租户
 
@@ -40,7 +40,7 @@ ms.locfileid: "64723338"
 
 3. 在 Azure 门户的左上角，选择“创建资源”。
 4. 搜索并选择“Active Directory B2C”，然后单击“创建”。
-5. 选择“新建 Azure AD B2C 租户”，输入租户名称中使用的组织名称和初始域名，选择国家/地区（以后不能更改），然后单击“创建”。
+5. 选择**创建新的 Azure AD B2C 租户**，输入组织名称和租户名称中使用的初始域名称、 选择该国家/地区 （它不能更改更高版本），然后单击**创建**.
 
     ![创建租户](./media/tutorial-create-tenant/create-tenant.png)
 

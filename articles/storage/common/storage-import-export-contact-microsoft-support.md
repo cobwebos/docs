@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
-ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42c8c9c89a69224b222aabe8e929d800d22162ce
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483174"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604226"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>针对导入/导出作业开具支持票证
 
@@ -58,7 +58,7 @@ ms.locfileid: "61483174"
 4. 在“新建支持请求”中，单击“步骤 3: 联系信息”。 在“联系信息”中执行以下步骤：
 
    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
-   2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”复选框。
+   2. 在联系人信息，提供你的姓名、 电子邮件、 可选联系人、 国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”复选框。
    3. 单击**创建**。
    
        ![联系信息](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   

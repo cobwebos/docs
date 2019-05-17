@@ -15,22 +15,22 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09e04e6b61d3387cb8c50c2af4eef2cfb4bec196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c15e4080308c3e7e2ff54312cd91fa1f3d68668a
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437764"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602416"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>在 PIM 中为 Azure 资源角色配置安全警报
 你的环境中存在可疑活动或不安全活动时，azure Active Directory (Azure AD) Privileged Identity Management (PIM) 将生成警报。 当警报触发时，它将显示在“警报”页上。 
 
-![“警报”页](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
+![“警报”页](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
 ## <a name="review-alerts"></a>查看警报
 选择某个警报可查看报告，其中列出了触发该警报的用户或角色以及修正建议。
 
-![警报报告](media/azure-pim-resource-rbac/rbac-alert-info.png)
+![警报报告](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
 ## <a name="alerts"></a>警报
 | 警报 | 严重性 | 触发器 | 建议 |
@@ -40,17 +40,17 @@ ms.locfileid: "60437764"
 | **创建了重复角色** |中型 |多个角色具有相同的条件。 |仅使用这些角色中的一个角色。 |
 
 
-### <a name="severity"></a>严重性
+### <a name="severity"></a>Severity
 * **高**：因策略违反需要立即采取措施。 
 * **中**：不需要立即采取措施但指示潜在的策略违反。
 * **低**：不需要立即采取措施，但建议考虑首选的策略更改。
 
 ## <a name="configure-security-alert-settings"></a>配置安全警报设置
 从“警报”页转到“设置”。
-![设置](media/azure-pim-resource-rbac/rbac-navigate-settings.png)
+![设置](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 
 在各个警报上自定义设置以适应你的环境和安全目标。
-![自定义设置](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+![自定义设置](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 7d024dd958e6b29b52f095a9a55a67154bf6cde6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 414869833b894e2688505a91fed8fafe0c912b73
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459787"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523738"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>配置使用 Azure PowerShell 的 web 应用程序防火墙策略
 Azure web 应用程序防火墙 (WAF) 策略定义在第一道防线的请求到达时所需的检查。
@@ -52,19 +52,19 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="custom-rule-based-on-http-parameters"></a>基于 http 的参数的自定义规则
 
-下面的示例演示如何使用来配置自定义规则使用的两个匹配条件[新建 AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject)。 请求是从指定的站点定义的引用网站，并且查询字符串不包含"password"。 
+下面的示例演示如何使用来配置自定义规则使用的两个匹配条件[新建 AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)。 请求是从指定的站点定义的引用网站，并且查询字符串不包含"password"。 
 
 ```powershell-interactive
-$referer = New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Equal -Selector "Referer" -MatchValue "www.mytrustedsites.com/referpage.html"
-$password = New-AzFrontDoorMatchConditionObject -MatchVariable QueryString -OperatorProperty Contains -MatchValue "password"
+$referer = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Equal -Selector "Referer" -MatchValue "www.mytrustedsites.com/referpage.html"
+$password = New-AzFrontDoorWafMatchConditionObject -MatchVariable QueryString -OperatorProperty Contains -MatchValue "password"
 $AllowFromTrustedSites = New-AzFrontDoorCustomRuleObject -Name "AllowFromTrustedSites" -RuleType MatchRule -MatchCondition $referer,$password -Action Allow -Priority 1
 ```
 
 ## <a name="custom-rule-based-on-http-request-method"></a>根据 http 请求方法的自定义规则
-创建阻止"PUT"方法使用的规则[新建 AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-AzFrontDoorCustomRuleObject) ，如下所示：
+创建阻止"PUT"方法使用的规则[新建 AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) ，如下所示：
 
 ```powershell-interactive
-$put = New-AzFrontDoorMatchConditionObject -MatchVariable RequestMethod -OperatorProperty Equal -MatchValue PUT
+$put = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestMethod -OperatorProperty Equal -MatchValue PUT
 $BlockPUT = New-AzFrontDoorCustomRuleObject -Name "BlockPUT" -RuleType MatchRule -MatchCondition $put -Action Block -Priority 2
 ```
 
@@ -72,7 +72,7 @@ $BlockPUT = New-AzFrontDoorCustomRuleObject -Name "BlockPUT" -RuleType MatchRule
 
 以下示例创建阻止请求的长度超过 100 个字符使用 Azure PowerShell 的 Url 的规则：
 ```powershell-interactive
-$url = New-AzFrontDoorMatchConditionObject -MatchVariable RequestUri -OperatorProperty GreaterThanOrEqual -MatchValue 100
+$url = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestUri -OperatorProperty GreaterThanOrEqual -MatchValue 100
 $URLOver100 = New-AzFrontDoorCustomRuleObject -Name "URLOver100" -RuleType MatchRule -MatchCondition $url -Action Block -Priority 3
 ```
 ## <a name="add-managed-default-rule-set"></a>添加托管默认规则集
@@ -83,10 +83,10 @@ $managedRules = New-AzFrontDoorManagedRuleObject -Type DefaultRuleSet -Version "
 ```
 ## <a name="configure-a-security-policy"></a>配置安全策略
 
-使用 `Get-AzResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，配置安全策略与使用在前面步骤中创建的规则[新建 AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy)中包含的第一道防线配置文件的指定的资源组。
+使用 `Get-AzResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，配置安全策略与使用在前面步骤中创建的规则[新建 AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)中包含的第一道防线配置文件的指定的资源组。
 
 ```powershell-interactive
-$myWAFPolicy=New-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention
+$myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention
 ```
 
 ## <a name="link-policy-to-a-front-door-front-end-host"></a>链接到第一道防线前端主机的策略

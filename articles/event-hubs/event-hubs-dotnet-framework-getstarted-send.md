@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 097605a81e263ba558c616bd9f0d1ac38092f86e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 96ce71a7b3076adec169f103060a167b61c42d5c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692933"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603507"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>事件发送到或从 Azure 事件中心使用.NET Framework 接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
@@ -30,7 +30,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 ## <a name="prerequisites"></a>必备组件
 若要完成本教程，需要具备以下先决条件：
 
-- [Microsoft Visual Studio 2017 或更高版本](https://visualstudio.com)。
+- [Microsoft Visual Studio 2019](https://visualstudio.com)。
 - **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，获取**事件中心命名空间的连接字符串**按照文章中的说明：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 本教程后面的步骤将使用此连接字符串。
 
 ## <a name="send-events"></a>发送事件 

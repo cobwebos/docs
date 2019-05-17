@@ -3,19 +3,19 @@ title: 语言支持 - 必应新闻搜索 API
 titleSuffix: Azure Cognitive Services
 description: 必应新闻搜索 API 支持的自然语言、国家/地区和区域列表。
 services: cognitive-services
-author: MikeDodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: e8a7f6d20ed36c4b3e900602fb52e31dceefae88
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201408"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799335"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>必应新闻搜索 API 的语言和区域支持
 

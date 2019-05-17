@@ -3,8 +3,8 @@ title: 没有为任何用户预配 Azure AD 库应用程序 | Microsoft Docs
 description: 当在针对用户预配使用 Azure AD 配置的 Azure AD 库应用程序中没有看到用户时，如何解决面对的常见问题
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e74ad04f10865a830d27c1814be10eeff3ad59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eaeb97f88c2482cb9d091afb1c205e9b09a85ce0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443209"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784590"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>没有为任何用户预配 Azure AD 库应用程序
 为应用程序配置自动化预配后（包括验证提供给 Azure AD 以连接至该应用的应用凭据是否有效），用户和/或组将预配到应用。 预配取决于以下事情：

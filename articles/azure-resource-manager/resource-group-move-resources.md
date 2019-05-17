@@ -1,23 +1,17 @@
 ---
 title: 将 Azure 资源移到新的订阅或资源组 | Microsoft 文档
 description: 使用 Azure 资源管理器将资源移到新的资源组或订阅。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 05/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4e94bc7686203bfbcd93200e5a1fb65b43ceeb91
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 076d120d9c02b15837e92b71bc2a015377f54594
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698491"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792697"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -113,6 +107,7 @@ ms.locfileid: "64698491"
 * SignalR 服务
 * 存储 - 不同区域中的存储帐户不能在同一操作中移动。 相反，为每个区域使用单独的操作。
 * 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
+* 存储同步服务
 * 流分析 - 当流分析作业处于运行状态时，则无法进行移动。
 * SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
 * 时序见解

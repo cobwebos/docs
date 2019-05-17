@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: a1fe8929b5ae39c82850aa08899c7b3e6bb98c7e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: eeb9f5fa91252bbc3c3038ab88bd2d7e802f263f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725309"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786400"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -23,6 +23,8 @@ AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principa
 ## <a name="before-you-begin"></a>开始之前
 
 若要创建 Azure AD 服务主体，必须具有相应的权限，能够向 Azure AD 租户注册应用程序，并将应用程序分配到订阅中的角色。 如果没有必需的权限，可能需要请求 Azure AD 或订阅管理员来分配必需的权限，或者预先创建一个可以与 AKS 群集配合使用的服务主体。
+
+如果使用服务主体从不同的 Azure AD 租户，有一些其他注意事项围绕权限可用，在部署群集时。 您可能没有适当的权限来读取和写入目录信息。 有关详细信息，请参阅[Azure Active Directory 中的默认用户权限是什么？][azure-ad-permissions]
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -158,3 +160,4 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr
 [update-credentials]: update-credentials.md
+[azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md

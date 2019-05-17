@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4d1ef650a3f12d8b97cbad3e9aecf31c8b81a038
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148954"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796152"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 SQL 查询示例
 
@@ -139,7 +139,7 @@ Azure Cosmos DB SQL API 帐户支持使用 结构化查询语言 (SQL) 作为 JS
     }]
 ```
 
-下面的查询返回的子级的所有给定名称系列中其`id`匹配`WakefieldFamily`、 有序按居住的城市。
+下面的查询返回的子级的所有给定名称系列中其`id`匹配`WakefieldFamily`、 按市/县有序。
 
 ```sql
     SELECT c.givenName
@@ -548,13 +548,13 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
 
 下表显示了 SQL API 中任意两个 JSON 类型之间等式比较的结果。
 
-| **Op** | 未定义 | Null | **布尔值** | **数字** | **字符串** | **Object** | 数组 |
+| **Op** | 未定义 | Null | **Boolean** | **数字** | **String** | **Object** | 数组 |
 |---|---|---|---|---|---|---|---|
 | 未定义 | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
 | Null | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **布尔值** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
+| **Boolean** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
 | **数字** | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined |
-| **字符串** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
+| **String** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
 | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
 | 数组 | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
 
@@ -867,6 +867,13 @@ SQL API 的一个重要功能是创建数组和对象。 以上示例创建了�
         ]
       }
     ]
+```
+
+下面的 SQL 查询是在子查询中使用数组中的另一个示例。 此查询获取数组中的子对象的所有非重复给定名称。
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
 ```
 
 

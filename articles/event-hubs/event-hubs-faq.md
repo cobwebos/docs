@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: ce9c6a83d664bc9ad1798792f7762556c9a0d541
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: acc756ac04e5127d07760746bd0178f0f6cb1d6f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690270"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789245"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -23,6 +23,15 @@ ms.locfileid: "64690270"
 
 ### <a name="what-is-an-event-hubs-namespace"></a>什么是事件中心命名空间？
 命名空间是事件中心/Kafka 主题的范围容器。 它提供唯一的 [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 命名空间充当容装多个事件中心/Kafka 主题的应用程序容器。 
+
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>何时创建新的命名空间与使用现有的命名空间？
+容量分配 ([吞吐量单位 (Tu)](#throughput-units)) 的命名空间级别计费。 命名空间也是与区域关联。
+
+您可能想要创建新的命名空间而不是使用一个中一个现有的以下方案： 
+
+- 需要一个与新的区域相关联的事件中心。
+- 需要一个与不同的订阅相关联的事件中心。
+- 需要使用不同的容量分配一个事件中心 （即，容量需要具有添加的事件中心命名空间将超过 40 TU 阈值并不想要转的专用群集）  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>事件中心基本和标准这两种服务层有什么不同？
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/08/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: d2de802b2170feb6130cdce8007e16cc37561f5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4d3a9c5e985949d813b638806f60bc86f5a163a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550574"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789270"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -46,7 +46,9 @@ ms.locfileid: "60550574"
 
 ## <a name="incremental-mode"></a>增量模式
 
-在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源。 以增量模式重新部署资源时，请指定资源的所有属性值，而不仅仅是要更新的属性值。 如果未指定某些属性，资源管理器会将更新解释为覆盖这些值。
+在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源。
+
+但是，当重新部署现有资源在增量模式下，结果是一个不同的。 指定的资源，而不仅仅是要更新的所有属性。 常见的误解是认为未指定的属性保持不变。 如果未指定某些属性，资源管理器会将更新解释为覆盖这些值。
 
 ## <a name="example-result"></a>示例结果
 

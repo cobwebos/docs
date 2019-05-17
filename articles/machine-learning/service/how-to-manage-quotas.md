@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 12/04/2018
+ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: f9734a5d8f34536558fbf0c861889f3c7d6719da
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765872"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523989"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
 
@@ -52,9 +52,9 @@ ms.locfileid: "63765872"
 在 Azure 机器学习计算中，订阅中每个区域所允许的核心数和唯一计算资源数都有默认配额限制。 该配额独立于上述的 VM 核心配额，并且核心限制目前没有在这两种资源类型之间共享。
 
 可用资源：
-+ 每个区域的专用核心数的默认限制为 10 - 24。  可增加每个订阅的专用核心数。 请联系 Azure 支持以讨论增加选项。
++ 每个区域的专用核心数的默认限制为 24-300 取决于你的订阅产品/服务类型。  可增加每个订阅的专用核心数。 请联系 Azure 支持以讨论增加选项。
 
-+ 每个区域的低优先级核心数的默认限制为 10 - 24。  可增加每个订阅的低优先级核心数。 请联系 Azure 支持以讨论增加选项。
++ 每个区域的低优先级核心数的默认限制为 24-300，具体取决于你的订阅产品/服务类型。  可增加每个订阅的低优先级核心数。 请联系 Azure 支持以讨论增加选项。
 
 + 每个区域的群集数默认限制为 100，最大限制为 200。 如果请求增加的配额超出此限制，请与 Azure 支持部门联系。
 
@@ -66,10 +66,12 @@ ms.locfileid: "63765872"
 | 单个 Azure 机器学习计算 (AmlCompute) 资源中的最大节数点 | 100 个节点 |
 | 每个节点的最大 GPU MPI 进程数 | 1-4 |
 | 每个节点的最大 GPU 辅助角色数 | 1-4 |
-| 最长作业生存期 | 7 天<sup>1</sup> |
+| 最长作业生存期 | 90 天<sup>1</sup> |
+| 低优先级节点上的最大作业生存期 | 1 天<sup>2</sup> |
 | 每个节点的最大参数服务器数 | 第 |
 
 <sup>1</sup> 最长生存期是指运行从开始到结束的时间。 已完成的运行会无限期保存；最长生存期内未完成的运行的数据不可访问。
+<sup>2</sup>低优先级节点上的作业可以抢占资源容量约束任何时间。 建议您在工作中实施检查点。
 
 ### <a name="container-instances"></a>容器实例
 
@@ -80,20 +82,20 @@ ms.locfileid: "63765872"
 有关配额限制更详细的最新列表，请在[此处](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits)查看适用于 Azure 的配额文章。
 
 ### <a name="storage"></a>存储
-给定订阅中每个区域的存储帐户数量也有限制。 默认限制数量为 200，包括标准和高级存储帐户。 如果在某特定区域中需要的存储帐户多于 200 个，请通过  [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)提出请求。 Azure 存储团队将评审业务案例，对于特定区域最多可以批准 250 个存储帐户。
+给定订阅中每个区域的存储帐户数量也有限制。 默认限制数量为 200，包括标准和高级存储帐户。 如果在某特定区域中需要的存储帐户多于 200 个，请通过 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)提出请求。 Azure 存储团队将评审业务案例，对于特定区域最多可以批准 250 个存储帐户。
 
 
 ## <a name="find-your-quotas"></a>查找你的配额
 
 通过 Azure 门户可以轻松查看各种资源的配额，例如虚拟机、存储和网络。
 
-1. 在左窗格上，选择“所有服务”，然后在“一般”类别下选择“订阅” ****。
+1. 在左窗格上，选择“所有服务”，然后在“一般”类别下选择“订阅”。
 
 1. 从订阅列表中选择要查找其配额的订阅。
 
    有一个警告提示，专门用于查看 Azure 机器学习计算配额。 如上所述，此配置独立于订阅上的计算配额。
 
-1. 在左侧窗格中，选择“机器学习服务”，然后从显示的列表中选择任何工作区 ****
+1. 在左窗格中，选择**机器学习服务**，然后从显示的列表中选择任何工作区
 
 1. 在下一个边栏选项卡中，在“支持 + 故障排除部分”下，选择“使用情况 + 配额”以查看当前配额限制和使用情况。
 
@@ -102,7 +104,7 @@ ms.locfileid: "63765872"
 
 ## <a name="request-quota-increases"></a>请求增加配额
 
-如果想要提高限制或配额，使其超出默认限制，可 [打开免费的联机客户支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)。
+如果想将限制或配额提高到默认值限制以上，可以免费[打开联机客户支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)。
 
 无法将限制提高到表中所示的最大限制值。 如果没有最大限制，则资源没有可调整的限制。 [这篇文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)详细介绍了配额增加过程。
 

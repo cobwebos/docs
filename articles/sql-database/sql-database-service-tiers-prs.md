@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e12b89d0469587d7d7326bbee30f6467ada06bd5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7f184178343f69f522148777752c51afc5c5dcb6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574083"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790412"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL 数据库“高级 RS”服务层级（预览版）即将停用 - 迁移选项
 
@@ -27,7 +27,7 @@ ms.locfileid: "64574083"
 
 - vCore 服务层级
 
-  [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中的“常规用途”和“业务关键”服务层级。 这两个服务层级已推出正式版。 基于 vCore 的购买模型还提供“超大规模”服务层级（公共预览版），该服务层级按需适应工作负荷的需求，可自动将每个数据库最大扩展到 100 TB。 “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
+  [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中的“常规用途”和“业务关键”服务层级。 这两个服务层级已推出正式版。 此外提供了基于 vCore 的购买模型**超大规模**调整按需自动缩放每个数据库最多 100 TB 的工作负荷的需求的服务层。 “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
 - 开发/测试定价
 
   与 Visual Studio 订阅的许可证涵盖费率相比，[开发/测试定价](https://azure.microsoft.com/pricing/dev-test/)最多可将成本节省 55%。
@@ -70,10 +70,10 @@ ms.locfileid: "64574083"
 
 |**如果当前使用…**|**迁移到对等的基于 vCore 的服务层...**|**迁移到对等的基于 DTU 的服务层...**|
 |---|---|---|
-|Premium RS 1|（预览版）超大规模 1 vCore（第 4 代）或业务关键 1 vCore（第 4 代）|高级 1|
-|Premium RS 2|（预览版）超大规模 2 vCore（第 4 代）或业务关键 2 vCore（第 4 代|高级 2|
-|Premium RS 4|（预览版）超大规模 4 vCore（第 4 代）或业务关键 4 vCore（第 4 代）|高级 4
-|Premium RS 6|（预览版）超大规模 6 vCore（第 4 代）或业务关键 6 vCore（第 4 代）|高级 6|
+|Premium RS 1| 超大规模 1 vCore (Gen4) 或业务关键 1 vCore (Gen4)|高级 1|
+|Premium RS 2| 超大规模 2 个 Vcore (Gen4) 或业务关键 2 vcore 数 (Gen4|高级 2|
+|Premium RS 4| 超大规模 4 个 Vcore (Gen4) 或业务关键 4 vcore 数 (Gen4)|高级 4
+|Premium RS 6| 超大规模 6 个 Vcore (Gen4) 或业务关键 6 vcore 数 (Gen4)|高级 6|
 
 |**如果当前使用…**|**迁移到对等的基于 vCore 的服务层...**|**迁移到对等的基于 DTU 的服务层...**|
 |---|---|---|

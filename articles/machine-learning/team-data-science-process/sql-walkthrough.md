@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c9d707d1a76b3b5913d66745767df8e84362a192
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 578f7a01c22bd5aafd4e4ac08c9f5ab78e340a34
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61045594"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606529"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
 在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
@@ -515,7 +515,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
     cursor.commit()
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>特征工程：从十进制纬度/经度提取位置功能
-此示例以十进制表示的纬度和/或经度字段划分为多个不同粒度的区域字段，例如国家/地区、城市、城镇、街区等等。注意，新的地理位置字段不映射到实际位置。 有关规划地理编码位置的信息，请参 [Bing 地图 REST 服务](https://msdn.microsoft.com/library/ff701710.aspx)。
+此示例中划分为纬度和/或经度字段的十进制表示形式不同粒度的多个区域字段如，国家/地区、 城市、 城镇、 块等。注意，新的地理位置字段不映射到实际位置。 有关规划地理编码位置的信息，请参 [Bing 地图 REST 服务](https://msdn.microsoft.com/library/ff701710.aspx)。
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent

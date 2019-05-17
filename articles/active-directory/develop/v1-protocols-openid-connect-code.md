@@ -3,8 +3,8 @@ title: 了解 Azure AD 中的 OpenID Connect 授权代码流 | Microsoft Docs
 description: 本文介绍如何使用 Azure Active Directory 和 OpenID Connect，通过 HTTP 消息来授权访问租户中的 Web 应用程序和 Web API。
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/4/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06639f943542e322e79e137e31be7b8954566a0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 051d3faf5cea24e33f1e6560abc2d039c1059c91
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251670"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784968"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>使用 OpenID Connect 和 Azure Active Directory 来授权访问 Web 应用程序
 
@@ -95,7 +95,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击**Azure Active Directory**，单击**应用注册**、 选择的应用程序和应用程序页上找到应用程序 ID。 |
 | response_type |必填 |必须包含 OpenID Connect 登录的 `id_token`。 还可以包含其他 response_type，例如 `code` 或 `token`。 |
-| 作用域 | 建议 | OpenID Connect 规范要求范围 `openid`，该范围在许可 UI 中会转换为“将你登录”权限。 在 v1.0 终结点上，此范围和其他 OIDC 范围会被忽略，但对符合标准的客户端而言仍是最佳做法。 |
+| scope | 建议 | OpenID Connect 规范要求范围 `openid`，该范围在许可 UI 中会转换为“将你登录”权限。 在 v1.0 终结点上，此范围和其他 OIDC 范围会被忽略，但对符合标准的客户端而言仍是最佳做法。 |
 | nonce |必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 `id_token` 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串或 GUID，可用以识别请求的来源。 |
 | redirect_uri | 建议 |应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 如果缺失，则会将用户代理随机发送回某个为应用注册的重定向 URI。 最大长度为 255 字节 |
 | response_mode |可选 |指定将生成的 authorization_code 送回到应用程序所应该使用的方法。 HTTP 窗体发布支持的值为 `form_post`，URL 片段支持的值为 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 包含 id_token 的任何流的默认值为 `fragment`。|
@@ -107,7 +107,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ### <a name="sample-response"></a>示例响应
 
-下面是在对用户进行身份验证后的示例响应：
+发送到的示例响应`redirect_uri`后用户已通过身份验证，可能如下所示登录请求中指定：
 
 ```
 POST / HTTP/1.1
@@ -216,7 +216,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 
 ### <a name="successful-response"></a>成功的响应
 
-使用 `response_mode=form_post` 的成功响应如下所示：
+发送到的成功响应`redirect_uri`使用`response_mode=form_post`，如下所示：
 
 ```
 POST /myapp/ HTTP/1.1

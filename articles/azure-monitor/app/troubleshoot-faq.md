@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 46c387ab175bfd3613e00be8e7b3a899aa025a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab1327b42a76a6e76183d84cb1750cce8b85228f
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373311"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604279"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -132,7 +132,7 @@ ms.locfileid: "60373311"
 
 深入了解 [ASP.NET](api-filtering-sampling.md) 或 [Java](java-filter-telemetry.md)。
 
-## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>如何计算市/县/区、国家/地区和其他地理位置数据？
+## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>如何城市、 国家/地区和其他地理位置数据计算？
 
 使用 [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) 查找 Web 客户端的 IP 地址（IPv4 或 IPv6）。
 

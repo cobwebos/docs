@@ -2,18 +2,17 @@
 title: 为 P2S 网关转换到公共 CA 证书 | Azure VPN 网关 | Microsoft Docs
 description: 本文可帮助你成功转换 P2S 网关的新公共 CA 证书。
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 03/12/2019
-ms.date: 04/29/2019
-ms.author: v-jay
-ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/15/2019
+ms.author: cherylmc
+ms.openlocfilehash: ea3ee00e60ae5eaff5c7220e9502da11358c8793
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60859641"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786730"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>为 P2S 转换到公共 CA 网关证书
 
@@ -30,6 +29,8 @@ ms.locfileid: "60859641"
 只有早期的网关才受此项更改的影响。 如果网关证书需要转换，Azure 门户中会显示通知或 toast 消息。 可以使用本文中的步骤检查你的网关是否受到影响。
 
 > [!IMPORTANT]
+> **此转换在 2019 年 5 月 12 日，已完成。**
+>
 > 转换计划为 2019 年 3 月 12 日 18:00 (UTC) 开始。 如需在不同的时间进行转换，可以创建支持案例。 请至少提前 24 个小时提出并确认请求。  可以请求以下时间之一：
 >
 > * 2 月 25 日 06:00 (UTC)
@@ -37,7 +38,7 @@ ms.locfileid: "60859641"
 > * 3 月 1 日 06:00 (UTC)
 > * 3 月 1 日 18:00 (UTC)
 >
-> **所有剩余网关将在 2019 年 3 月 12 日 18:00 (UTC) 开始转换**。
+> 所有剩余的网关将转换上年 3 月 12，2019 从 18:00 UTC 开始。
 >
 > 网关完成转换过程时，客户将收到电子邮件。
 > 

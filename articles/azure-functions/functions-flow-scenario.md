@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 31e18285bf6211e73d994e037a91adc396972715
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d3e777b5611dec382dc4eaaac5ec1594abcdab31
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106964"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787677"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>从 Microsoft Flow 调用函数
 
@@ -36,6 +36,8 @@ ms.locfileid: "62106964"
 > * 如果修复经济高效，将创建用于发送电子邮件的流。
 > * 运行该流。
 
+[!INCLUDE [functions-openapi-note](../../includes/functions-openapi-note.md)]
+
 ## <a name="prerequisites"></a>必备组件
 
 + 一个有效的 [Microsoft Flow 帐户](https://flow.microsoft.com/documentation/sign-up-sign-in/)，其中登录凭据与 Azure 帐户相同。 
@@ -48,7 +50,7 @@ ms.locfileid: "62106964"
 | 列表列     | 数据类型           | 说明                                    |
 |-----------------|---------------------|------------------------------------------|
 | **标题**           | 单个文本行 | 涡轮机的名称                      |
-| **LastServiceDate** | date                |                                          |
+| **LastServiceDate** | Date                |                                          |
 | **MaxOutput**       | Number              | 涡轮机的输出，以 KwH 为单位            |
 | **ServiceRequired** | Yes/No              |                                          |
 | **EstimatedEffort** | Number              | 预计的修复时间，以小时为单位 |

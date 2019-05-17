@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b59e4d574264f82a5875edad65e99bfb57150197
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605246"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796864"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -161,7 +161,7 @@ Authorization: Bearer <Base64-access_token>
 | 405000| 请求的资源不支持该请求方法。|
 | 408001| 请求的自定义翻译系统尚不可用。 请在几分钟后重试。|
 | 415000| Content-Type 标头缺失或无效。|
-| 429000、429001、429002| 由于客户端发送的请求过多，服务器拒绝了请求。 请降低请求频率，以避免发生限制。|
+| 429000、429001、429002| 服务器拒绝了请求，因为客户端已超出请求限制。|
 | 500000| 发生了意外错误。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 | 503000| 服务暂时不可用。 请重试。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 

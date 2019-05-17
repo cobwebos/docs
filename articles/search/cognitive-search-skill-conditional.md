@@ -1,6 +1,6 @@
 ---
 title: 条件性的认知搜索技能 （Azure 搜索） |Microsoft Docs
-description: 允许筛选、 创建默认值，以及合并值的条件性技能。
+description: 条件的技能，可以筛选、 创建默认值，并将值合并。
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,18 +10,18 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: 6a203a38437ccb6a9c325e6594289744e0148c84
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 149b701d4a1700787656448e2bdd0d92d2a93844
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028420"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791519"
 ---
 #   <a name="conditional-skill"></a>条件的技能
 
-**条件技能**可用于各种方案需要布尔操作以确定应分配给输出的数据。 这些方案包括： 根据条件筛选、 指定的默认值和合并数据。
+*条件技能*支持要求的布尔操作以确定要分配给输出的数据的 Azure 搜索方案。 这些方案包括筛选、 将分配默认值，以及合并基于条件的数据。
 
-下面的伪代码说明了条件技能完成：
+下面的伪代码演示了条件技能完成：
 
 ```
 if (condition) 
@@ -31,7 +31,7 @@ else
 ```
 
 > [!NOTE]
-> 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
+> 此技术没有绑定到 Azure 认知服务 API，并不需要支付使用它。 但是，您应仍然[附加认知服务资源](cognitive-search-attach-cognitive-services.md)重写限制为很小的每日到你的"免费"资源选项。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ConditionalSkill
@@ -41,9 +41,10 @@ Microsoft.Skills.Util.ConditionalSkill
 
 此技术很特别，因为其输入为计算的字段。
 
-以下是表达式的有效的值：
+以下各项是表达式的有效的值：
 
--   批注路径 (在表达式中的路径必须分隔"$("and")") <br/>
+-   批注路径 (在表达式中的路径必须分隔"$("and")")
+ <br/>
     示例：
     ```
         "= $(/document)"
@@ -53,9 +54,9 @@ Microsoft.Skills.Util.ConditionalSkill
 -  文本 （字符串、 数字、 true、 false、 null） <br/>
     示例：
     ```
-       "= 'this is a string'"   // string, note the single quotes
+       "= 'this is a string'"   // string (note the single quotation marks)
        "= 34"                   // number
-       "= true"                 // boolean
+       "= true"                 // Boolean
        "= null"                 // null value
     ```
 
@@ -81,25 +82,25 @@ Microsoft.Skills.Util.ConditionalSkill
         "= $(/document/lengthInMeters) / 0.3049" // division
     ```
 
-由于支持评估，可以为次要转换方案使用条件的技能。 请参阅示例[技能定义 4](#transformation-examples)有关的示例。
+由于条件的技能支持评估，因此可以在次要转换方案中使用它。 有关示例，请参阅[技能定义 4](#transformation-example)。
 
 ## <a name="skill-inputs"></a>技能输入
 输入区分大小写。
 
-| 输入      | 描述 |
+| 输入   | 描述 |
 |-------------|-------------|
-| condition   | 此输入是[计算字段](#evaluated-fields)，表示要计算的条件。 此条件计算结果应为布尔值 （true 或 false）。   <br/>  示例： <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/document/pages/\*/language) == $(/document/expectedLanguage)" <br/> |
-| whenTrue    | 此输入是[计算字段](#evaluated-fields)。 要返回对条件进行评估的值为 true。 应在返回常量字符串引号引起来。 <br/>示例值： <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/> |
-| whenFalse   | 此输入是[计算字段](#evaluated-fields)。 要返回该条件的计算结果为 false 的值。  <br/>示例值： <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/>
+| condition   | 此输入是[计算字段](#evaluated-fields)，表示要计算的条件。 此条件的计算结果应为布尔值 (*，则返回 true*或*false*)。   <br/>  示例： <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/document/pages/\*/language) == $(/document/expectedLanguage)" <br/> |
+| whenTrue    | 此输入是[计算字段](#evaluated-fields)，表示要返回该条件的计算结果为的值*true*。 常量字符串应返回在单引号 （' 和'）。 <br/>示例值： <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/> |
+| whenFalse   | 此输入是[计算字段](#evaluated-fields)，表示要返回该条件的计算结果为的值*false*。 <br/>示例值： <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/>
 
 ## <a name="skill-outputs"></a>技能输出
-还有一个名为 output 输出。 如果条件为 true，它将返回 whenFalse 如果条件为 false 或 whenTrue 的值。
+没有单个输出，只需调用"output"。 它将返回值*whenFalse*如果条件为 false 或*whenTrue*如果条件为 true。
 
 ## <a name="examples"></a>示例
 
-### <a name="sample-skill-definition-1-filtering-documents-to-return-only-french-documents"></a>示例技能定义 1:筛选文档返回仅"法语"文档
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>示例技能定义 1:筛选文档返回仅法语文档
 
-下面的输出将返回的句子 ("/ 文档/frenchSentences") 数组，如果文档的语言为法语。 如果语言不是法语，将设置此值为 null。
+如果文档的语言为法语，下面的输出返回数组的句子 ("/ 文档/frenchSentences")。 如果语言不是法语，将值设置为*null*。
 
 ```json
 {
@@ -113,12 +114,12 @@ Microsoft.Skills.Util.ConditionalSkill
     "outputs": [ { "name": "output", "targetName": "frenchSentences" } ]
 }
 ```
-如果"文档/frenchSentences"用作*上下文*的另一项技巧，该技能将仅运行如果未设置"/ 文档/frenchSentences"，则为 null
+如果"文档/frenchSentences"用作*上下文*的另一项技巧，该技能将仅运行"文档/frenchSentences"未设置为*null*。
 
 
-### <a name="sample-skill-definition-2-setting-a-default-value-when-it-does-not-exist"></a>示例技能定义 2:如果不存在，请设置默认值。
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>示例技能定义 2:设置一个值，不存在的默认值
 
-下面的输出将创建批注 ("/ 文档/languageWithDefault")，如果未设置语言设置为文档的语言或"es"。
+下面的输出创建的如果未设置语言设置为文档的语言或"es"的批注 ("/ 文档/languageWithDefault")。
 
 ```json
 {
@@ -133,9 +134,9 @@ Microsoft.Skills.Util.ConditionalSkill
 }
 ```
 
-### <a name="sample-skill-definition-3-merging-values-from-two-different-fields-into-a-single-field"></a>示例技能定义 3:将来自两个不同字段的值合并成单个字段
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>示例技能定义 3:将从两个字段的值合并为一个
 
-在此示例中，有一些句子*frenchSentiment*属性。 每当*frenchSentiment*属性为 null，则我们想要使用*englishSentiment*值。 我们将输出分配给一个名为只需成员*情绪*("/ 记录/情绪 / * / 情绪")。
+在此示例中，有一些句子*frenchSentiment*属性。 每当*frenchSentiment*属性为 null，我们想要使用*englishSentiment*值。 我们将输出分配给成员称为*情绪*("/ 记录/情绪 / * / 情绪")。
 
 ```json
 {
@@ -150,12 +151,12 @@ Microsoft.Skills.Util.ConditionalSkill
 }
 ```
 
-## <a name="transformation-examples"></a>转换示例
-### <a name="sample-skill-definition-4-performing-data-transformations-on-a-single-field"></a>示例技能定义 4:对单个字段执行数据转换
+## <a name="transformation-example"></a>转换示例
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>示例技能定义 4:在单个字段的数据转换
 
-在此示例中，我们收到的一种情绪 0 和 1 之间，以及我们想要将其转换，这样就为-1 和 1 之间。 这是我们可以执行使用条件性技能的较小的数学转换。
+在此示例中，我们收到*情绪*这就是介于 0 和 1 之间。 我们想要转换为-1 和 1 之间。 我们可以使用条件性技能来执行此次要转换。
 
-在此特定示例中，我们可以根据条件始终为 true 永远不会使用到的条件性方面的技能。 
+在此示例中，我们不使用的条件性方面的技能，因为该条件始终 *，则返回 true*。
 
 ```json
 {
@@ -170,9 +171,8 @@ Microsoft.Skills.Util.ConditionalSkill
 }
 ```
 
-
 ## <a name="special-considerations"></a>特殊注意事项
-请注意的评估某些参数，因此您需要有案可稽的模式时务必小心。 表达式必须以等号"="开头，并且必须由分隔路径"$("and")"。 请确保将您的字符串放在 '单引号'，因为这将帮助区分字符串和实际路径和运算符，计算器。 此外，请确保将运算符周围的空格 (例如 * 路径中具有不同的含义，乘法运算符)。
+某些参数被计算，因此您需要时务必小心，遵循有案可稽的模式。 表达式必须以等号开头。 路径必须分隔"$("and")"。 请确保将字符串放在单引号内。 这有助于区分字符串和实际路径和运算符，计算器。 此外，请确保将运算符周围的空白区域 (例如，"*"路径中的含义不同于 multiply)。
 
 
 ## <a name="next-steps"></a>后续步骤

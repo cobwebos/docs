@@ -1,7 +1,7 @@
 ---
 title: 回归：预测价格
 titleSuffix: Azure Machine Learning service
-description: 此可视界面示例试验演示了如何生成一个回归模型来预测汽车的价格。 此过程包括训练、 测试和评估汽车价格数据 （原始） 数据集上的模型。
+description: 了解如何生成机器学习模型来预测汽车的价格，而无需编写一行代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,30 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: fa9b9179cda767d69d08dcd357a03123bde901cb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: 9dfa4b62f5cb79a5716f6f29651e85d0f8a3a409
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028885"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787844"
 ---
 # <a name="sample-1---regression-predict-price"></a>示例 1-回归：预测价格
 
-此可视界面示例实验演示如何生成一个回归模型来预测汽车的价格。 过程包括训练、 测试和使用评估模型**汽车价格数据 （原始）** 数据集。
+了解如何生成机器学习回归模型，而无需编写一行代码使用直观的界面。
+
+此实验火车**决策林回归量**来预测一辆汽车的价格基于技术的功能，例如品牌、 型号、 马力，以及大小。 因为我们正在尝试回答"多少？" 这称为回归问题。 不过，您可以应用在此试验中来解决任何类型的机器学习问题，无论是回归、 分类、 聚类分析，等的相同基本步骤。
+
+训练机器学习模型的基本步骤如下：
+
+1. 获取数据
+1. 预处理数据
+1. 训练模型
+1. 评估模型
+
+以下是我们将致力于实验的最终、 已完成关系图。 可以自己进行类似的决定，因此，我们将为所有模块提供基本原理。
+
+![实验的关系图](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -28,23 +41,6 @@ ms.locfileid: "65028885"
 4. 选择**打开**示例 1 实验的按钮：
 
     ![打开试验](media/ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
-
-## <a name="related-sample"></a>相关的示例
-
-[示例 2-回归：汽车价格预测 （比较算法）](ui-sample-regression-predict-automobile-price-compare-algorithms.md)提供通过使用两个不同的回归模型来解决此试验中相同的问题的更复杂的示例实验。 它演示了如何快速比较不同的算法。 如果将它签正在寻找更高级示例。
-
-## <a name="experiment-summary"></a>实验摘要
-
-我们使用以下步骤来生成试验：
-
-1. 获取数据。
-1. 预先处理数据。
-1. 训练该模型。
-1. 测试、 评估和比较模型。
-
-下面是实验的完整图形：
-
-![实验的关系图](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="get-the-data"></a>获取数据
 
@@ -59,6 +55,7 @@ ms.locfileid: "65028885"
 ![数据预处理](./media/ui-sample-regression-predict-automobile-price-basic/data-processing.png)
 
 ## <a name="train-the-model"></a>训练模型
+
 机器学习问题而有所不同。 常见的机器学习任务包括分类，聚类分析，回归和推荐器系统，其中每个可能需要不同的算法。 所选的算法通常取决于用例的要求。 在选择一种算法后，您需要调整其参数来定型更准确的模型。 然后需要评估准确性、 清晰度和效率等度量值所基于的所有模型。
 
 由于本实验的目标是预测汽车价格，并且因为标签列 （价格） 包含实数，回归模型是一个不错的选择。 考虑到，许多功能是相对较小 （小于 100），这些功能不是稀疏，则很可能是非线性的决策边界。 因此，我们使用**决策林回归**对于此试验。

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1c5c5f4c8125f801edc89d47851871d8eb06a2f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591292"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518980"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>使用 Azure SQL VM CLI 为 Azure VM 上的 SQL Server 中配置 Always On 可用性组
 本文介绍如何使用[Azure SQL VM CLI](/cli/azure/sql/vm?view=azure-cli-latest/)来部署 Windows 故障转移群集 (WSFC) 和 SQL Server 虚拟机添加到群集，以及创建内部负载均衡器和 Always On 可用性组侦听程序。  Always On 可用性组的实际部署仍可手动通过 SQL Server Management Studio (SSMS)。 
@@ -42,7 +42,7 @@ ms.locfileid: "60591292"
 群集需要一个存储帐户来作为云见证服务器。 可以使用任何现有的存储帐户，也可以创建新的存储帐户。 如果你想要使用现有的存储帐户，跳到下一节。 
 
 下面的代码段将创建存储帐户： 
-```azurecli
+```azurecli-interactive
 # Create the storage account
 # example: az storage account create -n 'cloudwitness' -g SQLVM-RG -l 'West US' `
 #  --sku Standard_LRS --kind StorageV2 --access-tier Hot --https-only true
@@ -58,7 +58,7 @@ az storage account create -n <name> -g <resource group name> -l <region ex:eastu
 Azure SQL VM CLI [az sql vm 组](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest)命令组管理的托管可用性组的 Windows 故障转移群集 (WSFC) 服务的元数据。 群集的元数据包括 AD 域、 群集帐户、 存储帐户以用作云见证服务器和 SQL Server 版本。 使用[az sql vm 组创建](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create)以 wsfc 中定义的元数据，以便添加第一个 SQL Server VM 时，创建群集时定义。 
 
 下面的代码段定义群集的元数据：
-```azurecli
+```azurecli-interactive
 # Define the cluster metadata
 # example: az sql vm group create -n Cluster -l 'West US' -g SQLVM-RG `
 #  --image-offer SQL2017-WS2016 --image-sku Enterprise --domain-fqdn domain.com `
@@ -79,7 +79,7 @@ az sql vm group create -n <cluster name> -l <region ex:eastus> -g <resource grou
 
 下面的代码段创建的群集，并向其添加第一个 SQL Server 虚拟机： 
 
-```azurecli
+```azurecli-interactive
 # Add SQL Server VMs to cluster
 # example: az sql vm add-to-group -n SQLVM1 -g SQLVM-RG --sqlvm-group Cluster `
 #  -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
@@ -105,7 +105,7 @@ Always On 可用性组 (AG) 侦听器都需要内部 Azure 负载均衡器 (ILB)
 
 下面的代码段将创建内部负载均衡器：
 
-```azurecli
+```azurecli-interactive
 # Create the Internal Load Balancer
 # example: az network lb create --name sqlILB -g SQLVM-RG --sku Standard `
 # --vnet-name SQLVMvNet --subnet default
@@ -133,7 +133,7 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
 
 下面的代码段将创建可用性组侦听器：
 
-```azurecli
+```azurecli-interactive
 # Create the AG listener
 # example: az sql vm group ag-listener create -n AGListener -g SQLVM-RG `
 #  --ag-name SQLAG --group-name Cluster --ip-address 10.0.0.27 `
@@ -157,7 +157,7 @@ az sql vm group ag-listener create -n <listener name> -g <resource group name> `
 将新副本添加到可用性组，请执行以下操作：
 
 1. 将 SQL Server 虚拟机添加到群集：
-   ```azurecli
+   ```azurecli-interactive
    # Add SQL Server VM to the Cluster
    # example: az sql vm add-to-group -n SQLVM3 -g SQLVM-RG --sqlvm-group Cluster `
    # -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
@@ -167,7 +167,7 @@ az sql vm group ag-listener create -n <listener name> -g <resource group name> `
    ```
 1. 使用 SQL Server Management Studio (SSMS) 将 SQL Server 实例添加为可用性组中的副本。
 1. 将 SQL Server 虚拟机元数据添加到侦听器：
-   ```azurecli
+   ```azurecli-interactive
    # Update the listener metadata with the new VM
    # example: az sql vm group ag-listener update -n AGListener `
    # -g sqlvm-rg --group-name Cluster --sqlvms sqlvm1 sqlvm2 sqlvm3
@@ -182,7 +182,7 @@ az sql vm group ag-listener create -n <listener name> -g <resource group name> `
 
 1. 从使用 SQL Server Management Studio (SSMS) 的可用性组中删除该副本。 
 1. 从侦听器中删除 SQL Server 虚拟机元数据：
-   ```azurecli
+   ```azurecli-interactive
    # Update the listener metadata by removing the VM from the SQLVMs list
    # example: az sql vm group ag-listener update -n AGListener `
    # -g sqlvm-rg --group-name Cluster --sqlvms sqlvm1 sqlvm2
@@ -191,7 +191,7 @@ az sql vm group ag-listener create -n <listener name> -g <resource group name> `
    -g <RG name> --group-name <cluster name> --sqlvms <SQL VMs that remain>
    ```
 1. 从群集中删除 SQL Server 虚拟机：
-   ```azurecli
+   ```azurecli-interactive
    # Remove SQL VM from cluster
    # example: az sql vm remove-from-group --name SQLVM3 --resource-group SQLVM-RG
 
@@ -203,7 +203,7 @@ az sql vm group ag-listener create -n <listener name> -g <resource group name> `
 
 以下代码片段同时从 SQL 资源提供程序和可用性组中删除 SQL 可用性组侦听程序： 
 
-```azurecli
+```azurecli-interactive
 # Remove the AG listener
 # example: az sql vm group ag-listener delete --group-name Cluster --name AGListener --resource-group SQLVM-RG
 

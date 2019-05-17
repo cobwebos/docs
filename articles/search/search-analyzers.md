@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f76d944f614f07a4428d4e4100f6a08a375d96dc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61316823"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795798"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>用于 Azure 搜索中文本处理的分析器
 
@@ -40,7 +40,7 @@ Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https
 
 下表描述了 Azure 搜索中可用的分析器。
 
-| 类别 | 描述 |
+| Category | 描述 |
 |----------|-------------|
 | [标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
 | 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
@@ -92,10 +92,6 @@ Azure 搜索允许通过附加的 **indexAnalyzer** 和 **searchAnalyzer** 字�
 ### <a name="inspect-tokenized-terms"></a>检查已标记的词语
 
 如果搜索未能返回所需的结果，最有可能的情况是查询上的词语输入和索引中已标记的词语之间存在标记差异。 如果标记不同，匹配则无法具体化。 若要检查 tokenizer 输出，建议将 [Analyze API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) 用作调查工具。 响应包含令牌，由特定分析器生成。
-
-### <a name="compare-english-analyzers"></a>比较英语分析器
-
-[搜索分析器演示](https://alice.unearth.ai/)是第三方演示应用，它演示了对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器的并排比较。 索引是固定的；它包含常见情景中的文本。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中，使你了解每个分析器是如何处理同一个字符串的。 
 
 <a name="examples"></a>
 
@@ -348,8 +344,6 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 + 了解如何应用[语言特定的词法分析器](index-add-language-analyzers.md)。
 
 + [配置自定义分析器](index-add-custom-analyzers.md)，针对单个字段尽量简化处理或者进行专门处理。
-
-+ 在此演示网站的相邻窗格中[比较标准和英语分析器](https://alice.unearth.ai/)。 
 
 ## <a name="see-also"></a>另请参阅
 

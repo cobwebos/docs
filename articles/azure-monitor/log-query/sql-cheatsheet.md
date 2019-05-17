@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: a0233774deaffe25a8e59f79511a0031b1535ba4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b756b9484273c098dbeb6685430f70626b3af787
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61425020"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789234"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>从 SQL 到 Azure Monitor 日志查询备忘单 
 
-下表可帮助熟悉 SQL 的用户学习 Kusto 查询语言，用以在 Azure Monitor 中编写日志查询。 让我们看一下用于解决常见场景的 T-SQL 命令以及 Azure Monitor 日志查询中的等效命令。
+下表可帮助熟悉 SQL 的用户学习 Kusto 查询语言，用以在 Azure Monitor 中编写日志查询。 我们来看一下用于解决常见的方案，而且可以在 Azure Monitor 日志查询中的等效项的 T-SQL 命令。
 
 ## <a name="sql-to-azure-monitor"></a>从 SQL 到 Azure Monitor
 
@@ -42,7 +42,7 @@ Null 评估                         |`SELECT * FROM dependencies WHERE resultCod
 区别                                |`SELECT DISTINCT name, type  FROM dependencies`                                                    |<code>dependencies <br>&#124; summarize by name, type </code>
 分组，聚合                   |`SELECT name, AVG(duration) FROM dependencies GROUP BY name`                                       |<code>dependencies <br>&#124; summarize avg(duration) by name </code>
 列别名，扩展                  |`SELECT operation_Name as Name, AVG(duration) as AvgD FROM dependencies GROUP BY name`             |<code>dependencies <br>&#124; summarize AvgD=avg(duration) by operation_Name <br>&#124; project Name=operation_Name, AvgD</code>
-度量值的前 n 条记录                |`SELECT TOP 100 name, COUNT(*) as Count FROM dependencies GROUP BY name ORDER BY Count asc`        |<code>dependencies <br>&#124; summarize Count=count() by name <br>&#124; top 100 by Count asc</code>
+按度量值排序的前 n 条记录                |`SELECT TOP 100 name, COUNT(*) as Count FROM dependencies GROUP BY name ORDER BY Count asc`        |<code>dependencies <br>&#124; summarize Count=count() by name <br>&#124; top 100 by Count asc</code>
 联合                                   |`SELECT * FROM dependencies UNION SELECT * FROM exceptions`                                        |<code>union dependencies, exceptions</code>
 联合：带条件                  |`SELECT * FROM dependencies WHERE value > 4 UNION SELECT * FROM exceptions WHERE value < 5`                |<code>dependencies <br>&#124; where value > 4 <br>&#124; union (exceptions <br>&#124; where value < 5)</code>
 Join                                    |`SELECT * FROM dependencies JOIN exceptions ON dependencies.operation_Id = exceptions.operation_Id`|<code>dependencies <br>&#124; join (exceptions) on operation_Id == operation_Id</code>
@@ -50,4 +50,4 @@ Join                                    |`SELECT * FROM dependencies JOIN except
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成关于[在 Azure Monitor 中编写日志查询](get-started-queries.md)的一课。
+- 请继续通过课程[在 Azure Monitor 中编写日志查询](get-started-queries.md)。

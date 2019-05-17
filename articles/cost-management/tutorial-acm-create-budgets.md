@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/09/2019
+ms.date: 05/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 704aefd68f35ca20f72a2a0c46bf11912c139e65
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eab45948b5f931377396d93d93e8955ba0f3e767
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61024662"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792841"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -26,6 +26,9 @@ ms.locfileid: "61024662"
 在未来选择过期日期时，预算会在某个期间末（月末、季末或年末）自动重置为相同的预算金额。 由于预算是使用相同的预算金额重置的，因此如果未来时段的预算货币金额不同于现在，则需创建单独的预算。
 
 本教程中的示例演示了如何针对 Azure 企业协议 (EA) 订阅创建和编辑预算。
+
+观看[如何创建预算来监视的 Azure 成本管理支出](https://www.youtube.com/watch?v=ExIVG_Gr45A)视频，了解如何监视花费在 Azure 中创建预算。
+
 
 本教程介绍如何执行下列操作：
 
@@ -114,7 +117,7 @@ ms.locfileid: "61024662"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建预算

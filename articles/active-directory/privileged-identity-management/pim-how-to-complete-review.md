@@ -14,12 +14,12 @@ ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: decba8f46432891a44a2b231890da4214bd5b1bb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0a7fa3bfe159620130bc0962b470cea8e7422646
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65140988"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602165"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>完成 Azure AD PIM 中的角色的访问评审
 [访问评审开始](pim-how-to-start-security-review.md)后，特权角色管理员可以评审特权访问。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 会自动发送一封电子邮件，提示用户审阅其访问权限。 如果用户未收到电子邮件，可以向他们发送[如何执行访问评审](pim-how-to-perform-security-review.md)的相关说明。
@@ -33,7 +33,7 @@ ms.locfileid: "65140988"
 
 在访问评审的详细信息边栏选项卡上，有大量用于管理该评审的选项。
 
-![PIM 访问审阅按钮 - 屏幕截图](./media/pim-how-to-complete-review/PIM_review_buttons.png)
+![PIM 访问审阅按钮 - 屏幕截图](./media/pim-how-to-complete-review/review-buttons.png)
 
 ### <a name="remind"></a>提醒
 如果设置了用于用户审阅自身的访问审阅，“提醒”按钮将发送一条通知。 
@@ -47,7 +47,7 @@ ms.locfileid: "65140988"
 ### <a name="export"></a>导出
 如果要手动应用访问评审的结果，可以导出该评审。 “导出”按钮将开始下载 CSV 文件。 可以在 Excel 或可打开 CSV 文件的其他程序中管理结果。
 
-### <a name="delete"></a>删除
+### <a name="delete"></a>DELETE
 如果不想要进一步了解审阅，请将其删除。 “删除”按钮可从 PIM 应用程序中删除审阅。
 
 > [!IMPORTANT]

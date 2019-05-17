@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: d08715b1b3e0db4dfcf31bb4c020ab44ed3916e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b25806044dd74092a5404ad7ef24ddd386dffbc3
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791040"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521751"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
 
@@ -58,7 +58,7 @@ ms.locfileid: "60791040"
 
 - 如果可在目标网络中找到与源 VM 子网同名的子网，则为目标 VM 设置该子网。
 - 如果目标网络中没有同名的子网，则按字母顺序设置第一个子网作为目标子网。
-- 可以在 VM 的“计算和网络”设置中修改此设置。
+- 您可以修改中的目标子网**计算和网络**VM 的设置。
 
     ![计算和网络计算属性窗口](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 

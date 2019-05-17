@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18a80af8422e30ce3e87395449fca7b5f6a73762
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d02318db4deae6f0a6acdae9382ce47116c95110
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025019"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800869"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps:使用 Azure 机器学习服务管理、部署和监视模型
 
@@ -34,11 +34,14 @@ MLOps / 部署工作流包括以下步骤：
 
 [![Azure 机器学习持续集成/持续部署 (CI/CD) 周期](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
-> [!VIDEO https://www.youtube.com/embed/0MaHb070H_8]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GX]
 
 ## <a name="step-1-register-model"></a>步骤 1：注册模型
 
 通过模型注册，可在 Azure 云的工作区中存储模型并确定模型版本。 使用模型注册表，可轻松组织和跟踪定型的模型。
+
+> [!TIP]
+> 您还可以注册 Azure 机器学习服务外部训练的模型。
  
 按名称和版本标识已注册的模型。 每次使用与现有名称相同的名称来注册模型时，注册表都会将版本递增。 也可在注册过程中提供其他的元数据标记，这些标记可以在搜索模型时使用。 Azure 机器学习服务支持使用 Python 3.5.2 加载或更高版本可以是任何模型。
 
@@ -92,5 +95,7 @@ Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详
 ## <a name="next-steps"></a>后续步骤
 
 详细了解在使用 Azure 机器学习服务时，[部署模型的方式和位置](how-to-deploy-and-where.md)。 有关部署的示例，请参阅[教程：部署 Azure 容器实例中的图像分类模型](tutorial-deploy-models-with-aml.md)。
+
+了解如何创建[持续集成和部署机器学习模型与 Azure 管道](/azure/devops/pipelines/targets/azure-machine-learning)。 
 
 了解如何创建[使用部署为 Web 服务的模型](how-to-consume-web-service.md)的客户端应用程序和服务。

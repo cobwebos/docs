@@ -11,19 +11,19 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 05/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 792c2bd02b666cd656f1df368a7a60db44ccf8c4
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115768"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522179"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor（预览版）映射了解应用程序组件
-查看在 Azure 中运行的 Windows 和 Linux 虚拟机上发现的应用程序组件，并且可使用适用于 VM 的 Azure Monitor 通过两种方式观察环境，直接从虚拟机中观察或通过 VM 组在 Azure Monitor 中观察。 
+在您的环境可以观察到通过 Azure Monitor 的两种方式对于 Vm，请从虚拟机直接或跨组 Vm 从 Azure Monitor 的 Azure 中运行的 Windows 和 Linux 虚拟机上查看发现的应用程序组件。 
 
-可以通过本文了解这两个角度的不同体验，以及如何使用映射功能。 有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](vminsights-onboard.md)。
+可以通过本文了解这两个角度的不同体验，以及如何使用映射功能。 有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](vminsights-enable-overview.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
@@ -97,6 +97,21 @@ ms.locfileid: "62115768"
 
 ![直接 VM 映射概述](./media/vminsights-maps/map-direct-vm-01.png)
 
+## <a name="view-map-directly-from-a-virtual-machine-scale-set"></a>视图映射直接从虚拟机规模集
+
+若要直接从虚拟机规模集 Vm 访问 Azure Monitor，执行以下步骤。
+
+1. 在 Azure 门户中，选择**虚拟机规模集**。
+2. 在列表中，选择 VM 并“监视”分区中选择“见解(预览)”。  
+3. 选择“映射”选项卡。
+
+地图可视化中的所有实例规模集作为一个组节点组的依赖项。 展开的节点中列出规模集，这样可以滚动浏览一次 10 个实例。 若要加载特定实例的映射，请在映射中，实例，然后单击省略号到它的选择是正确，然后选择**加载服务器映射**。 这将加载该实例，从而可以查看指定的时间范围内的进程组和具有有效网络连接的进程的映射。 默认情况下，映射显示最近 30 分钟。 使用**TimeRange**选择器可以查询历史时间范围的一个小时来显示依赖关系在过去 （例如，发生事件期间或发生更改之前）。  
+
+![直接 VM 映射概述](./media/vminsights-maps/map-direct-vmss-01.png)
+
+>[!NOTE]
+>为虚拟机规模集，还可以从实例视图访问的特定实例的映射。 导航到**实例**下**设置**部分中，，然后选择**Insights （预览版）**。
+
 ## <a name="view-map-from-azure-monitor"></a>从 Azure Monitor 查看映射
 通过 Azure Monitor，映射功能可提供虚拟机及其依赖项的全局视图。  若要从 Azure Monitor 访问映射功能，请执行以下步骤。 
 
@@ -106,7 +121,7 @@ ms.locfileid: "62115768"
 
 ![Azure Monitor 多 VM 映射概述](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-如果你有多个 Log Analytics 工作区，在页面顶部的“工作区”选择器中，请选择随解决方案启用并已向其报告虚拟机的工作区。 “组”选择器将返回与所选工作区相关的计算机的订阅、资源组、[计算机组](../../azure-monitor/platform/computer-groups.md)以及 VM 规模集。 你的选择仅应用于映射功能，不会延伸到到性能或映射。
+如果你有多个 Log Analytics 工作区，在页面顶部的“工作区”选择器中，请选择随解决方案启用并已向其报告虚拟机的工作区。 **组**选择器将返回订阅、 资源组[计算机组](../../azure-monitor/platform/computer-groups.md)，和的计算机与所选工作区相关的虚拟机规模集。 你的选择仅应用于映射功能，不会延伸到到性能或映射。
 
 默认情况下，映射显示最近 30 分钟。 使用“时间范围”选择器，可查询历史时间范围（最多一小时），显示依赖项在过去（例如，发生事件期间或发生更改之前）的出现形式。   
 

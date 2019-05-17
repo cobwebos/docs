@@ -5,27 +5,48 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/10/2019
+ms.date: 05/13/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 4c5279d1ddf3153493ebc01dc010114ff7e6b5e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 519cec0951305db60e0994134f8c680f6c560752
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917231"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792414"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
 本文汇总了 [Azure SQL 数据仓库](sql-data-warehouse-overview-what-is.md)的最新版本中的新功能和改进。 该文章还列出了值得注意的不是直接与发布相关但相同的时间段内发布的内容更新。 对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)。
 
+## <a name="check-your-azure-sql-data-warehouse-version"></a>检查你的 Azure SQL 数据仓库版本
+
+连接到数据仓库通过 SQL Server Management Studio (SSMS) 并运行以下语法来返回当前版本的 SQL 数据仓库。
+
+```sql
+SELECT @@VERSION AS 'SQL Data Warehouse';
+```
+
+示例输出：![SQL 数据仓库版本](./media/release-notes/sql_data_warehouse_version.png)
+
+使用标识来确认哪些版本的日期已应用于 Azure SQL 数据仓库。
+
+## <a name="may-2019"></a>2019 年 5
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+|**动态数据屏蔽 （预览版）**|动态数据屏蔽 (DDM) 通过在动态在查询结果中，根据你定义的屏蔽规则使数据仓库中的敏感数据防止未经授权的访问。 有关详细信息，请参阅[SQL 数据库动态数据掩码](/azure/sql-database/sql-database-dynamic-data-masking-get-started)。|
+|**工作负荷重要性现已公开发布**|工作负荷管理分类和重要性提供的功能来影响查询的运行的顺序。 工作负荷重要性的详细信息，请参阅[分类](sql-data-warehouse-workload-classification.md)并[重要性](sql-data-warehouse-workload-importance.md)文档中的概述文章。 请查看[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)以及文档。<br/><br/>请参阅中的操作中的工作负荷重要性下方视频：<br/> -[工作负荷管理概念](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[工作负荷管理方案](https://www.youtube.com/embed/_2rLMljOjw8)|
+|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围已扩展为包括对支持： </br> - [AT TIME ZONE](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
+|**JSON 函数**|现在，业务分析师可以使用熟悉的 T-SQL 语言来查询和操作的格式为 JSON 数据使用 Azure 数据仓库中的以下新的 JSON 函数的文档：</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
+|**结果集缓存 （预览）**|结果集缓存启用即时查询响应时间，同时减少时间见解的业务分析师和报告的用户。 有关详细信息，请参阅：</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE SET 选项 (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [设置结果集缓存 (Transact SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET 语句 (Transact SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+
 ## <a name="march-2019"></a>2019 年 3 月
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**现已可供第 2 代预览工作负荷重要性**|工作负荷重要性使数据工程师能够使用重要性来对请求进行分类。 具有较高的优先级请求更快地访问资源，这有助于满足 Sla 保证。  工作负荷重要性允许具有高业务值工作较少的资源的共享环境中满足 sla 要求。<br/><br/>工作负荷管理分类和重要性 preview 适用于具有 2019 年 4 月 9 日或更高版本的发布日期的生成。 用户应避免使用早于此日期的版本来进行工作负载管理测试。 若要确定是否在生成工作负荷管理支持，请运行`select @@version`时连接到 SQL 数据仓库实例。</br></br>工作负荷重要性的详细信息，请参阅[分类](sql-data-warehouse-workload-classification.md)并[重要性](sql-data-warehouse-workload-importance.md)文档中的概述文章。 请查看[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)以及文档。<br/><br/>请参阅中的操作中的工作负荷重要性下方视频：<br/>[工作负荷管理概念](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[工作负荷管理方案](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**数据发现和分类**|Azure SQL 数据仓库的数据发现和分类功能现处于公共预览状态。 若要保护敏感数据和客户的隐私性至关重要。 随着您的业务和客户数据资产的增长，变得难以管理，以发现、 分类和保护你的数据。 我们使用 Azure SQL 数据仓库以本机方式引入的数据发现和分类功能可帮助轻松保护你的数据更易于管理。 这项功能的整体优势包括：<br/>&bull; &nbsp; 会议数据隐私标准和法规遵从性要求。<br/>&bull; &nbsp; 限制访问并增强其安全性的数据仓库包含高度敏感数据。<br/>&bull; &nbsp; 监视和警报功能上存在异常访问敏感数据。<br/>&bull; &nbsp; 在 Azure 门户上的中央仪表板中的敏感数据的可视化效果。 </br></br>数据发现和分类是可用于所有 Azure 区域中的 Azure SQL 数据仓库的高级数据安全包括漏洞评估和威胁检测的一部分。 有关数据发现和分类的详细信息，请参阅[博客文章](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/)和我们的联机[文档](/azure/sql-database/sql-database-data-discovery-and-classification)。|
 |**GROUP BY 汇总**|汇总现已是受支持的 GROUP BY 选项在 Azure 数据仓库中。   GROUP BY ROLLUP 创建每个列表达式组合为一个组。 GROUP BY 还"汇总"结果到小计和总计。 GROUP BY 函数处理从右到左，减少对其创建的组和从右向列表达式的数目。  列的顺序会影响 ROLLUP 的输出，而且可能会影响在结果集中的行数。<br/><br/>GROUP BY ROLLUP 的详细信息，请参阅[GROUP BY (TRANSACT-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
 |**改进了的准确性的已用的 DWU 和 CPU 门户指标**|SQL 数据仓库会显著提高在 Azure 门户中的度量准确性。  此版本中包括要在所有计算节点之间正确反映你的工作负荷的 CPU 和已用的指标定义的修复的程序。 这项修复之前, 的指标值已被 undereported。 会看到已用的 DWU 的增加和 Azure 门户中的 CPU 指标。 |

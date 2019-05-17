@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: tyao;kumud
-ms.openlocfilehash: 2d16893420f27caf4f8b00dc32069e3296d7c236
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a167deb511347798fa609e2aca2a19f8bf12d21
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459770"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523721"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>配置 Azure web 应用程序防火墙的自定义响应
 
@@ -52,11 +52,11 @@ New-AzResourceGroup -Name myResourceGroupWAF
 
 ## <a name="create-a-new-waf-policy-with-custom-response"></a>创建新的 WAF 策略与自定义响应 
 
-下面是使用自定义响应状态代码设置为 405 和消息创建新的 WAF 策略的一个示例**被阻止。** 使用[新建 AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy)。
+下面是使用自定义响应状态代码设置为 405 和消息创建新的 WAF 策略的一个示例**被阻止。** 使用[新建 AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)。
 
 ```azurepowershell
 # WAF policy setting
-New-AzFrontDoorFireWallPolicy `
+New-AzFrontDoorWafPolicy `
 -Name myWAFPolicy `
 -ResourceGroupName myResourceGroupWAF `
 -EnabledState enabled `

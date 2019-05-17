@@ -16,18 +16,22 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 95acda60935e82b226a1a0e860b5fa8effb8e47e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e5a7bfc243fc8c797ffc66b2130756567ddc0fb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325691"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795781"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>将 SQL Server 数据库迁移到 Azure VM 中的 SQL Server
 
 将本地 SQL Server 用户数据库迁移到 Azure VM 中的 SQL Server 的方法有很多。 本文将简要讨论各种方法，并针对各种场景建议最佳方法。
 
+
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+
+  > [!NOTE]
+  > SQL Server 2008 和 SQL Server 2008 R2 是否接近[其支持生命周期结束](https://www.microsoft.com/sql-server/sql-server-2008)的本地实例。 若要扩展的支持，可以将您的 SQL Server 实例迁移到 Azure VM，或购买扩展安全更新，以将其保留在本地。 有关详细信息，请参阅[扩展对 SQL Server 2008 和 2008 R2 与 Azure 支持](virtual-machines-windows-sql-server-2008-eos-extend-support.md)
 
 ## <a name="what-are-the-primary-migration-methods"></a>主要迁移方法有哪些？
 主要迁移方法包括：
@@ -94,7 +98,7 @@ ms.locfileid: "60325691"
 > 若要迁移整个应用程序，请考虑使用 [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)。
 
 ## <a name="ship-hard-drive"></a>运送硬盘驱动器
-在通过网络上传成本过高或不可行时，可以使用 [Windows 导入/导出服务方法将大](../../../storage/common/storage-import-export-service.md)量文件数据传输到 Azure Blob 存储中。 借助此服务，可以将包含这些数据的一个或多个硬盘驱动器运送到 Azure 数据中心，在那里，你的数据将上传到你的存储帐户中。
+在通过网络上传成本过高或不可行时，可以使用 [Windows 导入/导出服务方法将大](../../../storage/common/storage-import-export-service.md)量文件数据传输到 Azure Blob 存储中。 借助此服务，可以将包含这些数据的一个或多个硬盘驱动器运送到 Azure 数据中心，在那里，数据将上传到存储帐户中。
 
 ## <a name="next-steps"></a>后续步骤
 有关在 Azure 虚拟机中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)。

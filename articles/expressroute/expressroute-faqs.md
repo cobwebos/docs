@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 17f596abda4febbd6e532adcb44d544cd4d104df
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e4d4ac45ad0ba9516d863682015b9c07096ae106
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924670"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794751"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -79,7 +79,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
-* Power BI
+* Power BI-可通过一个 Azure 区域社区，请参阅[此处](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)有关如何查找出 Power BI 租户的区域。 
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/)（Azure 全球服务社区）
 * 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br><br>**不支持以下服务**：
@@ -152,7 +152,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>在相同市内是否可以有多条 ExpressRoute 线路？ 是否可以将这些线路链接到同一虚拟网络？
 
-可以。 可以具有多条包含相同或不同服务提供商的 ExpressRoute 线路。 如果城区内有多个 ExpressRoute 对等位置，并且线路创建在了不同的对等位置，则可以将这些线路链接到同一虚拟网络。 如果在相同对等位置创建线路，则仍可以到同一虚拟网络，但仅在每个对等互连位置的最多 4 ExpressRoute 线路链接它们。 例如，你可以选择对等互连位置“Singapore”和“Singapore2”，并将来自每个位置的线路连接到同一虚拟网络。 
+可以。 可以具有多条包含相同或不同服务提供商的 ExpressRoute 线路。 如果城区内有多个 ExpressRoute 对等位置，并且线路创建在了不同的对等位置，则可以将这些线路链接到同一虚拟网络。 如果在相同对等位置创建线路，你可以最多 4 个线路链接到同一虚拟网络。
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>如何将我的虚拟网络连接到 ExpressRoute 线路
 
@@ -170,7 +170,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>能否将多个虚拟网络链接到一条 ExpressRoute 线路？
 
-是的。 在标准 ExpressRoute 线路上最多可以有 10 个虚拟网络连接，在[高级 ExpressRoute 线路](#expressroute-premium)上最多可以有 100 个。 
+可以。 在标准 ExpressRoute 线路上最多可以有 10 个虚拟网络连接，在[高级 ExpressRoute 线路](#expressroute-premium)上最多可以有 100 个。 
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>我有多个包含虚拟网络的 Azure 订阅。 能否将不同订阅中的虚拟网络连接到单个 ExpressRoute 线路？
 
@@ -180,7 +180,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="i-have-multiple-azure-subscriptions-associated-to-different-azure-active-directory-tenants-or-enterprise-agreement-enrollments-can-i-connect-virtual-networks-that-are-in-separate-tenants-and-enrollments-to-a-single-expressroute-circuit-not-in-the-same-tenant-or-enrollment"></a>我有多个关联到不同 Azure Active Directory 租户或企业协议合约的 Azure 订阅。 是否可以将位于单独租户和合约中的虚拟网络连接到不在同一租户或合约中的单个 ExpressRoute 线路？
 
-是的。 ExpressRoute 授权可以跨订阅、租户和合约边界，不需要进行额外配置。 
+可以。 ExpressRoute 授权可以跨订阅、租户和合约边界，不需要进行额外配置。 
 
 有关详细信息，请参阅[在多个订阅之间共享 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)。
 
@@ -190,7 +190,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>能否将一个虚拟网络连接到多条 ExpressRoute 线路？
 
-可以。 可将一个虚拟网络最多链接到四条 ExpressRoute 线路。 必须通过四个不同的 [ExpressRoute 位置](expressroute-locations.md)订购这些线路。
+可以。 您可以链接最多四个是在相同或不同对等互连位置的 ExpressRoute 线路将一个虚拟网络。 
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>能否从连接到 ExpressRoute 线路的虚拟网络访问 Internet？
 
@@ -204,11 +204,11 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>连接到同一 ExpressRoute 线路的虚拟网络能否互相对话？
 
-是的。 连接到同一 ExpressRoute 线路的虚拟网络中部署的虚拟机可以彼此通信。
+可以。 连接到同一 ExpressRoute 线路的虚拟网络中部署的虚拟机可以彼此通信。
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>能否将站点到站点连接与 ExpressRoute 一起用于虚拟网络？
 
-是的。 ExpressRoute 可与站点到站点 VPN 共存。 请参阅[配置 ExpressRoute 和站点到站点并存连接](expressroute-howto-coexist-resource-manager.md)。
+可以。 ExpressRoute 可与站点到站点 VPN 共存。 请参阅[配置 ExpressRoute 和站点到站点并存连接](expressroute-howto-coexist-resource-manager.md)。
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>为什么有一个公共 IP 地址与虚拟网络上的 ExpressRoute 网关相关联？
 
@@ -282,7 +282,7 @@ ExpressRoute 高级版是以下功能的集合：
 
 ### <a name="do-i-pay-for-expressroute-premium-in-addition-to-standard-expressroute-charges"></a>除了支付 ExpressRoute 高级版费用以外，是否还要支付标准版 ExpressRoute 的费用？
 
-是的。 ExpressRoute 高级版的费用是在 ExpressRoute 线路费用以及连接提供商所收费用的基础之上收取的。
+可以。 ExpressRoute 高级版的费用是在 ExpressRoute 线路费用以及连接提供商所收费用的基础之上收取的。
 
 ## <a name="expressroute-for-office-365"></a>适用于 Office 365 的 ExpressRoute
 

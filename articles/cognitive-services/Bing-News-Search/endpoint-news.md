@@ -3,19 +3,19 @@ title: 必应新闻搜索终结点
 titlesuffix: Azure Cognitive Services
 description: 新闻搜索 API 终结点摘要。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: b4a1ba7536f0e899ef845bbac54b551125d35fb7
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: aahi
+ms.openlocfilehash: b680f476345bde61797fd1cc137cad6e5653d0a5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868540"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798219"
 ---
 # <a name="bing-news-search-api-endpoints"></a>必应新闻搜索 API 终结点
 

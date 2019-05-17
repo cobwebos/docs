@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: ab5cbf6e24d6e7b5530addcee655e1cc4621d042
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 86a56e71b89e7408d1bc8ca0ee1dc8112bea368f
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875971"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522146"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>用于 VM 的 Azure Monitor（预览版）的已知问题
 
@@ -35,4 +35,4 @@ ms.locfileid: "64875971"
 - 从工作区中删除解决方案组件后，可以继续查看 Azure VM 的运行状况；具体而言，在门户中导航到任一视图时，可以查看性能和映射数据。 一段时间后，数据最终会在“性能”和“映射”视图中停止显示；但是，“运行状况”视图将继续显示 VM 的运行状况。 将提供“立即尝试”选项，用以仅从“性能”和“映射”视图中重新加入。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关为虚拟机启用监视的要求和方法，请参阅[部署用于 VM 的 Azure Monitor](vminsights-onboard.md)。
+若要了解要求和用于启用监视功能的虚拟机的方法，请查看[启用 Vm 的 Azure Monitor](vminsights-enable-overview.md)。

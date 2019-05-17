@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 81987115ba0406e704f2198061c6ee3cae8a72df
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024695"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539294"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>排查 Azure 搜索中的常见索引器问题
 
@@ -42,7 +42,7 @@ Azure 存储提供可配置的防火墙。 默认情况下，防火墙处于禁�
 
 `nslookup <service name>.search.windows.net`
 
-例外不适用于[认知搜索](cognitive-search-concept-intro.md)。 唯一解决方法是禁用防火墙。
+异常不起作用[认知搜索](cognitive-search-concept-intro.md)。 唯一解决方法是禁用防火墙。
 
 ### <a name="cosmos-db"></a>Cosmos DB
 
@@ -71,7 +71,7 @@ api-key: [admin key]
 
 Blob 索引器可[查找并提取容器中 Blob 的文本](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs)。 提取文本时出现的一些问题包括：
 
-* 文档仅包含扫描的图像。 包含扫描图像 (JPG) 之类的非文本内容的 PDF Blob 不会在标准 Blob 索引管道中生成结果。 如果图像内容包含文本元素，则可通过[认知搜索](cognitive-search-concept-image-scenarios.md)来查找并提取文本。
+* 文档仅包含扫描的图像。 包含扫描图像 (JPG) 之类的非文本内容的 PDF Blob 不会在标准 Blob 索引管道中生成结果。 如果有与文本元素的图像内容，则可以使用[认知搜索](cognitive-search-concept-image-scenarios.md)查找并提取文本。
 * Blob 索引器配置为仅索引元数据。 若要提取内容，必须将 Blob 索引器配置为[提取内容和元数据](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)：
 
 ```
@@ -94,5 +94,5 @@ api-key: [admin key]
 * 文档尚未进行索引。 查看门户中是否有成功的索引器运行。
 * 文档在索引器运行之后已更新。 如果索引器已在[计划](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)之中，它最终会重新运行并选取该文档。
 * 在数据源中指定的 [query](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) 排除了该文档。 索引器不能索引不属于数据源的文档。
-* [字段映射](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings)或[认知搜索](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)已更改此文档，因此它看起来不同于预期。
+* [字段映射](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings)或[认知搜索](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)已更改文档，并查找与预期不同。
 * 使用[查找文档 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来查找文档。

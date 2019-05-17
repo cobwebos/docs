@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: b20fa7a1f43369cde85c2535637eec7ceb1d3c29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 13a855c5770281e2578523bfc1813b2e03df6651
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337285"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539232"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>使用 PowerShell 在 Azure 云服务中启用诊断
 可以使用 Azure 诊断扩展从云服务收集应用程序日志、性能计数器等诊断数据。 本文介绍如何使用 PowerShell 为云服务启用 Azure 诊断扩展。  有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>在部署云服务过程中启用诊断扩展
-此方法适合持续集成类型的方案，在这些方案中可以在部署云服务的过程中启用诊断扩展。 创建新的云服务部署时，可以通过向 *New-AzureDeployment* cmdlet 传入 [ExtensionConfiguration](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) 参数启用诊断扩展。 *ExtensionConfiguration* 参数取值为可使用 [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) cmdlet 创建的诊断配置数组。
+此方法适合持续集成类型的方案，在这些方案中可以在部署云服务的过程中启用诊断扩展。 创建新的云服务部署时，可以通过传入启用诊断扩展*ExtensionConfiguration*参数[New-azuredeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) cmdlet。 *ExtensionConfiguration* 参数取值为可通过 [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) cmdlet 创建的诊断配置数组。
 
 以下示例演示如何为某个云服务（其中的 WebRole 和 WorkerRole 拥有不同的诊断配置）启用诊断。
 
@@ -85,7 +85,7 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-Visual Studio Online 使用类似的方法通过诊断扩展自动部署云服务。 有关完整示例，请参阅 [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/vso-agent-tasks/blob/master/Tasks/AzureCloudPowerShellDeployment/Publish-AzureCloudDeployment.ps1) 。
+Visual Studio Online 使用类似的方法通过诊断扩展自动部署云服务。 有关完整示例，请参阅 [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) 。
 
 如果未在诊断配置中指定 `StorageAccount`，则需要将 StorageAccountName 参数传递给 cmdlet。 如果指定了 *StorageAccountName* 参数，cmdlet 始终使用该参数中指定的存储帐户，而不使用诊断配置文件中指定的存储帐户。
 
@@ -120,13 +120,13 @@ Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>删除诊断扩展
-若要在云服务上关闭诊断，可以使用 [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) cmdlet。
+若要关闭诊断在云服务，可以使用[Remove-azureservicediagnosticsextension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) cmdlet。
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-如果使用不带 *Role* 参数的 *Set-AzureServiceDiagnosticsExtension* 或 *New-AzureServiceDiagnosticsExtensionConfig* 启用了诊断扩展，则可以使用不带 *Role* 参数的 *Remove-AzureServiceDiagnosticsExtension* 删除该扩展。 如果启用扩展时使用了 *Role* 参数，则删除扩展时也必须使用该参数。
+如果启用了使用诊断扩展*Set-azureservicediagnosticsextension*或*New-azureservicediagnosticsextensionconfig*而无需*角色*参数，则您可以删除扩展使用*Remove-azureservicediagnosticsextension*而无需*角色*参数。 如果*角色*启用该扩展时使用参数，则它还必须使用时删除扩展。
 
 若要从单个角色中删除诊断扩展，请使用以下命令：
 

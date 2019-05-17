@@ -13,12 +13,12 @@ ms.date: 01/08/2019
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 8efab173f464b67c0c88c87ee28ea7fa19980501
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1ff700bece2d64451294e72ebdf3c771ee644f8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373166"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604190"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
@@ -63,7 +63,7 @@ Impact 支持标准和自定义的属性与度量值。 可以任意使用这两
 2. 在“分析依据”下拉列表中选择“国家或地区”
 3. 在“影响以下对象的使用”下拉列表中，选择与在步骤 1 中选择的页面视图中的 UI 元素对应的自定义事件。
 
-在本例中，结果不再像第一个示例中一样拟合到持续 X 轴模型中， 而是显示类似于分段漏斗图的可视化效果。 按“用法”排序可以根据国家/地区查看自定义事件转换的变体。
+在本例中，结果不再像第一个示例中一样拟合到持续 X 轴模型中， 而是显示类似于分段漏斗图的可视化效果。 作为排序依据**使用情况**若要查看转换自定义事件基于国家/地区的变体。
 
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Impact 工具如何计算这些转换率？

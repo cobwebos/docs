@@ -9,18 +9,18 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 48ebbabca8d38db3a7c1344981f79991de29df80
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d5bfa2426d58fa5a09d2203272536eec7fa9c55
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154400"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789956"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
 Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助开发人员构建安全的应用程序：
 
-- 所有写入 Azure 存储的数据，使用[存储服务加密 (SSE)](storage-service-encryption.md) 进行自动加密。 有关详细信息，请参阅[宣布推出针对 Azure Blob、文件、表和队列存储的默认加密](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
+- 使用自动加密所有数据 （包括元数据） 写入到 Azure 存储[存储服务加密 (SSE)](storage-service-encryption.md)。 有关详细信息，请参阅[宣布推出针对 Azure Blob、文件、表和队列存储的默认加密](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
 - Azure 存储支持使用 Azure Active Directory (Azure AD) 和基于角色的访问控制 (RBAC) 进行资源管理操作和数据操作，如下所示：   
     - 可以将作用域为存储帐户的 RBAC 角色分配给安全主体，并使用 Azure AD 为密钥管理之类的资源管理操作授权。
     - Azure AD 的集成支持的 blob 和队列数据操作。 可以将范围为订阅、资源组、存储帐户或单个容器或队列的 RBAC 角色分配给 Azure 资源的某个安全主体或托管标识。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。   
@@ -238,10 +238,9 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
     此文提供有关使用服务级别 SAS 配合 Blob、队列、表范围和文件的示例。
   * [Constructing a Service SAS](https://msdn.microsoft.com/library/dn140255.aspx)（构造服务 SAS）
   * [Constructing an account SAS](https://msdn.microsoft.com/library/mt584140.aspx)（构造帐户 SAS）
-* 这些教程介绍了如何使用 .NET 客户端库创建共享访问签名和存储访问策略。
 
+* 这是有关使用.NET 客户端库创建共享访问签名和存储访问策略的教程。
   * [使用共享访问签名 (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
-  * [共享访问签名，第 2 部分：创建 SAS 并将其用于 Blob 服务](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     此文包含 SAS 模型的说明、共享访问签名的示例，以及 SAS 用法最佳实践的建议。 此外介绍了如何吊销授予的权限。
 

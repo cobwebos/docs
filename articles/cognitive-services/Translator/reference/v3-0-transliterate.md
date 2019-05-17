@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4811e40f87962ecde75c7b2bb14e1d033e82ad44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd7fee34f020f16d1511bc57b4ad86dbd5eb168d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605104"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796957"
 ---
 # <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
 
@@ -147,7 +147,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>调用方发送的请求过多。</td>
+    <td>服务器拒绝了请求，因为客户端已超出请求限制。</td>
   </tr>
   <tr>
     <td>500</td>

@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 22cc195b7808ad4a9111aafcf883a68c51f3709f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/15/2019
+ms.openlocfilehash: 5182a5e325bd7883af1a7d102d3e02b277a5089e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076100"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788702"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Red Hat OpenShift 的 azure 资源
 
@@ -21,17 +21,7 @@ ms.locfileid: "65076100"
 
 ## <a name="azure-regions"></a>Azure 区域
 
-可以将 Azure Red Hat OpenShift 群集部署到在全球范围内的以下 Azure 区域：
-
-|区域|CLI 代码|
-|-|-|
-|🇦🇺 澳大利亚东部|`australiaeast`|
-|🇨🇦 加拿大中部|`canadacentral`|
-|🇨🇦 加拿大东部|`canadaeast`|
-|🇺🇸 美国东部|`eastus`|
-|🇺🇸 美国西部|`westus`|
-|🇪🇺 欧洲西部|`westeurope`|
-|🇪🇺 欧洲北部|`northeurope`|
+请参阅[区域的可用产品](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)对于可在其中部署 Azure Red Hat OpenShift 的区域的当前列表群集。
 
 ## <a name="virtual-machine-sizes"></a>虚拟机大小
 

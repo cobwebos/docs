@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ff3c497372a761bd8a02ae81bc897c8ee297bd0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431206"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794866"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用导出-导入迁移知识库
 
@@ -56,7 +56,7 @@ ms.locfileid: "61431206"
     此时，所有知识库内容（问题、答案和元数据，以及源文件的名称和 URL）都已导入新知识库。 
 
 ## <a name="chat-logs-and-alterations"></a>聊天日志和变更内容
-区分大小写的替换词（同义词）不会自动导入。 使用 [V2 ApI](https://aka.ms/qnamaker-v2-apis) 可从旧知识库导出变更内容，使用 [V4 ApI](https://aka.ms/qnamaker-v4-apis) 可将变更内容移至新知识库中。
+区分大小写的替换词（同义词）不会自动导入。 使用[V4 Api](https://go.microsoft.com/fwlink/?linkid=2092179)移动新知识库中的更改。
 
 无法迁移聊天日志，因为新知识库使用 Application Insights 存储聊天日志。 
 

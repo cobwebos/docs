@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: fa618c5c623a631e7a88f8235a0b7b16fcb2bc88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea8fe989dd0ef7026957153fb5c9836742d008dd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605247"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797497"
 ---
 # <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：Detect
 
@@ -158,7 +158,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>调用方发送的请求过多。</td>
+    <td>服务器拒绝了请求，因为客户端已超出请求限制。</td>
   </tr>
   <tr>
     <td>500</td>
