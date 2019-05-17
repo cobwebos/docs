@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 7665050dfc9a561f42fec00c40d0a40dfa5cc183
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941577"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606441"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器体验版
 
@@ -382,7 +382,7 @@ Azure AD 租户 ID - 必填。如果已有一个租户 ID，可在“属性”-\
 
 ![Azure Active Directory 租户列表](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![定义组织、域和 Azure AD 租户的国家/地区](./media/azure-resource-manager-test-drive/subdetails5.png)
+![为 Azure AD 租户中定义的组织、 域和国家/地区](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![确认所选内容](./media/azure-resource-manager-test-drive/subdetails6.png)
 
