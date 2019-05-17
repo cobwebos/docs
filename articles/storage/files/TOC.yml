@@ -168,7 +168,7 @@
         - name: Blob、队列、表和文件
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
         - name: 数据移动
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
+          href: /dotnet/api/microsoft.azure.storage.datamovement
         - name: 资源管理器
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
     - name: Java
@@ -232,22 +232,24 @@
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: NuGet 包
       items:
-        - name: 适用于 .NET 的 Azure 存储客户端库
-          href: 'https://www.nuget.org/packages/WindowsAzure.Storage/'
+        - name: Azure 存储公用客户端库
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
+        - name: Azure 文件存储客户端库
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.File/'
         - name: Azure 存储数据移动库
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
         - name: Azure 配置管理器
-          href: 'https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/'
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
     - name: 源代码
       items:
         - name: .NET
           items:
-            - name: Blob、队列、表和文件
+            - name: Blob、队列和文件
               href: 'https://github.com/Azure/azure-storage-net'
             - name: 数据移动
-              href: 'https://github.com/Azure/azure-storage-net-data-movement'
-            - name: 资源提供程序
-              href: 'https://github.com/Azure/azure-sdk-for-net'
+              href: /dotnet/api/microsoft.azure.storage.datamovement
+            - name: 存储资源提供程序
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
         - name: Java
           href: 'https://github.com/Azure/azure-storage-java'
         - name: C++

@@ -187,7 +187,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: 更新群集服务主体凭据
           href: update-credentials.md
-        - name: 限制和控制群集出口流量
+        - name: 限制和控制群集出口流量（预览版）
           href: limit-egress-traffic.md
         - name: 实现 Azure Active Directory 集成
           items:

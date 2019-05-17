@@ -167,6 +167,8 @@
           href: application-provisioning-config-problem.md
         - name: 配置用户预配时保存管理员凭据出现问题 - 库应用
           href: application-provisioning-config-problem-storage-limit.md
+        - name: 同步属性以进行映射 - 库应用
+          href: user-provisioning-sync-attributes-for-mapping.md
         - name: 未预配用户 - 库应用
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: 预配了错误的用户 - 库应用

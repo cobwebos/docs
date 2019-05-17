@@ -187,6 +187,8 @@
               href: delete-vault.md
     - name: VMware 到 Azure 的灾难恢复
       items:
+        - name: 设置大规模灾难恢复
+          href: vmware-physical-large-deployment.md
         - name: 设置网络
           items:
             - name: 管理用于本地到 Azure 复制的网络接口
@@ -269,6 +271,8 @@
               href: delete-vault.md
     - name: 物理机到 Azure 的灾难恢复
       items:
+        - name: 设置大规模灾难恢复
+          href: vmware-physical-large-deployment.md
         - name: 设置网络
           items:
             - name: 管理用于本地到 Azure 复制的网络接口

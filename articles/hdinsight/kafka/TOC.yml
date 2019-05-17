@@ -2,15 +2,10 @@
   href: /azure/hdinsight
 - name: 概述
   items:
-    - name: 关于 Apache Kafka on HDInsight
+    - name: 什么是 HDInsight 中的 Apache Kafka？
       href: apache-kafka-introduction.md
-    - name: HDInsight 上的 Apache Hadoop 组件
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
-      maintainContext: true
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建 Apache Kafka 群集 - 门户
       href: apache-kafka-get-started.md
@@ -23,10 +18,8 @@
   items:
     - name: 使用 Apache Spark 结构化流
       href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-      maintainContext: true
     - name: 使用 Apache Storm 从 Apache Kafka 写入/读取
       href: ../hdinsight-apache-storm-with-kafka.md
-      maintainContext: true
     - name: 使用 Apache Kafka 生成者和使用者 API
       href: apache-kafka-producer-consumer-api.md
     - name: 使用 Apache Kafka 流 API 开发应用
@@ -35,13 +28,16 @@
   items:
     - name: 容量计划
       href: ../hdinsight-capacity-planning.md
-      maintainContext: true
     - name: 存储和可伸缩性
       href: apache-kafka-scalability.md
     - name: 数据的高可用性
       href: apache-kafka-high-availability.md
     - name: 性能调优
       href: apache-kafka-performance-tuning.md
+    - name: HDInsight 上的 Apache Hadoop 组件
+      href: ../hdinsight-component-versioning.md
+    - name: HDInsight 4.0
+      href: ../hdinsight-version-release.md
 - name: 如何
   items:
     - name: 启用自动创建主题功能
@@ -50,7 +46,6 @@
       href: apache-kafka-connector-iot-hub.md
     - name: 安装 HDInsight 应用
       href: ../hdinsight-apps-install-applications.md
-      maintainContext: true
     - name: 在虚拟网络中使用 Apache Kafka
       href: apache-kafka-connect-vpn-gateway.md
     - name: 复制 Apache Kafka 数据
@@ -61,66 +56,52 @@
       items:
         - name: Apache Spark、Apache Kafka 和 Azure Cosmos DB
           href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
-          maintainContext: true
         - name: Apache Kafka 和 Apache Spark (DStream)
           href: ../hdinsight-apache-spark-with-kafka.md
-          maintainContext: true
         - name: 将 Apache Kafka 与 Azure 容器服务配合使用
           href: apache-kafka-azure-container-services.md
     - name: 开发
       items:
         - name: 使用空边缘节点
           href: ../hdinsight-apps-use-edge-node.md
-          maintainContext: true
     - name: 扩展群集
       items:
         - name: 使用 Bootstrap 自定义群集
           href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
-          maintainContext: true
         - name: 使用脚本操作自定义群集
           href: ../hdinsight-hadoop-customize-cluster-linux.md
-          maintainContext: true
         - name: 开发脚本操作
           href: ../hdinsight-hadoop-script-actions-linux.md
-          maintainContext: true
         - name: 构建 HDInsight 应用程序
           items:
             - name: 安装自定义应用
               href: ../hdinsight-apps-install-custom-applications.md
-              maintainContext: true
             - name: 使用 REST 安装应用
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
             - name: 将 HDInsight 应用发布到 Azure 市场
               href: ../hdinsight-apps-publish-applications.md
-              maintainContext: true
     - name: 安全
       items:
         - name: 将 SSH 与 HDInsight 配合使用
           href: ../hdinsight-hadoop-linux-use-ssh-unix.md
-          maintainContext: true
         - name: 使用 SSH 隧道
           href: ../hdinsight-linux-ambari-ssh-tunnel.md
-          maintainContext: true
         - name: 自带密钥
           href: apache-kafka-byok.md
         - name: SSL 加密和身份验证
           href: apache-kafka-ssl-encryption-authentication.md
         - name: 将 Apache Kafka RBAC 与 Apache Ranger 配合使用
           href: ../domain-joined/apache-domain-joined-run-kafka.md
-          maintainContext: true
     - name: 管理
       items:
         - name: 创建 HDInsight 群集
           href: ../hdinsight-hadoop-provision-linux-clusters.md
-          maintainContext: true
           items:
             - name: 使用 Azure 门户
               href: ../hdinsight-hadoop-create-linux-clusters-portal.md
-              maintainContext: true
             - name: 使用 Azure 资源管理器模板
               displayName: 'resource manager template, arm template, resource manager group'
               href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
-              maintainContext: true
             - name: 使用用于 .NET 的 SDK
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
             - name: 使用用于 Python 的 SDK
@@ -129,19 +110,14 @@
               href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
             - name: 使用 Azure PowerShell
               href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-              maintainContext: true
             - name: 使用 cURL 和 Azure REST API
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
-              maintainContext: true
             - name: 使用 Azure CLI
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
-              maintainContext: true
             - name: 创建按需群集
               href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-              maintainContext: true
     - name: 管理 HDInsight 群集
       href: ../hdinsight-administer-use-portal-linux.md
-      maintainContext: true
       items:
         - name: 使用用于 .NET 的 SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
@@ -153,98 +129,52 @@
           href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
         - name: 使用 Azure PowerShell
           href: ../hdinsight-administer-use-powershell.md
-          maintainContext: true
         - name: 使用 Azure 经典 CLI
           href: ../hdinsight-administer-use-command-line.md
-          maintainContext: true
         - name: 使用 Apache Ambari Web UI 管理群集
           href: ../hdinsight-hadoop-manage-ambari.md
-          maintainContext: true
           items:
             - name: 使用 Apache Ambari Web UI 优化群集
               href: ../hdinsight-changing-configs-via-ambari.md
-              maintainContext: true
             - name: 使用 Apache Ambari REST API
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
-              maintainContext: true
             - name: 使用 Azure Monitor 日志监视群集可用性
               href: ../hdinsight-cluster-availability.md
-              maintainContext: true
         - name: 管理 HDInsight 群集的日志
           href: ../hdinsight-log-management.md
-          maintainContext: true
         - name: 添加存储帐户
           href: ../hdinsight-hadoop-add-storage.md
-          maintainContext: true
         - name: 上传 Apache Hadoop 作业的数据
           href: ../hdinsight-upload-data.md
-          maintainContext: true
         - name: 将多个 HDInsight 群集与 Data Lake Store 配合使用
           href: ../hdinsight-multiple-clusters-data-lake-store.md
-          maintainContext: true
         - name: 群集及服务端口和 URI
           href: ../hdinsight-hadoop-port-settings-for-services.md
-          maintainContext: true
         - name: '可用性和可靠性 '
           href: ../hdinsight-high-availability-linux.md
-          maintainContext: true
         - name: 将 HDInsight 群集升级到更新的版本
           href: ../hdinsight-upgrade-cluster.md
-          maintainContext: true
         - name: 为 HDInsight 群集修补 OS
           href: ../hdinsight-os-patching.md
-          maintainContext: true
     - name: 故障排除
       href: ../hdinsight-troubleshoot-guide.md
-      maintainContext: true
       items:
         - name: 排查 HDInsight 群集速度慢或故障问题
           href: ../hdinsight-troubleshoot-failed-cluster.md
-          maintainContext: true
         - name: Apache Hadoop HDFS 故障排除
           href: ../hdinsight-troubleshoot-hdfs.md
-          maintainContext: true
         - name: Apache Hadoop YARN 故障排除
           href: ../hdinsight-troubleshoot-yarn.md
-          maintainContext: true
         - name: 资源
           items:
             - name: 有关在 Linux 上使用 HDInsight 的信息
               href: ../hdinsight-hadoop-linux-information.md
-              maintainContext: true
             - name: Apache Hadoop 内存和性能
               href: ../hdinsight-hadoop-stack-trace-error-messages.md
-              maintainContext: true
             - name: 访问 Linux 上的 Apache Hadoop YARN 应用程序日志
               href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
-              maintainContext: true
             - name: 为 Apache Hadoop 服务启用堆转储
               href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
-              maintainContext: true
-- name: 企业就绪情况
-  items:
-    - name: 保护数据
-      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-      maintainContext: true
-    - name: 网络访问
-      items:
-        - name: Azure VNet 中的 HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
-        - name: 将 HDInsight 与本地网络相连
-          href: ../connect-on-premises-network.md
-          maintainContext: true
-    - name: 使用 Azure Monitor 日志进行监视
-      items:
-        - name: 使用 Azure Monitor 日志
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: 将查询与 Azure Monitor 日志配合使用
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-          maintainContext: true
-        - name: 监视群集性能
-          href: ../hdinsight-key-scenarios-to-monitor.md
-          maintainContext: true
 - name: 引用
   items:
     - name: 代码示例
@@ -280,4 +210,21 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 适用于 HDInsight 的 Windows 工具
       href: ../hdinsight-hadoop-windows-tools.md
-      maintainContext: true
+- name: 企业就绪情况
+  items:
+    - name: 保护数据
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+    - name: 网络访问
+      items:
+        - name: Azure VNet 中的 HDInsight
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: 将 HDInsight 与本地网络相连
+          href: ../connect-on-premises-network.md
+    - name: 使用 Azure Monitor 日志进行监视
+      items:
+        - name: 使用 Azure Monitor 日志
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+        - name: 将查询与 Azure Monitor 日志配合使用
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+        - name: 监视群集性能
+          href: ../hdinsight-key-scenarios-to-monitor.md

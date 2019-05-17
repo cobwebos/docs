@@ -36,6 +36,8 @@
           items:
             - name: 阅读安全指南
               href: data-box-safety.md
+            - name: 跟踪和日志记录
+              href: data-box-logs.md
             - name: 审查要求
               items:
                 - name: 对于 Data Box

@@ -67,8 +67,10 @@
           href: data-box-edge-deploy-connect-setup-activate.md
         - name: 4 - 添加、连接到共享
           href: data-box-edge-deploy-add-shares.md
-        - name: 5 - 配置计算
+        - name: 5A - 配置计算（简单）
           href: data-box-edge-deploy-configure-compute.md
+        - name: 5B - 配置计算（高级）
+          href: data-box-edge-deploy-configure-compute-advanced.md
     - name: 概念
       items:
         - name: 审查要求

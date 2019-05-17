@@ -25,6 +25,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp 文件网络规划指南
       href: azure-netapp-files-network-topologies.md
+    - name: 有关 Azure NetApp 文件的常见问题解答
+      href: azure-netapp-files-faqs.md
 - name: 操作指南
   items:
     - name: 注册 Azure NetApp 文件

@@ -7,115 +7,147 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 DB - 门户
-      href: quickstart-create-server-database-portal.md
-    - name: 创建 DB - Azure CLI
-      href: quickstart-create-server-database-azure-cli.md
-    - name: 创建 DB - Azure CLI up 命令
-      href: quickstart-create-server-up-azure-cli.md
-    - name: 连接和查询
+    - name: 单个服务器
       items:
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Java
-          href: connect-java.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: PHP
-          href: connect-php.md
-        - name: .NET
-          href: connect-csharp.md
-        - name: Go
-          href: connect-go.md
+        - name: 创建 DB - 门户
+          href: quickstart-create-server-database-portal.md
+        - name: 创建 DB - Azure CLI
+          href: quickstart-create-server-database-azure-cli.md
+        - name: 创建 DB - Azure CLI up 命令
+          href: quickstart-create-server-up-azure-cli.md
+        - name: 连接和查询
+          items:
+            - name: Python
+              href: connect-python.md
+            - name: Node.js
+              href: connect-nodejs.md
+            - name: Java
+              href: connect-java.md
+            - name: Ruby
+              href: connect-ruby.md
+            - name: PHP
+              href: connect-php.md
+            - name: .NET
+              href: connect-csharp.md
+            - name: Go
+              href: connect-go.md
+    - name: 超大规模 (Citus)
+      items:
+        - name: 创建 DB - 门户
+          href: quickstart-create-hyperscale-portal.md
 - name: 教程
   items:
-    - name: 1 - 设计数据库
+    - name: 单个服务器
       items:
-        - name: Azure 门户
-          href: tutorial-design-database-using-azure-portal.md
-        - name: Azure CLI
-          href: tutorial-design-database-using-azure-cli.md
-    - name: 2 - 设计 Web 应用 - Python
-      href: ../app-service/containers/tutorial-python-postgresql-app.md
-      maintainContext: true
-    - name: 3 - 监视和优化
-      href: tutorial-monitor-and-tune.md
+        - name: 1 - 设计数据库
+          items:
+            - name: Azure 门户
+              href: tutorial-design-database-using-azure-portal.md
+            - name: Azure CLI
+              href: tutorial-design-database-using-azure-cli.md
+        - name: 2 - 设计 Web 应用 - Python
+          href: ../app-service/containers/tutorial-python-postgresql-app.md
+          maintainContext: true
+        - name: 3 - 监视和优化
+          href: tutorial-monitor-and-tune.md
+    - name: 超大规模 (Citus)
+      items:
+        - name: 设计多租户数据库
+          href: tutorial-design-database-hyperscale-multi-tenant.md
+        - name: 设计实时仪表板
+          href: tutorial-design-database-hyperscale-realtime.md
 - name: 示例
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
 - name: 概念
   items:
-    - name: 数据库和服务器
+    - name: 单个服务器
       items:
-        - name: 服务器
-          href: concepts-servers.md
-        - name: 支持的版本
-          href: concepts-supported-versions.md
-        - name: PostgreSQL 扩展
-          href: concepts-extensions.md
-        - name: 高可用性
-          href: concepts-high-availability.md
-    - name: 资源
-      items:
-        - name: 定价层
-          href: concepts-pricing-tiers.md
-        - name: 限制
-          href: concepts-limits.md
-    - name: 数据访问和安全性
-      items:
-        - name: 防火墙规则
-          href: concepts-firewall-rules.md
-        - name: 配置 SSL
-          href: concepts-ssl-connection-security.md
-        - name: 高级威胁防护
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: VNet
-          href: concepts-data-access-and-security-vnet.md
-    - name: 业务连续性
-      items:
-        - name: 概述
-          href: concepts-business-continuity.md
-        - name: 备份和还原
-          href: concepts-backup.md
-    - name: 监视和优化
-      items:
+        - name: 数据库和服务器
+          items:
+            - name: 服务器
+              href: concepts-servers.md
+            - name: 支持的版本
+              href: concepts-supported-versions.md
+            - name: PostgreSQL 扩展
+              href: concepts-extensions.md
+            - name: 高可用性
+              href: concepts-high-availability.md
+        - name: 资源
+          items:
+            - name: 定价层
+              href: concepts-pricing-tiers.md
+            - name: 限制
+              href: concepts-limits.md
+        - name: 数据访问和安全性
+          items:
+            - name: 防火墙规则
+              href: concepts-firewall-rules.md
+            - name: 配置 SSL
+              href: concepts-ssl-connection-security.md
+            - name: 高级威胁防护
+              href: concepts-data-access-and-security-threat-protection.md
+            - name: 虚拟网络
+              href: concepts-data-access-and-security-vnet.md
+        - name: 业务连续性
+          items:
+            - name: 概述
+              href: concepts-business-continuity.md
+            - name: 备份和还原
+              href: concepts-backup.md
         - name: 监视和优化
-          href: concepts-monitoring.md
-        - name: 服务器日志
-          href: concepts-server-logs.md
-        - name: 查询存储
           items:
+            - name: 监视和优化
+              href: concepts-monitoring.md
+            - name: 服务器日志
+              href: concepts-server-logs.md
             - name: 查询存储
-              href: concepts-query-store.md
-            - name: Query Store 使用方案
-              href: concepts-query-store-scenarios.md
-            - name: 查询存储最佳做法
-              href: concepts-query-store-best-practices.md
-        - name: 查询性能见解
-          href: concepts-query-performance-insight.md
-        - name: 性能建议
-          href: concepts-performance-recommendations.md
-    - name: 开发
-      items:
-        - name: 连接库
-          href: concepts-connection-libraries.md
-        - name: 连接复原
-          href: concepts-connectivity.md
-        - name: 使用 Azure Kubernetes 服务 (AKS) 进行开发
-          href: concepts-aks.md
-        - name: Java
+              items:
+                - name: 查询存储
+                  href: concepts-query-store.md
+                - name: Query Store 使用方案
+                  href: concepts-query-store-scenarios.md
+                - name: 查询存储最佳做法
+                  href: concepts-query-store-best-practices.md
+            - name: 查询性能见解
+              href: concepts-query-performance-insight.md
+            - name: 性能建议
+              href: concepts-performance-recommendations.md
+        - name: 开发
           items:
-            - name: 配置 Spring Data JDBC
-              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
-            - name: 配置 Spring Data JPA
-              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
-    - name: 复制
+            - name: 连接库
+              href: concepts-connection-libraries.md
+            - name: 连接复原
+              href: concepts-connectivity.md
+            - name: 使用 Azure Kubernetes 服务 (AKS) 进行开发
+              href: concepts-aks.md
+            - name: Java
+              items:
+                - name: 配置 Spring Data JDBC
+                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                - name: 配置 Spring Data JPA
+                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+        - name: 复制
+          items:
+            - name: 只读副本
+              href: concepts-read-replicas.md
+    - name: 超大规模 (Citus)
       items:
-        - name: 只读副本
-          href: concepts-read-replicas.md
+        - name: Nodes
+          href: concepts-hyperscale-nodes.md
+        - name: 分布式数据
+          href: concepts-hyperscale-distributed-data.md
+        - name: 选择分布列
+          href: concepts-hyperscale-choose-distribution-column.md
+        - name: 表共置
+          href: concepts-hyperscale-colocation.md
+        - name: PostgreSQL 扩展
+          href: concepts-hyperscale-extensions.md
+        - name: 资源
+          items:
+            - name: 配置选项
+              href: concepts-hyperscale-configuration-options.md
 - name: 操作指南
   items:
     - name: 创建用户

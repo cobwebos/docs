@@ -368,7 +368,7 @@
   items:
     - name: 概述
       href: sql-database-howto.md
-    - name: 单一数据库
+    - name: 单一数据库和弹性池
       items:
         - name: 概述
           href: sql-database-howto-single-database.md
@@ -720,6 +720,10 @@
       href: sql-database-glossary-terms.md
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-sql-database
+    - name: SQL Server 博客
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Microsoft Azure 博客
+      href: 'https://azure.microsoft.com/blog/'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 公共数据集

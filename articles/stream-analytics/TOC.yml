@@ -34,6 +34,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: 概念
   items:
+    - name: 选择流分析技术
+      href: streaming-technologies.md
     - name: 作业的输入类型
       items:
         - name: 输入概述

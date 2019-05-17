@@ -17,6 +17,9 @@
       href: quickstart-assign-role-user-portal.md
     - name: 授予用户访问权限 - PowerShell
       href: tutorial-role-assignments-user-powershell.md
+    - name: 授予用户访问权限 - 资源管理器模板
+      displayName: 'ARM, resource manager template'
+      href: tutorial-role-assignments-user-template.md
     - name: 授予组访问权限 - PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: 创建自定义角色 - PowerShell
@@ -88,6 +91,7 @@
     - name: REST API
       href: /rest/api/authorization/
     - name: 资源管理器模板
+      displayName: ARM
       items:
         - name: 角色分配
           href: /azure/templates/microsoft.authorization/roleassignments
