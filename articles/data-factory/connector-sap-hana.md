@@ -168,7 +168,7 @@ SAP HANA 链接的服务支持以下属性：
 | BOOLEAN | Byte |
 | CLOB | Byte[] |
 | DATE | DateTime |
-| DECIMAL | 小数 |
+| DECIMAL | Decimal |
 | DOUBLE | Single |
 | INT | Int32 |
 | NVARCHAR | String |
