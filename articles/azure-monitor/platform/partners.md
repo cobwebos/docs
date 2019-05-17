@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: cf06645ddcb825ca866d88a1f7724fd3b3e7987b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fae8e80c6fa94c3581de3038399ef031506b2f55
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60338048"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65774248"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -21,7 +21,7 @@ ms.locfileid: "60338048"
 
 ## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
 
-![AlertLogic Logo](./media/partners/alertlogic.png)
+![AlertLogic 徽标](./media/partners/alertlogic.png)
 
 Alert Logic Log Manager 收集 VM、应用程序和 Azure 平台日志以进行安全分析和数据保留。 它还通过 Azure Monitor API 收集 Azure 活动日志。 使用这些信息可以检测不法行为，确保满足合规性要求。
 
@@ -74,7 +74,7 @@ Circonus 是一个微服务监视和分析平台，专为本地或 SaaS 部署�
 
 ## <a name="cloudmonix"></a>CloudMonix
 
-![CloudMonix Logo](./media/partners/cloudmonix.png)
+![CloudMonix 徽标](./media/partners/cloudmonix.png)
 
 CloudMonix 为 Microsoft Azure 平台提供监视、自动化和自我修复服务。
 
@@ -90,7 +90,7 @@ Datadog 是世界领先的监视服务，适用于云规模的应用程序。 �
 
 ## <a name="dynatrace"></a>Dynatrace
 
-![DynaTrace Logo](./media/partners/dynatrace.png)
+![DynaTrace 徽标](./media/partners/dynatrace.png)
 
 Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标，Dynatrace 还会以端到端方式将环境可视化。 它显示从客户端到数据库层的事务。 Dynatrace 可以对问题和完全集成的根本原因分析进行基于 AI 的关联，从方法级别了解代码和数据库。 这样一来，进行故障排除和性能优化就要容易得多。
 
@@ -98,7 +98,7 @@ Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用服务集�
 
 ## <a name="elastic"></a>Elastic
 
-![弹性徽标](./media/partners/elastic.png)
+![Elastic 徽标](./media/partners/elastic.png)
 
 Elastic 是一家搜索公司。 作为 Elastic Stack（Elasticsearch、Kibana、Beats 和 Logstash）的创建者，Elastic 构建了自托管产品/服务和 SaaS 产品/服务，使数据实时可用并可大规模地用于搜索、日志记录、安全和分析用例。
 
@@ -123,7 +123,7 @@ InfluxDB 是 InfluxDB 的创建者，它提供了一个从头开始构建的新�
 
 ## <a name="logic-monitor"></a>LogicMonitor
 
-![逻辑监视器徽标](./media/partners/logicmonitor.png)
+![Logic Monitor 徽标](./media/partners/logicmonitor.png)
 
 LogicMonitor® 是适用于复杂 IT 基础结构的、基于 SaaS 的领先性能监视平台。 LogicMonitor 集数千种技术于一身，提供基础结构和应用程序性能的精细洞察数据。 LM Cloud 的综合性 Azure 监视功能可让用户通过单个平台来关联 Azure 云、本地资源和混合云资源的性能。 自动资源发现、内置监视模板、预配置的警报阈值和可自定义的仪表板相辅相成，可为 IT 人员带来速度优势、灵活性和可见性，让他们获得成功。
 
@@ -186,7 +186,7 @@ ScienceLogic 提供下一代 IT 服务保证平台，用于随时随地管理任
 
 ![Serverless360 徽标](./media/partners/serverless360.png)
 
-Serverless360 是一个平台工具，用于运行、 管理和监视 Azure 无服务器组件。 可管理性是使用无服务器实现的主要挑战之一。 在多个分散在数百个小型离散的无服务器服务 – 管理和操作此类解决方案复杂。 Serverless360 可解决这些难题通过丰富的复杂的工具。 它可以监视无服务器服务，如 Azure Functions、 逻辑应用、 事件网格、 服务总线队列、 主题、 中继、 事件中心、 存储队列、 文件、 blob 和表。 Serverless360 目前在 Azure Marketplace。 这些功能包括适用于 SaaS 和私有托管 （托管在自己的环境）。  
+Serverless360 是一个平台工具，用于运行、管理和监视 Azure 无服务器组件。 可管理性是无服务器实现的主要难题之一。 数百个小型、离散的无服务器服务分散在不同的地方 - 管理和操作此类解决方案非常复杂。 Serverless360 通过丰富的复杂工具集解决了这些难题。 它可以监视无服务器服务，如 Azure Functions、逻辑应用、事件网格、服务总线队列、主题、中继、事件中心、存储队列、文件、blob 和表。 Serverless360 在 Azure 市场中提供。 这些功能可在 SaaS 和专用托管（托管在你自己的环境中）上使用。  
 
 [了解详细信息。][serverless360-doc]
 
@@ -194,7 +194,7 @@ Serverless360 是一个平台工具，用于运行、 管理和监视 Azure 无�
 
 ![SignalFX 徽标](./media/partners/signalfx.png)
 
-SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。 该服务可以发现并收集云中每个组件的指标， 取代传统的点选工具，提供当前动态环境的实时洞察信息。 利用可大规模缩放的 SignalFx 平台，可以根据体系结构针对容器和微服务优化 SaaS 平台，并在各种规模的组织中提供强大的可视化、主动警报和协作会审功能。 SignalFx 如集成，直接与 Azure Monitor 以及通过开放源代码的连接器*Telegraf*， *statsD*，并*collectd*以提供最佳的类仪表板、 分析和 Azure 的警报。
+SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。 该服务可以发现并收集云中每个组件的指标， 取代传统的点选工具，提供当前动态环境的实时洞察信息。 利用可大规模缩放的 SignalFx 平台，可以根据体系结构针对容器和微服务优化 SaaS 平台，并在各种规模的组织中提供强大的可视化、主动警报和协作会审功能。 还可以通过 Telegraf、statsD 和 collectd 等开源连接器直接将 SignalFx 与 Azure Monitor 集成，以便为 Azure 提供一流的仪表板、分析和警报。
 
 [查看相关文档。][signalfx-doc]
 
@@ -219,7 +219,7 @@ SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。
 
 ## <a name="sumo-logic"></a>Sumo Logic
 
-![Sumo 逻辑徽标](./media/partners/SumoLogic.png)
+![Sumo Logic 徽标](./media/partners/SumoLogic.png)
 
 Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、持续、智能地分析整个应用程序生命周期和堆栈内的结构化、半结构化和非结构化数据。 全球超过 1,000 家客户借助 Sumo Logic 对数据进行分析和深入挖掘，生成、运行并保护其应用程序和云基础结构。 通过使用 Sumo Logic，客户在多租户的服务模式方面获得优势，增加竞争优势、商业价值和利益增长。
 
@@ -242,7 +242,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 
 
 <!--Partner Documentation-->
-[alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic 文档。"
+[alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic 文档。"
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics 文档。"
 [arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight 文档。"
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/

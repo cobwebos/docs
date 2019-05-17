@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/22/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 558b67b5b0e1ce4f452ce2ca2e97dd7e785c80b6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: de898a7ebb9611f469f42bb23774b3b0a0c2410d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728702"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541671"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制 #
 
@@ -32,7 +32,7 @@ ms.locfileid: "64728702"
 
 访问限制功能是在应用服务前端角色，这是你的代码在其中运行的辅助主机上游中实现的。 因此，访问限制实际上是网络 Acl。
 
-访问限于你的 web 应用从 Azure 虚拟网络 (VNet) 的功能称为[服务终结点][serviceendpoints]。 服务终结点，可以从所选子网限制对多租户服务的访问。 必须在网络端以及启用了该服务上启用它。 
+访问限于你的 web 应用从 Azure 虚拟网络 (VNet) 的功能称为[服务终结点][serviceendpoints]。 服务终结点，可以从所选子网限制对多租户服务的访问。 必须在网络端以及启用了该服务上启用它。 它并不适将流量限制到应用服务环境中托管的应用。  如果要在应用服务环境中，您可以控制对使用 IP 地址规则对应用程序的访问。
 
 ![访问限制流](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -59,6 +59,8 @@ ms.locfileid: "64728702"
 ![添加 VNet 访问限制规则](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
 若要限制对所选子网的访问，选择虚拟网络的类型。 在下面您将能够选择订阅、 VNet 和子网你想要允许或拒绝访问与。 如果服务终结点不具有 Microsoft.Web 为启用所选的子网，它将自动启用，除非选中复选框不询问执行该操作。 你会想要启用该应用，但不能是子网的这种情况很大程度上与如果您有权启用服务终结点的子网上，或不相关。 如果您需要先获取其他人来启用服务终结点的子网上，可以选中复选框，并让你为预期的更高版本的子网上启用服务终结点配置的应用。 
+
+服务终结点不能用于限制对应用服务环境中运行的应用程序的访问。 您的应用程序在应用服务环境时，可以使用 IP 访问规则向应用来控制访问。 
 
 单击任一行，可编辑现有访问限制规则。 编辑的内容会立即生效，包括在优先级排序方面的变化。
 

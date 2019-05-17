@@ -3,8 +3,8 @@ title: 有关在  SaaS 应用程序中自动预配 Azure Active Directory 用户
 description: 了解如何检查自动用户帐户预配作业的状态，以及如何排查单个用户的预配问题。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e293eb555269a1f8beeeccd74000358abe1ef5c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 71816c8c7e4213ddea4f08e046dc9224eb52b5fd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721059"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780999"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：针对自动用户帐户预配进行报告
 

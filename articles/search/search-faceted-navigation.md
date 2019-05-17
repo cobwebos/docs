@@ -6,20 +6,20 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 43c072cb72935a80da0e48e6b8343f38ee08876b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023961"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793624"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
 
- ![Azure 搜索作业门户演示][1]
+ ![Azure 搜索作业门户演示](media/search-faceted-navigation/azure-search-faceting-example.png "Azure 搜索作业门户演示")
 
 分面导航是一个备用的搜索入口点。 它可以方便地替代手动键入复杂的搜索表达式。 分面可帮助你查找所需的内容，同时确保获取相关结果。 作为开发人员，分面允许公开用于导航搜索索引的最有用的搜索条件。 在在线零售应用程序中，分面导航通常基于品牌、分类（童鞋）、尺寸、价格、受欢迎程度和评级生成。 
 
@@ -341,7 +341,7 @@ Azure 搜索通过提供两种用于计算范围的方法，简化范围构造�
 **方法 2：使用值列表**  
 对于数值数据，可以使用值列表。  考虑 `listPrice` 字段的分面范围，如下所示：
 
-  ![示例值列表][5]
+  ![示例值列表](media/search-faceted-navigation/Facet-5-Prices.PNG "示例值列表")
 
 若要根据上面的屏幕截图中所示指定分面范围，请使用值列表：
 
@@ -352,7 +352,7 @@ Azure 搜索通过提供两种用于计算范围的方法，简化范围构造�
 ### <a name="build-a-filter-for-a-range"></a>针对范围生成筛选器
 若要根据所选的范围筛选文档，可以在包含两个部分的表达式中使用 `"ge"` 和 `"lt"` 筛选器运算符，该表达式可定义范围的终结点。 例如，如果为 `listPrice` 字段选择范围 10-25，筛选器将为 `$filter=listPrice ge 10 and listPrice lt 25`。 在示例代码中，筛选器表达式使用 **priceFrom** 和 **priceTo** 参数设置终结点。 
 
-  ![查询值的范围][6]
+  ![一系列值的查询](media/search-faceted-navigation/Facet-6-buildfilter.PNG "一系列值的查询")
 
 <a name="geofacets"></a> 
 
@@ -385,11 +385,11 @@ Azure 搜索作业门户演示包含本文中参考的示例。
    
    分面导航结构也与搜索结果一起返回。 在搜索结果页面中，分面导航结构包括每个分面结果的计数。 未选择任何分面，因此将返回所有匹配的结果。
    
-   ![在选择分面之前搜索结果][11]
+   ![在选择分面之前搜索结果](media/search-faceted-navigation/faceted-search-before-facets.png "在选择分面之前搜索结果")
 
 4. 单击某个职称、工位或最低薪水。 分面在初始搜索时为 null，但当对它们设置值时，将从搜索结果中剪裁掉不再匹配的项。
    
-   ![在选择分面之后搜索结果][12]
+   ![在选择分面之后搜索结果](media/search-faceted-navigation/faceted-search-after-facets.png "在选择分面之后搜索结果")
 
 5. 若要清除分面查询以便可以尝试不同的查询行为，请单击所选分面后面的 `[X]` 来清除分面。
    
@@ -400,42 +400,6 @@ Azure 搜索作业门户演示包含本文中参考的示例。
 
 有关分面导航设计准则的更多见解，建议查看以下链接：
 
-* [针对分面搜索进行设计](http://www.uie.com/articles/faceted_search/)
 * [设计模式：分面导航](https://alistapart.com/article/design-patterns-faceted-navigation)
-
-
-<!--Anchors-->
-[How to build it]: #howtobuildit
-[Build the presentation layer]: #presentationlayer
-[Build the index]: #buildindex
-[Check for data quality]: #checkdata
-[Build the query]: #buildquery
-[Tips on how to control faceted navigation]: #tips
-[Faceted navigation based on range values]: #rangefacets
-[Faceted navigation based on GeoPoints]: #geofacets
-[Try it out]: #tryitout
-
-<!--Image references-->
-[1]: ./media/search-faceted-navigation/azure-search-faceting-example.PNG
-[2]: ./media/search-faceted-navigation/Facet-2-CSHTML.PNG
-[3]: ./media/search-faceted-navigation/Facet-3-schema.PNG
-[4]: ./media/search-faceted-navigation/Facet-4-SearchMethod.PNG
-[5]: ./media/search-faceted-navigation/Facet-5-Prices.PNG
-[6]: ./media/search-faceted-navigation/Facet-6-buildfilter.PNG
-[7]: ./media/search-faceted-navigation/Facet-7-appstart.png
-[8]: ./media/search-faceted-navigation/Facet-8-appbike.png
-[9]: ./media/search-faceted-navigation/Facet-9-appbikefaceted.png
-[10]: ./media/search-faceted-navigation/Facet-10-appTitle.png
-[11]: ./media/search-faceted-navigation/faceted-search-before-facets.png
-[12]: ./media/search-faceted-navigation/faceted-search-after-facets.png
-
-<!--Link references-->
-[Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
-[Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
-[Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
-[https://www.odata.org/documentation/odata-version-2-0/overview/]: https://www.odata.org/documentation/odata-version-2-0/overview/ 
-[Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
+* [前端问题时实现分面搜索 – 第 1 部分 ](https://articles.uie.com/faceted_search2/)
 

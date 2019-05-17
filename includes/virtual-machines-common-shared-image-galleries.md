@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0fe1de9bb674c66d1b665de25ee579bc86e42c75
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192366"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546790"
 ---
 共享映像库是可以帮助你围绕自定义托管 VM 映像生成结构和组织的服务。 提供了共享的图像库：
 
@@ -53,7 +53,7 @@ ms.locfileid: "65192366"
 |---|---|---|---|
 |myImage1|Contoso|财务|后端|
 |myImage2|Contoso|财务|前端|
-|myImage3|测试|财务|前端|
+|myImage3|正在测试|财务|前端|
 
 所有这三个映像都有唯一的一组值。 格式是类似于如何目前指定发布者、 产品和 SKU [Azure Marketplace 映像](../articles/virtual-machines/windows/cli-ps-findimage.md)在 Azure PowerShell，若要获取 Marketplace 映像的最新版本。 每个映像定义需要有一组唯一的这些值。
 
@@ -99,7 +99,7 @@ ms.locfileid: "65192366"
 有关详细信息，请参阅[检查资源用量与限制](https://docs.microsoft.com/azure/networking/check-usage-against-limits)有关如何检查当前使用情况的示例。
  
 
-## <a name="scaling"></a>扩展
+## <a name="scaling"></a>缩放
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。
 
 ![演示如何缩放映像的示意图](./media/shared-image-galleries/scaling.png)
@@ -266,4 +266,4 @@ ms.locfileid: "65192366"
 
 **问：** 应使用哪个 API 版本来创建共享映像库、映像定义和映像版本，并基于映像版本创建 VM/VMSS？
 
- A. 若要使用映像版本部署 VM 和虚拟机规模集，我们建议使用 API 2018-04-01 或更高版本。 若要处理共享映像库、映像定义和映像版本，我们建议使用 API 版本 2018-06-01。 
+ A. 若要使用映像版本部署 VM 和虚拟机规模集，我们建议使用 API 2018-04-01 或更高版本。 若要处理共享映像库、映像定义和映像版本，我们建议使用 API 版本 2018-06-01。 区域冗余存储 (ZRS) 需要版本 2019年-03-01 或更高版本。

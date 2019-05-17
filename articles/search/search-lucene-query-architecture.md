@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: cb8e42400847ba9fb13568d05dffac86d9cec85f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024625"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797486"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
@@ -271,10 +271,10 @@ Spacious,||air-condition*+"Ocean view"
 |------|---------------|
 | air | 3
 | and | 4
-| beach | 1
+| beach | 第
 | conditioned | 3
 | comfortable | 3
-| distance | 1
+| distance | 第
 | island | 2
 | kauaʻi | 2
 | located | 2
@@ -286,7 +286,7 @@ Spacious,||air-condition*+"Ocean view"
 | rooms  | 1, 3
 | secluded | 4
 | shore | 2
-| spacious | 1
+| spacious | 第
 | the | 1, 2
 | 至 | 第
 | view | 1, 2, 3
@@ -392,8 +392,6 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 + 了解如何应用[语言特定的词法分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)。
 
 + [配置自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，针对特定的字段尽量简化处理或者进行专门处理。
-
-+ 在此演示网站并排[比较标准和英语分析器](https://alice.unearth.ai/)。 
 
 ## <a name="see-also"></a>另请参阅
 

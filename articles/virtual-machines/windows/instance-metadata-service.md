@@ -1,6 +1,6 @@
 ---
 title: Azure 实例元数据服务 | Microsoft 文档
-description: 一个 RESTful 接口，用于获取有关 Windows VM 计算、网络和即将发生的维护事件的信息。
+description: RESTful 接口，用于获取有关 Windows VM 的计算、 网络和即将发生的维护事件的信息。
 services: virtual-machines-windows
 documentationcenter: ''
 author: KumariSupriya
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f892ded46f7124237fd80fbe1e3f5e866c12f0d5
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 160d494eea4bd597725a4e7c21ad9b763502bee6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993066"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792094"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -358,11 +358,11 @@ scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
 customData | 请参阅[自定义数据](#custom-data) | 2019-02-01
 位置 | 正在运行 VM 的 Azure 区域 | 2017-04-02
-名称 | VM 的名称 | 2017-04-02
-offer | 为 VM 映像提供信息。 仅为从 Azure 映像库部署的映像显示此值。 | 2017-04-02
+name | VM 的名称 | 2017-04-02
+offer | 提供 VM 映像的信息并从 Azure 映像库部署时才存在的映像 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-计划 | 在 Azure 市场映像中 VM 的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，包含名称、产品和发布者 | 2018-04-02
+计划 | [计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)包含名称、 产品和发布服务器的 vm，如果其 Azure Marketplace 映像 | 2018-04-02
 platformUpdateDomain |  正在运行 VM 的[更新域](manage-availability.md) | 2017-04-02
 platformFaultDomain | 正在运行 VM 的[容错域](manage-availability.md) | 2017-04-02
 provider | VM 的提供商 | 2018-10-01
@@ -372,7 +372,7 @@ resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resourc
 sku | VM 映像的特定 SKU | 2017-04-02
 subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
-版本 | VM 映像的版本 | 2017-04-02
+version | VM 映像的版本 | 2017-04-02
 vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 vmSize | [VM 大小](sizes.md) | 2017-04-02
@@ -688,9 +688,17 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>自定义数据
-实例元数据服务提供的 VM 具有对其自定义数据的访问权限的功能。 二进制数据必须是小于 64 KB，并提供到 base64 编码窗体中的 VM。 有关如何创建具有自定义数据的 VM 的详细信息，请参阅[部署虚拟机使用 CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)。
+实例元数据服务提供的 VM 具有对其自定义数据的访问权限的功能。 二进制数据必须是小于 64 KB，并提供到 base64 编码窗体中的 VM。
+
+Azure 自定义数据插入到通过 REST Api、 PowerShell Cmdlet、 Azure 命令行接口 (CLI) 或 ARM 模板的 VM。
+
+Azure 命令行接口示例，请参阅[自定义数据和 Microsoft Azure 上的 Cloud-init](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)。
+
+ARM 模板示例，请参阅[部署虚拟机使用 CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)。
 
 自定义数据是可用于在 VM 中运行的所有进程。 建议客户不要将机密信息插入自定义数据。
+
+目前，自定义数据被保证可在启动 VM 的过程。 如果更新到如添加磁盘的 VM 或调整 VM 的大小，实例元数据服务将不会提供自定义数据。 提供自定义数据永久通过实例元数据服务目前正在进行中。
 
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>检索虚拟机中的自定义数据
 实例元数据服务提供到 base64 编码窗体中的 VM 的自定义数据。 下面的示例将解码的 base64 编码字符串。

@@ -1,5 +1,5 @@
 ---
-title: 使用知识存储-Azure 搜索中的投影
+title: 使用知识存储 （预览版）-Azure 搜索中的投影
 description: 保存并分析你从 AI 索引管道在搜索以外的方案中使用的丰富的数据
 manager: eladz
 author: vkurpad
@@ -10,18 +10,22 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.custom: seomay2019
-ms.openlocfilehash: 3ab5ffafd1b20eb0e3e453d3e730840baf9233e1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f1c7278909557dc92f86c5dfc1f190fddf33f607
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028360"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540810"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>使用 Azure 搜索中的知识存储中的投影
 
+> [!Note]
+> 知识存储处于预览版，不适用于生产环境中使用。 [REST API 版本 2019年-05-06-预览](search-api-preview.md)提供此功能。 没有目前.NET SDK 支持。
+>
+
 Azure 搜索来启用通过 AI 认知技能和编制索引的一部分的自定义技能的内容扩展。 正将结构添加到你的文档，并使搜索更高效。 在许多情况下，丰富的文档可用于搜索，例如，针对知识挖掘以外的方案。
 
-投影和组成部分[知识 store （预览版）](knowledge-store-concept-intro.md)，是可以保存到物理存储空间，知识挖掘目的的丰富文档的视图。 投影可以"投影"你的数据到符合您的需求，保持关系，这样 Power BI 等工具可读取任何额外操作数据的形状。 
+投影、 的一个组成部分[知识存储](knowledge-store-concept-intro.md)，是可以保存到物理存储空间，知识挖掘目的的丰富文档的视图。 投影可以"投影"你的数据到符合您的需求，保持关系，这样 Power BI 等工具可读取任何额外操作数据的形状。 
 
 使用 Azure 表存储在行和列中存储的数据或 Azure Blob 存储中存储的 JSON 对象，可以表格，投影。 它被丰富时，可以定义数据的多个数据投影。 当你想以不同的方式调整各个用例的相同数据时，这很有用。 
 

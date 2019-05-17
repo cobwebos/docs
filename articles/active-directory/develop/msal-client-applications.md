@@ -4,7 +4,7 @@ description: 了解有关公共客户端和机密客户端应用程序中 Micros
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f21aa62bae7599cf586ccf6f885ad9f58c148d1f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9e0300ec0ef4ee67b06acb85514ae898bbd0a830
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077135"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544295"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>公共客户端和机密客户端应用程序
 Microsoft 身份验证库 (MSAL) 定义了两种类型的客户端： 公共客户端和机密客户端。 通过使用授权服务器的安全地进行身份验证和维护其凭据机密性的客户端能力来区分两个客户端类型。  与此相反，Azure AD 身份验证库 (ADAL) 提供身份验证上下文 （即连接到 Azure AD） 的概念。

@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bf78cd9b70aa4a82ef96fdd529d3ee5b1641038c
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 3fa463cb7178fa5cc2108383047a7ca94ffb48a3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035359"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797376"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>在 Azure 搜索中监视资源使用情况和查询活动
 
@@ -77,13 +77,15 @@ Azure Monitor 日志和 Blob 存储都可用作一项免费共享服务，以便
 
 1. [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)（如果还没有）。 可以将它置于 Azure 搜索所在的资源组中，这样当你以后需要删除本练习中使用的所有资源时，就可以简化清理过程。
 
+   你的存储帐户必须位于与 Azure 搜索相同的区域。
+
 2. 打开搜索服务的“概览”页。 在左侧导航窗格中，向下滚动到“监视”，然后单击“启用监视”。
 
    ![启用监视](./media/search-monitor-usage/enable-monitoring.png "启用监视")
 
 3. 选择要导出的数据：日志和/或指标。 可以将其复制到存储帐户，将其发送到事件中心或将其导出到 Azure Monitor 日志。
 
-   若要存档到 Blob 存储，只有存储帐户必须存在。 容器和 Blob 会在导出日志数据时创建。
+   若要存档到 Blob 存储，只有存储帐户必须存在。 容器和 blob 时将创建按需导出日志数据。
 
    ![配置 Blob 存储存档](./media/search-monitor-usage/configure-blob-storage-archive.png "配置 Blob 存储存档")
 

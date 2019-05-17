@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50b22cefccf620d7b79202a5c432e2e6a4e3e3be
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405352"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550052"
 ---
 # <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
 
@@ -59,6 +59,9 @@ ms.locfileid: "60405352"
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
+
+> [!TIP]
+>  如果您正在传输多个语言版本 （例如，一个英语的音频轨迹和一个西班牙语的音频轨道） 的实时事件，可以实现此目的使用媒体 Excel 实时编码器配置为将实时源发送到传递的实时事件。
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>配置本地实时编码器设置
 

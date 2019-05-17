@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/01/2016
+ms.date: 05/16/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 5a7fbeafe74926c7d89ac76dc2964756b3582d61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a0dbe736b9727491f77b392c199400003abf8be
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254512"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779889"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>开发人员分析：语言、平台和集成
 这些项是我们听说过的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的实现，包括第三方的一些实现。
@@ -45,7 +45,7 @@ ms.locfileid: "60254512"
 * [Angular](https://github.com/MarkPieszak/angular-application-insights)
 * [Azure 应用服务](../../azure-monitor/app/azure-web-apps.md)
 * [Azure 云服务](../../azure-monitor/app/cloudservices.md)&#151;包括 Web 角色和辅助角色
-* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
 * [Docker](../../azure-monitor/app/docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
@@ -62,6 +62,7 @@ ms.locfileid: "60254512"
 * [任何其他项目](#projects)
 
 ## <a name="logging-frameworks"></a>记录框架
+* [ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)
 * [Log4Net、NLog 或 System.Diagnostics.Trace](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Java、Log4J 或 Logback](../../azure-monitor/app/java-trace-logs.md)
 * [语义式日志记录 (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) - 与[语义式日志记录应用程序块](https://msdn.microsoft.com/library/dn440729.aspx)集成
