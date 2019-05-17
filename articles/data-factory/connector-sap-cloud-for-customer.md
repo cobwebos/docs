@@ -83,7 +83,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SapCloudForCustomerResource** |是 |
-| 路径 | 指定 SAP C4C OData 实体的路径。 |是 |
+| path | 指定 SAP C4C OData 实体的路径。 |是 |
 
 **示例：**
 
