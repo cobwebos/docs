@@ -6,7 +6,7 @@ metadata:
   title: Azure SQL 数据库文档 - 教程和 API 参考
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
-  author: CarlRabeler
+  author: stevestein
   manager: craigg
   ms.service: sql-database
   ms.subservice: service
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 03/04/2019
-  ms.author: carlrab
+  ms.author: sstein
 abstract:
   description: Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 数据库引擎的通用关系数据库即服务 (DBaaS)。 SQL 数据库是高性能、可靠且安全的云数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
   aside:
@@ -39,10 +39,10 @@ sections:
               src: media/index/i_managed.svg
             title: 完全托管
           - href: /azure/sql-database/sql-database-service-tiers
-            html: <p>通过灵活的服务层（跨度从经济实惠的 $5/月的数据库到功能强大的 80 核数据库）定制符合你的需求的价格/性能比。</p>
+            html: <p>通过灵活的服务层级（跨度从经济实惠的 $5/月的数据库到功能强大的 80 核数据库）定制符合你的需求的价格/性能比。</p>
             image:
               src: media/index/i_perftier.svg
-            title: 价格/服务层
+            title: 价格/服务层级
           - href: /azure/sql-database/sql-database-scalability-index
             html: <p>轻松地对数据库进行纵向扩展、横向扩展或分片，具体取决于提高应用程序性能的需求。</p>
             image:

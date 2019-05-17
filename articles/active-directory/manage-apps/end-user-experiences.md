@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/09/2018
+ms.date: 05/03/2019
 ms.author: celested
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e00ecde5550b5ef4f1698fa879a039dee8aad12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3880a62d58b15ef07e524d69c38ba723ea56178f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441678"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65781070"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中应用程序的最终用户体验
 Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织中的最终用户部署应用程序：
@@ -53,7 +53,9 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 ## <a name="direct-sign-on-links"></a>直接登录链接
 Azure AD 还为支持基于密码单一登录、链接单一登录以及任何形式的联合单一登录的各个应用程序提供直接单一登录链接。
 
-这些链接是专门编写的 URL，用于使用户完成特定应用程序的 Azure AD 登录过程而无需用户从 Azure AD 访问面板或 Office 365 启动。 这些**用户访问 Url**可在 Azure Active Directory 在 Azure 门户中的可用的企业应用程序的属性下找到。
+这些链接是专门编写的 URL，用于使用户完成特定应用程序的 Azure AD 登录过程而无需用户从 Azure AD 访问面板或 Office 365 启动。 这些**用户访问 Url**下可用的企业应用程序的属性。 在 Azure 门户中，选择**Azure Active Directory** > **企业应用程序**。 选择应用程序，并选择**属性**。
+
+![Twitter 属性中的用户访问 URL 的示例](media/end-user-experiences/direct-sign-on-link.png)
 
 可以复制这些链接，并粘贴到任何想要提供选定应用程序登录链接的位置。 该位置可以是在电子邮件，或者任何已设置用户应用程序访问权限的自定义 Web 门户。 以下是 Twitter 的 Azure AD 直接单一登录 URL 示例：
 

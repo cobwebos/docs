@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 77c2cd9e0eac6717d91a73a6fc033dcaa2390444
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 976545f588895421e7c2be7e18b844d7994bc1ff
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145028"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779993"
 ---
 # <a name="status-monitor-v2"></a>状态监视器 v2
 
@@ -61,6 +61,11 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 - 如何验证启用成功？
 
    我们没有一个 cmdlet 以验证该支持成功。 我们建议使用[实时指标](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)以快速观察到是否你的应用程序向我们发送遥测数据。
+
+   此外可以使用[Analytics](../log-query/get-started-portal.md)若要列出当前发送遥测数据的所有云角色。
+   ```Kusto
+   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 

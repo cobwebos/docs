@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 286d8bbc01b5916e842c196aed5a49ef1c76bc3c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025201"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540697"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>升级到最新的 Azure 搜索服务 REST API 版本
 如果使用旧版[Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/)，本文有助于升级应用程序以使用最新公开发布的 API 版本 2019年-05-06。
@@ -72,7 +72,9 @@ ms.locfileid: "65025201"
 
 如果要从预览 API 版本进行升级，上述内容同样适用，但还必须注意某些预览功能将不可用版本 2019年-05-06 中：
 
-* ["更喜欢这项"查询](search-more-like-this.md)仍是仅限预览版的功能。
+* ["More like this"查询](search-more-like-this.md)
+* [CSV blob 编制索引](search-howto-index-csv-blobs.md)
+* [MongoDB API 对 Cosmos DB 索引器的支持](search-howto-index-cosmosdb.md)
 
 如果你的代码使用这些功能，您将不能升级到的 API 版本 2019年-05-06，而不删除它们的使用。
 

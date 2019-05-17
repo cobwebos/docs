@@ -3,18 +3,18 @@ title: 必应当地企业搜索 API v7 参考 | Microsoft Docs
 description: 介绍必应当地企业搜索 API 的编程元素。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: c3628670d2393d7b6921c60317719ccf8e72a451
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866362"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796749"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
 
@@ -49,7 +49,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ## <a name="headers"></a>标头  
 下面是请求和响应可能包含的标头。  
   
-|标头|描述|  
+|Header|描述|  
 |------------|-----------------|  
 |Accept|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](https://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
 |<a name="acceptlanguage" />Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 cc 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
@@ -119,7 +119,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名称|值|Type|  
 |----------|-----------|----------|  
-|名称|许可证的名称。|String|  
+|name|许可证的名称。|String|  
 |url|为用户提供许可证详细信息的网站的 URL。<br /><br /> 使用名称和 URL 创建超链接。|String|  
 
 
@@ -142,7 +142,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名称|值|Type|  
 |----------|-----------|----------|  
-|名称|发布者名称。|String|  
+|name|发布者名称。|String|  
 |url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
   
   
@@ -155,7 +155,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |_type|类型提示，可设置为以下值之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐厅</ul><li>|String|  
 |地址|实体所在位置的邮政地址。|PostalAddress|  
 |entityPresentationInfo|有关实体的其他信息，例如，可用于确定实体类型的提示。 例如，该实体是餐厅还是酒店。 `entityScenario` 字段设置为 ListItem。|EntityPresentationInfo|  
-|名称|实体的名称。|String|  
+|name|实体的名称。|String|  
 |telephone|实体的电话号码。|String|  
 |url|实体网站的 URL。<br /><br /> 将此 URL 与实体名称结合使用可以创建一个超链接，单击该链接会将用户转到实体网站。|String|  
 |webSearchUrl|此地点的必应搜索结果的 URL。|String| 

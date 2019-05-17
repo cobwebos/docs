@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f16909a9504b2868c1eecf849b9a1fd537cd6048
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76be371547bcb9daf0e10b62df62df5065cd6465
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60913542"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791467"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>如何将 QnA Maker REST API 与 Go 配合使用 
 <a name="HOLTop"></a>
@@ -48,7 +48,7 @@ ms.locfileid: "60913542"
 
 ## <a name="create-knowledge-base"></a>创建知识库
 
-以下代码使用 [Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) 方法创建新的知识库。
+以下代码使用 [Create](https://go.microsoft.com/fwlink/?linkid=2092179) 方法创建新的知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -128,7 +128,7 @@ var req string = `{
   "qnaList": [
     {
       "id": 0,
-      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600",
+      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://go.microsoft.com/fwlink/?linkid=2092179",
       "source": "Custom Editorial",
       "questions": [
         "How do I programmatically update my Knowledge Base?"
@@ -226,7 +226,7 @@ func main() {
 
 ## <a name="update-knowledge-base"></a>更新知识库
 
-以下代码使用 [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) 方法更新现有知识库。
+以下代码使用 [Update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) 方法更新现有知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -309,7 +309,7 @@ var req string = `{
     'qnaList': [
       {
         'id': 1,
-        'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle',
+        'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/azure-bot-service/templates/qnamaker/#navtitle',
         'source': 'Custom Editorial',
         'questions': [
           'How can I change the default message from QnA Maker?'
@@ -402,7 +402,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>获取请求状态
 
-可以调用 [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) 方法检查创建或更新知识库的请求的状态。 若要了解如何使用此方法，请参阅 [Create](#Create) 或 [Update](#Update) 方法示例代码。
+可以调用 [Operation](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails) 方法检查创建或更新知识库的请求的状态。 若要了解如何使用此方法，请参阅 [Create](#Create) 或 [Update](#Update) 方法示例代码。
 
 [返回页首](#HOLTop)
 
@@ -410,7 +410,7 @@ Press any key to continue.
 
 ## <a name="publish-knowledge-base"></a>发布知识库
 
-以下代码使用 [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 方法发布现有知识库。
+以下代码使用 [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 方法发布现有知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -500,7 +500,7 @@ func main() {
 
 ## <a name="replace-knowledge-base"></a>替换知识库
 
-以下代码使用 [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) 方法来替换指定知识库的内容。
+以下代码使用 [Replace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace) 方法来替换指定知识库的内容。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -565,7 +565,7 @@ var req string = `{
   'qnaList': [
     {
       'id': 0,
-      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600',
+      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update',
       'source': 'Custom Editorial',
       'questions': [
         'How do I programmatically update my Knowledge Base?'
@@ -608,7 +608,7 @@ func main() {
 
 ## <a name="download-the-contents-of-a-knowledge-base"></a>下载知识库的内容
 
-以下代码使用 [Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) 方法来下载指定知识库的内容。
+以下代码使用 [Download knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download) 方法来下载指定知识库的内容。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -685,7 +685,7 @@ func main() {
   "qnaDocuments": [
     {
       "id": 1,
-      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600",
+      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update",
       "source": "Custom Editorial",
       "questions": [
         "How do I programmatically update my Knowledge Base?"
@@ -818,7 +818,7 @@ func main() {
 
 ## <a name="get-information-about-a-knowledge-base"></a>获取有关知识库的信息
 
-以下代码使用 [Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 方法获取有关指定知识库的信息。
+以下代码使用 [Get knowledge base details](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/getdetails) 方法获取有关指定知识库的信息。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -910,7 +910,7 @@ func main() {
 
 ## <a name="get-all-knowledge-bases-for-a-user"></a>获取用户的所有知识库
 
-以下代码使用 [Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) 方法获取有关指定用户的所有知识库的信息。
+以下代码使用 [Get knowledge bases for user](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/listall) 方法获取有关指定用户的所有知识库的信息。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -1015,7 +1015,7 @@ Press any key to continue.
 
 ## <a name="delete-a-knowledge-base"></a>删除知识库
 
-以下代码使用 [Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) 方法来删除指定知识库。
+以下代码使用 [Delete knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete) 方法来删除指定知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -1101,7 +1101,7 @@ func main() {
 
 ## <a name="get-endpoint-keys"></a>获取终结点密钥
 
-以下代码使用 [Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) 方法获取当前终结点密钥。
+以下代码使用 [Get endpoint keys](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/getkeys) 方法获取当前终结点密钥。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -1179,7 +1179,7 @@ func main() {
 
 ## <a name="refresh-endpoint-keys"></a>刷新终结点密钥
 
-以下代码使用 [Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) 方法重新生成当前终结点密钥。
+以下代码使用 [Refresh endpoint keys](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/refreshkeys) 方法重新生成当前终结点密钥。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -1265,7 +1265,7 @@ func main() {
 
 ## <a name="get-word-alterations"></a>获取字变更
 
-以下代码使用 [Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) 方法获取当前字变更。
+以下代码使用 [Download alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/get) 方法获取当前字变更。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -1349,7 +1349,7 @@ func main() {
 
 ## <a name="replace-word-alterations"></a>替换字变更
 
-以下代码使用 [Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) 方法替换当前字变更。
+以下代码使用 [Replace alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) 方法替换当前字变更。
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -1445,7 +1445,7 @@ func main() {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)
 
 ## <a name="see-also"></a>另请参阅 
 

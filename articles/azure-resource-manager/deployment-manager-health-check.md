@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/19
 ms.author: jgao
-ms.openlocfilehash: 1006cc902cf4b6f763d86165a039a1fec5dc97a1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 41b16498fb79166b2c77c77a517ee5c443ebec75
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467089"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796260"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>介绍运行状况集成推出到 Azure 部署管理器 （公共预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "65467089"
 
 ## <a name="health-monitoring-providers"></a>运行状况监视提供程序
 
-为了使运行状况集成以尽可能简化，Microsoft 一直致力于一些前几个服务运行状况监视公司为你提供一个简单的复制/粘贴解决方案，可以将运行状况检查与你的部署相集成。 如果尚不存在使用运行状况监视器，这些开始是很好的解决方案：
+为了尽量简化运行状况集成，Microsoft 一直与某些顶级服务运行状况监视公司合作，以便为客户提供简单的复制/粘贴解决方案，用于将运行状况检查与部署相集成。 如果尚不存在使用运行状况监视器，这些开始是很好的解决方案：
 
 | ![azure 部署管理器运行状况监视提供程序 datadog](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![azure 部署管理器运行状况监视提供程序 site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![azure 部署管理器运行状况监视提供程序 wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
 |-----|------|------|
@@ -32,7 +32,7 @@ ms.locfileid: "65467089"
 
 ## <a name="how-service-health-is-determined"></a>如何确定服务运行状况
 
-[运行状况监视提供程序](#health-monitoring-providers)提供多种机制用于监视服务和警报的任何服务运行状况问题。 [Azure 监视器](/services/monitor/)是一个此类产品的一个示例。 可以使用 azure 监视器超出特定阈值时创建警报。 例如，内存和 CPU 使用率达到峰值超过预期的级别时将新的更新部署到你的服务。 当系统通知，您可以采取纠正措施。
+[运行状况监视提供程序](#health-monitoring-providers)提供多种机制用于监视服务和警报的任何服务运行状况问题。 [Azure 监视器](../azure-monitor/overview.md)是一个此类产品的一个示例。 可以使用 azure 监视器超出特定阈值时创建警报。 例如，内存和 CPU 使用率达到峰值超过预期的级别时将新的更新部署到你的服务。 当系统通知，您可以采取纠正措施。
 
 这些运行状况提供商通常提供 REST Api，以便可以以编程方式检查服务的监视器的状态。 REST Api 可以既返回简单的正常运行/不正常信号 （由 HTTP 响应代码），和/或接收信号的详细信息。
 
@@ -134,7 +134,7 @@ ms.locfileid: "65467089"
     ]
     ```
 
-若要演示一个示例，请参阅[教程：使用 Azure 部署管理器中的运行状况检查](./deployment-manager-health-check.md)。
+若要演示一个示例，请参阅[教程：在 Azure 部署管理器中使用运行状况检查](./deployment-manager-health-check.md)。
 
 ## <a name="phases-of-a-health-check"></a>运行状况检查的阶段
 

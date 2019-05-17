@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: adb30cc3af50b71cdc03e41d847bd4d824cffea6
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 6853637ba23e17f3a7ca5420bdd84425c81a67be
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236391"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791020"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
 本文讨论了两种类型的 Azure 时序见解预览版访问策略。
 
-## <a name="sign-in-to-tsi"></a>登录到 TSI
+## <a name="sign-in-to-time-series-insights"></a>登录到时序见解
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 查找时序见解环境。 在“搜索”框中输入 `Time Series`。 在搜索结果中选择“时序环境”。

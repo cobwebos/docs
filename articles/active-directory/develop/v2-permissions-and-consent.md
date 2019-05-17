@@ -3,8 +3,8 @@ title: Microsoft 标识平台范围、 权限和同意 |Microsoft Docs
 description: 中的 Microsoft 标识平台终结点，包括范围、 权限和许可的授权说明。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 8f98cbf0-a71d-4e34-babf-e644ad9ff423
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87103b1052b5d9168928193eacc78a935e68067f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 717607de6d9d193a7373637d0d0fcd879b54fed0
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62112071"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544866"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>权限和 Microsoft 标识平台终结点中的许可
 
@@ -85,7 +85,7 @@ OpenID Connect 的 Microsoft 标识平台实现具有少量定义完善的作用
 
 如果应用使用 [OpenID Connect](active-directory-v2-protocols.md) 执行登录，则必须请求 `openid` 范围。 `openid` 范围在工作帐户同意页上显示为“登录”权限，而在个人 Microsoft 帐户同意页上显示为“查看配置文件并使用 Microsoft 帐户连接到应用和服务”权限。 此权限使应用能够以 `sub` 声明的形式接收用户的唯一标识符。 它还会向应用提供对 UserInfo 终结点的访问权限。 `openid`作用域可用于在 Microsoft 标识平台令牌终结点获取 ID 令牌，可用于身份验证的应用。
 
-### <a name="email"></a>电子邮件
+### <a name="email"></a>email
 
 `email` 范围可与 `openid` 范围和任何其他范围一起使用。 它以 `email` 声明的形式向应用提供对用户主要电子邮件地址的访问权限。 `email`声明包含在令牌中，仅当电子邮件地址是与并非总是这种情况的用户帐户相关联。 如果使用 `email` 范围，则应用应准备好处理 `email` 声明不存在于令牌中的情况。
 

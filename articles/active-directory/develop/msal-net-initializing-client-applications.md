@@ -4,7 +4,7 @@ description: 了解有关初始化公共客户端和使用.NET (MSAL.NET) 的 Mi
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6197d472bdfaf03c9f99baa7691354e735cc91e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 2f22ff41e380a16af2aa45df9a61eefbf293ff83
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075800"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544317"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>初始化使用 MSAL.NET 的客户端应用程序
 本指南介绍了初始化公共客户端和使用.NET (MSAL.NET) 的 Microsoft 身份验证库的机密客户端应用程序。  若要了解有关客户端应用程序类型和应用程序配置选项的详细信息，请阅读[概述](msal-client-applications.md)。

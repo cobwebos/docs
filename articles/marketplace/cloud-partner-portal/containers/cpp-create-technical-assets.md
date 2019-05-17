@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: 32002f8b88a2fbeba29f15b3b9289ecf3d7560d0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c639389fdd0d4624152fcdfa4432be09a18a97bc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942736"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794342"
 ---
 # <a name="prepare-your-container-technical-assets"></a>准备容器技术资产
 
@@ -53,9 +53,10 @@ ms.locfileid: "64942736"
 
 ## <a name="create-the-container-image"></a>创建容器映像
 
-- 为容器虚拟机 (VM) 创建和配置虚拟硬盘 (VHD)。 此 VHD 包含容器的操作系统（Windows、Linux 或 Ubuntu）。 可能需要更多数据磁盘。
-- 配置 VM OS、VM 大小、要打开的端口，以及任何附加的数据磁盘。
-- 安装你的产品/服务所需的应用程序和其他软件。 例如：数据库软件、第三方软件或自定义应用程序。
+有关详细信息，请参阅以下主题：
+
+* [教程：创建容器映像部署到 Azure 容器实例](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [教程：生成和部署容器映像在云中使用 Azure 容器注册表任务](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: acc9f83923c8fdaae98cc55bc6baf62f56f2116b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8c564ef2de22555930f998ccd9918b252d35f17
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60798605"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541697"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 
@@ -89,6 +89,9 @@ ms.locfileid: "60798605"
 >
 > [策略表达式](api-management-policy-expressions.md)不能用于此策略的任何策略属性。
 
+> [!CAUTION]
+> 由于限制体系结构的分布式性质，速率限制是永远不会完全准确。 之间的差异配置且的实数允许请求不同取决于请求的量和速率、 后端延迟和其他因素。
+
 ### <a name="policy-statement"></a>策略语句
 
 ```xml
@@ -125,7 +128,7 @@ ms.locfileid: "60798605"
 
 | 名称           | 描述                                                                                           | 需要 | 默认 |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| 名称           | 要对其应用速率限制的 API 的名称。                                                | 是      | 不适用     |
+| name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 不适用     |
 | calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不适用     |
 | renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 不适用     |
 
@@ -145,6 +148,9 @@ ms.locfileid: "60798605"
 `rate-limit-by-key` 策略可以对调用速率进行限制，使指定时段的调用不超出指定的数目，避免单个密钥的 API 使用量暴增。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。 可以添加可选增量条件，指定在决定是否到达限制值时应该进行计数的请求。 触发此策略时，调用方会收到`429 Too Many Requests`响应状态代码。
 
 有关此策略的详细信息和示例，请参阅[使用 Azure API 管理进行高级请求限制](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)。
+
+> [!CAUTION]
+> 由于限制体系结构的分布式性质，速率限制是永远不会完全准确。 之间的差异配置且的实数允许请求不同取决于请求的量和速率、 后端延迟和其他因素。
 
 ### <a name="policy-statement"></a>策略语句
 
@@ -289,7 +295,7 @@ ms.locfileid: "60798605"
 
 | 名称           | 描述                                                                                               | 需要                                                         | 默认 |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| 名称           | 要向其应用配额的 API 或操作的名称。                                             | 是                                                              | 不适用     |
+| name           | 要向其应用配额的 API 或操作的名称。                                             | 是                                                              | 不适用     |
 | bandwidth      | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
 | calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
 | renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 不适用     |

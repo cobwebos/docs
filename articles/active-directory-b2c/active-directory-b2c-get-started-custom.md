@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e9ad91967b5423539f28089bbf2da22edcf8f9a6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6a66d45028b9fbf9c421b10ffb7863fcb9be5bec
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714966"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779849"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -33,7 +33,7 @@ ms.locfileid: "64714966"
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure AD B2C 租户的目录。 单击**目录和订阅筛选器**顶部的菜单，然后选择包含你的租户的目录中。 
 3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
-4. 在“概述”页上，选择“标识体验框架 - 预览”。
+4. 在“概述”页上选择“标识体验框架”。
 
 ### <a name="create-the-signing-key"></a>创建签名密钥
 

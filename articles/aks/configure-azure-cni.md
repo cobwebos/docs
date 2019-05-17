@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 61968265670c53ebc4187c983996caa8c94a4cde
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 9006590583f0ef52bbce716529534f8bce6f47c5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508007"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780372"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -58,13 +58,13 @@ AKS 群集 IP 地址计划包括虚拟网络、至少一个节点和 Pod 子网�
 
 ## <a name="maximum-pods-per-node"></a>每个节点的最大 Pod 数
 
-AKS 群集中每个节点的最大 Pod 数为 110。 每个节点的默认最大 Pod 数因 *kubenet* 和 *Azure CNI* 网络以及群集部署方法而异。
+AKS 群集中每个节点的 pod 数最大为 250 个字符。 每个节点的默认最大 Pod 数因 *kubenet* 和 *Azure CNI* 网络以及群集部署方法而异。
 
 | 部署方法 | Kubenet 默认值 | Azure CNI 默认值 | 可在部署时配置 |
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | 是 （最多 250 个） |
 | 资源管理器模板 | 110 | 30 | 是 （最多 250 个） |
-| 门户 | 110 | 30 | “否” |
+| 门户 | 110 | 30 | 否 |
 
 ### <a name="configure-maximum---new-clusters"></a>配置最大值 - 新群集
 

@@ -12,18 +12,18 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 95d1681c9ff9981990d873a58a2d01833d690e0f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 61f6c25031c4906e65c2f75a7679600741e8311a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65411981"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791379"
 ---
 # <a name="delete-subnet-after-deleting-azure-sql-database-managed-instance"></a>删除子网后删除 Azure SQL 数据库托管实例
 
 本文提供有关如何删除最后一个 Azure SQL 数据库托管实例驻留在其中后，手动删除子网的指导原则。
 
-[虚拟群集](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)，具有包含已删除托管的实例将保留 12 个小时从实例删除。 虚拟群集保持活动状态，通过设计，以启用更快地创建托管实例位于同一子网。 在此期间，无法删除与虚拟群集相关联的子网。
+[虚拟群集](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)，具有包含已删除托管的实例将保留 12 个小时从实例删除。 虚拟群集保持活动状态，通过设计，以启用更快地创建托管实例位于同一子网。 保留为空的虚拟群集是免费。 在此期间，无法删除与虚拟群集相关联的子网。
 
 通过手动删除虚拟群集的可能是空的虚拟群集使用的子网的即时发布。 可以通过 Azure 门户或虚拟群集 API 实现的虚拟群集删除。
 

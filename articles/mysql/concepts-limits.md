@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/6/2018
-ms.openlocfilehash: 55106f855d1f2cab82b751b306a3a289bd740e9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9088e9ad98633b46dc3a7f0ee9002a0dd9fc5a55
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525417"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551881"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -21,7 +21,7 @@ ms.locfileid: "60525417"
 
 |**定价层**|**vCore(s)**| 最大连接数|
 |---|---|---|
-|基本| 1| 50|
+|基本| 第| 50|
 |基本| 2| 100|
 |常规用途| 2| 300|
 |常规用途| 4| 625|
@@ -81,9 +81,12 @@ ms.locfileid: "60525417"
 ### <a name="vnet-service-endpoints"></a>VNet 服务终结点
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
+### <a name="storage-size"></a>存储大小
+- 请参阅[定价层](concepts-pricing-tiers.md)为每个定价层的存储大小限制。
+
 ## <a name="current-known-issues"></a>当前已知的问题
 - 建立连接后，MySQL 服务器实例显示错误的服务器版本。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。
 
 ## <a name="next-steps"></a>后续步骤
-- [每个服务层中有哪些可用资源](concepts-pricing-tiers.md)
+- [每个服务层级中有哪些可用资源](concepts-pricing-tiers.md)
 - [支持的 MySQL 数据库版本](concepts-supported-versions.md)

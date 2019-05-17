@@ -7,17 +7,17 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 4406789e3f9a10ff814aca0c2fd114de8a2abb69
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572669"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794392"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
@@ -30,7 +30,7 @@ ms.locfileid: "64572669"
 
 ## <a name="dynamic-scalability"></a>动态可伸缩性
 
-可以在小型单一数据库中构建你的第一个应用，每个月只需在低性价比服务层级中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将[服务层级更改为](sql-database-single-database-scale.md)较高性价比服务层级。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
+可以在无服务器 （预览版） 计算层中的低成本或预配的计算层中的小型计算大小小型的单一数据库上生成第一个应用。 您更改[计算或服务层](sql-database-single-database-scale.md)手动或以编程方式在任何时间，以满足你的解决方案的需求。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 ## <a name="single-databases-and-elastic-pools"></a>单一数据库和弹性池
 

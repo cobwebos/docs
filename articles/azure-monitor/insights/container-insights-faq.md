@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 70712b68cc26a461f702850dbf6064b65b4ff130
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: afa332b40884a79b5114b3b8093cd27108c39984
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494656"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780012"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>用于容器的 Azure Monitor 常见问题解答
 
@@ -76,6 +76,12 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>为什么不能升级群集载入后？
 
 如果为 AKS 群集的容器启用 Azure Monitor 后，删除 Log Analytics 工作区群集正将其数据发送到，当尝试将群集升级，则将失败。 若要解决此问题，您将需要禁用监视，然后重新启用它引用在你的订阅不同的有效工作区。 当你尝试再次执行群集升级时，它应处理并成功完成。  
+
+## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>哪些端口和域需要加入允许列表打开/代理？
+- *.ods.opinsights.azure.com   443
+- *.oms.opinsights.azure.com   443
+- *.blob.core.windows.net      443
+- dc.services.visualstudio.com 443
 
 ## <a name="next-steps"></a>后续步骤
 

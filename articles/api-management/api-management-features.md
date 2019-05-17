@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
-ms.openlocfilehash: eae36aa6e60e3da03c59952a1d9e035e6a773d2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d881c8de7ecc32be0ca0cc2c5a82e0d2d51a7054
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531077"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780321"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理层的基于功能的比较
 
@@ -34,15 +34,14 @@ ms.locfileid: "60531077"
 | 内置缓存                                                                               | 否                            | 是            | 是            | 是            | 是            |
 | 内置分析                                                                           | 否                            | 是            | 是            | 是            | 是            |
 | [SSL 设置](api-management-howto-manage-protocols-ciphers.md)                             | 否                            | 是            | 是            | 是            | 是            |
-| [外部缓存](https://aka.ms/apimbyoc)                                                    | 是                           | 否<sup>3</sup> | 否<sup>3</sup> | 否<sup>3</sup> | 否<sup>3</sup> |
-| [客户端证书身份验证](api-management-howto-mutual-certificates-for-clients.md) | 否<sup>4</sup>                | 是            | 是            | 是            | 是            |
+| [外部缓存](https://aka.ms/apimbyoc)                                                    | 是                           | 是            | 是            | 是            | 是            |
+| [客户端证书身份验证](api-management-howto-mutual-certificates-for-clients.md) | 否<sup>3</sup>                | 是            | 是            | 是            | 是            |
 | [备份和还原](api-management-howto-disaster-recovery-backup-restore.md)               | 否                            | 是            | 是            | 是            | 是            |
 | [基于 Git 的管理](api-management-configuration-repository-git.md)                        | 否                            | 是            | 是            | 是            | 是            |
 | 直接管理 API                                                                        | 否                            | 是            | 是            | 是            | 是            |
-| Azure Monitor 日志和指标                                                               | 否<sup>5</sup>                | 是            | 是            | 是            | 是            |
+| Azure Monitor 日志和指标                                                               | 否<sup>4</sup>                | 是            | 是            | 是            | 是            |
 
-<sup>1</sup> 允许使用 Azure AD（和 Azure AD B2C）作为标识提供者，以用于开发人员门户上的用户登录。<br/>
+<sup>1</sup>可启用 Azure ad （和 Azure AD B2C） 作为标识提供程序的用户登录过程中开发人员门户。<br/>
 <sup>2</sup> 包括相关功能，例如用户、组、问题、应用程序和电子邮件模板以及通知。<br/>
-<sup>3</sup> 此层即将支持外部缓存。<br/>
-<sup>4</sup> 在正式发布前，会向消耗层中添加客户端证书身份验证。<br/>
-<sup>5</sup> 将向消耗层中添加完整的 Azure Monitor 支持。
+<sup>3</sup>客户端证书身份验证将被添加到在正式发布前的消耗层。<br/>
+<sup>4</sup>完整的 Azure Monitor 支持将添加到消耗级别。

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121786"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790904"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加语言分析器
 
@@ -45,9 +45,6 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 + Lucene 的英语分析器扩展了标准分析器。 它从字词中删除所有格（尾部的 's）、根据 Porter 词干分解算法应用词干分解，并删除英语非索引字。  
 
 + Microsoft 的英语分析器执行词形还原，而不是词干分解。 这意味着它可以更好地处理曲折和不规则字词形式，从而产生相关度更高的搜索结果。 
-
-  > [!Tip]
-  > [搜索分析器演示版](https://alice.unearth.ai/)可对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器生成的结果进行并排比较。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中。
 
 ## <a name="configuring-analyzers"></a>配置分析器
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9eedf0be6089764c8111ae81d558f7e65af0a66d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 010880304c5011bd5a767650aa0ae6b6103bdde2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021788"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540866"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>如何在扩充管道中创建技能集
 
@@ -237,7 +237,7 @@ Content-Type: application/json
 
 ## <a name="add-structure"></a>添加结构
 
-技能集基于非结构化数据生成结构化信息。 下面是一个示例：
+技能集基于非结构化数据生成结构化信息。 请看下面的示例：
 
 *"In its fourth quarter, Microsoft logged $1.1 billion in revenue from LinkedIn, the social networking company it bought last year.The acquisition enables Microsoft to combine LinkedIn capabilities with its CRM and Office capabilities.Stockholders are excited with the progress so far."*
 

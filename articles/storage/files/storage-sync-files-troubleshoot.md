@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2893960c3351b1f8a5caf0c69ca961851528007d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510840"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555944"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -275,7 +275,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x800704c7 |
 | **HRESULT（十进制）** | -2147023673 | 
 | **错误字符串** | ERROR_CANCELLED |
-| **所需的补救措施** | “否” |
+| **所需的补救措施** | 否 |
 
 同步会话可能出于各种原因失败，包括服务器正在重启或更新、VSS 快照，等等。尽管此错误看起来需要保持跟进，但可以放心地将其忽略，除非它持续了好几个小时。
 
@@ -286,7 +286,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80072ee7 |
 | **HRESULT（十进制）** | -2147012889 | 
 | **错误字符串** | WININET_E_NAME_NOT_RESOLVED |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -297,9 +297,20 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8004c |
 | **HRESULT（十进制）** | -2134376372 |
 | **错误字符串** | ECS_E_USER_REQUEST_THROTTLED |
-| **所需的补救措施** | “否” |
+| **所需的补救措施** | 否 |
 
 无需采取措施；服务器会重试。 如果此错误持续了几个小时，请创建支持请求。
+
+<a id="-2134364043"></a>**同步被阻止，直到更改检测完成还原后**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83075 |
+| **HRESULT（十进制）** | -2134364043 |
+| **错误字符串** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
+| **所需的补救措施** | 否 |
+
+不需要执行任何操作。 文件共享时使用 Azure 备份还原 （云终结点），Azure 文件共享上的更改检测完成之前阻止同步。 更改检测运行它立即还原操作已完成，持续时间基于文件共享中文件的数量。
 
 <a id="-2134364065"></a>**同步无法访问云终结点中指定的 Azure 文件共享。**  
 
@@ -308,7 +319,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8305f |
 | **HRESULT（十进制）** | -2134364065 |
 | **错误字符串** | ECS_E_CANNOT_ACCESS_EXTERNAL_STORAGE_ACCOUNT |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 之所以发生此错误，是因为 Azure 文件同步代理无法访问 Azure 文件共享。无法访问的可能原因是 Azure 文件共享或托管它的存储帐户不再存在。 可以执行以下步骤来排查此错误：
 
@@ -324,7 +335,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80C83060 |
 | **HRESULT（十进制）** | -2134364064 |
 | **错误字符串** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 1. 检查是否可从服务器解析存储 DNS 名称。
 
@@ -341,7 +352,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x8e5e044e |
 | **HRESULT（十进制）** | -1906441138 |
 | **错误字符串** | JET_errWriteConflict |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 如果 Azure 文件同步使用的内部数据库出现问题，则会发生此错误。出现此问题时，请创建支持请求，到时我们将与你取得联系，并帮助解决此问题。
 
@@ -352,7 +363,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80C8306B |
 | **HRESULT（十进制）** | -2134364053 |
 | **错误字符串** | ECS_E_AGENT_VERSION_BLOCKED |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 如果服务器上安装的 Azure 文件同步代理版本不受支持，则会出现此错误。 若要解决此问题，请[升级]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths)到[受支持的代理版本]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。
 
@@ -363,7 +374,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8603e |
 | **HRESULT（十进制）** | -2134351810 |
 | **错误字符串** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 达到 Azure 文件共享存储限制时，将发生此错误。如果对 Azure 文件共享应用了配额，或者用量超过了 Azure 文件共享的限制，则可能会发生这种情况。 有关详细信息，请参阅 [Azure 文件共享的当前限制](storage-files-scale-targets.md)。
 
@@ -389,7 +400,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c86030 |
 | **HRESULT（十进制）** | -2134351824 |
 | **错误字符串** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 当 Azure 文件共享不可访问时，将发生此错误。 故障排除：
 
@@ -405,7 +416,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80C83076 |
 | **HRESULT（十进制）** | -2134364042 |
 | **错误字符串** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 当 Azure 订阅暂停时，将发生此错误。 还原 Azure 订阅后，会重新启用同步。 有关详细信息，请参阅[为何禁用我的 Azure 订阅？如何重新激活它？](../../billing/billing-subscription-become-disable.md)。
 
@@ -416,7 +427,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8306c |
 | **HRESULT（十进制）** | -2134364052 |
 | **错误字符串** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 如果由于设置了存储帐户防火墙或者存储帐户属于虚拟网络而导致 Azure 文件共享不可访问，则会发生此错误。 Azure 文件同步尚不支持此功能。 故障排除：
 
@@ -432,7 +443,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c80219 |
 | **HRESULT（十进制）** | -2134375911 |
 | **错误字符串** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **所需的补救措施** | “否” |
+| **所需的补救措施** | 否 |
 
 此错误通常会自行解决，其原因包括：
 
@@ -448,7 +459,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x800b0109 |
 | **HRESULT（十进制）** | -2146762487 |
 | **错误字符串** | CERT_E_UNTRUSTEDROOT |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 如果组织使用 SSL 终止代理，或恶意实体正在截获服务器与 Azure 文件同步服务之间的通信，则会发生此错误。 如果确定这是预期行为（因为组织使用 SSL 终止代理），请跳过证书验证并改用注册表覆盖。
 
@@ -473,7 +484,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80072ee2 |
 | **HRESULT（十进制）** | -2147012894 |
 | **错误字符串** | WININET_E_TIMEOUT |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -484,7 +495,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c80300 |
 | **HRESULT（十进制）** | -2134375680 |
 | **错误字符串** | ECS_E_SERVER_CREDENTIAL_NEEDED |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 此错误可由以下原因引起：
 
@@ -511,12 +522,12 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x8e5e0211 |
 | **HRESULT（十进制）** | -1906441711 |
 | **错误字符串** | JET_errLogDiskFull |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 | | |
 | **HRESULT** | 0x80c8031a |
 | **HRESULT（十进制）** | -2134375654 |
 | **错误字符串** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 此错误的原因是卷已填满。 此错误的常见原因是服务器终结点外部的文件用尽了卷上的空间。 请通过添加更多的服务器终结点、将文件移到其他卷，或增大服务器终结点所在卷的大小，来释放卷上的空间。
 
@@ -527,7 +538,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8300f |
 | **HRESULT（十进制）** | -2134364145 |
 | **错误字符串** | ECS_E_REPLICA_NOT_READY |
-| **所需的补救措施** | “否” |
+| **所需的补救措施** | 否 |
 
 此错误的原因是 Azure 文件共享上发生直接更改，并且更改检测正在进行。 更改检测完成后，将开始同步。
 
@@ -540,17 +551,17 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8023b |
 | **HRESULT（十进制）** | -2134364145 |
 | **错误字符串** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 | | |
 | **HRESULT** | 0x80c8021c |
 | **HRESULT（十进制）** | -2134375908 |
 | **错误字符串** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 | | |
 | **HRESULT** | 0x80c80253 |
 | **HRESULT（十进制）** | -2134375853 |
 | **错误字符串** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 如果发生许多的文件同步错误，同步会话可能无法开始。 <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
@@ -564,7 +575,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c80019 |
 | **HRESULT（十进制）** | -2134376423 |
 | **错误字符串** | ECS_E_SYNC_INVALID_PATH |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 确保路径存在、位于本地 NTFS 卷上，且不是重新分析点或现有服务器终结点。
 
@@ -575,7 +586,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80C80277 |
 | **HRESULT（十进制）** | -2134375817 |
 | **错误字符串** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
-| **所需的补救措施** | “是” |
+| **所需的补救措施** | 是 |
 
 发生此错误的原因是加载的云分层筛选器驱动程序 (StorageSync.sys) 版本与 Storage Sync Agent (FileSyncSvc) 服务不兼容。 如果已升级 Azure 文件同步代理，请重启服务器以完成安装。 如果错误继续发生，请卸载代理，重启服务器并重新安装 Azure 文件同步代理。
 
@@ -586,7 +597,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8004b |
 | **HRESULT（十进制）** | -2134376373 |
 | **错误字符串** | ECS_E_SERVICE_UNAVAILABLE |
-| **所需的补救措施** | “否” |
+| **所需的补救措施** | 否 |
 
 此错误的原因是 Azure 文件同步服务不可用。 当 Azure 文件同步服务再次可用时，此错误将自行解决。
 
@@ -597,7 +608,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8020e |
 | **HRESULT（十进制）** | -2134375922 |
 | **错误字符串** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **所需的补救措施** | “否” |
+| **所需的补救措施** | 否 |
 
 此错误的原因是同步数据库出现内部问题。 当 Azure 文件同步重试同步时，此错误将自行解决。 如果此错误持续了较长时间，请创建支持请求，到时我们将与你取得联系，并帮助解决此问题。
 

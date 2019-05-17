@@ -3,18 +3,18 @@ title: 发送和使用必应当地企业搜索 API 查询和响应 | Microsoft D
 titleSuffix: Azure Cognitive Services
 description: 在本文中了解如何通过必应当地企业搜索 API 发送和使用搜索查询。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh; v-gedod
-ms.openlocfilehash: 79219de775be96f35bd11ac85640efcc4a04a93b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45f7adab684b7b6097328a42abb60c8d58c1acc2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582427"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796779"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>发送和使用必应当地企业搜索 API 查询和响应
 
@@ -58,7 +58,7 @@ API 返回的 JSON 结果包含以下属性：
 * entityPresentationInfo
 * 地区
 * id
-* 名称
+* name
 * routeablePoint
 * telephone
 * url

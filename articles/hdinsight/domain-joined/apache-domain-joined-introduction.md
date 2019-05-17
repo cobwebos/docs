@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: deff2aa3cd475a3ed37adc4408a133ed1fd0757e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8142caf867ffe811726677fb1dcbadc7d1458251
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716659"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793550"
 ---
-# <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>使用企业安全性套餐实现 Apache Hadoop 安全性简介
+# <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的企业安全性套餐
 
 以前，Azure HDInsight 仅支持一个用户：本地管理员。这种情况对于应用程序团队或部门而言比较有利。 随着基于 Apache Hadoop 的工作负荷在企业部门中越来越普及，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制等企业级功能需求也变得日益重要。 
 

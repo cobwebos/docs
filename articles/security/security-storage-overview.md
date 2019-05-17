@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 262ccc311b2b7ec634183eb4f914902048ba2c3b
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 74c24e05d974c4b3bb15a242185b645231f74580
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872043"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792787"
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
 
@@ -51,7 +51,7 @@ SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所
 了解更多：
 
 * [了解 SAS 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
-* [创建 SAS 并将其用于 Blob 存储](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)
+* [创建 SAS 并将其用于 Blob 存储](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
 
 ## <a name="encryption-in-transit"></a>传输中加密
 

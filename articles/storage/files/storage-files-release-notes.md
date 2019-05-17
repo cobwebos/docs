@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 4/22/2019
+ms.date: 5/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 9a8fe1c083ab4e241cf236fd6f731fba1aa67f87
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 421f255353a3cf0b6cc000677c91d0f8c84cbc73
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724229"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540606"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -23,9 +23,10 @@ ms.locfileid: "64724229"
 ## <a name="supported-versions"></a>支持的版本
 以下版本是 Azure 文件同步代理支持的：
 
-| 里程碑 | 代理版本号 | 发行日期 | 状态 |
+| 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V6 发布版- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019 年 4 月 21日日 | 支持（建议的版本） |
+| 2019 年 5 更新汇总- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日， | 支持（建议的版本） |
+| V6 发布版- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019 年 4 月 21日日 | 支持 |
 | 2019 年 4 月更新汇总- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019 年 4 月 4日日 | 支持 |
 | 2019 年 3 月更新汇总- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019 年 3 月 7日日 | 支持 |
 | V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支持 |
@@ -40,6 +41,12 @@ ms.locfileid: "64724229"
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-6100"></a>代理版本 6.1.0.0
+以下发行说明仅适用于发布 2019 年 5 月 6 日，Azure 文件同步代理的版本 6.1.0.0。 这些说明是版本 6.0.0.0 列出的发行说明。
+
+此版本修复的问题列表：  
+- Windows Admin Center 无法显示有 Azure 文件同步代理版本 6.0 安装的服务器上的代理版本和服务器终结点配置。
 
 ## <a name="agent-version-6000"></a>代理版本 6.0.0.0
 以下发行说明仅适用于 （发布 2019 年 4 月 22 日） 的 Azure 文件同步代理的版本为 6.0.0.0。

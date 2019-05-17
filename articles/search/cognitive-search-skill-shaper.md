@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5267f81c9886e2d1d8d62c134156aedb3b2b8763
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023729"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540832"
 ---
 #   <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
@@ -29,7 +29,7 @@ API 版本确定调整您的深度可以实现。
 | 2019-05-06-preview REST API 版本 （不支持.NET SDK） | 复杂对象时，跨多个级别深，合一**整形程序**技能定义。 |
 | 2019-05-06 * * （已公开发布），2017年-11-11-预览版| 复杂对象，一个层次深度。 多级别形状需要将几个整形程序步骤链接在一起。|
 
-在预览**整形程序**中所示的技能[方案 3](#nested-complex-types)，添加一个新的可选*sourceContext*到输入的属性。 *源*并*sourceContext*属性是互相排斥。 如果输入是在该技能的上下文，只需使用*源*。 如果输入是在*不同*比技能上下文，使用上下文*sourceContext*。 *SourceContext*要求与作为源进行寻址的特定元素定义的嵌套的输入。 
+提供的`api-version=2019-05-06-Preview`，则**整形程序**中所示的技能[方案 3](#nested-complex-types)添加一个新的可选*sourceContext*到输入的属性。 *源*并*sourceContext*属性是互相排斥。 如果输入是在该技能的上下文，只需使用*源*。 如果输入是在*不同*比技能上下文，使用上下文*sourceContext*。 *SourceContext*要求与作为源进行寻址的特定元素定义的嵌套的输入。 
 
 在响应中，对于所有的 API 版本，输出名称是始终为"output"。 在内部，管道可以映射不同的名称，例如"analyzedText"，如下面的示例中所示，但**整形程序**技能本身在响应中返回"output"。 如果正在调试大量文档并发现存在命名差异，或者要生成自定义技能并自行构建响应，这一点非常重要。
 
@@ -196,7 +196,7 @@ Microsoft.Skills.Util.ShaperSkill
 ## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>方案 3： 输入的合并从嵌套的上下文
 
 > [!NOTE]
-> 嵌套的 api 版本中支持的结构 = 2019年-05-06-预览可在[知识存储](knowledge-store-concept-intro.md)或在 Azure 搜索索引中。
+> 嵌套的结构中支持[REST API 版本 2019年-05-06-Preview](search-api-preview.md)可在[知识存储](knowledge-store-concept-intro.md)或在 Azure 搜索索引中。
 
 假设您有标题、 章节和书籍的内容和内容已运行实体识别和密钥的短语，并且现在需要聚合结果从不同的技能到一个形状与章节名称、 实体和关键短语。
 
@@ -265,4 +265,4 @@ Microsoft.Skills.Util.ShaperSkill
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [如何使用复杂类型](search-howto-complex-data-types.md)
 + [知识应用商店概述](knowledge-store-concept-intro.md)
-+ [如何开始使用知识 Store](knowledge-store-howto.md)
++ [如何开始使用知识 store](knowledge-store-howto.md)

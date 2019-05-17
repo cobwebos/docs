@@ -11,18 +11,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 87620cb0c7aafb78b2c8fe610f42ad092313d305
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c025a4c6e2a5a06e12e25ce226a327b099b95306
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153482"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550965"
 ---
 # <a name="live-events-and-live-outputs"></a>实时事件和实时输出
 
-使用 Azure 媒体服务可将实时事件传送到 Azure 云中的客户。 若要配置媒体服务 v3 中的实时流式处理事件，您需要了解本文中讨论的概念。 <br/>在页面的右侧列出的部分列表。
+使用 Azure 媒体服务可将实时事件传送到 Azure 云中的客户。 若要配置媒体服务 v3 中的实时流式处理事件，您需要了解本文中讨论的概念。
+
+> [!TIP]
+> 从媒体服务 v2 Api 迁移的客户**Live 事件**实体替换**通道**v2 中并**Live 输出**替换**程序**.
+
 
 ## <a name="live-events"></a>实时事件
 
@@ -144,7 +148,7 @@ ms.locfileid: "65153482"
 
 有关详细信息，请参阅[使用云 DVR](live-event-cloud-dvr.md)。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、 提供反馈，获取更新
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 

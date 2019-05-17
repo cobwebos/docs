@@ -1,6 +1,6 @@
 ---
-title: 调用 web Api-获取令牌的应用的移动应用程序 |Microsoft 标识平台
-description: 了解如何构建一个移动应用，调用 web Api （获取应用令牌）
+title: 移动应用程序调用 web Api 的应用程序获取令牌 |Microsoft 标识平台
+description: 了解如何构建一个移动应用，调用 web Api （应用程序获取令牌）
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -15,43 +15,43 @@ ms.date: 05/07/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6933bfbbff574495655ef9065a786fa313b02bd6
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 88c9215ed221e24099eeb219a4db599a1955920a
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075170"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550345"
 ---
-# <a name="mobile-app-that-calls-web-apis---acquire-a-token"></a>调用 web Api-移动应用获取令牌
+# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>调用 web Api-移动应用获取令牌
 
-你可以开始调用受保护之前的 web Api，您的应用程序将需要访问令牌。 本节将指导你通过使用 Microsoft 身份验证库 (MSAL) 获取令牌的过程。
+你可以开始调用受保护之前的 web Api，您的应用程序将需要访问令牌。 本文将指导完成使用 Microsoft 身份验证库 (MSAL) 获取令牌的过程。
 
 ## <a name="scopes-to-request"></a>作用域，以请求
 
-请求令牌，将始终需要作用域。 作用域确定您的应用程序可以访问哪些数据。  
+请求的令牌，需要定义作用域。 作用域确定您的应用程序可以访问哪些数据。  
 
-最简单方法是将所需的 web API 的组合`App ID URI`与作用域`.default`。 这将告知 Microsoft 标识您的应用程序需要在门户中设置的所有作用域。
+最简单的方法是组合所需的 web API 的`App ID URI`与作用域`.default`。 执行此操作会告知 Microsoft 标识平台应用所需的门户中的所有作用域设置。
 
-Android
+#### <a name="android"></a>Android
 ```Java
 String[] SCOPES = {"https://graph.microsoft.com/.default"};
 ```
 
-iOS
+#### <a name="ios"></a>iOS
 ```swift
 let scopes: [String] = ["https://graph.microsoft.com/.default"]
 ```
 
-Xamarin
+#### <a name="xamarin"></a>Xamarin
 ```CSharp 
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
-## <a name="acquiring-tokens"></a>获取令牌
+## <a name="get-tokens"></a>获取令牌
 
-### <a name="via-msal"></a>via MSAL
+### <a name="via-msal"></a>Via MSAL
 
-MSAL 允许应用程序获取令牌以无提示方式和以交互方式。 只需调用这些方法和 MSAL 返回请求的范围的访问令牌。 正确模式是执行无提示请求和回退到交互式请求。
+MSAL 允许应用程序获取令牌以无提示方式和以交互方式。 只需调用这些方法和 MSAL 返回请求的作用域的访问令牌。 正确模式是执行无提示请求和故障回复到交互式请求。
 
 #### <a name="android"></a>Android
 
@@ -61,32 +61,32 @@ PublicClientApplication sampleApp = new PublicClientApplication(
                     this.getApplicationContext(),
                     R.raw.auth_config);
 
-// Check if there are any accounts we can sign in silently
-// Result is in our silent callback (success or error)
+// Check if there are any accounts we can sign in silently.
+// Result is in the silent callback (success or error).
 sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
     @Override
     public void onAccountsLoaded(final List<IAccount> accounts) {
 
         if (accounts.isEmpty() && accounts.size() == 1) {
-            // TODO: Create a silent callback to catch successful or failed request
+            // TODO: Create a silent callback to catch successful or failed request.
             sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
         } else {
-            /* No accounts or >1 account */
+            /* No accounts or > 1 account. */
         }
     }
 });    
 
 [...]
 
-// No accounts found, interactively request a token 
-// TODO: Create an interactive callback to catch successful or failed request
+// No accounts found. Interactively request a token.
+// TODO: Create an interactive callback to catch successful or failed request.
 sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());        
 ```
 
 #### <a name="ios"></a>iOS
 
 ```swift
-// Initialize our app 
+// Initialize the app.
 guard let authorityURL = URL(string: kAuthority) else {
     self.loggingText.text = "Unable to create authority URL"
     return
@@ -95,14 +95,14 @@ let authority = try MSALAADAuthority(url: authorityURL)
 let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 
-// Get tokens
+// Get tokens.
 let parameters = MSALSilentTokenParameters(scopes: kScopes, account: account)
 applicationContext.acquireTokenSilent(with: parameters) { (result, error) in
     if let error = error {
         let nsError = error as NSError
 
-        // interactionRequired means we need to ask the user to sign-in. This usually happens
-        // when the user's Refresh Token is expired or if the user has changed their password
+        // interactionRequired means you need to ask the user to sign in. This usually happens
+        // when the user's refresh token is expired or when the user has changed the password,
         // among other possible reasons.
         if (nsError.domain == MSALErrorDomain) {
             if (nsError.code == MSALError.interactionRequired.rawValue) {    
@@ -136,7 +136,7 @@ applicationContext.acquireTokenSilent(with: parameters) { (result, error) in
         return
     }
 
-    // Token is ready via silent acquisition 
+    // Token is ready via silent acquisition.
     self.accessToken = result.accessToken
 }
 ```
@@ -160,13 +160,13 @@ catch(MsalUiRequiredException e)
 }
 ```
 
-### <a name="via-protocol"></a>通过协议
+### <a name="via-the-protocol"></a>通过协议
 
-我们不建议将直接针对协议。 您的应用程序都支持多个单一登录 (SSO) 方案，将不能支持所有设备管理和条件性访问方案。
+我们不建议直接使用协议。 如果这样做，应用程序不会支持某些单一登录 (SSO)、 设备管理和条件性访问方案。
 
-当适用于移动应用使用协议获取令牌，请将需要发出 2 请求： 获取授权代码和交换的令牌。 
+当使用协议的移动应用程序获取令牌时，需要进行两个请求： 获取授权代码和交换的令牌。
 
-#### <a name="getting-authorization-code"></a>获取授权代码
+#### <a name="get-authorization-code"></a>获取授权代码
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -178,7 +178,7 @@ client_id=<CLIENT_ID>
 &state=12345
 ```
 
-#### <a name="getting-access-and-refresh-token"></a>获取访问权限和刷新令牌
+#### <a name="get-access-and-refresh-token"></a>获取访问权限和刷新令牌
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1

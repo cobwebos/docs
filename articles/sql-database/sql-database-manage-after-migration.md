@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4424e53689714625ebc791df250956463452c3cb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703244"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791497"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中的单一数据库和共用数据库
 
@@ -127,7 +127,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>连接到哪些端口上的 SQL 数据库
 
-端口 1433。 SQL 数据库通过此端口通信。 要从公司网络内进行连接，必须在组织防火墙设置中添加出站规则。 原则上请避免在 Azure 边界外公开端口 1433。 可在 Azure 中使用 [Azure RemoteApp](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps) 运行 SSMS。 此操作不需要打开到端口 1433 的出站连接，因为 IP 是静态的，所以数据库可以只对 RemoteApp 开放，它支持多重身份验证 (MFA)。
+端口 1433。 SQL 数据库通过此端口通信。 要从公司网络内进行连接，必须在组织防火墙设置中添加出站规则。 原则上请避免在 Azure 边界外公开端口 1433。
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>如何监视和管理 SQL 数据库中服务器和数据库上的活动
 

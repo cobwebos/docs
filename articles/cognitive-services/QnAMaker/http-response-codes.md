@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 319623487f37308b5b8fe3fd107b01733825184d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cdfa5212f321cc6ec976ea9df301243acc54a23f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60233334"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794862"
 ---
 # <a name="qna-maker-api-http-response-codes"></a>QnA Maker API HTTP 响应代码
-[管理](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)和预测 API 返回 HTTP 响应代码。 响应消息包含特定于某个请求的信息，而 HTTP 响应状态代码是通用的。 
+[管理](https://go.microsoft.com/fwlink/?linkid=2092179)和预测 API 返回 HTTP 响应代码。 响应消息包含特定于某个请求的信息，而 HTTP 响应状态代码是通用的。 
 
 ### <a name="management"></a>管理
 

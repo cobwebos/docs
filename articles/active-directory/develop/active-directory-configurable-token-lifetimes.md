@@ -3,8 +3,8 @@ title: Azure Active Directory 中可配置的令牌生存期 | Microsoft Docs
 description: 了解如何设置 Azure AD 颁发的令牌的生存期。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
-ms.author: celested
-ms.custom: aaddev
+ms.date: 04/13/2019
+ms.author: ryanwi
+ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b0242a8e3745a0014e5c2a1289ca2bc8c85c75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0657057ceb3aca674e49a705c52c3b86dda73d98
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411362"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545390"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
 可以指定 Azure Active Directory (Azure AD) 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。
 
 > [!IMPORTANT]
-> 在预览版期间听取了客户的反馈后，我们计划将此功能替换为 Azure Active Directory 条件访问中的新功能。  新功能完成后，我们最终将在通知期后弃用此功能。  如果使用“可配置令牌生存期”策略，请准备好在其可用后立即切换到新的条件访问功能。 
+> 后听力不好的客户在使用预览版期间，我们已替换为具有可配置令牌生存期功能[身份验证会话管理功能](https://go.microsoft.com/fwlink/?linkid=2083106)Azure AD 条件访问中。 此功能将于 2019 年 11 月 1 日弃用。 如果您使用的可配置令牌生存期策略，切换到新的条件性访问功能。 
 
 在 Azure AD 中，策略对象表示针对组织中的单个应用程序或所有应用程序强制实施的一组规则。 每种策略类型都有一个唯一的结构，其中的一组属性将应用于它们所分配到的对象。
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 3cd22b89852706ed129373fd24ca9a9d9a27d25b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153379"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556226"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -33,7 +33,7 @@ ms.locfileid: "65153379"
 本文提供了概述和指南的实时传送视频流媒体服务和其他相关文章的链接。
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](developers-guide.md) 之一。
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
 ## <a name="dynamic-packaging"></a>动态打包
 
@@ -67,9 +67,9 @@ ms.locfileid: "65153379"
 
 若要了解媒体服务 v3 中的实时流式处理工作流，你必须首先回顾一下，并了解以下概念： 
 
-- [流式处理终结点](streaming-endpoint-concept.md)
-- [实时事件和实时输出](live-events-outputs-concept.md)
-- [流式处理定位符](streaming-locators-concept.md)
+- [流式处理终结点 API](streaming-endpoint-concept.md)
+- [实时事件和实时输出 API](live-events-outputs-concept.md)
+- [流式处理定位符 API](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>常规步骤
 
@@ -93,7 +93,7 @@ ms.locfileid: "65153379"
 - [状态和计费](live-event-states-billing.md)
 - [延迟](live-event-latency.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、 提供反馈，获取更新
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 

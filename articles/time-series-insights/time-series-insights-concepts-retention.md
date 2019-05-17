@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec62639988dca4b216087e8235be6053140644ee
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 443599e1b2876012bcbdf720bef7762a24e1ff90
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406360"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790434"
 ---
-# <a name="understand-data-retention-in-time-series-insights"></a>了解时序见解中的数据保留
+# <a name="understand-data-retention-in-azure-time-series-insights"></a>了解 Azure 时序见解中的数据保留
 
-本文介绍影响时序见解 (TSI) 环境中的数据保留的两项设置。
+本文介绍了影响 Azure 时序见解环境中的数据保留的两个设置。
 
 ## <a name="video"></a>视频
 
@@ -36,7 +36,7 @@ ms.locfileid: "65406360"
 - 暂停传入
 
 > [!NOTE]
-> 创建新环境时，保留规则默认配置为“清除旧数据”。 在创建后，可以根据需要使用 Azure 门户或者在 TSI 环境的“配置”页上切换此设置。
+> 创建新环境时，保留规则默认配置为“清除旧数据”。 此设置可以在创建时使用 Azure 门户中，在之后根据需要切换**配置**时序见解环境的页。
 
 有关切换保留行为的信息，请查看[在时序见解中配置保留](time-series-insights-how-to-configure-retention.md)。
 
@@ -44,8 +44,8 @@ ms.locfileid: "65406360"
 
 ## <a name="purge-old-data"></a>清除旧数据
 
-- 此行为是 TSI 环境的默认行为，展示的行为与公共预览版 TSI 环境的行为相同。  
-- 如果用户希望在其 TSI 环境中始终能够看到最近的数据，则此行为是首选行为。 
+- 此行为是时序见解环境的默认行为。  
+- 当用户想要始终查看时，此行为是首选他们*最新数据*其时序见解环境中。
 - 达到环境的限制（保留时间、大小或计数，以先达到的为准）时，此行为会立即清除数据。 默认情况下，保留时间设置为 30 天。
 - 最旧的引入数据最先清除（FIFO 方法）。
 
@@ -63,7 +63,7 @@ ms.locfileid: "65406360"
 
 只要此环境的每日传入率超过 0.166 GB，就无法将数据存储 180 天，因为某些数据将被清除。 在繁忙的时段，可以考虑使用这种环境。 假设环境的传入率可能会增大到每日平均 0.189 GB。 在繁忙时段，将会保留大约 158 天的数据（30 GB/0.189 = 保留期 158.73 天）。 此时间小于所需的数据保留时间范围。
 
-## <a name="pause-ingress"></a>暂停入口
+## <a name="pause-ingress"></a>暂停传入
 
 - **暂停传入**设置设计为确保不会清除数据，如果保留期之前达到大小和计数限制。  
 - **暂停传入**提供了更多时间以提高其环境的容量，由于超过保留期而清除数据之前的用户
@@ -75,7 +75,7 @@ ms.locfileid: "65406360"
 
 ### <a name="example-three"></a>示例三
 
-假设某个环境的保留行为配置为“暂停传入”。 在此示例中，“数据保留期”配置为 60 天。 “容量”设置为 3 个 S1 单位。 假设此环境的每日数据传入量为 2-GB。 在此环境中，一旦达到最大容量，传入就会暂停。
+假设某个环境的保留行为配置为“暂停传入”。 在此示例中，“数据保留期”配置为 60 天。 **容量**设置为三 （3） 个 S1 单位。 假设此环境的每日数据传入量为 2-GB。 在此环境中，一旦达到最大容量，传入就会暂停。
 
 此时，环境会一直显示同一数据集直到传入恢复或直到**继续传入**启用 （这会清除旧数据，以便为新数据留出空间）。
 
@@ -91,7 +91,7 @@ ms.locfileid: "65406360"
 
 [![事件中心消息保留期。](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-如果事件源上不配置的任何属性 (`timeStampPropertyName`)，TSI 默认为到达事件中心作为 x 轴的时间戳。 如果`timeStampPropertyName`配置为其他内容，则环境看起来已配置的`timeStampPropertyName`分析事件时发送的数据包中。
+如果事件源上不配置的任何属性 (`timeStampPropertyName`)，时序见解默认为到达事件中心作为 x 轴的时间戳。 如果`timeStampPropertyName`配置为其他内容，则环境看起来已配置的`timeStampPropertyName`分析事件时发送的数据包中。
 
 如果需要扩展环境以包含更多容量或延长保留持续时间，请参阅[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)了解详细信息。  
 

@@ -9,14 +9,14 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 68b99e7f0763f46c705a1ff2ba3a0e90216429c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648850"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797807"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>如何分页列出必应 Web 搜索 API 中的结果
 
@@ -24,7 +24,7 @@ ms.locfileid: "60648850"
 
 下面的示例展示了 Web 答案对象包含的 `totalEstimatedMatches` 字段。  
 
-```
+```json
 {
     "_type" : "SearchResponse",
     "webPages" : {
@@ -65,3 +65,7 @@ Web 搜索 API 返回的结果包括网页，也可能包括图像、视频和�
 
 > [!NOTE]
 > `TotalEstimatedAnswers` 字段是可以为当前查询检索的搜索结果总数的估计值。  设置 `count` 和 `offset` 参数时，`TotalEstimatedAnswers` 数值可能会更改。 
+
+## <a name="next-steps"></a>后续步骤
+
+* [必应 Web 搜索 API 是什么](overview.md)？

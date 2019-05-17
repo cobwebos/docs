@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 报告保留策略 | Microsoft 文档
-description: 有关 Azure Active Directory 中报表数据的保留策略
+title: Azure AD 多长时间存储报告数据？ | Microsoft Docs
+description: 了解 Azure 存储各种类型的报告数据的多长时间。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,14 +17,14 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1423fddc13a6912e90b6a239921cf2a4d2662ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 41fa12c9d79d14a6602d995ed93b5d1a23be8a4d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437050"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65781042"
 ---
-# <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory 报告保留策略
+# <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 多长时间存储报告数据？
 
 本文介绍 Azure Active Directory 中不同活动报告的数据保留策略。 
 

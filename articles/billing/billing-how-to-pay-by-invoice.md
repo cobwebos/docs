@@ -12,65 +12,80 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 05/16/2019
 ms.author: banders
-ms.openlocfilehash: 0a17821cc69900c7f24375cbf06a61811bbd52d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8dc5918ac539abde2586e29a1608e9dc496a5e37
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60918728"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794793"
 ---
-# <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>提交用发票为 Azure 订阅付款的请求
+# <a name="pay-azure-subscription-by-invoice"></a>通过发票支付 Azure 订阅
 
-可以通过向 Azure 支持提交请求将 Azure 订阅的付款方法更改为发票。 请求获批以后，即可获得有关如何针对发票付款方式设置订阅的说明。
+如果切换到用发票付款，这意味着在发票日期的 30 天内支付帐单。 若要成为可通过发票支付 Azure 订阅，提交给 Azure 支持请求。 你的请求经过审批后，可以切换为转账付款的订阅中[Azure 门户](https://portal.azure.com)。
 
 > [!IMPORTANT]
 > * 转账付款仅适用于公司帐户。
-> * 使用转账付款无法购买或支付[第三方和外部服务](billing-understand-your-azure-marketplace-charges.md)。 如果订阅包含来自 SendGrid 等外部服务的资源，则需要在更改为转账付款之前将其删除。 若要在切换为转账付款后购买外部服务，需要使用信用卡或借记卡的单独订阅。
+> * 切换为转账付款之前，必须支付所有未付费用。
 > * 切换为转账付款后，无法切换回信用卡或借记卡付款。
 
-## <a name="request-pay-by-invoice"></a>请求使用转账付款
+## <a name="request-to-pay-by-invoice"></a>请求通过发票付款
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 选择“帮助+支持” > “新建支持请求”。
 
-    ![“帮助和支持”按钮](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
+    ![“帮助和支持”按钮](./media/billing-how-to-pay-by-invoice/help-and-support.png)
 
 2. 选择“计费”作为问题类型，选择要用发票付款的订阅，选择支持计划，并选择“下一步”。
 
 3. 在“问题类型”框中选择“通过发票付款”。
 
- 4. 在“详细信息”框中输入以下信息，并选择“下一步”。
+4. 在“详细信息”框中输入以下信息，并选择“下一步”。
 
          New or existing customer:
          If existing, current payment method:
-         Order ID (requesting for invoice option): 
+         Order ID (requesting for invoice option):
          Account Admins Live ID (or Org ID) (should be company domain):
-         Commerce Account ID: 
-         Company Name (as registered under VAT or Government Website): 
-         Company Address (as registered under VAT or Government Website): 
+         Commerce Account ID:
+         Company Name (as registered under VAT or Government Website):
+         Company Address (as registered under VAT or Government Website):
          Company Website:
-         Country: 
+         Country:
          TAX ID/ VAT ID:
          Company Established on (Year):
-         Any prior business with Microsoft: 
+         Any prior business with Microsoft:
          Contact Name:
          Contact Phone:
          Contact Email:
-         Justification on why you prefer Invoice option over credit card: 
-    
+         Justification on why you prefer Invoice option over credit card:
+
         For cores increase, provide the following additional information:
-    
+
          (Old quota) Existing Cores:
          (New quota) Requested cores:
-         Specific region & series of Subscription: 
- 
-    - **公司名称**并**公司地址**应与提供的 Azure 帐户的信息匹配。  若要查看或更新的信息，请参阅[更改你的 Azure 帐户个人资料信息](billing-how-to-change-azure-account-profile.md)。
-    - 可以批准信用额度之前，必须在 Azure 门户中添加计算联系人。 应与公司的 Accounts Payable 或财务部门相关的联系人详细信息。 若要更新计费联系人，请转到[Azure 帐户中心](https://account.azure.com/Profile)。
+         Specific region & series of Subscription:
+
+- **公司名称**并**公司地址**应与提供的 Azure 帐户的信息匹配。  若要查看或更新的信息，请参阅[更改你的 Azure 帐户个人资料信息](billing-how-to-change-azure-account-profile.md)。
+- 可以批准信用额度之前，必须在 Azure 门户中添加计算联系人。 应与公司的 Accounts Payable 或财务部门相关的联系人详细信息。 若要更新计费联系人，请转到[Azure 帐户中心](https://account.azure.com/Profile)。
 
 5. 验证联系人信息和首选联系方法，并单击“创建”。
 
-如果由于所需的信用额度，我们需要运行信用检查，我们会发送给你信用检查应用程序。 提交该应用程序后，信用应用程序可能需要 5-7 天的时间进行处理。
+如果我们需要以运行信用检查，因为的所需的信用额度，我们会将你信用检查应用程序。
+
+## <a name="switch-your-azure-subscription-to-invoice-payment"></a>切换 Azure 订阅为转账付款
+
+一旦获得批准通过发票付款时，可以将 Azure 订阅切换中的发票付款方式[Azure 门户](https://portal.azure.com)。
+
+1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 在“成本管理 + 计费”中进行搜索。
+
+    ![显示搜索的屏幕截图](./media/billing-how-to-pay-by-invoice/search.png)
+
+1. 选择你想要切换为转账付款的订阅。
+1. 选择“付款方式”。
+1. 在命令栏中，单击**用发票付款**按钮。
+
+    ![按发票按钮显示的屏幕截图](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

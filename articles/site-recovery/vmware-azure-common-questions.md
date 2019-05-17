@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/26/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 22d3bdf8c60e6682c360395b44fe6f1dcc1207b0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 767f087910136ce558d71602a1c4c632090168cd
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925522"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540629"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -224,7 +224,7 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>设置配置服务器时，是否可以手动下载并安装 MySQL？
 
-是的。 请下载 MySQL 并将其置于 **C:\Temp\ASRSetup** 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。
+可以。 请下载 MySQL 并将其置于 **C:\Temp\ASRSetup** 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>我是否可以避免下载 MySQL 但让 Site Recovery 安装它？
 
@@ -251,13 +251,13 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ## <a name="process-server"></a>进程服务器
 
-### <a name="unable-to-select-process-server-during-enable-replication"></a>无法在启用复制过程中选择进程服务器
+### <a name="why-am-i-unable-to-select-process-server-during-enable-replication"></a>为什么我无法选择过程中的进程服务器启用复制？
 
-从 9.24 版本，增强了提供[处理服务器警报](vmware-physical-azure-monitor-process-server.md#process-server-alerts)何时设置横向扩展进程服务器。 这是为了避免进程服务器的限制，并避免的不正常的进程服务器使用情况。
+从 9.24 版本，增强了以显示[启用复制过程中的进程服务器的运行状况](vmware-azure-enable-replication.md#enable-replication)。 这是为了避免进程服务器的限制和最小化使用的不正常的进程服务器。
 
-### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>应该我做什么才能获取准确的运行状况状态的进程服务器？
+### <a name="what-is-meant-by-upgrading-process-server-to-924-or-higher-versions-for-accurate-health"></a>什么是为了通过升级进程服务器到准确的运行状况的 9.24 或更高版本中。
 
-升级到 Site Recovery 组件[最新版本](service-updates-how-to.md#links-to-currently-supported-update-rollups)(至少 9.24 或更高版本)。
+从[9.24 版本](service-updates-how-to.md#links-to-currently-supported-update-rollups)，引入了其他警报以增强的进程服务器的运行状况警报。 若要生成的所有警报的都升级到 9.24 版本或更高版本的 Site Recovery 组件。
 
 ## <a name="failover-and-failback"></a>故障转移和故障回复
 ### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>可以使用进程服务器在本地进行故障回复？
@@ -295,7 +295,7 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到
 ## <a name="automation-and-scripting"></a>自动化和脚本
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>是否可以使用脚本设置复制？
-是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。[了解详细信息](vmware-azure-disaster-recovery-powershell.md)。
+可以。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。[了解详细信息](vmware-azure-disaster-recovery-powershell.md)。
 
 ## <a name="performance-and-capacity"></a>性能和容量
 ### <a name="can-i-throttle-replication-bandwidth"></a>是否可以限制复制带宽？
