@@ -8,16 +8,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 3/11/2019
+ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 58bdc0e698fc28929c2080b1737770275b1164ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a67436f09d6e28db8d19679e446ac4cf98383709
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848722"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593805"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
 
@@ -60,7 +60,7 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  将 ADF 的托管标识添加到该组。 可以按照本文[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)获取主体的服务标识 ID (例如 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但请不要用于此目的的服务标识应用程序 ID)。
+3.  将 ADF 的托管标识添加到该组。 可以按照本文[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)若要获取的主体的托管标识对象 ID (例如 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但请不要用于此目的的托管标识应用程序 ID)。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -170,12 +170,12 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 
 4.  右键单击 master 数据库并选择“新建查询”。
 
-5.  获取 ADF 的托管标识。 可以按照本文[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)到获取主体的服务标识应用程序 ID （但请不要用于此目的的服务标识 ID）。
+5.  获取 ADF 的托管标识。 可以按照本文[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)到获取主体管理标识应用程序 ID （但请不要用于此目的的托管标识对象 ID）。
 
 6.  在查询窗口中，执行以下 T-SQL 脚本，将 ADF 的托管标识转换为二进制类型：
 
     ```sql
-    DECLARE @applicationId uniqueidentifier = '{your SERVICE IDENTITY APPLICATION ID}'
+    DECLARE @applicationId uniqueidentifier = '{your Managed Identity Application ID}'
     select CAST(@applicationId AS varbinary)
     ```
     
@@ -184,7 +184,7 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 7.  清除查询窗口，执行以下 T-SQL 脚本，以用户身份添加 ADF 的托管标识
 
     ```sql
-    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your SERVICE IDENTITY APPLICATION ID as binary}, TYPE = E
+    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your Managed Identity Application ID as binary}, TYPE = E
     ALTER SERVER ROLE [dbcreator] ADD MEMBER [{the managed identity name}]
     ALTER SERVER ROLE [securityadmin] ADD MEMBER [{the managed identity name}]
     ```

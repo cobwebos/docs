@@ -1,5 +1,5 @@
 ---
-title: 如何部署用于推断具有 GPU 的深度学习模型
+title: 将推断具有 GPU 的模型部署
 titleSuffix: Azure Machine Learning service
 description: 了解如何将深度学习模型部署为 web 服务使用 GPU 进行推断。 在本文中，Tensorflow 模型部署到的 Azure Kubernetes 服务群集。 该群集使用已启用 GPU 的虚拟机以托管 web 服务和评分推断请求。
 services: machine-learning
@@ -10,33 +10,30 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: 5cc0fe0526937245d3ca913afc477f0259e2afd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 7796e8dc07889c9816e4227f3b38904d91a24da3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515169"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595673"
 ---
-# <a name="how-to-do-gpu-inferencing"></a>如何执行 GPU 推断
+# <a name="deploy-a-deep-learning-model-for-inferencing-with-gpu"></a>部署用于推断具有 GPU 的深度学习模型
 
 了解如何使用 GPU 推断的机器学习模型部署为 web 服务。 在本文中，您将了解如何使用 Azure 机器学习服务来部署示例 Tensorflow 深入学习模型。 模型部署到使用已启用 GPU 的 VM 来承载服务的 Azure Kubernetes 服务 (AKS) 群集。 当请求被发送到服务时，该模型将使用 GPU 进行推断。
 
 Gpu 提供高度可并行化的计算上 Cpu 的性能优于。 定型和推断深度学习模型 （尤其是对于大型批处理中的请求） 是很好的使用情况下为 Gpu。  
 
-此示例将演示如何将保存的 TensorFlow 模型部署到 Azure 机器学习。 
-
-## <a name="goals-and-prerequisites"></a>目标和先决条件
-
-遵照说明操作：
-* 创建启用了 GPU AKS 群集
+此示例将演示如何将保存的 TensorFlow 模型部署到 Azure 机器学习的：
+* 创建启用了 GPU 的 AKS 群集
 * 部署具有 Tensorflow GPU 的模型
 
-先决条件：
+## <a name="prerequisites"></a>必备组件
+
 * Azure 机器学习服务工作区
 * Python
 * Tensorflow SavedModel 注册。 若要了解如何注册模型请参阅[部署模型](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#registermodel)
 
-这篇文章基于[部署到 AKS Tensorflow 模型](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb)，它使用保存的 TensorFlow 模型并将部署到 AKS 群集。 但是，使用的计分概要文件和环境文件的小改动是适用于任何支持 Gpu 的机器学习框架。  
+这篇文章基于 Jupyter notebook[部署到 AKS Tensorflow 模型](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb)，它使用保存的 TensorFlow 模型并将部署到 AKS 群集。 但是，使用的计分概要文件和环境文件的小改动是适用于任何支持 Gpu 的机器学习框架。  
 
 ## <a name="provision-aks-cluster-with-gpus"></a>使用 Gpu 的预配 AKS 群集
 Azure 有许多不同的 GPU 选项，所有这些可用于推断。 请参阅[的 N 系列列表](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)有关功能和成本的完整明细。 

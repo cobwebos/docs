@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: c8ebd10544331d3b7d887124542fe4ee2753c714
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: d9e3aa3dae81166ef91f57ea6a95087a952001ed
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233139"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550988"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
 
@@ -36,7 +36,7 @@ OpenShift 包括用于容器业务流程和管理的 Kubernetes 容器。 它增
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift 是一种完全托管在 Azure 中运行的 OpenShift 的产品。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 可以是完整文档[此处](https://docs.microsoft.com/azure/openshift/)。 
+Microsoft Azure Red Hat OpenShift 是一种完全托管在 Azure 中运行的 OpenShift 的产品。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 有关更多详细信息，请参阅[Azure Red Hat OpenShift 服务](https://docs.microsoft.com/azure/openshift/)文档。
 
 ## <a name="openshift-container-platform"></a>OpenShift 容器平台
 

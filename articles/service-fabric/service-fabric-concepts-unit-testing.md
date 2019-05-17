@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
-ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad7cf3a1dfcef8795ceb378a59a1cf0b2010293e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60881447"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595504"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>对 Service Fabric 中的有状态服务进行单元测试
 
@@ -36,7 +36,7 @@ ms.locfileid: "60881447"
 
 ## <a name="common-practices"></a>常见做法
 
-以下部分提供关于对有状态服务进行单元测试的最常见做法的建议。 它还建议模拟层应该要与 Service Fabric 业务流程和状态管理紧密地保持一致。 模拟库确实存在提供此功能的库。 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) 自 3.3.0 开始或更高版本就是这样一个库，提供了建议的模拟功能并遵循下面概述的做法。
+以下部分提供关于对有状态服务进行单元测试的最常见做法的建议。 它还建议模拟层应该要与 Service Fabric 业务流程和状态管理紧密地保持一致。 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) 自 3.3.0 开始或更高版本就是这样一个库，提供了建议的模拟功能并遵循下面概述的做法。
 
 ### <a name="arrangement"></a>排列
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fae245e4d72f7f6f7809d85da17023deb1518e5
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61425956"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560854"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor 日志查询
 Azure Monitor 日志在 Azure 数据资源管理器之上构建，Azure Monitor 日志查询使用同一 Kusto 查询语言的某个版本。 [Kusto 查询语言文档](/azure/kusto/query)提供了该语言的完整详细信息，在编写 Azure Monitor 日志查询时，应将此文档用作主要参考资源。 本页提供了用于学习编写查询，以及该语言的 Azure Monitor 实现差异的其他资源的链接。
@@ -61,7 +61,7 @@ Azure Monitor 日志在 Azure 数据资源管理器之上构建，Azure Monitor 
 ## <a name="cheatsheets"></a>速查表
 
 -  [从 SQL 到 Azure Monitor 日志查询](sql-cheatsheet.md)可为已经熟悉 SQL 的用户提供帮助。
--  [从 Splunk 到 Azure Monitor 日志查询](sql-cheatsheet.md)可为已经熟悉 Splunk 的用户提供帮助。
+-  [从 Splunk 到 Azure Monitor 日志查询](splunk-cheatsheet.md)可为已经熟悉 Splunk 的用户提供帮助。
  
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 506f623fe928cf122a16630844996c981cc20e9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db7cc556525ab57f14984232bf1797764865fca3
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330340"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606250"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
 
@@ -33,6 +33,8 @@ ms.locfileid: "60330340"
 |**当前受支持的框架**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
+> .NET Framework SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)是在维护模式，它将在不久后弃用。 请升级到新的.NET Standard 库[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)才能继续获得支持表 API 的最新功能。
+
 > 如果已在预览期间创建表 API 帐户，请[新建表 API 帐户](create-table-dotnet.md#create-a-database-account)，这样才能使用正式版表 API SDK。
 >
 
@@ -75,22 +77,22 @@ ms.locfileid: "60330340"
 
 Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
-[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) 预览包已弃用，已被 [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) 包取代。 WindowsAzure.Storage-PremiumTable SDK 将在 2018 年 11 月 15 日停用，到时将不允许向已停用的 SDK 发出请求。 `Microsoft.Azure.CosmosDB.Table` 库目前仅适用于 .NET Standard，尚不可用于 .NET Core。
+`Microsoft.Azure.CosmosDB.Table`库仅当前适用于.NET Framework，和是处于维护模式，将在不久后弃用。 新特性和功能以及优化仅添加到.NET Standard 库[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)，因为此类建议升级到[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
 
-新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
+[Windowsazure.storage-premiumtable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview)预览包已被弃用。 WindowsAzure.Storage-PremiumTable SDK 将在 2018 年 11 月 15 日停用，到时将不允许向已停用的 SDK 发出请求。 
 
 使用已停用的 SDK 对 Azure Cosmos DB 发出的任何请求都会遭服务拒绝。
 <br/>
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.1.0](#2.1.0) |2019 年 1 月 22 日|--- |
-| [2.0.0](#2.0.0) |2018 年 9 月 26 日|--- |
-| [1.1.3](#1.1.3) |2018 年 7 月 17 日|--- |
-| [1.1.1](#1.1.1) |2018 年 3 月 26 日|--- |
-| [1.1.0](#1.1.0) |2018 年 2 月 21 日|--- |
-| [1.0.0](#1.0.0) |2017 年 11 月 15 日|--- |
-| 0.9.0-preview |2017 年 11 月 11 日 |--- |
+| [2.1.0](#2.1.0) |2019 年 1 月 22 日|2020 年 4 月 1 日， |
+| [2.0.0](#2.0.0) |2018 年 9 月 26 日|2020 年 3 月 1 日， |
+| [1.1.3](#1.1.3) |2018 年 7 月 17 日|2019 年 12 月 1 日， |
+| [1.1.1](#1.1.1) |2018 年 3 月 26 日|2019 年 12 月 1 日， |
+| [1.1.0](#1.1.0) |2018 年 2 月 21 日|2019 年 12 月 1 日， |
+| [1.0.0](#1.0.0) |2017 年 11 月 15 日|2019 年 11 月 15日日 |
+| 0.9.0-preview |2017 年 11 月 11 日 |2019 年 11 月 11日日 |
 
 ## <a name="troubleshooting"></a>故障排除
 

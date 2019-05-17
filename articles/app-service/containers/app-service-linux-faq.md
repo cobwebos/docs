@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 7cc3a4d98901e618369c98ceee8125d2abbe94e3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919973"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594273"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -39,13 +39,15 @@ ms.locfileid: "64919973"
 
 **配置运行时堆栈时，“启动文件”部分的所需值是什么？**
 
-| 堆栈     | 预期值                                                                |
-|-----------|-------------------------------------------------------------------------------|
-| Java SE   | 一个命令用于启动在`.jar`应用程序                                    |
-| Tomcat    | 执行您的应用程序的任何配置的脚本的位置          |
-| Node.js   | PM2 配置文件或脚本文件                                |
-| .NET Core | 作为已编译的 DLL 名称 `dotnet <myapp>.dll`                                 |
-| Ruby      | 你想要初始化应用的 Ruby 脚本                     |
+| 堆栈           | 预期值                                                                         |
+|-----------------|----------------------------------------------------------------------------------------|
+| Java SE         | 要启动 JAR 应用程序的命令 (例如， `java -jar my-app.jar --server.port=80`) |
+| Tomcat Wildfly | 一个脚本才能执行任何必要的配置的位置 (例如， `/home/site/deployments/tools/startup_script.sh`)          |
+| Node.js         | PM2 配置文件或脚本文件                                |
+| .NET Core       | 作为已编译的 DLL 名称 `dotnet <myapp>.dll`                                 |
+| Ruby            | 你想要初始化应用的 Ruby 脚本                     |
+
+启动内置的 Docker 容器，但你的应用程序代码已启动后执行这些命令或脚本。
 
 ## <a name="management"></a>管理
 
@@ -107,7 +109,7 @@ const io = require('socket.io')(server,{
 
 **是否支持未编译的 .NET Core 应用？**
 
-是的。
+可以。
 
 **是否支持将 Composer 用作 PHP 应用的依赖关系管理器？**
 
@@ -202,5 +204,5 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Linux 上的 Azure 应用服务？](app-service-linux-intro.md)
-- [设置 Azure 应用服务中的过渡环境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [设置过渡环境，在 Azure 应用服务](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [使用用于容器的 Web 应用进行持续部署](./app-service-linux-ci-cd.md)

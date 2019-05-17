@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 49615dcb2f077d2e1d8b93a4bb900b435e4c87bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04163d1fa2a46a2de877702d479f439a5e8711d7
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589081"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603136"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客户数据保护   
 默认情况下，拒绝 Microsoft 运营和支持人员访问客户数据。 授予对客户数据的访问权限后，需要经过领导批准，并仔细管理和记录访问活动。 访问控制要求由以下 Azure 安全策略制定：
@@ -48,8 +48,8 @@ Azure 按默认或者以客户选项的形式为客户提供可靠的数据安�
 
 **数据冗余**：出现网络攻击或者数据中心遭到物理损坏时，Microsoft 可帮助确保数据受到保护。 客户可以选择：
 
-- 出于合规或延迟方面的考虑使用国内存储。
-- 出于安全或灾难恢复目的使用国外存储。
+- 有关符合性或延迟注意事项中的国家/地区/区域内存储。
+- 扩展的-国家/地区/扩展的区域以进行安全或灾难恢复的存储。
 
 数据可在选定的地理区域中进行复制以实现冗余，但不会传输到此区域以外。 客户可以使用多个选项来复制数据，包括指定副本数量，以及复制数据中心的数量和位置。
 

@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 71856f9de3d67590d524fa8bb1119a384d156d2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3d9a5ebb2e25cfbabf8cfdbd94c2d1d04ae1bbee
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700150"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788460"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -43,7 +43,7 @@ ms.locfileid: "64700150"
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. 创建资源运行状况警报的资源管理器模板，并保存为 `resourcehealthalert.json`（[请参阅下面的详细信息](#resource-manager-template-for-resource-health-alerts)）
+3. 创建资源运行状况警报的资源管理器模板，并保存为 `resourcehealthalert.json`（[请参阅下面的详细信息](#resource-manager-template-options-for-resource-health-alerts)）
 
 4. 使用该模板创建一个新的 Azure 资源管理器部署
 
@@ -76,7 +76,7 @@ ms.locfileid: "64700150"
 
 请注意，如果你打算使该进程完全自动化，只需在第 5 步中将资源管理器模板编辑为不提示值。
 
-## <a name="resource-manager-template-for-resource-health-alerts"></a>资源运行状况警报的资源管理器模板
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>资源运行状况警报的 resource Manager 模板选项
 
 可将此基本模板用作创建资源运行状况警报的起点。 此模板按创建时指定的方式运行，将你注册为接收订阅中所有资源所有新激活的资源运行状况事件的警报。
 
@@ -284,7 +284,9 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
 },
 ```
 
-在此示例中，我们仅对当前和以前的运行状况不是“Unknown”的事件发出通知。 如果你的警报被直接发送到移动电话货电子邮件，这一变化可能比较有用。
+在此示例中，我们仅对当前和以前的运行状况不是“Unknown”的事件发出通知。 如果你的警报被直接发送到移动电话货电子邮件，这一变化可能比较有用。 
+
+请注意，可能要为 null，在某些事件的 currentHealthStatus 和 previousHealthStatus 属性。 例如，在更新事件发生时只有该附加事件信息可用，则很可能，最后一个报表之后, 未更改资源的运行状况状态 （例如导致）。 因此，使用上述子句可能会导致某些警报未被触发，因为 properties.currentHealthStatus 和 properties.previousHealthStatus 值将设置为 null。
 
 ### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>将警报调整为避免通知用户发起的事件
 
@@ -304,12 +306,12 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
     ]
 }
 ```
+请注意，可能要为 null，在某些事件的原因字段。 即，运行状况转换所需的位置 （例如可设为不可用），并立即以防止通知会延迟记录的事件。 因此，使用上述子句可能会导致警报未被触发，因为 properties.clause 属性值将设置为 null。
 
-## <a name="recommended-resource-health-alert-template"></a>建议使用的资源运行状况警报模板
+## <a name="complete-resource-health-alert-template"></a>完整的资源运行状况警报模板
 
-使用上一部分中所述的不同调整方式，我们可以创建一个配置为最大限度增强信噪比信号的全面的警报模板。
+使用上一节中所述的不同调整，下面是配置为最大限度地信噪比信号的示例模板。 请记住上文其中 currentHealthStatus、 previousHealthStatus 和原因属性值为 null 的某些事件中所述的注意事项。
 
-建议使用以下代码：
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

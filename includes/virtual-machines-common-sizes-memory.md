@@ -5,19 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 05/13/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 39c64b9fe4e03bb0b7216a8d1ba607bec10b4708
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8cc13e9aec679a79d31d2724ba412efd2d58dfd1
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64743914"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561283"
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。 
 
-* M 系列为云中的任何 VM 提供最高 vCPU 计数（最多 128 个 vCPU）和最大内存（最大 3.8 TiB）。  它非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。
+* Mv2 系列提供最高 vCPU 计数 (最多 208 Vcpu) 和云中的任何 VM 的最大内存 (最多 5.7 TiB)。 它非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。
+ 
+* M 系列提供高 vCPU 计数 (最多 128 个 Vcpu) 和大量的内存 (最大 3.8 TiB)。 它还非常适合极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。
 
 * Dv2 系列、 G 系列以及对应 DSv2/GS 系列非常适合需要快速的 Vcpu、 更好的临时存储性能，或有更高内存要求的应用程序。 它们为许多企业级应用程序提供强大的组合。
 
@@ -86,6 +88,24 @@ Ev3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，�
 <sup>2</sup> 受约束的可用核心大小。
 
 <sup>3</sup> 实例与专用于单个客户的硬件隔离。
+
+
+## <a name="mv2-series"></a>Mv2 系列
+
+高级存储：支持
+
+高级存储缓存：支持
+
+写入加速器：[支持](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
+|大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+|-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
+| Standard_M208ms_v22<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
+| Standard_M208s_v22<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
+
+Mv2 系列 VM 的 Intel® 超线程技术功能  
+
+<sup>1</sup>这些大 vCPU 需要以下受支持的来宾操作系统之一：Windows Server 2016、 Windows Server 2019，SLES 12 SP4、 15 SLES 和 RHEL 7.6
 
 
 ## <a name="m-series"></a>M 系列 

@@ -7,12 +7,12 @@ ms.date: 03/28/2019
 ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
-ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a811a9cb1b124aff7c64d25cf71a1b84bff0c173
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880763"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541751"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure 管道来生成和部署的 HPC 解决方案
 
@@ -363,7 +363,7 @@ Azure 管道用于生成、 部署、 测试和监视软件提供了一系列新
 
 ## <a name="continuous-deployment"></a>连续部署
 
-Azure 管道还用于部署应用程序和底层基础结构。 [发布管道](https://docs.microsoft.com/azure/devops/pipelines/release/what-is-release-management?view=azure-devops)是启用持续部署和自动执行发布过程的组件。
+Azure 管道还用于部署应用程序和底层基础结构。 [发布管道](https://docs.microsoft.com/azure/devops/pipelines/release)是启用持续部署和自动执行发布过程的组件。
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>部署应用程序和基础结构
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e611f1564896cfdecb3ce34ab7c5361e5200b48a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254084"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595451"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure 指标资源管理器入门
 
@@ -24,7 +24,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 1. 请尝试[在应用维度筛选器和拆分](#apply-dimension-filters-and-splitting)。 筛选器和拆分可以分析哪些细分市场的指标的作用于的整体指标值和确定可能离群值。
 
-1. 使用[高级设置](#advanced-chart-settings-and-next-steps)之前固定到仪表板自定义图表。 [配置警报](alerts-metric-overview.md)度量值超过或低于阈值时接收通知。
+1. 使用[高级设置](#advanced-chart-settings)之前固定到仪表板自定义图表。 [配置警报](alerts-metric-overview.md)度量值超过或低于阈值时接收通知。
 
 ## <a name="create-your-first-metric-chart"></a>创建第一个度量值图表
 
@@ -61,12 +61,13 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 请参阅[图表的示例](metric-chart-samples.md)，具有筛选和拆分应用。 本文介绍的步骤用于配置图表。
 
-## <a name="advanced-chart-settings-and-next-steps"></a>高级的图表设置和后续步骤
+## <a name="advanced-chart-settings"></a>高级的图表设置
 
 可以自定义图表样式，标题，并修改高级的图表设置。 完成自定义项，则将其固定到仪表板以保存所做的工作。 此外可以配置指标警报。 请按照[产品文档](metrics-charts.md)若要了解有关这些和其他高级功能的 Azure Monitor 指标资源管理器。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [请参阅 Azure 服务的可用指标的列表](metrics-supported.md)
 * [了解有关指标资源管理器的高级功能](metrics-charts.md)
+* [故障排除的指标资源管理器](metrics-troubleshoot.md)
+* [请参阅 Azure 服务的可用指标的列表](metrics-supported.md)
 * [请参阅配置图表的示例](metric-chart-samples.md)

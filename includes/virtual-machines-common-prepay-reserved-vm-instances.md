@@ -3,15 +3,15 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 04/13/2019
-ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/14/2019
+ms.openlocfilehash: c7ff7ab0800449c2a3aa9d58bd036981caccaa1c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406857"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815622"
 ---
-# <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>通过 Azure 虚拟机预留实例为虚拟机预付费
+# <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>预付 Azure 保留的 VM 实例 (RI) 的虚拟机
 
 通过 Azure 虚拟机 (VM) 预留实例预付虚拟机并节省资金。 有关详细信息，请参阅 [Azure 虚拟机预留实例产品/服务](https://azure.microsoft.com/pricing/reserved-vm-instances/)。
 
@@ -98,7 +98,7 @@ ms.locfileid: "60406857"
 - 现有预订的区域
 - SKU
 - 数量
-- Duration
+- 持续时间
 
 但是，你可以*exchange*一个保留项，如果你想要进行更改。
 

@@ -4,7 +4,7 @@ description: 了解如何获取访问令牌以无提示方式 （从令牌缓存
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e49dd85503475feab81a14148588981b04ad954
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6331407067a39550d866d7c293a92fac9184b54e
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158845"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544235"
 ---
 # <a name="get-a-token-from-the-token-cache-using-msalnet"></a>从令牌缓存使用 MSAL.NET 获取令牌
 

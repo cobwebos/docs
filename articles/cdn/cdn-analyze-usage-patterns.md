@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6eb0fe592196466f7f49c21ce38afdf13b254d86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88cbd942413757388278d69d728d407271e4c4a3
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61061447"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606388"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon 中的核心报告
 
@@ -119,7 +119,7 @@ ms.locfileid: "61061447"
 
 报告不包括：
 
-* 因国家/地区的筛选选项而被拒绝的请求。
+* 由于国家/地区筛选选项而拒绝的请求。
 * 其标头指示不应进行缓存的资产所对应的请求。 例如，`Cache-Control: private`、`Cache-Control: no-cache` 或 `Pragma: no-cache` 标头会阻止缓存资产。
 * 针对部分缓存内容的字节范围请求。
 

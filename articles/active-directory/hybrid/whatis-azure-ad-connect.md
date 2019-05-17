@@ -11,12 +11,12 @@ ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a29a00c34d4c60e6ba2b4fd6b0b413873301af5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48b81d508711f35a75efe1c93fe0a5556c5bb960
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459520"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784460"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
@@ -62,6 +62,11 @@ Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提�
 |易于部署和管理|[快速的代理安装](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>代理自动升级到最新版本</br>数据在几分钟后便可出现在门户中|
 丰富的[使用情况指标](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|排名靠前的应用程序使用情况</br>网络位置和 TCP 连接</br>每个服务器的令牌请求|
 |出色的用户体验|Azure 门户中的仪表板方式</br>[通过电子邮件提供警报](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
+
+
+## <a name="license-requirements-for-using-azure-ad-connect"></a>使用 Azure AD Connect 的许可证要求
+
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 75fe965a04bd02a1086551053c28d2072eae6468
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f87667516d6c76bc1c21ba5e175b3b2a7ebc3f39
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869516"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556332"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN 规则引擎匹配条件 
 本文列出了 Azure 内容分发网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件的详细说明。
@@ -101,8 +101,11 @@ ms.locfileid: "64869516"
 
 
 ## <a name="reference-for-rules-engine-match-conditions"></a>规则引擎匹配条件参考
+
 <a name="main"></a>
+
 ---
+
 ### <a name="always"></a>始终
 
 “始终”匹配条件向所有请求应用默认的一组功能。
@@ -469,10 +472,10 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 仅当通过选定请求方法请求资产时，才满足请求方法匹配条件。 可用请求方法包括：
 - GET
 - HEAD 
-- POST 
+- 发布 
 - OPTIONS 
 - PUT 
-- 删除 
+- DELETE 
 - TRACE 
 - CONNECT 
 

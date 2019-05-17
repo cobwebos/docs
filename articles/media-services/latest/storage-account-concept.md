@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 96c3a3eb5e4c07ad9cad8ea5060a27c0c33eec5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466810"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550152"
 ---
 # <a name="cloud-upload-and-storage"></a>云上传和存储
 
@@ -51,6 +51,17 @@ ms.locfileid: "61466810"
 |[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|由 Azure 存储提供的客户端加密，由 Key Vault 中的客户管理的密钥|不支持|
 
 <sup>1</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性。 这意味着 v3 会处理现有的存储加密资产，但不会允许创建新资产。
+
+## <a name="storage-account-errors"></a>存储帐户错误
+
+媒体服务帐户的"已断开连接"状态指示该帐户不能再在存储访问密钥有权访问一个或多个附加的存储帐户，因为更改。 媒体服务所需最新的存储访问密钥的帐户中执行许多任务。
+
+以下是将导致不具备访问附加的存储帐户的媒体服务帐户的主要方案。 
+
+|问题|解决方案|
+|---|---|
+|媒体服务帐户或附加的存储帐户已迁移以单独的订阅。 |以便它们在同一订阅中所有迁移的存储帐户或媒体服务帐户。 |
+|因为它是早期的媒体服务帐户支持此媒体服务帐户在不同订阅中使用附加的存储帐户。 早期的所有媒体服务帐户已转换为新式 Azure 资源管理器 (ARM) 基于帐户，并会将断开连接的状态。 |以便它们在同一订阅中所有迁移的存储帐户或媒体服务帐户。|
 
 ## <a name="next-steps"></a>后续步骤
 

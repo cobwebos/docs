@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8a4ffdc09cb12f7a16173c86bd3d0e3aee78d46d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152652"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762311"
 ---
 # <a name="media-services-concepts"></a>媒体服务概念
 
@@ -26,7 +26,7 @@ ms.locfileid: "65152652"
 在开始开发之前，应该复习这些主题中所述的基本概念。
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](developers-guide.md) 之一。
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
 ## <a name="terminology"></a>术语
 
@@ -76,7 +76,7 @@ ms.locfileid: "65152652"
 
 流式传输实时或按需内容是否使用动态打包。 下图显示了按需流式处理与动态打包工作流。
 
-![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 借助媒体服务中，可以传送使用高级加密标准 (AES-128) 动态加密的实时和按需内容或 / 和任何三个主要数字版权管理 (DRM) 系统：内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。
 
@@ -134,7 +134,7 @@ ms.locfileid: "65152652"
 
 - [Azure Media Player 概述](use-azure-media-player.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、 提供反馈，获取更新
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 

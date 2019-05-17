@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: e5a34a75c73401c567a0e898a1ce9f85cde96586
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c4980536eddd0226fac422ae17ddb717e34630d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553702"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799469"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义人员模型
 
@@ -58,7 +59,7 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 |---|---|---|---|
 |位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|string|是|帐户的全局唯一标识符|
-|名称|string|是|人员模型的名称|
+|name|string|是|人员模型的名称|
 |accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
@@ -198,7 +199,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Vide
 |videoId|string|是|要更新的人脸所在视频的 ID。 此项是在上传视频并对其进行索引时创建的。|
 |faceId|integer|是|要更新的人脸的 ID。 可以从视频索引中获取 faceId|
 |accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-|名称|string|是|更新人脸时使用的新名称。|
+|name|string|是|更新人脸时使用的新名称。|
 
 名称特定于人员模型，因此如果为同一人员模型中的两个不同的人脸提供相同的 **name** 参数值，视频索引器会将这两个人脸视为同一人，并会在完成视频的重新索引后将其聚合在一起。 
 

@@ -1,6 +1,6 @@
 ---
-title: 单一登录到非库应用程序 - Azure Active Directory | Microsoft Docs
-description: 在 Azure Active Directory (Azure AD) 中配置单一登录 (SSO) 到非库应用程序
+title: 单一登录-非库应用程序-Microsoft 标识平台 |Microsoft Docs
+description: Microsoft 标识平台 (Azure AD) 中的非库应用程序配置单一登录 (SSO)
 services: active-directory
 author: CelesteDG
 manager: mtillman
@@ -12,46 +12,58 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f003ec847ab3777a2174a1078a2d07eb012bb34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8459f9704a15614f2c3edaff5758fa534f78cbd9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291967"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65781116"
 ---
-# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>在 Azure Active Directory 中配置单一登录到非库应用程序
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>在 Microsoft 标识平台中配置单一登录方式登录到非库应用程序
 
-本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)。
+本文是一项功能，使管理员能够配置单一登录的应用程序不提供在 Microsoft 标识平台应用程序库中有关*无需编写代码*。
 
-如[此文](what-is-single-sign-on.md)中所述，Azure Active Directory 应用程序库提供了一份已知能够支持 Azure Active Directory 单一登录的应用程序列表。 IT 专业人员或组织中的系统集成人员找到所要连接的应用程序后，可以遵循 Azure 门户中提供的分步说明启用单一登录。
+要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)。
 
-根据许可协议，这些功能也可使用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/active-directory/)。 
+Microsoft 标识平台应用程序库提供了已知能够支持一种形式的单一登录与 Microsoft 标识平台，如中所述的应用程序的列表[这篇文章](what-is-single-sign-on.md)。 IT 专业人员或组织中的系统集成人员找到所要连接的应用程序后，可以遵循 Azure 门户中提供的分步说明启用单一登录。
 
+根据许可协议，这些功能也可使用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
+
+- 使用之类的新式协议的应用程序的自助服务集成[OpenId Connect/OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols)对其用户进行身份验证并获取令牌，以进行[Microsoft Graph](https://graph.microsoft.com)。
 - 通过自助方式集成支持 SAML 2.0 标识提供者的任何应用程序（SP 发起或 IdP 发起）
 - 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](what-is-single-sign-on.md#password-based-sso) 的任何 Web 应用程序
 - 以自助方式连接使用 SCIM 协议进行用户预配的应用程序（如[此处所述](use-scim-to-provision-users-and-groups.md)）
-- 可在 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](what-is-single-sign-on.md#linked-sso)中添加任何应用程序的链接
+- 可在 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](what-is-single-sign-on.md#linked-sign-on)中添加任何应用程序的链接
 
 这不仅包括正在使用、但尚未登记到 Azure AD 应用程序库中的 SaaS 应用程序，也包括组织已部署到控制的服务器（在云中或本地）的第三方 Web 应用程序。
 
-这些功能（也称为*应用集成模板*）为支持 SAML、SCIM 或基于窗体的身份验证的应用程序提供了基于标准的连接点，包括灵活的选项以及与各种应用程序兼容的设置。 
+这些功能（也称为*应用集成模板*）为支持 SAML、SCIM 或基于窗体的身份验证的应用程序提供了基于标准的连接点，包括灵活的选项以及与各种应用程序兼容的设置。
 
 ## <a name="adding-an-unlisted-application"></a>添加未列出的应用程序
-若要使用应用集成模板连接应用程序，请使用 Azure Active Directory 管理员帐户登录到 Azure 门户。 浏览到“Active Directory”>“企业应用程序”>“新建应用程序”>“非库应用程序”部分，然后依次选择“添加”、“从库中添加应用程序”。
 
-  ![添加应用程序](./media/configure-single-sign-on-non-gallery-applications/customapp1.png)
+Microsoft 标识平台提供了两种机制来注册应用程序。
 
-当在应用库中找不到所需的应用时，可以通过选择搜索结果中显示的“非库应用程序”标题来添加未列出的应用。 输入应用程序的名称后，便可以配置单一登录选项和行为。 
+使用之类的新式协议的应用程序[OpenId Connect/OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols)其用户进行身份验证使用注册[应用程序注册门户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-register-an-app)。
 
-**快速提示**：最佳做法是使用搜索函数来检查该应用程序是否已在应用程序库中。 如果找到该应用并且其说明中提到“单一登录”，则表示应用程序支持联合单一登录。
+使用所有其他类型的应用程序的注册[支持的身份验证机制](what-is-single-sign-on.md)等[SAML](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol)协议使用**企业应用程序**到边栏选项卡使用 Microsoft 标识平台连接本身。
 
-  ![搜索](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
+若要将应用程序使用应用集成模板连接，登录到 Azure 门户中使用 Microsoft 标识平台管理员帐户。 浏览到“Active Directory”>“企业应用程序”>“新建应用程序”>“非库应用程序”部分，然后依次选择“添加”、“从库中添加应用程序”。
+
+![添加应用程序](./media/configure-single-sign-on-non-gallery-applications/customapp1.png)
+
+当在应用库中找不到所需的应用时，可以通过选择搜索结果中显示的“非库应用程序”标题来添加未列出的应用。 输入应用程序的名称后，便可以配置单一登录选项和行为。
+
+> [!TIP]
+> 最佳做法是使用搜索函数来检查该应用程序是否已在应用程序库中。 如果找到该应用并且其说明中提到“单一登录”，则表示应用程序支持联合单一登录。
+
+![搜索](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
 
 以这种方式添加应用程序类似于针对预先集成的应用程序提供的体验。 若要开始，请选择“配置单一登录”，或者在应用程序的左侧导航菜单中单击“单一登录”。 随后出现的屏幕会显示用于配置单一登录的选项。 本文的后续部分会介绍这些选项。
   
 ![配置选项](./media/configure-single-sign-on-non-gallery-applications/customapp3.png)
 
 ## <a name="saml-based-single-sign-on"></a>基于 SAML 的单一登录
+
 选择此选项可为应用程序配置基于 SAML 的身份验证。 此选项要求应用程序支持 SAML 2.0。 在继续下一步之前，应该先收集有关如何使用应用程序的 SAML 功能的信息。 完成以下部分，在应用程序与 Azure AD 之间配置单一登录。
 
 ### <a name="enter-basic-saml-configuration"></a>输入基本的 SAML 配置
@@ -60,12 +72,12 @@ ms.locfileid: "60291967"
 
   ![Litware 域和 URL](./media/configure-single-sign-on-non-gallery-applications/customapp4.png)
 
-- **登录 URL (仅限 SP 发起)** – 用户可通过此 URL 登录到此应用程序。 如果将应用程序配置为执行服务提供者发起的单一登录，则当用户导航到此 URL 时，服务提供者会进行必要的重定向，重定向到 Azure AD 完成用户身份验证和登录。 如果填充了此字段，则 Azure AD 会使用此 URL 从 Office 365 和 Azure AD 访问面板启动应用程序。 如果省略此字段，则 Azure AD 则改为执行标识提供者-当从 Office 365，Azure AD 访问面板中，或从 Azure AD 单一登录 URL （可以从仪表板选项卡复制） 启动应用程序时启动单一登录。
+- **登录 URL (SP 发起仅)** – 用户在这里登录到此应用程序。 如果应用程序配置为执行服务提供程序启动单一登录，则当用户导航到此 URL 时，服务提供商将到 Azure AD 进行身份验证和登录用户执行必要的重定向。 如果填充了此字段，则 Azure AD 会使用此 URL 从 Office 365 和 Azure AD 访问面板启动应用程序。 如果省略此字段，则 Azure AD 则改为执行标识提供者-当从 Office 365，Azure AD 访问面板中，或从 Azure AD 单一登录 URL （可以从仪表板选项卡复制） 启动应用程序时启动单一登录。
 - **标识符** - 应唯一标识正为其配置单一登录的应用程序。 可以在应用程序发送的 AuthRequest（SAML 请求）中找到此值（Issuer 元素）。 该值也在应用程序提供的任何 SAML 元数据中显示为**实体 ID**。 有关实体 ID 或 Audience 值的详细信息，请查看应用程序的 SAML 文档。 
 
     以下示例显示 Identifier 和 Issuer 如何显示在应用程序发送到 Azure AD 的 SAML 请求中：
 
-    ```
+    ```XML
     <samlp:AuthnRequest
     xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
     ID="id6c1c178c166d486687be4aaf5e482730"
@@ -86,7 +98,7 @@ ms.locfileid: "60291967"
     Set-AzureADServicePrincipal -ObjectId $sp.ObjectId -ReplyUrls "<ReplyURLs>"
     ```
 
-有关详细信息，请参阅 [Azure Active Directory (Azure AD) 支持的 SAML 2.0 身份验证请求和响应](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
+有关详细信息，请参阅[Microsoft 标识平台 (Azure AD) 支持的 SAML 2.0 身份验证请求和响应](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
 
 
 ### <a name="review-or-customize-the-claims-issued-in-the-saml-token"></a>查看或自定义在 SAML 令牌中颁发的声明
@@ -100,11 +112,9 @@ ms.locfileid: "60291967"
 有两个原因可能导致需要编辑 SAML 令牌中颁发的声明：
 
 - 应用程序已编写为需要一组不同的声明 URI 或声明值。
-- 应用程序的部署方式需要 NameIdentifier 声明为存储在 Azure Active Directory 中的用户名（AKA 用户主体名称）以外的其他内容。 
+- 你的应用程序已部署方式需要 NameIdentifier 声明为存储在 Microsoft 标识平台中的用户名 （即，用户主体名称） 以外的其他内容。
 
 有关详细信息，请参阅[为企业应用程序自定义 SAML 令牌中颁发的声明](./../develop/../develop/active-directory-saml-claims-customization.md)。 
-
-
 
 ### <a name="review-certificate-expiration-data-status-and-email-notification"></a>查看证书过期数据、状态和电子邮件通知
 
@@ -120,7 +130,7 @@ ms.locfileid: "60291967"
 - 活动状态。 如果状态为非活动，请将状态更改为活动。 若要更改状态，请选中“活动”，然后保存配置。 
 - 正确的通知电子邮件。 当活动的证书即将过期时，Azure AD 会向此字段中配置的电子邮件地址发送通知。  
 
-有关详细信息，请参阅[在 Azure Active Directory 中管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)。
+有关详细信息，请参阅[管理联合单一登录在 Microsoft 标识平台中的证书](manage-certificates-for-federated-single-sign-on.md)。
 
 ### <a name="set-up-target-application"></a>设置目标应用程序
 
@@ -145,7 +155,7 @@ ms.locfileid: "60291967"
 
 ### <a name="test-the-saml-application"></a>测试 SAML 应用程序
 
-在测试 SAML 应用程序之前，必须先使用 Azure AD 设置应用程序，并将用户或组分配到应用程序。 若要测试 SAML 应用程序，请参阅[如何在 Azure Active Directory 中调试对应用程序进行的基于 SAML 的单一登录](../develop/howto-v1-debug-saml-sso-issues.md)。
+在测试 SAML 应用程序之前，必须先使用 Azure AD 设置应用程序，并将用户或组分配到应用程序。 若要测试 SAML 应用程序，请参阅[如何调试基于 SAML 的单一登录到 Microsoft 标识平台中的应用程序](../develop/howto-v1-debug-saml-sso-issues.md)。
 
 ## <a name="password-single-sign-on"></a>密码单一登录
 
@@ -169,6 +179,7 @@ ms.locfileid: "60291967"
 >
 
 ## <a name="related-articles"></a>相关文章
+
 - [如何为预先集成的应用自定义 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)
 - [排查基于 SAML 的单一登录问题](../develop/howto-v1-debug-saml-sso-issues.md)
-
+- [Microsoft 标识平台 (Azure Active Directory 为开发人员](https://aka.ms/aaddev)

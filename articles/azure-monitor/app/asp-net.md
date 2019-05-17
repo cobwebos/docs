@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 925ae2dd7b564eece4842cf25cc32b68d9e5c0b6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: c69e925913d4dcb3a8bec34cbf25dac184ea65c5
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472039"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595552"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -28,7 +28,7 @@ ms.locfileid: "65472039"
 ## <a name="prerequisites"></a>必备组件
 若要要将 Application Insights 添加到 ASP.NET 网站，需要：
 
-- 使用以下工作负荷安装[用于 Windows 的 Visual Studio 2017](https://www.visualstudio.com/downloads/)：
+- 安装[有关 Windows 的 Visual Studio 2019](https://www.visualstudio.com/downloads/)具有以下工作负荷：
     - ASP.NET 和 web 开发 （不取消选中的可选组件）
     - Azure 开发
 
@@ -37,7 +37,7 @@ ms.locfileid: "65472039"
 ## <a name="ide"></a> 步骤 1：添加 Application Insights SDK
 
 > [!IMPORTANT]
-> 在此示例中的屏幕截图基于 Visual Studio 2017 版本 15.9.9。 添加 Application Insights 的体验不同版本的 Visual Studio 2017 以及 ASP.NET 模板类型而异。 较旧版本可能有备用文本，例如"配置 Application Insights"。
+> 在此示例中的屏幕截图是基于 Visual Studio 2017 版本 15.9.9 及更高版本。 添加 Application Insights 的体验不同版本的 Visual Studio 以及 ASP.NET 模板类型而异。 较旧版本可能有备用文本，例如"配置 Application Insights"。
 
 右键单击 web 应用名称在解决方案资源管理器，然后选择**外** > **Application Insights 遥测**
 
@@ -63,7 +63,7 @@ Application Insights 配置屏幕：
 > [!NOTE]
 > 如果不希望在进行调试时向门户发送遥测，则请直接向应用添加 Application Insights SDK，但不要在门户中配置资源。 在调试时，可以在 Visual Studio 中查看遥测数据。 稍后可以返回此配置页，或者等到部署应用后，启用[在运行时打开遥测](../../azure-monitor/app/monitor-performance-live-website-now.md)。
 
-## <a name="run"></a> 步骤 2：运行你的应用程序
+## <a name="run"></a> 步骤 2：运行应用程序
 使用 F5 运行应用。 打开不同的页以生成一些遥测数据。
 
 Visual Studio 中会显示已记录的事件数。
@@ -101,7 +101,7 @@ Visual Studio 中会显示已记录的事件数。
 
 [了解有关在 Azure 门户中使用 Application Insights 的详细信息](../../azure-monitor/app/app-insights-dashboards.md)。
 
-## <a name="step-4-publish-your-app"></a>步骤 4：发布应用程序
+## <a name="step-4-publish-your-app"></a>步骤 4：发布应用
 将应用发布到 IIS 服务器或 Azure。 监视 [实时指标流](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ，确保一切平稳运行。
 
 遥测数据会在 Application Insights 门户中累积，可在此监视指标、搜索遥测数据以及设置[仪表板](../../azure-monitor/app/app-insights-dashboards.md)。 还可以使用功能强大的 [Kusto 查询语言](/azure/kusto/query/)来分析使用情况和性能，或查找特定的事件。
@@ -115,7 +115,7 @@ Visual Studio 中会显示已记录的事件数。
 
 ## <a name="land"></a> 已经完成全部设置
 
-恭喜! 已在应用中安装 Application Insights 包，并将其配置为向 Azure 中的 Application Insights 服务发送遥测。
+祝贺你！ 已在应用中安装 Application Insights 包，并将其配置为向 Azure 中的 Application Insights 服务发送遥测。
 
 接收应用遥测的 Azure 资源通过“检测密钥”进行标识。 可以在 ApplicationInsights.config 文件中找到该密钥。
 

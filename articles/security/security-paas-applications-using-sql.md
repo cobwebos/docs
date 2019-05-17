@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 22db43413b5c752decf6785a75dff22ff4a68039
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 057ec69db300c3ec95cbc63bd5056a78c24d5660
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596670"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601660"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>在 Azure 中保护 PaaS 数据库的最佳做法
 
@@ -78,7 +78,7 @@ Azure SQL 可以管理 TDE 存在的密钥相关问题。 与使用 TDE 时一�
 
 Azure SQL 通过 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 为列提供加密。 这样，只有获得授权的应用程序才能访问敏感列。 使用这种加密可将针对已加密列的 SQL 查询限制为基于相等性的值。
 
-对于某些特定的数据，也应该使用应用程序级加密。 有时，可通过使用保存在适当国家/地区的密钥加密数据，来消除数据主权忧虑。 这可以防止意外的数据传输导致问题，因为在使用强算法（例如 AES 256）的情况下，如果没有该密钥，将无法解密数据。
+对于某些特定的数据，也应该使用应用程序级加密。 有时可以通过使用保存在正确的国家/地区的密钥加密数据来消除数据主权忧虑。 这可以防止意外的数据传输导致问题，因为在使用强算法（例如 AES 256）的情况下，如果没有该密钥，将无法解密数据。
 
 可以使用其他预防措施来帮助保护数据库，例如，设计安全系统、加密机密资产，以及围绕数据库服务器构建防火墙。
 

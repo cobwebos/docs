@@ -1,7 +1,7 @@
 ---
 title: 回归：预测价格和比较算法
 titleSuffix: Azure Machine Learning service
-description: 此可视界面示例试验演示了如何比较两个预测汽车的价格的回归模型的性能。 此过程包括训练、 测试和评估汽车价格数据 （原始） 数据集上的模型。
+description: 本文介绍如何构建复杂的机器学习试验，而无需编写一行代码使用直观的界面。 了解如何训练和比较多个回归模型来预测一辆汽车的价格基于技术功能
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 2a4a9e74fa7f56b67f0f4a64f6619db1c5c69a2c
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: c8c813a2304797e71499a916e29c18f8bec2b389
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442125"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787795"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>示例 2-回归：预测价格和比较算法
 
-此可视界面示例试验演示了如何比较两个预测汽车的价格的回归模型的性能。 过程包括训练、 测试和使用评估模型**汽车价格数据 （原始）** 数据集。
+了解如何构建复杂的机器学习试验，而无需编写一行代码使用直观的界面。 此示例训练和比较多个回归模型来预测一辆汽车的价格基于其技术功能。 为使您能够同时处理自己的机器学习问题在此试验中所做的选择，我们将提供基本原理。
+
+如果你刚开始使用机器学习，可以看一看[基本版本](ui-sample-regression-predict-automobile-price-basic.md)的此试验中查看基本回归试验。
+
+下面是此实验的已完成关系图：
+
+[![实验的关系图](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -29,10 +35,6 @@ ms.locfileid: "65442125"
 
     ![打开试验](media/ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="related-sample"></a>相关的示例
-
-[示例 1-回归：汽车价格预测 （基本）](ui-sample-regression-predict-automobile-price-basic.md)提供更简单的试验，解决了此试验中相同的问题，但需要使用只有一个回归模型。 如果要查找有关回归的基本示例，请参阅它。
-
 ## <a name="experiment-summary"></a>实验摘要
 
 我们使用以下步骤来生成试验：
@@ -41,11 +43,6 @@ ms.locfileid: "65442125"
 1. 预先处理数据。
 1. 训练该模型。
 1. 测试、 评估和比较模型。
-
-下面是实验的完整图形：
-
-[![实验的关系图](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
-
 
 ## <a name="get-the-data"></a>获取数据
 

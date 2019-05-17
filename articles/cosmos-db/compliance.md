@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: c8a74df19c012613807d39fb3ee529173e82d5ba
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bbfc31e5eab2c2beb232a9ec2e0d5e11e4107be5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128815"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606291"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB 符合性 
 
@@ -28,7 +28,7 @@ Azure Cosmos DB 面向所有 Azure 区域提供。 Microsoft 为客户提供了�
 
 * 面向国防部 (DoD) 的 Azure 政府在美国的两个区域向美国国防部提供服务。
 
-为帮助客户在全球受监管行业和市场中履行自己的合规义务，Azure 在广度（产品总数）和深度（评估范围内面向客户的服务数量）方面提供了业内最大的符合性产品组合。  Azure 符合性产品分为四个部分 - 全球适用、美国政府、行业特定以及区域或国家/地区特定。  符合性产品/服务基于各种类型的保证，包括独立的第三方审核企业生成的正式认证、证明、验证、授权和评估，以及 Microsoft 生成的合同修正、自我评估和客户指南文档。
+为帮助客户在全球受监管行业和市场中履行自己的合规义务，Azure 在广度（产品总数）和深度（评估范围内面向客户的服务数量）方面提供了业内最大的符合性产品组合。  Azure 符合性产品/服务可分为四个段的全局适用，美国政府版、 行业特定，和区域或国家/地区特定。  符合性产品/服务基于各种类型的保证，包括独立的第三方审核企业生成的正式认证、证明、验证、授权和评估，以及 Microsoft 生成的合同修正、自我评估和客户指南文档。
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB 认证  
 

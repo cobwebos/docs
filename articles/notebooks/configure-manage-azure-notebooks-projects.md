@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 05/13/2019
 ms.author: kraigb
-ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234823"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596736"
 ---
 # <a name="manage-and-configure-projects"></a>管理和配置项目
 
@@ -37,38 +37,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 ## <a name="compute-tier"></a>计算层
 
-项目仪表板上的“运行”下拉列表是用于选择项目运行的计算层。 默认情况下，项目在“免费计算”层运行，限制为 4GB 内存和 1GB 数据以防止滥用：
-
-![项目仪表板上的计算层下拉列表](media/project-compute-tier-list.png)
-
-可以使用在 Azure 订阅中预配的其他虚拟机来绕过这些限制。 必须在该虚拟机上安装并运行 JupyterHub。 Data Science Virtual Machine 映像（任何操作系统）是很好的选择，因为它们默认包含 JupyterHub。
-
-适当配置了 Azure 虚拟机之后，在下拉列表中选择“直接计算”，该选项会提示你输入名称（用于在列表中显示）、VM 的 IP 地址和端口（通常为 8000，这是 JupyterHub 侦听的默认端口）和 VM 凭据：
-
-![提示收集“直接计算”选项的服务器信息](media/project-compute-tier-direct.png)
-
-如果满足以下条件，则下拉列表还会显示“[Data Science Virtual Machine (DSVM)](/azure/machine-learning/data-science-virtual-machine)”实例。 （如果不满足任何这些条件，仍然可以使用“直接计算”选项连接到 DSVM 并输入从 Azure 门户获取的值。）
-
-- 使用 Azure Active Directory (AAD) 帐户（例如公司帐户）登录 Azure Notebooks。
-- 你的帐户已连接到 Azure 订阅。
-- 在该订阅中有一个或多个虚拟机至少具有读者访问权限，并使用 Data Science Virtual Machine for Linux (Ubuntu) 映像。
-
-![Data Science Virtual Machine 实例位于项目仪表板的下拉列表中](media/project-compute-tier-dsvm.png)
-
-选择 DSVM 实例时，Azure Notebooks 可能会提示输入创建 VM 时使用的特定计算机凭据。
-
-要创建新的 DSVM 实例，请按照[创建 Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)上的说明进行操作。 如果希望 DSVM 出现在 Azure Notebooks 的下拉列表中，则使用适用于 Linux (Ubuntu) 的 Data Science Virtual Machine 映像。  如果出于其他原因需要使用 Windows 或 CentOS 映像，则可以使用“直接计算”选项手动连接到 DSVM。
-
-> [!IMPORTANT]
-> 当使用直接计算或数据科学虚拟机，在其运行的笔记本必须是完全自包含。 目前，Azure Notebooks 复制仅 *.ipynb*到 VM 的文件，但不会将任何其他文件复制项目中。 因此，其他 Vm 上运行的笔记本无法找到其他项目文件。
->
-> 您可以解决该问题在两种方法：
->
-> 1. 将项目文件手动复制到 VM。
->
-> 2. 嵌入的安装程序笔记本中的文件，您首先该运行之前主 notebook。 在安装程序笔记本中，创建其中的单元格包含文件内容的每个文件的代码单元格。 然后在每个单元格的顶部，插入命令`%%writefile <filename>`，其中`<filename>`是要接收内容的文件的名称。 运行 notebook，它会创建这些 VM 上的所有文件。 有关示例，请参阅[setup.ipynb 文件在 Microsoft 宠物检测器演示](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb)(GitHub)。
->
->     ![使用 %%的代码单元开头的 writefile 命令](media/setup-notebook-writefile-command.png)
+默认情况下，项目运行**免费计算**层，限制为 4 GB 的内存和 1 GB 的数据，以防止滥用。 可以绕过这些限制，并通过使用不同的虚拟机的 Azure 订阅中已预配提高计算能力。 有关详细信息，请参阅[如何使用数据科学虚拟机](use-data-science-virtual-machine.md)。
 
 ## <a name="edit-project-metadata"></a>编辑项目元数据
 
@@ -119,7 +88,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 | 编辑文件 | i | 打开文件进行编辑。 |
 | 下载 | d | 下载 zip 文件，它包含文件夹的文件或内容。 |
 | 重命名 | a | 提示输入文件或文件夹的新名称。 |
-| 删除 | x | 提示确认，然后从项目中永久地删除文件。 删除不可撤消。 |
+| DELETE | x | 提示确认，然后从项目中永久地删除文件。 删除不可撤消。 |
 | 移动 | m | 将文件移到同一项目的其他文件夹中。 |
 
 #### <a name="preview"></a>预览

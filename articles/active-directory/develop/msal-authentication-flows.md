@@ -4,7 +4,7 @@ description: 了解有关使用由 Microsoft 身份验证库 (MSAL) 身份验证
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39f323c2ac86e8d42319b3d99221f6c20beff3e4
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cb9a6f162a10408469669cf40b29efc6d2903944
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406685"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546050"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -39,7 +39,7 @@ ms.locfileid: "65406685"
 | [Windows 集成身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication) | 允许应用程序域或 Azure AD 加入的计算机来获取令牌以无提示方式 （无任何来自用户的用户界面交互）。| [桌面/移动应用](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
 | [用户名/密码](scenario-desktop-acquire-token.md#username--password) | 允许应用程序以登录用户，通过直接处理其密码。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token.md#username--password) | 
 
-## <a name="interactive"></a>交互式
+## <a name="interactive"></a>交互
 Msal 也支持能够以交互方式提示用户输入其凭据以登录并获取使用这些凭据的令牌。
 
 ![交互式流](media/msal-authentication-flows/interactive.png)
@@ -138,10 +138,10 @@ MSAL.NET 支持两种类型的客户端凭据。 这些客户端凭据需要注�
   - 或者，任何工作和学校帐户 (`https://login.microsoftonline.com/organizations/`)。
 - Microsoft 个人帐户尚不支持通过 Azure AD v2.0 终结点 (不能使用`/common`或`/consumers`租户)。
 
-## <a name="integrated-windows-authentication"></a>集成 Windows 身份验证
+## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
 为桌面但 msal 也支持集成 Windows 身份验证 (IWA)，或在已加入域或 Azure AD 运行的移动应用程序已加入 Windows 计算机。 使用 IWA，这些应用程序可以获取令牌以无提示方式 （无任何来自用户的用户界面交互）。 
 
-![集成 Windows 身份验证](media/msal-authentication-flows/integrated-windows-authentication.png)
+![Windows 集成身份验证](media/msal-authentication-flows/integrated-windows-authentication.png)
 
 1. 获取使用集成 Windows 身份验证的令牌。
 2. 使用令牌发出请求的资源。

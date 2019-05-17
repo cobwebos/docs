@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e3a27ab15c72289dd28e31d832b81407a66dc754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6e09ec1f070f9ee0f4162524e4bd80d1f81adc3
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60546071"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560642"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
@@ -132,12 +132,47 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 ## <a name="best-practices"></a>最佳做法
 
-如果要从基于文件的数据存储复制大量数据，建议：
+若要评估在一般情况下升级从 Azure Data Lake 存储 (ADLS) Gen1 到第 2 代，请参阅[将大数据分析解决方案从 Azure 数据湖存储 Gen1 升级到 Azure 数据湖存储第 2 代](../storage/blobs/data-lake-storage-upgrade.md)。 以下部分介绍从 Gen1 到第 2 代的数据升级为使用 ADF 的最佳做法。
 
-- 将文件分成每个 10TB 到 30TB 的文件集。
-- 请勿触发过多并发复制，以便避免受到来自源或接收器数据存储的限制。 可先进行一个复制操作并监视吞吐量，然后按需逐渐增加。
+### <a name="data-partition-for-historical-data-copy"></a>对于历史数据副本的数据分区
+
+- 如果你在 ADLS Gen1 的总数据大小小于**30 TB**和文件数是否小于**1 百万个**，可以将所有数据都复制运行的单个都复制活动中。
+- 如果具有更大大小的数据要复制，或希望灵活地管理批处理中的数据迁移并使每个特定计时时段内完成，建议以对数据进行分区，这种情况下这还会缩短任何意外的 iss 的风险ue。
+
+若要验证端到端解决方案，然后在环境中测试复制吞吐量强烈建议 PoC （概念）。 执行 PoC 的主要步骤： 
+
+1. 创建包含单个复制活动将数 Tb 的数据从 ADLS Gen1 复制 ADLS 第 2 代，若要获取复制性能基准，从开始到一个 ADF 管道[数据集成单位 (DIUs)](copy-activity-performance.md#data-integration-units)为 128。 
+2. 根据在步骤 #1 中获取的复制吞吐量，计算整个数据迁移的所需的估计的时间。 
+3. （可选）创建控制表并定义要分区的文件要迁移的文件筛选器。 分区的文件按如下操作方法： 
+
+    - 使用通配符筛选器 （建议） 分区按文件夹名称或文件夹名称 
+    - 按文件的上次修改时间分区 
+
+### <a name="network-bandwidth-and-storage-io"></a>网络带宽和存储 I/O 
+
+以便可以为了在迁移期间不会影响在正常业务工作，ADLS Gen1 管理存储 I/O 上的使用情况，您可以控制从 ADLS Gen1 读取数据并将数据写入到 ADLS 第 2 代，ADF 复制作业的并发性。
+
+### <a name="permissions"></a>权限 
+
+在数据工厂[ADLS Gen1 连接器](connector-azure-data-lake-store.md)支持服务主体和托管标识的 Azure 资源的身份验证;[ADLS 第 2 代连接器](connector-azure-data-lake-storage.md)支持的帐户密钥，服务主体和 Azure 资源的身份验证的托管标识。 使数据工厂能够导航并复制所有文件/Acl 根据需要都请确保授予高足够的权限的帐户提供访问/读取/写入到的所有文件，并设置 Acl，你可以选择。 建议在迁移期间授予其作为 super 用户/所有者角色。 
+
+### <a name="preserve-acls-from-data-lake-storage-gen1"></a>保留从数据湖存储 Gen1 Acl
+
+如果你想要从数据湖存储 Gen1 升级到第 2 代时复制文件以及数据文件的 Acl，请参阅[从数据湖存储 Gen1 保留 Acl](connector-azure-data-lake-storage.md#preserve-acls-from-data-lake-storage-gen1)。 
+
+### <a name="incremental-copy"></a>增量复制 
+
+几种方法可用于从 ADLS Gen1 加载仅将新的或更新文件：
+
+- 加载新的或更新文件按时间分区文件夹或文件名称，例如/2019年/05/13 / *;
+- 加载 LastModifiedDate; 通过新的或更新文件
+- 通过任何第三方工具/解决方案，来识别新的或更新文件，然后将文件或文件夹名称参数或表/文件通过传递给 ADF 管道。  
+
+若要执行增量加载的适当频率取决于 ADLS Gen1 中的文件总数以及要加载每次新的或更新文件的卷。  
 
 ## <a name="next-steps"></a>后续步骤
 
-* [复制活动概述](copy-activity-overview.md)
-* [Azure Data Lake Storage Gen2 连接器](connector-azure-data-lake-storage.md)
+> [!div class="nextstepaction"]
+> [复制活动概述](copy-activity-overview.md)
+> [Azure 数据湖存储 Gen1 连接器](connector-azure-data-lake-store.md)
+> [Azure 数据湖存储第 2 代连接器](connector-azure-data-lake-storage.md)

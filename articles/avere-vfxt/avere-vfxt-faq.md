@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 47a4b38d39c52992b51284776ec34cb9491020e7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409936"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595408"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure FAQ
 
@@ -204,7 +204,7 @@ Avere vFXT 环境与任何其他 Azure VM 类似，因为它需要通过网络�
 
 一般情况下，根据需要可以在 vnet 上配置额外的安全，但某些限制可能会干扰群集操作。
 
-例如，从 vnet 限制出站 internet 访问权限会导致问题的群集除非您还将添加规则显式允许访问 AzureConnectors 和 AzureCloud。 这种情况下所述[GitHub 上的补充文档](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)。
+例如，从 vnet 限制出站 internet 访问权限会导致问题的群集除非您还将添加显式允许访问 AzureCloud 的规则。 这种情况下所述[GitHub 上的补充文档](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)。
 
 自定义安全的帮助，请联系支持部门中所述[获取有关您的系统的帮助](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)。
 

@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785040"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604102"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
@@ -123,13 +123,13 @@ ms.locfileid: "60785040"
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. 选择“运行查询”。 如果表中未显示用户 ID，请更改为应用程序用户所在的国家/地区。
+3. 选择“运行查询”。 如果看不到表中会显示用户 Id，将更改为应用程序的用户的其中某个国家/地区。
 
 4. 保存并命名队列。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-_我已定义某些国家/地区的用户的队列。当我在“用户”工具中创建此队列，与只是基于该国家/地区设置筛选器进行比较时，看到了不同的结果。为什么？_
+_我已定义一的组从特定国家/地区的用户。当我比较到只需在该国家/地区设置筛选器用户工具中的创建此队列时，我看到不同的结果。为什么？_
 
 队列与筛选器有所不同。 假设你为英国的用户创建了一个队列（类似于上述示例中的定义），并将结果与设置筛选器“国家或地区 = 英国”进行比较。
 

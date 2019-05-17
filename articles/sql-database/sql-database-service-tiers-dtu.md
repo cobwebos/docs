@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/25/2019
-ms.openlocfilehash: 57a20ac29ec3a15db26e0ab2c0b61b57ab3a5882
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/10/2019
+ms.openlocfilehash: 5d769e2198b714d611b3004e11ccc624d4c6acdf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709053"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546453"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
@@ -113,7 +113,7 @@ ms.locfileid: "60709053"
 | Update Heavy |UPDATE；大多数在内存中；读写 |
 | Insert Lite |INSERT；在内存中；读写 |
 | Insert Heavy |INSERT；大多数不在内存中；读写 |
-| 删除 |DELETE；在内存中和不在内存中的组合；读写 |
+| DELETE |DELETE；在内存中和不在内存中的组合；读写 |
 | CPU Heavy |SELECT；在内存中；相对较高的 CPU 负载；只读 |
 
 ### <a name="workload-mix"></a>工作负荷组合

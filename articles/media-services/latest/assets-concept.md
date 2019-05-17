@@ -9,30 +9,27 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 05/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0fc44bfdb98b81bf218cb2f1824f0f1bb14de4fa
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 2afcf2066238414cd08e32901ffccf2a44718b6d
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235678"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551762"
 ---
 # <a name="assets"></a>资产
 
-在 Azure 媒体服务中，[资产](https://docs.microsoft.com/rest/api/media/assets)包含数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）以及这些文件的相关元数据。 数字文件在上传到资产后，可用于媒体服务编码、流式处理和分析内容工作流。 有关详细信息，请参阅下面的[将数字文件上传到资产](#upload-digital-files-into-assets)部分。
+Azure 媒体服务中[资产](https://docs.microsoft.com/rest/api/media/assets)包含数字文件 （包括视频、 音频、 图像、 缩略图集合、 文本轨道和隐藏式字幕文件） 的 Azure 存储中存储有关的信息。 
 
 资产将映射到 [Azure 存储帐户](storage-account-concept.md)中的 Blob 容器，资产中的文件作为块 Blob 存储在该容器中。 当帐户使用常规用途 v2 (GPv2) 存储时，媒体服务支持 Blob 层。 使用 GPv2 可将文件移到[冷存储或存档存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)。 **存档**存储适合存档不再需要的源文件（例如，编码后的源文件）。
 
 建议仅将**存档**存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联的、用于流式传输或分析内容的输出容器中的 Blob 必须位于**热**或**冷**存储层中。
 
-> [!NOTE]
-> 属于日期/时间类型的资产的属性始终采用 UTC 格式。
-
 ## <a name="upload-digital-files-into-assets"></a>将数字文件上传到资产
 
-一个常见的媒体服务工作流是上传、编码和流式传输文件。 本部分概述常规步骤。
+数字文件将上传到存储并与资产相关联后，可以在媒体服务编码、 流式处理、 分析内容的工作流中使用它们。 一个常见的媒体服务工作流是上传、编码和流式传输文件。 本部分概述常规步骤。
 
 > [!TIP]
 > 开始开发之前，请查看[使用媒体服务 v3 Api 进行开发](media-services-apis-overview.md)（包括访问 Api，命名约定，等等信息。）
@@ -54,6 +51,9 @@ ms.locfileid: "65235678"
 有关演示如何创建资产、获取存储中资产容器的可写 SAS URL，以及使用 SAS URL 将文件上传到存储中的容器的完整 .NET 示例，请参阅[从本地文件创建作业输入](job-input-from-local-file-how-to.md)。
 
 ### <a name="create-a-new-asset"></a>创建新资产
+
+> [!NOTE]
+> 属于日期/时间类型的资产的属性始终采用 UTC 格式。
 
 #### <a name="rest"></a>REST
 

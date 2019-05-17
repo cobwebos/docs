@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: 描述的过程，该 power Azure 开发人员空格和如何 azds.yaml 配置文件中配置
 keywords: azds.yaml，Azure 开发人员空格、 开发空格、 Docker、 Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60687121"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605408"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure 开发人员空间如何工作，是配置
 
@@ -29,7 +29,7 @@ Azure 开发人员空间创建并部署、 运行和调试 Kubernetes 应用程�
 
 * [使用 CLI 和 Visual Studio Code 的 Java](quickstart-java.md)
 * [.NET core 和 CLI 和 Visual Studio Code](quickstart-netcore.md)
-* [.NET core 和 Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [.NET core 和 Visual Studio](quickstart-netcore-visualstudio.md)
 * [使用 CLI 和 Visual Studio Code 的 Node.js](quickstart-nodejs.md)
 
 ## <a name="how-azure-dev-spaces-works"></a>Azure 开发人员空间的工作原理
@@ -66,7 +66,7 @@ Azure 开发人员空间的两个与交互的不同组件： 在控制器和客�
 可以使用客户端从命令行工具的一部分`azds`命令。 此外可以使用客户端工具：
 
 * 使用 visual Studio Code [Azure 开发人员空间扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。
-* 带有 visual Studio 2017[适用于 Kubernetes 的 Visual Studio 工具](https://aka.ms/get-vsk8stools)。
+* Visual Studio 中的使用[适用于 Kubernetes 的 Visual Studio 工具](https://aka.ms/get-vsk8stools)。
 
 下面是用于设置和使用 Azure 开发人员空间的基本流程：
 1. 为 Azure 开发人员空间准备你的 AKS 群集
@@ -337,7 +337,7 @@ install:
 
 在上述示例中， *install.set.replicaCount*属性会指示控制器在你开发的空间中运行应用程序的多少个实例。 具体取决于你的方案，可以增大此值，但它会影响将调试器附加到应用程序的 pod。 有关详细信息，请参阅[疑难解答文章](troubleshooting.md)。
 
-生成 Helm 图表，在容器映像设置为 *{{。Values.image.repository}}:{{。Values.image.tag}}*。 `azds.yaml`文件定义*install.set.image.tag*属性设置为 *$(tag)* 默认情况下，它作为的值中使用 *{{。Values.image.tag}}*。 通过设置*install.set.image.tag*以这种方式的属性，它允许你的应用程序来运行 Azure 开发人员空格时以不同方式标记容器映像。 在此特定情况下，映像标记为 *<value from image.repository>: $(tag)*。 必须使用 *$(tag)* 变量的值作为*install.set.image.tag*为了使开发人员空间识别并找出在 AKS 群集中的容器。
+生成 Helm 图表，在容器映像设置为 *{{。Values.image.repository}}:{{。Values.image.tag}}*。 `azds.yaml`文件定义*install.set.image.tag*属性设置为 *$(tag)* 默认情况下，它作为的值中使用 *{{。Values.image.tag}}*。 通过设置*install.set.image.tag*以这种方式的属性，它允许你的应用程序来运行 Azure 开发人员空格时以不同方式标记容器映像。 在此特定情况下，映像标记为 *\<image.repository 值 >: $(tag)*。 必须使用 *$(tag)* 变量的值作为*install.set.image.tag*为了使开发人员空间识别并找出在 AKS 群集中的容器。
 
 在上述示例中，`azds.yaml`定义*install.set.ingress.hosts*。 *Install.set.ingress.hosts*属性定义的公共终结点的主机名格式。 此属性也使用 *$(spacePrefix)*， *$(rootSpacePrefix)*，并 *$(hostSuffix)*，这是由控制器提供的值。 
 
@@ -404,11 +404,11 @@ ingress:
 
 ## <a name="debug-your-code"></a>调试代码
 
-对于 Java、.NET 和 Node.js 应用程序，您可以调试直接在您使用 Visual Studio Code 或 Visual Studio 2017 的开发人员共享空间中运行的应用程序。 Visual Studio Code 和 Visual Studio 2017 提供了工具连接到你的开发空间，启动应用程序，并附加调试器。 运行之后`azds prep`，可以在 Visual Studio Code 或 Visual Studio 2017 中打开你的项目。 Visual Studio Code 或 Visual Studio 2017 将生成其自己的配置文件来连接分开运行`azds prep`。 从 Visual Studio Code 或 Visual Studio 2017 中，您可以设置断点并启动应用程序以便对你适用于开发人员的空间。
+对于 Java、.NET 和 Node.js 应用程序，您可以调试直接在您使用 Visual Studio Code 或 Visual Studio 的开发人员共享空间中运行的应用程序。 Visual Studio Code 和 Visual Studio 提供了工具连接到你的开发空间，启动应用程序，并附加调试器。 运行之后`azds prep`，可以在 Visual Studio Code 或 Visual Studio 中打开你的项目。 Visual Studio Code 或 Visual Studio 将生成其自己的配置文件来连接分开运行`azds prep`。 从 Visual Studio Code 或 Visual Studio 中，您可以设置断点并启动应用程序以便对你适用于开发人员的空间。
 
 ![调试代码](media/get-started-node/debug-configuration-nodejs2.png)
 
-当您启动使用 Visual Studio Code 或 Visual Studio 2017 调试应用程序时，它们处理启动并正在运行相同的方式连接到你的开发空间`azds up`。 Visual Studio Code 和 Visual Studio 2017 中的客户端工具还提供与特定的调试信息的附加参数。 参数包含的调试程序映像中调试器的映像中, 调试器的位置和应用程序的容器装载调试器文件夹中的目标位置的名称。 
+启动时使用 Visual Studio Code 或 Visual Studio 进行调试的应用程序，它们处理启动并正在运行相同的方式连接到你的开发空间`azds up`。 Visual Studio Code 和 Visual Studio 中的客户端工具还提供与特定的调试信息的附加参数。 参数包含的调试程序映像中调试器的映像中, 调试器的位置和应用程序的容器装载调试器文件夹中的目标位置的名称。 
 
 由客户端工具自动确定调试程序映像。 它使用类似于在 Dockerfile 过程中使用的方法和 Helm 图表生成运行时`azds prep`。 在应用程序的映像中装载调试器后，运行使用`azds exec`。
 
@@ -433,12 +433,12 @@ ingress:
 
 * [使用 CLI 和 Visual Studio Code 的 Java](quickstart-java.md)
 * [.NET core 和 CLI 和 Visual Studio Code](quickstart-netcore.md)
-* [.NET core 和 Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [.NET core 和 Visual Studio](quickstart-netcore-visualstudio.md)
 * [使用 CLI 和 Visual Studio Code 的 Node.js](quickstart-nodejs.md)
 
 若要开始使用团队开发，请参阅以下操作指南文章：
 
 * [团队开发-使用 CLI 和 Visual Studio Code 的 Java](team-development-java.md)
 * [-.NET Core CLI 和 Visual Studio Code 和进行团队开发](team-development-netcore.md)
-* [团队开发的.NET Core 和 Visual Studio 2017](team-development-netcore-visualstudio.md)
+* [团队开发的.NET Core 和 Visual Studio](team-development-netcore-visualstudio.md)
 * [团队开发-使用 CLI 和 Visual Studio Code 的 Node.js](team-development-nodejs.md)

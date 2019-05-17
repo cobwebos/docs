@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6fd9ce1947b8207aced44204fc2989622a1998f2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926285"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761923"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -59,12 +59,7 @@ Azure 不认可的 Linux 服务器分发版不支持 Azure 磁盘加密，并且
 | CentOS | 7.4 | OS 和数据磁盘 |
 | CentOS | 7.3 | OS 和数据磁盘 |
 | CentOS | 7.2n | OS 和数据磁盘 |
-| CentOS | 6.8 | OS 和数据磁盘 |
-| CentOS | 7.1 | 数据磁盘 |
-| CentOS | 7.0 | 数据磁盘 |
-| CentOS | 6.7 | 数据磁盘 |
-| CentOS | 6.6 | 数据磁盘 |
-| CentOS | 6.5 | 数据磁盘 |
+| CentOS | 6.8 | 数据磁盘 |
 | openSUSE | 42.3 | 数据磁盘 |
 | SLES | 12-SP4 | 数据磁盘 |
 | SLES | 12-SP3 | 数据磁盘 |
@@ -113,7 +108,7 @@ Azure 磁盘加密具有先决条件。 若要创建新的 Key Vault 或设置�
 Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条件](azure-security-disk-encryption-prerequisites-aad.md)一文，创建 Azure Active Directory 应用程序、创建新的 Key Vault 或设置现有 Key Vault 进行磁盘加密访问，以启用加密并保护机密和密钥。 有关密钥加密密钥支持方案的详细信息，请参阅 [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)。
 
 ## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>是否仍然支持使用 Azure AD 应用（早期版本）进行 Azure 磁盘加密？
-是的。 仍然支持使用 Azure AD 应用进行磁盘加密。 不过，当加密新的 VM 时，建议使用新方法而不是使用 Azure AD 应用进行加密。 
+可以。 仍然支持使用 Azure AD 应用进行磁盘加密。 不过，当加密新的 VM 时，建议使用新方法而不是使用 Azure AD 应用进行加密。 
 
 ## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>是否可以在不使用 Azure AD 应用的情况下将通过 Azure AD 应用加密的 VM 迁移到此加密？
   当前，对于通过 Azure AD 应用加密的计算机，没有直接迁移路径可用来在不使用 Azure AD 应用的情况下迁移到此加密。 此外，也没有直接路径用来将未使用 Azure AD 应用的加密迁移到使用 AD 应用的加密。 
@@ -158,7 +153,7 @@ Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条�
 否，不会擦除已使用 Azure 磁盘加密进行了加密的数据驱动器上的数据。 与 EncryptFormatAll 不重新加密 OS 驱动器类似，它也不会重新加密已加密的数据驱动器。 有关详细信息，请参阅 [EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)。        
 
 ## <a name="is-xfs-filesystem-supported"></a>是否支持 XFS 文件系统？
-数据磁盘加密仅使用 EncryptFormalAll 支持 XFS 卷。 这将重新格式化该卷，清除以前在那里任何数据。 有关详细信息，请参阅 [EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)。
+数据磁盘加密仅使用 EncryptFormatAll 支持 XFS 卷。 这将重新格式化该卷，清除以前在那里任何数据。 有关详细信息，请参阅 [EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)。
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>可以备份和还原已加密的 VM？ 
 

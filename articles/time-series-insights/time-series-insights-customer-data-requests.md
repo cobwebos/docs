@@ -4,17 +4,17 @@ description: Azure 时序见解客户数据请求功能摘要。
 author: ashannon7
 ms.author: anshan
 manager: cshankar
-ms.date: 05/17/2018
+ms.date: 05/08/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 30f6b1fd953f89170a18d56bf0353c643853074e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67aea6b3d535eeb0838da4ac6990c50e607617bf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880702"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546387"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -65,3 +65,11 @@ Azure 时序见解将个人数据视为与时序见解的管理员和用户相�
 目前，时序见解不支持数据的粒度删除。 但是，通过配置保留策略，时序见解能够删除存储在时序见解中的客户数据。 可将整个时序见解环境的保持期调整为任意天数以支持删除需求。
 
 有关详细信息，请参阅[配置时序见解中的保留期](time-series-insights-how-to-configure-retention.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 详细了解[授予数据访问到 TSI 环境](./time-series-insights-data-access.md)。
+
+* 视图[Azure 时序见解资源管理器](time-series-insights-explorer.md)。
+
+* 了解如何[时序见解中配置保留期](time-series-insights-how-to-configure-retention.md)。

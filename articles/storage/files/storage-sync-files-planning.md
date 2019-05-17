@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f29625ed8ddd6eabf8b75380d84d7a7b64396d7a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696517"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597078"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -159,7 +159,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 | \*.laccdb | Access DB 锁定文件|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | 内部同步文件|
 | \\系统卷信息 | 特定于卷的文件夹 |
-| $RECYCLE.BIN| Folder |
+| $RECYCLE.BIN| 文件夹 |
 | \\SyncShareState | 用于同步的文件夹 |
 
 ### <a name="failover-clustering"></a>故障转移群集
@@ -256,10 +256,18 @@ Azure 文件同步仅在以下区域中可用：
 | 东南亚 | 新加坡 |
 | 英国南部 | 伦敦 |
 | 英国西部 | 加的夫 |
+| 美国亚利桑那州的政府 （预览版） | 亚利桑那 |
+| 美国德克萨斯州的政府 （预览版） | Texas |
+| 美国弗吉尼亚州政府 （预览版） | 弗吉尼亚州 |
 | 西欧 | 荷兰 |
+| 美国中西部 | 怀俄明 |
 | 美国西部 | California |
+| 美国西部 2 | Washington |
 
 Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。
+
+> [!Note]  
+> Azure 文件同步目前仅在政府版区域的专用预览版中可用。 请参阅我们[发行说明](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#agent-version-5020)有关在预览程序中注册的说明。
 
 ### <a name="azure-disaster-recovery"></a>Azure 灾难恢复
 为了防止 Azure 区域丢失，Azure 文件同步集成了[异地冗余存储冗余](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) 选项。 GRS 存储的工作原理是在主要区域中的存储（你通常与之交互）和配对次要区域中的存储之间使用异步块复制。 发生导致 Azure 区域暂时或永久脱机的灾难时，Microsoft 会将存储故障转移到配对区域。 
@@ -271,8 +279,9 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 
 | 主要区域      | 配对区域      |
 |---------------------|--------------------|
-| 澳大利亚东部      | 澳大利亚东南部 |
+| 澳大利亚东部      | 澳大利亚东南部|
 | 澳大利亚东南部 | 澳大利亚东部     |
+| 巴西南部        | 美国中南部   |
 | 加拿大中部      | 加拿大东部        |
 | 加拿大东部         | 加拿大中部     |
 | 印度中部       | 印度南部        |
@@ -280,16 +289,24 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | 东亚           | 东南亚     |
 | 美国东部             | 美国西部            |
 | 美国东部 2           | 美国中部         |
+| 日本东部          | 日本西部         |
+| 日本西部          | 日本东部         |
 | 韩国中部       | 韩国南部        |
 | 韩国南部         | 韩国中部      |
 | 北欧        | 西欧        |
 | 美国中北部    | 美国中南部   |
+| 美国中南部    | 美国中北部   |
 | 印度南部         | 印度中部      |
 | 东南亚      | 东亚          |
 | 英国南部            | 英国西部            |
 | 英国西部             | 英国南部           |
+| 美国亚利桑那州政府      | 美国德克萨斯州政府       |
+| US Gov 爱荷华州         | 美国政府弗吉尼亚州    |
+| 美国政府 Virgini      | 美国德克萨斯州政府       |
 | 西欧         | 北欧       |
+| 美国中西部     | 美国西部 2          |
 | 美国西部             | 美国东部            |
+| 美国西部 2           | 美国中西部    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

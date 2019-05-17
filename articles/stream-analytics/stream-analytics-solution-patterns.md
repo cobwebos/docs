@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4f4f22628d2c2a6beb7974aa9b776a2148a3fee0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65238057"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761981"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics 解决方案模式
 
@@ -58,7 +58,7 @@ SQL 不是高吞吐量数据存储，并从 Azure Stream Analytics 到 SQL 数�
 
 大多数 web 服务和 web 应用程序现在使用请求/响应模式为表示层提供服务。 请求/响应模式是从简单到生成，并且可以轻松地扩展与使用无状态前端和可缩放存储，Cosmos DB 等低响应时间。
 
-通常，较高的数据卷的基于 CRUD 的系统中创建性能瓶颈。 [事件溯源解决方案模式](/azure/architecture/patterns/event-sourcing.md)用于解决性能瓶颈。 临时模式和见解，也比较困难并且效率低下，若要从传统的数据存储中提取。 新式大批量的数据驱动的应用程序通常采用基于数据流的体系结构。 作为动态数据计算引擎的 azure Stream Analytics 是该体系结构中的关键。
+通常，较高的数据卷的基于 CRUD 的系统中创建性能瓶颈。 [事件溯源解决方案模式](/azure/architecture/patterns/event-sourcing)用于解决性能瓶颈。 临时模式和见解，也比较困难并且效率低下，若要从传统的数据存储中提取。 新式大批量的数据驱动的应用程序通常采用基于数据流的体系结构。 作为动态数据计算引擎的 azure Stream Analytics 是该体系结构中的关键。
 
 ![ASA 事件溯源应用](media/stream-analytics-solution-patterns/eventsourcingapp.png)
 

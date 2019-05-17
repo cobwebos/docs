@@ -13,14 +13,14 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 03bf0833bdc1bda24b9d435dafe329e9a3c8e4b2
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712430"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596498"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows Data Science Virtual Machine
 
@@ -105,6 +105,8 @@ DSVM 中随附以下工具：
 ## <a name="how-to-access-the-dsvm"></a>如何访问 DSVM
 
 创建并预配 VM 后，可以使用在前面的“基本信息”部分配置的管理员帐户凭据从远程桌面登录到 VM。 现在，可以开始使用 VM 上安装并配置的工具。 可以通过开始菜单磁贴和桌面图标访问许多工具。
+
+此外可以将数据科学 VM 附加到 Azure 笔记本，以在 VM 上运行的 Jupyter 笔记本并绕过限制的免费服务层。 有关详细信息，请参阅[管理和配置笔记本项目-计算层](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Microsoft 数据科研虚拟机上安装的工具
 

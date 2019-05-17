@@ -5,23 +5,23 @@ services: openshift
 keywords: red hat openshift 的安装程序设置
 author: TylerMSFT
 ms.author: twhitney
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 3c265d6695af7ba1bc5833db59966a626cb29cb9
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 6e859f57f9b5f24ea2f0172f5aa35a60d9769f19
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416068"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551709"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>设置 Azure Red Hat OpenShift 开发环境
 
 若要生成并运行 Microsoft Azure Red Hat OpenShift 的应用程序，你将需要：
 
 * 购买 Azure 虚拟机保留实例。
-* 安装版本 2.0.64 （或更高版本） 的 Azure CLI （或使用 Azure Cloud Shell）。
+* 安装版本 2.0.65 （或更高版本） 的 Azure CLI （或使用 Azure Cloud Shell）。
 * 注册`openshiftmanagedcluster`功能和关联的资源提供程序。
 * 创建一个 Azure Active Directory (Azure AD) 租户。
 * 创建 Azure AD 应用程序对象。
@@ -39,13 +39,13 @@ ms.locfileid: "65416068"
 
 ## <a name="install-the-azure-cli"></a>安装 Azure CLI
 
-Azure Red Hat OpenShift 需要版本 2.0.64 或更高版本的 Azure cli。 如果你已安装 Azure CLI，可以检查已通过运行哪个版本：
+Azure Red Hat OpenShift 需要版本 2.0.65 或更高版本的 Azure cli。 如果你已安装 Azure CLI，可以检查已通过运行哪个版本：
 
 ```bash
 az --version
 ```
 
-输出的第一行将具有的 CLI 版本，例如`azure-cli (2.0.64)`。
+输出的第一行将具有的 CLI 版本，例如`azure-cli (2.0.65)`。
 
 以下是有关的说明[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)如果需要全新安装或升级。
 
@@ -55,7 +55,8 @@ az --version
 
 `Microsoft.ContainerService openshiftmanagedcluster`功能， `Microsoft.Solutions`，和`Microsoft.Network`必须到你的订阅部署第一个 Azure Red Hat OpenShift 群集之前手动注册提供程序。
 
-若要手动注册这些提供程序和功能，可在 Azure 门户中使用以下说明从 Bash shell 中，如果你已安装 CLI，或从 Azure Cloud Shell (Bash) 会话:。
+若要手动注册这些提供程序和功能，请在 Azure 门户中使用以下说明从 Bash shell 中，如果你已安装 CLI，或从 Azure Cloud Shell (Bash) 会话：
+
 1. 如果你有多个 Azure 订阅，请指定相关的订阅 ID:
 
     ```bash
@@ -98,11 +99,11 @@ Azure Red Hat OpenShift 服务需要向 Microsoft 表示你的组织和其关系
 
 如果你没有 Azure AD 要作为租户用于 Azure Red Hat OpenShift 群集，或如果想要创建用于测试租户，请按照中的说明[创建 Azure Red Hat OpenShift 群集的 Azure AD 租户](howto-create-tenant.md)之前继续执行本指南。
 
-## <a name="create-an-azure-ad-application-object-and-user"></a>创建 Azure AD 应用程序对象和用户
+## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>创建 Azure AD 用户、 安全组和应用程序对象
 
-Azure Red Hat OpenShift 需要权限才能在你的群集，例如配置存储上执行任务。 这些权限都是通过[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)以及在注册 Azure AD 应用程序表示你想要在 Azure Red Hat OpenShift 上托管的工作负荷时创建。 此外需要创建一个新的 Active Directory 用户用于测试你的 Azure Red Hat OpenShift 群集上运行的应用。
+Azure Red Hat OpenShift 需要权限才能在你的群集，例如配置存储上执行任务。 这些权限都是通过[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 此外需要创建一个新的 Active Directory 用户用于测试你的 Azure Red Hat OpenShift 群集上运行的应用。
 
-按照中的说明[创建 Azure AD 应用程序对象和用户](howto-aad-app-configuration.md)若要了解如何创建服务主体，生成你的应用，客户端机密和身份验证回调 URL，并为测试创建新的 Active Directory 用户。
+按照中的说明[创建 Azure AD 应用程序对象和用户](howto-aad-app-configuration.md)若要创建服务主体，请生成您的应用程序的客户端机密和身份验证回调 URL 并创建一个新 Azure AD 安全组和用户访问群集。
 
 ## <a name="next-steps"></a>后续步骤
 

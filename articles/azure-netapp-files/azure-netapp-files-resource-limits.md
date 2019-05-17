@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: b-juche
-ms.openlocfilehash: d55e11ace4ca306c3d3ec8c0094a751966289db6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: b55467d77beb8f97b8e392b72682268ae0407e54
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523053"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826379"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -31,16 +31,17 @@ ms.locfileid: "65523053"
 
 |  资源  |  默认限制  |  通过支持请求可调整  |
 |----------------|---------------------|--------------------------------------|
-|  每个 Azure 订阅的 NetApp 帐户数   |  10    |  是   |
-|  每个 NetApp 帐户的容量池数   |    25     |   是   |
-|  每个容量池的卷数     |    500   |    是     |
-|  每个卷的快照数       |    255     |    否        |
-|  委派给 Azure NetApp 文件 (Microsoft.NetApp/volumes) 每个 Azure 虚拟网络的子网数    |   第   |    否    |
-|  单个容量池的最小大小   |  4 TiB     |    否  |
-|  单个容量池的最大大小    |  500 TiB   |   否   |
-|  是单个卷的最小大小    |    100 GiB    |    否    |
-|  最大分配配额的单个卷 *   |   92 TiB   |    否   |
-|  最大大小为单个卷 *     |    100 TiB    |    否       |
+|  每个 Azure 订阅的 NetApp 帐户数   |  10    |  “是”   |
+|  每个 NetApp 帐户的容量池数   |    25     |   “是”   |
+|  每个容量池的卷数     |    500   |    “是”     |
+|  每个卷的快照数       |    255     |    “否”        |
+|  委派给 Azure NetApp 文件 (Microsoft.NetApp/volumes) 每个 Azure 虚拟网络的子网数    |   第   |    “否”    |
+|  最大 Vm 数 （包括对等的 Vnet），可以连接到的卷     |    1000   |    “否”   |
+|  单个容量池的最小大小   |  4 TiB     |    “否”  |
+|  单个容量池的最大大小    |  500 TiB   |   “否”   |
+|  是单个卷的最小大小    |    100 GiB    |    “否”    |
+|  最大分配配额的单个卷 *   |   92 TiB   |    “否”   |
+|  最大大小为单个卷 *     |    100 TiB    |    “否”       |
 
 * 卷可以手动创建或大小调整为最常 92 TiB。 但是，卷可以增长的超额的方案中最多 100 个 TiB。 请参阅[Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md)有关容量超额的详细信息。 
 
@@ -64,7 +65,7 @@ ms.locfileid: "65523053"
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  帐户 |  *订阅 ID*   |  *请求新的最大**帐户**数*    |  *哪些方案或用例提示请求？*  |
         |  池    |  *订阅 ID，帐户 URI*  |  *请求新的最大**池**数*   |  *哪些方案或用例提示请求？*  |
-        |  数据量(Volume)  |  *订阅 ID，帐户的 URI，池 URI*   |  *请求新的最大**卷**数*     |  *哪些方案或用例提示请求？*  |
+        |  卷  |  *订阅 ID，帐户的 URI，池 URI*   |  *请求新的最大**卷**数*     |  *哪些方案或用例提示请求？*  |
 
     2. 指定相应的支持方法并提供你的协定信息。
 

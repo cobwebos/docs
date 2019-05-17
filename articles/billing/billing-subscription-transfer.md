@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9af3b1b9c267bc09b370717913722a6c53ad5a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ffebdd5b88603113dd7624e97dcf7353ab5d1ba
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371059"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605561"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
@@ -119,7 +119,7 @@ ms.locfileid: "60371059"
 
 ### <a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
 
-很抱歉，你的套餐或国家/地区不支持自助服务订阅转让。 若要转移订阅，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+遗憾的是，自助服务订阅转让不可用于你的产品/服务或国家/地区。 若要转移订阅，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>订阅转让会造成任何服务停机吗？
 
@@ -156,9 +156,9 @@ Azure 订阅在帐户管理员所属的目录中创建。 更改目录时，将�
 
 优惠肯定会保持不变。 要更改套餐，请参阅[将 Azure 订阅切换到其他套餐](billing-how-to-switch-azure-offer.md)。
 
-### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-country"></a>可以将订阅转让给另一国家/地区的用户帐户吗？
+### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-countryregion"></a>可以将订阅转让给另一个国家/地区中的用户帐户？
 
-否，不可以将订阅转让给另一国家/地区的用户帐户。 接收方的用户帐户必须在相同的国家/地区。
+否，不支持将订阅传输到另一个国家/地区中的用户帐户。 接收方的用户帐户必须是相同的国家/地区中。
 
 ### <a name="can-the-recipient-use-a-different-payment-method"></a>接收方可以使用不同的付款方式吗？
 

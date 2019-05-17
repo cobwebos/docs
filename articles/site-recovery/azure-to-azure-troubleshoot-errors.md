@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: fafa791039397e93e9bf8ab6be04a2190e8ed784
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699082"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796430"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -232,10 +232,10 @@ ms.locfileid: "64699082"
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 2. 若要解除该警告。 转到复制的项 > VM > 单击概述部分下取消警报。
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
-## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>在“启用复制”选项中看不到 Azure VM
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>无法查看"启用复制"中的选定内容的 Azure VM 或资源组
 
  **原因 1：资源组和源虚拟机位于不同的位置** <br>
-Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同一位置。 如果不是这种情况，那么在保护期间将无法找到虚拟机。
+Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在同一位置。 如果不是这种情况，那么在保护期间将无法找到虚拟机。 作为一种解决方法，可以启用从虚拟机而不是恢复服务保管库的复制。 转到 Sourece VM > 属性 > 灾难恢复和启用复制。
 
 **原因 2：资源组不是所选订阅的一部分** <br>
 如果资源组不是给定订阅的一部分，则可能无法在保护期间找到该资源组。 确保资源组属于正在使用的订阅。
@@ -252,7 +252,7 @@ Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同
 >
 >请确保在使用以下脚本之前更新“AzureRM.Resources”模块。
 
-可使用[删除过时 ASR 配置脚本](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)，删除 Azure VM 上的过时 Site Recovery 配置。 删除过时配置后，应能够看到该 VM。
+可使用[删除过时 ASR 配置脚本](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)，删除 Azure VM 上的过时 Site Recovery 配置。 删除过时配置后，应能够看到该 VM。
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>无法选择虚拟机进行保护
  **原因 1：虚拟机安装的某些扩展处于失败或无响应状态** <br>

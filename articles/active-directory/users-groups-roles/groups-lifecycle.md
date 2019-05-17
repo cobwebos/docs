@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be88f0938a16302be4cf2308ba463900c067104
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1de17429dfe89506445b2d47999b102f3becb15b
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920151"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604396"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
-现在可以通过为 Office 365 组设置过期策略来管理其生命周期。 仅可以在 Azure Active Directory (Azure AD) 中为 Office 365 组设置过期策略。 
+现在可以通过为 Office 365 组设置过期策略来管理其生命周期。 仅可以在 Azure Active Directory (Azure AD) 中为 Office 365 组设置过期策略。
 
 将某个组设置为过期后：
 
@@ -54,7 +54,7 @@ ms.locfileid: "64920151"
 
 1. 使用 Azure AD 租户中的全局管理员帐户打开 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-2. 选择“组”，然后选择“过期”以打开过期设置。
+2. 选择**组**，然后选择**过期**以打开过期设置。
   
    ![组的过期时间设置](./media/groups-lifecycle/expiration-settings.png)
 
@@ -66,8 +66,8 @@ ms.locfileid: "64920151"
   * 设置完成后，选择“保存”来保存设置。
 
 > [!NOTE]
-> * 首次设置过期时，早于过期间隔的所有组将设置为 30 天后过期。 首个续订通知电子邮件将在一天内发出。 例如，组 A 创建于 400 天前，而过期间隔设置为 180 天。 当应用过期设置后，组 A 在被删除前还有 30 天（除非所有者续订它）。
-> * 当删除并还原动态组时，会将视其为一个新组并根据规则重新填充。 此过程可能最多需要 24 小时。
+> 首次设置过期时，早于过期间隔的所有组将设置为 30 天后过期。 首个续订通知电子邮件将在一天内发出。 例如，组 A 创建于 400 天前，而过期间隔设置为 180 天。 当应用过期策略时，组 A 具有 30 天之后删除，, 除非所有者续订它。
+> 当删除或还原动态组时，它看作一个新组并根据规则重新填充。 此过程可能需要最多 24 小时。
 
 ## <a name="email-notifications"></a>电子邮件通知
 

@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64bd2247a3437a2cc960da1820d9be417eedff8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285185"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594015"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
 
@@ -41,10 +41,10 @@ ms.locfileid: "60285185"
 > **延迟 (95%)** 是指报告 95% 的日志所用的时间，**延迟 (99%)** 是指报告 99% 的日志所用的时间。 
 >
 
-| 报表 | 延迟 (95%) |延迟 (99%)|时间范围，在该范围内的日志将被报告|
-| :-- | --- | --- | --- |
-| 审核日志 | 2 分钟  | 5 分钟  | 2-60 分钟 |
-| 登录 | 2 分钟  | 5 分钟 | 2-120 分钟 |
+| 报表 | 延迟 (95%) |延迟 (99%)|
+| :-- | --- | --- |
+| 审核日志 | 2 分钟  | 5 分钟  |
+| 登录 | 2 分钟  | 5 分钟 |
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>获得高级许可证后多久可看见活动数据？
 

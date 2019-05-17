@@ -4,7 +4,7 @@ description: 本文列出 Azure AD 应用程序代理的所有版本，并介绍
 services: active-directory
 documentationcenter: ''
 author: msmimart
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf9ee43c6c6b332c05286da8e330812d7e0db6c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441655"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65783291"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 应用程序代理：版本发行历史记录
 本文列出了版本和已发布的 Azure Active Directory (Azure AD) 应用程序代理功能。 Azure AD 团队定期更新应用程序代理的新特性和功能。 发布新版本时，应用程序代理连接器会自动更新。

@@ -8,13 +8,13 @@ author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: article
-ms.date: 03/18/2019
-ms.openlocfilehash: 0fbe56ceeeba71bcbb5ef358cd66de15e36508fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/13/2019
+ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511935"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597192"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>通过设置静态结果测试具有模拟数据的逻辑应用
 
@@ -137,11 +137,9 @@ ms.locfileid: "60511935"
 
    ![禁用静态结果](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="get-support"></a>获取支持
+## <a name="reference"></a>参考
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
+有关在基础的工作流定义中此设置的详细信息，请参阅[静态结果-的工作流定义语言架构参考](../logic-apps/logic-apps-workflow-definition-language.md#static-results)和[runtimeConfiguration.staticResult-运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 
 ## <a name="next-steps"></a>后续步骤
 

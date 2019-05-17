@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: e1715c2cb66398ff7ca55c0ccdbfe50685fae76e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 433059dc1b1567c5cbcb1091f2d616001d1dbf44
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941982"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762272"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 Api 版本 2 
 
@@ -176,7 +176,7 @@ Response body:
 
 *响应代码：*
 
-代码：200<br>
+代码：200 <br/>
 根据身份验证令牌，获取发布服务器和发布服务器的所有产品/服务的相应订阅。<br> 响应有效负载：<br>
 
 ```json
@@ -207,7 +207,6 @@ Response body:
 ```
 
 继续标记才会显示是否存在的计划，以检索其他"页"。 
-
 
 代码：403 <br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。 
@@ -374,7 +373,7 @@ Response Body:
 
 *响应代码：*
 
-代码：202<br>
+代码：200<br>
 激活订阅。<br>
 
 代码：404<br>
@@ -554,7 +553,7 @@ Request Body:
 
 *响应代码：*
 
-代码：200<br>
+代码：202<br>
 ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 
 代码：404<br>
@@ -786,25 +785,29 @@ Response body:
     "action": "Subscribe",
     "timeStamp": "2018-12-01T00:00:00"
 }
-
-Where action can be one of these: 
-       Subscribe, (When the resource has been activated)
-       Unsubscribe, (When the resource has been deleted)
-       ChangePlan, (When the change plan operation has completed)
-       ChangeQuantity, (When the change quantity operation has completed),
-       Suspend, (When resource has been suspended)
-       Reinstate, (When resource has been reinstated after suspension)
 ```
+
+其中操作可以是下列之一： 
+- `Subscribe`  （当该资源已激活）
+- `Unsubscribe` （当该资源已被删除）
+- `ChangePlan` （当更改计划操作已完成）
+- `ChangeQuantity` （当更改数量操作已完成）
+- `Suspend` （当该资源已被挂起）
+- `Reinstate` （当资源具有已恢复暂挂后）
 
 
 ## <a name="mock-api"></a>模拟 API
 
 可以使用我们的模拟 Api 来帮助你开始进行开发，特别是原型制作和测试项目。 
 
-主机终结点：`https://marketplaceapi.microsoft.com/api` API 版本：`2018-09-15` 无身份验证所需示例 Uri: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15`
+主机终结点： `https://marketplaceapi.microsoft.com/api` <br/>
+API 版本： `2018-09-15` <br/>
+不要求进行验证 <br/>
+示例 Uri: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
 
-在本文中的 API 调用的任何可对模拟主机终结点。 您可能希望获取返回作为响应的模拟数据。
+API 终结点路径都是相同的模拟和实际 Api，但不同的 API 版本。 版本为 2018年-09-15 的模拟和 2018年-08-31 的生产版本。 
 
+在本文中的 API 调用的任何可对模拟主机终结点。 您可能希望获取返回作为响应的模拟数据。 一般情况下，则可能要获取返回作为响应的模拟数据。 对模拟 API 上的更新订阅方法的调用始终返回 500。 
 
 ## <a name="next-steps"></a>后续步骤
 

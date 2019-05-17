@@ -2,22 +2,22 @@
 title: 了解 Azure AD 应用程序代理连接器 | Microsoft 文档
 description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb2a2aa8204ef442bbe3a0e6ff9018cd3f153910
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: f337ea9d55a119c3aec6e94649cdbf049f99e9d6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406494"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65783678"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -85,11 +85,11 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关连接器组的详细信息，请参阅[使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)。
 
-## <a name="capacity-planning"></a>容量计划 
+## <a name="capacity-planning"></a>容量规划 
 
 请务必确保已在连接器之间规划足够的容量以处理预期的流量。 通常，用户越多，需要的计算机容量越大。 下表概述了不同计算机可以处理的数据量。 请注意，它们全都基于预期的每秒事务数 (TPS) 而非按用户计算的，因为使用模式会变化，无法用来预测负载。 还会根据响应大小和后端应用程序响应时间，会有一些差异 - 较大的响应大小和较慢的响应时间将产生较低的最大 TPS。 我们建议使用其他计算机，以便计算机上的分布式负载大约为 50%。 额外的容量将确保高可用性和复原能力。
 
-|内核|RAM|预期的延迟 (MS)-P99|最大 TPS|
+|核心数|RAM|预期的延迟 (MS)-P99|最大 TPS|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|

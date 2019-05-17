@@ -18,12 +18,12 @@ ms.date: 12/07/2017
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 482b69752cc889ff99c3d9082d3bc20a7caa6d76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294450"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784344"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection 通知
 
@@ -39,6 +39,8 @@ Azure AD Identity Protection 会发送两种类型的自动生成的通知电子
 
 当 Azure AD Identity Protection 检测到帐户受到威胁时，会生成“检测到有风险的用户”的警报电子邮件。 该电子邮件包括指向[针对风险报告而标记的用户](../reports-monitoring/concept-user-at-risk.md)的链接。 建议立即调查有风险的用户。
 
+此警报的配置，可指定哪些用户风险级别在你想要生成的警报。 用户的风险级别达到已指定了什么; 时，将生成电子邮件但是，它们移动到此用户风险级别后，不会收到有关此用户的风险检测到电子邮件警报的新用户。 例如，如果设置要对中等用户风险和 John 将移到中等风险用户发出警报的策略，您将接收 John 检测到风险电子邮件的用户。 但是，如果 John 然后移到高风险或有其他风险事件，不会收到在检测到风险警报第二个用户。
+
 ![检测到有风险的用户电子邮件](./media/notifications/01.png)
 
 
@@ -46,7 +48,7 @@ Azure AD Identity Protection 会发送两种类型的自动生成的通知电子
 
 管理员可以设置：
 
-- **触发生成此邮件的风险级别** - 该风险级别默认设置为“高”风险。
+- **触发生成此电子邮件的用户风险级别**-默认情况下，风险级别设置为"高"风险。
 - **此邮件的收件人** - 收件人默认包括所有全局管理员。 全局管理员还可将其他全局管理员、安全管理员、安全读取者添加为收件人。  
 
 

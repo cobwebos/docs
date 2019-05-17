@@ -3,8 +3,8 @@ title: Microsoft 标识平台访问令牌参考 |Azure
 description: 了解如何通过 Azure AD v1.0 和 Microsoft 标识平台 (v2.0) 终结点发出的访问令牌。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07e140ef9f561625bb89498c6b6591734e8a9b10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 24b2281e09da0bdcff0abec8be0091dcbb32cc51
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411397"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544790"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
 客户端可以使用访问令牌安全调用受 Azure 保护的 API。 Microsoft 标识平台访问令牌[Jwt](https://tools.ietf.org/html/rfc7519)，Base64 编码的 JSON 对象由 Azure 签名。 客户端应将访问令牌视为不透明的字符串，作为令牌的内容仅适用于资源。 在验证和调试时，开发人员可以使用 [jwt.ms](https://jwt.ms) 等站点来解码 JWT。 你的客户端可以获取访问令牌从 1.0 版终结点或使用各种协议的 v2.0 终结点。
 
-当你的客户端请求访问令牌时，Azure AD 也会返回一些有关访问令牌，以便应用程序的元数据。 此信息包括访问令牌以及它是有效的作用域的到期时间。 此数据允许应用执行的操作而无需分析访问令牌本身智能缓存访问令牌。
+当你的客户端请求访问令牌时，Azure AD 也会返回一些有关访问令牌，以便应用程序的元数据。 此信息包含访问令牌的过期时间及其有效范围。 此数据可让应用执行访问令牌的智能缓存，而无需分析访问令牌本身。
 
 如果应用程序是客户端可以请求访问的资源 (Web API)，则访问令牌会提供可在身份验证和授权中使用的有用信息，例如用户、客户端、颁发者、权限，等等。
 
@@ -93,26 +93,27 @@ JWT 拆分成三个部分：
 | `iat` | int，UNIX 时间戳 | “Issued At”表示针对此令牌进行身份验证的时间。 |
 | `nbf` | int，UNIX 时间戳 | “nbf”（不早于）声明指定只能在哪个时间之后接受 JWT 的处理。 |
 | `exp` | int，UNIX 时间戳 | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请务必注意，资源也可以在此时间之前拒绝令牌，例如，需要对身份验证进行更改，或者检测到令牌吊销时。 |
-| `acr` | 字符串，“0”或“1” | “身份验证上下文类”声明。 值为“0”指示最终用户身份验证不符合 ISO/IEC 29115 要求。 |
 | `aio` | 不透明字符串 | 一个内部声明，Azure AD 用它来记录有关重复使用令牌的数据。 资源不应使用此声明。 |
-| `amr` | 字符串的 JSON 数组 | 仅在 v1.0 令牌中提供。 标识对令牌使用者的身份验证方式。 有关详细信息，请参阅[amr 声明部分](#the-amr-claim)。 |
+| `acr` | 字符串，“0”或“1” | 仅在 v1.0 令牌中提供。 “身份验证上下文类”声明。 值为“0”指示最终用户身份验证不符合 ISO/IEC 29115 要求。 |
+| `amr` | 字符串的 JSON 数组 | 仅在 v1.0 令牌中提供。 标识对令牌使用者的身份验证方式。 有关更多详细信息，请参阅 [amr 声明部分](#the-amr-claim)。 |
 | `appid` | 字符串，GUID | 仅在 v1.0 令牌中提供。 使用令牌的客户端的应用程序 ID。 该应用程序可以自身名义或者代表用户进行操作。 应用程序 ID 通常表示应用程序对象，但它还可以表示 Azure AD 中的服务主体对象。 |
 | `appidacr` | “0”、“1”或“2” | 仅在 v1.0 令牌中提供。 表示对客户端进行身份验证的方式。 对于公共客户端，值为“0”。 如果使用客户端 ID 和客户端机密，则值为“1”。 如果使用客户端证书进行身份验证，则值为“2”。 |
-| `azp` | 字符串，GUID | 仅在 v2.0 令牌中提供。 使用令牌的客户端的应用程序 ID。 该应用程序可以自身名义或者代表用户进行操作。 应用程序 ID 通常表示应用程序对象，但它还可以表示 Azure AD 中的服务主体对象。 |
-| `azpacr` | “0”、“1”或“2” | 仅在 v2.0 令牌中提供。 表示对客户端进行身份验证的方式。 对于公共客户端，值为“0”。 如果使用客户端 ID 和客户端机密，则值为“1”。 如果使用客户端证书进行身份验证，则值为“2”。 |
-| `groups` | GUID 的 JSON 数组 | 指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过[应用程序清单](reference-app-manifest.md)的 `groupMembershipClaims` 属性基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Office 365 通讯组列表。 <br><br>有关将 `groups` 声明与隐式授权一起使用的详细信息，请参阅下文中的 `hasgroups` 声明。 <br>对于其他流，如果该用户所在的组数超过限制 (对于 SAML，为 JWT 的 200 的 150) 的超额声明添加到声明源指向包含的用户组列表的 Graph 终结点。 |
-| `hasgroups` | Boolean | 如果存在，始终为 `true`，表示用户至少在一个组中。 如果完整组声明将导致 URI 片段超出 URL 长度限制（当前为 6 个或更多组），则在隐式授权流中用来替代 JWT 的 `groups` 声明。 指示客户端应当使用 Graph 来确定用户的组 (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
-| `groups:src1` | JSON 对象 | 不是长度有限的令牌请求 (请参阅`hasgroups`上方)，但仍然太大，该令牌，链接到用户的完整组列表，可包含。 对于 JWT，作为分布式声明；对于 SAML，作为新声明替代 `groups` 声明。 <br><br>**JWT 值示例**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
-| `preferred_username` | String | 表示用户的主用户名。 它可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值可变，并可能随时间而不断改变。 由于它是可变的此值必须不用于做出授权决定。  但它可以用于用户名提示。 `profile`接收此声明所需的作用域。 |
-| `name` | String | 提供一个用户可读值，用于标识令牌使用者。 值不能保证是唯一的它是可变的它旨在仅用于显示目的。 `profile`接收此声明所需的作用域。 |
-| `oid` | 字符串，GUID | 在 Microsoft 标识平台中，对象的不可变标识符在这种情况下是用户帐户。 此外可以使用此执行授权检查，安全地和作为数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 因此，对 Microsoft 联机服务（例如 Microsoft Graph）发出查询时可以使用 `oid`。 Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。 因为`oid`允许多个应用关联用户，`profile`接收此声明所需的作用域。 如果单个用户存在于多个租户，该用户将包含每个租户中是不同的对象 ID-它们被视为不同的帐户，即使在用户登录到每个帐户使用相同的凭据。 |
-| `rh` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 资源不应使用此声明。 |
+| `azp` | 字符串，GUID | 在 2.0 版中的才存在令牌，替换`appid`。 使用令牌的客户端的应用程序 ID。 该应用程序可以自身名义或者代表用户进行操作。 应用程序 ID 通常表示应用程序对象，但它还可以表示 Azure AD 中的服务主体对象。 |
+| `azpacr` | “0”、“1”或“2” | 在 2.0 版中的才存在令牌，替换`appidacr`。 表示对客户端进行身份验证的方式。 对于公共客户端，值为“0”。 如果使用客户端 ID 和客户端机密，则值为“1”。 如果使用客户端证书进行身份验证，则值为“2”。 |
+| `preferred_username` | String | 表示用户的主用户名。 它可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值可变，并可能随时间而不断改变。 由于此值是可变的，因此它不能用于做出授权决定。  但它可以用于用户名提示。 需要 `profile` 范围才能接收此声明。 |
+| `name` | String | 提供一个用户可读值，用于标识令牌使用者。 此值不一定唯一，它是可变的，旨在仅用于显示目的。 需要 `profile` 范围才能接收此声明。 |
 | `scp` | 字符串，范围的空格分隔列表 | 应用程序公开的、客户端应用程序已请求（和接收）其许可的范围集。 应用应该验证这些范围是否为应用公开的有效范围，并根据这些范围的值做出授权决策。 仅为[用户令牌](#user-and-application-tokens)包含此值。 |
-| `roles` | 字符串数组，权限列表 | 应用程序公开的、请求方应用程序有权调用的权限集。 对于[应用程序令牌](#user-and-application-tokens)，在执行[客户端凭据](v1-oauth2-client-creds-grant-flow.md)流期间，将使用此值来取代用户范围。  对于[用户令牌](#user-and-application-tokens)，此值将填充为在目标应用程序上分配给用户的角色。 |
-| `sub` | 字符串，GUID | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变，无法重新分配或重复使用。 此外可以使用此执行授权检查，如该令牌用于访问资源、 和可以用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 主题是，但是，成对标识符-它是唯一的特定应用程序 id。 因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 |
-| `tid` | 字符串，GUID | 表示用户所在的 Azure AD 租户。 对于工作和学校帐户，此 GUID 就是用户所属组织的不可变租户 ID。 对于个人帐户，该值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 `profile`接收此声明所需的作用域。 |
-| `unique_name` | String | 仅在 v1.0 令牌中提供。 提供了一个用户可读值，用于标识令牌使用者。 此值不能保证在租户中唯一，应仅用于显示目的。 |
+| `roles` | 字符串数组，权限列表 | 你的应用程序的请求的应用程序或用户已被授予权限以调用公开的权限集。 对于[应用程序令牌](#user-and-application-tokens)，在执行[客户端凭据](v1-oauth2-client-creds-grant-flow.md)流期间，将使用此值来取代用户范围。  对于[用户令牌](#user-and-application-tokens)，此值将填充为在目标应用程序上分配给用户的角色。 |
+| `wids` | 数组[RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) Guid | 表示从角色中的部分分配给此用户的租户范围内角色[管理员角色页](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)。  对于每个应用程序，通过配置此声明`groupMembershipClaims`的属性[应用程序清单](reference-app-manifest.md)。  将其设置为"全部"或"DirectoryRole"是必需的。  可能不会显示在通过隐式流由于标记长度关注点获取令牌中。 |
+| `groups` | GUID 的 JSON 数组 | 指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过[应用程序清单](reference-app-manifest.md)的 `groupMembershipClaims` 属性基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Office 365 通讯组列表。 <br><br>有关将 `groups` 声明与隐式授权一起使用的详细信息，请参阅下文中的 `hasgroups` 声明。 <br>对于其他流，如果该用户所在的组数超过限制 （saml 150，200 JWT），然后超额声明会将添加到声明源指向包含的用户组列表的 AAD Graph 终结点。 |
+| `hasgroups` | Boolean | 如果存在，始终为 `true`，表示用户至少在一个组中。 如果完整组声明将导致 URI 片段超出 URL 长度限制（当前为 6 个或更多组），则在隐式授权流中用来替代 JWT 的 `groups` 声明。 指示客户端应当使用 Graph 来确定用户的组 (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
+| `groups:src1` | JSON 对象 | 对于长度不受限制（参阅上文中的 `hasgroups`）但对于令牌而言仍然太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 JWT，作为分布式声明；对于 SAML，作为新声明替代 `groups` 声明。 <br><br>**JWT 值示例**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
+| `sub` | 字符串，GUID | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查（例如，使用令牌访问资源时），并可将它用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 但是，使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。 因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 另请参阅`oid`声明 （它仍会继续相同租户中的应用之间）。 |
+| `oid` | 字符串，GUID | 在 Microsoft 标识平台中，对象的不可变标识符在这种情况下是用户帐户。 还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 因此，对 Microsoft 联机服务（例如 Microsoft Graph）发出查询时可以使用 `oid`。 Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。 因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
+| `tid` | 字符串，GUID | 表示用户所在的 Azure AD 租户。 对于工作和学校帐户，此 GUID 就是用户所属组织的不可变租户 ID。 对于个人帐户，该值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要 `profile` 范围才能接收此声明。 |
+| `unique_name` | String | 仅在 v1.0 令牌中提供。 提供了一个用户可读值，用于标识令牌使用者。 不保证此值在租户中唯一，只应该用于显示目的。 |
 | `uti` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 资源不应使用此声明。 |
+| `rh` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 资源不应使用此声明。 |
 | `ver` | 字符串，要么`1.0`或 `2.0` | 指示访问令牌的版本。 |
 
 #### <a name="v10-basic-claims"></a>v1.0 基本声明
@@ -135,7 +136,7 @@ JWT 拆分成三个部分：
 
 Microsoft 标识可以在不同的方式，可能会涉及到您的应用程序进行身份验证。 `amr` 声明是可以包含多个项（例如 `["mfa", "rsa", "pwd"]`）的数组，适用于使用密码和 Authenticator 应用的身份验证。
 
-| Value | 描述 |
+| 值 | 描述 |
 |-----|-------------|
 | `pwd` | 密码身份验证，用户的 Microsoft 密码或应用的客户端机密。 |
 | `rsa` | 身份验证基于 RSA 密钥的证明，例如，使用 [Microsoft Authenticator 应用](https://aka.ms/AA2kvvu)。 这包括如果身份验证通过自签名 JWT 与服务拥有的 X509 证书。 |
@@ -212,8 +213,9 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 应用程序可以代表用户接收令牌（常用的流），或者直接从应用程序接收令牌（通过[客户端凭据流](v1-oauth2-client-creds-grant-flow.md)）。 这些仅限应用的令牌表示这种调用来自应用程序，而没有支持它的用户。 这些令牌的处理方式大致相同，但存在一些差别：
 
-* 仅限应用的令牌不包含 `scp` 声明，而是包含 `roles` 声明。 这是记录应用程序权限的位置（与委托的权限相反）。 有关委托的权限和应用程序权限的详细信息，请参阅 [v1.0](v1-permissions-and-consent.md) 和 [v2.0](v2-permissions-and-consent.md) 中的权限与许可。
-* 许多特定于用户的声明将会缺失，例如 `name`。
+* 仅限应用的令牌不会`scp`声明，并且可能会改为具有`roles`声明。 这是记录应用程序权限的位置（与委托的权限相反）。 有关委托的权限和应用程序权限的详细信息，请参阅 [v1.0](v1-permissions-and-consent.md) 和 [v2.0](v2-permissions-and-consent.md) 中的权限与许可。
+* 许多特定于用户的声明将会丢失，如`name`或`upn`。
+* `sub`和`oid`声明将相同。 
 
 ## <a name="token-revocation"></a>令牌吊销
 

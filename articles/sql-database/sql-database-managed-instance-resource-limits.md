@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/27/2019
-ms.openlocfilehash: e2068283414ef2fabb44e9876f6727cc0fe3530b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9726c589472c9ff6d456c922f88d12071e5ebcaf
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233521"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560584"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -56,8 +56,8 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 | 每个实例的数据库数目上限 | 100 | 100 |
 | 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
 | 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K-110 K (1375年/vCore) |
-| 日志吞吐量 | 22 MB/s（每个实例） | 3 MB/s（每个 vCore）<br/>最大为 48 MB/秒（每个实例）|
-| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s（每个 vCore） |
+| 日志吞吐量 | 22 MB/s（每个实例） | 每个 vCore 4 MB/秒<br/>最大为 48 MB/秒（每个实例）|
+| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | |
 | IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
 | 最大 tempDB 大小 | 192 - 1,920 GB（每个 vCore 为 24 GB） | 无约束 - 受最大实例存储大小限制 |
 
@@ -123,7 +123,7 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 
 |子网数|子网 1|子网 2|子网 3|
 |:---|:---|:---|:---|
-|1|1 个 BC 和最多 8 个 GP<br>2 个 BC 和最多 4 个 GP|不适用| 不适用|
+|第|1 个 BC 和最多 8 个 GP<br>2 个 BC 和最多 4 个 GP|不适用| 不适用|
 |2|0 个BC，最多 4 个 GP|1 个 BC，最多 4 个 GP<br>2 个 BC，0 个 GP|不适用|
 |2|1 个 BC，0 个 GP|0 个 BC，最多 8 个 GP<br>1 个BC，最多 4 个 GP|不适用|
 |2|2 个 BC，0 个 GP|0 个BC，最多 4 个 GP|不适用|

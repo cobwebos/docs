@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b32ef37c6d61c88a18acd5ddc80cc6154369ca29
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472415"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780526"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 
@@ -37,7 +37,7 @@ ms.locfileid: "60472415"
 
 包含 SharePoint 和 OneDrive 的某些产品（如 Office 365）不支持外部接管。 如果是这种情况，或如果你是管理员且想要接管的非托管或“阴影”租户是由使用自助服务注册的用户创建的，则可通过内部管理员接管方式达到目的。
 
-1. 在非托管租户中通过注册 Power BI 等创建用户上下文。 为方便举例，以下步骤假定采用该方式。
+1. 通过注册 Power BI 在非托管租户中创建的用户上下文。 为方便举例，以下步骤假定采用该方式。
 
 2. 打开 [Power BI 网站](https://powerbi.com)并选择“免费开始”。 输入使用组织域名的用户帐户，如 `admin@fourthcoffee.xyz`。 输入验证码后，请检查电子邮件，查看确认代码。
 

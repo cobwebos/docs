@@ -8,12 +8,12 @@ ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
 ms.date: 04/29/2019
-ms.openlocfilehash: cf07d19966c08a63b9aa50475622aa0a1e5e1600
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e87a82e985ed1d1794f9da00546f167ef01e1779
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236497"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815478"
 ---
 ## <a name="business-disaster-recovery"></a>业务灾难恢复
 
@@ -48,10 +48,10 @@ ms.locfileid: "65236497"
 
 有几种方法来保留时序见解数据、 应用和服务继续运行，则要中断。 此外可能会确定你的 Azure 时序环境的完整、 重复的备份副本是必需的：
 
-1. 作为特定 TSI**故障转移实例**重定向数据和流量。
+1. 作为一个时序见解特定**故障转移实例**重定向数据和流量。
 1. 出于审核和数据暂留目的。
 
-一般情况下，复制 TSI 环境的最佳方法是在备份 Azure 区域中创建第二个 TSI 环境。 事件是从您的主要事件源也发送到此辅助环境。 请确保要使用第二个、 专用的使用者组，并遵循该源业务灾难恢复指导原则 （在上面提供）。
+一般情况下，重复的时序见解环境的最佳方法是在备份 Azure 区域中创建第二个时序见解环境。 事件是从您的主要事件源也发送到此辅助环境。 请确保要使用第二个、 专用的使用者组，并遵循该源业务灾难恢复指导原则 （在上面提供）。
 
 具体而言，若要创建重复的环境：
 
@@ -63,7 +63,7 @@ ms.locfileid: "65236497"
 第三步：
 
 * 如果主要区域在灾难事件期间受到影响，请将操作重新路由到备用时序见解环境。
-* 使用第二个区域来备份和恢复所有 TSI 遥测数据和查询数据。
+* 使用第二个区域备份和恢复所有时序见解遥测数据和查询数据。
 
 > [!IMPORTANT]
 > * 请注意，可能会进行故障转移时遇到延迟。

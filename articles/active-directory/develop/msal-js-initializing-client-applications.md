@@ -4,7 +4,7 @@ description: 了解有关初始化客户端应用程序使用 JavaScript (MSAL.j
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7990566ca9cd93e79b8356cfd15fda03a7469695
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cd26f36356affbc8c272bd093757a8482773baf2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138304"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544029"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>初始化使用 MSAL.js 的客户端应用程序
 本文介绍了用户代理应用程序的实例与 JavaScript (MSAL.js) 的初始化 Microsoft 身份验证库。 用户代理应用程序是在其中的客户端代码执行如 web 浏览器用户代理中的公共客户端应用程序的窗体。 这些客户端不存储机密，因为浏览器上下文是可公开访问。 若要了解有关客户端应用程序类型和应用程序配置选项的详细信息，请阅读[概述](msal-client-applications.md)。
@@ -125,11 +125,11 @@ export type Configuration = {
 
 - **redirectUri**:可选。  应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 默认为 `window.location.href`。
 
-- **postLogoutRedirectUri**:可选。  将重定向到用户`postLogoutRedirectUri`后注销。默认为 `redirectUri`。
+- **postLogoutRedirectUri**:可选。  将重定向到用户`postLogoutRedirectUri`后注销。默认值为 `redirectUri`。
 
 - **navigateToLoginRequestUrl**:可选。 若要关闭默认导航后登录名启动页的功能。 默认值为 true。 这仅用于重定向流。
 
-- **cacheLocation**:可选。  将浏览器存储设置为`localStorage`或`sessionStorage`。 默认为 `sessionStorage`。
+- **cacheLocation**:可选。  将浏览器存储设置为`localStorage`或`sessionStorage`。 默认值为 `sessionStorage`。
 
 - **storeAuthStateInCookie**:可选。  此标志中引入 MSAL.js v0.2.2 作为修补程序来[身份验证循环问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones)上 Microsoft Internet Explorer 和 Microsoft Edge。 启用标志`storeAuthStateInCookie`为 true，则利用此修复。 当启用此功能时，MSAL.js 将存储的浏览器 cookie 中的身份验证流数据流验证所需的身份验证请求状态。 默认情况下，此标志设置为`false`。
 

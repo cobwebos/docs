@@ -3,8 +3,8 @@ title: Azure AD 中的证书凭据 |Microsoft 文档
 description: 本文讨论注册和使用证书凭据进行应用程序身份验证
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4ee1ce56723e4a2c9ab80c12456bbc1b66f6d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34a499ac12bcf6f4aee671eb209b709390ca6139
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411398"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545125"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 允许应用程序使用自己的凭据进行�
 ## <a name="assertion-format"></a>断言格式
 若要计算断言，可使用所选语言中的许多 [JSON Web 令牌](https://jwt.ms/)库之一。 令牌携带的信息如下所示：
 
-### <a name="header"></a>标头
+### <a name="header"></a>Header
 
 | 参数 |  备注 |
 | --- | --- |

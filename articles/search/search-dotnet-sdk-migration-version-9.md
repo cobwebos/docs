@@ -7,17 +7,17 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f540bc304920073bcd823adcf6c9dd47cb2cf93b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a59deed4ac0cec669ddc5e0335f7274586c702e8
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159745"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541763"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-9"></a>升级到 Azure 搜索.NET SDK 版本 9
+# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>升级到 Azure 搜索.NET SDK 版本 9
 
 如果你在使用版本 7.0-preview 或更早版本的[Azure 搜索.NET SDK](https://aka.ms/search-sdk)，本文有助于升级应用程序以使用版本 9。
 
@@ -70,7 +70,7 @@ Azure 搜索.NET SDK 的版本 9 包含早期版本的许多更改。 其中一�
 > [!NOTE]
 > 更改下面的列表并不详尽。 某些更改可能不会导致生成错误，但从技术上讲重大，因为它们中断依赖于早期版本的 Azure 搜索.NET SDK 程序集的程序集的二进制文件兼容性。 下面未列出了此类更改。 请升级到版本 9 以避免任何二进制文件兼容性问题时，重新生成应用程序。
 
-### <a name="making-properties-immutable"></a>让不可变属性
+### <a name="immutable-properties"></a>不可变属性
 
 多个模型类的公共属性现在是不可变的。 如果需要创建用于测试这些类的自定义实例，可以使用新的参数化构造函数：
 
@@ -103,7 +103,7 @@ Azure 搜索.NET SDK 的版本 9 包含早期版本的许多更改。 其中一�
 
 无参数构造函数`Field`变得`internal`。 从现在起，每个`Field`构造时需要显式名称和数据类型。
 
-### <a name="simplification-of-batch-and-results-types"></a>批处理和结果类型的简化
+### <a name="simplified-batch-and-results-types"></a>简化的批处理和结果类型
 
 在版本 7.0-preview 及更早版本中，封装的文档的组的各种类已组织成多个并行类层次结构：
 
@@ -118,7 +118,7 @@ Azure 搜索.NET SDK 的版本 9 包含早期版本的许多更改。 其中一�
 
 从版本 8.0 preview 开始，基类和非泛型派生的类所有已删除。 动态类型化的情况下，您可以使用`IndexBatch<Document>`， `DocumentSearchResult<Document>`，依次类推。
  
-### <a name="removal-of-extensibleenum"></a>删除的 ExtensibleEnum
+### <a name="removed-extensibleenum"></a>已删除的 ExtensibleEnum
 
 `ExtensibleEnum`基类已删除。 从其派生的所有类都现结构，如`AnalyzerName`， `DataType`，和`DataSourceType`为例。 其`Create`方法也已被删除。 您可以删除对调用`Create`由于这些类型都可以从字符串隐式转换。 如果那样会导致编译器错误，你可以显式调用通过强制转换的转换运算符来区分类型。 例如，可以更改如下代码：
 
@@ -150,7 +150,7 @@ var index = new Index()
 
 保存这些类型的可选值的属性是现在显式的类型可以为 null 使它们可以继续是可选的。
 
-### <a name="removal-of-facetresults-and-hithighlights"></a>删除 FacetResults 和 HitHighlights
+### <a name="removed-facetresults-and-hithighlights"></a>已删除的 FacetResults 和 HitHighlights
 
 `FacetResults`和`HitHighlights`类均已删除。 分面结果现在被类型化为`IDictionary<string, IList<FacetResult>>`并命中突出显示为`IDictionary<string, IList<string>>`。 若要解决生成错误引入此更改的快速方法是添加`using`顶部的每个文件的使用已删除的类型的别名。 例如：
 

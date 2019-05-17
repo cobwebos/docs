@@ -4,7 +4,7 @@ description: 了解如何在注册到 Azure Active Directory 的应用程序中�
 services: active-directory
 documentationcenter: ''
 author: kkrishna
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df0d0b02efe7e99253b64ba02a5d9e77bb968993
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fd78e98c37bea0fed1787e1e07a026fa35597f47
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138357"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593927"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -62,7 +62,7 @@ ms.locfileid: "65138357"
 以下示例显示的 `appRoles` 可以分配给 `users`。
 
 > [!NOTE]
->  `id` 必须是唯一的 GUID。
+>`id` 必须是唯一的 GUID。
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -80,6 +80,9 @@ ms.locfileid: "65138357"
   ],
 "availableToOtherTenants": false,
 ```
+
+> [!NOTE]
+>`displayName`不能包含空格。
 
 可以针对 `users` 和/或 `applications` 来定义应用角色。 可供 `applications` 使用时，应用角色在“所需的权限”边栏选项卡中显示为应用程序权限。 以下示例显示一个以 `Application` 为目标的应用角色。
 
@@ -99,6 +102,8 @@ ms.locfileid: "65138357"
   ],
 "availableToOtherTenants": false,
 ```
+
+定义角色的数量会影响应用程序清单包含的限制。 它们在讨论详细[清单限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)页。
 
 ### <a name="assign-users-and-groups-to-roles"></a>将用户和组分配到角色
 

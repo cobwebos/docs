@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7968de8ad4357241eb8d86d51e991f4bbab959d
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61387160"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601573"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
 
@@ -400,7 +400,7 @@ rpm -e dependency-agent dependency-agent-connector
 | Direction | 入站或出站 |
 | MaliciousIP | 某个已知恶意源的 IP 地址 |
 | Severity | 可疑恶意软件的严重性 |
-| RemoteIPCountry | 远程 IP 地址所在的国家/地区 |
+| RemoteIPCountry | 国家/地区的远程 IP 地址 |
 | ManagementGroupName | Operations Manager 管理组的名称 |
 | SourceSystem | 从中收集了数据的源 |
 | SessionStartTime | 会话开始时间 |

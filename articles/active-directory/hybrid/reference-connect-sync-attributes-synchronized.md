@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6120637bdf52db4b6863fb87feb1d52c78ca088
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2dca71023cbed34ef3661ca980cf1eac4ca620c1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508110"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784291"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
 本主题列出通过 Azure AD Connect 同步进行同步的属性。  
@@ -212,7 +212,7 @@ ms.locfileid: "65508110"
 | initials |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| 邮件 |X |X |X | |
+| mail |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
@@ -256,7 +256,7 @@ ms.locfileid: "65508110"
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
-## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online（后来称为“Skype for Business”）
+## <a name="teams-and-skype-for-business-online"></a>团队和 Skype for Business Online
 | 属性名称 | 用户 | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
@@ -272,7 +272,7 @@ ms.locfileid: "65508110"
 | homephone |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| 邮件 |X |X |X | |
+| mail |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
@@ -310,7 +310,7 @@ ms.locfileid: "65508110"
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | cn |X | |X |公用名或别名。 大多数情况下是 [mail] 值的前缀。 |
 | displayName |X |X |X |表示通常显示为友好名称（名字姓氏）的名称的字符串。 |
-| 邮件 |X |X |X |完整的电子邮件地址。 |
+| mail |X |X |X |完整的电子邮件地址。 |
 | member | | |X | |
 | objectSID |X | |X |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
 | proxyAddresses |X |X |X |机械属性。 通过 Azure AD 使用。 包含用户的所有辅助电子邮件地址。 |
@@ -327,7 +327,7 @@ ms.locfileid: "65508110"
 | cn |X | |X | |
 | description |X |X |X | |
 | displayName |X |X |X | |
-| 邮件 |X |X |X | |
+| mail |X |X |X | |
 | mailNickname |X |X |X | |
 | member | | |X | |
 | objectSID |X | |X |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
@@ -384,7 +384,7 @@ ms.locfileid: "65508110"
 | displayName |X |X |X | |
 | employeeID |X |  |  | |
 | givenName |X |X | | |
-| 邮件 |X | |X | |
+| mail |X | |X | |
 | managedBy | | |X | |
 | mailNickName |X |X |X | |
 | member | | |X | |
@@ -440,7 +440,7 @@ ms.locfileid: "65508110"
 | 属性名称 | PublicFolder | 注释 |
 | --- | :---:| --- |
 | displayName | X |  |
-| 邮件 | X |  |
+| mail | X |  |
 | msExchRecipientTypeDetails | X |  |
 | objectGUID | X |  |
 | proxyAddresses | X |  |

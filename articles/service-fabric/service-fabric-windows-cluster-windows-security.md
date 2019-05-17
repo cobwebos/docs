@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 394ba3b3b8189bbe96137e920745f7b8cdd1cd95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ccc726f54821d316c745f6af9c63d7ed13986d79
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863957"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761926"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>使用 Windows 安全性保护 Windows 上的独立群集
 为了防止有人未经授权访问某个 Service Fabric 群集，必须保护该群集。 当群集运行生产工作负荷时，安全性就尤为重要。 本文介绍如何在 *ClusterConfig.JSON* 文件中使用 Windows 安全性配置节点到节点和客户端到节点的安全性。  该过程对应于 [Create a standalone cluster running on Windows](service-fabric-cluster-creation-for-windows-server.md)（创建在 Windows 上运行的独立群集）中的安全性配置步骤。 有关 Service Fabric 如何使用 Windows 安全性的详细信息，请参阅[群集安全方案](service-fabric-cluster-security.md)。
@@ -61,7 +61,7 @@ ms.locfileid: "60863957"
 | IsAdmin |设置为 true 可指定域用户具有管理员客户端访问权限，设置为 false 可指定域用户具有用户客户端访问权限。 |
 
 > [!NOTE]
-> ClustergMSAIdentity 值不能包括域名，并且只能组托管的服务帐户名称。 I.E. "mysfgmsa"正确无误，并且两个"mydomain / / mysfgmsa"或"mysfgmsa@mydomain"是无效;，因为域隐含的主机。
+> ClustergMSAIdentity 值格式为"mysfgmsa@mydomain"。
 
 若需要在 gMSA 下运行 Service Fabric，可通过设置“ClustergMSAIdentity”来配置[节点到节点安全性](service-fabric-cluster-security.md#node-to-node-security)。 若要在节点之间建立信任关系，这些节点必须能够相互识别。 这可以通过两种不同的方法实现：指定包含群集中所有节点的组托管服务帐户，或者指定包含群集中所有节点的域计算机组。 强烈建议使用[组托管服务帐户 (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) 方法，尤其针对拥有 10 个以上节点的较大群集或可能会增大或收缩的群集。  
 此方法不需要创建群集管理员对其有访问权限、可在其中添加和删除成员的域组。 这些帐户对于自动密码管理也同样有用。 有关详细信息，请参阅[组托管服务帐户入门](https://technet.microsoft.com/library/jj128431.aspx)。  

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/09/2019
-ms.openlocfilehash: 7b470c20397aac456d34d5e3b877c7d4126d8279
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.date: 05/14/2019
+ms.openlocfilehash: dc8ba315d08f3a130ff0adf91afc90f545baf4e4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465114"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604433"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>对 Azure 数据库迁移服务常见问题和错误进行故障排除
 
@@ -24,7 +24,7 @@ ms.locfileid: "65465114"
 
 ## <a name="migration-activity-in-queued-state"></a>在排队状态迁移活动
 
-Azure 数据库迁移服务项目创建新的活动，活动会保持在排队状态。
+Azure 数据库迁移服务项目中创建新的活动，活动会保持在排队状态。
 
 | 原因         | 解决方法 |
 | ------------- | ------------- |
@@ -44,13 +44,13 @@ Azure 数据库迁移服务项目创建新的活动，活动会保持在排队�
 
 当您从迁移 MySQL 到 Azure Database for MySQL 使用 Azure 数据库迁移服务时，迁移活动失败，出现以下错误：
 
-* **错误**：错误：由于 [n] 次连续的恢复失败，数据库迁移错误-任务 'TaskID' 已挂起。
+* **错误**：由于 [n] 次连续的恢复失败，数据库迁移错误-任务 'TaskID' 已挂起。
 
 | 原因         | 解决方法 |
 | ------------- | ------------- |
-| 在执行迁移的用户缺少 ReplicationAdmin 角色和/或复制客户端、 复制副本和超级 （版本低于 MySQL 5.6.6） 的权限时，可能会发生此错误。<br> <br><br><br> <br> <br> <br> <br> <br> <br> | 请确保[必备权限](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites)为用户帐户将准确地上配置 Azure MySQL 实例。 例如，可以执行以下步骤来创建一个名为 migrateuser 与所需权限的用户：<br>1.CREATE USER migrateuser@'%标识的机密; <br>2.授予所有特权 db_name.* 到 migrateuser'@'%标识机密;重复此步骤以授予对多个数据库的访问权限 <br>3.授予复制从属实例上的 *。* 为 migrateuser'@'%标识机密;<br>4.授予复制客户端上的 *。* 为 migrateuser'@'%标识机密;<br>5.刷新基本权限。 |
+| 在执行迁移的用户缺少 ReplicationAdmin 角色和/或复制客户端、 复制副本和超级 （版本低于 MySQL 5.6.6） 的权限时，可能会发生此错误。<br> <br><br><br> <br> <br> <br> <br> <br> <br> | 请确保[必备权限](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites)对于用户帐户配置准确地在 Azure Database for MySQL 实例。 例如，可以执行以下步骤来创建一个名为 migrateuser 与所需权限的用户：<br>1.CREATE USER migrateuser@'%标识的机密; <br>2.授予所有特权 db_name.* 到 migrateuser'@'%标识机密;重复此步骤以授予对多个数据库的访问权限 <br>3.在授予复制从属 *。* 为 migrateuser'@'%标识机密;<br>4.授予复制客户端上的 *。* 为 migrateuser'@'%标识机密;<br>5.刷新基本权限。 |
 
-## <a name="error-when-attempting-to-stop-the-azure-database-migration-service-instance"></a>正在尝试停止 Azure 数据库迁移服务实例时出错
+## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>正在尝试停止 Azure 数据库迁移服务时出错
 
 停止 Azure 数据库迁移服务实例时收到以下错误：
 
@@ -60,7 +60,7 @@ Azure 数据库迁移服务项目创建新的活动，活动会保持在排队�
 | ------------- | ------------- |
 | 你正在尝试停止的服务实例仍在运行或显示的活动包括在迁移项目中时，将显示此错误。 <br><br><br><br><br><br> | 不确保在您想要停止的 Azure 数据库迁移服务实例中运行任何活动。 您还可以尝试停止服务之前删除活动或项目。 以下步骤演示了如何删除项目，以通过删除所有正在运行的任务来清理迁移服务实例：<br>1.Install-Module -Name AzureRM.DataMigration <br>2.Login-AzureRmAccount <br>3.Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
 
-## <a name="error-restoring-database-while-migrating-from-sql-server-to-an-azure-sql-database-managed-instance"></a>尽管从 SQL Server 迁移到 Azure SQL 数据库托管实例还原数据库时出错
+## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>还原数据库时迁移到 Azure SQL DB 的 SQL 托管实例时出错
 
 当你从 SQL Server 中执行联机迁移到 Azure SQL 数据库托管实例时，直接转换迁移失败，出现以下错误：
 
@@ -88,11 +88,11 @@ Azure 数据库迁移服务项目创建新的活动，活动会保持在排队�
 | ------------- | ------------- |
 | 使用时[ExpressRoute](https://azure.microsoft.com/services/expressroute/)，Azure 数据库迁移服务[需要](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)预配与服务关联的虚拟网络子网中的三个服务终结点：<br> --Service Bus 终结点<br> -存储终结点<br> -目标数据库终结点 （例如 SQL 终结点，Cosmos DB 终结点）<br><br><br><br> | [启用](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)源和 Azure 数据库迁移服务之间的 ExpressRoute 连接的所需的服务终结点。 <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-database-for-mysql"></a>迁移到 Azure Database for MySQL 的 MySQL 数据库时的超时错误
+## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>将 MySQL 数据库迁移到 Azure MySQL 时的超时错误
 
 MySQL 数据库迁移到 Azure Database for MySQL 通过 Azure 数据库迁移服务实例时，如果迁移失败，出现以下超时错误：
 
-    * **错误**：错误：数据库迁移错误-无法加载文件的启动文件的加载进程失败 n 个 RetCode:SQL_ERROR SqlState:HY000 NativeError:1205 消息: [MySQL] [ODBC Driver] [mysqld] 锁定等待超时;请尝试重新启动事务
+* **错误**：数据库迁移错误-无法加载文件的启动文件的加载进程失败 n 个 RetCode:SQL_ERROR SqlState:HY000 NativeError:1205 消息: [MySQL] [ODBC Driver] [mysqld] 锁定等待超时;请尝试重新启动事务
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |
@@ -100,13 +100,13 @@ MySQL 数据库迁移到 Azure Database for MySQL 通过 Azure 数据库迁移�
 
 ## <a name="additional-known-issues"></a>更多已知的问题
 
-* [联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [在线迁移到 Azure DB for MySQL 的已知的问题/迁移限制](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [在线迁移到 Azure DB for PostgreSQL 的已知的问题/迁移限制](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [联机迁移到 Azure SQL 数据库的已知的问题/迁移限制](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
+* [在线迁移到 Azure Database for MySQL 的已知的问题/迁移限制](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
+* [在线迁移到 Azure Database for PostgreSQL 的已知的问题/迁移限制](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
 
-## <a name="additional-resources"></a>其他资源
+## <a name="next-steps"></a>后续步骤
 
-* [Azure 数据库迁移服务 PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)
-* [如何使用 Azure 门户，用于 MySQL 配置服务器参数 Azure 数据库](https://docs.microsoft.com/azure/mysql/howto-server-parameters)
-* [使用 Azure 数据库迁移服务的先决条件的概述](https://docs.microsoft.com/azure/dms/pre-reqs)
-* [有关使用 Azure 数据库迁移服务的常见问题解答](https://docs.microsoft.com/azure/dms/faq)
+* 查看文章[Azure 数据库迁移服务 PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)。
+* 查看文章[如何配置服务器参数中 Azure Database for MySQL 通过使用 Azure 门户](https://docs.microsoft.com/azure/mysql/howto-server-parameters)。
+* 查看文章[使用 Azure 数据库迁移服务的先决条件概述](https://docs.microsoft.com/azure/dms/pre-reqs)。
+* 请参阅[有关使用 Azure 数据库迁移服务的常见问题解答](https://docs.microsoft.com/azure/dms/faq)。

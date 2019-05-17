@@ -13,36 +13,41 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: 23e072369aa8ac6ca6ada5ec185df1a8d7e03c5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f929369030b6f0a634eb2c84e33eee24af8cb6a2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477172"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787513"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure 虚拟机上的 SQL Server 发行说明
 
 Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总了 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 的最新版本中的新功能和改进。 本文还列出了不与此版本直接相关但在同一时间范围内发布的值得注意的内容更新。 有关对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)
 
-## <a name="march-2019"></a>2019 年 3 月
+## <a name="april-2019"></a>2019 年 4 月
 
 ### <a name="service-improvements"></a>服务改进
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-| **自定义映像可支持性** | 现在可以安装[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)为自定义 OS 和 SQL 映像提供了有限的功能[灵活的许可](virtual-machines-windows-sql-ahb.md)。 当向 SQL 资源提供程序，注册自定义映像指定许可证类型为 AHUB 作为否则注册将失败。  | 
-| **命名的实例可支持性** | 现可利用[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)使用命名实例，如果已正确卸载默认实例。 | 
-| **门户增强功能** | 已改进部署 SQL Server VM 的 Azure 门户体验，以提高可用性。 有关详细信息，请参阅 brief[快速入门](quickstart-sql-vm-create-portal.md)和更全面[操作指南](virtual-machines-windows-portal-sql-server-provision.md)部署 SQL Server VM 的指南。 |
+| **扩展支持的 SQL Server 2008/2008R2** | [扩展支持](virtual-machines-windows-sql-server-2008-eos-extend-support.md)对于 SQL Server 2008 和 SQL Server 2008 R2 迁移*作为-是*到 Azure VM。 | 
 | &nbsp; | &nbsp; |
 
 ### <a name="documentation-improvements"></a>文档改进
 
 无
 
+## <a name="march-2019"></a>2019 年 3 月
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+| **自定义映像可支持性** | 现在可以安装[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)为自定义 OS 和 SQL 映像提供了有限的功能[灵活的许可](virtual-machines-windows-sql-ahb.md)。 当向 SQL 资源提供程序，注册自定义映像指定许可证类型为 AHUB 作为否则注册将失败。  | 
+| **命名的实例可支持性** | 现可利用[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)使用命名实例，如果已正确卸载默认实例。 | 
+| **门户增强功能** | 已改进部署 SQL Server VM 的 Azure 门户体验，以提高可用性。 有关详细信息，请参阅 brief[快速入门](quickstart-sql-vm-create-portal.md)和更全面[操作指南](virtual-machines-windows-portal-sql-server-provision.md)部署 SQL Server VM 的指南。|
+| &nbsp; | &nbsp; |
+
 
 ## <a name="february-2019"></a>2019 年 2 月
-
-### <a name="service-improvements"></a>服务改进
 
 | 服务改进 | 详细信息 |
 | --- | --- |

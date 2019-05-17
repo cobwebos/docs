@@ -5,15 +5,15 @@ services: search
 author: HeidiSteen
 ms.service: search
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: 0da7ad35f6efc031a52ef43caa514559c08c94fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e147e8bd9260cd1ece60b70641968a229995ec1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61464349"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65211928"
 ---
 可以创建一个订阅中的多个服务。 每个可以在特定层预配。 限制是仅允许每个层的服务数。 例如，在同一订阅中，最多可以在基本层创建 12 个服务，在 S1 层也创建 12 个服务。 有关层的详细信息，请参阅[为 Azure 搜索选择 SKU 或层](../articles/search/search-sku-tier.md)。
 
@@ -21,7 +21,7 @@ ms.locfileid: "61464349"
 
 | 资源            | 免费<sup>1</sup> | 基本 | S1  | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | ------------------- | ---- | ----- | --- | -- | -- | ----- | -- | -- |
-| 最大服务数    |第     | 12    | 12  | 6  | 6  | 6     | 6  | 6  |
+| 最大服务数    |第     | 16    | 16  | 8  | 6  | 6     | 6  | 6  |
 | 搜索单位 (SU) 中的最大缩放<sup>2</sup> |不适用 |3 SU |36 个 SU |36 个 SU |36 个 SU |36 个 SU |36 个 SU |36 个 SU |
 
 <sup>1</sup> 免费层基于共享资源，而不基于专用资源。 共享资源不支持纵向扩展。

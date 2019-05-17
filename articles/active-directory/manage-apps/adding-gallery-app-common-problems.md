@@ -3,8 +3,8 @@ title: 添加 Azure AD 库应用程序时的问题 | Microsoft Docs
 description: 了解添加 Azure AD 库应用程序时常见的问题，以及可以执行哪些操作来解决这些问题
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60438789"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784432"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>添加 Azure AD 库应用程序时的问题
 
@@ -40,7 +40,7 @@ ms.locfileid: "60438789"
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>添加应用程序后不知道如何进行设置
 
-如果需要有关应用程序的帮助，可先行参阅[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)一文。
+如果您需要了解应用程序，帮助[有关如何将 SaaS 应用与 Azure Active Directory 的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)项目是启动的好时机。
 
 除此之外，[Azure AD 应用程序文档库](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)可帮助你详细了解如何使用 Azure AD 进行单一登录及其工作原理。
 
@@ -48,7 +48,7 @@ ms.locfileid: "60438789"
 
 可以通过遵循以下步骤来查看任何门户通知的详细信息：
 
-1.  选择 Azure 门户右上角的“通知”图标（铃铛）
+1.  选择**通知**中的 Azure 门户右上角的图标 （铃铛）
 
 2.  选择状态为“错误”的任何通知（旁边有红色的 (!)）。
 
@@ -93,7 +93,7 @@ ms.locfileid: "60438789"
 
   -   示例 – **2017-03-23T19:50:43.7583681Z**
 
-- **内部事务 ID** – 可用于在我们系统中查找错误的内部 ID
+- **内部事务 ID** – 我们可用于在系统中查找错误的内部 ID
 
   -   示例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 

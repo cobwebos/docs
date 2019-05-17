@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec6caecde3e90f7113f60286e95cdaeb996003f7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437709"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784038"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
 
@@ -59,13 +59,14 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 若要使用此功能，用户需要下载该扩展并登录。 管理员或用户不需要进行其他配置。 
 
- 
+若要了解详细信息，包括如何配置此选项，请参阅[MyApps 浏览器扩展](https://docs.microsoft.com/en-us/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension)文档。
 
 ### <a name="option-3-link-translation-setting"></a>选项 3：链接转换设置 
 
-如果启用了链接转换，应用程序代理服务通过 HTML 和 CSS 搜索发布的内部链接并对它们进行转换，以便让用户获得不间断的体验。 
+如果启用了链接转换，应用程序代理服务通过 HTML 和 CSS 搜索发布的内部链接并对它们进行转换，以便让用户获得不间断的体验。 使用 MyApps 浏览器扩展是链接转换设置为首选，因为它可以向用户提供更高的性能体验。
 
-
+> [!NOTE]
+> 如果使用选项 2 或 3，但应启用一次。
 
 ## <a name="how-link-translation-works"></a>链接转换工作原理
 
@@ -101,7 +102,7 @@ HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
 * meta
 * 对象
 * 脚本
-* 源
+* source
 * 跟踪
 * video
 

@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 6dcec5b72be8868a83a5760ef95117d3e751bcc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9100a764ba3922e0254b7fa5cd03b18e204925f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60399385"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596017"
 ---
 # <a name="get-started-with-device-management-java"></a>设备管理入门 (Java)
 
@@ -57,7 +57,7 @@ trigger-reboot。 此应用：
 
 * Maven 3。  <br/> [准备开发环境](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md)介绍如何在 Windows 或 Linux 上安装本教程所用的 [Maven](https://maven.apache.org/what-is-maven.html)。
 
-* [Node.js 版本 0.10.0 或更高版本](https://nodejs.org)。
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

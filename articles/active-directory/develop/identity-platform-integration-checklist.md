@@ -3,8 +3,8 @@ title: 与 Microsoft 标识平台集成 |Azure
 description: 了解最佳做法和常见疏忽时与 Microsoft 标识平台 (v2.0) 集成。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 1f5a6d7501fd387548b111fcb0888515c8f8db25
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e9070127780659142ab8f956a8016622ecfea144
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076400"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540169"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Microsoft 标识平台集成清单
 
@@ -89,7 +89,7 @@ Microsoft 标识平台集成清单旨在引导您找到高质量和安全的集�
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 注册您的应用程序需要，因此管理员可以轻松地授予同意的情况下，到其租户的权限的完整集。 使用[增量许可](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)在运行时以帮助用户了解其中的原因，您的应用程序正在请求可能涉及或使用户请求第一次启动时感到困惑的权限。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 实现[清理单一注销体验](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut)。 它是隐私和安全要求，并使以获得良好的用户体验。 |
 
-### <a name="testing"></a>测试
+### <a name="testing"></a>正在测试
 
 |   |   |
 |---|---|

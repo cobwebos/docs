@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74afb98387172f6c58398673862274c7b1880d86
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6280068303e66ca9a930f94d9a754afe1f88f4f2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922954"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604266"
 ---
 # <a name="change-your-azure-account-profile-information"></a>更改你的 Azure 帐户个人资料信息
 
@@ -51,9 +51,9 @@ Microsoft 使用帐户管理员的配置文件中的电子邮件地址发送重�
 
 若要了解如何更新帐单信息，请查看[更改用于支付 Azure 订阅的信用卡](billing-how-to-change-credit-card.md)。
 
-### <a name="you-cant-update-your-country"></a>不能更新国家/地区
+### <a name="you-cant-update-your-countryregion"></a>无法更新您所在国家/地区
 
-由于技术限制，我们不能更改现有帐户的国家/地区。 但是，用户可以在所需的国家/地区创建帐户，然后联系 Azure 支持将服务迁移到该帐户。
+由于技术限制，我们不能更改现有帐户的国家/地区/区域。 但是，可以在所需的国家/地区创建帐户，然后联系 Azure 支持将服务迁移到该帐户。
 
 ## <a name="service-and-marketing-emails"></a>服务和市场营销电子邮件
 

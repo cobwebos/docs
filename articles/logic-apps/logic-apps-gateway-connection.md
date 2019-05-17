@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 2b9e1c153c3fa9b17145eb6c3c8f3ed02e3bf40f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0580fe09c2cb6569724a9b4365233a3142645a47
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304011"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546273"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -36,7 +36,7 @@ ms.locfileid: "60304011"
 
 * 网关安装尚未关联到 Azure 中的网关资源。 只能将网关安装链接到一个网关资源，创建网关资源和选择网关安装时，会发生这种链接。 此链接使得网关安装不可用于其他资源。
 
-* 登录 Azure 门户并创建网关资源时，请确保使用先前用于[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md#requirements)的相同登录帐户以及用于安装网关的相同 [Azure 订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer)。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
+* 登录 Azure 门户并创建网关资源时，请确保使用先前用于[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md#requirements)的相同登录帐户以及用于安装网关的相同 [Azure 订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
 * 若要在 Azure 门户中创建和维护网关资源，[Windows 服务帐户](../logic-apps/logic-apps-gateway-install.md#windows-service-account)至少需要具有“参与者”权限。 本地数据网关以 Windows 服务的形式运行，并设置为使用 `NT SERVICE\PBIEgwService` 作为 Windows 服务登录凭据。 
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 64ba7096f181371a378708e024f46bce17449e98
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 194902cfa2992e4370b68bf140ec3a5e03f364ca
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510587"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597677"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动化的机器学习实验
 
@@ -79,8 +79,10 @@ ms.locfileid: "65510587"
 
     ```python
     import pandas as pd
+    from sklearn.model_selection import train_test_split
     df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
     # get integer labels
+    y = df["Label"]
     df = df.drop(["Label"], axis=1)
     df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     ```
@@ -137,7 +139,7 @@ cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行�
 >* 使用表达式添加列
 >* 估算缺失值
 >* 按示例派生列
->* 筛选
+>* Filtering
 >* 自定义 Python 转换
 
 若要了解 DataPrep SDK，请参阅[如何准备要建模的数据](how-to-load-data.md)一文。

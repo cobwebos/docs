@@ -3,8 +3,8 @@ title: 如何为给定 API 选择权限 | Microsoft Docs
 description: 如何使用 Azure AD 查找要开发或注册的自定义应用程序的身份验证终结点。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0962e5381a6e0a8da96bc7379c38aae73ee400
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dcfeec7e90f1c582a11889619811330bcf488bbf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250342"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545917"
 ---
 # <a name="how-to-configure-endpoints"></a>如何配置终结点
 

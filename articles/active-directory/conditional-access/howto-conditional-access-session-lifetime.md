@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff9ad850b111cf080447b699d35b4ef8205e006
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 45ea34a673b46dda2ec9606952c707a13d1b72d9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190222"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65766874"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件性访问配置身份验证会话管理
 
@@ -80,7 +80,7 @@ ms.locfileid: "65190222"
 1. 选择所有所需的条件。
 
    > [!NOTE]
-   > 请注意，此控件需要选择"所有云应用"作为条件
+   > 请注意，此控件需要选择"所有云应用"作为条件。 由身份验证会话令牌控制浏览器会话持续性。 在浏览器会话中的所有选项卡共享单个会话令牌，因此它们都必须共享持久性状态。
 
 1. 转到**访问控制** > **会话**单击**持久的浏览器会话**
 1. 从下拉列表中选择一个值

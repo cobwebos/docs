@@ -4,7 +4,7 @@ description: 完整 Lucene 语法的引用，与 Azure 搜索一起使用。
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 05/13/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b37961f96aca95c0aeaec511411a309d40e990f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b051f844b8c221e2e53c5fcf204878f80447cfe8
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024214"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596577"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Azure 搜索中的 Lucene 查询语法
 可以基于用于专用查询窗体的丰富 [Lucene 查询分析](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法写入针对 Azure 搜索的查询：通配符、模糊搜索、邻近搜索、正则表达式等。 除了通过 `$filter` 表达式在 Azure 搜索中构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 搜索中完整实现](search-lucene-query-architecture.md)。 
@@ -121,16 +121,19 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
 ##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> 对通配符和正则表达式查询评分
  Azure 搜索使用基于频率评分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
 
-##  <a name="bkmk_fields"></a> 字段范围查询  
- 可以通过指定 `fieldname:searchterm` 构造，定义字段查询操作，该操作的字段是单个词，搜索词也是单个词或短语，并且根据需要使用布尔运算符。 一些示例包括以下内容：  
+##  <a name="bkmk_fields"></a> 现场的搜索  
+您可以定义现场的搜索操作与`fieldName:searchExpression`语法，其中的搜索表达式可以是单独的词或短语或在括号中，根据需要使用布尔运算符更复杂的表达式。 一些示例包括以下内容：  
 
 - 流派：爵士乐无历史记录  
 
 - 艺术家：（“Miles Davis”、“John Coltrane”）
 
-  如果想要两个字符串评估为单个实体，请务必将多个字符串放置在引号内，正如这个在 `artists` 字段中搜索两个不同艺术家的情况一样。  
+如果想要两个字符串评估为单个实体，请务必将多个字符串放置在引号内，正如这个在 `artists` 字段中搜索两个不同艺术家的情况一样。  
 
-  `fieldname:searchterm` 中指定的字段必须是 `searchable` 字段。  有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。  
+`fieldName:searchExpression` 中指定的字段必须是 `searchable` 字段。  有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。  
+
+> [!NOTE]
+> 当使用审定搜索表达式时，不需要使用`searchFields`参数，因为每个审定搜索表达式具有显式指定的字段名称。 但是，仍可以使用`searchFields`参数，如果你想要运行一个查询，其中某些部分范围限定为特定字段中，和其他可应用到多个字段。 例如，以下查询`search=genre:jazz NOT history&searchFields=description`将匹配`jazz`只能`genre`字段中，虽然它将匹配`NOT history`与`description`字段。 中提供的字段名称`fieldName:searchExpression`始终优先于`searchFields`参数，在此示例中的原因是，我们不需要包括`genre`中`searchFields`参数。
 
 ##  <a name="bkmk_fuzzy"></a> 模糊搜索  
  模糊搜索在构造相似的术语中查找匹配项。 对于 [Lucene 文档](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)，模糊搜索基于 [Damerau-Levenshtein 距离](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)。 模糊搜索可以将满足距离条件的项扩展到最多 50 个字词。 

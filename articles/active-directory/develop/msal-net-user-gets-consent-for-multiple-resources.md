@@ -4,7 +4,7 @@ description: 了解用户如何获取预同意使用 Microsoft 身份验证库.N
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45bad9a03e8eff6f22ebb99fd2ef4bcd5fecf9b5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8f7d24a1e14cfbb1163ab78b94dd36ec288dce50
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158815"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544050"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>用户获取多个资源，使用 MSAL.NET 的许可
 Microsoft 标识平台终结点不允许您以一次性获取多个资源的令牌。 在使用 Microsoft 身份验证库.NET (MSAL.NET) 时，获取令牌方法中的作用域参数只应包含单个资源的作用域。 但是，您可以预先同意提前几个资源通过指定其他作用域使用`.WithExtraScopeToConsent`生成器方法。

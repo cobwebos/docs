@@ -1,23 +1,17 @@
 ---
 title: 使用 PowerShell 和模板部署资源 | Microsoft Docs
-description: 使用 Azure 资源管理器和 Azure PowerShell 来将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
-services: azure-resource-manager
-documentationcenter: na
+description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 author: tfitzmac
-ms.assetid: 55903f35-6c16-4c6d-bf52-dbf365605c3f
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/28/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ef5cc702bd5035c958a8feb9b6f5051781cd3cc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 5203519b1553de54d4e3cd1fafe6fb3d1c18ebd6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649788"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779962"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>使用 Resource Manager 模板和 Azure PowerShell 部署资源
 
@@ -27,25 +21,25 @@ ms.locfileid: "58649788"
 
 ## <a name="deployment-scope"></a>部署范围
 
-你可以面向你部署到 Azure 订阅或在订阅中的资源组。 在大多数情况下，将目标部署到资源组。 使用订阅部署在订阅中应用策略和角色分配。 此外可以使用订阅部署创建资源组和将资源部署到它。 具体取决于部署的范围，您可以使用不同的命令。
+可将部署目标设定为 Azure 订阅或订阅中的资源组。 大多数情况下，我们会将以资源组指定为部署目标。 可以使用订阅部署在整个订阅中应用策略和角色分配。 还可以使用订阅部署创建资源组并向其部署资源。 你将根据部署范围使用不同的命令。
 
-若要将部署到**资源组**，使用[新建 AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
+若要部署到**资源组**，请使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)：
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
 ```
 
-若要将部署到**订阅**，使用[新建 AzDeployment](/powershell/module/az.resources/new-azdeployment):
+若要部署到**订阅**，请使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment)：
 
 ```azurepowershell
 New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-在本文中的示例使用的资源组部署。 有关订阅部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
+本文中的示例使用资源组部署。 有关订阅部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
-您需要在模板中部署。 如果你还没有一个，下载并保存[示例模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)从 Azure 快速入门模板存储库。 本文中使用的本地文件名称为 **c:\MyTemplates\azuredeploy.json**。
+你需要使用模板进行部署。 如果还没有模板，请从 Azure 快速入门模板存储库下载并保存一个[示例模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)。 本文中使用的本地文件名称为 **c:\MyTemplates\azuredeploy.json**。
 
 除非你使用 Azure Cloud shell 中，将模板部署，需要安装 Azure PowerShell 并连接到 Azure:
 
@@ -54,7 +48,7 @@ New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 
 ## <a name="deploy-local-template"></a>部署本地模板
 
-下面的示例创建一个资源组，并将部署在本地计算机中的模板。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 它不能以句点结尾。
+以下示例将创建一个资源组，并从本地计算机部署模板。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 它不能以句点结尾。
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -103,12 +97,12 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
-此功能是也称为*错误时回滚*。 部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 若要指定重新部署，请在部署命令中使用 `-RollbackToLastDeployment` 或 `-RollBackDeploymentName` 参数。 如果已为你的基础结构部署了已知的良好状态并需要此选项以将还原为此功能很有用。 有许多需要注意的问题和限制：
+此功能也称为“出错时回滚”。 部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 若要指定重新部署，请在部署命令中使用 `-RollbackToLastDeployment` 或 `-RollBackDeploymentName` 参数。 如果已经有已知的良好状态的基础结构部署并且想要还原到此状态，此功能很有用。 有许多需要注意的问题和限制：
 
-- 完全按照以前已运行具有相同的参数运行重新部署。 可以更改参数。
-- 使用运行以前的部署[完整模式](./deployment-modes.md#complete-mode)。 以前的部署中不包含任何资源被删除，并且任何资源配置设置为其以前的状态。 请确保完全了解[部署模式之一下](./deployment-modes.md)。
+- 重新部署使用与以前运行它时相同的参数以相同的方式运行。 不能更改参数。
+- 以前的部署是使用[完整模式](./deployment-modes.md#complete-mode)运行的。 以前的部署中未包括的任何资源都将被删除，任何资源配置都将设置为以前的状态。 请确保你完全理解[部署模式](./deployment-modes.md)。
 - 重新部署只会影响资源，任何数据更改不会受到影响。
-- 在订阅级别部署的资源组部署仅支持此功能。 有关订阅级别部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
+- 只有资源组部署支持此功能，订阅级部署不支持此功能。 有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
 
 若要使用此选项，部署必须具有唯一的名称，以便可以在历史记录中标识它们。 如果没有唯一名称，则当前失败的部署可能会覆盖历史记录中以前成功的部署。 只能将此选项用于根级别部署。 从嵌套模板进行的部署不可用于重新部署。
 
@@ -159,6 +153,18 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 ```
 
 当需要提供配置值时，从文件中获取参数值非常有用。 例如，可以[为 Linux 虚拟机提供 cloud-init 值](../virtual-machines/linux/using-cloud-init.md)。
+
+如果需要传递一个对象数组中，在 PowerShell 中创建的哈希表，并将其添加到一个数组。 在部署期间作为参数传递该数组。
+
+```powershell
+$hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
+$hash2 = @{ Name = "secondSubnet"; AddressPrefix = "10.0.1.0/24"}
+$subnetArray = $hash1, $hash2
+New-AzResourceGroupDeployment -ResourceGroupName testgroup `
+  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -exampleArray $subnetArray
+```
+
 
 ### <a name="parameter-files"></a>参数文件
 
