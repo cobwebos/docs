@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.reviewer: brahmnes
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: 074b701422f32f4cd18fd2eb05e3453e139e17ae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4157285e8af67acd1dc3627bebc12076d7fe072c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205603"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595548"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](../../azure-monitor/app/asp-net-exceptions.md)区域中。
 
-可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，请在 Visual Studio 2017 Enterprise 中打开快照。 在 Visual Studio 中，还可以[将快照设置为以交互方式拍摄快照](https://aka.ms/snappoint)，而无需等待异常。
+可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，Visual Studio 2019 Enterprise 中打开快照。 在 Visual Studio 中，还可以[将快照设置为以交互方式拍摄快照](https://aka.ms/snappoint)，而无需等待异常。
 
 调试快照存储七天。 此保留策略基于每个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
 
@@ -81,9 +81,9 @@ ms.locfileid: "65205603"
 快照可能包含敏感信息，默认情况下不可查看。 要查看快照，必须获取 `Application Insights Snapshot Debugger` 角色。
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>查看快照在 Visual Studio 2017 Enterprise 或更高版本
-1. 单击“下载快照”按钮，下载可在 Visual Studio 2017 Enterprise 中打开的 `.diagsession` 文件。
+1. 单击**下载快照**按钮以下载`.diagsession`文件，也可以打开 Visual Studio enterprise。
 
-2. 若要打开 `.diagsession` 文件，需要安装 Snapshot Debugger VS 组件。 Snapshot Debugger 组件是 VS 中 ASP.net 工作负载的必需组件，可以从 VS 安装程序中的单独组件列表中选择。 如果使用的 Visual Studio 2017 15.5 之前的版本需要安装中的扩展插件[VS marketplace](https://aka.ms/snapshotdebugger)。
+2. 若要打开`.diagsession`文件，您需要安装快照调试器 Visual Studio 组件。 快照调试程序组件是 Visual Studio 中的 ASP.net 工作负载的必需的组件，并可从 Visual Studio 安装程序中单独的组件列表中选择。 如果使用 Visual Studio 2017 版本 15.5 之前的 Visual Studio 版本，你需要安装中的扩展插件[Visual Studio Marketplace](https://aka.ms/snapshotdebugger)。
 
 3. 打开快照文件后，将出现 Visual Studio 中的“小型转储调试”页面。 单击“调试托管代码”开始调试快照。 快照将打开到引发异常的代码行，以便可以调试进程的当前状态。
 

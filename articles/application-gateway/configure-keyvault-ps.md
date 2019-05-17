@@ -1,34 +1,34 @@
 ---
-title: 配置 SSL 终止与使用 Azure PowerShell 的 Key Vault 证书
-description: 了解如何通过集成 Azure 应用程序网关与密钥保管库的附加到启用 HTTPS 侦听器的服务器证书。
+title: 使用 Azure PowerShell 使用 Key Vault 证书配置 SSL 终止
+description: 了解如何通过集成 Azure 应用程序网关与密钥保管库的附加到已启用 HTTPS 的侦听器的服务器证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/22/2019
 ms.author: victorh
-ms.openlocfilehash: 06930171552843a5620d9a2bfb379a60e91a3915
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e011caa8c7a0c7383d16c81f4bff29d3c1c99f99
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946746"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827613"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-using-azure-powershell"></a>配置 SSL 终止与使用 Azure PowerShell 的 Key Vault 证书
+# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>使用 Azure PowerShell 使用 Key Vault 证书配置 SSL 终止
 
-[Azure 密钥保管库](../key-vault/key-vault-whatis.md)是可以使用来保护机密、 密钥和 SSL 证书的平台托管的密钥存储。 应用程序网关支持的附加到启用 HTTPS 侦听器的服务器证书 （在公共预览版） 与密钥保管库集成。 此支持仅限于应用程序网关 v2 SKU。
+[Azure 密钥保管库](../key-vault/key-vault-whatis.md)是平台托管机密存储可用于保护机密、 密钥和 SSL 证书。 Azure 应用程序网关支持的附加到已启用 HTTPS 的侦听器的服务器证书 （在公共预览版） 与密钥保管库集成。 此支持仅限于应用程序网关 v2 SKU。
 
 有关详细信息，请参阅[使用密钥保管库证书的 SSL 终止](key-vault-certs.md)。
 
-本文介绍了与应用程序网关的 SSL 终止证书集成 Key Vault 的 Azure PowerShell 脚本。
+本文介绍如何使用 Azure PowerShell 脚本将密钥保管库集成与应用程序网关终止 SSL 证书。
+
+本文需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要在本文中运行的命令，还需要创建与 Azure 的连接，通过运行`Connect-AzAccount`。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本文需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要在本文中运行的命令，还需要运行`Connect-AzAccount`若要创建与 Azure 的连接。
-
 ## <a name="prerequisites"></a>必备组件
 
-必须已安装在开始之前 ManagedServiceIdentity 模块。
+在开始之前，必须已安装 ManagedServiceIdentity 模块：
 
 ```azurepowershell
 Install-Module -Name Az.ManagedServiceIdentity
@@ -55,7 +55,7 @@ $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
   -Location $location -ResourceGroupName $rgname
 ```
 
-### <a name="create-key-vault-policy-and-certificate-to-be-used-by-application-gateway"></a>创建密钥保管库、 策略和证书是由应用程序网关
+### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>创建密钥保管库、 策略和应用程序网关使用证书
 
 ```azurepowershell
 $keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
@@ -69,7 +69,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 
-### <a name="create-a-vnet"></a>创建 VNet
+### <a name="create-a-virtual-network"></a>创建虚拟网络
 
 ```azurepowershell
 $sub1 = New-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -AddressPrefix "10.0.0.0/24"
@@ -78,14 +78,14 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-static-public-vip"></a>创建静态公共 VIP
+### <a name="create-a-static-public-virtual-ip-vip-address"></a>创建一个静态的公共虚拟 IP (VIP) 地址
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-ports"></a>创建池和前端端口
+### <a name="create-pool-and-front-end-ports"></a>创建池和前端端口
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -98,7 +98,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-ssl-certificate-to-key-vault"></a>点的 ssl 证书，为密钥保管库
+### <a name="point-the-ssl-certificate-to-your-key-vault"></a>点到 key vault 的 SSL 证书
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -121,7 +121,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 ```
 
-### <a name="assign-user-managed-identity-to-the-application-gateway"></a>将管理用户标识分配到应用程序网关
+### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>用户托管的标识分配到应用程序网关
 
 ```azurepowershell
 $appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentityId $identity.Id
@@ -140,4 +140,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关 SSL 终止](ssl-overview.md)。
+[了解有关 SSL 终止的详细信息](ssl-overview.md)

@@ -1,10 +1,10 @@
 ---
 title: 如何配置应用程序代理应用程序 | Microsoft Docs
-description: 了解如何通过简单几步创建并配置一个应用程序代理应用程序
+description: 了解如何创建和配置应用程序代理应用程序在几个简单步骤
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f22f064043467bf52c23cab547a7e6c8ba2205
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fc9287aac567c8989564094564b92b82662e603f
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443162"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825936"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>如何配置应用程序代理应用程序
 
-本文帮助了解如何在 Azure AD 内配置应用程序代理应用程序，以将本地应用程序公开到云。
+本文可帮助你了解如何配置应用程序代理应用程序 Azure AD 中公开你的本地应用程序到云。
 
-## <a name="recommended-documents"></a>建议的文档 
+## <a name="recommended-documents"></a>推荐文档 
 
 若要了解通过管理门户对应用程序代理应用程序进行初始配置和创建，请遵循[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "60443162"
 
 -   URL 应为域名，而非 IP 地址
 
-在创建应用程序时，错误消息应显示在右上角。 还可以选择通知图标以查看错误消息。
+创建应用程序时，应在右上角中显示的错误消息。 还可以选择通知图标以查看错误消息。
 
    ![通知提示](./media/application-proxy-config-how-to/error-message.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "60443162"
 
 -   证书缺少私钥
 
-尝试上传证书时，右上角显示错误消息。 还可以选择通知图标以查看错误消息。
+当您尝试上传的证书，则将显示错误消息中右上角。 还可以选择通知图标以查看错误消息。
 
    ![通知提示](./media/application-proxy-config-how-to/error-message2.png)
 

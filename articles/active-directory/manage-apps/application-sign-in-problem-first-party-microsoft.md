@@ -3,8 +3,8 @@ title: 登录 Microsoft 应用程序时出现的问题 | Microsoft Docs
 description: 对使用 Azure AD 登录到第一方 Microsoft 应用程序（如 Office 365）时面临的常见问题进行故障排除
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256ca5c2f26a6bac6bdfd09e4dd6294ec5a569ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26acb32828ae4829b3da5c3a1181dbde19b23d05
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292191"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825219"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 
@@ -435,7 +435,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 6. 单击要检查的策略。
 
-7. 检查不存在任何可能会阻止用户访问的特定条件、分配或其他设置。
+7. 检查不存在任何特定的条件、 分配或可能会阻止用户访问其他设置。
 
    >[!NOTE]
    >可能需要暂时禁用此策略，确保它不影响登录。为此，请将“启用策略”切换按钮设置为“否”，然后单击“保存”按钮。
@@ -456,7 +456,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 5.  单击“所有应用程序”。
 
-6.  按应用程序显示名称或应用程序 ID 搜索感兴趣的或用户尝试登录到的应用程序。
+6.  搜索感兴趣的应用程序或用户尝试登录以进行应用程序显示名称或应用程序 id。
 
      >[!NOTE]
      >如果看不到要查找的应用程序，请单击“筛选器”按钮并将列表的范围扩展到“所有应用程序”。 如果要查看更多列，请单击“列”按钮为应用程序添加其他详细信息。

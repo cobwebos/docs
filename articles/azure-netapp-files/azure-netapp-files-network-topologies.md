@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 2afd5f0a574fd15c4327b141901d2651dbe2b9e5
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524230"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826434"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp 文件网络规划指南
 
@@ -42,7 +42,7 @@ Azure 的 NetApp 文件卷用于包含在名为专用子网[委派子网](https:
 
 以下网络限制适用于 Azure 的 NetApp 文件：
 
-* 数的 Ip 从 VNet （包括对等的 Vnet） 连接到 VNet 中的卷不能超过 1000年。
+* 可以连接到的卷 （与 VNet 或跨对等互连的 Vnet） 的 Vm 数量不能超过 1000年。
 * 在每个 Azure 虚拟网络 (VNet) 中，只能将一个子网委派给 Azure NetApp 文件。
 
 
@@ -52,13 +52,13 @@ Azure 的 NetApp 文件卷用于包含在名为专用子网[委派子网](https:
 
 |    拓扑    |    支持    |     解决方法    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    连接到本地 VNet 中的卷    |    是    |         |
-|    连接到对等互连的 VNet （同一区域） 中的卷    |    是    |         |
-|    与卷 （跨区域或全局对等互连） 对等 VNet 中的连接    |    否    |    无    |
-|    连接到通过 ExpressRoute 网关的卷    |    是    |         |
-|    从本地连接到辐射 VNet 通过 ExpressRoute 网关和网关传输与对等互连的 VNet 中的卷    |    否    |    在中心 VNet (网关与 Azure VNet) 中创建委派的子网    |
-|    从本地连接到 VPN 网关通过辐射 VNet 中的卷    |    是    |         |
-|    从本地连接到辐射 VNet VPN 网关和网关传输与对等互连的 VNet 中的卷    |    是    |         |
+|    连接到本地 VNet 中的卷    |    “是”    |         |
+|    连接到对等互连的 VNet （同一区域） 中的卷    |    “是”    |         |
+|    与卷 （跨区域或全局对等互连） 对等 VNet 中的连接    |    “否”    |    无    |
+|    连接到通过 ExpressRoute 网关的卷    |    “是”    |         |
+|    从本地连接到辐射 VNet 通过 ExpressRoute 网关和网关传输与对等互连的 VNet 中的卷    |    “否”    |    在中心 VNet (网关与 Azure VNet) 中创建委派的子网    |
+|    从本地连接到 VPN 网关通过辐射 VNet 中的卷    |    “是”    |         |
+|    从本地连接到辐射 VNet VPN 网关和网关传输与对等互连的 VNet 中的卷    |    “是”    |         |
 
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>对于 Azure NetApp 文件卷的虚拟网络
@@ -95,7 +95,7 @@ Azure 的 NetApp 文件卷用于包含在名为专用子网[委派子网](https:
 
 基本方案是创建或连接到 Azure 的 NetApp 文件卷从同一 VNet 中的虚拟机 (VM)。 对于上图中的 VNet 2，卷 1 创建委派的子网中，可以装载在 VM 1 中的默认子网。
 
-### <a name="vnet-peering"></a>VNet 对等互连
+### <a name="vnet-peering"></a>VNet 对等
 
 如果需要访问彼此的资源在同一区域中的其他 Vnet，可以使用连接 Vnet [VNet 对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)若要启用通过 Azure 基础结构的安全连接。 
 

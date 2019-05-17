@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 634f3948f9a5e28454e9b2b29f950c3fb00f6c19
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/10/2019
+ms.openlocfilehash: a320f584ff82f2b8a2b3d784e1995aa043004587
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147743"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597484"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -190,7 +190,7 @@ ms.locfileid: "65147743"
 | 架构 | 25 | 500 | 1,000 |
 | 程序集 | 10 | 25 | 50 |
 | 证书 | 25 | 2 | 500 |
-| 批处理配置 | 5 | 1 | 50 |
+| 批处理配置 | 5 | 第 | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>

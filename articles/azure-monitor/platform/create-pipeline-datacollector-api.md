@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 961ce4427c509142077c95a6569ad2c444ec0a52
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205949"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603235"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用数据收集器 API 创建数据管道
 
@@ -27,7 +27,7 @@ ms.locfileid: "65205949"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>示例问题
-本文余下部分，我们会在 Application Insights 中检查页面视图数据。 在我们的假想方案中，我们需要将默认情况下由 Application Insights SDK 收集的地理信息与包含全球每个国家/地区人口的自定义数据关联起来，目的是确定最值得我们投入市场营销费用的地方。 
+本文余下部分，我们会在 Application Insights 中检查页面视图数据。 在我们假想方案中，我们想要关联到自定义数据包含在世界中，每个国家/地区的填充行为，目的是确定我们的支出，默认情况下，通过 Application Insights SDK 收集地理信息的最市场营销资金。 
 
 为此，我们使用公开的数据源，例如 [UN World Population Prospects](https://esa.un.org/unpd/wpp/)（联合国世界人口展望）。 数据将采用以下简单架构：
 

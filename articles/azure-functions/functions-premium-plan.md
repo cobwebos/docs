@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031144"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544780"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions 的高级计划 （预览版）
 
@@ -44,7 +44,7 @@ az functionapp plan create -g <resource-group> -n <plan-name> -l <region> --numb
 
 在高级版计划中，您可以在指定数量的实例，直到达到最小的计划大小上预先上做好准备您的应用程序。  预上做好准备的实例还允许您预先的高负载之前的某个应用扩展。 当应用横向扩展，它会预 warmed 实例第一次扩展。 其他实例可继续缓冲区和热立即以准备进行下一步的缩放操作。 通过让预上做好准备的实例的缓冲区，可以有效地避免冷启动延迟。  预上做好准备的实例是一项功能的高级计划，并需要保留至少一个实例在运行并可在所有时间的计划处于活动状态。
 
-可以通过选择在 Azure 门户中配置预上做好准备的实例数**Scale Out**中**平台功能**选项卡。
+可以在 Azure 中配置预上做好准备的实例数门户通过选择您**Function App**、 到接下来**平台功能**选项卡，并选择**Scale Out**选项。 在函数应用的编辑窗口中，预上做好准备的实例是特定于该应用，但最小值和最大实例应用于整个计划。
 
 ![弹性缩放设置](./media/functions-premium-plan/scale-out.png)
 
@@ -95,7 +95,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 |SKU|核心数|内存|存储|
 |--|--|--|--|
-|EP1|1|3.5GB|250GB|
+|EP1|第|3.5GB|250GB|
 |EP2|2|7GB|250GB|
 |EP3|4|14GB|250GB|
 
@@ -114,6 +114,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |法国中部|
 |日本西部|
 |韩国中部|
+|美国中北部|
 |北欧|
 |美国中南部|
 |印度南部|

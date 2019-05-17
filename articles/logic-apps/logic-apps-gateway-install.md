@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 67a918b227ad3b33a2f63b17f86b94f36fbc9fa3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 10a6e5c33f6a3c23d98e6eb3380de0d6dc6ac216
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405003"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544487"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -51,7 +51,7 @@ ms.locfileid: "60405003"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 具有[Azure 订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer)的[工作或学校帐户](../active-directory/fundamentals/sign-up-organization.md) 
+* 具有[Azure 订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)的[工作或学校帐户](../active-directory/fundamentals/sign-up-organization.md) 
 
   在安装网关期间，需登录到此帐户，以便将网关安装与 Azure 订阅相关联。 
   稍后在 Azure 门户中为网关安装创建 Azure 资源时，也要使用此帐户。 

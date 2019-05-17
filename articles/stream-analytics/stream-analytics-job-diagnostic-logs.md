@@ -7,14 +7,13 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
-ms.custom: seodec18
-ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/15/2019
+ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480112"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826579"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
@@ -83,7 +82,7 @@ ms.locfileid: "61480112"
 
 ## <a name="diagnostics-log-categories"></a>诊断日志类别
 
-目前，我们捕获了两个类别的诊断日志：
+Azure Stream Analytics 捕获两种类别的诊断日志：
 
 * **创作**：捕获与作业创作操作相关的日志事件，例如作业创建、添加和删除输入与输出、添加和更新查询，以及开始或停止作业。
 
@@ -110,7 +109,7 @@ status | 操作的状态。 例如，“失败”或“成功”。
 
 ### <a name="execution-log-properties-schema"></a>执行日志属性架构
 
-执行日志包含有关执行流分析作业期间发生的事件的信息。 属性的架构因时间类型而异。 目前，我们具有以下类型的执行日志：
+执行日志包含有关执行流分析作业期间发生的事件的信息。 事件是数据错误或泛型事件而异的属性架构。
 
 ### <a name="data-errors"></a>数据错误
 
@@ -124,10 +123,14 @@ Type | 错误类型。 例如，DataConversionError、CsvParserError 和 Service
 数据 | 包含用于准确找到错误起源的数据。 会根据数据大小截断数据。
 
 数据错误根据 operationName 值采用以下架构：
-* 序列化事件。 事件读取操作期间发生序列化事件。 当输入的数据由以下任一原因而不满足查询架构时会发生此类事件：
-    * *事件序列化/反序列化期间类型不匹配*：标识导致出错的字段。
-    * *无法读取事件，序列化无效*：列出输入数据中发生错误的相关位置信息。 包括用于 blob 输入的 blob 名称、偏移量和数据示例。
-* 发送事件。 写入操作期间发生发送事件。 它们标识导致错误的流式处理事件。
+
+* **序列化事件**事件读取操作期间发生。 当输入的数据由以下任一原因而不满足查询架构时会发生此类事件：
+
+   * *事件序列化/反序列化期间类型不匹配*：标识导致出错的字段。
+
+   * *无法读取事件，序列化无效*：列出输入数据中发生错误的相关位置信息。 包括用于 blob 输入的 blob 名称、偏移量和数据示例。
+
+* **将事件发送**写入操作期间发生。 它们标识导致错误的流式处理事件。
 
 ### <a name="generic-events"></a>泛型事件
 

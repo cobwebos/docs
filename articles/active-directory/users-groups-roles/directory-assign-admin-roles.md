@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0811ce1509b7886bf0061cba955ca5e18990cd1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3593324523340300279232e0e63392c9c127991d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920498"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823561"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -163,10 +163,15 @@ ms.locfileid: "64920498"
   * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
   * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
+
+  > [!NOTE]
+  > 一部分用户委派管理权限以及向一部分用户应用程序策略可通过[管理单元 （预览版）](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units)。
+
+
   > [!NOTE]
   > 此角色在中，以前称为"密码管理员" [Azure 门户](https://portal.azure.com/)。 我们正在更改其名称为"支持人员管理员"，以匹配其 Azure AD PowerShell、 Azure AD 图形 API 和 Microsoft Graph API 中的名称。 在短时间，我们将更改为"支持人员 （密码） Administrator"的名称，对"支持人员管理员"的更改之前在 Azure 门户中。
-  >
-  
+
+
 * **[Power BI 管理员](#power-bi-service-administrator)**：具有此角色的用户具有 Microsoft Power BI 内的全局权限（如果该服务存在），并且能够管理支持票证和监视服务运行状况。 有关详细信息，请参阅[了解 Power BI 管理员角色](https://docs.microsoft.com/power-bi/service-admin-role)。
   > [!NOTE]
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Power BI 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“Power BI 管理员”。

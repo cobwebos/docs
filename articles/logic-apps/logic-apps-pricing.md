@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 03/25/2019
-ms.openlocfilehash: 7e1868dd5ce62c28c9a8aac724862c58a5e0e1da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3d06d3c0f9c86b4fe6495632b48051fd69dc663
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598470"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544553"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "60598470"
 
 ## <a name="consumption-pricing-model"></a>消耗量定价模型
 
-对于在公共或“全球”Azure 逻辑应用服务中运行的新逻辑应用，只需根据实际使用的资源付费。 这些逻辑应用使用基于消耗量的计划和定价模型。 在逻辑应用定义中，每个步骤都是操作。 例如，操作包括： 
+对于在公共或“全球”Azure 逻辑应用服务中运行的新逻辑应用，只需根据实际使用的资源付费。 这些逻辑应用使用基于消耗量的计划和定价模型。 在逻辑应用定义中，每个步骤都是操作。 例如，操作包括：
 
 * 触发器（特殊的操作）。 所有逻辑应用需将一个触发器用作第一个步骤。
 * “内置”或本机操作，例如 HTTP、对 Azure Functions 和 API 管理的调用，等等
@@ -38,12 +38,16 @@ Azure 逻辑应用对逻辑应用中运行的所有操作进行计量。 详细�
 
 ## <a name="fixed-pricing-model"></a>固定定价模型
 
-[*集成服务环境*(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供了可创建并运行逻辑应用可以访问 Azure 虚拟网络中的资源的专用、 隔离和专用方法。 对于在 ISE 中运行的新逻辑应用，以及内置的操作和标准连接器支付固定月费。 在 ISE 还包括一个免费企业连接器，其中包括所需的任意多个连接。 使用情况的其他企业连接器基于企业消耗价格进行收费。 
+[*集成服务环境*(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供了可创建并运行逻辑应用可以访问 Azure 虚拟网络中的资源的专用、 隔离和专用方法。 对于在 ISE 中运行的新逻辑应用，您支付固定月费为内置的操作和触发器和标准连接器。
 
-在 ISE 基本单位具有固定容量，因此如果需要更大的吞吐量，你可以[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)，可以在创建期间或之后。
+在 ISE 还包括一个免费企业连接器，其中包括所需的任意多个连接。 使用情况的其他企业连接器基于企业消耗价格进行收费。
 
 > [!NOTE]
-> 在 ISE 处于[*公共预览版*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关具体的定价信息，请参阅 [Azure 逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
+> 在 ISE 中，内置的触发器和操作显示**Core**标记和在作为逻辑应用相同的 ISE 中运行。 标准版和企业版连接器的显示**ISE**标签在作为逻辑应用相同的 ISE 中运行。 不显示在全局的逻辑应用服务中运行的 ISE 标签的连接器。
+
+在 ISE 基本单位具有固定容量，因此如果需要更大的吞吐量，你可以[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)，可以在创建期间或之后。 
+
+有关具体的定价信息，请参阅 [Azure 逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 <a name="connectors"></a>
 

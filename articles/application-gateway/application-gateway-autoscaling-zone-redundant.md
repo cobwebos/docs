@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/7/2019
+ms.date: 5/16/2019
 ms.author: victorh
-ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0da5d8a3eec0faa4001ccf229c6748c253f1b6e5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510822"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827421"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>自动缩放和区域冗余的应用程序网关 
 
@@ -62,7 +62,7 @@ ms.locfileid: "65510822"
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-[定价页](https://azure.microsoft.com/pricing/details/application-gateway/)将更新以反映在 2019 年 5 月 14 日上, 区域的价格。 计费计划在 2019 年 6 月 1 日开始。
+有关定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/application-gateway/)。 计费计划在 2019 年 7 月 1 日开始。
 
 **示例 1**
 
@@ -100,7 +100,7 @@ ms.locfileid: "65510822"
 可以将应用程序网关和 WAF 配置的两种模式中的扩展：
 
 - **自动缩放**-可以通过启用自动缩放，Sku 增加或减少根据应用程序流量需求的应用程序网关和 WAF v2。 此模式提供了更好地为你的应用程序的弹性，无需猜测应用程序网关大小或实例计数。 此模式还可以通过不要求若要运行网关在预计的最大流量负载的预配的峰值容量来节省成本。 客户必须指定的最小值和 （可选） 最大实例计数。 最小容量可确保，应用程序网关和 WAF v2 执行不低于指定即使在流量不存在的最小实例计数。 您将收取此最小容量甚至在没有任何流量。 您还可以选择指定最大实例计数，这可确保应用程序网关不会扩展到指定数量的实例。 将继续付费网关提供服务的流量。 实例计数的范围可以介于 0 到 125。 如果未指定，则最大实例计数的默认值为 20。
-- **手动**-或者，可以选择手动模式下，网关不会自动缩放。 在此模式下，如果没有更多流量的哪些应用程序网关或 WAF 是能够处理，它可能导致流量丢失。 手动模式下，指定实例计数是必需的。 实例计数可能会不同于 1 到 125 实例。
+- **手动**-或者，可以选择手动模式下，网关不会自动缩放。 在此模式下，如果没有更多流量比什么应用程序网关或 WAF 可以处理，它可能导致流量丢失。 手动模式下，指定实例计数是必需的。 实例计数可能会不同于 1 到 125 实例。
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>SKU v1 和 v2 SKU 之间的功能比较
 

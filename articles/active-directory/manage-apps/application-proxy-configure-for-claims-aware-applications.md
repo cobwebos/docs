@@ -3,8 +3,8 @@ title: 声明感知应用 - Azure AD 应用代理 | Microsoft 文档
 description: 如何发布接受 ADFS 声明允许用户进行安全远程访问的本地 ASP.NET 应用程序。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5be2f5bbeb901888edc1e69953fdeb8de566c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c97729cf7d88ebdeefb44c83eb571bb6d7ebd0ed
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293453"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825594"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>在应用程序代理中使用声明感知应用
 [声明感知应用](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx)对安全令牌服务 (STS) 执行重定向。 STS 请求用来自用户的凭据交换令牌，然后将用户重定向到应用程序。 使应用程序代理使用这些重定向有几种方式。 使用本文配置声明感知应用的部署。 
@@ -38,7 +38,7 @@ ms.locfileid: "60293453"
 
 可以使用两种方式之一配置声明感知应用的 ADFS。 第一种方式是使用自定义域。 第二种方式是使用 WS 联合身份验证。 
 
-### <a name="option-1-custom-domains"></a>选项 1：自定义域
+### <a name="option-1-custom-domains"></a>选项 1：加速域名
 
 如果应用程序的所有内部 URL 都是完全限定的域名 (FQDN)，则可以配置应用程序的[自定义域](application-proxy-configure-custom-domain.md)。 使用自定义域创建与内部 URL 相同的外部 URL。 外部 URL 匹配内部 URL 时，无论用户是在本地还是远程，STS 重定向都会起作用。 
 

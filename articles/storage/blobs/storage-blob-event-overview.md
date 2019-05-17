@@ -9,18 +9,18 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: b03d7d98fe43eacab63f45ccacd7d8dea9598c8e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142163"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826522"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
 Azure 存储事件允许应用程序使用新式无服务器体系结构响应 blob 的创建和删除。 为此，它无需复杂的代码或高价低效的轮询服务。  相反，可以通过 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)向订阅者（如 [Azure Functions](https://azure.microsoft.com/services/functions/) 或 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)，甚至是你的自定义 HTTP 侦听器）推送事件，且仅需为已使用的内容付费。
 
-Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富的重试策略和死信传递向应用程序提供可靠的传递服务。
+Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富的重试策略和死信传递向应用程序提供可靠的传递服务。 若要了解详细信息，请参阅[事件网格消息传送和重试](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)。
 
 常见的 Blob 存储事件方案包括图像或视频处理、搜索索引或任何面向文件的工作流。  异步文件上传十分适合事件。  基于事件的体系结构对于鲜少更改，但要求立即响应的情况尤为有效。
 
@@ -45,7 +45,7 @@ Blob 存储事件包含响应数据更改所需的所有信息。  可以识别 
 > |属性|Type|描述|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |主题|string|发出该事件的存储帐户的完整 Azure 资源管理器 ID。|
-> |subject|string|作为事件使用者的对象的相对资源路径，使用的扩展 Azure 资源管理器格式与用于描述存储帐户、服务和适用于 Azure RBAC 容器的格式相同。  此格式包含保留大小写的 blob 名称。|
+> |主题|string|作为事件使用者的对象的相对资源路径，使用的扩展 Azure 资源管理器格式与用于描述存储帐户、服务和适用于 Azure RBAC 容器的格式相同。  此格式包含保留大小写的 blob 名称。|
 > |EventTime|string|事件生成的日期/时间，采用 ISO 8601 格式|
 > |eventType|string|“Microsoft.Storage.BlobCreated”或“Microsoft.Storage.BlobDeleted”|
 > |ID|string|此事件的唯一标识符|

@@ -7,15 +7,15 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 108dd80aa90772eb01fe3c7f0176ddd37e27acaa
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 467c323a0b669e70e12f801fd8fdd6df119e793d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024450"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595915"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>使用"完整"Lucene 搜索语法 （Azure 搜索中的高级查询） 的查询示例
 
@@ -81,11 +81,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 本文中的所有示例都指定了 queryType=full 搜索参数，指明由 Lucene 查询分析程序处理完整语法。 
 
-## <a name="example-1-field-scoped-query"></a>示例 1：字段范围查询
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>示例 1：查询作用域为字段的列表
 
-第一个示例不是特定于 Lucene 的但我们会导致与它引入的第一个基本查询概念： 包含。 本示例显示查询执行情况以及对几个特定字段的响应。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
+第一个示例不是特定于 Lucene 的但我们会导致与它引入的第一个基本查询概念： 字段作用域。 此示例范围将整个查询，只需几个特定字段的响应。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
 
-出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 语法是 searchFields 和 select，前者将查询执行限制为只执行 business_title 字段，后者指定响应中包含哪些字段。
+出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 **SearchFields**参数限制为只是 business_title 字段的查询执行并**选择**指定在响应中包含的字段。
 
 ### <a name="partial-query-string"></a>部分查询字符串
 
@@ -99,6 +99,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
 ```
 
+逗号后的空格是可选的。
+
+> [!Tip]
+> 使用 REST API 从应用程序代码时，别忘了为进行 URL 编码参数，如`$select`和`searchFields`。
+
 ### <a name="full-url"></a>完整的 URL
 
 ```http
@@ -109,41 +114,44 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Postman 示例响应](media/search-query-lucene-examples/postman-sample-results.png)
 
-你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包括实际条件时，能看到搜索分数变成有意义的值。
+你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 当包含实际搜索条件时，你将看到的搜索分数演变为有意义的值。
 
-## <a name="example-2-intra-field-filtering"></a>示例 2：字段内筛选
+## <a name="example-2-fielded-search"></a>示例 2：现场的搜索
 
-完整 Lucene 语法支持字段内的表达式。 此示例中搜索与词高级，而不是初级职位。
+完整 Lucene 语法支持作用域为特定字段的单独的搜索表达式。 此示例中搜索与词高级，而不是初级职位。
 
 ### <a name="partial-query-string"></a>部分查询字符串
 
 ```http
-searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+$select=business_title&search=business_title:(senior NOT junior)
 ```
 
 下面是使用多个字段相同的查询。
 
 ```http
-searchFields=business_title, posting_type&$select=business_title, posting_type&search=business_title:senior+NOT+junior AND posting_type:external
+$select=business_title, posting_type&search=business_title:(senior NOT junior) AND posting_type:external
 ```
 
 ### <a name="full-url"></a>完整的 URL
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
   ![Postman 示例响应](media/search-query-lucene-examples/intrafieldfilter.png)
 
-通过指定 fieldname:searchterm 构造，可以定义现场查询操作，该操作的字段是一个词，搜索词也是一个词或短语，并且根据需要使用布尔运算符。 一些示例包括以下内容：
+您可以定义现场的搜索操作与**fieldName:searchExpression**语法，其中的搜索表达式可以是单独的词或短语或在括号中，根据需要使用布尔运算符更复杂的表达式。 一些示例包括以下内容：
 
-* business_title:(senior NOT junior)
-* state:("New York" AND "New Jersey")
-* business_title:(senior NOT junior) AND posting_type:external
+- `business_title:(senior NOT junior)`
+- `state:("New York" OR "New Jersey")`
+- `business_title:(senior NOT junior) AND posting_type:external`
 
-如果想要两个字符串评估为单个实体，请务必将多个字符串放置在引号内，正如这个在位置字段中搜索两个不同城市的情况一样。 此外，请确保运算符大写，就像你看到的 NOT 和 AND 一样。
+请确保将引号内的多个字符串，如果你想要评估为单个实体，作为两个不同的位置中，在这种情况下搜索这两个字符串`state`字段。 此外，请确保运算符大写，就像你看到的 NOT 和 AND 一样。
 
-在 **fieldname:searchterm** 中指定的字段必须是可搜索字段。 有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+中指定的字段**fieldName:searchExpression**必须是可搜索字段。 有关如何在字段定义中使用索引属性的详细信息，请参阅[创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+
+> [!NOTE]
+> 在上面的示例中，我们没有不需要使用`searchFields`参数因为查询的每个部分具有显式指定的字段名称。 但是，仍可以使用`searchFields`参数，如果你想要运行一个查询，其中某些部分范围限定为特定字段中，和其他可应用到多个字段。 例如，以下查询`search=business_title:(senior NOT junior) AND external&searchFields=posting_type`将匹配`senior NOT junior`只能`business_title`字段中，而将匹配"external"与`posting_type`字段。 中提供的字段名称**fieldName:searchExpression**始终优先于`searchFields`参数，在此示例中的原因是，我们不需要包括`business_title`中`searchFields`参数。
 
 ## <a name="example-3-fuzzy-search"></a>示例 3：模糊搜索
 

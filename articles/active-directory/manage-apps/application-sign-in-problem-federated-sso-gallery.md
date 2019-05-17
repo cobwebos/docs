@@ -3,8 +3,8 @@ title: 登录到配置为联合单一登录的库应用程序时出现的问题 
 description: 关于使用 Azure AD 登录到已配置为基于 SAML 的联合单一登录的应用程序时出现的具体错误的指南
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 623d684f701df8b1a7c4b84a2bd3840f039ad174
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1985b7bbcfdaab2aa303f67a9b1d090c85eedd5d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292208"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825198"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的库应用程序时出现的问题
 
@@ -57,7 +57,7 @@ ms.locfileid: "60292208"
 
 1.  选择要配置为单一登录的应用程序。
 
-1.  应用程序加载后，打开**基本 SAML 配置**。 验证标识符文本框中的值匹配错误中显示的标识符值的值。
+1.  当应用程序加载以后，请打开“基本 SAML 配置”。 验证标识符文本框中的值匹配错误中显示的标识符值的值。
 
 
 
@@ -87,7 +87,7 @@ ms.locfileid: "60292208"
 
 1.  选择要配置为单一登录的应用程序。
 
-1.  应用程序加载后，打开**基本 SAML 配置**。 验证或更新以匹配的回复 URL 文本框中的值`AssertionConsumerServiceURL`SAML 请求中的值。    
+1.  当应用程序加载以后，请打开“基本 SAML 配置”。 验证或更新以匹配的回复 URL 文本框中的值`AssertionConsumerServiceURL`SAML 请求中的值。    
     
 你已在 Azure AD 中更新的回复 URL 值和匹配 SAML 请求中的应用程序发送的值后，您应能够登录到应用程序。
 
@@ -123,7 +123,7 @@ ms.locfileid: "60292208"
 
 1.  在“添加分配”窗格中，选择“用户和组”选择器。
 
-1. 在中**按名称或电子邮件地址搜索**搜索框中，键入完整名称或你想要添加的用户的电子邮件地址。
+1. 在“按名称或电子邮件地址搜索”搜索框中，键入要添加的用户的全名或电子邮件地址。
 
 1. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户的个人资料照片或徽标添加到用户旁边的复选框**选定**列表。
 
@@ -152,7 +152,7 @@ Azure AD 不支持用于实现单一登录的应用程序发送的 SAML 请求�
 
 1. 捕获 SAML 请求。 遵循本教程[如何在 Azure AD 中调试基于 SAML 的单一登录对应用程序](../develop/howto-v1-debug-saml-sso-issues.md)若要了解如何捕获 SAML 请求。
 
-1. 请联系应用程序供应商并共享以下信息：
+1. 联系应用程序供应商并共享以下信息：
 
    -   SAML 请求
 
@@ -186,7 +186,7 @@ Azure AD 不支持用于实现单一登录的应用程序发送的 SAML 请求�
 
 1.  选择要配置为单一登录的应用程序。
 
-1.  应用程序加载后，打开**基本 SAML 配置**。 验证标识符文本框中的值匹配错误中显示的标识符值的值。
+1.  当应用程序加载以后，请打开“基本 SAML 配置”。 验证标识符文本框中的值匹配错误中显示的标识符值的值。
 
 
 ## <a name="certificate-or-key-not-configured"></a>证书或密钥未配置
@@ -263,7 +263,7 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 6.  选择要配置为单一登录的应用程序。
 
-7.  应用程序加载后，打开**基本 SAML 配置**。 在中**回复 URL (断言使用者服务 URL)**，由系统创建删除未使用或默认答复 Url。 例如，`https://127.0.0.1:444/applications/default.aspx`。
+7.  当应用程序加载以后，请打开“基本 SAML 配置”。 在中**回复 URL (断言使用者服务 URL)**，由系统创建删除未使用或默认答复 Url。 例如，`https://127.0.0.1:444/applications/default.aspx`。
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>自定义发送到应用程序的 SAML 声明时出现问题
 

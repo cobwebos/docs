@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/11/2019
-ms.openlocfilehash: 7ab22a1d1b44327b28264ec5bd6ba0c44b1d65a7
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
-ms.translationtype: HT
+ms.openlocfilehash: 72552f6335f3ad6742679708a639634362c49c0b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620148"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823317"
 ---
 # <a name="sql-database-serverless-preview"></a>SQL 数据库无服务器（预览版）
 
@@ -113,11 +113,11 @@ SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单�
 |修改特定的数据库元数据|添加新的数据库标记<br>更改最大 vCore 数、最小 vCore 数和自动暂停延迟|
 |SQL Server Management Studio (SSMS)|使用 SSMS 版本 18 并在服务器中为任意数据库打开新的查询窗口会恢复同一服务器中任何自动暂停的数据库。 如果使用 IntelliSense 处于关闭状态的 SSMS 版本 17.9.1，则不会发生此行为。|
 
-### <a name="connectivity"></a>连接
+### <a name="connectivity"></a>连接性
 
 如果无服务器数据库处于暂停状态，则首次登录将恢复数据库，并返回一个错误，指出数据库将不可用，错误代码为 40613。 恢复数据库后，必须重新尝试登录以建立连接。 具有连接重试逻辑的数据库客户端应该不需要进行修改。
 
-### <a name="latency"></a>Latency
+### <a name="latency"></a>延迟
 
 自动暂停或自动恢复无服务器数据库的延迟时间通常为 1 分钟。
 
@@ -277,19 +277,21 @@ vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据
 
 此数量每秒计算一次，按 1 分钟进行汇总。
 
-**示例**：想象一个在一小时内具有以下使用情况且使用 GP_S_Gen5_4 的数据库：
+请考虑配置了 1 的最小 vcore 和 4 的最大 vcore 数的无服务器数据库。  这对应于大约 3 GB 内存的最小值和 12 GB 最大内存。  假设自动暂停延迟设置为 6 小时和数据库工作负荷处于活动状态 24 小时内的第一个 2 小时内，否则为处于非活动状态。    
 
-|时间（小时：分钟）|app_cpu_billed（vCore 秒）|
-|---|---|
-|0:01|63|
-|0:02|123|
-|0:03|95|
-|0:04|54|
-|0:05|41|
-|0:06 - 1:00|1255|
-||总计：1631|
+在这种情况下，数据库是为计算和存储计费期间第一个 8 小时。  即使数据库处于不活动后紧跟第 2 个小时，这将仍基于预配数据库处于联机状态时的最小计算后续 6 小时内的计算收费。  暂停数据库时，仅存储计费期间在 24 小时内的其余部分。
 
-假设计算单位的价格为 $0.000073/vCore/秒。 然后，可以使用以下公式确定这一个小时内应付的计算费用：$0.000073/vCore/秒 * 1631 vCore 秒 = $0.1191
+更确切地说，在此示例中计算帐单的计算方式如下：
+
+|时间间隔|使用每个第二个 Vcore|GB 使用每秒|计算维度计费|vCore 秒的时间间隔内计费|
+|---|---|---|---|---|
+|0:00-1:00|4|9|使用 Vcore|4 个 Vcore * 3600 秒 = 14400 vCore 秒|
+|1:00-2:00|第|12|使用内存|12 Gb * 1/3 * 3600 秒 = 14400 vCore 秒|
+|2:00-8:00|0|0|预配的最小内存|3 Gb * 1/3 * 21600 秒 = 21600 vCore 秒|
+|8:00-24:00|0|0|计费暂停时没有计算|0 vCore 秒|
+|总 vCore 秒计费在 24 小时||||50400 vCore 秒|
+
+假设计算单位的价格为 $0.000073/vCore/秒。  然后收取此 24 小时内的计算是计费的计算单位价格和 vcore 秒的产品： $0.000073/vCore/second * 50400 vCore 秒 = $3.68
 
 ## <a name="available-regions"></a>可用区域
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b873d90dbc33aff27cd2fc3b5099b08eacf929b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195435"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603211"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen1 中的数据
 本文介绍如何使用 Power BI Desktop 分析和可视化 Azure Data Lake Storage Gen1 中存储的数据。
@@ -74,23 +74,23 @@ ms.locfileid: "60195435"
 14. 查询更新后，“字段”选项卡会显示可用于可视化的新字段。
     
     ![已更新的字段](./media/data-lake-store-power-bi/updated-query-fields.png "已更新的字段")
-15. 创建一个表示特定国家/地区的每个城市中司机的饼图。 为此，请如下进行选择。
+15. 让我们创建一个饼图来表示给定的国家/地区的每个城市中的驱动程序。 为此，请如下进行选择。
     
     1. 在“可视化”选项卡中，单击饼图符号。
        
         ![创建饼图](./media/data-lake-store-power-bi/create-pie-chart.png "创建饼图")
-    2. 将使用到的列是“列 4”（城市名称）和“列 7”（国家/地区名称）。 如下所示，从“字段”选项卡将这些列拖动到“可视化”选项卡。
+    2. 我们将使用的列**Column 4** （城市名称） 和**列 7** （国家/地区的名称）。 如下所示，从“字段”选项卡将这些列拖动到“可视化”选项卡。
        
         ![创建视觉效果](./media/data-lake-store-power-bi/create-visualizations.png "创建视觉效果")
     3. 此时饼图应如下所示。
        
         ![饼图](./media/data-lake-store-power-bi/pie-chart.png "创建视觉效果")
-16. 通过在页面级别筛选器中选择一个特定的国家/地区，此时会显示所选国家/地区的每个城市中的司机数量。 例如，在“可视化”选项卡中的“页面级别筛选器”中，选择“巴西”。
+16. 通过从页面级别筛选器选择特定的国家/地区，现在可以看到所选的国家/地区的每个城市中的驱动程序的数量。 例如，在“可视化”选项卡中的“页面级别筛选器”中，选择“巴西”。
     
-    ![选择国家/地区](./media/data-lake-store-power-bi/select-country.png "选择国家/地区")
+    ![选择一个国家/地区](./media/data-lake-store-power-bi/select-country.png "选择国家/地区")
 17. 饼图会自动更新，显示巴西各个城市中的司机。
     
-    ![某个国家/地区中的司机](./media/data-lake-store-power-bi/driver-per-country.png "每个国家/地区的司机")
+    ![一个国家/地区中的驱动程序](./media/data-lake-store-power-bi/driver-per-country.png "每个国家/地区的驱动程序")
 18. 在“文件”菜单上，单击“保存”将可视化对象另存为 Power BI Desktop 文件。
 
 ## <a name="publish-report-to-power-bi-service"></a>将报表发布到 Power BI 服务

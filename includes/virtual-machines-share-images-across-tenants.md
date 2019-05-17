@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cb7cf932433927d4ead853952ff74d55c55b9cf7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160015"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546778"
 ---
 共享的映像库可以使用 RBAC 共享映像。 您可以使用 RBAC 共享你的租户，以及甚至对个人租户外部的映像。 但是，如果你想要共享 Azure 租户，在规模较大，外部图像应创建的应用注册，以方便共享。  使用应用注册可以支持更复杂的共享方案，如： 
 
@@ -44,7 +44,9 @@ ms.locfileid: "65160015"
 1. 下**选择**，类型*myGalleryApp* ，然后选择它时它都显示在列表中。 完成后，选择**保存**。
 
 
-创建租户 2 用于通过使用浏览器登录中请求访问应用程序的服务主体。 替换*<Tenant2 ID>* 与想要分享您的图片库和租户的租户 ID。 替换 *< 应用程序 （客户端） ID >* 创建的应用程序注册的应用程序 id。 完成后使替换内容，将 URL 粘贴到浏览器中，按照登录提示登录到租户 2。
+## <a name="give-tenant-2-access"></a>让租户 2 访问
+
+通过使用浏览器登录中请求向应用程序租户 2 的访问。 替换*<Tenant2 ID>* 与想要分享您的图片库和租户的租户 ID。 替换 *< 应用程序 （客户端） ID >* 创建的应用程序注册的应用程序 id。 完成后使替换内容，将 URL 粘贴到浏览器中，按照登录提示登录到租户 2。
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

@@ -1,7 +1,7 @@
 ---
 title: 自动 ML 远程计算目标
 titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务在 Data Science Virtual machine (DSVM) 远程目标上使用自动机器学习构建模型
+description: 了解如何构建与 Azure 机器学习服务的 Azure 机器学习远程计算目标上使用自动的机器学习模型
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -12,26 +12,26 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f2d71abeacee531b21a8276f621367dd39a39d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a18bdf3a2a1ccd60ff20d21ebd99f4f6e15e38f
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820397"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551339"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
 在 Azure 机器学习中，我们在所管理的不同类型的计算资源上训练模型。 计算目标可以是本地计算机，也可以是云中的计算机。
 
-可以通过添加附加计算目标，轻松地纵向扩展或横向扩展机器学习试验。 计算目标选项包括基于 Ubuntu 的 Data Science Virtual Machine (DSVM) 或 Azure 机器学习计算。 DSVM 是在 Microsoft Azure 云上专为研究数据科学而生成的自定义 VM 映像。 它预先安装和预配置了许多热门的数据科学和其他工具。  
+可以轻松地纵向扩展或通过添加额外的计算目标，例如 Azure 机器学习计算 (AmlCompute) 横向扩展机器学习实验。 AmlCompute 是可以轻松地创建单个或多节点计算的管理计算基础结构。
 
-在本文中，你将了解如何在 DSVM 上使用自动化机器学习来构建模型。
+在本文中，您将学习如何生成使用 AmlCompute 自动化机器学习模型。
 
 ## <a name="how-does-remote-differ-from-local"></a>远程与本地有何区别？
 
-教程“[使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)”讲授了如何使用本地计算机通过自动化机器学习来训练模型。  本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 此功能允许你取消特定迭代，观察执行状态，或继续在 Jupyter 笔记本的其他单元格上处理。 若要进行远程训练，首先要创建一个远程计算目标，例如 Azure DSVM。  然后，配置远程资源，并在那里提交代码。
+教程“[使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)”讲授了如何使用本地计算机通过自动化机器学习来训练模型。  本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 此功能允许你取消特定迭代，观察执行状态，或继续在 Jupyter 笔记本的其他单元格上处理。 若要远程训练，首先创建一个远程计算目标，例如 AmlCompute。 然后，配置远程资源，并在那里提交代码。
 
-本文展示了在远程 DSVM 上运行自动化机器学习试验所需的额外步骤。  本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
+本文介绍远程 AmlCompute 目标上运行自动化的机器学习试验所需的额外步骤。 本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
 
 ```python
 ws = Workspace.from_config()
@@ -39,67 +39,32 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>创建资源
 
-如果尚无 DSVM，请在工作区 (`ws`) 中创建 DSVM。 如果先前已创建 DSVM，则此代码将跳过创建过程，并将现有资源详情加载到 `dsvm_compute` 对象。  
+在你的工作区中创建 AmlCompute 目标 (`ws`) 如果它尚不存在。  
 
-**时间估计**：创建 VM 需要大约 5 分钟。
-
-```python
-from azureml.core.compute import DsvmCompute
-
-dsvm_name = 'mydsvm' #Name your DSVM
-try:
-    dsvm_compute = DsvmCompute(ws, dsvm_name)
-    print('found existing dsvm.')
-except:
-    print('creating new dsvm.')
-    # Below is using a VM of SKU Standard_D2_v2 which is 2 core machine. You can check Azure virtual machines documentation for additional SKUs of VMs.
-    dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
-    dsvm_compute = DsvmCompute.create(ws, name = dsvm_name, provisioning_configuration = dsvm_config)
-    dsvm_compute.wait_for_completion(show_output = True)
-```
-
-现在，可以使用 `dsvm_compute` 对象作为远程计算目标。
-
-DSVM 名称限制包括：
-+ 必须小于 64 个字符。  
-+ 不得包含以下任何字符：`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
-
->[!Warning]
->如果创建失败，并收到有关商城购买资格的消息：
->    1. 转到 [Azure 门户](https://portal.azure.com)
->    1. 开始创建 DSVM 
->    1. 选择“希望以编程方式创建”来启用以编程方式创建
->    1. 在没有实际创建 VM 的情况下退出
->    1. 重新运行创建代码
-
-此代码没有为预配的 DSVM 创建用户名或密码。 如果希望直接连接到 VM，请转到 [Azure 门户](https://portal.azure.com)来创建凭据。  
-
-### <a name="attach-existing-linux-dsvm"></a>附加现有的 Linux DSVM
-
-也可附加现有的 Linux DSVM 作为计算目标。 此示例利用现有的 DSVM，但不创建新的资源。
-
-> [!NOTE]
->
-> 下面的代码使用[RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py)目标类要附加现有的 VM 作为计算目标。
-> [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py)类将在为支持这种设计模式的未来版本中弃用。
-
-运行以下代码，根据预先存在的 Linux DSVM 创建计算目标。
+**时间估计**：AmlCompute 目标的创建需要大约 5 分钟。
 
 ```python
-from azureml.core.compute import ComputeTarget, RemoteCompute 
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
 
-attach_config = RemoteCompute.attach_configuration(username='<username>',
-                                                   address='<ip_address_or_fqdn>',
-                                                   ssh_port=22,
-                                                   private_key_file='./.ssh/id_rsa')
-compute_target = ComputeTarget.attach(workspace=ws,
-                                      name='attached-vm',
-                                      attach_configuration=attach_config)
+amlcompute_cluster_name = "automlcl" #Name your cluster
+provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2", 
+                                                            # for GPU, use "STANDARD_NC6"
+                                                            #vm_priority = 'lowpriority', # optional
+                                                            max_nodes = 6)
 
-compute_target.wait_for_completion(show_output=True)
+compute_target = ComputeTarget.create(ws, amlcompute_cluster_name, provisioning_config)
+    
+# Can poll for a minimum number of nodes and for a specific timeout.
+# If no min_node_count is provided, it will use the scale settings for the cluster.
+compute_target.wait_for_completion(show_output = True, min_node_count = None, timeout_in_minutes = 20)
 ```
 
 现在，可以使用 `compute_target` 对象作为远程计算目标。
+
+群集名称限制包括：
++ 必须小于 64 个字符。  
++ 不得包含以下任何字符：`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
 
 ## <a name="access-data-using-getdata-file"></a>使用 get_data 文件访问数据
 
@@ -161,7 +126,7 @@ automl_settings = {
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
+                             compute_target = compute_target,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                             )
@@ -175,7 +140,7 @@ automl_config = AutoMLConfig(task='classification',
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
+                             compute_target = compute_target,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                              model_explainability=True,
@@ -250,12 +215,12 @@ RunDetails(remote_run).show()
 
 检索模型说明数据可以详细了解这些模型，更好地了解在后端运行的内容。 在此示例中，我们仅为最佳拟合模型运行模型说明。 如果为管道中的所有模型运行该说明，则会导致运行时间显著增加。 模型说明信息包括：
 
-* shap_values：shap lib 生成的说明信息
+* shap_values：生成 shap lib 的说明信息。
 * expected_values：适用于 X_train 数据集的模型的预期值。
-* overall_summary：模型级别功能重要性值，按降序排列
-* overall_imp：功能名称，排序方式与 overall_summary 相同
-* per_class_summary：类级别功能重要性值，按降序排列。 仅适用于分类案例
-* per_class_imp：功能名称，排序方式与 per_class_summary 相同。 仅适用于分类案例
+* overall_summary：模型级别功能重要性值降序排序。
+* overall_imp：功能名称如 overall_summary 中所示相同的顺序排序。
+* per_class_summary：类级别功能重要性值，按降序排列。 仅适用于分类用例。
+* per_class_imp：功能名称，排序方式与 per_class_summary 相同。 仅适用于分类用例。
 
 使用以下代码，从迭代中选择最佳管道。 `get_output` 方法针对上次拟合调用返回最佳运行和拟合的模型。
 
@@ -291,7 +256,7 @@ print(per_class_imp)
 
 ## <a name="example"></a>示例
 
-[how-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb) 笔记本演示了本文中的概念。 
+[How-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) notebook 演示了这篇文章中的概念。 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

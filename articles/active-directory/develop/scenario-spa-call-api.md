@@ -3,7 +3,7 @@ title: 单页面应用程序 （调用 web API）-Microsoft 标识平台
 description: 了解如何生成单页面应用程序 （调用 web API）
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
+author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/06/2019
-ms.author: CelesteDG
+ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f141a5374c0e794b264f6e0135ca3e15ff8359
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 77a4ed01ac55a1153a62c672b33056a543b912ed
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074840"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545607"
 ---
 # <a name="single-page-application---call-a-web-api"></a>单页面应用程序的一个 web API 的调用
 

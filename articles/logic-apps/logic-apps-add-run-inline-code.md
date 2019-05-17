@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: derek1ee, LADocs
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 9ef11eb2099ff617fb4da4b9a924dc3f0550f226
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/14/2019
+ms.openlocfilehash: 0bfa98396ee3afb80b486a5a17959664dfbe603c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160540"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602114"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>添加和运行代码片段通过 Azure 逻辑应用中使用内联代码
 
@@ -23,7 +23,10 @@ ms.locfileid: "65160540"
 * 在 JavaScript 中运行。 即将推出的更多语言。
 * 完成运行以五秒或更少。
 * 处理数据的大小为 50 MB。
-* 使用 Node.js 版本 8.11.1。 有关详细信息，请参阅[标准内置对象](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。
+* 使用 Node.js 版本 8.11.1。 有关详细信息，请参阅[标准内置对象](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。 
+
+  > [!NOTE]
+  > Require （） 函数不受**内联代码**运行 JavaScript 的操作。
 
 此操作运行的代码段，从该代码段将返回输出作为名为的令牌**结果**，可以在后续操作中使用逻辑应用中。 对于其他方案中你想要创建为你的代码的函数，请尝试[创建，然后调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md)在逻辑应用中。
 

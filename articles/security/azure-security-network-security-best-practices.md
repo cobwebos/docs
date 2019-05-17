@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: 78402d3e388f08eae6652859a71c93ff408a5b0d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f36658d57fb514ff279c39e9cb1644cf56341ec4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152991"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761835"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure 网络安全最佳实践
 本文介绍 Azure 最佳实践以增强您的网络安全的集合。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
@@ -129,7 +129,7 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 
 在混合 IT 方案，通常会有某种类型的跨界连接。 跨界连接可让公司将其本地网络连接到 Azure 虚拟网络。 可用的跨界连接解决方案有两种：
 
-* [站点到站点 VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 它是一种值得信赖、可靠且成熟的技术，但连接是通过 Internet 进行的。 带宽限制在 200 Mbps 左右。 站点到站点 VPN 是理想的选择在某些情况下。
+* [站点到站点 VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 它是一种值得信赖、可靠且成熟的技术，但连接是通过 Internet 进行的。 带宽限制为最多大约 1.25 Gbps。 站点到站点 VPN 是理想的选择在某些情况下。
 * **Azure ExpressRoute**。 建议使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 进行跨界连接。 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute，你可以建立到 Azure、 Office 365 和 Dynamics 365 等 Microsoft 云服务的连接。 ExpressRoute 是专用的 WAN 的本地位置或 Microsoft Exchange 托管提供商之间的链接。 由于这是电信运营商连接，因此它不公开到 internet 通信的潜在风险，不会在 internet 上传输数据。
 
 防火墙容量、 可伸缩性、 可靠性和网络流量的可见性，则可能会影响你的 ExpressRoute 连接的位置。 你将需要确定 ExpressRoute 终止现有 （内部） 网络中的位置。 可以：

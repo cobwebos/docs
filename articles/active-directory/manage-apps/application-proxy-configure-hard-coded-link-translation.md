@@ -3,8 +3,8 @@ title: 转换链接和 URL Azure AD 应用代理 | Microsoft Docs
 description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec6caecde3e90f7113f60286e95cdaeb996003f7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fdfd8fd642120f4e829de8fbb013f85aea2a9484
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784038"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825564"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
 
@@ -84,7 +84,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 - 硬编码内部链接，指向其他本地应用（如 `http://expenses`）或已发布文件（如 `http://expenses/logo.jpg`）。 链接转换功能对硬编码内部链接进行操作，并将其更改为指向远程用户需要访问的外部 URL。
 
 HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
-* a
+* 一个
 * audio
 * 基本
 * button
@@ -104,7 +104,7 @@ HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
 * 脚本
 * source
 * 跟踪
-* video
+* 视频
 
 此外，在 CSS URL 特性还转换。
 

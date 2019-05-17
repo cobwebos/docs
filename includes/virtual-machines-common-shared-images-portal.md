@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 9b9b6d08fd14a850838590ce003e889e8e652c7c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 66ec923f12c59d606056d48c09f1ba346e9a4d32
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148039"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827074"
 ---
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 
@@ -51,7 +51,7 @@ ms.locfileid: "65148039"
 1. 有关**发布服务器**，类型*myPublisher*。 
 1. 有关**产品/服务**，类型*myOffer*。
 1. 有关**SKU**，类型*mySKU*。
-1. 请确保**是**我们为选定**启用**，然后选择**查看 + 创建**。
+1. 完成后，选择**查看 + 创建**。
 1. 映像定义通过验证后，选择**创建**。
 1. 部署完成后，选择**转到资源**。
 
@@ -61,7 +61,7 @@ ms.locfileid: "65148039"
 
 从托管映像创建的映像版本。 在此示例中，映像版本为 1.0.0，该版本被复制到美国中西部和美国中南部数据中心。 在选择时复制的目标区域，请记住，您还必须包括*源*为复制的目标区域。
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*。*MinorVersion*。*修补程序*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式:*MajorVersion*。*MinorVersion*。*修补程序*。
 
 1. 在你的图像定义页中，选择**添加版本**从页面顶部。
 1. 在中**区域**，选择托管的映像的存储位置的区域。 映像版本需要在从创建托管映像所在的同一区域中创建。

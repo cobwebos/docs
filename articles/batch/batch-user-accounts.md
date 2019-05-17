@@ -15,13 +15,22 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 000495ab84990f15885c254b472be7863c75da58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd5c16d755ef9b71f36b3d499838b12e6099ba6d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549846"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595377"
 ---
+> [!NOTE] 
+> 本文中讨论的用户帐户是不同于用户帐户用于远程桌面协议 (RDP) 或安全外壳 (SSH)，出于安全原因。 
+>
+> 若要通过 SSH 连接到运行 Linux 虚拟机配置的节点，请参阅[使用远程桌面连接到 Azure 中的 Linux VM](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)。 若要通过 RDP 连接到运行 Windows 的节点，请参阅[连接到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
+> 若要通过 RDP 连接到运行云服务配置的节点，请参阅[为 Azure 云服务中的角色启用远程桌面连接](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。
+>
+>
+
+
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
 Azure Batch 中的任务始终在用户帐户下运行。 默认情况下，任务在没有管理员权限的标准用户帐户下运行。 这些默认用户帐户设置通常足以满足操作需要。 但是，对于某些方案，如果能够配置用于运行任务的用户帐户，则会很有帮助。 本文介绍用户帐户的类型以及如何为方案配置这些帐户。
@@ -36,14 +45,6 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 
 > [!IMPORTANT] 
 > Batch 服务版本 2017-01-01.4.0 引入了一项重大更改，你需要更新代码才能调用该版本。 如果你要从旧版 Batch 迁移代码，请注意，REST API 或 Batch 客户端库不再支持 **runElevated** 属性。 请使用任务的新 **userIdentity** 属性指定提升级别。 有关使用某个客户端库时如何更新批处理代码的快速指导，请参阅标题为[将代码更新到最新的批处理客户端库](#update-your-code-to-the-latest-batch-client-library)的部分。
->
->
-
-> [!NOTE] 
-> 出于安全原因，本文中所述的用户帐户不支持远程桌面协议 (RDP) 或安全外壳 (SSH)。 
->
-> 若要通过 SSH 连接到运行 Linux 虚拟机配置的节点，请参阅[使用远程桌面连接到 Azure 中的 Linux VM](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)。 若要通过 RDP 连接到运行 Windows 的节点，请参阅[连接到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
-> 若要通过 RDP 连接到运行云服务配置的节点，请参阅[为 Azure 云服务中的角色启用远程桌面连接](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。
 >
 >
 

@@ -3,8 +3,8 @@ title: 如何填写自定义开发应用程序的特定字段 | Microsoft Docs
 description: 有关使用 Azure AD 注册自定义开发的应用程序时如何填写特定字段的指南
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e4362e45ff8eee13b9203b9103266c60b4833a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8b93f26080229e980b680c157f59db4edf33e7a
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299050"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545483"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>如何填写自定义开发应用程序的特定字段
 
@@ -41,7 +41,7 @@ ms.locfileid: "60299050"
 
 | 字段            | 描述                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name             | 应用程序的名称。 它应至少具有四个字符。                |
+| 名称             | 应用程序的名称。 它应至少具有四个字符。                |
 | 应用程序类型 | **Web 应用/Web API**：表示 Web 应用程序和/或 Web API 的应用程序 
 | |**本机**：可安装在用户的设备或计算机上的应用程序           |
 | 登录 URL      | 用户可在其中登录以使用应用程序的 URL                                  |

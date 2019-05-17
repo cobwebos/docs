@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491545aabd3415850eb1b1d712a46401b73ad845
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 749216d3fe9164857bd4abce7ba7c766e466e7d3
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190730"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823300"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -42,9 +42,8 @@ ms.locfileid: "65190730"
 * **支持当管理员在 Azure 门户中重置密码时写回密码**：每当管理员在 [Azure 门户](https://portal.azure.com)中重置用户密码时，如果该用户是联合用户或密码哈希同步用户，则密码会写回到本地。 Office 管理门户暂不支持此功能。
 * **不需要任何入站防火墙规则**：密码写回服务使用 Azure 服务总线中继作为基础信道。 所有通信都是通过端口 443 进行的出站通信。
 
-> [!Note]
+> [!NOTE]
 > 密码写回不适用于本地 Active Directory 中受保护组内的用户帐户。 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://technet.microsoft.com/library/dn535499.aspx)。
->
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
 
@@ -63,7 +62,6 @@ ms.locfileid: "65190730"
 
 > [!WARNING]
 > 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要使用上述计划之一。
->
 
 ## <a name="how-password-writeback-works"></a>密码写回的工作原理
 
@@ -90,7 +88,6 @@ ms.locfileid: "65190730"
 1. 如果密码设置操作成功，将告知用户其密码已更改。
    > [!NOTE]
    > 如果用户密码哈希已使用密码哈希同步功能同步到 Azure AD，本地密码策略可能会弱于云密码策略。 在这种情况下，将实施本地策略。 此策略可确保在云中强制实施本地策略，无论使用密码哈希同步还是联合身份验证来提供单一登录，都不例外。
-   >
 
 1. 如果密码设置操作失败，错误消息会提示用户重试。 操作失败的可能原因如下：
     * 服务已关闭。
@@ -155,6 +152,7 @@ ms.locfileid: "65190730"
    * 任何管理员自助强制更改密码操作（例如，密码到期）
    * 源自[密码重置门户](https://passwordreset.microsoftonline.com)的任何管理员自助密码重置操作
    * 任何管理员通过 [Azure 门户](https://portal.azure.com)发起的任何最终用户密码重置操作
+   * 任何管理员发起的最终用户密码重置从[Microsoft 365 管理中心](https://admin.microsoft.com)
 
 ## <a name="unsupported-writeback-operations"></a>不支持的写回操作
 
@@ -163,11 +161,10 @@ ms.locfileid: "65190730"
 * **不支持的最终用户操作**
    * 任何最终用户使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API 重置自己的密码
 * **不支持的管理员操作**
-   * 任何管理员通过 [Office 管理门户](https://portal.office.com)发起的任何最终用户密码重置操作
    * 任何管理员发起的最终用户密码重置操作（使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API）
 
 > [!WARNING]
-> 不支持使用复选框的"用户必须更改密码在下次登录时"等 Active Directory 用户和计算机或 Active Directory 管理中心内的本地 Active Directory 管理工具中。 更改密码时在本地不会检查此选项。 
+> 不支持使用复选框的"用户必须更改密码在下次登录时"等 Active Directory 用户和计算机或 Active Directory 管理中心内的本地 Active Directory 管理工具中。 更改密码时在本地不会检查此选项。
 
 ## <a name="next-steps"></a>后续步骤
 

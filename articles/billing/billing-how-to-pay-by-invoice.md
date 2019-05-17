@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: banders
-ms.openlocfilehash: 8dc5918ac539abde2586e29a1608e9dc496a5e37
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7caa7df3817c51d63dfa2838e4223d3fba88e529
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794793"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827383"
 ---
 # <a name="pay-azure-subscription-by-invoice"></a>通过发票支付 Azure 订阅
 
 如果切换到用发票付款，这意味着在发票日期的 30 天内支付帐单。 若要成为可通过发票支付 Azure 订阅，提交给 Azure 支持请求。 你的请求经过审批后，可以切换为转账付款的订阅中[Azure 门户](https://portal.azure.com)。
 
 > [!IMPORTANT]
-> * 转账付款仅适用于公司帐户。
+> * 发票付款仅适用于企业帐户。
 > * 切换为转账付款之前，必须支付所有未付费用。
-> * 切换为转账付款后，无法切换回信用卡或借记卡付款。
+> * 一旦切换到发票付款，将不能切换回信用卡或借记卡付款。
 
 ## <a name="request-to-pay-by-invoice"></a>请求通过发票付款
 
@@ -65,14 +65,14 @@ ms.locfileid: "65794793"
          (New quota) Requested cores:
          Specific region & series of Subscription:
 
-- **公司名称**并**公司地址**应与提供的 Azure 帐户的信息匹配。  若要查看或更新的信息，请参阅[更改你的 Azure 帐户个人资料信息](billing-how-to-change-azure-account-profile.md)。
-- 可以批准信用额度之前，必须在 Azure 门户中添加计算联系人。 应与公司的 Accounts Payable 或财务部门相关的联系人详细信息。 若要更新计费联系人，请转到[Azure 帐户中心](https://account.azure.com/Profile)。
+    - **公司名称**并**公司地址**应与提供的 Azure 帐户的信息匹配。  若要查看或更新的信息，请参阅[更改你的 Azure 帐户个人资料信息](billing-how-to-change-azure-account-profile.md)。
+    - 可以批准信用额度之前，必须在 Azure 门户中添加计算联系人。 应与公司的 Accounts Payable 或财务部门相关的联系人详细信息。 若要更新计费联系人，请转到[Azure 帐户中心](https://account.azure.com/Profile)。
 
 5. 验证联系人信息和首选联系方法，并单击“创建”。
 
 如果我们需要以运行信用检查，因为的所需的信用额度，我们会将你信用检查应用程序。
 
-## <a name="switch-your-azure-subscription-to-invoice-payment"></a>切换 Azure 订阅为转账付款
+## <a name="switch-to-invoice-pay"></a>切换为转账付款
 
 一旦获得批准通过发票付款时，可以将 Azure 订阅切换中的发票付款方式[Azure 门户](https://portal.azure.com)。
 

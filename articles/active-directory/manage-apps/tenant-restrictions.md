@@ -3,8 +3,8 @@ title: 使用租户限制访问管理对 SaaS 云应用程序-Azure |Microsoft D
 description: 如何使用租户限制来管理哪些用户可以访问基于其 Azure AD 租户的应用。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa4eeb0a21525d636c7c1193c125d525774fa3fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4a340663a1ec4ddf748c6dc2bc3a4e2ce0c4228e
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707173"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824386"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制来管理对 SaaS 云应用程序的访问
 
@@ -136,7 +136,7 @@ Outlook 和 Skype for Business 客户端支持新式身份验证，可能仍可�
 
 对于 Windows 上的 Outlook，客户可能选择实施限制来阻止最终用户将未经批准的邮件帐户添加到其配置文件。 有关示例，请参阅[阻止添加非默认 Exchange 帐户](https://gpsearch.azurewebsites.net/default.aspx?ref=1)组策略设置。
 
-## <a name="testing"></a>测试
+## <a name="testing"></a>正在测试
 
 如果你想要在整个组织实施之前试用租户限制，有两个选项： 使用 Fiddler 或分阶段的部署代理设置等工具基于主机的方法。
 
@@ -166,7 +166,7 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
       }
       ```
 
-      如果需要允许多个租户，请使用逗号分隔租户名称。 例如：
+      如果需要允许多个租户，请使用逗号分隔租户名称。 例如:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

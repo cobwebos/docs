@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 84446090da2feaee3005b4ef90ace77b468a3f1a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792578"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827782"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure 资源管理器模板创建 IoT 中心 (.NET)
 
@@ -29,7 +29,7 @@ ms.locfileid: "59792578"
 
 要完成本教程，需要以下各项：
 
-* Visual Studio 2015 或 Visual Studio 2017。
+* Visual Studio。
 * 有效的 Azure 帐户。 <br/>如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
 * 可用于存储 Azure 资源管理器模板文件的 [Azure 存储帐][lnk-storage-account]。
 * [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。

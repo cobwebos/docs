@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: juliako
-ms.openlocfilehash: e64e980d42086603c9eb8ce39a96a9766a78afcb
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 01b386c820a09af0e616698aabc58a886c30bb09
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472463"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550931"
 ---
 # <a name="transforms-and-jobs"></a>转换和作业
 
@@ -55,9 +55,15 @@ ms.locfileid: "65472463"
 
 **转换**可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 单个转换可以应用多个规则。 例如，转换可以指定以给定的比特率将每个视频编码成 MP4 文件，并从该视频的第一帧生成缩略图。 针对要包含在转换中的每个规则，请添加一个 TransformOutput 条目。 使用预设来告诉转换应如何处理输入的媒体文件。
 
+### <a name="viewing-schema"></a>查看架构
+
 在媒体服务 v3 预设是 API 本身中的强类型化的实体。 可以找到这些对象中的"架构"定义[开放 API 规范 （或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)。 你还可以查看预设的定义 (如**StandardEncoderPreset**) 中[REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)， [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) （或其他媒体服务 v3 SDK 参考文档）。
 
+### <a name="creating-transforms"></a>创建转换
+
 可以创建使用 REST，CLI，转换，也可以使用任何已发布的 Sdk。 媒体服务 v3 API 由 Azure 资源管理器驱动，因此，也可以使用资源管理器模板在媒体服务帐户中创建和部署转换。 可以使用基于角色的访问控制来锁定对转换的访问。
+
+### <a name="updating-transforms"></a>更新转换
 
 如果需要更新您[转换](https://docs.microsoft.com/rest/api/media/transforms)，使用**更新**操作。 它适用于对描述或基础 TransformOutputs 的优先级进行更改。 建议在所有正在进行的作业都完成后执行这类更新。 如果你想要重写该方案，需要创建新的转换。
 
@@ -67,15 +73,23 @@ ms.locfileid: "65472463"
 
 <a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a> 
 
-## <a name="jobs"></a>作业(Job)
+## <a name="jobs"></a>作业
 
 **作业**是针对 Azure 媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 **作业**指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
 
+### <a name="job-input-from-https"></a>从 HTTPS 作业输入
+
 使用[作业从 HTTPS 输入](job-input-from-http-how-to.md)如果你的内容已可通过 URL 访问，并且不需要在 Azure 中存储的源文件 （例如，S3 从导入）。 如果具有 Azure Blob 存储中的内容，但具有要资产中的文件不需要此方法也是合适的。 目前，此方法仅支持单个文件，用于输入。
- 
+
+### <a name="asset-as-job-input"></a>为作业输入资产
+
 使用[为作业输入资产](job-input-from-local-file-how-to.md)如果输入的内容已在资产或作为内容存储在本地文件。 它也是一个不错的选择，如果您计划发布的流式处理或下载 （假设您要将发布供下载的 mp4，但同时想要执行语音转文本或人脸检测） 的输入的资产。 此方法支持多文件资产 (例如，流式处理集本地编码的 MBR)。
- 
+
+### <a name="checking-job-progress"></a>检查作业进度
+
 使用事件网格监视事件可以获取作业的进度和状态。 有关详细信息，请参阅[使用事件网格监视事件](job-state-events-cli-how-to.md)。
+
+### <a name="updating-jobs"></a>正在更新作业
 
 对[作业](https://docs.microsoft.com/rest/api/media/jobs)实体进行的更新操作可以用于在作业提交之后修改说明或优先级。 仅当作业仍处于排队状态时，对优先级属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
 

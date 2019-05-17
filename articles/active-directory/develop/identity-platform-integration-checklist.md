@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: e9070127780659142ab8f956a8016622ecfea144
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 0d44e5d9f0d1ed893a16c318e3cfa0ee1bfc123b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540169"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823354"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Microsoft 标识平台集成清单
 
@@ -31,13 +31,13 @@ Microsoft 标识平台集成清单旨在引导您找到高质量和安全的集�
 
 ## <a name="testing-your-integration"></a>测试你的集成
 
-使用以下清单确保有效地结合您的应用程序[Microsoft 标识平台](https://docs.microsoft.com/legal/mdsa)。
+使用以下清单确保有效地结合您的应用程序[Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)。
 
-### <a name="basics"></a>基础
+### <a name="basics"></a>基本
 
 |   |   |
 |---|---|
-| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 阅读和理解[Microsoft 平台策略](https://docs.microsoft.com/legal/mdsa)。 请确保你的应用程序符合所述，因为它们旨在保护用户和平台的条款。 |
+| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 阅读和理解[Microsoft 平台策略](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)。 请确保你的应用程序符合所述，因为它们旨在保护用户和平台的条款。 |
 
 ### <a name="ownership"></a>所有权
 

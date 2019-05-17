@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: caeef04a27cec7bbeda5dd96335d9b7bd1a8eca0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5cfe91cfcc124ef3073cfb6bbeda683505ff8e1
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716262"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561384"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还将这些实体组织为层次结构以捕获实体交互。
@@ -632,7 +632,7 @@ HealthEvents          :
 
 - **IStatefulServiceReplica.Close**并**IStatefulServiceReplica.Abort**:最常见的情况是服务不履行取消令牌传递给`RunAsync`。 也可能是无法调用 `ICommunicationListener.CloseAsync` 或 `OnCloseAsync`（若已重写）。
 
-- **IStatefulServiceReplica.ChangeRole (S)** 并**istatefulservicereplica.changerole （n)**:最常见的情况是服务不履行取消令牌传递给`RunAsync`。
+- **IStatefulServiceReplica.ChangeRole (S)** 并**istatefulservicereplica.changerole （n)**:最常见的情况是服务不履行取消令牌传递给`RunAsync`。 在此方案中，最佳解决方案是重新启动该副本。
 
 - **IStatefulServiceReplica.ChangeRole(P)**:最常见的情况是服务未返回任务`RunAsync`。
 

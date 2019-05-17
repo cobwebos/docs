@@ -1,5 +1,5 @@
 ---
-title: 使用按应用缩放进行高密度托管 - Azure 应用服务 | Microsoft Docs
+title: 高密度托管使用每个应用缩放-Azure 应用服务 |Microsoft Docs
 description: 在 Azure 应用服务上进行高密度托管
 author: btardif
 manager: erikre
@@ -12,27 +12,31 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 08d6d0c31e1cff799e952c50bae3446e41477aba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 824abbdfd1b3980b419e6d6c46814bb0318adf13
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104563"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602330"
 ---
-# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>在 Azure 应用服务上使用按应用缩放进行高密度托管
+# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>使用每个应用缩放 Azure 应用服务上进行高密度托管
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-默认情况下，通过缩放应用服务应用在其中运行的[应用服务计划](overview-hosting-plans.md)来缩放这些应用。 当多个应用在同一个应用服务计划中运行时，每个横向扩展实例会在计划中运行所有应用。
+使用应用服务时，可以通过缩放来缩放您的应用程序[应用服务计划](overview-hosting-plans.md)其上运行。 当多个应用在同一个应用服务计划中运行时，每个横向扩展实例会在计划中运行所有应用。
 
-可以在应用服务计划级别启用按应用缩放。 按应用缩放在缩放应用时独立于所属的应用服务计划。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅用 5 个。
+*每个应用缩放*可以在应用服务计划级别启用，以允许缩放应用时独立于承载它的应用服务计划。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅用 5 个。
 
 > [!NOTE]
 > 按应用缩放仅适用于标准、高级、高级 V2 和独立定价层。
 >
+
+应用分配到可用的应用服务计划使用均匀分布在实例之间的最有效的方法。 尽管不保证均匀分布，平台将确保同一应用程序的两个实例将不在同一个应用服务计划实例上托管。
+
+平台不依赖于要在辅助角色分配决定的度量值。 仅当添加或删除从应用服务计划实例时，会重新平衡应用程序。
 
 ## <a name="per-app-scaling-using-powershell"></a>使用 PowerShell 的按应用缩放
 
@@ -60,10 +64,10 @@ Set-AzAppServicePlan -ResourceGroupName $ResourceGroup `
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
 $newapp = Get-AzWebApp -ResourceGroupName $ResourceGroup -Name $webapp
-    
+
 # Modify the NumberOfWorkers setting to the desired value.
 $newapp.SiteConfig.NumberOfWorkers = 2
-    
+
 # Post updated app back to azure
 Set-AzWebApp $newapp
 ```
@@ -128,17 +132,18 @@ Set-AzWebApp $newapp
 ```
 
 ## <a name="recommended-configuration-for-high-density-hosting"></a>高密度托管的建议配置
-按应用缩放是一项功能，在全球 Azure 区域和[应用服务环境](environment/app-service-app-service-environment-intro.md)中均可启用。 但是，根据建议的策略，应通过应用服务环境充分利用其高级功能以及更大型的容量池。  
+
+按应用缩放是一项功能，在全球 Azure 区域和[应用服务环境](environment/app-service-app-service-environment-intro.md)中均可启用。 但是，建议的策略是使用应用服务环境充分利用其高级的功能和更大的应用服务计划容量。  
 
 按以下步骤为应用配置高密度托管：
 
-1. 配置应用服务环境，选择专用于高密度托管方案的辅助池。
-2. 创建单个应用服务计划，通过缩放即可使用辅助池的所有可用容量。
-3. 在应用服务计划中将 `PerSiteScaling` 标志设置为 true。
-4. 将 **numberOfWorkers** 属性设置为 **1**，创建新应用并将其分配给该应用服务计划。 使用此配置，让该辅助池中产生可能的最高密度。
-5. 可按应用独立配置辅助角色数，根据需要授予其他资源。 例如：
-    - 使用率高的应用可通过将 **numberOfWorkers** 设置为  **3** 来提高该应用的处理能力。 
-    - 使用率低的应用可将 **numberOfWorkers** 属性设置为 **1**。
+1. 将应用服务计划指定为高密度计划并将它扩展到所需的容量。
+1. 在应用服务计划中将 `PerSiteScaling` 标志设置为 true。
+1. 将 **numberOfWorkers** 属性设置为 **1**，创建新应用并将其分配给该应用服务计划。
+   - 使用此配置会产生可能的最高密度。
+1. 可按应用独立配置辅助角色数，根据需要授予其他资源。 例如：
+   - 使用率高的应用可通过将 **numberOfWorkers** 设置为  **3** 来提高该应用的处理能力。
+   - 使用率低的应用可将 **numberOfWorkers** 属性设置为 **1**。
 
 ## <a name="next-steps"></a>后续步骤
 

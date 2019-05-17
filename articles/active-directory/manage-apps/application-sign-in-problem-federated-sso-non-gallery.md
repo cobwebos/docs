@@ -3,8 +3,8 @@ title: 登录到配置为联合单一登录的非库应用程序时出现的问�
 description: 关于使用 Azure AD 登录到配置为基于 SAML 的联合单一登录的应用程序时可能遇到的具体问题的指南
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0139227012be610977df3240f74a03f53be7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38decf98707231c21427f7a22dd4d12adb41852b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440192"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825442"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的非库应用程序时出现的问题
 
@@ -58,7 +58,7 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8. 应用程序加载后，打开**基本 SAML 配置**。 验证标识符文本框中的值匹配错误中显示的标识符值的值。
+8. 当应用程序加载以后，请打开“基本 SAML 配置”。 验证标识符文本框中的值匹配错误中显示的标识符值的值。
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>回复地址与为应用程序配置的回复地址不匹配。 
 
@@ -88,7 +88,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8. 应用程序加载后，打开**基本 SAML 配置**。 验证或更新以匹配的回复 URL 文本框中的值`AssertionConsumerServiceURL`SAML 请求中的值。    
+8. 当应用程序加载以后，请打开“基本 SAML 配置”。 验证或更新以匹配的回复 URL 文本框中的值`AssertionConsumerServiceURL`SAML 请求中的值。    
     
 你已在 Azure AD 中更新的回复 URL 值和匹配 SAML 请求中的应用程序发送的值后，您应能够登录到应用程序。
 
@@ -188,7 +188,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 1.  选择要配置为单一登录的应用程序。
 
-1.  应用程序加载后，打开**基本 SAML 配置**。 验证标识符文本框中的值匹配错误中显示的标识符值的值。
+1.  当应用程序加载以后，请打开“基本 SAML 配置”。 验证标识符文本框中的值匹配错误中显示的标识符值的值。
 
 ## <a name="certificate-or-key-not-configured"></a>证书或密钥未配置
 
@@ -264,7 +264,7 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 6.  选择要配置为单一登录的应用程序。
 
-7.  应用程序加载后，打开**基本 SAML 配置**。 在中**回复 URL (断言使用者服务 URL)**，由系统创建删除未使用或默认答复 Url。 例如，`https://127.0.0.1:444/applications/default.aspx`。
+7.  当应用程序加载以后，请打开“基本 SAML 配置”。 在中**回复 URL (断言使用者服务 URL)**，由系统创建删除未使用或默认答复 Url。 例如，`https://127.0.0.1:444/applications/default.aspx`。
 
 
 

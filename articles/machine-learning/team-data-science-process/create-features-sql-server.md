@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2d01b74e7db275f4b2e3933415bbae40911b114b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7bc44d8e755af3d212d616425c6a1fd925172298
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60399279"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602932"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
 本文档演示如何在 Azure 上为存储于 SQL Server VM 中的数据生成功能，用于帮助算法更有效地从数据中进行学习。 可以使用 SQL 或 Python 等编程语言来完成此任务。 下面演示了这两种方法。
@@ -68,7 +68,7 @@ ms.locfileid: "60399279"
 * 符号指示我们在地球上的北部还是南部、东部还是西部。
 * 非零百位数指示使用的是经度，而不是纬度。
 * 十位数提供约 1000 公里的位置。 它提供处于哪个大陆或大洋的有用信息。
-* 个位（十进制度）代表 111 公里以上的（60 海里，约 69 英里）位置。 它指示大致处于哪一个大州或国家/地区。
+* 个位（十进制度）代表 111 公里以上的（60 海里，约 69 英里）位置。 它指示大致，哪一个大州或国家/地区中我们是。
 * 第一个小数位值达 11.1 km：可将相邻的大城市区分开。
 * 第二位小数值达 1.1 km：可将村庄分开。
 * 第三位小数值达 110 m：可以定大型农业区域或工业园区。

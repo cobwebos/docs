@@ -1,26 +1,26 @@
 ---
-title: 使用流分析工具进行持续集成和开发
-description: 本文介绍如何使用用于 Azure 流分析的 Visual Studio 工具设置持续集成和部署过程。
+title: 持续集成和开发与 Azure Stream Analytics CI/CD NuGet 包
+description: 本文介绍如何使用 Azure Stream Analytics CI/CD NuGet 包来设置持续集成和部署过程。
 services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/27/2017
-ms.openlocfilehash: 641254be37ac0019ee6a256fc99f96fc3bfb75a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/15/2019
+ms.openlocfilehash: f34139dafffe3d4890f17988114dffdd8b480d2d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761499"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827317"
 ---
-# <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>使用流分析工具进行持续集成和开发
-本文介绍如何使用适用于 Visual Studio 的 Azure 流分析工具设置持续集成和部署过程。
+# <a name="continuously-integrate-and-develop-with-azure-stream-analytics-cicd-nuget-package"></a>持续集成和开发与 Azure Stream Analytics CI/CD NuGet 包
+本文介绍如何使用 Azure Stream Analytics CI/CD NuGet 包来设置持续集成和部署过程。
 
 使用版本 2.3.0000.0 或更高版本的[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)以获得对 MSBuild 的支持。
 
-有 NuGet 包可用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供了 MSBuild、本地运行和部署工具，用于支持流分析 Visual Studio 项目的持续集成和部署进程。 
+有 NuGet 包可用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供了 MSBuild、 本地运行和部署工具支持的持续集成和部署进程[Stream 分析 Visual Studio 项目](stream-analytics-vs-tools.md)。 
 > [!NOTE]
 > NuGet 包只能与 2.3.0000.0 或以上版本的用于 Visual Studio 的流分析工具配合使用。 如果具有在以前版本的 Visual Studio 工具中创建的项目，只需使用 2.3.0000.0 或以上版本将其打开并保存即可。 然后即可启用新功能。 
 
@@ -90,3 +90,9 @@ arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-O
 ```
 
 
+
+## <a name="next-steps"></a>后续步骤
+
+* [快速入门：在 Visual Studio 中创建 Azure Stream Analytics 云作业](stream-analytics-quick-create-vs.md)
+* [使用 Visual Studio 在本地测试流分析查询](stream-analytics-vs-tools-local-run.md)
+* [了解使用 Visual Studio 的 Azure Stream Analytics 作业](stream-analytics-vs-tools.md)

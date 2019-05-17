@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ff291bda87ca4b2b4055e36989b035cf410b3b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 082abd89cd84fc34180f333b54664d7dddfa0ccf
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744218"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561225"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>描述 Service Fabric 群集
 Service Fabric 群集 Resource Manager 提供多种用于描述群集的的机制。 在运行时，群集 Resource Manager 使用此信息来确保群集中运行的服务的高可用性。 实施这些重要规则时，群集资源管理器还会尝试优化群集中的资源消耗。
@@ -33,7 +33,7 @@ Service Fabric 群集 Resource Manager 提供多种用于描述群集的的机�
 * 节点容量
 
 ## <a name="fault-domains"></a>容错域
-容错域是协调故障的任何区域。 单一计算机就是一个容错域（因为它本身可能出于各种原因而发生故障，包括电源故障、驱动器故障、NIC 固件错误，等等）。 连接到同一以太网交换机的计算机位于同一个容错域中，共享一个电源或一个位置的计算机也是如此。 由于硬件故障在性质上是重叠的，容错域原本就有层次性，在 Service Fabric 中以 URI 的形式表示。
+容错域是协调故障的任何区域。 单一计算机就是一个容错域（因为它本身可能出于各种原因而发生故障，包括电源故障、驱动器故障、NIC 固件错误，等等）。 连接到同一以太网交换机的计算机位于同一个容错域中，共享一个电源或一个位置的计算机也是如此。 由于硬件故障重叠，容错域是本质上是分层的并在 Service Fabric 中以 Uri 表示。
 
 确保正确设置容错域，因为 Service Fabric 使用这些信息来安全放置服务。 Service Fabric 不希望在放置服务后，容错域的丢失（由某个组件的故障而导致）会造成服务关闭。 在 Azure 环境中，Service Fabric 使用环境提供的容错域信息来自动正确配置群集中的节点。 对于独立的 Service Fabric，将在设置群集时定义容错域 
 
@@ -95,13 +95,17 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 ![容错域和升级域布局][Image4]
 </center>
 
-至于要选择哪种分配并没有最佳答案，每种做法各有利弊。 例如，1FD:1UD 模型很容易设置。 最常见的模型是每个节点 1 个升级域。 升级过程中会独立更新每个节点。 这类似于过去手动升级少量计算机的方式。 
+至于要选择哪种分配并没有最佳答案，每种做法各有利弊。 例如，1FD:1UD 模型很容易设置。 最常见的模型是每个节点 1 个升级域。 升级过程中会独立更新每个节点。 这类似于过去手动升级少量计算机的方式。
 
 最常见的模型是 FD/UD 矩阵，其中 FD 和 UD 构成一个表，节点沿着对角线开始放置。 这是 Azure 中 Service Fabric 群集默认使用的模型。 对于具有多个节点的群集，最终都会形成与上述密集矩阵模式类似的模式。
 
+> [!NOTE]
+> 在 Azure 中托管的 Service Fabric 群集不支持更改默认策略。 仅独立群集提供该自定义项。
+>
+
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>容错域与升级域约束和最终行为
 ### <a name="default-approach"></a>*默认方法*
-默认情况下，群集资源管理器维持服务在故障域和升级域之间的平衡。 这将建模为[约束](service-fabric-cluster-resource-manager-management-integration.md)。 容错域和升级域约束如下所述：“对于给定的服务分区，同一层次结构级别上的任意两个域之间的服务对象（无状态服务实例或有状态服务副本）数量之差应永远不能大于 1”。 假设约束保证“最大差值”。 故障域和容错域约束会阻止违反上述规则的某些移动或排列。 
+默认情况下，群集资源管理器维持服务在故障域和升级域之间的平衡。 这将建模为[约束](service-fabric-cluster-resource-manager-management-integration.md)。 容错域和升级域约束如下所述：“对于给定的服务分区，同一层次结构级别上的任意两个域之间的服务对象（无状态服务实例或有状态服务副本）数量之差应永远不能大于 1”。 假设约束保证“最大差值”。 故障域和容错域约束会阻止违反上述规则的某些移动或排列。
 
 让我们看一个示例。 假设有一个 6 节点群集，其中配置了 5 个容错域和 5 个升级域。
 
@@ -125,8 +129,8 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 | **UD1** | |R2 | | | |第 |
 | **UD2** | | |R3 | | |第 |
 | **UD3** | | | |R4 | |第 |
-| **UD4** | | | | |R5 |1 |
-| **FDTotal** |第 |1 |1 |1 |1 |- |
+| **UD4** | | | | |R5 |第 |
+| **FDTotal** |第 |1 |1 |1 |第 |- |
 
 *布局 1*
 
@@ -155,8 +159,8 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 | **UD1** |R5 |R1 | | | |2 |
 | **UD2** | | |R2 | | |第 |
 | **UD3** | | | |R3 | |第 |
-| **UD4** | | | | |R4 |1 |
-| **FDTotal** |第 |1 |1 |1 |1 |- |
+| **UD4** | | | | |R4 |第 |
+| **FDTotal** |第 |1 |1 |1 |第 |- |
 
 *布局 3*
 
@@ -214,12 +218,12 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1 |
-| **UD1** |R2 | | | | |1 |
+| **UD0** |R1 | | | | |第 |
+| **UD1** |R2 | | | | |第 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | | | |0 |
 | **UD4** | | | | |R5 |第 |
-| **FDTotal** |2 |1 |1 |0 |第 |- |
+| **FDTotal** |2 |第 |第 |0 |第 |- |
 
 *布局 4*
 
@@ -233,7 +237,7 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 | **UD1** |R2 | | | | |第 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |第 |
-| **UD4** | | | | |R5 |1 |
+| **UD4** | | | | |R5 |第 |
 | **FDTotal** |第 |1 |1 |1 |第 |- |
 
 *布局 5*
@@ -365,7 +369,7 @@ Service Fabric 定义了一些默认节点属性，无需用户进行定义，�
 
 1) 用于创建特定语句的条件检查
 
-| 语句 | 语法 |
+| 声明专用纸 | 语法 |
 | --- |:---:|
 | “等于” | "==" |
 | “不等于” | "!=" |

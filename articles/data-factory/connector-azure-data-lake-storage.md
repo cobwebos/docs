@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 3fcedc74cde9e26ea53d2475f0e9805788787f2d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 355f61d6282c822e18cf4752044c1e1a5cbbc6a0
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228608"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560788"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据
 
@@ -310,7 +310,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
 | wildcardFileName         | 包含在给定的文件系统 + folderPath/wildcardFolderPath 筛选器源文件的通配符字符的文件名。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 是如果`fileName`中数据集未指定 |
 | modifiedDatetimeStart    | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
-| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | “否”                                            |
+| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | 否                                            |
 
 > [!NOTE]
 > Parquet/分隔文本格式**AzureBlobFSSource**作为仍受支持类型的复制活动源下一节中提到的是为了向后兼容。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
@@ -411,7 +411,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | 下面的类型属性`storeSettings`必须设置为**AzureBlobFSWriteSetting**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
-| maxConcurrentConnections | 若要同时连接到数据存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | “否”       |
+| maxConcurrentConnections | 若要同时连接到数据存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | 否       |
 
 > [!NOTE]
 > Parquet/分隔文本格式**AzureBlobFSSink**作为仍受支持类型复制活动接收器中下一节提到的是为了向后兼容。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
@@ -516,6 +516,66 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
 | false |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
 | false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
 | false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 的内容将合并到一个文件中，且自动生成文件名。 File1 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
+
+## <a name="preserve-acls-from-data-lake-storage-gen1"></a>保留从数据湖存储 Gen1 Acl
+
+>[!TIP]
+>有关复制 Azure 数据湖存储 Gen1 到第 2 代中的数据一般情况下，请参阅[将数据从 Azure 数据湖存储 Gen1 复制到使用 Azure 数据工厂第 2 代](load-azure-data-lake-storage-gen2-from-gen1.md)演练和最佳做法。
+
+当复制文件从 Azure Data Lake 存储 (ADLS) Gen1 到第 2 代时，您可以选择保留以及数据的 POSIX 访问控制列表 (Acl)。 有关详细信息中的访问控制，请参阅[Azure 数据湖存储 Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)并[Azure 数据湖存储第 2 代中的访问控制](../storage/blobs/data-lake-storage-access-control.md)。
+
+可以使用 Azure 数据工厂复制活动保留以下类型的 Acl，您可以选择一个或多个类型：
+
+- **ACL**:复制并保留**POSIX 访问控制列表**文件和目录。 从源到接收器，它将复制完整的现有 Acl。 
+- **所有者**：复制并保留**拥有用户**的文件和目录。 到接收器 ADLS 第 2 代的超级用户访问权限是必需的。
+- **组**:复制并保留**拥有组**的文件和目录。 超级用户访问到接收器 ADLS 第 2 代或拥有用户 （如果拥有用户也是目标组的成员） 是必需的。
+
+如果指定要从文件夹中复制，数据工厂将复制该给定的文件夹以及文件和其下的目录的 Acl (如果`recursive`设置为 true)。 如果您指定要从一个文件中，Acl 上复制该文件将复制。
+
+>[!IMPORTANT]
+>当您选择将 Acl 保存时，请确保授予高 ADF 针对接收器 ADLS 第 2 代帐户操作的足够权限。 例如，使用帐户密钥身份验证，或将存储 Blob 数据所有者角色分配给服务主体/托管标识。
+
+当源配置为 ADLS Gen1 使用二进制副本选项/二进制文件格式和接收器 ADLS 第 2 代为使用二进制副本选项/二进制文件格式时，您可以找到**保留**选项**复制数据工具设置页**或在中**复制活动-> 设置**活动创作选项卡。
+
+![到第 2 代的 ADLS Gen1 保留 ACL](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+
+下面是 JSON 配置的一个示例 (请参阅`preserve`): 
+
+```json
+"activities":[
+    {
+        "name": "CopyFromGen1ToGen2",
+        "type": "Copy",
+        "typeProperties": {
+            "source": {
+                "type": "AzureDataLakeStoreSource",
+                "recursive": true
+            },
+            "sink": {
+                "type": "AzureBlobFSSink",
+                "copyBehavior": "PreserveHierarchy"
+            },
+            "preserve": [
+                "ACL",
+                "Owner",
+                "Group"
+            ]
+        },
+        "inputs": [
+            {
+                "referenceName": "<Azure Data Lake Storage Gen1 input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Azure Data Lake Storage Gen2 output dataset name>",
+                "type": "DatasetReference"
+            }
+        ]
+    }
+]
+```
 
 ## <a name="mapping-data-flow-properties"></a>数据流属性映射
 

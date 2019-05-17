@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/06/2019
-ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/13/2019
+ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136602"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596947"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>为 Azure 逻辑应用工作流定义语言中的触发器和操作类型的引用
 
@@ -1721,7 +1721,7 @@ ID,Product_Name
 
 以下为此操作创建的 HTML 表： 
 
-<table><thead><tr><th>Stock_ID</th><th>描述</th></tr></thead><tbody><tr><td>0</td><td>Organic Apples</td></tr><tr><td>1</td><td>Organic Oranges</td></tr></tbody></table>
+<table><thead><tr><th>Stock_ID</th><th>描述</th></tr></thead><tbody><tr><td>0</td><td>Organic Apples</td></tr><tr><td>第</td><td>Organic Oranges</td></tr></tbody></table>
 
 <a name="terminate-action"></a>
 
@@ -2380,6 +2380,7 @@ ID,Product_Name
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | 更改[*默认限制*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)上可等待您的工作流已在运行最大并发实例时运行的工作流实例数。 可在 `concurrency.runs` 属性中更改并发限制。 <p>若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 所有触发器 | 
 | `runtimeConfiguration.concurrency.repetitions` | Integer | 更改针对可同时或并行运行的“for each”循环迭代数的[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 <p>将 `repetitions` 属性设置为 `1` 与将 `operationOptions` 属性设置为 `SingleInstance` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要更改默认限制，请参阅[更改“for each”并发](#change-for-each-concurrency)或[按顺序运行“for each”循环](#sequential-for-each)。 | 操作： <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | 对于支持且已启用分页的特定操作，此值指定*最小*数字要检索的结果。 <p>若要启用分页，请参阅[使用分页获取大容量数据、 项或结果](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | 操作：随其而变化 |
+| `runtimeConfiguration.staticResult` | JSON 对象 | 操作支持且已[静态结果](../logic-apps/test-logic-apps-mock-data-static-results.md)设置，已打开`staticResult`对象具有这些属性： <p>- `name`它引用当前操作的静态结果定义名称，其中内将显示`staticResults`属性在逻辑应用工作流的`definition`属性。 有关详细信息，请参阅[静态结果-的工作流定义语言架构参考](../logic-apps/logic-apps-workflow-definition-language.md#static-results)。 <p> - `staticResultOptions`它指定静态结果是否`Enabled`或不适用于当前操作。 <p>若要启用静态结果，请参阅[通过设置静态结果测试具有模拟数据的逻辑应用](../logic-apps/test-logic-apps-mock-data-static-results.md) | 操作：随其而变化 |
 ||||| 
 
 <a name="operation-options"></a>
@@ -2664,7 +2665,7 @@ HTTP 终结点支持不同类型的身份验证。 可为以下 HTTP 触发器�
 
 | 属性 | 需要 | Value | 描述 | 
 |----------|----------|-------|-------------| 
-| type | 是 | "Basic" | 要使用的身份验证类型，此处为“Basic” | 
+| **type** | 是 | "Basic" | 要使用的身份验证类型，此处为“Basic” | 
 | **username** | 是 | "@parameters('userNameParam')" | 用于对目标服务终结点访问进行身份验证的用户名 |
 | **password** | 是 | "@parameters('passwordParam')" | 用于对目标服务终结点访问进行身份验证的密码 |
 ||||| 
@@ -2698,7 +2699,7 @@ HTTP 终结点支持不同类型的身份验证。 可为以下 HTTP 触发器�
 
 | 属性 | 需要 | Value | 描述 |
 |----------|----------|-------|-------------|
-| type | 是 | "ClientCertificate" | 安全套接字层 (SSL) 客户端证书使用的身份验证类型。 虽然支持自签名证书，但不支持用于 SSL 的自签名证书。 |
+| **type** | 是 | "ClientCertificate" | 安全套接字层 (SSL) 客户端证书使用的身份验证类型。 虽然支持自签名证书，但不支持用于 SSL 的自签名证书。 |
 | **pfx** | 是 | "@parameters('pfxParam') | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
 | **password** | 是 | "@parameters('passwordParam')" | 用于访问 PFX 文件的密码 |
 ||||| 
@@ -2732,7 +2733,7 @@ HTTP 终结点支持不同类型的身份验证。 可为以下 HTTP 触发器�
 
 | 属性 | 需要 | Value | 描述 |
 |----------|----------|-------|-------------|
-| type | 是 | `ActiveDirectoryOAuth` | 要使用的身份验证类型，即“ActiveDirectoryOAuth”（代表 Azure AD OAuth） |
+| **type** | 是 | `ActiveDirectoryOAuth` | 要使用的身份验证类型，即“ActiveDirectoryOAuth”（代表 Azure AD OAuth） |
 | **authority** | 否 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL |
 | **tenant** | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
 | **audience** | 是 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |

@@ -8,26 +8,33 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
-ms.date: 08/23/2018
-ms.openlocfilehash: e008d9fd2734af6a355771c321ecaea9150bcc33
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/08/2019
+ms.openlocfilehash: c02361cf69b98da61a0f551ac037e6d35ea42efc
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722988"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551870"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure 逻辑应用的连接器
 
 连接器提供的快速访问从 Azure 逻辑应用到事件、 数据和操作跨其他应用程序、 服务、 系统、 协议和平台。 通过逻辑应用中使用连接器，您可以展开在本地和云应用程序使用的数据，创建并已执行任务的功能。
 
-虽然逻辑应用提供[约 200 多个连接器](https://docs.microsoft.com/connectors)，但本文只介绍一些流行的和较常用的连接器，数千个应用和数百万次执行已成功使用这些连接器来处理数据与信息。 若要查找的完整列表的连接器和每个连接器的参考信息，如触发器、 操作和限制，查看连接器参考页下的[连接器概述](https://docs.microsoft.com/connectors)。 此外，详细了解如何[触发器和操作](#triggers-actions)。
+虽然逻辑应用提供[约 200 多个连接器](https://docs.microsoft.com/connectors)，但本文只介绍一些流行的和较常用的连接器，数千个应用和数百万次执行已成功使用这些连接器来处理数据与信息。 若要查找的完整列表的连接器和每个连接器的参考信息，如触发器、 操作和限制，查看连接器参考页下的[连接器概述](https://docs.microsoft.com/connectors)。 此外，详细了解如何[触发器和操作](#triggers-actions)，[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)，并[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)。 
 
 > [!NOTE]
 > 若要使用的服务或没有连接器的 API 集成，您可以直接通过 HTTP 等协议调用服务或创建[自定义连接器](#custom)。
 
 为内置的触发器和操作或托管连接器，连接器不可用：
 
-* [**内置操作**](#built-ins)：这些内置的操作和触发器是"本机"到 Azure 逻辑应用，帮助您创建逻辑应用的自定义计划上运行，与其他终结点进行通信、 接收和响应的请求，并调用 Azure functions、 Azure API 应用 （Web 应用），你自己的 Api托管和使用已发布 Azure API 管理，以及嵌套的逻辑应用可以接收请求。 还可以使用内置操作来帮助组织和控制逻辑应用工作流及处理数据。
+* [**内置操作**](#built-ins)：这些内置的触发器和操作是"本机"到 Azure 逻辑应用，帮助您创建逻辑应用的自定义计划上运行，与其他终结点进行通信、 接收和响应的请求，并调用 Azure functions、 Azure API 应用 （Web 应用），你自己的 Api托管和使用已发布 Azure API 管理，以及嵌套的逻辑应用可以接收请求。 还可以使用内置操作来帮助组织和控制逻辑应用工作流及处理数据。
+
+  > [!NOTE]
+  > 逻辑应用内的[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)可以直接访问 Azure 虚拟网络中的资源。
+  > 当你使用 ISE 时，内置的触发器和操作用于显示**Core**标签在作为逻辑应用相同的 ISE 中运行。 逻辑应用、 内置的触发器和内置的操作，运行在 ISE 使用的定价计划不同于基于消费的定价计划。
+  >
+  > 有关创建 ISEs 的详细信息，请参阅[从 Azure 逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)。 
+  > 有关定价的详细信息，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。
 
 * **托管连接器**：部署和由 Microsoft 管理，这些连接器提供触发器和操作用于访问云服务、 在本地系统，或两者，包括 Office 365、 Azure Blob 存储、 SQL Server、 Dynamics、 Salesforce、 SharePoint 和的详细信息。 某些连接器专门支持企业到企业 (B2B) 通信方案，并需要[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)链接到逻辑应用。 在使用之前某些连接器，可能需要首先创建连接，由 Azure 逻辑应用管理。 
 
@@ -36,7 +43,7 @@ ms.locfileid: "64722988"
 
   连接器分类为“标准”或“企业”连接器。 
   [企业连接器](#enterprise-connectors)提供到企业系统，例如 SAP、 IBM MQ 和 IBM 3270 花费额外的费用的访问权限。 若要确定连接器是 Standard 或 Enterprise，请参阅下的每个连接器的参考页中的技术详细信息[连接器概述](https://docs.microsoft.com/connectors)。 
-  
+
   尽管某些连接器可以跨多个类别，还可以通过使用这些类别中，标识连接器。 
   例如，SAP 是企业连接器和本地连接器：
 
@@ -47,8 +54,15 @@ ms.locfileid: "64722988"
   | [**集成帐户连接器**](#integration-account-connectors) | 创建和付费购买集成帐户时可以使用这些连接器，它们会转换和验证 XML、编码和解码平面文件，以及使用 AS2、EDIFACT 和 X12 协议处理企业到企业 (B2B) 消息。 |
   |||
 
-> [!NOTE]
-> 通过将 OpenAPI 所定义的连接器和每个连接器的参考信息，如操作和任何触发器的完整列表 (以前称为 Swagger) 说明，以及任何限制，可以找到下的完整列表[连接器概述](/connectors/). 有关定价信息，请参阅[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)和[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。 
+  > [!NOTE]
+  > 逻辑应用内的[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)可以直接访问 Azure 虚拟网络中的资源。 当你使用 ISE 时，标准版和企业连接器用于显示**ISE**标签在作为逻辑应用相同的 ISE 中运行。 不显示在全局的逻辑应用服务中运行的 ISE 标签的连接器。
+  >
+  > 有关在本地系统连接到 Azure 虚拟网络，将在 ISE 注入到该网络以便逻辑应用可以使用任一连接器具有直接访问这些系统**ISE**标签、 一个 HTTP 操作或[自定义连接器](#custom)。 逻辑应用和连接器，运行在 ISE 使用定价计划不同于基于消费的定价计划。 
+  >
+  > 有关创建 ISEs 的详细信息，请参阅[从 Azure 逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)。
+  > 有关定价的详细信息，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。
+
+  通过将 OpenAPI 所定义的连接器和每个连接器的参考信息，如操作和任何触发器的完整列表 (以前称为 Swagger) 说明，以及任何限制，可以找到下的完整列表[连接器概述](/connectors/). 有关定价信息，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)，并[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)。 
 
 <a name="built-ins"></a>
 
@@ -66,7 +80,7 @@ ms.locfileid: "64722988"
 
 ### <a name="control-workflow"></a>控制工作流
 
-下面是用于在逻辑应用工作流中构建和控制操作的内置操作：
+逻辑应用提供了内置操作，用于构建和控制逻辑应用的工作流中的操作：
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -77,7 +91,7 @@ ms.locfileid: "64722988"
 
 ### <a name="manage-or-manipulate-data"></a>管理或处理数据
 
-下面是用于处理数据输出及其格式的内置操作：  
+逻辑应用提供了内置操作，用于处理数据输出和它们的格式：  
 
 |   |   | 
 |---|---| 
@@ -90,7 +104,7 @@ ms.locfileid: "64722988"
 
 ## <a name="managed-api-connectors"></a>托管的 API 连接器
 
-下面是用于自动化这些服务或系统的任务、流程和工作流的较流行连接器：
+逻辑应用自动执行任务、 流程和工作流与这些服务或系统提供这些常用标准连接器。
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -100,25 +114,25 @@ ms.locfileid: "64722988"
 | [![API 图标][dynamics-365-icon]<br/>**Dynamics 365<br/>CRM Online**][dynamics-365-doc] | 连接到 Dynamics 365 帐户，以便能够创建和管理记录、项，等等。 | [![API 图标][ftp-icon]<br/>**FTP**][ftp-doc] | 连接到可从 internet 访问的 FTP 服务器，以便能够处理文件和文件夹。 | 
 | [![API 图标][salesforce-icon]<br/>**Salesforce**][salesforce-doc] | 连接到 Salesforce 帐户，以便能够创建和管理记录、作业、对象等项。 | [![API 图标][twitter-icon]<br/>**Twitter**][twitter-doc] | 连接到 Twitter 帐户，以便能够管理推文、关注者、时间表、等等。 将推文保存到 SQL、Excel 或 SharePoint。 | 
 | [![API 图标][azure-event-hubs-icon]<br/>**Azure 事件中心**][azure-event-hubs-doc] | 通过事件中心使用和发布事件。 例如，通过事件中心获取逻辑应用的输出，然后将输出发送到实时分析提供程序。 | [![API 图标][azure-event-grid-icon]<br/>**Azure 事件**</br>**网格**][azure-event-grid-doc] | 监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）。 | 
-||||| 
+|||||
 
 <a name="on-premises-connectors"></a>
 
 ## <a name="on-premises-connectors"></a>本地连接器 
 
-下面这些常用连接器提供对本地系统中数据和资源的访问。 在与本地系统建立连接之前，必须先[下载、安装并设置本地数据网关][gateway-doc]。 此网关提供安全信道，无需设置所需的网络基础结构。 
+以下是一些常用的标准连接器的逻辑应用提供用于在本地系统中访问数据和资源。 在与本地系统建立连接之前，必须先[下载、安装并设置本地数据网关][gateway-doc]。 此网关提供安全信道，无需设置所需的网络基础结构。 
 
 |   |   |   |   |   | 
 |---|---|---|---|---| 
 | ![API 图标][biztalk-server-icon]<br/>**BizTalk**</br> **服务器** | [![API 图标][file-system-icon]<br/>**文件</br>系统**][file-system-doc] | [![API 图标][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![API 图标][ibm-informix-icon]<br/>**IBM**</br> **Informix**][ibm-informix-doc] | ![API 图标][mysql-icon]<br/>**MySQL** | 
 | [![API 图标][oracle-db-icon]<br/>**Oracle DB**][oracle-db-doc] | ![API 图标][postgre-sql-icon]<br/>**PostgreSQL** | [![API 图标][sharepoint-server-icon]<br/>**SharePoint</br> Server**][sharepoint-server-doc] | [![API 图标][sql-server-icon]<br/>**SQL</br> Server**][sql-server-doc] | ![API 图标][teradata-icon]<br/>**Teradata** | 
-||||| 
+|||||
 
 <a name="integration-account-connectors"></a>
 
-## <a name="integration-account-connectors"></a>集成帐户连接器 
+## <a name="integration-account-connectors"></a>集成帐户连接器
 
-创建和付费购买[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)（通过 Azure 中的 Enterprise Integration Pack (EIP) 提供）时，可以使用以下连接器在逻辑应用中生成企业到企业 (B2B) 解决方案。 使用此帐户可以创建和存储 B2B 项目，例如贸易合作伙伴、协议、映射、架构、证书，等等。 若要使用这些项目，请将逻辑应用与集成帐户相关联。 如果你当前使用的是 BizTalk Server，则可能已熟悉这些连接器的用法。
+逻辑应用提供标准连接器生成企业到企业 (B2B) 解决方案的逻辑应用时创建并支付[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，可通过 Enterprise Integration Pack (EIP)在 Azure 中。 使用此帐户可以创建和存储 B2B 项目，例如贸易合作伙伴、协议、映射、架构、证书，等等。 若要使用这些项目，请将逻辑应用与集成帐户相关联。 如果你当前使用的是 BizTalk Server，则可能已熟悉这些连接器的用法。
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -131,7 +145,7 @@ ms.locfileid: "64722988"
 
 ## <a name="enterprise-connectors"></a>企业连接器
 
-逻辑应用可以访问 SAP 和 IBM MQ 等企业系统：
+逻辑应用提供用于访问企业系统，例如 SAP 和 IBM MQ 这些企业连接器：
 
 |   |   |   | 
 |---|---|---| 
@@ -172,11 +186,13 @@ ms.locfileid: "64722988"
 若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。
 若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Microsoft 认证](../logic-apps/custom-connector-submit-certification.md)。
 
-## <a name="get-support"></a>获取支持
-
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-
-* 若要提交或投票有关 Azure 逻辑应用和连接器的想法，请访问[逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
+> [!NOTE]
+> 逻辑应用内的[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)可以直接访问 Azure 虚拟网络中的资源。
+> 如果您已自定义连接器，需要在本地数据网关，并创建外部 ISE 这些连接器，在 ISE 中的逻辑应用还可以使用这些连接器。
+>
+> 在 ISE 中创建的自定义连接器不支持在本地数据网关。 但是，这些连接器可以直接访问连接到 Azure 虚拟网络托管 ISE 的本地数据源。 因此，在 ISE 中的逻辑应用很可能不需要数据网关与这些资源进行通信时。
+>
+> 有关创建 ISEs 的详细信息，请参阅[从 Azure 逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: bf0c6a5234846499d7b8a49f427dba7af36edc15
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 5dc311538055d9ecb7aba21f95d819a914cd1db7
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937975"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826555"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure 市场‎商业交易功能和注意事项
 
@@ -137,11 +137,14 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 |*由 Microsoft 向客户收费*    |  100.00 美元/月（注意：发布者必须将任何引致的或者转付的基础结构费用考虑到许可证费用中）  |
 
 * 在这种情况下，Microsoft 向你收取 100.00 美元的软件许可证费用，并向发布者支付 80.00 美元。
+* 合作伙伴具有限定为减少 Marketplace 服务费用会减少的事务费用 SaaS 上提供了从年 6 月 2020年直到 2019 年 5。 在此方案中，Microsoft 对您的软件许可证 100.00 美元进行收费和到发布服务器的回报 90.00 美元。
 
 |Microsoft 收费  | 100.00 美元/月  |
 |---------|---------|
-|Microsoft 将许可证费用的 80% 支付给你    |   80.00 美元/月     |
-|Microsoft 保留许可证费用的 20%   |  20.00 美元/月       |
+|Microsoft 将许可证费用的 80% 支付给你 <br> \* Microsoft 支付给你的许可证费用的 90%的任何限定的 SaaS 应用程序   |   80.00 美元/月 <br> \* 每月 90.00 美元    |
+|Microsoft 保留许可证费用的 20% <br> \* Microsoft 保留许可证费用的任何限定的 SaaS 应用程序的 10%。  |  20.00 美元/月 <br> \* $10.00     |
+
+* **减少了的 Marketplace 服务费用：** 对于某些我们商业 Marketplace 发布的 SaaS 产品，Microsoft 会减少其 Marketplace 服务费用从 20%（如在 Microsoft 发布方协议中所述） 为 10%。  为了使您的产品来限定，至少一个你的产品必须由 Microsoft 指定为 IP 联合销售就绪或 IP 共同销售设置优先级。 若要为每月接收此简化的 Marketplace 服务费，资格必须满足该日历月结束前的至少五 （5） 个工作日。 减少 Marketplace 服务费用不会应用于 Vm、 管理的应用程序或通过我们的商业应用商店提供的任何其他产品。  与 2019 年 5 月 31 日和于 2020 年 6 月 30 日之间的 Microsoft 收集的许可证费用，可供限定产品/服务，此减少 Marketplace 服务费用。  该时间后将返回其正常量 Marketplace 服务费用。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客户开具发票、付款、计费和费用收集
 
@@ -159,7 +162,7 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 
 例如，如果客户使用信用卡购买：
 
-|描述    |    date  |
+|描述    |    Date  |
 |----------|----------|
 |订购期   | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（月）   | 2018 年 8 月 30 日 |
@@ -173,7 +176,7 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 
 如果客户使用企业协议购买：
 
-| 描述 |    date  |
+| 描述 |    Date  |
 |----------|----------|
 |订购期 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（季度） | 2018 年 9 月 30 日 |

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 8809a2fed5a44910e3a353d9dc5bc41ea964a1ce
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b452485ccf235d1f245989e40840f2f0b3b2ae45
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150566"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544528"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -39,7 +39,7 @@ ms.locfileid: "65150566"
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
   > [!IMPORTANT]
-  > 运行在 ISE 中的逻辑应用、内置操作和连接器使用不同的定价计划，而不是基于消费的定价计划。 有关详细信息，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
+  > 逻辑应用、 内置的触发器、 内置操作和连接器运行，在 ISE 使用定价计划不同于基于消费的定价计划。 有关详细信息，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
 * [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 如果没有虚拟网络，请了解如何[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 
 
@@ -199,33 +199,19 @@ ms.locfileid: "65150566"
 
 ## <a name="create-logic-app---ise"></a>创建逻辑应用 - ISE
 
-要创建使用集成服务环境 (ISE) 的逻辑应用，请遵循[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)中的步骤，但要注意以下差别： 
-
-* 创建逻辑应用时，在“位置”属性下，从“集成服务环境”部分中选择 ISE，例如：
+若要创建与集成服务环境 (ISE) 中运行的逻辑应用[按常规方式创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)除了设置**位置**属性，选择你从 ISE **集成服务环境**部分，例如：
 
   ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
 
-* 可以使用相同的内置触发器和操作，例如 HTTP、 与逻辑应用在相同 ISE 中运行。 带有“ISE”标签的连接器也在运行逻辑应用的同一 ISE 中运行。 没有 ISE 标签的连接器运行在全局逻辑应用服务中。
-
-  ![选择 ISE 连接器](./media/connect-virtual-network-vnet-isolated-environment/select-ise-connectors.png)
-
-* 将 ISE 注入到 Azure 虚拟网络中后，ISE 中的逻辑应用可以直接访问该虚拟网络中的资源。 对于连接到虚拟网络的本地系统，请将 ISE 注入到该网络，以便逻辑应用可使用这些项中的任意一项直接访问这些系统： 
-
-  * 该系统的 ISE 连接器，例如 SQL Server
-  
-  * HTTP 操作 
-  
-  * 自定义连接器
-
-  对于没有在虚拟网络中或没有 ISE 连接器的本地系统，请首先[设置本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
+如何触发器和操作工作以及它们如何要标记为当使用 ISE 相比于全局的逻辑应用服务，请参阅中的差异[隔离与全局 ISE 概述中](connect-virtual-network-vnet-isolated-environment-overview.md#difference)。
 
 <a name="create-integration-account-environment"></a>
 
 ## <a name="create-integration-account---ise"></a>创建集成帐户 - ISE
 
-若要对集成服务环境 (ISE) 中的逻辑应用使用集成帐户，该集成帐户必须使用逻辑应用所在的同一个环境。 ISE 中的逻辑应用只能引用同一 ISE 中的集成帐户。 
+如果你想要使用集成服务环境 (ISE) 中的逻辑应用中使用的集成帐户，必须使用该集成帐户*相同的环境*作为逻辑应用。 ISE 中的逻辑应用只能引用同一 ISE 中的集成帐户。
 
-要创建使用 ISE 的集成帐户，请按照[如何创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)中的步骤，但“位置”属性除外，该属性现在会显示“集成服务环境”部分。 请选择 ISE 而不要选择区域，例如：
+若要创建使用 ISE 的集成帐户[按常规方式创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)除了设置**位置**属性，选择你从 ISE**集成服务环境**部分，例如：
 
 ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 
