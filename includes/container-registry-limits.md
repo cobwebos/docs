@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 04/29/2019
+ms.date: 05/14/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: d20e266d1331fc15e65b2d119468483ff53a4c06
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: ee8ff3529524a63ca2e54a64327570197f363538
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64951503"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787599"
 ---
 | 资源 | 基本 | 标准 | 高级 |
 |---|---|---|---|
@@ -25,7 +25,7 @@ ms.locfileid: "64951503"
 | 上传带宽 (MBps)<sup>2</sup> | 10 | 20 | 50 |
 | Webhook | 2 | 10 | 100 |
 | 异地复制 | 不适用 | 不适用 | [受支持][geo-replication] |
-| 内容信任（预览版） | 不适用 | 不适用 | [受支持][content-trust] |
+| 内容信任 | 不适用 | 不适用 | [受支持][content-trust] |
 
 <sup>1</sup>指定的存储限制是量*包含*每个层的存储。 对于超出这些限制的图像存储，将每日针对每 GiB 进行额外收费。 汇率信息，请参阅[Azure 容器注册表定价][pricing]。
 

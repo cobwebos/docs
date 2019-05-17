@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: fe53dd4419c06d376a1cc46db0d2621ccbc06f23
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: HT
+ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548623"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791892"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -64,16 +64,16 @@ ms.locfileid: "59548623"
 
 | 数据库的监视遥测 | 单一数据库和共用数据库支持 | 实例数据库支持 |
 | :------------------- | ----- | ----- |
-| [所有指标](#all-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
+| [基本指标](#basic-metrics):包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息 （内容查询等待） 此类是 CPU、 日志和锁定。 | 是 | 是 |
-| [Errors](#errors-dataset):包含在数据库上的 SQL 错误有关的信息。 | 是 | 是 |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含数据库所用不同等待类型上等待多长时间有关的信息。 | 是 | 否 |
-| [Timeouts](#time-outs-dataset)：包含有关超时的数据库上的信息。 | 是 | 否 |
-| [Blocks](#blockings-dataset)：包含有关阻止在数据库上的事件的信息。 | 是 | 否 |
-| [死锁](#deadlocks-dataset):包含有关死锁事件在数据库上的信息。 | 是 | 否 |
-| [AutomaticTuning](#automatic-tuning-dataset):包含有关为数据库自动优化建议的信息。 | 是 | 否 |
-| [SQLInsights](#intelligent-insights-dataset)：包含的数据库性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
+| [Errors](#errors-dataset):包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
+| [Timeouts](#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
+| [Blocks](#blockings-dataset)：包含有关数据库发生的阻塞事件的信息。 | 是 | 否 |
+| [死锁数](#deadlocks-dataset)：包含有关数据库发生的死锁事件的信息。 | 是 | 否 |
+| [AutomaticTuning](#automatic-tuning-dataset)：包含有关数据库的自动优化建议的信息。 | 是 | 否 |
+| [SQLInsights](#intelligent-insights-dataset)：包含针对数据库性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
 
 > [!IMPORTANT]
 > 弹性池和托管的实例都有其自己单独的诊断遥测数据从它们所包含的数据库。 这是必须注意的，因为诊断遥测数据是为每个这样的资源单独配置的，如下所述。
@@ -93,7 +93,7 @@ ms.locfileid: "59548623"
 
 | 资源 | 监视遥测数据 |
 | :------------------- | ------------------- |
-| **弹性池** | [所有指标](sql-database-metrics-diag-logging.md#all-metrics)包含 eDTU/CPU 百分比、eDTU/CPU 限制、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制，以及 XTP 存储百分比。 |
+| **弹性池** | [基本指标](sql-database-metrics-diag-logging.md#basic-metrics)包含 eDTU/CPU 百分比、 eDTU/CPU 限制、 物理数据读取百分比、 日志写入百分比、 会话百分比、 辅助角色百分比、 存储、 存储百分比、 存储限制和 XTP 存储百分比。 |
 
 若要配置的弹性池和弹性池中数据库的诊断遥测数据的流式处理，您将需要单独配置**同时**以下值：
 
@@ -113,7 +113,7 @@ ms.locfileid: "59548623"
 1. 输入设置名称供自己参考。
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于 log analytics 中，选择**配置**，并通过选择创建新的工作区 **+ 创建新工作区**，或选择现有的工作区。
-1. 选中弹性池诊断遥测对应的复选框：**AllMetrics**。
+1. 选中弹性池诊断遥测对应的复选框：**基本**指标。
    ![弹性池的配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. 选择“保存”。
 1. 此外，配置想要在下一节中所述的以下步骤来监视弹性池内每个数据库的诊断遥测数据的流式处理。
@@ -137,10 +137,10 @@ ms.locfileid: "59548623"
 1. 输入设置名称供自己参考。
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于标准的基于事件的监视体验，请选中数据库诊断日志遥测对应的以下复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”和“Deadlocks”。
-1. 对于高级的一分钟间隔监视体验，请选中“AllMetrics”对应的复选框。
+1. 对于高级、 基于 1 分钟的监视体验，选中的复选框**基本**指标。
    ![单个配置诊断、 共用，或实例数据库](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. 选择“保存”。
-1. 为你想要监视每个数据库重复这些步骤。
+1. 针对要监视的每个数据库重复上述步骤。
 
 > [!NOTE]
 > （尽管在屏幕上显示），不能从数据库诊断设置启用安全审核和 SQLSecurityAuditEvents 日志。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
@@ -385,7 +385,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-例如，所有指标的 blob 名称可能是：
+例如，基本指标的 blob 名称可能是：
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
@@ -409,25 +409,28 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ## <a name="metrics-and-logs-available"></a>可用的指标和日志
 
-监视 Azure SQL 数据库可用的遥测，弹性池和托管的实例如下所述。 在 SQL Analytics 监视遥测收集可用于你自己的自定义分析和应用程序开发使用[Azure Monitor 日志查询](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)语言。
+监视 Azure SQL 数据库可用的遥测，弹性池和托管的实例如下所述。 可以使用 [Azure Monitor 日志查询](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)语言将在 SQL Analytics 内收集的监视遥测数据用于你自己的自定义分析和应用程序开发。
 
-## <a name="all-metrics"></a>所有指标
+## <a name="basic-metrics"></a>基本指标
 
-请参阅下表来详细了解按资源列出的所有指标。
+按资源，请参阅下面的表以基本指标有关的详细信息。
 
-### <a name="all-metrics-for-elastic-pools"></a>弹性池的所有指标
+> [!NOTE]
+> 基本指标选项以前称为所有指标。 所做的更改是对命名仅，监视的度量值未更改。 启动了此更改，以便在将来引入其他指标类别。
+
+### <a name="basic-metrics-for-elastic-pools"></a>基本弹性池的指标
 
 |**资源**|**指标**|
 |---|---|
 |弹性池|eDTU 百分比、已用 eDTU、eDTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制、XTP存储百分比 |
 
-### <a name="all-metrics-for-azure-sql-databases"></a>Azure SQL 数据库的所有指标
+### <a name="basic-metrics-for-azure-sql-databases"></a>Azure SQL 数据库的基本指标
 
 |**资源**|**指标**|
 |---|---|
 |Azure SQL 数据库|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
 
-## <a name="all-logs"></a>所有日志
+## <a name="basic-logs"></a>基本日志
 
 下表中记录的遥测数据可用于所有日志的详细信息。 请参阅[支持诊断日志记录](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)汇集在一起，了解哪些日志支持的特定数据库 flavor-单一 Azure SQL 或实例数据库。
 

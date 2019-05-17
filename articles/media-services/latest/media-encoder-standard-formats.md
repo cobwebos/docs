@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard 格式和编解码器 - Azure
-description: 本主题概述 Media Encoder Standard 格式和编解码器。
+title: 标准编码器格式和编解码器-Azure
+description: 本主题概述了标准编码器格式和编解码器。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 4c7e0e091aeecb205c63b8fa7e97d7592f15b856
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 730ff68e70999307417eea276761d56f4a44046a
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322261"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520012"
 ---
-# <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
+# <a name="standard-encoder-formats-and-codecs"></a>标准编码器格式和编解码器
 
 本文包含可与 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 配合使用的最常见的导入和导出文件格式列表。 有关如何使用 **StandardEncoderPreset** 创建自定义预设的信息，请参阅[使用自定义预设创建转换](customize-encoder-presets-how-to.md)。
 
@@ -41,12 +41,12 @@ ms.locfileid: "60322261"
 | QuickTime (.mov) |是 |
 
 > [!NOTE]
-> 以上是较常见的文件扩展名的列表。 Media Encoder Standard 支持许多其他扩展名（例如：.m2ts、.mpeg2video、.qt）。 如果尝试对文件进行编码，并且收到有关格式不受支持的错误消息，请在[此处](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)提供反馈。
 > 
 > 
 
 ### <a name="audio-formats-in-input-containers"></a>输入容器中的音频格式
-Media Encoder Standard 支持在输入容器中带有以下音频格式：
+
+标准编码器支持携带以下音频格式输入容器中：
 
 * MXF、GXF 和 QuickTime 文件，其中的音频曲目具有交错的立体声或 5.1 示例
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618012"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538404"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 
@@ -44,6 +44,7 @@ Azure 超级 SSD（预览版）为 Azure IaaS VM 提供高吞吐量、高 IOPS �
 - 磁盘容量：超级 SSD 的容量范围为 4 GiB 到 64 TiB。
 - 磁盘 IOPS：超级 SSD 支持 300 IOPS/GiB 的 IOPS 限制，每个磁盘最高可达 160 K IOPS。 若要实现预配的 IOPS，请确保选择的磁盘 IOPS 小于 VM IOPS。 最小磁盘 IOPS 为 100 IOPS。
 - 磁盘吞吐量：使用超级 SSD 时，单个磁盘对应于每个预配 IOPS 的吞吐量限制为 256 KiB/秒，每个磁盘的最大吞吐量为 2000 MBps（其中，MBps = 每秒 10^6 字节）。 最小磁盘吞吐量为 1 MiB。
+- 超高的 Ssd 支持调整磁盘性能特性 （IOPS 和吞吐量） 在运行时无需分离的磁盘从虚拟机。 在对磁盘上发出磁盘性能调整大小操作后，更改实际上可能最多需要一个小时才能生效。
 
 ### <a name="disk-size"></a>磁盘大小
 
@@ -58,6 +59,10 @@ Azure 超级 SSD（预览版）为 Azure IaaS VM 提供高吞吐量、高 IOPS �
 |256     |76,800         |2,000         |
 |512     |80,000         |2,000         |
 |1,024 - 65,536（此范围内的大小以 1 TiB 为增量递增）     |160,000         |2,000         |
+
+### <a name="transactions"></a>事务
+
+对于超高 Ssd，每个 I/O 操作小于或等于为 256 KiB 吞吐量被视为单个 I/O 操作。 I/O 的吞吐量大于 256 KiB 操作被视为多个 I/o 大小为 256 KiB。
 
 ### <a name="preview-scope-and-limitations"></a>预览版的范围和限制
 

@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 04/24/2019
-ms.openlocfilehash: b181edc08c51a5afa8682858b330acc84da7d73d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b39279e560cb1738ff9b33ec587562efd2ed4e8d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707010"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800954"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
@@ -29,8 +29,8 @@ ms.locfileid: "64707010"
 
 配置单元的一个优点是能够将元数据导出到外部数据库 （也称为 Hive 元存储）。 **Hive 元存储**负责存储表统计信息，包括表存储位置、 列名称和表索引信息。 元存储数据库架构之间的 Hive 版本不同。 执行以下操作来升级 HDInsight 3.6 Hive 元存储，以便它与 HDInsight 4.0 都兼容。
 
-1. 创建新的外部元存储副本。 HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，并且不能共享单个元存储。
-1. 将元存储的新副本附加到 a） 与现有的 HDInsight 4.0 群集或要创建第一次 b） 的群集。 请参阅[使用 Azure HDInsight 中的外部元数据存储](../hdinsight-use-external-metadata-stores.md)若要了解有关将外部元存储附加到 HDInsight 群集的详细信息。 元存储附加后，它将自动转换为 4.0 兼容元存储。
+1. 创建新的外部元存储副本。 HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，并且不能共享单个元存储。 请参阅[使用 Azure HDInsight 中的外部元数据存储](../hdinsight-use-external-metadata-stores.md)若要了解有关将外部元存储附加到 HDInsight 群集的详细信息。 
+2. 执行的节点类型以启动对 HDI 3.6 群集，使用"头节点"脚本操作。 粘贴到文本框下面的 URI 标记为"Bash 脚本 URI": https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh。在标记为"参数"文本框中，输入服务器名称、 数据库、 用户名和密码**复制**Hive 元存储，由空格分隔。 不包括"。 database.windows.net"指定服务器名称时。
 
 > [!Warning]
 > 升级将 HDInsight 3.6 元数据架构转换为 HDInsight 4.0 架构中，将无法撤消。

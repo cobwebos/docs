@@ -8,18 +8,20 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 4700573d3f5319599a6437d092e20d8013d2f7fb
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 21f1fca1e8c5cf2b060cee41d1e474996f306f8e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58633035"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787613"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | 自动缩放设置 |每个区域每个订阅 100。 | 默认值相同。 |
 | 指标警报 （经典） |每个订阅 100 活动警报规则。 | 致电支持人员。 |
 | 指标警报 |每个订阅 100 活动警报规则。 | 致电支持人员。 |
+| 活动日志警报 | 每个订阅 100 活动警报规则。 | 默认值相同。 |
+| 日志警报 | 512 | 致电支持人员。 |
 | 操作组 |每个订阅的 2,000 个操作组。 | 致电支持人员。 |
 
 **操作组特定的限制**

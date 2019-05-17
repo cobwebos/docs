@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: glenga
-ms.openlocfilehash: 57126c87879da9f99d224457433bbbd5f95ef021
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88e5f1ac7834caa32302a3817e1779d0d733a7b3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325593"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787546"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
 
@@ -42,7 +42,7 @@ ms.locfileid: "60325593"
 
 若要使函数应用从包运行，只需将 `WEBSITE_RUN_FROM_PACKAGE` 设置添加到函数应用设置。 `WEBSITE_RUN_FROM_PACKAGE` 设置可以使用以下值之一：
 
-| Value  | 描述  |
+| 值  | 描述  |
 |---------|---------|
 | **`1`**  | 建议用于在 Windows 上运行的函数应用。 从函数应用的 `d:\home\data\SitePackages` 文件夹中的某个包文件运行。 如果不[使用 zip deploy 进行部署](#integration-with-zip-deployment)，则此选项要求该文件夹同时包含名为 `packagename.txt` 的文件。 此文件仅包含文件夹中包文件的名称（没有任何空白字符）。 |
 |**`<url>`**  | 要运行的特定包文件的位置。 使用 Blob 存储时，应通过[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) 使用专用容器，使 Functions 运行时能够访问包。 可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)将包文件上传到 Blob 存储帐户。         |
@@ -64,6 +64,13 @@ ms.locfileid: "60325593"
 ## <a name="adding-the-websiterunfrompackage-setting"></a>添加 WEBSITE_RUN_FROM_PACKAGE 设置
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+## <a name="troubleshooting"></a>故障排除
+
+- 运行从程序包使得`wwwroot`只读的因此此目录中写入文件时，会收到错误。
+- 不支持 tar 和 gzip 格式。
+- 使用本地缓存时未构成此功能。
+- 要改进的冷启动性能，请使用本地 Zip (`WEBSITE_RUN_FROM_PACKAGE`= 1)。
 
 ## <a name="next-steps"></a>后续步骤
 

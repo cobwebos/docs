@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc26c0357dcb071c4c75e8684fe47144a04177e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ac34f1d1e7fc2a967c7608f31f3b943f9380d01
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880227"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786194"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 
@@ -135,45 +135,6 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
     Write-Output "$i`: $SampleMessage"
 }
 Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
-```
-
-#### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>设置和检索变量中的复杂对象
-
-下面的示例代码演示如何更新文本 Runbook 中具有复杂值的变量。 在此示例中，使用 **Get-AzureVM** 检索到一个 Azure 虚拟机并保存到一个现有的自动化变量。  如[变量类型](#variable-types)中所述，该对象存储为一个 PSCustomObject。
-
-```powershell
-$vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
-Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
-```
-
-在下面的代码中，从该变量检索值并将其用于启动虚拟机。
-
-```powershell
-$vmObject = Get-AutomationVariable -Name "MyComplexVariable"
-if ($vmObject.PowerState -eq 'Stopped') {
-    Start-AzureVM -ServiceName $vmObject.ServiceName -Name $vmObject.Name
-}
-```
-
-#### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>设置和检索变量中的集合
-
-下面的示例代码演示如何使用文本 Runbook 中包含一组复杂值的变量。 在此示例中，使用 **Get-AzureVM** 检索到多个 Azure 虚拟机并将它们保存到一个现有的自动化变量。 如[变量类型](#variable-types)中所述，变量存储为一组 PSCustomObject。
-
-```powershell
-$vms = Get-AzureVM | Where -FilterScript {$_.Name -match "my"}
-Set-AutomationVariable -Name 'MyComplexVariable' -Value $vms
-```
-
-在下面的代码中，从该变量检索此集合并用于启动每个虚拟机。
-
-```powershell
-$vmValues = Get-AutomationVariable -Name "MyComplexVariable"
-ForEach ($vmValue in $vmValues)
-{
-    if ($vmValue.PowerState -eq 'Stopped') {
-        Start-AzureVM -ServiceName $vmValue.ServiceName -Name $vmValue.Name
-    }
-}
 ```
 
 #### <a name="setting-and-retrieving-a-variable-in-python2"></a>在 Python2 中设置和检索变量

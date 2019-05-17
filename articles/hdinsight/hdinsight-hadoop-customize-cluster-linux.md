@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: e67e41d5e423e07371fbce06066076ab809f60df
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 63f81c331db619323f74b77e48627fd8b432565f
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545325"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518893"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -45,23 +45,21 @@ Azure HDInsight 提供一个称为“脚本操作”的配置方法，该方法�
 脚本操作是指在 HDInsight 群集的节点上运行的 Bash 脚本。 下面是脚本操作的特征和功能：
 
 * 必须存储在可从 HDInsight 群集访问的 URI 上。 下面是可能的存储位置：
+    
+    * 对于常规群集：
+    
+      * ADLS Gen1:用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。 存储在 Data Lake Storage Gen1 中的脚本的 URI 格式为 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`。
+      
+      * Azure 存储帐户中的一个 Blob，该存储帐户可以是 HDInsight 群集的主存储帐户，也可以是其附加存储帐户。 在创建群集期间，已将这两种存储帐户的访问权限都授予 HDInsight。
 
-    * HDInsight 群集可访问的 Azure Data Lake Storage 帐户。 有关将 Azure Data Lake Storage 与 HDInsight 配合使用的信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
-
-        存储在 Data Lake Storage Gen1 中的脚本的 URI 格式为 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`。
-
-        > [!NOTE]  
-        > 用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。
-
-    * Azure 存储帐户中的一个 Blob，该存储帐户可以是 HDInsight 群集的主存储帐户，也可以是其附加存储帐户。 在创建群集期间，已将这两种存储帐户的访问权限都授予 HDInsight。
-
-    * 一个公共文件共享服务。 例如 Azure Blob、GitHub、OneDrive 和 Dropbox。
+      * 公共文件共享服务可通过 http:// 路径访问。 示例包括 Azure Blob、 GitHub、 OneDrive。
 
         有关示例 URI，请参阅[脚本操作脚本示例](#example-script-action-scripts)。
 
-        > [!WARNING]  
-        > HDInsight 仅支持具有标准性能层的 Azure 存储帐户中的 Blob。 
-
+     * 对于 ESP 群集：
+         
+         * Wasb [s]:// 或 http [s]:// 支持 Uri。
+            
 * 可以限制为只对特定的节点类型运行， 例如头节点或工作节点。
 
 * 可以是持久化或即席脚本。

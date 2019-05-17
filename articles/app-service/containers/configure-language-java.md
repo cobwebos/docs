@@ -1,7 +1,7 @@
 ---
 title: 配置 Linux Java 应用程序-Azure 应用服务 |Microsoft Docs
 description: 了解如何配置在 Linux 上的 Azure 应用服务中运行的 Java 应用。
-keywords: azure 应用服务, web 应用, linux, oss, java
+keywords: azure 应用服务、 web 应用、 linux、 os、 java 和 java ee jee，javaee
 services: app-service
 author: rloutlaw
 manager: angerobe
@@ -13,18 +13,29 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: b659c076974b0659c645c9b6460e458dfac8974a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 883042e7c8abb43338c55a76bba3d64844ce1c56
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850454"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604340"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux Java 应用
 
 Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 Linux 的服务中快速生成、部署和缩放 Tomcat 或 Java Standard Edition (SE) 打包式 Web 应用程序。 可以在命令行或者 IntelliJ、Eclipse 或 Visual Studio Code 等编辑器中使用 Maven 插件部署应用程序。
 
 本指南提供关键概念和 Java 开发人员在应用服务中使用内置的 Linux 容器的说明。 如果你从未使用过 Azure 应用服务，请按照[Java 快速入门](quickstart-java.md)并[Java 与 PostgreSQL 教程](tutorial-java-enterprise-postgresql-app.md)第一个。
+
+## <a name="deploying-your-app"></a>部署应用
+
+可以使用[适用于 Azure 应用服务的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)部署.jar 和.war 文件。 使用流行的 Ide 部署也支持使用[用于 IntelliJ 的 Azure 工具包](/java/azure/intellij/azure-toolkit-for-intellij)或[用于 Eclipse 的 Azure 工具包](/java/azure/eclipse/azure-toolkit-for-eclipse)。
+
+否则，你的部署方法将取决于你的存档类型：
+
+- 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)。
+- 若要部署 Java SE 映像中的 .jar 文件，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)。
+
+不要使用 FTP 来部署 .war 或 .jar。 FTP 工具设计用来上传启动脚本、依赖项或其他运行时文件。 它不是用于部署 Web 应用的最佳选项。
 
 ## <a name="logging-and-debugging-apps"></a>日志记录和调试应用
 
@@ -42,9 +53,13 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 ### <a name="app-logging"></a>应用日志记录
 
-通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。
+通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 Java 和 Tomcat 应用程序日志可在`/home/LogFiles/Application/`目录。
 
 如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
+
+### <a name="troubleshooting-tools"></a>故障排除工具
+
+基于内置的 Java 映像[Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html)操作系统。 使用`apk`包管理器安装任何故障排除工具或命令。
 
 ## <a name="customization-and-tuning"></a>自定义和优化
 
@@ -54,32 +69,34 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 - [设置自定义域](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [启用 SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [添加 CDN](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [配置 Kudu 站点](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
 ### <a name="set-java-runtime-options"></a>设置 Java 运行时选项
 
-若要在 Tomcat 和 Java SE 环境中设置分配的内存或其他 JVM 运行时选项，请按如下所示将 JAVA_OPTS 设置为[应用程序设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)。 应用服务 Linux 在启动时，会将此设置作为环境变量传递给 Java 运行时。
+若要设置已分配的内存或其他 JVM 运行时选项在 Tomcat 和 Java SE 环境中，创建[应用程序设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)名为`JAVA_OPTS`的选项。 应用服务 Linux 在启动时，会将此设置作为环境变量传递给 Java 运行时。
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `$JAVA_OPTS -Xms512m -Xmx1204m`。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。
 
-若要通过 Azure 应用服务 Linux Maven 插件配置应用设置，请在 Azure 插件部分中添加设置/值标记。 下面的示例设置特定最小值和最大 Java 堆大小：
+若要配置的 Maven 插件中设置应用设置，请在 Azure 插件部分中添加设置/值标记。 下面的示例设置特定最小值和最大 Java 堆大小：
 
 ```xml
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value>
+        <value>-Xms512m -Xmx1204m</value>
     </property>
 </appSettings>
 ```
 
 在应用服务计划中运行包含一个部署槽位的单个应用程序的开发人员可以使用以下选项：
 
-- B1 和 S1 实例：-Xms1024m -Xmx1024m
-- B2 和 S2 实例：-Xms3072m -Xmx3072m
-- B3 和 S3 实例：-Xms6144m -Xmx6144m
-
+- B1 和 S1 实例： `-Xms1024m -Xmx1024m`
+- B2 和 S2 的实例： `-Xms3072m -Xmx3072m`
+- B3 和 S3 的实例： `-Xms6144m -Xmx6144m`
 
 优化应用程序堆设置时，请查看应用服务计划详细信息，并考虑多个应用程序和部署槽位方面的需求，以得出最佳内存分配。
+
+如果要部署的 JAR 应用程序，它应被命名为`app.jar`以便内置映像可以正确地标识您的应用程序。 （的 Maven 插件情况执行此重命名自动）。如果不希望重命名为 JAR `app.jar`，可以上传包含要运行 JAR 的命令的 shell 脚本。 然后粘贴到此脚本中的完整路径[启动文件](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file)在门户的配置部分中的文本框。
 
 ### <a name="turn-on-web-sockets"></a>启用 Web 套接字
 
@@ -100,7 +117,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>设置默认的字符编码
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `$JAVA_OPTS -Dfile.encoding=UTF-8` 的新应用设置。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `-Dfile.encoding=UTF-8` 的新应用设置。
 
 或者，可以使用应用服务 Maven 插件配置应用设置。 在插件配置中添加设置名称和值标记：
 
@@ -108,10 +125,14 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value>
+        <value>-Dfile.encoding=UTF-8</value>
     </property>
 </appSettings>
 ```
+
+### <a name="adjust-startup-timeout"></a>调整启动超时
+
+如果你的 Java 应用程序是特别大，则应增加启动时间限制。 若要执行此操作，创建应用程序设置，`WEBSITES_CONTAINER_START_TIME_LIMIT`并将其设置为应用服务超时前应等待的秒数。最大值是`1800`秒。
 
 ## <a name="secure-applications"></a>安全应用程序
 
@@ -123,11 +144,19 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)一文中的说明。
 
- Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 通过熟悉的 Spring Security 注释和 API 来保护应用程序。
+ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 通过熟悉的 Spring Security 注释和 API 来保护应用程序。 请务必增加 `application.properties` 文件中的最大标头大小。 我们建议值为 `16384`。
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
 遵照[绑定现有的自定义 SSL 证书](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)中的说明上传现有的 SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
+
+### <a name="use-keyvault-references"></a>使用密钥保管库的引用
+
+[Azure 密钥保管库](../../key-vault/key-vault-overview.md)提供与访问策略和审核历史记录的集中式密钥管理。 可以在密钥保管库中存储机密 （如密码或连接字符串），并通过环境变量在应用程序中访问这些机密。
+
+首先，按照说明[授予应用访问 Key Vault](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault)并[在应用程序设置中进行对你的密码的密钥保管库引用](../app-service-key-vault-references.md#reference-syntax)。 您可以验证解析为机密的引用的远程访问应用服务终端时打印环境变量。
+
+若要将注入 Spring 或 Tomcat 配置文件中的这些机密，使用环境变量注入语法 (`${MY_ENV_VAR}`)。 对于 Spring 配置文件，请参阅本文档中有关[外部化配置](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)。
 
 ## <a name="configure-apm-platforms"></a>配置 APM 的平台
 
@@ -160,13 +189,29 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
     - 如果你使用的是 **Java SE**，请创建一个名为 `JAVA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的环境变量，其中，`<app-name>` 是你的应用服务名称。
     - 如果你使用的是 **Tomcat**，请创建一个名为 `CATALINA_OPTS` 且值为 `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` 的环境变量，其中，`<app-name>` 是你的应用服务名称。
     - 如果您使用的**WildFly**，请参阅 AppDynamics 文档[此处](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings)有关安装 Java 代理和 JBoss 配置的指南。
+    
+## <a name="configure-jar-applications"></a>配置应用程序 JAR
 
-## <a name="configure-tomcat"></a>配置 Tomcat
+### <a name="starting-jar-apps"></a>启动 JAR 应用
 
-### <a name="connect-to-data-sources"></a>连接到数据源
+默认情况下，应用服务需要你 JAR 的应用程序命名为`app.jar`。 如果它具有此名称，将自动运行。 对于 Maven 用户中，您可以设置的 JAR 名称通过包括`<finalName>app</finalName>`中`<build>`一部分您`pom.xml`。 [您可以在 Gradle 这样做](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName)通过设置`archiveFileName`属性。
 
->[!NOTE]
-> 如果应用程序使用 Spring Framework 或 Spring Boot，你可以在 [应用程序的 properties 文件] 中将 Spring Data JPA 的数据库连接信息设置为环境变量。 然后在 Azure 门户或 CLI 中使用[应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)来为应用程序定义这些值。
+如果你想要使用不同的 JAR 名称，还必须提供[启动命令](app-service-linux-faq.md#built-in-images)执行 JAR 文件。 例如，`java -jar my-jar-app.jar`。 可以为您在门户中，在配置下的启动命令设置值 > 常规设置，或使用名为应用程序设置`STARTUP_COMMAND`。
+
+### <a name="server-port"></a>服务器端口
+
+Linux 版应用服务将传入请求路由到端口 80，以便你的应用程序应侦听端口 80 也。 您可以执行此操作在应用程序配置 (如 Spring 的`application.properties`文件)，或在启动命令 (例如， `java -jar spring-app.jar --server.port=80`)。 请参阅以下文档为常见的 Java 框架：
+
+- [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
+- [SparkJava](http://sparkjava.com/documentation#embedded-web-server)
+- [Micronaut](https://docs.micronaut.io/latest/guide/index.html#runningSpecificPort)
+- [Play Framework](https://www.playframework.com/documentation/2.6.x/ConfiguringHttps#Configuring-HTTPS)
+- [Vertx](https://vertx.io/docs/vertx-core/java/#_start_the_server_listening)
+- [Quarkus](https://quarkus.io/guides/application-configuration-guide)
+
+## <a name="data-sources"></a>数据源
+
+### <a name="tomcat"></a>Tomcat
 
 这些说明适用于所有数据库连接。 你需要使用你选择的数据库的驱动程序类名称和 JAR 文件来填充占位符。 下面提供了一个表，其中包含了常见数据库的类名称和驱动程序下载。
 
@@ -278,7 +323,31 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 2. 如果你创建了服务器级数据源，请重启应用服务 Linux 应用程序。 Tomcat 会将 `CATALINA_HOME` 重置为 `/home/tomcat/conf`，并使用更新后的配置。
 
-## <a name="configure-wildfly-server"></a>配置 WildFly 服务器
+### <a name="spring-boot"></a>Spring Boot
+
+若要连接到 Spring Boot 应用程序中的数据源，我们建议创建的连接字符串并将其注入您`application.properties`文件。
+
+1. 在应用服务边栏选项卡的"应用程序设置"部分中，设置字符串的名称，将 JDBC 连接字符串粘贴到值字段中，并设置为"Custom"的类型。 槽设置为，可以选择性地设置此连接字符串。
+
+    ![在门户中创建的连接字符串]。
+    
+
+    此连接字符串都可以访问我们的应用程序为环境变量名为`CUSTOMCONNSTR_<your-string-name>`。 例如，我们在上面创建的连接字符串将被命名为`CUSTOMCONNSTR_exampledb`。
+
+2. 在你`application.properties`文件中，引用环境变量名称与此连接字符串。 对于我们的示例，我们将使用以下命令。
+
+    ```yml
+    app.datasource.url=${CUSTOMCONNSTR_exampledb}
+    ```
+
+请参阅[Spring Boot 文档数据的访问权限](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html)并[外部化配置](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)有关本主题的详细信息。
+
+## <a name="configure-java-ee-wildfly"></a>配置 Java EE (WildFly)
+
+> [!NOTE]
+> 应用服务 Linux 上的 Java 企业版目前处于预览状态。 此堆栈**不**建议用于面向生产的工作。 我们 Java SE 和 Tomcat 在堆栈上的信息。
+
+Linux 上的 azure 应用服务允许 Java 开发人员能够生成、 部署和缩放 Java 企业 (Java EE) 应用程序上完全托管的基于 Linux 的服务。  基础 Java 企业运行时环境是开源 [Wildfly](https://wildfly.org/) 应用程序服务器。
 
 [使用应用服务进行缩放](#scale-with-app-service)
 [自定义应用程序服务器配置](#customize-application-server-configuration)
@@ -320,7 +389,7 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 
 要通过 JBoss CLI 将模块及其依赖项安装到 Wildfly 类路径中，需要在其自己的目录中创建以下文件。 某些模块和依赖项可能需要其他配置，例如 JNDI 命名或其他特定于 API 的配置，因此此列表是在大多数情况下配置依赖项所需的最小集。
 
-- [XML 模块描述符](https://jboss-modules.github.io/jboss-modules/manual/#descriptors)。 此 XML 文件定义模块的名称、属性和依赖项。 此[示例 module.xml 文件](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource)定义了 Postgres 模块、其 JAR 文件 JDBC 依赖项以及所需的其他模块依赖项。
+- [XML 模块描述符](https://jboss-modules.github.io/jboss-modules/manual/#descriptors)。 此 XML 文件定义模块的名称、属性和依赖项。 此[示例 module.xml 文件](https://access.redhat.com/documentation/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource)定义了 Postgres 模块、其 JAR 文件 JDBC 依赖项以及所需的其他模块依赖项。
 - 模块的任何必要 JAR 文件依赖项。
 - 具有 JBoss CLI 命令的脚本，用于配置新模块。 该文件将包含 JBoss CLI 要执行的命令，以配置服务器使用依赖项。 有关添加模块、数据源和消息提供程序的命令的文档，请参阅[本文档](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)。
 - 用于调用 JBoss CLI 和执行上一步中脚本的 Bash 启动脚本。 重启应用服务实例或在横向扩展期间配置新实例时，将执行此文件。当 JBoss 命令传递给 JBoss CLI 时，可在此启动脚本中为应用程序执行任何其他配置。 此文件可以是将 JBoss CLI 命令脚本传递给 JBoss CLI 的最小单个命令：
@@ -333,9 +402,9 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 
 1. 将文件 FTP 到应用服务实例中的 `/home/site/deployments/tools`。 有关获取 FTP 凭据的说明，请参阅本文档。
 2. 在 Azure 门户的“应用程序设置”边栏选项卡中，将“启动脚本”字段设置为启动 shell 脚本的位置，例如 `/home/site/deployments/tools/your-startup-script.sh`。
-3. 通过按下门户网站“概述”部分中的“重启”按钮或使用 Azure CLI 重启应用服务实例。
+3. 按下重新启动您的应用服务实例**重新启动**按钮**概述**门户或使用 Azure CLI 的部分。
 
-### <a name="data-sources"></a>数据源
+### <a name="configure-data-source-connections"></a>配置数据源连接
 
 要为数据源连接配置 Wildfly，请按照上面“安装模块和依赖项”部分中概述的相同过程进行操作。 可对任何 Azure 数据库服务执行相同的步骤。
 
@@ -411,3 +480,4 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 请访问[面向 Java 开发人员的 Azure](/java/azure/) 中心查找 Azure 快速入门、教程和 Java 参考文档。
 
 [应用服务 Linux 常见问题解答](app-service-linux-faq.md)中解答了并不特定于 Java 开发的、适用于 Linux 的应用服务的一般用法问题。
+

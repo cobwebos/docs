@@ -3,17 +3,17 @@ title: 理解查询语言
 description: 介绍可用 Kusto 运算符和函数可用于 Azure 资源的图形。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/11/2018
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dcb21a6aedf16b034fad4f0822e22758dda03c33
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276671"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800512"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -25,7 +25,7 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每项工作�
 
 下面是 Resource Graph 中支持的表格运算符列表：
 
-- [count](/azure/kusto/query/countoperator)
+- [计数](/azure/kusto/query/countoperator)
 - [distinct](/azure/kusto/query/distinctoperator)
 - [extend](/azure/kusto/query/extendoperator)
 - [limit](/azure/kusto/query/limitoperator)
@@ -52,6 +52,38 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每项工作�
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
 - [tostring()](/azure/kusto/query/tostringfunction)
 - [zip()](/azure/kusto/query/zipfunction)
+
+## <a name="escape-characters"></a>转义字符
+
+某些属性名称，例如包含的那些`.`或`$`必须包装或转义，在查询或属性名称被错误地解释并不提供预期的结果。
+
+- `.` -包装这种情况下，属性名称： `['propertyname.withaperiod']`
+  
+  包装了属性的示例查询_odata.type_:
+
+  ```kusto
+  where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
+  ```
+
+- `$` -中的属性名称字符进行转义。 在外壳程序中从运行图形资源取决于使用的转义字符。
+
+  - **bash** - `\`
+
+    转义属性的示例查询_\$类型_在 bash 中：
+
+    ```kusto
+    where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
+    ```
+
+  - **cmd** -不转义`$`字符。
+
+  - **PowerShell** - ``` ` ```
+
+    转义属性的示例查询_\$类型_在 PowerShell 中：
+
+    ```kusto
+    where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

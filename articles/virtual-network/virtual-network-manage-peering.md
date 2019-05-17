@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: 18d913339556c0d4b0a06bd62f4495da6a4d4223
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ee7ffba182cdbc2a77df5edf112e29c49cd610ad
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925926"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519657"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
 
@@ -46,7 +46,7 @@ ms.locfileid: "64925926"
 1. 在 Azure 门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请将其选中。 如果“虚拟网络（经典）”出现在列表中，请不要选择它，因为无法从通过经典部署模型部署的虚拟网络创建对等互连。
 2. 从列表中选择要为其创建对等的虚拟网络。
 3. 在“设置”下，选择“对等”。
-4. 选择“+ 添加”。 
+4. 选择 **+ 添加**。 
 5. <a name="add-peering"></a>为以下设置输入或选择值：
     - **名称：** 对等互连的名称在虚拟网络中必须唯一。
     - **虚拟网络部署模型：** 选择要对等互连的虚拟网络是通过哪种部署模型来进行部署的。
@@ -146,7 +146,7 @@ ms.locfileid: "64925926"
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | 创建从虚拟网络 A 到虚拟网络 B 的对等互连时必需。虚拟网络 A 必须是虚拟网络（资源管理器）          |
 | Microsoft.Network/virtualNetworks/peer/action                   | 创建从虚拟网络 B（资源管理器）到虚拟网络 A 的对等互连时必需                                                       |
-| Microsoft.ClassicNetwork/virtualNetworks/peer                   | 创建从虚拟网络 B（经典）到虚拟网络 A 的对等互连时必需                                                                |
+| Microsoft.ClassicNetwork/virtualNetworks/peer/action                   | 创建从虚拟网络 B（经典）到虚拟网络 A 的对等互连时必需                                                                |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read   | 读取虚拟网络对等互连   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | 删除虚拟网络对等互连 |
 

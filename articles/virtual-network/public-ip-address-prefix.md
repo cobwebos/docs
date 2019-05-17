@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 68ca35590aaadba431d5f1dc06e0405162ebc69f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154484"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799111"
 ---
 # <a name="public-ip-address-prefix"></a>公共 IP 地址前缀
 
@@ -55,7 +55,7 @@ ms.locfileid: "65154484"
 ## <a name="constraints"></a>约束
 
 - 不能指定前缀的 IP 地址。 Azure 将根据指定的大小分配前缀的 IP 地址。
-- 前缀的默认大小为/28 或 16 公共 IP 地址。
+- 您可以创建最多 16 个 IP 地址或/28 的前缀。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 - 创建前缀后，无法更改该范围。
 - 该范围仅适用于 IPv4 地址。 该范围不包含 IPv6 地址。
 - 仅使用标准 SKU 创建的静态公共 IP 地址可从前缀范围进行分配。 若要详细了解公用 IP 地址 SKU，请参阅[公用 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。

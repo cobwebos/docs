@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: cfe9b469cfac848c9e57f1fc10193208722be109
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: dcab4d24ca948980f28483fd09f29588e0329b63
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935701"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800980"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -247,7 +247,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>报表
 
-在合作伙伴中心分析仪表板，可以为客户使用情况属性中找到的报表。 ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)).
+在合作伙伴中心分析仪表板，可以为客户使用情况属性中找到的报表。 ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). 若要查看报表，必须使用合作伙伴中心凭据登录。 如果遇到任何问题与报表或登录，创建支持请求以下获取支持部分中的说明。
 
 若要查看报表的合作伙伴关联类型的下拉列表中选择跟踪模板。
 
@@ -267,6 +267,10 @@ foreach ($deployment in $deployments){
 
 ## <a name="get-support"></a>获取支持
 
+如果您遇到报表或登录到合作伙伴中心的任何问题，请与合作伙伴中心支持团队创建支持请求： [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+
+![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+
 如果为 Marketplace 载入和/或客户使用情况归属需要帮助，请执行以下步骤。
 
 1. 转到[支持页](https://go.microsoft.com/fwlink/?linkid=844975)。
@@ -282,7 +286,7 @@ foreach ($deployment in $deployments){
 
 1. 选择“开始请求”。
 
-1. 在下一页上输入所需的值。 选择“继续”。
+1. 在下一页上输入所需的值。 选择**继续**。
 
 1. 在下一页上输入所需的值。
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a6a63748ef36bbbceb00bc815616f2cb12692a7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693223"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799790"
 ---
 # <a name="monitor-cluster-performance"></a>监视群集性能
 
@@ -30,7 +30,7 @@ ms.locfileid: "64693223"
 | 颜色 | 描述 |
 | --- | --- |
 | 红色 | 主机上至少有一个主组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
-| 橙色 | 主机上至少有一个从属组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
+| 橙色 | 在主机上的至少一个辅助组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
 | 黄色 | Ambari 服务器已超过 3 分钟没有接收到来自主机的检测信号。 |
 | 绿色 | 正常运行状态。 |
 

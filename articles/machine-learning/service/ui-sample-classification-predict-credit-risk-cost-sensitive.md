@@ -1,7 +1,7 @@
 ---
 title: 分类：预测信用风险 （成本敏感）
 titleSuffix: Azure Machine Learning service
-description: 此可视界面示例试验演示了如何使用自定义的 Python 脚本来执行成本敏感的二元分类。 它预测信用风险根据信用额度应用程序中提供信息。
+description: 本文介绍如何构建复杂的机器学习实验使用直观的界面。 您将了解如何实现自定义 Python 脚本和比较多个模型选择最佳选项。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,26 +9,25 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 433c258f86705f66e0163100407be7996d68bc6b
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440956"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787818"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>示例 4-分类：预测信用风险 （成本敏感）
 
-此试验中的直观界面的示例演示如何使用自定义的 Python 脚本来执行成本敏感的二元分类。 是错误分类的正样本成本的负示例错误分类五倍。
+本文介绍如何构建复杂的机器学习实验使用直观的界面。 您将了解如何使用 Python 脚本的自定义逻辑和比较多个模型选择最佳选项。
 
-此示例预测基于信息的信用风险错误分类成本考虑在内的贷款申请中提供。
+此示例训练分类器预测信用风险使用信用额度信用历史记录、 年龄、 和的信用卡号等的应用程序信息。 不过，您可以应用来解决自己的机器学习问题这篇文章中的概念。
 
-在此实验中，我们将比较生成模型，若要解决此问题的两种不同方法：
+如果你刚开始使用机器学习，可以看一看[基本分类器示例](ui-sample-classification-predict-credit-risk-basic.md)第一个。
 
-- 使用原始数据集训练。
-- 使用复制的数据集训练。
+下面是此实验的已完成关系图：
 
-这两种方法，我们使用测试数据集进行复制，以确保结果符合成本函数评估模型。 我们测试这两种方法的两个分类器：**双类支持向量机**并**双类提升的决策树**。
+[![实验的关系图](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -38,15 +37,18 @@ ms.locfileid: "65440956"
 
     ![打开试验](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="related-sample"></a>相关的示例
-
-请参阅[示例 3-分类：信用风险预测 （基本）](ui-sample-classification-predict-churn.md)对于此试验中相同的问题解决了基本试验，请不带调整的错误分类成本。
-
 ## <a name="data"></a>数据
 
 我们从 UC Irvine 存储库使用德语信用卡数据集。 此数据集包含 1000 示例使用 20 个特征和 1 个标签。 每个示例表示一个人。 20 个特征包括数值和分类特征。 请参阅[UCI 网站](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)有关数据集的详细信息。 最后一列是标签，它表示信用风险，并且有只有两个可能的值： 高信用风险 = 2 和低信用风险 = 1。
 
 ## <a name="experiment-summary"></a>实验摘要
+
+在此实验中，我们将比较生成模型，若要解决此问题的两种不同方法：
+
+- 使用原始数据集训练。
+- 使用复制的数据集训练。
+
+这两种方法，我们使用测试数据集进行复制，以确保结果符合成本函数评估模型。 我们测试这两种方法的两个分类器：**双类支持向量机**并**双类提升的决策树**。
 
 为高的低风险示例错误分类成本为 1，并为低的高风险示例错误分类成本是 5。 我们使用**执行 Python 脚本**模块以解决此错误分类成本。
 
@@ -71,7 +73,7 @@ ms.locfileid: "65440956"
 
 若要复制的高风险数据，我们将此 Python 代码**执行 Python 脚本**模块：
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -91,7 +93,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 **双类支持向量机**模块处理字符串功能，将它们转换为分类特征，然后到二进制功能值为 0 或 1。 因此我们不需要对这些特征进行规范化。
 
-## <a name="models"></a>模型
+## <a name="models"></a>Models
 
 我们将应用两个分类器，因为**双类支持向量机**(SVM) 和**双类提升决策树**，并且还使用两个数据集，我们会生成总共四个模型：
 
@@ -104,12 +106,11 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 1. 初始化使用的学习算法**双类支持向量机**并**双类提升决策树**。
 1. 使用**训练模型**将算法应用于数据并创建实际模型。
-3. 使用**评分模型**以使用测试示例生成分数。
+1. 使用**评分模型**以使用测试示例生成分数。
 
 下图显示了此实验中，在该原始和已复制的定型集用于训练两个不同的 SVM 模型的一部分。 **为模型定型**连接到训练集，并**评分模型**连接到测试集。
 
 ![试验图](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
-
 
 在试验的评估阶段，我们计算每个四个模型的准确性。 对于此试验中，我们使用**评估模型**以比较具有相同的错误分类的示例成本。
 
@@ -121,7 +122,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 **评估模型**模块将生成具有包含各种度量值的单个行的表。 若要创建一组准确性结果，我们首先使用**添加行**将结果合并到单个表。 然后，我们使用以下 Python 脚本**执行 Python 脚本**模块的结果表中添加的模型名称和每个行的培训方法：
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -138,7 +139,6 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     result = pd.concat([new_cols, dataframe1], axis=1)
     return result,
 ```
-
 
 ## <a name="results"></a>结果
 

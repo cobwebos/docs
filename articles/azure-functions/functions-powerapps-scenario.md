@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: afb97c1c14422f15a3fc2c00b2101c4a36675556
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61025406"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786113"
 ---
 # <a name="call-a-function-from-powerapps"></a>从 PowerApps 调用函数
 [PowerApps](https://powerapps.microsoft.com) 平台专为商业专家设计，无需写入传统的应用程序代码即可生成应用。 专业开发人员可以使用 Azure Functions 扩展 PowerApps 的功能，同时使 PowerApps 应用构建者摆脱技术细节。
@@ -39,8 +39,7 @@ ms.locfileid: "61025406"
 > * 添加控件以调用函数并显示数据。
 > * 运行应用以确定修复是否经济高效。
 
-> [!IMPORTANT]
-> OpenAPI 功能目前为预览版，仅适用于 1.x 版 Azure Functions 运行时。
+[!INCLUDE [functions-openapi-note](../../includes/functions-openapi-note.md)]
 
 ## <a name="prerequisites"></a>必备组件
 

@@ -5,23 +5,27 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 24a77561d08cc3db5356dd0e931f62bf2d16406d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89ba5b9641d156dfb098d51272b8bf8d3fd53f5b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60577008"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785863"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
 具有 Azure Enterprise 协议的用户在 Azure 门户和企业 (EA) 门户中被授予了一些权限的组合，这些权限定义了用户对 Azure 成本管理数据的访问级别。 对于其他 Azure 帐户类型的用户，用户的访问级别是访问成本管理数据更简单。 本文介绍如何分配对成本管理数据的访问权限。 用户分配到权限组合后，会基于他们有权访问的范围和他们在 Azure 门户中所选的范围查看成本管理中的数据。
 
 用户所选的范围将用于整个成本管理，以提供数据整合并控制对成本信息的访问。 使用范围时，用户不要多选它们。 而应选择一个子范围要汇总到的较大范围，然后筛选到要查看的范围。 理解数据整合很重要，因为有些人不应该访问子范围汇总到的父范围。
+
+观看[如何将使用 Azure 成本管理的访问权限分配](https://www.youtube.com/watch?v=J997ckmwTa8)视频，了解如何分配访问权限来查看成本和使用 Azure 基于角色的访问控制的费用。
+
+>[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
 
 ## <a name="cost-management-scopes"></a>成本管理范围
 

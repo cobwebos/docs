@@ -1,6 +1,6 @@
 ---
-title: 如何为容器载入 Azure Monitor | Microsoft Docs
-description: 本文介绍如何为容器安装和配置 Azure Monitor，以便了解容器的性能以及已识别的性能相关问题。
+title: 如何启用用于容器的 Azure Monitor |Microsoft Docs
+description: 本文介绍如何启用和配置 Azure Monitor 用于容器，以便您可以了解如何执行你的容器和已证实存在哪些与性能相关问题。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: magoedte
-ms.openlocfilehash: 10b80a9749c5698195ac5d3493ac3b07fd6e24e1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5e149fa96e0a62656804906b52adf10273321d17
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073306"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521902"
 ---
-# <a name="how-to-onboard-azure-monitor-for-containers"></a>如何为容器载入 Azure Monitor  
+# <a name="how-to-enable-azure-monitor-for-containers"></a>如何启用用于容器的 Azure Monitor  
 
 本文提供的选项，可用于设置用于容器的 Azure Monitor 来监视部署到 Kubernetes 环境和上承载的工作负荷的性能概述[Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/)。
 

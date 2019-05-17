@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9ea9cc116a13aac2dca9edf8ba86c933310b5198
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f1b40e6224b9ed872700d526b954c605159d6bf
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479473"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789628"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
 
@@ -103,6 +103,12 @@ INTO output
 FROM AnomalyDetectionStep
 
 ```
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>使用 Azure Stream Analytics 中的机器学习异常情况检测
+
+以下视频演示如何使用 Azure Stream Analytics 中的机器学习函数的实时检测异常情况。 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 90a57483fc7a530f214d34bf619a718b4c196e79
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 07165a497e75934a65719e48a9af7d8d6906ee7b
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683135"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538345"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>排查 Azure 应用程序网关会话相关性问题
 
@@ -53,7 +53,7 @@ ms.locfileid: "59683135"
 
 也可以使用以下方法之一，检查“backendHttpSettingsCollection”下的“CookieBasedAffinity”值是否设置为“Enabled”：
 
-- 运行[Get AzApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings)在 PowerShell 中
+- 运行[Get AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting)在 PowerShell 中
 - 使用 Azure 资源管理器模板通查 JSON 文件
 
 ```
@@ -98,110 +98,110 @@ ms.locfileid: "59683135"
 
 若要解决此问题，应使用 FQDN 访问应用程序网关。 例如，使用 [http://website.com](https://website.com/) 或 [http://appgw.website.com](http://appgw.website.com/)。
 
-## <a name="additional-logs-to-troubleshoot"></a>其他日志进行故障排除
+## <a name="additional-logs-to-troubleshoot"></a>用于故障排除的其他日志
 
-可以收集其他日志并对其进行故障排除问题相关的基于 cookie 的会话相关性进行分析
+可以收集其他日志并对其进行分析，以排查基于 Cookie 的会话相关性的相关问题
 
 ### <a name="analyze-application-gateway-logs"></a>分析应用程序网关日志
 
-若要收集应用程序网关日志，请按照说明操作：
+若要收集应用程序网关日志，请遵照以下说明操作：
 
 通过 Azure 门户启用日志记录
 
-1. 在中[Azure 门户](https://portal.azure.com/)，找到你的资源，然后单击**诊断日志**。
+1. 在 [Azure 门户](https://portal.azure.com/)中找到你的资源，然后单击“诊断日志”。
 
-   对于应用程序网关，提供 3 种日志：访问日志、 性能日志、 防火墙日志
+   对于应用程序网关，提供 3 种日志：访问日志、性能日志、防火墙日志
 
-2. 若要开始收集数据，请单击**启用诊断**。
+2. 若要开始收集数据，请单击“启用诊断”。
 
    ![troubleshoot-session-affinity-issues-5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
-3. “诊断设置”边栏选项卡提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 单击**配置**下**Log Analytics**设置你的工作区。 也可使用事件中心和存储帐户保存诊断日志。
+3. “诊断设置”边栏选项卡提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 单击“Log Analytics”下的“配置”以设置工作区。 也可使用事件中心和存储帐户保存诊断日志。
 
    ![troubleshoot-session-affinity-issues-6](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
-4. 确认设置，然后单击**保存**。
+4. 确认设置，然后单击“保存”。
 
    ![troubleshoot-session-affinity-issues-7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
 #### <a name="view-and-analyze-the-application-gateway-access-logs"></a>查看和分析应用程序网关访问日志
 
-1. 在 Azure 门户中应用程序网关资源视图下，选择**诊断日志**中**监视**部分。
+1. 在 Azure 门户中的应用程序网关资源视图下，选择“监视”部分中的“诊断日志”。
 
    ![troubleshoot-session-affinity-issues-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
-2. 在右侧窗格中，选择"**ApplicationGatewayAccessLog**"下的下拉列表中**日志类别。**  
+2. 在右侧“日志类别”下的下拉列表中选择“ApplicationGatewayAccessLog”。  
 
    ![troubleshoot-session-affinity-issues-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
-3. 在应用程序网关访问日志列表中，单击你想要分析并导出，请在的日志，然后导出 JSON 文件。
+3. 在“应用程序网关访问日志”列表中，单击要分析和导出的日志，然后导出 JSON 文件。
 
-4. 转换到 CSV 文件的步骤 3 中导出的 JSON 文件，并在 Excel、 Power BI 或任何其他数据可视化工具中查看它们。
+4. 将步骤 3 中导出的 JSON 文件转换为 CSV 文件，然后在 Excel、Power BI 或其他任何数据可视化工具中查看。
 
 5. 检查以下数据：
 
 - **ClientIP**– 这是从连接的客户端的客户端 IP 地址。
-- **ClientPort** -这是从连接的客户端请求的源端口。
+- **ClientPort** - 这是发出请求的连接方客户端的源端口。
 - **RequestQuery** – 这表示目标服务器收到的请求。
-- **Server-Routed**：收到的请求的后端池实例。
+- **Server-Routed**：收到请求的后端池实例。
 - **X-AzureApplicationGateway-LOG-ID**：用于请求的相关 ID。 它可用于排查后端服务器上的流量问题。 例如：X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
 
   - **SERVER-STATUS**：应用程序网关接收从后端的 HTTP 响应代码。
 
   ![troubleshoot-session-affinity-issues-11](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
-如果您看到的两个项即将从相同的 ClientIP 和客户端端口，并向其发送到相同的后端服务器，这意味着应用程序网关配置正确。
+如果看到有两个项来自同一个 ClientIP 和 ClientPort，并且它们发送到同一个后端服务器，则表示已正确配置应用程序网关。
 
-如果您看到的两个项即将从相同的 ClientIP 和客户端端口，并向其发送到不同的后端服务器，这意味着请求弹跳之间后端服务器，选择"**应用程序使用基于 cookie 的相关性请求但后端服务器之间仍弹跳**"在故障排除方法的底部。
+如果看到有两个项来自同一个 ClientIP 和 ClientPort，但它们发送到不同的后端服务器，则表示请求在后端服务器之间弹跳。选择底部的“应用程序使用基于 Cookie 的相关性，但请求仍在后端服务器之间弹跳”可以排查该问题。
 
-### <a name="use-web-debugger-to-capture-and-analyze-the-http-or-https-traffics"></a>使用 web 调试器来捕获和分析 HTTP 或 HTTPS 流量
+### <a name="use-web-debugger-to-capture-and-analyze-the-http-or-https-traffics"></a>使用 Web 调试器捕获和分析 HTTP 或 HTTPS 流量
 
-Web Fiddler 之类的调试工具，可帮助你调试 web 应用程序通过捕获在 Internet 和测试计算机之间的网络流量。 这些工具使您能够检查传入和传出数据，如在浏览器接收/发送它们。 Fiddler，在此示例中，具有 HTTP 重播选项，可以帮助您解决与 web 应用程序，尤其是对于身份验证类型的问题的客户端的问题。
+Fiddler 之类的 Web 调试工具可以捕获 Internet 与测试计算机之间的网络流量，并以此帮助你调试 Web 应用程序。 当浏览器接收/发送传入和传出数据时，可以使用此类工具来检测这些数据。 在此示例中，Fiddler 提供 HTTP 重放选项来帮助你排查 Web 应用程序的客户端问题，尤其是身份验证类型相关的问题。
 
-使用所选的 web 调试程序。 在此示例中我们将使用 Fiddler 捕获和分析 http 或 https 流量，请按照说明进行操作：
+使用所选的 Web 调试器。 此示例将使用 Fiddler 来捕获和分析 http 或 https 流量，具体说明如下：
 
-1. 下载 Fiddler 工具在<https://www.telerik.com/download/fiddler>。
+1. 在 <https://www.telerik.com/download/fiddler> 中下载 Fiddler 工具。
 
     > [!NOTE]
-    > 如果捕获计算机已安装.NET 4，请选择 Fiddler4。 否则，请选择 Fiddler2。
+    > 如果捕获流量的计算机上已安装 .NET 4，请选择 Fiddler4。 否则请选择 Fiddler2。
 
-2. 右键单击安装程序可执行文件，并以管理员身份安装运行。
+2. 右键单击安装程序可执行文件，并以管理员的身份安装该程序。
 
             ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
-3. 当您打开 Fiddler 时，它应自动启动捕获流量 （注意，在较低左下角捕获）。 按 f12 键以启动或停止捕获流量。
+3. 打开 Fiddler 时，它应会自动开始捕获流量（注意左下角的“正在捕获”）。 按 F12 键可以启动或停止流量捕获。
 
         ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. 很可能您会对感兴趣解密 HTTPS 流量，并可以通过选择启用 HTTPS 解密**工具** > **Fiddler 选项**，并选中复选框"**解密HTTPS 流量**"。
+4. 你很有可能对已解密的 HTTPS 流量感兴趣；选择“工具” > “Fiddler 选项”，然后选中“解密HTTPS 流量”框，即可启用 HTTPS 解密。
 
         ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
-5. 您可以删除之前通过单击重现该问题以前不相关的会话**X** （图标） >**全部删除**如遵循屏幕快照： 
+5. 在再现问题之前，可以通过单击“X”（图标）>“全部删除”来删除以前的不相关会话，如以下屏幕截图所示： 
 
         ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. 一旦重现此问题，通过选择保存文件以进行检查**文件** > **保存** > **所有会话...**. 
+6. 再现问题后，选择“文件” > “保存” > “所有会话...”以保存该文件供复查。 
 
         ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
-7. 检查和分析会话日志来确定此问题。
+7. 检查并分析会话日志以确定问题所在。
 
     例如：
 
-- **示例 a:** 找到从客户端，发送请求，它将转到应用程序网关的公共 IP 地址的会话日志，请单击此日志以查看详细信息。  在右侧，在底部中的数据是应用程序网关返回到客户端。 选择"原始"选项卡，并确定客户端正在接收"**设置 Cookie:ARRAffinity=** *ARRAffinityValue*." 如果没有任何 cookie，未设置会话相关性，或应用程序网关不将 cookie 应用到客户端。
+- **示例 A：** 在会话日志中，你发现请求是从客户端发出的，该请求发送到了应用程序网关的公共 IP 地址。于是你单击此日志以查看详细信息。  右侧下框中的数据是应用程序网关返回给客户端的数据。 选择“RAW”选项卡，并确定客户端是否正在接收“**Set-Cookie:ARRAffinity=** *ARRAffinityValue*”。 如果未看到任何 Cookie，则表示未设置会话相关性，或者应用程序网关未将 Cookie 应用回到客户端。
 
    > [!NOTE]
-   > 此 ARRAffinity 值是应用程序网关设置客户端发送到特定的后端服务器的 cookie 的 id。
+   > 此 ARRAffinity 值是应用程序网关为客户端设置的 Cookie ID，它将发送到特定的后端服务器。
 
     ![troubleshoot-session-affinity-issues-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
-- **示例 b:** 下一步的会话日志后, 跟上一个之一是客户端响应返回到应用程序网关，后者已设置 ARRAAFFINITY。 如果 ARRAffinity cookie id 与匹配，应将数据包发送到以前使用的同一后端服务器。 检查以查看是否更改客户端的 ARRAffinity cookie 使用 http 通信的下一步多个行。
+- **示例 B：** 前一条会话日志后面的会话日志是客户端返回给应用程序网关的响应，其中设置了 ARRAAFFINITY。 如果 ARRAffinity Cookie ID 匹配，则数据包应会发送到前面使用的同一个后端服务器。 检查 http 通信的后面几行，以查看客户端的 ARRAffinity Cookie 是否在发生变化。
 
     ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
-> 相同的通信会话，cookie 应不能更改。 检查在右侧顶部的框中，选择"Cookie"选项卡以查看是否在客户端是使用 cookie，并将其发送回应用程序网关。 如果没有，客户端浏览器不是保留和使用 cookie 的会话。 有时，可能会位于客户端。
+> 对于同一个通信会话，Cookie 不应该变化。 检查右侧的上框，选择“Cookie”选项卡以查看客户端是否正在使用 Cookie 并将其发回到应用程序网关。 如果不是，则表示客户端浏览器未保留 Cookie 并将其用于对话。 有时，客户端可能提供不实的数据。
 
  
 

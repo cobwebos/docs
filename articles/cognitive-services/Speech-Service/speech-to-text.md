@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 6b144f126e097a8db9fbbf29e47162fd6a1c2fbe
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7596670e794c090b04f81cf6b235a4bc54c1f3c4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916823"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800106"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音到文本？
 
@@ -24,7 +24,7 @@ ms.locfileid: "64916823"
 
 默认情况下，语音转文本服务使用的通用语言模型。 此模型使用 Microsoft 拥有的数据训练和已部署的云。 其最适合于交谈和听写方案。 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 
 
-可以轻松地捕获来自麦克风的音频、 从流中读取或从存储使用语音 SDK 和 REST Api 访问音频文件。 Speech SDK 支持语音识别的 WAV/PCM 16 位、 16 kHz、 单声道音频。 使用支持其他音频格式[语音到文本 REST 终结点](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)或[批处理脚本服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)。
+可以轻松地捕获来自麦克风的音频、 从流中读取或从存储使用语音 SDK 和 REST Api 访问音频文件。 语音 SDK 支持 WAV PCM/16 位、 16 kHz/8 kHz、 语音识别的单声道音频。 使用支持其他音频格式[语音到文本 REST 终结点](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)或[批处理脚本服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)。
 
 ## <a name="core-features"></a>核心功能
 
@@ -83,7 +83,7 @@ Speech SDK 的示例代码位于 GitHub 上提供。 这些示例涵盖了常见
 | 模型 | 描述 |
 |-------|-------------|
 | [声学模型](how-to-customize-acoustic-models.md) | 创建自定义声学模型将应用程序、 工具或设备使用在特定环境中，如汽车或特定录制条件与工厂中的情况下十分有用。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
-| [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型，以提高脚本的特定于行业的词汇和语法，如医疗术语中或 IT 专业术语。 |
+| [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型来改善行业特定的词汇和语法的听录，例如医疗术语中或 IT 行话。 |
 | [发音模型](how-to-customize-pronunciation.md) | 借助自定义发音模型，可以定义语音形式以及字词或术语的显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。 |
 
 > [!NOTE]

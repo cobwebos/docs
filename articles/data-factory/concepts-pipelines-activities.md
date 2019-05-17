@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63a86fb9498c7c1b1cd527accca84c83a28e01c3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61261828"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788673"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -172,7 +172,7 @@ JSON 名称 | 描述 | 允许的值 | 需要
 --------- | ----------- | -------------- | --------
 timeout | 指定活动运行的超时。 | Timespan | 不。 默认超时为 7 天。
 retry | 最大重试次数 | Integer | 不。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不。 默认为 20 秒
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不。 默认为 30 秒
 secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 不。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动

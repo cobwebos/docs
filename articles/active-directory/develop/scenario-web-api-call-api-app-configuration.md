@@ -15,18 +15,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dedef2d22df9c8c81410296bdb0c4814bd98b80
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f62cf65e275d8a9b909bf60103ccbd84e91e4574
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507133"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785057"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Web API 调用 web Api 的代码配置
 
 注册你的 web API 后，可以配置应用程序的代码。
 
-若要配置你的 web API，以便它将调用下游 web Api 的代码用于项目的 web API 的代码的基础上构建。 有关详细信息，请参阅[保护的 web API 的应用配置](scenario-protected-web-api-app-configuration.md)。
+若要配置你的 web API，以便它将调用下游 web Api 的代码用来保护 web API 的代码的基础上构建。 有关详细信息，请参阅[保护的 web API 的应用配置](scenario-protected-web-api-app-configuration.md)。
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>代码到 OnTokenValidated 订阅
 
@@ -74,7 +74,7 @@ AddAccountToCacheFromJwt() 方法需要：
 
 ### <a name="instantiate-a-confidential-client-application"></a>实例化机密客户端应用程序
 
-此流才可用在机密客户端流，因此受保护的 web API 客户端凭据 （客户端机密或证书） 提供给[ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.confidentialclientapplicationbuilder?view=azure-dotnet-preview)通过`WithClientSecret`或`WithCertificate`方法，分别。
+此流才可用在机密客户端流，因此受保护的 web API 客户端凭据 （客户端机密或证书） 提供给[ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)通过`WithClientSecret`或`WithCertificate`方法，分别。
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -96,7 +96,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ### <a name="how-to-call-on-behalf-of"></a>如何在代表的调用
 
-通过调用完成上代表的 (OBO) 调用[AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokenonbehalfofparameterbuilder?view=azure-dotnet-preview)方法`IConfidentialClientApplication`接口。
+通过调用完成上代表的 (OBO) 调用[AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder)方法`IConfidentialClientApplication`接口。
 
 `ClientAssertion`从 web API 从它自己的客户端收到的持有者令牌生成。 有[两个构造函数](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)，另一个采用 JWT 持有者令牌，和一个接受任何类型的用户断言 (安全令牌，在名为的其他参数则指定哪种类型的另一种`assertionType`)。
 

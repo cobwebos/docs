@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: f3e7cc2ed71dda0eb34328432b26a4016b62be1c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 9385ed5127b8cc1aaf84c887b652fd8970883ba6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466423"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65524032"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>将建议或自动完成功能添加到 Azure 搜索应用程序
 
@@ -164,7 +164,7 @@ $(function () {
 
 您可能注意到的第一件事是一种方法在调用类的顶部`InitSearch`。 此方法在 Azure 搜索服务中创建经过身份验证的 HTTP 索引客户端。 有关详细信息，请参阅[如何使用.NET 应用程序中的 Azure 搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)。
 
-在第 41 行，请注意建议函数。 它基于[DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview)。
+在第 41 行，请注意建议函数。 它基于[DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)。
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -198,7 +198,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 
 Suggest 函数采用两个参数，用于确定是要返回命中的突出显示内容，还是在返回搜索词输入的同时返回模糊匹配结果。 该方法将创建[SuggestParameters 对象](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet)，后者再传递到建议 API。 然后，结果将转换成 JSON，以便在客户端中显示。
 
-行 69，请注意自动完成函数。 它基于[DocumentsOperationsExtensions.Autocomplete 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet-preview)。
+行 69，请注意自动完成函数。 它基于[DocumentsOperationsExtensions.Autocomplete 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)。
 
 ```csharp
 public ActionResult AutoComplete(string term)

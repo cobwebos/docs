@@ -14,22 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: ef2b1bd9cfe9aed1e82335d62bb09b5ffcbe1016
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: aca34ee40bfe10c55c478d9aaeb01a65d139e1e2
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471766"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522383"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
 > 
 > [!IMPORTANT]
 > 应用程序版本 1.2。 * 传出 30 年 4 月 2019年上的支持。 请升级到最新版本。
-
-> 
-> [!IMPORTANT]
-> Linux 上的修补业务流程应用程序已被弃用。 请访问[Azure 虚拟机规模集自动 OS 映像升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)用于协调在 linux 上的更新。
 
 
 [Azure 虚拟机规模集自动 OS 映像升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)是使操作系统保持在 Azure 中进行修补的最佳做法，而修补业务流程应用程序 (POA) 是 Service Fabrics RepairManager Systems 服务的包装器，它可为非 Azure 托管群集启用基于配置的 OS 修补计划。 非 Azure 托管群集不需要 POA，但需要按升级域计划修补程序安装，以便在不停机的情况下修补 Service Fabric 群集主机。
@@ -241,7 +237,7 @@ RebootRequired | true - 需要重新启动<br> false - 无需重新启动 | 指�
 
 如果尚未计划更新，JSON 结果将为空。
 
-请登录到群集以查询 Windows 更新结果。 然后找出协调器服务的主副本地址，并在浏览器中点击此 URL： http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults。
+在登录到群集以查询 Windows 更新结果。 然后找出协调器服务的主副本地址，并在浏览器中点击此 URL： http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults。
 
 协调器服务的 REST 终结点有一个动态端口。 若要检查确切的 URL，请参考 Service Fabric Explorer。 例如，可在 `http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults` 处获取结果。
 
@@ -263,7 +259,7 @@ RebootRequired | true - 需要重新启动<br> false - 无需重新启动 | 指�
 
 修补业务流程应用日志是作为 Service Fabric 运行时日志的一部分进行收集的。
 
-在想要通过所选的诊断工具/管道捕获日志的情况下使用。 修补业务流程应用程序使用以下固定的提供程序 ID 通过 [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1) 记录事件
+在想要通过所选的诊断工具/管道捕获日志的情况下使用。 修补业务流程应用程序使用以下固定提供程序 Id 来记录事件通过[事件源](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -312,7 +308,7 @@ A. 检查针对应用程序发布的运行状况报告是否是根本原因。 �
 
 A. 群集运行不正常时，修补业务流程应用不会安装更新。 请尝试将群集恢复正常状态，消除修补业务流程应用工作流的阻碍。
 
-问： **对于我的群集，应将 TaskApprovalPolicy 设置为“NodeWise”还是“UpgradeDomainWise”？**
+问： **是否应设置 TaskApprovalPolicy 作为 NodeWise 或 UpgradeDomainWise 为我的群集？**
 
 A. “UpgradeDomainWise”通过并行修补属于升级域的所有节点，使整个群集修补速度更快。 这意味着在修补过程中，属于整个升级域的节点将不可用（处于[已禁用](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)状态）。
 
@@ -346,6 +342,10 @@ A. 某些产品更新仅会显示在其各自的更新/修补历史记录中。 
 问： **修补业务流程应用是否可用来修补开发群集（单节点群集）？**
 
 A. 否，修补业务流程应用不能用来修补单节点群集。 此限制是设计使然，因为 [Service Fabric 系统服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services)或者任意客户应用将面临停机时间，因此修复管理器不会批准任何修复工作进行修补。
+
+问： **如何修补 Linux 上的群集节点？**
+
+A. 请参阅[Azure 虚拟机规模集自动 OS 映像升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)用于协调在 linux 上的更新。
 
 ## <a name="disclaimers"></a>免责声明
 
@@ -413,7 +413,7 @@ A. 否，修补业务流程应用不能用来修补单节点群集。 此限制�
 
 - 将 InstallWindowsOSOnlyUpdates 设置为 false 现在会安装所有可用的更新。
 - 更改了禁用自动更新的逻辑。 这修复了在 Server 2016 及更高版本上不会禁用自动更新的 bug。
-- 针对高级用例，对 POA 的微服务的放置约束进行了参数化。
+- 参数化的高级的用例的 POA 这两个微服务的放置约束。
 
 ### <a name="version-131"></a>版本 1.3.1
 - 修复了由于禁用自动更新失败而导致 POA 1.3.0 无法在 Windows Server 2012 R2 或更低版本上运行的回归。 
@@ -421,4 +421,4 @@ A. 否，修补业务流程应用不能用来修补单节点群集。 此限制�
 - 将 InstallWindowsOSOnlyUpdates 的默认值更改为 False。
 
 ### <a name="version-132"></a>版本 1.3.2
-- 修复了会影响修补的生命周期在节点上，以防其中是当前的节点名称的子集名称的节点的问题。 对于此类节点，可能会出现修补缺失或重启操作挂起的情况。 
+- 修复了有其中是当前的节点名称的子集名称的节点的情况下受影响的节点上的修补生命周期的问题。 对于此类节点，可能会出现修补缺失或重启操作挂起的情况。 

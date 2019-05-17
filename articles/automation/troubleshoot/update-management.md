@@ -4,16 +4,16 @@ description: 了解如何排查更新管理问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2019
+ms.date: 05/07/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 22e3ea1c90946902fc2a16d947ff2884e5e0a44b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f286877c6a9e787c06a8a846efaf94668c04fc4e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597623"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787689"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -160,6 +160,38 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试。
 
+### <a name="failed-to-start"></a>场景：一台计算机显示无法在更新部署中启动
+
+#### <a name="issue"></a>问题
+
+机器有状态**未能启动**机。 当您查看计算机的特定详细信息时您会看到以下错误：
+
+```error
+Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+```
+
+#### <a name="cause"></a>原因
+
+由于以下原因之一可能会发生此错误：
+
+* 在计算机不再存在。
+* 计算机已关闭和无法访问。
+* 在计算机的网络连接有问题，无法访问混合辅助角色在计算机上。
+* 未为更改 SourceComputerId Microsoft Monitoring Agent 的更新
+* 如果达到某个自动化帐户中的 2,000 并发作业限制，你的更新运行可能已中止。 每个部署被认为作为作业的作业，并在更新部署计数中的每台计算机。 任何其他自动化作业或更新部署中将自动化帐户会计入并发作业限制当前正在运行。
+
+#### <a name="resolution"></a>解决方法
+
+当适用[动态组](../automation-update-management.md#using-dynamic-groups)更新部署。
+
+* 验证计算机仍存在，且可访问。 如果不存在，编辑你的部署，删除计算机。
+* 请参阅章节[的网络规划](../automation-update-management.md#ports)有关端口和地址的所需的更新管理和验证你的计算机是否满足这些要求的列表。
+* 在 Log Analytics 中运行以下查询以查找计算机环境中它的`SourceComputerId`更改。 查找具有相同的计算机`Computer`值，但具有不同`SourceComputerId`值。 一旦找到受影响的计算机，则必须编辑面向这些计算机，并删除并重新添加计算机的更新部署，因此`SourceComputerId`反映正确的值。
+
+   ```loganalytics
+   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
+   ```
+
 ### <a name="hresult"></a>场景：计算机显示“未评估”，并显示 HResult 异常
 
 #### <a name="issue"></a>问题
@@ -177,7 +209,9 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 |异常  |解决方法或操作  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | 搜索 [ Windows 更新错误代码列表](https://support.microsoft.com/help/938205/windows-update-error-code-list)中的相关错误代码，以查找有关异常原因的其他详细信息。        |
-|`0x8024402C` 或 `0x8024401C`     | 这些错误是网络连接问题。 请确保你的计算机具有与更新管理的适当网络连接。 请参阅[网络规划](../automation-update-management.md#ports)部分，了解所需的端口和地址的列表。        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | 这些错误是网络连接问题。 请确保你的计算机具有与更新管理的适当网络连接。 请参阅[网络规划](../automation-update-management.md#ports)部分，了解所需的端口和地址的列表。        |
+|`0x8024001E`| 更新操作未完成，因为服务或系统已关闭。|
+|`0x8024002E`| Windows 更新服务已禁用。|
 |`0x8024402C`     | 如果使用 WSUS 服务器，请确保注册表项 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` 下 `WUServer` 和 `WUStatusServer` 的注册表值具有正确的 WSUS 服务器。        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | 请确保 Windows 更新服务 (wuauserv) 正在运行，并且未禁用。        |
 |任何其他一般异常     | 在 Internet 上搜索可能的解决方案，并与本地 IT 支持人员合作。         |

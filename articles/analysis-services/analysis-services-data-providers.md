@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ded03f636155e4b1a738f388e696a09736cd3b
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
-ms.translationtype: HT
+ms.openlocfilehash: b3f4e1ddc041691ba68e14660ec5fa4cc39ddec1
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470771"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518179"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>用于连接到 Azure Analysis Services 的客户端库
 
@@ -32,10 +32,10 @@ ms.locfileid: "65470771"
 
 Analysis Services Management Objects (AMO) 和 ADOMD 客户端库在 [NuGet.org](https://www.nuget.org/) 上作为可安装的程序包提供。建议你迁移到 NuGet 引用而非使用 Windows Installer。 
 
-|包  | 产品版本  | 
+|package  | 产品版本  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.17.1     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.17.1      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    16.1.0     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   16.1.0      |
 
 NuGet 包程序集 AssemblyVersion 遵循语义版本控制：MAJOR.MINOR.PATCH。 NuGet 引用加载预期的版本，即使 GAC 中存在不同的版本（由 MSI 安装导致的）。 PATCH 将随每次发布递增。 AMO 和 ADOMD 版本保持同步。
 

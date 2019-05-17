@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: asirveda
-ms.openlocfilehash: a103526ef63c02913862510c01e9fde6570d89c0
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2392d0ef9d6257b93b76f13a5354eeba57d78ddd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515439"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800278"
 ---
 # <a name="migrate-java-enterprise-edition-ee-apps-to-azure"></a>将 Java enterprise edition (EE) 应用程序迁移到 Azure
 本文将指导你完成过程的现有 Java EE 工作负载迁移到 Azure:
@@ -67,7 +67,7 @@ ms.locfileid: "65515439"
 迁移后，您将运行使用 Azure 服务总线的应用。
 
 ## <a name="prerequisites"></a>必备组件
-若要将 Java web 应用部署到 Azure，需要 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费 Azure 帐户]((https://azure.microsoft.com/pricing/free-trial/))。
+若要将 Java web 应用部署到 Azure，需要 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费 Azure 帐户](https://azure.microsoft.com/en-us/free/)。
 
 此外，还需要满足以下先决条件：
 
@@ -936,7 +936,7 @@ Picked up _JAVA_OPTIONS: -Djava.net.preferIPv4Stack=true
 
 有关其他信息，请参阅： 
  
- - [部署中 JBoss/WildFly 泛型 JMS RA 适配器](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
+ - [部署中 JBoss/WildFly 泛型 JMS RA 适配器](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
  - [JBoss/WildFly CLI 指南](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)
  - [从开发计算机的 SSH 会话打开到应用服务 Linux](../app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell)
 
@@ -1063,7 +1063,7 @@ open https://websocket-hello-app.azurewebsites.net
 ![Websocket Hello 映像 ](./media/migrate-java-apps-wild-fly/websocket-hello.png)
 
 
-恭喜! 现有的 Java 企业工作负荷迁移到 Azure： 应用到应用服务 Linux 和应用程序的消息传送到 Azure 服务总线的系统。
+祝贺你！ 现有的 Java 企业工作负荷迁移到 Azure： 应用到应用服务 Linux 和应用程序的消息传送到 Azure 服务总线的系统。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 

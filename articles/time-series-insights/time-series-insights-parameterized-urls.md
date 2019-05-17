@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: e70eb7ae73e88b37e649d519d0d0428554dd4ab3
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3ddde600c2ac15c56b59051fbcd6bb0e8fbae1f6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467516"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787525"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -86,11 +86,11 @@ ms.locfileid: "65467516"
 | `multiChartStack=false` | `true` 默认情况下启用因此传递`false`堆叠。 |
 | `multiChartStack=false&multiChartSameScale=true` | 必须启用堆叠才能在不同的条件中使用同一 Y 轴比例。  它具有`false`默认情况下，因此传递 true 可启用此功能。 |
 | `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 单位为天、小时、分钟、秒、毫秒。  请始终将单位大写。 </br> 为 timeBucketSize 传递所需的整数即可定义单位数。  注意，平滑度最多可以调整为 7 天。  |
-| `timezoneOffset=-<integer>` | 整数的单位始终为毫秒。 </br> 注意，此功能与我们在 TSI 浏览器中启用的功能稍有差别，该浏览器允许选择本地浏览器时间或 UTC。 |
+| `timezoneOffset=-<integer>` | 整数的单位始终为毫秒。 </br> 请注意，此功能是略有不同于我们在时序见解资源管理器，其中我们使您能够选择本地 （浏览器时） 还是根据 UTC 中启用。 |
 
 ### <a name="examples"></a>示例
 
-若要以 URL 参数的 TSI 环境添加时序定义，追加：
+若要以 URL 参数的时序见解环境添加时序定义，追加：
 
 ```plaintext
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
@@ -112,7 +112,7 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 > [!TIP]
 > 请参阅实时的资源管理器[使用 URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}])。
 
-上述 URL 描述，并将生成 TSI 资源管理器视图：
+上述 URL 描述，并将生成时间时序见解资源管理器视图：
 
 [![时间时序见解资源管理器术语](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 

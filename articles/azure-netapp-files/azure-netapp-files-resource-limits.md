@@ -12,28 +12,66 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 05/02/2019
 ms.author: b-juche
-ms.openlocfilehash: 897ca26bcbb05287d33a4fb8e731ca959e39e271
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d55e11ace4ca306c3d3ec8c0094a751966289db6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452630"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523053"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
 了解 Azure NetApp 文件的资源限制，可帮助你管理卷。
 
-- 每个 Azure 订阅最多可以有 10 个 NetApp 帐户。
-- 每个 NetApp 帐户最多可以有 25 个容量池。
-- 每个容量池可以仅属于一个 NetApp 帐户。  
-- 单个容量池的最小大小为 4 TiB，最大大小为 500 TiB。 
-- 每个容量池最多可以有 500 个卷。
-- 单个卷的最小大小为 100 GiB，最大大小为 92 TiB。
-- 每个卷最多可以有 255 个快照。
-- 每个 Azure 虚拟网络 (Vnet) 只能将一个子网委派给 Azure NetApp 文件。
+## <a name="resource-limits"></a>资源限制
 
-**后续步骤**
+下表描述 Azure NetApp 文件的资源限制：
 
-[了解 Azure NetApp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md)
+|  资源  |  默认限制  |  通过支持请求可调整  |
+|----------------|---------------------|--------------------------------------|
+|  每个 Azure 订阅的 NetApp 帐户数   |  10    |  是   |
+|  每个 NetApp 帐户的容量池数   |    25     |   是   |
+|  每个容量池的卷数     |    500   |    是     |
+|  每个卷的快照数       |    255     |    否        |
+|  委派给 Azure NetApp 文件 (Microsoft.NetApp/volumes) 每个 Azure 虚拟网络的子网数    |   第   |    否    |
+|  单个容量池的最小大小   |  4 TiB     |    否  |
+|  单个容量池的最大大小    |  500 TiB   |   否   |
+|  是单个卷的最小大小    |    100 GiB    |    否    |
+|  最大分配配额的单个卷 *   |   92 TiB   |    否   |
+|  最大大小为单个卷 *     |    100 TiB    |    否       |
+
+* 卷可以手动创建或大小调整为最常 92 TiB。 但是，卷可以增长的超额的方案中最多 100 个 TiB。 请参阅[Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md)有关容量超额的详细信息。 
+
+## <a name="request-limit-increase"></a>请求增加限制 
+
+可以创建 Azure 支持请求来提高从上表可调整的限制。 
+
+从 Azure 门户中导航平面： 
+
+1. 单击**帮助 + 支持**。
+2. 单击 **+ 新建支持请求**。
+3. 在基础知识选项卡，提供以下信息： 
+    1. 问题类型：选择**服务和订阅限制 （配额）**。
+    2. 订阅:选择需要增加配额的资源的订阅。
+    3. 配额类型：选择**存储：Azure 的 NetApp 文件限制**。
+    4. 单击“下一步:**解决方法**。
+4. 在详细信息选项卡：
+    1. 在描述框中，提供相应的资源类型的以下信息：
+
+        |  资源  |    父资源      |    请求新的限制     |    增加配额的原因       |
+        |----------------|------------------------------|---------------------------------|------------------------------------------|
+        |  帐户 |  *订阅 ID*   |  *请求新的最大**帐户**数*    |  *哪些方案或用例提示请求？*  |
+        |  池    |  *订阅 ID，帐户 URI*  |  *请求新的最大**池**数*   |  *哪些方案或用例提示请求？*  |
+        |  数据量(Volume)  |  *订阅 ID，帐户的 URI，池 URI*   |  *请求新的最大**卷**数*     |  *哪些方案或用例提示请求？*  |
+
+    2. 指定相应的支持方法并提供你的协定信息。
+
+    3. 单击“下一步:**查看 + 创建**来创建请求。 
+
+
+## <a name="next-steps"></a>后续步骤  
+
+- [了解 Azure NetApp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md)
+- [用于 Azure 的 NetApp 文件的成本的模型](azure-netapp-files-cost-model.md)

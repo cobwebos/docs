@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: narayan;aglick
-ms.openlocfilehash: f8068524a33c6d29056af456a26b8bd87fc3e3d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68a9523dcc9c4dd84399c68fc7e31a692c011487
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60742694"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523260"
 ---
 # <a name="virtual-network--business-continuity"></a>虚拟网络 - 业务连续性
 
 ## <a name="overview"></a>概述
 虚拟网络 (VNet) 是网络在云中的逻辑表示形式。 这样一来，可以定义自己的专用 IP 地址空间，并将网络划分为子网。 VNet 用作托管计算资源（如 Azure 虚拟机和云服务（Web/辅助角色））的信任边界。 VNet 允许在其中托管的资源之间建立直接的专用 IP 通信。 可通过 VPN 网关或 ExpressRoute 将虚拟网络链接至本地网络。
 
-VNet 是在区域范围内创建。 可以在两个不同的区域（例如美国东部和美国西部）创建具有相同地址空间的 VNet，但无法将它们连接到一起。 
+VNet 是在区域范围内创建。 你可以*创建*具有相同的 Vnet 地址空间中两个不同的区域 （例如，美国东部和美国西部），但因为它们具有相同的地址空间，您不能将它们连接在一起。 
 
 ## <a name="business-continuity"></a>业务连续性
 

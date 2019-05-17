@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 0eed874d405fcf99241a702292f8ceadae6c5a07
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65502030"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522964"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>自动向 Azure 开发测试实验室中的实验室添加实验室用户
 Azure 开发测试实验室，可通过使用 Azure 门户快速创建自助服务的开发测试环境。 但是，如果有多个团队和多个开发测试实验室实例，则自动执行创建过程可以节省时间。 [Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)，可以创建实验室、 实验室 Vm、 自定义映像、 公式和以自动方式添加用户。 本文专门重点介绍将用户添加到开发测试实验室实例。
@@ -85,7 +85,7 @@ Azure 开发测试实验室，可通过使用 Azure 门户快速创建自助服�
 
 ```
 
-如果您将创建实验室在同一模板中的角色分配，请记住添加角色分配资源和实验室之间的依赖项。 有关详细信息，请参阅[在 Azure 资源管理器模板中定义依赖项](/azure-resource-manager/resource-group-define-dependencies.md)一文。
+如果您将创建实验室在同一模板中的角色分配，请记住添加角色分配资源和实验室之间的依赖项。 有关详细信息，请参阅[在 Azure 资源管理器模板中定义依赖项](../azure-resource-manager/resource-group-define-dependencies.md)一文。
 
 ### <a name="role-assignment-resource-information"></a>角色分配资源信息
 角色分配资源需要指定的类型和名称。

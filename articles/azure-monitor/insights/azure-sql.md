@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 03f330f429be583d3a400eb1ee00875f7c305e74
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 0617dc617309d49cdc7c8cddd4e91619b873b914
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64923020"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785680"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -193,7 +193,7 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - 设置此警报的前提要求是受监视的数据库将诊断指标（“所有指标”选项）流式传输到解决方案。
+> - 设置此警报的预要求是该监视的数据库流到解决方案的基本指标。
 > - 若要改为获取高 DTU 结果，请将 MetricName 值 cpu_percent 替换为 dtu_consumption_percent。
 
 #### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Azure SQL 数据库弹性池的 CPU 利用率较高
@@ -208,7 +208,7 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - 设置此警报的前提要求是受监视的数据库将诊断指标（“所有指标”选项）流式传输到解决方案。
+> - 设置此警报的预要求是该监视的数据库流到解决方案的基本指标。
 > - 若要改为获取高 DTU 结果，请将 MetricName 值 cpu_percent 替换为 dtu_consumption_percent。
 
 #### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Azure SQL 数据库存储在过去 1小时的平均值超过 95%
@@ -225,7 +225,7 @@ AzureMetrics
 ```
 
 > [!NOTE]
-> - 设置此警报的前提要求是受监视的数据库将诊断指标（“所有指标”选项）流式传输到解决方案。
+> - 设置此警报的预要求是该监视的数据库流到解决方案的基本指标。
 > - 此查询要求将警报规则设置为当存在来自查询的结果时（> 0 个结果，表示某些数据库上存在此条件）触发。 输出是在所定义的 time_range 内高于 storage_threshold 的数据库资源的列表。
 > - 输出是在所定义的 time_range 内高于 storage_threshold 的数据库资源的列表。
 

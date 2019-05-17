@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 622b1f6f6a852251c07c5576ed10cd76adbf5231
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: f2605ee5688a86de0a8e7d036aa63edd604c6538
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795009"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787200"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>如何通过 Python 使用服务总线队列
 
@@ -60,11 +60,7 @@ sb_client.create_queue("taskqueue")
 `create_queue` 方法还支持其他选项，通过这些选项可以重写默认队列设置，例如消息生存时间 (TTL) 或最大队列大小。 以下示例将最大队列大小设置为 5GB，将 TTL 值设置为 1 分钟：
 
 ```python
-queue_options = Queue()
-queue_options.max_size_in_megabytes = '5120'
-queue_options.default_message_time_to_live = 'PT1M'
-
-sb_client.create_queue("taskqueue", queue_options)
+sb_client.create_queue("taskqueue", max_size_in_megabytes=5120, default_message_time_to_live=datetime.timedelta(minutes=1))
 ```
 
 有关详细信息，请参阅[Azure 服务总线 Python 文档](/python/api/overview/azure/servicebus?view=azure-python)。
@@ -82,7 +78,7 @@ queue_client = QueueClient.from_connection_string("<CONNECTION STRING>", "<QUEUE
 
 # Send a test message to the queue
 msg = Message(b'Test Message')
-queue_client.send(Message("Message"))
+queue_client.send(msg)
 ```
 
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。

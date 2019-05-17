@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 04/11/2019
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66b3e68ff2199c6a8bf4da9e02caaf93ee69342b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414434"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812830"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -27,11 +27,15 @@ ms.locfileid: "60414434"
 > [!IMPORTANT]
 > 应按照[如何：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
 
+## <a name="before-you-begin"></a>开始之前
+
+请确保你的组织外部协作设置配置，以便您可以邀请来宾。 默认情况下，所有用户和管理员可都邀请来宾。 但你组织的外部协作策略可能会进行配置以防止某些类型的用户或管理员邀请来宾。 若要了解如何查看和设置这些策略，请参阅[启用 B2B 外部协作和管理谁可以邀请来宾](delegate-invitations.md)。
+
 ## <a name="add-guest-users-to-the-directory"></a>将来宾用户添加到目录
 
 若要将 B2B 协作用户添加到目录，请执行以下步骤：
 
-1. 登录到[Azure 门户](https://portal.azure.com)的用户是分配任何有限管理员目录角色。
+1. 登录到[Azure 门户](https://portal.azure.com)作为有限的管理员目录角色或来宾邀请者角色分配的用户。
 2. 在导航窗格中选择“Azure Active Directory”。
 3. 在“管理”下，选择“用户”。
 4. 选择“新来宾用户”。
@@ -56,7 +60,7 @@ ms.locfileid: "60414434"
 ![显示“来宾”用户类型的 B2B 用户](./media/add-users-administrator/GuestUserType.png)  
 
 ## <a name="add-guest-users-to-a-group"></a>将来宾用户添加到组
-如果需要以 Azure AD 管理员的身份手动将 B2B 协作用户添加到组，请执行以下步骤：
+如果需要手动将 B2B 协作用户添加到组，请执行以下步骤：
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
@@ -73,7 +77,7 @@ ms.locfileid: "60414434"
 
 ## <a name="add-guest-users-to-an-application"></a>将来宾用户添加到应用程序
 
-若要以 Azure AD 管理员的身份将 B2B 协作用户添加到应用程序，请执行以下步骤：
+若要将 B2B 协作用户添加到应用程序，请执行以下步骤：
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。

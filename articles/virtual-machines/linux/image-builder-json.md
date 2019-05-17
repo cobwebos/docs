@@ -3,16 +3,16 @@ title: 创建 Azure 映像生成器模板 （预览版）
 description: 了解如何创建使用 Azure 映像生成器使用的模板。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
+ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: b4646879eb7eeecf41852baab7ab64e4053b05e1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159595"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538297"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -32,7 +32,7 @@ Azure 映像生成器使用的.json 文件以将信息传递到映像生成器�
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
-        "<build timeout in minutes>": {}, 
+        "buildTimeoutInMinutes": <minutes>, 
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -270,7 +270,7 @@ OS 支持：Windows
  
 自定义属性：
 - **类型**：WindowsRestart
-- **restartCommand** -（可选） 重新启动时执行命令。 默认为 `'shutdown /r /f /t 0 /c \"packer restart\"'`。
+- **restartCommand** -（可选） 重新启动时执行命令。 默认值为 `'shutdown /r /f /t 0 /c \"packer restart\"'`。
 - **restartCheckCommand** – 命令来检查重新启动成功 （可选）。 
 - **restartTimeout** -重新启动超时指定为字符串的大小和单位。 例如， `5m` （5 分钟） 或`2h`（2 小时）。 默认值为：5 分钟
 

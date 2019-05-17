@@ -1,23 +1,17 @@
 ---
 title: 锁定 Azure 资源以防止更改 | Microsoft Docs
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除关键 Azure 资源。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a6c7983d22eed4a4232fbb2db490c1743684a04c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360446"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813390"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改 
 
@@ -36,7 +30,13 @@ ms.locfileid: "59360446"
 
 Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com` 的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁会阻止你删除或修改数据库。 它不会阻止你在数据库中创建、更新或删除数据。 允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
 
-应用 **ReadOnly** 可能会导致意外结果，因为看起来好像读取操作的某些操作实际上需要其他操作。 例如，在存储帐户上放置 **ReadOnly** 锁会阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。 另举一例，在应用服务资源上放置 **ReadOnly** 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写访问权限。
+将应用**ReadOnly**会导致意外的结果，因为似乎修改的资源没有某些操作实际上需要的锁阻塞的操作。 **ReadOnly**锁可以应用到资源或包含该资源的资源组。 被阻止的操作的一些常见示例**ReadOnly**锁是：
+
+* 一个**ReadOnly**存储帐户上的锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
+
+* 应用服务资源上的 **ReadOnly** 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写访问权限。
+
+* 一个**ReadOnly**包含虚拟机的资源组上的锁将阻止所有用户启动或重新启动虚拟机。 这些操作需要 POST 请求。
 
 ## <a name="who-can-create-or-delete-locks"></a>谁可以创建或删除锁
 若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。

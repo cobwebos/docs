@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: 165980da2b78e7514ea1938bdbeb6fda82dd123d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8e6783bb56f55949824e4ce94c85145f53dd9f4b
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236661"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523954"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 
@@ -26,12 +26,6 @@ ms.locfileid: "65236661"
 
 ```powershell
 Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
-```
-
-然后，运行以下 cmdlet，以将上下文设置为你的租户组。 如果你没有租户组的名称，你的租户是很可能出在"默认租户组中,"，因此可以跳过此 cmdlet。
-
-```powershell
-Set-RdsContext -TenantGroupName <tenantgroupname>
 ```
 
 接下来，运行此 cmdlet 可在 Windows 虚拟桌面租户中创建新的主机池：

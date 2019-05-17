@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5bd977826f489ca8452432babe6126b8553450fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730701"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787290"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions 中的 HTTP API (Azure Functions)
 
@@ -417,11 +417,9 @@ DELETE /runtime/webhooks/durabletask/instances
 
 | 字段                 | 参数类型  | 描述 |
 |-----------------------|-----------------|-------------|
-| **`createdTimeFrom`** | 查询字符串    | 可选参数。 指定后，将筛选在给定 ISO8601 时间戳当时或之后创建的已清除实例列表。|
+| **`createdTimeFrom`** | 查询字符串    | 筛选已创建时或之后的给定的 ISO8601 时间戳的已清除实例列表。|
 | **`createdTimeTo`**   | 查询字符串    | 可选参数。 指定后，将筛选在给定 ISO8601 时间戳当时或之前创建的已清除实例列表。|
 | **`runtimeStatus`**   | 查询字符串    | 可选参数。 指定后，将根据运行时状态筛选已清除实例的列表。 若要查看可能的运行时状态值列表，请参阅[查询实例](durable-functions-instance-management.md)主题。 |
-
-如果未指定参数，则会清除任务中心内的所有实例。
 
 > [!NOTE]
 > 如果“实例”和/或“历史记录”表中包含许多的行，则此操作可能会导致很高的 Azure 存储 I/O 开销。 有关这些表的更多详细信息，请参阅 [Durable Functions (Azure Functions) 中的性能和缩放](durable-functions-perf-and-scale.md#instances-table)文档。

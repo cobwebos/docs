@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d8e7bba6d43ba1daa3173ce5d7e043e2310a482
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8a1ae906a72d781f638fb171a409b860ffa6d501
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65229970"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517703"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "65229970"
 
 ## <a name="alert-types"></a>警报类型
 
-自动化 runbook 可以使用四种警报类型：
+可对三种警报类型使用自动化 Runbook：
 
 * 常见的警报
 * 活动日志警报

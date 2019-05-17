@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95a5e1ed89b6330a0b6a49cb20d8bf0ef3587d48
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bd7f393f889facf147cf25625d5c3b20f886ddf5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074735"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784943"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web 应用调用 web Api 的代码配置
 
@@ -184,12 +184,12 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 
 ### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>ASP.NET (Core) Web 应用的 MSAL.NET 令牌缓存
 
-在 web 应用 （或 web Api 作为一种事实） 的令牌缓存实现是不同于桌面应用程序令牌缓存实现 (通常[基于文件](scenario-desktop-acquire-token.md#file-based-token-cache)。 它可以使用 ASP.NET/ASP.NET 核心会话或的 Redis 缓存或数据库或甚至 Azure Blog 存储。 在代码中更高版本此代码片段是对象的`EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);`方法调用中，这是将缓存服务的绑定。 下面是超出了本指南范围的方案，但下面提供了链接，会发生什么的详细信息。
+在 web 应用 （或 web Api 作为一种事实） 的令牌缓存实现是不同于桌面应用程序令牌缓存实现 (通常[基于文件](scenario-desktop-acquire-token.md#file-based-token-cache)。 它可以使用 ASP.NET/ASP.NET 核心会话或的 Redis 缓存或数据库或甚至 Azure Blob 存储。 在代码中更高版本此代码片段是对象的`EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);`方法调用中，这是将缓存服务的绑定。 下面是超出了本指南范围的方案，但下面提供了链接，会发生什么的详细信息。
 
 > [!IMPORTANT]
-> 非常重要的一点是，对于 web 应用和 web Api，应会每个用户 （每个帐户） 的一个令牌缓存。 需要序列化每个帐户的令牌缓存。
+> 非常重要的一点是，对于 web 应用和 web Api，应会每个用户 （每个帐户） 的一个令牌缓存。 需要为每个帐户序列化令牌缓存。
 
-有关如何使用令牌缓存适用于 Web 应用和 web Api 的示例中有[ASP.NET Core Web 应用教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)阶段[2-2 令牌缓存](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)。 为实现具有以下文件夹看[TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders)中[microsoft 身份验证的扩展-为-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet)库 (在[Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web)文件夹。
+有关如何使用令牌缓存适用于 Web 应用和 web Api 的示例中有[ASP.NET Core Web 应用教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)阶段[2-2 令牌缓存](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)。 有关实现，请查看 [microsoft-authentication-extensions-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) 库中的以下 [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) 文件夹（在 [Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) 文件夹中）。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 9b779021eca11638e8ee52ec11d082e5b0e89cd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0d2c080be727d2ae13d6d9e5274f17cadffbe640
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506680"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786464"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -146,7 +146,7 @@ AKS 支持仅稳定功能上游 Kubernetes 项目中。 除非有说明，否则
 
 公共预览版中的功能是属于最大努力支持，因为这些功能处于预览状态并不适合在生产环境，在营业时间内支持的 AKS 技术支持团队。 有关其他信息，请参阅：
 
-* [Azure 支持常见问题](https://azure.microsoft.com/en-us/support/faq/)
+* [Azure 支持常见问题](https://azure.microsoft.com/support/faq/)
 
 > [!NOTE]
 > 在 Azure 预览功能才会生效*订阅*级别。 请勿在生产订阅上安装预览版功能。 生产订阅后，预览功能可以更改默认 API 行为，并且会影响正常操作。

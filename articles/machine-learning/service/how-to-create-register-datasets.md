@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 938f13524b22f34f4becc936885d1611cb854df1
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: d3502219f03d4ad076a693ab990f2fadb0b5d558
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510492"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800832"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>创建并注册 Azure 机器学习数据集 （预览）
 
@@ -33,6 +33,9 @@ Azure 机器学习数据集 （预览版） 使其更轻松地访问和使用你
 * Azure 机器学习服务工作区。 请参阅[创建 Azure 机器学习服务工作区](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)。
 
 * Azure 机器学习 Python SDK。 若要安装或更新到最新版本的 sdk，请参阅[安装或更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+
+> [!Note]
+> 某些数据集类 （预览版） 具有依赖项[azureml dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包 (GA）)。 对于 Linux 用户，这些类支持仅在以下分发版上：Red Hat Enterprise Linux、 Ubuntu、 Fedora 和 CentOS。
 
 ## <a name="create-datasets-from-local-files"></a>从本地文件创建数据集
 
@@ -87,7 +90,7 @@ dataset = Dataset.from_delimited_files(datapath)
 dataset.head(5)
 ```
 
-||ID|案例号|date|阻止|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
+||ID|案例号|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
 |--|--|---|---|---|---|----|------|-------|------|-----|---|----|----|-----|-----|------|----|-----|----|----|-----
 |0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|欺骗性的做法|通过 300 美元的财务身份盗窃|OTHER|FALSE|FALSE|...|9|50|11|1183356|1831503|2016|5/11/2016 15:48|41.69283384|-87.60431945|(41.692833841, -87.60431945)|
 第|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT| 从构建|未成年人|FALSE|FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)

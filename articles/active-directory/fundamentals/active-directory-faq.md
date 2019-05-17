@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29ab7b908184533885929040ca8eccf56cda92d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 06112361434a8217df6714a70d0059c175e98ac8
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464419"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521723"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -210,4 +210,4 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
-**答:** 不。 Azure AD 不支持轻型目录访问协议 (LDAP) 协议。 但是，就可以使用 Azure AD 域服务 (Azure AD DS) 与通过 Azure 网络的正确配置的网络安全组来实现 LDAP 连接。 有关详细信息，请参阅 https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap 。
+**答:** 不。 Azure AD 不支持的轻型目录访问协议 (ldap) 或安全 LDAP 直接。 但是，就可以启用 Azure AD 租户使用通过 Azure 网络以实现 LDAP 连接正确配置的网络安全组上的 Azure AD 域服务 (Azure AD DS) 实例。 有关详细信息，请参阅 https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap 。

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: b1c7d1fe561ebc11f88644a5bf2fd8bda1c9a6c6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4df8b854a94374346eec6f77d761e65a04ef78a2
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924997"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523981"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建主机池
 
@@ -58,12 +58,6 @@ ms.locfileid: "64924997"
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
-接下来，将上下文设置为使用此 cmdlet 的 Azure 资源管理器模板中指定的租户组：
-
-```powershell
-Set-RdsContext -TenantGroupName <Tenant Group name>
 ```
 
 之后，将用户添加到此 cmdlet 的桌面应用程序组：

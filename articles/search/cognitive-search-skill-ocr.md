@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9bc4167134bb70fa938ecd37d81482dc4e1508dd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6d9b68bda2a6cff533286d9ee944abf1c92cc2bf
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021792"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523244"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
@@ -36,9 +36,9 @@ OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 + .TIFF
 
 > [!NOTE]
-> 当您展开作用域提高频率的处理，添加更多文档，或添加更多的 AI 算法，你将需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
-> 执行的内置技能收费的现有[认知服务付款现转价格](https://azure.microsoft.com/pricing/details/cognitive-services/)。 介绍了图像提取定价[Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
 
 
 ## <a name="skill-parameters"></a>技能参数
@@ -50,6 +50,7 @@ OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 | detectOrientation | 启用图像方向自动检测。 <br/> 有效值：true / false。|
 |defaultLanguageCode | <p>  输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
 | textExtractionAlgorithm | “打印”或“手写”。 “手写”文本识别 OCR 算法当前处于预览状态，仅支持英语。 |
+|lineEnding | 要使用每个之间的值检测到行。 可能的值：空间，CarriageReturn，换行。  默认为空格 |
 
 ## <a name="skill-inputs"></a>技能输入
 

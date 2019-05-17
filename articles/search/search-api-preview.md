@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 05/02/2019
 ms.author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 91c58507d8758a65772110afba71354deecd3b12
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5374ff896613dd8f8563a2054be8a92103e63fbb
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024286"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523906"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Azure 搜索服务 REST api 版本 2019年-05-06-预览版
 本文介绍了 `api-version=2019-05-06-Preview` 版的 Azure 搜索服务 REST API，该版提供尚未正式发布的实验性功能。
@@ -37,6 +37,8 @@ ms.locfileid: "65024286"
 公共预览版中仍包含早期预览版中发布的功能。 如果你正在调用使用较早预览版 API 版本的 API，可以继续使用该版本或切换到 `2019-05-06-Preview`，而不会对预期行为作出任何更改。
 
 + [moreLikeThis 查询参数](search-more-like-this.md)查找与特定文档相关的文档。 早期预览版中已有此功能。 
+* [CSV blob 编制索引](search-howto-index-csv-blobs.md)创建一个文档，每行，而不是每个文本 blob 的一个文档。
+* [Cosmos DB 索引器的 MongoDB API 支持](search-howto-index-cosmosdb.md)处于预览状态。
 
 
 ## <a name="how-to-call-a-preview-api"></a>如何调用预览版 API

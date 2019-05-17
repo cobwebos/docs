@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 399e2585f541f28b3880e69b508cfd643b2f2263
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686297"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522333"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -86,7 +86,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 在虚拟网络中的专用子网内部署托管实例。 该子网必须具有以下特征：
 
-- **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加资源。
+- **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 子网不能包含任何资源，但该托管的实例和更高版本不能将其他类型的资源添加子网中。
 - **网络安全组 (NSG)**：与虚拟网络关联的 NSG 必须在其他任何规则的前面定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 可以使用 NSG 来控制对该托管的实例的数据终结点访问端口 1433年上筛选流量和端口 11000-11999 时托管的实例配置为将连接重定向。
 - **用户定义的路由 (UDR) 表：** 与虚拟网络关联的 UDR 表必须包含特定的[条目](#user-defined-routes)。
 - **没有服务终结点：** 不应将任何服务终结点与托管实例的子网相关联。 创建虚拟网络时，请务必禁用“服务终结点”选项。
@@ -97,7 +97,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| 名称       |端口                        |Protocol|源           |目标|操作|
+| 名称       |Port                        |Protocol|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |允许 |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允许 |
@@ -105,7 +105,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| 名称       |端口          |Protocol|源           |目标|操作|
+| 名称       |Port          |Protocol|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |允许 |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |

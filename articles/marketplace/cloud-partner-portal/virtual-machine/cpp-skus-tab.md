@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: e8148e3a26a236039736dede5a7fbc79075731ce
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e1a110abf8e057034043da34455bf678277c6cb4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938145"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799945"
 ---
 # <a name="virtual-machine-skus-tab"></a>虚拟机“SKU”选项卡
 
@@ -55,7 +55,7 @@ ms.locfileid: "64938145"
 | **操作系统系列\*** | 指示解决方案 VM 是基于 Windows 还是 Linux。 |
 | **选择操作系统类型** | 指定的 OS 的特定供应商或版本。 |
 | **操作系统的好记名称\*** | 向客户显示的操作系统名称。  |
-| **建议的 VM 大小\*** | 从标准化列表中最多选择六个建议的 VM 大小。  尽管向潜在客户突出显示了这些建议的选项，但他们可以指定任何与解决方案映像兼容的 VM 大小。 | 
+| **建议的 VM 大小\*** | 从标准化列表中最多选择六个建议的 VM 大小。  此列表传递到 Azure 门户和 Microsoft 应用商店。  潜在客户有效 （适用于该客户订阅、 区域、 区域等） 此列表中的第一个 VM 大小设置为默认值。  用户可以更改此大小，为解决方案映像与任何兼容。 | 
 | **打开端口**| 要打开的端口，以及用于支持 SKU 的协议。  这些配置必须与针对解决方案 VM 网络配置的虚拟网络相匹配。 在 VM 部署期间，这些设置将会生效。 但是，发布 SKU 后，可以修改端口设置。 有关详细信息，请参阅[如何使用 Azure 门户向虚拟机开放端口](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal)。 <br/>以下默认网络映射将添加到所有 VM。 &emsp; Windows:3389-> 3389 TCP、 5986-> 5986 TCP;&emsp; Linux:22-&GT; 22，TCP (SSH)。 |
 | **磁盘版本**  | 关联的解决方案 VM，按磁盘版本号和磁盘 URL 指定。 磁盘版本必须采用[语义版本](https://semver.org/)格式：`<major>.<minor>.<patch>`。  URL 是为操作系统 VHD 创建的共享访问签名 URI。  尽管最多可为每个 SKU 添加八个磁盘版本，但 Azure 市场中只会显示 SKU 的最高磁盘版本号。 其他版本只能通过 API 显示。  <!--TD: Add more specific link to API --> <br/> 在“新建数据磁盘”可折叠部分，最多可将 15 个数据磁盘附加到 VM。  使用给定的 VM 版本和关联的数据磁盘发布 SKU 后，无法修改此配置。  如果将其他 VM 版本添加到了 SKU，这些版本也必须支持相同数量的数据磁盘。 <br/> 如果尚未创建基于 Azure 的 VM 映像，则以后可以更新此字段。  有关创建关联 VM 资源的信息，请参阅[创建 VM 技术资产](./cpp-create-technical-assets.md)。  
 |  |  |

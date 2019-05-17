@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f35ea3e35277ee7f1afd8278a31f45ed20c6995
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61386438"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522120"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>如何在用于 VM 的 Azure Monitor（预览版）中禁用虚拟机监视
 
@@ -56,7 +56,7 @@ ms.locfileid: "61386438"
 5. 在解决方案列表中选择“InfrastructureInsights(工作区名称)”，然后在解决方案的“概述”页上，单击“删除”。  出现确认提示时，请单击“是”。  
 6. 在解决方案列表中选择“ServiceMap(工作区名称)”，然后在解决方案的“概述”页上，单击“删除”。  出现确认提示时，请单击“是”。  
 
-如果在载入用于 VM 的 Azure Monitor 之前，未为工作区中基于 Windows 或 Linux 的 VM [启用性能计数器收集](vminsights-onboard.md?toc=/azure/azure-monitor/toc.json#performance-counters-enabled)，则需要遵循[此处](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json#configuring-performance-counters)所述的适用于 Windows 和 Linux 的步骤，来禁用这些规则。
+如果在载入用于 VM 的 Azure Monitor 之前，未为工作区中基于 Windows 或 Linux 的 VM [启用性能计数器收集](vminsights-enable-overview.md#performance-counters-enabled)，则需要遵循[此处](../platform/data-sources-performance-counters.md#configuring-performance-counters)所述的适用于 Windows 和 Linux 的步骤，来禁用这些规则。
 
 ## <a name="disable-monitoring-for-an-azure-vm-and-retain-workspace"></a>禁用 Azure VM 的监视并保留工作区  
 

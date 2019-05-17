@@ -18,12 +18,12 @@ ms.date: 12/14/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f95fd85b5a0fd9e905b93b9b90f18f963dbf1690
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9da23b0c0b0b0c0bfc238b1504811a9c1c55a9ef
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60355645"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785381"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？ 
 
@@ -57,29 +57,23 @@ ms.locfileid: "60355645"
 
 * “用户和组”面向特定的用户集。 例如，将某个人力资源应用选作云应用时，可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。
 
-此外，你还可以从策略中排除特定的用户或组。 例如，在策略强制实施多重身份验证 (MFA) 的情况下，往往会排除服务帐户。 
+此外，你还可以从策略中排除特定的用户或组。 例如，在策略强制实施多重身份验证 (MFA) 的情况下，往往会排除服务帐户。
 
-若要部署新策略，面向特定的用户集十分有用。 在新策略中，应该只将初始用户集用作目标来验证策略行为。 
+若要部署新策略，面向特定的用户集十分有用。 在新策略中，应该只将初始用户集用作目标来验证策略行为。
 
+## <a name="cloud-apps-and-actions"></a>云应用程序和操作
 
+云应用是网站、 服务或终结点保护的 Azure AD 应用程序代理。 有关受支持云应用的详细说明，请参阅[云应用分配](technical-reference.md#cloud-apps-assignments)。 **云应用程序或操作**条件是条件性访问策略中必需的。 在策略中，您可以选中**所有云应用**，或者指定使用应用程序**选择应用**。
 
-## <a name="cloud-apps"></a>云应用 
+组织可以选择以下选项：
 
-云应用是网站或服务。 Azure AD 应用程序代理保护的网站也是云应用。 有关受支持云应用的详细说明，请参阅[云应用分配](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments)。 
+* **所有云应用**时应用基准策略要应用于整个组织。 将此选项用于所有云应用检测到登录风险时都要求多重身份验证的策略。 应用于所有云应用的策略适用于访问到所有网站和服务。 此设置不限于选择应用程序列表中显示的云应用。
+* “选择应用”，以便根据策略将特定服务指定为目标。 例如，可以要求用户具有兼容的设备访问 SharePoint Online。 当其他服务访问 SharePoint 内容时，也会对这些服务应用此策略。 例如 Microsoft Teams。
 
-**云应用**条件在条件访问策略中是必需的。 在策略中，可以选择**所有云应用**或选择特定的应用。
+> [!NOTE]
+> 可以从策略中排除特定的应用。 但是，这些应用仍受到应用于它们访问的服务的策略的限制。
 
-![包括云应用](./media/conditions/03.png)
-
-选择：
-
-- “所有云应用”可对要应用到整个组织的策略设置基准。 对于要求执行多重身份验证（由于检测到任何云应用存在登录风险）的策略，请使用此选项。 应用到“所有云应用”的策略将应用于对所有网站和服务的访问权限。 此设置并非仅限用于“选择应用”列表上显示的云应用。 
-
-- “选择应用”，以便根据策略将特定服务指定为目标。 例如，可以要求用户使用[合规的设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)访问 SharePoint Online。 当其他服务访问 SharePoint 内容时，也会对这些服务应用此策略。 例如 Microsoft Teams。 
-
-可以从策略中排除特定的应用。 但是，这些应用仍受到应用于它们访问的服务的策略的限制。 
-
-
+**用户操作**是用户可以执行的任务。 当前支持的唯一操作是**注册安全信息 （预览版）**，它允许用户注册其安全信息时，强制执行条件性访问策略。
 
 ## <a name="sign-in-risk"></a>登录风险
 

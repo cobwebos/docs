@@ -10,39 +10,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 420ba9d74532095c2d028fef8f549d532e5dfa05
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596602"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522211"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>用于 VM 的 Azure Monitor（预览版）常见问题解答
 本 Microsoft 常见问题解答列出了用于 VM 的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问[论坛](https://feedback.azure.com/forums/34192--general-feedback)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>是否可以载入到现有工作区？
-如果虚拟机已连接到 Log Analytics 工作区，则在载入到用于 VM 的 Azure Monitor 时，可以继续使用该工作区，前提是该工作区位于[此处](vminsights-onboard.md#prerequisites)所列的某个受支持区域中。
+如果虚拟机已连接到 Log Analytics 工作区，则在载入到用于 VM 的 Azure Monitor 时，可以继续使用该工作区，前提是该工作区位于[此处](vminsights-enable-overview.md#prerequisites)所列的某个受支持区域中。
 
 载入时，我们将配置该工作区的性能计数器，使得向该工作区报告数据的所有 VM 都会开始收集此信息，以便在用于 VM 的 Azure Monitor 中进行显示和分析。  因此，你会看到与所选工作区连接的所有 VM 发出的性能数据。  只会为指定载入的 VM 启用“运行状况”和“映射”功能。
 
-有关要启用哪些性能计数器的详细信息，请参阅[载入](vminsights-onboard.md)一文。
+有关启用对哪些性能计数器的详细信息，请参阅我们[启用概述](vminsights-enable-overview.md#performance-counters-enabled)一文。
 
 ## <a name="can-i-onboard-to-a-new-workspace"></a>是否可以载入到新工作区？ 
-如果 VM 当前未连接到现有的 Log Analytics 工作区，则你需要创建一个新工作区来存储数据。  如果通过 Azure 门户为用于 VM 的 Azure Monitor 配置了单个 Azure VM，则系统会自动创建新的默认工作区。
+如果 VM 当前未连接到现有的 Log Analytics 工作区，则你需要创建一个新工作区来存储数据。 如果通过 Azure 门户为用于 VM 的 Azure Monitor 配置了单个 Azure VM，则系统会自动创建新的默认工作区。
 
-如果选择使用基于脚本的方法，请参阅[载入](vminsights-onboard.md)一文中所述的步骤。 
+如果您选择使用基于脚本的方法，在介绍这些步骤[启用 Azure Monitor 的 Vm （预览版） 使用 Azure PowerShell 或 Resource Manager 模板](vminsights-enable-at-scale-powershell.md)一文。 
 
 ## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>如果 VM 已开始向现有工作区报告，我该怎么做？
 如果你已开始从虚拟机收集数据，则可能已将虚拟机配置为向现有的 Log Analytics 工作区报告数据。  只要该工作区在某个受支持区域中，就可以在该现有工作区中启用用于 VM 的 Azure Monitor。  如果使用的工作区不在受支持的区域中，则目前无法载入到用于 VM 的 Azure Monitor。  我们将力求支持更多的区域。
 
 >[!NOTE]
->对于影响到向工作区报告的 VM 的工作区，我们将配置性能计数器，不管你是否选择将这些 VM 载入到用于 VM 的 Azure Monitor。 有关如何为工作区配置性能计数器的详细信息，请参阅我们的[文档](../../azure-monitor/platform/data-sources-performance-counters.md)。 有关为用于 VM 的 Azure Monitor 配置的计数器的信息，请参阅[载入文档](vminsights-onboard.md#performance-counters-enabled)。  
+>对于影响到向工作区报告的 VM 的工作区，我们将配置性能计数器，不管你是否选择将这些 VM 载入到用于 VM 的 Azure Monitor。 有关如何为工作区配置性能计数器的详细信息，请参阅我们的[文档](../../azure-monitor/platform/data-sources-performance-counters.md)。 有关为虚拟机的 Azure Monitor 配置的计数器信息，请访问我们[为 Vm 启用 Azure Monitor](vminsights-enable-overview.md#performance-counters-enabled)一文。  
 
 ## <a name="why-did-my-vm-fail-to-onboard"></a>为何我的 VM 无法载入？
 从 Azure 门户载入 Azure VM 时，将执行以下步骤：
 
 * 创建默认的 Log Analytics 工作区（如果已选择该选项）。
-* 为选定的工作区配置性能计数器。 如果此步骤失败，你会发现，某些性能图表和表不会显示所载入 VM 的数据。 可以运行[此处](vminsights-onboard.md#enable-with-powershell)所述的 PowerShell 脚本来解决此问题。
+* 为选定的工作区配置性能计数器。 如果此步骤失败，你会发现，某些性能图表和表不会显示所载入 VM 的数据。 可以运行[此处](vminsights-enable-at-scale-powershell.md#enable-performance-counters)所述的 PowerShell 脚本来解决此问题。
 * 使用 VM 扩展在 Azure VM 上安装 Log Analytics 代理（如果确定有必要）。  
 * 使用某个扩展在 Azure VM 上安装用于 VM 的 Azure Monitor 映射依赖项代理（如果确定有必要）。  
 * 根据需要配置支持“运行状况”功能的 Azure Monitor 组件，并将 VM 配置为报告运行状况数据。
@@ -89,7 +89,7 @@ ms.locfileid: "60596602"
 为每个运行状况条件定义的警报规则不会在 Azure 门户中显示。 只能在[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 中启用或禁用运行状况警报规则。 此外，也无法在 Azure 门户中为运行状况警报分配 [Azure Monitor 操作组](../../azure-monitor/platform/action-groups.md)。 只能使用通知设置 API 来配置在任何时候触发运行状况警报时要触发的操作组。 目前，可以针对 VM 分配操作组，以便针对 VM 激发的所有运行状况警报都会触发相同的操作组。 如传统的 Azure 警报不同，每个运行状况警报规则没有单独的操作组概念。 此外，触发运行状况警报时，仅支持配置为提供电子邮件或短信通知的操作组。 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>我的 VM 性能图表中未显示某些数据，或未显示任何数据
-如果在磁盘表或某些性能图表中未看到性能数据，则原因可能是未在工作区中配置性能计数器。 若要解决此问题，请运行以下 [PowerShell 脚本](vminsights-onboard.md#enable-with-powershell)。
+如果在磁盘表或某些性能图表中未看到性能数据，则原因可能是未在工作区中配置性能计数器。 若要解决此问题，请运行以下 [PowerShell 脚本](vminsights-enable-at-scale-powershell.md#enable-with-powershell)。
 
 ## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>用于 VM 的 Azure Monitor 映射功能与服务映射有何不同？
 用于 VM 的 Azure Monitor 映射功能基于服务映射，但存在以下差异：
@@ -138,4 +138,4 @@ Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表�
 在这种情况下，在你打开 VM 并从左侧窗格中选择“见解(预览版)”时，甚至在 VM 上安装它后，都将通过“立即尝试”选项向你发出提示。  但是，如果此 VM 未加入到用于 VM 的 Azure Monitor，则不会像通常情况下那样通过选项向你发出提示。 
 
 ## <a name="next-steps"></a>后续步骤
-查看[载入用于 VM 的 Azure Monitor](vminsights-onboard.md)，以了解启用虚拟机监视的要求和方法。
+审阅[启用 Vm 的 Azure Monitor](vminsights-enable-overview.md)了解要求和方法，以启用监视的虚拟机。

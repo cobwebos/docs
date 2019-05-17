@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 595d1b84aab55a77f21a9840c5bae9ee996424be
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e999e4d96dcb5a1042806c0905ce331dc0a4dc0b
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415944"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522855"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -42,7 +42,7 @@ ms.locfileid: "65415944"
 
 - **故障转移组 （模糊）**
 
-  故障转移组是由一个 SQL 数据库服务器管理或位于一个托管实例中的一组数据库，当主要区域的服务中断导致所有或部分主要数据库不可用时，这组数据库可作为单元故障转移到另一区域。 时创建的托管实例，一个故障转移组中包含的实例中的所有用户数据库，并因此在实例上配置一个故障转移组。
+  故障转移组是由一个 SQL 数据库服务器管理或位于一个托管实例中的一组数据库，当主要区域的服务中断导致所有或部分主要数据库不可用时，这组数据库可作为单元故障转移到另一区域。 故障转移组时创建的托管实例，包含的实例中的所有用户数据库，并因此可以在实例上配置一个故障转移组。
 
 - **SQL 数据库服务器**
 

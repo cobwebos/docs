@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 05/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6eb7de7810ce23aed4031cca9f038da7149a6f9c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e95adbd1a564fb34d3f0506ac1cc25bc5a63c62
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153091"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790059"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 azure 存储加密
 
@@ -51,6 +51,9 @@ Azure 存储加密的所有新的和现有存储帐户启用，并且不能禁�
 - [配置为从 Azure 门户的 Azure 存储加密的客户托管密钥](storage-encryption-keys-portal.md)
 - [配置为从 PowerShell 的 Azure 存储加密的客户托管密钥](storage-encryption-keys-powershell.md)
 - [使用 Azure CLI 从 Azure 存储加密使用客户托管的密钥](storage-encryption-keys-cli.md)
+
+> [!IMPORTANT]
+> 客户托管密钥依赖于 Azure 资源的管理的标识 Azure Active Directory (Azure AD) 的一项功能。 传输时订阅从一个 Azure AD 目录与另一个托管的标识不会进行更新和客户托管密钥可能不再起作用。 有关详细信息，请参阅**转让订阅 Azure AD 目录之间**中[常见问题解答和已知的问题的管理 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。  
 
 > [!NOTE]  
 > 不支持客户托管密钥[Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。

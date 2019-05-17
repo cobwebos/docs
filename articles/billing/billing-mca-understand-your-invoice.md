@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aee51793c66ae57f740300797b8fdc1799e685cd
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371376"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604037"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>了解有关 Microsoft 客户协议发票的术语
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d323a93773a8459d097c1fe3502d2ccd88ae9695
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9ad4a1a9fff8e011638eb7c532bf7619c87c1996
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687910"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785187"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用自定义策略在 Azure Active Directory B2C 中设置 Azure Active Directory 帐户登录 
 
@@ -55,7 +55,7 @@ ms.locfileid: "64687910"
 
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
 2. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-3. 在“概述”页上，选择“标识体验框架 - 预览”。
+3. 在“概述”页上选择“标识体验框架”。
 4. 选择“策略密钥”，然后选择“添加”。
 5. 对于“选项”，请选择 `Manual`。
 6. 输入策略密钥的**名称**。 例如，`ContosoAppSecret`。  前缀 `B2C_1A_` 会自动添加到密钥名称。

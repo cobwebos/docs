@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8308190e0e68365343fb50ca33f9bea75c3e4e66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3865bb10346c4a55adbf94a7df225eacf2c11252
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61098357"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519135"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>以增量方式将通过复制数据工具基于 LastModifiedDate 的新功能和更改文件的复制
 
 在本教程中，您将使用 Azure 门户创建数据工厂。 然后，将使用复制数据工具创建管道，用于以增量方式将新的和已更改文件，复制基于其**LastModifiedDate**从 Azure Blob 存储到 Azure Blob 存储。
+
+通过此操作，ADF 将扫描的源存储中的所有文件、 应用文件筛选器通过其 LastModifiedDate，并将新的和更新文件上次之后仅复制到目标存储。  请注意，是否让 ADF 扫描数量庞大的文件，但仅将一些文件复制到目标，你仍然希望由于文件扫描而引起的长持续时间也较长时间。   
 
 > [!NOTE]
 > 如果对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。

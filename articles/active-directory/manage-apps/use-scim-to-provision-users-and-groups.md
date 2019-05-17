@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba0a9bc0886b9487b0c61b6091bd122fe6e370d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 04dde608f5885cdafe18b49a388de8dbb596cbfe
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191546"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539360"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -460,7 +460,6 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
     "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
-    "id": "c4d56c3c-bf3b-4e96-9b64-837018d6060e",
     "displayName": "displayName",
     "members": [],
     "meta": {

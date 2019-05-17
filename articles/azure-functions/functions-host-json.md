@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ddd3b0889eedd55f809dbb57b2ef41a2ae3f9c94
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737174"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521395"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
@@ -35,7 +35,6 @@ ms.locfileid: "60737174"
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
 以下示例 *host.json* 文件指定了所有可能的选项。
-
 
 ```json
 {
@@ -82,7 +81,10 @@ ms.locfileid: "60737174"
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 
@@ -194,6 +196,9 @@ ms.locfileid: "60737174"
       "Function.MyFunction": "Information",
       "default": "None"
     },
+    "console": {
+        ...
+    },
     "applicationInsights": {
         ...
     }
@@ -263,7 +268,7 @@ ms.locfileid: "60737174"
 |lockAcquisitionTimeout|00:01:00|运行时尝试获取锁的最长时间。| 
 |lockAcquisitionPollingInterval|不适用|尝试获取锁的间隔时间。| 
 
-## <a name="version"></a>版本
+## <a name="version"></a>version
 
 对于面向 v2 运行时的函数应用，版本字符串 `"version": "2.0"` 是必需的。
 
@@ -274,6 +279,18 @@ ms.locfileid: "60737174"
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="manageddependency"></a>managedDependency
+
+托管依赖项是一项预览功能当前仅支持使用基于 PowerShell 函数。 这样，依赖关系，以将自动由服务管理。 如果已启用的属性设置为 true， [requirements.psd1](functions-reference-powershell.md#dependency-management)文件将处理。 任何次要版本发布时，将更新依赖项。
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 9f52d1b949310792ffedc6e4723fbfb423fb5dfc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 88e843c410a750387ecf58497dec79586e2a59d8
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928492"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523331"
 ---
-# <a name="tenant-and-host-pool-creation"></a>租户和主机创建池
+# <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
 本文介绍如何在 Windows 虚拟桌面租户和相关的会话主机池基础结构的初始设置过程的问题。
 
@@ -300,7 +300,6 @@ The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d2
 
 ```PowerShell
 Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
-Set-RdsContext -Name <Windows Virtual Desktop tenant group name>
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName “RDS Contributor” -SignInName <UPN>
 ```
 

@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7c462971f7ac02e35ab8df5b651da7d0a3f39e1f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e6a7d4bb7452ff8f6b3c2536a5aa100a15a6ec78
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65022264"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539258"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>命名实体识别认知技能
 
 命名实体识别技能可以从文本中提取命名实体。 可用实体包括 `person`、`location` 和 `organization` 类型。
 
 > [!IMPORTANT]
-> 替换为命名的实体识别技能现已终止[Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 在 2019 年 2 月 15 日停止支持和 API 已从产品在删除，2019 年 5 月 2 日。 按照[已弃用的认知搜索技能](cognitive-search-skill-deprecated.md)中的建议，迁移到支持的技能。
+> 替换为命名的实体识别技能现已终止[Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 在 2019 年 2 月 15 日停止支持和 API 已从产品在删除，2019 年 5 月 2 日。 请按照中的建议[不推荐使用认知搜索技能](cognitive-search-skill-deprecated.md)迁移到受支持的一项技能。
 
 > [!NOTE]
-> 当您展开作用域提高频率的处理，添加更多文档，或添加更多的 AI 算法，你将需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
-> 执行的内置技能收费的现有[认知服务付款现转价格](https://azure.microsoft.com/pricing/details/cognitive-services/)。 介绍了图像提取定价[Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
 
 
 ## <a name="odatatype"></a>@odata.type  

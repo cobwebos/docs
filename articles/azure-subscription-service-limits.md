@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: cb0203e3413ab525d6885f23c5936c64e1bef189
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: c8f1eaba726efe72e2b6845beaf1465d047c90d2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233701"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787577"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间推移，将扩展和更新，包含更多服务列表。
@@ -55,6 +55,7 @@ ms.locfileid: "65233701"
 * [Azure DNS](#azure-dns-limits)
 * [Azure 防火墙](#azure-firewall-limits)
 * [Azure Kubernetes 服务](#azure-kubernetes-service-limits)
+* [Azure 机器学习服务](#azure-machine-learning-service-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
@@ -77,15 +78,22 @@ ms.locfileid: "65233701"
 * [IoT 中心](#iot-hub-limits)
 * [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
-* [负载均衡器](#load-balancer)
 * [Log Analytics](#log-analytics-limits)
 * [媒体服务](#media-services-limits)
 * [移动服务](#mobile-services-limits)
 * [多重身份验证](#multi-factor-authentication-limits)
 * [网络](#networking-limits)
-* [网络观察程序](#network-watcher-limits)
+  * [应用程序网关](#application-gateway-limits)
+  * [Azure DNS](#azure-dns-limits)
+  * [Azure 的第一道防线服务](#azure-front-door-service-limits)
+  * [Azure 防火墙](#azure-firewall-limits)
+  * [ExpressRoute](#expressroute-limits)
+  * [负载均衡器](#load-balancer)
+  * [公共 IP 地址](#publicip-address)
+  * [网络观察程序](#network-watcher-limits)
+  * [流量管理器](#traffic-manager-limits)
+  * [虚拟网络](#networking-limits)
 * [通知中心](#notification-hubs-limits)
-* [公共 IP 地址](#publicip-address)
 * [资源组](#resource-group-limits)
 * [基于角色的访问控制](#role-based-access-control-limits)
 * [计划程序](#scheduler-limits)
@@ -97,7 +105,6 @@ ms.locfileid: "65233701"
 * [StorSimple 系统](#storsimple-system-limits)
 * [流分析](#stream-analytics-limits)
 * [订阅](#subscription-limits)
-* [流量管理器](#traffic-manager-limits)
 * [虚拟机](#virtual-machines-limits)
 * [虚拟机规模集](#virtual-machine-scale-sets-limits)
 
@@ -144,6 +151,11 @@ ms.locfileid: "65233701"
 
 ### <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes 服务限制
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
+
+### <a name="azure-machine-learning-service-limits"></a>Azure 机器学习服务限制
+可在 Azure 机器学习计算配额的最新值[Azure 机器学习配额页](../articles/machine-learning/service/how-to-manage-quotas.md)
+
+[!INCLUDE [how-to-manage-quotas](../articles/machine-learning/service/how-to-manage-quotas.md)]
 
 ### <a name="networking-limits"></a>网络限制
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]

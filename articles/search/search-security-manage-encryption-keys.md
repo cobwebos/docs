@@ -1,5 +1,5 @@
 ---
-title: 静态加密 Azure 密钥保管库-Azure 搜索中使用客户托管密钥
+title: 静态加密 Azure Key Vault （预览版）-Azure 搜索中使用客户托管密钥
 description: 对索引和 Azure 搜索中通过创建和管理 Azure 密钥保管库中的键的同义词映射的补充程序服务器端加密。
 author: NatiNimni
 manager: jlembicz
@@ -9,14 +9,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 987b56a9571fd50f605dbe6fb4112ef857021530
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 9d2cd2a2f4b3143d58d0ef03d67de094ea03303e
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029170"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523092"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>使用 Azure Key Vault 中客户托管密钥的 azure 搜索加密
+
+> [!Note]
+> 使用客户托管密钥的加密处于预览状态，不用于生产环境中使用。 [REST API 版本 2019年-05-06-预览](search-api-preview.md)提供此功能。 此外可以使用.NET SDK 版本 8.0-preview。
+>
+> 此功能不可用的免费服务。 必须使用或 2019年-01-01 之后创建的可计费搜索服务。 没有目前门户支持。
 
 默认情况下，Azure 搜索用户对内容进行加密与静态[服务托管密钥](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models)。 可以使用密钥的创建和管理 Azure 密钥保管库中的其他加密层补充默认的加密。 本文将指导您完成的步骤。
 
@@ -26,20 +31,17 @@ ms.locfileid: "65029170"
 
 可以使用不同的密钥保管库中的不同密钥。 这意味着单个搜索服务可以托管多个加密的 indexes\synonym 映射，每个可能使用不同客户托管密钥，与使用客户托管密钥未加密的 indexes\synonym 映射一起加密。 
 
->[!Note]
-> **功能可用性**:使用客户托管密钥的加密是一个预览功能，不适用于免费服务。 对于付费服务，它功能仅适用于搜索服务创建当天或之后 2019年-01-01，使用最新预览版 api-version (api 版本 = 2019年-05-06-预览)。 目前没有任何门户支持此功能。
-
 ## <a name="prerequisites"></a>必备组件
 
 在此示例中使用了以下服务。 
 
-[创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
++ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
 
-[创建 Azure 密钥保管库资源](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)或查找你的订阅下现有的保管库。
++ [创建 Azure 密钥保管库资源](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)或查找你的订阅下现有的保管库。
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)或[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)用于配置任务。
++ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)或[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)用于配置任务。
 
-[Postman](search-fiddler.md)， [Azure PowerShell](search-create-index-rest-api.md)并[Azure 搜索 SDK](https://aka.ms/search-sdk-preview)可用于调用的预览版 REST API。 没有门户或.NET SDK 支持这一次在客户托管的加密。
++ [Postman](search-fiddler.md)， [Azure PowerShell](search-create-index-rest-api.md)并[Azure 搜索 SDK](https://aka.ms/search-sdk-preview)可用于调用的预览版 REST API。 没有门户或.NET SDK 支持这一次在客户托管的加密。
 
 ## <a name="1---enable-key-recovery"></a>1-启用密钥恢复
 
