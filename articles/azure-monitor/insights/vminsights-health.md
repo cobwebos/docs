@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2019
 ms.author: magoedte
-ms.openlocfilehash: f2a0d64da5a88e82c0ae1fd893af52f2070268f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45c9a8da8344aa6aaaa19b534451a7276e96911a
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402059"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522191"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>了解 Azure 虚拟机的运行状况
 
@@ -28,7 +28,7 @@ Azure 包括多个单独执行特定角色或任务在监视空间，但还未�
 
 本文将帮助你了解如何快速评估、调查和解决检测到的运行状况问题。
 
-有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](vminsights-onboard.md)。
+有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](vminsights-enable-overview.md)。
 
 ## <a name="monitoring-configuration-details"></a>监视配置详细信息
 
@@ -255,7 +255,7 @@ Azure 包括多个单独执行特定角色或任务在监视空间，但还未�
 |资源组 |选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 | 
 |资源类型 |选择一个或多个资源类型。 默认情况下，仅选择目标虚拟机的警报并将其列在此视图中。 仅在指定资源组后，才显示此列。 | 
 |资源 |选择资源。 只有包含该资源（作为目标）的警报才会包含在视图中。 仅在指定资源类型后，才显示此列。 | 
-|严重性 |选择警报严重性，或选择“所有”以包含所有严重性的警报。 | 
+|Severity |选择警报严重性，或选择“所有”以包含所有严重性的警报。 | 
 |监视条件 |选择一个监视条件可以筛选系统激发的警报；如果该条件不再有效，则可以筛选系统已解决的警报。 选择“所有”会包含所有条件的警报。 | 
 |警报状态 |选择一种警报状态（“新”、“确认”、“已关闭”），或选择“所有”以包括所有状态的警报。 | 
 |监视服务 |选择一个服务，或选择“所有”以包含所有服务。 此功能仅支持来自 VM 见解的警报。| 

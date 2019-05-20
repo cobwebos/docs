@@ -9,14 +9,32 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 2b0d8b8a86c3105b1bda7fb0d72cbcb72ed82995
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60816385"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787955"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
+
+## <a name="may-2-2019-and-may-10-2019"></a>2019 年 5 月 2 日和 2019 年 5 月 10 日，
+
+- Bug 修复和后端方面的改进
+
+## <a name="may-23-2019"></a>2019 年 5 月 23 日，
+
+- 改进了的门户体验的用户体验与 Azure 订阅，使其更轻松地选择你的 Azure 目录。
+
+## <a name="april-18-2019"></a>2019 年 4 月 18日日 
+
+- 添加了的视觉 AI 开发人员工具包的对象检测导出。
+- 包括项目搜索的用户界面调整。
+
+## <a name="april-3-2019"></a>2019 年 4 月 3日日
+
+- 增加每个到 200 个图像的边界框的数量限制。 
+- Bug 修复，包括显著的性能更新模型导出到 TensorFlow。 
 
 ## <a name="march-26-2019"></a>2019 年 3 月 26 日
 
@@ -24,7 +42,7 @@ ms.locfileid: "60816385"
 - 添加了新的机器学习为改进性能，尤其是在具有挑战性的数据集和精细分类上的后端的高级培训功能。 高级培训，可以指定培训和自定义视觉的计算时间预算呈下降趋式确定最佳的培训和扩充设置。 对于快速迭代，你可以继续使用现有快速的定型。
 - 引入了 3.0 Api。 宣布即将弃用的 pre 3.0 Api 于 2019 年 10 月 1 日。 请参阅的文档快速入门教程[.Net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)， [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)，[节点](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)， [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)，或[转](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial)有关示例有关如何开始。
 - 替换为"默认迭代"使用发布/取消发布在 3.0 中的 Api。
-- 已添加新模型导出目标。 Dockerfile 导出已升级以支持 ARM 的 Raspberry Pi 3。 导出支持添加到[愿景 AI 开发人员工具包。](https://visionaidevkit.com/)。
+- 已添加新模型导出目标。 Dockerfile 导出已升级以支持 ARM 的 Raspberry Pi 3。 导出支持添加到[愿景 AI 开发人员工具包](https://visionaidevkit.com/)。
 - 标记的每个项目为 500 的 S0 级别的增加的限制。 映像的每个项目为 100,000 的 S0 级别的增加的限制。
 - 已删除的成人域。 常规域建议改为。
 - 宣布推出[定价](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)公开上市。  
@@ -45,7 +63,7 @@ ms.locfileid: "60816385"
 - 更新了对象检测域的基础模型以获得更好质量的对象检测。
 - Bug 修复。
 
-## <a name="november-6-2018"></a>2018 年 11 月 6日
+## <a name="november-6-2018"></a>2018 年 11 月 6 日
 
 - 添加了对对象检测中的徽标域的支持。
 

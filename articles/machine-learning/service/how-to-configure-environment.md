@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 02/24/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d588374c0195e7da373766f93f6829ac2160269
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 7be6c9eda6d0a70d929efe4c00f661eb67105820
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471596"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606427"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -26,7 +26,7 @@ ms.locfileid: "65471596"
 
 本文重点介绍以下环境和工具：
 
-* 您自己[基于云的 notebook 服务器](#notebookvm):使用你的工作站中的计算资源运行的 Jupyter 笔记本。 这是最简单的入门方法，因为已安装 Azure 机器学习 SDK。
+* 您自己[基于云的笔记本 VM](#notebookvm):使用你的工作站中的计算资源运行的 Jupyter 笔记本。 这是最简单的入门方法，因为已安装 Azure 机器学习 SDK。
 
 * [Data Science Virtual Machine (DSVM)](#dsvm)：Azure 云中的预配置开发或试验环境，用于开展数据科学工作，可以部署到仅限 CPU 的 VM 实例或基于 GPU 的实例。 已安装 Python 3、Conda、Jupyter Notebook 和 Azure 机器学习 SDK。 VM 配备了用于开发机器学习解决方案的常用机器学习和深度学习框架、工具与编辑器。 对于 Azure 平台上的机器学习，它可能是最完整的开发环境。
 
@@ -42,9 +42,7 @@ ms.locfileid: "65471596"
 
 ## <a name="prerequisites"></a>必备组件
 
-- Azure 机器学习服务工作区。 若要创建工作区，请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
-
-工作区是您需要开始使用你自己[基于云的 notebook 服务器](#notebookvm)即[DSVM](#dsvm)， [Azure Databricks](#aml-databricks)，或[Azure Notebooks](#aznotebooks).
+Azure 机器学习服务工作区。 若要创建工作区，请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。 工作区是您需要开始使用你自己[基于云的 notebook 服务器](#notebookvm)即[DSVM](#dsvm)， [Azure Databricks](#aml-databricks)，或[Azure Notebooks](#aznotebooks).
 
 若要安装的 SDK 环境你[本地计算机](#local)， [Jupyter Notebook 服务器](#jupyter)或[Visual Studio Code](#vscode)还需要：
 
@@ -57,16 +55,30 @@ ms.locfileid: "65471596"
 
 - 在 Windows 上，需要命令提示符或 Anaconda 提示符（由 Anaconda 和 Miniconda 安装）。
 
-## <a id="notebookvm"></a>基于云的笔记本服务器
+## <a id="notebookvm"></a>你自己的基于云的 notebook VM
 
-若要开始使用 Azure 机器学习开发的最简单方式在 Azure 机器学习工作区中创建的笔记本服务器。
+Notebook 虚拟机 （预览版） 是安全的基于云的 Azure 为数据科学家提供了 Jupyter notebook 服务器、 JupyterLab 和充分准备的机器学习环境的工作站。 
 
-* 已安装 Azure 机器学习 SDK。
-* Notebook VM 环境自动配置为使用你的工作区。
-* 该资源在你的工作区中创建，并可以那里管理
+Notebook 都是 VM: 
 
-若要开始开发基于云的 notebook 服务器，请参阅[快速入门：使用基于云的 notebook 服务器来开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md)。
++ **安全**。 由于默认情况下使用 HTTPS 和 Azure Active Directory 保护 VM 和笔记本的访问，IT 专业人员可以轻松地强制实现单一登录和其他安全功能，例如多重身份验证。
 
++ **预配置**。 此完全准备好的 Python 机器学习环境从受欢迎的 IaaS 数据科学 VM 绘制其传统业务，包括：
+  + （最新版本） azure 机器学习 Python SDK
+  + 自动配置，以使用你的工作区
+  + Jupyter 笔记本服务器
+  + JupyterLab notebook IDE
+  + 预配置的 GPU 驱动程序 
+  + 所选的深度学习框架
+ 
+
+  如果到代码中，VM 将包括教程和示例，帮助您探索和了解如何使用 Azure 机器学习服务。 示例 notebook 存储在你的工作区使它们可共享跨 Vm 的 Azure Blob 存储帐户。 当运行时，它们还具有访问权限的数据存储和计算资源的工作区。 
+
++ **简单安装**:创建一个随时从 Azure 机器学习工作区中。 提供的名称并指定 Azure VM 类型。 与此立即试用[快速入门：使用基于云的 notebook 服务器来开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md)。
+
++ **可自定义**。 产品/服务的托管和安全 VM，同时保留对硬件功能的完全访问权限并进行自定义你心中所想的愿望。 例如，快速创建最新版本 NVidia V100 提供支持的 VM 执行新颖的神经网络体系结构的分步调试。
+
+若要停止产生 notebook VM 费用[停止 notebook VM](quickstart-run-cloud-notebook.md#stop-the-notebook-vm)。 
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -283,12 +295,12 @@ Azure Databricks 的工作原理与 Azure 机器学习服务：
 
 使用以下设置：
 
-| 设置 |应用于| 值 |
+| 设置 |适用对象| 值 |
 |----|---|---|
 | 群集名称 |始终| yourclustername |
 | Databricks 运行时 |始终| 任何非机器学习运行时（非机器学习 4.x、5.x） |
 | Python 版本 |始终| 3 |
-| 辅助程序 |始终| 2 个或以上 |
+| 工作节点 |始终| 2 个或以上 |
 | 工作节点 VM 类型 <br>（确定并发迭代的数上限） |自动化机器学习<br>仅| 首选内存优化的 VM |
 | 启用自动缩放 |自动化机器学习<br>仅| 取消选中 |
 
@@ -368,7 +380,7 @@ SDK databricks **WITH**自动执行机器学习![SDK 自动安装在 Databricks 
 
 * **按照中的步骤[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)**:将在 Azure Notebooks 库中创建一个 *config.json* 文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
 
-* **下载文件**:在Azure 门户中，选择工作区的“概览”部分中的“下载 config.json”[](https://ms.portal.azure.com)。
+* **下载文件**:在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”部分中的“下载 config.json”。
 
      ![Azure 门户](./media/how-to-configure-environment/configure.png)
 
@@ -397,4 +409,3 @@ SDK databricks **WITH**自动执行机器学习![SDK 自动安装在 Databricks 
 - 在 Azure 机器学习中使用 MNIST 数据集[训练模型](tutorial-train-models-with-aml.md)
 - 查看[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 参考文档
 - 了解有关[Azure 机器学习数据准备包](https://aka.ms/data-prep-sdk)
-- 

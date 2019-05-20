@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4a4677b5db730001df75d201d8e6d3149cb928e6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 0418d325f3b3719549181a48fc0432a677f695d5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409849"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795907"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了一系列操作的最佳做法来保护你的数据、 应用程序和 Azure 中的其他资产。
@@ -153,7 +153,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 **详细信息**：[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) 是实现多阶段部署和管理发布过程自动化的解决方案。 创建托管的持续部署管道，快速、轻松地频繁发布。 通过 Azure Pipelines，可以使发布过程自动化，还可以拥有预定义的批准工作流。 根据需要进行本地部署和部署到云、扩展和自定义。
 
 **最佳做法**：在推出应用或将更新部署到生产环境之前，先检查该应用的性能。  
-**详细信息**：运行基于云的[负载测试](https://docs.microsoft.com/azure/devops/test/load-test/overview.md?view=azure-devops#alternatives)到：
+**详细信息**：运行基于云的[负载测试](/azure/devops/test/load-test/overview#alternatives)到：
 
 - 在应用中查找性能问题。
 - 提高部署质量。
@@ -217,7 +217,7 @@ Azure 具有两个 DDoS [服务产品](../virtual-network/ddos-protection-overvi
 **详细信息**：文档映射组织的文档中或位于 Azure 策略本身通过在 Azure 中添加对组织的策略的引用[策略说明](../governance/policy/concepts/definition-structure.md#display-name-and-description)或 Azure 策略[计划](../governance/policy/concepts/definition-structure.md#initiatives)说明。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>监视 Azure AD 的风险报告
-大多数安全违规出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 发现标识是否遭到入侵并不容易。 Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 检测到的每个可疑操作都存储在称为“风险事件”[](../active-directory/reports-monitoring/concept-risk-events.md)的记录中。 风险事件记录在 Azure AD 安全报告。 详细信息，请阅读有关[用户风险安全报告](../active-directory/reports-monitoring/concept-user-at-risk.md)并[风险登录安全报告](../active-directory/reports-monitoring/concept-risky-sign-ins.md)。
+大多数安全违规出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 发现标识是否遭到入侵并不容易。 Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 检测到的每个可疑操作都存储在称为[风险事件](../active-directory/reports-monitoring/concept-risk-events.md)的记录中。 风险事件记录在 Azure AD 安全报告。 详细信息，请阅读有关[用户风险安全报告](../active-directory/reports-monitoring/concept-user-at-risk.md)并[风险登录安全报告](../active-directory/reports-monitoring/concept-risky-sign-ins.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)。

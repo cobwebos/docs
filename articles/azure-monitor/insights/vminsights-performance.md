@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2019
+ms.date: 05/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 4fa2553622d5ef2d08ec148b6a70aab6de257407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c83a862a37dbf28c6933877bf4a0aecc4364e6c5
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61385872"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522088"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>如何使用用于 VM 的 Azure Monitor（预览版）绘制性能图表
 用于 VM 的 Azure Monitor 包含一组针对几项关键性能指标 (KPI) 的性能图表，帮助你确定虚拟机的性能状况。 这些图表显示一段时间内的资源利用率，可让你识别瓶颈和异常，或切换到列出每个计算机的透视图，以根据所选指标查看资源利用率。 虽然有大量元素时处理性能，请注意，与处理器、 内存、 网络适配器和磁盘利用率相关的 Vm 监视关键的操作系统性能指标的 Azure 监视器。 “性能”对运行状况监视功能做了补充，可帮助揭示可能指示系统组件发生了故障的问题，支持调整和优化以提高效率，或支持容量规划。  
@@ -105,6 +105,21 @@ ms.locfileid: "61385872"
 在任何一种图表 pin 的右上角的图钉图标上单击所选的图表到最后一个 Azure 仪表板查看。 从仪表板中，可以调整大小和重新定位图表。 在仪表板中选择该图表可以重定向到 Azure Monitor 的 Vm，并加载 VM 性能详细信息视图。  
 
 ![直接从 VM 查看 VM insights 性能](./media/vminsights-performance/vminsights-performance-directvm-01.png)
+
+## <a name="view-performance-directly-from-an-azure-virtual-machine-scale-set"></a>直接从 Azure 虚拟机规模集的视图性能
+若要访问直接从 Azure 虚拟机规模集，请执行以下步骤。
+
+1. 在 Azure 门户中，选择**虚拟机规模集**。
+2. 从列表中，选择 VM 并在**监视**部分中选择**Insights （预览版）** 若要查看**性能**选项卡。
+
+此页将加载 Azure Monitor 性能视图中，作用域为所选的规模集。 这使您可以查看规模集中前 N 个实例间的一套所监视的指标、 查看整个规模集的聚合性能和查看所选度量值的趋势中的单个实例 n 规模设置。 从列表视图中选择实例可加载的映射或导航到该实例的详细的性能视图。
+
+在任何一种图表 pin 的右上角的图钉图标上单击所选的图表到最后一个 Azure 仪表板查看。 从仪表板中，可以调整大小和重新定位图表。 在仪表板中选择该图表可以重定向到 Azure Monitor 的 Vm，并加载 VM 性能详细信息视图。  
+
+![VM insights 性能直接从虚拟机规模集视图](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
+
+>[!NOTE]
+>为规模集，还可以从实例视图访问的特定实例的详细的性能视图。 导航到**实例**下**设置**部分中，，然后选择**Insights （预览版）**。
 
 ## <a name="alerts"></a>警报  
 VM 的 Azure Monitor 中启用的性能指标不包含预配置的预警规则。 有[运行状况警报](vminsights-health.md#alerts)对应于在 Azure VM 上检测到的性能问题，如高 CPU 利用率，低内存可用性、 低磁盘空间等。但是，这些运行状况警报仅适用于为 Azure Monitor 启用适用于 Vm 的所有 Vm。 

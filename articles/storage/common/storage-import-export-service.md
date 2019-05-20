@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 5bb68f3f0139a98f10e28957209f8530a762b76c
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413910"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603112"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
@@ -74,9 +74,9 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 8. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
 
 > [!NOTE]
-> 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户 
+> 为本地 （在数据中心国家/地区） 交付件，请共享国内承运人帐户 
 >
-> （外部数据中心所在国家/地区） 在国外发货，请共享国际承运人帐户
+> （外部数据中心国家/地区） 在国外发货，请共享国际承运人帐户
 
  ![图 1：导入作业流](./media/storage-import-export-service/importjob.png)
 
@@ -104,9 +104,9 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 10. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
 
 > [!NOTE]
-> 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户 
+> 为本地 （在数据中心国家/地区） 交付件，请共享国内承运人帐户 
 >
-> （外部数据中心所在国家/地区） 在国外发货，请共享国际承运人帐户
+> （外部数据中心国家/地区） 在国外发货，请共享国际承运人帐户
   
  ![图 2：导出作业流](./media/storage-import-export-service/exportjob.png)
 
@@ -160,7 +160,7 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 
 **事务成本**
 
-[标准存储事务费用](https://azure.microsoft.com/pricing/details/storage/)在导入，以及将数据导出过程中应用。 从 Azure 存储导出数据时，都还存储事务费用以及适用标准的传出费用。 数据传出费用的详细信息，请参阅[数据传输定价。](https://azure.microsoft.com/pricing/details/data-transfers/)。
+[标准存储事务费用](https://azure.microsoft.com/pricing/details/storage/)在导入，以及将数据导出过程中应用。 从 Azure 存储导出数据时，都还存储事务费用以及适用标准的传出费用。 数据传出费用的详细信息，请参阅[数据传输定价](https://azure.microsoft.com/pricing/details/data-transfers/)。
 
 
 
