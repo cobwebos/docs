@@ -63,8 +63,9 @@
     - name: 缩放
       href: concepts-scale.md
     - name: 最佳做法
-      href: best-practices.md
       items:
+        - name: 概述
+          href: best-practices.md
         - name: 适用于群集操作员
           items:
             - name: 多租户和群集隔离
@@ -115,9 +116,9 @@
           maintainContext: true
         - name: 创建虚拟节点
           items:
-            - name: Azure CLI
+            - name: 使用 Azure CLI
               href: virtual-nodes-cli.md
-            - name: Azure 门户
+            - name: 使用 Azure 门户
               href: virtual-nodes-portal.md
         - name: 使用虚拟 Kubelet
           href: virtual-kubelet.md
@@ -165,9 +166,10 @@
             - name: 将 TLS 与自己的证书配合使用
               href: ingress-own-tls.md
             - name: 将 TLS 与Let's Encrypt 配合使用
-              href: ingress-tls.md
               items:
-                - name: 使用静态公共 IP
+                - name: 使用动态公共 IP 地址
+                  href: ingress-tls.md
+                - name: 使用静态公共 IP 地址
                   href: ingress-static-ip.md
         - name: 出口流量
           href: egress.md
@@ -212,6 +214,20 @@
         - name: 查看实时容器日志（预览版）
           href: ../azure-monitor/insights/container-insights-live-logs.md
           maintainContext: true
+    - name: 使用 Windows Server 容器（预览版）
+      items:
+        - name: 创建 AKS 群集
+          href: windows-container-cli.md
+        - name: 远程连接
+          href: rdp.md
+        - name: 已知限制
+          href: windows-node-limitations.md
+        - name: 使用 Kubernetes 仪表板
+          href: kubernetes-dashboard.md
+        - name: 创建用于 Windows Server 容器的 Dockerfile
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+        - name: 优化用于 Windows Server 容器的 Dockerfile
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: 开发和运行应用程序
       items:
         - name: 使用 Dev Spaces 进行开发

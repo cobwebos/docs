@@ -176,6 +176,8 @@
               href: integrate-environments-devops-pipeline.md
             - name: 使用平台即服务 (PaaS) 服务
               href: use-paas-services.md
+            - name: 部署嵌套模板
+              href: deploy-nested-template-environments.md
         - name: 保护对实验室的访问
           items:
             - name: 添加实验室所有者与用户
@@ -188,6 +190,8 @@
           items:
             - name: 设置策略和计划
               href: devtest-lab-set-lab-policy.md
+            - name: 发送自动关闭通知
+              href: devtest-lab-auto-shutdown.md
             - name: 配置成本管理
               href: devtest-lab-configure-cost-management.md
             - name: 配置 Azure 市场映像

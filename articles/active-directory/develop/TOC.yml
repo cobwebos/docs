@@ -239,20 +239,30 @@
               href: msal-net-provide-httpclient.md
             - name: 与 Azure AD B2C 集成
               href: msal-b2c-overview.md
-            - name: 特定于平台的注意事项 (.NET)
+            - name: 注意事项和已知问题
               items:
-                - name: Web 浏览器
-                  href: msal-net-web-browsers.md
-                - name: Xamarin Android
-                  href: msal-net-xamarin-android-considerations.md
-                - name: Android 上的系统浏览器
-                  href: msal-net-system-browser-android-considerations.md
-                - name: Xamarin iOS
-                  href: msal-net-xamarin-ios-considerations.md
-                - name: 通用 Windows 平台
-                  href: msal-net-uwp-considerations.md
-                - name: 应用 AAD B2C 策略
-                  href: msal-net-aad-b2c-considerations.md
+                - name: MSAL.NET
+                  items:
+                    - name: Web 浏览器
+                      href: msal-net-web-browsers.md
+                    - name: Xamarin Android
+                      href: msal-net-xamarin-android-considerations.md
+                    - name: Android 上的系统浏览器
+                      href: msal-net-system-browser-android-considerations.md
+                    - name: Xamarin iOS
+                      href: msal-net-xamarin-ios-considerations.md
+                    - name: 通用 Windows 平台
+                      href: msal-net-uwp-considerations.md
+                    - name: 应用 AAD B2C 策略
+                      href: msal-net-aad-b2c-considerations.md
+                - name: MSAL.js
+                  items:
+                    - name: 使用 IE 时的注意事项
+                      href: msal-js-use-ie-browser.md
+                    - name: 已知问题 - IE 和 Microsoft Edge
+                      href: msal-js-known-issues-ie-edge-browsers.md
+                    - name: 已知问题 - Safari
+                      href: msal-js-known-issues-safari-browser.md
         - name: Authentication
           items:
             - name: 身份验证基础知识

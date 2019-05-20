@@ -149,7 +149,7 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: 对 IoT Edge 作业使用 API
           href: stream-analytics-cicd-api.md
-    - name: Visual Studio 和 VS Code
+    - name: Visual Studio
       items:
         - name: 安装工具
           href: stream-analytics-tools-for-visual-studio-install.md
@@ -165,8 +165,14 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
         - name: 编写适用于 Edge 的 .NET UDF
           href: stream-analytics-edge-csharp-udf-methods.md
-        - name: 在 VS Code 中探索流分析
-          href: vs-code-how-to.md
+    - name: Visual Studio Code
+      items:
+        - name: 使用示例数据进行测试
+          href: vscode-local-run.md
+        - name: 设置 CI/CD 管道
+          href: setup-cicd-vs-code.md
+        - name: 探索作业
+          href: vscode-explore-jobs.md
     - name: 故障排除
       items:
         - name: 输入
