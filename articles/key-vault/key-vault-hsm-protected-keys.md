@@ -9,18 +9,18 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: a013e0091e1a955672c1f16a4ac6300281d277b3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1ae94718aa41c58f4d5e397942492ad8ed643ae3
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573008"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556202"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-为了提高可靠性，在使用 Azure 密钥保管库时，可以在硬件安全模块 (HSM) 中导入或生成永不离开 HSM 边界的密钥。 这种情况通常被称为*自带密钥*，简称 BYOK。 这些 HSM 都通过 FIPS 140-2 第 2 级验证。 Azure 密钥保管库使用 HSM 的 Thales nShield 系列来保护密钥。
+为了提高可靠性，在使用 Azure 密钥保管库时，可以在硬件安全模块 (HSM) 中导入或生成永不离开 HSM 边界的密钥。 这种情况通常被称为*自带密钥*，简称 BYOK。 这些 HSM 都通过 FIPS 140-2 第 2 级验证。 Azure 密钥保管库使用 Hsm 的 nCipher nShield 系列来保护你的密钥。
 
 使用本主题中的信息，可帮助规划、生成并传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。
 
@@ -34,16 +34,16 @@ ms.locfileid: "64573008"
 
 * 从脱机工作站生成密钥，这样可以减小攻击面。
 * 密钥通过密钥交换密钥 (KEK) 进行加密，且在传输到 Azure 密钥保管库 HSM 之前一直处于加密状态。 只有加密版本的密钥会离开原始工作站。
-* 该工具集会在将密钥绑定到 Azure 密钥保管库安全体系的租户密钥上设置属性。 因此，在 Azure 密钥保管库 HSM 收到和解密密钥之后，只有这些 HSM 能够使用它。 无法导出密钥。 此绑定由 Thales HSM 强制实施。
-* 用于加密密钥的密钥交换密钥 (KEK) 是在 Azure 密钥保管库 HSM 内部生成的，且不可导出。 HSM 会强制使 HSM 外部没有清晰版本的 KEK。 此外，该工具集还包括来自 Thales 的证明，即 KEK 不可导出，并在 Thales 制造的正版 HSM 内部生成。
-* 该工具集包括来自 Thales 的证明，即 Azure 密钥保管库安全体系也在 Thales 制造的正版 HSM 内部生成。 此证明可证明 Microsoft 使用的是正版硬件。
+* 该工具集会在将密钥绑定到 Azure 密钥保管库安全体系的租户密钥上设置属性。 因此，在 Azure 密钥保管库 HSM 收到和解密密钥之后，只有这些 HSM 能够使用它。 无法导出密钥。 此绑定由 nCipher Hsm 强制执行。
+* 用于加密密钥的密钥交换密钥 (KEK) 是在 Azure 密钥保管库 HSM 内部生成的，且不可导出。 HSM 会强制使 HSM 外部没有清晰版本的 KEK。 此外，该工具集包括来自 nCipher KEK 不可导出和 nCipher 制造的正版 HSM 内部生成证明。
+* 该工具集包括来自 Azure Key Vault 安全体系，还生成上制造的正版 HSM nCipher nCipher 证明。 此证明可证明 Microsoft 使用的是正版硬件。
 * Microsoft 会在每个地理区域都使用单独的 KEK 和单独的安全体系。 这种分离可确保密钥只能在将其加密的区域的数据中心使用。 例如，来自欧洲客户的密钥不能在北美或亚洲数据中心使用。
 
-## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>Thales HSM 和 Microsoft 服务的详细信息
+## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>更多有关 nCipher Hsm 的信息和 Microsoft 服务
 
-Thales E-security 是全球领先的数据加密和网络安全解决方案供应商，主要面向金融服务、高科技、制造、政府和技术行业。 Thales E-security 在保护企业和政府信息方面拥有 40 年的骄人历史记录，目前规模最大的五大能源和航天公司中有四家都在使用 Thales 解决方案。 其解决方案 22 北约国家/地区，也可使用和保护超过 80%的全球范围内的付款事务。
+nCipher 安全是全球领先供应商的数据加密和金融服务、 高科技、 制造、 政府和技术行业的网络安全解决方案。 使用 40 年的跟踪记录保护企业和政府信息，由四个五个最大的能源和航天公司使用 nCipher 安全加密解决方案。 其解决方案 22 北约国家/地区，也可使用和保护超过 80%的全球范围内的付款事务。
 
-Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强功能可使你能够获得托管服务的典型优势，而且无需放弃对密钥的控制权。 具体来说，这些增强功能可以让 Microsoft 管理 HSM，这样你就不必费心管理了。 作为云服务，Azure 密钥保管库无需通知即可扩大，以满足组织的使用高峰需求。 同时，密钥也会在 Microsoft 的 HSM 内部获得保护：你生成密钥并将其传输到 Microsoft 的 HSM，所以可以保留对密钥生命周期的控制权。
+Microsoft 已与 nCipher hsm 增强的安全。 这些增强功能可使你能够获得托管服务的典型优势，而且无需放弃对密钥的控制权。 具体来说，这些增强功能可以让 Microsoft 管理 HSM，这样你就不必费心管理了。 作为云服务，Azure 密钥保管库无需通知即可扩大，以满足组织的使用高峰需求。 同时，密钥也会在 Microsoft 的 HSM 内部获得保护：你生成密钥并将其传输到 Microsoft 的 HSM，所以可以保留对密钥生命周期的控制权。
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>为 Azure 密钥保管库实现“自带密钥 (BYOK)”
 
@@ -57,8 +57,8 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 | --- | --- |
 | Azure 订阅 |若要创建 Azure Key Vault，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 用于支持受 HSM 保护的密钥的 Azure 密钥保管库“高级”服务层级 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层级和功能的详细信息。 |
-| Thales HSM、智能卡和支持软件 |必须具有 Thales 硬件安全模块的访问权限和 Thales HSM 的基本操作知识。 请参阅 [Thales 硬件安全模块](https://www.thales-esecurity.com/msrms/buy)，了解兼容型号的列表，或者如果还没有 HSM，请购买 HSM。 |
-| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，Thales nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
+| nCipher nShield Hsm、 智能卡和支持软件 |您必须具有到 nCipher 硬件安全模块的访问权限和 nCipher nShield Hsm 的基本操作知识。 请参阅[nCipher nShield 硬件安全模块](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)兼容型号，或者如果你没有订阅，请购买 HSM 的列表。 |
+| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统 Windows 7 和 nCipher nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>生成密钥并将其传输到 Azure 密钥保管库 HSM
 
@@ -232,17 +232,17 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 在步骤 2 中，请对未连接到网络（Internet 或内部网络）的工作站执行以下过程。
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>步骤 2.1：准备使用 Thales HSM 的连接断开的工作站
+### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>步骤 2.1：准备 nCipher nShield HSM 的未连接的工作站
 
-在 Windows 计算机上安装 nCipher (Thales) 支持软件，然后将 Thales HSM 连接到该计算机。
+在 Windows 计算机上安装 nCipher 支持软件并将 nCipher nShield HSM 连接到该计算机。
 
-确保 Thales 工具位于路径 (%nfast_home%\bin) 下。 例如，请键入以下内容：
+确保 nCipher 工具在你的路径 (**%nfast_home%\bin**)。 例如，请键入以下内容：
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
   ```
 
-有关详细信息，请参阅 Thales HSM 附带的用户指南。
+有关详细信息，请参阅附带 nShield HSM 的用户指南。
 
 ### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>步骤 2.2：在连接断开的工作站上安装 BYOK 工具集
 
@@ -258,11 +258,11 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>步骤 3.1：将 HSM 模式更改为“I”
 
-如果使用 Thales nShield Edge，要更改模式，请执行以下操作：1. 使用“模式”按钮突出显示所需模式。 2. 几秒钟内，按住“清除”按钮几秒钟。 如果模式发生更改，新模式的 LED 指示灯将停止闪烁并保持亮起。 状态 LED 可能会不规则地闪烁几秒钟，并在设备就绪时规则闪烁。 否则，设备保持在当前模式，相应的模式 LED 亮起。
+如果使用 nCipher nShield Edge，若要更改的模式：1. 使用“模式”按钮突出显示所需模式。 2. 几秒钟内，按住“清除”按钮几秒钟。 如果模式发生更改，新模式的 LED 指示灯将停止闪烁并保持亮起。 状态 LED 可能会不规则地闪烁几秒钟，并在设备就绪时规则闪烁。 否则，设备保持在当前模式，相应的模式 LED 亮起。
 
 ### <a name="step-32-create-a-security-world"></a>步骤 3.2：创建安全体系
 
-启动命令提示符并运行 Thales new-world 程序。
+启动命令提示符并运行 nCipher new-world 程序。
 
    ```cmd
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
@@ -279,14 +279,14 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>步骤 3.3：将 HSM 模式更改为“O”
 
-如果使用 Thales nShield Edge，要更改模式，请执行以下操作：1. 使用“模式”按钮突出显示所需模式。 2. 几秒钟内，按住“清除”按钮几秒钟。 如果模式发生更改，新模式的 LED 指示灯将停止闪烁并保持亮起。 状态 LED 可能会不规则地闪烁几秒钟，并在设备就绪时规则闪烁。 否则，设备保持在当前模式，相应的模式 LED 亮起。
+如果使用 nCipher nShield Edge，若要更改的模式：1. 使用“模式”按钮突出显示所需模式。 2. 几秒钟内，按住“清除”按钮几秒钟。 如果模式发生更改，新模式的 LED 指示灯将停止闪烁并保持亮起。 状态 LED 可能会不规则地闪烁几秒钟，并在设备就绪时规则闪烁。 否则，设备保持在当前模式，相应的模式 LED 亮起。
 
 ### <a name="step-34-validate-the-downloaded-package"></a>步骤 3.4：验证下载的包
 
 此步骤是可选的，但建议执行，以便能够验证以下内容：
 
-* 工具集附带的密钥交换密钥已从正版 Thales HSM 中生成。
-* 工具集附带的安全体系哈希已在正版 Thales HSM 中生成。
+* 已从正版 nCipher nShield HSM 中生成的工具集中包含密钥交换密钥。
+* 已在正版 nCipher nShield HSM 中生成的工具集中包含的安全体系的哈希。
 * 密钥交换密钥不可导出。
 
 > [!NOTE]
@@ -346,18 +346,18 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
 
      > [!TIP]
-     > Thales 软件包含在 %NFAST_HOME%\python\bin 中的 python
+     > NCipher nShield 软件包含在 %NFAST_HOME%\python\bin python
      >
      >
 2. 确认看到以下指示验证成功的消息：**结果:成功**
 
-此脚本会验证直到 Thales 根密钥的签名程序链。 此根密钥的哈希嵌入到脚本中，其值应为 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 还可以通过访问 [Thales 网站](http://www.thalesesec.com/)单独确认此值。
+此脚本会验证到 nShield 根密钥的签名程序链。 此根密钥的哈希嵌入到脚本中，其值应为 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 您还可以确认此值单独通过访问[nCipher 网站](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)。
 
 现在已准备好新建密钥。
 
 ### <a name="step-35-create-a-new-key"></a>步骤 3.5：新建密钥
 
-通过使用 Thales **generatekey** 程序生成一个密钥。
+生成密钥使用 nCipher nShield **generatekey**程序。
 
 运行以下命令来生成密钥：
 
@@ -367,14 +367,14 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 * 参数 *protect* 必须设置为值 **module**，如上所示。 这会创建一个受模块保护的密钥。 BYOK 工具集不支持受 OCS 保护的密钥。
 * 将 **ident** 和 **plainname** 的 *contosokey* 值替换为任何字符串值。 为了最大程度减少管理开销并降低错误风险，建议对这两个参数使用相同的值。 **ident** 值只能包含数字、短划线和小写字母。
-* 在此示例中，pubexp 留空（默认值），但可以指定特定值。 有关详细信息，请参阅 Thales 文档。
+* 在此示例中，pubexp 留空（默认值），但可以指定特定值。 有关详细信息，请参阅[nCipher 文档。](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
 此命令在 %NFAST_KMDATA%\local 文件夹中创建一个标记化密钥文件，文件名以 **key_simple_** 开头，后跟在命令中指定的 **ident**。 例如：**key_simple_contosokey**。 此文件包含已加密的密钥。
 
 在安全位置备份这个标记化密钥文件。
 
 > [!IMPORTANT]
-> 稍后将自己的密钥传送到 Azure 密钥保管库时，Microsoft 就无法将此密钥导出返回给你，因此，请务必安全地备份密钥和安全体系。 请联系 Thales，获取有关备份密钥的指导和最佳实践。
+> 稍后将自己的密钥传送到 Azure 密钥保管库时，Microsoft 就无法将此密钥导出返回给你，因此，请务必安全地备份密钥和安全体系。 请联系[nCipher](https://www.ncipher.com/about-us/contact-us)的指导和最佳做法来备份你的密钥。
 >
 
 
@@ -437,13 +437,13 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
-运行此命令时，请将 *contosokey* 替换为在生成密钥步骤的“步骤 3.5：新建密钥”中指定的相同值。**
+运行此命令时，请将 *contosokey* 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。**
 
 系统会要求插入安全体系的管理员卡。
 
 此命令完成后，会看到“结果:**成功**并且具有降低的权限的密钥副本位于名为 key_xferacId_ 的文件\<contosokey >。
 
-可使用 Thales 实用程序通过以下命令检查 ACLS：
+检查 ACL 使用以下命令使用 nCipher nShield 实用程序：
 
 * aclprint.py:
 
