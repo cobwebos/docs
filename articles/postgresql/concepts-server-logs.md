@@ -46,13 +46,13 @@ Azure Database for PostgreSQL 集成了 Azure Monitor 诊断日志。 在 Postgr
 | ResourceProvider | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | 资源 URI |
-| 资源 | 服务器的名称 |
-| 类别 | `PostgreSQLLogs` |
+| Resource | 服务器的名称 |
+| Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | errorLevel | 日志记录级别，例如：LOG, ERROR, NOTICE |
-| 消息 | 主要日志消息 | 
-| 域 | 服务器版本，示例：postgres-10 |
-| 详细信息 | 辅助日志消息（如果适用） |
+| Message | 主要日志消息 | 
+| Domain | 服务器版本，示例：postgres-10 |
+| Detail | 辅助日志消息（如果适用） |
 | ColumnName | 列名称（如果适用） |
 | SchemaName | 架构名称（如果适用） |
 | DatatypeName | 数据类型名称（如果适用） |
