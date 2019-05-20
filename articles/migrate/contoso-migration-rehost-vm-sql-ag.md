@@ -704,8 +704,7 @@ Contoso 安全团队会审查 Azure VMs WEBVM、SQLAOG1 和 SQLAOG2，确定是�
 ## <a name="bcdr"></a>BCDR
 
  对于业务连续性和灾难恢复 (BCDR)，Contoso 采取了以下措施：
-- 确保数据安全：Contoso 使用 Azure 备份服务来备份 WEBVM、SQLAOG1 和 SQLAOG2 VM 上的数据。 [了解详情]。
-  (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- 确保数据安全：Contoso 使用 Azure 备份服务来备份 WEBVM、SQLAOG1 和 SQLAOG2 VM 上的数据。 [了解详情](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
   - Contoso 还将了解如何使用 Azure 存储将 SQL Server 直接备份到 Blob 存储。 [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore)。
   - 使应用保持正常运行：Contoso 使用 Site Recovery 将 Azure 中的应用 VM 复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
 
