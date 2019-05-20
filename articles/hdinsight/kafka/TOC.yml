@@ -129,7 +129,7 @@
           href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
         - name: 使用 Azure PowerShell
           href: ../hdinsight-administer-use-powershell.md
-        - name: 使用 Azure 经典 CLI
+        - name: 使用 Azure CLI
           href: ../hdinsight-administer-use-command-line.md
         - name: 使用 Apache Ambari Web UI 管理群集
           href: ../hdinsight-hadoop-manage-ambari.md
