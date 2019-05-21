@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 34ae47723762215fdea99362419c3875dc2e5942
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8c2ed8932e67a2e0c83fe4e3fdf6783c24e56a6e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812872"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956981"
 ---
 # <a name="collaborating-with-other-authors"></a>与其他作者协作
 
@@ -31,7 +31,7 @@ LUIS 帐户与一个 [Microsoft Live](https://login.live.com/) 帐户相关联�
 
 ## <a name="luis-app-owner"></a>LUIS 应用所有者
 
-创建应用程序的帐户所有者，并且每个应用都有一个所有者。 所有者列出的应用上**[设置](luis-how-to-collaborate.md)** 页。 所有者可以删除该应用程序终结点配额达到 75%的每月限制时接收电子邮件。 
+创建应用的帐户是所有者，每个应用都有一个所有者。 应用的[“设置”](luis-how-to-collaborate.md)页上列出了所有者。 当终结点配额达到每月限制的 75% 时，所有者可以删除应用接收电子邮件。 
 
 ## <a name="authorization-roles"></a>授权角色
 LUIS 不支持所有者和协作者的不同角色，但有一个例外。 所有者是唯一可以删除应用的帐户。
@@ -52,7 +52,7 @@ LUIS 不支持所有者和协作者的不同角色，但有一个例外。 所�
 ## <a name="manage-multiple-versions-inside-the-same-app"></a>在同一应用中管理多个版本
 首先，每个创建者基于基础版进行[克隆](luis-how-to-manage-versions.md#clone-a-version)。 
 
-每个创建者对自己的应用版本进行更改。 得到满意的模型后，将新版本导出到 JSON 文件中。  
+每位作者对其自己版本的应用进行更改。 得到满意的模型后，将新版本导出到 JSON 文件中。  
 
 导出的应用为 JSON 格式的文件，可比较所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。 
 
@@ -63,9 +63,9 @@ LUIS 不支持所有者和协作者的不同角色，但有一个例外。 所�
 
 导出的应用为 JSON 格式的文件，可与导出的基础版进行比较，发现所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。
 
-## <a name="collaborator-roles-vs-entity-roles"></a>协作者角色 vs 实体角色
+## <a name="collaborator-roles-vs-entity-roles"></a>协作者角色与实体角色
 
-[实体角色](luis-concept-roles.md)适用于 LUIS 应用程序的数据模型。 协作者角色适用于创作访问的级别。 
+[实体角色](luis-concept-roles.md)适用于 LUIS 应用的数据模型。 协作者角色适用于创作访问级别。 
 
 ## <a name="next-steps"></a>后续步骤
 

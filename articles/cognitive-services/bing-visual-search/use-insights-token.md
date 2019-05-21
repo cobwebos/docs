@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 4/05/2019
+ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1860b788b9f33a6a2ec806be68a67aa2df10cbd4
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831922"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914274"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用 insights 标记图像中获取见解
 
@@ -64,7 +64,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 ### <a name="c-prerequisites"></a>C#系统必备组件
 
-- 任何版本的[Visual Studio 2017](https://www.visualstudio.com/downloads/)若要获取在 Windows 上运行此代码。
+- 任何版本的[Visual Studio 2019](https://www.visualstudio.com/downloads/)若要获取在 Windows 上运行此代码。
 - Azure 订阅。 对于此快速入门中，你可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费的订阅密钥。
 
 ## <a name="run-the-application"></a>运行应用程序

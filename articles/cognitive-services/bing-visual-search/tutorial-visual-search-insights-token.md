@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/26/2019
 ms.author: rosh
-ms.openlocfilehash: 3f28e540aeb1604c5df885fd54d243211beb40b6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ebe54f5319986f0588e06a980a6f914beb6adbcc
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796340"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909398"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>使用 ImageInsightsToken 在前面的搜索结果中查找类似的图像
 
@@ -25,7 +25,7 @@ ms.locfileid: "65796340"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的[Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * 如果使用的 Linux/MacOS，则可以运行此应用程序使用[Mono](https://www.mono-project.com/)。
 * NuGet 视觉搜索和图像搜索包。
     - 在 Visual Studio 解决方案资源管理器，右键单击项目，然后选择**管理 NuGet 包**菜单中。 安装 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 包和 `Microsoft.Azure.CognitiveServices.Search.ImageSearch` 包。 安装 NuGet 包还会安装以下程序：
@@ -129,7 +129,7 @@ if (visualSearchResults.Tags.Count > 0)
 
 完整的应用程序返回以下 URL：
 
-|ActionType  |代码  | |
+|ActionType  |URL  | |
 |---------|---------|---------|
 |MoreSizes -> WebSearchUrl     |         |
 |VisualSearch -> WebSearchUrl     |         |

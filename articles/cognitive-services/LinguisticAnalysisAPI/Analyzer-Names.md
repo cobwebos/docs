@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: b2e956b099022751712f96ab0b15aa57c752b458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c989f1115bc5a85bf09270c553ac1cb51bb4f170
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405250"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954704"
 ---
 # <a name="analyzer-names"></a>分析器名称
 
@@ -43,10 +43,10 @@ ms.locfileid: "60405250"
 然而，在特定种类中，各个专家可能会对应如何分析特定现象持有不同看法。
 与编程语言不同，对于应如何完成此操作，没有准确清晰的定义。
 
-例如，假设要在英语句子“He didn't go”（他没有走）中查找词汇。
+例如，设想一下，我们已尝试在英语句子中查找令牌"它们未付。"
 特别是，想想看字符串“didn't”（没有）。
 一种可能解释是，应将它切分成两个词汇：“did”和“not”。
-然后，可选句子“He did not go”（他没有走）就有一组相同的词汇。
+然后替代句子"它们不去了"将具有一组相同的令牌。
 另一种可能解释是，应将它切分成词汇“did”和“n't”。
 后一个词汇通常不被视为字词，但这种方法保留了表层字符串的更多信息，有时可能会很有用。
 或许应将这种缩写形式视为一个字词。

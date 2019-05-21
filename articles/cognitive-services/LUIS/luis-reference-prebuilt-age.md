@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: c901a384d7629a187a2a4fbd4295a1a68615abdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8239688000f0ce32ca2c2be054b1443bbb698b5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712791"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65069137"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的存在时间预生成实体
 预构建存在时间实体同时采用数字和天、周、月以及年捕获存在时间值。 此实体已定型，因此不需要将包含存在时间的陈述示例添加到应用程序意向中。 [许多语言区域](luis-reference-prebuilt-entities.md)都支持存在时间实体。 
@@ -25,6 +25,9 @@ ms.locfileid: "60712791"
 存在时间托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) Github 存储库中
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>预构建存在时间实体的解析
+
+### <a name="api-version-2x"></a>API 版本 2.x
+
 以下示例显示了 **builtin.age** 实体的解析。
 
 ```json
@@ -34,12 +37,6 @@ ms.locfileid: "60712791"
     "intent": "None",
     "score": 0.8236133
   },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.8236133
-    }
-  ],
   "entities": [
     {
       "entity": "90 day old",
@@ -52,6 +49,70 @@ ms.locfileid: "60712791"
       }
     }
   ]
+}
+```
+
+### <a name="preview-api-version-3x"></a>预览 API 版本 3.x
+
+以下 JSON 是与`verbose`参数设置为`false`:
+
+```json
+{
+    "query": "A 90 day old utilities bill is quite late.",
+    "prediction": {
+        "normalizedQuery": "a 90 day old utilities bill is quite late.",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.558252
+            }
+        },
+        "entities": {
+            "age": [
+                {
+                    "number": 90,
+                    "unit": "Day"
+                }
+            ]
+        }
+    }
+}
+```
+
+以下 JSON 是与`verbose`参数设置为`true`:
+
+```json
+{
+    "query": "A 90 day old utilities bill is quite late.",
+    "prediction": {
+        "normalizedQuery": "a 90 day old utilities bill is quite late.",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.558252
+            }
+        },
+        "entities": {
+            "age": [
+                {
+                    "number": 90,
+                    "unit": "Day"
+                }
+            ],
+            "$instance": {
+                "age": [
+                    {
+                        "type": "builtin.age",
+                        "text": "90 day old",
+                        "startIndex": 2,
+                        "length": 10,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 

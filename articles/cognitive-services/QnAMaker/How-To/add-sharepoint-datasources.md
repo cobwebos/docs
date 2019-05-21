@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: d02c3fbb762e83584a9ea277ef8d5cc15b391f37
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792574"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954970"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>将受保护的 Sharepoint 数据源添加到您的知识库
 
@@ -53,7 +53,7 @@ ms.locfileid: "65792574"
 
 ![用户帐户进行身份验证](../media/add-sharepoint-datasources/authenticate-user-account.png)
 
-一旦 QnA Maker 管理器中选择帐户，Active Directory 管理员将收到一条通知，他需要允许应用程序 （而不是 QnA Maker 经理） 访问 Sharepoint 资源的 QnA Maker。 Active Directory 管理器将需要为每个 Sharepoint 资源，但在该资源不是每个文档执行此操作。 
+一旦 QnA Maker 管理器中选择帐户，Active Directory 管理员将收到一则通知他们需要允许应用程序 （而不是 QnA Maker 经理） 访问 Sharepoint 资源的 QnA Maker。 Active Directory 管理器将需要为每个 Sharepoint 资源，但在该资源不是每个文档执行此操作。 
 
 ### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Active directory 管理器： 文件读取访问权限授予 QnA Maker
 
