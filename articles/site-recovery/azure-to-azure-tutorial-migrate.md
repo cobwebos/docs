@@ -19,20 +19,20 @@ ms.locfileid: "58122023"
 
 在许多场景中，你希望将现有 Azure IaaS 虚拟机 (VM) 从一个区域移动到另一个区域。 例如，想要提高现有 VM 的可靠性和可用性，提高可管理性，或者出于治理原因而移动。 有关详细信息，请参阅 [Azure VM 移动概述](azure-to-azure-move-overview.md)。 
 
-可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务来管理和协调本地计算机和 Azure VM 灾难恢复，以实现业务连续性和灾难恢复 (BCDR)。 此外可以使用 Site Recovery 来管理 Azure VM 移动到次要区域。
+可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务来管理和协调本地计算机和 Azure VM 灾难恢复，以实现业务连续性和灾难恢复 (BCDR)。 此外可以使用 Site Recovery 来管理将 Azure VM 移动到次要区域的过程。
 
 在本教程中，将：
 
 > [!div class="checklist"]
 > 
-> * 验证先决条件以进行移动
+> * 验证进行移动的先决条件
 > * 准备源 VM 和目标区域
 > * 复制数据和启用复制
 > * 测试配置和执行移动
 > * 删除源区域中的资源
 > 
 > [!NOTE]
-> 本教程演示如何将 Azure VM 按原样从一个区域移到另一个区域。 如果需要通过将可用性集中的 VM 移动到其他区域中的区域固定 VM 来提高可用性，请参阅[将 Azure VM 移动到可用性区域教程](move-azure-vms-avset-azone.md)。
+> 本教程演示如何将 Azure VM 按原样从一个区域移到另一个区域。 如果需要通过将可用性集中的 VM 以区域固定 VM 的形式移动到其他区域中来提高可用性，请参阅[将 Azure VM 移动到可用性区域教程](move-azure-vms-avset-azone.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

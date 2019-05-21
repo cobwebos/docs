@@ -1,7 +1,7 @@
 ---
 title: 教程：生成用于翻译、合成与分析文本的 Flask 应用 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
-description: 在本教程中，你将生成一个基于 Flask 的 Web 应用，该应用使用 Azure 认知服务来翻译文本、分析情绪，并将翻译的文本合成为语音。 本教程重点介绍用于实现该应用程序的 Python 代码和 Flask 路由。 本教程不会将过多的时间花费在控制该应用的 Javascript 代码上，而是提供需要检查的所有文件。
+description: 在本教程中，你将生成一个基于 Flask 的 Web 应用，该应用使用 Azure 认知服务来翻译文本、分析情绪，并将翻译的文本合成为语音。 本教程重点介绍用于实现该应用程序的 Python 代码和 Flask 路由。 本教程不会花太多时间讨论控制该应用的 Javascript 代码，而是提供需要检查的所有文件。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -33,11 +33,11 @@ ms.locfileid: "59007400"
 > * 在本地运行 Flask 应用
 
 > [!TIP]
-> 如果想要跳过这些步骤并查看最终的整个代码，请参阅 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial) 上的完整示例和生成说明。
+> 如果想要跳过这些步骤并查看最终的全部代码，请参阅 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial) 上的完整示例和生成说明。
 
 ## <a name="what-is-flask"></a>什么是 Flask？
 
-Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提供所需的工具、库和技术用于生成 Web 应用程序。 此 Web 应用程序可以是一些网页、一篇博客、Wiki，甚至可以是基于 Web 的日历应用程序或商业网站。
+Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提供所需的工具、库和技术用于生成 Web 应用程序。 此 Web 应用程序可以是一些网页、一篇博客、Wiki，也可以具有较强的实用性，例如基于 Web 的日历应用程序或商业网站。
 
 完成本教程后若要进行深入了解，请参考以下有用链接：
 

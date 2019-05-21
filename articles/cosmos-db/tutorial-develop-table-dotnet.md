@@ -21,7 +21,7 @@ ms.locfileid: "65192404"
 
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-可以使用 Azure Cosmos DB 表 API 或 Azure 表存储将结构化的 NoSQL 数据存储在云中，以便通过无架构设计提供密钥/属性存储。 由于 Azure Cosmos DB 表 API 和表存储是无架构的，因此随着应用程序需求的发展，可以轻松调整数据。 可以使用 Azure Cosmos DB 表 API 或表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，或者服务需要的其他类型的元数据。 
+可以使用 Azure Cosmos DB 表 API 或 Azure 表存储将结构化的 NoSQL 数据存储在云中，以便通过无架构设计提供键/属性存储。 由于 Azure Cosmos DB 表 API 和表存储是无架构的，因此随着应用程序需求的发展，可以轻松调整数据。 可以使用 Azure Cosmos DB 表 API 或表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，或者服务需要的其他类型的元数据。 
 
 本教程介绍了一个示例，展示如何将[适用于 .NET 的 Microsoft Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)用于 Azure Cosmo DB 表 API 和 Azure 表存储方案。 必须使用特定于 Azure 服务的连接。 这些方案使用 C# 示例进行讨论，说明了如何创建表、插入/更新数据、查询数据和删除表。
 
@@ -194,7 +194,7 @@ namespace CosmosTableSamples.Model
 }
 ```
 
-此代码定义将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度快于查询分区键不同的实体的速度，但使用不同的分区键可实现更高的并行操作可伸缩性。 需要存储在表中的实体必须是受支持的类型，例如，必须派生自 [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) 类。 要存储在表中的实体属性必须是相应类型的公共属性，并且允许获取和设置值。 此外，实体类型必须公开无参数构造函数。
+此代码定义将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 分区键相同的实体可以实现比分区键不同的实体更快的查询速度，但使用不同的分区键可实现更高的并行操作可伸缩性。 需要存储在表中的实体必须是受支持的类型，例如，派生自 [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) 类。 要存储在表中的实体属性必须是相应类型的公共属性，并且允许获取和设置值。 此外，实体类型必须公开无参数构造函数。
 
 ## <a name="insert-or-merge-an-entity"></a>插入或合并实体
 
@@ -237,7 +237,7 @@ public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable tab
 
 ### <a name="get-an-entity-from-a-partition"></a>从分区获取实体
 
-可以通过使用 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) 类下的 Retrieve 方法从分区获取实体。 以下代码示例获取客户实体的分区键行密钥、电子邮件和电话号码。 此示例还打印出用于查询实体的请求单元。 要查询实体，请将以下代码追加到“SamplesUtils.cs”文件： 
+可以通过使用 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) 类下的 Retrieve 方法从分区获取实体。 以下代码示例获取客户实体的分区键、行键、电子邮件和电话号码。 此示例还打印出用于查询实体的请求单元。 要查询实体，请将以下代码追加到“SamplesUtils.cs”文件： 
 
 ```csharp
 public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)
