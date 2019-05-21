@@ -819,51 +819,45 @@
       items:
         - name: 警报
           items:
-            - name: 使用指标警报
-              items:
-                - name: 在 Azure Monitor 中创建、查看和管理指标警报
-                  href: platform/alerts-metric.md
-                - name: 在 Azure Monitor 中创建、查看和管理经典指标警报
-                  href: platform/alerts-classic-portal.md
-                - name: 使用动态阈值的指标警报
-                  href: platform/alerts-dynamic-thresholds.md
-                - name: 配置基于日志的指标警报
-                  href: platform/alerts-metric-logs.md
-                - name: 使用资源管理器模板创建更新的指标警报
-                  href: platform/alerts-metric-create-templates.md
-                - name: 使用资源管理器模板创建经典指标警报
-                  href: platform/alerts-enable-template.md
-                - name: 让经典指标警报调用 Webhook
-                  href: platform/alerts-webhooks.md
-            - name: 使用日志警报
-              items:
-                - name: 配置基于分析查询的警报
-                  href: platform/alerts-log.md
-                - name: 日志警报查询
-                  href: platform/alerts-log-query.md
-                - name: 用于日志警报的 Webhook 操作
-                  href: platform/alerts-log-webhook.md
-                - name: 针对日志警报排查问题
-                  href: platform/alert-log-troubleshoot.md
-            - name: 使用活动日志警报
-              items:
-                - name: 针对活动日志事件配置警报
-                  href: platform/alerts-activity-log.md
-                - name: 迁移到活动日志警报
-                  href: platform/migrate-management-alerts.md
-                - name: 针对服务通知配置警报
-                  href: platform/alerts-activity-log-service-notifications.md
-            - name: 使用应用程序警报
+            - name: 应用程序警报规则
               items:
                 - name: 可用性
                   href: app/monitor-web-app-availability.md
                 - name: 指标警报
                   href: app/alerts.md
-            - name: 将操作组与警报配合使用
+            - name: 平台指标警报规则
+              items:
+                - name: 管理指标警报
+                  href: platform/alerts-metric.md
+                - name: 使用动态阈值
+                  href: platform/alerts-dynamic-thresholds.md
+                - name: 基于日志的指标警报
+                  href: platform/alerts-metric-logs.md
+                - name: 使用 Resource Manager 模板
+                  href: platform/alerts-metric-create-templates.md
+            - name: 日志警报规则
+              items:
+                - name: 配置基于分析查询的警报
+                  href: platform/alerts-log.md
+                - name: 查询
+                  href: platform/alerts-log-query.md
+                - name: Webhook 操作
+                  href: platform/alerts-log-webhook.md
+                - name: 故障排除
+                  href: platform/alert-log-troubleshoot.md
+            - name: 活动日志警报规则
+              items:
+                - name: 基于活动日志事件的警报
+                  href: platform/alerts-activity-log.md
+                - name: 将管理事件迁移到活动日志警报
+                  href: platform/migrate-management-alerts.md
+                - name: 基于服务运行状况通知的警报
+                  href: platform/alerts-activity-log-service-notifications.md
+            - name: 使用操作组
               items:
                 - name: 创建操作组
                   href: platform/action-groups.md
-                - name: 了解 webhook 架构
+                - name: Webhook 架构
                   href: platform/activity-log-alerts-webhook.md
                 - name: 常见警报架构定义
                   href: platform/alerts-common-schema-definitions.md
@@ -875,9 +869,9 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: 实现逻辑应用操作
                   href: platform/action-groups-logic-app.md
-            - name: 来自 Operations Manager 的警报
+            - name: 警报管理解决方案
               href: platform/alert-management-solution.md
-            - name: 管理警报
+            - name: 警报用户界面
               items:
                 - name: 管理警报实例
                   href: platform/alerts-managing-alert-instances.md
@@ -887,19 +881,31 @@
                   href: platform/alerts-managing-alert-states.md
                 - name: 管理来自其他监视服务的警报
                   href: platform/alerts-managing-nagios-zabbix-scom.md
-            - name: 迁移经典警报
+            - name: 迁移经典警报规则
               items:
-                - name: 使用迁移工具
-                  href: platform/alerts-using-migration-tool.md
                 - name: 准备迁移
                   href: platform/alerts-prepare-migration.md
                 - name: 了解迁移工具
                   href: platform/alerts-understand-migration.md
+                - name: 使用迁移工具
+                  href: platform/alerts-using-migration-tool.md
+                - name: 管理经典指标警报
+                  href: platform/alerts-classic-portal.md
+                - name: 使用资源管理器模板的经典指标警报
+                  href: platform/alerts-enable-template.md
+                - name: 调用 Webhook 的经典指标警报
+                  href: platform/alerts-webhooks.md
+        - name: 活动日志中的服务运行状况通知
+          items:
+            - name: 查看通知
+              href: platform/service-notifications.md
+            - name: 配置基于通知事件的警报
+              href: platform/alerts-activity-log-service-notifications.md
         - name: 自动缩放
           items:
-            - name: 自动缩放演练
+            - name: 演练
               href: platform/autoscale-get-started.md
-            - name: 了解自动缩放设置
+            - name: 设置
               href: platform/autoscale-understanding-settings.md
             - name: 最佳做法
               href: platform/autoscale-best-practices.md
@@ -907,20 +913,14 @@
               href: platform/autoscale-common-metrics.md
             - name: 常见模式
               href: platform/autoscale-common-scale-patterns.md
-            - name: 使用自定义指标自动缩放
+            - name: 使用自定义指标缩放
               href: platform/autoscale-custom-metric.md
-            - name: 使用资源管理器模板自动缩放虚拟机规模集
-              href: platform/autoscale-virtual-machine-scale-sets.md
-            - name: 自动缩放虚拟机规模集中的虚拟机
+            - name: 缩放 VM 规模集
               href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
-            - name: 针对自动缩放配置 webhook 和电子邮件通知
+            - name: 使用资源管理器模板缩放 VM 规模集
+              href: platform/autoscale-virtual-machine-scale-sets.md
+            - name: 使用 Webhook 和电子邮件通知
               href: platform/autoscale-webhook-email.md
-        - name: 服务通知
-          items:
-            - name: 查看服务通知
-              href: platform/service-notifications.md
-            - name: 针对服务通知配置警报
-              href: platform/alerts-activity-log-service-notifications.md
         - name: IT 服务管理
           items:
             - name: IT Service Management Connector

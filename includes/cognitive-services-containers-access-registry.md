@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/07/2019
 ms.openlocfilehash: 27c6b59a458fb79b86d7064d710a01593a1745dc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028870"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65885020"
 ---
 ## <a name="use-docker-cli-to-authenticate-private-container-registry"></a>使用 Docker CLI 对专用容器注册表进行身份验证
 

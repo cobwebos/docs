@@ -174,7 +174,7 @@
       items:
         - name: 使用 Azure PowerShell 预配实体
           href: service-bus-manage-with-ps.md
-        - name: 使用 Azure 监视来监视服务总线
+        - name: 使用 Azure Monitor 监视服务总线
           href: service-bus-metrics-azure-monitor.md
         - name: 服务总线管理库
           href: service-bus-management-libraries.md
