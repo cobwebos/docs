@@ -49,6 +49,7 @@
       items:
         - name: 存储
           href: storage-account-concept.md
+          displayName: Storage side encryption
         - name: 资产 API
           href: assets-concept.md
     - name: 编码
@@ -169,6 +170,7 @@
       items:
         - name: 创建帐户 - CLI
           href: create-account-cli-how-to.md
+          displayName: storage
         - name: 重置帐户凭据 - CLI
           href: cli-reset-account-credentials.md
         - name: 访问 API - CLI

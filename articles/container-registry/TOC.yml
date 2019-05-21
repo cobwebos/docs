@@ -75,9 +75,10 @@
       items:
         - name: 使用虚拟网络限制访问（预览版）
           href: container-registry-vnet.md
-        - name: 身份验证概述
-          href: container-registry-authentication.md
+        - name: Authentication
           items:
+            - name: 身份验证概述
+              href: container-registry-authentication.md
             - name: 服务主体身份验证
               href: container-registry-auth-service-principal.md
             - name: 托管标识身份验证
@@ -143,3 +144,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'
+    - name: 常见问题解答
+      href: container-registry-faq.md
