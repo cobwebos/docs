@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/14/2019
 ms.author: diberry
-ms.openlocfilehash: 24158d5949c0a31e5444c609cbfced970bdeca07
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f12b55e9b00e933e13f84832b8cc36267a1da05f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471970"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954853"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用后续的提示操作以创建多个打开的会话
 
@@ -52,7 +52,7 @@ ms.locfileid: "65471970"
 
 ![![在导入 PDF 文档，QnA Maker 确定从该结构以创建对话式流的后续提示。 ](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-## <a name="filter-questions-and-answers-by-context"></a>筛选上下文中的问题和解答
+## <a name="show-questions-and-answers-with-context"></a>显示问题和答案与上下文
 
 1. 减少到只是那些具备上下文会话显示的问题和答案对。 选择**查看选项**，然后选择**显示上下文 （预览版）**。 添加带有后续提示符的第一个问题和答案对之前，列表将为空。 
 
@@ -64,22 +64,36 @@ ms.locfileid: "65471970"
 1. 输入新的问题文本`Give feedback.`使用的答案`What kind of feedback do you have?`。
 
 1. 在中**答案**对于此问题，选择的列**添加后续提示符**。 
-1. **跟进提示符**弹出对话框中，可搜索一个现有的问题或输入一个新问题。 在此过程中，输入的文本`Feedback on an QnA Maker service`，对于**显示文本**。 
-1. 检查**仅限上下文的**。 **上下文限**选项指示此用户文本就很容易理解_仅_如果在上一步回答这个问题中提供。 此方案中，提示的文本没有任何意义作为一个独立的问题，才有意义的前一个问题上下文中。
-1. 在**链接以回答**文字框中，输入答案， `How would you rate QnA Maker?`。
-1. 选择**新建**然后选择**保存**。 
+1. **跟进提示符 （预览版）** 弹出窗口，可搜索一个现有的问题或输入一个新问题。 输入以下值创建一个新的提示符： 
+
+    |文本字段|值|
+    |--|--|
+    |**显示文本**|`Feedback on an QnA Maker service`|
+    |**若要回答的链接**|`How would you rate QnA Maker??`|
+    |||
 
     ![创建新提示 QnA](../media/conversational-context/create-child-prompt-from-parent.png)
 
-    这创建新的问题和答案对并将链接作为后续提示所选的问题。 **上下文**列中的，为这两个问题，指示后续提示关系。 
+1. 检查**仅限上下文的**。 **上下文限**选项指示此用户文本就很容易理解_仅_如果在上一步回答这个问题中提供。 此方案中，提示的文本没有任何意义作为一个独立的问题，才有意义的前一个问题上下文中。
+1. 选择**新建**然后选择**保存**。 
+
+    这创建新的问题和答案对并将链接作为后续提示所选的问题。 **上下文**列，这两个问题，指示后续提示关系。 
 
     ![![这两个问题的上下文列指示后续提示关系。](../ media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. 选择**添加后续提示符**为`Give feedback`添加另一个后续提示的问题。 
-1. 输入创建新问题`Feedback on an existing feature`，答案`Which feature would you like to give feedback on?`。  
+1. 选择**添加后续提示符**为`Give feedback`添加另一个后续提示的问题。 这将打开**跟进提示符 （预览版）** 弹出窗口。
 
-1.  检查**仅限上下文的**。 **上下文限**选项指示此用户文本就很容易理解_仅_如果在上一步回答这个问题中提供。 此方案中，提示的文本没有任何意义作为一个独立的问题，才有意义的前一个问题上下文中。
-1.  选择“保存”。 
+1. 输入以下值创建一个新的提示符：
+
+    |文本字段|值|
+    |--|--|
+    |**显示文本**|`Feedback on an existing feature`|
+    |**若要回答的链接**|`Which feature would you like to give feedback on?`|
+    |||
+
+1. 检查**仅限上下文的**。 **上下文限**选项指示此用户文本就很容易理解_仅_如果在上一步回答这个问题中提供。 此方案中，提示的文本没有任何意义作为一个独立的问题，才有意义的前一个问题上下文中。
+
+1. 选择“保存”。 
 
     这创建一个新问题并链接到面对的提示问题作为问题`Give feedback`问题。
     
@@ -93,26 +107,34 @@ ms.locfileid: "65471970"
 
 1. 如果你想要链接现有 QnA 对作为后续提示符下，选择的问题和答案对的行。
 1. 选择**添加后续提示符**该行中。
-1. 在弹出对话框中，输入在搜索框中的问题文本。 返回所有匹配项。 选择希望作为执行后续操作，并检查的问题**上下文限**，然后选择**保存**。 
+1. 在中**跟进提示符 （预览版）** 弹出窗口中，在搜索框中输入答案文本。 返回所有匹配项。 选择希望作为执行后续操作，并检查的答案**上下文限**，然后选择**保存**。 
 
-    一旦 ou 已添加后续提示符下，务必选中**保存并训练**。
+    ![搜索跟进提示链接到现有答案，答案对话框使用答案的文本。](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+
+    添加后续提示符后，务必选中**保存并训练**。
   
-## <a name="add-metadata-to-follow-up-prompts"></a>将元数据添加到后续的提示 
+<!--
 
-中的知识时提示问题答案对链接到, 跟进提示、 元数据筛选器将首先应用，然后返回后续工作。
+## To find best prompt answer, add metadata to follow-up prompts 
 
-1. 对于两个后续 QnA 对中，将添加到每个的元数据：
+If you have several follow-up prompts for a given QnA pair, but you know as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base, then send the metadata from the client application as part of the GenerateAnswer request.
 
-    |问题|添加元数据|
+In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, then the follow-ups are returned.
+
+1. For the two follow-up QnA pairs, add metadata to each one:
+
+    |Question|Add metadata|
     |--|--|
-    |`Feedback on an QnA Maker service`|"功能":"all"|
+    |`Feedback on an QnA Maker service`|"Feature":"all"|
     |`Feedback on an existing feature`|"Feature":"one"|
     
-    ![将元数据添加到后续提示符处，以便它可以从服务的会话响应中进行筛选](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
+    ![Add metadata to follow-up prompt so it can be filtered in conversation response from service](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
 
-1. 保存并训练。 
+1. Save and train. 
 
-    如果要将发送问题`Give feedback`与元数据筛选器`Feature`值为`all`，将返回的 QnA 对将使用该元数据。 这两个 QnA 对不会返回，因为它们都不匹配筛选器。 
+    When you send the question `Give feedback` with the metadata filter `Feature` with a value of `all`, only the QnA pair with that metadata will be returned. Both QnA pairs are not returned because they both do not match the filter. 
+
+-->
 
 ## <a name="test-the-qna-set-to-get-all-the-follow-up-prompts"></a>QnA 设置为获取所有后续的测试会提示
 
@@ -145,7 +167,7 @@ ms.locfileid: "65471970"
             "questions": [
                 "Accounts and signing in"
             ],
-            "answer": "**Accounts and signing in**\n\nWhen you set up your Surface, an account is set up for you. You can create additional accounts later for family and friends, so each person using your Surface can set it up just the way he or she likes. For more info, see All about accounts on Surface.com. \n\nThere are several ways to sign in to your Surface Pro 4: ",
+            "answer": "**Accounts and signing in**\n\nWhen you set up your Surface, an account is set up for you. You can create additional accounts later for family and friends, so each person using your Surface can set it up just the way they like. For more info, see All about accounts on Surface.com. \n\nThere are several ways to sign in to your Surface Pro 4: ",
             "score": 86.96,
             "id": 37,
             "source": "surface-pro-4-user-guide-EN .pdf",
@@ -269,15 +291,11 @@ QnA Maker _GenerateAnswer_ JSON 响应包括中的后续提示`context`属性中
 
 ## <a name="displaying-prompts-and-sending-context-in-the-client-application"></a>显示的提示，并在客户端应用程序中发送上下文 
 
-客户端应用程序显示用户提示显示为建议的操作或按钮的选项的所有问题。
-然后，客户端应用程序将当前的 QnA 对与用户查询存储为上下文与下一步的用户查询一起传递。 
+如果已添加到知识库中的提示并测试流中测试窗格中，以下提示不会自动启动客户端应用程序中显示。 可以显示提示为建议的操作或按钮作为该用户的查询答案的一部分在客户端应用程序通过包含此[Bot Framework 示例](https://aka.ms/qnamakermultiturnsample)在代码中。 客户端应用程序应存储当前的 QnA ID 和用户查询，并将其传入[GenerateAnswer API 的上下文对象](#json-request-to-return-non-initial-answer-and-follow-up-prompts)下一步的用户查询。
 
-使用此[Bot Framework 示例](https://aka.ms/qnamakermultiturnsample)若要查看多轮次对话框工作端到端 QnA Maker 智能机器人中。
+## <a name="display-order-supported-in-api"></a>在 API 中受支持的显示顺序
 
-
-## <a name="prompt-order-supported-in-api"></a>在 API 中受支持的提示顺序
-
-编辑 api 仅支持 JSON 响应中返回的提示顺序。 
+编辑 api 仅支持 JSON 响应中返回的显示顺序。 
 
 ## <a name="next-steps"></a>后续步骤
 
