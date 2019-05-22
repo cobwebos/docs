@@ -135,8 +135,8 @@ ms.locfileid: "65150877"
 | outputs | 指定创建的指向接收器数据的数据集。 复制活动仅支持单个输出。 | 是 |
 | typeProperties | 一组用来配置复制活动的属性。 | 是 |
 | source | 指定有关如何检索数据的复制源类型和相应的属性。<br/><br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
-| 接收器 | 指定有关如何写入数据的复制接收器类型和相应的属性。<br/><br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
-| 转换器 | 指定从源到接收器的显式列映射。 当默认复制行为无法满足需求时适用。<br/><br/>有关详细信息，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。 | 否 |
+| sink | 指定有关如何写入数据的复制接收器类型和相应的属性。<br/><br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
+| translator | 指定从源到接收器的显式列映射。 当默认复制行为无法满足需求时适用。<br/><br/>有关详细信息，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。 | 否 |
 | dataIntegrationUnits | 指定 [Azure 集成运行时](concepts-integration-runtime.md)的强度来授权数据复制。 以前称为云数据移动单位 (DMU)。 <br/><br/>从[数据集成单位](copy-activity-performance.md#data-integration-units)了解详细信息。 | 否 |
 | parallelCopies | 指定从源读取数据和向接收器写入数据时想要复制活动使用的并行度。<br/><br/>详细信息请参阅[并行复制](copy-activity-performance.md#parallel-copy)。 | 否 |
 | enableStaging<br/>stagingSettings | 选择暂存中而不是直接从源到接收器的复制数据的 blob 存储的临时数据。<br/><br/>请参阅[暂存复制](copy-activity-performance.md#staged-copy)了解有用的方案和配置详细信息。 | 否 |
@@ -174,7 +174,7 @@ ms.locfileid: "65150877"
 | 属性名称  | 描述 | 单位 |
 |:--- |:--- |:--- |
 | dataRead | 从源中读取的数据大小 | Int64 值（**字节**） |
-| DataWritten | 写入接收器的数据大小 | Int64 值（**字节**） |
+| dataWritten | 写入接收器的数据大小 | Int64 值（**字节**） |
 | filesRead | 从文件存储复制数据时要复制的文件数。 | Int64 值（未指定单位） |
 | filesWritten | 将数据复制到文件存储时要复制的文件数。 | Int64 值（未指定单位） |
 | rowsRead | 正在从 （不适用于二进制副本） 的源中读取的行数。 | Int64 值（未指定单位） |
