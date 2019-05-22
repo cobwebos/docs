@@ -284,13 +284,13 @@ Oracle 链接服务支持以下属性。
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |Decimal, String （如果精度 > 28） |
-| INTEGER |Decimal, String （如果精度 > 28） |
+| FLOAT |Decimal, String（如果精度 > 28） |
+| INTEGER |Decimal, String（如果精度 > 28） |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |Decimal, String （如果精度 > 28） |
+| NUMBER |Decimal, String（如果精度 > 28） |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
