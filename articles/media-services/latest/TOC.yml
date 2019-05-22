@@ -57,7 +57,7 @@
         - name: 概述
           href: encoding-concept.md
           displayName: 'encoding, presets, jobs, adaptive, bitrate'
-        - name: 转换和作业 API
+        - name: 转换和作业
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
         - name: 标准编码器格式
@@ -74,7 +74,7 @@
         - name: 概述
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyzing, presets, jobs'
-        - name: 转换和作业 API
+        - name: 转换和作业
           href: transforms-jobs-concept.md
         - name: 作业错误代码
           href: job-error-codes.md
@@ -85,15 +85,15 @@
           href: dynamic-packaging-overview.md
         - name: 动态清单
           href: filters-dynamic-manifest-overview.md
-        - name: 筛选器 API
+        - name: 筛选器
           href: filters-concept.md
-        - name: 流式处理终结点 API
+        - name: 流式处理终结点
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
-        - name: 流式处理定位器 API
+        - name: 流式处理定位符
           displayName: URLs
           href: streaming-locators-concept.md
-        - name: 流式处理策略 API
+        - name: 流式处理策略
           href: streaming-policy-concept.md
         - name: 流式处理终结点错误代码
           href: streaming-endpoint-error-codes.md
@@ -112,15 +112,15 @@
               href: widevine-license-template-overview.md
             - name: FairPlay 许可证要求
               href: fairplay-license-overview.md
-        - name: 流式处理策略 API
+        - name: 流式处理策略
           href: streaming-policy-concept.md
-        - name: 内容密钥策略 API
+        - name: 内容密钥策略
           href: content-key-policy-concept.md
     - name: 实时传送视频流
       items:
         - name: 概述
           href: live-streaming-overview.md
-        - name: 实时事件和实时输出 API
+        - name: 实时事件和实时输出
           href: live-events-outputs-concept.md
         - name: 推荐的实时编码器
           href: recommended-on-premises-live-encoders.md

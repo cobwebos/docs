@@ -54,7 +54,7 @@
 - name: 概念
   items:
     - name: 模板文件结构
-      displayName: 'parameters,variables,resources,outputs'
+      displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
     - name: 模板最佳实践
       href: template-best-practices.md

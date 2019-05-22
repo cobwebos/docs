@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdf5508475d868ccb8c271daaac7449d3c940301
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598407"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "65073157"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
@@ -74,13 +74,47 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 最好先从几个陈述开始，然后[审查终结点陈述](luis-how-to-review-endpoint-utterances.md)以进行正确的意向预测和实体提取。
 
-## <a name="punctuation-marks"></a>标点符号
+## <a name="utterance-normalization"></a>查询文本规范化
 
-默认情况下，LUIS 不会忽略标点符号，因为某些客户端应用程序可能会对这些标记赋予含义。 确保示例话语使用“标点”和“无标点”，以便两种样式都返回相同的相对分数。 如果标点在你的客户端应用程序中没有特定含义，请考虑使用模式[忽略标点](#ignoring-words-and-punctuation)。 
+查询文本规范化是训练和预测期间忽略标点符号和音调符号的效果的过程。
 
-## <a name="ignoring-words-and-punctuation"></a>忽略单词和标点
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>标注字符和标点符号的查询文本规范化
 
-如果想要忽略示例陈述中的特定单词或标点符号，请在 _ignore_ 语法中使用[模式](luis-concept-patterns.md#pattern-syntax)。 
+当创建或导入应用程序，因为它是应用的 JSON 文件中的设置定义查询文本规范化。 默认情况下，关闭状态的查询文本规范化设置。 
+
+标注字符如是标记或符号的文本中： 
+
+```
+İ ı Ş Ğ ş ğ ö ü
+```
+
+如果您的应用程序启用规范化，在进行评分**测试**窗格、 批处理测试和终结点查询将针对所有语音样本使用标注字符或标点进行更改。
+
+开启标注字符或标点 LUIS JSON 应用程序文件中的查询文本规范化`settings`参数。
+
+```JSON
+"settings": [
+    {"name": "NormalizePunctuation", "value": "true"},
+    {"name": "NormalizeDiacritics", "value": "true"}
+] 
+```
+
+规范化**标点**意味着您的模型获取训练的并且你的终结点查询获取预测之前，标点将被删除从语音样本。 
+
+规范化**音调符号**替代与常规字符的语音样本中的音调符号字符。 例如：`Je parle français`变得`Je parle francais`。 
+
+规范化并不意味着您将不，请参阅标点和音调符号中的示例查询文本或预测的响应，只是将训练和预测期间忽略它们。
+
+
+### <a name="punctuation-marks"></a>标点符号
+
+如果未标准化标点，LUIS 不默认情况下，忽略标点符号，因为某些客户端应用程序可能作出这些标记的重要性。 确保示例话语使用“标点”和“无标点”，以便两种样式都返回相同的相对分数。 
+
+如果标点在客户端应用程序中没有特定含义，请考虑[忽略标点符号](#utterance-normalization)进行规范化标点。 
+
+### <a name="ignoring-words-and-punctuation"></a>忽略单词和标点
+
+如果你想要忽略特定单词或标点符号模式中的，使用[模式](luis-concept-patterns.md#pattern-syntax)与_忽略_的方括号内，语法`[]`。 
 
 ## <a name="training-utterances"></a>训练陈述
 
