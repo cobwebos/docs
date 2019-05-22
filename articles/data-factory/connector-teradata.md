@@ -169,7 +169,7 @@ Teradata 链接的服务支持以下属性：
 | ByteInt |Int16 |
 | Char |String |
 | Clob |String |
-| date |DateTime |
+| Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |String |
@@ -194,7 +194,7 @@ Teradata 链接的服务支持以下属性：
 | Period(Timestamp) |String |
 | Period(Timestamp With Time Zone) |String |
 | SmallInt |Int16 |
-| 时间 |TimeSpan |
+| Time |TimeSpan |
 | Time With Time Zone |String |
 | Timestamp |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
