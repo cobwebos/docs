@@ -1,21 +1,47 @@
-- name: OpenShift 文档
-  href: index.md
-- name: 快速入门
-  expanded: true
+- name: Azure Red Hat OpenShift
+  href: index.yml
+- name: 概述
   items:
-    - name: OpenShift：社区模板
-      href: 'https://azure.microsoft.com/resources/templates/openshift-origin-rhel/'
+    - name: 关于 Azure Red Hat OpenShift
+      href: intro-openshift.md
 - name: 教程
   items:
-    - name: 部署到 Azure VM
-      href: /azure/virtual-machines/linux/openshift-get-started
+    - name: 创建和管理 Azure Red Hat OpenShift 群集
+      items:
+        - name: 1 - 创建 Azure Red Hat OpenShift 群集
+          href: tutorial-create-cluster.md
+        - name: 2 - 缩放 Azure Red Hat OpenShift 群集
+          href: tutorial-scale-cluster.md
+        - name: 3 - 删除 Azure Red Hat OpenShift 群集
+          href: tutorial-delete-cluster.md
+- name: 操作指南
+  expanded: true
+  items:
+    - name: 设置 Azure Red Hat OpenShift 开发环境
+      href: howto-setup-environment.md
+      expanded: true
+      items:
+        - name: 创建 Azure AD 租户
+          href: howto-create-tenant.md
+        - name: 创建 Azure AD 应用对象和用户
+          href: howto-aad-app-configuration.md
+- name: 引用
+  items:
+    - name: Azure Red Hat OpenShift CLI
+      href: /cli/azure/openshift
+    - name: Azure Red Hat OpenShift REST API
+      href: /rest/api/openshift
 - name: 资源
   items:
+    - name: 常见问题
+      href: openshift-faq.md
+    - name: 故障排除
+      href: troubleshoot.md
+    - name: 支持的资源
+      href: supported-resources.md
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Red Hat OpenShift 文档
+      href: 'https://docs.openshift.com/aro/welcome/index.html'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: OpenShift 容器模板
-      href: 'https://github.com/Microsoft/openshift-container-platform'
-    - name: OpenShift Origin
-      href: 'https://docs.openshift.org/latest/getting_started/index.html'
-    - name: OpenShift 站点
-      href: 'https://docs.openshift.org/latest/welcome/index.html'

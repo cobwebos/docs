@@ -53,6 +53,8 @@
       items:
         - name: REST
           href: azure-netapp-files-develop-with-rest-api.md
+        - name: Azure NetApp 文件 SDK
+          href: azure-netapp-files-sdk-cli.md
         - name: 排查 Azure NetApp 文件资源提供程序错误
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: 引用

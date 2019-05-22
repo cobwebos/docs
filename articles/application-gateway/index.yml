@@ -5,12 +5,11 @@ metadata:
   title: Azure 应用程序网关文档 - 教程和 API 参考
   meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
   services: application-gateway
-  author: davidmu1
-  manager: jeconnocfte
+  author: vhorne
   ms.service: application-gateway
   ms.topic: landing-page
-  ms.date: 02/01/2018
-  ms.author: davidmu
+  ms.date: 5/20/2019
+  ms.author: victorh
 abstract:
   description: 了解如何部署应用程序网关 - 服务形式的应用程序传送控制器 (ADC)。 教程、API 参考和其他文档介绍了如何设置应用程序级别的路由和负载均衡服务，以便构建高度可用的可缩放 Web 前端。
 sections:
@@ -40,12 +39,12 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/application-gateway/tutorial-manage-web-traffic-cli">使用应用程序网关管理 Web 流量</a>。
-          - html: <a href="/azure/application-gateway/tutorial-restrict-web-traffic-cli">在应用程序网关上通过 Web 应用程序防火墙限制 Web 流量</a>。
-          - html: <a href="/azure/application-gateway/tutorial-ssl-cli">在应用程序网关上启用 SSL 终止</a>。
-          - html: <a href="/azure/application-gateway/tutorial-multiple-sites-cli">使用应用程序网关托管多个网站</a>。
-          - html: <a href="/azure/application-gateway/tutorial-url-route-cli">在应用程序网关中根据 URL 路由流量</a>。
-          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">在应用程序网关池中将流量重定向到特定服务器</a>。
+          - html: <a href="/azure/application-gateway/application-gateway-web-application-firewall-portal">创建具有 Web 应用程序防火墙的应用程序网关</a>
+          - html: <a href="/azure/application-gateway/create-ssl-portal">配置带有 SSL 终端的应用程序网关</a>
+          - html: <a href="/azure/application-gateway/create-multiple-sites-portal">创建和配置用于托管多个网站的应用程序网关</a>
+          - html: <a href="/azure/application-gateway/create-url-route-portal">创建带有基于路径的路由规则的应用程序网关</a>
+          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">创建支持基于 URL 路径进行重定向的应用程序网关</a>
+          - html: <a href="/azure/application-gateway/tutorial-autoscale-ps">创建可改进 Web 应用程序访问的应用程序网关</a>
   - title: 示例
     items:
       - type: paragraph

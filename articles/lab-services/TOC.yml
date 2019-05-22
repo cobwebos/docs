@@ -116,8 +116,9 @@
             - name: 设置保留策略并运行清理脚本
               href: image-factory-set-retention-policy-cleanup.md
         - name: 企业中的开发测试实验室
-          href: devtest-lab-guidance-prescriptive-adoption.md
           items:
+            - name: 企业规模的开发测试实验室
+              href: devtest-lab-guidance-prescriptive-adoption.md
             - name: 参考体系结构
               href: devtest-lab-reference-architecture.md
             - name: 纵向扩展开发测试实验室部署

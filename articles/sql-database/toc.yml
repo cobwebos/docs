@@ -99,6 +99,16 @@
       href: sql-database-implement-geo-distributed-database.md
     - name: 设置 Azure SQL 数据同步
       href: sql-database-get-started-sql-data-sync.md
+    - name: 机器学习服务
+      items:
+        - name: 使用 R 生成并部署预测模型
+          items:
+            - name: 1 - 准备数据
+              href: sql-database-tutorial-predictive-model-prepare-data.md
+            - name: 2 - 创建模型
+              href: sql-database-tutorial-predictive-model-build-compare.md
+            - name: 3 - 部署模型
+              href: sql-database-tutorial-predictive-model-deploy.md
 - name: 示例
   items:
     - name: 代码示例

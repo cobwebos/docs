@@ -92,11 +92,11 @@
   items:
     - name: 配置应用
       items:
-        - name: 使用应用设置
-          href: web-sites-configure.md
+        - name: 配置通用设置
+          href: configure-common.md
         - name: 配置 PHP
           href: web-sites-php-configure.md
-        - name: Java 开发人员指南
+        - name: 配置 Java
           href: configure-language-java.md
         - name: 连接到本地资源
           href: web-sites-integrate-with-vnet.md

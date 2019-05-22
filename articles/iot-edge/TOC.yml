@@ -59,7 +59,7 @@
       items:
         - name: 了解 Azure IoT Edge 模块
           href: iot-edge-modules.md
-        - name: Edge 代理和中心属性
+        - name: IoT Edge 代理和中心属性
           href: module-edgeagent-edgehub.md
     - name: 开发
       items:
@@ -93,7 +93,7 @@
       href: iot-edge-glossary.md
 - name: 操作指南
   items:
-    - name: 注册 Edge 设备
+    - name: 注册 IoT Edge 设备
       items:
         - name: Azure 门户
           href: how-to-register-device-portal.md
@@ -145,7 +145,7 @@
           href: how-to-deploy-monitor.md
         - name: Azure CLI
           href: how-to-deploy-monitor-cli.md
-    - name: 使用 Edge 设备作为网关
+    - name: 使用 IoT Edge 设备作为网关
       items:
         - name: 配置透明网关
           href: how-to-create-transparent-gateway.md
@@ -159,6 +159,8 @@
       items:
         - name: IoT Edge 上的 Azure Blob 存储
           href: how-to-store-data-blob.md
+        - name: 部署 blob 存储模块
+          href: how-to-deploy-blob.md
     - name: 使用 DevOps 工具进行管理
       items:
         - name: Azure DevOps Projects
@@ -189,7 +191,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 时序见解
           href: /azure/time-series-insights
-    - name: Microsoft Edge
+    - name: Azure IoT Edge
       items:
         - name: IoT Edge
           href: /azure/iot-edge

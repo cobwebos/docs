@@ -21,13 +21,12 @@
     - name: 线路和对等互连
       href: expressroute-circuit-peerings.md
     - name: 位置与合作伙伴
-      href: expressroute-locations.md
       items:
         - name: 按位置列出的提供商
           href: expressroute-locations-providers.md
         - name: 按提供商列出的位置
           href: expressroute-locations.md
-    - name: 关于虚拟网络网关
+    - name: ExpressRoute 虚拟网络网关和 FastPath
       href: expressroute-about-virtual-network-gateways.md
     - name: 先决条件
       href: expressroute-prerequisites.md
