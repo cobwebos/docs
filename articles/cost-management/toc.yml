@@ -46,6 +46,8 @@
           href: 'https://docs.microsoft.com/rest/api/consumption'
         - name: 资源管理器模板
           href: /azure/templates/microsoft.consumption/budgets
+        - name: 成本管理 REST API 示例
+          href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
     - name: 资源
       items:
         - name: 利用 Microsoft Learn 掌握技能

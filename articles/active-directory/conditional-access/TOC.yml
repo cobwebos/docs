@@ -19,8 +19,8 @@
 - name: 概念
   expanded: false
   items:
-    - name: 基线保护
-      href: baseline-protection.md
+    - name: 基线保护策略
+      href: concept-baseline-protection.md
     - name: 条件
       href: conditions.md
     - name: 位置条件
@@ -38,6 +38,16 @@
       href: plan-conditional-access.md
     - name: 最佳做法
       href: best-practices.md
+    - name: 基线策略
+      items:
+        - name: 要求管理员进行 MFA
+          href: howto-baseline-protect-administrators.md
+        - name: 最终用户保护
+          href: howto-baseline-protect-end-users.md
+        - name: 阻止传统身份验证
+          href: howto-baseline-protect-legacy-auth.md
+        - name: 要求将 MFA 用于服务管理
+          href: howto-baseline-protect-azure.md
     - name: 阻止传统身份验证
       href: block-legacy-authentication.md
     - name: 迁移经典策略

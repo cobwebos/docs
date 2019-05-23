@@ -45,6 +45,8 @@
           href: publish-portal.md
         - name: 使用来自 Key Vault 的机密
           href: key-vault-access.md
+        - name: 使用托管标识进行部署
+          href: publish-managed-identity.md
     - name: 使用者
       items:
         - name: 监视托管应用程序
