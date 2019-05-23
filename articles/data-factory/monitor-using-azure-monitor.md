@@ -108,11 +108,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | storageAccountId |String | 要将诊断日志发送到的存储帐户的资源 ID |
 | serviceBusRuleId |String | 服务总线命名空间的服务总线规则 ID。你要在该服务总线命名空间中创建事件中心，以便流式传输诊断日志。 规则 ID 的格式为：“{服务总线资源 ID}/authorizationrules/{密钥名称}”。|
 | workspaceId | 复杂类型 | 指标时间粒度及其保留策略的数组。 目前，此属性为空。 |
-|指标| 要传递到被调用管道的管道运行的参数值| 用于将参数名称映射到参数值的 JSON 对象 |
-| 日志| 复杂类型| 某个资源类型的诊断日志类别的名称。 若要获取资源的诊断日志类别列表，请先执行 GET 诊断设置操作。 |
+|metrics| 要传递到被调用管道的管道运行的参数值| 用于将参数名称映射到参数值的 JSON 对象 |
+| logs| 复杂类型| 某个资源类型的诊断日志类别的名称。 若要获取资源的诊断日志类别列表，请先执行 GET 诊断设置操作。 |
 | category| String| 日志类别及其保留策略的数组 |
 | timeGrain | String | 以 ISO 8601 持续时间格式捕获的指标的粒度。 必须为 PT1M（1 分钟）|
-| 已启用| Boolean | 指定是否为此资源启用了该指标或日志类别的收集|
+| enabled| Boolean | 指定是否为此资源启用了该指标或日志类别的收集|
 | retentionPolicy| 复杂类型| 描述指标或日志类别的保留策略。 仅用于存储帐户选项。|
 | days| Int| 指标或日志的保留天数。 如果值为 0，则无限期保留日志。 仅用于存储帐户选项。 |
 
