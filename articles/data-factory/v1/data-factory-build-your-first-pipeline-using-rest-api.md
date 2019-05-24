@@ -125,8 +125,8 @@ ms.locfileid: "58487798"
 
 | 属性 | 说明 |
 |:--- |:--- |
-| ClusterSize |HDInsight 群集的大小。 |
-| TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
+| clusterSize |HDInsight 群集的大小。 |
+| timeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
 | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
 
 请注意以下几点：
