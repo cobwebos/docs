@@ -53,7 +53,7 @@ ms.locfileid: "65069030"
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 
 1. 设置[防火墙规则](howto-manage-firewall-using-portal.md)以允许客户端 IP 地址。 （仅出于临时测试目的）使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束 IP 地址，来设置一个防火墙规则。 这会在所有 IP 地址上打开服务器。 如果这样可以解决连接性问题，请删除此规则，再针对适当限制的 IP 地址或地址范围创建防火墙规则。
-2. 在客户端与 Internet 之间的所有防火墙上，确保为出站连接打开端口 3306。
+2. 在客户端与 Internet 之间的所有防火墙上，确保为出站连接打开端口 5432。
 3. 验证连接字符串和其他连接设置。
 4. 在仪表板中检查服务运行状况。 如果你认为发生了区域性服务中断，请参阅[有关使用 Azure Database for PostgreSQL 确保业务连续性的概述](concepts-business-continuity.md)了解恢复到新区域所要执行的步骤。
 
