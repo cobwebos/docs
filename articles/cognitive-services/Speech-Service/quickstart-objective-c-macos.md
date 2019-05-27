@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
-ms.openlocfilehash: f25c3801553b0ac0c725170cda95f5c1eacc3637
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 67f2531b24796de1e00505fdc757f3c2244c5054
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020743"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002354"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -34,7 +34,7 @@ ms.locfileid: "65020743"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.5.0`。
+认知服务语音 SDK 的当前版本是 `1.5.1`。
 
 适用于 Mac 的认知服务语音 SDK 目前以框架捆绑包的形式分发。
 可在 Xcode 项目将它作为 [CocoaPod](https://cocoapods.org/) 使用，或者从 https://aka.ms/csspeech/macosbinary 下载，然后手动与它建立链接。 本指南使用 CocoaPod。
@@ -71,7 +71,7 @@ ms.locfileid: "65020743"
     ```
     target 'helloworld' do
         platform :osx, '10.13'
-        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.0'
+        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.1'
     end
     ```
 1. 在终端中导航到 `helloworld` 目录并运行命令 `pod install`。 这会生成一个 `helloworld.xcworkspace` Xcode 工作区，其中包含示例应用以及用作依赖项的语音 SDK。 在后续步骤中将使用此工作区。
@@ -79,7 +79,8 @@ ms.locfileid: "65020743"
 ## <a name="add-the-sample-code"></a>添加示例代码
 
 1. 在 Xcode 中打开 `helloworld.xcworkspace` 工作区。
-1. 将自动生成的 `AppDelegate.m` 文件的内容替换为：[!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
+1. 通过以下方式替换自动生成的 `AppDelegate.m` 文件的内容：  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
 1. 将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e5513b28c1ae64fc8c87bb7a949596feab4623e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713720"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873423"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Linux 虚拟机
 
@@ -224,6 +224,10 @@ vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
 现在已为 VM 启用加速网络。
+
+## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>处理动态绑定和吊销的虚函数 
+通过在 VM 中公开的合成 NIC 必须运行应用程序。 如果 VF NIC 上直接运行该应用程序，它不会收到**所有**的数据包到 VM，由于某些数据包通过综合接口显示。
+如果您通过合成 NIC 运行的应用程序，它可以保证应用程序收到**所有**到它的数据包。 即使 VF 撤消服务主机时，它还可确保，继续运行应用程序。 应用程序绑定到合成 NIC**必需**要求的所有应用程序利用**加速网络**。
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>在现有 VM 上启用加速网络
 如果创建的 VM 没有加速网络，则可在现有 VM 上启用此功能。  VM 必须支持加速网络，前提是满足以下先决条件（上文亦有列出）：

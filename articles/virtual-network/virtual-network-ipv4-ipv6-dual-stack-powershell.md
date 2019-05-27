@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: f26391e36e3208996160fffad01e39ec2f182318
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a9f8066896134072665c3f5b325e033b638bf094
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130837"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000995"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>部署 Azure-PowerShell （预览版） 中的 IPv6 双堆栈应用程序
 
@@ -151,7 +151,7 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-load-balancer"></a>创建负载均衡器
 
-使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) 创建基本负载均衡器。 下面的示例创建一个公共基本负载均衡器名为*myLoadBalancer*使用 IPv4 和 IPv6 前端 IP 配置、 后端池、 运行状况探测、 负载均衡规则和 NAT 规则中创建前面的步骤：
+使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) 创建基本负载均衡器。 下面的示例创建一个公共基本负载均衡器名为*myLoadBalancer*使用 IPv4 和 IPv6 前端 IP 配置、 后端池和在前面步骤中创建的负载均衡规则：
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `

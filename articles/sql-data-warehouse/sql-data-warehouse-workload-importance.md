@@ -10,18 +10,18 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c26bca66b0f82ea58d01d0eb8358f521168a799
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 92990b68969e754ee126b6cd5a22ecfa700c0494
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154143"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002882"
 ---
 # <a name="sql-data-warehouse-workload-importance"></a>SQL 数据仓库工作负荷重要性
 
 本文介绍工作负荷重要性如何影响 SQL 数据仓库请求的执行顺序。
 
-## <a name="importance"></a>Importance
+## <a name="importance"></a>重要性
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
@@ -39,7 +39,7 @@ ms.locfileid: "65154143"
 
 访问读取和写入活动锁是自然争用的一个方面。  [分区切换](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)或 [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql) 等活动需要权限提升的锁。  如果不设置工作负荷重要性，SQL 数据仓库将会针对吞吐量进行优化。  针对吞吐量进行优化意味着，当正在运行的和排队的请求具有相同的锁定需求，并且资源可用时，排队的请求可能会绕过提前抵达请求队列的、具有更高锁定需求的请求。  将工作负荷重要性应用到具有较高锁定需求的请求后， 会先运行具有较高重要性的请求，然后再运行具有较低重要性的请求。
 
-下面是一个示例：
+请看下面的示例：
 
 Q1 正在运行，它从 SalesFact 中选择数据。
 Q2 正在排队等待 Q1 完成。  该请求是在上午 9:00 提交的，目前正在尝试将新数据分区切换到 SalesFact。
@@ -61,4 +61,8 @@ Q6 是在上午 9:01 提交的，具有 smallrc 资源类。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始创建分类器，请参阅[创建工作负荷分类器 (Transact SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)。  有关 SQL 数据仓库工作负荷分类的详细信息，请参阅[SQL 数据仓库工作负荷分类](sql-data-warehouse-workload-classification.md)。  有关如何创建工作负荷分类器，请参阅快速入门[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)。 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。
+- 创建分类器的详细信息，请参阅[创建工作负荷分类器 (Transact SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)。  
+- 有关 SQL 数据仓库工作负荷分类的详细信息，请参阅[工作负荷分类](sql-data-warehouse-workload-classification.md)。  
+- 请参阅快速入门[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)有关如何创建工作负荷分类器。
+- 请参阅操作指南文章向[配置工作负荷重要性](sql-data-warehouse-how-to-configure-workload-importance.md)和如何[管理和监视工作负荷管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)。
+- 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。

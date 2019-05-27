@@ -3,17 +3,17 @@ title: 在本地部署远程监视解决方案 - Docker - Azure | Microsoft Docs
 description: 本操作指南展示了如何使用 Docker 将远程监视解决方案加速器部署到本地计算机，以用于测试和开发。
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: c00e62e237fe263f54926c8e74fb6211a2e5a4e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61447023"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967542"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>在本地部署远程监视解决方案加速器 - Docker
 
@@ -27,7 +27,7 @@ ms.locfileid: "61447023"
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>计算机设置
 

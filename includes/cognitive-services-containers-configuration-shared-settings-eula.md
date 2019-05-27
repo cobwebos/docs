@@ -5,15 +5,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/02/2019
 ms.openlocfilehash: 04b7031382d7ed611822a3dd721dfa09f01bce74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599427"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116715"
 ---
 `Eula` 设置表示已接受容器的许可条款。 必须为此配置设置指定值，并且该值必须设置为 `accept`。
 
-|需要| 名称 | 数据类型 | 描述 |
+|必选| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
 |是| `Eula` | String | 接受许可证<br><br>示例：<br>`Eula=accept` |
 

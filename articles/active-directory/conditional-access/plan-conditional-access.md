@@ -13,12 +13,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4832055bffa72732991cb766ce88cc48c07530e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e277f31dcf2627959b88d58f325fb4dad024a00
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301338"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001195"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划 Azure Active Directory 中的条件访问部署
 
@@ -81,7 +81,7 @@ ms.locfileid: "60301338"
  
 ![命名标准](./media/plan-conditional-access/11.png)
 
-虽然描述性名称有助于概述你的条件访问实现，但如果需要在对话中引用策略，则序列号非常有用。 例如，如果你在电话中与伙伴管理员进行交谈，可以要求他打开策略 EM063 来解决问题。
+虽然描述性名称有助于概述你的条件访问实现，但如果需要在对话中引用策略，则序列号非常有用。 例如，如果在电话上交谈的其他管理员，你可以要求他们打开策略 EM063 来解决问题。
 
 
 
@@ -131,7 +131,7 @@ ms.locfileid: "60301338"
 
 要求执行 MFA 的常见用例包括：
 
-- [管理员的访问](baseline-protection.md#require-mfa-for-admins)
+- [管理员的访问](howto-baseline-protect-administrators.md)
 - [访问特定的应用](app-based-mfa.md) 
 - [从你不信任的网络位置访问](untrusted-networks.md)。
 

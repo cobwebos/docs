@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498808"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116208"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -30,7 +30,7 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
-Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。 Policy 创建应用于资源的所有分配列表，然后根据每个定义评估资源。 Policy 在将请求转交给相应的资源提供程序之前处理多个效果。 这样做可以防止资源提供程序在资源不符合策略的设计调控时进行不必要的处理。
+创建或更新资源通过 Azure 资源管理器请求首先通过 Azure 策略计算。 Azure 策略创建适用于资源，然后计算结果对每个定义的资源的所有分配的列表。 Azure 策略进行处理多个效果将请求传递给相应的资源提供程序之前。 这样做会阻止由资源提供程序不必要的处理资源不满足 Azure 策略的设计的管理控制。
 
 - 首先检查**已禁用**以确定是否应评估策略规则。
 - 然后评估“追加​​”。 由于“附加”可能会改变请求，因此由“附加”所做的更改可能会阻止“审核”或“拒绝”效果的触发。
@@ -88,8 +88,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 }
 ```
 
-示例 3：使用具有数组**值**的非 **[\*]**
-[别名](definition-structure.md#aliases)的单个**字段/值**对，可在存储帐户上设置 IP 规则。 如果非 **[\*]** 别名是数组，该效果将以整个数组的形式附加**值**。 如果数组已存在，该冲突会导致拒绝事件发生。
+示例 3：单一**字段/值**配对使用非 **[\*]** [别名](definition-structure.md#aliases)数组**值**存储帐户上设置 IP 规则。 如果非 **[\*]** 别名是数组，该效果将以整个数组的形式附加**值**。 如果数组已存在，该冲突会导致拒绝事件发生。
 
 ```json
 "then": {
@@ -149,7 +148,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 ### <a name="audit-evaluation"></a>“审核”评估
 
-“审核”是创建或更新资源期间由 Policy 检查的最后一个效果。 然后，Policy 将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Policy 将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。
+审核是最后一个期间创建或更新资源，检查 Azure 策略的效果。 Azure 策略然后发送到资源提供程序的资源。 “审核”对于资源请求和评估周期的工作方式相同。 Azure 策略添加`Microsoft.Authorization/policies/audit/action`到活动日志的操作，并将标记为不符合的资源。
 
 ### <a name="audit-properties"></a>“审核”属性
 
@@ -171,7 +170,7 @@ AuditIfNotExists 对匹配 **if** 条件的资源启用审核，但没有在 **t
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists 评估
 
-AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 与使用“审核”效果时一样，Policy 会将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志。 触发后，满足 if 条件的资源是标记为不符合的资源。
+AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 Azure 策略添加`Microsoft.Authorization/policies/audit/action`到活动的操作以审核效果登录相同的方式。 触发后，满足 if 条件的资源是标记为不符合的资源。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists 属性
 
@@ -300,7 +299,7 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
         "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
         "name": "current",
         "roleDefinitionIds": [
-            "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
             "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
         ],
         "existenceCondition": {
@@ -340,7 +339,7 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
 
 ## <a name="layering-policies"></a>分层策略
 
-资源可能会受到多个分配的影响。 这些分配可能处于相同或不同的范围。 这些分配中的每一个也可能具有不同的定义效果。 将单独评估每个策略的条件和效果。 例如：
+资源可能会受到多个分配的影响。 这些分配可能处于相同或不同的范围。 这些分配中的每一个也可能具有不同的定义效果。 将单独评估每个策略的条件和效果。 例如:
 
 - 策略 1
   - 将资源位置限制为“westus”
@@ -369,9 +368,9 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Azure Policy 示例](../samples/index.md)中查看示例
-- 查看[策略定义结构](definition-structure.md)
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)
-- 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)
-- 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组
+- 查看示例[Azure 策略示例](../samples/index.md)。
+- 查看 [Azure Policy 定义结构](definition-structure.md)。
+- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[修正的不合规资源](../how-to/remediate-resources.md)。
+- 查看管理组与[使用 Azure 管理组组织资源](../../management-groups/overview.md)。

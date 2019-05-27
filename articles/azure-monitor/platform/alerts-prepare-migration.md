@@ -7,16 +7,19 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 347c89991cbb4d28b46eafff0a783148793ad2f7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bdbd45c2b10dec8f1c0a85110747a470e818dbf9
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727488"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015612"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备迁移经典警报规则的逻辑应用和 runbook
 
-作为[之前公布](monitoring-classic-retirement.md)，在 Azure Monitor 经典警报将被停用在 2019 年 7 月中。 迁移工具是的客户使用经典警报规则的用户，那些想要自行触发迁移到 Azure 门户中可用。
+作为[之前公布](monitoring-classic-retirement.md)，在 Azure Monitor 经典警报将被在 2019 年 9 月停用 (已最初年 7 月 2019年)。 迁移工具是的客户使用经典警报规则的用户，那些想要自行触发迁移到 Azure 门户中可用。
+
+> [!NOTE]
+> 由于推出的迁移工具中的延迟，经典警报迁移的停用日期已延长到 2019 年 8 月 31 日从 2019 年 6 月 30 日的最初公布日期。
 
 如果您选择自愿迁移到新的警报规则的经典警报规则，请注意，有两个系统之间的一些差异。 本文介绍这些差异以及如何准备更改。
 
@@ -30,7 +33,7 @@ ms.locfileid: "64727488"
 |---------|---------|---------|
 |REST API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [参考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |      |
+|PowerShell      | [参考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [参考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure 资源管理器模板 | [经典警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[为新指标警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>通知有效负载的更改
@@ -42,7 +45,7 @@ ms.locfileid: "64727488"
 |  |经典警报  |新指标警报 |
 |---------|---------|---------|
 |警报激活或解析？    | **status**       | **data.status** |
-|有关警报的上下文信息     | **上下文**        | **data.context**        |
+|有关警报的上下文信息     | **context**        | **data.context**        |
 |警报已激活或已解决的时间戳     | **context.timestamp**       | **data.context.timestamp**        |
 | 警报规则 ID | **context.id** | **data.context.id** |
 | 警报规则名称 | **context.name** | **data.context.name** |

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
-ms.author: singhkay
+ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c959b42086df2df816583ea9d2f8f2fc7a9243fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d9bf155f24c947f8a27a38af01aedcf0b041b94
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743530"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966043"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>使用 Azure 自动化纵向缩放 Azure Linux 虚拟机
 垂直缩放是增加或减少计算机的资源以响应工作负荷的过程。 在 Azure 中，这可以通过更改虚拟机的大小来实现。 这种做法可为以下方案提供方便

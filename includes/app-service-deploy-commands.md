@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 2be66b742d7a4572d3613a8b1fdeafd5fb7ed271
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343713"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111270"
 ---
 要将资源部署到 Azure，必须登录到 Azure 帐户，并且必须使用 Azure 资源管理器模块。 若要了解配合使用 Azure 资源管理器和 Azure PowerShell 或 Azure CLI 的相关信息，请参阅：
 

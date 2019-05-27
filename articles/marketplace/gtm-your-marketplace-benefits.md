@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 1f3ae120bbbb902188d893d5a04582a6e9547bdf
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 297a6f9058b220d1f2e3a0ca69d018858218b774
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937948"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909714"
 ---
 # <a name="your-marketplace-benefits"></a>市场权益
 
@@ -34,11 +34,7 @@ ms.locfileid: "64937948"
 2. Microsoft 市场咨询：利用此[免费咨询](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation)服务来帮助规划市场中应用的体系结构。
 3. 市场论坛：在[市场论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)直接向 Microsoft 员工和其他市场合作伙伴提问。
 4. 技术支持：使用[云合作伙伴门户](https://cloudpartner.azure.com/)中的“帮助”菜单获取市场相关支持问题的帮助。 
-5. 开发测试赞助：查看以下资格条件，并使用[注册表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3omd2bW7etLoEoufw2-vMdUNUkxSjQ5V0hJOEtZSks3ME45TDJNTkVUTi4u)提交赞助请求：
-    * 开发和测试赞助适用于向 Azure 市场发布套餐。
-    * 该基金不可用于任何其他目的。
-    * 奖励额度为 5,000 美元，可在 90 天内使用，从在分配的订阅中执行第一项操作开始算起。
-    * 所测试的应用必须在发放基金的最后一天之后的 30 天内，在 Azure 市场中上线：例如，如果在 12 月 1 日开始使用此笔基金，则应用必须在 3 月 31 日之前上线。
+5. AAD 集成和开发和测试赞助： 当你转实时事务 （可部署和计费的产品/服务） 时将选择加入。 请参阅下的节，了解如何开始使用到市场优势。
 
 ## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>市场中的市场推广 (GTM) 权益
 
@@ -46,8 +42,8 @@ Azure 市场和 AppSource 中的新商品都有资格通过 Microsoft GTM 服务
 
 | 店面 | 提供的其他权益 |
 |:--- |:--- |
-| AppSource |  Microsoft 金牌合作伙伴 <br> 试用版应用 |
-| Azure 市场 | 事务处理产品/服务 <br> 试用版产品/服务 |
+| AppSource |  Microsoft 金牌合作伙伴 <br> Transact 产品/服务 – Marketplace 奖励 <br> 试用版应用 |
+| Azure 市场 | Transact 产品/服务 – Marketplace 奖励 <br> 试用版产品/服务 |
 
 GTM 支持包括模板、Web 内容、培训以及用于推广业务的工具。
 
@@ -56,21 +52,25 @@ GTM 支持包括模板、Web 内容、培训以及用于推广业务的工具。
 1. 在 Azure 市场或 AppSource 中发布套餐。
 2. 确保已在套餐的“联系信息”部分输入了营销联系人。 这应该是专用的营销资源，而不是统括式的别名。 （即，请避免使用“support\@”、“info\@”、“marketing\@”等。）
 
-基于解决方案的状态，产品/服务列表、 试用版，或 Transact，您将收到包含自助资源的电子邮件或咨询调用与专用 Engagement 管理器的邀请。 你不需要做任何事就能发起呼叫 — 市场登记团队会根据你在[云合作伙伴门户](https://cloudpartner.azure.com/)中提供的信息与你取得联系。
+根据解决方案的状态，产品/服务列表、 试用版，或 Transact – Marketplace 奖励将接收包含自助资源的电子邮件或咨询调用与专用 Engagement 管理器的邀请。 你不需要做任何事就能发起呼叫 — 市场登记团队会根据你在[云合作伙伴门户](https://cloudpartner.azure.com/)中提供的信息与你取得联系。
 
-随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有商品都会收到基本级别的优化建议和升级。  这些列表还有其他基于解决方案的状态 （列表、 试用版或 Transact） 选择 marketplace 和 Microsoft 合作伙伴的资格认证成就的市场营销权益资格。
+随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有商品都会收到基本级别的优化建议和升级。  这些列表还有其他基于解决方案选择的状态 （列表、 试用版或 Transact-marketplace 奖励） marketplace 和 Microsoft 合作伙伴的资格认证成就的市场营销权益资格。
 
-下表汇总了资格要求：
+下表总结了列表和试用产品/服务的资格要求：
 
-![](./media/marketplace-publishers-guide/gtm-activities-table.png)
+![](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
 \* 需要银级或金级资质。 <br>
 \*\* 需要金级资质。 <br>
 \*\*\* 需要金级资格和合作伙伴编目中共同销售做好准备。 <br>
 ^ 仅限事务处理，适用于 Azure 市场。
 
+## <a name="marketplace-rewards-for-transact-partners"></a>Marketplace transact 合作伙伴奖励
+
+可以在中查看 marketplace 奖励权益的完整列表[程序摘要幻灯片](https://onedrive.live.com/view.aspx?resid=1900675C97CA6FE0!630&ithint=file%2cpptx&authkey=!APQ6LSnDenx2FKM)。
+
 ## <a name="next-steps"></a>后续步骤
 
-登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，以便创建并配置套餐。
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，以便创建并配置产品/服务。
 
 ---

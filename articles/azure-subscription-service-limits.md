@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 05/17/2019
 ms.author: byvinyal
-ms.openlocfilehash: c8f1eaba726efe72e2b6845beaf1465d047c90d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3f01e15e4ac39127263c8c68590b6c50be04847d
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787577"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66023217"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间推移，将扩展和更新，包含更多服务列表。
@@ -54,6 +54,7 @@ ms.locfileid: "65787577"
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure DNS](#azure-dns-limits)
 * [Azure 防火墙](#azure-firewall-limits)
+* [Azure Functions](#functions-limits)
 * [Azure Kubernetes 服务](#azure-kubernetes-service-limits)
 * [Azure 机器学习服务](#azure-machine-learning-service-limits)
 * [Azure Maps](#azure-maps-limits)
@@ -234,6 +235,9 @@ ms.locfileid: "65787577"
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
+### <a name="functions-limits"></a>函数限制
+[!INCLUDE [functions-limits](../includes/functions-limits.md)]
+
 ### <a name="scheduler-limits"></a>计划程序限制
 [!INCLUDE [scheduler-limits-table](../includes/scheduler-limits-table.md)]
 
@@ -246,7 +250,7 @@ ms.locfileid: "65787577"
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB 限制
-Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放，以处理应用程序的任何需求。 如果你有 Azure Cosmos DB 提供的规模有任何疑问，发送电子邮件发送到askcosmosdb@microsoft.com。
+有关 Azure Cosmos DB 限制，请参阅[Azure Cosmos DB 中的限制](cosmos-db/concepts-limits.md)。
 
 ### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 有关 Azure Database for MySQL 限制，请参阅 [Azure Database for MySQL 中的限制](mysql/concepts-limits.md)。

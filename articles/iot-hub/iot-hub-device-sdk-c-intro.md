@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 08/25/2017
+ms.date: 05/17/2019
 ms.author: yizhon
-ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d758d761e560642de76e149c83fc6898aa78bafb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401195"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910325"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
@@ -126,7 +126,7 @@ Windows 版本的 **iothub_client\_samples\_iothub_convenience_sample** 应用�
   ![Visual Studio 解决方案资源管理器](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
-> 如果在 Visual Studio 2017 中打开此项目，请接受提示，以便将项目重新定位到最新版本。
+> 如果 Visual Studio 会要求你重定目标到最新版本的项目，则接受提示。
 
 此解决方案只包含一个项目。 此解决方案中安装了四个 NuGet 包：
 
@@ -339,7 +339,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
   ![mqtt 示例的 Visual Studio 解决方案](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
 > [!NOTE]
-> 如果在 Visual Studio 2017 中打开此项目，请接受提示，以便将项目重新定位到最新版本。
+> 如果 Visual Studio 会要求你重定目标到最新版本的项目，则接受提示。
 
 如同前面的示例，此示例也包含多个 NuGet 包：
 

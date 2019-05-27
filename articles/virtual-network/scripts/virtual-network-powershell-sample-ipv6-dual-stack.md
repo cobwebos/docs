@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: 87c80857a1d4321768d9e0cdefa48d06c4d16a52
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: 627ff40361b562630f05c70823e9ad2c7ef711e0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761473"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002230"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>配置虚拟网络脚本示例 （预览版） 中的 IPv6 终结点
 
@@ -257,7 +257,6 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 | [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)  | 创建 Azure 负载均衡器。 |
 | [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) | 创建负载均衡器探测。 负载均衡器探测用于监视负载均衡器集中的每个 VM。 如果任何 VM 无法访问，流量将不会路由到该 VM。 |
 | [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) | 创建负载均衡器规则。 在此示例中，将为端口 80 创建一个规则。 当 HTTP 流量到达负载均衡器时，它会路由到负载均衡器集中某个 VM 的端口 80。 |
-| [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) | 创建负载均衡器网络地址转换 (NAT) 规则。  NAT 规则将负载均衡器的端口映射到 VM 上的端口。 在本示例中，将为发往负载均衡器集中的每个 VM 的 SSH 流量创建 NAT 规则。  |
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | 创建网络安全组 (NSG)，这是 Internet 和虚拟机之间的安全边界。 |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | 创建 NSG 规则以允许入站流量。 在此示例中，将为 SSH 流量打开端口 22。 |
 | [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | 创建虚拟网卡并将其连接到虚拟网络、子网和 NSG。 |

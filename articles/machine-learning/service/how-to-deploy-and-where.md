@@ -9,58 +9,54 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/02/2019
+ms.date: 05/21/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: f38f9889ca057f2981774edfb8a67bb986fdd8d7
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 4685d02fa9a1f08d86bdbe2915b94f177235b864
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65619860"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016421"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
-了解如何部署机器学习模型作为 web 服务在 Azure 云中，或 IoT Edge 设备。 本文档中的信息介绍了如何将部署到以下的计算目标：
+了解如何部署机器学习模型作为 web 服务在 Azure 云中，或 IoT Edge 设备。 
 
-| 计算目标 | 部署类型 | 描述 |
-| ----- | ----- | ----- |
-| [本地 web 服务](#local) | 测试/调试 | 适用于有限的测试和故障排除。
-| [Azure Kubernetes 服务 (AKS)](#aks) | 实时推理 | 非常适合用于大规模生产部署。 提供了自动缩放和快速的响应时间。 |
-| [Azure 容器实例 (ACI)](#aci) | 正在测试 | 非常适用于低规模，基于 CPU 的工作负荷。 |
-| [Azure 机器学习计算](how-to-run-batch-predictions.md) | （预览版）批处理推理 | 运行批处理评分上无服务器计算。 支持的普通和低优先级 Vm。 |
-| [Azure IoT Edge](#iotedge) | （预览版）IoT 模块 | 部署和 IoT 设备上提供机器学习模型。 |
-
-## <a name="deployment-workflow"></a>部署工作流
-
-为所有计算目标部署模型的过程类似：
+工作流是类似的而不考虑[在其中部署](#target)您的模型：
 
 1. 注册模型。
-1. 部署模型。
-1. 测试部署模型。
+1. 准备部署 （指定资产使用情况，计算目标）
+1. 将模型部署到计算目标。
+1. 测试已部署的模型，也称为 web 服务。
 
 有关部署工作流涉及的概念的详细信息，请参阅[使用 Azure 机器学习服务管理、部署和监视模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites-for-deployment"></a>部署的先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 模型。 如果你不具有定型的模型，可以使用模型中提供的依赖项文件[本教程](https://aka.ms/azml-deploy-cloud)。
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)，或[Azure 机器学习 Python SDK](https://aka.ms/aml-sdk)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)， [Azure 机器学习 Python SDK](https://aka.ms/aml-sdk)，或[Azure 机器学习 Visual Studio Code 扩展](how-to-vscode-tools.md)。
 
-## <a id="registermodel"></a> 注册机器学习模型
+## <a id="registermodel"></a> 注册您的模型
 
-模型注册表是在 Azure 云中存储和组织已训练模型的一种方式。 模型将注册到 Azure 机器学习服务工作区中。 使用 Azure 机器学习，或从其他位置训练的模型中导入，可以训练模型。 以下示例演示如何注册文件中的模型：
+注册机器学习模型在 Azure 机器学习工作区中。 该模型可以来自 Azure 机器学习或可来自于其他地方。 以下示例演示如何注册文件中的模型：
 
 ### <a name="register-a-model-from-an-experiment-run"></a>注册模型从试验运行
 
-**使用 CLI Scikit-learn 示例**
-```azurecli-interactive
-az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
-```
-**使用 SDK**
-```python
-model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
-print(model.name, model.id, model.version, sep='\t')
-```
++ **使用 SDK Scikit-learn 示例**
+  ```python
+  model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
+  print(model.name, model.id, model.version, sep='\t')
+  ```
++ **使用 CLI**
+  ```azurecli-interactive
+  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
+  ```
+
+
++ **使用 VS Code**
+
+  将模型使用的任何模型文件或文件夹与注册[VS Code](how-to-vscode-tools.md#deploy-and-manage-models)扩展。
 
 ### <a name="register-an-externally-created-model"></a>注册外部创建的模型
 
@@ -68,31 +64,46 @@ print(model.name, model.id, model.version, sep='\t')
 
 可以通过提供注册的外部创建的模型**本地路径**到模型。 您可以提供一个文件夹或单个文件。
 
-**使用 Python SDK ONNX 示例：**
-```python
-onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
-urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
-!tar xvzf mnist.tar.gz
++ **使用 Python SDK ONNX 示例：**
+  ```python
+  onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
+  urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
+  !tar xvzf mnist.tar.gz
+  
+  model = Model.register(workspace = ws,
+                         model_path ="mnist/model.onnx",
+                         model_name = "onnx_mnist",
+                         tags = {"onnx": "demo"},
+                         description = "MNIST image classification CNN from ONNX Model Zoo",)
+  ```
 
-model = Model.register(workspace = ws,
-                       model_path ="mnist/model.onnx",
-                       model_name = "onnx_mnist",
-                       tags = {"onnx": "demo"},
-                       description = "MNIST image classification CNN from ONNX Model Zoo",)
-```
-
-**使用 CLI**
-```azurecli-interactive
-az ml model register -n onnx_mnist -p mnist/model.onnx
-```
++ **使用 CLI**
+  ```azurecli-interactive
+  az ml model register -n onnx_mnist -p mnist/model.onnx
+  ```
 
 **时间估计**：大约 10 秒。
 
 有关详细信息，请参阅 [Model 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的参考文档。
 
-## <a name="how-to-deploy"></a>如何部署
+<a name="target"></a>
 
-若要部署为 web 服务，必须创建推理配置 (`InferenceConfig`) 和部署配置。 推理的配置来说，在指定的脚本和为模型提供服务所需的依赖项。 在部署配置指定如何计算目标上充当模型的详细信息。
+## <a name="choose-a-compute-target"></a>选择计算目标
+
+以下计算目标，或计算资源，可用于托管 web 服务部署。 
+
+| 计算目标 | 使用情况 | 描述 |
+| ----- | ----- | ----- |
+| [本地 web 服务](#local) | 测试/调试 | 适用于有限的测试和故障排除。
+| [Azure Kubernetes 服务 (AKS)](#aks) | 实时推理 | 非常适合用于大规模生产部署。 提供了自动缩放和快速的响应时间。 |
+| [Azure 容器实例 (ACI)](#aci) | 正在测试 | 非常适用于低规模，基于 CPU 的工作负荷。 |
+| [Azure 机器学习计算](how-to-run-batch-predictions.md) | （预览版）批处理推理 | 运行批处理评分上无服务器计算。 支持的普通和低优先级 Vm。 |
+| [Azure IoT Edge](#iotedge) | （预览版）IoT 模块 | 部署和 IoT 设备上提供机器学习模型。 |
+
+
+## <a name="prepare-to-deploy"></a>准备部署
+
+若要部署为 web 服务，必须创建推理配置 (`InferenceConfig`) 和部署配置。 推理，或模型评分，阶段已部署的模型不使用的是用于预测，最常在生产数据。 推理的配置来说，在指定的脚本和为模型提供服务所需的依赖项。 在部署配置指定如何计算目标上充当模型的详细信息。
 
 
 ### <a id="script"></a> 1.定义入口脚本和依赖项
@@ -141,8 +152,8 @@ dependencies:
 
 下面的示例演示如何以接受和返回 JSON 数据：
 
-**使用 Swagger 生成 Scikit 了解示例：**
 ```python
+#example: scikit-learn and Swagger
 import json
 import numpy as np
 from sklearn.externals import joblib
@@ -199,7 +210,7 @@ inference_config = InferenceConfig(source_directory="C:/abc",
 * 包含资产需要向推理的目录
 * 此模型需要 Python
 * [入口脚本](#script)，用于处理 web 请求发送到已部署的服务
-* 描述运行推断所需的 Python 包的 conda 文件
+* 描述推断所需的 Python 包的 conda 文件
 
 InferenceConfig 功能的信息，请参阅[高级的配置](#advanced-config)部分。
 
@@ -213,36 +224,37 @@ InferenceConfig 功能的信息，请参阅[高级的配置](#advanced-config)�
 
 | 计算目标 | 部署配置示例 |
 | ----- | ----- |
-| Local | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| 本地 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure 容器实例 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes 服务 | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 以下各节演示如何创建部署配置，然后使用它来部署 web 服务。
 
-## <a name="where-to-deploy"></a>部署位置
+## <a name="deploy-to-target"></a>将部署到目标
 
-### <a id="local"></a> 在本地部署
+### <a id="local"></a> 本地部署
+
+若要将本地部署，您必须具备**安装 Docker**在本地计算机上。
 
 本节在此示例使用[deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-)，则需要您在执行部署之前注册的模型和图像。 有关其他部署方法的详细信息，请参阅[部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-)并[deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-)。
 
-**若要将本地部署，需要在本地计算机上安装 docker。**
 
-**使用 SDK**
++ **使用 SDK**
 
-```python
-deployment_config = LocalWebservice.deploy_configuration(port=8890)
-service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
-service.wait_for_deployment(show_output = True)
-print(service.state)
-```
+  ```python
+  deployment_config = LocalWebservice.deploy_configuration(port=8890)
+  service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+  service.wait_for_deployment(show_output = True)
+  print(service.state)
+  ```
 
-**使用 CLI**
++ **使用 CLI**
 
-```azurecli-interactive
-az ml model deploy -m sklearn_mnist:1 -ic inferenceconfig.json -dc deploymentconfig.json
-```
+  ```azurecli-interactive
+  az ml model deploy -m sklearn_mnist:1 -ic inferenceconfig.json -dc deploymentconfig.json
+  ```
 
-### <a id="aci"></a> 将部署到 Azure 容器实例 （开发测试）
+### <a id="aci"></a> Azure 容器实例 （开发测试）
 
 如果满足以下一个或多个条件，请使用 Azure 容器实例将模型部署为 Web 服务：
 - 你需要快速部署并验证你的模型。
@@ -250,59 +262,65 @@ az ml model deploy -m sklearn_mnist:1 -ic inferenceconfig.json -dc deploymentcon
 
 若要查看 ACI 配额和区域可用性，请参阅[配额和区域可用性，Azure 容器实例的](https://docs.microsoft.com/azure/container-instances/container-instances-quotas)一文。
 
-**使用 SDK**
++ **使用 SDK**
 
-```python
-deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
-service = Model.deploy(ws, "aciservice", [model], inference_config, deployment_config)
-service.wait_for_deployment(show_output = True)
-print(service.state)
-```
+  ```python
+  deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
+  service = Model.deploy(ws, "aciservice", [model], inference_config, deployment_config)
+  service.wait_for_deployment(show_output = True)
+  print(service.state)
+  ```
 
-**使用 CLI**
++ **使用 CLI**
 
-```azurecli-interactive
-az ml model deploy -m sklearn_mnist:1 -n aciservice -ic inferenceconfig.json -dc deploymentconfig.json
-```
+  ```azurecli-interactive
+  az ml model deploy -m sklearn_mnist:1 -n aciservice -ic inferenceconfig.json -dc deploymentconfig.json
+  ```
+
+
++ **使用 VS Code**
+
+  向[使用 VS Code 将模型部署](how-to-vscode-tools.md#deploy-and-manage-models)无需创建 ACI 容器要提前测试，因为动态创建 ACI 容器。
 
 有关详细信息，请参阅 [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) 和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) 类的参考文档。
 
-### <a id="aks"></a> 将部署到 Azure Kubernetes 服务 （生产）
+### <a id="aks"></a>Azure Kubernetes 服务 （生产）
 
 可以使用现有 AKS 群集，也可使用 Azure 机器学习 SDK、CLI 或 Azure 门户创建新群集。
 
+<a id="deploy-aks"></a>
 
-> [!IMPORTANT]
-> 对于工作区而言，创建 AKS 群集是一次性过程。 可以将此群集重复用于多个部署。
-> 如果你不具有创建或附加 AKS 群集转<a href="#create-attach-aks">此处</a>。
+如果已附加的 AKS 群集，则可以部署到它。 如果你尚未创建或附加 AKS 群集，执行到流程<a href="#create-attach-aks">创建新的 AKS 群集</a>。
 
-#### 将部署到 AKS <a id="deploy-aks"></a>
++ **使用 SDK**
 
-你可以部署到 AKS 中使用 Azure 机器学习 CLI:
-```azurecli-interactive
-az ml model deploy -ct myaks -m mymodel:1 -n aksservice -ic inferenceconfig.json -dc deploymentconfig.json
-```
+  ```python
+  aks_target = AksCompute(ws,"myaks")
+  deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
+  service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
+  service.wait_for_deployment(show_output = True)
+  print(service.state)
+  print(service.get_logs())
+  ```
 
-此外可以使用 Python SDK:
-```python
-aks_target = AksCompute(ws,"myaks")
-deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
-service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
-service.wait_for_deployment(show_output = True)
-print(service.state)
-print(service.get_logs())
-```
++ **使用 CLI**
 
-有关详细信息配置 AKS 部署，包括自动缩放，请参阅[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice)引用。
+  ```azurecli-interactive
+  az ml model deploy -ct myaks -m mymodel:1 -n aksservice -ic inferenceconfig.json -dc deploymentconfig.json
+  ```
 
++ **使用 VS Code**
+
+  此外可以[通过 VS Code 扩展部署到 AKS](how-to-vscode-tools.md#deploy-and-manage-models)，但将需要预先配置 AKS 群集。
+
+了解更多有关 AKS 部署和自动缩放[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice)引用。
+
+#### 创建新的 AKS 群集<a id="create-attach-aks"></a>
 **预计时间：** 大约需要 5 分钟。
 
-#### 创建或附加 AKS 群集 <a id="create-attach-aks"></a>
-创建或附加 AKS 群集是**一个时间进程**工作区。 群集已与你的工作区关联后，您可以将其用于多个部署。 
+> [!IMPORTANT]
+> 创建或附加 AKS 群集一次处理你的工作区。 可以将此群集重复用于多个部署。 如果你删除群集或包含该资源组，必须创建一个新的群集部署所需的下一个时间。
 
-如果你删除群集或包含该资源组，必须创建一个新的群集部署所需的下一个时间。
-
-##### <a name="create-a-new-aks-cluster"></a>创建新的 AKS 群集
 有关详细信息设置`autoscale_target_utilization`， `autoscale_max_replicas`，并`autoscale_min_replicas`，请参阅[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none-)引用。
 下面的示例演示如何创建新的 Azure Kubernetes 服务群集：
 
@@ -332,7 +350,7 @@ aks_target.wait_for_completion(show_output = True)
 
 **时间估计**：大约 20 分钟。
 
-##### <a name="attach-an-existing-aks-cluster"></a>附加现有的 AKS 群集
+#### <a name="attach-an-existing-aks-cluster"></a>附加现有的 AKS 群集
 
 如果已在 Azure 订阅中有 AKS 群集并且它 1.12 版。 # # 和具有至少为 12 的虚拟 Cpu，可以使用它来部署你的映像。 下面的代码演示如何将附加现有的 AKS 1.12。 # # 为你的工作区的群集：
 
@@ -349,7 +367,10 @@ aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
 
 ## <a name="consume-web-services"></a>使用 Web 服务
+
 每个已部署的 web 服务提供一种 REST API，因此可以在各种编程语言中创建客户端应用程序。 如果已为你的服务中启用身份验证，你需要提供服务密钥作为请求标头中的令牌。
+
+### <a name="request-response-consumption"></a>请求-响应消耗
 
 下面是如何调用你的服务在 Python 中的示例：
 ```python
@@ -376,7 +397,17 @@ print(response.json())
 
 有关详细信息，请参阅[创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)。
 
-## <a id="update"></a> 更新 Web 服务
+
+### <a id="azuremlcompute"></a> 批处理消耗
+创建和管理 Azure 机器学习服务的 azure 机器学习计算目标。 它们可以用于从 Azure 机器学习管道批处理预测。
+
+使用 Azure 机器学习计算的批处理推理的演练，请阅读[如何运行批预测](how-to-run-batch-predictions.md)一文。
+
+### <a id="iotedge"></a> IoT Edge 推理
+部署到 edge 设备的支持处于预览状态。 有关详细信息，请参阅[部署 Azure 机器学习作为 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)一文。
+
+
+## <a id="update"></a> 更新 web 服务
 
 创建新模型时，必须手动更新每个服务，你想要使用新的模型。 若要更新 Web 服务，请使用 `update` 方法。 下面的代码演示如何更新 web 服务以使用新的模型：
 
@@ -401,15 +432,11 @@ print(service.state)
 print(service.get_logs())
 ```
 
-## <a name="clean-up"></a>清理
-若要删除已部署的 Web 服务，请使用 `service.delete()`。
-若要删除已注册的模型，请使用 `model.delete()`。
+<a id="advanced-config"></a>
 
-有关详细信息，请参阅的参考文档[WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)，并[Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)。
+## <a name="advanced-settings"></a>高级设置 
 
-## 高级的配置设置 <a id="advanced-config"></a>
-
-### <a id="customimage"></a> 使用自定义基本映像
+**<a id="customimage"></a> 使用自定义基本映像**
 
 在内部，InferenceConfig 创建包含模型和服务所需的其他资产的 Docker 映像。 如果未指定，则使用默认的基本映像。
 
@@ -453,15 +480,11 @@ inference_config.base_image_registry.password = "password"
 image_config.base_image = run.properties["AzureML.DerivedImageName"]
 ```
 
-## <a name="other-inference-options"></a>其他推理选项
+## <a name="clean-up-resources"></a>清理资源
+若要删除已部署的 Web 服务，请使用 `service.delete()`。
+若要删除已注册的模型，请使用 `model.delete()`。
 
-### <a id="azuremlcompute"></a> 批处理推理
-创建和管理 Azure 机器学习服务的 azure 机器学习计算目标。 它们可以用于从 Azure 机器学习管道批处理预测。
-
-使用 Azure 机器学习计算的批处理推理的演练，请阅读[如何运行批预测](how-to-run-batch-predictions.md)一文。
-
-## <a id="iotedge"></a> IoT Edge 上的推理
-部署到 edge 设备的支持处于预览状态。 有关详细信息，请参阅[部署 Azure 机器学习作为 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)一文。
+有关详细信息，请参阅的参考文档[WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)，并[Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)。
 
 ## <a name="next-steps"></a>后续步骤
 * [部署故障排除](how-to-troubleshoot-deployment.md)
@@ -469,3 +492,4 @@ image_config.base_image = run.properties["AzureML.DerivedImageName"]
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
+

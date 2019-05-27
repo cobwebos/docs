@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
-ms.date: 04/19/2019
-ms.openlocfilehash: ca43a6cff6a32a30d93e42f6a6624439b2fe83a7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/21/2019
+ms.openlocfilehash: c6c32265e6fc2fc2bb0d6b00d89862e200731a2a
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696526"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66016446"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>创建 Azure 机器学习服务工作区
 
-若要使用 Azure 机器学习服务，需要[ **Azure 机器学习服务工作区**](concept-azure-machine-learning-architecture.md#workspace)。  此工作区是服务的顶级资源，并提供集中的位置来使用您创建的所有内容。 
+若要使用 Azure 机器学习服务，需要[ **Azure 机器学习服务工作区**](concept-workspace.md)。  此工作区是服务的顶级资源，并提供集中的位置来使用您创建的所有内容。 
 
 在本文中，您将学习如何创建工作区中使用任何一种方法： 
 * [Azure 门户](#portal)接口
@@ -33,7 +33,7 @@ ms.locfileid: "64696526"
 
 创建一个工作区时自动 （如果它们可用区域范围） 添加以下 Azure 资源：
  
-- [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)
+- [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：若要最小化成本，ACR 是**延迟加载**创建部署映像之前。
 - [Azure 存储](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)

@@ -11,22 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384569"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113240"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>查看对组的访问或 Azure AD 中的应用程序访问评审
 
 Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组和应用程序和名为 Azure AD 访问的功能与其他 Microsoft Online Services 评审的方式。
 
 本文介绍如何指定审阅者成员的组或用户有权访问应用程序的执行访问评审。
+
+## <a name="prerequisites"></a>必备组件
+
+- Azure AD Premium P2
+
+有关详细信息，请参阅[哪些用户必须具有许可证？](access-reviews-overview.md#which-users-must-have-licenses)。
 
 ## <a name="open-the-access-review"></a>打开访问评审
 
@@ -64,14 +70,14 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组
 
 有两种方法可以批准或拒绝访问：
 
-- 您可以批准或拒绝每个请求，或
+- 可以批准或拒绝一个或多个用户的访问权限或
 - 你可以接受的系统建议，这是最简单且最快速的方法。
 
-### <a name="approve-or-deny-access-for-each-request"></a>批准或拒绝访问的每个请求
+### <a name="approve-or-deny-access-for-one-or-more-users"></a>批准或拒绝一个或多个用户的访问权限
 
 1. 查看要决定是否批准或拒绝其持续访问权限的用户列表。
 
-1. 若要批准或拒绝每个请求，请单击要打开一个窗口来指定要执行的操作的行。
+1. 若要批准或拒绝单个用户的访问权限，请单击要打开一个窗口来指定要执行的操作的行。 若要批准或拒绝多个用户的访问权限，添加的用户旁边的复选标记，然后单击**评审 X 个用户**按钮以打开一个窗口来指定要执行的操作。
 
 1. 单击**批准**或**拒绝**。 如果您不确定，则可以单击**不知道**。 执行此操作将导致用户维护其访问权限，但所选内容将反映在审核日志。
 

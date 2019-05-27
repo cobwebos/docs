@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 3b10ae0998acbb010e61ebb41c602c7d42bc14fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5421423441d03a7375feea2ca0dfe289993145ee
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741799"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873225"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>使用 .NET 后端和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
 
@@ -31,7 +31,7 @@ ms.locfileid: "60741799"
 
 要完成本教程，需要以下各项：
 
-* Visual Studio 2017。
+* Visual Studio。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 

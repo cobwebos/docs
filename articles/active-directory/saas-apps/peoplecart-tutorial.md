@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 0b1f414cadfeb0762e069acc40b37e0dde992502
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272234"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peoplecart"></a>教程：Azure Active Directory 与 Peoplecart 的集成
 

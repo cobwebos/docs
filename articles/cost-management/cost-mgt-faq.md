@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/21/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0516c954bd23d5a2e339c5df447a923528e09d93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61430624"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002029"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>有关 Cloudyn 的常见问题解答
 
@@ -74,9 +74,9 @@ ms.locfileid: "61430624"
 
 首先，让我们来看一下导致用户帐户初始挂起的常见应用场景。
 
-> 管理员 1 可能是 Microsoft 云解决方案提供商或企业协议用户。 他的组织已准备好开始使用 Cloudyn。  他通过 Azure 门户注册并登录到 Cloudyn 门户。 作为注册 Cloudyn 服务并登录到 Cloudyn 门户的人员，他成为主要管理员。 管理员 1 不创建任何用户帐户。 但是，通过使用 Cloudyn 门户，他的确创建 Azure 帐户并设置实体层次结构。 管理员 1 通知管理员 2（即租户管理员），告知他需要注册 Cloudyn 并登录到 Cloudyn 门户。
-> 
-> 管理员 2 通过 Azure 门户进行注册。 但是，当他尝试登录到 Cloudyn 门户时，他收到一条错误消息，指明他的帐户已被挂起。 主要管理员（管理员 1）将收到帐户挂起的通知。 管理员 1 需要激活管理员 2 的帐户并针对相应的实体授予管理员实体访问权限，并允许用户管理访问和激活用户帐户。
+> Admin1 可能是 Microsoft 云解决方案提供商或企业协议用户。 其组织已准备好开始使用 Cloudyn。  他通过 Azure 门户注册并登录到 Cloudyn 门户。 将 Cloudyn 服务和符号注册到 Cloudyn 门户中的人员，Admin1 变得*主管理员*。 管理员 1 不创建任何用户帐户。 但是，使用 Cloudyn 门户，它们执行创建 Azure 帐户并设置的实体层次结构。 Admin1 通知管理员 2，租户管理员，他们需要向 Cloudyn 注册并登录到 Cloudyn 门户。
+>
+> 管理员 2 通过 Azure 门户进行注册。 但是当他们尝试登录到 Cloudyn 门户，会得到一个错误，指示用户的帐户**挂起**。 主要管理员（管理员 1）将收到帐户挂起的通知。 管理员 1 需要激活管理员 2 的帐户并针对相应的实体授予管理员实体访问权限，并允许用户管理访问和激活用户帐户。
 
 
 如果收到请求允许某个用户进行访问的警报，需要激活该用户帐户。
@@ -158,4 +158,4 @@ Cloudyn 提供以下数据刷新时间线：
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn 报表是否每报表显示多个 AD 租户？
 
-可以。 可以为拥有的每个 AD 租户[创建相应的云帐户实体](tutorial-user-access.md#create-and-manage-entities)。 然后，可以查看所有 Azure AD 租户数据和其他云平台提供程序（包括 Amazon Web Services 和 Google Cloud Platform）。
+是的。 可以为拥有的每个 AD 租户[创建相应的云帐户实体](tutorial-user-access.md#create-and-manage-entities)。 然后，可以查看所有 Azure AD 租户数据和其他云平台提供程序（包括 Amazon Web Services 和 Google Cloud Platform）。

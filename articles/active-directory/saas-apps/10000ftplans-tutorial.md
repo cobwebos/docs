@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f231d3d966154c1ea5cca808eedad1051089fea
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563550"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897368"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>教程：Azure Active Directory 与 10,000ft Plans 的集成
 

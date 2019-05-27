@@ -16,11 +16,11 @@ ms.date: 11/27/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f76fef3d5e6515e9d546c709ace0a4a533c0a45
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881165"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66112693"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>使用 PowerShell 在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -147,7 +147,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 
 1. 请参阅以下 Azure VM 快速入门之一，完成必要部分 （"登录到 Azure"，"创建资源组"，"创建网络组"，"创建 VM"）。 
   
-    转到“创建 VM”部分时，需要对 [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) cmdlet 语法稍做修改。 添加 `-IdentityType UserAssigned` 和 `-IdentityID` 参数，为 VM 预配用户分配的标识。  将 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 替换为自己的值。  例如：
+    转到“创建 VM”部分时，需要对 [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) cmdlet 语法稍做修改。 添加 `-IdentityType UserAssigned` 和 `-IdentityID` 参数，为 VM 预配用户分配的标识。  将 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 替换为自己的值。  例如:
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 9ca1c4a1ed1841f82bc386cff48315dd15ef91bb
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f8c57b9e1fabbd04a7d9c92484b0f52f074c2577
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730403"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872425"
 ---
 # <a name="test-your-app-in-azure"></a>在 Azure 中测试应用 
-本文提供有关使用开发测试实验室在 Azure 中测试应用程序的步骤。 首先，在实验室中设置一个文件共享，并将其作为驱动器装载到实验室中的本地开发计算机和 VM 上。 然后，使用 Visual Studio 2017 将应用部署到文件共享，以便可以在实验室中的 VM 上运行该应用。  
+本文提供有关使用开发测试实验室在 Azure 中测试应用程序的步骤。 首先，在实验室中设置一个文件共享，并将其作为驱动器装载到实验室中的本地开发计算机和 VM 上。 然后，使用 Visual Studio 2019 将您的应用程序部署到文件共享，以便可以在实验室中 VM 上运行该应用程序。  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ ms.locfileid: "56730403"
 ## <a name="publish-your-app-from-visual-studio"></a>从 Visual Studio 发布应用
 本部分介绍如何将应用从 Visual Studio 发布到云中的测试 VM。
 
-1. 使用 Visual Studio 2017 创建桌面/Web 应用程序。
+1. 使用 Visual Studio 2019 创建桌面/web 应用程序。
 2. 生成应用。
 3. 若要发布应用，请在“解决方案资源管理器”中右键单击相应的项目，然后选择“发布”。 
 4. 在“发布向导”中，输入映射到文件共享的**驱动器**。

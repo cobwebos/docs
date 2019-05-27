@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a6ebfc86a2489910d23faa96550f34cc979c0435
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203425"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001765"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>事件中心消息传送异常
 
@@ -91,6 +91,12 @@ ms.locfileid: "60203425"
 
 此错误很少发生。 但如果为命名空间运行代码的容器的 CPU 比较低时（在事件中心负载均衡器开始之前不超过几秒钟），则可能发生此错误。
 
+### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>限制对 GetRuntimeInformation 方法的调用
+Azure 事件中心支持每秒 GetRuntimeInfo 每秒最多 50 个调用。 一旦达到限制，可能会收到类似于以下异常：
+
+```
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+```
 
 ## <a name="next-steps"></a>后续步骤
 

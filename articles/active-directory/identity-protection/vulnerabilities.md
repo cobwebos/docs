@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80faf1899da0f16d25b9b7c68cb0edcbc1276632
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e792551f4cac857f56454c67d527e01cb9c4281
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294221"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113127"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 检测到的漏洞
 
@@ -29,8 +29,6 @@ ms.locfileid: "60294221"
 ## <a name="multi-factor-authentication-registration-not-configured"></a>未配置多重身份验证注册
 
 此漏洞可帮助评估组织中的部署 Azure 多重身份验证。
-
-若要查看计数未注册 mfa，用户单击此漏洞，您将重定向到标识安全功能分数中的统计信息。
 
 Azure 多重身份验证提供了第二层到用户身份验证的安全性。 它可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 Azure 多重身份验证提供了易于使用的验证选项，如：
 

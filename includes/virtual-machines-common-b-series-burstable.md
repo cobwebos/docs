@@ -9,11 +9,11 @@ ms.date: 03/09/2018
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: ecf70bbbeae8fd68309f3343615f021038fb10b6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65815614"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111436"
 ---
 B 系列的 VM 系列具备使 CPU 性能突增到 Intel® Broadwell E5-2673 v4 2.3 GHz 或 Intel® Haswell 2.4 GHz E5-2673 v3 处理器 vCPU 的 100% 的能力，允许用户选择可为其工作负荷提供必要的基本级别性能的 VM 大小。
 

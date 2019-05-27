@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/08/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 2269eac0790e61dbf0ce893bbb737cb22d58d497
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501963"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002474"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -49,7 +49,7 @@ ms.locfileid: "65501963"
 
 ### <a name="permissions-needed-to-deploy"></a>部署所需的权限
 
-有某些权限的用户必须具有要部署在空闲时间解决方案启动/停止 Vm。 这些权限是不同，如果使用预先创建的自动化帐户和 Log Analytics 工作区或创建新的部署过程。
+有某些权限的用户必须具有要部署在空闲时间解决方案启动/停止 Vm。 这些权限是不同，如果使用预先创建的自动化帐户和 Log Analytics 工作区或创建新的部署过程。 如果您是在 Azure Active Directory 租户中的订阅参与者和全局管理员，你不需要配置以下权限。 如果您没有这些权限或需要配置自定义角色，请参阅下面所需的权限。
 
 #### <a name="pre-existing-automation-account-and-log-analytics-account"></a>预先存在的自动化帐户和 Log Analytics 帐户
 
@@ -79,41 +79,21 @@ ms.locfileid: "65501963"
 
 若要部署在空闲时间启动/停止 Vm 解决方案添加到新的自动化帐户和 Log Analytics 工作区部署解决方案的用户需要在前面的部分，以及以下权限中定义的权限：
 
-- 共同管理员的订阅-上需要这些信息来创建经典运行方式帐户
-- 是的一部分**应用程序开发人员**角色。 有关配置运行方式帐户的详细信息，请参阅[的权限来配置运行方式帐户](manage-runas-account.md#permissions)。
+- 共同管理员订阅-这只需创建经典运行方式帐户
+- 是的一部分[Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **应用程序开发人员**角色。 有关配置运行方式帐户的详细信息，请参阅[的权限来配置运行方式帐户](manage-runas-account.md#permissions)。
+- 在订阅或以下权限的参与者。
 
 | 权限 |范围|
 | --- | --- |
+| Microsoft.Authorization/Operations/read | 订阅|
+| Microsoft.Authorization/permissions/read |订阅|
 | Microsoft.Authorization/roleAssignments/read | 订阅 |
 | Microsoft.Authorization/roleAssignments/write | 订阅 |
+| Microsoft.Authorization/roleAssignments/delete | 订阅 |
 | Microsoft.Automation/automationAccounts/connections/read | 资源组 |
 | Microsoft.Automation/automationAccounts/certificates/read | 资源组 |
 | Microsoft.Automation/automationAccounts/write | 资源组 |
 | Microsoft.OperationalInsights/workspaces/write | 资源组 |
-
-### <a name="region-mappings"></a>区域映射
-
-在启用时在非工作时间启动/停止 Vm，只有特定区域支持链接的 Log Analytics 工作区和自动化帐户。
-
-下表显示了受支持的映射：
-
-|**Log Analytics 工作区区域**|**Azure 自动化区域**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|西欧|西欧|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP 和 EastUS 映射到自动化帐户的 Log Analytics 工作区不精确的区域到另一个区域映射，但是正确的映射。
-
-<sup>2</sup>由于容量限制范围区域不可用时创建新的资源。 这包括自动化帐户和 Log Analytics 工作区。 但是，在区域中预先存在链接的资源应继续工作。
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
@@ -140,6 +120,11 @@ ms.locfileid: "65501963"
    - 对于“资源组”，可以创建新资源组，或选择现有的资源组。
    - 选择“位置” 。 目前可用的位置仅为：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部、西欧和美国西部 2。
    - 选择“定价层”。 选择“每 GB (独立)”选项。 Azure Monitor 日志已更新[定价](https://azure.microsoft.com/pricing/details/log-analytics/)和每 GB 层是唯一的选项。
+
+   > [!NOTE]
+   > 在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+   >
+   > 有关受支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
 
 5. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。
 6. 在“添加解决方案”页面中，选择“自动化帐户”。 如果要创建新的 Log Analytics 工作区，可以创建与它关联的新自动化帐户，或选择尚未链接到 Log Analytics 工作区的现有自动化帐户。 选择现有的自动化帐户，或者单击“创建自动化帐户”，并在“添加自动化帐户”页上提供以下信息：
@@ -433,7 +418,9 @@ ms.locfileid: "65501963"
 
 若要删除解决方案，请执行以下步骤：
 
-1. 从自动化帐户中，从左侧页面中选择“工作区”。
+1. 从自动化帐户中下,**相关的资源**，选择**链接工作区**。
+1. 选择**转到工作区**。
+1. 下**常规**，选择**解决方案**。 
 1. 在“解决方案”页中，请选择解决方案 Start-Stop-VM[Workspace]。 在“VMManagementSolution[Workspace]”页上，从菜单中选择“删除”。<br><br> ![删除 VM 管理解决方案](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. 在“删除解决方案”窗口中，确认要删除该解决方案。
 1. 在验证信息和删除解决方案期间，可以在菜单中的“通知”下面跟踪操作进度。 删除解决方案的进程启动后，系统会返回“解决方案”页。

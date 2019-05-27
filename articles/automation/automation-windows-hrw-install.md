@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/22/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0cc00b4f2075ba77490d310080b9968bedb8dc1f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cc3307a4f32d77b9b8d259ac846c4db1c1ae4a99
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701764"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002512"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -60,8 +60,10 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
    * *SubscriptionID*（必需）：包含自动化帐户的 Azure 订阅 ID。
    * *WorkspaceName*（可选）：Log Analytics 工作区名称。 如果没有 Log Analytics 工作区，该脚本会创建并配置一个。
 
-     > [!NOTE]
-     > 唯一的自动化区域仅与 Azure Monitor 日志集成目前**澳大利亚东南部**，**美国东部 2**，**东南亚**，以及**欧洲西部**。 如果自动化帐户不在其中的某个区域，脚本会创建 Log Analytics 工作区，但会警告用户：无法将这些区域链接到一起。
+   > [!NOTE]
+   > 在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+   >
+   > 有关受支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
 
 2. 在计算机的“管理员”模式下，从“开始”屏幕打开 Windows PowerShell。
 3. 在 PowerShell 命令行外壳中，浏览到包含已下载脚本的文件夹。 更改这些参数的值：-AutomationAccountName、-AAResourceGroupName、-OMSResourceGroupName、-HybridGroupName、-SubscriptionId 和 -WorkspaceName。 然后运行脚本。

@@ -7,14 +7,14 @@ manager: vijayts
 keywords: 还原备份; 如何还原; 恢复点;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 05/08/2019
 ms.author: geg
-ms.openlocfilehash: b0408aa296dcbff0c73f2c192e24c290d51fec5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19b249a76a339ce870609fbcdceaf70bf79a6ea2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60647682"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906510"
 ---
 # <a name="restore-azure-vms"></a>还原 Azure VM
 
@@ -22,20 +22,36 @@ ms.locfileid: "60647682"
 
 
 
-### <a name="restore-options"></a>还原选项
+## <a name="restore-options"></a>还原选项
 
 Azure 备份提供多种方法用于还原 VM。
 
 **还原选项** | **详细信息**
 --- | ---
-**创建新 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 可以指定 VM 的名称、选择要将此 VM 放入到的资源组和虚拟网络 (VNet)，以及指定存储类型。
-**还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br/> 此选项将 VHD 复制到所指定的存储帐户。 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 存储帐户应位于保管库所在的同一位置。 创建存储帐户（如果没有）。<br/><br/> 将显示存储帐户复制类型。 不支持区域冗余存储 (ZRS)。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
-**替换现有** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 必须存在当前 VM。 若已删除 VM，则无法使用该选项。<br/><br/> 在替换磁盘之前，Azure 备份会创建现有 VM 的快照。 快照存储在指定的暂存位置。 然后，使用选定的还原点替换已连接到 VM 的现有磁盘。<br/><br/> 创建的快照将复制到保管库，并根据指定的保留策略进行保留。 <br/><br/> 未加密的托管 VM 支持替换现有。 非托管磁盘、[通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 或[使用自定义映像创建的 VM](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) 不支持此选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br/><br/>
+**创建新 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 你可以指定虚拟机的名称，请选择资源组和虚拟网络 (VNet)，它将放置，然后指定已还原的 vm 的存储帐户。
+**还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br> 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 磁盘要复制到您指定的存储帐户。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
+**替换现有** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 必须存在当前 VM。 若已删除 VM，则无法使用该选项。<br/><br/> Azure 备份会替换该磁盘，然后现有 VM 的快照，并将其存储在指定的临时位置。 连接到 VM 的现有磁盘替换为所选的还原点。<br/><br/> 快照复制到保管库，并根据保留策略保留。 <br/><br/> 未加密的托管 VM 支持替换现有。 非托管磁盘、[通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 或[使用自定义映像创建的 VM](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) 不支持此选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br/><br/>
+
 
 > [!NOTE]
 > 还可以恢复 Azure VM 上的特定文件和文件夹。 [了解详细信息](backup-azure-restore-files-from-vm.md)。
 >
 > 如果运行[最新版本](backup-instant-restore-capability.md)的适用于 Azure VM 的 Azure 备份（称为“即时还原”），则快照最长将保留 7 天；在将备份数据发送到保管库之前，可以从快照还原 VM。 若要从过去 7 天的备份还原 VM，更快的做法是从快照而不是从保管库还原。
+
+## <a name="storage-accounts"></a>存储帐户
+
+一些有关存储帐户的详细信息：
+
+- **创建 VM**：在创建新的 VM 时，将在您指定的存储帐户中放置虚拟机。
+- **还原磁盘**:当还原磁盘时，磁盘复制到您指定的存储帐户。 还原作业生成的模板，可以下载和使用来指定自定义 VM 设置。 此模板位于指定的存储帐户中。
+- **更换磁盘**:替换现有的 VM 上的磁盘，Azure 备份将会替换该磁盘之前的现有 VM 拍摄快照。 快照存储在指定的临时位置 （存储帐户）。 此存储帐户用于在还原过程中，临时存储的快照，我们建议你创建的新帐户为此，可以很容易地删除之后。
+- **存储帐户位置**:存储帐户必须与保管库位于同一区域。 只有这些帐户将显示。 如果在该位置中没有存储帐户，需要创建一个。
+- **存储类型**:不支持 blob 存储。
+- **存储冗余**:不支持区域冗余存储 (ZRS)。 帐户名称后，该帐户的复制和冗余信息是显示在括号中。 
+- **高级存储**:
+    - 当还原非高级 Vm，不支持高级存储帐户。
+    - 还原托管的 Vm，不支持高级存储帐户配置了网络规则。
+
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -73,7 +89,7 @@ Azure 备份提供多种方法用于还原 VM。
 2. 在“虚拟机名称”中，指定订阅中不存在的 VM。
 3. 在“资源组”中，为新 VM 选择现有资源组，或创建具有全局唯一名称的新资源组。 如果分配的名称已存在，则 Azure 将为该组分配与 VM 相同的名称。
 4. 在“虚拟网络”中，选择将放置 VM 的 VNet。 将显示与订阅关联的所有 VNet。 选择子网。 默认情况下选择第一个子网。
-5. 在“存储位置”中，指定 VM 的存储类型。
+5. 在中**存储位置**，为 VM 指定存储帐户。 [了解详细信息](#storage-accounts)。
 
     ![还原配置向导](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
@@ -90,7 +106,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 1. 在“还原配置” > “新建 > 还原类型”中，选择“还原磁盘”。
 2. 在“资源组”中，为还原的磁盘选择现有资源组，或创建具有全局唯一名称的新资源组。
-3. 在“存储帐户”中，指定要将 VHD 复制到的帐户。 确保帐户与保管库位于同一区域。
+3. 在“存储帐户”中，指定要将 VHD 复制到的帐户。 [了解详细信息](#storage-accounts)。
 
     ![已完成恢复配置](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
@@ -125,7 +141,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 1. 在“还原配置”中，单击“替换现有”。
 2. 在“还原类型”中，选择“替换磁盘”。 这是用于替换现有 VM 磁盘的还原点。
-3. 在“暂存位置”中，指定应保存当前托管磁盘的快照的位置。
+3. 在中**暂存位置**，指定当前的托管磁盘的快照应保存在还原过程中的位置。 [了解详细信息](#storage-accounts)。
 
    ![还原配置向导“替换现有”](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 

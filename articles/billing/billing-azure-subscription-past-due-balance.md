@@ -13,32 +13,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: 056ece53fa154e86cf0b5f5fb24a8842cf5a4261
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45b5d2c94a72cb23ef2b4a8db100623b0c58b0a9
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60617718"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66023402"
 ---
-# <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>从 Azure 收到电子邮件后处理 Azure 订阅的逾期未付余额问题
+# <a name="resolve-past-due-balance-for-your-azure-subscription"></a>处理 Azure 订阅的逾期未付余额问题
 
-如果我们未收到付款或无法处理付款，你可能会收到一封电子邮件，或在帐户中心或 Azure 门户中看到一条警报。 消息可能为：
+如果未收到付款，或者我们无法处理付款，可能会收到电子邮件，或请参阅 Azure 门户或帐户中心中的警报。
+你是否[帐户管理员](billing-subscription-transfer.md#whoisaa)，你可以结清未付费用[Azure 门户](https://portal.azure.com)。 如果采用发票付款方式，可将付款寄送到发票底部列出的地点。
 
-**我们未能通过信用卡收取订阅费用。为防止发生服务中断的情况，请更新付款信息。**
+> [!IMPORTANT]
+> * 如果有多个使用同一信用卡的订阅，并且它们全部过期，必须立即支付整个未付余额。
+> * 使用以结清未付费用的付款方式将成为新可用的付款方式的所有已使用失败的付款方式的订阅。
 
-请按照文章中的步骤解决逾期未付余款问题。
+## <a name="resolve-past-due-balance-in-the-azure-portal"></a>处理逾期余额在 Azure 门户中
 
-## <a name="resolve-the-past-due-balance"></a>付清逾期未付余额
-
-* 如果保存的信用卡被拒绝或已过期，[请更改用于为订阅付款的信用卡](billing-how-to-change-credit-card.md)或联系银行以解决此问题。 更新付款方式后，Azure 会立即处理所有未清费用的付款， 还会处理任何其他具有未清费用的 Microsoft 服务的付款。
-
-* 如果采用发票付款方式，可将付款寄送到发票底部列出的地点。 如果需要帮助，请联系 [Azure 支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-
-* 如果因帐户管理员离开了公司或更改了角色而导致未收到账单，请联系 [Azure 支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以解决此问题。
-
-* 如果知道付款已被处理，但订阅仍处于禁用状态，请联系 [Azure 支持部门](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+1. 登录到[Azure 门户](https://portal.azure.com)为帐户管理员。
+1. 在“成本管理 + 计费”中进行搜索。
+1. 在概述页中，将看到订阅的列表。 如果您订阅的状态已过期，请单击**处理的余额**链接。
+    ![显示的屏幕截图结算余额链接](./media/billing-azure-subscription-past-due-balance/settle-balance-entry-point.png)
+1. 总未付余额跨所有 Microsoft 服务使用失败的付款方式反映未付费用。
+1. 选择支付方式付款余额。 此付款方法将变得可用的所有当前正在使用失败的付款方式的订阅的付款方式。
+    ![显示选择付款方法链接的屏幕截图](./media/billing-azure-subscription-past-due-balance/settle-balance-screen.png)
+1. 如果所选的付款方式还具有未清费用的 Microsoft 服务，这将会反映在总未付余额。 必须太支付这些未付费用。
+1. 单击**支付**。
 
 ## <a name="not-getting-billing-email-notifications"></a>收不到计费电子邮件通知？
 
@@ -47,6 +50,8 @@ ms.locfileid: "60617718"
 ## <a name="if-i-forget-to-pay-what-happens"></a>如果忘记付款，会发生什么？
 
 服务会被取消，资源不再可用。 Azure 数据会在终止服务 90 天后删除。 若要了解详细信息，请参阅 [Microsoft Trust Center - How we manage your data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)（Microsoft 信任中心 - 我们如何管理用户的数据）。
+
+如果知道付款已被处理，但订阅仍处于禁用状态，请联系 [Azure 支持部门](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

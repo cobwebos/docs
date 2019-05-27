@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 05/17/2019
 ms.author: szark
-ms.openlocfilehash: 01acdf23c3113c3c4d185263b5cab75f3efd34a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d5e9c6c8a104c16d1ff4e96929ff47ed6fd5ff6
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771169"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966107"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
-在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。
+在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有关如何自动生成 RHEL 映像请参阅[Azure 映像生成器](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 
@@ -110,7 +110,7 @@ ms.locfileid: "60771169"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 /etc/waagent.conf 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，它可能在清空是否取消设置虚拟机。 在上一步中安装 Azure Linux 代理后，相应地在 /etc/waagent.conf 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -124,6 +124,8 @@ ms.locfileid: "60771169"
 
 1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -193,7 +195,7 @@ ms.locfileid: "60771169"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，并可能在取消预配虚拟机时被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，是否虚拟机取消预配可能在清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -207,6 +209,8 @@ ms.locfileid: "60771169"
 
 1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -315,7 +319,7 @@ ms.locfileid: "60771169"
 
         # chkconfig waagent on
 
-1. Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，并可能在取消预配虚拟机时被清空。 在上一步中安装 Azure Linux 代理后，相应地在 **/etc/waagent.conf** 中修改以下参数：
+1. Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，是否虚拟机取消预配可能在清空。 在上一步中安装 Azure Linux 代理后，相应地在 **/etc/waagent.conf** 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -329,6 +333,8 @@ ms.locfileid: "60771169"
 
 1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -464,7 +470,7 @@ ms.locfileid: "60771169"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，并可能在取消预配虚拟机时被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，是否虚拟机取消预配可能在清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -478,6 +484,8 @@ ms.locfileid: "60771169"
 
 1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -593,7 +601,7 @@ ms.locfileid: "60771169"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，并可能在取消预配虚拟机时被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，是否虚拟机取消预配可能在清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -607,6 +615,8 @@ ms.locfileid: "60771169"
 
 1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -707,7 +717,7 @@ ms.locfileid: "60771169"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，并可能在取消预配虚拟机时被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，是否虚拟机取消预配可能在清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -721,6 +731,8 @@ ms.locfileid: "60771169"
 
 1. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -875,7 +887,7 @@ ms.locfileid: "60771169"
         NM_CONTROLLED=no
         EOF
 
-        # Deprovision and prepare for Azure
+        # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision
 
         %end

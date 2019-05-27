@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8f5cdc33e48d647dba8caeb09b57e233d64712f6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 49c836f5e9189104ba77e8f3d865f4db199c4060
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687731"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002975"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 本文包含有关如何在客户端上插入各种类型的广告的信息。
@@ -160,7 +160,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
     </Creative>
 ```
 
-<**NonLinearAds**> 元素可以包含一个或多个 <**NonLinear**> 元素，其中每一个均可描述一个非线性广告。 <**NonLinear**> 元素指定非线性广告的资源。 资源可以是 <**StaticResource**>、<**IFrameResource**> 或 <**HTMLResource**>。 <**StaticResource**> 描述非 HTML 资源，并定义指定资源显示方式的 creativeType 属性：
+<**NonLinearAds**> 元素可以包含一个或多个 <**NonLinear**> 元素，其中每一个均可描述一个非线性广告。 <**NonLinear**> 元素指定非线性广告的资源。 资源可以是 <**StaticResource**>、<**IFrameResource**> 或 <**HTMLResource**>。 \<**StaticResource**> 描述非 HTML 资源，并定义指定资源显示方式的 creativeType 属性：
 
 Image/gif、image/jpeg、image/png - 资源显示在 HTML <**img**> 标记中。
 

@@ -3,21 +3,21 @@ title: 使用 Databricks Python 转换数据 - Azure | Microsoft Docs
 description: 了解如何通过运行 Databricks Python 处理或转换数据。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 60aafd983d1c21777276683a8685376a247d11f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: gauravmalhot
+ms.author: gamal
+ms.reviewer: maghan
+manager: craigg
+ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589207"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002832"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 
@@ -64,13 +64,13 @@ ms.locfileid: "60589207"
 
 |属性|说明|需要|
 |---|---|---|
-|名称|管道中活动的名称。|是|
+|名称|管道中活动的名称。|“是”|
 |description|描述活动用途的文本。|否|
-|type|对于 Databricks Python 活动，活动类型是 DatabricksSparkPython。|是|
-|linkedServiceName|Databricks 链接服务的名称，Python 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
-|pythonFile|要执行的 Python 文件的 URI。 仅支持 DBFS 路径。|是|
-|parameters|将传递到 Python 文件的命令行参数。 这是一个字符串数组。|否|
-|库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|否|
+|类型|对于 Databricks Python 活动，活动类型是 DatabricksSparkPython。|“是”|
+|linkedServiceName|Databricks 链接服务的名称，Python 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|“是”|
+|pythonFile|要执行的 Python 文件的 URI。 仅支持 DBFS 路径。|“是”|
+|parameters|将传递到 Python 文件的命令行参数。 这是一个字符串数组。|“否”|
+|库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|“否”|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks 活动支持的库
 

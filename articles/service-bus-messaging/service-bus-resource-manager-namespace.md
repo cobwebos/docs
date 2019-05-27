@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
 ms.openlocfilehash: 4471c9d5b6c09bcf4d9100cccfa725f36cf9a3f8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045076"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66111250"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 在本快速入门中，我们将创建一个 Azure 资源管理器模板，用于创建采用**标准** SKU 的类型为 **Messaging** 的服务总线命名空间。 本文还定义了为执行部署指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。 有关完整的模板，请参阅 GitHub 上的[服务总线命名空间模板][Service Bus namespace template]。

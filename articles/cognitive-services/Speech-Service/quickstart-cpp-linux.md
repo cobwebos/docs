@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: wolfma
-ms.openlocfilehash: c36913cb8f6625895a293c97a6a9779cc0f1d39f
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 6a85281214fe28a48aa9d405f4f1120905495b83
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466984"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002194"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>快速入门：在 Linux 上使用语音 SDK 通过 C++ 识别语音
 
@@ -34,7 +34,7 @@ ms.locfileid: "65466984"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.5.0`。
+认知服务语音 SDK 的当前版本是 `1.5.1`。
 
 适用于 Linux 的语音 SDK 可用于构建 64 位和 32 位应用程序。 可以从 https://aka.ms/csspeech/linuxbinary 以 tar 文件格式下载必需的库和头文件。
 

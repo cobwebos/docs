@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60aacc3d4d5743187ec826fb9f544488171b1285
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838538"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900729"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>教程：Azure Active Directory 与 Blackboard Learn 的集成
 
@@ -115,11 +115,11 @@ ms.locfileid: "57838538"
 
 5. Blackboard Learn 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，按图中所示配置 SAML 令牌属性，并执行以下步骤。 我们已将 Userprincipalname 映射为唯一用户属性，但你可以将其映射到唯一区分组织中的用户和映射到 Blackboard Learn 用户名字段的相应值。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------------- |
     | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 | user.userprincipalname |
 

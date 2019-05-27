@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: tamram
 ms.openlocfilehash: 213ecee34df46c0a408e7034a07ab864c96b340b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65751541"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114521"
 ---
-| 资源 | 标准文件共享 | 高级文件共享（预览版） |
+| Resource | 标准文件共享 | 高级文件共享（预览版） |
 |----------|---------------|------------------------------------------|
 | 文件共享的最小大小 | 没有最小值;现用现付 | 100 giB;预配 |
 | 文件共享的最大大小 | 5 TiB | 100 TiB |

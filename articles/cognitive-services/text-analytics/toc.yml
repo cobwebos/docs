@@ -103,6 +103,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: 订阅密钥

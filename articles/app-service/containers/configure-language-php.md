@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: ed6a50ee68d39e6e0d01b405eb02edd6d4c93613
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 637feb855c7816dfb26229c5a65a069260a58cd3
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407591"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003098"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux PHP 应用
 
@@ -105,7 +105,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，可以在应用代码外部[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)。 然后你可以访问它们使用标准[getenv （)](https://secure.php.net/manual/function.getenv.php)模式。 例如，若要访问名为 `DB_HOST` 的应用设置，请使用以下代码：
+在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后你可以访问它们使用标准[getenv （)](https://secure.php.net/manual/function.getenv.php)模式。 例如，若要访问名为 `DB_HOST` 的应用设置，请使用以下代码：
 
 ```php
 getenv("DB_HOST")
@@ -147,7 +147,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 > 请参阅 PHP 版本以及当前的最好办法*php.ini*配置为在调用[phpinfo （)](https://php.net/manual/function.phpinfo.php)应用程序中。
 >
 
-### <a name="customize-non-phpinisystem-directives"></a>自定义非 PHP_INI_SYSTEM 指令
+### <a name="Customize-non-PHP_INI_SYSTEM directives"></a>自定义非-PHP_INI_SYSTEM 指令
 
 若要自定义 PHP_INI_USER、 PHP_INI_PERDIR 和 PHP_INI_ALL 指令 (请参阅[php.ini 指令](https://www.php.net/manual/ini.list.php))，添加 *.htaccess*到您的应用程序的根目录的文件。
 
@@ -237,7 +237,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
     - 具体取决于你*composer.json*，可能会为生产模式下安装不同的包 (`require`与`require-dev`)。
     - 某些 web 框架可以部署在生产模式下以不同的方式的静态文件。
     - 在生产模式下运行时，某些 web 框架可能会使用自定义启动脚本。
-- 在调试模式下，在应用服务中运行你的应用。 例如，在[Laravel](https://meanjs.org/)，可以配置你的应用器输出调试的生产环境中的消息[设置`APP_DEBUG`应用设置设为`true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。
+- 在调试模式下，在应用服务中运行你的应用。 例如，在[Laravel](https://meanjs.org/)，可以配置你的应用器输出调试的生产环境中的消息[设置`APP_DEBUG`应用设置设为`true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。
 
 ### <a name="robots933456"></a>robots933456
 

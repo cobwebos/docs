@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 16ccd89fe6eaad3fd6c2704b2f324f486eee45e1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59532423"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111646"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>从经典部署模型迁移到 Azure 资源管理器部署模型的过程中出现的常见错误
 本文编录了从 Azure 经典部署模型将 IaaS 资源迁移到 Azure 资源管理器堆栈的过程中出现的最常见错误和缓解措施。

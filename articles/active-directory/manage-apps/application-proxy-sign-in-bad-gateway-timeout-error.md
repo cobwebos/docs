@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 290b548f31a967d514b09e4de775b12de7703b07
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7499dbe1f3f0b89a11814ad1b65a52bb9ba9fd05
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782957"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016065"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
 
@@ -77,7 +77,7 @@ ms.locfileid: "65782957"
 
 1. 通过转到“Azure Active Directory”，并依次单击“企业应用程序”和“所有应用程序”，在门户中打开应用程序。 打开应用程序，并从左侧菜单中选择“应用程序代理”。
 
-2. 查看“连接器组”字段。 如果组中没有活动连接器，将看到一条警告。 如果未显示任何警告，则继续“验证所有必需端口都已列入允许列表”。
+2. 查看“连接器组”字段。 如果组中没有活动连接器，将看到一条警告。 如果未显示任何警告，则继续验证所需的所有允许的端口。
 
 3. 如果显示错误的连接器组，请使用下拉列表选择正确的组，并确认不再显示任何警告。 如果显示预期的连接器组，请单击警告消息以打开“连接器管理”页面。
 
@@ -87,11 +87,11 @@ ms.locfileid: "65782957"
 
    * 为该组下载新的连接器：从该页面可获取指向[下载新连接器](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)的链接。 将连接器安装在直接与后端应用程序相连的机器上。 通常情况下，应用程序所在的同一服务器上安装连接器。 使用“下载连接器”链接将连接器下载到目标计算机上。 接下来，单击“连接器”并使用“连接器组”下拉列表，确保它属于正确的组。
 
-   * 调查非活动连接器：如果连接器显示为非活动状态，它将无法访问服务。 此错误通常是因为某些必需的端口遭到阻止。 若要解决此问题，需继续“验证所有必需端口都已列入允许列表”。
+   * 调查非活动连接器：如果连接器显示为非活动状态，它将无法访问服务。 此错误通常是因为某些必需的端口遭到阻止。 若要解决此问题，移动以验证允许所有所需的端口。
 
 使用上述步骤确保应用程序分配到具有正常工作的连接器的组之后，再次测试该应用程序。 如果它仍无法正常工作，则继续执行下一部分。
 
-## <a name="check-all-required-ports-are-whitelisted"></a>检查所有必需的端口是否都已列入允许列表
+## <a name="check-all-required-ports-are-open"></a>检查所有所需的端口处于打开状态
 
 若要确认所有必需的端口都已打开，请参阅有关打开端口的文档。 如果所有必需的端口都已打开，则继续下一部分。
 
