@@ -2,19 +2,18 @@
 title: include 文件
 description: include 文件
 services: virtual-machines-windows
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-origin.date: 09/12/2018
-ms.date: 11/12/2018
-ms.author: v-yeche
+ms.date: 09/12/2018
+ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405371"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66154776"
 ---
 通过在子网或 VM 网络接口上创建网络筛选器可为 Azure 中的虚拟机 (VM) 打开端口或创建终结点。 将这些筛选器（控制入站和出站流量）置于附加到接收流量的资源的网络安全组中。
 
@@ -34,4 +33,8 @@ ms.locfileid: "60405371"
 
 3. 将网络安全组与 VM 网络接口或子网相关联。
 
-    虽然此示例使用简单规则来允许 HTTP 流量，但你也可以使用网络安全组和规则来创建更复杂的网络配置。
+虽然此示例使用简单规则来允许 HTTP 流量，但你也可以使用网络安全组和规则来创建更复杂的网络配置。 
+
+
+
+

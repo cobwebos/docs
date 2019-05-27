@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b34d37fa79ccb8344fdacd99877403d61ba5f5c2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8d0f9866864ca4b02ca6238be2ac44537a586c2d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138907"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157953"
 ---
 ## <a name="update-resources"></a>更新资源
 
-有一些限制可以更新的内容。 可以更新以下项目： 
+对于能够更新的内容，存在一些限制。 以下项目可以更新： 
 
 共享映像库：
 - 描述
@@ -34,7 +34,9 @@ ms.locfileid: "65138907"
 - 从最新项中排除
 - 生命周期终结日期
 
-更新的库使用说明 ([az sig 更新](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update)。 
+如果打算添加副本区域，请勿删除源托管映像。 源托管映像是将映像版本复制到其他区域所需的。 
+
+使用 [az sig update](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update) 更新对库的说明。 
 
 ```azurecli-interactive
 az sig update \
@@ -44,7 +46,7 @@ az sig update \
 ```
 
 
-更新映像定义使用的说明[az sig 图像定义更新](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)。
+使用 [az sig image-definition update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 更新对映像定义的说明。
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -54,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-更新要添加的区域复制到使用的映像版本[az sig 映像版本更新](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)。 此更改将需要一段时间，如图像将复制到新的区域。
+使用 [az sig image-version update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) 更新要向其添加需复制的区域的映像版本。 此更改需要一定的时间，因为需将映像复制到新区域。
 
 ```azurecli-interactive
 az sig image-version update \
@@ -67,9 +69,9 @@ az sig image-version update \
 
 ## <a name="delete-resources"></a>删除资源
 
-您必须首先删除映像版本的相反顺序删除资源。 删除的所有映像的版本后，您可以删除图像定义。 删除所有图像定义后，可以都删除库。 
+需按相反的顺序删除资源，先删除映像版本。 删除所有映像版本以后，即可删除映像定义。 删除所有映像定义以后，即可删除库。 
 
-删除映像版本使用[az sig 映像版本删除](https://docs.microsoft.com/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete)。
+使用 [az sig image-version delete](https://docs.microsoft.com/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete) 删除映像版本。
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -79,7 +81,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-删除映像定义使用[az sig 图像定义删除](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete)。
+使用 [az sig image-definition delete](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete) 删除映像定义。
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -89,7 +91,7 @@ az sig image-definition delete \
 ```
 
 
-删除映像库使用[az sig 删除](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-delete)。
+使用 [az sig delete](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-delete) 删除映像库。
 
 ```azurecli-interactive
 az sig delete \

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: asirveda
-ms.openlocfilehash: 2392d0ef9d6257b93b76f13a5354eeba57d78ddd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 60f4e410c7c4e3854235029acade550c9279c981
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800278"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158716"
 ---
 # <a name="migrate-java-enterprise-edition-ee-apps-to-azure"></a>将 Java enterprise edition (EE) 应用程序迁移到 Azure
 本文将指导你完成过程的现有 Java EE 工作负载迁移到 Azure:
@@ -67,7 +67,7 @@ ms.locfileid: "65800278"
 迁移后，您将运行使用 Azure 服务总线的应用。
 
 ## <a name="prerequisites"></a>必备组件
-若要将 Java web 应用部署到 Azure，需要 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费 Azure 帐户](https://azure.microsoft.com/en-us/free/)。
+若要将 Java web 应用部署到 Azure，需要 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 此外，还需要满足以下先决条件：
 
@@ -1063,14 +1063,14 @@ open https://websocket-hello-app.azurewebsites.net
 ![Websocket Hello 映像 ](./media/migrate-java-apps-wild-fly/websocket-hello.png)
 
 
-祝贺你！ 现有的 Java 企业工作负荷迁移到 Azure： 应用到应用服务 Linux 和应用程序的消息传送到 Azure 服务总线的系统。
+恭喜! 现有的 Java 企业工作负荷迁移到 Azure： 应用到应用服务 Linux 和应用程序的消息传送到 Azure 服务总线的系统。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 
 
 - [在 Linux 应用服务的 Java 企业指南](../app-service/containers/app-service-java-enterprise.md)
 - [适用于 Azure 应用服务的 maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable)
-- [部署中 JBoss/WildFly 泛型 JMS RA 适配器](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
+- [部署中 JBoss/WildFly 泛型 JMS RA 适配器](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
 - [WildFly/JBoss 消息传送配置](https://docs.jboss.org/author/display/WFLY/Messaging+configuration)
 - [JBoss/WildFly CLI 指南](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)
 - [从开发计算机建立 SSH 连接](../app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell)

@@ -9,11 +9,11 @@ ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: include file
 ms.openlocfilehash: ea1d331eefe07980547ffae18fbbca920475ec06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193045"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148441"
 ---
 > [!IMPORTANT]
 > Azure 防火墙目前为托管的公共预览版。 可以使用 `Register-AzProviderFeature` PowerShell 命令显式启用它。

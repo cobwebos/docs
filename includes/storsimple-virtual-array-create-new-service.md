@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 4285ee94d2f2a9b5fff9d1896cdf7013f88801ab
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 4ba5c8b69776b39d8a6640744b0c24600f3a0d5b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979442"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157785"
 ---
 #### <a name="to-create-a-new-service"></a>创建新服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "45979442"
 
     1.  为服务提供唯一“资源名称”。 资源名称是可用来识别该服务的友好名称。 名称可以为 2 到 50 个字符，包括字母、数字和连字符。 名称必须以字母或数字开头和结尾。
 
-    2.  从下拉列表中选择一个“订阅”  。 订阅链接到计费帐户。 如果只有一个订阅，此字段不存在。
+    2.  从下拉列表中选择一个“订阅”  。 该订阅将链接到计费帐户。 如果只有一个订阅，此字段不存在。
 
     3.  对于“资源组”，选择一个现有组或创建一个新组。 有关详细信息，请参阅 [Azure 资源组](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)。
 

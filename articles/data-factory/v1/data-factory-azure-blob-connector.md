@@ -14,11 +14,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 85832abeb9908dd891e3f35a0368bc35c7816a6e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528200"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66168005"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -76,7 +76,7 @@ ms.locfileid: "59528200"
 ## <a name="dataset-properties"></a>数据集属性
 要指定数据集来表示 Azure Blob 存储中的输入或输出数据，可以将数据集的类型属性设置为：**AzureBlob**。 将数据集的 **linkedServiceName** 属性设置为 Azure 存储或 Azure 存储 SAS 链接服务的名称。  数据集的 type 属性指定 Blob 存储中的 **Blob 容器**和**文件夹**。
 
-有关可用于定义数据集的 JSON 部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
+有关可用于定义数据集的 JSON 部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 结构、可用性和数据集 JSON 的策略等部分与所有数据集类型（Azure SQL、Azure blob、Azure 表等）类似。
 
 数据工厂支持使用以下符合 CLS 标准、基于 .NET 的类型值在“结构”中为读取数据源（如 Azure Blob）的架构提供类型信息：Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、 Timespan。 将数据从源数据存储移到接收器数据存储时，数据工厂自动执行类型转换。
 
@@ -86,9 +86,9 @@ ms.locfileid: "59528200"
 | --- | --- | --- |
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
 | fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>时**文件名**未指定为输出数据集和**preserveHierarchy**未指定在活动接收器中生成的文件的名称会采用以下格式： `Data.<Guid>.txt` （适用于示例::Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
-| partitionedBy |partitionedBy 是一个可选属性。 它可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 请参阅[使用 partitionedBy 属性](#using-partitionedby-property)部分，了解详细信息和示例。 |否 |
+| partitionedBy |partitionedBy 是一个可选属性。 它可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 请参阅[使用 partitionedBy 属性](#using-partitionedby-property)部分，了解详细信息和示例。 |“否” |
 | 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |“否” |
 
 ### <a name="using-partitionedby-property"></a>使用 partitionedBy 属性
 如上一部分所述，可以使用 **partitionedBy** 属性、[数据工厂函数和系统变量](data-factory-functions-variables.md)指定时序数据的动态 folderPath 和 filename。
@@ -130,13 +130,13 @@ ms.locfileid: "59528200"
 
 | 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
-| recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
+| recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |“否” |
 
 **BlobSink** 支持以下 **typeProperties** 属性部分：
 
 | 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
-| copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy：</b>源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 |否 |
+| copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy：</b>源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 |“否” |
 
 **BlobSource** 还支持向后兼容性的这两种属性。
 
@@ -193,7 +193,7 @@ ms.locfileid: "59528200"
     3. 对于资源组，选择“使用现有”以选择现有资源组（或）选择“新建”以输入资源组的名称。
     4. 选择数据工厂的**位置**。
     5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。
-    6. 单击“创建”。
+    6. 单击**创建**。
 3. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：![数据工厂主页](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>复制向导
@@ -232,7 +232,7 @@ ms.locfileid: "59528200"
     ![复制工具 - 选择输入文件或文件夹](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. 在“文件格式设置”页上，可以看到分隔符以及向导通过分析文件自动检测到的架构。
     1. 请确认以下选项：  
-        a. “文件格式”已设为“文本格式”。 可在下拉列表中看到所有支持的格式。 例如：JSON、Avro、ORC 和 Parquet。
+        a. “文件格式”已设为“文本格式”。 可在下拉列表中看到所有支持的格式。 例如:JSON、Avro、ORC 和 Parquet。
        b. “列分隔符”已设为 `Comma (,)`。 可在下拉列表中看到数据工厂支持的其他列分隔符。 还可以指定自定义分隔符。
        c. “行分隔符”已设为 `Carriage Return + Line feed (\r\n)`。 可在下拉列表中看到数据工厂支持的其他行分隔符。 还可以指定自定义分隔符。
        d. “跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。
@@ -303,7 +303,7 @@ ms.locfileid: "59528200"
 
 以下各节详细介绍了这些实体。
 
-#### <a name="linked-services"></a>链接服务
+#### <a name="linked-services"></a>链接的服务
 应看到两项链接服务。 一个用于源，另一个用于目标。 在本演练中，这两个服务除名称不同外，定义看起来完全一样。 链接服务的“类型”已设为“AzureStorage”。 链接服务定义中最重要的属性是“connectionString”，数据工厂在运行时用其连接到 Azure 存储帐户。 忽略定义中的 hubName 属性。
 
 ##### <a name="source-blob-storage-linked-service"></a>源 blob 存储链接服务

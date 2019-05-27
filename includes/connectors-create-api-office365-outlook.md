@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: b216de0a5094066977467b2899567122d585fb7e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133393"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66149736"
 ---
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备组件
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
 * 一个 [Office 365](https://office365.com) 帐户  
 

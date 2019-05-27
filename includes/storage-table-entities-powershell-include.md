@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541377"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159741"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
     There is one for Azure Table Storage and one for Azure Cosmos DB Table API -->
@@ -70,7 +70,7 @@ Get-AzTableRow -table $cloudTable | ft
 
 此命令得到的结果类似于下表所示：
 
-| userid | 用户名 | 分区 | rowkey |
+| userid | username | 分区 | rowkey |
 |----|---------|---------------|----|
 | 第 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
@@ -85,7 +85,7 @@ Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 
 结果类似于下表所示：
 
-| userid | 用户名 | 分区 | rowkey |
+| userid | username | 分区 | rowkey |
 |----|---------|---------------|----|
 | 第 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
@@ -101,10 +101,10 @@ Get-AzTableRow -table $cloudTable `
 
 此查询将检索一条记录。
 
-|字段|值|
+|字段|value|
 |----|----|
 | userid | 第 |
-| 用户名 | Chris |
+| username | Chris |
 | PartitionKey | partition1 |
 | RowKey      | CA |
 
@@ -118,10 +118,10 @@ Get-AzTableRow `
 
 此查询将检索一条记录。
 
-|字段|值|
+|字段|value|
 |----|----|
 | userid | 第 |
-| 用户名 | Chris |
+| username | Chris |
 | PartitionKey | partition1 |
 | RowKey      | CA |
 
@@ -153,10 +153,10 @@ Get-AzTableRow -table $cloudTable `
 
 结果将显示 Jessie2 记录。
 
-|字段|值|
+|字段|value|
 |----|----|
 | userid | 2 |
-| 用户名 | Jessie2 |
+| username | Jessie2 |
 | PartitionKey | partition2 |
 | RowKey      | NM |
 

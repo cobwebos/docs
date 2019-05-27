@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 7fe46712d610d881c21653461d12e4f8efecb468
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fa5a57afa379c6bbe027be80f400fc176800d289
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827870"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158510"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-cicd-npm-package"></a>持续集成和开发与 Stream Analytics CI/CD npm 包
 本文介绍如何使用 Azure Stream Analytics CI/CD npm 包来设置持续集成和部署过程。
@@ -22,10 +22,14 @@ ms.locfileid: "65827870"
 
 可以启用持续集成和部署为使用 Azure Stream Analytics 作业**asa streamanalytics cicd** npm 包。 Npm 包提供的工具生成的 Azure 资源管理器模板[Stream Analytics Visual Studio Code 项目](quick-create-vs-code.md)。 无需安装 Visual Studio Code，可以在 Windows、 macOS 和 Linux 上使用它。
 
-一旦您有[下载包](https://www.npmjs.com/package/azure-streamanalytics-cicd)，使用以下命令输出的 Azure 资源管理器模板。 如果**outputPath**未指定，则模板将被放入**部署**下的项目文件夹**bin**文件夹。
+一旦您有[下载包](https://www.npmjs.com/package/azure-streamanalytics-cicd)，使用以下命令输出的 Azure 资源管理器模板。 **ScriptPath**参数是绝对路径**asaql**项目文件中的。 请确保 asaproj.json 和 JobConfig.json 文件是包含脚本文件所在的文件夹中。 如果**outputPath**未指定，则模板将被放入**部署**下的项目文件夹**bin**文件夹。
 
 ```powershell
-asa-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
+azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
+```
+示例 （macOS 上）
+```powershell
+azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/script.asaql" 
 ```
 
 Stream Analytics Visual Studio Code 项目成功生成，当它生成以下两个 Azure 资源管理器模板文件下的**bin / [Debug/Retail] /deploy**文件夹： 
@@ -38,7 +42,7 @@ Stream Analytics Visual Studio Code 项目成功生成，当它生成以下两�
 
        [ProjectName].JobTemplate.parameters.json   
 
-parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
+Parameters.json 文件中的默认参数是从你的 Visual Studio 代码项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 
 > [!NOTE]
 > 对于所有凭据，默认值均设置为 null。 部署到云之前，必须先设置这些值。

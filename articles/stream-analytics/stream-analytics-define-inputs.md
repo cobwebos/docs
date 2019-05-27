@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 420705ef6b2e38d147b7033d2fb3ad57bbc216ac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480487"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159281"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -131,6 +131,8 @@ CSV 格式的输入需要标头行来定义数据集的字段，并且所有标�
 > [!NOTE]
 > 流分析不支持将内容添加到现有 blob 文件。 流分析将仅查看每个文件一次，并且在作业读取数据后对文件所做的任何更改都不会得到处理。 最佳做法是立即上传 blob 文件的全部数据，然后将其他较新的事件添加到其他全新的 blob 文件中。
 > 
+
+同时上传大量的 blob 可能会导致 Stream Analytics，以跳过读取中极少数情况下的几个 blob。 建议至少 2 个间隔几秒到 Blob 存储上传 blob。 如果此选项不可行，可以到流大量的事件使用事件中心。 
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>将 Blob 存储配置为流输入 
 

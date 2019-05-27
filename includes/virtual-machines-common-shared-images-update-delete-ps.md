@@ -9,15 +9,15 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191724"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145769"
 ---
 ## <a name="update-resources"></a>更新资源
 
-有一些限制可以更新的内容。 可以更新以下项目： 
+对于能够更新的内容，存在一些限制。 以下项目可以更新： 
 
 共享映像库：
 - 描述
@@ -34,9 +34,9 @@ ms.locfileid: "65191724"
 - 从最新项中排除
 - 生命周期终结日期
 
-如果你计划添加副本的区域，则不要删除源托管的映像。 源托管的映像是所需的映像版本复制到其他区域。 
+如果打算添加副本区域，请勿删除源托管映像。 源托管映像是将映像版本复制到其他区域所需的。 
 
-若要更新库的说明，请使用[更新 AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)。
+若要更新库的说明，请使用 [Update-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)。
 
 ```azurepowershell-interactive
 Update-AzGallery `
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-此示例演示如何使用[更新 AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition)更新我们的图像定义的生命周期结束日期。
+此示例演示如何使用 [Update-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) 来更新映像定义的生命周期结束日期。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-此示例演示如何使用[更新 AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion)用作从排除此映像版本*最新*映像。
+此示例演示如何使用 [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) 来排除此映像版本，使之不能用作最新映像。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -68,7 +68,7 @@ Update-AzGalleryImageVersion `
 
 ## <a name="clean-up-resources"></a>清理资源
 
-删除资源，需要使用嵌套的资源中的映像版本中的最后一项启动。 一旦版本将被删除，您可以删除图像定义。 直到其下的所有资源已被都删除，无法删除库。
+删除资源时，需从嵌套资源中的最后一项（映像版本）开始。 删除版本以后，即可删除映像定义。 必须先删除库下的所有资源，然后才能删除库。
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"

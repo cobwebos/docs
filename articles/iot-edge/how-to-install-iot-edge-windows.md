@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e48ab075264423479e792848af522a890736a403
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8907ae61fb03b417a74eb32e1fd09aece75d5e2c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152694"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151720"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -76,6 +76,13 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 2. 以管理员身份运行 PowerShell。
 
+   >[!NOTE]
+   >使用 PowerShell 的 AMD64 会话安装 IoT Edge，不是 PowerShell (x86)。 如果不能确定要将哪个会话类型，运行以下命令：
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
+
 3. **部署 IoTEdge**命令将检查你的 Windows 计算机上受支持的版本中，将启用容器功能，并下载小鲸鱼运行时和 IoT Edge 运行时。 该命令默认为使用 Windows 容器。 
 
    ```powershell
@@ -85,7 +92,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 4. 在此情况下，IoT Core 设备可能会自动重新启动。 Windows 10 或 Windows Server 的其他设备可能会提示您重新启动。 如果是这样，立即重新启动你的设备。 你的设备准备就绪后，再次以管理员身份运行 PowerShell。
 
-5. **Initialize IoTEdge**命令将 IoT Edge 运行时配置在计算机上。 该命令默认为使用 Windows 容器手动预配。 
+5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。 
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -111,12 +118,19 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 下面的示例演示如何使用 Windows 容器的自动安装：
 
-1. 按照[在 Windows上创建和预配模拟 TPM Edge 设备](how-to-auto-provision-simulated-device-windows.md)中的步骤，设置设备预配服务并检索其**范围 ID**，模拟 TPM 设备并检索其**注册 ID**，然后创建个人注册。 在 IoT 中心注册你的设备后, 继续使用这些安装步骤。  
+1. 按照中的步骤[创建和预配模拟的 TPM IoT Edge 设备上 Windows](how-to-auto-provision-simulated-device-windows.md)来设置设备预配服务和检索其**作用域 ID**，模拟 TPM 设备并检索其**注册 ID**，然后创建单个注册。 在 IoT 中心注册你的设备后, 继续使用这些安装步骤。  
 
    >[!TIP]
    >在安装和测试期间，确保运行 TPM 模拟器的窗口处于打开状态。 
 
 2. 以管理员身份运行 PowerShell。
+
+   >[!NOTE]
+   >使用 PowerShell 的 AMD64 会话安装 IoT Edge，不是 PowerShell (x86)。 如果不能确定要将哪个会话类型，运行以下命令：
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
 
 3. **部署 IoTEdge**命令将检查你的 Windows 计算机上受支持的版本中，将启用容器功能，并下载小鲸鱼运行时和 IoT Edge 运行时。 该命令默认为使用 Windows 容器。 
 
@@ -127,7 +141,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 4. 在此情况下，IoT Core 设备可能会自动重新启动。 Windows 10 或 Windows Server 的其他设备可能会提示您重新启动。 如果是这样，立即重新启动你的设备。 你的设备准备就绪后，再次以管理员身份运行 PowerShell。
 
-6. **Initialize IoTEdge**命令将 IoT Edge 运行时配置在计算机上。 该命令默认为使用 Windows 容器手动预配。 使用`-Dps`标志以将设备预配服务，而不是手动预配。
+6. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。 使用`-Dps`标志以将设备预配服务，而不是手动预配。
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -212,7 +226,7 @@ docker -H npipe:////./pipe/iotedge_moby_engine images
 
 ## <a name="update-an-existing-installation"></a>更新现有安装
 
-如果你已经在设备上安装 IoT Edge 运行时并从 IoT 中心的标识与将其预配，则可以更新运行时无需重新输入设备信息。 
+如果你已经在设备上安装 IoT Edge 运行时并从 IoT 中心的标识与将其预配，则可以更新运行时无需重新输入你的设备信息。 
 
 有关详细信息，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。
 
@@ -262,11 +276,11 @@ Uninstall-IoTEdge
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
-初始化 IoTEdge 命令配置 IoT Edge 设备连接字符串和操作的详细信息。 此命令生成的信息的大部分然后存储在 iotedge\config.yaml 文件。 初始化命令接受这些通用参数，等等。 有关完整列表，使用逗号`Get-Help Initialize-IoTEdge -full`。 
+初始化 IoTEdge 命令配置 IoT Edge 设备连接字符串和操作的详细信息。 此命令生成的信息的大部分然后存储在 iotedge\config.yaml 文件。 初始化命令接受这些通用参数，等等。 有关完整列表，请使用命令`Get-Help Initialize-IoTEdge -full`。 
 
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
-| **手动** | 无 | **开关参数**。 如果指定没有预配类型，则手动是默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
+| **Manual** | 无 | **开关参数**。 如果指定没有预配类型，则手动是默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
 | **Dps** | 无 | **开关参数**。 如果指定没有预配类型，则手动是默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
 | **DeviceConnectionString** | 已在 IoT 中心注册的 IoT Edge 设备中的连接字符串，括在单引号中 | 对于手动安装，此参数是**必需**的。 如果未在脚本参数中提供连接字符串，则安装期间系统会提示你提供连接字符串。 |
 | **ScopeId** | 与 IoT 中心关联的设备预配服务实例中的范围 ID。 | 对于 DPS 安装，此参数是**必需**的。 如果未在脚本参数中提供范围 ID，则安装期间系统会提示你提供范围 ID。 |

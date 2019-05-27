@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: rezas
 ms.custom: include file
-ms.openlocfilehash: d1cfe3d998c08aef2b845315a16d881dea1cd1f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ede897054a6cbef254c06bd1d810b933ec09016a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124348"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158621"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
@@ -23,7 +23,7 @@ ms.locfileid: "58124348"
 
 3. 在右侧列表中单击“Iot 中心”。 随即显示 IoT 中心创建过程的第一个屏幕。
 
-   ![显示了在 Azure 门户中创建中心的屏幕截图](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-1.png)
+   ![显示了在 Azure 门户中创建中心的屏幕截图](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-01.png)
 
    填写字段：
 
@@ -39,7 +39,7 @@ ms.locfileid: "58124348"
 
 4. 单击“下一步:大小和规模”，以便继续创建 IoT 中心。
 
-   ![屏幕截图显示使用 Azure 门户为新的 IoT 中心设置大小和缩放级别](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-2-free.png)
+   ![屏幕截图显示使用 Azure 门户为新的 IoT 中心设置大小和缩放级别](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-02.png)
 
    在此屏幕上，可以采用默认值，只需在底部单击“查看+创建”即可。
 
@@ -51,6 +51,6 @@ ms.locfileid: "58124348"
 
 5. 单击“查看+创建”可查看选择。 会显示类似于以下的屏幕。
 
-   ![屏幕截图显示用于创建新 IoT 中心的信息](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-3-free.png)
+   ![屏幕截图显示用于创建新 IoT 中心的信息](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-03.png)
 
 6. 单击“创建”以创建新的 IoT 中心。 创建中心需要几分钟时间。

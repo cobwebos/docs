@@ -1,10 +1,15 @@
 ---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
 ms.openlocfilehash: 9d4f7faa18ee7fae158afb42b8c42287e61dd103
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553783"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150357"
 ---
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
@@ -15,6 +20,7 @@ ms.locfileid: "60553783"
 从项目文件夹中的 Node 命令提示符运行 `npm install hyco-ws`。
 
 ### <a name="write-some-code-to-send-messages"></a>编写一些代码来发送消息
+
 1. 在 `sender.js` 文件的顶部，添加以下`constants`。
    
     ```js

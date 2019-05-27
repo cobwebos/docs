@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: c49b9d5fdc0c17f16f1c80471a00dd53625dc6e8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.openlocfilehash: 3edc1c2bd328cd6e7b7991ff2b5438b8899a0ce7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236950"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160483"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标
+# <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标 
 
 使用 Azure 机器学习服务可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-target)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
 
@@ -38,7 +38,7 @@ ms.locfileid: "65236950"
 Azure 机器学习服务为不同的计算目标提供不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
 
 
-|训练的计算目标| GPU 加速 | 自动<br/> 超参数优化 | 自动</br> 机器学习 | Azure 机器学习管道 |
+|训练的计算目标| GPU 加速 | 自动<br/> 超参数优化 | 自动<br/> 机器学习 | Azure 机器学习管道 |
 |----|:----:|:----:|:----:|:----:|
 |[本地计算机](#local)| 可能 | &nbsp; | ✓ | &nbsp; |
 |[Azure 机器学习计算](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -418,6 +418,10 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 * 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。 
 * [使用 CLI 扩展](reference-azure-machine-learning-cli.md#experiments)提交试验。
+
+## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
+
+启动时运行，其中源目录是本地 Git 存储库的培训，存储库有关的信息存储在运行历史记录。 例如，在存储库的当前提交 ID 记录为历史记录。
 
 ## <a name="notebook-examples"></a>Notebook 示例
 

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 8fe22f95c1dfc5171c41d6b3f0e00760fd9c9d69
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133013"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66149204"
 ---
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 * 一个 [Facebook](https://www.facebook.com/) 帐户 
 
 可以在逻辑应用中使用 Facebook 帐户之前，必须先授权该逻辑应用可以连接到 Facebook 帐户。 好在，可以从 Azure 门户中的逻辑应用内轻松地执行此操作。 

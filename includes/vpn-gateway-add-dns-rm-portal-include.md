@@ -9,11 +9,11 @@ ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: fe90de618df04063a5486af80bdade67fb886a48
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53443981"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157266"
 ---
 1. 在虚拟网络页面的“设置”部分中，选择“DNS 服务器”以打开“DNS 服务器”页面。
 

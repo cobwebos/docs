@@ -13,11 +13,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: d30ec0765627ec173f0027e49f44cb77f6b26ac6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361484"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155201"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 
@@ -602,7 +602,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
     }
     ```
 
-2. 若要部署 Azure 资源管理器模板，请运行下面的示例，其中 ADFTutorialResourceGroup 是资源组的名称，ADFTutorialARM.json 是包含 JSON 定义文件中所示的新建 AzResourceGroupDeployment 命令数据工厂和 Azure SSIS ir。
+2. 若要部署 Azure 资源管理器模板，请运行 New-AzResourceGroupDeployment 命令，如以下示例所示。其中，ADFTutorialResourceGroup 是资源组的名称。 ADFTutorialARM.json 是包含数据工厂和 Azure-SSIS IR 的 JSON 定义的文件。
 
     ```powershell
     New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json
@@ -610,7 +610,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 
     此命令将创建数据工厂并在其中创建 Azure-SSIS IR，但不会启动 IR。
 
-3. 若要启动 Azure SSIS IR，请运行开始 AzDataFactoryV2IntegrationRuntime 命令：
+3. 若要启动 Azure-SSIS IR，请运行 Start-AzDataFactoryV2IntegrationRuntime 命令：
 
     ```powershell
     Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "<Resource Group Name>" `

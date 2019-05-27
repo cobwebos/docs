@@ -2,19 +2,18 @@
 title: include 文件
 description: include 文件
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 12/06/2018
-ms.date: 12/24/2018
-ms.author: v-jay
+ms.date: 12/06/2018
+ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6d0737a7300b2a6025f776c1ed65a05cacf2141a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60845383"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157675"
 ---
 创建远程桌面连接来连接到部署到 VNet 的 VM。 若要验证是否能够连接到 VM，最好的方式是使用其专用 IP 地址而不是计算机名称进行连接。 这种方式测试的是能否进行连接，而不是测试名称解析是否已正确配置。 
 

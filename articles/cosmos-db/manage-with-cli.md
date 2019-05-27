@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 4/8/2019
 ms.author: mjbrown
 ms.openlocfilehash: 1d19e58b2d1381725de490b68d9e4d00a2ca4cb6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495475"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66151215"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 资源
 
-以下指南介绍了常用的命令自动管理 Azure Cosmos DB 帐户、 数据库和使用 Azure CLI 的容器。 [Azure CLI 参考](https://docs.microsoft.com/cli/azure/cosmosdb)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 还可以在[针对 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)中找到更多示例，包括如何为 MongoDB、Gremlin、Cassandra 和表 API 创建和管理 Cosmos DB 帐户、数据库和容器。
+以下指南介绍了使用 Azure CLI 自动管理 Azure Cosmos DB 帐户、数据库和容器的常见命令。 [Azure CLI 参考](https://docs.microsoft.com/cli/azure/cosmosdb)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 还可以在[针对 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)中找到更多示例，包括如何为 MongoDB、Gremlin、Cassandra 和表 API 创建和管理 Cosmos DB 帐户、数据库和容器。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -51,7 +51,7 @@ az cosmosdb database create \
 
 ## <a name="create-a-container"></a>创建容器
 
-若要使用 RU/秒的 400 和分区键创建 Cosmos DB 容器中，运行以下命令：
+若要创建吞吐量为 400 RU/秒且具有分区键的 Cosmos DB 容器，请运行以下命令：
 
 ```azurecli-interactive
 # Create a container
@@ -66,7 +66,7 @@ az cosmosdb collection create \
 
 ## <a name="change-the-throughput-of-a-container"></a>更改容器的吞吐量
 
-若要更改为 1000 RU/s 的 Cosmos DB 容器的吞吐量，请运行以下命令：
+若要将 Cosmos DB 容器的吞吐量更改为 1000 RU/秒，请运行以下命令：
 
 ```azurecli-interactive
 # Update container throughput
@@ -91,7 +91,7 @@ az cosmosdb list-keys \
 
 ## <a name="list-connection-strings"></a>列出连接字符串
 
-若要获得 Cosmos 帐户连接字符串，请运行以下命令：
+若要获取 Cosmos 帐户的连接字符串，请运行以下命令：
 
 ```azurecli-interactive
 # List connection strings
@@ -102,7 +102,7 @@ az cosmosdb list-connection-strings \
 
 ## <a name="regenerate-account-key"></a>重新生成帐户密钥
 
-若要重新生成新的主密钥 Cosmos 帐户，请运行以下命令：
+若要重新生成 Cosmos 帐户的新主密钥，请运行以下命令：
 
 ```azurecli-interactive
 # Regenerate account key

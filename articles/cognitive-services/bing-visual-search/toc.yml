@@ -90,3 +90,5 @@
       href: 'https://stackoverflow.com/questions/tagged/bing-search'
     - name: 用户之声
       href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

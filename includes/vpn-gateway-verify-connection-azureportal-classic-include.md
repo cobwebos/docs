@@ -9,11 +9,11 @@ ms.date: 010/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 60a64758ae93320fc44a0705038e9db7e114b9bd
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123986"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66149562"
 ---
 在 Azure 门户中，可通过导航到连接来查看经典 VNet VPN 网关的连接状态。 以下步骤演示导航到连接并进行验证的一种方法。
 

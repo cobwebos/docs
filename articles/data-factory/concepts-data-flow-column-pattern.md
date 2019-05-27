@@ -1,24 +1,23 @@
 ---
 title: Azure 数据工厂映射数据流列模式
-description: Azure 数据工厂映射数据流列模式用于创建通用化模板模式，以便转换数据流中的字段，不需考虑基础架构元数据。
+description: 了解如何在映射的数据流中使用 Azure 数据工厂列模式来创建用于转换数据流中的数据而不考虑基础架构元数据字段的通用的模板模式
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 53d3300ea11a86c34909ba6ce0fd6c8c0c38b4b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5131329f6675bc86374f5a5c081e0aaa7d36c0fe
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61269543"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66155238"
 ---
-# <a name="azure-data-factory-mapping-data-flow-concepts"></a>Azure 数据工厂映射数据流概念
+# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure 数据工厂映射数据流列模式
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-多个 Azure 数据工厂数据流转换支持“列模式”理念，因此你可以根据模式而不是硬编码的列名称来创建模板列。 可以在表达式生成器中使用此功能来定义模式，以便匹配需要转换的列，而不需确切且具体的字段名称。 当传入的源字段经常更改时，模式很有用，尤其是在文本文件或 NoSQL 数据库中更改列的情况下。 有时这称为“架构偏差”。
+多个 Azure 数据工厂数据流转换支持“列模式”理念，因此你可以根据模式而不是硬编码的列名称来创建模板列。 可以在表达式生成器中使用此功能来定义模式，以便匹配需要转换的列，而不需确切且具体的字段名称。 模式是传入的源字段经常更改，尤其对于更改文本的文件或 NoSQL 数据库中的列的情况下很有用。 这种情况有时称为"架构偏差"。
 
 ![列模式](media/data-flow/columnpattern2.png "列模式")
 

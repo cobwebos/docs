@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb716e0d9f97d3ea2e9584a9fc3d7a6f57da9179
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
-ms.translationtype: MT
+ms.openlocfilehash: 3167f60cca9997c9713efad0fbb8a51b20def76b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65502103"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151174"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -34,39 +34,23 @@ ms.locfileid: "65502103"
 1. 找到满意的运行后，在**模型注册表**中注册持久化模型。
 1. 开发使用模型评分脚本和**部署模型**作为**web 服务**在 Azure 中，或设置为**IoT Edge 设备**。
 
+执行以下任一这些步骤：
++ [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
++ [Azure 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
++  [Azure 机器学习服务的可视界面 （预览版）](ui-concept-visual-interface.md)
 
 > [!NOTE]
 > 本文定义了 Azure 机器学习服务使用的术语和概念，但未定义 Azure 平台的术语和概念。 有关 Azure 平台术语的详细信息，请参阅 [Microsoft Azure 词汇表](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
 
 ## <a name="workspace"></a>工作区
 
-工作区是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。
-
-工作区保留可用于训练模型的计算目标的列表。 此外，它还保留训练运行的历史记录，包括日志、指标、输出和脚本快照。 使用此信息可以确定哪个训练运行产生最佳模型。
-
-将模型注册到工作区。 使用已注册的模型和评分脚本以将模型部署到 Azure 容器实例时，Azure Kubernetes 服务，或作为基于 REST 的 HTTP 终结点现场可编程门列阵 (FPGA)。 还可以将映像作为模块部署到 Azure IoT Edge 设备。 在内部，创建 docker 映像以承载部署的映像。 如果需要可以指定自己的映像。
-
-你可以创建多个工作区，并且每个工作区可由多个用户共享。 共享工作区时，可以通过将用户分配到以下角色来控制访问权限：
-
-* 所有者
-* 参与者
-* 读取器
-
-有关这些角色的详细信息，请参阅[访问管理对 Azure 机器学习工作区](how-to-assign-roles.md)一文。
-
-创建新工作区时，它会自动创建工作区使用的几个 Azure 资源：
-
-* [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册在训练期间和部署模型时使用的 Docker 容器。
-* [Azure 存储帐户](https://azure.microsoft.com/services/storage/)：用作工作区的默认数据存储。
-* [Azure Application Insights](https://azure.microsoft.com/services/application-insights/)：存储有关模型的监视信息。
-* [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：存储计算目标使用的机密和工作区所需的其他敏感信息。
-
-> [!NOTE]
-> 除创建新版本以外，还可以使用现有的 Azure 服务。
+[在工作区](concept-workspace.md)是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。
 
 下图演示了工作区的分类：
 
 [![工作区分类](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+
+有关工作区的详细信息，请参阅[什么是 Azure 机器学习工作区？](concept-workspace.md)。
 
 ## <a name="experiment"></a>试验
 
@@ -170,6 +154,10 @@ Azure 机器学习数据集 （预览版） 使其更轻松地访问和使用你
 
 有关查看由训练模型产生的运行次数的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-run-cloud-notebook.md)。
 
+## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
+
+启动时运行，其中源目录是本地 Git 存储库的培训，存储库有关的信息存储在运行历史记录。 例如，在存储库的当前提交 ID 记录为历史记录。 这适用于运行提交使用估计器、 机器学习管道中或运行脚本。 它还适用于运行从 SDK 或机器学习 CLI 提交。
+
 ## <a name="snapshot"></a>快照
 
 提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
@@ -228,7 +216,7 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 ## <a name="pipeline"></a>管道
 
-使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如，管道可以包括数据准备、模型训练、模型部署以及推断阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。
+使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如，管道可能包括数据准备、 模型定型、 模型部署和评分推理/阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 

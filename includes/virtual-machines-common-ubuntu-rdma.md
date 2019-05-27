@@ -1,10 +1,15 @@
 ---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
 ms.openlocfilehash: 9a5a2d92f70c411c46ebb4efb35e17e9b0c477ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542245"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66161601"
 ---
 1. 安装 dapl、rdmacm、ibverbs 和 mlx4
 
@@ -12,10 +17,11 @@ ms.locfileid: "60542245"
    sudo apt-get update
 
    sudo apt-get install libdapl2 libmlx4-1
+
    ```
 
 2. 在 /etc/waagent.conf 中，通过取消注释以下配置行来启用 RDMA。 需要根访问权限才能编辑该文件。
-
+  
    ```
    OS.EnableRDMA=y
 
@@ -29,20 +35,19 @@ ms.locfileid: "60542245"
 
    <User or group name> soft    memlock <memory required for your application in KB>
    ```
-
+  
 4. 安装 Intel MPI 库。 从 Intel [购买和下载](https://software.intel.com/intel-mpi-library/)库或下载[免费评估版本](https://registrationcenter.intel.com/en/forms/?productid=1740)。
 
    ```bash
    wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
    ```
-
+ 
    仅支持 Intel MPI 5.x 运行时。
-
+ 
    有关安装步骤，请参阅 [Intel MPI 库安装指南](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)。
 
 5. 启用非根非调试器进程的 ptrace（为最新版本的 Intel MPI 所需）。
-
+ 
    ```bash
    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
    ```
-   <!--ms.date: 07/30/2018-->

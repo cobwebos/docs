@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245943"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167304"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
 
@@ -188,16 +188,16 @@ ms.locfileid: "56245943"
 
 `{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
 
-| 元素 | 必选 | 说明 | 
+| 元素 | 需要 | 描述 | 
 | ------- | -------- | ----------- | 
-| tenant | 是 | Azure AD 租户的 GUID | 
-| audience | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
-| clientId | 是 | 请求访问权限的客户端的 GUID - 逻辑应用的应用程序标识中的客户端 ID | 
-| secret | 是 | 请求访问令牌的客户端的应用程序标识中的密钥或密码 | 
-| type | 是 | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
+| tenant | “是” | Azure AD 租户的 GUID | 
+| audience | “是” | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
+| clientId | “是” | 请求访问权限的客户端的 GUID - 逻辑应用的应用程序标识中的客户端 ID | 
+| 密 | “是” | 请求访问令牌的客户端的应用程序标识中的密钥或密码 | 
+| 类型 | “是” | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
 |||| 
 
-例如：
+例如:
 
 ``` json
 {
@@ -234,16 +234,16 @@ ms.locfileid: "56245943"
 
 `{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
 
-| 元素 | 必选 | 说明 | 
+| 元素 | 需要 | 描述 | 
 | ------- | -------- | ----------- | 
-| type | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
-| password | 是 | 用于访问客户端证书（PFX 文件）的密码 | 
-| pfx | 是 | 客户端证书（PFX 文件）的 base64 编码内容 | 
+| 类型 | “是” | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
+| password | “是” | 用于访问客户端证书（PFX 文件）的密码 | 
+| pfx | “是” | 客户端证书（PFX 文件）的 base64 编码内容 | 
 |||| 
 
 <a name="basic"></a>
 
-#### <a name="basic-authentication"></a>基本身份验证
+#### <a name="basic-authentication"></a>基本验证
 
 若要验证从逻辑应用传入 Web 应用或 API 应用的请求，可以使用基本身份验证，如用户名和密码。 基本身份验证是一种常用模式，在用来生成你的 Web 应用或 API 应用的任何语言中都可以使用此身份验证。
 
@@ -251,11 +251,11 @@ ms.locfileid: "56245943"
 
 `{"type": "basic", "username": "username", "password": "password"}`。
 
-| 元素 | 必选 | 说明 | 
+| 元素 | 需要 | 描述 | 
 | ------- | -------- | ----------- | 
-| type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
-| username | 是 | 要用于身份验证的用户名 | 
-| password | 是 | 要用于身份验证的密码 | 
+| 类型 | “是” | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
+| username | “是” | 要用于身份验证的用户名 | 
+| password | “是” | 要用于身份验证的密码 | 
 |||| 
 
 <a name="azure-ad-code"></a>

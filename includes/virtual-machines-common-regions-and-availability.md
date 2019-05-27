@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: fb296236fb73823690175b12f4e07c05b60cdbcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f33312d0a5fbe383d438408d471dd9ae09d0332
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542562"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156241"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure 中虚拟机的区域和可用性
 Azure 在世界各地的多个数据中心运行。 这些数据中心分组到地理区域，让用户可灵活选择构建应用程序的位置。 请务必了解 Azure 中虚拟机 (VM) 运行的方式和位置，以及最大化性能、可用性和冗余的选项。 本文提供了 Azure 的可用性和冗余功能的概述。
@@ -40,7 +40,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 区域对的示例包括：
 
-| 主要 | 辅助 |
+| 主分区 | 辅助 |
 |:--- |:--- |
 | 美国西部 |美国东部 |
 | 北欧 |西欧 |
@@ -63,7 +63,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
   * 在创建存储帐户时所在的区域复制数据三次。
 * 区域冗余存储 (ZRS)
   * 在两到三个设施之间复制数据三次（在单个区域内或两个区域之间）。
-* 异地冗余存储 (GRS)
+* 异地冗余存储(GRS)
   * 将数据复制到距主要区域数百英里以外的次要区域。
 * 读取访问异地冗余存储 (RA-GRS)
   * 与 GRS 一样，可将数据复制到次要区域，但此外还提供对次要位置中数据的只读访问权限。
@@ -72,8 +72,8 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 | 复制策略 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 数据在多个设施之间进行复制。 |否 |是 |是 |是 |
-| 可以从辅助位置和主位置读取数据。 |否 |否 |否 |是 |
+| 数据在多个设施之间进行复制。 |“否” |是 |是 |“是” |
+| 可以从辅助位置和主位置读取数据。 |“否” |否 |否 |“是” |
 | 在单独的节点上维护的数据副本数。 |3 |3 |6 |6 |
 
 可以在[此处](../articles/storage/common/storage-redundancy.md)详细了解 Azure 存储复制选项。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../articles/virtual-machines/windows/managed-disks-overview.md)。
@@ -95,6 +95,8 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 可用性集是数据中心内的 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 可用性集本身是免费的，只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd) 时，Azure SLA 适用于计划外维护事件。
 
 可用性集由可防止硬件故障以及允许安全应用更新的两个额外分组构成 - 容错域 (FD) 和更新域 (UD)。 详细了解如何管理 [Linux VM](../articles/virtual-machines/linux/manage-availability.md) 或 [Windows VM](../articles/virtual-machines/windows/manage-availability.md) 的可用性。
+
+当分配有反相关性的可能性非常高的多个计算资源不使用容错域的高可用性构造，但是不保证此反相关性。
 
 ### <a name="fault-domains"></a>容错域
 容错域是共享公用电源和网络交换机的基础硬件逻辑组，类似于本地数据中心内的机架。 在可用性集内创建 VM 时，Azure 平台会将 VM 自动分布到这些容错域。 此方法可限制潜在物理硬件故障、网络中断或断电的影响。

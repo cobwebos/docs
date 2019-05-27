@@ -1,7 +1,7 @@
 ---
 title: 创建、运行和跟踪机器学习管道
 titleSuffix: Azure Machine Learning service
-description: 使用适用于 Python 的 Azure 机器学习 SDK 创建和运行机器学习管道。 使用管道来创建和管理将各个机器学习 (ML) 阶段整合到一起的工作流。 这些阶段包括数据准备、模型训练、模型部署以及推断。
+description: 使用适用于 Python 的 Azure 机器学习 SDK 创建和运行机器学习管道。 使用管道来创建和管理将各个机器学习 (ML) 阶段整合到一起的工作流。 这些阶段包括数据准备、 模型定型、 模型部署和推理/评分。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ec3e915c26abf38653d1bddfe0a5ba44d5e6de1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 15fa9095b8169dc1545c796421be91e89652e1c1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914893"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165875"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -251,6 +251,8 @@ trainStep = PythonScriptStep(
 )
 ```
 
+重用的以前的结果 (`allow_reuse`) 是键时使用的协作环境中的管道，因为消除不必要的重新运行提供了灵活性。 这是默认行为时 script_name、 输入和一个步骤的参数保持不变。 当重复使用的步骤的输出时，作业不提交到计算，相反，从以前的运行结果可立即供下一步运行。 如果设置为 false，新的运行将始终生成此步骤在管道执行过程。 
+
 定义步骤后，使用其中的部分或所有步骤生成管道。
 
 > [!NOTE]
@@ -315,6 +317,10 @@ pipeline_run1.wait_for_completion()
 
 有关详细信息，请参阅[试验类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)引用。
 
+## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
+
+启动时运行，其中源目录是本地 Git 存储库的培训，存储库有关的信息存储在运行历史记录。 例如，在存储库的当前提交 ID 记录为历史记录。
+
 ## <a name="publish-a-pipeline"></a>发布管道
 
 可以发布一个管道，以便稍后结合不同的输入运行该管道。 要使已发布的管道的 REST 终结点接受参数，在发布之前必须将该管道参数化。 
@@ -373,11 +379,11 @@ response = requests.post(published_pipeline1.endpoint,
 ## <a name="caching--reuse"></a>缓存和重用  
 
 为了优化和自定义的管道可以做一些事情围绕缓存和重复使用的行为。 例如，你可以选择：
-+ **关闭步骤运行输出的默认重用**通过设置`allow_reuse=False`期间[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
++ **关闭步骤运行输出的默认重用**通过设置`allow_reuse=False`期间[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)。 重用是密钥时使用的协作环境中的管道，因为消除不必要的运行提供了灵活性。 但是，您可以选择禁用此。
 + **扩展超出了该脚本哈希**，以便同时包含绝对路径或相对路径的其他文件和目录使用 source_directory `hash_paths=['<file or directory']` 
 + **强制在运行中的所有步骤的输出重新生成**与 `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-默认情况下，步骤重新使用已启用，仅主要脚本文件进行哈希运算。 因此，如果给定步骤的脚本将保持不变 (`script_name`，输入和参数)、 运行上一步的输出中将重复使用、 该作业不提交到计算，和从以前的运行结果可立即供下一步改为.  
+默认情况下，`allow-reuse`的步骤，并仅主要脚本文件进行哈希运算。 因此，如果给定步骤的脚本将保持不变 (`script_name`，输入和参数)、 运行上一步的输出中将重复使用、 该作业不提交到计算，和从以前的运行结果可立即供下一步改为.  
 
 ```python
 step = PythonScriptStep(name="Hello World", 

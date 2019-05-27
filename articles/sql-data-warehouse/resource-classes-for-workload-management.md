@@ -2,21 +2,20 @@
 title: 用于工作负荷管理的资源类 - Azure SQL 数据仓库 | Microsoft Docs
 description: 有关使用资源类管理并发性以及计算 Azure SQL 数据仓库中查询的资源的指导。
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: ronortloff
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-origin.date: 03/15/2019
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 05/22/2019
+ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 75bd6e8071717ba755b71f51afcd884539049489
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475076"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165983"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
 
@@ -80,11 +79,12 @@ ms.locfileid: "61475076"
 
 第 1 代挖掘动态资源类的详细信息时，有些详细信息会让理解其行为变得更加复杂：
 
-- Smallrc 资源类和静态资源类相似，也是通过固定的内存模型进行操作。  Smallrc 查询的内存不会随着服务级别的提高而动态增高。
+**Gen1 上**
+- Smallrc 资源类和静态资源类相似，也是通过固定的内存模型进行操作。  Smallrc 查询的内存不会随着服务级别的提高而动态增高。 
 - 服务级别更改时，可用的查询并发性可能会上下浮动。
-- 缩放服务级别不会让分配至相同资源类的内存产生对应比例的变化。
+- 缩放服务级别不提供按比例更改分配给相同的资源类的内存。
 
-只有第 2 代动态资源类真正实现了动态处理上述几点。  小型-中型-大型-超大型资源类对应的内存百分比分配的新规则为 3-10-22-70，与服务级别无关。  下表综合了内存分配百分比的详细信息以及运行的并发查询的最小数量，与服务级别无关。
+**在第 2 代**，动态资源类是真正的动态寻址上面提到的点。  小型-中型-大型-超大型资源类对应的内存百分比分配的新规则为 3-10-22-70，与服务级别无关。  下表综合了内存分配百分比的详细信息以及运行的并发查询的最小数量，与服务级别无关。
 
 | 资源类 | 内存百分比 | 最小并发查询数 |
 |:--------------:|:-----------------:|:----------------------:|
@@ -942,7 +942,6 @@ GO
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
-[Managing Databases and Logins in Azure SQL Database]:../sql-database/sql-database-manage-logins.md
+[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
-<!-- Update_Description: update link, wording update-->

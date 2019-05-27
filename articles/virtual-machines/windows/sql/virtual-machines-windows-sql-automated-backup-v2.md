@@ -16,11 +16,11 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780008"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66165663"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>适用于 Azure 虚拟机（资源管理器）的自动备份 v2
 
@@ -52,7 +52,7 @@ ms.locfileid: "57780008"
 
 - 目标数据库必须使用完整恢复模式。 有关对备份使用完整恢复模型产生的影响的详细信息，请参阅 [Backup Under the Full Recovery Model](https://technet.microsoft.com/library/ms190217.aspx)（使用完整恢复模型的备份）。
 - 系统数据库不需要使用完整恢复模型。 但是，如果需要为模型或 MSDB 创建日志备份，则必须使用完整恢复模型。
-- 目标数据库必须位于任一默认 SQL Server 实例上，或[正确安装](virtual-machines-windows-sql-server-iaas-faq.md#administration)命名实例。 
+- 目标数据库必须位于默认 SQL Server 实例上，或者位于[正确安装的](virtual-machines-windows-sql-server-iaas-faq.md#administration)命名实例上。 
 
 > [!NOTE]
 > 自动备份依赖于 **SQL Server IaaS 代理扩展**。 当前的 SQL 虚拟机库映像默认添加此扩展。 有关详细信息，请参阅 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
@@ -89,7 +89,7 @@ ms.locfileid: "57780008"
 
 在星期一，用户使用以下设置启用了自动备份 v2：
 
-- 备份计划：**手动**
+- 备份计划：**Manual**
 - 完整备份频率：每周
 - 完整备份开始时间：01:00
 - 完整备份时段：1 小时

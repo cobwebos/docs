@@ -1,16 +1,15 @@
 ---
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 10/26/2018
-ms.date: 11/26/2018
-ms.author: v-yeche
+ms.date: 10/26/2018
+ms.author: cynthn
 ms.openlocfilehash: d579e7a4fd83c1a0ce335e0b2357dcbafb217398
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097641"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165409"
 ---
 在此步骤中，使用同一网络上运行的客户端应用程序测试可用性组侦听器。
 
@@ -30,4 +29,3 @@ ms.locfileid: "62097641"
 
 在测试侦听器时，请务必对可用性组进行故障转移，以确保客户端可以在故障转移之间连接到侦听器。
 
-<!-- Update_Description: update meta properties -->

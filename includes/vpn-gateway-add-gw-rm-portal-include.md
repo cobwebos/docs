@@ -9,11 +9,11 @@ ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 72e61a36b58c0bc666f3e19b71fb1abe842208f5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111733"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150279"
 ---
 1. 登录到 Azure 门户，然后选择“创建资源”。 此时会打开一个“新建”页面。
 
@@ -21,7 +21,7 @@ ms.locfileid: "53111733"
 
 3. 在“虚拟网络网关”页上，选择“创建”以打开“创建虚拟网络网关”页。
 
-   ![创建虚拟网络网关页字段](./media/vpn-gateway-add-gw-rm-portal-include/gw.png "创建虚拟网络网关页字段")
+   ![创建虚拟网关页字段](./media/vpn-gateway-add-gw-rm-portal-include/gw.png "创建虚拟网关页字段")
 
 4. 在“创建虚拟网络网关”页上，填写虚拟网络网关的值：
 

@@ -8,11 +8,11 @@ ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904859"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66148653"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
@@ -27,7 +27,7 @@ ms.locfileid: "58904859"
 
 在探讨如何监视 Azure Cosmos DB 帐户之前，让我们先澄清一些有关日志记录和监视的事项。 Azure 平台上有不同类型的日志。 有 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[Azure 指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)日志、事件日志、检测信号监视日志、操作日志，等等。 有很多种日志。 可以在 Azure 门户的 [Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中看到日志的完整列表。 
 
-下图显示了不同类型的可用的 Azure 日志：
+下图显示所提供的不同种类的 Azure 日志：
 
 ![不同种类的 Azure 日志](./media/logging/azurelogging.png)
 
@@ -105,7 +105,7 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
    az monitor diagnostic-settings create --name DiagStorage --resource <resourceId> --storage-account <storageAccountName> --logs '[{"category": "QueryRuntimeStatistics", "enabled": true, "retentionPolicy": {"enabled": true, "days": 0}}]'
    ```
 
-   `resource` 是 Azure Cosmos DB 帐户的名称。 资源采用以下格式"/subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/providers/Microsoft.DocumentDB/databaseAccounts/ < Azure_Cosmos_account_name >"`storage-account`是到的存储帐户的名称在想要将日志发送。 可以通过更新类别参数值为"MongoRequests"或"DataPlaneRequests"记录其他日志。 
+   `resource` 是 Azure Cosmos DB 帐户的名称。 资源采用的格式为“/subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/providers/Microsoft.DocumentDB/databaseAccounts/<Azure_Cosmos_account_name>” `storage-account` 是要将日志发送到的存储帐户的名称。 将类别参数值更新为 "MongoRequests" 或 "DataPlaneRequests" 即可记录其他日志。 
 
 - 要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
@@ -113,7 +113,7 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
    az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --event-hub-rule <eventHubRuleID> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
-   `resource` 是 Azure Cosmos DB 帐户的名称。 `event-hub-rule`是事件中心规则 id。 
+   `resource` 是 Azure Cosmos DB 帐户的名称。 `event-hub-rule` 是事件中心规则 ID。 
 
 - 若要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
 

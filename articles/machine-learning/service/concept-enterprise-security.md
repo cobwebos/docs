@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
-ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821344"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151192"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure 机器学习服务的企业安全性
 
@@ -83,7 +83,7 @@ print(primary)
 
 有关管理的标识的详细信息，请参阅[托管为 Azure 资源的标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-| 资源 | 权限 |
+| Resource | 权限 |
 | ----- | ----- |
 | 工作区 | 参与者 | 
 | 存储帐户 | 存储 Blob 数据参与者 | 
@@ -101,7 +101,7 @@ Azure 机器学习服务创建参与者级别访问你的订阅中的每个工�
 
 Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算资源（计算目标）用于训练和部署模型。 可在虚拟网络中创建这些计算目标。 例如，可以使用 Microsoft Data Science Virtual Machine 来训练模型，然后将该模型部署到 Azure Kubernetes 服务 (AKS)。  
 
-有关详细信息，请参阅[如何在虚拟网络中运行试验和推断](how-to-enable-virtual-network.md)。
+有关详细信息，请参阅[如何在虚拟网络中运行试验和推理](how-to-enable-virtual-network.md)。
 
 ## <a name="data-encryption"></a>数据加密
 
@@ -154,7 +154,7 @@ SSH 密码和密钥计算目标，例如 HDI HDInsight 和 VM 存储在单独的
 用户登录到 Azure AD 中从任何支持的 Azure 机器学习服务客户端 （CLI 中，Python SDK 中，Azure 门户），并请求相应的 Azure 资源管理器令牌。  然后，用户调用 Azure 资源管理器用于创建工作区。  Azure 资源管理器联系人 Azure 机器学习服务资源提供程序来预配工作区。  在创建工作区的客户的订阅中创建其他资源：
 * 密钥保管库 （用于存储机密）
 * Azure 存储帐户 （包括 Blob 和文件共享）
-* Azure 容器注册表 （用于存储 docker 映像用于推断和试验）
+* Azure 容器注册表 （用于存储 docker 映像用于推断/评分和试验）
 * Application Insights （用于存储遥测数据）
 
 根据需要还可以通过客户设置附加到工作区 （Azure Kubernetes 服务、 VM 等） 其他计算资源。 
@@ -172,7 +172,7 @@ SSH 密码和密钥计算目标，例如 HDI HDInsight 和 VM 存储在单独的
 * 上述操作中存储代码快照 azure 机器学习服务调用使用快照 ID
 * Azure 机器学习服务创建运行 ID （可选） 和 Azure 机器学习服务令牌，用于更高版本的计算目标等机器学习计算/VM 与 Azure 机器学习服务
 * 你可以选择任一托管的计算 （例如。 机器学习计算） 或非托管的计算 （例如。 VM) 以运行训练作业。 下面这两种方案解释了数据流：
-* （VM/HDInsight/本地 – 访问密钥保管库中 Microsoft 订阅中使用 SSH 凭据）Azure 机器学习服务在运行管理代码计算目标上的：
+* (VM/HDInsight-Microsoft 订阅中的密钥保管库中使用 SSH 凭据访问)Azure 机器学习服务在运行管理代码计算目标上的：
     1.  准备环境 (请注意：Docker 是也 VM/本地选项。 有关机器学习计算下若要了解如何运行试验 docker 容器的工作原理，请参阅步骤）
     2.  下载代码
     3.  设置环境变量/配置
@@ -189,7 +189,7 @@ SSH 密码和密钥计算目标，例如 HDI HDInsight 和 VM 存储在单独的
 ![显示的屏幕截图创建工作区的工作流](./media/enterprise-readiness/training-and-metrics.png)
 
 ### <a name="creating-web-services"></a>创建 web 服务
-下图显示了为 web 服务部署模型时推断工作流。
+下图显示了推理工作流。 推理，或模型评分，阶段已部署的模型不使用的是用于预测，最常在生产数据。
 请参阅下面的详细信息：
 * 用户注册使用 Azure ML SDK 等的客户端的模型
 * 用户创建使用模型、 评分文件和其他模型的依赖项的图像

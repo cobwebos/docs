@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b479556543c6a9dff88643fdc587dec3f832f39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60818490"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153602"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "60818490"
 
 ## <a name="train-with-an-estimator"></a>使用估算器进行训练
 
-创建[工作区](concept-azure-machine-learning-architecture.md#workspace)并设置[开发环境](how-to-configure-environment.md)后，在 Azure 机器学习中训练模型包括以下步骤：  
+创建[工作区](concept-workspace.md)并设置[开发环境](how-to-configure-environment.md)后，在 Azure 机器学习中训练模型包括以下步骤：  
 1. 创建[远程计算目标](how-to-set-up-training-targets.md)（注意：也可将本地计算机用作计算目标）
 2. 将[训练数据](how-to-access-data.md)上传到数据存储（可选）
 3. 创建[训练脚本](tutorial-train-models-with-aml.md#create-a-training-script)
@@ -119,6 +119,10 @@ estimator = Estimator(source_directory='./my-keras-proj',
 run = experiment.submit(estimator)
 print(run.get_portal_url())
 ```
+
+## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
+
+启动时运行，其中源目录是本地 Git 存储库的培训，存储库有关的信息存储在运行历史记录。 例如，在存储库的当前提交 ID 记录为历史记录。
 
 ## <a name="examples"></a>示例
 关于显示估算器模式基础的笔记本，请参阅：

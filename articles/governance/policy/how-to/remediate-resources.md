@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fe06e7081e4e3691aeb054985f9f2f3f6dc7d19e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: d6753b319bc5bc4cbda18fe486695e5b0266acae
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794977"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66169655"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
-不符合 deployIfNotExists 策略的资源可以通过修正置于符合状态。 可以通过指示 Policy 在现有资源上运行已分配策略的 deployIfNotExists 影响来完成修正。 本文介绍了使用 Policy 了解并完成修正需要执行的步骤。
+不符合 deployIfNotExists 策略的资源可以通过修正置于符合状态。 通过指示 Azure 策略运行完成修正**deployIfNotExists**对现有资源分配策略的影响。 本文介绍需要了解并完成修正与 Azure 策略的步骤。
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
-当 Policy 在 deployIfNotExists 策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
-Policy 为每个分配创建一个托管标识，但是必须向它提供有关哪些角色授予托管标识的详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，一旦启动分配，Policy 将自动授予托管标识所列的角色。
+Azure 策略时运行的模板**deployIfNotExists**策略定义，它都使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)。
+Azure 策略创建托管的标识的每个分配，但必须具有有关哪些角色，以授予托管的标识的详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，Azure 策略将自动授予托管的标识所列的角色后分配已启动。
 
 ![托管标识 - 缺少角色](../media/remediate-resources/missing-role.png)
 
@@ -39,7 +39,7 @@ Policy 为每个分配创建一个托管标识，但是必须向它提供有关�
 "details": {
     ...
     "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
         "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
     ]
 }
@@ -57,7 +57,7 @@ Get-AzRoleDefinition -Name 'Contributor'
 
 ## <a name="manually-configure-the-managed-identity"></a>手动配置托管标识
 
-使用门户创建分配时，Policy 会生成托管标识并向它授予 roleDefinitionIds 中定义的角色。 在以下情况下，必须手动执行步骤以创建托管标识，并向其分配权限：
+在创建时分配使用门户，Azure 策略生成托管的标识并向它授予中定义的角色**roleDefinitionIds**。 在以下情况下，必须手动执行步骤以创建托管标识，并向其分配权限：
 
 - 在使用 SDK 时（如 Azure PowerShell）
 - 当模板修改分配范围以外的资源
@@ -126,7 +126,8 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 单击资源页中的“访问控制 (IAM)”链接，然后单击访问控制页顶部的“+ 添加角色分配”。
 
-1. 从策略定义中选择匹配 roleDefinitionIds 的合适角色。 将“分配访问权限至”设置保留为默认设置“Azure AD 用户、组或应用程序”。 在“选择”框中，粘贴或键入先前找到的分配资源 ID 部分。 完成搜索后，单击具有相同名称的对象来选择 ID，然后单击“保存”。
+1. 从策略定义中选择匹配 roleDefinitionIds 的合适角色。
+   将“分配访问权限至”设置保留为默认设置“Azure AD 用户、组或应用程序”。 在“选择”框中，粘贴或键入先前找到的分配资源 ID 部分。 完成搜索后，单击具有相同名称的对象来选择 ID，然后单击“保存”。
 
 ## <a name="create-a-remediation-task"></a>创建修正任务
 
@@ -193,9 +194,9 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Azure Policy 示例](../samples/index.md)中查看示例
-- 查看[策略定义结构](../concepts/definition-structure.md)
-- 查看[了解策略效果](../concepts/effects.md)
-- 了解如何[以编程方式创建策略](programmatically-create.md)
-- 了解如何[获取符合性数据](getting-compliance-data.md)
-- 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组
+- 查看示例[Azure 策略示例](../samples/index.md)。
+- 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
+- 查看[了解策略效果](../concepts/effects.md)。
+- 了解如何[以编程方式创建策略](programmatically-create.md)。
+- 了解如何[获取符合性数据](getting-compliance-data.md)。
+- 查看管理组与[使用 Azure 管理组组织资源](../../management-groups/overview.md)。

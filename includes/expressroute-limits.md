@@ -9,13 +9,13 @@ ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c025c431d826d3a2951a9eb5c09308695e172887
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551235"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170719"
 ---
-| 资源 | 默认值/最大限制 |
+| Resource | 默认值/最大限制 |
 | --- | --- |
 | 每个订阅的 ExpressRoute 线路数 |10 |
 | 每个区域每个订阅，使用 Azure 资源管理器中的 ExpressRoute 线路 |10 |
