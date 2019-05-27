@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 7d07b0a098aad472b1b4f0b9810e5b63ac3c48a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202104"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66019823"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
 
@@ -91,7 +91,7 @@ ms.locfileid: "60202104"
 可以测试重试逻辑的一种方法是在程序运行时断开客户端计算机与网络的连接。 错误为：
 
 - **SqlException.Number** = 11001
-- 消息：“此主机不存在”
+- 消息:“此主机不存在”
 
 在首次重试过程中，程序可以更正拼写错误，然后尝试连接。
 
@@ -109,7 +109,7 @@ ms.locfileid: "60202104"
 在首次连接尝试之前，程序可以故意拼错用户名。 错误为：
 
 - **SqlException.Number** = 18456
-- 消息：“用户 'WRONG_MyUserName' 的登录失败。”
+- 消息:“用户 'WRONG_MyUserName' 的登录失败。”
 
 在首次重试过程中，程序可以更正拼写错误，然后尝试连接。
 
@@ -134,7 +134,7 @@ ms.locfileid: "60202104"
 为 **SqlConnection** 对象生成[连接字符串](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)时，请在以下参数之间协调值：
 
 - **ConnectRetryCount**：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
-- **ConnectRetryInterval**：&nbsp;&nbsp;默认值为 1 秒。 范围为 1 到 60。
+- **ConnectRetryInterval**:&nbsp;&nbsp;默认值为 10 秒。 范围为 1 到 60。
 - **Connection Timeout**：&nbsp;&nbsp;默认值为 15 秒。 范围为 0 到 2147483647。
 
 具体而言，所选的值应使以下等式成立：连接超时值 = ConnectRetryCount * ConnectionRetryInterval

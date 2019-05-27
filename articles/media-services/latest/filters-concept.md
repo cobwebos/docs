@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 3a562f98635d581aa320fdbd59d05a0382f09606
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: bfe4bbae7953479f9b5b5ce9653fb3b8d4b2d092
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465531"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002384"
 ---
-# <a name="define-account-filters-and-asset-filters"></a>定义帐户筛选器和资产筛选器  
+# <a name="filters"></a>筛选器
 
 你将内容传送到客户 （实时流式处理事件或视频点播） 时你的客户端可能需要更大的灵活性比默认资产的清单文件中描述的内容。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
 
@@ -88,11 +88,9 @@ ms.locfileid: "65465531"
 |**名称**|使用轨迹的名称进行筛选。|
 |类型|使用轨迹的类型进行筛选。<br/><br/>允许以下值：“video”、“audio”或“text”。|
 
-## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流式处理定位符相关联
+### <a name="example"></a>示例
 
-可以指定将适用于你的流式处理定位符的资产或帐户筛选器的列表。 [动态打包程序](dynamic-packaging-overview.md)适用此列表以及这些客户端在 URL 中指定的筛选器。 此组合生成[动态清单](filters-dynamic-manifest-overview.md)，后者基于在 URL 中的筛选器 + 流式处理定位符指定的筛选器。 我们建议你使用此功能，如果想要应用筛选器，但不是希望公开在 URL 中的筛选器名称。
-
-## <a name="definition-example"></a>定义示例
+下面的示例定义了实时流式处理筛选器： 
 
 ```json
 {
@@ -146,6 +144,15 @@ ms.locfileid: "65465531"
   }
 }
 ```
+
+## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流式处理定位符相关联
+
+可以指定一系列[资产或帐户筛选器](filters-concept.md)，这将会应用于你[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)。 [动态打包程序](dynamic-packaging-overview.md)适用此列表以及这些客户端在 URL 中指定的筛选器。 此组合生成[动态清单](filters-dynamic-manifest-overview.md)，后者基于在 URL 中的筛选器 + 流式处理定位符指定的筛选器。 我们建议你使用此功能，如果想要应用筛选器，但不是希望公开在 URL 中的筛选器名称。
+
+请看以下示例：
+
+* [将筛选器与流式处理定位符的.NET 相关联](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [将筛选器与流式处理定位符的 CLI 相关联](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
 
 ## <a name="next-steps"></a>后续步骤
 

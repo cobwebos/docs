@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25b8669e5ca2abe2d763d9bc14f27ed9c4460886
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 6cc0b3a9a02c023678691921100443436cdf0011
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825949"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015478"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -106,13 +106,13 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 #### <a name="proxy-outbound-rules"></a>代理出站规则
 允许访问以下 URL：
 
-| URL | 用途 |
+| 代码 | 用途 |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | 连接器与应用程序代理云服务之间的通信 |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure 使用以下 URL 来验证证书 |
 | login.windows.net<br>login.microsoftonline.com | 在注册过程中，连接器将使用这些 URL。 |
 
-如果防火墙或代理允许执行 DNS 允许列表，可将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入允许列表。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
+如果你的防火墙或代理允许您配置 DNS 允许列表，可以允许连接到\*。 msappproxy.net 和\*。 servicebus.windows.net。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
 
 
 如果不能通过 FQDN 允许连接，请使用以下选项改为指定 IP 范围：

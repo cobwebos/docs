@@ -10,18 +10,18 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19873256f8253fff75cfd42df7b876106a9e98e5
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 70f9c34957b977aff9fc6211bf79415ed9abe255
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464791"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016514"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
-在本文中，将了解如何使用适用于 Azure 机器学习的 Visual Studio Code 扩展训练和部署机器学习和深度学习模型通过在 Visual Studio Code 中使用 Azure 机器学习服务。
+在本文中，将了解如何使用适用于 Azure 机器学习的 Visual Studio Code 扩展训练和部署机器学习和深度学习模型。
 
-Azure 机器学习服务提供支持本地和远程计算目标上运行的试验。 对于每个试验，可跟踪多次运行，因为通常需要以迭代方式尝试不同的技术、超参数等。 Azure 机器学习可用于跟踪自定义指标和试验运行，以确保数据科学可再现性和可审核性。
+[Azure 机器学习服务](overview-what-is-azure-ml.md)的本地和远程运行的试验的计算目标提供支持。 对于每个试验，可跟踪多次运行，因为通常需要以迭代方式尝试不同的技术、超参数等。 Azure 机器学习可用于跟踪自定义指标和试验运行，以确保数据科学可再现性和可审核性。
 
 此外可以将这些模型部署为测试和生产需求。
 
@@ -69,13 +69,13 @@ Azure 机器学习服务提供支持本地和远程计算目标上运行的试�
 
    ![选择解释器](./media/vscode-tools-for-ai/python.png)
 
-1. 在窗口的右下角中，会显示通知，指示正在自动安装 Azure 机器学习 SDK。 新创建的 Python 环境为本地和私有的并且它使用 Azure 机器学习服务的 Visual Studio Code 先决条件。
+1. 在窗口的右下角中，会显示通知，指示[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)自动安装。 新创建的 Python 环境为本地和私有的并且它使用 Azure 机器学习服务的 Visual Studio Code 先决条件。
 
    ![安装用于 Python 的 Azure 机器学习 SDK](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>开始使用 Azure 机器学习
 
-在开始训练和部署机器学习模型，在 Visual Studio Code 中的，需要创建之前[Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md#workspace)在云中。 此工作区将包含你的模型和资源。 
+在开始训练和部署机器学习模型，在 Visual Studio Code 中的，需要创建之前[Azure 机器学习服务工作区](concept-workspace.md)在云中。 此工作区将包含你的模型和资源。 
 
 若要创建一个工作区并添加第一个试验：
 

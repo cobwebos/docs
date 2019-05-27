@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874541"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111522"
 ---
 ## <a name="webapi-project"></a>WebAPI 项目
 1. 在 Visual Studio 中，打开在**通知用户**教程中创建的 **AppBackend** 项目。

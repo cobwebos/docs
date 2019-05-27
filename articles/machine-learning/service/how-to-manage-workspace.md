@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
-ms.date: 09/24/2018
+ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e65f739a9641181381205c7255d0472325e8055c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f0806a1d68cd2cede1ae51f0a50a8125c1e7c8b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819574"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66016540"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>创建和管理 Azure 机器学习服务工作区
 
-本文将介绍如何在 Azure 门户中针对 [Azure 机器学习服务](overview-what-is-azure-ml.md)创建、查看和删除 [**Azure 机器学习服务工作区**](concept-azure-machine-learning-architecture.md#workspace)。  也可以[使用 CLI](reference-azure-machine-learning-cli.md) 或 [Python 代码](https://aka.ms/aml-sdk)创建和删除工作区。
+本文将介绍如何在 Azure 门户中针对 [Azure 机器学习服务](overview-what-is-azure-ml.md)创建、查看和删除 [**Azure 机器学习服务工作区**](concept-workspace.md)。  您还可以创建和删除工作区[使用 CLI](reference-azure-machine-learning-cli.md)，[使用 Python 代码](https://aka.ms/aml-sdk)或[通过 VS Code 扩展](how-to-vscode-tools.md#get-started-with-azure-machine-learning)。
 
-## <a name="create-a-workspace"></a>创建工作区 
+## <a name="create-a-workspace"></a>创建工作区
 
 必须有 Azure 订阅，才能创建工作区。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "60819574"
 
 ## <a name="view"></a>查看工作区
 
-1. 选择门户左上角的“所有服务”。 
+1. 选择门户左上角的“所有服务”。
 
 1. 在中**所有服务**筛选器字段中，键入**机器学习服务**。  
 
@@ -49,8 +49,7 @@ ms.locfileid: "60819574"
 
   ![“删除”按钮](media/how-to-manage-workspace/delete-workspace.png)
 
-
-## <a name="clean-up-resources"></a>清理资源 
+## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 

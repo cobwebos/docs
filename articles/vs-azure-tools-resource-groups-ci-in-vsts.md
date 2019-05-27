@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 692c075b55efd138f6d731ffae43608f141abfdc
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458660"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66019772"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>使用 Azure 资源组部署项目在 Azure DevOps Services 中持续集成
 若要部署 Azure 模板，您可以在各个阶段中执行任务：生成、 测试、 复制到 Azure （也称为"暂存"），并部署模板。 可通过两种不同的方法将模板部署到 Azure DevOps Services。 两种方法产生的结果相同，因此请选择最符合工作流的方法。
@@ -78,7 +78,7 @@ ms.locfileid: "60458660"
       ![服务主体选项][5]
    5. 向“添加 Azure 订阅”对话框添加 Azure 订阅信息。 需要提供以下项：
       
-      * 订阅 ID
+      * 订阅 Id
       * 订阅名称
       * 服务主体 ID
       * 服务主体密钥
@@ -93,7 +93,7 @@ ms.locfileid: "60458660"
       
       对于 Azure CLI，请使用：
       
-      `azure account show`
+      `az account show`
    8. 若要获取服务主体 ID、服务主体密钥和租户 ID，请遵循[使用门户创建 Active Directory 应用程序和服务主体](active-directory/develop/howto-create-service-principal-portal.md)或[通过 Azure 资源管理器对服务主体进行身份验证](active-directory/develop/howto-authenticate-service-principal-powershell.md)中的过程。
    9. 向“添加 Azure 订阅”对话框添加服务主体 ID、服务主体密钥和租户 ID 值，并选择“确定”按钮。
       

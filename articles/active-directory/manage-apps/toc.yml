@@ -111,8 +111,6 @@
           href: application-proxy-remove-personal-data.md
         - name: 配置自定义域
           href: application-proxy-configure-custom-domain.md
-        - name: 配置错误
-          href: application-proxy-troubleshoot.md
         - name: 发布演练
           items:
             - name: 与 Cloud App Security 集成
@@ -129,6 +127,12 @@
               href: application-proxy-qlik.md
         - name: 应用程序代理故障排除
           items:
+            - name: 连接器故障排除流程图
+              href: application-proxy-debug-connectors.md
+            - name: 应用程序故障排除流程图
+              href: application-proxy-debug-apps.md
+            - name: 配置错误
+              href: application-proxy-troubleshoot.md
             - name: 显示应用页时出现问题
               href: application-proxy-page-appearance-broken-problem.md
             - name: 应用程序加载时间过长

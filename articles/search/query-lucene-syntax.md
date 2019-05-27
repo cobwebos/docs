@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b051f844b8c221e2e53c5fcf204878f80447cfe8
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 26935b53d8f852289513a5a7b5d31e3befe3e3b2
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596577"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002249"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Azure 搜索中的 Lucene 查询语法
 可以基于用于专用查询窗体的丰富 [Lucene 查询分析](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法写入针对 Azure 搜索的查询：通配符、模糊搜索、邻近搜索、正则表达式等。 除了通过 `$filter` 表达式在 Azure 搜索中构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 搜索中完整实现](search-lucene-query-architecture.md)。 
@@ -79,7 +79,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
  特殊字符必须进行转义才能用作搜索文本的一部分。 可以使用反斜杠 (\\) 为其添加前缀来进行转义。 需要转义的特殊字符包括：  
 `+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /`  
 
- 例如，若要转义通配符，请使用 \\*。
+ 例如，若要转义的通配符字符，请使用\\ \*。
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>对 URL 中的不安全及保留字符进行编码
 
