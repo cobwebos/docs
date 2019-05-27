@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130073"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -207,23 +207,23 @@ ms.locfileid: "58090808"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-### <a name="deploy-resource-manager-template-with-powershell"></a>将 PowerShell 与资源管理器模板部署
-若要使用 PowerShell 来部署示例上的 [资源模板一部分] 中所示的资源模板 (#resource manager 的模板，请使用以下命令：
+### <a name="deploy-resource-manager-template-with-powershell"></a>使用 PowerShell 部署资源管理器模板
+若要使用 PowerShell 部署前面的[资源模板部分](#resource-manager-template 中显示的示例资源模板，请使用以下命令：
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 
-其中 sampleActivityLogAlert.parameters.json 包含为创建警报规则的所需的参数提供的值。
+其中，sampleActivityLogAlert.parameters.json 包含为创建警报规则时所需的参数提供的值。
 
 ### <a name="use-activity-log-powershell-cmdlets"></a>使用活动日志 PowerShell cmdlet
 
 活动日志警报具有专用的 PowerShell cmdlet 可用：
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0) :创建一个新或更新现有活动日志警报。
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0) :获取一个或多个活动日志警报的资源。
-- [启用 AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0) :启用现有活动日志警报，并设置其标记。
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) :禁用现有活动日志警报，并设置其标记。
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0)：新建或更新现有活动日志警报。
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0)：获取一个或多个活动日志警报资源。
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0)：启用现有活动日志警报并设置其标记。
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0)：禁用现有活动日志警报并设置其标记。
 - [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    :删除活动日志警报。
 
 ## <a name="cli"></a>CLI
