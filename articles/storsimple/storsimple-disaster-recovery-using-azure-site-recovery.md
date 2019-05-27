@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
 ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797528"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66150496"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 
@@ -93,7 +93,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
       
 1. 单击“下一步”。
 1. 接受**协议条款**，并单击“下一步”。
-1. 单击“完成”。
+1. 单击 **“完成”**。
 1. 使用从 StorSimple 存储中划分出来的卷创建文件共享。 有关详细信息，请参阅 [Use the StorSimple Manager service to manage volumes](storsimple-manage-volumes.md)（使用 StorSimple Manager 服务管理卷）。
    
    1. 在本地 VM 上，按 Windows 键 + Q 并搜索 **iSCSI**。
@@ -166,7 +166,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    
 1. 通过以下方式发布所有脚本：在自动化帐户中选择 runbook，依次单击“编辑”&gt;“发布”，然后在显示验证消息时单击“是”。 完成此步骤后，“Runbook”选项卡将如下所示：
    
-   ![Runbook](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
+   ![runbook](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
    
 1. 在自动化帐户中，依次单击“变量”&gt;“添加变量”，再添加以下变量。 可以选择将这些资产加密。 这些变量为恢复计划专属。 如果恢复计划（将在下一步中创建）名为 TestPlan，变量应为 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName 等。
 
@@ -321,7 +321,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    
    ![启动故障回复](./media/storsimple-disaster-recovery-using-azure-site-recovery/image10.png)
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 ### <a name="capacity-planning-and-readiness-assessment"></a>容量规划和准备情况评估
 #### <a name="hyper-v-site"></a>Hyper-V 站点
 使用 [User Capacity Planner 工具](https://www.microsoft.com/download/details.aspx?id=39057)为 Hyper-V 副本环境设计服务器、存储和网络基础结构。

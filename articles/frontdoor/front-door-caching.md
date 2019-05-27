@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fb00c09680c6a80bc093c6f02ccd8d7269b8748c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306132"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962909"
 ---
 # <a name="caching-with-azure-front-door-service"></a>使用 Azure Front Door 服务进行缓存
 下列文档详细说明了在具有已启用缓存的路由规则时 Front Door 的行为。
@@ -101,13 +101,13 @@ Front Door 的缓存清除不区分大小写。 此外，它们不区分查询�
 ## <a name="cache-expiration"></a>缓存到期
 按下列标题顺序来确定项目在缓存中的存储时间：</br>
 1. Cache-Control: s-maxage=\<seconds>
-2. Cache-Control: maxage=\<seconds>
+2. Cache-Control: max-age=\<seconds>
 3. 过期： \<http 日期 >
 
 优选可指示不缓存响应的 Cache-Control 响应标头，例如 Cache-Control: private，Cache-Control: no-cache 和 Cache-Control: no-store。 但是，如果 POP 中多个正在进行的请求针对的是同一 URL，则它们可共享响应。 如果存在没有缓存控制，则默认行为是时间的 AFD 将缓存的资源量 X X 时间的随机选择介于 1 到 3 天之间。
 
 
-## <a name="request-headers"></a>请求标头
+## <a name="request-headers"></a>请求头
 
 使用缓存时，以下请求标头不转发到后端。
 - 授权

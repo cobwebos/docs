@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274784"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66126430"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum 权威证明联盟
 
@@ -46,7 +46,7 @@ ms.locfileid: "59274784"
 
 由于概念验证的颁发机构依赖于网络颁发机构以使网络保持正常的允许列表，务必提供公平的机制来对此权限列表进行修改。 每个部署附带了一套智能协定和链上管理此允许列表的门户。 一旦提议的更改获得联盟成员的多数票，就会执行更改。 这允许以一种激励诚信网络的透明方式添加新的共识参与者或删除受到损害的参与者。
 
-### <a name="admin-account"></a>管理员帐户
+### <a name="admin-account"></a>管理帐户
 
 部署过程中的概念验证的颁发机构节点，您将要求管理员以太坊地址。 可使用多种不同的机制来生成 Ethereum 帐户并确保其安全。 将此地址添加为网络上的权威后，即可使用此帐户参与治理。 此管理员帐户还可用于将共识参与委托给作为此部署的一部分创建的验证程序节点。 由于使用仅公共以太坊地址时，每个管理员必须能够灵活地保护其私钥遵循其所需的安全模型的方式。
 
@@ -202,7 +202,7 @@ ms.locfileid: "59274784"
 
 以下部分介绍如何在网络中配置第一个成员的内存占用。 部署流程分为五个步骤：基础、部署区域、网络规模和性能、Ethereum 设置、Azure Monitor。
 
-#### <a name="basics"></a>基础
+#### <a name="basics"></a>基本
 
 在“基础”部分，为全部部署指定标准参数的值，例如订阅、资源组和基本虚拟机属性。
 
@@ -218,7 +218,7 @@ VM 用户名|部署的每个 VM 的管理员用户名（仅限字母数字字符
 SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell 密钥。||NA
 订阅|部署联盟网络的订阅||NA
 资源组|部署联盟网络的资源组。||NA
-位置|资源组的 Azure 区域。||NA
+Location|资源组的 Azure 区域。||NA
 
 示例部署如下所示：![基本边栏选项卡](./media/ethereum-poa-deployment/basic-blade.png)
 
@@ -230,7 +230,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 
   参数名称|描述|允许的值|默认值
   ---|---|---|---
-  区域数量|部署联盟网络的区域数量|1、2、3、4、5|1
+  区域数量|部署联盟网络的区域数量|1、2、3、4、5|第
   第一个区域|部署联盟网络的第一个区域|所有允许的 Azure 区域|NA
   第二个区域|部署联盟网络的第二个区域（仅在选择的区域数量为 2 时可见）|所有允许的 Azure 区域|NA
   第三个区域|部署联盟网络的第三个区域（仅在选择的区域数量为 3 时可见）|所有允许的 Azure 区域|NA
@@ -258,11 +258,11 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 
 虚拟机和存储层会影响网络性能。  根据所需的成本效益，我们建议使用以下 SKU：
 
-  虚拟机 SKU|存储层|价格|Throughput|Latency
+  虚拟机 SKU|存储层|价格|吞吐量|延迟
   ---|---|---|---|---
   F1|标准 SSD|低|低|高
   D2_v3|标准 SSD|中|中|中
-  F16s|高级·SSD|高|高|低
+  F16s|高级 SSD|高|高|低
 
 示例部署如下所示：![网络大小和性能](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
