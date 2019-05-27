@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61486068"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978522"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>部署和浏览分片多租户应用程序
 
@@ -58,7 +58,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 ### <a name="plan-the-names"></a>对名称进行计划
 
 通过执行本部分中的步骤，提供用户值，用于确保资源名称为全局唯一，以及一个资源组的名称，该资源组包含部署应用时创建的所有资源。 如果一个人名叫 Ann Finley，则建议输入以下名称：
-- *用户：* **af1** *（首字母缩写加数字。如果是第二次部署应用，则使用不同的值，例如 af2。）*
+- *用户：* **af1***（其姓名的首字母缩写加数字。  如果是第二次部署应用，则使用不同的值，例如 af2。）*
 - *资源组：* **wingtip-mt-af1** *（wingtip-mt 指示这是分片式多租户应用。追加用户名 af1 会将资源组名称与它包含的资源的名称相关联。）*
 
 现在请选择自己的名称，并将其写下来。 
@@ -131,7 +131,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 2. 单击“活动中心”中的“Fabrikam 爵士乐俱乐部”。
 
-   ![活动](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![事件](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure 流量管理器
 

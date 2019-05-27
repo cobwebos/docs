@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0cae2befad1b0cd2d6a093387c41aac8ccdfff7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719238"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991433"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -196,8 +196,8 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|媒体编码器标准版|GA|全部|
-|媒体编码器高级工作流|GA|除中国以外|
+|媒体编码器标准|GA|全部|
+|Media Encoder Premium Workflow|GA|除中国以外|
 
 ### <a name="analytics-media-processors"></a>分析媒体处理器
 
@@ -207,15 +207,14 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Azure 媒体面部检测器|预览|全部|
-|Azure Media Hyperlapse|预览|全部|
+|Azure 媒体面部检测器|Preview|全部|
 |Azure 媒体索引器|GA|全部|
-|Azure Media Motion Detector|预览|全部|
-|Azure 媒体 OCR|预览|全部|
-|Azure 媒体修订|预览|全部|
-|Azure 媒体稳定器|预览|全部|
+|Azure Media Motion Detector|Preview|全部|
+|Azure 媒体 OCR|Preview|全部|
+|Azure 媒体修订|Preview|全部|
+|Azure 媒体稳定器|Preview|全部|
 |Azure 媒体视频缩略图|预览|全部|
-|Azure Media Indexer 2|预览|除中国和联邦政府区域以外|
+|Azure Media Indexer 2|Preview|除中国和联邦政府区域以外|
 
 ### <a name="protection"></a>保护
 

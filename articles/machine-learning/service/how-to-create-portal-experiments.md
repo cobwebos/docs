@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 96abef29c5290770d296fb5053007e36d1eaf537
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035445"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990144"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>创建和浏览自动化的机器学习试验 （预览版） 在 Azure 门户中
 
@@ -40,7 +40,7 @@ ms.locfileid: "65035445"
 
 ![Azure 门户试验登陆页面](media/how-to-create-portal-experiments/landing-page.png)
 
-否则，你将看到自动机器学习仪表板与所有自动化机器学习试验，包括那些运行随 SDK 的概述。 此处可以筛选和按日期浏览在运行过程中，试验名称，并运行状态。
+否则，你将看到自动机器学习仪表板与所有自动化机器学习试验，包括那些使用 SDK 创建的概述。 此处可以筛选和按日期浏览在运行过程中，试验名称，并运行状态。
 
 ![Azure 门户试验仪表板](media/how-to-create-portal-experiments/dashboard.png)
 
@@ -184,6 +184,63 @@ ms.locfileid: "65035445"
 
 ![迭代详细信息](media/how-to-create-portal-experiments/iteration-details.png)
 
+## <a name="deploy-model"></a>部署模型
+
+一旦您手头有最佳模型，就可以将其部署为 web 服务，以便预测新数据。
+
+自动化机器学习可帮助您部署模型，而无需编写代码：
+
+1. 有几个部署选项。 
+    1. 如果你想要部署基于指标条件的最佳模型则设置对于试验，请选择**部署最佳模型**从**运行详细信息**页。
+
+        ![部署模型按钮](media/how-to-create-portal-experiments/deploy-model-button.png)
+
+    1. 如果你想要部署特定模型迭代，向下钻取模型以打开其特定的运行详细信息页，然后选择**部署模型**。
+
+        ![部署模型按钮](media/how-to-create-portal-experiments/deploy-model-button2.png)
+
+1. 第一步是注册到服务模型。 选择"注册模型"并等待完成注册过程。
+
+    ![部署模型边栏选项卡](media/how-to-create-portal-experiments/deploy-model-blade.png)
+
+1. 模型注册后，你将能够下载评分脚本 (scoring.py) 和要在部署期间使用的环境脚本 (condaEnv.yml)。
+
+1. 评分脚本和环境脚本下载时，请转到**资产**边栏选项卡的左侧的导航窗格，然后选择**模型**。
+
+    ![导航窗格模型](media/how-to-create-portal-experiments/nav-pane-models.png)
+
+1. 选择注册时，该模型并选择"创建映像"。
+
+    您可以通过其说明，将采用以下格式包括运行的 ID，迭代数来确定模型： *< Run_ID > _ < Iteration_number > _Model*
+
+    ![模型:创建映像](media/how-to-create-portal-experiments/model-create-image.png)
+
+1. 输入映像的名称。 
+1. 选择**浏览**"评分文件"框中，若要上传之前下载的计分概要文件 (scoring.py) 旁边的按钮。
+
+1. 选择**浏览**"Conda 文件"框中，若要上传之前下载的环境文件 (condaEnv.yml) 旁边的按钮。
+
+    您可以使用自己的评分脚本和 conda 文件，以及上传其他文件。 [了解有关评分脚本的详细信息](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#script)。
+
+      >[!Important]
+      > 文件的名称必须在 32 个字符和必须开始和结尾的字母数字。 可能包括短划线、 下划线、 圆点和之间的字母数字。 不允许有空格。
+
+    ![创建映像](media/how-to-create-portal-experiments/create-image.png)
+
+1. 选择"创建"按钮以启动映像创建。 这将需要几分钟才能完成，完成后，将顶部栏上看到一条消息。
+1. 转到"映像"选项卡，选中你想要部署的映像旁边的复选框并选择"创建部署"。 [了解有关部署的详细](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)。
+
+    有两个部署选项。
+     + Azure 容器实例 (ACI)-这用于测试目的而不是在规模较大的操作部署更多使用。 请确保至少一个核心的值填充_CPU 保留容量_，并至少 1 千兆字节 (GB) 为_内存保留容量_
+     + Azure Kubernetes 服务 (AKS)）-此选项适用于大规模的部署。 需要已准备好基于 AKS 计算。
+
+     ![映像：创建部署](media/how-to-create-portal-experiments/images-create-deployment.png)
+
+1. 完成后，选择“创建”。 部署模型可能需要几分钟时间完成运行每个管道。
+
+1. 就这么简单！ 有一个操作的 web 服务来生成预测。
+
 ## <a name="next-steps"></a>后续步骤
 
 * [了解有关自动化的机器学习的详细信息](concept-automated-ml.md)和 Azure 机器学习。
+* [了解如何使用 web 服务](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service)。

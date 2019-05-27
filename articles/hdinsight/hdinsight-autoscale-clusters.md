@@ -8,21 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f8803a498e62958a5488f2ac8830137c37533e54
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413703"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000105"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>自动缩放 Azure HDInsight 群集（预览）
+
+> [!Important]
+> 自动缩放功能仅适用于 5 月 8 日 2019年之后创建的 Spark、 Hive 和 MapReduce 群集。 
 
 Azure HDInsight 群集自动缩放功能自动缩放辅助角色节点数在群集中向上和向下。 不能当前缩放其他类型的群集中的节点。  创建新 HDInsight 群集期间，可以设置最小和最大工作节点数。 然后，自动缩放监视 analytics 负载的资源要求，并向上或向下缩放辅助角色节点数。 没有此功能无任何额外费用。
 
 ## <a name="cluster-compatibility"></a>群集兼容性
-
-> [!Important]
-> 自动缩放功能仅适用于 2019 年 5 中功能的公开上市后创建的群集。 它不适用于预先存在的群集。
 
 下表介绍的群集类型和自动缩放功能与兼容的版本。
 
@@ -189,6 +189,25 @@ HDInsight 服务计算多少新辅助角色节点所需满足的当前 CPU 和�
 若要在正在运行的群集上启用自动缩放，请选择**群集大小**下**设置**。 然后单击**启用自动缩放**。 选择您想和输入的基于负载或基于计划的缩放选项的自动缩放的类型。 最后，单击“保存”。
 
 ![启用辅助角色节点基于计划的自动缩放选项](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+
+## <a name="best-practices"></a>最佳做法
+
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>选择基于负载或基于计划的缩放
+
+在做出决定要选择的模式之前，请考虑以下因素：
+
+* 加载的变体： 不在群集的负载在特定时间，在特定日期遵循一致的模式。 如果没有，基于负载计划是更好的选择。
+* SLA 的要求：自动缩放缩放是被动而不是预测。 将之间有足够的延迟时在加载开始增长以及当群集必须位于其目标大小？ 如果有严格的 SLA 要求的负载是固定的已知的模式，基于计划将是更好的选择。
+
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>缩放的延迟，请考虑向上扩展或缩减操作
+
+可能需要 10 到 20 分钟的缩放操作完成。 在设置自定义计划，规划这种延迟。 例如，如果您需要将群集大小为 20 个在上午 9:00，设置计划触发器为较早的时间，如上午 8:30，以便在缩放操作已完成的上午 9:00。
+
+### <a name="preparation-for-scaling-down"></a>向下缩放的准备
+
+群集缩减进程，自动缩放将停止使用满足目标大小的节点。 如果这些节点上正在运行的任务，自动缩放将等待，直到完成任务。 由于每个工作节点还可在 HDFS 中的一个角色，临时数据将转移到剩余节点中。 因此应确保托管所有临时数据的其余节点上没有足够的空间。 
+
+正在运行的作业将继续运行并完成。 等待挂起的作业将被排定为正常并且更少的可用的辅助角色节点。
 
 ## <a name="monitoring"></a>监视
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
 ms.openlocfilehash: 2cf5bf26dbe18d7b4c6e3b1a93aa38d7748dc5a3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049485"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66119113"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 
@@ -456,7 +456,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 
 如果应用程序处于 ```Ready``` 状态，则表示它已准备就绪：![就绪][2]
 
-打开浏览器并导航到 http://containercluster.westus2.cloudapp.azure.com:8081 。 此时会看到标题“Hello World!” 显示在浏览器中。
+打开浏览器并导航到 http://containercluster.westus2.cloudapp.azure.com:8081。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ## <a name="clean-up"></a>清理
 
@@ -471,7 +471,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server 容器 OS 与主机 OS 的兼容性
 
-Windows Server 容器并非在所有主机 OS 版本间都兼容。 例如：
+Windows Server 容器并非在所有主机 OS 版本间都兼容。 例如:
  
 - 使用 Windows Server 1709 版本生成的 Windows Server 容器在运行 Windows Server 2016 版本的主机上无效。 
 - 使用 Windows Server 2016 生成的 Windows Server 容器仅在运行 Windows Server 1709 版本的主机上以 hyperv 隔离模式工作。 
@@ -479,7 +479,7 @@ Windows Server 容器并非在所有主机 OS 版本间都兼容。 例如：
  
 若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-将容器生成和部署到 Service Fabric 群集时，请考虑主机 OS 和容器 OS 的兼容性。 例如：
+将容器生成和部署到 Service Fabric 群集时，请考虑主机 OS 和容器 OS 的兼容性。 例如:
 
 - 请确保通过与群集节点上的 OS 兼容的 OS 部署容器。
 - 请确保为容器应用指定的隔离模式与为部署容器的节点上的容器 OS 提供支持的要求一致。

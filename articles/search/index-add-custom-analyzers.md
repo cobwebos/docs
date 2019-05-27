@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5983c2036ff206825a82072b57ca2b9bb44ca678
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+ms.openlocfilehash: e9daebf46093e38858feff87ca5c4ba89638aa74
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021663"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951902"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加自定义分析器
 
@@ -223,7 +223,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |-|-|  
 |名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |Type|必须是“#Microsoft.Azure.Search.CustomAnalyzer”。|  
-|CharFilters|设置为[字符筛选器](#CharFilter)表中列出的预定义字符筛选器之一或索引定义中指定的自定义字符筛选器。|  
+|CharFilters|设置为[字符筛选器](#char-filters-reference)表中列出的预定义字符筛选器之一或索引定义中指定的自定义字符筛选器。|  
 |分词器|必需。 设置为下面 [Tokenizer](#Tokenizers) 表中列出的预定义 tokenizer 之一或索引定义中指定的自定义 tokenizer。|  
 |TokenFilters|设置为[标记筛选器](#TokenFilters)表中列出的预定义标记筛选器之一或索引定义中指定的自定义标记筛选器。|  
 
@@ -236,8 +236,8 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
-|Type|字符筛选器类型来自受支持字符筛选器列表。 请参阅下面[字符筛选器](#CharFilter)表中的 **char_filter_type** 列。|  
-|选项|必须是给定[字符筛选器](#CharFilter)类型的有效选项。|  
+|Type|字符筛选器类型来自受支持字符筛选器列表。 请参阅下面[字符筛选器](#char-filters-reference)表中的 **char_filter_type** 列。|  
+|选项|必须是给定[字符筛选器](#char-filters-reference)类型的有效选项。|  
 
 ### <a name="tokenizers"></a>Tokenizer
 

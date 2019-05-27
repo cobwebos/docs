@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61025405"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131727"
 ---
 ## <a name="export-an-api-definition"></a>导出 API 定义
 [为函数创建 OpenAPI 定义](../articles/azure-functions/functions-openapi-definition.md)中已为函数创建了一个 OpenAPI 定义。 此过程的下一步是导出 API 定义，以便 PowerApps 和 Microsoft Flow 可以在自定义 API 中使用它。

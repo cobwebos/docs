@@ -4,18 +4,18 @@ description: Azure SQL 数据仓库发行说明。
 services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 05/13/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 519cec0951305db60e0994134f8c680f6c560752
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 215f7c9c65658ddbb10498bb59f3d326bf3a10f1
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792414"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988290"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
@@ -23,23 +23,19 @@ ms.locfileid: "65792414"
 
 ## <a name="check-your-azure-sql-data-warehouse-version"></a>检查你的 Azure SQL 数据仓库版本
 
-连接到数据仓库通过 SQL Server Management Studio (SSMS) 并运行以下语法来返回当前版本的 SQL 数据仓库。
-
-```sql
-SELECT @@VERSION AS 'SQL Data Warehouse';
-```
+是的新功能的正在推出到所有区域，请检查版本部署到你的实例和功能可用性的最新 Azure SQL DW 发行说明。 若要检查你的 Azure SQL DW 版本，请连接到数据仓库通过 SQL Server Management Studio (SSMS) 并运行`SELECT @@VERSION AS 'SQL Data Warehouse';`返回 Azure SQL 数据仓库的当前版本。
 
 示例输出：![SQL 数据仓库版本](./media/release-notes/sql_data_warehouse_version.png)
 
 使用标识来确认哪些版本的日期已应用于 Azure SQL 数据仓库。
 
-## <a name="may-2019"></a>2019 年 5
+## <a name="may-2019"></a>2019 年 5 月
 
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**动态数据屏蔽 （预览版）**|动态数据屏蔽 (DDM) 通过在动态在查询结果中，根据你定义的屏蔽规则使数据仓库中的敏感数据防止未经授权的访问。 有关详细信息，请参阅[SQL 数据库动态数据掩码](/azure/sql-database/sql-database-dynamic-data-masking-get-started)。|
 |**工作负荷重要性现已公开发布**|工作负荷管理分类和重要性提供的功能来影响查询的运行的顺序。 工作负荷重要性的详细信息，请参阅[分类](sql-data-warehouse-workload-classification.md)并[重要性](sql-data-warehouse-workload-importance.md)文档中的概述文章。 请查看[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)以及文档。<br/><br/>请参阅中的操作中的工作负荷重要性下方视频：<br/> -[工作负荷管理概念](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[工作负荷管理方案](https://www.youtube.com/embed/_2rLMljOjw8)|
-|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围已扩展为包括对支持： </br> - [AT TIME ZONE](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
+|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围已扩展为包括对支持： </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**JSON 函数**|现在，业务分析师可以使用熟悉的 T-SQL 语言来查询和操作的格式为 JSON 数据使用 Azure 数据仓库中的以下新的 JSON 函数的文档：</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**结果集缓存 （预览）**|结果集缓存启用即时查询响应时间，同时减少时间见解的业务分析师和报告的用户。 有关详细信息，请参阅：</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE SET 选项 (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [设置结果集缓存 (Transact SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET 语句 (Transact SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
 

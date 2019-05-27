@@ -4,37 +4,37 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 1957fa4310a22a162ee2a621d1e0349e253badb3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 421e0db48f045c5cbce52a0641902e6d2a11276e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456561"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132464"
 ---
 ## <a name="trigger"></a>触发器
 
-使用函数触发器来响应发送到事件中心事件流的事件。 必须具有对要设置触发器的基础事件中心读取访问权限。 当触发该函数时，传递给函数的消息被类型化为字符串。
+使用函数触发器来响应发送到事件中心事件流的事件。 若要设置触发器，必须具有基础事件中心的读取访问权限。 触发函数时，传递给函数的消息充当字符串类型。
 
 ## <a name="trigger---scaling"></a>触发器 - 缩放
 
-事件触发函数的每个实例支持由单个[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例。 触发器 （由事件中心提供支持） 可确保只有一个[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例可以获取给定分区的租约。
+事件触发的函数的每个实例由单个 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例提供支持。 触发器（由事件中心提供支持）确保只有一个 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例能够在给定分区上获得租约。
 
 例如，考虑如下所述的一个事件中心：
 
 * 10 个分区
-* 平均分布到所有分区，与每个分区中的 100 个消息的 1,000 个事件
+* 在所有分区之间平均分配 1000 个事件，每个分区中有 100 条消息
 
-首次启用函数时，只有一个函数实例。 让我们来调用第一个函数实例`Function_0`。 `Function_0`函数具有的单个实例[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) ，所有 10 个分区上保存租约。 此实例从分区 0-9 读取事件。 从此时开始，将发生下列情况之一：
+首次启用函数时，只有一个函数实例。 我们将第一个函数实例命名为 `Function_0`。 `Function_0` 函数具有单个 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例，此实例在所有十个分区上都有租约。 此实例从分区 0-9 读取事件。 从此时开始，将发生下列情况之一：
 
-* **新函数实例，则不需要**:`Function_0`能够处理所有 1000 个事件缩放逻辑的函数才生效。 在这种情况下，处理所有 1000 消息`Function_0`。
+* **不需要新的函数实例**：在 Functions 的缩放逻辑生效之前，`Function_0` 能够处理所有 1,000 个事件。 在这种情况下，所有 1,000 条消息都由 `Function_0` 处理。
 
-* **添加其他函数实例**：如果函数缩放逻辑确定`Function_0`有更多消息，高于它可以处理的新的 function app 实例 (`Function_1`) 创建。 此新函数也具有关联的实例[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)。 因为基础事件中心检测到新的主机实例正在尝试读取消息，其负载平衡跨分区其主机实例。 例如，可以将分区 0-4 分配给 `Function_0`，将分区 5-9 分配给 `Function_1`。
+* **添加其他函数实例**：如果 Functions 缩放逻辑确定 `Function_0` 的消息数超出了它的处理能力，则会创建新的函数应用实例 (`Function_1`)。 此新函数也有一个关联的 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例。 基础事件中心检测到新主机实例在尝试读取消息时，会在其主机实例之间对分区进行负载均衡。 例如，可以将分区 0-4 分配给 `Function_0`，将分区 5-9 分配给 `Function_1`。
 
-* **额外添加 N 个函数实例**：如果函数缩放逻辑确定，同时`Function_0`并`Function_1`具有更多的消息不是它们可以处理，新`Functions_N`创建函数应用实例。  应用创建点到其中`N`大于事件中心分区数。 在我们的示例中，事件中心再次对分区进行负载均衡，在本例中是在实例 `Function_0`...`Functions_9` 之间进行的。
+* **额外添加 N 个函数实例**：如果 Functions 缩放逻辑确定 `Function_0` 和 `Function_1` 的消息数超出了它们的处理能力，则会创建新的 `Functions_N` 函数应用实例。  会一直创建应用，直到 `N` 大于事件中心分区数为止。 在我们的示例中，事件中心再次对分区进行负载均衡，在本例中是在实例 `Function_0`...`Functions_9` 之间进行的。
 
-当函数的刻度，`N`实例是一个数字大于事件中心分区数。 这样做是为了确保[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例可用于获取锁，在分区上的其他实例可用。 你只有在执行函数实例时使用的资源付费。 换而言之，你不用为过度预配。
+当 Functions 缩放时，`N` 实例是一个大于事件中心分区数的数字。 这样做是为了确保 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例可供用来在其他实例释放锁时在分区上获取锁。 你只需为执行函数实例时使用的资源付费。 换句话说，不需要为过度预配的资源付费。
 
-当所有函数执行都完成时（不管是否有错误），则会将检查点添加到关联的存储帐户。 当检查点设置成功时，所有 1,000 条消息将永远不会再次检索。
+当所有函数执行都完成时（不管是否有错误），则会将检查点添加到关联的存储帐户。 检查点设置成功后，永远不会再次检索所有 1,000 条消息。
 
 ## <a name="trigger---example"></a>触发器 - 示例
 
@@ -384,14 +384,14 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 在函数代码中表示事件项的变量的名称。 |
+|**type** | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 在函数代码中表示事件项的变量的名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
-|**consumerGroup** |**ConsumerGroup** | 设置一个可选属性[使用者组](../articles/event-hubs/event-hubs-features.md)#event-使用者) 用来订阅事件中心中。 如果将其省略，则会使用 `$Default` 使用者组。 |
+|**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../articles/event-hubs/event-hubs-features.md)#event-consumers)，该组用于订阅事件中心的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
 |**基数** | 不适用 | 适用于 JavaScript。 设为 `many` 以启用批处理。  如果省略或设为 `one`，将向函数传递一条消息。 |
-|**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 通过单击来复制此连接字符串**连接信息**按钮[命名空间](../articles/event-hubs/event-hubs-create.md)#create-一个-事件-中心-命名空间)，不是事件中心本身。 此连接字符串必须至少具有读取权限才可激活触发器。|
+|**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md)#create-an-event-hubs-namespace)（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
 |**路径**|**EventHubName**|事件中心的名称。 可以通过应用设置 `%eventHubName%` 引用|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
@@ -446,6 +446,26 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 {
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
     return $"{DateTime.Now}";
+}
+```
+
+下面的示例演示如何使用`IAsyncCollector`接口以便将发送一批消息。 所处理的消息来自一个事件中心，并且将结果发送到另一个事件中心时，此方案中很常见。
+
+```csharp
+[FunctionName("EH2EH")]
+public static async Task Run(
+    [EventHubTrigger("source", Connection = "EventHubConnectionAppSetting")] EventData[] events,
+    [EventHub("dest", Connection = "EventHubConnectionAppSetting")]IAsyncCollector<string> outputEvents,
+    ILogger log)
+{
+    foreach (EventData eventData in events)
+    {
+        // do some processing:
+        var myProcessedEvent = DoSomething(eventData);
+
+        // then send the message
+        await outputEvents.AddAsync(JsonConvert.SerializeObject(myProcessedEvent));
+    }
 }
 ```
 
@@ -654,9 +674,9 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为“eventHub”。 |
-|direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|name | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|**type** | 不适用 | 必须设置为“eventHub”。 |
+|**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
+|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|

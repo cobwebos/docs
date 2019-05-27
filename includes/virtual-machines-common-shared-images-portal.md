@@ -9,11 +9,11 @@ ms.date: 04/29/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 66ec923f12c59d606056d48c09f1ba346e9a4d32
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827074"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170386"
 ---
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 
@@ -41,7 +41,7 @@ ms.locfileid: "65827074"
    
 ## <a name="create-an-image-definition"></a>创建映像定义 
 
-图像定义创建映像的逻辑分组。 它们用于管理在其中创建的映像版本有关的信息。 可以大写或小写字母、 数字、 点、 短划线和句点组成图像定义名称。 有关可以为图像定义指定的值的详细信息，请参阅[图像定义](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
+映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
 
 创建您的库内的库映像定义。 在此示例中，名为的库映像*myImageDefinition*。
 
@@ -59,9 +59,9 @@ ms.locfileid: "65827074"
 
 ## <a name="create-an-image-version"></a>创建映像版本
 
-从托管映像创建的映像版本。 在此示例中，映像版本为 1.0.0，该版本被复制到美国中西部和美国中南部数据中心。 在选择时复制的目标区域，请记住，您还必须包括*源*为复制的目标区域。
+从托管映像创建的映像版本。 在此示例中，映像版本为 1.0.0，该版本被复制到美国中西部和美国中南部数据中心。 选择复制的目标区域时，请记住，你还需包括源区域作为复制的目标。
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式:*MajorVersion*。*MinorVersion*。*修补程序*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式:*MajorVersion*.*MinorVersion*.*Patch*。
 
 1. 在你的图像定义页中，选择**添加版本**从页面顶部。
 1. 在中**区域**，选择托管的映像的存储位置的区域。 映像版本需要在从创建托管映像所在的同一区域中创建。

@@ -13,11 +13,11 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/17/2019
 ms.openlocfilehash: 255f118d6dc6873364c2f8d4569e23c3e54ea83e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680513"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66164358"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 
@@ -45,7 +45,7 @@ ms.locfileid: "59680513"
 3. 完成后，单击“应用”。
 
 > [!IMPORTANT]
-> 当启用长期备份保留策略时，可能需要最多 7 天会变得可见且可用于还原的第一个备份。 LTR 备份 cadance 的详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
+> 启用长期备份保留策略时，最长可能需要 7 天以后才能查看和还原第一个备份。 有关 LTR 备份频率的详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>使用 Azure 门户查看备份并从备份进行还原
 

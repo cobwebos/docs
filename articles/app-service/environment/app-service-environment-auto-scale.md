@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 29a639142395c43fea06c1d6d18909b3c9f33b86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769277"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955960"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自动缩放和应用服务环境 v1
 
@@ -63,7 +63,7 @@ Azure 应用服务环境支持*自动调整规模*。 可以根据指标或计�
 本文介绍设置自动缩放的所有必要注意事项。 本文介绍自动缩放托管于应用服务环境中的各种应用服务环境时需考虑到的有效交互。
 
 ### <a name="scenario-introduction"></a>方案简介
-Frank 是企业的系统管理员，他已将所管理的部分工作负荷迁移到应用服务环境。
+Frank 是企业的系统管理员已迁移到应用服务环境的一部分他们管理的工作负荷是系统管理员。
 
 应用服务环境已配置为手动缩放，如下所示：
 
@@ -76,7 +76,7 @@ Frank 是企业的系统管理员，他已将所管理的部分工作负荷迁�
 
 QA 和开发人员的应用服务计划配置为手动缩放。 生产型应用服务计划设置为自动缩放，以应对负载和流量的变化。
 
-Frank 非常熟悉该应用程序。 他知道负载高峰时间在上午 9:00 到下午 6:00 之间，因为该应用程序为业务线 (LOB) 应用程序，员工会在办公时使用。 高峰时间过后，使用量会下降，此时用户完成了当天的工作。 高峰时间之外仍会有一些负载，因为用户可以使用其移动设备或家用电脑远程访问该应用。 生产型应用服务计划已配置为按以下规则根据 CPU 使用率自动缩放：
+Frank 非常熟悉该应用程序。 他们知道负载高峰时间是上午 9:00 和下午 6:00 之间，因为这是员工使用都是在办公室的业务线 (LOB) 应用程序。 高峰时间过后，使用量会下降，此时用户完成了当天的工作。 高峰时间之外仍会有一些负载，因为用户可以使用其移动设备或家用电脑远程访问该应用。 生产型应用服务计划已配置为按以下规则根据 CPU 使用率自动缩放：
 
 ![LOB 应用的特定设置。][asp-scale]
 

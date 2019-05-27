@@ -15,11 +15,11 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 0196d39f5b131bc54e00412beb7fdf10b7352336
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075140"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121864"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>在 MSAL.NET AuthenticationResult 属性
 
@@ -27,7 +27,7 @@ ms.locfileid: "65075140"
 
 在 MSAL.NET，`AuthenticationResult`公开：
 
-- `AccessToken` 访问资源的 Web api。 此参数是一个字符串，通常使用 base64 编码的 JWT，但客户端应永远不会访问令牌中所示。 格式不能保证后保持不变，仍然可以进行加密的资源。 错误和客户端逻辑分页符的最大源之一的人员编写代码，具体取决于客户端上的访问令牌内容。 另请参阅[访问令牌](../articles/active-directory/develop/access-tokens.md)
+- `AccessToken` 访问资源的 Web api。 此参数是一个字符串，通常使用 base64 编码的 JWT，但客户端应永远不会访问令牌中所示。 不保证格式稳定，对于资源可将令牌加密。 在客户端上依赖访问令牌内容编写代码是最大的错误来源之一，并且会违反客户端逻辑。 另请参阅[访问令牌](../articles/active-directory/develop/access-tokens.md)
 - `IdToken` （此参数为编码的 JWT） 的用户。 请参阅[ID 令牌](../articles/active-directory/develop/id-tokens.md)
 - `ExpiresOn` 指示令牌的过期日期/时间
 - `TenantId` 包含在其中找到用户的租户。 对于来宾用户 （Azure AD B2B 方案），则租户 ID 是来宾租户，而不是唯一的租户。
@@ -37,7 +37,7 @@ ms.locfileid: "65075140"
 
 ### <a name="iaccount"></a>IAccount
 
-MSAL.NET 定义帐户的概念 (通过`IAccount`接口)。 此项重大更改提供了正确的语义： 这一事实，同一用户在不同的 Azure 上拥有多个帐户，AD 目录。 此外 MSAL.NET 提供更好的信息，在来宾方案的情况下，可以提供主帐户信息。
+MSAL.NET 定义帐户的概念 (通过`IAccount`接口)。 这项中断性变更提供了正确的语义：同一用户可以在不同的 Azure AD 目录中拥有多个帐户这一事实。 此外 MSAL.NET 提供更好的信息，在来宾方案的情况下，可以提供主帐户信息。
 下图显示了结构`IAccount`接口：
 
 ![image](https://user-images.githubusercontent.com/13203188/44657759-4f2df780-a9fe-11e8-97d1-1abbffade340.png)

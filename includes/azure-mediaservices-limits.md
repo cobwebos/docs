@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150347"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116338"
 ---
 >[!NOTE]
 >对于不固定的资源，请打开支持票证以请求增加配额中。 不尝试获取更高的限制中创建更多 Azure 媒体服务帐户。
 
-| 资源 | 默认限制 | 
+| Resource | 默认限制 | 
 | --- | --- | 
 | 单个订阅中的 azure 媒体服务帐户 | 25（固定） |
 | 媒体保留单位，每个媒体服务帐户 |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 

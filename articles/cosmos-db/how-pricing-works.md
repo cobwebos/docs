@@ -4,14 +4,14 @@ description: 本文介绍 Azure Cosmos DB 的定价模型，以及该模型如�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 997a80ed1a8089c5255292f23bc5dacf8a6cb0e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9e7afdb8927a2cdada8ae86ebf18a42327e640c
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61059667"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968945"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的定价模型 
 

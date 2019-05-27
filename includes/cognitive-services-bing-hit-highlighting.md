@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60527911"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124772"
 ---
 必应支持命中词突出显示，此功能会在某些答案的显示字符串中标记查询词（或必应认为相关的其他词）。 例如，网页的 `name`、`displayUrl` 和 `snippet` 字段可能会标记查询词。
 
