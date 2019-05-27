@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 3e1bad5902bb35ce0c037835359c267582cc8bc7
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 152be044b5696a0d9017729d731e080ed9163828
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938658"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964051"
 ---
 # <a name="marketplace-faqs"></a>市场常见问题解答
 
@@ -36,7 +36,7 @@ Azure 市场提供 Microsoft 和合作伙伴为扩展 Azure 产品和服务而�
 
 * 基础操作系统
 * 数据库
-* security
+* 安全性
 * identity
 * 网络
 * 区块链
@@ -234,7 +234,7 @@ MOSP- [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/s
 
 **是否有 Azure 市场支持论坛？**
 
-可以。 请访问 [Azure 市场论坛](https://social.msdn.microsoft.com/Forums/home?forum=DataMarket)获取社区支持。
+是的。 请访问 [Azure 市场论坛](https://social.msdn.microsoft.com/Forums/home?forum=DataMarket)获取社区支持。
 
 **如果我对 Azure 市场上出售的合作伙伴解决方案的价格或条款有疑问，应联系谁？**
 
@@ -310,7 +310,7 @@ Microsoft 提供了两个不同的云市场店面 – Azure 市场和 AppSource�
 
 **如何开始在 Azure 市场中发布？**
 
-若要开始在 Azure 市场中发布商品，请先查看 [Azure 市场发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)和[成为发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。 接下来，填写 [Azure 市场提名表](https://azuremarketplace.microsoft.com/sell/signup)并提交申请。
+若要开始在 Azure 市场中发布商品，请先查看 [Azure 市场发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)和[成为发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。 接下来，通过将应用程序提交[提交产品/服务](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)。 请参阅如何[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)有关详细信息。
 
 **是否必须是 Microsoft 合作伙伴网络 (MPN) 的成员才能在 Azure 市场中发布任何应用程序和服务？**
 
@@ -400,7 +400,7 @@ O365 应用
 1.  使用开发人员帐户登录到 [https://sellerdashboard.microsoft.com](https://sellerdashboard.microsoft.com)。
 1.  撤下附加产品。
 
-注意：应用将在 90 天后从现有商品列表中消失。
+注意:应用将在 90 天后从现有商品列表中消失。
 
 Power BI 应用
 * 联系：[Anjana Sompur (Slalom Consulting LLC)](mailto:v-ansomp@microsoft.com)。
@@ -563,7 +563,7 @@ Azure Marketplace 支持 141 购买从地理位置定义的客户的帐单地址
 
 **我能使用我的 Microsoft 批量许可/企业协议从 Azure 市场购买内容吗？**
 
-可以。 企业协议 (EA) 客户可以从 Azure 市场购买应用程序和服务。 拥有应用程序和服务的独立软件供应商 (ISV) 可以自行定价。 因此，标准 Microsoft 批量许可折扣不适用于 Azure 市场套餐。
+是的。 企业协议 (EA) 客户可以从 Azure 市场购买应用程序和服务。 拥有应用程序和服务的独立软件供应商 (ISV) 可以自行定价。 因此，标准 Microsoft 批量许可折扣不适用于 Azure 市场套餐。
 
 **我能对 Azure 市场产品应用我帐户上的 Azure 订阅额度或货币承诺资金吗？**
 
@@ -609,7 +609,7 @@ MOSP（Microsoft 在线订阅计划，即 web direct）客户可在 [Azure 计�
 
 **我是否可以将帐户上的 Azure 订阅额度或货币承诺资金用于 Azure 产品和运营 Azure 市场套餐所需的服务？**
 
-可以。 帐户上的 Azure 订阅额度或货币承诺资金可用于 Azure 产品和 Azure 市场套餐。 例如，可以对 Azure 市场中虚拟机套餐的“价格”部分使用 Azure 货币承诺资金。 但是，Azure 订阅额度或货币承诺资金仅适用于在 Azure 虚拟机上运行的某些软件的价格。
+是的。 帐户上的 Azure 订阅额度或货币承诺资金可用于 Azure 产品和 Azure 市场套餐。 例如，可以对 Azure 市场中虚拟机套餐的“价格”部分使用 Azure 货币承诺资金。 但是，Azure 订阅额度或货币承诺资金仅适用于在 Azure 虚拟机上运行的某些软件的价格。
 
 **如何了解我已使用了多少 Azure 市场购买内容？**
 

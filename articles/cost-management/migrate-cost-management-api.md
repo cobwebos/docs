@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/20/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311926"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967233"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>企业协议从迁移到 Microsoft 客户协议 Api
 
@@ -176,14 +176,14 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 | AccountNameAccountOwnerId 和 AccountOwnerEmail | 不适用 | 不会跟踪订阅创建者。 使用 invoiceSectionName （与 departmentName 相同）。 |
 | 其他信息 | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | 请注意，这些属性刚好相反。 如果 isAzureCreditEnabled 为 true，ChargesBilledSeparately 将为 false。 |
-| ConsumedQuantity | quantity | &nbsp; |
+| 已使用数量 | 数量 | &nbsp; |
 | 已使用的服务 | consumedService | 确切的字符串值可能不同。 |
 | 已使用的服务 ID | 无 | &nbsp; |
-| CostCenter | costCenter | &nbsp; |
+| 成本中心 | costCenter | &nbsp; |
 | 日期和 usageStartDate | date | &nbsp;  |
 | 日期 | 无 | 分析日期的一天。 |
 | 部门 ID | invoiceSectionId | 确切的值不同。 |
-| DepartmentName | invoiceSectionName | 确切的字符串值可能不同。 如果需要请配置发票部分以匹配部门。 |
+| 部门名称 | invoiceSectionName | 确切的字符串值可能不同。 如果需要请配置发票部分以匹配部门。 |
 | ExtendedCost 和成本 | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
 | 为周期性费用 | 无 | &nbsp;  |
@@ -194,13 +194,13 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 | 计量区域 | meterRegion | 确切的字符串值可能不同。 |
 | 计量子类别 | meterSubCategory | 确切的字符串值可能不同。 |
 | 月份 | 无 | 分析一个月中日期。 |
-| 产品名称 | 无 | 使用 publisherName 和 productOrderName。 |
+| 产品/服务名称 | 无 | 使用 publisherName 和 productOrderName。 |
 | OfferId | 无 | &nbsp;  |
 | 订单编号 | 无 | &nbsp;  |
 | PartNumber | 无 | 使用 meterId 和 productOrderName 来唯一标识的价格。 |
 | 计划名称 | productOrderName | &nbsp;  |
 | 产品 | 产品 |   |
-| ProductId | productId | 确切的字符串值而有所不同。 |
+| 产品 ID | productId | 确切的字符串值而有所不同。 |
 | 发布者名称 | publisherName | &nbsp;  |
 | resourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | 确切的字符串值而有所不同。 |
@@ -215,7 +215,7 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 | 存储服务标识符 | 不适用 | &nbsp;  |
 | 订阅 Guid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
-| SubscriptionName | subscriptionName | &nbsp;  |
+| 订阅名称 | subscriptionName | &nbsp;  |
 | 标记 | 标记 | 标记属性适用于根对象，而不是嵌套的属性属性。 |
 | 度量单位 | unitOfMeasure | 确切的字符串值而有所不同。 |
 | usageEndDate | date | &nbsp;  |
@@ -430,17 +430,17 @@ Microsoft 客户协议下, 一节中使用的信息。 它提供了用于 Micros
 
 | 旧 Azure 资源管理器价格表 API 属性  | 新的 Microsoft 客户协议价目表 API 属性   | 描述 |
 | --- | --- | --- |
-| 测定仪 ID | _meterId_ | 测定仪的唯一标识符。 MeterId 相同。 |
+| 计量 ID | _meterId_ | 测定仪的唯一标识符。 MeterId 相同。 |
 | 计量名称 | meterName | 计量的名称。 指标表示 Azure 服务可部署资源。 |
 | 计量类别  | 服务 | 测定仪分类类别的名称。 与 Microsoft 客户协议价目表中的服务相同。 确切的字符串值而有所不同。 |
 | 计量子类别 | meterSubCategory | 计量子分类类别的名称。 基于在服务中的高级功能集差异的分类。 例如，基本 SQL DB 的 vs 标准 SQL 数据库。 |
 | 计量区域 | meterRegion | &nbsp;  |
 | 单位 | _不适用_ | 可以从 unitOfMeasure 分析。 |
-| 计量单位 | unitOfMeasure | &nbsp;  |
+| 度量单位 | unitOfMeasure | &nbsp;  |
 | 商品编号 | _不适用_ | 而不是 partNumber，使用 productOrderName 和 MeterId 来唯一标识的价格计费的配置文件。 将列出域，而不是在 MCA 发票 partNumber MCA 发票上。 |
 | 单位价格 | unitPrice | Microsoft 客户协议单价。 |
 | 货币代码 | pricingCurrency | Microsoft 客户协议表示中货币的定价和计费货币的价格。 货币代码是与 Microsoft 客户协议中 pricingCurrency 相同。 |
-| 包括的量 | includedQuantity | 不适用于 Microsoft 客户协议中的服务。 显示的值为零。 |
+| 已包含数量 | includedQuantity | 不适用于 Microsoft 客户协议中的服务。 显示的值为零。 |
 |  产品 ID  | productOrderName | 而不是 OfferId，使用 productOrderName。 与 OfferId，但是 productOrderName 和计量器决定了 Microsoft 客户协议中的定价。 与在旧注册 meterId 和 Offerid。 |
 
 Microsoft 客户协议的价格被定义的方式不同于企业协议。 企业许可登记表中的服务的价格是唯一的产品、 PartNumber、 测定仪和产品/服务。 PartNumber 不在 Microsoft 客户协议中使用。

@@ -3,17 +3,17 @@ title: 在本地部署远程监视解决方案（通过 Visual Studio IDE）- Az
 description: 本操作指南展示了如何使用 Visual Studio 将远程监视解决方案加速器部署到本地计算机，以用于测试和开发。
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5754fc2f7e0fc36a6708bfd4d2d1d3d6f016b27
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1adf59feca7db4c5903b04c59e1bd23290c1855e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150967"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967506"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>在本地部署远程监视解决方案加速器 - Visual Studio
 
@@ -27,7 +27,7 @@ ms.locfileid: "65150967"
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>计算机设置
 
@@ -60,9 +60,9 @@ ms.locfileid: "65150967"
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>在本地计算机上部署其他所有微服务
 
-以下步骤说明如何在 Visual Studio 2017 中运行远程监视微服务：
+以下步骤演示了如何在 Visual Studio 中运行远程监视微服务：
 
-1. 启动 Visual Studio 2017
+1. 启动 Visual Studio。
 1. 打开存储库本地副本中 **services** 文件夹内的 **remote-monitoring.sln** 解决方案。
 1. 在“解决方案资源管理器”中右键单击解决方案，然后单击“属性”。
 1. 选择“通用属性”>“启动项目”。

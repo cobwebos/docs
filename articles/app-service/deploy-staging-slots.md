@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: d62632d6c28ac137095307e95dbbdab7e8573bbc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137882"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955938"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -46,7 +46,7 @@ ms.locfileid: "65137882"
 
 2. 在左侧导航栏中，选择“部署槽位(预览)”选项，然后单击“添加槽”。
    
-    ![添加新部署槽](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![添加新的部署插槽](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > 如果应用尚未处于“标准”、“高级”或“独立”层，则会收到消息，指示启用分步发布支持的层。 此时，可选择“升级”，并导航到应用的“缩放”选项卡，并继续。
@@ -99,7 +99,7 @@ ms.locfileid: "65137882"
 * 缩放设置
 * Web 作业计划程序
 * IP 限制
-* AlwaysOn
+* 始终可用
 * 协议设置 (HTTP**S**，TLS 版本，客户端证书)
 * 诊断日志设置
 * CORS
@@ -217,7 +217,7 @@ ms.locfileid: "65137882"
 
 有关自定义 `applicationInitialization` 元素的详细信息，请参阅[最常见的部署槽位交换故障以及如何修复它们](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)。
 
-还可以使用下列[应用设置](web-sites-configure.md)中的一个或多个来自定义预热行为：
+还可以使用下列[应用设置](configure-common.md)中的一个或多个来自定义预热行为：
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`：用于对你的站点进行预热的 ping 路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如，`/statuscheck`。 默认值为 `/`。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`：预热操作的有效 HTTP 响应代码。 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 例如：`200,202`。 如果返回的状态代码不在列表中，则预热和交换操作会停止。 默认情况下，所有响应代码都是有效的。

@@ -1,83 +1,89 @@
 ---
 title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
-description: 提供有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
+description: 查找有关 Azure Kubernetes 服务 (AKS) 的常见问题的解答。
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 17bc1d2b7a08314f19f1bf8f87d0c774afc37500
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 6bfcd11dd6bfd31583fb2d0cd3f4229d3dd70065
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508182"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65887359"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
 本文解答有关 Azure Kubernetes 服务 (AKS) 的常见问题。
 
-## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>哪些 Azure 区域现在可提供 Azure Kubernetes 服务 (AKS)？
+## <a name="which-azure-regions-currently-provide-aks"></a>哪些 Azure 区域目前提供 AKS？
 
-有关可用区域的完整列表，请参阅 [AKS 区域和可用性][aks-regions]。
+有关可用区域的完整列表，请参阅[AKS 区域和可用性][aks-regions]。
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS 是否支持节点自动缩放？
 
-支持，从 Kubernetes 1.10 开始，可以通过 [Kubernetes autoscaler][auto-scaler] 进行自动缩放。 要详细了解如何配置和使用群集自动缩放程序，请参阅 [AKS 上的群集自动缩放][aks-cluster-autoscale]。
+是的是可通过自动缩放[Kubernetes autoscaler] [ auto-scaler]截至 Kubernetes 1.10。 有关如何手动配置和使用群集自动缩放程序的信息，请参阅[AKS 群集自动缩放][aks-cluster-autoscale]。
 
-## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>AKS 是否支持 Kubernetes 基于角色的访问控制 (RBAC)？
+您还可用于内置群集自动缩放程序 （目前以在 AKS 中的预览版） 管理的节点的缩放。 有关详细信息，请参阅[自动缩放以满足在 AKS 中的应用程序需求的群集][aks-cluster-autoscaler]。
 
-支持，使用 Azure CLI 创建群集时，默认启用 Kubernetes RBAC。 可为使用 Azure 门户或模板创建的集群启用 RBAC。
+## <a name="does-aks-support-kubernetes-rbac"></a>AKS 是否支持 Kubernetes RBAC？
+
+是的 Kubernetes 基于角色的访问控制 (RBAC) 启用默认情况下使用 Azure CLI 创建群集时。 对于使用 Azure 门户或模板创建的群集，可以启用 RBAC。
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>是否可以将 AKS 部署到现有虚拟网络？
 
-可以，可使用[高级网络功能][aks-advanced-networking]将 AKS 群集部署到现有虚拟网络中。
+是的可以通过使用部署到现有虚拟网络的 AKS 群集[高级网络功能][aks-advanced-networking]。
 
-## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>我可以将 Kubernetes API 服务器限制为仅能在我的虚拟网络中访问吗？
+## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>可以使 Kubernetes API 服务器可访问仅在我的虚拟网络中？
 
-现在不行。 Kubernetes API 服务器公开为公共完全限定的域名 (FQDN)。 可使用 [Kubernetes 基于角色的访问控制 (RBAC) 和 Azure Active Directory (AAD)][aks-rbac-aad] 控制对群集的访问
+现在不行。 Kubernetes API 服务器公开为公共完全限定的域名 (FQDN)。 通过控制对你的群集访问权限[Kubernetes RBAC 和 Azure Active Directory (Azure AD)][aks-rbac-aad]。
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>安全更新是否可应用于 AKS 代理节点？
 
-可以，Azure 会按照夜间计划自动将安全修补程序应用于群集中的节点。 但是，你有责任确保节点根据需要进行重启。 执行节点重启具有多种选择：
+Azure 会自动适用于按夜间计划在群集中的 Linux 节点的安全修补程序。 但是，您有责任确保重新启动节点作为这些 Linux 所需。 必须重新启动节点的多个选项：
 
 - 通过 Azure 门户或 Azure CLI 手动执行。
-- 通过升级 AKS 群集。 群集自动升级 [cordon 和 drain 节点][cordon-drain]，然后使用最新的 Ubuntu 映像和新补丁版本或次要 Kubernetes 版本重新启动每个节点。 有关详细信息，请参阅[升级 AKS 群集][aks-upgrade]。
-- 使用 [Kured](https://github.com/weaveworks/kured)，一种适用于 Kubernetes 的开放源代码重启守护程序。 Kured 作为 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过将相同的 [cordon 和 drain 进程][cordon-drain]用作群集升级跨群集管理操作系统的重启。
+- 通过升级 AKS 群集。 群集升级[cordon 和 drain 节点][ cordon-drain]自动，然后将新节点联机使用的最新的 Ubuntu 映像和新的修补程序版本或次的 Kubernetes 版本。 有关详细信息，请参阅[升级 AKS 群集][aks-upgrade]。
+- 通过使用[Kured](https://github.com/weaveworks/kured)，一个适用于 Kubernetes 的开放源代码重启守护程序。 Kured 作为运行[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)并监视每个节点的指示重新启动是必需的文件是否存在。 在群集范围内操作系统重新启动管理的相同[cordon 和 drain 过程][ cordon-drain]作为群集升级。
 
 有关使用 kured 的详细信息，请参阅[将安全性和内核更新应用于 AKS 中的节点][node-updates-kured]。
+
+### <a name="windows-server-nodes"></a>Windows 服务器节点
+
+Windows Server 中的节点 （当前在 AKS 中的预览版），Windows 更新不会不会自动运行，并应用最新的更新。 有关在 Windows 更新发布周期和验证过程按定期计划，应在 AKS 群集中执行 Windows Server 节点池上的升级。 此升级过程创建节点运行的最新的 Windows Server 映像和修补程序，然后删除旧节点。 此过程的详细信息，请参阅[升级在 AKS 中的节点池][nodepool-upgrade]。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>为什么使用 AKS 创建两个资源组？
 
 每个 AKS 部署都跨越两个资源组：
 
-- 第一个资源组由你创建，仅包含 Kubernetes 服务资源。 AKS 资源提供程序在部署期间自动创建第二个资源组，例如 MC_myResourceGroup_myAKSCluster_eastus。 有关如何指定此第二个资源组的名称的信息，请参阅下一节。
-- 第二个资源组（例如 MC_myResourceGroup_myAKSCluster_eastus）包含与该群集关联的所有基础结构资源。 这些资源包括 Kubernetes 节点 VM、虚拟网络和存储。 创建这个单独资源组的目的是简化资源清理。
+1. 创建第一个资源组。 此组仅包含 Kubernetes 服务资源。 AKS 资源提供程序在部署期间自动创建第二个资源组。 第二个资源组的一个示例是*于 MC_myResourceGroup_myAKSCluster_eastus*。 有关如何指定此第二个资源组的名称的信息，请参阅下一节。
+1. 第二个资源组，如*于 MC_myResourceGroup_myAKSCluster_eastus*，包含所有与群集关联的基础结构资源。 这些资源包括 Kubernetes 节点 VM、虚拟网络和存储。 此资源组旨在简化资源清理。
 
-如果创建用于 AKS 群集的资源（例如存储帐户或保留的公用 IP 地址），请将它们放在自动生成的资源组中。
+如果您创建的 AKS 群集中使用的资源，例如存储帐户或保留公共 IP 地址，将它们放在自动生成的资源组中。
 
-## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>可以提供我自己 AKS 基础结构资源组的名称？
+## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>我是否可为 AKS 基础结构资源组提供自己的名称？
 
-可以。 默认情况下，AKS 资源提供程序会自动创建的辅助资源组在部署期间，如*于 MC_myResourceGroup_myAKSCluster_eastus*。 若要符合公司策略，您可以自己为此托管群集的名称 (*MC_*) 的资源组。
+是的。 默认情况下，AKS 资源提供程序会自动创建的辅助资源组 (如*于 MC_myResourceGroup_myAKSCluster_eastus*) 在部署过程。 为了符合企业策略，你可以为此托管群集 (*MC_*) 资源组提供自己的名称。
 
-若要指定资源组名称，请安装[aks 预览版][ aks-preview-cli] Azure CLI 扩展版本*0.3.2*或更高版本。 创建 AKS 群集使用时[az aks 创建][ az-aks-create]命令，使用 *-节点资源组*参数并指定资源组的名称。 如果您[使用 Azure 资源管理器模板][ aks-rm-template]若要部署 AKS 群集，可以定义资源组名称使用*nodeResourceGroup*属性。
+若要指定资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 *0.3.2* 或更高版本。 当使用创建 AKS 群集[az aks 创建][ az-aks-create]命令，使用 *-节点资源组*参数并指定资源组的名称。 如果您[使用 Azure 资源管理器模板][ aks-rm-template]若要部署 AKS 群集，可以定义的资源组名称使用*nodeResourceGroup*属性。
 
-* 在自己的订阅中的 Azure 资源提供程序会自动创建此资源组。
-* 创建群集时，仅可以指定自定义资源组名称。
+* 在自己的订阅中的 Azure 资源提供程序会自动创建的辅助资源组。
+* 仅当要创建群集时，可以指定自定义资源组名称。
 
-不支持以下方案：
+在使用*MC_* 资源组，请记住，您不能：
 
-* 不能指定现有的资源组*MC_* 组。
-* 不能指定不同的订阅*MC_* 资源组。
-* 不能更改*MC_* 后创建群集资源组名称。
-* 不能指定为中的托管资源的名称*MC_* 资源组。
-* 不能修改或删除中的托管资源标记*MC_* 资源组 （请参阅下一节中的其他信息）。
+* 指定现有的资源组*MC_* 组。
+* 指定不同的订阅*MC_* 资源组。
+* 更改*MC_* 后创建群集资源组名称。
+* 指定托管资源内的名称*MC_* 资源组。
+* 修改或删除中的托管资源标记*MC_* 资源组。 （请参阅下一节中的其他信息。）
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>我可以修改 MC_* 资源组中 AKS 资源的标记和其他属性吗？
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>可以修改标记和其他属性 MC_ 资源组中的 AKS 资源？
 
-修改和删除 MC_* 资源组中 Azure 创建的标记以及资源的其他属性可能会导致意外结果，例如扩大和升级错误。 支持创建和修改其他自定义标记，例如分配业务单位或成本中心。 修改 AKS 群集中 MC_* 下的资源会中断服务级别目标 (SLO)。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
+如果修改或删除 Azure 创建标记和其他资源属性*MC_* 资源组中，可能会收到意外的结果，例如缩放和升级错误。 AKS，可创建和修改自定义标记。 你可能想要创建或修改自定义标记，例如，若要将业务单元或成本中心分配。 通过修改下的资源*MC_* 在 AKS 群集中断服务级别目标 (SLO)。 有关详细信息，请参阅[没有 AKS 提供的服务级别协议？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支持哪些 Kubernetes 许可控制器？ 是否可以添加或删除许可控制器？
 
@@ -94,32 +100,34 @@ AKS 支持以下[许可控制器][admission-controllers]：
 - DenyEscalatingExec
 - AlwaysPullImages
 
-目前无法修改 AKS 中的许可控制器列表。
+目前，不能修改在 AKS 中的许可控制器的列表。
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>不是，它没有与 Azure Key Vault 集成。
 
-AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目的 Azure Key Vault FlexVolume][keyvault-flexvolume] 实现了从 Kubernetes pod 到 KeyVault 机密的直接集成。
+AKS 没有当前以本机方式集成到 Azure 密钥保管库。 但是， [Kubernetes 项目的 Azure 密钥保管库 FlexVolume] [ keyvault-flexvolume]使你能够直接从 Kubernetes pod 到密钥保管库机密的集成。
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>是否可以在 AKS 上运行 Windows Server 容器？
 
-若要运行 Windows Server 容器，需要运行基于 Windows Server 的节点。 基于 Windows Server 的节点目前在 AKS 中不可用。 但是，可以使用虚拟 Kubelet 在 Azure 容器实例上计划 Windows 容器，并将其作为 AKS 群集的一部分进行管理。 有关详细信息，请参阅[带有 AKS 的虚拟 Kubelet][virtual-kubelet]。
+是的 Windows Server 容器是在预览版中可用。 若要在 AKS 中运行 Windows Server 容器，你创建运行 Windows Server 作为来宾 OS 的节点池。 Windows Server 容器可以使用仅 Windows Server 2019。 若要开始，请参阅[与 Windows Server 节点池创建 AKS 群集][aks-windows-cli]。
 
-## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服务级别协议？
+节点池的窗口服务器支持包括属于上游 Kubernetes 项目中的 Windows 服务器的一些限制。 有关这些限制的详细信息，请参阅[AKS 限制中的 Windows Server 容器][aks-windows-limitations]。
 
-在服务级别协议 (SLA) 中，如果未满足已发布的服务级别，提供商同意向客户偿还服务费用。 由于 AKS 本身是免费的，没有费用需要偿还，因此也就没有正式的 SLA。 不过，AKS 会设法将 Kubernetes API 服务器的可用性维持在不小于 99.5% 的水平上。
+## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供的服务级别协议？
 
-## <a name="why-can-i-not-set-maxpods-below-30"></a>为什么我不能设置`maxPods`下面 30？
+在服务级别协议 (SLA)，该提供程序同意向补偿个服务的费用的客户，如果不符合已发布的服务级别。 AKS 是免费的因为无需付费是可用于向补偿，因此 AKS 会有没有正式的 SLA。 但是，AKS 致力于维护可用性至少达到 99.5%Kubernetes API 服务器。
 
-AKS 是否支持设置`maxPods`在通过 Azure CLI 和 Azure 资源管理器模板创建群集时的值。 但是，没有*最小值*（验证在创建时） 对于 Kubenet 和 Azure CNI，如下所示：
+## <a name="why-cant-i-set-maxpods-below-30"></a>为什么不能设置下面 30 maxPods？
+
+在 AKS，你可以将`maxPods`值时使用 Azure CLI 和 Azure 资源管理器模板创建群集。 但是，Kubenet 和 Azure CNI 需要*最小值*（验证在创建时）：
 
 | 网络 | 最小值 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
 
-由于 AKS 是一种托管的服务，我们提供加载项和 pod 我们作为部署和管理群集的一部分。 在过去，用户可以定义`maxPods`小于为托管的 pod 运行所需的值的值 (示例：30)，AKS 现在计算通过 pod 的最小数目: ((maxPods 或 (maxPods * vm_count)) > 托管外接程序 pod 最小值。
+由于 AKS 是一种托管的服务，我们将部署和管理群集的一部分的外接程序和 pod。 在过去，用户可以定义`maxPods`托管的 pod 运行 （例如，30） 所需的值小于的值。 AKS 现在使用以下公式计算的最小 pod 数: ((maxPods 或 (maxPods * vm_count)) > 托管外接程序 pod 最小值。
 
-用户可能不会替代所需的最低`maxPods`验证。
+用户无法重写所需的最低`maxPods`验证。
 
 <!-- LINKS - internal -->
 
@@ -133,6 +141,10 @@ AKS 是否支持设置`maxPods`在通过 Azure CLI 和 Azure 资源管理器模�
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
+[aks-cluster-autoscaler]: cluster-autoscaler.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[aks-windows-cli]: windows-container-cli.md
+[aks-windows-limitations]: windows-node-limitations.md
 
 <!-- LINKS - external -->
 

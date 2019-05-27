@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d14088ed940ab83be29756a26f8612704bb9aebd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 31522436de97062432af2afe101f85d376243a38
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60770084"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957252"
 ---
 # <a name="view-azure-maps-api-usage"></a>查看 Azure Maps API 使用情况
 
@@ -59,6 +59,11 @@ ms.locfileid: "60770084"
 ## <a name="next-steps"></a>后续步骤
 
 了解要跟踪其使用情况的 Azure Maps API 的详细信息：
+> [!div class="nextstepaction"] 
+> [Azure Maps Web SDK 操作方法](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"] 
+> [Azure Maps Android SDK 操作方法](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
 > [Azure Maps REST API 文档](https://docs.microsoft.com/rest/api/maps)

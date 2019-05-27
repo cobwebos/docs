@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7711c3476ac9118406a86430e5ade238bec2c028
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918624"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950895"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的标识要求
 设计混合标识解决方案的第一个步骤是确定要利用此解决方案的企业组织有何要求。  混合标识最初是一个支持角色（通过提供身份验证来支持其他所有云解决方案），并提供一些新奇的功能，为用户解锁新的工作负荷。  要为用户采用的这些工作负荷或服务指明了混合标识设计的要求。  这些服务和工作负荷在本地和云中都需要利用混合标识。  
 
-我们需要通盘审视企业的各个主要层面，了解其当前要求，以及公司的将来规划。 如果不清楚混合标识设计的长期策略，解决方案将来有可能无法随着企业的成长和变化而缩放。   下图中的示例演示了混合标识体系结构以及要为用户解锁的工作负荷。 此示例只是说明可以通过健全的混合标识策略解锁和提供的各种新机会。 
+我们需要通盘审视企业的各个主要层面，了解其当前要求，以及公司的将来规划。 如果不清楚混合标识设计的长期策略，解决方案将来有可能无法随着企业的成长和变化而缩放。 下图显示了一个混合标识体系结构以及要为用户解锁的工作负荷的示例。 此示例只是说明可以通过健全的混合标识策略解锁和提供的各种新机会。 
 
 属于混合标识体系结构的某些组件![混合标识体系结构](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 

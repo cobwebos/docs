@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2f3d08a32384cea815f096f51b24eea596d0d118
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8923c94409dcf079179ed0464046e39ef7654c4c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871159"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949823"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>如何在 Azure 搜索中为大型数据集编制索引
 
@@ -67,7 +67,7 @@ ms.locfileid: "60871159"
 并行处理具有以下要素：
 
 + 在多个容器之间分割源数据，或者分割同一容器中的多个虚拟文件夹。 
-+ 将每个微型数据集映射到与其自身[索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)配对的自身[数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
++ 将每个小型数据集映射到其自身[数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、 到其自身配对[索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 + 对于认知搜索，请在每个索引器定义中引用相同的[技能集](https://docs.microsoft.com/rest/api/searchservice/create-skillset)。
 + 写入相同的目标搜索索引。 
 + 将所有索引器计划为在同一时间运行。

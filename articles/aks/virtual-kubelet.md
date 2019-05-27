@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7a0269ff22987648d134cb7f4fba8e28e29fd8b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61023708"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956296"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>结合使用虚拟 Kubelet 和 Azure Kubernetes 服务 (AKS)
 
@@ -26,7 +26,7 @@ Azure 容器实例 (ACI) 提供托管环境，以便在 Azure 中运行容器。
 >
 > 虚拟 Kubelet 是实验性开放源代码项目，并且应该这样使用。 若要参与问题讨论、提交问题以及阅读有关虚拟 kubelet 的详细信息，请参阅[虚拟 Kubelet GitHub 项目][vk-github]。
 
-## <a name="prerequisite"></a>先决条件
+## <a name="before-you-begin"></a>开始之前
 
 本文档假定你有 AKS 群集。 如果你需要 AKS 群集，请参阅 [Azure Kubernetes 服务 (AKS) 快速入门][aks-quick-start]。
 
@@ -34,7 +34,29 @@ Azure 容器实例 (ACI) 提供托管环境，以便在 Azure 中运行容器。
 
 若要安装虚拟 Kubelet，还需要 [Helm](https://docs.helm.sh/using_helm/#installing-helm)。
 
-### <a name="for-rbac-enabled-clusters"></a>对于启用 RBAC 的群集
+### <a name="register-container-instances-feature-provider"></a>注册容器实例功能提供程序
+
+如果以前没有使用 Azure 容器实例 (ACI) 服务，可将服务提供程序注册你的订阅。 下面的示例中所示，您可以检查使用 [az provider list] [az 提供程序列表] 命令时，在 ACI 提供程序注册状态：
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+Microsoft.ContainerInstance 提供程序应报告为“已注册”，如下面的示例输出所示：
+
+```
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+如果提供程序显示为*NotRegistered*，注册提供程序使用 [az 提供程序注册] [az 提供程序注册] 在下面的示例所示：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
+
+### <a name="for-rbac-enabled-clusters"></a>对于启用了 RBAC 的群集
 
 如果 AKS 群集已启用 RBAC，则必须创建服务帐户和角色绑定以便与 Tiller 一起使用。 有关详细信息，请参阅 [Helm 基于角色的访问控制][helm-rbac]。 要创建服务帐户和角色绑定，请创建名为 rbac-virtual-kubelet.yaml 的文件并粘贴以下定义：
 
@@ -87,16 +109,16 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 | 参数： | 描述 | 需要 |
 |---|---|:---:|
-| `--connector-name` | ACI 连接器的名称。| 是 |
-| `--name` `-n` | 托管群集的名称。 | 是 |
-| `--resource-group` `-g` | 资源组的名称。 | 是 |
-| `--os-type` | 容器实例操作系统类型。 允许的值：Linux、Windows、这两者。 默认值：Linux。 | 否 |
-| `--aci-resource-group` | 要在其中创建 ACI 容器组的资源组。 | 否 |
-| `--location` `-l` | 要创建 ACI 容器组的位置。 | 否 |
-| `--service-principal` | 用于对 Azure API 进行身份验证的服务主体。 | 否 |
-| `--client-secret` | 与服务主体关联的机密。 | 否 |
-| `--chart-url` | 安装 ACI 连接器的 Helm 图表的 URL。 | 否 |
-| `--image-tag` | 虚拟 kubelet 容器映像的映像标记。 | 否 |
+| `--connector-name` | ACI 连接器的名称。| “是” |
+| `--name` `-n` | 托管群集的名称。 | “是” |
+| `--resource-group` `-g` | 资源组的名称。 | “是” |
+| `--os-type` | 容器实例操作系统类型。 允许的值：Linux、Windows、这两者。 默认值：Linux。 | “否” |
+| `--aci-resource-group` | 要在其中创建 ACI 容器组的资源组。 | “否” |
+| `--location` `-l` | 要创建 ACI 容器组的位置。 | “否” |
+| `--service-principal` | 用于对 Azure API 进行身份验证的服务主体。 | “否” |
+| `--client-secret` | 与服务主体关联的机密。 | “否” |
+| `--chart-url` | 安装 ACI 连接器的 Helm 图表的 URL。 | “否” |
+| `--image-tag` | 虚拟 kubelet 容器映像的映像标记。 | “否” |
 
 ## <a name="validate-virtual-kubelet"></a>验证虚拟 Kubelet
 

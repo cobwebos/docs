@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3dd61ae9298a03ce0cbb9e9a5b143229c15ea9bb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f455985d2a7d05f45100d4a88b43c688fe1a7767
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786373"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955769"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
@@ -161,7 +161,7 @@ ms.locfileid: "65786373"
 
 另请注意，64 位环境需要基本或标准服务计划。 免费和共享计划始终在 32 位环境中运行。
 
-有关详细信息，请参阅[在应用服务中配置 Web 应用](web-sites-configure.md)。
+有关详细信息，请参阅[在应用服务中配置 Web 应用](configure-common.md)。
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>为何我的请求在 230 秒后超时？
 

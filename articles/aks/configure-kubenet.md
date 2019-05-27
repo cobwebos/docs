@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 4d2ab19fafc265d70028d5ee192efc60a5a8eaff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a4ed3ec823982bf3977edf9939d98419e1c4b01f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073991"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956391"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -21,7 +21,10 @@ ms.locfileid: "65073991"
 
 借助 [Azure 容器网络接口 (CNI)][cni-networking]，每个 Pod 都可以从子网获取 IP 地址，并且可供直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，并且经常会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
 
-本文介绍如何使用 *kubenet* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项的详细信息和注意事项，请参阅 [Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
+本文介绍如何使用 *kubenet* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项和注意事项的详细信息，请参阅 [Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
+
+> [!WARNING]
+> 若要使用 Windows Server 节点池 （目前以预览版在 AKS 中），必须使用 Azure CNI。 与网络模型使用 kubenet 不适用于 Windows Server 容器。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -149,6 +152,8 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
     * 此地址范围必须足够大，可以容纳预期要扩展到的节点数。 部署群集后，如果需要为更多的节点提供更多的地址，你无法更改此地址范围。
     * Pod IP 地址范围用于将 */24* 地址空间分配到群集中的每个节点。 在以下示例中，*--pod cidr* *192.168.0.0/16* 为第一个节点分配 *192.168.0.0/24*，为第二个节点分配 *192.168.1.0/24*，为第三节点分配 *192.168.2.0/24*。
     * 群集扩展或升级时，Azure 平台会继续向每个新节点分配 Pod IP 地址范围。
+    
+* *-Docker 桥地址*使 AKS 节点与基础管理平台进行通信。 此 IP 地址不能在群集的虚拟网络 IP 地址范围内，并且不应当与网络上使用的其他地址范围重叠。
 
 ```azurecli-interactive
 az aks create \
@@ -165,7 +170,7 @@ az aks create \
     --client-secret <password>
 ```
 
-创建 AKS 群集时，将创建网络安全组和路由表。 这些网络资源的管理通过 AKS 控制平面。 网络安全组是自动与你的节点上的虚拟 Nic 相关联。 路由表是自动与虚拟网络子网相关联。 网络安全组规则和路由表并且将自动更新在创建和公开服务。
+创建 AKS 群集时，将创建网络安全组和路由表。 这些网络资源可以通过 AKS 控制平面进行管理。 网络安全组自动与节点上的虚拟 NIC 相关联。 路由表自动与虚拟网络子网相关联。 在你创建和公开服务时，系统会自动更新网络安全组规则和路由表。
 
 ## <a name="next-steps"></a>后续步骤
 

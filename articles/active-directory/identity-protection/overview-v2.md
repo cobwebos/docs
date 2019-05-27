@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d533e6aac9ae1a486d018414a86a9dc3fe742c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37c63e32f1ee9c404e8b84a6eb17bc6eec30a761
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294272"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956931"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory Identity Protection（已刷新）是什么？
 
@@ -147,44 +147,44 @@ Azure AD 使用机器学习来检测异常和可疑活动，具体使用在登�
 
 ## <a name="common-scenarios"></a>常见方案 
 
-让我们来看一下 Contoso 员工 Sarah 的示例。 
+让我们看一下 Contoso 的某位员工的示例。 
 
-1. Sarah 试图通过 Tor 浏览器登录 Exchange Online。 登录时，Azure AD 检测实时风险事件。 
+1. 员工尝试从 Tor 浏览器登录到 Exchange Online。 登录时，Azure AD 检测实时风险事件。 
 
-2. Azure AD 检测到 Sarah 从一个匿名 IP 地址登录，从而触发了中等登录风险级别。 
+2. Azure AD 可以检测，员工从其登录匿名 IP 地址，触发中等登录风险级别。 
 
-3. Sarah 收到了 MFA 提示，因为 Contoso 的 IT 管理员配置了 Identity Protection 登录风险条件访问策略。 该策略要求对中等或更高级别的登录风险进行 MFA。 
+3. 员工也会受到质疑的 MFA 提示，因为 Contoso 的 IT 管理员配置 Identity Protection 登录风险条件性访问策略。 该策略要求对中等或更高级别的登录风险进行 MFA。 
 
-4. Sarah 通过 MFA 提示并访问了 Exchange Online，而且 Sarah 的用户风险级别没有改变。 
+4. 员工通过 MFA 提示并访问 Exchange Online，并不会更改其用户风险级别。 
 
-后台发生了什么？ Tor 浏览器的登录尝试因匿名 IP 地址在 Azure AD 中触发了实时登录风险。 Azure AD 在处理请求时，应用了在 Identity Protection 中配置的登录风险策略，因为 Sarah 的登录风险级别达到了阈值（中等）。 由于 Sarah 之前已经注册了 MFA，因此她能够应对并通过 MFA 的考验。 她能够成功通过 MFA 考验向 Azure AD 表明，她很可能是合法的标识所有者，其用户风险级别不会增加。 
+后台发生了什么？ Tor 浏览器的登录尝试因匿名 IP 地址在 Azure AD 中触发了实时登录风险。 Azure AD 在处理请求，它将应用配置 Identity Protection 中，因为该雇员的登录风险级别达到的阈值 （中） 的登录风险策略。 由于员工以前已注册 MFA，他们就能够响应，并通过 MFA 质询。 它们可能是合法的标识所有者和其用户风险级别不会增加，到 Azure AD 发出信号将 MFA 质询成功传递其功能。 
 
 
-但是，如果 Sarah 不是那个试图登录的人呢？ 
+但是，如果员工未一个尝试登录？ 
 
-1. 持有 Sarah 凭据的恶意参与者试图从 Tor 浏览器登录 Sarah 的 Exchange Online 帐户，因为他们试图隐藏自己的 IP 地址。 
+1. 与员工的凭据是恶意行动者会尝试登录到其 Exchange Online 帐户从 Tor 浏览器，因为他们试图隐藏其 IP 地址。 
 
 2. Azure AD 检测到登录尝试来自一个匿名 IP 地址，从而触发了实时登录风险。 
 
 3. 恶意参与者会收到 MFA 提示，因为 Contoso 的 IT 管理员配置了 Identity Protection 登录风险条件访问策略，要求在中等或更高级别风险情况下进行 MFA。 
 
-4. 恶意参与者未能通过 MFA 考验，无法访问 Sarah 的 Exchange Online 帐户。 
+4. 恶意行动者失败 MFA 质询，并且无法访问员工的 Exchange Online 的帐户。 
 
-5. 失败的 MFA 提示触发了要记录的风险事件，进而增加了 Sarah 未来登录的用户风险。 
+5. 失败的 MFA 提示触发的风险事件，将记录引发将来登录其用户风险。 
 
-既然恶意参与者试图访问 Sarah 的帐户，我们来看看下次 Sarah 尝试登录时会发生什么情况。 
+现在，恶意行动者尝试访问 Sarah 的帐户，我们来看下一次尝试登录员工会发生什么情况。 
 
-1. Sarah 试图通过 Outlook 登录 Exchange Online。 登录时，Azure AD 会检测实时风险事件以及任何以前的用户风险。 
+1. 员工尝试从 Outlook 登录到 Exchange Online。 登录时，Azure AD 会检测实时风险事件以及任何以前的用户风险。 
 
 2. Azure AD 没有检测到任何实时登录风险，但检测到由于前面场景中过去的风险活动而导致的高用户风险。  
 
-3. Sarah 收到了密码重置提示，因为 Contoso 的 IT 管理员将 Identity Protection 用户风险策略配置为在高风险用户登录时要求更改密码。 
+3. 员工也会受到质疑的密码重置提示，因为 Contoso 的 IT 管理员已配置 Identity Protection 用户风险策略以具有高风险的用户登录时要求密码更改。 
 
-4. 由于 Sarah 注册了 SSPR 和 MFA，所以她成功重置了密码。 
+4. 注册 SSPR 和 MFA 的员工，因为它们已成功重置其密码。 
 
-5. 通过重置密码，Sarah 的凭据不再遭到泄露，其标识也回到了安全状态。 
+5. 通过重置其密码，该员工的凭据不能再被透露和其标识返回到安全状态。 
 
-6. Sarah 之前的风险事件得到了解决，她的用户风险级别自动重置，以作为对缓解凭据泄漏的响应。 
+6. 员工的以前的风险事件已解决和她的用户风险级别会自动重置作为对缓解凭据泄漏的响应。 
 
 ## <a name="how-do-i-configure-identity-protection"></a>如何配置 Identity Protection？ 
 

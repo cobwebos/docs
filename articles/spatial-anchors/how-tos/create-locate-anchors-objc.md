@@ -4,16 +4,16 @@ description: 深入了解如何创建和定位在 OBJECTIVE-C 中使用 Azure �
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3dd4fbedd51e11e84303f997cef0bb28bf79b241
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c3066b87ec4de58982b6b2ecdd35dfffde4c31a8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918172"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964886"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>如何创建和定位在 OBJECTIVE-C 中使用 Azure 空间的定位点的定位点
 

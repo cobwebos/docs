@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 05/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae1db992984e8bb1dca71afed9fadd6b411b3dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa3d7d22ed032379f452eb4648c9a1cf87293df9
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415095"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956578"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -27,6 +27,9 @@ ms.locfileid: "60415095"
 决定使用本地多重身份验证服务器后，让我们继续下一步。 本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。 如果已安装 MFA 服务器，但需进行升级，请参阅[升级到最新的 Azure 多重身份验证服务器](howto-mfaserver-deploy-upgrade.md)。 若要了解如何只安装 Web 服务，请参阅[部署 Azure 多重身份验证服务器移动应用 Web 服务](howto-mfaserver-deploy-mobileapp.md)。
 
 ## <a name="plan-your-deployment"></a>规划部署
+
+> [!WARNING]
+> 从 2019 MFA 服务器年 3 月开始下载将仅可供付费租户。 免费/试用租户将不再能够下载或生成并使用激活凭据。
 
 在下载 Azure 多重身份验证服务器之前，请考虑一下你的负载和高可用性要求是什么。 使用该信息来决定部署方法和位置。
 
@@ -51,7 +54,7 @@ ms.locfileid: "60415095"
 | Azure 多重身份验证服务器要求 | 描述 |
 |:--- |:--- |
 | 硬件 |<li>200 MB 硬盘空间</li><li>有 x32 或 x64 功能的处理器</li><li>1 GB 或更大的 RAM</li> |
-| 软件 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista，所有版本、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li> |
+| 软件 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1 (所有版本)</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista SP1、SP2 (所有版本)</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li> |
 | 权限 | 向 Active Directory 注册的域管理员或企业管理员帐户 |
 
 ### <a name="azure-mfa-server-components"></a>Azure MFA 服务器组件
@@ -90,6 +93,9 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ## <a name="download-the-mfa-server"></a>下载 MFA 服务器
 
+> [!WARNING]
+> 从 2019 MFA 服务器年 3 月开始下载将仅可供付费租户。 免费/试用租户将不再能够下载或生成并使用激活凭据。
+
 执行以下步骤，从 Azure 门户下载 Azure 多重身份验证服务器：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
@@ -102,9 +108,6 @@ Azure MFA 服务器由三个 Web 组件组成：
 5. 让此页保持打开状态，因为我们在运行安装程序后需要用到它。
 
 ## <a name="install-and-configure-the-mfa-server"></a>安装和配置 MFA 服务器
-
-> [!WARNING]
-> 从 2019 MFA 服务器年 3 月开始下载将仅可供付费租户。 免费/试用租户将不再能够下载或生成并使用激活凭据。
 
 下载服务器后，可以进行安装和配置。 请确保用于安装的服务器符合规划部分列出的要求。
 

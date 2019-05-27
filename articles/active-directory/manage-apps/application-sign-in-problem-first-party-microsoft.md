@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26acb32828ae4829b3da5c3a1181dbde19b23d05
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 504c1bdeb05ecb6372be0edf023c480acac8a8a7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825219"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956841"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 
@@ -87,7 +87,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 - 对于**不需要许可证的 Microsoft** **应用程序**，以下是一些需要检查的其他事项：
 
-  * 如果应用程序请求**用户级权限**（例如“访问此用户的邮箱”），请确保用户已登录到应用程序，并且已执行**用户级许可操作**，从而允许应用程序访问其数据。
+  * 如果应用程序请求**用户级权限**（例如"访问此用户的邮箱"），请确保用户已登录到应用程序，并且执行了**用户级许可操作**让访问其数据的应用程序。
 
   * 如果应用程序请求**管理员级权限**（例如“访问所有用户的邮箱”），请确保全局管理员已**代表组织中所有用户执行管理员级许可操作**。
 

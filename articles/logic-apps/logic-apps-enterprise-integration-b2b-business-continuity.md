@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: 8d024e0bc90724892bc53f8895b270716ad0cefc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61000898"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967742"
 ---
 # <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Azure 逻辑应用中 B2B 集成帐户的跨区域灾难恢复
 
@@ -62,7 +62,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 在发生灾难事件时，如果主要区域不可用于业务连续性，则将流量定向到次要区域。 次要区域可帮助企业根据与其合作伙伴达成的的 RPO/RTO 快速恢复功能。 另外，也可以最大限度地减少将故障从一个区域转移到另一个区域的工作。 
 
-将控制编号从主要区域复制到次要区域时，可能会像预期的那样出现延迟。 要避免在发生灾难事件时会将生成的重复控制编号发送给合作伙伴，建议使用 [PowerShell cmdlet](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery) 在次要区域协议中增加控制编号。
+将控制编号从主要区域复制到次要区域时，可能会像预期的那样出现延迟。 要避免在发生灾难事件时会将生成的重复控制编号发送给合作伙伴，建议使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0) 在次要区域协议中增加控制编号。
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>在发生灾难事件后，故障回复到主要区域
 
@@ -70,7 +70,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 1. 停止接收在次要区域中来自合作伙伴的消息。  
 
-2. 使用 [PowerShell cmdlet](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery) 为所有的主要区域协议增加生成的控制编号。  
+2. 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0) 为所有的主要区域协议增加生成的控制编号。  
 
 3. 将流量从次要区域定向到主要区域。
 
@@ -112,7 +112,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 6. 搜索“X12”，然后选择“X12 - 添加或更新控制编号”。   
 
-   ![添加或更新控制编号](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
+   ![添加或更新控件编号](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
 7. 要将操作连接到次要区域集成帐户，请选择“更改连接” > “添加新连接”，显示可用集成帐户的列表。 输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”。 
 

@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 2/25/2019
+ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: c4998712d77771a5600c06183a76254548289372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60365088"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965907"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute 直接
 
@@ -280,8 +280,9 @@ ms.locfileid: "60365088"
 
 只能在 ExpressRoute Direct 上使用其他线路带宽来支持上面概述的场景。 带宽为 40 Gbps 和 100 Gbps。
 
-可以创建标准或高级线路。 标准线路包含在服务成本中。 高级线路的成本取决于所选择的带宽。 只能按流量计费的方式创建线路。 ExpressRoute Direct 不支持不限流量的线路。
+**SkuTier**可以是本地、 标准或高级。
 
+**SkuFamily**必须以无限制模式为 MeteredData ExpressRoute 直接上不支持。
 在 ExpressRoute Direct 资源上创建线路：
 
   ```azurecli

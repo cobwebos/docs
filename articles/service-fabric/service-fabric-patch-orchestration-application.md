@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: aca34ee40bfe10c55c478d9aaeb01a65d139e1e2
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: ccc0399b6ac886ec8d9ef7d207c3539f1d078070
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522383"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951981"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -141,9 +141,7 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 
 ## <a name="download-the-app-package"></a>下载应用包
 
-可以从[存档链接](https://go.microsoft.com/fwlink/?linkid=869566)下载应用程序和安装脚本。
-
-可以从 [sfpkg 链接](https://aka.ms/POA/POA.sfpkg)下载 sfpkg 格式的应用程序。 这对[基于 Azure 资源管理器的应用程序部署](service-fabric-application-arm-resource.md)非常有用。
+若要下载应用程序包，请访问 GitHub 版本[页](https://github.com/microsoft/Service-Fabric-POA/releases/latest/)的修补业务流程应用程序。
 
 ## <a name="configure-the-app"></a>配置应用
 
@@ -205,13 +203,15 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
       {
         "OperationResult": 0,
         "NodeName": "_stg1vm_1",
-        "OperationTime": "2017-05-21T11:46:52.1953713Z",
+        "OperationTime": "2019-05-13T08:44:56.4836889Z",
+        "OperationStartTime": "2019-05-13T08:44:33.5285601Z",
         "UpdateDetails": [
           {
             "UpdateId": "7392acaf-6a85-427c-8a8d-058c25beb0d6",
             "Title": "Cumulative Security Update for Internet Explorer 11 for Windows Server 2012 R2 (KB3185319)",
             "Description": "A security issue has been identified in a Microsoft software product that could affect your system. You can help protect your system by installing this update from Microsoft. For a complete listing of the issues that are included in this update, see the associated Microsoft Knowledge Base article. After you install this update, you may have to restart your system.",
-            "ResultCode": 0
+            "ResultCode": 0,
+            "HResult": 0
           }
         ],
         "OperationType": 1,
@@ -234,6 +234,9 @@ ResultCode | 与 OperationResult 相同 | 此字段指示单个更新的安装�
 OperationType | 1 - Installation（安装）<br> 0 - Search and Download（搜索并下载）。| Installation 是默认情况下结果中将显示的唯一 OperationType。
 WindowsUpdateQuery | 默认值是“IsInstalled=0” |用来搜索更新的 Windows 更新查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
 RebootRequired | true - 需要重新启动<br> false - 无需重新启动 | 指示是否需要重新启动才能完成安装更新。
+OperationStartTime | DateTime | 指示在启动哪些 operation(Download/Installation) 的时间。
+OperationTime | DateTime | 指示已完成哪些 operation(Download/Installation) 的时间。
+HResult | 0-成功<br> 其他-失败| 指示 updateID"7392acaf-6a85-427c-8a8d-058c25beb0d6"的 windows 更新失败的原因。
 
 如果尚未计划更新，JSON 结果将为空。
 
@@ -255,6 +258,58 @@ RebootRequired | true - 需要重新启动<br> false - 无需重新启动 | 指�
 
 ## <a name="diagnosticshealth-events"></a>诊断/运行状况事件
 
+以下部分讨论了如何调试/诊断问题的修补程序更新通过修补业务流程应用程序在 Service Fabric 群集上。
+
+> [!NOTE]
+> 应确保 v1.4.0 版本的安装来获得很多 POA 下面调出自我诊断改进。
+
+Nodeagentntservice 已创建[修复任务](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet)在节点上安装更新。 然后将每个任务准备的 CoordinatorService 根据任务的审核策略。 已准备好的任务都是最后批准通过修复管理器将不批准的任何任务，如果群集处于不正常状态。 让我们转逐步了解如何在节点上进行更新。
+
+1. 在计划的时间可用 Windows 更新查找 nodeagentntservice 已，每个节点上运行。 如果有可用更新，它将继续并下载这些节点上。
+2. 一旦下载更新，nodeagentntservice 已，将创建具有名称 POS___ < unique_id > 节点对应的修复任务。 一个可以查看这些修复任务使用 cmdlet [Get ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps)或 SFX 中的节点详细信息部分中。 创建的修复任务后，快速移动[索取状态](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)。
+3. 协调器服务定期查找中已声明的状态的修复任务和继续并更新到准备基于 TaskApprovalPolicy 的状态。 仅当没有任何其他修复任务当前正在准备/已批准/执行/还原状态，如果配置 TaskApprovalPolicy NodeWise，为节点相对应的修复任务是已准备好。 同样，以防的 UpgradeWise TaskApprovalPolicy，确保任何时候有任务在上述状态仅属于同一个升级域的节点中。 修复任务移动到准备状态，相应的 Service Fabric 节点是[禁用](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps)意向作为"重新启动"。
+
+   POA(v1.4.0 and above) CoordinaterService 以显示正在修补的节点上的公告事件属性"ClusterPatchingStatus"。 下图是 _poanode_0 上安装更新的显示：
+
+    [![群集状态修补的映像](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
+
+4. 一旦该节点已禁用，修复任务被移动到正在执行状态。 请注意，卡在之后准备状态，因为节点处于禁用状态的修复任务可以导致阻止新的修复任务并因此停止的群集修补。
+5. 在执行状态修复任务后，该节点上安装的修补程序开始。 此处，一旦安装了修补程序，则节点将可能或不可能会根据该修补程序会重新启动。 修复任务移到还原状态，使回节点再次和它的帖子被标记为已完成。
+
+   V1.4.0 及更高版本的应用程序，可以通过查看运行状况事件上 NodeAgentService 属性"WUOperationStatus-[NodeName]"与找到的更新的状态。 下图突出显示的部分展示了节点 poanode_0 和 poanode_2 上的 windows 更新的状态：
+
+   [![Windows 更新操作状态的图像](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+
+   [![Windows 更新操作状态的图像](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+
+   一个还可以使用 powershell，通过连接到群集并提取的修复任务使用的状态的详细信息[Get ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps)。 如下面的示例演示该"POS__poanode_2_125f2969 933 c 4774 85 d 1-ebdf85e79f15"任务处于 DownloadComplete 状态。 这意味着"poanode_2"的节点上已经下载了更新和任务将移动到正在执行状态后，将尝试安装。
+
+   ``` powershell
+    D:\service-fabric-poa-bin\service-fabric-poa-bin\Release> $k = Get-ServiceFabricRepairTask -TaskId "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15"
+
+    D:\service-fabric-poa-bin\service-fabric-poa-bin\Release> $k.ExecutorData
+    {"ExecutorSubState":2,"ExecutorTimeoutInMinutes":90,"RestartRequestedTime":"0001-01-01T00:00:00"}
+    ```
+
+   如果没有更多，然后查找，登录到每个 Vm 特定 VM 查找更多有关使用 Windows 事件日志的问题。 上面提到的修复任务只能具有这些执行器子状态：
+
+      ExecutorSubState | Detail
+    -- | -- 
+      None=1 |  表示没有在节点上正在进行的操作。 可能的状态转换。
+      DownloadCompleted=2 | 表示下载操作完成且成功，部分故障。
+      InstallationApproved=3 | 意味着下载操作完成之前，并修复管理器已批准安装。
+      InstallationInProgress=4 | 对应于执行的修复任务的状态。
+      InstallationCompleted=5 | 表示安装已完成，但成功、 部分成功或失败。
+      RestartRequested=6 | 表示修补程序安装已完成，并且没有在节点上的挂起的重启操作。
+      RestartNotNeeded=7 |  表示修补程序安装完成后不需要重新启动。
+      RestartCompleted=8 | 表示已成功完成该重新启动。
+      OperationCompleted=9 | Windows 更新操作已成功完成。
+      OperationAborted=10 | 表示 windows 更新操作已中止。
+
+6. V1.4.0 在上面的应用程序，在节点上的更新尝试完成后，具有属性"WUOperationStatus-[NodeName]"的事件是在上并发布 NodeAgentService 通知时尝试将下一步，以下载并安装更新，请启动。 请参阅下图所示：
+
+     [![Windows 更新操作状态的图像](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+
 ### <a name="diagnostic-logs"></a>诊断日志
 
 修补业务流程应用日志是作为 Service Fabric 运行时日志的一部分进行收集的。
@@ -269,12 +324,6 @@ RebootRequired | true - 需要重新启动<br> false - 无需重新启动 | 指�
 ### <a name="health-reports"></a>运行状况报告
 
 对于以下情况，修补业务流程应用还会针对协调器服务或节点代理服务发布运行状况报告：
-
-#### <a name="a-windows-update-operation-failed"></a>Windows 更新操作失败
-
-如果某个节点上的 Windows 更新操作失败，将会针对节点代理服务生成运行状况报告。 运行状况报告的详细信息将包含有问题的节点名称。
-
-在有问题的节点上成功完成修补后，将自动清除该报告。
 
 #### <a name="the-node-agent-ntservice-is-down"></a>节点代理 NTService 关闭
 
@@ -347,6 +396,14 @@ A. 否，修补业务流程应用不能用来修补单节点群集。 此限制�
 
 A. 请参阅[Azure 虚拟机规模集自动 OS 映像升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)用于协调在 linux 上的更新。
 
+问：**为什么更新周期花这么长时间？**
+
+A. 查询结果的 json，然后，通过为所有节点，然后，您的更新循环的条目进行可以尝试了解使用 OperationStartTime 和 OperationTime(OperationCompletionTime) 每个节点上的更新安装所花费的时间。 如果没有较大的时间窗口中的任何更新怎么回事，它可能是因为群集处于错误状态，并且由于该修复管理器未批准的任何其他 POA 修复任务。 如果长时间的任何节点上执行的更新安装，然后，它可能是从长时间未更新节点和大量的更新已挂起的安装，所需时间可能。 也可能存在由于卡在禁用状态，这通常是因为禁用该节点的节点阻止修补在节点上的用例可能会导致仲裁/数据丢失情况。
+
+问： **它为什么需要 POA 修补时禁用该节点？**
+
+A. 修补业务流程应用程序禁用重新启动意向的停止/重新分配在节点上运行的所有 Service fabric 服务的节点。 这样做是为了确保该应用程序最终便不会使用多个新的和旧的 dll，因此不建议修补一个节点，但不能禁用它。
+
 ## <a name="disclaimers"></a>免责声明
 
 - 修补业务流程应用代表用户接受 Windows 更新的最终用户许可协议。 可以在应用程序的配置中选择性地关闭该设置。
@@ -386,6 +443,9 @@ A. 请参阅[Azure 虚拟机规模集自动 OS 映像升级](https://docs.micros
 管理员必须介入，并判断为何 Windows 更新会导致应用程序或群集运行不正常。
 
 ## <a name="release-notes"></a>发行说明
+
+>[!NOTE]
+> 从 1.4.0 版开始，发行说明和版本可在 GitHub 版本[页](https://github.com/microsoft/Service-Fabric-POA/releases/)。
 
 ### <a name="version-110"></a>版本 1.1.0
 - 公开发布的版本

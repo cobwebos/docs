@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: 82ee9d04785fc0f6ac534428bf411ca0fe3204ad
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601512"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952685"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>创建、更改或删除公共 IP 地址前缀
 
@@ -45,13 +45,13 @@ ms.locfileid: "65601512"
 3. 在“公共 IP 地址前缀”下，选择“创建”。
 4. 在“创建公共 IP 地址前缀”下为以下设置输入或选择值，然后选择“创建”：
 
-   |设置|必需？|详细信息|
+   |设置|必需?|详细信息|
    |---|---|---|
-   |订阅|是|必须与要将公共 IP 地址关联到的资源位于同一[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)中。|
-   |资源组|是|可与要将公共 IP 地址关联到的资源位于相同或不同的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中。|
-   |名称|是|该名称在所选的资源组中必须唯一。|
-   |区域|是|必须位于与公共 IP 地址相同的[区域](https://azure.microsoft.com/regions)，你将从该范围分配地址。 前缀目前在以下地区为预览版：美国中西部、美国西部、美国西部 2、美国中部、北欧、西欧和东南亚。|
-   |前缀大小|是| 所需的前缀大小。 /28 或 16 个 IP 地址为默认值。
+   |订阅|“是”|必须与要将公共 IP 地址关联到的资源位于同一[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)中。|
+   |资源组|“是”|可与要将公共 IP 地址关联到的资源位于相同或不同的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)中。|
+   |名称|“是”|该名称在所选的资源组中必须唯一。|
+   |区域|“是”|必须位于与公共 IP 地址相同的[区域](https://azure.microsoft.com/regions)，你将从该范围分配地址。|
+   |前缀大小|“是”| 所需的前缀大小。 /28 或 16 个 IP 地址为默认值。
 
 **命令**
 
@@ -68,11 +68,18 @@ ms.locfileid: "65601512"
 3. 当出现在搜索结果中，选择它，然后单击“概述”部分中的“+添加 IP 地址”。
 4. 在“创建公共 IP 地址”下为以下设置输入或选择值。 由于前缀适用于标准 SKU、IPv4 和静态，因此只需提供以下信息：
 
-   |设置|必需？|详细信息|
+   |设置|必需?|详细信息|
    |---|---|---|
-   |名称|是|公共 IP 地址的名称在所选的资源组中必须唯一。|
-   |空闲超时（分钟）|否|不依赖于客户端发送 keep-alive 消息，将 TCP 或 HTTP 连接保持打开的分钟数。 |
-   |DNS 名称标签|否|必须在创建该名称的 Azure 区域（跨所有订阅和所有客户）中保持唯一。 Azure 会在其 DNS 中自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 会将“location.cloudapp.azure.com”（其中 location 是所选的位置）此类默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。有关详细信息，请参阅[将 Azure DNS 与 Azure 公共 IP 地址配合使用](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
+   |名称|“是”|公共 IP 地址的名称在所选的资源组中必须唯一。|
+   |空闲超时(分钟)|“否”|不依赖于客户端发送 keep-alive 消息，将 TCP 或 HTTP 连接保持打开的分钟数。 |
+   |DNS 名称标签|“否”|必须在创建该名称的 Azure 区域（跨所有订阅和所有客户）中保持唯一。 Azure 会在其 DNS 中自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 会将“location.cloudapp.azure.com”（其中 location 是所选的位置）此类默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。有关详细信息，请参阅[将 Azure DNS 与 Azure 公共 IP 地址配合使用](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
+
+或者可使用 CLI 和 PS 下面--公共 ip 前缀 (CLI) 命令和-PublicIpPrefix (PS) 参数来创建公共 IP 地址资源。 
+
+|Tool|命令|
+|---|---|
+|CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
+|PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>查看或删除前缀
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba4643118c5d90b91c3e51d569e9a628c84159fc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780018"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964041"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -50,7 +50,7 @@ ms.locfileid: "65780018"
 
 ![浮出控件](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>调查故障
+### <a name="investigate-failures"></a>调查失败
 
 选择“调查故障”以启动故障窗格。
 
@@ -94,7 +94,9 @@ ms.locfileid: "65780018"
 
 使用应用程序映射**云角色名称**属性标识在地图上的组件。 Application Insights SDK 自动将云角色名称属性添加到的组件发出的遥测数据。 例如，SDK 将添加的 web 站点名称或服务角色名称的云角色名称属性。 但是，在某些情况下，你可能希望替代默认值。 若要重写云角色名称并更改显示在应用程序映射获取的内容：
 
-### <a name="net"></a>.NET
+### <a name="netnet-core"></a>.NET/.NET Core
+
+**编写自定义 TelemetryInitializer 按如下所示。**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -117,7 +119,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**加载初始值设定项**
+**加载到活动的 TelemetryConfiguration 初始值设定项**
 
 在 ApplicationInsights.config 中：
 
@@ -131,7 +133,10 @@ namespace CustomInitializer.Telemetry
     </ApplicationInsights>
 ```
 
-另一种方法是在代码中实例化初始值设定项，例如在 Global.aspx.cs 中：
+> [!NOTE]
+> 添加初始值设定项使用`ApplicationInsights.config`不能用于 ASP.NET Core 应用程序。
+
+ASP.NET Web 应用的另一种方法是实例化代码，例如在 Global.aspx.cs 中的初始值设定项：
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -141,6 +146,17 @@ namespace CustomInitializer.Telemetry
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+    }
+```
+
+有关[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)添加一个新的应用程序`TelemetryInitializer`可通过将其添加到依赖关系注入容器，如下所示。 这是在`ConfigureServices`方法在`Startup.cs`类。
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
     }
 ```
 

@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/01/2019
+ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 6dfa84eff8dcc104ae6f9c16262f3b1c697df6c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561992"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952880"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
 
@@ -24,16 +24,18 @@ ms.locfileid: "60561992"
 
 ## <a name="retry-schedule-and-duration"></a>重试计划和持续时间
 
-对于事件传送，事件网格使用指数性的回退重试策略。 如果终结点不会做出响应，或返回失败代码，事件网格会重试根据以下计划上最大努力来传送：
+事件网格将等待 30 秒，获取响应之后消息传送。 30 秒后，如果终结点未作出响应，该消息将排队等待重试。 对于事件传送，事件网格使用指数性的回退重试策略。 事件网格会重试根据以下计划上最大努力来传送：
 
-1. 10 秒
-1. 30 秒
-1. 1 分钟
-1. 5 分钟
-1. 10 分钟
-1. 30 分钟
-1. 1 小时	
-1. 每小时的最多 24 小时
+- 10 秒
+- 30 秒
+- 1 分钟
+- 5 分钟
+- 10 分钟
+- 30 分钟
+- 1 小时	
+- 每小时的最多 24 小时
+
+如果终结点响应 3 分钟内，事件网格会尝试从上最大努力来重试队列中删除该事件，但仍可能会收到重复项。
 
 事件网格将略微随机添加到重试的所有步骤，并可以适时地跳过某些重试如果终结点不一致地正常，向下长一段，或可能过载。
 

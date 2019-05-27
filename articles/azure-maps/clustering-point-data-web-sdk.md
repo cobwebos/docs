@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795927"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957328"
 ---
 # <a name="clustering-point-data"></a>聚类分析点数据
 
@@ -33,7 +33,7 @@ var datasource = new atlas.source.DataSource(null, {
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
 
-    //The maximium zoom level in which clustering occurs.
+    //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
     clusterMaxZoom: 15 
 });
@@ -46,9 +46,9 @@ var datasource = new atlas.source.DataSource(null, {
 
 | 方法 | 返回类型 | 描述 |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | 承诺&lt;功能&lt;几何形状，任何&gt;\|形状&gt; | 检索给定群集上的下一步的缩放级别的子项。 这些子对象可能是形状和 subclusters 的组合。 Subclusters 将属性与匹配 ClusteredProperties 的功能。 |
+| getClusterChildren(clusterId: number) | 承诺&lt;数组&lt;功能&lt;几何形状，任何&gt;\|形状&gt;&gt; | 检索给定群集上的下一步的缩放级别的子项。 这些子对象可能是形状和 subclusters 的组合。 Subclusters 将属性与匹配 ClusteredProperties 的功能。 |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | 计算群集将开始扩展或分离的缩放级别。 |
-| getClusterLeaves(clusterId: number, limit: number, offset: number) | 承诺&lt;功能&lt;几何形状，任何&gt;\|形状&gt; | 检索群集中的所有点。 设置`limit`以返回点的子集，并使用`offset`点翻页。 |
+| getClusterLeaves(clusterId: number, limit: number, offset: number) | 承诺&lt;数组&lt;功能&lt;几何形状，任何&gt;\|形状&gt;&gt; | 检索群集中的所有点。 设置`limit`以返回点的子集，并使用`offset`点翻页。 |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>使用气泡图层显示群集
 
@@ -89,7 +89,7 @@ var datasource = new atlas.source.DataSource(null, {
 | cluster | boolean | 指示功能是否表示一个群集。 |
 | cluster_id | string | 可以在数据源的群集的唯一 ID `getClusterExpansionZoom`， `getClusterChildren`，和`getClusterLeaves`方法。 |
 | point_count | 数字 | 分类包含的点的数目。 |
-| point_count_abbreviated | string | 一个字符串，如果长缩写 point_count 值。 （例如，4,000 成为 4k） |
+| point_count_abbreviated | string | 一个字符串，缩写`point_count`值如果声音太长。 （例如，4,000 成为 4k） |
 
 此示例采用气泡图层的呈现群集点并添加一个单击事件的触发时，计算，并为下一步的缩放级别，群集将中断分开使用放大地图`getClusterExpansionZoom`方法的`DataSource`类和`cluster_id`属性被单击的聚集数据点。 
 

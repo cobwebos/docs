@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 402c85e7902c8c2f612ad6c777d8f6773a4d0ca3
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 412efac3742acf7ad1cdc3d08f9d90c4d39bad3e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549550"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956115"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Ruby 应用
 
@@ -65,7 +65,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，可以在应用代码外部[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)。 然后，可以使用标准的 [ENV['<path-name>']](https://ruby-doc.org/core-2.3.3/ENV.html) 模式访问这些设置。 例如，若要访问名为 `WEBSITE_SITE_NAME` 的应用设置，请使用以下代码：
+在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后，可以使用标准的 [ENV['<path-name>']](https://ruby-doc.org/core-2.3.3/ENV.html) 模式访问这些设置。 例如，若要访问名为 `WEBSITE_SITE_NAME` 的应用设置，请使用以下代码：
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
@@ -82,7 +82,7 @@ ENV['WEBSITE_SITE_NAME']
 
 ### <a name="use---without-flag"></a>使用 --without 标志
 
-要使用 [--without](https://bundler.io/man/bundle-install.1.html) 标志运行 `bundle install`，请将 `BUNDLE_WITHOUT` [应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)设置为以逗号分隔的组列表。 例如，使用以下命令将其设置为 `development,test`。
+要使用 [--without](https://bundler.io/man/bundle-install.1.html) 标志运行 `bundle install`，请将 `BUNDLE_WITHOUT` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设置为以逗号分隔的组列表。 例如，使用以下命令将其设置为 `development,test`。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings BUNDLE_WITHOUT="development,test"
@@ -92,7 +92,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="precompile-assets"></a>预编译资产
 
-默认情况下，后期部署步骤不会预编译资产。 要启用资产预编译，请将 `ASSETS_PRECOMPILE` [应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)设置为 `true`。 然后在后期部署步骤结束时运行命令 `bundle exec rake --trace assets:precompile`。 例如：
+默认情况下，后期部署步骤不会预编译资产。 要启用资产预编译，请将 `ASSETS_PRECOMPILE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设置为 `true`。 然后在后期部署步骤结束时运行命令 `bundle exec rake --trace assets:precompile`。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
@@ -121,7 +121,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 默认情况下，Ruby 容器中的 Rails 服务器在生产模式下运行，[假定资产已进行预编译并由 Web 服务器](https://guides.rubyonrails.org/asset_pipeline.html#in-production)提供。 要从 Rails 服务器提供静态资产，需完成两个操作：
 
 - **预编译资产** - [在本地预编译静态资产](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation)并手动部署它们。 或者，让部署引擎替你处理（请参阅[预编译资产](#precompile-assets)）。
-- **启用提供静态文件** - 若要从 Ruby 容器提供静态资产，请设置 `RAILS_SERVE_STATIC_FILES`，[设置 `RAILS_SERVE_STATIC_FILES` 应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，将其设置为 `true`。 例如：
+- **启用提供静态文件** - 若要从 Ruby 容器提供静态资产，请设置 `RAILS_SERVE_STATIC_FILES`，[设置 `RAILS_SERVE_STATIC_FILES` 应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)，将其设置为 `true`。 例如：
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
@@ -129,13 +129,13 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="run-in-non-production-mode"></a>在非生产模式下运行
 
-默认情况下，Rails 服务器在生产模式下运行。 例如，要在开发模式下运行，请将 `RAILS_ENV` [应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)设置为 `development`。
+默认情况下，Rails 服务器在生产模式下运行。 例如，要在开发模式下运行，请将 `RAILS_ENV` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设置为 `development`。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-但是，仅此设置会导致 Rails 服务器在开发模式下启动，该模式仅接受 localhost 请求，并且在容器外部无法访问。 要接受远程客户端请求，请将 `APP_COMMAND_LINE` [应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)设置为 `rails server -b 0.0.0.0`。 此应用设置使你可在 Ruby 容器中运行自定义命令。 例如：
+但是，仅此设置会导致 Rails 服务器在开发模式下启动，该模式仅接受 localhost 请求，并且在容器外部无法访问。 要接受远程客户端请求，请将 `APP_COMMAND_LINE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)设置为 `rails server -b 0.0.0.0`。 此应用设置使你可在 Ruby 容器中运行自定义命令。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
@@ -143,7 +143,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="set-secretkeybase-manually"></a>手动设置 secret_key_base
 
-要使用自己的 `secret_key_base` 值而不是让应用服务生成一个值，请使用想要的值设置 `SECRET_KEY_BASE` [应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。 例如：
+要使用自己的 `secret_key_base` 值而不是让应用服务生成一个值，请使用想要的值设置 `SECRET_KEY_BASE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"

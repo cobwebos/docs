@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fb0482be1670a96befdd69a5356c9e21476d9f9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85a4aca0c4b80eaab1f43bcbec33dc9cf37aa655
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60305079"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950097"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>数据科学团队项目的组管理员应执行的任务
 
-本主题概述了组管理员应为他/她的数据科学组织完成的任务。 目的在于创建致力于标准化[团队数据科学流程](overview.md) (TDSP) 的团队协作环境。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅[团队数据科学流程角色和任务](roles-tasks.md)。
+本主题概述了组管理员的任务应为数据科学组织完成。 目的在于创建致力于标准化[团队数据科学流程](overview.md) (TDSP) 的团队协作环境。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅[团队数据科学流程角色和任务](roles-tasks.md)。
 
 **组管理员**是企业中整个数据科学部门的经理。 数据科学部门可能有多个团队，每个团队都在不同的业务垂直领域开展多个数据科学项目。 组管理员可以将任务委托给代理，但与角色相关的任务都相同。 如下图所示，有六项主要任务：
 
@@ -69,7 +69,7 @@ Azure DevOps Services 承载以下存储库：
 
 转到 [Visual Studio Online](https://www.visualstudio.com/)，单击右上角的“登录”，然后登录到 Microsoft 帐户。
 
-![1](./media/group-manager-tasks/login.PNG)
+![第](./media/group-manager-tasks/login.PNG)
 
 如果没有 Microsoft 帐户，请单击“立即注册”创建一个 Microsoft 帐户，然后使用此帐户登录。
 
@@ -99,7 +99,7 @@ Azure DevOps Services 承载以下存储库：
 ![5](./media/group-manager-tasks/create-account-2.png)
 
 
-单击“继续”。
+单击 **“继续”**。
 
 ## <a name="2-groupcommon-project"></a>2.GroupCommon 项目
 
