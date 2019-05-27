@@ -2,21 +2,20 @@
 title: SQL 数据仓库中的临时表 | Microsoft 文档
 description: 提供了有关使用临时表的基本指导，并重点介绍了会话级临时表的原则。
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: XiaoyuL-Preview
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-origin.date: 04/17/2018
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.subservice: development
+ms.date: 04/01/2019
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 23a62e28700ad5fd733040c43ea0eec225fd286f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56c15a9505b3f0e4344c9164268082da1ff7cc22
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474889"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851575"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
 本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 使用本文中的信息可以帮助将代码模块化，从而同时提高代码的可重用性和易维护性。
@@ -25,7 +24,7 @@ ms.locfileid: "61474889"
 临时表在处理数据时非常有用 - 尤其是在具有暂时性中间结果的转换期间。 临时表位于 SQL 数据仓库中的会话级别。  它们仅对创建它们的会话可见，并在该会话注销时被自动删除。  临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
 
 ## <a name="create-a-temporary-table"></a>创建临时表
-只需为表名添加 `#` 前缀，即可创建临时表。  例如：
+只需为表名添加 `#` 前缀，即可创建临时表。  例如:
 
 ```sql
 CREATE TABLE #stats_ddl

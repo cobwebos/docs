@@ -11,18 +11,18 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8bc46011b00a0c63eddd2799ac1309b5754472e
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: f1eca5bdd81a384efe04f769ebd12be9d91fc78a
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442421"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849731"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建并加速机器学习模型
 
-了解如何使用[开放神经网络交换](https://onnx.ai)(ONNX) 可帮助优化机器学习模型。
+了解如何使用[开放神经网络交换](https://onnx.ai)(ONNX) 可帮助优化机器学习模型的推理。 推理，或模型评分，阶段已部署的模型不使用的是用于预测，最常在生产数据。 
 
-优化机器学习的推理模型是很难，因为您需要调整的模型和推理库来充分利用的硬件功能。 问题变得非常困难，如果你想要获取不同的平台 (云/edge，CPU/GPU，等等) 上获得最佳性能，因为其中一个具有不同的功能和特征。 如果您有使用不同的框架，需要在多个平台上运行的模型会增加复杂性。 它是非常较长时间进行优化的框架和硬件的所有不同组合。 需要一个解决方案，可以在您首选的框架中一次训练和在云或边缘上任意位置运行。 这是 ONNX 传入的位置。
+优化机器学习模型的推理 （或模型评分） 是很难，因为您需要调整的模型和推理库来充分利用的硬件功能。 问题变得非常困难，如果你想要获取不同的平台 (云/edge，CPU/GPU，等等) 上获得最佳性能，因为其中一个具有不同的功能和特征。 如果您有使用不同的框架，需要在多个平台上运行的模型会增加复杂性。 它是非常较长时间进行优化的框架和硬件的所有不同组合。 需要一个解决方案，可以在您首选的框架中一次训练和在云或边缘上任意位置运行。 这是 ONNX 传入的位置。
 
 Microsoft 和合作伙伴社区创建 ONNX 为一个开放标准，用于表示机器学习模型。 从模型[许多框架](https://onnx.ai/supported-tools)包括 TensorFlow、 PyTorch、 Scikit-learn、 Keras、 Chainer、 MXNet、 和 MATLAB 可以要导出或转换为标准 ONNX 格式。 ONNX 格式模型后，它们可以在各种平台和设备上运行。
 

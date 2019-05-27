@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7b983535f862a452c900d0a0a12ae0d79b56f92f
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230148"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850534"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -70,9 +70,9 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
 
 节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要使用大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以纵向扩展 AKS 群集中的节点数以满足需求。
 
-在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需任何手动配置。
+在 AKS，群集中节点的 VM 映像是当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需任何手动配置。
 
-如果需要使用不同的主机 OS、容器运行时或包含自定义程序包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 会发布功能并提供配置选项，且这一操作会在 AKS 群集中支持这些操作和选项之前实施。 例如，如果想要使用 Windows 容器或容器运行时而不是 Moby，可以使用`aks-engine`配置和部署满足当前需求的 Kubernetes 群集。
+如果需要使用不同的主机 OS、容器运行时或包含自定义程序包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 会发布功能并提供配置选项，且这一操作会在 AKS 群集中支持这些操作和选项之前实施。 例如，如果你想要使用小鲸鱼以外的容器运行时，您可以使用`aks-engine`配置和部署满足当前需求的 Kubernetes 群集。
 
 ### <a name="resource-reservations"></a>资源预留
 
@@ -104,6 +104,27 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
 缩放或升级 AKS 群集时，将对默认节点池执行操作。 您还可以选择缩放或升级的特定节点池。 对于升级操作，将在节点池中的其他节点上计划运行的容器，直到成功升级所有节点。
 
 有关如何使用在 AKS 中的多个节点池的详细信息，请参阅[创建和管理在 AKS 中为群集的多个节点池][use-multiple-node-pools]。
+
+### <a name="node-selectors"></a>节点选择器
+
+在 AKS 群集中包含多个节点池，可能需要告知 Kubernetes 计划程序要用于给定资源的节点池。 例如，入口控制器不应在 Windows 服务器 （目前以预览版在 AKS 中） 的节点上运行。 节点选择器，可以定义多个参数，例如节点 OS，其中应安排一个 pod 的控制。
+
+下面的基本示例计划使用的节点选择器在 Linux 节点上的 NGINX 实例 *"beta.kubernetes.io/os": linux*:
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx:1.15.12
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
+```
+
+有关如何控制其中计划 pod 的详细信息，请参阅[在 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
 
 ## <a name="pods"></a>Pod
 
@@ -248,3 +269,4 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fc4db12f722d1330f0642e155c02a1936373e256
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050971"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520493"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -82,7 +82,6 @@ ms.locfileid: "59050971"
 
 > [!WARNING]
 > </br> - Azure Front Door 服务目前仅支持 Front Door 配置所在的同一订阅中的 Key Vault 帐户。 选择不包含你的 Front Door 的订阅中的 Key Vault 会导致失败。
-> </br> - Azure Front Door 服务目前仅支持“机密”部分下存储的 Key Vault 证书。 如果将证书存储在“证书”部分而不是“机密”部分，则证书导入将会失败。
 > </br> - Azure Front Door 服务目前仅支持使用**不带**密码的 PFX 上传证书。
 
 #### <a name="register-azure-front-door-service"></a>注册 Azure Front Door 服务

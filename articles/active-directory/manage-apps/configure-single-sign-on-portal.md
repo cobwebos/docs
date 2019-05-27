@@ -2,22 +2,22 @@
 title: 配置单一登录 - Azure Active Directory | Microsoft Docs
 description: 本教程使用 Azure 门户通过 Azure Active Directory (Azure AD) 为应用程序配置基于 SAML 的单一登录。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 04/08/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3d96799e69e2fdef3a4ffd1a436727e6a58da79
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: fa18bc637ec31a1f83b5cab090e008715c5e0c2a
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565982"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825016"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>教程：通过 Azure Active Directory 为应用程序配置基于 SAML 的单一登录
 

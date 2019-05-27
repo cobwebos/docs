@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fd5c47bb3c7bc3dfc9c0e140531ff832e7e6ef56
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6510099f9fb145951cbce1ea168b36dba5f76e07
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011045"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540917"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>什么是 Azure 资源的基于角色的访问控制 (RBAC)？
 
@@ -138,4 +138,4 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 - [快速入门：使用 Azure 门户查看用户对 Azure 资源的访问权限](check-access.md)
 - [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](role-assignments-portal.md)
 - [了解 Azure 中的不同角色](rbac-and-directory-admin-roles.md)
-- [企业云采用：Azure 中的资源访问管理](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)
+- [企业云采用：Azure 中的资源访问管理](/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)

@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: design
+ms.subservice: load data
 ms.date: 05/10/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: db397ae43d1c134823abfc7004f1f3490addeb06
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 076a9c2cee5a976d1424a6c101822e374c20e83b
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550608"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850547"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>为 Azure SQL 数据仓库设计 PolyBase 数据加载策略
 
@@ -58,8 +58,8 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
 |        boolean        |                             bit                              |
-|        double         |                            float                             |
-|         float         |                             real                             |
+|        double         |                            浮点数                             |
+|         浮点数         |                             real                             |
 |        double         |                            money                             |
 |        double         |                          smallmoney                          |
 |        string         |                            nchar                             |

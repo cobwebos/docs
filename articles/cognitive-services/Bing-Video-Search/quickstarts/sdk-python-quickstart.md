@@ -3,19 +3,19 @@ title: 快速入门：使用适用于 Python 的必应视频搜索 SDK 来搜索
 titleSuffix: Azure Cognitive Services
 description: 通过本快速入门使用适用于 Python 的必应视频搜索 SDK 来发送视频搜索请求
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: ead69b0165831fef04e68b4c2eb7ea43115ca4ea
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: aahi
+ms.openlocfilehash: ae91deb5b49b0eb202175fdd242ef0d91975bb25
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867794"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798235"
 ---
 #  <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>快速入门：使用适用于 Python 的必应视频搜索 SDK 执行视频搜索
 

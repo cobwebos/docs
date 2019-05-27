@@ -10,19 +10,21 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: ad0d990554d9ff49bed3e9da7097c87c06c7152f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 05/16/2019
+ms.openlocfilehash: 3260ffaba2ab91ee561a0430310883bda8f65269
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415544"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794079"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
+
 可以使用 Azure 数据库迁移服务将数据库从 MongoDB 的本地或云实例脱机（一次性）迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
+>
 > * 创建 Azure 数据库迁移服务的实例。
 > * 使用 Azure 数据库迁移服务创建迁移项目。
 > * 运行迁移。
@@ -40,7 +42,7 @@ ms.locfileid: "65415544"
 
     > [!NOTE]
     > 在 VNet 设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
-
+    >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
     > * 服务总线终结点
@@ -115,10 +117,22 @@ ms.locfileid: "65415544"
 
 1. 在“源详细信息”屏幕上，指定源 MongoDB 服务器的连接详细信息。
 
-   也可使用连接字符串模式，为在其中转储了要迁移的集合数据的 blob 存储文件容器提供一个位置。
+    可通过三种模式连接到源：
+   * **标准模式**：接受完全限定的域名或 IP 地址、端口号和连接凭据。
+   * **连接字符串模式**：接受[连接字符串 URI 格式](https://docs.mongodb.com/manual/reference/connection-string/)一文中所述的 MongoDB 连接字符串。
+   * **Azure 存储中的数据**：接受 Blob 容器 SAS URL。 如果 Blob 容器包含 MongoDB [bsondump 工具](https://docs.mongodb.com/manual/reference/program/bsondump/)生成的 BSON 转储，请选择“Blob 包含 BSON 转储”；如果容器包含 JSON 文件，请取消选择该选项。
 
-   > [!NOTE]
-   > Azure 数据库迁移服务也可将 bson 文档或 json 文档迁移到 Azure Cosmos DB 的用于 MongoDB 的 API 集合。
+    如果选择此选项，则请确保存储帐户连接字符串按以下格式显示：
+
+     ```
+     https://blobnameurl/container?SASKEY
+     ```
+
+     此外，根据 Azure 存储中的类型转储选项，记住以下详细信息。
+
+     * 对于 BSON 转储，blob 容器中的数据必须采用 bsondump 格式，这样数据文件才会放置到按 collection.bson 格式以包含数据库命令的文件夹中。 元数据文件（如有）应采用 collection.metadata.json 格式进行命名。
+
+     * 对于 JSON 转储，blob 容器中的文件必须放置到以包含数据库命名的文件夹中。 在每个数据库文件夹中，数据文件必须放置到名为“数据”且采用 collection.json 格式命名的子文件夹中。 元数据文件（如有）必须放置到名为“元数据”且同样采用 collection.json 格式命名的子文件夹中。 元数据文件必须采用由 MongoDB bsondump 工具所生成的相同格式。
 
    即使不能使用 DNS 名称解析，也可使用 IP 地址。
 

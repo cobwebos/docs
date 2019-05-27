@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: load data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b5083d6b4cf6758997e4e0551e5f3c2968a31c1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9d6a2c097a6040e7c005cc0feeefd59caf352441
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145972"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850504"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake 存储的数据加载到 SQL 数据仓库
 使用 PolyBase 外部表将数据从 Azure Data Lake 存储加载到 Azure SQL 数据仓库。 尽管可以在 Data Lake 存储中存储的数据运行即席查询，我们建议将数据导入 SQL 数据仓库以获得最佳性能。
