@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/20/2019
 ms.author: danlep
-ms.openlocfilehash: b97db09c477a940ca36129316613f5ceb4eb13b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc182743c3879ab2748f92022437bc23c26c371c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582408"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977202"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>使用 ACR 任务自动执行 OS 和框架修补
 
@@ -94,6 +94,16 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 使用多步骤任务可将映像的生成、运行和测试操作拆分成组合性更强的步骤，并支持步骤间的依赖关系。 使用 ACR 任务中的多步骤任务，可以更精细地控制映像生成、测试，以及 OS 和框架修补工作流。
 
 若要了解多步骤任务，请参阅[在 ACR 任务中运行多步骤生成、测试和修补任务](container-registry-tasks-multi-step.md)。
+
+## <a name="view-task-logs"></a>查看任务日志
+
+每个任务运行生成可以检查以确定是否已成功运行的任务步骤的日志输出。 如果您使用[az acr 生成](/cli/azure/acr#az-acr-build)，[运行 az acr](/cli/azure/acr#az-acr-run)，或[az acr 任务运行](/cli/azure/acr/task#az-acr-task-run)命令触发任务时，流式传输到控制台和也更高版本的存储任务运行的日志输出检索。 查看任务的日志在 Azure 门户中，运行或使用[az acr 任务日志](/cli/azure/acr/task#az-acr-task-logs)命令。
+
+从 2019 年 7 月开始，数据和日志的注册表中的任务运行将会保留 30 天默认情况下并自动清除。 如果你想要运行的任务将数据存档，启用存档使用[az acr 任务更新运行](/cli/azure/acr/task#az-acr-task-update-run)命令。 下面的示例可帮助实现为运行任务归档*cf11*注册表中*myregistry*。
+
+```azurecli
+az acr task update-run --registry myregistry --run-id cf11 --no-archive false
+```
 
 ## <a name="next-steps"></a>后续步骤
 

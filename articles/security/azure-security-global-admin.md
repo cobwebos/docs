@@ -8,12 +8,12 @@ editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: d0479b834f814616e44a1888ab8b958990610820
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbc3bba3d95526277da3487cb8670c1f1a88a925
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611706"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951772"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>对订阅管理员实施多重身份验证 (MFA)
 
@@ -22,7 +22,7 @@ ms.locfileid: "60611706"
 可以根据需要，通过为 IT 员工用户帐户分配特定管理员角色（例如 Exchange 管理员或密码管理员）来执行日常管理。
 此外，对管理员启用 [Azure 多重身份验证 (MFA)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication)可提升用户登录和事务的安全层级。 Azure MFA 还可帮助 IT 部门减少使用透露的凭据访问企业数据的可能性。
 
-例如：针对用户实施 Azure MFA，并将其配置为使用电话呼叫或短信作为验证方法。 如果用户的凭据被透露，攻击者无法访问任何资源，因为攻击者无权访问用户的电话。 未添加额外标识保护层的组织将更容易受到凭据窃取攻击，从而导致数据泄漏。
+例如:为你的用户强制实施 Azure MFA，并将其配置为使用电话呼叫或短信作为验证。 如果用户的凭据被透露，攻击者将无法访问任何资源，因为他们将无权访问用户的电话。 未添加额外标识保护层的组织将更容易受到凭据窃取攻击，从而导致数据泄漏。
 
 想要保留完整本地身份验证控制权的组织可使用替代方法：使用 [Azure 多重身份验证服务器](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-server)（也称为“本地 MFA”）。 使用此方法仍可实施多重身份验证，同时本地保留 MFA 服务器。
 

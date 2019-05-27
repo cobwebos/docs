@@ -5,18 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-origin.date: 10/19/2018
-ms.date: 04/09/2019
+ms.date: 10/19/2018
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40b4be9aca5243b80151afac0ae221f0d44509c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1084a3e546a234739fbede46612dce96537c7d4a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454636"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950641"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect：ADConnectivityTools PowerShell 参考
 
@@ -34,10 +33,10 @@ ms.locfileid: "60454636"
 Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 运行本地 DNS 连接测试。
-若要配置 Active Directory 连接器，用户必须能够对尝试连接到林进行名称解析，同时，必须能够在与此林关联的域控制器中进行名称解析。
+若要配置 Active Directory 连接器，用户必须具有他们正在尝试连接到也如下所示关联到此林的域控制器在林中两个名称解析。
 
 ### <a name="examples"></a>示例
 
@@ -121,7 +120,7 @@ Accept wildcard characters: False
 Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 在 DNS 服务器中查询与林关联的 IP 地址。
 
@@ -176,7 +175,7 @@ Confirm-FunctionalLevel -Forest <String> [-RunWithCurrentlyLoggedInUserCredentia
 Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 验证 AD 林功能级别是等于还是超过给定的 MinAdForestVersion (WindowsServer2003)。
 可以请求帐户（域\用户名）和密码。
@@ -269,7 +268,7 @@ Accept wildcard characters: False
 Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 运行本地网络连接测试。
 
@@ -310,7 +309,7 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-如果用户未使用 AD 站点/登录 DC 提供的 DNS 服务，则他（她）可能需要跳过端口 53 的检查。
+如果用户未使用提供的 AD 站点的 DNS 服务 / 登录 DC，则他们可能想要跳过检查端口 53。
 用户仍必须能够解析 _ldap._tcp.\<forestfqdn\>，才能让 Active Directory 连接器配置成功。
 
 ```yml
@@ -359,7 +358,7 @@ Accept wildcard characters: False
 Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 运行“ping”测试（某台计算机是否可以通过网络和/或 Internet 访问目标计算机）
 
@@ -436,7 +435,7 @@ Confirm-ValidDomains [-Forest <String>] [-RunWithCurrentlyLoggedInUserCredential
 Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 通过尝试检索 DomainGuid 和 DomainDN，验证是否可访问所获取的林 FQDN 中的所有域。
 可以请求帐户（域\用户名）和密码。
@@ -528,7 +527,7 @@ Accept wildcard characters: False
 Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 通过搜索验证提供的用户是否有企业管理员凭据。
 可以请求帐户（域\用户名）和密码。
@@ -583,7 +582,7 @@ Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUs
  [-ReturnExceptionOnError] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 尝试从提供的凭据中获取 domainFQDN 对象。
 如果 domainFQDN 有效，则会根据用户的选择返回 DomainFQDNName 或 RootDomainName。
@@ -671,7 +670,7 @@ Accept wildcard characters: False
 Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 尝试从提供的凭据中获取 ForestFQDN。
 可以请求帐户（域\用户名）和密码。
@@ -742,7 +741,7 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
  [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 运行用于验证 AD 凭据是否有效的所有可用机制。
 
@@ -825,7 +824,7 @@ Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSC
  [-ValidCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>描述
 
 运行本地网络连接测试。
 
@@ -964,5 +963,3 @@ Accept wildcard characters: False
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
 有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
-
-<!-- Update_Description: wording update -->

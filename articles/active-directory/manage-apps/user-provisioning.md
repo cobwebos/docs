@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/02/2019
 ms.author: mimart
-ms.reviewer: asmalser
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bdae98f19be11cb960fe53c444c34a0b521f90e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 086161b73e2a3e07df835394dc26082e12fbd434
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824226"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963982"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 
@@ -277,7 +277,7 @@ Azure AD 功能预先集成了对许多常用 SaaS 应用和人力资源系统�
 
 ### <a name="is-provisioning-between-azure-ad-and-a-target-application-using-an-encrypted-channel"></a>Azure AD 之间设置和使用加密的通道的目标应用程序？
 
-可以。 我们使用的服务器目标的 HTTPS SSL 加密。 
+是的。 我们使用的服务器目标的 HTTPS SSL 加密。 
 
 ## <a name="related-articles"></a>相关文章
 

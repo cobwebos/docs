@@ -14,11 +14,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 40086924731876dc44d9651ca46814149dba52f0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122456"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向或从本地文件系统复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -74,11 +74,11 @@ ms.locfileid: "57432768"
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | type |确保类型属性设置为 **OnPremisesFileServer**。 |是 |
-| host |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |是 |
+| host |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |“是” |
 | userid |指定有权访问服务器的用户的 ID。 |否（如果选择 encryptedCredential） |
 | password |设置用户的密码 (userid)。 |否（如果选择 encryptedCredential） |
 | encryptedCredential |指定可以通过运行新建 AzDataFactoryEncryptValue cmdlet 获取的加密的凭据。 |否（如果选择在纯文本中指定 userid 和密码） |
-| gatewayName |指定网关的名称，数据工厂应将其用于连接到本地文件服务器。 |是 |
+| gatewayName |指定网关的名称，数据工厂应将其用于连接到本地文件服务器。 |“是” |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>链接服务和数据集定义示例
@@ -182,13 +182,13 @@ ms.locfileid: "57432768"
 
 | 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
-| recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
+| recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |“否” |
 
 **FileSystemSink** 支持以下属性：
 
 | 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
-| copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |**PreserveHierarchy：** 将文件层次结构保留到目标文件夹中。 也就是说，指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><br/>**FlattenHierarchy：** 源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/>**MergeFiles：** 将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名/blob 名称，则合并的文件名是指定的名称。 否则，它是自动生成的文件名。 |否 |
+| copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |**PreserveHierarchy：** 将文件层次结构保留到目标文件夹中。 也就是说，指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><br/>**FlattenHierarchy：** 源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/>**MergeFiles：** 将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名/blob 名称，则合并的文件名是指定的名称。 否则，它是自动生成的文件名。 |“否” |
 
 ### <a name="recursive-and-copybehavior-examples"></a>recursive 和 copyBehavior 示例
 本节介绍了 recursive 和 copyBehavior 属性值的不同组合的复制操作产生的行为。

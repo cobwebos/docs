@@ -27,8 +27,6 @@
           href: manage-guest-access-with-access-reviews.md
         - name: 使用评审管理用户访问
           href: manage-user-access-with-access-reviews.md
-        - name: 管理程序及其控件
-          href: manage-programs-controls.md
         - name: 管理从条件访问中排除的用户
           href: conditional-access-exclusion.md
 - name: 操作指南
@@ -64,8 +62,6 @@
               href: review-your-access.md
             - name: 完成访问评审
               href: complete-access-review.md
-            - name: 检索访问评审结果
-              href: retrieve-access-review.md
         - name: Azure AD 角色
           items:
             - name: 创建访问评审

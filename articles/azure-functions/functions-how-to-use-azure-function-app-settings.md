@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 188c17b4e8ef84f3907b63fd62bf110ee94b4d7f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 92ca09040836dfc55a9d709b12a0ee01192d6bac
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511243"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957394"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
 
@@ -61,7 +61,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 + [身份验证](#auth)
 + [API 定义](#swagger)
 
-若要深入了解如何使用应用服务设置，请参阅[配置 Azure 应用服务设置](../app-service/web-sites-configure.md)。
+若要深入了解如何使用应用服务设置，请参阅[配置 Azure 应用服务设置](../app-service/configure-common.md)。
 
 ### <a name="editor"></a>应用服务编辑器
 
@@ -124,7 +124,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 ## <a name="next-steps"></a>后续步骤
 
-+ [配置 Azure 应用服务设置](../app-service/web-sites-configure.md)
++ [配置 Azure 应用服务设置](../app-service/configure-common.md)
 + [Azure Functions 的连续部署](functions-continuous-deployment.md)
 
 

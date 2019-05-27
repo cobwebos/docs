@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 02/15/2019
+ms.date: 05/19/2019
 ms.author: juliako
-ms.openlocfilehash: 62d26ce5a2e1a98b6ed024fb98c9c887fb985ebf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f2cb2e2ee6393a59125ee879f2058516eb50d6b1
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150981"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956715"
 ---
 # <a name="create-an-azure-media-services-account"></a>创建 Azure 媒体服务帐户
 
@@ -48,6 +48,7 @@ az account set --subscription mySubscriptionId
 
 * [访问 v3 Api](access-api-cli-how-to.md)
 * [流式传输文件](stream-files-dotnet-quickstart.md)
+* [将辅助存储附加到媒体服务帐户](https://docs.microsoft.com/cli/azure/ams/account/storage?view=azure-cli-latest#az-ams-account-storage-add)
 
 ## <a name="see-also"></a>另请参阅
 

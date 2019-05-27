@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aff695307fc97e9f2acfd44f7434d5cbb26ef53e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381259"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950825"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 蝻进在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
@@ -42,7 +42,7 @@ ms.locfileid: "60381259"
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 基于角色的访问控制 (RBAC) 使用角色和预配策略来评估、测试并强制执行业务流程和向用户授予访问权限的规则。 主要管理员创建预配策略并为用户分配角色，从而定义这些角色访问资源的权限集。 RBAC 扩展了标识管理解决方案，以便使用基于软件的流程并减少在预配过程中的用户手动交互。
-Azure AD RBAC 使公司能够限制有权访问 Azure 门户的个人可以执行的操作数。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方式委派访问权限：
+Azure AD RBAC 使公司能够限制他们有权在 Azure 门户的个人可以执行的操作的数目。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方式委派访问权限：
 
 * **基于组的角色分配**：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够充分利用组织在工具和组管理过程中已有的现有投资。 也可以使用 Azure AD 高级版中的委派组管理功能。
 * **利用 Azure 中的内置角色**：可以使用三个角色 - 所有者、参与者和阅读者，以确保用户和组仅具有完成工作所需任务的权限。

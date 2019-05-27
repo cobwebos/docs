@@ -9,11 +9,11 @@ ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65607057"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145911"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -107,7 +107,7 @@ ms.locfileid: "65607057"
 
 **如果我创建一个 128 GB 的磁盘，然后将大小增加到 130 gibibyte 计算的 (GiB) 收费的下一步的磁盘大小 (256 GiB)？**
 
-可以。
+是的。
 
 是否可以创建本地冗余存储、异地冗余存储和区域冗余存储托管磁盘？
 
@@ -233,7 +233,7 @@ Azure 标准 SSD 盘是什么？
 
 迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？
 
-可以。 目前，Azure 站点恢复 Azure 到 Azure 保护的 Vm 使用托管磁盘现推出 GA 服务。
+是的。 目前，Azure 站点恢复 Azure 到 Azure 保护的 Vm 使用托管磁盘现推出 GA 服务。
 
 是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？
 
@@ -349,7 +349,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 **可以您重设大小现有托管磁盘大小从少于 4 tib 的) 为最多 32 TiB 的新新引入的磁盘大小？**
 
-可以。
+是的。
 
 **什么是 Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小？**
 

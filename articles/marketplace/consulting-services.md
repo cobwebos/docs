@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: e13111eb241c7734e25a28fcaeea55b1c70bc267
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 225a4936bbbb8d068caa0ee2a3280c395dbd490e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938312"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964111"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -24,7 +24,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure 市场中的咨询服务和 AppSource 店面
 市场店面与受众需求和 Microsoft 云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资。 下表汇总了这些选项：
 
-|         |Azure 市场  |AppSource |
+|         |Azure Marketplace  |AppSource |
 |---------|---------|---------|
 |**受众**   |**IT 专业人员和云开发人员**|**业务用户/业务线决策者**|
 |解决方案相关性     |为 Azure 构建或在其上构建的技术应用|利用 Extend D365、Power BI、O365 和 Azure 的业务应用。 （已完成的外接程序或附加设备应用）|
@@ -80,7 +80,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 面向其他国家/地区的目录将会推出后有意义数量和极具吸引力的服务产品选项已由合作伙伴提交并由 Microsoft 批准。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何在 Azure 市场和 AppSource 中注册咨询服务
-首先在市场中[注册](https://azuremarketplace.microsoft.com/sell/signup)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
+首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
 
 **注册后的期望** 实施团队将在 1-3 个工作日内通过欢迎电子邮件与你联系，其中包括你的云合作伙伴门户 (CPP) 登录信息。 [云合作伙伴门户](https://cloudpartner.azure.com)是产品/服务列表门户，发布者可以在其中提交列表信息和提交。 
 
@@ -100,7 +100,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 |新产品设置  |
 |---------|
 |产品/服务名称（200 个字符）和说明（2000 个字符）    |
-|资质     |
+|特色     |
 |国家/区域可用性     |
 |参与持续时间     |
 |适用的行业、类别和搜索关键字     |

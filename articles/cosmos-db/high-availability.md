@@ -4,15 +4,15 @@ description: 本文介绍 Azure Cosmos DB 如何提供高可用性
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 3/24/2019
+ms.date: 05/21/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1e866560ceab342f08a98ba3db05980a2b0947d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74e2d7901d127c9dd7edd8509e5bba082c4ad220
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888497"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978973"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
 
@@ -34,8 +34,8 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 
 |操作类型  | 单区域 |多区域（单区域写入）|多区域（多区域写入） |
 |---------|---------|---------|-------|
-|写入    | 99.99    |99.99   |99.999|
-|读取     | 99.99    |99.999  |99.999|
+|写    | 99.99    |99.99   |99.999|
+|读     | 99.99    |99.999  |99.999|
 
 > [!NOTE]
 > 在实践中，对于有限的过期、 会话、 一致前缀和最终一致性模型的实际写入可用性是明显高于已发布的 Sla。 所有一致性级别的实际读取可用性明显高于发布的 SLA。

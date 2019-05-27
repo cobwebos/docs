@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2e1288885476aeeba01f966b615c23c5fe51081
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d12519a2bd0a5e3951d0ca9ae51a54bd728a782b
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60261001"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>教程：Azure Active Directory 与 Land Gorilla 客户端集成
 
@@ -87,7 +87,7 @@ ms.locfileid: "60261001"
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Land Gorilla 客户端的 Azure AD 单一登录。
+在本部分中，配置和测试 Azure AD 单一登录与 Land Gorilla 客户端基于名为"b.的测试用户 Simon"。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Land Gorilla 客户端用户。 换句话说，需要在 Azure AD 用户与 Land Gorilla 客户端中相关用户之间建立链接关系。
 
@@ -97,8 +97,8 @@ ms.locfileid: "60261001"
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用有限组测试 Azure AD 单一登录。
-1. **[创建 Land Gorilla 测试用户](#creating-a-land-gorilla-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+1. **[创建 Land Gorilla 测试用户](#creating-a-land-gorilla-test-user)** -测试 Azure AD 单一登录使用 B.Simon。
+1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** -使 B.Simon 能够使用 Azure AD 单一登录。
 1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -150,7 +150,7 @@ ms.locfileid: "60261001"
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-本部分的目的是在 Azure 管理门户中创建名为 Britta Simon 的测试用户。
+本部分的目的是在名为 B.Simon 在 Azure 管理门户中创建的测试用户。
 
 ![创建 Azure AD 用户][100]
 
@@ -172,9 +172,9 @@ ms.locfileid: "60261001"
  
     ![创建 Azure AD 测试用户](./media/landgorilla-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在中**名称**文本框中，键入**B.Simon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在中**用户名**文本框中，键入**电子邮件地址**的 B.Simon。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -186,11 +186,11 @@ ms.locfileid: "60261001"
     
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，将通过向 Britta Simon 授予对 Land Gorilla 客户端的访问权限使她能够使用 Azure 单一登录。
+在本部分中，B.Simon 使用 Azure 单一登录，通过向它们授予对 Land Gorilla 客户端访问允许。
 
 ![分配用户][200] 
 
-**要将 Britta Simon 分配到 Land Gorilla 客户端，请执行以下步骤：**
+**若要将 B.Simon 分配到 Land Gorilla 客户端，请执行以下步骤：**
 
 1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
@@ -208,7 +208,7 @@ ms.locfileid: "60261001"
 
     ![分配用户][203]
 
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 上**用户和组**对话框中，选择**B.Simon**用户列表中。
 
 1. 在“用户和组”对话框中单击“选择”按钮。
 

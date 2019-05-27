@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 75ac8a45eb49ac5c4ec3b39667542f4f454a9954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110318"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66111299"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure DNS 区域和记录
 
@@ -90,7 +90,7 @@ Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-主机名 **www\.contoso.xyz** 解析为 **10.10.10.10**，正如你配置的那样。 此结果表明名称解析正常工作。
+主机名 www\.contoso.xyz 解析为 10.10.10.10，正如你配置的那样。 此结果表明名称解析正常工作。
 
 ## <a name="delete-all-resources"></a>删除所有资源
 

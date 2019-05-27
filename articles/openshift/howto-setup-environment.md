@@ -9,12 +9,12 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 6e859f57f9b5f24ea2f0172f5aa35a60d9769f19
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 6ba7e67620ebfd7ff98c1ba81c7cecb133288be7
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551709"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962133"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>设置 Azure Red Hat OpenShift 开发环境
 
@@ -29,13 +29,15 @@ ms.locfileid: "65551709"
 
 以下说明将指导你完成所有这些系统必备组件。
 
-## <a name="purchase-azure-virtual-machine-reserved-instances"></a>购买 Azure 虚拟机保留实例
+## <a name="purchase-azure-red-hat-openshift-application-nodes-reserved-instances"></a>购买 Azure Red Hat OpenShift 应用程序节点保留的实例
 
-可以使用 Azure Red Hat OpenShift 之前，你将需要购买 Azure 虚拟机保留实例。
+可以使用 Azure Red Hat OpenShift 之前，你将需要购买最少 4 个 Azure Red Hat OpenShift 保留应用程序节点，此后您将能够预配群集。
 
-如果你是 Azure 客户，此处的如何[购买 Azure 虚拟机保留实例](https://aka.ms/openshift/buy)。 保留可减少你费用由预付费的完全托管的 Azure 服务。 请参阅[*什么是 Azure 预订*](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)若要详细了解保留和如何他们节省资金。
+如果是 Azure 客户，[购买 Azure Red Hat OpenShift 保留实例](https://aka.ms/openshift/buy)通过 Azure 门户。 购买后，将在 24 小时内激活你的订阅。
 
 如果您不是 Azure 客户[联系销售人员](https://aka.ms/openshift/contact-sales)并填写销售窗体底部的页后，可以启动进程。
+
+请参阅[定价页 Azure Red Hat OpenShift](https://aka.ms/openshift/pricing)有关详细信息。
 
 ## <a name="install-the-azure-cli"></a>安装 Azure CLI
 

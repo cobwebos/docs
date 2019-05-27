@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: a673f02af9d92b7135e47961f13e0899a1f0e02f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232687"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66110680"
 ---
 如果未设置的访问令牌，则必须处理`TokenRequired`事件或实现`tokenRequired`委托协议方法。
 

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 240291c7ec1d989e52a2896dc696f69afbee0093
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65871335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mypolicies"></a>教程：Azure Active Directory 与 myPolicies 集成
 

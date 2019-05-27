@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 1d7bb72dab622cd0b18d1da1aa34a651e1443997
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60365071"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964264"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute 直接
 
@@ -226,7 +226,9 @@ ms.locfileid: "60365071"
 
 有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 其中包括：40Gbps 和 100Gbps。
 
-可以创建标准或高级线路。 标准线路包括在成本中，而高级线路具有基于所选带宽的成本。 线路只能创建为计量式的，因为 ExpressRoute Direct 上不支持“无限制”。
+**SkuTier**可以是本地、 标准或高级。
+
+**SkuFamily**必须以无限制模式为 MeteredData ExpressRoute 直接上不支持。
 
 在 ExpressRoute Direct 资源上创建一个线路。
 

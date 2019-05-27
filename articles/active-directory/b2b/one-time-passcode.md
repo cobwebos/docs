@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 577f370c3be0f232be4e6628dd6754c4164ab93f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785263"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952857"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>电子邮件一次性密码身份验证（预览）
 
@@ -64,7 +64,7 @@ ms.locfileid: "65785263"
 > 在用户兑换一次性密码并稍后获得 MSA、Azure AD 帐户或其他联合帐户的情况下，他们将继续使用一次性密码进行身份验证。 如果要更新用户的身份验证方法，可以删除其来宾用户帐户并重新邀请用户。
 
 ### <a name="example"></a>示例
-邀请来宾用户 alexdoe@gmail.com 加入 Fabrikam，后者未设置 Google 联合身份验证。 Alex 没有 Microsoft 帐户。 他将收到一次性密码用于身份验证。
+邀请来宾用户 alexdoe@gmail.com 加入 Fabrikam，后者未设置 Google 联合身份验证。 Alex 没有 Microsoft 帐户。 会收到一次性密码进行身份验证。
 
 ## <a name="opting-in-to-the-preview"></a>选择加入预览 
 选择加入的操作可能需要几分钟的时间才能生效。 之后，只有符合上述条件的新受邀用户才能使用一次性密码身份验证。 之前已兑换邀请的来宾用户将继续使用同一身份验证方法。

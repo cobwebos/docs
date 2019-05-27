@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107085"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872790"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -29,16 +29,16 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
 本文假设你已阅读了以下文章：
 
 * [Azure Functions 开发人员指南](functions-reference.md)
-* [Azure Functions Visual Studio 2017 工具](functions-develop-vs.md)
+* [Azure Functions Visual Studio 2019 工具](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>Functions 类库项目
 
 在 Visual Studio 中，**Azure Functions** 项目模板会创建一个 C# 类库项目，它包含以下文件：
 
 * [host.json](functions-host-json.md) - 存储着在本地或者在 Azure 中运行时会影响项目中的所有函数的配置设置。
-* [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 必须[向函数应用添加应用设置](functions-develop-vs.md#function-app-settings)。
+* [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 相反，[添加到函数应用的应用程序设置](functions-develop-vs.md#function-app-settings)。
 
-生成项目时，在生成输出目录中生成如下所示的文件夹结构：
+当您生成项目时，看起来像下面的示例生成生成输出目录中的文件夹结构：
 
 ```
 <framework.version>
@@ -50,7 +50,7 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
  | - host.json
 ```
 
-部署到 Azure 中函数应用的正是此目录。 Functions 运行时 [2.x 版](functions-versions.md) 中所需的绑定扩展[作为 NuGet 包添加到项目中](./functions-bindings-register.md#c-class-library-with-visual-studio-2017)。
+部署到 Azure 中函数应用的正是此目录。 Functions 运行时 [2.x 版](functions-versions.md) 中所需的绑定扩展[作为 NuGet 包添加到项目中](./functions-bindings-register.md#c-class-library-with-visual-studio-2019)。
 
 > [!IMPORTANT]
 > 生成过程将为每个函数创建一个 *function.json* 文件。 此 *function.json* 文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 要了解如何禁用函数，请参阅[如何禁用函数](disable-function.md#functions-2x---c-class-libraries)。
@@ -72,7 +72,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` 属性将该方法标记为函数入口点。 该名称在项目中必须是唯一的，以字母开头，并且只包含字母、数字 `_` 和 `-`，长度不得超过 127 个字符。 项目模板通常创建一个名为 `Run` 的方法，但方法名称可以是任何有效的 C# 方法名称。
+`FunctionName` 属性将该方法标记为函数入口点。 名称必须是唯一在项目中，以字母开头并且只能包含字母、 数字`_`，和`-`，最多 127 个字符的长度。 项目模板通常创建一个名为 `Run` 的方法，但方法名称可以是任何有效的 C# 方法名称。
 
 触发器属性指定触发器类型并将输入数据绑定到一个方法参数。 示例函数将由一条队列消息触发，并且队列消息将传递到该方法中的 `myQueueItem` 参数。
 
@@ -181,7 +181,7 @@ Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1.x 项目�
 </ItemGroup>
 ```
 
-`Sdk` 包的依赖关系是触发器和绑定。 1.x 项目是指 1.x 触发器和绑定，因为它们面向 .NET Framework，而 2.x 触发器和绑定面向 .NET Core。
+`Sdk` 包的依赖关系是触发器和绑定。 1.x 项目是指 1.x 触发器和绑定因为这些触发器和绑定面向.NET Framework 中，而 2.x 触发器和绑定面向.NET Core。
 
 `Sdk` 包也依赖于 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)，并间接依赖于 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage)。 这些依赖关系确保项目使用的包版本与项目面向的 Functions 运行时版本兼容。 例如，`Newtonsoft.Json` 的 11 版可用于 .NET Framework 4.6.1，但面向 .NET Framework 4.6.1 的 Functions 运行时仅与 `Newtonsoft.Json` 9.0.1 兼容。 因此该项目中的函数代码也只能使用 `Newtonsoft.Json` 9.0.1。
 

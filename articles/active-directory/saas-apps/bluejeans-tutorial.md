@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e9f52948d035c72a6a019558915d8c92ceebeb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 2830e95f042d5c83d91d6c026d2fa2e70eb3e3b2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463528"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>教程：Azure Active Directory 与 BlueJeans 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "65463528"
 
     ![BlueJeans 域和 URL 单一登录信息](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
 
-   - 在“标识符”文本框中键入以下值：`https://samlsp.bluejeans.com`
+   - 在“标识符”文本框中键入以下值：`http://samlsp.bluejeans.com`
     
    - 在“登录 URL”文本框中，输入 BlueJeans 提供的登录页 URL（要获取此值，可联系 [BlueJeans 客户技术支持](https://support.bluejeans.com/contact)）：`https://<companyname>.bluejeans.com`
     
@@ -160,9 +160,9 @@ ms.locfileid: "65463528"
 
     ![保存更改](./media/bluejeans-tutorial/ic785874.png "保存更改")
 
-    a. 在“用户 ID”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    a. 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
-    b. 在“电子邮件”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    b. 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
     c. 单击“保存更改”。
 
