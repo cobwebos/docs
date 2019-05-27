@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ec8b575157dcf2fe8430f554798af62b966c78d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e20a298c34a7b2723963396f8ccaafaa9472e19a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406701"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899167"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>教程：Azure Active Directory 与 AirWatch 集成
 
@@ -207,15 +207,15 @@ ms.locfileid: "65406701"
 
     a. 在“对象标识符”文本框中，键入 `http://schemas.microsoft.com/identity/claims/objectidentifier`。
 
-    b. 在“用户名”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
+    b. 在“用户名”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
-    c. 在“显示名称”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
+    c. 在“显示名称”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
 
-    d. 在“名字”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
+    d. 在“名字”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
 
-    e. 在“姓氏”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
+    e. 在“姓氏”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
 
-    f. 在“电子邮件”文本框中，键入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
+    f. 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
     g. 单击“ **保存**”。
 

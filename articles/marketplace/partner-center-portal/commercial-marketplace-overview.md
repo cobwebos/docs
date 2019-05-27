@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 85e162773f95272ac2af36469480f1786b260e26
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ebf371c45868d8e620413f8f54b3531b1a17f817
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806246"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949594"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作伙伴中心中的商业 Marketplace 门户的概述
 
@@ -36,7 +36,7 @@ ms.locfileid: "65806246"
 
 ### <a name="improvements-on-user-experience-and-billing"></a>改进用户体验和计费
 
-过渡到合作伙伴中心，新功能可供发布服务器，以及对用户体验方面的改进。 SaaS 产品/服务每月或每年一次，可计费支持每用户授权 （基于席位的） 以及每个站点 （固定费率）。 这一新货币化模型非常适合于商业软件。 与新的功能让客户能够完成 AppSource，Microsoft 的商业版和行业解决方案的商业应用商店中购买密切合作 SaaS 每用户授权的简介。 
+过渡到合作伙伴中心，新功能可供发布服务器，以及对用户体验方面的改进。 SaaS 产品/服务，可以每月或按年度计费，支持每用户授权 （基于席位） 除了每个站点的授权 （固定费率）。 这一新货币化模型非常适合于商业软件。 引入了 SaaS 的每用户许可符合允许完成购买的客户在 AppSource，面向业务或行业解决方案的 Microsoft 商业市场中的新功能。 
 
 ### <a name="account-and-user-management-updates"></a>帐户和用户管理更新
 
@@ -58,3 +58,4 @@ ms.locfileid: "65806246"
 
 - 有关向市场提供全新兴趣发布 SaaS 的 Microsoft 合作伙伴，请参阅[在合作伙伴中心创建的商业 Marketplace 帐户](./create-account.md)。
 - 有关先前已发布产品/服务在云合作伙伴门户中，现有合作伙伴[管理商业 Marketplace 帐户在合作伙伴中心](./manage-account.md)。 
+- 要详细了解云 marketplace 管理在此将移动到合作伙伴中心[合作伙伴社区博客文章](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)，包括演示视频。

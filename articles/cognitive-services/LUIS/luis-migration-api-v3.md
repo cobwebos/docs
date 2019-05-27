@@ -1,7 +1,7 @@
 ---
-title: V2 到 V3 API 迁移
+title: API V2 到 V3 的 迁移
 titleSuffix: Azure Cognitive Services
-description: 第 3 版终结点 Api 已发生变化。 使用本指南来了解如何将迁移到版本 3 终结点 Api。
+description: 终结点 API 版本 3 已发生更改。 请使用本指南了解如何迁移到终结点 API 版本 3。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,63 +9,63 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 6412f0a2e295a19f741c70e7870a4d198ee03b71
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233554"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66123885"
 ---
-# <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>预览版：迁移到的 API 版本 3.x LUIS 应用
+# <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>预览版：迁移到 LUIS 应用的 API 版本 3.x
 
-查询预测终结点 Api 已发生变化。 使用本指南来了解如何将迁移到版本 3 终结点 Api。 
+查询预测终结点 API 已发生更改。 请使用本指南了解如何迁移到终结点 API 版本 3。 
 
-此 V3 API 提供了以下新功能，包括重大 JSON 请求和/或响应更改： 
+此 V3 API 提供以下新功能，其中包括重大的 JSON 请求和/或响应更改： 
 
 * [外部实体](#external-entities-passed-in-at-prediction-time)
 * [动态列表](#dynamic-lists-passed-in-at-prediction-time)
-* [预生成的实体的 JSON 更改](#prebuilt-entities-with-new-json)
+* [预生成实体 JSON 更改](#prebuilt-entities-with-new-json)
 
 <!--
 * [Multi-intent detection of utterance](#detect-multiple-intents-within-single-utterance)
 -->
 
-查询预测终结点[请求](#request-changes)并[响应](#response-changes)有重大更改，以支持更高版本，列出包括以下新功能：
+查询预测终结点[请求](#request-changes)和[响应](#response-changes)已发生重大更改，可以支持上面列出的新功能。这些更改包括：
 
 * [响应对象更改](#top-level-json-changes)
-* [实体而不是实体名称的角色名称引用](#entity-role-name-instead-of-entity-name)
-* [若要将标记语音样本中的实体的属性](#marking-placement-of-entities-in-utterances)
+* [使用实体角色名称引用而不是实体名称](#entity-role-name-instead-of-entity-name)
+* [用于标记言语中的实体的属性](#marking-placement-of-entities-in-utterances)
 
-以下 LUIS 功能**不支持**V3 API 中：
+V3 API **不支持**以下 LUIS 功能：
 
 * 必应拼写检查 V7
 
-[参考文档](https://aka.ms/luis-api-v3)适用于 V3。
+为 V3 提供了[参考文档](https://aka.ms/luis-api-v3)。
 
-## <a name="prebuilt-entities-with-new-json"></a>使用新 JSON 预生成的实体
+## <a name="prebuilt-entities-with-new-json"></a>使用新 JSON 的预生成实体
 
-V3 响应对象更改包括[预生成的实体](luis-reference-prebuilt-entities.md)。 
+V3 响应对象更改包括[预生成实体](luis-reference-prebuilt-entities.md)。 
 
 ## <a name="request-changes"></a>请求更改 
 
 ### <a name="query-string-parameters"></a>查询字符串参数
 
-V3 API 具有不同的查询字符串参数。
+V3 API 包含不同的查询字符串参数。
 
 |参数名称|Type|Version|目的|
 |--|--|--|--|
-|`query`|string|仅 V3|**在 V2**，将语音样本来进行预测处于`q`参数。 <br><br>**在 V3**，在传递功能`query`参数。|
-|`show-all-intents`|boolean|仅 V3|返回所有与中的相应分数意向**prediction.intents**对象。 作为对象的父文件夹中返回意向`intents`对象。 这允许以编程方式访问而无需查找数组中的意图： `prediction.intents.give`。 在 V2 中，这些已返回数组中。 |
-|`verbose`|boolean|V2 & V3|**V2 中**，当返回设置为 true，所有预测意向。 如果你需要所有预测的意向，使用 V3 param 的`show-all-intents`。<br><br>**V3 中**，此参数仅提供实体的实体预测的元数据详细信息。  |
+|`query`|string|仅 V3|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
+|`show-all-intents`|boolean|仅 V3|在 **prediction.intents** 对象中返回包含相应评分的所有意向。 意向将在父 `intents` 对象中作为对象返回。 这样，便可以通过编程方式进行访问，而无需在数组中查找意向：`prediction.intents.give`。 在 V2 中，这些意向在数组中返回。 |
+|`verbose`|boolean|V2 和 V3|**在 V2 中**，如果设置为 true，则返回所有预测意向。 如果需要所有预测的意向，请使用 V3 参数 `show-all-intents`。<br><br>**在 V3 中**，此参数仅提供实体预测的实体元数据详细信息。  |
 
 <!--
 |`multiple-segments`|boolean|V3 only|Break utterance into segments and predict each segment for intents and entities.|
 -->
 
 
-### <a name="the-query-prediction-json-body-for-the-post-request"></a>查询预测 JSON 正文`POST`请求
+### <a name="the-query-prediction-json-body-for-the-post-request"></a>`POST` 请求的查询预测 JSON 正文
 
 ```JSON
 {
@@ -80,11 +80,11 @@ V3 API 具有不同的查询字符串参数。
 
 ## <a name="response-changes"></a>响应更改
 
-在查询响应对 JSON 进行更改，以允许更高版本以编程方式访问最常用的数据。 
+查询响应 JSON 已发生更改，允许以更合理的编程方式访问最常用的数据。 
 
-### <a name="top-level-json-changes"></a>顶部级别的 JSON 更改
+### <a name="top-level-json-changes"></a>顶级 JSON 更改
 
-V2 的顶级 JSON 属性，当`verbose`设置为 true，返回所有意图和其评分`intents`属性：
+当 `verbose` 设置为 true 时（在 `intents` 属性中返回所有意向及其评分），V2 的顶级 JSON 属性为：
 
 ```JSON
 {
@@ -96,7 +96,7 @@ V2 的顶级 JSON 属性，当`verbose`设置为 true，返回所有意图和其
 }
 ```
 
-V3 的顶级 JSON 属性包括：
+V3 的顶级 JSON 属性为：
 
 ```JSON
 {
@@ -110,31 +110,31 @@ V3 的顶级 JSON 属性包括：
 }
 ```
 
-`intents`对象是未排序的列表。 不要假定中的第一个子`intents`对应于`topIntent`。 请改用`topIntent`值以查找分数：
+`intents` 对象是未排序的列表。 不要假设 `intents` 中的第一个子级对应于 `topIntent`。 请改用 `topIntent` 值来查找评分：
 
 ```nodejs
 const topIntentName = response.prediction.topIntent;
 const score = intents[topIntentName];
 ```
 
-响应 JSON 架构更改允许的：
+响应 JSON 架构已发生更改，允许：
 
-* 清除原始查询文本之间的区别`query`，并返回预测， `prediction`。
-* 预测数据更轻松地以编程方式访问。 而不是枚举访问一系列 V2 中，您可以访问的值**名为**意向和实体。 对于预测的实体角色，因为它是唯一的整个应用程序，则返回角色名称。
-* 数据类型，如果确定，会遵循。 不能再作为字符串返回的数字。
-* 在返回第一个优先级预测信息和其他元数据之间的差异`$instance`对象。 
+* 消除原始言语 `query` 与返回的预测 `prediction` 之间的差别。
+* 更轻松地以编程方式访问预测的数据。 可以按意向和实体的 **named** 访问值，而无需枚举 V2 中的数组。 对于预测的实体角色，将返回角色名称，因为它在整个应用中是唯一的。
+* 将遵循数据类型（如果已确定）。 数字不再作为字符串返回。
+* 第一个优先级预测信息与其他元数据之间的差别在 `$instance` 对象中返回。 
 
-### <a name="access-instance-for-entity-metadata"></a>访问`$instance`实体元数据
+### <a name="access-instance-for-entity-metadata"></a>访问实体元数据的 `$instance`
 
-如果您需要实体元数据，需要使用查询字符串`verbose=true`标志和响应包含中的元数据`$instance`对象。 以下部分中的 JSON 响应中显示了示例。
+如果你需要实体元数据，则查询字符串需要使用 `verbose=true` 标志，并且响应在 `$instance` 对象中包含元数据。 以下部分的 JSON 响应中提供了示例。
 
-### <a name="each-predicted-entity-is-represented-as-an-array"></a>数组形式表示预测的每个实体
+### <a name="each-predicted-entity-is-represented-as-an-array"></a>预测的每个实体以数组的形式表示
 
-`prediction.entities.<entity-name>`对象包含一个数组，因为可以将语音样本中超过一次预测每个实体。 
+`prediction.entities.<entity-name>` 对象包含一个数组，因为可以在言语中多次预测每个实体。 
 
-### <a name="list-entity-prediction-changes"></a>列出实体的预测更改
+### <a name="list-entity-prediction-changes"></a>列表实体预测更改
 
-已更改为数组的数组列表实体预测的 JSON:
+列表实体预测的 JSON 已更改为数组的数组：
 
 ```JSON
 "entities":{
@@ -144,9 +144,9 @@ const score = intents[topIntentName];
     ]
 }
 ```
-每个内部数组对应于将语音样本中的文本。 内部对象是一个数组，因为相同的文本可以出现在列表中实体的多个子列表。 
+每个内部数组对应于言语中的文本。 内部对象是一个数组，因为相同的文本可以出现在列表实体的多个子列表中。 
 
-时之间的映射`entities`对象传递给`$instance`对象，该列表实体预测的保留对象的顺序。
+在 `entities` 对象与 `$instance` 对象之间映射时，将为列表实体预测保留对象顺序。
 
 ```nodejs
 const item = 0; // order preserved, use same enumeration for both
@@ -154,17 +154,17 @@ const predictedCanonicalForm = entities.my_list_entity[item];
 const associatedMetadata = entities.$instance.my_list_entity[item];
 ```
 
-### <a name="entity-role-name-instead-of-entity-name"></a>实体而不是实体名称的角色名称 
+### <a name="entity-role-name-instead-of-entity-name"></a>使用实体角色名称而不是实体名称 
 
-在 V2 中，`entities`正在的唯一标识符的实体名称返回预测的所有实体的数组。 在 V3，如果该实体使用角色，并且该预测是针对实体的角色中，主标识符是角色名称。 这是可能的因为在整个应用程序包括其他模型 （目的，实体） 的名称必须是实体的角色名称唯一。
+在 V2 中，`entities` 数组返回具有实体名称（唯一标识符）的所有预测实体。 在 V3 中，如果实体使用角色，并且预测针对实体角色，则主标识符是角色名称。 之所以能够这样做，是因为实体角色名称必须在整个应用中唯一，这包括其他模型（意向、实体）名称。
 
-在下面的示例： 考虑包含文本、 查询文本`Yellow Bird Lane`。 此文本预测为自定义`Location`实体的角色的`Destination`。
+在以下示例中，假设某段言语包含文本 `Yellow Bird Lane`。 此文本将作为自定义 `Location` 实体的 `Destination` 角色进行预测。
 
-|查询文本的文本|实体名称|角色名称|
+|言语文本|实体名称|角色名称|
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
-在 V2 中，实体由标识_实体名称_与作为对象的属性的角色：
+在 V2 中，实体由实体名称以及用作对象属性的角色进行标识：
 
 ```JSON
 "entities":[
@@ -179,7 +179,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 ]
 ```
 
-V3，在引用实体_实体角色_，如果该预测是针对角色：
+在 V3 中，如果预测针对角色，则实体由实体角色引用：
 
 ```JSON
 "entities":{
@@ -189,7 +189,7 @@ V3，在引用实体_实体角色_，如果该预测是针对角色：
 }
 ```
 
-V3 中, 相同的结果，与`verbose`标志，用于返回实体的元数据：
+在 V3 中，可以使用用于返回实体元数据的 `verbose` 标志来实现相同的结果：
 
 ```JSON
 "entities":{
@@ -213,27 +213,27 @@ V3 中, 相同的结果，与`verbose`标志，用于返回实体的元数据：
 }
 ```
 
-## <a name="external-entities-passed-in-at-prediction-time"></a>在预测时传递的外部实体
+## <a name="external-entities-passed-in-at-prediction-time"></a>预测时传入的外部实体
 
-外部实体使 LUIS 应用程序能够识别并在运行时，可用作针对现有实体的功能标记实体。 这允许您将查询发送到你的预测终结点之前，使用你自己的单独和自定义实体提取器。 这是在查询预测终结点，因为不需要重新训练并发布您的模型。
+外部实体可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 这样，在将查询发送到预测终结点之前，便可以使用自己的独立自定义实体提取器。 此操作是在查询预测终结点上执行的，因此不需要重新训练并发布模型。
 
-客户端应用程序通过管理实体匹配并确定该匹配实体的查询文本中的位置，然后将发送该信息与请求一起提供其自己的实体提取器。 
+客户端应用程序将提供其自身的实体提取器，它会管理实体匹配操作并确定匹配实体的言语中的位置，然后连同请求一起发送该信息。 
 
-外部实体是用于仍在使用作为与其他模型，如角色、 复合和其他信号的同时扩展任何实体类型的机制。
+外部实体是用于扩展任何实体类型，同时仍可用作其他模型（例如角色、复合等等）的信号的机制。
 
-这非常有用的实体，只能在查询预测运行时具有可用数据。 此类型的数据的示例数据或特定于每个用户一直在变化。 您可以扩展 LUIS 联系人实体使用的外部用户的联系人列表信息。 
+这对于仅在查询预测运行时才提供数据的实体而言非常有用。 此类数据的示例包括不断变化的数据，或者每个用户的具体数据。 可以使用用户联系人列表中的外部信息扩展 LUIS 联系人实体。 
 
-### <a name="entity-already-exists-in-app"></a>实体已存在于应用程序中
+### <a name="entity-already-exists-in-app"></a>实体已在应用中存在
 
-值`entityName`的终结点请求 POST 正文中传递的外部实体必须已存在于受过培训且已发布应用程序在发出请求的时间。 支持所有类型、 实体类型并不重要。
+发出请求时，在终结点请求 POST 正文中传递的外部实体 `entityName` 值必须事先在已训练且发布的应用中存在。 实体的类型无关紧要，因为支持所有类型。
 
-### <a name="first-turn-in-conversation"></a>第一个会话中打开
+### <a name="first-turn-in-conversation"></a>聊天中的第一个轮次
 
-用户在其中输入以下信息不完整的聊天机器人对话中第一个查询文本，请考虑：
+假设在聊天机器人的第一段聊天言语中，用户输入了以下不完整的信息：
 
 `Send Hazem a new message`
 
-LUIS 从聊天机器人的请求可以传入 POST 正文中的信息有关`Hazem`以便直接与匹配作为一个用户的联系人信息。
+聊天机器人发送给 LUIS 的请求可以在 POST 正文中传入有关 `Hazem` 的信息，以便将此信息直接匹配为用户的联系人之一。
 
 ```json
     "externalEntities": [
@@ -249,15 +249,15 @@ LUIS 从聊天机器人的请求可以传入 POST 正文中的信息有关`Hazem
     ]
 ```
 
-预测响应包括该外部实体，与所有其他预测实体，因为它定义在请求中。  
+预测响应包含该外部实体以及其他所有预测实体，因为该实体已在请求中定义。  
 
-### <a name="second-turn-in-conversation"></a>第二个会话中打开
+### <a name="second-turn-in-conversation"></a>聊天中的第二个轮次
 
-聊天机器人的下一个用户语句使用更模糊的术语：
+在聊天机器人中输入的下一段用户言语使用较模糊的字词：
 
 `Send him a calendar reminder for the party.`
 
-在上一语音样本，使用查询文本`him`对的引用作为`Hazem`。 对话式聊天机器人，在 POST 正文中，可以将映射`him`从第一个查询文本，提取的实体值`Hazem`。
+上面的言语使用 `him` 作为对 `Hazem` 的引用。 在 POST 正文中，聊天机器人可将 `him` 映射到从第一段言语 `Hazem` 提取的实体值。
 
 ```json
     "externalEntities": [
@@ -273,15 +273,15 @@ LUIS 从聊天机器人的请求可以传入 POST 正文中的信息有关`Hazem
     ]
 ```
 
-预测响应包括该外部实体，与所有其他预测实体，因为它定义在请求中。  
+预测响应包含该外部实体以及其他所有预测实体，因为该实体已在请求中定义。  
 
 #### <a name="resolution"></a>解决方法
 
-_可选_`resolution`属性将返回在预测响应中，您可以在与外部实体，相关联的元数据中传递，然后接收其响应中返回。 
+可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。 
 
-主要用途是将扩展预生成的实体，但并不局限于该实体类型。 
+主要目的是扩展预生成实体，但并不局限于该实体类型。 
 
-`resolution`属性可以是一个数字、 字符串、 对象或数组：
+`resolution` 属性可以是数字、字符串、对象或数组：
 
 * "Dallas"
 * {"text": "value"}
@@ -289,20 +289,20 @@ _可选_`resolution`属性将返回在预测响应中，您可以在与外部实
 * ["a", "b", "c"]
 
 
-## <a name="dynamic-lists-passed-in-at-prediction-time"></a>在预测时传递中的动态列表
+## <a name="dynamic-lists-passed-in-at-prediction-time"></a>预测时传入的动态列表
 
-动态列表使你可以扩展现有的训练和已发布列表实体，已在 LUIS 应用。 
+使用动态列表可以扩展已包含在 LUIS 应用中的已训练并发布的现有列表实体。 
 
-当你列表的实体值需要定期更改时，请使用此功能。 此功能可以进行扩展的列表中已受过培训且已发布实体：
+需要定期更改列表实体值时，请使用此功能。 使用此功能可以扩展已训练并发布的列表实体：
 
-* 在查询预测终结点请求的时间。
-* 针对单个请求。
+* 发出查询预测终结点请求时。
+* 对于单个请求。
 
-列表实体可以是空 LUIS 应用程序中，但它必须存在。 LUIS 应用中的列表实体不更改，但在终结点的预测功能经过扩展，包含最多 2 个具有 1,000 个项的列表。
+列表实体在 LUIS 应用中可为空，但必须存在。 LUIS 应用中的列表实体不会更改，但终结点上的预测功能将会扩展，以最多包含 2 个列表，其中有大约 1,000 个项。
 
 ### <a name="dynamic-list-json-request-body"></a>动态列表 JSON 请求正文
 
-以下 JSON 正文中发送，以将新的子列表与同义词添加到列表中，并预测文本，该列表实体`LUIS`，使用`POST`查询预测请求：
+发送以下 JSON 正文，以向列表发送包含同义词的新子列表，并使用 `POST` 查询预测请求预测文本 `LUIS` 的列表实体：
 
 ```JSON
 {
@@ -329,21 +329,24 @@ _可选_`resolution`属性将返回在预测响应中，您可以在与外部实
 }
 ```
 
-预测响应包含该列表实体，与所有其他预测实体，因为它定义在请求中。 
+预测响应包含该列表实体以及其他所有预测实体，因为该实体已在请求中定义。 
 
-## <a name="timezoneoffset-renamed-to-datetimereference"></a>重命名为 datetimeReference TimezoneOffset
+## <a name="timezoneoffset-renamed-to-datetimereference"></a>TimezoneOffset 已重命名为 datetimeReference
 
-**在 V2**，则`timezoneOffset`[参数](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)如果作为 GET 或 POST 请求发送该请求而不考虑为查询字符串参数，在预测请求中发送。 
+**在 V2 中**，`timezoneOffset` [参数](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)将在预测请求中作为查询字符串参数发送，无论该请求是作为 GET 还是 POST 请求发送。 
 
-**在 V3**，其中 POST 正文参数提供的相同功能`datetimeReference`。 
+**在 V3 中**，可以使用 POST 正文参数 `datetimeReference` 提供相同的功能。 
 
-## <a name="marking-placement-of-entities-in-utterances"></a>将标记放置在查询文本中的实体
+## <a name="marking-placement-of-entities-in-utterances"></a>在言语中标记实体的位置
 
-**在 V2**，一个实体标记中使用查询文本`startIndex`和`endIndex`。 
+**在 V2 中**，使用 `startIndex` 和 `endIndex` 在言语中标记实体。 
 
-**在 V3**，该实体将标有`startIndex`和`entityLength`。
+**在 V3 中**，使用 `startIndex` 和 `entityLength` 标记实体。
 
+## <a name="deprecation"></a>弃用 
+
+不将 V3 预览版之后至少 9 月内弃用 V2 API。 
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 V3 API 文档，以更新现有的 REST 调用到 LUIS[终结点](https://aka.ms/luis-api-v3)Api。 
+使用 V3 API 文档更新对 LUIS [终结点](https://aka.ms/luis-api-v3) API 的现有 REST 调用。 

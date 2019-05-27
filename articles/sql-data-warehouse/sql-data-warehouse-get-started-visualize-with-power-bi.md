@@ -2,20 +2,20 @@
 title: 使用 Power BI 可视化 SQL 数据仓库数据 | Microsoft Azure
 description: 使用 Power BI 可视化 SQL 数据仓库数据
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: integration
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b2377466ba830eed9fed0e9a4033b3eca3d351c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94ec38bc2cad3566fad88dc2ac56648f79aa16b2
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474659"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873375"
 ---
 # <a name="visualize-data-with-power-bi"></a>使用 Power BI 可视化数据
 本教程说明如何使用 Power BI 连接到 SQL 数据仓库，并创建一些基本的视觉效果。
@@ -29,7 +29,7 @@ ms.locfileid: "61474659"
 
 * 已随 AdventureWorksDW 数据库预先加载的 SQL 数据仓库。 若要完成数据仓库预配，请参阅[创建 SQL 数据仓库](create-data-warehouse-portal.md)，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以[加载 WideWorldImportersDW](load-data-wideworldimportersdw.md)。
 
-## <a name="1-connect-to-your-database"></a>1.连接到数据库
+## <a name="1-connect-to-your-database"></a>1.连接到你的数据库
 若要打开 Power BI 并连接到 AdventureWorksDW 数据库，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。

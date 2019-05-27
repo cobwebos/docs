@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819f7d12f0554145295a0ec4f1eff7cb404d552d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c7d2920e84e0e1e61627afe1fe029e047e13ed02
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406980"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>教程：Azure Active Directory 与 LCVista 集成
 
@@ -140,13 +140,13 @@ ms.locfileid: "65406980"
 
     c. 在记事本中打开从 Azure 门户下载的元数据 XML，复制值 X509Certificate，并将其粘贴到“x509 证书”部分中。
 
-    d. 在“名字属性”文本框中，粘贴值 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
+    d. 在“名字属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`。
 
-    e. 在“姓氏属性”文本框中，粘贴值 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
+    e. 在“姓氏属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
 
-    f. 在“电子邮件属性”文本框中，粘贴值 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
+    f. 在“电子邮件属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
-    g. 在“用户名属性”文本框中，粘贴值 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    g. 在“用户名属性”文本框中，粘贴值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
     e. 单击“保存”保存这些设置。
 

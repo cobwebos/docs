@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 19a5fe4c087d477ff15d2237a36d1c4ecaa0e070
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120664"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908180"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
-本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2017 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 该方案使用针对数据库的大容量操作。 
+本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库实例的计划作业。 该函数代码用于清除数据库表中的行。 新C#基于 Visual Studio 2019 中的预定义的计时器触发器模板创建函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 该方案使用针对数据库的大容量操作。 
 
 如果首次使用 C# 函数，则应阅读 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
 
@@ -64,7 +64,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 你需要添加包含 SqlClient 库的 NuGet 包。 需要此数据访问库以连接到 SQL 数据库。
 
-1. 在 Visual Studio 2017 中打开本地函数应用项目。
+1. 在 Visual Studio 2019 中打开你的本地函数应用项目。
 
 1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“管理 NuGet 包”。
 

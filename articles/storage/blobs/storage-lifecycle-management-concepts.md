@@ -5,16 +5,16 @@ services: storage
 author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 26ff592ea0d0a57049ae11a981fe8d8e77ca876f
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606947"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001756"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -251,10 +251,10 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 筛选器包括：
 
-| 筛选器名称 | 筛选器类型 | 说明 | 是否必需 |
+| 筛选器名称 | 筛选类型 | 说明 | 必需 |
 |-------------|-------------|-------|-------------|
-| blobTypes   | 预定义枚举值的数组。 | 当前版本支持`blockBlob`。 | 是 |
-| prefixMatch | 要匹配的前缀字符串数组。 每个规则可以定义最多 10 个前缀。 前缀字符串必须以容器名称开头。 例如，如果您希望匹配下的所有 blob`https://myaccount.blob.core.windows.net/container1/foo/...`的规则是 prefixMatch `container1/foo`。 | 如果未定义 prefixMatch，规则将适用于存储帐户中的所有 blob。  | 否 |
+| blobTypes   | 预定义枚举值的数组。 | 当前版本支持`blockBlob`。 | “是” |
+| prefixMatch | 要匹配的前缀字符串数组。 每个规则可以定义最多 10 个前缀。 前缀字符串必须以容器名称开头。 例如，如果您希望匹配下的所有 blob`https://myaccount.blob.core.windows.net/container1/foo/...`的规则是 prefixMatch `container1/foo`。 | 如果未定义 prefixMatch，规则将适用于存储帐户中的所有 blob。  | “否” |
 
 ### <a name="rule-actions"></a>规则操作
 
@@ -393,8 +393,12 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 ## <a name="faq"></a>常见问题解答
 
-**我创建了新的策略，原因操作不立即运行？**  
+**我创建了新的策略，为什么要执行的操作不立即运行？**  
 平台每天运行一次生命周期策略。 一旦配置策略时，它可能需要最多 24 小时的第一次运行的某些操作。  
+
+**我手动解除冻结存档的 blob，如何防止其被移回到存档层暂时吗？**  
+当从一个访问层中 blob 移动到另一个访问层时，不会更改其上次修改时间。 如果您手动解除冻结为热层已存档的 blob，它会移回到存档层的生命周期管理引擎。 您可以通过禁用的规则，这会影响此 blob 暂时阻止它。 如果需要永久保留在热层，可以将 blob 复制到另一个位置。 Blob 可以安全地移回到存档层时，可以重新启用该规则。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

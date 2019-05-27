@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 883042e7c8abb43338c55a76bba3d64844ce1c56
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 3361013d8421cd859c834c07018356318d5e2989
+ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604340"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66179810"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux Java 应用
 
@@ -65,7 +65,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 适用于 Linux 的 azure 应用服务支持带框优化并通过 Azure 门户和 CLI 进行自定义。 查看非特定于 Java 的 web 应用配置的以下文章：
 
-- [配置应用服务设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [配置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
 - [设置自定义域](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [启用 SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [添加 CDN](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
@@ -73,7 +73,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 ### <a name="set-java-runtime-options"></a>设置 Java 运行时选项
 
-若要设置已分配的内存或其他 JVM 运行时选项在 Tomcat 和 Java SE 环境中，创建[应用程序设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)名为`JAVA_OPTS`的选项。 应用服务 Linux 在启动时，会将此设置作为环境变量传递给 Java 运行时。
+若要设置已分配的内存或其他 JVM 运行时选项在 Tomcat 和 Java SE 环境中，创建[应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)名为`JAVA_OPTS`的选项。 应用服务 Linux 在启动时，会将此设置作为环境变量传递给 Java 运行时。
 
 在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。
 
@@ -140,11 +140,45 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="authenticate-users"></a>对用户进行身份验证
 
-设置应用程序在 Azure 门户中使用的身份验证**身份验证和授权**选项。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，以及其他标识提供者的相关文章。
+设置应用程序在 Azure 门户中使用的身份验证**身份验证和授权**选项。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，以及其他标识提供者的相关文章。 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)一文中的说明。
 
-如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)一文中的说明。
+#### <a name="tomcat"></a>Tomcat
 
- Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 通过熟悉的 Spring Security 注释和 API 来保护应用程序。 请务必增加 `application.properties` 文件中的最大标头大小。 我们建议值为 `16384`。
+Tomcat 应用程序可以访问用户的声明直接从 Tomcat servlet 通过转换主体对象复制到 Map 对象。 Map 对象将每个声明类型映射到该类型声明的集合。 在下面的代码，`request`的一个实例`HttpServletRequest`。
+
+```java
+Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
+```
+
+现在可以检查`Map`任何特定的声明的对象。 例如，以下代码片段循环访问所有声明类型，并输出每个集合的内容。
+
+```java
+for (Object key : map.keySet()) {
+        Object value = map.get(key);
+        if (value != null && value instanceof Collection {
+            Collection claims = (Collection) value;
+            for (Object claim : claims) {
+                System.out.println(claims);
+            }
+        }
+    }
+```
+
+若要注销用户，并执行其他操作，请参阅的文档[应用服务身份验证和授权的使用情况](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to)。 此外，还有 Tomcat 上的官方文档[HttpServletRequest 接口](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)及其方法。 以下方法也都会冻结的 servlet 基于你的应用服务配置：
+
+```java
+public boolean isSecure()
+public String getRemoteAddr()
+public String getRemoteHost()
+public String getScheme()
+public int getServerPort()
+```
+
+若要禁用此功能，创建名为应用程序设置`WEBSITE_AUTH_SKIP_PRINCIPAL`值为`1`。 若要禁用所有 servlet 筛选器添加的应用服务，创建名为的设置`WEBSITE_SKIP_FILTERS`值为`1`。
+
+#### <a name="spring-boot"></a>Spring Boot
+
+Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 通过熟悉的 Spring Security 注释和 API 来保护应用程序。 请务必增加 `application.properties` 文件中的最大标头大小。 我们建议值为 `16384`。
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
@@ -232,7 +266,7 @@ Linux 版应用服务将传入请求路由到端口 80，以便你的应用程�
 </appSettings>
 ```
 
-或者在 Azure 门户中的“应用程序设置”边栏选项卡中设置环境变量。
+或中设置环境变量**配置** > **应用程序设置**在 Azure 门户中的页。
 
 接下来，确定数据源应当供一个应用程序使用，还是供在 Tomcat servlet 上运行的所有应用程序使用。
 
@@ -327,10 +361,7 @@ Linux 版应用服务将传入请求路由到端口 80，以便你的应用程�
 
 若要连接到 Spring Boot 应用程序中的数据源，我们建议创建的连接字符串并将其注入您`application.properties`文件。
 
-1. 在应用服务边栏选项卡的"应用程序设置"部分中，设置字符串的名称，将 JDBC 连接字符串粘贴到值字段中，并设置为"Custom"的类型。 槽设置为，可以选择性地设置此连接字符串。
-
-    ![在门户中创建的连接字符串]。
-    
+1. 在应用服务页的"配置"部分，设置字符串的名称将 JDBC 连接字符串粘贴到值字段中，而设置为"Custom"的类型。 槽设置为，可以选择性地设置此连接字符串。
 
     此连接字符串都可以访问我们的应用程序为环境变量名为`CUSTOMCONNSTR_<your-string-name>`。 例如，我们在上面创建的连接字符串将被命名为`CUSTOMCONNSTR_exampledb`。
 
@@ -383,13 +414,13 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 
 将 Azure 门户中的“启动脚本”字段设置为启动 shell 脚本的位置，例如 `/home/site/deployments/tools/your-startup-script.sh`。
 
-提供[应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)中要将环境变量用于传递脚本中的应用程序配置。 应用程序设置将连接字符串和配置应用程序所需的其他机密置于版本控制之外。
+提供[应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)中要将环境变量用于传递脚本中的应用程序配置。 应用程序设置将连接字符串和配置应用程序所需的其他机密置于版本控制之外。
 
 ### <a name="modules-and-dependencies"></a>模块和依赖项
 
 要通过 JBoss CLI 将模块及其依赖项安装到 Wildfly 类路径中，需要在其自己的目录中创建以下文件。 某些模块和依赖项可能需要其他配置，例如 JNDI 命名或其他特定于 API 的配置，因此此列表是在大多数情况下配置依赖项所需的最小集。
 
-- [XML 模块描述符](https://jboss-modules.github.io/jboss-modules/manual/#descriptors)。 此 XML 文件定义模块的名称、属性和依赖项。 此[示例 module.xml 文件](https://access.redhat.com/documentation/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource)定义了 Postgres 模块、其 JAR 文件 JDBC 依赖项以及所需的其他模块依赖项。
+- [XML 模块描述符](https://jboss-modules.github.io/jboss-modules/manual/#descriptors)。 此 XML 文件定义模块的名称、属性和依赖项。 此[示例 module.xml 文件](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource)定义了 Postgres 模块、其 JAR 文件 JDBC 依赖项以及所需的其他模块依赖项。
 - 模块的任何必要 JAR 文件依赖项。
 - 具有 JBoss CLI 命令的脚本，用于配置新模块。 该文件将包含 JBoss CLI 要执行的命令，以配置服务器使用依赖项。 有关添加模块、数据源和消息提供程序的命令的文档，请参阅[本文档](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)。
 - 用于调用 JBoss CLI 和执行上一步中脚本的 Bash 启动脚本。 重启应用服务实例或在横向扩展期间配置新实例时，将执行此文件。当 JBoss 命令传递给 JBoss CLI 时，可在此启动脚本中为应用程序执行任何其他配置。 此文件可以是将 JBoss CLI 命令脚本传递给 JBoss CLI 的最小单个命令：
@@ -401,7 +432,7 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 获得模块的文件和内容后，请按照以下步骤将模块添加到 Wildfly 应用程序服务器。
 
 1. 将文件 FTP 到应用服务实例中的 `/home/site/deployments/tools`。 有关获取 FTP 凭据的说明，请参阅本文档。
-2. 在 Azure 门户的“应用程序设置”边栏选项卡中，将“启动脚本”字段设置为启动 shell 脚本的位置，例如 `/home/site/deployments/tools/your-startup-script.sh`。
+2. 在中**配置** > **常规设置**的 Azure 门户，请将"启动脚本"页会字段到的位置启动 shell 脚本，例如`/home/site/deployments/tools/your-startup-script.sh`。
 3. 按下重新启动您的应用服务实例**重新启动**按钮**概述**门户或使用 Azure CLI 的部分。
 
 ### <a name="configure-data-source-connections"></a>配置数据源连接

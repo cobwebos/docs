@@ -8,16 +8,26 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 06051eff73a83ff97a733d1863580885c5d0e174
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 4f11eac106fe984aa06e41083c2d4f66c7d0e62c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551724"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872914"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
 本文介绍了常见问题 (Faq) 有关 Microsoft Azure Red Hat OpenShift。
+
+## <a name="how-do-i-get-started"></a>如何入门？
+
+可以使用 Azure Red Hat OpenShift 之前，将需要购买一个最少为 4 个 Azure Red Hat OpenShift 保留应用程序节点。
+
+如果是 Azure 客户，[购买 Azure Red Hat OpenShift 保留实例](https://aka.ms/openshift/buy)通过 Azure 门户。 购买后，将在 24 小时，此后您将能够预配群集内激活你的订阅。
+
+如果您不是 Azure 客户[联系销售人员](https://aka.ms/openshift/contact-sales)并填写销售窗体底部的页后，可以启动进程。
+
+请参阅[定价页 Azure Red Hat OpenShift](https://aka.ms/openshift/pricing)有关详细信息。
 
 ## <a name="which-azure-regions-are-supported"></a>支持哪些 Azure 区域？
 
@@ -53,11 +63,11 @@ Docker 注册表可用于从`https://docker-registry.apps.<clustername>.<region>
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>管理员可以管理用户和配额？
 
-可以。 Azure Red Hat OpenShift 管理员可以管理用户和除了访问创建项目的所有用户的配额。
+是的。 Azure Red Hat OpenShift 管理员可以管理用户和除了访问创建项目的所有用户的配额。
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>可以限制只有特定 Azure AD 用户对群集？
 
-可以。 你可以限制哪些 Azure AD 用户可以登录到群集配置 Azure AD 应用程序。 有关详细信息，请参阅[如何：将您的应用程序限制为一组用户](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+是的。 你可以限制哪些 Azure AD 用户可以登录到群集配置 Azure AD 应用程序。 有关详细信息，请参阅[如何：将您的应用程序限制为一组用户](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>可以在群集计算节点具有多个 Azure 区域？
 
@@ -69,4 +79,4 @@ Docker 注册表可用于从`https://docker-registry.apps.<clustername>.<region>
 
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>是 Open Service Broker for Azure (OSBA) 支持？
 
-可以。 您可以使用 OSBA 与 Azure Red Hat OpenShift。 请参阅[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template)有关详细信息。
+是的。 您可以使用 OSBA 与 Azure Red Hat OpenShift。 请参阅[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template)有关详细信息。

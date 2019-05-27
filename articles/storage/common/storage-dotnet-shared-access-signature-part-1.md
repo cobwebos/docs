@@ -9,12 +9,12 @@ ms.date: 04/18/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 25c562e144b635cb66c5df9b5b7bd6237ce3122c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154433"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65907184"
 ---
 # <a name="using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS)
 
@@ -115,7 +115,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | 存储服务版本 |`sv=2015-04-05` |对于存储服务版本 2012-02-12 和更高版本，此参数指示要使用的版本。 |
 | 开始时间 |`st=2015-04-29T22%3A18%3A26Z` |以 UTC 时间格式指定。 如果想要 SAS 立即生效，则省略开始时间。 |
 | 到期时间 |`se=2015-04-30T02%3A23%3A26Z` |以 UTC 时间格式指定。 |
-| 资源 |`sr=b` |资源是 Blob。 |
+| Resource |`sr=b` |资源是 Blob。 |
 | 权限 |`sp=rw` |SAS 授予的权限包括读取 (r) 和写入 (w)。 |
 | IP 范围 |`sip=168.1.5.60-168.1.5.70` |将从中接受请求的 IP 地址范围。 |
 | Protocol |`spr=https` |仅允许使用 HTTPS 的请求。 |
@@ -232,7 +232,7 @@ catch (StorageException e)
 若要运行这些 C# 示例，需要在项目中引用以下 NuGet 包：
 
 * [适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage) 6.x 或更高版本（以便使用帐户 SAS）。
-* [Azure 配置管理器](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
+* [Azure 配置管理器](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager)
 
 有关演示如何创建和测试 SAS 的其他示例，请参阅[存储的 Azure 代码示例](https://azure.microsoft.com/documentation/samples/?service=storage)。
 
@@ -422,7 +422,6 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 共享访问签名用于将存储帐户的受限权限提供给不应具有帐户密钥的客户端。 因此，它们是安全模型的重要环节，适合使用 Azure 存储的任何应用程序。 如果按照本文中介绍的最佳实践执行，则可以使用 SAS 更灵活地访问存储帐户中的资源，且不会影响应用程序的安全性。
 
 ## <a name="next-steps"></a>后续步骤
-* [共享访问签名第 2 部分：创建 SAS 并将其用于 Blob 存储](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [管理对容器和 blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
 * [Delegating Access with a Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx)（使用共享访问签名委托访问）
 * [介绍表和队列 SAS](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

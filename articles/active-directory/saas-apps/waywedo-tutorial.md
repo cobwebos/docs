@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 541be5466b65705daa0485976eab3df8eb3d707f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565500"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905331"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>教程：Azure Active Directory 与 Way We Do 的集成
 

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 04/26/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: cfb90dc31635001291b1661f31ec2ee1fc378404
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7365fa4cac5e32962477ef7f2441825327a0eb64
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894435"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912713"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用 Bulk Executor .NET 库在 Azure Cosmos DB 中执行批量操作
 
@@ -24,7 +24,7 @@ ms.locfileid: "60894435"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 如果尚未安装 Visual Studio 2017，可以下载并使用 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
+* 如果还没有安装 Visual Studio 2019，您可以下载并使用[Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 
@@ -72,7 +72,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    connectionPolicy)
    ```
 
-4. BulkExecutor 对象使用高重试值初始化的等待时间和受限制的请求。 然后，这些值将设置为 0，以将阻塞控制权传递给 BulkExecutor（在其生存期内都会保留此控制权）。  
+4. 根据等待时间和限制请求使用较大重试值初始化 BulkExecutor 对象。 然后，这些值将设置为 0，以将阻塞控制权传递给 BulkExecutor（在其生存期内都会保留此控制权）。  
 
    ```csharp
    // Set retry options high during initialization (default values).
@@ -102,7 +102,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    
    |**Parameter**  |**说明** |
    |---------|---------|
-   |enableUpsert    |   若要启用更新插入文档的一个标志。 如果已存在具有给定 ID 的文档，则会更新该文档。 此值默认设置为 false。      |
+   |enableUpsert    |   用于启用文档更新插入的标志。 如果已存在具有给定 ID 的文档，则会更新该文档。 此值默认设置为 false。      |
    |disableAutomaticIdGeneration    |    用于禁用自动生成 ID 的标志。 此值默认设置为 true。     |
    |maxConcurrencyPerPartitionKeyRange    | 每个分区键范围的最大并发度，设置为 null 会导致库使用默认值 20。 |
    |maxInMemorySortingBatchSize     |  从在每个阶段中传递给 API 调用的文档枚举器提取的最大文档数。  在批量导入之前的内存中预处理排序阶段，设置为 null 会导致库使用 min(documents.count, 1000000) 的默认值。       |
@@ -173,7 +173,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
 
 * 建议在单个虚拟机中，为整个应用程序实例化对应于特定 Cosmos DB 容器的单个 BulkExecutor 对象。  
 
-* 原因是单个批量操作 API 执行会消耗客户端计算机的大量 CPU 和网络 IO。 而发生这种情况的原因是在内部生成了多个任务，因此，每次执行批量操作 API 调用时，请避免在应用程序进程中生成多个并发任务。 如果在单个虚拟机运行的单个批量操作 API 调用不能使用您的整个容器的吞吐量 (如果您的容器的吞吐量 > 1 万个 RU/秒)，最好创建单独的虚拟机要并发执行大容量操作 API 调用。  
+* 原因是单个批量操作 API 执行会消耗客户端计算机的大量 CPU 和网络 IO。 而发生这种情况的原因是在内部生成了多个任务，因此，每次执行批量操作 API 调用时，请避免在应用程序进程中生成多个并发任务。 如果单个虚拟机上运行的单个批量操作 API 调用无法占用整个容器的吞吐量（如果容器吞吐量超过 100 万 RU/秒），最好是创建独立的虚拟机来并发执行批量操作 API 调用。  
 
 * 确保在实例化 BulkExecutor 对象之后调用 InitializeAsync()，以提取目标 Cosmos DB 容器分区映射。  
 
@@ -197,4 +197,4 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
   ```
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解有关 Nuget 包的详细信息和发行批量执行程序.NET 库的说明，请参阅[批量执行器的 SDK 详细信息](sql-api-sdk-bulk-executor-dot-net.md)。 
+* 若要了解 Nuget 包的详细信息以及 Bulk Executor .NET 库的发行说明，请参阅 [Bulk Executor SDK 详细信息](sql-api-sdk-bulk-executor-dot-net.md)。 

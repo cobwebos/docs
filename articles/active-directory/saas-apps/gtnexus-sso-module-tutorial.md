@@ -16,11 +16,11 @@ ms.date: 01/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd5f32fd43d75ee91460a5d94ec4bcd57edb0769
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876504"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>教程：Azure Active Directory 与 GTNexus SSO System 集成
 
@@ -105,15 +105,15 @@ ms.locfileid: "57876504"
 
     a. 单击“上传元数据文件”。
 
-    ![图像](common/upload-metadata.png)
+    ![image](common/upload-metadata.png)
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
 
-    ![图像](common/browse-upload-metadata.png)
+    ![image](common/browse-upload-metadata.png)
 
     c. 成功将元数据文件上传后，**标识符**和**回复 URL** 值会自动填充在“GTNexus SSO System”部分的文本框中：
 
-    ![图像](common/idp-intiated.png)
+    ![image](common/idp-intiated.png)
 
     > [!Note]
     > 如果**标识符**和**回复 URL** 值未自动填充，则请按要求手动填充这些值。
@@ -179,7 +179,7 @@ ms.locfileid: "57876504"
 
 ### <a name="create-gtnexus-sso-system-test-user"></a>创建 GTNexus SSO System 测试用户
 
-在本部分，将在 GTNexus SSO System 中创建一个名为“Britta Simon”的用户。 配合  [GTNexus SSO System 支持团队](mailto:support@gtnexus.com)在 GTNexus SSO System 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分，将在 GTNexus SSO System 中创建一个名为“Britta Simon”的用户。 配合  [GTNexus SSO System 支持团队](mailto:support@gtnexus.com) 在 GTNexus SSO System 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

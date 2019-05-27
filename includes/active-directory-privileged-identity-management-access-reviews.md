@@ -9,11 +9,11 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: 364d4a11772e6bb72e2e258503f3cce49dc61453
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141842"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66112258"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审
 
@@ -53,7 +53,7 @@ ms.locfileid: "65141842"
     - **所选用户**-如果不知道谁需要访问使用此选项。 使用此选项，可以将审阅分配给资源所有者或组管理员完成。
     - **成员 （自我）** -使用此选项可让用户评审其自己的角色分配。
 
-### <a name="upon-completion-settings"></a>完成后的设置
+### <a name="upon-completion-settings"></a>完成设置后
 
 1. 若要指定评审完成后发生的情况，请展开“完成后的设置”部分。
 

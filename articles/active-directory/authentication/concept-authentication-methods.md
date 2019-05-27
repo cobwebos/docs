@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359243"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119366"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
@@ -33,7 +33,7 @@ Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身�
 | 电子邮件地址 | 仅限 SSPR |
 | Microsoft Authenticator 应用 | MFA 和 SSPR 公共预览版 |
 | OATH 硬件令牌 | MFA 和 SSPR 公共预览版 |
-| SMS | MFA 和 SSPR |
+| 短信 | MFA 和 SSPR |
 | 语音呼叫 | MFA 和 SSPR |
 | 应用密码 | 仅限在某些情况下执行 MFA |
 
@@ -60,45 +60,45 @@ Azure AD 密码被视为身份验证方法。 它是唯一**不可禁用**的方
 
 ### <a name="predefined-questions"></a>预定义问题
 
-* 在哪个城市遇到了第一任配偶/伴侣？
-* 父母在哪个城市相识？
-* 与你年龄最近的兄弟姐妹居住在哪个城市？
-* 父亲在哪个城市出生？
+* 你在哪个城市遇到了你的第一位配偶?
+* 你的父母在哪个城市相识?
+* 离你最近的同辈居住在哪个城市?
+* 你的父亲在哪个城市出生?
 * 第一份工作是在哪个城市？
-* 母亲在哪个城市出生？
-* 2000 年元旦你在哪个城市？
-* 中学时你最喜欢的老师姓什么？
-* 填报了志愿，但未能入学的大学名称是什么？
+* 你的母亲在哪个城市出生?
+* 在 2000 年新年时，你在哪个城市?
+* 你最喜欢的中学老师姓什么?
+* 你曾申请但未就读的大学叫什么名字?
 * 举办第一次婚宴的地名是什么？
-* 父亲的中间名是什么？
+* 你父亲的中间名是什么?
 * 最喜欢的食品是什么？
-* 外婆的姓氏和名字是什么？
-* 母亲的中间名是什么？
+* 你外婆的姓和名是什么?
+* 你母亲的中间名是什么?
 * 最年长的兄弟姐妹的生日年份和月份是什么？ （例如 1985 年 11 月）
 * 最年长的兄弟姐妹的中间名是什么？
 * 爷爷的姓氏和名字是什么？
 * 最年幼的兄弟姐妹的中间名是什么？
-* 六年级时你就读哪所学校？
-* 童年时最好的朋友的名字和姓氏是什么？
-* 第一位伴侣的名字和姓氏是什么？
-* 最喜欢的小学老师姓什么？
-* 第一辆汽车或摩托车是哪个品牌和型号？
+* 你的六年级是在哪所学校就读的?
+* 你童年时期最好的朋友的姓和名是什么?
+* 你心目中最重要的人的姓和名是什么?
+* 你最喜欢的小学老师姓什么?
+* 你第一辆汽车的品牌和型号是什么?
 * 就读的第一所学校的校名是什么？
-* 在哪家医院出生？
-* 童年时第一个家庭地址的街道名称是什么？
-* 童年时崇拜的人是谁？
-* 最喜欢哪种填充动物玩具？
-* 第一个宠物叫什么？
+* 你出生的医院叫什么名字?
+* 你童年时期的第一个家位于哪条街道?
+* 你童年时期的英雄的姓名是什么?
+* 你最喜欢的填充动物玩具叫什么名字?
+* 你的第一个宠物叫什么名字?
 * 童年时的绰号是什么？
 * 在中学最喜欢的运动是什么？
 * 第一份工作是什么？
 * 童年时的电话号码最后四位数是什么？
-* 年少时，希望长大后当什么？
-* 遇到过的最有名的人是谁？
+* 你年少时希望自己长大成为一个什么样的人?
+* 你曾遇到过的最有名的人是谁?
 
 所有预定义的安全提问都已根据用户的浏览器区域设置翻译并本地化为 Office 365 的完整语言集。
 
-### <a name="custom-security-questions"></a>自定义安全问题
+### <a name="custom-security-questions"></a>自定义安全性的问题
 
 自定义安全提问尚未本地化。 所有自定义问题的显示语言是在管理用户界面中输入这些问题时所用的语言，即使用户浏览器的区域设置与此不同。 如果需要本地化的问题，应使用预定义的问题。
 
@@ -129,7 +129,7 @@ Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlin
 > 用户在注册自助密码重置时，无法选择注册其移动应用。 用户可以在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 中，或者在安全信息注册预览版 ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) 中注册其移动应用。
 >
 
-### <a name="notification-through-mobile-app"></a>通过移动应用发送通知
+### <a name="notification-through-mobile-app"></a>通过移动应用发送的通知
 
 Microsoft Authenticator 应用通过将通知推送到智能手机或平板电脑，可帮助防止对帐户进行未经授权的访问，以及停止欺诈性交易。 用户将查看通知，如果信息合法，则选择“验证”。 否则，可以选择“拒绝”。
 
@@ -144,7 +144,7 @@ Microsoft Authenticator 应用通过将通知推送到智能手机或平板电�
 > [!NOTE]
 > 如果你的组织有员工在工作或出差到中国**移动应用的通知**方法**Android 设备**在该国家/地区中不适用。 备用方法应可为这些用户。
 
-### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
+### <a name="verification-code-from-mobile-app"></a>通过移动应用发送的验证码
 
 Microsoft Authenticator 应用或其他第三方应用可用作生成 OATH 验证码所需的软件令牌。 输入用户名和密码后，在登录屏幕中输入该应用提供的代码。 验证码提供了第二种形式的身份验证。
 
@@ -165,7 +165,7 @@ OATH 硬件令牌目前作为公共预览版的一部分受支持。 有关预�
 获取令牌后，必须以逗号分隔值 (CSV) 文件格式将其上传，包括 UPN、序列号、密钥、时间间隔、制造商以及型号，如下所示。
 
 ```csv
-upn,serial number,secret key,timeinterval,manufacturer,model
+upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```
 

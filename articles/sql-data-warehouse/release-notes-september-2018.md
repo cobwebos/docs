@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库发行说明（2018 年 9 月）| Microsoft Docs
 description: Azure SQL 数据仓库发行说明。
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 10/08/2018
-ms.author: mausher
-ms.reviewer: twounder
-ms.openlocfilehash: bc559a1224aace2ee599c24c8dce07a6d55173fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: 5041458fdc3c6a49c59f2c4c476db71098531419
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474958"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912155"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 9 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 9 月发行的版本中所引入的新功能和所做的更改。
@@ -99,7 +99,7 @@ Commands completed successfully.
 
 ## <a name="bug-fixes"></a>Bug 修复
 
-| 标题 | 描述 |
+| 职务 | 描述 |
 |:---|:---|
 | **修复了有关创建唯一约束分发的统计信息的问题** | 此修补程序解决了运行仅指定表（表已定义约束）的 UPDATE STATISTICS 时遇到的错误。 |
 | **修复了有关对外部表编译查询的问题** | 此修补程序解决了影响涉及外部表的查询编译时间的缺陷。|

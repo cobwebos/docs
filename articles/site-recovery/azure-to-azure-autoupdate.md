@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/29/2098
+ms.date: 05/20/2019
 ms.author: rajanaki
-ms.openlocfilehash: aa135fef2850a692d45d932c15d4be74ccba5724
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925702"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922192"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务的自动更新
 
@@ -520,7 +520,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 如果无法启用自动更新，请参阅以下常见错误和建议的操作：
 
-- **错误**：你没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。
+- **错误**：你没有权限创建 Azure 运行方式帐户(服务主体)并向服务主体授予参与者角色。
 
    **建议的操作**:请确保登录的帐户被指定为参与者，然后重试。 中的所需的权限部分，请参阅[使用门户创建 Azure AD 应用程序和服务主体可访问资源的](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)有关分配权限的详细信息。
  
@@ -535,3 +535,14 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 - **错误**：找不到运行方式帐户。 以下某一内容已删除或未创建 - Azure Active Directory 应用程序、服务主体、角色、自动化证书资产、自动化连接资产；或者证书和连接的指纹不同。 
 
     **建议的操作**:删除，然后[重新创建运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。
+
+-  **错误**：作为证书使用自动化帐户的 Azure 运行时即将过期。 
+
+    创建运行方式帐户的自签名的证书过期的创建日期起一年。 可以在该证书过期之前的任何时间续订。 如果您已签名电子邮件通知，您还将需要你采取措施时收到电子邮件。 此错误将显示 2 个月到期日期之前，将更改为严重错误，如果证书已过期。 证书到期后，自动更新会起作用之前续订相同。
+
+   **建议的操作**:单击修复，然后选择续订证书若要解决此问题。
+    
+   ![renew-cert](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+
+> [!NOTE]
+> 后续订证书，请刷新页面，以便更新的当前状态。

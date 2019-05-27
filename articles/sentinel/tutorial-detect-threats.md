@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 319ec5d09a6daddb5c1fc36f680ee6d0d856e337
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6cb40f8c9f1ee85848b5e3db311d0fb652ec1bc3
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205428"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921813"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>教程：检测到威胁 Azure Sentinel 预览版
 
@@ -59,6 +59,10 @@ ms.locfileid: "65205428"
         | where OperationName == "Create or Update Virtual Machine" or OperationName == "Create Deployment"
         | where ActivityStatus == "Succeeded"
         | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+
+   > [!NOTE]
+   > 查询长度应介于 1 到 10000 个字符之间并且不能包含"搜索 *"和"union *"。
+
 
 5. 在中**实体映射**部分中，使用下的字段**实体类型**在查询中的列映射到由 Azure Sentinel 识别实体字段。 对于每个字段映射到相应的实体字段的 Log Analytics 中创建的查询中的相关列。 选择下面的相关列名称**属性**。 每个实体包含多个字段，例如 SID、 GUID，等等。可以将根据任何字段，而不仅仅是上部级别实体的实体映射。
 

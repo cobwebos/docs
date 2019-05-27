@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: 3294eda4d9330332bf23c3a8f1804f067373bf7a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: cf414cf08771090990775d124e27222e51f786e2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528248"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122023"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - Resource Manager，不同订阅
 
@@ -314,7 +314,7 @@ ms.locfileid: "59528248"
    ```
 
 2. 注销用户 A 的 Azure 登录，然后以用户 B 的身份登录。
-3. 运行以下命令：
+3. 请执行以下命令：
 
    ```azurecli-interactive
    az group delete --name myResourceGroupB --yes
@@ -329,7 +329,7 @@ ms.locfileid: "59528248"
    ```
 
 2. 注销用户 A 的 Azure 登录，然后以用户 B 的身份登录。
-3. 运行以下命令：
+3. 请执行以下命令：
 
    ```powershell
    Remove-AzResourceGroup -Name myResourceGroupB -force

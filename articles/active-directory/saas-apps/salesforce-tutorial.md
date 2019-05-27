@@ -17,11 +17,11 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27a61205426cbf43fd3b3b549909ffa13ff07dc7
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500356"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65903803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>教程：Azure Active Directory 与 Salesforce 集成
 
@@ -56,7 +56,7 @@ ms.locfileid: "59500356"
 
 若要配置 Salesforce 与 Azure AD 的集成，需要从库中将 Salesforce 添加到托管的 SaaS 应用列表。
 
-**若要从库中添加 Salesforce，请执行以下步骤：**
+若要从库中添加 Salesforce，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -112,15 +112,15 @@ ms.locfileid: "59500356"
 
     a. 在“登录 URL”文本框中，使用以下模式键入值：
 
-    企业帐户： `https://<subdomain>.my.salesforce.com`
+    企业帐户：`https://<subdomain>.my.salesforce.com`
 
-    开发人员帐户： `https://<subdomain>-dev-ed.my.salesforce.com`
+    开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
 
     b. 在“标识符”文本框中，使用以下模式键入值：
 
-    企业帐户： `https://<subdomain>.my.salesforce.com`
+    企业帐户：`https://<subdomain>.my.salesforce.com`
 
-    开发人员帐户： `https://<subdomain>-dev-ed.my.salesforce.com`
+    开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Salesforce 客户端支持团队](https://help.salesforce.com/support)获取这些值。
@@ -255,6 +255,6 @@ ms.locfileid: "59500356"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [配置用户预配](salesforce-provisioning-tutorial.md)

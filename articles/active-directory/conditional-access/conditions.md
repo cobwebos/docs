@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 05/17/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9da23b0c0b0b0c0bfc238b1504811a9c1c55a9ef
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2caedeb5cd4d0f920ffa49b33b0dca8bea9938cb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785381"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861545"
 ---
-# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？ 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？
 
-使用 [Azure Active Directory (Azure AD) 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)，可以控制用户访问云应用的方式。 在条件访问策略中，定义触发策略的诱因（“出现这种情况时”）的响应（“执行此操作”）。 
+使用 [Azure Active Directory (Azure AD) 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)，可以控制用户访问云应用的方式。 在条件访问策略中，定义触发策略的诱因（“出现这种情况时”）的响应（“执行此操作”）。
 
 ![原因和响应](./media/conditions/10.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "65785381"
 ![条件访问策略](./media/conditions/61.png)
 
 
-不会应用未在条件访问策略中配置的条件。 要将条件访问策略应用到环境，某些条件是[必需的](best-practices.md)。 
+不会应用未在条件访问策略中配置的条件。 要将条件访问策略应用到环境，某些条件是[必需的](best-practices.md)。
 
 本文概述条件，以及如何在条件访问策略中使用条件。 
 
@@ -73,7 +73,7 @@ ms.locfileid: "65785381"
 > [!NOTE]
 > 可以从策略中排除特定的应用。 但是，这些应用仍受到应用于它们访问的服务的策略的限制。
 
-**用户操作**是用户可以执行的任务。 当前支持的唯一操作是**注册安全信息 （预览版）**，它允许用户注册其安全信息时，强制执行条件性访问策略。
+**用户操作**是用户可以执行的任务。 当前支持的唯一操作是**注册安全信息 （预览版）**，它允许条件性访问策略强制执行时组合注册为启用的用户尝试注册其安全信息。 可在本文中，找到更多信息[启用结合安全信息注册 （预览版）](../authentication/howto-registration-mfa-sspr-combined.md)。
 
 ## <a name="sign-in-risk"></a>登录风险
 
@@ -168,7 +168,7 @@ ms.locfileid: "65785381"
 
 - 未在策略中配置其他条件。 但是，可以缩小此条件的范围，使之仅应用到[支持的平台](technical-reference.md#device-platform-condition)。
  
-    ![仅将策略应用到支持的平台](./media/conditions/33.png)
+    ![将策略仅应用到受支持的平台](./media/conditions/33.png)
 
 
 如果系统因为要求使用[托管设备](require-managed-devices.md)而阻止某些用户的访问，则受影响的用户会收到一封引导他们使用 Intune 的邮件。 
