@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/25/2018
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: d53d3ad077d07fd63063429018306be7d40dc024
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 21ec3ea70e495364e40e492a5d0f9375e5c5d3e3
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34663999"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66139978"
 ---
 1. 登录到 [Azure 门户]。
 
@@ -29,7 +29,7 @@ ms.locfileid: "34663999"
 
 6. 在“资源组”下，选择现有资源组，_或_创建新组（使用与应用相同的名称）。
 
-7. 单击“创建”。 稍等几分钟，等服务部署成功后再继续。 查看门户标题中的通知（铃铛）图标以获取状态更新。
+7. 单击**创建**。 稍等几分钟，等服务部署成功后再继续。 查看门户标题中的通知（铃铛）图标以获取状态更新。
 
 <!-- Images. -->
 [quickstart]: ./media/app-service-mobile-dotnet-backend-create-new-service/search-mobile-apps-quickstart.png

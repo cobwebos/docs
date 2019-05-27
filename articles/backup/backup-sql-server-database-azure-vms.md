@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: ae1f5f9148fa516c98d78afdd57887d4279f92dc
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.openlocfilehash: 2fba8b0056c80a62837682a6820b68f71fba9ea8
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827686"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952936"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -51,7 +51,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
 - **允许 Azure 数据中心 IP 范围**。 此选项允许[IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的下载中。 若要访问的网络安全组 (NSG)，请使用 Set-azurenetworksecurityrule cmdlet。 如果您允许列表仅特定于区域的 Ip，你将还需要列入允许列表 Azure Active Directory (Azure AD) 服务标记来启用身份验证。
 
-- **允许访问使用 NSG 标记**。 如果使用 Nsg 来限制连接，此选项将规则添加到 NSG，允许通过 AzureBackup 标记的 Azure 备份对出站访问。 除了此标记，还将需要对应[规则](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)Azure ad 和 Azure 存储，以允许进行身份验证和数据传输的连接。 仅在 PowerShell 上目前已 AzureBackup 标记。 若要通过使用 AzureBackup 标记创建一个规则：
+- **允许访问使用 NSG 标记**。 如果使用 Nsg 来限制连接，此选项将规则添加到 NSG，允许通过 AzureBackup 标记的 Azure 备份对出站访问。 除了此标记，还将需要对应[规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)Azure ad 和 Azure 存储，以允许进行身份验证和数据传输的连接。 仅在 PowerShell 上目前已 AzureBackup 标记。 若要通过使用 AzureBackup 标记创建一个规则：
 
     - 添加 Azure 帐户凭据和更新国家/地区云<br/>
     `Add-AzureRmAccount`
@@ -67,7 +67,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
   - 保存 NSG<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
-- **允许使用 Azure 防火墙标记访问**。 如果正在使用 Azure 防火墙，创建一个应用程序规则使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/en-us/azure/firewall/fqdn-tags)。 这允许对 Azure 备份的出站访问。
+- **允许使用 Azure 防火墙标记访问**。 如果正在使用 Azure 防火墙，创建一个应用程序规则使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)。 这允许对 Azure 备份的出站访问。
 - **部署 HTTP 代理服务器将流量路由到**。 Azure VM 上备份 SQL Server 数据库，请在 VM 上的备份扩展使用 HTTPS Api 将管理命令发送到 Azure 备份和到 Azure 存储的数据。 备份扩展也使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 扩展是配置为向公共 internet 访问的唯一组件。
 
 连接选项包括以下优点和缺点：

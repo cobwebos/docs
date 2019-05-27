@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 910c593c9277efeaf72dadc52740b1c918381e19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8c1513838fb848388946e18698a0410aa7a0332
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466032"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949623"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序  
 
@@ -60,7 +60,7 @@ ms.locfileid: "61466032"
 3. 修改代码隐藏文件
 4. 编译和测试应用程序
 
-### <a name="to-create-a-windows-store-project"></a>若要创建 Windows 应用商店项目，请执行以下操作
+### <a name="to-create-a-windows-store-project"></a>创建 Windows Store 项目
 
 1. 运行 Visual Studio；支持版本 2012 到 2015。
 1. 在“文件”菜单中，单击“新建”，并单击“项目”。
@@ -77,7 +77,7 @@ ms.locfileid: "61466032"
 
 1. 单击“确定”。
 
-### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>若要添加对平滑流式处理客户端 SDK 的引用，请执行以下操作
+### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>添加对平滑流式处理客户端 SDK 的引用
 
 1. 在解决方案资源管理器中，右键单击“SSPlayer”，并单击“添加引用”。
 1. 键入或选择以下值：
@@ -147,7 +147,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 在此 XAML 文件中，某些事件处理程序与控件关联。  必须定义这些事件处理程序。
 
-### <a name="to-modify-the-code-behind-file"></a>若要修改代码隐藏文件，请执行以下操作
+### <a name="to-modify-the-code-behind-file"></a>修改代码隐藏文件
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在该文件的顶部，添加以下 using 语句：
@@ -211,7 +211,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 ![创建平滑流式处理 Windows 应用商店应用程序时 Visual Studio 中的代码视图][CodeViewPic]
 
-### <a name="to-compile-and-test-the-application"></a>若要编译和测试应用程序，请执行以下操作
+### <a name="to-compile-and-test-the-application"></a>编译和测试应用程序
 
 1. 在“生成”菜单中，单击“配置管理器”。
 2. 更改“活动解决方案平台”以匹配开发平台。
@@ -239,7 +239,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 5. 添加滚动条相关的代码
 6. 编译和测试应用程序
 
-### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>若要注册平滑流式处理字节流处理程序并传递属性集，请执行以下操作
+### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>注册平滑流式处理字节流处理程序并传递属性集
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在该文件的开头，添加以下 using 语句：
@@ -284,7 +284,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
    ```
 6. 按 **CTRL+S** 保存文件。
 
-### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>若要添加自适应源管理器级别事件处理程序，请执行以下操作
+### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>添加自适应源管理器级别事件处理程序
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在 **MainPage** 类中，添加以下数据成员：
@@ -312,7 +312,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
    ```
 5. 按 **CTRL+S** 保存文件。
 
-### <a name="to-add-adaptive-source-level-event-handlers"></a>若要添加自适应源级别事件处理程序，请执行以下操作
+### <a name="to-add-adaptive-source-level-event-handlers"></a>添加自适应源级别事件处理程序
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在 **MainPage** 类中，添加以下数据成员：
@@ -363,7 +363,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 相同的事件也可以在自适应源管理器级别使用，因此可用于处理应用程序中所有媒体元素通用的功能。 每个 AdaptiveSource 包含其自身的事件，所有 AdaptiveSource 事件将级联在 AdaptiveSourceManager 下面。
 
-### <a name="to-add-media-element-event-handlers"></a>若要添加 MediaElement 事件处理程序，请执行以下操作
+### <a name="to-add-media-element-event-handlers"></a>添加媒体元素事件处理程序
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在 **MainPage** 类的末尾，添加以下事件处理程序：
@@ -399,7 +399,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
    ```
 4. 按 **CTRL+S** 保存文件。
 
-### <a name="to-add-slider-bar-related-code"></a>若要添加与滚动条相关的代码，请执行以下操作
+### <a name="to-add-slider-bar-related-code"></a>添加与滚动条相关的代码
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在该文件的开头，添加以下 using 语句：
@@ -507,7 +507,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
    ```
 
    > [!NOTE]
-   > CoreDispatcher 用于从非 UI 线程对 UI 线程作出更改。 如果调度程序线程出现瓶颈，开发人员可以选择使用他（她）想要更新的 UI 元素提供的调度程序。  例如：
+   > CoreDispatcher 用于从非 UI 线程对 UI 线程作出更改。 如果出现调度程序线程的瓶颈，开发人员可以选择使用提供的 UI 元素他们想要更新的调度程序。  例如:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -532,7 +532,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
    ```
 8. 按 **CTRL+S** 保存文件。
 
-### <a name="to-compile-and-test-the-application"></a>若要编译和测试应用程序，请执行以下操作
+### <a name="to-compile-and-test-the-application"></a>编译和测试应用程序
 
 1. 按 **F6** 编译项目。 
 2. 按 **F5** 运行应用程序。
@@ -549,7 +549,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 2. 修改代码隐藏文件
 3. 编译和测试应用程序
 
-### <a name="to-modify-the-xaml-file"></a>若要修改 XAML 文件，请执行以下操作
+### <a name="to-modify-the-xaml-file"></a>修改 XAML 文件
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看设计器”。
 2. 找到 &lt;Grid.RowDefinitions&gt;，并按如下所示修改 RowDefinitions：
@@ -592,7 +592,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
    ```
 4. 按 **CTRL+S** 保存更改。
 
-### <a name="to-modify-the-code-behind-file"></a>若要修改代码隐藏文件，请执行以下操作
+### <a name="to-modify-the-code-behind-file"></a>修改代码隐藏文件
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在 SSPlayer 命名空间中添加一个新类：
@@ -809,7 +809,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
         }
    ```
 
-### <a name="to-compile-and-test-the-application"></a>若要编译和测试应用程序，请执行以下操作
+### <a name="to-compile-and-test-the-application"></a>编译和测试应用程序
 
 1. 按 **F6** 编译项目。 
 2. 按 **F5** 运行应用程序。
@@ -827,7 +827,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 2. 修改代码隐藏文件
 3. 编译和测试应用程序
 
-### <a name="to-modify-the-xaml-file"></a>若要修改 XAML 文件，请执行以下操作
+### <a name="to-modify-the-xaml-file"></a>修改 XAML 文件
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看设计器”。
 2. 找到名为 **gridStreamAndBitrateSelection** 的 &lt;Grid&gt; 标记，并在该标记的末尾追加以下代码：
@@ -847,7 +847,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          </ListBox>
          </StackPanel>
    ```
-3. 按 **CTRL+S** 保存更改
+3. 按**CTRL + S**以保存所做的更改
 
 ### <a name="to-modify-the-code-behind-file"></a>若要修改代码隐藏文件，请执行以下操作
 
@@ -1013,7 +1013,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          }
    ```
    
-### <a name="to-compile-and-test-the-application"></a>若要编译和测试应用程序，请执行以下操作
+### <a name="to-compile-and-test-the-application"></a>编译和测试应用程序
 
 1. 按 **F6** 编译项目。 
 2. 按 **F5** 运行应用程序。
