@@ -9,11 +9,11 @@ ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d4f57eca89cbb68d61546c6d5ce5bcd04f9256e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477957"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114949"
 ---
 Azure 存储提供多种类型的存储帐户。 每个类型支持不同的功能，并具有自身的定价模型。 在创建存储帐户之前，请考虑到这些差异，以确定最适合应用程序的帐户类型。 存储帐户的类型包括：
 
@@ -27,11 +27,11 @@ Azure 存储提供多种类型的存储帐户。 每个类型支持不同的功�
 
 | 存储帐户类型 | 支持的服务                       | 支持的性能层      | 支持的访问层         | 复制选项               | 部署模型<sup>1</sup> | 加密<sup>2</sup> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| 常规用途 V2   | Blob、文件、队列、表和磁盘       | Standard、 Premium<sup>5</sup> | 热、冷、存档<sup>3</sup> | LRS、ZRS<sup>4</sup>、GRS、RA-GRS | 资源管理器             | 加密              |
-| 常规用途 V1   | Blob、文件、队列、表和磁盘       | Standard、 Premium<sup>5</sup> | 不适用                            | LRS、GRS、RA-GRS                  | 资源管理器、经典    | 加密              |
-| 块 blob 存储   | Blob（仅限块 Blob 和追加 Blob） | 高级                       | 不适用                            | LRS                               | 资源管理器             | 加密              |
-| 文件存储 （预览版）   | 仅限文件 | 高级                       | 不适用                            | LRS                               | 资源管理器             | 加密              |
-| Blob 存储         | Blob（仅限块 Blob 和追加 Blob） | 标准                      | 热、冷、存档<sup>3</sup> | LRS、GRS、RA-GRS                  | 资源管理器             | 加密              |
+| 常规用途 V2   | Blob、文件、队列、表和磁盘       | Standard、 Premium<sup>5</sup> | 热、冷、存档<sup>3</sup> | LRS、ZRS<sup>4</sup>、GRS、RA-GRS | 资源管理器             | 已加密              |
+| 常规用途 V1   | Blob、文件、队列、表和磁盘       | Standard、 Premium<sup>5</sup> | 不适用                            | LRS、GRS、RA-GRS                  | 资源管理器、经典    | 已加密              |
+| 块 blob 存储   | Blob（仅限块 Blob 和追加 Blob） | 高级                       | 不适用                            | LRS                               | 资源管理器             | 已加密              |
+| 文件存储 （预览版）   | 仅限文件 | 高级                       | 不适用                            | LRS                               | 资源管理器             | 已加密              |
+| Blob 存储         | Blob（仅限块 Blob 和追加 Blob） | 标准                      | 热、冷、存档<sup>3</sup> | LRS、GRS、RA-GRS                  | 资源管理器             | 已加密              |
 
 <sup>1</sup>建议使用 Azure 资源管理器部署模型。 仍将在某些位置创建使用经典部署模型的存储帐户，继续支持现有的经典帐户。 有关详细信息，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../articles/azure-resource-manager/resource-manager-deployment-model.md)。
 

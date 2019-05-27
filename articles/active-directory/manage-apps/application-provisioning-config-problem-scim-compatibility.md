@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: mimart
-ms.reviewer: asmalser
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 952853b32b5fadb980e9e96a7c56c05ac63d9931
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784597"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963174"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -38,10 +38,10 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 | **SCIM 2.0 合规性问题** |  **是否已修复？** | **修复日期**  |  
 |---|---|---|
-| Azure AD 要求“/scim”位于应用程序的 SCIM 终结点 URL 的根路径中  | 是  |  2018 年 12 月 18 日 | 
-| 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 
-|  多值属性的批量请求包含无效路径筛选器语法 | 是  |  2018 年 12 月 18 日  | 
-|  组创建请求包含无效架构 URI | 是  |  2018 年 12 月 18 日  |  
+| Azure AD 要求“/scim”位于应用程序的 SCIM 终结点 URL 的根路径中  | “是”  |  2018 年 12 月 18 日 | 
+| 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  “是”  | 2018 年 12 月 18 日  | 
+|  多值属性的批量请求包含无效路径筛选器语法 | “是”  |  2018 年 12 月 18 日  | 
+|  组创建请求包含无效架构 URI | “是”  |  2018 年 12 月 18 日  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>所述服务修补程序是否会自动应用于预先存在的 SCIM 应用？
 
@@ -53,7 +53,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>是否可以迁移现有的基于 SCIM 的用户预配作业以包含最新的服务修补程序？
 
-可以。 如果已经在为单一登录使用此应用程序实例，并需要迁移现有预配作业以包含最新修补程序，请执行下方程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器从现有 SCIM 应用删除旧的预配作业，以及如何创建展示新行为的新预配作业。
+是的。 如果已经在为单一登录使用此应用程序实例，并需要迁移现有预配作业以包含最新修补程序，请执行下方程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器从现有 SCIM 应用删除旧的预配作业，以及如何创建展示新行为的新预配作业。
 
 > [!NOTE]
 > 如果应用程序仍处于开发阶段，并且尚未针对单一登录或用户预配进行部署，最简单的解决办法是在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分中删除应用程序条目，然后使用“创建应用程序”>“非库”选项直接添加新应用程序条目。 这是执行以下程序的替代方法。
@@ -96,7 +96,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>是否可以添加具有旧用户预配行为的新非库应用？
 
-可以。 如果已将应用程序编码为展示修补程序发布前已经存在的旧行为，并需要部署其新实例，请执行以下程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器创建展示旧行为的 SCIM 预配作业。
+是的。 如果已将应用程序编码为展示修补程序发布前已经存在的旧行为，并需要部署其新实例，请执行以下程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器创建展示旧行为的 SCIM 预配作业。
  
 1. 登录 Azure 门户： https://portal.azure.com。
 2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”>“创建应用程序”部分，创建新的“非库”应用程序。

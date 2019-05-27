@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Cosmos 容器中的合成分区键
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 6b3499c36ae7abd03c4a1f1ca3a3a46e2c315120
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1fd436746dcd2e93a1699ac5c68965213c74580e
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60937094"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978862"
 ---
 # <a name="create-a-synthetic-partition-key"></a>创建合成分区键
 

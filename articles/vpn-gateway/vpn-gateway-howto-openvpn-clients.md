@@ -5,22 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 1/15/2019
+ms.date: 5/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: d1e57e623e3e95f3d71e895c49c928f00aa0ad46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fdfabf328ddfa6b5e4b578be5a1b329cb3219a18
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274666"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989079"
 ---
-# <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>为 Azure VPN 网关配置 OpenVPN 客户端（预览）
+# <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>配置 Azure VPN 网关 OpenVPN 客户端
 
 本文可帮助你配置**OpenVPN® 协议**客户端。
-
-> [!IMPORTANT]
-> 此公共预览版在提供时没有附带服务级别协议，不应该用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -138,6 +134,6 @@ ms.locfileid: "59274666"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你想要能够访问另一个 VNet （生产） 中的资源的 VPN 客户端，然后按照说明[VNet 到 VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)文章设置 vnet 到 vnet 连接。 确保在网关和连接中启用 BGP，否则流量不会流动。
+如果你想要能够访问另一个 VNet 中的资源的 VPN 客户端，然后按照说明[VNet 到 VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)文章设置 vnet 到 vnet 连接。 确保在网关和连接中启用 BGP，否则流量不会流动。
 
 **"OpenVPN"是 OpenVPN Inc.的商标**

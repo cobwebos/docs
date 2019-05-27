@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 05/20/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: df86c3723a16a0ed6d090e940684a5a1737aeae5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2553d08b55aff45e52b9d8c5a64db141a668eb62
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020939"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967108"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>创建 Cloudyn 支持请求
 
 如果找不到所需信息，可创建支持请求。 或者，如果怀疑问题为服务中断或 bug 时，也可创建支持请求。 创建支持票证时，确保针对每个单一问题进行创建。 执行此操作可帮助快速路由所报告的问题。
 
-## <a name="open-a-support-ticket"></a>开具支持票证
+## <a name="open-a-support-ticket"></a>打开支持票证
 
 1. 登录 Azure 门户 (https://portal.azure.com) 。
 2. 单击顶部导航栏上的“帮助”。

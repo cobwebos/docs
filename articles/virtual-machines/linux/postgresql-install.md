@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 76f1ddeebb173bf19b15753d12e4374e6365bf8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5fe5e819c4f1079b6eb1fa8bb19d337ecfed600d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474106"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955148"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
@@ -232,7 +232,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 ![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>更新表中的数据
-使用以下命令来更新表中的数据。 在此示例中，Sandy 已经确认将出席活动，因此我们将她的回复从“N”更改为“Y”：
+使用以下命令来更新表中的数据。 对于此示例，Sandy 已经确认，它们将出席活动，因此我们将更改为"Y"的 RSVP 从"N":
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

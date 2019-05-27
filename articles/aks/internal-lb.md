@@ -2,18 +2,17 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中创建内部负载均衡器
 description: 了解如何通过 Azure Kubernetes 服务 (AKS) 创建和使用内部负载均衡器以公开服务。
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-origin.date: 03/04/2019
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: a26eab83f567a46f613e3bfda95fd99aba2b79c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/04/2019
+ms.author: iainfou
+ms.openlocfilehash: 1b5d18a3dfd1181fd06b58fd58f496457e24b58e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465540"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956371"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
 
@@ -27,6 +26,8 @@ ms.locfileid: "60465540"
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+
+AKS 群集服务主体必须有权管理网络资源，如果使用现有子网或资源组。 一般情况下，分配*网络参与者*到委派资源服务主体的角色。 有关权限的详细信息，请参阅[到其他 Azure 资源访问的委托 AKS][aks-sp]。
 
 ## <a name="create-an-internal-load-balancer"></a>创建内部负载均衡器
 
@@ -145,10 +146,11 @@ spec:
 
 <!-- LINKS - Internal -->
 [advanced-networking]: configure-azure-cni.md
-[az-aks-show]: https://docs.azure.cn/zh-cn/cli/aks?view=azure-cli-latest#az-aks-show
-[az-role-assignment-create]: https://docs.azure.cn/zh-cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
 [use-kubenet]: configure-kubenet.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[install-azure-cli]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[install-azure-cli]: /cli/azure/install-azure-cli
+[aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources

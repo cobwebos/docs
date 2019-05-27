@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
 ms.openlocfilehash: 6280ca55023fc604e70b62cabdc30cca6409d9e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698481"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127792"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -22,7 +22,7 @@ ms.locfileid: "59698481"
 ## <a name="install-azure-powershell"></a>安装 Azure PowerShell
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要开始，[安装最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
+若要开始操作，请[安装最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -40,7 +40,7 @@ ms.locfileid: "59698481"
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
 
-3. 使用**新建 AzRecoveryServicesVault** cmdlet 创建新的保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
+3. 使用 **New-AzRecoveryServicesVault** cmdlet 创建新的保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
@@ -60,9 +60,9 @@ ms.locfileid: "59698481"
 
 ## <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
 
-使用**Get AzRecoveryServicesVault**查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
+使用 **Get-AzRecoveryServicesVault** 查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
 
-运行命令， **Get AzRecoveryServicesVault**，列出订阅中的所有保管库。
+运行 **Get-AzRecoveryServicesVault** 命令即可列出订阅中的所有保管库。
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -200,7 +200,7 @@ Server properties updated successfully.
 
 发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。
 
-必须通过选择生成安全 pin **Generate**下**设置** > **属性** > **的安全PIN**中**恢复服务保管库**Azure 门户的一部分。 然后，使用此信息作为`generatedPIN`命令中：
+必须在 Azure 门户的“恢复服务保管库”部分的“设置” > “属性” > “安全 PIN”下选择“生成”来生成一个安全 PIN。 然后，将其用作命令中的 `generatedPIN`：
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force

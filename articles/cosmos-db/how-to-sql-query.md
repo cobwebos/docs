@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4d1ef650a3f12d8b97cbad3e9aecf31c8b81a038
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bbca0239053b8f3164055a07b376abc597b0348f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796152"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954134"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 SQL 查询示例
 
@@ -550,13 +550,13 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
 
 | **Op** | 未定义 | Null | **Boolean** | **数字** | **String** | **Object** | 数组 |
 |---|---|---|---|---|---|---|---|
-| 未定义 | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| Null | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boolean** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
-| **数字** | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined |
-| **String** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
-| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
-| 数组 | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
+| 未定义 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 |
+| Null | 未定义的 | **正常** | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 |
+| **Boolean** | 未定义的 | 未定义的 | **正常** | 未定义的 | 未定义的 | 未定义的 | 未定义的 |
+| **数字** | 未定义的 | 未定义的 | 未定义的 | **正常** | 未定义的 | 未定义的 | 未定义的 |
+| **String** | 未定义的 | 未定义的 | 未定义的 | 未定义的 | **正常** | 未定义的 | 未定义的 |
+| **Object** | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | **正常** | 未定义的 |
+| 数组 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | **正常** |
 
 对于 `>`、`>=`、`!=`、`<` 和 `<=` 等比较运算符，跨类型的比较或者两个对象或数组之间的比较会生成 `Undefined`。  
 
@@ -568,27 +568,27 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
 
 **OR 运算符**
 
-| 或 | True | False | Undefined |
+| OR | True | False | 未定义的 |
 | --- | --- | --- | --- |
 | True |True |True |True |
-| False |True |False |Undefined |
-| Undefined |True |Undefined |Undefined |
+| False |True |False |未定义的 |
+| 未定义的 |True |未定义的 |未定义的 |
 
 **AND 运算符**
 
-| AND | True | False | Undefined |
+| AND | True | False | 未定义的 |
 | --- | --- | --- | --- |
 | True |True |False |Undefined |
 | False |False |False |False |
-| Undefined |Undefined |False |Undefined |
+| 未定义的 |未定义的 |False |未定义的 |
 
 **NOT 运算符**
 
-| NOT |  |
+| 非 |  |
 | --- | --- |
 | True |False |
 | False |True |
-| Undefined |Undefined |
+| 未定义的 |未定义的 |
 
 ## <a name="between-keyword"></a>BETWEEN 关键字
 
@@ -869,7 +869,7 @@ SQL API 的一个重要功能是创建数组和对象。 以上示例创建了�
     ]
 ```
 
-下面的 SQL 查询是在子查询中使用数组中的另一个示例。 此查询获取数组中的子对象的所有非重复给定名称。
+下面的 SQL 查询是在子查询中使用数组中的另一个示例。 此查询，获取一个数组中的子对象的所有非重复给定名称。
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
@@ -1986,7 +1986,7 @@ Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最�
 
 - 常量值，包括评估查询时基元数据类型的常量值。
   
-- 引用对象或数组元素的属性的属性/数组索引表达式。 例如：
+- 引用对象或数组元素的属性的属性/数组索引表达式。 例如:
   
   ```
     family.Id;

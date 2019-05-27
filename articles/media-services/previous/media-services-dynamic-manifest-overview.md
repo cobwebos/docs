@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 229f89a8803f089c24981f56e00e36efe96de3aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68eeb40e905d089601208d9fc181042c7b434843
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61465077"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956803"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
@@ -73,14 +73,14 @@ ms.locfileid: "61465077"
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>动态清单
-在客户端需要比默认资产的清单文件中描述的内容更加具有灵活性时，这里具有[方案](media-services-dynamic-manifest-overview.md#scenarios)。 例如：
+在客户端需要比默认资产的清单文件中描述的内容更加具有灵活性时，这里具有[方案](media-services-dynamic-manifest-overview.md#scenarios)。 例如:
 
 * 特定于设备：只传送内容播放设备所支持的指定再现内容和/或指定的语言轨道（“再现内容筛选”）。 
 * 缩小清单以显示实时事件的子剪辑（“子剪辑筛选”）。
 * 修剪视频开头（“修剪视频”）。
 * 调整演播窗口，以便在播放器中提供长度有限的 DVR 窗口（“调整演播窗口”）。
 
-为实现这种灵活性，媒体服务会根据预定义的 **筛选器** 提供 [动态清单](media-services-dynamic-manifest-overview.md#filters)。  在定义筛选器后，客户端会使用筛选器来流式传输视频的特定再现内容或子剪辑。 客户端会在流 URL 中指定筛选器。 筛选器可应用到[动态打包](media-services-dynamic-packaging-overview.md)支持的自适应比特率流式处理协议：HLS、MPEG-DASH 和平滑流式处理。 例如：
+为实现这种灵活性，媒体服务会根据预定义的 **筛选器** 提供 [动态清单](media-services-dynamic-manifest-overview.md#filters)。  在定义筛选器后，客户端会使用筛选器来流式传输视频的特定再现内容或子剪辑。 客户端会在流 URL 中指定筛选器。 筛选器可应用到[动态打包](media-services-dynamic-packaging-overview.md)支持的自适应比特率流式处理协议：HLS、MPEG-DASH 和平滑流式处理。 例如:
 
 包含筛选器的 MPEG DASH URL
 

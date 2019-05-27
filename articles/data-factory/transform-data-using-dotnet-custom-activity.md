@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904570"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66165963"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
@@ -104,14 +104,14 @@ ms.locfileid: "58904570"
 | :-------------------- | :--------------------------------------- | :------- |
 | 名称                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
-| type                  | 对于自定义活动，活动类型为 **Custom**。 | 是      |
-| linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
-| command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | 是      |
+| 类型                  | 对于自定义活动，活动类型为 **Custom**。 | “是”      |
+| linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | “是”      |
+| command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | “是”      |
 | resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否 &#42;       |
 | folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否 &#42;       |
-| referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | 否       |
-| extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | 否       |
-| retentionTimeInDays | 提交以供自定义活动的文件保留时间。 默认值为 30 天。 | 否 |
+| referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | “否”       |
+| extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | “否”       |
+| retentionTimeInDays | 提交以供自定义活动的文件保留时间。 默认值为 30 天。 | “否” |
 
 &#42; 属性 `resourceLinkedService` 和 `folderPath` 必须同时指定或同时省略。
 
@@ -310,7 +310,7 @@ Activity Error section:
 
 ## <a name="retrieve-securestring-outputs"></a>检索 SecureString 输出
 
-指定为 *SecureString* 类型的敏感属性值（如本文中的某些示例所示）在数据工厂用户界面的“监视”选项卡中被屏蔽。  但是，在实际的管道执行中，*SecureString* 属性在 `activity.json` 文件中以纯文本形式序列化为 JSON。 例如：
+指定为 *SecureString* 类型的敏感属性值（如本文中的某些示例所示）在数据工厂用户界面的“监视”选项卡中被屏蔽。  但是，在实际的管道执行中，*SecureString* 属性在 `activity.json` 文件中以纯文本形式序列化为 JSON。 例如:
 
 ```json
 "extendedProperties": {

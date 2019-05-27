@@ -1,23 +1,17 @@
 ---
 title: Azure 资源管理器模板函数 - 资源 | Microsoft Docs
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/09/2019
+ms.date: 05/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4d5e6d20cb93c339d75c12ca1c0f56eaa5cc8cdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dcad4b988f37d46a0b843fbf905e18011bc4e313
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60783001"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990763"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -45,21 +39,21 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |string |资源的唯一标识符。 |
-| apiVersion |是 |string |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
-| functionValues |否 |对象 | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 | 
+| resourceName 或 resourceIdentifier |“是” |string |资源的唯一标识符。 |
+| apiVersion |“是” |string |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
+| functionValues |“否” |对象 | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 | 
 
 ### <a name="implementations"></a>实现形式
 
 下表中显示 list* 的可能用途。
 
-| 资源类型 | 函数名称 |
+| 资源类型 | 函数名 |
 | ------------- | ------------- |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
-| Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
+| Microsoft.Cache/Redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
@@ -175,7 +169,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 使用资源名称或 [resourceId 函数](#resourceid)来指定资源。 在部署被引用资源的同一模板中使用列表函数时，请使用资源名称。
 
-如果您使用**列表**中有条件地部署，该函数的资源的函数求值时，即使未部署资源。 如果收到一个错误**列表**函数是指不存在的资源。 使用**如果**函数以确保当存在相应的资源时，将仅评估该函数。 请参阅[如果函数](resource-group-template-functions-logical.md#if)如果使用的示例模板和与有条件地部署资源的列表。
+如果您使用**列表**中有条件地部署，该函数的资源的函数求值时，即使未部署资源。 如果收到一个错误**列表**函数是指不存在的资源。 使用**如果**函数以确保在部署资源时仅计算函数。 请参阅[如果函数](resource-group-template-functions-logical.md#if)如果使用的示例模板和与有条件地部署资源的列表。
 
 ### <a name="example"></a>示例
 
@@ -256,8 +250,8 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |是 |string |提供程序的命名空间 |
-| resourceType |否 |string |指定的命名空间中的资源类型。 |
+| providerNamespace |“是” |string |提供程序的命名空间 |
+| resourceType |“否” |string |指定的命名空间中的资源类型。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -331,9 +325,9 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 |
-| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 |
-| 'Full' |否 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
+| resourceName 或 resourceIdentifier |“是” |string |资源的名称或唯一标识符。 |
+| apiVersion |“否” |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 |
+| 'Full' |“否” |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -343,11 +337,11 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 reference 函数检索以前部署的资源或在当前模板中部署的资源的运行时状态。 本文展示了这两种方案的示例。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源时，请提供该资源的资源 ID 和 API 版本。 可以在[模板参考](/azure/templates/)中确定你的资源的有效 API 版本。
 
-reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。
+reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与一起使用时[属性迭代](resource-group-create-multiple.md#property-iteration)，可以使用引用功能为`input`因为表达式分配给资源属性。 无法将其用于`count`因为在解析引用功能之前，必须确定计数。
 
 如果在同一模板内预配了被引用资源且通过其名称（而非资源 ID）引用该资源，则使用 reference 函数会隐式声明一个资源依赖于另一个资源。 也不需要同时使用 dependsOn 属性。 只有当引用的资源已完成部署后，才会对函数求值。
 
-如果您使用**引用**中有条件地部署，该函数的资源的函数求值时，即使未部署资源。  如果收到一个错误**引用**函数是指不存在的资源。 使用**如果**函数以确保当存在相应的资源时，将仅评估该函数。 请参阅[如果函数](resource-group-template-functions-logical.md#if)示例模板，将使用，以及使用有条件地部署资源的引用。
+如果您使用**引用**中有条件地部署，该函数的资源的函数求值时，即使未部署资源。  如果收到一个错误**引用**函数是指不存在的资源。 使用**如果**函数以确保在部署资源时仅计算函数。 请参阅[如果函数](resource-group-template-functions-logical.md#if)示例模板，将使用，以及使用有条件地部署资源的引用。
 
 若要查看资源类型的属性名称和值，请创建一个模板，该模板返回 outputs 节中的对象。 如果有现有的该类型的资源，则模板只返回对象而不部署任何新资源。 
 
@@ -594,11 +588,11 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果资源是嵌套的）。 |
+| subscriptionId |“否” |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
+| resourceGroupName |“否” |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
+| resourceType |“是” |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |“是” |string |资源的名称。 |
+| resourceName2 |“否” |string |下一个资源名称段（如果资源是嵌套的）。 |
 
 ### <a name="return-value"></a>返回值
 

@@ -9,11 +9,11 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
 ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310840"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66114910"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
@@ -37,7 +37,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **在相同区域内同一个存储帐户上的两个文件共享之间复制数据是否有任何费用？**
 
-不是。 此过程不会产生任何费用。
+不。 此过程不会产生任何费用。
 
 **如何实现将整个存储帐户备份到其他存储帐户？**
 
@@ -193,7 +193,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **将存储帐户的复制从异地冗余存储更改到本地冗余存储是否有先决条件？**
 
-不是。 
+不。 
 
 如何访问 Azure 文件冗余存储？
 
@@ -276,7 +276,7 @@ AzCopy 安装在什么位置？
 
 -   如果使用的是读取访问异地冗余存储，可以随时从次要区域访问数据。 使用以下方法之一：  
       
-    - **AzCopy**：为 URL 中的存储帐户名追加“-secondary”以访问辅助终结点。 例如：  
+    - **AzCopy**：为 URL 中的存储帐户名追加“-secondary”以访问辅助终结点。 例如:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 

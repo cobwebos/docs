@@ -14,28 +14,28 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 032c4af0e36626881b514573cc4a5f966e8c2077
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: cd1db615b11259bcf1d8aff988d2817e08065ca2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510311"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991737"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>如何通过 Java 使用服务总线队列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-在本教程中，您将学习如何创建 Java 应用程序将消息发送到和从服务总线队列接收消息。 
+在本教程中，你将了解如何创建 Java 应用程序来向服务总线队列发送消息以及从中接收消息。 
 
 > [!NOTE]
 > 可在 [azure-service-bus 存储库](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)中的 GitHub 上找到 Java 示例。
 
 ## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 如果没有要处理的队列，按照步骤[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)项目创建的队列。
-    1. 阅读快速**概述**的服务总线**队列**。 
-    2. 创建服务总线**命名空间**。 
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
+    1. 阅读服务总线**队列**的快速**概述**。 
+    2. 创建一个服务总线**命名空间**。 
     3. 获取**连接字符串**。
-    4. 创建服务总线**队列**。
-3. 安装[用于 Java 的 Azure SDK][Azure SDK for Java]。 
+    4. 创建一个服务总线**队列**。
+3. 安装 [Azure SDK for Java][Azure SDK for Java]。 
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
@@ -182,6 +182,9 @@ public void run() throws Exception {
 还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁该消息并使它可再次被接收。
 
 如果在处理消息之后，发出 deleteMessage 请求之前，应用程序发生崩溃，该消息会在应用程序重新启动时重新传送给它。 此情况通常称作至少处理一次，即每条消息至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 通常可使用消息的 getMessageId 方法实现此操作，这在多个传送尝试中保持不变。
+
+> [!NOTE]
+> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 了解服务总线队列的基本信息后，请参阅[队列、主题和订阅][Queues, topics, and subscriptions]以获取更多信息。

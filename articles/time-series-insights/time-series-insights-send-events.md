@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2842a365cdf25a6b19f655f6397d62ecb9a723b0
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 48524020940149f6c67f4859f23c03eea140454b
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406862"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991478"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
 
@@ -28,31 +28,31 @@ ms.locfileid: "65406862"
 1. 若要了解如何创建事件中心，请参阅[事件中心文档](https://docs.microsoft.com/azure/event-hubs/)。
 1. 在搜索框中，搜索“事件中心”。 在返回的列表中选择“事件中心”。
 1. 选择事件中心。
-1. 在创建事件中心时，实际上要创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单中的“实体”下创建事件中心。  
+1. 在创建事件中心时，要创建事件中心命名空间。 如果你尚未创建事件中心的命名空间中的菜单上，在**实体**，创建事件中心。  
 
     [![事件中心的列表](media/send-events/updated.png)](media/send-events/updated.png#lightbox)
 
 1. 创建事件中心后，请在事件中心列表中选择它。
-1. 在菜单中的“实体”下，选择“事件中心”。
+1. 在菜单上，在**实体**，选择**事件中心**。
 1. 选择事件中心的名称对其进行配置。
 1. 在“实体”下选择“使用者组”，然后选择“使用者组”。
 
     [![创建使用者组](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
 
-1. 请确保创建一个使用者组，由时序见解事件源独占使用。
+1. 请确保您创建以独占方式由时序见解事件源的使用者组。
 
     > [!IMPORTANT]
-    > 请确保该使用者组没有被任何其他服务（例如 Azure 流分析作业或其他时序见解环境）使用。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用 $Default 作为使用者组，则其他读者可能会重复使用使用者组。
+    > 请确保此使用者组未由任何其他服务，如 Azure Stream Analytics 作业或另一个时序见解环境。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用 $Default 作为使用者组，则其他读者可能会重复使用使用者组。
 
-1. 在菜单中的“设置”下，选择“共享访问策略”，然后选择“添加”。
+1. 在菜单上，在**设置**，选择**共享访问策略**，然后选择**添加**。
 
     [![选择共享访问策略，然后选择添加按钮](media/send-events/shared-access-policy.png)](media/send-events/shared-access-policy.png#lightbox)
 
-1. 在“添加新的共享访问策略”窗格中，创建名为“MySendPolicy”的共享访问。 将使用此共享访问策略在本文后面的 C# 示例中发送事件。
+1. 在“添加新的共享访问策略”窗格中，创建名为“MySendPolicy”的共享访问。 使用此共享的访问策略，用于将事件发送C#本文后面的示例。
 
     [![在策略名称框中，输入 MySendPolicy](media/send-events/shared-access-policy-2.png)](media/send-events/shared-access-policy-2.png#lightbox)
 
-1. 在“声明”下选择“发送”复选框。
+1. 下**声明**，选择**发送**复选框。
 
 ## <a name="add-a-time-series-insights-instance"></a>添加时序见解实例
 
@@ -70,7 +70,7 @@ ms.locfileid: "65406862"
 
 1. 选择事件中心。
 
-1. 转到“共享访问策略” > “RootManageSharedAccessKey”。 复制连接字符串 - 主键的值。
+1. 转到“共享访问策略” > “RootManageSharedAccessKey”。 复制的值**连接字符串-主键**。
 
     [![复制主密钥连接字符串的值](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
 
@@ -81,7 +81,7 @@ ms.locfileid: "65406862"
 
 1. 选择“单击可启动”。 模拟器生成可以直接使用的实例 JSON。
 
-1. 返回到 Azure 门户中的事件中心。 上**概述**页中，会看到事件中心接收的新事件。
+1. 返回到 Azure 门户中的事件中心。 上**概述**页上，你将看到事件中心收到的新事件。
 
     [![显示度量值的事件中心的事件中心概述页](media/send-events/telemetry.png)](media/send-events/telemetry.png#lightbox)
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 427ba2b386810749810397afed8ef3f62dcf9217
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506624"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991917"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -45,9 +45,13 @@ ms.locfileid: "65506624"
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
 
+## <a name="march-2019"></a>2019 年 3 月
+
+已弃用 Azure 媒体服务媒体 Hyperlapse 预览功能。
+
 ## <a name="december-2018"></a>2018 年 12 月
 
-很快将停用 Azure 媒体服务的媒体 Hyperlapse 预览功能。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
+Azure 媒体服务的 Media Hyperlapse 预览功能即将停用。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
 
 ## <a name="october-2018"></a>2018 年 10 月
 

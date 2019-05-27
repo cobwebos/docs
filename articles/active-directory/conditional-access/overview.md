@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb1289ba615fea6e6c43b256da6978534d9edc7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 32ad8c12834ee538e231b38f9098c741fdc17954
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799367"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65997250"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问是什么？
 
@@ -64,7 +64,7 @@ ms.locfileid: "59799367"
 
 - **[用户](conditions.md#users-and-groups)**：执行访问尝试的用户（人物）。
 
-- **[云应用](conditions.md#cloud-apps)**：访问尝试的目标（事件）。
+- **[云应用](conditions.md#cloud-apps-and-actions)**：访问尝试的目标（事件）。
 
 这两个条件在条件访问策略中是必需的。 除这两个必需的条件外，还可加入介绍访问尝试执行方式的其他条件。 常见示例是使用公司网络外的移动设备或位置。 有关详细信息，请参阅 [Azure Active Directory 条件访问中的条件](conditions.md)。
 
@@ -86,9 +86,9 @@ ms.locfileid: "59799367"
 
 在用户登录到联合身份验证服务以后，Azure AD 会处理其他策略要求，例如设备符合性或批准的应用程序。
 
-## <a name="license-requirements-for-using-conditional-access"></a>使用条件访问的许可证要求
+## <a name="license-requirements"></a>许可要求
 
-使用条件访问需要 Azure AD Premium 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+[!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

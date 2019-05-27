@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 559b5a519a48d4aa8022961a59f6f29cef28f948
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1caa523b2bc43b7b3690e01f589aecf18fd3da9e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937602"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965107"
 ---
 # <a name="register-in-dev-center"></a>在开发人员中心内注册  
 若要帮助确认你登录的不是个人浏览器帐户，请打开一个新的 Internet Explorer InPrivate 或 Chrome Incognito 浏览会话。  
@@ -69,7 +69,7 @@ ms.locfileid: "64937602"
     单击“完成”按钮发送确认电子邮件。  
 11. 使用你的产品/服务的计费模型选择后续步骤。  
 
-    | 计费模式 | 后续步骤 |  
+    | 计费模型 | 后续步骤 |  
     |:--- |:--- |  
     | 免费 | 转到云合作伙伴门户。<ul> <li>若要在 Azure 市场中进行发布，请使用位于 [cloudpartner.azure.com](https://cloudpartner.azure.com) 的云合作伙伴门户页面。</li> </ul> |  
     | 商用(交易) | 更新你的帐户信息。<ul> <li>有关添加帐户信息的详细信息，请访问[如何添加银行和税务信息](#add-bank-information)部分。</li> </ul> |  
@@ -156,7 +156,7 @@ ms.locfileid: "64937602"
   > 请确保输入的邮政编码也是正确的。 系统会执行城市和邮政编码验证。
 
 * **如何获取促销代码？**
-  > 填写[市场注册](https://azuremarketplace.microsoft.com/en-us/sell/signup)表单即可接收开发人员中心促销代码。
+  > 填写[市场注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)表单即可接收开发人员中心促销代码。 请参阅如何[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)有关详细信息。
  
 * **完成注册后预期会出现什么情况？**
   > 查找来自 verify@microsoft.com 的、主题为“需要执行的操作：通过 Microsoft 验证电子邮件帐户”的电子邮件。 请单击有时间限制的验证链接以完成注册。 *如果在 24 小时内未收到电子邮件，请检查垃圾邮件文件夹。*

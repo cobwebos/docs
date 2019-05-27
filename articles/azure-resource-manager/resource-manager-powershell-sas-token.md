@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
 ms.openlocfilehash: 818aa63ced56d7cf382536f10bb6150199ab74e9
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268934"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128435"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-powershell"></a>使用 SAS 令牌和 Azure PowerShell 部署专用 Resource Manager 模板
 

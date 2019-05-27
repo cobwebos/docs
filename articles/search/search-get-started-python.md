@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 1ab6bb069f60f4d2dbb4cfaecda54c3c2ef20adc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a79a5fe1632eeabee670274ebbb19c4c34bd84d2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806426"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66117342"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>快速入门：创建 Azure 搜索索引中使用 Jupyter 的 Python 笔记本
 > [!div class="op_single_selector"]
@@ -26,17 +26,17 @@ ms.locfileid: "65806426"
 > * [门户](search-create-index-portal.md)
 > 
 
-生成创建、 加载和查询 Azure 搜索的 Jupyter notebook[索引](search-what-is-an-index.md)使用 Python 和[Azure 搜索服务 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何构建您自己的笔记本执行步骤的。 （可选） 可以运行已完成的笔记本。 若要下载副本，请转到[Azure 搜索-python 示例存储库](https://github.com/Azure-Samples/azure-search-python-samples)。
+生成的创建、 加载和查询 Azure 搜索索引中使用 Python 的 Jupyter 笔记本并[Azure 搜索 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 本文介绍如何生成步骤的步骤中，从零开始的笔记本。 或者，可以运行已完成的笔记本。 若要下载副本，请转到[Azure 搜索-python 示例存储库](https://github.com/Azure-Samples/azure-search-python-samples)。
 
-如果还没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，然后[注册 Azure 搜索](search-create-service-portal.md)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必备组件
 
 本快速入门使用以下服务和工具。 
 
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
-
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)，提供 Python 3.x 和 Jupyter Notebook。
+
++ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
@@ -67,9 +67,9 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在第二个单元格中，输入将为每个请求中的常量的请求元素。 搜索服务名称 （您的搜索的服务的名称） 和管理员 API 密钥 （您的管理的 API 密钥） 替换为有效的值。 
 
    ```python
-    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
-    api_version = '?api-version=2019-05-06'
-    headers = {'Content-Type': 'application/json',
+   endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
+   api_version = '?api-version=2019-05-06'
+   headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
@@ -98,7 +98,6 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 字段集合定义的结构*文档*。 所需的元素的索引包含一个名称和字段集合。 每个字段有一个名称、 类型和特性，以确定如何使用它 (例如，是否是全文索引时才可搜索、 筛选或可在搜索结果中检索)。 一个索引，其中一个类型的字段中`Edm.String`必须指定为*密钥*文档标识。
 
 此索引名为"hotels 的上一年度"，并且请参阅下面的字段定义。 它是更大的子集[Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)在其他演练中使用。 我们修整它在此快速入门中为了简单起见。
-
 
 1. 在下一步的单元中，将下面的示例粘贴到单元格来提供架构。 
 
@@ -152,7 +151,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 若要将推送文档，请使用对索引的 URL 终结点的 HTTP POST 请求。 REST api[添加、 更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 文档是源自[HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) GitHub 上。
 
-1. 在新的单元格，提供了三个符合索引架构的文档。 指定每个文档的上传操作。
+1. 在新的单元格，提供了四个符合索引架构的文档。 指定每个文档的上传操作。
 
     ```python
     documents = {
@@ -212,7 +211,25 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
             "StateProvince": "GA",
             "PostalCode": "30326",
             "Country": "USA"
-        }
+        },
+        {
+        "@search.action": "upload",
+        "HotelId": "4",
+        "HotelName": "Sublime Cliff Hotel",
+        "Description": "Sublime Cliff Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 1800 palace.",
+        "Description_fr": "Le sublime Cliff Hotel est situé au coeur du centre historique de sublime dans un quartier extrêmement animé et vivant, à courte distance de marche des sites et monuments de la ville et est entouré par l'extraordinaire beauté des églises, des bâtiments, des commerces et Monuments. Sublime Cliff fait partie d'un Palace 1800 restauré avec amour.",
+        "Category": "Boutique",
+        "Tags": [ "concierge", "view", "24-hour front desk service" ],
+        "ParkingIncluded": "true",
+        "LastRenovationDate": "1960-02-06T00:00:00Z",
+        "Rating": 4.60,
+        "Address": {
+            "StreetAddress": "7400 San Pedro Ave",
+            "City": "San Antonio",
+            "StateProvince": "TX",
+            "PostalCode": "78216",
+            "Country": "USA"
+       }
       }
      ]
     }
@@ -242,6 +259,10 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
            {'errorMessage': None,
             'key': '3',
             'status': True,
+            'statusCode': 201}]},
+           {'errorMessage': None,
+            'key': '4',
+            'status': True,
             'statusCode': 201}]}
      ```
 
@@ -266,7 +287,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    pprint(query)
    ```
 
-   结果应类似于以下输出。
+   结果应类似于以下输出。 结果是 unranked (search.score = 1.0) 因为我们不提供用于匹配的任何条件。
 
    ```
    {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#docs(*)",
@@ -279,14 +300,17 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
                'HotelName': 'Twin Dome Motel'},
               {'@search.score': 1.0,
                'HotelId': '3',
-               'HotelName': 'Triple Landscape Hotel'}]}
+               'HotelName': 'Triple Landscape Hotel'},
+              {'@search.score': 1.0,
+               'HotelId': '4',
+               'HotelName': 'Sublime Cliff Hotel'}]}
    ```
 
-3. 请尝试几个其他查询示例，若要了解的语法。 可以应用筛选器、 执行前两个结果，按特定字段中，订购或 
+3. 请尝试几个其他查询示例，若要了解的语法。 可以应用筛选器、 执行前两个结果，或按特定字段进行排序。
 
    + `searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'`
 
-   + `searchstring = '&search=hotel&$top=2&$select=HotelId,HotelName,Description'`
+   + `searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'`
 
    + `searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'`
 
@@ -311,7 +335,7 @@ pprint(index_list)
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关查询语法和方案的详细信息。
+为简化本快速入门使用的 Hotels 索引的简化的版本。 可以创建要尝试更感兴趣的查询的完整版本。 若要获取完整版本和所有 50 个文档，请运行**导入数据**向导，并选择*酒店示例*从内置的示例数据源。
 
 > [!div class="nextstepaction"]
-> [创建基本查询](search-query-overview.md)
+> [快速入门：在 Azure 门户中创建索引](search-get-started-portal.md)

@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626545"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66166346"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>物联网 (IoT) 安全体系结构
 
@@ -147,7 +147,7 @@ Microsoft 使用上述体系结构来对 Azure IoT 进行威胁建模。 以下�
 * 设备和数据源，
 * 数据传输，
 * 设备和事件处理，以及
-* 呈现
+* 演示文稿
 
 ![Azure IoT 威胁建模](media/iot-security-architecture/iot-security-architecture-fig2.png)
 

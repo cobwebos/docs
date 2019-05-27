@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 5ac6603be087e887e3304f6a7e14aa063863e1dd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796465"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952136"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>停用的安全中心功能 (2019 年 7 月)
 
@@ -100,7 +100,7 @@ Log Analytics 仪表板在单个工作区上介绍了见解。 但是，安全�
 
 当选择**转到安全事件映射**按钮，打开威胁智能仪表板。 我们即将退休威胁智能仪表板。  
 
-![“威胁智能”仪表板][11]
+![威胁智能仪表板][11]
 
 当选择一个工作区以查看其威胁智能仪表板时，Log Analytics 中打开安全警报映射 （预览版） 屏幕。 我们正在停用此屏幕。
 
@@ -162,7 +162,7 @@ Log Analytics 仪表板在单个工作区上介绍了见解。 但是，安全�
 
 Azure 安全中心监视安全配置。 应用一组[150 多种建议规则](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 用于强化 OS。 这些规则与防火墙、 审核、 密码策略和的详细信息。 如果发现计算机中的某项配置有漏洞，则安全中心会生成安全建议。 [编辑安全配置屏幕](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)允许客户自定义安全中心中的默认 OS 安全配置。
 
-我们正在停用此预览功能。
+我们正在停用此预览功能。 如果停用日期之后，你想要将安全配置重置回其默认值，就可以通过 API 或 Powershell 使用[说明](https://aka.ms/ascresetsecurityconfigurations)
 
 ![编辑安全配置][17]
 

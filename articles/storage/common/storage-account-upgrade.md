@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
 ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578911"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66115620"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -122,7 +122,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 若要对数据使用和访问模式进行准确的估算，建议为指标选择一个可代表日常使用情况的保留期，并进行推断。 一种选择是让指标数据保留七天，每周收集一次数据，并在月底进行分析。 另一种选择是让指标数据保留 30 天，在 30 天到期以后再收集和分析数据。
 
-启用详细信息，收集和查看指标数据，请参阅[存储分析度量值](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+如需详细了解如何启用、收集和查看指标数据，请参阅[存储分析指标](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
 > 存储、访问和下载分析数据也会收费，就像使用常规用户数据一样。

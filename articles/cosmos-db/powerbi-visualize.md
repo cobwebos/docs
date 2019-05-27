@@ -4,14 +4,14 @@ description: 使用此 Power BI 教程来导入 JSON、创建见解深入的报�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76531de279dfe6e9b73b3895f0ef63c4c88b63cd
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929590"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979010"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 

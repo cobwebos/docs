@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: anzaman,cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 5ddcfe14873d13384b043f7a977dc4f069dbe8dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9a6f16df4b827538c1f8bdb9b7382ed06d543b62
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883073"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991522"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>使用 CLI 将虚拟网络连接到 ExpressRoute 线路
 
@@ -139,6 +139,32 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 **若要释放连接授权**
 
 可以通过删除 ExpressRoute 线路与虚拟网络之间的连接释放授权。
+
+## <a name="modify-a-virtual-network-connection"></a>修改虚拟网络连接
+可以更新虚拟网络连接的某些属性。 
+
+**若要更新连接权重**
+
+虚拟网络可以连接到多条 ExpressRoute 线路。 可以从多条 ExpressRoute 线路收到相同的前缀。 若要选择使用哪个连接发送目标为此前缀的流量，可以更改连接的 *RoutingWeight*。 会在具有最高 *RoutingWeight* 的连接上发送流量。
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100
+```
+
+*RoutingWeight* 的范围是 0 到 32000。 默认值为 0。
+
+## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute 快速 
+可以让[ExpressRoute 快速](expressroute-about-virtual-network-gateways.md)如果你的 ExpressRoute 线路位于[ExpressRoute 直接](expressroute-erdirect-about.md)和虚拟网络网关是超高性能或 ErGw3AZ。 快速提高了数据路径性能，如每秒数据包数和每秒的本地网络与虚拟网络之间的连接。 
+
+> [!NOTE] 
+> 如果你已有的虚拟网络连接，但尚未为其启用快速需要删除虚拟网络连接，然后创建一个新。 
+> 
+>  
+
+```azurecli
+az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 

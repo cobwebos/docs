@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: 86f1c36bd5f972a6ebd573019a22b0c0d07dc480
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 27b5dc9ccee8647d4fbb617063865df18b80bc5d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928087"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990277"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>使用 Azure DevOps 实现持续交付
 
@@ -26,7 +26,7 @@ ms.locfileid: "64928087"
 
 ## <a name="yaml-based-pipeline"></a>基于 YAML 管道
 
-### <a name="build-your-app"></a>构建你的应用程序
+### <a name="build-your-app"></a>生成应用
 
 生成 Azure 管道中的应用取决于您的应用程序的编程语言。
 每种语言有特定的生成步骤，以创建用于部署项目，可用于部署 function app 在 Azure 中。
@@ -55,12 +55,12 @@ steps:
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
-    rootFolderOrFile: "$(System.DefaultWorkingDirectory)/publish_output/s"
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)/publish_output"
     includeRootFolder: false
     archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
     name: 'drop'
 ```
 
@@ -85,12 +85,12 @@ steps:
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
-    rootFolderOrFile: "$(System.DefaultWorkingDirectory)/publish_output/s"
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
     includeRootFolder: false
     archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
     name: 'drop'
 ```
 
@@ -121,12 +121,12 @@ steps:
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
-    rootFolderOrFile: "$(System.DefaultWorkingDirectory)/publish_output/s"
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
     includeRootFolder: false
     archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
     name: 'drop'
 ```
 
@@ -164,7 +164,7 @@ steps:
 
 Azure DevOps 中的模板是预定义的生成或部署应用程序的任务组。
 
-### <a name="build-your-app"></a>构建你的应用程序
+### <a name="build-your-app"></a>生成应用
 
 生成 Azure 管道中的应用取决于您的应用程序的编程语言。 每种语言有特定的生成步骤，以创建用于部署项目，可用于更新 Azure 中的函数应用。
 若要使用的内置生成模板，创建新的生成管道时，选择**使用经典编辑器**以使用设计器模板创建一个管道

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/07/2019
 ms.author: banders
-ms.openlocfilehash: 09242eaa6058229226062801f5f71f2bf4c7a9e8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789392"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66126840"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>获取企业协议保留成本和使用情况
 
@@ -42,9 +42,9 @@ ms.locfileid: "65789392"
 
 | 数据 | 实际成本数据集 | 摊销的成本数据集 |
 | --- | --- | --- |
-| 预订购买 | 在此视图中可用。<br>  若要获得此数据筛选器在 ChargeType =&quot;采购&quot;。 <br> 请参阅 ReservationID 或 ReservationName 知道费用是针对哪些保留。  | 此视图不适用于。 <br> 摊销数据中未提供的采购成本。 |
+| 预订购买 | 在此视图中可用。<br><br>  若要获得此数据筛选器在 ChargeType =&quot;采购&quot;。 <br><br> 请参阅 ReservationID 或 ReservationName 知道费用是针对哪些保留。  | 此视图不适用于。 <br><br> 摊销数据中未提供的采购成本。 |
 | EffectivePrice | 值为零的使用情况，可获取预订折扣。 | 值为已预订折扣的使用情况的保留的每小时按比例分配成本。 |
-| 未使用的预订 （提供的预订未使用在一天中的小时数和浪费的货币值） | 在此视图中不适用。 | 在此视图中可用。<br> 若要获取此数据，筛选 ChargeType = &quot;UnusedReservation&quot;。<br>  请参阅 ReservationID 或 ReservationName 知道哪些保留了未被充分利用。 这是多少预订浪费在上一天。  |
+| 未使用的预订 （提供的预订未使用在一天中的小时数和浪费的货币值） | 在此视图中不适用。 | 在此视图中可用。<br><br> 若要获取此数据，筛选 ChargeType = &quot;UnusedReservation&quot;。<br><br>  请参阅 ReservationID 或 ReservationName 知道哪些保留了未被充分利用。 这是多少预订浪费在上一天。  |
 | 单价 （价格表中的资源的价格） | 可用 | 可用 |
 
 Azure 使用情况数据中可用的其他信息已更改：
@@ -77,12 +77,12 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 | **API 数据类型** | API 调用操作 |
 | --- | --- |
 | **所有费用 （使用情况和购买）** | {指标} 替换为 ActualCost |
-| **获取预订折扣的使用情况** | {指标} 替换为 ActualCost<br>将 {filter} 替换为： properties/reservationId%20ne%20 |
-| **未获取预订折扣的使用情况** | {指标} 替换为 ActualCost<br>Replace {filter} with: properties/reservationId%20eq%20 |
+| **获取预订折扣的使用情况** | {指标} 替换为 ActualCost<br><br>将 {filter} 替换为： properties/reservationId%20ne%20 |
+| **未获取预订折扣的使用情况** | {指标} 替换为 ActualCost<br><br>Replace {filter} with: properties/reservationId%20eq%20 |
 | **摊销的费用 （使用情况和购买）** | {指标} 替换为 AmortizedCost |
-| **未使用的预订报表** | {指标} 替换为 AmortizedCost<br>将 {filter} 替换为： properties/ChargeType%20eq%20'UnusedReservation |
-| **预订购买** | 将 {指标} 替换为与 ActualCostReplace {filter}: properties/ChargeType%20eq%20'Purchase  |
-| **退款** | {指标} 替换为 ActualCost<br>将 {filter} 替换为： properties/ChargeType%20eq%20'Refund |
+| **未使用的预订报表** | {指标} 替换为 AmortizedCost<br><br>将 {filter} 替换为： properties/ChargeType%20eq%20'UnusedReservation |
+| **预订购买** | {指标} 替换为 ActualCost<br><br>将 {filter} 替换为： properties/ChargeType%20eq%20'Purchase  |
+| **退款** | {指标} 替换为 ActualCost<br><br>将 {filter} 替换为： properties/ChargeType%20eq%20'Refund |
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>下载包含新数据的使用情况 CSV 文件
 

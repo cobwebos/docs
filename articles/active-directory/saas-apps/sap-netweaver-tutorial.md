@@ -16,11 +16,11 @@ ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523777"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65903198"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>教程：Azure Active Directory 与 SAP NetWeaver 集成
 
@@ -192,7 +192,7 @@ ms.locfileid: "59523777"
 
     a. 单击“编辑图标”，打开“管理用户声明”对话框。
 
-    ![图像](./media/sapnetweaver-tutorial/nameidattribute.png)
+    ![image](./media/sapnetweaver-tutorial/nameidattribute.png)
 
     ![图像](./media/sapnetweaver-tutorial/nameidattribute1.png)
 

@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 59308cdadb1eda9e73b373e72112b83d93629683
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073007"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124280"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
-语言理解 (LUIS) 容器可将已训练或已发布的语言理解模型（也称为 [LUIS 应用](https://www.luis.ai)）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器收集查询日志并将这些后上传到语言理解应用程序以提高应用程序的预测准确性。
+语言理解 (LUIS) 容器可将已训练或已发布的语言理解模型（也称为 [LUIS 应用](https://www.luis.ai)）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回语言理解应用以提高应用的预测准确性。
 
 以下视频演示如何使用此容器。
 
@@ -36,7 +36,7 @@ ms.locfileid: "65073007"
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|Azure`Cognitive Services`资源和 LUIS[打包应用程序](luis-how-to-start-new-app.md#export-app-for-containers)文件 |若要使用容器，必须具有：<br><br>* A_认知服务_Azure 资源和关联的计费密钥计费终结点 URI。 这两个值的资源概述和密钥页上可用，并且要求来启动该容器。 您需要添加`luis/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以从 LUIS 门户或创作 Api 获取打包的文件。 如果要获取 LUIS 从封装的应用程序[创作 Api](#authoring-apis-for-package-file)，您还需要您_创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}**：此密钥用于从云中的 LUIS 服务获取打包的应用并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APPLICATION_ID}**：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{ENDPOINT_KEY}**：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是 Azure 门户中的_认知服务_资源的键列表。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{BILLING_ENDPOINT}**：例如：`https://westus.api.cognitive.microsoft.com/luis/v2.0`。<br><br>[创作密钥和终结点密钥](luis-boundaries.md#key-limits)具有不同的用途。 请勿互换使用。 |
+|Azure`Cognitive Services`资源和 LUIS[打包应用程序](luis-how-to-start-new-app.md#export-app-for-containers)文件 |若要使用容器，必须具有：<br><br>* A_认知服务_Azure 资源和关联的计费密钥计费终结点 URI。 这两个值的资源概述和密钥页上可用，并且要求来启动该容器。 需将 `luis/v2.0` 路由添加到终结点 URI，如以下 BILLING_ENDPOINT_URI 示例所示。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以从 LUIS 门户或创作 Api 获取打包的文件。 如果要获取 LUIS 从封装的应用程序[创作 Api](#authoring-apis-for-package-file)，您还需要您_创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}**：此密钥用于从云中的 LUIS 服务获取打包的应用并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APPLICATION_ID}**：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{ENDPOINT_KEY}**：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是 Azure 门户中的_认知服务_资源的键列表。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{BILLING_ENDPOINT}**：例如：`https://westus.api.cognitive.microsoft.com/luis/v2.0`。<br><br>[创作密钥和终结点密钥](luis-boundaries.md#key-limits)具有不同的用途。 请勿互换使用。 |
 
 ### <a name="authoring-apis-for-package-file"></a>包文件的创作 Api
 
@@ -84,7 +84,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ![使用语言理解 (LUIS) 容器的过程](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. 通过 LUIS 门户或 LUIS API [导出容器的包](#export-packaged-app-from-luis)。
-1. 将包文件移动到[主计算机](#the-host-computer)上的所需输入目录中。 请勿重命名、 alter、 覆盖或解压缩 LUIS 包文件。
+1. 将包文件移动到[主计算机](#the-host-computer)上的所需输入目录中。 请勿重命名、更改、覆盖或解压缩 LUIS 包文件。
 1. 使用所需的输入装入点和计费设置[运行容器](##run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](luis-container-configuration.md#example-docker-run-commands)。 
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。 
 1. 使用完此容器后，从 LUIS 门户的输出装入点[导入终结点日志](#import-the-endpoint-logs-for-active-learning)并[停止](#stop-the-container)容器。
@@ -113,7 +113,7 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 |生产|获取、发布|Azure 和容器|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
-> 请勿重命名、 alter、 覆盖或解压缩 LUIS 包文件。
+> 请勿重命名、更改、覆盖或解压缩 LUIS 包文件。
 
 ### <a name="packaging-prerequisites"></a>打包先决条件
 
@@ -121,7 +121,7 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 
 |打包要求|详细信息|
 |--|--|
-|Azure_认知服务_资源实例|支持的区域包括<br><br>美国西部 (```westus```)<br>西欧 (```westeurope```)<br>澳大利亚东部 (```australiaeast```)|
+|Azure 认知服务资源实例|支持的区域包括<br><br>美国西部 (```westus```)<br>西欧 (```westeurope```)<br>澳大利亚东部 (```australiaeast```)|
 |已训练或已发布的 LUIS 应用|没有[不受支持的依赖项](#unsupported-dependencies)。 |
 |访问[主计算机](#the-host-computer)的文件系统 |主计算机必须允许[输入装入点](luis-container-configuration.md#mount-settings)。|
   
@@ -252,9 +252,13 @@ ApiKey={ENDPOINT_KEY}
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。
-> ApiKey 当值**键**从密钥和终结点页 LUIS 门户中，也可在 Azure 上`Cognitive Services`资源密钥页。  
+> ApiKey 值是 LUIS 门户中“密钥和终结点”页面中的“密钥”，也可以在 Azure `Cognitive Services`资源密钥页上找到。  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
+## <a name="endpoint-apis-supported-by-the-container"></a>终结点 Api 支持的容器
+
+这两个 V2 和[V3 （预览）](luis-migration-api-v3.md)与容器提供的 API 版本。 
 
 ## <a name="query-the-containers-prediction-endpoint"></a>查询容器的预测终结点
 
@@ -331,30 +335,30 @@ curl -X GET \
 
 ## <a name="billing"></a>计费
 
-计费到 Azure 的信息，请使用 LUIS 容器发送_认知服务_上你的 Azure 帐户的资源。 
+LUIS 容器使用 Azure 帐户中的认知服务资源向 Azure 发送账单信息。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](luis-container-configuration.md)。
 
-## <a name="supported-dependencies-for-latest-container"></a>支持的依赖项`latest`容器
+## <a name="supported-dependencies-for-latest-container"></a>支持的 `latest` 容器依赖项
 
-最新的容器，在 2019年发布 / / 生成，将支持：
+在 2019 //Build 上发布的最新容器将支持：
 
-* 必应拼写检查： 对具有查询预测终结点的请求`&spellCheck=true&bing-spell-check-subscription-key={bingKey}`的查询字符串参数。 使用[必应拼写检查 v7 教程](luis-tutorial-bing-spellcheck.md)若要了解详细信息。 如果使用此功能，则容器将发送到必应拼写检查 V7 资源将语音样本。
-* [新预生成的域](luis-reference-prebuilt-domains.md)： 这些面向企业的域包括实体、 示例语音样本和模式。 扩展供自己使用这些域。 
+* 必应拼写检查：使用 `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` 查询字符串参数向查询预测终结点发出的请求。 若要了解详细信息，请参阅[必应拼写检查 v7 教程](luis-tutorial-bing-spellcheck.md)。 如果使用此功能，则容器会将话语发送到必应拼写检查 V7 资源。
+* [新的预生成的域](luis-reference-prebuilt-domains.md)：这些聚焦于企业的域包括实体、示例话语以及模式。 扩展这些供自己使用的域。 
 
 <a name="unsupported-dependencies"></a>
 
-## <a name="unsupported-dependencies-for-latest-container"></a>不受支持的依赖关系`latest`容器
+## <a name="unsupported-dependencies-for-latest-container"></a>不支持的 `latest` 容器依赖项
 
-如果 LUIS 应用具有不受支持的依赖项，将看不到[导出的容器](#export-packaged-app-from-luis)之前删除不受支持的功能。 当您尝试导出的容器时，LUIS 门户报告不支持需要删除的功能。
+如果 LUIS 应用有不受支持的依赖项，则在删除这些不受支持的功能之前，无法[针对容器进行导出](#export-packaged-app-from-luis)。 尝试针对容器进行导出时，LUIS 门户会报告需删除的不受支持的功能。
 
 如果 LUIS 应用程序不包括以下任何依赖项，则可以使用该应用程序：
 
 不受支持的应用配置|详细信息|
 |--|--|
-|不受支持的容器区域性| 荷兰语 (nl-NL)<br>日语 (ja-JP)<br>仅支持德语[1.0.1 标记器或更高版本](luis-language-support.md#custom-tokenizer-versions)。|
+|不受支持的容器区域性| 荷兰语 (nl-NL)<br>日语 (ja-JP)<br>仅 [1.0.1 tokenizer 或更高版本](luis-language-support.md#custom-tokenizer-versions)支持德语。|
 |所有区域性不支持的实体|所有区域性的 [KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) 预生成实体|
 |英语 (EN-US) 区域性不支持的实体|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) 预生成实体|
 |语音启动|容器中不支持外部依赖项。|

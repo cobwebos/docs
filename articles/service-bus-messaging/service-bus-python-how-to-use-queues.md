@@ -14,29 +14,29 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: f2605ee5688a86de0a8e7d036aa63edd604c6538
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6d95e4a0a7aeedef2fc7e635d2e49ea68c3ba0ca
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787200"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992053"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>如何通过 Python 使用服务总线队列
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-在本教程中，您将学习如何创建 Python 应用程序将消息发送到和从服务总线队列接收消息。 
+本教程介绍如何创建 Python 应用程序，以便向服务总线队列发送消息以及从中接收消息。 
 
 ## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照步骤[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文。
-    1. 阅读快速**概述**的服务总线**队列**。 
-    2. 创建服务总线**命名空间**。 
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文中的步骤操作。
+    1. 阅读服务总线**队列**的快速**概述**。 
+    2. 创建一个服务总线**命名空间**。 
     3. 获取**连接字符串**。 
 
         > [!NOTE]
-        > 您将创建**队列**本教程中使用 Python 在服务总线命名空间中。 
-1. 安装 Python 或[Python Azure 服务总线包][Python Azure Service Bus package]，请参阅[Python 安装指南](../python-how-to-install.md)。 请参阅服务总线 Python SDK 的完整文档[此处](/python/api/overview/azure/servicebus?view=azure-python)。
+        > 在本教程中，需使用 Python 在服务总线命名空间中创建一个**队列**。 
+1. 若要安装 Python 或 [Python Azure 服务总线包][Python Azure Service Bus package]，请参阅 [Python 安装指南](../python-how-to-install.md)。 在[此处](/python/api/overview/azure/servicebus?view=azure-python)查看服务总线 Python SDK 的完整文档。
 
 ## <a name="create-a-queue"></a>创建队列
 可以通过 **ServiceBusClient** 对象处理队列。 将以下代码添加到任何 Python 文件的顶部附近，你希望在其中以编程方式访问服务总线：
@@ -121,6 +121,9 @@ msg.delete()
 还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁该消息并使它可再次被接收。
 
 如果应用程序在处理消息之后，但在调用 **delete** 方法之前崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此情况通常称作**至少一次处理**，也就是说，每条消息将至少一次处理，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可以通过使用消息的 **MessageId** 属性来实现，该属性在多次传送尝试中保持不变。
+
+> [!NOTE]
+> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 现在，已了解有关服务总线队列的基础知识，请参阅以下文章了解详细信息。

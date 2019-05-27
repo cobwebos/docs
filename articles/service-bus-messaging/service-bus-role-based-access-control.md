@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: 7ef152b130e77e833e19c51ff97d0cea577216c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4571a8918b7877b728b54129e47ffcf4af9b46a
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472244"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979630"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 
@@ -31,11 +31,18 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 ## <a name="service-bus-roles-and-permissions"></a>服务总线角色和权限
 
-对于初始公共预览版，只能将 Azure AD 帐户和服务主体添加到服务总线消息传送命名空间的“所有者”或“参与者”角色。 此操作向标识授予对命名空间中的所有实体的完全控制权限。 最初只能通过 Azure 资源管理来支持对命名空间拓扑进行更改的管理操作，不能通过本机服务总线 REST 管理接口来支持。 此支持还意味着 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 对象无法与 Azure AD 帐户一起使用。
+Azure 提供了用于授予对服务总线命名空间的访问权限的内置 RBAC 角色如下：
+
+* [服务总线数据所有者 （预览）](../role-based-access-control/built-in-roles.md#service-bus-data-owner):启用数据访问服务总线命名空间和其实体 （队列、 主题、 订阅和筛选器）
+
+>[!IMPORTANT]
+> 更早版本支持添加到托管的标识 **"所有者"** 或 **"参与者"** 角色。
+>
+> 但是，数据访问权限 **"所有者"** 并 **"参与者"** 角色将不再起作用。 如果已使用 **"所有者"** 或 **"参与者"** 角色，则那些需要进行修改才能利用 **"服务总线数据所有者"** 角色。
 
 ## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>将服务总线与 Azure AD 域用户帐户一起使用
 
-下面的部分介绍了创建和运行一个示例应用程序（该应用程序提示交互式 Azure AD 用户进行登录）所需的步骤，如何向该用户帐户授予服务总线访问权限，以及如何使用该标识来访问事件中心。
+以下部分介绍的步骤才能创建和运行的示例应用程序提示交互式 Azure AD 用户登录、 如何授予对该用户帐户，服务总线访问权限以及如何使用该标识来访问事件中心。
 
 此简介描述了一个简单的控制台应用程序，[其代码位于 GitHub 上](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。
 
@@ -47,7 +54,7 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 ### <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-接下来，在支持 RBAC 预览版的以下 Azure 区域之一中[创建服务总线消息命名空间](service-bus-create-namespace-portal.md)：**美国东部**、**美国东部 2** 或**西欧**。
+下一步，[创建服务总线消息传送命名空间](service-bus-create-namespace-portal.md)。
 
 在创建命名空间后，在门户上导航到其“访问控制(IAM)”页面，然后单击“添加角色分配”将 Azure AD 用户帐户添加到“所有者”角色。 如果你使用自己的用户帐户并且已创建了命名空间，则已获得“所有者”角色。 若要向角色添加一个不同的帐户，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。
 

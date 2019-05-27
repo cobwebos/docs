@@ -105,6 +105,8 @@
       href: language-support.md
     - name: 适用于必应 Web 搜索 API 的分析
       href: bing-web-stats.md
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持
       items:
         - name: 用户之声论坛

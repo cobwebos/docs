@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 4eb07b29f68c5f495bdbe5e23f5b226480b66661
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 76d18b6a942ed9b8c6871b0ff7cbc1c83917ada4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524065"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66130466"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor 启用的 Vm （预览版） 概述
 
@@ -74,12 +74,12 @@ ms.locfileid: "65524065"
 
 下表列出了用于 VM 的 Azure Monitor 支持的 Windows 和 Linux 操作系统。 本部分稍后将提供详细说明主要和次要 Linux OS 版本以及支持的内核版本的完整列表。
 
-|OS 版本 |性能 |地图 |运行状况 |
+|OS 版本 |性能 |地图 |健康 |
 |-----------|------------|-----|-------|
-|Windows Server 2019 | X | X | |
+|Windows Server 2019 | X | X | X |
 |Windows Server 2016 1803 | X | X | X |
 |Windows Server 2016 | X | X | X |
-|Windows Server 2012 R2 | X | X | |
+|Windows Server 2012 R2 | X | X | X |
 |Windows Server 2012 | X | X | |
 |Windows Server 2008 R2 | X | X| |
 |Red Hat Enterprise Linux (RHEL) 6 7| X | X| X |
@@ -152,9 +152,9 @@ ms.locfileid: "65524065"
 
 | 连接的源 | 支持 | 描述 |
 |:--|:--|:--|
-| Windows 代理 | 是 | 除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关操作系统版本的完整列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
-| Linux 代理 | 是 | 除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关操作系统版本的完整列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
-| System Center Operations Manager 管理组 | 否 | |
+| Windows 代理 | “是” | 除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关操作系统版本的完整列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
+| Linux 代理 | “是” | 除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关操作系统版本的完整列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
+| System Center Operations Manager 管理组 | “否” | |
 
 可从以下位置下载 Dependency Agent：
 
@@ -197,14 +197,14 @@ Azure 监视的 Vm 配置要收集的性能计数器，它使用的 Log Analytic
 |LogicalDisk |平均磁盘秒数/传输 |
 |LogicalDisk |平均磁盘秒数/写入 |
 |LogicalDisk |磁盘字节/秒 |
-|LogicalDisk |磁盘读取字节数/秒 |
+|LogicalDisk |磁盘读取的字节数/秒 |
 |LogicalDisk |磁盘读取数/秒 |
 |LogicalDisk |磁盘传输数/秒 |
-|LogicalDisk |磁盘写入字节数/秒 |
+|LogicalDisk |磁盘写入的字节数/秒 |
 |LogicalDisk |磁盘写入数/秒 |
 |LogicalDisk |可用 MB 数 |
-|内存 |可用兆字节数 |
-|网络适配器 |收到的字节数/秒 |
+|内存 |可用字节(MB) |
+|网络适配器 |已接收字节/秒 |
 |网络适配器 |发送的字节数/秒 |
 |处理器 |处理器时间百分比 |
 
@@ -213,10 +213,10 @@ Azure 监视的 Vm 配置要收集的性能计数器，它使用的 Log Analytic
 |对象名称 |计数器名称 |
 |------------|-------------|
 |逻辑磁盘 |已用空间百分比 |
-|逻辑磁盘 |磁盘读取字节数/秒 |
+|逻辑磁盘 |磁盘读取的字节数/秒 |
 |逻辑磁盘 |磁盘读取数/秒 |
 |逻辑磁盘 |磁盘传输数/秒 |
-|逻辑磁盘 |磁盘写入字节数/秒 |
+|逻辑磁盘 |磁盘写入的字节数/秒 |
 |逻辑磁盘 |磁盘写入数/秒 |
 |逻辑磁盘 |可用 MB 数 |
 |逻辑磁盘 |逻辑磁盘字节数/秒 |

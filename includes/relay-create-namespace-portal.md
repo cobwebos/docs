@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: bbcf38ab54632144920b729f433c222f426d96dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419760"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111548"
 ---
 1. 登录到 [Azure 门户][Azure portal]。
 2. 在左侧菜单中，选择“+ 创建资源”。 然后，选择“集成” > “中继”。 如果未在列表中看到“中继”，请选择右上角的“查看全部”。 

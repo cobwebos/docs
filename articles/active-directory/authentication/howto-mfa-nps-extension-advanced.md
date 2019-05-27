@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bfae3b3be7812ff50ed90a61d495877141bbc7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b8ac0497b13dad6795e8dc7ffaf761fe887a9953
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414895"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988630"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>用于多重身份验证的 NPS 扩展的高级配置选项
 
@@ -30,7 +30,7 @@ ms.locfileid: "60414895"
 
 要配置备用登录 ID，请转至 `HKLM\SOFTWARE\Microsoft\AzureMfa` 并编辑下列注册表值：
 
-| Name | Type | 默认值 | 描述 |
+| 名称 | Type | 默认值 | 描述 |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | 空 | 指定要使用的 Active Directory 属性（而非 UPN）的名称。 此属性将用作 AlternateLoginId 属性。 如果将此注册表值设置为[有效的 Active Directory 属性](https://msdn.microsoft.com/library/ms675090.aspx)（例如 mail 或 displayName），那么将使用该属性的值（而不使用用户的 UPN）来进行身份验证。 如果此注册表值为空或未配置，则将禁用 AlternateLoginId，并使用用户的 UPN 来进行身份验证。 |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | False | 在查找 AlternateLoginId 时，凭此标记强制使用全局编录执行 LDAP 搜索。 将域控制器配置为全局编录，向全局编录中添加 AlternateLoginId 属性，然后启用此标记。 <br><br> 如果配置了 LDAP_LOOKUP_FORESTS（非空），则无论注册表设置的值为何，都会将此标记强制设为 True。 在这种情况下，NPS 扩展要求对每个林都使用 AlternateLoginId 属性来配置全局编录。 |
@@ -40,15 +40,15 @@ ms.locfileid: "60414895"
 
 ## <a name="ip-exceptions"></a>IP 异常
 
-如果需要监视服务器的可用性（例如，负载均衡器是否在发送工作负荷前验证了哪个服务器正在运行），则并不希望验证请求阻止这些检查。 而是创建已知由服务帐户使用的 IP 地址列表，并为该列表禁用多重身份验证要求。 
+如果需要监视服务器的可用性（例如，负载均衡器是否在发送工作负荷前验证了哪个服务器正在运行），则并不希望验证请求阻止这些检查。 而是创建已知由服务帐户使用的 IP 地址列表，并为该列表禁用多重身份验证要求。
 
-要配置 IP 白名单，请转到 `HKLM\SOFTWARE\Microsoft\AzureMfa`，并配置如下注册表值： 
+若要配置 IP 允许列表，请转到`HKLM\SOFTWARE\Microsoft\AzureMfa`并配置以下注册表值：
 
-| Name | Type | 默认值 | 描述 |
+| 名称 | Type | 默认值 | 描述 |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | 空 | 提供以分号隔开的 IP 地址列表。 包括发出服务请求的计算机的 IP 地址，例如 NAS/VPN 服务器。 不支持 IP 范围和子网。 <br><br> 例如 *10.0.0.1;10.0.0.2;10.0.0.3*。
 
-当发出请求的 IP 地址来自允许列表时，将跳过双重验证。 将 IP 允许列表与 RADIUS 请求的 *ratNASIPAddress* 属性中的 IP 地址相比较。 如果传入的 RADIUS 请求不包含 ratNASIPAddress 属性，则会记录以下警告：“P_WHITE_LIST_WARNING::IP 允许列表被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
+当请求传入从中存在的 IP 地址`IP_WHITELIST`，跳过双重验证。 与中提供的 IP 地址进行比较，IP 列表*ratNASIPAddress* RADIUS 请求的属性。 如果传入的 RADIUS 请求不包含 ratNASIPAddress 属性，则会记录以下警告：“P_WHITE_LIST_WARNING::IP 允许列表被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: a320f584ff82f2b8a2b3d784e1995aa043004587
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 53f9f67397e1484559ee8243a52ad8339df930bc
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597484"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990204"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -143,7 +143,7 @@ ms.locfileid: "65597484"
 
 | 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
-| 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
+| 重试尝试 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最小延迟 | 5 秒 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 ||||
@@ -166,7 +166,7 @@ ms.locfileid: "65597484"
 
 | 名称 | 限制 |
 | ---- | ----- |
-| 每个 Azure 订阅中具有系统分配的托管标识的逻辑应用数量 | 10 |
+| 每个 Azure 订阅中具有系统分配的托管标识的逻辑应用数量 | 100 |
 |||
 
 <a name="integration-account-limits"></a>
@@ -241,7 +241,7 @@ ms.locfileid: "65597484"
 
 若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”标题下，并按区域进行排序。
 
-对于 [Azure 政府](../azure-government/documentation-government-overview.md)和 [Azure 中国世纪互联](/azure/china/china-welcome)，连接器的保留 IP 地址目前不可用。
+对于 [Azure 政府](../azure-government/documentation-government-overview.md)和 [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)，连接器的保留 IP 地址目前不可用。
 
 > [!IMPORTANT]
 >

@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: ef8155cda6c31a63204af80ca091a13bb16a687d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866446"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113391"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>策略:在目录中的用户
 
@@ -34,6 +34,9 @@ ms.locfileid: "64866446"
 ### <a name="policy-for-users-not-in-your-directory"></a>策略:不在目录中的用户
 
 如果您希望在策略适用于不可以请求此访问包目录中的用户，请执行以下步骤。 目录必须配置为允许**组织关系协作限制**设置。
+
+> [!NOTE]
+> 尚不在你的目录的请求被批准或自动批准，将为用户创建的来宾用户帐户。 来宾将被邀请，但不是会收到邀请电子邮件。 相反，他们将收到一封电子邮件传递其访问包分配时。 默认情况下，更高版本时该来宾用户不能具有任何访问包分配，因为其最后一个分配已过期或已取消，将被阻止的登录并删除来宾用户帐户。 如果你想要具有无限期保留在你的目录中的来宾用户，即使它们具有访问包资源分配，可以更改您的权利管理配置设置。
 
 1. 在中**可以请求访问权限的用户**部分中，选择**不在目录中的用户**。
 
@@ -92,7 +95,7 @@ ms.locfileid: "64866446"
 
 1. 在中**审批请求超时时间 （天）** 框中，指定审批者必须查看请求的时间量。 没有审批者查看它在此天数，如果请求的截止日期，所以用户必须提交另一个请求访问包。
 
-### <a name="policy-expiration"></a>策略:过期时间
+### <a name="policy-expiration"></a>策略:有效期限
 
 在过期部分中，指定何时过期的用户分配到访问包。
 

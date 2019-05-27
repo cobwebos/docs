@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 6cd5413d64be2117cc5f64202ecdaaf40f35db4b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 76bbcd6fa400111514ec3496005a28ec28ae6ab7
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205379"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977901"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
@@ -175,7 +175,7 @@ Web 测试插件提供时间参数化方式。
 
 对服务执行维护时，可能需要禁用可用性测试或与这些测试关联的警报规则。
 
-![禁用 Web 测试](./media/monitor-web-app-availability/6disable.png)
+![禁用 web 测试](./media/monitor-web-app-availability/6disable.png)  
 ![编辑测试](./media/monitor-web-app-availability/8edittest.png)
 
 ## <a name="failures"></a>如果看到失败
@@ -294,7 +294,7 @@ Web 测试插件提供时间参数化方式。
 * [使用 PowerShell 脚本自动设置可用性测试](../../azure-monitor/app/powershell.md#add-an-availability-test)。
 * 设置在引发警报时调用的 [webhook](../../azure-monitor/platform/alerts-webhooks.md) 。
 
-## <a name="qna"></a> 常见问题解答
+## <a name="qna"></a> FAQ
 
 * *站点看上去正常，但测试却失败？为什么 Application Insights 向我发出警报？*
 

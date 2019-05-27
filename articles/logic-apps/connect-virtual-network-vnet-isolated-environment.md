@@ -7,14 +7,14 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: b452485ccf235d1f245989e40840f2f0b3b2ae45
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.topic: conceptual
+ms.date: 05/20/2019
+ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544528"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65961445"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -24,7 +24,7 @@ ms.locfileid: "65544528"
 
 本文介绍如何完成以下任务：
 
-* 在 Azure 虚拟网络中设置端口，使流量能够跨虚拟网络中的子网遍历集成服务环境 (ISE)。
+* 请确保虚拟网络上任何必要的端口已打开，以便流量可能经过集成服务环境 (ISE) 子网在该虚拟网络。
 
 * 创建集成服务环境 (ISE)。
 
@@ -60,11 +60,13 @@ ms.locfileid: "65544528"
 
 <a name="ports"></a>
 
-## <a name="set-up-network-ports"></a>设置网络端口
+## <a name="check-network-ports"></a>检查网络端口
 
-若要保持正常运行且可供访问，集成服务环境 (ISE) 需要使用虚拟网络中的特定端口。 否则，如果其中的任一端口不可用，ISE 可能会停止运行，使你无法访问 ISE。 在虚拟网络中使用 ISE 时，常见的设置问题是一个或多个端口被阻止。 对于 ISE 与目标系统之间的连接，所用的连接器还可能有其自身的端口要求。 例如，如果使用 FTP 连接器来与 FTP 系统通信，请确保在该 FTP 系统上使用的端口（例如用于发送命令的端口 21）可用。
+与虚拟网络中使用的集成服务环境 (ISE) 时，常见的安装程序问题时遇到一个或多个端口被阻止。 用于创建在 ISE 与目标系统之间的连接的连接器也可能有其自己的端口要求。 例如，如果使用 FTP 连接器来与 FTP 系统通信，请确保在该 FTP 系统上使用的端口（例如用于发送命令的端口 21）可用。
 
-若要跨虚拟网络的子网，你将部署在 ISE 控制的流量，您可以设置[网络安全组](../virtual-network/security-overview.md)对由这些子网[筛选网络流量跨子网](../virtual-network/tutorial-filter-network-traffic.md)。 下列表格描述了 ISE 在虚拟网络中使用的端口，以及这些端口的使用位置。 [资源管理器服务标记](../virtual-network/security-overview.md#service-tags)表示一组 IP 地址前缀，可帮助创建安全规则时最小化复杂性。
+若要跨虚拟网络的子网，你将部署 ISE 控制的流量，您可以设置[网络安全组](../virtual-network/security-overview.md)通过[筛选网络流量跨子网](../virtual-network/tutorial-filter-network-traffic.md)。 但是，在 ISE 必须打开使用网络安全组的虚拟网络上的特定端口。 这样一来，在 ISE 保持可访问，可以正常工作，以便在不失去访问权限在 ISE。 否则，如果任何所需的端口不可用，在 ISE 停止工作。
+
+下列表格描述了 ISE 在虚拟网络中使用的端口，以及这些端口的使用位置。 [资源管理器服务标记](../virtual-network/security-overview.md#service-tags)表示一组 IP 地址前缀，可帮助创建安全规则时最小化复杂性。
 
 > [!IMPORTANT]
 > 对于子网内的内部通信，ISE 需要打开这些子网中的所有端口。
@@ -112,13 +114,13 @@ ms.locfileid: "65544528"
 
    | 属性 | 需要 | Value | 描述 |
    |----------|----------|-------|-------------|
-   | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
-   | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的 Azure 资源组 |
-   | **集成服务环境名称** | 是 | <*environment-name*> | 为环境指定的名称 |
-   | **位置** | 是 | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 |
-   | **额外容量** | 是 | 0 到 10 | 要使用此 ISE 资源的其他处理单位数。 若要在创建后添加容量，请参阅[添加 ISE 容量](#add-capacity)。 |
-   | **虚拟网络** | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果您没有网络，[先创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p>**重要**：创建 ISE 时可以仅执行此注入。 |
-   | **子网** | 是 | <*subnet-resource-list*> | ISE 需要四个空的子网来在环境中创建资源。 要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。  |
+   | **订阅** | “是” | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
+   | **资源组** | “是” | <*Azure-resource-group-name*> | 要在其中创建环境的 Azure 资源组 |
+   | **集成服务环境名称** | “是” | <*environment-name*> | 为环境指定的名称 |
+   | **位置** | “是” | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 |
+   | **额外容量** | “是” | 0 到 10 | 要使用此 ISE 资源的其他处理单位数。 若要在创建后添加容量，请参阅[添加 ISE 容量](#add-capacity)。 |
+   | **虚拟网络** | “是” | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果您没有网络，[先创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p>**重要**：创建 ISE 时可以仅执行此注入。 |
+   | **子网** | “是” | <*subnet-resource-list*> | ISE 需要四个空的子网来在环境中创建资源。 要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。  |
    |||||
 
    <a name="create-subnet"></a>
@@ -132,7 +134,7 @@ ms.locfileid: "65544528"
 
    * 使用[无类域间路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和 B 类地址空间。
 
-   * 使用最少`/27`的地址空间，因为每个子网都必须有 32 个地址作为*最小*。 例如：
+   * 使用最少`/27`的地址空间，因为每个子网都必须有 32 个地址作为*最小*。 例如:
 
      * `10.0.0.0/27` 具有 32 个地址，因为 2<sup>(32-27)</sup>为 2<sup>5</sup>或 32。
 

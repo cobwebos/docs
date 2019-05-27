@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: raynew
-ms.openlocfilehash: c91629d24267d280edefdb7530e2614eb7be89fd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4500f4c53ed2731e9f96add97018b16d83f9d304
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704881"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955117"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 到 Azure 的灾难恢复体系结构
 
@@ -45,7 +45,7 @@ ms.locfileid: "64704881"
         - **恢复点保留期**。 此设置指定在发生中断时想回退的时间长度。 高级存储上的最大保留期为 24 小时。 标准存储上为 72 小时。 
         - **应用一致的快照**。 获取应用一致的快照的频率可能为每 1 到 12 个小时，具体取决于应用需求。 快照是标准的 Azure Blob 快照。 VM 上运行的移动代理在复制流中请求对应此设置的 VSS 快照和作为应用程序一致点的时间点书签。
 
-2. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以结合使用 Azure ExpressRoute 和[公共对等互连](../expressroute/expressroute-circuit-peerings.md#publicpeering)。 不支持通过站点到站点虚拟专用网络 (VPN) 将流量从本地站点复制到 Azure。
+2. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以使用与 Azure ExpressRoute [Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)。 不支持通过站点到站点虚拟专用网络 (VPN) 将流量从本地站点复制到 Azure。
 3. 完成初始复制后，开始将增量更改复制到 Azure。 对虚拟机的跟踪更改将发送到进程服务器。
 4. 通信按如下方式发生：
 

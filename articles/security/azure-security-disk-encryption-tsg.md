@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4715ec92c4ee45733cc0eb2839c533f9ee8968fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 35d494702673d59290a0073c55135138f533b8bf
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694117"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956697"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -64,7 +64,7 @@ Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux 扩展已弃用，不再受
 
 Linux OS 磁盘加密序列暂时卸载 OS 驱动器。 然后，它将对整个 OS 磁盘进行逐块加密，然后再将其重新安装为加密状态。 与 Windows 上的 Azure 磁盘加密不同，Linux 磁盘加密不允许在加密的同时并发使用 VM。 VM 的性能特点会在完成加密所需的时间上产生显著差异。 这些特点包括磁盘大小以及存储帐户为标准还是高级 (SSD) 存储。
 
-若要检查的加密状态，轮询**ProgressMessage**从返回的字段[Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus)命令。 加密 OS 驱动器时，VM 会进入维护状态，同时会禁用 SSH，以防止对进行中的进程造成任何干扰。 进行加密时，EncryptionInProgress 消息大部分时间都在提供报告。 几个小时之后，VMRestartPending 消息会提示重新启动 VM。 例如：
+若要检查的加密状态，轮询**ProgressMessage**从返回的字段[Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus)命令。 加密 OS 驱动器时，VM 会进入维护状态，同时会禁用 SSH，以防止对进行中的进程造成任何干扰。 进行加密时，EncryptionInProgress 消息大部分时间都在提供报告。 几个小时之后，VMRestartPending 消息会提示重新启动 VM。 例如:
 
 
 ```azurepowershell
@@ -130,7 +130,7 @@ VM 必须能够访问这样的 [Azure 实例元数据服务](../virtual-machines
 
 1. 使用 DiskPart 检查卷，然后继续。  
 
-例如：
+例如:
 
 ```
 DISKPART> list vol
@@ -150,7 +150,9 @@ If the expected encryption state does not match what is being reported in the po
 
 在门户可能显示为加密磁盘，即使已在 VM 中未加密。  低级别的命令用于直接解密 VM，而不是使用更高级别 Azure 磁盘加密管理命令中的将磁盘从可以发生该错误。  更高级别命令不仅解密从 VM 中的磁盘，VM 外部它们还必须更新重要平台级别的加密设置和与 VM 关联的扩展插件设置。  如果这些不保存在对齐方式，请在平台不能以报告加密状态或正确预配 VM。   
 
-若要正确地禁用 Azure 磁盘加密，从已知的良好状态启动已启用，加密，然后使用[禁用 AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)并[删除 AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) Powershell命令，或[az vm 加密禁用](/cli/azure/vm/encryption)CLI 命令。 
+若要禁用 PowerShell 使用 Azure 磁盘加密，请使用[禁用 AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)跟[删除 AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)。 禁用加密前运行删除 AzVMDiskEncryptionExtension 将失败。
+
+若要禁用 CLI 使用 Azure 磁盘加密，请使用[az vm 加密禁用](/cli/azure/vm/encryption)。 
 
 ## <a name="next-steps"></a>后续步骤
 

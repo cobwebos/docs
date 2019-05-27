@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.subservice: autoscale
+ms.component: autoscale
 ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129731"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
 
@@ -53,22 +53,22 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 | 指标名称 | 单位 |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |百分比 |
-| \Processor(_Total)\% Privileged Time |百分比 |
-| \Processor(_Total)\% User Time |百分比 |
+| \Processor(_Total)\% Processor Time |Percent |
+| \Processor(_Total)\% Privileged Time |Percent |
+| \Processor(_Total)\% User Time |Percent |
 | \Processor Information(_Total)\Processor Frequency |Count |
 | \System\Processes |Count |
 | \Process(_Total)\Thread Count |Count |
 | \Process(_Total)\Handle Count |Count |
-| \Memory\% Committed Bytes In Use |百分比 |
+| \Memory\% Committed Bytes In Use |Percent |
 | \Memory\Available Bytes |字节 |
 | \Memory\Committed Bytes |字节 |
 | \Memory\Commit Limit |字节 |
 | \Memory\Pool Paged Bytes |字节 |
 | \Memory\Pool Nonpaged Bytes |字节 |
-| \PhysicalDisk(_Total)\% Disk Time |百分比 |
-| \PhysicalDisk(_Total)\% Disk Read Time |百分比 |
-| \PhysicalDisk(_Total)\% Disk Write Time |百分比 |
+| \PhysicalDisk(_Total)\% Disk Time |Percent |
+| \PhysicalDisk(_Total)\% Disk Read Time |Percent |
+| \PhysicalDisk(_Total)\% Disk Write Time |Percent |
 | \PhysicalDisk(_Total)\Disk Transfers/sec |每秒计数 |
 | \PhysicalDisk(_Total)\Disk Reads/sec |每秒计数 |
 | \PhysicalDisk(_Total)\Disk Writes/sec |每秒计数 |
@@ -78,7 +78,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk(_Total)\Avg.磁盘队列长度 |Count |
 | \PhysicalDisk(_Total)\Avg.磁盘读取队列长度 |Count |
 | \PhysicalDisk(_Total)\Avg.磁盘写入队列长度 |Count |
-| \LogicalDisk(_Total)\% Free Space |百分比 |
+| \LogicalDisk(_Total)\% Free Space |Percent |
 | \LogicalDisk(_Total)\Free Megabytes |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Linux VM 的来宾 OS 指标
@@ -95,25 +95,25 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | 指标名称 | 计价单位 |
 | --- | --- |
 | \Memory\AvailableMemory |字节 |
-| \Memory\PercentAvailableMemory |百分比 |
+| \Memory\PercentAvailableMemory |Percent |
 | \Memory\UsedMemory |字节 |
-| \Memory\PercentUsedMemory |百分比 |
-| \Memory\PercentUsedByCache |百分比 |
+| \Memory\PercentUsedMemory |Percent |
+| \Memory\PercentUsedByCache |Percent |
 | \Memory\PagesPerSec |每秒计数 |
 | \Memory\PagesReadPerSec |每秒计数 |
 | \Memory\PagesWrittenPerSec |每秒计数 |
 | \Memory\AvailableSwap |字节 |
-| \Memory\PercentAvailableSwap |百分比 |
+| \Memory\PercentAvailableSwap |Percent |
 | \Memory\UsedSwap |字节 |
-| \Memory\PercentUsedSwap |百分比 |
-| \Processor\PercentIdleTime |百分比 |
-| \Processor\PercentUserTime |百分比 |
-| \Processor\PercentNiceTime |百分比 |
-| \Processor\PercentPrivilegedTime |百分比 |
-| \Processor\PercentInterruptTime |百分比 |
-| \Processor\PercentDPCTime |百分比 |
-| \Processor\PercentProcessorTime |百分比 |
-| \Processor\PercentIOWaitTime |百分比 |
+| \Memory\PercentUsedSwap |Percent |
+| \Processor\PercentIdleTime |Percent |
+| \Processor\PercentUserTime |Percent |
+| \Processor\PercentNiceTime |Percent |
+| \Processor\PercentPrivilegedTime |Percent |
+| \Processor\PercentInterruptTime |Percent |
+| \Processor\PercentDPCTime |Percent |
+| \Processor\PercentProcessorTime |Percent |
+| \Processor\PercentIOWaitTime |Percent |
 | \PhysicalDisk\BytesPerSecond |每秒字节数 |
 | \PhysicalDisk\ReadBytesPerSecond |每秒字节数 |
 | \PhysicalDisk\WriteBytesPerSecond |每秒字节数 |
@@ -147,8 +147,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 | 指标名称 | 单位 |
 | --- | --- |
-| CpuPercentage |百分比 |
-| MemoryPercentage |百分比 |
+| CpuPercentage |Percent |
+| MemoryPercentage |Percent |
 | DiskQueueLength |Count |
 | HttpQueueLength |Count |
 | BytesReceived |字节 |
@@ -190,4 +190,3 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 > 若使用服务总线，则不存在资源组这一概念，但 Azure 资源管理器会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-EastUS”、“Default-ServiceBus-WestUS”、“Default-ServiceBus-AustraliaEast”等等。
 >
 >
-

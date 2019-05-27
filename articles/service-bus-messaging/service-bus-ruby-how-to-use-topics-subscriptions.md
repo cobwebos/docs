@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: c2862c3521c05ba81f7a567f7951d22a9ab95c44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa3e50374c47f863923252a47b4b54fc1e18f87d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472299"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991868"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>如何通过 Ruby 使用服务总线主题和订阅
  
@@ -35,11 +35,11 @@ ms.locfileid: "61472299"
 
 
 ## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[Visual Studio 或 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照步骤[快速入门：使用 Azure 门户创建服务总线主题和订阅到主题](service-bus-quickstart-topics-subscriptions-portal.md)若要创建服务总线**命名空间**并获取**连接字符串**。 
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。 
 
     > [!NOTE]
-    > 您将创建**主题**和一个**订阅**使用主题**Ruby**在本快速入门。 
+    > 在本快速入门中，你将使用 **Ruby** 创建一个**主题**和对此主题的**订阅**。 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
@@ -167,6 +167,9 @@ azure_service_bus_service.delete_topic("test-topic")
 ```ruby
 azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 ```
+
+> [!NOTE]
+> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 现在，已了解有关 Service Bus 主题的基础知识，单击下面的链接可了解更多信息。

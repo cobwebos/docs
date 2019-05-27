@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405515"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128548"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
@@ -63,7 +63,7 @@ ms.locfileid: "57405515"
 | MissingRegistrationForLocation | 检查资源提供程序注册状态和支持的位置。 | [解决注册问题](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | 将订阅注册到资源提供程序。 | [解决注册问题](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | 检查资源提供程序注册状态。 | [解决注册问题](resource-manager-register-provider-errors.md) |
-| NotFound | 可能正在尝试同时部署依赖资源和父资源。 检查是否需要添加依赖项。 | [解决依赖项问题](resource-manager-not-found-errors.md) |
+| 未找到 | 可能正在尝试同时部署依赖资源和父资源。 检查是否需要添加依赖项。 | [解决依赖项问题](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | 部署正在尝试执行一个超过了订阅、资源组或区域配额的操作。 如果可能，请修改部署，以保持在配额范围内。 否则，请考虑请求更改配额。 | [解决配额问题](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | 确保在创建子资源之前父资源已存在。 | [解决父资源问题](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | 你可能选择了包含太多字符的密码，也可能在将密码值作为参数传递之前将其转换为了一个安全字符串。 如果模板包括一个**安全字符串**参数，则不需要将值转换为安全字符串。 请以文本形式提供密码值。 |  |

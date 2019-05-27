@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: f3c02e80016e43bdd83218851de5ceb72be7f268
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 822cbc7401de90d63f9079561ced0dfbb911fa2c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60319996"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989444"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点连接：PowerShell
 
@@ -55,7 +55,7 @@ ms.locfileid: "60319996"
 * **订阅：** 如果有多个订阅，请验证是否正在使用正确的订阅。
 * **资源组：TestRG**
 * **位置：美国东部**
-* **DNS 服务器：** 要用于名称解析的 DNS 服务器的 IP 地址。 （可选）
+* **DNS 服务器：** 要用于名称解析的 DNS 服务器的 IP 地址。 (可选)
 * **GW 名称：Vnet1GW**
 * **公共 IP 名称：VNet1GWPIP**
 * **VpnType：RouteBased** 
@@ -131,8 +131,8 @@ ms.locfileid: "60319996"
 为 VNet 配置和创建虚拟网络网关。
 
 * -GatewayType 必须是 **Vpn**，-VpnType 必须是 **RouteBased**。
-* -VpnClientProtocol 用来指定要启用的隧道的类型。 两个隧道选项是 **SSTP** 和 **IKEv2**。 可以选择启用其中之一或启用两者。 如果要启用两者，请同时指定两个名称，以逗号分隔。 Android 和 Linux 上的 strongSwan 客户端以及 iOS 和 OSX 上的本机 IKEv2 VPN 客户端仅会使用 IKEv2 隧道进行连接。 Windows 客户端会首先尝试 IKEv2，如果不能连接，则会回退到 SSTP。
-* 虚拟网络网关“基本”SKU 不支持 IKEv2 或 RADIUS 身份验证。 如果计划让 Mac 客户端连接到虚拟网络，请不要使用基本 SKU。
+* -VpnClientProtocol 用来指定要启用的隧道的类型。 隧道选项是**OpenVPN，SSTP**并**IKEv2**。 您可以选择启用其中之一或任何受支持的组合。 如果你想要启用多个类型，请指定以逗号分隔的名称。 无法在启用 OpenVPN 和 SSTP。 Android 和 Linux 上的 strongSwan 客户端以及 iOS 和 OSX 上的本机 IKEv2 VPN 客户端仅会使用 IKEv2 隧道进行连接。 Windows 客户端会首先尝试 IKEv2，如果不能连接，则会回退到 SSTP。 您可以使用 OpenVPN 客户端连接到 OpenVPN 隧道类型。
+* 虚拟网络网关基本 SKU 不支持 IKEv2、 OpenVPN 或 RADIUS 身份验证。 如果计划让 Mac 客户端连接到虚拟网络，请不要使用基本 SKU。
 * VPN 网关可能需要长达 45 分钟的时间才能完成，具体取决于所选[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md)。 本示例使用 IKEv2。
 
 ```azurepowershell-interactive

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 892d485fb5cdaa08107870e9ab5b2b7ad9bcba5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ca8f0e34b63802453c8876f878b531e78e66d76
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60714177"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991779"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
@@ -32,12 +32,12 @@ ms.locfileid: "60714177"
 
 ## <a name="prerequisites"></a>必备组件
 
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[Visual Studio 或 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照步骤[快速入门：使用 Azure 门户创建服务总线主题和订阅到主题](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
-    1. 创建服务总线**命名空间**。
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
+    1. 创建一个服务总线**命名空间**。
     2. 获取**连接字符串**。
-    3. 创建**主题**命名空间中。
-    4. 创建**一个订阅**命名空间中的主题。
+    3. 在此命名空间中创建一个**主题**。
+    4. 在此命名空间中创建对此主题的**一个订阅**。
 3. [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
  
@@ -200,7 +200,7 @@ ms.locfileid: "60714177"
 
 ## <a name="receive-messages-from-the-subscription"></a>从订阅接收消息
 
-若要接收您发送的消息，创建另一个.NET Core 控制台应用程序并安装**Microsoft.Azure.ServiceBus** NuGet 包，类似于前面的发件人应用程序。
+若要接收你发送的消息，请创建另一个 .NET Core 控制台应用程序并安装 **Microsoft.Azure.ServiceBus** NuGet 包，类似于前面的发件人应用程序。
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>编写从订阅接收消息的代码
 
@@ -393,6 +393,9 @@ ms.locfileid: "60714177"
     ![主题长度][topic-message-receive]
 
 祝贺你！ 现已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
+
+> [!NOTE]
+> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

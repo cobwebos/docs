@@ -2,19 +2,18 @@
 title: include 文件
 description: include 文件
 services: virtual-network
-author: rockboyfor
+author: genlin
 ms.service: virtual-network
 ms.topic: include
-origin.date: 04/13/2018
-ms.date: 06/11/2018
-ms.author: v-yeche
+ms.date: 04/13/2018
+ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: 588aa260f2ece543445bfd4da7ef4682dab8334c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309910"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170288"
 ---
 ## <a name="scenario"></a>场景
 为了更好地说明如何创建 NSG，本文档使用以下方案：
@@ -31,3 +30,4 @@ ms.locfileid: "60309910"
   * **web-rule**。 拒绝来自 *BackEnd* 子网的所有 Internet 入站流量。
 
 将这些规则组合起来可创建一个与外围网络类似的方案，其中后端子网只能接收来自前端子网的 SQL 的传入流量且不能访问 Internet，而前端子网可以与 Internet 通信并只接收传入 HTTP 请求。
+

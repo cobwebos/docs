@@ -14,18 +14,23 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d3f71382a3f2b15ec0f9764b9913a95c0d32b21d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591812"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992099"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>如何通过 Node.js 使用服务总线主题和订阅
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>如何使用服务总线主题和订阅使用 Node.js 和 azure sb 包
+> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+在本教程中，学习如何创建 Node.js 应用程序以将消息发送到服务总线主题接收来自服务总线订阅使用的消息[azure sb](https://www.npmjs.com/package/azure-sb)包。 相关示例用 JavaScript 编写并使用 Node.js [Azure 模块](https://www.npmjs.com/package/azure)它在内部使用`azure-sb`包。
 
-本指南演示如何从 Node.js 应用程序使用服务总线主题和订阅。 涉及的方案包括：
+[Azure sb](https://www.npmjs.com/package/azure-sb)包使用[服务总线 REST 运行时 Api](/rest/api/servicebus/service-bus-runtime-rest)。 您可以获得更快地使用新体验[ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus)包，它使用更快地[AMQP 1.0 协议](service-bus-amqp-overview.md)。 若要了解有关新包的详细信息，请参阅[如何通过 Node.js 使用服务总线主题和订阅并@azure/service-bus包](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)，否则，请继续阅读以了解如何使用[azure](https://www.npmjs.com/package/azure)包。
+
+此处介绍的方案包括：
 
 - 创建主题和订阅 
 - 创建订阅筛选器 
@@ -36,11 +41,11 @@ ms.locfileid: "60591812"
 有关主题和订阅的详细信息，请参阅[后续步骤](#next-steps)一节。
 
 ## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[Visual Studio 或 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照步骤[快速入门：使用 Azure 门户创建服务总线主题和订阅到主题](service-bus-quickstart-topics-subscriptions-portal.md)若要创建服务总线**命名空间**并获取**连接字符串**。
+- Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 你可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+- 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。
 
     > [!NOTE]
-    > 您将创建**主题**和一个**订阅**使用主题**Node.js**在本快速入门。 
+    > 在本快速入门中，你将使用 **Node.js** 创建一个**主题**和对此主题的**订阅**。 
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 创建一个空的 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell），或“使用 WebMatrix 创建网站”。
@@ -329,6 +334,9 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
     }
 });
 ```
+
+> [!NOTE]
+> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 现在，已了解有关 Service Bus 主题的基础知识，单击下面的链接可了解更多信息。

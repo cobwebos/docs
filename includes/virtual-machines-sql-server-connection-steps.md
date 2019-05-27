@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 4d77e9b57301bea30d8a33985071c28e972a81a6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264260"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165506"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>在 Windows 防火墙中为数据库引擎的默认实例打开 TCP 端口
 1. 通过远程桌面连接到虚拟机。 有关连接到 VM 的详细说明，请参阅[使用远程桌面打开 SQL VM](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop)。
@@ -19,19 +19,19 @@ ms.locfileid: "51264260"
 3. 在“高级安全 Windows 防火墙”的左窗格中，右键单击“入站规则”，并在操作窗格中单击“新建规则”。
    
     ![新建规则](./media/virtual-machines-sql-server-connection-steps/13New-FW-Rule.png)
-4. 在“新建入站规则向导”对话框中，在“规则类型”下，选择“端口”，并单击“下一步”。
+4. 在“新建入站规则向导”对话框中，在“规则类型”下，选择“端口”，然后单击“下一步”。
 5. 在“协议和端口”对话框中，使用默认“TCP”。 然后，在“特定本地端口”框中，键入数据库引擎实例的端口号（即默认实例对应的端口号“1433”，或在终结点步骤中为专用端口选择的端口号）。
    
     ![TCP 端口 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
 6. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“操作”对话框中，选择“允许连接”，并单击“下一步”。
    
-    **安全说明：** 选择“只允许安全连接”可增加安全性。 如果想在环境中配置其他安全性选项，请选择此选项。
+    **安全说明：** 选择**允许安全连接**可以提供额外的安全。 如果想在环境中配置其他安全性选项，请选择此选项。
    
     ![允许连接](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
 8. 在“配置文件”对话框中，选择“公用”、“专用”和“域”。 然后单击“下一步”。
    
-    **安全说明：** 选择“公用”允许通过 Internet 进行访问。 只要有可能，就请选择更具限制性的配置文件。
+    **安全说明：** 选择**公共**允许通过 internet 进行访问。 只要有可能，就请选择更具限制性的配置文件。
    
     ![公用配置文件](./media/virtual-machines-sql-server-connection-steps/16Public-Private-Domain-Profile.png)
 9. 在“名称”对话框中，键入此规则的名称和说明，并单击“完成”。
@@ -55,7 +55,7 @@ ms.locfileid: "51264260"
 1. 在连接到虚拟机时，在“开始”页面中，键入“SQL Server Management Studio”，并单击勾选图标。
    
     Management Studio 在首次打开时，一定会创建用户 Management Studio 环境。 这可能需要一小段时间。
-2. Management Studio 会显示“连接到服务器”对话框。 在“服务器名称”框中键入要使用对象资源管理器连接到数据库引擎的虚拟机的名称（除了虚拟机名称，还可以使用“(local)”或一个句点作为“服务器名称”）。 选择“Windows 身份验证”，在“用户名”框中保留 ***your_VM_name*\your_local_administrator**。 单击“连接”。
+2. Management Studio 会显示“连接到服务器”对话框。 在“服务器名称”框中键入要使用对象资源管理器连接到数据库引擎的虚拟机的名称（除了虚拟机名称，还可以使用“(local)”或一个句点作为“服务器名称”）。 选择**Windows 身份验证**，并保留***your_VM_name\your_local_administrator***中**用户名**框。 单击“连接”。
    
     ![连接到服务器](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. 在 SQL Server Management Studio 的“对象资源管理器”中，右键单击 SQL Server 实例的名称（虚拟机名称），并单击“属性”。
@@ -84,7 +84,7 @@ ms.locfileid: "51264260"
 7. 从“默认数据库”列表中，为该登录名选择默认数据库。 “master”是此选项的默认值。 如果尚未创建用户数据库，则保留此设置为“master”。
    
     ![登录名属性](./media/virtual-machines-sql-server-connection-steps/24Test-Login.png)
-8. 如果这是你创建的第一个登录名，可能会需要将此登录名指派为 SQL Server 管理员。 这样的话，请在“服务器角色”页面上选中“sysadmin”。
+8. 如果这是你创建的第一个登录名，则你可能希望将此登录名指派为 SQL Server 管理员。 这样的话，请在“服务器角色”页面上选中“sysadmin”。
    
    > [!NOTE]
    > sysadmin 固定服务器角色的成员对数据库引擎具有完全控制权限。 应谨慎限制此角色中的成员资格。
@@ -94,5 +94,5 @@ ms.locfileid: "51264260"
    ![sysadmin](./media/virtual-machines-sql-server-connection-steps/25sysadmin.png)
 9. 单击“确定”。
 
-有关 SQL Server 登录名的详细信息，请参阅[创建登录名](https://msdn.microsoft.com/library/aa337562.aspx)。
+有关 SQL Server 登录名的详细信息，请参阅 [创建登录名](https://msdn.microsoft.com/library/aa337562.aspx)。
 

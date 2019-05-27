@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6404356edca606d78656011b9dec654e9f29edd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a019aaec270fe1beb3914e7ab388fce9a701bcc
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415017"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988611"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>配置适用于 IIS Web 应用的 Azure 多重身份验证服务器
 
@@ -76,4 +76,4 @@ ms.locfileid: "60415017"
 1. 在“IIS 身份验证”部分中，单击“受信任的 IP”选项卡。
 2. 单击“添加”。
 3. 显示“添加受信任 IP”对话框时，选择“单个 IP”、“IP 范围”或“子网”单选按钮。
-4. 输入应加入允许列表的 IP 地址、IP 地址范围或子网。 如果输入子网，请选择适当的网络掩码，并单击“确定”。 现已添加允许列表。
+4. 输入 IP 地址、 IP 地址范围或应允许的子网。 如果输入子网，请选择适当的网络掩码，并单击“确定”。

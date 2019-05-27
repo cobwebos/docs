@@ -4,15 +4,15 @@ description: Azure Cosmos DB 中各种一致性级别的可用性和性能利弊
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a76e277bf56861bcaefb5bf7f8b3b3bc03ad1164
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09777a9980e4576a5d00123516e33696e845dcac
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894022"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990227"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>一致性、可用性和性能权衡 
 
@@ -55,9 +55,9 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 |第|单主或多主数据库|任何一致性级别|< 240 分钟|<1 周|
 |>1|单主数据库|会话、一致的前缀或最终|< 15 分钟|< 15 分钟|
 |>1|单主数据库|有限过期|*K* & *T*|< 15 分钟|
+|>1|单主数据库|强|0|< 15 分钟|
 |>1|多主数据库|会话、一致的前缀或最终|< 15 分钟|0|
 |>1|多主数据库|有限过期|*K* & *T*|0|
-|>1|单主或多主数据库|非常|0|< 15 分钟|
 
 *K* = 某个项的“K”版本（即更新）的数目。
 

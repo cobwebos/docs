@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3593324523340300279232e0e63392c9c127991d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 1107a6df92bf577cd60b9ad31627219da8e1a388
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823561"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956546"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -349,7 +349,7 @@ ms.locfileid: "65823561"
 | --- | --- |
 | microsoft.aad.b2c/userAttributes/allTasks | 读取和配置 Azure Active Directory B2C 中的用户属性。 |
 
-### <a name="b2c-ief-keyset-administrator"></a>B2C IEF 由键集管理员
+### <a name="b2c-ief-keyset-administrator"></a>B2C IEF 键集管理员
 管理用于联合身份验证和标识体验框架中的加密的机密。
 
 | **操作** | **说明** |
@@ -367,7 +367,7 @@ ms.locfileid: "65823561"
 可以执行与常见计费相关的任务，例如更新付款信息。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -385,7 +385,7 @@ ms.locfileid: "65823561"
 可以访问和管理桌面管理工具和服务，包括 Intune。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -458,7 +458,7 @@ ms.locfileid: "65823561"
 可以管理 Azure AD 和使用 Azure AD 标识的 Microsoft 服务的所有方面。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -524,7 +524,7 @@ ms.locfileid: "65823561"
 可以读取和管理 Azure AD 和 Office 365 中的符合性配置和报表。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -558,7 +558,7 @@ ms.locfileid: "65823561"
 可以管理 Dynamics 365 产品的所有方面。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -575,7 +575,7 @@ ms.locfileid: "65823561"
 可以批准 Microsoft 支持人员访问客户组织数据的请求。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -705,7 +705,7 @@ ms.locfileid: "65823561"
 可以管理 Exchange 产品的所有方面。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -765,7 +765,7 @@ ms.locfileid: "65823561"
 可以管理 Azure 信息保护产品的所有方面。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -781,7 +781,7 @@ ms.locfileid: "65823561"
 可以管理 Intune 产品的所有方面。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -829,7 +829,7 @@ ms.locfileid: "65823561"
 可以管理 Skype for Business 产品的所有方面。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -846,7 +846,7 @@ ms.locfileid: "65823561"
 只能在 Office 365 消息中心查看其组织的消息和更新。 
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -859,7 +859,7 @@ ms.locfileid: "65823561"
 不要使用 - 不适用于常规用途。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -891,7 +891,7 @@ ms.locfileid: "65823561"
 不要使用 - 不适用于常规用途。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -925,7 +925,7 @@ ms.locfileid: "65823561"
 可以管理 Power BI 产品的所有方面。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -955,7 +955,7 @@ ms.locfileid: "65823561"
 可以管理 Azure AD 中的角色分配和 Privileged Identity Management 的所有方面。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -968,7 +968,7 @@ ms.locfileid: "65823561"
 可以读取登录和审核报告。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -984,7 +984,7 @@ ms.locfileid: "65823561"
 可以读取安全信息和报表，以及管理 Azure AD 和 Office 365 中的配置。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -1013,7 +1013,7 @@ ms.locfileid: "65823561"
 可以读取 Azure AD 和 Office 365 中的安全信息和报表。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -1033,7 +1033,7 @@ ms.locfileid: "65823561"
 可以读取服务运行状况信息和管理支持票证。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -1049,7 +1049,7 @@ ms.locfileid: "65823561"
 可以管理 SharePoint 服务的所有方面。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -1072,7 +1072,7 @@ ms.locfileid: "65823561"
 可以管理 Microsoft Teams 服务中的通话和会议功能。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -1089,7 +1089,7 @@ ms.locfileid: "65823561"
 可以使用高级工具排查 Teams 中的通信问题。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -1103,7 +1103,7 @@ ms.locfileid: "65823561"
 可以使用基本工具排查 Teams 中的通信问题。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 
@@ -1117,7 +1117,7 @@ ms.locfileid: "65823561"
 可以管理 Microsoft Teams 服务。
 
   > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
 

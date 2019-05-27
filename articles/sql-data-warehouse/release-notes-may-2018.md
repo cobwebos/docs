@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库发行说明（2018 年 5 月）| Microsoft Docs
 description: Azure SQL 数据仓库发行说明。
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 07/23/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: eb933e8085ec956be713a18602b8baff9c87084b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402694"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912199"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 5 月 
 Azure SQL 数据仓库持续得到改进。 本文介绍 2018 年 5 月发行的版本中所引入的新功能和所做的更改。 

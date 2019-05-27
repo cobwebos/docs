@@ -8,12 +8,12 @@ ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 0b155a5cdfa1c540e1cfb92147f6ebc7f88dd929
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 407e25b7bb1a2220448c9701bbef208195c50b63
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003688"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953112"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>管理 Azure 数据目录中的数据资产
 ## <a name="introduction"></a>简介
@@ -52,7 +52,7 @@ Azure 数据目录设计用于发现数据源，使用户能够轻松发现和�
 ### <a name="remove-owners"></a>删除所有者
 正如任何资产所有者可以添加共同所有者一样，他们也可以删除任何共同所有者。
 
-资产所有者删除了自己作为所有者的身份后，将不能再管理资产。 如果资产所有者删除了自己作为所有者的身份且没有其他共同所有者，资产将恢复到无所有者状态。
+资产所有者删除了自己作为所有者不能再管理资产。 如果资产所有者删除自己作为所有者，并且没有其他共同所有者，资产将恢复到无所有者状态。
 
 ## <a name="control-visibility"></a>控制可见性
 数据资产所有者可以控制他们所拥有的数据资产的可见性。 若要限制默认可见性（让所有数据目录用户都能发现和查看数据资产），资产所有者可以在资产属性中将可见性设置从“任何人”切换为“所有者和这些用户”。 然后所有者可以添加特定用户和安全组。

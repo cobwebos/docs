@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: 9ef32273c007e7319b7f6df99f3d904f805c31f2
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 82678091c1d0b71e6209f6d03e9d1a0ca60fe03e
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550910"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992171"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 的故障排除
 
@@ -23,10 +23,6 @@ ms.locfileid: "65550910"
 
 如果创建 Azure Red Hat OpenShift 群集使用`az`CLI 命令失败，正在重试创建将继续失败。
 使用`az openshift delete`若要删除失败的群集，然后创建一个全新的群集。
-
-## <a name="untrusted-azure-red-hat-openshift-server-certificate"></a>不受信任的 Azure Red Hat OpenShift 服务器证书
-
-OpenShift 控制台使用自签名证书。 浏览器中出现提示时，请忽略警告，并接受“不受信任的”证书。
 
 ## <a name="hidden-azure-red-hat-openshift-cluster-resource-group"></a>隐藏的 Azure Red Hat OpenShift 群集资源组
 

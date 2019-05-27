@@ -4,14 +4,14 @@ description: 了解如何配置和更改的默认索引策略的自动索引并�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: thweiss
-ms.openlocfilehash: c7f2ccd2c074f2488c86b45a09859b308655df8d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: c45beb3ed6f87e95d171e2299c533b4be2827f27
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068602"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954050"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -114,7 +114,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 ## <a name="indexing-policies-and-ttl"></a>索引策略和 TTL
 
-[生存时间 (TTL) 功能](time-to-live.md)需要索引上开启的容器处于活动状态。 这意味着：
+[生存时间 (TTL) 功能](time-to-live.md)需要索引上开启的容器处于活动状态。 这表示：
 
 - 不能激活其中索引模式设置为无的容器上的 TTL
 - 不能将索引模式设置为无在容器上其中激活 TTL。

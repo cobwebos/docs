@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/20/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b3500ce1f1f80d975555edef56d95f2f1d27ca7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5524576ef21830ae13526dad2d8ac8a1d0864cf1
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783769"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956891"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML 单一登录对应用程序代理 （预览版） 的本地应用程序
 
@@ -50,8 +50,9 @@ SAML SSO 与应用程序代理也适用于 SAML 令牌加密功能。 有关详�
 1. 选择**SAML**作为单一登录方法。
 1. 在**设置了单一登录使用 SAML**页上，编辑**基本 SAML 配置**数据，并按照中的步骤[Enter 基本 SAML 配置](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on)若要配置基于 SAML 的应用程序的身份验证。
 
-   * 请确保**回复 URL**匹配或已下的路径**外部 URL**通过应用程序代理发布本地应用程序。 如果应用程序需要不同**回复 URL** SAML 配置中，将其作为**第一个**中的列表和保留 URL**外部 URL**作为附加 URL，排序后第一个。
-   * 请确保该应用程序还指定了正确**回复 URL**或断言使用者服务 URL，用于接收身份验证令牌。
+   * 请确保**回复 URL**匹配或已下的路径**外部 URL**通过应用程序代理发布本地应用程序。 
+   * 如果应用程序需要不同**回复 URL** SAML 配置中，将其作为**其他**标记旁边的复选框列表中的 URL，以将其指定为主要**回复 URL**用于发送到 IDP 发起的 SAML 响应。
+   * 对于 SP 发起的流，请确保该应用程序还指定了正确**回复 URL**或断言使用者服务 URL，用于接收身份验证令牌。
 
      ![输入基本 SAML 配置数据](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

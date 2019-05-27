@@ -14,27 +14,27 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 46891a60e6fd36ec0bc19d4b52de87d18e2b6793
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 578fd0caa8986c48b3fd50a7890bb66b14bee2f4
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510300"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991726"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>如何通过 Java 使用服务总线主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-在此快速入门中，您编写 Java 代码，以将消息发送到服务总线主题，并从订阅接收消息，对该主题。 
+在本快速入门中，先编写 Java 代码，将消息发送到某个服务总线主题，然后从该主题的订阅中接收消息。 
 
 ## <a name="prerequisites"></a>必备组件
 
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[Visual Studio 或 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照步骤[快速入门：使用 Azure 门户创建服务总线主题和订阅到主题](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
-    1. 创建服务总线**命名空间**。
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
+    1. 创建一个服务总线**命名空间**。
     2. 获取**连接字符串**。
-    3. 创建**主题**命名空间中。
-    4. 创建**三个订阅**命名空间中的主题。
+    3. 在此命名空间中创建一个**主题**。
+    4. 在此命名空间中创建对此主题的**三个订阅**。
 3. [Azure SDK for Java][Azure SDK for Java]。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
@@ -454,6 +454,8 @@ Message sending: Id = 9
                         Content: [ firstName = Werner, name = Heisenberg ]
 ```
 
+> [!NOTE]
+> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。

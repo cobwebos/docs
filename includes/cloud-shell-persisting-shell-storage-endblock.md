@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60200138"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66125213"
 ---
 ## <a name="transfer-local-files-to-cloud-shell"></a>将本地文件传输到 Cloud Shell
 `clouddrive` 目录与 Azure 门户存储边栏选项卡同步。 使用此边栏选项卡将本地文件传输到文件共享或从文件共享传输到本地文件。 刷新边栏选项卡时，从 Cloud Shell 中更新文件将反映在文件存储 GUI 中。
@@ -21,7 +21,7 @@ ms.locfileid: "60200138"
 2. 选择目标文件。
 3. 选择“下载”按钮。
 
-### <a name="upload-files"></a>上传文件
+### <a name="upload-files"></a>上载文件
 
 ![要上传的本地文件](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
 1. 请转到已装在的文件共享。

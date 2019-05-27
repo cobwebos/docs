@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7e665f3124296392c8138f4f2bd3632b56e53de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 88e825ebc08b4bfbd65f81b7b2480ead9be314b5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230930"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954949"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 企业状态漫游可供任何拥有Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅 [Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。
@@ -84,7 +84,7 @@ ms.locfileid: "65230930"
 一年（“保留期”）内未访问的数据会被视为过时，可能会从 Microsoft 云中删除。 保留期可能会发生变化，但不会少于 90 天。 过时数据可以是一组特定的 Windows/应用程序设置或用户的所有设置。 例如:
 
 * 如果没有设备访问特定设置集合（例如从设备中删除了应用程序，或者对某用户的所有设备禁用了“主题”等设置组），则该集合会在保留期后变为过时，并可能被删除。 
-* 如果用户已关闭其所有设备上的设置同步，则不会访问任何设置数据，同时该用户的所有设置数据会过时，并可以在保留期后被删除。 
+* 如果用户已关闭其所有设备上的设置同步，然后将访问的任何设置数据，并为该用户的所有设置数据会变得陈旧，并且可能会在保留期后删除。 
 * 如果 Azure AD 目录管理员关闭整个目录的企业状态漫游，则该目录中的所有用户将停止同步设置，所有用户的所有设置数据都将过时，并可能在保留期后被删除。 
 
 ### <a name="deleted-data-recovery"></a>恢复已删除的数据

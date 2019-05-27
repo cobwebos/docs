@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cebe22dddf9ef382c4eceb799e05cbaab30aedaa
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405711"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951106"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -28,7 +28,7 @@ ms.locfileid: "65405711"
 * 时序见解环境。
 * 用于存储数据的 Azure 存储常规用途 V1 帐户。
 
-时序见解预览版对 Parquet 文件类型使用 Azure Blob 存储。 时序见解管理所有数据操作，包括创建 Blob、编制索引以及将 Azure 存储帐户中的数据分区。 使用 Azure 存储帐户创建这些 Blob。
+Parquet 文件类型，时间系列 Insights 预览版使用 Azure Blob 存储。 时序见解管理所有数据操作，包括创建 Blob、编制索引以及将 Azure 存储帐户中的数据分区。 使用 Azure 存储帐户创建这些 Blob。
 
 与其他 Azure 存储 Blob 一样，时序见解创建的 Blob 允许读取和写入，以支持各种集成方案。
 
@@ -101,12 +101,12 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 ### <a name="logical-partitions"></a>逻辑分区
 
-逻辑分区指物理分区内用于存储与单个分区键值关联的所有数据的分区。 时序见解预览版基于两个属性对每个 Blob 进行逻辑分区：
+逻辑分区指物理分区内用于存储与单个分区键值关联的所有数据的分区。 时间序列 Insights 预览版进行逻辑分区基于两个属性的每个 blob:
 
 * **时序 ID**：事件流和模型中所有时序见解数据的分区键。
 * **时间戳**：基于初始流入的时间。
 
-时序见解预览版提供基于这两个属性的性能查询。 这两个属性还提供用于快速传送时序见解数据的最有效方法。
+时间序列 Insights 预览提供了基于这两个属性的高性能查询。 这两个属性还提供用于快速传送时序见解数据的最有效方法。
 
 必须选择适当的时序 ID，因为它是不可变的属性。 有关详细信息，请参阅[选择时序 ID](./time-series-insights-update-how-to-id.md)。
 
@@ -120,7 +120,7 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 此外，时序见解可将 Parquet 文件重新分区，以优化时序见解 API。 还会保存最近重新分区的文件。
 
-在公共预览版中，数据无限期存储在 Azure 存储帐户中。
+公共预览期间，数据存储无限期地在 Azure 存储帐户。
 
 ### <a name="writing-and-editing-time-series-insights-blobs"></a>编写和编辑时序见解 Blob
 
@@ -146,13 +146,13 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 ### <a name="data-deletion"></a>数据删除
 
-不要删除 Blob，因为时序见解预览版在其中保留有关 Blob 的元数据。
+不要删除 blob。 不仅用于审核和维护数据的一条记录，时间系列 Insights 预览版维护每个 blob 中的 blob 元数据。
 
 ## <a name="time-series-insights-data-ingress"></a>时间时序见解数据入口
 
 ### <a name="ingress-policies"></a>入口策略
 
-时序见解预览版支持时序见解目前所支持的相同事件源和文件类型。
+时间序列 Insights 预览版支持时序见解目前支持的相同的事件源和文件类型。
 
 支持的事件源包括：
 
@@ -168,7 +168,7 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 ### <a name="data-availability"></a>数据可用性
 
-时序见解预览版使用 Blob 大小优化策略为数据编制索引。 根据数据传入量以及传入速度为数据编制索引后，这些数据可用于查询。
+时间序列 Insights 预览版数据索引通过使用 blob 大小优化策略。 根据数据传入量以及传入速度为数据编制索引后，这些数据可用于查询。
 
 > [!IMPORTANT]
 > * 在接通事件源的 60 秒内，时序见解正式版 (GA) 即可提供数据。 
@@ -177,7 +177,7 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 ### <a name="scale"></a>缩放
 
-时序见解预览版最高支持每个环境每秒 6 Mbps 的初始流入规模。 我们正在增强缩放支持， 到时会更新我们的文档以反映这些改进
+针对每个环境，时间系列 Insights 预览版支持最多 1 个兆字节 / 秒 (Mbps) 的初始入口缩放。 我们正在增强缩放支持， 到时会更新我们的文档以反映这些改进。
 
 ## <a name="next-steps"></a>后续步骤
 
