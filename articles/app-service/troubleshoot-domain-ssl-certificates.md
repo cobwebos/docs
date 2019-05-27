@@ -16,11 +16,11 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136175"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
@@ -273,7 +273,7 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **购买网站的自定义域后是否必须配置该域？**
 
@@ -317,7 +317,7 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 **是否可将域从一个订阅转移到另一个订阅？**
 
-可以将一个域移到另一个订阅/资源组使用[移动 AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet。
+可以使用 [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet 将域转移到另一个订阅/资源组。
 
 **如果我当前没有 Azure 应用服务应用，该如何管理自定义域？**
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785311"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129792"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
 
@@ -127,7 +127,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. 无法再通过 PowerShell 创建经典警报规则。 若要创建需要使用新的警报规则[添加 AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule)命令。
+8. 无法再通过 PowerShell 创建经典警报规则。 若要创建警报规则，需要使用新的 [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) 命令。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
 ms.openlocfilehash: 0578b50952c12d4587f7a4751bc831d3134c64e7
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540765"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129426"
 ---
-# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>管理 Log Analytics 工作区使用 Azure 资源管理器模板
+# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以使用[Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Azure Monitor 中的 Log Analytics 工作区。 可使用模板执行的任务示例包括：
+可以使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)在 Azure Monitor 中创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
 * 创建工作区，包括设置定价层 
 * 添加解决方案
@@ -63,7 +63,7 @@ ms.locfileid: "58540765"
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
-1. 将以下 JSON 语法复制并粘贴到该文件中：
+1. 将以下 JSON 语法复制并粘贴到文件中：
 
     ```json
     {

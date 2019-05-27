@@ -7,14 +7,14 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 6e1ac5dfd1972e406a1bd8dcd26e6aef2c4ea6d1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6ffce339fe7b1a434c8f007b417ee81a42529dfc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919869"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142520"
 ---
-# <a name="refresh-with-logic-apps"></a>刷新使用逻辑应用
+# <a name="refresh-with-logic-apps"></a>使用逻辑应用进行刷新
 
 通过使用逻辑应用和 REST 调用，可以执行 Azure 分析表格模型，包括同步的查询横向扩展的只读副本上的自动的数据刷新操作。
 
@@ -66,14 +66,14 @@ ms.locfileid: "64919869"
 |属性  |值  |
 |---------|---------|
 |**方法**     |POST         |
-|**URI**     | https://*服务器区域*/servers/*作为服务器名称*/models/*你的数据库名称*/ <br /> <br /> 例如： https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
+|**URI**     | https://*服务器区域*/servers/*作为服务器名称*/models/*你的数据库名称*/ <br /> <br /> 例如： https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
 |**标头**     |   内容类型、 应用程序/json <br /> <br />  ![标头](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**正文**     |   若要了解有关构成请求正文的详细信息，请参阅[异步刷新使用 REST API-POST /refreshes](analysis-services-async-refresh.md#post-refreshes)。 |
 |**身份验证**     |Active Directory OAuth         |
 |**租户**     |填写在 Azure Active Directory 租户 Id         |
 |**受众**     |https://*.asazure.windows.net         |
 |**客户端 ID**     |输入你的服务主体名称 ClientID         |
-|**凭据类型**     |密钥         |
+|**凭据类型**     |机密         |
 |**机密**     |输入服务主体名称机密         |
 
 示例：

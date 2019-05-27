@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: c72b6564109b39fa4f58eedca68361f6a28a422d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60512479"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148920"
 ---
 > [!NOTE]
 > Azure 容器服务中的 Docker Swarm Orchestrator 使用旧的独立 Swarm。 目前，集成的 [Swarm 模式](https://docs.docker.com/engine/swarm/)（位于 Docker 1.12 及更高版本中）在 Azure 容器服务中不是受支持的 Orchestrator。 若要在 Azure 中部署 Swarm 模式群集，请使用开源 [ACS 引擎](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md)、社区贡献的[快速入门模板](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)或 [Azure 市场](https://azuremarketplace.microsoft.com)中的 Docker 解决方案。

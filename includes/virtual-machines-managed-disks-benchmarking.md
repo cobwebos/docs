@@ -9,11 +9,11 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679716"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147912"
 ---
 预热缓存  
 启用 ReadOnly 主机缓存的磁盘能够提供比磁盘限制更高的 IOPS。 若要通过主机缓存来实现此最大读取性能，首先必须对此磁盘的缓存进行预热。 这样可确保需要通过基准测试工具在 CacheReads 卷上实现的读取 IO 实际上可以直接命中缓存而不是磁盘。 命中缓存导致单个启用缓存的磁盘可以实现额外的 IOPS。
@@ -68,7 +68,7 @@ Iometer 使用一个测试文件，该文件存储在运行基准测试的卷上
    | RandomReads\_1MB |1 MB |100 |100 |
 1. 运行 Iometer 测试，以便使用以下参数初始化缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在“测试设置”选项卡上将测试的“运行时间”持续时间设置为 2 小时。
 
-   | 场景 | 目标卷 | 名称 | Duration |
+   | 场景 | 目标卷 | 名称 | 持续时间 |
    | --- | --- | --- | --- |
    | 初始化缓存磁盘 |CacheReads |RandomWrites\_1MB |2 小时 |
 1. 运行 Iometer 测试，以便使用以下参数预热缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在“测试设置”选项卡上将测试的“运行时间”持续时间设置为 2 小时。

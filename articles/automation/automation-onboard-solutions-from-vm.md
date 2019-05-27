@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38b5b233d21c0c5d79d7bcb6a145e6232b238b0e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738876"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133124"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>从 Azure 虚拟机载入“更新管理”、“更改跟踪”和“清单”解决方案
 
@@ -59,7 +59,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 转到你的工作区。 在“常规”下，选择“保存的搜索”。 下表中将显示这些解决方案使用的两个已保存搜索：
 
-|名称     |类别  |别名  |
+|名称     |Category  |别名  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |
@@ -104,6 +104,8 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 * 启动和停止 VM Runbook 计划
 * 启动和停止 VM Runbook
 * 变量
+
+或者您可以还取消链接工作区在自动化帐户中从 Log Analytics 工作区。 在工作区中，选择**自动化帐户**下**相关资源**。 在自动化帐户页上选择**取消链接帐户**。
 
 ## <a name="next-steps"></a>后续步骤
 

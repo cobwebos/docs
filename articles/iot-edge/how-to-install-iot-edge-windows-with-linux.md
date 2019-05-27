@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: bb47a1b828084673961a6d2c5657793b4437f294
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b7386cbbe18d7e05c2fbffb96f6214b468956192
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160570"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151706"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>在 Windows 上使用 IoT Edge 运行 Linux 容器
 
@@ -55,7 +55,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 首次在设备上安装 IoT Edge 运行时时，需要使用 IoT 中心内的标识预配该设备。 可以使用 IoT 中心提供设备连接字符串手动预配单个 IoT Edge 设备。 或者，可以使用设备预配服务自动预配设备，需要设置多个设备时，这种做法非常有用。 
 
-你可以阅读更多有关的不同安装选项和一文中的参数[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。 安装和配置 Linux 容器的 Docker 桌面后，主安装差异声明使用 Linux **-ContainerOs**参数。 例如： 
+你可以阅读更多有关的不同安装选项和一文中的参数[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。 安装和配置 Linux 容器的 Docker 桌面后，主安装差异声明使用 Linux **-ContainerOs**参数。 例如: 
 
 1. 如果你尚未准备好，注册新的 IoT Edge 设备，并检索设备连接字符串。 复制连接字符串以供以后使用在本部分中。 你可以完成此步骤中使用以下工具：
 
@@ -64,6 +64,13 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    * [Visual Studio Code](how-to-register-device-vscode.md)
 
 2. 以管理员身份运行 PowerShell。
+
+   >[!NOTE]
+   >使用 PowerShell 的 AMD64 会话安装 IoT Edge，不是 PowerShell (x86)。 如果不能确定要将哪个会话类型，运行以下命令：
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
 
 3. **部署 IoTEdge**命令将检查你的 Windows 计算机上受支持的版本中，将启用容器功能，并下载小鲸鱼运行库 （其中未使用 Linux 容器） 和 IoT Edge 运行时。 命令默认为 Windows 容器，因此将 Linux 声明为所需的容器操作系统。 
 
@@ -74,7 +81,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 4. 在此情况下，IoT Core 设备可能会自动重新启动。 Windows 10 或 Windows Server 的其他设备可能会提示您重新启动。 如果是这样，立即重新启动你的设备。 你的设备准备就绪后，再次以管理员身份运行 PowerShell。
 
-5. **Initialize IoTEdge**命令将 IoT Edge 运行时配置在计算机上。 该命令默认为手动预配设备连接字符串。 再次声明为所需的容器操作系统的 Linux。 
+5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为手动预配设备连接字符串。 再次声明为所需的容器操作系统的 Linux。 
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `

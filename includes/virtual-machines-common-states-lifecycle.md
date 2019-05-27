@@ -9,11 +9,11 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419960"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164646"
 ---
 Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。 本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
 
@@ -153,7 +153,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 
 &#42;*某些 Azure 资源（如磁盘和网络）会产生费用。 实例上的软件许可证不产生费用。
 
-## <a name="provisioning-states"></a>预配状态
+## <a name="provisioning-states"></a>设置状态
 
 预配状态是用户在 VM 上启动的控制平面操作的状态。 以下状态独立于 VM 的电源状态。
 

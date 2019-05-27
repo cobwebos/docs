@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/13/2019
+ms.date: 05/16/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8cc13e9aec679a79d31d2724ba412efd2d58dfd1
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 0b0e03b163d4de7a441bb7d2714be23b58c95028
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561283"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170364"
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。 
 
@@ -63,9 +63,9 @@ ESv3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，
 
 ACU：160 - 190 <sup>1</sup>
 
-高级存储：不支持
+高级存储：不受支持
 
-高级存储缓存：不支持
+高级存储缓存：不受支持
 
 Ev3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，可通过 Intel Turbo Boost Technology 2.0 达到 3.5 GHz。 Ev3 系列实例适用于内存密集型企业应用程序。
 
@@ -98,15 +98,57 @@ Ev3 系列实例基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，�
 
 写入加速器：[支持](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
+Mv2 系列功能进行高吞吐量、 低延迟、 直接映射本地 NVMe 存储上运行超线程 Intel® Xeon® Platinum 8180 M 2.5ghz (Skylake) 处理器使用的 2.5 g h z 的所有核心基本频率和 3.8 GHz 的最大 turbo 频率。 所有 Mv2 系列虚拟机大小可以都使用标准和高级永久性磁盘。 Mv2 系列实例是内存优化提供无与伦比的计算性能以支持大型内存中数据库和工作负荷，高内存 CPU 比率，适合于关系数据库服务器、 大型缓存和内存中的 VM 大小分析。 
+
 |大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M208ms_v22<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
-| Standard_M208s_v22<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
+| Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5700 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
+| Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8 / 16000 |
 
 Mv2 系列 VM 的 Intel® 超线程技术功能  
 
-<sup>1</sup>这些大 vCPU 需要以下受支持的来宾操作系统之一：Windows Server 2016、 Windows Server 2019，SLES 12 SP4、 15 SLES 和 RHEL 7.6
+<sup>1</sup>这些大型 Vm 需要以下受支持的来宾操作系统之一：Windows Server 2016、 Windows Server 2019，SLES 12 SP4、 SLES 15。
 
+<sup>2</sup> Mv2 系列 Vm 是第 2 代仅。 如果使用的 Linux，请参阅如何查找和选择 SUSE Linux 映像的以下部分。
+
+#### <a name="find-a-suse-image"></a>查找 SUSE 映像
+
+若要在 Azure 门户中选择合适的 SUSE Linux 映像： 
+
+1. 在 Azure 门户中，选择**创建资源** 
+1. 搜索"SUSE SAP" 
+1. SLES for SAP 第 2 代映像都可用作任一即用即付，或使你自己的订阅 (BYOS)。 在搜索结果中，展开所需的图像类别：
+
+    * 适用于 SAP 的 SUSE Linux Enterprise Server (SLES)
+    * SUSE Linux Enterprise Server (SLES) for SAP (BYOS)
+    
+1. 与 Mv2 系列兼容的 SUSE 映像名称带有前缀`GEN2:`。 以下的 SUSE 映像是可用于 Mv2 系列 Vm:
+
+    * 第 2 代：SUSE Linux Enterprise Server (SLES) 12 的 SAP 应用程序的 SP4
+    * 第 2 代：SUSE Linux Enterprise Server (SLES) 15 的 SAP 应用程序
+    * 第 2 代：SUSE Linux Enterprise Server (SLES) 12 的 SAP 应用程序 (BYOS) SP4
+    * 第 2 代：SUSE Linux Enterprise Server (SLES) 15 的 SAP 应用程序 (BYOS)
+
+#### <a name="select-a-suse-image-via-azure-cli"></a>选择通过 Azure CLI 的 SUSE 映像
+
+若要查看 Mv2 系列 Vm 的当前可用的 SLES for SAP 映像列表，请使用以下[ `az vm image list` ](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list)命令：
+
+```azurecli
+az vm image list --output table --publisher SUSE --sku gen2 --all
+```
+
+此命令会输出当前可用第 2 代 Vm 可从 SUSE 用于 Mv2 系列 Vm。 
+
+示例输出：
+
+```
+Offer          Publisher  Sku          Urn                                        Version
+-------------  ---------  -----------  -----------------------------------------  ----------
+SLES-SAP       SUSE       gen2-12-sp4  SUSE:SLES-SAP:gen2-12-sp4:2019.05.13       2019.05.13
+SLES-SAP       SUSE       gen2-15      SUSE:SLES-SAP:gen2-15:2019.05.13           2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-12-sp4  SUSE:SLES-SAP-BYOS:gen2-12-sp4:2019.05.13  2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13      2019.05.13
+```
 
 ## <a name="m-series"></a>M 系列 
 
@@ -174,9 +216,9 @@ ACU：180 - 240 <sup>1</sup>
 
 ACU：180 - 240
 
-高级存储：不支持
+高级存储：不受支持
 
-高级存储缓存：不支持
+高级存储缓存：不受支持
 
 | 大小         | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -216,9 +258,9 @@ ACU：210 - 250 <sup>1</sup>
 
 ACU：210 - 250
 
-高级存储：不支持
+高级存储：不受支持
 
-高级存储缓存：不支持
+高级存储缓存：不受支持
 
 | 大小              | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

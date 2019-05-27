@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66135249"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure 资源管理器的 PowerShell 创建 Azure 应用程序网关的自定义探测
 
@@ -204,5 +204,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何配置 SSL 卸载，请访问：[配置 SSL 卸载](application-gateway-ssl-arm.md)
+访问以下文档，了解如何配置 SSL 卸载：[配置 SSL 卸载](application-gateway-ssl-arm.md)
 

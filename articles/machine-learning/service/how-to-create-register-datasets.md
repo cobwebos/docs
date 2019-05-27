@@ -1,5 +1,5 @@
 ---
-title: 创建并注册你的工作区的数据集
+title: 创建使用 azureml 数据集访问数据的数据集
 titleSuffix: Azure Machine Learning service
 description: 了解如何从各种源创建数据集，并注册你的工作区的数据集
 services: machine-learning
@@ -10,34 +10,59 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/02/19
-ms.openlocfilehash: d3502219f03d4ad076a693ab990f2fadb0b5d558
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 05/21/2019
+ms.openlocfilehash: 949468dfe26b076b5c5cf5cab8bbdc2038c7bd2a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800832"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165886"
 ---
-# <a name="create-and-register-azure-machine-learning-datasets-preview"></a>创建并注册 Azure 机器学习数据集 （预览）
+# <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>创建和访问 Azure 机器学习中的数据集 （预览）
 
-在本文中，你将了解 Azure 机器学习工作流以创建并注册数据集，以及如何跨本地和远程试验以供重复使用访问它们。
+在本文中，将了解如何创建 Azure 机器学习数据集 （预览版） 以及如何从本地和远程试验访问数据。
 
-Azure 机器学习数据集 （预览版） 使其更轻松地访问和使用你的数据。 数据集管理各种方案，例如模型训练和创建管道中的数据。 使用[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，可以使用流行的格式中的数据、 访问基础存储、 探索和准备数据、 管理不同的数据集定义的生命周期和比较中使用的数据集之间培训和在生产环境中。
+使用托管的数据集，你可以： 
+* **在模型定型过程中轻松地访问数据**而无需重新连接到基础存储
+
+* **确保数据一致性和可再现性**在试验中使用相同的指针： 笔记本、 自动的机器学习、 管道、 直观的界面
+
+* **共享数据和进行协作**与其他用户
+
+* **浏览数据**& 管理生命周期的数据快照和版本
+
+* **比较数据**培训到生产环境中
+
 
 ## <a name="prerequisites"></a>必备组件
 
-若要创建并注册数据集需要：
+若要创建和使用数据集，需要：
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
-* Azure 机器学习服务工作区。 请参阅[创建 Azure 机器学习服务工作区](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)。
+* [Azure 机器学习服务工作区中 Azure 机器学习服务工作区](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)
 
-* Azure 机器学习 Python SDK。 若要安装或更新到最新版本的 sdk，请参阅[安装或更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* [Azure 机器学习 SDK for Python 安装](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包括数据集的 azureml 包。
 
 > [!Note]
 > 某些数据集类 （预览版） 具有依赖项[azureml dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包 (GA）)。 对于 Linux 用户，这些类支持仅在以下分发版上：Red Hat Enterprise Linux、 Ubuntu、 Fedora 和 CentOS。
 
-## <a name="create-datasets-from-local-files"></a>从本地文件创建数据集
+## <a name="data-formats"></a>数据格式
+
+您可以从以下数据创建 Azure 机器学习数据集：
++ [delimited](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-delimited-files-path--separator------header--promoteheadersbehavior-allfileshavesameheaders--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-norows--0---comment-none--include-path-false--archive-options-none-)
++ [binary](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
++ [json](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-)
++ [Excel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true-)
++ [Parquet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-)
++ [Azure SQL 数据库](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
++ [Azure Data Lake 代。1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
+
+## <a name="create-datasets"></a>创建数据集 
+
+可以与你的数据集的 azureml 包中使用的数据集进行交互[Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)且明确地[`Dataset`类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py)。
+
+### <a name="create-from-local-files"></a>创建从本地文件
 
 从本地计算机中加载文件，通过指定的文件或文件夹路径[ `auto_read_files()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false-)方法从`Dataset`类。  此方法而无需你指定的文件类型或分析自变量执行以下步骤：
 
@@ -52,13 +77,14 @@ from azureml.core.dataset import Dataset
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
 
-或者，使用特定于文件的函数来显式控制分析你的文件。 目前，数据集 SDK 支持[分隔](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-delimited-files-path--separator------header--promoteheadersbehavior-allfileshavesameheaders--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-norows--0---comment-none--include-path-false--archive-options-none-)， [Excel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true-)， [Parquet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-)，[二进制](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)，并[json](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-)文件格式。
+或者，使用特定于文件的函数来显式控制分析你的文件。 
 
-## <a name="create-datasets-from-azure-datastores"></a>从 Azure 数据存储创建数据集
 
-若要从 Azure 数据存储创建数据集，请确保：
+### <a name="create-from-azure-datastores"></a>创建从 Azure 数据存储
 
-* 验证具有参与者或所有者访问到已注册 Azure 数据存储。
+若要从 Azure 数据存储创建数据集：
+
+* 验证是否有`contributor`或`owner`访问已注册 Azure 数据存储。
 
 * 导入[ `Workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)并[ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition)和`Dataset`SDK 中的包。
 
@@ -90,17 +116,11 @@ dataset = Dataset.from_delimited_files(datapath)
 dataset.head(5)
 ```
 
-||ID|案例号|Date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
-|--|--|---|---|---|---|----|------|-------|------|-----|---|----|----|-----|-----|------|----|-----|----|----|-----
-|0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|欺骗性的做法|通过 300 美元的财务身份盗窃|OTHER|FALSE|FALSE|...|9|50|11|1183356|1831503|2016|5/11/2016 15:48|41.69283384|-87.60431945|(41.692833841, -87.60431945)|
-第|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT| 从构建|未成年人|FALSE|FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
-2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|欺骗性的做法|财务身份盗窃 300 美元并在列表视图|未成年人|FALSE|FALSE|...|19|74|11|||2016|5/12/2016 15:50
-3|10519591|HZ261534|4/15/2016 9:00|113XX S PRAIRIE AVE|1120|欺骗性的做法|伪造|未成年人|FALSE|FALSE|...|9|49|10|||2016|5/13/2016 15:51
-4|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|从构建|学校，公共的构建|FALSE|FALSE|...|40|13|6|||2016|5/25/2016 15:59|
+## <a name="register-datasets"></a>注册数据集
 
-## <a name="register-your-datasets-with-workspace"></a>向工作区中注册你的数据集
+若要完成创建过程，请向工作区中注册你的数据集：
 
-使用[ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)方法以将数据集注册到工作区以共享和重用您的组织内以及跨各种试验。
+使用[ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)方法来注册到工作区的数据集，以便它们可与其他人共享和重用跨各种试验。
 
 ```Python
 dataset = dataset.register(workspace = workspace,
@@ -111,38 +131,19 @@ dataset = dataset.register(workspace = workspace,
 ```
 
 >[!NOTE]
-> 默认参数设置为`register()`是`exist_ok = False`。 如果你尝试注册具有相同名称的数据集，而无需更改此设置会发生错误。
+> 如果`exist_ok = False`（默认值），并且你尝试注册数据集具有相同名称与另一个，就会出错。 设置为`True`以覆盖现有的。
 
-`register()`方法返回与参数的设置，已注册的数据集`exist_ok = True`。
-
-```Python
-dataset = dataset.register(workspace = workspace,
-                           name = 'dataset_crime',
-                           description = 'Training data',
-                           exist_ok = True
-                           )
-```
-
-使用`list()`若要查看所有工作区中已注册的数据集。
-
-```Python
-Dataset.list(workspace_name)
-```
-
-前面的代码产生以下结果：
-
-```Python
-[Dataset(Name: dataset_crime,
-         Workspace: workspace_name)]
-```
-
-## <a name="access-datasets-in-workspace"></a>工作区中访问数据集
+## <a name="access-data-in-datasets"></a>访问数据集中的数据
 
 已注册的数据集是可访问，并且可使用本机、 远程以及在 Azure 机器学习计算等计算群集上。 若要在试验中重复使用你已注册的数据集和计算环境，请使用以下代码以按名称获取工作区和已注册的数据集。
 
 ```Python
 workspace = Workspace.from_config()
 
+# See list of datasets registered in workspace.
+Dataset.list(workspace)
+
+# Get dataset by name
 dataset = workspace.datasets['dataset_crime']
 ```
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45ea34a673b46dda2ec9606952c707a13d1b72d9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65766874"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988580"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件性访问配置身份验证会话管理
 
@@ -50,7 +50,7 @@ ms.locfileid: "65766874"
 
 ## <a name="configuring-authentication-session-controls"></a>配置身份验证会话控件
 
-条件性访问是 Azure AD Premium 功能，需要 premium 许可证。 若要了解有关条件访问的详细信息，请参阅[什么是 Azure Active Directory 中的条件访问？](overview.md#license-requirements-for-using-conditional-access)
+条件性访问是 Azure AD Premium 功能，需要 premium 许可证。 若要了解有关条件访问的详细信息，请参阅[什么是 Azure Active Directory 中的条件访问？](overview.md#license-requirements)
 
 > [!WARNING]
 > 如果使用的[可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)功能目前处于公共预览状态，请注意，我们不支持创建具有相同的用户或应用程序组合两个不同的策略： 一个具有此功能，使用另一个可配置令牌生存期功能。 Microsoft 计划在年 10 月 15 日停用的可配置令牌生存期功能，并将其替换为条件性访问身份验证会话管理功能。  

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482632"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66155911"
 ---
 #### <a name="to-attach-the-sas-cables"></a>连接 SAS 电缆
 1. 识别主机箱与 EBOD 机箱。 可以通过查看相应的背板来识别这两个机箱。 请参考下图。 
@@ -18,7 +18,7 @@ ms.locfileid: "60482632"
    
     **主机箱与 EBOD 机箱的后视图**
    
-   | Label | 描述 |
+   | 标签 | 描述 |
    |:--- |:--- |
    | 第 |主机箱 |
    | 2 |EBOD 机箱 |
@@ -28,9 +28,9 @@ ms.locfileid: "60482632"
    
     **序号标签位置**
    
-   | Label | 描述 |
+   | 标签 | 描述 |
    |:--- |:--- |
-   | 1 |机箱的吊耳 |
+   | 第 |机箱的吊耳 |
 3. 接下来，使用提供的 SAS 电缆连接主机箱与 EBOD 机箱，如下所示：
    
    1. 识别主机箱与 EBOD 机箱上的四个 SAS 端口。 SAS 端口在主机箱上标记为 EBOD，对应于 EBOD 机箱上的端口 A，如下面的 SAS 布线图中所示。
@@ -41,11 +41,11 @@ ms.locfileid: "60482632"
       
       **SAS 布线**
       
-      | Label | 描述 |
+      | 标签 | 描述 |
       |:--- |:--- |
       | A |主机箱 |
       | B |EBOD 机箱 |
-      | 1 |控制器 0 |
+      | 第 |控制器 0 |
       | 2 |控制器 1 |
       | 3 |EBOD 控制器 0 |
       | 4 |EBOD 控制器 1 |

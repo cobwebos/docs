@@ -10,11 +10,11 @@ ms.date: 05/01/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 100ba66b2eb9442f4121c525d9f13b5201b384b4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148830"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131243"
 ---
 |语言                                 |1.x         |2.x|
 |-----------------------------------------|------------|---|
@@ -22,12 +22,12 @@ ms.locfileid: "65148830"
 |[JavaScript](../articles/azure-functions/functions-reference-node.md)|GA (Node 6)|GA（Node 8 和 10）|
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4.7)|GA (.NET Core 2)|
 |[Java](../articles/azure-functions/functions-reference-java.md)|不适用|GA (Java 8)|
-|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |试验|预览版 (PowerShell Core 6)|
-|[Python](../articles/azure-functions/functions-reference-python.md)|试验|预览版 (Python 3.6)|
-|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |试验|正式版（通过转换为 JavaScript 进行支持）|
-|Bash                |试验|不适用|
-|批处理（.cmd、.bat）  |试验|不适用|
-|PHP                 |试验|不适用|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |实验性|预览版 (PowerShell Core 6)|
+|[Python](../articles/azure-functions/functions-reference-python.md)|实验性|预览版 (Python 3.6)|
+|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |实验性|正式版（通过转换为 JavaScript 进行支持）|
+|Bash                |实验性|不适用|
+|批处理（.cmd、.bat）  |实验性|不适用|
+|PHP                 |实验性|不适用|
 
 
 

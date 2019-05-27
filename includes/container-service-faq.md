@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60510526"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148835"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>（已弃用）容器服务常见问题解答
 
@@ -99,7 +99,7 @@ DNSnamePrefix.AzureRegion.cloudapp.azure.net
 
 4. 在“摘要”页的“输出”下通过了多个群集链接。 **SSHMaster0** 提供的 SSH 连接字符串用于连接到容器服务群集中的第一个主机。 
 
-如上文所述，也可使用 Azure 工具查找主机的 FQDN。 使用主机的 FQDN 以及在创建群集时指定的用户名建立到主机的 SSH 连接。 例如：
+如上文所述，也可使用 Azure 工具查找主机的 FQDN。 使用主机的 FQDN 以及在创建群集时指定的用户名建立到主机的 SSH 连接。 例如:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 

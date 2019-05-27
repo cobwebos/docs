@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
 ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130987"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 
@@ -119,7 +119,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 | `remoteDependencyFailed.durationMetric.count` |依赖项失败次数 |服务器应用程序对外部资源所进行的失效调用的计数。 |
 | `request.duration` |服务器响应时间 |从接收 HTTP 请求到完成响应发送之间的时间。 |
 | `request.rate` |请求速率 |每秒应用程序所有请求的速率。 |
-| `requestFailed.count` |失败的请求 |响应代码中生成的 HTTP 请求计数 >= 400 |
+| `requestFailed.count` |失败的请求数 |响应代码中生成的 HTTP 请求计数 >= 400 |
 | `view.count` |页面视图 |网页的客户端用户请求的计数。 综合流量已筛选掉。 |
 | {自定义指标名称} |{指标名称} |由 [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) 报告或者[跟踪调用的测量参数](../../azure-monitor/app/api-custom-events-metrics.md#properties)中的指标值。 |
 
@@ -127,12 +127,12 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 
 | 指标组 | 收集器模块 |
 | --- | --- |
-| basicExceptionBrowser、<br/>clientPerformance、<br/>view |[浏览器 JavaScript](../../azure-monitor/app/javascript.md) |
+| basicExceptionBrowser、<br/>clientPerformance、<br/>查看 |[浏览器 JavaScript](../../azure-monitor/app/javascript.md) |
 | performanceCounter |[性能](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[依赖项](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | request、<br/>requestFailed |[服务器请求](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 
-## <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>Webhooks
 可[自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)。 引发警报时，Azure 将调用所选的 Web 地址。
 
 ## <a name="see-also"></a>另请参阅

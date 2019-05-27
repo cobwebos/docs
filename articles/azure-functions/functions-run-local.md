@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 7c6e7d8bb407b0ffeb320ebfe9e2639feb303800
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: MT
+ms.openlocfilehash: fe483f00c5711c2b2b62add32e951d26f732de2f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603418"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131405"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -52,51 +52,51 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
 
 ### <a name="v2"></a>2.x 版
 
-2.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时 2.x。 .NET Core 2.x 支持的所有平台（包括 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)）都支持此版本。 必须先安装 .NET Core 2.x SDK。
+2.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时 2.x。 .NET Core 2.x 支持的所有平台（包括 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)）都支持此版本。 
+
+> [!IMPORTANT]
+> 您可以跳过的要求安装.NET Core 2.x SDK 通过使用[扩展捆绑]。
 
 #### <a name="windows-npm"></a>Windows
 
 以下步骤使用 npm 在 Windows 上安装 Core Tools。 也可使用 [Chocolatey](https://chocolatey.org/)。 有关详细信息，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
-1. 安装[用于 Windows 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/windows)。
+1. 安装 [Node.js]，其中包括 npm。 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。
 
-2. 安装 [Node.js]，其中包括 npm。 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。
-
-3. 安装 Core Tools 包：
+1. 安装 Core Tools 包：
 
     ```bash
     npm install -g azure-functions-core-tools
     ```
+1. 如果不打算使用[扩展捆绑]，安装[.NET Core 2.x SDK 的 Windows](https://www.microsoft.com/net/download/windows)。
 
 #### <a name="brew"></a>带 Homebrew 的 MacOS
 
 以下步骤使用 Homebrew 在 macOS 上安装 Core Tools。
 
-1. 安装[用于 macOS 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/macos)。
+1. 安装 [Homebrew](https://brew.sh/)（如果尚未安装）。
 
-2. 安装 [Homebrew](https://brew.sh/)（如果尚未安装）。
-
-3. 安装 Core Tools 包：
+1. 安装 Core Tools 包：
 
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
+1. 如果不打算使用[扩展捆绑]，安装[.NET Core 2.x SDK 适用于 macOS](https://www.microsoft.com/net/download/macos)。
+
 
 #### <a name="linux"></a> 带 APT 的 Linux (Ubuntu/Debian)
 
 以下步骤使用 [APT](https://wiki.debian.org/Apt) 在 Ubuntu/Debian Linux 发行版上安装 Core Tools。 有关其他 Linux 发行版，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)。
 
-1. 安装[用于 Linux 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux)。
-
-2. 将 Microsoft 产品密钥注册为受信任的密钥：
+1. 将 Microsoft 产品密钥注册为受信任的密钥：
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-3. 验证你的 Ubuntu 服务器正在运行下表中的合适版本之一。 若要添加 apt 源，请运行：
+1. 验证你的 Ubuntu 服务器正在运行下表中的合适版本之一。 若要添加 apt 源，请运行：
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -110,11 +110,12 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
 
-4. 安装 Core Tools 包：
+1. 安装 Core Tools 包：
 
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
+1. 如果不打算使用[扩展捆绑]，安装[.NET Core 2.x SDK 适用于 Linux](https://www.microsoft.com/net/download/linux)。
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
@@ -150,7 +151,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init` 支持以下选项，除非另有说明，否则这些选项仅限版本 2.x：
 
-| Option     | 描述                            |
+| 选项     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--csx`** | 初始化 C# 脚本 (.csx) 项目。 必须在后续命令中指定 `--csx`。 |
 | **`--docker`** | 使用基于所选 `--worker-runtime` 的基础映像创建容器的 Dockerfile。 如果你打算发布到自定义 Linux 容器，请使用此选项。 |
@@ -186,6 +187,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
   "Host": {
     "LocalHttpPort": 7071,
     "CORS": "*"
+    "CORSCredentials": true
   },
   "ConnectionStrings": {
     "SQLConnectionString": "<sqlclient-connection-string>"
@@ -200,6 +202,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`Host`** | 在本地运行时，本部分中的设置会自定义 Functions 主机进程。 |
 | **`LocalHttpPort`** | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此值。 |
 | **`CORS`** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (\*)，它允许使用任何来源的请求。 |
+| **`CORSCredentials`** |  将其设置为 true，以允许`withCredentials`请求 |
 | **`ConnectionStrings`** | 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供通常从配置文件的 `ConnectionStrings` 节获取连接字符串的框架使用，例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 的环境中。 此集合中的项不使用其他应用设置发布到 Azure 中。 必须将这些值显式添加到函数应用设置的 `Connection strings` 集合中。 如果要在函数代码中创建 [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)，则应将连接字符串值与其他连接一起存储在门户的“应用程序设置”中。 |
 
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：
@@ -308,7 +311,7 @@ func host start
 
 `func host start` 支持以下选项：
 
-| Option     | 描述                            |
+| 选项     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 在运行之前请勿生成当前项目。 仅限于 dotnet 项目。 默认设置为 false。 仅限版本 2.x。 |
 | **`--cert`** | 包含私钥的 .pfx 文件的路径。 仅与 `--useHttps` 结合使用。 仅限版本 2.x。 |
@@ -400,7 +403,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 `func run` 支持以下选项：
 
-| Option     | 描述                            |
+| 选项     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | 内联内容。 |
 | **`--debug -d`** | 运行函数前，将调试程序附加到主机进程。|
@@ -440,14 +443,14 @@ func azure functionapp publish <FunctionAppName>
 
 以下项目发布选项同时适用于 1.x 和 2.x 版本：
 
-| Option     | 描述                            |
+| 选项     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果在使用存储仿真器，则将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|
 
 以下项目发布选项仅在版本 2.x 中受支持：
 
-| Option     | 描述                            |
+| 选项     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  仅发布设置，并跳过内容。 默认为提示。 |
 |**`--list-ignored-files`** | 基于 .funcignore 文件显示发布期间忽略的文件列表。 |
@@ -470,7 +473,7 @@ func deploy
 
 可使用以下自定义容器部署选项：
 
-| Option     | 描述                            |
+| 选项     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 当前用户登录到的 Docker 注册表的名称。 |
 | **`--platform`** | 函数应用的托管平台。 有效选项为 `kubernetes` |
@@ -500,3 +503,4 @@ Azure Functions Core Tools 是[开源工具且托管在 GitHub 上](https://gith
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[扩展捆绑]: functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles

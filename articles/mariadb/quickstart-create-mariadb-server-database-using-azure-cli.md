@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842288"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171427"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure Database for MariaDB 服务器
 
@@ -52,7 +52,7 @@ resource-group | myresourcegroup | 输入 Azure 资源组的名称。
 sku-name | **GP_Gen5_2** | SKU 的名称。 请遵循简写约定：*定价层*\_*计算代*\_*vCore 数*。 有关 **sku-name** 参数的详细信息，请查看此表后面的部分。
 backup-retention | **7** | 保留备份的时长。 单位为天。 范围：7 到 35。 
 geo-redundant-backup | **已禁用** | 是否应该为此服务启用异地冗余备份。 允许的值：**Enabled**、**Disabled**。
-位置 | **westus** | 服务器的 Azure 位置。
+location | **westus** | 服务器的 Azure 位置。
 ssl-enforcement | **已启用** | 是否应该为此服务器启用 SSL。 允许的值：**Enabled**、**Disabled**。
 storage-size | **51200** | 服务器的存储容量（单位是兆字节）。 有效的存储大小最小为 5120 MB，以 1024 MB 为增量。 有关存储大小限制的详细信息，请参阅[定价层](./concepts-pricing-tiers.md)。 
 版本 | **10.2** | MariaDB 主要引擎版本。

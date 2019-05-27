@@ -1,16 +1,15 @@
 ---
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 10/26/2018
-ms.date: 11/26/2018
-ms.author: v-yeche
+ms.date: 10/26/2018
+ms.author: cynthn
 ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097642"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165490"
 ---
 必须认识到有两种方法可以在 Azure 中配置可用性组侦听器。 这些方法在创建侦听器时使用的 Azure 负载均衡器的类型方面有所不同。 下表描述了差异：
 
@@ -26,4 +25,3 @@ ms.locfileid: "62097642"
 
 ILB 只能在具有区域范围的虚拟网络上配置。 已配置关联组的现有虚拟网络无法使用 ILB。 有关详细信息，请参阅[内部负载均衡器概述](../articles/load-balancer/load-balancer-internal-overview.md)。
 
-<!-- Update_Description: update meta properties -->

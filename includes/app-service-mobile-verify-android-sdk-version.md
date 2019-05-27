@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133890"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141238"
 ---
 由于 Android SDK 的持续开发，安装在 Android Studio 中的 Android SDK 版本可能与代码中的版本不匹配。 本教程中引用的 Android SDK 是版本 26，是撰写本教程时的最新版本。 随着 SDK 的新版本问世，版本号也会随之增加，建议使用最新版本。
 

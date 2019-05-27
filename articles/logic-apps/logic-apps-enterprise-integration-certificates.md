@@ -12,11 +12,11 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167170"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>使用证书保护 B2B 消息
 
@@ -50,7 +50,7 @@ ms.locfileid: "56244923"
    | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“publicCert” | 
-   | **证书类型** | 公共 | 你的证书的类型 |
+   | **证书类型** | 公开 | 你的证书的类型 |
    | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 |
    ||||
 

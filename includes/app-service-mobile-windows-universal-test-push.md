@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: c86210208b9f747cbef1d9231528fa6cedbdb5d2
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: 70e0d766fe3c9669912ce9f13f729fb1c757a26f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42814917"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140502"
 ---
 1. 右键单击 Windows 应用商店项目，单击“设为启动项目”，并按 F5 键运行 Windows 应用商店应用。
 
