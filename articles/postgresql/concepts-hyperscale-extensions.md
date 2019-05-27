@@ -58,7 +58,7 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 |
 > | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 |
 > | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | 函数，用于实现引用完整性 （已过时）。 |
-> | 会话\_分析 | 用于查询 hstore 数组的函数。 |
+> | session\_analytics | 用于查询 hstore 数组的函数。 |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | 提供可操作整个表（包括交叉表）的函数。 |
 > | [tcn](https://www.postgresql.org/docs/current/tcn.html) | 触发更改通知。 |
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | 函数，用于实现按时间顺序查看。 |
@@ -95,7 +95,7 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 > | **扩展** | **说明** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus 分布的数据库。 |
-> | 分片\_rebalancer | 安全地重新平衡发生时节点添加或删除服务器组中的数据。 |
+> | shard\_rebalancer | 安全地重新平衡发生时节点添加或删除服务器组中的数据。 |
 
 ### <a name="miscellaneous-extensions"></a>其他扩展
 
