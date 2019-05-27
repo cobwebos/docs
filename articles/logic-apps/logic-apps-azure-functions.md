@@ -9,12 +9,12 @@ ms.author: estfan
 ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: e371a6abe32a1a41d3babeaa27aaec3e30bd3323
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9b304f2d4d2e498701be5977decf202cb0fa995b
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142311"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922068"
 ---
 # <a name="add-and-run-code-by-using-azure-functions-in-azure-logic-apps"></a>添加并在 Azure 逻辑应用中使用 Azure Functions 运行代码
 
@@ -51,6 +51,9 @@ Azure Functions 在云中提供无服务器计算，且对执行任务非常有�
   在添加可运行函数的操作之前，必须使用触发器启动逻辑应用。
 
   如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+
+> [!NOTE]
+> 启用槽位 （预览） 是不能工作的逻辑应用与 Functions 集成。
 
 <a name="create-function-external"></a>
 

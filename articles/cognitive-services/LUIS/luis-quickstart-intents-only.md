@@ -3,20 +3,20 @@ title: 预测意向
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，创建可预测用户意向的自定义应用。 此应用是最简单类型的 LUIS 应用，因为它不从话语文本（例如电子邮件地址或日期）提取各种数据元素。
 services: cognitive-services
-author: diberry
-manager: nitinme
+author: lingliw
+manager: digimobile
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
-ms.author: diberry
+ms.date: 04/19/19
+ms.author: v-lingwu
 ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593907"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66123960"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用，以确定用户意向
 
@@ -239,3 +239,7 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 
 > [!div class="nextstepaction"]
 > [将预生成的意向和实体添加到此应用](luis-tutorial-prebuilt-intents-entities.md)
+
+
+
+

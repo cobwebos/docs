@@ -17,12 +17,12 @@ ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b924746c00a438ec4ac81dacc02905565adf30e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cffef4028a684e27c0941c234df551d844f13420
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682115"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896867"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor 中的 azure AD 活动日志
 
@@ -107,6 +107,23 @@ ms.locfileid: "64682115"
 | 登录 | 1,000 | 178 | 53,400 | 106.8&nbsp;MB | 418 | 3,611,520 | $11.06 |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor 日志成本注意事项
+
+
+
+| 日志类别       | 用户数 | 每日事件数 | 每月 （30 天） 的事件 | 每月以美元 (est)。 |
+| :--                | ---             | ---            | ---                        | --:                          |
+| 审核和登录名 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
+| 审核              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
+| 登录           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
+
+
+
+
+
+
+
+
+
 
 若要查看与管理 Azure Monitor 日志相关的成本，请参阅[通过在 Azure Monitor 日志中控制数据量和保留期管理成本](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)。
 

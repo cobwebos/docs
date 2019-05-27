@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库发行说明（2018 年 8 月）| Microsoft Docs
 description: Azure SQL 数据仓库发行说明。
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 08/13/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: 9547380d4636c1a72add9dab7a9eed850abd0307
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: f0840e9b91c81b8a99e8c736c3c5db082c92fe76
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474991"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912211"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 8 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 8 月发行的版本中所引入的新功能和所做的更改。
@@ -30,7 +30,7 @@ Microsoft 引入了[自动化智能见解](https://azure.microsoft.com/blog/auto
 
 ## <a name="bug-fixes"></a>Bug 修复
 
-| 标题 | 描述 |
+| 职务 | 描述 |
 |:---|:---|
 | **当拆分计数超过最大限制时，潜在查询失败** |当超过文件拆分数上限（即 100 万个）时，出现未经处理的异常，它导致 SQL 引擎转储且所有查询均失败。 该修补程序解决了此问题，它正确地处理了异常并在不导致查询失败的情况下返回一个错误。 |
 | **已将 ExternalMoveReadersPerNode 默认值调高以提高负载性能** |此问题是由 ExternalMoveReadersPerNode 属性设置与服务结构设置不同步引起的。 此回归导致 Gen2 负载性能降级。 该修补程序将 Gen2 负载性能恢复到了优化后的设计参数范围内。|

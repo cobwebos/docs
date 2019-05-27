@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 92799019d13de71d911767d8e400598513587667
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1259e755642563a7baad5496bc84ed736d5499f8
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715210"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849811"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>应用程序网关的 SSL 终止和端到端 SSL 概述
 
@@ -48,6 +48,9 @@ ms.locfileid: "60715210"
 - 自签名证书：客户端浏览器不信任这些证书，并且会警告用户，指出虚拟服务的证书不是信任链的一部分。 自签名证书适合用于测试，或者管理员会在其中控制客户端并且可以安全绕过浏览器安全警报的环境。 切勿将自签名证书用于生产工作负荷。
 
 有关详细信息，请参阅[配置应用程序网关的 SSL 终止](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)。
+
+### <a name="size-of-the-certificate"></a>证书大小
+使用 SSL 证书信息的个人信息交换 (PFX) 文件不应超过 10 KB 的大小。
 
 ## <a name="end-to-end-ssl-encryption"></a>端到端 SSL 加密
 

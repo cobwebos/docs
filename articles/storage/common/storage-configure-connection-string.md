@@ -9,12 +9,12 @@ ms.date: 04/12/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7029f07b494630cc1ebe4a2dbfb297e73d85ec5e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ef01cf194ea7a0afea033d2888df946208073e41
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153184"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65874121"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>配置 Azure 存储连接字符串
 
@@ -35,7 +35,7 @@ ms.locfileid: "65153184"
 
 在一个配置文件中存储连接字符串可以轻松地更新连接字符串，从而在存储模拟器和云中的 Azure 存储帐户之间切换。 只需编辑连接字符串，使其指向目标环境。
 
-可以使用 [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) 在运行时访问连接字符串，而不考虑应用程序在何处运行。
+可以使用 [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) 在运行时访问连接字符串，而不考虑应用程序在何处运行。
 
 ## <a name="create-a-connection-string-for-the-storage-emulator"></a>创建存储模拟器的连接字符串
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
@@ -107,7 +107,7 @@ AccountKey=<account-key>
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>创建含终结点后缀的连接字符串
-若要针对具有不同终结点后缀的地区或实例内的存储服务创建一个连接字符串，例如针对 Azure 中国或 Azure 政府，请使用以下连接字符串格式。 指出是通过 HTTPS（推荐）还是 HTTP 连接到存储帐户，将 `myAccountName` 替换为存储帐户的名称，将 `myAccountKey` 替换为帐户访问密钥，并将 `mySuffix` 替换为 URI 后缀：
+若要为 Azure 中国 21Vianet 或 Azure 政府版，例如创建存储服务中的区域或实例具有不同终结点后缀的连接字符串使用以下连接字符串格式。 指出是通过 HTTPS（推荐）还是 HTTP 连接到存储帐户，将 `myAccountName` 替换为存储帐户的名称，将 `myAccountKey` 替换为帐户访问密钥，并将 `mySuffix` 替换为 URI 后缀：
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -116,7 +116,7 @@ AccountKey=myAccountKey;
 EndpointSuffix=mySuffix;
 ```
 
-下面是 Azure 中国中存储服务的连接字符串示例：
+下面是一个在 Azure 中国 21Vianet 的存储服务的连接字符串示例：
 
 ```
 DefaultEndpointsProtocol=https;

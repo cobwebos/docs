@@ -17,11 +17,11 @@ ms.date: 08-04-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b0c6fc9ed196a1b3ddd3d8e67887e2340ddbcda
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563570"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65888436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>教程：Azure Active Directory 与 Teamwork.com 集成
 

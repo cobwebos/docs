@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32efe76ac2fce4c4541287e96c3a495f3eb9031b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08bf7950ada5db90d2b8bfea751b39ffc21f3ee9
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60455799"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950851"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的事件响应要求
 大型或中型组织很可能会部署[安全事件响应](https://technet.microsoft.com/library/cc700825.aspx)，帮助 IT 部门根据事件级别采取相应措施。 标识管理系统是事件响应过程的重要组成部分，因为可以使用它来帮助识别针对目标执行具体操作的用户。 混合标识解决方案必须能够提供监视和报告功能，IT 部门可以利用这些功能采取措施来识别和缓解潜在威胁。 在典型的事件响应计划中将包含以下几个阶段：
@@ -50,9 +50,9 @@ ms.locfileid: "60455799"
 * 贵公司是否需要识别来自不同设备的用户的可疑登录尝试？
 * 贵公司是否需要检测可能受威胁的用户的凭据？
 * 贵公司是否需要审核用户的访问和操作？
-* 贵公司是否需要知道用户何时重置了其密码？
+* 你的公司是否需要了解当用户重置其密码？
 
-## <a name="policy-enforcement"></a>策略强制执行
+## <a name="policy-enforcement"></a>策略实施
 在损害控制和风险降低阶段，务必快速消减攻击的实际和潜在影响。 此时会采取的措施可以决定是受轻微影响，还是受重大影响。 具体响应将取决于组织和你面对的攻击的性质。 如果初始评估得出的结论是某个帐户已受到威胁，将需要强制执行阻止该帐户的策略。 这只是一个示例，其中将用到标识管理系统。 以下问题用于帮助你设计混合标识解决方案，同时考虑将如何强制执行策略来对正在进行的事件作出反应：
 
 * 贵公司是否部署了策略来阻止用户访问网络（如有必要）？

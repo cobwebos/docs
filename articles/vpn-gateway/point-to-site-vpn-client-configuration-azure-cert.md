@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: cherylmc
 ms.openlocfilehash: b590dabbe4b2c6526f2c602aeed64667348eefa9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525161"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66113931"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -109,7 +109,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
    ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. 在“本地 ID”字段中，指定证书的名称（见步骤 6）。 在本示例中，该名称为“ikev2Client.com”。 然后单击“应用”按钮保存所做的更改。
 
-   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![应用](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. 在“网络”对话框中，单击“应用”保存所有更改。 然后单击“连接”，启动与 Azure VNet 的 P2S 连接。
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)

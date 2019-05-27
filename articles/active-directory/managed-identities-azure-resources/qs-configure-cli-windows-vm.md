@@ -16,11 +16,11 @@ ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c61313190615c2f30a7d37202bc0f9bcf14d800
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66112876"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>使用 Azure CLI 在 Azure VM 上配置 Azure 资源托管标识
 
@@ -118,7 +118,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type="none"
 
 若要在 VM 创建期间将用户分配的标识分配给 VM，你的帐户需要[虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)和[托管标识操作员](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色分配。 无需其他 Azure AD 目录角色分配。
 
-1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/azure/group/#az-group-create) 创建用于包含和部署用户分配托管标识的[资源组](~/articles/azure-resource-manager/resource-group-overview.md#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 :
+1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/azure/group/#az-group-create) 创建用于包含和部署用户分配托管标识的[资源组](~/articles/azure-resource-manager/resource-group-overview.md#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 : 
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>

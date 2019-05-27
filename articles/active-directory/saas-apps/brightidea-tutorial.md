@@ -16,11 +16,11 @@ ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc45c63d3168a15b4701dcaff7bb531f759d47ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888700"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>教程：Azure Active Directory 与 Brightidea 的集成
 
@@ -116,14 +116,14 @@ ms.locfileid: "57888700"
 
     c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“Brightidea”部分的文本框中：
 
-    ![图像](common/idp-intiated.png)
+    ![image](common/idp-intiated.png)
 
     > [!Note]
     > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![图像](common/metadata-upload-additional-signon.png)
+    ![image](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightidea.com`
 

@@ -4,14 +4,14 @@ description: 使用 Azure 资源管理器将资源移到新的资源组或订阅
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 05/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 076d120d9c02b15837e92b71bc2a015377f54594
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1ae1afe103d4c52a2a7d921ef4f34dc030f3c6f7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792697"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872642"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -62,9 +62,9 @@ ms.locfileid: "65792697"
 * Azure Monitor 日志
 * Azure 中继
 * Azure Stack - 注册
-* Batch
+* 批
 * BizTalk 服务
-* Bot 服务
+* 机器人服务
 * CDN
 * 云服务 - 请参阅[经典部署限制](#classic-deployment-limitations)
 * 认知服务
@@ -92,7 +92,7 @@ ms.locfileid: "65792697"
 * 媒体服务
 * 监视器 - 确保移动到新订阅时，不会超出[订阅配额](../azure-subscription-service-limits.md#monitor-limits)
 * 通知中心
-* 操作见解
+* Operational Insights
 * 操作管理
 * 门户仪表板
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
@@ -140,7 +140,7 @@ ms.locfileid: "65792697"
 * Dynamics LCS
 * ExpressRoute
 * 实验室服务-教室实验室不能移动到新的资源组或订阅。 开发测试实验室可以移动到新的资源组在同一订阅中，但不是能跨订阅。
-* 托管应用程序
+* 托管的应用程序
 * Microsoft 基因组学
 * 安全
 * Site Recovery
@@ -210,7 +210,7 @@ ms.locfileid: "65792697"
 _在订阅之间_移动 Web 应用时存在以下限制：
 
 - 目标资源组中不能有任何现有的应用服务资源。 应用服务资源包括：
-    - Web 应用
+    - Web Apps
     - 应用服务计划
     - 上传或导入的 SSL 证书
     - 应用服务环境

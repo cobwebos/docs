@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 9214f438df57ca9cd95fd1f5827db8ab82f5a136
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261898"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>教程：Azure Active Directory 与 MCM 的集成
 

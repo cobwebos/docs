@@ -9,11 +9,11 @@ ms.date: 05/06/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: d99ee6fc04811e4b4991f93ad4db99bf9a5543a8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150894"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66120453"
 ---
 | Category | 数据存储 | 支持用作源 | 支持用作接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支持 | 受[自我托管 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) 支持 |
 |:--- |:--- |:--- |:--- |:--- |:--- |

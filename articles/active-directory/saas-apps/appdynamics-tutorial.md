@@ -16,11 +16,11 @@ ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b8edf2627ade23fc6d1125afbabc34a1d9d21b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860374"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>教程：Azure Active Directory 与 AppDynamics 集成
 

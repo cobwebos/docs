@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8e00fd312dd335551f5ba8e7dcec2baa4f7e2643
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 72306132f88f211180c99cd30845781667605204
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204329"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921878"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Fortinet 设备连接 
 
@@ -45,7 +45,7 @@ ms.locfileid: "65204329"
 1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。 
 
 1. 下**Linux Syslog 代理配置**:
-   - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将转到购买页自动连接到工作区，是的专用 vm。 VM 处于**标准 D2s v3 （2 个 vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
+   - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将转到购买页自动连接到工作区，是的专用 vm。 VM 处于**标准 D2s v3 （2 个 Vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
       1. 在中**自定义部署**页上，提供你的详细信息和选择用户名和密码，如果你同意条款和条件，购买的 VM。
       1. 配置你的设备，可使用连接页中列出的设置发送日志。 适用于通用的通用事件格式连接器，使用以下设置：
          - 协议 = UDP
@@ -120,13 +120,50 @@ ms.locfileid: "65204329"
    > [!NOTE] 
    > 有关详细信息，请转到[Fortinet 文档库](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)。 选择你的版本，并使用**手册**并**日志消息引用**。
 
+ 若要使用 Log Analytics 中的 Fortinet 事件相关的架构，搜索`CommonSecurityLog`。
+
+
 ## <a name="step-3-validate-connectivity"></a>步骤 3：验证连接
 
 它可能需要 1-2 20 分钟，直到你的日志开始在 Log Analytics 中显示。 
 
-1. 请确保你的日志会转到 Syslog 代理中的正确端口。 Syslog 代理计算机运行以下命令：`tcpdump -A -ni any  port 514 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保源设备上的正确的端口和右设施从接收到日志。
+1. 请确保使用正确的工具。 设备必须在你的设备和 Azure Sentinel 相同。 您可检查使用的 Azure Sentinel 中并在文件中修改哪些设施文件`security-config-omsagent.conf`。 
 
-2. 检查 Syslog 后台程序和代理之间的通信。 Syslog 代理计算机运行以下命令：`tcpdump -A -ni any  port 25226 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保将还收到日志在代理上。
+2. 请确保你的日志会转到 Syslog 代理中的正确端口。 Syslog 代理计算机上运行以下命令：`tcpdump -A -ni any  port 514 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保源设备上的正确的端口和右设施从接收到日志。
+
+3. 请确保您发送的日志符合[RFC 5424](https://tools.ietf.org/html/rfc542)。
+
+4. 在上运行的系统日志代理的计算机，请确保这些端口 514，25226 是打开并在侦听，使用命令`netstat -a -n:`。 有关使用此命令的详细信息请参阅[netstat(8)-Linux 手册页](https://linux.die.netman/8/netstat)。 如果它正在侦听正确，您将看到：
+
+   ![Azure Sentinel 端口](./media/connect-cef/ports.png) 
+
+5. 请确保该守护程序设置为侦听端口 514，要在其上发送日志。
+    - Rsyslog:<br>请确保该文件`/etc/rsyslog.conf`包括此配置：
+
+           # provides UDP syslog reception
+           module(load="imudp")
+           input(type="imudp" port="514")
+        
+           # provides TCP syslog reception
+           module(load="imtcp")
+           input(type="imtcp" port="514")
+
+      有关详细信息，请参阅[imudp:UDP Syslog 输入模块](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module)和[imtcp:TCP Syslog 输入模块](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
+
+   - 针对 syslog-ng:<br>请确保该文件`/etc/syslog-ng/syslog-ng.conf`包括此配置：
+
+           # source s_network {
+            network( transport(UDP) port(514));
+             };
+     有关详细信息，请参阅 [imudp:UDP Syslog 输入模块] (有关详细信息，请参阅[syslog ng 开放源版本 3.16-管理指南](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455)。
+
+1. 检查 Syslog 后台程序和代理之间的通信。 Syslog 代理计算机上运行以下命令：`tcpdump -A -ni any  port 25226 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保将还收到日志在代理上。
+
+6. 如果这两个这些命令提供成功的结果，请检查 Log Analytics，请参阅正在传入到你的日志。 从这些设备流式传输的所有事件都显示在下的 Log Analytics 中的原始格式`CommonSecurityLog`类型。
+
+7. 若要检查是否有错误或如果不到达日志，查找范围`tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`。 如果状态显示为日志格式不匹配错误，请转到`/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`并查看该文件`security_events.conf`并确保你的日志与您将看到此文件中的正则表达式格式相匹配。
+
+8. 请确保你 Syslog 消息的默认大小限制为 2048 个字节 (2 KB)。 如果日志太长，更新 security_events.conf 使用以下命令： `message_length_limit 4096`
 
 1. 如果不由代理在接收 Fortinet 日志，请运行以下命令，具体取决于哪种类型的使用，来设置工具并设置要搜索的字词 Fortinet 在日志中的日志的 Syslog 守护程序：
    - rsyslog.d: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
@@ -135,11 +172,6 @@ ms.locfileid: "65204329"
    - Syslog ng: `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
       
      重新启动 Syslog 守护程序： `sudo service syslog-ng restart`
-1. 如果这两个这些命令提供成功的结果，请检查 Log Analytics，请参阅正在传入到你的日志。 从这些设备流式传输的所有事件都显示在下的 Log Analytics 中的原始格式`CommonSecurityLog`类型。
-1. 若要检查是否有错误或日志不会到达，查找范围 `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
-1. 请确保你 Syslog 消息的默认大小限制为 2048 个字节 (2 KB)。 如果日志太长，更新 security_events.conf 使用以下命令： `message_length_limit 4096`
-6. 若要使用 Log Analytics 中的 Fortinet 事件相关的架构，搜索**CommonSecurityLog**。
-
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，您学习了如何连接到 Azure Sentinel Fortinet 设备。 要详细了解 Azure Sentinel，请参阅以下文章：

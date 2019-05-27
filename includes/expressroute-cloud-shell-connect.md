@@ -9,11 +9,11 @@ ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1aca39a7ff162aa3c42fdb3ca5999c71091ec02e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364734"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119398"
 ---
  如果使用 Azure Cloud Shell，则到 Azure 帐户自动登录后单击试用。 若要本地登录，请使用提升的权限打开 PowerShell 控制台并运行 cmdlet 来连接。
 

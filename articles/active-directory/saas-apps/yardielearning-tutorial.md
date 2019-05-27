@@ -17,11 +17,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a23b024737f6af1f6361983045037b325783518a
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564894"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896022"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>教程：Azure Active Directory 与 Yardi eLearning 的集成
 

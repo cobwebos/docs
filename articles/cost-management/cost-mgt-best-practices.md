@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 493b71e503b6023eeea4a71e34d5405f84821e28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c562e6f0a1358d16b9abef08a5e582e4ff84472
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736865"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002042"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -175,7 +175,7 @@ VM 大小对于 Azure 总成本具有重大影响。 Azure 中所需的 VM 数�
 
 Azure 提供许多折扣，组织应利用这些折扣节省成本。
 
-#### <a name="azure-reservations"></a>Azure 预留
+#### <a name="azure-reservations"></a>Azure 预订
 
 通过 Azure 预留，可以预付一年或三年的虚拟机或 SQL 数据库计算容量。 通过预付，能够以折扣价购买所用资源。 Azure 预留可大幅度减少虚拟机或 SQL 数据库计算成本，最多可以降低 72% 的即用即付价格，但需提前一年或三年预留。 预留提供计费折扣，且不影响虚拟机或 SQL 数据库的运行时状态。
 

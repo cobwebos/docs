@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 593289e64c0f9cd13251a0f7b47b860158100b36
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544566"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119723"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：提供向 Azure AD 应用程序的可选声明
 
@@ -88,8 +88,8 @@ ms.locfileid: "65544566"
 | `pwd_exp`     | 密码过期时间        | 密码过期的日期时间。 |       |
 | `pwd_url`     | 更改密码 URL             | 用户更改密码时可以访问的 URL。   |   |
 | `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果它们不声明不包括。   |  以 MFA 中的[可信 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 设置为基础。    |
-| `nickname`    | 别名                        | 用户的附加名称，不同于名字或姓氏。 | 
-| `family_name` | 姓氏                       | 提供了最后一个名称、 姓氏或家族名称的用户的用户对象中定义。 <br>"family_name":"Miller" | MSA 和 AAD 中受支持   |
+| `nickname`    | 昵称                        | 用户的附加名称，不同于名字或姓氏。 | 
+| `family_name` | 姓                       | 提供了最后一个名称、 姓氏或家族名称的用户的用户对象中定义。 <br>"family_name":"Miller" | MSA 和 AAD 中受支持   |
 | `given_name`  | 名字                      | 提供了第一个或用户对象上设置为"给定"的用户的名称。<br>"given_name":"Frank"                   | MSA 和 AAD 中受支持  |
 | `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于关键数据。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 |
 
@@ -125,6 +125,9 @@ ms.locfileid: "65544566"
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
 可以通过修改应用程序清单来配置应用程序的可选声明 （请参阅下面的示例）。 有关详细信息，请参阅[了解 Azure AD 应用程序清单文章](reference-app-manifest.md)。
+
+> [!IMPORTANT]
+> 访问令牌**始终**生成使用的资源，而不是客户端清单。  因此，在请求`...scope=https://graph.microsoft.com/user.read...`资源是关系图。  因此，使用图形清单，不在客户端清单创建访问令牌。  更改你的应用程序的清单将永远不会导致图形看起来不同的令牌。  用于验证你`accessToken`更改都生效，请求您的应用程序、 不是另一个应用程序的令牌。  
 
 **示例架构：**
 
@@ -217,7 +220,7 @@ ms.locfileid: "65544566"
    - "DistributionList"
    - "DirectoryRole"
 
-   例如：
+   例如:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"

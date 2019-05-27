@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb05ee4d6e05cb8b56756a761a519e5903b78bbd
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0cb0fe056ff7ff4794667d6b28782daad100609f
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507095"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921032"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色分配](active-directory-users-assign-role-azure-portal.md)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。 只能在 Azure AD 的用户设置中更改默认用户权限。
@@ -53,7 +53,7 @@ Directory | 读取所有公司信息<br>读取所有域<br>读取所有合作伙
 允许用户将工作或学校帐户与领英相连接 | 将此选项设置为否可阻止用户使用其 LinkedIn 帐户连接其工作或学校帐户。  请参阅[LinkedIn 帐户连接数据共享和同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)有关详细信息。
 能够创建安全组 | 将此选项设置为“否”可阻止用户创建安全组。 全局管理员和用户管理员仍可创建安全组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
 能够创建 Office 365 组 | 将此选项设置为“否”可阻止用户创建 Office 365 组。 将此选项设置为“某些”可让选定的一组用户创建 Office 365 组。 全局管理员和用户管理员仍可创建 Office 365 组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
-限制访问 Azure AD 管理门户 | 将此选项设置为“否”可阻止用户访问 Azure Active Directory。
+限制访问 Azure AD 管理门户 | 将此选项设置为是可阻止用户通过 Azure 门户仅访问 Azure Active Directory。
 能够读取其他用户 | 此设置仅可在 PowerShell 中使用。 将此设置为 $false 可阻止所有非管理员用户从目录读取用户信息。 这不会阻止读取其他 Microsoft 服务（如 Exchange Online）中的用户信息。 此设置适用于特殊情况，因此不建议将此设置为 $false。
 
 ## <a name="object-ownership"></a>对象所有权

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2018
+ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 53185caa6a0492702035041a893f20a78cf1ea4d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203541"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65911243"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
@@ -203,6 +203,19 @@ Mircosoft 已与 [BreakingPoint Cloud](https://www.ixiacom.com/products/breaking
 - 受到 DDoS 攻击时优化事件响应过程
 - 阐述 DDoS 符合性
 - 培训网络安全团队
+
+## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>在 Azure 安全中心中查看 DDoS 保护警报
+
+Azure 安全中心提供了一系列[安全警报](/azure/security-center/security-center-managing-and-responding-alerts)，帮助调查和修复问题的信息。 使用此功能，你获得警报，包括 DDoS 攻击相关的警报和缓解此攻击在附近时所执行的操作的统一的的视图。
+有两个特定的警报，你将看到有关任何 DDoS 攻击检测和缓解措施：
+
+- **DDoS 攻击检测到的公共 IP**:DDoS 保护服务检测到一个公共 IP 地址是对 DDoS 攻击的目标时，将生成此警报。
+- **为公共 IP 缓解 DDoS 攻击**:已被抑制的公共 IP 地址的攻击时，将生成此警报。
+若要查看的警报，打开**安全中心**在 Azure 门户中。 下**威胁防护**，选择**安全警报**。 以下屏幕截图显示了 DDoS 攻击警报的示例。
+
+![在 Azure 安全中心的 DDoS 警报](./media/manage-ddos-protection/ddos-alert-asc.png)
+
+警报包含有关低于攻击、 地理和威胁智能信息和修正步骤的公共 IP 地址的常规信息。
 
 ## <a name="permissions"></a>权限
 

@@ -9,12 +9,12 @@ ms.date: 05/11/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b929d9d1acc217c291c5aa645ee2d8952f401cd1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ccafa3431e12b036346c4fd654b2978dc9021471
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192171"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912402"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>对 Microsoft Azure 存储进行监视、诊断和故障排除
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -426,7 +426,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 通常在存储请求数增加时，或者在最初对应用程序进行负载测试时，会出现 **PercentThrottlingError** 增加的情况。 这也可能表现为在客户端中进行存储操作时出现“503 服务器忙”或“500 操作超时”HTTP 状态消息。
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>PercentThrottlingError 暂时增加
-如果看到 **PercentThrottlingError** 的值达到峰值的时间与应用程序活动的高峰期保持一致，则应在客户端中对重试实施指数（而非线性）回退策略。 回退重试会减少分区上的即时负载，并帮助应用程序消除流量峰值。 有关如何使用存储客户端库实现重试策略的详细信息，请参阅 [Microsoft.WindowsAzure.Storage.RetryPolicies Namespace](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.retrypolicy)（Microsoft.WindowsAzure.Storage.RetryPolicies 命名空间）。
+如果看到 **PercentThrottlingError** 的值达到峰值的时间与应用程序活动的高峰期保持一致，则应在客户端中对重试实施指数（而非线性）回退策略。 回退重试会减少分区上的即时负载，并帮助应用程序消除流量峰值。 有关如何实现使用存储客户端库的重试策略的详细信息，请参阅[Microsoft.Azure.Storage.RetryPolicies 命名空间](/dotnet/api/microsoft.azure.storage.retrypolicies)。
 
 > [!NOTE]
 > 可能也会看到 **PercentThrottlingError** 的值达到峰值的时间与应用程序活动的高峰期不一致：出现此情况最可能的原因是存储服务正在移动分区以改进负载均衡。
@@ -469,15 +469,15 @@ PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、
 
 | 源 | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
 | --- | --- | --- | --- | --- |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |开始发出同步请求到 <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |正在等待响应。 |
-| Microsoft.WindowsAzure.Storage |警告 |2 |85d077ab -… |等待响应时引发异常：远程服务器返回错误：(403) 禁止访问。 |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |收到响应。 状态代码 = 403，请求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = 。 |
-| Microsoft.WindowsAzure.Storage |警告 |2 |85d077ab -… |操作过程中引发异常：远程服务器返回错误：(403) 禁止访问。 |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |正在检查是否应重试该操作。 重试次数 = 0，HTTP 状态代码 = 403，异常 = 远程服务器返回了一个错误：(403) 禁止访问。 |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |已根据位置模式将下一个位置设为主位置。 |
-| Microsoft.WindowsAzure.Storage |错误 |第 |85d077ab -… |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始发出同步请求到 <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |正在等待响应。 |
+| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |等待响应时引发异常：远程服务器返回错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |收到响应。 状态代码 = 403，请求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = 。 |
+| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |操作过程中引发异常：远程服务器返回错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |正在检查是否应重试该操作。 重试次数 = 0，HTTP 状态代码 = 403，异常 = 远程服务器返回了一个错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |已根据位置模式将下一个位置设为主位置。 |
+| Microsoft.Azure.Storage |错误 |第 |85d077ab -… |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(403) 禁止访问。 |
 
 在此方案中，应调查在客户端将该令牌发送到服务器之前 SAS 令牌即将到期的原因：
 

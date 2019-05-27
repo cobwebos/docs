@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693959"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952563"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
@@ -98,4 +98,8 @@ RBAC 提供精细的访问控制。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关 Azure AD 身份验证和 Azure Maps Web SDK 的详细信息，请参阅 [Azure AD 和 Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
+若要了解有关 Azure AD 身份验证和 Azure Maps Web SDK 的详细信息，请参阅 [Azure AD 和 Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
+
+了解如何查看 Azure Maps 帐户的 API 使用情况指标：
+> [!div class="nextstepaction"] 
+> [查看使用情况指标](how-to-view-api-usage.md)

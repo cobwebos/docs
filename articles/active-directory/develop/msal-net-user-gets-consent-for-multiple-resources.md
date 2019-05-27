@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7d24a1e14cfbb1163ab78b94dd36ec288dce50
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e8bd9a86d5ec0d39a7f1c26adac52f41e6420283
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544050"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121988"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>用户获取多个资源，使用 MSAL.NET 的许可
 Microsoft 标识平台终结点不允许您以一次性获取多个资源的令牌。 在使用 Microsoft 身份验证库.NET (MSAL.NET) 时，获取令牌方法中的作用域参数只应包含单个资源的作用域。 但是，您可以预先同意提前几个资源通过指定其他作用域使用`.WithExtraScopeToConsent`生成器方法。
@@ -32,8 +32,8 @@ Microsoft 标识平台终结点不允许您以一次性获取多个资源的令�
 
 例如，如果已有的两个资源 2 的范围限定每个：
 
-- https://mytenant.onmicrosoft.com/customerapi (2 个作用域`customer.read`和`customer.write`)
-- https://mytenant.onmicrosoft.com/vendorapi (2 个作用域`vendor.read`和`vendor.write`)
+- https:\//mytenant.onmicrosoft.com/customerapi (2 个作用域`customer.read`和`customer.write`)
+- https:\//mytenant.onmicrosoft.com/vendorapi (2 个作用域`vendor.read`和`vendor.write`)
 
 应使用`.WithExtraScopeToConsent`具有修饰符*extraScopesToConsent*参数，如下面的示例中所示：
 

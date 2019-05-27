@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: erikre
 ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444660"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121365"
 ---
 Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 25,000 封免费电子邮件，可使用高级报告和分析以及[所有 API][all APIs]（Web、SMTP、事件、分析等）。 有关 SendGrid 提供的其他服务的信息，请访问 [SendGrid 解决方案][SendGrid Solutions]页。
 
@@ -53,7 +53,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 ### <a name="to-find-your-sendgrid-api-key"></a>查找 SendGrid API 密钥
 1. 单击“管理”。
 
-    ![manage][manage]
+    ![管理][manage]
 2. 在 SendGrid 仪表板中，选择“设置”，并选择左侧菜单中的“API 密钥”。
 
     ![api-keys][api-keys]
@@ -74,7 +74,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 
 若要管理电子邮件传递设置，请单击“管理”按钮。 此操作将重定向到 SendGrid 仪表板。
 
-![manage][manage]
+![管理][manage]
 
 有关通过 SendGrid 发送电子邮件的详细信息，请访问[电子邮件 API 概述][Email API Overview]。
 

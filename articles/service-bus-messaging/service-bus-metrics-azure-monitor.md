@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 中的 Azure 服务总线指标（预览版）| Microsoft Docs
-description: 使用 Azure 监视来监视服务总线实体
+description: 使用 Azure Monitor 来监视服务总线实体
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: d5f5c1d9b1884c6e9975ceb0ce28ecd5f25e89b2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: fdb0152ef398dbd53a8a2a99a10d90254252908b
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716096"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921227"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 服务总线指标（预览版）
 
@@ -28,7 +28,7 @@ Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服�
 
 ## <a name="access-metrics"></a>访问指标
 
-Azure Monitor 提供多种访问指标的方法。 你可以通过访问指标[Azure 门户](https://portal.azure.com)，或使用 Azure Monitor Api （REST 和.NET） 与分析解决方案，例如 Azure Monitor 日志和事件中心。 有关详细信息，请参阅[Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)。
+Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Azure Monitor 日志和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)。
 
 默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 此值是在 Azure Monitor 中的[诊断设置](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)中配置的。
 
@@ -99,8 +99,8 @@ Azure Monitor 提供多种访问指标的方法。 你可以通过访问指标[A
 
 | 指标名称 | 描述 |
 | ------------------- | ----------------- |
-|每个命名空间的 CPU 使用率（预览版）|命名空间的 CPU 使用百分比。<br/><br/> 单元：百分比 <br/> 聚合类型：最大值 <br/> 维度：EntityName|
-|每个命名空间的内存使用量（预览版）|命名空间的内存使用百分比。<br/><br/> 单元：百分比 <br/> 聚合类型：最大值 <br/> 维度：EntityName|
+|每个命名空间的 CPU 使用率（预览版）|命名空间的 CPU 使用百分比。<br/><br/> 单元：Percent <br/> 聚合类型：最大值 <br/> 维度：EntityName|
+|每个命名空间的内存使用量（预览版）|命名空间的内存使用百分比。<br/><br/> 单元：Percent <br/> 聚合类型：最大值 <br/> 维度：EntityName|
 
 ## <a name="metrics-dimensions"></a>指标维度
 
@@ -115,7 +115,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
 1. 在“服务总线命名空间”页面的“指标”选项卡上，选择“配置警报”。 
 
     ![“指标”页面 - 配置警报菜单](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
-2. 选择**选择目标**选项，然后执行以下操作上**选择一个资源**页： 
+2. 选择“选择目标”选项，并在“选择资源”页面上执行以下操作： 
     1. 对于“按资源类型筛选”字段，选择“服务总线命名空间”。 
     2. 对于“按订阅筛选”字段，选择你的订阅。
     3. 从列表中选择“服务总线命名空间”。 
@@ -124,7 +124,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
         ![选择命名空间](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. 选择“添加条件”，并在“配置信号逻辑”页面上执行以下操作：
     1. 对于“信号类型”，选择“指标”。 
-    2. 选择一个信号。 例如：“服务错误(预览版)”。 
+    2. 选择一个信号。 例如:“服务错误(预览版)”。 
 
         ![选择“服务器错误”](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. 对于“条件”，选择“大于”。
@@ -143,7 +143,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
     1. 为操作组输入名称。
     2. 为操作组输入短名称。 
     3. 选择订阅。 
-    4. 选一个择资源组。 
+    4. 选择资源组。 
     5. 在本演练中，对于“操作名称”，输入“发送电子邮件”。
     6. 对于“操作类型”，选择“电子邮件/短信/推送/语音”。 
     7. 选择“编辑详细信息”。 
@@ -160,7 +160,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [Azure 监视概述](../monitoring-and-diagnostics/monitoring-overview.md)。
+请参阅[Azure Monitor 概述](../monitoring-and-diagnostics/monitoring-overview.md)。
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png

@@ -16,11 +16,11 @@ ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 308f745489fba2e2b539a2f2615b65228565dcf9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850003"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 与 Cisco Webex Meetings 的集成
 
@@ -124,11 +124,11 @@ ms.locfileid: "57850003"
 
 5. Cisco Webex Meetings 应用程序需要特定格式的 SAML 断言，因此，我们需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑” 图标添加属性。 ****
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 删除“用户声明”部分中的默认属性，Cisco Webex Meetings 应用程序需要在 SAML 响应中传回额外的几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------|  --------- |
     |   名    | user.givenname |
     |   姓    | user.surname |
@@ -212,7 +212,7 @@ ms.locfileid: "57850003"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

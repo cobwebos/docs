@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: e2b25875a0dff12bba32b033bca0c35394d407aa
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: e03cc45c5868f90dd1c2da0d7b4890fbf72c9899
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465639"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954807"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>快速入门：使用语音 SDK 创建语音优先虚拟助手 (UWP)
 
@@ -353,7 +353,6 @@ ms.locfileid: "65465639"
     ![权限请求的屏幕截图](media/sdk/qs-csharp-uwp-10-access-prompt.png "启动应用进入调试")
 
 1. 选择“对机器人讲话”，然后对着设备的麦克风讲出一个英文短语或句子。 你的语音将传输到 Direct Line 语音通道并转录为文本，该文本会显示在窗口中。
-quickstart-cs-uwp-bot-successful-turn
 
     ![成功运行机器人的屏幕截图](media/voice-first-virtual-assistants/quickstart-cs-uwp-bot-successful-turn.png "成功运行机器人")
 

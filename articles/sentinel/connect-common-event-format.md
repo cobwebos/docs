@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8c0b895c3ef811268c7b67393a5382362601d875
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 51fd1195942a7bae86bb4cc0af9df3146d6e45c2
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204392"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921906"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>连接外部解决方案是使用通用事件格式
 
@@ -61,7 +61,7 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
 1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。 
 
 1. 下**Linux Syslog 代理配置**:
-   - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将您带入购买页面专用的 Linux VM 的自动连接到工作区，是的。 VM 处于**标准 D2s v3 （2 个 vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
+   - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将您带入购买页面专用的 Linux VM 的自动连接到工作区，是的。 VM 处于**标准 D2s v3 （2 个 Vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
       1. 在中**自定义部署**页上，提供你的详细信息和选择用户名和密码，如果你同意条款和条件，购买的 VM。
       1. 配置你的设备，可使用连接页中列出的设置发送日志。 适用于通用的通用事件格式连接器，使用以下设置：
          - 协议 = UDP
@@ -90,6 +90,9 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
       2. 重新启动 Syslog 代理使用以下命令： `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. 确认没有任何错误代理日志中通过运行以下命令： `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
+ 若要使用 CEF 事件相关的架构在 Log Analytics 中，搜索`CommonSecurityLog`。
+
+
 ### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>部署本地 Linux 服务器上的代理
 
 如果不使用 Azure，手动部署 Azure Sentinel 代理专用的 Linux 服务器上运行。
@@ -113,17 +116,49 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
       1. 重新启动 Syslog 代理使用以下命令： `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. 确认没有任何错误代理日志中通过运行以下命令： `tail /var/opt/microsoft/omsagent/log/omsagent.log`
   
-## <a name="step-2-validate-connectivity"></a>步骤 2：验证连接
+ 若要使用 CEF 事件相关的架构在 Log Analytics 中，搜索`CommonSecurityLog`。
+
+## <a name="step-3-validate-connectivity"></a>步骤 3：验证连接
 
 它可能需要 1-2 20 分钟，直到你的日志开始在 Log Analytics 中显示。 
 
-1. 请确保你的日志会转到 Syslog 代理中的正确端口。 Syslog 代理计算机运行以下命令：`tcpdump -A -ni any  port 514 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保源设备上的正确的端口和右设施从接收到日志。
-2. 检查 Syslog 后台程序和代理之间的通信。 Syslog 代理计算机运行以下命令：`tcpdump -A -ni any  port 25226 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保将还收到日志在代理上。
-3. 如果这两个这些命令提供成功的结果，请检查 Log Analytics，请参阅正在传入到你的日志。 从这些设备流式传输的所有事件都显示在下的 Log Analytics 中的原始格式`CommonSecurityLog`类型。
-1. 若要检查是否有错误或日志不会到达，查找范围 `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
-4. 请确保你 Syslog 消息的默认大小限制为 2048 个字节 (2 KB)。 如果日志太长，更新 security_events.conf 使用以下命令： `message_length_limit 4096`
-6. 若要使用 CEF 事件相关的架构在 Log Analytics 中，搜索**CommonSecurityLog**。
+1. 请确保使用正确的工具。 设备必须在你的设备和 Azure Sentinel 相同。 您可检查使用的 Azure Sentinel 中并在文件中修改哪些设施文件`security-config-omsagent.conf`。 
 
+2. 请确保你的日志会转到 Syslog 代理中的正确端口。 Syslog 代理计算机上运行以下命令：`tcpdump -A -ni any  port 514 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保源设备上的正确的端口和右设施从接收到日志。
+
+3. 请确保您发送的日志符合[RFC 5424](https://tools.ietf.org/html/rfc542)。
+
+4. 在上运行的系统日志代理的计算机，请确保这些端口 514，25226 是打开并在侦听，使用命令`netstat -a -n:`。 有关使用此命令的详细信息请参阅[netstat(8)-Linux 手册页](https://linux.die.netman/8/netstat)。 如果它正在侦听正确，您将看到：
+
+   ![Azure Sentinel 端口](./media/connect-cef/ports.png) 
+
+5. 请确保该守护程序设置为侦听端口 514，要在其上发送日志。
+    - Rsyslog:<br>请确保该文件`/etc/rsyslog.conf`包括此配置：
+
+           # provides UDP syslog reception
+           module(load="imudp")
+           input(type="imudp" port="514")
+        
+           # provides TCP syslog reception
+           module(load="imtcp")
+           input(type="imtcp" port="514")
+
+      有关详细信息，请参阅[imudp:UDP Syslog 输入模块](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module)和[imtcp:TCP Syslog 输入模块](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
+
+   - 针对 syslog-ng:<br>请确保该文件`/etc/syslog-ng/syslog-ng.conf`包括此配置：
+
+           # source s_network {
+            network( transport(UDP) port(514));
+             };
+     有关详细信息，请参阅 [imudp:UDP Syslog 输入模块] (有关详细信息，请参阅[syslog ng 开放源版本 3.16-管理指南](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455)。
+
+1. 检查 Syslog 后台程序和代理之间的通信。 Syslog 代理计算机上运行以下命令：`tcpdump -A -ni any  port 25226 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保将还收到日志在代理上。
+
+6. 如果这两个这些命令提供成功的结果，请检查 Log Analytics，请参阅正在传入到你的日志。 从这些设备流式传输的所有事件都显示在下的 Log Analytics 中的原始格式`CommonSecurityLog`类型。
+
+7. 若要检查是否有错误或如果不到达日志，查找范围`tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`。 如果状态显示为日志格式不匹配错误，请转到`/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`并查看该文件`security_events.conf`并确保你的日志与您将看到此文件中的正则表达式格式相匹配。
+
+8. 请确保你 Syslog 消息的默认大小限制为 2048 个字节 (2 KB)。 如果日志太长，更新 security_events.conf 使用以下命令： `message_length_limit 4096`
 
 
 ## <a name="next-steps"></a>后续步骤

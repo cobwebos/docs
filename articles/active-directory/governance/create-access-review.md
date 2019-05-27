@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804efa6e0a39e009e18bbb9dec5ad1638a163597
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6bafa4614e40bb1796ec90e07ecf5b9286a8acb9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60247075"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113507"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>创建访问评审的组或 Azure AD 中的应用程序访问评审
 
@@ -30,8 +30,11 @@ ms.locfileid: "60247075"
 
 ## <a name="prerequisites"></a>必备组件
 
+- Azure AD Premium P2
 - [访问评审已启用](access-reviews-overview.md)
 - 全局管理员或用户管理员
+
+有关详细信息，请参阅[哪些用户必须具有许可证？](access-reviews-overview.md#which-users-must-have-licenses)。
 
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审
 
@@ -77,9 +80,13 @@ ms.locfileid: "60247075"
 
     ![创建访问评审 - 评审者](./media/create-access-review/reviewers.png)
 
-1. 在“计划”部分选择要使用的计划。 可以将访问评审组织为计划，以便针对不同目的简化跟踪和收集访问评审的方式。 “默认计划”将始终存在，但也可以创建不同的计划。 例如，可以选择针对每个符合性措施或业务目标创建一个计划。
+1. 在“计划”部分选择要使用的计划。 “默认计划”将始终存在。
 
     ![创建访问评审 - 计划](./media/create-access-review/programs.png)
+
+    可以将访问评审组织为计划，以便针对不同目的简化跟踪和收集访问评审的方式。 可以将每个访问评审链接到一个计划。 然后，在为审核员准备报告时，可以将重点放在特定计划范围内的访问评审。 程序和访问评审结果是对全局管理员、 用户管理员、 安全管理员或安全读取者角色中的用户可见。
+
+    若要查看程序的列表，请转到访问评审页，然后选择**程序**。 如果你是全局管理员或用户管理员角色中，您可以创建其他计划。 例如，可以选择针对每个符合性措施或业务目标创建一个计划。 如果不再需要某个计划，并且没有任何链接到它的控件，则可以将其删除。
 
 ### <a name="upon-completion-settings"></a>完成设置后
 
@@ -110,6 +117,8 @@ ms.locfileid: "60247075"
 
 1. 将“提醒”设置为“启用”，让 Azure AD 向尚未完成其审阅的审阅者发送访问评审正在进行的提醒。
 
+    默认情况下，Azure AD 自动在中途向还未作出回复的审阅者发送结束日期提醒。
+
 ## <a name="start-the-access-review"></a>启动访问评审
 
 指定访问评审的设置后，单击“启动”。 访问评审会在其状态指示符列表中显示。
@@ -118,19 +127,7 @@ ms.locfileid: "60247075"
 
 默认情况下，在评审开始后不久，Azure AD 会向评审者发送一封电子邮件。 如果选择不让 Azure AD 发送电子邮件，请务必通知评审者有一个访问评审任务等待他们完成。 说明如何显示[评审为组或应用程序的访问权限](perform-access-review.md)。 如果评审工作是让来宾评审他们自己的访问权限，显示它们如何的说明[评审自己的访问权限，对组或应用程序](review-your-access.md)。
 
-如果某些评审者是来宾，则仅当他们已接受邀请时，才会通过电子邮件向他们发出通知。
-
-## <a name="manage-the-access-review"></a>管理访问审阅
-
-你可以跟踪进度，当评审者在完成其审阅**概述**访问评审页。 在[评审完成](complete-access-review.md)之前，目录中的任何访问权限都不会更改。
-
-![访问评审进度](./media/create-access-review/overview-progress.png)
-
-如果这是一次性的评审，然后访问评审期限结束后，或者管理员停止访问评审后请按照中的步骤[完成组或应用程序的访问评审](complete-access-review.md)查看并应用结果。  
-
-若要管理一系列访问评审会议中，导航到访问评审，并你将找到计划评审中即将推出的匹配项和编辑的结束日期或添加/删除审阅者相应地。
-
-基于所选内容中**完成设置后**，自动应用将审阅的结束日期或手动停止评审后执行。 此评审的状态将更改从**已完成**通过中间状态，如**应用**，最后到状态**应用**。 几分钟后，应会看到被拒绝的用户（如果有）已从组成员身份或应用程序分配中删除。
+如果已分配为审阅者的来宾和他们未接受邀请，它们不会收到一封电子邮件来自访问评审因为它们必须先接受邀请之前查看。
 
 ## <a name="create-reviews-via-apis"></a>通过 API 创建评审
 

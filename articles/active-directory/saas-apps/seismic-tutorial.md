@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 6da53c14546fbe08206e5ba026a7b9176da2577e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864705"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65902233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>教程：Azure Active Directory 与 Seismic 集成
 

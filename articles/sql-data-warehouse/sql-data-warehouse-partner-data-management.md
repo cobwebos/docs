@@ -2,20 +2,20 @@
 title: SQL 数据仓库数据管理合作伙伴 | Microsoft 文档
 description: 其解决方案支持 SQL 数据仓库的第三方数据管理合作伙伴列表。
 services: sql-data-warehouse
-author: jrowlandjones
+author: mabasile-MSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
 ms.date: 04/17/2018
-ms.author: jrj
+ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 08d168a688935328fb4716b849c70e828545765b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98f581eca893fc3f0cf2eae12fdcffbe0440bdd7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476157"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873691"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>SQL 数据仓库数据管理合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍其数据管理工具和解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。

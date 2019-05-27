@@ -12,11 +12,11 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576322"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122608"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -72,7 +72,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | -------- | ----------- | 
 | 名称 | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
 | 状态 | 整个自承载集成运行时和每个节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅下一个部分。 | 
-| 版本 | 自承载集成运行时和每个节点的版本。 自承载集成运行时的版本根据组中多数节点的版本确定。 如果自承载集成运行时设置中包含不同版本的节点，则只有与逻辑自承载集成运行时的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 | 
+| Version | 自承载集成运行时和每个节点的版本。 自承载集成运行时的版本根据组中多数节点的版本确定。 如果自承载集成运行时设置中包含不同版本的节点，则只有与逻辑自承载集成运行时的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 | 
 | 可用内存 | 自承载集成运行时节点上的可用内存。 此值为近实时快照。 | 
 | CPU 使用率 | 自承载集成运行时节点的 CPU 利用率。 此值为近实时快照。 |
 | 网络（进/出） | 自承载集成运行时节点的网络利用率。 此值为近实时快照。 | 
@@ -160,11 +160,11 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | 属性/状态 | 描述 |
 | --------------- | ----------- |
 | CreateTime | Azure-SSIS 集成运行时的创建时间（UTC 时间）。 |
-| Nodes | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
+| 节点 | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
 | OtherErrors | Azure-SSIS 集成运行时中发生的非特定于节点且可采取措施的错误。 |
 | LastOperation | 上次对 Azure-SSIS 集成运行时执行的启动/停止操作的结果，以及可采取措施的错误（如果操作失败）。 |
 | 状态 | Azure-SSIS 集成运行时的总体状态 (initial/starting/started/stopping/stopped)。 |
-| 位置 | Azure-SSIS 集成运行时的位置。 |
+| Location | Azure-SSIS 集成运行时的位置。 |
 | NodeSize | Azure-SSIS 集成运行时的每个节点的大小。 |
 | NodeCount | Azure-SSIS 集成运行时中的节点数目。 |
 | MaxParallelExecutionsPerNode | Azure-SSIS 集成运行时中每个节点的并行执行数。 |
@@ -193,11 +193,11 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>状态（整个 Azure-SSIS 集成运行时）
 
-| 总体状态 | 描述 | 
+| 整体状态 | 描述 | 
 | -------------- | ----------- | 
 | Initial | 尚未分配/准备 Azure-SSIS 集成运行时的节点。 | 
 | 正在启动 | 正在分配/准备 Azure-SSIS 集成运行时的节点，计费已开始。 |
-| 已启动 | 已分配/准备 Azure-SSIS 集成运行时的节点，并可以在其中部署/执行 SSIS 包。 |
+| 已开始 | 已分配/准备 Azure-SSIS 集成运行时的节点，并可以在其中部署/执行 SSIS 包。 |
 | 正在停止  | 正在释放 Azure-SSIS 集成运行时的节点。 |
 | 已停止 | 已释放 Azure-SSIS 集成运行时的节点，计费已停止。 |
 

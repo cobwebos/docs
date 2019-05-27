@@ -2,19 +2,18 @@
 title: 如何使用对称密钥通过 Azure IoT 中心设备预配服务预配旧设备 | Microsoft 文档
 description: 如何使用对称密钥通过设备预配服务实例预配旧设备
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 248c7977752eaec86121a0dd197e5bff2621ead5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: philmea
+ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775149"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914297"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>使用对称密钥预配旧设备
 
@@ -44,7 +43,7 @@ ms.locfileid: "60775149"
 ## <a name="prerequisites"></a>必备组件
 
 * 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
-* 已启用[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 Visual Studio 2015 或 [Visual Studio 2017](https://www.visualstudio.com/vs/)。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015年或更高版本且[使用的桌面开发C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)启用的工作负荷。
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 
@@ -173,7 +172,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 用注册 ID 替换 REG_ID 值。
 
-```PowerShell
+```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
 $REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
 
@@ -184,7 +183,7 @@ $derivedkey = [Convert]::ToBase64String($sig)
 echo "`n$derivedkey`n"
 ```
 
-```PowerShell
+```powershell
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
@@ -279,7 +278,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解更多 Reprovisioning，请参阅[IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
+* 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
 * [快速入门：使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)
 * 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
 

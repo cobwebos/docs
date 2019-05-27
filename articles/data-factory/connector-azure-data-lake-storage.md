@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 355f61d6282c822e18cf4752044c1e1a5cbbc6a0
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: c0591a7850516a419cb59045754cc4eb02979dfd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560788"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66122595"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据
 
@@ -168,6 +168,9 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
 >- 在创作期间使用**数据工厂 UI** 测试连接和浏览文件夹。 
 >如果需考虑授予在帐户级别的权限，则可以跳过测试连接和输入的路径手动在创作过程。 只要针对要复制的文件为托管标识授予适当的权限，则仍可使用复制活动。
 
+>[!IMPORTANT]
+>如果使用 PolyBase 来加载到 SQL DW 中，使用 ADLS 第 2 代托管身份验证时的 ADLS 第 2 代中的数据，请确保还配置正确，若要将 MSI 到 ADLS 第 2 代存储的 SQL DW，遵循相应的步骤 #1 中的 #3.b[本指南](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 如果 ADLS Gen2 配置与 VNet 服务终结点，若要使用 PolyBase 将数据加载，您必须使用托管的标识身份验证。
+
 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
@@ -310,7 +313,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
 | wildcardFileName         | 包含在给定的文件系统 + folderPath/wildcardFolderPath 筛选器源文件的通配符字符的文件名。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 是如果`fileName`中数据集未指定 |
 | modifiedDatetimeStart    | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
-| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | 否                                            |
+| maxConcurrentConnections | 若要同时连接到存储存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | “否”                                            |
 
 > [!NOTE]
 > Parquet/分隔文本格式**AzureBlobFSSource**作为仍受支持类型的复制活动源下一节中提到的是为了向后兼容。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。
@@ -411,7 +414,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | 下面的类型属性`storeSettings`必须设置为**AzureBlobFSWriteSetting**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
-| maxConcurrentConnections | 若要同时连接到数据存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | 否       |
+| maxConcurrentConnections | 若要同时连接到数据存储的连接数。 指定仅当你想要限制数据存储的并发连接。 | “否”       |
 
 > [!NOTE]
 > Parquet/分隔文本格式**AzureBlobFSSink**作为仍受支持类型复制活动接收器中下一节提到的是为了向后兼容。 建议以使用从长远看，此新模型和创作 UI 的 ADF 已切换为生成这些新类型。

@@ -16,11 +16,11 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f45b0779693433f1b1fad3c5bfd4323eacb9a63b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65870216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教程：Azure Active Directory 与 Palo Alto Networks - 管理 UI 的集成
 
@@ -117,7 +117,7 @@ ms.locfileid: "57838640"
 
 5. Palo Alto Networks - 管理 UI 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
    > [!NOTE]
    > 由于属性值仅为示例，请为 *username* 和 *adminrole* 映射相应的值。 另外还有一个可选属性 *accessdomain* 用于限制管理员访问防火墙上的特定虚拟系统。

@@ -16,11 +16,11 @@ ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 037e01120a695b1bacf2b1d4bc47e9ca9ed3fbd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881242"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 
@@ -118,7 +118,7 @@ ms.locfileid: "57881242"
 
 6. 若要在“ArcGIS Online”中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”。
 
-    ![图像](./media/arcgis-tutorial/install_extension.png)
+    ![image](./media/arcgis-tutorial/install_extension.png)
 
 7. 将扩展添加到浏览器后，单击“设置 ArcGIS Online”会将你定向到 ArcGIS Online 应用程序。 在此处，提供管理员凭据以登录到 ArcGIS Online。 浏览器扩展将自动配置应用程序，并自动执行“配置 ArcGIS Online 单一登录”部分中的步骤。
 

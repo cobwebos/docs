@@ -11,22 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fe2013ff84dd0451fed7d108539606520cb9403
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384463"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113192"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>评审自己的访问权限，向组或 Azure AD 中的应用程序访问评审
 
 Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理对组或应用程序的访问和名为 Azure AD 访问的功能与其他 Microsoft Online Services 评审的方式。
 
 本文介绍如何查看自己的组或应用程序的访问权限。
+
+## <a name="prerequisites"></a>必备组件
+
+- Azure AD Premium P2
+
+有关详细信息，请参阅[哪些用户必须具有许可证？](access-reviews-overview.md#which-users-must-have-licenses)。
 
 ## <a name="open-the-access-review"></a>打开访问评审
 

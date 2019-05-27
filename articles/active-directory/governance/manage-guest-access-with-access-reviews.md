@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967fbf460175dee303d26074426a1f90e4353407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fc5bcdbbe821008f74e85a91889044c8975ce93
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350960"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113259"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理来宾访问权限
 
@@ -31,16 +31,13 @@ ms.locfileid: "60350960"
 可以轻松确保来宾用户拥有适当的访问权限。 为此，可让来宾本人或决策人参与访问评审，鉴定（或“证明”）来宾的访问权限。 审阅者可基于 Azure AD 的建议，针对每个用户就继续访问的需求提供意见。 访问评审完成后，即可进行更改，并删除不再需要访问权限的来宾的访问权限。
 
 > [!NOTE]
-> 本文档重点介绍如何评审来宾用户的访问权限。 如果想要评审所有用户的访问权限，而不仅仅是来宾，请参阅[通过访问评审管理用户访问权限](manage-user-access-with-access-reviews.md)。 如果希望评审具有管理角色（如全局管理员）的用户成员身份，请参阅[在 Azure AD Privileged Identity Management 中启动访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)。 
->
->
+> 本文档重点介绍如何评审来宾用户的访问权限。 如果想要评审所有用户的访问权限，而不仅仅是来宾，请参阅[通过访问评审管理用户访问权限](manage-user-access-with-access-reviews.md)。 如果希望评审具有管理角色（如全局管理员）的用户成员身份，请参阅[在 Azure AD Privileged Identity Management 中启动访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)。
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>必备组件
 
+- Azure AD Premium P2
 
-访问评审在 Azure AD 的 Premium P2 版本中提供，后者随附在 Microsoft 企业移动性 + 安全性的 E5 中。 有关详细信息，请参阅 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。 与此功能交互的每个用户，无论是创建评审、填写评审还是确认评审，都需要许可证。 
-
-还可以要求来宾用户评审自己的访问权限。 对于你分配给自己组织的用户之一的每个付费 Azure AD Premium P2 许可证，你可以使用 B2B 在“外部用户限额”下最多邀请五名来宾用户。 这些来宾用户也可以使用 Azure AD Premium P2 功能。 有关详细信息，请参阅 [Azure AD B2B 协作授权](../b2b/licensing-guidance.md)。
+有关详细信息，请参阅[哪些用户必须具有许可证？](access-reviews-overview.md#which-users-must-have-licenses)。
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>创建和执行来宾的访问评审
 

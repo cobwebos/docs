@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 904b9b8ba98be5e14b1d769a0e1d8c2d6084e24d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477280"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951177"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure 存储性能和可伸缩性清单
 ## <a name="overview"></a>概述
 自 Microsoft Azure 存储服务发布以来，Microsoft 已经积累了大量经过验证的做法，用于提高这些服务的使用效率。本文将其中最重要的一些做法进行了总结，并以“清单”的形式列出。 本文的目的在于确保应用程序开发人员在使用 Azure 存储时，采用的是经过验证的做法，并帮助他们确认其他经过验证的、可以考虑采用的做法。 本文不会全盘介绍所有可能的性能与伸缩性优化内容，那些影响不大或适用范围不广的内容不在本文所覆盖的范围之内。 必须在设计过程中确保应用程序的行为是可预测到的，因此应早些了解这些经过验证的做法，避免进行那些会引发性能问题的设计。  
 
-每一位使用 Azure 存储的应用程序开发人员都应抽时间阅读本文，确保其应用程序的设计遵循下面列出的每一项经过验证的做法。  
+使用 Azure 存储每个应用程序开发人员应花时间阅读本文，并检查其应用程序遵循下面列出的经过验证的每个。  
 
 ## <a name="checklist"></a>清单
 本文将这些经过验证的做法整理成以下类别。 经过验证的做法适用于：  

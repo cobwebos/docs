@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 2758817d58fdd2e80b302b5f833308dbde1a6b63
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779158"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65916057"
 ---
 # <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure DNS 专用区域
 
