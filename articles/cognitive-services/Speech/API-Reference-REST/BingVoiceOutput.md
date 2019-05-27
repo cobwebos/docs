@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60515420"
 ---
 # <a name="bing-text-to-speech-api"></a>必应文本转语音 API
@@ -32,7 +32,7 @@ ms.locfileid: "60515420"
 
 每个语音合成请求都需要 JSON Web 令牌 (JWT) 访问令牌。 JWT 访问令牌在语音请求头中传递。 令牌的到期时间为 10 分钟。 有关订阅和获取用于检索有效 JWT 访问令牌的 API 密钥的信息，请参阅[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)。
 
-API 密钥将传递给令牌服务。 例如：
+API 密钥将传递给令牌服务。 例如:
 
 ```HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
@@ -41,11 +41,11 @@ Content-Length: 0
 
 令牌访问所需的标头信息如下所示。
 
-Name| 格式 | 描述
+名称| 格式 | 描述
 ----|----|----
-Ocp-Apim-Subscription-Key | ASCII | 订阅密钥
+Ocp-Apim-Subscription-Key | ASCII | 你的订阅密钥
 
-令牌服务将 JWT 访问令牌返回为 `text/plain`。 然后将 JWT 作为 `Base64 access_token` 传递给语音终结点，作为以 `Bearer` 为前缀字符串的授权标头。 例如：
+令牌服务将 JWT 访问令牌返回为 `text/plain`。 然后将 JWT 作为 `Base64 access_token` 传递给语音终结点，作为以 `Bearer` 为前缀字符串的授权标头。 例如:
 
 `Authorization: Bearer [Base64 access_token]`
 
@@ -60,13 +60,13 @@ Ocp-Apim-Subscription-Key | ASCII | 订阅密钥
 
 下表展示了用于语音合成请求的 HTTP 标头。
 
-标头 |Value |注释
+页眉 |值 |注释
 ----|----|----
-Content-Type | application/ssml+xml | 输入内容类型。
+内容类型 | application/ssml+xml | 输入内容类型。
 X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-tts <br> **2.** raw-16khz-16bit-mono-pcm <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** riff-16khz-16bit-mono-pcm <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | 输出音频格式。
 X-Search-AppId | GUID（仅限十六进制，无短划线） | 唯一标识客户端应用程序的 ID。 它可以是应用的 Store ID。 如果 Store ID 不可用，也可以是用户为应用程序生成的 ID。
 X-Search-ClientID | GUID（仅限十六进制，无短划线） | 唯一标识每个安装的应用程序实例的 ID。
-User-Agent | 应用程序名称 | 应用程序名称必填，且长度不得超过 255 个字符。
+User-Agent | 应用程序名 | 应用程序名称必填，且长度不得超过 255 个字符。
 授权 | 授权令牌 |  请参阅<a href="#Subscription">授权令牌</a>部分。
 
 ### <a name="InputParam"></a>输入参数
@@ -215,9 +215,9 @@ en-IE | 男 | “Microsoft 服务器语音的文本转语音（en-IE，Sean）�
 en-IN | 女 | “Microsoft 服务器语音的文本转语音（en-IN，Heera，Apollo）”
 en-IN | 女 | “Microsoft 服务器语音的文本转语音（en-IN，PriyaRUS）”
 en-IN | 男 | “Microsoft 服务器语音的文本转语音（en-IN，Ravi，Apollo）”
-en-US | 女 | “Microsoft 服务器语音的文本转语音（en-US，ZiraRUS）”
-en-US | 女 | “Microsoft 服务器语音的文本转语音（en-US，JessaRUS）”
-en-US | 男 | “Microsoft 服务器语音的文本转语音（en-US，BenjaminRUS）”
+zh-CN | 女 | “Microsoft 服务器语音的文本转语音（en-US，ZiraRUS）”
+zh-CN | 女 | “Microsoft 服务器语音的文本转语音（en-US，JessaRUS）”
+zh-CN | 男 | “Microsoft 服务器语音的文本转语音（en-US，BenjaminRUS）”
 es-ES | 女 | “Microsoft 服务器语音的文本转语音（es-ES，Laura，Apollo）”
 es-ES | 女 | “Microsoft 服务器语音的文本转语音（es-ES，HelenaRUS）”
 es-ES | 男 | “Microsoft 服务器语音的文本转语音（es-ES，Pablo，Apollo）”
@@ -237,7 +237,7 @@ hi-IN | 男 | “Microsoft 服务器语音的文本转语音（hi-IN，Hemant）
 hr-HR | 男 | “Microsoft 服务器语音的文本转语音（hr-HR，Matej）”
 hu-HU | 男 | “Microsoft 服务器语音的文本转语音（hu-HU，Szabolcs）”
 id-ID | 男 | “Microsoft 服务器语音的文本转语音（id-ID，Andika）”
-it-IT | 男 | “Microsoft 服务器语音的文本转语音（it-IT，Cosimo，Apoll）”
+it-IT | 男 | “Microsoft 服务器语音的文本转语音（it-IT，Cosimo，Apollo）”
 it-IT | 女 | “Microsoft 服务器语音的文本转语音（it-IT，LuciaRUS）”
 ja-JP | 女 | “Microsoft 服务器语音的文本转语音（ja-JP，Ayumi，Apollo）”
 ja-JP | 男 | “Microsoft 服务器语音的文本转语音（ja-JP，Ichiro，Apollo）”
