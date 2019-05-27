@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b2f5331b22f6292b00c367c6abb8cd4f439a70c
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 3b434e5b0c4524af642eb1255597cd3e7674571c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413977"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545802"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：将客户端应用程序配置为访问 Web API
 

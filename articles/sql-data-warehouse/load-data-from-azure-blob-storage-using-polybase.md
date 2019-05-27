@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: load data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca4084fb271320eb4cdfdeb6cb9026367761be0a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a8ca3b52d181578e6b35090489b7133a94b55cbd
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143660"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852070"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>教程：将纽约出租车数据加载到 Azure SQL 数据仓库
 
@@ -67,7 +67,7 @@ ms.locfileid: "65143660"
 
 4. 单击“服务器”，为新数据库创建并配置新服务器。 使用以下信息填写“新建服务器”窗体： 
 
-    | 设置 | 建议的值 | 说明 | 
+    | 设置 | 建议的值 | Description | 
     | ------- | --------------- | ----------- |
     | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 | 
     | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。|
@@ -80,7 +80,7 @@ ms.locfileid: "65143660"
 
 6. 单击“性能级别”，指定数据仓库是 Gen1 还是 Gen2，以及数据仓库单位的数量。 
 
-7. 对于本教程中，选择**第 2 代**的 SQL 数据仓库。 滑块设置为**DW1000c**默认情况下。  请尝试上下移动滑块，以查看其工作原理。 
+7. 对于本教程，请选择 SQL 数据仓库的“Gen2”。 滑块默认设置为“DW1000c”。  请尝试上下移动滑块，以查看其工作原理。 
 
     ![配置性能](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -151,7 +151,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     | 服务器类型 | 数据库引擎 | 此值是必需的 |
     | 服务器名称 | 完全限定的服务器名称 | 该名称应类似于 mynewserver-20180430.database.windows.net。 |
     | Authentication | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
-    | 登录 | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
+    | 登录 | 服务器管理员帐户 | 此帐户是在创建服务器时指定的帐户。 |
     | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 
     ![连接到服务器](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -561,8 +561,8 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
     ![查看已加载的表](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>使用管理的标识来加载 （可选） 进行身份验证
-加载使用 PolyBase，然后通过管理的标识进行身份验证是最安全的机制，使你能够使用 Azure 存储利用 VNet 服务终结点。 
+## <a name="authenticate-using-managed-identities-to-load-optional"></a>使用托管标识进行身份验证，以便进行加载（可选）
+使用 PolyBase 进行加载和通过托管标识进行身份验证是最安全的机制，可以让你通过 Azure 存储来利用 VNet 服务终结点。 
 
 ### <a name="prerequisites"></a>必备组件
 1.  按照此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安装 Azure PowerShell。
@@ -590,16 +590,16 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
   
 1. **通过 Polybase 连接到 Azure 存储帐户：**
     
-   1. 创建具有在数据库作用域凭据**标识 = 托管服务标识**:
+   1. 使用 **IDENTITY = '托管服务标识'** 创建数据库范围的凭据：
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
        ```
        > [!NOTE] 
        > - 使用 Azure 存储访问密钥时，不需指定 SECRET，因为此机制在后台使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
-       > - 标识名称应**托管服务标识**的 PolyBase 连接要使用 Azure 存储帐户。
+       > - 使用 Azure 存储帐户时，IDENTITY 名称应该为 **'托管服务标识'**，以便通过 PolyBase 进行连接。
     
-   1. 创建外部数据源使用托管服务标识中指定数据库作用域凭据。
+   1. 创建外部数据源，使用托管服务标识指定数据库范围的凭据。
         
    1. 使用[外部表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)进行正常查询。
 

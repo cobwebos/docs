@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 08920a25fc7213a773ef0d76a5daddbab3f765c2
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 17609212fcc7620dc0d6d617e7626d12c8bb0592
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866869"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852142"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -192,7 +192,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - [缓冲池扩展](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension)不受支持。
 - 不支持 `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION`。 请参阅 [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql)。
 
-### <a name="collation"></a>Collation
+### <a name="collation"></a>排序规则
 
 默认实例排序规则为 `SQL_Latin1_General_CP1_CI_AS` 并可以被指定为创建参数。 请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。
 
@@ -276,7 +276,7 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="sql-server-agent"></a>SQL Server 代理
 
 - SQL Server 代理设置是只读的。 该过程`sp_set_agent_properties`托管实例中不受支持。 
-- 作业
+- 作业(Job)
   - 支持 T-SQL 作业步骤。
   - 支持以下复制作业：
     - 事务日志读取器
@@ -409,7 +409,7 @@ MSDTC 和[弹性事务](sql-database-elastic-transactions-overview.md)目前不�
 - 不支持的语法：
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- 源： 
+- 源: 
   - `FROM URL` （azure Blob 存储） 是唯一支持的选项。
   - 不支持 `FROM DISK`/`TAPE`/备份设备。
   - 不支持备份集。
@@ -471,7 +471,7 @@ MSDTC 和[弹性事务](sql-database-elastic-transactions-overview.md)目前不�
 
 ### <a name="tempdb-size"></a>TEMPDB 大小
 
-最大文件大小`tempdb`不能超过每个常规用途层上的核心 24 GB。 最大值`tempdb`业务关键层上的大小是与实例存储大小。 `tempdb`数据库始终拆分为 12 个数据文件。 无法更改此最大大小，每个文件，并可以将新文件添加到`tempdb`。 某些查询可能会返回错误，如果它们需要 24 GB 以上每个核心中`tempdb`。
+最大文件大小`tempdb`不能超过每个常规用途层上的核心 24 GB。 最大值`tempdb`业务关键层上的大小是与实例存储大小。 `tempdb`数据库始终拆分为 12 个数据文件。 无法更改此最大大小，每个文件，并且无法将新文件添加到`tempdb`。 某些查询可能会返回错误，如果它们需要 24 GB 以上每个核心中`tempdb`。 `tempdb` 始终会重新创建为一个空数据库实例启动或故障转移和任何更改在进行`tempdb`不会保留。 
 
 ### <a name="cant-restore-contained-database"></a>无法还原包含的数据库
 

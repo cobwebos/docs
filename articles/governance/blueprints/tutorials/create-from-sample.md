@@ -7,14 +7,14 @@ ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4f400e45d8defc304cf58c4bd05fa19f16d0501b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0d5d96ff897ac1710206eb49bca785e8809cb7d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785944"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798316"
 ---
-# <a name="create-an-environment-from-a-blueprint-sample"></a>基于蓝图示例创建环境
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>教程：基于蓝图示例创建环境
 
 示例蓝图示范了 Azure 蓝图的功能。 每个示例蓝图附带具体的意图或目的，但其本身无法创建完整的环境。 每个示例蓝图旨在用作探索 Azure 蓝图的起点，其中带有包含的项目、设计和参数的各种组合。
 

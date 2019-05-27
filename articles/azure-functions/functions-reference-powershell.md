@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: 71ac525e2af7473ca9ce0a8f60268e76eccd1a9a
-ms.sourcegitcommit: 111a7b3e19d5515ce7036287cea00a7204ca8b56
+ms.openlocfilehash: 46b1e5c99dd86fed6f87ac3b8f0ff6555187899b
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64530378"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833524"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -23,9 +23,9 @@ ms.locfileid: "64530378"
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-PowerShell 函数表示为执行时触发的 PowerShell 脚本。 每个函数脚本具有相关的 function.json，它定义函数的行为方式，例如触发方式和输入和输出参数。 若要了解详细信息，请参阅[触发器和绑定文章](functions-triggers-bindings.md)。 
+PowerShell Azure 函数 （函数） 都表示为执行时触发的 PowerShell 脚本。 每个函数脚本具有相关`function.json`定义函数的行为方式，例如触发方式的文件和其输入和输出参数。 若要了解详细信息，请参阅[触发器和绑定文章](functions-triggers-bindings.md)。 
 
-其他类型的函数，如 PowerShell 脚本采用与在 function.json 中定义的所有输入绑定的名称相匹配的参数。 一个`TriggerMetadata`参数还传递包含启动该函数的触发器的其他信息。
+PowerShell 脚本函数中定义的所有输入绑定的名称匹配的参数中其他类型的函数，如采用`function.json`文件。 一个`TriggerMetadata`参数还传递包含启动该函数的触发器的其他信息。
 
 本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 您应该还完成[Functions 快速入门适用于 PowerShell](functions-create-first-function-powershell.md)创建第一个 PowerShell 函数。
 
@@ -56,9 +56,9 @@ PSFunctionApp
  | - bin
 ```
 
-项目的根目录中有共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数有具有其自己的代码文件 (.ps1) 和绑定配置文件 (function.json) 的文件夹。 `function.json` 父目录的名称始终是函数的名称。
+在项目的根目录，一开始是共享[ `host.json` ](functions-host-json.md)可用于配置函数应用的文件。 每个函数有具有其自己的代码文件 (.ps1) 和绑定配置文件的文件夹 (`function.json`)。 Function.json 文件父目录的名称始终是函数的名称。
 
-某些绑定需要存在`extensions.csproj`。 绑定中时所需的扩展[版本 2.x](functions-versions.md) Functions 运行时，定义在`extensions.csproj`文件，并且在实际的库文件`bin`文件夹。 本地开发时，必须[注册绑定扩展](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+某些绑定需要存在`extensions.csproj`文件。 绑定中时所需的扩展[版本 2.x](functions-versions.md) Functions 运行时，定义在`extensions.csproj`文件，并且在实际的库文件`bin`文件夹。 本地开发时，必须[注册绑定扩展](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 在 PowerShell 函数应用中，您可以选择可能`profile.ps1`用于运行函数应用开始运行时 (也称为*[冷启动](#cold-start)*。 有关详细信息，请参阅[PowerShell 配置文件](#powershell-profile)。
 

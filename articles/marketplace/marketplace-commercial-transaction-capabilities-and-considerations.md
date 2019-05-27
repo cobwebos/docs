@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 5dc311538055d9ecb7aba21f95d819a914cd1db7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826555"
+ms.locfileid: "65849719"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure 市场‎商业交易功能和注意事项
 
@@ -144,7 +144,7 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 |Microsoft 将许可证费用的 80% 支付给你 <br> \* Microsoft 支付给你的许可证费用的 90%的任何限定的 SaaS 应用程序   |   80.00 美元/月 <br> \* 每月 90.00 美元    |
 |Microsoft 保留许可证费用的 20% <br> \* Microsoft 保留许可证费用的任何限定的 SaaS 应用程序的 10%。  |  20.00 美元/月 <br> \* $10.00     |
 
-* **减少了的 Marketplace 服务费用：** 对于某些我们商业 Marketplace 发布的 SaaS 产品，Microsoft 会减少其 Marketplace 服务费用从 20%（如在 Microsoft 发布方协议中所述） 为 10%。  为了使您的产品来限定，至少一个你的产品必须由 Microsoft 指定为 IP 联合销售就绪或 IP 共同销售设置优先级。 若要为每月接收此简化的 Marketplace 服务费，资格必须满足该日历月结束前的至少五 （5） 个工作日。 减少 Marketplace 服务费用不会应用于 Vm、 管理的应用程序或通过我们的商业应用商店提供的任何其他产品。  与 2019 年 5 月 31 日和于 2020 年 6 月 30 日之间的 Microsoft 收集的许可证费用，可供限定产品/服务，此减少 Marketplace 服务费用。  该时间后将返回其正常量 Marketplace 服务费用。
+* **减少了的 Marketplace 服务费用：** 对于某些我们商业 Marketplace 发布的 SaaS 产品，Microsoft 会减少其 Marketplace 服务费用从 20%（如在 Microsoft 发布方协议中所述） 为 10%。  为了使您的产品来限定，至少一个你的产品必须由 Microsoft 指定为 IP 联合销售就绪或 IP 共同销售设置优先级。 若要为每月接收此简化的 Marketplace 服务费，资格必须满足该日历月结束前的至少五 （5） 个工作日。 减少 Marketplace 服务费用不会应用于 Vm、 管理的应用程序或通过我们的商业应用商店提供的任何其他产品。  这减少了 Marketplace 服务费用将许可证费用，2019 年 5 月 1 日和于 2020 年 6 月 30 日之间的 Microsoft 收集与可供限定产品/服务。  该时间后将返回其正常量 Marketplace 服务费用。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客户开具发票、付款、计费和费用收集
 

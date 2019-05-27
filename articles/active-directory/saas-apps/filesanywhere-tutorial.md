@@ -16,11 +16,11 @@ ms.date: 02/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eac9938fdbb138dd10f794a4dff9ba34a11e1d41
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838164"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65861878"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>教程：Azure Active Directory 与 FilesAnywhere 集成
 
@@ -120,13 +120,13 @@ ms.locfileid: "57838164"
 
 6. FilesAnywhere 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标添加属性。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
     当用户注册 FilesAnywhere 时，他们会从 [FilesAnywhere 团队](mailto:support@FilesAnywhere.com)那里获得“clientid”属性的值。 必须为“Client ID”属性添加由 FilesAnywhere 提供的唯一值。
 
 7. 除了上述属性，FilesAnywhere 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------------- |    
     | clientid | "uniquevalue" |
 

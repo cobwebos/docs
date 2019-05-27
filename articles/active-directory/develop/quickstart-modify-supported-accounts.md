@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2c52bd0bf6c1e385248bd379a8001756d28ac2d
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 00d99ae48abfcb3e4d4abc0d63565994df45f746
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413584"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545727"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入门：修改应用程序支持的帐户
 

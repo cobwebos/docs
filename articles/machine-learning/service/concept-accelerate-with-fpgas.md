@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 648dc462477570a692eff588c558a18a3121e4e7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1a690ea350ea98589e9134cd6f401c6ac3c58083
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025251"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851027"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>现场可编程门阵列 (FPGA) 有哪些？
 
@@ -39,7 +39,7 @@ FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的
 
 在 Azure 上的 Fpga 基于 Intel FPGA 设备，哪些数据科学家和开发人员用于加速实时 AI 计算。 这种启用了 FPGA 的体系结构提供了高性能、灵活性和可伸缩性，可以在 Azure 上使用。
 
-可以通过 FPGA 确保实时推断请求的低延迟。 不需要使用异步请求（批处理）。 批处理可能导致延迟，因为需要处理更多的数据。 神经处理单元的实现不需要批处理;因此滞后时间可能很多时候更低，相比 CPU 和 GPU 处理器。
+Fpga 使得可实现低延迟的实时推理 （或模型评分） 的请求。 不需要使用异步请求（批处理）。 批处理可能导致延迟，因为需要处理更多的数据。 神经处理单元的实现不需要批处理;因此滞后时间可能很多时候更低，相比 CPU 和 GPU 处理器。
 
 ### <a name="reconfigurable-power"></a>可反复配置的功能
 可以针对不同类型的机器学习模型反复配置 FPGA。 利用这种灵活性，可以更轻松地根据最优化的数值精度和所用内存模型来加速应用程序。 由于 FPGA 可以反复配置，因此可以跟上快速变化的 AI 算法的要求。

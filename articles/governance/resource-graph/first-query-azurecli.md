@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 188733266c15bf214c0177762b9d10aecd05223b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 592b2c611888623c2753d7c4abc9fe57c28af30e
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792230"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823167"
 ---
-# <a name="run-your-first-resource-graph-query-using-azure-cli"></a>使用 Azure CLI 运行你的第一个 Resource Graph 查询
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入门：使用 Azure CLI 运行你的第一个 Resource Graph 查询
 
 使用 Azure Resource Graph 的第一步是确保为 [Azure CLI](/cli/azure/) 安装了该扩展。 本快速入门将指导你完成将该扩展添加到 Azure CLI 安装的过程。 可以通过安装在本地的 Azure CLI 或通过 [Azure Cloud Shell](https://shell.azure.com) 使用该扩展。
 
@@ -81,7 +81,7 @@ ms.locfileid: "59792230"
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期的 -- 按 Name 属性排序，但仍限制为前五个结果。
 
-## <a name="cleanup"></a>清理
+## <a name="clean-up-resources"></a>清理资源
 
 如果希望从 Azure CLI 环境中删除 Resource Graph 扩展，可使用以下命令：
 

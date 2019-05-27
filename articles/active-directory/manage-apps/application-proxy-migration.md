@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2017
+ms.date: 05/17/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a98a0394ff2a74aa256637d3c12007374200ef22
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b9a3468d720cb04e73cb284abb20c7bcf6a392dd
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783464"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859525"
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
@@ -34,21 +34,21 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 
 | Feature | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| 证书身份验证 | 是 | 是 | - | - |
-| 有选择地发布浏览器应用 | 是 | 是 | 是 | 是 |
-| 预身份验证和单一登录 | 是 | 是 | 是 | 是 | 
-| 第 2/3 层防火墙 | 是 | 是 | - | - |
-| 正向代理功能 | 是 | - | - | - |
-| VPN 功能 | 是 | 是 | - | - |
-| 丰富的协议支持 | - | 是 | 是，如果通过 HTTP 运行 | 是，如果通过 HTTP 或远程桌面网关运行 |
-| 用作 ADFS 代理服务器 | - | 是 | 是 | - |
-| 一个用于访问应用程序的门户 | - | 是 | - | 是 |
-| 响应正文链接转换 | 是 | 是 | - | 是 | 
-| 使用标头进行身份验证 | - | 是 | - | 是，使用 PingAccess | 
-| 云级安全性 | - | - | - | 是 | 
-| 条件性访问 | - | 是 | - | 是 |
-| 外围安全区域 (DMZ) 中无组件 | - | - | - | 是 |
-| 无入站连接 | - | - | - | 是 |
+| 证书身份验证 | “是” | “是” | - | - |
+| 有选择地发布浏览器应用 | “是” | 是 | 是 | “是” |
+| 预身份验证和单一登录 | “是” | 是 | 是 | “是” | 
+| 第 2/3 层防火墙 | “是” | “是” | - | - |
+| 正向代理功能 | “是” | - | - | - |
+| VPN 功能 | “是” | “是” | - | - |
+| 丰富的协议支持 | - | “是” | 是，如果通过 HTTP 运行 | 是，如果通过 HTTP 或远程桌面网关运行 |
+| 用作 ADFS 代理服务器 | - | “是” | “是” | - |
+| 一个用于访问应用程序的门户 | - | “是” | - | “是” |
+| 响应正文链接转换 | “是” | 是 | - | “是” | 
+| 使用标头进行身份验证 | - | “是” | - | 是，使用 PingAccess | 
+| 云级安全性 | - | - | - | “是” | 
+| 条件性访问 | - | “是” | - | “是” |
+| 外围安全区域 (DMZ) 中无组件 | - | - | - | “是” |
+| 无入站连接 | - | - | - | “是” |
 
 大多数情况下，我们建议将 Azure AD 应用程序代理作为现代解决方案。 仅在需要为 AD FS 提供代理服务器以及无法使用 Azure Active Directory 中的自定义域时，才优先考虑 Web 应用程序代理。 
 
@@ -65,4 +65,3 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure AD 应用程序提供对本地应用程序的安全远程访问](application-proxy.md)
-- [从 Forefront TMG 和 UAG 转换为应用程序代理](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/)。

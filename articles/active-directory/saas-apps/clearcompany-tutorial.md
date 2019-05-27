@@ -16,11 +16,11 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d7e137986b4b6a1d0dcf96bf890e7e7be2cac02
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890723"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65858967"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>教程：Azure Active Directory 与 ClearCompany 集成
 
@@ -109,7 +109,7 @@ ms.locfileid: "57890723"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![图像](common/both-preintegrated-signon.png)
+    ![image](common/both-preintegrated-signon.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.clearcompany.com`
 

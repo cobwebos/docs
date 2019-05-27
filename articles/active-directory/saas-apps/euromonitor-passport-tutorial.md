@@ -16,11 +16,11 @@ ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1cdf8f78a54c89ac89441a87ca0ba34d61a3d2a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888308"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65740112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>教程：Azure Active Directory 与 Euromonitor Passport 的集成
 
@@ -113,11 +113,11 @@ ms.locfileid: "57888308"
 
 6. Euromonitor Passport 应用程序需要采用特定格式的 SAML 断言语句。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
-    ![图像](./media/euromonitor-passport-tutorial/attribute1.png)
+    ![image](./media/euromonitor-passport-tutorial/attribute1.png)
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------- |
     | 名称标识符值 | user.userprincipalname |
     | emailaddress | user.mail |

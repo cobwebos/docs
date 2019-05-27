@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d3e955059724756eb7102c1b9fbbf55ed203ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08794a7605ffbd3cd5d4b021b783f32afb190727
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414649"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861581"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>如何：在 Windows 7、8 和 8.1 中启用密码重置
 
@@ -60,6 +60,8 @@ ms.locfileid: "60414649"
 ![需要提供额外的安全信息才能重置密码](media/howto-sspr-windows-7-8/windows-7-sspr-need-security-info.png)
 
 此初始版本不支持使用 Microsoft Authenticator 应用发送用于重置密码的通知和代码。 用户必须注册符合策略要求的备用方法。
+
+如果在计算机上启用了多个一个第三方凭据提供程序，用户将看到登录屏幕上的多个用户配置文件。
 
 ## <a name="troubleshooting"></a>故障排除
 

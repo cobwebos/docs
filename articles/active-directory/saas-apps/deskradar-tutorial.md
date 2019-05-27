@@ -16,11 +16,11 @@ ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea17794a5ca57ae0d38d9a90857706cf380cab36
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895662"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862221"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deskradar"></a>教程：Azure Active Directory 与 Deskradar 集成
 
@@ -238,7 +238,7 @@ ms.locfileid: "57895662"
 
 ### <a name="create-deskradar-test-user"></a>创建 Deskradar 测试用户
 
-本部分需在 Deskradar 中创建名为“Britta Simon”的用户。 请与  [Deskradar 客户端支持团队](mailto:support@deskradar.com)协作，以便在 Deskradar 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+本部分需在 Deskradar 中创建名为“Britta Simon”的用户。 请与  [Deskradar 客户端支持团队](mailto:support@deskradar.com) 协作，以便在 Deskradar 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

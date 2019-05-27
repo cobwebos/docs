@@ -16,11 +16,11 @@ ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e242e85525b446fcbe8a2ec05da539fb45acf487
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850303"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867980"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>教程：Azure Active Directory 与 SAP Cloud Platform Identity Authentication 的集成
 
@@ -142,7 +142,7 @@ ms.locfileid: "57850303"
 
 6. SAP Cloud Platform Identity Authentication 应用程序要求 SAML 断言采用特定格式。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 7. 如果 SAP 应用程序需要 **firstName** 等属性，请在“用户属性”对话框的“用户声明”部分添加 **firstName** 属性，按上图所示配置 SAML 令牌属性，然后执行以下步骤：
 

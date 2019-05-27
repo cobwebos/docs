@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 05/06/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 511dab7090f6114c7769d504166f3e2c137d43ca
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 894f43a7da0abd129123d5c4ddf2bb95347c42c5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071823"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825357"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析云作业（预览）
 
@@ -229,7 +229,7 @@ ms.locfileid: "65071823"
 
 2. 右键单击作业名称。 然后在上下文菜单中选择“启动”。
 
-![在 VS Code 中启动流分析作业](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+   ![在 VS Code 中启动流分析作业](./media/quick-create-vs-code/start-asa-job-vs-code.png)
 
 3. 在弹出窗口中选择“立即”以启动该作业。
 

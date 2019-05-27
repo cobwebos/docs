@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02463ba47a48f5e86055b9ecb4e0edbdf9608769
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 11819730e05e425066e1f060769e14d5290f877d
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024570"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851981"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务训练 PyTorch 模型
 
@@ -105,7 +105,7 @@ run = exp.submit(pt_est)
 
 ## <a name="export-to-onnx"></a>将导出到 ONNX
 
-若要获取与优化的推断[ONNX 运行时](concept-onnx.md)，可以将已训练的 PyTorch 模型转换为 ONNX 格式。 请参阅[教程](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)有关的示例。
+优化使用推理[ONNX 运行时](concept-onnx.md)，将训练的 PyTorch 模型转换为 ONNX 格式。 推理，或模型评分，阶段已部署的模型不使用的是用于预测，最常在生产数据。 请参阅[教程](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)有关的示例。
 
 ## <a name="examples"></a>示例
 

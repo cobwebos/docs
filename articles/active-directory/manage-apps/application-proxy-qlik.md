@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fc03751859160f2c234810dcb01e1579cb3e2a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8f54e08e6c3b7b673541f124a90f32dbc860fa44
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782658"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859538"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>应用程序代理和 Qlik Sense 
 Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保可轻松使用应用程序代理来提供对 Qlik Sense 部署的远程访问。  
@@ -60,7 +60,9 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 现在已准备好测试应用程序。 访问应用程序 1 中用来发布 QlikSense 的外部 URL，并以分配到两个应用程序的用户身份登录。  
 
 ## <a name="additional-references"></a>其他参考
-有关使用应用程序代理发布 Qlik Sense 的更多信息，请参阅 Qlik 社区文章：[Azure AD with Integrated Windows Authentication using a Kerberos Constrained Delegation with Qlik Sense](https://community.qlik.com/docs/DOC-20183)（通过 Kerberos 约束委派和 Qlik Sense，将 Azure AD 与集成 Windows 身份验证配合使用）。
+有关使用应用程序代理发布的 Qlik Sense 的详细信息，请参阅以下 Qlik 社区文章： 
+- [Azure AD 与 Qlik Sense 中使用 Kerberos 约束委派的集成 Windows 身份验证](https://community.qlik.com/docs/DOC-20183)
+- [Azure AD 应用程序代理与 Qlik Sense 集成](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
 
 ## <a name="next-steps"></a>后续步骤
 

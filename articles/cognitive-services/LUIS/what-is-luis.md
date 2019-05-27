@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c26f3d6c3b34ed90a5455bb94ea71d7556b47751
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441961"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522008"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -53,7 +53,7 @@ LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建�
 * **自定义实体** LUIS 提供多种方式来自行标识自定义的意向和实体，比如机器学习到的实体、特定实体或文本实体，以及机器学习到的实体和文本实体的组合。
 
 ## <a name="build-the-luis-model"></a>构建 LUIS 模型
-使用[创作](https://aka.ms/luis-authoring-apis) API 或 LUIS 门户构建模型。
+使用[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API 或 LUIS 门户构建模型。
 
 LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类别开始。 每个意向都需要用户 **[话语](luis-concept-utterance.md)** 的示例。 每个话语都可以提供各种数据，这些数据需要通过 **[实体](luis-concept-entity-types.md)** 来提取。 
 
@@ -65,7 +65,7 @@ LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类�
 
 ## <a name="query-prediction-endpoint"></a>查询预测终结点
 
-在生成模型并将其发布到终结点以后，客户端应用程序会将话语发送到已发布的预测[终结点](https://aka.ms/luis-endpoint-apis) API。 API 将模型应用于要分析的文本。 API 使用 JSON 格式的预测结果进行响应。  
+在生成模型并将其发布到终结点以后，客户端应用程序会将话语发送到已发布的预测[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 将模型应用于要分析的文本。 API 使用 JSON 格式的预测结果进行响应。  
 
 JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”实体。 
 
@@ -126,6 +126,6 @@ LUIS 的顶级客户端应用程序是：
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/
-[authoring-apis]: https://aka.ms/luis-authoring-api
-[endpoint-apis]: https://aka.ms/luis-endpoint-apis
+[authoring-apis]: https://go.microsoft.com/fwlink/?linkid=2092087
+[endpoint-apis]: https://go.microsoft.com/fwlink/?linkid=2092356
 [qnamaker]: https://qnamaker.ai/

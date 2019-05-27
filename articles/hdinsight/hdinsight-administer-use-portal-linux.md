@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 003aeadba1f4683af40f390d40dd3bbe32e02a83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 528d2fd5b26e06478078711405bd5b9ca51feeda
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721919"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860005"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -40,7 +40,7 @@ ms.locfileid: "64721919"
 
 **顶部菜单：**  
 
-| Item| 描述 |
+| 项| 描述 |
 |---|---|
 |移动|将群集移至其他资源组或其他订阅。|
 |删除|删除群集。 |
@@ -49,7 +49,7 @@ ms.locfileid: "64721919"
 **左侧菜单：**  
   - **顶部左侧菜单**
 
-    | Item| 描述 |
+    | 项| 描述 |
     |---|---|
     |概述|提供群集的常规信息。|
     |活动日志|显示和查询活动日志。|
@@ -61,7 +61,7 @@ ms.locfileid: "64721919"
 
   - **“设置”菜单**  
 
-    | Item| 描述 |
+    | 项| 描述 |
     |---|---|
     |群集大小|检查、增加和减少群集辅助角色节点的数量。 请参阅[缩放群集](hdinsight-administer-use-portal-linux.md#scale-clusters)。|
     |配额限制|显示订阅的已使用和可用核心数。|
@@ -78,7 +78,7 @@ ms.locfileid: "64721919"
 
   - **监视菜单**
 
-    | Item| 描述 |
+    | 项| 描述 |
     |---|---|
     |警报|管理警报和操作。|
     |度量值|监视 Azure Monitor 日志中的群集指标。|
@@ -87,7 +87,7 @@ ms.locfileid: "64721919"
 
   - **支持 + 故障排除菜单**
 
-    | Item| 描述 |
+    | 项| 描述 |
     |---|---|
     |资源运行状况|请参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。|
     |新建支持请求|允许对 Microsoft 支持创建支持票证。|
@@ -96,7 +96,7 @@ ms.locfileid: "64721919"
 
 在[群集主页](#homePage)的“设置”下，选择“属性”。
 
-|Item | 描述 |
+|项 | 描述 |
 |---|---|
 |主机名|群集名称。|
 |群集 URL|Ambari Web 界面的 URL。|
@@ -109,9 +109,9 @@ ms.locfileid: "64721919"
 |Version|请参阅 [HDInsight 版本](hdinsight-component-versioning.md)。|
 |订阅|订阅名称。|
 |默认数据源|默认的群集文件系统。|
-|辅助角色节点大小|辅助角色节点的所选 VM 大小。|
+|工作器节点大小|辅助角色节点的所选 VM 大小。|
 |头节点大小|头节点的所选 VM 大小。|
-|虚拟网络|如果在部署时选择了一个部署群集的虚拟网络的名称。|
+|虚拟网络|群集将要部署到的虚拟网络的名称（如果在部署时已选择）。|
 
 ## <a name="move-clusters"></a>移动群集
 
@@ -204,7 +204,7 @@ ms.locfileid: "64721919"
 
 * 用户 Azure 数据工厂。 有关创建按需 HDInsight 链接服务的信息，请参阅[在 HDInsight 中使用 Azure 数据工厂创建基于 Linux 的按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md)。
 * 使用 Azure PowerShell。  请参阅[分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)。
-* 使用 Azure 经典 CLI。 请参阅[使用 Azure 经典 CLI 管理 HDInsight 群集](hdinsight-administer-use-command-line.md)。
+* 使用 Azure CLI。 请参阅[使用 Azure CLI 管理 Azure HDInsight 群集](hdinsight-administer-use-command-line.md)。
 * 使用 HDInsight .NET SDK。 请参阅[提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 
 有关定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。 若要从门户中删除群集，请参阅[删除群集](#delete-clusters)
@@ -231,7 +231,7 @@ Ambari 提供由其 RESTful API 提供支持的直观、易用的 Hadoop 管理 
 有关详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
 
 ## <a name="change-passwords"></a>更改密码
-HDInsight 群集可以有两个用户帐户。 在创建过程中创建 HDInsight 群集用户帐户 （HTTP 用户帐户） 和 SSH 用户帐户。 可以使用门户更改群集用户帐户密码，使用脚本操作更改 SSH 用户帐户。
+HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HTTP 用户帐户）和 SSH 用户帐户是在创建过程中创建的。 可以使用门户更改群集用户帐户密码，使用脚本操作更改 SSH 用户帐户。
 
 ### <a name="change-the-cluster-user-password"></a>更改群集用户密码
 
@@ -284,7 +284,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 * Oozie
 * Templeton
 
-默认情况下，将授权这些服务进行访问。 可以使用 [Azure 经典 CLI](hdinsight-administer-use-command-line.md#enabledisable-http-access-for-a-cluster) 和 [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access) 来吊销/授予访问权限。
+默认情况下，将授权这些服务进行访问。 您可以撤消/授予访问权限使用[Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access)。
 
 ## <a name="find-the-subscription-id"></a>查找订阅 ID
 每个群集都绑定到一个 Azure 订阅。  Azure 订阅 ID 在[群集主页](#homePage)中可见。
@@ -316,7 +316,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 本文介绍了一些基本管理功能。 若要了解更多信息，请参阅下列文章：
 
 * [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
-* [使用 Azure 经典 CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)
+* [使用 Azure CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)
 * [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [深入了解如何使用 Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md)
 * [有关使用 Apache Ambari REST API 的详细信息](hdinsight-hadoop-manage-ambari-rest-api.md)

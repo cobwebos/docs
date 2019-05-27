@@ -3,20 +3,20 @@ title: 快速入门：执行新闻搜索 - 适用于 Python 的必应新闻搜�
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，可以使用适用于 Python 的必应新闻搜索 SDK 搜索新闻，并处理响应。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 01/10/2019
-ms.author: v-gedod
+ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1d6f4bb2bda550c72566243b2d2d98b1685e9147
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e9a24084e025723febf854fad7ba83db55d1f824
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119796"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798605"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>快速入门：使用适用于 Python 的必应新闻搜索 SDK 执行新闻搜索
 

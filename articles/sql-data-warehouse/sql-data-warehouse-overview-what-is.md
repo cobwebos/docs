@@ -2,20 +2,20 @@
 title: 什么是 Azure SQL 数据仓库？ | Microsoft Docs
 description: 企业级分布式数据库，可处理 PB 量级的关系数据和非关系数据。 它是行业首个云数据仓库，可以在数秒内增长、收缩和暂停。
 services: sql-data-warehouse
-author: igorstanko
+author: happynicolle
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: igorstan
+ms.author: nicw
 ms.reviewer: igorstan
-ms.openlocfilehash: 1937d96db96c00af7f004ef4c22c4985499e393e
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 29296d703e59cb234177349ca477c3fdab74ee61
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521629"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790859"
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>什么是 Azure SQL 数据仓库？
 
