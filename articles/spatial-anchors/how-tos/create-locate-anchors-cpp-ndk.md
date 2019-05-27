@@ -4,16 +4,16 @@ description: 深入了解如何创建和定位在 C + 中使用 Azure 空间的�
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7de83b14617245eb2c046eb7cd2f5f26c509517c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: a78e58edb392ecf0e7c6918f7082da6e4843291b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999563"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965053"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>如何创建和定位在 C + 中使用 Azure 空间的定位点的定位点 + NDK
 

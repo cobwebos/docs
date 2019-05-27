@@ -7,14 +7,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: adgera
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b77960961a7c032faad7000f7a2ce297802a1497
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926354"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967046"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>将 Blob 添加到 Azure 数字孪生中的对象
 
@@ -51,15 +51,15 @@ JSON Blob 元数据符合以下模型：
   }
 ```
 
-| 属性 | Type | 描述 |
+| 特性 | Type | 描述 |
 | --- | --- | --- |
 | **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
-| name |String | Blob 的用户友好名称 |
-| type | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **name** |String | Blob 的用户友好名称 |
+| **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
 | **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
 | **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
 | **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
-| **说明** | String | Blob 的自定义说明 |
+| **description** | String | Blob 的自定义说明 |
 | **sharing** | String | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
 
 Blob 元数据始终提供为具有 **Content-Type** `application/json` 的第一个区块，或提供为 `.json` 文件。 文件数据在第二个区块中提供，可以是任何受支持的 MIME 类型。
@@ -108,17 +108,17 @@ Swagger 文档完整详细地介绍了这些模型架构。
 }
 ```
 
-| 属性 | Type | 描述 |
+| 特性 | Type | 描述 |
 | --- | --- | --- |
 | **id** | String | Blob 的唯一标识符 |
-| name |String | Blob 的用户友好名称 |
+| **name** |String | Blob 的用户友好名称 |
 | **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
-| type | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **type** | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
 | **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
 | **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
 | **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
 | **sharing** | String | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
-| **说明** | String | Blob 的自定义说明 |
+| **description** | String | Blob 的自定义说明 |
 | **contentInfos** | Array | 指定包括版本的非结构化元数据信息 |
 | **fullName** | String | Blob 的全名 |
 | **spacePaths** | String | 空间路径 |

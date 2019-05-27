@@ -15,11 +15,11 @@ ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65956053"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 
@@ -172,7 +172,7 @@ git push vsts master
 
 **原因**：如果在 `git push` 期间未指定分支，或者未在 `.gitconfig` 中设置 `push.default` 值，则会出现此错误。
 
-**解决方法**：再次运行 `git push`，并指定主分支。 例如：
+**解决方法**：再次运行 `git push`，并指定主分支。 例如:
 
 ```bash
 git push azure master
@@ -183,7 +183,7 @@ git push azure master
 
 **原因**：如果尝试推送到“azure”远程网站上主分支之外的分支，则会发生该错误。
 
-**解决方法**：再次运行 `git push`，并指定主分支。 例如：
+**解决方法**：再次运行 `git push`，并指定主分支。 例如:
 
 ```bash
 git push azure master
@@ -212,7 +212,7 @@ git config --global http.postBuffer 524288000
 
   * `npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1`
 
-      或
+      OR
   * `npm ERR! [modulename@version] preinstall: \make || gmake\`
 
 ## <a name="additional-resources"></a>其他资源

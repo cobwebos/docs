@@ -9,20 +9,20 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6359d57a1f4cce6ec89fd76ef343b515cafae6e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738965"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133142"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
 
 Azure 自动化提供了解决方案来管理操作系统安全性更新、跟踪更改以及列出计算机上所安装项的清单。 可以通过多种方式来载入计算机，可以[通过虚拟机](automation-onboard-solutions-from-vm.md)、[通过自动化帐户](automation-onboard-solutions-from-automation-account.md)、在浏览虚拟机时或通过 [Runbook](automation-onboard-solutions.md) 载入解决方案。 本文介绍了在 Azure 中浏览虚拟机时如何载入这些解决方案。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 https://portal.azure.com 中登录 Azure
+登录 Azure (https://portal.azure.com)
 
 ## <a name="enable-solutions"></a>启用解决方案
 
@@ -59,27 +59,10 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ![无工作区](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
-
-下表显示了受支持的映射：
-
-|**Log Analytics 工作区区域**|**Azure 自动化区域**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|西欧|西欧|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP 和 EastUS 映射到自动化帐户的 Log Analytics 工作区不精确的区域到另一个区域映射，但是正确的映射。
-
-<sup>2</sup>由于容量限制范围区域不可用时创建新的资源。 这包括自动化帐户和 Log Analytics 工作区。 但是，在区域中预先存在链接的资源应继续工作。
+> [!NOTE]
+> 在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+>
+> 有关受支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
 
 取消选择不想启用的任何虚拟机旁边的复选框。 无法启用的虚拟机已被取消选择。
 
@@ -122,6 +105,8 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 * 启动和停止 VM Runbook
 * 变量
 
+或者您可以还取消链接工作区在自动化帐户中从 Log Analytics 工作区。 在工作区中，选择**自动化帐户**下**相关资源**。 在自动化帐户页上选择**取消链接帐户**。
+
 ## <a name="troubleshooting"></a>故障排除
 
 当载入多台计算机时，可能会有显示为“无法启用”的计算机。 有各种原因会导致某些计算机无法启用。 以下各部分显示了当尝试载入时 VM 上出现“无法启用”状态的可能原因。
@@ -152,7 +137,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 **原因**：使用经典部署模型的虚拟机不受支持。
 
-**解决方案**；将虚拟机迁移到资源管理器部署模型。 若要了解如何执行此操作，请参阅[迁移经典部署模型资源](../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+**解决方案**；将虚拟机迁移到 Resource Manager 部署模型。 若要了解如何执行此操作，请参阅[迁移经典部署模型资源](../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
 
 ### <a name="vm-is-stopped-deallocated"></a>VM 已停止。 （已解除分配）
 

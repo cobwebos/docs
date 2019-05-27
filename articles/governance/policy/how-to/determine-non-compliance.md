@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2f856e9c42b26d4e286493e2eb5d019a8cff6c23
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868710"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979349"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -90,7 +90,7 @@ ms.locfileid: "64868710"
 |当前值必须包含目标值作为键。 |containsKey 或**不**notContainsKey |
 |当前值必须包含目标值。 |包含或**不**notContains |
 |当前值必须等于目标值。 |等于或**不**notEquals |
-|必须存在当前值。 |exists |
+|必须存在当前值。 |存在 |
 |当前值必须在目标值的范围内。 |在中或**不**notIn |
 |当前值必须与目标值类似。 |如或**不**notLike |
 |当前值必须与目标值匹配(区分大小写)。 |匹配或**不**notMatch |
@@ -215,11 +215,11 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡。 此时会显示检测到的更改的列表（如果存在）。
 
-   ![策略更改历史记录页选项卡上资源符合性](../media/determine-non-compliance/change-history-tab.png)
+   ![Azure 策略更改历史记录页选项卡上资源符合性](../media/determine-non-compliance/change-history-tab.png)
 
 1. 选择其中一个检测到的更改。 _Visual diff_的资源显示在**更改历史记录**页。
 
-   ![更改历史记录页上的策略更改历史记录可视化差异](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![Azure 策略更改历史记录可视化差异更改历史记录页上](../media/determine-non-compliance/change-history-visual-diff.png)
 
 _视觉差异_可帮助识别资源的更改。 检测到的更改不可能与该资源的当前符合性状态。
 
@@ -228,7 +228,7 @@ _视觉差异_可帮助识别资源的更改。 检测到的更改不可能与�
 ## <a name="next-steps"></a>后续步骤
 
 - 查看示例[Azure 策略示例](../samples/index.md)。
-- 查看[策略定义结构](../concepts/definition-structure.md)。
+- 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
 - 了解如何[获取符合性数据](getting-compliance-data.md)。

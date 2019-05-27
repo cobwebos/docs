@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 4e334af353e1d9556641914056ab0a3071ca361e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: v-mohabe
+ms.openlocfilehash: 910e9acaea5c8f95dd344bc8e5454cd2bd3b7a25
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233600"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968322"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure 安全中心支持的平台和功能
 

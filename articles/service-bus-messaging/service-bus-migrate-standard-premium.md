@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2019
+ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65f89e234317c5a17e4443e767528fb9be9a8b72
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687070"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991421"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure 服务总线标准命名空间迁移到高级层
 以前，Azure 服务总线提供仅在标准层命名空间。 命名空间是适用于低吞吐量和开发人员环境的多租户设置。 高级级别提供的每个可预测的延迟和更高的吞吐量，以固定价格的命名空间的专用的资源。 高级层适用于高吞吐量和生产环境需要额外的企业级功能。
 
-本文介绍如何将现有的标准层命名空间迁移到高级层。
+本文介绍如何将现有的标准层命名空间迁移到高级层。  
 
 >[!WARNING]
 > 迁移适用于服务总线标准命名空间要升级到高级层。 迁移工具不支持降级。
@@ -33,6 +33,7 @@ ms.locfileid: "64687070"
 - **Premium**命名空间应具有**没有实体**中它为使迁移取得成功。 
 - 所有**实体**标准命名空间中都**复制**到在迁移过程中的高级命名空间。 
 - 迁移支持**1,000 个实体，每个消息传送单元**在高级层。 若要确定需要多少消息传送单元，开始对您当前的标准命名空间的实体数。 
+- 您无法直接从迁移**基本层**到**高级层**，但你可以通过迁移从基本到标准的第一个，然后从标准到高级中的下一步来间接地执行。
 
 ## <a name="migration-steps"></a>迁移步骤
 某些条件是迁移过程与相关联。 熟悉以下步骤以降低错误的可能性。 以下步骤概述了迁移的过程，并在后面的部分中列出的分步详细信息。
@@ -117,7 +118,7 @@ ms.locfileid: "64687070"
     ![命名空间的切换菜单切换][]迁移完成时，会显示确认页。
     ![开关命名空间-成功][]
 
-## <a name="faqs"></a>常见问题解答
+## <a name="faqs"></a>常见问题
 
 ### <a name="what-happens-when-the-migration-is-committed"></a>提交迁移时，会发生什么情况？
 

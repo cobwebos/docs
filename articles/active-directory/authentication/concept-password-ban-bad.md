@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50452dc5a0c2074c452878c890643f7b21591689
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415697"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977307"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
 
@@ -75,7 +75,7 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 
 在经过规范化处理的密码上使用子字符串匹配，以检查用户的名字和姓氏以及租户名称（请注意，在 Active Directory 域控制器上验证密码时，不会执行租户名称匹配）。
 
-示例：假定用户 John Doe 要将其密码重置为“J0hn123fb”。 经过规范化处理后，此密码将变为“john123fb”。 子字符串匹配发现密码包含用户的名字“John”。 即使任何禁止的密码列表中都没有专门列出“J0hn123fb”，子字符串匹配也能在密码中找到“John”。 因此，该密码将被拒绝。
+示例： 假设我们有一个用户，Pol，想要重置其密码为"P0l123fb"。 标准化后，此密码将变为"pol123fb"。 匹配的子字符串将查找该密码包含用户的名字"Pol"。 即使"P0l123fb"不是特定于任一受禁的密码列表，匹配的子字符串在密码中找到"Pol"。 因此，该密码将被拒绝。
 
 #### <a name="score-calculation"></a>分数计算
 

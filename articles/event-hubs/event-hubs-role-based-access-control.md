@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: 549cfb84ff247295e01c800aa41ba265bb8921c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343454"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978314"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 
@@ -27,8 +27,13 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 使用 Azure AD RBAC 的应用程序不需要处理 SAS 规则和密钥，也不需要处理特定于事件中心的任何其他访问令牌。 客户端应用与 Azure AD 进行交互来建立身份验证上下文，并获取事件中心的访问令牌。 使用需要交互式登录的域用户帐户，应用程序从不直接处理任何凭据。
 
 ## <a name="event-hubs-roles-and-permissions"></a>事件中心角色和权限
+Azure 授权访问的事件中心命名空间提供了以下内置 RBAC 角色：
 
-对于初始公共预览版，只能将 Azure AD 帐户和服务主体添加到事件中心命名空间的“所有者”或“参与者”角色。 此操作向标识授予对命名空间中的所有实体的完全控制权限。 最初只能通过 Azure 资源管理来支持对命名空间拓扑进行更改的管理操作，不能通过本机事件中心 REST 管理接口来支持。 此支持还意味着 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 对象无法与 Azure AD 帐户一起使用。  
+[事件中心数据所有者 （预览）](../role-based-access-control/built-in-roles.md#service-bus-data-owner)角色可让数据访问的事件中心命名空间和其实体 （队列、 主题、 订阅和筛选器）
+
+>[!IMPORTANT]
+> 更早版本支持添加到托管的标识**所有者**或**参与者**角色。 但是，数据访问权限**所有者**并**参与者**角色不再起作用。 如果使用的**所有者**或**参与者**角色，切换到使用**事件中心数据所有者**角色。
+
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>将事件中心与 Azure AD 域用户帐户一起使用
 
@@ -44,7 +49,7 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 ### <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
-接下来，在支持事件中心预览版 RBAC 的以下 Azure 区域之一[创建事件中心命名空间](event-hubs-create.md)：**美国东部**、**美国东部 2** 或**西欧**。 
+下一步，[创建事件中心命名空间](event-hubs-create.md)。 
 
 在创建命名空间后，在门户上导航到其“访问控制(IAM)”页面，然后单击“添加角色分配”将 Azure AD 用户帐户添加到“所有者”角色。 如果你使用自己的用户帐户并且已创建了命名空间，则已获得“所有者”角色。 若要向角色添加一个不同的帐户，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。 用户帐户现在已具有对事件中心命名空间和对之前创建的事件中心的访问权限。
  

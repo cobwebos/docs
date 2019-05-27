@@ -4,16 +4,16 @@ description: Azure 存储表设计指南：在 Azure Cosmos DB 和 Azure 存储�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 84749332c5b7ab5fec2905c0fc36d89863adc3d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af155b5adb2e4b45412a8b84818852ed1b1c5e72
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60579244"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966092"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure 存储表设计指南：设计可伸缩的高性能表
 
@@ -41,7 +41,7 @@ ms.locfileid: "60579244"
 <th></th>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>市场营销</td>
 <td>00001</td>
 <td>2014-08-22T00:50:32Z</td>
 <td>
@@ -50,7 +50,7 @@ ms.locfileid: "60579244"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ ms.locfileid: "60579244"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -81,7 +81,7 @@ ms.locfileid: "60579244"
 </table>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>市场营销</td>
 <td>部门</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
@@ -91,7 +91,7 @@ ms.locfileid: "60579244"
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>Marketing</td>
+<td>市场营销</td>
 <td>153</td>
 </tr>
 </table>
@@ -107,7 +107,7 @@ ms.locfileid: "60579244"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -653,7 +653,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 ![部门实体和员工实体][16]
 
 #### <a name="solution"></a>解决方案
-不是将数据存储在两个不同的实体中，而是对数据进行反规范化，并在部门实体中保留经理详细信息的副本。 例如：  
+不是将数据存储在两个不同的实体中，而是对数据进行反规范化，并在部门实体中保留经理详细信息的副本。 例如:  
 
 ![已非规范化和合并的部门实体][17]
 
@@ -1125,7 +1125,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1145,7 +1145,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1182,7 +1182,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1259,7 +1259,7 @@ foreach (var e in entities)
 <table>
 <tr>
 <th>EntityType</th>
-<th>DepartmentName</th>
+<th>部门名称</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -1284,7 +1284,7 @@ foreach (var e in entities)
 <th>Email</th>
 </tr>
 <tr>
-<td>Employee</td>
+<td>职员</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1515,7 +1515,7 @@ private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
 
 客户端应用程序可以调用多个类似这样的异步方法，每个方法调用都会在一个单独的线程中运行。  
 
-### <a name="credits"></a>致谢
+### <a name="credits"></a>制作人员
 我们衷心感谢 Azure 团队的以下成员所做出的贡献：Dominic Betts、Jason Hogg、Jean Ghanem、Jai Haridas、Jeff Irwin、Vamshidhar Kommineni、Vinay Shah 和 Serdar Ozler 以及来自 Microsoft DX 的 Tom Hollander。 
 
 我们还要感谢以下 Microsoft MVP 在审核期间所提供的有价值的反馈：Igor Papirov 和 Edward Bakker。

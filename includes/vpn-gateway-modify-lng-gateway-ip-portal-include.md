@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 52084b065ef65a69a6691b6646d1e199f011910d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419573"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121018"
 ---
 ### <a name="gwipnoconnection"></a> 修改本地网络网关 IP 地址 - 无网关连接
 
@@ -31,7 +31,7 @@ ms.locfileid: "60419573"
 
 1. 在“本地网络网关”资源的“设置”部分，单击“连接”。
 2. 在连接的行上单击“...” ，然后单击“删除”。
-3. 单击“保存”以保存设置。
+3. 单击**保存**以保存设置。
 
 #### <a name="2-modify-the-ip-address"></a>2.修改 IP 地址。
 

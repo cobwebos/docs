@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 7ef8f80f44c921cc1f2524351c8acb78ebd713bf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66153560"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,7 +34,7 @@ ms.locfileid: "57434787"
 
 具体而言，此 Azure 表连接器支持使用帐户密钥和服务共享访问签名身份验证复制数据。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -48,9 +48,9 @@ ms.locfileid: "57434787"
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **AzureTableStorage**。 |是 |
+| 类型 | type 属性必须设置为 **AzureTableStorage**。 |“是” |
 | connectionString | 为 connectionString 属性指定连接到存储所需的信息。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |“否” |
 
 >[!NOTE]
 >如果使用的是“AzureStorage”类型链接服务，它仍然按原样受支持，但建议你今后使用此新的“AzureTableStorage”链接服务类型。
@@ -123,9 +123,9 @@ ms.locfileid: "57434787"
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **AzureTableStorage**。 |是 |
+| 类型 | type 属性必须设置为 **AzureTableStorage**。 |“是” |
 | sasUri | 向表指定共享访问签名 URI 的 SAS URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 在 Azure 密钥保管库来利用自动旋转和删除令牌部分中，还可以将 SAS 令牌。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |“否” |
 
 >[!NOTE]
 >如果使用的是“AzureStorage”类型链接服务，它仍然按原样受支持，但建议你今后使用此新的“AzureTableStorage”链接服务类型。
@@ -194,8 +194,8 @@ ms.locfileid: "57434787"
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 **AzureTable**。 |是 |
-| tableName |链接服务引用的表存储数据库实例中表的名称。 |是 |
+| 类型 | 数据集的 type 属性必须设置为 **AzureTable**。 |“是” |
+| tableName |链接服务引用的表存储数据库实例中表的名称。 |“是” |
 
 **示例：**
 
@@ -235,9 +235,9 @@ ms.locfileid: "57434787"
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 **AzureTableSource**。 |是 |
-| azureTableSourceQuery |使用自定义表存储查询读取数据。 请参阅以下部分中的示例。 |否 |
-| azureTableSourceIgnoreTableNotFound |指示是否允许存在忽略表异常。<br/>允许的值为 **True** 和 **False**（默认值）。 |否 |
+| 类型 | 复制活动源的 type 属性必须设置为 **AzureTableSource**。 |“是” |
+| azureTableSourceQuery |使用自定义表存储查询读取数据。 请参阅以下部分中的示例。 |“否” |
+| azureTableSourceIgnoreTableNotFound |指示是否允许存在忽略表异常。<br/>允许的值为 **True** 和 **False**（默认值）。 |“否” |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 示例
 
@@ -261,11 +261,11 @@ ms.locfileid: "57434787"
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为 **AzureTableSink**。 |是 |
-| azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |否 |
-| azureTablePartitionKeyName |指定列名称，使用列值作为分区键。 如果未指定，则使用“AzureTableDefaultPartitionKeyValue”作为分区键。 |否 |
-| azureTableRowKeyName |指定列名称，使用列值作为行键。 如果未指定，对每一行使用 GUID。 |否 |
-| azureTableInsertType |将数据插入 Azure 表的模式。 此属性控制输出表中具有匹配的分区键和行键的现有行是否替换或合并其值。 <br/><br/>允许的值为 **merge**（默认值）和 **replace**。 <br/><br> 此设置在行级别而不是表级别进行应用。 并且两个选项都不会删除输入中不存在的输出表中的行。 若要了解合并和替换设置的工作原理，请参阅[插入或合并实体](https://msdn.microsoft.com/library/azure/hh452241.aspx)和[插入或替换实体](https://msdn.microsoft.com/library/azure/hh452242.aspx)。 |否 |
+| 类型 | 复制活动接收器的 type 属性必须设置为 **AzureTableSink**。 |“是” |
+| azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |“否” |
+| azureTablePartitionKeyName |指定列名称，使用列值作为分区键。 如果未指定，则使用“AzureTableDefaultPartitionKeyValue”作为分区键。 |“否” |
+| azureTableRowKeyName |指定列名称，使用列值作为行键。 如果未指定，对每一行使用 GUID。 |“否” |
+| azureTableInsertType |将数据插入 Azure 表的模式。 此属性控制输出表中具有匹配的分区键和行键的现有行是否替换或合并其值。 <br/><br/>允许的值为 **merge**（默认值）和 **replace**。 <br/><br> 此设置在行级别而不是表级别进行应用。 并且两个选项都不会删除输入中不存在的输出表中的行。 若要了解合并和替换设置的工作原理，请参阅[插入或合并实体](https://msdn.microsoft.com/library/azure/hh452241.aspx)和[插入或替换实体](https://msdn.microsoft.com/library/azure/hh452242.aspx)。 |“否” |
 | writeBatchSize |writeBatchSize 或 writeBatchTimeout 命中时，将数据插入 Azure 表。<br/>允许的值为 integer（行数）。 |否（默认值为 10,000） |
 | writeBatchTimeout |writeBatchSize 或 writeBatchTimeout 命中时，将数据插入 Azure 表。<br/>允许的值为 timespan。 例如“00:20:00”（20 分钟）。 |否（默认值为 90 秒，即存储客户端的默认超时） |
 

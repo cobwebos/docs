@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 3163b58a9b325f28ab253ca090314515cf82ccb2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 56a482ae4eab4cde3cf39fcc187b703f253e0cbb
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007995"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990252"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Ruby 调用文本分析认知服务
 <a name="HOLTop"></a>
@@ -308,7 +308,7 @@ puts JSON::pretty_generate (JSON (response.body))
 ```
 <a name="Entities"></a>
 
-## <a name="identify-entities"></a>识别实体
+## <a name="entity-recognition"></a>实体识别
 
 实体 API 使用[实体方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)提取文本文档中的实体。 以下示例识别英文文档的实体。
 

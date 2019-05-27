@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c1f8640918d433956935e9428e23aac59e36334
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 622525705979cd6a7a088c606ac167d28f8f6482
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764662"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950995"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -47,7 +47,7 @@ ms.locfileid: "65764662"
 若要编辑 NameID （名称标识符值）：
 
 1. 打开**标识符值命名**页。
-1. 选择你想要将应用于该属性的转换的属性。 或者，您可以指定他 NameID 声明具有所需的格式。
+1. 选择你想要将应用于该属性的转换的属性。 或者，您可以指定你想要有的 NameID 声明的格式。
 
    ![编辑 NameID （名称标识符） 值](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "65764662"
 
 | 名称 | 描述 |
 |------|-------------|
-| 电子邮件 | 用户的电子邮件地址 |
+| Email | 用户的电子邮件地址 |
 | userprincipalName | 用户主体名称 (UPN) 的用户 |
 | onpremisessamaccount | 已从本地 Azure AD 同步的 SAM 帐户名 |
 | objectid | Azure AD 中的用户的 objectid |

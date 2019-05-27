@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8477ff8c8ff0bc1629ff4cdc61f7c28c6eed778c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228397"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978799"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>结合使用 Azure 资源的托管标识与 Azure 服务总线 
 
@@ -29,7 +29,23 @@ ms.locfileid: "65228397"
 
 ## <a name="service-bus-roles-and-permissions"></a>服务总线角色和权限
 
-只能向服务总线命名空间的“所有者”或“参与者”角色添加托管标识。 这会向标识授予对命名空间中所有实体的完全控制权限。 不过，最初只能通过 Azure 资源管理器来支持对命名空间拓扑进行更改的管理操作； 无法通过本机服务总线 REST 管理接口提供支持。 此支持还意味着，不能使用.NET Framework 客户端[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)或.NET Standard 客户端[ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient)内托管标识的对象。
+对于服务总线命名空间的"服务总线数据所有者"角色可以托管的标识。 它会授予的标识，命名空间中的所有实体的完全控制 （适用于管理和数据操作）。
+
+>[!IMPORTANT]
+> 更早版本支持添加到托管的标识 **"所有者"** 或 **"参与者"** 角色。
+>
+> 但是，数据访问权限 **"所有者"** 并 **"参与者"** 角色将不再起作用。 如果已使用 **"所有者"** 或 **"参与者"** 角色，则那些需要进行修改才能利用 **"服务总线数据所有者"** 角色。
+
+若要使用新的内置角色，请完成以下步骤-
+
+1. 请继续执行[Azure 门户](https://portal.azure.com)
+2. 导航到了当前安装的"所有者"或"参与者"角色的服务总线命名空间。
+3. 单击"访问控制 （iam）"的左的窗格菜单。
+4. 继续按如下所示添加新的角色分配
+
+    ![](./media/service-bus-role-based-access-control/ServiceBus_RBAC_SBDataOwner.png)
+
+5. 按"保存"以保存新的角色分配。
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>结合使用服务总线与 Azure 资源的托管标识
 
@@ -51,7 +67,7 @@ ms.locfileid: "65228397"
 
 ### <a name="create-a-new-service-bus-messaging-namespace"></a>创建新的服务总线消息传递命名空间
 
-接下来，在支持 RBAC 预览版的以下 Azure 区域之一中[创建服务总线消息命名空间](service-bus-create-namespace-portal.md)：美国东部、美国东部 2 或西欧。 
+下一步，[创建服务总线消息传送命名空间](service-bus-create-namespace-portal.md)。 
 
 在门户上导航到命名空间“访问控制(IAM)”页面，然后单击“添加角色分配”将托管标识添加到“所有者”角色。 为此，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。
 

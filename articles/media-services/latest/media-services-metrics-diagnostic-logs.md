@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 7ce57e1f8b2732ea909625c89f3e8148cb70635c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bbf43ecb07947fad8cc1ee064d2038e4a21d4444
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728845"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964764"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>监视媒体服务指标和诊断日志
 
-[Azure 监视器](../../azure-monitor/overview.md)允许你监视指标和诊断日志，帮助您理解如何执行你的应用程序。 通过 Azure Monitor 收集的所有数据都适合指标和日志的两种基本类型之一。 您可以监视媒体服务诊断日志，并创建警报和通知收集的指标和日志。 你可以可视化和分析使用指标数据[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)。 您可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，流式传输到[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用第三方服务。
+[Azure 监视器](../../azure-monitor/overview.md)允许你监视指标和诊断日志，帮助您理解如何执行你的应用程序。 Azure Monitor 收集的所有数据属于以下两种基本类型之一：指标和日志。 您可以监视媒体服务诊断日志，并创建警报和通知收集的指标和日志。 你可以可视化和分析使用指标数据[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)。 您可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，流式传输到[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用第三方服务。
 
 有关详细的概述，请参阅[Azure Monitor 指标](../../azure-monitor/platform/data-platform.md)并[Azure Monitor 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)。
 
@@ -34,11 +34,11 @@ ms.locfileid: "64728845"
 
 目前，以下媒体服务[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)azure 发出指标：
 
-|名称|描述|
-|---|---|
-|Requests|提供的服务的流式处理终结点请求总数的详细信息。|
-|流出量|总出口字节数。 例如，通过流式处理终结点流式传输的字节数。|
-|成功的端到端延迟| 提供有关端到端延迟的成功请求的信息。|
+|指标|显示名称|描述|
+|---|---|---|
+|Requests|Requests|提供的服务的流式处理终结点请求总数的详细信息。|
+|流出量|流出量|总出口字节数。 例如，通过流式处理终结点流式传输的字节数。|
+|SuccessE2ELatency|成功的端到端延迟| 提供有关端到端延迟的成功请求的信息。|
 
 例如，若要使用 CLI"出口"度量值，将运行以下`az monitor metrics`CLI 命令：
 
@@ -76,7 +76,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-例如：
+例如:
 
 ```cli
 az monitor diagnostic-settings create --name amsv3diagnostic \

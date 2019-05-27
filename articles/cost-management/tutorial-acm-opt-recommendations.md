@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67cf15b00e597131afe421bf8306a5df4511af9a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021340"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965522"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
@@ -88,7 +88,7 @@ Azure 顾问会监视虚拟机 14 天的使用情况，并识别利用不足的�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 查看成本优化建议，以查看潜在的低效使用情况。

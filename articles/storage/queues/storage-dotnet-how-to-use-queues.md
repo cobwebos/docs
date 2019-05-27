@@ -6,16 +6,16 @@ author: mhopkins-msft
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 06/13/2018
+ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 81bf178a97944d4110cf99a442163229a283bd25
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 054369a7fd75663c75c99c6ee586843582a6b6f9
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797752"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965959"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -30,7 +30,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 **估计完成时间：** 45 分钟
 
-**先决条件：**
+###<a name="prerequisites"></a>先决条件：
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
@@ -58,7 +58,7 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 2. 找到自己的存储帐户。
-3. 在存储帐户概述的“设置”部分，选择“访问密钥”。 此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。   
+3. 在存储帐户概述的“设置”部分，选择“访问密钥”。 此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
 4. 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。 下一步需将此连接字符串值添加到某个环境变量。
 
     ![显示如何从 Azure 门户复制连接字符串的屏幕截图](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
@@ -67,7 +67,7 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="create-the-queue-service-client"></a>创建队列服务客户端
-**CloudQueueClient** 类使你能够检索存储在队列存储中的队列。 下面是创建服务客户端的一种方法：
+[CloudQueueClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet) 类使你能够检索存储在队列存储中的队列。 下面是创建服务客户端的一种方法：
 
 ```csharp
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
@@ -94,7 +94,7 @@ queue.CreateIfNotExists();
 ```
 
 ## <a name="insert-a-message-into-a-queue"></a>在队列中插入消息
-要将消息插入现有队列，请先创建一个新的 **CloudQueueMessage**。 接下来，调用 **AddMessage** 方法。 可从字符串（UTF-8 格式）或**字节**数组创建 **CloudQueueMessage**。 以下代码将创建队列（如果该队列不存在）并插入消息“Hello, World”：
+要将消息插入现有队列，请先创建一个新的 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet)。 接下来，调用 [AddMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet) 方法。 可从字符串（UTF-8 格式）或**字节**数组创建 **CloudQueueMessage**。 以下代码将创建队列（如果该队列不存在）并插入消息“Hello, World”：
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -116,7 +116,7 @@ queue.AddMessage(message);
 ```
 
 ## <a name="peek-at-the-next-message"></a>扫视下一条消息
-通过调用 **PeekMessage** 方法，可以查看队列前面的消息，而不必从队列中将其删除。
+通过调用 [PeekMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet) 方法，可以查看队列前面的消息，而不必从队列中将其删除。
 
 ```csharp
 // Retrieve storage account from connection string
@@ -159,7 +159,7 @@ queue.UpdateMessage(message,
 ```
 
 ## <a name="de-queue-the-next-message"></a>取消对下一条消息的排队
-代码通过两个步骤来取消对队列中某条消息的排队。 调用 **GetMessage**时，你会获取队列中的下一条消息。 从 **GetMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息将持续 30 秒不可见。 要从队列中删除消息，还必须调用 **DeleteMessage**。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 **DeleteMessage**。
+代码通过两个步骤来取消对队列中某条消息的排队。 调用 [GetMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet)时，你会获取队列中的下一条消息。 从 **GetMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息将持续 30 秒不可见。 要从队列中删除消息，还必须调用 [DeleteMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet)。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 **DeleteMessage**。
 
 ```csharp
 // Retrieve storage account from connection string
@@ -210,8 +210,7 @@ Console.WriteLine("Deleted message");
 ```
     
 ## <a name="leverage-additional-options-for-de-queuing-messages"></a>使用其他方法取消对消息的排队
-可以通过两种方式自定义队列中的消息检索。
-首先，可以获取一批消息（最多 32 个）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。 以下代码示例使用 **GetMessages** 方法在一次调用中获取 20 条消息。 然后，它使用 **foreach** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5 分钟超时时间对于所有消息都是同时开始的，因此在调用 **GetMessages**5 分钟后，尚未删除的任何消息都会再次变得可见。
+可以通过两种方式自定义队列中的消息检索。 首先，可以获取一批消息（最多 32 个）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。 以下代码示例使用 [GetMessages](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet) 方法在一次调用中获取 20 条消息。 然后，它使用 **foreach** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5 分钟超时时间对于所有消息都是同时开始的，因此在调用 **GetMessages**5 分钟后，尚未删除的任何消息都会再次变得可见。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -232,7 +231,7 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 ```
 
 ## <a name="get-the-queue-length"></a>获取队列长度
-可以获取队列中消息的估计数。 使用 **FetchAttributes** 方法可请求队列服务检索队列属性，包括消息计数。 **ApproximateMessageCount** 属性返回 **FetchAttributes** 方法检索到的最后一个值，而不会调用队列服务。
+可以获取队列中消息的估计数。 使用 [FetchAttributes](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) 方法可请求队列服务检索队列属性，包括消息计数。 [ApproximateMessageCount](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet) 属性返回 **FetchAttributes** 方法检索到的最后一个值，而不会调用队列服务。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -256,7 +255,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="delete-a-queue"></a>删除队列
-若要删除队列及其包含的所有消息，请对队列对象调用 **Delete** 方法。
+若要删除队列及其包含的所有消息，请对队列对象调用 [Delete](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) 方法。
 
 ```csharp
 // Retrieve storage account from connection string.

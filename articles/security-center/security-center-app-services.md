@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
-ms.author: monhaber
-ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: v-mohabe
+ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62095262"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966816"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>使用 Azure 安全中心保护应用服务
 本文帮助你使用 Azure 安全中心来监视和保护在应用服务上运行的应用程序。

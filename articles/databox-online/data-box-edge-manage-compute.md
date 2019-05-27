@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: a90475cfd1d166b8fae1c2b872cbbb9d48b50392
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785814"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953119"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>在 Azure Data Box Edge 中管理计算
 
@@ -34,7 +34,7 @@ ms.locfileid: "65785814"
 - **Scheduled**：这些触发器可用于响应某个计划，对于该计划，可以定义开始日期、开始时间和重复间隔。
 
 
-### <a name="add-a-trigger"></a>添加触发器
+### <a name="add-a-trigger"></a>添加一个触发器
 
 在 Azure 门户中执行以下步骤可以创建触发器。
 
@@ -129,24 +129,6 @@ ms.locfileid: "65785814"
 
 3. 同步完成后，请退出对话框。
 
-## <a name="enable-a-network-interface-for-compute"></a>启用计算网络接口
-
-可能需要访问在 Data Box Edge 设备上运行的模块。 若要从外部访问模块，需为设备上的网络接口分配 IP 地址。 可以从本地 Web UI 管理这些计算设置。
-
-在本地 Web UI 上执行下述步骤，以便配置计算设置。
-
-1. 在本地 Web UI 中，转到“配置”>“计算设置”。  
-
-2. **启用**需用来连接到设备上的计算模块的网络接口。 
-
-    - 如果使用静态 IP 地址，请为网络接口输入一个 IP 地址。
-    - 如果使用 DHCP，则会自动分配 IP 地址。
-
-3. 选择“应用”以应用设置。
-
-    ![启用计算设置](media/data-box-edge-manage-compute/compute-settings-1.png)
-
-
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[通过 Azure 门户管理用户](data-box-edge-manage-users.md)。
+- 了解如何[管理边缘计算通过 Azure 门户的网络](data-box-edge-extend-compute-access-modules.md)。

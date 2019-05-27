@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
 ms.openlocfilehash: 6fbdee71ab1123c258a5191a78e38f51eb41cbab
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433223"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66152931"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 本文提供了创建、启动和监视翻转窗口触发器的步骤。 有关触发器和支持的类型的一般信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
@@ -76,16 +76,16 @@ ms.locfileid: "57433223"
 
 | JSON 元素 | 描述 | Type | 允许的值 | 需要 |
 |:--- |:--- |:--- |:--- |:--- |
-| type | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
-| **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |
-| **frequency** | 一个字符串，表示触发器重复出现的频率单位（分钟或小时）。 如果 **startTime** 日期值粒度比 **frequency** 值更细，则会在计算窗口边界时考虑 **startTime** 日期。 例如：如果 **frequency** 值为每小时，**startTime** 值为 2017-09-01T10:10:10Z，则第一个窗口为 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | “minute”、“hour”  | 是 |
-| **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“hour”，则触发器每 3 小时重复触发一次。 | Integer | 正整数。 | 是 |
-| **startTime**| 第一个匹配项，可以是过去的时间。 第一个触发器间隔是 (**startTime**, **startTime** + **interval**)。 | DateTime | 一个日期时间值。 | 是 |
-| **endTime**| 最后一个匹配项，可以是过去的时间。 | DateTime | 一个日期时间值。 | 是 |
-| **delay** | 延迟窗口数据处理开始的时间量。 管道运行在预期的执行时间加上 **delay** 的量之后启动。 **delay** 的定义是：在预期的执行时间过后，触发器在触发新的运行之前等待的时间。 **delay** 不改变窗口 **startTime**。 例如，值为 00:10:00 的 **delay** 意味着 10 分钟的延迟。 | Timespan<br/>(hh:mm:ss)  | 一个时间跨度值，默认值为 00:00:00。 | 否 |
-| **maxConcurrency** | 同时针对已就绪窗口触发的触发器运行数。 例如，若要每小时回填，昨天的运行会产生 24 个 windows。 如果 **maxConcurrency** = 10，则仅针对头 10 个窗口 (00:00-01:00 - 09:00-10:00) 触发触发器事件。 在头 10 个触发的管道运行完成后，将针对接下来的 10 个窗口 (10:00-11:00 - 19:00-20:00) 触发触发器运行。 继续进行 **maxConcurrency** = 10 的此示例，如果有 10 个窗口就绪，则总共有 10 个管道运行。 如果只有 1 个窗口就绪，则只有 1 管道运行。 | Integer | 一个介于 1 到 50 之间的整数。 | 是 |
-| **retryPolicy: Count** | 将管道运行标记为“失败”之前的重试次数。  | Integer | 一个整数，其默认值为 0（不重试）。 | 否 |
-| **retryPolicy: intervalInSeconds** | 重试之间的延迟（以秒为单位指定）。 | Integer | 秒数，其默认值为 30。 | 否 |
+| **type** | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | “是” |
+| **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | “是” |
+| **frequency** | 一个字符串，表示触发器重复出现的频率单位（分钟或小时）。 如果 **startTime** 日期值粒度比 **frequency** 值更细，则会在计算窗口边界时考虑 **startTime** 日期。 例如：如果 **frequency** 值为每小时，**startTime** 值为 2017-09-01T10:10:10Z，则第一个窗口为 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | “minute”、“hour”  | “是” |
+| **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“hour”，则触发器每 3 小时重复触发一次。 | Integer | 正整数。 | “是” |
+| **startTime**| 第一个匹配项，可以是过去的时间。 第一个触发器间隔是 (**startTime**, **startTime** + **interval**)。 | DateTime | 一个日期时间值。 | “是” |
+| **endTime**| 最后一个匹配项，可以是过去的时间。 | DateTime | 一个日期时间值。 | “是” |
+| **delay** | 延迟窗口数据处理开始的时间量。 管道运行在预期的执行时间加上 **delay** 的量之后启动。 **delay** 的定义是：在预期的执行时间过后，触发器在触发新的运行之前等待的时间。 **delay** 不改变窗口 **startTime**。 例如，值为 00:10:00 的 **delay** 意味着 10 分钟的延迟。 | Timespan<br/>(hh:mm:ss)  | 一个时间跨度值，默认值为 00:00:00。 | “否” |
+| **maxConcurrency** | 同时针对已就绪窗口触发的触发器运行数。 例如，若要每小时回填，昨天的运行会产生 24 个 windows。 如果 **maxConcurrency** = 10，则仅针对头 10 个窗口 (00:00-01:00 - 09:00-10:00) 触发触发器事件。 在头 10 个触发的管道运行完成后，将针对接下来的 10 个窗口 (10:00-11:00 - 19:00-20:00) 触发触发器运行。 继续进行 **maxConcurrency** = 10 的此示例，如果有 10 个窗口就绪，则总共有 10 个管道运行。 如果只有 1 个窗口就绪，则只有 1 管道运行。 | Integer | 一个介于 1 到 50 之间的整数。 | “是” |
+| **retryPolicy: Count** | 将管道运行标记为“失败”之前的重试次数。  | Integer | 一个整数，其默认值为 0（不重试）。 | “否” |
+| **retryPolicy: intervalInSeconds** | 重试之间的延迟（以秒为单位指定）。 | Integer | 秒数，其默认值为 30。 | “否” |
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart 和 WindowEnd 系统变量
 

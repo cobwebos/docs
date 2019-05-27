@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: e203877b2bc939c1d7fb9390df39f3e2451d12d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f2781e3cc2433f73ba7ff33e5c452e29de746adf
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852306"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956204"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>配置 Linux 的 Azure 应用服务的 ASP.NET Core 应用
 
@@ -50,7 +50,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，可以在应用代码外部[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)。 然后您可以访问它们使用标准 ASP.NET 模式：
+在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后您可以访问它们使用标准 ASP.NET 模式：
 
 ```csharp
 include Microsoft.Extensions.Configuration;

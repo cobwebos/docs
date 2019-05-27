@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9be062ec42f054832225c17a65b06e47dbcbe990
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 243a388ee59a1a550f80882b0af61e1f1db008ca
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123478"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977439"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
@@ -89,7 +89,8 @@ ms.locfileid: "62123478"
 
 ## <a name="strongly-typed-data-transfer-net-only"></a>强类型数据传输（仅限 .NET）
 
-业务流程协调程序需要多个数据片断，因此，在 C# 和 C# 脚本中对强类型数据传输使用了[共享 POCO 对象](../functions-reference-csharp.md#reusing-csx-code)：[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+业务流程协调程序需要多个小的数据，因此[共享的 POCO 对象](../functions-reference-csharp.md#reusing-csx-code)用于强类型数据传输C#和C#脚本：  
+[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
 

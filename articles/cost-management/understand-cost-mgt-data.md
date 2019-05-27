@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 81947baccf723ab759f2dc24df40b81af4502e09
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f4c296aeefacc9516303ad75dd8b7d67325e38ee
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692446"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969054"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -27,7 +27,7 @@ ms.locfileid: "64692446"
 
 以下信息说明了 Azure 成本管理中目前支持的 [Microsoft Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。  Azure 套餐是客户拥有的 Azure 订阅类型。
 
-| 类别  | **产品/服务名称** | **Quota ID** | **套餐编号** |
+| Category  | **产品/服务名称** | **Quota ID** | **套餐编号** |
 | --- | --- | --- | --- |
 | **Azure 德国** | [Azure 德国即用即付](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
@@ -51,12 +51,12 @@ ms.locfileid: "64692446"
 
 下表显示了不支持的套餐。
 
-| 类别  | **产品/服务名称** | **Quota ID** | **套餐编号** |
+| Category  | **产品/服务名称** | **Quota ID** | **套餐编号** |
 | --- | --- | --- | --- |
 | **云解决方案提供商 (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **云解决方案提供商 (CSP)** | Azure 政府版 CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **云解决方案提供商 (CSP)** | Microsoft 德国云 CSP 中的 Azure 德国版   | CSP_2015-05-01 | MS-AZR-DE-0145P |
-| **即用即付**                 | 面向学生的 Azure 入门版 | DreamSpark_2015-02-01 | MS-AZR-0144P |
+| **即用即付**                 | Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
 | **即用即付**                 | [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
 | **支持计划** | 标准支持                    | Default_2014-09-01 | MS-AZR-0041P |
 | **支持计划** | 专业直接支持         | Default_2014-09-01 | MS-AZR-0042P |

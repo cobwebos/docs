@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447466"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155173"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
 Until 活动提供的功能与 do-until 循环结构以编程语言提供的功能相同。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。 
@@ -54,11 +54,11 @@ Until 活动提供的功能与 do-until 循环结构以编程语言提供的功�
 
 属性 | 说明 | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
-名称 | `Until` 活动的名称。 | String | 是
-type | 必须设置为 Until。 | String | 是
-表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
-timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为：90 天。 | 否
-活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  是
+name | `Until` 活动的名称。 | String | “是”
+类型 | 必须设置为 Until。 | String | “是”
+表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | “是”
+timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为：90 天。 | “否”
+活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  “是”
 
 ## <a name="example-1"></a>示例 1
 

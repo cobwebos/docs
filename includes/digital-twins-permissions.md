@@ -9,11 +9,11 @@ ms.date: 12/17/2018
 ms.author: alinast
 ms.custom: include file
 ms.openlocfilehash: e8027e16cc1f58fbadbb35ae241ab29010005586
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584726"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153729"
 ---
 1. 在 [Azure 门户](https://portal.azure.com)中，从左窗格打开 **Azure Active Directory**，然后打开“属性”窗格。 将“目录 ID”复制到一个临时文件。 将在下一部分使用此值来配置示例应用程序。
 
@@ -33,7 +33,7 @@ ms.locfileid: "53584726"
 
 1. 打开应用注册窗格。 选择“设置” > “所需权限”，然后执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在左上角选择“添加”，打开“添加 API 访问权限”窗格。
+   a. 在左上角选择“添加”，打开“添加 API 访问权限”窗格。
 
    b. 选择“选择 API”，搜索“Azure 数字孪生”。 如果搜索没有找到该 API，请改为搜索“Azure 智能空间”。
 

@@ -8,23 +8,23 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5dcde10430308eaa1df0e6cca279803c3f7f5fe1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 10d2eb45b6706299336094359f10568e6811e1fb
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935651"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967711"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
 本文介绍如何以云市场发布者的身份注册。 根据所选发布选项以及你目前在 Microsoft 合作伙伴网络上的成员身份，下面某些步骤可能不是必需的。 注册以后，即可针对 Azure 市场或 AppSource 创建市场套餐。
 
 
-|  | 注册步骤 | Duration | 详细信息 |  
+|  | 注册步骤 | 持续时间 | 详细信息 |  
 |:--- |:--- |:--- |:--- |  
 | 第 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
 | 2 | 创建 Microsoft 帐户 <ul>（Azure 市场交易套餐的必需步骤，其他的建议步骤）</ul> | 15 分钟 | [创建 Microsoft ID](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
-| 3 | 提交市场注册表 | 15 分钟 | [提交市场提名表格](https://docs.microsoft.com/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
+| 3 | 创建合作伙伴中心帐户 | 15 分钟 | [创建合作伙伴中心帐户](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
 | 4 |  登录到云合作伙伴门户 | 1-3 天 | [登录到云合作伙伴门户](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
 | 5 | 在 Microsoft 开发人员中心注册（适用于 Azure 市场交易套餐） | 5-10 天 | [在开发人员中心注册](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
 
@@ -59,14 +59,19 @@ Microsoft 帐户，例如 *\@outlook.com 或\@live.com*，用于访问许多 Mic
 
 ---
 
-## <a name="3-submit-the-marketplace-registration-form"></a>3.提交市场注册表  
+## <a name="3-create-a-partner-center-account"></a>3.创建合作伙伴中心帐户  
 | 15 分钟 |  
-若要成为市场发布者，请完成这个简单的[注册表](https://azuremarketplace.microsoft.com/sell/signup)。 在此表中提交的信息将用于在云合作伙伴门户中创建发布者帐户，方便你创建、发布和管理市场套餐。
 
-系统会要求你提供以下信息：
-*   组织的详细信息，包括 Microsoft 合作伙伴网络 ID（可以在[合作伙伴中心](https://partnercenter.microsoft.com/partner/home)或 [Partner Membership Center](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) 中查找）
-*   要发布的初始应用或咨询服务套餐的简要说明，包括与套餐最接近的 Microsoft 产品或服务
-*   应用或服务的目标受众 
+在向市场[提交解决方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)之后，我们的加入团队会联系你，为你的发布体验提供支持。 请参阅如何[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)有关详细信息。
+
+<!---
+Complete this brief [registration form](https://azuremarketplace.microsoft.com/sell/signup) to become a marketplace publisher. The information submitted on this form will be used to create a publisher account in the Cloud Partner Portal which will allow you to create, publish, and manage marketplace offers.
+
+You will be asked to include the following information:
+*   Details about your organization, including your Microsoft Partner Network ID (which you can look up in either [Partner Center](https://partnercenter.microsoft.com/partner/home) or [Partner Membership Center](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx))
+*   A brief description of your initial app or consulting services offer that you intend to publish, including the Microsoft product or service to which your offer most closely aligns
+*   The target audience for your app or service 
+-->
 
 ---
 ## <a name="4-sign-into-cloud-partner-portal"></a>4.登录到云合作伙伴门户
@@ -90,10 +95,10 @@ Microsoft 帐户，例如 *\@outlook.com 或\@live.com*，用于访问许多 Mic
 *   若要注册一个[开发人员中心](https://developer.microsoft.com/store/register)帐户，请[在此处启动注册过程](https://developer.microsoft.com/store/register)。
 *   若要详细了解如何创建 Microsoft 帐户，请访问“创建 Microsoft 帐户”部分。
  
-完成[开发人员中心](https://developer.microsoft.com/store/register)注册以后，请将云合作伙伴配置文件与[开发人员中心](https://developer.microsoft.com/store/register)帐户关联在一起（在此处查看详细步骤）。 此步骤必须在发布交易套餐之前完成。 
+完成后[开发人员中心](https://developer.microsoft.com/store/register)注册，与在云合作伙伴配置文件链接你[开发人员中心](https://developer.microsoft.com/store/register)帐户 ([详细，请参阅下面步骤](https://docs.microsoft.com/en-us/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile))。 此步骤必须在发布交易套餐之前完成。 
 
 >[!Note]
->若要免除 99 美元的开发人员中心注册费，请完成[市场注册表](https://azuremarketplace.microsoft.com/sell/signup)，然后就会收到包含促销代码的电子邮件。 
+>若要免除 99 美元的开发人员中心注册费，请完成[市场注册表](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)，然后就会收到包含促销代码的电子邮件。 请参阅如何[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)有关详细信息。
 
 >[!Important]
 >在创建 Microsoft 开发人员中心帐户之前，请确认组织尚未创建开发人员中心帐户，以免出现重复帐户。 有关详细信息，请访问[在开发人员中心注册](https://docs.microsoft.com/azure/marketplace/register-dev-center)部分。

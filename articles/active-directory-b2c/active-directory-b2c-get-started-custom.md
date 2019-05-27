@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 05/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6a66d45028b9fbf9c421b10ffb7863fcb9be5bec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f4ecc01f42d491f5d9d967b9983e773c1df22298
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779849"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65986817"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -31,7 +31,7 @@ ms.locfileid: "65779849"
 ## <a name="add-signing-and-encryption-keys"></a>添加签名和加密密钥
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录。 单击**目录和订阅筛选器**顶部的菜单，然后选择包含你的租户的目录中。 
+2. 请确保使用包含 Azure AD B2C 租户的目录。 单击**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。 
 3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
 4. 在“概述”页上选择“标识体验框架”。
 
@@ -70,17 +70,17 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
 
 ### <a name="register-the-identityexperienceframework-application"></a>注册 IdentityExperienceFramework 应用程序
 
-1. 选择 Azure 门户左上角的“所有服务”，搜索并选择“应用注册”。
-2. 选择“新建应用程序注册”。
-3. 对于“名称”，请输入 `IdentityExperienceFramework`。
-4. 对于“应用程序类型”，请选择“Web 应用/API”。
-5. 对于“登录 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户域名。
-6. 单击**创建**。 
-7. 创建后，复制应用程序 ID 并将其保存以供日后使用。
+1. 选择**所有服务**在 Azure 门户的左上角，搜索并选择**Azure Active Directory**。
+2. 在菜单中，选择**应用注册 （旧版）**。
+3. 选择“新建应用程序注册”。
+4. 对于“名称”，请输入 `IdentityExperienceFramework`。
+5. 对于“应用程序类型”，请选择“Web 应用/API”。
+6. 对于“登录 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户域名。 现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
+7. 单击**创建**。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>注册 ProxyIdentityExperienceFramework 应用程序
 
-1. 选择“应用注册”，然后选择“新建应用程序注册”。
+1. 在中**应用注册 （旧版）**，选择**新应用程序注册**。
 2. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
 3. 对于“应用程序类型”，请选择“本机”。
 4. 对于“重定向 URI”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户。

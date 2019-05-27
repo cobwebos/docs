@@ -180,7 +180,7 @@
           href: connector-azure-blob-storage.md
         - name: Azure Cosmos DB SQL API
           href: connector-azure-cosmos-db.md
-        - name: Azure Cosmos DB MongDB API
+        - name: Azure Cosmos DB 的用于 MongoDB 的 API
           href: connector-azure-cosmos-db-mongodb-api.md
         - name: Azure 数据资源管理器
           href: connector-azure-data-explorer.md

@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 06/02/2018
 ms.author: tomfitz
 ms.openlocfilehash: 3641833f0b55f20066302de350bfab17adfade0e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106998"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128523"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
 
@@ -169,7 +169,7 @@ ms.locfileid: "56106998"
 
 以下模板演示多个资源组部署。 部署模板的脚本显示在表格之后。
 
-|模板  |说明  |
+|模板  |描述  |
 |---------|---------|
 |[跨订阅模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |将一个存储帐户部署到一个资源组，将另一个存储帐户部署到第二个资源组。 如果第二个资源组位于其他订阅，请包含该订阅的 ID 值。 |
 |[跨资源组模板属性](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |演示如何解析 `resourceGroup()` 函数。 此模板不部署任何资源。 |

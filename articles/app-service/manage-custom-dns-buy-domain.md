@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 06337fef1a9d9b41fd41ff7c67611581639adc0a
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: b3177c5dfc5602dd2b6530b0934c17400ab5d528
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65619718"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978881"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -119,7 +119,7 @@ ms.locfileid: "65619718"
 | 设置 | 建议的值 | 描述 |
 |-|-|-|
 |隐私保护 | 启用 | 选择“隐私保护”，已在采购价免费包含。 某些顶级域由不支持隐私保护的注册机构托管，并在“隐私保护”页上列出。 |
-| 分配默认主机名 | **www** 和 **\@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的应用。 如果应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |
+| 分配默认的主机名 | **www** 和 **\@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的应用。 如果应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |
 
 ### <a name="accept-terms-and-purchase"></a>接受条款并购买
 
@@ -174,7 +174,7 @@ ms.locfileid: "65619718"
 选择“添加主机名”。
 
 ### <a name="configure-hostname"></a>配置主机名
-在“添加主机名”对话框中，键入应用服务域或任何子域的完全限定域名。 例如：
+在“添加主机名”对话框中，键入应用服务域或任何子域的完全限定域名。 例如:
 
 - kontoso.net
 - www\.kontoso.net
@@ -201,7 +201,9 @@ ms.locfileid: "65619718"
 
 ## <a name="renew-the-domain"></a>续订域
 
-你所购买的应用服务域自购买之日起的一年内有效。 默认情况下，通过收取下一年费用的付款方式将域配置为自动续订。 如果要关闭自动续订，或者手动续订域，请按照以下步骤操作。
+你所购买的应用服务域自购买之日起的一年内有效。 默认情况下，通过收取下一年费用的付款方式将域配置为自动续订。 你可以手动续订你的域名。
+
+如果要关闭自动续订，或者手动续订域，请按照以下步骤操作。
 
 在“应用服务”选项卡中，单击应用的名称，选择“设置”，并选择“自定义域”。
 
@@ -211,11 +213,25 @@ ms.locfileid: "65619718"
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
-从域的左侧导航窗格，选择“域续订”。 若要停止自动续订域，请选择“关闭”，然后“保存”。 
+从域的左侧导航窗格，选择“域续订”。 若要停止自动续订域，请选择“关闭”，然后“保存”。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
-若要手动续订域，选择“续订域”。 但是，此按钮仅在域过期前的 90 天内才会处于活动状态。
+若要手动续订域，选择“续订域”。 但是，此按钮不活动状态，直到[域的过期前 90 天](#when-domain-expires)。
+
+如果域续订操作成功，将收到电子邮件通知的 24 小时内。
+
+## <a name="when-domain-expires"></a>当域过期
+
+Azure 处理过期或已过期应用服务域，如下所示：
+
+* 如果禁用自动续订：域过期前 90 天的续订通知电子邮件发送给你和**续订域**的门户中激活按钮。
+* 如果启用了自动续订：在你的域到期日期过后天，Azure 将尝试向你收费的域的名称更新。
+* 如果自动续订过程中发生错误 （例如，过期文件在您的卡），或如果禁用自动续订，并且允许域过期，Azure 将通知你的域过期和停止你的域名。 你可以[手动续订](#renew-the-domain)你的域。
+* 在第 4 个和第 12 天天到期后，Azure 向你发送其他通知电子邮件。 你可以[手动续订](#renew-the-domain)你的域。
+* 在第 19 一天后过期，你的域保持暂停状态，但制约兑换费用。 您可以调用客户支持人员来续订你的域名，受任何适用的续订和兑换费用。
+* 在第 25 天到期后，Azure 将为拍卖域名行业拍卖服务与你的域。 您可以调用客户支持人员来续订你的域名，受任何适用的续订和兑换费用。
+* 在 30 天到期后，您不再能够兑换你的域。
 
 <a name="custom"></a>
 

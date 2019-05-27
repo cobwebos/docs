@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 4424e53689714625ebc791df250956463452c3cb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791497"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949920"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中的单一数据库和共用数据库
 
@@ -152,7 +152,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 |**特征**|**Always Encrypted**|**透明数据加密**|
 |---|---|---|
 |**加密范围**|端到端|静态数据|
-|**数据库服务器可访问敏感数据**|否|是，因为加密针对的是静态数据|
+|**数据库服务器可访问敏感数据**|“否”|是，因为加密针对的是静态数据|
 |**允许的 T-SQL 的操作**|相等性比较|所有 T-SQL 的外围应用都可用|
 |**使用该功能所需的应用更改**|轻微|很少|
 |**加密粒度**|列级|数据库级|
@@ -160,7 +160,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>如何限制对数据库中敏感数据的访问
 
-每个应用程序在数据库中都有一定的敏感数据，需要防止这些数据被所有人查看。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 比如，员工工资。 经理需要查看其直接下属的工资信息，但团队成员应无法查看其同事的工资信息。 另一种情况是，数据开发人员在开发阶段或测试期间可能需要使用敏感数据，例如客户的 SSN。 而此信息后来不再需要向开发人员公开。 在这种情况下，敏感数据要么需要屏蔽，要么完全不公开。 SQL 数据库提供了两种方法来防止未经授权的用户查看敏感数据：
+每个应用程序在数据库中都有一定的敏感数据，需要防止这些数据被所有人查看。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 比如，员工工资。 管理器将需要为其直接下属的工资信息的访问但是，各个团队成员不应有权访问其同事的工资信息。 另一种情况是，数据开发人员在开发阶段或测试期间可能需要使用敏感数据，例如客户的 SSN。 而此信息后来不再需要向开发人员公开。 在这种情况下，敏感数据要么需要屏蔽，要么完全不公开。 SQL 数据库提供了两种方法来防止未经授权的用户查看敏感数据：
 
 [动态数据掩码](sql-database-dynamic-data-masking-get-started.md)是一种数据屏蔽功能，它通过屏蔽应用程序层上的非特权用户来限制敏感数据的公开。 可以定义屏蔽规则来创建屏蔽模式（例如，只显示国家/地区 ID 号的最后 4 位数：XXX-XX-0000，并将大部分编号标记为 X），并确定哪些用户被排除在屏蔽规则之外。 随时都可能出现屏蔽，有各种屏蔽功能可用于各种数据类别。 通过动态数据屏蔽可以自动检测数据库中的敏感数据，并对其应用屏蔽。
 
@@ -259,7 +259,7 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 可以使用[查询性能见解](sql-database-query-performance.md)查看特定数据库那些排名靠前的资源消耗查询和长时间运行查询的历史记录。 可通过资源利用率、持续时间和执行频率快速找出热门查询。 还可跟踪查询，并检测回归。 此功能需要为数据库启用和激活[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
-![查询性能见解](./media/sql-database-manage-after-migration/query-performance-insight.png)
+![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor 日志中的 azure SQL Analytics （预览版）
 

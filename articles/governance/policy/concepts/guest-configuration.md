@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c11d6519986cf7a0e70d1fe004ef527c3df247d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c98229a28f31ff715f252dc3915ca690e99245ff
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277710"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979513"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -63,15 +63,15 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ### <a name="validation-frequency"></a>验证频率
 
-来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 这会导致 Azure Policy 评估 Azure 资源管理器属性。 按需策略评估从来宾配置资源提供程序检索最新值。 但是，它不会触发对虚拟机中的配置执行新的审核。
+来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 这会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure 策略计算从来宾配置资源提供程序检索的最新值。 但是，它不会触发对虚拟机中的配置执行新的审核。
 
 ### <a name="supported-client-types"></a>支持的客户端类型
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|发布者|名称|版本|
+|发布服务器|名称|版本|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04、16.04、18.04|
+|规范|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
 |Microsoft|Windows Server|2012 Datacenter、 2012 R2 数据中心、 2016年数据中心、 2019年数据中心|
 |Microsoft|Windows 客户端|Windows 10|
@@ -80,7 +80,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 |Suse|SLES|12 SP3|
 
 > [!IMPORTANT]
-> 来宾配置可以审核节点运行受支持的操作系统。  如果你想要审核使用自定义映像的虚拟机，则需要重复**DeployIfNotExists**定义和修改**如果**部分以包括图像属性。
+> 来宾配置可以审核节点运行受支持的操作系统。 如果你想要审核使用自定义映像的虚拟机，则需要重复**DeployIfNotExists**定义和修改**如果**部分以包括图像属性。
 
 ### <a name="unsupported-client-types"></a>不支持的客户端类型
 
@@ -93,9 +93,7 @@ Windows Server Nano Server 不支持在任何版本。
 对于 IP 地址列表，您可以下载[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。 只需允许到在其中部署 Vm 的区域中的 Ip 的出站访问。
 
 > [!NOTE]
-> Azure 数据中心 IP 地址 XML 文件列出了 Microsoft Azure 数据中心使用的 IP 地址范围。 文件中包含计算、SQL 和存储范围。
-> 每周都将发布更新的文件。 该文件反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。
-> 建议每周下载新的 XML 文件。 然后，更新网站以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户应注意，此文件过去经常在每个月的第一周更新 Azure 空间的边界网关协议 (BGP) 播发。
+> Azure 数据中心 IP 地址 XML 文件列出了 Microsoft Azure 数据中心使用的 IP 地址范围。 文件中包含计算、SQL 和存储范围。 每周都将发布更新的文件。 该文件反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 建议每周下载新的 XML 文件。 然后，更新网站以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户应注意，此文件过去经常在每个月的第一周更新 Azure 空间的边界网关协议 (BGP) 播发。
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
@@ -140,7 +138,7 @@ Linux：`/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<ve
 ## <a name="next-steps"></a>后续步骤
 
 - 查看示例[Azure 策略示例](../samples/index.md)。
-- 查看[策略定义结构](definition-structure.md)。
+- 查看 [Azure Policy 定义结构](definition-structure.md)。
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)。

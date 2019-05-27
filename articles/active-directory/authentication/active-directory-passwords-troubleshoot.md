@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5adb857e6032e46c31a86685913277ec3eb571be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89c76ad0739edea4c0541ace76ca2311453de71d
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60416033"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963023"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -82,7 +82,7 @@ ms.locfileid: "60416033"
 | 错误 | 解决方案 |
 | --- | --- |
 | 密码重置服务无法在本地启动。 Azure AD Connect 计算机的应用程序事件日志中出现错误 6800。 <br> <br> 加入后，联合身份验证、直通身份验证或密码哈希同步的用户无法重置其密码。 | 当启用了密码写回时，同步引擎将调用写回库通过与云登记服务进行通信来执行配置（登记）。 在登记期间或者为密码写回启动 Windows Communication Foundation (WCF) 终结点时遇到任何错误都将导致在 Azure AD Connect 计算机的事件日志中生成错误。 <br> <br> 在重启 Azure AD Sync (ADSync) 服务期间，如果配置了写回，则 WCF 终结点将启动。 但是，如果终结点启动失败，我们将记录事件 6800 并允许同步服务启动。 存在此事件意味着密码写回终结点未启动。 此事件 6800 的事件日志详细信息以及 PasswordResetService 组件生成的事件日志条目将指明终结点无法启动的原因。 请查看这些事件日志错误，如果密码写回仍不能正常工作，请尝试重启 Azure AD Connect。 如果问题仍然存在，请尝试禁用并重新启用密码写回。
-| 如果用户尝试重置密码或解锁启用了密码写回功能的帐户，则操作会失败。 <br> <br> 此外，在解锁操作执行后，Azure AD Connect 事件日志中将显示一个事件，其中包含：“同步引擎返回了错误 hr=800700CE，消息=文件名或扩展名太长”。 | 查找用于 Azure AD Connect 的 Active Directory 帐户并重置密码，使其包含的字符数不超过 127 个。 然后，从“开始”菜单打开“同步服务”。 浏览到“连接器”并找到“Active Directory 连接器”。 选择它，然后选择“属性”。 浏览到“凭据”页，并输入新密码。 选择“确定”关闭页面。 |
+| 如果用户尝试重置密码或解锁启用了密码写回功能的帐户，则操作会失败。 <br> <br> 此外，在解锁操作执行后，Azure AD Connect 事件日志中将显示一个事件，其中包含：“同步引擎返回了错误 hr=800700CE，消息=文件名或扩展名太长”。 | 查找用于 Azure AD Connect 的 Active Directory 帐户并重置密码，使其包含不能超过 256 个字符。 然后，从“开始”菜单打开“同步服务”。 浏览到“连接器”并找到“Active Directory 连接器”。 选择它，然后选择“属性”。 浏览到“凭据”页，并输入新密码。 选择“确定”关闭页面。 |
 | 在 Azure AD Connect 安装过程的最后一步，看到了一个错误，它指出无法配置密码写回。 <br> <br> Azure AD Connect 应用程序事件日志包含错误 32009，其文本为“获取身份验证令牌时出错”。 | 在以下两种情况下会发生此错误： <br><ul><li>为在 Azure AD Connect 安装过程开始时指定的全局管理员帐户指定了错误的密码。</li><li>试图将联合用户用于在 Azure AD Connect 安装过程开始时指定的全局管理员帐户。</li></ul> 若要解决此问题，请确保未将联合帐户用于在安装过程开始时指定的全局管理员帐户。 另请确保指定的密码正确。 |
 | Azure AD Connect 计算机事件日志包含运行 PasswordResetService 时引发的错误 32002。 <br> <br> 错误内容如下：“连接到 ServiceBus 时出错。 令牌提供程序无法提供安全令牌。” | 本地环境无法连接到云中的 Azure 服务总线终结点。 此错误是由于防火墙规则阻止了到特定端口或 web 地址的出站连接导致的。 有关详细信息，请参阅[连接先决条件](../hybrid/how-to-connect-install-prerequisites.md)。 在更新这些规则后，重新启动 Azure AD Connect 计算机，密码写回应当会再次开始工作。 |
 | 工作一段时间后，联合身份验证、直通身份验证或密码哈希同步的用户无法重置其密码。 | 在某些极少见的情况下，当 Azure AD Connect 已重启时，密码写回服务可能无法重启。 在这些情况下，首先，请检查是否已在本地启用了密码写回。 可以使用 Azure AD Connect 向导或 PowerShell 执行检查（请参阅上面的“操作说明”部分）。 如果此功能显示为已启用，请尝试通过 UI 或 PowerShell 再次启用或禁用此功能。 如果这不起作用，请尝试完全卸载并重新安装 Azure AD Connect。 |

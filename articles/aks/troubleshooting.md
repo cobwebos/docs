@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f0b0ff3ff4ac742a7e850798c736eb31098f66e8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192278"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966380"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -91,9 +91,9 @@ ms.locfileid: "65192278"
 * 如果群集正在升级，请等到该操作终止。 如果升级成功，请重试先前失败的操作。
 * 如果群集升级失败，请遵循上面所述的步骤
 
-## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>能否将我的群集到不同的订阅或我的订阅与我的群集到新的租户？
+## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>是否可以将我的群集移动到其他订阅，或者说，是否可以将包含我的群集的订阅移动到新租户？
 
-如果已在 AKS 群集移动到其他订阅或拥有对新租户订阅的群集，群集会丢失由于落选的角色分配和服务主体权限的功能。 **AKS 不支持跨订阅或租户的移动群集**由于此约束。
+如果你已将 AKS 群集移动到其他订阅，或者将拥有订阅的群集移动到新租户，则群集将会由于失去角色分配和服务主体权限而丢失功能。 由于此约束，**AKS 不支持在订阅或租户之间移动群集**。
 
 ## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>我收到错误尝试使用需要虚拟机规模集的功能。
 
@@ -110,11 +110,23 @@ ms.locfileid: "65192278"
 * [使用群集自动缩放程序](cluster-autoscaler.md)
 * [创建和使用多个节点池](use-multiple-node-pools.md)
  
-## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>AKS 资源和参数强制实施命名限制是什么？
+## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>针对 AKS 资源和参数强制实施了什么命名限制？
 
-*此故障排除协助定向从 aka.ms/aks-命名的规则*
+*此故障排除帮助来自 aka.ms/aks-naming-rules*
 
-由 Azure 平台和 AKS 实现命名限制。 如果资源名称或参数中断了这些限制之一，要求你提供的不同输入返回错误。 以下常见命名准则适用于：
+Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违反了这些限制之一，则会返回一个错误，要求你提供不同的输入。 将应用以下通用的命名准则：
 
-* AKS *MC_* 资源组名称结合了资源组名称和资源名称。 自动生成的语法`MC_resourceGroupName_resourceName_AzureRegion`必须是不应超过 80 个字符。 如果需要减少你的资源组名称或 AKS 群集名称的长度。
-* *DnsPrefix*必须开头和结尾的字母数字值。 有效字符包括字母数字值和连字符 （-）。 *DnsPrefix*不能包含特殊字符，如句点 （.）。
+* AKS *MC_* 资源组名称组合了资源组名称和资源名称。 自动生成的语法 `MC_resourceGroupName_resourceName_AzureRegion` 不能超过 80 个字符。 如果需要，请缩短你的资源组名称或 AKS 群集名称的长度。
+* *dnsPrefix* 的开头和结尾必须是字母数字值。 有效字符包括字母数字值和连字符 (-)。 *dnsPrefix* 不能包含特殊字符，例如句点 (.)。
+
+## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>尝试创建、 更新、 缩放、 删除或升级群集，不允许操作，因为另一个操作正在进行时出现错误。
+
+*此故障排除协助定向 aka.ms/aks-挂起的操作*
+
+当上一个操作仍然正在进行时，群集操作将受限制。 若要检索你的群集的详细的状态，请使用`az aks show -g myResourceGroup -n myAKSCluster -o table`命令。 根据需要使用自己的资源组和 AKS 群集名称。
+
+基于群集状态的输出：
+
+* 如果群集而不是处于任何预配状态*Succeeded*或*Failed*，等到该操作 (*升级 / 更新 / 创建 / 缩放 / 删除 / 迁移*) 终止。 在上一个操作完成后，重新尝试最新的群集操作。
+
+* 如果群集具有失败的升级，请按照所述的步骤[我是我的群集处于失败状态时遇到错误，升级或缩放修复之前将不起](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)。

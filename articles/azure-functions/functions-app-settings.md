@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: d78fb546e954c4ae12e5836d9a7bef7ed5003090
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 02becd787fcc5f82efff7ef21feaf336fba3a26f
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511075"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967585"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -122,7 +122,7 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 ## <a name="functionsworkerruntime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-要在函数应用中加载的语言辅助角色运行时。  这将对应于应用程序中正在使用的语言（例如，“dotnet”）。 对于多种语言的函数，需要将它们发布到多个应用，每个应用都具有相应的辅助角色运行时值。  有效值为 `dotnet`(C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java) 和 `python` (Python)。
+要在函数应用中加载的语言辅助角色运行时。  这将对应于应用程序中正在使用的语言（例如，“dotnet”）。 对于多种语言的函数，需要将它们发布到多个应用，每个应用都具有相应的辅助角色运行时值。  有效的值为`dotnet`(C#/F#)， `node` (JavaScript/TypeScript) `java` (Java) `powershell` (PowerShell) 和`python`(Python)。
 
 |密钥|示例值|
 |---|------------|

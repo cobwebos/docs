@@ -15,11 +15,11 @@ ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505787"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121809"
 ---
 ## <a name="set-up-your-project"></a>设置项目
 
@@ -57,7 +57,7 @@ ms.locfileid: "59505787"
 > [!TIP]
 > 如果项目的根文件夹中没有 `Startup.cs` 文件，请执行以下操作：
 > 1. 右键单击项目的根文件夹：> `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. 为其命名 `Startup.cs`
+> 2. 将其命名为 `Startup.cs`
 >
 >> 确保选择的类是 OWIN Startup 类，而不是标准 C# 类。 通过检查是否在命名空间上看到 `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` 来进行确认。
 

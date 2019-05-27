@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e258670e863ff195190bae5cd50537e50d40d942
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4cc742a6b1a7f3fc78e8639206e06c2937f00c30
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825643"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956912"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
@@ -71,7 +71,9 @@ ms.locfileid: "65825643"
 ### <a name="certificate-format"></a>证书格式
 证书签名方法没有限制。 椭圆曲线加密 (ECC)、使用者可选名称 (SAN) 和其他常见证书类型全部都受到支持。 
 
-只要通配符与所需的外部 URL 匹配，就可使用通配符证书。 
+只要通配符与所需的外部 URL 匹配，就可使用通配符证书。
+
+不能使用你自己公钥基础结构 (PKI) 的安全注意事项由于颁发的证书。
 
 ### <a name="changing-the-domain"></a>更改域
 所有已验证的域显示在应用程序的“外部 URL”下拉列表中。 若要更改域，只需更新应用程序的该字段。 如果所需的域不在列表中，请[将它添加为已验证的域](../fundamentals/add-custom-domain.md)。 如果选择一个尚无关联证书的域，请遵循步骤 5 - 7 添加证书。 然后，请务必更新从新的外部 URL 重定向的 DNS 记录。 

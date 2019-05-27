@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/05/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 6f856aeae74ea285cd6a0326fd225e454a1cbe43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91dc386641c758c42f64afff387d0463d1445f1d
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003689"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969074"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>了解 Cloudyn 成本管理报表
 
@@ -146,7 +146,7 @@ ms.locfileid: "61003689"
     “解析度”用于选择所选日期范围内的时间解析度。 时间解析度将确定单位如何在报表中显示，并可以包括：
     - 每日
     - 每周
-    - 每月
+    - 月度
     - 每季度
     - 每年
 

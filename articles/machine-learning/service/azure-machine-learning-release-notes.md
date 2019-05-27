@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 892b9bc63f9f2d9abc7108587a7bf929473e4648
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779438"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989842"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -30,6 +30,24 @@ ms.locfileid: "65779438"
 ### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Azure Machine Learning SDK for Python v1.0.39
 + **更改**
   + 运行的配置 auto_prepare_environment 选项已被弃用，自动准备成为默认值。
+
+## <a name="2019-05-08"></a>2019-05-08
+
+### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Azure 机器学习数据准备 SDK v1.1.3
+
++ **新功能**
+  + 若要从 PostgresSQL 数据库，通过调用 read_postgresql 或使用一种数据存储中读取的添加了的支持。
+    + 请参阅操作方法指南中的示例：
+      + [数据引入 notebook](https://aka.ms/aml-data-prep-ingestion-nb)
+      + [数据存储 notebook](https://aka.ms/aml-data-prep-datastore-nb)
+
++ **Bug 修复和改进**
+  + 列类型转换的修复的问题：
+  + 现在正确地转换为布尔值列的布尔值或数值列。
+  + 现在不会失败时尝试设置为日期类型的日期列。
+  + 改进的 JoinType 类型和附带参考文档。 当联接两个数据流，现在可以指定其中一种联接：
+    + 无、 匹配、 内部、 UNMATCHLEFT、 LEFTANTI、 LEFTOUTER、 UNMATCHRIGHT、 RIGHTANTI、 RIGHTOUTER、 FULLANTI，完整的。
+  + 改进了的数据类型推断来识别更多日期格式。
 
 ## <a name="2019-05-06"></a>2019-05-06
 
@@ -367,7 +385,7 @@ Azure 机器学习服务现已公开发布。
 在此版本中，我们将宣告一个通过 [Azure 机器学习计算](how-to-set-up-training-targets.md#amlcompute)获得的全新托管计算体验。 此计算目标替换适用于 Azure 机器学习的 Azure Batch AI 计算。 
 
 此计算目标：
-+ 用于模型训练和批量推断
++ 用于模型训练和批处理推理/评分
 + 是单节点到多节点计算
 + 为用户执行群集管理和作业计划
 + 默认进行自动缩放

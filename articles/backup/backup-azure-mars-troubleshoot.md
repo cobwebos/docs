@@ -6,18 +6,38 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: e36e0813b7a50c659a2c3ae61350381e83a1823f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 122f0884469a4901b02a1c86dd5ec98ef4fb24b0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686193"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000255"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
 下面介绍如何解决在配置、注册、备份和还原期间出现的错误。
+
+## <a name="basic-troubleshooting"></a>基本故障排除
+
+我们建议你执行以下验证，在开始操作之前进行故障排除 Microsoft Azure 恢复服务 (MARS) 代理：
+
+- [请确保是最新的 Microsoft Azure 恢复服务 (MARS) 代理](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [确保在 MARS 代理和 Azure 之间存在网络连接](https://aka.ms/AB-A4dp50)
+- 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 根据需要重启，然后重试此操作
+- [确保在暂存文件夹位置有 5-10% 的可用卷空间](https://aka.ms/AB-AA4dwtt)
+- [检查其他进程或防病毒软件是否正在干扰 Azure 备份](https://aka.ms/AB-AA4dwtk)
+- [计划的备份失败，但手动备份成功](https://aka.ms/ScheduledBackupFailManualWorks)
+- 确保 OS 有最新更新
+- [确保不受支持的驱动器，并具有不受支持的属性的文件从备份中排除](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
+- 请确保受保护系统上的系统时钟配置为正确时区 <br>
+- [确保服务器至少具有 .Net Framework 版本 4.5.2 和更高版本](https://www.microsoft.com/download/details.aspx?id=30653)<br>
+- 如果尝试**将服务器重新注册**到保管库，则请执行以下操作： <br>
+  - 确保在服务器上卸载代理并将其从门户中删除 <br>
+  - 使用的密码正是一开始用于注册服务器的 <br>
+- 如果脱机备份出现，请确保在开始脱机备份操作之前，源和副本计算机上安装 Azure PowerShell 版本 3.7.0
+- [Azure 虚拟机上运行备份代理时的考虑事项](https://aka.ms/AB-AA4dwtr)
 
 ## <a name="invalid-vault-credentials-provided"></a>提供的保管库凭据无效
 

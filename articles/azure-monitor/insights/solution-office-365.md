@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
 ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58794013"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130588"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -63,7 +63,7 @@ ms.locfileid: "58794013"
 
 从 Office 365 订阅中：
 
-- 用户名：管理帐户的电子邮件地址。
+- 用户名:管理帐户的电子邮件地址。
 - 租户 ID：Office 365 订阅的唯一 ID。
 - 客户端 ID：一个 16 字符的字符串，表示 Office 365 客户端。
 - 客户端密码：进行身份验证所需的已加密字符串。
@@ -734,7 +734,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | 查询 | 说明 |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
-|SharePoint 网站的使用情况|OfficeActivity&#124;其中 OfficeWorkload = ~"sharepoint"&#124;汇总 count （） by SiteUrl\|按计数升序排序|
+|SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
 |文件访问操作数（按用户类型）|search in (OfficeActivity) OfficeWorkload =~ "azureactivedirectory" and "MyTest"|
 |使用特定关键字搜索|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
 |监视 Exchange 上的外部操作|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|

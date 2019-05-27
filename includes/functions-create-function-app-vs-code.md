@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
 ms.openlocfilehash: 79dbee33928fbc7560d0ea27be3af25cc510e996
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52641888"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132280"
 ---
 ## <a name="create-an-azure-functions-project"></a>创建 Azure Functions 项目
 
 使用 Visual Studio Code 中的 Azure Functions 项目模板可创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为一个逻辑单元，以用于管理、部署和共享资源。
 
-1. 在 Visual Studio Code 中，选择 Azure 徽标以显示“Azure: Functions”区域，然后选择“创建新项目”图标。
+1. 在 Visual Studio Code 中，选择 Azure 徽标以显示“Azure:Functions”区域，然后选择“创建新项目”图标。
 
     ![创建函数应用项目](./media/functions-create-function-app-vs-code/create-function-app-project.png)
 

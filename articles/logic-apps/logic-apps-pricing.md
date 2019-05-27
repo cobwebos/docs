@@ -9,13 +9,13 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
-ms.date: 03/25/2019
-ms.openlocfilehash: c3d06d3c0f9c86b4fe6495632b48051fd69dc663
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.date: 05/22/2019
+ms.openlocfilehash: b37a6b6995df6f784b5f1b4a7a3f54d91faafc13
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544553"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990195"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -92,11 +92,15 @@ Azure 逻辑应用将所有成功和不成功的操作作为执行进行计量�
 使用定价适用于[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)可以在其中浏览、 开发和测试[B2B 和 EDI](logic-apps-enterprise-integration-b2b.md)并[XML 处理](logic-apps-enterprise-integration-xml.md)功能在 Azure 逻辑应用中的，无需额外付费。
 您可以在每个 Azure 区域中有个集成帐户。 每个集成帐户最多可存储特定[数量的项目](../logic-apps/logic-apps-limits-and-config.md)，其中包含贸易合作伙伴、协议、映射、架构、程序集、证书、批处理配置等。
 
-Azure 逻辑应用还提供了与受支持的逻辑应用 SLA 的基本和标准集成帐户。 以下是您可以选择是否要使用基本或标准集成帐户的方式：
+Azure 逻辑应用提供了免费、 基本和标准集成帐户。 基本和标准层支持的逻辑应用的服务级别协议 (SLA)，而免费层不支持的 sla 保证，而有限制对吞吐量和使用情况。
 
-* 您只是想要处理消息或充当具有更大的业务实体与贸易合作伙伴关系的小型企业合作伙伴，请使用基本集成帐户。
+若要免费、 基本或标准的集成帐户之间进行选择：
 
-* 如果有更复杂的 B2B 关系并想要提高可管理的实体数，请使用标准集成帐户。
+* **免费**：有关当你想要尝试探索性的情况下，不是生产方案。
+
+* **基本**：所需唯一消息处理的或者要用作小型企业合作伙伴具有更大的业务实体与贸易合作伙伴关系。
+
+* **标准**：对于后更复杂的 B2B 关系和更高的数量的实体，你必须管理。
 
 有关具体的定价信息，请参阅[Azure 逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 

@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 102fe85916194648501be3d2cb39d8bcda9e9f5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811073"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992001"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>如何通过 Python 使用服务总线主题和订阅
 
@@ -34,12 +34,12 @@ ms.locfileid: "60811073"
 - 删除主题和订阅
 
 ## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[Visual Studio 或 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照步骤[快速入门：使用 Azure 门户创建服务总线主题和订阅到主题](service-bus-quickstart-topics-subscriptions-portal.md)若要创建服务总线**命名空间**并获取**连接字符串**。
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 你可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)中的步骤来创建服务总线**命名空间**并获取**连接字符串**。
 
     > [!NOTE]
-    > 您将创建**主题**和一个**订阅**使用主题**Python**在本快速入门。 
-3. 安装[Azure Python 包][Azure Python package]。 请参阅[Python 安装指南](../python-how-to-install.md)。
+    > 在本快速入门中，你将使用 **Python** 创建一个**主题**和对此主题的**订阅**。 
+3. 安装 [Azure Python 包][Azure Python package]。 请参阅 [Python 安装指南](../python-how-to-install.md)。
 
 ## <a name="create-a-topic"></a>创建主题
 
@@ -189,6 +189,9 @@ bus_service.delete_topic('mytopic')
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
+
+> [!NOTE]
+> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

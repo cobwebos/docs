@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: fe51f4589075cb275e867c943c5d7df3e8d5d4a0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c1006aa21b3009bb7508c7a24ab501d39737261c
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795027"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978215"
 ---
-# <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>在 Azure 虚拟网络中安全运行试验和推理
+# <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>安全地运行试验和在 Azure 虚拟网络内的推理
 
-本文介绍如何在虚拟网络中运行试验和推理。 虚拟网络充当安全边界，可将 Azure 资源与公共 Internet 相隔离。 你也可以将 Azure 虚拟网络加入本地网络。 在虚拟网络中可以安全训练模型，以及访问用于推断的已部署模型。
+在本文中，您将了解如何运行试验和虚拟网络中的推断。 虚拟网络充当安全边界，可将 Azure 资源与公共 Internet 相隔离。 你也可以将 Azure 虚拟网络加入本地网络。 它允许你安全地对模型定型并访问推理你已部署的模型。 推理，或模型评分，阶段已部署的模型不使用的是用于预测，最常在生产数据。
 
 Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算资源（计算目标）用于训练和部署模型。 可在虚拟网络中创建这些计算目标。 例如，可以使用 Microsoft Data Science Virtual Machine 来训练模型，然后将该模型部署到 Azure Kubernetes 服务 (AKS)。 有关虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
 
@@ -35,16 +35,16 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 ## <a name="storage-account-for-your-workspace"></a>工作区的存储帐户
 
 > [!IMPORTANT]
-> 您可以将只有在执行试验时，附加到虚拟网络背后的 Azure 机器学习服务工作区的存储帐户。 推断需要无限制的访问的存储帐户。 如果不确定是否已修改这些设置，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)中的“更改默认网络访问规则”。 使用步骤进行推断时允许来自所有网络访问。
+> 您可以将只有在执行试验时，附加到虚拟网络背后的 Azure 机器学习服务工作区的存储帐户。 推理需要无限制的访问的存储帐户。 如果不确定是否已修改这些设置，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)中的“更改默认网络访问规则”。 使用步骤期间推理，允许来自所有网络访问或模型评分。
 
-若要使用 Azure 机器学习试验使用 Azure 存储的虚拟网络背后的功能，请按照以下步骤：
+若要使用 Azure 机器学习的试验功能与 Azure 存储的虚拟网络的后面，请执行以下步骤：
 
 1. 创建示例试验计算。 机器学习计算后的虚拟网络或附加到工作区 ex 试验计算。 HDInsight 群集或虚拟机。 有关详细信息，请参阅[使用机器学习计算](#use-machine-learning-compute)并[使用虚拟机或 HDInsight 群集](#use-a-virtual-machine-or-hdinsight-cluster)本文档中的部分
 2. 请转到附加到工作区的存储。 ![显示连接到 Azure 机器学习服务工作区的 Azure 存储的 Azure 门户的映像](./media/how-to-enable-virtual-network/workspace-storage.png)
 3. 在 Azure 存储页上，选择__防火墙和虚拟网络__。 ![映像的 Azure 门户显示防火墙和虚拟网络在 Azure 存储页上的部分](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
-4. 上__防火墙和虚拟网络__页上，选择以下：
+4. 上__防火墙和虚拟网络__页上，选择以下项：
     - 选择“所选网络”。
-    - 下__虚拟网络__选择__将现有虚拟网络添加__添加试验计算所驻留的虚拟网络。 （请参阅步骤 1。）
+    - 下__虚拟网络__，选择__将现有虚拟网络添加__添加试验计算所驻留的虚拟网络。 （请参阅步骤 1。）
     - 选择__允许受信任的 Microsoft 服务访问此存储帐户__。
 ![映像的 Azure 门户显示防火墙和虚拟网络下 Azure 存储页](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png) 
 
@@ -62,9 +62,9 @@ Azure 机器学习服务使用与工作区关联的 Key Vault 实例来存储不
 若要使用 Azure 机器学习试验使用密钥保管库的虚拟网络背后的功能，请按照以下步骤：
 1. 请转到与工作区关联的密钥保管库。 ![显示与 Azure 机器学习服务工作区相关联的密钥保管库的 Azure 门户的映像](./media/how-to-enable-virtual-network/workspace-key-vault.png)
 2. 在密钥保管库页上，选择__防火墙和虚拟网络__部分。 ![映像的 Azure 门户显示防火墙和虚拟网络在密钥保管库页上的部分](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
-3. 上__防火墙和虚拟网络__页上，选择以下：
+3. 上__防火墙和虚拟网络__页上，选择以下项：
     - 选择“所选网络”。
-    - 下__虚拟网络__选择__添加现有虚拟网络__添加试验计算所驻留的虚拟网络。
+    - 下__虚拟网络__，选择__添加现有虚拟网络__添加试验计算所驻留的虚拟网络。
     - 选择__允许受信任的 Microsoft 服务跳过此防火墙__。
 ![映像的 Azure 门户显示防火墙和虚拟网络在密钥保管库页](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png) 
 
@@ -101,7 +101,7 @@ Azure 机器学习服务使用与工作区关联的 Key Vault 实例来存储不
 
     ![显示使用 BatchNodeManagement 服务标记的入站的规则的 Azure 门户的映像](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- （可选）在端口 22，以允许远程访问的入站的 TCP 流量。 仅当你想要在公共 IP 上使用 ssh 建立连接，才需要此是。
+- （可选）在端口 22，以允许远程访问的入站的 TCP 流量。 如果你想要在公共 IP 上使用 ssh 建立连接，才需要此端口。
  
 - 任何端口上通往虚拟网络的出站流量。
 
@@ -129,8 +129,19 @@ Azure 机器学习服务使用与工作区关联的 Key Vault 实例来存储不
 
 ![机器学习计算的出站 NSG 规则屏幕截图](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
 
+### <a name="user-defined-routes-for-forced-tunneling"></a>用户定义的用于强制隧道的路由
 
+如果使用强制隧道与使用 Azure 机器学习计算，您必须添加[用户定义的路由 (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)到包含的计算资源的子网。
 
+* 使用你的资源所在的区域中的 Azure Batch 服务的每个 IP 地址的的用户定义路由。 这些 Udr 启用 batch 服务来与任务计划为计算节点进行通信。 若要获取 Batch 服务的 IP 地址的列表，请联系 Azure 支持。
+
+* Azure 存储的出站流量 (具体而言，窗体的 Url `<account>.table.core.windows.net`， `<account>.queue.core.windows.net`，和`<account>.blob.core.windows.net`) 必须不能在本地网络设备被阻止。
+
+当您添加的用户定义路由时，定义的路由的每个相关批处理 IP 地址前缀，并设置__下一跃点类型__到__Internet__。 下图显示在 Azure 门户中的此 UDR 示例：
+
+![示例用户定义的路由的地址前缀](./media/how-to-enable-virtual-network/user-defined-route.png)
+
+有关详细信息，请参阅[虚拟网络中创建 Azure Batch 池](/azure/batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)一文。
 
 ### <a name="create-machine-learning-compute-in-a-virtual-network"></a>在虚拟网络中创建机器学习计算
 
@@ -233,7 +244,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > 在继续执行后续步骤之前，请检查先决条件，并为群集规划 IP 寻址。 有关详细信息，请参阅[在 Azure Kubernetes 服务中配置高级网络](https://docs.microsoft.com/azure/aks/configure-advanced-networking)。
 > 
-
+>
 > 保留 NSG 的默认出站规则。 有关详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)中的“默认安全规则”。
 >
 > Azure Kubernetes 服务和 Azure 虚拟网络应位于同一区域。
@@ -260,11 +271,11 @@ except ComputeTargetException:
 
     - __子网__：选择子网。
 
-    - __Kubernetes 服务地址范围__：选择 Kubernetes 服务地址范围。 此地址范围使用 CIDR 表示法 IP 范围来定义群集可用的 IP 地址。 此范围不得与任何子网 IP 范围重叠。 例如：10.0.0.0/16。
+    - __Kubernetes 服务地址范围__：选择 Kubernetes 服务地址范围。 此地址范围使用 CIDR 表示法 IP 范围来定义群集可用的 IP 地址。 此范围不得与任何子网 IP 范围重叠。 例如:10.0.0.0/16。
 
-    - __Kubernetes DNS 服务 IP 地址__：选择 Kubernetes DNS 服务 IP 地址。 此 IP 地址将分配给 Kubernetes DNS 服务。 此 IP 地址必须在 Kubernetes 服务地址范围内。 例如：10.0.0.10。
+    - __Kubernetes DNS 服务 IP 地址__：选择 Kubernetes DNS 服务 IP 地址。 此 IP 地址将分配给 Kubernetes DNS 服务。 此 IP 地址必须在 Kubernetes 服务地址范围内。 例如:10.0.0.10。
 
-    - __Docker 网桥地址__：选择 Docker 网桥地址。 此 IP 地址将分配给 Docker 网桥。 此 IP 地址不得在任何子网 IP 范围或 Kubernetes 服务地址范围内。 例如：172.17.0.1/16。
+    - __Docker 网桥地址__：选择 Docker 网桥地址。 此 IP 地址将分配给 Docker 网桥。 此 IP 地址不得在任何子网 IP 范围或 Kubernetes 服务地址范围内。 例如:172.17.0.1/16。
 
    ![Azure 机器学习服务：机器学习计算虚拟网络设置](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
@@ -295,7 +306,7 @@ aks_target = ComputeTarget.create(workspace = ws,
                                   provisioning_configuration = config)
 ```
 
-创建过程完成后，可在虚拟网络后的 AKS 群集上执行推理。 有关详细信息，请参阅[如何部署 AKS](how-to-deploy-to-aks.md)。
+在创建过程完成后，你可以 AKS 群集虚拟网络背后的推理/分数。 有关详细信息，请参阅[如何部署 AKS](how-to-deploy-to-aks.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

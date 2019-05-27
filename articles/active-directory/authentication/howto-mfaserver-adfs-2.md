@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d345645337d070be15346b245bfaecd1cabc7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45ff198f55ff769667cfaef2dd8665d2c34314e9
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415386"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987760"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>将 Azure 多重身份验证服务器配置为与 AD FS 2.0 配合使用
 
@@ -85,7 +85,7 @@ ms.locfileid: "60415386"
 3. 如果用户以“域\用户名”格式输入用户名，服务器在创建 LDAP 查询时则需要能够将域与用户名相剥离。 可以通过注册表设置完成此操作。
 4. 在 64 位服务器上，打开注册表编辑器，并转到 HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor。 如果在 32 位服务器上，请从路径中除去“Wow6432Node”。 创建名为“UsernameCxz_stripPrefixDomain”的 DWORD 注册表项，将值设置为 1。 现在多重身份验证将保护 AD FS 代理。
 
-确保已将 Active Directory 中的用户导入服务器。 如果想将内部 IP 地址加入允许列表，以在从这些位置登录网站时不需要进行双重验证，请参阅以下[受信任的 IP部分](#trusted-ips)。
+确保已将 Active Directory 中的用户导入服务器。 请参阅[受信任的 Ip 部分](#trusted-ips)如果想要允许内部 IP 地址，这样在登录到网站从这些位置时不需要双重验证。
 
 ![注册表编辑器，若要配置公司设置](./media/howto-mfaserver-adfs-2/reg.png)
 
@@ -109,15 +109,17 @@ ms.locfileid: "60415386"
 
 现在，多重身份验证将保护 AD FS。
 
-确保已将 Active Directory 中的用户导入服务器。 如果想将内部 IP 地址加入允许列表，以在从这些位置登录网站时不需要双重验证，请参阅以下“受信任的 IP”部分。
+确保已将 Active Directory 中的用户导入服务器。 如果你想要允许内部 IP 地址，以便在登录到网站从这些位置时不需要双重验证，请参阅受信任的 Ip 部分。
 
 ## <a name="trusted-ips"></a>受信任的 IP
+
 受信任的 IP 允许用户跳过对从特定 IP 地址或子网发起的网站请求的 Azure 多重身份验证。 例如，可能希望当用户在办公室进行登录时，无需进行双重验证。 为此，可将办公室子网指定为受信任的 IP 条目。
 
 ### <a name="to-configure-trusted-ips"></a>配置受信任的 IP
+
 1. 在“IIS 身份验证”部分中，单击“受信任的 IP”选项卡。
 2. 单击“添加...” 按钮。
 3. 显示“添加受信任的 IP”对话框时，选择“单个 IP”、“IP 范围”或“子网”其中一个单选按钮。
-4. 输入应加入允许列表的 IP 地址、IP 地址范围或子网。 如果输入子网，请选择适当的网络掩码，并单击“确定”按钮。 现已添加受信任的 IP。
+4. 输入 IP 地址、 IP 地址范围或应允许的子网。 如果输入子网，请选择适当的网络掩码，并单击“确定”按钮。
 
 ![配置到 MFA 服务器的受信任的 Ip](./media/howto-mfaserver-adfs-2/trusted.png)

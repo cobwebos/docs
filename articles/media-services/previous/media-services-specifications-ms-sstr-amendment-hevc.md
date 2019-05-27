@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: johndeu;
-ms.openlocfilehash: b26252ddda7997bebd730bb4c1007f76b3e645a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b9756920d25891dbe6b71fa24c06ed8f0c8eabb0
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60650703"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963254"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
 
@@ -40,11 +40,11 @@ ms.locfileid: "60650703"
 
 本文档专门使用了以下术语：
 
->  **构图时间：** 在客户端呈现某个样本的时间，符合 [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 中的定义。
+>  **构图时间：** 该时间示例展示在客户端，如中所定义[[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)。
 > 
 >   **CENC**：通用加密，符合 [ISO/IEC 23001-7] 第二版中的定义。
 > 
->   **解码时间：** 在客户端解码某个样本所需的时间，符合 [[https://go.microsoft.com/fwlink/?LinkId=18369514496-12] 中的定义。](https://go.microsoft.com/fwlink/?LinkId=183695)
+>   **解码时间：** 一个示例所需时间客户端，解码中定义[[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)。
 
 **片段：** 一个可单独下载的**媒体**单元，由一个或多个**样本**构成。
 
@@ -52,11 +52,11 @@ ms.locfileid: "60650703"
 > 
 >   **清单：** 有关**呈现内容**的元数据，可让客户端发出**媒体**请求。 **媒体：** 由客户端用来播放**呈现内容**的压缩音频、视频和文本数据。 **媒体格式：** 以压缩**样本**形式呈现音频或视频时所用的妥善定义的格式。
 > 
->   **呈现内容：** 播放单部电影所需的所有**流**和相关元数据的集。 **请求：** 从客户端发送到服务器的 HTTP 消息，符合 [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) 中的定义。 **响应：** 从服务器发送到客户端的 HTTP 消息，符合 [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) 中的定义。
+>   **呈现内容：** 播放单部电影所需的所有**流**和相关元数据的集。 **请求：** 从客户端发送到服务器，如中所定义的 HTTP 消息[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **响应：** 从服务器发送到客户端，如中所定义的 HTTP 消息[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
 > 
 >   **样本：** 存储和处理**媒体**的最小基本单位（例如帧）。
 > 
->   **可以、应该、必须、不应、不得：** 这些术语的用法符合 [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) 中的描述。 所有可选行为的陈述使用“可以”、“应该”或“不应”。
+>   **可以、应该、必须、不应、不得：** 使用这些期限 （以全部大写） 中所述[[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317)或者可能可选现象，请使用的所有语句后，应该或不应。
 
 ## <a name="12-references"></a>1.2 参考
 

@@ -3,9 +3,8 @@ title: 教程：使用 Azure Active Directory 为 LinkedIn Sales Navigator 配�
 description: 了解如何配置 Azure Active Directory 以便自动将用户帐户预配到 LinkedIn Sales Navigator 以及取消其预配。
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
-writer: asmalser-msft
-manager: daveba
+author: ArvindHarinder1
+manager: CelesteDG
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -14,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: asmalser-msft
+ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ce841a45893ebfbb0d9006e6b9eadc77f08a491
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8977e6bb8b665705af7183ff0cdcfae22a19c759
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60257140"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965942"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>教程：为 LinkedIn Sales Navigator 配置自动用户预配
 
