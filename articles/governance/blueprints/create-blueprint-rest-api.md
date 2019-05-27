@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 83133629d92abb50d9fd7509cf182282503fc041
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273152"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799211"
 ---
-# <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>使用 REST API 定义和分配 Azure 蓝图
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入门：使用 REST API 定义和分配 Azure 蓝图
 
 了解如何创建和分配蓝图以后即可定义常见的模式，以便根据资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务，例如：
 
@@ -28,7 +28,6 @@ ms.locfileid: "59273152"
 > - 删除已向订阅分配的蓝图
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
-
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236937"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523317"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>教程：使用 PowerShell 创建服务主体和角色分配
 
@@ -38,10 +38,9 @@ ms.locfileid: "65236937"
     Install-Module AzureAD
     ```
 
-2. 结合引号中的值（请将这些值替换为与会话相关的值）运行以下 cmdlet。 如果刚通过[“在 Windows 虚拟桌面中创建租户”教程](./tenant-setup-azure-active-directory.md)创建了 Windows 虚拟桌面租户，请将“默认租户组”用作租户组名称。
+2. 结合引号中的值（请将这些值替换为与会话相关的值）运行以下 cmdlet。
 
     ```powershell
-    $myTenantGroupName = "<my-tenant-group-name>"
     $myTenantName = "<my-tenant-name>"
     ```
 
@@ -68,8 +67,7 @@ $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrin
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Set-RdsContext -TenantGroupName $myTenantGroupName
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantGroupName $myTenantGroupName -TenantName $myTenantName
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>使用服务主体登录

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 9696f3c32f8b903257e337191a5ce32645bfd198
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d99f20efcebc3c9d97c5e2228e8b55bfd3f432b5
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142451"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834015"
 ---
-# <a name="connect-from-a-web-browser"></a>从 web 浏览器连接
+# <a name="connect-from-a-web-browser"></a>从 Web 浏览器进行连接
 
 Web 客户端可以从 web 浏览器，而无需耗时较长的安装过程中访问你的 Windows 虚拟桌面预览资源。
 
@@ -38,6 +38,6 @@ Web 客户端可以从 web 浏览器，而无需耗时较长的安装过程中�
 在浏览器中，导航到[Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/webclient)并使用你的用户帐户登录。
 
 >[!NOTE]
->如果你已经在使用不同于你想要使用 Windows 虚拟机的 Azure AD 帐户登录，你可能需要注销，或使用私密浏览器窗口。
+>如果已使用你已登录想要使用 Windows 虚拟桌面的不同于 Azure Active Directory 帐户，您应该注销，或者使用私密浏览器窗口。
 
 登录后，您现在看到的资源的列表。 可以通过选择它们像使用常规应用中的启动的资源**的所有资源**选项卡。

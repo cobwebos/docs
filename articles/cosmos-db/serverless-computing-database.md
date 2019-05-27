@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54de2d2f9b5691a47ff56891185c7655661092dd
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61330757"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833602"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
 
@@ -107,11 +107,11 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 ## <a name="tooling"></a>工具
 
-在 Azure 门户和 Visual Studio 2017 中可以本机集成 Azure Cosmos DB 和 Azure Functions。
+在 Azure 门户和 Visual Studio 2019 中提供了 Azure Cosmos DB 和 Azure Functions 之间的本机集成。
 
 * 在 Azure Functions 门户中，可以创建 Azure Cosmos DB 触发器。 有关快速入门说明，请参阅[在 Azure 门户中创建 Azure Cosmos DB 触发器](https://aka.ms/cosmosdbtriggerportalfunc)。
 * 在 Azure Cosmos DB 门户中，可以将 Azure Cosmos DB 触发器添加到同一资源组中的现有 Azure Function 应用。
-* 在 Visual Studio 2017 中，可以使用[用于 Visual Studio 2017 的 Azure Functions 工具](../azure-functions/functions-develop-vs.md)创建 Azure Cosmos DB 触发器：
+* 在 Visual Studio 2019，您可以创建 Azure Cosmos DB 触发器使用[Azure Functions Tools](../azure-functions/functions-develop-vs.md):
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 99295fd4581cd81751f7d64b694c853efe51a106
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: f88dee579e44a01dc1a7404ef6a670de34063552
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522945"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833571"
 ---
 # <a name="remote-desktop-client-connections"></a>远程桌面客户端连接
 
@@ -28,9 +28,9 @@ ms.locfileid: "65522945"
 
 使用**nslookup**来确认 DNS 可解析的 FQDN:
 
-    ```cmd
-    nslookup rdweb.wvd.microsoft.com
-    ```
+```cmd
+nslookup rdweb.wvd.microsoft.com
+```
 
 尝试使用另一个客户端，如适用于 Windows 7 或 Windows 10 中，并检查如果可以打开 web 客户端的远程桌面客户端连接。
 
@@ -111,20 +111,20 @@ Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 4. 使用**Get RdsHostPool**并**Get RdsSessionHost** cmdlet，确认的正确的主机池上完成故障排除。
 5. 执行以下命令以获取在指定的时间范围的类型连接的所有失败的活动的列表：
 
-    ```cmd
+    ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
 6. 使用**ActivityId**在先前的 cmdlet 输出中，运行以下命令：
 
-    ```
+    ```PowerShell
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
     ```
 
 7. 该命令生成类似于如下所示的输出的输出。 使用**ErrorCodeSymbolic**并**ErrorMessage**来排查问题的根本原因。
 
-    ```
+    ```PowerShell
     ErrorSource       : <Source>
     ErrorOperation    : <Operation>
     ErrorCode         : <Error code>
@@ -135,7 +135,7 @@ Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
     Time              : <Timestampt>
     ```
 
-### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>错误：O_ADD_USER_TO_GROUP_FAILED / 无法将用户添加到组 ≤username≥ = = Remote Desktop Users。 原因：Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>错误：O_ADD_USER_TO_GROUP_FAILED / 无法将用户添加到组 ≤username≥ = = Remote Desktop Users。 原因:Win32.ERROR_NO_SUCH_MEMBER
 
 原因：未将 VM 加入到用户对象的域中。
 
@@ -159,7 +159,7 @@ Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 
 确认用户报告的问题已被分配到应用程序组通过使用以下命令行：
 
-```cmd
+```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 

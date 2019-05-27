@@ -10,20 +10,20 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 766fe32736ae0d8ea23805ea017d93b32119636a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9aa5b85a00de495478897ec70393f6c22ee20fc5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873115"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788751"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：在 QnA Maker 中使用 Python 创建知识库
 
 本快速入门将指导你完成以编程方式创建和发布示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。 
 
 本快速入门调用了 QnA Maker API：
-* [创建知识库](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
-* [获取操作详细信息](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+* [创建知识库](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [获取操作详细信息](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -128,4 +128,4 @@ python create-new-knowledge-base-3x.py
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)

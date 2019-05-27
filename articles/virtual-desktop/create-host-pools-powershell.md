@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: 8e6783bb56f55949824e4ce94c85145f53dd9f4b
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: a58e059e800b13d01ba8e50880bd75077d4418ae
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523954"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833971"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 
@@ -78,6 +78,9 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 3. 选择**计算机名**，选择**更改设置**，然后选择**更改...**
 4. 选择**域**，然后输入虚拟网络上的 Active Directory 域。
 5. 使用有权限将计算机加入域的域帐户进行身份验证。
+
+    >[!NOTE]
+    > 如果要将 Vm 加入到 Azure AD 域服务环境，确保你的域联接用户也是的成员[AAD DC 管理员组](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)。
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>注册到 Windows 虚拟桌面预览主机池的虚拟机
 

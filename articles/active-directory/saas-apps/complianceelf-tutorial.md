@@ -16,11 +16,11 @@ ms.date: 01/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5330d398a75105b78cb2caa0373b78fa2e32a99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878051"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65863161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>教程：Azure Active Directory 与 Compliance ELF 集成
 
@@ -109,7 +109,7 @@ ms.locfileid: "57878051"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![图像](common/both-preintegrated-signon.png)
+    ![image](common/both-preintegrated-signon.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.complianceelf.com`
 

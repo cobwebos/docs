@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 22e55379c79678a2792f439137e8d58d03cd8377
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 05/14/2019
+ms.openlocfilehash: 32d8bd528da2823907e4f992f977eef91e55b9b0
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415093"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605488"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
 
@@ -24,6 +24,7 @@ ms.locfileid: "65415093"
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
+>
 > - 通过使用数据迁移助手来评估本地数据库。
 > - 通过使用数据迁移助手迁移示例架构。
 > - 创建 Azure 数据库迁移服务的实例。
@@ -63,7 +64,7 @@ ms.locfileid: "65415093"
 - 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 - 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
 - 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
-- 为 Azure SQL 数据库服务器创建服务器级 IP [防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNET 子网范围。
+- 为 Azure SQL 数据库服务器创建服务器级 IP [防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNet 子网范围。
 - 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
 - 确保用于连接到目标 Azure SQL 数据库实例的凭据具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限。
 
@@ -79,7 +80,7 @@ ms.locfileid: "65415093"
    - 检查数据库兼容性
    - 检查功能奇偶校验
 
-     默认情况下会选择这两种报告类型。
+    默认情况下会选择这两种报告类型。
 
 3. 在数据迁移助手的“选项”屏幕上，选择“下一步”。
 4. 在“选择源”屏幕上的“连接到服务器”对话框中，向 SQL Server 提供连接详细信息，然后选择“连接”。

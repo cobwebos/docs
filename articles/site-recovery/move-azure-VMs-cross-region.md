@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0f73e68fd0c01d4323e8675d3fa12f7ca1051cdb
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 10966a7e658e02f04137b594fc12ec09cb676cf8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192916"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793720"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
@@ -53,7 +53,7 @@ ms.locfileid: "57192916"
     - 对于 Windows VM，请安装最新的 Windows 更新，使所有受信任的根证书位于该计算机上。 在离线环境中，请遵循组织的标准 Windows 更新和证书更新过程。
     - 对于 Linux VM，请遵循 Linux 分销商的指导获取最新的受信任根证书和证书吊销列表。
 2. 确保未使用身份验证代理来控制要移动的 VM 的网络连接。
-3. 如果要移动的 VM 无法访问 Internet，并且使用防火墙代理来控制出站访问，请检查[此处](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity)所述的要求。
+3. 如果要移动的 VM 无法访问 Internet，并且使用防火墙代理来控制出站访问，请检查[此处](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)所述的要求。
 4. 阐述源网络布局以及当前使用的所有资源，包括（但不限于）要验证的负载均衡器、网络安全组和公共 IP 地址。
 
 ## <a name="prepare-the-target-region"></a>准备目标区域

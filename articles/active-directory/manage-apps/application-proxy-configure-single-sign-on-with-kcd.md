@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 05/17/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 214d984388869431453267ef18ebf6eb976bc496
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 545906af882be6e53297bf7a9ff2cd12e86d55f0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783524"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859625"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 
@@ -59,7 +59,8 @@ ms.locfileid: "65783524"
 2. 选择运行连接器的服务器。
 3. 单击右键，并选择“属性” > “委托”。
 4. 选择“仅信任此计算机来委派指定的服务”。 
-5. 在“可以由此帐户提供委托凭据的服务”下面，添加应用程序服务器的 SPN 标识值。 这样，应用程序代理连接器便可以针对列表中定义的应用程序在 AD 中模拟用户。
+5. 选择**使用任何身份验证协议**。
+6. 在“可以由此帐户提供委托凭据的服务”下面，添加应用程序服务器的 SPN 标识值。 这样，应用程序代理连接器便可以针对列表中定义的应用程序在 AD 中模拟用户。
 
    ![“连接器 SVR 属性”窗口屏幕截图](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 

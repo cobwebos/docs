@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库开发最佳做法 | Microsoft Docs
 description: 开发 Azure SQL 数据仓库解决方案时应了解的建议和最佳实践。
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 09/04/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1682a26ba713db564484e8984010e9c12ce9d79e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76297be79fca62b1f2f777f9cba4a0a8fe134768
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61421420"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851643"
 ---
 # <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库开发最佳做法
 本文介绍在开发数据仓库解决方案时的指导和最佳做法。 

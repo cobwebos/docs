@@ -139,7 +139,7 @@ hi-IN | 印地语(印度) | 女 | “Microsoft 服务器语音的文本转语音
 hr-HR | 克罗地亚语 | 男 | “Microsoft 服务器语音的文本转语音（hr-HR，Matej）” | "hr HR Matej"
 hu-HU | 匈牙利语 | 男 | “Microsoft 服务器语音的文本转语音（hu-HU，Szabolcs）” | "hu-HU-Szabolcs"
 id-ID | 印度尼西亚语| 男 | “Microsoft 服务器语音的文本转语音（id-ID，Andika）” | "id-ID-Andika"
-it-IT | 意大利语 | 男 | “Microsoft 服务器语音的文本转语音（it-IT，Cosimo，Apoll）” | "it-IT-Cosimo-Apollo"
+it-IT | 意大利语 | 男 | “Microsoft 服务器语音的文本转语音（it-IT，Cosimo，Apollo）” | "it-IT-Cosimo-Apollo"
 | | | 女 | “Microsoft 服务器语音的文本转语音（it-IT，LuciaRUS）” | "it-IT-LuciaRUS"
 ja-JP | 日语 | 女 | “Microsoft 服务器语音的文本转语音（ja-JP，Ayumi，Apollo）” | "ja-JP-Ayumi-Apollo"
 | | | 男 | “Microsoft 服务器语音的文本转语音（ja-JP，Ichiro，Apollo）” | "ja-JP-Ichiro-Apollo"

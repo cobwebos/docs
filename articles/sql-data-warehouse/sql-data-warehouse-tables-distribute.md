@@ -2,20 +2,20 @@
 title: 分布式表设计指南 - Azure SQL 数据仓库 | Microsoft Docs
 description: 有关如何在 Azure SQL 数据仓库中设计哈希分布式表和轮循机制分布式表的一些建议。
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c3de7b46449b8075d17a19733eda88d692b1d876
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b101a4e19d00d44805c7eb5f44d449a18d756804
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60935784"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851620"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>有关如何在 Azure SQL 数据仓库中设计分布式表的指南
 有关如何在 Azure SQL 数据仓库中设计哈希分布式表和轮循机制分布式表的一些建议。

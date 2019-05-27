@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
-ms.author: harijay
-ms.openlocfilehash: 9577a81af3da98c6e8802c586ec468a6e44e46cf
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.author: alsin
+ms.openlocfilehash: fe08569937dc29ecbc66da1cb2c431cca11a8580
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442044"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835104"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 azure 串行控制台
 
@@ -208,7 +208,7 @@ A. 可以通过在 https://aka.ms/serialconsolefeedback 中创建 GitHub 问题�
 
 **问：串行控制台是否支持复制/粘贴？**
 
-A. 可以。 可以使用 **Ctrl**+**Shift**+**C** 和 **Ctrl**+**Shift**+**V** 复制并粘贴到终端。
+A. 是的。 可以使用 **Ctrl**+**Shift**+**C** 和 **Ctrl**+**Shift**+**V** 复制并粘贴到终端。
 
 **问：是否可以使用串行控制台替代 SSH 连接？**
 
@@ -235,7 +235,7 @@ A. 是的，它是！ 请参阅[虚拟机规模集的串行控制台](#serial-co
 
 **问：如果我设置我的 VM 或虚拟机规模集仅使用 SSH 密钥身份验证，我仍可用的串行控制台来连接到我的 VM/虚拟机规模集实例？**
 
-A. 可以。 由于串行控制台不需要 SSH 密钥，因此你只需设置用户名/密码组合。 为此，可以在 Azure 门户中选择“重置密码”，然后使用这些凭据登录到串行控制台。
+A. 是的。 由于串行控制台不需要 SSH 密钥，因此你只需设置用户名/密码组合。 为此，可以在 Azure 门户中选择“重置密码”，然后使用这些凭据登录到串行控制台。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用串行控制台[访问 GRUB 和单用户模式](serial-console-grub-single-user-mode.md)。

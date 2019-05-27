@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac65a9ac81bca942f9fcbe802fdbf8a0aa3f8248
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b69dca5abddd56b29abf3e482e51b3d2a41612e7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60287885"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864468"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -131,21 +131,28 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 选择自定义时间范围时，可以配置开始时间和结束时间。
 
-如果向登录视图添加其他字段，这些字段会自动添加到筛选器列表。 例如，如果向列表添加“客户端应用”字段，则还会获得另一筛选器选项，用于设置以下筛选器：
-
-- 浏览器      
-- Exchange ActiveSync（受支持）               
-- Exchange ActiveSync（不受支持）
-- 其他客户端               
-    - IMAP
-    - MAPI
-    - 旧式 Office 客户端
-    - POP
-    - SMTP
-
-
+如果向登录视图添加其他字段，这些字段会自动添加到筛选器列表。 例如，如果向列表添加“客户端应用”字段，则还会获得另一筛选器选项，用于设置以下筛选器：  
 ![登录活动](./media/concept-sign-ins/12.png "登录活动")
 
+- **浏览器**  
+    此筛选器显示所有使用浏览器通信流执行的登录尝试的事件。
+- **Exchange ActiveSync （支持）**  
+    此筛选器将显示所有登录尝试其中的 Exchange ActiveSync (EAS) 协议已尝试从受支持的平台，如 iOS、 Android 和 Windows Phone。
+- **Exchange ActiveSync （不支持）**  
+    此筛选器将显示所有登录尝试其中 EAS 协议已尝试从等 Linux 发行版不受支持平台。
+- **移动应用和桌面客户端**此筛选器显示没有使用浏览器通信流的所有登录尝试。 这可以是从使用任何协议的任何平台或桌面客户端应用程序，如 Windows 或 MacOS 上的 Office 移动应用。
+  
+- **其他客户端**
+    - **IMAP**  
+        使用 IMAP 检索电子邮件的旧邮件客户端。
+    - **MAPI**  
+        Office 2013，其中启用 ADAL 和它使用了 MAPI。
+    - **旧式 Office 客户端**  
+        Office 2013 中在未启用 ADAL 其默认配置，它使用 MAPI 或 Office 2016 ADAL 其中禁用了。
+    - **POP**  
+        使用 POP3 电子邮件中检索旧邮件客户端。
+    - **SMTP**  
+        使用 SMTP 发送电子邮件的旧邮件客户端。
 
 ## <a name="download-sign-in-activities"></a>下载登录活动
 

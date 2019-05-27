@@ -16,11 +16,11 @@ ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eba63f8295fb5bebffdc8480f763c852521e331b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880902"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65859191"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>教程：Azure Active Directory 与 ADP 集成
 
@@ -123,11 +123,11 @@ ms.locfileid: "57880902"
 
     将用户从 Azure AD 映射到 ADP 是在 **employeeid** 上完成的，但可将其映射到基于应用程序设置的其他值。 因此，首先请与 [ADP 支持团队](https://www.adp.com/contact-us/overview.aspx)协作，使用用户的正确标识符，并将该值与“PersonImmutableID”声明一起映射。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
-    | Name | 源属性 | 
+    | 名称 | 源属性 | 
     | ---------------| --------------- |
     | PersonImmutableID  | user.employeeid |
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/06/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4f3f43ba063ed25389860183576c4dbd94e2bfcd
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8ffc64359faab539ab74e354caad4081f31fcd43
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466315"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790132"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>教程：在 Azure 部署管理器（公共预览版）中使用运行状况检查
 
@@ -59,7 +59,7 @@ ms.locfileid: "65466315"
 以下两个文件用于部署 Azure 函数。 无需下载这些文件即可完成本教程。
 
 * 资源管理器模板位于 [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json)。 你将部署此模板以创建 Azure 函数。  
-* Azure 函数源代码的 zip 文件 [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip)。 资源管理器模板将调用此 zip 文件。
+* Azure 函数源代码的 zip 文件 [http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](http://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip)。 资源管理器模板将调用此 zip 文件。
 
 若要部署 Azure 函数，请选择“尝试”打开 Azure Cloud shell，然后在 shell 窗口中粘贴以下脚本。  若要粘贴代码，请右键单击 shell 窗口并选择“粘贴”。 
 

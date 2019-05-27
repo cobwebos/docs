@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 77e58ea830de1e8ab7e3643ee5694a5e3f609c53
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: dda1447a049071a0871079f2cabd046ed7c479d6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564911"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65770150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>教程：Azure Active Directory 与 FM:Systems 集成
 
@@ -107,7 +107,7 @@ ms.locfileid: "59564911"
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
     
     > [!NOTE]
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [FM:Systems 客户端支持团队](https://fmsystems.com/ask-us/)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [FM:Systems 客户端支持团队](https://fmsystems.com/support-services/)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
@@ -125,7 +125,7 @@ ms.locfileid: "59564911"
 
 ### <a name="configure-fmsystems-single-sign-on"></a>配置 FM:Systems 单一登录
 
-若要在 **FM:Systems** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [FM:Systems 支持团队](https://fmsystems.com/ask-us/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **FM:Systems** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [FM:Systems 支持团队](https://fmsystems.com/support-services/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 

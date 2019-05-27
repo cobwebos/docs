@@ -210,7 +210,7 @@ az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o t
 
 ![查看 CDN 终结点](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
 
-使用 HostName 查看内容。 例如，使用浏览器访问 https://cdndemo-azurewebsites-net.azureedge.net。
+使用 HostName 查看内容。 例如，使用浏览器访问 https://cdndemo-azurewebsites-net.azureedge.net 。
 
 ## <a name="clean-up"></a>清理
 

@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库速查表 | Microsoft Docs
 description: 查找链接和最佳做法，以便快速生成 Azure SQL 数据仓库解决方案。
 services: sql-data-warehouse
-author: acomet
+author: happynicolle
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: acomet
+ms.author: nicw
 ms.reviewer: igorstan
-ms.openlocfilehash: 795facc6148d33592ff8eac5083a273dc3d5cb26
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: ad205fbbd17b291bf45e0c0b057ee81b80c0730b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314902"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762814"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库速查表
 此速查表提供有关生成 Azure SQL 数据仓库解决方案的有用提示和最佳做法。 在开始之前，请阅读 [Azure SQL 数据仓库的工作负荷模式和对立模式](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns)中的每个详细步骤，其中解释了 SQL 数据仓库的定义。

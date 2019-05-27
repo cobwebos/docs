@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 7d811cd69185e77f50749fc48974dee684fb7cfa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256356"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65744696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartdraw"></a>教程：Azure Active Directory 与 SmartDraw 的集成
 

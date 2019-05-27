@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 7cdd185cddbd2403b72ff0e06530913af0b031de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 865ae0b3f7a7965698a67183a4c820ba71f49cd8
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233118"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833918"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中使用平台-作为-服务 (PaaS) 服务
 PaaS 开发测试实验室中支持通过环境功能。 通过 Git 存储库中预先配置的 Azure 资源管理器模板支持开发测试实验室中的环境。 环境可以包含 PaaS 和 IaaS 资源。 它们允许您创建可以包括虚拟机、 数据库、 虚拟网络等 Azure 资源的复杂系统和自定义以协同工作的 Web 应用程序。 这些模板允许一致的部署和使用源代码管理环境的已改进的管理。 
@@ -53,7 +53,7 @@ PaaS 开发测试实验室中支持通过环境功能。 通过 Git 存储库中
 [环境连接到实验室的虚拟网络](connect-environment-lab-virtual-network.md)一文介绍如何修改你的资源管理器模板以使用`$(LabSubnetId)`令牌。 创建环境时，`$(LabSubnetId)`令牌替换为第一个子网标记其中**虚拟机中的使用它来创建**选项设置为**true**。 它允许我们的环境以使用以前创建的网络。 如果你想要为过渡和生产环境中测试中使用相同的资源管理器模板，使用`$(LabSubnetId)`作为资源管理器模板参数中的默认值。 
 
 #### <a name="environment-storage-account"></a>环境存储帐户
-开发测试实验室支持使用[嵌套资源管理器模板](../azure-resource-manager/resource-group-linked-templates.md)。 [如何使用 Azure 开发测试实验室可以让嵌套资源管理器模板部署更易于测试环境](https://azure.microsoft.com/updates/azure-devtest-labs-streamlined-nested-arm-template-deployment-support-for-arm-template-based-environments)一文介绍了如何使用`_artifactsLocation`和`_artifactsLocationSasToken`令牌创建中的资源管理器模板的 URI同一个文件夹或在主模板中的嵌套文件夹中。 有关这两个标记的详细信息，请参阅**部署项目**一部分[Azure 资源管理器 – 最佳实践指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)。
+开发测试实验室支持使用[嵌套资源管理器模板](../azure-resource-manager/resource-group-linked-templates.md)。 [[部署测试环境的嵌套的 Azure 资源管理器模板](deploy-nested-template-environments.md)一文介绍了如何使用`_artifactsLocation`和`_artifactsLocationSasToken`令牌在嵌套或所在的同一文件夹中创建资源管理器模板的 URI在主模板的文件夹。 有关这两个标记的详细信息，请参阅**部署项目**一部分[Azure 资源管理器 – 最佳实践指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)。
 
 ## <a name="user-experience"></a>用户体验
 

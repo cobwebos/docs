@@ -1,20 +1,19 @@
 ---
-title: Azure Database for PostgreSQL 中的高可用性概念
-description: 本文提供使用 Azure Database for PostgreSQL 时的高可用性信息。
-author: WenJason
-ms.author: v-jay
+title: Azure Database for PostgreSQL - 单一服务器中的高可用性概念
+description: 本文提供了使用 Azure Database for PostgreSQL - 单一服务器时的高可用性信息。
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 02/01/2019
-ms.date: 02/18/2019
-ms.openlocfilehash: d43647b57469efa4581dc1c74a842a51e9d54ad7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: f54c83099957b4d8795c4049be52d70e8a0e2a61
+ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60623810"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "65073437"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的高可用性概念
+# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的高可用性概念
 Azure Database for PostgreSQL 服务提供有保证的高级别可用性。 财务备份服务级别协议 (SLA) 一定是通用版本。 使用此服务期间，几乎没有应用程序故障时间。
 
 ## <a name="high-availability"></a>高可用性

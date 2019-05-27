@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: acee2aabe94f5d015562bd697d08f657895d3b02
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790114"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789474"
 ---
-# <a name="define-and-assign-a-blueprint-in-the-portal"></a>在门户中定义和分配蓝图
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入门：在门户中定义和分配蓝图
 
 了解如何创建和分配蓝图时，可以定义常见的模式，以便根据 Azure 资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务。 这些任务包括：
 
@@ -171,7 +171,7 @@ ms.locfileid: "59790114"
 
 1. 在“蓝图说明”中，提供有关蓝图和组成它的项目的一些信息。 在本示例中，输入如下内容：“此蓝图在订阅上设置标记策略和角色分配，创建 ResourceGroup，并将资源模板和角色分配部署到该 ResourceGroup。”
 
-1. 选择“下一步:项目”或页面顶部的“项目”选项卡。
+1. **选择“下一步:** 项目”或页面顶部的“项目”选项卡。
 
 1. 在资源组下添加角色分配：
 

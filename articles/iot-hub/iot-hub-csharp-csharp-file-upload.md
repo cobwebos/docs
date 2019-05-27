@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: afa8a77a1c2eabce11af5730ffc5e7b768983589
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cdc0f189daebcda592338b463954efab4fc2db96
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60740932"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864432"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>通过 .NET 使用 IoT 中心将文件从设备上传到云
 
@@ -26,7 +26,7 @@ ms.locfileid: "60740932"
 
 - 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)和[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)文章介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)和[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)文章介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如:
 
 * 包含图像的大型文件
 * 视频
@@ -46,7 +46,7 @@ ms.locfileid: "60740932"
 
 要完成本教程，需要以下各项：
 
-* Visual Studio 2017
+* Visual Studio
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]

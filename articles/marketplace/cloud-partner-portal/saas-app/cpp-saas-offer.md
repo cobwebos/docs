@@ -5,20 +5,24 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: pabutler
-ms.openlocfilehash: 81e33bf37750dd869c3b52be5b2bca49820f47d6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.date: 05/16/2019
+ms.author: pbutlerm
+ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941903"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835056"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS 应用程序产品/服务
 
 本部分介绍如何将软件即服务 (SaaS) 应用程序产品/服务发布到 <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>。
 
-当需要将解决方案部署在你自己的 Azure 订阅中并且客户将通过你设计和管理的界面来测试应用程序时，请使用 SaaS 应用程序。 <a href="https://azure.microsoft.com/services/active-directory">Azure Active Directory</a> (AAD) 用于利用你的现有试用环境。
+> [!IMPORTANT] 
+> SaaS 产品/服务功能迁移到[Microsoft 合作伙伴中心](https://partner.microsoft.com/dashboard/directory)。  所有新的发布服务器必须使用合作伙伴中心创建新的 SaaS 产品/服务和管理现有产品/服务。  使用 SaaS 产品/服务的当前发布服务器正在 batchwise 迁移从云合作伙伴门户到合作伙伴中心。  云合作伙伴门户将显示状态消息以指示何时已迁移特定的现有产品/服务。
+
+
+将 Azure 订阅中部署你的解决方案和客户将通过接口设计和管理测试应用程序中登录时使用的 SaaS 应用程序。 <a href="https://azure.microsoft.com/services/active-directory">Azure Active Directory</a> (AAD) 用于利用你的现有试用环境。
 
 ## <a name="benefits"></a>优点
 

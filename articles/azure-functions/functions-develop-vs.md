@@ -1,6 +1,6 @@
 ---
 title: 使用 Visual Studio 开发 Azure Functions | Microsoft Docs
-description: 了解如何使用用于 Visual Studio 2017 的 Azure Functions 工具开发和测试 Azure Functions。
+description: 了解如何开发和测试 Azure Functions 使用 Azure Functions Tools for Visual Studio 2019。
 services: functions
 documentationcenter: .net
 author: ggailey777
@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403573"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864537"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
-用于 Visual Studio 2017 的 Azure Functions 工具是 Visual Studio 的一个扩展，可用于开发、测试 C# 函数并将其部署到 Azure。 如果这是你第一次体验 Azure Functions，可以在 [Azure Functions 简介](functions-overview.md)中了解详细信息。
+Azure Functions Tools for Visual Studio 2019 是 Visual Studio，可用于开发、 测试和部署的扩展C#到 Azure 的函数。 如果这是你第一次体验 Azure Functions，可以在 [Azure Functions 简介](functions-overview.md)中了解详细信息。
 
 Azure Functions 工具提供以下优势： 
 
@@ -29,16 +29,16 @@ Azure Functions 工具提供以下优势：
 * 开发和部署预先编译的 C# 函数。 与基于 C# 脚本的函数相比，预先编译的函数的冷启动性能更好。 
 * 可以在 C# 中编写函数的代码，同时利用 Visual Studio 开发环境的所有优势。 
 
-本文详细介绍了如何使用 Azure Functions Tools for Visual Studio 2017 开发 C# 函数并将其发布到 Azure。 在阅读本文之前，应先完成 [Visual Studio 的函数快速入门](functions-create-your-first-function-visual-studio.md)。 
+本文提供有关如何使用 Azure Functions Tools for Visual Studio 2019 开发的详细信息C#函数并将其发布到 Azure。 在阅读本文之前，应先完成 [Visual Studio 的函数快速入门](functions-create-your-first-function-visual-studio.md)。 
 
 > [!IMPORTANT]
 > 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目发布到函数应用时，部署过程会覆盖在门户中开发的任何函数。
 
 ## <a name="prerequisites"></a>必备组件
 
-Azure Functions 工具包含在 [Visual Studio 2017 版本 15.5](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保你在安装 Visual Studio 2017 时随附了Azure 开发工作负荷：
+Azure Functions 工具包含的 Azure 开发工作负荷[Visual Studio 2017](https://www.visualstudio.com/vs/)，或更高版本。 请确保您包括**Azure 开发**在 Visual Studio 2019 安装中的工作负荷：
 
-![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![使用 Azure 开发工作负载安装 Visual Studio 2019](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 请确保 Visual Studio 为最新版本，并且使用的是[最新版本](#check-your-tools-version)的 Azure Functions 工具。
 
@@ -185,7 +185,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>函数应用设置
+## <a name="function-app-settings"></a>Function App 设置
 
 还必须将在 local.settings.json 中添加的任何设置添加到 Azure 函数应用中。 发布项目时，不会自动上传这些设置。
 

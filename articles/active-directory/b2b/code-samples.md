@@ -8,16 +8,16 @@ ms.topic: sample
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdce3e557a7b9ad76b2a4bfe533d1272832ea72f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79352c2c82cae8fe77ef6313d74e60432c710ec0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088870"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812505"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B 协作代码和 PowerShell 示例
 
@@ -26,7 +26,7 @@ ms.locfileid: "58088870"
 
 1. 准备 .CSV 文件：创建一个新的 CSV 文件，并将其命名为 invitations.csv。 在此示例中，该文件保存在 C:\data 中，并包含以下信息：
   
-   Name                  |  InvitedUserEmailAddress
+   名称                  |  InvitedUserEmailAddress
    --------------------- | --------------------------
    Gmail B2B 被邀请者     | b2binvitee@gmail.com
    Outlook B2B 被邀请者   | b2binvitee@outlook.com

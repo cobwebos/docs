@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: a94fe86cd9c2a6e775be1ec4b3d14798e4cac693
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 17003864c7bcc5f8be6acf17d40ce2039f031313
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795861"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823243"
 ---
-# <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>使用 Azure PowerShell 运行首个 Resource Graph 查询
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询
 
 使用 Azure Resource Graph 的第一步是查看是否已为 Azure PowerShell 安装了该模块。 本快速入门将指导你完成将该模块添加到 Azure PowerShell 安装的过程。
 
@@ -90,7 +90,7 @@ Azure Resource Graph 模块需要以下软件：
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期的 -- 按 Name 属性排序，但仍限制为前五个结果。
 
-## <a name="cleanup"></a>清理
+## <a name="clean-up-resources"></a>清理资源
 
 若希望从 Azure PowerShell 环境中删除 Resource Graph 模块，可使用以下命令：
 

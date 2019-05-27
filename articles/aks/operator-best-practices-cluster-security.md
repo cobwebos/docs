@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 0f24f7378ceb9266acf8988835b77cef80bd6f13
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a468c2f3b1b3034c817ac19988420b68e18deb83
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192195"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849854"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -50,10 +50,10 @@ Azure Active Directory (AD) 提供可与 AKS 群集集成的企业级标识管�
 
 与应该向用户或组授予所需最少权限的方式一样，也应将容器限制为只能访问它们所需的操作和进程。 为了尽量减少攻击风险，请勿配置需要提升的权限或 root 访问权限的应用程序和容器。 例如，在 Pod 清单中设置 `allowPrivilegeEscalation: false`。 这些 *Pod 安全性上下文*内置于 Kubernetes 中，可用于定义其他权限（例如要以其身份运行的用户或组）或者要公开的 Linux 功能。 有关更多最佳做法，请参阅[保护 Pod 对资源的访问][pod-security-contexts]。
 
-若要更精确地控制容器操作，还可以使用内置 Linux 安全功能，例如 *AppArmor* 和 *seccomp*。 这些功能在节点级别定义，然后通过 Pod 清单实现。
+若要更精确地控制容器操作，还可以使用内置 Linux 安全功能，例如 *AppArmor* 和 *seccomp*。 这些功能在节点级别定义，然后通过 Pod 清单实现。 内置 Linux 安全功能才适用于 Linux 节点和 pod。
 
 > [!NOTE]
-> 在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（如 *AppArmor*、*seccomp*、*Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
+> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 用于节点的其他安全功能（如 *AppArmor*、*seccomp*、*Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
 
 ### <a name="app-armor"></a>App Armor
 
@@ -193,13 +193,13 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 有关 AKS 中的升级的详细信息，请参阅 [AKS 中支持的 Kubernetes 版本][aks-supported-versions]和[升级 AKS 群集][aks-upgrade]。
 
-## <a name="process-node-updates-and-reboots-using-kured"></a>使用 kured 处理节点更新和重启
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>进程 Linux 节点更新并重新启动使用 kured
 
-**最佳做法指南** - AKS 会自动在每个工作节点上下载并安装安全修补程序，但不会在必要时自动重启。 使用 `kured` 监视挂起的重启操作，然后安全地封锁并排空节点以允许节点重启，应用更新并尽可能安全地保护 OS。
+**最佳实践指南**-AKS 自动下载并安装安全修补程序对每个 Linux 节点，但不是会自动重新启动如有必要。 使用 `kured` 监视挂起的重启操作，然后安全地封锁并排空节点以允许节点重启，应用更新并尽可能安全地保护 OS。 Windows Server 的节点 （目前以预览版在 AKS 中），定期执行的 AKS 升级操作，可以安全地 cordon 和清空 pod 和部署已更新的节点。
 
-每天晚上，AKS 节点都会通过其发行版更新通道获得安全修补程序。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。
+每个晚上在 AKS 中的 Linux 节点获取安全修补程序可通过其发行版更新通道。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。
 
-Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可监视挂起的节点重启操作。 当节点应用需要进行重启的更新时，系统会安全地封锁并排空该节点，以便将 Pod 移至群集中的其他节点上并在这些节点上计划 Pod。 重启节点后，会将其重新添加到群集中，Kubernetes 将继续在该节点上计划 Pod。 为了尽量减少中断，`kured` 一次只允许重启一个节点。
+Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可监视挂起的节点重启操作。 在 Linux 节点应用时需要重启的更新，该节点是安全地封锁和排除移动并计划在群集中其他节点上的 pod。 重启节点后，会将其重新添加到群集中，Kubernetes 将继续在该节点上计划 Pod。 为了尽量减少中断，`kured` 一次只允许重启一个节点。
 
 ![使用 kured 的 AKS 节点重启过程](media/operator-best-practices-cluster-security/node-reboot-process.png)
 

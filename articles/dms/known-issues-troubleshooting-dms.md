@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: dc8ba315d08f3a130ff0adf91afc90f545baf4e4
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 05/22/2019
+ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604433"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002210"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>对 Azure 数据库迁移服务常见问题和错误进行故障排除
 
@@ -28,7 +28,7 @@ Azure 数据库迁移服务项目中创建新的活动，活动会保持在排�
 
 | 原因         | 解决方法 |
 | ------------- | ------------- |
-| Azure 数据库迁移服务实例已达到最大容量为正在进行的任务并发运行时，都会出现此问题。 任何新活动已排队，直到容量变得可用。 | 验证数据迁移服务实例都有跨项目运行活动。 您可以继续创建新自动被添加到队列的执行的活动。 只要任何现有正在运行的活动完成时，排队的下一个活动开始运行，状态将更改为自动运行状态。 您不必执行任何其他操作来开始排队的活动的迁移。<br> |
+| Azure 数据库迁移服务实例已达到最大容量为正在进行的任务并发运行时，都会出现此问题。 任何新活动已排队，直到容量变得可用。 | 验证数据迁移服务实例都有跨项目运行活动。 您可以继续创建新自动被添加到队列的执行的活动。 只要任何现有正在运行的活动完成时，排队的下一个活动开始运行，状态将更改为自动运行状态。 您不必执行任何其他操作来开始排队的活动的迁移。<br><br> |
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>选择要迁移的数据库的最大数量
 
@@ -48,7 +48,7 @@ Azure 数据库迁移服务项目中创建新的活动，活动会保持在排�
 
 | 原因         | 解决方法 |
 | ------------- | ------------- |
-| 在执行迁移的用户缺少 ReplicationAdmin 角色和/或复制客户端、 复制副本和超级 （版本低于 MySQL 5.6.6） 的权限时，可能会发生此错误。<br> <br><br><br> <br> <br> <br> <br> <br> <br> | 请确保[必备权限](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites)对于用户帐户配置准确地在 Azure Database for MySQL 实例。 例如，可以执行以下步骤来创建一个名为 migrateuser 与所需权限的用户：<br>1.CREATE USER migrateuser@'%标识的机密; <br>2.授予所有特权 db_name.* 到 migrateuser'@'%标识机密;重复此步骤以授予对多个数据库的访问权限 <br>3.在授予复制从属 *。* 为 migrateuser'@'%标识机密;<br>4.授予复制客户端上的 *。* 为 migrateuser'@'%标识机密;<br>5.刷新基本权限。 |
+| 在执行迁移的用户缺少 ReplicationAdmin 角色和/或复制客户端、 复制副本和超级 （版本低于 MySQL 5.6.6） 的权限时，可能会发生此错误。<br><br><br><br><br><br><br><br><br><br><br><br><br> | 请确保[必备权限](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites)对于用户帐户配置准确地在 Azure Database for MySQL 实例。 例如，可以执行以下步骤来创建一个名为 migrateuser 与所需权限的用户：<br>1.CREATE USER migrateuser@'%标识的机密; <br>2.授予所有特权 db_name.* 到 migrateuser'@'%标识机密;重复此步骤以授予对多个数据库的访问权限 <br>3.在授予复制从属 *。* 为 migrateuser'@'%标识机密;<br>4.授予复制客户端上的 *。* 为 migrateuser'@'%标识机密;<br>5.刷新基本权限。 |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>正在尝试停止 Azure 数据库迁移服务时出错
 
@@ -68,7 +68,7 @@ Azure 数据库迁移服务项目中创建新的活动，活动会保持在排�
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |
-| 此错误表示用于从 SQL Server 的联机迁移到 Azure SQL 数据库托管实例的应用程序主体都不会有影响的订阅的权限。 使用托管实例上，目前某些 API 调用以执行还原操作需要订阅此权限。 <br><br><br><br><br><br><br><br><br><br> | 使用`Get-AzureADServicePrincipal`PowerShell cmdlet 与`-ObjectId`可从错误消息，若要列出正在使用的应用程序 ID 的显示名称。<br><br> 验证到此应用程序的权限，并确保它具有[参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)在订阅级别。 <br><br> Azure 数据库迁移服务工程团队正致力于限制所需访问来自当前提供的订阅上的角色。 如果有一项业务要求不允许使用的参与角色、 联系 Azure 支持人员获取更多帮助。 |
+| 此错误表示用于从 SQL Server 的联机迁移到 Azure SQL 数据库托管实例的应用程序主体都不会有影响的订阅的权限。 使用托管实例上，目前某些 API 调用以执行还原操作需要订阅此权限。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | 使用`Get-AzureADServicePrincipal`PowerShell cmdlet 与`-ObjectId`可从错误消息，若要列出正在使用的应用程序 ID 的显示名称。<br><br> 验证到此应用程序的权限，并确保它具有[参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)在订阅级别。 <br><br> Azure 数据库迁移服务工程团队正致力于限制所需访问来自当前提供的订阅上的角色。 如果有一项业务要求不允许使用的参与角色、 联系 Azure 支持人员获取更多帮助。 |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>删除 NIC 关联的 Azure 数据库迁移服务时出错
 
@@ -78,7 +78,7 @@ Azure 数据库迁移服务项目中创建新的活动，活动会保持在排�
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |
-| Azure 数据库迁移服务实例仍将存在时，都会出现此问题和使用 nic。 <br><br><br><br><br><br> | 若要删除此 NIC，请删除会自动删除该服务使用的 NIC 的 DMS 服务实例。<br><br> **重要**：请确保要删除的 Azure 数据库迁移服务实例具有任何正在运行的活动。<br><br> 删除所有项目和与 Azure 数据库迁移服务实例关联的活动后，可以删除服务实例。 删除服务的一部分自动清理服务实例使用的 NIC。 |
+| Azure 数据库迁移服务实例仍将存在时，都会出现此问题和使用 nic。 <br><br><br><br><br><br><br><br> | 若要删除此 NIC，请删除会自动删除该服务使用的 NIC 的 DMS 服务实例。<br><br> **重要**：请确保要删除的 Azure 数据库迁移服务实例具有任何正在运行的活动。<br><br> 删除所有项目和与 Azure 数据库迁移服务实例关联的活动后，可以删除服务实例。 删除服务的一部分自动清理服务实例使用的 NIC。 |
 
 ## <a name="connection-error-when-using-expressroute"></a>使用 ExpressRoute 时出现连接错误
 
@@ -86,7 +86,7 @@ Azure 数据库迁移服务项目中创建新的活动，活动会保持在排�
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |
-| 使用时[ExpressRoute](https://azure.microsoft.com/services/expressroute/)，Azure 数据库迁移服务[需要](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)预配与服务关联的虚拟网络子网中的三个服务终结点：<br> --Service Bus 终结点<br> -存储终结点<br> -目标数据库终结点 （例如 SQL 终结点，Cosmos DB 终结点）<br><br><br><br> | [启用](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)源和 Azure 数据库迁移服务之间的 ExpressRoute 连接的所需的服务终结点。 <br><br><br><br><br><br><br><br> |
+| 使用时[ExpressRoute](https://azure.microsoft.com/services/expressroute/)，Azure 数据库迁移服务[需要](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)预配与服务关联的虚拟网络子网中的三个服务终结点：<br> --Service Bus 终结点<br> -存储终结点<br> -目标数据库终结点 （例如 SQL 终结点，Cosmos DB 终结点）<br><br><br><br><br> | [启用](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)源和 Azure 数据库迁移服务之间的 ExpressRoute 连接的所需的服务终结点。 <br><br><br><br><br><br><br><br> |
 
 ## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>将 MySQL 数据库迁移到 Azure MySQL 时的超时错误
 
@@ -96,7 +96,17 @@ MySQL 数据库迁移到 Azure Database for MySQL 通过 Azure 数据库迁移�
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |
-| 迁移在迁移期间由于锁等待超时而失败时，将发生此错误。<br><br> | 请考虑增大服务器参数的值**innodb_lock_wait_timeout**。 允许的最高值是 1073741824。 |
+| 迁移在迁移期间由于锁等待超时而失败时，将发生此错误。 | 请考虑增大服务器参数的值**innodb_lock_wait_timeout**。 允许的最高值是 1073741824。 |
+
+## <a name="error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance"></a>当使用动态端口连接到源 SQL Server 实例或命名实例的错误
+
+当你尝试连接到命名的实例或动态端口上运行的 SQL Server 源的 Azure 数据库迁移服务时，连接失败，出现此错误：
+
+* **错误**:-1 的 SQL 连接失败。 建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。 验证实例名称正确以及 SQL Server 配置为允许远程连接。 （提供程序：SQL 网络接口，错误：26-定位指定的服务器/实例时出错)
+
+| 原因         | 解决方法    |
+| ------------- | ------------- |
+| Azure 数据库迁移服务尝试连接到源 SQL Server 实例有一个动态端口，或使用的命名的实例时，都会出现此问题。 SQL Server Browser 服务侦听的传入连接到命名实例或 UDP 端口 1434年，当使用动态端口。 动态端口可能会更改每个 SQL Server 服务重启的时间。 您可以检查分配给通过网络配置 SQL Server 配置管理器实例的动态端口。<br><br><br> |验证 Azure 数据库迁移服务可以连接到源上的 UDP 端口 1434年的 SQL Server Browser 服务和通过动态分配的 TCP 端口 （如果适用） 的 SQL Server 实例。 |
 
 ## <a name="additional-known-issues"></a>更多已知的问题
 

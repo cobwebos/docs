@@ -9,19 +9,20 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/08/2019
-ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/16/2019
+ms.openlocfilehash: 8d186ae83e1016de9c4548d4b1c39303025a5270
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269038"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795816"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>快速入门：1 - 使用 C# 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [C#](search-create-index-dotnet.md)
 > * [门户](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Python](search-get-started-python.md)
 > * [Postman](search-fiddler.md)
 >*
 
@@ -36,11 +37,11 @@ ms.locfileid: "59269038"
 
 本快速入门使用以下服务、工具和数据。 
 
-[创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
++ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
-[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
++ [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
 
-[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 提供了示例解决方案，一个用 C# 编写的 .NET Core 控制台应用程序，位于 Azure 示例 GitHub 存储库中。 下载并提取该解决方案。 默认情况下，解决方案是只读的。 右键单击解决方案并清除只读属性，以便可以修改文件。 数据包含在解决方案中。
++ [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 提供了示例解决方案，一个用 C# 编写的 .NET Core 控制台应用程序，位于 Azure 示例 GitHub 存储库中。 下载并提取该解决方案。 默认情况下，解决方案是只读的。 右键单击解决方案并清除只读属性，以便可以修改文件。 数据包含在解决方案中。
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 

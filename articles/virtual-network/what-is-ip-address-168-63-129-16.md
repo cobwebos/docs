@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 78d2392e32465b3091c49032dc5df5f3a5b6061a
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: acfd5230d1bd572ea5179651558e3f736a8570af
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416036"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833125"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP 地址 168.63.129.16 是什么？
 
@@ -38,7 +38,7 @@ IP 地址 168.63.129.16 是虚拟公共 IP 地址，用于简化 Azure 平台资
 
 [Azure 负载均衡器运行状况探测](../load-balancer/load-balancer-custom-probe-overview.md)源自此 IP 地址。 如果阻止此 IP 地址，则将探测会失败。
 
-在非虚拟网络方案中，运行状况探测源自某个专用 IP 和未使用 168.63.129.16。
+在非虚拟网络方案 （经典） 中，运行状况探测源自某个专用 IP 和未使用 168.63.129.16。
 
 ## <a name="next-steps"></a>后续步骤
 

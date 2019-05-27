@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f7adcb7d4516e9013bf87306fff77b566885e018
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 23aeeb8cd14ec2d0654525af42b48f59a6f7564f
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855276"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520324"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复        
 
@@ -45,7 +45,7 @@ ms.locfileid: "57855276"
 
 复制作业完成后，可以检查复制状态、修改复制设置和测试部署。
 
-1. 在 VM 菜单中，单击“灾难恢复”。
+1. 在“操作”中，单击“灾难恢复”。
 2. 可以验证复制运行状况、已创建的恢复点以及映射中的源和目标区域。
 
    ![复制状态](media/azure-to-azure-quickstart/replication-status.png)

@@ -5,18 +5,21 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.author: pabutler
-ms.openlocfilehash: 8817c8aa7d5d589be5e03cdd04e3a505d7e2be21
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.date: 05/16/2019
+ms.author: pbutlerm
+ms.openlocfilehash: 2195c9a5e1f0d3683ea8cf6564d97cbabd072f81
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941666"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834196"
 ---
 # <a name="update-an-existing-saas-application-offer"></a>更新现有的 SaaS 应用程序产品/服务
 
 产品/服务发布并推出后，你可能需要执行各种类型的更新。 你对新版产品/服务进行的任何更改，均应保存并重新发布，以使其反映在市场中。 本文分步介绍了在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新 SaaS 产品/服务的各个方面。
+
+> [!IMPORTANT] 
+> SaaS 产品/服务功能迁移到[Microsoft 合作伙伴中心](https://partner.microsoft.com/dashboard/directory)。  所有新的发布服务器必须使用合作伙伴中心创建新的 SaaS 产品/服务和管理现有产品/服务。  使用 SaaS 产品/服务的当前发布服务器正在 batchwise 迁移从云合作伙伴门户到合作伙伴中心。  云合作伙伴门户将显示状态消息以指示何时已迁移特定的现有产品/服务。
 
 我们可能会出于多个原因更新套餐，例如：
 
@@ -75,7 +78,7 @@ ms.locfileid: "64941666"
 
 ![在云合作伙伴门户中查看产品/服务历史记录](./media/saas-offer-history.png)
 
-可以使用“审核历史记录”页面搜索特定的产品/服务并应用筛选器，例如“发布者”、“产品/服务”和“事件类型”（例如 OfferGoLiveRequested）。还可以将审核历史记录下载为 csv 文件。
+审核历史记录页可用于搜索特定产品/服务和应用筛选器，例如发布者、 产品/服务和事件类型 (例如，OfferGoLiveRequested。)还可以将审核历史记录下载为 csv 文件。
 
 
 ## <a name="next-steps"></a>后续步骤

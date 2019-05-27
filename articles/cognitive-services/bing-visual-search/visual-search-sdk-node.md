@@ -3,19 +3,19 @@ title: 快速入门：使用适用于 Node.js 的必应视觉搜索 SDK 获取�
 titleSuffix: Azure Cognitive Services
 description: 使用必应视觉搜索 SDK 上传图像并获取关于它的见解。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: c46c33b81a1162bdb30edc7a39a04fea8c0abb7d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1bcd885d744cd2c97b0941b5a3bb498d68b5f644
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866927"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796310"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的必应视觉搜索 SDK 获取图像见解
 

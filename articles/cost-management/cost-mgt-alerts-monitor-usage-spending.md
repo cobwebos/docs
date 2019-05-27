@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: feb7fcdd9005ef131acadfc63defbe4caeaca014
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f1bf62596b6edcc6fff6572e431f3a777be93f05
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576526"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002091"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>通过成本警报监视使用情况和支出
 
@@ -42,7 +42,7 @@ ms.locfileid: "60576526"
 | 警报类型 | 企业协议 | Microsoft 客户协议 | Web direct/付 As-You-进行 |
 |---|---|---|---|
 | 预算 | ✔ | ✔ | ✔ |
-| 额度 | ✔ |✘ | ✘ |
+| 信用 | ✔ |✘ | ✘ |
 | 部门支出配额 | ✔ | ✘ | ✘ |
 
 

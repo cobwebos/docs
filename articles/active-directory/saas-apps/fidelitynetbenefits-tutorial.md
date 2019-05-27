@@ -16,11 +16,11 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2b35deab4c4fb20c58e135c0de01a0aa05b1c33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904603"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65862666"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>教程：Azure Active Directory 与 Fidelity NetBenefits 集成
 
@@ -117,7 +117,7 @@ ms.locfileid: "57904603"
 
 5. Fidelity NetBenefits 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Fidelity NetBenefits 应用程序要求通过 **employeeid** 或任何其他适用于 **nameidentifier** 组织的声明对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
     >[!Note]
     >Fidelity NetBenefits 支持静态和动态联合身份验证。 静态意味着不会使用基于 SAML 的恰时用户预配；动态意味着支持恰时用户预配。 若要使用基于 JIT 的预配，客户必须在 Azure AD 中添加更多的声明，例如用户的生日，等等。这些详细信息由分配的 Fidelity 客户端服务管理员提供，他们必须为你的实例启用此动态联合身份验证。

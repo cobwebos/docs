@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6e1681e4eca923e8e4ce541570b4ed4b3ba9d567
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241308"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834430"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
 
@@ -30,7 +30,7 @@ ms.locfileid: "50241308"
 
 继续之前，请确保已配置设备及其“硬件安全模块”（按[使用 Azure IoT 中心设备预配服务设置设备以进行预配](./tutorial-set-up-device.md)教程所述）。
 
-* Visual Studio 2015 或 Visual Studio 2017
+* Visual Studio
 
 > [!NOTE]
 > 不需要 Visual Studio。 只需安装 [.NET](https://www.microsoft.com/net) 便已足够，开发人员可以在 Windows 或 Linux 上使用其偏好的编辑器。  

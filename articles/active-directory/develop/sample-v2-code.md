@@ -1,6 +1,6 @@
 ---
-title: Microsoft 标识平台的代码示例 |Microsoft Docs
-description: 提供的索引可用的 Microsoft 标识平台 （V2 终结点） 的代码示例，按方案。
+title: Microsoft 标识平台代码示例 | Microsoft Docs
+description: 提供了按方案组织的可用 Microsoft 标识平台（V2 终结点）代码示例的索引。
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f430d712626c5c5f4667d709a27171592f84a150
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 4efe7fabb503cbfdc855d46ffea24dda2cb9c05f
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823611"
+ms.locfileid: "65849939"
 ---
-# <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 标识平台的代码示例 （v2.0 终结点）
+# <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 标识平台代码示例（v2.0 终结点）
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -34,23 +34,23 @@ ms.locfileid: "65823611"
 - 向 Web 应用程序和 Web API 添加身份验证和授权。
 - 要求使用访问令牌来访问受保护的 Web API。
 
-本文简要描述，并为您提供指向示例的 Microsoft 标识平台终结点。 这些示例将展示其工作原理以及可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 代码中的注释可帮助你理解关键部分。
+本文简要介绍了 Microsoft 标识平台终结点示例并提供了指向这些示例的链接。 这些示例将展示其工作原理以及可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 代码中的注释可帮助你理解关键部分。
 
 > [!NOTE]
 > 如果对 v1.0 示例感兴趣，请参阅 [Azure AD 代码示例（v1.0 终结点）](sample-v1-code.md)。
 
-若要了解每个示例类型的基本方案，请参阅[Microsoft 标识平台终结点的应用类型](v2-app-types.md)。
+若要了解每种示例类型的基本方案，请参阅 [Microsoft 标识平台终结点的应用类型](v2-app-types.md)。
 
 你也可以为 GitHub 上的示例做出补充。 若要了解如何操作，请参阅 [Microsoft Azure Active Directory 示例和文档](https://github.com/Azure-Samples?page=3&query=active-directory)。
 
 ## <a name="single-page-applications-spa"></a>单页应用程序 (SPA)
 
-这些示例展示了如何编写使用 Microsoft 标识平台保护的单页面应用程序。 这些示例使用下列种类的 MSAL.js 之一：
+这些示例展示了如何编写由 Microsoft 标识平台保护的单页应用程序。 这些示例使用下列种类的 MSAL.js 之一：
 
 | 平台 | 描述 | 链接 |
 | -------- | --------------------- | -------- |
 | ![JavaScript](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 调用 Microsoft Graph |[javascript-graphapi-web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-| ![JavaScript](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 调用调用 B2C |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
+| ![JavaScript](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 调用 B2C |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
 | ![JavaScript](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 调用自己的 web API |[javascript-singlepageapp-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
 | ![Angular JS](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL AngularJS)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs)| 调用 Microsoft Graph  | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs/samples/MsalAngularjsDemoApp)
 | ![Angular](media/sample-v2-code/logo_angular.png) [JavaScript (Angular MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| 调用 Microsoft Graph  | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular/samples/MSALAngularDemoApp) |
@@ -61,7 +61,7 @@ ms.locfileid: "65823611"
 
 | 平台 | 仅让用户登录 | 让用户登录并调用 Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [ASP.NET Core web 应用登录用户教程](https://aka.ms/aspnetcore-webapp-sign-in) | 在同一示例[ASP.NET Core Web 应用调用 Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph)阶段 |
+| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [ASP.NET Core WebApp 让用户登录教程](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web 应用调用 Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) 阶段中的同一示例 |
 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET 快速入门](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [Node.js 快速入门](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs) |
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
@@ -98,7 +98,7 @@ ms.locfileid: "65823611"
 
 ## <a name="web-apis"></a>Web API
 
-下面的示例演示如何保护 web API 与 Microsoft 标识平台终结点。 此 API 由 WPF 应用程序执行，但可以由任何应用程序调用。 Web API 还会调用 Microsoft Graph。
+以下示例展示了如何使用 Microsoft 标识平台终结点保护 Web API。 此 API 由 WPF 应用程序执行，但可以由任何应用程序调用。 Web API 还调用 Microsoft Graph。
 
 | 平台 | 示例 |
 | -------- | ------------------- |

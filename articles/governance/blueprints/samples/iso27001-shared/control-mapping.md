@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 9290609136d1314762d9f716531464ad2496fb63
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c40efca9abd418c8b48f931d327b1f81805b38fb
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005292"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520403"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的控制映射
 
@@ -24,7 +24,7 @@ ms.locfileid: "60005292"
 
 仅分配一个 Azure 订阅所有者并不能实现管理冗余。 相反，分配过多的 Azure 订阅所有者会增大违规的可能性，因为会有更多的所有者帐户可能会泄密。 此蓝图可帮助你通过分配两个用于审核 Azure 订阅所有者数目的 [Azure Policy](../../../policy/overview.md) 定义，来保持适当的 Azure 订阅所有者数目。 管理订阅所有者权限有助于实现适当的职责分离。
 
-- [预览]: Audit minimum number of owners for subscription
+- [预览]: Audit minimum number of owners for a subscription
 - [预览]: Audit maximum number of owners for a subscription
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 信息分类

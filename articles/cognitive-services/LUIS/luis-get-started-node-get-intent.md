@@ -11,16 +11,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/17/2019
 ms.author: diberry
-ms.openlocfilehash: 38a95593d01fdac091504a6decf30b3dd55f9327
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 161056aa2cfe43375d5e555197b57f85685ca219
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865142"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594102"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>快速入门：使用 Node.js 获取意向
-
-在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 

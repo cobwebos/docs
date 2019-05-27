@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 04/26/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 45252cc4d45e96c2bde4a4600630ea578a8d3009
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495305"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946730"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -34,8 +34,8 @@ ms.locfileid: "59495305"
 
 > [!NOTE]
 > **先决条件**
-> * Android Studio 3+
-> * Android 21+ 为必需 
+> * Android Studio 
+> * Android 16+ 为必需 
 
 
 > [!div renderon="docs"]
@@ -56,45 +56,56 @@ ms.locfileid: "59495305"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
+> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://aka.ms/MobileAppReg)页。
 > 1. 选择“新注册”。
 > 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
->      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Android-Quickstart`。
+>      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `AndroidQuickstart`。
+>      - 可以跳过此页上的其他配置。 
 >      - 点击“`Register`”按钮。
-> 1. 转到 `Authentication` > `Redirect URIs` > `Suggested Redirect URIs for public clients`，选择格式为 **msal{AppId}://auth** 的重定向 URI。保存更改。
-
+> 1. 单击新应用，然后转到`Authentication` > `Add Platform` > `Android`。    
+>      - 输入 Android studio 项目提供的包名。 
+>      - 生成签名哈希。 有关说明，请查看门户。
+> 1. 选择 `Configure` 并保存“MSAL 配置”JSON 以供稍后使用。 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>步骤 1：配置应用程序
-> 为使此快速入门中的代码示例正常运行，需要将答复 URL 添加为 **msal{AppId}://auth**（其中，{AppId} 是你的应用的应用程序 ID）。
+> 为使此快速入门中的代码示例正常运行，需要添加与身份验证代理兼容的重定向 URI。 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![已配置](media/quickstart-v2-android/green-check.png) 应用程序已使用这些属性进行配置
+> > ![已配置](media/quickstart-v2-android/green-check.png) 应用程序已使用这些属性进行了配置
 
 #### <a name="step-2-download-the-project"></a>步骤 2：下载项目
 
-* [下载 Android Studio 项目](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
+* [下载代码示例](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>步骤 3：配置项目
 
 > [!div renderon="docs"]
-> 如果选择了上面的“选项 1”，则可跳过这些步骤。 在 Android Studio 中打开该项目并运行应用。 
+> 如果选择了上面的“选项 1”，则可跳过这些步骤。 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. 解压缩该项目并将其在 Android Studio 中打开。
-> 1. 在“应用” > “资源” > “原始”中，打开 **auth_config.json**。
-> 1. 编辑 **auth_config.json**，替换 `client_id` 和 `tenant_id`：
+> 1. 在 **app** > **src** > **main** > **res** > **raw** 中，打开 **auth_config.json**。
+> 1. 编辑 **auth_config.json**，将其替换为 Azure 门户中的 JSON。 若要手动进行操作，请进行以下更改：
 >    ```javascript
->    "client_id" : "Enter_the_Application_Id_Here",
->    "type": "Enter_the_Audience_Info_Here",
->    "tenant_id" : "Enter_the_Tenant_Info_Here"
->    ```
-> 1. 在“应用” > “清单”中，打开 **AndroidManifest.xml**。
-> 1. 将下面的活动添加到 **manifest\application** 节点。 此代码允许 Microsoft 回调你的应用：   
+>    {
+>       "client_id" : "Enter_the_Application_Id_Here",
+>       "authorization_user_agent" : "DEFAULT",
+>       "redirect_uri" : "Enter_the_Redirect_Uri_Here",
+>       "authorities" : [
+>          {
+>             "type": "AAD",
+>             "audience": {
+>                "type": "Enter_the_Audience_Info_Here",
+>                "tenant_id": "Enter_the_Tenant_Info_Here"
+>             }
+>          }
+>       ]
+>    }
+> 1. Inside **app** > **manifests**, open  **AndroidManifest.xml**.
+> 1. Paste the following activity to the **manifest\application** node: 
 >    ```xml
 >    <!--Intent filter to catch Microsoft's callback after Sign In-->
 >    <activity
@@ -103,19 +114,18 @@ ms.locfileid: "59495305"
 >            <action android:name="android.intent.action.VIEW" />
 >            <category android:name="android.intent.category.DEFAULT" />
 >            <category android:name="android.intent.category.BROWSABLE" />
-> 
->            <!--Add in your scheme/host from registered redirect URI-->
->            <!--By default, the scheme should be similar to 'msal[appId]' -->
->            <data android:scheme="msalEnter_The_Application_Id_Here"
->                android:host="auth" />
+>            <data android:scheme="msauth"
+>                android:host="Enter_the_Package_Name"
+>                android:path="/Enter_the_Signature_Hash" />
 >        </intent-filter>
 >    </activity>
 >    ```
+> > 1. 运行应用！ 
 
 > [!div renderon="docs"]
 > 1. 解压缩该项目并将其在 Android Studio 中打开。
 > 1. 在“应用” > “资源” > “原始”中，打开 **auth_config.json**。
-> 1. 编辑 **auth_config.json**，替换 `client_id` 和 `redirect_uri`：
+> 1. 编辑 **auth_config.json**，将其替换为 Azure 门户中的 JSON。 若要手动进行操作，请进行以下更改：
 >    ```javascript
 >    "client_id" : "ENTER_YOUR_APPLICATION_ID",
 >    "redirect_uri": "ENTER_YOUR_REDIRECT_URI", 
@@ -130,27 +140,26 @@ ms.locfileid: "59495305"
 >            <action android:name="android.intent.action.VIEW" />
 >            <category android:name="android.intent.category.DEFAULT" />
 >            <category android:name="android.intent.category.BROWSABLE" />
-> 
->            <!--Add in your scheme/host from registered redirect URI-->
->            <!--By default, the scheme should be similar to 'msal[appId]' -->
->            <data android:scheme="msal<ENTER_YOUR_APPLICATION_ID>"
->                android:host="auth" />
+>            <data android:scheme="msauth"
+>                android:host="Enter_the_Package_Name"
+>                android:path="/Enter_the_Decoded_Signature_Hash" />
 >        </intent-filter>
 >    </activity>
 >    ```
-> 1. 将 * 替换为你的应用程序的“应用程序 ID”。 如果需要查找“应用程序 ID”，请转到“概述”页面。
+> 1. 将 `Enter_the_Package_Name` 和 `Enter_the_Signature_Hash` 替换为在 Azure 门户中注册的值。 
+> 1. 运行应用！ 
 
 ## <a name="more-information"></a>更多信息
 
 请阅读以下各部分来详细了解本快速入门。
 
-### <a name="msal"></a>MSAL
+### <a name="getting-msal"></a>获取 MSAL
 
-MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 可以如下所述使用 Gradle 来安装它：在“依赖项”下的“Gradle 脚本” > “build.gradle (Module: app)”中添加以下内容：
+MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 可以如下所述使用 Gradle 3.0+ 来安装它：在“依赖项”下的“Gradle 脚本” > “build.gradle (Module: app)”中添加以下内容：
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
-implementation 'com.microsoft.identity.client:msal:0.2.+'
+implementation 'com.microsoft.identity.client:msal:0.3.+'
 ```
 
 ### <a name="msal-initialization"></a>MSAL 初始化
@@ -171,20 +180,22 @@ import com.microsoft.identity.client.*;
 
 > |其中： ||
 > |---------|---------|
-> |`R.raw.auth_config` | 此文件包含应用程序的配置，包括应用/客户端 ID、登录受众以及多个其他的自定义选项。 |
+> |`R.raw.auth_config` | 此文件包含应用程序的配置，包括应用/客户端 ID、登录受众、重定向 URI 以及多个其他的自定义选项。 |
 
 ### <a name="requesting-tokens"></a>请求令牌
 
-MSAL 使用两种方法来获取令牌：`acquireToken` 和 `acquireTokenSilentAsync`
+MSAL 有两种用于获取令牌的方法：`acquireToken` 和 `acquireTokenSilentAsync`
 
-#### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
+#### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken：以交互方式获取令牌
 
-在某些情况下，需要强制用户与 Microsoft 标识平台终结点进行交互，这将导致进行上下文切换以转到系统浏览器，以验证用户的凭据或表示同意。 示例包括：
+有些情况下，需要用户与 Microsoft 标识平台交互。 在这些情况下，最终用户可能需要选择其帐户、输入其凭据，或者同意应用请求的权限。 例如， 
 
 * 用户首次登录应用程序
-* 由于密码已过期，用户可能需要重新输入凭据的情况
-* 应用程序正在请求访问用户需要同意的资源的情况
-* 需要双重身份验证的情况
+* 用户在重置其密码时需输入其凭据。 
+* 如果撤销许可 
+* 如果应用显式要求许可。 
+* 应用程序首次请求访问资源时
+* 需要 MFA 或其他条件访问策略时
 
 ```java
 sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
@@ -195,24 +206,29 @@ sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
 > | `SCOPES` | 包含所请求的作用域（即针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "<Application ID URL>/scope" }`（即 `api://<Application ID>/access_as_user`）） |
 > | `getAuthInteractiveCallback` | 在进行身份验证后将控制权返还给应用程序时执行的回调 |
 
-#### <a name="getting-a-user-token-silently"></a>以静默方式获取用户令牌
+#### <a name="acquiretokensilent-getting-a-user-token-silently"></a>acquireTokenSilent：以静默方式获取用户令牌
 
-你不希望在用户每次需要访问资源时都要求其验证其凭据。 大多数情况下，你希望在无需任何用户交互的情况下进行令牌获取和续订。 可以使用 `AcquireTokenSilentAsync` 方法获取令牌，以在初始 `acquireToken` 方法后访问受保护资源：
+应用不应该在用户每次请求令牌时都要求他们登录。 如果用户已登录，则此方法允许应用以静默方式请求令牌。
 
 ```java
-List<IAccount> accounts = sampleApp.getAccounts();
-if (sample.size() == 1) {
-    sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
-} else {
-    // No or multiple accounts
-}
+    sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
+        @Override
+        public void onAccountsLoaded(final List<IAccount> accounts) {
+
+            if (!accounts.isEmpty()) {
+                sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
+            } else {
+                /* No accounts */
+            }
+        }
+    });
 ```
 
 > |其中：||
 > |---------|---------|
 > | `SCOPES` | 包含所请求的作用域（即针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "<Application ID URL>/scope" }`（即 `api://<Application ID>/access_as_user`）） |
-> | `accounts.get(0)` | 包含你尝试以静默方式获取其令牌的帐户 |
-> | `getAuthInteractiveCallback` | 在进行身份验证后将控制权返还给应用程序时执行的回调 |
+> | `getAccounts(...)` | 包含你尝试以静默方式获取其令牌的帐户 |
+> | `getAuthSilentCallback()` | 在进行身份验证后将控制权返还给应用程序时执行的回调 |
 
 ## <a name="next-steps"></a>后续步骤
 

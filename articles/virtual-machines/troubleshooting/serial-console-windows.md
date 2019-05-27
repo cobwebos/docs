@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
-ms.author: harijay
-ms.openlocfilehash: 31811d3d48f791e11bd6b709f59f5f6aaa18be0e
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.author: alsin
+ms.openlocfilehash: 6fd7f36510bdc7ed56ede6a5743a5f131149472e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442109"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834756"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows azure 串行控制台
 
@@ -275,7 +275,7 @@ A. 可以通过在 https://aka.ms/serialconsolefeedback 中创建 GitHub 问题�
 
 **问：串行控制台是否支持复制/粘贴？**
 
-A. 可以。 可以使用 **Ctrl**+**Shift**+**C** 和 **Ctrl**+**Shift**+**V** 复制并粘贴到终端。
+A. 是的。 可以使用 **Ctrl**+**Shift**+**C** 和 **Ctrl**+**Shift**+**V** 复制并粘贴到终端。
 
 **问：谁可以为我的订阅启用或禁用串行控制台？**
 

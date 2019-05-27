@@ -16,17 +16,16 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 448858efeaae4c3e2a41d41181e9ec74b03223f6
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 42b7e59e39adbb485738ca66b7ad8e5ba8293ddc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138254"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784997"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
 > [!div renderon="docs"]
-> [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 本指南介绍本机通用 Windows 平台 (UWP) 应用程序如何请求访问令牌，然后调用 Microsoft 图形 API。 本指南也适用于其他需要从 Microsoft 标识平台终结点请求访问令牌的 API。
 

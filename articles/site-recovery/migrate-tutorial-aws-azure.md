@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 17acd4eebe53704699d3ec9a3f4f121eed79794d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b2ff67e207f8a3a2b79635b080c78021162f0ac6
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310381"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519237"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -115,7 +115,11 @@ ms.locfileid: "58310381"
 
 完成后，选择“确定”即可转到下一部分。
 
-### <a name="2-prepare-source"></a>2:准备源
+### <a name="2-select-deployment-planning"></a>2:选择部署规划
+
+在“是否已完成部署规划”中选择“我将稍后进行”，然后选择“确定”。
+
+### <a name="3-prepare-source"></a>3：准备源
 
 在“准备源”页上，选择“+ 配置服务器”。
 
@@ -140,7 +144,7 @@ ms.locfileid: "58310381"
 
 完成配置服务器设置后，请返回门户，选择为**配置服务器**创建的服务器。 选择“确定”转到 3：准备目标。
 
-### <a name="3-prepare-target"></a>3：准备目标
+### <a name="4-prepare-target"></a>4：准备目标
 
 在本部分，请输入在本教程前面的[准备 Azure 资源](#prepare-azure-resources)中创建的资源的相关信息。
 
@@ -149,8 +153,7 @@ ms.locfileid: "58310381"
 3. Site Recovery 会验证你是否有一个或多个兼容的 Azure 存储帐户和网络。 这些应该是在本教程前面的[准备 Azure 资源](#prepare-azure-resources)中创建的资源。
 4. 完成后，请选择“确定”。
 
-
-### <a name="4-prepare-replication-settings"></a>4：准备复制设置
+### <a name="5-prepare-replication-settings"></a>5：准备复制设置
 
 必须先创建复制策略，然后才能启用复制。
 
@@ -158,12 +161,7 @@ ms.locfileid: "58310381"
 2. 在“名称”中输入 **myReplicationPolicy**。
 3. 其余选项均保留默认设置，然后选择“确定”以创建策略。 新策略会自动与配置服务器关联。
 
-### <a name="5-select-deployment-planning"></a>5：选择部署规划
-
-在“是否已完成部署规划”中选择“我将稍后进行”，然后选择“确定”。
-
 完成“准备基础结构”下所有五个部分的操作后，请选择“确定”。
-
 
 ## <a name="enable-replication"></a>启用复制
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: d9f736b0b976ac6ec0da45a672d2e992405625cd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 92a37133d84833c43fff5b1a6c31e003ef53f7de
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578784"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619749"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>教程：在 Azure Blockchain Workbench 中创建区块链应用程序
 
@@ -271,7 +271,7 @@ contract HelloBlockchain {
 
 ### <a name="constructor"></a>构造函数
 
-构造函数定义工作流的新智能合约实例的输入参数。 构造函数声明为与合同同名的函数。 构造函数的所需参数定义为配置文件中的构造函数参数。 两个文件中的参数数目、顺序和类型必须匹配。
+构造函数定义工作流的新智能合约实例的输入参数。 构造函数的所需参数定义为配置文件中的构造函数参数。 两个文件中的参数数目、顺序和类型必须匹配。
 
 创建合同之前，请在构造函数中编写想要执行的任何业务逻辑。 例如，使用起始值初始化状态变量。
 

@@ -3,8 +3,8 @@ title: 使用 Azure AD 保护 Web API | Microsoft Docs
 description: 了解如何生成与 Azure AD 集成、可用于身份验证的 Node.js REST Web API。
 services: active-directory
 documentationcenter: nodejs
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
 ms.service: active-directory
 ms.subservice: develop
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f72cbd719cea585144be3757f0791a74bde452ab
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7dcbe10c08d581e2ec01e1616da49b7a1b31018d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416762"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545978"
 ---
 # <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>快速入门：使用 Azure Active Directory 保护 Web API
 
@@ -82,7 +82,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 在连接到 Azure Active Directory 之前，需准备好以下信息：
 
-| Name  | 说明 | 配置文件中的变量名称 |
+| 名称  | 说明 | 配置文件中的变量名称 |
 | ------------- | ------------- | ------------- |
 | 租户名称  | 要用于身份验证的[租户名称](quickstart-create-new-tenant.md) | `tenantName`  |
 | 客户端 ID  | 客户端 ID 是对 AAD _应用程序 ID_ 使用的 OAuth 术语。 |  `clientID`  |

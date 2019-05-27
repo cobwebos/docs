@@ -8,31 +8,31 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 7619b8831d75ce639c6f6c773c7c7d491abc93e7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d446be664d695af946d46abc48389d4f7be92cd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122023"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791041"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
 在许多场景中，你希望将现有 Azure IaaS 虚拟机 (VM) 从一个区域移动到另一个区域。 例如，想要提高现有 VM 的可靠性和可用性，提高可管理性，或者出于治理原因而移动。 有关详细信息，请参阅 [Azure VM 移动概述](azure-to-azure-move-overview.md)。 
 
-可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务来管理和协调本地计算机和 Azure VM 灾难恢复，以实现业务连续性和灾难恢复 (BCDR)。 此外可以使用 Site Recovery 来管理将 Azure VM 移动到次要区域的过程。
+可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务来管理和协调本地计算机和 Azure VM 灾难恢复，以实现业务连续性和灾难恢复 (BCDR)。 此外可以使用 Site Recovery 来管理 Azure VM 移动到次要区域。
 
 在本教程中，将：
 
 > [!div class="checklist"]
 > 
-> * 验证进行移动的先决条件
+> * 验证先决条件以进行移动
 > * 准备源 VM 和目标区域
 > * 复制数据和启用复制
 > * 测试配置和执行移动
 > * 删除源区域中的资源
 > 
 > [!NOTE]
-> 本教程演示如何将 Azure VM 按原样从一个区域移到另一个区域。 如果需要通过将可用性集中的 VM 以区域固定 VM 的形式移动到其他区域中来提高可用性，请参阅[将 Azure VM 移动到可用性区域教程](move-azure-vms-avset-azone.md)。
+> 本教程演示如何将 Azure VM 按原样从一个区域移到另一个区域。 如果需要通过将可用性集中的 VM 移动到其他区域中的区域固定 VM 来提高可用性，请参阅[将 Azure VM 移动到可用性区域教程](move-azure-vms-avset-azone.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +56,7 @@ ms.locfileid: "58122023"
     - 对于 Windows VM，请在 VM 上安装所有最新的 Windows 更新，使所有受信任的根证书位于该计算机上。 在未联网的环境中，请按照你的组织的标准 Windows 更新和证书更新过程执行操作。
     - 对于 Linux VM，请遵循 Linux 分销商提供的指导，在 VM 上获取最新的受信任根证书和证书吊销列表。
 1. 确保未使用身份验证代理来控制要移动的 VM 的网络连接。
-1. 如果尝试移动的 VM 无法访问 Internet，或使用防火墙代理来控制出站访问，请[检查要求](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity)。
+1. 如果尝试移动的 VM 无法访问 Internet，或使用防火墙代理来控制出站访问，请[检查要求](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)。
 1. 确定源网络布局和当前正在使用的所有资源。 这包括但不限于负载均衡器、网络安全组 (NSG) 和公共 IP。
 
 ## <a name="prepare-the-target-region"></a>准备目标区域
@@ -74,7 +74,7 @@ ms.locfileid: "58122023"
 
    - [网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-   - [公共 IP](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+   - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
     
      对于其他任何网络组件，请参阅[网络文档](https://docs.microsoft.com/azure/#pivot=products&panel=network)。
 

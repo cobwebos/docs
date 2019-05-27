@@ -170,13 +170,13 @@ ILB ASE 需要有效的 SSL 证书。 可使用内部证书颁发机构、向外
 
 4. 设置 ASE 域的 DNS。 可以在 DNS 中将通配符与域结合使用。 若要执行一些简单测试，可编辑 VM 上的主机文件，将应用名称设置为 VIP IP 地址：
 
-    a. 如果 ASE 的域名为 _.ilbase.com_，并且创建的应用名为 _mytestapp_，则它所在的地址为 _mytestapp.ilbase.com_。 然后设置 _mytestapp.ilbase.com_ 以解析为 ILB 地址。 （在 Windows 上，主机文件位于 _C:\Windows\System32\drivers\etc\\_。）
+    a. 如果 ASE 的域名为 _.ilbase.com_，并且创建的应用名为 _mytestapp_，则它所在的地址为 _mytestapp.ilbase.com_。 然后设置 _mytestapp.ilbase.com_ 以解析为 ILB 地址。 （在 Windows 上，主机文件位于 _C:\Windows\System32\drivers\etc\\_ 。）
 
     b. 若要测试 Web 部署发布或访问高级控制台，请为 _mytestapp.scm.ilbase.com_ 创建一条记录。
 
-5. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com。 （或者转到域中的任意应用名称。）
+5. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com 。 （或者转到域中的任意应用名称。）
 
-6. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com。 如果使用自签名证书，则需接受安全性不足的缺点。
+6. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com 。 如果使用自签名证书，则需接受安全性不足的缺点。
 
     ILB 的 IP 地址在“IP 地址”下列出。 此列表还包含由外部 VIP 用于入站流量管理的 IP 地址。
 
@@ -203,7 +203,7 @@ ILB ASE 上同时支持函数和 Web 作业，但对于与其配合使用的门�
 
 ## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 发布 ##
 
-创建的每个应用都有两个终结点。 在 ILB ASE 中，有 *&lt;应用名称>.&lt;ILB ASE 域>* 和 *&lt;应用名称>.scm.&lt;ILB ASE 域>*。 
+创建的每个应用都有两个终结点。 在 ILB ASE 中，有 *&lt;应用名称>.&lt;ILB ASE 域>* 和 *&lt;应用名称>.scm.&lt;ILB ASE 域>* 。 
 
 SCM 站点名称能将用户带到 Kudu 控制台，在 Azure 门户中称为**高级门户**。 Kudu 控制台允许查看环境变量、浏览磁盘、使用控制台等等。 有关详细信息，请参阅[用于 Azure 应用服务的 Kudu 控制台][Kudu]。 
 

@@ -1,7 +1,7 @@
 ---
 title: 模型可解释性
 titleSuffix: Azure Machine Learning service
-description: 了解如何解释为什么您的模型进行预测使用 Azure 机器学习 SDK。 它可以用于在定型和推断过程了解您的模型进行预测的方式。
+description: 了解如何解释为什么您的模型进行预测使用 Azure 机器学习 SDK。 它可以用于在培训和推理过程了解您的模型进行预测的方式。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,25 +10,25 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 04/29/2019
-ms.openlocfilehash: 62d51a0075d8b6864e4b10fa6c1eb423a440d6d0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4261e869fe17283886d7d8ea8101e03110d6dad4
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926432"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851996"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务的模型 interpretability
 
 在本文中，您将了解如何解释为什么您的模型进行预测与 Azure 机器学习 Python SDK interpretability 包。
 
 此包中使用的类和方法，可以获取：
-+ 在大规模情况下，实际的数据集上训练时间和推断过程的 interpretability。 
++ Interpretability 在大规模情况下，实际的数据集上，在培训和推理。 
 + 若要在定型时帮助你发现数据和说明中的模式中的交互式可视化效果
 + 功能重要性的值： 原始和工程功能
 
 在开发周期的训练阶段，可用于向利益干系人建立信任说明模型的输出模型设计人员和评估器。  它们也使用该模型的见解以进行调试，因此验证模型行为匹配其目标，并检查偏置。
 
-在推断阶段中，数据科学家可以使用 interpretability 解释预测到的人使用您的模型。 例如，为什么没有模型拒绝抵押贷款时，或预测投资组合会带来较高风险？
+推理，或模型评分，阶段已部署的模型不使用的是用于预测，最常在生产数据。 在此阶段，数据科学家可以解释的人使用您的模型将生成预测。 例如，为什么没有模型拒绝抵押贷款时，或预测投资组合会带来较高风险？
 
 使用这些产品/服务，可以解释机器学习模型**上的所有数据从全球**，或**上的特定数据点的本地**易于使用且可缩放的方式使用先进的技术。
 
@@ -287,7 +287,7 @@ clf = Pipeline(steps=[('preprocessor', DataFrameMapper(transformations)),
 tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x_train, features=dataset_feature_names, classes=dataset_classes, transformations=transformations)
 ```
 
-## <a name="interpretability-in-inferencing"></a>在推断 interpretability
+## <a name="interpretability-in-inference"></a>在推断 interpretability
 
 说明可以与原始模型一起部署，并可用于在评分时间提供本地说明信息。 部署评分的说明的过程类似于部署模型，包括以下步骤：
 

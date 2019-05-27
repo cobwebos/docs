@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a18971125724e6e2fdc6b37de15894efb8b9071a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258940"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65867554"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>教程：Azure Active Directory 与 SD Elements 集成
 
@@ -39,7 +39,7 @@ ms.locfileid: "59258940"
 若要配置 Azure AD 与 SD Elements 的集成，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了单一登录的 SD Elements 订阅
+* 启用了 SD Elements 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -71,8 +71,8 @@ ms.locfileid: "59258940"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，我们基于名为“Britta Simon”的测试用户为 SD Elements 配置和测试 Azure AD 单一登录。
-若要使单一登录有效，需要在 Azure AD 用户与 SD Elements 相关用户之间建立关联。
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 SD Elements 配置和测试 Azure AD 单一登录。
+若要运行单一登录，需要在 Azure AD 用户与 SD Elements 相关用户之间建立链接关系。
 
 若要配置和测试 SD Elements 的 Azure AD 单一登录，需要完成以下构建基块：
 
@@ -80,14 +80,14 @@ ms.locfileid: "59258940"
 2. **[配置 SD Elements 单一登录](#configure-sd-elements-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 SD Elements 测试用户](#create-sd-elements-test-user)** - 在 SD Elements 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
+5. **[创建 SD Elements 测试用户](#create-sd-elements-test-user)** - 在 SD Elements 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-要为 SD Elements 配置 Azure AD 单一登录，请执行以下步骤：
+若要配置 SD Elements 的 Azure AD 单一登录，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“SD Elements”应用程序集成页上，选择“单一登录”。
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
-ms.openlocfilehash: 89df3a981ba3710e848f834c303772e94e10b139
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: ebb14d97273851585e491e3bcd36f776ec9b61b4
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947182"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000972"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头
 
@@ -157,9 +157,7 @@ HTTP 标头允许客户端和服务器将与请求或响应的附加信息传递
 
 - 标头名称可以包含任何字母数字字符和特定符号中定义[RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)。 我们暂不支持下划线字符 (\_) 标头名称中的特殊字符。
 
-## <a name="need-help"></a>需要帮助？
-
-与我们联系[ AGHeaderRewriteHelp@microsoft.com ](mailto:AGHeaderRewriteHelp@microsoft.com)如果需要此功能的任何帮助。
+- 如果响应具有多个具有相同名称的标头，然后重写这些标头之一的值将导致在响应中删除其他标头。
 
 ## <a name="next-steps"></a>后续步骤
 
