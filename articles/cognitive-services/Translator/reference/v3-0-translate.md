@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: e7ab2eba54aafda6bb00696939bf9bc32bb627ca
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5a2192c4555c2d84587ec8e39ce9ba94c985b541
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797010"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235834"
 ---
-# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：Translate
+# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：转换
 
 翻译文本。
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 <code>3.0</code>。</td>
   </tr>
   <tr>
-    <td>from</td>
+    <td>来自</td>
     <td>可选参数。<br/>指定输入文本的语言。 可以使用 <code>translation</code> 范围来查找<a href="./v3-0-languages.md">支持的语言</a>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。</td>
   </tr>
   <tr>
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将自定义翻译器项目的类别 ID 添加到此参数，以便使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
+    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将类别 ID 添加从自定义转换器<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">项目的详细信息</a>为此参数，以使用你已部署自定义的系统。 默认值为 <code>general</code>。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -169,7 +169,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 [示例](#examples)部分提供了 JSON 响应的示例。
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头 
 
 <table width="100%">
   <th width="20%">标头</th>
@@ -201,7 +201,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>401</td>
-    <td>无法对请求进行身份验证。 请确保凭据已指定且有效。</td>
+    <td>无法验证该请求。 请确保凭据已指定且有效。</td>
   </tr>
   <tr>
     <td>403</td>
@@ -217,7 +217,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
+    <td>发生意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
@@ -401,7 +401,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
   </tr>
 </table> 
 
-例如：
+例如:
 
 # <a name="curltabcurl"></a>[curl](#tab/curl)
 

@@ -8,17 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/07/2018
-ms.author: gracez
-ms.openlocfilehash: f915a03e2596e6439cbe184bfc8405910f56e2bd
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.date: 05/22/2019
+ms.author: wellsi
+ms.openlocfilehash: fab23c86ee2e8f654ac4a9619c39d05ee4e9e4c1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002291"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237937"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>认知服务语音设备 SDK 发行说明
 以下部分列出了最新版本中的更改。
+
+## <a name="speech-devices-sdk-151"></a>语音设备 SDK 1.5.1:
+
+*   包括[会话听录](conversation-transcription-service.md)示例应用程序中。
+*   更新[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)到版本 1.5.1 组件。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
 
 ## <a name="cognitive-services-speech-devices-sdk-150-2019-may-release"></a>认知服务语音设备 SDK 1.5.0:2019-5 月版本
 

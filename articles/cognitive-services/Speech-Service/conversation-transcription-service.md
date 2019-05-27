@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eebe3ed15d21b08b208667a571bd59eac98a674d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a31921e229a4bbfccd6fdd871666aad1eeef3232
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190283"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243847"
 ---
 # <a name="what-is-conversation-transcription"></a>什么是会话的脚本？
 
@@ -67,6 +67,11 @@ ms.locfileid: "65190283"
 > 规范和设计的详细信息，请参阅[Microsoft 语音设备 SDK 麦克风](https://aka.ms/cts/microphone)。 若要了解详细信息，或购买开发工具包，请参阅[获取 Microsoft 语音设备 SDK](https://aka.ms/cts/getsdk)。
 
 若要了解如何使用语音设备 SDK 的会话的脚本，请参阅[如何使用会话听录](https://aka.ms/cts/howto)。
+
+
+## <a name="quick-start-with-a-sample-app"></a>使用示例应用快速启动
+
+Microsoft 语音设备 SDK 快速入门示例应用程序具有所有设备相关示例。 会话的脚本是其中之一。 你可以找到它在[语音设备 SDK android 快速入门](https://aka.ms/sdsdk-quickstart)用示例应用程序和其源代码供你参考。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 5fa922cb91d34483256faf4dcf70569aa2f17b97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 318e71b68bbabeeef34c75a412f9fdd5b6db754a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813831"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073015"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>上下文的子类型的实体角色
 
@@ -37,7 +37,7 @@ buy a ticket from New York to London
 
 |实体类型|实体名称|角色|目的|
 |--|--|--|--|
-|简单|Location|origin|飞机起飞地|
+|简单|Location|原点|飞机起飞地|
 |简单|Location|目标|飞机降落地|
 
 ## <a name="non-machine-learned-entity-example-of-roles"></a>非机器学习了实体的角色的示例
@@ -79,12 +79,6 @@ Schedule the meeting from 8 to 9
 |--|--|
 |我所感学习更多有关**西雅图**|我感兴趣学习有关 {Location} 的详细信息|
 |从西雅图到纽约购买票证|购买票证来源 {位置:} 到 {位置： 目标}|
-
-## <a name="how-are-roles-related-to-hierarchical-entities"></a>如何与层次结构的实体相关角色？
-
-角色现可用于示例查询文本，以及上一使用模式中的所有实体。 因为这些信息可无处不在它们会取代分层实体的需求。 使用角色，而不是使用分层实体，应创建新的实体。 
-
-层次结构的实体最终将被弃用。
 
 ## <a name="how-are-roles-used-in-patterns"></a>如何在模式中使用角色？
 在模式的模板表述中，角色在表述内使用： 

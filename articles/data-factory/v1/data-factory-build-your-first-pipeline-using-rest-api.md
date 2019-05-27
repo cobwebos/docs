@@ -55,7 +55,7 @@ ms.locfileid: "66146851"
   1. 在 Azure Active Directory 中创建名为 **ADFGetStartedApp** 的 Web 应用程序。
   2. 获取**客户端 ID** 和**机密密钥**。
   3. 获取 **租户 ID**。
-  4. 将 **ADFGetStartedApp** 应用程序分配到“数据工厂参与者”角色。
+  4. 将 **ADFGetStartedApp** 应用程序分配到“数据工厂参与者”角色。 
 * 安装 [Azure PowerShell](/powershell/azure/overview)。
 * 启动 **PowerShell** 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
   1. 运行 **Connect-AzAccount** 并输入用于登录 Azure 门户的用户名和密码。
@@ -125,8 +125,8 @@ ms.locfileid: "66146851"
 
 | 属性 | 说明 |
 |:--- |:--- |
-| ClusterSize |HDInsight 群集的大小。 |
-| TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
+| clusterSize |HDInsight 群集的大小。 |
+| timeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
 | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
 
 请注意以下几点：
@@ -317,13 +317,13 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 请注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘FirstDataFactoryREST’ 不可用”，请执行以下步骤：
+* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘FirstDataFactoryREST’ 不可用”，请执行以下步骤： 
   1. 在 **datafactory.json** 文件中更改名称（例如，yournameFirstDataFactoryREST）。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
   2. 在分配 **$cmd** 变量值的第一个命令中，将 FirstDataFactoryREST 替换为新名称，并运行该命令。
   3. 运行以下两个命令来调用 REST API，创建数据工厂并列显操作结果。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布：
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  ，请执行下列操作之一，再尝试重新发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -465,7 +465,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 >
 >
 
-运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
+运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。   当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
 
 ![输出数据](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
 

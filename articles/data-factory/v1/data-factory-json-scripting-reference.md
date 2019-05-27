@@ -49,7 +49,7 @@ ms.locfileid: "66156533"
 
 | 属性 | 说明 | 需要
 -------- | ----------- | --------
-| name | 管道的名称。 指定一个名称，表示配置为活动或管道要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
+| 名称 | 管道的名称。 指定一个名称，表示配置为活动或管道要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动或管道用途的文本 | 否 |
 | activities | 包含活动列表。 | 是 |
 | start |管道的开始日期-时间。 必须为 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41。 <br/><br/>可指定本地时间，如 EST 时间。 下面是一个示例：`2016-02-27T06:00:00**-05:00`（美国东部标准时间上午 6 点）。<br/><br/>start 和 end 属性共同指定管道的活动期限。 仅在此活动期限内生成输出切片。 |否<br/><br/>如果要指定 end 属性值，必须指定 start 属性值。<br/><br/>创建管道时，开始和结束时间均可为空。 必须指定这两个值，才能设置管道运行的活动期限。 如果未指定开始和结束时间时创建管道，可以设置更高版本使用集 AzDataFactoryPipelineActivePeriod cmdlet。 |
@@ -59,7 +59,7 @@ ms.locfileid: "66156533"
 | expirationTime |创建后的持续时间，在该时间内管道需有效且保持预配状态。 如果管道不具有任何活动的、失败的或挂起的运行，则该管道在到期后会自动删除。 |否 |
 
 
-## <a name="activity"></a>活动
+## <a name="activity"></a>activities
 管道定义（活动元素）中活动的高级结构如下所示：
 
 ```json
@@ -87,7 +87,7 @@ ms.locfileid: "66156533"
 
 | 标记 | 描述 | 需要 |
 | --- | --- | --- |
-| name |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
+| 名称 |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动用途的文本。 |否 |
 | type |指定活动的类型。 请参阅[数据存储](#data-stores)和[数据转换活动](#data-transformation-activities)部分，了解不同的活动类型。 |是 |
 | inputs |活动使用的输入表<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |对于 HDInsightStreaming 和 SqlServerStoredProcedure 活动，为“否” <br/> <br/> 对于其他所有活动，为“是” |
@@ -462,8 +462,8 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
 | fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果未为输出数据集指定 fileName，生成的文件的名称会采用以下格式： `Data.<Guid>.txt` (例如::Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 是一个可选属性。 它可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 |否 |
-| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 #### <a name="example"></a>示例
 
@@ -495,7 +495,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 有关详细信息，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md#dataset-properties)一文。
 
 ### <a name="blobsource-in-copy-activity"></a>复制活动中的 BlobSource
-如果要从 Azure Blob 存储复制数据，请将复制活动的“源类型”设置为“BlobSource”，并在“source”节中指定以下属性：
+如果要从 Azure Blob 存储复制数据，请将复制活动的“源类型”设置为“BlobSource”，并在“source”节中指定以下属性    ：
 
 | 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
@@ -599,7 +599,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是（对于服务主体身份验证） |
 | servicePrincipalKey | 指定应用程序的密钥。 | 是（对于服务主体身份验证） |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是（对于服务主体身份验证） |
-| authorization | 单击“数据工厂编辑器”中的“授权”按钮，并输入会自动生成的授权 URL 分配给此属性的凭据。 | 是（对于用户凭据身份验证）|
+| authorization | 单击“数据工厂编辑器”  中的“授权”  按钮，并输入会自动生成的授权 URL 分配给此属性的凭据。 | 是（对于用户凭据身份验证）|
 | sessionId | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且可能仅可使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是（对于用户凭据身份验证） |
 
 #### <a name="example-using-service-principal-authentication"></a>示例：使用服务主体身份验证
@@ -645,8 +645,8 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | folderPath |到 Azure Data Lake Sore 中的容器和文件夹的路径。 |是 |
 | fileName |Azure Data Lake Sore 中文件的名称。 fileName 可选，并且区分大小写。 <br/><br/>如果指定 filename，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中的所有文件。<br/><br/>如果未为输出数据集指定 fileName，生成的文件的名称会采用以下格式： `Data.<Guid>.txt` (例如::Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 是一个可选属性。 它可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 |否 |
-| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 #### <a name="example"></a>示例
 ```json
@@ -784,7 +784,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
 ### <a name="linked-service"></a>链接服务
-要定义 Azure Cosmos DB 链接服务，请将链接服务的“类型”设置为“DocumentDb”，并在“typeProperties”部分中指定以下属性：
+要定义 Azure Cosmos DB 链接服务，请将链接服务的“类型”  设置为“DocumentDb”  ，并在“typeProperties”  部分中指定以下属性：
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
@@ -806,7 +806,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 有关详细信息，请参阅 [Azure Cosmos DB 连接器](data-factory-azure-documentdb-connector.md#linked-service-properties)一文。
 
 ### <a name="dataset"></a>数据集
-要定义 Azure Cosmos DB 数据集，请将数据集的“类型”设置为“DocumentDbCollection”，并在“typeProperties”部分中指定以下属性：
+要定义 Azure Cosmos DB 数据集，请将数据集的“类型”  设置为“DocumentDbCollection”  ，并在“typeProperties”  部分中指定以下属性：
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
@@ -834,7 +834,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 有关详细信息，请参阅 [Azure Cosmos DB 连接器](data-factory-azure-documentdb-connector.md#dataset-properties)一文。
 
 ### <a name="azure-cosmos-db-collection-source-in-copy-activity"></a>复制活动中的 Azure Cosmos DB 集合源
-如果要从 Azure Cosmos DB 复制数据，请将复制活动的“源类型”设置为“DocumentDbCollectionSource”，并在“源”部分中指定以下属性：
+如果要从 Azure Cosmos DB 复制数据，请将复制活动的“源类型”  设置为“DocumentDbCollectionSource”  ，并在“源”  部分中指定以下属性：
 
 
 | **属性** | **说明** | **允许的值** | **必需** |
@@ -881,7 +881,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ```
 
 ### <a name="azure-cosmos-db-collection-sink-in-copy-activity"></a>复制活动中的 Azure Cosmos DB 集合接收器
-如果要将数据复制到 Azure Cosmos DB，请将复制活动的“接收器类型”设置为“DocumentDbCollectionSink”，并在“接收器”部分中指定以下属性：
+如果要将数据复制到 Azure Cosmos DB，请将复制活动的“接收器类型”  设置为“DocumentDbCollectionSink”  ，并在“接收器”  部分中指定以下属性：
 
 | **属性** | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
@@ -2457,7 +2457,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 | type |类型属性应设置为：**OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到本地 SQL Server 数据库时所需的 connectionString 信息。 |是 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 SQL Server 数据库。 |是 |
-| username |如果使用的是 Windows 身份验证，请指定用户名。 示例：域名\\用户名。 |否 |
+| username |如果使用的是 Windows 身份验证，请指定用户名。 示例：域名\\用户名  。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 
 您可以加密使用的凭据**新建 AzDataFactoryEncryptValue** cmdlet，并使用它们在连接字符串中，如下面的示例中所示 (**EncryptedCredential**属性):
@@ -2599,7 +2599,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 }
 ```
 
-在本例中，为 SqlSource 指定了 **sqlReaderQuery**。 复制活动针对 SQL Server 数据库源运行此查询以获取数据。 此外，也可以通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程（如果存储过程使用参数）。 SqlReaderQuery 可以引用输入数据集所引用的数据库中的多个表。 这不仅局限于设置为数据集的 tableName typeProperty 的表。
+在本例中，为 SqlSource 指定了 **sqlReaderQuery**。 复制活动针对 SQL Server 数据库源运行此查询以获取数据。 此外，也可以通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程（如果存储过程使用参数）   。 SqlReaderQuery 可以引用输入数据集所引用的数据库中的多个表。 这不仅局限于设置为数据集的 tableName typeProperty 的表。
 
 如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则使用在结构部分中定义的列来生成针对 SQL Server 数据库运行的 select 查询。 如果数据集定义不具备该结构，则从表中选择所有列。
 
@@ -2939,8 +2939,8 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| keyspace |Cassandra 数据库中密钥空间或架构的名称。 |是（如果未定义 CassandraSource 的查询）。 |
-| tableName |Cassandra 数据库中表的名称。 |是（如果未定义 CassandraSource 的查询）。 |
+| keyspace |Cassandra 数据库中密钥空间或架构的名称。 |是（如果未定义 CassandraSource 的查询）   。 |
+| tableName |Cassandra 数据库中表的名称。 |是（如果未定义 CassandraSource 的查询）   。 |
 
 #### <a name="example"></a>示例
 
@@ -2977,7 +2977,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
+| query |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表  。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
 | consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |否。 默认值为 ONE。 |
 
 #### <a name="example"></a>示例
@@ -3181,8 +3181,8 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 | key |S3 对象键。 |String |否 |
 | prefix |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |String |否 |
 | 版本 |启用 S3 版本控制时 S3 对象的版本。 |String |否 |
-| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 | |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 | |
+| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 | |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 | |
 
 
 > [!NOTE]
@@ -3376,8 +3376,8 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。 <br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1："fileFilter": "*.log"<br/>示例 2："fileFilter":2016-1-?.txt"<br/><br/>注意：fileFilter 适用于 FileShare 输入数据集。 |否 |
 | partitionedBy |可使用 partitionedBy 指定时序数据的动态 folderPath/fileName。 例如，针对每小时数据参数化的 folderPath。 |否 |
-| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别包括：“最佳”和“最快”。 请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别包括：“最佳”和“最快”   。 请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 > [!NOTE]
 > 不能同时使用 fileName 和 fileFilter。
@@ -3642,8 +3642,8 @@ auto-
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter 适用于 FileShare 输入数据集。 HDFS 不支持此属性。 |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 |否 |
-| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别包括：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别包括：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 | useBinaryTransfer |指定是否使用二进制传输模式。 使用二进制模式时为 true，使用 ASCII 时为 false。 默认值：True。 仅当关联的链接服务为以下类型时，才可以使用此属性：FtpServer。 |否 |
 
 > [!NOTE]
@@ -3732,7 +3732,7 @@ auto-
 | --- | --- | --- |
 | type |type 属性必须设置为：**Hdfs** |是 |
 | URL |HDFS 的 URL |是 |
-| authenticationType |匿名或 Windows。 <br><br> 若要对 HDFS 连接器使用 Kerberos 身份验证，请参阅此部分相应地设置本地环境。 |是 |
+| authenticationType |匿名或 Windows。 <br><br> 若要对 HDFS 连接器使用 Kerberos 身份验证  ，请参阅此部分相应地设置本地环境。 |是 |
 | userName |Windows 身份验证的用户名。 |是（对于 Windows 身份验证） |
 | password |Windows 身份验证的密码。 |是（对于 Windows 身份验证） |
 | gatewayName |数据工厂服务用于连接到 HDFS 的网关的名称。 |是 |
@@ -3783,8 +3783,8 @@ auto-
 | folderPath |文件夹路径。 示例： `myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` (例如::Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
-| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 > [!NOTE]
 > filename 和 fileFilter 不能同时使用。
@@ -3923,7 +3923,7 @@ auto-
 }
 ```
 
-#### <a name="using-ssh-public-key-authentication"></a>使用 SSH 公钥身份验证：
+#### <a name="using-ssh-public-key-authentication"></a>使用 SSH 公钥身份验证： 
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `SshPublicKey`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
@@ -3984,8 +3984,8 @@ auto-
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter 适用于 FileShare 输入数据集。 HDFS 不支持此属性。 |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 |否 |
-| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 | useBinaryTransfer |指定是否使用二进制传输模式。 使用二进制模式时为 true，使用 ASCII 时为 false。 默认值：True。 仅当关联的链接服务为以下类型时，才可以使用此属性：FtpServer。 |否 |
 
 > [!NOTE]
@@ -4114,10 +4114,10 @@ auto-
 
 如果使用 `certThumbprint` 进行身份验证并在本地计算机的个人存储中安装了证书，则需要授予对网关服务的读取权限：
 
-1. 启动 Microsoft 管理控制台 (MMC)。 添加面向“本地计算机”的“证书”管理单元。
-2. 展开“证书”、“个人”，并单击“证书”。
-3. 右键单击个人存储中的证书，并选择“所有任务”->“管理私钥...”
-3. 在“安全性”选项卡上，添加运行数据管理网关主机服务的、对证书具有读取访问权限的用户帐户。
+1. 启动 Microsoft 管理控制台 (MMC)。 添加面向“本地计算机”的“证书”管理单元。  
+2. 展开“证书”、“个人”，并单击“证书”。   
+3. 右键单击个人存储中的证书，并选择“所有任务”->“管理私钥...”  
+3. 在“安全性”选项卡上，添加运行数据管理网关主机服务的、对证书具有读取访问权限的用户帐户。 
 
 **示例：使用客户端证书：** 此链接服务将数据工厂链接到本地 HTTP Web 服务器。 它使用装有数据管理网关的计算机上安装的客户端证书。
 
@@ -4165,8 +4165,8 @@ auto-
 | requestMethod | Http 方法。 允许的值为 **GET** 或 **POST**。 | 不。 默认为 `GET`。 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
-| 格式 | 如果只想要**从 HTTP 终结点按原样检索数据**而不分析它，请跳过此格式设置。 <br><br> 如果要在复制期间分析 HTTP 响应内容，则支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| 格式 | 如果只想要**从 HTTP 终结点按原样检索数据**而不分析它，请跳过此格式设置。 <br><br> 如果要在复制期间分析 HTTP 响应内容，则支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 #### <a name="example-using-the-get-default-method"></a>示例：使用 GET（默认）方法
 
@@ -4275,7 +4275,7 @@ auto-
 | authenticationType |用于连接 OData 源的身份验证类型。 <br/><br/> 对于云 OData，可能的值为 Anonymous、Basic 和 OAuth（请注意：Azure 数据工厂目前仅支持基于 Azure Active Directory 的 OAuth）。 <br/><br/> 对于本地 OData，可能的值为 Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本身份验证，请指定用户名。 |是（仅在使用基本身份验证时适用） |
 | password |指定为用户名指定的用户帐户的密码。 |是（仅在使用基本身份验证时适用） |
-| authorizedCredential |如果使用 OAuth，请在数据工厂复制向导或编辑器中单击“授权”按钮，并输入凭据，此时会自动生成此属性的值。 |是（仅在使用 OAuth 身份验证时适用） |
+| authorizedCredential |如果使用 OAuth，请在数据工厂复制向导或编辑器中单击“授权”  按钮，并输入凭据，此时会自动生成此属性的值。 |是（仅在使用 OAuth 身份验证时适用） |
 | gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅指定是否要将数据从本地 OData 源上的进行复制。 |否 |
 
 #### <a name="example---using-basic-authentication"></a>示例 - 使用基本身份验证
@@ -4822,7 +4822,7 @@ auto-
 ## <a name="compute-environments"></a>计算环境
 下表列出了数据工厂支持的计算环境，以及可在这些环境中运行的转换活动。 单击所需计算环境的链接可以查看用于将该环境链接到数据工厂的链接服务的 JSON 架构。
 
-| 计算环境 | 活动 |
+| 计算环境 | activities |
 | --- | --- |
 | [按需 HDInsight 群集](#on-demand-azure-hdinsight-cluster)或[自己的 HDInsight 群集](#existing-azure-hdinsight-cluster) |[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、Hadoop 流式处理活动、[Spark 活动](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[.NET 自定义活动](#net-custom-activity) |
@@ -4941,7 +4941,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
-| Type |类型属性应设置为：AzureML。 |是 |
+| Type |类型属性应设置为：  AzureML。 |是 |
 | mlEndpoint |批处理计分 URL。 |是 |
 | apiKey |已发布的工作区模型的 API。 |是 |
 
@@ -4969,10 +4969,10 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
-| Type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
+| Type |类型属性应设置为：  AzureDataLakeAnalytics。 |是 |
 | accountName |Azure Data Lake Analytics 帐户名。 |是 |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |否 |
-| authorization |在数据工厂编辑器中单击“授权”按钮并完成 OAuth 登录后，会自动检索授权代码。 |是 |
+| authorization |在数据工厂编辑器中单击“授权”  按钮并完成 OAuth 登录后，会自动检索授权代码。 |是 |
 | subscriptionId |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
 | resourceGroupName |Azure 资源组名称 |否（如果未指定，则使用数据工厂的资源组）。 |
 | sessionId |OAuth 授权会话中的会话 ID。 每个会话 ID 都是唯一的，并且可能仅可使用一次。 使用数据工厂编辑器时，会自动生成此 ID。 |是 |
@@ -5063,7 +5063,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | type |类型属性应设置为：**OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到本地 SQL Server 数据库时所需的 connectionString 信息。 |是 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 SQL Server 数据库。 |是 |
-| username |如果使用的是 Windows 身份验证，请指定用户名。 示例：域名\\用户名。 |否 |
+| username |如果使用的是 Windows 身份验证，请指定用户名。 示例：域名\\用户名  。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 
 您可以加密使用的凭据**新建 AzDataFactoryEncryptValue** cmdlet，并使用它们在连接字符串中，如下面的示例中所示 (**EncryptedCredential**属性):
@@ -5110,7 +5110,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 ## <a name="data-transformation-activities"></a>数据转换活动
 
-活动 | 描述
+activities | 描述
 -------- | -----------
 [HDInsight Hive 活动](#hdinsight-hive-activity) | 数据工厂管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。
 [HDInsight Pig 活动](#hdinsight-pig-activity) | 数据工厂管道中的 HDInsight Pig 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 Pig 查询。

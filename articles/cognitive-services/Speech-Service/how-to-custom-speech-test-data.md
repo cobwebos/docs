@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: af801600eebed7c0d4ff01dd1edf01fa595840eb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785775"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237955"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备数据以自定义语音
 
@@ -27,9 +27,9 @@ ms.locfileid: "65785775"
 
 | 数据类型 | 使用的测试 | 数量 | 针对用于定型 | 数量 |
 |-----------|-----------------|----------|-------------------|----------|
-| [音频](#audio-data-for-testing) | 是<br>用于可视化检查 | 5 + 音频文件 | 否 | N/a |
-| [音频 + 标记人为的学习记录](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用于评估准确性 | 0.5-5 小时的音频 | 是 | 1-1,000 小时的音频 |
-| [相关的文本](##related-text-data-for-training) | 否 | N/a | 是 | 1-200 MB 的相关的文本 |
+| [音频](#audio-data-for-testing) | “是”<br>用于可视化检查 | 5 + 音频文件 | “否” | N/a |
+| [音频 + 标记人为的学习记录](#audio--human-labeled-transcript-data-for-testingtraining) | “是”<br>用于评估准确性 | 0.5-5 小时的音频 | “是” | 1-1,000 小时的音频 |
+| [相关的文本](##related-text-data-for-training) | “否” | N/a | “是” | 1-200 MB 的相关的文本 |
 
 应按类型到数据集分组并以 zip 文件上传文件。 每个数据集只能包含一种数据类型。
 
@@ -55,7 +55,7 @@ ms.locfileid: "65785775"
 | 属性 | 值 |
 |----------|-------|
 | 文件格式 | RIFF (WAV) |
-| 采样速率 | 8,000 Hz 或 16,000 hz 为单位 |
+| 采样频率 | 8,000 Hz 或 16,000 hz 为单位 |
 | 声道 | 1（单音） |
 | 每个音频的最大长度 | 2 小时 |
 | 示例格式 | PCM，16 位 |
@@ -66,8 +66,8 @@ ms.locfileid: "65785775"
 
 | 活动 | 描述 | Sox 命令 |
 |----------|-------------|-------------|
-| 检查音频格式 | 使用此命令检查的音频文件格式。 | `soxi <filename>.wav` |
-| 将音频格式转换为 | 使用此命令将音频文件转换为单通道，16 位 48khz。 | `sox <filename>.wav -b 16 -3 signed-integer -c l -r 48k -t wav <filename>.wav` |
+| 检查音频格式 | 使用此命令检查的音频文件格式。 | `sox --i <filename>` |
+| 将音频格式转换为 | 使用此命令将音频文件转换为单通道，16 位、 16 KHz。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>测试/培训的音频 + 人标记为脚本数据
 
@@ -76,7 +76,7 @@ ms.locfileid: "65785775"
 | 属性 | 值 |
 |----------|-------|
 | 文件格式 | RIFF (WAV) |
-| 采样速率 | 8,000 Hz 或 16,000 hz 为单位 |
+| 采样频率 | 8,000 Hz 或 16,000 hz 为单位 |
 | 声道 | 1（单音） |
 | 每个音频的最大长度 | 60 s |
 | 示例格式 | PCM，16 位 |
@@ -85,7 +85,7 @@ ms.locfileid: "65785775"
 
 如需进行改进识别 word 删除和替换、 大量数据的解决问题。 通常情况下，建议为大约 10 到 1,000 个小时的音频提供通过字转录。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
 
-  例如：
+  例如:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -94,7 +94,7 @@ ms.locfileid: "65785775"
 > [!NOTE]
 > 听录应编码为 UTF-8 字节顺序标记 (BOM)。
 
-听录内容应经过文本规范化，以便可由系统处理。 但是，用户在将数据上传到自定义语音服务之前，必须完成一些重要的规范化操作。 准备你个转录时要使用的相应语言，请参阅[如何创建用户标记的脚本](how-to-custom-speech-human-labeled-transcriptions.md)
+听录内容应经过文本规范化，以便可由系统处理。 但是，用户在将数据上传到自定义语音服务之前，必须完成一些重要的规范化操作。  准备你个转录时要使用的相应语言，请参阅[如何创建用户标记的脚本](how-to-custom-speech-human-labeled-transcriptions.md)
 
 音频文件和相应转录已收集后，它们应打包为一个.zip 文件上传到自定义语音门户之前。 这是具有三个音频文件和一个用户标记为脚本文件的示例数据集：
 
@@ -148,9 +148,9 @@ ms.locfileid: "65785775"
 
 自定义的发音现已推出英语 (EN-US) 和德语 (DE-DE)。 下表显示受支持的字符的语言：
 
-| 语言 | 区域设置 | 字符 |
+| 语言 | 区域设置 | 角色 |
 |----------|--------|------------|
-| 英语 | en-US | a、 b、 c、 d、 e、 f、 g、 h、 i，j、 k、 l、 m、 n、 o、 p、 q、 r、 s、 t、 u、 v、 w、 x、 y、 z |
+| 英语 | zh-CN | a、 b、 c、 d、 e、 f、 g、 h、 i，j、 k、 l、 m、 n、 o、 p、 q、 r、 s、 t、 u、 v、 w、 x、 y、 z |
 | 德语 | de-DE | ä，ö，ü，a、 b、 c、 d、 e、 f、 g、 h、 i，j、 k、 l、 m、 n、 o、 p、 q、 r、 s、 t、 u、 v、 w、 x、 y、 z |
 
 使用此表以确保你的发音的相关的数据文件的格式正确。 发音文件很小，并且不应超过几个 Kb。

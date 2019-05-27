@@ -45,7 +45,7 @@ ms.locfileid: "60318472"
 
 - 创建管道最简单的方法是使用复制数据向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-- 也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 HTTP 源复制到Azure Blob 存储的 JSON 示例，请参阅 [JSON 示例](#json-examples)。
+- 也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、 **.NET API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 HTTP 源复制到Azure Blob 存储的 JSON 示例，请参阅 [JSON 示例](#json-examples)。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
@@ -55,8 +55,8 @@ ms.locfileid: "60318472"
 | --- | --- | --- |
 | type | **type** 属性必须设置为 **Http**。 | 是 |
 | url | Web 服务器的基 URL。 | 是 |
-| authenticationType | 指定身份验证类型。 允许的值为：Anonymous、Basic、Digest、Windows 和 ClientCertificate。 <br><br> 有关这些身份验证类型的更多属性和 JSON 示例，请参阅本文后续部分。 | 是 |
-| enableServerCertificateValidation | 指定当源为 HTTPS Web 服务器时，是否启用服务器 SSL 证书验证。 当 HTTPS 服务器使用自签名证书时，将其设置为 **false**。 | 否<br /> （默认值为 true） |
+| authenticationType | 指定身份验证类型。 允许的值为：Anonymous、Basic、Digest、Windows 和 ClientCertificate      。 <br><br> 有关这些身份验证类型的更多属性和 JSON 示例，请参阅本文后续部分。 | 是 |
+| enableServerCertificateValidation | 指定当源为 HTTPS Web 服务器时，是否启用服务器 SSL 证书验证。 当 HTTPS 服务器使用自签名证书时，将其设置为 **false**。 | 否<br /> （默认值为 true）  |
 | gatewayName | 用于连接本地 HTTP 源的数据管理网关实例的名称。 | 是（如果从本地 HTTP 源复制数据） |
 | encryptedCredential | 用于访问 HTTP 终结点的已加密凭据。 在复制向导中或使用 **ClickOnce** 对话框配置身份验证信息时，将自动生成该值。 | 否<br /> （仅当从本地 HTTP 服务器复制数据时才适用） |
 
@@ -64,7 +64,7 @@ ms.locfileid: "60318472"
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>使用基本、摘要或 Windows 身份验证
 
-将“authenticationType”设置为“基本”、“摘要式”或“Windows”。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
+将“authenticationType”设置为“基本”、“摘要式”或“Windows”     。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
@@ -92,7 +92,7 @@ ms.locfileid: "60318472"
 
 ### <a name="using-clientcertificate-authentication"></a>使用 ClientCertificate 身份验证
 
-若要使用基本身份验证，请将“authenticationType”设置为“ClientCertificate”。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
+若要使用基本身份验证，请将“authenticationType”设置为“ClientCertificate”   。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
@@ -102,10 +102,10 @@ ms.locfileid: "60318472"
 
 如果使用 **certThumbprint** 进行身份验证，并在本地计算机的个人存储中安装了证书，则需要向网关服务授予读取权限：
 
-1. 打开 Microsoft 管理控制台 (MMC)。 添加面向“本地计算机”的“证书”管理单元。
-2. 展开“证书” > “个人”，然后选择“证书”。
-3. 右键单击个人存储中的证书，并选择“所有任务” >“管理私钥”。
-3. 在“安全性”选项卡上，添加运行数据管理网关主机服务并对证书具有读取访问权限的用户帐户。  
+1. 打开 Microsoft 管理控制台 (MMC)。 添加面向“本地计算机”的“证书”管理单元。  
+2. 展开“证书” > “个人”，然后选择“证书”    。
+3. 右键单击个人存储中的证书，并选择“所有任务” >“管理私钥”   。
+3. 在“安全性”选项卡上，添加运行数据管理网关主机服务并对证书具有读取访问权限的用户帐户  。  
 
 示例：**使用客户端证书**
 
@@ -161,12 +161,12 @@ ms.locfileid: "60318472"
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 必须设置为 **Http**。 | 是 |
-| relativeUrl | 包含数据的资源的相对 URL。 未指定路径时，仅使用链接服务定义中指定的 URL。 <br><br> 若要构造动态 URL，可以使用[数据工厂函数和系统变量](data-factory-functions-variables.md)。 示例：**relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)**。 | 否 |
+| relativeUrl | 包含数据的资源的相对 URL。 未指定路径时，仅使用链接服务定义中指定的 URL。 <br><br> 若要构造动态 URL，可以使用[数据工厂函数和系统变量](data-factory-functions-variables.md)。 示例：**relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)** 。 | 否 |
 | requestMethod | HTTP 方法。 允许的值为 **GET** 和 **POST**。 | 否 <br />（默认值为 **GET**） |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
-| format | 如果要*从 HTTP 终结点按原样检索数据*而不分析它，请跳过 **format** 设置。 <br><br> 如果要在复制期间分析 HTTP 响应内容，则支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| format | 如果要*从 HTTP 终结点按原样检索数据*而不分析它，请跳过 **format** 设置。 <br><br> 如果要在复制期间分析 HTTP 响应内容，则支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat      。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 示例：**使用 GET（默认）方法**
 
@@ -223,7 +223,7 @@ ms.locfileid: "60318472"
 
 | 属性 | 说明 | 需要 |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 这是获取响应而不是读取响应数据的超时。 | 否<br />（默认值：**00:01:40**） |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 这是获取响应而不是读取响应数据的超时。 | 否<br />（默认值：**00:01:40**） |
 
 ## <a name="supported-file-and-compression-formats"></a>支持的文件和压缩格式
 

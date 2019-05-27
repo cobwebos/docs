@@ -1,5 +1,5 @@
 ---
-title: 异常情况检测程序 API 是什么？ | Microsoft Docs
+title: 什么是异常检测器 API？ | Microsoft Docs
 titleSuffix: Azure Cognitive Services
 description: 使用异常检测器 API 的高级的算法来标识时序数据中的异常。
 services: cognitive-services
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 48dffb8853d3def590e434c1683ecf038e2a194e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473140"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64415825"
 ---
-# <a name="what-is-the-anomaly-detector-api"></a>异常情况检测程序 API 是什么？
+# <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
-异常情况检测器 API，可监视并使用机器学习时序数据中检测异常情况。 通过自动发现并将最佳配适模型应用于你的数据，而不考虑行业，方案中或数据量调整异常检测程序 API。 使用时序数据，API 确定用于异常情况检测，预期值的边界和哪些数据点都是异常。
+通过异常检测器 API，可使用机器学习监视和检测时序数据中的异常。 通过自动发现并将最佳配适模型应用于你的数据，而不考虑行业，方案中或数据量调整异常检测程序 API。 使用时序数据，API 确定用于异常情况检测，预期值的边界和哪些数据点都是异常。
 
 ![检测服务请求中的模式更改](./media/anomaly_detection2.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "58473140"
 
 [!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
-在注册了：
+注册后：
 
 1. 执行时间系列数据并将其转换为有效的 JSON 格式。 使用[最佳做法](concepts/anomaly-detection-best-practices.md)准备数据以获得最佳结果时。
 1. 将请求发送到与你的数据，异常情况检测器 API。

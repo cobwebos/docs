@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: b55aca79047a224a9e1a474afdabf43e2701872d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75538519b7d43aa702e15ce3c22ea4acc73ade87
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473138"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072202"
 ---
 # <a name="percentage-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的百分比预生成实体
 百分比数字可以显示为分数 `3 1/2` 或百分比 `2%`。 此实体已定型，因此不需要将包含百分比的陈述示例添加到应用程序意向中。 [许多语言区域](luis-reference-prebuilt-entities.md)都支持百分比实体。 
@@ -25,6 +25,9 @@ ms.locfileid: "61473138"
 百分比托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) GitHub 存储库中
 
 ## <a name="resolution-for-prebuilt-percentage-entity"></a>预构建百分比实体的解析
+
+### <a name="api-version-2x"></a>API 版本 2.x
+
 以下示例显示了 **builtin.percentage** 实体的解析。
 
 ```json
@@ -51,6 +54,64 @@ ms.locfileid: "61473138"
       }
     }
   ]
+}
+```
+
+### <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
+
+以下 JSON 的 `verbose` 参数设置为 `false`：
+
+```json
+{
+    "query": "set a trigger when my stock goes up 2%",
+    "prediction": {
+        "normalizedQuery": "set a trigger when my stock goes up 2%",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.541765451
+            }
+        },
+        "entities": {
+            "percentage": [
+                2
+            ]
+        }
+    }
+}
+```
+
+以下 JSON 的 `verbose` 参数设置为 `true`：
+
+```json
+{
+    "query": "set a trigger when my stock goes up 2%",
+    "prediction": {
+        "normalizedQuery": "set a trigger when my stock goes up 2%",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.541765451
+            }
+        },
+        "entities": {
+            "percentage": [
+                2
+            ],
+            "$instance": {
+                "percentage": [
+                    {
+                        "type": "builtin.percentage",
+                        "text": "2%",
+                        "startIndex": 36,
+                        "length": 2,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 
