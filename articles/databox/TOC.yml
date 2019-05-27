@@ -121,6 +121,12 @@
           items:
             - name: 什么是 Data Box Heavy？
               href: data-box-heavy-overview.md
+        - name: 概念
+          items:
+            - name: 审查要求
+              href: data-box-heavy-system-requirements.md
+            - name: 了解限制
+              href: data-box-heavy-limits.md
     - name: 资源
       items:
         - name: Data Box 产品

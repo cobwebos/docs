@@ -3,16 +3,16 @@ title: 使用 Azure 管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
-ms.service: azure-resource-manager
+ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: ceb606f2243ef723866e485c6580a6323c1c92ec
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1958a829df2643bd218d4e8d7f6dd563b5b395e8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722481"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237163"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -58,7 +58,7 @@ ms.locfileid: "64722481"
   - 未对任何人授予对根管理组的默认访问权限。 只有 Azure AD 全局管理员可将自身提升为拥有访问权限的角色。  拥有访问权限后，全局管理员可向要管理的其他用户分配任何 RBAC 角色。  
 
 > [!IMPORTANT]
-> 对根管理组进行的任何用户访问权限分配或策略分配都适用于在目录中的所有资源。
+> 对根管理组进行的任何用户访问权限分配或策略分配都适用于在目录中的所有资源  。
 > 因此，所有客户都应评估在此作用域中定义项目的需求。
 > 用户访问权限和策略分配应仅在此作用域内“必须拥有”。  
 
@@ -113,7 +113,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 
 ![将活动日志与管理组配合使用](media/al-mg.png)
 
-如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示：**"/providers/Microsoft.Management/managementGroups/{yourMgID}"**。
+如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示： **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** 。
 
 ## <a name="next-steps"></a>后续步骤
 

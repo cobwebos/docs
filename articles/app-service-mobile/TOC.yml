@@ -186,18 +186,6 @@
               href: ../app-service/environment/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
             - name: 使用 ExpressRoute 的网络配置详细信息
               href: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 迁移
-      items:
-        - name: 应用服务与移动服务的比较
-          href: app-service-mobile-value-prop-migration-from-mobile-services.md
-        - name: 将现有移动服务迁移到应用服务
-          href: app-service-mobile-migrating-from-mobile-services.md
-        - name: 将现有移动服务升级到应用服务
-          items:
-            - name: .NET 后端
-              href: app-service-mobile-net-upgrading-from-mobile-services.md
-            - name: Node.js backend
-              href: app-service-mobile-node-backend-upgrading-from-mobile-services.md
     - name: 安全
       items:
         - name: 使用标识提供者进行身份验证

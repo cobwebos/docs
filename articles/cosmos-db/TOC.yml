@@ -71,7 +71,7 @@
     - name: Python 示例
       href: sql-api-python-samples.md
     - name: PowerShell
-      href: powershell-samples.md
+      href: powershell-samples-sql.md
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure 资源管理器
@@ -277,6 +277,8 @@
                   href: cassandra-spark-table-copy-ops.md
             - name: 使用资源管理器模板进行管理
               href: manage-cassandra-with-resource-manager.md
+            - name: 使用 PowerShell 管理
+              href: powershell-samples-cassandra.md
     - name: MongoDB API
       items:
         - name: 介绍
@@ -356,6 +358,8 @@
               displayName: custom commands
             - name: 使用资源管理器模板进行管理
               href: manage-mongodb-with-resource-manager.md
+            - name: 使用 PowerShell 管理
+              href: powershell-samples-mongodb.md
     - name: Gremlin API
       displayName: 'graph, graph database'
       items:
@@ -394,6 +398,8 @@
               maintainContext: true
             - name: 使用资源管理器模板进行管理
               href: manage-gremlin-with-resource-manager.md
+            - name: 使用 PowerShell 管理
+              href: powershell-samples-gremlin.md
     - name: 表 API
       items:
         - name: 介绍
@@ -446,6 +452,8 @@
               href: table-storage-design-guide.md
             - name: 使用资源管理器模板进行管理
               href: manage-table-with-resource-manager.md
+            - name: 使用 PowerShell 管理
+              href: powershell-samples-table.md
         - name: 引用
           items:
             - name: .NET

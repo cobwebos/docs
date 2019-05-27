@@ -754,17 +754,3 @@
       href: /azure/architecture/
     - name: 客户案例
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: 弹性作业（已弃用）
-      items:
-        - name: 弹性作业（已弃用）
-          href: sql-database-elastic-jobs-overview.md
-        - name: 安装弹性作业（已弃用）
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: 创建作业 - 门户（已弃用）
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: 创建作业 - Azure PowerShell（已弃用）
-          href: sql-database-elastic-jobs-powershell.md
-        - name: 创建作业 - 示例应用（已弃用）
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: 卸载弹性作业（已弃用）
-          href: sql-database-elastic-jobs-uninstall.md
