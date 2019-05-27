@@ -9,11 +9,11 @@ ms.date: 05/21/2018
 ms.author: estfan
 ms.custom: include file
 ms.openlocfilehash: 4d9d0f132a2cc754cd9f69bb54ef4dbb78a2c493
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60958557"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145250"
 ---
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
@@ -25,7 +25,7 @@ ms.locfileid: "60958557"
    | 存储帐户 | <*storage-account*> | 从列表中选择存储帐户。 | 
    ||| 
 
-   例如：
+   例如:
 
    ![创建连接](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
 

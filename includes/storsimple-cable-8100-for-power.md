@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482633"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66155798"
 ---
 #### <a name="to-cable-for-power"></a>进行电源布线
 1. 请确保每个电源和冷却模块 (PCM) 上的电源开关处于“关”位置。
@@ -25,7 +25,7 @@ ms.locfileid: "60482633"
    
     **8100 设备上的电源布线**
    
-   | Label | 描述 |
+   | 标签 | 描述 |
    |:--- |:--- |
    | 第 |PCM 0 |
    | 2 |控制器 1 |

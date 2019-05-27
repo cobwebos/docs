@@ -9,14 +9,14 @@ ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 9a123ed45b5857aa40fc9853a95c528833ba8aa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60548666"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66152422"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 
@@ -179,9 +179,9 @@ ms.locfileid: "60548666"
             "properties": {
                "sapOpenHubMaxRequestId": {
                   "type": "string"
-               },
-               "type": "object"
-            }
+               }
+            },
+            "type": "object"
          }
          ```
 

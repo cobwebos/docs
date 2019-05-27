@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: wesmc
 ms.openlocfilehash: 498a7ee28b9404d0733e4615f4df635a8c904b51
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118391"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132821"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
 
@@ -81,10 +81,10 @@ SKU 的系列。
 
 值对应于以下缓存大小：
 
-| Value | 基本和标准<br>缓存大小 | 高级<br>缓存大小 |
+| 值 | 基本和标准<br>缓存大小 | 高级<br>缓存大小 |
 | :---: | :------------------------------: | :-------------------: |
 | 0     | 250 MB （默认值）                 | 不适用                   |
-| 1     | 1 GB                             | 6 GB （默认值）        |
+| 第     | 1 GB                             | 6 GB （默认值）        |
 | 2     | 2.5 GB                           | 13 GB                 |
 | 3     | 6 GB                             | 26 GB                 |
 | 4     | 13 GB                            | 53 GB                 |

@@ -1,5 +1,5 @@
 ---
-title: 数据集定义和版本控制
+title: 数据集定义和使用 azureml 数据集进行版本控制
 titleSuffix: Azure Machine Learning service
 description: 了解如何更新数据集定义和管理定义的生命周期
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: 7c861c8cdc9985caa42bd2beb5236a4f4e93e4c7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+ms.openlocfilehash: e58ce156deaaad259ea7b74521bcf9b79afbd183
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028675"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146206"
 ---
 # <a name="update-and-manage-the-lifecycle-of-dataset-definitions"></a>更新和管理数据集定义的生命周期
 
@@ -172,8 +172,8 @@ ds_def_old.head(5)
       <th></th>
       <th>ID</th>
       <th>案例号</th>
-      <th>date</th>
-      <th>街区</th>
+      <th>Date</th>
+      <th>阻止</th>
       <th>IUCR</th>
       <th>主要类型</th>
       <th>描述</th>
@@ -344,7 +344,7 @@ dataset.get_definition(version_id=1)
 
 可以独立管理每个数据集定义的生命周期。 有三个阶段的生命周期： 活动、 不推荐使用，或已存档。
 
-### <a name="active"></a>活动
+### <a name="active"></a>活跃
 
 创建新的数据集定义后，它默认处于活动状态。 
 

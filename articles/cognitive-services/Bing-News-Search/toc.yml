@@ -109,3 +109,5 @@
       href: language-support.md
     - name: 适用于必应新闻搜索 API 的分析
       href: bing-news-stats.md
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

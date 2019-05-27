@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
 ms.openlocfilehash: 1432db2651ad08a9d261592f6b48fa875a5f1d5f
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571848"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66136330"
 ---
 在与流量管理器集成的 Web 应用上设置自定义域名的功能仅适用于“标准”定价层。  
 

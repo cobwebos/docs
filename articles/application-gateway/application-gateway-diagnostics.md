@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 3/28/2019
 ms.author: amitsriva
 ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620870"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66135463"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
 
@@ -131,7 +131,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="enable-logging-through-the-azure-portal"></a>通过 Azure 门户启用日志记录
 
-1. 在 Azure 门户中找到资源，然后选择**诊断设置**。
+1. 在 Azure 门户中找到资源，然后选择“诊断设置”。
 
    对于应用程序网关，提供 3 种日志：
 
@@ -139,7 +139,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
    * 性能日志
    * 防火墙日志
 
-2. 若要开始收集数据，请选择**启用诊断**。
+2. 若要开始收集数据，请选择“启用诊断”。
 
    ![启用诊断][1]
 
@@ -147,7 +147,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    ![启动配置过程][2]
 
-5. 为设置键入一个名称，确认设置，然后选择**保存**。
+5. 键入设置的名称，确认设置，然后选择“保存”。
 
 ### <a name="activity-log"></a>活动日志
 
@@ -328,7 +328,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。
 
-浏览到应用程序网关下,**监视**选择**指标**。 若要查看可用值，请选择“指标”下拉列表。
+浏览到应用程序网关，并在“监视”下选择“指标”。 若要查看可用值，请选择“指标”下拉列表。
 
 在下图中可以看到过去 30 分钟显示的三个指标的示例：
 

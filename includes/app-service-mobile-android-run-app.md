@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 505eac0996129a17b6b68e8ab4ea2d4fc80fd473
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134339"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140985"
 ---
 1. 访问 [Azure 门户]。 依次单击“浏览全部” > “移动应用”> 刚创建的后端。 在移动应用设置中，依次单击“快速启动” > “Android”。 在“配置客户端应用程序”下，单击“下载”。 这样可以为预配置为连接到后端的应用下载完整的 Android 项目。 
 2. 使用“导入项目（Eclipse ADT、Gradle 等）”打开使用“Android Studio”的项目。 请确保使用此导入选项以避免任何 JDK 错误。

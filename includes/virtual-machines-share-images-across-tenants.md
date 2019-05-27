@@ -9,11 +9,11 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546778"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145889"
 ---
 共享的映像库可以使用 RBAC 共享映像。 您可以使用 RBAC 共享你的租户，以及甚至对个人租户外部的映像。 但是，如果你想要共享 Azure 租户，在规模较大，外部图像应创建的应用注册，以方便共享。  使用应用注册可以支持更复杂的共享方案，如： 
 
@@ -60,5 +60,5 @@ https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Appl
 1. 下**选择**类型*myGalleryApp*时它都显示在列表中选择它。 完成后，选择**保存**。
 
 > [!NOTE]
-> 需要要等待的时间才能完全完成正在生成并复制，可以使用相同的托管的映像创建另一个映像版本的映像版本。
+> 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
 ms.openlocfilehash: b6e0e57881154f5885e9f518363eda3c5b1169a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201682"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171270"
 ---
 ### <a name="install-via-composer"></a>通过 Composer 安装
 1. 在项目的根目录中创建名为 **composer.json** 的文件并向其添加以下代码：

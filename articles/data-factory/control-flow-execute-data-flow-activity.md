@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e1d4ce355f34014d5099c4b46f4420d032363fce
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236676"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153507"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行数据流活动
 使用 execute 数据流活动的管道调试 （沙盒） 运行和触发的管道运行中运行 ADF 数据的流。
@@ -64,6 +64,10 @@ ms.locfileid: "65236676"
 这是必填的字段，用于定义要用于您数据流的活动执行的集成运行时。 默认情况下，数据工厂将使用默认自动解决 Azure 集成运行时。 但是，可以创建自己的 Azure 集成运行时，定义特定的区域，请将数据流活动执行的计算类型、 内核计数和 TTL。
 
 数据流执行的默认设置是与 TTL 为 60 分钟的常规计算的 8 个核心。
+
+Data Flow 活动可以控制的 Spark 执行环境。 在中[Azure 集成运行时](concepts-integration-runtime.md)设置计算类型 （常规用途、 内存优化和计算优化），辅助内核数和到-生存时间以匹配使用数据流计算的执行引擎的设置系统要求。 此外，设置 TTL 将允许您维护的热群集，可立即用于作业执行。
+
+![Azure 集成运行时](media/data-flow/ir-new.png "Azure 集成运行时")
 
 ### <a name="staging-area"></a>临时区域
 

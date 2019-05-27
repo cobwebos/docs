@@ -184,6 +184,8 @@
   items:
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价和限制

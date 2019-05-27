@@ -2,19 +2,18 @@
 title: include 文件
 description: include 文件
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 03/21/2018
-ms.date: 12/24/2018
-ms.author: v-jay
+ms.date: 03/21/2018
+ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1199819d274590cc81d0234680f8765f9cc36c0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419575"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121011"
 ---
 ### <a name="noconnection"></a>修改本地网关 IP 地址前缀 - 无网关连接
 
@@ -22,14 +21,14 @@ ms.locfileid: "60419575"
 
 1. 在“本地网络网关”资源的“设置”部分，单击“配置”。
 2. 在“添加更多地址范围”框中添加 IP 地址空间。
-3. 单击“保存”以保存设置。
+3. 单击**保存**以保存设置。
 
 #### <a name="to-remove-address-prefixes"></a>删除地址前缀：
 
 1. 在“本地网络网关”资源的“设置”部分，单击“配置”。
 2. 在包含要删除的前缀的行上，单击“...”。
 3. 单击“删除”。
-4. 单击“保存”以保存设置。
+4. 单击**保存**以保存设置。
 
 ### <a name="withconnection"></a>修改本地网关 IP 地址前缀 - 存在网关连接
 
@@ -39,7 +38,7 @@ ms.locfileid: "60419575"
 
 1. 在“本地网络网关”资源的“设置”部分中，单击“连接”。
 2. 在用于每个连接的行上单击“...” ，然后单击“删除”。
-3. 单击“保存”以保存设置。
+3. 单击**保存**以保存设置。
 
 #### <a name="2-modify-the-address-prefixes"></a>2.修改地址前缀。
 
@@ -47,14 +46,14 @@ ms.locfileid: "60419575"
 
 1. 在“本地网络网关”资源的“设置”部分中，单击“配置”。
 2. 添加 IP 地址空间。
-3. 单击“保存”以保存设置。
+3. 单击**保存**以保存设置。
 
 删除地址前缀：
 
 1. 在“本地网络网关”资源的“设置”部分，单击“配置”。
 2. 在含有要删除前缀的行上，单击“...”。
 3. 单击“删除”。
-4. 单击“保存”以保存设置。
+4. 单击**保存**以保存设置。
 
 #### <a name="3-recreate-the-connection"></a>3.重新创建连接。
 

@@ -2,19 +2,18 @@
 title: include 文件
 description: include 文件
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 01/16/2019
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 01/16/2019
+ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c6f9065786879749eee6187e93283f4c026b7fff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766161"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150069"
 ---
 以下计算机配置用于执行下面的步骤：
 

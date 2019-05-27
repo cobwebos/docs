@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: f4ba467b6d80c9ccafba0a91c1f04152b92cf869
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58115901"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140672"
 ---
 1. 在 Mac 上访问 [Azure 门户]。 单击“所有服务” > “应用程序服务”> 刚创建的后端。 在移动应用设置中，选择首选语言：
 

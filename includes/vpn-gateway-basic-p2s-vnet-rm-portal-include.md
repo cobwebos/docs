@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 940306f79aa48567e3da943fe752a6acdf206c27
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53443984"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157328"
 ---
 若要使用 Azure 门户在 Resource Manager 部署模型中创建 VNet，请执行以下步骤。 这些屏幕截图作为示例提供。 请务必替换成自己的值。 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "53443984"
 10. **子网**：添加子网名称和子网地址范围。 可在创建 VNet 后再添加其他子网。
 11. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”，并单击“创建”。
 
-    ![固定到仪表板](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/pintodashboard150.png "固定到仪表板")
-12. 单击“创建”后，将看到仪表板上的磁贴反映了 VNet 的进度。 创建 VNet 时，该磁贴会更改。
+    ![固定到仪表板](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/pintodashboard150.png "pin to dashboard")
+12. 单击“创建” 后，会看到仪表板上有一个反映 VNet 进度的磁贴。 创建 VNet 时，该磁贴会更改。
 
     ![创建虚拟网络磁贴](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/deploying150.png "创建虚拟网络磁贴")

@@ -1,7 +1,7 @@
 ---
 title: 在 Azure 门户中创建认知服务帐户
 titlesuffix: Azure Cognitive Services
-description: 如何在 Azure 门户中创建的 Azure 认知服务 Api 帐户。
+description: 如何在 Azure 门户中创建 Azure 认知服务 API 帐户。
 services: cognitive-services
 author: garyericson
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: garye
-ms.openlocfilehash: b5adb5b8bddd0f379ac581f3268f0121791cf0bc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 831f1d22c4da215bed3ed55b659332aa3b57472b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546377"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145940"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建认知服务帐户
 
@@ -92,6 +92,8 @@ ms.locfileid: "65546377"
 在认知服务资源中，可以使用“概述”部分中的终结点 URL 和密钥在应用程序中进行 API 调用。
 
 ![“资源”屏幕](media/cognitive-services-apis-create-account/resourceScreen.png)
+
+记下的位置和密钥。 可以通过选择获取的密钥**密钥**下**资源管理**。
 
 ## <a name="next-steps"></a>后续步骤
 

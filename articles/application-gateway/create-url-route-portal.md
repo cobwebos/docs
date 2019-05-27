@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 4/18/2019
 ms.author: victorh
 ms.openlocfilehash: 5307f7674635fd33241e1faba9bb0b7c0432d10b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001025"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66134775"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教程：通过 Azure 门户使用基于路径的路由规则创建应用程序网关
 
@@ -142,8 +142,8 @@ ms.locfileid: "60001025"
 
 1. 选择“规则”，然后选择“基于路径”。
 2. 输入 *rule2* 作为名称。
-3. 输入 *Images* 作为第一个路径的名称。 输入 */images/*\* 作为路径。 选择后端池的 **imagesBackendPool**。
-4. 输入 *Video* 作为第二个路径的名称。 输入 */video/*\* 作为路径。 选择后端池的 **videoBackendPool**。
+3. 输入 *Images* 作为第一个路径的名称。 输入 */images/* \* 作为路径。 选择后端池的 **imagesBackendPool**。
+4. 输入 *Video* 作为第二个路径的名称。 输入 */video/* \* 作为路径。 选择后端池的 **videoBackendPool**。
 
     ![创建基于路径的规则](./media/create-url-route-portal/application-gateway-route-rule.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "60001025"
 
     ![记下应用程序网关的公共 IP 地址](./media/create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如 http://40.121.222.19。
+2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如 [http://40.121.222.19](http://40.121.222.19)。
 
     ![在应用程序网关中测试基 URL](./media/create-url-route-portal/application-gateway-iistest.png)
 

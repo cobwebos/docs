@@ -9,12 +9,12 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1bb5534d2f98a4e5143038ab1d5fbbcc76184fe
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739154"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133188"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -32,27 +32,10 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ![载入清单解决方案](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
-
-下表显示了受支持的映射：
-
-|**Log Analytics 工作区区域**|**Azure 自动化区域**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|西欧|西欧|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP 和 EastUS 映射到自动化帐户的 Log Analytics 工作区不精确的区域到另一个区域映射，但是正确的映射。
-
-<sup>2</sup>由于容量限制范围区域不可用时创建新的资源。 这包括自动化帐户和 Log Analytics 工作区。 但是，在区域中预先存在链接的资源应继续工作。
+> [!NOTE]
+> 在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+>
+> 有关受支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
 
 更改跟踪和清单解决方案提供针对虚拟机的[跟踪更改](automation-vm-change-tracking.md)和[清单](automation-vm-inventory.md)功能。 在此步骤中，在虚拟机上启用解决方案。
 
@@ -82,7 +65,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 导航到你的自动化帐户并在“常规”下选择“保存的搜索”。 可以在下表中看到这些解决方案使用的两个已保存搜索：
 
-|名称     |类别  |别名  |
+|名称     |Category  |别名  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |
@@ -121,7 +104,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 若要为所有可用的计算机和将来的计算机启用解决方案，请选择“在所有可用的和将来的计算机上启用”。 此选项会从工作区中删除已保存的搜索和作用域配置。 此操作将为向工作区进行报告的所有 Azure 和非 Azure 计算机打开解决方案。 选中此项后，此操作将永久禁用“管理计算机”按钮，因为没有剩余的范围配置。
 
-### <a name="selected-machines"></a>所选计算机
+### <a name="selected-machines"></a>选定的计算机
 
 若要为一台或多台计算机启用解决方案，请选择“在所选计算机上启用”并单击要添加到解决方案的每台计算机旁边的“添加”。 此任务会将所选计算机名称添加到计算机组为此解决方案保存的搜索查询。
 
@@ -161,6 +144,8 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 * 启动和停止 VM Runbook 计划
 * 启动和停止 VM Runbook
 * 变量
+
+或者您可以还取消链接工作区在自动化帐户中从 Log Analytics 工作区。 在工作区中，选择**自动化帐户**下**相关资源**。 在自动化帐户页上选择**取消链接帐户**。
 
 ## <a name="next-steps"></a>后续步骤
 

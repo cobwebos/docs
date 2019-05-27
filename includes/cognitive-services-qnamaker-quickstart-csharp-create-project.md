@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 09/27/2018
 ms.author: diberry
 ms.openlocfilehash: e077373532ffdc409c3748e969c33a3b84b4f6c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177900"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145673"
 ---
 1. 打开 Visual Studio 2017 Community Edition。
 1. 创建一个新的“控制台应用(.NET Core)”项目并将其命名为 `QnaMakerQuickstart`。 接受其余设置的默认值。

@@ -5,16 +5,15 @@ services: functions
 author: nzthiago
 ms.service: azure-functions
 ms.topic: include
-origin.date: 02/21/2018
-ms.date: 03/25/2019
-ms.author: v-junlch
+ms.date: 02/21/2018
+ms.author: nzthiago
 ms.custom: include file
 ms.openlocfilehash: ffb29fc76313e8870b52cb0a63936da7853ea6ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61036195"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131336"
 ---
 ## <a name="timeout"></a>函数应用超时持续时间 
 
@@ -24,9 +23,8 @@ ms.locfileid: "61036195"
 |------|---------|---------|---------|
 | 消耗 | 1.x | 5 | 10 |
 | 消耗 | 2.x | 5 | 10 |
-| 应用服务 | 1.x | 不受限制 | 不受限制 |
-| 应用服务 | 2.x | 30 | 不受限制 |
+| 应用服务 | 1.x | 无限制 | 无限制 |
+| 应用服务 | 2.x | 30 | 无限制 |
 
 > [!NOTE] 
 > 不管函数应用超时设置如何，230 秒是 HTTP 触发的函数在响应请求时需要的最长时间。 这起因于 [Azure 负载均衡器的默认空闲超时](../articles/app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)。 对于处理时间较长的情况，考虑使用 [Durable Functions 异步模式](../articles/azure-functions/durable/durable-functions-concepts.md#async-http)或[延迟实际工作并返回即时响应](../articles/azure-functions/functions-best-practices.md#avoid-long-running-functions)。
-

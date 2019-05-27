@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
 ms.openlocfilehash: b6cde8402c699a7477cd0efc79a44b3f5e150ad0
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792644"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146307"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>将 IoT 中心从操作监视迁移到诊断设置
 
 使用[操作监视](iot-hub-operations-monitoring.md)跟踪 IoT 中心内的操作状态的客户可以将该工作流迁移到 [Azure 诊断设置](../azure-monitor/platform/diagnostic-logs-overview.md)（Azure Monitor 的一项功能）。 诊断设置针对许多 Azure 服务提供了资源级诊断信息。
 
-**IoT 中心的监视功能已弃用的操作**，且已从门户中删除。 本文提供了将工作负荷从操作监视移动到诊断设置的步骤。 若要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)。
+**IoT 中心的操作监视功能已弃用**，已从门户中删除。 本文提供了将工作负荷从操作监视移动到诊断设置的步骤。 若要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)。
 
 ## <a name="update-iot-hub"></a>更新 IoT 中心
 
@@ -30,7 +30,7 @@ ms.locfileid: "57792644"
 ### <a name="turn-off-operations-monitoring"></a>关闭操作监视
 
 > [!NOTE]
-> 按 2019 年 3 月 11 日，从 IoT 中心的 Azure 门户界面中删除监视功能的操作。 下面的步骤不再适用。 若要迁移，请确保在 Azure Monitor 诊断设置更高版本打开正确的类别。
+> 从 2019 年 3 月 11 日开始，IoT 中心的 Azure 门户接口不再有操作监视功能。 以下步骤不再适用。 若要进行迁移，请确保在上面的 Azure Monitor 诊断设置中启用正确的类别。
 
 在工作流中测试新的诊断设置后，可以关闭操作监视功能。 
 

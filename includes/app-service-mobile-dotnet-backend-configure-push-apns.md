@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803389"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140696"
 ---
 **.NET 后端 (C#)**：
   
@@ -21,7 +21,7 @@ ms.locfileid: "59803389"
     using Microsoft.Azure.NotificationHubs;
     ```
 
-3. 将 `PostTodoItem`方法替换为以下代码：  
+3. 将 `PostTodoItem` 方法的代码替换为以下代码：  
 
     ```csharp
     public async Task<IHttpActionResult> PostTodoItem(TodoItem item)

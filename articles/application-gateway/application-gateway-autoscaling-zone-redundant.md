@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/16/2019
+ms.date: 5/22/2019
 ms.author: victorh
-ms.openlocfilehash: 0da5d8a3eec0faa4001ccf229c6748c253f1b6e5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827421"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65986877"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>自动缩放和区域冗余的应用程序网关 
 
@@ -93,8 +93,6 @@ ms.locfileid: "65827421"
 
 总价格 = $267.84 + $85.71 = $353.55
 
-[定价页](https://azure.microsoft.com/pricing/details/application-gateway/)将更新以反映在 2019 年 5 月 14 日上, 区域的价格。 计费计划在 2019 年 6 月 1 日开始。
-
 ## <a name="scaling-application-gateway-and-waf-v2"></a>缩放应用程序网关和 WAF v2
 
 可以将应用程序网关和 WAF 配置的两种模式中的扩展：
@@ -138,7 +136,7 @@ ms.locfileid: "65827421"
 |应用程序网关子网上的用户定义路由 (UDR)|不支持|
 |入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
 |Azure 诊断中的性能日志|不支持。<br>应当使用 Azure 指标。|
-|计费|计划在 2019 年 6 月 1 日开始计费。|
+|计费|计划在 2019 年 7 月 1 日开始计费。|
 |FIPS 模式|目前不支持。|
 |“仅 ILB”模式|目前不支持。 同时支持公共和 ILB 模式。|
 |Netwatcher 集成|不支持。|

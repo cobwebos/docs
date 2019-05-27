@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
 ms.openlocfilehash: 67b9c0ba2566206b0e70db51844b21e5d5d3c261
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344580"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66136302"
 ---
 在传播域名记录后，应可使用浏览器验证自定义域名能否用于访问 Azure 应用服务中的 Web 应用。
 
@@ -35,7 +35,7 @@ ms.locfileid: "53344580"
     ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
 5. 单击“验证”保存域名配置。
 6. 单击“验证”时，Azure 将启动域验证工作流。 这会检查域的所有权和主机名的可用性，并报告成功或错误详情（附带如何解决错误的说明性指南）。    
-7. 验证成功后，“添加主机名”按钮变为激活状态，就可以分配主机名了。 现在，在浏览器中导航到自定义域名。 应会看到应用正在使用自定义域名运行。 
+7. 验证成功后，“添加主机名”按钮变为激活状态，就可以分配主机名了。 导航到浏览器中的自定义域名。 应会看到应用正在使用自定义域名运行。 
    
    完成配置后，自定义域名会在 Web 应用的“域名”部分中列出。
 

@@ -2,19 +2,18 @@
 title: include 文件
 description: include 文件
 services: virtual-machines-windows, virtual-machines-linux
-author: rockboyfor
+author: dlepow
 ms.service: multiple
 ms.topic: include
-origin.date: 10/09/2018
-ms.date: 04/01/2019
-ms.author: v-yeche
+ms.date: 10/09/2018
+ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 50d71a3967e61e5d531f4bfeae3582b56230a0d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880533"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66117306"
 ---
 ## <a name="terminology"></a>术语
 
@@ -28,5 +27,3 @@ Azure 中的市场映像具有以下属性：
 若要在以编程方式部署 VM 时标识市场映像，请以参数的形式单独提供这些值。 有些工具接受映像 URN，它将这些值合并，值之间用冒号 (:) 字符隔开：发布者:产品/服务:Sku:版本。 在 URN 中，可将版本号替换为“latest”，这会选择最新的映像版本。 
 
 如果映像发布者提供附加许可条款和购买条款，则必须接受这些条款并启用编程部署。 以编程方式部署 VM 时，还需要提供“购买计划”参数。 请参阅[部署具有市场条款的映像](#deploy-an-image-with-marketplace-terms)。
-
-<!-- Update_Description: wording update -->

@@ -9,11 +9,11 @@ ms.date: 09/18/2018
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 89a97196f14332ec1812dc3e8a16905af1aa4407
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118762"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66139286"
 ---
 在 Cloud Shell 中，使用 [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 命令创建一个应用服务计划。
 

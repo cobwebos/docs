@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/13/2019
-ms.openlocfilehash: f244a67abab5c7f8cd14277f87f055ac6d48b8d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: 44b6f099b5b17329976b9fec3c0ac38b5e394221
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762434"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978017"
 ---
-# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters"></a>配置出站网络流量限制为 Azure HDInsight 群集
+# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters-preview"></a>配置出站网络流量限制为 Azure HDInsight 群集 （预览版）
 
 本文提供的步骤，以便保护从 HDInsight 群集使用 Azure 防火墙的出站流量。 下面的步骤假定你正在配置的现有群集 Azure 防火墙。 如果要部署新群集，并且在防火墙后面，首先创建 HDInsight 群集和子网，然后按照本指南中的步骤。
 
@@ -27,7 +27,7 @@ Azure HDInsight 群集通常部署在虚拟网络。 群集所依赖的外部虚
 
 HDInsight 的出站流量依赖项几乎完全定义使用 Fqdn，没有在其后面的静态 IP 地址。 静态地址缺乏意味着不能使用网络安全组 (Nsg) 来锁定的出站流量从一个群集。 地址会更改频率不够高，一个不能设置基于当前的名称解析规则并使用它来设置 NSG 规则。
 
-保护出站地址的解决方案是使用可控制基于域的名称的出站流量的防火墙设备。 Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。
+保护出站地址的解决方案是使用可控制基于域的名称的出站流量的防火墙设备。 Azure 防火墙可以限制出站的 HTTP 和 HTTPS 通信，基于目标的 FQDN 或[FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)。
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>使用 HDInsight 中配置 Azure 防火墙
 
@@ -57,7 +57,7 @@ HDInsight 的出站流量依赖项几乎完全定义使用 Fqdn，没有在其�
 1. 创建新的防火墙**测试 FW01**中的步骤[教程：使用 Azure 门户部署和配置 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)。
 1. 从 Azure 门户中选择新的防火墙。 单击**规则**下**设置** > **应用程序规则集合** > **添加应用程序规则集合**.
 
-    ![标题：添加应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+    ![标题:添加应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 ### <a name="configure-the-firewall-with-application-rules"></a>使用应用程序规则配置防火墙
 
@@ -80,10 +80,10 @@ HDInsight 的出站流量依赖项几乎完全定义使用 Fqdn，没有在其�
         1. 输入`https:443`下**协议： 端口**并`sqm.telemetry.microsoft.com`下**目标 FQDN**。
     1. 如果群集受 WASB 和不使用更高版本的服务终结点，然后添加一条规则为 WASB:
         1. 在中**目标 Fqdn**部分中，提供**名称**，并设置**源地址**到`*`。
-        1. 输入`wasb`下**协议： 端口**并`*`下**目标 FQDN**。
+        1. 输入`http`或 [https] 具体取决于使用 wasb: / / 或 wasbs: / / 下**协议： 端口**和存储帐户 url 下的**目标 FQDN**。
 1. 单击“添加”。
 
-![标题：输入应用程序规则集合的详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+![标题:输入应用程序规则集合的详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>将防火墙配置了网络规则
 
@@ -130,7 +130,7 @@ HDInsight 的出站流量依赖项几乎完全定义使用 Fqdn，没有在其�
         1. 设置**目标端口**到`1433,11000-11999,14000-14999`。
 1. 单击**添加**以完成创建的网络规则集合。
 
-![标题：输入应用程序规则集合的详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+![标题:输入应用程序规则集合的详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>创建和配置路由表
 
@@ -150,7 +150,7 @@ HDInsight 的出站流量依赖项几乎完全定义使用 Fqdn，没有在其�
 1. 单击**路由**下**设置**。
 1. 单击**添加**在下表中创建的 IP 地址的路由。
 
-| 路由名称 | 地址前缀 | 下一跃点类型 | 下一跃点地址 |
+| 路由名称 | 地址前缀 | 下一个跃点类型 | 下一个跃点地址 |
 |---|---|---|---|
 | 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
 | 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
@@ -161,7 +161,7 @@ HDInsight 的出站流量依赖项几乎完全定义使用 Fqdn，没有在其�
 | 168.63.129.16 | 168.63.129.16/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | 虚拟设备 | 10.1.1.4 |
 
-![标题：创建路由表](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-route-table.png)
+![标题:创建路由表](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-route-table.png)
 
 完成路由表配置：
 
@@ -169,7 +169,7 @@ HDInsight 的出站流量依赖项几乎完全定义使用 Fqdn，没有在其�
 1. 上**子网关联**屏幕上，选择已创建你的群集的虚拟网络并**AzureFirewallSubnet**您创建使用你的防火墙。
 1. 单击“确定”。
 
-![标题：创建路由表](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-route-table-associate-subnet.png)
+![标题:创建路由表](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-route-table-associate-subnet.png)
 
 ## <a name="edge-node-application-traffic"></a>边缘节点的应用程序流量
 

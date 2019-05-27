@@ -1,6 +1,6 @@
 ---
 title: 收集到 Log Analytics 工作区的 Azure 服务日志和指标 |Microsoft Docs
-description: 若要将日志和度量值写入到 Azure Monitor 中的 Log Analytics 工作区的 Azure 资源上配置诊断。
+description: 在 Azure 资源上配置诊断以将日志和指标写入 Azure Monitor 中的 Log Analytics 工作区。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.openlocfilehash: d086b6f844deb06d98edec8d8ec0f5670d84f066
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006267"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129715"
 ---
-# <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>收集到 Log Analytics 工作区中 Azure Monitor 的 Azure 服务日志和指标
+# <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>将 Azure 服务日志和指标收集到 Azure Monitor 的 Log Analytics 工作区中
 
 有四种不同方式可收集 Azure 服务的日志和指标：
 
-1. Azure 诊断定向到 Azure Monitor 中的 Log Analytics 工作区 (*诊断*下表中)
-2. Azure 诊断定向到 Azure 存储到 Azure Monitor 中的 Log Analytics 工作区 (*存储*下表中)
+1. 将 Azure 诊断定向到 Azure Monitor 的 Log Analytics 工作区（下表中的“诊断”）
+2. 从 Azure 诊断到 Azure 存储，再到 Azure Monitor 的 Log Analytics 工作区（下表中的“存储”）
 3. Azure 服务的连接器（下表中的*连接器*）
-4. 脚本收集，然后将数据发布到 Azure Monitor （下表中和未列出的服务，则为空白） 中的 Log Analytics 工作区
+4. 使用脚本收集，然后将数据发布到 Azure Monitor 的 Log Analytics 工作区中（下表中的空白，用于未列出的服务）
 
 
 | 服务                 | 资源类型                           | 日志        | 度量值     | 解决方案 |
@@ -64,12 +64,12 @@ ms.locfileid: "59006267"
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>将 Azure 诊断定向到 Log Analytics
-许多 Azure 资源都可以将诊断日志和指标直接写入到 Azure Monitor 中的 Log Analytics 工作区，这是收集数据以进行分析的首选的方法。 数据时使用 Azure 诊断，将立即写入到工作区中，并且没有无需首先将数据写入到存储。
+许多 Azure 资源都能将诊断日志和指标直接写入到 Azure Monitor 的 Log Analytics 工作区，这是收集数据进行分析的首选方法。 使用 Azure 诊断时，数据将立即写入到工作区，而无需先将数据写入到存储。
 
-支持的 azure 资源[Azure 监视器](../../azure-monitor/overview.md)可以直接向 Log Analytics 工作区中发送的日志和指标。
+支持 [Azure Monitor](../../azure-monitor/overview.md) 的 Azure 资源可以直接向 Log Analytics 工作区发送其日志和指标。
 
 > [!NOTE]
-> 当前不支持将多维指标发送到 Log Analytics 工作区通过诊断设置。 多维指标将按平展后的单维指标导出，并跨维值聚合。
+> 当前不支持通过诊断设置将多维指标发送到 Log Analytics 工作区。 多维指标将按平展后的单维指标导出，并跨维值聚合。
 >
 > 例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
 >
@@ -82,7 +82,7 @@ ms.locfileid: "59006267"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-下面的 PowerShell 示例演示如何使用[集 AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting)启用网络安全组上的诊断。 同一方法适用于所有受支持的资源 - 将 `$resourceId` 设置为要为其启用诊断的资源的资源 ID。
+下面的 PowerShell 示例演示如何使用 [Set-AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) 对网络安全组启用诊断。 同一方法适用于所有受支持的资源 - 将 `$resourceId` 设置为要为其启用诊断的资源的资源 ID。
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -125,9 +125,9 @@ Set-AzDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enab
 
 ## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>将 Azure 诊断定向到存储，然后再定向到 Log Analytics
 
-收集从某些资源中的日志，就可以将日志发送到 Azure 存储空间，然后配置要从存储中读取日志的 Log Analytics 工作区。
+要从某些资源中收集日志，可以将日志发送到 Azure 存储，再将 Log Analytics 工作区配置为从存储中读取日志。
 
-Azure 监视器可以使用此方法以从以下资源和日志的 Azure 存储收集的诊断：
+Azure Monitor 可使用此方法从 Azure 存储收集以下资源和日志的诊断信息：
 
 | 资源 | 日志 |
 | --- | --- |
@@ -136,23 +136,23 @@ Azure 监视器可以使用此方法以从以下资源和日志的 Azure 存储�
 | Web 角色 <br> 辅助角色 |Linux Syslog <br> Windows 事件 <br> IIS 日志 <br> Windows ETWEvent |
 
 > [!NOTE]
-> 将诊断发送到存储帐户时，Log Analytics 工作区读取的数据从存储帐户时，会产生费用正常 Azure 数据费率对存储和事务。
+> 当用户向存储帐户发送诊断时，以及当 Log Analytics 工作区从存储帐户读取数据时，系统会针对存储和事务收取正常 Azure 数据费率。
 >
 >
 
-请参阅[blob 存储适用于事件的 IIS 和表存储用于](azure-storage-iis-table.md)若要了解有关 Azure Monitor 可以如何收集这些日志的详细信息。
+若要详细了解 Azure Monitor 如何收集这些日志，请参阅[使用适用于 IIS 的 Blob 存储和适用于事件的表存储](azure-storage-iis-table.md)。
 
 ## <a name="connectors-for-azure-services"></a>Azure 服务的连接器
 
-没有为应用程序的见解，以允许发送到 Log Analytics 工作区的 Application Insights 收集的数据连接器。
+Application Insights 有连接器，它允许 Application Insights 收集要发送给 Log Analytics 工作区的数据。
 
 详细了解 [Application Insights 连接器](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)。
 
-## <a name="scripts-to-collect-and-post-data-to-log-analytics-workspace"></a>脚本收集，将数据发布到 Log Analytics 工作区
+## <a name="scripts-to-collect-and-post-data-to-log-analytics-workspace"></a>使用脚本收集数据并将数据发布到 Log Analytics 工作区
 
-不提供直接的方法来将日志和指标发送到 Log Analytics 工作区的 Azure 服务可以使用 Azure 自动化脚本来收集日志和指标。 该脚本然后可以将数据发送到工作区使用[数据收集器 API](../../azure-monitor/platform/data-collector-api.md)
+对于未提供用于将日志和指标发送到 Log Analytics 工作区的直接方式的 Azure 服务，可以使用 Azure 自动化脚本来收集日志和指标。 然后，该脚本可以使用[数据收集器 API](../../azure-monitor/platform/data-collector-api.md) 将数据发送到工作区
 
-Azure 模板库有[使用 Azure 自动化的示例](https://azure.microsoft.com/resources/templates/?term=OMS)从服务收集数据并将其发送到 Azure Monitor。
+Azure 模板库有[使用 Azure 自动化的示例](https://azure.microsoft.com/resources/templates/?term=OMS)，可从服务收集数据并将数据发送到 Azure Monitor。
 
 ## <a name="next-steps"></a>后续步骤
 

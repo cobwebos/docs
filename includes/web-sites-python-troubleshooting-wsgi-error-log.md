@@ -9,11 +9,11 @@ ms.date: 06/11/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 020e59f029b09f3c7656f67039731e4141e68d31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61270186"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66137039"
 ---
 如果 Python 在启动应用程序时出现错误，则只会返回一个简单的错误页面（例如“由于发生内部服务器错误，无法显示该页。”）。
 

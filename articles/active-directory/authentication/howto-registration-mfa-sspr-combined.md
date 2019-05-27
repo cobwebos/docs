@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc4ff596cdafd348288187b0cd9b32f7b4c2d275
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cafe81a1b5ab6d26e71eff05e355d2ed79c4d5e7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823378"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119382"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>启用结合安全信息注册 （预览版）
 
@@ -43,7 +43,7 @@ ms.locfileid: "65823378"
 > 从 2019 年 3 月开始，电话呼叫选项将不可供多重身份验证和 SSPR 免费/试用 Azure AD 租户中的用户。 短信不受此更改。 电话呼叫选项仍将为用户提供付费 Azure AD 租户。
 
 > [!NOTE]
-> 启用后结合注册，注册或确认其电话号码或通过新体验的移动应用程序可以将其用于多重身份验证和 SSPR，如果这些方法启用多重身份验证和 SSPR 中的用户策略。 这时，如果禁用此体验，请转到以前的 SSPR 注册的用户页上，在`https:/aka.ms/ssprsetup`需要执行多重身份验证才能访问页面。
+> 启用后结合注册，注册或确认其电话号码或通过新体验的移动应用程序可以将其用于多重身份验证和 SSPR，如果这些方法启用多重身份验证和 SSPR 中的用户策略。 这时，如果禁用此体验，请转到以前的 SSPR 注册的用户页上，在`https://aka.ms/ssprsetup`需要执行多重身份验证才能访问页面。
 
 如果在 Internet Explorer 中配置了站点到区域分配列表，以下站点必须位于同一区域：
 
