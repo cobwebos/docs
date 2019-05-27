@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: c7a34256bff46247ed6c97bc2931942f631bbf09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60430274"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148826"
 ---
 > [!WARNING]
 >  **Azure 容器服务 (ACS) 正在被弃用。将不会向 ACS 添加任何新特性或新功能。所有 API、门户体验、CLI 命令和文档均已标记为“已弃用”。**

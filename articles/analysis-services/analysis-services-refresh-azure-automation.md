@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 1897193f0ae781029a7303c42ca8eeaa51389892
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: abbad97e29f60e5f135017cd43f9d30eba1805ca
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920578"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142753"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
@@ -148,7 +148,7 @@ Runbook 可以配置为按计划定期刷新 Azure Analysis Services 模型的�
 |属性  |值  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Azure Analysis Services 数据库的名称 <br/> 示例：AdventureWorksDB         |
-|**AnalysisServicesServer**     |Azure Analysis Services 服务器名称。 <br/> 示例： https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
+|**AnalysisServicesServer**     |Azure Analysis Services 服务器名称。 <br/> 示例： https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |若要执行的刷新的类型。 <br/> 示例：完整         |
 
 JSON 正文示例：

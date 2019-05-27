@@ -9,11 +9,11 @@ ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149633"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158685"
 ---
 如果在对共享映像库、映像定义和映像版本执行任何操作时遇到问题，请在调试模式下再次运行失败的命令。 若要激活调试模式，可以通过 CLI 来传递 **-debug** 开关，通过 PowerShell 来传递 **-Debug** 开关。 确定错误的位置以后，请按本文档的说明来排查错误。
 
@@ -37,7 +37,7 @@ ms.locfileid: "65149633"
 
 映像定义名称无效。
 
-用于映像定义允许的字符是大写或小写字母、 数字、 点、 短划线和句点。 请更改映像定义名称，然后重试。
+允许用于映像定义的字符为大写或小写字母、数字、点、短划线和句点。 请更改映像定义名称，然后重试。
 
 创建映像定义所需的属性未填充。
 
@@ -52,7 +52,7 @@ ms.locfileid: "65149633"
 
 映像版本名称无效。
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion.MinorVersion.Patch*。 请更改映像版本名称，然后重试。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式:*MajorVersion.MinorVersion.Patch*。 请更改映像版本名称，然后重试。
 
 找不到要从其创建映像版本的源托管映像。 
 
@@ -62,7 +62,7 @@ ms.locfileid: "65149633"
 
 请确保源托管映像的预配状态为“成功”。
 
-*目标区域列表不包含源区域。*
+目标区域列表不包含源区域。
 
 目标区域列表必须包含映像版本的源区域。 请确保目标区域的列表中已包含源区域。目标区域是需要通过 Azure 将映像版本复制到其中的区域。
 
@@ -88,7 +88,7 @@ ms.locfileid: "65149633"
 
 ## <a name="unable-to-share-resources"></a>无法共享资源
 
-在订阅之间的共享的映像库、 映像定义和映像版本资源共享，启用[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)(RBAC)。 
+可以通过[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) 启用对共享映像库、映像定义、映像版本资源的跨订阅共享。 
 
 ## <a name="replication-is-slow"></a>复制速度慢
 

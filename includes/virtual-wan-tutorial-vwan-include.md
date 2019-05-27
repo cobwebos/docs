@@ -9,11 +9,11 @@ ms.date: 03/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459803"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150871"
 ---
 1. 导航到“虚拟 WAN”页。 若要浏览到此页，一种方法是转到“所有服务”，然后搜索“虚拟 WAN”。
 1. 单击“+添加”打开“创建 WAN”页。

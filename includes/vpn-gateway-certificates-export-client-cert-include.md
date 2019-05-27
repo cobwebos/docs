@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b657d54c3ebbe5afc20fc98c1348bb783410df60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60763748"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150319"
 ---
 生成客户端证书时，该证书会自动安装在用于生成它的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，需要导出生成的客户端证书。
 
@@ -31,7 +31,7 @@ ms.locfileid: "60763748"
    ![导出文件格式](./media/vpn-gateway-certificates-export-client-cert-include/includeallcerts.png)
 5. 在“**安全性**”页上，必须保护私钥。 如果选择使用密码，请务必记下或牢记为此证书设置的密码。 然后单击“下一步”。
 
-   ![security](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
+   ![安全性](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
 6. 在“要导出的文件”中，“浏览”到要将证书导出的目标位置。 在“文件名”中，为证书文件命名。 然后单击“下一步”。
 
    ![要导出的文件](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)

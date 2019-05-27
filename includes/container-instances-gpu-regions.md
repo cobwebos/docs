@@ -4,12 +4,12 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 03/01/2019
 ms.author: danlep
-ms.openlocfilehash: d5491784dd27843ebbb13f692d8426c2b7edeec5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48d25427d68f9da4cfe3f25b155f81d801e30fa2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537715"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66149103"
 ---
 ### <a name="supported-regions"></a>支持的区域
 
@@ -17,6 +17,5 @@ ms.locfileid: "60537715"
 * 美国西部 2 
 * 美国中南部 
 * 西欧 
-* 北欧 
-* 东亚 
+* 北欧
 * 印度中部 

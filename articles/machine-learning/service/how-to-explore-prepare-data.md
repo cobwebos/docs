@@ -1,5 +1,5 @@
 ---
-title: 探索和准备数据 （数据集类）
+title: 浏览和转换数据 （数据集类）
 titleSuffix: Azure Machine Learning service
 description: 了解如何使用摘要统计信息的数据和准备数据通过数据清理、 转换和特征工程
 services: machine-learning
@@ -10,17 +10,17 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/02/19
-ms.openlocfilehash: 70712605cc97670b625d32052bb79b4a666e4281
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 05/23/2019
+ms.openlocfilehash: e692b0dc1089804b1d68b79c1a6f438f30554602
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603158"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146300"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>探索和准备数据与数据集类 （预览版）
 
-了解如何浏览和使用准备数据[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。 [数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)类 （预览版） 使你可以浏览和准备数据，通过提供函数，如： 采样、 汇总统计信息和智能的转换。 转换步骤保存在[数据集定义](how-to-manage-dataset-definitions.md)功能，以高度可缩放的方式处理不同的架构的多个大文件。
+了解如何浏览和使用中的数据集的 azureml 包准备数据[Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。 [数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)类 （预览版） 使你可以浏览和准备数据，通过提供函数，如： 采样、 汇总统计信息和智能的转换。 转换步骤保存在[数据集定义](how-to-manage-dataset-definitions.md)功能，以高度可缩放的方式处理不同的架构的多个大文件。
 
 > [!Important]
 > 某些数据集类 （预览版） 具有依赖项[azureml dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包 (GA）)。 虽然转换函数可以直接通过 GA'ed[数据准备函数](how-to-transform-data.md)，我们建议如果您要构建一个新的解决方案在本文中所述的数据集包包装。 Azure 机器学习数据集 （预览版） 允许将不仅转换你的数据，但还[快照数据](how-to-create-dataset-snapshots.md)并存储[版本控制的数据集定义](how-to-manage-dataset-definitions.md)。 数据集是数据准备 SDK，提供可用于管理 AI 解决方案中的数据集的扩展的功能的下一个版本。
@@ -33,7 +33,7 @@ ms.locfileid: "65603158"
 
 * Azure 机器学习服务工作区。 请参阅[创建 Azure 机器学习服务工作区](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)。
 
-* 用于 Python 的 Azure 机器学习 SDK (版本 1.0.21 或更高版本)。 若要安装或更新到最新版本的 sdk，请参阅[安装或更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* 用于 Python 的 Azure 机器学习 SDK (版本 1.0.21 或更高版本)，其中包括数据集的 azureml 包。 若要安装或更新到最新版本的 sdk，请参阅[安装或更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
 * Azure 机器学习数据准备 SDK。 若要安装或更新到最新版本，请参阅[安装或更新数据准备 SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install)。
 
@@ -63,7 +63,7 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|Date|街区|IUCR|主要类型|...|
+||ID|案例号|Date|阻止|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|欺骗性的做法|...
 第|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
@@ -80,7 +80,7 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|Date|街区|IUCR|主要类型|...|
+||ID|案例号|Date|阻止|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
 第|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|欺骗性的做法|...
@@ -103,7 +103,7 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|Date|街区|IUCR|主要类型|...|
+||ID|案例号|Date|阻止|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
 第|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|...
@@ -122,7 +122,7 @@ dataset.get_profile()
 ID|FieldType.INTEGER|1.04986e+07|1.05351e+07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e+07|1.04992e+07|1.04986e+07|1.05166e+07|1.05209e+07|1.05259e+07|1.05351e+07|1.05351e+07|1.05351e+07|1.05195e+07|12302.7|1.51358e+08|-0.495701|-1.02814
 案例号|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-街区|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+阻止|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 主要类型|FieldType.STRING|欺骗性的做法|THEFT|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 描述|FieldType.STRING|虚假检查|通过 500 美元|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -288,7 +288,7 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||ID|案例号|Date|街区|...|
+||ID|案例号|Date|阻止|...|
 -|---------|-----|---------|----|---
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|...
 第|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|...

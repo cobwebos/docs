@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: aed63e332375be4f8ed939cf162545c9f366f329
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66143502"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>自定义远程监视解决方案加速器
 
@@ -31,7 +31,7 @@ ms.locfileid: "58317589"
 
 1. 使用 **pcs** CLI 部署解决方案加速器的**基本**实例。 记下部署名称以及为虚拟机提供的凭据。 有关详细信息，请参阅[使用 CLI 部署](iot-accelerators-remote-monitoring-deploy-cli.md)。
 
-1. 若要启用对托管解决方案中的微服务的虚拟机的 SSH 访问，请使用 Azure 门户或 Azure Cloud Shell。 例如：
+1. 若要启用对托管解决方案中的微服务的虚拟机的 SSH 访问，请使用 Azure 门户或 Azure Cloud Shell。 例如:
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -39,7 +39,7 @@ ms.locfileid: "58317589"
 
     仅在测试和开发期间启用 SSH 访问。 如果启用了 SSH，[应在用完后尽快将它禁用](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
 
-1. 使用 Azure 门户或 Azure Cloud Shell 查找虚拟机的名称和公共 IP 地址。 例如：
+1. 使用 Azure 门户或 Azure Cloud Shell 查找虚拟机的名称和公共 IP 地址。 例如:
 
     ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table

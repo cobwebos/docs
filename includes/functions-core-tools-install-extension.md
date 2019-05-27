@@ -9,11 +9,11 @@ ms.date: 09/25/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733269"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131445"
 ---
 扩展捆绑包进行发布的 Azure Functions 团队可通过中的设置的所有绑定*host.json*文件。 进行本地开发，请确保具有最新版本[Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "64733269"
 
 后在项目中引用的扩展捆绑包，然后所有默认绑定都可供你的函数。 中提供的绑定[扩展包](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)是：
 
-|程序包  |Version  |
+|包  |Version  |
 |---------|---------|
 |Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
 |Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0|

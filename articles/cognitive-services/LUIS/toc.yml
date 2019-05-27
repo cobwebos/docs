@@ -412,6 +412,8 @@
       displayName: 'FAQ, import'
     - name: 定价和限制
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice

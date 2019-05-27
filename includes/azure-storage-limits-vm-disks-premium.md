@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
 ms.openlocfilehash: e7e57c6a821731874dcb1d99a3133b6ede1da26e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386279"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148206"
 ---
 **高级非托管的虚拟机磁盘：每个帐户限制**
 
-| 资源 | 默认限制 |
+| Resource | 默认限制 |
 | --- | --- |
 | 每个帐户的总磁盘容量 |35 TB |
 | 每个帐户的总快照容量 |10 TB |
@@ -32,7 +32,7 @@ ms.locfileid: "60386279"
 
 **高级非托管的虚拟机磁盘：每个 VM 的限制**
 
-| 资源 | 默认限制 |
+| Resource | 默认限制 |
 | --- | --- |
 | 每个 VM 的最大 IOPS |GS5 VM 为 80,000 IOPS |
 | 每个 VM 的最大吞吐量 |GS5 vm 2,000 MB/秒 |

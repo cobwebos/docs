@@ -14,11 +14,11 @@ ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146851"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -125,8 +125,8 @@ ms.locfileid: "58487798"
 
 | 属性 | 说明 |
 |:--- |:--- |
-| clusterSize |HDInsight 群集的大小。 |
-| timeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
+| ClusterSize |HDInsight 群集的大小。 |
+| TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
 | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
 
 请注意以下几点：

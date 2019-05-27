@@ -9,11 +9,11 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 82187b05a398c066f9da94c57cbe8a59a6ba3275
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191711"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145808"
 ---
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -51,9 +51,9 @@ $gallery = New-AzGallery `
    
 ## <a name="create-an-image-definition"></a>创建映像定义 
 
-图像定义创建映像的逻辑分组。 它们用于管理在其中创建的映像版本有关的信息。 可以大写或小写字母、 数字、 点、 短划线和句点组成图像定义名称。 有关可以为图像定义指定的值的详细信息，请参阅[图像定义](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
+映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
 
-创建图像定义使用[新建 AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)。 在此示例中，库映像名为 myGalleryImage。
+使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，库映像名为 myGalleryImage。
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -71,11 +71,11 @@ $galleryImage = New-AzGalleryImageDefinition `
 
 ## <a name="create-an-image-version"></a>创建映像版本
 
-从托管的映像使用创建的映像版本[新建 AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)。 
+使用 [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 根据托管映像创建映像版本。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*。*MinorVersion*。*修补程序*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式:*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此示例中，映像版本为 1.0.0，该版本被复制到美国中西部和美国中南部数据中心。 在选择时复制的目标区域，请记住，您还必须包括*源*为复制的目标区域。
+在此示例中，映像版本为 1.0.0，该版本被复制到美国中西部和美国中南部数据中心。 选择复制的目标区域时，请记住，你还需包括源区域作为复制的目标。
 
 
 ```azurepowershell-interactive
@@ -101,7 +101,7 @@ $job.State
 ```
 
 > [!NOTE]
-> 需要要等待的时间才能完全完成正在生成并复制，可以使用相同的托管的映像创建另一个映像版本的映像版本。 
+> 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。 
 >
-> 您还可以存储在你映像版本[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)通过添加`-StorageAccountType Standard_ZRS`时创建的映像版本。
+> 也可在[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中存储映像版本，只需在创建映像版本时添加 `-StorageAccountType Standard_ZRS` 即可。
 >

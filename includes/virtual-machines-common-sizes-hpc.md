@@ -9,11 +9,11 @@ ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: f3c1a946afb7f51a1c7543dabae7f2f42ff466be
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198846"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145827"
 ---
 Azure H 系列虚拟机 (Vm) 旨在提供领导类性能，MPI 可伸缩性和成本效率的真实 HPC 工作负荷有多种。
 
@@ -51,9 +51,9 @@ H 系列 Vm 的高 CPU 频率或每个核心要求较大内存由驱动应用程
 
 ACU：290-300
 
-高级存储：不支持
+高级存储：不受支持
 
-高级存储缓存：不支持
+高级存储缓存：不受支持
 
 | 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (GB/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

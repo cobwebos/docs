@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 13a2eb080c6822a8a6786be1952bc588fa8afd80
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729196"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66141585"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 
@@ -43,7 +43,7 @@ API 管理允许使用客户端证书保护对 API 后端服务的访问。 本�
 3. 单击“**+ 添加**”按钮。  
     ![添加客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
 4. 浏览证书，提供其 ID 和密码。  
-5. 单击“创建”。
+5. 单击**创建**。
 
 > [!NOTE]
 > 证书必须采用 **.pfx** 格式。 允许使用自签名证书。
