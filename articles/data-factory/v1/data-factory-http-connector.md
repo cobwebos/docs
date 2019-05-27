@@ -68,7 +68,7 @@ ms.locfileid: "60318472"
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
-| username | 用于访问 HTTP 终结点的用户名。 | 是 |
+| userName | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户 (**username**) 的密码。 | 是 |
 
 示例：**使用基本、摘要或 Windows 身份验证**
@@ -165,7 +165,7 @@ ms.locfileid: "60318472"
 | requestMethod | HTTP 方法。 允许的值为 **GET** 和 **POST**。 | 否 <br />（默认值为 **GET**） |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
-| 格式 | 如果要*从 HTTP 终结点按原样检索数据*而不分析它，请跳过 **format** 设置。 <br><br> 如果要在复制期间分析 HTTP 响应内容，则支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
+| format | 如果要*从 HTTP 终结点按原样检索数据*而不分析它，请跳过 **format** 设置。 <br><br> 如果要在复制期间分析 HTTP 响应内容，则支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 示例：**使用 GET（默认）方法**
