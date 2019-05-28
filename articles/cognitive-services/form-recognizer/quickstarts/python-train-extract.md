@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 和 Python 训练模型并提取表单数据 - 表单识别器
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用表单识别器 REST API 和 Python 来训练模型，并从表单中提取数据。
+description: 在本快速入门中，我们将使用表单识别器 REST API 和 Python 来训练模型，并从表单中提取数据。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,34 +9,48 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 98d1870105038c4314a6b038ec198342bb2ca1d0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 139c0c29033dc45d07fd0987c2eee92308512329
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025555"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906986"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
 
-在本快速入门中，你将使用表单识别器的 REST API 和 Python 来训练并评分表单，以提取键值对和表。
+在本快速入门中，我们将使用 Azure 表单识别器的 REST API 和 Python 来训练表单并为其评分，以提取键值对和表。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
+若要完成本快速入门，必须具备以下条件：
+- 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。
+- 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
+- 至少有五个相同类型的表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。
 
--  必须有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[认知服务表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。 
-- 如果想在本地运行此示例，必须安装 [Python](https://www.python.org/downloads/)。
-- 必须具有表单识别器的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。
-- 必须至少有五个相同类型的表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。
+## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
+
+获得使用表单识别器所需的访问权限时，你会收到一封欢迎电子邮件，其中包含多个链接和资源。 使用该邮件中的“Azure 门户”链接打开 Azure 门户并创建表单识别器资源。 在“创建”窗格中提供以下信息： 
+
+|    |    |
+|--|--|
+| **名称** | 资源的描述性名称。 建议使用描述性名称，例如“MyNameFormRecognizer”  。 |
+| **订阅** | 选择已被授予访问权限的 Azure 订阅。 |
+| **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
+| **定价层** | 资源的费用取决于所选的定价层和使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
+| **资源组** | 将包含资源的 [Azure 资源组](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group)。 可以创建新组或将其添加到预先存在的组。 |
+
+> [!IMPORTANT]
+> 通常情况下，在 Azure 门户中创建认知服务资源时，可以选择创建多服务订阅密钥（跨多个认知服务使用）或单服务订阅密钥（仅与单个具体的认知服务配合使用）。 但是，由于表单识别器为预览版，因此未将其包括在多服务订阅中。除非使用欢迎电子邮件中提供的链接，否则你不能创建单一服务订阅。
+
+表单识别器资源完成部署以后，请在门户的“所有资源”列表中找到并选中它。  然后，选择“密钥”选项卡以查看订阅密钥。  任一密钥都会为应用提供资源访问权限。 复制**密钥 1** 的值。 在接下来的部分中将使用它。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
-若要创建并运行示例，请对代码片段进行如下所示的更改：
-
-1. 将 `<subscription_key>` 的值替换为你的订阅密钥。
-1. 将 `<Endpoint>` 的值替换为获取的订阅密钥所在的 Azure 区域中的表单识别器资源的终结点 URL。
-1. 将 `<SAS URL>` 替换为训练数据所在的 Azure Blob 存储容器共享访问签名 (SAS) URL。  
-
+若要创建并运行示例，请对以下代码片段进行如下更改：
+1. 将 `<Endpoint>` 替换为获取的订阅密钥所在的 Azure 区域中的表单识别器资源的终结点 URL。
+1. 将 `<SAS URL>` 替换为训练数据所在位置的 Azure Blob 存储容器共享访问签名 (SAS) URL。  
+1. 将 `<Subscription key>` 替换为从上一步复制的订阅密钥。
     ```python
     ########### Python Form Recognizer Train #############
     from requests import post as http_post
@@ -58,11 +72,11 @@ ms.locfileid: "65025555"
     except Exception as e:
         print(str(e))
     ```
-1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`form-recognize-train.py`。
+1. 将代码保存在以 .py 为扩展名的文件中。 例如，*form-recognize-train.py*。
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognize-train.py`。
 
-你将收到包含以下 JSON 输出的 `200 (Success)` 响应：
+你会收到包含以下 JSON 输出的 `200 (Success)` 响应：
 
 ```json
 {
@@ -103,16 +117,16 @@ ms.locfileid: "65025555"
 }
 ```
 
-请记下 `"modelId"` 值；执行后续步骤时需要用到它。
+请记下 `"modelId"` 值。 在后续步骤中需要用到它。
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>从表单中提取键值对和表
 
-接下来，分析某个文档并从中提取键值对和表。 执行以下 Python 脚本调用“模型 - 分析”API。 运行该命令之前请进行如下更改：
+接下来，分析某个文档并从中提取键值对和表。 请运行以下 Python 脚本，调用“模型 - 分析”API。  运行该命令之前，请进行以下更改：
 
-1. 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获取的终结点。 可以在表单识别器资源的概述选项卡中找到该终结点。
-1. 将 `<File Path>` 替换为要从中提取数据的表单所在的文件路径位置或 URL。
-1. 将 `<modelID>` 替换为在执行前面的模型训练步骤时收到的模型 ID。
-1. 将 `<file type>` 替换为文件类型 - 支持的类型包括 pdf、image/jpeg 和 image/png。
+1. 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获得的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
+1. 将 `<File Path>` 替换为要从中提取数据的表单所在位置的文件路径或 URL。
+1. 将 `<modelID>` 替换为在上一部分收到的模型 ID。
+1. 将 `<file type>` 替换为文件类型。 支持的类型：pdf、image/jpeg、image/png。
 1. 将 `<subscription key>` 替换为订阅密钥。
 
     ```python
@@ -140,13 +154,13 @@ ms.locfileid: "65025555"
         print(str(e))
     ```
 
-1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`form-recognize-analyze.py`。
+1. 将代码保存在以 .py 为扩展名的文件中。 例如，*form-recognize-analyze.py*。
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognize-analyze.py`。
 
 ### <a name="examine-the-response"></a>检查响应
 
-系统将返回 JSON 格式的成功响应，并显示提取的键值对以及从表单中提取的表。
+系统将返回 JSON 格式的成功响应， 并显示从表单中提取的键值对和表：
 
 ```bash
 {
@@ -471,7 +485,7 @@ ms.locfileid: "65025555"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本指南中，你已使用表单识别器 REST API 和 Python 训练了一个模型，并在示例案例中运行了该模型。 接下来，请参阅参考文档来深入了解表单识别器 API。
+在本快速入门中，我们已使用表单识别器 REST API 和 Python 训练了一个模型，并在示例案例中运行了该模型。 接下来，请参阅参考文档来深入了解表单识别器 API。
 
 > [!div class="nextstepaction"]
 > [REST API 参考文档](https://aka.ms/form-recognizer/api)

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 04/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4105fa17041c7cefd1387d1ee50c177b8c55fc9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: a0e600204479bc54a590df6bf1bbcd634eaac7fc
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651280"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605636"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>快速入门：为 Azure Active Directory 中的组命名策略
 
@@ -31,121 +31,43 @@ ms.locfileid: "58651280"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>使用 Azure 门户为租户配置组命名策略（预览）
 
-请先确保卸载任意较早版本的适用于 Windows PowerShell 的 Azure Active Directory PowerShell for Graph 模块，并安装 [Azure Active Directory PowerShell for Graph - 公共预览版 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)，然后再运行 PowerShell 命令。 
+1. 使用用户管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 选择“组”，然后选择“命名策略”，以便打开“命名策略”页。  
 
-1. 以管理员身份打开 Windows PowerShell 应用。
-2. 卸载任何以前版本的 AzureADPreview。
-  
+    ![在管理中心打开“命名策略”页](./media/groups-naming-policy/policy-preview.png)
 
-   ```powershell
-   Uninstall-Module AzureADPreview
-   ```
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>查看或编辑前后缀命名策略
 
-3. 安装最新版本的 AzureADPreview。
-  
+1. 在“命名策略”页上，选择“组命名策略”。  
+1. 可以单独查看或编辑当前的前缀或后缀命名策略，只需选择需要在命名策略中强制实施的属性或字符串即可。
+1. 若要从列表中删除某个前缀或后缀，请选择该前缀或后缀，然后选择“删除”。  可以同时删除多个项。
+1. 选择“保存”，以便对策略所做的更改生效。 
 
-   ```powershell
-   Install-Module AzureADPreview
-   ```
+### <a name="view-or-edit-the-custom-blocked-words"></a>查看或编辑自定义阻止字词
 
-   如果系统提示访问的是不受信任的存储库，请键入 Y。安装新模块可能需要几分钟。
+1. 在“命名策略”页上，选择“阻止字词”。  
 
-## <a name="set-up-naming-policy"></a>设置命名策略
+    ![编辑并上传命名策略的阻止字词列表](./media/groups-naming-policy/blockedwords-preview.png)
 
-### <a name="step-1-sign-in-using-powershell-cmdlets"></a>步骤 1：使用 PowerShell cmdlet 进行登录
+1. 查看或编辑自定义阻止字词的当前列表，方法是选择“下载”。 
+1. 上传自定义阻止字词的新列表，方法是选择文件图标。
+1. 选择“保存”，以便对策略所做的更改生效。 
 
-1. 打开 Windows PowerShell 应用。 不需要提升的权限。
-
-2. 运行以下命令，准备运行 cmdlet。
-  
-
-   ```powershell
-   Import-Module AzureADPreview
-   Connect-AzureAD
-   ```
-
-   在打开的“登录到你的帐户”屏幕上，输入管理员帐户和密码以连接到服务，然后选择“登录”。
-
-3. 按照[用于配置组设置的 Azure Active Directory cmdlet](groups-settings-cmdlets.md) 中的步骤创建此租户的组设置。
-
-### <a name="step-2-view-the-current-settings"></a>步骤 2：查看当前设置
-
-1. 查看当前的命名策略设置。
-  
-
-   ```powershell
-   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id
-   ```
-
-  
-2. 显示当前组设置。
-  
-
-   ```powershell
-   $Setting.Values
-   ```
-
-  
-
-### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>步骤 3：设置命名策略和任何自定义阻止字词
-
-1. 在 Azure AD PowerShell 中设置组名前缀和后缀。 要使功能正常工作，必须在设置中包含 [GroupName]。
-  
-
-   ```powershell
-   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
-   ```
-
-  
-2. 设置要限制的自定义阻止字词。 下面的示例演示如何添加自己的自定义字词。
-  
-
-   ```powershell
-   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
-   ```
-
-  
-3. 保存设置，使新策略生效，如在下面的示例所示。
-  
-
-   ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-   ```
-
-  
 就这么简单。 现已设置了命名策略，并添加了自定义阻止字词。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-1. 清空 Azure AD PowerShell 中的组名前缀和后缀。
-  
+### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>使用 Azure 门户删除命名策略（预览）
 
-   ```powershell
-   $Setting["PrefixSuffixNamingRequirement"] =""
-   ```
-
-  
-2. 清空自定义阻止字词。
-  
-
-   ```powershell
-   $Setting["CustomBlockedWordsList"]=""
-   ```
-
-  
-3. 保存设置。
-  
-
-   ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-   ```
+1. 在“命名策略”页上，选择“删除策略”。  
+1. 确认删除之后，将会删除命名策略，包括所有前缀-后缀命名策略和任何自定义阻止字词。
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何使用 PowerShell cmdlet 设置 Azure AD 租户的命名策略。
+本快速入门介绍了如何通过 Azure 门户设置 Azure AD 组织的命名策略。
 
-有关技术限制、如何添加自定义阻止字词的列表或跨 Office 365 应用的最终用户体验的详细信息，请转到下一篇文章，详细了解有关命名策略的详细信息。
+请转到下一篇文章以获取详细信息，包括用于命名策略的 PowerShell cmdlet、技术限制、添加自定义阻止字词的列表，以及跨 Office 365 应用的最终用户体验。
 > [!div class="nextstepaction"]
-> [命名策略全部详细信息](groups-naming-policy.md)
+> [命名策略 PowerShell](groups-naming-policy.md)
