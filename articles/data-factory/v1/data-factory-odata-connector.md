@@ -148,7 +148,7 @@ ms.locfileid: "60824025"
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
-| 路径 |OData 资源路径 |否 |
+| path |OData 资源路径 |否 |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
