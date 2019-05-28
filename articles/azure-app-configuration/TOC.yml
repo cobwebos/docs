@@ -59,11 +59,13 @@
   items:
     - name: 配置
       items:
-        - name: .NET Core 配置提供程序
+        - name: Azure CLI
+          href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
+        - name: .NET Core 提供程序
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
-        - name: .NET Framework 配置生成器
+        - name: .NET Framework 生成器
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: Java Spring 配置提供程序
+        - name: Java Spring 提供程序
           href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
         - name: .NET Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
@@ -79,7 +81,11 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
 - name: 资源
   items:
-    - name: 入门视频
-      href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+    - name: 视频
+      items:
+        - name: 入门
+          href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+        - name: 特色管理
+          href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
     - name: 提供产品反馈
       href: 'https://github.com/Azure/AppConfiguration/issues'

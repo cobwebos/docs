@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure 空间定位点创建 iOS Unity 应用 | Microsoft Docs
+title: 快速入门 - 使用 Azure 空间定位点创建 Unity iOS 应用 | Microsoft Docs
 description: 在此快速入门中，将了解如何通过空间定位点使用 Unity 生成 iOS 应用。
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e3320cd6131497d0b2c794646bae7fae578488cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 41189d4945ef22f8a587a51717b7dd6f40ac39ce
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995581"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690553"
 ---
-# <a name="quickstart-create-an-ios-unity-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 iOS Unity 应用
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity iOS 应用
 
-本快速入门介绍如何使用 [Azure 空间定位点](../overview.md)创建 iOS Unity 应用。 Azure 空间定位点是一种跨平台开发人员服务。通过该服务，可以使用能够随时间推移跨设备保存自己位置的对象创建混合的现实体验。 完成后，将获得一个使用 Unity 生成的 ARKit iOS 应用，该应用可以保存和重新调用空间定位点。
+本快速入门介绍如何使用 [Azure 空间定位点](../overview.md)创建 Unity iOS 应用。 Azure 空间定位点是一种跨平台开发人员服务。通过该服务，可以使用能够随时间推移跨设备保存自己位置的对象创建混合的现实体验。 完成后，将获得一个使用 Unity 生成的 ARKit iOS 应用，该应用可以保存和重新调用空间定位点。
 
 将了解如何执行以下操作：
 
@@ -49,11 +49,11 @@ ms.locfileid: "57995581"
 
 ## <a name="configure-account-identifier-and-key"></a>配置帐户标识符和密钥
 
-在“项目”窗格中，导航到 `Assets/AzureSpatialAnchorsPlugin/Examples` 并打开 `AzureSpatialAnchorsBasicDemo.unity` 场景文件。
+在“项目”窗格中，导航到 `Assets/AzureSpatialAnchorsPlugin/Examples` 并打开 `AzureSpatialAnchorsBasicDemo.unity` 场景文件  。
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-通过选择“文件” -> “保存”以保存场景。
+通过选择“文件” -> “保存”以保存场景   。
 
 ## <a name="export-the-xcode-project"></a>导出 XCode 项目
 
@@ -64,9 +64,9 @@ ms.locfileid: "57995581"
 按照应用中的说明，放置并重新调用定位标记。
 
 > [!NOTE]
-> 运行应用时，如果没看到作为背景的照相机（例如，你看到的是空白、蓝色或其他纹理），则可能需要重新导入 Unity 中的资产。 停止应用。 在 Unity 中的顶部菜单中，选择“资产”->“重新导入全部”。 然后再次运行应用。
+> 运行应用时，如果没看到作为背景的照相机（例如，你看到的是空白、蓝色或其他纹理），则可能需要重新导入 Unity 中的资产。 停止应用。 在 Unity 中的顶部菜单中，选择“资产”->“重新导入全部”  。 然后再次运行应用。
 
-在 Xcode 中，按“停止”来停止应用。
+在 Xcode 中，按“停止”来停止应用  。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

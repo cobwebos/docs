@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Box Edge 传输数据 | Microsoft Docs
+title: 教程：使用 Azure Data Box Edge 传输数据以进行共享 | Microsoft Docs
 description: 了解如何在 Data Box Edge 设备上添加共享并与其连接。
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e902f0c9465f65f31f6e1a5cadc7b6b30cda1a27
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 701ae5e70612b89c28e3092571e26e4f06389af0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403674"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924617"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>教程：使用 Azure Data Box Edge 传输数据
 
@@ -42,36 +42,36 @@ ms.locfileid: "58403674"
 
 若要创建共享，请执行以下过程：
 
-1. 在 [Azure 门户](https://portal.azure.com/) 中，选择自己的 Data Box Edge 资源，然后转到“概览”。 设备应为“联机”状态。
+1. 在 [Azure 门户](https://portal.azure.com/) 中，选择自己的 Data Box Edge 资源，然后转到“概览”。  设备应为“联机”状态。
 
    ![联机的设备](./media/data-box-edge-deploy-add-shares/device-online-1.png)
 
-2. 在设备命令栏中，选择“+ 添加共享”。
+2. 在设备命令栏中，选择“+ 添加共享”  。
 
    ![添加共享](./media/data-box-edge-deploy-add-shares/select-add-share-1.png)
 
-3. 在“添加共享”窗格中，执行以下过程：
+3. 在“添加共享”  窗格中，执行以下过程：
 
-    a. 在“名称”框中，提供共享的唯一名称。  
+    a. 在“名称”框中，提供共享的唯一名称。   
     共享名称只能包含小写字母、数字和连字符。 它必须包含 3 到 63 个字符，并以字母或数字开头。 紧邻连字符的字符必须为字母或数字。
     
     b. 选择共享的**类型**。  
-    类型可以是“SMB”或“NFS”，默认为“SMB”。 SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。  
+    类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。  
     根据你选择 SMB 共享还是 NFS 共享，其余选项会略有不同。 
 
     c. 提供一个可供共享驻留在其中的存储帐户。 
 
     
-    d. 在“存储服务”下拉列表中，选择“块 Blob”、“页 Blob”或“文件”。  
-    所选服务类型取决于数据需要在 Azure 中采用何种格式。 在此示例中，我们希望数据以块 Blob 的形式存储在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，请确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
+    d. 在“存储服务”下拉列表中，选择“块 Blob”、“页 Blob”或“文件”。      
+    所选服务类型取决于数据需要在 Azure 中采用何种格式。 在此示例中，我们希望数据以块 Blob 的形式存储在 Azure 中，因此选择“块 Blob”。  如果选择“页 Blob”，请确保数据按 512 字节对齐。  例如，VHDX 始终按 512 字节对齐。
 
     e. 创建新的 Blob 容器，或使用下拉列表中的现有容器。 如果创建 Blob 容器，请提供容器名称。 如果容器尚不存在，系统会使用新创建的共享名称在存储帐户中创建一个容器。
    
     f. 根据你已创建的是 SMB 共享还是 NFS 共享，请执行以下步骤之一： 
      
-    - **SMB 共享**：在“所有特权本地用户”下选择“新建”或“使用现有”。 如果创建新的本地用户，请输入用户名和密码，然后确认密码。 此操作为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改它们。
+    - **SMB 共享**：在“所有特权本地用户”下选择“新建”或“使用现有”。    如果创建新的本地用户，请输入用户名和密码，然后确认密码。 此操作为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改它们。
 
-        如果针对此共享数据选中“仅允许读取操作”复选框，则可以指定只读用户。
+        如果针对此共享数据选中“仅允许读取操作”复选框，则可以指定只读用户。 
 
         ![添加 SMB 共享](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
    
@@ -79,9 +79,9 @@ ms.locfileid: "58403674"
 
         ![添加 NFS 共享](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
    
-4. 选择“创建”以创建共享。
+4. 选择“创建”  以创建共享。
     
-    系统会通知你正在创建共享。 使用指定的设置创建共享后，“共享”磁贴会更新以反映新共享。
+    系统会通知你正在创建共享。 使用指定的设置创建共享后，“共享”  磁贴会更新以反映新共享。
     
 
 ## <a name="connect-to-the-share"></a>连接到共享
@@ -114,7 +114,7 @@ ms.locfileid: "58403674"
 
 3. 在键盘上选择“Windows + R”。
 
-4. 在“运行”窗口中指定 `\\<device IP address>`，然后选择“确定”。  
+4. 在“运行”窗口中指定  `\\<device IP address>`，然后选择“确定”。   
    此时会打开文件资源管理器。 此时应该能够查看作为文件夹创建的共享。 在文件资源管理器中，双击要查看其内容的共享（文件夹）。
  
     ![连接到 SMB 共享](./media/data-box-edge-deploy-add-shares/connect-to-share2.png)

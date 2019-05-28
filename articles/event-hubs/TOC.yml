@@ -51,8 +51,6 @@
           href: event-hubs-capture-python.md
     - name: 流式传输到用于 Apache Kafka 的事件中心
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-    - name: 创建专用事件中心群集
-      href: event-hubs-dedicated-cluster-create-portal.md
 - name: 教程
   items:
     - name: 直观显示事件中心数据流的数据异常
@@ -86,14 +84,18 @@
       href: event-hubs-event-processor-host.md
     - name: 编程指南
       href: event-hubs-programming-guide.md
-    - name: Azure 资源的托管标识
-      href: event-hubs-managed-service-identity.md
-    - name: 基于角色的访问控制（预览）
-      href: event-hubs-role-based-access-control.md
-    - name: 异地灾难恢复和异地复制
-      href: event-hubs-geo-dr.md
-    - name: 身份验证和安全模型概述
-      href: event-hubs-authentication-and-security-model-overview.md
+    - name: 安全
+      items:
+        - name: Azure 资源的托管标识
+          href: event-hubs-managed-service-identity.md
+        - name: 基于角色的访问控制（预览）
+          href: event-hubs-role-based-access-control.md
+        - name: 异地灾难恢复和异地复制
+          href: event-hubs-geo-dr.md
+        - name: 身份验证和安全模型概述
+          href: event-hubs-authentication-and-security-model-overview.md
+        - name: 安全属性
+          href: event-hubs-security-attributes.md
     - name: 可用性和一致性
       href: event-hubs-availability-and-consistency.md
     - name: AMQP 1.0 协议指南

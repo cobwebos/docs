@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7a5a92635114be87e59fe8f779c36d4c401a1427
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 194ebcc1f1779c927503e09e9c42a96afddb12c9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087153"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575810"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -25,7 +25,6 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 本教程介绍如何执行下列操作： 
 
 > [!div class="checklist"]
->
 > * 使用自定义视觉生成图像分类器。
 > * 开发用于在设备上查询自定义视觉 Web 服务器的 IoT Edge 模块。
 > * 将图像分类器的结果发送到 IoT 中心。
@@ -39,25 +38,19 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure IoT Edge 设备：
+在开始本教程之前，你应该已经完成了上一个教程，为 Linux 容器开发设置了开发环境：[为 Linux 设备开发 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件： 
 
-* 可以按照[适用于 Linux 的快速入门](quickstart-linux.md)中的步骤，将开发计算机或虚拟机用作 Edge 设备。
-* 目前，自定义视觉模块仅以适用于 x64 体系结构的 Linux 容器的形式提供。 
+* Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
+* [运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
+* 容器注册表，如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
+* 使用 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 配置的 [Visual Studio Code](https://code.visualstudio.com/)。
+* [Docker CE](https://docs.docker.com/install/) 已配置为运行 Linux 容器。
 
-云资源：
-
-* Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
-* 容器注册表。 本教程使用 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。 
-* 知道容器注册表[管理员帐户](../container-registry/container-registry-authentication.md#admin-account)的凭据。
-
-开发资源：
+要使用自定义视觉设备开发 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件： 
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* 适用于 Visual Studio Code 的 [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 扩展
 * 适用于 Visual Studio Code 的 [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 扩展
-* [Docker CE](https://docs.docker.com/install/)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>使用自定义视觉生成图像分类器
 
@@ -69,22 +62,22 @@ Azure IoT Edge 设备：
 
 1. 在 Web 浏览器中，导航到[自定义影像服务网页](https://customvision.ai/)。
 
-2. 选择“登录”，使用访问 Azure 资源时所用的帐户进行登录。 
+2. 选择“登录”，使用访问 Azure 资源时所用的帐户进行登录。  
 
-3. 选择“新建项目”。
+3. 选择“新建项目”。 
 
 4. 使用以下值来创建项目：
 
    | 字段 | 值 |
    | ----- | ----- |
-   | Name | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
+   | 名称 | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
    | 说明 | 可选项目说明。 |
-   | 资源组 | 接受默认的“有限试用版”。 |
+   | 资源组 | 接受默认的“有限试用版”。  |
    | 项目类型 | **分类** |
    | 分类类型 | **多类(一个图像一个标记)** | 
    | 域 | **常规(精简)** |
 
-5. 选择“创建项目”。
+5. 选择“创建项目”。 
 
 ### <a name="upload-images-and-train-your-classifier"></a>上传图像并训练分类器
 
@@ -96,43 +89,43 @@ Azure IoT Edge 设备：
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
    ```
 
-2. 返回到自定义视觉项目，选择“添加图像”。 
+2. 返回到自定义视觉项目，选择“添加图像”。  
 
-3. 浏览到已克隆到本地的 git 存储库，导航到第一个图像文件夹 **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**。 选择文件夹中的所有 10 个图像，然后单击“打开”。 
+3. 浏览到已克隆到本地的 git 存储库，导航到第一个图像文件夹 **Cognitive-CustomVision-Windows / Samples / Images / Hemlock**。 选择文件夹中的所有 10 个图像，然后单击“打开”。  
 
-4. 将标记“铁杉”添加到此组图像，然后按 **Enter** 应用该标记。 
+4. 将标记“铁杉”  添加到此组图像，然后按 **Enter** 应用该标记。 
 
-5. 选择“上传 10 个文件”。 
+5. 选择“上传 10 个文件”。  
 
    ![将 hemlock 标记的文件上传到自定义视觉](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
-6. 成功上传图像以后，选择“完成”。
+6. 成功上传图像以后，选择“完成”。 
 
-7. 再次选择“添加图像”。
+7. 再次选择“添加图像”。 
 
-8. 浏览到第二个图像文件夹 **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**。 选择文件夹中的所有 10 个图像，然后单击“打开”。 
+8. 浏览到第二个图像文件夹 **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry**。 选择文件夹中的所有 10 个图像，然后单击“打开”。  
 
-9. 将标记“日本樱花”添加到此组图像，然后按 **Enter** 应用该标记。 
+9. 将标记“日本樱花”  添加到此组图像，然后按 **Enter** 应用该标记。 
 
-10. 选择“上传 10 个文件”。 成功上传图像以后，选择“完成”。 
+10. 选择“上传 10 个文件”。  成功上传图像以后，选择“完成”。  
 
-11. 将两组图像标记并上传后，请选择“训练”，对分类器进行训练。 
+11. 将两组图像标记并上传后，请选择“训练”，对分类器进行训练。  
 
 ### <a name="export-your-classifier"></a>导出分类器
 
-1. 训练分类器以后，请在分类器的“性能”页上选择“导出”。 
+1. 训练分类器以后，请在分类器的“性能”页上选择“导出”。  
 
    ![导出已训练的图像分类器](./media/tutorial-deploy-custom-vision/export.png)
 
-2. 选择“DockerFile”作为平台。 
+2. 选择“DockerFile”  作为平台。 
 
-3. 选择“Linux”作为版本。  
+3. 选择“Linux”  作为版本。  
 
-4. 选择“导出”。 
+4. 选择“导出”。  
 
    ![导出为带 Linux 容器的 DockerFile](./media/tutorial-deploy-custom-vision/export-2.png)
 
-5. 导出完成后，选择“下载”，将 .zip 包保存到本地计算机。 从包中提取所有文件。 将使用这些文件创建一个包含图像分类服务器的 IoT Edge 模块。 
+5. 导出完成后，选择“下载”，将  .zip 包保存到本地计算机。 从包中提取所有文件。 将使用这些文件创建一个包含图像分类服务器的 IoT Edge 模块。 
 
 此时，你已完成自定义视觉项目的创建和训练。 将在下一部分使用导出的文件，但现在已完成自定义视觉网页的操作。 
 
@@ -144,7 +137,7 @@ Azure IoT Edge 设备：
 
 可以通过解决方案以逻辑方式为单个 IoT Edge 部署开发和组织多个模块。 解决方案包含适用于一个或多个模块的代码，另外还包含部署清单，用于声明如何在 IoT Edge 设备上配置模块。 
 
-1. 在 Visual Studio Code 中选择“视图” > “终端”，打开 VS Code 集成终端。
+1. 在 Visual Studio Code 中选择“视图”   >   “终端”，打开 VS Code 集成终端。
 
 2. 在集成终端中输入以下命令，以便安装（或更新）用于在 VS Code 中创建 IoT Edge Python 模块模板的 **cookiecuttere**：
 
@@ -154,7 +147,7 @@ Azure IoT Edge 设备：
    >[!Note]
    >确保将要在其中安装 Cookiecutter 的目录位于环境的 `Path` 中，这样才可以从命令提示符处调用它。
 
-3. 选择“视图” > “命令面板”，打开 VS Code 命令面板。 
+3. 选择“视图”   >   “命令面板”，打开 VS Code 命令面板。 
 
 4. 在“命令面板”中，输入并运行 **Azure IoT Edge:New IoT Edge Solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
@@ -162,13 +155,29 @@ Azure IoT Edge 设备：
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称（例如 **CustomVisionSolution**），或者接受默认名称。 |
-   | 选择模块模板 | 选择“Python 模块”。 |
+   | 选择模块模板 | 选择“Python 模块”。  |
    | 提供模块名称 | 将模块命名为 **classifier**。<br><br>必须确保此模块名称为小写。 IoT Edge 在引用模块时区分大小写，而此解决方案使用的库会将所有请求格式化为小写。 |
    | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/classifier。 |
  
    ![提供 Docker 映像存储库](./media/tutorial-deploy-custom-vision/repository.png)
 
 Visual Studio Code 窗口会加载 IoT Edge 解决方案工作区。
+
+### <a name="add-your-registry-credentials"></a>添加注册表凭据
+
+环境文件存储容器注册表的凭据，并将其与 IoT Edge 运行时共享。 此运行时需要这些凭据才能将专用映像拉取到 IoT Edge 设备中。
+
+1. 在 VS Code 资源管理器中，打开 .env 文件。
+2. 使用从 Azure 容器注册表复制的 **username** 和 **password** 值更新相关字段。
+3. 保存此文件。
+
+### <a name="select-your-target-architecture"></a>选择目标体系结构
+
+目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发模块。 需要选择针对每种解决方案的体系结构，因为容器是针对每种体系结构类型构建和运行的。 默认值为 Linux AMD64。 
+
+1. 打开命令面板并搜索 **Azure IoT Edge：为边缘解决方案设置默认目标平台**，或选择窗口底部侧栏中的快捷方式图标。 
+
+2. 在命令面板中，从选项列表中选择目标体系结构。 在本教程中，我们使用 Ubuntu 虚拟机作为 IoT Edge 设备，因此将保留默认的“amd64”  。 
 
 ### <a name="add-your-image-classifier"></a>添加图像分类器
 
@@ -211,7 +220,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
    | Prompt | 值 | 
    | ------ | ----- |
    | 选择部署模板文件 | 选择 CustomVisionSolution 文件夹中的 deployment.template.json 文件。 |
-   | 选择模块模板 | 选择“Python 模块” |
+   | 选择模块模板 | 选择“Python 模块”  |
    | 提供模块名称 | 将模块命名为 **cameraCapture** |
    | 为模块提供 Docker 映像存储库 | 将 **localhost:5000** 替换为 Azure 容器注册表的登录服务器值。 最终的字符串看起来类似于 **\<registryname\>.azurecr.io/cameracapture**。 |
 
@@ -392,28 +401,6 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 7. 保存 **deployment.template.json** 文件。
 
-### <a name="add-your-registry-credentials"></a>添加注册表凭据
-
-本教程的先决条件列出了一个容器注册表，该注册表是为已创建的模块存储容器映像所必需的。 需在两个位置提供注册表的访问凭据：一个是在 Visual Studio Code 中，目的是生成映像并将其推送到注册表；另一个是在部署清单中，目的是方便 IoT Edge 设备拉取和部署映像。 
-
-如果使用 Azure 容器注册表，请确保知道[管理员帐户](../container-registry/container-registry-authentication.md#admin-account)的用户名、登录服务器和密码。 
-
-1. 在 Visual Studio Code 中选择“视图” > “终端”，打开集成终端。 
-
-2. 在集成终端中输入以下命令： 
-
-    ```csh/sh
-    docker login -u <registry username> <registry login server>
-    ```
-
-3. 系统提示时，请提供注册表密码并按 **Enter**。
-
-4. 在解决方案文件夹中打开 **.env** 文件。 此文件是 git 忽略的，用于存储注册表凭据，因此不需将这些凭据硬编码到部署模板文件中。 
-
-5. 为容器注册表提供用户名和密码，值无需引号。 
-
-6. 保存 **.env** 文件。
-
 ## <a name="build-and-deploy-your-iot-edge-solution"></a>生成并部署 IoT Edge 解决方案
 
 创建两个模块并配置部署清单模板以后，即可生成容器映像并将其推送到容器注册表。 
@@ -422,23 +409,17 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 首先，生成解决方案并将其推送到容器注册表。 
 
-1. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。 可以在 VS Code 的集成终端中观察此操作的进度。 
+1. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。   可以在 VS Code 的集成终端中观察此操作的进度。 
 2. 请注意，已为解决方案添加了一个新文件夹：**config**。展开该文件夹，打开其中的 **deployment.json** 文件。
 3. 查看 deployment.json 文件中的信息。 系统会自动根据已配置的部署模板文件以及解决方案中的信息（包括 .env 文件和 module.json 文件）创建（或更新）deployment.json 文件。 
 
-接下来，在 Visual Studio Code 中设置 IoT 中心的访问权限。 
+然后选择设备并部署解决方案。
 
-1. 在 VS Code 命令面板中，选择“Azure IoT 中心: 选择 IoT 中心”。
-2. 根据提示登录到 Azure 帐户。 
-3. 在命令面板中选择 Azure 订阅，然后选择 IoT 中心。 
+1. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。  
+2. 右键单击要将其作为部署目标的设备，然后选择“为单个设备创建部署”。  
+3. 在文件资源管理器中导航到解决方案中的 **config** 文件夹，然后选择 **deployment.json**。 单击“选择 Edge 部署清单”。  
 
-最后，选择设备并部署解决方案。
-
-1. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。 
-2. 右键单击要将其作为部署目标的设备，然后选择“为单个设备创建部署”。 
-3. 在文件资源管理器中导航到解决方案中的 **config** 文件夹，然后选择 **deployment.json**。 单击“选择 Edge 部署清单”。 
-
-如果部署成功，则会在 VS Code 输出中输出确认消息。 在 VS Code 资源管理器中，展开用于此部署的 IoT Edge 设备的详细信息。 如果模块没有立即显示，请将光标悬停在“Azure IoT 中心设备”标题上，以便启用刷新按钮。 模块启动并将信息报告回 IoT 中心可能需要一些时间。 
+如果部署成功，则会在 VS Code 输出中输出确认消息。 在 VS Code 资源管理器中，展开用于此部署的 IoT Edge 设备的详细信息。 如果模块没有立即显示，请将光标悬停在“Azure IoT 中心设备”标题上，以便启用刷新按钮。  模块启动并将信息报告回 IoT 中心可能需要一些时间。 
 
 也可查看设备本身上的所有模块是否都已启动并运行。 在 IoT Edge 设备上运行以下命令，以便查看模块的状态。 模块启动可能需要一些时间。
 
@@ -456,7 +437,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
    iotedge logs cameraCapture
    ```
 
-在 Visual Studio Code 中右键单击 IoT Edge 设备的名称，选择“开始监视 D2C 消息”。 
+在 Visual Studio Code 中右键单击 IoT Edge 设备的名称，选择“开始监视 D2C 消息”。  
 
 自定义视觉模块中的结果是从 cameraCapture 模块作为消息发送的，其中包括图像为铁杉树或樱花树的概率。 由于图像为铁杉，因此会看到概率为 1.0。 
 
@@ -465,12 +446,9 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。 
 
-否则，可以删除本文中创建的本地配置和 Azure 资源，以避免收费。 
+否则，可以删除本文中使用的本地配置和 Azure 资源，以避免收费。 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
-[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
-
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -482,4 +460,4 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 继续阅读后续教程，了解如何使用 Azure IoT Edge 通过其他方式将数据转化为边缘业务见解。
 
 > [!div class="nextstepaction"]
-> [在 Azure 流分析中使用浮点窗口查找平均值](tutorial-deploy-stream-analytics.md)
+> [使用 SQL Server 数据库在边缘存储数据](tutorial-store-data-sql-server.md)

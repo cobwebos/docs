@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 15deadad3b53b64c619933db76d28f012c85d6d1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496805"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730271"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>什么是 Azure IoT 开放平台通信 (OPC) 设备管理？
+# <a name="what-is-opc-twin"></a>什么是 OPC 孪生？
 
 OPC 孪生由使用 Azure IoT Edge 和 IoT 中心连接云与工厂网络的微服务构成。 OPC 孪生通过 REST API 提供发现、注册和远程控制工业设备的功能。 OPC 孪生不需要 OPC 统一体系结构 (OPC UA) SDK，对编程语言不可知，可包含在无服务器工作流中。 本文将介绍 OPC 孪生的几个用例。
 

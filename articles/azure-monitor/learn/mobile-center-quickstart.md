@@ -5,18 +5,18 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
+ms.date: 04/22/2019
 ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 6f0a59d2b0954c9847219ad1ac8b2fa805767084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 67ddedbaca88d46e706c9a143100b215a0d16a90
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54080374"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683434"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
 
@@ -61,14 +61,14 @@ Analytics.trackEvent("Video clicked")
 
 若要从其他应用平台发送自定义事件，请在其 App Center SDK 中使用 `trackEvent` 方法。
 
-若要确保收到自定义事件，请转到 App Center“分析”部分下的“事件”选项卡。 从应用发送事件后，可能需要等待几分钟才会显示事件。
+若要确保收到自定义事件，请转到 App Center“分析”  部分下的“事件”  选项卡。 从应用发送事件后，可能需要等待几分钟才会显示事件。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
 在应用发送自定义事件，并且 App Center 收到这些事件后，需要在 Azure 门户中创建 App Center 类型的 Application Insights 资源：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 选择“创建资源” > “管理工具” > “Application Insights”。
+2. 选择“创建资源”   > “管理工具”   >   “Application Insights”。
 
     ![添加 Application Insights 资源](./media/mobile-center-quickstart/add-b.png)
 
@@ -81,18 +81,20 @@ Analytics.trackEvent("Video clicked")
    | **资源组**     | 一个新资源组或菜单中的一个现有资源组 | 在其中创建新 Application Insights 资源的资源组 |
    | **位置** | 菜单中的某个位置 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-3. 单击“创建”。
+3. 单击“创建”。 
 
 如果应用支持多个平台（iOS、Android 等），则最好创建单独的 Application Insights 资源，每个平台使用一个资源。
 
 ## <a name="export-to-application-insights"></a>导出到 Application Insights
 
-在顶部“概要”部分中“概述”页面上的新 Application Insights 资源中，复制此资源的检测密钥。
+在“概述”页面上的新 Application Insights 资源中  。 从资源中复制检测密钥。
+
+   ![Application Insights 中的“分析”按钮](./media/mobile-center-quickstart/overview-01.png)
 
 在应用的 App Center 实例中，执行以下操作：
 
-1. 在“设置”页上，单击“导出”。
-2. 选择“新建导出”，选择“Application Insights”，然后单击“自定义”。
+1. 在“设置”  页上，单击“导出”  。
+2. 选择“新建导出”  ，选择“Application Insights”  ，然后单击“自定义”  。
 3. 将 Application Insights 检测密钥粘贴到此框中。
 4. 同意增加包含 Application Insights 资源的 Azure 订阅的使用量。 每个 Application Insights 资源对每月收到的前 1GB 数据是免费的。 [了解有关 Application Insights 定价的详细信息。](https://azure.microsoft.com/pricing/details/application-insights/)
 
@@ -106,9 +108,9 @@ Analytics.trackEvent("Video clicked")
 
 Application Insights 可以查询、分段、筛选和分析来自应用的自定义事件遥测，相比 App Center 提供的分析工具，其功能更为强大。
 
-1. **查询自定义事件遥测。** 从 Application Insights“概述”页面上，选择“分析”。 
+1. **查询自定义事件遥测。** 从 Application Insights“概述”  页面上，选择“分析”  。 
 
-   ![Application Insights 中的“分析”按钮](./media/mobile-center-quickstart/analytics.png)
+   ![Application Insights 中的“分析”按钮](./media/mobile-center-quickstart/analytics-001.png)
 
    将打开与 Application Insights 资源关联的 Application Insights 分析门户。 通过分析门户，可以直接使用 Log Analytics 查询语言来查询数据，因此，可以询问有关应用及其用户的任意复杂的问题。
    
@@ -121,36 +123,36 @@ Application Insights 可以查询、分段、筛选和分析来自应用的自�
    | order by dcount_user_Id desc 
    ```
 
-   ![分析门户](./media/mobile-center-quickstart/analytics-portal.png)
+   ![分析门户](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. 通过单击文本编辑器中查询的任意位置，选择此查询。
-   2. 然后，单击“运行”运行查询。 
+   2. 然后，单击“运行”  运行查询。 
 
    详细了解有关 [Application Insights 分析](../../azure-monitor/app/analytics.md)和 [Log Analytics 查询语言](https://aka.ms/LogAnalyticsLanguageReference)的信息。
 
 
-2. **分段和筛选自定义事件遥测。** 从 Application Insights“概述”页面上，选择目录中的“用户”。
+2. **分段和筛选自定义事件遥测。** 从 Application Insights“概述”  页面上，选择目录中的“用户”  。
 
-   ![用户工具图标](./media/mobile-center-quickstart/users-icon.png)
+   ![用户工具图标](./media/mobile-center-quickstart/users-icon-001.png)
 
    用户工具可显示你的应用中有多少用户点击了某些按钮、访问了某些屏幕或使用 App Center SDK 执行了作为事件进行跟踪的任何其他操作。 如果你一直在寻找对 App Center 事件进行分段和筛选的方法，那么用户工具会是一个不错的选择。
 
-   ![用户工具](./media/mobile-center-quickstart/users.png) 
+   ![用户工具](./media/mobile-center-quickstart/users-001.png) 
 
-   例如，通过选择“拆分依据”下拉菜单中的“国家或地区”，来根据地域对使用量进行分段。
+   例如，通过选择“拆分依据”  下拉菜单中的“国家或地区”  ，来根据地域对使用量进行分段。
 
-3. **分析应用中的转换、保留和导航模式。** 从 Application Insights“概述”页面上，选择目录中的“用户流”。
+3. **分析应用中的转换、保留和导航模式。** 从 Application Insights“概述”  页面上，选择目录中的“用户流”  。
 
-   ![用户流工具](./media/mobile-center-quickstart/user-flows.png)
+   ![用户流工具](./media/mobile-center-quickstart/user-flows-001.png)
 
    用户流工具直观显示用户在某些起始事件之后发送的事件。 它可用于获取用户浏览应用的整体情况。 它可以显示许多用户改动应用的地方，或反复执行相同操作的地方。
 
    除了用户流，Application Insights 还提供几种其他用户行为分析工具来回答特定的问题：
 
-   * 漏斗图，用于分析和监视转换率。
-   * 保留，用于分析随着时间的推移应用保留用户的情况。
-   * 工作簿，用于将可视化效果和文本组合到可共享的报表中。
-   * 队列，用于命名和保存特定用户或事件组，以便可以轻松地通过其他分析工具引用它们。
+   * 漏斗图  ，用于分析和监视转换率。
+   * 保留  ，用于分析随着时间的推移应用保留用户的情况。
+   * 工作簿  ，用于将可视化效果和文本组合到可共享的报表中。
+   * 队列  ，用于命名和保存特定用户或事件组，以便可以轻松地通过其他分析工具引用它们。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -158,13 +160,13 @@ Application Insights 可以查询、分段、筛选和分析来自应用的自�
 
 要关闭 App Center 中的导出，请执行以下操作：
 
-1. 在 App Center 中，转到“设置”，然后选择“导出”。
-2. 单击想要删除的 Application Insights 导出，然后单击底部的“删除导出”并确认。
+1. 在 App Center 中，转到“设置”  ，然后选择“导出”  。
+2. 单击想要删除的 Application Insights 导出，然后单击底部的“删除导出”  并确认。
 
 要删除 Application Insights 资源，请执行以下操作：
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后选择在其中创建 Application Insights 资源的资源组。
-2. 打开要删除的 Application Insights 资源。 然后在该资源的顶部菜单中单击“删除”并确认。 这将永久删除导出到 Application Insights 的数据的副本。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，然后选择在其中创建 Application Insights 资源的资源组。
+2. 打开要删除的 Application Insights 资源。 然后在该资源的顶部菜单中单击“删除”  并确认。 这将永久删除导出到 Application Insights 的数据的副本。
 
 ## <a name="next-steps"></a>后续步骤
 

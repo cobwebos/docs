@@ -9,28 +9,33 @@ manager: cshankar
 ms.reviewer: anshan
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7f8731f48b96ccbe0e77970af1ccefa1d7a7155f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a742e9f235812cdbdafdcb0a39581e0779fcd040
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438765"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572929"
 ---
-# <a name="azure-time-series-insights-preview-overview"></a>Azure 时序见解预览版概述
+# <a name="the-azure-time-series-insights-preview"></a>Azure 时序见解预览版
 
-Azure 时序见解预览版是一种端到端的平台即服务产品/服务。 它用于引入、处理、存储和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
+Azure 时序见解预览版是一种端到端的平台即服务产品/服务。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
+
+> [!TIP]
+> 有关正式版中的功能，请阅读 [Azure 时序见解 GA 概述](time-series-insights-overview.md)。
 
 ## <a name="video"></a>视频
 
-在本视频中，我们概述了 Azure 时序见解预览版（一种基于云的 IoT 分析平台）。
+### <a name="learn-more-about-the-azure-time-series-insights-preview-br"></a>了解 Azure 时序见解预览版的详细信息。 </br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
 ## <a name="define-iot-data"></a>定义 IoT 数据
 
-IoT 数据是在资产密集型组织中提供的“行业”数据。 IoT 数据通常是高度非结构化的，因为它发送自记录相当具有干扰性的度量值的资产。 这些度量值包括温度、运动和湿度。 这些数据流通常带有下述特征：显著性差异、损坏的消息和错误读数。 在开始分析之前，必须对这些流中的数据进行清理。 IoT 数据通常仅在第一方数据源（如 CRM 或 ERP）提供的其他数据输入的上下文中有意义。 输入也可来自第三方数据源，例如天气或位置。
+IoT 数据是在资产密集型组织中提供的行业数据。 IoT 数据通常是高度非结构化的，因为它发送自记录相当具有干扰性的度量值的资产。 这些度量值包括温度、运动和湿度。 这些数据流通常带有下述特征：显著性差异、损坏的消息和错误读数。 在开始分析之前，必须对这些流中的数据进行清理。
+
+IoT 数据通常仅在第一方数据源（如 CRM 或 ERP）提供的其他数据输入的上下文中有意义。 输入也可来自第三方数据源，例如天气或位置。
 
 因此，只有一小部分的此类数据用于运营和业务目的。 此类数据提供一致、广泛、最新且正确的信息，适用于业务报告和分析。 将收集的 IoT 数据转换为可操作的见解需要：
 
@@ -46,8 +51,8 @@ IoT 数据是在资产密集型组织中提供的“行业”数据。 IoT 数�
 
 当前的 IoT 环境很多样。 客户遍及制造业、汽车业、能源业、公用事业、智能建筑和咨询行业。 方案包括即席数据浏览，其中数据的形状未知。 方案还包括通过架构化或显式建模的数据进行运营分析，以提高运营效率。 这些方案通常并行存在，并且支持不同的用例。 对于工业 IoT 企业及其数字革命的成功至关重要的平台功能包括：
 
-- 多层存储，包括冷热存储。 
-- 能够存储数十年的时序数据。 
+- 多层存储，包括冷热存储。
+- 能够存储数十年的时序数据。
 - 能够显式建模和优化基于资产的运营智能的查询。
 
 时序见解是全面的端到端平台即服务产品/服务，用于探索 IoT 数据和获取运营见解。 时序见解提供完全托管的云服务，适用于分析 IoT 规模的时序数据。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Box Edge 转换数据 | Microsoft Docs
+title: 教程：通过 Azure Data Box Edge 的计算力筛选和分析数据 | Microsoft Docs
 description: 了解如何在 Data Box Edge 中配置计算角色，并在将数据发送到 Azure 之前，使用该角色转换数据。
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 31911c124aeafecb8ee37d14e58d3a0bdc0d4955
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 7b3d725eb05c811d3fdd44516c1bde9a8dfbaaac
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400746"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924336"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>教程：使用 Azure Data Box Edge 转换数据
 
@@ -42,22 +42,22 @@ ms.locfileid: "58400746"
 
 若要在 Data Box Edge 上配置计算，将创建一个 IoT 中心资源。
 
-1. 在 Data Box Edge 资源的 Azure 门户中，转到“概述”。 在右窗格中的“计算”磁贴上，选择“开始”。
+1. 在 Data Box Edge 资源的 Azure 门户中，转到“概述”。 在右窗格中的“计算”磁贴上，选择“开始”。  
 
     ![开始使用计算](./media/data-box-edge-deploy-configure-compute/configure-compute-1.png)
 
-2. 在“配置 Edge 计算”磁贴上，选择“配置计算”。
-3. 在“配置 Edge 计算”边栏选项卡上输入以下内容：
+2. 在“配置 Edge 计算”磁贴上，选择“配置计算”。  
+3. 在“配置 Edge 计算”边栏选项卡上输入以下内容： 
 
    
     |字段  |值  |
     |---------|---------|
-    |IoT 中心     | 选择“新建”或“现有”。 <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。 <br> 在每种情况下，IoT 中心资源都会使用 Data Box Edge 资源所用的同一个订阅和资源组。     |
-    |Name     |输入 IoT 中心资源的名称。         |
+    |IoT 中心     | 选择“新建”或“现有”。   <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。 <br> 在每种情况下，IoT 中心资源都会使用 Data Box Edge 资源所用的同一个订阅和资源组。     |
+    |名称     |输入 IoT 中心资源的名称。         |
 
     ![开始使用计算](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
-4. 选择“创建”。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置计算”磁贴会更新，以显示计算配置。 若要确认是否已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看计算”。
+4. 选择“创建”  。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置计算”磁贴会更新，以显示计算配置。  若要确认是否已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看计算”。  
     
     ![开始使用计算](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
 
@@ -70,11 +70,11 @@ ms.locfileid: "58400746"
 
 1. 执行以下步骤，在设备上添加 Edge 共享：
 
-    1. 在 Data Box Edge 资源中，转到“Edge 计算”>“开始”。
-    2. 在“添加共享”磁贴上选择“添加”。
-    3. 在“添加共享”边栏选项卡上提供共享名称，然后选择共享类型。
-    4. 若要装载 Edge 共享，请选中“将该共享用于 Edge 计算”复选框。
-    5. 依次选择“存储帐户”、“存储服务”、某个现有用户、“创建”。
+    1. 在 Data Box Edge 资源中，转到“Edge 计算”>“开始”。 
+    2. 在“添加共享”磁贴上选择“添加”。  
+    3. 在“添加共享”边栏选项卡上提供共享名称，然后选择共享类型。 
+    4. 若要装载 Edge 共享，请选中“将该共享用于 Edge 计算”复选框。 
+    5. 依次选择“存储帐户”、“存储服务”、某个现有用户、“创建”。   
 
         ![添加 Edge 共享](./media/data-box-edge-deploy-configure-compute/add-edge-share-1.png) 
 
@@ -86,12 +86,12 @@ ms.locfileid: "58400746"
 
     现已创建 Edge 共享，并且收到了创建成功的通知。 共享列表可能会更新，但必须等待共享创建完成。
 
-2. 重复上述所有步骤并选中“配置为 Edge 本地共享”复选框，在 Edge 设备上添加 Edge 本地共享。 本地共享中的数据将保留在设备上。
+2. 重复上述所有步骤并选中“配置为 Edge 本地共享”复选框，在 Edge 设备上添加 Edge 本地共享。  本地共享中的数据将保留在设备上。
 
     ![添加 Edge 本地共享](./media/data-box-edge-deploy-configure-compute/add-edge-share-2.png)
 
   
-3. 选择“添加共享”以查看更新的共享列表。
+3. 选择“添加共享”以查看更新的共享列表。 
 
     ![更新的共享列表](./media/data-box-edge-deploy-configure-compute/add-edge-share-3.png) 
  
@@ -102,24 +102,24 @@ ms.locfileid: "58400746"
 
 在此部分，请将在[为 Data Box Edge 开发 C# 模块](data-box-edge-create-iot-edge-module.md)中创建的自定义模块添加到 IoT Edge 设备。 此自定义模块从 Edge 设备上的 Edge 本地共享提取文件，并将其移到设备上的 Edge（云）共享。 然后，云共享将文件推送到与该云共享相关联的 Azure 存储帐户。
 
-1. 转到“Edge 计算”>“开始”。 在“添加模块”磁贴上，选择“简单”作为方案类型。 选择 **添加** 。
-2. 在“配置和添加模块”边栏选项卡中输入以下值：
+1. 转到“Edge 计算”>“开始”。  在“添加模块”磁贴上，选择“简单”作为方案类型。   选择 **添加** 。
+2. 在“配置和添加模块”边栏选项卡中输入以下值： 
 
     
     |字段  |值  |
     |---------|---------|
-    |Name     | 模块的唯一名称。 此模块是可以部署到与 Data Box Edge 相关联的 IoT Edge 设备的 Docker 容器。        |
+    |名称     | 模块的唯一名称。 此模块是可以部署到与 Data Box Edge 相关联的 IoT Edge 设备的 Docker 容器。        |
     |映像 URI     | 模块的对应容器映像的映像 URI。        |
     |需要凭据     | 如果选中此项，则会使用用户名和密码来检索具有匹配 URL 的模块。        |
     |输入共享     | 选择一个输入共享。 在本例中，Edge 本地共享是输入共享。 此处使用的模块将文件从 Edge 本地共享移到 Edge 共享，然后，这些文件将从 Edge 共享上传到云中。        |
     |输出共享     | 选择一个输出共享。 在本例中，Edge 共享是输出共享。        |
-    |触发器类型     | 选择“文件”或“计划”。 每当发生文件事件（例如，将文件写入输入共享）时，文件触发器就会激发。 计划的触发器根据定义的计划激发。         |
+    |触发器类型     | 选择“文件”或“计划”。   每当发生文件事件（例如，将文件写入输入共享）时，文件触发器就会激发。 计划的触发器根据定义的计划激发。         |
     |触发器名称     | 触发器的唯一名称。         |
     |环境变量| 可帮助定义运行模块的环境的可选信息。   |
 
     ![添加和配置模块](./media/data-box-edge-deploy-configure-compute/add-module-1.png)
 
-3. 选择 **添加** 。 随即会添加该模块。 “添加模块”磁贴将会更新，以指示模块已部署。 
+3. 选择 **添加** 。 随即会添加该模块。 “添加模块”磁贴将会更新，以指示模块已部署。  
 
     ![已部署模块](./media/data-box-edge-deploy-configure-compute/add-module-2.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "58400746"
 
 若要验证模块是否正在运行，请执行以下操作：
 
-1. 选择“添加模块”磁贴。 随后会转到“模块”边栏选项卡。 在模块列表中，找到已部署的模块。 所添加模块的运行时状态应为“正在运行”。
+1. 选择“添加模块”磁贴。  随后会转到“模块”边栏选项卡。  在模块列表中，找到已部署的模块。 所添加模块的运行时状态应为“正在运行”。 
 
     ![验证数据转换](./media/data-box-edge-deploy-configure-compute/verify-data-1.png)
  

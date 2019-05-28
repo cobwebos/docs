@@ -5,15 +5,15 @@ manager: kfile
 description: 了解如何使用 Power BI Desktop 连接到 Azure Analysis Services。
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ea2a6612a568d4080a8df2c569f79aaaa283e9c4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188804"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702836"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>教程：使用 Power BI Desktop 进行连接
 
@@ -38,29 +38,29 @@ ms.locfileid: "54188804"
 ## <a name="get-server-name"></a>获取服务器名称
 若要从 Power BI Desktop 连接到服务器，首先需要服务器名称。 可以从门户获取服务器名称。
 
-在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制服务器名称。
+在 **Azure 门户**中，单击“服务器”>“概述”   > “服务器名称”  ，并复制服务器名称。
    
    ![在 Azure 中获取服务器名称](./media/analysis-services-tutorial-pbid/aas-copy-server-name.png)
 
 ## <a name="connect-in-power-bi-desktop"></a>在 Power BI Desktop 中连接
 
-1. 在 Power BI Desktop 中，单击“获取数据” > “Azure” > “Azure Analysis Services 数据库”。
+1. 在 Power BI Desktop 中，单击“获取数据”   > “Azure”   > “Azure Analysis Services 数据库”  。
 
    ![在“获取数据”中连接](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aasserver.png)
 
-2. 在“服务器”中，粘贴服务器名称，然后在“数据库”中输入 **adventureworks**，然后单击“确定”。
+2. 在“服务器”  中，粘贴服务器名称，然后在“数据库”  中输入 **adventureworks**，然后单击“确定”。 
 
    ![指定服务器名称和模型数据库](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aas-servername.png)
 
 3. 在系统提示时输入凭据。 你输入的帐户必须至少具有 adventureworks 示例模型数据库的读取权限。
 
-    adventureworks 模型将在 Power BI Desktop 中打开，并且“报表”视图中将显示一个空白报表。 “字段”列表中会显示所有非隐藏的模型对象。 连接状态显示在右下角。
+    adventureworks 模型将在 Power BI Desktop 中打开，并且“报表”视图中将显示一个空白报表。 “字段”列表中会显示所有非隐藏的模型对象。  连接状态显示在右下角。
 
-4. 在“可视化效果”中，选择“簇状条形图”，单击“格式”（滚漆筒图标），然后启用“数据标签”。 
+4. 在“可视化效果”  中，选择“簇状条形图”  ，单击“格式”  （滚漆筒图标），然后启用“数据标签”。  
 
    ![可视化效果](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. 在“字段” >  **Internet Sales** 表中，选择 **Internet Sales Total** 和 **Margin** 度量值。 在 **Product Category** 表中，选择 **Product Category Name**。
+5. 在“字段” >  **Internet Sales** 表中，选择 **Internet Sales Total** 和 **Margin** 度量值。  在 **Product Category** 表中，选择 **Product Category Name**。
 
    ![完成报表](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 
@@ -71,4 +71,4 @@ ms.locfileid: "54188804"
 如果不再需要报表，则不要保存它，如果已保存，则将文件删除。
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已了解了如何使用 Power BI Desktop 连接到服务器上的数据模型并创建基本报表。 如果不熟悉如何创建数据模型，请参阅 [Adventure Works Internet Sales 表格数据建模教程](aas-adventure-works-tutorial.md)。
+在本教程中，你已了解了如何使用 Power BI Desktop 连接到服务器上的数据模型并创建基本报表。 如果不熟悉如何创建数据模型，请参阅 SQL Server Analysis Services 文档中的 [Adventure Works Internet Sales 表格数据建模教程](https://docs.microsoft.com/sql/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)。

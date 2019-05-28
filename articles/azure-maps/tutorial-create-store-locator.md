@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 1d3099da3d449e29d378e2f350fdc87ce5166f2e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545291"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574402"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>使用 Azure Maps 创建店铺定位器
 
@@ -71,7 +71,7 @@ ms.locfileid: "59545291"
 
 ## <a name="create-the-store-location-dataset"></a>创建店铺位置数据集
 
-在开发店铺定位器应用程序之前，需要创建要在地图上显示的店铺的数据集。 在本教程中，我们将使用一家名为 Contoso Coffee 的虚构咖啡厅的数据集。 此简单店铺定位器的数据集在 Excel 工作簿中进行管理。 该数据集包含分布在 9 个国家的 10,213 家 Contoso Coffee 咖啡厅位置：美国、加拿大、英国、法国、德国、意大利、荷兰、丹麦和西班牙。 下面是数据外观的屏幕截图：
+在开发店铺定位器应用程序之前，需要创建要在地图上显示的店铺的数据集。 在本教程中，我们将使用一家名为 Contoso Coffee 的虚构咖啡厅的数据集。 此简单店铺定位器的数据集在 Excel 工作簿中进行管理。 该数据集包含分布在 9 个国家/地区的 10,213 家 Contoso Coffee 咖啡厅位置：美国、加拿大、英国、法国、德国、意大利、荷兰、丹麦和西班牙。 下面是数据外观的屏幕截图：
 
 <br/>
 <center>
@@ -93,7 +93,7 @@ ms.locfileid: "59545291"
 
 另一种方法是将此数据集转换成浏览器可轻松分析的平面文本文件。 该文件本身可与应用程序的剩余部分托管在一起。 这种做法能够简化开发，但只适合小型数据集，因为用户需要下载所有数据。 由于数据文件大小小于 1 MB，因此我们对此数据集使用了平面文本文件。  
 
-若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。 在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。 将文件命名为 *ContosoCoffee.txt*。 
+若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。  在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。   将文件命名为 *ContosoCoffee.txt*。 
 
 <br/>
 <center>

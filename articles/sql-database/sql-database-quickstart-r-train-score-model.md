@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 97309a24c0ab12720f968409856a16cab4ff7ac7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c1719064de53b79a127146d0ab034f461657cc64
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013083"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714890"
 ---
 # <a name="create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>通过 Azure SQL 数据库机器学习服务（预览版）使用 R 创建并训练预测模型
 
@@ -171,11 +171,11 @@ VALUES (
 
 **结果**
 
-![具有额外输出的已训练模型](./media/sql-database-connect-query-r/r-train-model-with-additional-output.png)
+![具有额外输出的已训练模型](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
 ## <a name="score-new-data-using-the-trained-model"></a>使用已训练的模型为新数据评分
 
-“评分”是一个术语，在数据科学中用来表示根据馈送到已训练模型中的新数据生成预测、概率或其他值。 你将使用在上一部分创建的模型对根据新数据进行的预测评分。
+“评分”  是一个术语，在数据科学中用来表示根据馈送到已训练模型中的新数据生成预测、概率或其他值。 你将使用在上一部分创建的模型对根据新数据进行的预测评分。
 
 你是否注意到，原始训练数据的最高速度是 25 英里/小时？ 这是因为原始数据基于 1920 年的一次试验！ 你可能想知道，如果一辆上世纪 20 年代的汽车可以达到 60 mph 甚至 100 mph 的速度，其制动时间会是多长？ 要回答此问题，你可以向模型提供一些新的速度值。
 
@@ -239,7 +239,7 @@ VALUES (
 
    **结果**
 
-   ![预测制动距离的结果集](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
+   ![预测制动距离的结果集](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 
 > [!NOTE]
 > 在此示例脚本中，`str` 函数是在测试阶段添加的，用于检查从 R 返回的数据的架构。稍后可以删除该语句。
@@ -248,10 +248,9 @@ VALUES (
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解机器学习服务，请参阅以下文章。 虽然这些文章中有一些是针对 SQL Server 的，但大多数信息也适用于 Azure SQL 数据库中的机器学习服务（使用 R）。
+有关使用 R 的 Azure SQL 数据库机器学习服务（预览版）的详细信息，请参阅以下文章。
 
-- [Azure SQL 数据库机器学习服务（使用 R）](sql-database-machine-learning-services-overview.md)
-- [SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [教程：了解在 SQL Server 中使用 R 进行数据库内分析](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [End-to-end data science walkthrough for R and SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)（适用于 R 和 SQL Server 的端到端数据科学演练）
-- [教程：将 RevoScaleR R 函数与 SQL Server 数据配合使用](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [使用 R 的 Azure SQL 数据库机器学习服务（预览版）](sql-database-machine-learning-services-overview.md)
+- [在 Azure SQL 数据库机器学习服务（预览版）中创建和运行简单的 R 脚本](sql-database-quickstart-r-create-script.md)
+- [使用机器学习服务（预览版）在 Azure SQL 数据库中编写高级 R 函数](sql-database-machine-learning-services-functions.md)
+- [在 Azure SQL 数据库机器学习服务中使用 R 和 SQL 数据（预览版）](sql-database-machine-learning-services-data-issues.md)

@@ -1,5 +1,5 @@
 ---
-title: 有关安装 Azure Data Box Edge 物理设备的教程 | Microsoft Docs
+title: 教程：安装 Azure Data Box Edge 物理设备（拆包、装机和布线）| Microsoft Docs
 description: 有关安装 Azure Data Box Edge 的第二篇教程涉及到物理设备的拆包、装机和布线。
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7062e9d829242a62dfa4f661c21ce6c56b0db69c
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278473"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924524"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>教程：安装 Azure Data Box Edge
 
@@ -145,7 +145,8 @@ ms.locfileid: "59278473"
 
 ### <a name="engage-and-release-the-slam-latch"></a>啮合和释放撞击闩锁
 
-注意：对于未配备撞击闩锁的系统，请根据本过程的步骤 3 中所述，使用螺丝来紧固系统。
+> [!NOTE]
+> 对于未配备撞击闩锁的系统，请根据本过程的步骤 3 中所述，使用螺丝来紧固系统。
 
 1. 朝向正面，在系统的任一侧找到撞击闩锁。
 2. 将系统推入机架时，闩锁会自动啮合；拉起闩锁会释放闩锁。

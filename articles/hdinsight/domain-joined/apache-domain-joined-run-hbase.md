@@ -1,20 +1,19 @@
 ---
 title: 使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略 - Azure
 description: 了解如何使用企业安全性套餐为 Azure HDInsight 中的 HBase 配置 Apache Ranger 策略。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: tutorial
 ms.date: 02/01/2019
-ms.openlocfilehash: 1421b142fbca83d2de46f52f8390d0c25f22780c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d1f2a2b24e6f1856d021911e6f2e9c107bd38b72
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117279"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926098"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略（预览）
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略
 
 了解如何为企业安全性套餐 (ESP) Apache HBase 群集配置 Apache Ranger 策略。 将 ESP 群集连接到域，可允许用户使用域凭据进行身份验证。 本教程将创建两个 Ranger 策略来限制对 HBase 表中不同列系列的访问。
 
@@ -94,15 +93,15 @@ ms.locfileid: "58117279"
 
 为 **sales_user1** 和 **marketing_user1** 创建 Ranger 策略。
 
-1. 打开“Ranger 管理 UI”。 单击“HBase”下的“\<群集名称 >_hbase”。
+1. 打开“Ranger 管理 UI”  。 单击“HBase”下的“\<群集名称 >_hbase”。  
 
    ![Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. “策略列表”屏幕将显示针对此群集创建的所有 Ranger 策略。 可以列出一个预先配置的策略。 单击“添加新策略”。
+2. “策略列表”屏幕将显示针对此群集创建的所有 Ranger 策略。  可以列出一个预先配置的策略。 单击“添加新策略”。 
 
     ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
-3. 在“创建策略”屏幕上输入以下值：
+3. 在“创建策略”屏幕上输入以下值  ：
 
    |**设置**  |**建议的值**  |
    |---------|---------|
@@ -122,11 +121,11 @@ ms.locfileid: "58117279"
    ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
-   >如果“选择用户”中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
+   >如果“选择用户”  中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
 
-4. 单击“添加”保存策略。
+4. 单击“添加”保存策略。 
 
-5. 单击“添加新策略”，然后输入以下值：
+5. 单击“添加新策略”  ，然后输入以下值：
 
    |**设置**  |**建议的值**  |
    |---------|---------|
@@ -140,7 +139,7 @@ ms.locfileid: "58117279"
 
    ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
-6. 单击“添加”保存策略。
+6. 单击“添加”保存策略。 
 
 ## <a name="test-the-ranger-policies"></a>测试 Ranger 策略
 
@@ -235,10 +234,10 @@ ms.locfileid: "58117279"
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在顶部的“搜索”框中，键入 **HDInsight**。 
-1. 选择“服务”下的“HDInsight 群集”。
-1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 
-1. 单击“删除” 。 单击 **“是”**。
+2. 在顶部的“搜索”框中，键入 **HDInsight**。  
+1. 选择“服务”下的“HDInsight 群集”   。
+1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。  
+1. 单击“删除”  。 单击 **“是”** 。
 
 ## <a name="next-steps"></a>后续步骤
 

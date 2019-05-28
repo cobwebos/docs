@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: ada09959391c551a9eff4d96b186be29c1e3b7a8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: cfc70b3d8e364c25ccf9fd221699695641a66ef0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013092"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708585"
 ---
 # <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>在 Azure SQL 数据库机器学习服务（预览版）中创建和运行简单的 R 脚本
 
@@ -73,9 +73,9 @@ print(c(c, d))
 
    > [!NOTE]
    > 如果你是管理员，可以自动运行外部代码。 你可以使用以下命令向其他用户授予权限：
-   <br>**GRANT EXECUTE ANY EXTERNAL SCRIPT TO** *\<username\>*。
+   <br>**GRANT EXECUTE ANY EXTERNAL SCRIPT TO** *\<username\>* 。
 
-2. 将会计算出正确结果，且 R 的 `print` 函数会将结果返回到“消息”窗口。
+2. 将会计算出正确结果，且 R 的 `print` 函数会将结果返回到“消息”窗口。 
 
    它应当如下所示。
 
@@ -102,9 +102,9 @@ GO
 
 | | |
 |-|-|
-|*@language* | 定义要调用的语言扩展，在本例中为 R |
-|*@script* | 定义传递给 R 运行时的命令。 必须将整个 R 脚本作为 Unicode 文本包括在此参数中。 还可以将文本添加到 **nvarchar** 类型的一个变量，然后调用该变量 |
-|*@input_data_1* | 由查询返回的数据，将传递给 R 运行时，后者再将数据作为数据帧返回到 SQL Server |
+| @language | 定义要调用的语言扩展，在本例中为 R |
+| @script | 定义传递给 R 运行时的命令。 必须将整个 R 脚本作为 Unicode 文本包括在此参数中。 还可以将文本添加到 **nvarchar** 类型的一个变量，然后调用该变量 |
+| @input_data_1 | 由查询返回的数据，将传递给 R 运行时，后者再将数据作为数据帧返回到 SQL Server |
 |WITH RESULT SETS | 子句定义为 SQL Server 返回的数据表的架构，添加“Hello World”作为列名，添加 **int** 作为数据类型 |
 
 命令将输出以下文本：
@@ -146,7 +146,7 @@ GO
 
     **结果**
 
-    ![RTestData 表的内容](./media/sql-database-connect-query-r/select-rtestdata.png)
+    ![RTestData 表的内容](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
 1. 运行以下 R 脚本。 它使用 `SELECT` 语句从表中检索数据，将其传递给 R 运行时，然后将数据作为数据帧返回。 `WITH RESULT SETS` 子句定义 SQL 数据库的返回数据表的架构，添加列名 *NewColName*。
 
@@ -159,7 +159,7 @@ GO
 
     **结果**
 
-    ![可以从表返回数据的 R 脚本的输出](./media/sql-database-connect-query-r/r-output-rtestdata.png)
+    ![可以从表返回数据的 R 脚本的输出](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
 1. 现在，让我们更改输入和输出变量的名称。 默认的输入和输出变量名称为 **InputDataSet** 和 **OutputDataSet**，此脚本将这些名称更改成了 **SQL_in** 和 **SQL_out**：
 
@@ -193,7 +193,7 @@ GO
 
     **结果**
 
-    ![使用 @script 作为输入的查询结果](./media/sql-database-connect-query-r/r-data-generated-output.png)
+    ![使用 @script 作为输入的查询结果](./media/sql-database-quickstart-r-create-script/r-data-generated-output.png)
 
 ## <a name="check-r-version"></a>检查 R 版本
 
@@ -205,7 +205,7 @@ EXECUTE sp_execute_external_script @language = N'R'
 GO
 ```
 
-R 的 `print` 函数将版本返回到“消息”窗口。 在下面的示例输出中，可以看到此示例中的 SQL 数据库已安装 R 版本 3.4.4。
+R 的 `print` 函数将版本返回到“消息”窗口。  在下面的示例输出中，可以看到此示例中的 SQL 数据库已安装 R 版本 3.4.4。
 
 **结果**
 
@@ -251,7 +251,7 @@ WITH result sets((
 
 **结果**
 
-![R 中的已安装包](./media/sql-database-connect-query-r/r-installed-packages.png)
+![R 中的已安装包](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -260,10 +260,8 @@ WITH result sets((
 > [!div class="nextstepaction"]
 > [通过 Azure SQL 数据库机器学习服务（预览版）使用 R 创建并训练预测模型](sql-database-quickstart-r-train-score-model.md)
 
-若要详细了解机器学习服务，请参阅以下文章。 虽然这些文章中有一些是针对 SQL Server 的，但大多数信息也适用于 Azure SQL 数据库中的机器学习服务（使用 R）。
+有关使用 R 的 Azure SQL 数据库机器学习服务（预览版）的详细信息，请参阅以下文章。
 
-- [Azure SQL 数据库机器学习服务（使用 R）](sql-database-machine-learning-services-overview.md)
-- [SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [教程：了解在 SQL Server 中使用 R 进行数据库内分析](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [End-to-end data science walkthrough for R and SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)（适用于 R 和 SQL Server 的端到端数据科学演练）
-- [教程：将 RevoScaleR R 函数与 SQL Server 数据配合使用](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [使用 R 的 Azure SQL 数据库机器学习服务（预览版）](sql-database-machine-learning-services-overview.md)
+- [使用机器学习服务（预览版）在 Azure SQL 数据库中编写高级 R 函数](sql-database-machine-learning-services-functions.md)
+- [在 Azure SQL 数据库机器学习服务中使用 R 和 SQL 数据（预览版）](sql-database-machine-learning-services-data-issues.md)

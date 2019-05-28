@@ -12,17 +12,16 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/29/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 04f08965d161e35a9ae4423ad5d3cf80cb407b8a
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: b704e9074c8ef88d8fefd97f466884af952c46f8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607766"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919615"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python 应用
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Python 应用
 
 在本快速入门中，需将简单的 Python 应用部署到 [Linux 上的应用服务](app-service-linux-intro.md)，该版本提供了一项高度可缩放、自我修补的 Web 托管服务。 由于是基于浏览器的交互式 Azure Cloud Shell 使用 Azure 命令行接口 ([Azure CLI](/cli/azure/install-azure-cli))，因此可遵循使用 Mac、Linux 或 Windows 计算机的步骤。
 
@@ -68,7 +67,7 @@ flask run
 
 打开 Web 浏览器并导航到 `http://localhost:5000/` 处的示例应用。
 
-此时会看到来自示例应用的 Hello World! 消息显示在页面中。
+此时会看到来自示例应用的 Hello World!  消息显示在页面中。
 
 ![本地运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
 
@@ -155,7 +154,7 @@ Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
 
-祝贺你！ 现已将第一个 Python 应用部署到 Linux 应用服务。
+祝贺你！  现已将第一个 Python 应用部署到 Linux 应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
@@ -185,7 +184,7 @@ az webapp up -n <app-name> -l <location-name>
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/quickstart-python/app-service-list.png)
 
@@ -198,8 +197,6 @@ az webapp up -n <app-name> -l <location-name>
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>后续步骤
-
-Linux 上的应用服务中内置的 Python 映像目前处于预览状态，你可以自定义用于启动应用的命令。 还可以改用自定义容器创建生产 Python 应用。
 
 > [!div class="nextstepaction"]
 > [教程：使用 PostgreSQL 的 Python 应用](tutorial-python-postgresql-app.md)

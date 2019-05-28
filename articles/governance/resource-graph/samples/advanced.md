@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256815"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691989"
 ---
 # <a name="advanced-resource-graph-queries"></a>高级资源图表查询
 
@@ -22,7 +22,7 @@ ms.locfileid: "59256815"
 我们将逐步介绍以下高级查询：
 
 > [!div class="checklist"]
-> - [获取 VMSS 容量和大小](#vmss-capacity)
+> - [获取虚拟机规模集容量和大小](#vmss-capacity)
 > - [列出所有标记名称](#list-all-tags)
 > - [由正则表达式匹配的虚拟机](#vm-regex)
 
@@ -38,7 +38,7 @@ Azure CLI（通过扩展）和 Azure PowerShell（通过模块）支持 Azure �
 
 此查询将查找虚拟机规模集资源，并获取各种详细信息，包括规模集的虚拟机大小和容量。 此查询使用 `toint()` 函数将容量强制转换为数字以供排序。 最后会将列重命名为自定义命名属性。
 
-```Query
+```kusto
 where type=~ 'microsoft.compute/virtualmachinescalesets'
 | where name contains 'contoso'
 | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name
@@ -57,7 +57,7 @@ Search-AzGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' 
 
 此查询以标记开头，并生成一个 JSON 对象，列出所有唯一标记名称及其对应的类型。
 
-```Query
+```kusto
 project tags
 | summarize buildschema(tags)
 ```
@@ -86,7 +86,7 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 按名称进行匹配后，查询将对名称进行投影并按名称升序排序。
 
-```Query
+```kusto
 where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$'
 | project name
 | order by name asc
