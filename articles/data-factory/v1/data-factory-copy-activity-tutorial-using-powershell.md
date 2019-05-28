@@ -57,7 +57,7 @@ ms.locfileid: "66151627"
 下面是本教程中要执行的步骤：
 
 1. 创建 Azure **数据工厂**。 本步骤创建名为 ADFTutorialDataFactoryPSH 的数据工厂。 
-1. 在数据工厂中创建“链接服务”。 此步骤将创建两个链接服务，其类型分别为：Azure 存储和 Azure SQL 数据库。 
+1. 在数据工厂中创建“链接服务”  。 此步骤将创建两个链接服务，其类型分别为：Azure 存储和 Azure SQL 数据库。 
     
     AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)创建了一个容器并将数据上传到该存储帐户。   
 
@@ -120,7 +120,7 @@ ms.locfileid: "66151627"
     ```
 * 只有 Azure 订阅的参与者或管理员才可以创建数据工厂实例。
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 可能看到以下错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”。 请执行以下操作之一，并重试发布：
+* 可能看到以下错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  。 请执行以下操作之一，并重试发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -220,14 +220,14 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
     ProvisioningState : Succeeded
     ```
 
-   确认为 SQL 数据库服务器启用了“允许访问 Azure 服务”设置。 若要验证并启用此设置，请执行以下步骤：
+   确认为 SQL 数据库服务器启用了“允许访问 Azure 服务”设置。  若要验证并启用此设置，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)
-    1. 单击左侧的“更多服务”，并单击“数据库”类别中的“SQL Server”。
+    1. 单击左侧的“更多服务”  ，并单击“数据库”类别中的“SQL Server”  。 
     1. 在 SQL Server 列表中选择服务器。
-    1. 在 SQL Server 边栏选项卡上，单击“显示防火墙设置”链接。
-    1. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。
-    1. 单击工具栏上的“保存”。 
+    1. 在 SQL Server 边栏选项卡上，单击“显示防火墙设置”链接。 
+    1. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。   
+    1. 单击工具栏上的“保存”。  
 
 ## <a name="create-datasets"></a>创建数据集
 在上一步骤中，已创建用于将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂的链接服务。 本步骤定义两个名为 InputDataset 和 OutputDataset 的数据集，表示存储在数据存储中的输入和输出数据，这些数据存储分别由 AzureStorageLinkedService 和 AzureSqlLinkedService 引用。
@@ -282,7 +282,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
     | folderPath | 指定 Blob **容器**以及包含输入 Blob 的**文件夹**。 在本教程中，adftutorial 是 Blob 容器，文件夹是根文件夹。 | 
     | fileName | 此属性是可选的。 如果省略此属性，将选取 folderPath 中的所有文件。 在本教程中，为 fileName 指定了 **emp.txt**，因此仅选取该文件进行处理。 |
-    | 格式 -> 类型 |输入文件为文本格式，因此我们使用 **TextFormat**。 |
+    | format -> type |输入文件为文本格式，因此我们使用 **TextFormat**。 |
     | columnDelimiter | 输入文件中的列以**逗号字符 (`,`)** 分隔。 |
     | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示**每小时**获取一次输入切片。 换言之，数据工厂服务每小时在指定的 Blob 容器 (**adftutorial**) 的根文件夹中查找输入数据。 它会查找管道开始和结束时间范围内的数据，而不是范围外的数据。  |
     | external | 如果数据不是由该管道生成的，此属性设置为 **true**。 本教程中的输入数据位于 emp.txt 文件中，此文件不是由该管道生成的，因此将此属性设置为 true。 |
@@ -345,7 +345,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     |:--- |:--- |
     | type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
     | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
-    | tableName | 指定一个表，以便将数据复制到其中。 | 
+    | tableName | 指定一个表  ，以便将数据复制到其中。 | 
     | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时**生成一次。  |
 
     数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
@@ -452,7 +452,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ProvisioningState : Succeeded
     ```
 
-祝贺你！ 现已成功创建 Azure 数据工厂，可以使用管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库了。 
+祝贺你！  现已成功创建 Azure 数据工厂，可以使用管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库了。 
 
 ## <a name="monitor-the-pipeline"></a>监视管道
 本步骤使用 Azure PowerShell 监视 Azure 数据工厂的运行情况。

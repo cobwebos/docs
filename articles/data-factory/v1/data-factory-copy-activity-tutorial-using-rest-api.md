@@ -185,7 +185,7 @@ ms.locfileid: "66151623"
 | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
 | folderPath | 指定 Blob **容器**以及包含输入 Blob 的**文件夹**。 在本教程中，adftutorial 是 Blob 容器，文件夹是根文件夹。 | 
 | fileName | 此属性是可选的。 如果省略此属性，将选取 folderPath 中的所有文件。 在本教程中，为 fileName 指定了 **emp.txt**，因此仅选取该文件进行处理。 |
-| 格式 -> 类型 |输入文件为文本格式，因此我们使用 **TextFormat**。 |
+| format -> type |输入文件为文本格式，因此我们使用 **TextFormat**。 |
 | columnDelimiter | 输入文件中的列以**逗号字符 (`,`)** 分隔。 |
 | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示**每小时**获取一次输入切片。 换言之，数据工厂服务每小时在指定的 Blob 容器 (**adftutorial**) 的根文件夹中查找输入数据。 它会查找管道开始和结束时间范围内的数据，而不是范围外的数据。  |
 | external | 如果数据不是由该管道生成的，此属性设置为 **true**。 本教程中的输入数据位于 emp.txt 文件中，此文件不是由该管道生成的，因此将此属性设置为 true。 |
@@ -226,7 +226,7 @@ ms.locfileid: "66151623"
 |:--- |:--- |
 | type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
 | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
-| tableName | 指定一个表，以便将数据复制到其中。 | 
+| tableName | 指定一个表  ，以便将数据复制到其中。 | 
 | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时**生成一次。  |
 
 数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
@@ -353,7 +353,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 请注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘ADFCopyTutorialDF’ 不可用”，请执行以下步骤：  
+* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘ADFCopyTutorialDF’ 不可用”，请执行以下步骤：   
   
   1. 在 **datafactory.json** 文件中更改名称（例如，yournameADFCopyTutorialDF）。
   2. 在分配 **$cmd** 变量值的第一个命令中，将 ADFCopyTutorialDF 替换为新名称，然后运行该命令。 
@@ -362,7 +362,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
      有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布： 
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  ，请执行下列操作之一，再尝试重新发布： 
   
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。 
 
@@ -489,7 +489,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
     Write-Host $results
     ```
 
-祝贺你！  现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
+祝贺你！   现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
 
 ## <a name="monitor-pipeline"></a>监视管道
 本步骤使用数据工厂 REST API 来监视管道生成的切片。
@@ -517,7 +517,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 }
 ```
 
-运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。 当切片处于就绪状态，请查看 Azure SQL 数据库中的 **emp** 表是否包含输出数据。 
+运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。   当切片处于就绪状态，请查看 Azure SQL 数据库中的 **emp** 表是否包含输出数据。 
 
 对于每个切片，源文件中有两行数据已复制到 Azure SQL 数据库中的 emp 表。 因此，成功处理所有切片（处于“就绪”状态）后，emp 表中有 24 条新记录。 
 
