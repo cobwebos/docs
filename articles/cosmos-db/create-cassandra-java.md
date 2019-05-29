@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7f6108a5d1e8ee386641c6d1f7c09ea96e12458c
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: c3bfcffacee7df8a5abf59676a1c47fa283dee7b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587594"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519026"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>快速入门：使用 Java SDK 和 Azure Cosmos DB 生成 Cassandra
 
@@ -34,8 +34,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 此外，还需要：
 
-* [Java 开发工具包 (JDK) 1.7+](https://aka.ms/azure-jdks)
-    * 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。
+* [Java 开发工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
     * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 * [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档
     * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
@@ -150,7 +149,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 连接字符串详细信息使应用能够与托管数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”  。 
 
     ![在 Azure 门户的“连接字符串”页面中查看并复制用户名](./media/create-cassandra-java/keys.png)
 
@@ -206,7 +205,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     按 CTRL + C 停止执行程序并关闭控制台窗口。
 
-4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
+4. 在 Azure 门户中，打开数据资源管理器  ，以查询、修改和处理这些新数据。 
 
     ![在数据资源管理器中查看数据](./media/create-cassandra-java/data-explorer.png)
 

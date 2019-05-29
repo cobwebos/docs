@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a43ad92181415593b309b9fafb20f9934a997924
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805340"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595736"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>开始监视 ASP.NET Web 应用程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "58805340"
 ## <a name="prerequisites"></a>先决条件
 完成本快速入门教程需要：
 
-- 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
+- 使用以下工作负荷安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
     - ASP.NET 和 Web 开发
     - Azure 开发
 
@@ -35,25 +35,25 @@ ms.locfileid: "58805340"
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
-1. 在 Visual Studio 2017 中打开项目。
-2. 从“项目”菜单中选择“配置 Application Insights”。 Visual Studio 会将 Application Insights SDK 添加到应用程序。
+1. 在 Visual Studio 2019 中打开你的项目。
+2. 从“项目”菜单中选择“配置 Application Insights”  。 Visual Studio 会将 Application Insights SDK 添加到应用程序。
 
     > [!IMPORTANT]
-    > 添加 Application Insights 的过程因 ASP.NET 模板类型而异。 若要使用“空”或“Azure 移动应用”模板，请选择“项目” > “添加 Application Insights 遥测”。 有关所有其他 ASP.NET 模板，请参阅上述步骤中的说明。 
+    > 添加 Application Insights 的过程因 ASP.NET 模板类型而异。 若要使用“空”或“Azure 移动应用”模板，   请选择“项目”   >   “添加 Application Insights 遥测”。 有关所有其他 ASP.NET 模板，请参阅上述步骤中的说明。 
 
-3. 单击“开始使用”（早期版本的 Visual Studio 会改为使用“免费开始”按钮）。
+3. 单击“开始使用”  （早期版本的 Visual Studio 会改为使用“免费开始”  按钮）。
 
     ![将 Application Insights 添加到 Visual Studio](./media/quick-monitor-portal/add-application-insights-b.png)
 
-4. 选择订阅并单击“注册”。
+4. 选择订阅并单击“注册”  。
 
-5. 通过从“调试”菜单中选择“启动调试”或通过按 F5 键来运行应用程序。
+5. 通过从“调试”  菜单中选择“启动调试”  或通过按 F5 键来运行应用程序。
 
 ## <a name="confirm-app-configuration"></a>确认应用配置
 
 Application Insights 收集应用程序的遥测数据，而不考虑应用程序在何处运行。 按照以下步骤开始查看此数据。
 
-1. 通过单击“查看” -> “其他 Windows” -> “Application Insights 搜索”打开 Application Insights。  从当前会话查看遥测数据。<BR><br>![Visual Studio 中的遥测](./media/quick-monitor-portal/telemetry-in-vs.png)
+1. 通过单击“查看”   -> “其他 Windows”   -> “Application Insights 搜索”  打开 Application Insights。  从当前会话查看遥测数据。<BR><br>![Visual Studio 中的遥测](./media/quick-monitor-portal/telemetry-in-vs.png)
 
 2. 单击列表中的第一个请求（在此示例中为“获取主页/索引”）查看请求详细信息。 请注意，包含状态代码和响应时间以及有关请求的其他重要信息。<br><br>![Visual Studio 中的响应详细信息](media/quick-monitor-portal/request-details.png)
 
@@ -61,19 +61,19 @@ Application Insights 收集应用程序的遥测数据，而不考虑应用程�
 
 现在可以在 Azure 门户中打开 Application Insights，查看有关正在运行的应用程序的各种详细信息。
 
-1. 在解决方案资源管理器中展开“连接的服务”文件夹（云和插头图标），然后右键单击 **Application Insights** 文件夹，单击“打开 Application Insights 门户”。  可以看到有关应用程序的一些信息和各种选项。
+1. 在解决方案资源管理器中展开“连接的服务”文件夹  （云和插头图标），然后右键单击 **Application Insights** 文件夹，单击“打开 Application Insights 门户”。   可以看到有关应用程序的一些信息和各种选项。
 
     ![应用程序地图](media/quick-monitor-portal/4overview.png)
 
-2. 单击“应用程序映射”以获取应用程序组件之间依赖关系的可视布局。  每个组件均显示 KPI，如负载、性能、失败和警报。
+2. 单击“应用程序映射”  以获取应用程序组件之间依赖关系的可视布局。  每个组件均显示 KPI，如负载、性能、失败和警报。
 
     ![应用程序地图](media/quick-monitor-portal/5appmap.png)
 
-3. 单击应用程序组件之一上的“应用分析”图标 ![应用程序映射](media/quick-monitor-portal/app-analytics-icon.png) **在 Analytics 中查看**。 这将打开“Application Insights Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。  在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
+3. 单击应用程序组件之一上的“应用分析”  图标 ![应用程序映射](media/quick-monitor-portal/app-analytics-icon.png) **在 Analytics 中查看**。 这将打开“Application Insights Analytics”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。  在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
     ![分析](media/quick-monitor-portal/6viewanalytics.png)
 
-4. 在“调查”下，单击左侧的“实时指标流”。 这将显示有关正在运行的应用程序的实时统计信息。 这包括传入请求数、这些请求的持续时间和发生的任何故障等信息。 还可以检查处理器和内存等关键性能指标。
+4. 在“调查”下，单击左侧的“实时指标流”。  这将显示有关正在运行的应用程序的实时统计信息。 这包括传入请求数、这些请求的持续时间和发生的任何故障等信息。 还可以检查处理器和内存等关键性能指标。
 
     ![实时流](media/quick-monitor-portal/7livemetrics.png)
 
@@ -108,8 +108,8 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 ## <a name="clean-up-resources"></a>清理资源
 完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击“myResourceGroup”。
-2. 在资源组页上单击“删除”，在文本框中键入 **myResourceGroup**，然后单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，然后单击“myResourceGroup”  。
+2. 在资源组页上单击“删除”  ，在文本框中键入 **myResourceGroup**，然后单击“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，已通过 Azure Application Insights 为应用程序启用了监视。  继续学习教程，了解如何使用它来监视统计信息和检测应用程序中的问题。

@@ -1,5 +1,5 @@
 ---
-title: 知识存储简介和概述 - Azure 搜索
+title: 知识存储简介和概述（预览版）- Azure 搜索
 description: 将扩充文档发送到 Azure 存储，随后可以在 Azure 搜索和其他应用中查看、整形和使用扩充文档。
 manager: cgronlun
 author: HeidiSteen
@@ -9,22 +9,26 @@ ms.devlang: NA
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 3000016de934aaa3faab96821f9747ea4b571ef7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4a27e4d8f2fbaafe6d27a3e3cabd31aa715b9d80
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030085"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540749"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>什么是 Azure 搜索中的知识存储？
 
-知识存储是 Azure 搜索的一项可选功能，目前是公共预览版，可保存基于 AI 的索引管道[（认知搜索）](cognitive-search-concept-intro.md)创建的扩充文档和元数据。 知识存储由配置为管道一部分的 Azure 存储帐户提供技术支持。 启用后，搜索服务使用此存储帐户来缓存每个扩充文档的表示形式。 
+> [!Note]
+> 知识存储目前为预览版，不适合在生产环境中使用。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持 .NET SDK。
+>
+
+知识存储是 Azure 搜索的一项可选功能，可保存基于 AI 的索引管道[（认知搜索）](cognitive-search-concept-intro.md)创建的扩充文档和元数据。 知识存储由配置为管道一部分的 Azure 存储帐户提供技术支持。 启用后，搜索服务使用此存储帐户来缓存每个扩充文档的表示形式。 
 
 如果过去使用过认知搜索，你已知道技能集可用于通过一系列扩充来迁移文档。 结果可以是 Azure 搜索索引，也可以是知识存储中的投影（此预览版中新增的）。
 
 投影是构建数据结构以供用于下游应用的机制。 可以使用专为 Azure 存储打造的[存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)，或连接到 Azure 存储的任何应用，这为使用扩充文档开辟了新的可能性。 一些示例包括，数据科学管道和自定义分析。
 
-![“管道中的知识存储”图](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "“管道中的知识存储”图")
+![“管道中的知识存储”示意图](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "“管道中的知识存储”示意图")
 
 若要使用知识存储，请将 `knowledgeStore` 元素添加到在索引管道中定义步进式操作的技能集。 在执行期间，Azure 搜索在 Azure 存储帐户中创建空间，并使用管道创建的定义和内容来填充空间。
 
@@ -47,7 +51,7 @@ ms.locfileid: "65030085"
 
 ## <a name="create-a-knowledge-store"></a>创建知识存储
 
-知识存储是技能集定义的一部分。 在此预览版中，必须使用 REST API `api-version=2019-05-06-Preview` 或门户中的“导入数据”向导，才能创建知识存储。
+知识存储是技能集定义的一部分。 在此预览版中，必须使用 REST API `api-version=2019-05-06-Preview` 或门户中的“导入数据”  向导，才能创建知识存储。
 
 以下 JSON 指定 `knowledgeStore`，它是技能集的一部分，可由索引器（未显示）调用。 `knowledgeStore` 中投影的规范决定表或对象是否是在 Azure 存储中进行创建。
 
@@ -179,7 +183,7 @@ Azure 搜索提供了索引器功能，索引器用于端到端驱动整个过�
 
 ## <a name="inside-a-knowledge-store"></a>知识存储内部
 
-知识存储由注释缓存和投影组成。 服务在内部使用缓存来缓存技能和跟踪更改结果。 投影定义与预期用途匹配的扩充的架构和结构。 每个知识存储只能有一个缓存，但可以有多个投影。 
+知识存储由注释缓存和投影组成。 服务在内部使用缓存  来缓存技能和跟踪更改结果。 投影  定义与预期用途匹配的扩充的架构和结构。 每个知识存储只能有一个缓存，但可以有多个投影。 
 
 缓存始终是 Blob 容器，但投影可以表达为表或对象：
 
@@ -243,7 +247,7 @@ Although Azure Search creates and updates structures and content in Azure storag
 
 ## <a name="next-steps"></a>后续步骤
 
-创建扩充文档的最简单方法是，使用“导入数据”向导。
+创建扩充文档的最简单方法是，使用“导入数据”  向导。
 
 > [!div class="nextstepaction"]
 > [快速入门：在门户演练中试用认知搜索](cognitive-search-quickstart-blob.md)

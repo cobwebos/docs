@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: acf1608257bc5416ff52ed9fbd4209008712f2d7
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: f5837e06f347a4f822ac007dfe54c99fc7457dbb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408713"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872978"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 .NET Framework 应用
 
@@ -29,7 +29,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成此快速入门，请安装 [Visual Studio 2017](https://visualstudio.microsoft.com/vs) 和 [.NET Framework 4.7.1](https://dotnet.microsoft.com/download) 或更高版本（如果尚未安装）。
+要完成此快速入门，请安装 [Visual Studio 2019](https://visualstudio.microsoft.com/vs) 和 [.NET Framework 4.7.1](https://dotnet.microsoft.com/download) 或更高版本（如果尚未安装）。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,30 +37,30 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+创建”来添加以下键值对：
+6. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
 
     | 密钥 | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
-    暂时将“标签”和“内容类型”保留为空。
+    暂时将“标签”和“内容类型”保留为空   。
 
 ## <a name="create-a-net-console-app"></a>创建 .NET 控制台应用
 
-1. 启动 Visual Studio，并选择“文件” > “新建” > “项目”。
+1. 启动 Visual Studio，并选择“文件” > “新建” > “项目”    。
 
-2. 在“新建项目”中，选择“已安装” > “Visual C#” > “Windows 桌面版”。 选择“控制台应用 (.NET Framework)”，并输入项目的名称。 选择“.NET Framework 4.7.1”或更高版本，并选择“确定”。
+2. 在“新建项目”中，选择“已安装” > “Visual C#” > “Windows 桌面版”     。 选择“控制台应用 (.NET Framework)”，并输入项目的名称  。 选择“.NET Framework 4.7.1”或更高版本，并选择“确定”   。
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 右键单击项目，然后选择“管理 NuGet 包”。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中。 如果无法找到，请选中“包括预发行版”复选框。
+1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中  。 如果无法找到，请选中“包括预发行版”复选框  。
 
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
     ```
 
-2. 如下所述，更新项目的 App.config 文件：
+2. 如下所述，更新项目的 App.config 文件  ：
 
     ```xml
     <configSections>
@@ -82,7 +82,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
    从环境变量 `ConnectionString` 中读取应用程序配置存储区的连接字符串。 在 `appSettings` 部分的 `configBuilders` 属性中，在 `MyConfigStore` 之前添加 `Environment` 配置生成器。
 
-3. 打开 Program.cs 并更新 `Main` 方法，以通过调用 `ConfigurationManager` 来使用应用程序配置。
+3. 打开 Program.cs 并更新 `Main` 方法，以通过调用 `ConfigurationManager` 来使用应用程序配置  。
 
     ```csharp
     static void Main(string[] args)
@@ -95,7 +95,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 将名为 ConnectionString 的环境变量设置为应用配置存储区的连接字符串。 如果使用 Windows 命令提示符，请运行以下命令：
+1. 将名为 ConnectionString 的环境变量设置为应用配置存储区的连接字符串  。 如果使用 Windows 命令提示符，请运行以下命令：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

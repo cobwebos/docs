@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 2925ca5a303876a68b6d605c7312d43af102b6e0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f697c91851e7ddc95f84239987bb4378bafd094
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088462"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798642"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>教程：使用 Visual Studio 和 C# 中的连接服务连接到必应新闻搜索 API
 
@@ -26,24 +26,24 @@ ms.locfileid: "58088462"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- Visual Studio 2017 版本 15.7（安装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- Visual Studio 2017 版本 15.7 或更高版本，并安装有 Web 开发工作负荷。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
 ## <a name="add-support-to-your-project-for-bing-news-search-api"></a>为项目添加对必应新闻搜索 API 的支持
 
-1. 创建名为 MyWebApplication 的新 ASP.NET Core Web 项目。 使用 Web 应用（模型 - 视图 - 控制器）项目模板，所有设置采用默认设置。 有必要将项目命名为 MyWebApplication；这样，将代码复制到项目中时，命名空间会匹配。 
+1. 创建名为 MyWebApplication 的新 ASP.NET Core Web 项目。 使用 Web 应用（模型 - 视图 - 控制器）项目模板，所有设置采用默认设置  。 有必要将项目命名为 MyWebApplication；这样，将代码复制到项目中时，命名空间会匹配。 
 
-1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”。
+1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”    。
    此时显示“连接服务”页，其中包含可添加到项目的服务。
 
    ![“添加连接服务”菜单项的屏幕截图](../media/vs-common/Connected-Service-Menu.PNG)
 
-1. 在可用服务菜单中，选择“将智能搜索引入应用”。
+1. 在可用服务菜单中，选择“将智能搜索引入应用”  。
 
    ![连接服务列表的屏幕截图](./media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-0.PNG)
 
-   如果已登录到 Visual Studio，并且有与帐户关联的 Azure 订阅，则会显示一个页面，其中提供了订阅下拉列表。 选择要使用的订阅，然后选择必应新闻搜索 API 的名称。 还可以选择“编辑”，修改自动生成的名称。
+   如果已登录到 Visual Studio，并且有与帐户关联的 Azure 订阅，则会显示一个页面，其中提供了订阅下拉列表。 选择要使用的订阅，然后选择必应新闻搜索 API 的名称。 还可以选择“编辑”，修改自动生成的名称  。
 
    ![订阅和名称字段的屏幕截图](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-1.PNG)
 
@@ -51,9 +51,9 @@ ms.locfileid: "58088462"
 
    ![资源组和定价层字段的屏幕截图](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
 
-   如需查看有关定价层的详细信息，请选择“查看定价”。
+   如需查看有关定价层的详细信息，请选择“查看定价”  。
 
-1. 选择“添加”，添加对“连接服务”的支持。
+1. 选择“添加”，添加对“连接服务”的支持  。
    Visual Studio 会修改项目以添加 NuGet 包、配置文件条目和其他更改，从而支持与必应新闻搜索 API 的连接。 输出显示项目发生情况的日志。 会看到下面这样的内容：
 
    ```output
@@ -87,7 +87,7 @@ ms.locfileid: "58088462"
 
 现已将向项目添加对必应新闻搜索 API 的支持，下面介绍如何使用 API，将智能搜索添加到网页。
 
-1. 在 Startup.cs 的 `ConfigureServices` 方法中，添加对 `IServiceCollection.AddSingleton` 的调用。 这使得包含关键设置的配置对象可用于项目中的代码。
+1. 在 Startup.cs 的 `ConfigureServices` 方法中，添加对 `IServiceCollection.AddSingleton` 的调用  。 这使得包含关键设置的配置对象可用于项目中的代码。
  
    ```csharp
        public void ConfigureServices(IServiceCollection services)
@@ -98,7 +98,7 @@ ms.locfileid: "58088462"
    ```
 
 
-1. 在“模型”文件夹下添加新的类文件，名为 BingNewsModel.cs。 如果以不同方式为项目命名，请使用自己的项目命名空间，而不是 MyWebApplication。 将内容替换为以下代码：
+1. 在“模型”文件夹下添加新的类文件，名为 BingNewsModel.cs   。 如果以不同方式为项目命名，请使用自己的项目命名空间，而不是 MyWebApplication。 将内容替换为以下代码：
  
     ```csharp
     using Microsoft.Azure.CognitiveServices.Search.NewsSearch.Models;
@@ -119,7 +119,7 @@ ms.locfileid: "58088462"
 
    此模型用于存储对必应新闻搜索服务的调用结果。
  
-1. 在“控制器”文件夹中，添加名为 IntelligentSearchController.cs 的新类文件。 将内容替换为以下代码：
+1. 在“控制器”文件夹中，添加名为 IntelligentSearchController.cs 的新类文件   。 将内容替换为以下代码：
 
    ```csharp
     using System.Net.Http;
@@ -199,7 +199,7 @@ ms.locfileid: "58088462"
     }
    ```
 
-1. 若要添加对提交搜索和查看结果的支持，在“视图”文件夹中创建名为 IntelligentSearch 的新文件夹。 在此新文件夹中，添加 BingSearchResult.cshtml 视图。 复制以下代码：
+1. 若要添加对提交搜索和查看结果的支持，在“视图”文件夹中创建名为 IntelligentSearch 的新文件夹   。 在此新文件夹中，添加 BingSearchResult.cshtml 视图  。 复制以下代码：
 
     ```cshtml
     @using System
@@ -263,8 +263,8 @@ ms.locfileid: "58088462"
 不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 选择要删除的资源组。
-2. 选择“删除资源组”。
-3. 在“键入资源组名称”框中，输入资源组的名称，然后选择“删除”。
+2. 选择“删除资源组”  。
+3. 在“键入资源组名称”框中，输入资源组的名称，然后选择“删除”   。
 
 ## <a name="next-steps"></a>后续步骤
 

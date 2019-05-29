@@ -3,19 +3,19 @@ title: 快速入门：使用用于 C# 的必应拼写检查 SDK 进行拼写检�
 titlesuffix: Azure Cognitive Services
 description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
-ms.author: v-gedod
-ms.openlocfilehash: 3487656f72f315aa15ce003a8dfd279c45d1f992
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: aahi
+ms.openlocfilehash: adbb60c7ddbc72b8b7e5cb31c6909117ce3a10cb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105737"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798362"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>快速入门：使用用于 C# 的必应拼写检查 SDK 进行拼写检查
 
@@ -23,10 +23,10 @@ ms.locfileid: "58105737"
 
 ## <a name="application-dependencies"></a>应用程序依赖项
 
-* 任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/downloads/)。
 * 必应拼写检查 [NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
 
-若要向项目中添加必应拼写检查 SDK，请单击 Visual Studio 中的解决方案资源管理器中的 `Manage NuGet Packages`。 添加 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` 程序包。 此程序包还会安装以下依赖项：
+若要向项目中添加必应拼写检查 SDK，请在 Visual Studio 中的**解决方案资源管理器**中选择“管理 NuGet 包”  选项。 添加 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` 程序包。 此程序包还会安装以下依赖项：
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure

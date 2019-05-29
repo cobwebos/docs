@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: overview
 ms.date: 04/15/2019
-ms.openlocfilehash: 553f50897afaaf9c677e84f9cfffbff7d2c1e607
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: aa0d01bfbebd5279b5268bae9d161492f30b81de
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679664"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546286"
 ---
 # <a name="hdinsight-40-overview"></a>HDInsight 4.0 概述
 
@@ -78,7 +78,7 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 * Oozie 不再运行 Hive 操作。 已删除 Hive CLI 并替换为 BeeLine。
 
-* 可通过在“job.properties”文件中包含排除模式，以从共享 lib 中排除不需要的依赖项。
+* 可通过在“job.properties”文件中包含排除模式，以从共享 lib 中排除不需要的依赖项  。
 
 详细了解 [Apache Oozie](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/patch_oozie.html)。
 
@@ -90,7 +90,7 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 ## <a name="limitations"></a>限制
 
-* HDInsight 4.0 不支持 MapReduce。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
+* HDInsight 4.0 不支持将 MapReduce 用于 Apache Hive。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
 * HDInsight 4.0 不支持 Apache Storm。 
 * HDInsight 4.0 中不再提供 Hive 视图。 
 * Spark 和交互式查询群集不支持 Apache Zeppelin 中的 Shell 解释器。

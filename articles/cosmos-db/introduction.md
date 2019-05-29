@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB。 此全球分布式多模型数据库是�
 author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 05/20/2019
 ms.author: rimman
-ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a338cec213b82d54b08f2a11a969ddecf72ea7e5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280938"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953906"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 凭借 Cosmos DB，你可以在全球范围内生成具有高响应性和高可用性的应用程序。 无论用户身处何处，Cosmos DB 均可以透明方式复制数据，因此用户可以与离他们最近的数据副本进行交互。
 
-凭借 Cosmos DB，还可以随时向 Cosmos 帐户添加或删除任何 Azure 区域，只需单击一个按钮即可。 Cosmos DB 将无缝地将数据复制到与 Cosmos 帐户相关联的所有区域，同时，得益于该服务的多导功能，应用程序将继续保持高可用性。 有关详细信息，请参阅[全局分发](distribute-data-globally.md)一文。
+凭借 Cosmos DB，还可以随时向 Cosmos 帐户添加或删除任何 Azure 区域，只需单击一个按钮即可。 Cosmos DB 将无缝地将数据复制到与 Cosmos 帐户相关联的所有区域，同时，得益于该服务的多导功能，应用程序将继续保持高可用性  。 有关详细信息，请参阅[全局分发](distribute-data-globally.md)一文。
 
 ### <a name="always-on"></a>AlwaysOn
 
@@ -44,11 +44,11 @@ Cosmos DB 采用透明的水平分区和多主数据库复制设计，在全球�
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>保证第 99 个百分位为低延迟（全球范围内）
 
-使用 Cosmos DB，可以生成响应迅速、具全球规模的应用程序。 凭借其新颖的多主数据库复制协议和免闩锁且[优化了写入的数据库引擎](index-policy.md)，Cosmos DB 可保证全球任意位置第 99 个百分位的读取和（已编入索引）写入延迟均低于 10 毫秒。 此功能可以为高响应能力的应用持续引入数据，并提供快速查询。
+使用 Cosmos DB，可以生成响应迅速、具全球规模的应用程序。 凭借其新颖的多主数据库复制协议和免闩锁且[优化了写入的数据库引擎](index-policy.md)，Cosmos DB 可保证全球任意位置第 99 个百分位的读取（已编入索引）和写入延迟均低于 10 毫秒。 此功能可以为高响应能力的应用持续引入数据，并提供快速查询。
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>精确定义的多个一致性选择
 
-在 Cosmos DB 中构建全球分布式应用程序时，不再需要[在一致性、可用性、延迟和吞吐量之间进行极端的权衡](consistency-levels-tradeoffs.md)。 Cosmos DB 的多主数据库复制协议经过精心设计，为直观的编程模型提供[五个明确定义的一致性选择](consistency-levels.md) -  强、有限过期、会话、一致前缀和最终，该编程模型针对全球分布式应用程序具有低延迟和高可用性。
+在 Cosmos DB 中构建全球分布式应用程序时，不再需要[在一致性、可用性、延迟和吞吐量之间进行极端的权衡](consistency-levels-tradeoffs.md)。 Cosmos DB 的多主数据库复制协议经过精心设计，为直观的编程模型提供[五个明确定义的一致性选择](consistency-levels.md) -  强、有限过期、会话、一致前缀和最终，该编程模型针对全球分布式应用程序具有低延迟和高可用性      。
 
 ### <a name="no-schema-or-index-management"></a>无需架构或索引管理
 

@@ -7,15 +7,15 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 04/11/2018
-ms.openlocfilehash: 50a67ca5c7d1fa3165889b1e59565d1a1030690d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/16/2019
+ms.openlocfilehash: be2195092cf3890f754f875ea7bccc1f717eb95b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712140"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762337"
 ---
-# <a name="what-is-apache-kafka-on-hdinsight"></a>什么是 Apache Kafka on HDInsight？
+# <a name="what-is-apache-kafka-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Kafka
 
 [Apache Kafka](https://kafka.apache.org) 是一个分布式流式处理平台，以开源方式提供，可用于构建实时流式处理数据管道和应用程序。 Kafka 还提供了类似于消息队列的消息中转站，可在其中发布和订阅命名数据流。 
 
@@ -49,11 +49,11 @@ Kafka on HDInsight 的具体特征如下：
 
 Apache ZooKeeper 管理 Kafka 群集的状态。 Zookeeper 专用于并发、可复原和低延迟事务。 
 
-Kafka 将记录（数据）存储在主题中。 记录由生成者生成，由使用者使用。 生成者将记录发送到 Kafka 代理。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。 
+Kafka 将记录（数据）存储在主题中  。 记录由生成者  生成，由使用者  使用。 生成者将记录发送到 Kafka 代理  。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。 
 
 主题跨代理对记录进行分区。 在使用记录时，每个分区最多可使用一个使用者来实现数据并行处理。
 
-利用复制功能将分区复制到各个节点上，以防止发生节点（代理）服务中断。 关系图中用 (L) 表示的分区是给定分区的前导者。 生成方流量将根据由 ZooKeeper 管理的状态路由到每个节点的前导者。
+利用复制功能将分区复制到各个节点上，以防止发生节点（代理）服务中断。 关系图中用 (L) 表示的分区是给定分区的前导者  。 生成方流量将根据由 ZooKeeper 管理的状态路由到每个节点的前导者。
 
 ## <a name="why-use-apache-kafka-on-hdinsight"></a>为何使用 Apache Kafka on HDInsight？
 

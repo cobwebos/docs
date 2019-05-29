@@ -10,23 +10,23 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4e1c03085d6b1d0099ac66dd3d1dadd981a561aa
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 75228b8c939cb5b8dd04471662ba86b46cfc808c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004238"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860481"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>教程：使用 Visual Studio 中连接服务连接到文本分析服务
 
 通过文本分析服务，可提取丰富的信息对可视数据进行分类和处理，并执行计算机辅助的图像审核以帮助策展服务。
 
-本文及其同类文章详细介绍了如何使用文本分析服务的 Visual Studio 连接服务功能。 安装了认知服务扩展的 Visual Studio 2017 15.7 或更高版本中均提供此功能。
+本文及其同类文章详细介绍了如何使用文本分析服务的 Visual Studio 连接服务功能。 安装了认知服务扩展的 Visual Studio 2019 或更高版本中均提供此功能。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- Visual Studio 2017 版本 15.7（安装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- Visual Studio 2019（装有“Web 开发”工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -34,12 +34,12 @@ ms.locfileid: "60004238"
 
 1. 新建一个名为 TextAnalyticsDemo 的 ASP.NET Core Web 项目。 使用具有所有默认设置的 Web 应用程序（模型 - 视图 - 控制器）项目模板。 有必要将项目命名为 MyWebApplication；这样，将代码复制到项目中时，命名空间会匹配。  本文中的示例使用 MVC，但文本分析连接服务可与任何 ASP.NET 项目类型一起使用。
 
-1. 在解决方案资源管理器中，双击“连接服务”项。
+1. 在解决方案资源管理器中，双击“连接服务”项   。
    此时显示“连接服务”页，其中包含可添加到项目的服务。
 
    ![解决方案资源管理器中的连接服务屏幕截图](../media/vs-common/Connected-Services-Solution-Explorer.PNG)
 
-1. 在可用服务的菜单中，选择“通过文本分析评估情绪”。
+1. 在可用服务的菜单中，选择“通过文本分析评估情绪”  。
 
    ![“连接的服务”屏幕的屏幕截图](./media/vs-text-connected-service/Cog-Text-Connected-Service-0.PNG)
 
@@ -47,14 +47,14 @@ ms.locfileid: "60004238"
 
    ![文本分析连接服务屏幕的屏幕截图](media/vs-text-connected-service/Cog-Text-Connected-Service-1.PNG)
 
-1. 选择要使用的订阅，然后选择文本分析服务的名称，或选择“编辑”链接以修改自动生成的名称，再选择资源组和定价层。
+1. 选择要使用的订阅，然后选择文本分析服务的名称，或选择“编辑”链接以修改自动生成的名称，再选择资源组和定价层  。
 
    ![资源组和定价层字段的屏幕截图](media/vs-text-connected-service/Cog-Text-Connected-Service-2.PNG)
 
    请单击链接，查看定价层的详细信息。
 
-1. 选择“添加”以添加对连接服务的支持。
-   Visual Studio 会修改项目来添加 NuGet 包、配置文件条目和其他更改，以支持与文本分析服务的连接。 “输出窗口”显示项目发生情况的日志。 会看到下面这样的内容：
+1. 选择“添加”以添加对连接服务的支持  。
+   Visual Studio 会修改项目来添加 NuGet 包、配置文件条目和其他更改，以支持与文本分析服务的连接。 “输出窗口”显示项目发生情况的日志  。 会看到下面这样的内容：
 
    ```output
     [6/1/2018 3:04:02.347 PM] Adding Text Analytics to the project.
@@ -193,7 +193,7 @@ ms.locfileid: "60004238"
     }
     ```
 
-1. 添加“视图”以显示分析的文本、确定的语言以及表示分析中置信度的分数。 为此，右键单击“视图”文件夹，选择“添加”，然后选择“视图”。 在出现的对话框中，提供名称 TextAnalyzeResult，接受默认值以在“视图”文件夹中添加名为 TextAnalyzeResult.cshtml 的新文件，并向其复制以下内容：
+1. 添加“视图”以显示分析的文本、确定的语言以及表示分析中置信度的分数。 为此，右键单击“视图”文件夹，选择“添加”，然后选择“视图”    。 在出现的对话框中，提供名称 TextAnalyzeResult，接受默认值以在“视图”文件夹中添加名为 TextAnalyzeResult.cshtml 的新文件，并向其复制以下内容    ：
     
     ```cshtml
     @using System
@@ -262,8 +262,8 @@ ms.locfileid: "60004238"
 不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到本教程中使用的资源组时，请选择它。
-2. 选择“删除资源组”。
-3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”。
+2. 选择“删除资源组”  。
+3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”   。
 
 ## <a name="next-steps"></a>后续步骤
 

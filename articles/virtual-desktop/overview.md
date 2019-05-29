@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 58fb1d73509ab52551bead4526dfb47588cf1ec6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004578"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965720"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>什么是 Windows 虚拟桌面预览版？ 
 
@@ -54,16 +54,13 @@ Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的
 
 设置 Windows 虚拟桌面并将用户成功连接到其 Windows 桌面和应用程序需要注意几个事项。
 
-Windows 虚拟桌面目前只支持以下两种操作系统：
-- Windows 10 Enterprise 多会话
-- Windows Server 2016
-
 我们计划添加对以下操作系统的支持，因此请确保根据所要部署的桌面和应用，为用户提供[相应的许可证](https://azure.microsoft.com/pricing/details/virtual-desktop/)：
 
 |操作系统|所需的许可证|
 |---|---|
-
-|Windows 10 企业版多会话或 Windows 10 企业版|Microsoft E3、E5、A3、A5、Business<br>Windows E3、E5、A3、A5 | Windows 7 Enterprise |Microsoft E3、E5、A3、A5、Business<br>Windows E3、E5、A3、A5| |Windows Server 2012 R2、2016、2019 | 附带软件保障的 RDS 客户端访问许可证 (CAL)|
+|Windows 10 Enterprise 多会话或 Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows Server 2012 R2、2016、2019|附带软件保障的 RDS 客户端访问许可证 (CAL)|
 
 基础结构需要满足以下要求才能支持 Windows 虚拟桌面：
 
@@ -76,9 +73,7 @@ Windows 虚拟桌面目前只支持以下两种操作系统：
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须：
 
 * [已加入标准域](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)，或[已加入混合 AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)。 虚拟机不能加入 Azure AD。
-* 运行以下受支持的 OS 映像之一：
-  * Windows 10 Enterprise 多会话
-  * Windows Server 2016
+* 运行以下[受支持的 OS 映像](#supported-virtual-machine-os-image)之一。
 
 >[!NOTE]
 >如需 Azure 订阅，可以[注册一个月免费试用版](https://azure.microsoft.com/free/)。 如果使用免费试用版的 Azure，则应使用 Azure AD 域服务来使 Windows Server Active Directory 与 Azure Active Directory 保持同步。
@@ -90,6 +85,21 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 * 从客户端网络到部署主机池的 Azure 区域的往返 (RTT) 延迟应小于 150 毫秒。
 * 当托管桌面和应用的 VM 连接到管理服务时，网络流量可能会流到国家/地区的边界以外。
 * 为了优化网络性能，我们建议将会话主机的 VM 共置到管理服务所在的同一 Azure 区域。
+
+## <a name="supported-remote-desktop-clients"></a>支持的远程桌面客户端
+
+以下远程桌面客户端支持 Windows 虚拟桌面：
+
+* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
+* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+
+
+## <a name="supported-virtual-machine-os-image"></a>受支持的虚拟机 OS 映像
+
+Windows 虚拟桌面目前支持以下 OS 映像：
+
+* Windows 10 Enterprise 多会话
+* Windows Server 2016
 
 ## <a name="provide-feedback"></a>提供反馈
 

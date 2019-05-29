@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: 7a17c695482f2e9c8158c437c9c40c0abcb07e67
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 102fd27c25052f4f5b3c3c469447b8488171f644
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616282"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798482"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>快速入门：使用必应拼写检查 REST API 和 C# 检查拼写
 
@@ -23,10 +23,10 @@ ms.locfileid: "59616282"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 * 若要在 Visual Studio 中以 NuGet 包的形式安装 `Newtonsoft.Json`，请执行以下操作：
-    1. 在解决方案资源管理器中，右键单击解决方案文件。
-    1. 选择“管理解决方案的 NuGet 包”。
+    1. 在**解决方案资源管理器**中，右键单击解决方案文件。
+    1. 选择“管理解决方案的 NuGet 包”  。
     1. 搜索 `Newtonsoft.Json` 并安装该包。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
@@ -81,8 +81,9 @@ ms.locfileid: "59616282"
         HttpResponseMessage response = new HttpResponseMessage();
         // add the rest of the code snippets here (except for main())...
     }
+    ```
 
-2. Create the URI for your request by appending your host, path, and parameters.
+2. 通过追加你的主机、路径和参数为你的请求创建 URI。
     
     ```csharp
     string uri = host + path + params_;

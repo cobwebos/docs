@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: b0fda94f3120f1f228836713456d584d33c08a48
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 22d5aea119d71553afc02ee923fab5cf5ead5ce0
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033111"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519044"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>快速入门：使用 Java 和 Azure Cosmos DB 生成表 API 应用
 
@@ -35,8 +35,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 此外： 
 
-* [Java 开发工具包 (JDK) 1.7+](https://aka.ms/azure-jdks)
-    * 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。
+* [Java 开发工具包 (JDK) 8](https://aka.ms/azure-jdks)
     * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 * [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档
     * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
@@ -85,7 +84,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”  。 
 
    ![在“连接字符串”窗格中查看并复制所需的连接字符串信息](./media/create-table-java/connection-string.png)
 

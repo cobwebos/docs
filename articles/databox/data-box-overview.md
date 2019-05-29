@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a81eef9e3f7892afa1d64befec35852381ffe17b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ddbb535d386fb90ccb2042e0908e66146e854f00
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117738"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603457"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -109,7 +109,7 @@ Data Box 包括以下组件：
 
 ## <a name="region-availability"></a>上市区域
 
-Data Box 可以根据部署服务的区域、设备运送到的国家/地区以及传输数据的目标 Azure 存储帐户来传输数据。 
+Data Box 可以根据部署服务的区域、设备的发货国家/地区以及传输数据的目标 Azure 存储帐户传输数据。 
 
 - **服务可用性** - 对于此版本，Data Box 服务可在以下区域获得：
     - 美国的所有区域 - 美国中西部、美国西部 2、美国西部、美国中南部、美国中部、美国中北部、美国东部和美国东部 2。

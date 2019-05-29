@@ -1,20 +1,20 @@
 ---
-title: 快速入门：使用节点 Web 应用在 Azure Key Vault 中设置和检索机密 - Azure Key Vault | Microsoft Docs
+title: 快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密 - Azure Key Vault | Microsoft Docs
 description: 在本快速入门中，请使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 services: key-vault
-author: prashanthyv
+author: msmbaldwin
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 346d97e6e3dad6ebacaae6c789137df4f33e2e72
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 132711249ffde4a9c49bc997d8c4ebe4d9c74948
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316381"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872541"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 
@@ -39,7 +39,7 @@ ms.locfileid: "57316381"
 ## <a name="prerequisites"></a>先决条件
 
 * 在 Windows 上：
-  * [Visual Studio 2017 15.7.3 或更高版本](https://www.microsoft.com/net/download/windows)，其中包含以下工作负荷：
+  * 带有以下工作负荷的 [Visual Studio 2019](https://www.microsoft.com/net/download/windows)：
     * ASP.NET 和 Web 开发
     * .NET Core 跨平台开发
   * [.NET Core 2.1 SDK 或更高版本](https://www.microsoft.com/net/download/windows)
@@ -92,7 +92,7 @@ az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGr
 
 我们将添加机密以帮助说明这是如何工作的。 可以存储需要安全保存的，但同时也要提供给应用程序使用的 SQL 连接字符串或其他任何信息。
 
-键入以下命令，在名为 **AppSecret** 的密钥保管库中创建机密。 此机密将存储值“MySecret”。
+键入以下命令，在名为 **AppSecret** 的密钥保管库中创建机密。 此机密将存储值“MySecret”。 
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
@@ -119,24 +119,24 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 编辑 program.cs 文件，以便使用特定的密钥保管库名称运行示例：
 
 1. 浏览到 key-vault-dotnet-core-quickstart 文件夹。
-2. 在 Visual Studio 2017 中打开 key-vault-dotnet-core-quickstart.sln 文件。
+2. 在 Visual Studio 2019 中打开 key-vault-dotnet-core-quickstart.sln 文件。
 3. 打开 Program.cs 文件，将占位符 *YourKeyVaultName* 更新为以前创建的密钥保管库的名称。
 
 此解决方案使用 [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 库。
 
 ## <a name="run-the-app"></a>运行应用
 
-在 Visual Studio 2017 的主菜单中，选择“调试” > “开始执行(不调试)”。 显示浏览器时，转到“关于”页。 此时会显示 **AppSecret** 的值。
+在 Visual Studio 2019 的主菜单中，选择“调试” > “开始执行(不调试)”。   显示浏览器时，转到“关于”页。  此时会显示 **AppSecret** 的值。
 
 ## <a name="publish-the-web-application-to-azure"></a>将 Web 应用程序发布到 Azure
 
 将此应用发布到 Azure，看其是否可以作为 Web 应用运行，并看能否提取机密值：
 
 1. 在 Visual Studio 中选择 **key-vault-dotnet-core-quickstart** 项目。
-2. 选择“发布” > “开始”。
-3. 创建新的**应用服务**，然后选择“发布”。
-4. 将应用名称更改为“keyvaultdotnetcorequickstart”。
-5. 选择“创建”。
+2. 选择“发布”   >   “开始”。
+3. 创建新的**应用服务**，然后选择“发布”  。
+4. 将应用名称更改为“keyvaultdotnetcorequickstart”。 
+5. 选择“创建”  。
 
 >[!VIDEO https://sec.ch9.ms/ch9/e93d/a6ac417f-2e63-4125-a37a-8f34bf0fe93d/KeyVault_high.mp4]
 
@@ -151,7 +151,7 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
    ```
 
 >[!NOTE]
->此过程中的命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”。
+>此过程中的命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”   。
 
 ## <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>为应用程序分配从 Key Vault 读取机密的权限
 
@@ -171,10 +171,10 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-现在运行应用程序时，会看到检索到的机密值。 上面的命令中向应用服务的标识提供了在密钥保管库上执行“get”和“list”操作的权限。
+现在运行应用程序时，会看到检索到的机密值。 上面的命令中向应用服务的标识提供了在密钥保管库上执行“get”和“list”操作的权限   。
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择适用于 VM 的资源组，然后选择“删除”。
+不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择适用于 VM 的资源组，然后选择“删除”。 
 
 使用 [az keyvault delete](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) 命令删除密钥保管库：
 

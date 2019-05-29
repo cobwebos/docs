@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: ghogen
-ms.openlocfilehash: aafa115ee1e270b903e958e5b43826dfb4ff8bdb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 492161a9a47627db8a06686daf953e99ca652e02
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435220"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827669"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务连接到认知服务人脸 API
 
@@ -25,8 +25,8 @@ ms.locfileid: "57435220"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- Visual Studio 2017 版本 15.7（装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- Visual Studio 2017 版本 15.7 或更高版本，并安装有 **Web 开发**工作负荷。 [立即下载](https://www.visualstudio.com/downloads/)。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -34,12 +34,12 @@ ms.locfileid: "57435220"
 
 1. 创建新的 ASP.NET Core Web 项目。 使用空项目模板。 
 
-1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”。
+1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”    。
    此时会显示“连接服务”页，其中包含可添加到项目的服务。
 
    ![“添加连接服务”菜单项](./media/vs-face-connected-service/Connected-Service-Menu.PNG)
 
-1. 在可用服务菜单中，选择“认知服务人脸 API”。
+1. 在可用服务菜单中，选择“认知服务人脸 API”  。
 
    ![选择要连接的服务](./media/vs-face-connected-service/Cog-Face-Connected-Service-0.PNG)
 
@@ -79,11 +79,11 @@ ms.locfileid: "57435220"
       }
    ```
 
-1. 在项目的 wwwroot 文件夹中，添加图像文件夹，并向 wwwroot 文件夹添加图像文件。 例如，可使用此[人脸 API 页](https://azure.microsoft.com/services/cognitive-services/face/)中的一张图像。 右键单击其中一张图像，将其保存到本地硬盘驱动器，然后在解决方案资源管理器中右键单击图像文件夹，选择“添加” > “现有项”，将其添加到项目中。 项目在解决方案资源管理器中应如下所示：
+1. 在项目的 wwwroot 文件夹中，添加图像文件夹，并向 wwwroot 文件夹添加图像文件。 例如，可使用此[人脸 API 页](https://azure.microsoft.com/services/cognitive-services/face/)中的一张图像。 右键单击其中一张图像，将其保存到本地硬盘驱动器，然后在解决方案资源管理器中右键单击图像文件夹，选择“添加” > “现有项”，将其添加到项目中   。 项目在解决方案资源管理器中应如下所示：
  
    ![包含图像文件的图像文件夹](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
-1. 右键单击图像文件，选择“属性”，然后选择“如果较新则复制”。
+1. 右键单击图像文件，选择“属性”，然后选择“如果较新则复制”  。
 
    ![如果较新则复制](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
@@ -240,8 +240,8 @@ ms.locfileid: "57435220"
 不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，请将其选中。
-1. 选择“删除资源组”。
-1. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”。
+1. 选择“删除资源组”  。
+1. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”   。
 
 ## <a name="next-steps"></a>后续步骤
 

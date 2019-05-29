@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f585c496328fef3e3d7dbb300fc4f07167fd55d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 3b4c5e4700b0ef718a6b079ecc6ab3ad80f4eab6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192465"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786185"
 ---
 # <a name="quickstart-create-custom-alerts"></a>快速入门：创建自定义警报
 
@@ -50,13 +50,12 @@ ms.locfileid: "65192465"
 ## <a name="customize-an-alert"></a>自定义警报
 
 1. 打开 IoT 中心。 
-2. 依次选择“安全性”、“自定义警报”。 
-3. 选择要将自定义设置应用到的安全组。 
-4. 单击“添加自定义警报”
-5. 输入警报名称（请注意，创建警报后无法更改警报名称）。 
-6. 从下拉列表中选择自定义警报行为。 
-7. 编辑所需的属性，然后单击“确定”。
-8. 请务必单击“保存”。 如果不保存新警报，下一次关闭 IoT 中心时会删除该警报。
+2. 在“安全性”部分中单击“自定义警报”   。 
+3. 选择要将自定义设置应用于的安全组。 
+4. 单击“添加自定义警报”  
+5. 从下拉列表中选择自定义警报行为。 
+6. 编辑所需的属性，然后单击“确定”。 
+7. 请务必单击“保存”。  如果不保存新警报，下一次关闭 IoT 中心时会删除该警报。
 
  
 ## <a name="alerts-available-for-customization"></a>可自定义的警报

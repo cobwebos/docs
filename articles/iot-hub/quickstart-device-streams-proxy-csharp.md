@@ -10,39 +10,39 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: d36737e6007f247777689e2afa9f47b3ad5bf107
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 514c2e0ea1ef33406c6633064434239d8bdd0e3f
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006662"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832988"
 ---
-# <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>快速入门：使用 C# 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
+# <a name="quickstart-sshrdp-over-an-iot-hub-device-stream-using-a-c-proxy-application-preview"></a>快速入门：使用 C# 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览版）
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
 Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-服务和设备应用程序可以使用 [IoT 中心设备流](./iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 本快速入门指南涉及两个 C# 程序，在其中，可以使用通过 IoT 中心建立的设备流发送客户端/服务器应用程序流量（例如 SSH 和 RDP）。 有关设置概述，请参阅[此文](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。
+服务和设备应用程序可以使用 [IoT 中心设备流](iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 本快速入门指南涉及两个 C# 程序，在其中，可以使用通过 IoT 中心建立的设备流发送客户端/服务器应用程序流量（例如 SSH 和 RDP）。 有关设置概述，请参阅 [SSH 或 RDP 的本地代理示例](iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。
 
 本文首先介绍 SSH 的设置（使用端口 22）。 然后介绍如何修改设置中的 RDP 端口。 由于设备流不区分应用程序和协议，因此，可以修改同一示例来适应其他类型的应用程序流量。 这通常只需将通信端口更改为目标应用程序所用的端口。
 
-## <a name="how-it-works"></a>工作原理：
+## <a name="how-it-works"></a>工作原理
 
 下图演示了此示例中的设备本地和服务本地代理程序设置如何在 SSH 客户端与 SSH 守护程序之间实现端到端的连接。 此处假设守护程序在设备本地代理所在的同一台设备上运行。
 
-![替代文本](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg "本地代理设置")
+![本地代理设置](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
 
 1. 服务本地代理连接到 IoT 中心，并使用其设备 ID 向目标设备发起设备流。
 
 2. 设备本地代理完成流发起握手，并通过 IoT 中心的流式处理终结点与服务端建立端到端的流式处理隧道。
 
-3. 设备本地代理连接到侦听设备端口 22（此端口可配置，[如下](#run-the-device-local-proxy)所述）的 SSH 守护程序 (SSHD)。
+3. 设备本地代理连接到在设备上侦听端口 22（此端口可配置，如[“运行设备本地代理”部分](#run-the-device-local-proxy)所述）的 SSH 守护程序 (SSHD)。
 
-4. 服务本地代理通过侦听指定的端口（在本例中为端口 2222，此端口也可配置，[如下](#run-the-service-local-proxy)所述），等待用户建立新的 SSH 连接。 当用户通过 SSH 客户端连接时，该隧道使应用程序流量可在 SSH 客户端与服务器程序之间进行交换。
+4. 服务本地代理通过侦听指定的端口（在本例中为端口 2222，此端口也可配置，如[“运行服务本地代理”部分](#run-the-service-local-proxy)所述），等待用户建立新的 SSH 连接。 当用户通过 SSH 客户端连接时，该隧道使应用程序流量可在 SSH 客户端与服务器程序之间进行交换。
 
 > [!NOTE]
-> 通过该流发送的 SSH 流量将通过 IoT 中心的流式处理终结点以隧道方式进行传输，而不是直接在服务与设备之间发送。 这就带来了[这些优势](./iot-hub-device-streams-overview.md#benefits)。
+> 通过该流发送的 SSH 流量将通过 IoT 中心的流式处理终结点以隧道方式进行传输，而不是直接在服务与设备之间发送。 有关详细信息，请参阅有关[设备流优势](./iot-hub-device-streams-overview.md#benefits)的部分。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -52,12 +52,13 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
-  - 美国中部
-  - **美国中部 EUAP**
+*  美国中部 
+
+*  **美国中部 EUAP**
 
 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 2.1.0 或更高版本。
 
-可以从 [.NET](https://www.microsoft.com/net/download/all) 为多个平台下载 .NET Core SDK。
+可以[从 .NET 下载适用于多个平台的 .NET Core SDK](https://www.microsoft.com/net/download/all)。
 
 可以使用以下命令验证开发计算机上 C# 的当前版本：
 
@@ -75,7 +76,7 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
 ## <a name="register-a-device"></a>注册设备
 
@@ -105,7 +106,7 @@ az extension add --name azure-cli-iot-ext
 
     稍后会在快速入门中用到此值。
 
-3. 此外，需要使用 IoT 中心的服务连接字符串才能让服务端应用程序连接到 IoT 中心并建立设备流。 以下命令检索 IoT 中心的此值：
+3. 此外，需要使用 IoT 中心的服务连接字符串才能让服务端应用程序连接到 IoT 中心并建立设备流。  以下命令检索 IoT 中心的此值：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -116,9 +117,10 @@ az extension add --name azure-cli-iot-ext
     记下返回的值，如下所示：
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
-    
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
+
+在本部分中，你将建立一个端到端的流，通过隧道来传输 SSH 流量。
 
 ### <a name="run-the-device-local-proxy"></a>运行设备本地代理
 
@@ -174,7 +176,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 ### <a name="run-ssh-client"></a>运行 SSH 客户端
 
-现在，请使用 SSH 客户端程序并连接到端口 2222 上的服务本地代理（而不要直接连接到 SSH 守护程序）。 
+现在，请使用 SSH 客户端程序并连接到端口 2222 上的服务本地代理（而不要直接连接到 SSH 守护程序）。
 
 ```
 ssh <username>@localhost -p 2222
@@ -184,16 +186,15 @@ ssh <username>@localhost -p 2222
 
 服务端中的控制台输出（服务本地代理侦听端口 2222）：
 
-![替代文本](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "服务本地代理输出")
+![服务本地代理输出](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
 通过 `IP_address:22` 连接到 SSH 守护程序的设备本地代理中的控制台输出：
 
-![替代文本](./media/quickstart-device-streams-proxy-csharp/device-console-output.png "设备本地代理输出")
+![设备本地代理输出](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 
 SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地代理侦听的端口 22 来与 SSH 守护程序通信）：
 
-![替代文本](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "SSH 客户端程序输出")
-
+![SSH 客户端程序输出](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png)
 
 ## <a name="rdp-to-a-device-via-device-streams"></a>使用 RDP 通过设备流连接到设备
 
@@ -252,7 +253,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 现在，请使用 RDP 客户端程序并连接到端口 2222（这是前面选择的任意可用端口）上的服务本地代理。
 
-![替代文本](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.PNG "使用 RDP 连接到服务本地代理")
+![使用 RDP 连接到服务本地代理](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

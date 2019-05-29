@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 05/21/2019
 ms.author: lbosq
-ms.openlocfilehash: 3f10c8d38d37682e2a949397d9747ec094bdb9af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 24d5c11eb32350b2c11584ca5fc75ed4b619b6cf
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170099"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978749"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 .NET Framework 或 Core 应用程序
 
@@ -32,9 +32,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="prerequisites"></a>先决条件
 
-如果尚未安装 Visual Studio 2017，可以下载并使用免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
-
-如果已安装 Visual Studio 2017，请确保安装 [Visual Studio 2017 Update 3](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes) 及更高版本。
+如果尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -158,7 +156,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 从 [Azure 门户](https://portal.azure.com/)中，导航到你的图形数据库帐户。 在“概述”选项卡中，可以看到两个终结点： 
+1. 从 [Azure 门户](https://portal.azure.com/)中，导航到你的图形数据库帐户。 在“概述”  选项卡中，可以看到两个终结点： 
  
    **.NET SDK URI** - 使用 Microsoft.Azure.Graphs 库连接到图形帐户时将使用此值。 
 
@@ -176,7 +174,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     `"private static string hostname = "testgraphacct.gremlin.cosmosdb.azure.com";`
 
-3. 接下来，从门户中导航到“密钥”选项卡并复制“主密钥”值，将其粘贴到 `authkey` 变量中，替换第 21 行中的 `"your-authentication-key"` 占位符。 
+3. 接下来，从门户中导航到“密钥”选项卡并复制“主密钥”值，将其粘贴到 `authkey` 变量中，替换第 21 行中的 `"your-authentication-key"` 占位符。   
 
     `private static string authKey = "your-authentication-key";`
 
@@ -202,9 +200,9 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在可以返回到 Azure 门户中的数据资源管理器，浏览和查询新的图形数据。
 
-1. 在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库和容器节点，然后单击“图形”。
+1. 在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库和容器节点，然后单击“图形”。 
 
-2. 单击“应用筛选器”按钮，使用默认查询来查看图形中的所有顶点。 示例应用生成的数据会显示在“图形”窗格中。
+2. 单击“应用筛选器”按钮，使用默认查询来查看图形中的所有顶点。  示例应用生成的数据会显示在“图形”窗格中。
 
     可以放大和缩小图形，可以扩展图形显示空间，可以添加其他顶点，还可以在显示图面移动顶点。
 

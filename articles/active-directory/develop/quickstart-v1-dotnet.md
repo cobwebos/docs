@@ -3,8 +3,8 @@ title: 从 .NET 桌面 (WPF) 应用将用户登录并调用 Microsoft Graph API 
 description: 了解如何生成一个 .NET Windows 桌面应用程序，使其与 Azure AD 集成以方便登录，并使用 OAuth 2.0 调用 Azure AD 保护的 API。
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: ed33574f-6fa3-402c-b030-fae76fba84e1
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: celested
+ms.date: 05/21/2019
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b55f7e615f2c2edb604d5b9433db6cc48d9f36f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: a2d9639c21e201db1df5145caf1345d4f0879af6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223387"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121943"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>快速入门：从 .NET 桌面 (WPF) 应用将用户登录并调用 Microsoft Graph API
 
@@ -55,15 +55,17 @@ ms.locfileid: "58223387"
 为了使应用能够获取令牌，请在 Azure AD 租户中注册该应用，并授予它访问 Azure AD Graph API 的权限：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶栏上选择你的帐户，并在“目录”列表下选择要注册应用程序的 Active Directory 租户。
-3. 选择左侧导航栏中的“所有服务”，并选择“Azure Active Directory”。
-4. 在“应用注册”上，选择“添加”。
-5. 根据提示创建一个新的“本机”客户端应用程序。
-    * 应用程序的“名称”将向最终用户描述应用程序
-    * “重定向 URI”是 Azure AD 要用来返回令牌响应的方案与字符串组合。 输入特定于你的应用程序的值，例如 `http://DirectorySearcher`。
+2. 在顶栏上选择你的帐户，并在“目录”  列表下选择要注册应用程序的 Active Directory 租户。
+3. 选择左侧导航栏中的“所有服务”  ，并选择“Azure Active Directory”  。
+4. 在“应用注册”  中，选择“新建注册”  。
+5. 根据提示创建新的客户端应用程序。
+    * **名称**是应用程序名称，它向最终用户描述该应用程序。
+    * 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
+    * **重定向 URI** 是 Azure AD 用来返回令牌响应的方案与字符串组合。 请输入特定于应用程序（例如 `http://DirectorySearcher`）并基于之前的重定向 URI 信息的一个值。 另外，请从下拉列表中选择“公共客户端(移动和桌面)”  。 
 
 6. 完成注册后，AAD 将为应用分配唯一的应用程序 ID。 在后面的部分中会用到此值，因此，请从应用程序页复制此值。
-7. 在“设置”页上，依次选择“所需权限”和“添加”。 选择“Microsoft Graph”作为 API，并在“委派的权限”下添加“读取目录数据”权限。 设置此权限后，应用程序便可以在图形 API 中查询用户。
+7. 在“API 权限”  页面上，选择“添加权限”  。 在“选择 API”中选择“Microsoft Graph”  。
+8. 在“委托的权限”  下，选择 **User.Read** 权限，然后点击“添加”  以保存。 此权限将应用程序设置为在 Azure AD Graph API 中查询用户。
 
 ## <a name="step-2-install-and-configure-adal"></a>步骤 2：安装并配置 ADAL
 
@@ -100,7 +102,7 @@ ADAL 遵守的基本原理是，每当应用需要访问令牌时，它只需调
     }
     ```
 
-1. 找到 `Search(...)` 方法，当用户在应用的 UI 中单击“搜索”按钮时，将调用该方法。 此方法将向 Azure AD Graph API 发出 GET 请求，以查询其 UPN 以给定搜索词开头的用户。
+1. 找到 `Search(...)` 方法，当用户在应用的 UI 中单击“搜索”按钮时，将调用该方法。  此方法将向 Azure AD Graph API 发出 GET 请求，以查询其 UPN 以给定搜索词开头的用户。
 1. 若要查询图形 API，请在请求的 `Authorization` 标头中包含 access_token - 这是 ADAL 的进入位置。
 
     ```csharp
@@ -139,7 +141,7 @@ ADAL 遵守的基本原理是，每当应用需要访问令牌时，它只需调
     * 如果 ADAL 出于任何原因无法返回令牌，则会引发 `AdalException`。
 
 1. 请注意，`AuthenticationResult` 对象包含 `UserInfo` 对象，后者可用于收集应用程序可能需要的信息。 在 DirectorySearcher 中，`UserInfo` 用于使用用户 ID 自定义应用的 UI。
-1. 当用户选择“注销”按钮时，请确保 `AcquireTokenAsync(...)` 的后续调用将要求用户登录。 你可以通过清除令牌缓存轻松使用 ADAL 执行此操作：
+1. 当用户选择“注销”按钮时，请确保 `AcquireTokenAsync(...)` 的后续调用将要求用户登录。  你可以通过清除令牌缓存轻松使用 ADAL 执行此操作：
 
     ```csharp
     private void SignOut(object sender = null, RoutedEventArgs args = null)
@@ -151,7 +153,7 @@ ADAL 遵守的基本原理是，每当应用需要访问令牌时，它只需调
     }
     ```
 
-    如果用户未单击“注销”按钮，则需要保留用户的会话，以在他们下次运行 DirectorySearcher 时使用。 当应用程序启动时，可以检查现有令牌的 ADAL 令牌缓存，并相应地更新 UI。
+    如果用户未单击“注销”按钮，则需要保留用户的会话，以在他们下次运行 DirectorySearcher 时使用。  当应用程序启动时，可以检查现有令牌的 ADAL 令牌缓存，并相应地更新 UI。
 
 1. 在 `CheckForCachedToken()` 方法中，再次调用 `AcquireTokenAsync(...)`，此次传入 `PromptBehavior.Never` 参数。 `PromptBehavior.Never` 将告知 ADAL 不应提示用户登录；如果 ADAL 无法返回令牌，则应引发异常。
 

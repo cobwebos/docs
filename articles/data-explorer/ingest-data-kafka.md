@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/19/2018
-ms.openlocfilehash: 180053aa2146d8ab80df832044ac3ee4d45970da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/17/2019
+ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047095"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901024"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>快速入门：将数据从 Kafka 引入到 Azure 数据资源管理器
  
@@ -22,11 +22,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
  
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。 
  
-* [测试群集和数据库](create-cluster-database-portal.md)
+* [一个测试群集和数据库](create-cluster-database-portal.md)。
  
-* 生成数据并将其发送到 Kafka 的[示例应用](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)
+* 一个生成数据并将其发送到 Kafka 的[示例应用](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)。
 
-* 运行示例应用的 [Visual Studio 2017 版本 15.3.2 或更高版本](https://www.visualstudio.com/vs/)
+* 用于运行示例应用的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
  
 ## <a name="kafka-connector-setup"></a>Kafka 连接器安装程序
 
@@ -85,13 +85,13 @@ kusto.sink.flush_size=1000
  
 ## <a name="create-a-target-table-in-adx"></a>在 ADX 中创建目标表
  
-在 ADX 中创建一个表，以便 Kafka 可以向其发送数据。 在“先决条件”中预配的群集和数据库中创建表。
+在 ADX 中创建一个表，以便 Kafka 可以向其发送数据。 在“先决条件”  中预配的群集和数据库中创建表。
  
-1. 在 Azure 门户中导航到群集，然后选择“查询”。
+1. 在 Azure 门户中导航到群集，然后选择“查询”。 
  
     ![查询应用程序链接](media/ingest-data-event-hub/query-explorer-link.png)
  
-1. 将以下命令复制到窗口中，然后选择“运行”。
+1. 将以下命令复制到窗口中，然后选择“运行”  。
  
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -99,7 +99,7 @@ kusto.sink.flush_size=1000
  
     ![运行创建查询](media/ingest-data-event-hub/run-create-query.png)
  
-1. 将以下命令复制到窗口中，然后选择“运行”。
+1. 将以下命令复制到窗口中，然后选择“运行”  。
  
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'

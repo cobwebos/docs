@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/08/2019
 ms.author: edjez
-ms.openlocfilehash: 85252680fcc4d2592d242762d01040c3859b14a2
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: b0dc8fbbb80a4d03b2cb64d09ffe9a36883c5bf9
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442083"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521374"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>快速入门：使用 C# 个性化内容 
 
@@ -36,11 +36,11 @@ ms.locfileid: "65442083"
 
 * 需要有[个性化体验创建服务](how-to-settings.md)才能获取订阅密钥和终结点服务 URL。 
 * [Visual Studio 2015 或 2017](https://visualstudio.microsoft.com/downloads/)。
-* Microsoft.Azure.CognitiveServices.Personalizer SDK NuGet 包。 下面提供了安装说明。
+* [Microsoft.Azure.CognitiveServices.Personalizer](https://go.microsoft.com/fwlink/?linkid=2092272) SDK NuGet 包。 下面提供了安装说明。
 
 ## <a name="change-the-model-update-frequency"></a>更改模型更新频率
 
-在 Azure 门户中的个性化体验创建服务中，将“模型更新频率”更改为 10 秒。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化
+在 Azure 门户中的个性化体验创建服务中，将“模型更新频率”  更改为 10 秒。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化
 
 ![更改模型更新频率](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -51,10 +51,10 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 -->
 
 1. 在 Visual Studio 中创建一个新的 Visual C# 控制台应用。
-1. 安装个性化体验创建服务客户端库 NuGet 包。 在菜单中，依次选择“工具”、“NuGet 包管理器”、“管理解决方案的 NuGet 包”。
-1. 选择“浏览”选项卡，在“搜索”框中键入 `Microsoft.Azure.CognitiveServices.Personalizer`。
+1. 安装个性化体验创建服务客户端库 NuGet 包。 在菜单中，依次选择“工具”、“NuGet 包管理器”、“管理解决方案的 NuGet 包”    。
+1. 选择“浏览”选项卡，在“搜索”框中键入 `Microsoft.Azure.CognitiveServices.Personalizer`。  
 1. 当 **Microsoft.Azure.CognitiveServices.Personalizer** 显示时，将其选中。
-1. 选中项目名称旁边的复选框，然后选择“安装”。
+1. 选中项目名称旁边的复选框，然后选择“安装”。 
 
 ## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>添加代码并输入个性化体验创建服务和 Azure 密钥
 
@@ -65,7 +65,7 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 
 ## <a name="add-code-to-rank-the-actions-you-want-to-show-to-your-users"></a>添加代码以排名要显示给用户的操作
 
-以下 C# 代码完整演示了如何使用 SDK 向个性化体验创建服务传递用户信息、特征以及有关内容和操作的信息。 个性化体验创建服务将返回要显示给用户的排名最高的操作。  
+以下 C# 代码完整演示了如何使用 SDK 向个性化体验创建服务传递用户信息、特征以及有关内容和操作的信息。  个性化体验创建服务将返回要显示给用户的排名最高的操作。  
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Personalizer;

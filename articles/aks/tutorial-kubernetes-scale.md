@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 74cd73cd7f9d5be9da552fb22ef2a2750ddc8321
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed82c214e2fbb2a1efc5917eb74ffe9b29abb115
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61029850"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560328"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
@@ -83,7 +83,7 @@ git clone https://github.com/kubernetes-incubator/metrics-server.git
 kubectl create -f metrics-server/deploy/1.8+/
 ```
 
-若要使用自动缩放程序，Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器已请求了 0.25 个 CPU，限制为 0.5 个 CPU。 这些资源请求和限制的定义方式如以下示例代码片段所示：
+若要使用自动缩放程序，你的 Pod 中的所有容器和你的 Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器已请求了 0.25 个 CPU，限制为 0.5 个 CPU。 这些资源请求和限制的定义方式如以下示例代码片段所示：
 
 ```yaml
 resources:
@@ -114,7 +114,7 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 
 如果在前面的教程中使用命令创建了 Kubernetes 群集，则它具有一个节点。 如果计划在群集上有更多或更少的容器工作负荷，则可以手动调整节点数。
 
-下面的示例将名为 myAKSCluster 的 Kubernetes 群集中的节点数增加到 3 个。 该命令需要几分钟时间完成。
+下面的示例将名为 myAKSCluster  的 Kubernetes 群集中的节点数增加到 3 个。 该命令需要几分钟时间完成。
 
 ```azurecli
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3

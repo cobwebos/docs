@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: fmegen
-ms.openlocfilehash: 05475dbfb7dc1ee3f5de1a9b858eaf212b674eac
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3dad2696332f57d9a0dc86927f91caa7352b1d7b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466391"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65884954"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>快速入门：使用适用于 Java 的语音 SDK 识别语音
 
@@ -55,7 +55,7 @@ ms.locfileid: "65466391"
   ```
 
 如果运行 Windows（64 位），请确保已安装适用于平台的 Microsoft Visual C++ Redistributable。
-* [下载 Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+* [下载 Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## <a name="create-and-configure-project"></a>创建并配置项目
 
@@ -63,9 +63,9 @@ ms.locfileid: "65466391"
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。
+1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。
+1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
 
    ![“新建 Java 类”窗口的屏幕截图](media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "65466391"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。
+按 F11，或选择“运行” > “调试”。  
 接下来的 15 秒，通过麦克风提供的语音输入将被识别并记录到控制台窗口中。
 
 ![成功识别后的控制台输出的屏幕截图](media/sdk/qs-java-jre-07-console-output.png)

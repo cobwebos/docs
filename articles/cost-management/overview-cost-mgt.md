@@ -5,21 +5,25 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/14/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 69f91949347eadcffb3c0d3ff833a40b5e483e24
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6615c6d8912195dbecda727bbdb31dcf04898ea2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003174"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792808"
 ---
 # <a name="what-is-azure-cost-management"></a>Azure 成本管理是什么？
 
 成本管理是有效计划和控制业务所涉及成本的过程。 成本管理任务通常由财务、管理和应用等多个团队执行。 Azure 成本管理可以帮助组织在计划时考虑成本。 此外，它还有助于有效地分析成本并采取措施来优化云支出。 若要详细了解如何作为组织来处理成本管理，请参阅 [Azure 成本管理最佳做法](cost-mgt-best-practices.md)一文。
+
+观看 [Azure 成本管理概述视频](https://www.youtube.com/watch?v=el4yN5cHsJ0)来快速了解 Azure 成本管理如何帮助你在 Azure 中节省金钱。
+
+>[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 虽然与计费相关，但计费不等同于成本管理。 计费是为客户开具商品或服务的发票及管理商业关系的过程。  采购团队和财务团队通常负责执行计费任务。
 
@@ -41,7 +45,11 @@ ms.locfileid: "58003174"
 
 ## <a name="consider-cloudyn"></a>考虑使用 Cloudyn
 
-[Cloudyn](overview.md) 是与成本管理相关的一项 Azure 服务。 使用 Cloudyn，你可以跟踪 Azure 资源的云使用情况和支出。 同时，它还支持其他云提供程序，包括 AWS 和 Google。 便于理解的仪表板报告也有助于成本分配和 Showback/Chargeback。 目前，成本管理不支持 Showback/Chargeback 或其他云服务提供程序。 但是，Cloudyn 支持这些提供程序。 目前，成本管理不支持 Microsoft 云服务提供商 (CSP) 帐户，但 Cloudyn 支持。 如果你有 CSP 帐户，或者想要使用报销/退款，则可以使用 Cloudyn 来帮助管理成本。
+[Cloudyn](overview.md) 是与成本管理相关的一项 Azure 服务。 使用 Cloudyn，你可以跟踪 Azure 资源的云使用情况和支出。 同时，它还支持其他云提供程序，包括 AWS 和 Google。 便于理解的仪表板报告也有助于成本分配和 Showback/Chargeback。 目前，成本管理不支持 Showback/Chargeback 或其他云服务提供程序。 但是，Cloudyn 支持  这些提供程序。 目前，成本管理不支持 Microsoft 云服务提供商 (CSP) 帐户，但 Cloudyn 支持。 如果你有 CSP 帐户，或者想要使用报销/退款，则可以使用 Cloudyn 来帮助管理成本。
+
+观看 [Azure 成本管理和 Cloudyn 视频](https://www.youtube.com/watch?v=PmwFWwSluh8)来了解有关根据业务需求应当使用 Azure 成本管理还是使用 Cloudyn 的建议。
+
+>[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ## <a name="additional-azure-tools"></a>其他 Azure 工具
 

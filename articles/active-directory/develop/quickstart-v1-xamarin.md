@@ -3,8 +3,8 @@ title: Azure AD Xamarin 入门 | Microsoft Docs
 description: 构建一个与 Azure AD 集成以方便登录，并使用 OAuth 调用受 Azure AD 保护的 API 的 Xamarin 应用程序。
 services: active-directory
 documentationcenter: xamarin
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: celested
+ms.date: 05/22/2019
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a20c2e6524b0c466f5c45578e0ba8eaad351ea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e3470d9220ed471a05792ed5b3bb259e0dcbe0a6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881879"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121913"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>快速入门：构建集成 Microsoft 登录的 Xamarin 应用
 
@@ -55,16 +55,16 @@ ms.locfileid: "58881879"
 若要让应用获取令牌，首先需要在 Azure AD 租户中注册该应用，并授予其访问 Azure AD 图形 API 的权限。 方法如下：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶部栏上，单击帐户。 然后，在“目录”列表下选择要注册应用的 Active Directory 租户。
-3. 在左窗格中，单击“所有服务”，并选择“Azure Active Directory”。
-4. 单击“应用注册”，并选择“添加”。
-5. 若要创建新的“本机客户端应用程序”，请遵照提示操作。
-   * “名称”向用户描述应用。
+2. 在顶部栏上，单击帐户。 然后，在“目录”列表下选择要注册应用的 Active Directory 租户。 
+3. 在左窗格中，单击“所有服务”，并选择“Azure Active Directory”。  
+4. 单击“应用注册”，然后选择“新建注册”   。
+5. 若要创建新的客户端应用程序，请遵照提示操作。
+   * **名称** - 向用户描述应用。
+   * 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
    * **重定向 URI** 是 Azure AD 用来返回令牌响应的方案与字符串组合。 输入值（例如 `http://DirectorySearcher`）。
-6. 完成注册后，Azure AD 将为应用分配唯一的应用程序 ID。 复制“应用程序”选项卡中的值，因为稍后需用到此值。
-7. 在“设置”页上，选择“所需权限”，并选择“添加”。
-8. 选择“Microsoft Graph”作为 API。 在“委派权限”下面，添加“读取目录数据”权限。 
-   此操作可让应用查询用户的图形 API。
+6. 完成注册后，Azure AD 将为应用分配唯一的应用程序 ID。 复制“应用程序”选项卡中的值，因为稍后需用到此值。 
+7. 在“API 权限”  页面上，选择“添加权限”  。 在“选择 API”中选择“Microsoft Graph”  。
+8. 在“委托的权限”  下，选择 **User.Read** 权限，然后点击“添加”  以保存。 此权限将应用程序设置为在 Azure AD Graph API 中查询用户。
 
 ## <a name="step-3-install-and-configure-adal"></a>步骤 3：安装并配置 ADAL
 
@@ -98,7 +98,7 @@ ms.locfileid: "58881879"
 
    * *tenant* 是 Azure AD 租户的域（例如 contoso.onmicrosoft.com）。
    * *clientId* 是从门户中复制的应用的客户端 ID。
-   * returnUri 是在门户中输入的重定向 URI （例如 `http://DirectorySearcher`）。
+   *  returnUri 是在门户中输入的重定向 URI （例如 `http://DirectorySearcher`）。
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>步骤 4：使用 ADAL 从 Azure AD 获取令牌
 

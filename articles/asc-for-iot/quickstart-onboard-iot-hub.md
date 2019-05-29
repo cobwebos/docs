@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ef3891ac2b0423688f49ae034331935b1b0cd6c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7030ae1c3a28cdd74671dc95dce59cf86cacf4c9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192493"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786167"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>快速入门：在 IoT 中心启用服务
 
@@ -30,7 +30,7 @@ ms.locfileid: "65192493"
 本文介绍如何在 IoT 中心启用适用于 IoT 的 Azure 安全中心 (ASC) 预览版服务。  
 
 > [!NOTE]
-> 适用于 IoT 的 Azure 安全中心目前仅支持标准层和更高层的 IoT 中心。
+> 适用于 IoT 的 Azure 安全中心目前仅支持标准层 IoT 中心。
 > 适用于 IoT 的 Azure 安全中心是一种单中心解决方案。 如果需要多个中心，则需要多个解决方案。 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>启用服务的先决条件
@@ -38,19 +38,23 @@ ms.locfileid: "65192493"
 - Log Analytics 工作区
   - 默认情况下，适用于 IoT 的 ASC 会在 Log Analytics 工作区中存储两类信息：**安全警报**和**建议**。 
   - 可以选择添加另一信息类型（**原始事件**）的存储。 请注意，在 Log Analytics 中存储**原始事件**会带来额外的存储成本。 
-- IoT 中心（标准层或更高层）
+- IoT 中心（标准层）
 - 满足所有[服务先决条件](service-prerequisites.md) 
+- 支持的服务区域
+  - 美国中部
+  - 北欧
+  - 东南亚
 
 ## <a name="enable-asc-for-iot-on-your-iot-hub"></a>在 IoT 中心启用适用于 IoT 的 ASC 
 
 若要在 IoT 中心启用安全性，请执行以下操作： 
 
 1. 在 Azure 门户中打开你的 **IoT 中心**。 
-2. 在“安全性”菜单上，单击“概述”，然后单击“开始预览”。 
-3. 选择“启用 IoT 安全性”。 
+2. 在“安全性”  菜单上，单击“概述”  ，然后单击“开始预览”  。 
+3. 选择“启用 IoT 安全性”。  
 4. 提供 Log Analytics 工作区详细信息。 
-   - 选择存储除默认存储信息类型之外的“原始事件”，方法是让“原始事件”开关保持“打开”状态。 
-   - 选择启用“孪生收集”，方法是让“孪生收集”开关保持“打开”状态。 
+   - 选择存储除默认存储信息类型之外的“原始事件”，方法是让“原始事件”开关保持“打开”状态。    
+   - 选择启用“孪生收集”，方法是让“孪生收集”开关保持“打开”状态。    
 5. 单击“ **保存**”。 
 
 祝贺你！ 你已完成在 IoT 中心启用适用于 IoT 的 ASC 的操作。 

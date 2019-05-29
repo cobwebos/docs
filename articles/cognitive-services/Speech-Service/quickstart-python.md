@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: chlandsi
-ms.openlocfilehash: 34af7544a7678dfd8c8f870369bf0b4b1083b96d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 30e25fa8ea9e49b3005badc3db8f6ada3c0aed50
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020716"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65885177"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>快速入门：使用适用于 Python 的语音 SDK 识别语音
 
@@ -47,7 +47,7 @@ ms.locfileid: "65020716"
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
 
-* 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
+* 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
@@ -87,12 +87,12 @@ python quickstart.py
 
 1. 在计算机上下载并安装 64 位版本的 [Python](https://www.python.org/downloads/)（3.5 或更高版本）。
 1. 下载并安装 [Visual Studio Code](https://code.visualstudio.com/Download)。
-1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件” > “首选项” > “扩展”。 搜索 **Python**。
+1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件”   >   “首选项” >   “扩展”。 搜索 **Python**。
 
    ![安装 Python 扩展](media/sdk/qs-python-vscode-python-extension.png)
 
 1. 创建一个文件夹用于存储项目。 例如，使用 Windows 资源管理器。
-1. 在 Visual Studio Code 中选择“文件”图标。 然后打开创建的文件夹。
+1. 在 Visual Studio Code 中选择“文件”图标。  然后打开创建的文件夹。
 
    ![打开文件夹](media/sdk/qs-python-vscode-python-open-folder.png)
 
@@ -107,7 +107,7 @@ python quickstart.py
 1. 如果尚未为所选的 Python 解释器安装， 可以从 Visual Studio Code 内部安装语音 SDK Python 包。
    若要安装语音 SDK 包，请打开终端。 再次启动命令面板 (Ctrl+Shift+P) 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
    在打开的终端中，输入命令 `python -m pip install azure-cognitiveservices-speech`，或者输入适用于系统的命令。
-1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。
+1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。 
    根据提示讲出几句话。 片刻之后，听录的文本将会显示。
 
    ![运行示例](media/sdk/qs-python-vscode-python-run.png)

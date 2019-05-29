@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: c7a80ae704d13934a5d51bc5538bc28693b49e5b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a0612ea06c71b2a93e6fb76f5d82516cfbad8657
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588086"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860345"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Xamarin.Forms 应用
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 若要运行该示例，需要 [Visual Studio](https://www.visualstudio.com/downloads/) 或 [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) 和有效的 Azure CosmosDB 帐户。
 
-如果没有 Visual Studio，请在使用安装程序安装**具有 .NET 的移动开发**后，下载 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。
+如果没有 Visual Studio，请在使用安装程序安装**具有 .NET 的移动开发**后，下载 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。
 
 如果想要使用 Mac，请下载 [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) 并运行安装程序。
 
@@ -154,24 +154,24 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”，并单击“读写密钥”。 在后续步骤中，将使用屏幕右侧的复制按钮复制“主连接字符串”。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”  ，并单击“读写密钥”  。 在后续步骤中，将使用屏幕右侧的复制按钮复制“主连接字符串”。
 
 2. 打开 **TaskList.Core** 项目的 **Helpers** 目录中的 **APIKeys.cs** 文件。
 
-3. 从门户复制“主连接字符串”值（使用复制按钮），并将其设置为 **APIKeys.cs** 文件中 **ConnectionString** 字段的值。
+3. 从门户复制“主连接字符串”值（使用复制按钮），并将其设置为 **APIKeys.cs** 文件中 **ConnectionString** 字段的值。 
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。
 
 ## <a name="run-the-app"></a>运行应用
 
-### <a name="visual-studio-2017"></a>Visual Studio 2017
+### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. 在 Visual Studio 中，右键单击解决方案资源管理器中的每个项目，并单击“管理 NuGet 包”。
-2. 单击“还原所有 NuGet 包”。
-3. 右键单击“TaskList.Android”，并选择“设为启动项目”。
+1. 在 Visual Studio 中，右键单击解决方案资源管理器  中的每个项目，并单击“管理 NuGet 包”  。
+2. 单击“还原所有 NuGet 包”  。
+3. 右键单击“TaskList.Android”，并选择“设为启动项目”。  
 4. 按 F5 开始调试应用程序。
 5. 如果想要在 iOS 上运行，首先请将计算机连接到 Mac（参阅操作[说明](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)）。
-6. 右键单击“TaskList.iOS”项目，并选择“设为启动项目”。
+6. 右键单击“TaskList.iOS”项目，并选择“设为启动项目”。  
 7. 单击 F5 开始调试应用程序。
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac

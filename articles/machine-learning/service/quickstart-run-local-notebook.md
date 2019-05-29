@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549129"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864385"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>快速入门：通过自己的 Notebook 服务器开始使用 Azure 机器学习
 
-使用自己的 Notebook 服务器来运行在 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md)中记录值的代码。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。
+通过你自己的 Python 环境和 Jupyter Notebook 服务器开始使用 Azure 机器学习服务。  有关不需安装 SDK 的快速入门，请参阅[快速入门：通过基于云的 Notebook 服务器开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md)。
 
-本快速入门使用你自己的 Python 环境和 Jupyter Notebook 服务器。 有关不需安装 SDK 的快速入门，请参阅[快速入门：通过基于云的 Notebook 服务器开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md) 
+本快速入门展示了如何使用 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md)来跟踪你的机器学习试验。 你将运行 Python 代码，用以将值记录到工作区中。
 
 观看本快速入门的视频版本：
 
@@ -33,7 +33,7 @@ ms.locfileid: "59549129"
 
 * 一个安装了 Azure 机器学习 SDK 的 Python 3.6 Notebook 服务器
 * 一个 Azure 机器学习服务工作区
-* 一个工作区配置文件 (.azureml/config.json)。
+* 一个工作区配置文件 (.azureml/config.json)  。
 
 从[创建 Azure 机器学习服务工作区](setup-create-workspace.md#portal)获取所有这些先决条件。
 

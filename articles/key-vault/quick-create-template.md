@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/04/2019
+ms.date: 05/22/2019
 ms.author: jgao
-ms.openlocfilehash: b1b50858286e3a174de254ae16c64b04abc00936
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 802c0409fe3ac88f73c383958d2337be09ef7992
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716002"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016463"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>快速入门：使用资源管理器模板设置机密以及从 Azure Key Vault 检索机密
 
@@ -29,7 +29,7 @@ ms.locfileid: "64716002"
 
 * 模板需要使用你的 Azure AD 用户对象 ID 来配置权限。 以下过程获取对象 ID (GUID)。
 
-    1. 运行以下 Azure PowerShell 或 Azure CLI 命令：选择“试用”，然后在 shell 窗格中粘贴脚本。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。 
+    1. 运行以下 Azure PowerShell 或 Azure CLI 命令：选择“试用”，然后在 shell 窗格中粘贴脚本。  若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  。 
 
         ```azurecli-interactive
         echo "Enter your email address that is used to sign in to Azure:" &&
@@ -59,15 +59,15 @@ ms.locfileid: "64716002"
     除非另有指定，否则请使用默认值创建 Key Vault 和机密。
 
     * **订阅**：选择一个 Azure 订阅。
-    * **资源组**：选择“新建”，输入资源组的唯一名称，然后单击“确定”。 
-    * **位置**：选择一个位置。  例如“美国中部”。
-    * **Key Vault 名称**：输入 Key Vault 的唯一名称。  
+    * **资源组**：选择“新建”，输入资源组的唯一名称，然后单击“确定”。   
+    * **位置**：选择一个位置。  例如“美国中部”。 
+    * **密钥保管库名称**：为密钥保管库输入一个在 .vault.azure.net 命名空间中必须全局唯一的名称。  
     * **租户 ID**：模板函数会自动检索租户 ID。不要更改默认值。
     * **AD 用户 ID**：输入在[先决条件](#prerequisites)中检索到的 Azure AD 用户对象 ID。
-    * **机密名称**：输入要存储在 Key Vault 中的机密的名称。  例如 **adminpassword**
+    * **机密名称**：输入要存储在 Key Vault 中的机密的名称。  例如 **adminpassword**。
     * **机密值**：输入机密值。  如果存储密码，则我们建议使用在“先决条件”中创建的生成密码。
     * **我同意上述条款和条件**：选中。
-3. 选择“购买”。
+3. 选择“购买”。 
 
 ## <a name="validate-the-deployment"></a>验证部署
 

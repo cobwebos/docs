@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0b47ffd77ee23f997bb7de2ea41f83c2854cba72
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068674"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550893"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
@@ -23,6 +23,9 @@ ms.locfileid: "65068674"
 
 [索引策略更新](index-policy.md#modifying-the-indexing-policy)会触发索引转换。 还可以通过 SDK 跟踪此转换的进度。
 
+> [!NOTE]
+> 作为 SDK 和门户升级的一部分，我们正在升级索引策略来适应我们已在新容器中采用的新索引布局。 使用此新的布局，所有基元数据类型都将作为全精度 (-1) 范围编制索引。 因此，索引种类和精度不再向用户公开。 将来，用户只需要将路径添加到 includedPaths 部分，并忽略 indexKinds 和 precision。 此更改对性能没有影响，你可以继续使用同一语法来更新索引编制策略。 你可以继续使用我们现有文档中的所有示例来更新索引策略。
+
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
 Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门户中直接编辑这些文档。
@@ -31,13 +34,13 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 1. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，选择要使用的容器。
+1. 打开“数据资源管理器”窗格，选择要使用的容器。 
 
-1. 单击“缩放设置”。
+1. 单击“缩放设置”。 
 
 1. 修改索引策略 JSON 文档（请参阅[下文](#indexing-policy-examples)中的示例）
 
-1. 完成后，单击“保存”。
+1. 完成后，单击“保存”。 
 
 ![使用 Azure 门户管理索引编制](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 

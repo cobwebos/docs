@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: db931a3a114be101eeb5e14fa7ba100a789e7cf5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 23b8f7db40eb2df063e055c489f11ff1b19dd8d5
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094985"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519098"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>快速入门：在 Azure Cosmos DB 中使用 Java SDK 创建图形数据库 
 
@@ -35,8 +35,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 此外：
 
-* [Java 开发工具包 (JDK) 1.7+](https://aka.ms/azure-jdks)
-    * 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。
+* [Java 开发工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
     * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 * [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档
     * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
@@ -106,7 +105,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在，返回到 Azure 门户，获取连接信息，并将信息复制到应用程序中。 借助这些设置，应用程序可以与托管的数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“密钥”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“密钥”  。 
 
     复制 URI 值的第一部分。
 
@@ -172,21 +171,21 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在可以回到数据资源管理器，查看添加到图形的顶点，并添加其他数据点。
 
-1. 单击“数据资源管理器”，展开“sample-graph”，再依次单击“图形”和“应用筛选器”。 
+1. 单击“数据资源管理器”  ，展开“sample-graph”  ，再依次单击“图形”  和“应用筛选器”  。 
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
-2. 在“结果”列表中，请注意添加到图形的新用户。 选择“ben”，请注意，该用户已连接到 robin。 可以通过拖放操作来移动顶点，也可以通过滚动鼠标滚轮进行缩放，并能用双箭头放大图形。 
+2. 在“结果”列表中，请注意添加到图形的新用户。  选择“ben”，请注意，该用户已连接到 robin。  可以通过拖放操作来移动顶点，也可以通过滚动鼠标滚轮进行缩放，并能用双箭头放大图形。 
 
    ![在 Azure 门户数据资源管理器的图形中的新顶点](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
-3. 接下来，添加几个新用户。 单击“新建顶点”按钮，向图形添加数据。
+3. 接下来，添加几个新用户。 单击“新建顶点”按钮，向图形添加数据。 
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. 在标签框中，输入 *person*。
 
-5. 单击“添加属性”，添加下列所有属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
+5. 单击“添加属性”  ，添加下列所有属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
     key|值|说明
     ----|----|----
@@ -197,13 +196,13 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     > [!NOTE]
     > 在本快速入门中，将创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-6. 单击“确定”。 可能需要展开屏幕才能在屏幕底部看到“确定”。
+6. 单击“确定”。  可能需要展开屏幕才能在屏幕底部看到“确定”。 
 
-7. 再次单击“新建顶点”，添加其他新用户。 
+7. 再次单击“新建顶点”，添加其他新用户。  
 
-8. 输入标签“人员”。
+8. 输入标签“人员”  。
 
-9. 单击“添加属性”，添加下列所有属性：
+9. 单击“添加属性”  ，添加下列所有属性：
 
     key|值|说明
     ----|----|----
@@ -211,21 +210,21 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     gender|男| 
     学校|MIT| 
 
-10. 单击“确定”。 
+10. 单击“确定”。  
 
-11. 单击“应用筛选器”按钮（默认 `g.V()` 筛选器），显示图形中的所有值。 所有用户此时会显示在“结果”列表中。 
+11. 单击“应用筛选器”  按钮（默认 `g.V()` 筛选器），显示图形中的所有值。 所有用户此时会显示在“结果”列表中。  
 
-    添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并单击“应用筛选器”，再次显示所有结果。
+    添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并单击“应用筛选器”  ，再次显示所有结果。
 
-12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后单击右下侧“目标”旁边的“更改图形中某个顶点的目标”。![](./media/create-graph-java/edit-pencil-button.png) 可能需要扩大窗口才能看到该按钮。
+12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后单击右下侧“目标”旁边的“更改图形中某个顶点的目标”。   ![](./media/create-graph-java/edit-pencil-button.png)  可能需要扩大窗口才能看到该按钮。
 
     ![更改图形中某个顶点的目标。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. 在“目标”框中键入“rakesh”，在“Edge 标签”框中键入“认识”，然后单击复选框。
+13. 在“目标”  框中键入“rakesh”  ，在“Edge 标签”  框中键入“认识”  ，然后单击复选框。
 
     ![通过数据资源管理器在 ashley 和 rakesh 之间添加连接](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
-14. 现在，从结果列表中选择“rakesh”即可看到 ashley 和 rakesh 已连接。 
+14. 现在，从结果列表中选择“rakesh”即可看到  ashley 和 rakesh 已连接。 
 
     ![在数据资源管理器中连接的两个顶点](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 6c332861bcaf228e4c1e0a619cf4f84e3be0ba15
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b8d7556607cdb73c3e3ae19109bcbf34b72b0915
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204150"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595347"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入门：使用 .NET API 运行第一个 Azure Batch 作业
 
@@ -27,7 +27,7 @@ ms.locfileid: "65204150"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017](https://www.visualstudio.com/vs) 或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
+* 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
 
 * Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。 
 
@@ -66,7 +66,7 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 若要查看运行中的 Batch 工作流，请在 Visual Studio 中构建并运行应用程序，或在命令行中使用 `dotnet build` 和 `dotnet run` 命令。 运行应用程序后，请查看代码，了解应用程序的每个部分的作用。 例如，在 Visual Studio 中：
 
-* 右键单击解决方案资源管理器中的解决方案，然后单击“生成解决方案”。 
+* 右键单击解决方案资源管理器中的解决方案，然后单击“生成解决方案”  。 
 
 * 出现提示时，请确认还原任何 NuGet 包。 如果需要下载缺少的包，请确保 [NuGet 包管理器](https://docs.nuget.org/consume/installing-nuget)已安装。
 
@@ -246,7 +246,7 @@ foreach (CloudTask task in completedtasks)
 
 应用自动删除所创建的存储容器，并允许你选择是否删除 Batch 池和作业。 只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 删除池时会删除节点上的所有任务输出。
 
-若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。
+若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 

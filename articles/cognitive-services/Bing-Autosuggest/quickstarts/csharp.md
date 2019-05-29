@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 10e25797c15a821579cd15333cdd833e491acbd0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 55c1a2a56743b53d6d5932665be0c45e1ac9b9b3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546103"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596052"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
 
@@ -23,7 +23,7 @@ ms.locfileid: "57546103"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]

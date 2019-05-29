@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a0c677e25be86e0f82b821a7931bda0af2b35127
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c09cb0f93f05a9574543ebabb398148638092c73
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408660"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864792"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>快速入门：使用应用配置创建 Azure 函数
 
@@ -31,7 +31,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="prerequisites"></a>先决条件
 
-要学习该快速入门，请安装 [Visual Studio 2017](https://visualstudio.microsoft.com/vs)。 确保还安装了 **Azure 开发**工作负荷。 另请安装 [latest Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)。
+要学习该快速入门，请安装 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。 确保还安装了 **Azure 开发**工作负荷。 另请安装 [latest Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,13 +39,13 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+创建”来添加以下键值对：
+6. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
 
-    | 键 | 值 |
+    | 密钥 | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
-    暂时将“标签”和“内容类型”保留为空。
+    暂时将“标签”和“内容类型”保留为空   。
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
@@ -53,7 +53,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 右键单击项目，然后选择“管理 NuGet 包”。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中。 如果无法找到，请选中“包括预发行版”复选框。
+1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中  。 如果无法找到，请选中“包括预发行版”复选框  。
 
     ```
     Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
@@ -91,7 +91,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="test-the-function-locally"></a>在本地测试函数
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -103,7 +103,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. 若要测试函数，请按 F5。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具。 你还需要启用防火墙例外，这样工具才能处理 HTTP 请求。
+2. 若要测试函数，请按 F5。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具  。 你还需要启用防火墙例外，这样工具才能处理 HTTP 请求。
 
 3. 从 Azure Functions 运行时输出复制函数的 URL。
 

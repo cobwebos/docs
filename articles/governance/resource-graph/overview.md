@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 45d5cf7c4235d10e136cc96364d52aa4319bbf79
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137783"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162080"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph 服务概述
 
@@ -27,13 +27,13 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 
 > [!NOTE]
 > Azure Resource Graph 支持 Azure 门户的搜索栏、全新的浏览“所有资源”体验以及 Azure Policy 的[更改历史记录](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> 视觉差异。它旨在帮助客户管理大规模环境。
+>   视觉差异。它旨在帮助客户管理大规模环境。
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Resource Graph 如何补充了 Azure 资源管理器
 
 Azure 资源管理器目前支持对基本的资源字段进行查询，具体说来，这些字段包括“资源名称”、“ID”、“类型”、“资源组”、“订阅”和“位置”。 资源管理器还提供设施，用于调用各个资源提供程序以获取详细的属性，每次仅限一个资源。
 
-使用 Azure Resource Graph，可以访问资源提供程序返回的这些属性，无需对资源提供程序进行单独调用。 如需支持的资源类型的列表，请在[完整模式部署的资源](../../azure-resource-manager/complete-mode-deletion.md)表中查找“是”。
+使用 Azure Resource Graph，可以访问资源提供程序返回的这些属性，无需对资源提供程序进行单独调用。 如需支持的资源类型的列表，请在[完整模式部署的资源](../../azure-resource-manager/complete-mode-deletion.md)表中查找“是”  。
 
 使用 Azure Resource Graph，可以：
 
@@ -43,7 +43,7 @@ Azure 资源管理器目前支持对基本的资源字段进行查询，具体�
 ## <a name="how-resource-graph-is-kept-current"></a>如何让 Resource Graph 保持最新
 
 更新 Azure 资源时，资源管理器会将所做的更改通知给 Resource Graph。
-Resource Graph 然后就会更新其数据库。 Resource Graph 也会定期进行完全扫描。 此扫描可确保在缺少通知的情况下，或者当资源是在资源管理器外部进行更新的情况下，Resource Graph 数据能够保持最新。
+Resource Graph 然后就会更新其数据库。 Resource Graph 也会定期进行完全扫描  。 此扫描可确保在缺少通知时，或者当资源是在资源管理器外部进行更新时，Resource Graph 数据能够保持最新。
 
 ## <a name="the-query-language"></a>查询语言
 
@@ -63,9 +63,15 @@ Resource Graph 然后就会更新其数据库。 Resource Graph 也会定期进�
 
 ## <a name="throttling"></a>限制
 
-为了为所有客户提供最佳体验和响应时间，对 Resource Graph 的查询（以免费服务的形式提供）将受到限制。 如果你的组织希望使用 Resource Graph API 进行大规模的频繁查询，请使用 Resource Graph 页面中的门户“反馈”。 请务必提供你的业务案例并选中“Microsoft 可以针对你的反馈向你发送电子邮件”复选框，以便团队与你联系。
+为了为所有客户提供最佳体验和响应时间，对 Resource Graph 的查询（以免费服务的形式提供）将受到限制。 如果你的组织希望使用 Resource Graph API 进行大规模的频繁查询，请使用 [Resource Graph 门户页面](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph)中的门户“反馈”。
+请提供你的业务案例并选中“Microsoft 可以针对你的反馈向你发送电子邮件”复选框，以便团队与你联系。
 
-Resource Graph 在租户级别受到限制。 此服务会重写和设置 `x-ms-ratelimit-remaining-tenant-reads` 响应标头，该标头用于指示租户中余下的可供用户使用的查询。 Resource Graph 每 5 秒而不是每小时重置配额一次。 有关详细信息，请参阅[限制资源管理器请求](../../azure-resource-manager/resource-manager-request-limits.md)。
+Resource Graph 在用户级别对查询进行限制。 服务响应包含以下 HTTP 标头：
+
+- `x-ms-user-quota-remaining` (int)：用户的剩余资源配额。 此值映射到查询计数。
+- `x-ms-user-quota-resets-after` (hh:mm:ss)：在用户的配额消耗量重置之前的持续时间
+
+有关详细信息，请参阅[限制资源管理器请求](../../azure-resource-manager/resource-manager-request-limits.md)。
 
 ## <a name="running-your-first-query"></a>运行自己的第一个查询
 

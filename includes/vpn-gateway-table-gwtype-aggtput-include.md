@@ -5,22 +5,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/05/2018
+ms.date: 05/22/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 555a8e3e92dc1d12cb7c6d6e06d2511f15a2c862
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 211935aac56dff8d6e524706c416c126b1a0c3b8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679354"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159388"
 ---
-|**SKU**   | S2S/VNet 到 VNet<br>隧道 | **P2S<br> SSTP 连接** | **P2S<br> IKEv2 连接** | 聚合<br>吞吐量基准 | **BGP** |
+|**SKU**   | S2S/VNet 到 VNet<br>隧道  | **P2S<br> SSTP 连接** | **P2S<br> IKEv2/OpenVPN 连接** |  聚合<br>吞吐量基准 | **BGP** |
 |---       | ---        | ---       | ---            | ---       | --- |
 |**基本** | 最大 10    | 最大 128  | 不支持  | 100 Mbps  | 不支持|
-|VpnGw1| 最大 30*   | 最大 128  | 最大 250       | 650 Mbps  | 支持 |
-|VpnGw2| 最大 30*   | 最大 128  | 最大 500       | 1 Gbps    | 支持 |
-|VpnGw3| 最大 30*   | 最大 128  | 最大 1000      | 1.25 Gbps | 支持 |
+|VpnGw1 | 最大 30*   | 最大 128  | 最大 250       | 650 Mbps  | 支持 |
+|VpnGw2 | 最大 30*   | 最大 128  | 最大 500       | 1 Gbps    | 支持 |
+|VpnGw3 | 最大 30*   | 最大 128  | 最大 1000      | 1.25 Gbps | 支持 |
 
 
 (*) 如果需要 30 个以上 S2S VPN 隧道，请使用[虚拟 WAN](../articles/virtual-wan/virtual-wan-about.md)。

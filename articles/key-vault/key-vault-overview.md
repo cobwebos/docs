@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4169a288ba85a7a7d83f77a8de8f6a4ef9bf0eac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 456f828f09a710009d30e1c0a669cde658318ae0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700406"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789368"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
@@ -42,7 +42,7 @@ Azure Key Vault 有助于解决以下问题：
 
 身份验证通过 Azure Active Directory 来完成。 授权可以通过基于角色的访问控制 (RBAC) 或 Key Vault 访问策略来完成。 进行保管库的管理时，使用 RBAC；尝试访问存储在保管库中的数据时，使用密钥保管库访问策略。
 
-可以对 Azure Key Vault 进行软件或硬件 HSM 保护。 如果需要提高可靠性，可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。 Microsoft 使用 Thales 硬件安全模块。 可以使用 Thales 工具将密钥从 HSM 移到 Azure Key Vault。
+可以对 Azure Key Vault 进行软件或硬件 HSM 保护。 如果需要提高可靠性，可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。 Microsoft 使用 nCipher 硬件安全模块。 你可以使用 nCipher 工具将密钥从 HSM 移动到 Azure Key Vault。
 
 最后需要指出的是，根据 Azure Key Vault 的设计，Microsoft 无法查看或提取数据。
 

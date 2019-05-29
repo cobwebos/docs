@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 25f8a88c1b488b9272ed1254aaca79a79bc7e871
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 629adfe558aec71e156e50c75aa0891eac5a8bcf
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60890683"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979036"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 生成表 API 应用 
 
@@ -28,7 +28,7 @@ ms.locfileid: "60890683"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
+如果尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,7 +68,7 @@ ms.locfileid: "60890683"
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>在 Visual Studio 中打开示例应用程序
 
-1. 在 Visual Studio 的“文件”菜单中选择“打开”，然后选择“项目/解决方案”。 
+1. 在 Visual Studio 的“文件”菜单中选择“打开”，然后选择“项目/解决方案”。    
 
    ![打开解决方案](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
@@ -78,13 +78,13 @@ ms.locfileid: "60890683"
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”。 使用窗口右侧的复制按钮复制“主连接字符串”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”  。 使用窗口右侧的复制按钮复制“主连接字符串”。 
 
    ![在“连接字符串”窗格中查看并复制“主连接字符串”](./media/create-table-dotnet/connection-string.png)
 
 2. 在 Visual Studio 中打开 **Settings.json** 文件。 
 
-3. 将门户中的“主连接字符串”粘贴到 StorageConnectionString 值中。 粘贴引号内的字符串。
+3. 将门户中的“主连接字符串”粘贴到 StorageConnectionString 值中。  粘贴引号内的字符串。
 
    ```csharp
    {
@@ -98,17 +98,17 @@ ms.locfileid: "60890683"
 
 ## <a name="build-and-deploy-the-app"></a>生成并部署应用
 
-1. 在 Visual Studio 中，右键单击“解决方案资源管理器”中的“CosmosTableSamples”项目，然后单击“管理 NuGet 包”。 
+1. 在 Visual Studio 中，右键单击“解决方案资源管理器”中的“CosmosTableSamples”项目，然后单击“管理 NuGet 包”。    
 
    ![管理 NuGet 包](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
-2. 在 NuGet 的“浏览”框中，键入 Microsoft.Azure.Cosmos.Table。 这样会查找 Cosmos DB 表 API 客户端库。 请注意，此库目前仅适用于 .NET Framework 和 .NET Standard。 
+2. 在 NuGet 的“浏览”框中，键入 Microsoft.Azure.Cosmos.Table。  这样会查找 Cosmos DB 表 API 客户端库。 请注意，此库目前仅适用于 .NET Framework 和 .NET Standard。 
    
    ![NuGet 的“浏览”选项卡](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 
-3. 单击“安装”以安装 **Microsoft.Azure.Cosmos.Table** 库。 这会安装 Azure Cosmos DB 表 API 包和所有依赖项。
+3. 单击“安装”以安装 **Microsoft.Azure.Cosmos.Table** 库。  这会安装 Azure Cosmos DB 表 API 包和所有依赖项。
 
-4. 运行整个应用时，示例数据将插入表实体，运行结束时会删除这些数据，因此，如果运行整个示例，你将看不到插入的任何数据。 但是，可以插入一些断点来查看数据。 打开 BasicSamples.cs 文件并右键单击第 52 行，选择“断点”，然后选择“插入断点”。 在第 55 行中插入另一个断点。
+4. 运行整个应用时，示例数据将插入表实体，运行结束时会删除这些数据，因此，如果运行整个示例，你将看不到插入的任何数据。 但是，可以插入一些断点来查看数据。 打开 BasicSamples.cs 文件并右键单击第 52 行，选择“断点”，然后选择“插入断点”。   在第 55 行中插入另一个断点。
 
    ![添加断点](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
 
@@ -116,7 +116,7 @@ ms.locfileid: "60890683"
     
    ![控制台输出](media/create-table-dotnet/azure-cosmosdb-console.png)
 
-   点击第一个断点后，返回到 Azure 门户中的数据资源管理器。 单击“刷新”按钮，展开 demo* 表，然后单击“实体”。 右侧的“实体”选项卡将显示为 Walter Harp 添加的新实体。 请注意，新实体的电话号码为 425-555-0101。
+   点击第一个断点后，返回到 Azure 门户中的数据资源管理器。 单击“刷新”按钮，  展开 demo* 表，然后单击“实体”。  右侧的“实体”  选项卡将显示为 Walter Harp 添加的新实体。 请注意，新实体的电话号码为 425-555-0101。
 
    ![新建实体](media/create-table-dotnet/azure-cosmosdb-entity.png)
     
@@ -130,11 +130,11 @@ ms.locfileid: "60890683"
      </ItemGroup>
    ```
 
-6. 关闭数据资源管理器中的“实体”选项卡。
+6. 关闭数据资源管理器中的“实体”选项卡。 
     
 7. 按 F5，运行应用到下一个断点。 
 
-    点击该断点后，切换回 Azure 门户，再次单击“实体”以打开“实体”选项卡，请注意该电话号码已更新为 425-555-0105。
+    点击该断点后，切换回 Azure 门户，再次单击“实体”以打开“实体”选项卡，请注意该电话号码已更新为 425-555-0105。  
 
 8. 按 F5 运行该应用。 
  

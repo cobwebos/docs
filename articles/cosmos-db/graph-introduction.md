@@ -5,14 +5,14 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 09/05/2018
+ms.date: 05/20/2019
 ms.author: lbosq
-ms.openlocfilehash: 36465c253996e4cecc665b2fd1d59c03adc78a2f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f5d90f8b825b7076a1a5122dbef3c8b2990e216
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110539"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954259"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB 简介：Gremlin API
 

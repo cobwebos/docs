@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6c7952f5baf2e6956e4052f68ede6fb0c4902854
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281227"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921353"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
@@ -56,11 +56,11 @@ ms.locfileid: "59281227"
 
     ![创建函数](./media/quickstart-js-vscode/create-function.png)
 
-2. 选择包含函数应用项目的文件夹，然后选择“HTTP 触发器”函数模板。
+2. 选择包含函数应用项目的文件夹，然后选择“HTTP 触发器”  函数模板。
 
     ![选择 HTTP 触发器模板](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. 键入 `HttpStart` 作为函数名称，然后按 Enter，然后选择“匿名”身份验证。
+3. 键入 `HttpStart` 作为函数名称，然后按 Enter，然后选择“匿名”  身份验证。
 
     ![选择匿名身份验证](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
@@ -114,12 +114,12 @@ ms.locfileid: "59281227"
 
     对于存储模拟器 5.8，请确保将 local.settings.json 的 **AzureWebJobsSecretStorageType** 属性设置为 `files`。 在 Mac 或 Linux 计算机上，必须将 **AzureWebJobsStorage** 属性设置为现有 Azure 存储帐户的连接字符串。 本文中稍后将创建一个存储帐户。
 
-2. 若要测试函数，请在函数代码中设置断点并按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。 如果这是你首次使用 Durable Functions，则会安装 Durable Functions 扩展并且生成可能需要几秒钟时间。
+2. 若要测试函数，请在函数代码中设置断点并按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。 如果这是你首次使用 Durable Functions，则会安装 Durable Functions 扩展并且生成可能需要几秒钟时间。
 
     > [!NOTE]
-    > JavaScript Durable Functions 需要 1.7.0 版或更高版本的 Microsoft.Azure.WebJobs.Extensions.DurableTask 扩展。 验证 `extensions.csproj` 文件中 Durable Functions 扩展的版本是否满足此要求。 如果不满足要求，请停止函数应用，更改版本，然后按 F5 重启函数应用。
+    > JavaScript Durable Functions 需要 1.7.0 版或更高版本的 Microsoft.Azure.WebJobs.Extensions.DurableTask 扩展   。 从你的 Azure Functions 应用的根文件夹运行以下命令来安装 Durable Functions 扩展 `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
-3. 在“终端”面板中，复制 HTTP 触发的函数的 URL 终结点。
+3. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 
     ![Azure 本地输出](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "59281227"
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-1. 从“输出”面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用以下格式：
+1. 从“输出”  面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用以下格式：
 
         http://<functionappname>.azurewebsites.net/orchestrators/<functionname>
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 148f94410f6acb421d352b68b6f1ecb305a6b16a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 24d9a5fa1e9c2f44ef32ac1fc05ad09f8a550f12
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235943"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827754"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>使用 Visual Studio 中的连接服务连接到计算机视觉 API
 
@@ -24,8 +24,8 @@ ms.locfileid: "65235943"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- Visual Studio 2017 版本 15.7（装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- Visual Studio 2017 版本 15.7 或更高版本，并安装有 **Web 开发**工作负荷。 [立即下载](https://visualstudio.microsoft.com/downloads/)。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -33,12 +33,12 @@ ms.locfileid: "65235943"
 
 1. 创建新的 ASP.NET Core Web 项目。 使用空项目模板。 
 
-1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”。
+1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”    。
    此时会显示“连接服务”页，其中包含可添加到项目的服务。
 
    ![右键单击 Visual Studio 项目上的菜单：“添加”>“连接服务”](../media/vs-common/Connected-Service-Menu.PNG)
 
-1. 在可用服务菜单中，选择“认知服务计算机视觉 API”。
+1. 在可用服务菜单中，选择“认知服务计算机视觉 API”  。
 
    ![“连接的服务”菜单：列出“分析图像...”](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
@@ -90,11 +90,11 @@ ms.locfileid: "65235943"
       }
    ```
 
-1. 在项目的 wwwroot 文件夹中，添加图像文件夹，并向 wwwroot 文件夹添加图像文件。 例如，可使用此[计算机视觉 API 页](https://azure.microsoft.com/services/cognitive-services/computer-vision/)中的一张图像。 右键单击其中一张图像，将其保存到本地硬盘驱动器，然后在解决方案资源管理器中右键单击图像文件夹，选择“添加” > “现有项”，将其添加到项目中。 项目在解决方案资源管理器中应如下所示： 
+1. 在项目的 wwwroot 文件夹中，添加图像文件夹，并向 wwwroot 文件夹添加图像文件。 例如，可使用此[计算机视觉 API 页](https://azure.microsoft.com/services/cognitive-services/computer-vision/)中的一张图像。 右键单击其中一张图像，将其保存到本地硬盘驱动器，然后在解决方案资源管理器中右键单击图像文件夹，选择“添加” > “现有项”，将其添加到项目中   。 项目在解决方案资源管理器中应如下所示： 
   
    ![选择了一个图像文件的解决方案资源管理器视图的屏幕截图](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
-1. 右键单击图像文件，选择“属性”，然后选择“如果较新则复制”。 
+1. 右键单击图像文件，选择“属性”，然后选择“如果较新则复制”  。 
 
    ![图像属性窗口；“复制到输出目录”设置为“如果较新则复制”](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
@@ -255,8 +255,8 @@ ms.locfileid: "65235943"
 不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
-2. 选择“删除资源组”。
-3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”。
+2. 选择“删除资源组”  。
+3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”   。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,18 +10,18 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/26/2019
-ms.openlocfilehash: 58b4acb3ebfc1ff22c04dafb3063f197d2866311
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 74146242ef4084e5990027117689bb1371c3f272
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005848"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832208"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>快速入门：控制连接到 IoT 中心的设备 (Python)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入云，并从云管理设备。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
+IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入云，并从云管理设备。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备  。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
 
 本快速入门使用两个预先编写的 Python 应用程序：
 
@@ -37,7 +37,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
 本快速入门中运行的两个示例应用程序是使用 Python 编写的。 目前，用于 Python 的 Microsoft Azure IoT SDK 仅支持每个平台的特定 Python 版本。 若要了解详细信息，请参阅 [Python SDK 自述文件](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)。
 
-本快速入门假定你使用的是 Windows 开发计算机。 对于 Windows 系统，仅支持 [Python 3.6.x](https://www.python.org/downloads/release/python-368/)。 所选的 Python 安装程序应基于所使用的系统体系结构。 如果系统 CPU 体系结构是 32 位，则下载 x86 安装程序；对于 64 位体系结构，则下载 x86-64 安装程序。 此外，请确保为你的体系结构（x86 或 x64）安装了 [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)。
+本快速入门假定你使用的是 Windows 开发计算机。 对于 Windows 系统，仅支持 [Python 3.6.x](https://www.python.org/downloads/release/python-368/)。 所选的 Python 安装程序应基于所使用的系统体系结构。 如果系统 CPU 体系结构是 32 位，则下载 x86 安装程序；对于 64 位体系结构，则下载 x86-64 安装程序。 此外，请确保为你的体系结构（x86 或 x64）安装了 [Microsoft Visual C++ Redistributable for Visual Studio 2015、2017 和 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)。
 
 可以从 [Python.org](https://www.python.org/downloads/) 为其他平台下载 Python。
 
@@ -95,7 +95,7 @@ az extension add --name azure-cli-iot-ext
 
     稍后会在快速入门中用到此值。
 
-3. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
+3. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索消息  。 以下命令检索 IoT 中心的服务连接字符串：
 
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -117,9 +117,9 @@ az extension add --name azure-cli-iot-ext
 
 1. 在本地终端窗口中，导航到示例 Python 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device-2** 文件夹。
 
-1. 在所选文本编辑器中打开 SimulatedDevice.py 文件。
+1. 在所选文本编辑器中打开 SimulatedDevice.py 文件  。
 
-    将 `CONNECTION_STRING` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.py 文件。
+    将 `CONNECTION_STRING` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.py 文件  。
 
 1. 在本地终端窗口中，运行以下命令，为模拟设备应用程序安装所需的库：
 
@@ -141,11 +141,11 @@ az extension add --name azure-cli-iot-ext
 
 后端应用程序会连接到 IoT 中心上的服务端终结点。 应用程序通过 IoT 中心对设备进行直接方法调用，并侦听确认。 IoT 中心后端应用程序通常在云中运行。
 
-1. 在其他本地终端窗口中，导航到示例 Python 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹。
+1. 在其他本地终端窗口中，导航到示例 Python 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹  。
 
-1. 在所选文本编辑器中打开 BackEndApplication.py 文件。
+1. 在所选文本编辑器中打开 BackEndApplication.py 文件  。
 
-    将 `CONNECTION_STRING` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 BackEndApplication.py 文件。
+    将 `CONNECTION_STRING` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 BackEndApplication.py 文件  。
 
 1. 在本地终端窗口中，运行以下命令，为模拟设备应用程序安装所需的库：
 

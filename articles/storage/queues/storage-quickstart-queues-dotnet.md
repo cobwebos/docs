@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: b80ff38e2afb5e9da6227537ea9c483566d03e4d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 41cb37eb9d96752d4732731d2a36d9bc892cbaa5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232600"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159817"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>快速入门：使用 .NET 在 Azure 存储中创建队列
 
@@ -53,7 +53,7 @@ ms.locfileid: "65232600"
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 *storage-queues-dotnet-quickstart* 文件夹并将其打开，然后双击“storage-queues-dotnet-quickstart.sln”。 
+此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 *storage-queues-dotnet-quickstart* 文件夹并将其打开，然后双击“storage-queues-dotnet-quickstart.sln”。  
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -257,7 +257,9 @@ if (queue != null)
 
 ### <a name="binaries-and-source-code"></a>二进制文件和源代码
 
-- 下载 Azure 存储的最新版 [.NET 客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)的 NuGet 包。 
+- 下载最新版本的[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)的 NuGet 包
+    - [通用](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+    - [队列](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - 查看 GitHub 上的 [.NET 客户端库源代码](https://github.com/Azure/azure-storage-net)。
 
 ### <a name="client-library-reference-and-samples"></a>客户端库参考和示例

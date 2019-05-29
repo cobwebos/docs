@@ -4,7 +4,7 @@ description: 了解适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 与�
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2576121bfc945b90ce8ec0260ea30ec110e14dd8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f9be13ac22e6eda32668d635032ebcccf417b6c7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138830"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785204"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
@@ -47,7 +47,7 @@ ADAL.NET 是从 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nu
 
 ### <a name="scopes-not-resources"></a>范围不是资源
 
-ADAL.NET 获取资源的令牌，但 MSAL.NET 获取范围的令牌。 许多 MSAL.NET AcquireToken 重写都需要名为 scopes(`IEnumerable<string> scopes`) 的参数。 此参数是一个简单的字符串列表，这些字符串声明所需的权限和请求的资源。 已知的范围是 [Microsoft Graph 范围](/graph/permissions-reference)。
+ADAL.NET 获取资源的令牌，但 MSAL.NET 获取范围的令牌。   许多 MSAL.NET AcquireToken 重写都需要名为 scopes(`IEnumerable<string> scopes`) 的参数。 此参数是一个简单的字符串列表，这些字符串声明所需的权限和请求的资源。 已知的范围是 [Microsoft Graph 范围](/graph/permissions-reference)。
 
 在 MSAL.NET 中也可以访问 v1.0 资源。 请参阅 [v1.0 应用程序的范围](#scopes-for-a-web-api-accepting-v10-tokens)中的详细信息。 
 
@@ -192,7 +192,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 下面是 Azure AD 使用的逻辑：
 - 对于使用 v1.0 访问令牌（只能使用此类令牌）的 ADAL (v1.0) 终结点，aud=resource
 - 对于要求资源访问令牌接受 v2.0 令牌的 MSAL（v2.0 终结点），aud=resource.AppId
-- 对于要求资源访问令牌接受 v1.0 令牌的 MSAL（v2.0 终结点）（与上面的情况相同），Azure AD 将提取最后一个斜杠前面的所有内容并将其用作资源标识符，以分析请求的范围中的所需受众。 因此，如果 https://database.windows.net 需要“https://database.windows.net/”的受众，则需要请求 https://database.windows.net//.default 的范围。 另请参阅问题 #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败 #747
+- 对于要求资源访问令牌接受 v1.0 令牌的 MSAL（v2.0 终结点）（与上面的情况相同），Azure AD 将提取最后一个斜杠前面的所有内容并将其用作资源标识符，以分析请求的范围中的所需受众。 因此，如果 https:\//database.windows.net 预期的受众为“https://database.windows.net/”，则你需要请求 https:\//database.windows.net//.default 范围。 另请参阅问题 #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败 #747
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的所有权限

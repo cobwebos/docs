@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: e9378f8d2b31bfed4c464951c427b1e9d00b7893
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b073a270fabb8657be19b79601fa90f1b9a0351b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699370"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "66015236"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
 
@@ -46,39 +46,39 @@ ms.locfileid: "64699370"
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-若要将真实设备添加到应用程序，请使用[定义新设备类型](tutorial-define-device-type.md)教程中创建的“连接的空调”设备模板。
+若要将真实设备添加到应用程序，请使用[定义新设备类型](tutorial-define-device-type.md)教程中创建的“连接的空调”设备模板。 
 
-1. 若要以操作员身份添加新设备，请在左侧导航菜单中选择“Device Explorer”：
+1. 若要以操作员身份添加新设备，请在左侧导航菜单中选择“Device Explorer”： 
 
    ![显示“连接的空调”的 Device Explorer 页](media/tutorial-add-device/explorer.png)
 
-   **Device Explorer** 显示“连接的空调”设备模板和模拟设备。 当你创建设备模板时，IoT Central 会自动创建模拟设备。
+   **Device Explorer** 显示“连接的空调”设备模板和模拟设备。  当你创建设备模板时，IoT Central 会自动创建模拟设备。
 
-2. 若要开始连接真实的连接空调设备，请依次选择“+”、“真实”：
+2. 若要开始连接真实的连接空调设备，请依次选择“+”、“真实”：  
 
    ![开始添加新的真实连接空调设备](media/tutorial-add-device/newreal.png)
 
-3. 输入设备 ID（应小写）或使用建议的设备 ID。 也可输入新设备的名称，然后选择“创建”。
+3. 输入设备 ID（应小写）或使用建议的设备 ID。 也可输入新设备的名称，然后选择“创建”。 
 
    ![重命名设备](media/tutorial-add-device/rename.png)
 
 ## <a name="configure-a-real-device"></a>配置真实设备
 
-真实设备是基于“连接的空调”设备模板创建的。 可以使用“设置”来配置设备，并设置属性值来记录有关设备的信息。
+真实设备是基于“连接的空调”设备模板创建的。  可以使用“设置”来配置设备，并设置属性值来记录有关设备的信息。 
 
-1. 在“设置”页上，请注意“设置温度”状态设置为“未更新”。 在真实设备连接到应用程序并确认它已处理该设置之前，设备一直会保持此状态。
+1. 在“设置”页上，请注意“设置温度”状态设置为“未更新”。    在真实设备连接到应用程序并确认它已处理该设置之前，设备一直会保持此状态。
 
     ![设置显示正在同步](media/tutorial-add-device/settingssyncing.png)
 
-2. 在真实的新设备的“属性”页上，服务位置和上次维修日期都是可编辑属性。 在设备连接到应用程序之前，序列号和固件版本字段为空。 这些只读值是从设备发送的，不能进行编辑。
+2. 在真实的新设备的“属性”页上，  服务位置和上次维修日期都是可编辑属性。 在设备连接到应用程序之前，序列号和固件版本字段为空。 这些只读值是从设备发送的，不能进行编辑。
 
     ![真实设备的设备属性](media/tutorial-add-device/setproperties1.png)
 
-3. 可以查看真实设备的“度量”、“规则”和“仪表板”页。
+3. 可以查看真实设备的“度量”、“规则”和“仪表板”页。   
 
 ## <a name="generate-connection-string"></a>生成连接字符串
 
-设备开发人员需在设备上运行的代码中嵌入真实设备的连接字符串。 该连接字符串可让设备安全连接到应用程序。 以下步骤演示如何生成连接字符串并准备客户端 Node.js 代码。
+设备开发人员需在设备上运行的代码中嵌入真实设备的连接字符串。  该连接字符串可让设备安全连接到应用程序。 以下步骤演示如何生成连接字符串并准备客户端 Node.js 代码。
 
 ## <a name="prepare-the-client-code"></a>准备客户端代码
 
@@ -87,7 +87,7 @@ ms.locfileid: "64699370"
 * 以设备的形式连接到 Azure IoT Central 应用程序。
 * 以连接的空调设备形式发送温度遥测数据。
 * 将设备属性发送到 Azure IoT Central 应用程序。
-* 对使用“设置温度”设置的操作员做出响应。
+* 对使用“设置温度”设置的操作员做出响应。 
 * 处理从 Azure IoT Central 应用程序发出的回显命令。
 
 [后续步骤](#next-steps)部分列出的文章包含更多完整示例，并介绍了其他编程语言。 有关设备如何连接到 Azure IoT Central 的详细信息，请参阅[设备连接](concepts-connectivity.md)一文。
@@ -98,7 +98,7 @@ ms.locfileid: "64699370"
 
 1. 应用程序中设备实例的连接字符串是根据 IoT Central 提供的设备信息生成的。
 
-   在真实的已连接空调的设备屏幕上，选择“连接”。
+   在真实的已连接空调的设备屏幕上，选择“连接”。 
 
    ![显示“查看连接信息”链接的“设备”页](media/tutorial-add-device/connectionlink.png)
 
@@ -318,22 +318,22 @@ ms.locfileid: "64699370"
 
    ![客户端应用程序输出](media/tutorial-add-device/output.png)
 
-1. 大约 30 秒后，设备的“度量”页上会显示遥测数据：
+1. 大约 30 秒后，设备的“度量”页上会显示遥测数据： 
 
    ![真实遥测数据](media/tutorial-add-device/realtelemetry.png)
 
-1. 在“设置”页上，可以看到设置现已同步。 首次连接设备后，该设备会收到设置值，并确认更改：
+1. 在“设置”页上，可以看到设置现已同步。  首次连接设备后，该设备会收到设置值，并确认更改：
 
    ![设置已同步](media/tutorial-add-device/settingsynced.png)
 
-1. 在“设置”页上，将设备温度设置为 **95**，并选择“更新设备”。 示例应用程序会接收并处理此更改：
+1. 在“设置”页上，将设备温度设置为 **95**，并选择“更新设备”。   示例应用程序会接收并处理此更改：
 
    ![接收和处理设置](media/tutorial-add-device/receivesetting.png)
 
    > [!NOTE]
    > 有两条“设置更新”消息。 其中一条消息是处于 `pending` 状态时发送的，另一条是处于 `completed` 状态时发送的。
 
-1. 在“度量”页上可以看到，设备正在发送较高的温度值：
+1. 在“度量”页上可以看到，设备正在发送较高的温度值： 
 
     ![温度遥测数据现在较高](media/tutorial-add-device/highertemperature.png)
 
@@ -348,7 +348,7 @@ ms.locfileid: "64699370"
 > * 了解客户端代码如何映射到应用程序
 > * 配置真实设备的客户端代码
 
-将真实设备连接到 Azure IoT Central 应用程序后，建议接下来执行以下后续步骤：
+现在，你已将真实设备连接到 Azure IoT Central 应用程序，下面是一些建议的后续步骤。
 
 以操作员身份了解如何：
 

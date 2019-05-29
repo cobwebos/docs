@@ -11,24 +11,24 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 8a6a46708b78b3f92087ace02173f9f081fa85b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3460424a8d80baef92eb8b29a3be4de5686027c6
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170507"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827577"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>快速入门：在 QnA Maker 中通过 C# 发布知识库
 
 此基于 REST 的快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
 
 本快速入门调用了 QnA Maker API：
-* [发布](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) - 此 API 不需要请求正文中的任何信息。
+* [发布](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) - 此 API 不需要请求正文中的任何信息。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 最新的 [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/)。
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
+* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。   
 * 在 kbid 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID，如下所示。
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
@@ -36,12 +36,12 @@ ms.locfileid: "58170507"
     如果还没有知识库，可以创建一个用于本快速入门的示例知识库：[创建新的知识库](create-new-kb-csharp.md)。
 
 > [!NOTE] 
-> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-csharp GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获得。
+> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-csharp GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获得  。
 
 ## <a name="create-knowledge-base-project"></a>创建知识库项目
 
-1. 打开 Visual Studio 2017 Community Edition。
-1. 创建一个新的“控制台应用(.NET Core)”项目并将其命名为 `QnaMakerQuickstart`。 接受其余设置的默认值。
+1. 打开 Visual Studio 2019 Community Edition。
+1. 创建一个新的“控制台应用(.NET Core)”项目并将其命名为 `QnaMakerQuickstart`  。 接受其余设置的默认值。
 
 ## <a name="add-required-dependencies"></a>添加必需的依赖项
 
@@ -76,4 +76,4 @@ ms.locfileid: "58170507"
 在发布知识库后，需要[生成答案所需的终结点 URL](../Tutorials/create-publish-answer.md#generating-an-answer)。 
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)

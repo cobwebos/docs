@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: fba0d3ac5a20bd4f10b815450f6ce08e50f88ea0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: b3847f798fde8702d6d95450c68fbfbca4c97f9d
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681295"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604469"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建事件中心
 
@@ -31,7 +31,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 若要完成本教程，请确保做好以下准备：
 
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户][]。
-- [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。
+- [Visual Studio 2019](https://www.visualstudio.com/vs)。
 - [.NET Standard SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

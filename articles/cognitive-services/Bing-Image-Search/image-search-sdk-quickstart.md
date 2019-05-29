@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9aa009ed99b2067b5a3cbde910a7265f42ea478f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 395172fc77ff0c2e07658386ba827022af1ad26c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337442"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595481"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>快速入门：通过适用于 C# 的必应图像搜索 SDK 搜索图像
 
@@ -25,10 +25,10 @@ ms.locfileid: "57337442"
 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) 上提供了此示例的源代码以及附加的错误处理和注释。
 
 ## <a name="prerequisites"></a>先决条件
-* 任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/vs/whatsnew/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/vs/whatsnew/)。
 * [认知图像搜索 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0)。
 
-要在 Visual Studio 中安装必应图像搜索 SDK，请在 Visual Studio 中使用解决方案资源管理器的 `Manage NuGet Packages` 选项。
+要在 Visual Studio 中安装必应图像搜索 SDK，请使用解决方案资源管理器中的“管理 NuGet 包”选项。  
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

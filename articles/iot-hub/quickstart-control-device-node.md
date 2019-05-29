@@ -10,18 +10,18 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/27/2019
-ms.openlocfilehash: 1fca4f6e3aacfee52f348f338806b98d6e61994b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 15b96d44b1ff78a83a4364579b7984d20e3f4d85
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006422"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597709"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>快速入门：控制连接到 IoT 中心的设备 (Node.js)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入云，并从云管理设备。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
+IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入云，并从云管理设备。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备  。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
 
 本快速入门使用两个预先编写的 Node.js 应用程序：
 
@@ -35,7 +35,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v4.x.x 或更高版本。
+本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
 可从 [nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
 
@@ -69,7 +69,7 @@ az extension add --name azure-cli-iot-ext
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyNodeDevice**：所注册的设备的名称。 请按显示的方法使用 MyNodeDevice。 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyNodeDevice**：所注册的设备的名称。 请按显示的方法使用 MyNodeDevice  。 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -93,7 +93,7 @@ az extension add --name azure-cli-iot-ext
 
     稍后会在快速入门中用到此值。
 
-3. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
+3. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索消息  。 以下命令检索 IoT 中心的服务连接字符串：
 
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -114,9 +114,9 @@ az extension add --name azure-cli-iot-ext
 
 1. 在本地终端窗口中，导航到示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device-2** 文件夹。
 
-2. 在所选文本编辑器中打开 SimulatedDevice.js 文件。
+2. 在所选文本编辑器中打开 SimulatedDevice.js 文件  。
 
-    将 `connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.js 文件。
+    将 `connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.js 文件  。
 
 3. 在本地终端窗口中，运行以下命令以安装所需的库，并运行模拟设备应用程序：
 
@@ -133,11 +133,11 @@ az extension add --name azure-cli-iot-ext
 
 后端应用程序会连接到 IoT 中心上的服务端终结点。 应用程序通过 IoT 中心对设备进行直接方法调用，并侦听确认。 IoT 中心后端应用程序通常在云中运行。
 
-1. 在另一个本地终端窗口中，导航到示例 Node.js 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹。
+1. 在另一个本地终端窗口中，导航到示例 Node.js 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹  。
 
-2. 在所选文本编辑器中打开 BackEndApplication.js 文件。
+2. 在所选文本编辑器中打开 BackEndApplication.js 文件  。
 
-    将 `connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 BackEndApplication.js 文件。
+    将 `connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 BackEndApplication.js 文件  。
 
 3. 在本地终端窗口中运行以下命令，以安装所需的库并运行后端应用程序：
 

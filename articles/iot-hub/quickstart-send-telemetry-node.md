@@ -10,12 +10,12 @@ ms.devlang: node
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
-ms.openlocfilehash: a4f0761af7da1add6a295b7627783daae6fac07c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b99ed85495e00282c6a27f42b5817e46f4736720
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59007102"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597501"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Node.js)
 
@@ -31,7 +31,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v4.x.x 或更高版本。
+本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
 可从 [nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
 
@@ -61,7 +61,7 @@ az extension add --name azure-cli-iot-ext
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyNodeDevice**：所注册的设备的名称。 请按显示的方法使用 MyNodeDevice。 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyNodeDevice**：所注册的设备的名称。 请按显示的方法使用 MyNodeDevice  。 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
@@ -81,7 +81,7 @@ az extension add --name azure-cli-iot-ext
 
     稍后会在快速入门中用到此值。
 
-1. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
+1. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索消息  。 以下命令检索 IoT 中心的服务连接字符串：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -101,9 +101,9 @@ az extension add --name azure-cli-iot-ext
 
 1. 打开本地终端窗口，导航到示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device** 文件夹。
 
-1. 在所选文本编辑器中打开 SimulatedDevice.js 文件。
+1. 在所选文本编辑器中打开 SimulatedDevice.js 文件  。
 
-    将 `connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.js 文件。
+    将 `connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.js 文件  。
 
 1. 在本地终端窗口中，运行以下命令以安装所需的库，并运行模拟设备应用程序：
 
@@ -118,13 +118,13 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-后端应用程序会连接到 IoT 中心上的服务端“事件”终结点。 应用程序会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
+后端应用程序会连接到 IoT 中心上的服务端“事件”终结点  。 应用程序会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
 
-1. 打开另一个本地终端窗口，导航到示例 Node.js 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\read-d2c-messages 文件夹。
+1. 打开另一个本地终端窗口，导航到示例 Node.js 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\read-d2c-messages 文件夹  。
 
-1. 在所选文本编辑器中打开 ReadDeviceToCloudMessages.js 文件。
+1. 在所选文本编辑器中打开 ReadDeviceToCloudMessages.js 文件  。
 
-    将 `connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 ReadDeviceToCloudMessages.js 文件。
+    将 `connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 ReadDeviceToCloudMessages.js 文件  。
 
 1. 在本地终端窗口中运行以下命令，以安装所需的库并运行后端应用程序：
 

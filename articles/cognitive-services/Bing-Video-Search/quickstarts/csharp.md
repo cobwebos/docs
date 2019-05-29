@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 29d0dc032bd14161674c58d6e502ad77c3bf75e5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea265ab876dffbb4140d8bbc48123eceaadfe34d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108774"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798445"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>快速入门：使用必应视频搜索 REST API 和 C# 来搜索视频
 
@@ -24,7 +24,7 @@ ms.locfileid: "58108774"
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) 上提供了此示例的源代码以及更多的错误处理、功能和代码注释。
 
 ## <a name="prerequisites"></a>先决条件
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 * [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 

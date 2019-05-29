@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 076e3b41a50681e453c1a07575ac6cb7071d97d2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500628"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992029"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入门：使用 Azure CLI 创建服务总线队列
 本快速入门介绍了如何使用 Azure CLI 和服务总线 Java 库通过服务总线来发送和接收消息。 最后，如果对更多的技术细节感兴趣，可以[阅读说明](#understand-the-sample-code)，了解示例代码的重要元素。
@@ -27,7 +27,7 @@ ms.locfileid: "59500628"
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-如果使用“试用”按钮来启动 Cloud Shell，请使用凭据登录到 Azure。 
+如果使用“试用”按钮来启动 Cloud Shell，请使用凭据登录到 Azure。  
 
 如果在 Web 浏览器中启动 Cloud Shell，不管是直接这样做还是在 Azure 门户中这样做，则请在 Cloud Shell 左上角看到 **PowerShell** 时切换到 **Bash**。 
 
@@ -367,9 +367,12 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 }
 ```
 
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读教程的“发送和接收消息”部分。 
+本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读教程的“发送和接收消息”部分  。 
 
 > [!div class="nextstepaction"]
 > [发送和接收消息](service-bus-dotnet-get-started-with-queues.md)

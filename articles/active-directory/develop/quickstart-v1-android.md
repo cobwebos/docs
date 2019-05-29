@@ -3,9 +3,8 @@ title: 从 Android 应用登录用户并调用 Microsoft Graph API | Microsoft D
 description: 了解如何从 Android 应用登录用户并调用 Microsoft Graph API。
 services: active-directory
 documentationcenter: android
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
 ms.subservice: develop
@@ -13,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: celested
-ms.reviewer: dadobali
+ms.date: 05/21/2019
+ms.author: ryanwi
+ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9537748f8dd3ee027236c73e9587ff6b78ded7f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a05d8b9182451fc52dd1860dac1dcce57ba2c55
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207579"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121994"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -86,18 +85,17 @@ mAuthResult.getAccessToken()
     - 选择“Azure Active Directory” > “应用注册”。
 
 2. 创建应用程序
-    - 选择“新建应用程序注册”。
-    - 在“名称”字段中输入应用名称。
-    - 在“应用程序类型”中选择“本机”。
-    - 在“重定向 URI”中输入 `http://localhost`。
+    - 选择“新注册”。 
+    - 在“名称”字段中输入应用名称  。
+    - 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
+    - 另外，请从下拉列表中选择“公共客户端(移动和桌面)”并输入 `http://localhost`。  
+    - 单击“注册”  。
 
 3. 配置 Microsoft Graph
-    - 选择“设置”>“所需权限”。
-    - 选择“添加”，在“选择 API”中选择“Microsoft Graph”。
-    - 选择“登录并读取用户配置文件”权限，然后按“选择”进行保存。
-        - 此权限映射到 `User.Read` 作用域。
-    - 可选：在“所需权限 > Windows Azure Active Directory”内，删除选定权限“登录并读取用户配置文件”。 这将避免用户同意页面两次列出该权限。
-
+    - 选择“API 权限”  。
+    - 选择“添加权限”，在“选择 API”中选择“Microsoft Graph”   。
+    - 在“委托的权限”  下，选择 **User.Read** 权限，然后点击“添加”  以保存。        
+    
 4. 恭喜！ 应用已配置成功。 在下一部分中，你需要：
     - `Application ID`
     - `Redirect URI`
@@ -109,7 +107,7 @@ mAuthResult.getAccessToken()
     git clone https://github.com/Azure-Samples/active-directory-android
     ```
 2. 在 Android Studio 中打开示例。
-    - 选择“打开现有 Android Studio 项目”。
+    - 选择“打开现有 Android Studio 项目”  。
 
 ## <a name="step-3-configure-your-code"></a>步骤 3：配置代码
 
@@ -120,8 +118,8 @@ mAuthResult.getAccessToken()
 
 ## <a name="step-4-run-the-sample"></a>步骤 4：运行示例
 
-1. 选择“生成”>“清理项目”。
-2. 选择“运行”>“运行应用”。
+1. 选择“生成”>“清理项目”  。
+2. 选择“运行”>“运行应用”  。
 3. 该应用应生成并显示一些基本的 UX。 单击 `Call Graph API` 按钮时，它将提示登录，然后自动使用新令牌调用 Microsoft Graph API。
 
 ## <a name="next-steps"></a>后续步骤

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143061"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864515"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>在 Azure 中创建 HTTP 触发的函数
 
@@ -64,13 +64,13 @@ py -3.6 -m venv .env
 
 Functions 项目等效于 Azure 中的函数应用。 它可能具有多个函数，这些函数具有相同的本地和托管配置。
 
-在虚拟环境中，运行以下命令，选择“python”作为工作器运行时。
+在虚拟环境中，运行以下命令，选择“python”作为工作器运行时  。
 
 ```command
 func init MyFunctionProj
 ```
 
-创建了名为 MyFunctionProj 的文件夹，该文件夹中包含以下三个文件：
+创建了名为 MyFunctionProj 的文件夹，该文件夹中包含以下三个文件  ：
 
 * `local.settings.json` 用于在本地运行时存储应用设置和连接字符串。 此文件不会被发布到 Azure。
 * `requirements.txt` 包含要在发布到 Azure 时安装的包列表。
@@ -100,15 +100,15 @@ cd MyFunctionProj
 func new
 ```
 
-选择“HTTP 触发器”模板，键入 `HttpTrigger` 作为函数名称，然后按 Enter。
+选择“HTTP 触发器”  模板，键入 `HttpTrigger` 作为函数名称，然后按 Enter。
 
-创建了名为 HttpTrigger 的子文件夹，其中包含以下文件：
+创建了名为 HttpTrigger 的子文件夹，其中包含以下文件  ：
 
-* function.json：定义函数、触发器和其他绑定的配置文件。 查看此文件，看到 `scriptFile` 的值指向包含函数的文件，而调用触发器和绑定在 `bindings` 数组中定义。
+* function.json：  定义函数、触发器和其他绑定的配置文件。 查看此文件，看到 `scriptFile` 的值指向包含函数的文件，而调用触发器和绑定在 `bindings` 数组中定义。
 
   每个绑定都需要一个方向、类型和唯一名称。 HTTP 触发器具有类型为 [`httpTrigger`](functions-bindings-http-webhook.md#trigger) 的输入绑定和类型为 [`http`](functions-bindings-http-webhook.md#output) 的输出绑定。
 
-* __init__.py：作为 HTTP 触发函数的脚本文件。 查看此脚本，看到它包含默认值 `main()`。 触发器中的 HTTP 数据使用 `req` 命名绑定参数传递到此函数。 根据 function.json 中的定义，`req` 是 [azure.functions.HttpRequest class](/python/api/azure-functions/azure.functions.httprequest) 的一个实例。 
+* **\_\_init\_\_.py**：作为 HTTP 触发函数的脚本文件。 查看此脚本，看到它包含默认值 `main()`。 触发器中的 HTTP 数据使用 `req` 命名绑定参数传递到此函数。 根据 function.json 中的定义，`req` 是 [azure.functions.HttpRequest class](/python/api/azure-functions/azure.functions.httprequest) 的一个实例。 
 
     在 function.json中定义为 `$return` 的返回对象是 [azure.functions.HttpResponse class](/python/api/azure-functions/azure.functions.httpresponse) 的一个实例。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](functions-bindings-http-webhook.md)。
 

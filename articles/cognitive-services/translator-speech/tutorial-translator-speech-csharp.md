@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68457367987305b6926f8f885a226cfcedd23873
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900822"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860319"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>教程：以 C# 编写的语音翻译应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "57900822"
 
 ## <a name="prerequisites"></a>先决条件
 
-对于本教程，需要任意版本的 Visual Studio 2017，包括社区版。
+对于本教程，需要任意版本的 Visual Studio 2019，包括社区版。
 
 Visual Studio 解决方案还会生成应用程序安装程序。 需要 [WiX 工具集](http://wixtoolset.org/)和 [WiX 工具集 Visual Studio 扩展](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension)才能支持此功能。
 
@@ -48,15 +48,15 @@ Visual Studio 解决方案还会生成应用程序安装程序。 需要 [WiX �
 
 ![[语音翻译工具主窗口]](media/speech-translator-main-window.png)
 
-第一次运行时，从“设置”菜单选择“帐户设置”，打开以下所示的窗口。
+第一次运行时，从“设置”菜单选择“帐户设置”，打开以下所示的窗口   。
 
 ![[语音翻译工具主窗口]](media/speech-translator-settings-window.png)
 
-将语音翻译订阅密钥粘贴到此窗口中，然后单击“保存”。 在多次运行间，密钥得以保存。
+将语音翻译订阅密钥粘贴到此窗口中，然后单击“保存”  。 在多次运行间，密钥得以保存。
 
-返回主窗口，选择要使用的音频输入和输出设备以及源语言和目标语言。 如果需要听翻译的音频，请确保选中“TTS”（文本转语音）选项。 如果需要在说话时看到部分推测性翻译，请启用“部分结果”选项。
+返回主窗口，选择要使用的音频输入和输出设备以及源语言和目标语言。 如果需要听翻译的音频，请确保选中“TTS”（文本转语音）选项  。 如果需要在说话时看到部分推测性翻译，请启用“部分结果”选项  。
 
-最后，单击“开始”开始翻译。 讲出希望翻译的内容并查看窗口中显示的已识别文本和翻译。 如果已启用 TTS 选项，还会听到翻译。
+最后，单击“开始”开始翻译  。 讲出希望翻译的内容并查看窗口中显示的已识别文本和翻译。 如果已启用 TTS 选项，还会听到翻译。
 
 ## <a name="obtaining-supported-languages"></a>获取支持的语言
 

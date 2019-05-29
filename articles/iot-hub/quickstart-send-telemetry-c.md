@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 1299b627c70b23714ea48dbc62af36ca1f27290e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 92575f2fc8e6dbcfc5767a179ddf60df1bce0c83
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499897"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872606"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (C)
 
@@ -33,7 +33,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 安装 [Visual Studio 2017](https://www.visualstudio.com/vs/) 并启用[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷。
+* 安装 [Visual Studio 2019](https://www.visualstudio.com/vs/) 并启用[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷。
 * [安装最新版本的 Git](https://git-scm.com/download/)。
 * 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
@@ -43,7 +43,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
-针对本快速入门，你将使用[适用于 C 的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)。 
+在本快速入门中，我们将使用[适用于 C 的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)。 
 
 通过安装适用于以下环境的包和库可以使用 SDK：
 
@@ -59,7 +59,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
-    在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负载）  。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
 2. 打开命令提示符或 Git Bash shell。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
     
@@ -108,7 +108,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="register-a-device"></a>注册设备
 
-必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本部分，将使用具有 [IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)的 Azure Cloud Shell 注册模拟设备。
+必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本部分中，我们将使用具有 [IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)的 Azure Cloud Shell 注册模拟设备。
 
 1. 在 Azure Cloud Shell 中运行以下命令，以创建设备标识。
 
@@ -120,7 +120,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyCDevice
     ```
 
-2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
+2. 在 Azure Cloud Shell 中运行以下命令，以获取已注册设备的_设备连接字符串_：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -150,9 +150,9 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
     /* Paste in your device connection string  */
     static const char* connectionString = "[device connection string]";
     ```
-    将 `connectionString` 常量的值替换为之前记下的设备连接字符串。 然后将更改保存到 iothub_convenience_sample.c。
+    将 `connectionString` 常量的值替换为之前记下的设备连接字符串。 然后将更改保存到 iothub_convenience_sample.c  。
 
-3. 在本地终端窗口中，导航到在 Azure IoT C SDK 中创建的 CMake 目录中的 iothub_convenience_sample 项目目录。
+3. 在本地终端窗口中，导航到在 Azure IoT C SDK 中创建的 CMake 目录中的 iothub_convenience_sample 项目目录  。
 
     ```
     cd /azure-iot-sdk-c/cmake/iothub_client/samples/iothub_convenience_sample
@@ -177,7 +177,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
 
-在本部分，将使用具有 [IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)的 Azure Cloud Shell 监视模拟设备发送的设备消息。
+在本部分中，你将使用具有 [IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)的 Azure Cloud Shell 监视模拟设备发送的设备消息。
 
 1. 通过 Azure Cloud Shell 运行以下命令以建立连接并从 IoT 中心读取消息：
 

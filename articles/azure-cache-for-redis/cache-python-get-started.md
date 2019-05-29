@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8682a335372a1516be49b35400a2605f08d6b45e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f8189b5a90f7e9114ec39a874cc60912ac2bb0ce
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779433"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873001"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>快速入门：将 Azure Redis 缓存与 Python 配合使用
 
@@ -46,7 +46,7 @@ ms.locfileid: "57779433"
 
 [Redis-py](https://github.com/andymccurdy/redis-py) 是 Azure Redis 缓存的 Python 接口。 使用 Python 包工具 *pip* 安装 redis-py 包。 
 
-以下示例通过以提升的管理员权限运行的 Visual Studio 2017 开发人员命令提示使用 Python3 的 *pip3* 在 Windows 10 上安装 redis-py 包。
+以下示例通过以提升的管理员权限运行的 Visual Studio 2019 开发人员命令提示使用 Python3 的 *pip3* 在 Windows 10 上安装 redis-py 包。
 
     pip3 install redis
 
@@ -111,13 +111,13 @@ for c in result:
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
 
-在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”。
+在“按名称筛选...”文本框中键入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
 
 ![删除](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
+系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”  。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 

@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 0e2d4b783068cfd14385eb1712ea246c94dc9500
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2cb3f1de803b8549a88866da1042f4f32609a601
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877263"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827150"
 ---
 # <a name="quickstart-url-preview-query-in-c"></a>快速入门：采用 C# 的 URL 预览查询
 
@@ -23,7 +23,7 @@ ms.locfileid: "55877263"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
+需要使用 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)才能在 Windows 上运行此代码。 （免费的社区版也可以。）
 
 获取[认知服务实验室](https://aka.ms/answersearchsubscription)免费试用版的访问密钥
 
@@ -34,7 +34,7 @@ ms.locfileid: "55877263"
 它是通过以下步骤实现的：
 1. 声明变量，用于指定终结点和要预览的查询 URL。  
 2. 创建请求。
-3. 添加 Ocp-Apim-Subscription-Key 标头。 
+3. 添加 Ocp-Apim-Subscription-Key 标头  。 
 4. 以异步方式运行 Web 请求。 
 5. 读取响应。
 6. 将标头和 JSON 结果输出到控制台。

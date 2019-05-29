@@ -1,6 +1,6 @@
 ---
-title: 将 Active Directory 连接到 Azure Active Directory | Microsoft Docs
-description: Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序提供一个通用标识。
+title: 什么是使用 Azure Active Directory 的混合标识？
+description: 混合标识是指在本地和云中具有用于身份验证和授权的通用用户标识。
 keywords: Azure AD Connect 介绍, Azure AD Connect 概述, 什么是 Azure AD Connect, 安装 active directory
 services: active-directory
 author: billmath
@@ -9,24 +9,26 @@ ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536edcf74bff6f89dade4a713c40c9bef12e18af
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9c43238d44b2309d105ef14e696a5a16848d0b58
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881798"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896831"
 ---
-# <a name="what-is-hybrid-identity"></a>什么是混合标识？
+# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>什么是使用 Azure Active Directory 的混合标识？
 
-如今，企业和公司越来越成为本地应用程序和云应用程序的混合体。  用户需要同时访问位于本地和云中的这些应用程序。 此要求已成为具有挑战性的方案。 
+如今，企业和公司越来越成为本地应用程序和云应用程序的混合体。  用户需要同时访问位于本地和云中的这些应用程序。 同时在本地和云中管理用户面临一些很有挑战性的方案。 
 
 Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  这些解决方案创建一个通用用户标识，用于针对所有资源进行身份验证和授权，无论资源位于什么位置。 我们称此为**混合标识**。
 
-若要实现混合标识，可以根据你的具体方案使用三种身份验证方法之一。   这三种方法是： 
+借助 Azure AD 混合标识和混合标识管理，这些方案将成为可能。
+
+若要通过 Azure AD 实现混合标识，可以根据你的具体方案使用三种身份验证方法之一。   这三种方法是： 
 
 - **[密码哈希同步 (PHS)](whatis-phs.md)**  
 - **[直通身份验证 (PTA)](how-to-connect-pta.md)**  
@@ -60,6 +62,10 @@ Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  �
 >  
 > <sup>4</sup> AD FS 可与企业 PKI 集成，允许使用证书登录。 这些证书可以是通过受信任预配通道（如 MDM、GPO 或智能卡证书（包括 PIV/CAC 卡）或 Hello 企业版（信任证书））部署的软证书。 有关智能卡身份验证支持的详细信息，请参阅[此博客](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/)。 
 > 
+
+## <a name="license-requirements-for-using-azure-ad-connect"></a>使用 Azure AD Connect 的许可证要求
+
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
 ## <a name="next-steps"></a>后续步骤 
 

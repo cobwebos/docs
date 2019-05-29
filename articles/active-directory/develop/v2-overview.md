@@ -3,8 +3,8 @@ title: Microsoft 标识平台 (v2.0) 概述 - Azure
 description: 了解有关 Microsoft 标识平台 (v2.0) 终结点和平台。
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,20 +13,20 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d97b45217da4bbf4b8c0e857b817911484f29c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3d139efaa8e6de4861dc8e885bd22a426fde6c94
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231095"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833054"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft 标识平台 (v2.0) 概述
 
-Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开发人员平台的一种演变。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。 Microsoft 标识平台包括：
+Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。 Microsoft 标识平台包括：
 
 - **符合 OAuth 2.0 和 OpenID Connect 标准的身份验证服务**，使开发人员能够对任何 Microsoft 标识进行身份验证并，包括：
   - 工作或学校帐户（通过 Azure AD 预配的）
@@ -79,4 +79,4 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 ## <a name="learn-more"></a>了解详细信息
 
-如果你打算构建以社交和本地标识进行登录的面向客户的应用程序，请查看 [Azure AD B2C 概述](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)。
+如果你打算构建以社交和本地标识进行登录的面向客户的应用程序，请参阅 [Azure AD B2C 概述](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)。

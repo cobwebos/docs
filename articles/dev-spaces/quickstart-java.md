@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: 在 Azure 中使用容器、微服务和 Java 快速进行 Kubernetes 开发
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Java, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: c1c039ba8696baff11abed3930998983647f4356
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 26efa17ee699aed87ecfbbd21e7880e7538de4ea
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425740"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979132"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 上进行 Java 开发
 
@@ -41,12 +41,12 @@ ms.locfileid: "59425740"
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-count 1 --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 群集上启用 Azure Dev Spaces
 
-使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。
+使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。 
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -113,7 +113,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-打开 `azds up` 命令输出中显示的公共 URL，可以看到服务正在运行。 在此示例中，公共 URL 为 *http://webfrontend.1234567890abcdef1234.eus.azds.io/*。
+打开 `azds up` 命令输出中显示的公共 URL，可以看到服务正在运行。 在此示例中，公共 URL 为 *http://webfrontend.1234567890abcdef1234.eus.azds.io/* 。
 
 如果使用 *Ctrl+C* 停止 `azds up` 命令，服务将继续在 AKS 中运行，并且公共 URL 仍然可用。
 
@@ -122,7 +122,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行 `azds up` 命令。 例如：
 
 1. 如果 `azds up` 仍在运行，请按 *Ctrl+C*。
-1. 将 [`src/main/java/com/ms/sample/webfrontend/Application.java`中的第 16 行](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L16)更新为：
+1. 将 [`src/main/java/com/ms/sample/webfrontend/Application.java`中的第 19 行](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)更新为：
     
     ```java
     return "Hello from webfrontend in Azure!";
@@ -145,11 +145,11 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 
 ## <a name="enable-visual-studio-code-to-debug-in-kubernetes"></a>启用 Visual Studio Code 以在 Kubernetes 中进行调试
 
-打开 Visual Studio Code，依次单击“文件”、“打开...”，导航到 *dev-spaces/samples/java/getting-started/webfrontend* 目录，然后单击“打开”。
+打开 Visual Studio Code，依次单击“文件”、“打开...”，导航到 *dev-spaces/samples/java/getting-started/webfrontend* 目录，然后单击“打开”。   
 
 现在，Visual Studio Code 中会打开 *webfrontend* 项目，这是使用 `azds up` 命令运行的同一个服务。 若要使用 Visual Studio Code 而不是直接使用 `azds up` 在 AKS 中调试此服务，需要准备好此项目，以使用 Visual Studio Code 来与开发空间通信。
 
-若要在 Visual Studio Code 中打开命令面板，请依次单击“视图”、“命令面板”。 开始键入 `Azure Dev Spaces` 并单击 `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。
+若要在 Visual Studio Code 中打开命令面板，请依次单击“视图”、“命令面板”。   开始键入 `Azure Dev Spaces` 并单击 `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。
 
 ![准备 Azure Dev Spaces 的配置文件](./media/common/command-palette.png)
 
@@ -163,37 +163,37 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>通过 Visual Studio 在 Kubernetes 中生成并运行代码
 
-单击左侧的“调试”图标，然后单击顶部的“启动 Java 程序(AZDS)”。
+单击左侧的“调试”图标，然后单击顶部的“启动 Java 程序(AZDS)”。  
 
 ![启动 Java 程序](media/get-started-java/debug-configuration.png)
 
-此命令会以调试模式在 Azure Dev Spaces 中生成并运行服务。 底部的“终端”窗口会显示运行 Azure Dev Spaces 的服务的生成输出和 URL。 “调试控制台”会显示日志输出。
+此命令会以调试模式在 Azure Dev Spaces 中生成并运行服务。 底部的“终端”窗口会显示运行 Azure Dev Spaces 的服务的生成输出和 URL。  “调试控制台”会显示日志输出。 
 
 > [!Note]
-> 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/java/getting-started/webfrontend* 目录。
+> 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。  另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/java/getting-started/webfrontend* 目录。
 
-依次单击“调试”、“停止调试”以停止调试器。
+依次单击“调试”、“停止调试”以停止调试器。  
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>设置并使用用于调试的断点
 
-在调试模式下使用“启动 Java 程序(AZDS)”启动服务。
+在调试模式下使用“启动 Java 程序(AZDS)”启动服务。 
 
-依次单击“视图”、“资源管理器”，导航回到“资源管理器”视图。 打开 `src/main/java/com/ms/sample/webfrontend/Application.java` 并单击第 16 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。
+依次单击“视图”、“资源管理器”，导航回到“资源管理器”视图。    打开 `src/main/java/com/ms/sample/webfrontend/Application.java` 并单击第 19 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。  
 
-在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，将会看到，第 16 行已突出显示。 设置的断点在第 16 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。 返回浏览器，你会发现，现在显示了消息。
+在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，将会看到，第 19 行已突出显示。 设置的断点在第 19 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。   返回浏览器，你会发现，现在显示了消息。
 
 在附加调试器的情况下在 Kubernetes 中运行服务时，你对调试信息（例如调用堆栈、局部变量和异常信息）拥有完全访问权限。
 
-将光标置于 `src/main/java/com/ms/sample/webfrontend/Application.java` 中的第 16 行并按 *F9* 以删除断点。
+将光标置于 `src/main/java/com/ms/sample/webfrontend/Application.java` 中的第 19 行并按 *F9* 以删除断点。
 
 ## <a name="update-code-from-visual-studio-code"></a>在 Visual Studio Code 中更新代码
 
-当服务以调试模式运行时，更新 `src/main/java/com/ms/sample/webfrontend/Application.java` 中的第 16 行。 例如：
+当服务以调试模式运行时，更新 `src/main/java/com/ms/sample/webfrontend/Application.java` 中的第 19 行。 例如：
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-保存文件。 依次单击“调试”、“重新开始调试”，或者在“调试”工具栏中单击“重新开始调试”按钮。
+保存文件。 依次单击“调试”、“重新开始调试”，或者在“调试”工具栏中单击“重新开始调试”按钮。    
 
 ![刷新调试](media/get-started-java/debug-action-refresh.png)
 

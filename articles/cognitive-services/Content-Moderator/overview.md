@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 440471acb6e122bf25ba21b0ab3b5a2f7d9b021d
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758127"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551320"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
-Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和视频中是否存在可能的冒犯性内容、危险内容或其他令人不适的内容。 找到此类内容时，此服务会将相应的标签（标记）应用到该内容。 然后，应用会处理标记的内容，使之符合法规的要求，或者为用户维持一个理想的环境。 请参阅[内容审查器 API](#content-moderator-apis) 部分，详细了解不同内容标记表示的意思。
+Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和视频中是否存在可能的冒犯性内容、危险内容或其他令人不适的内容。 找到此类内容时，此服务会将相应的标签（标记）应用到该内容。 然后，应用会处理标记的内容，使之符合法规的要求，或者为用户维持一个理想的环境。 请参阅[审查 API](#moderation-apis) 部分，详细了解不同内容标记表示的意思。
 
 ## <a name="where-it-is-used"></a>使用位置
 
@@ -35,11 +35,13 @@ Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和
 
 内容审查器服务包含多个可以通过 REST 调用和 .NET SDK 使用的 Web 服务 API。 它还包括人工审阅工具，让审核人员来协助服务改进或优化其审查功能。
 
-![内容审查器的方块图，显示审查 API、审核 API 和人工审阅工具](images/content-moderator-block-diagram.png)
+## <a name="moderation-apis"></a>审查 API
 
-### <a name="content-moderator-apis"></a>内容审查器 API
+内容审查器服务包括了审查 API，这些 API 检查内容中是否存在可能不适当或令人反感的材料。
 
-内容审查器服务包括适用于以下方案的 API。
+![内容审查器审查 API 的框图](images/content-moderator-mod-api.png)
+
+下表介绍了各种类型的审查 API。
 
 | API 组 | 说明 |
 | ------ | ----------- |
@@ -48,9 +50,17 @@ Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和
 |[**图像审查**](image-moderation-api.md)| 扫描图像中是否存在成人内容或不雅内容，通过光学字符识别 (OCR) 功能检测图像中的文本，以及检测人脸。|
 |[**自定义图像列表**](try-image-list-api.md)| 针对自定义图像列表对图像进行扫描。 使用自定义图像列表筛选掉常常反复出现的内容的实例，这些实例不需再次分类。|
 |[**视频审查**](video-moderation-api.md)| 扫描视频中是否存在成人内容或挑逗性内容，并针对上述内容返回时间标记。|
-|[**审阅 API**](try-review-api-job.md)| 使用[作业](try-review-api-job.md)、[审阅](try-review-api-review.md)和[工作流](try-review-api-workflow.md)操作在人工审阅工具中创建和自动执行人工干预工作流。 尚无法在 .NET SDK 中使用工作流 API。|
 
-### <a name="review-tool"></a>审阅工具
+## <a name="review-apis"></a>审阅 API
+
+审阅 API 允许你将审查管道与人工审阅者进行集成。 使用[作业](review-api.md#jobs)、[审阅](review-api.md#reviews)和[工作流](review-api.md#workflows)操作在[审阅工具](#the-review-tool)（下文）中创建和自动执行人工干预工作流。
+
+> [!NOTE]
+> 工作流 API 在 .NET SDK 中尚不可用，但可以与 REST 终结点一起使用。
+
+![内容审查器审阅 API 的框图](images/content-moderator-rev-api.png)
+
+## <a name="the-review-tool"></a>“审阅”工具
 
 内容审查器服务还包括基于 Web 的[审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)，其中托管的内容审阅可供审阅人处理。 人工输入不会训练服务，但是将服务与人工审阅团队组合起来以后，开发人员就可以在效率和准确性之间取得适当的平衡。 审阅工具还为各种内容审查器资源提供用户友好型前端。
 

@@ -8,16 +8,20 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: heidist
-ms.openlocfilehash: d9006e3fcfc9691b9f3eec4b86c545fd3fea9f8a
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: e7be2dfc811caa087726339846a1de2516f1e2b2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471745"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540732"
 ---
-# <a name="how-to-get-started-with-knowledge-store"></a>如何开始使用知识存储
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>如何开始使用 Azure 搜索中的知识存储
 
-[知识存储](knowledge-store-concept-intro.md)是 Azure 搜索中新增的一项预览功能，可保存索引管道中创建的 AI 扩充，以便在其他应用中进行知识挖掘。 还可以使用已保存的扩充来了解和优化 Azure 搜索索引管道。
+> [!Note]
+> 知识存储目前为预览版，不适合在生产环境中使用。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持 .NET SDK。
+>
+
+[知识存储](knowledge-store-concept-intro.md)将在编制索引期间创建的 AI 扩充保存到你的 Azure 存储帐户以在其他应用中进行下游知识挖掘。 还可以使用已保存的扩充来了解和优化 Azure 搜索索引管道。
 
 知识存储是通过技能集进行定义。 对于常规的 Azure 搜索全文搜索方案，技能集旨在提供 AI 扩充，让内容更易于搜索。 对于知识挖掘方案，技能集的作用是创建、填充和存储多个数据结构，用于在其他应用和流程中进行分析或建模。
 
@@ -43,9 +47,9 @@ ms.locfileid: "65471745"
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
     ![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
 
@@ -53,15 +57,15 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="prepare-sample-data"></a>准备示例数据
 
-1. [登录到 Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”。
+1. [登录到 Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”   。
 
 1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 使用容器名称“caselaw-test”。 可将“公共访问级别”设为任何有效值。
 
-1. 创建容器后，将其打开，然后在命令栏中选择“上传”。
+1. 创建容器后，将其打开，然后在命令栏中选择“上传”  。
 
    ![在命令栏中上传](media/search-semi-structured-data/upload-command-bar.png "在命令栏中上传")
 
-1. 转到包含 caselaw-sample.json 示例文件的文件夹。 选择此文件，再单击“上传”。
+1. 转到包含 caselaw-sample.json  示例文件的文件夹。 选择此文件，再单击“上传”  。
 
 
 ## <a name="set-up-postman"></a>设置 Postman
@@ -78,7 +82,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 [创建技能集](#create-skillset)是本演练的重点，它指定了扩充步骤，以及如何将数据暂留在知识存储中。
 
-URL 终结点必须指定 api-version，并且每个调用都应返回“201 已创建”。 用于创建支持知识存储的技能集的预览版 api-version 是 `2019-05-06-Preview`（区分大小写）。
+URL 终结点必须指定 api-version，并且每个调用都应返回“201 已创建”  。 用于创建支持知识存储的技能集的预览版 api-version 是 `2019-05-06-Preview`（区分大小写）。
 
 在 REST 客户端中，执行以下 API 调用。
 
@@ -90,7 +94,7 @@ URL 终结点必须指定 api-version，并且每个调用都应返回“201 已
 
 1. 请将 `[service name]` 替换为搜索服务的名称。 
 
-2. 对于此调用，请求正文必须包含存储帐户连接字符串和 Blob 容器名称。 可以在 Azure 门户中存储帐户的“访问密钥”内找到连接字符串。 
+2. 对于此调用，请求正文必须包含存储帐户连接字符串和 Blob 容器名称。 可以在 Azure 门户中存储帐户的“访问密钥”  内找到连接字符串。 
 
    执行此调用前，请务必先替换请求正文中的连接字符串和 Blob 容器名称。
 
@@ -112,7 +116,7 @@ URL 终结点必须指定 api-version，并且每个调用都应返回“201 已
     }
     ```
 
-3. 发送请求。 响应应为“201”，并且响应正文应与你提供的请求有效负载看起来几乎完全相同。
+3. 发送请求。 响应应为“201”  ，并且响应正文应与你提供的请求有效负载看起来几乎完全相同。
 
     ```json
     {
@@ -256,7 +260,7 @@ URL 终结点必须指定 api-version，并且每个调用都应返回“201 已
 
 4. 发送请求。 
 
-   响应应为“201”，如下面的示例（展示前几个字段）所示：
+   响应应为“201”  ，如下面的示例（展示前几个字段）所示：
 
     ```json
     {
@@ -402,7 +406,7 @@ URL 终结点必须指定 api-version，并且每个调用都应返回“201 已
     ]
     ```
 
-5. 发送请求。 响应应为“201”，如下面的示例（展示响应的第一个部分）所示。
+5. 发送请求。 响应应为“201”  ，如下面的示例（展示响应的第一个部分）所示。
 
     ```json
     {
@@ -492,7 +496,7 @@ URL 终结点必须指定 api-version，并且每个调用都应返回“201 已
     }
     ```
 
-3. 发送请求。 响应应为“201”，并且响应正文应与你提供的请求有效负载看起来几乎完全相同（为简单起见，已经过剪裁）。
+3. 发送请求。 响应应为“201”  ，并且响应正文应与你提供的请求有效负载看起来几乎完全相同（为简单起见，已经过剪裁）。
 
     ```json
     {
@@ -525,7 +529,7 @@ URL 终结点必须指定 api-version，并且每个调用都应返回“201 已
 
 ## <a name="explore-knowledge-store"></a>浏览知识存储
 
-导入首个文档后，可立即开始浏览。 对于此任务，请使用门户中的[存储资源管理器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)。
+导入首个文档后，可立即开始浏览。 对于此任务，请使用门户中的[存储资源管理器  ](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)。
 
 知识存储已从 Azure 搜索完全分离，认识到这一点很重要。 Azure 搜索索引和知识存储都包含数据表示形式和内容，但除此之外均不相同。 索引用于全文搜索、筛选搜索，以及 Azure 搜索支持的所有方案。 或者，仅使用知识存储更进一步，同时附加其他工具来分析内容。
 

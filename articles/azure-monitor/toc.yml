@@ -685,8 +685,6 @@
               href: platform/powerbi.md
             - name: 导出应用程序数据
               href: app/export-power-bi.md
-        - name: 仪表板
-          href: app/app-insights-dashboards.md
         - name: 将数据发送到 Grafana
           href: platform/grafana-plugin.md
     - name: 分析数据
@@ -1072,8 +1070,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: SDK 发行说明
           href: app/release-notes.md
-        - name: Developer Analytics Tools 发行说明
-          href: app/release-notes-vsix.md
     - name: Windows 分析
       href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: 区域可用性
