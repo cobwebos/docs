@@ -1,5 +1,5 @@
 ---
-title: 识别打印/手写文本，计算机视觉
+title: 识别印刷文本/手写文本，计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 与使用计算机视觉 API 识别图像中的印刷文本和手写文本相关的概念。
 services: cognitive-services
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bcaa990cc2186a5f1eecdbbca91804c92370277c
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60367995"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357184"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>识别打印文本和手写文本
 
-计算机视觉提供多个服务用于检测和提取图像中显示的打印文本或手写文本。 这可在各种方案，例如笔记记录、 医疗记录、 安全性和银行中。 以下三个部分详细介绍了针对不同用例优化的三个不同文本识别 API。
+计算机视觉提供多个服务用于检测和提取图像中显示的打印文本或手写文本。 在笔录、医疗记录、保安和银行等场景中，这些服务非常有用。 以下三个部分详细介绍了针对不同用例优化的三个不同文本识别 API。
 
 ## <a name="read-api"></a>读取 API
 
-读取 API 使用我们最新的识别模型检测图像中的文本内容，并将已识别的文本转换为机器可读的字符流。 该 API 已针对包含大量文本的图像（例如，数码扫描的文档）以及包含大量视觉噪点的图像进行优化。 该 API 以异步方式执行，因为处理较大文档时，可能需要花费好几分钟才能返回结果。
+读取 API 使用我们最新的识别模型检测图像中的文本内容，并将已识别的文本转换为机器可读的字符流。 它经过优化的文字较多映像 （例如已进行数字扫描的文档） 以及对于具有大量视觉干扰的图像。 它将确定要使用的每行文本，支持打印和手写文本图像的识别模型。 以异步方式执行读取 API，因为较大的文档可能需要几分钟时间才能返回结果。
 
 “读取”操作会在其输出中保留已识别字的原始行分组。 每一行附带边框坐标，行中的每个字也有其自身的坐标。 如果某个字的识别置信度较低，该结果中也会反映该信息。 有关详细信息，请参阅[阅读 API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)。
 
 > [!NOTE]
-> 此功能目前以预览版提供，仅适用于英语文本。
+> 此功能才适用于英语文本。
 
 ### <a name="image-requirements"></a>图像要求
 
@@ -45,11 +45,11 @@ ms.locfileid: "60367995"
 
 ## <a name="ocr-optical-character-recognition-api"></a>OCR（光学字符识别）API
 
-计算机视觉的光学字符识别 (OCR) API 类似于读取 API，但它以同步方式执行，且未针对大型文档进行优化。 它将与更多语言; 但工作原理的更早识别模型请参阅[语言支持](language-support.md#text-recognition)有关支持的语言的完整列表。
+计算机视觉的光学字符识别 (OCR) API 类似于读取 API，但它以同步方式执行，且未针对大型文档进行优化。 该 API 使用早期的识别模型，但可以处理更多的语言；如需所支持的语言的完整列表，请参阅[语言支持](language-support.md#text-recognition)。
 
 如有必要，OCR 会更正已识别文本的旋转，方法是以度为单位返回有关水平图像轴的旋转偏移量。 OCR 还提供每个字的帧坐标，如下图所示。
 
-![旋转图像和读取其文本和用分隔](./Images/vision-overview-ocr.png)
+![正在旋转的图像及其正在读取和画出的文本](./Images/vision-overview-ocr.png)
 
 有关详细信息，请参阅 [OCR 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)。
 
@@ -80,7 +80,7 @@ OCR API 可以处理符合以下要求的图像：
 - 图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间。
 - 图像的文件大小必须小于 4 MB。
 
-## <a name="improve-results"></a>改善结果
+## <a name="limitations"></a>限制
 
 文本识别操作的准确度取决于图像的质量。 以下因素可能导致读取结果不准确：
 
