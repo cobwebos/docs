@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cae29fe045d1bdc17f414ff016642635b74320df
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ee539b87c08dd00545060cb30d28ac7fcd01e61b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408830"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518987"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
@@ -63,8 +63,11 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
     ```
 
     `.Watch` 方法中的第二个参数表示轮询间隔，ASP.NET 客户端库按此间隔查询应用程序配置存储区。 客户端库检查特定配置设置，以查看是否发生了任何更改。
+    
+    > [!NOTE]
+    > 如果未指定，则 `Watch` 扩展方法的默认轮询间隔为 30 秒。
 
-2. 添加 Settings.cs 文件，用于定义和实现新的 `Settings` 类。
+2. 添加 Settings.cs 文件，用于定义和实现新的 `Settings` 类  。
 
     ```csharp
     namespace TestAppConfig
@@ -164,11 +167,11 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
 
     ![本地启动应用快速入门](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. 登录到 [Azure 门户](https://aka.ms/azconfig/portal)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例。
+4. 登录到 [Azure 门户](https://aka.ms/azconfig/portal)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例  。
 
-5. 选择“配置资源管理器”并更新以下键的值：
+5. 选择“配置资源管理器”  并更新以下键的值：
 
-    | 键 | 值 |
+    | 密钥 | 值 |
     |---|---|
     | TestAppSettings:BackgroundColor | green |
     | TestAppSettings:FontColor | lightGray |

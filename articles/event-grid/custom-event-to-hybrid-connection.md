@@ -9,12 +9,12 @@ ms.date: 02/02/2019
 ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 2a050f8bc5d2437c7cdbadcf3296c2ef6d4659dc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 270059537fc8d06648c86088b22aef5b78ff00ec
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728633"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606292"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>教程：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 中继混合连接
 
@@ -35,7 +35,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 中继混合连接�
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 
 
-以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
+以下示例在“westus2”  位置创建名为“gridResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2
@@ -80,7 +80,7 @@ az eventgrid event-subscription create \
 
 需要一个可以从混合连接检索事件的应用程序。 [适用于 C# 的 Microsoft Azure 事件网格混合连接使用者示例](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination)可执行该操作。 已完成先决条件步骤。
 
-1. 请务必安装 Visual Studio 2017 版本 15.5 或以上。
+1. 确保具有 Visual Studio 2019 或更高版本。
 
 1. 将存储库克隆到本地计算机。
 

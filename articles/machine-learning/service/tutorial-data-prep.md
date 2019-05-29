@@ -11,18 +11,18 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e7aa231cabea9fbd76cd028f9fdc698a4dac5d6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 67f3a0d10490c5c63dfe262d07985f51bb384e34
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470268"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604479"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
 在本教程中，你将学习如何使用 [Azure 机器学习数据准备包](https://aka.ms/data-prep-sdk)来为回归建模准备数据。 运行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。
 
-本教程是由两个部分构成的系列教程的第一部分。 完成这一系列的教程以后，即可根据数据特性训练一个模型，以便预测出租车打车费用。 这些特性包括上车日期和时间、乘客数和上车位置。
+本教程是由两个部分构成的系列教程的第一部分  。 完成这一系列的教程以后，即可根据数据特性训练一个模型，以便预测出租车打车费用。 这些特性包括上车日期和时间、乘客数和上车位置。
 
 本教程介绍以下操作：
 
@@ -38,7 +38,7 @@ ms.locfileid: "65470268"
 跳到[设置开发环境](#start)来了解整个 Notebook 设置步骤，或遵照以下说明获取 Notebook 并在 Azure Notebooks 或自己的 Notebook 服务器中运行。 若要运行 Notebook，需要：
 
 * 一个装有以下组件的 Python 3.6 Notebook 服务器：
-    * 适用于 Python 的 Azure 机器学习数据准备 SDK
+    *  适用于 Python 的 Azure 机器学习 SDK 中的 azureml-dataprep 包
 * 教程 Notebook
 
 * 使用[工作区中的云 Notebook 服务器](#azure) 
@@ -56,8 +56,8 @@ ms.locfileid: "65470268"
 
 执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。  完成这些步骤后，运行 **tutorials/regression-part1-data-prep.ipynb** Notebook。
 
-1. 完成 [[Azure 机器学习 Python 快速入门](quickstart-run-local-notebook.md)](setup-create-workspace.md#python)中的安装步骤来创建 Miniconda 环境。  如果愿意，可以跳过**创建工作区**部分，但是本教程系列的[第 2 部分](tutorial-auto-train-models.md)将需要使用工作区。
-1. 使用 `pip install azureml-dataprep` 在你的环境中安装数据准备 SDK。
+1. 完成 [Azure 机器学习 Python 快速入门](setup-create-workspace.md#sdk)中的安装步骤，创建 Miniconda 环境。  如果愿意，可以跳过**创建工作区**部分，但是本教程系列的[第 2 部分](tutorial-auto-train-models.md)将需要使用工作区。
+1. 使用 `pip install azureml-dataprep` 在环境中安装 azureml-dataprep。
 1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
 
     ```

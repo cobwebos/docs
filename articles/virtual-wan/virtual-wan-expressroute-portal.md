@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3e6ab347a86aa8d04c8ebd0382178b873c987300
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876320"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605431"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>教程：使用 Azure 虚拟 WAN（预览版）创建 ExpressRoute 关联
 
@@ -69,24 +69,24 @@ ms.locfileid: "58876320"
 
 ## <a name="hub"></a>4.查找线路并将其关联到中心
 
-1. 选择 vWAN，在“虚拟 WAN 体系结构”下，选择“ExpressRoute 线路”。
-1. 如果 ExpressRoute 线路与 vWAN 在同一订阅中，请在订阅中单击“选择 ExpressRoute 线路”。 
+1. 选择 vWAN，在“虚拟 WAN 体系结构”  下，选择“ExpressRoute 线路”  。
+1. 如果 ExpressRoute 线路与 vWAN 在同一订阅中，请在订阅中单击“选择 ExpressRoute 线路”  。 
 1. 使用下拉菜单，选择要关联到中心的 ExpressRoute。
-1. 如果 ExpressRoute 线路不在同一订阅中，或者你已获得[授权密钥和对等 ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)，请选择“查找兑换授权密钥的线路”
+1. 如果 ExpressRoute 线路不在同一订阅中，或者你已获得[授权密钥和对等 ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)，请选择“查找兑换授权密钥的线路” 
 1. 输入以下详细信息：
 1. **授权密钥** - 如上所述，由线路所有者生成
 1. **对等线路 URI** - 线路所有者提供的线路 URI，是线路的唯一标识符
 1. **路由权重** - [路由权重](../expressroute/expressroute-optimize-routing.md) - 当来自不同对等互连位置的多个线路连接到同一个中心时，允许你选择某些路径
-1. 单击“查找线路”并选择线路（如果找到）。
-1. 从下拉列表中选择一个或多个中心，然后单击“保存”。
+1. 单击“查找线路”  并选择线路（如果找到）。
+1. 从下拉列表中选择一个或多个中心，然后单击“保存”  。
 
 ## <a name="vnet"></a>5.将 VNet 连接到中心
 
 此步骤在中心与 VNet 之间创建对等互连。 针对要连接的每个 VNet 重复这些步骤。
 
-1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。
-2. 在虚拟网络连接页上，单击“+添加连接”。
-3. 在“添加连接”页上填写以下字段：
+1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。 
+2. 在虚拟网络连接页上，单击“+添加连接”。 
+3. 在“添加连接”页上填写以下字段  ：
 
     * **连接名称** - 为连接命名。
     * **中心** - 选择要与此连接关联的中心。
@@ -103,7 +103,7 @@ ms.locfileid: "58876320"
 ## <a name="viewhealth"></a>7.查看资源运行状况
 
 1. 导航到 WAN。
-2. 在“WAN”页上的“支持 + 故障排除”部分，单击“运行状况”并查看资源。
+2. 在“WAN”页上的“支持 + 故障排除”部分，单击“运行状况”并查看资源。  
 
 ## <a name="connectmon"></a>8.监视连接
 

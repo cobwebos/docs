@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 64aef17663fdc28a467172bbe8954fc06fdb7ff0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680361"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596093"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
 
@@ -46,7 +46,7 @@ ms.locfileid: "59680361"
 ## <a name="prerequisites"></a>先决条件
 
 已安装包含 Azure 开发工作流的 Visual Studio 2017：
-- 可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。 
+- 可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。  
 
 Azure 订阅，或免费的 Cosmos DB 试用帐户：
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -62,11 +62,11 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户：
 运行已下载的完整解决方案： 
 
 1. 请确保已安装[必备项](#prerequisites)。 
-1. 在 Visual Studio 中打开下载的 GetStarted.sln 解决方案文件。
-1. 在“解决方案资源管理器”中，右键单击 GetStarted 项目，然后选择“管理 NuGet 包”。
-1. 在“NuGet”选项卡上，选择“还原”，以还原对 Azure Cosmos DB .NET SDK 的引用。
-1. 在 App.config 文件中，按照[连接到 Azure Cosmos DB 帐户](#Connect)部分中的说明更新 `EndpointUrl` 和 `PrimaryKey` 值。
-1. 选择“调试” > “开始执行(不调试)”或按 Ctrl+F5 生成并运行应用。
+1. 在 Visual Studio 中打开下载的 GetStarted.sln 解决方案文件  。
+1. 在“解决方案资源管理器”中，右键单击 GetStarted 项目，然后选择“管理 NuGet 包”    。
+1. 在“NuGet”选项卡上，选择“还原”，以还原对 Azure Cosmos DB .NET SDK 的引用   。
+1. 在 App.config 文件中，按照[连接到 Azure Cosmos DB 帐户](#Connect)部分中的说明更新 `EndpointUrl` 和 `PrimaryKey` 值  。
+1. 选择“调试” > “开始执行(不调试)”或按 Ctrl+F5 生成并运行应用     。
 
 ## <a name="create-an-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
 
@@ -76,19 +76,19 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户：
 
 ## <a id="SetupVS"></a>设置 Visual Studio 解决方案
 
-1. 在 Visual Studio 2017 中，选择“文件” > “新建” > “项目”。
+1. 在 Visual Studio 2017 中，选择“文件” > “新建” > “项目”    。
    
-1. 在“新建项目”对话框中，选择“Visual C#” > “控制台应用(.NET Framework)”，将项目命名为 AzureCosmosDBApp，然后选择“确定”。
+1. 在“新建项目”对话框中，选择“Visual C#” > “控制台应用(.NET Framework)”，将项目命名为 AzureCosmosDBApp，然后选择“确定”      。
    
    ![“新建项目”窗口的屏幕截图](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
    
-1. 在“解决方案资源管理器”中，右键单击 AzureCosmosDBApp 项目，然后选择“管理 NuGet 包”。
+1. 在“解决方案资源管理器”中，右键单击 AzureCosmosDBApp 项目，然后选择“管理 NuGet 包”    。
    
    ![项目上下文菜单](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges.png)
    
-1. 在“NuGet”选项卡上，选择“浏览”，并在搜索框中输入 azure documentdb。
+1. 在“NuGet”选项卡上，选择“浏览”，并在搜索框中输入 azure documentdb    。
    
-1. 找到并选择 Microsoft.Azure.DocumentDB，然后选择“安装”（如果尚未安装）。
+1. 找到并选择 Microsoft.Azure.DocumentDB，然后选择“安装”（如果尚未安装）   。
    
    Azure Cosmos DB SQL API 客户端库的程序包 ID 是 [Microsoft Azure Cosmos DB 客户端库](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)。
 
@@ -97,13 +97,13 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户：
 
    ![用于查找 Azure Cosmos DB 客户端 SDK 的 NuGet 菜单的屏幕截图](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
    
-   如果收到有关查看解决方案更改的消息，请选择“确定”。 如果收到有关接受许可证的消息，请选择“我接受”。
+   如果收到有关查看解决方案更改的消息，请选择“确定”  。 如果收到有关接受许可证的消息，请选择“我接受”  。
 
 ## <a id="Connect"></a>连接到 Azure Cosmos DB 帐户
 
-现可开始编写代码。 本教程的完整 Project.cs 文件位于 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) 中。
+现可开始编写代码。 本教程的完整 Project.cs 文件位于 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) 中  。
 
-1. 在“解决方案资源管理器”中，选择“Program.cs”，然后在代码编辑器中，将以下引用添加到文件的开头：
+1. 在“解决方案资源管理器”中，选择“Program.cs”，然后在代码编辑器中，将以下引用添加到文件的开头   ：
    
    ```csharp
    using System.Net;
@@ -126,15 +126,15 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户：
 1. 终结点 URL 和主密钥允许应用连接到 Azure Cosmos DB 帐户，并允许 Azure Cosmos DB 帐户信任该连接。 从 [Azure 门户](https://portal.azure.com)复制密钥，并将其粘贴到代码中。 
 
    
-   1. 在 Azure Cosmos DB 帐户的左侧导航栏中，选择“密钥”。
+   1. 在 Azure Cosmos DB 帐户的左侧导航栏中，选择“密钥”。 
       
       ![在 Azure 门户中查看并复制访问密钥](./media/sql-api-get-started/nosql-tutorial-keys.png)
       
-   1. 在“读/写密钥”下，使用右侧的复制按钮复制“URI”值，并将其粘贴到 Program.cs 的 `<your endpoint URL>` 中。 例如： 
+   1. 在“读/写密钥”下，使用右侧的复制按钮复制“URI”值，并将其粘贴到 Program.cs 的 `<your endpoint URL>` 中    。 例如： 
       
       `private const string EndpointUrl = "https://mysqlapicosmosdb.documents.azure.com:443/";`
       
-   1. 复制“主密钥”值，并将其粘贴到 Program.cs 的 `<your primary key>` 中。 例如： 
+   1. 复制“主密钥”值，并将其粘贴到 Program.cs 的 `<your primary key>` 中   。 例如： 
       
       `private const string PrimaryKey = "19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==";`
    
@@ -145,6 +145,20 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户：
       {
         client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
       }
+   ```
+
+   如果要使用代理对象连接到 Azure Cosmos DB，则应改用以下代码块创建 DocumentClient 对象。 本文档中的示例不使用代理对象，因此下面的示例仅供参考：
+
+   ```csharp
+   HttpClientHandler handler = new HttpClientHandler()
+   {
+     Proxy = proxyObject
+     UseProxy = true,
+   };
+
+   //Pass handler to the constructor of DocumentClient.
+   DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey, handler);
+   
    ```
    
 1. 将以下代码添加到 `Main` 方法中，以运行 `GetStartedDemo` 任务。 `Main` 方法可捕获异常并将它们写入控制台。
@@ -175,9 +189,9 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户：
       }
    ```
    
-1. 按 F5 运行应用。 
+1. 按 F5 运行应用  。 
    
-1. 如果控制台窗口中显示“演示结束，按任意键退出”消息，则表示连接成功。 按任意键关闭控制台窗口。 
+1. 如果控制台窗口中显示“演示结束，按任意键退出”消息，则表示连接成功  。 按任意键关闭控制台窗口。 
 
 已成功连接到 Azure Cosmos DB 帐户。 现在，可使用某些 Azure Cosmos DB 资源。  
 
@@ -202,16 +216,16 @@ Azure Cosmos DB [数据库](databases-containers-items.md#azure-cosmos-databases
       await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });
    ```
    
-1. 按 F5 运行应用。
+1. 按 F5 运行应用  。
 
-已成功创建 Azure Cosmos DB 数据库。 在 Azure Cosmos DB 帐户左侧导航中选择“数据资源管理器”，即可在 [Azure 门户](https://portal.azure.com)中查看数据库。 
+已成功创建 Azure Cosmos DB 数据库。 在 Azure Cosmos DB 帐户左侧导航中选择“数据资源管理器”，即可在 [Azure 门户](https://portal.azure.com)中查看数据库  。 
 
 ## <a id="CreateColl"></a>创建集合
 
 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。 使用 `DocumentClient` 类的 [CreateDocumentCollectionIfNotExistsAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync#overloads) 方法可创建集合。 
 
 > [!IMPORTANT]
-> CreateDocumentCollectionIfNotExistsAsync 可创建一个具有保留吞吐量的新集合，它牵涉定价。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
+> CreateDocumentCollectionIfNotExistsAsync 可创建一个具有保留吞吐量的新集合，它牵涉定价  。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 > 
 
 1. 复制以下代码并将其粘贴到 `GetStartedDemo` 方法的 `await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });` 行之后。 此代码会创建一个名为 `FamilyCollection` 的文档集合。
@@ -220,9 +234,9 @@ Azure Cosmos DB [数据库](databases-containers-items.md#azure-cosmos-databases
       await client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB"), new DocumentCollection { Id = "FamilyCollection" });
    ```
    
-1. 按 F5 运行应用。
+1. 按 F5 运行应用  。
 
-已成功创建 Azure Cosmos DB 文档集合。 在 Azure 门户中，可在“数据资源管理器”的“FamilyDB”数据库下看到该集合。  
+已成功创建 Azure Cosmos DB 文档集合。 在 Azure 门户中，可在“数据资源管理器”的“FamilyDB”数据库下看到该集合   。  
 
 ## <a id="CreateDoc"></a>创建 JSON 文档
 
@@ -374,9 +388,9 @@ Azure Cosmos DB [数据库](databases-containers-items.md#azure-cosmos-databases
     await CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
    ```
    
-1. 按 F5 运行应用。
+1. 按 F5 运行应用  。
 
-已成功创建两个 Azure Cosmos DB 文档。 在 Azure 门户中，可在“数据资源管理器”的“FamilyDB”数据库和“FamilyCollection”集合下看到这些文档。   
+已成功创建两个 Azure Cosmos DB 文档。 在 Azure 门户中，可在“数据资源管理器”的“FamilyDB”数据库和“FamilyCollection”集合下看到这些文档    。   
 
 ![演示帐户、联机数据库、集合和文档之间的层次关系的示意图](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
@@ -428,7 +442,7 @@ Azure Cosmos DB 支持对存储在集合中的 JSON 文档进行各种[查询](h
       ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
    ```
    
-1. 按 F5 运行应用。
+1. 按 F5 运行应用  。
 
 前面的查询返回 Andersen 系列的完整项。 已成功完成对 Azure Cosmos DB 集合的查询。
 
@@ -461,7 +475,7 @@ Azure Cosmos DB SQL API 支持更新和替换 JSON 文档。
    ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
    ```
    
-1. 按 F5 运行应用。
+1. 按 F5 运行应用  。
 
 查询输出显示 Andersen Family 的子项 `Grade` 从 `5` 更新为 `6`。 已成功更新并替换 Azure Cosmos DB 文档。 
 
@@ -485,7 +499,7 @@ Azure Cosmos DB SQL API 支持删除 JSON 文档。
    await DeleteFamilyDocument("FamilyDB", "FamilyCollection", "AndersenFamily");
    ```
    
-1. 按 F5 运行应用。
+1. 按 F5 运行应用  。
 
 已成功删除 Azure Cosmos DB 文档。 
 
@@ -500,13 +514,13 @@ Azure Cosmos DB SQL API 支持删除 JSON 文档。
    await client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB"));
    ```
    
-1. 按 F5 运行应用。
+1. 按 F5 运行应用  。
 
-已成功删除 Azure Cosmos DB 数据库。 在“数据资源管理器”中，可看到 Azure Cosmos DB 帐户删除了 FamilyDB 数据库。 
+已成功删除 Azure Cosmos DB 数据库。 在“数据资源管理器”中，可看到 Azure Cosmos DB 帐户删除了 FamilyDB 数据库  。 
 
 ## <a id="Run"></a>运行整个 C# 控制台应用
 
-在 Visual Studio 中按 F5，即可在调试模式下生成并运行完整的 C# 控制台应用。 控制台窗口中应该会显示以下输出：
+在 Visual Studio 中按 F5，即可在调试模式下生成并运行完整的 C# 控制台应用  。 控制台窗口中应该会显示以下输出：
 
 ```bash
 Created Family AndersenFamily

@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 6b833ef56b890eb4ea0db6b48fe8c2622e211498
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8d108e1683be03a79e87990b983f2eda3eadba90
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233873"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797538"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>教程：使用 Azure 存储队列
 
@@ -98,7 +98,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 由于该应用使用云资源，因此代码将以异步方式运行。 但是，在 C# 7.1 推出之前，C# 中的 **async** 和 **await** 在 **Main** 方法中不是有效的关键字。 可以通过 **csproj** 文件中的一个标志轻松切换到该编译器。
 
-1. 在项目目录中的命令行下，键入 `code .` 以在当前目录中打开 Visual Studio Code。 请将命令行窗口保持打开状态。 稍后需要执行更多的命令。 如果系统提示是否要添加用于生成和调试的 C# 资产，请单击“是”按钮。
+1. 在项目目录中的命令行下，键入 `code .` 以在当前目录中打开 Visual Studio Code。 请将命令行窗口保持打开状态。 稍后需要执行更多的命令。 如果系统提示是否要添加用于生成和调试的 C# 资产，请单击“是”按钮。 
 
 2. 在编辑器中打开 **QueueApp.csproj** 文件。
 
@@ -129,33 +129,34 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 ## <a name="create-a-queue"></a>创建队列
 
-1. 将 **WindowsAzure.Storage** 包安装到项目（使用 `dotnet add package` 命令）。 在控制台窗口中从项目文件夹执行以下 dotnet 命令。
+1. 使用 `dotnet add package` 命令将 Microsoft.Azure.Storage.Common 和 Microsoft.Azure.Storage.Queue 包安装到项目   。 在控制台窗口中从项目文件夹执行以下 dotnet 命令。
 
    ```console
-   dotnet add package WindowsAzure.Storage
+   dotnet add package Microsoft.Azure.Storage.Common
+   dotnet add package Microsoft.Azure.Storage.Queue
    ```
 
 2. 在 **Program.cs** 文件的顶部，紧接在 `using System;` 语句的后面添加以下命名空间。 此应用将使用这些命名空间中的类型来连接 Azure 存储和使用队列。
 
    ```csharp
    using System.Threading.Tasks;
-   using Microsoft.WindowsAzure.Storage;
-   using Microsoft.WindowsAzure.Storage.Queue;
+   using Microsoft.Azure.Storage;
+   using Microsoft.Azure.Storage.Queue;
    ```
 
 3. 保存 **Program.cs** 文件。
 
 ### <a name="get-your-connection-string"></a>获取连接字符串
 
-客户端库使用连接字符串来建立连接。 Azure 门户中存储帐户的“设置”部分提供了该连接字符串。
+客户端库使用连接字符串来建立连接。 Azure 门户中存储帐户的“设置”部分提供了该连接字符串。 
 
 1. 在 Web 浏览器中登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到 Azure 门户中的存储帐户。
 
-3. 选择“访问密钥”。
+3. 选择“访问密钥”。 
 
-4. 单击“连接字符串”字段右侧的“复制”按钮。
+4. 单击“连接字符串”字段右侧的“复制”按钮。  
 
 ![连接字符串](media/storage-tutorial-queues/get-connection-string.png)
 
@@ -206,7 +207,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 ## <a name="insert-messages-into-the-queue"></a>将消息插入队列
 
-创建一个新方法用于将消息发送到队列。 将以下方法添加到 **Program** 类。 此方法获取队列引用，然后通过调用 [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet) 创建一个新队列（如果尚不存在）。 然后，它通过调用 [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet) 将消息添加到该队列。
+创建一个新方法用于将消息发送到队列。 将以下方法添加到 **Program** 类。 此方法获取队列引用，然后通过调用 [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync) 创建一个新队列（如果尚不存在）。 然后，它通过调用 [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) 将消息添加到该队列。
 
 1. 将以下 **SendMessageAsync** 方法添加到 **Program** 类。
 
@@ -229,7 +230,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 ## <a name="dequeue-messages"></a>取消消息的排队
 
-创建名为 **ReceiveMessageAsync** 的新方法。 此方法通过调用 [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet) 从队列接收消息。 成功收到消息后，必须从队列中删除该消息，以免再次处理该消息。 收到消息后，请调用 [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet) 从队列中删除该消息。
+创建名为 **ReceiveMessageAsync** 的新方法。 此方法通过调用 [GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) 从队列接收消息。 成功收到消息后，必须从队列中删除该消息，以免再次处理该消息。 收到消息后，请调用 [DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) 从队列中删除该消息。
 
 1. 将以下 **ReceiveMessageAsync** 方法添加到 **Program** 类。
 
@@ -343,8 +344,8 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    ```csharp
    using System;
    using System.Threading.Tasks;
-   using Microsoft.WindowsAzure.Storage;
-   using Microsoft.WindowsAzure.Storage.Queue;
+   using Microsoft.Azure.Storage;
+   using Microsoft.Azure.Storage.Queue;
 
    namespace QueueApp
    {

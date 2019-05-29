@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d955654eee1d02994f303b6270b156eb9a61c29b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 19c2298c9bda03acba28496a97c89c2a53e3c44e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915248"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964897"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>教程：使用 Azure Cosmos DB 后端在会话和设备间共享 Azure 空间定位点
 
@@ -54,11 +54,11 @@ ms.locfileid: "58915248"
 
 ### <a name="configure-the-service-to-use-your-azure-cosmos-db-database"></a>将服务配置为使用 Azure Cosmos DB 数据库
 
-在“解决方案资源管理器”中打开 `SharingService\Startup.cs`。
+在“解决方案资源管理器”  中打开 `SharingService\Startup.cs`。
 
 找到文件顶部的 `#define INMEMORY_DEMO`，然后将该行注释掉。保存文件。
 
-在“解决方案资源管理器”中打开 `SharingService\appsettings.json`。
+在“解决方案资源管理器”  中打开 `SharingService\appsettings.json`。
 
 找到 `StorageConnectionString` 属性，将值设置为与在[创建数据库帐户步骤](#create-a-database-account)中复制的 `Connection String` 值相同。 保存文件。
 
@@ -70,7 +70,7 @@ ms.locfileid: "58915248"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，使用了 Azure Cosmos DB 在设备间共享定位点标识符。 若要深入了解如何在新 Android 应用中使用 Azure 空间定位点，请继续学习下一教程。
+在本教程中，使用了 Azure Cosmos DB 在设备间共享定位点标识符。 若要详细了解如何在新的 Unity HoloLens 应用中使用 Azure 空间定位点，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
-> [启动新的 Android 应用](./tutorial-new-android-app.md)
+> [启动新的 Android 应用](./tutorial-new-unity-hololens-app.md)

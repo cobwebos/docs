@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: cb75e943416c227730589ab5e7feeb7b8ba5e245
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1d8b31e55a2a230385730c924d3e6bcc6072e7ea
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957916"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520446"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以增量方式将数据从源数据存储加载到目标数据存储
 
@@ -44,13 +44,13 @@ ms.locfileid: "56957916"
 [使用更改跟踪技术，以增量方式将 Azure SQL 数据库中的数据复制到 Azure Blob 存储](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
 ## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>仅使用 LastModifiedDate 加载新文件和已更改文件
-可以首先获取文件的元数据 (LastModifiedDate)，然后将新文件和已更改文件仅复制到目标存储。
+只能使用 LastModifiedDate 将新文件和已更改文件复制到目标存储。 ADF 会扫描来自源存储的所有文件，按其 LastModifiedDate 应用文件筛选器，然后仅将自上次以来的新文件和已更新文件复制到目标存储。  请注意，如果让 ADF 扫描大量文件，但是仅将少量文件复制到目标，则仍然会预计由于文件扫描所导致的较长持续时间也十分耗时。   
 
 有关分步说明，请参阅以下教程： <br/>
 [基于 LastModifiedDate 以增量方式将新文件和已更改文件从 Azure Blob 存储复制到 Azure Blob 存储](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>仅通过使用时间分区文件夹或文件名称来加载新文件。
-仅可以复制新文件，其中文件或文件夹已经过时间分区，时间片信息作为文件或文件夹名称的一部分（如 /yyyy/mm/dd/file.csv）。 
+仅可以复制新文件，其中文件或文件夹已经过时间分区，时间片信息作为文件或文件夹名称的一部分（如 /yyyy/mm/dd/file.csv）。 这是用于增量加载新文件的性能最好的方法。 
 
 有关分步说明，请参阅以下教程： <br/>
 [基于时间分区文件夹或文件名称以增量方式将新文件从 Azure Blob 存储复制到 Azure Blob 存储](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

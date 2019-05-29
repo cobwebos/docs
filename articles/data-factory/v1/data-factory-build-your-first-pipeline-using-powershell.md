@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e3421f8401d227e5c14dd244d87711427c57eefb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9d273886b3add43818af80915e42b4aa7ca69a89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146887"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -46,53 +46,56 @@ ms.locfileid: "54019225"
 > 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
-* （可选）本文不会介绍所有数据工厂 cmdlet。 有关数据工厂 cmdlet 的综合文档，请参阅 [Data Factory Cmdlet Reference](/powershell/module/azurerm.datafactories) （数据工厂 cmdlet 参考）。
+* （可选）本文不会介绍所有数据工厂 cmdlet。 有关数据工厂 cmdlet 的综合文档，请参阅 [Data Factory Cmdlet Reference](/powershell/module/az.datafactory) （数据工厂 cmdlet 参考）。
 
 ## <a name="create-data-factory"></a>创建数据工厂
 本步骤使用 Azure PowerShell 创建名为 **FirstDataFactoryPSH**的 Azure 数据工厂。 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来转换输入数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
 
 1. 启动 Azure PowerShell 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行这些命令。
    * 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
-    ```PowerShell
-    Connect-AzureRmAccount
-    ```    
+     ```PowerShell
+     Connect-AzAccount
+     ```    
    * 运行以下命令查看此帐户的所有订阅。
-    ```PowerShell
-    Get-AzureRmSubscription 
-    ```
+     ```PowerShell
+     Get-AzSubscription  
+     ```
    * 运行以下命令选择要使用的订阅。 此订阅应与 Azure 门户中使用的订阅相同。
-    ```PowerShell
-    Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext
-    ```     
+     ```PowerShell
+     Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
+     ```     
 2. 运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组：
     
     ```PowerShell
-    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     本教程中的某些步骤假设使用名为 ADFTutorialResourceGroup 的资源组。 如果使用不同的资源组，需使用该资源组取代本教程中的 ADFTutorialResourceGroup。
-3. 运行 **New-AzureRmDataFactory** cmdlet，创建名为 **FirstDataFactoryPSH** 的数据工厂。
+3. 运行 **New-AzDataFactory** cmdlet，创建名为 **FirstDataFactoryPSH** 的数据工厂。
 
     ```PowerShell
-    New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
+    New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
     ```
-请注意以下几点：
+   请注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称 ‘FirstDataFactoryPSH’ 不可用”，请更改名称（例如 yournameFirstDataFactoryPSH）。 执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
+* Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称 ‘FirstDataFactoryPSH’ 不可用”，请更改名称（例如 yournameFirstDataFactoryPSH）。  执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布：
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  ，请执行下列操作之一，再尝试重新发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
     ```PowerShell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
       可运行以下命令来确认数据工厂提供程序是否已注册：
 
     ```PowerShell
-    Get-AzureRmResourceProvider
+    Get-AzResourceProvider
     ```
   * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，并导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作会自动注册提供程序。
 
@@ -120,22 +123,22 @@ ms.locfileid: "54019225"
     ```
     将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
 2. 在 Azure PowerShell 中，切换到 ADFGetStarted 文件夹。
-3. 可以使用 **New-AzureRmDataFactoryLinkedService** cmdlet 创建链接服务。 此 cmdlet 以及本教程中使用的其他数据工厂 cmdlet 要求传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值。 或者，可以使用 **Get-AzureRmDataFactory** 获取 **DataFactory** 对象并传递该对象，这样就不需要在每次运行 cmdlet 时键入 *ResourceGroupName* 和 *DataFactoryName*。 运行以下命令，将 **Get-AzureRmDataFactory** cmdlet 的输出分配给 **$df** 变量。
+3. 可以使用 **New-AzDataFactoryLinkedService** cmdlet 创建链接服务。 此 cmdlet 以及本教程中使用的其他数据工厂 cmdlet 要求传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值。 或者，可以使用 **Get-AzDataFactory** 获取 **DataFactory** 对象并传递该对象，这样就不需要在每次运行 cmdlet 时键入 *ResourceGroupName* 和 *DataFactoryName*。 运行以下命令，将 **Get-AzDataFactory** cmdlet 的输出分配给 **$df** 变量。
 
     ```PowerShell
-    $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
+    $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-4. 现在，运行 **New-AzureRmDataFactoryLinkedService** cmdlet 创建 **StorageLinkedService** 链接服务。
+4. 现在，运行 **New-AzDataFactoryLinkedService** cmdlet 创建 **StorageLinkedService** 链接服务。
 
     ```PowerShell
-    New-AzureRmDataFactoryLinkedService $df -File .\StorageLinkedService.json
+    New-AzDataFactoryLinkedService $df -File .\StorageLinkedService.json
     ```
-    如果尚未运行 **Get-AzureRmDataFactory** cmdlet 并将输出分配给 **$df** 变量，则必须指定 *ResourceGroupName* 和 *DataFactoryName* 参数的值，如下所示。
+    如果尚未运行 **Get-AzDataFactory** cmdlet 并将输出分配给 **$df** 变量，则必须指定 *ResourceGroupName* 和 *DataFactoryName* 参数的值，如下所示。
 
     ```PowerShell
-    New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
+    New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
     ```
-    如果在教程的中途关闭 Azure PowerShell，则下次启动 Azure PowerShell 时必须运行 **Get-AzureRmDataFactory** cmdlet 才能完成教程。
+    如果在教程的中途关闭 Azure PowerShell，则下次启动 Azure PowerShell 时必须运行 **Get-AzDataFactory** cmdlet 才能完成教程。
 
 ### <a name="create-azure-hdinsight-linked-service"></a>创建 Azure HDInsight 链接服务
 在此步骤中，将按需 HDInsight 群集链接到数据工厂。 HDInsight 群集在运行时自动创建，在处理完成之后删除，并且会空闲指定的一段时间。 可以使用自己的 HDInsight 群集，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [Compute Linked Services](data-factory-compute-linked-services.md) （计算链接服务）。
@@ -159,7 +162,7 @@ ms.locfileid: "54019225"
     ```
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | Description |
+   | 属性 | 说明 |
    |:--- |:--- |
    | ClusterSize |指定 HDInsight 群集的大小。 |
    | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
@@ -171,13 +174,13 @@ ms.locfileid: "54019225"
    * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。
    * HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
 
-       随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
+       随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 
      有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
-2. 运行 **New-AzureRmDataFactoryLinkedService** cmdlet 创建名为 HDInsightOnDemandLinkedService 的链接服务。
+2. 运行 **New-AzDataFactoryLinkedService** cmdlet 创建名为 HDInsightOnDemandLinkedService 的链接服务。
     
     ```PowerShell
-    New-AzureRmDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
+    New-AzDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
     ```
 
 ## <a name="create-datasets"></a>创建数据集
@@ -213,7 +216,7 @@ ms.locfileid: "54019225"
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | Description |
+   | 属性 | 说明 |
    |:--- |:--- |
    | type |type 属性设置为 AzureBlob，因为数据位于 Azure Blob 存储中。 |
    | linkedServiceName |引用前面创建的 StorageLinkedService。 |
@@ -225,7 +228,7 @@ ms.locfileid: "54019225"
 2. 在 Azure PowerShell 中运行以下命令，创建数据工厂数据集：
 
     ```PowerShell
-    New-AzureRmDataFactoryDataset $df -File .\InputTable.json
+    New-AzDataFactoryDataset $df -File .\InputTable.json
     ```
 
 ### <a name="create-output-dataset"></a>创建输出数据集
@@ -257,7 +260,7 @@ ms.locfileid: "54019225"
 2. 在 Azure PowerShell 中运行以下命令，创建数据工厂数据集：
 
     ```PowerShell
-    New-AzureRmDataFactoryDataset $df -File .\OutputTable.json
+    New-AzDataFactoryDataset $df -File .\OutputTable.json
     ```
 
 ## <a name="create-pipeline"></a>创建管道
@@ -330,22 +333,22 @@ ms.locfileid: "54019225"
 2. 确认在 Azure Blob 存储的 **adfgetstarted/inputdata** 文件夹中看到了**input.log** 文件，并运行以下命令部署管道。 由于 **start** 和 **end** 时间设置为过去的时间，**isPaused** 设置为 false，因此管道（管道中的活动）在部署后立即运行。
 
     ```PowerShell
-    New-AzureRmDataFactoryPipeline $df -File .\MyFirstPipelinePSH.json
+    New-AzDataFactoryPipeline $df -File .\MyFirstPipelinePSH.json
     ```
 3. 恭喜，现已使用 Azure PowerShell 成功创建第一个管道！
 
 ## <a name="monitor-pipeline"></a>监视管道
 本步骤使用 Azure PowerShell 监视 Azure 数据工厂的运行情况。
 
-1. 运行 **Get-AzureRmDataFactory** 并将输出分配给 **$df** 变量。
+1. 运行 **Get-AzDataFactory** 并将输出分配给 **$df** 变量。
 
     ```PowerShell
-    $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
+    $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-2. 运行 **Get-AzureRmDataFactorySlice**，获取有关 **EmpSQLTable**（管道的输出表）所有切片的详细信息。
+2. 运行 **Get-AzDataFactorySlice**，获取有关 **EmpSQLTable**（管道的输出表）所有切片的详细信息。
 
     ```PowerShell
-    Get-AzureRmDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
+    Get-AzDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
     ```
     请注意，此处指定的 StartDateTime 与在管道 JSON 中指定的开始时间是相同的。 下面是示例输出：
 
@@ -361,10 +364,10 @@ ms.locfileid: "54019225"
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. 运行 **Get-AzureRmDataFactoryRun** ，获取特定切片的活动运行详细信息。
+3. 运行 **Get-AzDataFactoryRun**，获取特定切片的活动运行详细信息。
 
     ```PowerShell
-    Get-AzureRmDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
+    Get-AzDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
     ```
 
     下面是示例输出： 
@@ -388,7 +391,7 @@ ms.locfileid: "54019225"
     PipelineName        : MyFirstPipeline
     Type                : Script
     ```
-    可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
+    可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。   当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
 
     ![输出数据](./media/data-factory-build-your-first-pipeline-using-powershell/three-ouptut-files.png)
 
@@ -413,9 +416,10 @@ ms.locfileid: "54019225"
 本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="see-also"></a>另请参阅
-| 主题 | Description |
+
+| 主题 | 说明 |
 |:--- |:--- |
-| [Data Factory Cmdlet Reference](/powershell/module/azurerm.datafactories) |参阅有关数据工厂 cmdlet 的综合文档 |
+| [Data Factory Cmdlet Reference](/powershell/module/az.datafactory) |参阅有关数据工厂 cmdlet 的综合文档 |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
 | [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 69e86e486a9cdb058b972bda5176c14e15f4630a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 55fa42eb1c35025b1008b3b5d26f61c243ff2b97
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682721"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956663"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>教程：Azure Active Directory 与 Uberflip 的集成
 
@@ -54,34 +54,34 @@ Uberflip 支持以下功能：
 若要配置 Uberflip 与 Azure AD 的集成，需要从 Azure 市场中将 Uberflip 添加到托管 SaaS 应用列表。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左窗格中选择“Azure Active Directory”。
+1. 在左窗格中选择“Azure Active Directory”  。
 
    ![“Azure Active Directory”选项](common/select-azuread.png)
 
-1. 转到“企业应用程序”，并选择“所有应用程序”。
+1. 转到“企业应用程序”，并选择“所有应用程序”。  
 
    ![“企业应用程序”窗格](common/enterprise-applications.png)
 
-1. 若要添加新应用程序，请在窗格顶部选择“+ 新建应用程序”。
+1. 若要添加新应用程序，请在窗格顶部选择“+ 新建应用程序”  。
 
    ![“新建应用程序”选项](common/add-new-app.png)
 
-1. 在搜索框中，输入“Uberflip”。 在搜索结果中选择“Uberflip”，然后选择“添加”以添加应用程序。
+1. 在搜索框中，输入“Uberflip”  。 在搜索结果中选择“Uberflip”，然后选择“添加”以添加应用程序   。
 
    ![结果列表中的 Uberflip](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-本部分基于名为 **Britta Simon** 的测试用户来配置并测试 Uberflip 的 Azure AD 单一登录。 若要正常使用单一登录，需要在 Azure AD 用户与 Uberflip 相关用户之间建立链接关系。
+在本部分中，将基于名为 **B Simon** 的测试用户配置和测试 Uberflip 的 Azure AD 单一登录。 若要正常使用单一登录，需要在 Azure AD 用户与 Uberflip 相关用户之间建立链接关系。
 
 若要配置和测试 Uberflip 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)**，让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** ，让用户能够使用此功能。
 1. **[配置 Uberflip 单一登录](#configure-uberflip-single-sign-on)** 以在应用程序端配置单一登录设置。
-1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)**，以便使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)**，使 Britta Simon 能够使用 Azure AD 单一登录。
-1. **[创建一个 Uberflip 测试用户](#create-an-uberflip-test-user)** ，以便将 Uberflip 中名为 Britta Simon 的用户关联到名为 Britta Simon 的 Azure AD 用户。
-1. **[测试单一登录](#test-single-sign-on)**，验证配置是否正常工作。
+1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B. Simon 测试 Azure AD 单一登录。
+1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，以使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[创建 Uberflip 测试用户](#create-an-uberflip-test-user)** ，以便在 Uberflip 中创建名为 B. Simon 的用户，该用户与名为 B. Simon 的 Azure AD 用户相关联。
+1. **[测试单一登录](#test-single-sign-on)** ，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -89,40 +89,40 @@ Uberflip 支持以下功能：
 
 若要配置 Uberflip 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Uberflip”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Uberflip”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录选项](common/select-sso.png)
 
-1. 在“选择单一登录方法”窗格中，选择“SAML/WS-Fed”模式以启用单一登录。
+1. 在“选择单一登录方法”窗格中，选择“SAML/WS-Fed”模式以启用单一登录   。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-1. 在“设置 SAML 单一登录”窗格中，选择“编辑”（铅笔图标）可打开“基本 SAML 配置”窗格。
+1. 在“设置 SAML 单一登录”窗格中，选择“编辑”（铅笔图标）可打开“基本 SAML 配置”窗格    。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”窗格中，根据需要配置的 SSO 模式，执行以下步骤之一：
+1. 在“基本 SAML 配置”窗格中，根据需要配置的 SSO 模式，执行以下步骤之一  ：
 
-   * 要在 IDP 启动的 SSO 模式下配置应用程序，请在“回复 URL (断言使用者服务 URL)”框中，使用以下模式输入 URL：
+   * 要在 IDP 启动的 SSO 模式下配置应用程序，请在“回复 URL (断言使用者服务 URL)”框中，使用以下模式输入 URL  ：
 
      `https://app.uberflip.com/sso/saml2/<IDPID>/<ACCOUNTID>`
 
      ![Uberflip 域和 URL 单一登录信息](common/both-replyurl.png)
 
      > [!NOTE]
-     > 此值不是真实值。 请使用实际回复 URL 更新此值。 若要获取实际值，请与 [Uberflip 支持团队](mailto:support@uberflip.com)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”窗格中显示的模式。
+     > 此值不是真实值。 请使用实际回复 URL 更新此值。 若要获取实际值，请与 [Uberflip 支持团队](mailto:support@uberflip.com)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  窗格中显示的模式。
 
-   * 要在 SP 启动的 SSO 模式下配置应用程序，请选择“设置其他 URL”，然后在登录 URL 框中输入此 URL：
+   * 要在 SP 启动的 SSO 模式下配置应用程序，请选择“设置其他 URL”，然后在登录 URL 框中输入此 URL   ：
 
      `https://app.uberflip.com/users/login`
 
      ![Uberflip 域和 URL 单一登录信息](common/both-signonurl.png)
 
-1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以从给定的选项下载“联合元数据 XML”并将其保存在计算机中。
+1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以从给定的选项下载“联合元数据 XML”并将其保存在计算机中     。
 
    ![联合元数据 XML 下载选项](common/metadataxml.png)
 
-1. 在“设置 Uberflip”窗格中，复制所需的 URL 或 URLS：
+1. 在“设置 Uberflip”窗格中，复制所需的 URL 或 URLS  ：
 
    * **登录 URL**
    * **Azure AD 标识符**
@@ -136,57 +136,57 @@ Uberflip 支持以下功能：
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，会在 Azure 门户中创建名为“Britta Simon”的测试用户。
+在本部分中，将在 Azure 门户中创建一个名为 B. Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。   
 
     ![“用户”和“所有用户”选项](common/users.png)
 
-1. 在屏幕顶部选择“+ 新建用户”。
+1. 在屏幕顶部选择“+ 新建用户”  。
 
     ![“新建用户”选项](common/new-user.png)
 
-1. 在“用户”窗格中执行以下步骤：
+1. 在“用户”窗格中执行以下步骤  ：
 
     ![“用户”窗格](common/user-properties.png)
 
-    1. 在“姓名”框中，输入 **BrittaSimon**。
+    1. 在“名称”框中，输入“BSimon”   。
   
-    1. 在“用户名”框中，输入 BrittaSimon\@\<yourcompanydomain>.\<extension>。 例如，“BrittaSimon\@contoso.com”。
+    1. 在“用户名”框中，输入“BSimon\@\<yourcompanydomain>.\<extension>”   。 例如，BSimon\@contoso.com  。
 
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
-    1. 选择“创建”。
+    1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过向 Britta Simon 授予 Uberflip 的访问权限支持她使用 Azure 单一登录。
+在本部分中，通过授予 B. Simon 访问 Uberflip 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “Uberflip”。
+1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “Uberflip”    。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
-1. 在应用程序列表中，选择“Uberflip”。
+1. 在应用程序列表中，选择“Uberflip”。 
 
     ![应用程序列表中的 Uberflip](common/all-applications.png)
 
-1. 在左窗格的“管理”下，选择“用户和组”。
+1. 在左窗格的“管理”下，选择“用户和组”   。
 
     ![“用户和组”选项](common/users-groups-blade.png)
 
-1. 选择“+ 添加用户”，然后在“添加分配”窗格中选择“用户和组”。
+1. 选择“+ 添加用户”，然后在“添加分配”窗格中选择“用户和组”    。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-1. 在“用户和组”窗格中，选择“用户”列表中的“Britta Simon”，然后选择窗格底部的“选择”。
+1. 在“用户和组”窗格中，选择“用户”列表中的“B Simon”，然后选择窗格底部的“选择”     。
 
-1. 如果希望在 SAML 断言中使用角色值，请在“选择角色”窗格中，从列表中为用户选择相应的角色。 在窗格底部选择“选择”。
+1. 如果希望在 SAML 断言中使用角色值，请在“选择角色”窗格中，从列表中为用户选择相应的角色  。 在窗格底部选择“选择”  。
 
-1. 在“添加分配”窗格中选择“分配”。
+1. 在“添加分配”窗格中选择“分配”   。
 
 ### <a name="create-an-uberflip-test-user"></a>创建 Uberflip 测试用户
 
-现在在 Uberflip 中创建名为 Britta Simon 的用户。 无需执行任何操作来创建该用户。 Uberflip 支持默认启用的实时用户预配。 如果 Uberflip 中尚不存在名为 Britta Simon 的用户，身份验证后会创建一个新用户。
+名为 B. Simon 的用户现在 Uberflip 中创建。 无需执行任何操作来创建该用户。 Uberflip 支持默认启用的实时用户预配。 如果 Uberflip 中尚不存在名为 B. Simon 的用户，则会在身份验证后创建一个新用户。
 
 > [!NOTE]
 > 如需手动创建用户，请联系 [Uberflip 支持团队](mailto:support@uberflip.com)。
@@ -195,7 +195,7 @@ Uberflip 支持以下功能：
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“Uberflip”时，应自动登录到你为其设置单一登录的 Uberflip 订阅。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在“我的应用”门户中选择“Uberflip”时，应自动登录到你为其设置单一登录的 Uberflip 订阅  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他资源
 

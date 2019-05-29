@@ -4,17 +4,17 @@ description: 了解如何将 Azure Databricks 与事件中心以及认知服务 
 services: azure-databricks
 author: lenadroid
 ms.author: alehall
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 12/07/2018
-ms.openlocfilehash: 54a7f308163cb2463554da32f0fae8b897c0742f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/29/2019
+ms.openlocfilehash: b1b3572b9c485fb8d05c57649a304ff0f76fb1f6
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080533"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990873"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据执行情绪分析
 
@@ -42,7 +42,7 @@ ms.locfileid: "58080533"
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 > [!Note]
-> 不能使用 Azure 免费试用订阅完成本教程。
+> 不能使用 Azure 免费试用订阅完成本教程  。
 > 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -55,7 +55,7 @@ ms.locfileid: "58080533"
 
 完成[创建 Azure 事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)一文中的步骤即可满足这些要求。
 
-## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -63,11 +63,11 @@ ms.locfileid: "58080533"
 
 在本部分，使用 Azure 门户创建 Azure Databricks 工作区。
 
-1. 在 Azure 门户中，选择“创建资源” > “数据 + 分析” > “Azure Databricks”。
+1. 在 Azure 门户中，选择“创建资源”   >   “数据 + 分析” >   “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
-3. 在“Azure Databricks 服务”下，提供所需的值以创建 Databricks 工作区。
+3. 在“Azure Databricks 服务”  下，提供所需的值以创建 Databricks 工作区。
 
     ![创建 Azure Databricks 工作区](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-workspace.png "创建 Azure Databricks 工作区")
 
@@ -78,24 +78,24 @@ ms.locfileid: "58080533"
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。 |
-    |**位置**     | 选择“美国东部 2”。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
-    |**定价层**     |  选择“标准”或“高级”。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
+    |**位置**     | 选择“美国东部 2”。  有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
+    |**定价层**     |  选择“标准”或“高级”。   有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
-    选择“固定到仪表板”，然后选择“创建”。
+    选择“固定到仪表板”  ，然后选择“创建”  。
 
-4. 创建帐户需要几分钟时间。 在创建帐户过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”磁贴。 可能需要在仪表板上向右滚动才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。
+4. 创建帐户需要几分钟时间。 在创建帐户过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”  磁贴。 可能需要在仪表板上向右滚动才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。
 
     ![Databricks 部署磁贴](./media/databricks-sentiment-analysis-cognitive-services/databricks-deployment-tile.png "Databricks 部署磁贴")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
-1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后选择“启动工作区”。
+1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后选择“启动工作区”。 
 
-2. 随后将会重定向到 Azure Databricks 门户。 在门户中选择“群集”。
+2. 随后将会重定向到 Azure Databricks 门户。 在门户中选择“群集”。 
 
     ![Azure 上的 Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-on-azure.png "Azure 上的 Databricks")
 
-3. 在“新建群集”页中，提供用于创建群集的值。
+3. 在“新建群集”页中，提供用于创建群集的值。 
 
     ![在 Azure 上创建 Databricks Spark 群集](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
@@ -105,21 +105,21 @@ ms.locfileid: "58080533"
    * 在本文中，请创建运行时为 **4.0 (beta)** 的群集。
    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
-     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+     选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 
 若要接收推文流，必须在 Twitter 中创建一个应用程序。 按步骤创建一个 Twitter 应用程序，并记下稍后需要在本教程中使用的值。
 
-1. 在 Web 浏览器中，转到 [Twitter 应用程序管理](https://apps.twitter.com/) ，选择“创建新应用”。
+1. 在 Web 浏览器中，转到 [Twitter 应用程序管理](https://apps.twitter.com/) ，选择“创建新应用”  。
 
     ![创建 Twitter 应用程序](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-twitter-app.png "创建 Twitter 应用程序")
 
-2. 在“创建应用程序”页中提供新应用的详细信息，然后选择“创建 Twitter 应用程序”。
+2. 在“创建应用程序”  页中提供新应用的详细信息，然后选择“创建 Twitter 应用程序”  。
 
     ![Twitter 应用程序详细信息](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "Twitter 应用程序详细信息")
 
-3. 在应用程序页中选择“密钥和访问令牌”选项卡，复制“使用者密钥”和“使用者机密”的值。 此外，请选择“创建我的访问令牌”以生成访问令牌。 复制“访问令牌”和“访问令牌机密”的值。
+3. 在应用程序页中选择“密钥和访问令牌”  选项卡，复制“使用者密钥”  和“使用者机密”  的值。 此外，请选择“创建我的访问令牌”  以生成访问令牌。 复制“访问令牌”  和  “访问令牌机密”的值。
 
     ![Twitter 应用程序详细信息](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Twitter 应用程序详细信息")
 
@@ -129,24 +129,24 @@ ms.locfileid: "58080533"
 
 本教程使用 Twitter API 将推文发送到事件中心。 也可以使用 [Apache Spark 事件中心连接器](https://github.com/Azure/azure-event-hubs-spark)在 Azure 事件中心读取和写入数据。 若要将这些 API 用作群集的一部分，请将其作为库添加到 Azure Databricks，然后将其与 Spark 群集相关联。 以下说明介绍如何将库添加到工作区中的 **Shared** 文件夹。
 
-1. 在 Azure Databricks 工作区中选择“工作区”，然后右键单击“共享”。 从上下文菜单中选择“创建” > “库”。
+1. 在 Azure Databricks 工作区中选择“工作区”  ，然后右键单击“共享”  。 从上下文菜单中选择“创建”   >   “库”。
 
    ![“添加库”对话框](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "“添加库”对话框")
 
-2. 在“新建库”页中，为“源”选择“Maven 坐标”。 对于“坐标”，请输入要添加的包的坐标。 下面是本教程中使用的库的 Maven 坐标：
+2. 在“新建库”  页中，为“源”选择“Maven 坐标”  。 对于“坐标”  ，请输入要添加的包的坐标。 下面是本教程中使用的库的 Maven 坐标：
 
    * Spark 事件中心连接器 - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.6`
 
      ![提供 Maven 坐标](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "提供 Maven 坐标")
 
-3. 选择“创建库”。
+3. 选择“创建库”  。
 
 4. 选择库添加到的文件夹，然后选择库名称。
 
     ![选择要添加的库](./media/databricks-sentiment-analysis-cognitive-services/select-library.png "选择要添加的库")
 
-5. 在库页上，选择要在其中使用该库的群集。 将库成功关联到群集后，状态会立即更改为“已附加”。
+5. 在库页上，选择要在其中使用该库的群集。 将库成功关联到群集后，状态会立即更改为“已附加”  。
 
     ![将库附加到群集](./media/databricks-sentiment-analysis-cognitive-services/databricks-library-attached.png "将库附加到群集")
 
@@ -154,17 +154,17 @@ ms.locfileid: "58080533"
 
 ## <a name="get-a-cognitive-services-access-key"></a>获取认知服务访问密钥
 
-本教程介绍如何使用 [Microsoft 认知服务文本分析 API](../cognitive-services/text-analytics/overview.md) 以接近实时的速度对推文流运行情绪分析。 在使用这些 API 之前，必须在 Azure 上创建 Microsoft 认知服务帐户，并检索使用文本分析 API 所需的访问密钥。
+本教程介绍如何使用 [Azure 认知服务文本分析 API](../cognitive-services/text-analytics/overview.md) 以接近实时的速度对推文流运行情绪分析。 在使用这些 API 之前，必须在 Azure 上创建 Azure 认知服务帐户，并检索使用文本分析 API 所需的访问密钥。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“+ 创建资源”。
+2. 选择“+ 创建资源”。 
 
-3. 在 Azure 市场下选择“AI + 认知服务” > “文本分析 API”。
+3. 在 Azure 市场下选择“AI + 认知服务”   >   “文本分析 API”。
 
     ![创建认知服务帐户](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "创建认知服务帐户")
 
-4. 在“创建”对话框中，提供以下值：
+4. 在“创建”  对话框中，提供以下值：
 
     ![创建认知服务帐户](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "创建认知服务帐户")
 
@@ -174,15 +174,15 @@ ms.locfileid: "58080533"
    - 选择服务定价层。 有关认知服务定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/)。
    - 指定是要创建新的资源组还是选择现有的资源组。
 
-     选择“创建”。
+     选择“创建”  。
 
-5. 创建帐户后，请从“概述”选项卡中选择“显示访问密钥”。
+5. 创建帐户后，请从“概述”  选项卡中选择“显示访问密钥”  。
 
     ![显示访问密钥](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "显示访问密钥")
 
     另请复制终结点 URL 的一部分，如屏幕截图所示。 本教程会用到此 URL。
 
-6. 在“管理密钥”下针对要使用的密钥选择复制图标。
+6. 在“管理密钥”  下针对要使用的密钥选择复制图标。
 
     ![复制访问密钥](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-copy-access-keys.png "复制访问密钥")
 
@@ -195,15 +195,15 @@ ms.locfileid: "58080533"
 - **SendTweetsToEventHub** - 用于从 Twitter 获取推文并将其流式传输到事件中心的生成者 Notebook。
 - **AnalyzeTweetsFromEventHub** - 用于从事件中心读取推文并运行情绪分析的使用者 Notebook。
 
-1. 在左窗格中选择“工作区”。 在“工作区”下拉列表中选择“创建”，然后选择“Notebook”。
+1. 在左窗格中选择“工作区”  。 在“工作区”下拉列表中选择“创建”，然后选择“Notebook”。   
 
     ![在 Databricks 中创建笔记本](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "在 Databricks 中创建笔记本")
 
-2. 在“创建 Notebook”对话框中输入 **SendTweetsToEventHub**，选择 **Scala** 作为语言，并选择前面创建的 Spark 群集。
+2. 在“创建 Notebook”  对话框中输入 **SendTweetsToEventHub**，选择 **Scala** 作为语言，并选择前面创建的 Spark 群集。
 
     ![在 Databricks 中创建笔记本](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "在 Databricks 中创建笔记本")
 
-    选择“创建”。
+    选择“创建”  。
 
 3. 重复上述步骤，创建 **AnalyzeTweetsFromEventHub** Notebook。
 
@@ -227,7 +227,7 @@ val connStr = new ConnectionStringBuilder()
             .setSasKeyName(sasKeyName)
             .setSasKey(sasKey)
 
-val pool = Executors.newFixedThreadPool(1)
+val pool = Executors.newScheduledThreadPool(1)
 val eventHubClient = EventHubClient.create(connStr.toString(), pool)
 
 def sendEvent(message: String) = {
@@ -308,12 +308,18 @@ while (!finished) {
 import org.apache.spark.eventhubs._
 
 // Build connection string with the above information
-val connectionString = ConnectionStringBuilder("<EVENT HUBS CONNECTION STRING>")
-  .setEventHubName("<EVENT HUB NAME>")
-  .build
+val namespaceName = "<EVENT HUBS NAMESPACE>"
+val eventHubName = "<EVENT HUB NAME>"
+val sasKeyName = "<POLICY NAME>"
+val sasKey = "<POLICY KEY>"
+val connectionString = ConnectionStringBuilder()
+            .setNamespaceName(namespaceName)
+            .setEventHubName(eventHubName)
+            .setSasKeyName(sasKeyName)
+            .setSasKey(sasKey)
 
 val customEventhubParameters =
-  EventHubsConf(connectionString)
+  EventHubsConf(connectionString.toString())
   .setMaxEventsPerTrigger(5)
 
 val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
@@ -572,17 +578,17 @@ streamingDataFrame.writeStream.outputMode("append").format("console").option("tr
     |4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |0.5               |
     +--------------------------------+------------------+
 
-在“情绪”列中，值接近于 **1** 表明 Azure 体验很好。 值接近于 **0** 表明用户在使用 Microsoft Azure 时遇到问题。
+在“情绪”列中，值接近于 **1** 表明  Azure 体验很好。 值接近于 **0** 表明用户在使用 Microsoft Azure 时遇到问题。
 
 就这么简单！ 现已成功使用 Azure Databricks 以接近实时的速度将数据流式传输到 Azure 事件中心，通过事件中心连接器使用了流数据，然后对流数据运行了情绪分析。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-运行完本教程后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”。 针对想要终止的群集，将光标移到“操作”列下面的省略号上，选择“终止”图标。
+运行完本教程后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”  。 针对想要终止的群集，将光标移到“操作”  列下面的省略号上，选择“终止”  图标。
 
 ![停止 Databricks 群集](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”  复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了如何使用 Azure Databricks 将数据流式传输到 Azure 事件中心，然后从事件中心实时读取流数据。 你已了解如何：

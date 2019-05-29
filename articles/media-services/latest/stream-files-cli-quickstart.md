@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务和 Azure CLI 流式传输视频文件 | Microsoft Docs
-description: 按照此快速入门的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
+description: 按照本教程的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,24 +9,24 @@ editor: ''
 keywords: Azure 媒体服务, 流式传输
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: ''
 ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: bd818135f289c430416909d16c8568208936a9f8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: cce424b11cc4cd587c6e7c50bc8bdf988004a43a
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205406"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550200"
 ---
-# <a name="quickstart-stream-video-files---cli"></a>快速入门：流式处理视频文件 - CLI
+# <a name="tutorial-stream-video-files---cli"></a>教程：流式处理视频文件 - CLI
 
-本快速入门介绍如何使用 Azure 媒体服务和 Azure CLI 在各种浏览器与设备上轻松编码和流式传输视频。 可以使用 HTTPS、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
+本教程介绍如何使用 Azure 媒体服务和 Azure CLI 在各种浏览器与设备上轻松编码和流式传输视频。 可以使用 HTTPS、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
 
 本文中的示例对可通过 HTTPS URL 访问的内容进行编码。 媒体服务 v3 目前不支持基于 HTTPS URL 的块式传输编码。
 
-完成本快速入门后，即可流式传输视频。  
+完成本教程后，即可流式传输视频。  
 
 ![播放视频](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -334,15 +334,15 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 > 如果播放器托管在 HTTPS 站点上，请确保在 URL 的开头添加“https”。
 
 1. 打开 Web 浏览器并转到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在“URL”框中，粘贴在上一部分生成的 URL。 可以粘贴 HLS、Dash 或 Smooth 格式的 URL。 Azure Media Player 将自动使用相应的流协议在设备上播放。
-3. 选择“更新播放器”。
+2. 在“URL”框中，粘贴在上一部分生成的 URL。  可以粘贴 HLS、Dash 或 Smooth 格式的 URL。 Azure Media Player 将自动使用相应的流协议在设备上播放。
+3. 选择“更新播放器”。 
 
 >[!NOTE]
 >Azure Media Player 可用于测试，但不可在生产环境中使用。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组中的任一资源（包括本快速入门中创建的媒体服务和存储帐户），请删除该资源组。
+如果不再需要你的资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除该资源组。
 
 运行以下 CLI 命令：
 
@@ -350,10 +350,7 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 az group delete --name amsResourceGroup
 ```
 
-## <a name="see-also"></a>另请参阅
-
-请参阅[作业错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
-
 ## <a name="next-steps"></a>后续步骤
 
 [媒体服务概述](media-services-overview.md)
+

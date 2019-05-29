@@ -1,19 +1,19 @@
 ---
-title: 通过 SMB 将数据复制到 Microsoft Azure Data Box | Microsoft Docs
+title: 有关通过 SMB 将数据复制到 Azure Data Box 的教程 | Microsoft Docs
 description: 了解如何通过 SMB 将数据复制到 Azure Data Box
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 05/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474d4ee8751bcd472aa109e9e541d639344276d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 83eabca3b2ec1903e25b02083b1a2d5b49745396
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118078"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800454"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>教程：通过 SMB 将数据复制到 Azure Data Box
 
@@ -32,7 +32,7 @@ ms.locfileid: "58118078"
 在开始之前，请确保：
 
 1. 已完成[教程：设置 Azure Data Box](data-box-deploy-set-up.md)。
-2. 已收到 Data Box，并且门户中的订单状态为“已送达”。
+2. 已收到 Data Box，并且门户中的订单状态为“已送达”。 
 3. 你有一台主机，其中的数据需复制到 Data Box。 该主机必须
     - 运行[支持的操作系统](data-box-system-requirements.md)。
     - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，可以使用 1-GbE 数据链路，但复制速度会受影响。
@@ -41,8 +41,8 @@ ms.locfileid: "58118078"
 
 根据选择的存储帐户，Data Box 将会：
 - 为每个关联的 GPv1 和 GPv2 存储帐户最多创建三个共享。
-- 用于高级存储的一个共享。 
-- 用于 Blob 存储帐户的一个共享。 
+- 用于高级存储的一个共享。
+- 用于 Blob 存储帐户的一个共享。
 
 在块 blob 和页 blob 共享下，一级实体为容器，二级实体为 blob。 在 Azure 文件共享下，一级实体为共享，二级实体为文件。
 
@@ -56,15 +56,15 @@ ms.locfileid: "58118078"
 
 如果使用 Windows Server 主机，请按照以下步骤连接到 Data Box。
 
-1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。 单击“获取凭据”，获取与存储帐户关联的共享的访问凭据。 
+1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。  单击“获取凭据”，获取与存储帐户关联的共享的访问凭据。  
 
     ![获取共享凭据 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. 在“访问共享和复制数据”对话框中，复制对应于该共享的“用户名”和“密码”。 单击“确定”。
+2. 在“访问共享和复制数据”对话框中，复制对应于该共享的“用户名”和“密码”。   单击“确定”。 
     
     ![获取共享凭据 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. 若要从主机访问与存储帐户关联的共享（以下示例中为 devicemanagertest1），请打开命令窗口。 在命令提示符处，键入：
+3. 若要从主机访问与存储帐户关联的共享（以下示例中为 devicemanagertest1），请打开命令窗口  。 在命令提示符处，键入：
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -81,7 +81,7 @@ ms.locfileid: "58118078"
     The command completed successfully.
     ```
 
-4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 单击“确定”打开文件资源管理器。
+4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。  单击“确定”打开文件资源管理器  。
     
     ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
@@ -89,9 +89,9 @@ ms.locfileid: "58118078"
     
     ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)    
 
-    **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹。
+    **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹  。
     
-如果使用 Linux 客户端，请使用以下命令装载 SMB 共享。 下面的“vers”参数是 Linux 主机支持的 SMB 版本。 在下面的命令中插入相应版本。 有关 Data Box 支持的 SMB 版本，请参阅 [Linux 客户端支持的文件系统](https://docs.microsoft.com/en-us/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
+如果使用 Linux 客户端，请使用以下命令装载 SMB 共享。 下面的“vers”参数是 Linux 主机支持的 SMB 版本。 在下面的命令中插入相应版本。 有关 Data Box 支持的 SMB 版本，请参阅 [Linux 客户端支持的文件系统](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
     `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
     
@@ -109,7 +109,7 @@ ms.locfileid: "58118078"
     - 将相同的数据复制到 Azure 上的同一个最终目标。 
      
   在这些情况下，最终的结果不可确定。
-- 始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹。
+- 始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹  。
 
 连接到 SMB 共享后，开始数据复制。 可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 请使用以下命令：
     
@@ -132,7 +132,7 @@ ms.locfileid: "58118078"
 |/z    | 在重启模式下复制文件，如果环境不稳定，请使用此选项。 由于日志记录量增加，此选项会降低吞吐量。      |
 | /zb     | 使用重启模式。 如果访问被拒绝，此选项将使用备份模式。 由于要设置检查点，此选项会降低吞吐量。         |
 |/efsraw     | 在 EFS 原始模式下复制所有加密的文件。 请仅对加密的文件使用此选项。         |
-|log+:<LogFile>| 将输出追加到现有的日志文件。|    
+|log+:\<LogFile>| 将输出追加到现有的日志文件。|    
  
 以下示例演示用于将文件复制到 Data Box 的 robocopy 命令的输出。
     
@@ -202,7 +202,7 @@ ms.locfileid: "58118078"
 
 有关 Robocopy 命令的详细信息，请转到 [Robocopy 和几个示例](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)。
 
-打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的错误文件。
+打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的错误文件。 有关详细信息，请参阅[查看将数据复制到 Data Box 期间的错误日志](data-box-logs.md#view-error-log-during-data-copy-to-data-box)。 有关数据复制期间的错误详细列表，请参阅 [Data Box 问题故障排除](data-box-troubleshoot.md)。
 
 为确保数据完整性，复制数据时将以内联方式计算校验和。 复制完成后，检查设备上的已用空间和可用空间。
     

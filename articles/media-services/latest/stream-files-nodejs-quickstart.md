@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务流式处理视频文件 - Node.js | Microsoft Docs
-description: 按照此快速入门的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
+description: 按照本教程的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,24 @@ editor: ''
 keywords: Azure 媒体服务, 流式传输
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 22b7f2380b509daa4cb9931d6fc57c1297628e3d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 3e4172cd149726e28e0c7dff435ec1f7a59ee169
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522744"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550170"
 ---
-# <a name="quickstart-stream-video-files---nodejs"></a>快速入门：流式处理视频文件 - Node.js
+# <a name="tutorial-stream-video-files---nodejs"></a>教程：流式处理视频文件 - Node.js
 
-本快速入门展示了使用 Azure 媒体服务在各种浏览器和设备上对视频进行编码和流式处理有多轻松。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
-本主题中的示例对可通过 HTTPS URL 访问的内容进行编码。 请注意，目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
+本教程展示了使用 Azure 媒体服务在各种浏览器和设备上对视频进行编码和流式处理有多轻松。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
 
-完成本快速入门后即可对视频进行流式处理。  
+本文中的示例对可通过 HTTPS URL 访问的内容进行编码。 请注意，目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
+
+完成本教程后即可对视频进行流式处理。  
 
 ![播放视频](./media/stream-files-nodejs-quickstart/final-video.png)
 
@@ -81,16 +82,16 @@ ms.locfileid: "58522744"
 > 如果播放器在 Https 站点上进行托管，请确保将 URL 更新为“https”。
 
 1. 打开 Web 浏览器并导航到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在“URL:”框中，粘贴运行应用程序时获取的某个流式处理 URL 值。 
+2. 在“URL:”框中，粘贴运行应用程序时获取的某个流式处理 URL 值  。 
  
      可以粘贴 HLS、Dash 或 Smooth 格式的 URL，Azure Media Player将切换到适当的流协议，以便在你的设备上自动播放。
-3. 按“更新播放器”。
+3. 按“更新播放器”  。
 
 Azure Media Player 可用于测试，但不可在生产环境中使用。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要你的资源组中的任何一个资源（包括使用本快速入门创建的媒体服务和存储帐户），请删除该资源组。
+如果不再需要你的资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除该资源组。
 
 执行以下 CLI 命令：
 

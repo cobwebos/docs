@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 234febe92727e5a47d4cfc5b836cd5593e99b5b5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 90a17839afdddb4d6ad8abfa57963b4c76b100ed
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238362"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604292"
 ---
 # <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>使用事件网格和 Azure Functions 将捕获的事件中心数据迁移到 SQL 数据仓库
 
@@ -39,7 +39,7 @@ ms.locfileid: "56238362"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Visual Studio 2017 15.3.2 或更高版本](https://www.visualstudio.com/vs/)。 在安装时，请确保安装以下工作负荷：.NET 桌面开发、Azure 开发、ASP.NET 和 Web 开发、Node.js 开发、Python 开发
+- [Visual Studio 2019](https://www.visualstudio.com/vs/)。 在安装时，请确保安装以下工作负荷：.NET 桌面开发、Azure 开发、ASP.NET 和 Web 开发、Node.js 开发、Python 开发
 - 下载 [Git 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)。 示例解决方案包含以下组件：
     - *WindTurbineDataGenerator* – 一个简单的发布服务器，可以将示例性的风力涡轮机数据发送到启用了捕获功能的事件中心
     - *FunctionDWDumper* – 一个 Azure Function，可以在 Avro 文件捕获到 Azure 存储 Blob 时接收事件网格通知。 它接收 Blob 的 URI 路径、读取其内容并将该数据推送到 SQL 数据仓库。
@@ -106,21 +106,21 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>将代码发布到 Functions 应用
 
-1. 在 Visual Studio 2017（15.3.2 或更高版本）中打开解决方案 *EventHubsCaptureEventGridDemo.sln*。 
+1. 在 Visual Studio 2019 中打开解决方案 EventHubsCaptureEventGridDemo.sln  。
 
-1. 在“解决方案资源管理器”中，右键单击“FunctionEGDWDumper”，再选择“发布”。
+1. 在“解决方案资源管理器”中，右键单击“FunctionEGDWDumper”  ，再选择“发布”  。
 
    ![发布函数应用](./media/store-captured-data-data-warehouse/publish-function-app.png)
 
-1. 选择“Azure Function App”，再选中“选择现有”。 选择“发布”。
+1. 选择“Azure Function App”  ，再选中“选择现有”  。 选择“发布”  。
 
    ![目标函数应用](./media/store-captured-data-data-warehouse/pick-target.png)
 
-1. 选择通过模板部署的函数应用。 选择“确定”。
+1. 选择通过模板部署的函数应用。 选择“确定”  。
 
    ![选择函数应用](./media/store-captured-data-data-warehouse/select-function-app.png)
 
-1. 在 Visual Studio 配置好配置文件后，选择“发布”。
+1. 在 Visual Studio 配置好配置文件后，选择“发布”  。
 
    ![选择发布](./media/store-captured-data-data-warehouse/select-publish.png)
 
@@ -137,26 +137,26 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![选择函数](./media/store-captured-data-data-warehouse/select-function.png)
 
-1. 选择“添加事件网格订阅”。
+1. 选择“添加事件网格订阅”  。
 
    ![添加订阅](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. 为事件网格订阅指定名称。 使用“事件中心命名空间”作为事件类型。 提供用于选择事件中心命名空间实例的值。 将订阅服务器终结点保留为提供的值。 选择“创建”。
+1. 为事件网格订阅指定名称。 使用“事件中心命名空间”  作为事件类型。 提供用于选择事件中心命名空间实例的值。 将订阅服务器终结点保留为提供的值。 选择“创建”  。
 
    ![创建订阅](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
 ## <a name="generate-sample-data"></a>生成示例数据  
 现在已设置事件中心、SQL 数据仓库、Azure Function App 和事件网格订阅。 在源代码中更新连接字符串和事件中心以后，即可运行 WindTurbineDataGenerator.exe 以生成发往事件中心的数据流。 
 
-1. 在门户中，选择“事件中心”命名空间。 选择“连接字符串”。
+1. 在门户中，选择“事件中心”命名空间。 选择“连接字符串”  。
 
    ![选择“连接字符串”](./media/store-captured-data-data-warehouse/event-hub-connection.png)
 
-2. 选择“RootManageSharedAccessKey”
+2. 选择“RootManageSharedAccessKey” 
 
    ![选择密钥](./media/store-captured-data-data-warehouse/show-root-key.png)
 
-3. 复制“连接字符串 - 主密钥”
+3. 复制“连接字符串 - 主密钥” 
 
    ![复制密钥](./media/store-captured-data-data-warehouse/copy-key.png)
 

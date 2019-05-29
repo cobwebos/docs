@@ -27,7 +27,7 @@ ms.locfileid: "59579166"
 本教程介绍如何将 Azure Active Directory (Azure AD) 配置为自动为 Zscaler ZSCloud 预配和取消设置用户和/或组。
 
 > [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题解答的重要详细信息，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消设置](../active-directory-saas-app-provisioning.md)。
+> 本教程介绍在 Azure AD 用户预配服务基础上构建的连接器。 有关此服务的功能、工作原理的重要详细信息以及常见问题解答，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消设置](../active-directory-saas-app-provisioning.md)。
 >
 > 此连接器目前提供公开预览版。 要详细了解 Azure 预览功能的常规使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -46,19 +46,19 @@ ms.locfileid: "59579166"
 
 在使用 Azure AD 为 Zscaler ZSCloud 配置自动用户预配之前，需要从 Azure AD 应用程序库将 Zscaler ZSCloud 添加到托管的 SaaS 应用程序列表。
 
-在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”：
+在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”  ：
 
 ![选择“Azure Active Directory”](common/select-azuread.png)
 
-转到“企业应用程序”，并选择“所有应用程序”：
+转到“企业应用程序”，并选择“所有应用程序”   ：
 
 ![企业应用程序](common/enterprise-applications.png)
 
-若要添加应用程序，请在窗口顶部选择“新建应用程序”：
+若要添加应用程序，请在窗口顶部选择“新建应用程序”  ：
 
 ![选择“新建应用程序”](common/add-new-app.png)
 
-在搜索框中，输入 Zscaler ZSCloud。 在结果中选择“Zscaler ZSCloud”，然后选择“添加”。
+在搜索框中，输入 Zscaler ZSCloud  。 在结果中选择“Zscaler ZSCloud”，然后选择“添加”   。
 
 ![结果列表](common/search-new-app.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "59579166"
 
 * 建议先将一个 Azure AD 用户分配到 Zscaler ZSCloud 以测试自动用户预配配置。 稍后再分配更多用户和组。
 
-* 如果将用户分配到 Zscaler ZSCloud，则需要在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有“默认访问权限”角色的用户排除在预配之外。
+* 将用户分配到 Zscaler ZSCloud 时，需要在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="set-up-automatic-user-provisioning"></a>设置自动用户预配
 
@@ -81,75 +81,75 @@ ms.locfileid: "59579166"
 > [!TIP]
 > 此外，还建议为 Zscaler ZSCloud 启用基于 SAML 的单一登录。 如果要启用，请按照 [Zscaler ZSCloud 单一登录教程](zscaler-zsCloud-tutorial.md)中的说明进行操作。 可以独立于自动用户预配配置单一登录，但这两个功能相互补充。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“企业应用程序” > “所有应用程序” > “Zscaler ZSCloud”：
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“企业应用程序” > “所有应用程序” > “Zscaler ZSCloud”    ：
 
     ![企业应用程序](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Zscaler ZSCloud”：
+2. 在应用程序列表中，选择“Zscaler ZSCloud”  ：
 
     ![“应用程序”列表](common/all-applications.png)
 
-3. 选择“预配”选项卡：
+3. 选择“预配”选项卡  ：
 
     ![预配 Zscaler ZSCloud](./media/zscaler-zscloud-provisioning-tutorial/provisioningtab.png)
 
-4. 将“预配模式”设置为“自动”：
+4. 将“预配模式”设置为“自动”   ：
 
     ![设置预配模式](./media/zscaler-zscloud-provisioning-tutorial/provisioningcredentials.png)
 
-5. 在“管理员凭据”部分中，输入 Zscaler ZSCloud 帐户的“租户 URL”和“机密令牌”，如下一步中所述。
+5. 在“管理员凭据”部分中，输入 Zscaler ZSCloud 帐户的“租户 URL”和“机密令牌”，如下一步中所述    。
 
-6. 要获取“租户 URL”和“机密令牌”，请转到 Zscaler ZSCloud 门户中的“管理” > “身份验证设置”，然后选择“身份验证类型”下的 SAML：
+6. 要获取“租户 URL”和“机密令牌”，请转到 Zscaler ZSCloud 门户中的“管理” > “身份验证设置”，然后选择“身份验证类型”下的 SAML       ：
 
     ![Zscaler ZSCloud 身份验证设置](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
-    选择“配置 SAML”以打开“配置 SAML”窗口：
+    选择“配置 SAML”以打开“配置 SAML”窗口   ：
 
     ![“配置 SAML”窗口](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
-    选择“启用基于 SCIM 的预配”并复制“基本 URL”和“持有者令牌”，然后保存设置。 在 Azure 门户中，将“基本 URL”粘贴到“租户 URL”框中，将“持有者令牌”粘贴到“机密令牌”框中。
+    选择“启用基于 SCIM 的预配”并复制“基本 URL”和“持有者令牌”，然后保存设置    。 在 Azure 门户中，将“基本 URL”粘贴到“租户 URL”框中，将“持有者令牌”粘贴到“机密令牌”框中     。
 
-7. 在“租户 URL”和“机密令牌”框中输入值后，选择“测试连接”以确保 Azure AD 可以连接到 Zscaler ZSCloud。 如果连接失败，请确保 Zscaler ZSCloud 帐户具有管理员权限，然后重试。
+7. 在“租户 URL”和“机密令牌”框中输入值后，选择“测试连接”以确保 Azure AD 可以连接到 Zscaler ZSCloud    。 如果连接失败，请确保 Zscaler ZSCloud 帐户具有管理员权限，然后重试。
 
     ![测试连接](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
 
-8. 在“通知电子邮件”框中输入应接收预配错误通知的人员或组的电子邮件地址。 选择“发生故障时发送电子邮件通知”：
+8. 在“通知电子邮件”框中输入应接收预配错误通知的人员或组的电子邮件地址  。 选择“发生故障时发送电子邮件通知”  ：
 
     ![设置通知电子邮件](./media/zscaler-zscloud-provisioning-tutorial/Notification.png)
 
-9. 选择“保存”。
+9. 选择“保存”。 
 
-10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 ZscalerZSCloud”：
+10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 ZscalerZSCloud”   ：
 
     ![同步 Azure AD 用户](./media/zscaler-zscloud-provisioning-tutorial/usermappings.png)
 
-11. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler ZSCloud 的用户属性。 选为“匹配”属性的特性用于匹配 Zscaler ZSCloud 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。
+11. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler ZSCloud 的用户属性  。 选为“匹配”属性的特性用于匹配 Zscaler ZSCloud 中的用户帐户以执行更新操作  。 选择“保存”，提交所有更改  。
 
     ![属性映射](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
-12. 在“映射”部分中，选择“将 Azure Active Directory 组同步到 ZscalerZSCloud”：
+12. 在“映射”部分中，选择“将 Azure Active Directory 组同步到 ZscalerZSCloud”   ：
 
     ![同步 Azure AD 组](./media/zscaler-zscloud-provisioning-tutorial/groupmappings.png)
 
-13. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler ZSCloud 的组属性。 选为“匹配”属性的特性用于匹配 Zscaler ZSCloud 中的组以执行更新操作。 选择“保存”，提交所有更改。
+13. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler ZSCloud 的组属性  。 选为“匹配”属性的特性用于匹配 Zscaler ZSCloud 中的组以执行更新操作  。 选择“保存”，提交所有更改  。
 
     ![属性映射](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
 14. 若要配置范围筛选器，请参阅[范围筛选器教程](./../active-directory-saas-scoping-filters.md)中的说明。
 
-15. 若要为 Zscaler ZSCloud 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”：
+15. 若要为 Zscaler ZSCloud 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”    ：
 
     ![预配状态](./media/zscaler-zscloud-provisioning-tutorial/provisioningstatus.png)
 
-16. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Zscaler ZSCloud 的用户和/或组：
+16. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Zscaler ZSCloud 的用户和/或组   ：
 
     ![范围值](./media/zscaler-zscloud-provisioning-tutorial/scoping.png)
 
-17. 准备好预配时，选择“保存”：
+17. 准备好预配时，选择“保存”  ：
 
     ![选择“保存”](./media/zscaler-zscloud-provisioning-tutorial/saveprovisioning.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步。 初始同步花费的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每 40 分钟就会进行一次同步。 可在“同步详细信息”部分中监视进度。 也可跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 Zscaler ZSCloud 执行的所有操作。
+此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步   。 初始同步花费的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每 40 分钟就会进行一次同步。 可在“同步详细信息”部分中监视进度  。 也可跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 Zscaler ZSCloud 执行的所有操作。
 
 要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904501"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949786"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>教程 1：预测信用风险 - Azure 机器学习工作室
 
@@ -47,7 +47,7 @@ ms.locfileid: "57904501"
 
 
 > [!TIP] 
-> 可在 [Azure AI 库](https://gallery.azure.ai)中找到本教程中开发的试验的工作副本。 请转到**[教程 - 预测信用风险](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** 并单击“在工作室中打开”将试验副本下载到机器学习工作室的工作区。
+> 可在 [Azure AI 库](https://gallery.azure.ai)中找到本教程中开发的试验的工作副本。 请转到 **[教程 - 预测信用风险](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** 并单击“在工作室中打开”  将试验副本下载到机器学习工作室的工作区。
 > 
 
 
@@ -62,9 +62,9 @@ ms.locfileid: "57904501"
 ![在 Studio 中选择工作区](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> 如果你是工作区的所有者，则可通过邀请其他人到工作区来共享所进行的试验。 可以在“设置”页上的“机器学习工作室”中执行此操作。 只需每位用户的 Microsoft 帐户或组织帐户即可。
+> 如果你是工作区的所有者，则可通过邀请其他人到工作区来共享所进行的试验。 可以在“设置”  页上的“机器学习工作室”中执行此操作。 只需每位用户的 Microsoft 帐户或组织帐户即可。
 > 
-> 在“设置”页上，单击“用户”，并在窗口底部单击“邀请更多用户”。
+> 在“设置”  页上，单击“用户”  ，并在窗口底部单击“邀请更多用户”  。
 > 
 
 ## <a name="upload"></a>上传现有数据
@@ -78,7 +78,7 @@ ms.locfileid: "57904501"
 
 UCI 网站提供此数据的功能向量的属性说明。 此数据包括财务信息、信用历史记录、就业状态和个人信息。 每个申请人都将提供二进制分级，指示他们的信贷风险是高还是低。 
 
-我们将使用此数据训练一个预测分析模型。 操作完成后，模型应能够接受一个新个体的特征向量，并预测其信用风险是低还是高。  
+我们将使用此数据训练一个预测分析模型。 操作完成后，模型应能够接受新个体的特征向量，并预测其信用风险是低还是高。  
 
 下面是一个有趣的转折。
 
@@ -114,31 +114,31 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 1. 打开机器学习工作室主页 ([https://studio.azureml.net](https://studio.azureml.net))。 
 
-2. 单击窗口左上角菜单![菜单](./media/tutorial-part1-credit-risk/menu.png)，单击“Azure 机器学习”，选择“工作室”，并登录。
+2. 单击窗口左上角菜单![菜单](./media/tutorial-part1-credit-risk/menu.png)，单击“Azure 机器学习”  ，选择“工作室”  ，并登录。
 
-3. 单击窗口底部的“+ 新建”。
+3. 单击窗口底部的“+ 新建”  。
 
-4. 选择“数据集”。
+4. 选择“数据集”  。
 
-5. 选择“从本地文件”。
+5. 选择“从本地文件”  。
 
     ![从本地文件添加数据集](./media/tutorial-part1-credit-risk/add-dataset.png)
 
-6. 在“上传新数据集”对话框中单击“浏览”，找到创建的 **german.csv** 文件。
+6. 在“上传新数据集”对话框中单击“浏览”，找到创建的 **german.csv** 文件。 
 
 7. 输入数据集名称。 在本教程中，此数据集名为“UCI 德国信用卡数据”。
 
-8. 对于数据类型，请选择“没有标题的一般 CSV 文件(.nh.csv)”。
+8. 对于数据类型，请选择“没有标题的一般 CSV 文件(.nh.csv)”  。
 
 9. 如果需要，可添加描述。
 
-10. 单击“确定”复选标记。  
+10. 单击“确定”  复选标记。  
 
     ![上传数据集](./media/tutorial-part1-credit-risk/upload-dataset.png)
 
 这会数据上传到可在试验中使用的数据集模块。
 
-可以通过单击工作室窗口左侧的“数据集”选项卡，来管理已上传到工作室的数据集。
+可以通过单击工作室窗口左侧的“数据集”  选项卡，来管理已上传到工作室的数据集。
 
 ![管理数据集](./media/tutorial-part1-credit-risk/dataset-list.png)
 
@@ -148,8 +148,8 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 本教程的下一步是在机器学习工作室中创建一个使用我们上传的数据集的试验。  
 
-1. 在工作室中，单击窗口底部的“+新建”。
-1. 选择“实验”，并选择“空白实验”。 
+1. 在工作室中，单击窗口底部的“+新建”  。
+1. 选择“实验”  ，并选择“空白实验”。 
 
     ![创建新实验](./media/tutorial-part1-credit-risk/create-new-experiment.png)
 
@@ -159,22 +159,22 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
     ![重命名实验](./media/tutorial-part1-credit-risk/rename-experiment.png)
 
    > [!TIP]
-   > 在“属性”窗格中填写实验的“摘要”和“说明”会是一个很好的做法。 这些属性提供了记录实验的机会，以便任何看到它的人都能理解目标和方法。
+   > 在“属性”  窗格中填写实验的“摘要”  和“说明”  会是一个很好的做法。 这些属性提供了记录实验的机会，以便任何看到它的人都能理解目标和方法。
    > 
    > ![实验属性](./media/tutorial-part1-credit-risk/experiment-properties.png)
    > 
 
-1. 在实验画布左侧的模块控制板中，展开“已保存的数据集”。
-1. 找到在“我的数据集”下创建的数据集，并将其拖动到画布上。 此外还可以通过在控制板上方的“搜索”框中输入名称来查找数据集。  
+1. 在实验画布左侧的模块控制板中，展开“已保存的数据集”  。
+1. 找到在“我的数据集”  下创建的数据集，并将其拖动到画布上。 此外还可以通过在控制板上方的“搜索”  框中输入名称来查找数据集。  
 
     ![将数据集添加到实验](./media/tutorial-part1-credit-risk/add-dataset-to-experiment.png)
 
 
 ### <a name="prepare-the-data"></a>准备数据
 
-可以查看前 100 行数据和整个数据集的一些统计信息：单击数据集的输出端口（底部的小圆圈），然后选择“可视化”。  
+可以查看前 100 行数据和整个数据集的一些统计信息：单击数据集的输出端口（底部的小圆圈），然后选择“可视化”  。  
 
-因为数据文件没有列标题，所以工作室提供了通用标题（Col1、Col2 等）。 好标题不是创建模型的关键，但它们使实验中的数据处理变得更加容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
+因为数据文件没有列标题，所以工作室提供了通用标题（Col1、Col2 等  ）。 好标题不是创建模型的关键，但它们使实验中的数据处理变得更加容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
 
 可以使用[编辑元数据][edit-metadata]模块来添加列标题。
 
@@ -182,7 +182,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 若要使用[编辑元数据][edit-metadata]，请首先指定要修改的列（在本例中为所有列）。接下来，指定要对这些列执行的操作（在此情况下为更改列标题）。
 
-1. 在模块控制板的“搜索”框中键入“元数据”。 [编辑元数据][edit-metadata]将出现在模块列表中。
+1. 在模块控制板的“搜索”  框中键入“元数据”。 [编辑元数据][edit-metadata]将出现在模块列表中。
 
 1. 单击并将[编辑元数据][edit-metadata]模块拖动到画布上，并将其拖放到我们之前添加的数据集的下方。
 
@@ -200,17 +200,17 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
     > ![添加了注释的“编辑元数据”模块](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
     > 
 
-1. 选择[编辑元数据][edit-metadata]，并在画布右侧的“属性”窗格中，单击“启动列选择器”。
+1. 选择[编辑元数据][edit-metadata]，并在画布右侧的“属性”  窗格中，单击“启动列选择器”  。
 
-1. 在“选择列”对话框中，选择“可用列”中的所有行，并单击 > 以将其移动到“选定列”。
+1. 在“选择列”  对话框中，选择“可用列”  中的所有行，并单击 > 以将其移动到“选定列”  。
    此对话框应如下所示：
 
    ![其中选择了所有列的列选择器](./media/tutorial-part1-credit-risk/select-columns.png)
 
 
-1. 单击“确定”复选标记。
+1. 单击“确定”  复选标记。
 
-1. 回到“属性”窗格中，查找“新列名称”参数。 在此字段中，输入数据集中 21 列的名称列表，以逗号分隔并按列排序。 可以从 UCI 网站上的数据集文档中获取列名称，或为了方便起见，也可以复制并粘贴以下列表：  
+1. 回到“属性”  窗格中，查找“新列名称”  参数。 在此字段中，输入数据集中 21 列的名称列表，以逗号分隔并按列排序。 可以从 UCI 网站上的数据集文档中获取列名称，或为了方便起见，也可以复制并粘贴以下列表：  
 
    ```   
    Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
@@ -221,7 +221,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
    ![编辑元数据的属性](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > 若要验证列标题，请运行实验（单击实验画布下方的“运行”）。 完成运行后（[编辑元数据][edit-metadata]上会出现一个绿色对号），单击[编辑元数据][edit-metadata]模块的输出端口，并选择“可视化”。 可以用同样的方式查看任何模块的输出，以通过实验查看数据的进度。
+   > 若要验证列标题，请运行实验（单击实验画布下方的“运行”  ）。 完成运行后（[编辑元数据][edit-metadata]上会出现一个绿色对号），单击[编辑元数据][edit-metadata]模块的输出端口，并选择“可视化”  。 可以用同样的方式查看任何模块的输出，以通过实验查看数据的进度。
    > 
    > 
 
@@ -234,7 +234,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 1. 找到[拆分数据][split]模块，将其拖动到画布上，并将其连接到[编辑元数据][edit-metadata]模块。
 
-1. 默认情况下，拆分比为 0.5，并且设置了“随机拆分”参数。 这意味着，随机的一半数据通过[拆分数据][split]模块的一个端口输出，另一半通过另一个端口输出。 可以调整这些参数，以及“随机种子”参数，以更改训练和测试数据之间的拆分。 在本例中，我们将其保持不变。
+1. 默认情况下，拆分比为 0.5，并且设置了“随机拆分”  参数。 这意味着，随机的一半数据通过[拆分数据][split]模块的一个端口输出，另一半通过另一个端口输出。 可以调整这些参数，以及“随机种子”  参数，以更改训练和测试数据之间的拆分。 在本例中，我们将其保持不变。
    
    > [!TIP]
    > **第一个输出数据集中行的分数**属性决定了通过*左*输出端口输出的数据量。 例如，如果将比率设置为 0.7，则 70% 的数据将通过左端口输出，30% 通过右端口输出。  
@@ -255,7 +255,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 1. 双击[执行 R 脚本][execute-r-script]模块，并输入注释“设置成本调整”。
 
-1. 在“属性”窗格中，删除 **R 脚本**参数中的默认文本，并输入以下脚本：
+1. 在“属性”  窗格中，删除 **R 脚本**参数中的默认文本，并输入以下脚本：
    
        dataset1 <- maml.mapInputPort(1)
        data.set<-dataset1[dataset1[,21]==1,]
@@ -267,13 +267,13 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 需要对 [拆分数据][split]模块的每个输出执行相同的复制操作，以便训练和测试数据具有相同的成本调整。 执行此操作的最简单方法是：复制刚才生成的[执行 R 脚本][execute-r-script]模块，将其连接到[拆分数据][split]模块的另一个输出端口。
 
-1. 右键单击 [执行 R 脚本][execute-r-script]模块，并选择“复制”。
+1. 右键单击 [执行 R 脚本][execute-r-script]模块，并选择“复制”  。
 
-1. 右键单击实验画布，并选择“粘贴”。
+1. 右键单击实验画布，并选择“粘贴”  。
 
 1. 将新模块拖放到位，然后将[拆分数据][split]模块的右侧输出端口连接到此新的[执行 R 脚本][execute-r-script]模块的第一个输入端口。 
 
-1. 在画布底部，单击“运行”。 
+1. 在画布底部，单击“运行”  。 
 
 > [!TIP]
 > 执行 R 脚本模块的副本包含与原始模块相同的脚本。 在画布上复制和粘贴模块时，副本将保留原始文件的所有属性。  

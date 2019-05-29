@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/18/2019
 ms.custom: mvc
-ms.openlocfilehash: b0e6e75f962383055d4f28356c3db57aac4a088b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 85f1c051f13484ea8e14a6ae8402067b613fe2bc
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088071"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597543"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -26,7 +26,7 @@ ms.locfileid: "58088071"
 
 在从设备接收遥测数据的同时，你可能需要从后端服务配置设备。 将所需的配置发送到设备时，还可能需要从这些设备接收状态与符合性更新。 例如，可以设置设备的目标工作温度范围，或者从设备收集固件版本信息。
 
-若要在设备与 IoT 中心之间同步状态信息，请使用设备孪生。 [设备孪生](iot-hub-devguide-device-twins.md)是与特定设备关联的 JSON 文档，由云中的 IoT 中心存储，可在 IoT 中心对其进行[查询](iot-hub-devguide-query-language.md)。 设备孪生包含所需属性、报告属性和标记。 所需属性由后端应用程序设置，由设备读取。 报告属性由设备设置，由后端应用程序读取。 标记由后端应用程序设置，永远不会发送到设备。 使用标记可以组织设备。 本教程介绍如何使用所需属性和报告属性来同步状态信息：
+若要在设备与 IoT 中心之间同步状态信息，请使用设备孪生。  [设备孪生](iot-hub-devguide-device-twins.md)是与特定设备关联的 JSON 文档，由云中的 IoT 中心存储，可在 IoT 中心对其进行[查询](iot-hub-devguide-query-language.md)。 设备孪生包含所需属性、报告属性和标记。    所需属性由后端应用程序设置，由设备读取。 报告属性由设备设置，由后端应用程序读取。 标记由后端应用程序设置，永远不会发送到设备。 使用标记可以组织设备。 本教程介绍如何使用所需属性和报告属性来同步状态信息：
 
 ![孪生摘要](media/tutorial-device-twins/DeviceTwins.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "58088071"
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v4.x.x 或更高版本。
+本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
 可从 [nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
 
@@ -59,7 +59,7 @@ node --version
 
 若要完成本教程，你的 Azure 订阅必须包含一个 IoT 中心，其中的某个设备已添加到设备标识注册表。 在本教程中运行的模拟设备可以通过设备标识注册表中的条目连接到中心。
 
-如果尚未在订阅中设置 IoT 中心，可使用以下 CLI 脚本设置一个。 此脚本使用 **tutorial-iot-hub** 作为 IoT 中心的名称。运行此脚本时，应将此名称替换为自己的唯一名称。 此脚本在“美国中部”区域创建资源组和中心。可以更改为更靠近自己的区域。 此脚本将检索 IoT 中心服务连接字符串，在后端示例中，我们将使用该连接字符串连接到 IoT 中心：
+如果尚未在订阅中设置 IoT 中心，可使用以下 CLI 脚本设置一个。 此脚本使用 **tutorial-iot-hub** 作为 IoT 中心的名称。运行此脚本时，应将此名称替换为自己的唯一名称。 此脚本在“美国中部”区域创建资源组和中心。可以更改为更靠近自己的区域。  此脚本将检索 IoT 中心服务连接字符串，在后端示例中，我们将使用该连接字符串连接到 IoT 中心：
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -158,7 +158,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 [!code-javascript[Create registry and get twin](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/ServiceClient.js?name=getregistrytwin&highlight=2,6 "Create registry and get twin")]
 
-以下片段演示后端应用程序发送到设备的不同所需属性补丁：
+以下片段演示后端应用程序发送到设备的不同所需属性补丁： 
 
 [!code-javascript[Patches sent to device](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/ServiceClient.js?name=patches&highlight=2,12,26,41,56 "Patches sent to device")]
 
@@ -248,7 +248,7 @@ node ServiceClient.js "{your service connection string}"
 
 如果你打算完成下一篇教程，请保留资源组和 IoT 中心，以便到时重复使用。
 
-如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的 **tutorial-iot-hub-rg** 资源组，然后单击“删除”。
+如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的 **tutorial-iot-hub-rg** 资源组，然后单击“删除”  。
 
 或者使用 CLI：
 

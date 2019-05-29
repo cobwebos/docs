@@ -3,18 +3,18 @@ title: 创建自定义策略定义
 description: 创建 Azure Policy 的自定义策略定义以强制实施自定义业务规则。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/12/2019
+ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bf3582036a28603c3b6ef33a2af28cb61926d91f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267746"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979673"
 ---
-# <a name="create-a-custom-policy-definition"></a>创建自定义策略定义
+# <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
 客户可以通过自定义策略定义来定义自己的 Azure 使用规则。 这些规则通常强制实施：
 
@@ -46,12 +46,11 @@ ms.locfileid: "59267746"
 
 要求中应该明确规定“正常”和“不正常”资源状态。
 
-尽管我们已定义资源的预期状态，但尚未定义如何处理不合规的资源。 Policy 支持多种[效果](../concepts/effects.md)。 本教程将业务要求定义为阻止创建不符合业务规则的资源。 为了满足此目标，我们将使用“[拒绝](../concepts/effects.md#deny)”效果。 我们还需要使用相应的选项来暂停特定分配的策略。 因此，我们将使用“[已禁用](../concepts/effects.md#disabled)”效果，并将其设为策略定义中的[参数](../concepts/definition-structure.md#parameters)。
+尽管我们已定义资源的预期状态，但尚未定义如何处理不合规的资源。 Azure Policy 支持多种[效果](../concepts/effects.md)。 本教程将业务要求定义为阻止创建不符合业务规则的资源。 为了满足此目标，我们将使用“[拒绝](../concepts/effects.md#deny)”效果。 我们还需要使用相应的选项来暂停特定分配的策略。 因此，我们将使用“[已禁用](../concepts/effects.md#disabled)”效果，并将其设为策略定义中的[参数](../concepts/definition-structure.md#parameters)。
 
 ## <a name="determine-resource-properties"></a>确定资源属性
 
-根据业务要求，要使用 Policy 审核的 Azure 资源是存储帐户。
-但是，我们不知道要在策略定义中使用的属性。 Policy 将会评估资源的 JSON 表示形式，因此，我们需要了解可在该资源中使用的属性。
+根据业务要求，要使用 Azure Policy 审核的 Azure 资源为存储帐户。 但是，我们不知道要在策略定义中使用的属性。 Azure Policy 将会评估资源的 JSON 表示形式，因此，需要了解可在该资源中使用的属性。
 
 可通过多种方式确定 Azure 资源的属性。 本教程将介绍其中的每种方式：
 
@@ -69,9 +68,9 @@ ms.locfileid: "59267746"
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 
 查找属性的最简单方法是查找相同类型的现有资源。 已使用所要强制实施的设置配置的资源也会提供用于比较的值。
-在 Azure 门户中，找到该特定资源的“自动化脚本”页（在“设置”下）。
+在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下）   。
 
-![现有资源上的“导出模板”页](../media/create-custom-policy-definition/automation-script.png)
+![现有资源上的“导出模板”页](../media/create-custom-policy-definition/export-template.png)
 
 针对存储帐户执行此操作会显示以下示例所示的模板：
 
@@ -117,14 +116,13 @@ ms.locfileid: "59267746"
 ...
 ```
 
-“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。 此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
+“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。  此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
 
 #### <a name="create-a-resource-in-the-portal"></a>在门户中创建资源
 
-另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。
-此属性具有“已禁用”和“已启用”选项。 信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
+另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。   此属性具有“已禁用”和“已启用”选项。   信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
 
-在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。 选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
+在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。   选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
 
 ```json
 ...
@@ -154,7 +152,7 @@ GitHub 上的 [Azure 快速入门模板](https://github.com/Azure/azure-quicksta
 
 浏览 Azure 资源的另一种方式是使用 [Azure 资源浏览器](https://resources.azure.com)（预览版）。 此工具使用订阅的上下文，因此，你需要在网站中使用 Azure 凭据进行身份验证。 完成身份验证后，可按提供程序、订阅、资源组和资源进行浏览。
 
-找到存储帐户资源并查看属性。 在此处还可以查看 **supportsHttpsTrafficOnly** 属性。 选择“文档”选项卡，可以看到，属性说明与我们在前面的参考文档中找到的信息相匹配。
+找到存储帐户资源并查看属性。 在此处还可以查看 **supportsHttpsTrafficOnly** 属性。 选择“文档”选项卡，可以看到，属性说明与我们在前面的参考文档中找到的信息相匹配。 
 
 ## <a name="find-the-property-alias"></a>查找属性别名
 
@@ -181,8 +179,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-在 Azure PowerShell 中， `Get-AzPolicyAlias` cmdlet 用于搜索资源别名。
-我们将根据前面获取的有关 Azure 资源的详细信息来筛选 **Microsoft.Storage** 命名空间。
+在 Azure PowerShell 中， `Get-AzPolicyAlias` cmdlet 用于搜索资源别名。 我们将根据前面获取的有关 Azure 资源的详细信息来筛选 **Microsoft.Storage** 命名空间。
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -197,8 +194,9 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 [Azure Resource Graph](../../resource-graph/overview.md) 是一个新的预览版服务。 它是用于查找 Azure 资源属性的另一种方法。 下面是使用 Resource Graph 查找单个存储帐户的示例查询：
 
-```Query
-where type=~'microsoft.storage/storageaccounts' | limit 1
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
 ```
 
 ```azurecli-interactive
@@ -209,7 +207,23 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-结果类似于在资源管理器模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还包含[别名](../concepts/definition-structure.md#aliases)详细信息。 下面是存储帐户别名的示例输出：
+结果类似于在资源管理器模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还可通过_投影_ _别名_数组来包含[别名](../concepts/definition-structure.md#aliases)详细信息：
+
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
+| project aliases
+```
+
+```azurecli-interactive
+az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+下面是存储帐户别名的示例输出：
 
 ```json
 "aliases": {
@@ -295,7 +309,8 @@ Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1
 
 ## <a name="determine-the-effect-to-use"></a>确定要使用的效果
 
-确定如何处理不合规的资源几乎与确定最初要评估的项一样重要。 针对不合规资源做出的每种可能响应称为[效果](../concepts/effects.md)。 效果控制是否要记录、阻止不合规的资源、在其中追加数据，或者将一个部署关联到其中，使该资源恢复合规状态。
+确定如何处理不合规的资源几乎与确定最初要评估的项一样重要。 针对不合规资源做出的每种可能响应称为[效果](../concepts/effects.md)。
+效果控制是否要记录、阻止不合规的资源、在其中追加数据，或者将一个部署关联到其中，使该资源恢复合规状态。
 
 在本示例中，“拒绝”是所需的效果，因为我们不希望在 Azure 环境中创建不合规的资源。 “审核”是策略效果的第一个合理选项，它确定策略在设置为“拒绝”之前的影响。 使更改每个分配的效果变得更轻松的方法之一是将效果参数化。 有关详细信息，请参阅下面的[参数](#parameters)。
 

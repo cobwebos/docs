@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224645"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861534"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的“Azure AD 密码重置”
 
-在本教程中，你将让用户能够从 Windows 10 登录屏幕重置其密码。 安装新的 Windows 10 April 2018 Update 后，其设备**已加入 Azure AD** 或**已加入混合 Azure AD** 的用户可以在其登录屏幕上使用“重置密码”链接。 单击此链接后，用户就会体验到熟悉的与以前相同的自助密码重置 (SSPR)。
+在本教程中，你将让用户能够从 Windows 10 登录屏幕重置其密码。 安装新的 Windows 10 April 2018 Update 后，其设备**已加入 Azure AD** 或**已加入混合 Azure AD** 的用户可以在其登录屏幕上使用“重置密码”链接。 单击此链接后，用户就会体验到熟悉的与以前相同的自助密码重置 (SSPR)。 如果用户被锁定，则此过程不会解锁本地 Active Directory 中的帐户。
 
 > [!div class="checklist"]
 > * 使用 Intune 配置“重置密码”链接
@@ -44,8 +44,8 @@ ms.locfileid: "58224645"
 
 ### <a name="create-a-device-configuration-policy-in-intune"></a>在 Intune 中创建设备配置策略
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，单击“Intune”。
-2. 转到“设备配置” > “配置文件” > “创建配置文件”，创建新的设备配置文件
+1. 登录到 [Azure 门户](https://portal.azure.com)，单击“Intune”。 
+2. 转到“设备配置”   >   “配置文件” >   “创建配置文件”，创建新的设备配置文件
    * 为配置文件提供一个有意义的名称
    * （可选）提供对配置文件的有意义说明
    * 平台：**Windows 10 及更高版本**
@@ -66,23 +66,23 @@ ms.locfileid: "58224645"
 
 #### <a name="create-a-group-to-apply-device-configuration-policy-to"></a>创建要向其应用设备配置策略的组
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，单击“Azure Active Directory”。
-2. 浏览到“用户和组” > “所有组” > “新建组”
-3. 为组提供一个名称，然后在“成员身份类型”下选择“已分配”。
-   * 在“成员”下选择加入 Azure AD 的 Windows 10 设备，需向该设备应用策略。
-   * 单击“选择”
+1. 登录到 [Azure 门户](https://portal.azure.com)，单击“Azure Active Directory”。 
+2. 浏览到“用户和组”   >   “所有组” >   “新建组”
+3. 为组提供一个名称，然后在“成员身份类型”下选择“已分配”。  
+   * 在“成员”下选择加入 Azure AD 的 Windows 10 设备，需向该设备应用策略。 
+   * 单击“选择” 
 4. 单击“创建” 
 
 有关如何创建组的详细信息，可参阅[使用 Azure Active Directory 组管理对资源的访问权限](../fundamentals/active-directory-manage-groups.md)一文。
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>将设备配置策略分配到设备组
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，单击“Intune”。
-2. 查找此前创建的设备配置文件，方法是转到“设备配置” > “配置文件”，然后单击此前创建的配置文件
+1. 登录到 [Azure 门户](https://portal.azure.com)，单击“Intune”。 
+2. 查找此前创建的设备配置文件，方法是转到“设备配置”   >   “配置文件”，然后单击此前创建的配置文件
 3. 将配置文件分配给一组设备 
-   * 在“包括” > “选择要包括的组”下单击“分配”
-   * 选择以前创建的组，然后单击“选择”
-   * 单击“保存”
+   *  在“包括”   >   “选择要包括的组”下单击“分配”
+   * 选择以前创建的组，然后单击“选择” 
+   * 单击“保存” 
 
    ![分配][Assignment]
 
@@ -116,15 +116,15 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 使用 Hyper-V 测试此功能时，“重置密码”链接不显示。
 
-* 转到用于测试的 VM，单击“视图”，然后取消选中“增强会话”。
+* 转到用于测试的 VM，单击“视图”，然后取消选中“增强会话”。  
 
 使用远程桌面或增强型 VM 会话测试此功能时，“重置密码”链接不显示。
 
 * 目前不支持从远程桌面进行密码重置。
 
-在 1809 之前的 Windows 10 版本中，如果策略要求使用 Ctrl+Alt+Del，，则“重置密码”将无效。
+在 1809 之前的 Windows 10 版本中，如果策略要求使用 Ctrl+Alt+Del，，则“重置密码”将无效。 
 
-如果锁屏通知已关闭，则“重置密码”将无效。
+如果锁屏通知已关闭，则“重置密码”将无效。 
 
 已知以下策略设置会干扰密码重置功能
 

@@ -9,12 +9,12 @@ ms.date: 12/07/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: seodec18
-ms.openlocfilehash: 4b074c9dee93ba44659b0321ae3eee7fbea1c61f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7320f5cd8d012973139adb099785cddae123f775
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145056"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949601"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>教程：使用 Azure CDN 通过 SSL 为静态网站启用自定义域
 
@@ -40,12 +40,13 @@ ms.locfileid: "65145056"
 
 1. 在 Web 浏览器中打开 [Azure 门户](https://portal.azure.com/)。 
 1. 找到存储帐户并显示帐户概览。
-1. 在“Blob 服务”菜单下选择“Azure CDN”，以便配置 Azure CDN。
-1. 在“新建终结点”部分，填充创建新的 CDN 终结点所需的字段。
+1. 在“Blob 服务”菜单下选择“Azure CDN”，以便配置 Azure CDN。  
+1. 在“新建终结点”部分，填充创建新的 CDN 终结点所需的字段。 
 1. 输入终结点名称，例如 *mystaticwebsiteCDN*。
 1. 输入网站域作为 CDN 终结点的主机名。
-1. 对于源主机名，请输入静态网站终结点。 若要查找静态网站终结点，请导航到存储帐户的“静态网站”部分，然后复制该终结点。 
+1. 对于源主机名，请输入静态网站终结点。 若要查找静态网站终结点，请导航到存储帐户的“静态网站”部分，然后复制该终结点（删除前面的 https://） 
 1. 在浏览器中导航到 *mywebsitecdn.azureedge.net*，测试 CDN 终结点。
+1. 通过导航到设置下的“新建终结点”执行其他验证，查看源类型是否设置为“自定义源”以及“源主机名”是否显示静态网站终结点名称    。
 
 ## <a name="enable-custom-domain-and-ssl"></a>启用自定义域和 SSL
 
@@ -54,9 +55,9 @@ ms.locfileid: "65145056"
     ![指定子域 www 的 CNAME 记录](media/storage-blob-static-website-custom-domain/subdomain-cname-record.png)
 
 1. 在 Azure 门户中单击新创建的终结点，以便配置自定义域和 SSL 证书。
-1. 选择“添加自定义域”，输入域名，然后单击“添加”。
+1. 选择“添加自定义域”，输入域名，然后单击“添加”。  
 1. 选择新建的自定义域映射，以便预配 SSL 证书。
-1. 将“自定义域 HTTPS”设置为“启用”。 选择“CDN 托管”，让 Azure CDN 托管 SSL 证书。 单击“ **保存**”。
+1. 将“自定义域 HTTPS”设置为“启用”。   选择“CDN 托管”，让 Azure CDN 托管 SSL 证书。  单击“ **保存**”。
 1. 访问网站 URL，对网站进行测试。
 
 ## <a name="next-steps"></a>后续步骤

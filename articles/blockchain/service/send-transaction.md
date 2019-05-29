@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: d3ad4cdfe33948c04c278ed3dfef7aa6fda637ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0b5e39e9cf2fc3ffe91db6587bc1ed1bab079e93
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027493"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65777329"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>教程：使用 Azure 区块链服务发送事务
 
@@ -47,7 +47,7 @@ ms.locfileid: "65027493"
 默认情况下，系统已提供一个事务节点。 我们将额外添加两个节点。 其中一个节点参与私人事务。 另一个节点不包括在私人事务中。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到你的 Azure 区块链成员，并选择“事务节点”>“添加”。
+1. 导航到你的 Azure 区块链成员，并选择“事务节点”>“添加”。 
 1. 完成名为 `alpha` 的新事务节点的设置。
 
     ![创建事务节点](./media/send-transaction/create-node.png)
@@ -57,7 +57,7 @@ ms.locfileid: "65027493"
     | 名称 | `alpha` | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`alpha-mymanagedledger.blockchain.azure.com`。 |
     | 密码 | 强密码 | 该密码用于通过基本身份验证访问事务节点终结点。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
     预配新的事务节点大约需要 10 分钟时间。
 
@@ -86,8 +86,8 @@ ms.locfileid: "65027493"
 
 使用 Web3 连接到默认事务节点并创建一个帐户。 可以从 Azure 门户获取 Web3 连接字符串。
 
-1. 在 Azure 门户中，导航到默认事务节点并选择“事务节点”>“示例代码”>“Web3”。
-1. 复制“HTTPS(访问密钥 1)”中的 JavaScript ![Web3 示例代码](./media/send-transaction/web3-code.png)
+1. 在 Azure 门户中，导航到默认事务节点并选择“事务节点”>“示例代码”>“Web3”。 
+1. 复制“HTTPS(访问密钥 1)”中的 JavaScript ![Web3 示例代码](./media/send-transaction/web3-code.png) 
 
 1. 将默认事务节点的 Web3 JavaScript 代码粘贴到 Truffle 交互式开发控制台中。 该代码将创建连接到你的 Azure 区块链服务事务节点的 Web3 对象。
 
@@ -127,14 +127,14 @@ ms.locfileid: "65027493"
 
 ### <a name="transaction-node-endpoint-addresses"></a>事务节点终结点地址
 
-1. 在 Azure 门户中，导航到每个事务节点并选择“事务节点”>“连接字符串”。
-1. 复制并保存每个事务节点的“HTTPS (访问密钥 1)”中的终结点 URL。 稍后在本教程中，需要在智能合同配置文件中提供终结点地址。
+1. 在 Azure 门户中，导航到每个事务节点并选择“事务节点”>“连接字符串”。 
+1. 复制并保存每个事务节点的“HTTPS (访问密钥 1)”中的终结点 URL  。 稍后在本教程中，需要在智能合同配置文件中提供终结点地址。
 
     ![事务终结点地址](./media/send-transaction/endpoint.png)
 
 ### <a name="edit-configuration-file"></a>编辑配置文件
 
-1. 启动 Visual Studio Code，使用“文件”>“打开文件夹”菜单打开 Truffle 项目目录文件夹。
+1. 启动 Visual Studio Code，使用“文件”>“打开文件夹”菜单打开 Truffle 项目目录文件夹。 
 1. 打开 Truffle 配置文件 `truffle-config.js`。
 1. 将该文件的内容替换为以下配置信息。 添加包含终结点地址和帐户信息的变量。 将带尖括号的节替换为在前面部分中收集的值。
 
@@ -230,9 +230,9 @@ module.exports = function(deployer) {
 
 在此示例中，**storeData** 的初始值设置为 42。
 
-**privateFor** 定义合同适用的节点。 在此示例中，默认事务节点的帐户可将私人事务投射到 **alpha** 节点。 需要添加所有私人事务参与者的公钥。 如果不包含 **privateFor:** 和 **from:**，则智能合同事务将是公开的，所有联盟成员都可以看到它们。
+**privateFor** 定义合同适用的节点。 在此示例中，默认事务节点的帐户可将私人事务投射到 **alpha** 节点。 需要添加所有私人事务参与者的公钥。 如果不包含 **privateFor:** 和 **from:** ，则智能合同事务将是公开的，所有联盟成员都可以看到它们。
 
-选择“文件”>“全部保存”以保存所有文件。
+选择“文件”>“全部保存”以保存所有文件。 
 
 ## <a name="deploy-smart-contract"></a>部署智能合同
 
@@ -470,8 +470,8 @@ Finished!
 
 若要删除资源组，请执行以下操作：
 
-1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”，然后选择要删除的资源组。
-1. 选择“删除资源组”。 输入资源组名称确认删除并选择“删除”。
+1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”  ，然后选择要删除的资源组。
+1. 选择“删除资源组”  。 输入资源组名称确认删除并选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

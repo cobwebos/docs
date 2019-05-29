@@ -8,21 +8,21 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: b135baf73e21cd524b6e8fad35452362f36cf0c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/14/2019
+ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079542"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792275"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>教程：通过使用 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）设计多租户数据库
 
 在本教程中，你使用 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）了解如何：
 
 > [!div class="checklist"]
-> * 创建超大规模 (Citus) 服务器组
-> * 使用 psql 实用程序来创建架构
+> * 创建 Hyperscale (Citus) 服务器组
+> * 使用 psql 实用工具创建架构
 > * 节点中的分片表
 > * 引入示例数据
 > * 查询租户数据
@@ -31,74 +31,9 @@ ms.locfileid: "65079542"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+[!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
-
-登录到 [Azure 门户](https://portal.azure.com)。
-
-## <a name="create-an-azure-database-for-postgresql"></a>创建用于 PostgreSQL 的 Azure 数据库
-
-可以按照以下步骤创建用于 PostgreSQL 的 Azure 数据库：
-1. 在 Azure 门户的左上角单击“创建资源”。
-2. 从“新建”页中选择“数据库”，并从“数据库”页中选择“用于 PostgreSQL 的 Azure 数据库”。
-3. 对于部署选项，请单击“超大规模 (Citus) 服务器组 - 预览”下的“创建”按钮。
-4. 使用以下信息填写“新服务器详细信息”窗体：
-   - 资源组：单击此字段的文本框下的“新建”链接。 输入一个名称，例如 myresourcegroup。
-   - 服务器组名称：输入新服务器组的唯一名称，该名称也将用于服务器子域。
-   - 管理员用户名：输入一个唯一用户名，它将稍后用于连接数据库。
-   - 密码：长度必须至少为八个字符，且必须包含以下类别中三种类别的字符 - 英文大写字母、英文小写字母、数字 (0-9) 和非字母数字字符（!、$、#、% 等）
-   - 位置：使用距离你的用户最近的位置，使用户可以最快速度访问数据。
-
-   > [!IMPORTANT]
-   > 此处指定的服务器管理员登录名和密码是以后在本教程中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。
-
-5. 单击“配置服务器组”。 保留该部分的设置不变，单击“保存”。
-6. 单击“查看 + 创建”，然后单击“创建”，预配服务器。 预配需要数分钟。
-7. 页面会重定向，以监视部署。 当实时状态从“部署正在进行”变为“部署已完成”时，单击页面左侧的“输出”菜单项。
-8. 输出页将包含协调器主机名，主机名旁边有一个按钮，用于将值复制到剪贴板。 记录此信息以供将来使用。
-
-## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
-
-Azure Database for PostgreSQL 服务在服务器级别使用防火墙。 默认情况下，防火墙会阻止所有外部应用程序和工具连接到服务器和服务器上的任何数据库。 我们必须添加一个规则，针对特定的 IP 地址范围打开防火墙。
-
-1. 从你之前复制协调器节点主机名的“输出”部分，单击“概述”菜单项。
-
-2. 在资源列表中找到部署的缩放组，并单击它。 （其名称的前缀是“sg-”。）
-
-3. 在左侧菜单中的“安全性”下方单击“防火墙”。
-
-4. 单击“+ 为当前客户端 IP 地址添加防火墙”链接。 最后，单击“保存”按钮。
-
-5. 单击“ **保存**”。
-
-   > [!NOTE]
-   > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 若是如此，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门启用了端口 5432。
-   >
-
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>在 Cloud Shell 中使用 psql 连接到数据库
-
-现在，使用 [psql](https://www.postgresql.org/docs/current/app-psql.html) 命令行实用工具连接到 Azure Database for PostgreSQL 服务器。
-1. 通过顶部导航窗格中的终端图标启动 Azure Cloud Shell。
-
-   ![用于 PostgreSQL 的 Azure 数据库 - Azure Cloud Shell 终端图标](./media/tutorial-design-database-hyperscale-multi-tenant/psql-cloud-shell.png)
-
-2. Azure Cloud Shell 会在浏览器中打开，并允许键入 bash 命令。
-
-   ![用于 PostgreSQL 的 Azure 数据库 - Azure Shell Bash 提示符](./media/tutorial-design-database-hyperscale-multi-tenant/psql-bash.png)
-
-3. 在 Cloud Shell 提示符下，使用 psql 命令连接到“用于 PostgreSQL 的 Azure 数据库”服务器。 借助 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具可以使用以下格式连接到用于 PostgreSQL 的 Azure 数据库：
-   ```bash
-   psql --host=<myserver> --username=myadmin --dbname=citus
-   ```
-
-   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mydemoserver.postgres.database.azure.com 上名为“citus”的默认数据库。 在出现提示时输入服务器管理员密码。
-
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --username=myadmin --dbname=citus
-   ```
-
-## <a name="use-psql-utility-to-create-a-schema"></a>使用 psql 实用程序来创建架构
+## <a name="use-psql-utility-to-create-a-schema"></a>使用 psql 实用工具创建架构
 
 使用 psql 连接到 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）后，可以完成一些基本任务。 本教程将指导你创建 Web 应用，该应用允许广告厂商跟踪他们的广告系列。
 
@@ -250,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 到目前为止，已按照 `company_id` 分发所有表，但一些数据不会“自然地”属于任何租户，并且这些数据可以共享。 例如，示例广告平台中的所有公司可能需要获取基于 IP 地址的受众地理位置信息。
 
-创建一个表来记录共享地理位置信息。 在 psql 中运行它：
+创建一个表来记录共享地理位置信息。 在 psql 中运行以下命令：
 
 ```sql
 CREATE TABLE geo_ips (
@@ -268,7 +203,7 @@ CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 SELECT create_reference_table('geo_ips');
 ```
 
-将它和示例数据一同加载。 请记住要从下载数据集的目录内部运行它。
+将它和示例数据一同加载。 请记住要从下载数据集的目录内部运行此命令。
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv
@@ -330,11 +265,11 @@ SELECT id
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，已在服务器组中创建 Azure 资源。 如果你认为以后不需要这些资源，请删除服务器组。 在你的服务器组的“概述”页面，按“删除”按钮。 弹出页面上出现提示时，确认服务器组的名称，然后单击最后一个“删除”按钮。
+在前面的步骤中，你已在服务器组中创建了 Azure 资源。 如果你认为以后不需要这些资源，请删除该服务器组。 在服务器组的“概述”页中，按“删除”按钮   。 弹出页面上出现提示时，请确认服务器组的名称，然后单击最后一个“删除”按钮  。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你学习了如何预配超大规模 (Citus) 服务器组。 使用 psql 连接它，创建架构和分布式数据。 你已了解如何在租户中和租户之间查询数据，以及如何自定义每租户架构。
+在本教程中，你学习了如何预配 Hyperscale (Citus) 服务器组。 使用 psql 连接它，创建架构和分布式数据。 你已了解如何在租户中和租户之间查询数据，以及如何自定义每租户架构。
 
 接下来，了解有关超大规模的概念。
 > [!div class="nextstepaction"]

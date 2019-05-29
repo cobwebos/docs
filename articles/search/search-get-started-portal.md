@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b30fa61cd46acd4fa9da9d97c100e3b3a0aaf067
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e5baa0876dc976553e8e541cef6b481329500bf6
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024733"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606459"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>快速入门：使用内置门户工具在 Azure 搜索中进行导入、索引编制和查询
 > [!div class="op_single_selector"]
@@ -29,10 +29,10 @@ ms.locfileid: "65024733"
 
 > [!div class="checklist"]
 > * 从 Azure 上托管的免费公共示例数据集开始
-> * 在 Azure 搜索中运行“导入数据”向导以加载数据并生成索引
+> * 在 Azure 搜索中运行“导入数据”向导以加载数据并生成索引 
 > * 监视门户中的索引进度
 > * 查看现有索引和修改索引的选项
-> * 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索
+> * 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索 
 
 如果这些工具限制过多，则可考虑参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)，或使用[进行 REST API 调用的 Postman 或 Fiddler](search-fiddler.md)。
 
@@ -52,17 +52,17 @@ ms.locfileid: "65024733"
 
 ## <a name="create-index"></a> 创建索引并加载数据
 
-搜索查询可循环访问[索引](search-what-is-an-index.md)，索引中包含可搜索数据、元数据，以及其他用于优化某些搜索行为的构造。
+搜索查询可循环访问[索引](search-what-is-an-index.md)，索引中包含可搜索数据、元数据，以及其他用于优化某些搜索行为的构造。 
 
-在本教程中，请使用可通过“导入数据”向导利用[索引器](search-indexer-overview.md)对其进行爬网的内置示例数据集。 索引器是特定于源的爬网程序，可以从支持的 Azure 数据源中读取元数据和内容。 通常，索引器以编程方式使用，但在门户中，你可以通过“导入数据”向导来访问。 
+在本教程中，请使用可通过“导入数据”向导利用[索引器](search-indexer-overview.md)对其进行爬网的内置示例数据集。   索引器是特定于源的爬网程序，可以从支持的 Azure 数据源中读取元数据和内容。 通常，索引器以编程方式使用，但在门户中，你可以通过“导入数据”向导来访问  。 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>步骤 1 - 启动“导入数据”向导和创建数据源
 
-1. 在 Azure 搜索服务仪表板的命令栏中单击“导入数据”，以创建和填充搜索索引。
+1. 在 Azure 搜索服务仪表板的命令栏中单击“导入数据”，以创建和填充搜索索引  。
 
    ![导入数据命令](media/search-get-started-portal/import-data-cmd2.png)
 
-2. 在向导中，单击“连接到数据” > “示例” > “realestate-us-sample”。 此数据源是内置的。 如果要创建自己的数据源，则需要指定名称、类型和连接信息。 创建后，它将成为可在其他导入操作中重复使用的“现有数据源”。
+2. 在向导中，单击“连接到数据” > “示例” > “realestate-us-sample”。    此数据源是内置的。 如果要创建自己的数据源，则需要指定名称、类型和连接信息。 创建后，它将成为可在其他导入操作中重复使用的“现有数据源”。
 
    ![选择示例数据集](media/search-get-started-portal/import-datasource-sample2.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "65024733"
 
 该向导支持创建[认知技能管道](cognitive-search-concept-intro.md)，用于将认知服务 AI 算法合并到索引中。 
 
-我们将暂时跳过此步骤，转到“自定义目标索引”。
+我们将暂时跳过此步骤，转到“自定义目标索引”。 
 
    ![跳过认知技能步骤](media/search-get-started-portal/skip-cog-skill-step.png)
 
@@ -88,13 +88,13 @@ ms.locfileid: "65024733"
 字段包含数据类型和属性。 顶部的复选框为*索引属性*，用于控制如何使用字段。
 
 * **可检索**意味着该字段将显示在搜索结果列表中。 清除此复选框即可将单个字段标记为关闭搜索结果限制，例如当字段仅用于筛选器表达式时。
-* “密钥”是唯一的文档标识符。 它始终是一个字符串，而且是必需的字符串。
-* “可筛选”、“可排序”和“可查找”确定字段是否可用于筛选器、排序或方面导航结构。
+* “密钥”是唯一的文档标识符  。 它始终是一个字符串，而且是必需的字符串。
+* “可筛选”、“可排序”和“可查找”确定字段是否可用于筛选器、排序或方面导航结构    。
 * **可搜索**意味着该字段将包括在全文搜索中。 字符串可搜索。 数值字段和布尔字段通常标记为不可搜索。
 
-存储要求不会因你的选择而发生更改。 例如，如果你在多个字段上设置“可检索”属性，则存储需求不会增加。
+存储要求不会因你的选择而发生更改。 例如，如果你在多个字段上设置“可检索”属性，则存储需求不会增加  。
 
-默认情况下，向导会在数据源中扫描用作键字段基础的唯一标识符。 字符串经过属性化，**可检索**且**可搜索**。 整数经过属性化，**可检索**、**可筛选**、**可排序**且**可分面**。
+默认情况下，向导会在数据源中扫描用作键字段基础的唯一标识符。  字符串经过属性化，**可检索**且**可搜索**。  整数经过属性化，**可检索**、**可筛选**、**可排序**且**可分面**。
 
 1. 接受默认值。 
 
@@ -108,17 +108,17 @@ ms.locfileid: "65024733"
 
 ### <a name="step-4---configure-indexer"></a>步骤 4 - 配置索引器
 
-仍在“导入数据”向导中，单击“索引器” > “名称”，并键入索引器的名称。
+仍在“导入数据”向导中，单击“索引器” > “名称”，并键入索引器的名称。   
 
 此对象定义一个可执行过程。 可将该对象放入定期计划，但我们现在使用默认选项立即运行索引器一次。
 
-单击“提交”以创建并同时运行索引器。
+单击“提交”以创建并同时运行索引器  。
 
   ![realestate 索引器](media/search-get-started-portal/realestate-indexer2.png)
 
 ## <a name="monitor-progress"></a>监视进度
 
-该向导应转到索引器列表，你可在其中监视进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”。
+该向导应转到索引器列表，你可在其中监视进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”  。
 
 门户网站可能需要几分钟才能更新页面，但列表中应会出现新建的索引器，其状态指示“正在进行”或“成功”，此外还会列出已编制索引的文档数。
 
@@ -132,7 +132,7 @@ ms.locfileid: "65024733"
 
 从此列表中，可以单击刚刚创建的 *realestate-us-sample* 索引，查看索引架构， 并可以选择添加新字段。 
 
-“字段”选项卡显示索引架构。 滚动到列表底部可输入新字段。 在大多数情况下，不能更改现有字段。 现有字段在 Azure 搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
+“字段”  选项卡显示索引架构。 滚动到列表底部可输入新字段。 在大多数情况下，不能更改现有字段。 现有字段在 Azure 搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
 
    ![示例索引定义](media/search-get-started-portal/sample-index-def.png)
 
@@ -154,11 +154,11 @@ ms.locfileid: "65024733"
 
    ![搜索浏览器命令](media/search-get-started-portal/search-explorer-cmd2.png)
 
-2. 在命令栏中单击“更改索引”切换到 *realestate-us-sample*。 在命令栏中单击“设置 API 版本”，查看有哪些 REST API 可用。 对于以下查询，请使用正式版 (2019-05-06)。
+2. 在命令栏中单击“更改索引”切换到 *realestate-us-sample*。  在命令栏中单击“设置 API 版本”，查看有哪些 REST API 可用。  对于以下查询，请使用正式版 (2019-05-06)。
 
    ![索引和 API 命令](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
-3. 在搜索栏中粘贴以下查询字符串，并单击“搜索”。
+3. 在搜索栏中粘贴以下查询字符串，并单击“搜索”。 
 
    ![查询字符串和搜索按钮](media/search-get-started-portal/search-explorer-query-string-example.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "65024733"
 
 * **搜索浏览器**以 JSON 格式返回结果，如果文档采用密集结构，这种结果将很冗长且难以阅读。 这是有意而为的；整个文档的可见性对于开发来说很重要，尤其是在测试期间。 为了改善用户体验，需要编写代码用于[处理搜索结果](search-pagination-page-layout.md)，以提供重要元素。
 
-* 文档由标记为在索引中“可检索”的所有字段构成。 若要在门户中查看索引属性，请在“索引”列表中单击“realestate-us-sample”。
+* 文档由标记为在索引中“可检索”的所有字段构成。 若要在门户中查看索引属性，请在“索引”列表中单击“realestate-us-sample”   。
 
 #### <a name="example-parameterized-query-searchseattlecounttruetop100"></a>示例（参数化查询）：`search=seattle&$count=true&$top=100`
 
@@ -200,7 +200,7 @@ ms.locfileid: "65024733"
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcitytop2"></a>示例（使用范围缩减进行分面）：`search=*&facet=city&$top=2`
 
-* **search=*** 是空搜索。 空搜索会搜索所有内容。 提交空查询的原因之一是针对整个文档集进行筛选器或分面。 例如，你希望某个分面导航结构由索引中的所有城市组成。
+* **search=** * 是空搜索。 空搜索会搜索所有内容。 提交空查询的原因之一是针对整个文档集进行筛选器或分面。 例如，你希望某个分面导航结构由索引中的所有城市组成。
 
 * **facet** 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于城市数目。 Azure 搜索中没有聚合，但可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
 
@@ -208,7 +208,7 @@ ms.locfileid: "65024733"
 
 #### <a name="example-facet-on-numeric-values-searchseattlefacetbeds"></a>示例（包含数字值的分面）：`search=seattle&facet=beds`**
 
-* 此查询针对 *Seattle* 执行文本搜索后返回的床位分面。 可将 beds 一词指定为分面，因为该字段已标记为可在索引中检索、筛选和分面，并且它包含的值（数字 1 到 5）适合用于将列表分类为组（包含 3 间卧室和 4 间卧室的房屋列表）。
+* 此查询针对 *Seattle* 执行文本搜索后返回的床位分面。 可将  beds 一词指定为分面，因为该字段已标记为可在索引中检索、筛选和分面，并且它包含的值（数字 1 到 5）适合用于将列表分类为组（包含 3 间卧室和 4 间卧室的房屋列表）。
 
 * 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
 
@@ -218,7 +218,7 @@ ms.locfileid: "65024733"
 
 #### <a name="example-highlighter-searchgranite-countertopshighlightdescription"></a>示例（突出显示）：`search=granite countertops&highlight=description`
 
-* 在此示例中，格式化短语 granite countertops 更容易在说明字段中发现。
+* 在此示例中，格式化短语  granite countertops 更容易在说明字段中发现。
 
 #### <a name="example-linguistic-analysis-searchmicehighlightdescription"></a>示例（语言分析）：`search=mice&highlight=description`
 
@@ -258,7 +258,7 @@ ms.locfileid: "65024733"
 
 本教程快速介绍了如何在 Azure 门户中使用 Azure 搜索。
 
-介绍了如何使用“导入数据”向导创建搜索索引； 介绍了[索引器](search-indexer-overview.md)，以及索引设计的基本工作流，包括[对已发布索引进行的支持的修改](https://docs.microsoft.com/rest/api/searchservice/update-index)；
+介绍了如何使用“导入数据”向导创建搜索索引；  介绍了[索引器](search-indexer-overview.md)，以及索引设计的基本工作流，包括[对已发布索引进行的支持的修改](https://docs.microsoft.com/rest/api/searchservice/update-index)；
 
 介绍了一些基本的查询语法，在 Azure 门户中使用**搜索浏览器**通过手动示例演示筛选器、搜索词突出显示、模糊搜索和地理搜索等重要功能；
 

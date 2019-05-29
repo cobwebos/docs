@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bf4eb817bb1705c6af6d4e7e9e28e5789f49a906
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893735"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873035"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
@@ -41,7 +41,7 @@ ms.locfileid: "58893735"
 若要完成本教程，必须满意以下先决条件：
 
 * 本教程是[用于 Redis 的 Azure 缓存的 ASP.NET 快速入门](cache-web-app-howto.md)的延续。 如果尚未学习此快速入门，请先学习它。
-* 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
+* 使用以下工作负荷安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
     * ASP.NET 和 Web 开发
     * Azure 开发
     * 使用 SQL Server Express LocalDB 或 [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express) 进行 .NET 桌面开发。
@@ -53,8 +53,8 @@ ms.locfileid: "58893735"
 ### <a name="add-the-entity-framework-to-the-project"></a>将实体框架添加到项目
 
 1. 在 Visual Studio 中，打开在[用于 Redis 的 Azure 缓存的 ASP.NET 快速入门](cache-web-app-howto.md)中创建的 *ContosoTeamStats* 解决方案。
-2. 单击“工具”>“NuGet 包管理器”>“包管理器控制台”。
-3. 在“包管理器控制台”窗口中，运行以下命令安装 EntityFramework：
+2. 单击“工具”>“NuGet 包管理器”>“包管理器控制台”。 
+3. 在“包管理器控制台”窗口中，运行以下命令安装 EntityFramework： 
 
     ```powershell
     Install-Package EntityFramework
@@ -64,9 +64,9 @@ ms.locfileid: "58893735"
 
 ### <a name="add-the-team-model"></a>添加团队模型
 
-1. 右键单击“解决方案资源管理器”中的“模型”，并选择“添加”>“类”。
+1. 右键单击“解决方案资源管理器”中的“模型”，并选择“添加”>“类”。    
 
-1. 输入 `Team` 作为类名，并单击“添加”。
+1. 输入 `Team` 作为类名，并单击“添加”。 
 
     ![添加模型类](./media/cache-web-app-cache-aside-leaderboard/cache-model-add-class-dialog.png)
 
@@ -150,13 +150,13 @@ ms.locfileid: "58893735"
     }
     ```
 
-1. 在“解决方案资源管理器”中，双击“Web.config”将其打开。
+1. 在“解决方案资源管理器”中，双击“Web.config”将其打开。  
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
 1. 将下面的 `connectionStrings` 节添加到 `configuration` 节中： 连接字符串的名称必须与实体框架数据库上下文类（即 `TeamContext`）的名称相匹配。
 
-    此连接字符串假设满足[先决条件](#prerequisites)，并已安装 SQL Server Express LocalDB（已随附在连同 Visual Studio 2017 一起安装的 .NET 桌面开发工作负荷中）。
+    此连接字符串假设已满足[先决条件](#prerequisites)，并已安装 SQL Server Express LocalDB（属于连同 Visual Studio 2019 一起安装的 *.NET 桌面开发*工作负荷的一部分）。
 
     ```xml
     <connectionStrings>
@@ -181,17 +181,17 @@ ms.locfileid: "58893735"
 
 1. 在 Visual Studio 中生成项目。 
 
-1. 在“解决方案资源管理器”中，右键单击“Controllers”文件夹，然后选择“添加”，再选择“控制器”。
+1. 在“解决方案资源管理器”中，右键单击“Controllers”文件夹，然后选择“添加”，再选择“控制器”。    
 
-1. 选择“使用实体框架的包含视图的 MVC 5 控制器”并单击“添加”。 如果在单击“添加”后出现错误，请确保已先生成该项目。
+1. 选择“使用实体框架的包含视图的 MVC 5 控制器”并单击“添加”。   如果在单击“添加”  后出现错误，请确保已先生成该项目。
 
     ![添加控制器类](./media/cache-web-app-cache-aside-leaderboard/cache-add-controller-class.png)
 
-1. 从“模型类”下拉列表中选择“Team (ContosoTeamStats.Models)”。 从“数据上下文类”下拉列表中选择“TeamContext (ContosoTeamStats.Models)”。 在“控制器”名称文本框中键入 `TeamsController`（如果尚未自动填充）。 单击“添加”  创建控制器类并添加默认视图。
+1. 从“模型类”下拉列表中选择“Team (ContosoTeamStats.Models)”。   从“数据上下文类”下拉列表中选择“TeamContext (ContosoTeamStats.Models)”。   在“控制器”名称文本框中键入 `TeamsController`（如果尚未自动填充）。  单击“添加”  创建控制器类并添加默认视图。
 
     ![配置控制器](./media/cache-web-app-cache-aside-leaderboard/cache-configure-controller.png)
 
-1. 在“解决方案资源管理器”中展开“Global.asax”，然后双击“Global.asax.cs”将其打开。
+1. 在“解决方案资源管理器”中展开“Global.asax”，然后双击“Global.asax.cs”将其打开。   
 
     ![Global.asax.cs](./media/cache-web-app-cache-aside-leaderboard/cache-global-asax.png)
 
@@ -208,7 +208,7 @@ ms.locfileid: "58893735"
     Database.SetInitializer<TeamContext>(new TeamInitializer());
     ```
 
-1. 在“解决方案资源管理器”中展开 `App_Start`，并双击 `RouteConfig.cs`。
+1. 在“解决方案资源管理器”中展开 `App_Start`，并双击 `RouteConfig.cs`。 
 
     ![RouteConfig.cs](./media/cache-web-app-cache-aside-leaderboard/cache-RouteConfig-cs.png)
 
@@ -224,7 +224,7 @@ ms.locfileid: "58893735"
 
 ### <a name="configure-the-layout-view"></a>配置布局视图
 
-1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Shared** 文件夹，然后双击 **_Layout.cshtml**。 
+1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Shared** 文件夹，然后双击 **_Layout.cshtml**。  
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -242,7 +242,7 @@ ms.locfileid: "58893735"
 
     ![代码更改](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. 按“Ctrl+F5”  生成并运行应用程序。 此版本的应用程序直接从数据库读取结果。 请注意已通过“使用实体框架的包含视图的 MVC 5 控制器”基架自动添加到应用程序的“新建”、“编辑”、“详细信息”和“删除”操作。 在本教程的下一部分中，你将添加用于 Redis 的 Azure 缓存来优化数据访问，并向应用程序提供其他功能。
+1. 按“Ctrl+F5”  生成并运行应用程序。 此版本的应用程序直接从数据库读取结果。 请注意已通过“使用实体框架的包含视图的 MVC 5 控制器”基架自动添加到应用程序的“新建”、“编辑”、“详细信息”和“删除”操作。      在本教程的下一部分中，你将添加用于 Redis 的 Azure 缓存来优化数据访问，并向应用程序提供其他功能。
 
     ![入门应用程序](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
@@ -254,7 +254,7 @@ ms.locfileid: "58893735"
 
 在快速入门中，我们已安装 *StackExchange.Redis* 客户端库包。 我们还配置了要在本地使用的 *CacheConnection* 应用设置，以及发布的应用服务。 在本教程中请使用相同的客户端库以及 *TeamsController* 中的 *CacheConnection* 信息。
 
-1. 在“解决方案资源管理器”中，展开“Controllers”文件夹，然后双击“TeamsController.cs”将其打开。
+1. 在“解决方案资源管理器”中，展开“Controllers”文件夹，然后双击“TeamsController.cs”将其打开。   
 
     ![团队控制器](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
@@ -582,7 +582,7 @@ ms.locfileid: "58893735"
 
 ### <a name="add-caching-methods-to-the-teams-index-view"></a>将缓存方法添加到“团队索引”视图
 
-1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Teams** 文件夹，然后双击“Index.cshtml”。
+1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Teams** 文件夹，然后双击“Index.cshtml”。  
 
     ![Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
 
@@ -654,37 +654,37 @@ ms.locfileid: "58893735"
 
 在本部分，我们将为应用预配新的 SQL Azure 数据库，以便在 Azure 中托管时使用。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击左上角的“创建资源”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击左上角的“创建资源”。 
 
-1. 在“新建”页上，单击“数据库” > “SQL 数据库”。
+1. 在“新建”页上，单击“数据库” > “SQL 数据库”。   
 
 1. 对新 SQL 数据库使用以下设置：
 
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **数据库名称** | *ContosoTeamsDatabase* | 如需有效的数据库名称，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
-   | **订阅** | 用户的订阅  | 选择用于创建缓存和托管应用服务的同一订阅。 |
-   | **资源组**  | *TestResourceGroup* | 单击“使用现有项”，并使用缓存和应用服务所在的同一资源组。 |
+   | **订阅** | 用户的订阅   | 选择用于创建缓存和托管应用服务的同一订阅。 |
+   | **资源组**  | *TestResourceGroup* | 单击“使用现有项”，并使用缓存和应用服务所在的同一资源组。  |
    | **选择源** | **空白数据库** | 从空白数据库开始。 |
 
-1. 在“服务器”下，单击“配置所需的设置” > “创建新服务器”并提供以下信息，然后单击“选择”按钮：
+1. 在“服务器”下，单击“配置所需的设置” > “创建新服务器”并提供以下信息，然后单击“选择”按钮：    
 
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
-   | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
+   | 服务器管理员登录名  | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
    | **密码** | 任何有效的密码 | 密码必须至少有 8 个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
    | **位置** | *美国东部* | 选择创建缓存和应用服务的同一区域。 |
 
-1. 单击“固定到仪表板”，然后单击“创建”以创建新数据库和服务器。
+1. 单击“固定到仪表板”，然后单击“创建”以创建新数据库和服务器。  
 
-1. 创建新数据库后，单击“显示数据库连接字符串”，并复制 **ADO.NET** 连接字符串。
+1. 创建新数据库后，单击“显示数据库连接字符串”，并复制 **ADO.NET** 连接字符串。 
 
     ![显示连接字符串](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. 在 Azure 门户中，导航到应用服务并单击“应用程序设置”，然后在“连接字符串”部分下单击“添加新的连接字符串”。
+1. 在 Azure 门户中，导航到应用服务并单击“应用程序设置”，然后在“连接字符串”部分下单击“添加新的连接字符串”。  
 
-1. 添加名为 *TeamContext* 的新连接字符串以匹配实体框架数据库上下文类。 粘贴新数据库的连接字符串作为值。 请务必替换连接字符串中的以下占位符，然后单击“保存”：
+1. 添加名为 *TeamContext* 的新连接字符串以匹配实体框架数据库上下文类。 粘贴新数据库的连接字符串作为值。 请务必替换连接字符串中的以下占位符，然后单击“保存”： 
 
     | 占位符 | 建议的值 |
     | --- | --- |
@@ -697,11 +697,11 @@ ms.locfileid: "58893735"
 
 在本教程的此步骤，我们将应用程序更新发布到 Azure 并在云中运行应用程序。
 
-1. 在 Visual Studio 中右键单击“ContosoTeamStats”项目，并选择“发布”。
+1. 在 Visual Studio 中右键单击“ContosoTeamStats”项目，并选择“发布”。  
 
     ![发布](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
-2. 单击“发布”，使用快速入门中创建的相同发布配置文件。
+2. 单击“发布”，使用快速入门中创建的相同发布配置文件。 
 
 3. 完成发布后，Visual Studio 会在默认的 Web 浏览器中启动应用。
 
@@ -731,13 +731,13 @@ ms.locfileid: "58893735"
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，则可从各自的边栏选项卡逐个删除这些资源。
 >
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
 2. 在“筛选项目...”  文本框中键入资源组的名称。
-3. 单击资源组右侧的“...”，然后单击“删除资源组”。
+3. 单击资源组右侧的“...”，然后单击“删除资源组”。  
 
     ![删除](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
-4. 系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
+4. 系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”  。
 
     片刻之后，将会删除该资源组及其包含的所有资源。
 

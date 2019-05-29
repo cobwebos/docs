@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 05/07/2019
-ms.openlocfilehash: e2110378d16ff5826b8ded4620276b784ef1d68e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/17/2019
+ms.openlocfilehash: a6a681ace95f9bab3c77e4a0f9982a2281c778b8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203356"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966439"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -55,16 +55,15 @@ ms.locfileid: "65203356"
 
 * 创建 Azure Data Lake Storage Gen2 存储帐户。 请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
 
-*  创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+* 创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
    在执行该文中的步骤时，需要完成一些特定的事项。
 
-   * 执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给服务主体。
+   * 执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给 Data Lake Storage Gen2 帐户的作用域中的服务主体  。 如果将角色分配给父资源组或订阅，那么在这些角色分配传播到存储帐户之前，会收到与权限相关的错误。
 
-     > [!IMPORTANT]
-     > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
+      如果想使用访问控制列表 (ACL) 来关联服务主体和特定的文件或目录，请参考 [Azure Data Lake Storage Gen2 中的访问控制](../storage/blobs/data-lake-storage-access-control.md)。
 
-   * 在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
+   * 执行本文中[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和密码值粘贴到文本文件中。 很快就会需要这些值。
 
 * 登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -90,35 +89,33 @@ ms.locfileid: "65203356"
 
 在本部分中，你将使用 Azure 门户创建 Azure Databricks 服务。
 
-1. 在 Azure 门户中，选择“创建资源” > “分析” > “Azure Databricks”。
+1. 在 Azure 门户中，选择“创建资源”   >   “分析” >   “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
-2. 在“Azure Databricks 服务”下，提供以下值来创建 Databricks 服务：
+2. 在“Azure Databricks 服务”  下，提供以下值来创建 Databricks 服务：
 
     |属性  |说明  |
     |---------|---------|
     |**工作区名称**     | 为 Databricks 工作区提供一个名称。        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。 |
-    |**位置**     | 选择“美国西部 2”。  有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。      |
-    |**定价层**     |  选择“标准”。     |
+    |**位置**     | 选择“美国西部 2”  。  有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。      |
+    |**定价层**     |  选择“标准”  。     |
 
-3. 选择“固定到仪表板”，然后选择“创建”。
+3. 创建帐户需要几分钟时间。 若要监视操作状态，请查看顶部的进度栏。
 
-4. 创建帐户需要几分钟时间。 在创建帐户过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”磁贴。 若要监视操作状态，请查看顶部的进度栏。
-
-    ![Databricks 部署磁贴](./media/databricks-extract-load-sql-data-warehouse/databricks-deployment-tile.png "Databricks 部署磁贴")
+4. 选择“固定到仪表板”  ，然后选择“创建”  。
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>在 Azure Databricks 中创建 Spark 群集
 
-1. 在 Azure 门户中，转到所创建的 Databricks 服务，然后选择“启动工作区”。
+1. 在 Azure 门户中，转到所创建的 Databricks 服务，然后选择“启动工作区”。 
 
-2. 系统随后会将你重定向到 Azure Databricks 门户。 在门户中选择“群集”。
+2. 系统随后会将你重定向到 Azure Databricks 门户。 在门户中选择“群集”。 
 
     ![Azure 上的 Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-on-azure.png "Azure 上的 Databricks")
 
-3. 在“新建群集”页中，提供用于创建群集的值。
+3. 在“新建群集”页中，提供用于创建群集的值。 
 
     ![在 Azure 上创建 Databricks Spark 群集](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
@@ -128,42 +125,57 @@ ms.locfileid: "65203356"
 
     * 在本文中，请创建运行时为 **5.1** 的群集。
 
-    * 请务必选中“在不活动超过 \_\_ 分钟后终止”复选框。 如果未使用群集，则请提供一个持续时间（以分钟为单位），超过该时间后群集会被终止。
+    * 请务必选中“在不活动超过 \_\_ 分钟后终止”  复选框。 如果未使用群集，则请提供一个持续时间（以分钟为单位），超过该时间后群集会被终止。
 
-    * 选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+    * 选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="create-a-file-system-in-the-azure-data-lake-storage-gen2-account"></a>在 Azure Data Lake Storage Gen2 帐户中创建文件系统
 
 在本部分中，你将在 Azure Databricks 工作区中创建一个 Notebook，然后运行代码片段来配置存储帐户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，转到你创建的 Azure Databricks 服务，然后选择“启动工作区”。
+1. 在 [Azure 门户](https://portal.azure.com)中，转到你创建的 Azure Databricks 服务，然后选择“启动工作区”。 
 
-2. 在左侧选择“工作区”。 在**工作区**下拉列表中，选择**创建** > **笔记本**。
+2. 在左侧选择“工作区”  。 在**工作区**下拉列表中，选择**创建** > **笔记本**。
 
     ![在 Databricks 中创建笔记本](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "在 Databricks 中创建笔记本")
 
-3. 在“创建 Notebook”对话框中，输入 Notebook 的名称。 选择“Scala”作为语言，然后选择前面创建的 Spark 群集。
+3. 在“创建 Notebook”对话框中，输入 Notebook 的名称。  选择“Scala”作为语言，然后选择前面创建的 Spark 群集。 
 
     ![在 Databricks 中提供笔记本的详细信息](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "在 Databricks 中提供笔记本的详细信息")
 
-4. 选择“创建”。
+4. 选择“创建”  。
 
-5. 将以下代码块复制并粘贴到第一个单元中。
+5. 以下代码块设置 Spark 会话中访问的任何 ADLS Gen 2 帐户的默认服务主体凭据。 第二个代码块会将帐户名称追加到该设置，从而指定特定的 ADLS Gen 2 帐户的凭据。  将任一代码块复制并粘贴到 Azure Databricks 笔记本的第一个单元格中。
+
+   **会话配置**
+
+   ```scala
+   spark.conf.set("fs.azure.account.auth.type", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
+   ```
+
+   **帐户配置**
 
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. 在此代码块中，请将 `application-id`、`authentication-id`、`tenant-id` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `file-system-name` 占位符值替换为你想要为文件系统指定的任何名称。
+6. 在此代码块中，请将 `appID`、`password`、`tenant-id` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `file-system-name` 占位符值替换为你想要为文件系统指定的任何名称。
 
-   * `application-id` 和 `authentication-id` 来自在创建服务主体的过程中向 active directory 注册的应用。
+   * `appID` 和 `password` 来自在创建服务主体的过程中向 active directory 注册的应用。
 
    * `tenant-id` 来自你的订阅。
 
@@ -179,13 +191,13 @@ ms.locfileid: "65203356"
 
     %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
-在单元格中，按 SHIFT + ENTER 来运行代码。
+在单元格中，按 SHIFT + ENTER 来运行代码  。
 
 现在，请在此单元格下方的新单元格中输入以下代码，将括号中出现的值替换为此前使用的相同值：
 
     dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
 
-在单元格中，按 SHIFT + ENTER 来运行代码。
+在单元格中，按 SHIFT + ENTER 来运行代码  。
 
 ## <a name="extract-data-from-the-azure-data-lake-storage-gen2-account"></a>从 Azure Data Lake Storage Gen2 帐户中提取数据
 
@@ -324,7 +336,7 @@ ms.locfileid: "65203356"
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. 提供连接到 Azure SQL 数据仓库实例所需的值。 必须已经将 SQL 数据仓库作为先决条件创建。
+4. 提供连接到 Azure SQL 数据仓库实例所需的值。 必须已经将 SQL 数据仓库作为先决条件创建。 为 dwServer 使用完全限定的服务器名称  。 例如，`<servername>.database.windows.net`。
 
    ```scala
    //SQL Data Warehouse related settings
@@ -370,11 +382,11 @@ ms.locfileid: "65203356"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，可以终止群集。 在 Azure Databricks 工作区的左侧选择“群集”。 对于要终止的群集，请将鼠标指向“操作”下面的省略号 (...)，然后选择“终止”图标。
+完成本教程后，可以终止群集。 在 Azure Databricks 工作区的左侧选择“群集”  。 对于要终止的群集，请将鼠标指向“操作”  下面的省略号 (...)，然后选择“终止”  图标。
 
 ![停止 Databricks 群集](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”  复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 ## <a name="next-steps"></a>后续步骤
 
