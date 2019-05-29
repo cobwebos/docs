@@ -56,11 +56,11 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 是的。 如果已经在为单一登录使用此应用程序实例，并需要迁移现有预配作业以包含最新修补程序，请执行下方程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器从现有 SCIM 应用删除旧的预配作业，以及如何创建展示新行为的新预配作业。
 
 > [!NOTE]
-> 如果应用程序仍处于开发阶段，并且尚未针对单一登录或用户预配进行部署，最简单的解决办法是在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分中删除应用程序条目，然后使用“创建应用程序”>“非库”选项直接添加新应用程序条目。 这是执行以下程序的替代方法。
+> 如果应用程序仍处于开发阶段，并且尚未针对单一登录或用户预配进行部署，最简单的解决办法是在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分中删除应用程序条目，然后使用“创建应用程序”>“非库”选项直接添加新应用程序条目   。 这是执行以下程序的替代方法。
  
-1. 登录 Azure 门户： https://portal.azure.com。
-2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分，找到并选择现有 SCIM 应用程序。
-3. 在现有 SCIM 应用的“属性”部分，复制“对象 ID”。
+1. 登录 Azure 门户： https://portal.azure.com 。
+2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分，找到并选择现有 SCIM 应用程序  。
+3. 在现有 SCIM 应用的“属性”部分，复制“对象 ID”   。
 4. 在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
 5. 在 Graph 资源管理器中，运行以下命令以找到预配作业的 ID。 将“[object-id]”替换为从第三步复制的服务主体 ID（对象 ID）。
  
@@ -91,16 +91,16 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
  `{   <your-schema-json-here>   }`
 
-12. 返回第一个 Web 浏览器窗口，选择应用程序的“预配”选项卡。
+12. 返回第一个 Web 浏览器窗口，选择应用程序的“预配”选项卡  。
 13. 验证配置，然后启动预配作业。 
 
 ## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>是否可以添加具有旧用户预配行为的新非库应用？
 
 是的。 如果已将应用程序编码为展示修补程序发布前已经存在的旧行为，并需要部署其新实例，请执行以下程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器创建展示旧行为的 SCIM 预配作业。
  
-1. 登录 Azure 门户： https://portal.azure.com。
-2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”>“创建应用程序”部分，创建新的“非库”应用程序。
-3. 在新的自定义应用的“属性”部分，复制“对象 ID”。
+1. 登录 Azure 门户： https://portal.azure.com 。
+2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”>“创建应用程序”部分，创建新的“非库”应用程序   。
+3. 在新的自定义应用的“属性”部分，复制“对象 ID”   。
 4. 在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
 5. 在 Graph 资源管理器中，运行以下命令，初始化应用的预配配置。
    将“[object-id]”替换为从第三步复制的服务主体 ID（对象 ID）。
@@ -108,7 +108,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
    `{   templateId: "customappsso"   }`
  
-6. 返回第一个 Web 浏览器窗口，选择应用程序的“预配”选项卡。
+6. 返回第一个 Web 浏览器窗口，选择应用程序的“预配”选项卡  。
 7. 照常完成用户预配配置。
 
 

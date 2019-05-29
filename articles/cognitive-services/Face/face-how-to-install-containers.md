@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: 9bc18157a6f60555ea18901796199a3fe9dc4c22
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 26ebeb463f42dce06c29a5bd3f69585430a2ee90
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65891215"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306643"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -32,7 +32,7 @@ Azure 认知服务人脸检测的人脸在图像中的 docker 提供标准化的
 |--|--|
 |Docker 引擎| 必须在上安装 Docker 引擎[主机计算机](#the-host-computer)。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 中，Docker 还必须配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 需要基本了解 Docker 概念，例如注册表、 存储库、 容器和容器映像。 您还需的基本知识`docker`命令。| 
-|Azure`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>Azure 认知服务资源和关联的帐单密钥和计费的终结点 URI。 这两个值位于**概述**并**密钥**资源页。 它们需要启动该容器。 添加`face/v1.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示： <br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**： 终结点的 URI 示例是 `https://westus.api.cognitive.microsoft.com/face/v1.0`|
+|Azure`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>Azure 认知服务资源和关联的帐单密钥和计费的终结点 URI。 这两个值位于**概述**并**密钥**资源页。 它们需要启动该容器。 添加`face/v1.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示： <br><br>**{BILLING_KEY}** ：资源密钥<br><br>**{BILLING_ENDPOINT_URI}** ： 终结点的 URI 示例是 `https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
@@ -143,6 +143,10 @@ ApiKey={BILLING_KEY}
 
 有关这些选项的详细信息，请参阅[配置容器](./face-resource-container-config.md)。
 
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
+
 ## <a name="summary"></a>摘要
 
 在本文中，你学习概念以及如何下载、 安装并运行人脸 API 容器的工作流。 综上所述：
@@ -154,7 +158,7 @@ ApiKey={BILLING_KEY}
 * 实例化一个容器时，必须指定计费信息。
 
 > [!IMPORTANT]
-> 认知服务容器未获得许可，无需连接到 Azure 计数的运行。 客户必须使容器能够通信与计量服务在所有时间的计费信息。 认知服务容器不向 Microsoft 发送客户数据，如图像或正在分析的文本。
+> 认知服务容器未获得许可，无需连接到 Azure 计数的运行。 客户必须使容器能够通信与计量服务在所有时间的计费信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。
 
 ## <a name="next-steps"></a>后续步骤
 

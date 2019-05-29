@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/28/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: aba8f9b2b4e62420ed5d318be40bbc4ada544866
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 10e5060c06e1ebc591c7245ae588b5352a3328ca
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203083"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302824"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>安装和运行识别文本容器
 
@@ -32,9 +32,9 @@ ms.locfileid: "60203083"
 
 |需要|目的|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br>  在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|Azure`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>一个_认知服务_Azure 资源和关联的计费密钥计费终结点 URI。 这两个值的资源概述和密钥页上可用，并且要求来启动该容器。 您需要添加`vision/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。 <br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|Azure`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>一个_认知服务_Azure 资源和关联的计费密钥计费终结点 URI。 这两个值的资源概述和密钥页上可用，并且要求来启动该容器。 需将 `vision/v2.0` 路由添加到终结点 URI，如以下 BILLING_ENDPOINT_URI 示例所示。 <br><br>**{BILLING_KEY}** ：资源密钥<br><br>**{BILLING_ENDPOINT_URI}** ：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
@@ -89,12 +89,12 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 该命令使用以下参数：
 
-| 占位符 | Value |
+| 占位符 | 值 |
 |-------------|-------|
 |{BILLING_KEY} | 此密钥用于启动此容器，并可在 Azure 上`Cognitive Services`密钥页。  |
 |{BILLING_ENDPOINT_URI} | 帐单终结点 URI 值。 下面是示例： `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
-您需要添加`vision/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。
+需将 `vision/v2.0` 路由添加到终结点 URI，如以下 BILLING_ENDPOINT_URI 示例所示。
 
 在以下示例 `docker run` 命令中，请将这些参数替换为自己的值。
 
@@ -151,11 +151,15 @@ ApiKey={BILLING_KEY}
 
 ## <a name="billing"></a>计费
 
-“识别文本”容器使用 Azure 帐户中的“识别文本”资源向 Azure 发送帐单信息。 
+“识别文本”容器使用 Azure 帐户中的“识别文本”  资源向 Azure 发送帐单信息。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](./computer-vision-resource-container-config.md)。
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
 

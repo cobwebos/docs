@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: 43e35e8074922f45493bc635455d1d176078ce51
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 3d09ee542b98e1c365aceaf86b051d706c7882d4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833531"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304286"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
@@ -62,9 +62,9 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 |[LUIS](LUIS/luis-container-howto.md) |F0、S0|**LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)）|可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://www.luis.ai)以提高应用的预测准确性。|
 |[语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0、S0|**语音转文本** |将连续的实时语音转换为文本。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
 |[语音服务 API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0、S0|**文本转语音** |将文本转换为自然发音的语音。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
-|[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0、S|关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)） |提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
-|[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)） |针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
-|[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|情绪分析（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） |分析原始文本，获取正面或负面情绪的线索。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](./text-analytics/language-support.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 |
+|[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0、S|关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)）  |提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
+|[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)）  |针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
+|[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|情绪分析（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)）  |分析原始文本，获取正面或负面情绪的线索。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](./text-analytics/language-support.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -103,16 +103,7 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 
 各容器还可以有其自己的要求，包括服务器和内存分配要求。
 
-## <a name="developer-samples"></a>开发者示例
-
-可在 [GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-containers-samples)中查看开发人员示例。
-
-## <a name="view-webinar"></a>观看网络研讨会 
-
-加入[网络研讨会](https://info.microsoft.com/AP-AZUREPLAT-WBNR-FY19-03Mar-20-Seamlesslyintegrateapplicationsdataandprocesses-MCW0012283_02OnDemandRegistration-ForminBody.html)若要了解有关的信息：
-
-* 如何将认知服务部署到任何使用 Docker 计算机
-* 如何将认知服务部署到 AKS
+[!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,14 +7,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: aahi
-ms.openlocfilehash: cc82e091ae4c033bda7f1d91c9aed36bb081de88
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233609"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306983"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>安装和运行异常情况检测程序容器
 
@@ -22,7 +22,7 @@ ms.locfileid: "65233609"
 
 |函数|功能|
 |-|-|
-|异常情况检测程序| <li> 在实时发生，检测到异常情况。 <li> 检测整个数据集作为一个批。 <li> 推断数据的预期正常范围。 <li> 支持异常情况检测敏感度调整以更好地适合你的数据。 |
+|异常检测器| <li> 在实时发生，检测到异常情况。 <li> 检测整个数据集作为一个批。 <li> 推断数据的预期正常范围。 <li> 支持异常情况检测敏感度调整以更好地适合你的数据。 |
 
 有关这些 Api 的详细信息，请参阅：
 * [了解有关异常情况检测器 API 服务详细信息](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -35,9 +35,9 @@ ms.locfileid: "65233609"
 
 |需要|目的|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br>  在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|异常情况检测程序资源 |若要使用这些容器，必须具有：<br><br>_异常情况检测器_Azure 资源以获取对关联的帐单密钥和计费终结点 URI。 这两个值可在 Azure 门户的异常情况检测程序概述和密钥页上，并且要求来启动该容器。<br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus2.api.cognitive.microsoft.com`|
+|异常情况检测程序资源 |若要使用这些容器，必须具有：<br><br>_异常情况检测器_Azure 资源以获取对关联的帐单密钥和计费终结点 URI。 这两个值可在 Azure 门户的异常情况检测程序概述和密钥页上，并且要求来启动该容器。<br><br>**{BILLING_KEY}** ：资源密钥<br><br>**{BILLING_ENDPOINT_URI}** ：终结点 URI 示例如下：`https://westus2.api.cognitive.microsoft.com`|
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
@@ -176,6 +176,10 @@ ApiKey={BILLING_KEY}
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](anomaly-detector-container-configuration.md)。
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
 

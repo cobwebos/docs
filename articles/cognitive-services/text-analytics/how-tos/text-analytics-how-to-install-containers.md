@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: e0e8b9f767376db8028a3ac4a2d8659bab69268b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9f68b74c09bf0122ba856680a60bdb14ffa868f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829950"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306529"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -34,9 +34,9 @@ ms.locfileid: "60829950"
 
 |需要|目的|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br>  在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|`Cognitive Services` 资源 |若要使用容器，必须具有：<br><br>一个[_认知服务_](text-analytics-how-to-access-key.md) Azure 资源以获取对关联的帐单密钥和计费终结点 URI。 这两个值都可在 Azure 门户的认知服务概述和密钥页上，并且要求来启动该容器。 您需要添加`text/analytics/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。<br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+|`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>一项[_认知服务_](text-analytics-how-to-access-key.md) Azure 资源，用于获取关联的计费密钥和计费终结点 URI。 这两个值都可以从 Azure 门户中的认知服务“概览”和“密钥”页获取；必须获取这两个值才能启动容器。 需将 `text/analytics/v2.0` 路由添加到终结点 URI，如以下 BILLING_ENDPOINT_URI 示例所示。<br><br>**{BILLING_KEY}** ：资源密钥<br><br>**{BILLING_ENDPOINT_URI}** ：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
 ### <a name="the-host-computer"></a>主计算机
 
@@ -112,10 +112,10 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 
 | 占位符 | 值 |
 |-------------|-------|
-|{BILLING_KEY} | 此密钥用于启动此容器，并可在 Azure 门户上`Cognitive Services`密钥页。  |
-|{BILLING_ENDPOINT_URI} | 计费终结点 URI 值是可在 Azure 上`Cognitive Services`概述页。 <br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|{BILLING_KEY} | 此密钥用于启动容器，可以从 Azure 门户中的`Cognitive Services`“密钥”页上获取该密钥。  |
+|{BILLING_ENDPOINT_URI} | Azure `Cognitive Services`“概览”页面上提供了账单终结点 URI 值。 <br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
 
-您需要添加`text/analytics/v2.0`BILLING_ENDPOINT_URI 上例中所示路由到终结点 URI。
+需将 `text/analytics/v2.0` 路由添加到终结点 URI，如上述 BILLING_ENDPOINT_URI 示例所示。
 
 在以下示例 `docker run` 命令中，请将这些参数替换为自己的值。
 
@@ -161,11 +161,15 @@ ApiKey={BILLING_KEY}
 
 ## <a name="billing"></a>计费
 
-计费到 Azure 的信息，请使用文本分析容器发送_认知服务_上你的 Azure 帐户的资源。 
+文本分析容器使用 Azure 帐户中的_认知服务_资源向 Azure 发送账单信息。 
 
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](../text-analytics-resource-container-config.md)。
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
 
