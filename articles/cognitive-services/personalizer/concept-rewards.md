@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/13/2019
 ms.author: edjez
-ms.openlocfilehash: 536aad0fac4e833cd9a30bad2cfd10e25b0f1300
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 302f1e18a23bdef9247693f84d3a924370b63f80
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606998"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244235"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>奖励评分表示个性化的成败
 
-奖励评分指示为用户生成的个性化选项 ([RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/rank#rankresponse)) 的好坏程度。 奖励评分值由业务逻辑根据用户行为的观察结果来确定。
+奖励评分指示为用户生成的个性化选项 ([RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response)) 的好坏程度。 奖励评分值由业务逻辑根据用户行为的观察结果来确定。
 
 个性化体验创建服务通过评估奖励来训练其机器学习模型。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "65606998"
 
 发生用户行为（这可能是几天以后的事）后，将发送奖励。 如果发生事件之前个性化体验创建服务等待了最长允许时间，则视为没有奖励。可以在 Azure 门户中使用[奖励等待时间](#reward-wait-time)配置默认奖励。
 
-如果在**奖励等待时间**内未收到某个事件的奖励评分，则会应用**默认奖励**。 通常，**[默认奖励](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** 配置为 0。
+如果在**奖励等待时间**内未收到某个事件的奖励评分，则会应用**默认奖励**。 通常， **[默认奖励](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** 配置为 0。
 
 ## <a name="composing-reward-scores"></a>构成奖励评分
 
@@ -76,9 +76,9 @@ ms.locfileid: "65606998"
 
 ## <a name="best-practices-for-calculating-reward-score"></a>有关计算奖励评分的最佳做法
 
-* **考虑成功个性化的真实指标**：人们很容易根据点击数来考虑奖励，但合理的奖励应该依据用户实现的目标而不是他们要做的事。  例如，基于点击数的奖励可能会导致诱导性点击。
+* **考虑成功个性化的真实指标**：人们很容易根据点击数来考虑奖励，但合理的奖励应该依据用户实现的目标而不是他们要做的事。    例如，基于点击数的奖励可能会导致诱导性点击。
 
-* **使用奖励评分来判断个性化的好坏**：提供某部电影的个性化建议很有可能会引导用户观看该电影，并为该电影提供较高的评级。 由于电影评级取决于许多因素（例如演技、用户的心情等），因此，这种奖励不能很好地反映个性化的效果。 但是，观看电影前几分钟的用户也许可以更好地反映个性化的效果，在 5 分钟后发送奖励评分 1 是一个更好的信号。
+* **使用奖励评分来判断个性化的好坏**：提供某部电影的个性化建议很有可能会引导用户观看该电影，并为该电影提供较高的评级。 由于电影评级取决于许多因素（例如演技、用户的心情等），因此，这种奖励不能很好地反映个性化的效果。  但是，观看电影前几分钟的用户也许可以更好地反映个性化的效果，在 5 分钟后发送奖励评分 1 是一个更好的信号。
 
 * **奖励仅应用到 RewardActionID**：个性化体验创建服务将应用奖励来了解 RewardActionID 中指定的操作的效果。 如果你选择显示其他操作，而用户单击了这些操作，则奖励应该为 0。
 

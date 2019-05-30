@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Cosmos DB Core API 为某个真实示例�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 3/27/2019
+ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c98a8187c0365abc8fdb2bedacc5216266cc5cad
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58919890"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240997"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
 
@@ -140,7 +140,7 @@ ms.locfileid: "58919890"
 
 ### <a name="c2-createedit-a-post"></a>[C2] 创建/编辑帖子
 
-类似于 **[C1]**，我们只需写入到 `posts` 容器。
+类似于 **[C1]** ，我们只需写入到 `posts` 容器。
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -199,7 +199,7 @@ ms.locfileid: "58919890"
 
 ### <a name="c4-like-a-post"></a>[C4] 为帖子点赞
 
-类似于 **[C3]**，我们将在 `posts` 容器中创建相应的项。
+类似于 **[C3]** ，我们将在 `posts` 容器中创建相应的项。
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -209,7 +209,7 @@ ms.locfileid: "58919890"
 
 ### <a name="q5-list-a-posts-likes"></a>[Q5] 列出帖子的点赞数
 
-类似于 **[Q4]**，我们将查询该帖子的点赞数，然后聚合点赞者的用户名。
+类似于 **[Q4]** ，我们将查询该帖子的点赞数，然后聚合点赞者的用户名。
 
 ![检索帖子的所有点赞并聚合其附加数据](./media/how-to-model-partition-example/V1-Q5.png)
 
@@ -282,7 +282,7 @@ ms.locfileid: "58919890"
 
 我们要实现的目的是，每次添加评论或点赞时，都会递增相应帖子中的 `commentCount` 或 `likeCount`。 由于 `posts` 容器已按 `postId` 分区，新项（评论或点赞）及其相应帖子将位于同一个逻辑分区中。 因此，我们可以使用某个[存储过程](stored-procedures-triggers-udfs.md)来执行该操作。
 
-现在，在创建评论 (**[C3]**) 时，我们不仅需要在 `posts` 容器中添加新项，而且还要针对该容器调用以下存储过程：
+现在，在创建评论 ( **[C3]** ) 时，我们不仅需要在 `posts` 容器中添加新项，而且还要针对该容器调用以下存储过程：
 
 ```javascript
 function createComment(postId, comment) {
@@ -396,7 +396,7 @@ function updateUsernames(userId, username) {
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3：确保所有请求都可缩放
 
-分析我们的总体性能改进，可以发现仍有两个请求未得到完全优化：**[Q3]** 和 **[Q6]**。 这些请求涉及到不根据其所针对的容器的分区键进行筛选的查询。
+分析我们的总体性能改进，可以发现仍有两个请求未得到完全优化： **[Q3]** 和 **[Q6]** 。 这些请求涉及到不根据其所针对的容器的分区键进行筛选的查询。
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>[Q3] 以短格式列出用户的帖子
 
@@ -408,9 +408,9 @@ function updateUsernames(userId, username) {
 
 查明此问题的原因其实非常简单：
 
-1. 此请求必须根据 `userId` 进行筛选，因为我们需要提取特定用户的所有帖子
+1. 此请求必须根据 `userId` 进行筛选，因为我们需要提取特定用户的所有帖子 
 1. 它的性能之所以不佳，是因为它是针对 `posts` 容器执行的，而该容器的分区依据不是 `userId`
-1. 明白地讲，我们需要针对某个容器执行此请求来解决性能问题，该容器的分区依据为 `userId`
+1. 明白地讲，我们需要针对某个容器执行此请求来解决性能问题，该容器的分区依据为 `userId` 
 1. 正好我们已有这样一个容器：`users` 容器！
 
 因此，我们通过将整个帖子复制到 `users` 容器，来引入第二级反规范化。 这样，我们便可以有效地获取只按一个不同维度分区的帖子副本，从而可以更有效地按帖子的 `userId` 来检索帖子。
@@ -561,7 +561,7 @@ function truncateFeed() {
 
 这种方案是合理的，因为博客平台（类似于大多数社交应用）是读取密集型的，这意味着，它需要服务的读取请求数量往往比写入请求数量要高几个数量级。 因此，提高所要执行的写入请求的开销是有利的，这可以降低读取请求的开销，并提高其性能。
 
-执行极端优化后我们发现，**[Q6]** 的开销已从 2000 多个 RU 降到了 17 个 RU；这种改进是通过反规范化帖子实现的，每个项的开销大约为 10 RU。 由于我们要服务的源请求比帖子创建或更新请求要多得多，在考虑到总体节省的情况下，这种反规范化带来的开销可以忽略不计。
+执行极端优化后我们发现， **[Q6]** 的开销已从 2000 多个 RU 降到了 17 个 RU；这种改进是通过反规范化帖子实现的，每个项的开销大约为 10 RU。 由于我们要服务的源请求比帖子创建或更新请求要多得多，在考虑到总体节省的情况下，这种反规范化带来的开销可以忽略不计。
 
 ### <a name="denormalization-can-be-applied-incrementally"></a>可以增量方式应用反规范化
 

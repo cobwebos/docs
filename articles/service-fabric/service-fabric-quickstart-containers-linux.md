@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/30/2019
 ms.author: aljo,suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 183f27d752b99c04a711d8141db512c77b9848f9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 1487c9e3e57a2fe4dcdcab04aa81cd81315decfd
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664873"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302330"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>快速入门：将 Linux 容器部署到 Service Fabric
 
@@ -100,7 +100,7 @@ Service Fabric 提供多种可以用来管理群集及其应用程序的工具�
 
 在本快速入门中，请使用 Service Fabric CLI 和 Service Fabric Explorer（基于 Web 的工具）。 若要使用 Service Fabric Explorer，需将证书 PFX 文件导入到浏览器中。 默认情况下，PFX 文件没有密码。
 
-Mozilla Firefox 是 Ubuntu 16.04 中的默认浏览器。 若要将证书导入 Firefox，请单击浏览器右上角的菜单按钮，然后单击“选项”。 在“首选项”页上，使用搜索框搜索“证书”。 单击“查看证书”，选择“你的证书”选项卡，单击“导入”，然后按提示导入证书。
+Mozilla Firefox 是 Ubuntu 16.04 中的默认浏览器。 若要将证书导入 Firefox，请单击浏览器右上角的菜单按钮，然后单击“选项”。  在“首选项”页上，使用搜索框搜索“证书”。  单击“查看证书”，选择“你的证书”选项卡，单击“导入”，然后按提示导入证书。   
 
    ![在 Firefox 上安装证书](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -120,7 +120,7 @@ Mozilla Firefox 是 Ubuntu 16.04 中的默认浏览器。 若要将证书导入 
 
 3. 打开 Web 浏览器，导航到群集的 Service Fabric Explorer 终结点。 终结点的格式如下：**https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**，例如 `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。 </br>
 
-4. 展开“应用程序”节点，可以看到 Voting 应用程序类型的条目以及创建的实例。
+4. 展开“应用程序”节点，可以看到 Voting 应用程序类型的条目以及创建的实例。 
 
     ![Service Fabric Explorer][sfx]
 
@@ -141,9 +141,9 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 若要故障转移前端容器，请执行以下步骤：
 
 1. 在群集中打开 Service Fabric Explorer，例如 `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。
-2. 在树视图中单击“fabric:/Voting/azurevotefront”节点，展开分区节点（以 GUID 表示）。 注意树视图中的节点名称，它显示了当前正在运行容器的节点，例如 `_nodetype_1`。
-3. 在树视图中展开“节点”节点。 单击正在运行容器的节点旁边的省略号 (...)。
-4. 选择“重启”以重启该节点，并确认重启操作。 重启会导致容器故障转移到群集中的另一个节点。
+2. 在树视图中单击“fabric:/Voting/azurevotefront”节点，展开分区节点（以 GUID 表示）。  注意树视图中的节点名称，它显示了当前正在运行容器的节点，例如 `_nodetype_1`。
+3. 在树视图中展开“节点”节点。  单击正在运行容器的节点旁边的省略号 (...)。
+4. 选择“重启”  以重启该节点，并确认重启操作。 重启会导致容器故障转移到群集中的另一个节点。
 
     ![Service Fabric Explorer 中的“节点”视图][sfxquickstartshownodetype]
 
@@ -154,14 +154,14 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 若要缩放 Web 前端服务，请按照以下步骤操作：
 
 1. 在群集中打开 Service Fabric Explorer，例如 `https://containertestcluster.eastus.cloudapp.azure.com:19080`。
-2. 在树视图中单击“fabric:/Voting/azurevotefront”节点旁边的省略号（三个点），选择“缩放服务”。
+2. 在树视图中单击“fabric:/Voting/azurevotefront”节点旁边的省略号（三个点），选择“缩放服务”   。
 
     ![Service Fabric Explorer 缩放服务开始][containersquickstartscale]
 
     现在可以缩放 Web 前端服务的实例数量。
 
-3. 将数字更改为 2，再单击“缩放服务”。
-4. 在树视图中单击“fabric:/Voting/azurevotefront”节点，展开分区节点（以 GUID 表示）。
+3. 将数字更改为 2  ，再单击“缩放服务”  。
+4. 在树视图中单击“fabric:/Voting/azurevotefront”节点，展开分区节点（以 GUID 表示）。 
 
     ![Service Fabric Explorer 缩放服务完成][containersquickstartscaledone]
 
@@ -179,7 +179,7 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 
 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
-登录到 Azure，选择要删除的群集的订阅 ID。 可通过登录到 Azure 门户查找订阅 ID。 使用 [az group delete 命令](/cli/azure/group?view=azure-cli-latest)删除资源组和所有群集资源。
+登录到 Azure，选择要删除群集的订阅 ID。 可通过登录到 Azure 门户查找订阅 ID。 使用 [az group delete 命令](/cli/azure/group?view=azure-cli-latest)删除资源组和所有群集资源。
 
 ```azurecli
 az login
@@ -189,7 +189,7 @@ az group delete --name $ResourceGroupName
 ```
 
 如果群集已使用完毕，则可从证书存储中删除证书。 例如：
-- 在 Windows 上：使用[“证书”MMC 管理单元](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。 在添加管理单元时，确保选择“我的用户帐户”。 导航到 `Certificates - Current User\Personal\Certificates`，然后删除证书。
+- 在 Windows 上：使用[“证书”MMC 管理单元](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。 在添加管理单元时，确保选择“我的用户帐户”。  导航到 `Certificates - Current User\Personal\Certificates`，然后删除证书。
 - 在 Mac 上：使用 Keychain 应用。
 - 在 Ubuntu 上：按照查看证书时所使用的步骤删除此证书。
 

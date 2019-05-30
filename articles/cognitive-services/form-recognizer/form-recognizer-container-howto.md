@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: pafarley
-ms.openlocfilehash: a7159fccc9c4ef232cfca08b173e712e268343ea
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f65375bfd826660f8583068875a1fddc545a86d7
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507822"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306531"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>安装和运行表单识别器容器
 表单识别器应用机器学习技术从表与表单中识别和提取键值对。 它将值和表项关联到表单，然后输出包含原始文件中的关系的结构化数据。 可以使用简单的 REST API 调用自定义表单识别器模型，以降低复杂性，并轻松地将该模型集成到工作流自动化过程或其他应用程序中。 只需五个文档（或一个空表单），因此，可以快速准确地获取根据特定内容定制的结果，而无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 表单识别器不要求标记或标注数据。
@@ -31,11 +31,11 @@ ms.locfileid: "65507822"
 
 |必选|目的|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br>  在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。|
 |Azure CLI| 需要在主机上安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。|
-|计算机视觉 API 资源| 若要处理扫描的文档和图像，需要配置**计算机视觉资源**。 可以访问作为 Azure 资源（REST API 或 SDK）或 `cognitive-services-recognize-text` [容器](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)提供的“识别文本”功能。 使用此功能需要按普通费率付费。 <br><br>必须传入特定计算机视觉资源（Azure 云或认知服务容器）的密钥和计费终结点。 请将此密钥和计费终结点用作 {COMPUTER_VISION_API_KEY} 和 {COMPUTER_VISION_BILLING_ENDPOINT_URI}。<br><br> 如果使用 **`cognitive-services-recognize-text` 容器**，请确保：<br><br>*表单识别器容器的计算机视觉密钥是在 `cognitive-services-recognize-text` 容器的计算机视觉 `docker run` 命令中指定的密钥。<br>*计费终结点是容器的终结点，例如 `https://localhost:5000`。 如果在同一台主机上同时使用计算机视觉和表单识别器容器，不能使用默认端口 `5000` 将两者同时启动。  |  
-|表单识别器资源 |若要使用这些容器，必须具有：<br><br>一个表单识别器 Azure 资源，用于获取关联的计费密钥和计费终结点 URI。 这两个值都可以从 Azure 门户中的表单识别器“概述”和“密钥”页获取；必须获取这两个值才能启动该容器。<br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/forms/v1.0`| 
+|计算机视觉 API 资源| 若要处理扫描的文档和图像，需要配置**计算机视觉资源**。 可以访问作为 Azure 资源（REST API 或 SDK）或 `cognitive-services-recognize-text` [容器](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)提供的“识别文本”  功能。 使用此功能需要按普通费率付费。 <br><br>必须传入特定计算机视觉资源（Azure 云或认知服务容器）的密钥和计费终结点。 请将此密钥和计费终结点用作 {COMPUTER_VISION_API_KEY} 和 {COMPUTER_VISION_BILLING_ENDPOINT_URI}。<br><br> 如果使用 **`cognitive-services-recognize-text` 容器**，请确保：<br><br>*表单识别器容器的计算机视觉密钥是在 `cognitive-services-recognize-text` 容器的计算机视觉 `docker run` 命令中指定的密钥。<br>*计费终结点是容器的终结点，例如 `https://localhost:5000`。 如果在同一台主机上同时使用计算机视觉和表单识别器容器，不能使用默认端口 `5000` 将两者同时启动。  |  
+|表单识别器资源 |若要使用这些容器，必须具有：<br><br>一个表单识别器 Azure 资源，用于获取关联的计费密钥和计费终结点 URI。  这两个值都可以从 Azure 门户中的表单识别器“概述”和“密钥”页获取；必须获取这两个值才能启动该容器。 <br><br>**{BILLING_KEY}** ：资源密钥<br><br>**{BILLING_ENDPOINT_URI}** ：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/forms/v1.0`| 
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
@@ -63,7 +63,7 @@ ms.locfileid: "65507822"
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
 > [!Note]
-> 最小和建议值基于 Docker 限制，而不是基于主机资源。
+> 最小和建议值基于 Docker 限制，而不是基于主机资源。 
 
 ## <a name="get-the-container-image-with-docker-pull-command"></a>使用 docker pull 命令获取容器映像
 
@@ -277,11 +277,15 @@ formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=form
 
 ## <a name="billing"></a>计费
 
-表单识别器容器使用 Azure 帐户中的“表单识别器”资源向 Azure 发送计费信息。
+表单识别器容器使用 Azure 帐户中的“表单识别器”资源向 Azure 发送计费信息。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](form-recognizer-container-configuration.md)。
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
 

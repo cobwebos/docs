@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474165219d7740e63bb5e0a62d08069109a52c31
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445943"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66236126"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure Data Lake Store
 
@@ -44,17 +44,17 @@ ms.locfileid: "58445943"
 
 在 Data Lake Store 中，新建一个文件夹，并向 Linux VM 系统分配的托管标识授予在该文件夹中读取、写入和执行文件的权限：
 
-1. 在 Azure 门户的左窗格中，选择“Data Lake Store”。
+1. 在 Azure 门户的左窗格中，选择“Data Lake Store”  。
 2. 选择要使用的 Data Lake Store 实例。
-3. 在命令栏上选择“数据资源管理器”。
-4. 将选择 Data Lake Store 实例的根文件夹。 在命令栏上选择“访问”。
-5. 选择 **添加** 。  在“选择”框中，输入 VM 的名称 -- 例如 **DevTestVM**。 从搜索结果中选择自己的 VM，然后单击“选择”。
-6. 单击“选择权限”。  选择“读取”和“执行”，并以“仅为访问权限”的形式添加到“此文件夹”。 选择“确定”。  权限应已成功添加。
-7. 关闭“访问”窗格。
-8. 本教程将新建一个文件夹。 在命令栏上选择“新建文件夹”并为新文件夹命名，例如 **TestFolder**。  选择“确定”。
-9. 选择创建的文件夹，然后在命令栏上选择“访问”。
-10. 与执行步骤 5 时一样，选择“添加”。 在“选择”框中，输入 VM 的名称。 从搜索结果中选择自己的 VM，然后单击“选择”。
-11. 与执行步骤 6 时一样，选择“选择权限”。 选择“读取”、“写入”和“执行”，并以“访问权限条目和默认访问权限条目”的形式添加到“此文件夹”。 选择“确定”。  权限应已成功添加。
+3. 在命令栏上选择“数据资源管理器”  。
+4. 将选择 Data Lake Store 实例的根文件夹。 在命令栏上选择“访问”。 
+5. 选择 **添加** 。  在“选择”框中，输入 VM 的名称 -- 例如 **DevTestVM**  。 从搜索结果中选择自己的 VM，然后单击“选择”  。
+6. 单击“选择权限”  。  选择“读取”和“执行”，并以“仅为访问权限”的形式添加到“此文件夹”     。 选择“确定”。   权限应已成功添加。
+7. 关闭“访问”窗格  。
+8. 本教程将新建一个文件夹。 在命令栏上选择“新建文件夹”并为新文件夹命名，例如 **TestFolder**  。  选择“确定”。 
+9. 选择创建的文件夹，然后在命令栏上选择“访问”。 
+10. 与执行步骤 5 时一样，选择“添加”。  在“选择”框中，输入 VM 的名称。  从搜索结果中选择自己的 VM，然后单击“选择”  。
+11. 与执行步骤 6 时一样，选择“选择权限”。  选择“读取”、“写入”和“执行”，并以“访问权限条目和默认访问权限条目”的形式添加到“此文件夹”      。 选择“确定”。   权限应已成功添加。
 
 Azure 资源的托管标识现在可以对你创建的文件夹中的文件执行所有操作。 若要详细了解管理 Data Lake Store 的访问权限，请参阅 [Data Lake Store 中的访问控制](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)。
 
@@ -69,7 +69,7 @@ Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接
 
 若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 客户端。 如需有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
-1. 在门户中，浏览到自己的 Linux VM。 在“概述”中，选择“连接”。  
+1. 在门户中，浏览到自己的 Linux VM。 在“概述”中，选择“连接”。    
 2. 使用所选的 SSH 客户端连接到该 VM。 
 3. 在终端窗口中，使用 cURL 向 Azure 资源终结点的本地托管标识发出请求，获取访问 Data Lake Store 系统所需的访问令牌。 Data Lake Store 的资源标识符是 `https://datalake.azure.net/`。  请务必在资源标识符中包含尾部反斜杠。
     
@@ -89,7 +89,7 @@ Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接
     "token_type":"Bearer"}
    ```
 
-4. 使用 cURL 向 Data Lake Store 文件系统 REST 终结点发出请求，在根文件夹中列出文件夹。 使用此方法可轻松检查是否所有内容都已正确配置。 复制上一步中的访问令牌值。 身份验证标头中“Bearer”字符串的首字母“B”必须大写。 在 Azure 门户的“Data Lake Store”窗格中的“概述”部分，可以找到 Data Lake Store 实例的名称。
+4. 使用 cURL 向 Data Lake Store 文件系统 REST 终结点发出请求，在根文件夹中列出文件夹。 使用此方法可轻松检查是否所有内容都已正确配置。 复制上一步中的访问令牌值。 身份验证标头中“Bearer”字符串的首字母“B”必须大写。 在 Azure 门户的“Data Lake Store”窗格中的“概述”部分，可以找到 Data Lake Store 实例的名称   。
 
    ```bash
    curl https://<YOUR_ADLS_NAME>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS -H "Authorization: Bearer <ACCESS_TOKEN>"

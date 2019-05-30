@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ad93df6d628c91cddcf8e0a51c6ea11991e7b024
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c43375afe7965475e84793ddcd54a38a2e9bd3cd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684117"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073724"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -31,25 +31,25 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-在 Azure 门户的左上角，选择“+ 创建资源” > “Kubernetes 服务”。
+在 Azure 门户的左上角，选择“+ 创建资源” > “Kubernetes 服务”。  
 
 若要创建 AKS 群集，请完成以下步骤：
 
 1. **基本信息** - 配置以下选项：
-   - 项目详细信息：选择 Azure 订阅，然后选择或创建 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
+   - 项目详细信息  ：选择 Azure 订阅，然后选择或创建 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
    - *群集详细信息*：选择 AKS 群集的区域、Kubernetes 版本和 DNS 名称前缀。
-   - *规模*：选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。
-       - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。 部署群集后，可以调整节点计数。
+   - *规模*：选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小  。
+       - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。   部署群集后，可以调整节点计数  。
     
      ![创建 AKS 群集 - 提供基本信息](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-     在完成时选择“下一步:身份验证”。
+     在完成时选择“下一步:  身份验证”。
 
 1. **身份验证**：配置以下选项：
-   - 创建新的服务主体，或者通过“配置”来使用现有的。 使用现有 SPN 时，需要提供 SPN 客户端 ID 和密码。
+   - 创建新的服务主体，或者通过“配置”来使用现有的。  使用现有 SPN 时，需要提供 SPN 客户端 ID 和密码。
    - 启用 Kubernetes 基于角色的访问控制 (RBAC) 所对应的选项。 这些控制可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
 
-     默认情况下将使用“基本”网络，并且会启用适用于容器的 Azure Monitor。 就绪后，选择“评审 + 创建”，然后选择“创建”。
+     默认情况下将使用“基本”  网络，并且会启用适用于容器的 Azure Monitor。 就绪后，选择“评审 + 创建”，然后选择“创建”   。
 
 创建 AKS 群集并让其可供使用需要几分钟的时间。 完成后，浏览到 AKS 群集资源组（例如 *myResourceGroup*），然后选择 AKS 资源（例如 *myAKSCluster*）。 此时会显示 AKS 群集仪表板，如以下示例屏幕截图所示：
 
@@ -224,22 +224,22 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 在 Azure 门户中填充此数据可能需要几分钟。 若要查看 Azure Vote Pod 的当前状态、运行时间和资源使用情况，请浏览回到 Azure 门户中的 AKS 资源，例如 *myAKSCluster*。 然后可以访问运行状况，如下所示：
 
-1. 在左侧的“监视”下，选择“见解”
-1. 在顶部，选择“+ 添加筛选器”
-1. 选择“命名空间”作为属性，然后选择“\<除 kube-system 之外的所有项\>”
-1. 选择查看“容器”。
+1. 在左侧的“监视”  下，选择“见解” 
+1. 在顶部，选择“+ 添加筛选器” 
+1. 选择“命名空间”  作为属性，然后选择“\<除 kube-system 之外的所有项\>” 
+1. 选择查看“容器”  。
 
 将显示 *azure-vote-back* 和 *azure-vote-front* 容器，如下面的示例中所示：
 
 ![查看在 AKS 中运行的容器的运行状况](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-若要查看 `azure-vote-front` Pod 的日志，请在容器列表右侧选择“查看容器日志”链接。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
+若要查看 `azure-vote-front` Pod 的日志，请在容器列表右侧选择“查看容器日志”链接  。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
 
 ![查看 AKS 中的容器日志](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>删除群集
 
-不再需要群集时，可以删除群集资源，这会一并删除所有关联的资源。 选择 AKS 群集仪表板上的“删除”按钮即可在 Azure 门户中完成此操作。 也可在 Cloud Shell 中使用 [az aks delete][az-aks-delete] 命令：
+不再需要群集时，可以删除群集资源，这会一并删除所有关联的资源。 选择 AKS 群集仪表板上的“删除”按钮即可在 Azure 门户中完成此操作。  也可在 Cloud Shell 中使用 [az aks delete][az-aks-delete] 命令：
 
 ```azurecli-interactive
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait

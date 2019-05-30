@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1534bc65a369254802973d6c3b91ed8b76ed44e0
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: bb04d6c8b16a6b9bdbbb95b0b4f577cf4cc3ed86
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596563"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235079"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
@@ -48,7 +48,7 @@ Data Science Virtual Machine (DSVM) 的目标在于向所有技能级别和各�
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>自定义 Azure Notebooks 的计算能力
 
-[Azure Notebooks](/azure/notebooks/azure-notebooks-overview.md) 是一项免费的托管服务，用于在云中开发、运行和共享 Jupyter 笔记本而无需进行安装。 不过，免费服务层限制为 4GB 内存和 1GB 数据。 若要放开所有限制，可以将 Notebooks 项目附加到 Data Science VM 或任何其他运行 Jupyter 服务器的 VM。 如果你经由使用 Azure Active Directory 的帐户（例如公司帐户）登录到 Azure Notebooks，则 Notebooks 会自动在与该帐户关联的任意订阅中显示 Data Science VM。 有关详细信息，请参阅[管理和配置项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。
+[Azure Notebooks](/azure/notebooks/azure-notebooks-overview) 是一项免费的托管服务，用于在云中开发、运行和共享 Jupyter 笔记本而无需进行安装。 不过，免费服务层限制为 4GB 内存和 1GB 数据。 若要放开所有限制，可以将 Notebooks 项目附加到 Data Science VM 或任何其他运行 Jupyter 服务器的 VM。 如果你经由使用 Azure Active Directory 的帐户（例如公司帐户）登录到 Azure Notebooks，则 Notebooks 会自动在与该帐户关联的任意订阅中显示 Data Science VM。 有关详细信息，请参阅[管理和配置项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期实验和评估
 数据科学 VM 可用于评估或学习工具，例如 Microsoft ML Server、SQL Server、Visual Studio 工具、Jupyter、深度学习/ML 工具包以及社区热门且需要最少设置工作量的新工具。 因为 Data Science VM 可快速设置，所以可应用于其他短期使用方案，例如复制发布的实验、执行演示、遵循在线会话和会议教程中的演练。

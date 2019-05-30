@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 05/24/2019
 ms.author: diberry
-ms.openlocfilehash: 154b02cba41d685803d06bc3c9c24db2779434e5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0f40ed3d0b77662e23e4042f568b8241cef130c6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792121"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256613"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>使用 Python 从知识库获取问题的答案
 
@@ -25,8 +25,8 @@ ms.locfileid: "65792121"
 
 * [Python 3.6 或更高版本](https://www.python.org/downloads/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。 
-* “发布”页设置。 如果没有已发布的知识库，请创建一个空的知识库，接着“设置”页上导入一个知识库，然后进行发布。 可以下载并使用[这个基本的知识库](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。 
+* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。   
+* “发布”页设置。  如果没有已发布的知识库，请创建一个空的知识库，接着“设置”页上导入一个知识库，然后进行发布。  可以下载并使用[这个基本的知识库](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。 
 
     发布页设置包括 POST 路由值、Host 值和 EndpointKey 值。 
 
@@ -44,11 +44,11 @@ ms.locfileid: "65792121"
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=1-2 "Add the required dependencies")]
 
-主机和路由不同于它们在“发布”页上显示的样子。 这是因为 python 库不允许主机中的任何路由。 在“发布”页上作为主机的一部分显示的路由功能已移至此路由。
+主机和路由不同于它们在“发布”页上显示的样子。  这是因为 python 库不允许主机中的任何路由。 在“发布”页上作为主机的一部分显示的路由功能已移至此路由。 
 
 ## <a name="add-the-required-constants"></a>添加必需的常量
 
-添加必需的常量来访问 QnA Maker。 发布知识库后，这些值会出现在“发布”页上。 
+添加必需的常量来访问 QnA Maker。 发布知识库后，这些值会出现在“发布”页上。  
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=5-25 "Add the required constants")]
 

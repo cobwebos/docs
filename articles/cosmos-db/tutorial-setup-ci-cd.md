@@ -4,15 +4,15 @@ description: 教程：如何使用 Cosmos DB 模拟器生成任务在 Azure DevO
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/02/2018
+ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: d6250b778cdaec47ccbe2f45d35adea0b676a20a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b97fb1956c75332c40e242484b9d94419a45eb92
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881999"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242560"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -24,7 +24,7 @@ ms.locfileid: "58881999"
 
 ## <a name="install-the-emulator-build-task"></a>安装模拟器生成任务
 
-若要使用生成任务，需先将它安装到 Azure DevOps 组织。 在[市场](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview)中找到“Azure Cosmos DB 模拟器”，然后单击“免费获取”。
+若要使用生成任务，需先将它安装到 Azure DevOps 组织。  在[市场](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview)中找到“Azure Cosmos DB 模拟器”，然后单击“免费获取”。 
 
 ![在 Azure DevOps 市场中找到并安装 Azure Cosmos DB 模拟器生成任务](./media/tutorial-setup-ci-cd/addExtension_1.png)
 
@@ -39,11 +39,11 @@ ms.locfileid: "58881999"
 
 安装扩展以后，请登录 Azure DevOps 帐户，从项目仪表板中找到项目。 可以向项目添加[生成管道](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)，也可以修改现有的生成管道。 如果已经有生成管道，则可跳转到[向生成定义添加模拟器生成任务](#addEmulatorBuildTaskToBuildDefinition)。
 
-1. 若要创建新的生成定义，请导航到 Azure DevOps 中的 **“生成”** 选项卡。 选择 **“+新建”**。 \> **新建生成管道**
+1. 若要创建新的生成定义，请导航到 Azure DevOps 中的 **“生成”** 选项卡。 选择 **“+新建”** 。 \> **新建生成管道**
 
    ![创建新的生成管道](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
-2. 选择所需**源**、**团队项目**、**存储库**和**手动和计划生成的默认分库**。 选择所需选项后，请选择“继续”。
+2. 选择所需**源**、**团队项目**、**存储库**和**手动和计划生成的默认分库**。 选择所需选项后，请选择“继续”  。
 
    ![针对生成管道选择团队项目、存储库和分库](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
@@ -53,9 +53,9 @@ ms.locfileid: "58881999"
 
 ## <a name="addEmulatorBuildTaskToBuildDefinition"></a>将任务添加到生成管道
 
-1. 在向生成管道添加任务之前，应先添加代理作业。 导航到生成管道，选择“...”，然后选择“添加代理作业”。
+1. 在向生成管道添加任务之前，应先添加代理作业。 导航到生成管道，选择“...”，然后选择“添加代理作业”。  
 
-1. 接下来选择代理作业旁边的 **+** 符号，以便添加模拟器生成任务。 在搜索框中搜索 **cosmos**，选择“Azure Cosmos DB 模拟器”，然后将其添加到代理作业。 此生成任务会启动一个容器，其中的 Cosmos DB 模拟器实例已经运行。 应该将 Azure Cosmos DB 模拟器任务置于任何其他预期模拟器会处于运行状态的任务之前。
+1. 接下来选择代理作业旁边的 **+** 符号，以便添加模拟器生成任务。 在搜索框中搜索 **cosmos**，选择“Azure Cosmos DB 模拟器”，然后将其添加到代理作业。  此生成任务会启动一个容器，其中的 Cosmos DB 模拟器实例已经运行。 应该将 Azure Cosmos DB 模拟器任务置于任何其他预期模拟器会处于运行状态的任务之前。
 
    ![向生成定义添加模拟器生成任务](./media/tutorial-setup-ci-cd/addExtension_3.png)
 
@@ -130,13 +130,13 @@ namespace todo.Tests
 }
 ```
 
-导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用 **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 `-endpoint $(CosmosDbEmulator.Endpoint)`。 这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
+导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用  **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 `-endpoint $(CosmosDbEmulator.Endpoint)`。  这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
 
 ![使用模拟器生成任务终结点替代终结点变量](./media/tutorial-setup-ci-cd/addExtension_5.png)
 
 ## <a name="run-the-build"></a>运行生成
 
-现在，请对该生成执行“保存并排队”操作。 
+现在，请对该生成执行“保存并排队”操作。  
 
 ![保存并运行生成](./media/tutorial-setup-ci-cd/runBuild_1.png)
 

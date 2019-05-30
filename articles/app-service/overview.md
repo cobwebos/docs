@@ -16,19 +16,19 @@ ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: a3ff9b6fc1abf36bf2feddf518e4e920f18a3c23
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423674"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "60835339"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 
-Azure 应用服务是用于托管 Web 应用程序、REST API 和移动后端的服务。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。 在基于 Windows 和 Linux 的环境中，应用程序都可以轻松地运行和缩放。 对于基于 Linux 的环境，请参阅 [Linux 上的应用服务](containers/app-service-linux-intro.md)。 
+Azure 应用服务是用于托管 Web 应用程序、REST API 和移动后端的服务  。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。 在基于 Windows 和 Linux 的环境中，应用程序都可以轻松地运行和缩放。 对于基于 Linux 的环境，请参阅 [Linux 上的应用服务](containers/app-service-linux-intro.md)。 
 
 应用服务不仅可将 Microsoft Azure 的强大功能（例如安全性、负载均衡、自动缩放和自动管理）添加到应用程序。 还能利用其 DevOps 功能，例如来自 Azure DevOps、GitHub、Docker 中心和其他源的持续部署，以及包管理、过渡环境、自定义域和 SSL 证书。 
 
-使用应用服务时，需要支付 Azure 计算资源的使用费。 使用的计算资源量由运行应用的应用服务计划确定。 有关详细信息，请参阅 [Azure 应用服务计划概述](overview-hosting-plans.md)。
+使用应用服务时，需要支付 Azure 计算资源的使用费。 使用的计算资源量由运行应用的应用服务计划确定  。 有关详细信息，请参阅 [Azure 应用服务计划概述](overview-hosting-plans.md)。
 
 ## <a name="why-use-app-service"></a>为何使用应用服务？
 
