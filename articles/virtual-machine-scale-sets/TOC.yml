@@ -223,6 +223,14 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: 使用 Azure PowerShell
               href: virtual-machine-scale-sets-manage-powershell.md
+        - name: 修改规模集
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: 规模集网络
+          href: virtual-machine-scale-sets-networking.md
+        - name: 自动 OS 升级
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: 实例保护（预览版）
+          href: virtual-machine-scale-sets-instance-protection.md
         - name: 共享映像库
           items:
             - name: 概述
@@ -237,14 +245,8 @@
               href: troubleshooting-shared-images.md
         - name: 规模集中的纵向缩放
           href: virtual-machine-scale-sets-vertical-scale-reprovision.md
-        - name: 自动 OS 升级
-          href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: 修改规模集
-          href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: 使用 DSC 和规模集
           href: virtual-machine-scale-sets-dsc.md
-        - name: 规模集网络
-          href: virtual-machine-scale-sets-networking.md
         - name: 将模板转换为托管磁盘
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: 计划内维护

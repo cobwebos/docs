@@ -13,6 +13,8 @@
       href: view-applications-portal.md
 - name: 教程
   items:
+    - name: SaaS 应用程序教程
+      href: 'https://docs.microsoft.com/azure/active-directory/saas-apps/'
     - name: 配置单一登录 - 门户
       href: configure-single-sign-on-portal.md
     - name: 添加本地应用 - 门户
@@ -77,19 +79,13 @@
       href: end-user-experiences.md
 - name: 操作指南
   items:
-    - name: 云应用集成
+    - name: 添加云应用
       items:
-        - name: 添加应用
-          items:
-            - name: 选择应用类型
-              href: choose-application-type.md
-            - name: 常见问题 - 库应用
-              href: adding-gallery-app-common-problems.md
-            - name: 常见问题 - 非库应用
-              href: adding-non-gallery-app-common-problems.md
+        - name: 选择应用类型
+          href: choose-application-type.md
         - name: 更改名称或徽标
           href: change-name-or-logo-portal.md
-    - name: 本地应用集成
+    - name: 集成本地应用
       items:
         - name: 配置连接器
           href: application-proxy-configure-connectors-with-proxy-servers.md
@@ -125,6 +121,138 @@
               href: application-proxy-integrate-with-tableau.md
             - name: 与 Qlik 集成
               href: application-proxy-qlik.md
+    - name: 配置单一登录
+      items:
+        - name: 配置非库应用
+          href: configure-single-sign-on-non-gallery-applications.md
+        - name: 配置联合单一登录 - 库应用
+          href: configure-federated-single-sign-on-gallery-applications.md
+        - name: 配置联合单一登录 - 非库应用
+          href: configure-federated-single-sign-on-non-gallery-applications.md
+        - name: 配置密码 - 库应用
+          href: configure-password-single-sign-on-gallery-applications.md
+        - name: 配置密码 - 非库应用
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: 使用应用程序代理进行单一登录
+          items:
+            - name: Kerberos 约束委派 (KCD)
+              href: application-proxy-configure-single-sign-on-with-kcd.md
+            - name: 密码保管
+              href: application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: 标头
+              href: application-proxy-configure-single-sign-on-with-ping-access.md
+            - name: SAML SSO
+              href: application-proxy-configure-single-sign-on-on-premises-apps.md
+    - name: 配置用户设置
+      items:
+        - name: 预配花费多长时间
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: 配置用户预配 - 库应用
+          href: application-provisioning-config-how-to.md
+        - name: 同步属性以进行映射 - 库应用
+          href: user-provisioning-sync-attributes-for-mapping.md
+    - name: 分配用户和管理对应用的访问权限
+      items:
+        - name: 配置用户同意
+          href: configure-user-consent.md
+        - name: 用于将用户和组分配到应用的方法
+          href: methods-for-assigning-users-and-groups.md
+        - name: 将用户分配到应用
+          href: assign-user-or-group-access-portal.md
+        - name: 使用自助服务应用访问权限
+          href: access-panel-manage-self-service-access.md
+        - name: 用于删除用户对应用的访问权限的方法
+          href: methods-for-removing-user-access.md
+        - name: 删除用户或组访问权限
+          href: remove-user-or-group-access-portal.md
+        - name: 对用户隐藏应用
+          href: hide-application-from-user-portal.md
+        - name: 禁用用户登录
+          href: disable-user-sign-in-portal.md
+        - name: 配置自助服务应用分配
+          href: manage-self-service-access.md
+        - name: 主领域发现
+          href: configure-authentication-for-federated-users-portal.md
+    - name: 将应用迁移到 Azure AD
+      items:
+        - name: 迁移资源
+          href: migration-resources.md
+        - name: 将 ADFS 应用迁移到 Azure
+          href: migrate-adfs-apps-to-azure.md
+    - name: 故障排除
+      items:
+        - name: 排查添加应用时出现的问题
+          items:
+            - name: 常见问题 - 库应用
+              href: adding-gallery-app-common-problems.md
+            - name: 常见问题 - 非库应用
+              href: adding-non-gallery-app-common-problems.md
+        - name: 排查用户登录问题
+          items:
+            - name: 意外的许可提示
+              href: application-sign-in-unexpected-user-consent-prompt.md
+            - name: “用户同意”错误
+              href: application-sign-in-unexpected-user-consent-error.md
+            - name: 从自定义门户登录时出现问题
+              href: application-sign-in-other-problem-deeplink.md
+            - name: 从访问面板登录时出现问题
+              href: application-sign-in-other-problem-access-panel.md
+            - name: 应用程序登录页上的错误
+              href: application-sign-in-problem-application-error.md
+            - name: 使用密码单一登录时出现的问题 - 非库应用
+              href: application-sign-in-problem-password-sso-non-gallery.md
+            - name: 使用密码单一登录时出现的问题 - 库应用
+              href: application-sign-in-problem-password-sso-gallery.md
+            - name: 登录到 Microsoft 应用时出现问题
+              href: application-sign-in-problem-first-party-microsoft.md
+            - name: 使用联合单一登录时出现的问题 - 非库应用
+              href: application-sign-in-problem-federated-sso-non-gallery.md
+            - name: 使用联合单一登录时出现的问题 - 库应用
+              href: application-sign-in-problem-federated-sso-gallery.md
+            - name: 登录自定义开发的应用时出现的问题
+              href: application-sign-in-problem-custom-dev.md
+        - name: 排查单一登录问题
+          items:
+            - name: 配置联合单一登录时常见的问题 - 库应用
+              href: configure-federated-single-sign-on-gallery-applications-problems.md
+            - name: 配置联合单一登录时常见的问题 - 非库应用
+              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
+            - name: 配置密码时常见的问题 - 库应用
+              href: configure-password-single-sign-on-gallery-applications-problems.md
+            - name: 配置密码时常见的问题 - 非库应用
+              href: configure-password-single-sign-on-non-gallery-applications-problems.md
+        - name: 排查用户预配问题
+          items:
+            - name: 花费数小时 - 库应用
+              href: application-provisioning-when-will-provisioning-finish.md
+            - name: 配置用户预配时出现问题 - 库应用
+              href: application-provisioning-config-problem.md
+            - name: 配置用户预配时保存管理员凭据出现问题 - 库应用
+              href: application-provisioning-config-problem-storage-limit.md
+            - name: 未预配用户 - 库应用
+              href: application-provisioning-config-problem-no-users-provisioned.md
+            - name: 预配了错误的用户 - 库应用
+              href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: 排查应用列表和分配问题
+          items:
+            - name: 为租户管理应用程序列表
+              href: application-types.md
+            - name: 分配了意外的用户
+              href: ways-users-get-assigned-to-applications.md
+        - name: 排查访问面板问题
+          items:
+            - name: 管理浏览器扩展
+              href: manage-access-panel-browser-extension.md
+            - name: 应用未出现
+              href: access-panel-troubleshoot-application-not-appearing.md
+            - name: 出现意外的应用
+              href: access-panel-troubleshoot-unexpected-application.md
+            - name: 无法登录
+              href: access-panel-troubleshoot-web-sign-in-problem.md
+            - name: 安装浏览器扩展时出错
+              href: access-panel-extension-problem-installing.md
+            - name: 使用自助服务应用访问权限时出错
+              href: access-panel-troubleshoot-self-service-access.md
         - name: 应用程序代理故障排除
           items:
             - name: 连接器故障排除流程图
@@ -159,124 +287,6 @@
               href: application-proxy-connector-installation-problem.md
             - name: 登录问题
               href: application-sign-in-problem-on-premises-application-proxy.md
-    - name: 用户预配
-      items:
-        - name: 花费多长时间
-          href: application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: 花费数小时 - 库应用
-          href: application-provisioning-when-will-provisioning-finish.md
-        - name: 配置用户预配 - 库应用
-          href: application-provisioning-config-how-to.md
-        - name: 配置用户预配时出现问题 - 库应用
-          href: application-provisioning-config-problem.md
-        - name: 配置用户预配时保存管理员凭据出现问题 - 库应用
-          href: application-provisioning-config-problem-storage-limit.md
-        - name: 同步属性以进行映射 - 库应用
-          href: user-provisioning-sync-attributes-for-mapping.md
-        - name: 未预配用户 - 库应用
-          href: application-provisioning-config-problem-no-users-provisioned.md
-        - name: 预配了错误的用户 - 库应用
-          href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: 应用程序访问
-      items:
-        - name: 应用程序类型
-          href: application-types.md
-        - name: 配置用户同意
-          href: configure-user-consent.md
-        - name: 用于将用户和组分配到应用的方法
-          href: methods-for-assigning-users-and-groups.md
-        - name: 将用户分配到应用
-          href: assign-user-or-group-access-portal.md
-        - name: 用于删除用户对应用的访问权限的方法
-          href: methods-for-removing-user-access.md
-        - name: 分配了意外的用户
-          href: ways-users-get-assigned-to-applications.md
-        - name: 删除用户或组访问权限
-          href: remove-user-or-group-access-portal.md
-        - name: 对用户隐藏应用
-          href: hide-application-from-user-portal.md
-        - name: 禁用用户登录
-          href: disable-user-sign-in-portal.md
-        - name: 配置自助服务应用分配
-          href: manage-self-service-access.md
-        - name: 主领域发现
-          href: configure-authentication-for-federated-users-portal.md
-    - name: 单一登录
-      items:
-        - name: 配置非库应用
-          href: configure-single-sign-on-non-gallery-applications.md
-        - name: 配置联合单一登录 - 库应用
-          href: configure-federated-single-sign-on-gallery-applications.md
-        - name: 配置联合单一登录时常见的问题 - 库应用
-          href: configure-federated-single-sign-on-gallery-applications-problems.md
-        - name: 配置联合单一登录 - 非库应用
-          href: configure-federated-single-sign-on-non-gallery-applications.md
-        - name: 配置联合单一登录时常见的问题 - 非库应用
-          href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: 配置密码 - 库应用
-          href: configure-password-single-sign-on-gallery-applications.md
-        - name: 配置密码时常见的问题 - 库应用
-          href: configure-password-single-sign-on-gallery-applications-problems.md
-        - name: 配置密码 - 非库应用
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: 配置密码时常见的问题 - 非库应用
-          href: configure-password-single-sign-on-non-gallery-applications-problems.md
-        - name: 应用程序代理
-          items:
-            - name: Kerberos 约束委派 (KCD)
-              href: application-proxy-configure-single-sign-on-with-kcd.md
-            - name: 密码保管
-              href: application-proxy-configure-single-sign-on-password-vaulting.md
-            - name: 标头
-              href: application-proxy-configure-single-sign-on-with-ping-access.md
-            - name: SAML SSO
-              href: application-proxy-configure-single-sign-on-on-premises-apps.md
-    - name: 访问面板
-      items:
-        - name: 管理浏览器扩展
-          href: manage-access-panel-browser-extension.md
-        - name: 应用未出现
-          href: access-panel-troubleshoot-application-not-appearing.md
-        - name: 出现意外的应用
-          href: access-panel-troubleshoot-unexpected-application.md
-        - name: 无法登录
-          href: access-panel-troubleshoot-web-sign-in-problem.md
-        - name: 安装浏览器扩展时出错
-          href: access-panel-extension-problem-installing.md
-        - name: 如何使用自助服务应用访问权限
-          href: access-panel-manage-self-service-access.md
-        - name: 使用自助服务应用访问权限时出错
-          href: access-panel-troubleshoot-self-service-access.md
-    - name: 迁移
-      items:
-        - name: 迁移资源
-          href: migration-resources.md
-        - name: 将 ADFS 应用迁移到 Azure
-          href: migrate-adfs-apps-to-azure.md
-    - name: 排查用户登录问题
-      items:
-        - name: 意外的许可提示
-          href: application-sign-in-unexpected-user-consent-prompt.md
-        - name: “用户同意”错误
-          href: application-sign-in-unexpected-user-consent-error.md
-        - name: 从自定义门户登录时出现问题
-          href: application-sign-in-other-problem-deeplink.md
-        - name: 从访问面板登录时出现问题
-          href: application-sign-in-other-problem-access-panel.md
-        - name: 应用程序登录页上的错误
-          href: application-sign-in-problem-application-error.md
-        - name: 使用密码单一登录时出现的问题 - 非库应用
-          href: application-sign-in-problem-password-sso-non-gallery.md
-        - name: 使用密码单一登录时出现的问题 - 库应用
-          href: application-sign-in-problem-password-sso-gallery.md
-        - name: 登录到 Microsoft 应用时出现问题
-          href: application-sign-in-problem-first-party-microsoft.md
-        - name: 使用联合单一登录时出现的问题 - 非库应用
-          href: application-sign-in-problem-federated-sso-non-gallery.md
-        - name: 使用联合单一登录时出现的问题 - 库应用
-          href: application-sign-in-problem-federated-sso-gallery.md
-        - name: 登录自定义开发的应用时出现的问题
-          href: application-sign-in-problem-custom-dev.md
 - name: 引用
   items:
     - name: 应用程序代理版本历史记录

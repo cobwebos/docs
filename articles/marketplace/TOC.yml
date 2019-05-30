@@ -8,15 +8,6 @@
     - name: Azure 市场和 AppSource 概述与权益
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 成为市场上的发布者
-          href: ./become-publisher.md
-          items:
-            - name: 创建 Microsoft 帐户
-              href: ./guidelines.md
-            - name: 在开发人员中心注册
-              href: ./register-dev-center.md
-            - name: Azure 合作伙伴和客户使用情况归因
-              href: ./azure-partner-customer-usage-attribution.md
         - name: 一个市场，两个店面
           href: ./comparing-appsource-azure-marketplace.md
         - name: 发布选项和注意事项
@@ -30,6 +21,8 @@
               href: ./private-offers.md
             - name: 标准合同
               href: ./standard-contract.md
+            - name: Azure 合作伙伴和客户使用情况归因
+              href: ./azure-partner-customer-usage-attribution.md
         - name: 发布指南（按产品/服务类型）
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -481,6 +474,15 @@
       items:
         - name: 创建 SaaS 产品/服务
           href: ./partner-center-portal/create-new-saas-offer.md
+        - name: SaaS 履行 API
+          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+          items:
+            - name: 注册 SaaS 应用程序
+              href: ./partner-center-portal/pc-saas-registration.md
+            - name: SaaS 履行 API v2
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+            - name: SaaS 履行 API v1（已弃用）
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
     - name: 发布状态
       href: ./partner-center-portal/publishing-status.md
     - name: 更新现有产品/服务

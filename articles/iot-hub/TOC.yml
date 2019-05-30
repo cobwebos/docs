@@ -66,6 +66,8 @@
               href: tutorial-routing-config-message-routing-PowerShell.md
         - name: 第 2 部分 - 查看消息路由结果
           href: tutorial-routing-view-message-routing-results.md
+    - name: 消息扩充
+      href: tutorial-message-enrichments.md
     - name: 使用指标和诊断日志
       href: tutorial-use-metrics-and-diags.md
     - name: 执行手动故障转移
@@ -78,6 +80,8 @@
       href: tutorial-connectivity.md
 - name: 概念
   items:
+    - name: 消息扩充概述
+      href: iot-hub-message-enrichments-overview.md
     - name: 设备管理概述
       href: iot-hub-device-management-overview.md
     - name: 比较 IoT 中心与事件中心

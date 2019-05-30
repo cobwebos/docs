@@ -41,14 +41,6 @@
           href: web-query-data.md
         - name: Python
           href: python-query-data.md
-    - name: 可视化数据
-      items:
-        - name: Power BI - 连接器
-          href: power-bi-connector.md
-        - name: Power BI - 导入的查询
-          href: power-bi-imported-query.md
-        - name: Power BI - SQL 查询
-          href: power-bi-sql-query.md
 - name: 教程
   items:
     - name: 引入数据而无需使用代码
@@ -80,6 +72,20 @@
           href: anomaly-detection.md
         - name: 机器学习
           href: machine-learning-clustering.md
+    - name: 可视化数据
+      items:
+        - name: Power BI
+          items:
+            - name: 连接器
+              href: power-bi-connector.md
+            - name: 导入的查询
+              href: power-bi-imported-query.md
+            - name: SQL 查询
+              href: power-bi-sql-query.md
+        - name: Sisense
+          href: sisense.md
+        - name: Grafana
+          href: grafana.md
     - name: 管理
       items:
         - name: 管理数据库权限
@@ -108,8 +114,6 @@
           href: kqlmagic.md
         - name: 使用 Azure 数据工厂复制数据
           href: data-factory-load-data.md
-        - name: 在 Grafana 中将数据可视化
-          href: grafana.md
         - name: 与 ODBC 连接
           href: connect-odbc.md
     - name: 故障排除

@@ -229,16 +229,20 @@
                   href: msal-js-initializing-client-applications.md
             - name: 处理错误和异常
               href: msal-handling-exceptions.md
+            - name: 测试 MSAL 应用程序
+              href: msal-testing.md
             - name: 日志记录
               href: msal-logging.md
             - name: 单一登录 (JS)
               href: msal-js-sso.md
             - name: 提示行为 (JS)
               href: msal-js-prompt-behavior.md
-            - name: 提供自己的 HttpClient (.NET)
-              href: msal-net-provide-httpclient.md
             - name: 与 Azure AD B2C 集成
-              href: msal-b2c-overview.md
+              items:
+                - name: JavaScript
+                  href: msal-b2c-overview.md
+                - name: .NET
+                  href: msal-net-aad-b2c-considerations.md
             - name: 注意事项和已知问题
               items:
                 - name: MSAL.NET
@@ -253,8 +257,6 @@
                       href: msal-net-xamarin-ios-considerations.md
                     - name: 通用 Windows 平台
                       href: msal-net-uwp-considerations.md
-                    - name: 应用 AAD B2C 策略
-                      href: msal-net-aad-b2c-considerations.md
                 - name: MSAL.js
                   items:
                     - name: 使用 IE 时的注意事项
@@ -360,6 +362,8 @@
                   href: msal-net-instantiate-confidential-client-config-options.md
                 - name: 获取多个资源的许可
                   href: msal-net-user-gets-consent-for-multiple-resources.md
+                - name: 提供自己的 HttpClient
+                  href: msal-net-provide-httpclient.md
         - name: 使用 Visual Studio
           items:
             - name: 使用 Active Directory 连接服务

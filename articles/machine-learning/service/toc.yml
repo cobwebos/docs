@@ -78,6 +78,9 @@
         - name: 预测变动率
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
+    - name: Azure 开放数据集
+      href: 'https://docs.microsoft.com/azure/open-datasets/samples'
+      maintainContext: true
 - name: 概念
   items:
     - name: 工作区
@@ -130,6 +133,9 @@
         - name: 启用日志记录
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
+        - name: 设置输入和输出目录
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
         - name: 使用 VS Code 扩展
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md

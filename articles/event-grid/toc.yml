@@ -101,6 +101,8 @@
       href: event-sources.md
     - name: 事件处理程序
       href: event-handlers.md
+    - name: 异地灾难恢复
+      href: geo-disaster-recovery.md
 - name: 操作指南
   items:
     - name: 发布到自定义主题

@@ -296,6 +296,8 @@
               href: transparent-data-encryption-byok-azure-sql.md
         - name: 安全属性
           href: sql-database-security-attributes.md
+        - name: 功能限制
+          href: sql-database-feature-restrictions.md
     - name: 可伸缩性
       items:
         - name: 可伸缩性概述
@@ -368,12 +370,20 @@
           href: sql-database-temporal-tables.md
         - name: 作业自动化
           href: sql-database-job-automation-overview.md
+        - name: 链接的服务器
+          href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/sql-database/toc.json'
+        - name: Service Broker
+          href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/sql-database/toc.json'
+        - name: 数据库邮件
+          href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/sql-database/toc.json'
         - name: 机器学习服务
           items:
             - name: 概述
               href: sql-database-machine-learning-services-overview.md
             - name: 主要区别
               href: sql-database-machine-learning-services-differences.md
+        - name: 服务器端 CLR/.NET 集成
+          href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/sql-database/toc.json'
 - name: 操作指南
   items:
     - name: 概述

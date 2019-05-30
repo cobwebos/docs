@@ -22,6 +22,8 @@
   items:
     - name: SSO 到本地资源
       href: azuread-join-sso.md
+    - name: Azure 托管工作站
+      href: concept-azure-managed-workstation.md
 - name: 操作指南
   expanded: true
   items:
@@ -39,6 +41,8 @@
       href: assign-local-admin.md
     - name: 启用企业状态漫游
       href: enterprise-state-roaming-enable.md
+    - name: 部署 Azure 托管工作站
+      href: howto-azure-managed-workstation.md
     - name: 排查加入混合 Azure AD 的 Windows 当前设备问题
       href: troubleshoot-hybrid-join-windows-current.md
     - name: 排查加入混合 Azure AD 的旧式 Windows 设备问题

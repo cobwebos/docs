@@ -65,7 +65,7 @@
           href: batch-aad-auth.md
         - name: 将 Azure AD 与 Batch 管理配合使用
           href: batch-aad-auth-management.md
-    - name: 创建应用程序包
+    - name: 使用应用程序包
       href: batch-application-packages.md
     - name: 创建和管理池
       items:
