@@ -4,7 +4,7 @@ description: 本文介绍了在计划 Azure 时序见解环境（包括存储容
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf1f570319370fab99e2f52086bc81df259e3d35
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1c6e8ef9effdb5cf31aee1603de28bed0d894cbb
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236507"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239094"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时间系列 Insights GA 环境
 
@@ -49,7 +49,7 @@ ms.locfileid: "65236507"
 
 ## <a name="understand-data-retention"></a>了解数据保留
 
-可配置时序见解环境的“数据保留期”设置，启用最长 400 天的保留期。 时序见解有两种模式，一种针对确保环境具有最新数据进行优化（默认情况下启用），另一种针对确保满足保留期限制进行优化，如果达到该环境的整体存储容量，则暂停流入。  可在 Azure 门户的环境配置页面中调整保留期并在这两种模式之间切换。
+可配置时序见解环境的“数据保留期”设置，启用最长 400 天的保留期  。 时序见解有两种模式，一种针对确保环境具有最新数据进行优化（默认情况下启用），另一种针对确保满足保留期限制进行优化，如果达到该环境的整体存储容量，则暂停流入。  可在 Azure 门户的环境配置页面中调整保留期并在这两种模式之间切换。
 
 可在时序见解环境中配置最长 400 天的数据保留。
 
@@ -57,9 +57,9 @@ ms.locfileid: "65236507"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择时序见解环境。
 
-1. 在时序见解环境页面的“设置”标题下，选择“配置”。
+1. 在时序见解环境页面的“设置”标题下，选择“配置”    。
 
-1. 在“数据保留时间(天)”对话框中，输入 1 到 400 之间的值。
+1. 在“数据保留时间(天)”对话框中，输入 1 到 400 之间的值  。
 
    [![配置保留期](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
 
@@ -87,7 +87,7 @@ ms.locfileid: "65236507"
 
 例如，如果具有一个 S1 SKU 并且入口数据的速率为每分钟 720 个事件，而激增的速率为 1440 个事件（或更少）且持续时间不到 1 小时，则不会对环境造成明显的延迟。 但是，如果速率大于每分钟 1440 个事件超过一小时，则可能会发生数据延迟，这可在环境中查看并查询。
 
-可能无法提前知道想要推送多少数据。 在这种情况下，可以在 Azure 门户的 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)和 [Azure 事件中心](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/)中查找数据遥测。 这些遥测有助于确定如何预配环境。 在 Azure 门户使用相应事件源的“指标”页面，查看数据遥测。 了解事件源指标后，可以更有效地计划和预配时序见解环境。
+可能无法提前知道想要推送多少数据。 在这种情况下，可以在 Azure 门户的 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)和 [Azure 事件中心](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/)中查找数据遥测。 这些遥测有助于确定如何预配环境。 在 Azure 门户使用相应事件源的“指标”页面，查看数据遥测  。 了解事件源指标后，可以更有效地计划和预配时序见解环境。
 
 ### <a name="calculate-ingress-requirements"></a>计算入口需求
 

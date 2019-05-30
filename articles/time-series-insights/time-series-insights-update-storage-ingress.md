@@ -2,7 +2,7 @@
 title: Azure 时序见解预览版中的数据存储和入口 | Microsoft Docs
 description: 了解 Azure 时序见解预览版中的数据存储和入口。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: cebe22dddf9ef382c4eceb799e05cbaab30aedaa
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 8587fb0138309040232b6e0abc0f3eb17cc3093a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951106"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244079"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -73,7 +73,7 @@ Parquet 是面向列的数据文件格式，旨在实现：
 时序见解事件按如下所示映射到 Parquet 文件内容：
 
 * 每个事件映射到单个行。
-* 包含事件时间戳的内置“时间戳”列。 “时间戳”属性永远不会为 null。 如果未在事件源中指定“时间戳”属性，该属性默认为“事件源排队时间”。 时间戳采用 UTC 时间。 
+* 包含事件时间戳的内置“时间戳”列。  “时间戳”属性永远不会为 null。 如果未在事件源中指定“时间戳”属性，该属性默认为“事件源排队时间”。  时间戳采用 UTC 时间。 
 * 映射到列的其他所有属性以 `_string`（字符串）、`_bool`（布尔值）、`_datetime`（日期时间）或 `_double`（双精度值）结尾，具体取决于属性类型。
 * 这是文件格式的第一个版本（称为 **V=1**）的映射方案。 随着此功能的不断演进，名称将递增为 **V=2**、**V=3**，依次类推。
 

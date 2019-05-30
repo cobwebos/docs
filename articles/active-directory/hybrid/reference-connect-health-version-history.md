@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f273104366b3e583bd98ebcc6d50387a3fb1d335
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 58de8de9a9fab67d743d4560ccda037d8f41301b
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572823"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298987"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发行历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。  
@@ -30,6 +30,13 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 >
 
 适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 详细了解 [Azure AD Connect 版本历史记录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)有关功能反馈，请在 [Connect Health User Voice 频道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)进行投票
+
+
+## <a name="may-2019"></a>2019 年 5 月
+**代理更新：** 
+* 适用于 AD FS （版本 3.1.51.0） 的 azure AD Connect Health 代理 
+   1. Bug 修复，用于区分多个登录共享同一个客户端请求 id。
+   2. Bug 修复，可分析不当的用户名/密码错误语言本地化服务器。   
 
 ## <a name="april-2019"></a>2019 年 4 月
 **代理更新：** 

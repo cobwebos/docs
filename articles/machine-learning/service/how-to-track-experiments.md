@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 59a801fd149a0f647298d94522f9eefc1ea6eb9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d3cbc2d5be1f7addf833162b23c5db0786e9d361
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821048"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297480"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>在 Azure 机器学习中运行在定型期间日志指标
 
@@ -30,7 +30,7 @@ ms.locfileid: "60821048"
 |----|:----|:----|
 |标量值 |函数：<br>`run.log(name, value, description='')`<br><br>示例：<br>run.log("accuracy", 0.95) |使用给定名称将数值或字符串值记录到运行中。 在运行中记录某个指标会导致在试验中的运行记录中存储该指标。  可在一次运行中多次记录同一指标，其结果被视为该指标的一个矢量。|
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
-|行|函数：<br>`run.log_row(name, description=None, **kwargs)`<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row 创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row 一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
+|行|函数：<br>`run.log_row(name, description=None, **kwargs)`<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row  创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row  一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
 |表|函数：<br>`run.log_table(name, value, description='')`<br><br>示例：<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 使用给定名称将字典对象记录到运行中。 |
 |映像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>`run.log_image("ROC", plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
 |标记一个运行|函数：<br>`run.tag(key, value=None)`<br><br>示例：<br>run.tag("selected", "yes") | 使用一个字符串键和可选字符串值标记运行。|
@@ -67,7 +67,7 @@ ms.locfileid: "60821048"
 
 1. 在本地 Jupyter 笔记本中创建训练脚本。 
 
-   ``` python
+   ```python
    # load diabetes dataset, a well-known small dataset that comes with scikit-learn
    from sklearn.datasets import load_diabetes
    from sklearn.linear_model import Ridge
@@ -224,7 +224,7 @@ ms.locfileid: "60821048"
 ## <a name="view-run-details"></a>查看运行详细信息
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>使用 Jupyter 笔记本小组件监视运行
-使用 ScriptRunConfig 方法提交运行时，可使用 Jupyter 笔记本小组件监视运行的进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
+使用 ScriptRunConfig  方法提交运行时，可使用 Jupyter 笔记本小组件监视运行的进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
 
 1. 在等待运行完成的期间查看 Jupyter 小组件。
 
@@ -254,7 +254,7 @@ ms.locfileid: "60821048"
 
 ### <a name="get-log-results-upon-completion"></a>完成时获取日志结果
 
-模型定型和监视在后台进行，以便在等待时可运行其他任务。 也可以先耐心等待模型完成定型，然后再运行其它代码。 使用 ScriptRunConfig 时，可以使用 ```run.wait_for_completion(show_output = True)``` 在模型定型完成时进行显示。 使用 ```show_output``` 标志可查看详细输出。 
+模型定型和监视在后台进行，以便在等待时可运行其他任务。 也可以先耐心等待模型完成定型，然后再运行其它代码。 使用 ScriptRunConfig  时，可以使用 ```run.wait_for_completion(show_output = True)``` 在模型定型完成时进行显示。 使用 ```show_output``` 标志可查看详细输出。 
   
 ### <a name="query-run-metrics"></a>查询运行指标
 
@@ -300,7 +300,7 @@ ms.locfileid: "60821048"
 
 1. 转到你的工作区。 
 
-1. 在工作区的最左侧面板中选择“试验”。
+1. 在工作区的最左侧面板中选择“试验”。 
 
    ![试验菜单的屏幕截图](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
 

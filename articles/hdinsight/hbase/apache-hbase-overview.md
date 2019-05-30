@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: a492adbf1c01271ceea736bde9de999190fc2da4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 358b835b42862bd0ceb1a5c4a48ba4b18a567f4d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789204"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235916"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>在 Azure HDInsight 中的 Apache HBase 是什么
 
@@ -30,7 +30,7 @@ HDInsight HBase 以集成到 Azure 环境中的托管群集形式提供。 这�
 HDInsight 实施利用 HBase 的横向扩展架构来提供表自动分片、使读写操作保持高度的一致性，以及支持自动故障转移。 性能可通过对读取使用内存中缓存并对写入使用高吞吐量流式处理来提高。 可以在虚拟网络内部创建 HBase 群集。 有关详细信息，请参阅[在 Azure 虚拟网络上创建 HDInsight 群集](./apache-hbase-provision-vnet.md)。
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>如何在 HDInsight HBase 中管理数据？
-数据可以在 HBase 中通过使用 HBase shell 中的 `create`、`get`、`put` 和 `scan` 命令来管理。 数据通过使用 `put` 写入到数据库，并通过使用 `get` 读取。 `scan` 命令用于从表中的多行获得数据。 Data 也可以使用 HBase C# API 进行管理，该 API 在 HBase REST API 顶部提供客户端库。 HBase 数据库还可以通过使用 [Apache Hive](https://hive.apache.org/) 进行查询。 有关这些编程模型的简介，请参阅[开始在 HDInsight 中将 Apache HBase 与 Apache Hadoop 配合使用](./apache-hbase-tutorial-get-started-linux.md)。 共同的处理器也适用，这样，便可在托管数据库的节点中处理数据。
+数据可以在 HBase 中通过使用 HBase shell 中的 `create`、`get`、`put` 和 `scan` 命令来管理。 数据通过使用 `put` 写入到数据库，并通过使用 `get` 读取。 `scan` 命令用于从表中的多行获得数据。 Data 也可以使用 HBase C# API 进行管理，该 API 在 HBase REST API 顶部提供客户端库。 HBase 数据库还可以通过使用 [Apache Hive](https://hive.apache.org/) 进行查询。 有关这些编程模型的简介，请参阅[开始在 HDInsight 中将 Apache HBase 与 Apache Hadoop 配合使用](./apache-hbase-tutorial-get-started-linux.md)。 协处理器均可用，允许托管数据库的节点中的数据处理。
 
 > [!NOTE]  
 > Thrift 不受 HDInsight 中的 HBase 支持。

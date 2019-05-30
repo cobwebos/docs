@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 01/14/2019
+ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: db065c78008e47326155e9e2b3a0f65031ec4cd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e99553afc05fca0250607bfccd2799adaf471e5
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478423"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298160"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 审核事件可以帮助识别 Azure Active Di
 
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将在弃用 06/15/2019年。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志的步骤
 
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) 审核事件可以帮助识别 Azure Active Di
 
 通过 [Azure 日志集成 MSDN 论坛](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)可以获得社区帮助。 在该论坛中，Azure 日志集成社区的人员可以通过问题、答案、提示和技巧相互支持。 此外，Azure 日志集成团队也会关注此论坛，并尽可能地提供帮助。
 
-也可以打开[支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 请选择“日志集成”作为需要请求支持的服务。
+也可以打开[支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 请选择“日志集成”  作为需要请求支持的服务。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure 日志集成的详细信息，请参阅：

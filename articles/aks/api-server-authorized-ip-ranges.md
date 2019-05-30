@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 1b983c534ab92218759175655bbf396788e4c39d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5c27d47a918939d012abee3c2317eba39587d734
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956498"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243583"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>预览版-对 API 服务器使用的安全访问授权所需的 IP 地址范围中 Azure Kubernetes 服务 (AKS)
 
@@ -21,9 +21,10 @@ ms.locfileid: "65956498"
 本文介绍如何使用 API 授权服务器的 IP 地址范围来限制对控制平面的请求。 此功能目前处于预览状态。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
+> AKS 预览版功能是自助服务的选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中，这些功能不是用于生产环境中使用。 公共预览版中的功能属于最大努力支持。 AKS 技术支持团队的协助营业时间太平洋时区 （太平洋标准时间） 仅将提供。 有关其他信息，请参阅以下支持文章：
 >
-> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
+> * [AKS 支持策略][aks-support-policies]
+> * [Azure 支持常见问题][aks-faq]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -50,13 +51,13 @@ az extension add --name aks-preview
 az feature register --name APIServerSecurityPreview --namespace Microsoft.ContainerService
 ```
 
-状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+状态显示为“已注册”需要几分钟时间  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/APIServerSecurityPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态  ：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -242,7 +243,6 @@ az aks update \
 有关详细信息，请参阅[应用程序和群集在 AKS 中的安全概念][ concepts-security]并[群集安全性和在 AKS 中的升级的最佳做法][operator-best-practices-cluster-security].
 
 <!-- LINKS - external -->
-[aks-github]: https://github.com/azure/aks/issues]
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
 
 <!-- LINKS - internal -->
@@ -265,3 +265,5 @@ az aks update \
 [az-network-firewall-ip-config-create]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-create
 [az-network-firewall-network-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

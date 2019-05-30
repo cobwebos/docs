@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e13bcb7d4eeded691669277b64aba9048f3bbefa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 99aea38ec877074075eaec8cf9ab8da077901acf
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150416"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393111"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>使用动态加密内容保护
 
@@ -39,14 +39,13 @@ ms.locfileid: "65150416"
 
 1. Azure 媒体服务代码
   
-   [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)示例演示如何实现使用媒体服务 v3 多重 DRM 系统和也使用媒体服务许可证/密钥传送服务。 可以使用多个加密类型（AES-128、PlayReady、Widevine、FairPlay）来加密每个资产。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)，以了解有效的组合方式。
+   [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)示例演示如何实现使用.NET 媒体服务 v3 具有多重 DRM 系统。 它还演示如何使用媒体服务许可证/密钥传送服务。 可以使用多个加密类型（AES-128、PlayReady、Widevine、FairPlay）来加密每个资产。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)，以了解有效的组合方式。
   
    该示例演示如何：
 
-   1. 创建和配置[内容策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)。
+   1. 创建和配置[内容策略](content-key-policy-concept.md)。 您创建**内容密钥策略**配置如何传递内容密钥 （即为你的资产提供安全访问） 若要结束的客户端。    
 
       * 定义许可证交付授权，指定基于 JWT 中的声明执行的授权检查逻辑。
-      * 通过指定内容密钥配置 DRM 加密。
       * 配置[PlayReady](playready-license-template-overview.md)， [Widevine](widevine-license-template-overview.md)，和/或[FairPlay](fairplay-license-overview.md)许可证。 使用这些模板可为使用的每个 DRM 配置权利和权限。
 
         ```
@@ -54,11 +53,11 @@ ms.locfileid: "65150416"
         ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
         ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
         ```
-   2. 创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，它配置为流式传输加密的资产。 
+   2. 创建[流式处理定位符](streaming-locators-concept.md)，它配置为流式传输加密的资产。 
   
-      **流式处理定位符**必须与关联[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)。 在示例中，我们将 StreamingLocator.StreamingPolicyName 设置为"Predefined_MultiDrmCencStreaming"策略。 此策略表示我们要为两个内容密钥 （信封和 CENC），以获取生成并设置该定位符。 因此，应用了信封、PlayReady 和 Widevine 加密（根据配置的 DRM 许可证将密钥传送到播放客户端）。 如果还要使用 CBCS (FairPlay) 加密流，请使用“Predefined_MultiDrmStreaming”。
-    
-      由于我们想要加密视频中，因此**内容密钥策略**我们前面配置也必须与关联**流式处理定位符**。 
+      **流式处理定位符**必须与关联[流式处理策略](streaming-policy-concept.md)。 在示例中，我们将 StreamingLocator.StreamingPolicyName 设置为"Predefined_MultiDrmCencStreaming"策略。 应用的 PlayReady 和 Widevine 加密，请将密钥传送到播放客户端根据配置 DRM 许可证。 如果还要使用 CBCS (FairPlay) 加密流，请使用“Predefined_MultiDrmStreaming”。
+      
+      流式处理定位符还与相关联**内容密钥策略**的定义。
     
    3. 创建测试令牌。
 
@@ -102,11 +101,11 @@ HLS 协议支持以下容器格式和加密方案。
 
 |容器格式|加密方案|URL 示例|
 |---|---|---|
-|全部|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
-|MPG2-TS |CBC (FairPlay) ||
-|CMAF(fmp4) |CBC (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
-|MPG2-TS |CENC (PlayReady) ||
-|CMAF(fmp4) |CENC (PlayReady) ||
+|全部|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|MPG2-TS |CBC (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
+|CMAF(fmp4) |CBC (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
+|MPG2-TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
+|CMAF(fmp4) |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cenc)`|
 
 / CMAF HLS + FairPlay (包括 HEVC / H.265) 支持的以下设备：
 
@@ -120,9 +119,9 @@ MPEG DASH 协议支持以下容器格式和加密方案。
 
 |容器格式|加密方案|URL 示例
 |---|---|---|
-|全部|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
-|CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
-|CMAF(fmp4)|CENC (Widevine + PlayReady)||
+|全部|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
+|CMAF(fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
 ### <a name="smooth-streaming"></a>平滑流
 
@@ -130,8 +129,8 @@ MPEG DASH 协议支持以下容器格式和加密方案。
 
 |Protocol|容器格式|加密方案|
 |---|---|---|
-|fMP4|AES||
-|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(encryption=cenc)`|
+|fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
+|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
 
 ### <a name="browsers"></a>浏览器
 
@@ -206,7 +205,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 如果出现错误结尾`_NOT_SPECIFIED_IN_URL`，请确保在 URL 中指定的加密格式。 例如，`…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、 提供反馈，获取更新
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 

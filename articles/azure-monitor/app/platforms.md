@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 4a0dbe736b9727491f77b392c199400003abf8be
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9ef5c9e8b4a46b4bf2bed25027602fb98a09dbf0
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779889"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256108"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>开发人员分析：语言、平台和集成
 这些项是我们听说过的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的实现，包括第三方的一些实现。
@@ -31,6 +31,7 @@ ms.locfileid: "65779889"
 
 ## <a name="languages---community-supported"></a>语言 - 社区支持
 * [F#](https://safe-stack.github.io/docs/template-azure-ai/)
+* [Go](https://github.com/Microsoft/ApplicationInsights-go)
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)

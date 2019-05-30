@@ -4,7 +4,7 @@ description: 本文介绍如何为调用 Azure 时序见解 API 的自定义应�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fb2802bfe9cc0a4d3297e6fa749e5b94008c616
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 9b6cd993e9f6c6dbf173c161de638c6c4a8b18d3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472613"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237055"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -55,11 +55,11 @@ ms.locfileid: "65472613"
 
 ## <a name="detailed-setup"></a>详细的设置
 
-1. 在 Azure 门户中，依次选择 Azure Active Directory > “应用注册” > “新应用程序注册”。
+1. 在 Azure 门户中，依次选择 Azure Active Directory > “应用注册” > “新应用程序注册”    。
 
    [![Azure Active Directory 中的新应用程序注册](media/authentication-and-authorization/active-directory-new-application-registration.png)](media/authentication-and-authorization/active-directory-new-application-registration.png#lightbox)
 
-1. 命名应用程序，选择类型“Web 应用/API”，然后为“登录 URL”选择任意有效 URI，单击“创建”。
+1. 命名应用程序，选择类型“Web 应用/API”，然后为“登录 URL”选择任意有效 URI，单击“创建”    。
 
    [![在 Azure Active Directory 中创建应用程序](media/authentication-and-authorization/active-directory-create-web-api-application.png)](media/authentication-and-authorization/active-directory-create-web-api-application.png#lightbox)
 
@@ -67,7 +67,7 @@ ms.locfileid: "65472613"
 
    [![复制应用程序 ID](media/authentication-and-authorization/active-directory-copy-application-id.png)](media/authentication-and-authorization/active-directory-copy-application-id.png#lightbox)
 
-1. 选择“密钥”，输入密钥名称，选择到期时间，然后单击“保存”。
+1. 选择“密钥”，输入密钥名称，选择到期时间，然后单击“保存”   。
 
    [![选择应用程序密钥](media/authentication-and-authorization/active-directory-application-keys.png)](media/authentication-and-authorization/active-directory-application-keys.png#lightbox)
 
@@ -77,7 +77,7 @@ ms.locfileid: "65472613"
 
    [![复制应用程序密钥](media/authentication-and-authorization/active-directory-copy-application-key.png)](media/authentication-and-authorization/active-directory-copy-application-key.png#lightbox)
 
-1. 对于时序见解环境，请选择“数据访问策略”，然后单击“添加”。
+1. 对于时序见解环境，请选择“数据访问策略”，然后单击“添加”   。
 
    [![将新的数据访问策略添加到时序见解环境](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 

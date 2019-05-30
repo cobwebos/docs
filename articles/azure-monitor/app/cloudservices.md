@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: d27c0e9570959e01267d83a768ead45b48b7cea1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1520b01826de2a80d8baeccf4913fa180d385644
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60903180"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256306"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 [Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)数据合并，来监视 [Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
@@ -41,7 +41,7 @@ ms.locfileid: "60903180"
 
 如果只需此选项，则操作到此完成。 
 
-后续步骤是[通过应用查看指标](../../azure-monitor/app/metrics-explorer.md)、[使用 Analytics 查询数据](../../azure-monitor/app/analytics.md)，以及设置[仪表板](../../azure-monitor/app/app-insights-dashboards.md)。 
+在接下来[查看您的应用程序中的指标](../../azure-monitor/app/metrics-explorer.md)，[查询您的数据与分析](../../azure-monitor/app/analytics.md)。 
 
 若要在浏览器中监视性能，还可能需要设置[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)并[将代码添加到网页](../../azure-monitor/app/javascript.md)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "60903180"
 每个资源属于一个资源组。 资源组用于管理成本、向团队成员授予访问权限，以及在单个协调式事务中部署更新。 例如，可以[编写一个脚本](../../azure-resource-manager/resource-group-template-deploy.md)，以通过一个操作部署 Azure 云服务及其 Application Insights 监视资源。
 
 ### <a name="resources-for-components"></a>组件的资源
-我们建议为应用的每个组件单独创建一个资源。 即，为每个 Web 角色和辅助角色创建一个资源。 可以单独分析每个组件，但也可以创建一个[仪表板](../../azure-monitor/app/app-insights-dashboards.md)，用于将所有组件中的关键图表汇总到一起，以便可以在一个视图中比较和监视资源。 
+我们建议为应用的每个组件单独创建一个资源。 即，为每个 Web 角色和辅助角色创建一个资源。 可以单独分析每个组件，但也可以创建一个[仪表板](../../azure-monitor/app/overview-dashboard.md)，用于将所有组件中的关键图表汇总到一起，以便可以在一个视图中比较和监视资源。 
 
 备选方法是将多个角色中的遥测数据发送到同一个资源，但[将维度属性添加到标识其源角色的每个遥测项](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)。 在此方法中，异常等指标图表通常显示不同角色的计数汇总，但你可根据需要按角色标识符将图表分段。 还可以按同一个维度筛选搜索结果。 使用这种备选方法可以方便一次性查看所有信息，但同时可能导致在角色之间产生一定的混淆。
 
@@ -80,20 +80,20 @@ ms.locfileid: "60903180"
 
 如果你决定为每个角色单独创建资源（也许是为每个生成配置单独创建资源集），最简单的方法是在 Application Insights 门户中创建这些资源。 若要创建大量的资源，可[将创建过程自动化](../../azure-monitor/app/powershell.md)。
 
-1. 在 [Azure 门户][portal]中，选择“新建” > “开发人员服务” > “Application Insights”。  
+1. 在 [Azure 门户][portal]中，选择“新建” > “开发人员服务” > “Application Insights”。     
 
     ![“Application Insights”窗格](./media/cloudservices/01-new.png)
 
-1. 在“应用程序类型”下拉列表中，选择“ASP.NET Web 应用程序”。  
+1. 在“应用程序类型”下拉列表中，选择“ASP.NET Web 应用程序”   。  
     每个资源由检测密钥标识。 以后若要手动配置或验证 SDK 的配置，可能需要使用此密钥。
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>为每个角色设置 Azure 诊断
 设置此选项可以使用 Application Insights 监视应用。 对于 Web 角色，此选项可提供性能监视、警报、诊断以及使用情况分析。 对于其他角色，可以搜索和监视 Azure 诊断信息，例如重启、性能计数器和对 System.Diagnostics.Trace 的调用。 
 
-1. 在 Visual Studio 解决方案资源管理器中的“\<YourCloudService>” > “角色”下面，打开每个角色的属性。
+1. 在 Visual Studio 解决方案资源管理器中的“\<YourCloudService>” > “角色”下面，打开每个角色的属性。  
 
-1. 在“配置”中，选中“将诊断数据发送到 Application Insights”复选框，然后选择前面创建的 Application Insights 资源。
+1. 在“配置”中，选中“将诊断数据发送到 Application Insights”复选框，然后选择前面创建的 Application Insights 资源。  
 
 如果决定对每个生成配置使用不同的 Application Insights 资源，请先选择该配置。
 
@@ -108,11 +108,11 @@ ms.locfileid: "60903180"
 
 在 Visual Studio 中，为每个云应用项目配置 Application Insights SDK。
 
-1. 若要配置 Web 角色，请右键单击项目，并选择“配置 Application Insights”或“添加”>“Application Insights 遥测”。
+1. 若要配置 Web 角色，请右键单击项目，并选择“配置 Application Insights”或“添加”>“Application Insights 遥测”    。
 
 1. 配置**辅助角色**： 
 
-    a. 右键单击项目，并选择“管理 NuGet 包”。
+    a. 右键单击项目，并选择“管理 NuGet 包”  。
 
     b. 添加[适用于 Windows Server 的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
 
@@ -148,7 +148,7 @@ ms.locfileid: "60903180"
 如果没有数据，请执行以下操作：
 1. 若要查看各个事件，请打开[搜索][diagnostic]磁贴。
 1. 在应用中打开各个页面，以生成一些遥测数据。
-1. 等待几秒，然后单击“刷新”。  
+1. 等待几秒，然后单击“刷新”。   
     有关详细信息，请参阅[故障排除][qna]。
 
 ## <a name="view-azure-diagnostics-events"></a>查看 Azure 诊断事件
@@ -229,7 +229,7 @@ ms.locfileid: "60903180"
 为确保应用处于活动状态且能够做出响应，请[设置 Web 测试][availability]。
 
 ## <a name="display-everything-together"></a>统一显示所有信息
-若要获得系统的整体视图，可在一个[仪表板](../../azure-monitor/app/app-insights-dashboards.md)中将关键的监视图表一起显示。 例如，可以固定每个角色的请求和失败次数。 
+若要获得系统的整体视图，可在一个[仪表板](../../azure-monitor/app/overview-dashboard.md)中将关键的监视图表一起显示。 例如，可以固定每个角色的请求和失败次数。 
 
 如果系统使用其他 Azure 服务（例如流分析），也可以包含这些服务的监视图表。 
 

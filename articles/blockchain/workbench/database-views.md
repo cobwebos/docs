@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/21/2019
+ms.date: 05/28/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 06b7fb678bc79203589cfa75e8afb457d6ed344f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9071cf524a0f3d319d108cb5c961fa886cf8747f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60866508"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399905"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench 中的数据库视图
 
-Azure Blockchain Workbench 可将数据从分布式账本传送到链外 SQL DB 数据库。 关闭链数据库可以使用 SQL 和现有的工具，如[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)、 区块链数据进行交互。
+Azure Blockchain Workbench 可将数据从分布式账本传送到链外 SQL DB 数据库。  关闭链数据库可以使用 SQL 和现有的工具，如[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)、 区块链数据进行交互。
 
 Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执行查询的数据。 这些视图经过很大力度的非规范化，因此，可以快速轻松地使用它们开始生成报告、分析，或者结合现有工具使用区块链数据，而无需重新培训数据库工作人员。
 
@@ -52,7 +52,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 
 此视图提供有关 Azure Blockchain Workbench 应用程序中定义的角色的详细信息。
 
-例如，在“资产转让”应用程序中，可以定义“买方”和“卖方”等角色。
+例如，在“资产转让”应用程序中，可以定义“买方”和“卖方”等角色。   
 
 | 名称                   | Type             | 可为 Null | 描述                                       |
 |------------------------|------------------|-------------|---------------------------------------------------|
@@ -68,7 +68,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 
 此视图提供有关 Azure Blockchain Workbench 应用程序中定义的角色及其关联的用户的详细信息。
 
-例如，在“资产转让”应用程序中，*John Smith* 可能与“买方”角色相关联。
+例如，在“资产转让”应用程序中，*John Smith* 可能与“买方”角色相关联。  
 
 | 名称                       | Type          | 可为 Null | 描述                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

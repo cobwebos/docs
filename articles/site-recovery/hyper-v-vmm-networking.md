@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: c93f80ba93e84c93ddf58b46b4bbcf98c53478d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e4dca61016adce209bdce356ea4280fee525c05
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482286"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397969"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
 
@@ -62,11 +62,11 @@ ms.locfileid: "60482286"
 下图说明故障转移前后的子网：
 
 
-故障转移前
+故障转移前 
 
 ![在故障转移之前](./media/hyper-v-vmm-networking/network-design2.png)
 
-故障转移后
+故障转移后 
 
 ![在故障转移之后](./media/hyper-v-vmm-networking/network-design3.png)
 
@@ -117,11 +117,11 @@ ms.locfileid: "60482286"
 - 在此方案中，无需故障转移整个子网，并且无需进行重新配置 VPN 或网络路由的更改。 故障转移和部分 DNS 更新会确保应用程序仍然可供访问。
 - 如果 DNS 配置为允许动态更新，则 VM 会在故障转移后启动时使用新的 IP 地址自行注册。
 
-故障转移前
+故障转移前 
 
 ![不同的 IP 地址 - 故障转移前](./media/hyper-v-vmm-networking/network-design10.png)
 
-故障转移后
+故障转移后 
 
 ![不同的 IP 地址 - 故障转移后](./media/hyper-v-vmm-networking/network-design11.png)
 

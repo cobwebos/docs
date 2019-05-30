@@ -5,15 +5,15 @@ services: event-hubs
 author: sethmanheim
 ms.service: event-hubs
 ms.topic: include
-ms.date: 02/26/2018
-ms.author: sethm
+ms.date: 05/22/2019
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 38f7dd6eb1c4965eca003e5ba337ec5912a53420
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 3f3b60c3744ce9dea61054b3fa0aaccfea27d784
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148240"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238179"
 ---
 下表列出了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -31,3 +31,19 @@ ms.locfileid: "66148240"
 | 最大吞吐量单位 |命名空间 |超出吞吐量单位限制会导致数据受到限制，并生成[服务器忙异常](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 若要请求更多的标准层的吞吐量单位，文件[支持请求](/azure/azure-supportability/how-to-create-azure-support-request)。 [额外的吞吐量单位](../articles/event-hubs/event-hubs-auto-inflate.md)将基于承诺的购买以大小为 20 个单位的块的形式提供。 |20 |
 | 每个命名空间的授权规则数量 |命名空间|将拒绝后续的授权规则创建请求。|12 |
 | GetRuntimeInformation 方法对的调用数 | 实体 | - | 每秒 50 | 
+
+### <a name="event-hubs-dedicated---quotas-and-limits"></a>事件中心专用-配额和限制
+事件中心专用产品/服务按固定的每月价格，至少包含 4 个小时的使用量计费。 专用的层提供标准计划的但具有企业规模容量和限制的所有功能的客户的要求苛刻的工作负荷。 
+
+| Feature | 限制 |
+| --- | ---|
+| 带宽 |  20 CU |
+| 命名空间 | CU 每 50 个 |
+| 事件中心 |  事件中心/主题上没有限制 |
+| 入口事件 | 附送 |
+| 消息大小 | 1 百万个字节 |
+| 分区 | 每个 CU 2000 |
+| 使用者组 | 每个事件中心的 1000年每 CU，没有限制 |
+| 中转连接 | 包括 100 K |
+| 消息保留 | 90 天，每个 CU 包含 10 TB |
+| 捕获 | 附送 |

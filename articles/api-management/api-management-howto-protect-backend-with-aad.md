@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2018
+ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: b5467711f06380ca61b4a9d5150b66c3f945c08c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 73dd46d1ca0a20748d7a3a7838c499f0c659253d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141078"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241679"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -44,41 +44,45 @@ ms.locfileid: "65141078"
 
 若要使用 Azure AD 保护 API，首先需要在 Azure AD 中注册一个表示该 API 的应用程序。 
 
-1. 浏览到你的 Azure AD 租户，并浏览到**应用注册 （旧版）**。
+1. 导航到[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。 
 
-2. 选择“新建应用程序注册”。 
+2. 选择“新注册”。  
 
-3. 提供应用程序的名称。 （本示例使用名称 `backend-app`。）  
+1. 出现“注册应用程序”页后，请输入应用程序的注册信息：  
+    - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `backend-app`。 
+    - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。   
 
-4. 为“应用程序类型”选择“Web 应用/API”。 
+1. 将保留**重定向 URI**部分现在为空。
 
-5. 对于“登录 URL”，可以使用 `https://localhost` 作为占位符。
+1. 选择“注册”  以创建应用程序。 
 
-6. 选择“创建”。
+1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用   。
 
-创建应用程序后，记下“应用程序 ID”，以便在后续步骤中使用。 
+创建应用程序后，记下“应用程序 ID”，以便在后续步骤中使用。  
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>在 Azure AD 中注册另一个应用程序用于表示客户端应用程序
 
 需要调用该 API 的每个客户端应用程序也必须注册到 Azure AD 中。 在本示例中，示例客户端应用程序是 API 管理开发人员门户中的开发人员控制台。 下面介绍如何在 Azure AD 中注册另一个应用程序用于表示开发人员控制台。
 
-1. 在处于**应用注册 （旧版）**，选择**新应用程序注册**。 
+1. 导航到[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。 
 
-2. 提供应用程序的名称。 （本示例使用名称 `client-app`。）
+1. 选择“新注册”。 
 
-3. 为“应用程序类型”选择“Web 应用/API”。  
+1. 出现“注册应用程序”页后，请输入应用程序的注册信息：  
+    - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `client-app`。 
+    - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。   
 
-4. 对于“登录 URL”，可以使用 `https://localhost` 作为占位符，或使用 API 管理实例的登录 URL。 （本示例使用 URL `https://contoso5.portal.azure-api.net/signin`。）
+1. 在中**重定向 URI**部分中，选择`Web`和输入的 URL `https://contoso5.portal.azure-api.net/signin`
 
-5. 选择“创建”。
+1. 选择“注册”  以创建应用程序。 
 
-创建应用程序后，记下“应用程序 ID”，以便在后续步骤中使用。 
+1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用   。
 
 现在，请创建此应用程序的客户端机密，以便在后续步骤中使用。
 
-1. 再次选择“设置”并转到“密钥”。
+1. 从客户端应用程序页的列表中选择**证书和机密**，然后选择**新的客户端机密**。
 
-2. 在“密码”下面提供**密钥说明**。 选择密钥过期时间，然后选择“保存”。
+2. 下**添加客户端密码**，提供**说明**。 选择在密钥应过期，并选中**添加**。
 
 记下密钥值。 
 
@@ -86,20 +90,20 @@ ms.locfileid: "65141078"
 
 注册用于表示 API 和开发人员控制台的两个应用程序之后，需要授予权限，使客户端应用能够调用后端应用。  
 
-1. 浏览到**应用程序注册 （旧版）**。 
+1. 导航到**应用注册**。 
 
-2. 选择 `client-app` 并转到“设置”。
+2. 选择`client-app`，并在列表中的应用页转到**API 权限**。
 
-3. 选择“所需的权限” > “添加”。
+3. 选择**添加权限**。
 
-4. 选择“选择 API”并搜索 `backend-app`。
+4. 下**选择 API**，查找并选择`backend-app`。
 
-5. 在“委托的权限”下面选择 **。**`Access backend-app` 
+5. 下**委托的权限**，选择适当的权限`backend-app`。
 
-6. 依次选择“选择”、“完成”。 
+6. 选择**添加权限** 
 
 > [!NOTE]
-> 如果“Azure Active Directory”未在“对其他应用程序的权限”下列出，请选择“添加”并从列表中添加该项。
+> 如果“Azure Active Directory”未在“对其他应用程序的权限”下列出，请选择“添加”并从列表中添加该项。  
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>在开发人员门户中启用 OAuth 2.0 用户授权
 
@@ -107,65 +111,65 @@ ms.locfileid: "65141078"
 
 在本示例中，开发人员控制台是 client-app。 以下步骤说明如何在开发人员门户中启用 OAuth 2.0 用户授权 
 
-1. 在 Azure 门户中，浏览到你的 API 管理实例。
+1. 在 Azure 门户中，浏览到 API 管理实例。
 
-2. 选择“OAuth 2.0” > “添加”。
+2. 选择“OAuth 2.0” > “添加”。  
 
-3. 提供“显示名称”和“说明”。
+3. 提供“显示名称”和“说明”。  
 
-4. 对于“客户端注册页 URL”，请输入占位符值，如 `http://localhost`。 “客户端注册页 URL”指向供用户针对 OAuth 2.0 提供程序创建和配置其自己的帐户的页面。 在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
+4. 对于“客户端注册页 URL”，请输入占位符值，如 `http://localhost`。  “客户端注册页 URL”  指向供用户针对 OAuth 2.0 提供程序创建和配置其自己的帐户的页面。 在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
 
-5. 选择“授权代码”作为“授权类型”。
+5. 选择“授权代码”作为“授权类型”。  
 
-6. 指定“授权终结点 URL”和“令牌终结点 URL”。 可以从 Azure AD 租户中的“终结点”页检索这些值。 再次浏览到“应用注册”页，并选择“终结点”。
+6. 指定“授权终结点 URL”  和“令牌终结点 URL”  。 可以从 Azure AD 租户中的“终结点”页检索这些值。  再次浏览到“应用注册”页，并选择“终结点”。  
 
     >[!NOTE]
     > 在此处使用 **v1** 终结点
 
-7. 复制“OAuth 2.0 授权终结点”，并将其粘贴到“授权终结点 URL”文本框。
+7. 复制“OAuth 2.0 授权终结点”  ，并将其粘贴到“授权终结点 URL”  文本框。
 
-8. 复制“OAuth 2.0 令牌终结点”，并将其粘贴到“令牌终结点 URL”文本框。 除了在令牌终结点中粘贴上述值以外，请添加名为 **resource** 的附加正文参数。 使用后端应用的“应用程序 ID”作为该参数的值。
+8. 复制“OAuth 2.0 令牌终结点”  ，并将其粘贴到“令牌终结点 URL”  文本框。 除了在令牌终结点中粘贴上述值以外，请添加名为 **resource** 的附加正文参数。 使用后端应用的“应用程序 ID”作为该参数的值。 
 
 9. 接下来，指定客户端凭据。 这是客户端应用的凭据。
 
-10. 对于“客户端 ID”，请使用客户端应用的“应用程序 ID”。
+10. 对于“客户端 ID”，请使用客户端应用的“应用程序 ID”。  
 
-11. 对于“客户端机密”，请使用前面为客户端应用创建的密钥。 
+11. 对于“客户端机密”，请使用前面为客户端应用创建的密钥。  
 
 12. 紧接在客户端机密的后面，是授权代码授权类型的 **redirect_url**。 记下此 URL。
 
-13. 选择“创建”。
+13. 选择“创建”  。
 
-14. 返回客户端应用的“设置”页。
+14. 返回客户端应用的“设置”页。 
 
-15. 选择“回复 URL”，并在第一行中粘贴 **redirect_url**。 在本示例中，我们已将 `https://localhost` 替换为第一行中的 URL。  
+15. 选择“回复 URL”，并在第一行中粘贴 **redirect_url**。  在本示例中，我们已将 `https://localhost` 替换为第一行中的 URL。  
 
 配置 OAuth 2.0 授权服务器后，开发人员控制台可从 Azure AD 获取访问令牌。 
 
 下一步是为 API 启用 OAuth 2.0 用户授权。 这使得开发人员控制台知道在调用 API 之前，需要代表用户获取访问令牌。
 
-1. 浏览到 API 管理实例，并转到“API”。
+1. 浏览到 API 管理实例，并转到“API”。 
 
 2. 选择要保护的 API。 本示例使用 `Echo API`。
 
-3. 转到“设置”。
+3. 转到“设置”  。
 
-4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。 
+4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。   
 
-5. 选择“保存”。
+5. 选择“保存”。 
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>从开发人员门户成功调用 API
 
 > [!NOTE]
-> 本部分不适用于“消耗”层，该层不支持开发人员门户。
+> 本部分不适用于“消耗”  层，该层不支持开发人员门户。
 
 在 `Echo API` 中启用 OAuth 2.0 用户授权后，开发人员控制台在调用 API 之前，将会代表用户获取访问令牌。
 
-1. 在开发人员门户中浏览到 `Echo API` 下的任一操作，并选择“试用”。 随后会转到开发人员控制台。
+1. 在开发人员门户中浏览到 `Echo API` 下的任一操作，并选择“试用”。  随后会转到开发人员控制台。
 
-2. 可以看到，“授权”部分出现了一个与刚刚添加的授权服务器对应的新项。
+2. 可以看到，“授权”部分出现了一个与刚刚添加的授权服务器对应的新项。 
 
-3. 从授权下拉列表中选择“授权代码”。系统会提示登录到 Azure AD 租户。 如果已使用帐户登录，则可能不会出现提示。
+3. 从授权下拉列表中选择“授权代码”。系统会提示登录到 Azure AD 租户。  如果已使用帐户登录，则可能不会出现提示。
 
 4. 成功登录后，会将一个 `Authorization` 标头添加到请求，该标头包含从 Azure AD 获取的访问令牌。 下面是一个采用 Base64 编码的示例令牌：
 
@@ -173,7 +177,7 @@ ms.locfileid: "65141078"
    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCIsImtpZCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCJ9.eyJhdWQiOiIxYzg2ZWVmNC1jMjZkLTRiNGUtODEzNy0wYjBiZTEyM2NhMGMiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgvIiwiaWF0IjoxNTIxMTUyNjMzLCJuYmYiOjE1MjExNTI2MzMsImV4cCI6MTUyMTE1NjUzMywiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhHQUFBQUptVzkzTFd6dVArcGF4ZzJPeGE1cGp2V1NXV1ZSVnd1ZXZ5QU5yMlNkc0tkQmFWNnNjcHZsbUpmT1dDOThscUJJMDhXdlB6cDdlenpJdzJLai9MdWdXWWdydHhkM1lmaDlYSGpXeFVaWk9JPSIsImFtciI6WyJyc2EiXSwiYXBwaWQiOiJhYTY5ODM1OC0yMWEzLTRhYTQtYjI3OC1mMzI2NTMzMDUzZTkiLCJhcHBpZGFjciI6IjEiLCJlbWFpbCI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiSmlhbmciLCJnaXZlbl9uYW1lIjoiTWlhbyIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJpcGFkZHIiOiIxMzEuMTA3LjE3NC4xNDAiLCJuYW1lIjoiTWlhbyBKaWFuZyIsIm9pZCI6IjhiMTU4ZDEwLWVmZGItNDUxMS1iOTQzLTczOWZkYjMxNzAyZSIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IkFGaWtvWFk1TEV1LTNkbk1pa3Z3MUJzQUx4SGIybV9IaVJjaHVfSEM1aGciLCJ0aWQiOiI0NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgiLCJ1bmlxdWVfbmFtZSI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsInV0aSI6ImFQaTJxOVZ6ODBXdHNsYjRBMzBCQUEiLCJ2ZXIiOiIxLjAifQ.agGfaegYRnGj6DM_-N_eYulnQdXHhrsus45QDuApirETDR2P2aMRxRioOCR2YVwn8pmpQ1LoAhddcYMWisrw_qhaQr0AYsDPWRtJ6x0hDk5teUgbix3gazb7F-TVcC1gXpc9y7j77Ujxcq9z0r5lF65Y9bpNSefn9Te6GZYG7BgKEixqC4W6LqjtcjuOuW-ouy6LSSox71Fj4Ni3zkGfxX1T_jiOvQTd6BBltSrShDm0bTMefoyX8oqfMEA2ziKjwvBFrOjO0uK4rJLgLYH4qvkR0bdF9etdstqKMo5gecarWHNzWi_tghQu9aE3Z3EZdYNI_ZGM-Bbe3pkCfvEOyA
    ```
 
-5. 选择“发送”，然后即可成功调用 API。
+5. 选择“发送”，然后即可成功调用 API。 
 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>配置 JWT 验证策略以对请求进行预授权

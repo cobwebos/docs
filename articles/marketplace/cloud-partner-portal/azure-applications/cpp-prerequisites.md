@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 296f843f9d09b57e12e867700f456126eca128b3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 64039234a3863332ca19b915fb59a5271625d695
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942884"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258181"
 ---
 # <a name="azure-application-prerequisites"></a>Azure 应用程序先决条件
 
@@ -38,7 +38,8 @@ ms.locfileid: "64942884"
 
 业务需求包括在规程、合同和法律方面的以下义务：
 
-* 你必须是已注册的云市场发布者。 如果你要注册，请按照文章中的步骤[成为云 Marketplace 发布者](../../become-publisher.md)。
+* 你必须是已注册的云市场发布者。 如果你要注册，请按照文章中的步骤[成为云 Marketplace 发布者](https://docs.microsoft.com/azure/marketplace/become-publisher
+)。
 
 >[!NOTE]
 >应当使用相同的 Microsoft Developer Center 注册帐户登录到云合作伙伴门户。 对于 Azure 市场产品/服务，只应具有一个 Microsoft 帐户。 此帐户不应特定于个别服务或产品/服务。

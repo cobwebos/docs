@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 30e547759cbafabf5f762f671b09b0cbeea3a44c
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 9750aa924ba4b6e4e5f3a51e5b34531d3fab0a6e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851207"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243311"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -39,7 +39,7 @@ ms.locfileid: "65851207"
 - **套餐名称**：SaaS 应用程序产品/服务，在发布、 播发和 web 站点上一致的官方名称。  此名称可能商标。  产品/服务名称不能包含空格，表情符号 （除非它们是商标或版权符号），并且必须限制为 50 个字符。
 <br>示例：测试产品/服务 1&#8482;
 
-选择“创建”。  **产品/服务概述**页创建此产品/服务。  
+选择“创建”  。  **产品/服务概述**页创建此产品/服务。  
 
 ![在合作伙伴中心上的产品/服务概述](./media/commercial-marketplace-offer-overview.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "65851207"
 - 具有限定为合作伙伴**减少 Marketplace 服务费用**将看到从年 6 月 2020年直到 2019 年 5 提供在 SaaS 降低的交易费。 在此方案中，Microsoft 对您的软件许可证 100.00 美元进行收费和到发布服务器的回报 90.00 美元。
 
 > [!NOTE]
-> **减少的 Marketplace 服务费**:对于某些 SaaS 提供已在我们的商业应用商店上发布，Microsoft 会减少其 Marketplace 服务费用从 20%（如在 Microsoft 发布方协议中所述） 为 10%。 为了使产品/服务来限定，至少一个产品/服务必须已指定由 Microsoft 不会成为 IP 合作销售就绪或 IP 共同销售设置优先级。  资格必须满足每个日历月结束前的至少五 （5） 个工作日才能月接收此简化的 Marketplace 服务费。  减少了 Marketplace 服务费用不适用于 Vm、 管理的应用程序或通过我们的商业应用商店提供的任何其他产品。  减少 Marketplace 服务费用将仅可供限定产品/服务为 2019 年 5 月 31 日和于 2020 年 6 月 30 日之间的 Microsoft 收集的许可证费用。  此时间后，Marketplace 服务费用将返回到其正常量。 
+> **减少的 Marketplace 服务费**:对于某些 SaaS 提供已在我们的商业应用商店上发布，Microsoft 会减少其 Marketplace 服务费用从 20%（如在 Microsoft 发布方协议中所述） 为 10%。 为了使产品/服务来限定，至少一个产品/服务必须已指定由 Microsoft 不会成为 IP 合作销售就绪或 IP 共同销售设置优先级。  资格必须满足每个日历月结束前的至少五 （5） 个工作日才能月接收此简化的 Marketplace 服务费。  减少了 Marketplace 服务费用不适用于 Vm、 管理的应用程序或通过我们的商业应用商店提供的任何其他产品。  减少了 Marketplace 服务费用将仅可供限定产品/服务为 2019 年 5 月 1 日和于 2020 年 6 月 30 日之间的 Microsoft 收集的许可证费用。  此时间后，Marketplace 服务费用将返回到其正常量。 
 
 |**Microsoft 收费**|**每月 100 美元**|
 |:---|:---|
@@ -112,11 +112,15 @@ ms.locfileid: "65851207"
 ##### <a name="get-it-now-free"></a>立即获取 （免费）
 列出产品/服务向客户免费提供有效的 URL （http 或 https 的开头），他们可以访问您的应用程序。  例如： `https://contoso.com/saas-app`
 
-##### <a name="free-trial"></a>免费使用版
+##### <a name="free-trial"></a>免费试用
 列出客户免费试用版产品/服务通过提供有效的 URL （http 或 https 的开头），他们可以访问您的应用程序。  例如： `https://contoso.com/trial/saas-app`
 
-##### <a name="contact-me"></a>联系信息
+##### <a name="contact-me"></a>与我联系
 通过连接您的客户关系管理 (CRM) 系统来收集客户联系人信息。 客户会要求共享其信息的权限。 这些客户的详细信息，以及产品/服务名称、 ID 和 marketplace 源它们在其中找到产品/服务，将发送到已配置的 CRM 系统。 有关配置你的 CRM 的详细信息，请参阅[Connect 潜在客户管理](#connect-lead-management)。 
+
+## <a name="example-marketplace-offer-listing"></a>示例 marketplace 产品/服务列表
+
+![示例 marketplace 产品/服务的说明列表](./media/marketplace-offer.svg)
 
 ## <a name="enable-a-test-drive"></a>启用体验版
 
@@ -128,12 +132,12 @@ ms.locfileid: "65851207"
 
 ### <a name="type-of-test-drive"></a>测试驱动器的类型
 
-- **[Azure 资源管理器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)**:包含组成解决方案的所有 Azure 资源的部署模板。 适合此方案的产品仅使用 Azure 资源。
-- **[Dynamics 365 业务中心](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)**:Microsoft 托管和 Business Central 企业资源计划系统维护测试驱动器服务 （包括预配和部署） (财务、 操作、 供应链，CRM，等等。)。  
-- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)**:Microsoft 托管和客户参与系统 （销售、 服务、 项目服务、 现场服务等） 维护测试驱动器服务 （包括预配和部署）。  
-- **[操作的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)**:Microsoft 托管和 Finance and Operations 企业资源规划 （财务、 操作、 生产、 供应链等） 的系统维护测试驱动器服务 （包括预配和部署）。 
-- **[逻辑应用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)**:部署模板，其中包含所有复杂的解决方案体系结构。 任何自定义产品应使用此类测试驱动器。
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)**:自定义构建的仪表板嵌入的链接。 要演示交互式 Power BI 视觉对象应使用这种体验版的产品。 此处只需要上传你的嵌入式 Power BI URL。
+- **[Azure 资源管理器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** :包含组成解决方案的所有 Azure 资源的部署模板。 适合此方案的产品仅使用 Azure 资源。
+- **[Dynamics 365 业务中心](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** :Microsoft 托管和 Business Central 企业资源计划系统维护测试驱动器服务 （包括预配和部署） (财务、 操作、 供应链，CRM，等等。)。  
+- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** :Microsoft 托管和客户参与系统 （销售、 服务、 项目服务、 现场服务等） 维护测试驱动器服务 （包括预配和部署）。  
+- **[操作的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** :Microsoft 托管和 Finance and Operations 企业资源规划 （财务、 操作、 生产、 供应链等） 的系统维护测试驱动器服务 （包括预配和部署）。 
+- **[逻辑应用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** :部署模板，其中包含所有复杂的解决方案体系结构。 任何自定义产品应使用此类测试驱动器。
+- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** :自定义构建的仪表板嵌入的链接。 要演示交互式 Power BI 视觉对象应使用这种体验版的产品。 此处只需要上传你的嵌入式 Power BI URL。
 
 #### <a name="additional-test-drive-resources"></a>其他测试驱动器资源
 - [测试驱动器技术最佳实践](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
@@ -167,7 +171,7 @@ ms.locfileid: "65851207"
 
 选择**保存**之后完成这些字段。 
 
-### <a name="category"></a>Category
+### <a name="category"></a>类别
 选择最少的一 （1） 和最多三 （3） 用于分组到相应的 marketplace 搜索领域的产品/服务的类别。 请指出产品/服务如何支持这些类别的产品/服务说明中。 
 
 ### <a name="industry"></a>行业
@@ -177,7 +181,8 @@ ms.locfileid: "65851207"
 这是一个可选字段 AppSource marketplace 中用于标识产品/服务的版本号。 
 
 ### <a name="standard-contract"></a>标准合同
-- **使用标准约定？** 
+
+- **使用标准约定？**
 
 若要简化客户的采购过程并降低的软件供应商的法律的复杂性，Microsoft 以帮助简化在 marketplace 中的事务提供标准协定模板。 
 
@@ -185,7 +190,8 @@ ms.locfileid: "65851207"
 
 标准协定可在此处找到： https://go.microsoft.com/fwlink/?linkid=2041178。
 
-##### <a name="terms-of-use"></a>使用条款
+#### <a name="terms-of-use"></a>使用条款
+
 如果从标准约定不同许可条款，你可以选择输入此处使用自己法律条款。 此外可以在此字段中输入文本的最多 10,000 个字符。 如果你的使用条款的需要更长的说明，请输入此字段可以在其中找到其他许可条款的单个 URL 链接。 它将向客户显示为活动的链接。
 
 客户必须接受这些条款才能试用应用。 
@@ -193,9 +199,11 @@ ms.locfileid: "65851207"
 请记住**保存**才能转到下一部分 ！
 
 ## <a name="offer-listing"></a>产品/服务列表
+
 列出产品/服务是可用的语言 （和市场） 选项卡上显示的产品/服务，英语 （美国） 目前可用的唯一位置。 此外，此页显示特定于语言的列表和已添加的日期/时间的状态。 需要为每种语言定义 （提供名称、 说明、 搜索词等） 的应用商店详细信息 / 市场。
 
 ### <a name="offer-listings"></a>套餐列表
+
 提供要显示在 marketplace 中包括的产品/服务说明和市场营销资产的详细信息。
 
 - **名称**（必需）：此处定义的名称将显示为标题的产品/服务在你已选择的 marketplace(s) 上列出。 名称预先填充在基于以前**新产品/服务**条目。  这可能被商标。  这必须不能包含空格，表情符号 （除非它们是商标和版权符号），并且必须限制为 50 个字符。
@@ -235,8 +243,7 @@ ms.locfileid: "65851207"
 - [最佳做法的 marketplace 产品/服务列表](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 
-
-## <a name="preview"></a>Preview
+## <a name="preview"></a>预览
 
 **预览版**选项卡可以定义有限**预览受众**用于释放之前向更广泛的 marketplace 用户发布产品/服务实时产品/服务。
 
@@ -256,7 +263,7 @@ ms.locfileid: "65851207"
 
 - **登录页 URL** （必需）：定义 URL 将客户定向以登录后获取从 marketplace 产品/服务的站点。 此 URL 也是接收连接 API 以方便与 Microsoft 开展商务活动的终结点。
 
-- **连接 webhook** （必需）：对于 Microsoft 需要代表客户向你发送的所有异步事件（示例：Azure 订阅已无效），我们要求你提供连接 webhook。 如果还没有就地 webhook 系统，最简单的配置是将 HTTP 终结点逻辑应用，它将侦听的任何事件发布到其并适当地处理它们 (例如 https://prod-1westus.logic.azure.com:443/work)。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
+- **连接 webhook** （必需）：对于 Microsoft 需要代表客户向你发送的所有异步事件（示例：Azure 订阅已无效），我们要求你提供连接 webhook。 如果还没有就地 webhook 系统，最简单的配置是将 HTTP 终结点逻辑应用，它将侦听的任何事件发布到其并适当地处理它们 (例如 https:\//prod-1westus.logic.azure.com:443/work)。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)。
 
 - **Azure AD 租户 ID** （必需）：在 Azure 门户中，我们要求您[创建 Azure Active Directory (AD) 应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)位于经过身份验证的通信，以便我们可以验证我们的两个服务之间的连接。 若要查找[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id)，转到 Azure Active Directory，然后选择**属性**，然后查找**Directory ID**数列出 （例如50c464d3-4930-494c-963c-1e951d15360e)。
 
@@ -270,14 +277,15 @@ ms.locfileid: "65851207"
 
 创建后，你将看到你计划名称、 Id、 定价模型，可用性 （公共或私有），当前发布状态以及任何可用的操作。
 
--   **操作**推出**计划概述**取决于你的计划的当前状态，并且可能包括：
-  - 如果计划状态为**草稿**– 删除草稿
-  - 如果计划状态为**Live** – 停止销售计划或同步专用受众
+**操作**推出**计划概述**取决于你的计划的当前状态，并且可能包括：
+
+- 如果计划状态为**草稿**– 删除草稿
+- 如果计划状态为**Live** – 停止销售计划或同步专用受众
 
 **创建新的计划**（最小的一个计划的用户选择此选项可以通过 Microsoft 销售）
 
 - **计划 ID:** 在此产品/服务中创建每个计划的唯一计划 ID。 此 ID 将可看到客户在产品 URL 和 Azure 资源管理器模板 （如果适用）。 使用仅小写字母、 字母数字字符、 短划线或下划线。 50 个字符最多允许为此计划 id。 请注意选择在创建后无法修改 ID。
-- **计划名称：** 确定该计划选择产品/服务中时，客户将看到此名称。 在此产品/服务中创建每个计划的唯一产品/服务名称。 计划名称用于区分可能属于同一个产品/服务 （例如软件计划 产品/服务名称:Windows Server;计划：Windows Server 2016 中，Windows Server 2019）。
+- **计划名称：** 确定该计划选择产品/服务中时，客户将看到此名称。 在此产品/服务中创建每个计划的唯一产品/服务名称。 计划名称用于区分可能属于同一个产品/服务 （例如软件计划 产品/服务名称：Windows Server;计划：Windows Server 2016 中，Windows Server 2019）。
 
 ### <a name="plan-listing"></a>计划列表
 
@@ -307,7 +315,7 @@ ms.locfileid: "65851207"
 
 #### <a name="pricing"></a>定价
 
-- 定价模型：固定的费率或基于席位
+- 定价模型：  固定的费率或基于席位
 
 **固定的费率：** 启用对使用单一的月度或年度价格固定的费率价格产品/服务的访问。 这有时称为基于站点的定价。
 
@@ -349,12 +357,15 @@ ms.locfileid: "65851207"
 虽然 SaaS 产品/服务使用租户 Id 来定义专用的受众，其他产品/服务类型可以使用 Azure 订阅 Id （这也表示为 Guid）。
 
 > [!NOTE]
-> 专用的受众 （或受限制的受众） 不同于预览版受众。 在中**[预览版](#preview)** 选项卡上，可以定义预览受众。 预览受众允许对产品/服务的访问*以前*实时在 marketplace 中发布的产品/服务。 预览受众虽然专用用户指定仅适用于特定计划，可以查看所有计划 (专用与否)，但仅在有限的预览版时测试并验证该计划。
+> 专用的受众 （或受限制的受众） 不同于预览版受众。 在中 **[预览版](#preview)** 选项卡上，可以定义预览受众。 预览受众允许对产品/服务的访问*以前*实时在 marketplace 中发布的产品/服务。 预览受众虽然专用用户指定仅适用于特定计划，可以查看所有计划 (专用与否)，但仅在有限的预览版时测试并验证该计划。
 
+## <a name="example-list-of-plans-within-a-marketplace-offer"></a>计划内的 marketplace 产品/服务的示例列表
+
+![列出与说明示例 marketplace 计划](./media/marketplace-plan.svg)
 
 ## <a name="test-drive"></a>体验版
 
-**测试驱动器**选项卡可以设置演示 （或"试用"） 这将使客户试用产品/服务提交之前来购买它。 在本文中了解更多信息[什么是体验版？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。 如果不再想要提供体验版产品/服务，返回到**[提供了安装程序](#offer-setup)** 页上，取消选中**启用测试驱动器**。
+**测试驱动器**选项卡可以设置演示 （或"试用"） 这将使客户试用产品/服务提交之前来购买它。 在本文中了解更多信息[什么是体验版？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。 如果不再想要提供体验版产品/服务，返回到 **[提供了安装程序](#offer-setup)** 页上，取消选中**启用测试驱动器**。
 
 ### <a name="technical-configuration"></a>技术配置
 以下类型的测试驱动器都可用，每个都有其自己的技术配置要求。
@@ -390,7 +401,7 @@ Microsoft 可以消除托管和维护服务的预配和部署使用此类型的�
 
 - **实例 URL** （必需）：客户将在其中开始其体验版的 URL。 通常使用示例数据安装运行您的应用程序在 Dynamics 365 实例的 URL (例如 https://testdrive.crm.dynamics.com)。
 
-- **实例 Web API URL** （必需）：检索通过登录到你的 Microsoft 365 帐户并导航到 Dynamics 365 实例的 Web API URL**设置** \&g t;**自定义** \&g t;**开发人员资源** \&g t;**实例 Web API (服务根 URL)**，复制以下网页中找到的 URL (例如 https://testdrive.crm.dynamics.com/api/data/v9.0)。
+- **实例 Web API URL** （必需）：检索通过登录到你的 Microsoft 365 帐户并导航到 Dynamics 365 实例的 Web API URL**设置** \&g t;**自定义** \&g t;**开发人员资源** \&g t;**实例 Web API (服务根 URL)** ，复制以下网页中找到的 URL (例如 https://testdrive.crm.dynamics.com/api/data/v9.0)。
 
 - **角色名称**（必需）：提供自定义的 Dynamics 365 测试驱动器中定义的安全角色名称。 这将分配给该用户在其测试驱动器 （例如测试的汽车-角色）。
 
@@ -443,7 +454,7 @@ Microsoft 可以消除托管和维护服务的预配和部署使用此类型的�
 - **视频：将视频添加**（可选）：可以上传到 YouTube 或 Vimeo 视频和此处引用的链接和缩略图图像 （533x324 像素为单位），以便客户可以查看信息以帮助他们更好地了解测试驱动器，包括如何成功使用的功能的演练操作你产品/服务和了解突出其优点的方案。
   - **名称**（必需）
   - **URL （YouTube 或 Vimeo 仅）** （必需）
-  - **缩略图 (533 x 324px)**:图像文件必须为 PNG 格式。
+  - **缩略图 (533 x 324px)** :图像文件必须为 PNG 格式。
 
 选择**保存**之后完成这些字段。
 

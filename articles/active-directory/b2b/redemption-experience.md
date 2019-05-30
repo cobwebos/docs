@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d00808295d39247729f6e843ac59ad7b23407148
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 99fe386ec75e60a16f3095f22dccc3852883f8aa
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785421"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304515"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -42,13 +42,13 @@ ms.locfileid: "65785421"
 如果通过发送邀请电子邮件的方法受到邀请，用户还可通过邀请电子邮件兑换邀请。 受邀用户可单击电子邮件中的兑换 URL，然后查看并接受隐私条款。 下文更详细地介绍了该流程：
 
 1.  受到邀请后，被邀请者将通过发自 **Microsoft Invitations** 的电子邮件收到邀请。
-2.  被邀请者选择电子邮件中的“开始使用”。
+2.  被邀请者选择电子邮件中的“开始使用”  。
 3.  如果被邀请者没有 Azure AD 帐户或 MSA，则系统会提示创建 MSA。
-4.  被邀请者会重定向到“查看权限”屏幕，他们可在该屏幕查看邀请组织的隐私声明并接受相关条款。
+4.  被邀请者会重定向到“查看权限”屏幕，他们可在该屏幕查看邀请组织的隐私声明并接受相关条款  。
 
 ## <a name="privacy-policy-agreement"></a>隐私策略协议
 
-任何来宾用户在首次登录以访问合作伙伴组织中的资源后，都会看到“查看权限”屏幕。 在这里，他们可以查看邀请组织的隐私声明。 用户必须接受根据邀请组织的隐私策略使用其信息才能继续。
+任何来宾用户在首次登录以访问合作伙伴组织中的资源后，都会看到“查看权限”屏幕  。 在这里，他们可以查看邀请组织的隐私声明。 用户必须接受根据邀请组织的隐私策略使用其信息才能继续。
 
 ![显示访问面板中用户设置的屏幕截图](media/redemption-experience/ConsentScreen.png) 
 
@@ -56,7 +56,7 @@ ms.locfileid: "65785421"
 
 ## <a name="terms-of-use"></a>使用条款
 
-可以使用 Azure AD 使用条款功能在初始兑换过程中向来宾用户显示使用条款。 在 Azure Active Directory 中，可以在“管理” > “组织关系” > “使用条款”下或在“安全性” > “条件访问” > “使用条款”下访问此功能。 有关详细信息，请参阅 [Azure AD 使用条款功能](../conditional-access/terms-of-use.md)。
+您可以向使用条款的来宾用户在初始兑换过程中使用 Azure AD 使用条款功能。 在 Azure Active Directory 中，可以在“管理”   > “组织关系”   > “使用条款”  下或在“安全性”   > “条件访问”   > “使用条款”  下访问此功能。 有关详细信息，请参阅[Azure AD 使用条款功能](../conditional-access/terms-of-use.md)。
 
 ![显示新使用条款的屏幕截图](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 

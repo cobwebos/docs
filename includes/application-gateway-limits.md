@@ -4,14 +4,14 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: e35f01cc5479a5d27d92c9ed74a12bc44db673cd
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 65ed28c967164be4d239cd4d59b6b36f06caeced
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65754038"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238402"
 ---
-| 资源 | 默认值/最大限制 | 注意 |
+| Resource | 默认值/最大限制 | 注意 |
 | --- | --- | --- |
 | Azure 应用程序网关 |每个订阅 1,000 个 | |
 | 前端 IP 配置 |2 |1 个公共，1 个专用 |
@@ -23,6 +23,7 @@ ms.locfileid: "65754038"
 | 后端 HTTP 设置 |100<sup>1</sup> | |
 | 每个网关的实例数 |32 | |
 | SSL 证书数 |100<sup>1</sup> |每个 HTTP 侦听器 1 个 |
+| SSL 证书的最大大小 |V1 SKU-10 KB<br>V2 SKU-25 KB| |
 | 身份验证证书 |100 | |
 | 受信任的根证书 |100 | |
 | 请求超时最小值 |1 秒 | |

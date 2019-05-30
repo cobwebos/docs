@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: edf7655c20f1b3bad5ce4d337861bd2ff3e029db
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/27/2019
+ms.openlocfilehash: 3fd85232ff7044c699a3e68ce34b267bf50c4dc3
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721364"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257862"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 
@@ -37,7 +37,7 @@ ResourceManager 将群集计算资源授予 MapReduce 作业之类的应用程�
 
 ResourceManager 还运行一个 Web 服务器进程，该进程提供一个 Web 用户接口，用于监视应用程序的状态。
 
-当用户提交要在群集上运行的 MapReduce 应用程序时，该应用程序会提交给 ResourceManager。 反过来，ResourceManager 会在可用的 NodeManager 节点上分配一个容器。 NodeManager 节点是应用程序的实际执行位置。 第一个分配的容器运行名为 ApplicationMaster 的特殊应用程序。 该 ApplicationMaster 负责获取资源，这些资源采用后续容器的形式，是运行提交的应用程序所必需的。 ApplicationMaster 会检查应用程序的阶段（例如映射阶段和化简阶段），并会将需要处理的数据量考虑进去。 ApplicationMaster 然后会代表应用程序从 ResourceManager 请求（协商）资源。 ResourceManager 反过来会将群集中 NodeManager 提供的资源授予 ApplicationMaster，供其在执行应用程序时使用。 
+当用户提交要在群集上运行的 MapReduce 应用程序时，该应用程序会提交给 ResourceManager。 反过来，ResourceManager 会在可用的 NodeManager 节点上分配一个容器。 NodeManager 节点是应用程序的实际执行位置。 第一个分配的容器运行名为 ApplicationMaster 的特殊应用程序。 该 ApplicationMaster 负责获取资源，这些资源采用后续容器的形式，是运行提交的应用程序所必需的。 ApplicationMaster 会检查应用程序的阶段（例如映射阶段和化简阶段），并会将需要处理的数据量考虑进去。 ApplicationMaster 然后会代表应用程序从 ResourceManager 请求（协商）  资源。 ResourceManager 反过来会将群集中 NodeManager 提供的资源授予 ApplicationMaster，供其在执行应用程序时使用。 
 
 NodeManagers 先运行应用程序包含的任务，然后将其进度和状态回头报告给 ApplicationMaster。 ApplicationMaster 则将应用程序的状态报告给 ResourceManager。 ResourceManager 将任何结果返回给客户端。
 

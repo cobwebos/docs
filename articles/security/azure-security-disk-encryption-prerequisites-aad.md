@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2cc5d953ec412c1c747989d58303beae05f2039c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 201998168b0709b1608ffad2565518e15d47e52c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66118016"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234298"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure 磁盘加密先决条件（早期版本）
 
@@ -73,7 +73,7 @@ ms.locfileid: "66118016"
 **组策略：**
  - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”的组策略信息，请参阅 [BitLocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup)。
 
--  具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置 bitlocker 恢复信息的用户存储 -> 允许 256 位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。  
+-  具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置用户存储的 BitLocker 恢复信息-> 允许 256 位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。  
 
 
 ## <a name="bkmk_PSH"></a>Azure PowerShell
@@ -178,7 +178,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. 记下返回的“保管库名称”、“资源组名称”、“资源 ID”、“保管库 URI”和“对象 ID”，以便稍后在加密磁盘时使用。 
+4. 记下返回的“保管库名称”、“资源组名称”、“资源 ID”、“保管库 URI”和“对象 ID”，以便稍后在加密磁盘时使用。      
 
 
 ### <a name="bkmk_KVCLI"></a>使用 Azure CLI 创建 Key Vault
@@ -198,14 +198,14 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. 记下返回的“保管库名称”(name)、“资源组名称”、“资源 ID”(ID)、“保管库 URI”和“对象 ID”，以便稍后使用。 
+4. 记下返回的“保管库名称”(name)、“资源组名称”、“资源 ID”(ID)、“保管库 URI”和“对象 ID”，以便稍后使用。      
 
 ### <a name="bkmk_KVRM"></a>使用资源管理器模板创建 Key Vault
 
 可以使用[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)创建 Key Vault。
 
-1. 在 Azure 快速入门模板中，单击“部署到 Azure”。
-2. 选择订阅、资源组、资源组位置、Key Vault 名称、对象 ID、法律条款和协议，然后单击“购买”。 
+1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
+2. 选择订阅、资源组、资源组位置、Key Vault 名称、对象 ID、法律条款和协议，然后单击“购买”。  
 
 
 ## <a name="bkmk_ADapp"></a>设置 Azure AD 应用和服务主体 
@@ -246,7 +246,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 1. [验证所需的权限](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
 2. [创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
      - 创建应用程序时，可以使用任意所需的名称和登录 URL。
-3. [获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)。 
+3. [获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。 
      - 身份验证密钥是客户端机密，并用作集 AzVMDiskEncryptionExtension AadClientSecret。 
         - 应用程序使用身份验证密钥作为凭据登录到 Azure AD。 在 Azure 门户中，此机密称为密钥，但与 Key Vault 没有任何关系。 请适当地保护此机密。 
      - 作为集 AzVMDiskEncryptionExtension AadClientId 集 AzKeyVaultAccessPolicy ServicePrincipalName 以及将更高版本使用的应用程序 ID。 
@@ -283,11 +283,11 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用[
 ### <a name="bkmk_KVAPRM"></a>使用门户为 Azure AD 应用设置 Key Vault 访问策略
 
 1. 打开包含 Key Vault 的资源组。
-2. 选择 Key Vault，转到“访问策略”，然后单击“新增”。
-3. 在“选择主体”下，搜索创建的 Azure AD 应用程序并选择它。 
-4. 对于“密钥权限”，请选中“加密操作”下的“包装密钥”。
-5. 对于“机密权限”，请选中“机密管理操作”下的“设置”。
-6. 单击“确定”保存访问策略。 
+2. 选择 Key Vault，转到“访问策略”，然后单击“新增”。  
+3. 在“选择主体”下，搜索创建的 Azure AD 应用程序并选择它。  
+4. 对于“密钥权限”，请选中“加密操作”下的“包装密钥”。   
+5. 对于“机密权限”，请选中“机密管理操作”下的“设置”。   
+6. 单击“确定”保存访问策略。  
 
 ![Azure Key Vault 加密操作 - 包装密钥](./media/azure-security-disk-encryption/keyvault-portal-fig3.png)
 
@@ -339,9 +339,9 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 ### <a name="bkmk_KVperrm"></a>通过 Azure 门户设置 Key Vault 高级访问策略
 
-1. 选择 Key Vault，转到“访问策略”，然后选择“单击此处可显示高级访问策略”。
-2. 选中标有“启用对 Azure 磁盘加密的访问以进行卷加密”的框。
-3. 根据需要选择“启用对 Azure 虚拟机的访问以进行部署”和/或“启用对 Azure 资源管理器的访问以进行模板部署”。 
+1. 选择 Key Vault，转到“访问策略”，然后选择“单击此处可显示高级访问策略”。  
+2. 选中标有“启用对 Azure 磁盘加密的访问以进行卷加密”的框。 
+3. 根据需要选择“启用对 Azure 虚拟机的访问以进行部署”和/或“启用对 Azure 资源管理器的访问以进行模板部署”。   
 4. 单击“ **保存**”。
 
 ![Azure Key Vault 高级访问策略](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)

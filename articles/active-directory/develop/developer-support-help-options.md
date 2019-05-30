@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2019
+ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0741dda0aa087f21625cabe79e51d0b9e344f7ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962659"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235337"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -47,7 +47,7 @@ ms.locfileid: "65962659"
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
-其中，*{Your Search Terms}* 对应于搜索关键字。
+其中， *{Your Search Terms}* 对应于搜索关键字。
 
 ## <a name="use-the-development-support-tools"></a>使用开发支持工具
 
@@ -81,10 +81,10 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 
 如果发现了与库相关的 Bug 或问题，请在 GitHub 存储库中提出问题。 由于我们的库是开源的，因此也可提交拉取请求。
 
-若要查看库及其 GitHub 存储库的列表，请参阅以下文章：
+库和其 GitHub 存储库的列表，请参阅：
 
 * [ADAL](active-directory-authentication-libraries.md) 库和 GitHub 存储库
-* [MSAL](reference-v2-libraries.md) 库和 GitHub 存储库
+* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)， [MSAL。Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)，并[MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc)库和 GitHub 存储库
 
 ## <a name="open-a-support-request"></a>提出支持请求
 

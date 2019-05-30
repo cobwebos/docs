@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: dcab4d24ca948980f28483fd09f29588e0329b63
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 09ce4cdc6ab4556f0ba68507bb23d09e02ae0357
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800980"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66296811"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -53,7 +53,7 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 
 1. 在主模板文件中添加新资源。 资源只需位于 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
 
-1. 在 pid- 前缀的后面输入 GUID 值（例如，pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
+1. 在 pid- 前缀的后面输入 GUID 值（例如，pid-eb7927c8-dd66-43e1-b0cf-c346a422063）  。
 
 1. 检查模板是否存在任何错误。
 
@@ -178,27 +178,27 @@ Guid 必须注册才能启用客户使用情况归属。
 
 1. 登录[云合作伙伴平台](https://cloudpartner.azure.com/)。
 
-1. 在右上角选择自己的帐户图标，然后选择“发布者个人资料”。
+1. 在右上角选择自己的帐户图标，然后选择“发布者个人资料”。 
 
    ![选择“发布者个人资料”](media/marketplace-publishers-guide/guid-image-for-lu.png)
 
-1. 在“个人资料”页上，选择“添加跟踪 GUID”。
+1. 在“个人资料”页上，选择“添加跟踪 GUID”。  
 
    ![选择“添加跟踪 GUID”](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
 
-1. 在“跟踪 GUID”框中输入跟踪 GUID。 只输入 GUID，不要包括 **pid-** 前缀。 在“自定义说明”框中，输入产品/服务名称或说明。
+1. 在“跟踪 GUID”框中输入跟踪 GUID。  只输入 GUID，不要包括 **pid-** 前缀。 在“自定义说明”框中，输入产品/服务名称或说明。 
 
    ![个人资料页](media/marketplace-publishers-guide/guid-dev-center-login.png)
 
    ![输入 GUID 和产品/服务的说明](media/marketplace-publishers-guide/guid-dev-center-example.png)
 
-1. 若要注册多个 GUID，请再次选择“添加跟踪 GUID”。 页面上会显示其他框。
+1. 若要注册多个 GUID，请再次选择“添加跟踪 GUID”。  页面上会显示其他框。
 
    ![再次选择“添加跟踪 GUID”](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
 
    ![输入另一个 GUID 和产品/服务的说明](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
    ![选择“保存”](media/marketplace-publishers-guide/guid-dev-center-save.png)
 
@@ -208,7 +208,7 @@ Guid 必须注册才能启用客户使用情况归属。
 
 修改模板并运行测试部署后，使用以下 PowerShell 脚本检索已部署和标记的资源。
 
-可以使用该脚本来验证 GUID 是否已成功添加到资源管理器模板。 该脚本不适用于资源管理器 API 部署。
+可以使用该脚本来验证 GUID 是否已成功添加到资源管理器模板。 脚本不适用于资源管理器 API 或 Terraform 部署。
 
 登录 Azure。 选择包含要在运行脚本之前验证的部署的订阅。 在部署的订阅上下文中运行该脚本。
 
@@ -275,27 +275,27 @@ foreach ($deployment in $deployments){
 
 1. 转到[支持页](https://go.microsoft.com/fwlink/?linkid=844975)。
 
-1. 在“问题类型”下，选择“市场加入”。
+1. 在“问题类型”下，选择“市场加入”。  
 
-1. 选择问题的“类别”：
+1. 选择问题的“类别”： 
 
-   - 对于使用情况关联的问题，请选择“其他”。
-   - 对于访问 Azure 市场 CPP 时出现的问题，请选择“访问问题”。
+   - 对于使用情况关联的问题，请选择“其他”。 
+   - 对于访问 Azure 市场 CPP 时出现的问题，请选择“访问问题”。 
 
      ![选择问题类别](media/marketplace-publishers-guide/lu-article-incident.png)
 
-1. 选择“开始请求”。
+1. 选择“开始请求”  。
 
 1. 在下一页上输入所需的值。 选择**继续**。
 
 1. 在下一页上输入所需的值。
 
    > [!Important]
-   > 在“事件标题”框中，输入“ISV 使用情况跟踪”。 请详细描述问题。
+   > 在“事件标题”框中，输入“ISV 使用情况跟踪”。   请详细描述问题。
 
    ![在事件标题中输入“ISV 使用情况跟踪”](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
 
-1. 填写表单，然后选择“提交”。
+1. 填写表单，然后选择“提交”。 
 
 此外可以从 Microsoft 合作伙伴技术顾问进行技术售前、 部署和应用程序开发方案，以了解并合并客户使用情况归属接收技术指南。
 

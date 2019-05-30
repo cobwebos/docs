@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145926"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391447"
 ---
 临时 OS 磁盘是本地的虚拟机 (VM) 存储上创建并不会保留到远程 Azure 存储。 临时 OS 磁盘适用于无状态工作负载，其中应用程序容错的单个 VM 失败，但更为关注大规模部署所需的时间或时间进行映像重置单个 VM 实例。 也很适合使用经典部署模型转移到 Resource Manager 部署模型部署的应用程序。 使用 Ephemeral OS 磁盘，你会发现对 OS 磁盘的读/写延迟较低，并且 VM 重置映像速度较快。 此外，临时 OS 磁盘是免费的则会产生的 OS 磁盘存储免费。 
  
@@ -35,41 +35,9 @@ ms.locfileid: "66145926"
 | 区域支持              | 所有区域                                                                                  | 所有区域                              |
 | 数据暂留            | 写入到 OS 磁盘的 OS 磁盘数据存储在 Azure 存储                                  | 写入到 OS 磁盘的数据存储到的本地 VM 存储并不会保留到 Azure 存储。 |
 | 停止解除分配状态      | 可以停止解除分配，并从已停止解除分配状态重新启动 Vm 和规模集实例 | Vm 和规模集实例不能为已停止解除分配                                  |
-| 专用的 OS 磁盘支持 | “是”                                                                                          | “否”                                                                                 |
+| 专用的 OS 磁盘支持 | 是                                                                                          | 否                                                                                 |
 | OS 磁盘重设大小              | 支持的 VM 创建期间和之后 VM 处于停止解除分配                                | 仅在创建 VM 期间支持                                                  |
 | 为新的 VM 大小重设大小   | OS 磁盘数据保留                                                                    | OS 磁盘上的数据之后，操作系统是重新预配                                      |
-
-## <a name="register-for-the-preview"></a>注册预览版
-
-
-自注册使用 Azure CLI 或 Azure PowerShell 的最新版本的临时 OS 磁盘的预览版。
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-Register-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-若要检查你注册预览版：
-
-```azurepowershell-interactive
-Get-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="cli"></a>CLI
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-az feature register --namespace Microsoft.Compute --name LocalDiffDiskPreview
-```
-
-若要检查你注册预览版：
- 
-```azurecli-interactive
-az provider show --namespace Microsoft.Compute
-```
-
 
 ## <a name="scale-set-deployment"></a>规模集部署  
 创建使用临时 OS 磁盘的规模集的过程是将添加`diffDiskSettings`属性设置为`Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile`模板中的资源类型。 此外，缓存策略必须设置为`ReadOnly`临时 OS 磁盘。 

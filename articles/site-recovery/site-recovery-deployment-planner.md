@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mayg
-ms.openlocfilehash: a1fbc8a42492b4a9c2254ccea2ddc2909219ad23
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
-ms.translationtype: HT
+ms.openlocfilehash: 42ef6087663c48cad965be768f14920efa777a62
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969347"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244328"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>关于用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery 部署规划器用户指南。
@@ -65,7 +65,7 @@ ms.locfileid: "65969347"
 
 | | **VMware 到 Azure** |**Hyper-V 到 Azure**|**Azure 到 Azure**|**Hyper-V 到辅助站点**|**VMware 到辅助站点**
 --|--|--|--|--|--
-支持的方案 |“是”|是|“否”|是*|“否”
+支持的方案 |是|是|否|是*|否
 支持的版本 | vCenter 6.7、 6.5、 6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
 支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|NA|Hyper-V 群集、Hyper-V 主机|NA|
 可以按 Site Recovery 部署规划器的运行实例进行分析的服务器数 |单个（一次只能分析属于一个 vCenter Server 或一个 ESXi 服务器的 VM）|多个（一次可以分析多个主机或主机群集的 VM）| NA |多个（一次可以分析多个主机或主机群集的 VM）| NA
@@ -121,7 +121,7 @@ ms.locfileid: "65969347"
 
 ## <a name="version-history"></a>版本历史记录
 最新的 Site Recovery 部署规划器工具版本为 2.4。
-请参阅 [Site Recovery 部署规划器版本历史记录](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-deployment-planner-history)页，了解每个更新中增加的修补程序。
+请参阅 [Site Recovery 部署规划器版本历史记录](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history)页，了解每个更新中增加的修补程序。
 
 ## <a name="next-steps"></a>后续步骤
 [运行 Site Recovery 部署规划器](site-recovery-vmware-deployment-planner-run.md)

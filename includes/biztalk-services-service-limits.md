@@ -9,13 +9,13 @@ ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 2697a7d14141682ee8208d8cbe954e6e1679e3b5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553295"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238763"
 ---
-| 资源 | 免费(预览版) | 开发人员 | 基本 | 标准 | 高级 |
+| Resource | 免费(预览版) | 开发人员 | 基本 | 标准 | 高级 |
 | --- | --- | --- | --- | --- | --- |
 | 横向扩展 |不适用 |不适用 |可扩展，增量为 1 个基本版单位 |可扩展，增量为 1 个标准版单位 |可扩展，增量为 1 个高级版单位 |
 | 缩放限制 |不适用 |不适用 |最多 8 个单位 |最多 8 个单位 |最多 8 个单位 |

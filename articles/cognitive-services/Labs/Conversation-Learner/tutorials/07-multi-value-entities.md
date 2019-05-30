@@ -3,19 +3,19 @@ title: 如何通过 Conversation Learner 模型使用多值实体 - Microsoft �
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用多值实体。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 07550ed9c78aa584e55403d225eef4bcff33b057
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 1f62def5e498f3f744beaed0cda207e1a75bfdf2
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708048"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387950"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>如何通过对话学习器模型使用多值实体
 本教程介绍实体的“多值”属性。
@@ -42,7 +42,7 @@ ms.locfileid: "60708048"
 
 1. 选择**新的模型**。
 2. 输入**MultiValueEntities**有关**名称**。
-3. 选择“创建”。
+3. 选择“创建”  。
 
 ### <a name="entity-creation"></a>创建实体
 
@@ -51,24 +51,24 @@ ms.locfileid: "60708048"
 3. 输入**浇头**有关**实体名称**。
 4. 检查**多值**若要启用该实体累积了一个或多个值。
 5. 检查**Negatable**。
-6. 选择“创建”。
+6. 选择“创建”  。
 
 ![](../media/T07_entity_create.png)
 
 ### <a name="create-the-first-action"></a>创建第一个操作
 
 1. 选择**操作**在左侧的窗格中，然后**新操作**。
-2. 输入**以下是你浇头： $toppings**为**智能机器人应用程序的响应...**.前导美元符号指示实体引用。
-3. 选择“创建”。
+2. 输入**以下是你浇头： $toppings**为**智能机器人应用程序的响应...** .前导美元符号指示实体引用。
+3. 选择“创建”  。
 
 ![](../media/T07_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>创建第二个操作
 
 1. 选择**操作**在左侧的窗格中，然后**新操作**。
-2. 输入**哪些浇头？** 为**智能机器人应用程序的响应...**.
+2. 输入**哪些浇头？** 为**智能机器人应用程序的响应...** .
 3. 输入**浇头**有关**取消将赋予**。
-4. 选择“创建”。
+4. 选择“创建”  。
 
 现在已有两个操作。
 

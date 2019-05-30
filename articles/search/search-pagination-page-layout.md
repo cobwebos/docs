@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: dc208f3231882a0726733c897e70557c657cddf3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6e627de5b22a67051961e70bab56b2d931129281
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024523"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244802"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>如何在 Azure 搜索中使用搜索结果
 本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 
 
-在 REST API 中，请求包括 GET 命令、路径和查询参数，用于通知服务正在请求的内容以及如何明确表述响应。 在 .NET SDK 中，等效的 API 是 [DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet)。
+在 REST API 中，请求包括 GET 命令、路径和查询参数，用于通知服务正在请求的内容以及如何明确表述响应。 在 .NET SDK 中，等效的 API 是 [DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
 
 多个代码示例包含一个 Web 前端接口，相关内容可参阅：[纽约市工作岗位演示应用](https://azjobsdemo.azurewebsites.net/)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 
 > [!NOTE]
-> 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅[Azure 搜索服务 REST](https://docs.microsoft.com/rest/api/searchservice)。
+> 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅 [Azure 搜索服务 REST](https://docs.microsoft.com/rest/api/searchservice)。
 >
 
 ## <a name="total-hits-and-page-counts"></a>总匹配记录和页面计数
@@ -92,7 +92,7 @@ ms.locfileid: "65024523"
 搜索导航是搜索页面上的常见功能，通常位于页面侧边或顶部。 在 Azure 搜索中，分面导航基于预定义筛选器提供自定向搜索。 有关详细信息，请参阅 [Azure 搜索中的分面导航](search-faceted-navigation.md)。
 
 ## <a name="filters-at-the-page-level"></a>页面级别的筛选器
-如果解决方案设计包含特定类型内容的专用搜索页（例如，页面顶部列有各个部门的在线零售应用程序），则可以在“onClick”事件旁插入[筛选器表达式](search-filters.md)以预筛选状态的方式打开页面。 
+如果解决方案设计包含特定类型内容的专用搜索页（例如，页面顶部列有各个部门的在线零售应用程序），则可以在“onClick”事件旁插入[筛选器表达式](search-filters.md)以预筛选状态的方式打开页面  。 
 
 可以发送带有或不带有搜索表达式的筛选器。 例如，将按品牌名称筛选以下请求，以便仅返回与之匹配的记录。
 

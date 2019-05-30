@@ -13,12 +13,12 @@ caps.latest.revision: 42
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 4e018af7df64c9ed8050a3c618cf2645d5509cdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea373c7b35ef82496690f213b92cc97f3536c57a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60613250"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356150"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure 云服务定义架构（.csdef 文件）
 服务定义文件定义应用程序的服务模型。 该文件包含可供云服务使用的角色的定义，指定服务终结点，并建立服务的配置设置。 配置设置值是在服务配置文件中设置的，如[云服务（经典）配置架构](/previous-versions/azure/reference/ee758710(v=azure.100))所述。
@@ -67,9 +67,9 @@ ms.locfileid: "60613250"
 
 下表介绍了 `ServiceDefinition` 元素的属性。
 
-| 属性               | 描述 |
+| 特性               | 描述 |
 | ----------------------- | ----------- |
-| 名称                    |必需。 服务的名称。 该名称在服务帐户中必须是唯一的。|
+| name                    |必需。 服务的名称。 该名称在服务帐户中必须是唯一的。|
 | topologyChangeDiscovery | 可选。 指定拓扑更改通知的类型。 可能的值包括：<br /><br /> -   `Blast` - 将更新尽早发送到所有角色实例。 如果选择此选项，则角色应该能够在不重启的情况下处理拓扑更新。<br />-   `UpgradeDomainWalk` – 在前一个实例成功接受更新后，按顺序将更新发送到每个角色实例。|
 | schemaVersion           | 可选。 指定服务定义架构的版本。 如果并排安装了多个版本的 SDK，架构版本允许 Visual Studio 选择正确的 SDK 工具用于架构验证。|
-| upgradeDomainCount      | 可选。 指定在其中分配了此服务中的角色的升级域的数目。 在部署服务时会将角色实例分配到升级域。 有关详细信息，请参阅[更新云服务角色或部署](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment)。<br /><br /> 最多可以指定 20 个升级域。 如果未指定，则升级域的默认数目为 5 个。|
+| upgradeDomainCount      | 可选。 指定在其中分配了此服务中的角色的升级域的数目。 在部署服务时会将角色实例分配到升级域。 有关详细信息，请参阅[更新云服务角色或部署](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment)，[管理虚拟机的可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)并[什么是云服务模型](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package)。<br /><br /> 最多可以指定 20 个升级域。 如果未指定，则升级域的默认数目为 5 个。|

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 52a9cfa52cd63715addadcbfb367510ded56fd76
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142725"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297093"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
 
@@ -56,7 +56,7 @@ ms.locfileid: "65142725"
 - 站点到站点 VPN 连接（[Azure 门户](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)、[PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)）
 - [ExpressRoute](../expressroute/expressroute-introduction.md) 连接  
 
-如果已成功建立本地到 Azure 的连接，但无法与托管实例建立连接，请检查防火墙中是否在 SQL 端口 1433 上打开了出站连接，并且打开了 11000-12000 端口范围，以便重定向。
+如果已成功建立的本地到 Azure 的连接，并且无法建立到托管实例的连接，检查你的防火墙上的 SQL 端口 1433年，以及用于重定向的端口 11000-11999 范围有打开出站连接。
 
 ## <a name="connect-an-application-on-the-developers-box"></a>在开发人员工具箱中连接应用程序
 
@@ -68,10 +68,10 @@ ms.locfileid: "65142725"
 
 ![VNet 对等互连](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
-设置基本的体系结构以后，需修改某些设置，使 VPN 网关能够看到承载托管实例的虚拟网络中的 IP 地址。 为此，请在“对等互连设置”下进行下述很具体的更改。
+设置基本的体系结构以后，需修改某些设置，使 VPN 网关能够看到承载托管实例的虚拟网络中的 IP 地址。 为此，请在“对等互连设置”下进行下述很具体的更改。 
 
-1. 在承载 VPN 网关的 VNet 中，转到“对等互连”，然后转到进行托管实例对等互连的 VNet 连接，再单击“允许网关传输”。
-2. 在承载托管实例的 VNet 中，转到“对等互连”，然后转到进行 VPN 网关对等互连的 VNet 连接，再单击“使用远程网关”。
+1. 在承载 VPN 网关的 VNet 中，转到“对等互连”，  然后转到进行托管实例对等互连的 VNet 连接，再单击“允许网关传输”。 
+2. 在承载托管实例的 VNet 中，转到“对等互连”，  然后转到进行 VPN 网关对等互连的 VNet 连接，再单击“使用远程网关”。 
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>连接 Azure 应用服务托管应用程序
 
@@ -96,9 +96,9 @@ ms.locfileid: "65142725"
 
 若要排查连接问题，请查看以下内容：
 
-- 如果无法从同一 VNet 的不同子网中的 Azure 虚拟机连接到托管实例，请检查是否在 VM 子网上设置了可能会阻止访问的网络安全组。另请注意，需在 SQL 端口 1433 上以及 11000-12000 范围的端口上打开出站连接，因为在 Azure 边界内通过重定向进行连接时，这些都是必需的。
-- 对于与 VNet 关联的路由表，请确保将“BGP 传播”设置为“启用”。
-- 如果使用 P2S VPN，请在 Azure 门户中检查配置，确定能否看到“入口/出口”编号。 如果编号不为零，则表示 Azure 在本地进行流量的出入路由。
+- 如果无法从同一个 VNet 但不同的子网中的 Azure 虚拟机连接到托管实例，检查您是否具有可能会阻止访问的 VM 子网中设置网络安全组。此外请注意，您需要在 11000-11999 的范围中打开 SQL 端口 1433年端口上的出站连接，因为这些所需的连接通过 Azure 边界内的重定向。
+- 对于与 VNet 关联的路由表，请确保将“BGP 传播”设置为“启用”。 
+- 如果使用 P2S VPN，请在 Azure 门户中检查配置，确定能否看到“入口/出口”编号。  如果编号不为零，则表示 Azure 在本地进行流量的出入路由。
 
    ![入口/出口编号](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
@@ -147,7 +147,7 @@ ms.locfileid: "65142725"
 |Node.js 驱动程序| 2.1.1 |
 |OLEDB 驱动程序| 18.0.2.0 |
 |SSMS| 18.0 或[更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects)或更高版本 |
+|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
 
 ## <a name="next-steps"></a>后续步骤
 

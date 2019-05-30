@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 3d50746324ddac21f222d4c743f4b7bf6ee9b773
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: d9cc5da0cd2936c1ac79a308366b8164548cb202
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864806"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241723"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理用户帐户
 
-在 API 管理（预览版）中，开发人员是公开使用 API 管理的 API 的用户。 本指南演示如何创建和邀请开发人员使用通过 API 管理实例向其提供的 API 和产品。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](/rest/api/apimanagement/)参考中的[用户实体](https://docs.microsoft.com/rest/api/apimanagement/user)文档。
+在 API 管理（预览版）中，开发人员是公开使用 API 管理的 API 的用户。 本指南演示如何创建和邀请开发人员使用通过 API 管理实例向其提供的 API 和产品。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](/rest/api/apimanagement/)参考中的[用户实体](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)文档。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -36,20 +36,20 @@ ms.locfileid: "65864806"
 
 若要添加新用户，请执行本部分中的步骤：
 
-1. 选择屏幕左侧的“用户”选项卡。
-2. 按“+添加”。
+1. 选择屏幕左侧的“用户”  选项卡。
+2. 按“+添加”  。
 3. 输入用户的相应信息。
-4. 按“添加”。
+4. 按“添加”  。
 
     ![添加新用户](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-默认情况下，新创建的开发人员帐户处于“活动”状态，并且与“开发人员”组相关联。 处于“活动”状态的开发人员帐户可用于访问它们具有订阅的所有 API。 要将新创建的开发人员与其他组相关联，请参阅[如何将组与开发人员关联][How to associate groups with developers]。
+默认情况下，新创建的开发人员帐户处于“活动”  状态，并且与“开发人员”  组相关联。 处于“活动”  状态的开发人员帐户可用于访问它们具有订阅的所有 API。 要将新创建的开发人员与其他组相关联，请参阅[如何将组与开发人员关联][How to associate groups with developers]。
 
 ## <a name="invite-developer"> </a>邀请开发人员
 若要邀请开发人员，请执行本部分中的步骤：
 
-1. 选择屏幕左侧的“用户”选项卡。
-2. 按“+邀请”。
+1. 选择屏幕左侧的“用户”  选项卡。
+2. 按“+邀请”  。
 
 将显示一条确认消息，但新受邀请的开发人员之后不会出现在列表中，直到他们接受邀请。 
 
@@ -59,13 +59,13 @@ ms.locfileid: "65864806"
 
 ## <a name="block-developer"> </a> 停用或重新激活开发人员帐户
 
-默认情况下，新创建的或受邀请的开发人员帐户处于“活动”状态。 若要停用开发人员帐户，请单击“阻止”。 若要重新激活阻止的开发人员帐户，请单击“激活”。 阻止的开发人员帐户不能访问开发人员门户或调用任何 API。 若要删除用户帐户，请单击“删除”。
+默认情况下，新创建的或受邀请的开发人员帐户处于“活动”  状态。 若要停用开发人员帐户，请单击“阻止”  。 若要重新激活阻止的开发人员帐户，请单击“激活”  。 阻止的开发人员帐户不能访问开发人员门户或调用任何 API。 若要删除用户帐户，请单击“删除”  。
 
 若要阻止用户，请执行以下步骤。
 
-1. 选择屏幕左侧的“用户”选项卡。
+1. 选择屏幕左侧的“用户”  选项卡。
 2. 单击想要阻止的用户。
-3. 按“阻止”。
+3. 按“阻止”  。
 
 ## <a name="reset-a-user-password"></a>重置用户密码
 

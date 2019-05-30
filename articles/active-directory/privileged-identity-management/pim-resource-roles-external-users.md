@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5846d2bd85a382b8e2aee539af405518e9fb221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0afec1d6eded25a2d9b2389c950e2e21e06e0d54
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288817"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66307058"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>邀请来宾用户并分配在 PIM 中的 Azure 资源角色
 
@@ -55,13 +55,13 @@ Azure Active Directory (Azure AD) 企业到企业 (B2B) 是使组织进行协作
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 单击“Azure Active Directory” > “用户设置”。
+1. 单击“Azure Active Directory” > “用户设置”。  
 
-1. 单击“管理外部协作设置”。
+1. 单击“管理外部协作设置”。 
 
     ![外部协作设置](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
-1. 确保“管理员和具有来宾邀请者角色的用户可以邀请”开关设置为“是”。
+1. 确保“管理员和具有来宾邀请者角色的用户可以邀请”开关设置为“是”。  
 
 ## <a name="invite-a-guest-and-assign-a-role"></a>邀请来宾并分配角色
 
@@ -69,17 +69,17 @@ Azure Active Directory (Azure AD) 企业到企业 (B2B) 是使组织进行协作
 
 1. 登录到[Azure 门户](https://portal.azure.com/)与用户的成员[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)或[用户管理员](../users-groups-roles/directory-assign-admin-roles.md#user-administrator)角色。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure 资源”。
+1. 单击“Azure 资源”  。
 
-1. 使用资源筛选器对托管资源的列表进行筛选。
+1. 使用资源筛选器  对托管资源的列表进行筛选。
 
 1. 单击要管理的资源，如资源、资源组、订阅或管理组。
 
     您应该只需要哪些来宾操作系统设置的作用域。
 
-1. 在“管理”下，单击“角色”以查看 Azure 资源的角色列表。
+1. 在“管理”下，单击“角色”  以查看 Azure 资源的角色列表。
 
     ![Azure 资源角色](./media/pim-resource-roles-external-users/resources-roles.png)
 
@@ -87,9 +87,9 @@ Azure Active Directory (Azure AD) 企业到企业 (B2B) 是使组织进行协作
 
     ![所选角色](./media/pim-resource-roles-external-users/selected-role.png)
 
-1. 在角色页面，单击“添加成员”以打开“新建分配”窗格。
+1. 在角色页面，单击“添加成员”  以打开“新建分配”窗格。
 
-1. 单击“选择成员或组”。
+1. 单击“选择成员或组”。 
 
     ![选择成员或组](./media/pim-resource-roles-external-users/select-member-group.png)
 
@@ -107,7 +107,7 @@ Azure Active Directory (Azure AD) 企业到企业 (B2B) 是使组织进行协作
 
     ![成员资格设置](./media/pim-resource-roles-external-users/membership-settings.png)
 
-1. 单击“完成”，然后单击“添加”，以完成分配。
+1. 单击“完成”，然后单击“添加”，以完成分配。  
 
     来宾角色分配会在你的角色列表中。
 
@@ -121,13 +121,13 @@ Azure Active Directory (Azure AD) 企业到企业 (B2B) 是使组织进行协作
 
     ![电子邮件邀请](./media/pim-resource-roles-external-users/email-invite.png)
 
-1. 单击电子邮件中的“开始”链接。
+1. 单击电子邮件中的“开始”链接。 
 
-1. 查看权限后，单击“接受”。
+1. 查看权限后，单击“接受”。 
 
     ![查看权限](./media/pim-resource-roles-external-users/invite-accept.png)
 
-1. 可能会要求你接受使用条款，并指定是否要保持登录状态。
+1. 您可能需要接受了使用条款，并指定是否想要保持登录状态。
 
     此时会打开 Azure 门户。 若你刚刚才符合某个角色的条件，则没有对资源的访问权限。
 
@@ -135,15 +135,15 @@ Azure Active Directory (Azure AD) 企业到企业 (B2B) 是使组织进行协作
 
     ![电子邮件邀请](./media/pim-resource-roles-external-users/email-role-assignment.png)
 
-1. 单击“激活角色”，以在 PIM 中打开你的符合条件的角色。
+1. 单击“激活角色”，以在 PIM 中打开你的符合条件的角色。 
 
     ![我的角色的符合条件](./media/pim-resource-roles-external-users/my-roles-eligible.png)
 
-1. 在“操作”下单击“激活”链接。
+1. 在“操作”下单击“激活”链接。 
 
     需要指定一些信息来激活角色，具体取决于角色设置。
 
-1. 指定角色设置后，单击“激活”，以激活角色。
+1. 指定角色设置后，单击“激活”，以激活角色。 
 
     ![激活角色](./media/pim-resource-roles-external-users/activate-role.png)
 
@@ -155,7 +155,7 @@ Azure Active Directory (Azure AD) 企业到企业 (B2B) 是使组织进行协作
 
 1. 以管理员身份打开 PIM，并选择已共享的资源。
 
-1. 单击“资源审核”，以查看该资源的活动。 以下示例演示了资源组的活动。
+1. 单击“资源审核”，以查看该资源的活动。  以下示例演示了资源组的活动。
 
     ![资源审核](./media/pim-resource-roles-external-users/audit-resource.png)
 

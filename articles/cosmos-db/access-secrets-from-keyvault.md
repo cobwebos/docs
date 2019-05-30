@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 05/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 36b0a2f18cf2917251a87405456980811af1bc3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 157ccd284c25cb5c7275aa942823ade2a40795cc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894753"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239853"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>使用 Azure Key Vault 保护 Azure Cosmos 密钥 
 
@@ -31,22 +31,22 @@ ms.locfileid: "60894753"
 ## <a name="create-a-key-vault"></a>创建密钥保管库
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。  
-2. 选择“创建资源”>“安全性”>“Key Vault”。  
-3. 在“创建密钥保管库”部分，提供以下信息：  
+2. 选择“创建资源”>“安全性”>“Key Vault”。   
+3. 在“创建密钥保管库”部分，提供以下信息：   
    * **名称：** 提供 Key Vault 的唯一名称。  
    * **订阅：** 选择要使用的订阅。  
-   * 在“资源组”下选择“新建”，然后输入资源组名称。  
+   * 在“资源组”  下选择“新建”  ，然后输入资源组名称。  
    * 在“位置”下拉菜单中选择一个位置。  
    * 将其他选项保留默认值。  
-4. 提供上述信息后，选择“创建”。  
+4. 提供上述信息后，选择“创建”  。  
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>将 Azure Cosmos DB 访问密钥添加到 Key Vault。
-1. 导航到在上一步骤中创建的 Key Vault，打开“机密”选项卡。  
-2. 选择“+生成/导入”。 
+1. 导航到在上一步骤中创建的 Key Vault，打开“机密”选项卡。   
+2. 选择“+生成/导入”。  
 
-   * 为“上传选项”选择“手动”。
+   * 为“上传选项”选择“手动”。  
    * 提供机密的**名称**。
-   * 在“值”字段中提供 Cosmos DB 帐户的连接字符串。 然后选择“创建”。
+   * 在“值”字段中提供 Cosmos DB 帐户的连接字符串。  然后选择“创建”  。
 
    ![创建机密](./media/access-secrets-from-keyvault/create-a-secret.png)
 
@@ -63,9 +63,9 @@ ms.locfileid: "60894753"
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
 3. **保存**文件并**生成**解决方案。  
-4. 接下来，将应用程序部署到 Azure。 右键单击项目并选择“发布”。 创建新的应用服务配置文件（可将应用命名为 WebAppKeyVault1），然后选择“发布”。   
+4. 接下来，将应用程序部署到 Azure。 右键单击项目并选择“发布”。  创建新的应用服务配置文件（可将应用命名为 WebAppKeyVault1），然后选择“发布”。    
 
-5. 部署应用程序后， 在 Azure 门户中导航到已部署的 Web 应用程序，并启用此应用程序的“托管服务标识”。  
+5. 部署应用程序后， 在 Azure 门户中导航到已部署的 Web 应用程序，并启用此应用程序的“托管服务标识”。   
 
    ![托管服务标识](./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "60894753"
 
 1. 导航到 Azure 门户，打开在上一部分创建的 **Key Vault**。  
 
-2. 打开“访问策略”，选择“+新增”，找到已部署的 Web 应用，选择权限，然后选择“确定”。  
+2. 打开“访问策略”，选择“+新增”，找到已部署的 Web 应用，选择权限，然后选择“确定”。     
 
    ![添加访问策略](./media/access-secrets-from-keyvault/add-access-policy.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "60894753"
 
 ![使用机密部署的应用](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
  
-同样，可以添加一个用户来访问 Key Vault。 需要通过选择“访问策略”将自己添加到 Key Vault，然后授予从 Visual studio 运行此应用程序所需的所有权限。 从桌面运行此应用程序时，它会采用你的标识。
+同样，可以添加一个用户来访问 Key Vault。 需要通过选择“访问策略”  将自己添加到 Key Vault，然后授予从 Visual studio 运行此应用程序所需的所有权限。 从桌面运行此应用程序时，它会采用你的标识。
 
 ## <a name="next-steps"></a>后续步骤
 

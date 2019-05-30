@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553313"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238545"
 ---
 Azure Data Lake Analytics 让管理分布式基础结构和简单的复杂代码等复杂任务。 动态预配资源，并可用来进行分析百亿亿字节的数据。 作业完成后，它自动释放资源。 您只需支付所用的处理能力。 增加或减少存储数据的大小或使用的计算量时，不需要重写代码。 若要将你的订阅的默认限制，请联系支持。
 

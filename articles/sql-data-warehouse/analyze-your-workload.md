@@ -1,22 +1,21 @@
 ---
-title: 分析工作负荷 - Azure SQL 数据仓库 | Microsoft Docs
+title: 分析 Azure SQL 数据仓库中的工作负荷 |Microsoft Docs
 description: 分析针对 Azure SQL 数据仓库中工作负荷的查询优化的技巧。
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: ronortloff
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-origin.date: 03/13/2019
-ms.date: 04/01/2019
-ms.author: v-jay
+ms.date: 03/13/2019
+ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 434cbb18a109308844dbc7ff219d40948678e86e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f470670ae3d526f3b66badf219a01a471c24db0d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679092"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242235"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>分析 Azure SQL 数据仓库中的工作负荷
 
@@ -28,7 +27,7 @@ SQL 数据仓库提供资源类，可以将系统资源分配给查询。  有�
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>对排队的查询进行的检测，以及其他 DMV
 
-可以使用 `sys.dm_pdw_exec_requests` DMV 来确定在并发队列中等待的查询。 正在等待并发槽的查询的状态为“已挂起”。
+可以使用 `sys.dm_pdw_exec_requests` DMV 来确定在并发队列中等待的查询。 正在等待并发槽的查询的状态为“已挂起”  。
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID

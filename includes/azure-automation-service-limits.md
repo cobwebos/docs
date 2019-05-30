@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 04929de241ff36e4d67f24907747d89a16a73898
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2823a33b25812a69ad463433bacd9710655c9176
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733785"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238689"
 ---
 #### <a name="process-automation"></a>流程自动化
 
-| 资源 | 最大限制 |说明|
+| Resource | 最大限制 |说明|
 | --- | --- |---|
 | 每个 Azure 自动化帐户每 30 秒可以提交的新作业的最大数量（非计划的作业） |100 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
 | 每个自动化帐户相同时间实例并发运行的作业的最大数量（非计划的作业） |200 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
@@ -41,7 +41,7 @@ ms.locfileid: "64733785"
 
 <sup>1</sup>沙盒是可以由多个作业使用的共享环境。 使用同一沙盒的作业受沙盒的资源限制约束。
 
-#### <a name="change-tracking-and-inventory"></a>更改跟踪和清单
+#### <a name="change-tracking-and-inventory"></a>更改跟踪和库存
 
 下表显示了每台计算机进行更改跟踪的跟踪的项限制。
 
@@ -53,3 +53,11 @@ ms.locfileid: "64733785"
 |Linux 包|1,250||
 |服务|250||
 |守护程序|250||
+
+#### <a name="update-management"></a>更新管理
+
+下表显示了用于更新管理的限制。
+
+| **资源** | **限制**| **说明** |
+|---|---|---|
+|每个更新部署的计算机的数目|1000||

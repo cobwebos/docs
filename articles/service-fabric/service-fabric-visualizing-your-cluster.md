@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 358ebfa601ff8e4d2fb6ae91e51516cb0a933af7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cbeb0a8944b35af2a68080a2b2f1bb4436c6e58d
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716478"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306699"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
 
@@ -61,7 +61,7 @@ Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点�
 ### <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 可以使用证书或 Azure Active Directory (AAD) 控制客户端对 Service Fabric 群集的访问。
 
-如果尝试连接到安全群集，则将需提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
+如果你尝试连接到安全群集，然后根据群集的配置您将需要提供客户端证书或使用 AAD 登录。
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 SService Fabric Explorer 的布局
 可以使用左侧的树来导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。
@@ -92,7 +92,7 @@ Service Fabric 群集中的节点横跨容错域和升级域的二维网格放�
 ## <a name="actions"></a>操作
 Service Fabric Explorer 提供用于对群集中的节点、应用程序和服务快速调用操作的方式。
 
-例如，要删除某应用程序实例，只需从左侧树中选择该应用程序，并选择“操作” > “删除应用程序”。
+例如，要删除某应用程序实例，只需从左侧树中选择该应用程序，并选择“操作”   > “删除应用程序”  。
 
 ![Service Fabric Explorer 中删除应用程序][sfx-delete-application]
 

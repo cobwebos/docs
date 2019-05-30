@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/21/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3afe27bf71d112b53c31ab696f71d4e1a0cf6b79
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 140b1263047849e13a44441c368e6357078574d8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002492"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240812"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -54,9 +54,9 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 |创建或删除自动化证书|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | 资源组中的参与者         |自动化帐户资源组|
 |创建或删除自动化连接|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|资源组中的参与者 |自动化帐户资源组|
 
-<sup>1</sup> Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”。 如果应用注册设置设置为**否**，执行此操作的用户必须是**全局管理员**Azure AD 中。
+<sup>1</sup> Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”。    如果应用注册设置设置为**否**，执行此操作的用户必须是上表中定义的内容。
 
-如果要添加到之前不是订阅的 Active Directory 实例的成员**全局管理员**角色作为来宾要添加的订阅。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。 已添加到用户**全局管理员**角色第一次可以从订阅的 Active Directory 实例中删除和重新添加，使其在 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
+如果要添加到之前不是订阅的 Active Directory 实例的成员**全局管理员**角色作为来宾要添加的订阅。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。  已添加到用户**全局管理员**角色第一次可以从订阅的 Active Directory 实例中删除和重新添加，使其在 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。     用户配置文件下的“用户类型”属性值不应等于“来宾”。  
 
 ## <a name="permissions-classic"></a>配置经典运行方式帐户时所需的权限
 
@@ -67,11 +67,11 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 在本部分，请执行以下步骤，在 Azure 门户中更新 Azure 自动化帐户。 可以单独创建运行方式帐户和经典运行方式帐户。 如果不需管理经典资源，可以只创建 Azure 运行方式帐户。  
 
 1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
-2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“自动化”。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”。
-3. 在“自动化帐户”页的自动化帐户列表中选择自动化帐户。
-4. 在左侧窗格的“帐户设置”部分下，选择“运行方式帐户”。  
-5. 根据所需帐户，选择“Azure 运行方式帐户”或“Azure 经典运行方式帐户”。 选择后，便会出现“添加 Azure 运行方式帐户”或“添加 Azure 经典运行方式帐户”页。查看概述信息后，单击“创建”，继续创建运行方式帐户。  
-6. 在 Azure 创建运行方式帐户时，可以在菜单的“通知”下面跟踪进度。 此外还显示一个横幅，指出正在创建帐户。 此过程可能需要几分钟才能完成。  
+2. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“自动化”  。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”  。
+3. 在“自动化帐户”页的自动化帐户列表中选择自动化帐户。 
+4. 在左侧窗格的“帐户设置”部分下，选择“运行方式帐户”   。  
+5. 根据所需帐户，选择“Azure 运行方式帐户”或“Azure 经典运行方式帐户”   。 选择后，便会出现“添加 Azure 运行方式帐户”或“添加 Azure 经典运行方式帐户”页。查看概述信息后，单击“创建”，继续创建运行方式帐户    。  
+6. 在 Azure 创建运行方式帐户时，可以在菜单的“通知”下面跟踪进度  。 此外还显示一个横幅，指出正在创建帐户。 此过程可能需要几分钟才能完成。  
 
 ## <a name="create-run-as-account-using-powershell"></a>使用 PowerShell 创建运行方式帐户
 
@@ -81,14 +81,14 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 * 装有 Azure 资源管理器模块 3.4.1 和更高版本的 Windows 10 或 Windows Server 2016。 PowerShell 脚本不支持早期版本的 Windows。
 * Azure PowerShell 1.0 和更高版本。 有关 PowerShell 1.0 版本的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
-* 作为 –AutomationAccountName 和 -ApplicationDisplayName 参数的值引用的自动化帐户。
+* 作为  –AutomationAccountName 和  -ApplicationDisplayName 参数的值引用的自动化帐户。
 * 与[配置运行方式帐户时所需的权限](#permissions)中所列权限相当的权限
 
-若要获取脚本的必需参数 SubscriptionID、ResourceGroup 和 AutomationAccountName 的值，请完成以下步骤：
+若要获取脚本的必需参数 SubscriptionID、ResourceGroup 和 AutomationAccountName 的值，请完成以下步骤    ：
 
-1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“自动化”。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”。
-1. 在“自动化帐户”页中选择自动化帐户，然后在“帐户设置”下选择“属性”。  
-1. 记下“属性”页上的“订阅 ID”、“名称”和“资源组”值。
+1. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“自动化”  。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”  。
+1. 在“自动化帐户”页中选择自动化帐户，然后在“帐户设置”下  选择“属性”  。  
+1. 记下“属性”页上的“订阅 ID”、“名称”和“资源组”值。    
 
    ![自动化帐户的“属性”页](media/manage-runas-account/automation-account-properties.png)
 
@@ -286,9 +286,9 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
     ```
 
     > [!IMPORTANT]
-    > Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 **Connect-AzureRMAccount**，可以使用 **Add-AzureRmAccount**，或者在自动化帐户中[更新模块](automation-update-azure-modules.md)。
+    > Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名   。 搜索库项时，如果未看到 **Connect-AzureRMAccount**，可以使用 **Add-AzureRmAccount**，或者在自动化帐户中[更新模块](automation-update-azure-modules.md)。
 
-1. 在计算机上，从“开始”屏幕以提升的用户权限启动 **Windows PowerShell**。
+1. 在计算机上，从“开始”屏幕以提升的用户权限启动 **Windows PowerShell**  。
 1. 在提升权限的命令行外壳中，转到包含步骤 1 所创建脚本的文件夹。  
 1. 使用所需配置的参数值执行该脚本。
 
@@ -321,7 +321,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 成功执行脚本后，请注意以下事项：
 
-* 如果使用自签名公共证书（.cer 文件）创建了经典运行方式帐户，该脚本将创建该帐户，并将其保存到计算机上用于执行 PowerShell 会话的用户配置文件下方的临时文件夹（*%USERPROFILE%\AppData\Local\Temp*）。
+* 如果使用自签名公共证书（.cer 文件）创建了经典运行方式帐户，该脚本将创建该帐户，并将其保存到计算机上用于执行 PowerShell 会话的用户配置文件下方的临时文件夹（ *%USERPROFILE%\AppData\Local\Temp*）。
 
 * 如果使用企业公共证书（.cer 文件）创建了经典运行方式帐户，则使用此证书。 按照[将管理 API 证书上传到 Azure 门户](../azure-api-management-certs.md)的说明进行操作。
 
@@ -331,15 +331,15 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 1. 在 Azure 门户中，打开自动化帐户。
 
-2. 在“自动化帐户”页上，选择“运行方式帐户”。
+2. 在“自动化帐户”  页上，选择“运行方式帐户”  。
 
-3. 在“运行方式帐户”属性页上，选择要删除的运行方式帐户或经典运行方式帐户。 然后，在所选帐户的“属性”窗格中单击“删除”。
+3. 在“运行方式帐户”属性页上，选择要删除的运行方式帐户或经典运行方式帐户。  然后，在所选帐户的“属性”窗格中单击“删除”。  
 
    ![删除运行方式帐户](media/manage-runas-account/automation-account-delete-runas.png)
 
-1. 帐户删除过程中，可以在菜单的“通知”下面跟踪进度。
+1. 帐户删除过程中，可以在菜单的“通知”  下面跟踪进度。
 
-1. 删除该帐户后，可以通过在“运行方式帐户”属性页中选择创建选项“Azure 运行方式帐户”来重新创建该帐户。
+1. 删除该帐户后，可以通过在“运行方式帐户”属性页中选择创建选项“Azure 运行方式帐户”来重新创建该帐户。  
 
    ![重新创建自动化运行方式帐户](media/manage-runas-account/automation-account-create-runas.png)
 
@@ -356,27 +356,27 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 1. 在 Azure 门户中，打开自动化帐户。
 
-1. 在“帐户设置”下选择“运行方式帐户”。
+1. 在“帐户设置”下选择“运行方式帐户”。  
 
     ![自动化帐户属性窗格](media/manage-runas-account/automation-account-properties-pane.png)
 
-1. 在“运行方式帐户”属性页上，选择要为其续订证书的运行方式帐户或经典运行方式帐户。
+1. 在“运行方式帐户”属性页上，选择要为其续订证书的运行方式帐户或经典运行方式帐户。 
 
-1. 在所选帐户的“属性”窗格中，单击“续订证书”。
+1. 在所选帐户的“属性”窗格中，单击“续订证书”。  
 
     ![续订运行方式帐户的证书](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. 证书续订过程中，可以在菜单的“通知”下面跟踪进度。
+1. 证书续订过程中，可以在菜单的“通知”  下面跟踪进度。
 
 ## <a name="limiting-run-as-account-permissions"></a>限制运行方式帐户权限
 
 为了控制针对 Azure 自动化中资源的自动化目标，默认情况下运行方式帐户会被授予订阅中的参与者权限。 如果需要限制运行方式服务主体可以执行的操作，可以从订阅的参与者角色中删除该帐户并将该帐户添加为要指定的资源组的参与者。
 
-在 Azure 门户中，选择“订阅”并选择自动化帐户的订阅。 依次选择“访问控制(IAM)”、“角色分配”选项卡。搜索自动化帐户的服务主体（类似于 \<AutomationAccountName\>_唯一标识符）。 选择该帐户，然后单击“删除”以从订阅中将其删除。
+在 Azure 门户中，选择“订阅”  并选择自动化帐户的订阅。 依次选择“访问控制(IAM)”  、“角色分配”  选项卡。搜索自动化帐户的服务主体（类似于 \<AutomationAccountName\>_唯一标识符）。 选择该帐户，然后单击“删除”  以从订阅中将其删除。
 
 ![订阅参与者](media/manage-runas-account/automation-account-remove-subscription.png)
 
-若要将服务主体添加到资源组，请在 Azure 门户中选择资源组，然后选择“访问控制(标识和访问管理)”。 选择“添加角色分配”，这将打开“添加角色分配”页面。 对于“角色”，选择“参与者”。 在“选择”文本框中，键入运行方式帐户的服务主体名称，并从列表中选择它。 单击“保存”以保存更改。 对要向 Azure 自动化运行方式服务主体授予其访问权限的资源组完成这些步骤。
+若要将服务主体添加到资源组，请在 Azure 门户中选择资源组，然后选择“访问控制(标识和访问管理)”  。 选择“添加角色分配”  ，这将打开“添加角色分配”  页面。 对于“角色”  ，选择“参与者”  。 在“选择”  文本框中，键入运行方式帐户的服务主体名称，并从列表中选择它。 单击“保存”  以保存更改。 对要向 Azure 自动化运行方式服务主体授予其访问权限的资源组完成这些步骤。
 
 ## <a name="misconfiguration"></a>配置错误
 
@@ -387,11 +387,11 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 * 运行方式帐户已从参与者角色中删除
 * Azure AD 中的服务主体或应用程序
 
-在上述和其他错误配置的实例中，自动化将检测更改，并在该帐户的“运行方式帐户”属性窗格中显示“不完整”状态。
+在上述和其他错误配置的实例中，自动化将检测更改，并在该帐户的“运行方式帐户”属性窗格中显示“不完整”状态。  
 
 ![不完整的运行方式帐户配置状态](media/manage-runas-account/automation-account-runas-incomplete-config.png)
 
-选择该运行方式帐户时，该帐户的“属性”窗格中会显示以下错误消息：
+选择该运行方式帐户时，该帐户的“属性”窗格中会显示以下错误消息： 
 
 ```text
 The Run As account is incomplete. Either one of these was deleted or not created - Azure Active Directory Application, Service Principal, Role, Automation Certificate asset, Automation Connect asset - or the Thumbprint is not identical between Certificate and Connection. Please delete and then re-create the Run As Account.

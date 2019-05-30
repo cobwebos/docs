@@ -1,24 +1,24 @@
 ---
-title: Azure Database for PostgreSQL-单个服务器中读取副本
-description: 本文介绍用于 PostgreSQL 的单个服务器的 Azure 数据库中的读取的副本功能。
+title: Azure Database for PostgreSQL（单一服务器）中的只读副本
+description: 本文介绍 Azure Database for PostgreSQL（单一服务器）中的只读副本功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510976"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242283"
 ---
-# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单个服务器中读取副本
+# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
-使用只读副本功能可将数据从 Azure Database for PostgreSQL 服务器复制到只读服务器。 可以从主服务器复制到最多五个副本。 副本是使用 PostgreSQL 引擎的本机复制技术以异步方式更新的。
+使用只读副本功能可将数据从 Azure Database for PostgreSQL 服务器复制到只读服务器。 可将主服务器中的数据复制到最多 5 个副本。 副本是使用 PostgreSQL 引擎的本机复制技术以异步方式更新的。
 
 > [!IMPORTANT]
-> 在与主服务器，在同一区域或所选的任何其他 Azure 区域中，可以创建只读的副本。 跨区域复制当前处于公共预览状态。
+> 可以在主服务器所在的区域或所选的任何其他 Azure 区域创建只读副本。 跨区域复制目前为公共预览版。
 
 副本是新的服务器，可以像管理普通的 Azure Database for PostgreSQL 服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及每月 GB 存储量计费。
 
@@ -33,17 +33,16 @@ ms.locfileid: "65510976"
 
 只读副本功能使用 PostgreSQL 本机异步复制。 该功能不适用于同步复制方案。 主服务器与副本之间存在明显的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
 
-读取副本可以增强灾难恢复计划。 首先需要从主服务器不同 Azure 区域中有一个副本。 如果区域灾难，可以停止复制到该副本并将你的工作负荷重定向到它。 停止复制将允许副本开始接受写入，以及读取。 了解详细信息[停止复制](#stop-replication)部分。 
+只读副本可以增强灾难恢复计划。 首先需在不同于主区域的 Azure 区域中设置一个副本。 如果发生区域灾难，可以停止将数据复制到该副本，然后将工作负荷重定向到其中。 停止复制以后，副本就可以开始接受写入和读取操作。 在[停止复制](#stop-replication)部分了解详细信息。 
 
 ## <a name="create-a-replica"></a>创建副本
 主服务器的 `azure.replication_support` 参数必须设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 （`azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层）。
 
 启动“创建副本”工作流时，将创建空白的 Azure Database for PostgreSQL 服务器。 新服务器中填充了主服务器上的数据。 创建时间取决于主服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。
 
-只读副本功能使用 PostgreSQL 的物理复制，而不使用逻辑复制。 使用复制槽位的流复制是默认的操作模式。 必要时，使用日志传送来跟上进度。
+每个副本可用于存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)。 增长功能允许及时了解数据复制到它，并防止中断超出存储错误引起的复制中的副本。
 
-> [!NOTE]
-> 如果尚未在服务器上设置存储警报，我们建议进行设置。 当服务器即将达到其存储限制（这会影响复制）时，警报可以向你发出通知。
+只读副本功能使用 PostgreSQL 的物理复制，而不使用逻辑复制。 使用复制槽位的流复制是默认的操作模式。 必要时，使用日志传送来跟上进度。
 
 了解如何[在 Azure 门户中创建只读副本](howto-read-replicas-portal.md)。
 
@@ -52,7 +51,7 @@ ms.locfileid: "65510976"
 
 副本从主服务器继承其管理员帐户。 主服务器上的所有用户帐户将复制到只读副本。 只能使用主服务器上可用的用户帐户连接到只读副本。
 
-可以使用主机名和有效的用户帐户连接到副本，就像在常规的 Azure Database for PostgreSQL 服务器上连接一样。 对于名为的服务器**我副本**使用的管理员用户名**myadmin**，可以使用 psql 连接到副本：
+可以使用主机名和有效的用户帐户连接到副本，就像在常规的 Azure Database for PostgreSQL 服务器上连接一样。 对于名称为 **my replica**、管理员用户名为 **myadmin** 的服务器，可以使用 psql 连接到副本：
 
 ```
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
@@ -61,9 +60,9 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 在提示符下，输入用户帐户的密码。
 
 ## <a name="monitor-replication"></a>监视复制
-Azure Database for PostgreSQL 在 Azure Monitor 中提供“副本的最大滞后时间”指标。 此指标仅适用于主服务器。 该指标显示主服务器与滞后时间最长的副本之间的滞后时间（以字节为单位）。 
+Azure Database for PostgreSQL 在 Azure Monitor 中提供“副本的最大滞后时间”指标。  此指标仅适用于主服务器。 该指标显示主服务器与滞后时间最长的副本之间的滞后时间（以字节为单位）。 
 
-Azure Database for PostgreSQL 还在 Azure Monitor 中提供“副本滞后时间”指标。 此指标仅适用于副本。 
+Azure Database for PostgreSQL 还在 Azure Monitor 中提供“副本滞后时间”指标。  此指标仅适用于副本。 
 
 该指标是从 `pg_stat_wal_receiver` 视图计算的：
 
@@ -101,7 +100,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 > 独立服务器不能再次成为副本。
 > 在只读副本上停止复制之前，请确保副本包含所需的全部数据。
 
-当你停止复制时，副本丢失所有链接到其以前的主节点和其他副本。 主和副本之间没有自动故障转移。 
+停止复制后，副本会丢失指向其以前的主服务器和其他副本的所有链接。 在主服务器与副本之间无法自动进行故障转移。 
 
 了解如何[停止复制到副本](howto-read-replicas-portal.md)。
 

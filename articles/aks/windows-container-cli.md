@@ -2,17 +2,17 @@
 title: 预览-在 Azure Kubernetes 服务 (AKS) 群集上创建一个 Windows Server 容器
 description: 了解如何快速创建 Kubernetes 群集，部署在 Windows Server 容器在 Azure Kubernetes 服务 (AKS) 使用 Azure CLI 中的应用程序。
 services: container-service
-author: zr-msft
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: zarhoads
-ms.openlocfilehash: 328fb9707c7151b8696cfb55e13567db90e45b7f
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: twhitney
+ms.openlocfilehash: 5f727cb5c56c31e769edcb365f6d571253174567
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991142"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305306"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 的 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -35,9 +35,10 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 在创建群集，可以运行 Windows Server 容器后，必须添加其他节点池。 在后续步骤中，介绍了添加其他节点池，但首先需要启用几个预览功能。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
+> AKS 预览版功能是自助服务的选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中，这些功能不是用于生产环境中使用。 公共预览版中的功能属于最大努力支持。 AKS 技术支持团队的协助营业时间太平洋时区 （太平洋标准时间） 仅将提供。 有关其他信息，请参阅以下支持文章：
 >
-> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
+> * [AKS 支持策略][aks-support-policies]
+> * [Azure 支持常见问题][aks-faq]
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
     
@@ -61,13 +62,13 @@ az feature register --name WindowsPreview --namespace Microsoft.ContainerService
 > [!NOTE]
 > 创建已成功注册后任何 AKS 群集*WindowsPreview*功能标志使用此预览群集体验。 若要继续创建正则、 完全受支持的群集，不要启用预览功能在生产订阅。 使用单独的测试或开发的 Azure 订阅进行测试预览功能。
 
-状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+状态显示为“已注册”需要几分钟时间  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态  ：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -91,7 +92,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
 
-以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -302,7 +303,6 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [node-selector]: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [dotnet-samples]: https://hub.docker.com/_/microsoft-dotnet-framework-samples/
-[aks-github]: https://github.com/azure/aks/issues
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
@@ -328,3 +328,5 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [restricted-vm-sizes]: quotas-skus-regions.md#restricted-vm-sizes
 [use-advanced-networking]: configure-advanced-networking.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

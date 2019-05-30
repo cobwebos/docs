@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 05/23/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74767e9d00f630efd2be026c3c3688c816c2ccee
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 387f1e0bf6461b5e87da1de35e74c5e49c5dc632
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113365"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305531"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -40,6 +40,18 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 ---
 
 ## <a name="april-2019"></a>2019 年 4 月
+
+### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-in-refreshed-azure-ad-identity-protection"></a>新 Azure AD 威胁智能检测现已推出刷新 Azure AD Identity Protection
+
+**类型：** 新功能  
+**服务类别：** Azure AD Identity Protection  
+**产品功能：** 标识安全性和保护
+
+Azure AD 威胁智能检测现已推出刷新的 Azure AD Identity Protection。 这一新功能可帮助以指示特定用户的不寻常的或者是与基于 Microsoft 的内部和外部威胁智能的已知的攻击模式保持一致的用户活动。
+
+有关刷新版本的 Azure AD Identity Protection 的详细信息，请参阅[四个主要的 Azure AD Identity Protection 增强功能现在处于公共预览版](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935)博客和[什么是 Azure Active Directory（刷新） 标识保护？](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) 一文。 有关 Azure AD 威胁智能检测的详细信息，请参阅[Azure Active Directory Identity Protection 风险事件](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence)一文。
+
+---
 
 ### <a name="azure-active-directory-azure-ad-entitlement-management-is-now-available-public-preview"></a>Azure Active Directory (Azure AD) 授权管理现已发布的 （公共预览版）
 
@@ -125,7 +137,7 @@ Azure AD 中的新更新访问评审允许你：
 **服务类别：** AD Sync  
 **产品功能：** 平台
 
-Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些客户可能显示新的电子邮件发件人。 若要解决此问题，必须添加`azure-noreply@microsoft.com`加入你组织的允许列表或你将无法继续从 Office 365、 Azure 或你的同步服务接收重要的警报。
+Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些客户可能显示新的电子邮件发件人。 若要解决此问题，必须添加`azure-noreply@microsoft.com`到组织的允许列表或你将无法继续从 Office 365、 Azure 或你的同步服务接收重要的警报。
 
 ---
 
@@ -289,7 +301,7 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 **服务类别：** 使用条款  
 **产品功能：** 调控
 
-我们已更新的使用体验我们现有的条款以帮助改进如何查看并同意使用条款的移动设备上。 你现在可以放大和缩小，返回、 下载信息，并选择超链接。 有关更新的使用条款详细信息，请参阅[Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#what-terms-of-use-looks-like-for-users)。
+我们已更新的使用体验，以帮助改进如何查看并同意条款的移动设备上使用我们现有的条款。 你现在可以放大和缩小，返回、 下载信息，并选择超链接。 有关更新的使用条款详细信息，请参阅[Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#what-terms-of-use-looks-like-for-users)。
 
 ---
 
@@ -469,11 +481,11 @@ Azure AD Connect 是在进行转换我们电子邮件警报系统，其中某些
 
 我们引入了三种新的 Cookie 设置，这些设置可以供通过应用程序代理发布的应用使用：
 
-- **使用仅限 HTTP 的 Cookie。** 在应用程序代理访问权限和会话 Cookie 上设置 **HTTPOnly** 标志。 启用此设置会带来更多的安全好处，例如有助于防止用户通过客户端脚本复制或修改 Cookie。 建议启用此标志（选择“是”）以享受增加的安全好处。
+- **使用仅限 HTTP 的 Cookie。** 在应用程序代理访问权限和会话 Cookie 上设置 **HTTPOnly** 标志。 启用此设置会带来更多的安全好处，例如有助于防止用户通过客户端脚本复制或修改 Cookie。 建议启用此标志（选择“是”  ）以享受增加的安全好处。
 
-- **使用安全 Cookie。** 在应用程序代理访问权限和会话 Cookie 上设置 **Secure** 标志。 启用此设置可确保 Cookie 仅通过 TLS 安全通道（例如 HTTPS）传输，因此会带来更多的安全好处，。 建议启用此标志（选择“是”）以享受增加的安全好处。
+- **使用安全 Cookie。** 在应用程序代理访问权限和会话 Cookie 上设置 **Secure** 标志。 启用此设置可确保 Cookie 仅通过 TLS 安全通道（例如 HTTPS）传输，因此会带来更多的安全好处，。 建议启用此标志（选择“是”  ）以享受增加的安全好处。
 
-- **使用永久性 Cookie。** 防止访问 Cookie 在关闭 Web 浏览器时过期。 这些 Cookie 可以持续到访问令牌的生存期结束。 不过，如果过期时间已到，或者用户手动删除了 Cookie，则 Cookie 会重置。 建议保持默认设置“否”，只有在应用较旧且不需在进程之间共享 Cookie 时，才启用该设置。
+- **使用永久性 Cookie。** 防止访问 Cookie 在关闭 Web 浏览器时过期。 这些 Cookie 可以持续到访问令牌的生存期结束。 不过，如果过期时间已到，或者用户手动删除了 Cookie，则 Cookie 会重置。 建议保持默认设置“否”，只有在应用较旧且不需在进程之间共享 Cookie 时，才启用该设置。 
 
 有关新 Cookie 的详细信息，请参阅[用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)。
 
@@ -575,14 +587,14 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 目前，我们正在通过 Azure Monitor 发布审核和登录日志流，使你能够将日志文件与 SIEM 工具或 Log Analytics 无缝集成。 根据客户的反馈，同时为此功能的正式版通告做好准备，我们正在对架构进行以下更改。 在 1 月份的第一周，我们将完成这些架构更改并更新其相关的文档。
 
 #### <a name="new-fields-in-the-audit-schema"></a>审核架构中的新字段
-我们将添加一个新的“操作类型”字段，以提供针对资源执行的操作类型。 例如“添加”、“更新”或“删除”。
+我们将添加一个新的“操作类型”字段，以提供针对资源执行的操作类型。  例如“添加”、“更新”或“删除”。   
 
 #### <a name="changed-fields-in-the-audit-schema"></a>审核架构中已更改的字段
 审核架构中的以下字段即将发生变化：
 
 |字段名|更改内容|旧值|新值|
 |----------|------------|----------|----------|
-|类别|以前它是“服务名称”字段， 现在是“审核类别”字段。 “服务名称”已重命名为“loggedByService”字段。|<ul><li>帐户预配</li><li>核心目录</li><li>自助密码重置</li></ul>|<ul><li>用户管理</li><li>组管理</li><li>应用管理</li></ul>|
+|类别|以前它是“服务名称”字段，  现在是“审核类别”字段。  “服务名称”已重命名为“loggedByService”字段。  |<ul><li>帐户预配</li><li>核心目录</li><li>自助密码重置</li></ul>|<ul><li>用户管理</li><li>组管理</li><li>应用管理</li></ul>|
 |targetResources|包括顶层的 **TargetResourceType**。|&nbsp;|<ul><li>策略</li><li>应用</li><li>用户</li><li>组</li></ul>|
 |loggedByService|提供生成审核日志的服务的名称。|Null|<ul><li>帐户预配</li><li>核心目录</li><li>自助密码重置</li></ul>|
 |结果|提供审核日志的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>失败</li></ul>|
@@ -592,7 +604,7 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 
 |字段名|更改内容|旧值|新值|
 |----------|------------|----------|----------|
-|appliedConditionalAccessPolicies|以前它是“conditionalaccessPolicies”字段， 现在是“appliedConditionalAccessPolicies”字段。|无变化|无变化|
+|appliedConditionalAccessPolicies|以前它是“conditionalaccessPolicies”字段，  现在是“appliedConditionalAccessPolicies”字段。 |无变化|无变化|
 |conditionalAccessStatus|在登录时提供条件访问策略状态的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>失败</li><li>未应用</li><li>已禁用</li></ul>|
 |appliedConditionalAccessPolicies: result|在登录时提供单个条件访问策略状态的结果。 以前会显示枚举值，但现在会显示实际值。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>失败</li><li>未应用</li><li>已禁用</li></ul>|
 
@@ -658,40 +670,40 @@ Privileged Identity Management (PIM) 管理员现在可以为特定资源导出�
 
 ---
 
-### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>管理员可以要求用户在每台设备上接受使用条款
+### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>管理员可以要求用户接受了使用条款，每台设备上
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
 **产品功能：** 调控
  
-现在，管理员可以启用“要求用户在每台设备上同意”选项，以要求用户在租户中所用的每台设备上接受使用条款。
+管理员现在可以开启**要求用户在每个设备上的同意**要求用户接受你的使用条款它们在你的租户使用每个设备上的选项。
 
-有关详细信息，请参阅[“Azure Active Directory 使用条款功能”的“按设备实施的使用条款”部分](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#per-device-terms-of-use)。
+有关详细信息，请参阅[的 Azure Active Directory 使用条款功能的使用部分的每个设备条款](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#per-device-terms-of-use)。
 
 ---
 
-### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>管理员可将使用条款配置为按重复性计划过期
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>管理员可以配置过期时间按定期计划取决于使用条款
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
 **产品功能：** 调控
  
 
-现在，管理员可以启用“使同意状态过期”选项，以根据指定的重复性计划，使所有用户对使用条款的同意状态过期。 可以实施每年、半年、每季或每月计划。 使用条款到期后，用户必须接受。
+管理员现在可以开启**过期的许可：** 选项，以便作为使用条款的过期的所有用户基于你指定的定期计划。 可以实施每年、半年、每季或每月计划。 使用条款到期后，用户必须接受。
 
-有关详细信息，请参阅[“Azure Active Directory 使用条款功能”的“添加使用条款”部分](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)。
+有关详细信息，请参阅[添加条款使用部分中的 Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)。
 
 ---
 
-### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>管理员可将使用条款配置为按每个用户的计划过期
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>管理员可以配置过期根据每个用户的计划的使用条款
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
 **产品功能：** 调控
 
-现在，管理员可以指定用户必须接受使用条款的持续时间。 例如，管理员可以指定用户必须每隔 90 天重新接受一次使用条款。
+管理员现在可以指定一个持续时间该用户必须接受的使用条款。 例如，管理员可以指定用户必须接受使用条款每隔 90 天。
 
-有关详细信息，请参阅[“Azure Active Directory 使用条款功能”的“添加使用条款”部分](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)。
+有关详细信息，请参阅[添加条款使用部分中的 Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)。
  
 ---
 

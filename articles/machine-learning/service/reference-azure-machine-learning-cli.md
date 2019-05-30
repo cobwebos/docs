@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 163b8e1f68b8d5a102465022c67f7d0da57a7215
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 541ffe70ae5198e631568584a58d02ac283e89d3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596961"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298243"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>将 CLI 扩展用于 Azure 机器学习服务
 
@@ -165,13 +165,11 @@ az extension remove -n azure-cli-ml
     有关详细信息，请参阅[az ml 模型配置文件](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)。
 
 + 将模型部署到 AKS
-
     ```azurecli-interactive
-    az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
+    az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
     ```
-
+    
     以下是示例`inferenceconfig.json`文档：
-
     ```json
     {
     "entryScript": "score.py",
@@ -182,6 +180,13 @@ az extension remove -n azure-cli-ml
     "enableGpu": false,
     "baseImage": null,
     "baseImageRegistry": null
+    }
+    ```
+    下面是 deploymentconfig.json 文档的示例：
+    ```json
+    {
+    "computeType": "aks",
+    "ComputeTarget": "akscomputetarget"
     }
     ```
 

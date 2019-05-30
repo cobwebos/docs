@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 86ad6fce34f323d94f7b9c318ba81f547360d4df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038483"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237328"
 ---
 # <a name="networking"></a>网络
 
@@ -71,6 +71,8 @@ ms.locfileid: "61038483"
 * 若要运行 Windows 容器工作负荷，请使用[开放网络模式](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)，使服务到服务的通信更方便。
 
 * 使用反向代理（例如 [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) 或 [Service Fabric 反向代理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)）公开常用的应用程序端口，例如 80 或 443。
+
+* 有关，不能请求从 Azure 云存储的基本层有以无线方式空隙机上托管的 Windows 容器使用覆盖外层行为[-允许 nondistributable 项目](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines)Docker 守护程序中的标志。
 
 ## <a name="next-steps"></a>后续步骤
 

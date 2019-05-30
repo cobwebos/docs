@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ca3cbb1ef46c7fe53b6b16bda40ebef245613f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 80ef8870bafa00f3debda99db299018a39d42a82
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415660"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245037"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>将数据从 Office 365 复制到 Azure 中使用 Azure 数据工厂
 
@@ -41,8 +41,8 @@ Azure 数据工厂允许你以可缩放的方式将 Office 365 租户中的丰�
 - Office 365 租户管理员必须完成载入操作，如[此处](https://docs.microsoft.com/graph/data-connect-get-started)所述。
 - 在 Azure Active Directory 中创建和配置 Azure AD Web 应用程序。  有关说明，请参阅[创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。
 - 记下下面的值，这些值将用于定义 Office 365 的链接服务：
-    - 租户 ID。 有关说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)。
-    - 应用程序 ID 和身份验证密钥。  有关说明，请参阅[获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)。
+    - 租户 ID。 有关说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
+    - 应用程序 ID 和身份验证密钥。  有关说明，请参阅[获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
 - 添加用户标识，将作为 Azure AD Web 应用程序的所有者发出数据访问请求（从 Azure AD Web 应用程序>设置>所有者>添加所有者）。 
     - 用户标识必须位于你从中获取数据的 Office 365 组织中，并且不能是来宾用户。
 
@@ -78,15 +78,15 @@ Office 365 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**Office365** | “是” |
-| office365TenantId | Office 365 帐户所属的 Azure 租户 ID。 | “是” |
-| servicePrincipalTenantId | 指定 Azure AD Web 应用程序所在的租户信息。 | “是” |
+| type | type 属性必须设置为：**Office365** | 是 |
+| office365TenantId | Office 365 帐户所属的 Azure 租户 ID。 | 是 |
+| servicePrincipalTenantId | 指定 Azure AD Web 应用程序所在的租户信息。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
-| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 | “是” |
-| connectVia | 用于连接到数据存储的 Integration Runtime。  如果未指定，则使用默认 Azure Integration Runtime。 | “否” |
+| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 | 是 |
+| connectVia | 用于连接到数据存储的 Integration Runtime。  如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
 
 >[!NOTE]
-> office365TenantId 和 servicePrincipalTenantId 之间的差异和提供的相应值：
+> office365TenantId  和 servicePrincipalTenantId  之间的差异和提供的相应值：
 >- 如果你是一名企业开发人员，开发便于自己组织使用的针对 Office 365 数据的应用程序，则应该为这两个属性提供相同的租户 ID，即你的组织 AAD 租户 ID。
 >- 如果你是为客户开发应用程序的 ISV 开发人员，那么 office365TenantId 将是客户的（应用程序安装程序）AAD 租户 ID，servicePrincipalTenantId 则为公司的 AAD 租户 ID。
 
@@ -118,10 +118,10 @@ Office 365 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**Office365Table** | “是” |
-| tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets#datasets)。 | “是” |
-| allowedGroups | 组选择谓词。  使用此属性以选择将为其检索数据的最多 10 个用户组。  如果未不指定任何组，则将为整个组织返回的数据。 | “否” |
-| userScopeFilterUri | 当`allowedGroups`属性未指定，则可以使用应用于整个租户来筛选要从 Office 365 中提取的特定行的谓词表达式。 谓词的格式应与 Microsoft Graph Api，则查询格式例如匹配`https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`。 | “否” |
+| type | 数据集的 type 属性必须设置为：**Office365Table** | 是 |
+| tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets#datasets)。 | 是 |
+| allowedGroups | 组选择谓词。  使用此属性以选择将为其检索数据的最多 10 个用户组。  如果未不指定任何组，则将为整个组织返回的数据。 | 否 |
+| userScopeFilterUri | 当`allowedGroups`属性未指定，则可以使用应用于整个租户来筛选要从 Office 365 中提取的特定行的谓词表达式。 谓词的格式应与 Microsoft Graph Api，则查询格式例如匹配`https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`。 | 否 |
 | dateFilterColumn | 日期时间筛选器列的名称。 使用此属性来限制哪些 Office 365 的提取数据的时间范围。 | Yes，如果数据集有一个或多个日期时间列。 请参阅[此处](https://docs.microsoft.com/graph/data-connect-filtering#filtering)有关的数据集需要此日期时间筛选器的列表。 |
 | startTime | 启动要作为筛选依据的日期时间值。 | 是如果`dateFilterColumn`指定 |
 | endTime | 结束日期时间值进行筛选。 | 是如果`dateFilterColumn`指定 |
@@ -331,7 +331,7 @@ Office 365 链接服务支持以下属性：
 
 ### <a name="office-365-as-source"></a>Office 365 即源
 
-要从 Office 365 复制数据，请将复制活动中的源类型设置为“Office365Source”。 复制活动源部分不支持其他属性。
+要从 Office 365 复制数据，请将复制活动中的源类型设置为“Office365Source”  。 复制活动源  部分不支持其他属性。
 
 **示例：**
 

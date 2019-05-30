@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: mbullwin
-ms.openlocfilehash: 95ff8d1a70325357fee4bc24fd96c1a1c7a73845
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 567163a5d5ce37eeffb5ef2bc6f9adb7c5b027ec
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371472"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255726"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
 
@@ -35,9 +35,9 @@ ms.locfileid: "60371472"
    
     `<InstrumentationKey>`*你的密钥*`</InstrumentationKey>` 
    
-    如果使用 ApplicationInsights.config，请确保它在解决方案资源管理器中的属性设置为“生成操作”=“内容”、“复制到输出目录”=“复制”。
+    如果使用 ApplicationInsights.config，请确保它在解决方案资源管理器中的属性设置为“生成操作”=“内容”、“复制到输出目录”=“复制”  。
 5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送遥测。
-6. 运行应用，并在 Azure 门户中查看所创建的资源中的遥测。
+6. 运行应用，并查看在 Azure 门户中创建的资源中的遥测。
 
 ## <a name="telemetry"></a>示例代码
 ```csharp
@@ -77,7 +77,7 @@ ms.locfileid: "60371472"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [创建仪表板](../../azure-monitor/app/app-insights-dashboards.md)
+* [创建仪表板](../../azure-monitor/app/overview-dashboard.md)
 * [诊断搜索](../../azure-monitor/app/diagnostic-search.md)
 * [探索指标](../../azure-monitor/app/metrics-explorer.md)
 * [编写分析查询](../../azure-monitor/app/analytics.md)

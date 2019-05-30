@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1da35b55a458ad73689f51c49e73855fd33ee45f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6874258c31d4dd7d2a0aa0042624ee57616c0a89
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117988"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234286"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure 磁盘加密先决条件
 
@@ -161,7 +161,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. 记下返回的“保管库名称”、“资源组名称”、“资源 ID”、“保管库 URI”和“对象 ID”，以便稍后在加密磁盘时使用。 
+4. 记下返回的“保管库名称”、“资源组名称”、“资源 ID”、“保管库 URI”和“对象 ID”，以便稍后在加密磁盘时使用。      
 
 
 ### <a name="bkmk_KVCLI"></a>使用 Azure CLI 创建 Key Vault
@@ -181,14 +181,14 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. 记下返回的“保管库名称”(name)、“资源组名称”、“资源 ID”(ID)、“保管库 URI”和“对象 ID”，以便稍后使用。 
+4. 记下返回的“保管库名称”(name)、“资源组名称”、“资源 ID”(ID)、“保管库 URI”和“对象 ID”，以便稍后使用。      
 
 ### <a name="bkmk_KVRM"></a>使用资源管理器模板创建 Key Vault
 
 可以使用[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)创建 Key Vault。
 
-1. 在 Azure 快速入门模板中，单击“部署到 Azure”。
-2. 选择订阅、资源组、资源组位置、Key Vault 名称、对象 ID、法律条款和协议，然后单击“购买”。 
+1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
+2. 选择订阅、资源组、资源组位置、Key Vault 名称、对象 ID、法律条款和协议，然后单击“购买”。  
 
 
 ## <a name="bkmk_KVper"></a> 设置 Key Vault 高级访问策略
@@ -238,9 +238,9 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 ### <a name="bkmk_KVperrm"></a>通过 Azure 门户设置 Key Vault 高级访问策略
 
-1. 选择 Key Vault，转到“访问策略”，然后选择“单击此处可显示高级访问策略”。
-2. 选中标有“启用对 Azure 磁盘加密的访问以进行卷加密”的框。
-3. 根据需要选择“启用对 Azure 虚拟机的访问以进行部署”和/或“启用对 Azure 资源管理器的访问以进行模板部署”。 
+1. 选择 Key Vault，转到“访问策略”，然后选择“单击此处可显示高级访问策略”。  
+2. 选中标有“启用对 Azure 磁盘加密的访问以进行卷加密”的框。 
+3. 根据需要选择“启用对 Azure 虚拟机的访问以进行部署”和/或“启用对 Azure 资源管理器的访问以进行模板部署”。   
 4. 单击“ **保存**”。
 
 ![Azure Key Vault 高级访问策略](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
@@ -287,7 +287,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
      # Fill in 'MyKeyEncryptionKey' with your value.
      
      $keyEncryptionKeyName = 'MyKeyEncryptionKey';
-     Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName -Destination 'Software';
+     Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName -Destination 'HSM';
      $keyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
      
  #Step 4: Encrypt the disks of an existing IaaS VM

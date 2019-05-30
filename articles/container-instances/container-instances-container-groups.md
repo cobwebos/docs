@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cba57875daf9b570d274ec8c4e9c4146af0dc045
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60518637"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072832"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
-Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定义和它们支持的方案类型。
+Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定义和它们支持的方案类型。
 
 ## <a name="how-a-container-group-works"></a>容器组工作原理
 
@@ -65,7 +65,7 @@ Azure 容器实例分配资源，例如 Cpu、 内存，并选择性地[Gpu] [ g
 
 * 分配**最小**1 的 CPU 和 1 GB 的内存与容器组。 小于 1 可预配组中的单个容器实例 CPU 和 1 GB 的内存。 
 
-* 有关**最大**容器组中的资源，请参阅 [资源可用性] [aci--的区域可用性] 部署区域的 Azure 容器实例。
+* 有关**最大**资源在容器组中，请参阅[资源可用性][ region-availability]部署区域中的 Azure 容器实例的。
 
 ## <a name="networking"></a>网络
 

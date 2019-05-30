@@ -7,56 +7,48 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: danimir
-ms.author: danil
+author: jovanpop-msft
+ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2a7a6ed5bd28bcc83500da6e82b6c4ff48b2989c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cae0fbd450e6b392e1689d4642181f6e5279752b
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719082"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393214"
 ---
 # <a name="monitoring-and-performance-tuning"></a>监视和性能优化
 
-Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，可在其中轻松监视使用情况、添加或删除资源（CPU、内存、I/O）、查找可以提高数据库性能的建议，或者让数据库适应你的工作负载并自动优化性能。
+Azure SQL 数据库，您可以轻松地监视使用情况，添加或删除资源 （CPU、 内存、 I/O），解决潜在的问题，并查找可以提高数据库性能的建议。 Azure SQL 数据库具有许多功能，可以自动修复问题数据库中如果你想要让数据库适应工作负荷并自动优化性能。 但是，有一些可能需要进行故障排除的自定义问题。 此文章介绍了一些最佳做法和工具，可用于解决性能问题。
+
+有两个主要活动，您需要做才能确保您数据库运行时未出现问题：
+- [监视数据库性能](#monitoring-database-performance)这样可确保分配给你的数据库的资源可以处理工作负荷。 如果看到已达到资源限制，您需要以标识资源使用查询和优化它们，或通过升级服务层中添加更多资源。
+- [排查性能问题](#troubleshoot-performance-issues)若要确定发生了一些潜在问题的原因，确定根本原因问题并将解决此问题的操作。
 
 ## <a name="monitoring-database-performance"></a>监视数据库性能
 
-若要监视 Azure 中的 SQL 数据库的性能，首先需要监视所选数据库性能级别相关的资源利用率。 在 Azure SQL 数据库中，可以通过查看[性能优化建议](sql-database-advisor.md)来找到提高和优化查询性能的机会，而无需更改资源。 缺少索引与查询优化不足是数据库性能不佳的常见原因。 可以应用这些优化建议来提高工作负荷的性能。 此外，可以通过应用所有已确定的建议并验证它们是否可以提高数据库的性能，让 Azure SQL 数据库[自动优化查询的性能](sql-database-automatic-tuning.md)。
+若要监视 Azure 中的 SQL 数据库的性能，首先需要监视所选数据库性能级别相关的资源利用率。 您需要监视以下资源：
+ - **CPU 使用率**-您需要检查在较长的时间达到 100%的 CPU 使用情况。 这可能表示可能需要升级你的数据库或实例或识别并优化使用大多数的计算能力的查询。
+ - **等待统计信息**-您需要检查什么查询正在等待某些资源的原因。 Queriesmig 等待数据提取或保存到数据库文件，因为已达到某些资源限制等待，等等。
+ - **IO 使用情况**-您需要检查你是否到达基础存储的 IO 限制。
+ - **内存使用情况**-您的数据库或实例已 Vcore 数成正比，则需要检查可用内存量是它并不足以支持工作负荷。 页生存期是可以指示您的页面快速从内存中删除的参数之一。
+
+Azure SQL 数据库**提供了通知可帮助您排查并解决潜在的性能问题**。 可以轻松确定改善和优化查询性能，而无需通过查看更改资源机会[性能调整建议](sql-database-advisor.md)。 缺少索引与查询优化不足是数据库性能不佳的常见原因。 可以应用这些优化建议来提高工作负荷的性能。 此外，可以通过应用所有已确定的建议并验证它们是否可以提高数据库的性能，让 Azure SQL 数据库[自动优化查询的性能](sql-database-automatic-tuning.md)。
 
 可使用以下选项来监视数据库性能以及对其进行故障排除：
 
-- 在 [Azure 门户](https://portal.azure.com)中单击“SQL 数据库”，选择数据库，然后使用“监视”图表查找接近其上限的资源。 默认情况下将显示 DTU 消耗量。 单击“**编辑**”更改显示的时间范围和值。
-- 使用 [Query Performance Insight](sql-database-query-performance.md) 来识别资源消耗量最大的查询。
-- 使用 [Azure SQL 数据库顾问](sql-database-advisor-portal.md)查看有关创建和删除索引、参数化查询，以及解决架构问题的建议。
+- 在 [Azure 门户](https://portal.azure.com)中单击“SQL 数据库”，选择数据库，然后使用“监视”图表查找接近其上限的资源。  默认情况下将显示 DTU 消耗量。 单击“**编辑**”更改显示的时间范围和值。
+- SQL Server Management Studio 等工具提供许多有用的报表，例如[性能仪表板](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017)可以监视资源使用情况和识别资源消耗查询，排名靠前的位置或[Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed)其中可以确定查询退化的性能。
+- 使用[Query Performance Insight](sql-database-query-performance.md) [Azure 门户](https://portal.azure.com)以确定花费最多的资源的查询。 此功能仅提供单一数据库和弹性池。
+- 使用 [Azure SQL 数据库顾问](sql-database-advisor-portal.md)查看有关创建和删除索引、参数化查询，以及解决架构问题的建议。 此功能仅提供单一数据库和弹性池。
 - 使用 [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) 自动监视数据库性能。 检测到性能问题后，将生成一个包含问题的详细信息和根本原因分析 (RCA) 的诊断日志。 在可能的情况下提供性能改善建议。
 - [启用自动优化](sql-database-automatic-tuning-enable.md)，并让 Azure SQL 数据库自动修复已识别到的性能问题。
 - 使用[动态管理视图 (DMV)](sql-database-monitoring-with-dmvs.md)、[扩展事件](sql-database-xevent-db-diff-from-svr.md)和[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)更细致地排查性能问题。
 
 > [!TIP]
 > 请参阅[性能指南](sql-database-performance-guidance.md)，了解在使用上述一种或多种方法识别性能问题后，可以利用哪些技术来提高 Azure SQL 数据库的性能。
-
-## <a name="monitor-databases-using-the-azure-portal"></a>使用 Azure 门户监视数据库
-
-在中[Azure 门户](https://portal.azure.com/)，你可以通过选择数据库并单击监视单个数据库的利用率**监视**图表。 这会显示“指标”窗口，可通过单击“编辑图表”按钮来对其进行更改。 添加以下指标：
-
-- CPU 百分比
-- DTU 百分比
-- 数据 IO 百分比
-- 数据库大小百分比
-
-添加这些指标后，可以继续在“监视”图表上查看它们，并可在“指标”窗口上查看更多详细信息。 **DTU** 的平均利用率百分比。 有关服务层级的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)文章。  
-
-![监视数据库服务层的性能。](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
-
-还可针对性能指标配置警报。 在“指标”窗口中单击“添加警报”按钮。 按照向导说明来配置警报。 可选择在指标超出或低于特定阈值时显示警报。
-
-例如，如果预期数据库的工作负荷会增长，则可以选择配置在数据库的任何性能指标达到 80% 时发出电子邮件警报。 可以将此警报用作预警，以确定你何时需要切换到下一个更高的计算大小。
-
-性能指标还可以帮助你确定是否能够降级到更低的计算大小。 假定你正在使用一个标准 S2 数据库并且所有性能指标均显示该数据库在任何给定时间平均的使用率不超过 10%。 很可能该数据库在标准 S1 中会很好地正常工作。 但是，在决定转换到更低的计算大小之前，请注意出现峰值或波动情况的工作负荷。
 
 ## <a name="troubleshoot-performance-issues"></a>排查性能问题
 
@@ -65,6 +57,18 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 ![工作负荷状态](./media/sql-database-monitor-tune-overview/workload-states.png)
 
 对于出现性能问题的工作负荷，问题的原因可能是 CPU 争用（**运行相关的**条件）或单个查询正在等待某个资源（**等待相关的**条件）。
+
+原因或**运行相关**问题可能是：
+- **编译问题**-SQL 查询优化器可能会生成非最优计划，因为过时的统计信息、 不正确将处理的行数的估计或所需的内存的估计值。 如果您知道在过去或其他实例 （托管实例或 SQL Server 实例） 上更快地执行该查询，采用的实际执行计划，并将其以查看它们不同。 尝试将应用查询提示或重新生成统计信息或要获得更好的计划的索引。 启用 Azure SQL 数据库，以自动缓解这些问题中的自动计划更正。
+- **执行问题**-如果是最优查询计划则可能达到数据库，例如，日志写入吞吐量中的一些资源限制或它可能会使用，应重新生成碎片的索引。 大量的并发查询，就可以把资源还可能执行问题的原因。 **等待相关**问题是在大多数情况下的问题相关的执行，因为未在有效地执行的查询可能正在等待某些资源。
+
+原因或**等待相关**问题可能是：
+- **阻止**-一个查询可能会持有锁在数据库中的某些对象时其他人尝试访问相同的对象。 您可以轻松地识别阻塞查询使用 DMV 或监视工具。
+- **IO 问题**-查询可能会等待要写入的数据或日志文件的页面。 在这种情况下，您将看到`INSTANCE_LOG_RATE_GOVERNOR`， `WRITE_LOG`，或`PAGEIOLATCH_*`等待统计信息 DMV 中的。
+- **TempDB 问题**-如果您正在使用大量的临时表或您看到大量 TempDB 溢出在计划中可能存在问题，TempDB 吞吐量查询。 
+- **与内存相关的问题**-您可能没有足够的内存的工作负荷使您的页生存期可能删除或查询获得比所需较少的内存授予。 在某些情况下，查询优化器中的内置智能可以解决这些问题。
+ 
+以下各节中将介绍如何确定并解决这些问题。
 
 ## <a name="running-related-performance-issues"></a>运行相关的性能问题
 
@@ -76,7 +80,7 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 
 如果确定遇到了运行相关的性能问题，则目标应是使用一种或多种方法识别确切的问题。 用于标识运行相关问题的最常见方法包括：
 
-- 使用 [Azure 门户](#monitor-databases-using-the-azure-portal)监视 CPU 利用率百分比。
+- 使用 [Azure 门户](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal)监视 CPU 利用率百分比。
 - 使用以下[动态管理视图](sql-database-monitoring-with-dmvs.md)：
 
   - [sys.dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) 返回 Azure SQL 数据库中数据库的 CPU、I/O 和内存消耗量。 即使数据库中没有活动，也会每 15 秒存在一行。 历史数据将保留一小时。
@@ -85,7 +89,7 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 > [!IMPORTANT]
 > 请参阅[识别 CPU 性能问题](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)，其中提供了一组使用这些 DMV 排查 CPU 利用率问题的 T-SQL 查询。
 
-### <a name="ParamSniffing"></a> 查询参数区分查询执行计划问题的疑难解答
+### <a name="ParamSniffing"></a> 使用参数敏感查询执行计划问题对查询进行故障排除
 
 参数敏感计划 (PSP) 问题是指查询优化器生成的查询执行计划仅适用于某个或某组特定的参数值，而缓存计划对于连续执行操作中所用的参数值并非最佳。 这样一来，非最佳计划可能会导致整体工作负荷吞吐量下降并出现查询性能问题。 参数截取和查询处理的详细信息，请参阅[查询处理体系结构指南](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing)。
 
@@ -102,9 +106,9 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 
 有关解决这些类型的问题的其他信息，请参阅：
 
-- 这[我嗅觉参数](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)博客文章
+- 这篇 [I smell a parameter](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)（探查参数）博客文章
 - 这篇[动态 sql 与参数化查询的计划质量](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)博客文章
-- 这[SQL Server 中的 SQL 查询优化技术：参数截取](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)博客文章
+- 这篇 [SQL Query Optimization Techniques in SQL Server:Parameter Sniffing](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)（SQL Server 中的 SQL 查询优化技术：参数探查）博客文章
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>排查因参数化不当而导致的编译活动问题
 
@@ -198,8 +202,8 @@ ORDER BY count (distinct p.query_id) DESC
 > - [识别 I/O 性能问题](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [识别 `tempdb` 性能问题](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [识别内存授予等待](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
-> - [TigerToolbox-等待和闩锁](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
-> - [TigerToolbox-usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
+> - [TigerToolbox - 等待和闩锁](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
+> - [TigerToolbox - usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
 ## <a name="improving-database-performance-with-more-resources"></a>使用更多的资源提高数据库的性能
 

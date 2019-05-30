@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1e78109472668c0f9a73af6430253a0d709979af
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 1ec3ecdafb8e475f5f13372789528612ccd7b8b9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156156"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226013"
 ---
 ## <a name="using-rbac-to-share-images"></a>使用 RBAC 共享映像
 
@@ -33,22 +33,22 @@ az sig list -o table
 使用 [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) 列出库中的映像定义，包括有关 OS 类型和状态的信息。
 
 ```azurecli-interactive 
-az sig image-definition list -g myGalleryRG -r myGallery -o table
+az sig image-definition list --resource-group myGalleryRG --gallery-name myGallery -o table
 ```
 
 使用 [az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) 列出库中的共享映像版本。
 
 ```azurecli-interactive
-az sig image-version list -g myGalleryRG -r myGallery -i myImageDefinition -o table
+az sig image-version list --resource-group myGalleryRG --gallery-name myGallery --gallery-image-definition myImageDefinition -o table
 ```
 
 使用 [az sig image-version show](/cli/azure/sig/image-version#az-sig-image-version-show) 获取映像版本的 ID。
 
 ```azurecli-interactive
 az sig image-version show \
-   -g myGalleryRG \
-   -r myGallery \
-   -i myImageDefinition \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
    --gallery-image-version 1.0.0 \
    --query "id"
 ```

@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: fb7f238bb5c04bb03ee500b1b953895cc88c0596
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979349"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298928"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -35,7 +35,7 @@ ms.locfileid: "65979349"
 
 若要查看符合性详细信息，请执行以下步骤：
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。  
 
 1. 上**概述**或**符合性**页上，选择某个策略中的**符合性状态**即_不符合_。
 
@@ -90,20 +90,24 @@ ms.locfileid: "65979349"
 |当前值必须包含目标值作为键。 |containsKey 或**不**notContainsKey |
 |当前值必须包含目标值。 |包含或**不**notContains |
 |当前值必须等于目标值。 |等于或**不**notEquals |
-|必须存在当前值。 |存在 |
-|当前值必须在目标值的范围内。 |在中或**不**notIn |
-|当前值必须与目标值类似。 |如或**不**notLike |
-|当前值必须与目标值匹配(区分大小写)。 |匹配或**不**notMatch |
-|当前值必须与目标值匹配(不区分大小写)。 |matchInsensitively 或**不**notMatchInsensitively |
-|当前值不得包含目标值作为键。 |notContainsKey 或**不**containsKey|
+|当前值必须小于目标值。 |更少或**不**greaterOrEquals |
+|当前值必须大于或等于目标值。 |greaterOrEquals 或**不**更少 |
+|当前值必须大于目标值。 |更高版本或**不**lessOrEquals |
+|当前值必须小于或等于目标值。 |lessOrEquals 或**不**更高版本 |
+|当前值必须存在。 |exists |
+|当前值必须在目标值。 |在中或**不**notIn |
+|类似于目标值必须是当前值。 |如或**不**notLike |
+|当前值必须匹配区分大小写的目标值。 |匹配或**不**notMatch |
+|当前值必须不区分大小写的匹配项的目标值。 |matchInsensitively 或**不**notMatchInsensitively |
+|当前值不得包含作为键的目标值。 |notContainsKey 或**不**containsKey|
 |当前值不得包含目标值。 |notContains 或**不**包含 |
-|当前值不得等于目标值。 |notEquals 或**不**等于 |
-|不得存在当前值。 |**不**存在  |
-|当前值不得在目标值的范围内。 |notIn 或**不**中 |
-|当前值不得与目标值类似。 |notLike 或**不**等 |
-|当前值不得与目标值匹配(区分大小写)。 |notMatch 或**不**匹配 |
-|当前值不得与目标值匹配(不区分大小写)。 |notMatchInsensitively 或**不**matchInsensitively |
-|没有与策略定义中的效果详细信息匹配的相关资源。 |中定义的类型的资源**then.details.type**中定义的资源相关**如果**策略规则的部分不存在。 |
+|当前值不能等于目标值。 |notEquals 或**不**等于 |
+|当前值不能存在。 |**不**存在  |
+|当前值不能在目标值。 |notIn 或**不**中 |
+|当前值不能像目标值。 |notLike 或**不**等 |
+|当前值必须不区分大小写的匹配项的目标值。 |notMatch 或**不**匹配 |
+|当前值必须不区分大小写的匹配项的目标值。 |notMatchInsensitively 或**不**matchInsensitively |
+|没有相关的资源与匹配的策略定义中的效果详细信息。 |中定义的类型的资源**then.details.type**中定义的资源相关**如果**策略规则的部分不存在。 |
 
 ## <a name="compliance-details-for-guest-configuration"></a>来宾配置的符合性详细信息
 
@@ -113,7 +117,7 @@ ms.locfileid: "65979349"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。  
 
 1. 上**概述**或**符合性**页上，选择包含来宾配置策略定义任何计划的策略分配的_不符合_。
 
@@ -128,7 +132,7 @@ ms.locfileid: "65979349"
    - **资源类型**- _guestConfigurationAssignments_完整名称。
    - **上次评估**-来宾配置服务收到通知有关状态的目标虚拟机的 Azure 策略的最后一个时间。
 
-   ![查看符合性详细信息。](../media/determine-non-compliance/guestconfig-assignment-view.png)
+   ![查看符合性详细信息](../media/determine-non-compliance/guestconfig-assignment-view.png)
 
 1. 选择中的来宾配置分配名称**名称**列来打开**资源符合性**页。
 
@@ -136,7 +140,7 @@ ms.locfileid: "65979349"
 
 **来宾分配**页将显示所有可用的符合性详细信息。 在视图中的每一行表示虚拟机内部执行的评估版。 在中**原因**列中，这个词描述来宾分配为何_不符合_所示。 例如，如果您正在审核，应将 Vm 加入到域中，**原因**列将显示文本，包括当前域成员身份。
 
-![查看符合性详细信息。](../media/determine-non-compliance/guestconfig-compliance-details.png)
+![查看符合性详细信息](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -207,13 +211,13 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 作为一个新的一部分**公共预览版**，过去 14 天的更改历史记录是适用于所有支持的 Azure 资源[完成模式删除](../../../azure-resource-manager/complete-mode-deletion.md)。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、 移除或更改资源管理器属性时，会触发更改检测。
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。  
 
 1. 上**概述**或**符合性**页上，选择一个策略中任何**符合性状态**。
 
 1. 下**资源符合性**选项卡**策略符合性**页上，选择一个资源。
 
-1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡。 此时会显示检测到的更改的列表（如果存在）。
+1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡   。 此时会显示检测到的更改的列表（如果存在）。
 
    ![Azure 策略更改历史记录页选项卡上资源符合性](../media/determine-non-compliance/change-history-tab.png)
 
@@ -233,4 +237,4 @@ _视觉差异_可帮助识别资源的更改。 检测到的更改不可能与�
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
 - 了解如何[获取符合性数据](getting-compliance-data.md)。
 - 了解如何[修正的不合规资源](remediate-resources.md)。
-- 查看管理组与[使用 Azure 管理组组织资源](../../management-groups/overview.md)。
+- 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

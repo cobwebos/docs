@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60474357"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243275"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。
@@ -39,11 +39,11 @@ ms.locfileid: "60474357"
 
 1. 启动新设备并开始 OOBE 过程。
 
-2. 在“Microsoft 登录”屏幕上，键入工作或学校电子邮件地址。
+2. 在“Microsoft 登录”屏幕上，键入工作或学校电子邮件地址  。
 
     ![包含电子邮件地址的登录屏幕](./media/user-help-join-device-on-network/join-device-oobe-signin.png)
 
-3. 在“输入密码”屏幕上，键入密码。
+3. 在“输入密码”屏幕上，键入密码  。
 
     ![“输入密码”屏幕](./media/user-help-join-device-on-network/join-device-oobe-password.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "60474357"
 ## <a name="to-make-sure-youre-joined"></a>确保你已加入
 可以通过查看你的设置确保已加入。
 
-1. 打开“设置”，然后选择“帐户”。
+1. 打开“设置”，然后选择“帐户”   。
 
     ![“设置上的帐户”屏幕](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
@@ -70,21 +70,21 @@ ms.locfileid: "60474357"
 ## <a name="to-join-an-already-configured-windows-10-device"></a>加入已配置的 Windows 10 设备
 如果已拥有设备一段时间并且已设置该设备，可执行以下步骤将设备加入网络。
 
-1. 打开“设置”，然后选择“帐户”。
+1. 打开“设置”，然后选择“帐户”   。
 
-2. 选择“访问工作单位或学校”，然后选择“连接”。
+2. 选择“访问工作单位或学校”，然后选择“连接”   。
 
     ![访问工作单位或学校和连接链接](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
 
-3. 在“设置工作或学校帐户”屏幕中，选择“将此设备加入 Azure Active Directory”。
+3. 在“设置工作或学校帐户”屏幕中，选择“将此设备加入 Azure Active Directory”   。
 
     ![“设置工作或学校帐户”屏幕](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. 在“开始登录”屏幕中，键入电子邮件地址（例如 alain@contoso.com）并选择“下一步”。
+4. 在“开始登录”屏幕中，键入电子邮件地址（例如 alain@contoso.com）并选择“下一步”   。
 
     ![“开始登录”屏幕](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
-5. 在“输入密码”屏幕中输入密码，然后选择“登录”。
+5. 在“输入密码”屏幕中输入密码，然后选择“登录”   。
 
     ![输入密码](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
@@ -92,18 +92,18 @@ ms.locfileid: "60474357"
 
     ![“移动通知”屏幕](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. 在“确保这是你的组织”屏幕中，查看信息确保正确，然后选择“加入”。
+7. 在“确保这是你的组织”屏幕中，查看信息确保正确，然后选择“加入”   。
 
     ![“确保这是你的组织”验证屏幕](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
-8. 在“已设置完毕”屏幕中，单击“完成”。
+8. 在“已设置完毕”屏幕中，单击“完成”   。
 
     ![“已设置完毕”屏幕](./media/user-help-join-device-on-network/join-device-setup-finish.png)
 
 ## <a name="to-make-sure-youre-joined"></a>确保你已加入
 可以通过查看你的设置确保已加入。
 
-1. 打开“设置”，然后选择“帐户”。
+1. 打开“设置”，然后选择“帐户”   。
 
     ![“设置上的帐户”屏幕](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
@@ -116,3 +116,4 @@ ms.locfileid: "60474357"
 
 - 如果组织希望你能够注册个人设备（例如手机），请参阅[在组织的网络上注册个人设备](user-help-register-device-on-network.md)。
 
+- 如果使用 Microsoft Intune 管理你的组织，并且必须注册有关的问题，登录，或任何其他 Intune 相关的问题，请参阅[Intune 用户帮助内容](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)。

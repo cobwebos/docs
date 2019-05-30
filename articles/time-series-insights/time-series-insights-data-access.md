@@ -4,19 +4,19 @@ description: 本文介绍如何将安全性和权限配置为管理访问策略�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6853637ba23e17f3a7ca5420bdd84425c81a67be
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 53489ef9c1264fa31b06f4660e545e6efbd1f616
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791020"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237030"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
@@ -25,36 +25,36 @@ ms.locfileid: "65791020"
 ## <a name="sign-in-to-time-series-insights"></a>登录到时序见解
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 查找时序见解环境。 在“搜索”框中输入 `Time Series`。 在搜索结果中选择“时序环境”。
+1. 查找时序见解环境。 在“搜索”框中输入 `Time Series`。  在搜索结果中选择“时序环境”  。
 1. 从列表中选择时序见解环境。
 
 ## <a name="grant-data-access"></a>授予数据访问权限
 
 遵循以下步骤向用户主体授予数据访问权限。
 
-1. 选择“数据访问策略”，然后选择“+ 添加”。
+1. 选择“数据访问策略”，然后选择“+ 添加”   。
 
     [![数据访问一](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
 
-1. 选择“选择用户”。 搜索用户名称或电子邮件地址，查找要添加的用户。 单击“选择”确认选择。
+1. 选择“选择用户”。  搜索用户名称或电子邮件地址，查找要添加的用户。 单击“选择”确认选择  。
 
     [![两个访问数据-](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
 
-1. 选择“选择角色”。 为用户选择相应的访问角色：
+1. 选择“选择角色”。  为用户选择相应的访问角色：
 
-    * 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”。
+    * 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”  。
 
-    * 否则请选择“读者”，允许用户查询环境中的数据，以及在环境中保存个人的非共享查询。
+    * 否则请选择“读者”，允许用户查询环境中的数据，以及在环境中保存个人的非共享查询  。
 
-   选择“确定”，确认角色选择。
+   选择“确定”，确认角色选择  。
 
     [![数据访问三](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
 
-1. 在“选择用户角色”页中，选择“确定”。
+1. 在“选择用户角色”页中，选择“确定”   。
 
     [![数据访问四](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
 
-1. 确认“数据访问策略”页列出了用户和每个用户的角色。
+1. 确认“数据访问策略”页列出了用户和每个用户的角色  。
 
     [![五个数据访问](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
 
@@ -64,7 +64,7 @@ ms.locfileid: "65791020"
 
 请按照以下步骤将来宾对时序见解环境的访问权限授予另一个租户的 Azure AD 用户。
 
-1. 选择“数据访问策略”，然后选择“+ 邀请”。
+1. 选择“数据访问策略”，然后选择“+ 邀请”   。
 
     [![Data-access-six](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
 
@@ -76,27 +76,27 @@ ms.locfileid: "65791020"
 
     [![Data-access-eight](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
 
-1. 选择“选择用户”。 搜索已邀请的来宾用户的电子邮件地址，找到要添加的用户。 单击“选择”确认选择。
+1. 选择“选择用户”。  搜索已邀请的来宾用户的电子邮件地址，找到要添加的用户。 单击“选择”确认选择  。
 
     [![数据访问九](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
 
-1. 选择“选择角色”。 为来宾用户选择相应的访问角色：
+1. 选择“选择角色”。  为来宾用户选择相应的访问角色：
 
-    * 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”。
+    * 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”  。
 
-    * 否则请选择“读者”，允许用户查询环境中的数据，以及在环境中保存个人的非共享查询。
+    * 否则请选择“读者”，允许用户查询环境中的数据，以及在环境中保存个人的非共享查询  。
 
-   选择“确定”，确认角色选择。
+   选择“确定”，确认角色选择  。
 
     [![数据访问十](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
 
-1. 在“选择用户角色”页中，选择“确定”。
+1. 在“选择用户角色”页中，选择“确定”   。
 
-1. 确认“数据访问策略”页列出了来宾用户和每个来宾用户的角色。
+1. 确认“数据访问策略”  页列出了来宾用户和每个来宾用户的角色。
 
     [![数据访问十一](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
 
-1. 现在，来宾用户必须按步骤访问他们被邀请到的位于 Azure 租户中的环境。 首先，他们需要接受你发送给他们的邀请。 这份邀请通过电子邮件发送到你在步骤 5 中使用的电子邮件地址。 他们选择“开始”即可接受邀请。
+1. 现在，来宾用户必须按步骤访问他们被邀请到的位于 Azure 租户中的环境。 首先，他们需要接受你发送给他们的邀请。 这份邀请通过电子邮件发送到你在步骤 5 中使用的电子邮件地址。 他们选择“开始”即可接受邀请。 
 
     [![Data-access-twelve](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
 
