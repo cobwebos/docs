@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fbcc1c29c1860642dda0afab6a1f10e719a05a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: e45b3b19821644142176c5c0cc7646c4643fe17c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962205"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235210"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -178,7 +178,7 @@ ms.locfileid: "65962205"
 
 ### <a name="configure-seamless-sso"></a>配置无缝 SSO
 
-若要在使用直通身份验证 (PTA) 或密码哈希同步 (PHS) 作为 Azure AD 云身份验证方法的托管域中成功完成 Windows 下层设备的混合 Azure AD 联接 ，还必须[配置无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)。 如果在配置无缝 SSO 时遇到问题，请参阅[排查 Azure Active Directory 无缝单一登录问题](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sso)一文。
+若要在使用直通身份验证 (PTA) 或密码哈希同步 (PHS) 作为 Azure AD 云身份验证方法的托管域中成功完成 Windows 下层设备的混合 Azure AD 联接 ，还必须[配置无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)。 如果在配置无缝 SSO 时遇到问题，请参阅[排查 Azure Active Directory 无缝单一登录问题](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso)一文。
 
 
 ### <a name="control-windows-down-level-devices"></a>控制 Windows 下层设备 

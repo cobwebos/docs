@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 553564be494b4175cba937b583d49ad84a8d0e66
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 28785bb99dcdb767a64ae977e8326b80130fb135
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526514"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240192"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 
@@ -67,7 +67,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | 名称 | mykustocluster | 所需的群集名称。|
+   | 名称 | mykustocluster  | 所需的群集名称。|
    | SKU | *D13_v2* | 将用于群集的 SKU。 |
    | ResourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
 
@@ -76,7 +76,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 1. 运行以下命令，检查群集是否已成功创建：
 
     ```azurepowershell-interactive
-    Get-AzKustoCluster -Name mykustocluster --ResourceGroupName testrg
+    Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
     ```
 
 如果结果包含带 `Succeeded` 值的 `provisioningState`，则表示已成功创建群集。
@@ -91,8 +91,8 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | ClusterName | mykustocluster | 将在其中创建数据库的群集的名称。|
-   | 名称 | mykustodatabase | 数据库名称。|
+   | ClusterName | mykustocluster  | 将在其中创建数据库的群集的名称。|
+   | 名称 | mykustodatabase  | 数据库名称。|
    | ResourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
    | SoftDeletePeriod | *3650:00:00:00* | 供查询使用的数据的保留时间。 |
    | HotCachePeriod | *3650:00:00:00* | 数据将在缓存中保留的时间。 |
@@ -100,7 +100,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 1. 若要查看已创建的数据库，请运行以下命令：
 
     ```azurepowershell-interactive
-    Get-AzKustoDatabase -ClusterName mykustocluster --ResourceGroupName testrg -Name mykustodatabase
+    Get-AzKustoDatabase -ClusterName mykustocluster -ResourceGroupName testrg -Name mykustodatabase
     ```
 
 现在，你有了一个群集和一个数据库。

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3a307c32d15aa8c7809d728d98220b0819e91c7c
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432101"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357394"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -39,14 +39,14 @@ ms.locfileid: "57432101"
 |**[检测图像类型](concept-detecting-image-types.md)**|检测图像特征，例如图像是否为素描，或者图像是剪贴画的可能性。|
 |**[检测特定领域的内容](concept-detecting-domain-content.md)**|使用域模型来检测和标识图像中特定领域的内容，例如名人和地标。 例如，如果图像中包含人物，则计算机视觉可以使用服务随附的针对名人的域模型来确定图像中检测到的人物是否与已知名人匹配。|
 |**[检测颜色方案](concept-detecting-color-schemes.md)**|分析图像中的颜色使用情况。 计算机视觉可以确定图像是黑白的还是彩色的，而对于彩色图像，又可以确定主色和主题色。|
-|**[生成缩略图](concept-generating-thumbnails.md)**|分析图像的内容，生成该图像的相应缩略图。 计算机视觉首先生成高质量缩略图，然后通过分析图像中的对象来确定“感兴趣区域”。 然后，计算机视觉会裁剪图像以满足感兴趣区域的要求。 可以根据用户需求，使用与原始图像的纵横比不同的纵横比显示生成的缩略图。|
-|**[获取感兴趣区域](concept-generating-thumbnails.md#area-of-interest)**|分析图像内容，以返回“感兴趣区域”的坐标。 这是用于生成缩略图的相同函数，但是计算机视觉并没有裁剪图像，而是返回该区域的边框坐标，因此调用的应用程序可以根据需要修改原始图像。|
+|**[生成缩略图](concept-generating-thumbnails.md)**|分析图像的内容，生成该图像的相应缩略图。 计算机视觉首先生成高质量缩略图，然后通过分析图像中的对象来确定“感兴趣区域”  。 然后，计算机视觉会裁剪图像以满足感兴趣区域的要求。 可以根据用户需求，使用与原始图像的纵横比不同的纵横比显示生成的缩略图。|
+|**[获取感兴趣区域](concept-generating-thumbnails.md#area-of-interest)**|分析图像内容，以返回“感兴趣区域”的坐标  。 这是用于生成缩略图的相同函数，但是计算机视觉并没有裁剪图像，而是返回该区域的边框坐标，因此调用的应用程序可以根据需要修改原始图像。|
 
 ## <a name="extract-text-from-images"></a>从图像中提取文本
 
 可以使用计算机视觉通过[光学字符识别 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) 将图像中的文本提取到机器可读的字符流中。 如果需要，OCR 会校正已识别文本的旋转角度并提供每个词的帧坐标。 OCR 支持 25 种语言，并会自动检测已识别文本的语言。
 
-还可以使用 [Read API](concept-recognizing-text.md#read-api) 从图像和以文本为主的文档中提取印刷体文本和手写文本。 Read API 使用更新的模型，适用于具有不同表面和背景的各种对象，比如收据、海报、名片、信件和白板。 目前，Read API 处于预览状态，英语是唯一受支持的语言。
+还可以使用 [Read API](concept-recognizing-text.md#read-api) 从图像和以文本为主的文档中提取印刷体文本和手写文本。 Read API 使用更新的模型，适用于具有不同表面和背景的各种对象，比如收据、海报、名片、信件和白板。 目前，英语是唯一受支持的语言。
 
 ## <a name="moderate-content-in-images"></a>管理图像中的内容
 

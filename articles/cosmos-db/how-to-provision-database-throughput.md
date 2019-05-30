@@ -4,14 +4,14 @@ description: 了解如何在 Azure Cosmos DB 中预配数据库级别的吞吐�
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
+ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: da56c06e215e02ee3eefe3d0552c962a8c59011e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: d73dd5ffe8cc8ed00288209b628d7175b795b335
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683471"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243767"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的数据库上预配吞吐量
 
@@ -25,12 +25,12 @@ ms.locfileid: "59683471"
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos 帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建数据库”。 提供以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建数据库”   。 提供以下详细信息：
 
    * 输入数据库 ID。 
-   * 选择“预配吞吐量”。
+   * 选择“预配吞吐量”。 
    * 输入吞吐量（例如 1000 RU）。
-   * 选择“确定”。
+   * 选择“确定”  。
 
 ![“新建数据库”对话框屏幕截图](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 

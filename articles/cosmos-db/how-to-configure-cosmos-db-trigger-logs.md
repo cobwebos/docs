@@ -4,14 +4,14 @@ description: 了解如何向 Azure Functions 日志记录管道公开 Azure Cosm
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 5/2/2019
+ms.date: 05/23/2019
 ms.author: maquaran
-ms.openlocfilehash: a598842ecde9508a6c2185a6097f689252fda60c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: bf5216dc3b296c98176387c6e2cfff7c31daedab
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515015"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241027"
 ---
 # <a name="how-to-configure-and-read-the-azure-cosmos-db-trigger-logs"></a>如何配置和读取 Azure Cosmos DB 触发器日志
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 触发器在内部使用[更改源处理器库](./change-feed-pr
 }
 ```
 
-使用更新的配置部署 Azure 函数后，将在跟踪中看到 Azure Cosmos DB 触发器日志。 可以在类别 `Host.Triggers.CosmosDB` 下查看所配置的日志记录提供程序中的日志。
+使用更新的配置部署 Azure 函数后，将在跟踪中看到 Azure Cosmos DB 触发器日志。 可以在类别 `Host.Triggers.CosmosDB` 下查看所配置的日志记录提供程序中的日志。 
 
 ## <a name="query-the-logs"></a>查询日志
 

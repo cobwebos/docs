@@ -4,14 +4,14 @@ description: 了解如何在 Azure Cosmos DB 中创建容器
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3952ad98cf734de322741ace80c17029e282b94c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 7768f94051c6882f08dce360e35bf673c7b1103d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068701"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241004"
 ---
 # <a name="create-an-azure-cosmos-container"></a>创建 Azure Cosmos 容器
 
@@ -25,13 +25,13 @@ ms.locfileid: "65068701"
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，请提供以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建集合”   。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入集合 ID。
    * 输入分区键。
    * 输入要进行预配的吞吐量（例如，1000 RU）。
-   * 选择“确定”。
+   * 选择“确定”  。
 
 ![“数据资源管理器”窗格的屏幕截图，突出显示“新建集合”](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
@@ -41,13 +41,13 @@ ms.locfileid: "65068701"
 
 1. [创建新的 Azure Cosmos 帐户](create-mongodb-dotnet.md#create-a-database-account)或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，请提供以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建集合”   。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入集合 ID。
    * 输入分片键。
    * 输入要进行预配的吞吐量（例如，1000 RU）。
-   * 选择“确定”。
+   * 选择“确定”  。
 
 ![用于 MongoDB 的 Azure Cosmos DB API 的屏幕截图，突出显示“添加集合”对话框](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
@@ -57,13 +57,13 @@ ms.locfileid: "65068701"
 
 1. [创建新的 Azure Cosmos 帐户](create-cassandra-dotnet.md#create-a-database-account)或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建表”。 接下来，请提供以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建表”   。 接下来，请提供以下详细信息：
 
    * 表明要创建新密钥空间还是使用现有密钥空间。
    * 输入表名称。
    * 输入属性并指定一个主键。
    * 输入要进行预配的吞吐量（例如，1000 RU）。
-   * 选择“确定”。
+   * 选择“确定”  。
 
 ![Cassandra API 的屏幕截图，突出显示“添加表”对话框](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
 
@@ -76,14 +76,14 @@ ms.locfileid: "65068701"
 
 1. [创建新的 Azure Cosmos 帐户](create-graph-dotnet.md#create-a-database-account)或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建图形”。 接下来，请提供以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建图形”   。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入图形 ID。
-   * 对于“无限制”存储容量。
+   * 对于“无限制”存储容量。 
    * 输入顶点的分区键。
    * 输入要进行预配的吞吐量（例如，1000 RU）。
-   * 选择“确定”。
+   * 选择“确定”  。
 
 ![Gremlin API 的屏幕截图，突出显示“添加图形”对话框](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
@@ -93,11 +93,11 @@ ms.locfileid: "65068701"
 
 1. [创建新的 Azure Cosmos 帐户](create-table-dotnet.md#create-a-database-account)或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建表”。 接下来，请提供以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建表”   。 接下来，请提供以下详细信息：
 
    * 输入表 ID。
    * 输入要进行预配的吞吐量（例如，1000 RU）。
-   * 选择“确定”。
+   * 选择“确定”  。
 
 ![表 API 的屏幕截图，突出显示“添加表”对话框](./media/how-to-create-container/partitioned-collection-create-table.png)
 

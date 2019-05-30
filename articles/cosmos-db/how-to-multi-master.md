@@ -4,14 +4,14 @@ description: 了解如何在 Azure Cosmos DB 中配置应用程序中的多主�
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
+ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: 86f5d64391dd5312d8c51a5b639b790e62b6710d
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 1d9fa7380f62165d360888fd8cb03919f1736297
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560264"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244749"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的应用程序配置多主数据库
 

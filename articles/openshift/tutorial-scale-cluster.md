@@ -2,18 +2,18 @@
 title: 教程 - 缩放 Azure Red Hat OpenShift 群集 | Microsoft Docs
 description: 了解如何使用 Azure CLI 缩放 Microsoft Azure Red Hat OpenShift 群集
 services: container-service
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/06/2019
-ms.openlocfilehash: f86b60fbe20fc630863d6e177d45f2c1f06a7863
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: b25e17e7064006a1421142dfcd32997cb4426e8e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079392"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305986"
 ---
 # <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>教程：缩放 Azure Red Hat OpenShift 群集
 

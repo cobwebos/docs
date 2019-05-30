@@ -4,14 +4,14 @@ description: 了解如何为 Azure Cosmos 容器定义唯一键
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 5/3/2019
+ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 1e8a88b640d588fbdb96089f11672b09590ee5d9
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: fb9872d2fd41066899ff9198915d573bfb4a0b84
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597751"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240970"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>为 Azure Cosmos 容器定义唯一键
 

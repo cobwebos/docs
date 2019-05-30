@@ -16,11 +16,11 @@ ms.date: 11/07/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6d5452f23e830ca7a9ffe5ca5ed3d4aa12fb717
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66236049"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
@@ -51,12 +51,12 @@ ms.locfileid: "58444674"
 
 使用以下步骤[为 SQL Server 配置 Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication-configure)：
 
-1.  在 Azure 门户的左侧导航栏中选择“SQL 服务器”。
+1.  在 Azure 门户的左侧导航栏中选择“SQL 服务器”。 
 2.  单击要启用 Azure AD 身份验证的 SQL 服务器。
-3.  在边栏选项卡的“设置”部分中，单击“Active Directory 管理员”。
-4.  在命令栏中单击“设置管理员”。
-5.  选择要设为服务器管理员的 Azure AD 用户帐户，单击“选择”。
-6.  在命令栏中，单击“保存”。
+3.  在边栏选项卡的“设置”部分中，单击“Active Directory 管理员”。  
+4.  在命令栏中单击“设置管理员”。 
+5.  选择要设为服务器管理员的 Azure AD 用户帐户，单击“选择”。 
+6.  在命令栏中，单击“保存”  。
 
 ## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>在数据库中创建一个代表 VM 的系统分配标识的包含用户
 
@@ -68,15 +68,15 @@ ms.locfileid: "58444674"
 SQL DB 需要唯一的 AAD 显示名称。 因此，AAD 帐户（如用户、组和服务主体（应用程序））以及启用了托管标识的 VM 名称必须在 AAD 中针对其显示名称进行唯一定义。 SQL DB 在使用 T-SQL 创建此类用户期间会检查 AAD 显示名称，如果它不唯一，则命令将无法请求为给定帐户提供唯一的 AAD 显示名称。
 
 1. 启动 SQL Server Management Studio。
-2. 在“连接到服务器”对话框的“服务器名称”字段中，输入 SQL 服务器名称。
-3. 在“身份验证”字段中，选择“Active Directory - 通用且具有 MFA 支持”。
-4. 在“用户名”字段中，输入已设为服务器管理员的 Azure AD 帐户的名称，例如 helen@woodgroveonline.com
-5. 单击“选项” 。
-6. 在“连接到数据库”字段中，输入要配置的非系统数据库的名称。
-7. 单击“连接”。 完成登录过程。
-8. 在“对象资源管理器”中，展开“数据库”文件夹。
-9. 右键单击某个用户数据库，并单击“新建查询”。
-10. 在查询窗口中输入以下行，在工具栏中单击“执行”：
+2. 在“连接到服务器”对话框的“服务器名称”字段中，输入 SQL 服务器名称。  
+3. 在“身份验证”字段中，选择“Active Directory - 通用且具有 MFA 支持”。  
+4. 在“用户名”字段中，输入已设为服务器管理员的 Azure AD 帐户的名称，例如 helen@woodgroveonline.com 
+5. 单击“选项”  。
+6. 在“连接到数据库”字段中，输入要配置的非系统数据库的名称。 
+7. 单击“连接”  。 完成登录过程。
+8. 在“对象资源管理器”中，展开“数据库”文件夹。  
+9. 右键单击某个用户数据库，并单击“新建查询”  。
+10. 在查询窗口中输入以下行，在工具栏中单击“执行”： 
 
     > [!NOTE]
     > 以下命令中的 `VMName` 是在“先决条件”部分中对其启用系统分配标识的 VM 的名称。
@@ -86,7 +86,7 @@ SQL DB 需要唯一的 AAD 显示名称。 因此，AAD 帐户（如用户、组
     ```
     
     该命令应该成功完成，为 VM 的系统分配标识创建包含的用户。
-11. 清除查询窗口中的内容，输入以下行，在工具栏中单击“执行”：
+11. 清除查询窗口中的内容，输入以下行，在工具栏中单击“执行”： 
 
     > [!NOTE]
     > 以下命令中的 `VMName` 是在“先决条件”部分中对其启用系统分配标识的 VM 的名称。
@@ -149,9 +149,9 @@ if (accessToken != null) {
 
 或者，可以使用 PowerShell 快速测试端到端设置，而无需在 VM 上编写和部署应用。
 
-1.  在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中，单击“连接”。
-2.  输入创建 Windows VM 时添加的用户名和密码。
-3.  现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。
+1.  在门户中，导航到“虚拟机”  并转到 Windows 虚拟机，然后在“概述”  中，单击“连接”  。
+2.  输入创建 Windows VM 时添加的用户名  和密码  。
+3.  现在，已经创建了与虚拟机的远程桌面连接  ，请在远程会话中打开 PowerShell  。
 4.  使用 PowerShell 的 `Invoke-WebRequest` 向本地托管标识的终结点发出请求，以获取 Azure SQL 的访问令牌。
 
     ```powershell

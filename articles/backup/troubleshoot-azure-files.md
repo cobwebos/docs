@@ -8,19 +8,18 @@ ms.author: raynew
 ms.date: 01/31/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ee0eccced5757c91fca1ba7f77750839bc017f3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: eec30ec8ff85f2d9a2ba78da2872b081e90c9e33
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492719"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240164"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>排查 Azure 文件共享备份问题
 可参考下表中所列信息，排查使用 Azure 文件共享备份时遇到的问题和错误。
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>预览版期间 Azure 文件共享备份的限制
 Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2 存储帐户中的 Azure 文件共享均受支持。 Azure 文件共享不支持以下备份场景：
-- 不能保护具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能\*的存储帐户中的 Azure 文件共享。
 - 不能保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
 - 无法使用 CLI 通过 Azure 备份来保护 Azure 文件。
 - 每天的计划备份数上限为 1。
@@ -28,8 +27,6 @@ Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2
 - 在存储帐户上使用[资源锁定](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)，防止意外删除恢复服务保管库中的备份。
 - 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
 - 请勿删除受 Azure 备份保护的文件共享。 当前的解决方案会在文件共享删除后删除 Azure 备份创建的所有快照，因此会失去所有还原点。
-
-\*具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能的存储帐户中的 Azure 文件共享将作为 GRS 发挥作用并按 GRS 价格计费。
 
 使用[区域冗余存储](../storage/common/storage-redundancy-zrs.md) (ZRS) 复制对存储帐户中的 Azure 文件共享进行备份，目前只能在美国中部 (CUS)、美国东部 (EUS)、美国东部 2 (EUS2)、北欧 (NE)、东南亚 (SEA)、西欧 (WE) 和美国西部 2 (WUS2) 使用。
 
@@ -43,7 +40,7 @@ Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2
 | 所选存储帐户验证或注册失败。| 重试该操作。如果问题仍然存在，请联系支持部门。|
 | 无法在所选存储帐户中列出或查找文件共享。 | <ul><li> 确保存储帐户存在于资源组中（且自上次在保管库中进行验证/注册后尚未删除或移动）。<li>确保尚未删除要保护的文件共享。 <li>确保存储帐户是支持进行文件共享备份的存储帐户。<li>检查是否已在同一恢复服务保管库中对文件共享进行保护。|
 | 备份文件共享配置（或保护策略配置）故障。 | <ul><li>请重试该操作，看问题是否仍然存在。 <li> 确保尚未删除要保护的文件共享。 <li> 如果在尝试同时保护多个文件共享时部分文件共享故障，请再次重试配置故障文件共享的备份。 |
-| 在取消对文件共享的保护之后，无法删除恢复服务保管库。 | 在 Azure 门户中打开保管库 >“备份基础结构” > “存储帐户”，然后单击“注销”，将存储帐户从恢复服务保管库中删除。|
+| 在取消对文件共享的保护之后，无法删除恢复服务保管库。 | 在 Azure 门户中打开保管库 >“备份基础结构”   >   “存储帐户”，然后单击“注销”  ，将存储帐户从恢复服务保管库中删除。|
 
 
 ## <a name="error-messages-for-backup-or-restore-job-failures"></a>备忘或还原作业故障时的错误消息

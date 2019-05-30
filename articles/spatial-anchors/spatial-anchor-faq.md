@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fdde10c9ef7c035ed36b5f823a0b77e7c8b53803
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: cd004e1eb6a40648c52dd3b5aee0ec38bff8f9b3
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964567"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304199"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -57,7 +57,7 @@ Azure 空间定位点是一个托管云服务和开发人员平台，可跨 Holo
 
 Azure 空间定位点遵守 [Azure 服务协议条款](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)和 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409)。
 
-![环境及其派生稀疏点云](./media/sparce-point-cloud.png)
+![环境及其派生稀疏点云](./media/sparse-point-cloud.png)
 *图 1：环境及其派生稀疏点云*
 
 

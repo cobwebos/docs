@@ -10,22 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: aahi
-ms.openlocfilehash: 2e9e26243511972c7d05dc55c8e041d83efcbc7d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b319abf22f9aa4cdd9a5fef91be0628672d47bd4
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546599"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297780"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>快速入门：使用 Python SDK 调用文本分析服务 
 <a name="HOLTop"></a>
 
-根据本快速入门中的说明，开始使用用于 Python 的文本分析 SDK 来分析语言。 虽然文本分析 REST API 与大多数编程语言兼容，但该 SDK 提供了一种简单方法来将服务集成到应用程序中，不需要对 JSON 进行序列化和反序列化。
-
-
-> [!Note]
-> * 有关 API 的技术文档，请参阅 [API 定义](//go.microsoft.com/fwlink/?LinkID=759346)。
-> * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py) 上找到此示例的源代码。  
+根据本快速入门中的说明，开始使用用于 Python 的文本分析 SDK 来分析语言。 虽然文本分析 REST API 与大多数编程语言兼容，但该 SDK 提供了一种简单方法来将服务集成到应用程序中，不需要对 JSON 进行序列化和反序列化。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py) 上找到此示例的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 

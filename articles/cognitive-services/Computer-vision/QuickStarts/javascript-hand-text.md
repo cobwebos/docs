@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 969f7dc585e7ca518936636bbdcd859747ff089b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c93271fcd74d1369112a2c5d2bba98fd14ff7c84
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007009"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357195"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 JavaScript 提取手写文本
 
@@ -43,7 +43,7 @@ ms.locfileid: "60007009"
 1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-handwriting.html`。
 1. 打开一个浏览器窗口。
 1. 在浏览器中，将文件拖放到浏览器窗口。
-1. 在浏览器中显示网页时，选择“读取图像”按钮。
+1. 在浏览器中显示网页时，选择“读取图像”按钮  。
 
 ```html
 <!DOCTYPE html>
@@ -74,11 +74,6 @@ ms.locfileid: "60007009"
         var uriBase =
             "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
-        // Request parameter.
-        var params = {
-            "mode": "Handwritten",
-        };
-
         // Display the image.
         var sourceImageUrl = document.getElementById("inputImage").value;
         document.querySelector("#sourceImage").src = sourceImageUrl;
@@ -88,7 +83,7 @@ ms.locfileid: "60007009"
         //
         // Make the first REST API call to submit the image for processing.
         $.ajax({
-            url: uriBase + "?" + $.param(params),
+            url: uriBase,
 
             // Request headers.
             beforeSend: function(jqXHR){

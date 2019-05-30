@@ -2,18 +2,18 @@
 title: Azure 上的 Kubernetes 教程 - 升级群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何将现有 AKS 群集升级到最新可用的 Kubernetes 版本。
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: b0d0d8326d6274252f4c4a865bc8f022daf9e199
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09e3fab67486b4677c5848d81fb39a68e511b6ac
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61029345"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305211"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 
@@ -40,7 +40,7 @@ ms.locfileid: "61029345"
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-在以下示例中，当前版本为 1.9.11，可用的版本显示在“升级”列下。
+在以下示例中，当前版本为 1.9.11，可用的版本显示在“升级”列下   。
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
@@ -58,16 +58,16 @@ default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
 1. 准备好新节点并将其加入群集后，Kubernetes 计划程序开始在该群集上运行 Pod。
 1. 删除旧节点，群集的下一个节点随即开始隔离和排空进程。
 
-使用 [az aks upgrade][] 命令升级 AKS 群集。 以下示例将群集升级到 Kubernetes 版本 1.10.9。
+使用 [az aks upgrade][] 命令升级 AKS 群集。 以下示例将群集升级到 Kubernetes 版本 1.10.9  。
 
 > [!NOTE]
-> 一次只能升级一个次要版本。 例如，可以从 1.9.11 升级到 1.10.9，但不能从 1.9.6 直接升级到 1.11.x。 若要从 1.9.11 升级到 1.11.x，请先从 1.9.11 升级到 1.10.x，然后再执行一次升级从 1.10.x 升级到 1.11.x。
+> 一次只能升级一个次要版本。 例如，可以从 1.9.11 升级到 1.10.9，但不能从 1.9.6 直接升级到 1.11.x     。 若要从 1.9.11 升级到 1.11.x，请先从 1.9.11 升级到 1.10.x，然后再执行一次升级从 1.10.x 升级到 1.11.x       。
 
 ```azurecli
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.9
 ```
 
-以下浓缩版的示例输出显示 kubernetesVersion 现在报告 1.10.9：
+以下浓缩版的示例输出显示 kubernetesVersion 现在报告 1.10.9   ：
 
 ```json
 {
@@ -100,7 +100,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-以下示例输出显示 AKS 群集运行 KubernetesVersion 1.10.9：
+以下示例输出显示 AKS 群集运行 KubernetesVersion 1.10.9  ：
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn

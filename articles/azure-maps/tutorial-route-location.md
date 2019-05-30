@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f9987a4aee561340c5ebe2639626e5f66a55358e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 7091e542c1e7c5cd6715d9c0a064ea47d69239e1
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544596"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356321"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>使用 Azure Maps 查找前往兴趣点的路线
 
@@ -166,7 +166,7 @@ ms.locfileid: "59544596"
 
     此代码创建两个 [GeoJSON 点对象](https://en.wikipedia.org/wiki/GeoJSON)来表示路线的起点和终点，并将这些点添加到数据源。 将会向每个点添加 `title` 和 `icon` 属性。 最后一个块通过地图的 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性使用起点和终点的纬度和经度信息来设置相机视图。
 
-3. 保存“MapRoute.html”文件并刷新浏览器。 现在，地图的中心为西雅图，可以看到标记起点的蓝色图钉和标记终点的圆形蓝色图钉。
+3. 保存“MapRoute.html”文件并刷新浏览器  。 现在，地图的中心为西雅图，可以看到标记起点的蓝色图钉和标记终点的圆形蓝色图钉。
 
    ![查看标记了起点和终点的地图](media/tutorial-route-location/map-pins.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "59544596"
 
 ## <a name="get-directions"></a>获取方向
 
-本部分介绍如何使用 Azure Maps 路线服务 API 查找从给定起点到终点的路线。 路线服务提供多个 API，规划两个地点之间最快、最短、环保或令人兴奋的路线。 此外，它还允许用户使用 Azure 广泛的历史交通数据库和预测任何一天任何时间的路线时间来规划路线。 有关详细信息，请参阅 [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)（获取路线指示）。 应该**在 map ready eventListener 中**添加以下所有功能，以确保在准备好访问地图资源后加载它们。
+本部分介绍如何使用 Azure Maps 路线服务 API 查找从给定起点到终点的路线。 路线服务提供多个 API，规划两个地点之间最快、最短、环保或令人兴奋的路线     。 此外，它还允许用户使用 Azure 广泛的历史交通数据库和预测任何一天任何时间的路线时间来规划路线。 有关详细信息，请参阅 [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)（获取路线指示）。 应该**在 map ready eventListener 中**添加以下所有功能，以确保在准备好访问地图资源后加载它们。
 
 1. 在 GetMap 函数中，将以下内容添加到 JavaScript 代码。
 
@@ -189,7 +189,7 @@ ms.locfileid: "59544596"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` 创建 `SubscriptionKeyCredentialPolicy` 以使用订阅密钥验证对 Azure Maps 的 HTTP 请求。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)实例。 `routeURL` 表示 Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) 操作的 URL。
+   `SubscriptionKeyCredential` 创建 `SubscriptionKeyCredentialPolicy` 以使用订阅密钥验证对 Azure Maps 的 HTTP 请求。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)实例。 `routeURL` 表示 Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) 操作的 URL。
 
 2. 在设置凭据和 URL 以后，请添加以下 JavaScript 代码，以便构建从起点到终点的路线。 `routeURL` 会请求 Azure Maps 路线服务计算路线走向。 然后，系统会使用 `geojson.getFeatures()` 方法从响应中提取 GeoJSON 特性集合，并将其添加到数据源。
 
@@ -205,7 +205,7 @@ ms.locfileid: "59544596"
     });
     ```
 
-3. 保存“MapRoute.html”文件并刷新 web 浏览器。 要成功连接 Maps API，应看到类似于以下内容的地图。
+3. 保存“MapRoute.html”文件并刷新 web 浏览器  。 要成功连接 Maps API，应看到类似于以下内容的地图。
 
     ![Azure 地图控件和路线服务](./media/tutorial-route-location/map-route.png)
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: aa7f77299750a969bf936a3ed9b6ae76653a90c4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: c836fd122d9dba0cd7eb20fe405e63c3ca3f59eb
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526684"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306793"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教程：将 Java 应用程序部署到 Azure 中的 Service Fabric 群集
 
@@ -104,7 +104,7 @@ ms.locfileid: "59526684"
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
     ```
 
-7. 访问 [Azure 门户](https://portal.azure.com)，导航到供存储帐户使用的“共享访问签名”选项卡。 生成 SAS 令牌，如下所示。
+7. 访问 [Azure 门户](https://portal.azure.com)，导航到供存储帐户使用的“共享访问签名”选项卡。  生成 SAS 令牌，如下所示。
 
     ![生成用于存储的 SAS](./media/service-fabric-tutorial-java-deploy-azure/storagesas.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "59526684"
     Please provide string value for 'receiveAuthorizationRuleName' (? for help): receiver
     ```
 
-    将“输出”字段的内容复制到上一命令的 JSON 输出中。 创建 Service Fabric 群集时，使用发送方信息。 接收方名称和密钥应该保存，供下一教程使用。在下一教程中，Logstash 服务配置为接收事件中心的消息。 以下 Blob 为 JSON 输出示例：
+    将“输出”字段的内容复制到上一命令的 JSON 输出中。  创建 Service Fabric 群集时，使用发送方信息。 接收方名称和密钥应该保存，供下一教程使用。在下一教程中，Logstash 服务配置为接收事件中心的消息。 以下 Blob 为 JSON 输出示例：
 
     ```json
     "outputs": {
@@ -200,7 +200,7 @@ ms.locfileid: "59526684"
 
 ## <a name="deploy-your-application-to-the-cluster"></a>将应用程序部署到群集
 
-1. 在部署应用程序之前，需将以下代码片段添加到 *Voting/VotingApplication/ApplicationManifest.xml* 文件。 **X509FindValue** 字段是从“在 Azure 中创建 Service Fabric 群集”部分的步骤 4 返回的指纹。 此代码片段嵌套在 **ApplicationManifest** 字段（根字段）下。
+1. 在部署应用程序之前，需将以下代码片段添加到 *Voting/VotingApplication/ApplicationManifest.xml* 文件。 **X509FindValue** 字段是从“在 Azure 中创建 Service Fabric 群集”  部分的步骤 4 返回的指纹。 此代码片段嵌套在 **ApplicationManifest** 字段（根字段）下。
 
     ```xml
     <Certificates>

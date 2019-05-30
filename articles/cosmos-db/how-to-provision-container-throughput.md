@@ -4,14 +4,14 @@ description: 了解如何在 Azure Cosmos DB 中预配容器级别的吞吐量
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
+ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: d092844fbd75fc2307cc13ec9b7779ae9237535d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: dec6d0a65e556e0572bd030617e5b2c30078fce8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679698"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243831"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上预配吞吐量
 
@@ -23,13 +23,13 @@ ms.locfileid: "59679698"
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos 帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，请提供以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建集合”   。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入容器（或表或图）ID。
    * 输入分区键值（例如 `/userid`）。
    * 输入要预配的吞吐量（例如，1000 RU）
-   * 选择“确定”。
+   * 选择“确定”  。
 
 ![数据资源管理器的屏幕截图，突出显示“新建集合”](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 

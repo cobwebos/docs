@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 01/30/2019
-ms.openlocfilehash: 2d431659e46465bf16f6e597f3a49f7008432bb5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/28/2019
+ms.openlocfilehash: 212a2ca89b91de518f07d097b00b31e785216cb0
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722857"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304014"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序
 
@@ -46,11 +46,11 @@ ms.locfileid: "64722857"
 
 1. 打开 IntelliJ IDEA。
 
-2. 在欢迎屏幕上，导航到“配置” > “插件”打开“插件”窗口。
+2. 在欢迎屏幕上，导航到“配置” > “插件”打开“插件”窗口。   
    
     ![启用 scala 插件](./media/apache-spark-create-standalone-application/enable-scala-plugin.png)
 
-3. 选择在新窗口中作为特色功能列出的 Scala 插件对应的“安装”。  
+3. 选择在新窗口中作为特色功能列出的 Scala 插件对应的“安装”。   
  
     ![安装 scala 插件](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
 
@@ -59,13 +59,13 @@ ms.locfileid: "64722857"
 
 ## <a name="use-intellij-to-create-application"></a>使用 IntelliJ 创建应用程序
 
-1. 启动 IntelliJ IDEA，选择“创建新项目”打开“新建项目”窗口。
+1. 启动 IntelliJ IDEA，选择“创建新项目”打开“新建项目”窗口。  
 
-2. 在左窗格中选择“Azure Spark/HDInsight”。
+2. 在左窗格中选择“Azure Spark/HDInsight”  。
 
-3. 在主窗口中选择“Spark 项目(Scala)”。
+3. 在主窗口中选择“Spark 项目(Scala)”。 
 
-4. 在“生成工具”下拉列表中选择下列其中一项：
+4. 在“生成工具”下拉列表中选择下列其中一项： 
       * **Maven**：支持 Scala 项目创建向导。
       * **SBT**：用于管理依赖项和生成 Scala 项目。
 
@@ -73,30 +73,30 @@ ms.locfileid: "64722857"
 
 5. 选择“**下一步**”。
 
-6. 在“新建项目”窗口中提供以下信息：  
+6. 在“新建项目”窗口中提供以下信息：   
 
   	|  属性   | 说明   |  
   	| ----- | ----- |  
   	|项目名称| 输入名称。|  
   	|项目位置&nbsp;| 输入所需的位置用于保存项目。|
-  	|项目 SDK| 首次使用 IDEA 时，此字段是空白的。  选择“新建...”并导航到 JDK。|
-  	|Spark 版本|创建向导集成了适当版本的 Spark SDK 和 Scala SDK。 如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”。 否则，请选择“Spark 2.x”。 本示例使用“Spark 2.3.0 (Scala 2.11.8)”。|
+  	|项目 SDK| 首次使用 IDEA 时，此字段是空白的。  选择“新建...”并导航到 JDK。 |
+  	|Spark 版本|创建向导集成了适当版本的 Spark SDK 和 Scala SDK。 如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”  。 否则，请选择“Spark 2.x”  。 本示例使用“Spark 2.3.0 (Scala 2.11.8)”。 |
 
     ![选择 Spark SDK](./media/apache-spark-create-standalone-application/hdi-new-project.png)
 
-7. 选择“完成”。
+7. 选择“完成”。 
 
 ## <a name="create-a-standalone-scala-project"></a>创建独立 Scala 项目
 
-1. 启动 IntelliJ IDEA，选择“创建新项目”打开“新建项目”窗口。
+1. 启动 IntelliJ IDEA，选择“创建新项目”打开“新建项目”窗口。  
 
-2. 在左窗格中选择“Maven”。
+2. 在左窗格中选择“Maven”。 
 
-3. 指定“项目 SDK”。 如果此字段是空白的，请选择“新建...”并导航到 Java 安装目录。
+3. 指定“项目 SDK”  。 如果此字段是空白的，请选择“新建...”并导航到 Java 安装目录。 
 
-4. 选中“从原型创建”复选框。  
+4. 选中“从原型创建”复选框。   
 
-5. 从原型列表中，选择“org.scala-tools.archetypes:scala-archetype-simple”。 此原型会创建适当的目录结构，并下载所需的默认依赖项来编写 Scala 程序。
+5. 从原型列表中，选择“org.scala-tools.archetypes:scala-archetype-simple”  。 此原型会创建适当的目录结构，并下载所需的默认依赖项来编写 Scala 程序。
 
     ![创建 Maven 项目](./media/apache-spark-create-standalone-application/create-maven-project.png)
 
@@ -109,26 +109,26 @@ ms.locfileid: "64722857"
 
 8. 选择“**下一步**”。
 
-9. 验证设置，并选择“下一步”。
+9. 验证设置，并选择“下一步”  。
 
-10. 验证项目名称和位置，并选择“完成”。  导入项目需要花费几分钟时间。
+10. 验证项目名称和位置，并选择“完成”  。  导入项目需要花费几分钟时间。
 
-11. 导入项目后，在左窗格中导航到“SparkSimpleApp” > “src” > “test” > “scala” > “com” > “microsoft” > “spark” > “example”。  右键单击“MySpec”并选择“删除...”。应用程序不需要此文件。  在对话框中选择“确定”。
+11. 导入项目后，在左窗格中导航到“SparkSimpleApp” > “src” > “test” > “scala” > “com” > “microsoft” > “spark” > “example”。          右键单击“MySpec”并选择“删除...”   。应用程序不需要此文件。  在对话框中选择“确定”  。
   
 12. 后续步骤会更新 **pom.xml** 以定义 Spark Scala 应用程序的依赖项。 要实现这些依赖项的自动下载和解析，必须对 Maven 进行相应配置。
 
-13. 在“文件”菜单中，选择“设置”打开“设置”窗口。
+13. 在“文件”菜单中，选择“设置”打开“设置”窗口。   
 
-14. 在“设置”窗口中，导航到“生成、执行、部署” > “生成工具” > “Maven” > “导入”。
+14. 在“设置”窗口中，导航到“生成、执行、部署” > “生成工具” > “Maven” > “导入”。     
 
-15. 选中“自动导入 Maven 项目”复选框。
+15. 选中“自动导入 Maven 项目”复选框。 
 
-16. 依次选择“应用”、“确定”。  随后将返回到项目窗口。
+16. 依次选择“应用”、“确定”   。  随后将返回到项目窗口。
    
     ![配置 Maven 以进行自动下载](./media/apache-spark-create-standalone-application/configure-maven.png)
    
 
-17. 在左侧窗格中，导航到“src” > “main” > “scala” > “com.microsoft.spark.example”，然后双击“应用”打开 App.scala。
+17. 在左侧窗格中，导航到“src” > “main” > “scala” > “com.microsoft.spark.example”，然后双击“应用”打开 App.scala。     
 
 18. 将当前示例代码替换为以下代码，然后保存所做的更改。 此代码从 HVAC.csv（所有 HDInsight Spark 群集均有该文件）中读取数据，检索第六列中只有一个数字的行，并将输出写入群集的默认存储容器下的 **/HVACOut**。
 
@@ -153,7 +153,7 @@ ms.locfileid: "64722857"
             rdd1.saveAsTextFile("wasb:///HVACout")
           }
         }
-19. 在左侧窗格中，双击“pom.xml”。  
+19. 在左侧窗格中，双击“pom.xml”  。  
    
 20. 在 `<project>\<properties>` 中添加以下段：
       
@@ -173,29 +173,29 @@ ms.locfileid: "64722857"
 
 22. 创建 .jar 文件。 IntelliJ IDEA 允许创建 JAR，将其作为项目的一项。 执行以下步骤。
     
-    1. 在“文件”菜单中，选择“项目结构...”。
+    1. 在“文件”菜单中，选择“项目结构...”。  
 
-    2. 在“项目结构”窗口中，导航到“项目” > “+” > “JAR” > “从包含依赖项的模块...”。
+    2. 在“项目结构”窗口中，导航到“项目” > “+” > “JAR” > “从包含依赖项的模块...”。     
        
         ![创建 JAR](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
-    3. 在“从模块创建 JAR”窗口中，选择“主类”文本框中的文件夹图标。
+    3. 在“从模块创建 JAR”窗口中，选择“主类”文本框中的文件夹图标。  
 
-    4. 在“选择主类”窗口中，选择默认显示的类，然后选择“确定”。
+    4. 在“选择主类”窗口中，选择默认显示的类，然后选择“确定”   。
        
         ![创建 JAR](./media/apache-spark-create-standalone-application/create-jar-2.png)
 
-    5. 在“从模块创建 JAR”窗口中，确保已选择“提取到目标 JAR”选项，然后选择“确定”。  这设置会创建包含所有依赖项的单个 JAR。
+    5. 在“从模块创建 JAR”窗口中，确保已选择“提取到目标 JAR”选项，然后选择“确定”    。  这设置会创建包含所有依赖项的单个 JAR。
        
         ![创建 JAR](./media/apache-spark-create-standalone-application/create-jar-3.png)
 
-    6. “输出布局”选项卡列出了所有包含为 Maven 项目一部分的 jar。 可以选择并删除 Scala 应用程序不直接依赖的 jar。 对于此处创建的应用程序，可以删除最后一个（SparkSimpleApp 编译输出）以外的所有 jar。 选择要删除的 jar，然后选择减号 **-**。
+    6. “输出布局”  选项卡列出了所有包含为 Maven 项目一部分的 jar。 可以选择并删除 Scala 应用程序不直接依赖的 jar。 对于此处创建的应用程序，可以删除最后一个（SparkSimpleApp 编译输出）以外的所有 jar  。 选择要删除的 jar，然后选择减号 **-** 。
        
         ![创建 JAR](./media/apache-spark-create-standalone-application/delete-output-jars.png)
        
-        请务必选中“包含在项目生成中”复选框，以确保每次生成或更新项目时都创建 jar。 依次选择“应用”、“确定”。
+        请务必选中“包含在项目生成中”复选框，以确保每次生成或更新项目时都创建 jar  。 依次选择“应用”、“确定”   。
 
-    7. 若要创建 jar，请导航到“生成” > “生成项目” > “生成”。 该项目将在大约 30 秒内完成编译。  输出 jar 会在 **\out\artifacts** 下创建。
+    7. 若要创建 jar，请导航到“生成” > “生成项目” > “生成”。    该项目将在大约 30 秒内完成编译。  输出 jar 会在 **\out\artifacts** 下创建。
        
         ![创建 JAR](./media/apache-spark-create-standalone-application/output.png)
 

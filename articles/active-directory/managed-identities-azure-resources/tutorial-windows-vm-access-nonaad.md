@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 180e5544cfdc8fe7d5c3317347901f70667f1c8d
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446699"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66226807"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Key Vault 
 
@@ -45,26 +45,26 @@ ms.locfileid: "58446699"
 
 首先，我们需要创建一个 Key Vault 并授予 VM 的系统分配托管标识对 Key Vault 的访问权限。   
 
-1. 在左侧导航栏的顶部，依次选择“创建资源” > “安全 + 标识” > “Key Vault”。  
-2. 为新 Key Vault 提供一个名称。 
+1. 在左侧导航栏的顶部，依次选择“创建资源”   > “安全 + 标识”   > “Key Vault”  。  
+2. 为新 Key Vault 提供一个名称  。 
 3. 定位到之前创建的 VM 所在的订阅和资源组中的 Key Vault。 
-4. 选择“访问策略”，然后单击“添加新”。 
-5. 在模板中的“配置”中，选择“密钥管理”。 
-6. 选择“选择主体”，并在搜索字段中输入之前创建的 VM 的名称。  选择结果列表中的 VM，并单击“选择”。 
-7. 单击“确定”完成添加新的访问策略，然后单击“确定”完成访问策略选择。 
-8. 单击“创建”完成创建 Key Vault。 
+4. 选择“访问策略”  ，然后单击“添加新”  。 
+5. 在模板中的“配置”中，选择“密钥管理”  。 
+6. 选择“选择主体”  ，并在搜索字段中输入之前创建的 VM 的名称。  选择结果列表中的 VM，并单击“选择”  。 
+7. 单击“确定”  完成添加新的访问策略，然后单击“确定”  完成访问策略选择。 
+8. 单击“创建”  完成创建 Key Vault。 
 
     ![Alt 图像文本](./media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 
 接下来，将密钥添加到 Key Vault，以便稍后可以使用在 VM 中运行的代码检索此密钥： 
 
-1. 选择“所有资源”，找到并选择已创建的 Key Vault。 
-2. 选择“密钥”，然后单击“添加”。 
-3. 从“上传选项”中选择“手动”。 
+1. 选择“所有资源”  ，找到并选择已创建的 Key Vault。 
+2. 选择“密钥”  ，然后单击“添加”  。 
+3. 从“上传选项”  中选择“手动”  。 
 4. 输入密钥的名称和值。  该值可以是任何需要的内容。 
-5. 明确指定激活日期和到期日期，并将“已启用”设置为“是”。 
-6. 单击“创建”以创建密钥。 
+5. 明确指定激活日期和到期日期，并将“已启用”  设置为“是”  。 
+6. 单击“创建”  以创建密钥。 
  
 ## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>使用 VM 标识获取访问令牌，并使用它来检索 Key Vault 中的密钥  
 
@@ -72,9 +72,9 @@ ms.locfileid: "58446699"
 
 首先，我们使用 VM 的系统分配托管标识获取访问令牌，向 Key Vault 证明身份：
  
-1. 在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中，单击“连接”。
-2. 输入创建 Windows VM 时添加的用户名和密码。  
-3. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。  
+1. 在门户中，导航到“虚拟机”  并转到 Windows 虚拟机，然后在“概述”  中，单击“连接”  。
+2. 输入创建 Windows VM  时添加的用户名  和密码  。  
+3. 现在，已经创建了与虚拟机的远程桌面连接  ，请在远程会话中打开 PowerShell。  
 4. 在 PowerShell 中，调用租户上的 Web 请求，为 VM 特定端口中的本地主机获取令牌。  
 
     PowerShell 请求：
@@ -95,7 +95,7 @@ ms.locfileid: "58446699"
     $KeyVaultToken = $content.access_token 
     ```
     
-    最后，使用 PowerShell 的 Invoke-WebRequest 命令检索之前在 Key Vault 中创建的密钥，在授权标头中传递访问令牌。  将需要 Key Vault 的 URL，该 URL 位于 Key Vault 的“概述”页的“软件包”部分。  
+    最后，使用 PowerShell 的 Invoke-WebRequest 命令检索之前在 Key Vault 中创建的密钥，在授权标头中传递访问令牌。  将需要 Key Vault 的 URL，该 URL 位于 Key Vault 的“概述”  页的“软件包”  部分。  
     
     ```powershell
     (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 

@@ -10,16 +10,14 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0e24f66369cf990f6b271b894a31dc8395068e17
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280530"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257333"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>教程：使用适用于 C# 的语音 SDK 从语音中识别意向
-
-[!INCLUDE [Article selector](../../../includes/cognitive-services-speech-service-how-to-recognize-intents-from-speech-selector.md)]
 
 认知服务[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) 与[语言理解服务 (LUIS)](https://www.luis.ai/home) 相集成，以提供**意向识别**。 意向是用户想要做的某件事：预订航班、查看天气预报或拨打电话。 用户可以使用任何普通字词。 LUIS 使用机器学习将用户请求映射到定义的意向。
 
@@ -58,14 +56,14 @@ LUIS 使用两种密钥：
 
 当你创建 LUIS 应用时，系统会自动生成一个初学者密钥，让你使用文本查询测试该应用。 此密钥不会启用语音服务集成，因此不适用于本教程。 必须在 Azure 仪表板中创建 LUIS 资源并将其分配给 LUIS 应用。 在本教程中，可以使用免费订阅层。
 
-在 Azure 仪表板中创建 LUIS 资源之后，请登录到 [LUIS 门户](https://www.luis.ai/home)，在“我的应用”页上选择自己的应用程序，然后切换到应用的“管理”页。 最后，在侧栏中单击“密钥和终结点”。
+在 Azure 仪表板中创建 LUIS 资源之后，请登录到 [LUIS 门户](https://www.luis.ai/home)，在“我的应用”页上选择自己的应用程序，然后切换到应用的“管理”页。 最后，在侧栏中单击“密钥和终结点”。 
 
 ![LUIS 门户密钥和终结点设置](media/sdk/luis-keys-endpoints-page.png)
 
 在“密钥和终结点”设置页上：
 
-1. 向下滚动到“资源和密钥”部分，单击“分配资源”。
-1. 在“将密钥分配到应用”对话框中进行以下选择：
+1. 向下滚动到“资源和密钥”部分，单击“分配资源”。 
+1. 在“将密钥分配到应用”对话框中进行以下选择： 
 
     * 选择“Microsoft”作为租户。
     * 在“订阅名称”下，选择包含所要使用的 LUIS 资源的 Azure 订阅。

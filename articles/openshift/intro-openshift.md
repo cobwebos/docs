@@ -2,23 +2,23 @@
 title: Azure Red Hat OpenShift 简介 |Microsoft Docs
 description: 了解 Microsoft Azure Red Hat OpenShift 的功能和优势，以部署和管理基于容器的应用程序。
 services: container-service
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 ms.service: container-service
 manager: jeconnoc
 ms.topic: overview
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: bfa3e63a433a6948f05ece7ec3c3a6180933510b
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 7cabedaec1190437aa9f225397afa8871cb06e88
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466168"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306377"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-借助 Microsoft Azure Red Hat OpenShift 服务，可以部署完全托管的 [OpenShift](https://www.openshift.com/) 群集。
+借助 Microsoft Azure Red Hat OpenShift  服务，可以部署完全托管的 [OpenShift](https://www.openshift.com/) 群集。
 
 Azure Red Hat OpenShift 扩展 [Kubernetes](https://kubernetes.io/)。 在生产环境中使用 Kubernetes 运行容器需要使用其他工具和资源，例如映像注册表、存储管理、网络解决方案以及日志记录和监视工具，这些都必须在一起进行版本控制和测试。 构建基于容器的应用程序需要与中间件、框架、数据库和 CI/CD 工具的更多集成工作。 Azure Red Hat OpenShift 将这一切合并到单个平台，简化 IT 团队操作，并为应用程序团队提供了执行所需的内容。
 
