@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: ce05d097aa69aa1aadb8450e40722448bc5a7de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55b73f5f4e6998eb1eb8c5ebc873fa20f8722a3e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61402035"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304586"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>使用 C# 创建和管理 Azure 中的 Windows VM #
 
@@ -39,15 +39,15 @@ ms.locfileid: "61402035"
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“.NET 桌面开发”，然后单击“安装”。 在摘要中，可以看到系统已自动选择“.NET Framework 4 4.6 开发工具”。 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 .NET 工作负荷。
-2. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
-3. 在“模板” > “Visual C#”中，选择“控制台应用(.NET Framework)”，输入 *myDotnetProject* 作为项目名称，选择项目位置，然后单击“确定”。
+1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“.NET 桌面开发”  ，然后单击“安装”  。 在摘要中，可以看到系统已自动选择“.NET Framework 4 4.6 开发工具”。  如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 .NET 工作负荷。
+2. 在 Visual Studio 中，单击“文件”   > “新建”   > “项目”  。
+3. 在“模板” > “Visual C#”中，选择“控制台应用(.NET Framework)”，输入 *myDotnetProject* 作为项目名称，选择项目位置，然后单击“确定”。    
 
 ## <a name="install-the-package"></a>安装包
 
 使用 NuGet 包可以最轻松地安装完成这些步骤所需的库。 若要在 Visual Studio 中获取所需的库，请执行以下步骤：
 
-1. 单击“工具” > “Nuget 包管理器”，然后单击“包管理器控制台”。
+1. 单击“工具” > “Nuget 包管理器”，然后单击“包管理器控制台”    。
 2. 在控制台中键入此命令：
 
     ```
@@ -60,7 +60,7 @@ ms.locfileid: "61402035"
 
 ### <a name="create-the-authorization-file"></a>创建授权文件
 
-1. 在解决方案资源管理器中，右键单击“myDotnetProject” > “添加” > “新建项”，然后在“Visual C# 项”中选择“文本文件”。 命名文件 azureauth.properties，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击“myDotnetProject” > “添加” > “新建项”，然后在“Visual C# 项”中选择“文本文件”      。 命名文件 azureauth.properties，然后单击“添加”   。
 2. 添加这些授权属性：
 
     ```
@@ -74,18 +74,18 @@ ms.locfileid: "61402035"
     graphURL=https://graph.windows.net/
     ```
 
-    将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符。
+    将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符     。
 
 3. 保存 azureauth.properties 文件。 
 4. 在 Windows 中设置名为 AZURE_AUTH_LOCATION 的环境变量，其中包含创建的授权文件的完整路径。 例如，以下 PowerShell 命令可用于：
 
     ```
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
 ### <a name="create-the-management-client"></a>创建管理客户端
 
-1. 为所创建的项目打开 Program.cs 文件，并将这些 using 语句添加到文件顶部的现有语句：
+1. 打开您创建的项目的 Program.cs 文件。 然后，添加以下 using 在文件顶部的语句的现有语句：
 
     ```
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -365,7 +365,7 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>将数据磁盘添加到 VM
 
-若要将数据磁盘添加到虚拟机，请将以下代码添加到 Main 方法，以添加大小为 2 GB 的数据磁盘，以及为 0 的 LUN 和 ReadWrite 缓存类型：
+若要将数据磁盘添加到虚拟机，请将此代码添加到 Main 方法。 此示例将添加数据磁盘为 2 GB 的大小，han 0 的 LUN 和 ReadWrite 缓存类型：
 
 ```
 Console.WriteLine("Adding data disk to vm...");
@@ -390,7 +390,7 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 控制台应用程序从头到尾完成运行大约需要五分钟时间。 
 
-1. 若要运行控制台应用程序，请单击“开始”。
+1. 若要运行控制台应用程序，请单击“开始”  。
 
 2. 在按 **Enter** 开始删除资源之前，可能需要在 Azure 门户中花几分钟时间来验证资源的创建。 单击部署状态以查看有关部署的信息。
 

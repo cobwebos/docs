@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/14/2019
+ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60453c320a66a8eebd7460b3930241f9e81b8a1b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 235877ac8f84e695e5f81770d33b6fed89a5f241
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784330"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298799"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -44,10 +44,20 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态将指示版本是否可用于自动升级或仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect。 请注意，并非所有 Azure AD Connect 配置都有资格进行自动升级。 请点击此链接阅读有关[自动升级](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)的详细信息
 
 ## <a name="13210"></a>1.3.21.0
+>[!IMPORTANT]
+>是一个已知的问题与将 Azure AD Connect 从早期版本升级到 1.3.21.0 其中 O365 门户不会反映的更新的版本即使已成功升级 Azure AD Connect 也是如此。
+>
+> 若要解决此，需要导入**AdSync**模块，然后运行`Set-ADSyncDirSyncConfiguration`在 Azure AD Connect 服务器上的 powershell cmdlet。  可以使用以下步骤：
+>
+>1. 在管理员模式下打开 Powershell
+>2. 运行 `Import-Module "ADSync"`
+>3. 运行 `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`
+ 
+
 
 ### <a name="release-status"></a>版本状态 
 
-05/14/2019:TBD
+05/14/2019:已发布，供下载
 
 
 ### <a name="fixed-issues"></a>修复的问题 
@@ -58,7 +68,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ### <a name="release-status"></a>版本状态 
 
-04/24/2019:已发布，供下载
+2019 年 4 月 24 日：已发布，供下载
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进 
 
@@ -75,7 +85,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 - 升级到了 ADAL 3.19.8 以便对 Ping 执行 WS-Trust 修复，并添加了对新 Azure 实例的支持 
 - 修改了组同步规则，以便将声明所需的 samAccountName、DomainNetbios 和 DomainFQDN 传送到云中 
 - 修改默认同步规则处理 – 阅读更多[此处](how-to-connect-fix-default-rules.md)。
-- 添加了一个作为 Windows 服务运行的新代理。 此代理名为“管理代理”，可用于对 Azure AD Connect 服务器进行更深入的远程诊断，以帮助 Microsoft 工程师在收到支持案例时进行故障排除。 未安装和默认情况下启用此代理。  有关如何安装和启用代理的详细信息请参阅[什么是 Azure AD Connect 管理员代理？](whatis-aadc-admin-agent.md)。 
+- 添加了一个作为 Windows 服务运行的新代理。 此代理名为“管理代理”，可用于对 Azure AD Connect 服务器进行更深入的远程诊断，以帮助 Microsoft 工程师在收到支持案例时进行故障排除。 默认情况下不会安装并启用此代理。  有关如何安装并启用此代理的详细信息，请参阅[什么是 Azure AD Connect 管理员代理？](whatis-aadc-admin-agent.md)。 
 - 更新了最终用户许可协议 (EULA) 
 - 为使用 AD FS 作为登录类型的部署添加了自动升级支持。  借助此新增功能，在升级过程中不再需要更新 AD FS Azure AD 信赖方信任。 
 - 添加了一个 Azure AD 信任管理任务，该任务提供两个选项：分析/更新信任和重置信任。 
@@ -196,7 +206,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 
 - Azure AD Connect 中的 Ping Federate 集成现已公开发布。 [深入了解如何将 Azure AD 与 Ping Federate 联合](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
-- Azure AD Connect 现在每次更新时都可在 AD FS 中创建 Azure AD 信任的备份，并将其存储在单独的文件中以便轻松还原（如果需要）。 [了解有关新功能和 Azure AD 的详细信息中的信任管理 Azure AD Connect](https://aka.ms/fedtrustinaadconnect)。
+- Azure AD Connect 现在每次更新时都可在 AD FS 中创建 Azure AD 信任的备份，并将其存储在单独的文件中以便轻松还原（如果需要）。 [详细了解 Azure AD Connect 中的新增功能和 Azure AD 信任管理](https://aka.ms/fedtrustinaadconnect)。
 - 新的故障排除工具有助于解决更改主要电子邮件地址和隐藏全局地址列表中的帐户的问题
 - 已更新 Azure AD Connect，以包括最新版 SQL Server 2012 本机客户端
 - 如果在“更改用户登录”任务中将用户登录切换为“密码哈希同步”或“直通身份验证”，将默认启用“无缝单一登录”复选框。
@@ -210,12 +220,12 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ### <a name="fixed-issues"></a>修复的问题 
 
-- 修复了 bug，AAD Connect 服务器会升级到.NET 4.7.2 之后显示 CPU 使用率过高
+- 修复了以下 bug：在升级到 .NET 4.7.2 之后，AAD Connect 服务器显示 CPU 使用率高
 - 修复了以下 bug：针对自动解决的 SQL 死锁问题间歇性生成错误消息
 - 修复了同步规则编辑器和 Sync Service Manager 的多个辅助功能问题  
 - 修复了以下 bug：Azure AD Connect 无法获取注册表设置信息
 - 修复了以下 bug：用户在向导中前进/后退时会出现问题
-- 修复了 bug，以防止由于不正确的多线程处理在向导中发生错误
+- 修复了以下 bug：由于向导中多线程处理不正确而导致错误
 - 当“组同步筛选”页在解析安全组时遇到 LDAP 错误，Azure AD Connect 现在会返回全保真度异常。  引用异常的根本原因仍未知，并且将被其他 bug 解决。
 -  修复了 STK 和 NGC 键（WHfB 的用户/设备对象的 ms-DS-KeyCredentialLink 属性）的权限设置出错这一 bug。     
 - 修复了以下 bug：错误调用“Set-ADSyncRestrictedPermissions”
@@ -259,7 +269,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 - Azure AD Connect 向导：AD 域和 Azure AD 验证域存在任何不匹配时，在 Azure AD 登录页面上显示验证复选框
 - 自动升级 PowerShell 修补程序，以在尝试自动升级后的某些情况下正确设置自动升级状态。
 - Azure AD Connect 向导：更新遥测以捕获之前缺失的信息
-- Azure AD Connect 向导：当使用“更改用户登录”任务从 AD FS 切换到直通身份验证时，已进行以下更改：
+- Azure AD Connect 向导：当使用“更改用户登录”任务从 AD FS 切换到直通身份验证时，已进行以下更改： 
     - 在我们将域从联盟域转换为托管域之前，直通身份验证代理已安装在 Azure AD Connect 服务器上，并且直通身份验证功能处于已启用状态。
     - 用户不再从联盟用户转换为托管用户。 只有域会被转换。
 - Azure AD Connect 向导：当用户 UPN 更新 ' 特殊字符正则表达式以支持特殊字符时，AD FS 多域正则表达式不正确
@@ -312,7 +322,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 #### <a name="fixed-issues"></a>修复的问题
 
 * 如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 以前会阻止自动升级。 此功能现已更改为，不阻止自动升级未来版本。
-* 将“用户登录”页选项“密码同步”更改为了“密码哈希同步”。  Azure AD Connect 同步密码哈希值（而不是密码），因此这与实际发生的情况一致。  有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](how-to-connect-password-hash-synchronization.md)
+* 将“用户登录”  页选项“密码同步”更改为了“密码哈希同步”。  Azure AD Connect 同步密码哈希值（而不是密码），因此这与实际发生的情况一致。  有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](how-to-connect-password-hash-synchronization.md)
 
 ## <a name="117490"></a>1.1.749.0
 状态：已发布给选定的客户
@@ -458,35 +468,35 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 状态：2017 年 10 月 19 日
 
 > [!IMPORTANT]
-> Azure AD Connect 版本 1.1.647.0 与 Azure AD Connect Health 代理（用于同步）版本 3.0.127.0 之间存在已知的兼容性问题。 此问题会阻止 Health 代理向 Azure AD Health 服务发送有关 Azure AD Connect 同步服务的运行状况数据（包括对象同步错误和运行历史记录数据）。 将 Azure AD Connect 部署手动升级到版本 1.1.647.0 之前，请验证 Azure AD Connect 服务器上是否安装了最新版本的 Azure AD Connect Health 代理。 为此，可以转到“控制面板”→“添加/删除程序”，并找到应用程序“用于同步的 Microsoft Azure AD Connect Health 代理”。如果其版本为 3.0.127.0，我们建议等到推出了下一个 Azure AD Connect 版本再升级。 如果 Health 代理版本不是 3.0.127.0，则可以继续进行手动就地升级。 请注意，此问题不会影响交叉升级，也不影响执行 Azure AD Connect 全新安装的客户。
+> Azure AD Connect 版本 1.1.647.0 与 Azure AD Connect Health 代理（用于同步）版本 3.0.127.0 之间存在已知的兼容性问题。 此问题会阻止 Health 代理向 Azure AD Health 服务发送有关 Azure AD Connect 同步服务的运行状况数据（包括对象同步错误和运行历史记录数据）。 将 Azure AD Connect 部署手动升级到版本 1.1.647.0 之前，请验证 Azure AD Connect 服务器上是否安装了最新版本的 Azure AD Connect Health 代理。 为此，可以转到“控制面板”→“添加/删除程序”，并找到应用程序“用于同步的 Microsoft Azure AD Connect Health 代理”。   如果其版本为 3.0.127.0，我们建议等到推出了下一个 Azure AD Connect 版本再升级。 如果 Health 代理版本不是 3.0.127.0，则可以继续进行手动就地升级。 请注意，此问题不会影响交叉升级，也不影响执行 Azure AD Connect 全新安装的客户。
 >
 >
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>修复的问题
-* 修复了 Azure AD Connect 向导中的“更改用户登录”任务：
+* 修复了 Azure AD Connect 向导中的“更改用户登录”任务： 
 
-  * 如果存在一个**已启用**密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。 在应用更改之前，向导会错误地显示“禁用密码同步”提示。 但是，在应用更改之后，密码同步仍保持启用状态。 通过这项修复，向导不再会显示该提示。
+  * 如果存在一个**已启用**密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。  在应用更改之前，向导会错误地显示“禁用密码同步”提示。  但是，在应用更改之后，密码同步仍保持启用状态。 通过这项修复，向导不再会显示该提示。
 
-  * 根据设计，在使用“更改用户登录”任务更新用户登录方法时，向导不会禁用密码同步。 这是为了避免干扰想要保留密码同步的客户，即使他们启用直通身份验证或联合身份验证作为其主要用户登录方法。
+  * 根据设计，在使用“更改用户登录”任务更新用户登录方法时，向导不会禁用密码同步。  这是为了避免干扰想要保留密码同步的客户，即使他们启用直通身份验证或联合身份验证作为其主要用户登录方法。
   
-  * 如果想要在更新用户登录方法后禁用密码同步，必须执行向导中的“自定义同步配置”任务。 导航到“可选功能”页后，取消选中“密码同步”选项。
+  * 如果想要在更新用户登录方法后禁用密码同步，必须执行向导中的“自定义同步配置”任务。  导航到“可选功能”页后，取消选中“密码同步”选项。  
   
-  * 请注意，如果尝试启用/禁用无缝单一登录，也会发生同样的问题。 具体而言，此时某个现有的 Azure AD Connect 部署启用了密码同步，同时用户登录方法已配置为“直通身份验证”。 使用“更改用户登录”任务尝试选中/取消选中“启用无缝单一登录”选项，同时将用户登录方法保持配置为“直通身份验证”。 在应用更改之前，向导会错误地显示“禁用密码同步”提示。 但是，在应用更改之后，密码同步仍保持启用状态。 通过这项修复，向导不再显示该提示。
+  * 请注意，如果尝试启用/禁用无缝单一登录，也会发生同样的问题。 具体而言，此时某个现有的 Azure AD Connect 部署启用了密码同步，同时用户登录方法已配置为“直通身份验证”。  使用“更改用户登录”任务尝试选中/取消选中“启用无缝单一登录”选项，同时将用户登录方法保持配置为“直通身份验证”。   在应用更改之前，向导会错误地显示“禁用密码同步”提示。  但是，在应用更改之后，密码同步仍保持启用状态。 通过这项修复，向导不再显示该提示。
 
-* 修复了 Azure AD Connect 向导中的“更改用户登录”任务：
+* 修复了 Azure AD Connect 向导中的“更改用户登录”任务： 
 
-  * 如果存在一个**已禁用**密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。 在应用更改后，向导会同时启用直通身份验证和密码同步。 通过这项修复，向导不再启用密码同步。
+  * 如果存在一个**已禁用**密码同步的现有 Azure AD Connect 部署，并尝试将用户登录方法设置为“直通身份验证”，则会发生此问题。  在应用更改后，向导会同时启用直通身份验证和密码同步。 通过这项修复，向导不再启用密码同步。
 
-  * 过去，密码同步是启用直通身份验证的先决条件。 将用户登录方法设置为“直通身份验证”时，向导会同时启用直通身份验证和密码同步。 最近，已去除“密码同步”这项先决条件。 Azure AD Connect 版本 1.1.557.0 中对 Azure AD Connect 做了更改，在将用户登录方法设置为“直通身份验证”时，不会启用密码同步。 但是，该项更改只会应用到 Azure AD Connect 安装。 通过这项修复，相同的更改也会应用到“更改用户登录”任务。
+  * 过去，密码同步是启用直通身份验证的先决条件。 将用户登录方法设置为“直通身份验证”时，向导会同时启用直通身份验证和密码同步。  最近，已去除“密码同步”这项先决条件。 Azure AD Connect 版本 1.1.557.0 中对 Azure AD Connect 做了更改，在将用户登录方法设置为“直通身份验证”时，不会启用密码同步。  但是，该项更改只会应用到 Azure AD Connect 安装。 通过这项修复，相同的更改也会应用到“更改用户登录”任务。 
   
-  * 请注意，如果尝试启用/禁用无缝单一登录，也会发生同样的问题。 具体而言，此时某个现有的 Azure AD Connect 部署禁用了密码同步，同时用户登录方法已配置为“直通身份验证”。 使用“更改用户登录”任务尝试选中/取消选中“启用无缝单一登录”选项，同时将用户登录方法保持配置为“直通身份验证”。 应用这项更改后，向导会启用密码同步。 通过这项修复，向导不再启用密码同步。 
+  * 请注意，如果尝试启用/禁用无缝单一登录，也会发生同样的问题。 具体而言，此时某个现有的 Azure AD Connect 部署禁用了密码同步，同时用户登录方法已配置为“直通身份验证”。  使用“更改用户登录”任务尝试选中/取消选中“启用无缝单一登录”选项，同时将用户登录方法保持配置为“直通身份验证”。   应用这项更改后，向导会启用密码同步。 通过这项修复，向导不再启用密码同步。 
 
-* 修复了一个导致 Azure AD Connect 升级失败并出现错误“无法升级同步服务”的问题。 此外，在出现事件错误“服务无法启动，因为数据库的版本比所安装的二进制文件的版本更新”时，同步服务不再能够启动。 当执行升级的管理员对 Azure AD Connect 所用的 SQL 服务器没有 sysadmin 特权时，将会出现此问题。 通过这项修复，Azure AD Connect 只要求管理员在升级期间对 ADSync 数据库拥有 db_owner 特权。
+* 修复了一个导致 Azure AD Connect 升级失败并出现错误“无法升级同步服务”的问题。  此外，在出现事件错误“服务无法启动，因为数据库的版本比所安装的二进制文件的版本更新”时，同步服务不再能够启动。  当执行升级的管理员对 Azure AD Connect 所用的 SQL 服务器没有 sysadmin 特权时，将会出现此问题。 通过这项修复，Azure AD Connect 只要求管理员在升级期间对 ADSync 数据库拥有 db_owner 特权。
 
 * 修复了一个会对已启用[无缝单一登录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)的客户造成影响的 Azure AD Connect 升级问题。 升级 Azure AD Connect 之后，Azure AD Connect 向导中会错误地将无缝单一登录显示为已禁用，即使该功能保持已启用状态且完全正常。 通过这项修复，该功能现在会正确地在向导中显示为已启用。
 
-* 修复了一个导致 Azure AD Connect 向导始终在“已准备好配置”页上显示“配置源定位点”提示（即使未做出与源定位点相关的任何更改）的问题。
+* 修复了一个导致 Azure AD Connect 向导始终在“已准备好配置”页上显示“配置源定位点”提示（即使未做出与源定位点相关的任何更改）的问题。  
 
 * 在执行 Azure AD Connect 的手动就地升级时，客户必须提供相应 Azure AD 租户的全局管理员凭据。 过去，即使全局管理员凭据属于其他 Azure AD 租户，也能继续升级。 尽管升级看上去已成功完成，但某些配置不会在升级时正确保留。 待此次变更生效后，如果提供的凭据与 Azure AD 租户不一致，向导会阻止继续升级。
 
@@ -512,7 +522,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="ad-fs-management"></a>AD FS 管理
 #### <a name="fixed-issue"></a>修复的问题
-* 修复了与[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能的用法相关的问题。 此问题会影响已将“使用 AD FS 进行联合身份验证”配置为用户登录方法的客户。 执行向导中的“配置源定位点”任务时，Azure AD Connect 会改用 *ms-DS-ConsistencyGuid 作为 immutableId 的源属性。 在应用此项更改的过程中，Azure AD Connect 会尝试更新 AD FS 中 ImmutableId 的声明规则。 但是，由于 Azure AD Connect 无法提供配置 AD FS 所需的管理员凭据，此步骤失败。 通过这项修复，在执行“配置源定位点”任务时，Azure AD Connect 现在会提示输入 AD FS 的管理员凭据。
+* 修复了与[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能的用法相关的问题。 此问题会影响已将“使用 AD FS 进行联合身份验证”配置为用户登录方法的客户。  执行向导中的“配置源定位点”任务时，Azure AD Connect 会改用 *ms-DS-ConsistencyGuid 作为 immutableId 的源属性。  在应用此项更改的过程中，Azure AD Connect 会尝试更新 AD FS 中 ImmutableId 的声明规则。 但是，由于 Azure AD Connect 无法提供配置 AD FS 所需的管理员凭据，此步骤失败。 通过这项修复，在执行“配置源定位点”任务时，Azure AD Connect 现在会提示输入 AD FS 的管理员凭据。 
 
 
 
@@ -522,7 +532,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>已知问题
-* 有个已知问题会导致 Azure AD Connect 升级失败并出现错误“无法升级同步服务”的问题。 此外，在出现事件错误“服务无法启动，因为数据库的版本比所安装的二进制文件的版本更新”时，同步服务不再能够启动。 当执行升级的管理员对 Azure AD Connect 所用的 SQL 服务器没有 sysadmin 特权时，将会出现此问题。 Dbo 权限是不够的。
+* 有个已知问题会导致 Azure AD Connect 升级失败并出现错误“无法升级同步服务”的问题。  此外，在出现事件错误“服务无法启动，因为数据库的版本比所安装的二进制文件的版本更新”时，同步服务不再能够启动。  当执行升级的管理员对 Azure AD Connect 所用的 SQL 服务器没有 sysadmin 特权时，将会出现此问题。 Dbo 权限是不够的。
 
 * Azure AD Connect 升级存在已知问题，会对已启用[无缝单一登录](how-to-connect-sso.md)的客户造成影响。 升级 Azure AD Connect 后，功能会在向导中显示为已禁用，即使功能为启用状态也是如此。 未来的发布中将提供对此问题的修复。 担心此显示问题的客户可以手动修复此问题，方法是在向导中启用无缝单一登录。
 
@@ -537,12 +547,12 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 * 修复了导致升级后出现不必要完整同步步骤的问题。 一般情况下，如果现成的同步规则发生了更改，则升级后需要运行完整同步步骤。 此问题的起因是：更改检测逻辑中出现错误，当遇到具有换行字符的同步规则表达式时，此错误导致错误地检测到更改。 已向同步规则表达式中插入了换行符来提升可读性。
 * 修复了可能导致自动升级后 Azure AD Connect 服务器无法正常工作的问题。 此问题会影响 1.1.443.0 版本（或更早版本）的 Azure AD Connect 服务器。 有关此问题的详细信息，请参阅文章[自动升级后 Azure AD Connect 无法正常工作](https://support.microsoft.com/help/4038479/azure-ad-connect-is-not-working-correctly-after-an-automatic-upgrade)。
 * 修复了遇到错误后导致每 5 分钟重试自动升级的问题。 通过此次修复，遇到错误时，自动升级重试次数将指数式下降。
-* 修复了密码同步事件 611 在 Windows 应用程序事件日志中错误显示（显示为“信息”而不是“错误”）的问题。 只要密码同步出现问题，便会生成事件 611。 
+* 修复了密码同步事件 611 在 Windows 应用程序事件日志中错误显示（显示为“信息”而不是“错误”）的问题   。 只要密码同步出现问题，便会生成事件 611。 
 * 修复了 Azure AD Connect 向导中允许在未选择组写回所需的 OU 的情况下启用组写回功能的问题。
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
 * 在 Azure AD Connect 向导中的其他任务下添加了故障排除任务。 客户可以利用此任务解决与密码同步相关的问题并收集常规诊断信息。 未来，故障排除任务将扩展到能处理与目录同步相关的其他问题。
-* Azure AD Connect 现在支持名为“使用现有数据库”的新安装模式。 在此安装模式下，客户可以安装指定现有 ADSync 数据库的 Azure AD Connect。 有关此功能的详细信息，请参阅文章[使用现有数据库](how-to-connect-install-existing-database.md)。
+* Azure AD Connect 现在支持名为“使用现有数据库”的新安装模式  。 在此安装模式下，客户可以安装指定现有 ADSync 数据库的 Azure AD Connect。 有关此功能的详细信息，请参阅文章[使用现有数据库](how-to-connect-install-existing-database.md)。
 * 为了提高安全性，Azure AD Connect 现在默认为使用 TLS1.2 连接到 Azure AD 进行目录同步。 以前默认使用 TLS1.0。
 * Azure AD Connect 密码同步代理启动时，它将尝试连接到 Azure AD 的已知终结点进行密码同步。 成功连接后，它会重定向到特定于区域的终结点。 以前，除非重新启动，否则密码同步代理将一直缓存区域特定的终结点。 现在，当遇到特定于区域的终结点的连接问题时，代理将清除缓存并重试连接已知终结点。 此更改可确保已缓存的区域特定的终结点不再可用时，密码同步可以故障转移到其他区域特定的终结点。
 * 若要同步本地 AD 林中的更改，需要 AD DS 帐户。 可以 (i) 自行创建 AD DS 帐户，并将其凭据提供给 Azure AD Connect，也可以 (ii) 提供企业管理员凭据，让 Azure AD Connect 为你创建 AD DS 帐户。 以前，(i) 是 Azure AD Connect 向导中的默认选项。 现在，(ii) 是默认选项。
@@ -563,7 +573,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="seamless-single-sign-on"></a>无缝单一登录
 #### <a name="fixed-issues"></a>修复的问题
-* 修复了尝试启用[无缝单一登录](how-to-connect-sso.md)导致 Azure AD Connect 向导返回错误的问题。 错误消息为“Microsoft Azure AD Connect 身份验证代理的配置失败”。 此问题会影响以下现有用户：基于此[文章](how-to-connect-pta-upgrade-preview-authentication-agents.md)介绍的步骤，手动升级预览版身份验证代理以进行[传递身份验证](how-to-connect-sso.md)的客户。
+* 修复了尝试启用[无缝单一登录](how-to-connect-sso.md)导致 Azure AD Connect 向导返回错误的问题。 错误消息为“Microsoft Azure AD Connect 身份验证代理的配置失败”  。 此问题会影响以下现有用户：基于此[文章](how-to-connect-pta-upgrade-preview-authentication-agents.md)介绍的步骤，手动升级预览版身份验证代理以进行[传递身份验证](how-to-connect-sso.md)的客户。
 
 
 ## <a name="115610"></a>1.1.561.0
@@ -575,7 +585,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * 修复了导致现成的同步规则“Out to AD - User ImmutableId”被删除的一个问题：
 
-  * 当升级 Azure AD Connect 时，或使用 Azure AD Connect 向导中的任务选项“更新同步配置”来更新 Azure AD Connect 同步配置时，会出现此问题。
+  * 当升级 Azure AD Connect 时，或使用 Azure AD Connect 向导中的任务选项“更新同步配置”来更新 Azure AD Connect 同步配置时，会出现此问题。 
   
   * 此同步规则适用于启用了[将 ms-DS-ConsistencyGuid 用作源定位点](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)功能的客户。 版本 1.1.524.0 及更高版本中引入了此功能。 当删除此同步规则后，Azure AD Connect 无法再使用 ObjectGuid 属性值填充本地 AD ms-DS-ConsistencyGuid 属性。 它不会阻止将新用户预配到 Azure AD 中。
   
@@ -587,9 +597,9 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
   
   * 此修复可以防止升级期间发生此问题。 不过，对于已受此问题影响的现有客户，它不会还原优先级值。 将来会提供一个单独的修复来帮助进行还原。
 
-* 修复了即使在启用了基于 OU 的筛选的情况下，Azure AD Connect 向导中的“[域和 OU 筛选](how-to-connect-install-custom.md#domain-and-ou-filtering)”屏幕也将“同步所有域和 OU”选项显示为已选中的问题。
+* 修复了即使在启用了基于 OU 的筛选的情况下，Azure AD Connect 向导中的“[域和 OU 筛选](how-to-connect-install-custom.md#domain-and-ou-filtering)”屏幕也将“同步所有域和 OU”选项显示为已选中的问题。 
 
-*   修复了单击“刷新”按钮导致 Synchronization Service Manager 中的[“配置目录分区”屏幕](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)返回错误的问题。 错误消息为：“刷新域时遇到错误:无法将 ‘System.Collections.ArrayList’ 类型的对象强制转换为 ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject’ 类型。” 将新的 AD 域添加到现有 AD 林并尝试使用“刷新”按钮更新 Azure AD Connect 时出错。
+*   修复了单击“刷新”按钮导致 Synchronization Service Manager 中的[“配置目录分区”屏幕](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)返回错误的问题。  错误消息为：“刷新域时遇到错误:  无法将 ‘System.Collections.ArrayList’ 类型的对象强制转换为 ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject’ 类型。” 将新的 AD 域添加到现有 AD 林并尝试使用“刷新”按钮更新 Azure AD Connect 时出错。
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
 
@@ -615,9 +625,9 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * 修复了在更新基于 OU 的筛选配置时，导致需要删除“Out to AD - User ImmutableId”现成同步规则的问题。 此同步规则是[将 ms-DS-ConsistencyGuid 用作源定位点](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)功能所必需的。
 
-* 修复了即使在启用基于 OU 的筛选的情况下，Azure AD Connect 向导中的[“域和 OU 筛选”屏幕](how-to-connect-install-custom.md#domain-and-ou-filtering)也将“同步所有域和 OU”选项显示为选中状态的问题。
+* 修复了即使在启用基于 OU 的筛选的情况下，Azure AD Connect 向导中的[“域和 OU 筛选”屏幕](how-to-connect-install-custom.md#domain-and-ou-filtering)也将“同步所有域和 OU”选项显示为选中状态的问题。 
 
-*   修复了单击“刷新”按钮导致 Synchronization Service Manager 中的[“配置目录分区”屏幕](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)返回错误的问题。 错误消息为：“刷新域时遇到错误:无法将 ‘System.Collections.ArrayList’ 类型的对象强制转换为 ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject’ 类型。” 将新的 AD 域添加到现有 AD 林并尝试使用“刷新”按钮更新 Azure AD Connect 时出错。
+*   修复了单击“刷新”按钮导致 Synchronization Service Manager 中的[“配置目录分区”屏幕](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)返回错误的问题。  错误消息为：“刷新域时遇到错误:  无法将 ‘System.Collections.ArrayList’ 类型的对象强制转换为 ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject’ 类型。” 将新的 AD 域添加到现有 AD 林并尝试使用“刷新”按钮更新 Azure AD Connect 时出错。
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
 
@@ -670,16 +680,16 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 #### <a name="known-issue"></a>已知问题
 * 有一个问题会影响将[基于 OU 的筛选](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)与 Azure AD Connect 同步配合使用的客户。在 Azure AD Connect 向导中导航到[“域和 OU 筛选”页](how-to-connect-install-custom.md#domain-and-ou-filtering)时，预期会出现以下行为：
-  * 如果启用了基于 OU 的筛选，“同步选定的域和 OU”选项会处于选中状态。
-  * 否则，“同步所有域和 OU”选项处于选中状态。
+  * 如果启用了基于 OU 的筛选，“同步选定的域和 OU”选项会处于选中状态。 
+  * 否则，“同步所有域和 OU”选项处于选中状态。 
 
-发生的问题是，运行向导时始终会选择“同步所有域和 OU”选项。  即使之前已配置基于 OU 的筛选，也会发生此问题。 在保存任何 AAD Connect 配置更改之前，请确保**已选择“同步选定的域和 OU”选项**，并确认所有需要同步的 OU 已重新启用。 否则，会禁用基于 OU 的筛选。
+发生的问题是，运行向导时始终会选择“同步所有域和 OU”选项。   即使之前已配置基于 OU 的筛选，也会发生此问题。 在保存任何 AAD Connect 配置更改之前，请确保**已选择“同步选定的域和 OU”选项**，并确认所有需要同步的 OU 已重新启用。 否则，会禁用基于 OU 的筛选。
 
 #### <a name="fixed-issues"></a>修复的问题
 
 * 修复了密码写回允许 Azure AD 管理员重置本地 AD 特权用户帐户的密码的问题。 通过特权帐户向 Azure AD Connect 授予“重置密码”权限时，会出现此问题。 此 Azure AD Connect 版本已解决此问题：不再允许 Azure AD 管理员重置任意本地 AD 特权用户帐户的密码，除非该管理员是该帐户的所有者。 有关详细信息，请参阅[安全公告 4033453](https://technet.microsoft.com/library/security/4033453)。
 
-* 修复了与[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能相关的一个问题，该问题导致 Azure AD Connect 不写回到本地 AD ms-DS-ConsistencyGuid 属性。 如果已将多个本地 AD 林添加到 Azure AD Connect 并且已选择“用户标识跨多个目录存在”选项，则会出现此问题。 使用此类配置时，生成的同步规则不会填充 Metaverse 中的 sourceAnchorBinary 属性。 sourceAnchorBinary 属性用作 ms-DS-ConsistencyGuid 属性的源属性。 因此，不会写回到 ms-DSConsistencyGuid 属性。 为了修复此问题，我们已更新以下同步规则，以确保始终填充 Metaverse 中的 sourceAnchorBinary 属性：
+* 修复了与[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能相关的一个问题，该问题导致 Azure AD Connect 不写回到本地 AD ms-DS-ConsistencyGuid 属性。 如果已将多个本地 AD 林添加到 Azure AD Connect 并且已选择“用户标识跨多个目录存在”选项，则会出现此问题。  使用此类配置时，生成的同步规则不会填充 Metaverse 中的 sourceAnchorBinary 属性。 sourceAnchorBinary 属性用作 ms-DS-ConsistencyGuid 属性的源属性。 因此，不会写回到 ms-DSConsistencyGuid 属性。 为了修复此问题，我们已更新以下同步规则，以确保始终填充 Metaverse 中的 sourceAnchorBinary 属性：
   * In from AD - InetOrgPerson AccountEnabled.xml
   * In from AD - InetOrgPerson Common.xml
   * In from AD - User AccountEnabled.xml
@@ -695,7 +705,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 #### <a name="new-features-and-improvements"></a>新增功能和改进
 
 * 以前，[将 ms-DS-ConsistencyGuid 用作源定位点](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)功能仅可用于新部署。 现在，该功能适用于现有部署。 更具体地说：
-  * 若要访问该功能，请启动 Azure AD Connect 向导并选择“更新源定位点”选项。
+  * 若要访问该功能，请启动 Azure AD Connect 向导并选择“更新源定位点”选项。 
   * 只有使用 objectGuid 作为 sourceAnchor 属性的现有部署才会显示此选项。
   * 配置此选项时，向导会验证本地 Active Directory 目录中 ms-DS-ConsistencyGuid 属性的状态。 如果未在目录中的任何用户对象上配置此属性，则向导会将 ms-DS-ConsistencyGuid 用作 sourceAnchor 属性。 如果已在目录中的一个或多个用户对象上配置该属性，向导就会认为该属性正由其他应用程序使用，不适合用作 sourceAnchor 属性，并且不允许源定位点更改继续进行。 如果确定该属性未由现有应用程序使用，则需联系支持部门，了解如何取消显示该错误。
 
@@ -797,14 +807,14 @@ Azure AD Connect 同步
 * 修复了导致自动升级的问题，即使客户已禁用使用 Set-ADSyncAutoUpgrade cmdlet 的功能在 Azure AD Connect 服务器上发生。 使用此修复后，服务器上的自动升级进程仍升级会定期检查，但下载安装程序自动升级的配置。
 * 在 DirSync 就地升级时，Azure AD Connect 创建由 Azure AD 连接器用于与 Azure AD 同步的 Azure AD 服务帐户。 创建帐户后，Azure AD Connect 使用该帐户在 Azure AD 中进行身份验证。 有时，身份验证由于暂时性问题失败，而这又会导致 DirSync 就地升级失败，并出现错误 *“执行配置 AAD 同步任务时出错:AADSTS50034:若要登录到此应用程序，必须将帐户添加到 xxx.onmicrosoft.com 目录。”* 为了提高 DirSync 升级的复原能力，Azure AD Connect 现在会重试身份验证步骤。
 * 版本 443 中的某个问题会导致 DirSync 就地升级成功，但不会创建目录同步所需的运行配置文件。 此 Azure AD Connect 版本中包含修复逻辑。 客户升级到此版本时，Azure AD Connect 会检测缺少的运行配置文件并予以创建。
-* 修复了导致无法启动密码同步过程并出现事件 ID 6900 和错误“已添加具有相同键的项”的问题。 如果更新 OU 筛选配置以包含 AD 配置分区，则会出现此问题。 为了修复此问题，密码同步过程现在只会从 AD 域分区同步密码更改。 将跳过非域分区，例如配置分区。
+* 修复了导致无法启动密码同步过程并出现事件 ID 6900 和错误“已添加具有相同键的项”的问题。  如果更新 OU 筛选配置以包含 AD 配置分区，则会出现此问题。 为了修复此问题，密码同步过程现在只会从 AD 域分区同步密码更改。 将跳过非域分区，例如配置分区。
 * 在快速安装期间，Azure AD Connect 会创建一个本地 AD DS 帐户，AD 连接器可使用该帐户来与本地 AD 通信。 以前，创建的帐户在 user-Account-Control 属性中设置了 PASSWD_NOTREQD 标志，并在帐户中设置随机密码。 现在，在帐户中设置密码后，Azure AD Connect 会显式删除 PASSWD_NOTREQD 标志。
-* 修复了当 mailNickname 属性出现在本地 AD 架构中但未绑定到 AD 用户对象类时，导致 DirSync 升级失败并出现错误“尝试获取应用程序锁时，SQL Server 中发生死锁”错误的问题。
+* 修复了当 mailNickname 属性出现在本地 AD 架构中但未绑定到 AD 用户对象类时，导致 DirSync 升级失败并出现错误“尝试获取应用程序锁时，SQL Server 中发生死锁”错误的问题。 
 * 修复了当管理员使用 Azure AD Connect 向导更新 Azure AD Connect 同步配置时自动禁用设备写回功能的问题。 之所以出现此问题是因为，向导对本地 AD 中的现有设备写回配置执行先决条件检查，而检查失败。 修复方法是跳过检查以前是否已启用设备写回。
 * 若要配置 OU 筛选，可以使用 Azure AD Connect 向导或 Synchronization Service Manager。 以前，如果使用 Azure AD Connect 向导配置 OU 筛选，则会包含以后新建的 OU 用于目录同步。 如果不想要包含新 OU，则必须使用 Synchronization Service Manager 配置 OU 筛选。 现在，可以获得相同的行为使用 Azure AD Connect 向导。
 * 修复了导致在安装管理架构而不是 dbo 架构下创建 Azure AD Connect 所需存储过程的问题。
 * 修复了导致在 AAD Connect 服务器事件日志中省略 Azure AD 返回的 TrackingId 属性的问题。 如果 Azure AD Connect 从 Azure AD 收到了重定向消息，并且 Azure AD Connect 无法连接到提供的终结点，则会发生此问题。 在故障排除期间，支持工程师使用 TrackingId 来关联服务端日志。
-* Azure AD Connect 从 Azure AD 收到 LargeObject 错误时，会生成 EventID 为 6941 的事件，并返回消息“预配的对象太大。请减少此对象上属性值的数目。” 同时，Azure AD Connect 还会生成误导性事件 EventID 6900 和消息“Microsoft.Online.Coexistence.ProvisionRetryException:无法与 Windows Azure Active Directory 服务通信。” 为了尽量减少混淆，在收到 LargeObject 错误时，Azure AD Connect 不再生成后一种事件。
+* Azure AD Connect 从 Azure AD 收到 LargeObject 错误时，会生成 EventID 为 6941 的事件，并返回消息“预配的对象太大。  请减少此对象上属性值的数目。” 同时，Azure AD Connect 还会生成误导性事件 EventID 6900 和消息“Microsoft.Online.Coexistence.ProvisionRetryException:  无法与 Windows Azure Active Directory 服务通信。” 为了尽量减少混淆，在收到 LargeObject 错误时，Azure AD Connect 不再生成后一种事件。
 * 修复了当尝试更新通用 LDAP 连接器的配置时，Synchronization Service Manager 无法响应的问题。
 
 **新功能/改进：**
@@ -894,7 +904,7 @@ Azure AD Connect 同步
 Azure AD Connect 同步
 * 修复了在 Azure AD 连接器的显示名称没有包含分配给 Azure AD 租户的初始 onmicrosoft.com 域时，Azure AD Connect 向导会失败的问题。
 * 修复了在同步服务帐户的密码包含特殊字符（如撇号、冒号和空格）的情况下，在与 SQL 数据库进行连接时，Azure AD Connect 向导会失败的问题。
-* 修复了问题，这会导致错误"的图像有不同于映像的定位点"以在后暂时不在本地调试模式下，Azure AD Connect 服务器上发生 AD 对象同步，并再包含它再次同步。
+* 修复了在暂时不同步某个本地 AD 对象，再将其进行同步后，暂存模式下的 Azure AD Connect 服务器上将出现“该映像具有不同于映像的定位点”错误的问题。
 * 修复了在暂时不同步某个本地 AD 对象，再将其进行同步后，暂存模式下的 Azure AD Connect 服务器上将出现“DN 定位的对象是一个幻影”错误的问题。
 
 AD FS 管理
@@ -1018,7 +1028,7 @@ AD FS 管理
 
 * 警告并帮助验证域（如果在运行 Azure AD Connect 之前未执行此操作）。
 * 添加了对[德国 Microsoft 云](reference-connect-instances.md#microsoft-cloud-germany)的支持。
-* 添加了对最新 [Microsoft Azure 政府云](reference-connect-instances.md#microsoft-azure-government-cloud)基础结构的支持，以及新的 URL 要求。
+* 添加了对最新 [Microsoft Azure 政府云](reference-connect-instances.md#microsoft-azure-government)基础结构的支持，以及新的 URL 要求。
 
 **已解决的问题和改进：**
 
@@ -1051,7 +1061,7 @@ AD FS 管理
 **已解决的问题：**
 
 * 如果安装不位于默认的 C:\Program Files 文件夹中，则无法从旧版升级。
-* 如果进行安装，并在安装向导结束时清除“启动同步过程”，再次运行安装向导将不启用计划程序。
+* 如果进行安装，并在安装向导结束时清除“启动同步过程”，再次运行安装向导将不启用计划程序。 
 * 在日期/时间格式并非美国英语的服务器上，计划程序将无法正常运行。 此外，还会阻止 `Get-ADSyncScheduler` 返回正确的时间。
 * 如果以 AD FS 作为登录选项和升级来安装旧版 Azure AD Connect，便无法再次运行安装向导。
 

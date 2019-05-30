@@ -8,16 +8,20 @@ ms.topic: reference
 ms.date: 03/28/2019
 ms.author: pabutler
 ROBOTS: NOINDEX
-ms.openlocfilehash: 816bdc61f85fdf171870a5b552661b816ec65e2f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 9b80f0fd36545de94e7128080dba5e516344c107
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943143"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257501"
 ---
 # <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS 履行 Api 版本 1 （已弃用）
 
 本文介绍如何使用 API 创建 SaaS 套餐。 不需要允许对 SaaS 产品/服务的订阅，如果你已通过所选的 Azure 销售的产品的 Api，REST 方法和终结点，组成。  
+
+> [!IMPORTANT] 
+> SaaS 产品/服务的功能已迁移到[Microsoft 合作伙伴中心](https://partner.microsoft.com/dashboard/directory)。  所有新的发布服务器必须使用合作伙伴中心创建新的 SaaS 产品/服务和管理现有产品/服务。  使用 SaaS 产品/服务的当前发布服务器正在 batchwise 迁移从云合作伙伴门户到合作伙伴中心。  云合作伙伴门户将显示状态消息以指示何时已迁移特定的现有产品/服务。
+> 有关详细信息，请参阅[创建新的 SaaS 产品/服务](../../partner-center-portal/create-new-saas-offer.md)。
 
 > [!WARNING]
 > 此初始版本的 SaaS 履行 API 已弃用;请改用[SaaS 履行 API V2](./cpp-saas-fulfillment-api-v2.md)。  当前正在维护此 API 仅用于现有发布服务器。 
@@ -72,7 +76,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 |  |  |  |
   
 
-响应正文
+响应正文 
 
 ``` json
 {
@@ -92,7 +96,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 |  |  |  |
 
 
-响应代码
+响应代码 
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
@@ -104,7 +108,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 |  |  |  |
 
 
-响应标头
+响应标头 
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -121,7 +125,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -154,7 +158,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | planId           | （必需）字符串        | 用户订阅的 SaaS 服务的计划 ID。  |
 |  |  |  |
 
-响应代码
+响应代码 
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
@@ -169,7 +173,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 对于 202 响应，请跟踪“Operation-location”标头中的请求操作状态。 身份验证与其他市场 API 相同。
 
-响应标头
+响应标头 
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -186,7 +190,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 **PATCH**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -218,7 +222,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 |  planId           |  （必需）字符串         | 用户订阅的 SaaS 服务的计划 ID。          |
 |  |  |  |
 
-响应代码
+响应代码 
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
@@ -231,7 +235,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                          |
 |  |  |  |
 
-响应标头
+响应标头 
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -250,7 +254,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -267,7 +271,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
 
-响应代码
+响应代码 
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
@@ -281,7 +285,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 对于 202 响应，请跟踪“Operation-location”标头中的请求操作状态。 身份验证与其他市场 API 相同。
 
-响应标头
+响应标头 
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -300,7 +304,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ?api-version=2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -317,7 +321,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  | 
 
-响应正文
+响应正文 
 
 ```json
 {
@@ -338,7 +342,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | lastModified       | DateTime      | 上次更新操作的时间 (UTC)。                                                      |
 |  |  |  |
 
-响应代码
+响应代码 
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
@@ -350,7 +354,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                             |
 |  |  |  |
 
-响应标头
+响应标头 
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -368,7 +372,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -385,7 +389,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                                                                    |
 |  |  |  |
 
-响应正文
+响应正文 
 
 ```json
 {
@@ -410,7 +414,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | lastModified           | DateTime      | 订阅修改时间戳值 (UTC)。 |
 |  |  |  |
 
-响应代码
+响应代码 
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
@@ -422,7 +426,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                             |
 |  |  |  |
 
-响应标头
+响应标头 
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -457,7 +461,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
 
-响应正文
+响应正文 
 
 ```json
 {
@@ -482,7 +486,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | lastModified           | DateTime      | 订阅修改时间戳值 (UTC)。 |
 |  |  |  |
 
-响应代码
+响应代码 
 
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
@@ -494,7 +498,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭。 请稍后重试。                             |
 |  |  |  |
 
-响应标头
+响应标头 
 
 | **标头密钥**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
