@@ -176,7 +176,7 @@
           href: how-to-train-ml-models.md
         - name: 使用 PyTorch
           href: how-to-train-pytorch.md
-        - name: 使用 TensorFlow 和 Keras
+        - name: 使用 TensorFlow
           href: how-to-train-tensorflow.md
         - name: 优化超参数
           displayName: parameter

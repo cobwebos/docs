@@ -15,7 +15,7 @@ ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: b3f86147eb91e874d5317204ca05fb45628414d3
 ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/17/2019
 ms.locfileid: "65833414"
@@ -45,7 +45,7 @@ ms.locfileid: "65833414"
 
 -   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。
 
-##  <a name="ConvertJSONtoXML">将 JSON 转换为 XML</a>
+##  <a name="ConvertJSONtoXML"></a>将 JSON 转换为 XML
  `json-to-xml` 策略将请求或响应正文从 JSON 转换为 XML。
 
 ### <a name="policy-statement"></a>策略语句

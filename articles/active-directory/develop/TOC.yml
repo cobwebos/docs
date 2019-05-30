@@ -297,6 +297,8 @@
           items:
             - name: 应用程序和服务主体
               href: app-objects-and-service-principals.md
+            - name: 将应用添加到 Azure AD 的方式及原因
+              href: active-directory-how-applications-are-added.md
             - name: 单租户和多租户应用
               href: single-and-multi-tenant-apps.md
         - name: 权限和许可

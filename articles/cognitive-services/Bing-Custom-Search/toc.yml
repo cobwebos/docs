@@ -62,13 +62,13 @@
 - name: 引用
   items:
     - name: 必应自定义自动建议 API 参考
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference'
     - name: 必应自定义图像搜索 API 参考
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference'
     - name: 必应自定义搜索 API 参考
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference'
     - name: 必应自定义视频搜索 API 参考
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference'
     - name: 必应搜索 API 使用和显示要求
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true

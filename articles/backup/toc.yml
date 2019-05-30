@@ -219,18 +219,18 @@
           href: backup-azure-restore-windows-server.md
         - name: 还原 Windows Server 系统状态
           href: backup-azure-restore-system-state.md
-        - name: 监视和管理恢复服务保管库
-          href: backup-azure-manage-windows-server.md
     - name: 恢复服务保管库
       items:
         - name: 恢复服务保管库概述
           href: backup-azure-recovery-services-vault-overview.md
-        - name: 将备份保管库升级到恢复服务保管库
-          href: backup-azure-upgrade-backup-to-recovery-services.md
+        - name: 创建恢复服务保管库
+          href: backup-create-rs-vault.md
         - name: 删除恢复服务保管库
           href: backup-azure-delete-vault.md
         - name: 移动恢复服务保管库
           href: backup-azure-move-recovery-services-vault.md
+        - name: 监视和管理恢复服务保管库
+          href: backup-azure-manage-windows-server.md
     - name: 故障排除
       items:
         - name: Azure VM

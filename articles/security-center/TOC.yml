@@ -45,6 +45,8 @@
       href: security-center-onboarding.md
     - name: 使用 Windows Defender ATP 进行服务器保护
       href: security-center-wdatp.md
+    - name: IaaS 高级数据安全
+      href: security-center-iaas-advanced-data.md
     - name: 保护应用服务
       href: security-center-app-services.md
     - name: 使用安全策略
@@ -62,8 +64,6 @@
       items:
         - name: 数据收集
           href: security-center-enable-data-collection.md
-        - name: IaaS 高级数据安全
-          href: security-center-iaas-advanced-data.md
         - name: 内置安全策略
           href: security-center-policy-definitions.md
         - name: 电子邮件通知

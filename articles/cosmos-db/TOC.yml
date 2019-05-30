@@ -216,7 +216,7 @@
           href: online-backup-and-restore.md
         - name: 合规性
           href: compliance.md
-    - name: 限制
+    - name: 资源限制
       href: concepts-limits.md
 - name: Cassandra、MongoDB 和其他 API
   expanded: true

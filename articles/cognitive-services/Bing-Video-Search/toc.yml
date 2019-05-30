@@ -64,9 +64,9 @@
 - name: 引用
   items:
     - name: 必应视频搜索 API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference'
     - name: 必应视频搜索 API v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v5-reference'
     - name: SDK
       items:
         - name: .NET
