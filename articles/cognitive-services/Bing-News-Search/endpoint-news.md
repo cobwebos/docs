@@ -10,16 +10,16 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: b680f476345bde61797fd1cc137cad6e5653d0a5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6ea218da23d65696c76008cb15e183fcc4bbda10
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798219"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383230"
 ---
 # <a name="bing-news-search-api-endpoints"></a>必应新闻搜索 API 终结点
 
-“新闻搜索 API”返回新闻文章、网页、图像、视频和[实体](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 实体包含有关人员、地点或主题的摘要信息。
+ “新闻搜索 API”返回新闻文章、网页、图像、视频和[实体](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 实体包含有关人员、地点或主题的摘要信息。
 
 ## <a name="endpoints"></a>终结点
 
@@ -39,7 +39,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-按类别返回热门新闻项。 可以使用 `category=business`、`category=sports` 或 `category=entertainment` 专门请求热门商业、体育或娱乐文章。  `category` 参数只能与 `/news` URL 结合使用。 指定类别有一些正式要求；请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters)文档中的 `category`。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-endpoint)。
+按类别返回热门新闻项。 可以使用 `category=business`、`category=sports` 或 `category=entertainment` 专门请求热门商业、体育或娱乐文章。  `category` 参数只能与 `/news` URL 结合使用。 指定类别有一些正式要求；请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)文档中的 `category`。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-endpoint)。
 
 ### <a name="trending-news-topics"></a>热门新闻主题 
 
@@ -51,7 +51,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 
 ## <a name="next-steps"></a>后续步骤
 
-有关标头、参数、市场代码、响应对象、错误等的详细信息，请参阅[必应新闻搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 参考。
+有关标头、参数、市场代码、响应对象、错误等的详细信息，请参阅[必应新闻搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) 参考。
 
 若要完整了解每个终结点支持的参数，请参阅每种类型对应的参考页面。
 有关使用新闻搜索 API 的基本请求的示例，请参阅[必应新闻搜索快速入门](https://docs.microsoft.com/azure/cognitive-services/bing-news-search)。

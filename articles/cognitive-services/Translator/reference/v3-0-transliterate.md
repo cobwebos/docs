@@ -3,19 +3,19 @@ title: 文本翻译 API Transliterate 方法
 titlesuffix: Azure Cognitive Services
 description: 使用文本翻译 API Transliterate 方法。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: cd7fee34f020f16d1511bc57b4ad86dbd5eb168d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 138a04cca1bbbaf7b59f628f491a5f13d73fb6f7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796957"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387399"
 ---
 # <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
 
@@ -38,11 +38,11 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   <th>说明</th>
   <tr>
     <td>api-version</td>
-    <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
+    <td>必需参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
-    <td>语言</td>
-    <td>必需参数。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的[支持的语言](./v3-0-languages.md)获得的 `transliteration` 范围中列出了可能的语言。</td>
+    <td>language</td>
+    <td>必需参数  。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的[支持的语言](./v3-0-languages.md)获得的 `transliteration` 范围中列出了可能的语言。</td>
   </tr>
   <tr>
     <td>fromScript</td>
@@ -65,15 +65,15 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
+    <td>必需的请求标头  。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>必需的请求标头。<br/>请求正文的长度。</td>
+    <td>必需的请求标头  。<br/>请求正文的长度。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>可选  。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 

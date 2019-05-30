@@ -7,16 +7,16 @@ ms.service: azure
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tarcher
-ms.openlocfilehash: 7145a50bc53fd28afafd3de9c724b5e5f71624fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89108f02957990ad1c7eb736f39de89537f06db5
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60905872"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297924"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>在 Azure 存储中存储 Terraform 状态
 
-Terraform 状态用于对已部署资源和 Terraform 配置进行对帐。 Terraform 可通过状态了解需要添加、更新或删除的 Azure 资源。 默认情况下，运行 Terraform apply 的同时将 Terraform 状态存储在本地。 此配置不是理想选择，原因如下：
+Terraform 状态用于对已部署资源和 Terraform 配置进行对帐。 Terraform 可通过状态了解需要添加、更新或删除的 Azure 资源。 默认情况下，运行 Terraform apply 的同时将 Terraform 状态存储在本地  。 此配置不是理想选择，原因如下：
 
 - 本地状态不适用于团队或协作环境
 - Terraform 状态可能包含敏感信息
@@ -56,7 +56,7 @@ echo "access_key: $ACCOUNT_KEY"
 
 ## <a name="configure-state-backend"></a>配置状态后端
 
-在运行 Terraform init 时配置 Terraform 状态后端。 配置状态后端需要以下数据。
+在运行 Terraform init 时配置 Terraform 状态后端  。 配置状态后端需要以下数据。
 
 - storage_account_name - Azure 存储帐户的名称。
 - container_name - blob 容器的名称。
@@ -77,9 +77,9 @@ export ARM_ACCESS_KEY=<storage access key>
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
 ```
 
-要将 Terraform 配置为使用后端，请在 Terraform 配置中包括类型为 azurerm 的后端配置。 向配置块中添加 storage_account_name、container_name 和 key 值。
+要将 Terraform 配置为使用后端，请在 Terraform 配置中包括类型为 azurerm 的后端配置   。 向配置块中添加 storage_account_name、container_name 和 key 值    。
 
-下面的示例配置 Terraform 后端并创建 Azure 资源组。 将值替换为你的环境中的值。
+下面的示例配置 Terraform 后端，并创建 Azure 资源组。 将值替换为你的环境中的值。
 
 ```json
 terraform {
@@ -96,7 +96,7 @@ resource "azurerm_resource_group" "state-demo-secure" {
 }
 ```
 
-现在，使用 Terraform init 初始化配置，然后通过 Terraform apply 运行配置。 完成后即可在 Azure 存储 Blob 中找到状态文件。
+现在，使用 Terraform init 初始化配置，然后通过 Terraform apply 运行配置   。 完成后即可在 Azure 存储 Blob 中找到状态文件。
 
 ## <a name="state-locking"></a>状态锁定
 

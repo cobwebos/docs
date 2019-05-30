@@ -1,7 +1,7 @@
 ---
 title: 什么是工作区
 titleSuffix: Azure Machine Learning service
-description: 了解哪些工作区是，为什么需要一个用于 Azure 机器学习服务。
+description: 工作区是 Azure 机器学习服务的顶级资源。 它保留所有训练运行，包括日志、 指标、 输出和您的脚本的快照的历史记录。 使用此信息来确定哪些培训运行产生最佳模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 5785bf8f6538f1d91e7a23178e29487ebee14f29
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 3ecdf62cfed7d70873f3dc752bfacd134e367a90
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989828"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388955"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
+# <a name="what-is-an-azure-machine-learning-service-workspace"></a>什么是 Azure 机器学习服务工作区？
 
-工作区是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。
+工作区是 Azure 机器学习服务，提供集中的位置来处理在使用 Azure 机器学习服务时创建的所有项目的顶级资源。  在工作区保留历史记录的所有训练运行，包括日志、 指标、 输出和您的脚本的快照。 使用此信息可以确定哪个训练运行产生最佳模型。  
 
-在工作区保留历史记录的训练运行，包括日志、 指标、 输出和您的脚本的快照。 使用此信息可以确定哪个训练运行产生最佳模型。  
-
-您喜欢的模型后，您注册它的工作区。 使用已注册的模型和评分脚本将部署到 Azure 容器实例时，Azure Kubernetes 服务，或作为基于 REST 的 HTTP 终结点现场可编程门列阵 (FPGA)。 作为一个模块，还可以将模型部署到 Azure IoT Edge 设备。
+您喜欢的模型后，您注册它的工作区。 您然后使用已注册的模型和评分脚本将部署到 Azure 容器实例时，Azure Kubernetes 服务，或作为基于 REST 的 HTTP 终结点现场可编程门列阵 (FPGA)。 作为一个模块，还可以将模型部署到 Azure IoT Edge 设备。
 
 ## <a name="taxonomy"></a>分类 
 
@@ -50,7 +48,7 @@ ms.locfileid: "65989828"
 按以下方式，可以与你的工作区进行交互：
 
 + Web:
-    + [Azure 门户](https://azure.portal.com)
+    + [Azure 门户](https://portal.azure.com)
     + [可视界面 （预览版）](ui-concept-visual-interface.md)
 + 在 Python 中使用 Azure 机器学习[SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + 使用 Azure 机器学习命令行上[CLI 扩展](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
@@ -71,7 +69,7 @@ ms.locfileid: "65989828"
 
 此外可以执行以下工作区管理任务：
 
-| 工作区管理任务   | 门户              | SDK        | CLI        |
+| 工作区管理任务   | 门户              | SDK 中 IsInRole 中的声明        | CLI        |
 |---------------------------|------------------|------------|------------|
 | 创建工作区        | **&check;**     | **&check;** | **&check;** |
 | 创建和管理计算资源    | **&check;**   | **&check;** |  **&check;**   |

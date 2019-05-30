@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 8142caf867ffe811726677fb1dcbadc7d1458251
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0582fa8b26bee05e4d2948037cc39a71ed656fce
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793550"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243957"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的企业安全性套餐
 
@@ -36,7 +36,7 @@ HDInsight 中的外围安全性通过虚拟网络和 Azure VPN 网关服务实�
 另一层外围安全性通过 VPN 网关服务实现。 网关充当传入 HDInsight 群集的任何请求的第一道防线。 网关接受请求并进行验证，仅在此之后才会允许请求传递给群集中的其他节点。 通过这种方式，网关为群集中的其他名称和数据节点提供外围安全性。
 
 ## <a name="authentication"></a>Authentication
-企业管理员可在[虚拟网络](https://azure.microsoft.com/services/virtual-network/)中创建 ESP HDInsight 群集。 HDInsight 群集的所有节点将加入企业管理的域。 此过程通过使用 [Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-overview.md)实现。 
+企业管理员可在[虚拟网络](https://azure.microsoft.com/services/virtual-network/)中创建 ESP HDInsight 群集。 HDInsight 群集的所有节点将加入企业管理的域。 此过程通过使用 [Azure Active Directory 域服务](../../active-directory-domain-services/overview.md)实现。 
 
 通过此设置，企业员工可以登录到群集节点通过使用其域凭据。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Apache Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。 管理员拥有完全控制权，可以限制通过这些终结点与群集交互的用户数目。
 

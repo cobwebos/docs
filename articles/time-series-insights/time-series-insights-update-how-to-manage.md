@@ -2,7 +2,7 @@
 title: 预配和管理 Azure 时序预览版 | Microsoft Docs
 description: 了解如何预配和管理 Azure 时序见解预览版。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce24fb8c62432e50fe04de23d2abbee1ec120c6c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 6251df2317ceff9dded92f2d829bfab0503fdf1b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471632"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237593"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>预配和管理 Azure 时序见解预览版
 
@@ -43,7 +43,7 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
 
 以下步骤介绍如何创建 Azure 时序见解预览版环境：
 
-1. 在“SKU”菜单下选择“PAYG”按钮。 提供一个环境名称，并选择要使用的订阅组和资源组。 然后，选择一个支持的位置，以便在其中托管环境。
+1. 在“SKU”菜单下选择“PAYG”按钮。   提供一个环境名称，并选择要使用的订阅组和资源组。 然后，选择一个支持的位置，以便在其中托管环境。
 
    [![创建 Azure 时序见解实例。](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
 
@@ -77,16 +77,16 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
 
 可以使用 Azure 门户管理 Azure 时序见解预览版环境。 以下是使用 Azure 门户管理 PAYG Azure 时序见解预览版环境与管理 S1 或 S2 环境的主要区别：
 
-* Azure 门户的“概览”边栏选项卡在 Azure 时序见解中保持不变，以下方面除外：
+* Azure 门户的“概览”边栏选项卡在 Azure 时序见解中保持不变，以下方面除外  ：
   * 删除了容量，因为此概念与 PAYG 环境无关。
   * 添加了时序 ID 属性。 它决定了数据的分区方式。
   * 删除了引用数据集。
   * 显示的 URL 会将你定向到 [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)。
   * 列出了 Azure 存储帐户名称。
 
-* Azure 门户的“配置”边栏选项卡在 Azure 时序见解预览版中已删除，因为 PAYG 环境不可配置。
+* Azure 门户的“配置”边栏选项卡在 Azure 时序见解预览版中已删除，因为 PAYG 环境不可配置  。
 
-* Azure 门户的“参考数据”边栏选项卡在 Azure 时序见解预览版中已删除，因为参考数据不是 PAYG 环境的组件。
+* Azure 门户的“参考数据”边栏选项卡在 Azure 时序见解预览版中已删除，因为参考数据不是 PAYG 环境的组件  。
 
 [![在 Azure 门户中的时间系列 Insights 预览环境](media/v2-update-manage/manage_four.PNG)](media/v2-update-manage/manage_four.PNG#lightbox)
 

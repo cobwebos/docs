@@ -3,19 +3,19 @@ title: 通过对话学习器管理用户数据 - Microsoft 认知服务 | Micros
 titleSuffix: Azure
 description: 了解如何使用对话学习器管理用户数据。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 83c7e808e48733487e84d668236cdb327c21c44c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 7ea0b246a16ff196a4160d9822b5db15cd39a4a6
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688532"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66385205"
 ---
 # <a name="managing-user-data"></a>管理用户数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "60688532"
 
 在“对话日志”中，对话学习器会存储每次对话的用户输入、实体值、所选操作和时间戳。  这些日志存储一段时间后即会被删除（有关详细信息，请参阅“默认值和界限”的帮助页面）。  
 
-对话学习器会为记录的每个对话创建一个唯一的 ID。  对话学习器记录的对话中不会存储用户标识符。  
+对话学习器会为记录的每个对话创建一个唯一的 ID。  对话学习器记录的对话中不会存储用户标识符  。  
 
 ## <a name="associating-logged-dialogs-with-a-user-id"></a>将记录的对话与用户 ID 相关联
 

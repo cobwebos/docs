@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6e1a1c614bfa126d58cf9343f945d16fd1c2733
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 30a4bfa2cf7a39a28db0575a6851f5b7b481524c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781018"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388171"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中添加应用程序时选择应用程序类型
 了解可以添加到 Azure Active Directory (Azure AD) 的四种类型的应用程序。 在 Azure Active Directory 中添加应用程序时，系统将提示你选择四种应用程序类型之一。 
 
 ## <a name="what-are-the-types-of-applications"></a>有哪些应用程序类型？
 
-Azure AD 支持使用“企业应用程序”下的“添加”功能添加的四种主要应用程序类型。 其中包括：
+Azure AD 支持使用“企业应用程序”  下的“添加”  功能添加的四种主要应用程序类型。 其中包括：
 
 -   **Azure AD 库应用程序** - 已为启用单一登录而预集成到 Azure AD 的应用程序。
 
@@ -80,7 +80,7 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
   >
   >
 
-- **基于标头的登录** - 如果具有一个应用程序，该程序使用支持基于 HTTP 头的身份验证的 PingAccess，且想要对此身份验证执行单一登录，则选择此[基于标头的登录](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad)单一登录模式 
+- **基于标头的登录** - 如果具有一个应用程序，该程序使用支持基于 HTTP 头的身份验证的 PingAccess，且想要对此身份验证执行单一登录，则选择此[基于标头的登录](application-proxy-configure-single-sign-on-with-ping-access.md)单一登录模式 
 
   >[!NOTE]
   >仅当为应用程序配置了应用程序代理和 PingAccess 时，此选项才可用。
@@ -110,23 +110,23 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 ## <a name="how-to-set-an-applications-single-sign-on-mode"></a>如何设置应用程序的单一登录模式
 
-若要设置应用程序的“单一登录”模式，请按照以下说明进行操作：
+若要设置应用程序的“单一登录”  模式，请按照以下说明进行操作：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。  
 
-2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
 
-5. 单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”  ，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设置为“所有应用程序”  。
 
 6. 选择要为其配置单一登录的应用程序。
 
-7. 加载应用程序后，在应用程序的左侧导航菜单中，单击“单一登录”。
+7. 加载应用程序后，在应用程序的左侧导航菜单中，单击“单一登录”  。
 
 ## <a name="how-to-choose-a-provisioning-mode"></a>如何选择预配模式
 
@@ -150,23 +150,23 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 若要设置应用程序的**预配**模式，请按照以下说明进行操作：
 
-若要设置应用程序的“单一登录”模式，请按照以下说明进行操作：
+若要设置应用程序的“单一登录”  模式，请按照以下说明进行操作：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。  
 
-2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
 
-5. 单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”  ，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设置为“所有应用程序”  。
 
 6. 选择要为其配置预配的应用程序。
 
-7. 加载应用程序后，在应用程序的左侧导航菜单中，单击“预配”。
+7. 加载应用程序后，在应用程序的左侧导航菜单中，单击“预配”  。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](what-is-application-management.md)

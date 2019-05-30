@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 69330e9d5a05fbcc892889f70a04f5eb4a4a2fb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60935545"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>支持的 Azure Database for MariaDB 服务器版本
@@ -26,4 +26,4 @@ ms.locfileid: "60935545"
 该服务会自动管理针对次要版本更新的修补。
 
 ## <a name="next-steps"></a>后续步骤
-有关基于服务层级的具体资源配额和限制的信息，请参阅[服务层级](./concepts-pricing-tiers.md)
+有关基于服务层级  的具体资源配额和限制的信息，请参阅[服务层级](./concepts-pricing-tiers.md)

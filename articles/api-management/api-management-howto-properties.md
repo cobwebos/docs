@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9e1b1953520c5502668fbbae70a37a140253b035
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657977"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241692"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
 API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 可以使用文字文本值、策略表达式和命名值构造策略语句。 
 
 每个 API 管理服务实例都有一个属性集合，其中包含对服务实例来说属于全局性的键值对（称为“命名值”）。 这些命名值可以用来管理所有 API 配置和策略的常量字符串值。 每个属性都有以下特性：
 
-| 属性 | Type | 描述 |
+| 特性 | Type | 描述 |
 | --- | --- | --- |
-| Display name |string |策略中用于引用属性的数字字母字符串。 |
-| Value |string |属性的值。 不能为空或只由空格组成。 |
-|Secret|boolean|确定值是否为密钥以及是否应加密。|
-| Tags |字符串数组 |可选标记，提供用来筛选属性列表。 |
+| `Display name` |string |策略中用于引用属性的数字字母字符串。 |
+| `Value`        |string |属性的值。 不能为空或只由空格组成。 |
+| `Secret`       |boolean|确定值是否为密钥以及是否应加密。|
+| `Tags`         |字符串数组 |可选标记，提供用来筛选属性列表。 |
 
 ![命名值](./media/api-management-howto-properties/named-values.png)
 
@@ -46,33 +46,33 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 ![添加属性](./media/api-management-howto-properties/add-property.png)
 
-1. 在“API 管理”下面选择“API”。
-2. 选择“命名值”。
-3. 按“+添加”。
+1. 在“API 管理”下面选择“API”。  
+2. 选择“命名值”  。
+3. 按“+添加”  。
 
    “名称”和“值”是必需值。 如果此属性值为机密，请选中“这是机密”复选框。 输入一个或多个用于组织命名值的可选标记，并单击“保存”。
 4. 单击**创建**。
 
 创建属性后，可以通过单击该属性对其进行编辑。 如果更改属性名称，则会自动更新引用该属性的策略，让其使用新名称。
 
-若要了解如何使用 REST API 编辑属性，请参阅 [Edit a property using the REST API](/rest/api/apimanagement/property?Patch)（使用 REST API 编辑属性）。
+若要了解如何使用 REST API 编辑属性，请参阅 [Edit a property using the REST API](/rest/api/apimanagement/2019-01-01/property?patch)（使用 REST API 编辑属性）。
 
 ## <a name="to-delete-a-property"></a>删除属性
 
-若要删除属性，请单击要删除的属性旁边的“删除”。
+若要删除属性，请单击要删除的属性旁边的“删除”。 
 
 > [!IMPORTANT]
 > 如果有策略引用了该属性，则无法成功地将该属性删除，除非将它从所有使用它的策略中移除。
 > 
 > 
 
-若要了解如何使用 REST API 删除属性，请参阅 [Delete a property using the REST API](/rest/api/apimanagement/property?Delete)（使用 REST API 删除属性）。
+若要了解如何使用 REST API 删除属性，请参阅 [Delete a property using the REST API](/rest/api/apimanagement/2019-01-01/property/delete)（使用 REST API 删除属性）。
 
 ## <a name="to-search-and-filter-named-values"></a>搜索和筛选命名值
 
-“命名值”选项卡包含搜索和筛选功能，用于管理命名值。 若要按属性名称筛选属性列表，请在“搜索属性”文本框中输入搜索词。 若要显示所有命名值，请清除“搜索属性”文本框，并按 Enter。
+“命名值”选项卡包含搜索和筛选功能，用于管理命名值。  若要按属性名称筛选属性列表，请在“搜索属性”文本框中输入搜索词。  若要显示所有命名值，请清除“搜索属性”文本框，并按 Enter。 
 
-要按标记值筛选属性列表，请将一个或多个标记输入到“按标记筛选”文本框中。 若要显示所有命名值，请清除“按标记筛选”文本框，并按 Enter。
+要按标记值筛选属性列表，请将一个或多个标记输入到“按标记筛选”文本框中。  若要显示所有命名值，请清除“按标记筛选”文本框，并按 Enter。 
 
 ## <a name="to-use-a-property"></a>使用属性
 

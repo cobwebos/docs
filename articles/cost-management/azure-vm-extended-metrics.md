@@ -10,12 +10,12 @@ ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
-ms.openlocfilehash: 5b3475f35ac958432d319eafe6e3392e155d9ff4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 6a4f7f5671562679a245d97ad8491764657cbb34
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002107"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242454"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>为 Azure 虚拟机添加扩展指标
 
@@ -28,7 +28,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 - 根据用量调整大小，以控制成本。
 - 获取 Cloudyn 提供的经济高效的大小调整优化建议。
 
-例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 Azure VM 指标对应于“[主机] CPU 百分比”和“[来宾] 内存百分比”。
+例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 Azure VM 指标对应于_CPU 百分比_并 _\Memory\% Committed Bytes In Use_。
 
 > [!NOTE]
 > 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn 与不兼容的 Azure Monitor 日志 VM 扩展。
@@ -36,7 +36,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>确定是否启用了扩展的指标
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-2. 在“虚拟机”下选择一个 VM，然后在“监视”下选择“指标”。 此时会显示可用指标的列表。
+2. 在“虚拟机”下选择一个 VM，然后在“监视”下选择“指标”。    此时会显示可用指标的列表。
 3. 选择一些指标，随后有一个图形会显示这些指标的数据。  
     ![示例指标 – 主机 CPU 百分比](./media/azure-vm-extended-metrics/metric01.png)
 
@@ -44,7 +44,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>在 Azure 门户中启用扩展指标
 
-标准指标属于主机指标。 “[主机] CPU 百分比”指标就是一个例子。 来宾 VM 的某些基本指标也称为扩展指标。 扩展指标的示例包括“[来宾] 内存百分比”和“[来宾] 可用内存”。
+标准指标属于主机指标。 _CPU 百分比_指标是一个示例。 来宾 VM 的某些基本指标也称为扩展指标。 扩展指标的示例包括 _\Memory\% Committed Bytes In Use_并 _\Memory\Available 字节_。
 
 启用扩展指标的过程非常简单。 对每个 VM 启用来宾级监视。 启用来宾级监视时，将在 VM 上安装 Azure 诊断代理。 默认情况下会添加一组基本的扩展指标。 以下过程在经典和常规 VM，以及 Windows 和 Linux VM 上都是相同的。
 
@@ -52,19 +52,19 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>在现有 VM 上启用来宾级监视
 
-1. 在“虚拟机”中查看 VM 列表，然后选择一个 VM。
-2. 在“监视”下，选择“诊断设置”。
-3. 在“诊断设置”页上，单击“启用来宾级监视”。  
+1. 在“虚拟机”中查看 VM 列表，然后选择一个 VM。 
+2. 在“监视”下，选择“诊断设置”   。
+3. 在“诊断设置”页上，单击“启用来宾级监视”。   
     ![在“概述”页面上启用访客级别监控](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. 几分钟后，即会在 VM 上安装 Azure 诊断代理。 将添加一组基本的指标。 刷新页面。 添加的性能计数器将出现在“概述”选项卡上。
-5. 在“监视”下，选择“指标”。
-6. 在“指标命名空间”下的指标图表中，选择“来宾(经典)”。
+5. 在“监视”下，选择“指标”。 
+6. 在“指标命名空间”  下的指标图表中，选择“来宾(经典)”  。
 7. 在“指标”列表中，可以查看来宾 VM 的所有可用性能计数器。  
     ![示例扩展指标列表](./media/azure-vm-extended-metrics/extended-metrics.png)
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>在新 VM 上启用来宾级监视
 
-创建新的 VM 时，在“管理”选项卡上，针对“OS 来宾诊断”选择“开启”。
+创建新的 VM 时，在“管理”选项卡上，针对“OS 来宾诊断”选择“开启”。  
 
 ![将来宾 OS 诊断设置为“开”](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
@@ -80,7 +80,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ## <a name="view-azure-performance-metrics"></a>查看 Azure 性能指标
 
-若要在 Cloudyn 门户中查看 Azure 实例的性能指标，请导航到“资产” > “计算” > “实例资源管理器”。 在 VM 实例列表中展开某个实例，然后展开某个资源查看详细信息。
+若要在 Cloudyn 门户中查看 Azure 实例的性能指标，请导航到“资产” > “计算” > “实例资源管理器”。    在 VM 实例列表中展开某个实例，然后展开某个资源查看详细信息。
 
 ![实例资源管理器中显示的示例信息](./media/azure-vm-extended-metrics/instance-explorer.png)
 

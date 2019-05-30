@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3edc1c2bd328cd6e7b7991ff2b5438b8899a0ce7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 59a35e44c78ea86f3b02eb4ad99dc1fd8fcb4870
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160483"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236618"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标 
 
 使用 Azure 机器学习服务可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-target)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
 
-可以使用 Azure 机器学习 SDK、Azure 门户或 Azure CLI 创建和管理计算目标。 如果通过其他服务（例如 HDInsight 群集）创建了计算目标，可以通过将其附加到 Azure 机器学习服务工作区来使用它们。
+您可以创建和管理使用 Azure 机器学习 SDK，Azure 门户、 Azure CLI 或 Azure 机器学习 VS 代码扩展的计算目标。 如果通过其他服务（例如 HDInsight 群集）创建了计算目标，可以通过将其附加到 Azure 机器学习服务工作区来使用它们。
  
 本文介绍如何使用各种计算目标进行模型训练。  适用于所有计算目标的步骤遵循相同的工作流：
 1. __创建__计算目标（如果没有）。
@@ -302,7 +302,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 若要查看工作区的计算目标，请使用以下步骤：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)，并打开你的工作区。 
-1. 在“应用程序”下，选择“计算”。
+1. 在“应用程序”下，选择“计算”。  
 
     ![查看“计算”选项卡](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
 
@@ -316,16 +316,16 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 1. 输入计算目标的名称。 
 
-1. 选择“机器学习计算”作为用于训练的计算类型。 
+1. 选择“机器学习计算”作为用于训练的计算类型。   
 
     >[!NOTE]
     >Azure 机器学习计算是可在 Azure 门户中创建的唯一一种托管计算资源。  创建其他所有计算资源后，可以附加这些资源。
 
-1. 填写表单。 提供必需属性的值，尤其是“VM 系列”，以及用于运转计算的**最大节点数**。  
+1. 填写表单。 提供必需属性的值，尤其是“VM 系列”，以及用于运转计算的**最大节点数**。   
 
     ![填写表单](./media/how-to-set-up-training-targets/add-compute-form.png) 
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
 
 1. 通过在列表中选择计算目标来查看创建操作的状态：
@@ -346,7 +346,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 1. 选择加号 (+) 添加计算目标。 
 1. 输入计算目标的名称。 
-1. 选择要为训练附加的计算类型：
+1. 选择要为训练附加的计算类型： 
 
     > [!IMPORTANT]
     > 并非所有计算类型都可以从 Azure 门户附加。 目前，可为训练附加的计算类型包括：
@@ -364,7 +364,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
     > * [在 Linux 或 macOS 上创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
     > * [在 Windows 上创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
-1. 选择“附加”。 
+1. 选择“附加”。  
 1. 通过在列表中选择计算目标来查看附加操作的状态。
 
 ## <a name="set-up-compute-with-the-cli"></a>使用 CLI 设置计算
@@ -376,6 +376,10 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * 附加托管计算目标
 
 有关详细信息，请参阅[资源管理](reference-azure-machine-learning-cli.md#resource-management)。
+
+## <a name="set-up-compute-with-vs-code"></a>设置计算使用 VS Code
+
+您可以访问、 创建和管理与你的工作区使用相关联的计算目标[VS Code 扩展](how-to-vscode-tools.md#create-and-manage-compute-targets)Azure 机器学习服务。
 
 ## <a id="submit"></a>提交训练运行
 
@@ -416,8 +420,9 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 或者可以：
 
-* 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。 
+* 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。
 * [使用 CLI 扩展](reference-azure-machine-learning-cli.md#experiments)提交试验。
+* 将通过试验提交[VS Code 扩展](how-to-vscode-tools.md#train-and-tune-models)。
 
 ## <a name="github-tracking-and-integration"></a>GitHub 跟踪和集成
 

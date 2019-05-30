@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 976545f588895421e7c2be7e18b844d7994bc1ff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2adc706c5da4fa53ace2a8a471789e276878c491
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779993"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255863"
 ---
 # <a name="status-monitor-v2"></a>状态监视器 v2
 
@@ -74,7 +74,7 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 * [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)来诊断问题
 * [分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询
-* [创建仪表板](../../azure-monitor/app/app-insights-dashboards.md)
+* [创建仪表板](../../azure-monitor/app/overview-dashboard.md)
 
 添加更多遥测：
 

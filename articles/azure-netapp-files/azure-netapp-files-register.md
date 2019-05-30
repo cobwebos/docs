@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
-ms.openlocfilehash: fbe0b82008d7b15332c4e2cd62c49c611f20fe89
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794696"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299213"
 ---
 # <a name="register-for-azure-netapp-files"></a>注册 Azure NetApp 文件
 
@@ -60,12 +60,12 @@ ms.locfileid: "65794696"
 
    命令输出如下所示：
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/publicPreviewADC",  
-       "name": "Microsoft.NetApp/publicPreviewADC" 
+       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+       "name": "Microsoft.NetApp/ANFGA" 
        
    `<SubID>` 是你的订阅 ID。
 
-    如果您看不到功能名称`Microsoft.NetApp/publicPreviewADC`，没有对服务的访问。 在此步骤处停止。 按照中的说明进行操作[提交用于访问服务被插入等待队列请求](#waitlist)才能继续操作之前的请求服务访问权限。 
+    如果您看不到功能名称`Microsoft.NetApp/ANFGA`，没有对服务的访问。 在此步骤处停止。 按照中的说明进行操作[提交用于访问服务被插入等待队列请求](#waitlist)才能继续操作之前的请求服务访问权限。 
 
 4. 在 Azure Cloud Shell 控制台中，输入以下命令来注册 Azure 资源提供程序： 
     
@@ -87,9 +87,9 @@ ms.locfileid: "65794696"
 
    `<SubID>` 是你的订阅 ID。  `state` 参数值表示 `Registered`。
 
-6. 从 Azure 门户中，单击“订阅”边栏选项卡。
+6. 从 Azure 门户中，单击“订阅”边栏选项卡。 
 7. 在“订阅”边栏选项卡中，单击你的订阅 ID。 
-8. 在订阅设置中，单击“资源提供程序”来验证 Microsoft.NetApp 提供程序是否指示了“已注册”状态： 
+8. 在订阅设置中，单击“资源提供程序”  来验证 Microsoft.NetApp 提供程序是否指示了“已注册”状态： 
 
       ![已注册的 Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: c487856c7fb959f684700dee1d463783954b1a53
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: cad1f84f611ac3214b8823bb11817ffceb3e2017
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921962"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388699"
 ---
 # <a name="connect-your-check-point-appliance"></a>连接检查点设备
 
@@ -123,7 +123,7 @@ ms.locfileid: "65921962"
 
 3. 请确保您发送的日志符合[RFC 5424](https://tools.ietf.org/html/rfc542)。
 
-4. 在上运行的系统日志代理的计算机，请确保这些端口 514，25226 是打开并在侦听，使用命令`netstat -a -n:`。 有关使用此命令的详细信息请参阅[netstat(8)-Linux 手册页](https://linux.die.netman/8/netstat)。 如果它正在侦听正确，您将看到：
+4. 在上运行的系统日志代理的计算机，请确保这些端口 514，25226 是打开并在侦听，使用命令`netstat -a -n:`。 有关使用此命令的详细信息请参阅[netstat(8)-Linux 手册页](https://linux.die.net/man/8/netstat)。 如果它正在侦听正确，您将看到：
 
    ![Azure Sentinel 端口](./media/connect-cef/ports.png) 
 

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3167f60cca9997c9713efad0fbb8a51b20def76b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: e57133a750e282484271261d8e4ddb9a12de2a0e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151174"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242428"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -37,6 +37,7 @@ ms.locfileid: "66151174"
 执行以下任一这些步骤：
 + [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + [Azure 机器学习 CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
++ [Azure 机器学习 VS 代码扩展](how-to-vscode-tools.md)
 +  [Azure 机器学习服务的可视界面 （预览版）](ui-concept-visual-interface.md)
 
 > [!NOTE]
@@ -129,7 +130,7 @@ Azure 机器学习数据集 （预览版） 使其更轻松地访问和使用你
 
     可以使用 Azure 门户、Azure 机器学习 SDK 或 Azure CLI 通过工作区直接创建机器学习计算实例。 所有其他计算目标必须在工作区外创建，然后再附加到工作区。
 
-* **非托管**：不是由 Azure 机器学习服务管理的计算目标。 可能需要在 Azure 机器学习外部创建它们，然后在使用前将它们附加到工作区。 非托管计算目标可能需要执行额外的步骤来保持或提高机器学习工作负荷的性能。
+* **非托管**：不是由 Azure 机器学习服务管理的计算目标。  可能需要在 Azure 机器学习外部创建它们，然后在使用前将它们附加到工作区。 非托管计算目标可能需要执行额外的步骤来保持或提高机器学习工作负荷的性能。
 
 有关为训练选择计算目标的信息，请参阅[选择并使用计算目标来训练模型](how-to-set-up-training-targets.md)。
 

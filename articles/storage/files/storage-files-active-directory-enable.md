@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: rogarana
-ms.openlocfilehash: d5e2f9dba3afee953d296316e990b58c536cbdae
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 26251ebd3c83f6cd44203e1d3cc5f1b523a0d8d9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602022"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237774"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>通过 SMB 为 Azure 文件启用 Azure Active Directory 身份验证（预览）
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -47,13 +47,13 @@ ms.locfileid: "65602022"
 
 2.  **启用 Azure AD 租户上的 Azure AD 域服务。**
 
-    若要支持使用 Azure AD 凭据进行身份验证，必须启用 Azure AD 租户的 Azure AD 域服务。 如果你不是 Azure AD 租户的管理员，请与管理员联系并按照分步指南操作，以[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-getting-started.md)。
+    若要支持使用 Azure AD 凭据进行身份验证，必须启用 Azure AD 租户的 Azure AD 域服务。 如果你不是 Azure AD 租户的管理员，请与管理员联系并按照分步指南操作，以[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/create-instance.md)。
 
-    Azure AD 域服务部署通常需要大约 15 分钟才能完成。 在继续执行下一步之前，请验证 Azure AD 域服务的运行状况状态是否显示“正在运行”，以及是否启用了密码哈希同步。
+    Azure AD 域服务部署通常需要大约 15 分钟才能完成。 在继续执行下一步之前，请验证 Azure AD 域服务的运行状况状态是否显示“正在运行”  ，以及是否启用了密码哈希同步。
 
 3.  **使用 Azure AD 域服务将 Azure VM 加入域。**
 
-    要使用来自 VM 的 Azure AD 凭据访问文件共享，你的 VM 必须已通过 Azure AD 域服务加入域。 有关如何将 VM 加入域的详细信息，请参阅[将 Windows Server 虚拟机加入托管域](../../active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md)。
+    要使用来自 VM 的 Azure AD 凭据访问文件共享，你的 VM 必须已通过 Azure AD 域服务加入域。 有关如何将 VM 加入域的详细信息，请参阅[将 Windows Server 虚拟机加入托管域](../../active-directory-domain-services/join-windows-vm.md)。
 
     > [!NOTE]
     > 只有在运行在高于 Windows 7 或 Windows Server 2008 R2 版本的 OS 上的 Azure VM 上才支持通过 SMB 为 Azure 文件启用 Azure AD 身份验证。
@@ -78,8 +78,8 @@ ms.locfileid: "65602022"
 若要使用 [Azure 门户](https://portal.azure.com)通过 SMB 启用 Azure AD 身份验证，请执行以下步骤：
 
 1. 在 Azure 门户中，导航到现有的存储帐户或[创建存储帐户](../common/storage-quickstart-create-account.md)。
-2. 在“设置”部分选择“配置”。
-3. 启用“Azure 文件的 Azure Active Directory 身份验证(预览版)”。
+2. 在“设置”部分选择“配置”。  
+3. 启用“Azure 文件的 Azure Active Directory 身份验证(预览版)”。 
 
 下图显示了如何通过 SMB 为存储帐户启用 Azure AD 身份验证。
 
@@ -256,7 +256,7 @@ Azure 文件支持全套 NTFS 基本和高级权限。 可以通过装载共享�
 
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>从命令提示符装载文件共享
 
-使用 Windows net use 命令装载 Azure 文件共享。 请务必将示例中的占位符值替换为你自己的值。 有关装载文件共享的详细信息，请参阅[在 Windows 中装载 Azure 文件共享并对其进行访问](storage-how-to-use-files-windows.md)。
+使用 Windows net use  命令装载 Azure 文件共享。 请务必将示例中的占位符值替换为你自己的值。 有关装载文件共享的详细信息，请参阅[在 Windows 中装载 Azure 文件共享并对其进行访问](storage-how-to-use-files-windows.md)。
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>

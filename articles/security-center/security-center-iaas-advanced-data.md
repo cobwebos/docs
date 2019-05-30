@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2019
-ms.author: v-mohabe
-ms.openlocfilehash: cfe633c5251842257a0bef5237ea6b80aeaf05e9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
-ms.translationtype: HT
+ms.date: 05/29/2019
+ms.author: monhaber
+ms.openlocfilehash: e7420adfe1608df39ef72124817f1d6dadf07db8
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968586"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400139"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-iaas"></a>IaaS 上的 SQL 服务器的高级的数据安全性
-IaaS 上的 SQL 服务器的高级的数据安全性是高级 SQL 安全功能的统一的包。 它当前包括用于呈现和缓解潜在的数据库漏洞和检测异常活动，可能指示威胁到你的数据库的功能。
+为 SQL Server Azure 虚拟机上的高级的数据安全是高级 SQL 安全功能的统一的包。 它当前包括用于呈现和缓解潜在的数据库漏洞和检测异常活动，可能指示威胁到你的数据库的功能。 
 
-为 IaaS SQL server 提供了此安全性基于中使用相同的基本技术[Azure SQL 数据库高级数据安全包](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)。
+为 Azure 虚拟机 SQL server 提供了此安全性基于中使用相同的基本技术[Azure SQL 数据库高级数据安全包](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)。
 
 
 ## <a name="overview"></a>概述
 
-高级的数据安全 (ADS) 提供了一套高级 SQL 安全功能，包括漏洞评估和高级威胁防护。
+高级的数据安全性提供了一套高级 SQL 安全功能，包括漏洞评估和高级威胁防护。
 
 * [漏洞评估](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)是一项易于配置的服务，可以发现、跟踪并帮助修正潜在的数据库漏洞。 它可深入了解你的安全状态，并包括解决安全问题和增强数据库 fortifications 的步骤。
 * [高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)可检测异常活动表示异常和潜在有害尝试访问或使用您的 SQL server。 它持续监视数据库的可疑活动和异常数据库访问模式上提供的面向操作的安全警报。 这些警报提供可疑活动详细信息，以及建议的操作，以帮助调查和缓解威胁。
 
-## <a name="get-started-with-ads-for-iaas"></a>开始使用广告 iaas
+## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>开始使用高级数据安全的 Azure Vm 上的 SQL
 
-以下步骤帮助你开始使用广告 iaas。
+以下步骤可帮助你为 SQL Azure Vm 上启动具有高级数据安全性。
 
-### <a name="set-up-ads-for-iaas"></a>为 IaaS 设置广告
+### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>为 SQL Azure Vm 上设置高级数据安全
 
 **在开始之前**:您需要 Log Analytics 工作区来存储所分析的安全日志。 如果你没有订阅，则可以轻松地中所述创建一个[Azure 门户中创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
 
@@ -95,7 +95,7 @@ IaaS 上的 SQL 服务器的高级的数据安全性是高级 SQL 安全功能�
 
 你可以设置生成 ASC 警报时接收电子邮件通知的收件人列表。 电子邮件包含指向所有相关的详细信息在 Azure 安全中心警报的直接链接。 
 
-1. 转到**安全中心** > **安全策略**和相关订阅单击的行中**编辑设置 >**。
+1. 转到**安全中心** > **安全策略**和相关订阅单击的行中**编辑设置 >** 。
 
     ![订阅设置](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
@@ -120,7 +120,7 @@ IaaS 上的 SQL 服务器的高级的数据安全性是高级 SQL 安全功能�
 
 可以查看你的漏洞评估结果和直接从 Log Analytics 的报表。
 
-1. 导航到 Log Analytics 工作区与广告解决方案。
+1. 导航到 Log Analytics 工作区与高级数据安全解决方案。
 1. 导航到**解决方案**，然后选择**SQL 漏洞评估**解决方案。
 1. 在中**摘要**窗格中，单击**查看摘要**，然后选择你**SQL 漏洞评估报告**。
 
@@ -130,7 +130,7 @@ IaaS 上的 SQL 服务器的高级的数据安全性是高级 SQL 安全功能�
 
     ![设置过去 7 天内](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
 
-1. 若要深入了解更多详细信息，请单击上的任何仪表板元素。 例如:
+1. 若要深入了解更多详细信息，请单击上的任何仪表板元素。 例如：
 
    1. 单击在漏洞签入时**失败检查摘要**部分以查看具有此检查的结果的 Log Analytics 表在所有数据库。 首先列出了那些产生的结果。
 
@@ -142,7 +142,7 @@ IaaS 上的 SQL 服务器的高级的数据安全性是高级 SQL 安全功能�
 
 1. 漏洞评估结果数据，进行切片和切块的数据根据需要，可以运行任何 Log Analytics 查询。
 
-## <a name="advanced-threat-protection-for-sql-servers-on-iaas-alerts"></a>IaaS 警报的高级威胁防护功能用于 SQL Server
+## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>高级威胁防护功能用于 SQL 服务器上的 Azure Vm 警报
 通过异常和潜在有害尝试访问或使用 SQL Server 将生成警报。 这些事件可以触发以下警报：
 
 ### <a name="anomalous-access-pattern-alerts"></a>异常访问模式的警报

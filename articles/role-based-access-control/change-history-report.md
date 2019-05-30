@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b808654baded5bbe721866441a8d1115eff7bcaa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 842d3146bf1927871e29eb750cde09e9029b7c12
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308869"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242103"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>查看 Azure 资源的 RBAC 更改的活动日志
 
@@ -121,9 +121,9 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 1. [创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
-1. 为工作区[配置 Activity Log Analytics 解决方案](../azure-monitor/platform/collect-activity-logs.md#configuration)。
+1. 为工作区[配置 Activity Log Analytics 解决方案](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。
 
-1. [查看活动日志](../azure-monitor/platform/collect-activity-logs.md#using-the-solution)。 导航到活动 Log Analytics 解决方案概述页的快速方法是单击**Log Analytics**选项。
+1. [查看活动日志](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。 导航到活动 Log Analytics 解决方案概述页的快速方法是单击**Log Analytics**选项。
 
    ![Azure 监视器在门户中将记录选项](./media/change-history-report/azure-log-analytics-option.png)
 

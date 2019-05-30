@@ -12,16 +12,16 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/20/2019
-ms.openlocfilehash: 57f2c38ce0479f43d7f24de8d1feb554517bcc69
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a9f883a9776f68a7ece471caca5dc1d7af2aec32
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951480"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393531"
 ---
 # <a name="sql-database-serverless-preview"></a>SQL 数据库无服务器（预览版）
 
-## <a name="what-is-the-serverless-compute-tier"></a>什么是无服务器计算层
+## <a name="serverless-compute-tier"></a>无服务器计算层
 
 SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单一数据库使用的计算量进行计费。 对于具有间歇性、不可预测的使用模式，在空闲使用时间段后的计算预热期间能够容忍一定延迟的单一数据库来说，无服务器是一种高性价比的方案。
 
@@ -73,7 +73,7 @@ SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单�
 
 目前，仅 vCore 购买模型中第 5 代硬件上的常规用途层中支持 SQL 数据库无服务器。
 
-## <a name="autoscaling"></a>自动缩放
+## <a name="autoscale"></a>自动缩放
 
 ### <a name="scaling-responsiveness"></a>缩放响应能力
 
@@ -83,7 +83,7 @@ SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单�
 
 无服务器数据库的内存回收更频繁地比的预配的计算数据库。 此行为是重要中无服务器的控制成本，并且可能会影响性能。
 
-#### <a name="cache-reclaiming"></a>缓存回收
+#### <a name="cache-reclamation"></a>缓存回收
 
 预配的计算与数据库不同，从 SQL 缓存的内存被回收从无服务器数据库时 CPU 或缓存使用率较低。
 
@@ -128,11 +128,11 @@ SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单�
 |修改特定的数据库元数据|添加新的数据库标记<br>更改最大 vCore 数、最小 vCore 数和自动暂停延迟|
 |SQL Server Management Studio (SSMS)|使用 SSMS 版本 18 并在服务器中为任意数据库打开新的查询窗口会恢复同一服务器中任何自动暂停的数据库。 如果使用 IntelliSense 处于关闭状态的 SSMS 版本 17.9.1，则不会发生此行为。|
 
-### <a name="connectivity"></a>连接性
+### <a name="connectivity"></a>连接
 
 如果暂停无服务器数据库，然后将恢复数据库首次登录并返回一个错误，指出数据库将不可用，错误代码 40613。 恢复数据库后，必须重新尝试登录以建立连接。 具有连接重试逻辑的数据库客户端应该不需要进行修改。
 
-### <a name="latency"></a>延迟
+### <a name="latency"></a>Latency
 
 自动暂停或自动恢复无服务器数据库的延迟时间通常为 1 分钟。
 
@@ -145,7 +145,7 @@ SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单�
 - SQL 数据同步中使用的同步数据库。
 
 
-## <a name="on-boarding-into-the-serverless-compute-tier"></a>载入无服务器计算层
+## <a name="onboarding-into-serverless-compute-tier"></a>载入到无服务器计算层级
 
 创建新的数据库，或将现有数据库移动到无服务器计算层中的模式与在预配计算层中创建新的数据库相同，均包含以下两个步骤：
 
@@ -167,11 +167,11 @@ SQL 数据库无服务器（预览版）是一个计算层，它按照每秒单�
 > [!NOTE]
 > 目前不支持使用 T-SQL 将现有数据库移动到无服务器或更改其计算大小，但可以通过 Azure 门户或 PowerShell 完成这些操作。
 
-### <a name="create-new-database-using-the-azure-portal"></a>使用 Azure 门户创建新数据库
+### <a name="create-new-serverless-database-using-azure-portal"></a>创建新的无服务器数据库，使用 Azure 门户
 
 请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](sql-database-single-database-get-started.md)。
 
-### <a name="create-new-database-using-powershell"></a>使用 PowerShell 创建新数据库
+### <a name="create-new-serverless-database-using-powershell"></a>创建新的无服务器数据库，使用 PowerShell
 
 下面的示例在名为 GP_S_Gen5_4（使用最小 vCore 数和自动暂停延迟的默认值）的服务目标定义的无服务器计算层中创建新数据库。
 
@@ -190,7 +190,7 @@ New-AzSqlDatabase `
   -AutoPauseDelay 720
 ```
 
-### <a name="move-existing-database-into-the-serverless-compute-tier"></a>将现有数据库移动到无服务器计算层
+### <a name="move-provisioned-compute-database-into-serverless-compute-tier"></a>将预配的计算数据库移到无服务器计算层
 
 下面的示例将现有单一数据库从预配计算层中移入无服务器计算层。 此示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
 
@@ -207,11 +207,11 @@ Set-AzSqlDatabase
   -AutoPauseDelay 1440
 ```
 
-### <a name="move-a-database-out-of-the-serverless-compute-tier"></a>将数据库移出无服务器计算层
+### <a name="move-serverless-database-into-provisioned-compute-tier"></a>将无服务器数据库移到预配的计算层
 
 无服务器数据库可以移动到预配计算层中，方法与将预配的计算数据库移动到无服务器计算层相同。
 
-## <a name="modify-serverless-configuration-parameters"></a>修改无服务器配置参数
+## <a name="modifying-serverless-configuration"></a>修改无服务器配置
 
 ### <a name="maximum-vcores"></a>最大 vCore 数
 
@@ -225,7 +225,7 @@ Set-AzSqlDatabase
 
 修改自动暂停延迟执行通过[集 AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)命令，在 PowerShell 中使用`AutoPauseDelay`参数。
 
-## <a name="monitor-serverless-database"></a>监视无服务器数据库
+## <a name="monitoring"></a>监视
 
 ### <a name="resources-used-and-billed"></a>已使用和计费的资源
 
@@ -237,7 +237,7 @@ Set-AzSqlDatabase
 
 #### <a name="user-resource-pool"></a>用户资源池
 
-用户资源池是数据库最内层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 用户资源池限定由 DDL 查询（例如，CREATE、ALTER 等）和 DML 查询（例如 SELECT、INSERT、UPDATE、DELETE 等）带来的用户工作负载的 CPU 和 IO 范围。 这些查询通常表示应用包中最重要的使用率比例。
+用户资源池是数据库最内层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 用户资源池范围 CPU 和 IO 用户工作负荷，如生成的 DDL 查询，如 CREATE 和 ALTER 和 DML 查询用于选择、 插入、 更新和删除。 这些查询通常表示应用包中最重要的使用率比例。
 
 ### <a name="metrics"></a>度量值
 
@@ -254,7 +254,7 @@ Set-AzSqlDatabase
 ____
 
 > [!NOTE]
-> Azure 门户中单一数据库的指标均位于“监视”下的数据库窗格中。
+> Azure 门户中单一数据库的指标均位于“监视”下的数据库窗格中  。
 
 ### <a name="pause-and-resume-status"></a>暂停和恢复状态
 
@@ -279,7 +279,7 @@ Get-AzSqlDatabase `
 计费的计算量是每秒使用的最大 CPU 和内存量。 如果所用的 CPU 和内存量分别少于最小预配量，则对预配量进行计费。 为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。
 
 - **计费的资源**：CPU 和内存
-- **计费的量 ($)**：vCore 单位价格 * 最大值（最小 vCore 数、使用的 vCore 数、最小内存量 (GB) * 1/3、使用的内存量量 (GB) * 1/3） 
+- **计费的量 ($)** ：vCore 单位价格 * 最大值（最小 vCore 数、使用的 vCore 数、最小内存量 (GB) * 1/3、使用的内存量量 (GB) * 1/3） 
 - **计费频率**：每秒
 
 在每个 vCore 每秒费用 vCore 单位价格。 请参考 [Azure SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)，获取给定区域的特定单位价格。
@@ -310,7 +310,7 @@ Get-AzSqlDatabase `
 
 ## <a name="available-regions"></a>可用区域
 
-无服务器计算层在除以下区域之外的所有区域均可使用：澳大利亚中部、中国东部、中国北部、法国南部、德国中部、德国东北部、印度西部、韩国南部、南非西部、英国北部、英国南部、英国西部和美国中西部
+无服务器计算层在除以下区域之外的所有区域均可使用：澳大利亚中部、 中国东部、 中国北部、 法国南部、 德国中部、 德国东北部、 印度西部、 韩国南部、 南非西部、 英国北部、 英国南部、 英国西部和美国中西部。
 
 ## <a name="next-steps"></a>后续步骤
 

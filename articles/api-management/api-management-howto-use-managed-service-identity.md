@@ -11,18 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75a02abb6cce332daad12e1feb25fb425f89f7f4
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656658"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393388"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>使用 Azure API 管理中管理的标识
 
 本文介绍如何创建 API 管理服务实例的托管的标识以及如何访问其他资源。 生成的 Azure Active Directory (Azure AD) 的托管的标识，API 管理实例轻松安全地访问其他 Azure AD 保护的资源，如 Azure Key Vault。 此标识由 Azure 管理，不需要设置或转交任何机密。 有关托管标识的详细信息，请参阅[什么是 Azure 资源的管理的标识](../active-directory/managed-identities-azure-resources/overview.md)。
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="create-a-managed-identity-for-an-api-management-instance"></a>创建托管的标识为 API 管理实例
 
@@ -242,3 +240,4 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 * [什么是 Azure 资源的管理的标识](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)
+* [使用托管标识在策略中进行身份验证](./api-management-authentication-policies.md#ManagedIdentity)

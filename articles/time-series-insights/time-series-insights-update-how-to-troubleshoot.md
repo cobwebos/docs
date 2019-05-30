@@ -2,7 +2,7 @@
 title: 对 Azure 时序见解预览版进行诊断和故障排除 | Microsoft Docs
 description: 了解如何诊断和排查 Azure 时序见解预览版的问题。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4a63bfd4e82147fe3324e146f2aaff8889da87e
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: d18f8f4808d5ca9dd7eca1561b1ee08c2073f5fa
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472353"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237546"
 ---
 # <a name="diagnose-and-troubleshoot"></a>诊断和故障排除
 
@@ -43,16 +43,16 @@ ms.locfileid: "65472353"
 
 - 事件源密钥缺少所需权限。
 
-  * 对于 IoT 中心，需提供具有“服务连接”权限的密钥。
+  * 对于 IoT 中心，需提供具有“服务连接”  权限的密钥。
 
     [![配置](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
 
-  * 如上图所示，“iothubowner”和“服务”策略均可使用，因为两者都具有“服务连接”权限。
-  * 对于事件中心，需提供具有“侦听”权限的密钥。
+  * 如上图所示，“iothubowner”  和“服务”  策略均可使用，因为两者都具有“服务连接”  权限。
+  * 对于事件中心，需提供具有“侦听”  权限的密钥。
   
     [![权限](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
 
-  * 如上图所示，“读取”和“管理”策略均可使用，因为两者都具有“侦听”权限。
+  * 如上图所示，“读取”  和“管理”  策略均可使用，因为两者都具有“侦听”  权限。
 
 - 提供的使用者组并非时序见解所独有。
 
@@ -80,7 +80,7 @@ ms.locfileid: "65472353"
 * Timestamp 属性名称区分大小写。
 * 来自事件源的 Timestamp 属性值（采用 JSON 字符串形式）的格式为 `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`。 `“2008-04-12T12:53Z”` 是此类字符串的一个示例。
 
-若要确保捕获 Timestamp 属性名称并让其正常运行，最简单的方法是使用时序见解预览版资源管理器。 在时序见解预览版资源管理器中使用此图表，在提供 Timestamp 属性名称以后选择一个时间段。 右键单击所做的选择，然后选择“浏览事件”选项。 第一个列标头为 Timestamp 属性名称。 它应该有 `($ts)` 位于 `Timestamp` 一词的旁边，而不是：
+若要确保捕获 Timestamp 属性名称并让其正常运行，最简单的方法是使用时序见解预览版资源管理器。 在时序见解预览版资源管理器中使用此图表，在提供 Timestamp 属性名称以后选择一个时间段。 右键单击所做的选择，然后选择“浏览事件”选项。  第一个列标头为 Timestamp 属性名称。 它应该有 `($ts)` 位于 `Timestamp` 一词的旁边，而不是：
 
 * `(abc)`，指示时序见解将数据值作为字符串来读取。
 * 日历图标，指示时序见解将数据值作为日期/时间来读取。

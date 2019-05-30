@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1712e46494796e563c26316b4f45d968872c304f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8ade598e4f1b6331367e8bd04ad59951ef5de8f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60781663"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242366"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -41,6 +41,7 @@ Azure 备份可以还原 SQL Server 数据库上运行的 Azure Vm，如下所�
     - 只有指定的客户端名称可以打开的连接。
 - 所有系统数据库 (模型中，master、 msdb) 触发还原之前都停止 SQL Server 代理服务。
 - 关闭任何可能会尝试将连接到这些数据库的应用程序。
+- 如果有多个实例的服务器上运行的所有实例应启动并运行否则服务器不会显示，以便数据库还原到目标服务器的列表中。
 
 ## <a name="restore-a-database"></a>还原数据库
 
@@ -54,8 +55,8 @@ Azure 备份可以还原 SQL Server 数据库上运行的 Azure Vm，如下所�
 
 按如下所述进行还原：
 1. 打开在其中注册 SQL Server VM 的保管库。
-2. 在保管库仪表板的“使用情况”下，选择“备份项”。
-3. 在“备份项”中的“备份管理类型”下，选择“Azure VM 中的 SQL”。
+2. 在保管库仪表板的“使用情况”下，选择“备份项”   。
+3. 在“备份项”中的“备份管理类型”下，选择“Azure VM 中的 SQL”。   
 
     ![选择“Azure VM 中 SQL”](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
@@ -77,7 +78,7 @@ Azure 备份可以还原 SQL Server 数据库上运行的 Azure Vm，如下所�
    - **覆盖 DB**：将数据还原到原始源所在的同一 SQL Server 实例。 此选项将覆盖原始数据库。
 
      > [!Important]
-     > 如果选定的数据库属于 Always On 可用性组，则 SQL Server 不允许覆盖数据库。 仅“备用位置”可用。
+     > 如果选定的数据库属于 Always On 可用性组，则 SQL Server 不允许覆盖数据库。 仅“备用位置”可用。 
      >
 
      ![“还原配置”菜单](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
@@ -86,9 +87,9 @@ Azure 备份可以还原 SQL Server 数据库上运行的 Azure Vm，如下所�
 
 1. 在中**还原配置**菜单下**还原到何处**，选择**备用位置**。
 2. 选择要将数据库还原到其中的 SQL Server 名称和实例。
-3. 在“还原数据库名称”框中，输入目标数据库的名称。
-4. 如果适用，请选择“当选定的 SQL 实例上已存在同名的 DB 时覆盖”。
-5. 选择“确定”。
+3. 在“还原数据库名称”框中，输入目标数据库的名称。 
+4. 如果适用，请选择“当选定的 SQL 实例上已存在同名的 DB 时覆盖”。 
+5. 选择“确定”  。
 
     ![为“还原配置”菜单提供值](./media/backup-azure-sql-database/restore-configuration-menu.png)
 
@@ -110,7 +111,7 @@ Azure 备份可以还原 SQL Server 数据库上运行的 Azure Vm，如下所�
 
 ### <a name="restore-to-a-specific-point-in-time"></a>还原到特定时间点
 
-如果已选择“日志(时间点)”作为还原类型，请执行以下操作：
+如果已选择“日志(时间点)”作为还原类型，请执行以下操作： 
 
 1.  下**还原日期/时间**，打开日历。 在日历上以粗体类型显示的具有恢复点的日期和突出显示当前日期。
 1. 选择具有恢复点的日期。 不能选择不具有任何恢复点的日期。
@@ -118,40 +119,47 @@ Azure 备份可以还原 SQL Server 数据库上运行的 Azure Vm，如下所�
     ![打开日历](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. 选择日期后，时间线图会显示连续范围内的可用恢复点。
-1. 在时间线关系图中上, 指定的时间进行恢复，或选择一个时间。 然后选择“确定”。
+1. 在时间线关系图中上, 指定的时间进行恢复，或选择一个时间。 然后选择“确定”。 
 
     ![选择还原时间](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
 
 1. 上**高级配置**菜单中，如果你想要保留在数据库还原后，不再运行启用**使用 NORECOVERY 还原**。
 1. 若要更改目标服务器上的还原位置，请输入新的目标路径。
-1. 选择“确定”。
+1. 选择“确定”  。
 
     ![高级配置菜单](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
-1. 在“还原”菜单中，选择“还原”启动还原作业。
+1. 在“还原”菜单中，选择“还原”启动还原作业。  
 1. 跟踪中的还原进度**通知**区域中，或通过选择跟踪**还原作业**数据库菜单上。
 
     ![还原作业的进度](./media/backup-azure-sql-database/restore-job-notification.png)
 
 ### <a name="restore-to-a-specific-restore-point"></a>还原到特定还原点
 
-如果已选择“完整和差异”作为还原类型，请执行以下操作：
+如果已选择“完整和差异”作为还原类型，请执行以下操作： 
 
-1. 在列表中选择一个恢复点，然后选择“确定”完成还原点过程。
+1. 在列表中选择一个恢复点，然后选择“确定”完成还原点过程。 
 
     ![选择完整恢复点](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
 
 1. 上**高级配置**菜单中，如果你想要保留在数据库还原后，不再运行启用**使用 NORECOVERY 还原**。
 1. 若要更改目标服务器上的还原位置，请输入新的目标路径。
-1. 选择“确定”。
+1. 选择“确定”  。
 
     ![高级配置菜单](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
-1. 在“还原”菜单中，选择“还原”启动还原作业。
+1. 在“还原”菜单中，选择“还原”启动还原作业。  
 1. 跟踪中的还原进度**通知**区域中，或通过选择跟踪**还原作业**数据库菜单上。
 
     ![还原作业的进度](./media/backup-azure-sql-database/restore-job-notification.png)
+
+### <a name="restore-databases-with-large-number-of-files"></a>使用大量的文件还原数据库
+
+如果在数据库中的文件的总字符串大小大于[特定限制](backup-sql-server-azure-troubleshoot.md#files-size-limit-beyond-which-restore-happens-to-default-path)，Azure 备份将数据库文件的列表存储在不同时间点组件，以便你将不能在还原过程中设置目标还原路径操作。 文件将改为还原到的 SQL 默认路径。
+
+  ![使用大型文件还原数据库](./media/backup-azure-sql-database/restore-large-files.jpg)
+
 
 ## <a name="next-steps"></a>后续步骤
 

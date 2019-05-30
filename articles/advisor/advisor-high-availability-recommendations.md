@@ -8,16 +8,16 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467721"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254670"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>使用 Azure 顾问提高应用程序的可用性
 
-Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可以通过顾问仪表板的“高可用性”选项卡获取顾问的高可用性建议。
+Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可以通过顾问仪表板的“高可用性”  选项卡获取顾问的高可用性建议。
 
 ## <a name="ensure-virtual-machine-fault-tolerance"></a>确保虚拟机容错
 
@@ -70,11 +70,35 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 Azure 顾问将检查任何 VPN 网关的基本 SKU，并建议您改为使用生产 SKU。 基本 SKU 专为开发和测试目的。 生产 Sku 提供更多的隧道、 BGP 支持、 主动-主动配置选项、 自定义 Ipsec/IKE 策略和更高版本稳定性和可用性。
 
+## <a name="repair-invalid-log-alert-rules"></a>修复无效的日志警报规则
+
+Azure 顾问将检测到具有无效的查询在其条件部分中指定的警报规则。 日志警报规则在 Azure Monitor 中创建，用于在指定的时间间隔运行分析查询。 查询的结果确定是否需要触发警报。 分析查询可能会变得无效加班由于引用的资源、 表或命令中的更改。 顾问建议你先纠正警报规则，以防止获取自动禁用它，并确保在 Azure 中资源的监视范围中的查询。 [了解有关故障排除警报规则的详细信息](https://aka.ms/aa_logalerts_queryrepair)
+
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Cosmos DB 集合上配置一致索引模式
+
+使用延迟索引模式配置的 azure Cosmos DB 容器可能会影响查询结果的新鲜度。 顾问将检测到这种方式配置的容器，并且建议切换到一致的模式。 [了解有关索引 Cosmos DB 中的策略的详细信息](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+
+## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>配置 Azure Cosmos DB 容器的分区键
+
+Azure 顾问会标识 Azure Cosmos DB 未分区的集合已接近其预配的存储配额。 它将建议迁移到新集合与分区键定义这些集合，以便它们可以自动进行横向扩展服务。 [了解有关选择分区键的详细信息](https://aka.ms/cosmosdb/choose-partitionkey)
+
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>从 Nuget 升级到最新版本的 Azure Cosmos DB.NET SDK
+
+Azure 顾问会标识 Azure Cosmos DB 帐户，使用的旧版本的.NET SDK 并建议升级到最新版本从 Nuget 的最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB.NET SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>从 Maven 升级到最新版本的 Azure Cosmos DB Java SDK
+
+Azure 顾问会标识 Azure Cosmos DB 帐户，使用的旧版本的 Java SDK 并建议升级到最新版本从 Maven 为最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB Java SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>从 Maven 升级到最新版本的 Azure Cosmos DB Spark 连接器
+
+Azure 顾问会标识 Azure Cosmos DB 帐户，正在使用旧版本的 Cosmos DB Spark 连接器并建议升级到最新版本从 Maven 为最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB Spark 连接器的详细信息](https://aka.ms/cosmosdb/spark-connector)
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 
 1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
 
-2.  在顾问仪表板中，单击“高可用性”选项卡。
+2.  在顾问仪表板中，单击“高可用性”选项卡  。
 
 ## <a name="next-steps"></a>后续步骤
 

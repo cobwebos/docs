@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 398b7a78c9bc13631e15c8725efb8cc0fba3f127
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 62261e46dc4744597acd10c32f0a835f4a597d4d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806471"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243977"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>扩展对 SQL Server 2008 和 SQL Server 2008 R2 与 Azure 支持
 
@@ -58,7 +58,7 @@ SQL Server 需要应用程序一致的 Azure Site Recovery 快照，以保证恢
 
 ### <a name="database-migration-service"></a>数据库迁移服务
 
-[数据库迁移服务](/dms/dms-overview)如果从本地迁移到 Azure VM 的 SQL Server 升级到 SQL Server 2012 及更高版本的客户是一个选项。
+[数据库迁移服务](/azure/dms/dms-overview)如果从本地迁移到 Azure VM 的 SQL Server 升级到 SQL Server 2012 及更高版本的客户是一个选项。
 
 ## <a name="disaster-recovery"></a>灾难恢复
 

@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 926629660c9593c59362bd1bc49c5115ac5e3187
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: b486c30827ee67b58cbdc0027c8221cceed02e51
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441068"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235948"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
@@ -62,14 +62,14 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 DSC Linux 扩展支持所有[在 Azure 上认可的](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Linux 发行版，除了以下这些：
 
-分发组 | Version
+分发 | Version
 -|-
 Debian  | 所有版本
 Ubuntu  | 18.04
 
 ### <a name="dsc-requirements"></a>DSC 要求
 
-对于在 Azure 中运行的所有 Windows 节点，[WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) 将在载入时安装。  对于运行 Windows Server 2012 和 Windows 7 的节点，[将会启用 WinRM](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency)。
+对于在 Azure 中运行的所有 Windows 节点，[WMF 5.1](https://docs.microsoft.com/powershell/wmf/setup/install-configure) 将在载入时安装。  对于运行 Windows Server 2012 和 Windows 7 的节点，[将会启用 WinRM](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency)。
 
 对于在 Azure 中运行的所有 Linux 节点，[PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 将在载入时安装。
 
@@ -77,7 +77,7 @@ Ubuntu  | 18.04
 
 如果节点位于专用网络内，以下端口和 Url 所需的状态配置 (DSC) 与自动化通信：
 
-* 端口:只需使用 TCP 443 即可进行出站 Internet 访问。
+* 端口：只需使用 TCP 443 即可进行出站 Internet 访问。
 * 全局 URL：*.azure-automation.net
 * 美国弗吉尼亚州政府的全局 URL：*.azure-automation.us
 * 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.net

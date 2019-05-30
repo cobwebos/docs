@@ -13,15 +13,15 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa6de024758d16b99569261e10d46f9328241427
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf8484cdadcdb368c00351ca68e42652b475a7d4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482951"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305418"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>更新我的应用门户从你配置文件和帐户信息
-可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
+可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，  以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。  如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "60482951"
 
 - 注销所有位置。
 
-## <a name="change-your-password"></a>更改密码
+## <a name="change-your-password"></a>请更改密码。
 如果你想要更改工作或学校帐户的密码，则可以选择**更改密码**从**管理帐户**区域**配置文件**页。
 
 ### <a name="to-change-your-password"></a>若要更改你的密码
@@ -71,7 +71,7 @@ ms.locfileid: "60482951"
 
     ![更改密码页](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. 选择“提交”。
+3. 选择“提交”。 
 
     更改你的密码。 你将需要登录到任何应用之前登录到使用你的工作或学校帐户。
 
@@ -99,7 +99,7 @@ ms.locfileid: "60482951"
 
     - **设置 Microsoft Authenticator 应用。** 您可以选择设置 Microsoft Authenticator 应用作为验证方法进行处理。 有关 Microsoft Authenticator 应用的详细信息，请参阅[Microsoft Authenticator 应用是什么？](user-help-auth-app-overview.md)
 
-3. 选择“保存”以保存更改。
+3. 选择“保存”  以保存更改。
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>查看你组织的使用条款声明
 您可以选择查看你组织的使用条款声明，如果可用。

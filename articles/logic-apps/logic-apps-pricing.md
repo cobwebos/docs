@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: b37a6b6995df6f784b5f1b4a7a3f54d91faafc13
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990195"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299105"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -38,14 +38,14 @@ Azure 逻辑应用对逻辑应用中运行的所有操作进行计量。 详细�
 
 ## <a name="fixed-pricing-model"></a>固定定价模型
 
-[*集成服务环境*(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供了可创建并运行逻辑应用可以访问 Azure 虚拟网络中的资源的专用、 隔离和专用方法。 对于在 ISE 中运行的新逻辑应用，您支付固定月费为内置的操作和触发器和标准连接器。
+[*集成服务环境*(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供了可创建并运行逻辑应用可以访问 Azure 虚拟网络中的资源的专用、 隔离和专用方法。 对于在 ISE 中运行的新逻辑应用，你需付费[固定每月价格](https://azure.microsoft.com/pricing/details/logic-apps)内置操作和触发器以及标准连接器。
 
-在 ISE 还包括一个免费企业连接器，其中包括所需的任意多个连接。 使用情况的其他企业连接器基于企业消耗价格进行收费。
+在 ISE 还包括一个免费企业连接器，其中包括作为许多*连接*根据需要。 其他企业连接器的使用情况的基础上收费[企业消耗价格](https://azure.microsoft.com/pricing/details/logic-apps)。 通常仅提供企业连接器是企业消耗价格收费。 公共预览版企业连接器进行收费[标准连接器速率](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 > [!NOTE]
 > 在 ISE 中，内置的触发器和操作显示**Core**标记和在作为逻辑应用相同的 ISE 中运行。 标准版和企业版连接器的显示**ISE**标签在作为逻辑应用相同的 ISE 中运行。 不显示在全局的逻辑应用服务中运行的 ISE 标签的连接器。
 
-在 ISE 基本单位具有固定容量，因此如果需要更大的吞吐量，你可以[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)，可以在创建期间或之后。 
+在 ISE 基本单位具有固定容量，因此如果需要更大的吞吐量，你可以[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)，可以在创建期间或之后。 在 ISE 中运行的逻辑应用不会产生数据保留成本。
 
 有关具体的定价信息，请参阅 [Azure 逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
@@ -67,13 +67,13 @@ Azure 逻辑应用连接器通过提供[触发器](#triggers)和/或[操作](#ac
 
 * **Webhook 触发器**：此触发器等待客户端向特定的终结点发送请求。 发送到 webhook 终结点的每个请求都会计为操作执行。 例如，请求和 HTTP Webhook 触发器都是 Webhook 触发器。
 
-* 重复周期触发器：此触发器基于在触发器中设置的重复间隔创建逻辑应用实例。 例如，可以设置每隔三天运行的，或者根据更复杂的计划运行的定期触发器。
+* 重复周期触发器：  此触发器基于在触发器中设置的重复间隔创建逻辑应用实例。 例如，可以设置每隔三天运行的，或者根据更复杂的计划运行的定期触发器。
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>操作
 
-Azure 逻辑应用将 HTTP 等“内置”操作作为本机操作进行计量。 例如，内置操作包括 HTTP 调用、来自 Azure Functions 或 API 管理的调用，以及条件、循环和开关语句等控制流步骤。 每个操作具有自身的操作类型。 例如，调用[连接器](https://docs.microsoft.com/connectors)的操作为“ApiConnection”类型。 这些连接器分类为“标准”或“企业”连接器，根据各自的[定价](https://azure.microsoft.com/pricing/details/logic-apps)进行计量。 预览版的企业连接器按标准连接器计费。
+Azure 逻辑应用将 HTTP 等“内置”操作作为本机操作进行计量。 例如，内置操作包括 HTTP 调用、来自 Azure Functions 或 API 管理的调用，以及条件、循环和开关语句等控制流步骤。 每个操作具有自身的操作类型。 例如，调用[连接器](https://docs.microsoft.com/connectors)的操作为“ApiConnection”类型。 这些连接器分类为“标准”或“企业”连接器，根据各自的[定价](https://azure.microsoft.com/pricing/details/logic-apps)进行计量。 预览版的企业连接器按标准连接器计费。 
 
 Azure 逻辑应用将所有成功和不成功的操作作为执行进行计量。 但是，逻辑应用不会计量以下操作：
 
@@ -108,7 +108,7 @@ Azure 逻辑应用提供了免费、 基本和标准集成帐户。 基本和标
 
 ## <a name="data-retention"></a>数据保留
 
-所有输入和输出存储在逻辑应用的运行历史记录中获取基于逻辑应用的都计费[运行期](logic-apps-limits-and-config.md#run-duration-retention-limits)。 有关具体的定价信息，请参阅[Azure 逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
+逻辑应用除外，在集成服务环境 (ISE) 中运行，所有输入和输出存储在逻辑应用的运行历史记录中的都计费基于逻辑应用的[运行期](logic-apps-limits-and-config.md#run-duration-retention-limits)。 在 ISE 中运行的逻辑应用不会产生数据保留成本。 有关具体的定价信息，请参阅[Azure 逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 若要帮助您监视逻辑应用的存储消耗情况，您可以：
 

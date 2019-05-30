@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 51bd4b935b32bea20d3f5de0b8cda62dfdbf07b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99dd3c0b07307f2d0bf97dbff697e32e648705ae
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60236624"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400180"
 ---
 # <a name="azure-backup-support-matrix"></a>Azure 备份支持矩阵
 
@@ -27,7 +27,7 @@ ms.locfileid: "60236624"
 
 ## <a name="vault-support"></a>保管库支持
 
-Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用保管库来存储备份数据。 
+Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用保管库来存储备份数据。
 
 下表描述了恢复服务保管库的功能：
 
@@ -36,8 +36,8 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 **订阅中的保管库数** | 单个订阅中最多可以有 500 个恢复服务保管库。
 **保管库中的计算机数** | 在单个保管库中的最多 1,000 台 Azure Vm。<br/><br/> 单个保管库中最多可注册 50 个 MABS 服务器。
 **保管库存储中的数据源** | 最大 54,400 GB。 Azure VM 备份没有限制。
-**保管库备份** | **Azure Vm:** 每天一次。<br/><br/>**使用 DPM/MABS 保护的计算机：** 每天两次。<br/><br/> **备份直接通过使用 MARS 代理的计算机：** 一天三次。 
-**在保管库之间备份** | 备份在一个区域内进行。<br/><br/> 在包含想要备份的 VM 的每个 Azure 区域中都需要有一个保管库。 无法备份到其他区域。 
+**保管库备份** | **Azure Vm:** 每天一次。<br/><br/>**使用 DPM/MABS 保护的计算机：** 每天两次。<br/><br/> **备份直接通过使用 MARS 代理的计算机：** 一天三次。
+**在保管库之间备份** | 备份在一个区域内进行。<br/><br/> 在包含想要备份的 VM 的每个 Azure 区域中都需要有一个保管库。 无法备份到其他区域。
 **移动保管库** | 你可以[移动保管库](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)跨订阅或同一订阅中的资源组之间。
 **在保管库之间移动数据** | 保管库之间移动备份数据不受支持。
 **修改保管库存储类型** | 之前的备份存储，可以修改一个保管库的存储复制类型 （异地冗余存储或本地冗余存储）。 在保管库中开始备份以后，就不能修改复制类型。
@@ -69,7 +69,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 **计算机** | **备份的内容** | **位置** | **功能**
 --- | --- | --- | ---
 **使用 VM 扩展的 azure VM 备份** | 整个 VM | 备份到保管库。 | 为 VM 启用备份时安装的扩展。<br/><br/> 备份一天一次。<br/><br/> 适用于 Windows Vm; 应用程序感知备份适用于 Linux Vm 的文件一致性备份。 可以通过使用自定义脚本来配置应用程序一致性对于 Linux 计算机。<br/><br/> 还原 VM 或磁盘。<br/><br/> 不能在本地位置到 Azure VM 备份。
-**使用 MARS 代理的 azure VM 备份** | 文件、文件夹 | 备份到保管库。 | 备份一天三次。<br/><br/> 如果你想要备份的特定文件或文件夹，而不是整个 VM，MARS 代理可以运行 VM 扩展的旁边。
+**使用 MARS 代理的 azure VM 备份** | 文件、文件夹、系统状态 | 备份到保管库。 | 备份一天三次。<br/><br/> 如果你想要备份的特定文件或文件夹，而不是整个 VM，MARS 代理可以运行 VM 扩展的旁边。
 **装有 DPM 的 Azure VM** | 文件、 文件夹、 卷、 系统状态、 应用程序数据 | 备份到运行 DPM 的 Azure VM 的本地存储。 DPM 然后备份到保管库。 | 应用感知快照。<br/><br/> 备份和恢复的完整粒度。<br/><br/> 就 VM (Hyper-V/VMware) 来说，支持 Linux。<br/><br/> 不支持 Oracle。
 **装有 MABS 的 Azure VM** | 文件、 文件夹、 卷、 系统状态、 应用程序数据 | 备份到 Azure vm 的运行 MABS 的本地存储。 MABS 然后备份到保管库。 | 应用感知快照。<br/><br/> 备份和恢复的完整粒度。<br/><br/> 就 VM (Hyper-V/VMware) 来说，支持 Linux。<br/><br/> 不支持 Oracle。
 

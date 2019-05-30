@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: e6bb947503371e379e4d4972ddfc3614e129174b
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 183e2144317bf3f1c9a60443d393bdcb3fd7c04a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835215"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390548"
 ---
 # <a name="generation-2-vms-preview-on-azure"></a>在 Azure 上的第 2 代 Vm （预览版）
 
@@ -30,7 +30,7 @@ ms.locfileid: "65835215"
 
 第 2 代虚拟机 (Vm) 的支持现已在 Azure 上的公共预览版中可用。 无法更改虚拟机的代次后创建它。 因此，我们建议您查看的注意事项[此处](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)以及此页上选择某代之前的信息。
 
-第 2 代 Vm 支持关键功能，例如： 增加的内存、 Intel® 软件防护扩展 (SGX)，以及虚拟永久性内存 (vPMEM)，这在第 1 代 Vm 上不受支持。 第 2 代虚拟机具有在 Azure 上目前尚不支持某些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。 
+第 2 代 Vm 支持主要功能所不支持第 1 代 Vm，如： 增加的内存、 Intel® 软件防护扩展 (SGX)，以及虚拟永久性内存 (vPMEM)。 第 2 代 Vm 还必须在 Azure 上目前尚不支持某些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
 
 第 2 代虚拟机使用新的基于 UEFI 的引导体系结构与基于 BIOS 的体系结构使用的第 1 代 Vm。 与第 1 代 Vm 相比，第 2 代 Vm 可能会改进启动和安装时间。 第 2 代 Vm 的概述和一些第 1 代和第 2 代的主要差异，请参阅[应在 HYPER-V 中创建第 1 或 2 代虚拟机？](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 
@@ -84,7 +84,7 @@ Azure 当前不支持的一些功能，在本地 HYPER-V 支持的第 2 代 Vm�
 | 自定义磁盘/映像/交换 OS         | :heavy_check_mark:         | :heavy_check_mark: |
 | 虚拟机规模集的支持 | :heavy_check_mark:         | :heavy_check_mark: |
 | ASR/备份                        | :heavy_check_mark:         | :x:                |
-| 共享映像库              | :heavy_check_mark:         | :x:                |
+| 共享的映像库              | :heavy_check_mark:         | :x:                |
 | Azure 磁盘加密             | :heavy_check_mark:         | :x:                |
 
 ## <a name="creating-a-generation-2-vm"></a>创建第 2 代 VM
@@ -113,6 +113,29 @@ Azure 当前不支持的一些功能，在本地 HYPER-V 支持的第 2 代 Vm�
 此外可以使用虚拟机规模集创建 2 个 Vm 的代。 您可以创建生成 2 个 Vm 使用 Azure CLI 通过 Azure 虚拟机规模集。
 
 ## <a name="frequently-asked-questions"></a>常见问题
+
+* **生成所有 Azure 区域中可用的 2 个 Vm？**  
+    否。但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)每个区域中都可用。 生成 2 个 Vm 是依赖于 VM 大小的可用性的可用性。
+
+* **是否有第 1 代和生成之间的价差的 2 个 Vm？**  
+    没有任何区别在第 1 代和第 2 代 Vm 的定价。
+
+* **如何增加 OS 磁盘大小？**  
+  OS 磁盘大于 2 TB 不熟悉第 2 代 Vm。 默认情况下，大多数 OS 磁盘小于 2 TB，对于第 2 代 Vm，但可以增加的磁盘大小为 4 TB 的建议最大值。 可以增加通过 Azure CLI 或 Azure 门户将 OS 磁盘大小。 有关以编程方式扩展磁盘的详细信息，请参阅[调整磁盘大小](expand-disks.md)。
+
+  若要增大通过 Azure 门户将 OS 磁盘大小：
+
+  * 导航到 Azure 门户上的 VM 属性页。
+
+  * 关闭并解除分配 VM 使用**停止**按钮。
+
+  * 在中**磁盘**部分中，选择你想要增加的 OS 磁盘。
+
+  * 选择**配置**中**磁盘**部分，并更新**大小**到所需的值。
+  
+  * 向后定位到的 VM 属性页并**启动**VM。
+
+  可能会看到一条警告对于 OS 磁盘大于 2 TB。 此警告不适用于第 2 代 Vm;但是，OS 磁盘大小大于 4 TB 为**不建议这样做。**
 
 * **第 2 代 Vm 支持加速网络吗？**  
     是的第 2 代 Vm 支持[加速网络](../../virtual-network/create-vm-accelerated-networking-cli.md)。

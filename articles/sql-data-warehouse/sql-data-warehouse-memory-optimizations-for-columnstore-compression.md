@@ -1,5 +1,5 @@
 ---
-title: 提高列存储索引的性能 - Azure SQL 数据仓库 | Microsoft Docs
+title: 提高 Azure SQL 数据仓库中的列存储索引性能 |Microsoft Docs
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: load data
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0b9a4ce84544beb09431e494385f3b9d8507c418
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 39d0fe06ee0e0230411024833cac7c88308f86c7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873539"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225380"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a20299887de827f25e4c3306f5e78c188c9a8a7f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969407"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357694"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
 
@@ -291,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
 
-创建 SAP ASCS/SCS 群集网络名称（例如，**pr1-ascs [10.0.6.7]**），如[为群集化 SAP ASCS/SCS 实例创建虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
+创建 SAP ASCS/SCS 群集网络名称（例如，**pr1-ascs [10.0.6.7]** ），如[为群集化 SAP ASCS/SCS 实例创建虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>在群集中安装 ASCS/SCS 和 ERS 实例
@@ -300,7 +300,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第一个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<产品 >** > **\<DBMS >** > **安装** > **应用程序服务器 ABAP** (或**Java**) >**高可用性系统** > **ASCS/SCS 实例** > **第一个群集节点**.
+**\<产品 >**  >  **\<DBMS >**  > **安装** > **应用程序服务器 ABAP** (或**Java**) >**高可用性系统** > **ASCS/SCS 实例** > **第一个群集节点**.
 
 ### <a name="add-a-probe-port"></a>添加探测端口
 
@@ -310,21 +310,21 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第二个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<产品 >** > **\<DBMS >** > **安装** > **应用程序服务器 ABAP** (或**Java**) >**高可用性系统** > **ASCS/SCS 实例** > **其他群集节点**.
+**\<产品 >**  >  **\<DBMS >**  > **安装** > **应用程序服务器 ABAP** (或**Java**) >**高可用性系统** > **ASCS/SCS 实例** > **其他群集节点**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 实例配置文件
 
-更新 SAP ASCS/SCS 实例配置文件中的参数\<SID >_ASCS/SCS\<Nr >_\<主机 >。
+更新 SAP ASCS/SCS 实例配置文件中的参数\<SID >_ASCS/SCS\<Nr >_ \<主机 >。
 
 
 | 参数名称 | 参数值 |
 | --- | --- |
 | gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | true |
+| enque/encni/set_so_keepalive  | true  |
 | service/ha_check_node | **1** |
 
-重新启动 SAP ASCS/SCS 实例。 设置`KeepAlive`两个 SAP ASCS/SCS 群集节点上的参数按照说明[SAP ASCS/SCS 实例在群集节点上设置注册表项]([high-availability-guide]:high-availability-guide.md)。 
+重新启动 SAP ASCS/SCS 实例。 设置`KeepAlive`两个 SAP ASCS/SCS 群集节点上的参数按照说明[SAP ASCS/SCS 实例在群集节点上设置注册表项][high-availability-guide]。 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
 

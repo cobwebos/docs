@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: raynew
-ms.openlocfilehash: 593a82221ec94e43d50b7382ba89053d5f68864a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e96aafe61c0d8547ffca9e97bfd9e90c9529155f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805916"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237265"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>设置 VMware Vm/物理服务器对大规模的灾难恢复
 
@@ -127,7 +127,7 @@ ms.locfileid: "65805916"
  
 配置服务器容量的复制的计算机数会影响并不是由数据变动率。 若要确定是否需要额外的配置服务器，使用这些定义的 VM 的限制。
 
-CPU | 内存 | 缓存磁盘 | **复制计算机限制**
+CPU  | 内存  | 缓存磁盘  | **复制计算机限制**
  --- | --- | --- | ---
 8 个 vCPU<br> 2 套接字 * 4 个核心 @ 2.5 Ghz | 16 GB | 600 TB | 最多 550 计算机<br> 假定每台计算机具有三个磁盘 100 gb。
 
@@ -153,7 +153,7 @@ CPU | 内存 | 缓存磁盘 | **复制计算机限制**
 - 我们建议您添加具有最高规格的服务器。 
 
 
-CPU | 内存 | 缓存磁盘 | **变动率**
+CPU  | 内存  | 缓存磁盘  | **变动率**
  --- | --- | --- | --- 
 12 个 vCPU<br> 2 套接字 * 6 个核心 @ 2.5 Ghz | 24 GB | 1 GB | 一天最多 2 TB
 
@@ -188,7 +188,7 @@ CPU | 内存 | 缓存磁盘 | **变动率**
 1. 分配的灾难恢复管理员，来监视复制的计算机的运行状况状态。
 2. [监视事件](site-recovery-monitor-and-troubleshoot.md)复制的项和基础结构。
 3. [监视运行状况](vmware-physical-azure-monitor-process-server.md)的横向扩展进程服务器。
-4. 注册以获取[电子邮件通知](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications)的事件，用于更轻松地监视。
+4. 注册以获取[电子邮件通知](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications)的事件，用于更轻松地监视。
 5. 执行常规[灾难恢复演练](site-recovery-test-failover-to-azure.md)，以确保一切按预期方式工作。
 
 

@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 243a388ee59a1a550f80882b0af61e1f1db008ca
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 9d5e06c3d72d87a87b41a52ed4df369ebc04dccd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977439"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387080"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
-监视模式是工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
+监视模式是工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。  本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "65977439"
 
 此示例监视某个地点的当前天气状况，如果是晴天，则通过短信通知用户。 可以使用常规的计时器触发函数来检查天气和发送提醒。 但是，此方法存在**生存期管理**方面的问题。 如果只应发送一条提醒，则在检测到晴天后，监视器需要禁用自身。 监视模式可以结束自身的执行，同时还具有其他优点：
 
-* 监视器按时间间隔而不是计划运行：计时器触发器每隔一小时运行；监视器等待一小时，然后执行下一项操作。 除非有指定，否则监视器的操作不会重叠，这对于长时间运行的任务可能很重要。
+* 监视器按时间间隔而不是计划运行：计时器触发器每隔一小时运行；监视器等待一小时，然后执行下一项操作。   除非有指定，否则监视器的操作不会重叠，这对于长时间运行的任务可能很重要。
 * 监视器可以使用动态时间间隔：可以根据某种条件更改等待时间。
 * 监视器可以在满足某种条件时终止，或者由其他进程终止。
 * 监视器可以采用参数。 此示例演示如何将同一个天气监视进程应用到任何请求的地点和电话号码。
@@ -42,7 +42,7 @@ ms.locfileid: "65977439"
 
 此示例涉及到使用 Weather Underground API 来检查某个地点的当前天气状况。
 
-首先需要创建一个 Weather Underground 帐户。 可以通过 [https://www.wunderground.com/signup](https://www.wunderground.com/signup) 免费创建一个帐户。 创建帐户后，需要获取 API 密钥。 可以访问 [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api)，然后选择“密钥设置”来获取此密钥。 Stratus Developer 计划是免费的，足以用于运行此示例。
+首先需要创建一个 Weather Underground 帐户。 可以通过 [https://www.wunderground.com/signup](https://www.wunderground.com/signup) 免费创建一个帐户。 创建帐户后，需要获取 API 密钥。 可以访问 [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)，然后选择“密钥设置”来获取此密钥。 Stratus Developer 计划是免费的，足以用于运行此示例。
 
 获取 API 密钥后，将以下**应用设置**添加到函数应用。
 
@@ -78,7 +78,7 @@ ms.locfileid: "65977439"
 
 此业务流程协调程序函数执行以下操作：
 
-1. 获取 **MonitorRequest**，其中包括要监视的地点，以及要将短信通知发送到的电话号码。
+1. 获取 **MonitorRequest**，其中包括要监视的地点，以及要将短信通知发送到的电话号码。  
 2. 确定监视器的过期时间。 为简便起见，本示例使用了硬编码值。
 3. 调用 **E3_GetIsClear** 来确定请求的地点是否为晴天。
 4. 如果是晴天，则调用 **E3_SendGoodWeatherAlert** 将短信通知发送到请求的电话号码。
@@ -98,7 +98,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 ## <a name="helper-activity-functions"></a>帮助器活动函数
 
-与其他示例一样，帮助器活动函数是使用 `activityTrigger` 触发器绑定的正则函数。 **E3_GetIsClear** 函数使用 Weather Underground API 获取当前天气状况并确定是否为晴天。 function.json 定义如下：
+与其他示例一样，帮助器活动函数是使用 `activityTrigger` 触发器绑定的正则函数。 **E3_GetIsClear** 函数使用 Weather Underground API 获取当前天气状况并确定是否为晴天。 function.json 定义如下  ：
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 

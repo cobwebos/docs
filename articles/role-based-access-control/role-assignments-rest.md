@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531841"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357059"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>使用 RBAC 和 REST API 管理对 Azure 资源的访问权限
 
@@ -36,15 +36,19 @@ ms.locfileid: "60531841"
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
     ```
 
-1. 在 URI 中，将“{scope}”替换为要列出角色分配的范围。
+1. 在 URI 中，将“{scope}”  替换为要列出角色分配的范围。
 
     | 范围 | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
-
-1. 将“{filter}”替换为筛选角色分配列表时要应用的条件。
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    
+       
+     > [!NOTE]
+     > 在上面的示例在不使用资源提供程序 Microsoft.web 是引用的应用服务实例。 同样可以使用任何其他资源提供程序，并构建范围 URI。 若要了解详细信息，请参阅[Azure 资源提供程序和类型](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)和支持[Azure RM 资源提供程序操作](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations)。  
+     
+1. 将“{filter}”  替换为筛选角色分配列表时要应用的条件。
 
     | 筛选器 | 描述 |
     | --- | --- |
@@ -75,21 +79,21 @@ ms.locfileid: "60531841"
     }
     ```
     
-1. 在 URI 内，将“{scope}”替换为角色分配的范围。
+1. 在 URI 内，将“{scope}”  替换为角色分配的范围。
 
     | 范围 | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
-1. 将“{roleAssignmentName}”替换为角色分配的 GUID 标识符。
+1. 将“{roleAssignmentName}”  替换为角色分配的 GUID 标识符。
 
-1. 在请求正文中，将“{subscriptionId}”替换为你的订阅标识符。
+1. 在请求正文中，将“{subscriptionId}”  替换为你的订阅标识符。
 
-1. 将“{roleDefinitionId}”替换为角色定义标识符。
+1. 将“{roleDefinitionId}”  替换为角色定义标识符。
 
-1. 将“{principalId}”替换为将分配有角色的用户、组或服务主体的对象标识符。
+1. 将“{principalId}”  替换为将分配有角色的用户、组或服务主体的对象标识符。
 
 ## <a name="remove-access"></a>删除访问权限
 
@@ -103,15 +107,15 @@ ms.locfileid: "60531841"
     DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
     ```
 
-1. 在 URI 内，将“{scope}”替换为删除角色分配的范围。
+1. 在 URI 内，将“{scope}”  替换为删除角色分配的范围。
 
     | 范围 | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
-1. 将“{roleAssignmentName}”替换为角色分配的 GUID 标识符。
+1. 将“{roleAssignmentName}”  替换为角色分配的 GUID 标识符。
 
 ## <a name="next-steps"></a>后续步骤
 

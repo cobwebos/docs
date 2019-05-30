@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cd52fb82e5e4cce759be5dfdd8872f64802459
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 104665774eee885cc2f562e9813cffcf23aa943e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003156"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235509"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>基准策略：最终用户保护 （预览版）
 
@@ -75,11 +75,11 @@ ms.locfileid: "66003156"
 
 策略**基准策略：最终用户保护 （预览版）** 预配置，此时将显示在顶部导航到在 Azure 门户中的条件性访问边栏选项卡时。
 
-若要启用此策略并保护你的管理员：
+若要启用此策略并保护你的用户：
 
 1. 登录到 **Azure 门户** 作为全局管理员、 安全管理员或条件性访问管理员。
 1. 浏览到**Azure Active Directory** > **条件性访问**。
-1. 在策略列表中，选择**基准策略：最终用户保护 （预览版）**。
+1. 在策略列表中，选择**基准策略：最终用户保护 （预览版）** 。
 1. 设置**启用策略**到**立即使用策略**。
 1. 通过单击添加任何用户排除项**用户** > **选择排除的用户**，然后选择需要排除的用户。 单击**选择**然后**完成**。
 1. 单击 **保存**。

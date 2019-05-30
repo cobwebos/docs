@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2983980786fc706d103c0147a0776f2ff8c2d4f
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 0f4ab484b76bb536dd4e9d3c4fff2c85d93e4a41
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545474"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235190"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
 
@@ -47,7 +47,7 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 1. API B 返回受保护资源中的数据。
 
 >[!NOTE]
->在用于请求下游服务的令牌的访问令牌中，受众声明必须是发出 OBO 请求的服务 ID。 该令牌还必须使用 Azure Active Directory 全局签名密钥（这是通过门户中的“应用注册”注册的应用程序的默认密钥）进行签名。
+>在用于请求下游服务的令牌的访问令牌中，受众声明必须是发出 OBO 请求的服务 ID。 该令牌还必须使用 Azure Active Directory 全局签名密钥（这是通过门户中的“应用注册”注册的应用程序的默认密钥）进行签名  。
 
 ## <a name="register-the-application-and-service-in-azure-ad"></a>在 Azure AD 中注册应用程序和服务
 
@@ -56,33 +56,34 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 ### <a name="register-the-middle-tier-service"></a>注册中间层服务
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户。
-1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”。
-1. 依次选择“应用注册”和“新建应用程序注册”。
+1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户  。
+1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”   。
+1. 选择**应用注册**，然后**新注册**。
 1. 输入应用程序的友好名称，并选择应用程序类型。
-    1. 根据应用程序类型，将登录 URL 或重定向 URL 设置为基 URL。
-    1. 选择“创建”以创建应用程序。
+1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
+1. 设置为基 URL 重定向 URI。
+1. 选择“注册”  以创建应用程序。
 1. 在退出 Azure 门户之前生成客户端密码。
-   1. 在 Azure 门户中，选择应用程序，然后选择“设置”。
-   1. 在“设置”菜单中选择“密钥”，然后添加密钥持续时间为一年或两年的密钥。
-   1. 保存此页面时，Azure 门户将显示密钥值。 将密钥值复制并保存在安全的位置。
+1. 在 Azure 门户中，选择你的应用程序并选择**证书和机密**。
+1. 选择**新的客户端机密**并添加持续时间为一年或两年的机密。
+1. 当保存此页时，Azure 门户会显示机密值。 复制并保存在安全位置中的机密值。
 
-      > [!IMPORTANT]
-      > 在实现中配置应用程序设置时需要此秘钥。 此密钥值不会重新显示，也无法通过任何其他方式检索。 因此，当它在 Azure 门户中可见时请立即记录。
+> [!IMPORTANT]
+> 您需要在实现中配置的应用程序设置的机密。 同样，不显示此机密值，并且它不通过任何其他方法可检索。 因此，当它在 Azure 门户中可见时请立即记录。
 
 ### <a name="register-the-client-application"></a>注册客户端应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户。
-1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”。
-1. 依次选择“应用注册”和“新建应用程序注册”。
+1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户  。
+1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”   。
+1. 选择**应用注册**，然后**新注册**。
 1. 输入应用程序的友好名称，并选择应用程序类型。
-   1. 根据应用程序类型，将登录 URL 或重定向 URL 设置为基 URL。
-   1. 选择“创建”以创建应用程序。
-1. 为应用程序配置权限。
-   1. 在“设置”菜单中，选择“所需权限”部分，然后选择“添加”和“选择 API”。
-   1. 在文本字段中键入中间层服务的名称。
-   1. 依次选择“选择权限”和“访问服务名称”。
+1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
+1. 设置为基 URL 重定向 URI。
+1. 选择“注册”  以创建应用程序。
+1. 为应用程序配置权限。 在中**API 的权限**，选择**添加权限**，然后**我的 Api**。
+1. 在文本字段中键入中间层服务的名称。
+1. 选择**选择权限**，然后选择**访问<service name>** 。
 
 ### <a name="configure-known-client-applications"></a>配置已知的客户端应用程序
 
@@ -90,9 +91,9 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 
 按照以下步骤将 Azure AD 中的客户端应用注册与中间层服务的注册显式绑定。 此操作将客户端和中间层所需的许可合并到一个对话框中。
 
-1. 转到中间层服务注册，然后选择“清单”以打开清单编辑器。
+1. 转到中间层服务注册，然后选择“清单”以打开清单编辑器  。
 1. 找到 `knownClientApplications` 数组属性，然后将客户端应用程序的客户端 ID 添加为元素。
-1. 选择“保存”以保存清单。
+1. 选择“保存”以保存清单  。
 
 ## <a name="service-to-service-access-token-request"></a>服务到服务访问令牌请求
 
@@ -110,11 +111,11 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JSON Web 令牌 (JWT)，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
+| grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JSON Web 令牌 (JWT)，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer  。 |
 | assertion |必填 | 请求中使用的访问令牌值。 |
-| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
+| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称  。 |
 | client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
-| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
+| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录  。 选择应用程序名称，选择“所有设置”，然后选择“属性”   。 |
 | requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
 | scope |必填 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
 
@@ -144,12 +145,12 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JWT 访问令牌，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
+| grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JWT 访问令牌，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer  。 |
 | assertion |必填 | 请求中使用的令牌值。 |
-| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
+| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称  。 |
 | client_assertion_type |必填 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |必填 | JSON Web 令牌使用作为凭据向应用程序注册的证书进行创建和签名。 请参阅[证书凭据](active-directory-certificate-credentials.md)了解断言格式以及如何注册证书。|
-| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
+| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录  。 选择应用程序名称，选择“所有设置”，然后选择“属性”   。 |
 | requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
 | scope |必填 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
 
@@ -254,18 +255,18 @@ SAML 断言的服务到服务请求包含以下参数：
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
+| grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer  。 |
 | assertion |必填 | 请求中使用的访问令牌值。|
-| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
+| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称  。 |
 | client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
-| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 这是将成为 SAML 令牌受众的资源。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
+| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 这是将成为 SAML 令牌受众的资源。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录  。 选择应用程序名称，选择“所有设置”，然后选择“属性”   。 |
 | requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| requested_token_type | 必填 | 指定请求令牌的类型。 值可以是 urn:ietf:params:oauth:token-type:saml2 或 urn:ietf:params:oauth:token-type:saml1，具体取决于访问资源的要求。 |
+| requested_token_type | 必填 | 指定请求令牌的类型。 值可以是 urn:ietf:params:oauth:token-type:saml2 或 urn:ietf:params:oauth:token-type:saml1，具体取决于访问资源的要求   。 |
 
 响应包含以 UTF8 和 Base64url 编码的 SAML 令牌。
 
-- **源自 OBO 调用的 SAML 断言的 SubjectConfirmationData**：如果目标应用程序需要 SubjectConfirmationData 中的接收方值，则该值必须是资源应用程序配置中的非通配符回复 URL。
-- **SubjectConfirmationData 节点**：该节点不能包含 InResponseTo 属性，因为它不是 SAML 响应的一部分。 接收 SAML 令牌的应用程序必须能够在没有 InResponseTo 属性的情况下接受 SAML 断言。
+- **源自 OBO 调用的 SAML 断言的 SubjectConfirmationData**：如果目标应用程序需要 SubjectConfirmationData 中的接收方值，则该值必须是资源应用程序配置中的非通配符回复 URL  。
+- **SubjectConfirmationData 节点**：该节点不能包含 InResponseTo 属性，因为它不是 SAML 响应的一部分  。 接收 SAML 令牌的应用程序必须能够在没有 InResponseTo 属性的情况下接受 SAML 断言  。
 
 - **许可**：必须授予许可，才能接收包含 OAuth 流上用户数据的 SAML 令牌。 有关权限和获取管理员许可的信息，请参阅 [Azure Active Directory v1.0 终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent)。
 
@@ -292,7 +293,7 @@ SAML 断言的服务到服务请求包含以下参数：
 
 ## <a name="client-limitations"></a>客户端限制
 
-具有通配符回复 URL 的公共客户端无法为 OBO 流使用 `id_token`。 但是，机密客户端仍可兑现通过隐式授予流获取的访问令牌，即使公共客户端已注册通配符重定向 URI。
+具有通配符回复 URL 的公共客户端无法为 OBO 流使用 `id_token`。 但是，机密客户端仍可兑现通过隐式授予流获取的访问令牌，即使公共客户端已注册通配符重定向 URI  。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,20 +3,19 @@ title: 不雅内容筛选 - 翻译文本 API
 titlesuffix: Azure Cognitive Services
 description: 使用翻译文本 API 中的不雅内容筛选。
 services: cognitive-services
-author: Jann-Skotdal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-origin.date: 02/21/2019
-ms.date: 03/12/2019
-ms.author: v-junlch
-ms.openlocfilehash: bd7a05f2f597d1882293387e5aac8e4d7367d051
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/21/2019
+ms.author: v-pawal
+ms.openlocfilehash: 3ffe14450f0191b88a8d8a71b5f28ae4c59b68c1
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880024"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387583"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>使用翻译文本 API 添加不雅内容筛选
 
@@ -36,4 +35,3 @@ Translate() 方法采用“options”参数，该参数包含新元素“Profani
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [通过 Translator API 调用应用不雅内容筛选](reference/v3-0-translate.md)
-

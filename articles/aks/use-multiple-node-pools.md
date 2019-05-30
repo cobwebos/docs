@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 4086b73313d563afaecad9b6a9289905d7085004
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4af2e97e8ace432c37a770f1930514dd19e30944
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142647"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235751"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理群集在 Azure Kubernetes 服务 (AKS) 的多个节点池
 
@@ -21,9 +21,10 @@ ms.locfileid: "66142647"
 本文介绍如何创建和管理 AKS 群集中的多个节点池。 此功能目前处于预览状态。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
+> AKS 预览版功能是自助服务的选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中，这些功能不是用于生产环境中使用。 公共预览版中的功能属于最大努力支持。 AKS 技术支持团队的协助营业时间太平洋时区 （太平洋标准时间） 仅将提供。 有关其他信息，请参阅以下支持文章：
 >
-> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
+> * [AKS 支持策略][aks-support-policies]
+> * [Azure 支持常见问题][aks-faq]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -52,14 +53,14 @@ az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 > [!NOTE]
 > 创建已成功注册后任何 AKS 群集*MultiAgentpoolPreview*使用此预览群集体验。 若要继续创建正则、 完全受支持的群集，不要启用预览功能在生产订阅。 使用单独的测试或开发的 Azure 订阅进行测试预览功能。
 
-状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+状态显示为“已注册”需要几分钟时间  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态  ：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -72,6 +73,7 @@ az provider register --namespace Microsoft.ContainerService
 * 多个节点池才可用于创建已成功注册后的群集*MultiAgentpoolPreview*并*VMSSPreview*功能为你的订阅。 无法添加或管理现有之前已成功注册这些功能创建的 AKS 群集与节点池。
 * 无法删除第一个节点池。
 * 不能使用 HTTP 应用程序路由外接程序。
+* 无法添加/更新/删除节点池与大多数操作使用现有资源管理器模板。 相反，[使用单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)到 AKS 群集中的节点池进行更改。
 
 虽然此功能处于预览状态，下面的其他限制适用：
 
@@ -328,6 +330,95 @@ Events:
 
 可以在节点上计划具有此应用不的 pod *gpunodepool*。 将计划中的任何其他 pod *nodepool1*节点池。 如果您创建其他节点的池，可以使用其他 taints 并 tolerations 来限制哪些 pod 可以安排在这些节点资源上。
 
+## <a name="manage-node-pools-using-a-resource-manager-template"></a>管理节点池使用资源管理器模板
+
+当你使用 Azure 资源管理器模板创建和托管的资源，通常可以更新模板并重新部署中的设置，若要更新的资源。 在 AKS 中 nodepools，与 AKS 群集创建后，无法更新初始 nodepool 配置文件。 此行为意味着你不能更新现有资源管理器模板、 节点池，请进行的更改并重新部署。 相反，必须创建单独的资源管理器模板的更新仅现有 AKS 群集的代理池。
+
+创建一个模板，如`aks-agentpools.json`并粘贴下面的示例清单。 此示例模板配置以下设置：
+
+* 更新*Linux*名为代理池*myagentpool*运行三个节点。
+* 设置节点中运行 Kubernetes 版本的节点池*1.12.8*。
+* 定义具有的节点大小*Standard_DS2_v2*。
+
+根据需要更新，添加或删除节点池根据需要请编辑这些值：
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of your existing AKS cluster."
+      }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "The location of your existing AKS cluster."
+      }
+    },
+    "agentPoolName": {
+      "type": "string",
+      "defaultValue": "myagentpool",
+      "metadata": {
+        "description": "The name of the agent pool to create or update."
+      }
+    },
+    "vnetSubnetId": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "The Vnet subnet resource ID for your existing AKS cluster."
+      }
+    }
+  },
+  "variables": {
+    "apiVersion": {
+      "aks": "2019-04-01"
+    },
+    "agentPoolProfiles": {
+      "maxPods": 30,
+      "osDiskSizeGB": 0,
+      "agentCount": 3,
+      "agentVmSize": "Standard_DS2_v2",
+      "osType": "Linux",
+      "vnetSubnetId": "[parameters('vnetSubnetId')]"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2019-04-01",
+      "type": "Microsoft.ContainerService/managedClusters/agentPools",
+      "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+            "maxPods": "[variables('agentPoolProfiles').maxPods]",
+            "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
+            "count": "[variables('agentPoolProfiles').agentCount]",
+            "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
+            "osType": "[variables('agentPoolProfiles').osType]",
+            "storageProfile": "ManagedDisks",
+      "type": "VirtualMachineScaleSets",
+            "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
+            "orchestratorVersion": "1.12.8"
+      }
+    }
+  ]
+}
+```
+
+使用此模板进行部署[az 组部署创建][ az-group-deployment-create]命令，如下面的示例中所示。 系统会提示输入现有的 AKS 群集名称和位置：
+
+```azurecli-interactive
+az group deployment create \
+    --resource-group myResourceGroup \
+    --template-file aks-agentpools.json
+```
+
+可能需要几分钟才能更新 AKS 群集，具体取决于节点池设置和资源管理器模板中定义的操作。
+
 ## <a name="clean-up-resources"></a>清理资源
 
 在本文中，您创建的 AKS 群集，包括基于 GPU 的节点。 若要减少不必要的成本，你可能想要删除*gpunodepool*，或整个 AKS 群集。
@@ -351,7 +442,6 @@ az group delete --name myResourceGroup --yes --no-wait
 若要创建和使用 Windows Server 容器节点池，请参阅[在 AKS 中创建的 Windows Server 容器][aks-windows]。
 
 <!-- EXTERNAL LINKS -->
-[aks-github]: https://github.com/azure/aks/issues
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
@@ -379,3 +469,6 @@ az group delete --name myResourceGroup --yes --no-wait
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
+[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: abbad97e29f60e5f135017cd43f9d30eba1805ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4cae93cff594ad561973f8029ea7335dc4c60263
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142753"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357003"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
@@ -26,7 +26,7 @@ ms.locfileid: "66142753"
 
 所有调用必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份都验证。  此文章中的示例将使用服务主体 (SPN) 对 Azure Analysis Services 进行身份验证。
 
-若要了解有关创建服务主体的详细信息，请参阅]
+若要了解有关创建服务主体的详细信息，请参阅[通过使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -45,7 +45,7 @@ ms.locfileid: "66142753"
  
     ![导入模块](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. 单击“确定”。
+4. 单击“确定”。 
  
 ### <a name="create-a-service-principal-spn"></a>创建服务主体 (SPN)
 
@@ -73,7 +73,7 @@ ms.locfileid: "66142753"
 
     ![导入 Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. 创建 Runbook 后，它将自动进入编辑模式。  选择“发布”。
+5. 创建 Runbook 后，它将自动进入编辑模式。  选择“发布”  。
 
     ![发布 Runbook](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -112,7 +112,7 @@ Runbook 可以配置为按计划定期刷新 Azure Analysis Services 模型的�
 
     ![配置参数](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. 单击“确定”。
+5. 单击“确定”。 
 
 ## <a name="consume-with-data-factory"></a>使用数据工厂
 

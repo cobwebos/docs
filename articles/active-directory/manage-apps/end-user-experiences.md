@@ -12,12 +12,12 @@ ms.date: 05/03/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41dde1579fc98db37ab7d92ce362d0a4ce9a82cf
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 23e5fc24e426c87bbc5062183f2ee2db0e546484
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824557"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388212"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中应用程序的最终用户体验
 Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织中的最终用户部署应用程序：
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 ## <a name="direct-sign-on-to-federated-apps"></a>直接登录联合应用
 大多数支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 的联合应用程序也支持用户在应用程序启动，再通过 Azure AD 的自动重定向或单击链接进行登录。 这称为服务提供商发起的登录，Azure AD 应用程序库中的大多数联合应用程序都支持这种方式（请参阅 Azure 门户上应用的单一登录配置向导中链接的文档来了解详细信息）。
 
-![](./media/end-user-experiences/workdaymobile.png)
+![移动应用登录页的示例](./media/end-user-experiences/workdaymobile.png)
 
 ## <a name="direct-sign-on-links"></a>直接登录链接
 Azure AD 还为支持基于密码单一登录、链接单一登录以及任何形式的联合单一登录的各个应用程序提供直接单一登录链接。

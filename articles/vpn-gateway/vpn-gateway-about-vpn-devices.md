@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 05/29/2019
 ms.author: yushwang
-ms.openlocfilehash: 30558300036974a765765fe0eb0181e2a8dc73ca
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 6535949767999e04b11106ff8a294e912a6d0fb8
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508367"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388855"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -42,7 +42,7 @@ ms.locfileid: "65508367"
 |**供应商**          |**设备系列**     |**最低操作系统版本** |**PolicyBased 配置说明** |**RouteBased 配置说明** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不兼容  |[配置指南](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
-| Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               |即将推出     |[配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
+| Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               |即将支持     |[配置指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall F-series |PolicyBased：5.4.3<br>RouteBased：6.2.0 |[配置指南](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[配置指南](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall X-series |Barracuda Firewall 6.5 |[配置指南](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |不兼容 |
 | 检查点 |安全网关 |R80.10 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
@@ -65,8 +65,10 @@ ms.locfileid: "65508367"
 | ShareTech | Next Generation UTM（NU 系列） | 9.0.1.3 | 不兼容 | [配置指南](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ 系列、NSA 系列<br>SuperMassive 系列<br>E 类 NSA 系列 |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |不兼容 |[配置指南](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG 下一代防火墙 | XG v17 | | [配置指南](https://community.sophos.com/kb/127546)<br><br>[配置指南 - 多个 SA](https://community.sophos.com/kb/en-us/133154) |
+| Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 |  | [配置指南](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [基于 IKEv2/IPsec 的BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[基于 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |全部 |Fireware XTM<br> PolicyBased：v11.11.x<br>RouteBased：v11.12.x |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| Zyxel |ZyWALL USG 系列<br>ZyWALL ATP 系列<br>ZyWALL VPN 系列 | ZLD v4.32+ | | [基于 IKEv2/IPsec 的 VTI](https://businessforum.zyxel.com/discussion/2648/)<br>[基于 IKEv2/IPsec 的BGP](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]
 >
@@ -106,7 +108,7 @@ ms.locfileid: "65508367"
 | &lt;SP_AzureNetworkSubnetMask&gt; |指定子网掩码。 示例：255.255.0.0 |
 | &lt;SP_OnPremisesNetworkIpRange&gt; |指定本地范围。 示例：10.2.1.0 |
 | &lt;SP_OnPremisesNetworkSubnetMask&gt; |指定本地子网掩码。 示例：255.255.255.0 |
-| &lt;SP_AzureGatewayIpAddress&gt; |此信息特定于虚拟网络，位于管理门户的“网关 IP 地址”中。 |
+| &lt;SP_AzureGatewayIpAddress&gt; |此信息特定于虚拟网络，位于管理门户的“网关 IP 地址”  中。 |
 | &lt;SP_PresharedKey&gt; |此信息特定于虚拟网络，位于管理门户的“管理密钥”中。 |
 
 ## <a name="ipsec"></a>IPsec/IKE 参数
@@ -141,7 +143,7 @@ ms.locfileid: "65508367"
 | 加密和哈希算法 |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
 | SA 生存期（时间）            |3,600 秒  |27,000 秒                                |
 | SA 生存期（字节数）           |102,400,000 KB | -                                           |
-| 完全向前保密 (PFS) |“否”             |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
+| 完全向前保密 (PFS) |否             |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
 | 死对等体检测 (DPD)     |不支持  |支持                                    |
 
 
@@ -153,7 +155,7 @@ ms.locfileid: "65508367"
 
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |无         |
+| 第 |GCM AES256    |GCM (AES256)      |无         |
 | 2 |AES256        |SHA1              |无         |
 | 3 |3DES          |SHA1              |无         |
 | 4 |AES256        |SHA256            |无         |
@@ -174,7 +176,7 @@ ms.locfileid: "65508367"
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
-| 11|AES128        |SHA1              |1            |
+| 11|AES128        |SHA1              |第            |
 | 12|AES128        |SHA1              |2            |
 | 13|AES128        |SHA1              |14           |
 | 14|3DES          |SHA1              |第            |

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: de0ba13a527569e446a44c275b7323d4487f53b6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4c2dad687d31597954b023dde9d1b9d69788fe04
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780298"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241409"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>预览版-有关群集节点和控制对所需的端口和服务在 Azure Kubernetes 服务 (AKS) 的访问限制传出流量
 
@@ -21,13 +21,14 @@ ms.locfileid: "65780298"
 本文详细介绍哪些网络端口和完全限定的域名 (Fqdn) 的必需和可选如果你限制在 AKS 群集中的出口流量。  此功能目前处于预览状态。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
+> AKS 预览版功能是自助服务的选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中，这些功能不是用于生产环境中使用。 公共预览版中的功能属于最大努力支持。 AKS 技术支持团队的协助营业时间太平洋时区 （太平洋标准时间） 仅将提供。 有关其他信息，请参阅以下支持文章：
 >
-> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
+> * [AKS 支持策略][aks-support-policies]
+> * [Azure 支持常见问题][aks-faq]
 
 ## <a name="before-you-begin"></a>开始之前
 
-你需要 Azure CLI 版本 2.0.61 或更高版本安装和配置。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 若要创建的 AKS 群集，可以限制传出流量，请先启用你的订阅上的一个功能标志。 此功能注册配置任何 AKS 群集中创建要使用的基础系统从 MCR 或 ACR 的容器映像。 若要注册*AKSLockingDownEgressPreview*功能标志，请使用[az 功能注册][ az-feature-register]命令，在下面的示例所示：
 
@@ -35,7 +36,7 @@ ms.locfileid: "65780298"
 az feature register --name AKSLockingDownEgressPreview --namespace Microsoft.ContainerService
 ```
 
-状态显示为“已注册”需要几分钟时间。 可以使用在注册状态检查[az 功能列表][ az-feature-list]命令：
+状态显示为“已注册”需要几分钟时间  。 可以使用在注册状态检查[az 功能列表][ az-feature-list]命令：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSLockingDownEgressPreview')].{Name:name,State:properties.state}"
@@ -68,7 +69,7 @@ az provider register --namespace Microsoft.ContainerService
 以下出站端口 / 网络规则所需的 AKS 群集：
 
 * TCP 端口*443*
-* TCP 端口*9000*
+* TCP 端口*9000*的隧道前端 pod 进行通信与 API 服务器上的隧道端。
 
 以下 FQDN / 应用程序规则所需：
 
@@ -105,9 +106,6 @@ az provider register --namespace Microsoft.ContainerService
 
 在本文中，您了解哪些端口和地址，从而允许则限制为群集的出口流量。 您还可以定义如何进行通信的 pod 本身以及设置什么限制必须在群集中。 有关详细信息，请参阅[保护在 AKS 中使用网络策略的 pod 之间的流量][network-policy]。
 
-<!-- LINKS - external -->
-[aks-github]: https://github.com/azure/aks/issues]
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -118,3 +116,5 @@ az provider register --namespace Microsoft.ContainerService
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
 [aks-upgrade]: upgrade-cluster.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

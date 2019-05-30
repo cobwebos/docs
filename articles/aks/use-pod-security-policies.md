@@ -7,27 +7,28 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 7ce311ab9c554481f64c6c9be40e2018893a0966
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 881a16501574dc7309eede6b58e270a97bed977a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61027369"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235750"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览-保护群集使用 Azure Kubernetes 服务 (AKS) 中的 pod 安全策略
 
 若要提高在 AKS 群集的安全性，您可以限制 pod 可以是计划。 请求不允许的资源的 pod 无法在 AKS 群集中运行。 可以定义使用 pod 安全策略的此访问权限。 本文介绍如何使用 pod 安全策略以限制在 AKS 中的 pod 部署。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
+> AKS 预览版功能是自助服务的选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中，这些功能不是用于生产环境中使用。 公共预览版中的功能属于最大努力支持。 AKS 技术支持团队的协助营业时间太平洋时区 （太平洋标准时间） 仅将提供。 有关其他信息，请参阅以下支持文章：
 >
-> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
+> * [AKS 支持策略][aks-support-policies]
+> * [Azure 支持常见问题][aks-faq]
 
 ## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-你需要 Azure CLI 版本 2.0.61 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
@@ -48,13 +49,13 @@ az extension add --name aks-preview
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
 ```
 
-状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+状态显示为“已注册”需要几分钟时间  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态  ：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -168,7 +169,7 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 让我们首先测试计划了具有的安全上下文的 pod 时，会发生什么情况`privileged: true`。 此安全上下文呈报 pod 的权限。 在上一节显示安全策略的默认 AKS pod*受限*策略应拒绝此请求。
 
-创建名为`nginx-privileged.yaml`并粘贴到以下 YAML 清单：
+创建名为 `nginx-privileged.yaml` 的文件并粘贴以下 YAML 清单：
 
 ```yaml
 apiVersion: v1
@@ -203,7 +204,7 @@ Pod 不会达到计划阶段，因此没有要删除移动之前的资源。
 
 在上一示例中，pod 规范请求权限的提升。 默认情况下拒绝此请求*受限*pod 的安全策略，因此在 pod 安排将失败。 让我们尝试现在运行而无需特权提升请求该相同 NGINX pod。
 
-创建名为`nginx-unprivileged.yaml`并粘贴到以下 YAML 清单：
+创建名为 `nginx-unprivileged.yaml` 的文件并粘贴以下 YAML 清单：
 
 ```yaml
 apiVersion: v1
@@ -265,7 +266,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 
 在上一示例中，容器映像会自动尝试使用根将 NGINX 绑定到端口 80。 默认情况下已拒绝此请求*受限*pod 的安全策略，因此无法启动 pod。 让我们尝试现在运行特定的用户上下文中，使用该相同的 NGINX pod，如`runAsUser: 2000`。
 
-创建名为`nginx-unprivileged-nonroot.yaml`并粘贴到以下 YAML 清单：
+创建名为 `nginx-unprivileged-nonroot.yaml` 的文件并粘贴以下 YAML 清单：
 
 ```yaml
 apiVersion: v1
@@ -348,7 +349,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged-nonroot.yaml
 
 让我们创建一个策略来拒绝请求特权的访问的 pod。 其他选项，如*runAsUser*或允许*卷*，不显式受限制。 此类型的策略拒绝的请求特许访问权限，但否则可让群集运行请求的 pod。
 
-创建名为`psp-deny-privileged.yaml`并粘贴到以下 YAML 清单：
+创建名为 `psp-deny-privileged.yaml` 的文件并粘贴以下 YAML 清单：
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -390,7 +391,7 @@ restricted            false          RunAsAny   MustRunAsNonRoot   MustRunAs   M
 
 在上一步骤中，您创建 pod 安全策略来拒绝 pod 该请求特权访问权限。 若要允许使用此策略，您创建*角色*或*ClusterRole*。 然后，将使用这些角色之一*RoleBinding*或*ClusterRoleBinding*。
 
-对于此示例中，创建，您可以 ClusterRole*使用* *psp 拒绝特权*在上一步中创建策略。 创建名为`psp-deny-privileged-clusterrole.yaml`并粘贴到以下 YAML 清单：
+对于此示例中，创建，您可以 ClusterRole*使用* *psp 拒绝特权*在上一步中创建策略。 创建名为 `psp-deny-privileged-clusterrole.yaml` 的文件并粘贴以下 YAML 清单：
 
 ```yaml
 kind: ClusterRole
@@ -414,7 +415,7 @@ rules:
 kubectl apply -f psp-deny-privileged-clusterrole.yaml
 ```
 
-现在，创建要使用在上一步中创建 ClusterRole ClusterRoleBinding。 创建名为`psp-deny-privileged-clusterrolebinding.yaml`并粘贴到以下 YAML 清单：
+现在，创建要使用在上一步中创建 ClusterRole ClusterRoleBinding。 创建名为 `psp-deny-privileged-clusterrolebinding.yaml` 的文件并粘贴以下 YAML 清单：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -510,7 +511,6 @@ kubectl delete namespace psp-aks
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubernetes-policy-reference]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#policy-reference
-[aks-github]: https://github.com/azure/aks/issues
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
@@ -523,3 +523,5 @@ kubectl delete namespace psp-aks
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
 [az-extension-add]: /cli/azure/extension#az-extension-add
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

@@ -10,18 +10,18 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 57a96648e480c89d1112f069676edb1abcc7cfc3
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6f4c354c89fa00d5fc65c635f5f6315761be2f01
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869855"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384138"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>必应图像搜索 API 的语言和区域支持
 
 必应图像搜索 API 支持超过 36 个国家/地区，其中很多具有多种语言。 使用查询指定国家/地区主要用于根据对该国家/地区的兴趣来优化搜索结果。 此外，结果可能包含指向必应的链接，这些链接可能会根据指定的国家/地区或语言本地化必应用户体验。
 
-要指定国家/地区和语言，请将 `mkt`（市场）查询参数设置为下面的“市场”表中的一个代码。 市场同时指定国家/地区和语言。 如果用户希望以其他语言查看显示文本，请将 `setLang` 查询参数设置为相应的语言代码。
+要指定国家/地区和语言，请将 `mkt`（市场）查询参数设置为下面的“市场”表中的一个代码  。 市场同时指定国家/地区和语言。 如果用户希望以其他语言查看显示文本，请将 `setLang` 查询参数设置为相应的语言代码。
 
 另外，也可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` HTTP 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
 
@@ -119,4 +119,4 @@ ms.locfileid: "64869855"
 |美国|西班牙语|es-US|
 
 ## <a name="next-steps"></a>后续步骤
-有关必应新闻搜索终结点的详细信息，请参阅[新闻图像搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)。
+有关必应新闻搜索终结点的详细信息，请参阅[新闻图像搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。

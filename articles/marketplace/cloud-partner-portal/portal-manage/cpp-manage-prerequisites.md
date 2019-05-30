@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: da594ca5793bbf61f393fb1380309403fd808cef
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8c32043d9bf3ca68563ae01d415bdc0e1f6993f7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942219"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258129"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>管理云合作伙伴门户上的帐户的先决条件 
 
@@ -23,12 +23,13 @@ ms.locfileid: "64942219"
 
 请仔细查看您的权利和责任下的[Microsoft 服务协议](https://www.microsoft.com/servicesagreement)并[Microsoft 使用条款](https://www.microsoft.com/legal/intellectualproperty/copyright)之前创建帐户。  
 
-请仔细选择你的帐户名称。  它表示您的组织，因此它不应包含任何受版权保护或争用资源的单词。  例如，Microsoft 禁止受版权保护条款的约束，例如"Azure"和"Microsoft"帐户名称中使用。  有关详细信息，请参阅[的 Azure Marketplace 准则](../../guidelines.md)
+请仔细选择你的帐户名称。  它表示您的组织，因此它不应包含任何受版权保护或争用资源的单词。  例如，Microsoft 禁止受版权保护条款的约束，例如"Azure"和"Microsoft"帐户名称中使用。  有关详细信息，请参阅[的 Azure Marketplace 准则](https://docs.microsoft.com/azure/marketplace/guidelines)
 
 
 ## <a name="registration-steps"></a>注册步骤
 
-下表列出了完全注册为 Microsoft 云发布服务器所需的步骤。  有关完整说明，请参阅[成为云 Marketplace 发布者](../../become-publisher.md)。 
+下表列出了完全注册为 Microsoft 云发布服务器所需的步骤。  有关完整说明，请参阅[成为云 Marketplace 发布者](https://docs.microsoft.com/azure/marketplace/become-publisher
+)。 
 
 
 |                   步骤                   |  生成注册或资源                     |

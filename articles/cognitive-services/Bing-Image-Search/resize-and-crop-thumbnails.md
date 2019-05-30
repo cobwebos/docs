@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: c53b84f31100ab72458ab6fb79b2009450eda15c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e005677f6a21c0f795f649f43407b55bec2a40a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60914579"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383585"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>调整和裁剪缩略图图像
 
@@ -28,7 +28,7 @@ ms.locfileid: "60914579"
 ![Expanded view of thumbnail image](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-image-thumbnail-expansion.PNG)
 -->
 
-如果用户单击缩略图，则可使用 [contentUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-contenturl) 向用户显示全尺寸图像。 确保标识图像的归属。
+如果用户单击缩略图，则可使用 [contentUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image-contenturl) 向用户显示全尺寸图像。 确保标识图像的归属。
 
 如果 `shoppingSourcesCount` 或 `recipeSourcesCount` 大于零，请向缩略图添加标记（例如购物车），说明图像中存在商品或食品。
 
@@ -36,12 +36,12 @@ ms.locfileid: "60914579"
 ![Shopping sources badge](./media/cognitive-services-bing-images-api/bing-images-shopping-source.PNG)
 -->
 
-若要获取图像的见解，例如包含图像的网页或在图像中识别的人物，请使用 [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-imageinsightstoken)。 有关详细信息，请参阅[图像见解](image-insights.md)。
+若要获取图像的见解，例如包含图像的网页或在图像中识别的人物，请使用 [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image-imageinsightstoken)。 有关详细信息，请参阅[图像见解](image-insights.md)。
 
 ## <a name="resizing-and-cropping-thumbnails"></a>对缩略图进行重设大小和裁剪
 
 还可以对缩略图重设大小和展开缩略图，例如当用户的光标悬停在其上方时。
 > [!NOTE]
-> 确保在展开图像时标识图像的归属。 例如，可以从 [hostPageDisplayUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-hostpagedisplayurl) 提取主机，然后将其显示在图像下方。
+> 确保在展开图像时标识图像的归属。 例如，可以从 [hostPageDisplayUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image-hostpagedisplayurl) 提取主机，然后将其显示在图像下方。
 
 [!INCLUDE [cognitive-services-bing-resize-crop-thumbnails](../../../includes/cognitive-services-bing-resize-crop-thumbnails.md)]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: fe08569937dc29ecbc66da1cb2c431cca11a8580
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 52c79a0b883ff4c9ac77d7523764384b88c06a08
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835104"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389024"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 azure 串行控制台
 
@@ -39,7 +39,7 @@ ms.locfileid: "65835104"
 
 - 你使用串行控制台的帐户必须具有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)vm 并[启动诊断](boot-diagnostics.md)存储帐户
 
-- VM 或虚拟机规模集实例必须有一个基于密码的用户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。
+- VM 或虚拟机规模集实例必须有一个基于密码的用户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。  
 
 - VM 或虚拟机规模集实例必须具有[启动诊断](boot-diagnostics.md)启用。
 
@@ -58,7 +58,7 @@ Vm 和虚拟机规模集的串行控制台可访问只能通过 Azure 门户：
 
   1. 导航到**的所有资源**选择虚拟机。 此时会打开该 VM 的概述页。
 
-  1. 向下滚动到“支持 + 故障排除”部分，并选择“串行控制台”。 此时会打开一个包含串行控制台的新窗格，并启动连接。
+  1. 向下滚动到“支持 + 故障排除”部分，并选择“串行控制台”。   此时会打开一个包含串行控制台的新窗格，并启动连接。
 
      ![Linux 的串行控制台窗口](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
@@ -78,13 +78,13 @@ Vm 和虚拟机规模集的串行控制台可访问只能通过 Azure 门户：
 
 
 > [!NOTE]
-> 串行控制台需要一个配置了密码的本地用户。 虚拟机或虚拟机规模集仅使用 SSH 公共密钥配置将无法登录到串行控制台。 若要创建带有密码的本地用户，请使用 [VMAccess 扩展](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)（在 Azure 门户中选择“重置密码”即可访问它），然后创建带有密码的本地用户。
+> 串行控制台需要一个配置了密码的本地用户。 虚拟机或虚拟机规模集仅使用 SSH 公共密钥配置将无法登录到串行控制台。 若要创建带有密码的本地用户，请使用 [VMAccess 扩展](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)（在 Azure 门户中选择“重置密码”即可访问它），然后创建带有密码的本地用户。 
 > 也可在帐户中重置管理员密码，方法是[使用 GRUB 启动进入单用户模式](./serial-console-grub-single-user-mode.md)。
 
 ## <a name="serial-console-linux-distribution-availability"></a>串行控制台 Linux 分发的可用性
-要使串行控制台正常运行，必须将来宾操作系统配置为向串行端口读取和写入控制台消息。 大多数[认可的 Azure Linux 分发版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)默认都已配置串行控制台。 在 Azure 门户的“支持 + 故障排除”部分选择“串行控制台”即可访问串行控制台。
+要使串行控制台正常运行，必须将来宾操作系统配置为向串行端口读取和写入控制台消息。 大多数[认可的 Azure Linux 分发版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)默认都已配置串行控制台。 在 Azure 门户的“支持 + 故障排除”部分选择“串行控制台”即可访问串行控制台。  
 
-分发组      | 串行控制台访问
+分发      | 串行控制台访问
 :-----------|:---------------------
 Red Hat Enterprise Linux    | 默认已启用串行控制台访问。
 CentOS      | 默认已启用串行控制台访问。
@@ -117,7 +117,9 @@ SSH 配置问题 | 访问串行控制台并更改设置。 串行控制台可以
 > 若要为订阅启用或禁用串行控制台，必须具有订阅的写入权限。 这些权限包括管理员或所有者角色。 自定义角色也可能具有写入权限。
 
 ### <a name="subscription-level-disable"></a>订阅级禁用
-可以通过[禁用控制台 REST API 调用](/rest/api/serialconsole/console/disableconsole)为整个订阅禁用串行控制台。 可以使用此 API 文档页面上提供的“试用”功能为订阅禁用和启用串行控制台。 在“subscriptionId”字段中输入自己的订阅 ID，在“default”字段中输入“default”，然后选择“运行”。 Azure CLI 命令目前不可用。
+可以通过[禁用控制台 REST API 调用](/rest/api/serialconsole/console/disableconsole)为整个订阅禁用串行控制台。 此操作要求级别的参与者访问权限或更高版本到订阅。 可以使用此 API 文档页面上提供的“试用”功能为订阅禁用和启用串行控制台。  在“subscriptionId”字段中输入自己的订阅 ID，在“default”字段中输入“default”，然后选择“运行”。     Azure CLI 命令目前不可用。
+
+若要重新启用订阅的串行控制台，请使用[启用控制台 REST API 调用](/rest/api/serialconsole/console/enableconsole)。
 
 ![试用 REST API](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
@@ -168,7 +170,7 @@ SSH 配置问题 | 访问串行控制台并更改设置。 串行控制台可以
 > [!CAUTION]
 > 这意味着，断开连接的用户尚未注销。强制断开连接后的注销 （通过 SIGHUP 或类似机制） 的能力是仍在规划之中。 对于 Windows，特殊管理控制台 (SAC) 中会启用自动超时；但对于 Linux，可以配置终端超时设置。 为此，请将 `export TMOUT=600` 添加到用于登录控制台的用户的 *.bash_profile* 或 *.profile* 中。 此设置使会话在 10 分钟后超时。
 
-## <a name="accessibility"></a>辅助功能
+## <a name="accessibility"></a>可访问性
 可访问性是 Azure 串行控制台的一个重要关注点。 为此，我们会确保串行控制台的完全可访问性。
 
 ### <a name="keyboard-navigation"></a>键盘导航
@@ -198,6 +200,7 @@ Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.c
 串行控制台文本仅占用屏幕大小的一部分（通常在使用文本编辑器后）。 | 串行控制台不支持协商窗口大小 ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt))，这意味着不会发送 SIGWINCH 信号来更新屏幕大小，因此 VM 不会了解终端的大小。 安装可提供 `resize` 命令的 xterm 或类似实用工具，然后运行 `resize`。
 无法粘贴长字符串。 | 串行控制台将粘贴到终端的字符串长度限制为 2048 个字符，以防止串行端口带宽过载。
 串行控制台不能与存储帐户防火墙一起使用。 | 根据设计串行控制台无法与启动诊断存储帐户上启用的存储帐户防火墙一起使用。
+串行控制台并不适用于 Azure 数据湖存储第 2 代中使用分层命名空间的存储帐户。 | 这是分层命名空间的已知的问题。 若要缓解问题，请确保你的 VM 的启动诊断存储帐户不创建使用 Azure 数据湖存储第 2 代。 仅可以在存储帐户创建时设置此选项。 您可能需要创建单独的引导诊断存储帐户没有 Azure 数据湖存储第 2 代启用来缓解此问题的情况下。
 
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -235,7 +238,7 @@ A. 是的，它是！ 请参阅[虚拟机规模集的串行控制台](#serial-co
 
 **问：如果我设置我的 VM 或虚拟机规模集仅使用 SSH 密钥身份验证，我仍可用的串行控制台来连接到我的 VM/虚拟机规模集实例？**
 
-A. 是的。 由于串行控制台不需要 SSH 密钥，因此你只需设置用户名/密码组合。 为此，可以在 Azure 门户中选择“重置密码”，然后使用这些凭据登录到串行控制台。
+A. 是的。 由于串行控制台不需要 SSH 密钥，因此你只需设置用户名/密码组合。 为此，可以在 Azure 门户中选择“重置密码”，然后使用这些凭据登录到串行控制台。 
 
 ## <a name="next-steps"></a>后续步骤
 * 使用串行控制台[访问 GRUB 和单用户模式](serial-console-grub-single-user-mode.md)。

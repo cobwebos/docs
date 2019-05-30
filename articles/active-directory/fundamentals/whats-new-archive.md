@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931e44f85131e8cbdd7aecddd6398f6f59d1b166
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 90577ea9f24bc5f36113bc1bdb913949772325c9
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937297"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305500"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -70,7 +70,7 @@ ms.locfileid: "64937297"
 
 - Jamf Pro
 
-若要开始使用这种单键式的体验，请转到应用的“Azure 门户” > “SSO 配置”页。 有关详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+若要开始使用这种单键式的体验，请转到应用的“Azure 门户” > “SSO 配置”页。   有关详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 
 ---
 
@@ -80,7 +80,7 @@ ms.locfileid: "64937297"
 **服务类别：** 其他  
 **产品功能：** GoLocal
 
-在“Azure Active Directory - 数据位于何处”页中选择公司所在的区域，查看哪个 Azure 数据中心托管了所有 Azure AD 服务的 Azure AD 静态数据。 可以根据公司所在区域的特定 Azure AD 服务来筛选信息。
+在“Azure Active Directory - 数据位于何处”页中选择公司所在的区域，查看哪个 Azure 数据中心托管了所有 Azure AD 服务的 Azure AD 静态数据。  可以根据公司所在区域的特定 Azure AD 服务来筛选信息。
 
 若要访问此功能和详细信息，请参阅 [Azure Active Directory - 数据位于何处](https://aka.ms/AADDataMap)。
 
@@ -105,7 +105,7 @@ ms.locfileid: "64937297"
 **服务类别：** 报告  
 **产品功能：** 监视和报告
 
-Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在帮助管理员和支持工程师排查 Azure AD 登录相关的问题。此新选项卡提供错误代码、错误消息和建议的补救措施（如果有）来帮助解决问题。 如果无法解决问题，我们还提供使用“复制到剪贴板”体验创建支持票证的新方法，该体验可在支持票证中填充日志文件的“请求 ID”和“日期(UTC)”字段。  
+Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在帮助管理员和支持工程师排查 Azure AD 登录相关的问题。   此新选项卡提供错误代码、错误消息和建议的补救措施（如果有）来帮助解决问题。 如果无法解决问题，我们还提供使用“复制到剪贴板”体验创建支持票证的新方法，该体验可在支持票证中填充日志文件的“请求 ID”和“日期(UTC)”字段。     
 
 ![登录日志显示在新选项卡](media/whats-new/troubleshooting-and-support.png)
 
@@ -117,7 +117,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 **服务类别：** 组管理  
 **产品功能：** 协作
 
-借助此项更新，在为用户创建动态成员身份规则时，现在在动态用户组规则生成器中单击“获取自定义扩展属性”链接，输入唯一的应用 ID，然后即可收到要使用的完整自定义扩展属性列表。 还可以刷新此列表，以获取该应用的任何新自定义扩展属性。
+借助此项更新，在为用户创建动态成员身份规则时，现在在动态用户组规则生成器中单击“获取自定义扩展属性”链接，输入唯一的应用 ID，然后即可收到要使用的完整自定义扩展属性列表。  还可以刷新此列表，以获取该应用的任何新自定义扩展属性。
 
 有关为动态成员身份规则使用自定义扩展属性的详细信息，请参阅[扩展属性和自定义扩展属性](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership#extension-properties-and-custom-extension-properties)
 
@@ -187,7 +187,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 **服务类别：** 企业应用  
 **产品功能：** SSO
 
-我们引入了新的声明转换方法 ToLower() 和 ToUpper()，可以在基于 SAML 的“单一登录配置”页中将这些方法应用到 SAML 令牌。
+我们引入了新的声明转换方法 ToLower() 和 ToUpper()，可以在基于 SAML 的“单一登录配置”页中将这些方法应用到 SAML 令牌。 
 
 有关详细信息，请参阅[如何为 Azure AD 中的企业应用程序自定义 SAML 令牌中颁发的声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
 
@@ -213,7 +213,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 - 为 SAML 应用设置 NameID 格式的方法，以及将 NameID 值设置为目录扩展的方法。
 
-若要启用此更新视图，请在“单一登录”页的顶部单击“尝试新体验”链接。 有关详细信息，请参阅[教程：通过 Azure Active Directory 为应用程序配置基于 SAML 的单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)。
+若要启用此更新视图，请在“单一登录”页的顶部单击“尝试新体验”链接。   有关详细信息，请参阅[教程：通过 Azure Active Directory 为应用程序配置基于 SAML 的单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)。
 
 ---
 
@@ -271,7 +271,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 **服务类别：** 应用代理  
 **产品功能：** Access Control
 
-应用程序代理应用中有一个名为“HTTP-Only Cookie”的新设置。 此设置在应用程序代理的访问 Cookie 和会话 Cookie 的 HTTP 响应标头中包含 HTTPOnly 标志，阻止从客户端侧脚本访问 Cookie，并进一步阻止复制或修改 Cookie 等操作，以此提供更高的安全性。 尽管以前未使用此标志，但 Cookie 始终经过加密并通过 SSL 连接传输，以帮助防范不当的修改。
+应用程序代理应用中有一个名为“HTTP-Only Cookie”的新设置。  此设置在应用程序代理的访问 Cookie 和会话 Cookie 的 HTTP 响应标头中包含 HTTPOnly 标志，阻止从客户端侧脚本访问 Cookie，并进一步阻止复制或修改 Cookie 等操作，以此提供更高的安全性。 尽管以前未使用此标志，但 Cookie 始终经过加密并通过 SSL 连接传输，以帮助防范不当的修改。
 
 此项设置与使用 ActiveX 控件的应用（例如远程桌面）不兼容。 如果遇到这种情况，我们建议禁用此设置。
 
@@ -401,7 +401,7 @@ Azure AD 活动日志现已推出适用于 Azure Monitor（Azure 的平台级监
 **服务类别：** 报告  
 **产品功能：** 监视和报告
  
-由于在登录活动日志中引入了“客户端应用”字段，客户现在可以查看使用旧式身份验证的用户。 客户将能够在 Azure AD 门户中通过登录 MS Graph API 或登录活动日志访问此信息。在该门户中，你可以使用“客户端应用”控件对旧式身份验证进行筛选。 查看文档可了解更多详细信息。
+由于在登录活动日志中引入了“客户端应用”字段，客户现在可以查看使用旧式身份验证的用户  。 客户将能够在 Azure AD 门户中通过登录 MS Graph API 或登录活动日志访问此信息。在该门户中，你可以使用“客户端应用”控件对旧式身份验证进行筛选。  查看文档可了解更多详细信息。
 
 ---
 
@@ -483,7 +483,7 @@ Azure AD Connect 的最新版本包括：
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>对使用条款 (ToU) 最终用户 UI 的更新
+### <a name="updates-to-the-terms-of-use-end-user-ui"></a>更新的条款使用最终用户 UI
 
 **类型：** 已更改的功能  
 **服务类别：** 使用条款  
@@ -525,7 +525,7 @@ Azure AD Connect 的最新版本包括：
 
 此新功能可让用户在单个体验中管理自助密码重置 (SSPR) 和多重身份验证 (MFA) 的安全信息（例如，电话号码、电子邮件地址、移动应用等）。 用户不再需要在两个不同的体验中为 SSPR 和 MFA 注册相同的安全信息。 此新体验也适用于具有 SSPR 或 MFA 的用户。
 
-如果组织未强制实施 MFA 或 SSPR 注册，则用户可以通过“我的应用”门户注册安全信息。 在此门户中，用户可以注册针对 MFA 或 SSPR 启用的任何方法。 
+如果组织未强制实施 MFA 或 SSPR 注册，则用户可以通过“我的应用”门户注册安全信息。  在此门户中，用户可以注册针对 MFA 或 SSPR 启用的任何方法。 
 
 这是一个选用的公共预览版。 管理员可为租户中选定的一组用户或所有用户启用新体验（如果需要）。
 
@@ -557,10 +557,10 @@ Azure AD Connect 的最新版本包括：
 
 **更新应用权限**
 
-1. 登录 Azure 门户，选择“Azure Active Directory”，然后选择“应用注册”。
-2. 选择使用 Azure AD 活动日志 API 的应用，依次选择“设置”、“所需权限”和“Windows Azure Active Directory”API。
-3. 在“启用访问权限”边栏选项卡的“委派的权限”区域中，选中“读取目录数据”旁边的框，然后选择“保存”。
-4. 选择“授予权限”，然后选择“是”。
+1. 登录 Azure 门户，选择“Azure Active Directory”，然后选择“应用注册”   。
+2. 选择使用 Azure AD 活动日志 API 的应用，依次选择“设置”、“所需权限”和“Windows Azure Active Directory”API    。
+3. 在“启用访问权限”边栏选项卡的“委派的权限”   区域中，选中“读取目录数据”  旁边的框，然后选择“保存”  。
+4. 选择“授予权限”，然后选择“是”   。
     
     >[!Note]
     >你必须是全局管理员才能向应用授予权限。
@@ -577,33 +577,33 @@ Azure AD Connect 的最新版本包括：
 
 传输层安全性 (TLS) 是一种在两个通信应用程序间提供隐私和数据完整性的协议，是目前使用最广泛的安全协议。
 
-[PCI 安全标准委员会](https://www.pcisecuritystandards.org/)已决定禁用早期版本的 TLS 和安全套接字层 (SSL)，以此支持启用新的和更安全的应用协议，该决定于 2018 年 6 月 30 日开始生效。 这一改变意味着如果连接到 Azure AD 服务并要求符合 PCI DSS，则必须禁用 TLS 1.0。 有多个 TLS 版本可供使用，但 TLS 1.2 是可供 Azure Active Directory 服务使用的最新版本。 强烈建议直接为客户端/服务器和浏览器/服务器组合使用 TLS 1.2。
+[PCI 安全标准委员会](https://www.pcisecuritystandards.org/)已决定禁用早期版本的 TLS 和安全套接字层 (SSL)，以此支持启用新的和更安全的应用协议，该决定于 2018 年 6 月 30 日  开始生效。 这一改变意味着如果连接到 Azure AD 服务并要求符合 PCI DSS，则必须禁用 TLS 1.0。 有多个 TLS 版本可供使用，但 TLS 1.2 是可供 Azure Active Directory 服务使用的最新版本。 强烈建议直接为客户端/服务器和浏览器/服务器组合使用 TLS 1.2。
 
-过时的浏览器可能不支持较新的 TLS 版本，例如 TLS 1.2。 若要查看浏览器支持哪些版本的 TLS，请转到 [Qualys SSL 实验室](https://www.ssllabs.com/)网站，然后单击“Test your browser”（测试浏览器）。 建议将 Web 浏览器升级到最新版本，并且最好只启用 TLS 1.2。
+过时的浏览器可能不支持较新的 TLS 版本，例如 TLS 1.2。 若要查看浏览器支持哪些版本的 TLS，请转到 [Qualys SSL 实验室](https://www.ssllabs.com/)网站，然后单击“Test your browser”（测试浏览器）  。 建议将 Web 浏览器升级到最新版本，并且最好只启用 TLS 1.2。
 
 **在各种浏览器中启用 TLS 1.2**
 
 - **Microsoft Edge和 Internet Explorer（均使用 Internet Explorer 设置）**
 
-    1. 打开 Internet Explorer，选择“工具” > “Internet 选项” > “高级”。
-    2. 在“安全”部分，选择“使用 TLS 1.2”，然后选择“确定”。
+    1. 打开 Internet Explorer，选择“工具” > “Internet 选项” > “高级”    。
+    2. 在“安全”部分，选择“使用 TLS 1.2”，然后选择“确定”    。
     3. 关闭所有浏览器窗口并重启 Internet Explorer。 
 
 - **Google Chrome**
 
-    1. 打开 Google Chrome，在地址栏键入“chrome://settings/”，然后按 Enter。
-    2. 展开“高级”选项，转到“系统”部分，然后选择“打开代理设置”。
-    3. 在“Internet 属性”框中，选择“高级”选项卡，转到“安全”部分，选择“使用 TLS 1.2”，然后选择“确定”。
+    1. 打开 Google Chrome，在地址栏键入“chrome://settings/”，然后按 Enter   。
+    2. 展开“高级”选项，转到“系统”部分，然后选择“打开代理设置”    。
+    3. 在“Internet 属性”框中，选择“高级”选项卡，转到“安全”部分，选择“使用 TLS 1.2”，然后选择“确定”      。
     4. 关闭所有浏览器窗口并重启 Google Chrome。
 
 - **Mozilla Firefox**
 
-    1. 打开 Firefox，在地址栏键入“about:config”，然后按 Enter。
-    2. 搜索 TLS 一词，然后选择“security.tls.version.max”条目。
-    3. 将值设置为 3，强制浏览器使用最高 TLS 1.2 的版本，然后选择“确定”。
+    1. 打开 Firefox，在地址栏键入“about:config”，然后按 Enter   。
+    2. 搜索 TLS 一词，然后选择“security.tls.version.max”条目   。
+    3. 将值设置为 3，强制浏览器使用最高 TLS 1.2 的版本，然后选择“确定”   。
 
         >[!NOTE]
-        >Firefox 版本 60.0 支持 TLS 1.3，因此还可将 security.tls.version.max 值设置为 4。
+        >Firefox 版本 60.0 支持 TLS 1.3，因此还可将 security.tls.version.max 值设置为 4  。
 
     4. 关闭所有浏览器窗口并重启 Mozilla Firefox。
 
@@ -641,25 +641,25 @@ Azure AD Connect 的最新版本包括：
 
 ---
 
-### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>创建使用条款 (ToU) 期间创建全新的“所有来宾”条件访问策略模板
+### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-creation"></a>新"的所有来宾"条件性访问策略创建模板期间使用创建的条款
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
 **产品功能：** 调控
 
-在创建使用条款 (ToU) 期间，还会为“所有来宾”和“所有应用”创建新的条件访问策略模板。 此全新的策略模板采用新创建的 ToU，简化了来宾的创建和执行过程。
+在你的使用条款的创建，为"所有来宾"和"所有应用"还创建一个新的条件性访问策略模板。 此全新的策略模板采用新创建的 ToU，简化了来宾的创建和执行过程。
 
 有关详细信息，请参阅 [Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>创建使用条款 (ToU) 期间创建全新的“自定义”条件访问策略模板
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>在条款使用创建过程中创建新的"自定义"条件性访问策略模板
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
 **产品功能：** 调控
 
-在创建使用条款 (ToU) 期间，还会创建新的“自定义”条件访问策略模板。 通过此新策略模板可创建 ToU，然后立即转到条件访问策略创建边栏选项卡，无需手动浏览门户。
+在你的使用条款的创建，还会创建一个新的"自定义"条件性访问策略模板。 通过此新策略模板可创建 ToU，然后立即转到条件访问策略创建边栏选项卡，无需手动浏览门户。
 
 有关详细信息，请参阅 [Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
 
@@ -691,7 +691,7 @@ Azure AD Connect 的最新版本包括：
 
     - **云应用程序管理员。** 授予所有应用程序管理员权限，但应用代理除外，因为它不提供本地访问权限。
 
-    - **应用程序开发人员。** 即使“允许用户注册应用”选项已关闭，该角色也可授予创建应用注册的权限。
+    - **应用程序开发人员。** 即使“允许用户注册应用”  选项已关闭，该角色也可授予创建应用注册的权限。
 
 - **所有权（设置每个应用注册和每个企业应用，类似于群组所有权流程：**
  
@@ -715,9 +715,9 @@ Azure AD Connect 的最新版本包括：
 
 同时我们正在改变我们的支持，我们也知道，在某些情况下，你可能仍然需要为身份验证流量使用专用的线路集。 因此，Azure AD 将继续使用 ExpressRoute 支持每租户 IP 范围限制，并继续通过“其他 Office 365 联机服务”社区支持 Microsoft 对等互连上已有的服务。 如果服务受到影响，但你需要 ExpressRoute，则必须执行以下操作：
 
-- **如果当前在使用 Azure 公共对等互连。** 迁移到 Microsoft 对等互连并注册其他 Office 365 联机服务 (12076:5100) 社区。 有关如何从 Azure 公共对等互连迁移到 Microsoft 对等互连的详细信息，请参阅[将公共对等互连迁移到 Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)一文。
+- **如果当前在使用 Azure 公共对等互连。** 迁移到 Microsoft 对等互连并注册其他 Office 365 联机服务 (12076:5100) 社区  。 有关如何从 Azure 公共对等互连迁移到 Microsoft 对等互连的详细信息，请参阅[将公共对等互连迁移到 Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)一文。
 
-- **如果当前在使用 Microsoft 对等互连。** 注册其他 Office 365 联机服务 (12076:5100) 社区。 有关路由要求的详细信息，请参阅 ExpressRoute 路由要求一文中的[对 BGP 社区的支持](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp)部分。
+- **如果当前在使用 Microsoft 对等互连。** 注册其他 Office 365 联机服务 (12076:5100) 社区  。 有关路由要求的详细信息，请参阅 ExpressRoute 路由要求一文中的[对 BGP 社区的支持](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp)部分。
 
 如果必须继续使用专用线路，则需要与你的 Microsoft 帐户团队沟通如何获得授权来使用**其他 Office 365 联机服务 (12076:5100)** 社区。 MS Office 托管的评审委员会将验证你是否需要那些线路并确保你理解保留它们的技术影响。 尝试为 Office 365 创建路由筛选器的未经授权订阅将收到错误消息。 
  
@@ -729,7 +729,7 @@ Azure AD Connect 的最新版本包括：
 **服务类别：** 使用条款  
 **产品功能：** 开发人员体验
  
-已添加 Microsoft Graph API 以实现 Azure AD 使用条款的管理性运行。 可创建、更新、删除使用条款对象。
+我们添加了 Microsoft Graph Api 的管理操作的 Azure AD 使用条款。 你将能够创建、 更新、 删除使用对象的术语。
 
 ---
 
@@ -849,7 +849,7 @@ Azure AD Connect 的最新版本包括：
 **服务类别：** 企业应用  
 **产品功能：** SSO
  
-找不到应用程序/服务主体？ 我们增加了在“企业应用程序”下的“所有应用程序”列表中加载更多应用程序的功能。 默认显示 20 个应用程序。 现在可以通过单击“加载更多”来查看更多应用程序。 
+找不到应用程序/服务主体？ 我们增加了在“企业应用程序”下的“所有应用程序”列表中加载更多应用程序的功能。 默认显示 20 个应用程序。 现在可以通过单击“加载更多”来查看更多应用程序  。 
 
 ---
  
@@ -879,9 +879,9 @@ AADConnect 的 5 月发布内容包括与 PingFederate 的集成、重要安全�
 **服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
  
-在 2018 年 4 月 25 日当天或以后创建的应用将不再能够使用 query response_mode 来请求 id_token。  这样可以为 Azure AD 提供内联的 OIDC 规范，有助于减少应用的受攻击面。  在 2018 年 4 月 25 之前创建的应用可以将 query response_mode 与值为 id_token 的 response_type 配合使用。  从 AAD 请求 id_token 时，返回的错误为“AADSTS70007: 在请求令牌时，‘query’ 是 ‘response_mode’ 的不受支持的值”。
+在 2018 年 4 月 25 日当天或以后创建的应用将不再能够使用 query response_mode 来请求 id_token   。  这样可以为 Azure AD 提供内联的 OIDC 规范，有助于减少应用的受攻击面。  在 2018 年 4 月 25 之前创建的应用可以将 query response_mode 与值为 id_token 的 response_type 配合使用   。  从 AAD 请求 id_token 时，返回的错误为“AADSTS70007: 在请求令牌时，‘query’ 是 ‘response_mode’ 的不受支持的值”。 
 
-fragment 和 form_post response_mode 继续有效 - 创建新的具有特定用途（例如，供应用代理使用）的应用程序对象时，请确保使用这两个 response_mode 中的一个，然后才能创建新应用程序。  
+fragment 和 form_post response_mode 继续有效 - 创建新的具有特定用途（例如，供应用代理使用）的应用程序对象时，请确保使用这两个 response_mode 中的一个，然后才能创建新应用程序   。  
 
 ---
  
@@ -963,7 +963,7 @@ Connect Health 现在支持按小时或按天检测超过失败 U/P 登录次数
 **产品功能：** 合规性
  
 
-Azure AD 使用条款已从公共预览版过渡到正式版。
+Azure AD 使用条款已从公共预览版移动到已公开发布。
 
 有关详细信息，请参阅 [Azure AD 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
 
@@ -1020,7 +1020,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 **服务类别：** 其他  
 **产品功能：** 第三方集成
 
-如果 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1)中列出的应用程序支持基于 SAML 的单一登录，则单击“立即获取”会为你提供与该应用程序关联的集成教程。 
+如果 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1)中列出的应用程序支持基于 SAML 的单一登录，则单击“立即获取”  会为你提供与该应用程序关联的集成教程。 
 
 ---
 
@@ -1463,13 +1463,13 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 
 ---
 
-### <a name="terms-of-use-update-to-mobile-experience"></a>移动体验的使用条款更新 
+### <a name="terms-of-use-update-to-mobile-experience"></a>移动体验使用更新的条款 
 
 **类型：** 已更改的功能  
 **服务类别：** 使用条款  
 **产品功能：** 合规性
 
-显示使用条款时，现在可以单击“浏览时遇到问题？请单击此处”。 单击此链接会在设备本地打开使用条款。 不管文档中的字体大小或设备屏幕大小如何，都可以根据需要进行缩放，以方便阅读文档。 
+显示使用条款时，现在可以单击“浏览时遇到问题？  请单击此处”。 单击此链接会在设备本地打开使用条款。 不管文档中的字体大小或设备屏幕大小如何，都可以根据需要进行缩放，以方便阅读文档。 
 
 ---
  
@@ -1511,7 +1511,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 **服务类别：** 我的应用  
 **产品功能：** SSO
 
-现在，可以通过新的用户设置来更好地管理 Office 365 应用程序显示用户访问面板的方式。 如果只想在 Office 门户中显示 Office 应用，可以借助此选项来减少用户访问面板中的应用数量。 该设置位于“用户设置”中，带有“用户只能在 Office 365 门户中查看 Office 365 应用”标签。
+现在，可以通过新的用户设置来更好地管理 Office 365 应用程序显示用户访问面板的方式。 如果只想在 Office 门户中显示 Office 应用，可以借助此选项来减少用户访问面板中的应用数量。 该设置位于“用户设置”中，带有“用户只能在 Office 365 门户中查看 Office 365 应用”标签   。
 
 有关详细信息，请参阅[在 Azure Active Directory 的用户体验中隐藏应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)。
 
@@ -1552,7 +1552,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
  
 从 2018 年 1 月 8 日起，PhoneFactor Web 门户已停用。 此门户用于管理 MFA 服务器，但这些功能已移至 Azure 门户 (portal.azure.com)。 
 
-MFA 配置位于：“Azure Active Directory”\>“MFA 服务器”
+MFA 配置位于：“Azure Active Directory”\>“MFA 服务器” 
  
 ---
  
@@ -1591,9 +1591,9 @@ MFA 配置位于：“Azure Active Directory”\>“MFA 服务器”
 
 1. 转到 [MyApps 门户](https://myapps.microsoft.com)并登录。
 
-2. 在右上角选择自己的姓名，然后从列表中选择“个人资料”。 
+2. 在右上角选择自己的姓名，然后从列表中选择“个人资料”。  
 
-3. 在“个人资料”中选择“查看使用条款”。 
+3. 在“个人资料”中选择“查看使用条款”。   
 
 4. 现在，可以查看已接受的使用条款。 
 
@@ -1619,9 +1619,9 @@ Azure AD 和 Microsoft 帐户标识系统 UI 经过重新设计，现在拥有�
 **服务类别：** Azure AD  
 **产品功能：** 用户身份验证
  
-Azure AD 登录页上的“使我保持登录状态”复选框已被替换为新提示，成功通过身份验证后会显示该提示。 
+Azure AD 登录页上的“使我保持登录状态”复选框已被替换为新提示，成功通过身份验证后会显示该提示  。 
 
-如果对此提示回答“是”，则服务会提供永久刷新令牌。 此行为与在旧体验中选中“使我保持登录状态”复选框时相同。 对于联合租户，此提示在使用联合服务成功完成身份验证后显示。
+如果对此提示回答“是”，则服务会提供永久刷新令牌  。 此行为与在旧体验中选中“使我保持登录状态”复选框时相同  。 对于联合租户，此提示在使用联合服务成功完成身份验证后显示。
 
 有关详细信息，请参阅 [Fewer sign-in prompts:The new "keep me signed in" experience for Azure AD is in preview](https://cloudblogs.microsoft.com/enterprisemobility/2017/09/19/fewer-login-prompts-the-new-keep-me-signed-in-experience-for-azure-ad-is-in-preview/)（登录提示减少：现已推出 Azure AD 新的“使我保持登录状态”体验的预览版）。 
 
@@ -1635,7 +1635,7 @@ Azure AD 登录页上的“使我保持登录状态”复选框已被替换为�
  
 为管理员添加了一个选项，要求其用户在接受使用条款之前先将其展开。
 
-对于要求用户展开使用条款这一选项，可选择“打开”或“关闭”。 “打开”设置要求用户在接受使用条款之前先查看条款。
+对于要求用户展开使用条款这一选项，可选择“打开”或“关闭”。   “打开”设置要求用户在接受使用条款之前先查看条款。 
 
 有关详细信息，请参阅 [Azure AD 使用条款功能（预览版）](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
  
@@ -1777,7 +1777,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 **服务类别：** 自助密码重置  
 **产品功能：** 用户身份验证
 
-现在可以查看本地密码写回客户端的状态。 此选项位于[密码重置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)页的“本地集成”部分。 
+现在可以查看本地密码写回客户端的状态。 此选项位于[密码重置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)页的“本地集成”部分。  
 
 如果与本地写回客户端的连接出现问题，将会显示一条错误消息，其中包含：
 
@@ -1880,9 +1880,9 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **试试看：**
 
-1. 在 Azure AD 管理中心，选择“管理”部分中的“[所有用户](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/All)”。 
+1. 在 Azure AD 管理中心，选择“管理”部分中的“[所有用户](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/All)”。  
 
-2. 从“显示”列表中，选择“最近删除的用户”。 
+2. 从“显示”列表中，选择“最近删除的用户”   。 
 
 3. 选择一个或多个最近删除的用户，然后将其还原或永久删除。
  
@@ -1953,7 +1953,7 @@ Azure 门户提供：
 **服务类别：** 我的应用  
 **产品功能：** 单一登录  
 
-对于显示 HTML 用户名和密码字段的应用程序，Azure AD 支持自动登录字段检测。 [如何自动捕获应用程序的登录字段](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application)中介绍了这些步骤。 在 [Azure 门户](https://aad.portal.azure.com)中的“企业应用程序”页面上添加一个“非库”应用程序，即可找到此功能。 此外，可在此新应用程序中将“单一登录”模式配置为“基于密码的单一登录”，输入 Web URL，然后保存页面。
+对于显示 HTML 用户名和密码字段的应用程序，Azure AD 支持自动登录字段检测。 [如何自动捕获应用程序的登录字段](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application)中介绍了这些步骤。 在 [Azure 门户](https://aad.portal.azure.com)中的“企业应用程序”页面上添加一个“非库”应用程序，即可找到此功能。   此外，可在此新应用程序中将“单一登录”模式配置为“基于密码的单一登录”，输入 Web URL，然后保存页面。  
  
 由于某个服务问题，此功能曾经暂时禁用过。 该问题现已得到解决，自动登录字段检测功能再次可用。
 
@@ -2035,7 +2035,7 @@ Azure 门户中使用 Azure RBAC 功能的所有资源都可以利用 Azure AD P
 **服务类别：** 我的应用  
 **产品功能：** 单一登录  
 
-现在，可以通过“隐藏应用”属性更好地管理用户门户中显示的应用。 如果为后端服务显示的应用磁贴或重复的磁贴导致用户的应用启动器变得混杂，隐藏应用可帮助解决问题。 切换开关位于第三方应用的“属性”部分中，带有“对用户可见?”标签 还可以通过 PowerShell 以编程方式隐藏应用。 
+现在，可以通过“隐藏应用”属性更好地管理用户门户中显示的应用。  如果为后端服务显示的应用磁贴或重复的磁贴导致用户的应用启动器变得混杂，隐藏应用可帮助解决问题。 切换开关位于第三方应用的“属性”部分中，带有“对用户可见?”标签   还可以通过 PowerShell 以编程方式隐藏应用。 
 
 有关详细信息，请参阅[在 Azure AD 的用户体验中隐藏第三方应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)。 
 

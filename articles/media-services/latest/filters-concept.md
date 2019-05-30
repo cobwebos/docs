@@ -11,45 +11,37 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: bfe4bbae7953479f9b5b5ce9653fb3b8d4b2d092
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002384"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225416"
 ---
 # <a name="filters"></a>筛选器
 
-你将内容传送到客户 （实时流式处理事件或视频点播） 时你的客户端可能需要更大的灵活性比默认资产的清单文件中描述的内容。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
+你将内容传送到客户 （实时流式处理事件或视频点播） 时你的客户端可能需要更大的灵活性比默认资产的清单文件中描述的内容。 Azure 媒体服务提供[动态清单](filters-dynamic-manifest-overview.md)基于预定义筛选器。 
 
 筛选器是服务器端的规则，可让客户执行以下操作： 
 
-- 仅播放视频的某个部分（而不是整个视频）。 例如:
+- 仅播放视频的某个部分（而不是整个视频）。 例如：
   - 缩小清单以显示实时事件的子剪辑（“子剪辑筛选”），或
   - 修剪视频开头（“修剪视频”）。
 - 只传送内容播放设备所支持的指定再现内容和/或指定的语言轨道（“再现内容筛选”）。 
 - 调整演播窗口，以便在播放器中提供长度有限的 DVR 窗口（“调整演播窗口”）。
 
-媒体服务根据预定义的筛选器提供[动态清单](filters-dynamic-manifest-overview.md)。 定义筛选器后，客户端可以在流式 URL 中使用它们。 筛选器可以应用于自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。
+媒体服务，可创建**帐户筛选器**并**资产筛选器**为您的内容。 此外，你可以将具有您预先创建的筛选器关联**流式处理定位符**。
 
-下表显示了一些包含筛选器的 URL 示例：
+## <a name="defining-filters"></a>定义筛选器
 
-|Protocol|示例|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>对于 HLS v3，请使用： `format=m3u8-aapl-v3`。|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|平滑流式处理|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
-
-## <a name="define-filters"></a>定义筛选器
-
-有两种类型的资产筛选器： 
+有两种类型的筛选器： 
 
 * [帐户筛选器](https://docs.microsoft.com/rest/api/media/accountfilters)（全局）- 可应用到 Azure 媒体服务帐户中所有的资产，生存期与帐户相同。
 * [资产筛选器](https://docs.microsoft.com/rest/api/media/assetfilters)（本地）- 在创建后只能应用到与筛选器关联的资产，生存期与资产相同。 
 
-[帐户筛选器](https://docs.microsoft.com/rest/api/media/accountfilters)和[资产筛选器](https://docs.microsoft.com/rest/api/media/assetfilters)类型的用于定义/描述筛选器的属性完全相同。 需要指定要与筛选器关联的资产名称，但创建**资产筛选器**时除外。
+**帐户筛选器**并**资产筛选器**类型具有完全相同的属性用于定义/描述筛选器。 需要指定要与筛选器关联的资产名称，但创建**资产筛选器**时除外。
 
 根据具体的方案确定哪种类型的筛选器更合适（资产筛选器或帐户筛选器）。 帐户筛选器适用于设备配置文件（再现内容筛选），而资产筛选器可用于修剪特定的资产。
 
@@ -86,7 +78,7 @@ ms.locfileid: "66002384"
 |**FourCC**|使用轨迹的 FourCC 值进行筛选。<br/><br/>该值是 [RFC 6381](https://tools.ietf.org/html/rfc6381) 中指定的编解码器格式的第一个元素。 目前支持以下编解码器： <br/>视频：“avc1”、“hev1”、“hvc1”<br/>音频：“mp4a”、“ec-3”<br/><br/>若要确定资产中的轨道 FourCC 值，获取并检查清单文件。|
 |**语言**|使用轨迹的语言进行筛选。<br/><br/>该值是 RFC 5646 中指定的、要包含的语言的标记。 例如，“en”。|
 |**名称**|使用轨迹的名称进行筛选。|
-|类型|使用轨迹的类型进行筛选。<br/><br/>允许以下值：“video”、“audio”或“text”。|
+|类型 |使用轨迹的类型进行筛选。<br/><br/>允许以下值：“video”、“audio”或“text”。|
 
 ### <a name="example"></a>示例
 
@@ -145,14 +137,22 @@ ms.locfileid: "66002384"
 }
 ```
 
-## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流式处理定位符相关联
+## <a name="associating-filters-with-streaming-locator"></a>将筛选器与流式处理定位符相关联
 
-可以指定一系列[资产或帐户筛选器](filters-concept.md)，这将会应用于你[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)。 [动态打包程序](dynamic-packaging-overview.md)适用此列表以及这些客户端在 URL 中指定的筛选器。 此组合生成[动态清单](filters-dynamic-manifest-overview.md)，后者基于在 URL 中的筛选器 + 流式处理定位符指定的筛选器。 我们建议你使用此功能，如果想要应用筛选器，但不是希望公开在 URL 中的筛选器名称。
+可以指定一系列[资产或帐户筛选器](filters-concept.md)上你[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)。 [动态打包程序](dynamic-packaging-overview.md)适用此列表以及这些客户端在 URL 中指定的筛选器。 此组合生成[动态清单](filters-dynamic-manifest-overview.md)，后者基于在 URL 中的筛选器 + 流式处理定位符指定的筛选器。 
 
 请看以下示例：
 
 * [将筛选器与流式处理定位符的.NET 相关联](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
 * [将筛选器与流式处理定位符的 CLI 相关联](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+
+## <a name="updating-filters"></a>更新筛选器
+ 
+**流式处理定位符**可以更新筛选器时不能更新。 
+
+不建议更新与已公开发布相关联的筛选器的定义**流式处理定位符**，尤其是当启用 CDN。 流式处理服务器和 Cdn 可以有可能会导致要返回陈旧缓存数据的内部缓存。 
+
+如果需要更改筛选器定义，请考虑创建新的筛选器并将其添加到**流式处理定位符**URL 或发布的新**流式处理定位符**直接引用该筛选器。
 
 ## <a name="next-steps"></a>后续步骤
 

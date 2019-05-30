@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ac7b662bc9ef4f3ae675c4cbde18e159383d3d8e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5c1bb1f959f920ea9bce23082ec531dc83d873ad
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711800"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356984"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -33,8 +33,8 @@ ms.locfileid: "64711800"
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>使用 secureString 和 secureObject 参数
 
-虽然资源管理器模板项目支持“secureString”和“secureObject”类型的参数，但 Azure 蓝图要求每个参数与 Azure Key Vault 连接。
-此安全措施可防止将机密与蓝图一起存储的不安全做法，并有利于采用安全模式。 Azure 蓝图支持此安全措施，它可以检测是否在资源管理器模板项目中包含了任一安全参数。 然后，该服务会在分配期间提示输入每个检测到的安全参数的以下 Key Vault 属性：
+虽然资源管理器模板项目支持“secureString”和“secureObject”类型的参数，但 Azure 蓝图要求每个参数与 Azure Key Vault 连接    。
+此安全措施可防止将机密与蓝图一起存储的不安全做法，并有利于采用安全模式。 Azure 蓝图支持此安全措施，它可以检测是否在资源管理器模板项目中包含了任一安全参数。  然后，该服务会在分配期间提示输入每个检测到的安全参数的以下 Key Vault 属性：
 
 - Key Vault 资源 ID
 - Key Vault 机密名称
@@ -44,7 +44,8 @@ ms.locfileid: "64711800"
 
 如果使用蓝图分配**用户分配托管标识**，则引用 Key Vault_可能_集中式订阅中存在。 托管的标识必须授予密钥保管库之前蓝图分配适当的权限。
 
-在这两种情况下，密钥保管库必须具有**启用为模板部署到 Azure 资源管理器中访问**上配置**访问策略**页。 有关如何启用此功能的说明，请参阅 [Key Vault - 启用模板部署](../../../managed-applications/key-vault-access.md#enable-template-deployment)。
+> [!IMPORTANT]
+> 在这两种情况下，密钥保管库必须具有**启用为模板部署到 Azure 资源管理器中访问**上配置**访问策略**页。 有关如何启用此功能的说明，请参阅 [Key Vault - 启用模板部署](../../../managed-applications/key-vault-access.md#enable-template-deployment)。
 
 有关 Azure Key Vault 的详细信息，请参阅 [ 概述](../../../key-vault/key-vault-overview.md)。
 
@@ -56,19 +57,19 @@ ms.locfileid: "64711800"
 
 #### <a name="setting-static-parameters-in-the-portal"></a>在门户中设置静态参数
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
-1. 从左侧页面中选择“蓝图定义”。
+1. 从左侧页面中选择“蓝图定义”  。
 
 1. 单击现有蓝图，然后单击**编辑蓝图**或单击 **+ 创建蓝图**上填写信息并**基础知识**选项卡。
 
-1. 单击“下一步:项目”或单击“项目”选项卡。
+1. 单击“下一步:  项目”或单击“项目”选项卡  。
 
-1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”。 单击项目行，编辑项目参数。
+1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”   。 单击项目行，编辑项目参数。
 
    ![蓝图参数上蓝图定义](../media/parameters/parameter-column.png)
 
-1. “编辑项目”页会显示适用于所单击项目的值选项。 项目上的每个参数具有标题、值框和复选框。 将框设置为未选中状态，使其称为“静态参数”。 在以下示例中，只有“位置”是“静态参数”，因为它处于未选中状态，同时“资源组名称”已选中。
+1. “编辑项目”页会显示适用于所单击项目的值选项  。 项目上的每个参数具有标题、值框和复选框。 将框设置为未选中状态，使其称为“静态参数”  。 在以下示例中，只有“位置”是“静态参数”，因为它处于未选中状态，同时“资源组名称”已选中    。
 
    ![蓝图静态参数蓝图项目](../media/parameters/static-parameter.png)
 
@@ -139,7 +140,7 @@ ms.locfileid: "64711800"
 
 ##### <a name="artifact-level-parameter"></a>项目级别参数
 
-在项目上创建“静态参数”情况相似，但采用直接值而不是使用 `parameters()` 函数。 以下示例创建了两个静态参数：“tagName”和“tagValue”。 每个参数的值直接提供，且不使用函数调用。
+在项目上创建“静态参数”情况相似，但采用直接值而不是使用 `parameters()` 函数  。 以下示例创建了两个静态参数：“tagName”和“tagValue”   。 每个参数的值直接提供，且不使用函数调用。
 
 - REST API URI
 
@@ -169,17 +170,17 @@ ms.locfileid: "64711800"
 
 ### <a name="dynamic-parameters"></a>动态参数
 
-与静态参数相对的是“动态参数”。 此参数未在蓝图中定义，而是在每次分配蓝图期间定义的。 在资源组示例中，使用**动态参数**对资源组名称有意义。 每次分配蓝图时，它将提供不同的名称。 蓝图函数的列表，请参阅[蓝图函数](../reference/blueprint-functions.md)引用。
+与静态参数相对的是“动态参数”  。 此参数未在蓝图中定义，而是在每次分配蓝图期间定义的。 在资源组示例中，使用**动态参数**对资源组名称有意义。 每次分配蓝图时，它将提供不同的名称。 蓝图函数的列表，请参阅[蓝图函数](../reference/blueprint-functions.md)引用。
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在门户中设置动态参数
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
-1. 从左侧页面中选择“蓝图定义”。
+1. 从左侧页面中选择“蓝图定义”  。
 
 1. 右键单击要分配的蓝图。 选择**分配蓝图**或单击你想要分配的蓝图，然后单击**分配蓝图**按钮。
 
-1. 上**分配蓝图**页上，找到**项目参数**部分。 具有至少一个“动态参数”的每个项目会显示项目和配置选项。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配。
+1. 上**分配蓝图**页上，找到**项目参数**部分。 具有至少一个“动态参数”的每个项目会显示项目和配置选项  。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配   。
 
    ![蓝图期间蓝图分配的动态参数](../media/parameters/dynamic-parameter.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: cff4aaaab97fdcecab9cdf1d0dff2786f86b604b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 0ec64a5ae412fb4a1900021fefcb7d9112b1b019
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966717"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255330"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 
@@ -41,8 +41,6 @@ Windows 提供了各种[性能计数器](https://docs.microsoft.com/windows/desk
          - Process\\IO Data Bytes/sec
          - ASP.NET Applications\\Requests In Application Queue
          - Processor(_Total)\\% Processor Time
-
-要在某一位置查看所有最有用的图表，请创建[仪表板](../../azure-monitor/app/app-insights-dashboards.md)并将图表固定到它。
 
 ## <a name="add-counters"></a>添加计数器
 

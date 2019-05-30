@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b03197fb0d4d97756e5a3fe88de78c11a816b5ec
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 4a6a6249f3edca30ab3d3f9a213b4282b4323d15
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951266"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258334"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -85,7 +85,9 @@ Azure 表存储现在是 Azure Cosmos DB 的一部分。 若要查看 Azure 表�
 
 ## <a name="disk-storage"></a>磁盘存储
 
-Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关这些功能的详细信息，请参阅[计算服务文档](https://docs.microsoft.com/azure/#pivot=products&panel=Compute)。
+Azure 托管磁盘是虚拟硬盘 (VHD)。 可以将其视为本地服务器中的物理磁盘，但它是虚拟化的。 Azure 托管磁盘作为页 blob 存储，后者是 Azure 中的随机 IO 存储对象。 我们之所以将托管磁盘称为“托管”是因为，它是对页 blob、blob 容器和 Azure 存储帐户的抽象。 对于托管磁盘，你所要做的就是预配磁盘，而 Azure 负责其余的工作。
+
+有关托管磁盘的详细信息，请参阅[简介 Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。
 
 ## <a name="types-of-storage-accounts"></a>存储帐户的类型
 
@@ -93,15 +95,15 @@ Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关�
 
 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 
 
-## <a name="securing-access-to-storage-accounts"></a>保护对存储帐户的访问
+## <a name="securing-access-to-storage-accounts"></a>确保对存储帐户进行安全访问
 
-到 Azure 存储的每个请求必须进行授权。 Azure 存储支持以下授权方法：
+对 Azure 存储的每个请求必须获得授权。 Azure 存储支持以下授权方法：
 
-- **Blob 和队列数据的 azure Active Directory (Azure AD) 集成。** Azure 存储支持通过基于角色的访问控制 (RBAC) 的 Blob 和队列服务的身份验证和授权与 Azure AD 凭据。 授权请求与 Azure AD 建议用于卓越的安全性和易用性。 有关详细信息，请参阅[进行身份验证访问 Azure blob 和队列使用 Azure Active Directory](storage-auth-aad.md)。
+- **用于 Blob 和队列数据的 Azure Active Directory (Azure AD) 集成。** Azure 存储支持通过基于角色的访问控制 (RBAC) 使用 Azure AD 凭据为 Blob 和队列服务进行身份验证和授权。 建议使用 Azure AD 进行授权请求，以确保极高的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure blob 和队列访问进行身份验证](storage-auth-aad.md)。
 - **Azure AD 授权 SMB 上 Azure 文件 （预览版）。** 通过 SMB （服务器消息块） 通过 Azure Active Directory 域服务，azure 文件支持基于标识的授权。 已加入域的 Windows 虚拟机 (Vm) 可以访问 Azure 文件共享使用 Azure AD 凭据。 有关详细信息，请参阅[SMB 上的 Azure 文件 （预览版） 的概述的 Azure Active Directory 授权](../files/storage-files-active-directory-overview.md)。
-- **使用共享密钥的授权。** Azure 存储 Blob、 队列和表服务和 Azure 文件支持授权对具有共享该客户端使用授权将每个请求都使用存储帐户访问密钥进行签名的标头传递的共享密钥。 有关详细信息，请参阅[通过共享密钥进行授权](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
-- **授权使用共享访问签名 (SAS)。** 共享的访问签名 (SAS) 是一个包含可以追加到存储资源的 URI 的安全令牌的字符串。 安全令牌将封装权限和访问的时间间隔等限制。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)。
-- **对容器和 blob 的匿名访问。** 容器和其 blob 可能公开可用。 当您指定容器或 blob 是公共的时任何人都可以读取它以匿名方式;无身份验证是必需的。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
+- **通过共享密钥进行授权。** Azure 存储 Blob、队列和表服务以及 Azure 文件存储支持使用共享密钥进行授权。使用共享密钥授权的客户端会随使用存储帐户访问密钥签名的每个请求传递一个标头。 有关详细信息，请参阅[通过共享密钥进行授权](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
+- **使用共享访问签名 (SAS) 进行授权。** 共享访问签名 (SAS) 是一个字符串，其中包含的安全令牌可以追加到存储资源的 URI。 安全令牌封装了各种约束，例如权限、访问时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)。
+- **对容器和 Blob 的匿名访问。** 容器及其 Blob 也许可以公开使用。 指定某个容器或 Blob 为公用的时，任何人都可以匿名读取它，不需要进行身份验证。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
 
 ## <a name="encryption"></a>加密
 

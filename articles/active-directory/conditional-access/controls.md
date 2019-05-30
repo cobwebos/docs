@@ -18,12 +18,12 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5c6f1064d2d73ab3d99ca341cffd9b296723e97
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: acc30bc18921b79be3b5e5b2ae340eab29dd5bcf
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64571104"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305754"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？
 
@@ -33,9 +33,9 @@ ms.locfileid: "64571104"
 
 在条件访问的上下文中，
 
-- “出现这种情况时”称为条件
+- “出现这种情况时”称为条件  
 
-- “则执行此操作”称为访问控制
+- “则执行此操作”称为访问控制  
 
 条件语句与控制的组合表示一种条件性访问策略。
 
@@ -55,8 +55,8 @@ ms.locfileid: "64571104"
 
 使用授权控制，可以完全阻止访问，也可以选择所需的控制，限制为只有满足其他要求才能访问。 如果有多个控制，可以要求：
 
-- 满足所有选定控制 (AND)
-- 满足一个选定控制 (OR)
+- 满足所有选定控制 (AND  )
+- 满足一个选定控制 (OR  )
 
 ![控制](./media/controls/18.png)
 
@@ -142,11 +142,11 @@ ms.locfileid: "64571104"
 
 复制 JSON 数据，然后将其粘贴到相关文本框中。 不要对 JSON 做任何更改，除非用户明确理解所做的更改。 做出任何更改可能中断提供商和 Microsoft 之间的联系，并且有可能将你和你的用户锁定在帐户之外。
 
-创建自定义控件的选项位于“条件访问”页的“管理”部分中。
+创建自定义控件的选项位于“条件访问”  页的“管理”  部分中。
 
 ![控制](./media/controls/82.png)
 
-单击“新建自定义控件”，打开包含控件 JSON 数据文本框的边栏选项卡。  
+单击“新建自定义控件”  ，打开包含控件 JSON 数据文本框的边栏选项卡。  
 
 ![控制](./media/controls/81.png)
 
@@ -158,7 +158,7 @@ ms.locfileid: "64571104"
 
 2. 单击...  
 
-3. 选择“删除”。
+3. 选择“删除”。 
 
 ### <a name="editing-custom-controls"></a>编辑自定义控件
 

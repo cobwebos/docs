@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: b2d142783146edcaf40125ce58e43fe001909412
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32ced1d06a10f33e9d71ef09ba51d22e9e406f73
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60635612"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384403"
 ---
 # <a name="send-queries-to-the-bing-image-search-api"></a>向必应图像搜索 API 发送查询
 
@@ -24,13 +24,13 @@ ms.locfileid: "60635612"
 
 ## <a name="use-and-suggest-search-terms"></a>使用和建议搜索词
 
-输入搜索词后，系统会在你设置 [**q**](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) 查询参数之前对搜索词进行 URL 编码。 例如，如果输入 *sailing dinghies*，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
+输入搜索词后，系统会在你设置 [**q**](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) 查询参数之前对搜索词进行 URL 编码。 例如，如果输入 *sailing dinghies*，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
 
 如果应用有一个可以在其中输入搜索词的搜索框，则可使用[必应自动推荐 API](../../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 该 API 可以实时显示建议的搜索词。 该 API 根据部分搜索词和认知服务返回建议的查询字符串。
 
 ## <a name="pivot-the-query"></a>分段查询
 
-如果必应可以将原始搜索查询分段，则返回的 [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) 对象会包含 `pivotSuggestions`。 分段建议可以作为可选搜索词向用户显示。 例如，如果原始查询为 *Microsoft Surface*，则必应可能会将查询分成 *Microsoft* 和 *Surface*，并为每个拆分项提供建议的分段。 这些建议可以作为可选查询词向用户显示。
+如果必应可以将原始搜索查询分段，则返回的 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 对象会包含 `pivotSuggestions`。 分段建议可以作为可选搜索词向用户显示。 例如，如果原始查询为 *Microsoft Surface*，则必应可能会将查询分成 *Microsoft* 和 *Surface*，并为每个拆分项提供建议的分段。 这些建议可以作为可选查询词向用户显示。
 
 以下示例演示了针对 *Microsoft Surface* 的分段建议：  
 
@@ -91,7 +91,7 @@ ms.locfileid: "60635612"
 }
 ```
 
-`pivotSuggestions` 字段包含将原始查询分成的段的列表。 每个段的响应包含一个 [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query_obj) 对象的列表，该对象包含建议的查询。 `text` 字段包含建议的查询。 `displayText` 字段包含替换原始查询中的分段的词。 例如，“Surface 的发布日期”。
+`pivotSuggestions` 字段包含将原始查询分成的段的列表。 每个段的响应包含一个 [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) 对象的列表，该对象包含建议的查询。 `text` 字段包含建议的查询。 `displayText` 字段包含替换原始查询中的分段的词。 例如，“Surface 的发布日期”。
 
 如果分段查询字符串是用户要查找的内容，请使用 `text` 和 `thumbnail` 字段显示分段查询字符串。 使用 `webSearchUrl` URL 或 `searchLink` URL，使缩略图和文本可供用户单击。 使用 `webSearchUrl` 将用户发送到必应搜索结果。 如果提供自己的结果页面，请使用 `searchLink`。
 
@@ -103,7 +103,7 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>扩展查询
 
-如果必应可以通过扩展查询来缩小原始搜索的范围，则 [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) 对象会包含 `queryExpansions` 字段。 例如，如果查询为 *Microsoft Surface*，则扩展的查询可能为：
+如果必应可以通过扩展查询来缩小原始搜索的范围，则 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 对象会包含 `queryExpansions` 字段。 例如，如果查询为 *Microsoft Surface*，则扩展的查询可能为：
 - Microsoft Surface **Pro 3**。
 - Microsoft Surface **RT**。
 - Microsoft Surface **Phone**。
@@ -149,7 +149,7 @@ The following shows an example of the pivot queries.
 }
 ```
 
-`queryExpansions` 字段包含 [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query_obj) 对象的列表。 `text` 字段包含扩展的查询。 `displayText` 字段包含扩展词。 如果扩展的查询字符串是用户要查找的内容，请使用 `text` 和 `thumbnail` 字段显示扩展的查询字符串。 使用 `webSearchUrl` URL 或 `searchLink` URL，使缩略图和文本可供用户单击。 使用 `webSearchUrl` 将用户发送到必应搜索结果。 如果提供自己的结果页面，请使用 `searchLink`。
+`queryExpansions` 字段包含 [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) 对象的列表。 `text` 字段包含扩展的查询。 `displayText` 字段包含扩展词。 如果扩展的查询字符串是用户要查找的内容，请使用 `text` 和 `thumbnail` 字段显示扩展的查询字符串。 使用 `webSearchUrl` URL 或 `searchLink` URL，使缩略图和文本可供用户单击。 使用 `webSearchUrl` 将用户发送到必应搜索结果。 如果提供自己的结果页面，请使用 `searchLink`。
 
 <!-- Removing until we can replace with a sanitized image.
 The following shows an example Bing implementation that uses expanded queries. If the user clicks the Microsoft Surface Pro 3 link, they're taken to the Bing search results page, which shows them images of the Pro 3.

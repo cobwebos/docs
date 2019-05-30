@@ -3,19 +3,19 @@ title: 文本翻译 API 语言方法
 titlesuffix: Azure Cognitive Services
 description: 使用文本翻译 API 语言方法。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 6e0342d876db424454526637322d67d55c0432a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 415093610bfbc314e569eeeb658508bdfb021d9c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797301"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389715"
 ---
 # <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：Languages
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>scope</td>
-    <td>可选参数。<br/>逗号分隔的名称列表，用于定义要返回的语言组。 允许的组名称为：`translation`、`transliteration` 和 `dictionary`。 如果未指定范围，则返回所有组，这相当于传递了 `scope=translation,transliteration,dictionary`。 若要确定哪个支持的语言集适合你的场景，请参阅[响应对象](#response-body)的说明。</td>
+    <td> 可选参数。<br/>逗号分隔的名称列表，用于定义要返回的语言组。 允许的组名称为：`translation`、`transliteration` 和 `dictionary`。 如果未指定范围，则返回所有组，这相当于传递了 `scope=translation,transliteration,dictionary`。 若要确定哪个支持的语言集适合你的场景，请参阅[响应对象](#response-body)的说明。</td>
   </tr>
 </table> 
 
@@ -52,12 +52,12 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>描述</th>
   <tr>
     <td>Accept-Language</td>
-    <td>可选请求标头。<br/>要用于用户界面字符串的语言。 响应中的某些字段是语言的名称，或区域的名称。 使用此参数可以定义要以哪种语言返回这些名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。<br/>如果未指定目标语言或者本地化不可用，则以英语提供名称。
+    <td>可选请求标头  。<br/>要用于用户界面字符串的语言。 响应中的某些字段是语言的名称，或区域的名称。 使用此参数可以定义要以哪种语言返回这些名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。<br/>如果未指定目标语言或者本地化不可用，则以英语提供名称。
     </td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选请求标头。<br/>客户端生成的 GUID，用于唯一地标识请求。</td>
+    <td>可选请求标头  。<br/>客户端生成的 GUID，用于唯一地标识请求。</td>
   </tr>
 </table> 
 

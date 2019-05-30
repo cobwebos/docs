@@ -16,19 +16,19 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 19ba6896d9186cae32249fc8eb51319f9b37a6ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce07c6c19c19f134cc322309bb338b94ef11ea85
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477195"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393862"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
 
 本文提供 Azure 中 [SQL Server 虚拟机](virtual-machines-windows-sql-server-iaas-overview.md)的定价指南。 有几个选项会影响成本，请务必选取适当的映像来平衡成本与业务需求。
 
 > [!TIP]
-> 如果只需了解特定 SQL Server 版本和虚拟机大小组合的估算成本，请参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 的定价页。 从“OS/软件”列表中选择平台和 SQL Server 版本。
+> 如果只需了解特定 SQL Server 版本和虚拟机大小组合的估算成本，请参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 的定价页。 从“OS/软件”列表中选择平台和 SQL Server 版本  。
 >
 > ![VM 定价页上的 UI](./media/virtual-machines-windows-sql-server-pricing-guidance/virtual-machines-pricing-ui.png)
 >
@@ -36,9 +36,9 @@ ms.locfileid: "61477195"
 
 ## <a name="free-licensed-sql-server-editions"></a>SQL Server 免费授权版
 
-若要开发、测试或生成概念证明，请使用免费授权的“SQL Server Developer Edition”。 此版本提供所有 SQL Server Enterprise Edition 功能，通过它可以生成和测试任意类型的应用程序。 但是，不能在生产环境中运行 Developer Edition。 SQL Server Developer Edition VM只产生 VM 成本费用，因为没有任何相关的 SQL Server 许可成本。
+若要开发、测试或生成概念证明，请使用免费授权的“SQL Server Developer Edition”  。 此版本提供所有 SQL Server Enterprise Edition 功能，通过它可以生成和测试任意类型的应用程序。 但是，不能在生产环境中运行 Developer Edition。 SQL Server Developer Edition VM只产生 VM 成本费用，因为没有任何相关的 SQL Server 许可成本。
 
-若要在生产环境中运行轻型工作负荷（小于 4 核、小于 1 GB 内存、小于 10 GB/数据库），请使用免费授权的“SQL Server Express Edition”。 SQL Server Express Edition VM 同样只产生 VM 成本费用。
+若要在生产环境中运行轻型工作负荷（小于 4 核、小于 1 GB 内存、小于 10 GB/数据库），请使用免费授权的“SQL Server Express Edition”  。 SQL Server Express Edition VM 同样只产生 VM 成本费用。
 
 对于这些开发/测试和轻型生产工作负荷，还可通过选择与这些工作负荷相匹配的较小的 VM 大小来节省资金。 在某些情况下 DS1v2 可能是不错的选择。
 
@@ -61,11 +61,11 @@ ms.locfileid: "61477195"
 | Standard | 中小型工作负荷 |
 | Enterprise | 大型或任务关键型工作负荷|
 
-可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。
+可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。  
 
 ## <a name="pay-per-usage"></a>按使用情况付费
 
-“按使用情况支付 SQL Server 许可证费用”意味着 Azure VM 的每秒运行成本包括 SQL Server 许可证的费用。 有关不同 SQL Server 版本（Web、Standard 和 Enterprise）的定价，可参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 的 Azure VM 定价页。
+“按使用情况支付 SQL Server 许可证费用”意味着 Azure VM 的每秒运行成本包括 SQL Server 许可证的费用  。 有关不同 SQL Server 版本（Web、Standard 和 Enterprise）的定价，可参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 的 Azure VM 定价页。
 
 所有版本的 SQL Server（2012 SP3 到 2017）的费用相同。 每秒许可成本取决于 VM vCPU 的数量。
 
@@ -85,7 +85,7 @@ ms.locfileid: "61477195"
 | Ubuntu | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 Standard Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> 在 Azure 门户中创建 SQL Server 虚拟机时，“选择大小”窗口显示估算成本。 请务必注意，此估算成本仅仅是运行 VM 所产生的计算成本，以及任意 OS 许可成本（Windows 或第三方 Linux 操作系统）。
+> 在 Azure 门户中创建 SQL Server 虚拟机时，“选择大小”窗口显示估算成本。  请务必注意，此估算成本仅仅是运行 VM 所产生的计算成本，以及任意 OS 许可成本（Windows 或第三方 Linux 操作系统）。
 >
 > ![“选择 VM 大小”边栏选项卡](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
 >
@@ -96,10 +96,10 @@ ms.locfileid: "61477195"
 
 ## <a id="byol"></a> 自带许可证 (BYOL)
 
-“通过许可移动性使用自己的 SQL Server 许可证”（也称为**BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
+“通过许可移动性使用自己的 SQL Server 许可证”  （也称为**BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
 
 > [!IMPORTANT]
-> BYOL 映像需要具有软件保障的企业协议。 目前，它们未作为 Azure 云解决方案合作伙伴 (CSP) 的一部分提供。
+> BYOL 映像需要具有软件保障的企业协议。 目前，它们未作为 Azure 云解决方案合作伙伴 (CSP) 的一部分提供。 CSP 客户还可以通过将部署的即用即付映像，然后启用凭借自己的许可证[Azure 混合权益](virtual-machines-windows-sql-ahb.md)。
 
 > [!NOTE]
 > BYOL 映像目前仅适用于 Windows 虚拟机。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server。 请参阅 [Linux SQL VM 常见问题解答](../../linux/sql/sql-server-linux-faq.md)中的指导原则。
@@ -114,9 +114,9 @@ ms.locfileid: "61477195"
 
 | BYOL 权益 | 描述 |
 |-----|-----|
-| 节省费用 | 如果工作负荷将连续运行 SQL Server Standard 或 Enterprise 超过 10 个月，则自带 SQL Server 许可证比按使用情况付费更具成本效益。 |
-| 长期节省 | 通常，若购买或续订 SQL Server 许可证，前三年每年要便宜 30%。 此外，三年之后，无需再续订许可证，只需支付软件保障费用。 此时，它将便宜两倍。 |
-| 免费的被动辅助副本 | 自带许可证的另一项好处是每个 SQL Server [免费许可 1 个被动辅助副本](https://azure.microsoft.com/pricing/licensing-faq/)以实现高可用性。 这会高度可用的 SQL Server 部署（例如使用 Always On 可用性组）的许可成本减少了一半。 通过故障转移服务器软件保障权益，可享用被动辅助副本的运行权限。 |
+| 节省费用  | 如果工作负荷将连续运行 SQL Server Standard 或 Enterprise 超过 10 个月  ，则自带 SQL Server 许可证比按使用情况付费更具成本效益。 |
+| 长期节省  | 通常，若购买或续订 SQL Server 许可证，前三年每年要便宜 30%  。 此外，三年之后，无需再续订许可证，只需支付软件保障费用。 此时，它将便宜两倍  。 |
+| 免费的被动辅助副本  | 自带许可证的另一项好处是每个 SQL Server [免费许可 1 个被动辅助副本](https://azure.microsoft.com/pricing/licensing-faq/)以实现高可用性。 这会高度可用的 SQL Server 部署（例如使用 Always On 可用性组）的许可成本减少了一半。 通过故障转移服务器软件保障权益，可享用被动辅助副本的运行权限。 |
 
 若要使用上述某个自带许可证映像创建 SQL Server 2017 Azure VM，请参阅前缀为“{BYOL}”的 VM：
 

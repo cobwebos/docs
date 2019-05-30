@@ -4,16 +4,16 @@ description: 了解如何排查更新管理、更改跟踪和库存解决方案�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 16a03840f6bbf44853cf01e50189a194672d153e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8867912d98897a695c1e59ebd4177301230281bb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145150"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399760"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>排查加入解决方案时发生的错误
 
@@ -43,6 +43,24 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 请确保你有加入虚拟机所需的权限。 查看[加入计算机所需的权限](../automation-role-based-access-control.md#onboarding)并尝试重新加入解决方案。 如果收到错误`The solution cannot be enabled on this VM because the permission to read the workspace is missing`，确保您具有`Microsoft.OperationalInsights/workspaces/read`能够找到 VM 是否加入工作区的权限。
 
+### <a name="diagnostic-logging"></a>场景：载入失败并出现消息-诊断日志记录配置自动化帐户失败
+
+#### <a name="issue"></a>问题
+
+尝试将虚拟机加入解决方案时，你会收到以下消息：
+
+```error
+Failed to configure automation account for diagnostic logging
+```
+
+#### <a name="cause"></a>原因
+
+如果定价层与订阅的计费模型不匹配，则可以导致此错误。 有关详细信息，请参阅[监视使用情况和预估的成本在 Azure Monitor](http://aka.ms/PricingTierWarning)。
+
+#### <a name="resolution"></a>解决方法
+
+手动创建 Log Analytics 工作区并重复载入流程以选择创建的工作区。
+
 ### <a name="computer-group-query-format-error"></a>场景：ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>问题
@@ -55,7 +73,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="resolution"></a>解决方法
 
-可以删除对此解决方案的查询，重新载入解决方案，这会重新创建查询。 可以在你的工作区内找到此查询，它位于“保存的搜索”下。 查询名称是 **MicrosoftDefaultComputerGroup**，查询类别是与此查询关联的解决方案的名称。 如果启用了多个解决方案，则 **MicrosoftDefaultComputerGroup** 会在“保存的搜索”下显示多次。
+可以删除对此解决方案的查询，重新载入解决方案，这会重新创建查询。 可以在你的工作区内找到此查询，它位于“保存的搜索”下。  查询名称是 **MicrosoftDefaultComputerGroup**，查询类别是与此查询关联的解决方案的名称。 如果启用了多个解决方案，则 **MicrosoftDefaultComputerGroup** 会在“保存的搜索”下显示多次。 
 
 ### <a name="policy-violation"></a>场景：PolicyViolation
 
@@ -204,4 +222,4 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 

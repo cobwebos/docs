@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: 31c5feac577dc5e9e0eed9ced9ccfe25c12d3086
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1b36ed5197aeb056c70200a49e09cc777d66d0b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60310447"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237362"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>了解 Azure Service Fabric 中的定期备份配置
 
@@ -27,7 +27,7 @@ ms.locfileid: "60310447"
 
 1. **创建备份策略**：在此步骤中，根据需求创建一个或多个备份策略。
 
-2. **启用备份**：在此步骤中，将在“步骤 1”中创建的备份策略关联到所需的实体，即“应用程序”、“服务”或“分区”。
+2. **启用备份**：在此步骤中，将在“步骤 1”中创建的备份策略关联到所需的实体，即“应用程序”、“服务”或“分区”     。
 
 ## <a name="create-backup-policy"></a>创建备份策略
 
@@ -54,7 +54,7 @@ ms.locfileid: "60310447"
         ```
 
     2. **基于时间的备份计划**：如果需要在每天或每周的特定时间执行数据备份，应使用此计划类型。 计划频率类型可以是每日或每周。
-        1. **每日基于时间的备份计划**：如果需要在某天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Daily_，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 例如，`0001-01-01T18:00:00` 表示每天下午 6:00，忽略日期部分 _0001-01-01_。 下面的示例展示了在每天上午 9:00 和下午 6:00  点触发每日备份的配置。
+        1. **每日  基于时间的备份计划**：如果需要在某天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Daily_，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 例如，`0001-01-01T18:00:00` 表示每天下午 6:00  ，忽略日期部分 _0001-01-01_。 下面的示例展示了在每天上午 9:00  和下午 6:00  点触发每日备份的配置。
 
             ```json
             {
@@ -67,7 +67,7 @@ ms.locfileid: "60310447"
             }
             ```
 
-        2. **每周基于时间的备份计划**：如果需要在某天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Weekly_，将 `RunDays` 设置为需要触发备份的星期几的列表，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 要触发定期备份的星期几的列表。 下面的示例展示了从星期一到星期五在上午 9:00 和下午 6:00  点触发每日备份的配置。
+        2. **每周  基于时间的备份计划**：如果需要在某天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Weekly_，将 `RunDays` 设置为需要触发备份的星期几的列表，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 要触发定期备份的星期几的列表。 下面的示例展示了从星期一到星期五在上午 9:00  和下午 6:00  点触发每日备份的配置。
 
             ```json
             {
@@ -88,7 +88,7 @@ ms.locfileid: "60310447"
             ```
 
 * **备份存储**：指定要将备份上传到的位置。 存储可以是 Azure Blob 存储或文件共享。
-    1. **Azure blob 存储**：需要将生成的备份存储在 Azure 中时，应选择此存储类型。 “独立的”和“基于 Azure 的”群集都可以使用此存储类型。 描述此存储类型需要提供连接字符串和要将备份上传到的容器的名称。 如果具有指定名称的容器不可用，则在上传备份期间会创建该容器。
+    1. **Azure blob 存储**：需要将生成的备份存储在 Azure 中时，应选择此存储类型。 “独立的”  和“基于 Azure 的”  群集都可以使用此存储类型。 描述此存储类型需要提供连接字符串和要将备份上传到的容器的名称。 如果具有指定名称的容器不可用，则在上传备份期间会创建该容器。
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -98,8 +98,8 @@ ms.locfileid: "60310447"
         }
         ```
 
-    2. **文件共享**：需要将数据备份存储在本地时，应为独立的群集选择此存储类型。 描述此存储类型需要提供要将备份上传到的文件共享路径。 可以使用以下选项之一配置对文件共享的访问权限
-        1. _集成 Windows 身份验证_，这会将对文件共享的访问权限提供给属于 Service Fabric 群集的所有计算机。 在这种情况下，请设置以下字段来配置基于“文件共享”的备份存储。
+    2. **文件共享**：需要将数据备份存储在本地时，应为独立的  群集选择此存储类型。 描述此存储类型需要提供要将备份上传到的文件共享路径。 可以使用以下选项之一配置对文件共享的访问权限
+        1. _集成 Windows 身份验证_，这会将对文件共享的访问权限提供给属于 Service Fabric 群集的所有计算机。 在这种情况下，请设置以下字段来配置基于“文件共享”  的备份存储。
 
             ```json
             {
@@ -109,7 +109,7 @@ ms.locfileid: "60310447"
             }
             ```
 
-        2. _使用用户名和密码保护文件共享_，这会将对文件共享的访问权限提供给特定用户。 在指定文件共享存储时还可以指定辅助用户名和辅助密码来提供回退凭据，以防使用主用户名和主密码进行身份验证失败。 在这种情况下，请设置以下字段来配置基于“文件共享”的备份存储。
+        2. _使用用户名和密码保护文件共享_，这会将对文件共享的访问权限提供给特定用户。 在指定文件共享存储时还可以指定辅助用户名和辅助密码来提供回退凭据，以防使用主用户名和主密码进行身份验证失败。 在这种情况下，请设置以下字段来配置基于“文件共享”  的备份存储。
 
             ```json
             {
@@ -128,7 +128,7 @@ ms.locfileid: "60310447"
 >
 
 * **保留策略**：指定要在配置存储中保留备份的策略。 只支持基本保留策略。
-    1. **基本保留策略**：此保留策略允许通过删除不再需要的备份文件来确保最佳存储利用率。 可指定 `RetentionDuration` 来设置需要在存储中保留备份的时间跨度。 `MinimumNumberOfBackups` 是一个可选参数，可指定该参数以确保无论 `RetentionDuration` 如何始终保留指定数量的备份。 以下示例说明了要将备份保留 10 天的配置，并且不允许备份数量低于 20。
+    1. **基本保留策略**：此保留策略允许通过删除不再需要的备份文件来确保最佳存储利用率。 可指定 `RetentionDuration` 来设置需要在存储中保留备份的时间跨度。 `MinimumNumberOfBackups` 是一个可选参数，可指定该参数以确保无论 `RetentionDuration` 如何始终保留指定数量的备份。 以下示例说明了要将备份保留 10 天的配置，并且不允许备份数量低于 20   。
 
         ```json
         {
@@ -138,17 +138,14 @@ ms.locfileid: "60310447"
         }
         ```
 
-> [!IMPORTANT]
-> 由于运行时中的问题，请确保保留策略中的保留期配置为小于 24 天，否则将导致备份还原服务进入仲裁丢失后副本故障转移。
-
 ## <a name="enable-periodic-backup"></a>启用定期备份
-在定义备份策略来满足数据备份要求后，应当将备份策略与“应用程序”、“服务”或“分区”相关联。
+在定义备份策略来满足数据备份要求后，应当将备份策略与“应用程序”、“服务”或“分区”相关联。   
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>备份策略的分层传播
-在 Service Fabric 中，应用程序、服务和分区之间的关系是分层的，如[应用程序模型](./service-fabric-application-model.md)中所述。 备份策略可以与层次结构中的“应用程序”、“服务”或“分区”相关联。 备份策略将按层次结构传播到下一级别。 假设仅创建了一个备份策略并将其与某个“应用程序”相关联，则所有属于该应用程序的所有“可靠有状态服务”和 _Reliable Actors_ 的有状态分区都将使用该备份策略进行备份。 或者，如果该备份策略与某个“可靠有状态服务”相关联，则其所有分区都将使用该备份策略进行备份。
+在 Service Fabric 中，应用程序、服务和分区之间的关系是分层的，如[应用程序模型](./service-fabric-application-model.md)中所述。 备份策略可以与层次结构中的“应用程序”、“服务”或“分区”相关联。    备份策略将按层次结构传播到下一级别。 假设仅创建了一个备份策略并将其与某个“应用程序”  相关联，则所有属于该应用程序的所有“可靠有状态服务”  和 _Reliable Actors_ 的有状态分区  都将使用该备份策略进行备份。 或者，如果该备份策略与某个“可靠有状态服务”  相关联，则其所有分区都将使用该备份策略进行备份。
 
 ### <a name="overriding-backup-policy"></a>替代备份策略
-某些情况下，应用程序的大多数服务的数据备份要求使用相同的备份计划，但某些服务除外，这些服务要求数据备份使用频率更高的计划或者要求将备份存放到不同的存储帐户或文件共享。 为应对这样的情况，备份还原服务提供了相关机制来用于在服务和分区作用域内替代传播的策略。 当备份策略与“服务”或“分区”相关联时，它将替代所传播的任何备份策略。
+某些情况下，应用程序的大多数服务的数据备份要求使用相同的备份计划，但某些服务除外，这些服务要求数据备份使用频率更高的计划或者要求将备份存放到不同的存储帐户或文件共享。 为应对这样的情况，备份还原服务提供了相关机制来用于在服务和分区作用域内替代传播的策略。 当备份策略与“服务”  或“分区”  相关联时，它将替代所传播的任何备份策略。
 
 ### <a name="example"></a>示例
 
@@ -157,7 +154,7 @@ ms.locfileid: "60310447"
 假设这些应用程序的数据备份要求如下所述
 
 1. MyApp_A
-    1. 为属于应用程序的所有“可靠有状态服务”和 _Reliable Actors_ 的所有分区创建数据的每日备份。 将备份数据上传到位置 _BackupStore1_。
+    1. 为属于应用程序的所有“可靠有状态服务”  和 _Reliable Actors_ 的所有分区创建数据的每日备份。 将备份数据上传到位置 _BackupStore1_。
 
     2. 其中一个服务 _SvcA3_ 要求每小时进行数据备份。
 
@@ -170,7 +167,7 @@ ms.locfileid: "60310447"
 
 为解决这些数据备份要求，将创建备份策略 BP_1 到 BP_5 并启用备份，如下所述。
 1. MyApp_A
-    1. 创建备份策略 _BP_1_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API 为应用程序 _MyApp_A_ 启用此策略. 此操作为属于应用程序 _MyApp_A_ 的“可靠有状态服务”和 _Reliable Actors_ 的所有分区启用使用备份策略 _BP_1_ 的数据备份。
+    1. 创建备份策略 _BP_1_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API 为应用程序 _MyApp_A_ 启用此策略. 此操作为属于应用程序 _MyApp_A_ 的“可靠有状态服务”  和 _Reliable Actors_ 的所有分区启用使用备份策略 _BP_1_ 的数据备份。
 
     2. 创建备份策略 _BP_2_，使其采用基于频率的备份计划且将频率设置为 1 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API 为服务 _SvcA3_ 启用此策略。 此操作将使用显式启用的备份策略 _BP_2_ 为服务 _SvcA3_ 的所有分区替代传播的策略 _BP_1_，从而导致使用备份策略 _BP_2_ 为这些分区执行数据备份。
 
@@ -186,15 +183,15 @@ ms.locfileid: "60310447"
 ![Service Fabric 应用程序层次结构][0]
 
 ## <a name="disable-backup"></a>禁用备份
-不需要对数据进行备份时，可以禁用备份策略。 在“应用程序”上启用的备份策略只能在同一“应用程序”上使用[禁用应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API 进行禁用，在“服务”上启用的备份策略可以在同一“服务”上使用[禁用服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API 进行禁用，在“分区”上启用的备份策略可以在同一“分区”上使用[禁用分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API 进行禁用。
+不需要对数据进行备份时，可以禁用备份策略。 在“应用程序”  上启用的备份策略只能在同一“应用程序”  上使用[禁用应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API 进行禁用，在“服务”  上启用的备份策略可以在同一“服务”  上使用[禁用服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API 进行禁用，在“分区”  上启用的备份策略可以在同一“分区”  上使用[禁用分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API 进行禁用。
 
-* 为“应用程序”禁用备份策略将停止因为传播到可靠有状态分区或 Reliable Actors 分区的备份策略而发生的所有定期数据备份。
+* 为“应用程序”  禁用备份策略将停止因为传播到可靠有状态分区或 Reliable Actors 分区的备份策略而发生的所有定期数据备份。
 
-* 为“服务”禁用备份策略将停止因为传播到“服务”的分区的此备份策略而发生的所有定期数据备份。
+* 为“服务”  禁用备份策略将停止因为传播到“服务”的分区的此备份策略而发生的所有定期数据备份。 
 
-* 为“分区”禁用备份策略将停止因为分区处的备份策略而发生的所有定期数据备份。
+* 为“分区”  禁用备份策略将停止因为分区处的备份策略而发生的所有定期数据备份。
 
-* 禁用实体（应用程序/服务/分区）的备份时，可将 `CleanBackup` 设置为 true 以删除配置存储中的所有备份。
+* 禁用实体（应用程序/服务/分区）的备份时，可将 `CleanBackup` 设置为 true  以删除配置存储中的所有备份。
     ```json
     {
         "CleanBackup": true 
@@ -202,21 +199,21 @@ ms.locfileid: "60310447"
     ```
 
 ## <a name="suspend--resume-backup"></a>暂停和恢复备份
-某些情况下可能需要临时暂停定期数据备份。 在这种情况下，可以根据需要在“应用程序”、“服务”或“分区”上使用“暂停备份”API。 定期备份暂停将在应用程序层次结构的子树中从应用暂停的点开始向下传递。 
+某些情况下可能需要临时暂停定期数据备份。 在这种情况下，可以根据需要在“应用程序”、“服务”或“分区”上使用“暂停备份”API。    定期备份暂停将在应用程序层次结构的子树中从应用暂停的点开始向下传递。 
 
-* 当在某个“应用程序”上使用[暂停应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API 应用暂停时，此应用程序下的所有服务和分区都将暂停定期数据备份。
+* 当在某个“应用程序”  上使用[暂停应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API 应用暂停时，此应用程序下的所有服务和分区都将暂停定期数据备份。
 
-* 当在某个“服务”上使用[暂停服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API 应用暂停时，此服务下的所有分区都将暂停定期数据备份。
+* 当在某个“服务”  上使用[暂停服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API 应用暂停时，此服务下的所有分区都将暂停定期数据备份。
 
-* 当在某个“分区”上使用[暂停分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API 应用暂停时，此分区将暂停定期数据备份。
+* 当在某个“分区”  上使用[暂停分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API 应用暂停时，此分区将暂停定期数据备份。
 
-不再需要暂停时，可以使用各自的恢复备份 API 来恢复定期数据备份。 必须在暂停定期备份时所在的同一“应用程序”、“服务”或“分区”上进行恢复。
+不再需要暂停时，可以使用各自的恢复备份 API 来恢复定期数据备份。 必须在暂停定期备份时所在的同一“应用程序”、“服务”或“分区”上进行恢复。   
 
-* 如果暂停是在“应用程序”上应用的，则应当使用[恢复应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API 进行恢复。 
+* 如果暂停是在“应用程序”  上应用的，则应当使用[恢复应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API 进行恢复。 
 
-* 如果暂停是在“服务”上应用的，则应当使用[恢复服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 进行恢复。
+* 如果暂停是在“服务”  上应用的，则应当使用[恢复服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 进行恢复。
 
-* 如果暂停是在“分区”上应用的，则应当使用[恢复分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 进行恢复。
+* 如果暂停是在“分区”  上应用的，则应当使用[恢复分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 进行恢复。
 
 ### <a name="difference-between-suspend-and-disable-backups"></a>暂停备份与禁用备份之间的差异
 当特定的应用程序、服务或分区不再需要备份时，应当禁用备份。 用户可以在将“清理备份”参数设置为 true 的情况下调用“禁用备份”请求，这意味着所有现有备份也将被删除。 但是，暂停将用于以下场景：当用户希望暂时关闭备份时，例如，当本地磁盘已满或者上传备份由于已知的网络问题等而失败时。 
@@ -229,7 +226,7 @@ ms.locfileid: "60310447"
 当 Service Fabric 检测到分区丢失了数据时，它会对分区调用 `OnDataLossAsync` 接口方法并期望分区采取所需的操作来避免数据丢失。 在这种情况下，如果在分区上生效的备份策略将 `AutoRestoreOnDataLoss` 标志设置为 `true`，则将自动触发还原并使用此分区的最新可用备份。
 
 ## <a name="get-backup-configuration"></a>获取备份配置
-有单独的 API 可用来在“应用程序”、“服务”和“分区”作用域内获取备份配置信息。 这些 API 分别是[获取应用程序备份配置信息](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)、[获取服务备份配置信息](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)和[获取分区备份配置信息](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo)。 这些 API 主要返回适用的备份策略、备份策略应用于的作用域以及备份暂停详细信息。 下面是有关这些 API 的返回结果的简要说明。
+有单独的 API 可用来在“应用程序”、“服务”和“分区”作用域内获取备份配置信息。    这些 API 分别是[获取应用程序备份配置信息](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)、[获取服务备份配置信息](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)和[获取分区备份配置信息](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo)。 这些 API 主要返回适用的备份策略、备份策略应用于的作用域以及备份暂停详细信息。 下面是有关这些 API 的返回结果的简要说明。
 
 - 应用程序备份配置信息：提供在应用程序上应用的备份策略的详细信息，以及在属于该应用程序的服务和分区上被替代的所有策略。 它还包括应用程序及其服务和分区的暂停信息。
 
@@ -239,7 +236,7 @@ ms.locfileid: "60310447"
 
 ## <a name="list-available-backups"></a>列出可用备份
 
-可以使用“获取备份列表”API 列出可用备份。 此 API 调用的结果包括与备份存储上可用的所有备份相关的备份信息项，备份存储是在适用的备份策略中配置的。 提供了此 API 的不同变体，用以列出属于应用程序、服务或分区的可用备份。 这些 API 支持获取所有适用的分区的“最新”可用备份，也支持根据“开始日期”和“结束日期”来筛选备份。
+可以使用“获取备份列表”API 列出可用备份。 此 API 调用的结果包括与备份存储上可用的所有备份相关的备份信息项，备份存储是在适用的备份策略中配置的。 提供了此 API 的不同变体，用以列出属于应用程序、服务或分区的可用备份。 这些 API 支持获取所有适用的分区的“最新”  可用备份，也支持根据“开始日期”和“结束日期”来筛选备份。  
 
 这些 API 还支持对结果进行分页，当 _MaxResults_ 参数设置为非零正整数时，API 将返回最多 _MaxResults_ 个备份信息项。 如果可用的备份信息项多于 _MaxResults_ 值，则会返回一个继续标记。 可以使用有效的继续标记参数来获取下一组结果。 将有效的继续标记值传递给下一次 API 调用时，该 API 将返回下一组结果。 当返回了所有可用结果时，响应中将不包含继续标记。
 

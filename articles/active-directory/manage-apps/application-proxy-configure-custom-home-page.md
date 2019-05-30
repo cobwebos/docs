@@ -11,30 +11,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/23/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fa5c5638da390f4416afc9f4bd9c5d58c34cea8
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0f4e71bd7fd7e0ed9a220619995ba108fdccabe4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825578"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233749"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理为发布的应用设置自定义主页
 
-本文介绍如何配置应用以将用户引向自定义的主页上，可能会因它们是内部还是外部。 当发布具有应用程序代理的应用时，设置内部 URL，但有时候这不是用户应首先看到的页面。 设置自定义主页，以便用户在访问应用程序时获取正确的页面。 用户将看到自定义主页设置，而不考虑是否从 Azure Active Directory 访问面板或 Office 365 应用启动器访问应用。
+本文介绍如何配置应用以将用户引向自定义主页。 当发布具有应用程序代理的应用时，设置内部 URL，但有时候这不是用户应首先看到的页面。 设置自定义主页，以便用户在访问应用程序时获取正确的页面。 用户将看到自定义主页设置，而不考虑是否从 Azure Active Directory 访问面板或 Office 365 应用启动器访问应用。
 
 当用户启动应用时，他们会定向到已发布的应用的根域 URL 默认情况下。 登陆页通常设置为主页 URL。 使用 Azure AD PowerShell 模块来定义自定义主页 URL 时要应用用户登录到应用程序中的特定页面。
 
-下面的一种方案，介绍为什么您的公司将自定义主页和为什么会根据用户的类型不同：
+下面是一种方案，说明为何你的公司将自定义主页：
 
+- 在公司网络，用户将转到`https://ExpenseApp/login/login.aspx`登录并访问你的应用。
 - 由于你有其他资产 （如图像） 的应用程序代理需要访问的文件夹结构的顶层，发布应用程序与`https://ExpenseApp`作为内部 URL。
-- 但是，在公司网络，用户转到`https://ExpenseApp/login/login.aspx`登录并访问你的应用。
 - 默认外部 URL 是`https://ExpenseApp-contoso.msappproxy.net`，不会将外部用户到登录页。
-- 你想要设置`https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`作为外部主页 URL 相反，因此外部用户会看到登录页第一次。
+- 你想要设置`https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`为主页 URL 相反，因此外部用户会看到登录页第一次。
 
 >[!NOTE]
 >向用户提供对已发布应用的访问权限时，会在 [Azure AD 访问面板](../user-help/my-apps-portal-end-user-access.md)和 [Office 365 应用启动器](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)中显示这些应用。
@@ -49,21 +49,21 @@ ms.locfileid: "65825578"
 
 - 如果对发布的应用做了更改，这种更改可能会重置主页 URL 的值。 将来更新应用时，应该重新检查并根据需要更新主页 URL。
 
-你可以在外部或内部主页上通过 Azure 门户或使用 PowerShell。
+您可以设置主页 URL 通过 Azure 门户或使用 PowerShell。
 
 ## <a name="change-the-home-page-in-the-azure-portal"></a>更改 Azure 门户的主页
 
-若要更改你的应用通过 Azure AD 门户的外部和内部主页，请按照下列步骤：
+若要更改你的应用通过 Azure AD 门户的主页 URL，请按照下列步骤：
 
-1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。 在 Azure Active Directory 管理中心内的仪表板将出现。
-2. 在侧栏中选择**Azure Active Directory**。 Azure AD 概述页会显示。
-3. 在概述边栏中，选择**应用注册**。 显示已注册应用的列表。
-4. 从列表中选择您的应用程序。 将显示一个页面，显示已注册的应用的详细信息。
-5. 选择下的链接**重定向 Uri**，其中显示适用于 web 和公共客户端类型的重定向 Uri 的数量。 随即显示已注册的应用的身份验证页。
-6. 中的最后一行**重定向 Uri**表中，设置**类型**列**公共客户端 （移动和桌面）**，然后在**重定向 URI**列中，键入你想要使用的内部 URL。 新的空行如下所示刚刚修改的行。
-7. 在新行中，设置**类型**列与**Web**，然后在**重定向 URI**列中，键入你想要使用的外部 URL。
-8. 如果你想要删除任何现有的重定向 URI 行，选择**删除**每个不需要行旁边的图标 （垃圾回收会）。
-9. 选择“保存”。
+1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
+2. 选择**Azure Active Directory**，然后**应用注册**。 显示已注册应用的列表。
+3. 从列表中选择您的应用程序。 将显示一个页面，显示已注册的应用的详细信息。
+4. 下**管理**，选择**品牌**。
+5. 更新**主页 URL**使用新路径。
+
+   ![显示主页 URL 字段的已注册应用程序的品牌页](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
+ 
+6. 选择“保存”。 
 
 ## <a name="change-the-home-page-with-powershell"></a>使用 PowerShell 更改主页
 
@@ -87,7 +87,7 @@ ms.locfileid: "65825578"
 
     如果以非管理员身份运行该命令，请使用 `-scope currentuser` 选项。
 
-2. 在安装期间，请选择“Y”安装来自 Nuget.org 的两个包。这两个包是必需的。
+2. 在安装期间，请选择“Y”安装来自 Nuget.org 的两个包。  这两个包是必需的。
 
 ### <a name="find-the-objectid-of-the-app"></a>查找应用的 ObjectId
 

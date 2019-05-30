@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 82c438ea246ba18fa7dac2281d68a3ea7ba41db8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93b2cd3a2565b14ea07d6db6b14dd146e4223528
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60930194"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236918"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒体服务帐户的基于角色的访问控制 (RBAC)
 
@@ -43,6 +43,7 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 - [经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 - [什么是 Azure 资源的 RBAC？](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [使用 RBAC 管理访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
+- [媒体服务资源提供程序操作](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
 
 ## <a name="next-steps"></a>后续步骤
 

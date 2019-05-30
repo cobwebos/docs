@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5524576ef21830ae13526dad2d8ac8a1d0864cf1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 907cb598d708bfa26f53d2e43fef5456258c21b1
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956891"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393047"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML 单一登录对应用程序代理 （预览版） 的本地应用程序
 
@@ -50,14 +50,14 @@ SAML SSO 与应用程序代理也适用于 SAML 令牌加密功能。 有关详�
 1. 选择**SAML**作为单一登录方法。
 1. 在**设置了单一登录使用 SAML**页上，编辑**基本 SAML 配置**数据，并按照中的步骤[Enter 基本 SAML 配置](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on)若要配置基于 SAML 的应用程序的身份验证。
 
-   * 请确保**回复 URL**匹配或已下的路径**外部 URL**通过应用程序代理发布本地应用程序。 
-   * 如果应用程序需要不同**回复 URL** SAML 配置中，将其作为**其他**标记旁边的复选框列表中的 URL，以将其指定为主要**回复 URL**用于发送到 IDP 发起的 SAML 响应。
-   * 对于 SP 发起的流，请确保该应用程序还指定了正确**回复 URL**或断言使用者服务 URL，用于接收身份验证令牌。
+   * 请确保**回复 URL**匹配**外部 URL**通过应用程序代理发布或者是路径下的本地应用程序**外部 URL**。
+   * 为你的应用程序需要不同的 IDP 发起的流**回复 URL** SAML 配置中，将其作为**其他**标记旁边的复选框列表中要将其作为指定的 URL主**回复 URL**。
+   * 为 SP 启动的流，请确保后端应用程序指定的正确**回复 URL**或断言使用者服务 URL，用于接收身份验证令牌。
 
      ![输入基本 SAML 配置数据](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
     > [!NOTE]
-    > 如果后端应用程序期望**回复 URL**是内部 URL，你将需要在用户的设备上安装我的应用安全登录扩展。 此扩展会自动重定向到相应的应用程序代理服务。 若要安装扩展，请参阅[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)。
+    > 如果后端应用程序期望**回复 URL**是内部 URL，你将需要使用[自定义域](application-proxy-configure-custom-domain.md)以匹配的内部和外部 URL，或者安装我的应用安全登录扩展在用户的设备。 此扩展会自动重定向到相应的应用程序代理服务。 若要安装扩展，请参阅[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)。
 
 ## <a name="test-your-app"></a>测试应用
 

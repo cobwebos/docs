@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 186e0365ae8aee3b7f92fcc06142e4d0496ffd08
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 70de178df86a4b202298eda63b0f59cb7bc96281
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415461"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237837"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB SQL 语言参考 
 
@@ -43,7 +43,7 @@ SELECT <select_specification>
 -   [FROM 子句](#bk_from_clause)    
 -   [WHERE 子句](#bk_where_clause)    
 -   [ORDER BY 子句](#bk_orderby_clause)  
--   [偏移量的限制子句](#bk_offsetlimit_clause)
+-   [OFFSET LIMIT 子句](#bk_offsetlimit_clause)
 
   
 SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任一可选子句。 但是当使用可选子句时，它们必须按正确的顺序显示。  
@@ -56,7 +56,7 @@ SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任
 2.  [WHERE 子句](#bk_where_clause)  
 3.  [ORDER BY 子句](#bk_orderby_clause)  
 4.  [SELECT 子句](#bk_select_query)
-5.  [偏移量的限制子句](#bk_offsetlimit_clause)
+5.  [OFFSET LIMIT 子句](#bk_offsetlimit_clause)
 
 请注意，此顺序与语法中出现的顺序不同。 采用此排序是为了使已处理子句引入的所有新符号可见，并且可用于后来处理的字句中。 例如，在 WHERE 和 SELECT 子句中可访问在 FROM 子句中声明的别名。  
 
@@ -132,7 +132,7 @@ SELECT <select_specification>
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
-另请参阅  
+另请参阅   
   
 [标量表达式](#bk_scalar_expressions)  
 [SELECT 子句](#bk_select_query)  
@@ -238,7 +238,7 @@ FROM <from_specification>
   
  让每个源定义 `input_alias1, input_alias2, …, input_aliasN`。 此 FROM 子句将返回一组 N 元组（带有 N 个值的元组）。 每个元组拥有通过对它们相应的集遍历所有容器别名所产生的值。  
   
-示例 1 - 2 个源  
+示例 1 - 2 个源   
   
 - 让 `<from_source1>` 的范围为容器，并表示集 {A, B, C}。  
   
@@ -256,7 +256,7 @@ FROM <from_specification>
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-示例 2 - 3 个源  
+示例 2 - 3 个源   
   
 - 让 `<from_source1>` 的范围为容器，并表示集 {A, B, C}。  
   
@@ -283,7 +283,7 @@ FROM <from_specification>
   > [!NOTE]
   > `input_alias1` 和 `input_alias2` 的其他值缺少元组，`<from_source3>` 不对其返回任何值。  
   
-示例 3 - 3 个源  
+示例 3 - 3 个源   
   
 - 让 <from_source1> 的范围为容器，并表示集 {A, B, C}。  
   
@@ -357,15 +357,15 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   指定查询结合集要进行排序的属性或表达式。 列排序可指定为名称或属性的别名。  
+   指定查询结合集要进行排序的属性或表达式。 可将排序列指定为名称或属性别名。  
   
-   可以指定多个属性。 属性名称必须是唯一的。 ORDER BY 子句中的排序属性的序列定义的排序的结果集的组织。 即：结果集按第一个属性排序，然后该排序列表按第二个属性排序，依此类推。  
+   可以指定多个属性。 属性名称必须唯一。 ORDER BY 子句中排序属性的顺序定义了排序结果集的组织方式。 即：结果集按第一个属性排序，然后该排序列表按第二个属性排序，依此类推。  
   
-   在 ORDER BY 子句中引用的属性名称必须对应到选择列表中的任一属性或明确地在 FROM 子句中指定的集合中定义的属性。  
+   ORDER BY 子句中引用的属性名称必须与 select 列表中的某个属性或者与在 FROM 子句中指定的集合中定义的某个属性相对应，且不存在任何多义性。  
   
 - `<sort_expression>`  
   
-   指定一个或多个属性或对查询结果集进行排序所依据的表达式。  
+   指定一个或多个属性或表达式用作排序查询结果集的依据。  
   
 - `<scalar_expression>`  
   
@@ -377,12 +377,12 @@ ORDER BY <sort_specification>
   
   **注释**  
   
-   ORDER BY 子句需要索引策略，包括正在排序的字段的索引。 Azure Cosmos DB 查询运行时支持排序与属性名和不是针对计算的属性。 Azure Cosmos DB 支持多个 ORDER BY 属性。 若要运行查询具有多个 ORDER BY 属性，则应定义[组合索引](index-policy.md#composite-indexes)上正在排序的字段。
+   ORDER BY 子句要求索引策略包含所要排序的字段的索引。 Azure Cosmos DB 查询运行时支持根据属性名称排序，而不支持根据计算的属性排序。 Azure Cosmos DB 支持多个 ORDER BY 属性。 若要运行包含多个 ORDER BY 属性的查询，应在所要排序的字段中定义[组合索引](index-policy.md#composite-indexes)。
 
 
-##  <a name=bk_offsetlimit_clause></a> 偏移量的限制子句
+##  <a name=bk_offsetlimit_clause></a>OFFSET LIMIT 子句
 
-指定跳过的项目数和返回的项数。 有关示例，请参阅[偏移量的限制子句示例](how-to-sql-query.md#OffsetLimitClause)
+指定跳过的项数以及返回的项数。 有关示例，请参阅 [OFFSET LIMIT 子句示例](how-to-sql-query.md#OffsetLimitClause)
   
  **语法**  
   
@@ -394,16 +394,16 @@ OFFSET <offset_amount> LIMIT <limit_amount>
  
 - `<offset_amount>`
 
-   指定查询结果应跳过的项的整数数目。
+   指定查询结果应跳过的项数（整数）。
 
 
 - `<limit_amount>`
   
-   指定查询结果中应包含的项的整数数目
+   指定查询结果应包含的项数（整数）
 
   **注释**  
   
-  偏移量的限制子句中需要的偏移量计数和限制计数。 如果可选的`ORDER BY`子句使用时，结果集生成的执行跳过操作的有序的值。 否则，查询将返回值的固定的顺序。
+  必须在 OFFSET LIMIT 子句中同时指定 OFFSET 计数和 LIMIT 计数。 如果使用可选的 `ORDER BY` 子句，将会通过跳过排序值来生成结果集。 否则，查询将返回固定顺序的值。
 
 ##  <a name="bk_scalar_expressions"></a> 标量表达式  
  标量表达式是符号和运算符的组合，经计算后可获得单个值。 简单表达式可以是常数、属性引用、数组元素引用、别名引用或函数调用。 简单表达式可以使用运算符组合成复杂的表达式。 有关示例，请参阅[标量表达式示例](how-to-sql-query.md#scalar-expressions)
@@ -448,11 +448,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 - `input_alias`  
   
    表示由 `FROM` 子句引入，由 `input_alias` 定义的值。  
-  该值不得是“未定义”–输入中的“未定义”值将被跳过。  
+  该值不得是“未定义”  –输入中的“未定义”值将被跳过  。  
   
 - `<scalar_expression>.property_name`  
   
-   表示对象的属性值。 如果属性不存在或对非对象的值引用属性，则表达式的求值结果为“未定义”值。  
+   表示对象的属性值。 如果属性不存在或对非对象的值引用属性，则表达式的求值结果为“未定义”值  。  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
@@ -496,57 +496,57 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
   创建对象时，将跳过任何已分配未定义值的属性，并且在创建的对象中不包含该属性。  
   
-  创建数组时，将跳过任何已分配“未定义”值的元素值，并且在创建的对象中不包含该值。 这将导致下一个定义的元素取代该值时，创建的数组将不含跳过的索引。  
+  创建数组时，将跳过任何已分配“未定义”值  的元素值，并且在创建的对象中不包含该值。 这将导致下一个定义的元素取代该值时，创建的数组将不含跳过的索引。  
   
 ##  <a name="bk_operators"></a> 运算符  
  本部分将介绍受支持的运算符。 每个运算符都恰好可以被分配给一个类别。  
   
- 有关处理“未定义”值、输入值的类型要求和处理类型不匹配的值的详细信息，请参阅下方的“运算符类别”表。  
+ 有关处理“未定义”值  、输入值的类型要求和处理类型不匹配的值的详细信息，请参阅下方的“运算符类别”  表。  
   
- 运算符类别：  
+ 运算符类别：   
   
 |**类别**|**详细信息**|  
 |-|-|  
-|算术|运算符要求输入为数字。 输出也应为数字。 如果输入为“未定义”或键入数字外的其他值，则结果为“未定义”。|  
-|位|运算符要求输入为 32 位带符号整数。 输出也应为 32 位带符号整数。<br /><br /> 任何非整数值将进行舍入。 正值将向下舍入，负值向上舍入。<br /><br /> 任何超出 32 位整数范围的值都将通过采用最后 32 位的二的补数表示法进行转换。<br /><br /> 如果输入为“未定义”或键入数字外的其他值，则结果为“未定义”。<br /><br /> **注意：** 上述行为与 JavaScript 位运算符的行为兼容。|  
-|逻辑|运算符要求输入为布尔值。 输出也应为布尔值。<br />如果输入“未定义”或键入布尔值外的其他值，则结果为“未定义”。|  
-|**比较**|运算符要求输入的类型应该相同并且不是未定义。 输出应为布尔值。<br /><br /> 如果输入为“未定义”或输入为其他类型，则结果为“未定义”。<br /><br /> 有关值排序的详细信息，请参阅“对要比较的值进行排序”表。|  
-|**string**|运算符要求输入为字符串。 输出也应为字符串。<br />如果输入为“未定义”或键入字符串外的其他值，则结果为“未定义”。|  
+|算术 |运算符要求输入为数字。 输出也应为数字。 如果输入为“未定义”  或键入数字外的其他值，则结果为“未定义”  。|  
+|位 |运算符要求输入为 32 位带符号整数。 输出也应为 32 位带符号整数。<br /><br /> 任何非整数值将进行舍入。 正值将向下舍入，负值向上舍入。<br /><br /> 任何超出 32 位整数范围的值都将通过采用最后 32 位的二的补数表示法进行转换。<br /><br /> 如果输入为“未定义”  或键入数字外的其他值，则结果为“未定义”  。<br /><br /> **注意：** 上述行为与 JavaScript 位运算符的行为兼容。|  
+|逻辑 |运算符要求输入为布尔值。 输出也应为布尔值。<br />如果输入“未定义”  或键入布尔值外的其他值，则结果为“未定义”  。|  
+|**比较**|运算符要求输入的类型应该相同并且不是未定义。 输出应为布尔值。<br /><br /> 如果输入为“未定义”  或输入为其他类型，则结果为“未定义”  。<br /><br /> 有关值排序的详细信息，请参阅“对要比较的值进行排序”表  。|  
+|**string**|运算符要求输入为字符串。 输出也应为字符串。<br />如果输入为“未定义”  或键入字符串外的其他值，则结果为“未定义”  。|  
   
- 一元运算符：  
+ 一元运算符：   
   
-|**名称**|运算符|**详细信息**|  
+|**名称**|运算符 |**详细信息**|  
 |-|-|-|  
-|算术|+<br /><br /> -|返回数字值。<br /><br /> 位求反。 返回求反后的数字值。|  
-|位|~|一的补数。 返回数字值的补数。|  
-|逻辑|**NOT**|求反。 返回求反后的布尔值。|  
+|算术 |+<br /><br /> -|返回数字值。<br /><br /> 位求反。 返回求反后的数字值。|  
+|位 |~|一的补数。 返回数字值的补数。|  
+|逻辑 |**NOT**|求反。 返回求反后的布尔值。|  
   
- 二进制运算符：  
+ 二进制运算符：   
   
-|**名称**|运算符|**详细信息**|  
+|**名称**|运算符 |**详细信息**|  
 |-|-|-|  
-|算术|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加。<br /><br /> 减。<br /><br /> 乘。<br /><br /> 除。<br /><br /> 取模。|  
-|位|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|位或。<br /><br /> 位与。<br /><br /> 位异或。<br /><br /> 左移。<br /><br /> 右移。<br /><br /> 补零右移。|  
-|逻辑|**AND**<br /><br /> **OR**|逻辑与。 如果两个参数都为 true，则返回 true，否则返回 false。<br /><br /> 逻辑或运算。 如果任何参数为 true，则返回 true，否则返回 false。|  
-|比较|**=**<br /><br /> !=, <><br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> ??|等于。 如果参数为等于，则返回 "true"，否则返回 "false"。<br /><br /> 不等于。 如果参数为不等于，则返回 "true"，否则返回 "false"。<br /><br /> 大于。 如果第一个参数大于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 大于等于。 如果第一个参数大于或等于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 小于。 如果第一个参数小于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 小于等于。 如果第一个参数小于或等于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 联合。 如果第一个参数是“未定义”值，则返回第二个参数。|  
+|算术 |+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加。<br /><br /> 减。<br /><br /> 乘。<br /><br /> 除。<br /><br /> 取模。|  
+|位 |&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|位或。<br /><br /> 位与。<br /><br /> 位异或。<br /><br /> 左移。<br /><br /> 右移。<br /><br /> 补零右移。|  
+|逻辑 |**AND**<br /><br /> **OR**|逻辑与。 如果两个参数都为 true，则返回 true，否则返回 false。   <br /><br /> 逻辑或运算。 如果任何参数为 true，则返回 true，否则返回 false    。|  
+|比较 |**=**<br /><br /> !=, <> <br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> ?? |等于。 如果参数为等于，则返回 "true"  ，否则返回 "false"  。<br /><br /> 不等于。 如果参数为不等于，则返回 "true"  ，否则返回 "false"  。<br /><br /> 大于。 如果第一个参数大于第二个参数，则返回 "true"  ，否则返回 "false"  。<br /><br /> 大于等于。 如果第一个参数大于或等于第二个参数，则返回 "true"  ，否则返回 "false"  。<br /><br /> 小于。 如果第一个参数小于第二个参数，则返回 "true"  ，否则返回 "false"  。<br /><br /> 小于等于。 如果第一个参数小于或等于第二个参数，则返回 "true"  ，否则返回 "false"  。<br /><br /> 联合。 如果第一个参数是“未定义”值  ，则返回第二个参数。|  
 |**字符串**|**&#124;&#124;**|串联。 返回两个参数的串联。|  
   
- 三元运算符：  
+ 三元运算符：   
 
-|**名称**|运算符|**详细信息**| 
+|**名称**|运算符 |**详细信息**| 
 |-|-|-|  
-|三元运算符|?|如果第一个参数求值的结果为 "true"，则返回第二个参数；否则返回第三个参数。|  
+|三元运算符|?|如果第一个参数求值的结果为 "true"  ，则返回第二个参数；否则返回第三个参数。|  
 
   
- 对要比较的值进行排序  
+ 对要比较的值进行排序   
   
-|**类型**|值顺序|  
+|**类型**|值顺序 |  
 |-|-|  
-|未定义|不可比较。|  
-|Null|单个值：null|  
-|**Number**|自然实数。<br /><br /> 负无穷大值小于任何其他数字值。<br /><br /> 正无穷大值大于任何其他数字值。NaN 值不可比较。 与 NaN 进行比较将产生“未定义”值。|  
+|未定义 |不可比较。|  
+|Null |单个值：null |  
+|**Number**|自然实数。<br /><br /> 负无穷大值小于任何其他数字值。<br /><br /> 正无穷大值大于任何其他数字值。NaN  值不可比较。 与 NaN  进行比较将产生“未定义”值  。|  
 |**String**|字典顺序。|  
-|数组|不排序，但可以相等。|  
+|数组 |不排序，但可以相等。|  
 |**Object**|不排序，但可以相等。|  
   
  **注释**  
@@ -566,17 +566,17 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 ##  <a name="bk_constants"></a> 常量  
  常数也称为文本值或标量值，是表示特定数据值的符号。 常数的格式取决于它代表的值的数据类型。  
   
- 受支持的标量数据类型：  
+ 受支持的标量数据类型：   
   
-|类型|值顺序|  
+|类型 |值顺序 |  
 |-|-|  
-|未定义|单个值：未定义|  
-|**Null**|单个值：null|  
-|布尔值|值："false"、"true"。|  
+|未定义 |单个值：未定义 |  
+|**Null**|单个值：null |  
+|布尔值 |值："false"、"true"   。|  
 |**数字**|双精度浮点数，IEEE 754 标准。|  
-|字符串|零个或多个 Unicode 字符序列。 字符串必须用单引号或双引号括起来。|  
-|数组|零个或多个元素序列。 每个元素可以是任何标量数据类型的值，未定义除外。|  
-|**对象**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外。|  
+|字符串 |零个或多个 Unicode 字符序列。 字符串必须用单引号或双引号括起来。|  
+|数组 |零个或多个元素序列。 每个元素可以是任何标量数据类型的值，未定义除外。|  
+|**对象**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外  。|  
   
  **语法**  
   
@@ -616,7 +616,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
 * `<null_constant>; null`  
   
-  表示 Null 类型的 null 值。  
+  表示 Null 类型的 null 值   。  
   
 * `<boolean_constant>`  
   
@@ -624,11 +624,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
 * `false`  
   
-  表示 Boolean 类型的 false 值。  
+  表示 Boolean 类型的 false 值  。  
   
 * `true`  
   
-  表示 Boolean 类型的 true 值。  
+  表示 Boolean 类型的 true 值  。  
   
 * `<number_constant>`  
   
@@ -676,7 +676,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
 - 文档路径表达式代表任何可从引用的数据库容器识别文档中常量路径的表达式。  
   
-  文档路径表达式  
+  文档路径表达式   
   
   文档路径表达式代表属性或数组索引器评估者在数据库容器文档中的一个文档当中的路径。 此路径可用于直接在数据库容器中的文档内识别筛选器中引用的值的位置。  
   
@@ -692,7 +692,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
      下表描述的约定用于说明以下 SQL 引用中的语法。  
   
-    |约定|用途|  
+    |约定 |用途 |  
     |-|-|    
     |大写|不区分大小写的关键字。|  
     |小写|区分大小写的关键字。|  
@@ -716,7 +716,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 |[类型检查函数](#bk_type_checking_functions)|类型检查函数允许检查 SQL 查询内表达式的类型。|  
 |[字符串函数](#bk_string_functions)|该字符串函数对字符串输入值执行操作，并返回字符串、数值或布尔值。|  
 |[数组函数](#bk_array_functions)|该数组函数对数组输入值执行操作，并返回数值、布尔值或数组值。|
-|[日期和时间函数](#bk_date_and_time_functions)|日期和时间函数，您可以在两个窗体; 中获取当前的 UTC 日期和时间其值是以毫秒为单位或作为一个字符串，它符合 ISO 8601 格式的 Unix epoch 数字时间戳。|
+|[日期和时间函数](#bk_date_and_time_functions)|使用日期和时间函数可以获取采用以下两种格式的当前 UTC 日期和时间：一个时间戳，其值为以毫秒为单位的 Unix 纪元；一个符合 ISO 8601 格式的字符串。|
 |[空间函数](#bk_spatial_functions)|该空间函数对控件对象输入值执行操作，并返回数值或布尔值。|  
   
 ###  <a name="bk_mathematical_functions"></a> 数学函数  
@@ -748,7 +748,7 @@ ABS (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -781,7 +781,7 @@ ACOS(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -814,7 +814,7 @@ ASIN(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -847,7 +847,7 @@ ATAN(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -880,7 +880,7 @@ ATN2(<numeric_expression>, <numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -913,7 +913,7 @@ CEILING (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -946,7 +946,7 @@ COS(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -979,7 +979,7 @@ COT(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1012,7 +1012,7 @@ DEGREES (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1045,7 +1045,7 @@ FLOOR (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1078,15 +1078,15 @@ EXP (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个数值表达式。  
   
   **注释**  
   
-  常数 e  (2.718281…) 是自然对数的底数。  
+  常数 e  (2.718281…) 是自然对数的底数  。  
   
-  某个数为指数表示常数 e 自乘的次数为该数。 例如 EXP(1.0) = e^1.0 = 2.71828182845905，EXP(10) = e^10 = 22026.4657948067。  
+  某个数为指数表示常数 e 自乘的次数为该数  。 例如 EXP(1.0) = e^1.0 = 2.71828182845905，EXP(10) = e^10 = 22026.4657948067。  
   
   某个数的自然对数的指数就是该数本身：EXP (LOG (n)) = n。 并且某个数的指数的自然对数也是该数本身：LOG (EXP (n)) = n。  
   
@@ -1135,7 +1135,7 @@ LOG (<numeric_expression> [, <base>])
   
    设置对数底数的可选数值参数。  
   
-  返回类型  
+  返回类型   
   
   返回一个数值表达式。  
   
@@ -1143,7 +1143,7 @@ LOG (<numeric_expression> [, <base>])
   
   默认情况下，LOG() 返回自然对数。 可以使用可选底数参数将对数的底数改为另一个值。  
   
-  自然对数是以 e 为底数的对数，其中 e 是一个约等于2.718281828 的无理数常数。  
+  自然对数是以 e 为底数的对数  ，其中 e 是一个约等于2.718281828 的无理数常数  。  
   
   某个数的指数的自然对数也是该数本身：LOG( EXP( n ) ) = n。 并且某个数的自然对数的指数就是该数本身：EXP( LOG( n ) ) = n。  
   
@@ -1188,7 +1188,7 @@ LOG10 (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个数值表达式。  
   
@@ -1225,7 +1225,7 @@ PI ()
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1295,7 +1295,7 @@ RADIANS (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1334,7 +1334,7 @@ ROUND(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个数值表达式。  
   
@@ -1378,7 +1378,7 @@ SIGN(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1411,7 +1411,7 @@ SIN(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1444,7 +1444,7 @@ SQRT(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1477,7 +1477,7 @@ SQUARE(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1510,7 +1510,7 @@ TAN (<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1543,7 +1543,7 @@ TRUNC(<numeric_expression>)
   
    是一个数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -1585,7 +1585,7 @@ IS_ARRAY(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -1625,7 +1625,7 @@ IS_BOOL(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -1665,7 +1665,7 @@ IS_DEFINED(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -1698,7 +1698,7 @@ IS_NULL(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -1738,7 +1738,7 @@ IS_NUMBER(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -1778,7 +1778,7 @@ IS_OBJECT(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -1818,7 +1818,7 @@ IS_PRIMITIVE(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -1858,7 +1858,7 @@ IS_STRING(<expression>)
   
    为任何有效的表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -1912,7 +1912,7 @@ CONCAT(<str_expr>, <str_expr> [, <str_expr>])
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -1945,7 +1945,7 @@ CONTAINS(<str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -1978,7 +1978,7 @@ ENDSWITH(<str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -2011,7 +2011,7 @@ INDEX_OF(<str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -2048,7 +2048,7 @@ LEFT(<str_expr>, <num_expr>)
   
    为任何有效的数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2081,7 +2081,7 @@ LENGTH(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2114,7 +2114,7 @@ LOWER(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2148,7 +2148,7 @@ LTRIM(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2181,7 +2181,7 @@ REPLACE(<str_expr>, <str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2221,7 +2221,7 @@ REPLICATE(<str_expr>, <num_expr>)
   > [!NOTE]
   > 结果的最大长度为 10,000 个字符，即 (length(str_expr)  *  num_expr) <= 10,000。
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2254,7 +2254,7 @@ REVERSE(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2291,7 +2291,7 @@ RIGHT(<str_expr>, <num_expr>)
   
    为任何有效的数值表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2324,7 +2324,7 @@ RTRIM(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2357,7 +2357,7 @@ STARTSWITH(<str_expr>, <str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -2390,7 +2390,7 @@ StringToArray(<expr>)
   
    是否会将任何有效的标量表达式作为 JSON 数组表达式来计算？ 请注意，嵌套字符串值必须使用双引号编写，否则无效。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)
   
-  返回类型  
+  返回类型   
   
   返回一个数组表达式或未定义的表达式。  
   
@@ -2465,7 +2465,7 @@ StringToBoolean(<expr>)
   
    是否会将任何有效的标量表达式作为布尔表达式来计算？  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式或未定义的表达式。  
   
@@ -2538,7 +2538,7 @@ StringToNull(<expr>)
   
    是否会将任何有效的标量表达式作为 Null 表达式来计算？
   
-  返回类型  
+  返回类型   
   
   返回一个 Null 表达式或未定义的表达式。  
   
@@ -2610,7 +2610,7 @@ StringToNumber(<expr>)
   
    是否会将任何有效的标量表达式作为 JSON 数字表达式来计算？ JSON 中的数字必须是整数或浮点数。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
   
-  返回类型  
+  返回类型   
   
   返回一个数字表达式或未定义的表达式。  
   
@@ -2680,7 +2680,7 @@ StringToObject(<expr>)
   
    是否会将任何有效的标量表达式作为 JSON 对象表达式来计算？ 请注意，嵌套字符串值必须使用双引号编写，否则无效。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
   
-  返回类型  
+  返回类型   
   
   返回一个对象表达式或未定义的表达式。  
   
@@ -2775,7 +2775,7 @@ SUBSTRING(<str_expr>, <num_expr>, <num_expr>)
   
    是表示开始和结束字符的任何有效数字表达式。    
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2807,7 +2807,7 @@ ToString(<expr>)
   
    为任何有效的标量表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2889,7 +2889,7 @@ TRIM(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2921,7 +2921,7 @@ UPPER(<str_expr>)
   
    为任何有效的字符串表达式。  
   
-  返回类型  
+  返回类型   
   
   返回字符串表达式。  
   
@@ -2962,7 +2962,7 @@ ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])
   
    为任何有效的数组表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数组表达式。  
   
@@ -3003,7 +3003,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
    为任何布尔表达式。 如果将其设置为“true”，并且指定的搜索值是对象，则该命令将检查部分匹配（搜索对象是其中一个对象的子集）。 如果将其设置为“false”，则该命令将检查数组中所有对象的完全匹配。 如果未指定，默认值为“false”。 
   
-  返回类型  
+  返回类型   
   
   返回一个布尔值。  
   
@@ -3057,7 +3057,7 @@ ARRAY_LENGTH(<arr_expr>)
   
    为任何有效的数组表达式。  
   
-  返回类型  
+  返回类型   
   
   返回数值表达式。  
   
@@ -3098,7 +3098,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
 
    结果数组中的最大元素数。    
 
-  返回类型  
+  返回类型   
   
   返回数组表达式。  
   
@@ -3133,14 +3133,14 @@ SELECT
 ```  
 
 ###  <a name="bk_date_and_time_functions"></a> 日期和时间函数
- 以下标量函数，您可以在两个窗体; 中获取当前的 UTC 日期和时间其值是以毫秒为单位或作为一个字符串，它符合 ISO 8601 格式的 Unix epoch 数字时间戳。 
+ 使用以下标量函数可以获取采用以下两种格式的当前 UTC 日期和时间：一个时间戳，其值为以毫秒为单位的 Unix 纪元；一个符合 ISO 8601 格式的字符串。 
 
 |||
 |-|-|
 |[GetCurrentDateTime](#bk_get_current_date_time)|[GetCurrentTimestamp](#bk_get_current_timestamp)||
 
 ####  <a name="bk_get_current_date_time"></a> GetCurrentDateTime
- 返回当前 UTC 日期和时间以 ISO 8601 字符串形式。
+ 以 ISO 8601 字符串形式返回当前 UTC 日期和时间。
   
  **语法**
   
@@ -3148,35 +3148,35 @@ SELECT
 GetCurrentDateTime ()
 ```
   
-  返回类型
+  返回类型 
   
-  返回当前 UTC 日期和时间 ISO 8601 字符串值。 
+  以 ISO 8601 字符串值形式返回当前 UTC 日期和时间。 
 
-  这表示格式 YYYY MM DDThh:mm:ss.sssZ 其中：
+  此值以 YYYY-MM-DDThh:mm:ss.sssZ 格式表示，其中：
   
   |||
   |-|-|
-  |YYYY|四位数年份|
-  |MM|两位数月份 (01 = 年 1 月，等等。)|
-  |DD|两位数日期的月份 (01 到 31 之间)|
-  |T|开始时元素为 signifier|
-  |hh|两位数小时 (00 到 23)|
-  |mm|两位数分钟 (00 到 59)|
-  |ss|两位数秒数 (从 00 到 59)|
-  |.sss|三位数字的秒的小数部分|
-  |Z|UTC （协调世界时） 指示符||
+  |YYYY|四位数的年份|
+  |MM|两位数的月份（01 = 1 月，依此类推。）|
+  |DD|两位数的月份日期（01 到 31）|
+  |T|时间元素开头的符号|
+  |hh|两位数小时（00 到 23）|
+  |mm|两位数分钟（00 到 59）|
+  |ss|两位数秒（00 到 59）|
+  |.sss|三位数的秒小数部分|
+  |Z|UTC（协调世界时）指示符||
   
-  有关 ISO 8601 格式的更多详细信息，请参阅[ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+  有关 ISO 8601 格式的更多详细信息，请参阅 [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
   **注释**
 
-  GetCurrentDateTime 是非确定性函数。 
+  GetCurrentDateTime 是非确定性的函数。 
   
-  返回的结果是 UTC （协调世界时）。
+  返回的结果采用 UTC（协调世界时）格式。
 
   **示例**  
   
-  下面的示例演示如何获取当前 UTC 日期时间使用 GetCurrentDateTime 内置函数。
+  以下示例演示如何使用 GetCurrentDateTime 内置函数获取当前 UTC 日期时间。
   
 ```  
 SELECT GetCurrentDateTime() AS currentUtcDateTime
@@ -3191,7 +3191,7 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 ```  
 
 ####  <a name="bk_get_current_timestamp"></a> GetCurrentTimestamp
- 返回 00:00:00 星期四，1 1970 年 1 月起经过的毫秒的数。 
+ 返回自 1970 年 1 月 1 日星期四 00:00:00 开始消逝的毫秒数。 
   
  **语法**  
   
@@ -3199,19 +3199,19 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 GetCurrentTimestamp ()  
 ```  
   
-  返回类型  
+  返回类型   
   
-  返回数值的当前已经过自 Unix epoch 起经过即 00:00:00 星期四，1 1970 年 1 月起经过的毫秒数的毫秒数。
+  返回一个数字值，表示自 Unix 纪元开始消逝的秒数，即自 1970 年 1 月 1 日星期四 00:00:00 开始消逝的毫秒数。
 
   **注释**
 
-  GetCurrentTimestamp 是非确定性函数。 
+  GetCurrentTimestamp 是非确定性的函数。 
   
-  返回的结果是 UTC （协调世界时）。
+  返回的结果采用 UTC（协调世界时）格式。
 
   **示例**  
   
-  下面的示例演示如何获取使用 GetCurrentTimestamp 内置函数的当前时间戳。
+  以下示例演示如何使用 GetCurrentTimestamp 内置函数获取当前时间戳。
   
 ```  
 SELECT GetCurrentTimestamp() AS currentUtcTimestamp
@@ -3248,7 +3248,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
    为任何有效的 GeoJSON 点、多边形或 LineString 对象表达式。  
   
-  返回类型  
+  返回类型   
   
   返回包含距离的数值表达式。 默认参考系统以米为单位表示。  
   
@@ -3289,7 +3289,7 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
    为任何有效的 GeoJSON 点、多边形或 LineString 对象表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔值。  
   
@@ -3331,7 +3331,7 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
    为任何有效的 GeoJSON 点、多边形或 LineString 对象表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔值。  
   
@@ -3369,7 +3369,7 @@ ST_ISVALID(<spatial_expr>)
   
    为任何有效的 GeoJSON 点、多边形或 LineString 表达式。  
   
-  返回类型  
+  返回类型   
   
   返回一个布尔表达式。  
   
@@ -3406,7 +3406,7 @@ ST_ISVALIDDETAILED(<spatial_expr>)
   
    任何有效的 GeoJSON 点或多边形表达式。  
   
-  返回类型  
+  返回类型   
   
   如果指定的 GeoJSON 点或多边形表达式有效，则返回包含布尔值的 JSON 值；如果无效，则额外添加原因作为字符串值。  
   

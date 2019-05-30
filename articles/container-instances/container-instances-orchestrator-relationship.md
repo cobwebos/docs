@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a1e3c2facc10b68fe4b33d4cd0531f181b1e813
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df9c3ecbec6dccd9ba8db2b375cfab3276005098
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581108"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072987"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器
 
@@ -56,7 +56,7 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 ## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>示例实现：Azure Kubernetes 服务 (AKS) 的虚拟节点
 
-可以使用在 Azure 容器实例中动态创建的虚拟节点，来快速缩放 [Azure Kubernetes 服务](../aks/intro-kubernetes.md) (AKS) 群集中的应用程序工作负载。 虚拟节点当前处于预览阶段，ACI 和 AKS 群集中运行的 Pod 可以借助它进行网络通信。 
+可以使用在 Azure 容器实例中动态创建的虚拟节点，来快速缩放 [Azure Kubernetes 服务](../aks/intro-kubernetes.md) (AKS) 群集中的应用程序工作负载。  ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 
 
 目前虚拟节点支持 Linux 容器实例。 可通过 [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) 或 [Azure门户](https://go.microsoft.com/fwlink/?linkid=2047545)开始使用虚拟节点。
 

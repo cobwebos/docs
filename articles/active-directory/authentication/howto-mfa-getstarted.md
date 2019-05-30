@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ca69fc23d580b61e74fe56b3d0c3524fdfad747
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359296"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235536"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>规划基于云的 Azure 多重身份验证
+# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>规划基于云的 Azure 多重身份验证部署
 
 用户要连接到组织中日益复杂的方案的资源。 从组织所拥有、 个人、 和公共设备打开和关闭使用智能手机、 平板电脑、 Pc 和便携式计算机，通常在多个平台上的公司网络连接的人员。 在这个始终连接、 多设备和多平台的世界，用户帐户的安全性是比以往更加重要。 无论其复杂性，跨设备、 网络和平台使用的密码，将不再不足以确保用户帐户的安全性，尤其是当用户往往会重复使用跨帐户的密码。 复杂的网络钓鱼和其他社交工程攻击可能导致在用户名和密码正在跨暗网上销售以及发布。
 
@@ -48,7 +48,7 @@ Microsoft 提供了[通信模板](https://aka.ms/mfatemplates)并[最终用户�
 
 ## <a name="deployment-considerations"></a>部署注意事项
 
-Azure 多重身份验证被部署的强制实施条件性访问策略。 一个[条件性访问策略](../conditional-access/overview.md)可以要求用户执行多重身份验证，如满足某些条件时：
+Azure 多重身份验证被部署的强制要求使用条件性访问策略。 一个[条件性访问策略](../conditional-access/overview.md)可以要求用户执行多重身份验证，如满足某些条件时：
 
 * 所有用户、 特定用户、 组或已分配角色的成员
 * 要访问特定的云应用程序
@@ -60,14 +60,12 @@ Azure 多重身份验证被部署的强制实施条件性访问策略。 一个[
 * 合规的设备
 * 混合 Azure AD 加入设备
 * 批准的客户端应用程序
- 
 
-使用 [多重身份验证推出材料] 中的可自定义的海报和电子邮件模板以向你的组织推出多重身份验证。 (https://www.microsoft.com/en-us/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)
+使用可自定义的海报和电子邮件中的模板[多重身份验证推出材料](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)以向你的组织推出多重身份验证。
 
 ## <a name="enable-multi-factor-authentication-with-conditional-access"></a>结合条件访问启用多重身份验证
 
 条件性访问策略强制注册，需取消注册的用户完成在首次登录，重要的安全注意事项的注册。
-
 
 [Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md)参与的注册策略以及向 Azure 多重身份验证情景的自动的风险检测和修正策略。 策略可以创建以遭到入侵的标识的威胁时强制更改密码或要求登录被视为有风险由以下时使用 MFA[事件](../reports-monitoring/concept-risk-events.md):
 
@@ -97,7 +95,7 @@ Azure 多重身份验证被部署的强制实施条件性访问策略。 一个[
       2. 指定的 IP 范围
    2. 如果使用的国家/地区
       1. 展开下拉列表菜单并选择国家/地区或你想要为此命名位置定义的区域。
-      2. 决定是否包含未知的区域。 未知区域是指无法映射到某国家/地区的 IP 地址。
+      2. 决定是否包含未知的区域。 未知的区域是不能映射到某个国家/地区的 IP 地址。
 7. 单击“创建” 
 
 ## <a name="plan-authentication-methods"></a>规划身份验证方法
@@ -117,7 +115,7 @@ Microsoft Authenticator 应用之类的移动应用会生成新的 OATH 验证�
 
 ### <a name="call-to-phone"></a>拨打电话
 
-自动的语音呼叫放置到用户。 用户接听电话和按下**#** 在电话键盘上批准身份验证。 电话呼叫是从移动应用通知还是验证码的出色备份方法。
+自动的语音呼叫放置到用户。 用户接听电话和按下 **#** 在电话键盘上批准身份验证。 电话呼叫是从移动应用通知还是验证码的出色备份方法。
 
 ### <a name="text-message-to-phone"></a>向手机发送短信
 
@@ -125,17 +123,17 @@ Microsoft Authenticator 应用之类的移动应用会生成新的 OATH 验证�
 
 ### <a name="choose-verification-options"></a>选择验证选项
 
-1. 浏览至“Azure Active Directory”、“用户”、“多重身份验证”。
+1. 浏览至“Azure Active Directory”  、“用户”  、“多重身份验证”  。
 
    ![从 Azure 门户中的“Azure AD 用户”边栏选项卡访问“多重身份验证”门户](media/howto-mfa-getstarted/users-mfa.png)
 
-1. 在打开的新选项卡中，浏览至“服务设置”。
-1. 在“验证选项”下，选中可供用户使用的方法旁的所有框。
+1. 在打开的新选项卡中，浏览至“服务设置”  。
+1. 在“验证选项”下，选中可供用户使用的方法旁的所有框  。
 
    ![在多重身份验证服务设置选项卡中配置验证方法](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
-1. 单击“保存” 。
-1. 关闭“服务设置”选项卡。
+1. 单击“保存”  。
+1. 关闭“服务设置”选项卡  。
 
 ## <a name="plan-registration-policy"></a>计划注册策略
 
@@ -145,13 +143,13 @@ Microsoft Authenticator 应用之类的移动应用会生成新的 OATH 验证�
 
 如果你的组织使用 Azure Active Directory Identity Protection[配置 MFA 注册策略](../identity-protection/howto-mfa-policy.md)以提示用户注册他们在下次登录的时以交互方式。
 
-### <a name="registration-without-identity-protection"></a>注册而无需标识保护
+### <a name="registration-without-identity-protection"></a>注册不受标识保护
 
 如果你的组织没有启用 Identity Protection 许可证，会提示用户注册登录时需要进行 MFA 的下一次。 如果它们不使用应用程序使用 MFA 保护，用户可能未注册 mfa。 请务必获取的所有用户注册，以便猜出用户的密码并代表他们注册 MFA 不良参与方不能有效地执行控制的帐户。
 
 #### <a name="enforcing-registration"></a>强制注册
 
-使用以下步骤的条件性访问策略可以强制用户注册多重身份验证
+使用以下步骤条件性访问策略可以强制用户注册多重身份验证
 
 1. 创建一个组添加当前未注册的所有用户。
 2. 使用条件性访问，强制实施多重身份验证为此组的所有资源的访问权限。
@@ -171,36 +169,102 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Ob
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>从每个用户的 MFA 条件性访问的 convert 用户基于 MFA
+
+如果你的用户已启用使用每个用户启用并强制执行的 Azure 多重身份验证的以下 PowerShell 可帮助你做出转换为条件性访问基于 Azure 多重身份验证。
+
+```PowerShell
+# Disable MFA for all users, keeping their MFA methods intact
+Get-MsolUser -All | Disable-MFA -KeepMethods
+
+# Enforce MFA for all users
+Get-MsolUser -All | Set-MfaState -State Enforced
+
+# Wrapper to disable MFA with the option to keep the MFA
+# methods (to avoid having to proof-up again later)
+function Disable-Mfa {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipeline=$True)]
+        $User,
+        [switch] $KeepMethods
+    )
+
+    Process {
+
+        Write-Verbose ("Disabling MFA for user '{0}'" -f $User.UserPrincipalName)
+        $User | Set-MfaState -State Disabled
+
+        if ($KeepMethods) {
+            # Restore the MFA methods which got cleared when disabling MFA
+            Set-MsolUser -ObjectId $User.ObjectId `
+                         -StrongAuthenticationMethods $User.StrongAuthenticationMethods
+        }
+    }
+}
+
+# Sets the MFA requirement state
+function Set-MfaState {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $ObjectId,
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $UserPrincipalName,
+        [ValidateSet("Disabled","Enabled","Enforced")]
+        $State
+    )
+
+    Process {
+        Write-Verbose ("Setting MFA state for user '{0}' to '{1}'." -f $ObjectId, $State)
+        $Requirements = @()
+        if ($State -ne "Disabled") {
+            $Requirement =
+                [Microsoft.Online.Administration.StrongAuthenticationRequirement]::new()
+            $Requirement.RelyingParty = "*"
+            $Requirement.State = $State
+            $Requirements += $Requirement
+        }
+
+        Set-MsolUser -ObjectId $ObjectId -UserPrincipalName $UserPrincipalName `
+                     -StrongAuthenticationRequirements $Requirements
+    }
+}
+
+```
+
 ## <a name="plan-conditional-access-policies"></a>计划条件性访问策略
 
-若要计划条件性访问策略，这将确定 MFA 和其他控件需要时，请参阅[什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)。
+若要计划条件性访问策略，这将确定 MFA 和其他控件需要时，请参阅[什么是 Azure Active Directory 中条件访问？](../conditional-access/overview.md)。
 
 非常重要，阻止无意中被你的 Azure AD 租户。 您可以减轻此意外丧失管理访问权限由[在你的租户中创建两个或多个紧急访问帐户](../users-groups-roles/directory-emergency-access.md)和条件访问策略中排除它们。
 
-### <a name="create-conditional-access-policy"></a>创建条件访问策略
+### <a name="create-conditional-access-policy"></a>创建条件性访问策略
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**Azure Active Directory**，**条件性访问**。
-1. 选择“新策略”。
+1. 选择“新策略”  。
 1. 为策略提供一个有意义的名称。
-1. 在“用户和组”下：
-   * 在“包括”选项卡上，选中“所有用户”单选按钮
+1. 在“用户和组”下  ：
+   * 在“包括”选项卡上，选中“所有用户”单选按钮  
    * 上**排除**选项卡上，选中的复选框**用户和组**选择紧急访问帐户。
-   * 单击“完成”。
-1. 在“云应用”下，选中“所有云应用”单选按钮。
-   * 可选：在“排除”选项卡上，选择组织不需要对其执行 MFA 的云应用。
-   * 单击“完成”。
-1. 在“条件”部分下：
+   * 单击“完成”  。
+1. 在“云应用”下，选中“所有云应用”单选按钮   。
+   * 可选：在“排除”选项卡上，选择组织不需要对其执行 MFA 的云应用。 
+   * 单击“完成”  。
+1. 在“条件”部分下  ：
    * 可选：如果已启用 Azure Identity Protection，则可以选择在实施该策略的过程中评估登录风险。
    * 可选：如果已配置受信任的位置或命名的位置，则可以指定在策略中包括或排除这些位置。
-1. 在“授予”下，确保选中“授权访问”单选按钮。
-    * 选中“要求多重身份验证”复选框。
-    * 单击“选择”。
-1. 跳过“会话”部分。
-1. 将“启用策略”开关设置为“开”。
+1. 在“授予”下，确保选中“授权访问”单选按钮   。
+    * 选中“要求多重身份验证”复选框  。
+    * 单击“选择”  。
+1. 跳过“会话”  部分。
+1. 将“启用策略”  开关设置为“开”  。
 1. 单击**创建**。
 
-![创建条件访问策略，为试验组中的 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+![创建条件性访问策略来为试点组中的 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
 ## <a name="plan-integration-with-on-premises-systems"></a>计划与在本地系统的集成
 
@@ -210,7 +274,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 * 本地 RADIUS 的应用程序，将需要使用 MFA 适配器与 NPS 服务器。
 * 本地 AD FS 应用程序，将需要与 AD FS 2016 使用 MFA 适配器。
 
-直接与 Azure AD 进行身份验证和新式身份验证 （WS 联合身份验证、 SAML、 OAuth、 OpenID Connect） 的应用程序可发出直接使用的条件性访问策略。
+直接与 Azure AD 进行身份验证和新式身份验证 （WS 联合身份验证、 SAML、 OAuth、 OpenID Connect） 的应用程序可以使用条件性访问策略直接。
 
 ### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>使用 Azure MFA 与 Azure AD 应用程序代理
 
@@ -227,7 +291,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 * 使用 CHAPv2 协议，支持仅身份验证器应用程序推送通知和语音呼叫。
 * 不能应用条件性访问策略。
 
-NPS 扩展充当 RADIUS 和基于云的 Azure MFA 提供身份验证的第二个因素，以保护之间的适配器[VPN](howto-mfa-nps-extension-vpn.md)，[远程桌面网关连接](howto-mfa-nps-extension-rdg.md)，或其他 RADIUS 支持应用程序。 用户在此环境中的注册 Azure MFA 将面对所有身份验证尝试的难题，条件性访问策略平均值 MFA 缺乏始终是必需的。
+NPS 扩展充当 RADIUS 和基于云的 Azure MFA 提供身份验证的第二个因素，以保护之间的适配器[VPN](howto-mfa-nps-extension-vpn.md)，[远程桌面网关连接](howto-mfa-nps-extension-rdg.md)，或其他 RADIUS 支持应用程序。 用户在此环境中的注册 Azure MFA 将面对的所有身份验证尝试，条件性访问策略缺乏难题意味着 MFA 始终是必需的。
 
 #### <a name="implementing-your-nps-server"></a>实现您的 NPS 服务器
 

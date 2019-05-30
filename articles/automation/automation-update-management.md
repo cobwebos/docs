@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/29/2019
+ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b92083b78971ab00f87e073ba7f4944a6f828daf
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 885c5266e80114b54007d05d2220fbf5ea5ab84e
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991639"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397638"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -52,7 +52,7 @@ ms.locfileid: "65991639"
 > [!NOTE]
 > 若要正确地向服务进行报告，更新管理要求启用某些 URL 和端口。 若要了解有关这些要求的详细信息，请参阅[混合辅助角色的网络规划](automation-hybrid-runbook-worker.md#network-planning)。
 
-可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。
+可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。  只有必需的更新会包括在部署范围内。
 
 在计划的部署定义通过显式指定计算机或通过选择接收适用更新目标计算机[计算机组](../azure-monitor/platform/computer-groups.md)基于日志搜索的一组特定的计算机，或[Azure 查询](#azure-machines)，它动态地选择基于指定条件的 Azure Vm。 这些组是从不同[作用域配置](../azure-monitor/insights/solution-targeting.md)，仅用于确定哪些计算机获取启用此解决方案的管理包。 
 
@@ -115,7 +115,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 
 启用此解决方案以后，任何直接连接到 Log Analytics 工作区的 Windows 计算机都会自动配置为混合 Runbook 辅助角色，为此解决方案中包括的 Runbook 提供支持。
 
-此解决方案管理的每台 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。 解决方案使用命名约定 *Hostname FQDN_GUID*。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试使用它们，它们将失败。 这些组仅用于为管理解决方案提供支持。
+此解决方案管理的每台 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。   解决方案使用命名约定 *Hostname FQDN_GUID*。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试使用它们，它们将失败。 这些组仅用于为管理解决方案提供支持。
 
 如果为解决方案和混合 Runbook 辅助角色组成员身份使用同一帐户，则可以将 Windows 计算机添加到自动化帐户中的混合 Runbook 辅助角色组来为自动化 Runbook 提供支持。 此功能是在 7.2.12024.0 版本的混合 Runbook 辅助角色中添加的。
 
@@ -164,18 +164,18 @@ Heartbeat
 
 在 Windows 计算机上，可以查看以下信息来验证代理与 Azure Monitor 日志连接：
 
-1. 在控制面板中，打开 **Microsoft Monitoring Agent**。 在“Azure Log Analytics”选项卡上，代理会显示以下消息：“Microsoft Monitoring Agent 已成功连接到 Log Analytics。”
-2. 打开“Windows 事件日志”。 转到“应用程序和服务日志\Operations Manager”，搜索来自“服务连接器”源的事件 ID 3000 和事件 ID 5002。 这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
+1. 在控制面板中，打开 **Microsoft Monitoring Agent**。 在“Azure Log Analytics”  选项卡上，代理会显示以下消息：“Microsoft Monitoring Agent 已成功连接到 Log Analytics。” 
+2. 打开“Windows 事件日志”。 转到“应用程序和服务日志\Operations Manager”，搜索来自“服务连接器”源的事件 ID 3000 和事件 ID 5002。   这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
 
 如果代理无法与通信 Azure Monitor 日志和代理配置为通过防火墙或代理服务器与 internet 进行通信，请确认防火墙或代理服务器已正确配置。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)。
 
 > [!NOTE]
-> 如果 Linux 系统配置为与代理或 Log Analytics 网关通信，并且你将载入此解决方案，请使用以下命令更新 proxy.conf 权限来向 omiuser 组授予对文件的读取权限：
+> 如果 Linux 系统配置为与代理或 Log Analytics 网关通信，并且你将载入此解决方案，请使用以下命令更新 proxy.conf  权限来向 omiuser 组授予对文件的读取权限：
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
-执行评估后，新添加的 Linux 代理会显示状态“已更新”。 此过程可能需要长达 6 小时的时间。
+执行评估后，新添加的 Linux 代理会显示状态“已更新”。  此过程可能需要长达 6 小时的时间。
 
 若要确认 Operations Manager 管理组是否正在与 Azure Monitor 日志通信，请参阅[验证 Operations Manager 与 Azure Monitor 日志集成](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)。
 
@@ -187,9 +187,9 @@ Heartbeat
 
 | 连接的源 | 支持 | 描述 |
 | --- | --- | --- |
-| Windows 代理 |“是” |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
-| Linux 代理 |“是” |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
-| Operations Manager 管理组 |“是” |该解决方案从已连接的管理组中的代理收集有关系统更新的信息。<br/>从 Operations Manager 代理直接连接到 Azure Monitor 日志不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
+| Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
+| Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
+| Operations Manager 管理组 |是 |该解决方案从已连接的管理组中的代理收集有关系统更新的信息。<br/>从 Operations Manager 代理直接连接到 Azure Monitor 日志不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
 
 ### <a name="collection-frequency"></a>收集频率
 
@@ -203,17 +203,17 @@ Heartbeat
 
 ## <a name="viewing-update-assessments"></a>查看更新评估
 
-在自动化帐户中，选择“更新管理”来查看计算机的状态。
+在自动化帐户中，选择“更新管理”来查看计算机的状态。 
 
-此视图提供有关计算机、缺少的更新、更新部署和计划的更新部署的信息。 在“符合性”列中，可以看到计算机的最后评估时间。 在“更新代理准备”列中，可以看到更新代理的运行状况。 如果有问题，请选择相应链接来转到疑难解答文档，以帮助你了解可以采用什么步骤来更正问题。
+此视图提供有关计算机、缺少的更新、更新部署和计划的更新部署的信息。 在“符合性”  列中，可以看到计算机的最后评估时间。 在“更新代理准备”  列中，可以看到更新代理的运行状况。 如果有问题，请选择相应链接来转到疑难解答文档，以帮助你了解可以采用什么步骤来更正问题。
 
-若要运行日志搜索来返回有关计算机、更新或部署的信息，请在列表中选择相应的项。 此时将打开“日志搜索”窗格，其中显示了针对所选项的查询。
+若要运行日志搜索来返回有关计算机、更新或部署的信息，请在列表中选择相应的项。 此时将打开“日志搜索”窗格，其中显示了针对所选项的查询。 
 
 ![更新管理默认视图](media/automation-update-management/update-management-view.png)
 
 ## <a name="install-updates"></a>安装更新
 
-对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 若要创建更新部署，必须具有到自动化帐户的写访问权限和写入访问权限，并针对部署中的任何 Azure Vm。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要了解有关计算机组的详细信息，请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
+对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”  安装必需的更新。 若要创建更新部署，必须具有到自动化帐户的写访问权限和写入访问权限，并针对部署中的任何 Azure Vm。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要了解有关计算机组的详细信息，请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
 
 在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。 不会反映对组所做的后续更改。 若要解决这种用法[动态组](#using-dynamic-groups)，这些组在部署时解析和为 Azure Vm 或非 Azure Vm 的已保存的搜索查询定义。
 
@@ -224,16 +224,16 @@ Heartbeat
 
 基于 Azure 市场中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机注册为访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。 对于任何其他 Linux 发行版，必须按照其支持的方法从发行版联机文件存储库对其进行更新。
 
-若要创建新的更新部署，请选择“计划更新部署”。 **新的更新部署**页随即打开。 为下表中介绍的属性输入值，然后单击“创建”：
+若要创建新的更新部署，请选择“计划更新部署”  。 **新的更新部署**页随即打开。 为下表中介绍的属性输入值，然后单击“创建”  ：
 
 | 属性 | 描述 |
 | --- | --- |
 | 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
 | 若要更新的组 |适用于 Azure 机定义的订阅、 资源组、 位置和标记来生成要在部署中包含的 Azure Vm 的动态组组合所基于的查询。 </br></br>对于非 Azure 计算机，选择现有的已保存搜索以选择要包括在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
-| 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
+| 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示   。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
 |更新分类|选择所需的所有更新分类|
-|包括/排除更新|这将打开“包括/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior) |
+|包括/排除更新|这将打开“包括/排除”  页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior) |
 |计划设置|选择启动时间，然后选择任“一次”或“重复”|
 | 前脚本 + 后脚本|选择要在部署前和部署后运行的脚本|
 | 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，且不能大于 6 小时 |
@@ -258,11 +258,11 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 ## <a name="view-missing-updates"></a>查看缺少的更新
 
-选择“缺少的更新”可查看计算机中缺少的更新列表。 每个更新都会列出，并且可供选择。 将显示有关需要更新的计算机数和操作系统的信息，以及指向更多信息的链接。 “日志搜索”窗格显示有关更新的更多详细信息。
+选择“缺少的更新”可查看计算机中缺少的更新列表。  每个更新都会列出，并且可供选择。 将显示有关需要更新的计算机数和操作系统的信息，以及指向更多信息的链接。 “日志搜索”  窗格显示有关更新的更多详细信息。
 
 ## <a name="view-update-deployments"></a>查看更新部署
 
-选择“更新部署”选项卡可查看现有更新部署的列表。 选择表中的任一更新部署会打开该更新部署的“更新部署运行”窗格。
+选择“更新部署”  选项卡可查看现有更新部署的列表。 选择表中的任一更新部署会打开该更新部署的“更新部署运行”窗格。  作业日志最长可存储 30 天。
 
 ![更新部署结果的概述](./media/automation-update-management/update-deployment-run.png)
 
@@ -280,7 +280,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 |安全更新     | 产品特定、安全相关问题的更新。        |
 |更新汇总     | 一起打包以便于部署的一组累积修补程序。        |
 |功能包     | 在产品版本以外发布的新产品功能。        |
-|Service Pack     | 应用于应用程序的一组累积修补程序。        |
+|服务包     | 应用于应用程序的一组累积修补程序。        |
 |定义更新     | 对病毒或其他定义文件的更新。        |
 |工具     | 可帮助完成一个或多个任务的实用工具或功能。        |
 |更新     | 对当前已安装的应用程序或文件的更新。        |
@@ -306,7 +306,7 @@ sudo yum -q --security check-update
 
 ### <a name="pre-download-updates"></a>预下载更新
 
-若要在组策略中自动配置下载更新，可以将“[配置自动更新设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5)”设置为 **3**。 将在后台下载所需的更新，但不会安装它们。 这让更新管理可以始终控制计划，但允许在更新管理维护时段外下载更新。 这可阻止更新管理中出现“已超过维护时段”错误。
+若要在组策略中自动配置下载更新，可以将“[配置自动更新设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5)”设置为 **3**。 将在后台下载所需的更新，但不会安装它们。 这让更新管理可以始终控制计划，但允许在更新管理维护时段外下载更新。 这可阻止更新管理中出现“已超过维护时段”  错误。
 
 此外，还可以使用 PowerShell 进行相关设置，在要自动下载更新的系统上运行 PowerShell。
 
@@ -345,7 +345,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 更新管理特别需要以下地址。 与以下地址的通信通过端口 443 进行。
 
-|Azure Public  |Azure 政府  |
+|Azure Public  |Azure Government   |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
@@ -588,7 +588,7 @@ Update
 
 ![选择组](./media/automation-update-management/select-groups.png)
 
-若要预览动态组的结果，请单击“预览”按钮。 那时此预览将显示组成员身份，在此示例中，我们要搜索标记“Role”等于“BackendServer”的计算机。 如果多台计算机已添加此标记，会针对该组将它们添加到任何未来部署中。
+若要预览动态组的结果，请单击“预览”  按钮。 那时此预览将显示组成员身份，在此示例中，我们要搜索标记“Role”  等于“BackendServer”  的计算机。 如果多台计算机已添加此标记，会针对该组将它们添加到任何未来部署中。
 
 ![预览组](./media/automation-update-management/preview-groups.png)
 
@@ -618,7 +618,7 @@ Update
 
 在某些 Linux 版本（例如 Red Hat Enterprise Linux）中，可以通过包执行 OS 级别的升级。 这可能会导致运行更新管理并更改 OS 版本号。 由于更新管理使用相同的方法来更新管理员将在 Linux 计算机本地使用的包，因此，此行为是有意实施的。
 
-若要避免通过更新管理运行来更新 OS 版本，可以使用“排除”功能。
+若要避免通过更新管理运行来更新 OS 版本，可以使用“排除”功能。 
 
 在 Red Hat Enterprise Linux 中，要排除的包名称为 redhat-release-server.x86_64。
 
@@ -632,13 +632,13 @@ Update
 
 但是，更新管理仍可能报告该计算机不合规，因为其中包含有关更新的其他信息。
 
-按更新分类部署更新在 CentOS 上无法现成地运行。 若要为 CentOS 正确部署更新，请选择所有分类以确保应用更新。 对于 SUSE，如果首先需要与 zypper（包管理器）或其依赖项相关的安全更新，则仅选择“其他更新”作为分类可能会导致同时安装某些安全更新。 此行为是 zypper 的一项限制。 某些情况下，可能需要重新运行更新部署。 若要验证，请检查更新日志。
+按更新分类部署更新在 CentOS 上无法现成地运行。 若要为 CentOS 正确部署更新，请选择所有分类以确保应用更新。 对于 SUSE，如果首先需要与 zypper（包管理器）或其依赖项相关的安全更新，则仅  选择“其他更新”作为分类可能会导致同时安装某些安全更新。 此行为是 zypper 的一项限制。 某些情况下，可能需要重新运行更新部署。 若要验证，请检查更新日志。
 
 ## <a name="remove-a-vm-from-update-management"></a>从更新管理中删除 VM
 
 从更新管理中删除 VM：
 
-* 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下。
+* 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下  。
 * 删除 [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 或 [适用于 Linux 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>后续步骤

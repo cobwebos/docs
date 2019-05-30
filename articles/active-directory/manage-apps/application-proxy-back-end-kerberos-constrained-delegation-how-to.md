@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c95eb45d75a54af75fdc8004316bc8bfeeddbd7e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0cfaea53156b78fad024046bb6f55229f8ad6536
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783938"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236269"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -91,15 +91,15 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
    ![KCD 配置不正确的错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-在事件日志中看到的相应条目显示为事件 13019 或 12027。 在“应用程序和服务日志”&gt;“Microsoft”&gt;“AadApplicationProxy”&gt;“连接器”&gt;“管理员”中找到连接器事件日志。
+在事件日志中看到的相应条目显示为事件 13019 或 12027。 在“应用程序和服务日志”  &gt;“Microsoft”  &gt;“AadApplicationProxy”  &gt;“连接器”  &gt;“管理员”  中找到连接器事件日志。
 
    ![应用程序代理事件日志中的事件 13019](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
    ![应用程序代理事件日志中的事件 12027](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic5.png)
 
-1.   将内部 DNS 中的 A 记录用于应用程序地址，而非 CName。
+1.   将内部 DNS 中的 A 记录用于应用程序地址，而非 CName   。
 
-2.   再次确认已向连接器主机授予对指定目标帐户 SPN 进行委托的权利。 再次确认已选择“使用任意身份验证协议”。 有关详细信息，请参阅 [SSO 配置文章](application-proxy-configure-single-sign-on-with-kcd.md)。
+2.   再次确认已向连接器主机授予对指定目标帐户 SPN 进行委托的权利。 再次确认已选择“使用任意身份验证协议”  。 有关详细信息，请参阅 [SSO 配置文章](application-proxy-configure-single-sign-on-with-kcd.md)。
 
 3.   验证 Azure AD 中是否只存在一个 SPN 实例。 在任何域成员主机上的命令提示符处发出 `setspn -x`。
 
@@ -112,24 +112,24 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 ### <a name="target-application"></a>目标应用程序 
 连接器提供的 Kerberos 票证的使用者。 在此阶段，预期连接器已将 Kerberos 服务票证发送到后端。 此票证是第一个应用程序请求中的标头。
 
-1.   通过使用门户中定义的应用程序内部 URL，验证该应用程序可从连接器主机上的浏览器直接访问。 然后就可以成功登录。 有关详细信息可在连接器“故障排除”页上找到。
+1.   通过使用门户中定义的应用程序内部 URL，验证该应用程序可从连接器主机上的浏览器直接访问。 然后就可以成功登录。 有关详细信息可在连接器“故障排除”页上找到  。
 
 2.   还是在连接器主机上，确认浏览器和应用程序之间的身份验证在使用 Kerberos。 请采取以下任一措施：
 
-3.  在 Internet Explorer 中运行开发人员工具（“F12”），或从连接器主机上使用 [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/)。 使用内部 URL 转到应用程序。 检查在应用程序的响应中是否返回了提供的 WWW 授权标头，以确保存在 negotiate 或 Kerberos。 
+3.  在 Internet Explorer 中运行开发人员工具（“F12”  ），或从连接器主机上使用 [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/)。 使用内部 URL 转到应用程序。 检查在应用程序的响应中是否返回了提供的 WWW 授权标头，以确保存在 negotiate 或 Kerberos。 
 
-    - 在从浏览器到应用程序的响应中返回的下一个 Kerberos Blob 以“YII”开头。 这些字母表示 Kerberos 正在运行。 另一方面，Microsoft NT LAN 管理器 (NTLM) 总是以“TlRMTVNTUAAB”开头，通过 Base64 解码后读作 NTLM 安全支持提供程序 (NTLMSSP)。 如果在 Blob 的开头看到“TlRMTVNTUAAB”，则该 Kerberos 不可用。 如果未看到“TlRMTVNTUAAB”，则 Kerberos 有可能可用。
+    - 在从浏览器到应用程序的响应中返回的下一个 Kerberos Blob 以“YII”开头  。 这些字母表示 Kerberos 正在运行。 另一方面，Microsoft NT LAN 管理器 (NTLM) 总是以“TlRMTVNTUAAB”开头，通过 Base64 解码后读作 NTLM 安全支持提供程序 (NTLMSSP)  。 如果在 Blob 的开头看到“TlRMTVNTUAAB”，则该 Kerberos 不可用  。 如果未看到“TlRMTVNTUAAB”，则 Kerberos 有可能可用  。
    
        > [!NOTE]
        > 如果使用 Fiddler，则此方法需要暂时禁用针对 IIS 中的应用程序配置的扩展保护。
       
       ![浏览器网络检查窗口](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
    
-    - 此图中的 Blob 不以“TIRMTVNTUAAB”开头。 因此，在此示例中，Kerberos 可用，并且 Kerberos Blob 不以“YII”开头。
+    - 此图中的 Blob 不以“TIRMTVNTUAAB”开头  。 因此，在此示例中，Kerberos 可用，并且 Kerberos Blob 不以“YII”开头  。
 
 4.  将 NTLM 暂时从 IIS 站点上的提供程序列表中删除。 直接从连接器主机上的 Internet Explorer 访问应用。 NTLM 不再存在于提供程序列表中。 只可通过使用 Kerberos 来访问应用程序。 如果访问失败，则应用程序的配置可能出现了问题。 Kerberos 身份验证运行不正常。
 
-    - 如果 Kerberos 不可用，请检查 IIS 中应用程序的身份验证设置。 确保“Negotiate”列在顶部，NTLM 在其下方。 如果看到“Not Negotiate”、“Kerberos 或 Negotiate”或“PKU2U”，只要 Kerberos 正常运行，则继续操作。
+    - 如果 Kerberos 不可用，请检查 IIS 中应用程序的身份验证设置。 确保“Negotiate”列在顶部，NTLM 在其下方  。 如果看到“Not Negotiate”、“Kerberos 或 Negotiate”或“PKU2U”，只要 Kerberos 正常运行，则继续操作    。
 
        ![Windows 身份验证提供程序](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    
@@ -153,11 +153,11 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
        ![Azure 门户中的 SPN 配置](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
    
-    - 转到 IIS，选择应用程序的“配置编辑器”选项。 导航到 system.webServer/security/authentication/windowsAuthentication。 请确保值 UseAppPoolCredentials 为 True。
+    - 转到 IIS，选择应用程序的“配置编辑器”选项  。 导航到 system.webServer/security/authentication/windowsAuthentication  。 请确保值 UseAppPoolCredentials 为 True   。
 
        ![IIS 配置应用池凭据选项](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 
-       将该值更改为 True。 通过运行以下命令从后端服务器删除所有缓存的 Kerberos 票证：
+       将该值更改为 True  。 通过运行以下命令从后端服务器删除所有缓存的 Kerberos 票证：
 
        ```powershell
        Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
@@ -167,9 +167,9 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
 
 
-如果使内核模式处于启用状态，则将提升 Kerberos 操作的性能。 但这也会导致使用计算机帐户解密请求服务的票证。 此帐户也称为本地系统。 将此值设置为 True，以在跨场中多个服务器托管应用程序时中断 KCD。
+如果使内核模式处于启用状态，则将提升 Kerberos 操作的性能。 但这也会导致使用计算机帐户解密请求服务的票证。 此帐户也称为本地系统。 将此值设置为 True，以在跨场中多个服务器托管应用程序时中断 KCD  。
 
--   作为附加检查，还将禁用“扩展”保护。 在某些方案中，“扩展”保护在特定配置中启用时会中断 KCD。 在这些情况下，应用程序会作为默认网站的子文件夹发布。 仅针对匿名身份验证配置此应用程序。 所有对话框都为灰色，表明子对象不会继承任何活动设置。 建议进行测试，但若可能，请记住将此值还原为“已启用”。
+-   作为附加检查，还将禁用“扩展”保护  。 在某些方案中，“扩展”保护在特定配置中启用时会中断 KCD  。 在这些情况下，应用程序会作为默认网站的子文件夹发布。 仅针对匿名身份验证配置此应用程序。 所有对话框都为灰色，表明子对象不会继承任何活动设置。 建议进行测试，但若可能，请记住将此值还原为“已启用”  。
 
     这一附加检查可使用户使用已发布的应用程序。 可启动配置为委托的其他连接器。 有关详细信息，请阅读更深入的技术演练，[故障排除 Azure AD 应用程序代理](https://aka.ms/proxytshootpaper)。
 
@@ -182,4 +182,4 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 - 多跃点身份验证常用于应用程序分层的情形，具有都需要验证身份的后端和前端，例如 SQL Server Reporting Services。 若要配置多跃点方案，请参阅支持文章 [Kerberos 约束委派可能需要在多跃点方案中进行协议转换](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
 
 ## <a name="next-steps"></a>后续步骤
-[在托管域上配置 KCD](../../active-directory-domain-services/active-directory-ds-enable-kcd.md)。
+[在托管域上配置 KCD](../../active-directory-domain-services/deploy-kcd.md)。

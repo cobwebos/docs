@@ -3,19 +3,19 @@ title: 如何通过对话学习器模型使用 API 调用 - Microsoft 认知服�
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用 API 调用。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: aba3c2eb925370704ea52364891502a7a09cc9ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 1f7c7c72703d7c3134dd2acdcc466fc0182fa38a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60635711"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389945"
 ---
 # <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>如何将 API 调用添加到对话学习器模型
 
@@ -84,7 +84,7 @@ API 调用的代码在此文件中定义：`C:\<installedpath>\src\demos\tutoria
 4. 选择 `RandomGreeting`。 
     - 这将执行随机问候 API 调用。
     - 这不会等待用户响应。
-5. 选择 `What number to do you want to multiply by 12?`
+5. 选择`What number to do you want to multiply by 12?`
 6. 键入一个数字，该数字可以是任意数字，但只能是一个数字。
     - 注意，数字会被自动标记为 `number` 实体。
 7. 单击“`Score Actions`”按钮。

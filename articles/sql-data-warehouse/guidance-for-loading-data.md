@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 905f14e025ae7995635962abf1cccc3afe7f5f35
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: f1bfd6a9f7b5d6b7622b3fc79848b986172ff746
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65857023"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240839"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>将数据加载到 Azure SQL 数据仓库中的最佳做法
 
@@ -90,7 +90,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 ## <a name="handling-loading-failures"></a>处理加载失败
 
-使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。 此消息表示外部数据包含脏记录。 如果数据类型和列数目与外部表的列定义不匹配，或数据不符合指定的外部文件格式，则会将数据记录视为脏记录。 
+使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。  此消息表示外部数据包含脏记录。 如果数据类型和列数目与外部表的列定义不匹配，或数据不符合指定的外部文件格式，则会将数据记录视为脏记录。 
 
 若要解决脏记录问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。 如果外部数据记录的子集是脏的，可以通过使用 CREATE EXTERNAL TABLE 中的拒绝选项，选择拒绝这些查询记录。
 

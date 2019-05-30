@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3f62557d024f56b7014784b6956f15a950f8cca7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1fb67600ea01629e7bf3ab4c7c470e4727b0e923
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926253"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393170"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>如何在 Azure 中更改 SQL Server 虚拟机的许可模型
 本文介绍如何在 Azure 中使用新的 SQL VM 资源提供程序 **Microsoft.SqlVirtualMachine** 来更改 SQL Server 虚拟机的许可模型。 有两个许可模型为虚拟机 (VM) 托管 SQL Server 的即用即付，并自带许可 (BYOL)。 和现在，使用 Azure 门户、 Azure CLI 或 PowerShell，您可以修改 SQL Server 虚拟机使用哪个许可模式。 
@@ -29,12 +29,12 @@ ms.locfileid: "64926253"
 
 **自带的自己的许可证**(BYOL) 模型是也称为[Azure 混合权益 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/)，并且可以将 SQL Server 许可证用于运行 SQL Server 的虚拟机。 有关价格的详细信息，请参阅 [SQL Server VM 定价指南](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)。
 
-在两个许可证模型之间进行切换不会导致停机，不会重启 VM，不会增加费用（事实上，激活 AHB 会降低费用），并且会立即生效。 
+在两个许可证模型之间进行切换不会导致停机，不会重启 VM，不会增加费用（事实上，激活 AHB 会降低费用），并且会立即生效。     
 
 ## <a name="remarks"></a>备注
 
 
- - CSP 客户可通过首先部署即用即付 VM，然后将它转换为自带许可，来利用 AHB 权益。 
+ - Azure 云解决方案合作伙伴 (CSP) 客户可通过首先将部署的即用即付的 VM，然后将其转换为自带的自己的许可证使用 Azure 混合权益。 
  - 当注册资源提供程序的自定义 SQL Server VM 映像，指定许可证类型 = AHUB。 将保留该许可证类型为空白，也可指定 PAYG 将导致注册失败。 
  - 如果您删除 SQL Server VM 资源，将返回到该映像的硬编码的许可证设置。 
  - 添加到可用性集的 SQL Server 虚拟机需要重新创建 VM。 作为此类，则所有 Vm 添加到可用性集将返回到默认即用即付许可证类型和 AHB 将需要重新启用它。 
@@ -133,11 +133,11 @@ $SqlVm | Set-AzResource -Force
 #### <a name="with-the-azure-portal"></a>使用 Azure 门户
 以下步骤将注册到 Azure 订阅使用 Azure 门户的 SQL 资源提供程序。 
 
-1. 打开 Azure 门户，导航到“所有服务”。 
-1. 导航到“订阅”，选择感兴趣的订阅。  
-1. 在“订阅”边栏选项卡中，导航到“资源提供程序”。 
+1. 打开 Azure 门户，导航到“所有服务”。  
+1. 导航到“订阅”  ，选择感兴趣的订阅。  
+1. 在“订阅”边栏选项卡中，导航到“资源提供程序”。   
 1. 在筛选器中键入 `sql`，以便显示与 SQL 相关的资源提供程序。 
-1. 根据所需操作为 **Microsoft.SqlVirtualMachine** 提供程序选择“注册”、“重新注册”或“取消注册”。 
+1. 根据所需操作为    **Microsoft.SqlVirtualMachine** 提供程序选择“注册”、“重新注册”或“取消注册”。 
 
    ![修改提供程序](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 

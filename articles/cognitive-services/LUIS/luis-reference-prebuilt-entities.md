@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: 96157511c0255774a64c0f64a333fe88a37f80d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 729d5d1c9ad21654fbd5923b9f3ffacc3b709ef0
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712683"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388791"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS 模型中每个区域性的实体
 
@@ -34,7 +34,7 @@ ms.locfileid: "60712683"
 |韩语|[ko-KR](#korean-entity-support)||
 |葡萄牙语|[pt-BR（巴西）](#portuguese-brazil-entity-support)||
 |西班牙语|[es-ES（西班牙）](#spanish-spain-entity-support)、[es-MX（墨西哥）](#spanish-mexico-entity-support)||
-|土耳其语|[土耳其](#turkish-entity-support)|没有预生成的实体在土耳其语中受支持|
+|土耳其语|[土耳其](#turkish-entity-support)|土耳其语不支持预生成实体|
 
 ## <a name="chinese-entity-support"></a>中文实体支持
 
@@ -65,7 +65,7 @@ ms.locfileid: "60712683"
 ------|:------:|
 [存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    -   | 
+[日期时间](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -170,7 +170,7 @@ ms.locfileid: "60712683"
 ------|:------:|
 [存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    -   | 
+[日期时间](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -191,7 +191,7 @@ ms.locfileid: "60712683"
 ------|:------:|
 [存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    -   | 
+[日期时间](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -212,7 +212,7 @@ ms.locfileid: "60712683"
 ------|:------:|
 [存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    -   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    -   | 
+[日期时间](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -294,7 +294,7 @@ KeyPhrase 不适用于葡萄牙语（巴西）```pt-BR``` 的所有子区域性�
 
 ## <a name="turkish-entity-support"></a>土耳其语实体支持
 
-**没有任何预生成的实体在土耳其语中受支持。** 
+**土耳其语不支持预生成实体。** 
 
 <!--
 

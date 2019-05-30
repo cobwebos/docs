@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: ff098ebd23d2ce5a8c9c39f154375be1dae6a262
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3977991386dbcd07e92f21d1ac541f486b4f7f0a
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408877"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393654"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管身份集成
 
@@ -49,33 +49,33 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
 
 要在门户中设置托管标识，首先要正常创建应用程序，然后启用该功能。
 
-1. 按常规在 [Azure 门户](https://aka.ms/azconfig/portal)中创建应用。 在门户网站中转到它。
+1. 按常规在 [Azure 门户](https://portal.azure.com)中创建应用。 在门户网站中转到它。
 
-2. 在左侧窗格向下滚动到“设置”组，然后选择“标识”。
+2. 在左侧窗格向下滚动到“设置”组，然后选择“标识”   。
 
-3. 在“系统分配”选项卡中，将“状态”切换为“启用”并选择“保存”。
+3. 在“系统分配”选项卡中，将“状态”切换为“启用”并选择“保存”     。
 
     ![在应用服务中设置托管标识](./media/set-managed-identity-app-service.png)
 
 ## <a name="grant-access-to-app-configuration"></a>授予对应用配置的访问权限
 
-1. 在 [Azure 门户](https://aka.ms/azconfig/portal)中，选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区  。
 
-2. 选择“访问控制 (IAM)”。
+2. 选择“访问控制 (IAM)”  。
 
-3. 在“检查访问权限”选项卡中，选择“添加角色分配”卡 UI 中的“添加”。
+3. 在“检查访问权限”选项卡中，选择“添加角色分配”卡 UI 中的“添加”    。
 
-4. 在“角色”下，选择“参与者”。 将“访问权限分配对象”下，选择“应用服务”（在“系统分配的托管标识”下）。
+4. 在“角色”下，选择“参与者”   。 将“访问权限分配对象”下，选择“应用服务”（在“系统分配的托管标识”下）    。
 
-5. 在“订阅”下，选择 Azure 订阅。 选择应用的应用服务资源。
+5. 在“订阅”下，选择 Azure 订阅  。 选择应用的应用服务资源。
 
-6. 选择“保存”。
+6. 选择“保存”。 
 
     ![添加托管标识](./media/add-managed-identity.png)
 
 ## <a name="use-a-managed-identity"></a>使用托管标识
 
-1. 打开“appsettings.json”，并添加以下脚本。 将 \<service_endpoint>（含括号）替换为应用配置存储区的 URL：
+1. 打开“appsettings.json”，并添加以下脚本  。 将 \<service_endpoint>（含括号）替换为应用配置存储区的 URL  ：
 
     ```json
     "AppConfig": {
@@ -83,7 +83,7 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
     }
     ```
 
-2. 打开“Program.cs”，并通过替换 `config.AddAzureAppConfiguration()` 方法更新 `CreateWebHostBuilder` 方法。
+2. 打开“Program.cs”，并通过替换 `config.AddAzureAppConfiguration()` 方法更新 `CreateWebHostBuilder` 方法  。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -143,7 +143,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 
 ### <a name="deploy-your-project"></a>部署项目
 
-回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 使用从[启用应用的 Git](#enable-local-git-with-kudu)中获取的 Git 远程 URL 替换 \<url>。
+回到本地终端窗口  ，将 Azure 远程功能添加到本地 Git 存储库。 使用从[启用应用的 Git](#enable-local-git-with-kudu)中获取的 Git 远程 URL 替换 \<url>  。
 
 ```bash
 git remote add azure <url>
@@ -169,7 +169,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>使用其他语言的托管标识
 
-适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 在这些情况下，配置提供程序时使用应用程序配置存储区的 URL 终结点而不用其完整连接字符串。 例如，对于快速入门中创建的 .NET Framework 控制台应用，请在 App.config 文件中指定以下设置：
+适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 在这些情况下，配置提供程序时使用应用程序配置存储区的 URL 终结点而不用其完整连接字符串。 例如，对于快速入门中创建的 .NET Framework 控制台应用，请在 App.config 文件中指定以下设置  ：
 
 ```xml
     <configSections>

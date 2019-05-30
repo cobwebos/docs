@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153507"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235863"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行数据流活动
 使用 execute 数据流活动的管道调试 （沙盒） 运行和触发的管道运行中运行 ADF 数据的流。
@@ -49,10 +49,6 @@ ms.locfileid: "66153507"
 
 ![执行数据流](media/data-flow/activity-data-flow.png "执行数据流")
 
-### <a name="run-on"></a>运行位置
-
-选择此执行数据的流的计算环境。 默认值为 Azure 自动解决默认集成运行时。 选择此选项将在数据工厂所在的同一区域中的 Spark 环境上执行数据流。 计算类型将是作业群集，这意味着在计算环境将启动到需要几分钟时间。
-
 ### <a name="debugging-pipelines-with-data-flows"></a>调试具有数据流管道
 
 ![调试按钮](media/data-flow/debugbutton.png "调试按钮")
@@ -65,9 +61,14 @@ ms.locfileid: "66153507"
 
 数据流执行的默认设置是与 TTL 为 60 分钟的常规计算的 8 个核心。
 
+选择此执行数据的流的计算环境。 默认值为 Azure 自动解决默认集成运行时。 选择此选项将在数据工厂所在的同一区域中的 Spark 环境上执行数据流。 计算类型将是作业群集，这意味着在计算环境将启动到需要几分钟时间。
+
 Data Flow 活动可以控制的 Spark 执行环境。 在中[Azure 集成运行时](concepts-integration-runtime.md)设置计算类型 （常规用途、 内存优化和计算优化），辅助内核数和到-生存时间以匹配使用数据流计算的执行引擎的设置系统要求。 此外，设置 TTL 将允许您维护的热群集，可立即用于作业执行。
 
 ![Azure 集成运行时](media/data-flow/ir-new.png "Azure 集成运行时")
+
+> [!NOTE]
+> 中的数据流活动的集成运行时选择仅适用于*触发执行*管道。 使用调试调试你的流数据的管道将执行针对 8 核默认 Spark 群集。
 
 ### <a name="staging-area"></a>临时区域
 

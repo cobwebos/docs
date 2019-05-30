@@ -3,19 +3,19 @@ title: 不支持的语言部署的自定义转换器
 titleSuffix: Azure Cognitive Services
 description: 如何部署自定义转换器不支持的语言对。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: v-pawal
-ms.openlocfilehash: 09fbd771d945646fe385508779d38e4abb2ee293
-ms.sourcegitcommit: daf6538427ea6effef898f2ee3d857e5fa2dccbc
+ms.openlocfilehash: 0938ba2e839be603c557cc2a87dd0c5aa1dfe1e3
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64476502"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390604"
 ---
 # <a name="unsupported-language-deployments"></a>不支持的语言部署
 
@@ -32,7 +32,7 @@ ms.locfileid: "64476502"
 * 在迁移时，模型必须是已部署状态。  
 * 该模型的语言对必须是自定义转换器不支持的语言对。  语言对在其中一种语言支持到或从英语，但对本身不包括英语、 是不受支持的语言部署的候选对象。  例如，法语的德语语言对中心模型被视为一个不受支持的语言对甚至到英语和德语是到英语但法语受支持的语言对。
 
-## <a name="process"></a>进程
+## <a name="process"></a>Process
 迁移中心中的适用于部署的模型后，您可以通过转到找到它们**设置**工作区和滚动到页面将在其中看到末尾页**不受支持转换器中心培训**部分。  如果你有满足上述先决条件的项目，才会显示此部分。
 
 ![如何从 Hub 迁移](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)

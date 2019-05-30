@@ -9,13 +9,13 @@ ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
 ms.openlocfilehash: e1f5a1c8229544d97d9ff64748390f0d5237ab97
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65754061"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238271"
 ---
-| 资源 | 默认值/最大限制 |
+| Resource | 默认值/最大限制 |
 | --- | --- |
 | 每个订阅的 azure 第一道防线服务资源 | 100 |
 | 前端主机，其中包括每个资源的自定义域 | 100 |

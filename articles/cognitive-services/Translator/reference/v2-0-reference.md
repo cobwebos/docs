@@ -3,19 +3,19 @@ title: 文本翻译 API V2.0
 titleSuffix: Azure Cognitive Services
 description: 文本翻译 API V2.0 参考文档。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
-ms.author: v-jansko
-ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61467150"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389844"
 ---
 # <a name="translator-text-api-v20"></a>文本翻译 API v2.0
 
@@ -28,11 +28,18 @@ ms.locfileid: "61467150"
 若要访问文本翻译 API，需[注册 Microsoft Azure](../translator-text-how-to-signup.md)。
 
 ## <a name="authorization"></a>授权
-只要调用文本翻译 API，就需要使用订阅密钥进行身份验证。 此 API 支持两种身份验证模式：
+只要调用文本翻译 API，就需要使用订阅密钥进行身份验证。 该 API 支持三种身份验证模式：
 
-* 使用访问令牌。 使用**步骤** 9 中提到的订阅密钥，通过向授权服务发出 POST 请求来生成访问令牌。 有关详细信息，请参阅令牌服务文档。 使用 Authorization 标头或 access_token 查询参数，将访问令牌传递给翻译工具服务。 访问令牌的有效期为 10 分钟。 每 10 分钟获取一次新的访问令牌，在这 10 分钟内，始终对重复的请求使用同一访问令牌。
+- 访问令牌。 使用**步骤** 9 中提到的订阅密钥，通过向授权服务发出 POST 请求来生成访问令牌。 有关详细信息，请参阅令牌服务文档。 将访问令牌传递给 Translator 服务使用 Authorization 标头或`access_token`查询参数。 访问令牌的有效期为 10 分钟。 获取新的访问令牌每隔 10 分钟，并继续使用相同的访问权限标记，表示重复的请求，在这 10 分钟内。
+- 直接订阅密钥。 将你的订阅密钥作为中的值传递`Ocp-Apim-Subscription-Key`翻译 api 在请求中包含的标头。 在此模式下，您无需调用的身份验证令牌的服务，以生成访问令牌。
+- 一个[认知服务多服务订阅](https://azure.microsoft.com/pricing/details/cognitive-services/)。 此模式下，可使用一个密钥用于多个服务请求进行身份验证。 <br/>
+当使用多服务的机密密钥时，必须在您的请求包含两个身份验证标头。 第一个标头会传递的机密密钥。 第二个标头指定与你的订阅关联的区域：
+   - `Ocp-Apim-Subscription-Key`
+   - `Ocp-Apim-Subscription-Region`
 
-* 直接使用订阅密钥。 将订阅密钥作为请求中包括的 `Ocp-Apim-Subscription-Key` 标头中的值传递给翻译 API。 在此模式中，不需调用身份验证令牌服务即可生成访问令牌。
+区域是必需的多服务的文本 API 订阅。 所选的区域是使用多服务的订阅密钥，可以使用文本翻译的唯一区域，并且必须通过 Azure 门户在多服务订阅注册时选择的相同区域。
+
+可用的区域有`australiaeast`， `brazilsouth`， `canadacentral`， `centralindia`， `centraluseuap`， `eastasia`， `eastus`， `eastus2`， `japaneast`， `northeurope`， `southcentralus`， `southeastasia`，`uksouth`， `westcentralus`， `westeurope`， `westus`，和`westus2`。
 
 将订阅密钥和访问令牌视为不应允许查看的机密。
 
@@ -325,7 +332,7 @@ binary
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|string|
 |Text|(empty)   |必需。 一个字符串，包含 wave 流对应的指定要朗读的语言的一个或多个句子。 要朗读的文本的大小不得超过 2000 个字符。|query|string|
-|语言|(empty)   |必需。 一个字符串，表示要朗读的文本所采用语言的受支持语言代码。 此代码必须存在于从 `GetLanguagesForSpeak` 方法返回的代码的列表中。|query|string|
+|language|(empty)   |必需。 一个字符串，表示要朗读的文本所采用语言的受支持语言代码。 此代码必须存在于从 `GetLanguagesForSpeak` 方法返回的代码的列表中。|query|string|
 |格式|(empty)|可选。 一个字符串，指定 content-type ID。 目前，`audio/wav` 和 `audio/mp3` 可用。 默认值为 `audio/wav`。|query|string|
 |options|(empty)    |<ul><li>可选。 一个字符串，指定已合成语音的属性：<li>`MaxQuality` 和 `MinSize` 可以用来指定音频信号的质量。 使用 `MaxQuality` 可以获取质量最高的语音，而使用 `MinSize` 则可获取大小最小的语音。 默认为 `MinSize`。</li><li>`female` 和 `male` 可以用来指定语音的所需性别。 默认为 `female`。 使用垂直条 <code>\|</code> 包含多个选项。 例如 `MaxQuality|Male`。</li></li></ul> |query|string|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
@@ -560,7 +567,7 @@ integer
 |:--|:--|:--|:--|:--|
 |appid|(empty)  |必需。 如果使用了 Authorization 或 Ocp-Apim-Subscription-Key 标头，请将 appid 字段留空，否则请包括一个包含 "Bearer" + " " + "access_token" 的字符串。|query| string|
 |Text|(empty)   |必需。 一个字符串，表示要拆分成句子的文本。 文本大小不得超过 10000 个字符。|query|string|
-|语言   |(empty)    |必需。 一个表示字符串，表示输入文本的语言代码。|query|string|
+|language   |(empty)    |必需。 一个表示字符串，表示输入文本的语言代码。|query|string|
 |授权|(empty)|必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。    |标头的值开始缓存响应|string|
 |Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|string|
 

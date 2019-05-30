@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 6557f3a4129076c1e8708208e5d4e0d4f53dcec3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 377c5088d39821e87412c517540b3190b0a14a00
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741731"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393275"
 ---
 # <a name="import-or-export-configuration-data"></a>导入或导出配置数据
 
@@ -29,7 +29,7 @@ Azure 应用程序配置支持的数据导入和导出操作。 使用这些操�
 
 导入提供的配置从现有源，而不是手动输入存储在应用程序配置数据。 使用导入函数将数据迁移到应用程序配置存储区或从多个源聚合数据。 应用配置支持从 JSON、 YAML 或属性文件导入。
 
-通过使用导入数据[Azure 门户](https://aka.ms/azconfig/portal)或[Azure CLI](./scripts/cli-import.md)。 从 Azure 门户中，请执行以下步骤：
+通过使用导入数据[Azure 门户](https://portal.azure.com)或[Azure CLI](./scripts/cli-import.md)。 在 Azure 门户中执行以下步骤：
 
 1. 浏览到您的应用程序的配置存储区，然后选择**导入/导出**。
 
@@ -53,7 +53,7 @@ Azure 应用程序配置支持的数据导入和导出操作。 使用这些操�
 
 导出将写入到另一个目标应用程序配置中存储的配置数据。 例如，使用导出函数，以将数据保存到使用应用程序代码嵌入在部署过程中的文件的应用程序配置存储区中。
 
-通过使用导出数据[Azure 门户](https://aka.ms/azconfig/portal)或[Azure CLI](./scripts/cli-export.md)。 从 Azure 门户中，请执行以下步骤：
+通过使用导出数据[Azure 门户](https://portal.azure.com)或[Azure CLI](./scripts/cli-export.md)。 在 Azure 门户中执行以下步骤：
 
 1. 浏览到您的应用程序的配置存储区，然后选择**导入/导出**。
 

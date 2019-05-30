@@ -1,5 +1,5 @@
 ---
-title: 教程：从 Azure Data Lake 存储加载到 Azure SQL 数据仓库 |Microsoft Docs
+title: 从 Azure Data Lake 存储到 Azure SQL 数据仓库的教程负载 |Microsoft Docs
 description: 使用 PolyBase 外部表将数据从 Azure Data Lake 存储加载到 Azure SQL 数据仓库。
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: load data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9d6a2c097a6040e7c005cc0feeefd59caf352441
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: a706fca7f7653c6916efc72d07988e79c9015a43
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65850504"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244505"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake 存储的数据加载到 SQL 数据仓库
 使用 PolyBase 外部表将数据从 Azure Data Lake 存储加载到 Azure SQL 数据仓库。 尽管可以在 Data Lake 存储中存储的数据运行即席查询，我们建议将数据导入 SQL 数据仓库以获得最佳性能。
@@ -45,7 +45,7 @@ ms.locfileid: "65850504"
 ##  <a name="create-a-credential"></a>创建凭据
 若要访问你的 Data Lake 存储帐户，你将需要创建数据库主密钥进行加密下一步中使用的凭据密码。 然后创建数据库范围的凭据。 Gen1，对于数据库作用域凭据存储在 AAD 中设置的服务主体凭据。 对于第 2 代，必须在数据库作用域凭据中使用的存储帐户密钥。 
 
-若要连接到 Data Lake Storage Gen1，必须先创建 Azure Active Directory 应用程序，创建访问密钥，并授予应用程序访问 Data Lake Storage Gen1 资源的权限。 有关说明，请参阅[使用 Active Directory 验证 Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
+若要连接到 Data Lake Storage Gen1，必须先创建 Azure Active Directory 应用程序，创建访问密钥，并授予应用程序访问 Data Lake Storage Gen1 资源的权限  。 有关说明，请参阅[使用 Active Directory 验证 Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
 
 ```sql
 -- A: Create a Database Master Key.

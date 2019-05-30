@@ -9,17 +9,17 @@ ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: 6d06ac6efd08c14f77fd963ddf2c67de54260959
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733755"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238785"
 ---
 Azure 数据工厂是一个具有以下默认限制到位，以确保客户订阅不会受到彼此工作负荷的多租户服务。 若要将提升到你的订阅的最大限制，请联系支持。
 
 ### <a name="version-2"></a>版本 2
 
-| 资源 | 默认限制 | 最大限制 |
+| Resource | 默认限制 | 最大限制 |
 | -------- | ------------- | ------------- |
 | Azure 订阅中的数据工厂 | 50 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 实体，例如管道、 数据集、 触发器、 链接的服务和集成运行时，数据工厂中的总数 | 5,000 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |

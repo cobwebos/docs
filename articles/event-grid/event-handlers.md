@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 33604a16f5895e20d4475d1dd8b27c34184feb72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 915d1284d66438219fc9aba893512e5f6a5b02b3
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345475"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305046"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure 事件网格中的事件处理程序
 
@@ -71,6 +71,28 @@ ms.locfileid: "60345475"
 | [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](monitor-virtual-machine-changes-event-grid-logic-app.md) | 逻辑应用可监视对虚拟机的更改并就这些更改发送电子邮件。 |
 | [教程：使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件](publish-iot-hub-events-to-logic-apps.md) | 每次将设备添加到 IoT 中心时，逻辑应用就会发送一封通知电子邮件。 |
 | [教程：Azure 服务总线到 Azure 事件网格集成示例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 事件网格将消息从服务总线主题发送到函数应用和逻辑应用。 |
+
+## <a name="service-bus-queue-preview"></a>服务总线队列 （预览版）
+
+使用 Service Bus 作为事件处理程序用于将您的事件中事件网格路由直接向服务总线队列用于企业应用程序中的缓冲或命令和控制方案。 在预览并不适用于服务总线主题和会话，但适用于所有层的服务总线队列。
+
+请注意，服务总线时如处理程序是在公共预览版中，您必须安装 CLI 或 PowerShell 扩展时使用这些凭据创建事件订阅。
+
+### <a name="using-cli"></a>使用 CLI
+
+以下示例订阅的 Azure CLI 连接到服务总线队列的事件网格主题和：
+
+```azurecli-interactive
+# If you haven't already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid event-subscription create \
+    --name <my-event-subscription> \
+    --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
+    --endpoint-type servicebusqueue \
+    --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
+```
 
 ## <a name="queue-storage"></a>队列存储
 

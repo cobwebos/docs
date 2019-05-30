@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 5eb2ba509983918a55370ae0deafd019e03f53d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a52d05c77d0aeb8ebeba196df60e59f0647fea9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60740278"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233915"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
@@ -51,19 +51,25 @@ ms.locfileid: "60740278"
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS |
 
-在创建服务器的过程中和之后，可以添加更多的存储容量。 “基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
+您可以添加更多存储容量期间和之后创建服务器，并允许系统增长自动根据工作负荷的存储消耗的存储。 “基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
 
 可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
-当可用存储量低于 5 GB 或 5% 的预配存储（以较低者为准）时，服务器会标记为只读。 例如，如果已预配 100 GB 的存储，而实际使用量超过 95 GB，则服务器会标记为只读。 或者，如果已预配 5 GB 的存储，则当可用存储少于 250 MB 时，服务器会标记为只读。  
+使用预配的 100 GB 存储空间小于服务器都标记为只读的可用存储，是否小于 512 MB 或 5%的预配的存储大小。 具有多个预配的 100 GB 存储空间的服务器都标记为只读，仅当的可用存储，为不超过 5 GB。
+
+例如，如果你已设置为 110 GB 的存储空间，并且实际使用率超过 105 GB，将服务器标记为只读。 或者，如果已预配 5 GB 的存储，服务器是标记为只读时免费存储空间达到小于 512 MB。
 
 当服务试图将服务器标记为只读时，会阻止所有新的写入事务请求，现有的活动事务将继续执行。 当服务器设置为只读时，所有后续写入操作和事务提交均会失败。 读取查询将继续不间断工作。 增加预配的存储后，服务器将准备好再次接受写入事务。
 
-我们建议你设置警报，以便在服务器存储接近阈值时通知你，从而可以避免进入只读状态。 
+我们建议你在存储上启用自动增长或要将警报设置为你的服务器存储即将达到阈值时通知你因此可以避免进入只读状态。 有关详细信息，请参阅有关[如何设置警报](howto-alert-metric.md)的文档。
 
-有关详细信息，请参阅有关[如何设置警报](howto-alert-metric.md)的文档。
+### <a name="storage-auto-grow"></a>存储自动增长
+
+如果存储自动增长已启用，存储会自动增长而不会影响工作负荷。 对于小于 100 GB，预配存储的服务器，预配的存储大小被增加 5 GB 的可用存储低于 1 GB 或 10%的预配的存储中的较大时，就立即。 对于包含多个 100 GB 的预配的存储的服务器，预配的存储大小被增加 5%时可用的存储空间低于 5%的预配的存储大小。 如上所示的最大存储限制适用。
+
+例如，如果在预配 1000 GB 的存储空间，并实际使用率超过 950 GB，服务器存储大小增加到了 1050 GB。 或者，如果已预配 10 GB，存储大小是存储的增加到 15 GB 免费小于 1 GB 的存储空间时。
 
 ## <a name="backup"></a>备份
 
@@ -81,7 +87,7 @@ ms.locfileid: "60740278"
 
 ## <a name="pricing"></a>定价
 
-有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/mariadb/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.MariaDBServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”，展开“数据库”类别，选择“Azure Database for MariaDB”自定义选项。
+有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/mariadb/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.MariaDBServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。  如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”，展开“数据库”类别，选择“Azure Database for MariaDB”自定义选项    。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解[服务限制](concepts-limits.md)。

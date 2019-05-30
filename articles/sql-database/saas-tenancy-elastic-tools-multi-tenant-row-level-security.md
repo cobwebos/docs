@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 71d2d542d71977f9d8dfe07370dffd7fe508bc92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4834688496330210b273f40f1d6f11230a6ae1c8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485325"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234123"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "61485325"
 
 将这些功能一起使用，应用程序可以在同一个分片数据库中存储多个租户的数据。 当租户共享数据库时，每个租户的成本会降低。 不过，该应用程序也可为高级租户提供使用单租户分片专用付费版的选择。 单租户隔离的一大优势是更好的性能保证。 在单租户数据库中，没有其他租户来竞争资源。
 
-这样做的目的是使用弹性数据库客户端库[数据依赖路由](sql-database-elastic-scale-data-dependent-routing.md) API，将每个指定的租户自动连接到正确的分片数据库。 只有一个分片包含适用于该指定租户的特定 TenantId 值。 TenantId 是分片键。 建立连接后，就会执行数据库中的 RLS 安全策略，确保指定租户只能访问那些包含其 TenantId 的数据行。
+这样做的目的是使用弹性数据库客户端库[数据依赖路由](sql-database-elastic-scale-data-dependent-routing.md) API，将每个指定的租户自动连接到正确的分片数据库。 只有一个分片包含适用于该指定租户的特定 TenantId 值。 TenantId 是分片键  。 建立连接后，就会执行数据库中的 RLS 安全策略，确保指定租户只能访问那些包含其 TenantId 的数据行。
 
 > [!NOTE]
 > 租户标识符可能由多个列组成。 在本讨论中，为方便起见，我们采用单列 TenantId（非正式）。
@@ -46,7 +46,7 @@ ms.locfileid: "61485325"
 
 此项目通过添加对多租户分片数据库的支持，扩展了 [Azure SQL 的弹性数据库工具 - 实体框架集成](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)中所述的项目。 此项目生成一个简单的控制台应用程序，用于创建博客和文章。 此项目包括四个租户，以及两个多租户分片数据库。 上图说明了此配置。
 
-构建并运行应用程序。 此运行会引导弹性数据库工具的分片映射管理器，并进行以下测试：
+生成并运行应用程序。 此运行会引导弹性数据库工具的分片映射管理器，并进行以下测试：
 
 1. 使用实体框架和 LINQ 创建新博客，并显示每个租户的所有博客文章
 2. 使用 ADO.NET SqlClient 显示租户的所有博客文章
@@ -228,7 +228,7 @@ RLS 在 Transact-SQL 中实现。 用户定义的函数用于定义访问逻辑�
     - BLOCK 谓词阻止系统对不符合筛选器条件的行执行 INSERT 或 UPDATE 操作。
     - 如果未设置 SESSION\_CONTEXT，此函数会返回 NULL，将无法查看或插入任何行。
 
-若要在所有分片上启用 RLS，请执行以下 T-SQL，只需使用项目中包括的 Visual Studio (SSDT)、SSMS 或 PowerShell 脚本即可。 或者，如果使用[弹性数据库作业](sql-database-elastic-jobs-overview.md)，则可自动在所有分片上执行此 T-SQL。
+若要在所有分片上启用 RLS，请执行以下 T-SQL，只需使用项目中包括的 Visual Studio (SSDT)、SSMS 或 PowerShell 脚本即可。 或者，如果使用[弹性数据库作业](elastic-jobs-overview.md)，则可自动在所有分片上执行此 T-SQL。
 
 ```sql
 CREATE SCHEMA rls; -- Separate schema to organize RLS objects.
@@ -302,12 +302,12 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> 如果对实体框架项目使用默认约束，则建议不要在 EF 数据模型中包括 TenantId 列。 之所以提供此建议，是因为实体框架查询会自动提供默认值，而这些值会重写在 T-SQL 中创建的使用 SESSION\_CONTEXT 的默认约束。
+> 如果对实体框架项目使用默认约束，则建议不要在 EF 数据模型中包括 TenantId 列。  之所以提供此建议，是因为实体框架查询会自动提供默认值，而这些值会重写在 T-SQL 中创建的使用 SESSION\_CONTEXT 的默认约束。
 > 举例来说，要在示例项目中使用默认约束，应该从 DataClasses.cs 中删除 TenantId（并在 Package Manager Console 中运行 Add-Migration），然后使用 T-SQL 来确保该字段仅存在于数据库表中。 这样，在插入数据时，EF 会自动提供不正确的默认值。
 
-### <a name="optional-enable-a-superuser-to-access-all-rows"></a>（可选）启用“超级用户”来访问所有行
+### <a name="optional-enable-a-superuser-to-access-all-rows"></a>（可选）启用“超级用户”来访问所有行 
 
-某些应用程序可能需要创建一个可访问所有行的超级用户。 超级用户可以启用跨所有分片上的所有租户进行报告的功能。 超级用户还可以在分片上执行拆分-合并操作，此类操作涉及在数据库之间移动租户行。
+某些应用程序可能需要创建一个可访问所有行的超级用户。  超级用户可以启用跨所有分片上的所有租户进行报告的功能。 超级用户还可以在分片上执行拆分-合并操作，此类操作涉及在数据库之间移动租户行。
 
 若要启用超级用户，请在每个分片数据库中创建新的 SQL 用户（在本例中为 `superuser`）。 然后，使用允许此用户访问所有行的新谓词函数更改安全策略。 接下来会提供此类函数。
 

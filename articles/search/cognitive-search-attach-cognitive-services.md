@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f9a1e82cb60bf0ec32165294e7f4af3e93d042b0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 44f16b3334b991e071fa85ca4cffbc0837f0a6ec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158542"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244434"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>将认知服务资源与 Azure 搜索中的技能集联系起来 
 
 AI 算法驱动器[认知索引管道](cognitive-search-concept-intro.md)用于在 Azure 搜索中的文档扩充。 这些算法基于 Azure 认知服务资源，包括[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)进行图像分析和光学字符识别 (OCR) 和[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)实体识别关键短语提取和其他正。 使用 Azure 搜索进行文档扩充目的，算法将被封装在*技能*、 放置在*方面的技能*，并引用通过*索引器*期间编制索引。
 
-可以免费扩充有限数量的文档，或者附加付费的认知服务资源来处理更大、更频繁的工作负荷。 在本文中，将了解如何将使用认知技能集，以丰富文档期间可计费的认知服务资源的附加[Azure 搜索索引](search-what-is-an-index.md)。
+可免费丰富有限的数量的文档。 或者，可以将附加到可计费的认知服务资源*方面的技能*适用于较大且频率更高的工作负荷。 在本文中，将了解如何将附加可计费的认知服务资源，使文档在 Azure 搜索过程更加丰富[索引](search-what-is-an-index.md)。
 
 > [!NOTE]
 > 可计费事件在 Azure 搜索中包括对认知服务 Api 和图像提取文档破解阶段调用。 不从文档文本提取或技能不调用认知服务的收费。
@@ -30,7 +30,9 @@ AI 算法驱动器[认知索引管道](cognitive-search-concept-intro.md)用于�
 
 ## <a name="same-region-requirement"></a>同一区域要求
 
-我们要求 Azure 搜索和 Azure 认知服务存在同一区域内。 否则，将在运行时收到此消息：`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 没有方法来跨区域移动服务。 如果收到此错误，你应在同一区域中创建新的服务，并相应地重新发布索引。
+我们要求 Azure 搜索和 Azure 认知服务存在同一区域内。 否则，将在运行时收到此消息： `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+
+没有方法来跨区域移动服务。 如果收到此错误，应在 Azure 搜索所在的同一区域中创建新的认知服务资源。
 
 ## <a name="use-free-resources"></a>使用免费资源
 
@@ -42,9 +44,9 @@ AI 算法驱动器[认知索引管道](cognitive-search-concept-intro.md)用于�
 
    ![打开导入数据向导](media/search-get-started-portal/import-data-cmd2.png "打开导入数据向导")
 
-1. 选择数据源，然后继续**添加认知搜索 （可选）**。 有关此向导的分步演练，请参阅[导入、 索引和查询通过使用门户工具](search-get-started-portal.md)。
+1. 选择数据源，然后继续**添加认知搜索 （可选）** 。 有关此向导的分步演练，请参阅[导入、 索引和查询通过使用门户工具](search-get-started-portal.md)。
 
-1. 展开**附加认知服务**，然后选择**免费 （有限正）**:
+1. 展开**附加认知服务**，然后选择**免费 （有限正）** :
 
    ![展开附加的认知服务部分](./media/cognitive-search-attach-cognitive-services/attach1.png "展开附加的认知服务部分")
 
@@ -56,7 +58,7 @@ AI 算法驱动器[认知索引管道](cognitive-search-concept-intro.md)用于�
 
 我们仅对调用认知服务 Api 的技能的收费。 不支付[自定义技能](cognitive-search-create-custom-skill-example.md)，或技能包括[文本合并](cognitive-search-skill-textmerger.md)，[文本拆分器](cognitive-search-skill-textsplit.md)，以及[整形程序](cognitive-search-skill-shaper.md)，这不是基于 API 的。
 
-1. 打开导入数据向导，选择数据源，并继续**添加认知搜索 （可选）**。
+1. 打开导入数据向导，选择数据源，并继续**添加认知搜索 （可选）** 。
 
 1. 展开**附加认知服务**，然后选择**创建新的认知服务资源**。 一个新选项卡将打开，以便您可以创建资源：
 
@@ -88,11 +90,11 @@ AI 算法驱动器[认知索引管道](cognitive-search-concept-intro.md)用于�
 
    ![“技能集”选项卡](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "“技能集”选项卡")
 
-1. 选择名称方面的技能，然后选择一个现有资源或创建一个新。 选择“确定”以确认所做的更改。
+1. 选择名称方面的技能，然后选择一个现有资源或创建一个新。 选择“确定”以确认所做的更改。 
 
    ![技能集资源列表](./media/cognitive-search-attach-cognitive-services/attach-existing2.png "技能集资源列表")
 
-   请记住， **（限制到） 免费**选项限制为 20 文档每日，并且你可以用**创建新的认知服务资源**来预配新的可计费资源。 如果创建了新资源，请选择“刷新”以刷新认知服务资源的列表，然后选择该资源。
+   请记住， **（限制到） 免费**选项限制为 20 文档每日，并且你可以用**创建新的认知服务资源**来预配新的可计费资源。 如果创建了新资源，请选择“刷新”以刷新认知服务资源的列表，然后选择该资源。 
 
 ## <a name="attach-cognitive-services-programmatically"></a>以编程方式附加认知服务
 

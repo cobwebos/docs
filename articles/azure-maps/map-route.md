@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: b8205383c25ba04212126e0e6ca1bd44e4efad1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 31403a11e8989cee6a1c166879a0b2f594892704
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768897"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357634"
 ---
 # <a name="show-directions-from-a-to-b"></a>显示从 A 到 B 的路线
 
@@ -29,7 +29,7 @@ ms.locfileid: "60768897"
 
 在上述代码中，第一个代码块构造 map 对象并设置要使用订阅密钥的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个代码块创建`SubscriptionKeyCredentialPolicy`使用订阅密钥向 Azure Maps 的 HTTP 请求进行身份验证。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)实例。 `routeURL` 表示 Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) 操作的 URL。
+第二个代码块创建`SubscriptionKeyCredentialPolicy`使用订阅密钥向 Azure Maps 的 HTTP 请求进行身份验证。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)实例。 `routeURL` 表示 Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) 操作的 URL。
 
 第三个块的代码创建并添加[数据源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)到映射的对象。
 

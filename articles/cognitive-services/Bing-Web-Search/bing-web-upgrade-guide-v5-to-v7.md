@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: reference
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8e5876c9141a3eb85593b12f45b0bde4c7984adf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3d78a1b7488e7489b02e34e9733a5d741213855
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431134"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384893"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>从必应 Web 搜索 API v5 升级到 v7
 
@@ -75,14 +75,14 @@ InsufficientScope|InsufficientAuthorization
 
 ### <a name="headers"></a>标头
 
-- 添加可选 [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) 请求标头。 默认情况下，必应返回缓存的内容（如果适用）。 要防止必应返回缓存的内容，请将 Pragma 标头设置为 no-cache（例如，Pragma: no-cache）。
+- 添加可选 [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 请求标头。 默认情况下，必应返回缓存的内容（如果适用）。 要防止必应返回缓存的内容，请将 Pragma 标头设置为 no-cache（例如，Pragma: no-cache）。
 
 ### <a name="query-parameters"></a>查询参数
 
-- 添加 [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) 查询参数。 使用此参数指定希望响应包含的答案数。 答案根据排名进行选择。 例如，如果将此参数设置为三 (3)，则响应将包括排名前三位的答案。  
+- 添加 [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) 查询参数。 使用此参数指定希望响应包含的答案数。 答案根据排名进行选择。 例如，如果将此参数设置为三 (3)，则响应将包括排名前三位的答案。  
 
-- 添加 [promote](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像升级到响应中，你需要将升级设置为“视频、图片”。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为 2 且 `promote` 设置为“视频，图像”，则响应可能包括网页、新闻、视频和图片。
+- 添加 [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像升级到响应中，你需要将升级设置为“视频、图片”  。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为 2 且 `promote` 设置为“视频，图像”  ，则响应可能包括网页、新闻、视频和图片。
 
 ### <a name="object-changes"></a>对象更改
 
-- 将 `someResultsRemoved` 字段添加到 [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) 对象。 该字段包含一个布尔值，指示响应是否从 Web 回答中排除了某些结果。  
+- 将 `someResultsRemoved` 字段添加到 [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) 对象。 该字段包含一个布尔值，指示响应是否从 Web 回答中排除了某些结果。  

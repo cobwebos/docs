@@ -4,14 +4,14 @@ description: 本文档介绍为 Azure Cosmos DB 设置虚拟网络服务终结�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/23/2019
 ms.author: govindk
-ms.openlocfilehash: c0b1b415db9d8a530a495e09805ad9788c1edfbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 375e79d2fe70e0988d8c58997a746f77b21d7f50
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153674"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242001"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>配置从虚拟网络 (VNet) 访问
 
@@ -34,13 +34,13 @@ ms.locfileid: "66153674"
 
 ### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>为现有的 Azure 虚拟网络和子网配置服务终结点
 
-1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。
+1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。 
 
-1. 从设置菜单中选择“防火墙和虚拟网络”，然后选择允许从“选定的网络”进行访问。
+1. 从设置菜单中选择“防火墙和虚拟网络”，然后选择允许从“选定的网络”进行访问。  
 
-1. 若要授予对现有虚拟网络子网的访问权限，请在“虚拟网络”下面选择“添加现有的 Azure 虚拟网络”。
+1. 若要授予对现有虚拟网络子网的访问权限，请在“虚拟网络”下面选择“添加现有的 Azure 虚拟网络”。  
 
-1. 选择要从中添加 Azure 虚拟网络的**订阅**。 选择要向其提供 Azure Cosmos DB 帐户访问权限的 Azure **虚拟网络**和**子网**。 接下来选择“启用”，以便为“Microsoft.AzureCosmosDB”启用包含服务终结点的选定网络。 完成后，选择“添加”。 
+1. 选择要从中添加 Azure 虚拟网络的**订阅**。 选择要向其提供 Azure Cosmos DB 帐户访问权限的 Azure **虚拟网络**和**子网**。 接下来选择“启用”，以便为“Microsoft.AzureCosmosDB”启用包含服务终结点的选定网络。  完成后，选择“添加”。  
 
    ![选择虚拟网络和子网](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
@@ -59,31 +59,31 @@ ms.locfileid: "66153674"
 
 ### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>为新的 Azure 虚拟网络和子网配置服务终结点
 
-1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。  
+1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。   
 
-1. 从设置菜单中选择“防火墙和 Azure 虚拟网络”，然后选择允许从“选定的网络”进行访问。  
+1. 从设置菜单中选择“防火墙和 Azure 虚拟网络”，然后选择允许从“选定的网络”进行访问。    
 
-1. 若要授予对新 Azure 虚拟网络的访问权限，请在“虚拟网络”下面选择“添加新虚拟网络”。  
+1. 若要授予对新 Azure 虚拟网络的访问权限，请在“虚拟网络”下面选择“添加新虚拟网络”。    
 
-1. 提供创建新虚拟网络所需的详细信息，然后选择“创建”。 随后将为启用的“Microsoft.AzureCosmosDB”创建包含服务终结点的子网。
+1. 提供创建新虚拟网络所需的详细信息，然后选择“创建”。  随后将为启用的“Microsoft.AzureCosmosDB”创建包含服务终结点的子网。
 
    ![为新虚拟网络选择虚拟网络和子网](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-如果 Azure Cosmos DB 帐户由其他 Azure 服务（例如 Azure 搜索）使用，或者从流分析或 Power BI 进行访问，请选择“接受来自公共 Azure 数据中心内部的连接”来允许这种访问。
+如果 Azure Cosmos DB 帐户由其他 Azure 服务（例如 Azure 搜索）使用，或者从流分析或 Power BI 进行访问，请选择“接受来自公共 Azure 数据中心内部的连接”来允许这种访问。 
 
-为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许从 Azure 门户访问”选项。 有关这些选项的详细信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)一文。 启用访问后，选择“保存”以保存设置。
+为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许从 Azure 门户访问”选项。  有关这些选项的详细信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)一文。 启用访问后，选择“保存”以保存设置。 
 
 ## <a id="remove-vnet-or-subnet"></a>删除虚拟网络或子网 
 
-1. 在“所有资源”边栏选项卡中，找到为其分配了服务终结点的 Azure Cosmos DB 帐户。  
+1. 在“所有资源”边栏选项卡中，找到为其分配了服务终结点的 Azure Cosmos DB 帐户。   
 
-2. 从设置菜单中选择“防火墙和虚拟网络”。  
+2. 从设置菜单中选择“防火墙和虚拟网络”  。  
 
-3. 若要删除某个虚拟网络或子网规则，请选择虚拟网络或子网旁边的“...”，然后选择“删除”。
+3. 若要删除某个虚拟网络或子网规则，请选择虚拟网络或子网旁边的“...”，然后选择“删除”。  
 
    ![删除虚拟网络](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
-4.  单击“保存”应用所做的更改。
+4.  单击“保存”应用所做的更改。 
 
 ## <a id="configure-using-powershell"></a>使用 Azure PowerShell 配置服务终结点
 

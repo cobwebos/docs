@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4b396c3b99c143f20caa774ee3c4c6ee25f96150
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0a2040424aa70f30831e214ce0b05d21414ff45c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777122"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389392"
 ---
 # <a name="search-for-gif-images"></a>搜索 .gif 图像 
 
@@ -26,7 +26,7 @@ ms.locfileid: "65777122"
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-[q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) 参数指定搜索词。  前面的查询还使用 [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) 筛选器参数指定 `animatedGif`。
+[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) 参数指定搜索词。  前面的查询还使用 [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) 筛选器参数指定 `animatedGif`。
 
 若要查看结果的示例，请使用以下 URL 搜索 bing.com。
 ```
@@ -35,14 +35,14 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 ```
 ## <a name="query-parameters"></a>查询参数
 
-有关查询参数和选项的详细信息，请参阅[图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters)。 在标题[使用 Java 搜索动态 gif 的示例](#gifExample)下面有一个示例。
+有关查询参数和选项的详细信息，请参阅[图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters)。 在标题[使用 Java 搜索动态 gif 的示例](#gifExample)下面有一个示例。
 
 ## <a name="tips-and-suggestions"></a>提示和建议
 
-- 可以指定 [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#maxfilesize) 和 [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#minfilesize) 参数。 我们建议设置 maxFileSize=2000000，因为我们索引中的大多数 gif 都小于 2MB。  如果需要考虑带宽（例如在移动蜂窝场景中），这也有助于控制数据大小。
+- 可以指定 [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) 和 [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) 参数。 我们建议设置 maxFileSize=2000000，因为我们索引中的大多数 gif 都小于 2MB。  如果需要考虑带宽（例如在移动蜂窝场景中），这也有助于控制数据大小。
 - 为了帮助提高感知性能，请在加载源 URL 之前先加载缩略图。  
 - 对于还没有用户查询的首次运行或登陆页面体验，请尝试使用我们的热门 gif 搜索来通过[热门图像 API](trending-images.md) 提供帮助。
-- [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) 参数有三种设置。  `strict` 选项会阻止成人内容。
+- [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) 参数有三种设置。  `strict` 选项会阻止成人内容。
 - 有关支持的语言和位置的完整列表，请参阅 [mkt](supported-countries-markets.md)。
 - *AnimatedGifHttps* 仅返回来自 https 地址的动态 gif 图像。 为了安全起见，许多应用程序需要通过 https 连接到外部 Web 链接。 例如，Apple App Store 需要通过 HTTPS 连接到 Web 服务，以便在传输过程中安全地加密用户数据。
 
@@ -55,7 +55,7 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
 ```
-如以下示例所示，URL 查询需要 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers) 标头。
+如以下示例所示，URL 查询需要 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) 标头。
 
 以下 Java 示例生成并发送请求。
 

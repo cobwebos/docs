@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 0b14180c894977d822aa30ea5f46a2e21e247dc1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: dd2e68c820a8c9e503a3539fd50bf3fba68e3949
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942316"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257526"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 for Customer Engagement 先决条件
 
@@ -40,7 +40,7 @@ Dynamics 365 for Customer Engagement 应用程序必须符合[Microsoft AppSourc
 
 业务需求包括在规程、合同和法律方面的以下义务：
 
-* 必须在 [Microsoft 合作伙伴网络 (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx)上注册或者是已注册的云市场发布者。 如果尚未注册，请执行[成为云市场发布者](../../become-publisher.md)中的步骤。  （对于第三步，请使用 [AppSource 合作伙伴提名表](https://appsource.microsoft.com/partners/signup)）。 
+* 必须在 [Microsoft 合作伙伴网络 (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx)上注册或者是已注册的云市场发布者。 如果尚未注册，请执行[成为云市场发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)中的步骤。  （对于第三步，请使用 [AppSource 合作伙伴提名表](https://appsource.microsoft.com/partners/signup)）。 
 
     >[!NOTE]
     >应当使用相同的 Microsoft Developer Center 注册帐户登录到云合作伙伴门户。 对于 Azure 市场产品/服务，只应具有一个 Microsoft 帐户。 此帐户不应特定于个别服务或产品/服务。

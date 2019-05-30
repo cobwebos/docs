@@ -1,7 +1,7 @@
 ---
 title: 快速入门：Python 和 REST Api-Azure 搜索
 description: 创建、 加载和使用 Python、 Jupyter Notebook 和 Azure 搜索 REST API 查询索引。
-ms.date: 05/15/2019
+ms.date: 05/23/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: a79a5fe1632eeabee670274ebbb19c4c34bd84d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 99b4ec0be8e9fa631c5081edd42474ea89dc5dc3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117342"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244794"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>快速入门：创建 Azure 搜索索引中使用 Jupyter 的 Python 笔记本
 > [!div class="op_single_selector"]
@@ -36,15 +36,15 @@ ms.locfileid: "66117342"
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)，提供 Python 3.x 和 Jupyter Notebook。
 
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
++ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 对于本快速入门，可以使用免费层。 
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
 ![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
 
@@ -52,7 +52,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="connect-to-azure-search"></a>连接到 Azure 搜索
 
-打开 Jupyter notebook，并通过请求服务上的索引列表来验证从本地工作站的连接。 在与 Anaconda3 Windows，可以使用 Anaconda 导航器来启动笔记本。
+在此任务中，启动 Jupyter notebook 并验证可以连接到 Azure 搜索。 将从你的服务请求的索引列表来执行此操作。 在与 Anaconda3 Windows，可以使用 Anaconda 导航器来启动笔记本。
 
 1. 创建新的 Python3 笔记本。
 
@@ -73,7 +73,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-1. 在第三个单元格中，表述请求。 此 GET 请求以搜索服务的索引集合为目标，并选择名称属性。
+1. 在第三个单元格中，表述请求。 此 GET 请求以搜索服务的索引集合为目标，并选择现有的索引的名称属性。
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -82,20 +82,20 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    pprint(index_list)
    ```
 
-1. 运行每个步骤。 如果存在索引，则响应将包含索引的列表。 下面的屏幕截图，该服务包括 azureblob 索引和 realestate-我们的示例索引。
+1. 运行每个步骤。 如果存在索引，则响应将包含索引名称的列表。 在下面的屏幕截图，该服务已经有 azureblob 索引和 realestate-我们的示例索引。
 
    ![向 Azure 搜索请求的 HTTP 的 Jupyter 笔记本中的 Python 脚本](media/search-get-started-python/connect-azure-search.png "向 Azure 搜索请求的 HTTP 的 Jupyter 笔记本中的 Python 脚本")
 
-   空索引集合返回此响应： `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   与此相反，空索引集合返回此响应： `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 > [!Tip]
 > 上一项免费服务，你被限制为三个索引、 索引器和数据源。 本快速入门中创建各项之一。 请确保有空间来进行进一步操作之前创建新对象。
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
-除非使用门户，可以加载数据之前，服务上必须存在索引。 此步骤中使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)推送到该服务的索引架构
+除非使用门户，可以加载数据之前，服务上必须存在索引。 此步骤中使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)推送到该服务的索引架构。
 
-字段集合定义的结构*文档*。 所需的元素的索引包含一个名称和字段集合。 每个字段有一个名称、 类型和特性，以确定如何使用它 (例如，是否是全文索引时才可搜索、 筛选或可在搜索结果中检索)。 一个索引，其中一个类型的字段中`Edm.String`必须指定为*密钥*文档标识。
+所需的元素的索引包括名称、 字段集合和一个密钥。 字段集合定义的结构*文档*。 每个字段有一个名称、 类型和确定如何使用该字段的属性 (例如，是否是全文索引时才可搜索、 筛选或可在搜索结果中检索)。 一个索引，其中一个类型的字段中`Edm.String`必须指定为*密钥*文档标识。
 
 此索引名为"hotels 的上一年度"，并且请参阅下面的字段定义。 它是更大的子集[Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)在其他演练中使用。 我们修整它在此快速入门中为了简单起见。
 
@@ -127,7 +127,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     }
     ```
 
-2. 在另一个单元格中，表述请求。 该 PUT 请求以搜索服务的索引集合为目标，并创建根据你在上一步中提供的索引架构的索引。
+2. 在另一个单元格中，表述请求。 该 PUT 请求以搜索服务的索引集合为目标，并创建基于在上一个单元格中提供的索引架构的索引。
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -138,12 +138,12 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 3. 运行每个步骤。
 
-   响应包括的架构的 JSON 表示形式。 下面的屏幕截图修剪索引架构的部分，以便您可以看到多个响应。
+   响应包括的架构的 JSON 表示形式。 下面的屏幕截图显示响应的一部分。
 
     ![请求创建索引](media/search-get-started-python/create-index.png "请求创建索引")
 
 > [!Tip]
-> 可能还检查索引列表在门户中，或重新运行服务连接请求以确定进行验证， *hotels py*索引集合中列出的索引。
+> 若要验证创建索引的另一种方法是检查在门户中的索引列表。
 
 <a name="load-documents"></a>
 
@@ -211,6 +211,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
             "StateProvince": "GA",
             "PostalCode": "30326",
             "Country": "USA"
+            }
         },
         {
         "@search.action": "upload",
@@ -229,11 +230,11 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
             "StateProvince": "TX",
             "PostalCode": "78216",
             "Country": "USA"
-       }
-      }
-     ]
+            }
+        }
+    ]
     }
-    ```
+    ```   
 
 2. 在另一个单元格中，表述请求。 此 POST 请求以酒店 py 索引的文档集合为目标，并将推送上一步中提供的文档。
 
@@ -246,26 +247,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 3. 运行每个步骤，若要将文档推送到你的搜索服务中的索引。 结果应类似于下面的示例。 
 
-   ```
-   {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#Collection(Microsoft.Azure.Search.V2019_05_06.IndexResult)",
-    'value': [{'errorMessage': None,
-            'key': '1',
-            'status': True,
-            'statusCode': 201},
-           {'errorMessage': None,
-            'key': '2',
-            'status': True,
-            'statusCode': 201},
-           {'errorMessage': None,
-            'key': '3',
-            'status': True,
-            'statusCode': 201}]},
-           {'errorMessage': None,
-            'key': '4',
-            'status': True,
-            'statusCode': 201}]}
-     ```
-
+    ![将文档发送到索引](media/search-get-started-python/load-index.png "将文档发送到索引")
 
 ## <a name="3---search-an-index"></a>3 - 搜索索引
 
@@ -278,7 +260,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-2. 明确表述请求。 此 GET 请求以酒店 py 索引的文档集合为目标，并将附加上一步中指定的查询。
+2. 在另一个单元格中，明确表述请求。 此 GET 请求以酒店 py 索引的文档集合为目标，并将附加上一步中指定的查询。
 
    ```python
    url = endpoint + "indexes/hotels-py/docs" + api_version + searchstring
@@ -287,32 +269,29 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    pprint(query)
    ```
 
-   结果应类似于以下输出。 结果是 unranked (search.score = 1.0) 因为我们不提供用于匹配的任何条件。
+3. 运行每个步骤。 结果应类似于以下输出。 
 
-   ```
-   {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#docs(*)",
-    '@odata.count': 3,
-    'value': [{'@search.score': 1.0,
-               'HotelId': '1',
-               'HotelName': 'Secret Point Motel'},
-              {'@search.score': 1.0,
-               'HotelId': '2',
-               'HotelName': 'Twin Dome Motel'},
-              {'@search.score': 1.0,
-               'HotelId': '3',
-               'HotelName': 'Triple Landscape Hotel'},
-              {'@search.score': 1.0,
-               'HotelId': '4',
-               'HotelName': 'Sublime Cliff Hotel'}]}
+    ![搜索索引](media/search-get-started-python/search-index.png "搜索索引")
+
+4. 请尝试几个其他查询示例，若要了解的语法。 您可以 searchstring 替换为下面的示例，然后重新运行搜索请求。 
+
+   应用筛选器： 
+
+   ```python
+   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'
    ```
 
-3. 请尝试几个其他查询示例，若要了解的语法。 可以应用筛选器、 执行前两个结果，或按特定字段进行排序。
+   执行前两个结果：
 
-   + `searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'`
+   ```python
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+   ```
 
-   + `searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'`
+    按特定字段进行排序：
 
-   + `searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'`
+   ```python
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+   ```
 
 ## <a name="clean-up"></a>清理 
 

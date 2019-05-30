@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: dc0a6e008c7a1f4fb414f6d8adad3a94abc7a6b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 51c1ea7b554178f7fb3f264bf731ffd5872ceea2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792338"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234546"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>源映射数据流转换 
 
@@ -92,7 +92,7 @@ ms.locfileid: "65792338"
 
 如果您的源是 SQL 数据库或 SQL 数据仓库中，则必须的源文件管理的其他选项。
 
-* **查询**：输入针对源的 SQL 查询。 此设置将覆盖你在数据集中选择任何表。 请注意， **Order By**子句不支持此处。 但可以在此处设置一个完整的 SELECT FROM 语句。
+* **查询**：输入针对源的 SQL 查询。 此设置将覆盖你在数据集中选择任何表。 请注意， **Order By**子句不受支持，但可以设置一个完整的 SELECT FROM 语句。 此外可以使用用户定义表函数。 **选择 * 从 udfGetData()** 是返回一个表的 SQL 中的 UDF。 此查询将生成可以使用在数据流中的源表。
 * **批大小**：输入要分块读取到大型数据的批处理大小。
 
 > [!NOTE]

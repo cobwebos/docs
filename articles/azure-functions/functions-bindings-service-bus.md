@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: e1cd7d9e135f5e3196f02237076c5c8069048fb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 199ce2fe24d76595493dc2128cebb3fcb642fcab
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442726"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241148"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -82,7 +82,7 @@ public static void Run(
 
 以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 此函数将读取[消息元数据](#trigger---message-metadata)并记录服务总线队列消息。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -122,7 +122,7 @@ public static void Run(string myQueueItem,
 
 以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [F# 函数](functions-reference-fsharp.md)。 该函数记录服务总线队列消息。 
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -183,7 +183,7 @@ let Run(myQueueItem: string, log: ILogger) =
 
 以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 此函数将读取[消息元数据](#trigger---message-metadata)并记录服务总线队列消息。 
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -273,18 +273,18 @@ module.exports = function(context, myQueueItem) {
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 function.json 文件和 `ServiceBusTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `ServiceBusTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
+|**type** | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**连接**|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。 |
-|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 中，此属性不可用，因为存储 SDK 不支持管理操作。|
+|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”  权限。 如果使用不具有“管理”  权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 中，此属性不可用，因为存储 SDK 不支持管理操作。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -330,7 +330,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 |`CorrelationId`|`string`|相关 ID。|
 
 > [!NOTE]
-> 目前，触发器仅适用于不使用会话的队列和订阅。 有关此功能的任何进一步更新，请跟踪[此功能项](https://github.com/Azure/azure-functions-host/issues/563)。 
+> 目前，适用于启用会话队列和订阅的服务总线触发器处于预览状态。 请跟踪[此项](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458)就此任何进一步更新。 
 
 请参阅在本文的前面部分使用这些属性的[代码示例](#trigger---example)。
 
@@ -386,7 +386,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -437,7 +437,7 @@ public static void Run(TimerInfo myTimer, ILogger log, ICollector<string> output
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [F# 脚本函数](functions-reference-fsharp.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -509,7 +509,7 @@ Java 函数也可将内容写入服务总线主题。 以下示例使用 `@Servi
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -589,17 +589,17 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 function.json 文件和 `ServiceBus` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `ServiceBus` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
+|**type** | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在发送主题消息的情况下设置，不为队列设置。|
 |**连接**|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
-|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 中，此属性不可用，因为存储 SDK 不支持管理操作。|
+|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”  权限。 如果使用不具有“管理”  权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 中，此属性不可用，因为存储 SDK 不支持管理操作。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

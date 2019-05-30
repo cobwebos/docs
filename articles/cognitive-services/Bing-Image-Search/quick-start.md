@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 18d5e17c4d44d396ca0044fbaf023cb4242555b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 006b611bd2dcc94b1b651de7789e165a5c45a17b
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60916659"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383773"
 ---
 # <a name="your-first-images-search-query"></a>首次图像搜索查询
 
@@ -31,18 +31,18 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/search
 
 我们建议所有请求都源自一个服务器。 将密钥作为客户端应用程序的一部分进行分发会为恶意第三方提供更多访问它的机会。 另外，从服务器发出调用可以为未来版本的 API 提供一个单一升级点。
 
-请求必须指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) 查询参数，其中包含用户的搜索词。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数（例如 `freshness` 和 `size`）的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。  
+请求必须指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) 查询参数，其中包含用户的搜索词。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数（例如 `freshness` 和 `size`）的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。  
   
-请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#subscriptionkey) 标头。 尽管可视需要添加，但仍建议还指定以下请求头：  
+请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#subscriptionkey) 标头。 尽管可视需要添加，但仍建议还指定以下请求头：  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#clientid)  
--   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#location)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#clientid)  
+-   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#clientip)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#location)  
 
 客户端 IP 和位置请求头对返回位置感知内容非常重要。  
 
-有关所有请求头和响应头的列表，请参阅[头](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers)。
+有关所有请求头和响应头的列表，请参阅[头](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers)。
 
 ## <a name="the-request"></a>请求
 

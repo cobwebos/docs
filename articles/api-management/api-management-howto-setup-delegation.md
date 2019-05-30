@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 4db99f23019b34e7361e3ead4096939b9499320d
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 2fad585e1d37694e37c219be210f9521dbbda3a0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518095"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241633"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
 
@@ -38,22 +38,22 @@ ms.locfileid: "65518095"
 3. 委派终结点反过来会重定向到或呈现 UI，要求用户登录或注册
 4. 成功后，用户会重定向回一开始使用的 API 管理开发人员门户页
 
-一开始需先将 API 管理设置为通过委派终结点来路由请求。 在 API 管理发布者门户中单击“安全”，并单击“委派”选项卡。单击复选框以启用委派登录和注册。
+一开始需先将 API 管理设置为通过委派终结点来路由请求。 在 API 管理发布者门户中单击“安全”  ，并单击“委派”  选项卡。单击复选框以启用委派登录和注册。
 
 ![“委派”页][api-management-delegation-signin-up]
 
-* 确定特殊委派终结点的 URL，将其输入“委派终结点 URL”字段中。 
-* 在”委派身份验证密钥”字段中输入一个密钥，该密钥用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 可以单击“生成”按钮让 API 管理随机生成一个密钥。
+* 确定特殊委派终结点的 URL，将其输入“委派终结点 URL”字段中。  
+* 在”委派身份验证密钥”字段中输入一个密钥，该密钥用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 可以单击“生成”按钮让 API 管理随机生成一个密钥。 
 
-现在需创建“委派终结点”。 该终结点需执行多项操作：
+现在需创建“委派终结点”。  该终结点需执行多项操作：
 
 1. 接收以下形式的请求：
    
-   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn & returnUrl = {源页的 URL} & = {字符串} & sig = {字符串}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={源页的 URL}&salt={字符串}&sig={字符串}*
    > 
    > 
    
-    查询参数的登录/注册示例：
+    登录/注册示例的查询参数：
    
    * **operation**：确定委派请求的类型，在此示例中只能为 **SignIn**
    * **returnUrl**： 用户单击了登录或注册链接的页面的 URL
@@ -67,9 +67,9 @@ ms.locfileid: "65518095"
      > 
      > 
    * 将上面计算的哈希与 **sig** 查询参数的值进行比较。 如果两个哈希匹配，则转到下一步，否则拒绝该请求。
-3. 验证你收到的请求登录 / 注册：**操作**查询参数将设置为"**SignIn**"。
-4. 为用户提供登录或注册 UI
-5. 如果用户要注册，则需在 API 管理中为其创建相应的帐户。 请使用 API 管理 REST API [创建用户]。 这样做时，请确保将用户 ID 设置为相同的值相同用户存储区或您可以跟踪的 ID。
+3. 验证收到的是否为登录/注册请求：需将 **operation** 查询参数设置为“**SignIn**”。
+4. 向用户提供登录或注册 UI
+5. 如果用户要注册，则需在 API 管理中为其创建相应的帐户。 请使用 API 管理 REST API [创建用户]。 这样做时，请确保将用户 ID 设置为与用户存储中的用户 ID 相同的值，或设置为可跟踪的 ID。
 6. 成功对用户进行身份验证以后，请执行以下操作：
    
    * 通过 API 管理 REST API [请求单一登录 (SSO) 令牌]
@@ -100,13 +100,13 @@ ms.locfileid: "65518095"
 2. 浏览器将重定向到委托终结点。
 3. 委托终结点执行所需的产品订阅步骤。 具体的步骤由你设计。 步骤可以包括重定向到另一个用于请求计费信息的页面、提出更多提问，或者只是存储信息而不要求执行任何用户操作
 
-若要启用此功能，请在“委派”页上单击“委派产品订阅”。
+若要启用此功能，请在“委派”页上单击“委派产品订阅”。  
 
 接下来，确保委托终结点执行以下操作：
 
 1. 接收以下形式的请求：
    
-   > *http:\//www.yourwebsite.com/apimdelegation?operation= {operation} & productId = {要订阅的产品} & userId = {发出请求的用户} & = {字符串} & sig = {字符串}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation={操作}&productId={要订阅的产品}&userId={提出请求的用户}&salt={字符串}&sig={字符串}*
    >
    
     产品订阅示例的查询参数：
@@ -130,13 +130,13 @@ ms.locfileid: "65518095"
      > 
    * 将上面计算的哈希与 **sig** 查询参数的值进行比较。 如果两个哈希匹配，则转到下一步，否则拒绝该请求。
 3. 根据在 **operation** 中请求的操作类型（例如请求计费信息、提问更多问题，等等）处理产品订阅。
-4. 已成功订阅产品的一端用户，通过 API 管理产品为用户订阅[调用 REST API 的订阅]。
+4. 在这一端成功为用户订阅产品以后，即可[调用订阅 REST API] 为用户订阅 API 管理产品。
 
 ## <a name="delegate-example-code"> </a> 示例代码
 
 这些代码示例演示如何：
 
-* 提取发布者门户的“委托”屏幕中设置的委托验证密钥
+* 提取发布者门户的“委托”屏幕中设置的委托验证密钥 
 * 创建 HMAC，随后它将用于验证签名，以证实所传递的 returnUrl 的有效性。
 
 同样的代码也适用于 productId 和 userId，只需进行轻微修改。
@@ -184,9 +184,9 @@ var signature = digest.toString('base64');
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[请求单一登录 (SSO) 令牌]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
-[创建用户]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[调用 REST API 的订阅]: https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate
+[请求单一登录 (SSO) 令牌]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/User/GenerateSsoUrl
+[创建用户]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user/createorupdate
+[调用订阅 REST API]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate
 [Next steps]: #next-steps
 [示例代码在下面提供]: #delegate-example-code
 

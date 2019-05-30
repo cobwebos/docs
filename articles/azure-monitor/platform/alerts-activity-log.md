@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Monitor 中创建、查看和管理活动日志警报
-description: 如何从 Azure 门户、资源模板和 PowerShell 创建活动日志警报。
+title: 创建、 Azure Monitor 中的视图和管理活动日志警报
+description: 如何使用 Azure 门户、 Azure 资源管理器模板和 Azure PowerShell 创建活动日志警报。
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130073"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244961"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -39,18 +39,18 @@ ms.locfileid: "66130073"
 
 请按以下过程操作：
 
-1. 在 Azure 门户中，选择“监视” > “警报”
-2. 单击“警报”窗口顶部的“新建警报规则”。
+1. 在 Azure 门户中，选择“监视” > “警报”  
+2. 单击“警报”窗口顶部的“新建警报规则”   。
 
      ![新建警报规则](media/alerts-activity-log/AlertsPreviewOption.png)
 
-     此时将显示“创建规则”窗口。
+     此时将显示“创建规则”窗口。 
 
       ![新建警报规则选项](media/alerts-activity-log/create-new-alert-rule-options.png)
 
-3. 在“定义警报条件”下提供以下信息，然后单击“完成”。
+3. 在“定义警报条件”下提供以下信息，然后单击“完成”。  
 
-   - **警报目标：** 若要查看并选择新警报的目标，请使用“按订阅筛选” / “按资源类型筛选”，并从显示的列表中选择资源或资源组。
+   - **警报目标：** 若要查看并选择新警报的目标，请使用“按订阅筛选” / “按资源类型筛选”，并从显示的列表中选择资源或资源组。  
 
      > [!NOTE]
      > 
@@ -59,9 +59,9 @@ ms.locfileid: "66130073"
      **警报目标示例视图**
      ![选择目标](media/alerts-activity-log/select-target.png)
 
-   - 在“目标条件”下，单击“添加条件”，将会显示目标的所有可用信号，包括来自各种**活动日志**的那些信号；**监视服务**名称中追加了类别名称。
+   - 下**目标条件**，单击**添加条件**并且包括来自各种类别的显示目标的所有可用信号**活动日志**;在类别名称后追加**监视器服务**名称。
 
-   - 从**活动日志**类型的各种可能操作的显示列表中选择信号。
+   - 从显示的类型的各种可能操作的列表中选择信号**活动日志**。
 
      可为此目标信号选择日志历史记录时间线和相应的警报逻辑：
 
@@ -73,38 +73,38 @@ ms.locfileid: "66130073"
 
      **警报逻辑**：
 
-     - **事件级别** - 事件的严重性级别。 “详细”、“信息性”、“警告”、“错误”或“严重”。
-     - **状态**：事件的状态。 例如，“已启动”、“失败”或“成功”。
+     - **事件级别** - 事件的严重性级别。 “详细”、“信息性”、“警告”、“错误”或“严重”。     
+     - **状态**：事件的状态。 例如，“已启动”、“失败”或“成功”。   
      - **事件发起者**：也称为“调用方”；执行操作的用户的电子邮件地址或 Azure Active Directory 标识符。
 
        应用了警报逻辑的示例信号图：
 
        ![ 已选择条件](media/alerts-activity-log/criteria-selected.png)
 
-4. 在“定义警报规则详细信息”下提供以下详细信息：
+4. 在“定义警报规则详细信息”下提供以下详细信息： 
 
     - **警报规则名称** – 新警报规则的名称
     - **说明** – 新警报规则的说明
     - **将警报保存到资源组** – 选择要在其中保存此新规则的资源组。
 
-5. 在“操作组”下，从下拉菜单中指定要分配到此新警报规则的操作组。 或者，[创建新的操作组](../../azure-monitor/platform/action-groups.md)并将其分配到新规则。 若要创建新组，请单击“+ 新建组”。
+5. 在“操作组”下，从下拉菜单中指定要分配到此新警报规则的操作组。  或者，[创建新的操作组](../../azure-monitor/platform/action-groups.md)并将其分配到新规则。 若要创建新组，请单击“+ 新建组”。 
 
-6. 若要在创建规则后启用规则，请单击“创建后启用规则”选项对应的“是”。
-7. 单击“创建警报规则”。
+6. 若要在创建规则后启用规则，请单击“创建后启用规则”选项对应的“是”。  
+7. 单击“创建警报规则”。 
 
     随即为活动日志创建了新的警报规则，同时，窗口的右上角会显示一条确认消息。
 
     可以启用、禁用、编辑或删除规则。 详细了解如何管理活动日志规则。
 
 
-另外，可以通过简单的类比来理解在活动日志上创建警报规则时可以基于的条件，那就是通过 [Azure 门户中的活动日志](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal)浏览或筛选事件。 在 Azure Monitor - 活动日志中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报，然后按照教程中上文所述的步骤 4 继续前进。
+或者，了解活动日志，可以在其创建警报规则的条件的一个简单的类比是以浏览或筛选事件通过[在 Azure 门户中的活动日志](activity-log-view.md#azure-portal)。 Azure Monitor 的活动日志中可以筛选或查找必要的事件，并使用，然后创建警报**添加活动日志警报**按钮; 然后按照步骤 4 及更高版本，如上面的教程中所述。
     
  ![ 从活动日志添加警报](media/alerts-activity-log/add-activity-log.png)
     
 
 ### <a name="view-and-manage-in-azure-portal"></a>在 Azure 门户中查看和管理
 
-1. 在 Azure 门户中，单击“监视” > “警报”，然后单击窗口左上角的“管理规则”。
+1. 在 Azure 门户中，单击“监视” > “警报”，然后单击窗口左上角的“管理规则”    。
 
     ![ 管理警报规则](media/alerts-activity-log/manage-alert-rules.png)
 
@@ -114,13 +114,13 @@ ms.locfileid: "66130073"
 
     ![ 搜索活动日志警报规则](media/alerts-activity-log/searth-activity-log-rule-to-edit.png)
 
-    可以使用可用的筛选器（“订阅”、“资源组”、“资源”、“信号类型”或“状态”）来查找想要编辑的活动规则。
+    可以使用可用的筛选器（“订阅”、“资源组”、“资源”、“信号类型”或“状态”）来查找想要编辑的活动规则。     
 
    > [!NOTE]
    > 
-   > 只能编辑“说明”、“目标条件”和“操作组”。
+   > 只能编辑“说明”、“目标条件”和“操作组”。   
 
-3. 选择规则并双击以编辑规则选项。 进行所需的更改，然后单击“保存”。
+3. 选择规则并双击以编辑规则选项。 进行所需的更改，然后单击“保存”  。
 
    ![ 管理警报规则](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
@@ -201,7 +201,7 @@ ms.locfileid: "66130073"
 > 新的活动日志警报规则可能需要最多 5 分钟才变为活动状态。
 
 ## <a name="rest-api"></a>REST API 
-[Azure Monitor - 活动日志警报 API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) 是一个 REST API 并且与 Azure 资源管理器 REST API 完全兼容。 因此，可以使用资源管理器 cmdlet 和 Azure CLI 通过 Powershell 使用它。
+[Azure 监视器-活动日志警报 API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts)为 REST API 并与 Azure 资源管理器 REST API 完全兼容。 因此，可以使用资源管理器 cmdlet 和 Azure CLI 通过 Powershell 使用它。
 
 ## <a name="powershell"></a>PowerShell
 

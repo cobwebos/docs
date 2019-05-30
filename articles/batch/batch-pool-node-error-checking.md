@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 9/25/2018
+ms.date: 05/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8d8df9935e935ac8d5a1194cfab103a006cf5546
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: b0a9d04fccce7ccbacb700f7af5126c6ae05140a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791335"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357765"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 
@@ -56,11 +56,11 @@ ms.locfileid: "57791335"
 
 [池重设大小完成事件](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event)捕获所有评估的相关信息。
 
-### <a name="delete"></a>删除
+### <a name="delete"></a>DELETE
 
 删除包含节点的池时，Batch 首先会删除节点。 然后再删除池对象。 可能需要等待数分钟才会删除池节点。
 
-Batch 在删除过程中将[池状态](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate)设置为“删除中”。 调用应用程序可以使用“state”和“stateTransitionTime”属性来检测池删除时间是否过长。
+Batch 在删除过程中将[池状态](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate)设置为“删除中”  。 调用应用程序可以使用“state”和“stateTransitionTime”属性来检测池删除时间是否过长   。
 
 ## <a name="pool-compute-node-errors"></a>池计算节点错误
 
@@ -68,13 +68,13 @@ Batch 在删除过程中将[池状态](https://docs.microsoft.com/rest/api/batch
 
 ### <a name="start-task-failure"></a>开始任务失败
 
-建议为池指定一个可选的[开始任务](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)。 与任何任务一样，可以使用从存储器中下载的命令行和资源文件。 开启后，即可为每个节点运行开始任务。 waitForSuccess 属性指定 Batch 是否等待开始任务成功完成后才计划节点的任何任务。
+建议为池指定一个可选的[开始任务](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)。 与任何任务一样，可以使用从存储器中下载的命令行和资源文件。 开启后，即可为每个节点运行开始任务。 waitForSuccess 属性指定 Batch 是否等待开始任务成功完成后才计划节点的任何任务  。
 
 如果已将节点配置为等待开始任务成功完成，但开始任务失败，该如何操作？ 在此情况下，节点不可用，但仍会产生费用。
 
 可以使用顶级 [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) 节点属性的 [result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) 和 [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) 属性来检测开始任务是否失败。
 
-如果将“waitForSuccess”设置为“true”，则失败的开始任务还会导致 Batch 将节点[状态](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)设置为“starttaskfailed”。
+如果将“waitForSuccess”设置为“true”，则失败的开始任务还会导致 Batch 将节点[状态](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)设置为“starttaskfailed”    。
 
 与任何任务一样，开始任务失败可能有许多原因。  若要进行故障排除，请检查 stdout、stderr 和任何其他特定于任务的日志文件。
 
@@ -82,20 +82,29 @@ Batch 在删除过程中将[池状态](https://docs.microsoft.com/rest/api/batch
 
 可以为池指定一个或多个应用程序包。 Batch 将指定的包文件下载到每个节点，并在节点开始之后、计划任务之前解压缩文件。 通常将开始任务命令行与应用程序包结合使用。 例如，将文件复制到其他文件或运行安装程序。
 
-节点 [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) 属性报告未能下载和解压缩应用程序包。 Batch 将节点状态设置为“不可用”。
+节点 [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) 属性报告未能下载和解压缩应用程序包。 Batch 将节点状态设置为“不可用”  。
+
+### <a name="container-download-failure"></a>容器下载失败
+
+您可以在池上指定一个或多个容器的引用。 批量下载到每个节点指定的容器。 在节点[错误](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)属性将报告失败以下载容器和节点状态设置为**不可用**。
 
 ### <a name="node-in-unusable-state"></a>处于“不可用”状态的节点
 
-由于多种原因，Azure Batch 可能将[节点状态](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)设置为“不可用”。 将节点状态设置为“不可用”之后，任务无法计划到节点中，但节点仍会产生费用。
+由于多种原因，Azure Batch 可能将[节点状态](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)设置为“不可用”  。 将节点状态设置为“不可用”之后，任务无法计划到节点中，但节点仍会产生费用  。
 
-Batch 将始终尝试恢复不可用节点，但恢复可能可行也可能不可行，具体取决于何种原因。
+中的节点**unsuable**，但没有[错误](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)状态意味着批处理无法与 VM 通信。 在这种情况下，批处理始终尝试将 VM 恢复。 批处理不会自动尝试恢复 Vm，无法安装应用程序的包或容器，即使其状态也是如此**不可用**。
 
 如果 Batch 可以确定原因，则节点 [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) 属性会报告该原因。
 
-“不可用”节点的其他原因示例：
+“不可用”节点的其他原因示例  ：
 
 - 自定义 VM 映像无效。 例如，未正确准备映像。
+
 - 由于基础结构故障或低级别的升级，移动了 VM。 Batch 会恢复节点。
+
+- 不支持它的硬件上，已部署的 VM 映像。 例如"HPC"VM 映像非 HPC 硬件上运行。 例如，尝试运行 CentOS 的 HPC 映像[Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) VM。
+
+- 这些 Vm 位于[Azure 虚拟网络](batch-virtual-network.md)，和对关键端口被阻止的流量。
 
 ### <a name="node-agent-log-files"></a>节点代理日志文件
 

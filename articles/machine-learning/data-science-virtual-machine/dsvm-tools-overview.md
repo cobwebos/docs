@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1defaea3743ebb8ddb688cef28efb7eee8ecb07c
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597107"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236481"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>了解数据科学虚拟机
 
@@ -30,7 +30,7 @@ ms.locfileid: "65597107"
 DSVM 还可以在本地执行的 Jupyter Notebook 的形式中包含多个代码示例和演练。此外没有文档以帮助理解这些示例。 
 
 > [!NOTE]
-> 可以使用[Azure Notebooks](/azure/notebooks/azure-notebooks-overview.md)来创建、 运行和共享 Jupyter notebook 在云中。 你可以[将数据科学 VM 附加到 Azure Notebooks](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)以展开的可用计算能力。
+> 可以使用[Azure Notebooks](/azure/notebooks/azure-notebooks-overview)来创建、 运行和共享 Jupyter notebook 在云中。 你可以[将数据科学 VM 附加到 Azure Notebooks](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)以展开的可用计算能力。
 
 数据科学 VM 中包含的工具、平台、实用程序和示例分为以下几部分：
 

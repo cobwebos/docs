@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2204fe3e08b3c4b909ddc8b7ade4cec219d34fb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406632"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254010"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Web 应用登录用户的代码配置
 
@@ -110,6 +110,9 @@ ms.locfileid: "65406632"
 
 在 ASP.NET Core Web 应用 （和 Web Api） 中，执行应用程序初始化的代码位于`Startup.cs`文件，并且，若要添加使用 Microsoft 标识平台 (以前称为 Azure AD) v2.0 身份验证，你将需要添加以下代码。 在代码中的注释应该浅显易懂。
 
+  > [!NOTE]
+  > 如果你的项目开始在 Visual studio 中使用的默认 ASP.NET core web 项目`dotnet new mvc`方法`AddAzureAD`则使用默认情况下，因为会自动加载相关的包。 但是如果从零开始生成项目并尝试使用下面的代码，我们建议添加 NuGet 包 **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** 到项目，才能使`AddAzureAD`提供的方法。
+  
 ```CSharp
  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
          .AddAzureAD(options => configuration.Bind("AzureAd", options));

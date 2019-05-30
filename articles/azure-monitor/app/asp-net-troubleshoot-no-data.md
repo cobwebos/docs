@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 467586fd23332469338dabd2feb6a42ce4b17af5
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: cf818756f583974a8a9b53a9a0cce31dd93d042b
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471850"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299308"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
@@ -25,6 +25,16 @@ ms.locfileid: "65471850"
 
 * 如果持续看到同一个部分，可能是由于自适应[采样](../../azure-monitor/app/sampling.md)所导致。 要确认这一点，请打开“搜索”（通过“概述”边栏选项卡），并查看请求或其他事件的实例。 单击“属性”部分底部的“...”，获取完整的属性详细信息。 如果请求计数 > 1，则表示采样正在进行。
 * 否则，有可能是已达到定价计划的[数据率限制](../../azure-monitor/app/pricing.md#limits-summary)。 系统每隔一分钟应用这些限制。
+
+*我随机遇到数据丢失。*
+
+* 检查您是否遇到的数据损失时[遥测通道](telemetry-channels.md#does-applicationinsights-channel-offer-guaranteed-telemetry-delivery-or-what-are-the-scenarios-where-telemetry-can-be-lost)
+
+* 检查遥测通道中的任何已知问题[Github 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)
+
+*当应用程序即将停止时遇到在控制台应用程序或 Web 应用上的数据丢失。*
+
+* SDK 通道将遥测数据保留在缓冲区，并将其发送批。 如果应用程序正在关闭，你可能需要显式调用[flush （)](api-custom-events-metrics.md#flushing-data)。 行为`Flush()`取决于实际[通道](telemetry-channels.md#built-in-telemetrychannels)使用。
 
 ## <a name="no-data-from-my-server"></a>服务器未提供数据
 *我已在 Web 服务器上安装应用，但未看到服务器提供任何遥测数据。服务器在开发计算机上正常运行。*
@@ -41,7 +51,7 @@ ms.locfileid: "65471850"
 
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](../../azure-monitor/app/windows-desktop.md)。
 * 请务必使用 [Visual Studio 2013 Update 3 或更高版本](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
-* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
+* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。    如果是，请单击“更新”查看是否有可用的更新。 
 * 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 如果没有，请尝试卸载然后重新安装 Developer Analytics Tools。
 
 ## <a name="q02"></a>添加 Application Insights 失败
@@ -58,12 +68,11 @@ ms.locfileid: "65471850"
 * 检查是否为适当的 Azure 帐户提供了登录凭据。
 * 在浏览器中，检查是否可以访问 [Azure 门户](https://portal.azure.com)。 打开“设置”并查看是否有任何限制。
 * [将 Application Insights 添加到现有项目](../../azure-monitor/app/asp-net.md)：在解决方案资源管理器中，右键单击项目并选择“添加 Application Insights”。
-* 如果仍不起作用，请执行[手动过程](../../azure-monitor/app/windows-services.md)在门户中添加资源，然后将 SDK 添加到项目。
 
 ## <a name="emptykey"></a>遇到错误“检测密钥不能为空”
 可能是在安装 Application Insights 或日志记录适配器时发生了问题。
 
-在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“配置 Application Insights”。 将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。
+在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“配置 Application Insights”  。 将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。
 
 ## <a name="NuGetBuild"></a> 生成服务器上出现“缺少 NuGet 包”
 *在开发计算机上调试时所有生成都没有问题，但生成服务器上出现 NuGet 错误。*
@@ -82,8 +91,8 @@ ms.locfileid: "65471850"
 解决方法：
 
 * 确保 Visual Studio 版本为 2013 Update 3 或更高。
-* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
-* 在解决方案资源管理器中右键单击项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。
+* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。    如果是，请单击“更新”查看是否有可用的更新。 
+* 在解决方案资源管理器中右键单击项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。 
 
 否则，开发人员分析工具不直接支持项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中选择“Application Insights”，然后选择应用程序。
 
@@ -126,7 +135,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * 在 Application Insights 门户中，打开[诊断搜索](../../azure-monitor/app/diagnostic-search.md)。 数据通常会先显示在此处。
 * 单击“刷新”按钮。 边栏选项卡会定期自行刷新，但你也可以手动刷新。 时间范围越大，刷新间隔就越长。
-* 检查检测密钥是否匹配。 在 Application Insights 门户的应用主边栏选项卡中，查看“概要”下拉列表中的“检测密钥”。 然后，在 Visual Studio 的项目中，打开 ApplicationInsights.config 并找到 `<instrumentationkey>`。 检查两个密钥是否相同。 如果不同：  
+* 检查检测密钥是否匹配。 在 Application Insights 门户的应用主边栏选项卡中，查看“概要”下拉列表中的“检测密钥”。   然后，在 Visual Studio 的项目中，打开 ApplicationInsights.config 并找到 `<instrumentationkey>`。 检查两个密钥是否相同。 如果不同：  
   * 在门户中单击“Application Insights”，并找到具有正确密钥的应用资源；或
   * 在 Visual Studio 解决方案资源管理器中右键单击项目，并依次选择“Application Insights”、“配置”。 重置应用，将遥测数据发送到正确的资源。
   * 如果找不到匹配的密钥，请检查在 Visual Studio 中使用的登录凭据是否与门户中使用的相同。
@@ -183,7 +192,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 按照这些说明来捕获框架的故障排除日志。
 
-### <a name="net-framework"></a>.NET Framework
+### <a name="net-framework"></a>.NET framework
 
 1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsighs` 版本匹配
 

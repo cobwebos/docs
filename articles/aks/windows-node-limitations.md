@@ -2,17 +2,17 @@
 title: Windows Server 节点池在 Azure Kubernetes 服务 (AKS) 的限制
 description: 在运行 Windows Server 节点池和应用程序工作负荷在 Azure Kubernetes 服务 (AKS) 时了解的已知限制
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: 3d249271995d96307722dadf6b3e012e63565e6a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.author: twhitney
+ms.openlocfilehash: 34ece6e49332f781f688a8741db3514faf8c9a25
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956274"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304397"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Windows Server 节点池和应用程序工作负荷在 Azure Kubernetes 服务 (AKS) 的当前限制
 
@@ -21,9 +21,10 @@ ms.locfileid: "65956274"
 本文概述了一些限制和 Windows Server 在 AKS 中的节点的 OS 概念。 适用于 Windows Server 的节点池目前处于预览状态。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
+> AKS 预览版功能是自助服务的选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中，这些功能不是用于生产环境中使用。 公共预览版中的功能属于最大努力支持。 AKS 技术支持团队的协助营业时间太平洋时区 （太平洋标准时间） 仅将提供。 有关其他信息，请参阅以下支持文章：
 >
-> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
+> * [AKS 支持策略][aks-support-policies]
+> * [Azure 支持常见问题][aks-faq]
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>在 Kubernetes 中的 Windows Server 的限制
 
@@ -57,6 +58,8 @@ Windows Server 容器必须在基于 Windows 的容器主机上运行。 若要�
 - 在 AKS 中的预览功能，如网络策略和群集自动缩放程序，不认可的 Windows 服务器节点。
 - 只应使用 NodeSelector Linux 节点上计划入口控制器。
 - Azure 开发人员空间目前仅适用于基于 Linux 的节点池。
+- 组托管的服务帐户 (gMSA) 支持 Windows Server 节点不加入到 Active Directory 域时不是在 AKS 中当前可用。
+    - 开放源代码，上游[aks 引擎][ aks-engine]项目如果您需要使用此功能目前提供 gMSA 支持。
 
 ## <a name="os-concepts-that-are-different"></a>不同的 OS 概念
 
@@ -74,11 +77,13 @@ Kubernetes 是从历史上看面向 Linux 的。 在上游中使用的许多示�
 
 <!-- LINKS - external -->
 [upstream-limitations]: https://kubernetes.io/docs/setup/windows/#limitations
-[aks-github]: https://github.com/azure/aks/issues]
 [kubernetes]: https://kubernetes.io
+[aks-engine]: https://github.com/azure/aks-engine
 
 <!-- LINKS - internal -->
 [azure-network-models]: concepts-network.md#azure-virtual-networks
 [configure-azure-cni]: configure-azure-cni.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [windows-node-cli]: windows-container-cli.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

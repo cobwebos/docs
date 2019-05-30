@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 633981682bd8820d72a98b3fc6fbd802e0cd2afb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32dc928147af8fbb3c84bdb76e50cee4fdabe17d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759888"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386652"
 ---
 # <a name="video-search-api-upgrade-guide"></a>视频搜索 API 升级指南
 
@@ -71,11 +71,11 @@ InsufficientScope|InsufficientAuthorization
 
 ### <a name="query-parameters"></a>查询参数
 
-- 已将 `modulesRequested` 查询参数重命名为 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested)。  
+- 已将 `modulesRequested` 查询参数重命名为 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested)。  
 
 ### <a name="object-changes"></a>对象变化
 
-- 已将 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) 的 `nextOffsetAddCount` 字段重命名为 `nextOffset`。 offset 的使用方式也已变化。 以前会将 [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) 查询参数设置为，`nextOffset` 值加上前一 offset 值，再加上结果中的视频数。 现在可以直接将 `offset` 查询参数设置为 `nextOffset` 值。  
+- 已将 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 的 `nextOffsetAddCount` 字段重命名为 `nextOffset`。 offset 的使用方式也已变化。 以前会将 [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) 查询参数设置为，`nextOffset` 值加上前一 offset 值，再加上结果中的视频数。 现在可以直接将 `offset` 查询参数设置为 `nextOffset` 值。  
   
-- 已将 `relatedVideos` 字段的数据类型从 `Video[]` 更改为 [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videosmodule)（请参阅 [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails)）。
+- 已将 `relatedVideos` 字段的数据类型从 `Video[]` 更改为 [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule)（请参阅 [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)）。
 

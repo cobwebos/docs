@@ -1,319 +1,173 @@
 ---
-title: 数据复制或移动到 Azure 存储使用 AzCopy v10 |Microsoft Docs
-description: 使用 AzCopy 命令行实用工具来移动或复制数据到或从 blob、 data lake 和文件内容。 从本地文件将数据复制到 Azure 存储，或者在存储帐户中或存储帐户之间复制数据。 轻松地将数据迁移到 Azure 存储。
+title: 使用 AzCopy v10 将数据复制或移到 Azure 存储 | Microsoft Docs
+description: AzCopy 是一个命令行实用工具，可用于将数据复制到，或存储帐户之间。 本文可帮助你下载 AzCopy，连接到你的存储帐户，然后将文件传输。
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2019
+ms.date: 05/14/2019
 ms.author: normesta
-ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: b5a13dfd760f0c94343b151c9b4c1148c949e854
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cc65d6d3f7e7dcc08ea29ecc8a299b556563135b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790009"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236312"
 ---
-# <a name="transfer-data-with-azcopy-v10"></a>使用 AzCopy v10 传输数据
+# <a name="get-started-with-azcopy"></a>AzCopy 入门
 
-AzCopy 是用于向 / 从 Microsoft Azure Blob 和文件存储复制数据的命令行实用程序。 AzCopy 提供了一个经过重新设计的命令行接口，并将新的体系结构的可靠的数据传输。 使用 AzCopy 可在文件系统与存储帐户之间或者在存储帐户之间复制数据。
+AzCopy 是一个命令行实用工具，可用于向 / 从存储帐户复制 blob 或文件。 本文可帮助你下载 AzCopy，连接到你的存储帐户，然后将文件传输。
 
-## <a name="whats-new-in-azcopy-v10"></a>AzCopy v10 中的新增功能
+> [!NOTE]
+> AzCopy **V10**是当前支持的版本的 AzCopy。
+>
+> 如果你需要使用 AzCopy **v8.1**，请参阅[使用以前版本的 AzCopy](#previous-version)本文的部分。
 
-- 将文件系统同步到 Azure Blob 存储，或反之。 使用 `azcopy sync <source> <destination>`。 非常适合增量复制方案。
-- 支持 Azure Data Lake Storage Gen2 API。 使用`myaccount.dfs.core.windows.net`为调用 Data Lake 存储第 2 代 Api 的 URI。
-- 支持将整个帐户（仅限 Blob 服务）复制到另一个帐户。
-- 支持从 Amazon Web Services S3 存储桶中复制数据。
-- 使用新的[从 URL 放置块](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API 来支持帐户到帐户的复制。 无需向客户端传输数据，因此数据传输速度更快。
-- 列出或删除给定路径中的文件和 Blob。
-- 支持在路径中使用通配符模式，并支持 --exclude 标志。
-- 使用每个 AzCopy 实例创建作业顺序和相关的日志文件。 可以查看和重启以前的作业，以及恢复失败的作业。 AzCopy 还会在失败后自动重试传输。
-- 提供常规性能改进。
+<a id="download-and-install-azcopy" />
 
-## <a name="download-and-install-azcopy"></a>下载并安装 AzCopy
+## <a name="download-azcopy"></a>下载 AzCopy
 
-### <a name="latest-production-version-v10"></a>最新生产版本 (v10)
+首先，AzCopy V10 可执行文件下载到您的计算机上的任何文件夹。 为方便起见，请考虑将 AzCopy 的文件夹位置添加到系统路径中的易于使用。
 
-下载最新版本的 AzCopy:
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-### <a name="latest-azcopy-supporting-table-storage-service-v73"></a>支持表存储服务 (v7.3) 的最新 AzCopy
+> [!NOTE]
+> 如果你想要将数据复制到和从你[Azure 表存储](https://docs.microsoft.com/azure/storage/tables/table-storage-overview)服务，然后安装[AzCopy 版本 7.3](https://aka.ms/downloadazcopynet)。
 
-下载[支持向/从 Microsoft Azure 表存储服务复制数据的 AzCopy v7.3](https://aka.ms/downloadazcopynet)。
+## <a name="run-azcopy"></a>运行 AzCopy
 
-## <a name="post-installation-steps"></a>安装后的步骤
+从命令提示符，导航到下载了文件的目录。
 
-AzCopy 不需要进行安装。 只需打开首选的命令行应用程序，并浏览到 `azcopy.exe` 所在的文件夹。 如果需要，可将 AzCopy 文件夹位置添加到系统路径以方便使用。
+若要查看的 AzCopy 命令的列表，请键入`azCopy`，然后按 ENTER 键。
 
-## <a name="authentication-options"></a>身份验证选项
+若要了解有关特定命令的详细信息，请键入`azCopy`跟命令名称。
 
-使用 Azure 存储进行身份验证时，AzCopy 支持以下选项：
-- **Azure Active Directory** (适用于**Blob 和数据湖存储第 2 代服务**)。 使用```.\azcopy login```使用 Azure Active Directory 进行登录。  用户应具有["存储 Blob 数据参与者"角色分配](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)要写入到 Blob 存储与 Azure Active Directory 身份验证。 对于通过 Azure 资源的管理的标识的身份验证，使用`azcopy login --identity`。
-- **共享访问签名令牌 [支持 Blob 和文件服务]**。 在命令行中将共享访问签名 (SAS) 令牌追加到 Blob 路径即可使用该令牌。 可以使用 Azure 门户、[存储资源管理器](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken) 或所选的其他工具生成 SAS 令牌。 有关详细信息，请参阅[示例](https://docs.microsoft.com/azure/storage/blobs/common/storage-dotnet-shared-access-signature-part-1)。
+例如，若要了解有关`copy`命令中，键入`azcopy copy`，然后按 ENTER 键。
 
-## <a name="getting-started"></a>入门
+您可以执行任何意义，使用 AzCopy 操作之前，您需要决定将提供到存储服务的授权凭据的方式。
 
-> [!TIP]
-> **更喜欢图形用户界面？**
->
-> 在可以简化 Azure 存储数据管理的桌面客户端 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)中，可以使用 AzCopy 来加速与 Azure 存储之间进行的数据传输。
->
-> 在存储资源管理器中的“预览”菜单下启用 AzCopy。
-> ![在 Azure 存储资源管理器中启用 AzCopy 作为传输引擎](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
+## <a name="choose-how-youll-provide-authorization-credentials"></a>选择将提供授权凭据的方式
 
-AzCopy v10 具有自有案可稽的语法。 当已登录到 Azure Active Directory 时，常规语法看起来如下所示：
+使用 Azure Active Directory (AD)，或使用共享访问签名 (SAS) 令牌，可以提供授权凭据。
 
-```azcopy
-.\azcopy <command> <arguments> --<flag-name>=<flag-value>
+使用此表作为指南：
 
-# Examples if you have logged into the Azure Active Directory:
-.\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container" --recursive=true
-.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile"
-.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/container"
+| 存储类型 | 当前受支持的方法的授权 |
+|--|--|
+|**Blob 存储** | Azure AD & SAS |
+|**Blob 存储 （分层命名空间）** | 仅 Azure AD |
+|**文件存储** | 仅 SAS |
 
-# Examples if you're using SAS tokens to authenticate:
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?st=2019-04-05T04%3A10%3A00Z&se=2019-04-13T04%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=Qdihej%2Bsbg4AiuyLVyQZklm9pSuVGzX27qJ508wi6Es%3D" --recursive=true
-.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?st=2019-04-05T04%3A10%3A00Z&se=2019-04-13T04%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=Qdihej%2Bsbg4AiuyLVyQZklm9pSuVGzX27qJ508wi6Es%3D"
-```
+### <a name="option-1-use-azure-ad"></a>选项 1：使用 Azure AD
 
-以下语法介绍如何获取可用命令的列表：
+所需的授权级别取决于你是否计划将文件上传或只需下载它们。
 
-```azcopy
-.\azcopy --help
-# To use the alias instead
-.\azcopy -h
-```
+#### <a name="authorization-to-upload-files"></a>若要将文件上传的授权
 
-若要查看特定命令的帮助页和示例，请运行以下命令：
+验证，这些角色之一的已分配给你的身份：
 
-```azcopy
-.\azcopy <cmd> --help
-# Example:
-.\azcopy cp -h
-```
+- [存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
+- [存储 Blob 数据所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
-## <a name="create-a-blob-container-or-file-share"></a>创建 blob 容器或文件共享 
+这些角色可以分配给你在任何这些作用域中的身份：
 
-**创建 blob 容器**
+- 容器 （文件系统）
+- 存储帐户
+- 资源组
+- 订阅
 
-```azcopy
-.\azcopy make "https://account.blob.core.windows.net/container-name"
-```
+若要了解如何验证并分配角色，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-**创建文件共享**
+不需要有一个分配给你的身份，如果你的身份添加到的目标容器或文件夹的访问控制列表 (ACL) 这些角色。 在 ACL 中你的身份需要写入目标文件夹的权限和容器和每个父文件夹上的执行权限。
 
-```azcopy
-.\azcopy make "https://account.file.core.windows.net/share-name"
-```
+若要了解详细信息，请参阅[Azure 数据湖存储第 2 代中的访问控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
-**使用 Azure 数据湖存储第 2 代创建 blob 容器**
+#### <a name="authorization-to-download-files"></a>若要下载文件的授权
 
-如果已在 Blob 存储帐户上启用分层命名空间，可以使用以下命令以创建新的 blob 容器上传的文件。
+验证，这些角色之一的已分配给你的身份：
 
-```azcopy
-.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name"
-```
+- [存储 Blob 数据读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
+- [存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
+- [存储 Blob 数据所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
-## <a name="copy-data-to-azure-storage"></a>将数据复制到 Azure 存储
+这些角色可以分配给你在任何这些作用域中的身份：
 
-使用 copy 命令将数据从源传输到目标。 源或目标可以是：
-- 本地文件系统
-- Azure Blob/虚拟目录/容器 URI
-- Azure 文件/目录/文件共享 URI
-- Azure Data Lake Storage Gen2 文件系统/目录/文件 URI
+- 容器 （文件系统）
+- 存储帐户
+- 资源组
+- 订阅
+
+若要了解如何验证并分配角色，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+
+不需要有一个分配给你的身份，如果你的身份添加到的目标容器或文件夹的访问控制列表 (ACL) 这些角色。 在 ACL 中你的身份需要针对目标文件夹的 read 权限和容器和每个父文件夹上的执行权限。
+
+若要了解详细信息，请参阅[Azure 数据湖存储第 2 代中的访问控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+
+#### <a name="authenticate-your-identity"></a>对你的身份进行身份验证
+
+验证你的身份已被授予必要的授权级别后，打开命令提示符、 键入以下命令，然后按 ENTER 键。
 
 ```azcopy
-.\azcopy copy <source path> <destination path> --<flag-name>=<flag-value>
-# Using the alias instead 
-.\azcopy cp <source path> <destination path> --<flag-name>=<flag-value>
+azcopy login
 ```
 
-以下命令将该文件夹下的所有文件上都传`C:\local\path`到容器的递归`mycontainer1`，则创建`path`目录容器中。 当`--put-md5`提供标志、 AzCopy 计算并存储中的每个文件的 md5 哈希`Content-md5`属性对应的 blob 以供将来使用。
+此命令将返回身份验证代码和网站的 URL。 打开网站，提供的代码，然后选择**下一步**按钮。
+
+![创建容器](media/storage-use-azcopy-v10/azcopy-login.png)
+
+将出现在登录窗口。 在该窗口中，登录到 Azure 帐户使用 Azure 帐户凭据。 已成功登录后，可以关闭浏览器窗口并开始使用 AzCopy。
+
+### <a name="option-2-use-a-sas-token"></a>选项 2：使用 SAS 令牌
+
+AzCopy 命令中，可以将 SAS 令牌附加到使用每个源或目标 URL。
+
+此示例命令以递归方式将数据从本地目录复制到 blob 容器。 虚构的 SAS 令牌追加到末尾的容器 URL。
 
 ```azcopy
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true --put-md5
+azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-以下命令将文件夹 `C:\local\path` 下的所有文件上传到容器 `mycontainer1`（不递归到子目录中）：
+若要了解有关 SAS 令牌和如何获取一个详细信息，请参阅[使用共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。
 
-```azcopy
-.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --put-md5
-```
+## <a name="transfer-files"></a>传输文件
 
-若要查找更多示例，请使用以下命令：
+已通过身份验证你的身份或获取的 SAS 令牌后，可以开始传输文件。
 
-```azcopy
-.\azcopy cp -h
-```
+若要查找的示例命令，请参阅以下文章。
 
-## <a name="copy-blob-data-between-two-storage-accounts"></a>将两个存储帐户之间的 Blob 数据复制
+- [使用 AzCopy 和 blob 存储传输数据](storage-use-azcopy-blobs.md)
 
-在两个存储帐户之间复制数据使用的是[从 URL 放置块](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API，而不使用客户端计算机的网络带宽。 直接在两个 Azure 存储服务器之间复制数据，而 AzCopy 只是协调复制操作。 此选项目前仅适用于 Blob 存储。
+- [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 
-若要复制所有两个存储帐户之间的 Blob 数据，请使用以下命令：
-```azcopy
-.\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
-```
+- [使用 AzCopy 和 Amazon S3 存储桶传输数据](storage-use-azcopy-s3.md)
 
-若要将 Blob 容器复制到另一个 Blob 容器，使用以下命令：
-```azcopy
-.\azcopy cp "https://myaccount.blob.core.windows.net/mycontainer/<sastoken>" "https://myotheraccount.blob.core.windows.net/mycontainer/<sastoken>" --recursive=true
-```
+## <a name="configure-optimize-and-troubleshoot-azcopy"></a>配置、 优化和故障排除 AzCopy
 
-## <a name="copy-a-vhd-image-to-a-storage-account"></a>将 VHD 映像复制到存储帐户
+请参阅[配置，优化和故障排除 AzCopy](storage-use-azcopy-configure.md)
 
-默认情况下 AzCopy 将数据上载到块 blob。 若要上传文件，因为追加 Blob 还是页 Blob 使用标志`--blob-type=[BlockBlob|PageBlob|AppendBlob]`。
+## <a name="use-azcopy-in-storage-explorer"></a>在存储资源管理器中使用 AzCopy
 
-```azcopy
-.\azcopy cp "C:\local\path\mydisk.vhd" "https://myotheraccount.blob.core.windows.net/mycontainer/mydisk.vhd<sastoken>" --blob-type=PageBlob
-```
+如果你想要利用的 AzCopy，性能优势，但想要使用存储资源管理器而不是命令行以与你的文件，然后启用 AzCopy 在存储资源管理器。
 
-## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>同步：增量复制和删除（仅适用于 Blob 存储）
+在存储资源管理器中选择**预览版**->**改进了 Blob 上传和下载使用 AzCopy**。
 
-sync 命令通过比较文件名和上次修改时间戳将源目录的内容同步到目标中的目录。 在提供 `--delete-destination=prompt|true` 标志的情况下，可选择性地通过此操作删除目标文件（如果这些文件在源中不存在）。 默认会禁用删除行为。 
+![在 Azure 存储资源管理器中启用 AzCopy 作为传输引擎](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 
-> [!NOTE] 
-> 请谨慎使用 `--delete-destination` 标志。 在同步操作中启用删除行为之前，请启用[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能，防止帐户中发生意外删除。 
->
-> 将 `--delete-destination` 设置为 true 时，AzCopy 会在不提示用户的情况下，从目标中删除源中不存在的文件。 如果希望系统提示确认，请使用 `--delete-destination=prompt`。
+> [!NOTE]
+> 您无需启用此设置，如果已在存储帐户上启用层次结构的命名空间。 这是因为存储资源管理器会自动使用 AzCopy 在已分层命名空间的存储帐户。  
 
-若要将本地文件系统同步到存储帐户，请使用以下命令：
+<a id="previous-version" />
 
-```azcopy
-.\azcopy sync "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
-```
+## <a name="use-the-previous-version-of-azcopy"></a>使用以前版本的 AzCopy
 
-还可将 Blob 容器同步到本地文件系统：
+如果您需要使用以前版本的 AzCopy (AzCopy v8.1)，请参阅以下链接之一：
 
-```azcopy
-# The SAS token isn't required for Azure Active Directory authentication.
-.\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
-```
-
-此命令根据上次修改时间戳以增量方式将源同步到目标。 如果添加或删除源中的文件，AzCopy 将执行相同操作的目标中。 在删除之前，AzCopy 会提示确认。
-
-## <a name="copy-data-from-amazon-web-services-aws-s3"></a>从 Amazon Web Services (AWS) S3 复制数据
-
-若要使用 AWS S3 存储桶进行身份验证，设置以下环境变量：
-
-```
-# For Windows:
-set AWS_ACCESS_KEY_ID=<your AWS access key>
-set AWS_SECRET_ACCESS_KEY=<AWS secret access key>
-# For Linux:
-export AWS_ACCESS_KEY_ID=<your AWS access key>
-export AWS_SECRET_ACCESS_KEY=<AWS secret access key>
-# For MacOS
-export AWS_ACCESS_KEY_ID=<your AWS access key>
-export AWS_SECRET_ACCESS_KEY=<AWS secret access key>
-```
-
-若要复制到 Blob 容器的存储桶，发出以下命令：
-
-```
-.\azcopy cp "https://s3.amazonaws.com/mybucket" "https://myaccount.blob.core.windows.net/mycontainer?<sastoken>" --recursive
-```
-
-有关使用 AzCopy，从 AWS S3 的数据复制的详细信息，请参阅页面[此处](https://github.com/Azure/azure-storage-azcopy/wiki/Copy-from-AWS-S3)。
-
-## <a name="advanced-configuration"></a>高级配置
-
-### <a name="configure-proxy-settings"></a>配置代理设置
-
-若要配置 AzCopy v10 的代理设置，请使用以下命令设置环境变量 https_proxy：
-
-```cmd
-# For Windows:
-set https_proxy=<proxy IP>:<proxy port>
-# For Linux:
-export https_proxy=<proxy IP>:<proxy port>
-# For MacOS
-export https_proxy=<proxy IP>:<proxy port>
-```
-
-### <a name="optimize-throughput"></a>优化吞吐量
-
-设置环境变量 AZCOPY_CONCURRENCY_VALUE，以配置并发请求数并控制吞吐量性能和资源消耗。 默认情况下，该值设置为 300。 减小该值将限制 AzCopy v10 使用的带宽和 CPU。
-
-```cmd
-# For Windows:
-set AZCOPY_CONCURRENCY_VALUE=<value>
-# For Linux:
-export AZCOPY_CONCURRENCY_VALUE=<value>
-# For MacOS
-export AZCOPY_CONCURRENCY_VALUE=<value>
-# To check the current value of the variable on all the platforms
-.\azcopy env
-# If the value is blank then the default value is currently in use
-```
-
-### <a name="change-the-location-of-the-log-files"></a>更改日志文件的位置
-
-你可以更改日志文件的位置以满足需要或者避免填满 OS 磁盘。
-
-```cmd
-# For Windows:
-set AZCOPY_LOG_LOCATION=<value>
-# For Linux:
-export AZCOPY_LOG_LOCATION=<value>
-# For MacOS
-export AZCOPY_LOG_LOCATION=<value>
-# To check the current value of the variable on all the platforms
-.\azcopy env
-# If the value is blank, then the default value is currently in use
-```
-### <a name="change-the-default-log-level"></a>更改默认日志级别 
-
-AzCopy 日志级别默认设置为 INFO。 如果想要降低日志详细程度以节省磁盘空间，请使用 ``--log-level`` 选项覆盖该设置。 可用日志级别为：DEBUG、INFO、WARNING、ERROR、PANIC 和 FATAL。
-
-### <a name="review-the-logs-for-errors"></a>查看日志中的错误
-
-以下命令将从 04dc9ca9-158f-7945-5933-564021086c79 日志中获取状态为 UPLOADFAILED 的所有错误：
-
-```azcopy
-cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
-```
-## <a name="troubleshooting"></a>故障排除
-
-AzCopy 将创建日志文件和每个作业的计划文件。 可以使用日志调查并解决任何潜在问题。 日志包含失败状态（UPLOADFAILED、COPYFAILED 和 DOWNLOADFAILED）、完整路径以及失败原因。 作业日志和计划文件在 Windows 上位于 %USERPROFILE\\.azcopy 文件夹中，在 Mac 和 Linux 上位于 $HOME\\.azcopy 文件夹中。
-
-> [!IMPORTANT]
-> 提交到 Microsoft 支持部门 （或故障排除问题涉及任何第三方），请求时共享你想要执行的命令经过修订的版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
-
-### <a name="view-and-resume-jobs"></a>查看和恢复作业
-
-每个传输操作都将创建一个 AzCopy 作业。 使用以下命令查看作业的历史记录：
-
-```azcopy
-.\azcopy jobs list
-```
-
-若要查看作业统计信息，请使用以下命令：
-
-```azcopy
-.\azcopy jobs show <job-id>
-```
-
-若要按状态筛选传输，请使用以下命令：
-
-```azcopy
-.\azcopy jobs show <job-id> --with-status=Failed
-```
-
-使用以下命令恢复失败/取消的作业。 此命令使用连同 SAS 令牌的标识符，因为它不是永久性出于安全原因：
-
-```azcopy
-.\azcopy jobs resume <jobid> --source-sas="<sastokenhere>"
-.\azcopy jobs resume <jobid> --destination-sas="<sastokenhere>"
-```
+- [AzCopy on Windows (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
+- [AzCopy on Linux (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="next-steps"></a>后续步骤
 
-如有任何疑问、问题或一般反馈，请通过 [GitHub](https://github.com/Azure/azure-storage-azcopy) 提交。
-
-
+如果你有疑问、 问题或常规反馈，将其提交[GitHub 上](https://github.com/Azure/azure-storage-azcopy)页。

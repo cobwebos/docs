@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 12/11/2017
+ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 15152196e45265985c8abb409523982bd4c5d427
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2cb99cfe765e1d3444f362e591812f5088c78c0e
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697417"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393135"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>开始使用 Apache Hadoop 沙盒，虚拟机上的仿真程序
 
@@ -24,32 +24,29 @@ ms.locfileid: "64697417"
 * [Oracle VirtualBox](https://www.virtualbox.org/)。 从[此处](https://www.virtualbox.org/wiki/Downloads)下载并安装它。
 
 
-
 ## <a name="download-and-install-the-virtual-machine"></a>下载并安装虚拟机
-1. 浏览到 [Hortonworks 下载](https://hortonworks.com/downloads/#sandbox)。
+1. 浏览到[Cloudera 下载](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)。
 
-2. 单击“下载 VIRTUALBOX”，将最新的 Hortonworks 沙盒下载到 VM 上。 开始下载之前，网站会提示在 Hortonworks 上注册。 下载需要一到两个小时，具体取决于网络速度。
+2. 单击**VIRTUALBOX**下**选择安装类型**若要下载最新的 VM 上的 Hortonworks 沙盒。 登录或完成产品感兴趣窗体。
 
-    ![用于下载 Hortonworks Sandbox for VirtualBox 的链接图像](./media/apache-hadoop-emulator-get-started/download-sandbox.png)
-3. 在同一网页上，单击“在 Virtual Box 上导入”链接，下载包含虚拟机安装说明的 PDF。
+1. 单击按钮**HDP 沙盒 （最新）** 以开始下载。
 
-若要下载较旧的 HDP 版本沙盒，请展开存档：
+有关设置沙盒的说明，请参阅[沙盒部署和安装指南](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/)。
 
-![Hortonworks 沙盒存档](./media/apache-hadoop-emulator-get-started/hortonworks-sandbox-archive.png)
-
+若要下载较旧的 HDP 版本沙盒，请参阅下面的链接**较旧版本**。
 
 ## <a name="start-the-virtual-machine"></a>启动虚拟机
 
 1. 打开 Oracle VM VirtualBox。
-2. 在“文件”菜单上，单击“导入设备”，并指定 Hortonworks 沙盒映像。
-1. 选择 Hortonworks 沙盒，依次单击“启动”、“正常启动”。 虚拟机完成启动过程后，显示登录说明。
+2. 在“文件”  菜单上，单击“导入设备”  ，并指定 Hortonworks 沙盒映像。
+1. 选择 Hortonworks 沙盒，依次单击“启动”  、“正常启动”  。 虚拟机完成启动过程后，显示登录说明。
 
     ![正常启动](./media/apache-hadoop-emulator-get-started/normal-start.png)
 2. 打开 web 浏览器并导航到显示的 URL (通常`http://127.0.0.1:8888`)。
 
 ## <a name="set-sandbox-passwords"></a>设置沙盒密码
 
-1. 在“Hortonworks 沙盒”页的“开始”步骤中，选择“查看高级选项”。 使用此页上的信息通过 SSH 登录到沙盒。 使用提供的名称和密码。
+1. 在“Hortonworks 沙盒”页的“开始”  步骤中，选择“查看高级选项”  。 使用此页上的信息通过 SSH 登录到沙盒。 使用提供的名称和密码。
 
    > [!NOTE]
    > 如果未安装 SSH 客户端，可以使用虚拟机在 **http://localhost:4200/** 上提供的基于 Web 的 SSH。

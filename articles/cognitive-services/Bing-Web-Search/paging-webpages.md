@@ -11,16 +11,16 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a038dc2706c7cb128751630f8997851409886290
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797807"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384813"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>如何分页列出必应 Web 搜索 API 中的结果
 
-如果调用 Web 搜索 API，必应会返回结果列表。 此列表是与查询相关的所有结果的一部分。 若要获取可访问结果的总估计数，请访问答案对象的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) 字段。  
+如果调用 Web 搜索 API，必应会返回结果列表。 此列表是与查询相关的所有结果的一部分。 若要获取可访问结果的总估计数，请访问答案对象的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 字段。  
 
 下面的示例展示了 Web 答案对象包含的 `totalEstimatedMatches` 字段。  
 
@@ -35,7 +35,7 @@ ms.locfileid: "65797807"
 }  
 ```
 
-若要翻页浏览可用网页，请使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#offset) 查询参数。  
+若要翻页浏览可用网页，请使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#offset) 查询参数。  
 
 `count` 参数指定要在响应中返回的结果数。 最多可以请求在响应中获取 50 个结果。 默认值为 10。 提供的实际结果数可能小于请求获取的结果数。
 
@@ -59,7 +59,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Web 搜索 API 返回的结果包括网页，也可能包括图像、视频和新闻。 对搜索结果进行分页是分页 [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) 答案，而不是分页图像或新闻等其他答案。 例如，如果将 `count` 设置为 50，就会返回 50 个网页结果，但响应中可能还有其他答案的结果。 例如，响应可能包括 15 张图像和 4 篇新闻文章。 结果也可能在第一页（而不是第二页）上显示新闻，反之亦然。   
+Web 搜索 API 返回的结果包括网页，也可能包括图像、视频和新闻。 对搜索结果进行分页是分页 [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) 答案，而不是分页图像或新闻等其他答案。 例如，如果将 `count` 设置为 50，就会返回 50 个网页结果，但响应中可能还有其他答案的结果。 例如，响应可能包括 15 张图像和 4 篇新闻文章。 结果也可能在第一页（而不是第二页）上显示新闻，反之亦然。   
 
 如果指定 `responseFilter` 查询参数，但未在筛选器列表中添加“网页”，请勿使用 `count` 和 `offset` 参数。 
 

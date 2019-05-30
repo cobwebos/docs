@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9b899bcae473edfccbf587baece27089fc001ff4
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 40ee73b8cc9b95a4e2030ac38a6c322918dc878e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921842"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389092"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>将 Palo Alto Networks 设备连接
 
@@ -125,7 +125,7 @@ ms.locfileid: "65921842"
 
 3. 请确保您发送的日志符合[RFC 5424](https://tools.ietf.org/html/rfc542)。
 
-4. 在上运行的系统日志代理的计算机，请确保这些端口 514，25226 是打开并在侦听，使用命令`netstat -a -n:`。 有关使用此命令的详细信息请参阅[netstat(8)-Linux 手册页](https://linux.die.netman/8/netstat)。 如果它正在侦听正确，您将看到：
+4. 在上运行的系统日志代理的计算机，请确保这些端口 514，25226 是打开并在侦听，使用命令`netstat -a -n:`。 有关使用此命令的详细信息请参阅[netstat(8)-Linux 手册页](https://linux.die.net/man/8/netstat)。 如果它正在侦听正确，您将看到：
 
    ![Azure Sentinel 端口](./media/connect-cef/ports.png) 
 

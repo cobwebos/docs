@@ -10,12 +10,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 054369a7fd75663c75c99c6ee586843582a6b6f9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: bfa69c6904644f707626e57a6696695cf4868c50
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965959"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236605"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -58,8 +58,8 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 2. 找到自己的存储帐户。
-3. 在存储帐户概述的“设置”部分，选择“访问密钥”。 此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
-4. 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。 下一步需将此连接字符串值添加到某个环境变量。
+3. 在存储帐户概述的“设置”部分，选择“访问密钥”。   此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
+4. 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。    下一步需将此连接字符串值添加到某个环境变量。
 
     ![显示如何从 Azure 门户复制连接字符串的屏幕截图](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
 
@@ -231,7 +231,7 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 ```
 
 ## <a name="get-the-queue-length"></a>获取队列长度
-可以获取队列中消息的估计数。 使用 [FetchAttributes](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) 方法可请求队列服务检索队列属性，包括消息计数。 [ApproximateMessageCount](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet) 属性返回 **FetchAttributes** 方法检索到的最后一个值，而不会调用队列服务。
+可以获取队列中消息的估计数。 使用 [FetchAttributes](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) 方法可请求队列服务检索队列属性，包括消息计数。 [ApproximateMessageCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet) 属性返回 **FetchAttributes** 方法检索到的最后一个值，而不会调用队列服务。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -255,7 +255,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="delete-a-queue"></a>删除队列
-若要删除队列及其包含的所有消息，请对队列对象调用 [Delete](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) 方法。
+若要删除队列及其包含的所有消息，请对队列对象调用 [Delete](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) 方法。
 
 ```csharp
 // Retrieve storage account from connection string.

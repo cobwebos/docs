@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 28378b4b769e0d0e70a82a45baac0872d1476036
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 154efffcb1f86907fefecc060419c1d9450470f8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413641"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237339"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric 中的定期备份和还原
 > [!div class="op_single_selector"]
@@ -73,7 +73,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 ```
 
 ## <a name="enabling-backup-and-restore-service"></a>启用备份和还原服务
-首先，需要在群集中启用备份和还原服务。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。 通过以下步骤启用备份和还原服务：
+首先，需要在群集中启用备份和还原服务  。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。 通过以下步骤启用备份和还原服务  ：
 
 1. 检查在群集配置文件中 `apiversion` 是否设置为了 `10-2017`，如果没有，请按以下代码片段所示进行更新：
 
@@ -86,7 +86,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示： 
+2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示  ： 
 
     ```json
         "properties": {
@@ -115,11 +115,11 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-4. 通过前述更改更新群集配置文件后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
+4. 通过前述更改更新群集配置文件后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行  。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>启用可靠有状态服务和 Reliable Actors 的定期备份
 让我们通过一些步骤来启用可靠有状态服务和 Reliable Actors 的定期备份。 这些步骤假定
-- 通过备份和还原服务安装群集。
+- 通过备份和还原服务安装群集  。
 - 在群集上部署了可靠有状态服务。 在本快速入门指南中，应用程序 URI 为 `fabric:/SampleApp`，属于此应用程序的可靠有状态服务的 URI 为 `fabric:/SampleApp/MyStatefulService`。 使用单个分区部署此服务，分区 ID 为 `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`。  
 
 ### <a name="create-backup-policy"></a>创建备份策略
@@ -170,9 +170,6 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
-> [!IMPORTANT]
-> 由于运行时中的问题，请确保保留策略中的保留期配置为小于 24 天，否则将导致备份还原服务进入仲裁丢失后副本故障转移。
-
 ### <a name="enable-periodic-backup"></a>启用定期备份
 在定义策略以满足应用程序的数据保护要求后，备份策略应与应用程序相关联。 根据需要，备份策略可与应用程序、服务或分区相关联。
 
@@ -205,7 +202,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="list-backups"></a>列出备份
 
-可使用 GetBackups API 来枚举属于应用程序的可靠有状态服务和 Reliable Actors 的所有分区的关联备份。 根据需要，可为应用程序、服务或分区枚举备份。
+可使用 GetBackups API 来枚举属于应用程序的可靠有状态服务和 Reliable Actors 的所有分区的关联备份  。 根据需要，可为应用程序、服务或分区枚举备份。
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Powershell 中使用 Microsoft.ServiceFabric.Powershell.Http 模块
 
@@ -265,11 +262,6 @@ LsnOfLastBackupRecord   : 2437
 CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
-
-## <a name="known-issues"></a>已知问题
-- 确保保留期配置为小于 24 天。 
-- 十进制分隔符不为“.”的区域设置中不会出现备份还原服务
-- 备份还原服务未能在使用基于 gMSA 的安全进行保护的群集上出现。
 
 ## <a name="limitation-caveats"></a>限制/注意事项
 - Service Fabric PowerShell cmdlet 是在预览模式下。

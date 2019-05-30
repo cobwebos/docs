@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8522b1d0a8f8466870966d3f11ce66f7bf15672b
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: cb7ace20fd0a59dafff3d7f8240f54c3c8e12492
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016365"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226399"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>用于 ASP.NET Core 应用程序的 application Insights
 
@@ -39,11 +39,11 @@ ms.locfileid: "66016365"
     > [!TIP]
     > 而不是一个必需的步骤，非常有用来设置你的项目的源代码管理，以便可以跟踪所做的 Application Insights 的所有更改。 若要启用源控制选**文件** > **添加到源代码管理**。
 
-2. 选择“项目” > “添加 Application Insights 遥测”。
+2. 选择“项目” > “添加 Application Insights 遥测”   。
 
-3. 选择“入门”。 （根据 Visual Studio 版本的不同，文本可能会稍有不同。 某些较旧的版本具有“免费开始”按钮。）
+3. 选择“入门”。  （根据 Visual Studio 版本的不同，文本可能会稍有不同。 某些较旧的版本具有“免费开始”按钮。） 
 
-4. 选择订阅，然后选择“资源” > “注册”。
+4. 选择订阅，然后选择“资源” > “注册”   。
 
 5. 将 Application Insights 添加到你的项目之后, 检查以确认你正在使用的 sdk 的最新稳定版本。 转到**项目** > **管理 NuGet 包** > **Microsoft.ApplicationInsights.AspNetCore** > 如有需要选择**更新**。
 
@@ -382,7 +382,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="video"></a>视频
 
-- 有关外部分步视频[使用.NET Core 和 Visual Studio 中配置 Application Insights](https://www.youtube.com/watch?v=NoS9UhcR4gA&t)从零开始。
+- 有关从头开始[使用 NET Core 和 Visual Studio 配置 Application Insights](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) 的外部分步说明视频。
+- 有关外部分步视频[使用.NET Core 和 Visual Studio Code 中配置 Application Insights](https://youtu.be/ygGt84GDync)从零开始。
 
 ## <a name="next-steps"></a>后续步骤
 * [浏览用户流](../../azure-monitor/app/usage-flows.md)，了解用户如何在应用中导航。

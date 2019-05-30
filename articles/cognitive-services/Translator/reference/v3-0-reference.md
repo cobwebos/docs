@@ -3,19 +3,19 @@ title: 文本翻译 API V3.0 参考
 titlesuffix: Azure Cognitive Services
 description: 文本翻译 API v3.0 参考文档。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: b59e4d574264f82a5875edad65e99bfb57150197
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796864"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387520"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -57,8 +57,8 @@ Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 
 
 |标头|说明|
 |:----|:----|
-|Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
-|授权|如果要传递身份验证令牌，请与认知服务订阅一起使用。<br/>该值是持有者令牌：`Bearer <token>`。|
+|Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用  。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
+|授权|如果要传递身份验证令牌，请与认知服务订阅一起使用  。<br/>该值是持有者令牌：`Bearer <token>`。|
 |Ocp-Apim-Subscription-Region|*使用认知服务多服务订阅，如果要传递多服务的机密密钥。*<br/>值是多服务订阅的区域。 不使用多服务订阅时，此值是可选的。|
 
 ###  <a name="secret-key"></a>密钥
@@ -144,7 +144,7 @@ Authorization: Bearer <Base64-access_token>
 | 400036| 目标语言（“To”字段）缺失或无效。|
 | 400042| 指定的某个选项（“Options”字段）无效。|
 | 400043| 客户端跟踪 ID（ClientTraceId 字段或 X-ClientTranceId 标头）缺失或无效。|
-| 400050| 输入文本过长。|
+| 400050| 输入文本过长。 视图[请求限制](../request-limits.md)。|
 | 400064| “translation”参数缺失或无效。|
 | 400070| 目标脚本（ToScript 参数）的数目与目标语言（To 参数）的数目不匹配。|
 | 400071| TextType 的值无效。|
@@ -152,14 +152,15 @@ Authorization: Bearer <Base64-access_token>
 | 400073| 脚本参数无效。|
 | 400074| 请求正文是无效的 JSON。|
 | 400075| 语言对和类别组合无效。|
-| 400077| 超过了最大请求大小。|
+| 400077| 超过了最大请求大小。 视图[请求限制](../request-limits.md)。|
 | 400079| 请求用于在源语言与目标语言之间进行翻译的自定义系统不存在。|
 | 401000| 由于凭据缺失或无效，请求未授权。|
 | 401015| “提供的凭据适用于语音 API。 此请求需要文本 API 的凭据。 请使用文本翻译 API 的订阅。”|
 | 403000| 不允许该操作。|
 | 403001| 由于订阅已超过其免费配额，因此不允许该操作。|
 | 405000| 请求的资源不支持该请求方法。|
-| 408001| 请求的自定义翻译系统尚不可用。 请在几分钟后重试。|
+| 408001| 正在准备所需的翻译系统。 请在几分钟后重试。|
+| 408002| 请求已超时等待传入的流。 客户端没有已准备好服务器要等待的时间内生成请求。 客户端可以在任何更高版本时重复而无需修改请求。|
 | 415000| Content-Type 标头缺失或无效。|
 | 429000、429001、429002| 服务器拒绝了请求，因为客户端已超出请求限制。|
 | 500000| 发生了意外错误。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|

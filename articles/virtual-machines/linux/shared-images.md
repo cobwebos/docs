@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 创建共享 VM 映像 | Microsoft Docs
+title: 使用 Azure CLI 创建共享的图像库 |Microsoft Docs
 description: 在本文中，你将了解如何使用 Azure CLI 在 Azure 中创建 VM 的共享映像。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: f69b1aff28165b9bf37c49fe62d1fb5aada91285
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: bb6db6e5d5e33b7c7b5ba5a8711a06d6394b71f2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236402"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226050"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>使用 Azure CLI 创建共享映像库
 
@@ -33,9 +33,9 @@ ms.locfileid: "65236402"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | 描述|
+| Resource | 描述|
 |----------|------------|
-| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”  。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
@@ -46,15 +46,17 @@ ms.locfileid: "65236402"
 
 ## <a name="create-a-vm"></a>创建 VM
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 基于映像版本创建 VM。
+从最新映像版本使用创建 VM [az vm 创建](/cli/azure/vm#az-vm-create)。
 
 ```azurecli-interactive 
 az vm create\
-   -g myGalleryRG \
-   -n myVM \
-   --image "/subscriptions/<subscription-ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0" \
+   --resource-group myGalleryRG \
+   --name myVM \
+   --image "/subscriptions/subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
    --generate-ssh-keys
 ```
+
+此外可以使用特定版本使用的图像版本 ID`--image`参数。 例如，若要使用映像版本*1.0.0*类型： `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。
 
 [!INCLUDE [virtual-machines-common-gallery-list-cli](../../../includes/virtual-machines-common-gallery-list-cli.md)]
 

@@ -5,15 +5,15 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150348"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238209"
 ---
 下表列出了与不同服务层 S1、 S2、 S3 和 F1 关联的限制。 有关每个成本有关的信息*单元*在每个层中，请参阅[Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
-| 资源 | S1 标准 | S2 标准 | S3 标准 | F1 免费 |
+| Resource | S1 标准 | S2 标准 | S3 标准 | F1 免费 |
 | --- | --- | --- | --- | --- |
 | 消息/天 |400,000 |6,000,000 |300,000,000 |8,000 |
 | 最大单位数 |200 |200 |10 |第 |
@@ -25,7 +25,7 @@ ms.locfileid: "65150348"
 
 下表列出了适用于 IoT 中心资源的限制。
 
-| 资源 | 限制 |
+| Resource | 限制 |
 | --- | --- |
 | 每个 Azure 订阅的付费 IoT 中心数上限 |50 |
 | 每个 Azure 订阅的免费 IoT 中心数上限 |第 |

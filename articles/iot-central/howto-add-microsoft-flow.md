@@ -8,16 +8,16 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467999"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235805"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>在 Microsoft Flow 中使用 IoT Central 连接器生成工作流
 
-本主题适用于构建者和管理员。
+本主题适用于构建者和管理员  。
 
 使用 Microsoft Flow 跨企业用户依赖的多个应用程序和服务自动完成工作流。 如果在 Microsoft Flow 中使用 IoT Central 连接器，则当规则在 IoT Central 中触发时，就可以触发工作流。 在通过 IoT Central 或任何其他应用程序触发的工作流，可以在 IoT Central 连接器中使用操作：
 - 创建设备
@@ -41,13 +41,13 @@ ms.locfileid: "65467999"
 
     ![新建 Microsoft Flow 操作](media/howto-add-microsoft-flow/createflowaction.png)
 
-1. 您将看到工作流 tha 有权访问和附加到此 IoT Central 规则的列表。 单击**浏览模板**或**新建 > 从模板创建**，可以选择从任何可用的模板。 
+1. 您将看到有权访问，附加到此 IoT Central 规则的工作流的列表。 单击**浏览模板**或**新建 > 从模板创建**，可以选择从任何可用的模板。 
 
     ![可用的 Microsoft Flow 模板](media/howto-add-microsoft-flow/flowtemplates1.png)
 
 1. 系统将提示您登录到您选择的模板中的连接器。 连接器登录后，将进入设计器来生成工作流。 工作流有一个 IoT Central 触发器，其中已填充应用程序和规则。
 
-1. 通过自定义传递给此操作和添加新操作的信息，可以自定义工作流。 在此示例中，该操作是**通知-向我发送移动通知**。 可以包括 IoT Central 规则提供的动态内容，将设备名称和时间戳等重要信息传递给通知。
+1. 通过自定义传递给此操作和添加新操作的信息，可以自定义工作流。 在此示例中，该操作是**通知-向我发送移动通知**。 可以包括  IoT Central 规则提供的动态内容，将设备名称和时间戳等重要信息传递给通知。
 
     > [!NOTE]
     > 选择**查看更多**动态内容的窗口，以获取触发规则的度量值和属性值中的文本。
@@ -69,15 +69,15 @@ ms.locfileid: "65467999"
 
 1. 一开始在 Microsoft Flow 中创建空白工作流。
 
-1. 搜索作为触发器的“适用于移动设备的流按钮”。
+1. 搜索作为触发器的“适用于移动设备的流按钮”。 
 
-1. 在此触发器中，添加名为“设备名称”的文本输入。 将说明文本更改为“输入新设备的设备名称”。
+1. 在此触发器中，添加名为“设备名称”的文本输入。  将说明文本更改为“输入新设备的设备名称”。 
 
-1. 添加新操作。 搜索“Azure IoT Central - 创建设备”操作。
+1. 添加新操作。 搜索“Azure IoT Central - 创建设备”操作。 
 
 1. 在下拉列表中选取应用程序，然后选择用于创建设备的设备模板。 此时会看到操作展开，显示设备的所有属性和设置。
 
-1. 选择“设备名称”字段。 在动态内容窗格中，选择“设备名称”。 此值传递从输入用户通过移动应用中，输入，并为新设备在 IoT 中心的名称。 在此示例中，唯一必填字段为设备名称，以红色星号指示。 另一设备模板可能有多个必填字段，需填充这些字段才能创建新设备。
+1. 选择“设备名称”字段。 在动态内容窗格中，选择“设备名称”。  此值传递从输入用户通过移动应用中，输入，并为新设备在 IoT 中心的名称。 在此示例中，唯一必填字段为设备名称，以红色星号指示。 另一设备模板可能有多个必填字段，需填充这些字段才能创建新设备。
 
     ![Flow 的创建设备操作动态窗格](./media/howto-add-microsoft-flow/flowcreatedevice1.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "65467999"
 
 1. 最后，保存工作流。
 
-1. 在 Microsoft Flow 移动应用中试用工作流。 转到应用中的“按钮”选项卡。 此时会看到“按钮 -> 创建新设备”工作流。 输入新设备的名称，观察其在 IoT Central 中显示！
+1. 在 Microsoft Flow 移动应用中试用工作流。 转到应用中的“按钮”选项卡。  此时会看到“按钮 -> 创建新设备”工作流。 输入新设备的名称，观察其在 IoT Central 中显示！
 
     ![Flow 的创建设备移动屏幕截图](./media/howto-add-microsoft-flow/flowmobilescreenshot.png)
 
@@ -95,11 +95,11 @@ ms.locfileid: "65467999"
 
 1. 一开始在 Microsoft Flow 中创建空白工作流。
 
-1. 搜索作为触发器的“适用于移动设备的流按钮”。
+1. 搜索作为触发器的“适用于移动设备的流按钮”。 
 
-1. 在此触发器中，请添加一个输入，例如一个与要更改的设置或属性对应的“位置”文本输入。 更改说明文本。
+1. 在此触发器中，请添加一个输入，例如一个与要更改的设置或属性对应的“位置”文本输入。  更改说明文本。
 
-1. 添加新操作。 搜索“Azure IoT Central - 更新设备”操作。
+1. 添加新操作。 搜索“Azure IoT Central - 更新设备”操作。 
 
 1. 从下拉菜单中选取应用程序。 现在需要 ID，该 ID 属于要更新的现有设备。 
 
@@ -108,7 +108,7 @@ ms.locfileid: "65467999"
 
     ![从 URL 的 IoT 中心 ID](./media/howto-add-microsoft-flow/iotcdeviceidurl.png)
 
-1. 可以更新设备名称。 若要更新设备的属性和设置，必须在“设备模板”下拉列表中选择要更新的设备对应的设备模板。 此时操作磁贴会展开，显示可更新的所有属性和设置。
+1. 可以更新设备名称。 若要更新设备的属性和设置，必须在“设备模板”下拉列表中选择要更新的设备对应的设备模板。  此时操作磁贴会展开，显示可更新的所有属性和设置。
 
     ![Flow 的更新设备工作流](./media/howto-add-microsoft-flow/flowupdatedevice1.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "65467999"
 
 1. 最后，保存工作流。
 
-1. 在 Microsoft Flow 移动应用中试用工作流。 转到应用中的“按钮”选项卡。 此时会看到“按钮 -> 更新设备”工作流。 输入输入内容，此时会看到设备在 IoT Central 中进行了更新！
+1. 在 Microsoft Flow 移动应用中试用工作流。 转到应用中的“按钮”选项卡。  此时会看到“按钮 -> 更新设备”工作流。 输入输入内容，此时会看到设备在 IoT Central 中进行了更新！
 
 ## <a name="get-device-information-in-a-workflow"></a>在工作流中获取设备信息
 

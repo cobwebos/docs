@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: c2db5740d6373c8f6be5dabe0260fe7f99575641
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ce64047fd7490106790ea8bb1ad7963d82a87c24
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553342"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238190"
 ---
-| 资源 | 免费 | 共享 | 基本 | 标准 | 高级 (v2) | 隔离 </th> |
+| Resource | 免费 | 共享 | 基本 | 标准 | 高级 (v2) | 隔离 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web、 移动或 API 应用](https://azure.microsoft.com/services/app-service/)每个[Azure 应用服务计划](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup>|
 | [应用服务计划](../articles/app-service/overview-hosting-plans.md) |每个区域仅 10 个 |每个资源组 10 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个|
@@ -29,7 +29,7 @@ ms.locfileid: "57553342"
 | 每个应用的自定义域数</a> |0（仅 azurewebsites.net 子域）|500 |500 |500 |500 |500 |
 | 自定义域 [SSL 支持](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |不受支持，通配符证书为 *。 默认情况下可用的 azurewebsites.net|不受支持，通配符证书为 *。 默认情况下可用的 azurewebsites.net|无限制的 SNI SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 | 包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接|
 | 集成的负载均衡器 | |X |X |X |X |X<sup>9</sup> |
-| [始终打开](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
+| [始终打开](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [计划的备份](../articles/app-service/manage-backup.md) | | | | 计划的备份每隔 2 小时，最多为 12 个备份每日 （手动 + 计划） | 计划的备份每隔一小时，最多 50 个备份每日 （手动 + 计划） | 计划的备份每隔一小时，最多 50 个备份每日 （手动 + 计划） |
 | [自动缩放](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
 | [WebJobs](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |

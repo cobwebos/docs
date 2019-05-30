@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 7ef8715f23d21a23dc3f37b192314b922847d3e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 85d6ed80da93f90e6dc0feaee7081ee3f36f1bf9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805901"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242687"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>选择实时分析和流式处理 Azure 上的处理技术
 
@@ -25,7 +25,7 @@ Azure Stream Analytics 是 Azure 上的流分析的建议的服务。 它适用�
 * 数据可视化效果的仪表板
 * 实时[警报](stream-analytics-set-up-alerts.md)从临时和空间模式或异常
 * 提取、转换、加载 (ETL)
-* [事件溯源模式](/azure/architecture/patterns/event-sourcing.md)
+* [事件溯源模式](/azure/architecture/patterns/event-sourcing)
 * [IoT Edge](stream-analytics-edge.md)
 
 添加 Azure Stream Analytics 作业到你的应用程序是最快的方式获取启动流分析和运行在 Azure 中，使用 SQL 语言已经知道。 Azure Stream Analytics 是一种作业服务，无需花时间管理群集，因此无需担心停机的情况下在作业级别 99.9%的 SLA。 计费还会在作业级别进行启动成本较低 （一个流式处理单位），但可缩放 （最多 192 流式处理单位）。 很多更具成本效益比运行和维护群集运行几个 Stream Analytics 作业。

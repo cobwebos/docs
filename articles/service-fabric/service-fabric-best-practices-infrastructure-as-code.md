@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2dfe1493c6611fb69a417895aaa1028ad5881b9c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159931"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237419"
 ---
 # <a name="infrastructure-as-code"></a>基础结构即代码
 
@@ -95,6 +95,47 @@ for root, dirs, files in os.walk(self.microservices_app_package_path):
         microservices_sfpkg.write(os.path.join(root, file), os.path.join(root_folder, file))
 
 microservices_sfpkg.close()
+```
+
+## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure 虚拟机操作系统自动升级配置 
+升级你的虚拟机是用户启动的操作，并且建议你使用[虚拟机规模集自动操作系统升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)适用于 Azure Service Fabric 群集主机修补程序管理;修补业务流程应用程序是一种替代解决方案，适用于托管在 Azure 外部，尽管 POA 可以在 Azure 中，使用托管在 Azure 正在为首选虚拟机操作系统自动升级的常见原因中 POA 的开销通过 POA。 以下是要启用自动 OS 升级的计算虚拟机规模集资源管理器模板属性：
+
+```json
+"upgradePolicy": {
+   "mode": "Automatic",
+   "automaticOSUpgradePolicy": {
+        "enableAutomaticOSUpgrade": true,
+        "disableAutomaticRollback": false
+    }
+},
+```
+当 Service Fabric 中使用自动 OS 升级，新的操作系统映像被推出一个更新域以维持高可用性的 Service Fabric 中运行的服务一次。 若要利用 Service Fabric 中的自动 OS 升级，必须将群集配置为使用银级持久性层或更高层级。
+
+请确保以下注册表项设置为 false，以防止 windows 主机计算机启动不协调的更新：HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+
+以下是要将 WindowsUpdate 注册表项设置为 false 的计算虚拟机规模集资源管理器模板属性：
+```json
+"osProfile": {
+        "computerNamePrefix": "{vmss-name}",
+        "adminUsername": "{your-username}",
+        "secrets": [],
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": false
+        }
+      },
+```
+
+## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Azure Service Fabric 群集升级配置
+下面是 Service Fabric 群集资源管理器模板的属性，以启用自动升级：
+```json
+"upgradeMode": "Automatic",
+```
+若要将群集手动升级和下载的 cab/deb 分布到群集虚拟机，然后调用以下 PowerShell:
+```powershell
+Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
+Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
+Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
 ## <a name="next-steps"></a>后续步骤

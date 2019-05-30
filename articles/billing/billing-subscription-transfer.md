@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 05/24/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f070cafa026679eb9322ac7ba2eafe4c7e233d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 33d0e5f92d5de104530882b204b1f196360511b2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826749"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236462"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
@@ -37,10 +37,10 @@ ms.locfileid: "65826749"
 
 1. 选择要转让的订阅。
 
-1. 使用[支持的套餐列表](#supported)，检查套餐和套餐 ID，验证订阅是否符合自助服务转让资格。
+1. 使用[支持的套餐列表](#supported)，检查套餐和套餐 ID，验证订阅是否符合自助服务转让资格   。
 
    ![在帐户中心验证订阅的套餐 ID](./media/billing-subscription-transfer/image0.png)
-1. 单击“转让订阅”。
+1. 单击“转让订阅”  。
 
    ![Azure 帐户订阅选项卡](./media/billing-subscription-transfer/image1.png)
 1. 指定接收方。
@@ -82,7 +82,7 @@ ms.locfileid: "65826749"
 
 自助服务订阅转让适用于下表中列出的产品/服务或订阅类型。 目前不能转让免费试用版订阅或 [Azure 开放式许可 (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) 订阅。 若要暂时避开此问题，请参阅[将资源移动到新的资源组或订阅中](../azure-resource-manager/resource-group-move-resources.md)。 若要转让其他订阅（例如[赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)或支持计划），请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-| 产品/服务名称                                                                             | 产品编号 |
+| 产品名称                                                                             | 产品编号 |
 |----------------------------------------------------------------------------------------|--------------|
 | [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
 | [Microsoft 合作伙伴网络](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
@@ -102,11 +102,13 @@ ms.locfileid: "65826749"
 
 ### <a name="whoisaa"></a> 谁是订阅的帐户管理员？
 
-帐户管理员是注册或购买 Azure 订阅的人员。 他们有权访问[帐户中心](https://account.azure.com/Subscriptions)并执行各种管理任务，例如创建订阅、取消订阅、更改订阅的计费信息，或者更改服务管理员。 如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
+帐户管理员是注册或购买 Azure 订阅的人员。 他们有权访问[帐户中心](https://account.azure.com/Subscriptions)并执行各种管理任务，例如创建订阅、取消订阅、更改订阅的计费信息，或者更改服务管理员。 有关了解管理员角色和权限的详细信息，请参阅[Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+
+如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
 
 1. 请访问 [Azure 门户中的订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 选择要检查的订阅，并关注“设置”下的信息。
-1. 选择“属性”。 订阅的帐户管理员会显示在“帐户管理员”框中。
+1. 选择要检查的订阅，并关注“设置”  下的信息。
+1. 选择“属性”。  订阅的帐户管理员会显示在“帐户管理员”框中。 
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>所有内容都会转让吗？ 包括资源组、VM、磁盘和其他正在运行的服务吗？
 
@@ -140,9 +142,9 @@ Azure 订阅在帐户管理员所属的目录中创建。 更改目录时，将�
 如果接收方需要限制对其资源的访问，他们应考虑更新与服务关联的任何机密。 可通过以下步骤更新大多数资源：
 
   1. 转到 [Azure 门户](https://portal.azure.com)。
-  2. 在“中心”菜单上，选择“所有资源”。
+  2. 在“中心”菜单上，选择“所有资源”  。
   3. 选择资源。
-  4. 在资源边栏选项卡中，单击“设置”。 可以在这里查看和更新现有机密。
+  4. 在资源边栏选项卡中，单击“设置”。  可以在这里查看和更新现有机密。
 
 ### <a name="if-i-transfer-the-subscription-in-the-middle-of-the-billing-cycle-does-the-recipient-pay-for-the-entire-billing-cycle"></a>如果在计费周期中途转让订阅，接收方需要支付整个计费周期的费用吗？
 
@@ -162,7 +164,7 @@ Azure 订阅在帐户管理员所属的目录中创建。 更改目录时，将�
 
 ### <a name="can-the-recipient-use-a-different-payment-method"></a>接收方可以使用不同的付款方式吗？
 
-可以。 但订阅帐单会拆分成两个帐户。  
+是的。 但订阅帐单会拆分成两个帐户。  
 
 ### <a name="is-the-payment-method-impacted-after-i-transferred-an-azure-subscription"></a>转让 Azure 订阅后，付款方式会受到影响吗？
 

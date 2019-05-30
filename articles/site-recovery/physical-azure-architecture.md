@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 99aec3be893693e523dffefbb3c422222ac19a2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 354a68d7d4d07657baa7044566dde8b7ed77ca63
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947474"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400071"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理服务器到 Azure 的灾难恢复体系结构
 
@@ -23,7 +23,7 @@ ms.locfileid: "60947474"
 
 下面的表和图提供了用于将物理服务器复制到 Azure 的组件的概要视图。  
 
-组件 | **要求** | **详细信息**
+组件  | **要求** | **详细信息**
 --- | --- | ---
 **Azure** | 一个 Azure 订阅和 Azure 网络。 | 复制的数据从本地物理机存储在 Azure 中托管磁盘。 运行从本地到 Azure 的故障转移时，将使用复制的数据创建 Azure VM。 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
 **配置服务器** | 需要部署单台本地物理机或 VMware VM 来运行所有非本地 Site Recovery 组件。 VM 运行配置服务器、进程服务器和主目标服务器。 | 配置服务器在本地和 Azure 之间协调通信并管理数据复制。

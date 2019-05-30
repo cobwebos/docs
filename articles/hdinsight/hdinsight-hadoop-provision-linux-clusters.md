@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 01/28/2019
-ms.openlocfilehash: 2f8c3aa0a5d37327ba49aebb1def94e90751b7cc
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.date: 05/28/2019
+ms.openlocfilehash: 351b6a8e056d22fa8f2d695a2722b39b9771c8b0
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597568"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299383"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -22,7 +22,7 @@ ms.locfileid: "65597568"
 
 了解如何使用 Apache Hadoop、Apache Spark、Apache Kafka、交互式查询、Apache HBase、机器学习服务或 Apache Storm 在 HDInsight 中设置和配置群集。 另外，了解如何自定义群集，并将它们加入域以提高安全性。
 
-Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点）组成。 Azure HDInsight 对各个节点的安装和配置的实现细节进行处理，因此用户只需提供常规配置信息。 
+Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点）组成。 Azure HDInsight 对各个节点的安装和配置的实现细节进行处理，因此用户只需提供常规配置信息。
 
 > [!IMPORTANT]  
 > 创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集以每分钟按比例收费，因此无需再使用群集时，应始终将其删除。 了解如何[删除群集](hdinsight-delete-cluster.md)。
@@ -41,7 +41,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 | [Azure 资源管理器模板](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 ## <a name="quick-create-basic-cluster-setup"></a>快速创建：基本群集设置
-本文介绍如何在 [Azure 门户](https://portal.azure.com)中进行设置，通过该门户，可以使用“快速创建”或“自定义”创建 HDInsight 群集。 
+本文介绍如何在 [Azure 门户](https://portal.azure.com)中进行设置，通过该门户，可以使用“快速创建”  或“自定义”  创建 HDInsight 群集。 
 
 ![hdinsight 创建选项 自定义 快速创建](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-options.png)
 
@@ -52,11 +52,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 * 群集登录和 SSH 用户名
 * [位置](#location)
 
-> [!IMPORTANT]  
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 3.3 停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
->
-
-## <a name="resource-group-name"></a>资源组名称 
+## <a name="resource-group-name"></a>资源组名称
 
 可以借助 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 以组（称为 Azure 资源组）的形式处理应用程序中的资源。 可以通过单个协调的操作部署、更新、监视或删除应用程序的所有资源。
 
@@ -91,7 +87,7 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 
 ## <a name="location"></a>群集和存储所在的位置（区域）
 
-不需要显式指定群集位置：群集与默认存储在同一位置。 有关受支持区域的列表，请单击 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)中的“区域”下拉列表。
+不需要显式指定群集位置：群集与默认存储在同一位置。 有关受支持区域的列表，请单击 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)中的“区域”  下拉列表。
 
 ## <a name="storage-endpoints-for-clusters"></a>群集的存储终结点
 
@@ -139,7 +135,7 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
  
 ## <a name="enterprise-security-package"></a>企业安全数据包
 
-对于 Hadoop、Spark、HBase、Kafka 和交互式查询群集类型，可选择启用“企业安全性套餐”。 启用此数据包，可通过使用 Apache Ranger 并与 Azure Active Directory 集成来实现更安全的群集设置。 有关详细信息，请参阅 [Azure HDInsight 中的企业安全数据包](./domain-joined/apache-domain-joined-introduction.md)。
+对于 Hadoop、Spark、HBase、Kafka 和交互式查询群集类型，可选择启用“企业安全性套餐”。  启用此数据包，可通过使用 Apache Ranger 并与 Azure Active Directory 集成来实现更安全的群集设置。 有关详细信息，请参阅 [Azure HDInsight 中的企业安全数据包](./domain-joined/apache-domain-joined-introduction.md)。
 
 ![hdinsight 创建选项 选择企业安全数据包](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
 
@@ -160,10 +156,10 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 | Type | Nodes | 图表 |
 | --- | --- | --- |
-| Hadoop |头节点 (2)，数据节点 (1+) |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
+| Hadoop |头节点 (2)，辅助角色节点 （1 +） |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |头服务器 (2)，区域服务器 (1+)，主控/ZooKeeper 节点 (3) |![HDInsight HBase 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
 | Storm |Nimbus 节点 (2)，监督程序服务器 (1+)，ZooKeeper 节点 (3) |![HDInsight Storm 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |头节点 (2)，辅助角色节点 (1+)，ZooKeeper 节点 (3)（对于 A1 ZooKeeper VM 大小免费） |![HDInsight Spark 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Spark |头节点 (2)，辅助角色节点 （1 +），ZooKeeper 节点 (3) （对于 A1 ZooKeeper VM 大小免费） |![HDInsight Spark 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 有关详细信息，请参阅“HDInsight 提供了哪些 Hadoop 组件和版本？”中的[群集的默认节点配置和虚拟机大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
 
@@ -172,19 +168,18 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 不同群集类型具有不同的节点类型、节点数和节点大小：
 * Hadoop 群集类型默认具有： 
     * 两个*头节点*  
-    * 四个*数据节点*
+    * 四个*辅助角色节点*
 * Storm 群集类型默认具有： 
     * 两个 *Nimbus 节点*
     * 三个 *ZooKeeper 节点*
     * 四个*监督器节点* 
 
-如果只需试用 HDInsight，建议使用一个数据节点。 有关 HDInsight 定价的详细信息，请参阅 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)。
+如果您只需试用 HDInsight，我们建议使用一个辅助角色节点。 有关 HDInsight 定价的详细信息，请参阅 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)。
 
 > [!NOTE]  
 > 群集大小限制因 Azure 订阅而异。 若要提高限制的大小，请联系 [Azure 计费支持人员](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
->
 
-使用 Azure 门户配置群集时，可通过“节点定价层”边栏选项卡查看节点大小。 在门户中，还可以查看不同节点大小的相关成本。 
+使用 Azure 门户配置群集时，可通过“节点定价层”  边栏选项卡查看节点大小。 在门户中，还可以查看不同节点大小的相关成本。 
 
 ![HDInsight VM 节点大小](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-node-sizes.png)
 
@@ -193,12 +188,10 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 * A 系列和 D1-4 系列 VM：[常规用途 Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
 * D11-14 系列 VM：[内存优化 Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
-若要了解在使用各种 SDK 创建群集或使用 Azure PowerShell 时，应使用什么值指定 VM 大小，请参阅[用于 HDInsight 群集的 VM 大小](../cloud-services/cloud-services-sizes-specs.md#size-tables)。 从此链接文章中，使用表“大小”列中的值。
+若要了解在使用各种 SDK 创建群集或使用 Azure PowerShell 时，应使用什么值指定 VM 大小，请参阅[用于 HDInsight 群集的 VM 大小](../cloud-services/cloud-services-sizes-specs.md#size-tables)。 从此链接文章中，使用表“大小”  列中的值。
 
 > [!IMPORTANT]  
-> 如果需要群集中有 32 个以上的辅助节点，则必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。
->
->
+> 如果需要 32 个以上的辅助角色节点的群集中，您必须选择具有至少为 8 个核心和 14 GB RAM 的头节点大小。
 
 有关详细信息，请参阅[虚拟机的大小](../virtual-machines/windows/sizes.md)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。   
 
@@ -212,8 +205,6 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 > 如果在将 JAR 文件部署到 HDInsight 群集或调用 HDInsight 群集上的 JAR 文件时遇到问题，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
 >
 > Cascading 不受 HDInsight 支持，因此不符合 Microsoft 技术支持的条件。 有关支持的组件的列表，请参阅 [HDInsight 提供的群集版本有哪些新功能？](hdinsight-component-versioning.md)。
->
->
 
 在创建过程中，有时需要配置以下配置文件：
 

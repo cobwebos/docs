@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: f54003f4e1c60b80b500f49bb83d4b7adf2bc12a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f169f969a1acf4cefc8cee27f74a99730491176a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60312859"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389413"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>使用必应图像搜索 API 从 Web 获取图像
 
@@ -45,7 +45,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 ```
 
 > [!NOTE]
-> 当查询使用 `site:` 运算符时，不管 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) 设置如何，对查询的响应都可能包含成人内容。 只有在知道域内容的情况下，才使用 `site:`。
+> 当查询使用 `site:` 运算符时，不管 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) 设置如何，对查询的响应都可能包含成人内容。 只有在知道域内容的情况下，才使用 `site:`。
 
 以下示例演示了如何从 ContosoSailing.com 获取必应在过去一周发现的小图像。  
 
@@ -62,19 +62,19 @@ Host: api.cognitive.microsoft.com
 
  默认情况下，图像搜索 API 返回与查询相关的所有图像。 若要筛选必应返回的图像（例如，只返回背景透明的图像或特定大小的图像），请使用以下查询参数：
 
-* [aspect](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#aspect)：按纵横比筛选图像（例如，标准图像或宽屏图像）。
-* [color](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#color)：按主色或黑白色筛选图像。
-* [freshness](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#freshness)：按时间筛选图像（例如，必应在过去一周发现的图像）。
-* [height](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#height)、[width](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#width)：按高度和宽度筛选图像。
-* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagecontent)：按内容筛选图像（例如，只显示人脸的图像）。
-* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype)：按类型筛选图像（例如，剪贴画、动态 GIF 或透明背景图像）。
-* [license](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#license)：按与站点关联的许可证类型筛选图像。
-* [size](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#size)：按大小筛选图像（例如，最大尺寸为 200x200 像素的小图像）。
+* [aspect](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)：按纵横比筛选图像（例如，标准图像或宽屏图像）。
+* [color](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)：按主色或黑白色筛选图像。
+* [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)：按时间筛选图像（例如，必应在过去一周发现的图像）。
+* [height](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height)、[width](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)：按高度和宽度筛选图像。
+* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)：按内容筛选图像（例如，只显示人脸的图像）。
+* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)：按类型筛选图像（例如，剪贴画、动态 GIF 或透明背景图像）。
+* [license](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license)：按与站点关联的许可证类型筛选图像。
+* [size](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)：按大小筛选图像（例如，最大尺寸为 200x200 像素的小图像）。
 
 若要从特定的域获取图像，请使用 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
 
  > [!NOTE]
- > 当查询使用 `site:` 运算符时，不管 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) 设置如何，对查询的响应都可能包含成人内容。 只有在知道域内容的情况下，才使用 `site:`。
+ > 当查询使用 `site:` 运算符时，不管 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) 设置如何，对查询的响应都可能包含成人内容。 只有在知道域内容的情况下，才使用 `site:`。
 
 以下示例演示了如何从 ContosoSailing.com 获取必应在过去一周发现的小图像。  
 
@@ -89,7 +89,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="bing-image-search-response-format"></a>必应图像搜索响应格式
 
-必应提供的响应消息包含一个 [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) 应答，该应答包含认知服务确定与查询相关的图像的列表。 列表中的每个 [Image](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image) 对象包含图像的以下信息：URL、大小、尺寸、编码格式、缩略图的 URL，以及缩略图的尺寸。
+必应提供的响应消息包含一个 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 应答，该应答包含认知服务确定与查询相关的图像的列表。 列表中的每个 [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) 对象包含图像的以下信息：URL、大小、尺寸、编码格式、缩略图的 URL，以及缩略图的尺寸。
 
 ```json
 {

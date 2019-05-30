@@ -11,32 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: ac440be4444ca0d62f7ffde2b8b65e41dcba6683
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 041a73cd2840e0b6a1840e15629d9c0e284e9890
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002459"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225519"
 ---
-# <a name="dynamic-manifests"></a>动态清单
+# <a name="pre-filtering-manifests-with-dynamic-packager"></a>预筛选与动态打包程序的清单
 
-媒体服务根据预定义的筛选器提供**动态清单**。 在定义筛选器（请参阅[定义筛选器](filters-concept.md)）后，客户端可以使用筛选器来流式传输视频的特定再现内容或子剪辑。 客户端会在流 URL 中指定筛选器。 筛选器可以应用于自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。 
+将内容流式传输到设备的自适应比特率，通常需要将一个清单的多个版本发布到目标特定的设备功能或可用网络带宽。 [动态打包程序](dynamic-packaging-overview.md)允许您指定筛选器可以筛选出特定编解码器、 分辨率、 比特率和音频跟踪组合上实时需创建多个副本中删除。 只需发布一组特定的目标设备 （iOS、 Android、 SmartTV 或浏览器） 和网络功能 （高带宽、 移动、 或低带宽方案） 配置筛选器与新的 URL。 在这种情况下，客户端可以处理通过查询字符串内容的流式处理 (通过指定可用[资产筛选器或帐户筛选器](filters-concept.md)) 和到流的特定部分的流中使用筛选器。
 
-下表显示了一些包含筛选器的 URL 示例：
+某些传递方案要求，请确保客户不能访问特定的跟踪。 例如，可能不想要发布包含到特定订阅服务器层的 HD 轨道的清单。 或者，可能想要删除特定的自适应比特率 (ABR) 跟踪，从而减少成本传递到不会受益于其他跟踪的特定设备。 在这种情况下可以将关联一组预先创建筛选器与你[流式处理定位符](streaming-locators-concept.md)上创建。 在这种情况下，客户端不能操作如何传输的内容，则由定义**流式处理定位符**。
 
-|Protocol|示例|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|平滑流式处理|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
- 
+可以通过指定筛选将组合[流式处理定位符的筛选器](filters-concept.md#associating-filters-with-streaming-locator)+ 您的客户端在 URL 中指定的其他设备特定筛选器。 这可用于限制其他跟踪元数据或事件流、 音频语言或描述性的音频轨道等。 
+
+指定不同的筛选器对你的流，此功能提供了一个强大**动态清单**操作解决方案以面向目标设备的多个用例场景。 本主题介绍与**动态清单**相关的概念，并提供可能需要使用此功能的示例方案。
+
 > [!NOTE]
-> 动态清单不会更改资产和该资产的默认清单。 客户端可以选择请求包含或不包含筛选器的流。 
+> 动态清单不会更改资产和该资产的默认清单。 
 > 
-
-本主题介绍与**动态清单**相关的概念，并提供可能需要使用此功能的示例方案。
 
 ## <a name="manifests-overview"></a>清单概述
 
@@ -52,9 +48,19 @@ ms.locfileid: "66002459"
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>监视视频流的比特率
 
-可以使用 [Azure Media Player 演示页](https://aka.ms/amp)监视视频流的比特率。 演示页在“诊断”选项卡中显示诊断信息：
+可以使用 [Azure Media Player 演示页](https://aka.ms/amp)监视视频流的比特率。 演示页在“诊断”选项卡中显示诊断信息： 
 
 ![Azure Media Player 诊断][amp_diagnostics]
+ 
+### <a name="examples-urls-with-filters-in-query-string"></a>示例：Url 查询字符串中的筛选器
+
+筛选器可以应用于自适应比特率流式处理协议：HLS、MPEG-DASH 和平滑流式处理。 下表显示了一些包含筛选器的 URL 示例：
+
+|Protocol|示例|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|平滑流|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="rendition-filtering"></a>再现内容筛选
 
@@ -116,15 +122,11 @@ ms.locfileid: "66002459"
 2. 还可以修改资产的开始时间和结束时间。 为此，可以创建一个资产筛选器并设置开始/结束时间。 
 3. 希望能够将这些筛选器组合起来（如果不组合的话，则需要将质量筛选添加到进行修改的筛选器上，这会导致筛选器的使用更加困难）。
 
-为了组合筛选器，需要在清单/播放列表 URL 中设置筛选器名称，用分号对名称进行分隔。 假设你有一个名为 MyMobileDevice 的筛选器，用于筛选质量，另外还有一个名为 MyStartTime 的筛选器，用于设置具体的开始时间。 可以将它们组合成下面这样：
+为了组合筛选器，需要在清单/播放列表 URL 中设置筛选器名称，用分号对名称进行分隔。 假设你有一个名为 MyMobileDevice  的筛选器，用于筛选质量，另外还有一个名为 MyStartTime  的筛选器，用于设置具体的开始时间。 可以将它们组合成下面这样：
 
 最多可以组合 3 个筛选器。 
 
 有关详细信息，请参阅[此](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)博客。
-
-## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流式处理定位符相关联
-
-请参阅[筛选器： 流式处理定位符相关联](filters-concept.md#associate-filters-with-streaming-locator)。
 
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 

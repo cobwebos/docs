@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: d693af5ddd0b94734dfa065bef8a1f3a5de09ccc
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5a9fdebc8db0c2a1acc20a894f80cfcc87fb89d5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597137"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236489"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
@@ -86,13 +86,13 @@ ms.locfileid: "65597137"
 以下步骤用于创建适用于 Linux 的数据科学虚拟机的实例：
 
 1. 导航到 [Azure 门户](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu)上的虚拟机列表。 如果你尚未登录到 Azure 帐户，系统可能会提示你登录。 
-1. 单击底部的“创建”打开向导。![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+1. 单击底部的“创建”  打开向导。![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 1. 以下部分提供用于创建 Microsoft 数据科学虚拟机的向导中每个步骤的输入（在上一图片的右侧枚举）。 以下是配置每个步骤所需的输入：
 
    a. **基本信息**：
 
    * **名称**：要创建的数据科学服务器的名称。
-   * **VM 磁盘类型**：如果希望使用固态硬盘 (SSD)，请选择“高级 SSD”。 否则，请选择“标准 HDD”。 
+   * **VM 磁盘类型**：如果希望使用固态硬盘 (SSD)，请选择“高级 SSD”  。 否则，请选择“标准 HDD”  。 
    * **用户名**：第一个帐户登录 ID。
    * **密码**：第一个帐户密码（可以使用 SSH 公钥而非密码）。
    * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
@@ -109,7 +109,7 @@ ms.locfileid: "65597137"
 
    d. **汇总**：
 
-   * 验证输入的所有信息是否正确。 此时会显示使用条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 若要开始预配，请单击“创建”。 
+   * 验证输入的所有信息是否正确。 此时会显示使用条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 若要开始预配，请单击“创建”  。 
 
 预配大约需要 5 分钟。 预配的状态在 Azure 门户上显示。
 
@@ -121,7 +121,7 @@ ms.locfileid: "65597137"
 1. 图形会话 X2Go
 1. Jupyter 笔记本的 JupyterHub 和 JupyterLab
 
-此外可以将数据科学 VM 附加到 Azure 笔记本，以在 VM 上运行的 Jupyter 笔记本并绕过限制的免费服务层。 有关详细信息，请参阅[管理和配置笔记本项目-计算层](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。
+此外可以将数据科学 VM 附加到 Azure 笔记本，以在 VM 上运行的 Jupyter 笔记本并绕过限制的免费服务层。 有关详细信息，请参阅[管理和配置笔记本项目-计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
 
 ### <a name="ssh"></a>SSH
 
@@ -135,7 +135,7 @@ ms.locfileid: "65597137"
 Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 若要连接到 Linux VM 图形桌面，请在客户端上完成以下过程：
 
 1. 从 [X2Go ](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。
-1. 运行 X2Go 客户端，并选择“新建会话”。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
+1. 运行 X2Go 客户端，并选择“新建会话”  。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
    * **会话选项卡**：
      * **主机**：Linux Data Science VM 的主机名或 IP 地址。
      * **登录名**：Linux VM 上的用户名。
@@ -231,7 +231,7 @@ R 是数据分析和机器学习的最常用语言之一。 如果要使用 R �
 
 ### <a name="python"></a>Python
 
-使用 Python 2.7 和 3.5 环境安装 Anaconda Python。 2.7 环境称为根环境，3.5 环境称为 py35 环境。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。
+使用 Python 2.7 和 3.5 环境安装 Anaconda Python。 2.7 环境称为根环境，3.5 环境称为 py35 环境   。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。
 
 默认为 py35 环境。 激活根 (2.7) 环境：
 
@@ -260,7 +260,7 @@ pip install <package>
 /anaconda/bin/pip install <package>
 ```
 
-对于 conda，应始终指定环境名称（py35 或根）：
+对于 conda，应始终指定环境名称（py35 或根）   ：
 
 ```bash
 conda install <package> -n py35
@@ -282,11 +282,11 @@ Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的�
 > [!NOTE]
 > 默认情况下，配置 VM 时，防火墙中会打开端口 8000。 
 
-我们已经打包了两个示例笔记本（分别在 Python 和 R 中）。通过使用本地 Linux 用户名和密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例链接。 通过选择“新建”并选择相应的语言内核，可创建新笔记本。 如果没有看到“新建”按钮，请点击左上角的“Jupyter”图标转到笔记本服务器的主页。
+我们已经打包了两个示例笔记本（分别在 Python 和 R 中）。通过使用本地 Linux 用户名和密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例链接。 通过选择“新建”  并选择相应的语言内核，可创建新笔记本。 如果没有看到“新建”  按钮，请点击左上角的“Jupyter”  图标转到笔记本服务器的主页。
 
 ### <a name="apache-spark-standalone"></a>Apache Spark Standalone
 
-Apache Spark 的独立实例预安装在 Linux DSVM 上，帮助用户先在本地开发 Spark 应用程序，再在大型群集上进行测试和部署。 可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 时，单击“新建”按钮，然后应该能够看到可用内核列表。 “Spark - Python”是 PySpark 内核。借助它，可以使用 Python 语言生成 Spark 应用程序。 如 PyCharm 或 Spyder 为 Python IDE 还可用于生成 Spark 程序。 独立在本例中，因此 Spark 堆栈内调用的客户端程序可以更快、 更轻松地解决问题相比开发 Spark 群集上运行。
+Apache Spark 的独立实例预安装在 Linux DSVM 上，帮助用户先在本地开发 Spark 应用程序，再在大型群集上进行测试和部署。 可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 时，单击“新建”按钮，然后应该能够看到可用内核列表  。 “Spark - Python”是 PySpark 内核。借助它，可以使用 Python 语言生成 Spark 应用程序。 如 PyCharm 或 Spyder 为 Python IDE 还可用于生成 Spark 程序。 独立在本例中，因此 Spark 堆栈内调用的客户端程序可以更快、 更轻松地解决问题相比开发 Spark 群集上运行。
 
 Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyter 主目录下的“SparkML”目录 ($HOME/notebooks/SparkML/pySpark) 中找到。 
 
@@ -320,7 +320,7 @@ systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
 #### <a name="graphical-sql-client"></a>图形化 SQL 客户端
 
-SQuirrel SQL 是一个图形化 SQL 客户端，用于连接到不同的数据库（如 Microsoft SQL Server 和 MySQL）和运行 SQL 查询。 你可以从图形桌面会话 （例如使用 X2Go 客户端） 运行 SQuirrel SQL 使用桌面图标，或通过在 shell 中使用以下命令：
+SQuirrel SQL  是一个图形化 SQL 客户端，用于连接到不同的数据库（如 Microsoft SQL Server 和 MySQL）和运行 SQL 查询。 你可以从图形桌面会话 （例如使用 X2Go 客户端） 运行 SQuirrel SQL 使用桌面图标，或通过在 shell 中使用以下命令：
 
 ```bash
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh
@@ -458,19 +458,19 @@ rattle()
 现在，将打开具有一组选项卡的图形界面。 下面是快速入门教程步骤中使用示例天气数据集和生成模型所需的 Rattle。 以下某些步骤中，系统会提示自动安装并加载尚未安装在系统上的某些必需 R 包。
 
 > [!NOTE]
-> 如果无权在系统目录（默认）中安装包，可能会在 R 控制台窗口中看到一个提示，提醒将包安装到个人库中。 如果看到这些提示，请回复 y。
+> 如果无权在系统目录（默认）中安装包，可能会在 R 控制台窗口中看到一个提示，提醒将包安装到个人库中。 如果看到这些提示，请回复 y  。
 
-1. 单击“执行” 。
-1. 这会弹出一个对话框，询问是否要使用示例气象数据集。 单击“是”加载示例。
-1. 单击“模型”选项卡。
-1. 单击“执行”生成决策树。
-1. 单击“绘制”显示决策树。
-1. 单击“林”单选按钮，并单击“执行”生成随机林。
-1. 单击“评估”选项卡。
-1. 单击“风险”单选按钮，并单击“执行”，以显示两个风险（累积）性能绘图。
-1. 单击“日志”选项卡，显示上述操作生成的 R 代码。
-   （由于当前版本 Rattle 中的 bug，需在日志文本中的“导出此日志...”前插入 *#* 字符。）
-1. 单击“导出”按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。
+1. 单击“执行”  。
+1. 这会弹出一个对话框，询问是否要使用示例气象数据集。 单击“是”  加载示例。
+1. 单击“模型”  选项卡。
+1. 单击“执行”  生成决策树。
+1. 单击“绘制”  显示决策树。
+1. 单击“林”  单选按钮，并单击“执行”  生成随机林。
+1. 单击“评估”  选项卡。
+1. 单击“风险”  单选按钮，并单击“执行”  ，以显示两个风险（累积）性能绘图。
+1. 单击“日志”  选项卡，显示上述操作生成的 R 代码。
+   （由于当前版本 Rattle 中的 bug，需在日志文本中的“导出此日志...”  前插入 *#* 字符。）
+1. 单击“导出”  按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。
 
 可以退出 Rattle 和 R。现在，可以修改生成的 R 脚本或者直接使用，可使其随时运行以重复在 Rattle UI 中完成的所有操作。 特别是对于 R 的初学者而言，这是一种简单方法，可用于在图形界面中快速进行分析和机器学习，同时在 R 中自动生成可修改和/或用于学习的代码。
 

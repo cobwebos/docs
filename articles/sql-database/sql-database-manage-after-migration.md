@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 73bc2d9889727a1633986e12642bd06cf2714632
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949920"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357315"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中的单一数据库和共用数据库
 
@@ -29,6 +29,7 @@ ms.locfileid: "65949920"
 
 本文讨论 Azure SQL 数据库的一些核心特性。作为一个平台，Azure SQL 数据库非常便于你在使用单一数据库和弹性池中的共用数据库时加以利用。 这些特点为：
 
+- 使用 Azure 门户监视数据库
 - 业务连续性和灾难恢复 (BCDR)
 - 安全和符合性
 - 智能数据库监视和维护
@@ -36,6 +37,25 @@ ms.locfileid: "65949920"
 
 > [!NOTE]
 > 本文适用于 Azure SQL 数据库中的下列部署选项：单一数据库和弹性池。 它不适用于 SQL 数据库中的托管实例部署选项。
+
+## <a name="monitor-databases-using-the-azure-portal"></a>使用 Azure 门户监视数据库
+
+在中[Azure 门户](https://portal.azure.com/)，你可以通过选择数据库并单击监视单个数据库的利用率**监视**图表。 这会显示“指标”  窗口，可通过单击“编辑图表”  按钮来对其进行更改。 添加以下指标：
+
+- CPU 百分比
+- DTU 百分比
+- 数据 IO 百分比
+- 数据库大小百分比
+
+添加这些指标后，可以继续在“监视”  图表上查看它们，并可在“指标”  窗口上查看更多详细信息。 **DTU** 的平均利用率百分比。 有关服务层级的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)文章。  
+
+![监视数据库服务层的性能。](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
+
+还可针对性能指标配置警报。 在“指标”  窗口中单击“添加警报”  按钮。 按照向导说明来配置警报。 可选择在指标超出或低于特定阈值时显示警报。
+
+例如，如果预期数据库的工作负荷会增长，则可以选择配置在数据库的任何性能指标达到 80% 时发出电子邮件警报。 可以将此警报用作预警，以确定你何时需要切换到下一个更高的计算大小。
+
+性能指标还可以帮助你确定是否能够降级到更低的计算大小。 假定你正在使用一个标准 S2 数据库并且所有性能指标均显示该数据库在任何给定时间平均的使用率不超过 10%。 很可能该数据库在标准 S1 中会很好地正常工作。 但是，在决定转换到更低的计算大小之前，请注意出现峰值或波动情况的工作负荷。
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>业务连续性和灾难恢复 (BCDR)
 
@@ -152,7 +172,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 |**特征**|**Always Encrypted**|**透明数据加密**|
 |---|---|---|
 |**加密范围**|端到端|静态数据|
-|**数据库服务器可访问敏感数据**|“否”|是，因为加密针对的是静态数据|
+|**数据库服务器可访问敏感数据**|否|是，因为加密针对的是静态数据|
 |**允许的 T-SQL 的操作**|相等性比较|所有 T-SQL 的外围应用都可用|
 |**使用该功能所需的应用更改**|轻微|很少|
 |**加密粒度**|列级|数据库级|
@@ -259,7 +279,7 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 可以使用[查询性能见解](sql-database-query-performance.md)查看特定数据库那些排名靠前的资源消耗查询和长时间运行查询的历史记录。 可通过资源利用率、持续时间和执行频率快速找出热门查询。 还可跟踪查询，并检测回归。 此功能需要为数据库启用和激活[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
-![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
+![查询性能见解](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor 日志中的 azure SQL Analytics （预览版）
 

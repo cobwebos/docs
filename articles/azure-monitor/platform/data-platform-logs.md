@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 897f2eef0a52838d6190cb85a6a7f4492250935b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809189"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244855"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor 中的日志
 
@@ -79,7 +79,7 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 | 数据 | 描述 |
 |:---|:---|
 | Azure Active Directory 审核日志 | 通过每个目录的诊断设置进行配置。 参阅[将 Azure AD 日志与 Azure Monitor 日志集成](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。  |
-| 活动日志 | 默认会单独存储，可用于近实时的警报。 安装 Activity Log Analytics 解决方案以将数据写入 Log Analytics 工作区。 参阅[收集和分析 Log Analytics 中的 Azure 活动日志](collect-activity-logs.md)。 |
+| 活动日志 | 默认会单独存储，可用于近实时的警报。 安装活动日志分析解决方案，以便将写入到 Log Analytics 工作区。 参阅[收集和分析 Log Analytics 中的 Azure 活动日志](activity-log-collect.md)。 |
 
 ### <a name="azure-resources"></a>Azure 资源
 
@@ -115,12 +115,12 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 | 用于容器的 Azure Monitor | [用于容器的 Azure Monitor](../insights/container-insights-overview.md) 收集的库存和性能数据。 有关表的列表，请参阅[容器数据收集详细信息](../insights/container-insights-log-search.md#container-records)。 |
 | 用于 VM 的 Azure Monitor | [用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 收集的映射和性能数据。 有关查询此数据的详细信息，请参阅[如何从用于 VM 的 Azure Monitor 查询日志](../insights/vminsights-log-search.md)。 |
 
-### <a name="custom"></a>“自定义” 
+### <a name="custom"></a>自定义 
 
 | 数据 | 描述 |
 |:---|:---|
 | REST API | 将任何 REST 客户端中的数据写入 Log Analytics 工作区。 有关详细信息，请参阅[使用 HTTP 数据收集器 API 将日志数据发送到 Azure Monitor](data-collector-api.md)。
-| 逻辑应用 | 使用“Azure Log Analytics 数据收集器”操作将逻辑应用工作流中的任何数据写入 Log Analytics 工作区。 |
+| 逻辑应用 | 使用“Azure Log Analytics 数据收集器”操作将逻辑应用工作流中的任何数据写入 Log Analytics 工作区。  |
 
 ### <a name="security"></a>安全
 

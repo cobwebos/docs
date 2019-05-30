@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: f09a186ee5626718c7b5e1085dd75d8857e44bb1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c585b300a65091bee3320a21b7bce7ba94d269ec
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705171"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258805"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
 
@@ -135,19 +135,12 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 ## <a name="set-the-vault-context"></a>设置保管库上下文
 
-> [!TIP]
-> Azure Site Recovery PowerShell 模块 （Az.RecoveryServices 模块） 附带了易于使用的大多数 cmdlet 的别名。 模块中的 cmdlet 采用*\<操作 >-**AzRecoveryServicesAsr**\<对象 >* 并具有采用以下形式的等效别名 *\<操作 >-**ASR**\<对象 >*。 本文使用 cmdlet 别名以便阅读。
 
-设置 PowerShell 会话中使用的保管库上下文。 为此，请下载保管库设置文件，并将下载的文件导入 PowerShell 会话以设置保管库上下文。
-
-设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
+设置 PowerShell 会话中使用的保管库上下文。 设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
 
  ```azurepowershell
-#Download the vault settings file for the vault.
-$Vaultsettingsfile = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteRecovery -Path C:\users\user\Documents\
-
-#Import the downloaded vault settings file to set the vault context for the PowerShell session.
-Import-AzRecoveryServicesAsrVaultSettingsFile -Path $Vaultsettingsfile.FilePath
+#Setting the vault context.
+Set-AsrVaultSettings -Vault $vault
 
 ```
 ```

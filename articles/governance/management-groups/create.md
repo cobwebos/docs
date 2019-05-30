@@ -3,19 +3,19 @@ title: 创建管理组以组织 Azure 资源 - Azure 治理
 description: 了解如何使用门户、Azure PowerShell 和 Azure CLI 创建 Azure 管理组以管理多个资源。
 author: rthorn17
 manager: rithorn
-ms.service: azure-resource-manager
+ms.service: governance
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 2dd2a6e071533deef47a6482bfb9ed92953864ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9e0a864019c2940ba7b5188ea43e9bbae484178d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165909"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241984"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
@@ -33,20 +33,20 @@ ms.locfileid: "66165909"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。
+1. 选择“所有服务” > “管理组”。  
 
-1. 在主页上，选择“新建管理组”。
+1. 在主页上，选择“新建管理组”  。
 
    ![管理组操作页](./media/main.png)
 
 1. 填写管理组 ID 字段。
 
-   - “管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](index.md#root-management-group-for-each-directory)自动创建与 Azure Active Directory id。 ID 对于所有其他管理组，将分配一个唯一 id。
+   -  “管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](index.md#root-management-group-for-each-directory)自动创建与 Azure Active Directory id。 ID 对于所有其他管理组，将分配一个唯一 id。
    - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，并且可以随时更改。  
 
    ![用于创建新管理组的“选项”窗格](./media/create_context_menu.png)  
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ### <a name="create-in-powershell"></a>在 PowerShell 中创建
 

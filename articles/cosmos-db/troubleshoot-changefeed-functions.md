@@ -1,95 +1,95 @@
 ---
-title: 诊断并解决问题时在 Azure Functions 中使用 Azure Cosmos DB 触发器
-description: 常见的问题、 解决方法和诊断的步骤，当使用 Azure Functions 和 Azure Cosmos DB 触发器
+title: 诊断和排查在 Azure Functions 中使用 Azure Cosmos DB 触发器时出现的问题
+description: 在 Azure Functions 中使用 Azure Cosmos DB 触发器时出现的常见问题及其解决方案和诊断步骤
 author: ealsur
 ms.service: cosmos-db
-ms.date: 04/16/2019
+ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e8f0b9c8bf1bfb846f13306f58bcb1721ed6b422
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 66eff6ee603ced03a8f4d75d4569752e0b11a6e7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510531"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242520"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>诊断并解决问题时在 Azure Functions 中使用 Azure Cosmos DB 触发器
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>诊断和排查在 Azure Functions 中使用 Azure Cosmos DB 触发器时出现的问题
 
-这篇文章介绍常见的问题、 解决方法和诊断的步骤，使用时[Azure Cosmos DB 触发器](change-feed-functions.md)使用 Azure Functions。
+本文介绍在 Azure Functions 中使用 [Azure Cosmos DB 触发器](change-feed-functions.md)时出现的常见问题及其解决方案和诊断步骤。
 
 ## <a name="dependencies"></a>依赖项
 
-依赖于扩展包的基本 Azure Functions 运行时通过 Azure Cosmos DB 触发器和绑定。 始终保持更新，这些包，因为它们可能包含修补程序和可能会解决任何潜在问题，可能会遇到的新功能：
+Azure Cosmos DB 触发器和绑定通过基本 Azure Functions 运行时依赖于扩展包。 请始终保持这些包的更新状态，因为它们可能包含用于解决你所遇到的任何潜在问题的修复程序和新功能：
 
-* Azure Functions V2，请参阅[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)。
-* Azure Functions V1，请参阅[Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB)。
+* 对于 Azure Functions V2，请参阅 [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)。
+* 对于 Azure Functions V1，请参阅 [Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB)。
 
-本文将始终引用 Azure Functions V2 时提到运行时，除非显式指定。
+除非明确指定，否则本文每当提到运行时，都始终会参考 Azure Functions V2。
 
 ## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>独立地使用 Azure Cosmos DB SDK
 
-扩展包的关键功能是 Azure Cosmos DB 触发器和绑定提供支持。 它还包括[Azure Cosmos DB.NET SDK](sql-api-sdk-dotnet-core.md)，这都很有用，如果你想要使用 Azure Cosmos DB 以编程方式而无需使用触发器和绑定交互。
+扩展包的关键功能是为 Azure Cosmos DB 触发器和绑定提供支持。 它还包括 [Azure Cosmos DB.NET SDK](sql-api-sdk-dotnet-core.md)，用于帮助你以编程方式来与 Azure Cosmos DB 交互，而无需使用触发器和绑定。
 
-如果想要使用 Azure Cosmos DB SDK，请确保不要添加到你的项目另一个 NuGet 包引用。 相反，**允许通过 Azure Functions 的扩展包解析的 SDK 引用**。 使用 Azure Cosmos DB SDK 独立于触发器和绑定
+若要使用 Azure Cosmos DB SDK，请务必不要将项目添加到另一个 NuGet 包引用。 而是**让 SDK 引用通过 Azure Functions 的扩展包进行解析**。 使用 Azure Cosmos DB SDK 独立于触发器和绑定
 
-此外，如果要手动创建的实例[Azure Cosmos DB SDK 客户端](./sql-api-sdk-dotnet-core.md)，应遵循的模式的客户端的一个实例[使用单一实例模式方法](../azure-functions/manage-connections.md#documentclient-code-example-c). 此过程将避免潜在的套接字问题，在您的操作。
+此外，如果手动创建自己的 [Azure Cosmos DB SDK 客户端](./sql-api-sdk-dotnet-core.md)实例，应遵循以下模式：只提供一个[使用单一实例模式方法](../azure-functions/manage-connections.md#documentclient-code-example-c)的客户端实例。 此过程可避免操作中出现潜在的套接字问题。
 
 ## <a name="common-scenarios-and-workarounds"></a>常见方案和解决方法
 
 ### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Azure 函数失败，错误消息集合不存在
 
-Azure 函数失败，出现错误消息"任一源集合集合-name （在数据库数据库名称中） 或租约集合 collection2-name （在数据库 ' database2-name'） 不存在。 侦听器开始之前，必须存在这两个集合。 若要自动创建租用集合，请设置为 'true' CreateLeaseCollectionIfNotExists'"
+Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据库 'database-name' 中)或租约集合 'collection2-name' (在数据库 'database2-name' 中)不存在。 在侦听器启动之前，这两个集合必须存在。 若要自动创建租约集合，请将 'CreateLeaseCollectionIfNotExists' 设置为 'true'”
 
-这意味着一个或两个触发器才能正常工作所需的 Azure Cosmos 容器不存在或无法对 Azure 函数。 **与错误本身会告诉您哪些 Azure Cosmos 数据库和容器是寻找触发器**基于你的配置。
+这表示运行触发器所需的一个或两个 Azure Cosmos 容器不存在，或者无法由 Azure 函数访问。 **该错误本身告知了触发器正在根据配置查找的 Azure Cosmos 数据库和容器**。
 
-1. 验证是否`ConnectionStringSetting`属性以及其**引用存在于 Azure Function App 的设置**。 此属性的值不应为该连接字符串本身，但配置设置的名称。
-2. 确认`databaseName`和`collectionName`Azure Cosmos 帐户中存在。 如果您使用的自动值替换 (使用`%settingName%`模式)，请确保你的 Azure 函数应用中存在的设置的名称。
-3. 如果未指定`LeaseCollectionName/leaseCollectionName`，默认值是"租约"。 验证存在这样的容器。 或者也可以设置`CreateLeaseCollectionIfNotExists`触发器中的属性`true`来自动创建它。
-4. 验证你[Azure Cosmos 帐户的防火墙配置](how-to-configure-firewall.md)以查看它是否不会阻止 Azure 函数。
+1. 验证 `ConnectionStringSetting` 属性，以及它是否**引用了 Azure 函数应用中存在的设置**。 此属性中的值不应是连接字符串本身，而是配置设置的名称。
+2. 验证 `databaseName` 和 `collectionName` 是否在 Azure Cosmos 帐户中存在。 如果使用自动值替换（使用 `%settingName%` 模式），请确保该设置的名称在 Azure 函数应用中存在。
+3. 如果未指定 `LeaseCollectionName/leaseCollectionName`，则默认值为“leases”。 验证此类容器是否存在。 （可选）可将触发器中的 `CreateLeaseCollectionIfNotExists` 属性设置为 `true`，以自动创建该容器。
+4. 验证 [Azure Cosmos 帐户的防火墙配置](how-to-configure-firewall.md)，以查看它是否未阻止 Azure 函数。
 
-### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Azure 函数开始失败"共享吞吐量集合应具有分区键"
+### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Azure 函数无法启动并出现错误“共享吞吐量集合应有分区键”
 
-早期版本的 Azure Cosmos DB 扩展插件不支持使用在中创建的租用容器[共享的吞吐量数据库](./set-throughput.md#set-throughput-on-a-database)。 若要解决此问题，更新[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)扩展以获取最新版本。
+旧版 Azure Cosmos DB 扩展不支持使用在[共享吞吐量数据库](./set-throughput.md#set-throughput-on-a-database)中创建的租约容器。 若要解决此问题，请更新 [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) 扩展以获取最新版本。
 
-### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Azure 函数开始失败"租用集合中，如果分区，必须具有分区键设置为 id。"
+### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Azure 函数无法启动并出现错误“租约集合(如果已分区)必须有与 ID 相同的分区键”。
 
-此错误表示当前租用容器进行分区，但不是分区键路径`/id`。 若要解决此问题，需要重新创建具有租用容器`/id`作为分区键。
+此错误表示当前租约容器已分区，但分区键路径不是 `/id`。 若要解决此问题，需要使用 `/id` 作为分区键来重新创建租约容器。
 
-### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>您看到"值不能为 null。 参数名称： o"在 Azure Functions 日志时尝试运行触发器
+### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>尝试运行触发器时， Azure Functions 日志中出现“值不能为 null。参数名称: o”
 
-如果你使用 Azure 门户并尝试进行选择，将出现此问题**运行**检查使用该触发器的 Azure 函数时在屏幕上的按钮。 触发器不需要供你选择运行以启动，它将自动启动时部署 Azure 函数。 如果你想要检查 Azure 门户上的 Azure 函数的日志流，只需转到受监视的容器，然后插入某些新项，将会自动看到触发器执行。
+如果使用 Azure 门户，并在检查使用触发器的 Azure 函数时选择屏幕上的“运行”按钮，则会出现此问题。  触发器不需要选择“运行”即可启动，部署 Azure 函数时它会自动启动。 若要在 Azure 门户上检查 Azure 函数的日志流，只需转到受监视的容器并插入一些新项，然后自然就会看到触发器正在执行。
 
-### <a name="my-changes-take-too-long-be-received"></a>接收我的更改时间过长
+### <a name="my-changes-take-too-long-be-received"></a>接收更改花费了过长的时间
 
-此方案中可以有多个原因，应检查所有这些：
+这种情形可能是多种原因造成的，应检查所有这些原因：
 
-1. 在你的 Azure Cosmos 帐户所在的同一区域中部署 Azure 函数？ 为了获得最佳的网络延迟，Azure 函数和你的 Azure Cosmos 帐户应可归置到同一 Azure 区域中。
-2. 发生在 Azure Cosmos 容器连续或偶发中所做的更改？
-如果是后者，可能有一定的延迟之间所做的更改存储和 Azure 函数选取它们。 这是时间的因为在内部，当触发器检查你的 Azure Cosmos 容器中的更改，并找到无挂起的要读取，它将休眠的时间以在可配置 （默认情况下 5 秒） 内检查新的更改 （以避免 RU 消耗量偏高） 之前。 可以配置通过此休眠时间`FeedPollDelay/feedPollDelay`中设置[配置](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)的触发器 （的值应为以毫秒为单位）。
-3. Azure Cosmos 容器可能[速率限制](./request-units.md)。
-4. 可以使用`PreferredLocations`触发器以指定的 Azure 区域来定义自定义首选的连接顺序以逗号分隔列表中的属性。
+1. Azure 函数是否部署在 Azure Cosmos 帐户所在的同一区域？ 为了获得最佳的网络延迟，应将 Azure 函数和 Azure Cosmos 帐户并置在同一个 Azure 区域。
+2. Azure Cosmos 容器中发生的更改是持续性的还是偶发性的？
+如果是后者，原因可能是存储更改与 Azure 函数拾取更改的时间有所延迟。 这是因为，在内部，当触发器检查 Azure Cosmos 容器中的更改但未找到任何等待读取的更改时，它将休眠一定的时间（可配置，默认为 5 秒），然后检查新的更改（以避免 RU 消耗量偏高）。 可以通过触发器的[配置](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)中的 `FeedPollDelay/feedPollDelay` 设置来配置此休眠时间（该值预期以毫秒为单位）。
+3. Azure Cosmos 容器可能受到[速率限制](./request-units.md)。
+4. 可以使用触发器中的 `PreferredLocations` 属性来指定 Azure 区域的逗号分隔列表，以定义自定义的首选连接顺序。
 
-### <a name="some-changes-are-missing-in-my-trigger"></a>某些更改未在我的触发器
+### <a name="some-changes-are-missing-in-my-trigger"></a>触发器中缺少某些更改
 
-如果您发现，一些在 Azure Cosmos 容器中发生的更改不会被选取该 Azure 函数，则需要执行的一个初始的调查步骤。
+如果你发现 Azure 函数未拾取 Azure Cosmos 容器中发生的某些更改，则需要执行一个初始调查步骤。
 
-当 Azure Function 收到所做的更改时，它通常处理它们，并可以根据需要，将结果发送到另一个目标。 当调查丢失更改时，请确保您**度量值的更改在引入点接收**（在 Azure 函数开始时），不在目标上。
+当 Azure 函数收到更改时，它通常会处理这些更改，并可能会选择性地将结果发送到另一个目标。 调查丢失更改的问题时，请确保度量在引入时间点（启动 Azure 函数时）收到的更改，而不要度量目标上的更改。 
 
-如果在目标上缺少一些更改，这可能意味着这是接收到所做的更改后，在 Azure 函数执行期间出现一些错误。
+如果目标中缺少某些更改，可能意味着在收到更改后执行 Azure 函数期间发生了某种错误。
 
-在此方案中，最好的做法是添加`try/catch blocks`在代码中，可能会处理这些更改，以检测任何失败的项的特定子集并相应地处理它们的循环内 （将其发送到另一个存储以进行进一步分析或重试）。 
+在这种情况下，最佳措施是在代码中以及在可能正在处理更改的循环中添加 `try/catch blocks`，以检测特定的项子集中出现的任何失败，并相应地对其进行处理（将这些项发送到另一个存储以做进一步的分析或重试）。 
 
 > [!NOTE]
-> Azure Cosmos DB 触发器，默认情况下，不会重试一批更改如果代码执行期间出现未处理异常。 这意味着所做的更改未在目标位置到达的原因，是因为你无法处理它们。
+> Azure Cosmos DB 触发器，默认情况下，不会重试一批更改如果代码执行期间出现未处理异常。 这意味着，更改未抵达目标的原因是无法处理它们。
 
-如果你发现的某些更改未在所有收到了触发器，最常见情况是，则**正在运行另一个 Azure 函数**。 它可能是在 Azure 中部署的另一个 Azure 函数或开发人员的计算机上本地运行 Azure Function**完全相同的配置**（相同监视和租用容器） 和窃取该 Azure 函数你所期望 Azure 函数处理的更改的子集。
+如果你发现触发器根本未收到某些更改，则最常见的情形是有**另一个 Azure 函数正在运行**。 该函数可能是部署在 Azure 中的另一个 Azure 函数，或者是在开发人员计算机本地运行的、采用**完全相同配置**（相同的受监视容器和租约容器）的 Azure 函数，并且此 Azure 函数正在窃取你的 Azure 函数预期要处理的更改子集。
 
-此外，可以验证方案，如果您知道多少个 Azure Function App 实例必须运行。 如果检查租约容器和租赁项目中的非重复值数目进行计数`Owner`属性中它们应等于在函数应用的实例数。 如果有多个所有者只能包含已知的 Azure Function App 实例，则表示这些额外的所有者是一个"窃取"所做的更改。
+此外，如果你知道正在运行多少个 Azure 函数应用实例，则也可以验证这种情况。 如果检查租约容器并统计其中包含的租约项数，这些项中的非重复 `Owner` 属性值应等于函数应用的实例数。 如果所有者数目超过已知的 Azure 函数应用实例数，则表示这些多出的所有者正在“窃取”更改。
 
-一种简单方法，解决这种情况下，是应用`LeaseCollectionPrefix/leaseCollectionPrefix`到新的/不同值的函数或，或者，使用新的租约容器进行测试。
+解决此问题的简单方法之一是将采用新值/不同值的 `LeaseCollectionPrefix/leaseCollectionPrefix` 应用到你的函数，或使用新的租约容器进行测试。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [启用 Azure Functions 的监视](../azure-functions/functions-monitoring.md)
-* [Azure Cosmos DB.NET SDK 进行故障排除](./troubleshoot-dot-net-sdk.md)
+* [Azure Cosmos DB .NET SDK 故障排除](./troubleshoot-dot-net-sdk.md)

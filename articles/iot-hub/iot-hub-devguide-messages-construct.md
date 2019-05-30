@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 49a28c120ae71224195edcdb3809335aeea1fa3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364015"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252797"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -25,7 +25,7 @@ IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与
 
 IoT 中心消息由以下部分组成：
 
-* 一组预先确定的“系统属性”如下所示。
+* 一组预先确定的“系统属性”  如下所示。
 
 * 一组*应用程序属性*。 应用程序可以定义的字符串属性字典，而不需将消息正文反序列化即可进行访问。 IoT 中心永不修改这些属性。
 
@@ -35,13 +35,15 @@ IoT 中心消息由以下部分组成：
 
 使用 IoT 中心进行的设备到云消息传递具有以下特征：
 
-* 设备到云的消息可持久保留在 IoT 中心的默认 messages/events 终结点长达七天。
+* 设备到云的消息可持久保留在 IoT 中心的默认 messages/events  终结点长达七天。
 
 * 设备到云的消息最大可为 256 KB，而且可分成多个批以优化发送。 Batch 最大可为 256 KB。
 
 * IoT 中心不允许任意分区。 从设备到云的消息根据其源于的 **deviceId** 进行分区。
 
 * 如[控制对 IoT 中心的访问](iot-hub-devguide-security.md)所述，IoT 中心允许基于设备的身份验证和访问控制。
+
+* 可以使用进入应用程序属性的信息来标记消息。 有关详细信息，请参阅[消息正](iot-hub-message-enrichments-overview.md)。
 
 有关如何使用不同协议对已发送消息进行编码和解码的详细信息，请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
@@ -58,7 +60,7 @@ IoT 中心消息由以下部分组成：
 | user-id |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 | 否 |
 | iothub-ack |反馈消息生成器。 此属性在云到设备的消息中用于请求 IoT 中心因为设备使用消息而生成反馈消息。 可能的值：**none**（默认值）：不生成任何反馈消息；**positive**：如果消息已完成，则接收反馈消息；**negative**：如果消息未由设备完成就过期（或已达到最大传送计数），则收到反馈消息；**full**：positive 和 negative。 <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | 是 |
 | iothub-connection-device-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId**。 | 对于 D2C 消息为否；对于其他情况则为是。 |
-| iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 generationId（根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 对于 D2C 消息为否；对于其他情况则为是。 |
+| iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 generationId（根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)）  。 | 对于 D2C 消息为否；对于其他情况则为是。 |
 | iothub-connection-auth-method |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。 <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | 对于 D2C 消息为否；对于其他情况则为是。 |
 | iothub-creation-time-utc | 在设备上创建消息的日期和时间。 设备必须显式设置此值。 | 是 |
 
@@ -80,9 +82,9 @@ IoT 中心用于衡量消息大小的方法与协议无关，仅考虑实际有�
 * **iothub-connection-auth-generation-id**
 * **iothub-connection-auth-method**
 
-根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)，前两个属性包含源设备的 deviceId 和 generationId。
+根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)，前两个属性包含源设备的 deviceId 和 generationId   。
 
-iothub-connection-auth-method 属性包含具有以下属性的 JSON 序列化对象：
+ iothub-connection-auth-method 属性包含具有以下属性的 JSON 序列化对象：
 
 ```json
 {

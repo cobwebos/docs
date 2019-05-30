@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: a5e891d334bc15e0b03facb1f1f5ed8a511cda55
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b015b52e3fc806834f12e98c30b6b4e53cb6d659
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443892"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726264"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
@@ -37,7 +37,7 @@ ms.locfileid: "58443892"
 
 本文介绍如何使用托管磁盘。 如果有需要使用存储帐户的旧版部署，请参阅[从存储帐户中的专用 VHD 创建 VM](sa-create-vm-specialized.md)。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="option-1-use-an-existing-disk"></a>选项 1：使用现有磁盘
 
@@ -83,7 +83,7 @@ Get-AzStorageAccount
     Get-AzResourceGroup
     ```
 
-    在“美国西部”区域创建名为 *myResourceGroup* 的资源组。
+    在“美国西部”区域创建名为 *myResourceGroup* 的资源组。 
 
     ```powershell
     New-AzResourceGroup `
@@ -103,7 +103,7 @@ Get-AzStorageAccount
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上传到存储帐户 
-使用 [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 *myVHD.vhd* 从 "C:\Users\Public\Documents\Virtual hard disks\" 上传到 *myResourceGroup* 资源组中名为 *mystorageaccount* 的存储帐户。 该文件存储在名为“mycontainer”的容器中，新文件名为“myUploadedVHD.vhd”。
+使用 [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 *myVHD.vhd* 从 "C:\Users\Public\Documents\Virtual hard disks\" 上传到 *myResourceGroup* 资源组中名为 *mystorageaccount* 的存储帐户。 该文件存储在名为“mycontainer”  的容器中，新文件名为“myUploadedVHD.vhd”  。
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -132,7 +132,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>从 VHD 创建托管磁盘
 
-使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)，基于存储帐户中的专用 VHD 创建托管磁盘。 此示例使用“myOSDisk1”作为磁盘名称，将磁盘放置在“Standard_LRS”存储中，并使用 *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* 作为源 VHD 的 URI。
+使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)，基于存储帐户中的专用 VHD 创建托管磁盘。 此示例使用“myOSDisk1”作为  磁盘名称，将磁盘放置在“Standard_LRS”  存储中，并使用 *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* 作为源 VHD 的 URI。
 
 创建适用于新 VM 的新资源组。
 
@@ -205,11 +205,11 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-若要使用此快照创建需要高性能的 VM，请将参数添加`-AccountType Premium_LRS`新建 AzSnapshotConfig 命令。 此参数将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘的费用比标准托管磁盘更高，因此，在使用该参数之前，请确认需要高级托管磁盘。
+若要使用快照创建高性能的 VM，请将 `-AccountType Premium_LRS` 参数添加到 New-AzSnapshotConfig 命令。 此参数将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘的费用比标准托管磁盘更高，因此，在使用该参数之前，请确认需要高级托管磁盘。
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>从快照创建新磁盘
 
-使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称。
+使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称  。
 
 创建适用于新 VM 的新资源组。
 
@@ -243,7 +243,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
 
 为 VM 创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)和子网。
 
-1. 创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24。
+1. 创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24    。
    
     ```powershell
     $subnetName = 'mySubNet'
@@ -313,7 +313,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 ### <a name="set-the-vm-name-and-size"></a>设置 VM 名称和大小
 
-此示例将 VM 名称设置为“myVM”，将 VM 大小设置为“Standard_A2”。
+此示例将 VM 名称设置为“myVM”，将 VM 大小设置为“Standard_A2”   。
 
 ```powershell
 $vmName = "myVM"
@@ -354,7 +354,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。
+应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。  
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: b620cbb8e51fbe41defb6bdbdc66ba4a7e539aa0
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7a4153dd382a901db21752dd3d55a01803431791
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306561"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388683"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装并运行语音服务容器
 
-语音容器使客户能够构建一个语音应用程序体系结构，经过优化，可利用可靠的云功能和边缘位置。 我们现在支持两个语音容器都**语音到文本**并**文本到语音转换**。 
+语音容器使客户能够构建一个语音应用程序体系结构，经过优化，可利用可靠的云功能和边缘位置。 
 
 两个语音容器是**语音到文本**并**文本到语音转换**。 
 
 |函数|功能|最新|
 |-|-|--|
-|语音转文本| <li>将连续的实时语音转换为文本。<li>可以从音频录音对语音进行批量转换。 <li>支持中间结果、语音结束检测、自动设置文本格式以及不雅内容屏蔽。 <li>可以通过调用[语言理解](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS)，从转换的语音获取用户意向。\*|1.1.1|
-|文本到语音转换| <li>将文本转换为自然发音的语音。 <li>为许多支持的语言提供多种性别和/或方言。 <li>支持纯文本输入或语音合成标记语言 (SSML)。 |1.1.0|
+|语音转文本| <li>Transcribes 连续实时语音或批处理音频录制到具有中间结果的文本。|1.1.1|
+|文本到语音转换| <li>将文本转换为自然发音的语音。 使用纯文本输入或语音合成标记语言 (SSML)。 |1.1.0|
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

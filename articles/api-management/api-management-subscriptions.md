@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: afd43bbf6f52f498ad8f56d5a48b960d45d84137
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693531"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243258"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的订阅
 
@@ -42,19 +42,19 @@ ms.locfileid: "60693531"
 
 ### <a name="subscriptions-for-a-product"></a>产品的订阅
 
-传统上，API 管理中的订阅始终与单个 [API 产品](api-management-terminology.md)范围相关联。 开发人员在开发人员门户上找到产品列表。 然后，它们将提交对要使用的产品的订阅请求。 在订阅请求获得批准后（不管是自动批准还是由 API 发布者批准），开发人员可以使用其中的密钥来访问产品中的所有 API。
+传统上，API 管理中的订阅始终与单个 [API 产品](api-management-terminology.md)范围相关联。 开发人员在开发人员门户上找到产品列表。 然后，它们将提交对要使用的产品的订阅请求。 批准，自动或 API 发布者发布的订阅请求后开发人员可以使用这些密钥在其中访问产品中的所有 Api。目前，开发人员门户仅显示产品范围内订阅在用户配置文件部分下。 
 
 ![产品订阅](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
-> 有时候，API 发布者可能希望在不要求订阅的情况下将 API 产品发布给公众。 发布者可以在 Azure 门户中在产品的“设置”页上取消选择“需要订阅”选项。 这样一来，用户就可以在没有 API 密钥的情况下访问该产品的所有 API。
+> 有时候，API 发布者可能希望在不要求订阅的情况下将 API 产品发布给公众。 发布者可以在 Azure 门户中在产品的“设置”页上取消选择“需要订阅”选项。   这样一来，用户就可以在没有 API 密钥的情况下访问该产品的所有 API。
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>订阅所有 API 或单个 API
 
 引入 API 管理的[消耗](https://aka.ms/apimconsumptionblog)层时，我们进行了一些更改以简化密钥管理。
 - 首先，我们在原来的基础上添加了两个订阅范围：所有 API 和单个 API。 订阅范围不再限于一个 API 产品。 现在可以创建密钥，以授予对 API 管理实例中的一个 API 或所有 API 的访问权限，而不需先创建一个产品并向其添加 API。 此外，每个 API 管理实例现在都有一个不可变的包含所有 API 的订阅。 此订阅使得在测试控制台中测试和调试 API 更为容易且简单明了。
 
-- 其次，API 管理现在允许“独立”订阅。 订阅不再需要与开发人员帐户相关联。 此功能在某些情况下非常有用，例如当多个开发人员或团队共享某个订阅时。
+- 其次，API 管理现在允许“独立”订阅。  订阅不再需要与开发人员帐户相关联。 此功能在某些情况下非常有用，例如当多个开发人员或团队共享某个订阅时。
 
 - 最后，API 发布者现在可以直接在 Azure 门户中[创建订阅](api-management-howto-create-subscriptions.md)：
 

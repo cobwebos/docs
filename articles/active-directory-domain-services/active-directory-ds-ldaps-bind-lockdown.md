@@ -3,7 +3,7 @@ title: 使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域 | Microso
 description: 使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: ergreenl
-ms.openlocfilehash: 62776408675acba1ee8a57252c794e5a1c840155
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417023"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234854"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域
 
@@ -31,15 +31,15 @@ ms.locfileid: "60417023"
 ## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>任务 5：使用 LDP.exe 通过 LDAP 绑定到托管域
 可使用远程服务器管理工具包中包含的 LDP.exe 工具，通过 LDAP 进行绑定和搜索。
 
-首先，打开 LDP 并连接到托管域。 单击“连接”，再单击菜单中的“连接...”。 指定托管域的 DNS 域名。 指定用于连接的端口。 对于 LDAP 连接，请使用端口 389。 对于 LDAPS 连接，请使用端口 636。 单击“确定”按钮，连接到托管域。
+首先，打开 LDP 并连接到托管域。 单击“连接”  ，再单击菜单中的“连接...”  。 指定托管域的 DNS 域名。 指定用于连接的端口。 对于 LDAP 连接，请使用端口 389。 对于 LDAPS 连接，请使用端口 636。 单击“确定”  按钮，连接到托管域。
 
-接下来，绑定到托管域。 单击“连接”，再单击菜单中的“绑定...”。 提供属于“AAD DC 管理员”组的用户帐户的凭据。
+接下来，绑定到托管域。 单击“连接”  ，再单击菜单中的“绑定...”  。 提供属于“AAD DC 管理员”组的用户帐户的凭据。
 
-选择“视图”，然后选择菜单中的“树”。 将“基 DN”字段留空，再单击“确定”。 导航到想要搜索的容器，右键单击该容器，再选择“搜索”。
+选择“视图”  ，然后选择菜单中的“树”  。 将“基 DN”字段留空，再单击“确定”。 导航到想要搜索的容器，右键单击该容器，再选择“搜索”。
 
 > [!TIP]
-> - 从 Azure AD 同步的用户和组存储在“AADDC 用户”组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Users,DC=CONTOSO100,DC=COM```。
-> - 加入托管域的计算机的计算机帐户存储在“AADDC 计算机”组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Computers,DC=CONTOSO100,DC=COM```。
+> - 从 Azure AD 同步的用户和组存储在“AADDC 用户”  组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Users,DC=CONTOSO100,DC=COM```。
+> - 加入托管域的计算机的计算机帐户存储在“AADDC 计算机”  组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Computers,DC=CONTOSO100,DC=COM```。
 >
 >
 
@@ -64,13 +64,13 @@ ms.locfileid: "60417023"
 
 
 ## <a name="related-content"></a>相关内容
-* [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
-* [管理 Azure AD 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)
+* [Azure AD 域服务 - 入门指南](create-instance.md)
+* [管理 Azure AD 域服务域](manage-domain.md)
 * [LDAP 查询基础知识](https://technet.microsoft.com/library/aa996205.aspx)
-* [管理 Azure AD 域服务托管域上的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
+* [Azure AD 域服务的管理组策略](manage-group-policy.md)
 * [网络安全组](../virtual-network/security-overview.md)
 * [创建网络安全组](../virtual-network/tutorial-filter-network-traffic.md)
 
 
 ## <a name="next-step"></a>后续步骤
-[对托管域中的安全 LDAP 进行故障排除](active-directory-ds-ldaps-troubleshoot.md)
+[对托管域中的安全 LDAP 进行故障排除](tshoot-ldaps.md)

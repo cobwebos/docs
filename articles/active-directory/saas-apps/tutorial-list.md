@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2018
+ms.date: 05/22/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb3ff27ba7dc8ea59eb67b2589964fb4333e889
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73d26dffa005ac4bf8df0ecc0cee2c570960a38d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516114"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240001"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>用于将 SaaS 应用程序与 Azure Active Directory 集成的教程
 
@@ -33,18 +33,50 @@ ms.locfileid: "60516114"
 ## <a name="quick-links"></a>快速链接
 
 | 徽标 | 有关单一登录的应用程序教程 | 有关用户预配的的应用程序教程 |
-| :---: | :--- | :--- |
-| ![徽标](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [G Suite](google-apps-tutorial.md)|[G Suite - 用户设置](google-apps-provisioning-tutorial.md)|
-| ![徽标](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS)](amazon-web-service-tutorial.md)| [Amazon Web Services (AWS) - 角色预配](amazon-web-service-tutorial.md#configure-azure-ad-single-sign-on)|
+| :--- | :--- | :--- |
+| ![徽标](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)| [Atlassian Cloud-用户预配](atlassian-cloud-provisioning-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow - 用户预配](servicenow-provisioning-tutorial.md)|
-| ![徽标](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)|[Salesforce - 用户预配](salesforce-provisioning-tutorial.md)|
-| ![徽标](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Workday](workday-tutorial.md)| [Workday - 用户预配](workday-inbound-tutorial.md)|
-| ![徽标](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|
-| ![徽标](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)|
 | ![徽标](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Slack - 用户预配](slack-provisioning-tutorial.md)|
+| ![徽标](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| |
+| ![徽标](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Workday](workday-tutorial.md)| [Workday - 用户预配](workday-inbound-tutorial.md)|
 
-若要查找更多教程，请使用左侧的目录。 
+若要查找更多教程，请使用左侧的目录。
+
+## <a name="cloud-integrations"></a>云集成
+
+| 徽标 | 有关单一登录的应用程序教程 | 有关用户预配的的应用程序教程 |
+| :--- | :--- | :--- |
+| ![徽标](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS) 控制台](amazon-web-service-tutorial.md)| [Amazon Web Services (AWS) 控制台中的角色设置](amazon-web-service-tutorial.md#configure-azure-ad-single-sign-on) |
+| ![徽标](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [阿里巴巴云服务 （角色基项 SSO）](alibaba-cloud-service-role-based-sso-tutorial.md)| |
+| ![徽标](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google 云平台](google-apps-tutorial.md)| [Google 云平台-用户预配](google-apps-provisioning-tutorial.md) |
+| ![徽标](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce - 用户预配](salesforce-provisioning-tutorial.md) |
+| ![徽标](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP 云标识平台](saphana-tutorial.md)| |
+
+## <a name="oneclick-sso"></a>OneClick SSO
+
+| 徽标 | 有关单一登录的应用程序教程 |        |
+| :--- | :--- | :--- |
+| ![徽标](./media/tutorial-list/active-directory-saas-alertops-tutorial.png)| [AlertOps](alertops-tutorial.md)|      |
+| ![徽标](./media/tutorial-list/active-directory-saas-arcgisenterprise-tutorial.png)| [ArcGIS 企业](arcgisenterprise-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-displayr-tutorial.png)| [Displayr](displayr-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox for Business](dropboxforbusiness-tutorial.md)|    |
+| ![徽标](./media/tutorial-list/active-directory-saas-freedcamp-tutorial.png)| [Freedcamp](freedcamp-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-freshservice-tutorial.png)| [Freshservice](freshservice-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](jamfprosamlconnector-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-knowlwdge-anywhere-lms-tutorial.png)| [知识随处 LMS](knowledge-anywhere-lms-tutorial.md)|     |
+| ![徽标](./media/tutorial-list/active-directory-saas-soloinsight-cloudgate-sso-tutorial.png)| [Soloinsight-CloudGate SSO](soloinsight-cloudgate-sso-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](xaitporter-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-yodeck-tutorial.png)| [Yodeck](yodeck-tutorial.md)|        |
+| ![徽标](./media/tutorial-list/active-directory-saas-zendesk-tutorial.png)| [Zendesk](zendesk-tutorial.md)|        |
+| ![徽标](./media/tutorial-list/active-directory-saas-zscaler-tutorial.png)| [Zscaler](zscaler-tutorial.md)|          |
+| ![徽标](./media/tutorial-list/active-directory-saas-zscaler-beta-tutorial.png)| [Zscaler Beta](zscaler-beta-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-zscaler-one-tutorial.png)| [Zscaler One](zscaler-one-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-zscalerprivateaccess-tutorial.png)| [Zscaler Private Access (ZPA)](zscalerprivateaccess-tutorial.md)|        |
+| ![徽标](./media/tutorial-list/active-directory-saas-zscaler-three-tutorial.png)| [Zscaler Three](zscaler-three-tutorial.md)|       |
+| ![徽标](./media/tutorial-list/active-directory-saas-zscaler-two-tutorial.png)| [Zscaler Two](zscaler-two-tutorial.md)|        |
+| ![徽标](./media/tutorial-list/active-directory-saas-zscaler-zscloud-tutorial.png)| [Zscaler ZSCloud](zscaler-zscloud-tutorial.md)|         |
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解应用程序管理，请参阅[什么是应用程序管理](../manage-apps/what-is-application-management.md)。
 
+若要详细了解应用程序管理，请参阅[什么是应用程序管理](../manage-apps/what-is-application-management.md)。

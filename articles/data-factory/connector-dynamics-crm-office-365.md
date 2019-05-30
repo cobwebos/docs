@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 6a52749c78cd0f090e66220fe51e3d04985f96e7
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869535"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356958"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 
@@ -62,10 +62,10 @@ Dynamics 链接服务支持以下属性。
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **Dynamics**。 | 是 |
-| deploymentType | Dynamics 实例的部署类型。 Dynamics Online 必须为 **"Online"**。 | 是 |
+| deploymentType | Dynamics 实例的部署类型。 Dynamics Online 必须为 **"Online"** 。 | 是 |
 | serviceUri | 你的 Dynamics 实例的服务 URL，例如 `https://adfdynamics.crm.dynamics.com`。 | 是 |
-| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为 Dynamics Online 指定 **"Office365"**。 | 是 |
-| username | 指定用于连接到 Dynamics 的用户名。 | 是 |
+| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为 Dynamics Online 指定 **"Office365"** 。 | 是 |
+| userName | 指定用于连接到 Dynamics 的用户名。 | 是 |
 | password | 指定为 username 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
 
@@ -100,17 +100,17 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>带有 IFD 的本地 Dynamics 365 和 Dynamics CRM
 
-与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。
+与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。 
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **Dynamics**。 | 是 |
-| deploymentType | Dynamics 实例的部署类型。 带有 IFD 的本地 Dynamics 必须为 **"OnPremisesWithIfd"**。| 是 |
+| deploymentType | Dynamics 实例的部署类型。 带有 IFD 的本地 Dynamics 必须为 **"OnPremisesWithIfd"** 。| 是 |
 | hostName | 本地 Dynamics 服务器的主机名称。 | 是 |
 | port | 本地 Dynamics 服务器的端口。 | 否，默认端口为 443 |
 | organizationName | Dynamics 实例的组织名称。 | 是 |
-| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd” | 是 |
-| username | 指定用于连接到 Dynamics 的用户名。 | 是 |
+| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd”  | 是 |
+| userName | 指定用于连接到 Dynamics 的用户名。 | 是 |
 | password | 指定为 username 指定的用户帐户的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -200,12 +200,12 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-as-a-source-type"></a>将 Dynamics 用作源类型
 
-要从 Dynamics 复制数据，请将复制活动中的源类型设置为“DynamicsSource”。 复制活动的 **source** 节支持以下属性。
+要从 Dynamics 复制数据，请将复制活动中的源类型设置为“DynamicsSource”  。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **DynamicsSource**。 | 是 |
-| query | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 有关详细信息，请参阅[使用 FeachXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
+| query | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[生成使用 FetchXML 查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
 
 >[!NOTE]
 >即使在 FetchXML 查询中配置的列投影不包含 PK 列，也将始终复制该列。
@@ -264,21 +264,21 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-as-a-sink-type"></a>将 Dynamics 用作接收器类型
 
-要向 Dynamics 复制数据，请将复制活动中的接收器类型设置为“DynamicsSink”。 复制活动 **sink** 节支持以下属性。
+要向 Dynamics 复制数据，请将复制活动中的接收器类型设置为“DynamicsSink”  。 复制活动 **sink** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **DynamicsSink**。 | 是 |
-| writeBehavior | 操作的写入行为。<br/>允许的值为 **"Upsert"**。 | 是 |
+| writeBehavior | 操作的写入行为。<br/>允许的值为 **"Upsert"** 。 | 是 |
 | writeBatchSize | 每批中写入到 Dynamics 的数据行计数。 | 否（默认值为 10） |
 | ignoreNullValues | 指示是否忽略 null 值从输入数据（键字段除外）期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入/更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入/更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 >[!NOTE]
->接收器“writeBatchSize”和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance.md#parallel-copy)” 的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
+>接收器“writeBatchSize”  和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance.md#parallel-copy)”  的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
 
 对于 Dynamics 365（联机版），存在[每个组织进行 2 次并发批量调用](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)的限制。 如果超出此限制，则会在执行第一个请求之前引发“服务器忙”错误。 保持“writeBatchSize”小于或等于 10 可避免这种并发调用的限制。
 
-“writeBatchSize”和“parallelCopies”的最佳组合取决于实体的架构，例如列数、行大小、与这些调用挂钩的插件/工作流/工作流活动的数量等。10 writeBatchSize * 10 parallelCopies 的默认设置是基于 Dynamics 服务提供的建议设置，该服务可用于大多数 Dynamics 实体，但可能无法获得最佳性能。 你可以通过在复制活动设置中调整组合来调整性能。
+“writeBatchSize”  和“parallelCopies”  的最佳组合取决于实体的架构，例如列数、行大小、与这些调用挂钩的插件/工作流/工作流活动的数量等。10 writeBatchSize * 10 parallelCopies 的默认设置是基于 Dynamics 服务提供的建议设置，该服务可用于大多数 Dynamics 实体，但可能无法获得最佳性能。 你可以通过在复制活动设置中调整组合来调整性能。
 
 **示例：**
 

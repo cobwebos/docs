@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: de1915c7efb4bd8634228f341df2c57c443dd28e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544780"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242308"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions 的高级计划 （预览版）
 
@@ -91,7 +91,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ### <a name="available-instance-skus"></a>可用实例 Sku
 
-在创建我们的拓展你的计划时，你可以选择三种实例大小。  您将收取的内核数和每秒使用的内存总数。  您的应用程序可以自动横向扩展到多个实例根据需要。  
+当创建或缩放你的计划时，你可以选择三种实例大小。  您将收取的内核数和每秒使用的内存总数。  您的应用程序可以自动横向扩展到多个实例根据需要。  
 
 |SKU|核心数|内存|存储|
 |--|--|--|--|

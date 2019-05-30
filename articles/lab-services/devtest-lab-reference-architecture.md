@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 73a3d426e9040525b0c631db273e59c49a6a9eb0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1bfd1b5b4b7febd98499e338fcb62e339867aef4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705884"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244716"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>适用于企业的 azure 开发测试实验室参考体系结构
 本文提供了参考体系结构可帮助你部署基于 Azure 开发测试实验室在企业中的解决方案。 它包括以下组件：
@@ -32,9 +32,9 @@ ms.locfileid: "64705884"
 ## <a name="architecture"></a>体系结构
 这些是参考体系结构的关键元素：
 
-- **Azure Active Directory (Azure AD)**：使用开发测试实验室[用于标识管理的 Azure AD 服务](../active-directory/fundamentals/active-directory-whatis.md)。 您让用户访问基于开发测试实验室环境时，请考虑这两个关键方面：
+- **Azure Active Directory (Azure AD)** ：使用开发测试实验室[用于标识管理的 Azure AD 服务](../active-directory/fundamentals/active-directory-whatis.md)。 您让用户访问基于开发测试实验室环境时，请考虑这两个关键方面：
     - **资源管理**:它提供了 Azure 门户来管理资源的访问权限 （创建虚拟机; 创建环境; 启动、 停止、 重新启动、 删除和应用项目; 和其他操作）。 资源管理可在 Azure 中通过使用基于角色的访问控制 (RBAC)。 向用户分配角色并设置资源和访问级别的权限。
-    - **虚拟机 （网络级别）**:在默认配置中，虚拟机使用的本地管理员帐户。 如果没有可用的域 ([Azure AD 域服务](../active-directory-domain-services/active-directory-ds-overview.md)，本地域域或基于云的域)，计算机可以加入到域。 然后，用户可以使用其基于域的身份连接到 Vm。
+    - **虚拟机 （网络级别）** :在默认配置中，虚拟机使用的本地管理员帐户。 如果没有可用的域 ([Azure AD 域服务](../active-directory-domain-services/overview.md)，本地域域或基于云的域)，计算机可以加入到域。 然后，用户可以使用其基于域的身份连接到 Vm。
 - **本地连接性**：在我们的体系结构关系图中， [ExpressRoute](../expressroute/expressroute-introduction.md)使用。 但也可以使用[站点到站点 VPN](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)。 尽管 ExpressRoute 不是用于开发测试实验室所需的但它通常在企业中使用。 ExpressRoute 是所需的仅在需要对公司资源的访问。 常见方案是：
     - 你有不能移动到云的本地数据。
     - 您倾向于实验室的虚拟机加入到本地域。
@@ -43,15 +43,15 @@ ms.locfileid: "64705884"
 - **远程桌面网关**:企业通常阻止传出远程桌面连接在企业防火墙。 有几个选项，以便连接到基于云的环境中开发测试实验室，其中包括：
   - 使用[远程桌面网关](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)，和允许列表的网关的静态 IP 地址的负载均衡器。
   - [将所有传入的 RDP 流量定向](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)通过 ExpressRoute/站点到站点 VPN 连接。 企业计划的开发测试实验室部署时，此功能是一个常见的注意事项。
-- **网络服务 （虚拟网络、 子网）**:[Azure 网络](../networking/networking-overview.md)拓扑是在开发测试实验室体系结构中的另一个关键要素。 它控制从实验室的资源是否可进行通信并有权访问的本地和 internet。 我们的体系结构关系图中包括客户使用开发测试实验室的最常见方式：通过连接所有实验室[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)通过使用[中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)向本地 ExpressRoute/站点到站点 VPN 连接。 但是，开发测试实验室使用 Azure 虚拟网络直接，因此没有关于如何设置网络基础结构限制。
+- **网络服务 （虚拟网络、 子网）** :[Azure 网络](../networking/networking-overview.md)拓扑是在开发测试实验室体系结构中的另一个关键要素。 它控制从实验室的资源是否可进行通信并有权访问的本地和 internet。 我们的体系结构关系图中包括客户使用开发测试实验室的最常见方式：通过连接所有实验室[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)通过使用[中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)向本地 ExpressRoute/站点到站点 VPN 连接。 但是，开发测试实验室使用 Azure 虚拟网络直接，因此没有关于如何设置网络基础结构限制。
 - **开发测试实验室**:开发测试实验室是整体体系结构的关键部分。 若要了解有关该服务的详细信息，请参阅[有关开发测试实验室](devtest-lab-overview.md)。
-- **虚拟机和其他资源 (SaaS、 PaaS、 IaaS)**:虚拟机是开发测试实验室支持以及其他 Azure 资源的关键工作负荷。 开发测试实验室，就能轻松快速为企业提供对 Azure 资源 （包括虚拟机和其他 Azure 资源） 的访问。 详细了解适用于 Azure 的访问[开发人员](devtest-lab-developer-lab.md)并[测试人员](devtest-lab-test-env.md)。
+- **虚拟机和其他资源 (SaaS、 PaaS、 IaaS)** :虚拟机是开发测试实验室支持以及其他 Azure 资源的关键工作负荷。 开发测试实验室，就能轻松快速为企业提供对 Azure 资源 （包括虚拟机和其他 Azure 资源） 的访问。 详细了解适用于 Azure 的访问[开发人员](devtest-lab-developer-lab.md)并[测试人员](devtest-lab-test-env.md)。
 
 ## <a name="scalability-considerations"></a>可伸缩性注意事项
 虽然开发测试实验室不具有内置的配额或限制，确实具有典型操作的实验室中使用其他 Azure 资源[订阅级别配额](../azure-subscription-service-limits.md)。 因此，在典型的企业部署中，您需要多个 Azure 订阅，以涵盖开发测试实验室的大型部署。 企业最常访问的配额是：
 
 - **资源组**：在默认配置中，开发测试实验室创建每个新的虚拟机的资源组或用户通过使用服务创建一个环境。 订阅可以包含[980 最多的资源组](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)。 这就是虚拟机和在订阅中的环境的限制。 有两个您应考虑其他配置：
-    - **[所有虚拟机都转到同一资源组](resource-group-control.md)**:尽管此安装程序可帮助你满足资源组限制，但它会影响的资源类型每个资源组限制。
+    - **[所有虚拟机都转到同一资源组](resource-group-control.md)** :尽管此安装程序可帮助你满足资源组限制，但它会影响的资源类型每个资源组限制。
     - **使用共享的公共 Ip**:在相同的大小和区域中的所有 Vm 都进入同一个资源组。 如果虚拟机可以有公共 IP 地址，此配置会"介于"资源组配额和资源类型每个资源组配额。
 - **每个资源的资源组的每个资源类型**:默认限制[每个资源组，每种资源类型的资源为 800](../azure-subscription-service-limits.md#resource-group-limits)。  当你使用*转到相同的资源组的所有 Vm*配置、 用户命中此订阅限制太多会更快，尤其是如果的 Vm 具有许多额外的磁盘。
 - **存储帐户**：开发测试实验室的实验室中附带了一个存储帐户。 Azure 配额[的每个区域每个订阅的存储帐户数为 250](../azure-subscription-service-limits.md#storage-limits)。 开发测试实验室在同一区域中的最大数目也是 250。

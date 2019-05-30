@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2400f80c67527027aee3a98baaa869c5c66d46ee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573633"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393122"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 参考数据（也称为查找表）是一个静态的或本质上缓慢变化的有限数据集，用于执行查找或与数据流相关联。 例如，在 IoT 方案中，可以将关于传感器的元数据（不经常更改）存储在参考数据中，并将其与实时 IoT 数据流相联接。 Azure 流分析在内存中加载参考数据以实现低延迟流处理。 为了在 Azure 流分析作业中利用参考数据，通常会在查询中使用[参考数据联接](https://msdn.microsoft.com/library/azure/dn949258.aspx)。 
@@ -27,7 +27,7 @@ ms.locfileid: "64573633"
 
 ### <a name="configure-blob-reference-data"></a>配置 blob 参考数据
 
-若要配置引用数据，首先需要创建一个属于“引用数据”类型的输入。 下表介绍在根据说明创建引用数据输入时需要提供的每个属性：
+若要配置引用数据，首先需要创建一个属于“引用数据”  类型的输入。 下表介绍在根据说明创建引用数据输入时需要提供的每个属性：
 
 |**属性名称**  |**说明**  |
 |---------|---------|
@@ -47,7 +47,7 @@ ms.locfileid: "64573633"
 
 ### <a name="generate-reference-data-on-a-schedule"></a>按计划生成参考数据
 
-如果引用数据是缓慢变化的数据集，则使用 {date} 和 {time} 替换令牌在输入配置中指定路径模式即可实现对刷新引用数据的支持。 流分析根据此路径模式选取更新的引用数据定义。 例如，使用 `sample/{date}/{time}/products.csv` 模式时，日期格式为“YYYY-MM-DD”，时间格式为“HH-mm”，可指示流分析在 2015 年 4 月 16 日下午 5:30（UTC 时区）提取更新的 Blob `sample/2015-04-16/17-30/products.csv`。
+如果引用数据是缓慢变化的数据集，则使用 {date} 和 {time} 替换令牌在输入配置中指定路径模式即可实现对刷新引用数据的支持。 流分析根据此路径模式选取更新的引用数据定义。 例如，使用 `sample/{date}/{time}/products.csv` 模式时，日期格式为“YYYY-MM-DD”  ，时间格式为“HH-mm”  ，可指示流分析在 2015 年 4 月 16 日下午 5:30（UTC 时区）提取更新的 Blob `sample/2015-04-16/17-30/products.csv`。
 
 Azure 流分析每间隔一分钟都会自动扫描刷新的参考数据 Blob。 如果具有时间戳 10:30:00 的 blob 上传具有短暂的延迟 (例如，10:30:30) 时，会注意到在引用此 blob 的 Stream Analytics 作业中短暂的延迟。 若要避免这种情况下，建议将 blob 上传早于目标的有效时间 (10： 在此示例中的 30:00) 以允许足够的时间 Stream Analytics 作业，以发现和加载在内存中并执行操作。 
 
@@ -68,11 +68,11 @@ Azure 流分析每间隔一分钟都会自动扫描刷新的参考数据 Blob。
 2. 刷新参考数据的推荐方法是：
     * 使用路径模式中的 {date}/{time}
     * 使用作业输入中定义的相同容器和路径模式来添加新 Blob
-    * 使用大于序列中最后一个 Blob 指定的日期/时间。
-3. 引用数据 blob 并不按 blob 的“上次修改”时间排序，而是按 blob 名称中使用 {date} 和 {time} 替换项指定的日期和时间排序。
+    * 使用大于序列中最后一个 Blob 指定的日期/时间  。
+3. 引用数据 blob 并不  按 blob 的“上次修改”时间排序，而是按 blob 名称中使用 {date} 和 {time} 替换项指定的日期和时间排序。
 3. 为了避免必须列出大量 blob，请考虑删除不再对其进行处理的非常旧的 blob。 请注意，在某些情况下（如重新启动），ASA 可能需要重新处理一小部分 blob。
 
-## <a name="azure-sql-database-preview"></a>Azure SQL 数据库（预览版）
+## <a name="azure-sql-database"></a>Azure SQL 数据库
 
 Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存储在内存中以用于处理。 参考数据的快照还存储在你在配置设置中指定的存储帐户中的一个容器中。 作业启动时自动创建容器。 如果作业已停止或进入失败状态，则在重新启动作业时将删除自动创建的容器。  
 
@@ -103,7 +103,7 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 
 |**流单元数**  |**大约支持的最大大小（以 MB 为单位）**  |
 |---------|---------|
-|1   |50   |
+|第   |50   |
 |3   |150   |
 |至少 6   |300   |
 

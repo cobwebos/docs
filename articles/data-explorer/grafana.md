@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 数据资源管理器使用 Grafana 可视化数据
+title: 使用 Grafana 可视化 Azure 数据资源管理器中的数据
 description: 在本操作指南中，你将了解如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将来自示例群集的数据可视化。
 author: orspod
 ms.author: orspodek
@@ -7,16 +7,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 135f8f1c9c352f9d2307a8bf9ad1bec892aac179
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446857"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399913"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>在 Grafana 中可视化 Azure 数据资源管理器中的数据
 
-Grafana 是一个分析平台，可用于查询和可视化数据，然后根据可视化结果创建和共享仪表板。 Grafana 提供一个 Azure 数据资源管理器插件，通过该插件可连接到 Azure 数据资源管理器并可视化数据。 本文介绍如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将来自示例群集的数据可视化。
+Grafana 是一个分析平台，可用于查询和可视化数据，然后根据可视化结果创建和共享仪表板。 Grafana 提供一个 Azure 数据资源管理器插件，通过该插件可连接到 Azure 数据资源管理器并可视化数据  。 本文介绍如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将来自示例群集的数据可视化。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -36,7 +36,7 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 1. 创建 Azure Active Directory (Azure AD) 服务主体。 Grafana 使用服务主体来访问 Azure 数据资源管理器服务。
 
-1. 将 Azure AD 服务主体添加到 Azure 数据资源管理器数据库中的“查看者”角色。
+1. 将 Azure AD 服务主体添加到 Azure 数据资源管理器数据库中的“查看者”角色  。
 
 1. 根据 Azure AD 服务主体中的信息指定 Grafana 连接属性，然后测试连接。
 
@@ -48,11 +48,11 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 1. 要创建服务主体，请按照 [Azure 门户文档](/azure/active-directory/develop/howto-create-service-principal-portal)中的说明进行操作。
 
-    1. 在[将应用程序分配给角色](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分，将“读取者”的角色类型分配给 Azure 数据资源管理器群集。
+    1. 在[将应用程序分配给角色](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分，将“读取者”的角色类型分配给 Azure 数据资源管理器群集  。
 
-    1. 在[获取用于登录的值](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中，复制步骤中的三个属性值：目录 ID（租户 ID）、应用程序 ID 和密码。
+    1. 在[获取用于登录的值](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中，复制步骤中的三个属性值：目录 ID（租户 ID）、应用程序 ID 和密码    。
 
-1. 在 Azure 门户中，选择“订阅”，然后复制在其中创建服务主体的订阅的 ID。
+1. 在 Azure 门户中，选择“订阅”，然后复制在其中创建服务主体的订阅的 ID  。
 
     ![订阅 ID - 门户](media/grafana/subscription-id-portal.png)
 
@@ -67,7 +67,7 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
     有关详细信息，请参阅[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
-1. 该命令返回如下结果集。 复制三个属性值：appID、密码和租户。
+1. 该命令返回如下结果集。 复制三个属性值：appID、密码和租户    。
 
     ```json
     {
@@ -91,35 +91,35 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 ### <a name="add-the-service-principal-to-the-viewers-role"></a>将服务主体添加到查看者角色
 
-现在已有服务主体，可将其添加到 Azure 数据资源管理器数据库中的“查看者”角色。 可在 Azure 门户中的“权限”下执行此任务，也可以使用管理命令在“查询”下执行此任务。
+现在已有服务主体，可将其添加到 Azure 数据资源管理器数据库中的“查看者”角色  。 可在 Azure 门户中的“权限”下执行此任务，也可以使用管理命令在“查询”下执行此任务   。
 
 #### <a name="azure-portal---permissions"></a>Azure 门户 - 权限
 
 1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。
 
-1. 在“概述”部分中，选择包含 StormEvents 样本数据的数据库。
+1. 在“概述”部分中，选择包含 StormEvents 样本数据的数据库  。
 
     ![选择数据库](media/grafana/select-database.png)
 
-1. 选择“权限”，然后选择“添加”。
+1. 选择“权限”，然后选择“添加”   。
 
     ![数据库权限](media/grafana/database-permissions.png)
 
-1. 在“添加数据库权限”下，选择“查看者”角色，然后选择“选择主体”。
+1. 在“添加数据库权限”下，选择“查看者”角色，然后选择“选择主体”    。
 
     ![添加数据库权限](media/grafana/add-permission.png)
 
-1. 搜索已创建的服务主体（示例显示主体 mb-grafana）。 选择主体，然后单击“选择”。
+1. 搜索已创建的服务主体（示例显示主体 mb-grafana）  。 选择主体，然后单击“选择”  。
 
     ![在 Azure 门户中管理权限](media/grafana/new-principals.png)
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
     ![在 Azure 门户中管理权限](media/grafana/save-permission.png)
 
 #### <a name="management-command---query"></a>管理命令 - 查询
 
-1. 在 Azure 门户中，转到 Azure 数据资源管理器群集，然后选择“查询”。
+1. 在 Azure 门户中，转到 Azure 数据资源管理器群集，然后选择“查询”  。
 
     ![Query](media/grafana/query.png)
 
@@ -135,15 +135,15 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 ### <a name="specify-properties-and-test-the-connection"></a>指定属性并测试连接
 
-将服务主体分配给“查看者”角色后，现可在 Grafana 实例中指定属性，并测试与 Azure 数据资源管理器的连接。
+将服务主体分配给“查看者”角色后，现可在 Grafana 实例中指定属性，并测试与 Azure 数据资源管理器的连接  。
 
-1. 在 Grafana 的左侧菜单中，选择齿轮图标，然后选择“数据源”。
+1. 在 Grafana 的左侧菜单中，选择齿轮图标，然后选择“数据源”  。
 
     ![数据源](media/grafana/data-sources.png)
 
-1. 选择“添加数据源”。
+1. 选择“添加数据源”  。
 
-1. 在“数据源/新建”页面上，输入数据源的名称，然后选择类型“Azure 数据资源管理器数据源”。
+1. 在“数据源/新建”页面上，输入数据源的名称，然后选择类型“Azure 数据资源管理器数据源”   。
 
     ![连接名称和类型](media/grafana/connection-name-type.png)
 
@@ -159,7 +159,7 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
     | 客户端机密 | 密码 | password |
     | | | |
 
-1. 选择“保存并测试”。
+1. 选择“保存并测试”  。
 
     如果测试成功，请转到下一部分。 若遇到任何问题，请检查在 Grafana 中指定的值，并查看先前的步骤。
 
@@ -167,23 +167,23 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 已将 Azure 数据资源管理器配置为 Grafana 的数据源，现在即可进行数据可视化。 这里演示一个基本例子，除例子所示，还有很多其他可执行的操作。 建议查看[为 Azure 数据资源管理器编写查询](write-queries.md)，以获取针对示例数据集运行的其他查询的示例。
 
-1. 在 Grafana 的左侧菜单中，选择加号图标，然后选择“仪表板”。
+1. 在 Grafana 的左侧菜单中，选择加号图标，然后选择“仪表板”  。
 
     ![创建仪表板](media/grafana/create-dashboard.png)
 
-1. 在“添加”选项卡下选择“图形”。
+1. 在“添加”选项卡下选择“图形”   。
 
     ![添加图形](media/grafana/add-graph.png)
 
-1. 在图形面板上，选择“面板标题”，然后选择“编辑”。
+1. 在图形面板上，选择“面板标题”，然后选择“编辑”   。
 
     ![编辑面板](media/grafana/edit-panel.png)
 
-1. 在面板底部，选择“数据源”，然后选择所配置的数据源。
+1. 在面板底部，选择“数据源”，然后选择所配置的数据源  。
 
     ![选择数据源](media/grafana/select-data-source.png)
 
-1. 在查询窗格中，复制以下查询，然后选择“运行”。 查询会按天为示例数据集统计事件计数。
+1. 在查询窗格中，复制以下查询，然后选择“运行”  。 查询会按天为示例数据集统计事件计数。
 
     ```kusto
     StormEvents
@@ -192,11 +192,11 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
     ![运行查询](media/grafana/run-query.png)
 
-1. 该图表未显示任何结果，因为默认情况下其显示范围为过去六小时的数据。 在顶部菜单上，选择“过去 6 小时”。
+1. 该图表未显示任何结果，因为默认情况下其显示范围为过去六小时的数据。 在顶部菜单上，选择“过去 6 小时”  。
 
     ![过去 6 小时](media/grafana/last-six-hours.png)
 
-1. 指定涵盖 2007 年的自定义范围，即 StormEvents 示例数据集中包含的年份。 选择“应用”。
+1. 指定涵盖 2007 年的自定义范围，即 StormEvents 示例数据集中包含的年份。 选择“应用”。 
 
     ![自定义日期范围](media/grafana/custom-date-range.png)
 
@@ -208,6 +208,6 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 数据资源管理器的编写查询](write-queries.md)
+* [Azure 数据资源管理器的编写查询](write-queries.md)
 
-[教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据](visualize-power-bi.md)
+* [教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据](visualize-power-bi.md)

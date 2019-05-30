@@ -4,14 +4,14 @@ description: 了解如何使用大分区键，使用 Azure 门户和不同的 Sd
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 97b6cc6f171c89f5a253b1104155768ef9324293
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 33f871564b7c8435395db6b97122ba6a75800271
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905208"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225998"
 ---
 # <a name="create-containers-with-large-partition-key"></a>创建具有大型分区密钥容器
 

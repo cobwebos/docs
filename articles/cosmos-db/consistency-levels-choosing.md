@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2018
+ms.date: 05/22/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f32434e5ac0cd35cf620c1589aeb441476622442
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b08f9a85b8c9f52724e2cd08eaf13eb1faae0977
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60892193"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243562"
 ---
 # <a name="choose-the-right-consistency-level"></a>选择适当的一致性级别 
 
@@ -46,11 +46,11 @@ ms.locfileid: "60892193"
 
 在实践中，通常可能获得更强的一致性保证。 读取操作的一致性保证对应于所请求的数据库状态的新旧程度和顺序。 读取一致性与写入/更新操作的排序和传播有关。  
 
-* 当一致性级别设置为“有限过期”时，Cosmos DB 保证客户端始终读取前一次写入的值，伴有一个受到过期窗口限制的延迟。
+* 当一致性级别设置为“有限过期”时，Cosmos DB 保证客户端始终读取前一次写入的值，伴有一个受到过期窗口限制的延迟  。
 
-* 当一致性级别设置为“强”时，过期窗口等于零，并且保证客户端读取写入操作的最新提交值。
+* 当一致性级别设置为“强”时，过期窗口等于零，并且保证客户端读取写入操作的最新提交值  。
 
-* 对于剩余的三个一致性级别，过期窗口在很大程度上取决于你的工作负载。 例如，如果未在数据库上执行任何写入操作，具有“最终”、“会话”或“一致前缀”一致性级别的读取操作可能产生与具有非常一致级别的读取操作相同的结果。
+* 对于剩余的三个一致性级别，过期窗口在很大程度上取决于你的工作负载。 例如，如果未在数据库上执行任何写入操作，具有“最终”、“会话”或“一致前缀”一致性级别的读取操作可能产生与具有非常一致级别的读取操作相同的结果    。
 
 如果你的 Azure Cosmos 帐户配置的一致性级别不强一致性，你可以通过查看找出你的客户端可能会收到强的概率和工作负荷的一致读取*概率统计有限过期性*(PBS) 指标。 此指标在 Azure 门户中公开，若要了解详细信息，请参阅[监视概率有限过期性 (PBS) 指标](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)。
 

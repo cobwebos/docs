@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eebb68218fd6f9cbda229aae3d9e544e87441562
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192437"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397878"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -77,32 +77,32 @@ user.department -eq "Sales"
 
 | 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
-| city |任意字符串值或 null |(user.city -eq "value") |
-| country |任意字符串值或 null |(user.country -eq "value") |
-| companyName | 任意字符串值或 null | (user.companyName -eq "value") |
-| department |任意字符串值或 null |(user.department -eq "value") |
+| city |任意字符串值或 null  |(user.city -eq "value") |
+| country |任意字符串值或 null  |(user.country -eq "value") |
+| companyName | 任意字符串值或 null  | (user.companyName -eq "value") |
+| department |任意字符串值或 null  |(user.department -eq "value") |
 | displayName |任意字符串值 |(user.displayName -eq "value") |
 | employeeId |任意字符串值 |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
-| facsimileTelephoneNumber |任意字符串值或 null |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |任意字符串值或 null |(user.givenName -eq "value") |
-| jobTitle |任意字符串值或 null |(user.jobTitle -eq "value") |
-| mail |任意字符串值或 null（用户的 SMTP 地址） |(user.mail -eq "value") |
+| facsimileTelephoneNumber |任意字符串值或 null  |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |任意字符串值或 null  |(user.givenName -eq "value") |
+| jobTitle |任意字符串值或 null  |(user.jobTitle -eq "value") |
+| mail |任意字符串值或 null（用户的 SMTP 地址）  |(user.mail -eq "value") |
 | mailNickName |任意字符串值（用户的邮件别名） |(user.mailNickName -eq "value") |
-| mobile |任意字符串值或 null |(user.mobile -eq "value") |
+| mobile |任意字符串值或 null  |(user.mobile -eq "value") |
 | objectId |用户对象的 GUID。 |(user.objectId -eq "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | 从本地同步至云端的用户的本地安全标识符 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |任意字符串值或 null |(user.physicalDeliveryOfficeName -eq "value") |
-| postalCode |任意字符串值或 null |(user.postalCode -eq "value") |
+| physicalDeliveryOfficeName |任意字符串值或 null  |(user.physicalDeliveryOfficeName -eq "value") |
+| postalCode |任意字符串值或 null  |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 代码 |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |任意字符串值或 null |(user.sipProxyAddress -eq "value") |
-| state |任意字符串值或 null |(user.state -eq "value") |
-| streetAddress |任意字符串值或 null |(user.streetAddress -eq "value") |
-| surname |任意字符串值或 null |(user.surname -eq "value") |
-| telephoneNumber |任意字符串值或 null |(user.telephoneNumber -eq "value") |
+| sipProxyAddress |任意字符串值或 null  |(user.sipProxyAddress -eq "value") |
+| state |任意字符串值或 null  |(user.state -eq "value") |
+| streetAddress |任意字符串值或 null  |(user.streetAddress -eq "value") |
+| surname |任意字符串值或 null  |(user.surname -eq "value") |
+| telephoneNumber |任意字符串值或 null  |(user.telephoneNumber -eq "value") |
 | usageLocation |双字母国家/地区代码 |(user.usageLocation -eq "US") |
 | userPrincipalName |任意字符串值 |(user.userPrincipalName -eq "alias@domain") |
-| userType |member guest null |(user.userType -eq "Member") |
+| userType |member guest null  |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>字符串集合类型的属性
 
@@ -172,10 +172,10 @@ David 的计算结果为 true，Da 的计算结果为 false。
 
 ### <a name="use-of-null-values"></a>Null 值的用法
 
-要在规则中指定 null 值，可以使用 null 值。 
+要在规则中指定 null 值，可以使用 null 值  。 
 
-* 比较表达式中的 null 值时，请使用 -eq 或 -ne。
-* 仅当希望将其解释为文本字符串值时，才在 null 两边加引号。
+* 比较表达式中的 null 值时，请使用 -eq 或 -ne  。
+* 仅当希望将其解释为文本字符串值时，才在 null 两边加引号  。
 * 不能将 -not 运算符用作 null 的比较运算符。 如果使用该运算符，将会出现错误，不管使用 null 还是 $null。
 
 引用 null 值的正确方法如下：
@@ -291,9 +291,9 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 以下提示可帮助你正确使用该规则。
 
-* “经理 ID”是经理的对象 ID。 可在经理的“配置文件”中找到它。
-* 要使规则起作用，请确保租户中用户的 Manager 属性已正确设置。 可检查用户的“配置文件”中的当前值。
-* 此规则仅支持经理的直接下属。 换言之，无法创建包含经理的直接下属及其下属的组。
+* “经理 ID”是经理的对象 ID  。 可在经理的“配置文件”中找到它  。
+* 要使规则起作用，请确保租户中用户的 Manager 属性已正确设置  。 可检查用户的“配置文件”中的当前值  。
+* 此规则仅支持经理的直接下属。 换言之，无法创建包含经理的直接下属及其下属的组  。
 * 此规则不能与任何其他成员资格规则结合使用。
 
 ### <a name="create-an-all-users-rule"></a>创建“所有用户”规则
@@ -335,7 +335,7 @@ device.objectid -ne null
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-通过使用 Graph Explorer 查询用户属性并搜索属性名，可在目录中找到自定义属性名称。 此外，现在可以在动态用户组规则生成器中选择“获取自定义扩展属性”链接，以输入唯一的应用程序 ID，并接收创建动态成员身份规则时要使用的自定义扩展属性的完整列表。 还可以刷新此列表，以获取该应用的任何新自定义扩展属性。
+通过使用 Graph Explorer 查询用户属性并搜索属性名，可在目录中找到自定义属性名称。 此外，现在可以在动态用户组规则生成器中选择“获取自定义扩展属性”  链接，以输入唯一的应用程序 ID，并接收创建动态成员身份规则时要使用的自定义扩展属性的完整列表。 还可以刷新此列表，以获取该应用的任何新自定义扩展属性。
 
 ## <a name="rules-for-devices"></a>设备规则
 
@@ -353,7 +353,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意字符串值 | (device.deviceModel -eq "iPad Air")
  deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Company")
- domainName | 任意字符串值 | (device.domainName -eq "contoso.com")
  enrollmentProfileName | Apple 设备注册配置文件或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
@@ -372,4 +371,4 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 * [创建新组并添加成员](../fundamentals/active-directory-groups-create-azure-portal.md)
 * [管理组的设置](../fundamentals/active-directory-groups-settings-azure-portal.md)
 * [管理组的成员身份](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [管理组中用户的动态规则](groups-dynamic-membership.md)
+* [管理组中用户的动态规则](groups-create-rule.md)

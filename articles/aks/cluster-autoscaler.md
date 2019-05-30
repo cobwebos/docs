@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: d5a287a8da884290e94e9ac1c864abe28e47d53d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 23922ec02f7406b5cbc482c938dbcf6a56cad6d7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508143"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234163"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>预览-自动缩放以满足应用程序的需求在 Azure Kubernetes 服务 (AKS) 群集
 
@@ -21,9 +21,10 @@ ms.locfileid: "65508143"
 本文演示如何在 AKS 群集中启用和管理群集自动缩放程序。 群集自动缩放程序只应在单个节点池与 AKS 群集上的预览版中进行测试。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
+> AKS 预览版功能是自助服务的选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中，这些功能不是用于生产环境中使用。 公共预览版中的功能属于最大努力支持。 AKS 技术支持团队的协助营业时间太平洋时区 （太平洋标准时间） 仅将提供。 有关其他信息，请参阅以下支持文章：
 >
-> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
+> * [AKS 支持策略][aks-support-policies]
+> * [Azure 支持常见问题][aks-faq]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -31,7 +32,7 @@ ms.locfileid: "65508143"
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-支持群集自动缩放程序的 AKS 群集必须使用虚拟机规模集并运行 Kubernetes 版本 1.12.4或更高版本。 此规模集支持处于预览状态。 若要选择加入并创建使用规模集的群集，请先使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，如下面的示例中所示：
+支持群集自动缩放程序的 AKS 群集必须使用虚拟机规模集并运行 Kubernetes 版本 1.12.4  或更高版本。 此规模集支持处于预览状态。 若要选择加入并创建使用规模集的群集，请先使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，如下面的示例中所示  ：
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -42,19 +43,19 @@ az extension add --name aks-preview
 
 ### <a name="register-scale-set-feature-provider"></a>注册规模集功能提供程序
 
-要创建使用规模集的 AKS，还必须在订阅上启用功能标志。 若要注册 VMSSPreview 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
+要创建使用规模集的 AKS，还必须在订阅上启用功能标志。 若要注册 VMSSPreview 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示  ：
 
 ```azurecli-interactive
 az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
-状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+状态显示为“已注册”需要几分钟时间  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态  ：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -70,8 +71,8 @@ az provider register --namespace Microsoft.ContainerService
 
 若要进行调整以适应不断变化的应用程序需求（如工作日与夜间或周末之间），群集通常需要一种自动缩放方式。 AKS 群集可以采用两种方式之一进行缩放：
 
-* 群集自动缩放程序会监视由于资源约束而无法在节点上计划的 Pod。 群集随后会自动增加节点数。
-* 水平 Pod 自动缩放程序会在 Kubernetes 群集中使用指标服务器来监视 Pod 的资源需求。 如果服务需要更多资源，则会自动增加 Pod 数以满足需求。
+* 群集自动缩放程序  会监视由于资源约束而无法在节点上计划的 Pod。 群集随后会自动增加节点数。
+* 水平 Pod 自动缩放程序  会在 Kubernetes 群集中使用指标服务器来监视 Pod 的资源需求。 如果服务需要更多资源，则会自动增加 Pod 数以满足需求。
 
 ![群集自动缩放程序和水平 Pod 自动缩放程序通常协同工作以支持所需的应用程序需求](media/autoscaler/cluster-autoscaler.png)
 
@@ -92,12 +93,12 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>创建 AKS 群集并启用群集自动缩放程序
 
-如果需要创建 AKS 群集，请使用 [az aks create][az-aks-create] 命令。 指定的 --kubernetes-version 应满足或超过在前面[开始之前](#before-you-begin)部分中概述最低版本号。 若要启用和配置群集自动缩放程序，请使用 --enable-cluster-autoscaler参数，并指定节点 --min-count 和 --max-count。
+如果需要创建 AKS 群集，请使用 [az aks create][az-aks-create] 命令。 指定的 --kubernetes-version  应满足或超过在前面[开始之前](#before-you-begin)部分中概述最低版本号。 若要启用和配置群集自动缩放程序，请使用 --enable-cluster-autoscaler  参数，并指定节点 --min-count  和 --max-count  。
 
 > [!IMPORTANT]
 > 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息，请参阅[我可以修改 MC_ 资源组中的 AKS 资源吗？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc_-resource-group)
 
-以下示例创建启用了虚拟机规模集和群集自动缩放程序的 AKS 群集，并使用最少 1 个且最多 3 个节点：
+以下示例创建启用了虚拟机规模集和群集自动缩放程序的 AKS 群集，并使用最少 1  个且最多 3  个节点：
 
 ```azurecli-interactive
 # First create a resource group
@@ -118,7 +119,7 @@ az aks create \
 
 ### <a name="enable-the-cluster-autoscaler-on-an-existing-aks-cluster"></a>在现有 AKS 群集上启用群集自动缩放程序
 
-可以在满足前面[开始之前](#before-you-begin)部分中所概述要求的现有 AKS 群集上启用群集自动缩放程序。 使用 [az aks update][az-aks-update] 命令并选择 --enable-cluster-autoscaler，然后指定节点 --min-count 和 --max-count。 下面的示例在使用最少 1 个且最多 3 个节点的现有群集上启用群集自动缩放程序：
+可以在满足前面[开始之前](#before-you-begin)部分中所概述要求的现有 AKS 群集上启用群集自动缩放程序。 使用 [az aks update][az-aks-update] 命令并选择 --enable-cluster-autoscaler  ，然后指定节点 --min-count  和 --max-count  。 下面的示例在使用最少 1  个且最多 3  个节点的现有群集上启用群集自动缩放程序：
 
 ```azurecli-interactive
 az aks update \
@@ -133,9 +134,9 @@ az aks update \
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>更改群集自动缩放程序设置
 
-在创建或更新现有 AKS 群集的上一步中，群集自动缩放程序最小节点计数设置为 1，且最大节点计数设置为 3。 随着应用程序需求发生变化，可能需要调整群集自动缩放程序节点计数。
+在创建或更新现有 AKS 群集的上一步中，群集自动缩放程序最小节点计数设置为 1  ，且最大节点计数设置为 3  。 随着应用程序需求发生变化，可能需要调整群集自动缩放程序节点计数。
 
-若要更改节点计数，请使用 [az aks update][az-aks-update] 命令并指定最小值和最大值。 下面的示例将 --min-count 设置为 1，并将 --max-count 设置为 5：
+若要更改节点计数，请使用 [az aks update][az-aks-update] 命令并指定最小值和最大值。 下面的示例将 --min-count  设置为 1  ，并将 --max-count  设置为 5  ：
 
 ```azurecli-interactive
 az aks update \
@@ -147,7 +148,7 @@ az aks update \
 ```
 
 > [!NOTE]
-> 在预览版期间，设置的最小节点计数不能高于当前为群集设置的计数。 例如，如果当前将最小计数设置为 1，则不能将最小计数更新为 3。
+> 在预览版期间，设置的最小节点计数不能高于当前为群集设置的计数。 例如，如果当前将最小计数设置为 1  ，则不能将最小计数更新为 3  。
 
 监视应用程序和服务的性能，并调整群集自动缩放程序节点计数以匹配所需性能。
 
@@ -155,7 +156,7 @@ az aks update \
 
 如果不再希望使用群集自动缩放程序，则可以使用 [az aks update][az-aks-update] 命令禁用它。 群集自动缩放程序处于禁用状态时，不会删除节点。
 
-若要删除群集自动缩放程序，请指定 --disable-cluster-autoscaler 参数，如下面的示例所示：
+若要删除群集自动缩放程序，请指定 --disable-cluster-autoscaler  参数，如下面的示例所示：
 
 ```azurecli-interactive
 az aks update \
@@ -181,7 +182,8 @@ az aks update \
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[aks-github]: https://github.com/azure/aks/issues
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

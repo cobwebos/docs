@@ -7,14 +7,14 @@ manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 2e49a8c40396b03c231fa7fd484331b0e28d4cf6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 456860c74810a692b4839e4204ec0b78d5620864
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513478"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383006"
 ---
 # <a name="create-a-project"></a>创建一个项目
 
@@ -40,7 +40,7 @@ ms.locfileid: "60513478"
 
     e.  类别说明：使用此字段可以更好地描述你工作所在的特定领域或行业。 例如，如果你的类别是“医疗”，则你可以添加特定的文档，例如“外科”或“儿科”。 此说明对自定义翻译的行为或生成的自定义系统没有影响。
 
-    f.  项目标签：[项目标签](workspace-and-project.md#project-labels)可以区分具有相同语言对和类别的项目。 最佳做法是，仅当你打算为相同语言对和相同类别生成多个项目，并且想要使用不同的 CategoryID 访问这些项目时，才使用标签。 如果只为一个类别生成系统，请不要使用此字段。 项目标签不是必需的，对区分不同的语言对没有帮助。 可对多个项目使用同一个标签。
+    f.  项目标签：[项目标签](workspace-and-project.md#project-labels)可以区分具有相同语言对和类别的项目。 最佳做法是，仅当你打算为相同语言对和相同类别生成多个项目，并且想要使用不同的 CategoryID 访问这些项目时，才使用标签。  如果只为一个类别生成系统，请不要使用此字段。 项目标签不是必需的，对区分不同的语言对没有帮助。 可对多个项目使用同一个标签。
 
     ![“创建项目”对话框](media/how-to/how-to-create-project-dialog.png)
 

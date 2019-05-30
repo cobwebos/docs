@@ -1,34 +1,34 @@
 ---
-title: '快速入门：使用 Power BI 中已导入的查询直观显示 Azure 数据资源管理器中的数据 '
-description: 本快速入门介绍如何使用三个选项中的一个在 Power BI 中可视化数据：从 Azure 数据资源管理器导入查询。
+title: '使用 Power BI 中已导入的查询直观显示 Azure 数据资源管理器中的数据 '
+description: 在本文中，您将学习如何使用适用于可视化 Power BI 中的数据的三个选项之一： 从 Azure 数据资源管理器导入查询。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/14/2018
-ms.openlocfilehash: d14de1f25cc432cb2a9fed2149bd0870aa3ce16a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 05/30/2019
+ms.openlocfilehash: ae632f7df34ca342a3dcc12bf5f011df0eb61973
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050572"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399322"
 ---
-# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>快速入门：使用已导入到 Power BI 中的查询来可视化数据
+# <a name="visualize-data-using-a-query-imported-into-power-bi"></a>使用已导入到 Power BI 中的查询来可视化数据
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。
 
-Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的选项：使用内置连接器、从 Azure 数据资源管理器导入查询，或者使用 SQL 查询。 本快速入门介绍如何导入查询，以便获取数据并在 Power BI 报表中将其可视化。
+Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的选项：使用内置连接器、从 Azure 数据资源管理器导入查询，或者使用 SQL 查询。 本文介绍如何导入的查询，以便可以获取数据并可视化 Power BI 报表中。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-需要以下先决条件才能完成本快速入门：
+若要完成本文，您需要：
 
 * 一个属于 Azure Active Directory 成员的组织电子邮件帐户，以便连接到 [Azure 数据资源管理器帮助群集](https://dataexplorer.azure.com/clusters/help/databases/samples)。
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/)（选择“免费下载”）
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/)（选择“免费下载”  ）
 
 * [Azure 数据资源管理器桌面应用](/azure/kusto/tools/kusto-explorer)
 
@@ -50,25 +50,25 @@ Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的�
 
     ![查询结果](media/power-bi-imported-query/query-results.png)
 
-1. 在“工具”选项卡上选择“对 Power BI 进行查询”，然后选择“确定”。
+1. 在“工具”选项卡上选择“对 Power BI 进行查询”，然后选择“确定”。   
 
     ![导出查询](media/power-bi-imported-query/export-query.png)
 
-1. 在 Power BI Desktop 的“主页”选项卡上，选择“获取数据”，然后选择“空白查询”。
+1. 在 Power BI Desktop 的“主页”选项卡上，选择“获取数据”，然后选择“空白查询”    。
 
     ![获取数据](media/power-bi-imported-query/get-data.png)
 
-1. 在 Power Query 编辑器的“主页”选项卡上，选择“高级编辑器”。
+1. 在 Power Query 编辑器的“主页”选项卡上，选择“高级编辑器”。  
 
-1. 在“高级编辑器”窗口中，粘贴导出的查询，然后选择“完成”。
+1. 在“高级编辑器”窗口中，粘贴导出的查询，然后选择“完成”。  
 
     ![粘贴查询](media/power-bi-imported-query/paste-query.png)
 
-1. 在 Power Query 编辑器主窗口中，选择“编辑凭据”。 选择“组织帐户”，登录，然后选择“连接”。
+1. 在 Power Query 编辑器主窗口中，选择“编辑凭据”  。 选择“组织帐户”，登录，然后选择“连接”。  
 
     ![编辑凭据](media/power-bi-imported-query/edit-credentials.png)
 
-1. 在“主页”选项卡上，选择“关闭并应用”。
+1. 在“主页”  选项卡上，选择“关闭并应用”  。
 
     ![关闭并应用](media/power-bi-imported-query/close-apply.png)
 
@@ -78,9 +78,8 @@ Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要为本快速入门创建的报表，请删除 Power BI Desktop (.pbix) 文件。
+如果不再需要所创建的报表的这篇文章，删除 Power BI Desktop (.pbix) 文件。
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [快速入门：使用 Power BI 中已导入的查询来直观显示数据](power-bi-sql-query.md)
+[使用导入的查询在 Power BI 中可视化数据](power-bi-sql-query.md)

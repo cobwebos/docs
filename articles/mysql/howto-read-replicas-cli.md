@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: a9ca34953827c1f94e2696eb4f09163be335d2f4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 05/28/2019
+ms.openlocfilehash: ba8af55f7467e361136e4b0c57c97b4fa187cec0
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510689"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304959"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中创建和管理只读副本
 
 在本文中，你将了解如何使用 Azure CLI 在与 Azure Database for MySQL 服务中的主服务器相同的 Azure 区域内创建和管理只读副本。
 
-> [!NOTE]
-> Azure CLI 尚不支持创建副本从主服务器不同的区域中。 若要创建跨区域副本，请使用[Azure 门户]( howto-read-replicas-portal.md)相反。
+> [!IMPORTANT]
+> 可以在主服务器所在的区域或所选的任何其他 Azure 区域创建只读副本。 跨区域复制目前为公共预览版。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -41,8 +41,14 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 | 设置 | 示例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
-| 名称 | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
+| name | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
 | source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或 ID。 |
+
+若要创建跨区域读取副本，请使用`--location`参数。 下面的示例 CLI 创建在美国西部的副本。
+
+```azurecli-interactive
+az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
+```
 
 > [!NOTE]
 > 只读副本使用与主服务器相同的服务器配置创建。 副本服务器配置在创建后可以更改。 建议副本服务器的配置应保持在与主服务器相同或更大的值，以确保副本能够跟上主服务器。
@@ -63,7 +69,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 | 设置 | 示例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  副本服务器所在的资源组。  |
-| 名称 | mydemoreplicaserver | 要停止在其上进行复制的副本服务器的名称。 |
+| name | mydemoreplicaserver | 要停止在其上进行复制的副本服务器的名称。 |
 
 ## <a name="delete-a-replica-server"></a>删除副本服务器
 

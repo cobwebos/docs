@@ -3,19 +3,19 @@ title: 如何对 Conversation Learner 模型使用版本标记 - Microsoft 认�
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用版本控制和标记。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 7a1d94700cf84068f918ecff4f4dd433358341e0
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640034"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388395"
 ---
 # <a name="how-to-use-version-tagging"></a>如何使用版本标记
 

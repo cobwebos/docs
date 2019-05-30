@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 30df480eb314594cbc4d949302aff11e6d764b6f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c7b73cad200666db9e926d8e808eaa4a8dccffb2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147796"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66248904"
 ---
-## <a name="premium-ssd"></a>高级 SSD
+## <a name="premium-ssd"></a>高级·SSD
 
 Azure 高级 SSD 为运行输入/输出 (IO) 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 若要利用高级存储磁盘的速度和性能优势，可将现有的 VM 磁盘迁移到高级 SSD。 高级 SSD 适用于任务关键型生产应用程序。 高级 Ssd 仅可用于将高级存储兼容的 VM 系列。
 
@@ -24,7 +24,7 @@ Azure 高级 SSD 为运行输入/输出 (IO) 密集型工作负荷的虚拟机 (
 ### <a name="disk-size"></a>磁盘大小
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-预配高级存储磁盘时，可以获得该磁盘的容量、IOPS 和吞吐量保证，这与标准存储不同。 例如，如果创建 P50 磁盘，Azure 将为此磁盘预配 4,095-GB 存储容量、7,500 IOPS 和 250-MB/秒的吞吐量。 应用程序可以使用全部或部分容量与性能。 高级 SSD 盘旨在 99.9% 的时间内提供目标性能。
+预配高级存储磁盘时，可以获得该磁盘的容量、IOPS 和吞吐量保证，这与标准存储不同。 例如，如果创建 P50 磁盘，Azure 将为此磁盘预配 4,095-GB 存储容量、7,500 IOPS 和 250-MB/秒的吞吐量。 应用程序可以使用全部或部分容量与性能。 高级 SSD 磁盘旨在提供低位数的毫秒级延迟和面向 IOPS 和吞吐量上述表 99.9%的时间中所述。
 
 ### <a name="transactions"></a>事务
 
@@ -37,7 +37,7 @@ Azure 标准 SSD 是经济高效的存储选项，已针对需要一致性能和
 ### <a name="disk-size"></a>磁盘大小
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-标准 Ssd 旨在提供一位数的毫秒级延迟对于大多数 IO 操作，并提供的 IOPS 和吞吐量达到上述表 99%的时间中所述的限制。 实际的 IOPS 和吞吐量可能因有时流量模式。 相比 HDD 磁盘，标准 SSD 提供更加一致的性能，并且延迟更低。
+标准 Ssd 旨在提供一位数的毫秒级延迟的 IOPS 和吞吐量达到上述表 99%的时间中所述的限制。 实际 IOPS 和吞吐量有时根据流量模式而异。 相比 HDD 磁盘，标准 SSD 提供更加一致的性能，并且延迟更低。
 
 ### <a name="transactions"></a>事务
 
@@ -45,14 +45,14 @@ Azure 标准 SSD 是经济高效的存储选项，已针对需要一致性能和
 
 ## <a name="standard-hdd"></a>标准 HDD
 
-Azure 标准 HDD 为运行不区分延迟的工作负荷提供可靠、低成本的磁盘支持。 它还支持 blob、表、队列和文件。 使用标准存储，将数据存储在硬盘驱动器 (HDD)。 使用 VM 时，可将标准 SSD 和 HDD 磁盘用于开发/测试方案和不太重要的工作负荷。 标准 Hdd 可在所有 Azure 区域以及可用于所有 Azure Vm。
+Azure 标准 HDD 为运行不区分延迟的工作负荷提供可靠、低成本的磁盘支持。 使用标准存储，将数据存储在硬盘驱动器 (HDD)。 与基于 SSD 的磁盘相比，延迟、 IOPS 和吞吐量的标准 HDD 磁盘可能会更广泛地有所不同。 时使用的 Vm，可以使用标准 HDD 磁盘，用于开发/测试方案和更低的关键工作负荷。 标准 Hdd 可在所有 Azure 区域以及可用于所有 Azure Vm。
 
 ### <a name="disk-size"></a>磁盘大小
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
 ### <a name="transactions"></a>事务
 
-有关标准 Hdd，每个 IO 操作被视为单个事务，而不考虑 I/O 大小。 这些事务具有计费影响。
+对于标准 HDD，每个 IO 操作会被视为单个事务，无论 I/O 大小如何。 这些事务具有计费影响。
 
 ## <a name="billing"></a>计费
 
@@ -62,7 +62,7 @@ Azure 标准 HDD 为运行不区分延迟的工作负荷提供可靠、低成本
 - 托管磁盘大小
 - 快照
 - 出站数据传输
-- 事务数量
+- 事务数
 
 **托管磁盘大小**：托管磁盘按预配大小计费。 Azure 将预配大小映射（向上舍入）到所提供的最接近的磁盘大小。 有关所提供的磁盘大小的详细信息，请参阅前面的表。 每个磁盘将映射到一种受支持的预配磁盘大小套餐并相应地计费。 例如，如果预配了 200 GiB 的标准 SSD，它会映射到 E15 的磁盘大小 (256 GiB)。 任何预配的磁盘根据每月的高级存储优惠价格按小时计费。 例如，如果在预配 E10 磁盘的 20 小时后删除它，则会以 20 小时计算 E10 产品/服务的费用。 这与写入磁盘的实际数据量无关。
 

@@ -8,29 +8,29 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: c0d73b2e37046f75a1cea700d9099c5bbb5f6e0c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c849aadcd0fdc8f8ba071e3db5572e9e4c590e92
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170413"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391310"
 ---
 GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。 
 
-* NC、NCv2、NCv3 ND 和 NDv2 的大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序和模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。  ND 系列专用于进行深度学习的培训和推理方案。 该系列使用 NVIDIA Tesla P40 GPU。
+* NC、NCv2、NCv3 ND 和 NDv2 的大小针对计算密集型和网络密集型应用程序和算法进行了优化。  一些示例包括基于 CUDA 和 OpenCL 的应用程序和模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。  ND 系列专用于进行深度学习的培训和推理方案。 该系列使用 NVIDIA Tesla P40 GPU。
 
-* NC 系列采用 Intel Xeon® E5-2690 v3 2.60GHz 处理器。
+* NC 系列采用 Intel Xeon® E5-2690 v3 2.60GHz 处理器。 
 
-* NCSv3、NCSv2 和 ND 系列采用 Intel Xeon® E5-2690 v4 2.60GHz 处理器。
+* NCSv3、NCSv2 和 ND 系列采用 Intel Xeon® E5-2690 v4 2.60GHz 处理器。   
                       
 * **NV 和 NVv3**大小都进行了优化并设计用于远程可视化效果、 流式处理、 游戏、 编码和 VDI 方案使用 OpenGL 和 DirectX 之类的框架。  这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
 
 
 ## <a name="nc-series"></a>NC 系列
 
-高级存储：不受支持
+高级存储：不支持
 
-高级存储缓存：不受支持
+高级存储缓存：不支持
 
 NC 系列 VM 采用 [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) 卡。 通过将 CUDA 用于能源勘探应用、碰撞模拟、光纤跟踪渲染、深度学习等领域，用户可以更快地分析数据。 NC24r 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
 
@@ -137,9 +137,9 @@ ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列�
 
 ## <a name="nv-series"></a>NV 系列
 
-高级存储：不受支持
+高级存储：不支持
 
-高级存储缓存：不受支持
+高级存储缓存：不支持
 
 NV 系列虚拟机采用 [NVIDIA Tesla M60 ](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术，适用于桌面加速型应用程序和虚拟桌面，方便客户将其数据或模拟可视化。 用户可以在 NV 实例上直观显示其图形密集型工作流以获取高级图形功能，并可额外运行单精度工作负荷，例如编码和渲染。 
 
@@ -165,9 +165,9 @@ NVv3 实例中的每个 GPU 带有 GRID 许可证。 使用此许可证，可以
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6s_v3 | 12 | 112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
-| Standard_NV12s_v3 | 24 | 224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
-| Standard_NV24s_v3 | 48 | 448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
+| Standard_NV12s_v3 | 12 | 112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
+| Standard_NV24s_v3 | 24 | 224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
+| Standard_NV48s_v3 | 48 | 448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
 
 1 GPU = 半块 M60 卡。
 

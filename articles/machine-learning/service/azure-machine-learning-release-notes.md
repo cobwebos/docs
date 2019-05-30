@@ -10,20 +10,35 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2dd397e879dd76cabd119a3cbedff34041be2d13
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989842"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298486"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。  有关每个 SDK 的完整说明，请访问以下内容的参考文档：
 + 在 Azure 机器学习[**主要适用于 Python SDK**](https://aka.ms/aml-sdk)
-+ Azure 机器学习[数据准备 SDK](https://aka.ms/data-prep-sdk)
++ Azure 机器学习[数据准备 SDK](https://aka.ms/data-prep-sdk) 
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2019-05-28"></a>2019-05-28
+
+### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Azure 机器学习数据准备 SDK v1.1.4
+
++ **新功能**
+  + 现在可以使用以下表达式语言函数来提取和分析的日期时间值到新列。
+    + `RegEx.extract_record()` 将日期时间元素提取到一个新列。
+    + `create_datetime()` 从单独的日期时间元素创建 datetime 对象。
+  + 调用时`get_profile()`，现在可以看到，标记分位列 （预计） 为以清楚指示的值为近似值。
+  + 现在，您可以使用 * * 模式匹配时从 Azure Blob 存储中读取。
+    + 例如，`dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
+
++ **Bug 修复**
+  + 修复了与从远程源 (Azure Blob) 中读取 Parquet 文件相关的 bug。
 
 ## <a name="2019-05-14"></a>2019-05-14
 
@@ -313,8 +328,8 @@ ms.locfileid: "65989842"
 + **更改**： 
   + Azure 机器学习 SDK 不再将 azure-cli 包作为依赖项。 具体而言，azure-cli-core 和 azure-cli-profile 已从 azureml-core 中删除。 以下是对用户有所影响的更改：
     + 如果您是执行"az login"，然后使用 azureml sdk，SDK 将在一次执行浏览器或设备代码日志。 它不会使用“az login”所创建的任何凭据状态。
-    + 对于 Azure CLI 身份验证（如使用“az login”），请使用 azureml.core.authentication.AzureCliAuthentication 类。 对于 Azure CLI 身份验证，请在安装了 azureml-sdk 的 Python 环境中执行 pip install azure-cli。
-    + 如果在使用服务主体执行“az login”以实现自动化，则建议使用 azureml.core.authentication.ServicePrincipalAuthentication 类，因为 azureml-sdk 不会使用 azure CLI 所创建的凭据状态。 
+    + 对于 Azure CLI 身份验证（如使用“az login”），请使用 azureml.core.authentication.AzureCliAuthentication  类。 对于 Azure CLI 身份验证，请在安装了 azureml-sdk 的 Python 环境中执行 pip install azure-cli  。
+    + 如果在使用服务主体执行“az login”以实现自动化，则建议使用 azureml.core.authentication.ServicePrincipalAuthentication  类，因为 azureml-sdk 不会使用 azure CLI 所创建的凭据状态。 
 
 + **Bug 修复**：此版本主要包含次要 Bug 修复
 
@@ -457,8 +472,8 @@ Azure 机器学习服务现已公开发布。
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>适用于 Python 的 Azure 机器学习 SDK v0.1.80
 
 + **重大更改** 
-  * azureml.train.widgets 命名空间已移至 azureml.widgets。
-  * azureml.core.compute.AmlCompute 弃用了以下类 - azureml.core.compute.BatchAICompute 和 azureml.core.compute.DSVMCompute。 后续版本中将删除后一类。 AmlCompute 类现在有一个更简单的定义，只需要 vm_size 和 max_nodes，并在提交作业时自动将集群从 0 扩展到 max_nodes。 我们的[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/training)已更新该信息，并且会提供使用示例。 我们希望你喜欢这种简化以及即将发布的版本中更多令人兴奋的功能！
+  * azureml.train.widgets 命名空间已移至 azureml.widgets   。
+  * azureml.core.compute.AmlCompute 弃用了以下类 - azureml.core.compute.BatchAICompute 和 azureml.core.compute.DSVMCompute    。 后续版本中将删除后一类。 AmlCompute 类现在有一个更简单的定义，只需要 vm_size 和 max_nodes，并在提交作业时自动将集群从 0 扩展到 max_nodes。 我们的[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/training)已更新该信息，并且会提供使用示例。 我们希望你喜欢这种简化以及即将发布的版本中更多令人兴奋的功能！
 
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure 机器学习数据准备 SDK v0.5.1 
 
@@ -492,13 +507,13 @@ Azure 机器学习服务现已公开发布。
 
 ### <a name="azure-portal"></a>Azure 门户 
 Azure 机器学习服务的 Azure 门户具有以下更新：
-  * 针对已发布的管道提供了一个新的“管道”选项卡。
+  * 针对已发布的管道提供了一个新的“管道”  选项卡。
   * 增加了以下支持：将现有 HDInsight 群集附加为计算目标。
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>适用于 Python 的 Azure 机器学习 SDK v0.1.74
 
 + **重大更改** 
-  * *Workspace.compute_targets、datastores、experiments、images、models 和 webservices 现在是属性而不是方法。 例如，将 Workspace.compute_targets() 替换为 Workspace.compute_targets。
+  * *Workspace.compute_targets、datastores、experiments、images、models 和 webservices 现在是属性而不是方法。  例如，将 Workspace.compute_targets() 替换为 Workspace.compute_targets   。
   * *Run.get_context* 弃用了 *Run.get_submitted_run*。 后续版本中将删除后一种方法。
   * *PipelineData* 类现在需要使用数据存储对象作为参数而非需要 datastore_name。 类似地，*Pipeline* 接受 default_datastore 而非 default_datastore_name。
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: c6b9f54d073b671b55f259bfbb2aa70d9eacfdc4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c436522bd5f1a9d52b71d85b7b47ac9a089c0b25
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943309"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258168"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Power BI 应用提供系统必备组件
 
@@ -29,7 +29,7 @@ ms.locfileid: "64943309"
 
 业务需求包括过程、 合同，和法律义务。  必须：
 
-- 为已注册的云应用商店发布服务器。 如果你要注册，请按照中的步骤[成为云 Marketplace 发布者](../../become-publisher.md)。
+- 为已注册的云应用商店发布服务器。 如果你要注册，请按照中的步骤[成为云 Marketplace 发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。
 
     > [!NOTE] 
     > 使用相同的 Microsoft 开发人员中心注册帐户登录到[云合作伙伴门户](https://cloudpartner.azure.com)。 对于 AppSource 套餐，只应具有一个 Microsoft 帐户。 帐户不应为特定于各个服务或产品/服务。

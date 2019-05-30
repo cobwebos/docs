@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2019
 ms.author: aljo
-ms.openlocfilehash: 42c8fa15c6b1e7c98ae47180bec5cc61236a7c44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 703830778edb73781a263ae4d92529f7f79a0eb2
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60881379"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306842"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 
@@ -110,7 +110,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My 
 ```
-ServerCommonName 是群集节点上安装的服务器证书的公用名称。 FindValue 是管理客户端证书的公用名称。 填充参数以后，命令将如以下示例所示：
+ServerCommonName 是群集节点上安装的服务器证书的公用名称  。 FindValue 是管理客户端证书的公用名称  。 填充参数以后，命令将如以下示例所示：
 ```powershell
 $ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
 $certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
@@ -355,7 +355,7 @@ Azure 门户的群集基本信息窗格中也提供了完整 URL。
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-系统会自动提示用户使用 AAD 登录。
+系统自动会提示使用 AAD 登录。
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用客户端证书连接到安全群集
 

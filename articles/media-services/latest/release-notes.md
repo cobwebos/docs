@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 05/29/2019
 ms.author: juliako
-ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a5ce6467a547b9fded03b3b5a6f40f84d29d3618
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153062"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66385141"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -34,9 +34,23 @@ ms.locfileid: "65153062"
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
 
-## <a name="may-2019"></a>2019 年 5
+## <a name="may-2019"></a>2019 年 5 月
+
+### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>HLS v4 及更高版本中动态打包的支持 
+
+添加 HLS (第 4 版或更高版本) 支持中的多个音频曲目具有多个编解码器和语言的资产的动态打包。
+
+有关详细信息，请参阅[动态打包](dynamic-packaging-overview.md)。
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对处于打开状态，媒体服务 
+
+媒体服务现在韩国中部和韩国南部区域。 
+
+有关详细信息，请参阅[云和区域中的媒体服务 v3 存在](azure-clouds-regions.md)。
 
 ### <a name="performance-improvements"></a>性能提升
+
+添加了的更新，其中包括媒体服务的性能改进。
 
 * 已更新，支持以进行处理的最大文件大小。 查看，请[配额和限制](limits-quotas-constraints.md)。
 * [编码的速度改进](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
@@ -52,7 +66,7 @@ ms.locfileid: "65153062"
 
 动态打包现在支持 Dolby Atmos. 有关详细信息，请参阅[音频编解码器支持的动态打包](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)。
 
-现在可以指定将适用于你的流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[流式处理定位符相关联的筛选器](filters-concept.md#associate-filters-with-streaming-locator)。
+现在可以指定将适用于你的流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[流式处理定位符相关联的筛选器](filters-concept.md#associating-filters-with-streaming-locator)。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
@@ -149,7 +163,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 #### <a name="new-transform-object"></a>新转换对象
 
-新转换对象简化编码模型。 通过新对象，可以轻松创建和共享编码资源管理器模板和预设。 
+新转换对象简化编码模型  。 通过新对象，可以轻松创建和共享编码资源管理器模板和预设。 
 
 #### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory 身份验证和 RBAC
 
@@ -204,18 +218,18 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 以下功能是.NET SDK 中：
 
-* 转换和作业，用于对媒体内容来进行编码或分析。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
+* 转换和作业，用于对媒体内容来进行编码或分析   。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
 * **流式处理策略**和**内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
 * **实时事件**和**实时输出**，用于配置实时传送视频流内容的引入和归档。
-* 资产，用于在 Azure 存储中存储和发布媒体内容。 
+* 资产，用于在 Azure 存储中存储和发布媒体内容  。 
 * **流式处理终结点**，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
 
 ### <a name="known-issues"></a>已知问题
 
 * 提交作业时，可以指定使用 HTTPS URL、SAS URL 或位于 Azure Blob 存储中的文件路径引入源视频。 目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、 提供反馈，获取更新
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 

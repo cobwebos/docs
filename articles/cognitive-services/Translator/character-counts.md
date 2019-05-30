@@ -3,20 +3,19 @@ title: 字符计数 - 文本翻译 API
 titlesuffix: Azure Cognitive Services
 description: 文本翻译 API 如何计算字符数。
 services: cognitive-services
-author: Jann-Skotdal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-origin.date: 02/01/2019
-ms.date: 03/12/2019
-ms.author: v-junlch
-ms.openlocfilehash: c88eb56288d3a7cf46ce84430a53c12a4ee31c7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/01/2019
+ms.author: v-pawal
+ms.openlocfilehash: 157b809c1f1707cdaa561ab09486cf4886fff4e0
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513759"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389230"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>文本翻译 API 如何计算字符数
 
@@ -42,4 +41,3 @@ ms.locfileid: "60513759"
 
 
 有关字符计数的详细信息，请参阅 [Microsoft Translator FAQ](https://www.microsoft.com/en-us/translator/faq.aspx)。
-

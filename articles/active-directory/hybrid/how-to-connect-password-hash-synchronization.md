@@ -15,18 +15,18 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66ff1cb57bb3317adc7ab6208ebf5029361b7c54
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348295"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235139"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
 
 ## <a name="how-password-hash-synchronization-works"></a>密码哈希同步的工作原理
-Active Directory 域服务以实际用户密码的哈希值表示形式存储密码。 哈希值是单向数学函数（哈希算法）的计算结果。 没有任何方法可将单向函数的结果还原为纯文本版本的密码。 无法使用密码哈希来登录本地网络。
+Active Directory 域服务以实际用户密码的哈希值表示形式存储密码。 哈希值是单向数学函数（哈希算法  ）的计算结果。 没有任何方法可将单向函数的结果还原为纯文本版本的密码。 无法使用密码哈希来登录本地网络。
 
 为了同步密码，Azure AD Connect 同步将从本地 Active Directory 实例提取密码哈希。 同步到 Azure Active Directory 身份验证服务之前，已对密码哈希应用其他安全处理。 密码将基于每个用户按时间顺序同步。
 
@@ -64,7 +64,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 >原始 MD4 哈希不会传送到 Azure AD。 与之相反，传输的是原始 MD4 哈希的 SHA256 哈希。 因此，如果获取了 Azure AD 中存储的哈希，将无法在本地“传递哈希”攻击中使用。
 
 ### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>如何将密码哈希同步用于 Azure Active Directory 域服务
-也可以使用密码哈希同步功能将本地密码同步到 [Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-overview.md)。 在此方案中，Azure Active Directory 域服务实例以本地 Active Directory 实例中所有可用的方法验证云中的用户。 此方案的体验类似于在本地环境中使用 Active Directory 迁移工具 (ADMT)。
+也可以使用密码哈希同步功能将本地密码同步到 [Azure Active Directory 域服务](../../active-directory-domain-services/overview.md)。 在此方案中，Azure Active Directory 域服务实例以本地 Active Directory 实例中所有可用的方法验证云中的用户。 此方案的体验类似于在本地环境中使用 Active Directory 迁移工具 (ADMT)。
 
 ### <a name="security-considerations"></a>安全注意事项
 同步密码时，纯文本版本的密码既不能向密码哈希同步功能公开，也不能向 Azure AD 或任何相关联的服务公开。
@@ -84,7 +84,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 > 直接在云中创建的用户的密码仍受到云中定义的密码策略的约束。
 
 #### <a name="password-expiration-policy"></a>密码过期策略  
-如果用户属于密码哈希同步的范围，云帐户密码则设置为“永不过期”。
+如果用户属于密码哈希同步的范围，云帐户密码则设置为“永不过期”  。
 
 可以继续使用在本地环境中过期的同步密码来登录云服务。 下次在本地环境中更改密码时，云密码会更新。
 
@@ -110,7 +110,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 >[!IMPORTANT]
 >如果要从 AD FS（或其他联合技术）迁移到密码哈希同步，我们强烈建议你按照[此处](https://aka.ms/adfstophsdpdownload)发布的详细部署指南进行操作。
 
-使用“快速设置”选项安装 Azure AD Connect 时，会自动启用密码哈希同步。 有关详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](how-to-connect-install-express.md)。
+使用“快速设置”选项  安装 Azure AD Connect 时，会自动启用密码哈希同步。 有关详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](how-to-connect-install-express.md)。
 
 如果在安装 Azure AD Connect 时使用了自定义设置，则可在用户登录页上使用密码哈希同步。 有关详细信息，请参阅 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。
 

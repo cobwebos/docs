@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27309c08fe4419197faa17dcceb3645b00387e93
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 98588e0c25439fd4988fe39e06e7042cfa9113cb
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65227922"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305683"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件是什么？ 
 
@@ -34,11 +34,11 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 
 位置是表示命名的位置或多重身份验证受信任 Ip 的网络位置的标签。
 
-## <a name="named-locations"></a>已命名的位置
+## <a name="named-locations"></a>命名位置
 
 使用命名位置，可以创建 IP 地址范围或国家/地区和区域的逻辑分组。
 
-可在条件访问页的“管理”部分中访问命名位置。
+可在条件访问页的“管理”部分中访问命名位置  。
 
 ![条件访问中的命名的位置](./media/location-condition/02.png)
 
@@ -56,7 +56,7 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 - **国家/地区** - 使用此选项可以选择一个或多个国家或地区，以定义命名位置。
 - **包含未知的区域**-某些 IP 地址未映射到特定国家或地区。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
-可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 组织可以配置最高达到 90 命名的位置，每个配置了最多 12000 IP 范围。
+可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 组织可以配置最高达到 90 命名的位置，每个配置了高达 1200 IP 范围。
 
 条件性访问策略适用于 IPv4 和 IPv6 通信。 当前命名的位置不允许进行配置的 IPv6 范围。 此限制会导致以下情况：
 
@@ -73,7 +73,7 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 
 ### <a name="skipping-multi-factor-authentication"></a>跳过多重身份验证
 
-在多重身份验证服务设置页中，可以通过选择“跳过多重身份验证以适用于我的 Intranet 上的联合用户发出的请求”，来标识企业 Intranet 用户。 此设置指示 AD FS 颁发的内部企业网络声明应受信任，并且应该用于将用户标识为位于企业网络中。 有关详细信息，请参阅[使用条件访问启用受信任的 IP 功能](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)。
+在多重身份验证服务设置页中，可以通过选择“跳过多重身份验证以适用于我的 Intranet 上的联合用户发出的请求”，来标识企业 Intranet 用户。  此设置指示 AD FS 颁发的内部企业网络声明应受信任，并且应该用于将用户标识为位于企业网络中。 有关详细信息，请参阅[使用条件访问启用受信任的 IP 功能](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)。
 
 选中此选项之后, 包括命名的位置**MFA 受信任的 IP**选择此选项将应用于任何策略。
 
@@ -90,24 +90,24 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 
 - 任何位置
 - 所有受信任的位置
-- 选定位置
+- 选定的位置
 
 ![位置条件配置](./media/location-condition/01.png)
 
 ### <a name="any-location"></a>任何位置
 
-默认情况下，选择“任何位置”会将策略应用到所有 IP 地址，即 Internet 上的所有地址。 此设置不限于已配置为命名位置的 IP 地址。 选择“任何位置”时，仍可从策略中排除特定位置。 例如，可将策略应用到除可信位置以外的所有位置，以将作用域设置为除企业网络以外的所有位置。
+默认情况下，选择“任何位置”会将策略应用到所有 IP 地址，即 Internet 上的所有地址。  此设置不限于已配置为命名位置的 IP 地址。 选择“任何位置”时，仍可从策略中排除特定位置。  例如，可将策略应用到除可信位置以外的所有位置，以将作用域设置为除企业网络以外的所有位置。
 
-### <a name="all-trusted-locations"></a>所有受信任位置
+### <a name="all-trusted-locations"></a>所有受信任的位置
 
 此选项将应用到：
 
 - 已标记为可信位置的所有位置
 - **MFA 受信任的 IP**（如果已配置）
 
-### <a name="selected-locations"></a>选定位置
+### <a name="selected-locations"></a>选定的位置
 
-使用此选项可以选择一个或多个命名位置。 对于要应用此设置的策略，用户需要从任一选定位置建立连接。 单击“选择”时，将会打开显示命名网络列表的命名网络选择控件。 此列表还显示网络位置是否已标记为可信。 名为“MFA 受信任的 IP”的命名位置用于包含可在多重身份验证服务设置页中配置的 IP 设置。
+使用此选项可以选择一个或多个命名位置。 对于要应用此设置的策略，用户需要从任一选定位置建立连接。 单击“选择”时，将会打开显示命名网络列表的命名网络选择控件。  此列表还显示网络位置是否已标记为可信。 名为“MFA 受信任的 IP”的命名位置用于包含可在多重身份验证服务设置页中配置的 IP 设置。 
 
 ## <a name="what-you-should-know"></a>要点
 

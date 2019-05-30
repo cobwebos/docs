@@ -12,18 +12,18 @@ ms.author: joke
 ms.reviewer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f71fe4ff14e5a6f5fd6b91713970a097e4e56fb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 627b29018afff2adb57b3b8b5c816bea9c421f68
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475790"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236866"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>迁移到新的弹性数据库作业
 
 现已提供升级版本的[弹性数据库作业](elastic-jobs-overview.md)。
 
-如果有现有的客户托管版本[弹性数据库作业](sql-database-elastic-jobs-overview.md)，提供的迁移 cmdlet 和脚本有助于轻松迁移到最新版本。
+如果您有现有客户托管的弹性数据库作业，迁移 cmdlet 版本，并轻松地迁移到最新版本提供了脚本。
 
 
 ## <a name="prerequisites"></a>必备组件
@@ -32,7 +32,7 @@ ms.locfileid: "61475790"
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>安装最新的弹性作业 cmdlet
 
-如果还没有 Azure 订阅，请在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅，[创建一个免费帐户](https://azure.microsoft.com/free/)在开始之前。
 
 安装 **Az.Sql** 1.1.1-preview 模块以获得最新弹性作业 cmdlet。 以管理员访问权限在 PowerShell 中运行以下命令。
 
@@ -71,7 +71,7 @@ $agent = $db | New-AzSqlElasticJobAgent -Name <agentName>
 
 ### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>安装旧的弹性数据库作业 cmdlet
 
-迁移需要使用一些旧的弹性作业 cmdlet，所以如果没有安装，请运行以下命令。
+迁移需要使用一些旧的弹性作业 cmdlet，所以如果没有安装，请运行以下命令  。
 
 ```powershell
 # Install the old elastic job cmdlets if necessary and initialize the old jobs cmdlets
@@ -91,7 +91,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 ## <a name="migration"></a>迁移
 
-现在旧的和新的弹性作业 cmdlet 都已初始化，可将作业凭据、目标和作业迁移到新的作业数据库。
+现在旧的和新的弹性作业 cmdlet 都已初始化，可将作业凭据、目标和作业迁移到新的作业数据库  。
 
 ### <a name="setup"></a>设置
 
@@ -563,7 +563,7 @@ function Setup-JobStep ($newJob, $job) {
 }
 ```
 
-若要将作业、作业内容、作业触发器和作业计划迁移到新的弹性作业代理的数据库，请执行传入代理的 Migrate-Jobs cmdlet。
+若要将作业、作业内容、作业触发器和作业计划迁移到新的弹性作业代理的数据库，请执行传入代理的 Migrate-Jobs cmdlet  。
 
 - 具有不同计划的多个触发器的作业被分为具有命名方案的多个作业：“\<jobName\> (\<scheduleName\>)”。
 - 通过添加一个名为 JobStep 具有关联命令文本的默认作业步骤将作业内容迁移到作业。
@@ -605,7 +605,7 @@ Job job4
 
 ## <a name="migration-complete"></a>迁移完成
 
-作业数据库现在应具有所有作业凭据、目标、作业触发器、作业计划、作业内容和迁移的作业。
+作业数据库现在应具有所有作业凭据、目标、作业触发器、作业计划、作业内容和迁移的作业  。
 
 若要确认迁移的所有内容是否正确，请使用以下脚本：
 

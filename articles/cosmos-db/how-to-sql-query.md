@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: bbca0239053b8f3164055a07b376abc597b0348f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 943ed63aed0f64ae6cbd62c52731c6ec73ddd0bd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954134"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388482"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 SQL 查询示例
 
@@ -316,14 +316,14 @@ VALUE 关键字提供一种只返回 JSON 值的方式。 例如，下面所示�
 
 ## <a id="DistinctKeyword"></a>DISTINCT 关键字
 
-DISTINCT 关键字消除重复项的查询投影中。
+DISTINCT 关键字消除了查询投影中的重复项。
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
 
-在此示例中，该查询投影为每个姓氏的值。
+在此示例中，查询将投影每个姓氏的值。
 
 其结果是：
 
@@ -333,7 +333,7 @@ FROM Families f
 ]
 ```
 
-您也可以计划唯一对象。 在这种情况下，姓氏字段不存在的两个文档之一使查询返回一个空的对象。
+也可以投影唯一对象。 在本例中，两个文档中的一个文档不存在 lastName 对象，因此查询将返回一个空对象。
 
 ```sql
 SELECT DISTINCT f.lastName
@@ -351,14 +351,14 @@ FROM Families f
 ]
 ```
 
-此外可以在子查询中投影中使用 DISTINCT:
+还可以在子查询内的投影中使用 DISTINCT：
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-此查询投影中的数组，其中包含已移除重复的每个子 givenName。 此数组的别名为 ChildNames，并在外部查询中进行投影。
+此查询投影包含每个孩子的 givenName 的数组，并删除了重复项。 此数组的别名为 ChildNames，并在外部查询中投影。
 
 其结果是：
 
@@ -548,15 +548,15 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
 
 下表显示了 SQL API 中任意两个 JSON 类型之间等式比较的结果。
 
-| **Op** | 未定义 | Null | **Boolean** | **数字** | **String** | **Object** | 数组 |
+| **Op** | 未定义  | Null  | **Boolean** | **数字** | **String** | **Object** | 数组  |
 |---|---|---|---|---|---|---|---|
-| 未定义 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 |
-| Null | 未定义的 | **正常** | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 |
-| **Boolean** | 未定义的 | 未定义的 | **正常** | 未定义的 | 未定义的 | 未定义的 | 未定义的 |
-| **数字** | 未定义的 | 未定义的 | 未定义的 | **正常** | 未定义的 | 未定义的 | 未定义的 |
-| **String** | 未定义的 | 未定义的 | 未定义的 | 未定义的 | **正常** | 未定义的 | 未定义的 |
-| **Object** | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | **正常** | 未定义的 |
-| 数组 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | 未定义的 | **正常** |
+| 未定义  | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
+| Null  | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **Boolean** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
+| **数字** | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined |
+| **String** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
+| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
+| 数组  | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
 
 对于 `>`、`>=`、`!=`、`<` 和 `<=` 等比较运算符，跨类型的比较或者两个对象或数组之间的比较会生成 `Undefined`。  
 
@@ -568,27 +568,27 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
 
 **OR 运算符**
 
-| OR | True | False | 未定义的 |
+| 或 | True | False | Undefined |
 | --- | --- | --- | --- |
 | True |True |True |True |
-| False |True |False |未定义的 |
-| 未定义的 |True |未定义的 |未定义的 |
+| False |True |False |Undefined |
+| Undefined |True |Undefined |Undefined |
 
 **AND 运算符**
 
-| AND | True | False | 未定义的 |
+| AND | True | False | Undefined |
 | --- | --- | --- | --- |
 | True |True |False |Undefined |
 | False |False |False |False |
-| 未定义的 |未定义的 |False |未定义的 |
+| Undefined |Undefined |False |Undefined |
 
 **NOT 运算符**
 
-| 非 |  |
+| NOT |  |
 | --- | --- |
 | True |False |
 | False |True |
-| 未定义的 |未定义的 |
+| Undefined |Undefined |
 
 ## <a name="between-keyword"></a>BETWEEN 关键字
 
@@ -721,7 +721,7 @@ TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法�
     ]
 ```
 
-以下查询按项的创建日期检索家庭 `id`。 项 `creationDate` 是一个数字，表示纪元时间，或者自 1970 年 1 月 1 日开始消逝的时间（以秒为单位）。
+以下查询按项的创建日期检索家庭 `id`。 项 `creationDate` 是一个数字，表示纪元时间，或者自 1970 年 1 月 1 日开始消逝的时间（以秒为单位）。 
 
 ```sql
     SELECT f.id, f.creationDate
@@ -744,7 +744,7 @@ TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法�
     ]
 ```
 
-此外，您可以通过多个属性进行排序。 按多个属性进行排序的查询需要[组合索引](index-policy.md#composite-indexes)。 请考虑下列查询：
+此外，可按多个属性排序。 按多个属性排序的查询需要[组合索引](index-policy.md#composite-indexes)。 请考虑下列查询：
 
 ```sql
     SELECT f.id, f.creationDate
@@ -752,15 +752,15 @@ TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法�
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-此查询将检索系列`id`升序排序的城市名称。 如果多个项具有相同的城市名称，该查询将按排序`creationDate`降序排序。
+此查询根据城市名称的升序检索家庭 `id`。 如果多个项包含同一个城市名称，该查询将按 `creationDate` 的降序排序。
 
 ## <a id="OffsetLimitClause"></a>偏移量的限制子句
 
-偏移量的限制是一个可选子句，以跳过，则需要一定数量的查询中的值。 偏移量的限制子句中需要的偏移量计数和限制计数。
+OFFSET LIMIT 是一个可选子句，它会跳过然后提取查询中特定数目的值。 必须在 OFFSET LIMIT 子句中指定 OFFSET 计数和 LIMIT 计数。 目前仅在单个分区中的查询支持此子句，跨分区查询尚不支持它。 
 
-偏移量的限制与 ORDER BY 子句结合使用时，结果集生成的执行跳过并采用有序的值。 如果使用没有 ORDER BY 子句，则它将导致的值以确定的顺序。
+将 OFFSET LIMIT 与 ORDER BY 子句结合使用时，将通过跳过然后提取排序值来生成结果集。 如果不使用 ORDER BY 子句，则会生成值的确定顺序。
 
-例如，下面是名称的一个查询，将跳过第一个值，并返回第二个值 （按居住城市的顺序）：
+例如，以下查询跳过第一个值并返回第二个值（按居住城市名称的顺序）：
 
 ```sql
     SELECT f.id, f.address.city
@@ -780,7 +780,7 @@ TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法�
     ]
 ```
 
-下面是将跳过第一个值并返回第二个值 （而不排序） 的查询：
+以下查询跳过第一个值并返回第二个值（不排序）：
 
 ```sql
    SELECT f.id, f.address.city
@@ -982,7 +982,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 IN 关�
 
 ## <a id="Joins"></a>联接
 
-在关系数据库中，跨表联接是设计规范化架构的逻辑定理。 相比之下，SQL API 使用无架构项的反规范化数据模型，这在逻辑上等效于自联接。
+在关系数据库中，跨表联接是设计规范化架构的逻辑定理。 相比之下，SQL API 使用无架构项的反规范化数据模型，这在逻辑上等效于自联接。 
 
 该语言支持语法 `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`。 此查询返回一组包含 `N` 值的元组。 每个元组拥有通过对它们相应的集遍历所有容器别名所产生的值。 换言之，此查询是参与联接的集的完整叉积。
 
@@ -1622,7 +1622,7 @@ Cosmos DB 是一个 JSON 数据库，在 JavaScript 运算符和评估语义方�
 
 ### <a id="RestAPI"></a>REST API
 
-Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Azure 订阅预配的数据库帐户下的一组资源组成。 该数据库帐户由一组数据库组成，其中的每个数据库可以包含多个容器，而每个容器又可以包含项、UDF 和其他资源类型。 可以使用稳定的逻辑 URI 对每个 Cosmos DB 资源进行寻址。 一组资源称作一个源。 
+Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Azure 订阅预配的数据库帐户下的一组资源组成。 该数据库帐户由一组数据库组成，其中的每个数据库可以包含多个容器，而每个容器又可以包含项、UDF 和其他资源类型    。 可以使用稳定的逻辑 URI 对每个 Cosmos DB 资源进行寻址。 一组资源称作一个源。  
 
 这些资源的基本交互模型是通过 HTTP 谓词 `GET`、`PUT`、`POST` 和 `DELETE` 及其标准解释实现的。 使用 `POST` 可以创建新的资源、执行存储过程或发出 Cosmos DB 查询。 查询始终为只读操作，且无任何副作用。
 
@@ -1844,7 +1844,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
 
 .NET 客户端自动循环访问 `foreach` 块中所有的查询结果页，如前面的示例中所示。 [REST API](#RestAPI) 部分介绍的查询选项也适用于在 `CreateDocumentQuery` 方法中使用 `FeedOptions` 和 `FeedResponse` 类的 .NET SDK。 可以使用 `MaxItemCount` 设置控制页数。
 
-您可以通过创建显式控制分页`IDocumentQueryable`使用`IQueryable`对象，然后通过阅读`ResponseContinuationToken`作为值并将它们传递回`RequestContinuationToken`中`FeedOptions`。 可以设置 `EnableScanInQuery`，以便在配置的索引策略不支持该查询时启用扫描。 对于分区容器，可以使用 `PartitionKey` 针对单个分区运行查询，不过，Azure Cosmos DB 可以自动从查询文本中提取此信息。 可以使用 `EnableCrossPartitionQuery` 针对多个分区运行查询。
+还可以通过使用 `IQueryable` 对象创建 `IDocumentQueryable`，并读取 `ResponseContinuationToken` 值并将它们作为 `FeedOptions` 中的 `RequestContinuationToken` 向回传递，从而显式控制分页。 可以设置 `EnableScanInQuery`，以便在配置的索引策略不支持该查询时启用扫描。 对于分区容器，可以使用 `PartitionKey` 针对单个分区运行查询，不过，Azure Cosmos DB 可以自动从查询文本中提取此信息。 可以使用 `EnableCrossPartitionQuery` 针对多个分区运行查询。
 
 有关更多包含查询的 .NET 示例，请参阅 GitHub 中的 [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)。
 
@@ -1986,7 +1986,7 @@ Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最�
 
 - 常量值，包括评估查询时基元数据类型的常量值。
   
-- 引用对象或数组元素的属性的属性/数组索引表达式。 例如:
+- 引用对象或数组元素的属性的属性/数组索引表达式。 例如：
   
   ```
     family.Id;
@@ -2291,9 +2291,9 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 - [JSON](https://json.org/)
 - [Javascript 规范](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
-- Graefe, Goetz。 [Query evaluation techniques for large databases](https://dl.acm.org/citation.cfm?id=152611)（适用于大型数据库的查询评估技术） 《ACM 计算调查》第 25 期 第 2 卷 (1993)。
-- Graefe, G。“用于优化查询的 Cascades 框架”。 《IEEE 数据工程期刊》 第 18 期 第 3 卷 (1995)。
-- Lu、Ooi、Tan。 “并行关系数据库系统中的查询处理”。 《IEEE 计算机协会期刊》(1994)。
+- Graefe, Goetz。 [Query evaluation techniques for large databases](https://dl.acm.org/citation.cfm?id=152611)（适用于大型数据库的查询评估技术） 《ACM 计算调查》第 25 期  第 2 卷 (1993)。
+- Graefe, G。“用于优化查询的 Cascades 框架”。 《IEEE 数据工程  期刊》 第 18 期 第 3 卷 (1995)。
+- Lu、Ooi、Tan。 “并行关系数据库系统中的查询处理”。 《IEEE 计算机协会期刊》(1994)。 
 - Olston、Christopher、Benjamin Reed、Utkarsh Srivastava、Ravi Kumar 和 Andrew Tomkins。 “Pig Latin：并不是很难懂的数据处理语言”。 *SIGMOD* (2008)。
 
 ## <a name="next-steps"></a>后续步骤

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 9e8f209f1448119ed2e3dfd5d38d42699a4be01c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 58af752d8b7fcec5c681e2b8975d109a0f731878
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947833"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302274"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -120,7 +120,7 @@ helloworldapp                 latest              86838648aab6        2 minutes 
 docker run -d -p 4000:80 --name my-web-site helloworldapp
 ```
 
-name 用于为运行的容器（而不是容器 ID）命名。
+name 用于为运行的容器（而不是容器 ID）命名。 
 
 连接到正在运行的容器。 打开 web 浏览器的 IP 地址指向端口 4000 上返回，例如"http:\//localhost:4000"。 此时会看到标题“Hello World!” 显示在浏览器中。
 
@@ -141,9 +141,9 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>将映像推送到容器注册表
 确认应用程序在 Docker 中运行后，请将映像推送到 Azure 容器注册表中的注册表。
 
-运行 `docker login`，使用[注册表凭据](../container-registry/container-registry-authentication.md)登录到容器注册表。
+运行`docker login`登录到容器注册表与你[注册表凭据](../container-registry/container-registry-authentication.md)。
 
-以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表分配了服务主体。 或者，可以使用注册表用户名和密码登录。
+以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表分配了服务主体。 或者，你可以使用注册表用户名和密码登录。
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -231,7 +231,12 @@ service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
 
 
 ## <a name="configure-docker-healthcheck"></a>配置 docker HEALTHCHECK 
-从 v6.1 开始，Service Fabric 自动将 [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件集成到其系统运行状况报告。 这意味着，如果容器启用了 **HEALTHCHECK**，则只要容器的运行状况状态如 Docker 所报告的那样更改，Service Fabric 就会报告运行状况。 当 *health_status* 为“正常”时，会在 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中显示运行状况报告“正常”；当 *health_status* 为“不正常”时，会显示“警告”。 生成容器映像时使用的 Dockerfile 中必须存在 **HEALTHCHECK** 指令，该指令指向监视容器运行状况时执行的实际检查。 
+
+从 v6.1 开始，Service Fabric 自动将 [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件集成到其系统运行状况报告。 这意味着，如果容器启用了 **HEALTHCHECK**，则只要容器的运行状况状态如 Docker 所报告的那样更改，Service Fabric 就会报告运行状况。  当 *health_status* 为“正常”  时，会在 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中显示运行状况报告“正常”；  当 *health_status* 为“不正常”时，  会显示“警告”。 
+
+从 v6.4 的最新的刷新版开始，可以选择指定 docker HEALTHCHECK 评估应作为错误进行报告。 如果启用此选项，**确定**时，将显示运行状况报告*health_status*是*正常*并**错误**将出现*health_status*是*不正常*。
+
+生成容器映像时使用的 Dockerfile 中必须存在 **HEALTHCHECK** 指令，该指令指向监视容器运行状况时执行的实际检查。
 
 ![HealthCheckHealthy][1]
 
@@ -246,12 +251,18 @@ service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
     <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
     <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
-        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true"
+              RestartContainerOnUnhealthyDockerHealthStatus="false" 
+              TreatContainerUnhealthyStatusAsError="false" />
       </ContainerHostPolicies>
     </Policies>
 </ServiceManifestImport>
 ```
-默认情况下，*IncludeDockerHealthStatusInSystemHealthReport* 设置为 **true**，*RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **false**。 如果 *RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **true**，则会重启（可能在其他节点上进行）反复报告“不正常”的容器。
+默认情况下*IncludeDockerHealthStatusInSystemHealthReport*设置为**true**， *RestartContainerOnUnhealthyDockerHealthStatus*设置为**false**，并*TreatContainerUnhealthyStatusAsError*设置为**false**。 
+
+如果 *RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **true**，则会重启（可能在其他节点上进行）反复报告“不正常”的容器。
+
+如果*TreatContainerUnhealthyStatusAsError*设置为**true**，**错误**时，将显示运行状况报告容器的*health_status*是*不正常*。
 
 若要禁用整个 Service Fabric 群集的 **HEALTHCHECK** 集成，则需将 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 设置为 **false**。
 
@@ -454,13 +465,13 @@ Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的�
 
 ## <a name="set-container-retention-policy"></a>设置容器保留策略
 
-为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在 ApplicationManifest.xml 文件中设置，如以下代码片段所示：
+为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在  ApplicationManifest.xml 文件中设置，如以下代码片段所示：
 
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果不指定 **ContainersRetentionCount** 属性，则不会保留任何容器。 ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
+ ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果不指定 **ContainersRetentionCount** 属性，则不会保留任何容器。  ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
 
 ## <a name="start-the-docker-daemon-with-custom-arguments"></a>使用自定义参数启动 Docker 守护程序
 

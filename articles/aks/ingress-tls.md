@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: ae1ef2c51fba9186eb75bfec421fbbb05baa4582
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: ad73b9d84a041f42cfdc3c7f5513bd0d32adf2a0
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956461"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392188"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -34,7 +34,7 @@ ms.locfileid: "65956461"
 
 本文使用 Helm 安装 NGINX 入口控制器、cert-manager 和示例 Web 应用。 你需要在 AKS 群集中初始化 Helm 并使用 Tiller 服务帐户。 请确保使用 Helm 的最新版本。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
-本文还要求运行 Azure CLI 2.0.59 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+这篇文章还要求运行 Azure CLI 版本 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="create-an-ingress-controller"></a>创建入口控制器
 
@@ -53,7 +53,8 @@ kubectl create namespace ingress-basic
 helm install stable/nginx-ingress \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
-    --set nodeSelector."beta.kubernetes.io/os"=linux
+    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 在安装过程中，将为入口控制器创建一个 Azure 公共 IP 地址。 此公共 IP 地址在入口控制器的寿命期内是静态的。 如果你删除入口控制器，则公共 IP 地址分配会丢失。 如果你然后创建了另外的入口控制器，则会分配新的公共 IP 地址。 如果希望保持使用此公共 IP 地址，则可以改为[创建具有静态公共 IP 地址的入口控制器][aks-ingress-static-tls]。
@@ -103,7 +104,7 @@ NGINX 入口控制器支持 TLS 终止。 可通过多种方法为 HTTPS 检索�
 
 ```console
 # Install the CustomResourceDefinition resources separately
-kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.7/deploy/manifests/00-crds.yaml
+kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml
 
 # Create the namespace for cert-manager
 kubectl create namespace cert-manager
@@ -121,7 +122,7 @@ helm repo update
 helm install \
   --name cert-manager \
   --namespace cert-manager \
-  --version v0.7.0 \
+  --version v0.8.0 \
   jetstack/cert-manager
 ```
 
@@ -198,7 +199,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     certmanager.k8s.io/cluster-issuer: letsencrypt-staging
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   tls:
   - hosts:
@@ -208,14 +209,14 @@ spec:
   - host: demo-aks-ingress.eastus.cloudapp.azure.com
     http:
       paths:
-      - path: /
-        backend:
+      - backend:
           serviceName: aks-helloworld
           servicePort: 80
-      - path: /hello-world-two
-        backend:
+        path: /(.*)
+      - backend:
           serviceName: ingress-demo
           servicePort: 80
+        path: /hello-world-two(/|$)(.*)
 ```
 
 使用 `kubectl apply -f hello-world-ingress.yaml` 命令创建入口资源。
@@ -278,7 +279,7 @@ certificate.certmanager.k8s.io/tls-secret-staging created
 
 ## <a name="test-the-ingress-configuration"></a>测试入口配置
 
-打开 Web 浏览器，访问 Kubernetes 入口控制器的 FQDN，例如 *https://demo-aks-ingress.eastus.cloudapp.azure.com*。
+打开 Web 浏览器，访问 Kubernetes 入口控制器的 FQDN，例如 *https://demo-aks-ingress.eastus.cloudapp.azure.com* 。
 
 由于这些示例使用 `letsencrypt-staging`，因此浏览器不信任颁发的 SSL 证书。 接受警告提示以继续运行应用程序。 证书信息显示这个*伪 LE 中间 X1* 证书是由 Let's Encrypt 颁发的。 此伪证书指出 `cert-manager` 正确处理了请求并接收了提供程序提供的证书：
 
@@ -292,7 +293,7 @@ certificate.certmanager.k8s.io/tls-secret-staging created
 
 ![应用程序示例 1](media/ingress/app-one.png)
 
-现在向 FQDN 添加 */hello-world-two* 路径，例如 *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two*。 下面显示了带自定义标题的第二个演示应用程序：
+现在向 FQDN 添加 */hello-world-two* 路径，例如 *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two* 。 下面显示了带自定义标题的第二个演示应用程序：
 
 ![应用程序示例 2](media/ingress/app-two.png)
 
@@ -323,7 +324,7 @@ kubectl delete -f certificates.yaml
 kubectl delete -f cluster-issuer.yaml
 ```
 
-现在使用 `helm list` 命令列出 Helm 版本。 查找名为“nginx-ingress”、“cert-manager”和“aks-helloworld”的图表，如以下示例输出中所示：
+现在使用 `helm list` 命令列出 Helm 版本。 查找名为“nginx-ingress”、“cert-manager”和“aks-helloworld”的图表，如以下示例输出中所示    ：
 
 ```
 $ helm list

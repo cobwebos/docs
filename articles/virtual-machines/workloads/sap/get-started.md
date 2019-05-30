@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/15/2019
+ms.date: 05/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f14110cec0650927f74dfe3a38f06187c6df39de
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8b8eebd7a7a8933d082741a3086ffcf03a58066f
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792665"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357709"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 来托管和运行 SAP 工作负荷方案
 
@@ -36,15 +36,12 @@ Azure 的 SAP HANA 的唯一性是分开设置 Azure 的产品/服务。 若要�
 
 ## <a name="latest-changes"></a>最新的更改
 
+- 中的 HANA 大型实例 ExpressRoute 快速路径和全局访问的介绍[SAP HANA （大型实例） 网络体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)和相关文档
 - 新版[Azure HANA 大型实例控制通过 Azure 门户](hana-li-portal.md)
-
 - 新版[使用 Azure NetApp 文件的 SAP 应用程序的 SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 的高可用性](high-availability-guide-suse-netapp-files.md)
-
 - Clarification on 澄清**Linux OS 参数 net.ipv4.tcp_timestamps**设置与 Azure 结合使用负载均衡器
 
-- 新版[与 Azure 可用性区域的 SAP 工作负荷配置](sap-ha-availability-zones.md)
 
-- 发布 [SAP 工作负荷规划和部署清单](sap-deployment-checklist.md)
 
 
 

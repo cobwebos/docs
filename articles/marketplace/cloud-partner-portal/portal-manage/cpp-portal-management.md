@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: d35e221790c2f94caf582859f78389ecca987709
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 58451dd225a4f0625a6922bde672a6928ea50943
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942203"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257489"
 ---
 # <a name="cloud-partner-portal-management"></a>云合作伙伴门户管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "64942203"
 在之前使用云合作伙伴门户，您应熟悉以下文章：
 
 - [Azure Marketplace 策略和条款](../../policies-terms.md)列出了各种法律和技术要求和适用于的用户，并且发布者规则[Azure Marketplace](https://azuremarketplace.microsoft.com)并[AppSource](https://appsource.microsoft.com)。
-- [成为云 Marketplace 发布者](../../become-publisher.md)概述成为正式的 Microsoft 云发布服务器所需的所有步骤。
+- [成为云 Marketplace 发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)概述成为正式的 Microsoft 云发布服务器所需的所有步骤。
 
 
 ## <a name="account-creation-and-management"></a>帐户创建和管理

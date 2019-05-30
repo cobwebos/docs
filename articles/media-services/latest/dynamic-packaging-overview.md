@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: 78e3897ec653326bcd88a538a6ea7d33938659b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65761950"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299186"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
@@ -31,6 +31,9 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和
 因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。 
 
 在媒体服务动态打包使用是否进行实时或按需流式处理。 
+
+> [!NOTE]
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
 ## <a name="common-on-demand-workflow"></a>常见的按需工作流
 
@@ -65,8 +68,8 @@ Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编�
 1. 创建一个新**资产**。
 1. 创建**实时输出**并使用创建的资产名称。<br/>**实时输出**会将流存档到**资产**中。
 1. 使用内置的**流式处理策略**类型创建**流式处理定位符**。<br/>如果想要加密内容，请查看[内容保护概述](content-protection-overview.md)。
-1. 列出流式处理定位器的路径，以取回要使用的 URL。
-1. 获取要从中流式传输的“流式处理终结点”的主机名。
+1. 列出流式处理定位器的路径，以取回要使用的 URL  。
+1. 获取要从中流式传输的“流式处理终结点”的主机名  。
 1. 创建面向不同的格式 （HLS、 Dash 和平滑流式处理） 的 Url。 **流式处理终结点**将负责为正确的清单并对所有这些不同格式的请求提供服务。
 
 实时事件可以是两种类型之一： 直通和实时编码。 有关实时传送视频流媒体服务 v3 中的详细信息，请参阅[实时传送视频流概述](live-streaming-overview.md)。
@@ -92,10 +95,32 @@ Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编�
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>动态打包支持的音频编解码器
 
-动态打包支持 MP4 文件，其中包含使用 [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)（AAC-LC、HE-AAC v1、HE-AAC v2）、[Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（增强版 AC-3 或 E-AC3）、Dolby Atmos 或 [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)（DTS Express、DTS LBR、DTS HD、DTS HD 无损）编码的音频。 流式传输 Dolby Atmos 内容适用于特定的标准（例如 MPEG-DASH 协议），采用通用流式传输格式 (CSF) 或通用媒体应用程序格式 (CMAF) 分段 MP4，在使用 CMAF 的情况通过 HTTP 实时传送视频流 (HLS) 来进行。
+### <a name="mp4-files-support"></a>MP4 文件支持
 
-> [!NOTE]
-> 动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。
+动态打包支持包含使用编码的音频的 MP4 文件 
+
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、 HE-AAC v1、 的 HE-AAC v2)
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（增强 ac-3 或 E AC3）
+* Dolby Atmos
+   
+   流式传输 Dolby Atmos 内容适用于特定的标准（例如 MPEG-DASH 协议），采用通用流式传输格式 (CSF) 或通用媒体应用程序格式 (CMAF) 分段 MP4，在使用 CMAF 的情况通过 HTTP 实时传送视频流 (HLS) 来进行。
+
+* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)
+
+    支持的短划线 CSF、 CMAF DASH、 HLS M2TS 和 HLS CMAF 打包格式的 DTS 编解码器是：  
+
+    * DTS 数字外侧代码 (dtsc)
+    * DTS HD 高分辨率和 DTS HD Master 音频 (dtsh)
+    * DTS Express (dtse)
+    * DTS HD 无损 （没有核） (dtsl)
+
+### <a name="hls-support"></a>HLS 支持
+
+动态打包支持 HLS (第 4 版或更高版本) 的多个音频曲目具有多个编解码器和语言的资产。
+
+### <a name="not-supported"></a>不支持
+
+动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。
 
 ## <a name="dynamic-encryption"></a>动态加密
 
@@ -193,10 +218,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ## <a name="dynamic-manifest"></a>动态清单
 
-使用动态筛选来控制跟踪、 格式、 比特率和演示文稿时间窗口，发送到参与方的数目。 有关详细信息，请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
-
-> [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
+使用动态筛选来控制跟踪、 格式、 比特率和演示文稿时间窗口，发送到参与方的数目。 有关详细信息，请参阅[预筛选与动态打包程序清单](filters-dynamic-manifest-overview.md)。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

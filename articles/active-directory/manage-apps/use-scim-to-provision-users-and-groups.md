@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 5/06/2019
+ms.date: 05/06/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad90cd66d922c29887aaa8094e798edb28022b27
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: e5c2d987a1556513e36fc0a81e903d9eefdcae68
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015459"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388158"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -75,25 +75,25 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    *图 2：Azure AD 应用程序库*
     
 1. 在应用程序管理屏幕中，选择**预配**左侧面板中。
-1. 在“预配模式”菜单中，选择“自动”。
+1. 在“预配模式”菜单中，选择“自动”   。
     
    ![][2]
    *图 3：在 Azure 门户中配置预配*
     
-1. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例： https://api.contoso.com/scim/v2/
-1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，Azure AD 包含从每个请求的 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供者的应用可以验证 Azure AD 颁发的此令牌。
+1. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL  。 示例： https://api.contoso.com/scim/v2/
+1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段  。 如果此字段留空，Azure AD 包含从每个请求的 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供者的应用可以验证 Azure AD 颁发的此令牌。
 1. 选择**测试连接**，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果该尝试失败，显示错误信息。  
 
     >[!NOTE]
     >**测试连接**使用随机 GUID 作为在 Azure AD 配置中选择的匹配属性，针对不存在的用户查询 SCIM 终结点。 预期正确响应为“HTTP 200 正常”以及空的 SCIM ListResponse 消息。 
 
 1. 如果尝试连接到应用程序成功，然后选择**保存**保存管理员凭据。
-1. 在“映射”部分中有两个可选的属性映射集：一个用于用户对象，一个用于组对象。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作。 选择“保存”，提交所有更改。
+1. 在“映射”部分中有两个可选的属性映射集：一个用于用户对象，一个用于组对象  。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作  。 选择“保存”，提交所有更改  。
 
     >[!NOTE]
     >也可通过禁用“组”映射来选择性禁用组对象的同步。 
 
-1. “设置”下的“作用域”字段定义同步的用户和组。 选择**仅同步分配的用户和组**（推荐） 以仅同步用户和组中分配**用户和组**选项卡。
+1. “设置”下的“作用域”字段定义同步的用户和组   。 选择**仅同步分配的用户和组**（推荐） 以仅同步用户和组中分配**用户和组**选项卡。
 1. 你的配置完成后，设置**预配状态**到**上**。
 1. 选择**保存**以启动 Azure AD 预配服务。 
 1. 如果仅同步分配用户和组 （推荐），请务必选择**用户和组**选项卡并分配用户或你想要同步的组。
@@ -638,7 +638,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    ```
 
 1. 构建 FileProvisioningService 项目。
-1. 在 Windows 中启动命令提示符应用程序（以管理员身分），并使用 cd 命令将目录切换到 \AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug 文件夹。
+1. 在 Windows 中启动命令提示符应用程序（以管理员身分），并使用 cd  命令将目录切换到 \AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug  文件夹。
 1. 运行以下命令，替换`<ip-address>`与 Windows 计算机的 IP 地址或域名名：
 
    ```
@@ -660,14 +660,14 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 1. 在应用程序管理屏幕中，选择**预配**左侧面板中。
 
-1. 在“预配模式”菜单中，选择“自动”。
+1. 在“预配模式”菜单中，选择“自动”   。
     
    ![][2]
    *图 6：在 Azure 门户中配置预配*
     
-1. 在“租户 URL”字段中，输入面向 Internet 的 URL 和 SCIM 终结点的端口。 该条目类似于 http://testmachine.contoso.com:9000 或 http://\<ip-address>:9000/，其中 \<ip-address> 是 Internet 公开 IP 地址。 
+1. 在“租户 URL”字段中，输入面向 Internet 的 URL 和 SCIM 终结点的端口  。 该条目类似于 http://testmachine.contoso.com:9000 或 http://\<ip-address>:9000/，其中 \<ip-address> 是 Internet 公开 IP 地址。 
 
-1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，Azure AD 会包含从每个请求的 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供程序的应用可以验证 Azure AD 颁发的此令牌。
+1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段  。 如果此字段留空，Azure AD 会包含从每个请求的 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供程序的应用可以验证 Azure AD 颁发的此令牌。
 
 1. 选择**测试连接**，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果该尝试失败，显示错误信息。  
 
@@ -676,9 +676,9 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 
 1. 如果尝试连接到应用程序成功，然后选择**保存**保存管理员凭据。
 
-1. 在“映射”部分中有两个可选的属性映射集：一个用于用户对象，一个用于组对象。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作。 选择“保存”，提交所有更改。
+1. 在“映射”部分中有两个可选的属性映射集：一个用于用户对象，一个用于组对象  。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作  。 选择“保存”，提交所有更改  。
 
-1. “设置”下的“作用域”字段定义同步的用户或组。 选择 **"仅同步分配的用户和组**（推荐） 以仅同步用户和组中分配**用户和组**选项卡。
+1. “设置”下的“作用域”字段定义同步的用户或组   。 选择 **"仅同步分配的用户和组**（推荐） 以仅同步用户和组中分配**用户和组**选项卡。
 
 1. 你的配置完成后，设置**预配状态**到**上**。
 
@@ -1328,7 +1328,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 | Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
 | givenName |name.givenName |
 | jobTitle |title |
-| 邮件 |emails[type eq "work"].value |
+| mail |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
@@ -1346,9 +1346,9 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 | Azure Active Directory 组 | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |externalId |
-| 邮件 |emails[type eq "work"].value |
+| mail |emails[type eq "work"].value |
 | mailNickname |displayName |
-| 成员 |members |
+| members |members |
 | objectId |ID |
 | proxyAddresses |emails[type eq "other"].Value |
 

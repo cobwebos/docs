@@ -1,5 +1,5 @@
 ---
-title: 内存和并发限制 - Azure SQL 数据仓库 | Microsoft Docs
+title: Azure SQL 数据仓库中的内存和并发限制 |Microsoft Docs
 description: 查看分配给 Azure SQL 数据仓库中的各个性能级别和资源类的内存和并发限制。
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 024b3f9c6d1fdd0d4bcb1126e4577387a6415a59
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 3bc1fef1842911e9b2cfb65b3c8cc72e4b615010
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873475"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241271"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的内存和并发限制
 查看分配给 Azure SQL 数据仓库中的各个性能级别和资源类的内存和并发限制。 若要了解详细信息并将这些功能应用于你的工作负荷管理计划，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。 
@@ -25,7 +25,7 @@ ms.locfileid: "65873475"
 ## <a name="data-warehouse-capacity-settings"></a>数据仓库容量设置
 以下各表显示了不同性能级别的数据仓库的最大容量。 若要更改性能级别，请参阅[缩放计算 - 门户](quickstart-scale-compute-portal.md)。
 
-### <a name="gen2"></a>第 2 代
+### <a name="gen2"></a>Gen2
 
 第 2 代为每个查询提供的内存比第 1 代多 2.5 倍。 额外的内存有助于第 2 代提供快速的性能。  第 2 代的性能级别范围为 DW100c 到 DW30000c。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "65873475"
 
 第 2 代的最大 DWU 为 DW30000c，包括 60 个计算节点，每个计算节点有一个分布区。 例如，DW30000c 级别的 600 TB 数据仓库的每个计算节点可以处理大约 10 TB 数据。
 
-### <a name="gen1"></a>第 1 代
+### <a name="gen1"></a>Gen1
 
 第 1 代的服务级别范围为 DW100 到 DW6000。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "65873475"
 ## <a name="concurrency-maximums"></a>并发性最大值
 为了确保每个查询都有足够的资源来有效执行，SQL 数据仓库会通过向每个查询分配并发槽位来跟踪资源利用率。 系统将根据重要性和并发槽位将查询置于队列中。 查询将在队列中等待，直到有足够的并发槽位可用。 [重要性](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)和并发槽位决定了 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
 
-### <a name="gen2"></a>第 2 代
+### <a name="gen2"></a>Gen2
  
 **静态资源类**
 
@@ -127,7 +127,7 @@ ms.locfileid: "65873475"
 
 
 
-#### <a name="gen1"></a>第 1 代
+#### <a name="gen1"></a>Gen1
 
 静态资源类
 

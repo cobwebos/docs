@@ -3,22 +3,21 @@ title: 使用 Azure 数据工厂从 SAP ECC 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP ECC 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 04/26/2018
-ms.date: 04/22/2019
-ms.author: v-jay
-ms.openlocfilehash: d86264b632daa09a899fae28e73e117b16322617
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 04/26/2018
+ms.author: jingwang
+ms.openlocfilehash: 7c75793a696137a1d4cc24fa94877a7fb4e4247a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128111"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243923"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP ECC 复制数据
 
@@ -33,6 +32,9 @@ ms.locfileid: "62128111"
 - 在 SAP NetWeaver 版本 7.0 和更高版本上从 SAP ECC 复制数据。 
 - 复制由 SAP ECC OData 服务（例如 SAP 表/视图、BAPI、数据提取器，等等）公开的任何对象中的数据，或复制发送到 SAP PI 的可以通过相关适配器接收为 OData 的数据/IDOC。
 - 使用基本身份验证复制数据。
+
+>[!TIP]
+>若要通过 SAP 表/视图从 SAP ECC 复制数据，可以使用[SAP 表](connector-sap-table.md)连接器是更高的性能和可缩放。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -117,7 +119,7 @@ SAP ECC 链接服务支持以下属性：
 
 ### <a name="sap-ecc-as-source"></a>以 SAP ECC 作为源
 
-若要从 SAP ECC 复制数据，请将复制活动中的源类型设置为 **SapEccSource**。 复制活动源部分支持以下属性：
+若要从 SAP ECC 复制数据，请将复制活动中的源类型设置为 **SapEccSource**。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

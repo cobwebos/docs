@@ -9,19 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 1c44d2e41d37a9236ee6d6936c349acf5ca5e44c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bde1983f89cb2fcd0a6fddadc2c3379dee4310be
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60495347"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399632"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>将 LUIS 结果添加到 Application Insights 和 Azure 函数
-本教程将 LUIS 请求和响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 添加该数据后，可使用 Kusto 语言进行查询，或使用 PowerBi 对陈述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
+本教程将 LUIS 请求和响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 该数据后，您可以查询它与 Kusto 语言或 Power BI 进行分析，则聚合，和报告目的和实时查询文本的实体。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
-该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。
+该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。 一个[Bot Framework 4.x LUIS 教程](luis-nodejs-tutorial-bf-v4.md)也是可用。
 
 本教程介绍如何执行下列操作：
 
@@ -32,7 +32,7 @@ ms.locfileid: "60495347"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 使用[上一教程](luis-nodejs-tutorial-build-bot-framework-sample.md)中已启用 Application Insights 的 LUIS Web 应用机器人。 
+* 使用[上一教程](luis-nodejs-tutorial-build-bot-framework-sample.md)中已启用 Application Insights 的 LUIS Web 应用机器人  。 
 
 > [!Tip]
 > 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
@@ -49,11 +49,11 @@ ms.locfileid: "60495347"
 
 若要捕获 LUIS 请求和响应，需在 Web 应用机器人中安装 **[Application Insights](https://www.npmjs.com/package/applicationinsights)** NPM 包，并在 **app.js** 文件中配置该包。 然后，意向对话处理程序需将 LUIS 请求和响应信息发送到 Application Insights。 
 
-1. 在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。 
+1. 在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。   
 
     ![在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。](./media/luis-tutorial-appinsights/build.png)
 
-2. 此时会打开一个包含“应用服务编辑器”的新浏览器标签页。 在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。 
+2. 此时会打开一个包含“应用服务编辑器”的新浏览器标签页。 在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。  
 
     ![在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。](./media/luis-tutorial-appinsights/kudu-console.png)
 
@@ -105,16 +105,16 @@ ms.locfileid: "60495347"
 
    [!code-javascript[Use the appInsightsLog function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=117-118 "Use the appInsightsLog function")]
 
-6. 要测试 Web 应用机器人，请使用“通过网上聊天执行测试”功能。 由于所有工作在 Application Insights 中发生，而不是在机器人响应中发生，因此，不会出现任何差异。
+6. 要测试 Web 应用机器人，请使用“通过网上聊天执行测试”功能  。 由于所有工作在 Application Insights 中发生，而不是在机器人响应中发生，因此，不会出现任何差异。
 
 ## <a name="view-luis-entries-in-application-insights"></a>在 Application Insights 中查看 LUIS 条目
 打开 Application Insights 以查看 LUIS 条目。 
 
-1. 在门户中，选择“所有资源”，然后按 Web 应用机器人的名称进行筛选。 单击“Application Insights”类型的资源。 Application Insights 的图标是灯泡。 
+1. 在门户中，选择“所有资源”，然后按 Web 应用机器人的名称进行筛选  。 单击“Application Insights”类型的资源  。 Application Insights 的图标是灯泡。 
 
-    ![[在 Azure 门户中搜索 app insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
+    ![[适用于在 Azure 门户中的 app insights 搜索](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
-2. 资源打开后，单击最右侧面板中的“搜索”图标（放大镜）。 右侧将显示一个新面板。 该面板可能需要一秒钟才能显示出来，具体取决于找到的遥测数据量。 搜索 `LUIS-results` 并按 Enter 键。 该列表已缩减为仅限本教程添加的 LUIS 查询结果。
+2. 资源打开后，单击最右侧面板中的“搜索”图标（放大镜）  。 右侧将显示一个新面板。 该面板可能需要一秒钟才能显示出来，具体取决于找到的遥测数据量。 搜索 `LUIS-results` 并按 Enter 键。 该列表已缩减为仅限本教程添加的 LUIS 查询结果。
 
     ![筛选依赖项](./media/luis-tutorial-appinsights/app-insights-filter.png)
 
@@ -122,16 +122,16 @@ ms.locfileid: "60495347"
 
     ![依赖项详细信息](./media/luis-tutorial-appinsights/app-insights-detail.png)
 
-    完成后，选择最右上角的“X”，返回依赖项列表。 
+    完成后，选择最右上角的“X”，返回依赖项列表  。 
 
 
 > [!Tip]
-> 如果想要保存依赖项列表并稍后回查看，请依次单击“...更多”>“保存收藏”。
+> 如果想要保存依赖项列表并稍后回查看，请依次单击“...更多”>“保存收藏”   。
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>查询 Application Insights，获取意向、评分和陈述
-Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 语言的数据并将其导出到 [Power BI](https://powerbi.microsoft.com)。 
+Application Insights 为您提供强大功能来查询数据[Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics)语言，以及导出到[Power BI](https://powerbi.microsoft.com)。 
 
-1. 在筛选框上方，单击依赖项列表顶部的“分析”。 
+1. 在筛选框上方，单击依赖项列表顶部的“分析”  。 
 
     ![“分析”按钮](./media/luis-tutorial-appinsights/analytics-button.png)
 
@@ -152,7 +152,7 @@ Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure
     ![Analytics 首要意向](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
 
 
-详细了解 [Kusto 查询语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
+详细了解如何[Kusto 查询语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,30 +5,30 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 06/12/2018
+ms.date: 05/28/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c025c431d826d3a2951a9eb5c09308695e172887
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9f7f9b1504533e0ec503e97c086c380da71671a0
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170719"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299707"
 ---
 | Resource | 默认值/最大限制 |
 | --- | --- |
 | 每个订阅的 ExpressRoute 线路数 |10 |
 | 每个区域每个订阅，使用 Azure 资源管理器中的 ExpressRoute 线路 |10 |
-| Azure 专用对等互连具有 ExpressRoute Standard 的路由的最大数目 |4,000 |
-| Azure 专用对等互连的 ExpressRoute 高级版外接程序的路由的最大数目 |10,000 |
-| Azure 专用对等互连的 ExpressRoute 连接的 VNet 地址空间中的路由的最大数目 |200 | 
-| 具有 ExpressRoute Standard 的 Microsoft Azure 对等互连的路由的最大数目 |200 |
-| 最大数量的 Microsoft Azure ExpressRoute 高级版外接程序与对等互连的路由 |200 |
+| 播发到 Azure 专用对等互连具有 ExpressRoute Standard 的最大路由数 |4,000 |
+| 最大数量的路由播发到 Azure 专用对等互连的 ExpressRoute 高级版外接程序 |10,000 |
+| 从 Azure 专用对等互连的 ExpressRoute 连接的 VNet 地址空间中的最大路由数播发 |200 |
+| 播发到 Microsoft 对等互连具有 ExpressRoute Standard 的最大路由数 |200 |
+| 最大数量的路由播发到 Microsoft 对等互连的 ExpressRoute 高级版外接程序 |200 |
 | ExpressRoute 线路链接到同一虚拟网络对等互连在同一位置的最大数目 |4 |
 | 链接到不同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |4 |
-| 每个 ExpressRoute 线路允许的虚拟网络链接数 |请参阅下表。 |
+| 每个 ExpressRoute 线路允许的虚拟网络链接数 |请参阅[的每个 ExpressRoute 线路的虚拟网络数](#vnetpercircuit)表。  |
 
-#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>每个 ExpressRoute 线路的虚拟网络的数量
+#### <a name="vnetpercircuit"></a> 每个 ExpressRoute 线路的虚拟网络的数量
 | **线路大小** | **标准的虚拟网络链接数** | **高级版附加组件的虚拟网络链接数** |
 | --- | --- | --- |
 | 50 Mbps |10 |20 |

@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 069b3fe89183d7897cea39e2a8a1fe1bbed80bb0
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.date: 05/29/2019
+ms.openlocfilehash: 168a73ced039b9bced9a6aae6a138468b345b19d
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556336"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391684"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>在 HDInsight 中使用企业安全性套餐
 
@@ -21,7 +21,7 @@ ms.locfileid: "65556336"
 
 许多企业已转向这样一种模型：群集由 IT 团队管理，并由多个应用程序团队共享。 这些较大型企业需要在 Azure HDInsight 中实现对每个群集的多用户访问。
 
-HDInsight 以托管方式依赖于常用的标识提供者 - Active Directory。 通过将 HDInsight 与 [Azure Active Directory 域服务 (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md) 相集成，可以使用你的域凭据来访问群集。 
+HDInsight 以托管方式依赖于常用的标识提供者 - Active Directory。 通过将 HDInsight 与 [Azure Active Directory 域服务 (Azure AD DS)](../../active-directory-domain-services/overview.md) 相集成，可以使用你的域凭据来访问群集。 
 
 HDInsight 中的虚拟机 (VM) 将加入你提供的域。 因此，在 HDInsight 上运行的所有服务（Apache Ambari、Apache Hive 服务器、Apache Ranger、Apache Spark Thrift 服务器等）都可以为经身份验证的用户无缝运行。 然后，管理员可以使用 Apache Ranger 创建强大的授权策略，以针对群集中的资源提供基于角色的访问控制。
 
@@ -45,7 +45,7 @@ HDInsight 中的虚拟机 (VM) 将加入你提供的域。 因此，在 HDInsigh
 HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行通信的主域控制器。 但是，也可以使用其他复杂的 Active Directory 设置，只要该设置能启用 Azure AD DS 进行 HDInsight 访问。
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory 域服务
-[Azure AD DS](../../active-directory-domain-services/active-directory-ds-overview.md) 提供与 Windows Server Active Directory 完全兼容的托管域。 Microsoft 负责采用高度可用的 (HA) 设置来管理、修补和监视域。 你可以部署群集，而不用担心如何维护域控制器。 
+[Azure AD DS](../../active-directory-domain-services/overview.md) 提供与 Windows Server Active Directory 完全兼容的托管域。 Microsoft 负责采用高度可用的 (HA) 设置来管理、修补和监视域。 你可以部署群集，而不用担心如何维护域控制器。 
 
 用户、组和密码将从 Azure AD 进行同步。 利用从 Azure AD 实例到 Azure AD DS 的单向同步，用户可以使用相同的企业凭据登录到群集。 
 

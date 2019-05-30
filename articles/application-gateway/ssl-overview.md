@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 1259e755642563a7baad5496bc84ed736d5499f8
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ee901fdcae9717cc6d03d7653bcaacc0c32518e0
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849811"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254317"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>应用程序网关的 SSL 终止和端到端 SSL 概述
 
@@ -50,7 +50,7 @@ ms.locfileid: "65849811"
 有关详细信息，请参阅[配置应用程序网关的 SSL 终止](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)。
 
 ### <a name="size-of-the-certificate"></a>证书大小
-使用 SSL 证书信息的个人信息交换 (PFX) 文件不应超过 10 KB 的大小。
+检查[应用程序网关限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits)部分以了解最大的 SSL 证书支持的大小。
 
 ## <a name="end-to-end-ssl-encryption"></a>端到端 SSL 加密
 
@@ -72,7 +72,7 @@ SSL 策略将应用到前端和后端流量。 在前端上，应用程序网关
 
 > [!NOTE] 
 >
-> 添加到“后端 HTTP 设置”中的、用于对后端服务器进行身份验证的证书，可以是添加到**侦听器**的、用于在应用程序网关上实现 SSL 终止的同一个证书；为了增强安全性，两者也可以不同。
+> 添加到“后端 HTTP 设置”中的、用于对后端服务器进行身份验证的证书，可以是添加到**侦听器**的、用于在应用程序网关上实现 SSL 终止的同一个证书；为了增强安全性，两者也可以不同。 
 
 ![端到端 ssl 方案][1]
 

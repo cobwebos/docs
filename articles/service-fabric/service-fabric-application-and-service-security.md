@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: aljo
-ms.openlocfilehash: b4d3699c0327bb2771a358d3e3c2921bdc39ee5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb0f750f4049a1ce652c829f43928a95f30e6973
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621536"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302245"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
 微服务体系结构可以带来[诸多好处](service-fabric-overview-microservices.md)。 但是，管理微服务的安全性有一定的难度，比管理传统单体式应用程序的安全性更复杂。 
@@ -36,7 +36,7 @@ ms.locfileid: "60621536"
 
 如果可以直接访问服务，则可以使用某个身份验证服务（例如 Azure Active Directory，或充当安全令牌服务 (STS) 的专用身份验证微服务）对用户进行身份验证。 信任决策在包含安全令牌或 Cookie 的服务之间共享。 
 
-对于 ASP.NET Core，用于[对用户进行身份验证](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要机制是 ASP.NET Core 标识成员身份系统。 ASP.NET Core 标识在开发人员配置的数据存储中存储用户信息（包括登录信息、角色和声明）。 ASP.NET Core 标识支持双重身份验证。  也支持外部身份验证提供程序，因此，用户可以使用 Microsoft、Google、Facebook 或 Twitter 等提供程序中的现有身份验证过程登录。 
+对于 ASP.NET Core，用于[对用户进行身份验证](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要机制是 ASP.NET Core 标识成员身份系统。 ASP.NET Core 标识在开发人员配置的数据存储中存储用户信息（包括登录信息、角色和声明）。 ASP.NET Core 标识支持双重身份验证。  也支持外部身份验证提供程序，因此，用户可以使用 Microsoft、 Google、 Facebook 或 Twitter 等提供程序中的现有身份验证过程登录。
 
 ### <a name="authorization"></a>授权
 完成身份验证后，服务需要为用户访问授权，或确定哪些用户可以访问。 此过程可让服务将 API 提供给某些经过身份验证的用户使用，而不是提供给所有用户使用。 授权是正交性的，它独立于身份验证，是认定用户身份的过程。 身份验证可为当前用户创建一个或多个标识。

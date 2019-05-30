@@ -9,15 +9,15 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531279"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238140"
 ---
 下表描述 Azure 计划程序中各主要的配额、限制、默认值和中止值。
 
-| 资源 | 限制说明 |
+| Resource | 限制说明 |
 | -------- | ----------------- |
 | **作业大小** | 最大作业大小为 16,000。 如果 PUT 或 PATCH 操作生成的作业大小超过此限制，则返回 400 错误请求状态代码。 | 
 | **作业集合数** | 每个 Azure 订阅的最大作业集合数为 200,000 个。 | 

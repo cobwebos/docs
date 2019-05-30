@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 043ceb6c46155ed169c080d08f37688b47e3e4b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96d55da713b8591b20f95ba36f332a340999181e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66123307"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242739"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间
 
@@ -216,6 +216,9 @@ ORDER BY end_time DESC
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>回收已分配但未使用的空间
+
+> [!NOTE]
+> 此命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。
 
 ### <a name="dbcc-shrink"></a>DBCC 收缩
 

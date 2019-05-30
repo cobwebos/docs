@@ -9,11 +9,11 @@ ms.date: 06/22/2018
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: f328de00d206b58037fda800354e9634b1c374d6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553296"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238157"
 ---
 Azure Data Lake Storage Gen1 是一个企业范围的超大规模存储库，适用于大数据分析工作负载。 数据湖存储 Gen1 可用于捕获在单个位置进行操作和探索性分析任何大小、 类型和引入速度的数据。 可以在数据湖存储 Gen1 帐户中存储的数据量没有限制。
 

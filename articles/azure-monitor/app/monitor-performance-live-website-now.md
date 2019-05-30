@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0de4da5792553b8e61ce8116988dc0d0b2c55488
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3f4ef7f333525d7408d0345b917102cddb295386
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66130989"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255468"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>在运行时使用 Application Insights 状态监视器检测 Web 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "66130989"
 
 可以选择两种途径将 Application Insights 应用到 .NET Web 应用程序：
 
-* **生成时：**[将 Application Insights SDK 添加][greenbrown]到 Web 应用代码。
+* **生成时：** [将 Application Insights SDK 添加][greenbrown]到 Web 应用代码。
 * **运行时：** 如下所述检测服务器上的 Web 应用，无需重建并重新部署代码。
 
 > [!NOTE]
@@ -154,7 +154,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 ### <a name="insufficient-permissions"></a>权限不足
   
 * 如果在服务器上看到有关“权限不足”的消息，请尝试以下操作：
-  * 在 IIS 管理器中选择应用程序池，打开“高级设置”，并记下“进程模型”下的标识。
+  * 在 IIS 管理器中选择应用程序池，打开“高级设置”，并记下“进程模型”下的标识   。
   * 在计算机管理控制面板中，将此标识添加到性能监试器用户组。
 
 ### <a name="conflict-with-systems-center-operations-manager"></a>与 Systems Center Operations Manager 发生冲突
@@ -321,7 +321,6 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 * [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况
 * [搜索事件和日志][diagnostic]，以便诊断问题
 * [分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询
-* [创建仪表板](../../azure-monitor/app/app-insights-dashboards.md)
 
 添加更多遥测：
 

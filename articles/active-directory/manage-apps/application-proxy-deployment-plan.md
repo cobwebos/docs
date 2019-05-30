@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04-04-2019
-ms.author: barbaraselden
+ms.date: 04/04/2019
+ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: d8686b9296c8b1d7c5232e2e46a0e66a9896656b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 04a2e9968e8716818637a34adea86de88e1f848c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113028"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388310"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划的 Azure AD 应用程序代理部署
 
@@ -92,8 +92,8 @@ Azure Active Directory (Azure AD) 应用程序代理是在本地应用程序的�
 
 | 信息类型| 若要收集的信息 |
 |---|---|
-| 服务类型| 例如:SharePoint、 SAP、 CRM、 自定义 Web 应用程序、 API |
-| 应用程序平台 | 例如:Windows IIS、 Apache 在 Linux、 Tomcat、 NGINX |
+| 服务类型| 例如：SharePoint、 SAP、 CRM、 自定义 Web 应用程序、 API |
+| 应用程序平台 | 例如：Windows IIS、 Apache 在 Linux、 Tomcat、 NGINX |
 | 域成员身份| Web 服务器的完全限定的域名 (FQDN) |
 | 应用程序的位置 | Web 服务器或场基础结构中位于何处 |
 | 内部访问 | 在内部访问应用程序时，使用正确的 URL。 <br> 如果场中，哪种类型的负载平衡是在使用？ <br> 是否在应用程序从非自身的源绘制内容。<br> 确定是否应用程序通过 Websocket 进行操作。 |
@@ -232,9 +232,9 @@ Azure Active Directory (Azure AD) 应用程序代理是在本地应用程序的�
 
 验证你的应用程序通过外部 URL 对其进行访问的应用程序代理可以访问。 
 
-1. 导航到“Azure Active Directory” > “企业应用程序” > “所有应用程序”，选择要管理的应用。
+1. 导航到“Azure Active Directory”   > “企业应用程序”   > “所有应用程序”  ，选择要管理的应用。
 
-2. 选择“应用程序代理”。
+2. 选择“应用程序代理”  。
 
 3. 在中**预身份验证**字段中，使用下拉列表中选择**Azure Active Directory**，然后选择**保存**。
 

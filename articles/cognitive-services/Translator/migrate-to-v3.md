@@ -3,19 +3,19 @@ title: 迁移到 V3 - 文本翻译 API
 titlesuffix: Azure Cognitive Services
 description: 了解如何将文本翻译 API 从 V2 迁移到 V3。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: fa1733ddd70de3f8ef93452a880094ccf8b9ef56
-ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
+ms.author: v-pawal
+ms.openlocfilehash: 81b2e5c9c659a3811d7417d87b811a86f4350a52
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64951475"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382919"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
 

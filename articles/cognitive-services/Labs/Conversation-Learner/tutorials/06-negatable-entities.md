@@ -3,19 +3,19 @@ title: 如何通过 Conversation Learner 模型使用可否定实体 - Microsoft
 titleSuffix: Azure
 description: 了解如何通过 Conversation Learner 模型使用可否定实体。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 78dc759632c4fc3116a59ea1e5bc0b93200bca45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 2c758d1dd5d4d1e7ab25faccd5280963211181d1
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707963"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388804"
 ---
 # <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>如何通过 Conversation Learner 模型使用可否定实体
 
@@ -41,7 +41,7 @@ ms.locfileid: "60707963"
 
 1. 选择**新的模型**。
 2. 输入**NegatableEntity**有关**名称**。
-3. 选择“创建”。
+3. 选择“创建”  。
 
 ### <a name="entity-creation"></a>创建实体
 
@@ -49,24 +49,24 @@ ms.locfileid: "60707963"
 2. 选择**自定义培训**有关**实体类型**。
 3. 输入**名称**有关**实体名称**。
 4. 检查**Negatable**若要使用户能够提供实体的值，或者说有*不*实体值从而删除匹配的实体值。
-5. 选择“创建”。
+5. 选择“创建”  。
 
 ![](../media/T06_entity_create.png)
 
 ### <a name="create-the-first-action"></a>创建第一个操作
 
 1. 选择**操作**在左侧的窗格中，然后**新操作**。
-2. 输入**我不知道你的名称。** 有关**智能机器人应用程序的响应...**.
+2. 输入**我不知道你的名称。** 有关**智能机器人应用程序的响应...** .
 3. 输入**名称**有关**取消将赋予**。
-4. 选择“创建”。
+4. 选择“创建”  。
 
 ![](../media/T06_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>创建第二个操作
 
 1. 选择**操作**在左侧的窗格中，然后**新操作**。
-2. 输入**我知道自己的名称。它是 $name。** 有关**智能机器人应用程序的响应...**.
-3. 选择“创建”。
+2. 输入**我知道自己的名称。它是 $name。** 有关**智能机器人应用程序的响应...** .
+3. 选择“创建”  。
 
 > [!NOTE]
 > **名称**实体已自动添加为**所需实体**响应查询文本中的引用。

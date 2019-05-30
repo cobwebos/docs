@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/13/2019
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c989b690e9537dcaaf3710996474a1b8b99826b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 314d7a8e8cf6837e2b22446ba23fee03d539bf35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962736"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235350"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -50,7 +50,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 ## <a name="application-object"></a>应用程序对象
 
-在 [Azure 门户][AZURE-portal]中注册/更新应用程序时，门户将为该租户同时创建/更新应用程序对象和对应的[服务主体对象](#service-principal-object)。 应用程序对象可全局（在其能够访问的所有租户中）定义应用程序的标识配置，并可提供模板来派生出其对应的服务主体对象，在运行时于本地（在特定租户中）使用。
+在 [Azure 门户][AZURE-portal]中注册/更新应用程序时，门户将为该租户同时创建/更新应用程序对象和对应的[服务主体对象](#service-principal-object)。 应用程序对象可全局（在其能够访问的所有租户中）定义  应用程序的标识配置，并可提供模板来派生  出其对应的服务主体对象，在运行时于本地（在特定租户中）使用。
 
 有关详细信息，请参阅[应用程序和服务主体对象][AAD-App-SP-Objects]。
 
@@ -142,7 +142,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 权限也会在[同意](#consent)过程中出现，让管理员或资源所有者有机会允许/拒绝客户端对其租户中的资源进行访问。
 
-在 [Azure 门户][AZURE-portal]的“应用程序”/“配置”选项卡的“必需权限”下，选择所需的“委托的权限”和“应用程序权限”来配置权限请求（后者需要全局管理员角色中的成员资格）。 [公共客户端](#client-application)无法安全地维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其 [requiredResourceAccess 属性][AAD-Graph-App-Entity]中。
+配置权限请求**API 的权限**页中的应用程序[Azure 门户][AZURE-portal]，通过选择所需"委派的权限"和"应用程序权限"（后者需要全局管理员角色的成员身份）。 [公共客户端](#client-application)无法安全地维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其 [requiredResourceAccess 属性][AAD-Graph-App-Entity]中。
 
 ## <a name="resource-owner"></a>资源所有者
 

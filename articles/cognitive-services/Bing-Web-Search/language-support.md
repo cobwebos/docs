@@ -10,20 +10,20 @@ ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: e657c4678c76e8ff667c1a3f30409fc157f52d16
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 18b124ca7f6f270488fa8e010d2b1c0404f8e9e2
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798246"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384776"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>必应 Web 搜索 API 的语言和区域支持
 
 必应 Web 搜索 API 支持超过 36 个国家或地区，其中很多具有多种语言。 使用查询指定国家或地区有助于根据对该国家或地区的兴趣来优化搜索结果。 结果可能包含指向必应的链接，这些链接可能会根据指定的国家/地区或语言本地化必应用户体验。
 
-可以使用 `cc` 查询参数指定国家或地区。 指定国家或地区后，必须使用[`Accept-Language` 标头](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers)指定一个或多个语言代码。 使用[市场表](#markets)获取每个市场支持的语言列表。
+可以使用 `cc` 查询参数指定国家或地区。 指定国家或地区后，必须使用[`Accept-Language` 标头](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)指定一个或多个语言代码。 使用[市场表](#markets)获取每个市场支持的语言列表。
 
-或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家或地区和首选语言。 可以显式使用 `setLang` 查询参数设置语言。
+或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场  。 指定市场的同时指定国家或地区和首选语言。 可以显式使用 `setLang` 查询参数设置语言。
 
 ## <a name="countriesregions"></a>国家/地区
 

@@ -12,17 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: bbf9c162cd52dc94ee820c8597f36f7cbfeace5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4cc1456aa9928cbd4a24c203eab62e3e75b4d7c1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691232"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256185"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
-
-[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 它可用于[自动检测请求、跟踪依赖项和收集性能计数器](auto-collect-dependencies.md#java)、[诊断性能问题和异常](../../azure-monitor/app/detect-triage-diagnose.md)，以及[编写代码][api]来跟踪用户对你的应用的使用情况。 
+[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它[自动检测请求、 跟踪依赖项和收集性能计数器](auto-collect-dependencies.md#java)，诊断性能问题和异常，并[编写的代码][ api]若要跟踪用户对您的应用程序。 
 
 ![概述示例数据的屏幕截图](./media/java-get-started/overview-graphs.png)
 
@@ -101,11 +100,11 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 请下载[最新版本](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)，将所需文件复制到项目中，替换以前的版本。
 
 ### <a name="questions"></a>问题...
-* `-core` 与 `-web` 组件之间有怎样的关系？
+*  `-core` 与 `-web` 组件之间有怎样的关系？
   * `applicationinsights-core` 提供单纯的 API。 始终需要此组件。
   * `applicationinsights-web` 提供用于跟踪 HTTP 请求计数和响应时间的指标。 如果不想要自动收集此遥测数据，可以忽略此组件。 例如，如果想要编写自己的组件。
   
-* 应怎样将 SDK 更新到最新版本？
+*  应怎样将 SDK 更新到最新版本？
   * 如果使用 Gradle 或 Maven...
     * 请更新生成文件，对最新版本进行指定，或者使用 Gradle/Maven 的通配符语法，以便自动包括最新的版本。 然后，请刷新项目的依赖项。 在上面的 [Gradle](#gradle-setup) 或 [Maven](#maven-setup) 的示例中，可以看到通配符语法。
   * 如果是手动管理依赖项...
@@ -487,7 +486,6 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 * [监视 Unix 性能计数器](java-collectd.md)
 * [将监视功能添加到网页](javascript.md)，监视器页面加载时间、AJAX 调用、浏览器异常。
 * 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)来跟踪浏览器或服务器中的使用情况。
-* 创建[仪表板](../../azure-monitor/app/app-insights-dashboards.md)，用于监视系统的关键图表组合在一起。
 * 使用[分析](../../azure-monitor/app/analytics.md)从应用通过遥测执行功能强大的查询
 * 有关详细信息，请访问[面向 Java 开发人员的 Azure](/java/azure)。
 

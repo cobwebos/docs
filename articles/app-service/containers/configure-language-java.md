@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 3361013d8421cd859c834c07018356318d5e2989
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
+ms.openlocfilehash: cf9356c2792781558c4403608ff5de0e3aaddb6a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66179810"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254469"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux Java 应用
 
@@ -75,7 +75,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 若要设置已分配的内存或其他 JVM 运行时选项在 Tomcat 和 Java SE 环境中，创建[应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)名为`JAVA_OPTS`的选项。 应用服务 Linux 在启动时，会将此设置作为环境变量传递给 Java 运行时。
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。 
 
 若要配置的 Maven 插件中设置应用设置，请在 Azure 插件部分中添加设置/值标记。 下面的示例设置特定最小值和最大 Java 堆大小：
 
@@ -100,7 +100,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 ### <a name="turn-on-web-sockets"></a>启用 Web 套接字
 
-在 Azure 门户中应用程序的“应用程序设置”中启用 Web 套接字支持。 需要重启应用程序才能使设置生效。
+在 Azure 门户中应用程序的“应用程序设置”中启用 Web 套接字支持。  需要重启应用程序才能使设置生效。
 
 在 Azure CLI 中使用以下命令启用 Web 套接字支持：
 
@@ -117,7 +117,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>设置默认的字符编码
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `-Dfile.encoding=UTF-8` 的新应用设置。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `-Dfile.encoding=UTF-8` 的新应用设置。 
 
 或者，可以使用应用服务 Maven 插件配置应用设置。 在插件配置中添加设置名称和值标记：
 
@@ -164,7 +164,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-若要注销用户，并执行其他操作，请参阅的文档[应用服务身份验证和授权的使用情况](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to)。 此外，还有 Tomcat 上的官方文档[HttpServletRequest 接口](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)及其方法。 以下方法也都会冻结的 servlet 基于你的应用服务配置：
+若要注销用户，并执行其他操作，请参阅的文档[应用服务身份验证和授权的使用情况](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)。 此外，还有 Tomcat 上的官方文档[HttpServletRequest 接口](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)及其方法。 以下方法也都会冻结的 servlet 基于你的应用服务配置：
 
 ```java
 public boolean isSecure()
@@ -412,7 +412,7 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 
 将启动脚本上传到应用服务实例中的 `/home/site/deployments/tools`。 有关获取 FTP 凭据的说明，请参阅[本文档](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#userscope)。
 
-将 Azure 门户中的“启动脚本”字段设置为启动 shell 脚本的位置，例如 `/home/site/deployments/tools/your-startup-script.sh`。
+将 Azure 门户中的“启动脚本”字段设置为启动 shell 脚本的位置，例如 `/home/site/deployments/tools/your-startup-script.sh`  。
 
 提供[应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)中要将环境变量用于传递脚本中的应用程序配置。 应用程序设置将连接字符串和配置应用程序所需的其他机密置于版本控制之外。
 

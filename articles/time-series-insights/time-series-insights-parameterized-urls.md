@@ -4,19 +4,19 @@ description: 本文介绍如何在 Azure 时序见解中生成参数化 URL，�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ddde600c2ac15c56b59051fbcd6bb0e8fbae1f6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dfc04397b1d7e9f3256810cbe469067ae52c99bd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787525"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238971"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -49,7 +49,7 @@ ms.locfileid: "65787525"
 
 ### <a name="relative-time-values"></a>相对时间值
 
-对于相对时间值，请使用 `relativeMillis=<value>`，其中 value 为 JavaScript 毫秒，来自后端的最新数据。
+对于相对时间值，请使用 `relativeMillis=<value>`，其中  value 为 JavaScript 毫秒，来自后端的最新数据。
 
 例如，`&relativeMillis=3600000` 显示最新的 60 分钟的数据。
 
@@ -70,10 +70,10 @@ ms.locfileid: "65787525"
 
 | 参数 | URL 项 | 描述 |
 | --- | --- | --- |
-| **name** | `\<string>` | 术语的名称。 |
-| **splitBy** | `\<string>` | 要按其进行拆分的列名。 |
-| **measureName** | `\<string>` | 度量值的列名。 |
-| **predicate** | `\<string>` | 用于服务器端筛选的 where 子句。 |
+| **name** | `\<string>` | 术语的名称。  |
+| **splitBy** | `\<string>` | 要按其进行拆分的列名。  |
+| **measureName** | `\<string>` | 度量值的列名。  |
+| **predicate** | `\<string>` | 用于服务器端筛选的  where 子句。 |
 | **useSum** | `true` | 一个可选参数，指定使用度量值的总和。 </br>  请注意，如果`Events`是所选度量值，默认情况下选择计数。  </br>  如果`Events`是未选中，默认情况下选择平均值。 |
 
 * `multiChartStack=<true/false>`键-值对使图表中的堆叠。

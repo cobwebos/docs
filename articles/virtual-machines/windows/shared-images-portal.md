@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: d46c545db9e1950988b49cdb577d074b6d04380c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f63b705f7967eeddaf522941d6db9be5d9f2719d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236595"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244990"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>创建共享的映像库使用 Azure 门户
 
@@ -33,9 +33,9 @@ ms.locfileid: "65236595"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | 描述|
+| Resource | 描述|
 |----------|------------|
-| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”  。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
 | **映像定义** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
@@ -43,7 +43,7 @@ ms.locfileid: "65236595"
 
 ## <a name="before-you-begin"></a>开始之前
 
-完成本文中的示例，必须具有现有托管映像。 可以按照[教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像](tutorial-custom-images.md)来创建映像（如有需要）。 如果托管的映像中包含的数据磁盘，数据磁盘大小不能超过 1 TB。
+完成本文中的示例，必须具有现有托管映像。 可以按照[教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像](tutorial-custom-images.md)来创建映像（如有需要）。 如果托管映像包含数据磁盘，则数据磁盘大小不能超过 1 TB。
 
 通过本文进行操作时，请根据需要替换资源组和 VM 名称。
 
@@ -54,7 +54,7 @@ ms.locfileid: "65236595"
 
 映像版本完成后，可以创建一个或多个新的 VM。 
 
-本示例在美国东部数据中心的“myResourceGroup”中创建名为“myVMfromImage”的 VM。
+本示例在美国东部数据中心的“myResourceGroup”中创建名为“myVMfromImage”的 VM    。
 
 1. 在你的映像版本上，选择**创建 VM**从页面顶部的菜单。
 1. 有关**资源组**，选择**新建**并键入*myResourceGroup*的名称。
@@ -63,15 +63,16 @@ ms.locfileid: "65236595"
 1. 有关**可用性选项**，保留默认值为*没有所需的基础结构冗余*。
 1. 值**图像**如果从映像版本的页中启动，应会自动填写。
 1. 有关**大小**，从可用大小的列表中选择 VM 大小，然后单击"Select"。
-1. 在“管理员帐户”下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+1. 在“管理员帐户”  下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 1. 如果你想要允许远程访问 VM 下,**公共入站的端口**，选择**允许所选的端口**，然后选择**RDP (3389)** 从下拉列表。 如果不想要允许远程访问 VM，请将**无**为所选**公共入站的端口**。
 1. 在完成后，请选择**查看 + 创建**在页面底部的按钮。
 1. VM 通过验证后，选择**创建**底部的页后，可以开始部署。
 
 
+
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
 
 如果你想要删除单个资源，你需要按相反的顺序将其删除。 例如，若要删除图像定义，您需要删除所有从该映像创建的映像版本。
 

@@ -4,19 +4,19 @@ description: 本文介绍如何使用 Azure 资源管理器以编程方式管理
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5e350e8a9093936f1e747afda7c3192b4d8368d
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: ba7d412e9bfc29a53cd0aa47a926f60580b45490
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471711"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237639"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
@@ -24,7 +24,7 @@ ms.locfileid: "65471711"
 
 时序见解支持以下资源：
 
-   | 资源 | 描述 |
+   | Resource | 描述 |
    | --- | --- |
    | 环境 | 时序见解环境是从事件中转站读取、 存储，并可供查询的事件的逻辑分组。 有关详细信息，请参阅[计划 Azure 时序见解环境](time-series-insights-environment-planning.md) |
    | 事件源 | 事件源是与事件中转站建立的连接，时序见解从该中转站读取和引入事件至环境。 目前支持的事件源是 IoT 中心和事件中心。 |
@@ -148,7 +148,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 1. 创建新资源组（如果不存在）。
 
-   * 如果没有现有的资源组中，创建一个新的资源组的**新建 AzResourceGroup**命令。 提供资源组的名称，以及要使用的位置。 例如:
+   * 如果没有现有的资源组中，创建一个新的资源组的**新建 AzResourceGroup**命令。 提供资源组的名称，以及要使用的位置。 例如：
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -174,7 +174,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 1. 创建部署
 
-    * 若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 Mode 参数，则将使用默认值 Incremental。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/deployment-modes.md)。
+    * 若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 Mode 参数，则将使用默认值 Incremental。   有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/deployment-modes.md)。
 
     * 以下命令提示在 PowerShell 窗口中输入五个必需的参数：
 
@@ -194,7 +194,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * 若要运行[完整](../azure-resource-manager/deployment-modes.md)部署，请将 Mode 参数设置为 Complete：
+    * 若要运行[完整](../azure-resource-manager/deployment-modes.md)部署，请将 Mode 参数设置为 Complete：  
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -243,7 +243,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 1. 通过 Azure 门户部署快速入门模板
 
-   * GitHub 上的快速入门模板主页还包含“部署到 Azure”按钮。 单击此按钮可在 Azure 门户中打开“自定义部署”页。 从此页中，可以输入或选择[必需的参数](#required-parameters)或[可选参数](#optional-parameters)表中每个参数的值。 填写设置后，单击“购买”按钮会启动模板部署。
+   * GitHub 上的快速入门模板主页还包含“部署到 Azure”按钮。  单击此按钮可在 Azure 门户中打开“自定义部署”页。 从此页中，可以输入或选择[必需的参数](#required-parameters)或[可选参数](#optional-parameters)表中每个参数的值。 填写设置后，单击“购买”按钮会启动模板部署。 
     </br>
     </br>
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">

@@ -3,7 +3,7 @@ title: Azure AD 域服务：启用密码同步 | Microsoft Docs
 description: Azure Active Directory 域服务入门
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 8731f2b2-661c-4f3d-adba-2c9e06344537
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2017
-ms.author: ergreenl
-ms.openlocfilehash: 74ad811481aea83454d7e3179652e68d4c406521
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/10/2019
+ms.author: mstephen
+ms.openlocfilehash: 37bcdcd304f702f210e755f45af71b2da10bd6e1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417242"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234870"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>允许将密码同步到 Azure Active Directory 域服务
 在前述任务中，你为 Azure Active Directory (Azure AD) 租户启用了 Azure Active Directory 域服务。 下一个任务是使 NT LAN Manager (NTLM) 和 Kerberos 身份验证所需的凭据哈希同步到 Azure AD 域服务。 设置凭据同步以后，用户即可使用其公司凭据登录到托管域。
@@ -80,6 +80,6 @@ Azure AD 的凭据哈希同步需要一些时间，具体取决于目录的大�
 
 ## <a name="related-content"></a>相关内容
 * [对仅限云的 Azure AD 目录启用 AAD 域服务的密码同步](active-directory-ds-getting-started-password-sync.md)
-* [管理 Azure AD 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)
+* [管理 Azure AD 域服务域](manage-domain.md)
 * [将 Windows 虚拟机加入到受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-join-windows-vm.md)
 * [将 Red Hat Enterprise Linux 虚拟机加入到受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

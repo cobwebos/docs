@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 17c0d19ad0c4a846d5f75905fe9072f2fe0e0f78
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127542"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386767"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>配置托管 UI 体验
 
@@ -31,7 +31,7 @@ ms.locfileid: "62127542"
   
 2. 选择必应自定义搜索实例。
 
-3. 单击“托管 UI”选项卡。  
+3. 单击“托管 UI”选项卡  。  
   
 4. 选择布局。
 
@@ -41,14 +41,14 @@ ms.locfileid: "62127542"
     |仅结果     | 仅显示搜索结果，不显示搜索框。 使用此布局时，必须提供搜索查询 (`&q=<query string>`)。 将查询参数添加到 JavaScript 代码片段或 HTML 终结点链接中的请求 URL。        |
     |弹出式菜单     | 提供搜索框，并在滑动覆盖区显示搜索结果。        |
     
-5. 选择颜色主题。 可以通过单击“自定义主题”来自定义适合应用程序的颜色。 若要更改颜色，请输入颜色的 RGB HEX 值（例如 `#366eb8`），或者单击颜色预览。
+5. 选择颜色主题。 可以通过单击“自定义主题”来自定义适合应用程序的颜色。  若要更改颜色，请输入颜色的 RGB HEX 值（例如 `#366eb8`），或者单击颜色预览。
 
-   可以在门户右侧预览所做的更改。 单击“重置为默认值”就会将所做的更改还原为所选主题的默认颜色。
+   可以在门户右侧预览所做的更改。 单击“重置为默认值”  就会将所做的更改还原为所选主题的默认颜色。
 
    > [!NOTE]
    > 选择颜色时需考虑到辅助功能。
 
-6. 在“其他配置”下，根据应用提供相应的值。 这些设置是可选的。 若要查看应用或删除设置后的效果，请查看右侧的预览窗格。 可用配置有：  
+6. 在“其他配置”下，根据应用提供相应的值  。 这些设置是可选的。 若要查看应用或删除设置后的效果，请查看右侧的预览窗格。 可用配置有：  
 
 7. 输入搜索订阅密钥或从下拉列表中选择一个。 下拉列表的填充内容为帐户的 Azure 帐户订阅的密钥。 请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。  
 
@@ -78,7 +78,7 @@ ms.locfileid: "62127542"
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > 根据需要将以下查询参数添加到 URL。 有关这些参数的信息，请参阅[自定义搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) 参考。
+  > 根据需要将以下查询参数添加到 URL。 有关这些参数的信息，请参阅[自定义搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) 参考。
   >
   > - q
   > - mkt
@@ -88,11 +88,11 @@ ms.locfileid: "62127542"
   > [!IMPORTANT]
   > 该页面无法显示隐私声明或其他注意事项和条款。 适用情况可能会有所不同。  
 
-若要了解自定义配置 ID 等其他信息，请转到“产品”选项卡下的“终结点”。
+若要了解自定义配置 ID 等其他信息，请转到“产品”选项卡下的“终结点”   。
 
 ## <a name="configuration-options"></a>配置选项
 
-单击“其他配置”并提供值即可配置托管 UI 的行为。 这些设置是可选的。 若要查看应用或删除设置后的效果，请查看右侧的预览窗格。 
+单击“其他配置”并提供值即可配置托管 UI 的行为。  这些设置是可选的。 若要查看应用或删除设置后的效果，请查看右侧的预览窗格。 
 
 ### <a name="web-search-configurations"></a>Web 搜索配置
 
@@ -104,7 +104,7 @@ ms.locfileid: "62127542"
 |图像标题   | 确定搜索结果中是否显示图像。|
 
 
-单击“显示高级配置”时将显示以下配置：
+单击“显示高级配置”时将显示以下配置  ：
 
 
 |  | |
@@ -119,7 +119,7 @@ ms.locfileid: "62127542"
 |启用图像结果     | 确定是否启用图像搜索（可在页面顶部看到“图像”选项卡）。            |
 |每页的图像结果数     | 一次显示的图像搜索结果数（每页最多 150 条结果）。          |
 
-单击“显示高级配置”时将显示以下配置。  
+单击“显示高级配置”时将显示以下配置  。  
   
 | | |
 |---------|---------|
@@ -132,7 +132,7 @@ ms.locfileid: "62127542"
 |启用视频结果     | 确定是否启用视频搜索（可在页面顶部看到“视频”选项卡）。           |
 |每页的视频结果数   | 一次显示视频搜索结果数（每页最多 150 条结果）。        |
 
-单击“显示高级配置”时将显示以下配置。  
+单击“显示高级配置”时将显示以下配置  。  
   
 |  | |
 |---------|---------|
@@ -146,7 +146,7 @@ ms.locfileid: "62127542"
 |页面标题   | 搜索结果页的标题区域中显示的文本（不适用于弹出式窗口布局）。        |
 |工具栏主题    | 确定搜索结果页标题区域的背景色。 |
 
-单击“显示高级配置”时将显示以下配置。  
+单击“显示高级配置”时将显示以下配置  。  
 
 |Column1  |Column2  |
 |---------|---------|

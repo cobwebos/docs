@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: ce4a6ab24aaa5ed693f8d64782fb025a2ca9ce30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9979cb97ec578a59ba8263f2eb1fe53d41db862f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251187"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399467"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
@@ -47,12 +47,12 @@ ms.locfileid: "60251187"
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>我可以将 Hyper-V 第 2 代虚拟机复制到 Azure 吗？
-可以。 站点恢复在故障转移过程中将从第 2 代转换成第 1 代。 在故障回复时，计算机将转换回到第 2 代。 [了解详细信息](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。
+是的。 站点恢复在故障转移过程中将从第 2 代转换成第 1 代。 在故障回复时，计算机将转换回到第 2 代。 [了解详细信息](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。
 
 
 ### <a name="can-i-deploy-site-recovery-with-vmm-if-i-only-have-one-vmm-server"></a>如果我只有一个 VMM 服务器，可以部署站点恢复来配合 VMM 吗？
 
-可以。 可以将 VMM 云中 Hyper-V 服务器上的 VM 复制到 Azure，或者在同一台服务器上的 VMM 云之间进行复制。 对于本地到本地复制，我们建议在主站点与辅助站点中都部署一个 VMM 服务器。 
+是的。 可以将 VMM 云中 Hyper-V 服务器上的 VM 复制到 Azure，或者在同一台服务器上的 VMM 云之间进行复制。 对于本地到本地复制，我们建议在主站点与辅助站点中都部署一个 VMM 服务器。 
 
 ### <a name="what-do-i-need-in-azure"></a>需要在 Azure 中做好哪些准备？
 需要一个 Azure 订阅、一个恢复服务保管库、一个存储帐户和一个虚拟网络。 保管库、存储帐户和网络必须位于同一区域。
@@ -69,7 +69,7 @@ ms.locfileid: "60251187"
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
 ### <a name="can-we-keep-on-premises-metadata-within-a-geographic-region"></a>我们可以在某个地理区域内保留在本地元数据？
-可以。 当你在某个区域中创建保管库时，我们会确保 Site Recovery 使用的所有元数据保留在该区域的地理边界内。
+是的。 当你在某个区域中创建保管库时，我们会确保 Site Recovery 使用的所有元数据保留在该区域的地理边界内。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
 是的，传输中加密和 [Azure 中加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)均受支持。
@@ -109,10 +109,10 @@ ms.locfileid: "60251187"
 不可以。VM 必须位于在受支持的 Windows 服务器计算机上运行的 Hyper-V 主机服务器上。 如果需要保护客户端计算机，可以[将其作为物理计算机复制](physical-azure-disaster-recovery.md)到 Azure。
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>我可以将 Hyper-V 第 2 代虚拟机复制到 Azure 吗？
-可以。 站点恢复在故障转移过程中将从第 2 代转换成第 1 代。 在故障回复时，计算机将转换回到第 2 代。
+是的。 站点恢复在故障转移过程中将从第 2 代转换成第 1 代。 在故障回复时，计算机将转换回到第 2 代。
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>是否可以使用 SDK 自动化 Site Recovery 方案？
-可以。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 以下为通过 PowerShell 将 Hyper-V 复制到 Azure 的当前支持方案：
+是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 以下为通过 PowerShell 将 Hyper-V 复制到 Azure 的当前支持方案：
 
 - [使用 PowerShell 在无 VMM 的情况下复制 Hyper-V](hyper-v-azure-powershell-resource-manager.md)
 - [使用 PowerShell 在有 VMM 的情况下复制 Hyper-V](hyper-v-vmm-powershell-resource-manager.md)

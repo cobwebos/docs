@@ -8,18 +8,21 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: b67d656ed6ab537a01696ec9c0c98f84b880f03b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561556"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304250"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
 本文介绍为所有事件提供的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象具有特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
 
-事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB。 事件或数组超出大小限制时会收到响应“413 有效负载太大”。
+事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB （正式版） 或 1 MB （预览版）。 事件或数组超出大小限制时会收到响应“413 有效负载太大”  。
+
+> [!NOTE]
+> 事件的大小高达 64 KB 介绍了通过正式版 (GA) 服务级别协议 (SLA)。 大小最多的事件的支持 1 MB 目前处于预览状态。 超过 64 KB 的事件是按 64 KB 的增量计费。 
 
 事件网格会将事件发送给具有单个事件的数组中的订阅者。 此行为在将来可能会更改。
 
@@ -106,7 +109,7 @@ ms.locfileid: "60561556"
 
 将事件发布到自定义主题时，可为事件创建主题，便于订阅者们了解他们是否对该事件感兴趣。 订阅者使用主题来筛选和路由事件。 请考虑为事件发生的位置提供路径，以便订阅者可根据该路径的片段进行筛选。 通过路径，订阅者可精确或宽泛地筛选事件。 例如，如果在主题中提供一个由三个片段构成的路径（如 `/A/B/C`），订阅者可根据第一个片段 `/A` 进行筛选，获取范围较宽泛的一组事件。 这些订阅者会获取主题为 `/A/B/C` 或 `/A/D/E` 这样的事件。 其他订阅者可通过 `/A/B` 进行筛选，这样可以获取范围更精确的一组事件。
 
-有时，需要提供有关发生事件更详细的信息才能查找到所需主题。 例如，将文件添加到容器时，“存储帐户”发布服务器提供主题 `/blobServices/default/containers/<container-name>/blobs/<file>`。 订阅者可以按路径 `/blobServices/default/containers/testcontainer` 进行筛选，获取有关该容器而非存储帐户中其他容器的所有事件。 订阅者还可通过使用后缀 `.txt` 进行筛选或路由，来达到仅处理文本文件的目的。
+有时，需要提供有关发生事件更详细的信息才能查找到所需主题。 例如，将文件添加到容器时，“存储帐户”发布服务器提供主题 `/blobServices/default/containers/<container-name>/blobs/<file>`  。 订阅者可以按路径 `/blobServices/default/containers/testcontainer` 进行筛选，获取有关该容器而非存储帐户中其他容器的所有事件。 订阅者还可通过使用后缀 `.txt` 进行筛选或路由，来达到仅处理文本文件的目的。
 
 ## <a name="next-steps"></a>后续步骤
 

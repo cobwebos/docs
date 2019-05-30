@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: b4744201f506730303e190783acc60bfaa383720
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9cd02172af5246c60b93a6e4696988268abed506
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409808"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258682"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure 数据库安全性最佳做法
 本指南介绍了数据库安全性的最佳做法。
 
-最佳做法以观点的共识以及 Azure 平台功能和特性集为基础。 随时间变化的观点和技术和定期以反映这些更改更新这篇文章。
+最佳做法以观点的共识以及 Azure 平台功能和特性集为基础。 观点和技术将随着时间改变，本文会定期更新以反映这些更改。
 
 ## <a name="secure-databases"></a>确保数据库安全
 安全性是管理数据库时的首要考虑因素，并且始终是 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)的优先事务。 严格保护数据库有助于满足大部分法规或安全要求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1。 [Microsoft 信任中心站点](https://azure.microsoft.com/support/trust-center/services/)上提供了安全合规认证的最新列表。 也可以根据法规要求将数据库放置在特定的 Azure 数据中心。
@@ -165,6 +165,10 @@ SQL Server 有多个审核级别，具体取决于针对安装的政府要求或
 - 检测和应对潜在威胁。
 
 此外，威胁检测还会将警报与 Azure 安全中心集成，以便集中查看所有 Azure 资源的安全状态。
+
+## <a name="enable-feature-restrictions"></a>启用功能限制
+
+可以向使用利用数据库错误和查询执行时间的攻击媒介的攻击者公开数据库中包含的数据。 Azure SQL 数据库提供了一些功能限制机制来保护您的数据库。 若要了解详细信息，请参阅[SQL 数据库功能限制](../sql-database/sql-database-feature-restrictions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)。

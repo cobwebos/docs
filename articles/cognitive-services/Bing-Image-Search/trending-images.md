@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 024e007a34f71256d5cd148720412a0c57bb74ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60240537"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383438"
 ---
 # <a name="get-trending-images-from-the-web"></a>从 Web 获取热门图像
 
@@ -39,7 +39,7 @@ Host: api.cognitive.microsoft.com
 - en-AU（英语，澳大利亚）  
 - zh-CN（中文，中国）
 
-响应包含 [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#trendingimages) 对象，该对象按类别列出图像。 使用类别的 `title` 将图像分组到用户体验中。 可能每天更改类别。  
+响应包含 [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) 对象，该对象按类别列出图像。 使用类别的 `title` 将图像分组到用户体验中。 可能每天更改类别。  
 
 ```json
 {
@@ -90,7 +90,7 @@ Host: api.cognitive.microsoft.com
 
 每个磁贴包含用于获取相关图像的图像和选项。 要获取相关图像，你可以使用查询 `text` 来调用[图像搜索 API](./search-the-web.md)，并自行显示相关图像。 或者，你可以使用 `webSearchUrl` 中的 URL 将用户转到必应图像搜索结果页面，其中包含相关图像。
 
-如果调用图像搜索 API 来获取相关图像，请将 [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) 查询参数设置为 `id` 字段中的 ID。 指定 ID 可确保响应包含图像（它是响应中的第一个图像）及其相关图像。 另外，将 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) 查询参数设置为 `query` 对象的 `text` 字段中的文本。
+如果调用图像搜索 API 来获取相关图像，请将 [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) 查询参数设置为 `id` 字段中的 ID。 指定 ID 可确保响应包含图像（它是响应中的第一个图像）及其相关图像。 另外，将 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) 查询参数设置为 `query` 对象的 `text` 字段中的文本。
 
 以下示例显示如何使用图像 ID 在先前的热门图像 API 响应中获取 Smith 先生的相关图像。
 

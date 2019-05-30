@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08e915354df4f4aa1d9a183e78cbad47460b8d37
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394823"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356209"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 
@@ -35,14 +35,14 @@ ms.locfileid: "60394823"
 
 ### <a name="q-can-i-still-use-log-search"></a>问：是否仍然可以使用日志搜索？ 
 
-答：日志搜索目前仍可在 OMS 门户和 Azure 门户中使用，采用的名称是“日志(经典)”。 OMS 门户将在 2019 年 1 月 15 日正式停用。 Azure 门户中的经典日志体验将会逐渐停用并被新的日志体验代替。 
+答：日志搜索目前仍可在 OMS 门户和 Azure 门户中使用，采用的名称是“日志(经典)”  。 OMS 门户将在 2019 年 1 月 15 日正式停用。 Azure 门户中的经典日志体验将会逐渐停用并被新的日志体验代替。 
 
 ### <a name="q-can-i-still-use-advanced-analytics-portal"></a>问： 是否仍然能够使用高级分析门户？ 
 Azure 门户中的新的日志体验基于高级分析门户，但是仍然可以在 Azure 门户之外访问。 停用此外部门户的路线图将很快宣布。
 
 ### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>问： 为何在新的日志体验中看不到“查询资源管理器”按钮和“保存”按钮？
 
-在特定资源的上下文中浏览日志时，“查询资源管理器”、“保存”和“设置警报”按钮不可用。 若要创建警报以及保存或加载查询，日志的范围必须局限于某个工作区。 若要在工作区上下文中打开日志，请选择“所有服务” > “监视” > “日志”。 选择的是上次使用的工作区，但可以选择任何其他的工作区。 有关详细信息，请参阅[查看和分析 Log Analytics 中的数据](../log-query/portals.md)。
+在特定资源的上下文中浏览日志时，“查询资源管理器”、“保存”和“设置警报”按钮不可用。    若要创建警报以及保存或加载查询，日志的范围必须局限于某个工作区。 若要在工作区上下文中打开日志，请选择“所有服务”   >   “监视” >   “日志”。 选择的是上次使用的工作区，但可以选择任何其他的工作区。 有关详细信息，请参阅[查看和分析 Log Analytics 中的数据](../log-query/portals.md)。
 
 ### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>问： 在新的日志体验中，如何提取自定义字段？ 
 
@@ -72,7 +72,7 @@ Azure 门户中的新的日志体验基于高级分析门户，但是仍然可�
 答：视图设计器在日志中仅供分配了“参与者”权限或更高权限的用户使用。
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>问： 我仍可以在 Azure 之外使用分析门户吗？
-A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代码。 Log Analytics 作为一项功能集成到 Azure Monitor 中，目的是提供更统一的监视体验。 你仍可以访问分析门户使用的 URL: https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}。
+A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代码。 Log Analytics 作为一项功能集成到 Azure Monitor 中，目的是提供更统一的监视体验。 你仍然可以使用以下 URL 访问 Analytics 门户：https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}。
 
 
 
@@ -80,11 +80,11 @@ A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代�
 
 ### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>问： 如何在 Azure 门户中查看视图和解决方案？ 
 
-答：可以在 Azure 门户中查看视图和已安装解决方案的列表。 单击“所有服务”。 在资源列表中，选择“监视”，然后单击“...更多”。 选择的是上次使用的工作区，但可以选择任何其他的工作区。 
+答：可以在 Azure 门户中查看视图和已安装解决方案的列表。 单击“所有服务”。  在资源列表中，选择“监视”，然后单击“...更多”。   选择的是上次使用的工作区，但可以选择任何其他的工作区。 
 
 ### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>问： 为何无法在“美国中西部”区域创建工作区？ 
 
-答：此区域暂时有容量限制。 计划在 2019 年上半年解决此限制问题。
+答：此区域暂时有容量限制。 此限制已计划由 2019 年 9 月日结束。
 
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>问： Log Analytics 是否与 Azure 安全中心使用同一代理？
@@ -113,9 +113,9 @@ A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代�
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>问： 如何排除 Log Analytics 不再收集数据这一故障？
 
-答：对于在 2018 年 4 月 2 日之前在“免费”定价层上创建的订阅和工作区，如果在一天中发送的数据超过 500 MB，则在当天的剩余时间内会停止数据收集。 达到每日限制是 Log Analytics 停止数据收集或者看起来缺少数据的常见原因。  
+答：对于在 2018 年 4 月 2 日之前在“免费”定价层上创建的订阅和工作区，如果在一天中发送的数据超过 500 MB，则在当天的剩余时间内会停止数据收集  。 达到每日限制是 Log Analytics 停止数据收集或者看起来缺少数据的常见原因。  
 
-Log Analytics 创建类型为“Heartbeat”的事件，并可用于确定数据收集是否停止。 
+Log Analytics 创建类型为“Heartbeat”的事件，并可用于确定数据收集是否停止  。 
 
 请在搜索中运行以下查询来检查是否已达到每日限制并缺少数据：`Heartbeat | summarize max(TimeGenerated)`
 
@@ -142,13 +142,13 @@ Log Analytics 使用 UTC 时间并且每天从 UTC 午夜时间开始。 如果�
 
 - **定义警报条件**将 Log Analytics 工作区指定为资源目标。
 - **警报条件**指定下列项：
-   - **信号名称**选择“自定义日志搜索”。
-   - 将“搜索查询”设置为 `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **信号名称**选择“自定义日志搜索”  。
+   - 将“搜索查询”  设置为 `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - **时间段**为 *30* 分钟，并将**警报频率**设为每 *10* 分钟
 - **定义警报详细信息**指定以下项：
-   - 将“名称”设置为“数据收集已停止”
-   - 将“严重性”设置为“警告”
+   - 将“名称”设置为“数据收集已停止”  
+   - 将“严重性”设置为“警告”  
 
 指定现有的操作组或创建一个新[操作组](../../azure-monitor/platform/action-groups.md)，以便当日志警报匹配条件时，如果检测信号丢失超过 15 分钟，你将收到通知。
 
@@ -186,20 +186,20 @@ A. `Move-AzResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动�
 
 ### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>问：如何确认代理能够与 Log Analytics 通信？
 
-答：若要确保代理可与 OMS 通信，请转到：“控制面板”>“安全和设置”>“Microsoft Monitoring Agent”。
+答：若要确保代理可与 OMS 通信，请转到：“控制面板”>“安全和设置”>“Microsoft Monitoring Agent”  。
 
-在“**Azure Log Analytics (OMS)**”选项卡下，查找一个绿色复选标记。 绿色复选标记图标确认代理能够与 Azure 服务进行通信。
+在“**Azure Log Analytics (OMS)** ”选项卡下，查找一个绿色复选标记。 绿色复选标记图标确认代理能够与 Azure 服务进行通信。
 
 黄色警告图标意味着代理与 Log Analytics 存在通信问题。 一个常见原因是 Microsoft 监视代理服务已停止。 请使用服务控制管理器重启该服务。
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>问：如何使某个代理停止与 Log Analytics 通信？
 
-答：在 System Center Operations Manager 中，从 OMS 托管的计算机列表中删除该计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 对于直接连接到 Log Analytics 的代理，可以通过以下路径使其停止与 Log Analytics 通信：“控制面板”>“安全和设置”>“Microsoft Monitoring Agent”。
-在“**Azure Log Analytics (OMS)**”选项卡下，删除列出的所有工作区。
+答：在 System Center Operations Manager 中，从 OMS 托管的计算机列表中删除该计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 对于直接连接到 Log Analytics 的代理，可以通过以下路径使其停止与 Log Analytics 通信：“控制面板”>“安全和设置”>“Microsoft Monitoring Agent”  。
+在“**Azure Log Analytics (OMS)** ”选项卡下，删除列出的所有工作区。
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>问：为什么我在尝试将工作区从一个 Azure 订阅移动到另一个订阅时收到错误？
 
-答：若要将工作区移到其他订阅或资源组，必须先取消工作区中自动化帐户的链接。 如果以下解决方案安装在工作区中，则取消自动化帐户的链接需要删除这些解决方案：删除“更新管理”、“更改跟踪”或“在空闲时间启动/停止 VM”。 删除这些解决方案后，请取消自动化帐户的链接，方法是：在自动化帐户资源的左窗格中选择“链接工作区”，然后单击功能区中的“取消链接工作区”。
+答：若要将工作区移到其他订阅或资源组，必须先取消工作区中自动化帐户的链接。 如果以下解决方案安装在工作区中，则取消自动化帐户的链接需要删除这些解决方案：删除“更新管理”、“更改跟踪”或“在空闲时间启动/停止 VM”。 删除这些解决方案后，请取消自动化帐户的链接，方法是：在自动化帐户资源的左窗格中选择“链接工作区”，然后单击功能区中的“取消链接工作区”。  
  > 删除的解决方案需重新安装在工作区中，自动化帐户到工作区的链接需在移动后重新声明。
 
 请确保在两个 Azure 订阅中都有权限。

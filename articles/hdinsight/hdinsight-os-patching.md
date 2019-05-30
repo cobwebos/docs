@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: 5b8ed75863087e077d483c792ac4134a0c3e1eb0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: cfbd68e66730fc338130bc16849fe0b2f4abd6be
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203644"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244412"
 ---
 # <a name="os-patching-for-hdinsight"></a>针对 HDInsight 的 OS 修补 
 
@@ -45,6 +45,7 @@ ms.locfileid: "65203644"
 
 > [!NOTE]  
 > 将其应用于现有群集时，必须将此脚本标记为持久化。 否则，通过缩放操作创建的任何新节点都将使用默认修补计划。  如果在群集创建过程中应用该脚本，则其会自动持久化。
+
 
 ## <a name="next-steps"></a>后续步骤
 

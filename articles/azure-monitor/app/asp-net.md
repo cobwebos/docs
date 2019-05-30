@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: c69e925913d4dcb3a8bec34cbf25dac184ea65c5
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5b719566ce42639c0c435a8d631e12541d0a0e9d
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595552"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256626"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -43,19 +43,19 @@ ms.locfileid: "65595552"
 
 ![解决方案资源管理器的屏幕截图，其中突出显示了“配置 Application Insights”](./media/asp-net/add-telemetry-new.png)
 
-（根据所用的 Application Insights SDK 版本，系统可能会提示升级到最新的 SDK 版本。 如果出现提示，请选择“更新 SDK”。）
+（根据所用的 Application Insights SDK 版本，系统可能会提示升级到最新的 SDK 版本。 如果出现提示，请选择“更新 SDK”。） 
 
 ![屏幕截图：新版的 Microsoft Application Insights SDK 可用。 突出显示了“更新 SDK”](./media/asp-net/0002-update-sdk.png)
 
 Application Insights 配置屏幕：
 
-选择“入门”。
+选择“入门”。 
 
 ![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/00004-start-free.png)
 
-如果想要设置用于存储数据的资源组或位置，请单击“配置设置”。 资源组用于控制对数据的访问。 例如，如果有多个应用构成了同一个系统的一部分，可在同一个资源组中放置这些应用的 Application Insights 数据。
+如果想要设置用于存储数据的资源组或位置，请单击“配置设置”。  资源组用于控制对数据的访问。 例如，如果有多个应用构成了同一个系统的一部分，可在同一个资源组中放置这些应用的 Application Insights 数据。
 
- 选择“注册”。
+ 选择“注册”  。
 
 ![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/00005-register-ed.png)
 
@@ -75,7 +75,7 @@ Visual Studio 中会显示已记录的事件数。
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>在 Visual Studio 中查看遥测
 
-在 Visual Studio 中查看 Application Insights 数据。  选择“解决方案资源管理器” > “连接的服务”，右键单击“Application Insights”，然后单击“搜索实时遥测”。
+在 Visual Studio 中查看 Application Insights 数据。  选择“解决方案资源管理器” > “连接的服务”，右键单击“Application Insights”，然后单击“搜索实时遥测”。    
 
 在 Visual Studio Application Insights 搜索窗口中，可以看到应用程序的服务器端生成的遥测数据。 使用这些筛选器进行试验，并单击任何事件以查看更多详细信息。
 
@@ -91,7 +91,7 @@ Visual Studio 中会显示已记录的事件数。
 
 还可以在 Application Insights Web 门户中查看遥测（除非选择仅安装 SDK）。 该门户中的图表、分析工具和跨组件视图比 Visual Studio 中的多。 此门户还提供警报。
 
-打开 Application Insights 资源。 登录到 [Azure 门户](https://portal.azure.com/)并在其中找到所需的资源，或者选择“解决方案资源管理器” > “连接的服务”，然后右键单击“Application Insights”并选择“打开 Application Insights 门户”，以转到相应的资源。 > 
+打开 Application Insights 资源。 登录到 [Azure 门户](https://portal.azure.com/)并在其中找到所需的资源，或者选择“解决方案资源管理器” > “连接的服务”，然后右键单击“Application Insights”并选择“打开 Application Insights 门户”，以转到相应的资源。     >  
 
 门户将从应用打开遥测视图。
 
@@ -99,12 +99,10 @@ Visual Studio 中会显示已记录的事件数。
 
 在门户中，单击任何磁贴或图表以查看更多详细信息。
 
-[了解有关在 Azure 门户中使用 Application Insights 的详细信息](../../azure-monitor/app/app-insights-dashboards.md)。
-
 ## <a name="step-4-publish-your-app"></a>步骤 4：发布应用
 将应用发布到 IIS 服务器或 Azure。 监视 [实时指标流](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ，确保一切平稳运行。
 
-遥测数据会在 Application Insights 门户中累积，可在此监视指标、搜索遥测数据以及设置[仪表板](../../azure-monitor/app/app-insights-dashboards.md)。 还可以使用功能强大的 [Kusto 查询语言](/azure/kusto/query/)来分析使用情况和性能，或查找特定的事件。
+在 Application Insights 门户中，其中可以监视指标，将遥测数据生成搜索遥测数据。 还可以使用功能强大的 [Kusto 查询语言](/azure/kusto/query/)来分析使用情况和性能，或查找特定的事件。
 
 还可以继续在 [Visual Studio](../../azure-monitor/app/visual-studio.md) 中借助诊断搜索和[趋势](../../azure-monitor/app/visual-studio-trends.md)等工具来分析遥测。
 
@@ -117,11 +115,11 @@ Visual Studio 中会显示已记录的事件数。
 
 祝贺你！ 已在应用中安装 Application Insights 包，并将其配置为向 Azure 中的 Application Insights 服务发送遥测。
 
-接收应用遥测的 Azure 资源通过“检测密钥”进行标识。 可以在 ApplicationInsights.config 文件中找到该密钥。
+接收应用遥测的 Azure 资源通过“检测密钥”  进行标识。 可以在 ApplicationInsights.config 文件中找到该密钥。
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>升级到更高的 SDK 版本
-若要升级到 [SDK 的新版本](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)，请打开 **NuGet 包管理器**，并筛选已安装的包。 选择“Microsoft.ApplicationInsights.Web”，并选择“升级”。
+若要升级到 [SDK 的新版本](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)，请打开 **NuGet 包管理器**，并筛选已安装的包。 选择“Microsoft.ApplicationInsights.Web”，并选择“升级”。  
 
 如果对 ApplicationInsights.config 执行了任何自定义操作，请在升级前保存相关副本。 然后，将更改合并到新版本中。
 
@@ -146,7 +144,6 @@ Visual Studio 中会显示已记录的事件数。
 ### <a name="analysis"></a>分析
 
 * **[在 Visual Studio 中使用 Application Insights](../../azure-monitor/app/visual-studio.md)**<br/>包含有关使用遥测数据进行调试、诊断搜索和钻取代码的信息。
-* **[使用 Application Insights 门户](../../azure-monitor/app/app-insights-dashboards.md)**<br/> 包含有关仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和遥测数据导出功能的信息。
 * **[分析](../../azure-monitor/log-query/get-started-portal.md)** - 功能强大的查询语言。
 
 ### <a name="alerts"></a>警报

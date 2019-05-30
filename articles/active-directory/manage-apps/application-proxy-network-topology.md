@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9ee8800d84d1090f97fb72980123f59d5aa0375
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cf8e7fed30a9b25b2960e3321eca5c4398911f35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783480"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236248"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项
 
@@ -102,7 +102,7 @@ ms.locfileid: "65783480"
 
 尽管本文的重点是连接器的位置，但是，也可以通过改变应用程序的位置来获得更好的延迟特征。
 
-越来越多的组织正在将其网络移入托管环境。 这样，便可以将应用放在同样属于企业网络一部分的托管环境中，而这些应用仍会保留在域中。 在这种情况下，可向新的应用程序位置应用前面部分中所述的模式。 考虑此选项时，请参阅 [Azure AD 域服务](../../active-directory-domain-services/active-directory-ds-overview.md)。
+越来越多的组织正在将其网络移入托管环境。 这样，便可以将应用放在同样属于企业网络一部分的托管环境中，而这些应用仍会保留在域中。 在这种情况下，可向新的应用程序位置应用前面部分中所述的模式。 考虑此选项时，请参阅 [Azure AD 域服务](../../active-directory-domain-services/overview.md)。
 
 此外，考虑使用[连接器组](application-proxy-connector-groups.md)针对不同位置和网络中的应用进行连接器排列组织。 
 

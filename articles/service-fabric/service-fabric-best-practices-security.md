@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 3349abfb1b7cf85247b1bb5de8eb53fa09299b74
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 449dbb04d58fe7980c845b8c5bc8d837b643c1be
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136486"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386730"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
@@ -201,6 +201,14 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
+## <a name="windows-security-baselines"></a>Windows 安全基准
+[我们建议你实现广泛是已知且经过严格测试，如 Microsoft 安全基准，而不是自己创建基线的符合行业标准配置](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); 一个的预配这些虚拟机上的选项使用 Azure Desired State Configuration (DSC) 扩展处理程序，因为它们均已联机，使它们能够运行生产软件配置 Vm 规模集。
+
+## <a name="azure-firewall"></a>Azure 防火墙
+[Azure 防火墙是一种托管的基于云的网络安全服务，可保护你的 Azure 虚拟网络资源。它使用内置的高可用性和可伸缩性不受限制的云服务是完全有状态防火墙。](https://docs.microsoft.com/azure/firewall/overview); 这样就可以以出站 HTTP/S 将通信限制为指定的完全限定的域名 (FQDN) 包括通配符列表。 此功能不需要 SSL 终止。 其建议利用[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)终结点的 Windows 更新，并启用 Microsoft Windows update 的网络流量可以流经防火墙。 [部署 Azure 防火墙使用模板](https://docs.microsoft.com/azure/firewall/deploy-template)提供 Microsoft.Network/azureFirewalls 资源模板定义了一个示例。
+
+## <a name="tls-12"></a>TLS 1.2
+[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 

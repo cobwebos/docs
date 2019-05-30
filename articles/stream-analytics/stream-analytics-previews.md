@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2019
-ms.openlocfilehash: f3838bf6b9f7daa24c0cdb5b0c5a08d41d164530
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.date: 05/29/2019
+ms.openlocfilehash: e63937cedf44b1642e091a4744d898a26422be10
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561141"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393694"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -29,11 +29,7 @@ ms.locfileid: "65561141"
 
 ### <a name="anomaly-detection"></a>异常检测
 
-Azure 流分析引入了新的机器学习模型，除了支持双向、慢正和慢负趋势检测外，还支持“峰值”和“低值”检测。 有关详细信息，请访问 [Azure 流分析中的异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)。
-
-### <a name="sql-database-reference-data"></a>SQL 数据库引用数据
-
-Azure 流分析支持将 Azure SQL 数据库用作参考数据的输入源。 可以在 Azure 门户和 Visual Studio 中配合流分析工具将 SQL 数据库用作 Stream Analytics 作业的参考数据。 有关详细信息，请访问[将 SQL 数据库中的参考数据用于 Azure 流分析作业](sql-reference-data.md)。
+Azure 流分析引入了新的机器学习模型，除了支持双向、慢正和慢负趋势检测外，还支持“峰值”和“低值”检测   。 有关详细信息，请访问 [Azure 流分析中的异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)。
 
 ### <a name="integration-with-azure-machine-learning"></a>与 Azure 机器学习集成
 

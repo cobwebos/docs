@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 05/29/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4aae8eb29b9e90bd1cb84949e97e21ed68c04c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1466614dfeb8fa4d3d095bae070d01c6503c5bb
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812769"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357244"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure Active Directory B2B 协作的限制
 Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制。
@@ -29,6 +29,9 @@ Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制
 
 ## <a name="azure-ad-directories"></a>Azure AD 目录
 Azure AD B2B 受制于 Azure AD 服务目录限制。 有关用户可以创建的目录数以及用户或来宾用户可以属于的目录数的详细信息，请参阅 [Azure AD 服务限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。
+
+## <a name="national-clouds"></a>国家/地区云
+[国家/地区云](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)是物理隔离的 Azure 实例。 B2B 协作不支持跨国家/地区云边界。 例如，如果你的 Azure 租户在公共、 全局云，您不能邀请其帐户所在国家/地区云的用户。 若要与其他用户协作，他们寻求其他电子邮件地址，或在目录中为其创建的成员用户帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: e8a7f6d20ed36c4b3e900602fb52e31dceefae88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799335"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384987"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>必应新闻搜索 API 的语言和区域支持
 
@@ -23,7 +23,7 @@ ms.locfileid: "65799335"
 
 可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` HTTP 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
 
-或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家/地区和首选语言。 在这种情况下，`setLang` 查询参数可能设置为一个语言代码，通常这与 `mkt` 所指定的语言相同，除非用户希望以另一种语言查看必应。
+或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场  。 指定市场的同时指定国家/地区和首选语言。 在这种情况下，`setLang` 查询参数可能设置为一个语言代码，通常这与 `mkt` 所指定的语言相同，除非用户希望以另一种语言查看必应。
 
 ## <a name="supported-markets-for-news-search-endpoint"></a>新闻搜索终结点支持的市场
 
@@ -162,4 +162,4 @@ ms.locfileid: "65799335"
 |美国|美国|
 
 ## <a name="next-steps"></a>后续步骤
-有关必应新闻搜索终结点的详细信息，请参阅[新闻搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)。
+有关必应新闻搜索终结点的详细信息，请参阅[新闻搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)。

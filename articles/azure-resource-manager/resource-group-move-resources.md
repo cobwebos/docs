@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ae1afe103d4c52a2a7d921ef4f34dc030f3c6f7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4b836faef4630f6bee914478aecaed1bb4db7d71
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872642"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225889"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -25,7 +25,7 @@ ms.locfileid: "65872642"
 > 本文介绍如何在现有 Azure 订阅之间移动资源。 如果确实想要升级 Azure 订阅（例如从免费切换到即用即付），则需要转换订阅。
 > * 若要升级免费试用版，请参阅[将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付](..//billing/billing-upgrade-azure-subscription.md)。
 > * 若要更改即用即付帐户，请参阅[将 Azure 即用即付订阅更改为其他套餐](../billing/billing-how-to-switch-azure-offer.md)。
-> * 如果无法转换订阅，请[创建 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”作为问题类型。
+> * 如果无法转换订阅，请[创建 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”  作为问题类型。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -62,9 +62,9 @@ ms.locfileid: "65872642"
 * Azure Monitor 日志
 * Azure 中继
 * Azure Stack - 注册
-* 批
+* Batch
 * BizTalk 服务
-* 机器人服务
+* Bot 服务
 * CDN
 * 云服务 - 请参阅[经典部署限制](#classic-deployment-limitations)
 * 认知服务
@@ -92,7 +92,7 @@ ms.locfileid: "65872642"
 * 媒体服务
 * 监视器 - 确保移动到新订阅时，不会超出[订阅配额](../azure-subscription-service-limits.md#monitor-limits)
 * 通知中心
-* Operational Insights
+* 操作见解
 * 操作管理
 * 门户仪表板
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
@@ -140,7 +140,7 @@ ms.locfileid: "65872642"
 * Dynamics LCS
 * ExpressRoute
 * 实验室服务-教室实验室不能移动到新的资源组或订阅。 开发测试实验室可以移动到新的资源组在同一订阅中，但不是能跨订阅。
-* 托管的应用程序
+* 托管应用程序
 * Microsoft 基因组学
 * 安全
 * Site Recovery
@@ -197,7 +197,7 @@ ms.locfileid: "65872642"
 
 #### <a name="moving-within-the-same-subscription"></a>在同一订阅中移动
 
-在同一订阅中移动 Web 应用时，无法移动第三方 SSL 证书。 不过，可以将 Web 应用移动到新的资源组而不移动其第三方证书，并且，应用的 SSL 功能仍然可以工作。
+ 在同一订阅中移动 Web 应用时，无法移动第三方 SSL 证书。 不过，可以将 Web 应用移动到新的资源组而不移动其第三方证书，并且，应用的 SSL 功能仍然可以工作。
 
 如果希望随 Web 应用移动 SSL 证书，请执行以下步骤：
 
@@ -210,26 +210,26 @@ ms.locfileid: "65872642"
 _在订阅之间_移动 Web 应用时存在以下限制：
 
 - 目标资源组中不能有任何现有的应用服务资源。 应用服务资源包括：
-    - Web Apps
+    - Web 应用
     - 应用服务计划
     - 上传或导入的 SSL 证书
     - 应用服务环境
 - 资源组中的所有应用服务资源必须一起移动。
 - 只能从最初创建应用服务资源的资源组中移动它们。 如果某个应用服务资源不再位于其原始资源组中，则必须首先将其移动回该原始资源组，然后才能将其在订阅之间移动。
 
-如果不记得原始资源组，可以通过诊断来找到它。 对于 web 应用，选择**诊断并解决问题**。 然后，选择**配置和管理**。
+如果忘记了原始资源组，可以通过诊断来查找。 对于 Web 应用，请选择“诊断和解决问题”  。 然后，选择“配置和管理”。 
 
 ![选择诊断](./media/resource-group-move-resources/select-diagnostics.png)
 
-选择**迁移选项**。
+选择“迁移选项”  。
 
 ![选择迁移选项](./media/resource-group-move-resources/select-migration.png)
 
-选择要移动 web 应用的建议步骤的选项。
+选择通过建议的步骤来移动 Web 应用的选项。
 
 ![选择建议的步骤](./media/resource-group-move-resources/recommended-steps.png)
 
-请参阅移动资源之前需要采取的建议的操作。 这些信息包括 web 应用的原始资源组。
+可以看到在移动资源之前需采取的建议操作。 该信息包含 Web 应用的原始资源组。
 
 ![建议](./media/resource-group-move-resources/recommendations.png)
 
@@ -323,7 +323,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ### <a name="recovery-services-limitations"></a>恢复服务限制
 
- 若要移动恢复服务保管库，则必须注册[受限公共预览版](../backup/backup-azure-move-recovery-services-vault.md)。
+ 若要移动的恢复服务保管库，请按照下列步骤：[将资源移到新的资源组或订阅](../backup/backup-azure-move-recovery-services-vault.md)。
 
 目前，每个区域一次可以移动一个恢复服务保管库。 不能移动在 IaaS 虚拟机中备份 Azure 文件、Azure 文件同步或 SQL 的保管库。
 
@@ -352,7 +352,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 移动资源之前需执行的一些重要步骤。 验证这些条件可以避免错误。
 
-1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”作为问题类型。
+1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”  作为问题类型。
 
 1. 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../active-directory/develop/quickstart-create-new-tenant.md)中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 Azure PowerShell 或 Azure CLI。
 
@@ -375,7 +375,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
    * [将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
    * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。 将资源移到新的订阅时，可能会看到此错误，但该订阅从未配合该资源类型使用。
+1. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。  将资源移到新的订阅时，可能会看到此错误，但该订阅从未配合该资源类型使用。
 
    对于 PowerShell，请使用以下命令来获取注册状态：
 
@@ -405,8 +405,8 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 1. 移动资源的帐户至少需要具备下列权限：
 
-   * 源资源组上的 Microsoft.Resources/subscriptions/resourceGroups/moveResources/action 权限。
-   * 目标资源组上的 Microsoft.Resources/subscriptions/resourceGroups/write 权限。
+   * 源资源组上的 Microsoft.Resources/subscriptions/resourceGroups/moveResources/action  权限。
+   * 目标资源组上的 Microsoft.Resources/subscriptions/resourceGroups/write  权限。
 
 1. 在移动资源之前，请检查要将资源移动到的订阅的订阅配额。 如果移动资源意味着订阅将超出其限制，则需要检查是否可以请求增加配额。 有关限制的列表及如何请求增加配额的信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。
 
@@ -471,17 +471,17 @@ Authorization: Bearer <access-token>
 
 ### <a name="a-nameuse-portal-by-using-azure-portal"></a><a name="use-portal" />使用 Azure 门户
 
-若要移动资源，请选择包含这些资源的资源组，然后选择“移动”按钮。
+若要移动资源，请选择包含这些资源的资源组，然后选择“移动”  按钮。
 
 ![移动资源](./media/resource-group-move-resources/select-move.png)
 
 选择是要将资源移到新资源组还是新订阅。
 
-选择要移动的资源和目标资源组。 确认需要更新这些资源的脚本，选择“确定”。 如果在上一步中已选择“编辑订阅”图标，则还必须选择目标订阅。
+选择要移动的资源和目标资源组。 确认需要更新这些资源的脚本，选择“确定”。  如果在上一步中已选择“编辑订阅”图标，则还必须选择目标订阅。
 
 ![选择目标](./media/resource-group-move-resources/select-destination.png)
 
-在“通知”中，可以看到移动操作正在运行。
+在“通知”中，可以看到移动操作正在运行。 
 
 ![显示移动状态](./media/resource-group-move-resources/show-status.png)
 

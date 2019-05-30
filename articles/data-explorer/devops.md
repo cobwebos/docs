@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: a70a887ccb19d9c1cbdb5f8ebf6aa8d4b25a0dfd
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65161065"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388995"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Azure 数据资源管理器的 azure DevOps 任务
 
@@ -67,7 +67,7 @@ ms.locfileid: "65161065"
 
     ![创建变量](media/devops/create-variable.png)
 
-    若要查找你 Endpoint_URL、 的概述页你**Azure 数据资源管理器群集**门户在 Azure 中包含 Azure 数据资源管理器群集 URI。 构造采用以下格式的 URI `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`。  例如： https://kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
+    若要查找你 Endpoint_URL、 的概述页你**Azure 数据资源管理器群集**门户在 Azure 中包含 Azure 数据资源管理器群集 URI。 构造采用以下格式的 URI `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`。  例如，https:\//kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
 
     ![Azure 数据资源管理器群集 URI](media/devops/adx-cluster-uri.png)
 
@@ -79,13 +79,13 @@ ms.locfileid: "65161065"
 
 1. 创建要部署的三个任务**表**，**函数**，并**策略**，按此顺序。 
 
-1. 在中**任务**选项卡上，选择**+** 通过**代理作业**。 搜索“Azure 数据资源管理器”。 在中**Marketplace**，安装**Azure 数据资源管理器 – 管理员命令**扩展。 然后，选择**外**中**运行 Azure 数据资源管理器命令**。
+1. 在中**任务**选项卡上，选择 **+** 通过**代理作业**。 搜索“Azure 数据资源管理器”  。 在中**Marketplace**，安装**Azure 数据资源管理器 – 管理员命令**扩展。 然后，选择**外**中**运行 Azure 数据资源管理器命令**。
 
      ![添加管理命令](media/devops/add-admin-commands.png)
 
 1. 单击**Kusto 命令**左侧和更新该任务的以下信息：
     * **显示名称**：任务的名称
-    * **文件路径**:在中**表**任务中，指定 */Tables/*.csl 由于表在创建文件放入*表*文件夹。
+    * **文件路径**:在中**表**任务中，指定 */Tables/* .csl 由于表在创建文件放入*表*文件夹。
     * **终结点 URL**： 输入`EndPoint URL`在上一步中创建的变量。
     * 选择**使用服务终结点**，然后选择 **+ 新建**。
 
@@ -101,11 +101,11 @@ ms.locfileid: "65161065"
     |**服务主体应用密钥**     |    输入 AAD 应用程序键 （根据先决条件创建）    |
     |**AAD 租户 Id**    |      输入你的 AAD 租户 （例如 microsoft.com，contoso.com...)    |
 
-    选择**允许使用此连接的所有管道**复选框。 选择“确定”。
+    选择**允许使用此连接的所有管道**复选框。 选择“确定”  。
 
     ![添加服务连接](media/devops/add-service-connection.png)
 
-1. 重复步骤 1-5 另两次以将文件部署*函数*并*策略*文件夹。 选择“保存”。 在中**任务**选项卡上，请参阅创建的三个任务：**部署表**，**部署 Functions**，和**部署策略**。
+1. 重复步骤 1-5 另两次以将文件部署*函数*并*策略*文件夹。 选择“保存”。  在中**任务**选项卡上，请参阅创建的三个任务：**部署表**，**部署 Functions**，和**部署策略**。
 
     ![部署的所有文件夹](media/devops/deploy-all-folders.png)
 

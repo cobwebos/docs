@@ -3,19 +3,19 @@ title: 如何通过对话学习器模型使用分支和撤消操作 - Microsoft 
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用分支和撤消操作。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: cca7b42c83be3ca428509ea48c387a1c35ddb35a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 6ffa0881df07e453c8beb175b8580deebbfc1ec9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640170"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389894"
 ---
 # <a name="how-to-use-branching-and-undo-operations"></a>如何使用分支和撤消操作
 在本教程中，我们将介绍撤消和分支操作。

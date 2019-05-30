@@ -4,7 +4,7 @@ description: 本文介绍如何缩放 Azure 时序见解环境。 使用 Azure �
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7d9827b11136370bcb401073a4d9cc4871c1cc9
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: be06fd5a6f05d750e6ca9801a6004f7180a12d5c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472793"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238995"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 
@@ -47,17 +47,17 @@ ms.locfileid: "65472793"
 
 1. 在 Azure 门户中，找到并选择自己的时序见解环境。
 
-1. 在时序见解环境的菜单中，选择“配置”。
+1. 在时序见解环境的菜单中，选择“配置”  。
 
    [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
-1. 调整“容量”滑块来选择满足入口速率和存储容量需求的容量。 请注意，**入口速率**、**存储容量**和**估计成本**会动态更新，以显示更改产生的影响。
+1. 调整“容量”  滑块来选择满足入口速率和存储容量需求的容量。 请注意，**入口速率**、**存储容量**和**估计成本**会动态更新，以显示更改产生的影响。
 
    [![滑块](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
    或者，可以在滑块右侧的文本框中键入容量乘数的数字。
 
-1. 选择“保存”以缩放环境。 在提交更改之前，进度指示器会短暂显示。
+1. 选择“保存”以缩放环境。  在提交更改之前，进度指示器会短暂显示。
 
 ## <a name="next-steps"></a>后续步骤
 

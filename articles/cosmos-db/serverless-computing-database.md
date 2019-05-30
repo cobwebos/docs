@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 和 Azure Functions 如何一起使用，以
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 54de2d2f9b5691a47ff56891185c7655661092dd
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: db85d02a4f5c6e0f644a03394b570aac46202e72
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833602"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256939"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
 
@@ -24,8 +24,8 @@ ms.locfileid: "65833602"
 Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和无服务器应用：
 
 * 在 Azure Function 中创建事件驱动的 **Azure Cosmos DB 触发器**。 此触发器依靠[更改源](change-feed.md)流监视 Azure Cosmos DB 容器的更改情况。 当对容器进行任何更改时，更改源流将发送到可调用 Azure Function 的触发器。
-* 或者，使用“输入绑定”将 Azure Function 绑定到 Azure Cosmos DB 容器。 执行某个函数时，输入绑定将从容器中读取函数。
-* 使用“输出绑定”将函数绑定到 Azure Cosmos DB 容器。 当函数执行完成时，输出绑定会将数据写入容器。
+* 或者，使用“输入绑定”将 Azure Function 绑定到 Azure Cosmos DB 容器  。 执行某个函数时，输入绑定将从容器中读取函数。
+* 使用“输出绑定”将函数绑定到 Azure Cosmos DB 容器  。 当函数执行完成时，输出绑定会将数据写入容器。
 
 > [!NOTE]
 > 目前，Azure Cosmos DB 触发器、输入绑定和输出绑定仅支持与 SQL API 一起使用。 对于所有其他的 Azure Cosmos DB API，应使用适用于 API 的静态客户端通过函数来访问数据库。
@@ -56,7 +56,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 4. 每当传感器数据集合发生数据更改时都会调用触发器，因为所有更改均通过更改源流式传输。
 5. 在函数中使用阈值条件以将传感器数据发送到保修部门。
 6. 如果温度也超过特定值，也会向所有者发送警报。
-7. 函数中的“输出绑定”更新其他 Azure Cosmos DB 容器中的汽车记录，以存储关于检查引擎事件的信息。
+7. 函数中的“输出绑定”更新其他 Azure Cosmos DB 容器中的汽车记录，以存储关于检查引擎事件的信息  。
 
 下图显示在 Azure 门户中为此触发器编写的代码。
 
@@ -68,7 +68,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 **实现：** 使用 Azure Cosmos DB 输入绑定的计时器触发器
 
-1. 通过使用 [计时器触发器](../azure-functions/functions-bindings-timer.md)，可以使用“输入绑定”每隔一定时间检索存储在 Azure Cosmos DB 容器中的银行帐户余额信息。
+1. 通过使用 [计时器触发器](../azure-functions/functions-bindings-timer.md)，可以使用“输入绑定”  每隔一定时间检索存储在 Azure Cosmos DB 容器中的银行帐户余额信息。
 2. 如果余额低于用户设置的低余额阈值，则采取 Azure Function 中的某个措施。
 3. 输出绑定可以是 [SendGrid 集成](../azure-functions/functions-bindings-sendgrid.md)，它可将电子邮件从服务帐户发送到为每个低余额帐户标识的电子邮件地址。
 
@@ -85,7 +85,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 **实现：** 使用 Azure Cosmos DB 触发器和输出绑定
 
 1. 通过使用 Azure Cosmos DB [图形数据库](graph-introduction.md)存储所有用户，可以使用 Azure Cosmos DB 触发器创建新函数。 
-2. 每当插入新用户时，都将调用该函数，然后使用“输出绑定”存储结果。
+2. 每当插入新用户时，都将调用该函数，然后使用“输出绑定”  存储结果。
 3. 该函数将查询图形数据库，以搜索与新用户直接相关的所有用户，并将该数据集返回到函数。
 4. 随后，此数据存储在 Azure Cosmos DB 表数据库中，并且这些键值对可由任何前端应用程序（向新用户显示有联系的好友）轻松检索。
 

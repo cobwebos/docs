@@ -3,18 +3,18 @@ title: 诊断和排查使用 Azure Cosmos DB .NET SDK 时遇到的问题
 description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查使用 .NET SDK 时遇到的 Azure Cosmos DB 问题。
 author: j82w
 ms.service: cosmos-db
-ms.date: 01/19/2019
+ms.date: 05/28/2019
 ms.author: jawilley
 ms.devlang: c#
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7f969ab6059140ec32c9c5bf5045c546602a3c15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e48809537acc21edbcf12d299a333df486c258f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404693"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257154"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查使用 Azure Cosmos DB .NET SDK 时遇到的问题
 本文介绍了将 [.NET SDK](sql-api-sdk-dotnet.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。

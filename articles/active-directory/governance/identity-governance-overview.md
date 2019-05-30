@@ -16,12 +16,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d30bbddd044d1aea70e43825035c94b69a46f1f8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1be6fc2b7d6da85778524cb8986f399c341370c1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935831"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66307046"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD 标识管理？
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 标识管理可平衡的正确过程和可见�
 
 ## <a name="identity-lifecycle"></a>标识生命周期
 
-标识管理可帮助组织实现之间的平衡*生产力*-一个人可以多快的速度有访问的资源所需，例如何时加入我的组织？ 安全性 - 用户的访问权限会不断发生怎样的变化（例如，由于该用户的雇佣状态发生变化）？  标识生命周期管理是标识管理的基础，在规模较大的有效的管理需要现代化的应用程序的标识生命周期管理基础结构。
+标识管理可帮助组织实现之间的平衡*生产力*-一个人可以多快的速度有访问的资源所需，例如何时加入我的组织？ 安全性 - 用户的访问权限会不断发生怎样的变化（例如，由于该用户的雇佣状态发生变化）？   标识生命周期管理是标识管理的基础，在规模较大的有效的管理需要现代化的应用程序的标识生命周期管理基础结构。
 
 ![标识生命周期](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) 标识管理可平衡的正确过程和可见�
 
 组织可以通过[动态组](../users-groups-roles/groups-dynamic-membership.md)等技术，并结合 [SaaS 应用](../saas-apps/tutorial-list.md)的用户预配或者[与 SCIM集成的应用](../manage-apps/use-scim-to-provision-users-and-groups.md)，将访问生命周期过程自动化。  组织还可以控制哪些[来宾用户有权访问本地应用程序](../b2b/hybrid-cloud-to-on-premises.md)。  然后，可以使用 [Azure AD 访问评审](access-reviews-overview.md)定期评审这些访问权限。
 
-当用户尝试访问应用程序时，Azure AD 会实施[条件访问](/azure/active-directory/conditional-access/)策略。 例如，条件性访问策略可以包括显示[使用条款](../conditional-access/terms-of-use.md)并[确保用户已同意这些条款](../conditional-access/require-tou.md)之前无法访问某个应用程序。
+当用户尝试访问应用程序时，Azure AD 会实施[条件访问](/azure/active-directory/conditional-access/)策略。 例如，条件访问策略可以显示[使用条款](../conditional-access/terms-of-use.md)，并确保用户在访问应用程序之前[同意这些条款](../conditional-access/require-tou.md)。
 
 ## <a name="privileged-access-lifecycle"></a>特权访问权限生命周期
 
@@ -84,6 +84,6 @@ Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azur
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Azure AD 授权管理？（预览版）？](entitlement-management-overview.md)
-- [什么是 Azure AD 访问评审？](access-reviews-overview.md)
+- [Azure AD 访问评审是什么？](access-reviews-overview.md)
 - [什么是 Azure AD Privileged Identity Management？](../privileged-identity-management/pim-configure.md)
 - [“使用条款”可以用来做什么？](active-directory-tou.md)

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: c5c3f498f62d6399534333f8166a514a10f044c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 350e13a4b1c01329bef1ec270af5ba007cd788aa
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464280"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399746"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>监视 Azure 虚拟机备份的警报
 
@@ -35,10 +35,10 @@ ms.locfileid: "60464280"
 2. 在“**设置**”边栏选项卡中，单击“**警报和事件**”。 ![“警报和事件”按钮](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
 3. 在“**警报和事件**”边栏选项卡中，单击“**备份警报**”。 ![“备份警报”按钮](./media/backup-azure-monitor-vms/backup-alerts.png)
 
-    “备份警报”部分会打开并显示筛选的警报。
+    “备份警报”部分会打开并显示筛选的警报  。
 
     ![“备份警报”磁贴](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
-4. 要查看有关特定警报的详细信息，请在事件列表中单击该警报打开其“详细信息”部分。
+4. 要查看有关特定警报的详细信息，请在事件列表中单击该警报打开其“详细信息”部分  。
 
     ![事件详细信息](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
@@ -57,10 +57,10 @@ ms.locfileid: "60464280"
     “配置通知”部分会打开。
 
     ![“配置通知”边栏选项卡](./media/backup-azure-monitor-vms/configure-notifications.png)
-2. 在“配置通知”部分中，单击“电子邮件通知”旁边的“打开”。
+2. 在“配置通知”部分中，单击“电子邮件通知”旁边的“打开  ”。
 
     “收件人”和“严重性”对话框旁边出现了星号，因为这些信息是必填的。 至少提供一个电子邮件地址，并至少选择一个严重性。
-3. 在“**收件人（电子邮件）**”对话框中，键入通知接收者的电子邮件地址。 使用以下格式：username@domainname.com。 使用分号 (;) 分隔多个电子邮件地址。
+3. 在“**收件人（电子邮件）** ”对话框中，键入通知接收者的电子邮件地址。 使用以下格式：username@domainname.com。 使用分号 (;) 分隔多个电子邮件地址。
 4. 在“**通知**”区域中，选择“**按警报**”以便在发生指定的警报时发送通知，或者选择“**每小时摘要**”以便发送过去一小时的摘要。
 5. 在“**严重性**”对话框中，选择要触发电子邮件通知的一个或多个严重级别。
 6. 单击“ **保存**”。
@@ -70,7 +70,7 @@ ms.locfileid: "60464280"
    | 警报级别 | 已发送的警报 |
    | --- | --- |
    | 严重 | 适用于备份失败、恢复失败 |
-   | 警告 | 适用于备份作业已成功但出现警告（例如：创建快照时某些写入程序失败） |
+   | 警告 | 目前，没有警告性警报不可用于 Azure VM 备份 (例如： 创建快照时某些写入程序失败) |
    | 信息性 | 目前，信息性警报不可用于 Azure VM 备份 |
 
 ### <a name="situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>即使配置了通知，也不发送电子邮件的情况

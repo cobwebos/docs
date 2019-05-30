@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93adedc5c1343df1eee05b653b60cfd7e810044c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2edbf5548f5e230986f0a1786d67fb4580e574e2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540423"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235443"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 许可框架
 
@@ -40,7 +40,7 @@ ms.locfileid: "65540423"
 
 1. 假设某个 Web 客户端应用程序需要请求资源/API 的特定访问权限。 下一部分将介绍如何执行此配置，但实质上，配置时需使用 Azure 门户来声明权限请求。 这些配置与其他配置设置一样，将会成为应用程序的 Azure AD 注册的一部分：
 
-    ![针对其他应用程序的权限](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+    ![针对其他应用程序的权限](./media/consent-framework/permissions.png)
 
 1. 考虑已更新应用程序的权限，该应用程序正在运行，并且某个用户即将首次使用该应用程序。 首先，应用程序需要从 Azure AD 的 `/authorize` 终结点获取授权代码。 然后，可以使用该授权代码获取新的访问令牌和刷新令牌。
 
@@ -48,7 +48,7 @@ ms.locfileid: "65540423"
 
     ![用户或管理员登录到 Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
 
-1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”中选择的权限集相匹配。
+1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”  中选择的权限集相匹配。
 
     ![用户同意体验](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
@@ -58,14 +58,13 @@ ms.locfileid: "65540423"
 
     **同意应用的委托权限**
 
-   1. 转到应用程序的“设置”页
-   1. 选择“所需权限”。
-   1. 单击“授予权限”按钮。
+   1. 转到**API 权限**应用程序页
+   1. 单击**授予管理员同意**按钮。
 
-      ![授予显式管理许可权限](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![授予显式管理许可权限](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。
+   > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可  。 否则，在请求访问令牌时应用程序会失败。
 
 ## <a name="next-steps"></a>后续步骤
 

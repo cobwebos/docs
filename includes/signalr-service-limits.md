@@ -14,13 +14,13 @@ ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
 ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787666"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238313"
 ---
-| 资源 | 默认限制 | 最大限制 | 
+| Resource | 默认限制 | 最大限制 | 
 | --- | --- | --- |
 | Azure SignalR 服务单位，每个实例免费层 |第 |第 |
 | Azure SignalR 服务单位，每个实例用于标准层 |100 |100 |

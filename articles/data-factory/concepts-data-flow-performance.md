@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 7fca586083f70e0b0f7e593d5203392260cd2136
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 90c7e4653b879c2432f08506cea08646e84bb69a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66172335"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297706"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据的流性能和优化指南
 
@@ -29,7 +29,7 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 
 ![调试按钮](media/data-flow/debugb1.png "调试")
 
-## <a name="optimizing-for-azure-sql-database"></a>为 Azure SQL 数据库优化
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>针对 Azure SQL 数据库和 Azure SQL 数据仓库进行优化
 
 ![源部件](media/data-flow/sourcepart2.png "源部件")
 
@@ -65,6 +65,13 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 * 增加核心，这将增加数量的节点，并为您提供更多处理能力以查询和写入到 Azure SQL DB 的数。
 * 请尝试将更多的资源应用于计算节点的"计算优化"和"内存优化"选项。
 
+### <a name="unit-test-and-performance-test-with-debug"></a>具有调试单元测试和性能测试
+
+* 当单元测试的数据流，设置为 ON 的"调试流数据"按钮。
+* 在数据流设计器中，使用数据预览选项卡上转换查看转换逻辑的结果。
+* 单元测试你的数据管道设计器从流通过将数据流活动放置在管道设计画布，然后使用"调试"按钮来测试。
+* 在调试模式下测试将起作用而无需等待在实时群集启动一个实时上做好准备群集环境。
+
 ### <a name="disable-indexes-on-write"></a>在写入禁用索引
 * 使用 ADF 管道存储过程活动之前您数据流的活动，以禁用从您的接收器正在写入到在目标表的索引。
 * 在数据流活动中之后, 添加启用了这些索引的另一个存储的过程活动。
@@ -72,6 +79,34 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 ### <a name="increase-the-size-of-your-azure-sql-db"></a>增加 Azure SQL DB 的大小
 * 计划您的源重设大小和管道以增加吞吐量并降低 Azure 限制，一旦达到 DTU 限制在运行前接收器 Azure SQL DB。
 * 管道执行完成后，可以调整回其正常运行速率数据库的大小。
+
+## <a name="optimizing-for-azure-sql-data-warehouse"></a>优化 Azure SQL 数据仓库
+
+### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>使用临时过程来批量通过 Polybase 将数据加载
+
+* 若要避免通过行处理的数据 floes，"过渡"选项中设置接收器设置 ADF 才能利用 Polybase 来避免行的行插入到数据仓库。 这将指示 ADF，若要使用 Polybase，以便可以在大容量加载数据。
+* 当执行从您数据的流活动的管道，使用临时过程开启，将需要选择用于大容量加载临时数据的 Blob 存储位置。
+
+### <a name="increase-the-size-of-your-azure-sql-dw"></a>增加 Azure SQL 数据仓库的大小
+
+* 计划您的源的大小调整和接收器 Azure SQL 数据仓库之前运行管道以增加吞吐量并降低 Azure 限制，一旦达到 DWU 限制。
+
+* 管道执行完成后，可以调整回其正常运行速率数据库的大小。
+
+## <a name="optimize-for-files"></a>优化的文件
+
+* 您可以控制 ADF 将使用的分区数量。 每个源和接收器的转换，以及每个单独的转换，您可以设置分区方案。 对于较小的文件，可能会发现更好地又比询问 Spark 进行分区小文件更快地选择"单一分区"有时处理。
+* 如果源数据没有足够的信息，可以选择"轮循机制"分区和设置的分区数。
+* 如果您浏览你的数据并发现有一个可以是好的哈希键的列，使用哈希分区选项。
+
+### <a name="file-naming-options"></a>文件命名选项
+
+* ADF 映射数据流中写入转换后的数据的默认特性是要写入到具有 Blob 或 ADLS 链接服务的数据集。 应设置该数据集，以指向一个文件夹或容器，不是命名的文件。
+* 数据的流，则使用 Azure Databricks Spark 执行，这意味着，将对基于多个文件拆分输出或者默认分区的 Spark 或分区方案，您已显式选择。
+* ADF 数据流中的很常见操作是选择"输出到单个文件"，使所有输出一部分文件时，将合并到单个输出文件。
+* 但是，此操作需要输出，可以减少到单个群集节点上的单个分区。
+* 选择此常用选项时，请记住这一点。 如果要合并到单个输出文件分区的多个大型源代码文件，可以运行群集节点资源不足。
+* 若要避免耗尽计算节点资源，您可以在 ADF 中，这会针对性能进行优化，保留默认值或显式分区方案，然后再添加合并中的所有部分的管道中的后续复制活动从输出文件夹文件到新的单文件。 从根本上来说，此方法将从文件合并转换的操作，并实现相同的结果与设置"输出到单个文件"。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅其他数据流文章：

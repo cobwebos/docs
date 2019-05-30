@@ -2,31 +2,24 @@
 title: 验证到达 Microsoft Azure 虚拟网络的 VPN 吞吐量 | Microsoft Docs
 description: 本文旨在帮助用户验证从本地资源到达 Azure 虚拟机的网络吞吐量。
 services: vpn-gateway
-documentationcenter: na
-author: chadmath
+author: cherylmc
 manager: jasmc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/15/2018
+ms.date: 05/29/2019
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1117afcf6254c32ebe0a4e72ad5619606098253
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457502"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388618"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
 
 通过 VPN 网关连接，可以在 Azure 内的虚拟网络与本地 IT 基础结构之间创建安全的跨界连接。
 
-本文将演示如何验证从本地资源到达 Azure 虚拟机 (VM) 的网络吞吐量。 还会提供故障排除指南。
+本文将演示如何验证从本地资源到达 Azure 虚拟机 (VM) 的网络吞吐量。 还会提供故障排除指南。 
 
 >[!NOTE]
 >本文旨在帮助诊断并解决常见的问题。 如果使用以下信息无法解决问题，请[与支持人员联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
@@ -122,12 +115,12 @@ VPN 网关连接涉及以下组件：
 ## <a name="address-slow-file-copy-issues"></a>解决文件复制速度缓慢问题
 在使用 Windows 资源管理器或通过 RDP 会话拖放时，文件的复制速度可能会很缓慢。 此问题通常是由以下的一个或两个因素造成的：
 
-- 文件复制应用程序（如 Windows 资源管理器和 RDP）在复制文件时没有使用多个线程。 为了提高性能，请通过多线程文件复制应用程序（如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx)）使用 16 或 32 个线程来复制文件。 若要更改 Richcopy 中的文件复制线程数目，请单击“操作” > “复制选项” > “文件复制”。<br><br>
+- 文件复制应用程序（如 Windows 资源管理器和 RDP）在复制文件时没有使用多个线程。 为了提高性能，请通过多线程文件复制应用程序（如 [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx)）使用 16 或 32 个线程来复制文件。 若要更改 Richcopy 中的文件复制线程数目，请单击“操作”   > “复制选项”   > “文件复制”  。<br><br>
 ![文件复制速度缓慢问题](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 - VM 磁盘读/写速度不够快。 有关详细信息，请参阅 [Azure 存储器故障排除](../storage/common/storage-e2e-troubleshooting.md)。
 
 ## <a name="on-premises-device-external-facing-interface"></a>本地设备上的对外接口
-如果 Azure 中的[本地网络](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)定义中包含本地 VPN 设备面向 Internet 的 IP 地址，则可能会出现 VPN 无法显示、偶发性断连或性能问题。
+如果在本地 VPN 设备面向 Internet 的 IP 地址已被纳入[局域网](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)在 Azure 中的地址空间定义，您可能会遇到无法显示 VPN，偶发断开连接或性能问题。
 
 ## <a name="checking-latency"></a>检查延迟
 请使用 tracert 跟踪 Microsoft Azure 边缘设备，以确定跃点间是否存在任何超过 100 毫秒的延迟。

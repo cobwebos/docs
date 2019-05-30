@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: b55516b48f805da9288799e11a4066cbd4483006
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb9cb3998ed8208ff7b19aee8a984e4c057408ae
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60515844"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302248"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>缩放 Azure Service Fabric 群集
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 群集可以包含数千个节点。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。

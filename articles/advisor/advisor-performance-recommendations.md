@@ -8,16 +8,16 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920448"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254653"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
-Azure 顾问性能建议有助于提高关键业务应用程序的速度和响应能力。 可通过顾问从顾问仪表板的“性能”选项卡获取性能建议。
+Azure 顾问性能建议有助于提高关键业务应用程序的速度和响应能力。 可通过顾问从顾问仪表板的“性能”  选项卡获取性能建议。
 
 ## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>减少流量管理器配置文件上的 DNS 生存时间，可更快地故障转移到正常运行的终结点
 
@@ -94,11 +94,27 @@ Azure 顾问利用基于工作负荷的试探法如读取与写入服务器上�
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>缩放到更高的 SKU，以防止连接约束 Azure MySQL、 Azure PostgreSQL 或 Azure MariaDB 服务器
 每个新连接到数据库服务器占用一些内存。 在数据库服务器的性能下降，如果连接到服务器失败由于 [上限](https://docs.microsoft.com/azure/postgresql/concepts-limits)在内存中。 Azure 顾问将识别运行具有许多连接故障的服务器，并建议升级你的服务器的连接限制，以通过纵向扩展计算或使用内存优化的 Sku，其具有更多计算每个核心提供到您的服务器的更多内存。
 
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>你为不同大小的缓存或 SKU，以提高缓存缩放和应用程序性能
+
+缓存实例未运行高内存压力、 高服务器负载，或高网络带宽，这可能会使其变得无响应，出现数据丢失或变得不可用时效果最佳。 顾问将确定在这种情况的缓存实例，并应用最佳实践来降低内存压力、 服务器负载或网络带宽或缩放到不同的大小或 SKU 具有更多容量的建议。
+
+## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>将区域的流量添加到你的 Azure Cosmos DB 帐户
+
+顾问将检测到了流量，可以从当前未配置的区域的 Azure Cosmos DB 帐户，并且建议将添加到该区域。 这将改善来自该区域的请求的延迟，并确保发生区域故障时的可用性。 [了解有关使用 Azure Cosmos DB 的全局数据分布的详细信息](https://aka.ms/cosmos/globaldistribution)
+
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>配置 Azure Cosmos DB 与客户进行索引策略包括或排除的路径
+
+Azure 顾问将标识正在使用的默认索引策略，但无法受益于基于工作负荷模式的自定义索引策略的 Cosmos DB 容器。 所有属性编制都索引的默认索引策略，但与查询筛选器中使用的显式包含或排除路径中使用自定义索引策略可以降低 Ru，然后在为索引使用的存储。 [了解有关修改索引策略的详细信息](https://aka.ms/cosmosdb/modify-index-policy)
+
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>配置 Azure Cosmos DB 查询页面大小 (MaxItemCount) 为-1 
+
+Azure 顾问会标识 Azure Cosmos DB 容器使用的查询页大小 100，建议使用更快地扫描的页大小为-1。 [了解有关最大项计数的详细信息](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议
 
 1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
 
-2.  在顾问仪表板中，单击“性能”选项卡。
+2.  在顾问仪表板中，单击“性能”  选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 

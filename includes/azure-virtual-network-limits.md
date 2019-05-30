@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/15/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8cee74696d9636a8ac1d6fcbab493f18184355e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cb586be1a139b331c259a1197cc62e7ca4f25666
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787671"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238253"
 ---
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于网络通过管理资源**经典**每个订阅的部署模型。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
-| 资源 | 默认限制 | 最大限制 |
+| Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | 虚拟网络 |50 |100 |
 | 本地网络站点 |20 |联系支持人员。 |
@@ -40,7 +40,7 @@ ms.locfileid: "65787671"
 > [!NOTE]
 > 我们最近将所有默认限制提高到了最大限制。 如果没有最大限制列，则资源没有可调整的限制。 如果过去已通过客户支持提高了这些上限，因此在以下表中看不到更新的限制，可[免费提交联机客户支持请求](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
-| 资源 | 默认值/最大限制 | 
+| Resource | 默认值/最大限制 | 
 | --- | --- |
 | 虚拟网络 |1,000 |
 | 每个虚拟网络的子网数 |3,000 |
@@ -65,17 +65,17 @@ ms.locfileid: "65787671"
 | 每个虚拟网络 TAP 的网络接口 TAP 配置 |100 |
 
 #### <a name="publicip-address"></a>公共 IP 地址限制
-| 资源 | 默认限制 | 最大限制 |
+| Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | 公共 IP 地址数 - 动态 | 基本版为 1,000。 |联系支持人员。 |
 | 公共 IP 地址数 - 静态 | 基本版为 1,000。 |联系支持人员。 |
 | 公共 IP 地址数 - 静态 | 标准版为 200。|联系支持人员。 |
-| 公共 IP 前缀大小 （预览版） | /28 | 联系支持人员。 |
+| 公共 IP 前缀大小 | /28 | 联系支持人员。 |
 
 #### <a name="load-balancer"></a>负载均衡器限制
 以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
-| 资源 | 默认值/最大限制 |
+| Resource | 默认值/最大限制 |
 | --- | --- |
 | 负载均衡器 | 1,000 | 
 | 每个资源的规则数，基本 | 250 |

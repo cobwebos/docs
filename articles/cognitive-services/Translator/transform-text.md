@@ -3,19 +3,19 @@ title: 转换文本 - 文本翻译 API
 titlesuffix: Azure Cognitive Services
 description: 使用文本翻译 API 转换文本。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 1319b7191d9b192897e1e8ab4900239bd9230bce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: 4d024fd30a77c011bab4f120c4ef3614aac09998
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608324"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389685"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
 
@@ -31,7 +31,7 @@ TransformText 方法是用于社交媒体的文本规范化函数，它返回输
 | 参数 | 描述 |
 |:---|:---|
 | 授权标头 | **必需**：用于标识应用程序的 HTTP 标头。 使用密钥：“授权”和值：“持有者” + “ ” + 访问令牌。 有关详细信息，请转到此处。|
-| 语言 | **必需**：一个表示语言代码的字符串。 此参数仅支持以 **en** 作为语言名称的英语。|
+| language | **必需**：一个表示语言代码的字符串。 此参数仅支持以 **en** 作为语言名称的英语。|
 | category | **可选**：一个包含翻译类别或领域的字符串。 此参数仅支持默认选项 **general**。|
 | sentence | **必需**：要更正的句子。 |
 

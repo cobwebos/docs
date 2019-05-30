@@ -3,26 +3,29 @@ title: 使用部署清单声明模块和路由 - Azure IoT Edge | Microsoft Docs
 description: 了解部署清单如何声明要部署的模块、如何部署这些模块以及如何在它们之间创建消息路由。
 author: kgremban
 manager: philmea
-ms.author: v-yiso
-origin.date: 03/28/2019
-ms.date: 04/22/2019
+ms.author: kgremban
+ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seodec18
+ms.openlocfilehash: f4828b59ffa43365f48c002262368d383dfcff05
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363143"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389370"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
-每个 IoT Edge 设备至少运行两个模块：$edgeAgent 和 $edgeHub，它们构成了 IoT Edge 运行时。 此外，任何 IoT Edge 设备都可以运行多个模块来执行任意数量的进程。 一次性将所有这些模块部署到某个设备，让 IoT Edge 提供某种方式来声明要安装哪些模块，以及如何将这些模块配置为协同工作。 
+每个 IoT Edge 设备至少运行两个模块：$edgeAgent 和 $edgeHub，它们构成了 IoT Edge 运行时。 IoT Edge 设备可以运行多个其他模块的任意数量的进程。 使用部署清单，以告知你的设备安装哪些模块以及如何将它们配置为协同工作。 
 
-部署清单是一个 JSON 文档，用于描述以下内容：
+ 部署清单是一个 JSON 文档，用于描述以下内容：
 
-* **IoT Edge 代理**模块孪生：包括每个模块的容器映像，访问专用容器注册表的凭据以及应如何创建和管理每个模块的说明。
+* **IoT Edge 代理**模块孪生，其中包含三个组件。 
+  * 在设备运行的每个模块容器映像。
+  * 要访问包含模块映像的专用容器注册表的凭据。
+  * 有关如何创建和管理每个模块的说明。
 * **IoT Edge 中心**模块孪生：描述消息如何在模块之间流动，并最终传送到 IoT 中心。
 * （可选）任何附加模块孪生的所需属性。
 
@@ -32,7 +35,7 @@ ms.locfileid: "61363143"
 
 ## <a name="create-a-deployment-manifest"></a>创建部署清单。
 
-从较高层面讲，部署清单是配置了所需属性的模块孪生的列表。 部署清单告知某个 IoT Edge 设备（或一组设备）要安装哪些模块，以及如何配置这些模块。 部署清单包含每个模块孪生的所需属性。 IoT Edge 设备将报告每个模块的报告属性。 
+从较高层面讲，部署清单是配置了所需属性的模块孪生的列表。 部署清单告知某个 IoT Edge 设备（或一组设备）要安装哪些模块，以及如何配置这些模块。 部署清单包含每个模块孪生的所需属性。  IoT Edge 设备将报告每个模块的报告属性。  
 
 每个部署清单中需要两个模块：`$edgeAgent` 和 `$edgeHub`。 这些模块属于管理 IoT Edge 设备及其上运行的模块的 IoT Edge 运行时。 有关这些模块的详细信息，请参阅[了解 IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
@@ -134,7 +137,9 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 
 ### <a name="source"></a>源
 
-源指定消息来自何处。 IoT Edge 可以路由来自叶设备或模块的消息。
+源指定消息来自何处。 IoT Edge 可以将来自模块的消息路由或叶设备。 
+
+使用的 IoT Sdk，则可以将模块声明使用 ModuleClient 类及其消息的特定的输出队列。 输出队列不是有必要，但对于管理多个路由非常有用。 叶设备可以使用 DeviceClient 类的 IoT Sdk 将消息发送到 IoT Edge 网关设备，同样会将消息发送到 IoT 中心。 有关详细信息，请参阅[了解和使用 Azure IoT 中心 Sdk](../iot-hub/iot-hub-devguide-sdks.md)。
 
 源属性可采用以下任何值：
 
@@ -142,16 +147,16 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 | ------ | ----------- |
 | `/*` | 所有设备到云的消息，或者来自任何模块或叶设备的孪生更改通知 |
 | `/twinChangeNotifications` | 来自任何模块或叶设备的任何孪生更改（报告属性） |
-| `/messages/*` | 由模块或叶设备通过某种输出或不通过任何输出发送的任何设备到云的消息 |
+| `/messages/*` | 通过一些或任何输出，模块或叶设备发送的任何设备到云消息 |
 | `/messages/modules/*` | 由带部分输出或不带输出的模块发送的任何设备到云的消息 |
 | `/messages/modules/<moduleId>/*` | 由特定模块通过某种输出或不通过任何输出发送的任何设备到云的消息 |
 | `/messages/modules/<moduleId>/outputs/*` | 由特定模块通过某种输出发送的任何设备到云的消息 |
 | `/messages/modules/<moduleId>/outputs/<output>` | 由特定模块通过特定输出发送的任何设备到云的消息 |
 
 ### <a name="condition"></a>条件
-条件在路由声明中是可选的。 若要将所有消息从接收器传递到源，完全省略 **WHERE** 子句即可。 或者，可以使用 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)来筛选满足条件的特定消息或消息类型。 IoT Edge 路由不支持基于孪生标记或属性筛选消息。 
+条件在路由声明中是可选的。 如果你想要将所有邮件从源都传递到接收器，只需省略**其中**子句完全。 或者，可以使用 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)来筛选满足条件的特定消息或消息类型。 IoT Edge 路由不支持基于孪生标记或属性筛选消息。 
 
-在 IoT Edge 中的模块之间传递的消息与在设备和 Azure IoT 中心之间传递的消息的格式是一样的。 所有消息都是 JSON 格式的，并具备 systemProperties、appProperties 和 body 参数。 
+在 IoT Edge 中的模块之间传递的消息与在设备和 Azure IoT 中心之间传递的消息的格式是一样的。 所有消息都是 JSON 格式的，并具备 systemProperties、appProperties 和 body 参数    。 
 
 可使用以下语法围绕三个参数中的任何一个生成查询： 
 
@@ -276,9 +281,3 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
 * 有关在 $edgeAgent 和 $edgeHub 中可以或必须包含的属性的完整列表，请参阅 [IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
 
 * 至此，你已了解如何使用 IoT Edge 模块，接下来请继续[了解开发 IoT Edge 模块的要求和工具](module-development.md)。
-
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-module-dev]: module-development.md

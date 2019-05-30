@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: c11eeb84fe4ed1ded93cb8de7ff54b756fd36749
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c94167929782a2deca7bba19924bfe67dd46bf29
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779911"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388374"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -302,7 +302,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 1. 使用最新的 [Application Insights Java SDK](../../azure-monitor/app/java-get-started.md)下载并配置 Web 应用程序
 
-2. 通过将下面的代码片段添加到 ApplicationInsights.xml 文件，启用固定速率采样模块。
+2. 通过将下面的代码片段添加到 ApplicationInsights.xml 文件，启用固定速率采样模块  。
 
     ```XML
         <TelemetryProcessors>
@@ -527,3 +527,4 @@ ASP.NET 版本 2.0.0 和 Java SDK 版本 2.0.1 及以上版本中 SDK 的固定�
 ## <a name="next-steps"></a>后续步骤
 
 * [筛选](../../azure-monitor/app/api-filtering-sampling.md)可以对 SDK 发送的内容提供更严格地控制。
+* 开发人员网络阅读文章[使用 Application Insights 优化遥测](https://msdn.microsoft.com/magazine/mt808502.aspx)。

@@ -3,19 +3,19 @@ title: 语言支持 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 文本翻译 API 支持的自然语言列表。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: v-pawal
+ms.openlocfilehash: 153fd5a8202ca0d919a2254449d846f8798bd10d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690149"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382494"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -23,7 +23,7 @@ ms.locfileid: "64690149"
 
 [详细了解机器翻译的工作原理](https://www.microsoft.com/translator/mt.aspx)
 
-## <a name="translation"></a>翻译
+## <a name="translation"></a>转换
 
 **V2 Translator API**
 
@@ -193,7 +193,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 ## <a name="detect"></a>Detect
 
-文本翻译 API 检测可用于转换和音译所有语言。
+翻译工具文本 API 检测可用于翻译和音译的所有语言。
 
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>以编程方式访问文本翻译 API 语言列表

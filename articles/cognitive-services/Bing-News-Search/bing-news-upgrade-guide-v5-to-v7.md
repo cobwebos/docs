@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 04c457fba5cb32cc1312ffac2c2f7c1470b5a46b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 235cc1c74c099a71d289d38369ebc10132564825
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60519015"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383298"
 ---
 # <a name="news-search-api-upgrade-guide"></a>新闻搜索 API 升级指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "60519015"
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如， https://api.cognitive.microsoft.com/bing/v7.0/news/search。
+- 终结点的版本号已从 v5 更改为 v7。 例如， https://api.cognitive.microsoft.com/bing/v7.0  /news/search。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -70,24 +70,24 @@ InsufficientScope|InsufficientAuthorization
 
 ### <a name="object-changes"></a>对象变化
 
-- 已将 `contractualRules` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) 对象。 `contractualRules` 字段包含必须遵循的规则列表（例如，文章归属）。 必须应用 `contractualRules` 中提供的归属，而不是使用 `provider`。 仅当 [Web 搜索 API](../bing-web-search/search-the-web.md) 响应包含新闻答案时，文章才包含 `contractualRules`。
+- 已将 `contractualRules` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) 对象。 `contractualRules` 字段包含必须遵循的规则列表（例如，文章归属）。 必须应用 `contractualRules` 中提供的归属，而不是使用 `provider`。 仅当 [Web 搜索 API](../bing-web-search/search-the-web.md) 响应包含新闻答案时，文章才包含 `contractualRules`。
 
 ## <a name="non-breaking-changes"></a>非重大变化
 
 ### <a name="query-parameters"></a>查询参数
 
-- 已将 Products 添加为可以将 [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) 查询参数设置为的可取值。 请参阅[按市场划分的类别](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)。
+- 已将 Products 添加为可以将 [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查询参数设置为的可取值。 请参阅[按市场划分的类别](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)。
 
-- 已添加 [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) 查询参数，它返回按日期排序的热门主题（最新主题排在最前面）。
+- 已添加 [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) 查询参数，它返回按日期排序的热门主题（最新主题排在最前面）。
 
-- 已添加 [Since](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#since) 查询参数，它返回必应在指定 Unix 时间戳期间或之后发现的热门主题。
+- 已添加 [Since](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) 查询参数，它返回必应在指定 Unix 时间戳期间或之后发现的热门主题。
 
 ### <a name="object-changes"></a>对象变化
 
-- 已将 `mentions` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) 对象。 `mentions` 字段包含在文章中找到的实体（人员或位置）列表。
+- 已将 `mentions` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) 对象。 `mentions` 字段包含在文章中找到的实体（人员或位置）列表。
 
-- 已将 `video` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) 对象。 `video` 字段包含与新闻文章相关的视频。 视频要么是可以嵌入的 \<iframe\>，要么是动作缩略图。
+- 已将 `video` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) 对象。 `video` 字段包含与新闻文章相关的视频。 视频要么是可以嵌入的 \<iframe\>，要么是动作缩略图。
 
-- 已将 `sort` 字段添加到 [News](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) 对象。 `sort` 字段显示文章排序顺序。 例如，文章按相关性（默认设置）或日期排序。
+- 已将 `sort` 字段添加到 [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) 对象。 `sort` 字段显示文章排序顺序。 例如，文章按相关性（默认设置）或日期排序。
 
-- 已添加 [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortvalue) 对象，用于定义排序顺序。 `isSelected` 字段指明响应是否使用了排序顺序。 如果为 true，表明响应使用了排序顺序。 如果 `isSelected` 为 false，可以使用 `url` 字段中的 URL 来请求获取其他排序顺序。
+- 已添加 [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) 对象，用于定义排序顺序。 `isSelected` 字段指明响应是否使用了排序顺序。 如果为 true  ，表明响应使用了排序顺序。 如果 `isSelected` 为 false  ，可以使用 `url` 字段中的 URL 来请求获取其他排序顺序。

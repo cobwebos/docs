@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ad57f86e221a98461fcd1dc11b92f5665d6128d0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e27829fe5ebf57552ef4e97a2bfc7b6aefd81dc8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786442"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254398"
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
@@ -39,12 +39,15 @@ ms.locfileid: "65786442"
     -   [验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) - 强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。  
 -   [高级策略](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [控制流](api-management-advanced-policies.md#choose) - 根据布尔表达式的求值，有条件地应用策略语句。  
-    -   [转发请求](api-management-advanced-policies.md#ForwardRequest) - 将请求转发到后端服务。  
-    -   [记录到事件中心](api-management-advanced-policies.md#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的消息目标。  
+    -   [转发请求](api-management-advanced-policies.md#ForwardRequest) - 将请求转发到后端服务。
+    -   [限制并发](api-management-advanced-policies.md#LimitConcurrency) - 阻止括住的策略一次执行超过指定数量的请求。
+    -   [记录到事件中心](api-management-advanced-policies.md#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的消息目标。
+    -   [模拟响应](api-management-advanced-policies.md#mock-response) - 中止管道执行，将模拟的响应直接返回给调用方。
     -   [重试](api-management-advanced-policies.md#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会按指定的时间间隔重复执行，直到达到指定的重试计数为止。  
     -   [返回响应](api-management-advanced-policies.md#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。  
     -   [发送单向请求](api-management-advanced-policies.md#SendOneWayRequest) - 将请求发送到指定的 URL，无需等待响应。  
-    -   [发送请求](api-management-advanced-policies.md#SendRequest) - 将请求发送到指定的 URL。  
+    -   [发送请求](api-management-advanced-policies.md#SendRequest) - 将请求发送到指定的 URL。
+    -   [设置 HTTP 代理](api-management-advanced-policies.md#SetHttpProxy) - 允许通过 HTTP 代理路由转发请求。
     -   [设置变量](api-management-advanced-policies.md#set-variable) - 保存命名上下文变量中的值供以后访问。  
     -   [设置请求方法](api-management-advanced-policies.md#SetRequestMethod) - 允许更改请求的 HTTP 方法。  
     -   [设置状态代码](api-management-advanced-policies.md#SetStatus) - 将 HTTP 状态代码更改为指定的值。  

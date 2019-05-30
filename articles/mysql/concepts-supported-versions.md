@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/13/2019
 ms.openlocfilehash: e7e81632b2be135fb74d375ab8a11f1b4b3ef39d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60525930"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支持的 Azure Database for MySQL 服务器版本
@@ -43,4 +43,4 @@ Bug 修复版本：5.7.24
 
 ## <a name="next-steps"></a>后续步骤
 
-有关基于服务层级的具体资源配额和限制的信息，请参阅[服务层级](./concepts-pricing-tiers.md)
+有关基于服务层级  的具体资源配额和限制的信息，请参阅[服务层级](./concepts-pricing-tiers.md)

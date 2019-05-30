@@ -7,14 +7,18 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: pabutler
-ms.openlocfilehash: ec206c2d637f9fb2727d72cf17087050a765672c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e7a01af1eba865b0a088b0fa7226273527abd70e
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941966"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257412"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS 履行 API
+
+> [!IMPORTANT] 
+> SaaS 产品/服务的功能已迁移到[Microsoft 合作伙伴中心](https://partner.microsoft.com/dashboard/directory)。  所有新的发布服务器必须使用合作伙伴中心创建新的 SaaS 产品/服务和管理现有产品/服务。  使用 SaaS 产品/服务的当前发布服务器正在 batchwise 迁移从云合作伙伴门户到合作伙伴中心。  云合作伙伴门户将显示状态消息以指示何时已迁移特定的现有产品/服务。
+> 有关详细信息，请参阅[创建新的 SaaS 产品/服务](../../partner-center-portal/create-new-saas-offer.md)。
 
 SaaS 履行 Api 使独立软件供应商 (Isv) 可以将其 SaaS 应用程序集成在 Azure marketplace 中销售。 这些 Api 使 ISV 应用程序能够参与所有启用的商务通道： 直接、 合作伙伴主导式 （经销商） 和字段导致。  它们是用于列出在 Azure Marketplace 上的事务 SaaS 产品/服务的要求。
 

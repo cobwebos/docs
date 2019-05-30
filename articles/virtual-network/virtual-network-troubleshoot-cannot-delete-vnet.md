@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4bd143b37e4403d039108b4349b27604b6503e0e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 5d2e10a4c5cd5b5dc1a8fe19cef7bc47f68d3fbe
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123019"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235009"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>故障排除：无法在 Azure 中删除虚拟网络
 
@@ -42,19 +42,19 @@ ms.locfileid: "62123019"
 
 若要删除虚拟网络，首先必须删除虚拟网络网关。
 
-对于经典虚拟网络，请在 Azure 门户中转到经典虚拟网络的“概述”页。 在“VPN 连接”部分中，如果网关正在虚拟网络中运行，则会显示该网关的 IP 地址。 
+对于经典虚拟网络，请在 Azure 门户中转到经典虚拟网络的“概述”页。  在“VPN 连接”部分中，如果网关正在虚拟网络中运行，则会显示该网关的 IP 地址。  
 
 ![检查网关是否正在运行](media/virtual-network-troubleshoot-cannot-delete-vnet/classic-gateway.png)
 
-对于虚拟网络，请转到虚拟网络的“概述”页。 检查虚拟网络网关的“已连接设备”。
+对于虚拟网络，请转到虚拟网络的“概述”页。  检查虚拟网络网关的“已连接设备”。 
 
 ![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
-在删除网关之前，请先删除该网关中的所有“连接”对象。 
+在删除网关之前，请先删除该网关中的所有“连接”对象。  
 
 ### <a name="check-whether-an-application-gateway-is-running-in-the-virtual-network"></a>检查应用程序网关是否在虚拟网络中运行
 
-转到虚拟网络的“概述”页。 检查应用程序网关的“已连接设备”。
+转到虚拟网络的“概述”页。  检查应用程序网关的“已连接设备”。 
 
 ![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "62123019"
 
 ![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
-若要禁用服务，请参阅[使用 Azure 门户禁用 Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-disable-aadds.md)。
+若要禁用服务，请参阅[使用 Azure 门户禁用 Azure Active Directory 域服务](../active-directory-domain-services/delete-aadds.md)。
 
 ### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>检查虚拟网络是否已连接到其他资源
 

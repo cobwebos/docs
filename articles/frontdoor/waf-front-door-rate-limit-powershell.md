@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 3701a69ab72abf20a4f1608a1cee56c9cea38aca
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 99b0cab3fd277f90a675f0e6087d572853053a08
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523639"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387337"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>配置 web 应用程序防火墙速率限制规则使用 Azure PowerShell
 Azure web 应用程序防火墙 (WAF) 速率限制规则的 Azure 第一道防线控制一分钟持续期间允许从单个客户端 IP 的请求数。
@@ -65,10 +65,10 @@ Install-Module -Name Az.FrontDoor
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>创建自定义速率限制规则
-设置速率限制使用[新建 AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)。 在以下示例中，该限制设置为 1000年。 在一个一分钟内超过 1000年的促销页面从任何客户端请求会被阻止，直到下一分钟启动。
+设置速率限制使用[新建 AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)。 在以下示例中，该限制设置为 1000年。 在一个一分钟内超过 1000年的促销页面从任何客户端请求会被阻止，直到下一分钟启动。
 
 ```powershell-interactive
-   $promoRateLimitRule = New-AzFrontDoorCustomRuleObject `
+   $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
      -Name "rateLimitRule" `
      -RuleType RateLimitRule `
      -MatchCondition $promoMatchCondition `

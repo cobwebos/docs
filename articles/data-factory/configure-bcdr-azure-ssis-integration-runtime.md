@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: dea0153b9ca6d8e751fd94cc558abd44b2591907
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0612a688bb1e0fd79325b9a1f9b43731a210d10
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66120432"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399238"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>针对 Azure SQL 数据库异地复制和故障转移配置 Azure-SSIS Integration Runtime
 
@@ -38,7 +38,7 @@ ms.locfileid: "66120432"
 
   AND
 
-- SQL 数据库服务器“未”配置虚拟网络服务终结点规则。
+- SQL 数据库服务器“未”  配置虚拟网络服务终结点规则。
 
 ### <a name="solution"></a>解决方案
 
@@ -52,11 +52,11 @@ ms.locfileid: "66120432"
 
 - Azure-SSIS IR 指向故障转移组的主服务器终结点。 发生故障转移时，此终结点更改。
 
-  OR
+  或
 
 - Azure SQL 数据库服务器配置了虚拟网络服务终结点规则。
 
-  OR
+  或
 
 - 数据库服务器是配置有虚拟网络的 SQL 数据库托管实例。
 
@@ -100,6 +100,59 @@ ms.locfileid: "66120432"
     有关此 PowerShell 命令的详细信息，请参阅[在 Azure 数据工厂中创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)
 
 3. 再次启动 IR。
+
+## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>方案 3-将现有的 SSISDB （SSIS 目录） 附加到新的 Azure SSIS IR
+
+ADF 或 Azure SSIS IR 灾难发生在当前区域中，您可以在你使用新的 Azure SSIS IR，新区域中的 SSISDB 保留。
+
+### <a name="prerequisites"></a>必备组件
+
+- 如果在当前区域中使用虚拟网络，则需要在新区域中使用另一个虚拟网络连接到 Azure-SSIS 集成运行时。 有关详细信息，请参阅[将 Azure-SSIS 集成运行时加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
+
+- 如果使用自定义设置，可能需要为存储自定义设置脚本和关联文件的 Blob 容器准备另一个 SAS URI，以便在中断期间可以继续访问该容器。 有关详细信息，请参阅[在 Azure-SSIS 集成运行时中配置自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
+
+### <a name="steps"></a>Steps
+
+遵循以下步骤停止 Azure-SSIS IR，切换到新区域，然后再次启动该 IR。
+
+1. 执行存储的过程以使附加到 SSISDB **\<new_data_factory_name\>** 或 **\<new_integration_runtime_name\>** 。
+   
+  ```SQL
+    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
+
+2. 创建名为的新数据工厂 **\<new_data_factory_name\>** 新区域中。 有关详细信息，请参阅创建数据工厂。
+
+     ```powershell
+     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+                         -Location "new region"`
+                         -Name "<new_data_factory_name>"
+     ```
+    有关此 PowerShell 命令的详细信息，请参阅[创建 Azure 数据工厂使用 PowerShell](quickstart-create-data-factory-powershell.md)
+
+3. 创建名为新的 Azure SSIS IR **\<new_integration_runtime_name\>** 中使用 Azure PowerShell，在新区域。
+
+    ```powershell
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+                                           -DataFactoryName "new data factory name" `
+                                           -Name "<new_integration_runtime_name>" `
+                                           -Description $AzureSSISDescription `
+                                           -Type Managed `
+                                           -Location $AzureSSISLocation `
+                                           -NodeSize $AzureSSISNodeSize `
+                                           -NodeCount $AzureSSISNodeNumber `
+                                           -Edition $AzureSSISEdition `
+                                           -LicenseType $AzureSSISLicenseType `
+                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                           -VnetId "new vnet" `
+                                           -Subnet "new subnet" `
+                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
+                                           -CatalogPricingTier $SSISDBPricingTier
+    ```
+
+    有关此 PowerShell 命令的详细信息，请参阅[在 Azure 数据工厂中创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)
+
+4. 再次启动 IR。
 
 ## <a name="next-steps"></a>后续步骤
 

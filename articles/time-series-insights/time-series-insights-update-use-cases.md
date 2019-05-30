@@ -2,7 +2,7 @@
 title: Azure 时序见解预览版用例 | Microsoft Docs
 description: 了解 Azure 时序见解预览版用例。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27c79155a4630f49faf49f30b2d46bf1e0dffd90
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 787445d5186a173b2cba674b36cd95879cc863e5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508310"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389998"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure 时序见解预览版用例
 
@@ -28,11 +28,11 @@ ms.locfileid: "65508310"
 * 使用的时序见解的优点是什么[操作分析和流程效率](#operational-analysis-and-driving-process-efficiency)？
 * 使用的时序见解的优点是什么[高级分析](#advanced-analytics)？
 
-其中概述使用方案如下所述。
+其中概述使用方案以下各节中所述。
 
 ## <a name="introduction"></a>简介
 
-Azure 时序见解是一种端到端的平台即服务产品。 用于收集、 处理、 存储、 分析和查询高度符合，时间系列优化 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
+Azure 时序见解是一种端到端的平台即服务产品。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是产品/服务，满足广泛需要工业 IoT 部署的唯一可扩展、 自定义服务。
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>数据浏览和直观异常检测
 
@@ -54,7 +54,7 @@ Azure 时序见解是一种端到端的平台即服务产品。 用于收集、 
 
     * 读取[时间系列 Insights JS 客户端库](tutorial-explore-js-client-lib.md)并[时序见解客户端](https://github.com/Microsoft/tsiclient)文档，了解有关 JavaScript SDK 的详细信息。
 
-    * 了解有关通过查看共享 Url 和新的用户界面的详细信息[资源管理器预览版中的将数据可视化](time-series-insights-update-explorer.md)。
+    * 了解有关通过查看共享 Url 和新的用户界面的详细信息[直观显示 Azure 时间系列 Insights 预览版资源管理器中的数据](time-series-insights-update-explorer.md)。
 
 - 第三种方法是使用功能强大的 API 查询存储在时序见解中的数据。 时序见解有临时运算符，如`from`， `to`， `first`，和`last`。 它具有聚合和转换等`average`， `min`， `max`， `split by`， `order by`，并`DateHistogram`。 它还具有如筛选运算符`has`， `in`， `and`， `or`， `greater than`，并`REGEX`。 所有这些运算符使下游应用程序能够快速找到数据中的相关趋势和模式。 可使用它们来填充自生成的可视化效果以发现异常。
 
@@ -97,7 +97,5 @@ Azure 时序见解是一种端到端的平台即服务产品。 用于收集、 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)的详细信息。
-
-- 要规划环境，请阅读[时序见解预览版规划](./time-series-insights-update-plan.md)。
-
+- 读取[时间系列 Insights 预览版规划](./time-series-insights-update-plan.md)规划您的环境。
 - 阅读[时序见解客户端](https://github.com/Microsoft/tsiclient)文档。

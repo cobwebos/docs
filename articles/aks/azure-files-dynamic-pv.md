@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 43f3a55bc820a232ccebc3a940faa86f9eb730f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9771c110e277d67bee329fe62434b18a01189476
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467368"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072226"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -64,9 +64,9 @@ kubectl apply -f azure-file-sc.yaml
 
 ## <a name="create-a-cluster-role-and-binding"></a>创建群集角色和绑定
 
-AKS 群集使用 Kubernetes 基于角色的访问控制 (RBAC) 来限制可执行的操作。 “角色”定义要授予的权限，“绑定”将其应用到目标用户。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][kubernetes-rbac]。
+AKS 群集使用 Kubernetes 基于角色的访问控制 (RBAC) 来限制可执行的操作。 “角色”定义要授予的权限，“绑定”将其应用到目标用户   。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][kubernetes-rbac]。
 
-要允许 Azure 平台创建所需的存储资源，请创建 ClusterRole 和 ClusterRoleBinding。 创建名为 `azure-pvc-roles.yaml` 的文件，并将其复制到以下 YAML 中：
+要允许 Azure 平台创建所需的存储资源，请创建 ClusterRole 和 ClusterRoleBinding   。 创建名为 `azure-pvc-roles.yaml` 的文件，并将其复制到以下 YAML 中：
 
 ```yaml
 ---
@@ -136,7 +136,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>使用永久性卷
 
-以下 YAML 创建的 Pod 使用永久性卷声明 *azurefile* 将 Azure 文件共享装载到 */mnt/azure* 路径。
+以下 YAML 创建的 Pod 使用永久性卷声明 *azurefile* 将 Azure 文件共享装载到 */mnt/azure* 路径。 对于 Windows Server 容器 （目前以预览版在 AKS 中），指定*mountPath*使用 Windows 路径约定，如*d:* 。
 
 创建名为 `azure-pvc-files.yaml` 的文件，并将其复制到以下 YAML 中。 请确保 *claimName* 与上一步骤中创建的 PVC 匹配。
 
@@ -171,7 +171,7 @@ spec:
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-现有一个正在运行的 Pod，其中的 Azure 文件存储共享已装载到 /mnt/azure 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。 以下精简示例输出显示容器中装载的卷：
+现有一个正在运行的 Pod，其中的 Azure 文件存储共享已装载到 /mnt/azure 目录中  。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。 以下精简示例输出显示容器中装载的卷：
 
 ```
 Containers:

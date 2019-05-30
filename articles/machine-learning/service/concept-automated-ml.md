@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 05/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 88e4e305e0f66c61ab4d73bcfef21319b4d02946
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: df666843b8a42711aa860a6f8c5e916fb68f036d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989795"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389901"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -51,7 +51,7 @@ ms.locfileid: "65989795"
 
 1. **提交训练运行。**
 
-  ![自动化的机器学习](./media/how-to-automated-ml/automl-concept-diagram.png)
+  ![自动化的机器学习](./media/how-to-automated-ml/automl-concept-diagram2.png)
 
 在定型期间，Azure 机器学习服务中并行管道，请尝试不同的算法和参数创建的数。 它将停止后它会命中在试验中定义的退出条件。
 
@@ -93,6 +93,60 @@ ms.locfileid: "65989795"
 
 使用具有自动的机器学习的系综模型训练[Caruana 系综选择算法与已排序的系综初始化](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)。 系综学习的项而不是使用单个模型的多个模型，改进了机器学习结果和预测性能。 系综迭代将显示为您运行的最后一个迭代。
 
+## <a name="training-metric-output"></a>训练指标输出
+
+有多种方法可以查看每个运行迭代训练准确性指标。
+
+* 使用 Jupyter 小组件。
+* 使用`get_metrics()`函数对任何`Run`对象。
+* 在试验中在 Azure 门户中查看的指标。
+
+### <a name="classification-metrics"></a>分类指标
+
+以下度量值将保存在分类任务的每个运行迭代。
+
+|指标|描述|计算|其他参数
+--|--|--|--|
+AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
+AUC_Micro| AUC 是接收方操作特性曲线下面的区域。 通过组合每个类中的真报率和误报率来全局计算 Micro| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
+AUC_Weighted  | AUC 是接收方操作特性曲线下面的区域。 Weighted 是每个类的评分算术平均值，按每个类中的真实实例数加权| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
+accuracy|Accuracy 是与真实标签完全匹配的预测标签百分比。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |无|
+average_precision_score_macro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 Macro 是每个类的平均精度评分算术平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="macro"|
+average_precision_score_micro|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 通过组合每个交接中的真报率和误报率来全局计算 Micro|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
+average_precision_score_weighted|平均精度以每个阈值实现的加权精度汇总精度-召回率曲线，使用前一阈值中的召回率增量作为权重。 Weighted 是每个类的平均精度评分算术平均值，按每个类中的真实实例数加权|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="weighted"|
+balanced_accuracy|平衡准确度是每个类的召回率算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
+f1_score_macro|F1 评分是精度和召回率的调和平均值。 Macro 是每个类的 F1 评分算术平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
+f1_score_micro|F1 评分是精度和召回率的调和平均值。 通过统计真报率、漏报率和误报率总值来全局计算 Micro|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
+f1_score_weighted|F1 评分是精度和召回率的调和平均值。 按每个类的 F1 评分类频率计算的加权平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
+log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于在 {0,1} 中包含真实标签 yt，且包含 yt=1 的估计概率 yp 的单个样本，对数损失为 -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp))|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
+norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 可以通过公式 norm_macro_recall := (recall_score_macro - R)/(1 - R) 来计算此值，其中，R 是随机预测的 recall_score_macro 预期值（例如，对于二元分类，R=0.5；对于 C 类分类问题，R=(1/C)）|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "macro"，(recall_score_macro - R)/(1 - R)，其中，R 是随机预测的 recall_score_macro 预期值（例如，对于二元分类，R=0.5；对于 C 类分类问题，R=(1/C)）|
+precision_score_macro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 Macro 是每个类的精度算术平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
+precision_score_micro|Precision 是标记为特定类的，实际位于该类中的元素百分比。 通过统计真报率和误报率总值来全局计算 Micro|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
+precision_score_weighted|Precision 是标记为特定类的，实际位于该类中的元素百分比。 Weighted 是每个类的精度算术平均值，按每个类中的真实实例数加权|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="weighted"|
+recall_score_macro|Recall 是实际位于某个类中的已正确标记的元素百分比。 Macro 是每个类的召回率算术平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="macro"|
+recall_score_micro|Recall 是实际位于某个类中的已正确标记的元素百分比。 通过统计真报率和漏报率总值来全局计算 Micro|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
+recall_score_weighted|Recall 是实际位于某个类中的已正确标记的元素百分比。 Weighted 是每个类的召回率算术平均值，按每个类中的真实实例数加权|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
+weighted_accuracy|加权准确度是当分配给每个示例的权重等于该示例的真实类中的真实实例比例时的准确度|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight 是等于目标中每个元素的该类比例的向量|
+
+### <a name="regression-and-forecasting-metrics"></a>回归和预测指标
+
+以下度量值将保存在每个运行迭代的回归或预测任务。
+
+|指标|描述|计算|其他参数
+--|--|--|--|
+explained_variance|解释方差是数学模型计算给定数据集的方差时遵循的比例。 它是原始数据方差与误差方差之间的递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|无|
+r2_score|R2 是与输出平均值的基线模型相比，平方误差的确定系数或递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|无|
+spearman_correlation|斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，此参数在 -1 和 +1 之间变化，0 表示不相关。 -1 或 +1 相关表示确切的单一关系。 正相关表示 y 随着 x 的递增而递增。 负相关表示 y 随着 x 的递增而递减。|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|无|
+mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|无|
+normalized_mean_absolute_error|规范化平均绝对误差是平均绝对误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|除以数据范围|
+median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|无|
+normalized_median_absolute_error|规范化中间绝对误差是中间绝对误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|除以数据范围|
+root_mean_squared_error|均方根误差是目标与预测之间的预期平方差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|无|
+normalized_root_mean_squared_error|规范化均方根误差是均方根误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|除以数据范围|
+root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|无|
+normalized_root_mean_squared_log_error|规范化均方根对数误差指均方根对数误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|除以数据范围|
+
+
 ## <a name="use-with-onnx-in-c-apps"></a>与中的 ONNX 配合使用C#应用程序
 
 与 Azure 机器学习，可以使用自动化的机器学习生成 Python 模型并将其转换为 ONNX 格式。 ONNX 运行时支持C#，因此可以使用中自动生成的模型在C#的应用而无需重新编写代码或任何 REST 终结点引入的网络延迟。 请尝试此流的示例[此 Jupyter notebook 中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-with-onnx/auto-ml-classification-with-onnx.ipynb)。
@@ -114,7 +168,7 @@ ms.locfileid: "65989795"
 + 配置自动训练实验的设置：
   + 在 Azure 门户界面[使用以下步骤](how-to-create-portal-experiments.md)。
   + 使用 Python SDK[使用以下步骤](how-to-configure-auto-train.md)。
-  
+
 + 了解如何自动使用时序数据，训练[使用以下步骤](how-to-auto-train-forecast.md)。
 
 + 试用[Jupyter 笔记本示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)

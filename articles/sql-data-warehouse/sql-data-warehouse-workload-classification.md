@@ -1,5 +1,5 @@
 ---
-title: SQL 数据仓库分类 | Microsoft Docs
+title: Azure SQL 数据仓库分类 |Microsoft Docs
 description: 有关使用分类管理 Azure SQL 数据仓库中查询的并发性、重要性和计算资源的指导。
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4630e11ef4001c546aecfe74dbced346b6d30e4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 3edae23183896651efcbf7f867204a618a10c85d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000117"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236900"
 ---
-# <a name="sql-data-warehouse-workload-classification"></a>SQL 数据仓库工作负荷分类
+# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL 数据仓库工作负荷分类
 
 本文介绍用于向传入请求分配资源类和重要性的 SQL 数据仓库工作负荷分类过程。
 

@@ -12,23 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f5819194e7967b5921f34223cad299752460de30
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574257"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255644"
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights 中的 Analytics
 Analytics 是 [Application Insights](app-insights-overview.md) 的强大搜索和查询工具。 Analytics 是一个 Web 工具，因此不需要安装。
-如果已经为某个应用配置了 Application Insights，则可以通过从该应用的[概述边栏选项卡](app-insights-dashboards.md)打开 Analytics 来对应用数据进行分析。
+如果已经为某个应用配置了 Application Insights，则可以通过从该应用的概述边栏选项卡打开 Analytics 来对应用数据进行分析。
 
 ![依次打开 portal.azure.com 和 Application Insights 资源，并单击“Analytics”。](./media/analytics/001.png)
 
 还可以使用 [Analytics 练习场](https://go.microsoft.com/fwlink/?linkid=859557)，这是一个免费的演示环境，其中包含大量示例数据。
-<br>
-<br>
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="relation-to-azure-monitor-logs"></a>与 Azure Monitor 日志的关系
 与 Azure Monitor 日志一样，Application Insights 分析基于 [Azure 数据资源管理器](/azure/data-explorer)并且也使用 [Kusto 查询语言](/azure/kusto/query)。 它使用与 Azure Monitor 日志相同的[日志分析门户](../log-query/get-started-portal.md)，虽然其数据存储在不同的分区中。

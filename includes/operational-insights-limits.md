@@ -9,15 +9,15 @@ ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: 34f2ab8f7ccafb8b30e298cd71e09171ad8c87cb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553326"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238178"
 ---
 以下限制适用于每个订阅的 Azure Log Analytics 资源。
 
-| 资源 | 默认限制 | 注释
+| Resource | 默认限制 | 注释
 | --- | --- | --- |
 | 每个订阅的免费工作区数目 | 10 | 不能增加此限制。 |
 | 每个订阅的付费工作区数目 | 不适用 | 限制是资源组中的资源数和每个订阅的资源组的数目。 | 

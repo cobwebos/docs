@@ -12,20 +12,20 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 0be39aaf5526ea288764fc72d6c498cca2d659b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6115d7f70c2c75898b18a27af298a44ca87ca1bd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61486326"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240868"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>使用提取的数据运行跨租户分析 - 单租户应用
  
 本教程将逐步完成一个单租户实现的完整分析方案。 该方案演示企业如何通过分析做出明智的决策。 借助从每个租户数据库提取的数据，可以使用分析来获取租户行为的见解，包括租户如何使用示例 Wingtip Tickets SaaS 应用程序。 此方案涉及三个步骤： 
 
-1.  从每个租户数据库提取数据，然后加载到分析存储中。
-2.  转换提取后的数据进行分析处理。
-3.  使用“商业智能”工具抽取出有用的见解，以引导作出决策。 
+1.  从每个租户数据库提取数据，然后加载到分析存储中   。
+2.  转换提取后的数据进行分析处理  。
+3.  使用“商业智能”工具抽取出有用的见解，以引导作出决策  。 
 
 本教程介绍如何执行下列操作：
 
@@ -44,7 +44,7 @@ ms.locfileid: "61486326"
 
 如果所有数据均位于一个多租户数据库中，则可轻松访问所有租户的数据。 但是，如果数据大量分散在几千个数据库中，访问就变得更加复杂。 为降低复杂度和尽量减少分析查询对事务数据的影响，一种方式是将数据提取到专门的分析数据库或数据仓库。
 
-本教程将展示一个针对 Wingtip Tickets SaaS 应用程序的完整分析情景。 首先，使用弹性作业从租户数据库中提取数据，再将其加载到分析存储的临时表中。 分析存储可以是 SQL 数据库或 SQL 数据仓库。 对于大规模数据提取，建议使用 [Azure 数据仓库](../data-factory/introduction.md)。
+本教程将展示一个针对 Wingtip Tickets SaaS 应用程序的完整分析情景。 首先，使用弹性作业从租户数据库中提取数据，再将其加载到分析存储的临时表中  。 分析存储可以是 SQL 数据库或 SQL 数据仓库。 对于大规模数据提取，建议使用 [Azure 数据仓库](../data-factory/introduction.md)。
 
 接下来，将聚合的数据转换为一组[星型架构](https://www.wikipedia.org/wiki/Star_schema)表。 这些表由一个中心事实数据表和相关的维度表组成。  对于 Wingtip Tickets：
 
@@ -55,7 +55,7 @@ ms.locfileid: "61486326"
  
 ![architectureOverView](media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-最后，使用 PowerBI 查询分析存储，以突出显示租户行为及其 Wingtip Tickets 应用程序使用情况的相关信息。 运行查询以：
+最后，使用 PowerBI 查询分析存储，以突出显示租户行为及其 Wingtip Tickets 应用程序使用情况的相关信息  。 运行查询以：
  
 - 显示每个场所的相对受欢迎程度
 - 突出显示不同活动的售票模式
@@ -70,14 +70,14 @@ ms.locfileid: "61486326"
 若要完成本教程，请确保满足以下先决条件：
 
 - 已部署 Wingtip Tickets SaaS Database Per Tenant 应用程序。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)
-- 已从 GitHub 下载 Wingtip Tickets SaaS Database Per Tenant 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)。 请参阅下载说明。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
+- 已从 GitHub 下载 Wingtip Tickets SaaS Database Per Tenant 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)。 请参阅下载说明。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。  有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 - 已安装 Power BI Desktop。 [下载 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - 已预配其他租户批，具体请参阅[**有关预配租户的教程**](saas-dbpertenant-provision-and-catalog.md)。
 - 已创建作业帐户和作业帐户数据库。 请参阅[**架构管理教程**](saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)中的相应步骤。
 
 ### <a name="create-data-for-the-demo"></a>创建用于演示的数据
 
-在本教程中，将门票销售数据执行分析。 在当前步骤中，请为所有租户生成门票数据。  稍后将提取这些数据进行分析。 确保已按如前所述预配租户批，以便获得有意义的数据量。 数量够大的数据能够揭示不同购票模式的范围。
+在本教程中，将门票销售数据执行分析。 在当前步骤中，请为所有租户生成门票数据。  稍后将提取这些数据进行分析。 确保已按如前所述预配租户批，以便获得有意义的数据量。  数量够大的数据能够揭示不同购票模式的范围。
 
 1. 在 PowerShell ISE 中打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 并设置以下值：
     - **$DemoScenario** = **1** 购买所有会场举行的活动的门票
@@ -125,7 +125,7 @@ ms.locfileid: "61486326"
 
 ### <a name="extract-raw-data-from-all-tenants"></a>从所有租户提取原始数据
 
-相比活动和会场数据而言，门票和客户数据发生大规模数据修改的频率可能更大。 因此，请考虑以高于活动和会场数据的提取频率单独提取门票和客户数据。 在本部分，定义并计划两个单独的作业：
+相比活动和会场数据而言，门票和客户数据发生大规模数据修改的频率可能更大。   因此，请考虑以高于活动和会场数据的提取频率单独提取门票和客户数据。 在本部分，定义并计划两个单独的作业：
 
 - 提取门票和客户数据。
 - 提取活动和会场数据。
@@ -169,17 +169,17 @@ ms.locfileid: "61486326"
 使用以下步骤连接到 Power BI，并导入前面创建的视图：
 
 1. 启动 Power BI Desktop。
-2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...” 从菜单中。
-3. 在“获取数据”窗口中，选择“Azure SQL 数据库”。
-4. 在数据库登录窗口中，输入服务器名称 (catalog-dpt-&lt;User&gt;.database.windows.net)。 为“数据连接模式”选择“导入”，单击“确定”。 
+2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...”   从菜单中。
+3. 在“获取数据”窗口中，选择“Azure SQL 数据库”。 
+4. 在数据库登录窗口中，输入服务器名称 (catalog-dpt-&lt;User&gt;.database.windows.net)。 为“数据连接模式”选择“导入”，单击“确定”。   
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择**数据库**在左窗格中，然后输入用户名 =*开发人员*，然后输入密码 = *P\@ssword1*。 单击“连接”。  
+5. 选择**数据库**在左窗格中，然后输入用户名 =*开发人员*，然后输入密码 = *P\@ssword1*。 单击“连接”  。  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. 在“导航器”窗格中的分析数据库下，选择以下星型架构表：fact_Tickets、dim_Events、dim_Venues、dim_Customers 和 dim_Dates。 然后选择“加载”。 
+6. 在“导航器”窗格中的分析数据库下，选择以下星型架构表：fact_Tickets、dim_Events、dim_Venues、dim_Customers 和 dim_Dates。  然后选择“加载”。  
 
 祝贺你！ 数据已成功载入 Power BI。 现在，可以开始探索有趣的可视化效果，以帮助自己深入了解租户。 本教程接下来逐步讲解如何使用分析向 Wingtip Tickets 业务团队提供数据驱动的建议。 借助建议可以优化业务模型和客户体验。
 
@@ -209,7 +209,7 @@ ms.locfileid: "61486326"
 
 门票销售模式的见解可以引导 Wingtip Tickets 优化其业务模式。 Wingtip 也许可以不向所有租户收取相同的费用，而是推出具有不同计算大小的服务层级。 可以根据更高的服务级别协议 (SLA)，向每日售出较多门票的大型会场提供更高的层。 这些会场可将数据库放在具有更高的数据库资源限制的池中。 每个服务层级可以采用按小时售量分配，超出分配即会收取额外的费用。 定期出现销量喷发的大型会场将会受益于更高的层，而 Wingtip Tickets 可以更高效地将服务变现。
 
-同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。 针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
+同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。  针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
 
 ```
 AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CALCULATE( SUM(TableName[Tickets Sold] ) ) )
@@ -227,7 +227,7 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > - 部署包含预定义星型架构表的租户分析数据库
@@ -241,5 +241,5 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 ## <a name="additional-resources"></a>其他资源
 
 - 其他[基于 Wingtip SaaS 应用程序编写的教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。
-- [弹性作业](sql-database-elastic-jobs-overview.md)。
+- [弹性作业](elastic-jobs-overview.md)。
 - [使用提取的数据运行跨租户分析 - 多租户应用](saas-multitenantdb-tenant-analytics.md)

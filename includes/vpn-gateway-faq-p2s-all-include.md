@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 42c94188c0c38448660998bcfc122ae626285566
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147062"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66249027"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
 
@@ -38,9 +38,11 @@ ms.locfileid: "66147062"
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>能否使用点到站点功能穿越代理和防火墙？
 
-Azure 支持两种类型的点到站点 VPN 选项：
+Azure 支持三种类型的点到站点 VPN 选项：
 
 * 安全套接字隧道协议 (SSTP)。 SSTP 是 Microsoft 专有的基于 SSL 的解决方案，它可以穿透防火墙，因为大多数防火墙都打开了 443 SSL 使用的 TCP 端口。
+
+* OpenVPN。 OpenVPN 是一个可以穿透防火墙，因为大多数防火墙打开 TCP 端口 443 SSL 使用的基于 SSL 的解决方案。
 
 * IKEv2 VPN。 IKEv2 VPN 是一个基于标准的 IPsec VPN 解决方案，它使用 UDP 端口 500 和 4500 以及 IP 协议号  50。 防火墙并非始终打开这些端口，因此，IKEv2 VPN 有可能无法穿过代理和防火墙。
 
@@ -66,7 +68,7 @@ Azure 支持两种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>是否可以将任何软件 VPN 客户端用于支持 SSTP 和/或 IKEv2 的点到站点配置？
 
-不。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 请参阅支持的客户端操作系统的列表。
+不。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 但是，可以在所有平台上使用 OpenVPN 客户端通过 OpenVPN 协议进行连接。 请参阅支持的客户端操作系统的列表。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure 是否支持使用 Windows 的 IKEv2 VPN？
 

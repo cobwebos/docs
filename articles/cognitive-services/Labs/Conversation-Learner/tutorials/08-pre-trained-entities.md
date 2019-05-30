@@ -3,19 +3,19 @@ title: 如何向 Conversation Learner 模型中添加预先训练的实体 - Mic
 titleSuffix: Azure
 description: 了解如何向 Conversation Learner 模型添加预先训练的实体。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: fb70983c2f9fd20368bb8c6803c9568b27141af7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707691"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389261"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>如何添加预先训练的实体
 本教程展示了如何向 Conversation Learner 模型添加预先训练的实体。
@@ -41,29 +41,29 @@ ms.locfileid: "60707691"
 
 1. 选择**新的模型**。
 2. 输入**PretrainedEntities**有关**名称**。
-3. 选择“创建”。
+3. 选择“创建”  。
 
 ### <a name="entity-creation"></a>创建实体
 
 1. 选择**实体**在左侧的窗格中，然后**新实体**。
 2. 选择**Trained 前/datetimeV2**有关**实体类型**。
 3. 检查**多值**若要启用该实体累积了一个或多个值。 请注意，不能为 negatable Pre-Trained 实体。
-4. 选择“创建”。
+4. 选择“创建”  。
 
 ![](../media/T08_entity_create.png)
 
 1. 选择**操作**在左侧的窗格中，然后**新操作**。
-2. 输入**的日期是 $builtin-datetimev2**为**智能机器人应用程序的响应...**.
-3. 选择“创建”。
+2. 输入**的日期是 $builtin-datetimev2**为**智能机器人应用程序的响应...** .
+3. 选择“创建”  。
 
 ![](../media/T08_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>创建第二个操作
 
 1. 选择**操作**在左侧的窗格中，然后**新操作**。
-2. 输入**日期是什么？** 为**智能机器人应用程序的响应...**.预先训练的实体不能**所需实体**如他们所识别的默认值为所有语音样本。
+2. 输入**日期是什么？** 为**智能机器人应用程序的响应...** .预先训练的实体不能**所需实体**如他们所识别的默认值为所有语音样本。
 3. 输入**builtin datetimev2**有关**取消实体**。
-4. 选择“创建”。
+4. 选择“创建”  。
 
 ![](../media/T08_action_create_2.png)
 

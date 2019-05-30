@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9b7bc043c748000f03a98a28f856299527015388
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956224"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397827"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>使用应用服务和 Azure Functions 的 Key Vault 引用（预览版）
 
@@ -37,7 +37,7 @@ ms.locfileid: "65956224"
    > [!NOTE] 
    > Key Vault 引用目前仅支持系统分配托管标识。 不能使用用户分配标识。
 
-1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `appliationId` 设置，因为这与托管标识不兼容。
+1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
 
 ## <a name="reference-syntax"></a>引用语法
 

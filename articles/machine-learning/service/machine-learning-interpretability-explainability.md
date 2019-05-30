@@ -9,43 +9,45 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 04/29/2019
-ms.openlocfilehash: 4261e869fe17283886d7d8ea8101e03110d6dad4
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.date: 05/30/2019
+ms.openlocfilehash: 94309a019800b560cf6731d84cea324932e3f357
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851996"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398538"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务的模型 interpretability
 
-在本文中，您将了解如何解释为什么您的模型进行预测与 Azure 机器学习 Python SDK interpretability 包。
+在本文中，您将了解如何解释为什么您的模型进行预测与 Azure 机器学习 Python SDK 的各种 interpretability 包。
 
-此包中使用的类和方法，可以获取：
-+ Interpretability 在大规模情况下，实际的数据集上，在培训和推理。 
+使用 SDK 中的类和方法，可以获取：
++ 功能原始和工程功能的重要性的值
++ Interpretability 在大规模情况下，实际的数据集上，在培训和推理。
 + 若要在定型时帮助你发现数据和说明中的模式中的交互式可视化效果
-+ 功能重要性的值： 原始和工程功能
 
-在开发周期的训练阶段，可用于向利益干系人建立信任说明模型的输出模型设计人员和评估器。  它们也使用该模型的见解以进行调试，因此验证模型行为匹配其目标，并检查偏置。
+在开发周期的训练阶段，模型设计人员和评估者可使用 interpretability 输出模型的验证假设并与利益干系人建立信任。  它们也使用该模型的见解以进行调试，因此验证模型行为匹配其目标，并检查偏置。
 
-推理，或模型评分，阶段已部署的模型不使用的是用于预测，最常在生产数据。 在此阶段，数据科学家可以解释的人使用您的模型将生成预测。 例如，为什么没有模型拒绝抵押贷款时，或预测投资组合会带来较高风险？
+在机器学习**功能**是用于预测目标数据点的数据字段。 例如，若要预测信用风险，可能使用年龄、 帐户大小和帐户年龄的数据字段。 在这种情况下，年龄、 帐户大小和帐户年龄都**功能**。 特征重要性告诉您每个数据字段会如何影响模型的预测。 例如，年龄可能很大程度使用在预测中时帐户大小和保留时间不预测准确性会显著影响。 此过程允许数据科学家以解释生成预测，以便利益干系人具有到哪些数据点是在模型中最重要的可见性。
 
-使用这些产品/服务，可以解释机器学习模型**上的所有数据从全球**，或**上的特定数据点的本地**易于使用且可缩放的方式使用先进的技术。
+使用这些工具，可以解释机器学习模型**上的所有数据从全球**，或**特定数据点上的本地**易于使用且可缩放的方式使用先进的技术。
 
-Interpretability 类都可通过两个 Python 包。 了解如何[适用于 Azure 机器学习安装 SDK 包](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+Interpretability 类均通过多个 SDK 包。 了解如何[适用于 Azure 机器学习安装 SDK 包](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
-* [`azureml.explain.model`](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py)包含由 Microsoft 支持的功能的主包。 
+* [`azureml.explain.model`](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py)包含由 Microsoft 支持的功能的主包。
 
 * `azureml.contrib.explain.model`预览并可以尝试的实验性功能。
 
+* `azureml.train.automl.automlexplainer` 用于解释自动化的机器学习模型的包。
+
 > [!IMPORTANT]
-> Contrib 中的内容不完全支持。 在实验性功能变得成熟，它们将逐渐将转移到主要包。
+> 中的内容`contrib`命名空间不完全支持。 随着实验性功能变得成熟，将逐渐将它们移到的主命名空间。
 
 ## <a name="how-to-interpret-your-model"></a>如何解释您的模型
 
 您可以应用 interpretability 类和方法来了解模型的全局行为或特定的预测。 以前称为全局解释，后者调用本地说明。
 
-可以根据该方法是否是不可知的模型或模型特定还分类方法。 某些方法针对特定类型的模型。 例如，SHAP 的树说明仅适用于基于树的模型。 某些方法视为黑盒子，如模拟说明或 SHAP 的内核说明该模型。 `explain`包利用这些基于数据集、 模型类型和用例的不同方法。 
+可以根据该方法是否是不可知的模型或模型特定还分类方法。 某些方法针对特定类型的模型。 例如，SHAP 的树说明仅适用于基于树的模型。 某些方法视为黑盒子，如模拟说明或 SHAP 的内核说明该模型。 `explain`包利用这些基于数据集、 模型类型和用例的不同方法。
 
 输出为一组给定的模型如进行其预测方式的信息：
 * 全局/本地相对特征重要性
@@ -103,9 +105,9 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
 ### <a name="train-and-explain-locally"></a>训练和本地说明
 
-1. 训练的模型中的本地 Jupyter 笔记本。 
+1. 训练的模型中的本地 Jupyter 笔记本。
 
-    ``` python
+    ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
     from sklearn.datasets import load_breast_cancer
     from sklearn import svm
@@ -126,8 +128,9 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     # "features" and "classes" fields are optional
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     ```
+
     或
-    
+
     ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -152,16 +155,18 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     ```python
     # explain the first data point in the test set
     local_explanation = explainer.explain_local(x_test[0])
-    
+
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
     ```
+
     或
+
     ```python
     # explain the first five data points in the test set
     local_explanation = explainer.explain_local(x_test[0:4])
-    
+
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
@@ -173,14 +178,14 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
 1. 在本地 Jupyter 笔记本 (例如，run_explainer.py) 中创建训练脚本。
 
-    ``` python  
+    ```python
     run = Run.get_context()
     client = ExplanationClient.from_run(run)
-    
+
     # Train your model here
 
-    # explain predictions on your local machine   
-    # "features" and "classes" fields are optional 
+    # explain predictions on your local machine
+    # "features" and "classes" fields are optional
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     # explain overall model predictions (global explanation)
     global_explanation = explainer.explain_global(x_test)
@@ -198,10 +203,9 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
 2. 按照上的说明[设置用于为模型定型的计算目标](how-to-set-up-training-targets.md#amlcompute)若要了解有关如何设置 Azure 机器学习计算用作计算目标和提交训练运行。
 
-3. 下载本地 Jupyter 笔记本中的说明。 
+3. 下载本地 Jupyter 笔记本中的说明。
 
-
-    ``` python
+    ```python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient
     # Get model explanation data
     client = ExplanationClient.from_run(run)
@@ -239,6 +243,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 [![全局可视化仪表板](./media/machine-learning-interpretability-explainability/global-charts.png)](./media/machine-learning-interpretability-explainability/global-charts.png#lightbox)
 
 ### <a name="local-visualizations"></a>本地可视化效果
+
 您可以单击任何单个数据点在前面的图形加载给定的数据点将局部特征重要性任何的绘图时间。
 
 |绘图|描述|
@@ -253,11 +258,11 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 from azureml.contrib.explain.model.visualize import ExplanationDashboard
 
 ExplanationDashboard(global_explanation, model, x_test)
-``` 
+```
 
 ## <a name="raw-feature-transformations"></a>原始功能转换
 
-（可选） 可以将你的功能转换管道传递到说明转换 （而非工程的特征） 副本接收的原始特征方面的说明。 如果您跳过这，说明提供了在工程特征方面的解释。 
+（可选） 可以将你的功能转换管道传递到说明转换 （而非工程的特征） 副本接收的原始特征方面的说明。 如果您跳过这，说明提供了在工程特征方面的解释。
 
 如中所述的其中一个受支持的转换的格式是相同[sklearn pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)。 一般情况下，只要它们对单个列，因此显然一对多支持任何转换。
 
@@ -292,33 +297,37 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x
 说明可以与原始模型一起部署，并可用于在评分时间提供本地说明信息。 部署评分的说明的过程类似于部署模型，包括以下步骤：
 
 1. 创建一个说明对象：
+
    ```python
    from azureml.contrib.explain.model.tabular_explainer import TabularExplainer
 
    explainer = TabularExplainer(model, x_test)
-   ``` 
+   ```
 
 1. 创建使用说明对象计分概要说明：
+
    ```python
    scoring_explainer = explainer.create_scoring_explainer(x_test)
 
    # Pickle scoring explainer
    scoring_explainer_path = scoring_explainer.save('scoring_explainer_deploy')
-   ``` 
+   ```
 
 1. 配置和注册使用计分概要说明模型的图像。
+
    ```python
    # Register explainer model using the path from ScoringExplainer.save - could be done on remote compute
    run.upload_file('breast_cancer_scoring_explainer.pkl', scoring_explainer_path)
    model = run.register_model(model_name='breast_cancer_scoring_explainer', model_path='breast_cancer_scoring_explainer.pkl')
    print(model.name, model.id, model.version, sep = '\t')
-   ``` 
+   ```
 
 1. [可选]从云中检索评分的说明和测试说明
+
    ```python
    from azureml.contrib.explain.model.scoring.scoring_explainer import ScoringExplainer
 
-   # Retreive the scoring explainer model from cloud"
+   # Retrieve the scoring explainer model from cloud"
    scoring_explainer_model = Model(ws, 'breast_cancer_scoring_explainer')
    scoring_explainer_model_path = scoring_explainer_model.download(target_dir=os.getcwd(), exist_ok=True)
 
@@ -333,6 +342,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x
 1. 将映像部署到计算目标：
 
    1. 创建计分概要文件 (在此步骤中之前, 按照中的步骤[部署模型与 Azure 机器学习服务](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)注册原始预测模型)
+
         ```python
         %%writefile score.py
         import json
@@ -365,50 +375,55 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x
             local_importance_values = scoring_explainer.explain(data)
             # You can return any data type as long as it is JSON-serializable
             return {'predictions': predictions.tolist(), 'local_importance_values': local_importance_values}
-        ``` 
-    1. 定义部署配置 （此配置取决于您的模型的要求。 下面的示例定义一个 CPU 核心和 1 GB 的内存使用的配置）
+        ```
+
+   1. 定义部署配置 （此配置取决于您的模型的要求。 下面的示例定义一个 CPU 核心和 1 GB 的内存使用的配置）
+
         ```python
         from azureml.core.webservice import AciWebservice
 
-        aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                                       memory_gb=1, 
-                                                       tags={"data": "breastcancer",  
-                                                             "method" : "local_explanation"}, 
+        aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
+                                                       memory_gb=1,
+                                                       tags={"data": "breastcancer",
+                                                             "method" : "local_explanation"},
                                                        description='Get local explanations for breast cancer data')
-        ``` 
+        ```
 
-    1. 创建具有环境依赖项的文件
+   1. 创建具有环境依赖项的文件
 
         ```python
-        from azureml.core.conda_dependencies import CondaDependencies 
+        from azureml.core.conda_dependencies import CondaDependencies
 
         # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
 
 
-        myenv = CondaDependencies.create(pip_packages=["azureml-defaults", "azureml-explain-model", "azureml-contrib-explain-model"], 
+        myenv = CondaDependencies.create(pip_packages=["azureml-defaults", "azureml-explain-model", "azureml-contrib-explain-model"],
                                         conda_packages=["scikit-learn"])
 
         with open("myenv.yml","w") as f:
             f.write(myenv.serialize_to_string())
-            
+
         with open("myenv.yml","r") as f:
             print(f.read())
-        ``` 
-    1. 使用 g + + 安装创建自定义 dockerfile
+        ```
+
+   1. 使用 g + + 安装创建自定义 dockerfile
 
         ```python
         %%writefile dockerfile
-        RUN apt-get update && apt-get install -y g++  
-        ``` 
-    1. 部署创建的映像 (估计时间：5 分钟）
+        RUN apt-get update && apt-get install -y g++
+        ```
+
+   1. 部署创建的映像 (估计时间：5 分钟）
+
         ```python
         from azureml.core.webservice import Webservice
         from azureml.core.image import ContainerImage
 
         # Use the custom scoring, docker, and conda files we created above
         image_config = ContainerImage.image_configuration(execution_script="score.py",
-                                                        docker_file="dockerfile", 
-                                                        runtime="python", 
+                                                        docker_file="dockerfile",
+                                                        runtime="python",
                                                         conda_file="myenv.yml")
 
         # Use configs and models generated above
@@ -419,9 +434,10 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x
                                             image_config=image_config)
 
         service.wait_for_deployment(show_output=True)
-        ``` 
+        ```
 
 1. 测试部署
+
     ```python
     import requests
 
@@ -438,9 +454,33 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x
     print("POST to url", service.scoring_uri)
     # can covert back to Python objects from json string if desired
     print("prediction:", resp.text)
-    ``` 
+    ```
 
 1. 清理：若要删除已部署的 Web 服务，请使用 `service.delete()`。
+
+## <a name="interpretability-in-automated-ml"></a>自动化机器学习中 interpretability
+
+自动化的机器学习包含用于解释中自动训练模型的特征重要性的包。 此外，分类方案允许你检索类级别特征重要性。 有两种方法，以启用自动的机器学习中的此行为：
+
+* 若要启用已训练的系综模型的特征重要性，请使用[ `explain_model()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py)函数。
+
+    ```python
+    from azureml.train.automl.automlexplainer import explain_model
+
+    shap_values, expected_values, overall_summary, overall_imp, \
+        per_class_summary, per_class_imp = explain_model(fitted_model, X_train, X_test)
+    ```
+
+* 若要启用培训之前每次单独运行的特征重要性，设置`model_explainability`参数`True`中`AutoMLConfig`对象，并提供验证数据。 然后，使用[ `retrieve_model_explanation()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py)函数。
+
+    ```python
+    from azureml.train.automl.automlexplainer import retrieve_model_explanation
+
+    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, \
+        per_class_imp = retrieve_model_explanation(best_run)
+    ```
+
+有关详细信息，请参阅[操作方法](how-to-configure-auto-train.md#explain-the-model-interpretability)上启用 interpretability 自动化的机器学习中的功能。
 
 ## <a name="next-steps"></a>后续步骤
 

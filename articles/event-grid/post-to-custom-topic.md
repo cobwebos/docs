@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: fc8877ed23b408ea041de67018a71cc203c5e8c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 14ae5f2a0b6a950889d8587cd4d03ff4fc9a171b
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162039"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304209"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
 
@@ -39,7 +39,7 @@ az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "e
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>页眉
+## <a name="header"></a>Header
 
 在请求中包含一个名为 `aeg-sas-key` 的标头值，其中包含身份验证密钥。
 
@@ -76,7 +76,10 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 ]
 ```
 
-有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB。
+有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB （正式版） 或 1 MB （预览版）。
+
+> [!NOTE]
+> 事件的大小高达 64 KB 介绍了通过正式版 (GA) 服务级别协议 (SLA)。 大小最多的事件的支持 1 MB 目前处于预览状态。 超过 64 KB 的事件是按 64 KB 的增量计费。 
 
 例如，有效的事件数据架构是：
 

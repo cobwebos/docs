@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: raynew
-ms.openlocfilehash: 2d1999077f6315658dbfd69473ddf5561bd76e0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 514aaaf7a274e60a17bbae62b3c62e7cf3668e7a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540590"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237298"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -39,14 +39,14 @@ VMware | vCenter Server 6.7、6.5、6.0、5.5 或 vSphere 6.7、6.5、6.0、5.5 
 
 配置服务器是运行 Site Recovery 组件的本地计算机，这些组件包括配置服务器、进程服务器和主目标服务器。 对于 VMware 复制，请按所有要求设置配置服务器，使用 OVF 模板来创建 VMware VM。 对于物理服务器复制，请手动设置配置服务器计算机。
 
-组件 | **要求**
+组件  | **要求**
 --- |---
 CPU 核心数 | 8
 RAM | 16 GB
 磁盘数目 | 3 磁盘<br/><br/> 磁盘包括 OS 磁盘、进程服务器缓存磁盘和用于故障回复的保留驱动器。
 磁盘可用空间 | 对于进程服务器缓存，600 GB 的空间是必需的。
 磁盘可用空间 | 对于保留驱动器，600 GB 的空间是必需的。
-操作系统  | Windows Server 2012 R2 或 Windows Server 2016 |
+操作系统  | Windows Server 2012 R2 或带有桌面体验的 Windows Server 2016 |
 操作系统区域设置 | 美国英语
 PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")不是必需的配置服务器与从版本[9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)。
 Windows Server 角色 | 请勿启用： <br/> - Active Directory 域服务 <br/>- Internet Information Services <br/> - Hyper-V |
@@ -60,7 +60,7 @@ IP 地址类型 | Static
 
 Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 
-组件 | **详细信息**
+组件  | **详细信息**
 --- | ---
 计算机设置 | 复制到 Azure 的计算机必须满足 [Azure 要求](#azure-vm-requirements)。
 计算机工作负载 | Site Recovery 支持复制支持的计算机上运行的任何工作负载（如 Active Directory、SQL server 等）。 [了解详细信息](https://aka.ms/asr_workload)。
@@ -107,14 +107,14 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | [9.21][9.21 UR] | SP1 3.1
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux 文件系统/来宾存储
 
-组件 | **支持**
+组件  | **支持**
 --- | ---
 文件系统 | ext3、ext4、XFS
 卷管理器 | 在 [9.20 版](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)以前， <br/> 1.支持 LVM。 <br/> 2./boot LVM 卷上不支持。 <br/> 3.不支持多个 OS 磁盘。<br/><br/>从[9.20 版本](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)及更高版本，支持 /boot 上 LVM。 不支持多个 OS 磁盘。
 半虚拟化存储设备 | 不支持半虚拟化驱动程序导出的设备。
 多队列块 IO 设备 | 不支持。
 具有 HP CCISS 存储控制器的物理服务器 | 不支持。
-设备/装入点命名约定 | 设备名称或装入点名称应是唯一的。 请确保两个设备/装入点的名称不仅仅是只区分大小写。 </br> 示例：同一虚拟机中的两个设备不能命名为“device1”和“Device1”。
+设备/装入点命名约定 | 设备名称或装入点名称应是唯一的。 请确保两个设备/装入点的名称不仅仅是只区分大小写。 </br> 示例：同一虚拟机中的两个设备不能命名为“device1”和“Device1”   。
 目录 | 在 [9.20 版](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)以前， <br/> 1.下列目录（如果设置为单独的分区/文件系统）都必须位于源服务器上的同一 OS 磁盘上：/(root)、/boot、/usr、/usr/local、/var 和 /etc。</br>2. /boot 应位于磁盘分区上，而不是位于 LVM 卷上。<br/><br/> 从 [9.20 版](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)开始，以上限制不适用。 不支持跨多个磁盘的 LVM 卷上的 /boot。
 启动目录 | 不支持虚拟机上的多个启动盘 <br/><br/> 无法保护没有启动盘的计算机
 可用空间要求| /root 分区上的 2 GB <br/><br/> 安装文件夹中的 250 MB
@@ -130,23 +130,23 @@ BTRFS |从 9.22 版本 BTRFS 支持，但以下情况下除外</br>如果启用�
 
 ## <a name="network"></a>网络
 
-组件 | **支持**
+组件  | **支持**
 --- | ---
 主机网络 NIC 组合 | 对于 VMware VM，受支持。 <br/><br/>对于物理计算机复制，不支持。
-主机网络 VLAN | 可以。
-主机网络 IPv4 | 可以。
+主机网络 VLAN | 是的。
+主机网络 IPv4 | 是的。
 主机网络 IPv6 | 不。
 来宾/服务器网络 NIC 组合 | 不。
-来宾/服务器网络 IPv4 | 可以。
+来宾/服务器网络 IPv4 | 是的。
 来宾/服务器网络 IPv6 | 不。
-来宾/服务器网络静态 IP (Windows) | 可以。
-来宾/服务器网络静态 IP (Linux) | 可以。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
-来宾/服务器网络多个 NIC | 可以。
+来宾/服务器网络静态 IP (Windows) | 是的。
+来宾/服务器网络静态 IP (Linux) | 是的。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
+来宾/服务器网络多个 NIC | 是的。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 网络（故障转移后）
 
-组件 | **支持**
+组件  | **支持**
 --- | ---
 Azure ExpressRoute | 是
 ILB | 是
@@ -160,7 +160,7 @@ Azure 虚拟网络服务终结点<br/> | 是
 加速网络 | 否
 
 ## <a name="storage"></a>存储
-组件 | **支持**
+组件  | **支持**
 --- | ---
 动态磁盘 | 操作系统磁盘必须是基本磁盘。 <br/><br/>数据磁盘可以是动态磁盘
 Docker 磁盘配置 | 否
@@ -197,7 +197,7 @@ Docker 磁盘配置 | 否
 
 ## <a name="azure-storage"></a>Azure 存储
 
-组件 | **支持**
+组件  | **支持**
 --- | ---
 本地冗余存储 | 是
 异地冗余存储 | 是
@@ -224,7 +224,7 @@ HUB | 是
 
 复制到 Azure 的本地 VM 必须满足此表中汇总的 Azure VM 要求。 Site Recovery 运行先决条件检查时，如果不符合某些要求，该检查将失败。
 
-组件 | **要求** | **详细信息**
+组件  | **要求** | **详细信息**
 --- | --- | ---
 来宾操作系统 | 验证复制的计算机[支持的操作系统](#replicated-machines)。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。

@@ -3,19 +3,19 @@ title: 如何通过对话学习器实体使用实体检测回调 - Microsoft 认
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用实体检测回调。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 576dc6bd44360f73c4133907233e59e5f51837b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: ed254ea3db1c8f0e680cba71185e9b4505d8f200
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707544"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387653"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>如何使用实体检测回调
 

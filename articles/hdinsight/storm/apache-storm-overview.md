@@ -7,14 +7,14 @@ keywords: apache storm 用例,storm 群集,什么是 apache storm
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5688056bc0d371c780bce02254769792e9a95696
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42aaa91906319133fd2864cd836447fcf3ca3a07
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696114"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257779"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
@@ -26,7 +26,7 @@ ms.locfileid: "64696114"
 
 Storm on HDInsight 提供以下功能：
 
-* __针对 Storm 运行时间的 99% 服务级别协议 (SLA)__：有关详细信息，请参阅 [HDInsight 的 SLA 信息](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)文档。
+* __针对 Storm 运行时间的 99% 服务级别协议 (SLA)__ ：有关详细信息，请参阅 [HDInsight 的 SLA 信息](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)文档。
 
 * 支持在 Storm 群集创建期间或者创建之后，通过针对该群集运行脚本轻松进行自定义。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md)。
 
@@ -47,7 +47,7 @@ Storm on HDInsight 提供以下功能：
 
 有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/documentation/Powered-By.html)。
 
-若要开始使用 Storm，请参阅 [Apache Storm on HDInsight 入门][gettingstarted]。
+若要开始使用 Storm，请参阅[开始使用 Apache Storm on HDInsight](apache-storm-tutorial-get-started-linux.md)。
 
 ## <a name="how-does-apache-storm-work"></a>Apache Storm 如何工作
 
@@ -177,10 +177,5 @@ Storm 使用 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 来记录�
 
 了解有关使用 Apache Storm on HDInsight 构建实时分析解决方案的详细信息：
 
-* [HDInsight 上的 Apache Storm 入门][gettingstarted]
+* [HDInsight 上的 Apache Storm 入门](apache-storm-tutorial-get-started-linux.md)
 * [HDInsight 上的 Apache Storm 的示例拓扑](apache-storm-example-topology.md)
-
-[stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
-[samoa]: https://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
-[apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
-[gettingstarted]: apache-storm-tutorial-get-started-linux.md

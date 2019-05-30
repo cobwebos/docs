@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: fc731b1abec9c101356a0fa57eef498b58612ab9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b382b9ae35d492b4c779b8f7ee360fb378d54e08
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791358"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399718"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
 
 对于每个 Azure 订阅和租户，资源管理器的限制为每小时最多 12,000 个读取请求和 1,200 个写入请求。 这些限制的范围局限于发出请求的主体 ID 以及订阅 ID 或租户 ID。 如果请求来自多个主体 ID，则对订阅或租户的限制大于每小时 12,000 和 1,200 个。
 
-请求适用于订阅或租户。 订阅请求（例如，检索订阅中的资源组）涉及到传递订阅 ID。 租户请求（例如，检索有效的 Azure 位置）不包括订阅 ID。
+请求适用于订阅或租户。 订阅的请求是涉及传递订阅 ID，如检索你的订阅中的资源组。 租户请求（例如，检索有效的 Azure 位置）不包括订阅 ID。
 
 这些限制适用于每个 Azure 资源管理器实例。 每个 Azure 区域中有多个实例，Azure 资源管理器将部署到所有 Azure 区域。  因此，在实践中，限制实际上比上述限制要高得多，因为用户请求通常是由多个不同的实例提供服务。
 
 如果应用程序或脚本达到这些限制，则需要限制请求。 本文说明如何在达到限制之前确定剩余的请求数，以及达到限制时如何做出响应。
 
-达到限制时，会收到 HTTP 状态代码“429 请求过多”。
+达到限制时，会收到 HTTP 状态代码“429 请求过多”。 
 
 Azure 资源 Graph 会限制对其操作的请求数。 此文章，以确定剩余的请求以及如何进行响应时达到的限制中的步骤也适用于资源图。 但是，资源图表设置其自身限制和重置的速率。 有关详细信息，请参阅[在 Azure 资源 Graph 限制](../governance/resource-graph/overview.md#throttling)。
 
@@ -60,7 +60,7 @@ $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 
 有关完整 PowerShell 示例的信息，请参阅[检查订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
 
-如果想要查看剩余的调试请求数，可以在“PowerShell”cmdlet 中提供“-Debug”参数。
+如果想要查看剩余的调试请求数，可以在“PowerShell”cmdlet 中提供“-Debug”参数   。
 
 ```powershell
 Get-AzResourceGroup -Debug

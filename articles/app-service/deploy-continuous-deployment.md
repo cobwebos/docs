@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 384f709bb32f973efec39518eaa895e25136fe23
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765566"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390633"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
 本文展示了如何为 [Azure 应用服务](overview.md)配置持续部署。 应用服务可以使用 BitBucket、GitHub 和 [Azure DevOps Services](https://www.visualstudio.com/team-services/) 实现持续部署，方法是从上述服务之一中的现有存储库拉取最新的更新。
@@ -34,19 +34,19 @@ ms.locfileid: "60765566"
 
 若要使用 GitHub 实现持续部署，请在 [Azure 门户](https://portal.azure.com)中导航至你的应用服务应用页。
 
-在左侧菜单中，单击“部署中心” > “GitHub” > “授权”。 按照授权提示进行操作。 
+在左侧菜单中，单击“部署中心” > “GitHub” > “授权”。    按照授权提示进行操作。 
 
 ![](media/app-service-continuous-deployment/github-choose-source.png)
 
-只需要通过 GitHub 授权一次。 如果已获得授权，只需单击“继续”即可。 可以通过单击“更改帐户”来更改已获得授权的 GitHub 帐户。
+只需要通过 GitHub 授权一次。 如果已获得授权，只需单击“继续”  即可。 可以通过单击“更改帐户”  来更改已获得授权的 GitHub 帐户。
 
 ![](media/app-service-continuous-deployment/github-continue.png)
 
-在“生成提供程序”页面中，选择生成提供程序并单击 >“继续”。
+在“生成提供程序”  页面中，选择生成提供程序并单击 >“继续”。 
 
 ### <a name="option-1-use-app-service-kudu-build-server"></a>选项 1：使用应用服务 Kudu 生成服务器
 
-在“配置”页面中，选择要从中进行持续部署的组织、存储库和分支。 完成后，单击“继续”。
+在“配置”  页面中，选择要从中进行持续部署的组织、存储库和分支。 完成后，单击“继续”。 
 
 若要部署从 GitHub 组织中的存储库，浏览到 GitHub 并转到**设置** > **应用程序** > **授权 OAuth 应用**. 然后，单击"Azure 应用服务"。
 
@@ -61,23 +61,23 @@ ms.locfileid: "60765566"
 ### <a name="option-2-use-azure-pipelines-preview"></a>选项 2：使用 Azure Pipelines（预览版）
 
 > [!NOTE]
-> 若要让应用服务在 Azure DevOps Services 组织中创建所需的 Azure 管道，Azure 帐户必须在 Azure 订阅中具有“所有者”角色。
+> 若要让应用服务在 Azure DevOps Services 组织中创建所需的 Azure 管道，Azure 帐户必须在 Azure 订阅中具有“所有者”  角色。
 >
 
-在“配置”页面中，在“代码”部分中，选择要从中进行持续部署的组织、存储库和分支。 完成后，单击“继续”。
+在“配置”  页面中，在“代码”  部分中，选择要从中进行持续部署的组织、存储库和分支。 完成后，单击“继续”。 
 
-在“配置”页的“生成”部分，配置新的 Azure DevOps Services 组织或指定一个现有组织。 完成后，单击“继续”。
+在“配置”  页的“生成”  部分，配置新的 Azure DevOps Services 组织或指定一个现有组织。 完成后，单击“继续”。 
 
 > [!NOTE]
 > 如果想要使用未列出的现有 Azure DevOps Services 组织，则需要[将 Azure DevOps Services 组织链接到 Azure 订阅](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)。
 
-在“测试”页面中，选择是否要启用负载测试，然后单击“继续”。
+在“测试”  页面中，选择是否要启用负载测试，然后单击“继续”  。
 
-根据应用服务计划的[定价层](https://azure.microsoft.com/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否[要启用部署槽位](deploy-staging-slots.md)，然后单击“继续”。
+根据应用服务计划的[定价层](https://azure.microsoft.com/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”  页。 选择是否[要启用部署槽位](deploy-staging-slots.md)，然后单击“继续”。 
 
 ### <a name="finish-configuration"></a>完成配置
 
-在“摘要”页中，确认选项，然后单击“完成”。
+在“摘要”  页中，确认选项，然后单击“完成”  。
 
 在配置完成后，选定存储库中的新提交将持续部署到应用服务应用。
 
@@ -87,17 +87,17 @@ ms.locfileid: "60765566"
 
 若要使用 BitBucket 实现持续部署，请在 [Azure 门户](https://portal.azure.com)中导航至你的应用服务应用页。
 
-在左侧菜单中，单击“部署中心” > “BitBucket” > “授权”。 按照授权提示进行操作。 
+在左侧菜单中，单击“部署中心” > “BitBucket” > “授权”。    按照授权提示进行操作。 
 
 ![](media/app-service-continuous-deployment/bitbucket-choose-source.png)
 
-只需要通过 BitBucket 授权一次。 如果已获得授权，只需单击“继续”即可。 可以通过单击“更改帐户”来更改已获得授权的 BitBucket 帐户。
+只需要通过 BitBucket 授权一次。 如果已获得授权，只需单击“继续”  即可。 可以通过单击“更改帐户”  来更改已获得授权的 BitBucket 帐户。
 
 ![](media/app-service-continuous-deployment/bitbucket-continue.png)
 
-在“配置”页面中，选择要从中进行持续部署的存储库和分支。 完成后，单击“继续”。
+在“配置”  页面中，选择要从中进行持续部署的存储库和分支。 完成后，单击“继续”。 
 
-在“摘要”页中，确认选项，然后单击“完成”。
+在“摘要”  页中，确认选项，然后单击“完成”  。
 
 在配置完成后，选定存储库中的新提交将持续部署到应用服务应用。
 
@@ -105,36 +105,36 @@ ms.locfileid: "60765566"
 
 若要通过 [Azure Repos](https://docs.microsoft.com/azure/devops/repos/index) 实现持续部署，请在 [Azure 门户](https://portal.azure.com)中导航至应用服务应用页。
 
-在左侧菜单中，单击“部署中心” > “Azure Repos” > “继续”。 
+在左侧菜单中，单击“部署中心” > “Azure Repos” > “继续”。    
 
 ![](media/app-service-continuous-deployment/vsts-choose-source.png)
 
-在“生成提供程序”页面中，选择生成提供程序并单击 >“继续”。
+在“生成提供程序”  页面中，选择生成提供程序并单击 >“继续”。 
 
 > [!NOTE]
 > 如果想要使用未列出的现有 Azure DevOps Services 组织，则需要[将 Azure DevOps Services 组织链接到 Azure 订阅](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)。
 
 ### <a name="option-1-use-app-service-kudu-build-server"></a>选项 1：使用应用服务 Kudu 生成服务器
 
-在“配置”页面中，选择要从中进行持续部署的 Azure DevOps Services 组织、项目、存储库和分支。 完成后，单击“继续”。
+在“配置”  页面中，选择要从中进行持续部署的 Azure DevOps Services 组织、项目、存储库和分支。 完成后，单击“继续”。 
 
 ### <a name="option-2-use-azure-devops-services-continuous-delivery"></a>选项 2：使用 Azure DevOps Services 持续交付
 
 > [!NOTE]
-> 若要让应用服务在 Azure DevOps Services 组织中创建所需的 Azure 管道，Azure 帐户必须在 Azure 订阅中具有“所有者”角色。
+> 若要让应用服务在 Azure DevOps Services 组织中创建所需的 Azure 管道，Azure 帐户必须在 Azure 订阅中具有“所有者”  角色。
 >
 
-在“配置”页的“代码”部分，选择要从中进行持续部署的 Azure DevOps Services 组织、项目、存储库和分支。 完成后，单击“继续”。
+在“配置”  页的“代码”部分，选择要从中进行持续部署的 Azure DevOps Services 组织、项目、存储库和分支。  完成后，单击“继续”。 
 
-在“配置”页的“生成”部分，指定 Azure DevOps Services 在为选定的存储库运行生成任务时应当使用的语言框架。 完成后，单击“继续”。
+在“配置”  页的“生成”  部分，指定 Azure DevOps Services 在为选定的存储库运行生成任务时应当使用的语言框架。 完成后，单击“继续”。 
 
-在“测试”页面中，选择是否要启用负载测试，然后单击“继续”。
+在“测试”  页面中，选择是否要启用负载测试，然后单击“继续”  。
 
-根据应用服务计划的[定价层](https://azure.microsoft.com/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否[要启用部署槽位](deploy-staging-slots.md)，然后单击“继续”。 
+根据应用服务计划的[定价层](https://azure.microsoft.com/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”  页。 选择是否[要启用部署槽位](deploy-staging-slots.md)，然后单击“继续”。  DevOps 不允许实现持续交付到生产槽。 这是默认设置以防止意外部署到生产环境。 应设置持续交付到过渡槽，验证所做的更改，并准备就绪后交换槽。
 
 ### <a name="finish-configuration"></a>完成配置
 
-在“摘要”页中，确认选项，然后单击“完成”。
+在“摘要”  页中，确认选项，然后单击“完成”  。
 
 在配置完成后，选定存储库中的新提交将持续部署到应用服务应用。
 
@@ -142,7 +142,7 @@ ms.locfileid: "60765566"
 
 若要禁用持续部署，请在 [Azure 门户](https://portal.azure.com)中导航至你的应用服务应用页。
 
-在左侧菜单中，单击“部署中心” > “GitHub”、“Azure DevOps Services”或“BitBucket” > “断开连接”。
+在左侧菜单中，单击“部署中心” > “GitHub”、“Azure DevOps Services”或“BitBucket” > “断开连接”。     
 
 ![](media/app-service-continuous-deployment/disable.png)
 

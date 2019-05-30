@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 01/14/2019
+ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 4f6a724fe6c1e8668084f1c1cefbaa01cffba181
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f7d482b088003e3800debb2db9f6f26bda1672a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444580"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298171"
 ---
 # <a name="azure-log-integration-faq"></a>Azure 日志集成常见问题解答
 
 本文回答了一些有关 Azure 日志集成常见问题 (FAQ)。
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将在弃用 06/15/2019年。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Azure 日志集成是一种 Windows 操作系统服务，可用来将 Azure 资源中的原始日志集成到本地安全信息和事件管理 (SIEM) 系统。 此集成为本地或云端的所有资产提供统一的仪表板。 对于与应用程序相关的安全事件，可进行聚合、关联、分析和警报等操作。
 
@@ -49,9 +49,9 @@ Azure 日志集成是一种 Windows 操作系统服务，可用来将 Azure 资�
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>如何判断 Azure 日志集成日志来自哪个订阅？
 
-如果审核日志位于“AzureResourcemanagerJson”目录中，则日志文件名称中具有订阅 ID。 “AzureSecurityCenterJson”文件夹中的日志也是如此。 例如：
+如果审核日志位于“AzureResourcemanagerJson”目录中，则日志文件名称中具有订阅 ID  。 “AzureSecurityCenterJson”文件夹中的日志也是如此  。 例如：
 
-20170407T070805_2768037.0000000023.1111e5ee-1111-111b-a11e-1e111e1111dc.json
+20170407T070805_2768037.0000000023.1111e5ee-1111-111b-a11e-1e111e1111dc.json 
 
 Azure Active Directory 审核日志的名称包含租户 ID。
 
@@ -93,15 +93,15 @@ Azure Active Directory 审核日志的名称包含租户 ID。
 
   *无法创建 AAD 应用程序 - 租户 72f988bf-86f1-41af-91ab-2d7cd011db37 - 原因 = “禁止” - 消息 = “特权不足以完成此操作”。*
 
-azlog createazureid 命令尝试在 Azure 登录有权访问的订阅在所有 Azure AD 租户中创建服务主体。 如果 Azure 登录在 Azure AD 租户中只是来宾用户，该命令会失败，并显示“特权不足以完成此操作”。 请求租户管理员将帐户添加为租户中的用户。
+azlog createazureid 命令尝试在 Azure 登录有权访问的订阅在所有 Azure AD 租户中创建服务主体  。 如果 Azure 登录在 Azure AD 租户中只是来宾用户，该命令会失败，并显示“特权不足以完成此操作”。 请求租户管理员将帐户添加为租户中的用户。
 
-### <a name="when-i-run-the-command-azlog-authorize-why-do-i-get-the-following-error"></a>运行 azlog authorize 命令时，为什么收到以下错误？
+### <a name="when-i-run-the-command-azlog-authorize-why-do-i-get-the-following-error"></a>运行 azlog authorize 命令时，为什么收到以下错误  ？
 
 错误：
 
   创建角色分配警告 - AuthorizationFailed：*客户端 janedo\@microsoft.com 使用对象 id fe9e03e4-4dad-4328-910f-fd24a9660bd2 不会授权以执行操作 ' Microsoft.Authorization/roleAssignments/write 对作用域 /subscriptions/70 d 95299 d689 4 c 97 b971 0d8ff0000000。*
 
-azlog authorize 命令会将 Azure AD 服务主体的读取器角色（使用 azlog createazureid 创建）分配给提供的订阅。 如果 Azure 登录不是订阅的协同管理员或所有者，就会失败，并显示“授权失败”错误消息。 需要 Azure 基于角色访问控制 (RBAC) 的共同管理员或所有者来完成此操作。
+azlog authorize 命令会将 Azure AD 服务主体的读取器角色（使用 azlog createazureid 创建）分配给提供的订阅   。 如果 Azure 登录不是订阅的协同管理员或所有者，就会失败，并显示“授权失败”错误消息。 需要 Azure 基于角色访问控制 (RBAC) 的共同管理员或所有者来完成此操作。
 
 ## <a name="where-can-i-find-the-definition-of-the-properties-in-the-audit-log"></a>在哪里可以找到审核日志中的属性定义？
 
@@ -142,7 +142,7 @@ azlog authorize 命令会将 Azure AD 服务主体的读取器角色（使用 az
 
 完成更改后，检查存储帐户，以确保收集正确的事件。
 
-如果在安装和配置过程中遇到任何问题，请打开[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 请选择“日志集成”作为需要请求支持的服务。
+如果在安装和配置过程中遇到任何问题，请打开[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 请选择“日志集成”  作为需要请求支持的服务。
 
 ## <a name="can-i-use-azure-log-integration-to-integrate-network-watcher-logs-into-my-siem"></a>可以使用 Azure 日志集成将网络观察程序日志集成到 SIEM 吗？
 

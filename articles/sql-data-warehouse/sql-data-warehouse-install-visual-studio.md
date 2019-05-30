@@ -12,17 +12,17 @@ ms.subservice: development
 ms.date: 04/05/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 683ec8f9cebb2fcbade9fd636506cf1903eff317
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b2e34f1f72b1b0aa76d4a3031102d052118dae5f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873297"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304128"
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>安装适用于 SQL 数据仓库的 Visual Studio 和 SSDT
-使用 Visual Studio 2017 开发 SQL 数据仓库的应用程序。 当前 Visual Studio 2019 SSDT 为 SQL 数据仓库不支持。 
+使用 Visual Studio 2019 开发 SQL 数据仓库的应用程序。 当前不支持 SQL 数据仓库的 Visual Studio 2019 SSDT。 
 
-通过使用带有 SSDT 的 Visual Studio，可以使用 SQL Server 对象资源管理器以可视化方式浏览 SQL 数据仓库中的表格、视图、存储过程和其他更多对象，并运行查询。
+使用装有 SSDT 的 Visual Studio，可使用 SQL Server 对象资源管理器来浏览表、 视图、 存储的过程和其他更多对象以可视方式在 SQL 数据仓库中。 它还允许你运行查询。
 
 > [!NOTE]
 > SQL 数据仓库尚不支持 Visual Studio 数据库项目。 若要接收有关此功能的定期更新，请在 [UserVoice] 上投票。
@@ -38,13 +38,13 @@ ms.locfileid: "65873297"
 ## <a name="step-2-install-ssdt"></a>步骤 2：安装 SSDT
 若要安装适用于 Visual Studio 的 SSDT，请先遵循以下步骤从 Visual Studio 内查找 SSDT 更新。
 
-1. 在 Visual Studio 中，单击“工具” / “扩展和更新...” / “更新”
+1. 在 Visual Studio 中，单击“工具” / “扩展和更新...”   / “更新” 
 2. 选择“**产品更新**”，并查找“**数据库工具的 Microsoft SQL Server 更新**”
 
-如果找不到更新，则表示已安装最新版本。  要确认是否已安装 SSDT，请单击“**帮助**” / “**关于 Microsoft Visual Studio**”，并在列表中查找 SQL Server Data Tools。 如果 Visual Studio 中的安装选项不可用，也可以访问 [SSDT 下载][SSDT Download]页面来手动下载并安装 SSDT。
+应安装如果找不到更新的最新版本。 要确认是否已安装 SSDT，请单击“**帮助**” / “**关于 Microsoft Visual Studio**”，并在列表中查找 SQL Server Data Tools。 如果安装的选项不可用从 Visual Studio，您可以访问[SSDT 下载][ SSDT Download]页后，可以手动下载并安装 SSDT。
 
 ## <a name="next-steps"></a>后续步骤
-安装最新版本的 SSDT 后，便可以[连接][connect]到 SQL 数据仓库。
+现在，已有最新版本的 SSDT，你已准备好[连接][ connect]到 SQL 数据仓库。
 
 <!--Anchors-->
 

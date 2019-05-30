@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: b024d61c3542293202f0b409b8b3e520a75168c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5f3a43a6c48714566b5c53b33fe541b50d61589
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431797"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383898"
 ---
 # <a name="get-insights-about-a-video"></a>获取有关视频的见解
 
-必应视频搜索 API 返回的每个视频都包括一个视频 ID，可以使用它来获取有关视频的详细信息，例如相关视频。 若要获取有关视频的见解，请在 API 响应中获取其 [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) 令牌。 
+必应视频搜索 API 返回的每个视频都包括一个视频 ID，可以使用它来获取有关视频的详细信息，例如相关视频。 若要获取有关视频的见解，请在 API 响应中获取其 [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) 令牌。 
 
 ```json
     "value" : [
@@ -34,7 +34,7 @@ ms.locfileid: "61431797"
     ],
 ```
 
-接下来，将包含 ID 的 GET 请求发送到视频详细信息终结点。 将 [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) 查询参数设置为 `videoId` 标记。 若要指定想要获取的见解，请设置 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) 查询参数。 若要获取所有见解，请将 `modules` 设置为 All。 响应包括请求的所有见解（如果可用）。
+接下来，将包含 ID 的 GET 请求发送到视频详细信息终结点。 将 [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) 查询参数设置为 `videoId` 标记。 若要指定想要获取的见解，请设置 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) 查询参数。 若要获取所有见解，请将 `modules` 设置为 All。 响应包括请求的所有见解（如果可用）。
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>获取相关视频见解  
 
-若要获取与指定的视频相关的视频，请将 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) 查询参数设置为 `RelatedVideos`。
+若要获取与指定的视频相关的视频，请将 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) 查询参数设置为 `RelatedVideos`。
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-此请求的响应将具有顶级 [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) 对象，而不是 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) 对象。  
+此请求的响应将具有顶级 [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) 对象，而不是 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 对象。  
   
 ```json
 {

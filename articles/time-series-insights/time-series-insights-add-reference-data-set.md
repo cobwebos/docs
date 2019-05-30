@@ -4,19 +4,19 @@ description: 本文介绍了如何添加参考数据集来增强 Azure 时序见
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0b9db05effe42880465310f6eb5c38e3e832266
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 62c3b35f80300a38213b089567c3f63a8a2ce8db
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606919"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235054"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建引用数据集
 
@@ -36,9 +36,9 @@ ms.locfileid: "65606919"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，单击“所有资源”。 选择时序见解环境。
+1. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，单击“所有资源”  。 选择时序见解环境。
 
-1. 选择“概述”页面。 找到**时序见解资源管理器 URL** 并打开此链接。  
+1. 选择“概述”页面。  找到**时序见解资源管理器 URL** 并打开此链接。  
 
    查看 TSI 环境的资源管理器。
 
@@ -46,19 +46,19 @@ ms.locfileid: "65606919"
 
    [![添加引用数据](media/add-reference-data-set/add_reference_data.png)](media/add-reference-data-set/add_reference_data.png#lightbox)
 
-1. 选择“+ 添加数据集”按钮以开始添加新数据集。
+1. 选择“+ 添加数据集”  按钮以开始添加新数据集。
 
    [![添加数据集](media/add-reference-data-set/add_data_set.png)](media/add-reference-data-set/add_data_set.png#lightbox)
 
-1. 在“新建参考数据集”页面上，选择数据格式：
-   - 选择“CSV”表示以逗号分隔的数据。 第一行被视为标题行。
-   - 选择“JSON 数组”表示 javascript 对象表示法 (JSON) 格式的数据。
+1. 在“新建参考数据集”  页面上，选择数据格式：
+   - 选择“CSV”  表示以逗号分隔的数据。 第一行被视为标题行。
+   - 选择“JSON 数组”  表示 javascript 对象表示法 (JSON) 格式的数据。
 
    [![选择数据格式。](media/add-reference-data-set/add_data.png)](media/add-reference-data-set/add_data.png#lightbox)
 
 1. 使用下列两种方法之一提供数据：
-   - 将数据粘贴到文本编辑器中。 然后，选择“分析参考数据”按钮。
-   - 选择“选择文件”按钮来从本地文本文件添加数据。
+   - 将数据粘贴到文本编辑器中。 然后，选择“分析参考数据”  按钮。
+   - 选择“选择文件”  按钮来从本地文本文件添加数据。
 
    例如，粘贴 CSV 数据：[![粘贴的 CSV 数据](media/add-reference-data-set/csv_data_pasted.png)](media/add-reference-data-set/csv_data_pasted.png#lightbox)
 
@@ -70,17 +70,17 @@ ms.locfileid: "65606919"
 
    [![添加引用数据](media/add-reference-data-set/parse_data.png)](media/add-reference-data-set/parse_data.png#lightbox)
 
-1. 检查每个列以查看采用的数据类型，并根据需要更改数据类型。  在列标题中选择数据类型符号：**#** 表示双精度（数字数据）、**T|F** 表示布尔值，**Abc** 表示字符串。
+1. 检查每个列以查看采用的数据类型，并根据需要更改数据类型。  在列标题中选择数据类型符号： **#** 表示双精度（数字数据）、**T|F** 表示布尔值，**Abc** 表示字符串。
 
    [![选择在列标题上的数据类型。](media/add-reference-data-set/choose_datatypes.png)](media/add-reference-data-set/choose_datatypes.png#lightbox)
 
 1. 如果需要，重命名列标题。 键列名称是联接到事件源中的对应属性所必需的。 请确保参考数据键列名称与传入数据中的事件名称完全匹配，包括区分大小写。 非键列名称用来使用对应的参考数据值增强传入数据。
 
-1. 单击“添加行”或“添加列”以根据需要添加更多的参考数据值。
+1. 单击“添加行”  或“添加列”  以根据需要添加更多的参考数据值。
 
-1. 根据需要在“筛选行...”字段中键入一个值来查看特定行。 筛选器适合用来查看数据，但在上传数据时不会应用。
+1. 根据需要在“筛选行...”  字段中键入一个值来查看特定行。 筛选器适合用来查看数据，但在上传数据时不会应用。
 
-1. 通过填写数据网格上方的“数据集名称”字段为数据集命名。
+1. 通过填写数据网格上方的“数据集名称”  字段为数据集命名。
 
     [![命名数据集。](media/add-reference-data-set/name_reference_dataset.png)](media/add-reference-data-set/name_reference_dataset.png#lightbox)
 
@@ -90,11 +90,11 @@ ms.locfileid: "65606919"
 
     （可选）选择 **+** 按钮来将一个辅键列添加为复合主键。 如果需要撤消选择，请从下拉列表中选择空值来删除辅键。
 
-1. 若要上传数据，请选择“上传行”按钮。
+1. 若要上传数据，请选择“上传行”  按钮。
 
     [![上传](media/add-reference-data-set/upload_rows.png)](media/add-reference-data-set/upload_rows.png#lightbox)
 
-    页面会确认完成的上传并显示消息“已成功上传数据集”。
+    页面会确认完成的上传并显示消息“已成功上传数据集”。 
 
 ## <a name="next-steps"></a>后续步骤
 

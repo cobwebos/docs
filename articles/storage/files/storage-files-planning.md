@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 82c0aa53fa8905e0e58cb784a478ade474ec5601
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232762"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237660"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -59,8 +59,8 @@ Azure 文件提供两个内置的简便数据访问方法，用户可单独使�
 Azure 文件提供可确保数据安全的几个内置选项：
 
 * 支持以下两种在线协议加密：SMB 3.0 加密和通过 HTTPS 的文件 REST。 默认情况下： 
-    * 支持 SMB 3.0 加密的客户端发送和接收数据通过加密通道。
-    * 不支持 SMB 3.0 加密的客户端可以通过 SMB 2.1 或 SMB 3.0 通信数据中心内部的但未加密。 不允许 SMB 客户端通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
+    * 支持 SMB 3.0 加密的客户端通过加密通道发送和接收数据。
+    * 不支持带加密功能的 SMB 3.0 的客户端可通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。 不允许 SMB 客户端通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
     * 客户端可以通过 HTTP 或 HTTPS 与文件 REST 通信。
 * 静态加密（[Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)）：存储服务加密 (SSE) 对所有存储帐户启用。 静态数据使用完全托管的密钥进行加密。 静态加密不会增加存储成本，也不会降低性能。 
 * 加密数据在传输中的可选要求：选定后，Azure 文件拒绝通过未加密通道访问数据。 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。
@@ -164,11 +164,11 @@ Azure 文件高级共享仅支持本地冗余存储 (LRS)。
 
 异地冗余存储 (GRS) 通过将数据复制到距主要区域数百英里以外的次要区域，用于在给定的一年内至少为对象提供 99.99999999999999%（16 个 9）的持久性。 如果存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，数据也能持久保存。
 
-如果选择使用读取访问异地冗余存储 (RA-GRS)，您应该知道，Azure 文件不支持读取访问异地冗余存储 (RA-GRS) 在任何区域中这一次。 RA-GRS 存储帐户中的文件共享的工作方式与它们在 GRS 帐户中一样，GRS 价格收费。
+如果你选择读取访问权限异地冗余存储 (RA-GRS)，则应当知道 Azure 文件目前在任何区域都不支持读取访问权限异地冗余存储 (RA-GRS)。 RA-GRS 存储帐户中的文件共享的工作方式与它们在 GRS 帐户中一样，GRS 价格收费。
 
 GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Microsoft 发起了从主要区域到次要区域的故障转移时，才可读取这些数据。
 
-对于启用了 GRS 的存储帐户，使用本地冗余存储 (LRS) 首先复制所有数据。 首先将更新提交到主要位置，并使用 LRS 复制更新。 然后，使用 GRS 以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
+对于已启用 GRS 的存储帐户，首先会使用本地冗余存储 (LRS) 复制所有数据。 首先将更新提交到主要位置，并使用 LRS 复制更新。 然后，使用 GRS 以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
 
 主要和次要区域在一个存储缩放单元内管理跨单独的容错域和升级域管理副本。 存储缩放单元是数据中心内的基本复制单元。 此级别的复制由 LRS 提供；有关详细信息，请参阅[本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](../common/storage-redundancy-lrs.md)。
 
@@ -189,9 +189,9 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 可通过多种简单的选项将数据从现有文件共享（例如本地文件共享）批量传输到 Azure 文件。 几种常用选项包括（非详尽列表）：
 
 * **Azure 文件同步**：在 Azure 文件共享（“云终结点”）和 Windows 目录命名空间（“服务器终结点”）之间首次同步期间，Azure 文件同步将把现有文件共享中的所有数据复制到 Azure 文件。
-* **[Azure 导入/导出](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**：使用 Azure 导入/导出服务，可将硬盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure 文件共享。 
-* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**：Robocopy 是 Windows 和 Windows Server 自带的一款知名复制工具。 Robocopy 可用于将数据传输到 Azure 文件，方法是在本地装载文件共享，然后使用装载位置作为 Robocopy 命令的目标位置。
-* **[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#upload-files-to-an-azure-file-share)**：AzCopy 是一个命令行实用程序，专用于使用具有优化性能的简单命令在 Azure 文件和 Azure Blob 存储中复制/粘贴数据。 AzCopy 适用于 Windows 和 Linux。
+* **[Azure 导入/导出](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** ：使用 Azure 导入/导出服务，可将硬盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure 文件共享。 
+* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** ：Robocopy 是 Windows 和 Windows Server 自带的一款知名复制工具。 Robocopy 可用于将数据传输到 Azure 文件，方法是在本地装载文件共享，然后使用装载位置作为 Robocopy 命令的目标位置。
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** ：AzCopy 是一个命令行实用程序，专用于使用具有优化性能的简单命令在 Azure 文件和 Azure Blob 存储中复制/粘贴数据。
 
 ## <a name="next-steps"></a>后续步骤
 * [规划 Azure 文件同步部署](storage-sync-files-planning.md)

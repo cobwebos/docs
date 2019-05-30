@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 6fd7f36510bdc7ed56ede6a5743a5f131149472e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 32d385416c83f81553e734d9471d0b502a458b07
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834756"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390504"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows azure 串行控制台
 
@@ -39,7 +39,7 @@ ms.locfileid: "65834756"
 
 - 你使用串行控制台的帐户必须具有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)vm 并[启动诊断](boot-diagnostics.md)存储帐户
 
-- VM 或虚拟机规模集实例必须有一个基于密码的用户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。
+- VM 或虚拟机规模集实例必须有一个基于密码的用户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。  
 
 * 你要在其中访问串行控制台的 VM 必须已启用[启动诊断](boot-diagnostics.md)。
 
@@ -54,7 +54,7 @@ Vm 和虚拟机规模集的串行控制台可访问只能通过 Azure 门户：
 
   1. 导航到**的所有资源**选择虚拟机。 此时会打开该 VM 的概述页。
 
-  1. 向下滚动到“支持 + 故障排除”部分，并选择“串行控制台”。 此时会打开一个包含串行控制台的新窗格，并启动连接。
+  1. 向下滚动到“支持 + 故障排除”部分，并选择“串行控制台”。   此时会打开一个包含串行控制台的新窗格，并启动连接。
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>虚拟机规模集的串行控制台
 虚拟机规模集的每个实例基础上提供了串行控制台。 您将需要导航到虚拟机规模集的单个实例才会看到**串行控制台**按钮。 如果虚拟机规模集不具有已启用启动诊断，请确保更新虚拟机规模集模型以启用启动诊断，然后再升级所有实例到新模型才能访问串行控制台。
@@ -122,7 +122,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 ### <a name="use-cmd-or-powershell-in-serial-console"></a>在串行控制台中使用 CMD 或 PowerShell
 
-1. 连接到串行控制台。 如果已成功连接，则提示符为“SAC>”：
+1. 连接到串行控制台。 如果已成功连接，则提示符为“SAC>”  ：
 
     ![连接到 SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
@@ -130,11 +130,11 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 1.  输入 `ch -si 1` 以切换到正在运行 CMD 实例的通道。
 
-1.  按 Enter，然后输入具有管理权限的登录凭据。
+1.  按 Enter，然后输入具有管理权限的登录凭据  。
 
 1.  输入有效凭据后，CMD 实例随即打开。
 
-1.  要启动 PowerShell 实例，请在 CMD 实例中输入 `PowerShell`，然后按 Enter。
+1.  要启动 PowerShell 实例，请在 CMD 实例中输入 `PowerShell`，然后按 Enter  。
 
     ![打开 PowerShell 实例](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
@@ -170,7 +170,9 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 > 若要为订阅启用或禁用串行控制台，必须具有订阅的写入权限。 这些权限包括但不限于管理员或所有者角色。 自定义角色也可能具有写入权限。
 
 ### <a name="subscription-level-disable"></a>订阅级禁用
-可以通过[禁用控制台 REST API 调用](/rest/api/serialconsole/console/disableconsole)为整个订阅禁用串行控制台。 可以使用此 API 文档页面上提供的“试用”功能为订阅禁用和启用串行控制台。 在“subscriptionId”字段中输入自己的订阅 ID，在“default”字段中输入“default”，然后选择“运行”。 Azure CLI 命令目前不可用。
+可以通过[禁用控制台 REST API 调用](/rest/api/serialconsole/console/disableconsole)为整个订阅禁用串行控制台。 此操作要求级别的参与者访问权限或更高版本到订阅。 可以使用此 API 文档页面上提供的“试用”功能为订阅禁用和启用串行控制台。  在“subscriptionId”字段中输入自己的订阅 ID，在“default”字段中输入“default”，然后选择“运行”    。 Azure CLI 命令目前不可用。
+
+若要重新启用订阅的串行控制台，请使用[启用控制台 REST API 调用](/rest/api/serialconsole/console/enableconsole)。
 
 ![试用 REST API](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
@@ -221,7 +223,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 > [!CAUTION]
 > 这意味着，断开连接的用户尚未注销。断开连接后强制注销（使用 SIGHUP 或类似机制）的功能目前仍在规划中。 对于 Windows，SAC 中会启用自动超时；对于 Linux，可以配置终端超时设置。
 
-## <a name="accessibility"></a>辅助功能
+## <a name="accessibility"></a>可访问性
 可访问性是 Azure 串行控制台的重点。 为此，我们已确保视听障碍者以及可能无法使用鼠标的用户能够访问串行控制台。
 
 ### <a name="keyboard-navigation"></a>键盘导航
@@ -262,9 +264,10 @@ Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.c
 在出现连接标题后按 **Enter** 不会显示登录提示。 | 有关详细信息，请参阅[按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果运行的自定义 VM、强化设备或启动配置导致 Windows 无法正确连接到串行端口的启动配置，则可能会发生此错误。 如果运行的是 Windows 10 客户端 VM，也会发生此错误，因为只有 Windows Server VM 配置为启用 EMS。
 如果已启用内核调试，则无法在 SAC 提示符下键入内容。 | 通过 RDP 连接到 VM，并从权限提升的命令提示符运行 `bcdedit /debug {current} off`。 如果无法建立 RDP 连接，可将 OS 磁盘附加到另一个 Azure VM，并且在该磁盘附加为数据磁盘时通过运行 `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` 对其进行修改，然后换回磁盘。
 如果原始内容具有重复的字符，则粘贴到 SAC 结果中的 PowerShell 将产生第三个字符。 | 解决方法是运行 `Remove-Module PSReadLine` 以从当前会话中卸载 PSReadLine 模块。 此操作不会删除或卸载该模块。
-某些键盘输入会生成奇怪的 SAC 输出（例如 [A、[3~）。 | SAC 提示符不支持 [VT100](https://aka.ms/vtsequences) 转义序列。
+某些键盘输入会生成奇怪的 SAC 输出（例如 [A、[3~）   。 | SAC 提示符不支持 [VT100](https://aka.ms/vtsequences) 转义序列。
 无法粘贴长字符串。 | 串行控制台将粘贴到终端的字符串长度限制为 2048 个字符，以防止串行端口带宽过载。
 串行控制台不能与存储帐户防火墙一起使用。 | 根据设计串行控制台无法与启动诊断存储帐户上启用的存储帐户防火墙一起使用。
+串行控制台并不适用于 Azure 数据湖存储第 2 代中使用分层命名空间的存储帐户。 | 这是分层命名空间的已知的问题。 若要缓解问题，请确保你的 VM 的启动诊断存储帐户不创建使用 Azure 数据湖存储第 2 代。 仅可以在存储帐户创建时设置此选项。 您可能需要创建单独的引导诊断存储帐户没有 Azure 数据湖存储第 2 代启用来缓解此问题的情况下。
 
 
 ## <a name="frequently-asked-questions"></a>常见问题

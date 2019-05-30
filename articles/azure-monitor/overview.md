@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0485f8e3b377ce94ec23a4a1a94eb7e189b0232b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c72ac62b55b2b08be5aaad563933bcb2b703cba9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787052"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245078"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -55,7 +55,7 @@ Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据�
 - **Azure 订阅监视数据**：有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 
 - **Azure 租户监视数据**：有关租户级 Azure 服务（例如 Azure Active Directory）操作的数据。
 
-在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](platform/activity-logs-overview.md)记录创建或修改资源的时间。 [指标](platform/data-platform.md)告知资源的性能如何，以及该资源消耗的资源。 
+在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](platform/activity-logs-overview.md)记录时创建或修改资源。 [指标](platform/data-platform.md)告知资源的性能如何，以及该资源消耗的资源。 
 
 通过[启用诊断](platform/diagnostic-logs-overview.md)并[将代理添加](platform/agent-windows.md)到计算资源，将数据收集范围扩展到资源的实际操作。 这会收集资源内部操作的遥测数据，并可让你配置不同的[数据源](platform/agent-data-sources.md)用于从 Windows 和 Linux 来宾操作系统收集日志与指标。 
 

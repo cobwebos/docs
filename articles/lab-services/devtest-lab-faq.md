@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a46d816c04d9f5629c2ee9538016d42c53f9a331
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713014"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244387"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -99,7 +99,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 中央 IT 应该拥有只是需要并使项目和应用程序的团队能够具有所需的级别的控制。 通常情况下，这意味着中心 IT 部门拥有订阅并负责核心 IT 功能，例如网络配置。 订阅的**所有者**集应该小。 这些所有者可以在需要时指定其他所有者的名称或应用订阅级别策略，例如"没有公共 IP"。
 
-部分用户（例如第 1 层或第 2 层支持人员）可能需要在整个订阅中进行访问。 在这种情况下，建议为这些用户提供管理资源所需的“参与者”访问权限，但不提供用户访问权限，也不调整策略。
+部分用户（例如第 1 层或第 2 层支持人员）可能需要在整个订阅中进行访问。 在这种情况下，建议为这些用户提供管理资源所需的“参与者”访问权限，但不提供用户访问权限，也不调整策略。 
 
 开发测试实验室资源应该由那些接近项目/应用程序团队的所有者拥有。 这是因为他们了解他们的计算机和所需的软件要求。 在大多数组织中，此开发测试实验室资源的所有者通常是项目/开发主管。 此所有者可以管理实验室环境中的用户和策略，可以管理开发测试实验室环境中的所有 VM。
 
@@ -109,7 +109,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 
 ### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>如何创建角色来允许用户执行特定任务？
-有关如何创建自定义角色，并将权限分配给该角色的综合性文章，请参阅[向用户授予特定实验室策略的权限](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)。 下面的脚本示例创建“开发测试实验室高级用户”角色，该角色具有启动和停止实验室中所有 VM 的权限：
+有关如何创建自定义角色，并将权限分配给该角色的综合性文章，请参阅[向用户授予特定实验室策略的权限](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)。 下面的脚本示例创建“开发测试实验室高级用户”角色，该角色具有启动和停止实验室中所有 VM 的权限  ：
 
 
 ```powershell
@@ -176,7 +176,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 此外可能使用 Azure DevOps 项目中的特定项目的实验室。 然后，通过允许访问这两组资源的指定 Azure Active Directory 组应用安全性。 分配到该实验室的虚拟网络可以是用于整合用户的另一个边界。
 
 ### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>如何防止删除实验室中的资源？
-我们建议在实验室级别设置适当的权限，以便只有经过授权的用户才能删除资源或更改实验室策略。 应将开发人员放置在“开发测试实验室用户”组中。 开发人员主管或基础结构主管应是“开发测试实验室所有者”。 我们建议您只有两个实验室所有者。 此策略根据代码存储库的扩展而扩展，以避免损坏。 实验室用户有权使用的资源，但不能更新实验室策略。 请参阅以下文章，其中列出了每个内置组在实验室中拥有的角色和权限：[在 Azure 开发测试实验室中添加所有者和用户](devtest-lab-add-devtest-user.md)。
+我们建议在实验室级别设置适当的权限，以便只有经过授权的用户才能删除资源或更改实验室策略。 应将开发人员放置在“开发测试实验室用户”组中。  开发人员主管或基础结构主管应是“开发测试实验室所有者”。  我们建议您只有两个实验室所有者。 此策略根据代码存储库的扩展而扩展，以避免损坏。 实验室用户有权使用的资源，但不能更新实验室策略。 请参阅以下文章，其中列出了每个内置组在实验室中拥有的角色和权限：[在 Azure 开发测试实验室中添加所有者和用户](devtest-lab-add-devtest-user.md)。
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>如何向我的实验室共享直接链接？
 
@@ -280,18 +280,18 @@ foreach($labVM in $labVMs)
 
 可通过两种方式自动上传 VHD 文件以创建自定义映像：
 
-- 使用 [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage) 将 VHD 文件复制或上传到与实验室关联的存储帐户。
+- 使用 [AzCopy](../storage/common/storage-use-azcopy-v10.md) 将 VHD 文件复制或上传到与实验室关联的存储帐户。
 - 使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)。 存储资源管理器是在 Windows、OS X 和 Linux 上运行的独立应用。
 
 查找与实验室关联的目标存储帐户：
 
 1.  登录到 [Azure 门户](https://portal.azure.com)。
-2.  在左侧菜单上，选择“资源组”。
+2.  在左侧菜单上，选择“资源组”  。
 3.  查找并选择与实验室关联的资源组。
-4.  在“概述”下，选择一个存储帐户。
-5.  选择“Blob”。
+4.  在“概述”下，选择一个存储帐户  。
+5.  选择“Blob”  。
 6.  查找列表中的上传。 如果不存在，则返回到步骤 4，并尝试另一个存储帐户。
-7.  将该 URL 用作 AzCopy 命令中的目标。
+7.  将该 URL 用作 AzCopy 命令中的目标  。
 
 何时应使用 Azure 市场映像以及自己的自定义组织映像？
 
@@ -365,7 +365,7 @@ foreach($labVM in $labVMs)
 
 ### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>如何确保开发和测试虚拟机无法访问公共 Internet？ 是否有任何建议的模式来设置网络配置？
 
-可以。 有两个方面需要考虑，即入站和出站流量。
+是的。 有两个方面需要考虑，即入站和出站流量。
 
 - **入站流量**– 如果虚拟机不会有一个公共 IP 地址，则它不能通过 internet 访问。 一种常见方法是确保设置的订阅级别策略，以便任何用户可以创建一个公共 IP 地址。
 - **出站流量**– 如果你想要防止虚拟机直接访问公共 internet 和强制流量通过企业防火墙，则可以路由流量在本地通过 expressroute 或 VPN，通过使用强制路由。
@@ -388,7 +388,7 @@ VM 是资源组中实验室下的子资源。 使用资源管理器模板通过 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM 部署失败时，可在何处查找错误详细信息？
 活动日志中会捕获 VM 部署错误。 可以找到实验室 VM 活动日志下的**审核日志**或**虚拟机诊断**实验室的虚拟机页上的资源菜单上 (在您选择从 VM 后，会显示的页我的虚拟机的列表)。
 
-有时，部署错误发生在 VM 部署开始之前。 一个示例是超过与 VM 一起创建的资源的订阅限制时。 在此情况下，会在实验室级别活动日志中捕获错误详细信息。 活动日志位于“配置和策略”设置的底部。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
+有时，部署错误发生在 VM 部署开始之前。 一个示例是超过与 VM 一起创建的资源的订阅限制时。 在此情况下，会在实验室级别活动日志中捕获错误详细信息。 活动日志位于“配置和策略”设置的底部  。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
 
 
 

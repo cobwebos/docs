@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: b6abb0048dcc722241a2cd87354224b0fd7fa2f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f6c00f4ada0590df91fce0c36281d0c0cac67b77
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561539"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257947"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 
@@ -74,7 +74,7 @@ ms.locfileid: "60561539"
 
 ## <a name="iot-hub"></a>IoT 中心
 
-订阅 IoT 中心事件以响应设备已创建、已删除、已连接和已断开连接事件。
+订阅到 IoT 中心事件来响应创建，已删除、 连接、 断开连接的设备和遥测事件。
 
 |标题  |描述  |
 |---------|---------|

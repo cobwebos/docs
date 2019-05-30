@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2019
+ms.date: 05/17/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8b5a16e2d5e3ac723675ebdb536a51d20412681f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764905"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235408"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
-本文介绍如何创建新的 Azure Active Directory (Azure AD) 应用程序和服务主体，可使用基于角色的访问控制。 如果有需要访问或修改资源的代码，则可以为应用创建标识。 此标识称为服务主体。 可以将所需权限分配给服务主体。 本文介绍如何使用门户创建服务主体。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
+本文介绍如何创建新的 Azure Active Directory (Azure AD) 应用程序和服务主体，后者可以与基于角色的访问控制配合使用。 如果有需要访问或修改资源的代码，则可以为应用创建标识。 此标识称为服务主体。 可以将所需权限分配给服务主体。 本文介绍如何使用门户创建服务主体。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
 
 > [!IMPORTANT]
 > 请考虑使用 Azure 资源的托管标识作为应用程序标识，而不是创建服务主体。 如果你的代码在支持托管的标识，支持 Azure AD 身份验证的访问资源的服务上运行，管理的标识是为你更好的选择。 若要详细了解 Azure 资源的托管标识（包括当前支持它的服务），请参阅[什么是 Azure 资源的托管标识？](../managed-identities-azure-resources/overview.md)。
@@ -35,16 +35,16 @@ ms.locfileid: "65764905"
 我们直接介绍如何创建标识。 如果遇到问题，请查看[所需权限](#required-permissions)，确保帐户可以创建标识。
 
 1. 通过 [Azure 门户](https://portal.azure.com)登录到 Azure 帐户。
-1. 选择“Azure Active Directory”。
-1. 选择“应用注册”。
+1. 选择“Azure Active Directory”  。
+1. 选择“应用注册”。 
 
    ![选择应用注册](./media/howto-create-service-principal-portal/select-app-registrations.png)
 
-1. 选择“新建应用程序注册”。
+1. 选择“新注册”。 
 
    ![添加应用](./media/howto-create-service-principal-portal/select-add-app.png)
 
-1. 为应用提供名称和 URL。 选择“Web 应用/API”作为要创建的应用类型。 不能为[本机应用程序](../manage-apps/application-proxy-configure-native-client-application.md)创建凭据。 该类型不能用于自动化应用程序。 设置这些值后，选择“创建”。
+1. 提供应用程序的名称。 选择受支持的帐户类型，用于确定谁可以使用该应用程序。 下**重定向 URI**，选择**Web**为你想要创建的应用程序的类型。 输入位置的访问令牌发送到的 URI。  不能为[本机应用程序](../manage-apps/application-proxy-configure-native-client-application.md)创建凭据。 该类型不能用于自动化应用程序。 设置这些值后，选择“注册”  。
 
    ![命名应用程序](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "65764905"
 
 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
 
-1. 导航到要将应用程序分配到的作用域级别。 例如，若要在订阅范围内分配角色，请依次选择“所有服务”和“订阅”。
+1. 导航到要将应用程序分配到的作用域级别。 例如，若要在订阅范围内分配角色，请依次选择“所有服务”和“订阅”   。
 
    ![选择订阅](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -64,48 +64,58 @@ ms.locfileid: "65764905"
 
    ![选择要分配的订阅](./media/howto-create-service-principal-portal/select-one-subscription.png)
 
-   如果未看到所需订阅，请选择“全局订阅筛选器”。 请确保已为该门户选择所需的订阅。 
+   如果未看到所需订阅，请选择“全局订阅筛选器”  。 请确保已为该门户选择所需的订阅。 
 
-1. 选择“访问控制 (IAM)”。
-1. 选择“添加角色分配”。
+1. 选择“访问控制 (IAM)”  。
+1. 选择“添加角色分配”  。
 
    ![选择“添加角色分配”](./media/howto-create-service-principal-portal/select-add.png)
 
-1. 选择要分配到应用程序的角色。 若要允许应用程序执行诸如“重启”、“启动”和“停止”实例之类的操作，请选择“参与者”角色。 默认情况下，可用选项中不显示 Azure AD 应用程序。 若要查找应用程序，请搜索其名称并选中它。
+1. 选择要分配到应用程序的角色。 若要允许应用程序执行诸如“重启”、“启动”和“停止”实例之类的操作，请选择“参与者”角色     。 默认情况下，可用选项中不显示 Azure AD 应用程序。 若要查找应用程序，请搜索其名称并选中它。
 
    ![选择角色](./media/howto-create-service-principal-portal/select-role.png)
 
-1. 选择“保存”完成角色分配。 该应用程序会显示在分配到该范围角色的用户列表中。
+1. 选择“保存”  完成角色分配。 该应用程序会显示在分配到该范围角色的用户列表中。
 
 服务主体已设置完毕。 可以开始使用它运行脚本或应用。 下一部分演示如何获取以编程方式登录时所需的值。
 
 ## <a name="get-values-for-signing-in"></a>获取用于登录的值
 
-### <a name="get-tenant-id"></a>获取租户 ID
+以编程方式登录时，需要随身份验证请求传递租户 ID。 还需要应用程序 ID 和身份验证密钥。 若要获取这些值，请使用以下步骤：
 
-以编程方式登录时，需要随身份验证请求传递租户 ID。
+1. 选择“Azure Active Directory”  。
 
-1. 选择“Azure Active Directory”。
-1. 选择“属性”。
-
-   ![选择 Azure AD 属性](./media/howto-create-service-principal-portal/select-ad-properties.png)
-
-1. 复制“Directory ID”以获取租户 ID。
-
-   ![租户 ID](./media/howto-create-service-principal-portal/copy-directory-id.png)
-
-### <a name="get-application-id-and-authentication-key"></a>获取应用程序 ID 和身份验证密钥
-
-还需要应用程序 ID 和身份验证密钥。 若要获取这些值，请使用以下步骤：
-
-1. 从 Azure AD 中的“应用注册”，选择应用程序。
+1. 从 Azure AD 中的“应用注册”  ，选择应用程序。
 
    ![选择应用程序](./media/howto-create-service-principal-portal/select-app.png)
 
-1. 复制“应用程序 ID”并将其存储在应用程序代码中。
+1. 复制目录 （租户） ID，并将其存储在应用程序代码。
+
+    ![租户 ID](./media/howto-create-service-principal-portal/copy-tenant-id.png)
+
+1. 复制“应用程序 ID”  并将其存储在应用程序代码中。
 
    ![客户端 ID](./media/howto-create-service-principal-portal/copy-app-id.png)
 
+## <a name="certificates-and-secrets"></a>证书和机密
+守护程序应用程序可以使用两种形式的凭据进行身份验证与 Azure AD： 证书和应用程序机密。  我们建议使用的证书，但您还可以创建新的应用程序机密。
+
+### <a name="upload-a-certificate"></a>上传证书
+
+如果有的话，可以使用现有证书。  （可选） 可以创建用于测试目的的自签名的证书。 打开 PowerShell 并运行[New-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate)使用以下参数，在您的计算机上的用户证书存储中创建自签名的证书： `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`。  此证书使用导出[管理用户证书](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)mmc 管理单元可从 Windows 控制面板访问。
+
+若要上传证书：
+1. 选择**证书和机密**。
+
+   ![选择设置](./media/howto-create-service-principal-portal/select-certs-secrets.png)
+1. 单击**上传证书**选择 （现有证书或自签名证书，导出） 的证书。
+    ![上传证书](./media/howto-create-service-principal-portal/upload-cert.png)
+1. 单击“添加”  。
+
+向应用程序注册门户中的应用程序注册证书之后, 您需要使客户端应用程序代码以使用证书。
+
+### <a name="create-a-new-application-secret"></a>创建新的应用程序机密
+如果您选择不使用证书，则可以创建新的应用程序机密。
 1. 选择**证书和机密**。
 
    ![选择设置](./media/howto-create-service-principal-portal/select-certs-secrets.png)
@@ -125,24 +135,24 @@ ms.locfileid: "65764905"
 
 ### <a name="check-azure-ad-permissions"></a>检查 Azure AD 权限
 
-1. 选择“Azure Active Directory”。
-1. 记下你的角色。 如果角色为“用户”，则必须确保非管理员可以注册应用程序。
+1. 选择“Azure Active Directory”  。
+1. 记下你的角色。 如果角色为“用户”，则必须确保非管理员可以注册应用程序  。
 
    ![查找用户](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. 选择“用户设置”。
+1. 选择“用户设置”  。
 
    ![选择用户设置](./media/howto-create-service-principal-portal/select-user-settings.png)
 
-1. 检查“应用注册”设置。 只有管理员可设置此值。 如果设置为“是”，则 Active AD 租户中的任何用户都可以注册应用。
+1. 检查“应用注册”  设置。 只有管理员可设置此值。 如果设置为“是”，则 Active AD 租户中的任何用户都可以注册应用  。
 
    ![查看应用注册](./media/howto-create-service-principal-portal/view-app-registrations.png)
 
-如果应用注册设置设定为“否”，则只有具有管理员角色的用户才能注册这些类型的应用程序。 请参阅[可用角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)和[角色权限](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)来了解 Azure AD 中的可用管理员角色以及授予每个角色的具体权限。 如果将帐户分配到“用户”角色，但应用注册设置仅限于管理员用户，请要求管理员为你分配可以创建和管理应用注册的所有方面的管理员角色之一，或者让用户能够注册应用。
+如果应用注册设置设定为“否”  ，则只有具有管理员角色的用户才能注册这些类型的应用程序。 请参阅[可用角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)和[角色权限](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)来了解 Azure AD 中的可用管理员角色以及授予每个角色的具体权限。 如果将帐户分配到“用户”角色，但应用注册设置仅限于管理员用户，请要求管理员为你分配可以创建和管理应用注册的所有方面的管理员角色之一，或者让用户能够注册应用。
 
 ### <a name="check-azure-subscription-permissions"></a>检查 Azure 订阅权限
 
-在 Azure 订阅中，帐户必须具有 `Microsoft.Authorization/*/Write` 访问权限才能向角色分配 AD 应用。 通过[所有者](../../role-based-access-control/built-in-roles.md#owner)角色或[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色授权此操作。 如果将帐户分配到“参与者”角色，则没有足够权限。 尝试将服务主体分配到角色时，将收到错误。
+在 Azure 订阅中，帐户必须具有 `Microsoft.Authorization/*/Write` 访问权限才能向角色分配 AD 应用。 通过[所有者](../../role-based-access-control/built-in-roles.md#owner)角色或[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色授权此操作。 如果将帐户分配到“参与者”角色，则没有足够权限  。 尝试将服务主体分配到角色时，将收到错误。
 
 检查订阅权限的方法如下：
 
@@ -150,7 +160,7 @@ ms.locfileid: "65764905"
 
    ![选择用户权限](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
-1. 从下拉列表中，选择要在其中创建服务主体的订阅。 然后，选择“单击此处查看此订阅的完整访问详细信息”。
+1. 从下拉列表中，选择要在其中创建服务主体的订阅。 然后，选择“单击此处查看此订阅的完整访问详细信息”  。
 
    ![查找用户](./media/howto-create-service-principal-portal/view-details.png)
 

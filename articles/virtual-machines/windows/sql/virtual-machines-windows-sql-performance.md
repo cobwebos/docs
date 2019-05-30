@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1f40c62fce61ba16dfdf289d54cd19c3739ce21
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477312"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393765"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的性能准则
 
@@ -90,7 +90,7 @@ D 系列、Dv2 系列和 G 系列 VM 上的临时驱动器基于 SSD。 如果�
 
 对于支持高级 SSD 的 VM（DS 系列、DSv2 系列和 GS 系列），建议将 TempDB 存储在支持高级 SSD 且已启用读取缓存的磁盘上。
 
-这项建议有一种例外情况；如果 TempDB 的使用是写入密集型的，则可以通过将 TempDB 存储在本地 D 驱动器（在这些计算机大小上也是基于 SSD）上来实现更高性能。
+这项建议有一种例外情况；如果 TempDB 的使用是写入密集型的，则可以通过将 TempDB 存储在本地 D 驱动器（在这些计算机大小上也是基于 SSD）上来实现更高性能   。
 
 ### <a name="data-disks"></a>数据磁盘数
 
@@ -162,7 +162,7 @@ D 系列、Dv2 系列和 G 系列 VM 上的临时驱动器基于 SSD。 如果�
 
 * 将所有数据库（包括系统数据库）转移到数据磁盘。 有关详细信息，请参阅 [Move System Databases](https://msdn.microsoft.com/library/ms345408.aspx)（移动系统数据库）。
 
-* 将 SQL Server 错误日志和跟踪文件目录移到数据磁盘。 在 SQL Server 配置管理器中右键单击 SQL Server 实例并选择属性，即可实现此目的。 可以在“启动参数”选项卡中更改错误日志和跟踪文件设置。在“高级”选项卡中指定转储目录。以下屏幕截图显示了错误日志启动参数的位置。
+* 将 SQL Server 错误日志和跟踪文件目录移到数据磁盘。 在 SQL Server 配置管理器中右键单击 SQL Server 实例并选择属性，即可实现此目的。 可以在“启动参数”选项卡中更改错误日志和跟踪文件设置。  在“高级”选项卡中指定转储目录。  以下屏幕截图显示了错误日志启动参数的位置。
 
     ![SQL 错误日志屏幕截图](./media/virtual-machines-windows-sql-performance/sql_server_error_log_location.png)
 
@@ -179,11 +179,22 @@ D 系列、Dv2 系列和 G 系列 VM 上的临时驱动器基于 SSD。 如果�
 
 某些部署可以使用更高级的配置技术，获得更多的性能好处。 下面的列表主要介绍可帮助你实现更佳性能的一些 SQL Server 功能：
 
-* **备份到 Azure 存储**：为在 Azure 虚拟机中运行的 SQL Server 执行备份时，可以使用 [SQL Server 备份到 URL](https://msdn.microsoft.com/library/dn435916.aspx)。 此功能是从 SQL Server 2012 SP1 CU2 开始提供的，在备份到附加数据磁盘时建议使用。 备份到 Azure 存储或从中还原时，请按照 [SQL Server 备份到 URL 最佳实践和故障排除以及从 Azure 存储中存储的备份还原](https://msdn.microsoft.com/library/jj919149.aspx)中提供的建议操作。 此外还可以使用 [Azure 虚拟机中 SQL Server 的自动备份](virtual-machines-windows-sql-automated-backup.md)自动执行这些备份。
+### <a name="backup-to-azure-storage"></a>备份到 Azure 存储
+为在 Azure 虚拟机中运行的 SQL Server 执行备份时，可以使用 [SQL Server 备份到 URL](https://msdn.microsoft.com/library/dn435916.aspx)。 此功能是从 SQL Server 2012 SP1 CU2 开始提供的，在备份到附加数据磁盘时建议使用。 备份到 Azure 存储或从中还原时，请按照 [SQL Server 备份到 URL 最佳实践和故障排除以及从 Azure 存储中存储的备份还原](https://msdn.microsoft.com/library/jj919149.aspx)中提供的建议操作。 此外还可以使用 [Azure 虚拟机中 SQL Server 的自动备份](virtual-machines-windows-sql-automated-backup.md)自动执行这些备份。
 
-    对于 SQL Server 2012 以前版本，可以使用 [SQL Server 备份到 Azure 工具](https://www.microsoft.com/download/details.aspx?id=40740)。 此工具可以通过使用多个备份条带目标帮助提高备份吞吐量。
+对于 SQL Server 2012 以前版本，可以使用 [SQL Server 备份到 Azure 工具](https://www.microsoft.com/download/details.aspx?id=40740)。 此工具可以通过使用多个备份条带目标帮助提高备份吞吐量。
 
-* **Azure 中的 SQL Server 数据文件**：[Azure 中的 SQL Server 数据文件](https://msdn.microsoft.com/library/dn385720.aspx)这一新功能从 SQL Server 2014 开始提供。 在 SQL Server 上运行 Azure 中的数据文件，与使用 Azure 数据磁盘时的性能特征相当。
+### <a name="sql-server-data-files-in-azure"></a>在 Azure 中的 SQL Server 数据文件
+
+[Azure 中的 SQL Server 数据文件](https://msdn.microsoft.com/library/dn385720.aspx)这一新功能从 SQL Server 2014 开始提供。 在 SQL Server 上运行 Azure 中的数据文件，与使用 Azure 数据磁盘时的性能特征相当。
+
+### <a name="failover-cluster-instance-and-storage-spaces"></a>故障转移群集实例和存储空间
+
+如果在向群集添加节点时使用存储空间**确认**页上，清除标记为复选框**将所有符合条件的存储添加到群集**。 
+
+![取消选中符合条件的存储](media/virtual-machines-windows-sql-performance/uncheck-eligible-cluster-storage.png)
+
+如果正在使用存储空间，且选中了“将所有符合条件的存储添加到群集”  ，Windows 会在群集进程中分离虚拟磁盘。 这样一来，这些虚拟磁盘将不会出现在磁盘管理器或资源管理器之中，除非从群集中删除存储空间，并使用 PowerShell 将其重新附加。 存储空间将多个磁盘集合到存储池中。 有关详细信息，请参阅[存储空间](/windows-server/storage/storage-spaces/overview)。
 
 ## <a name="next-steps"></a>后续步骤
 

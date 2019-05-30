@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712859"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244912"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -28,8 +28,8 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
-- 条件类型：静态
-- 时间聚合（基于原始指标值运行的统计信息。 支持的时间聚合为“最小值”、“最大值”、“平均值”、“总计”）：平均值
+- 条件类型：Static
+- 时间聚合（基于原始指标值运行的统计信息。 受支持的时间聚合是最小值、 Max、 Avg、 总计、 计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -44,7 +44,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：动态
-- 时间聚合（基于原始指标值运行的统计信息。 支持的时间聚合为“最小值”、“最大值”、“平均值”、“总计”）：平均值
+- 时间聚合（基于原始指标值运行的统计信息。 受支持的时间聚合是最小值、 Max、 Avg、 总计、 计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -58,7 +58,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 
 ### <a name="view-and-resolution-of-fired-alerts"></a>查看并解决已激发的警报
 
-也可以在 Azure 门户的“所有警报”边栏选项卡中查看上述警报规则激发示例。
+也可以在 Azure 门户的“所有警报”边栏选项卡中查看上述警报规则激发示例。 
 
 假设在后续的检查中，“myVM”上的用量持续超过阈值，则在解决这种状况之前，警报规则不会再次激发。
 
@@ -74,7 +74,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 - 目标资源：myAppServicePlan
 - 指标：CPU 百分比
-- 条件类型：静态
+- 条件类型：Static
 - 维度
   - 实例 = InstanceName1、InstanceName2
 - 时间聚合：平均值
@@ -89,7 +89,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 - 目标资源：myAppServicePlan
 - 指标：CPU 百分比
-- 条件类型：静态
+- 条件类型：Static
 - 维度
   - 实例 = *
 - 时间聚合：平均值

@@ -5,16 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: de2e57901becad68f3fad16967faf3ae4833177a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 928d741132623bd92dae1097724295691d7f3808
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797869"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398337"
 ---
-# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>从一个区域的 Azure Vm 复制到另一个支持矩阵
+# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>用于将 Azure VM 从一个区域复制到另一个区域的支持矩阵
 
 本文汇总了支持和必备组件时设置的灾难恢复 Azure Vm 从一个 Azure 区域到另一个，并使用[Azure Site Recovery](site-recovery-overview.md)服务。
 
@@ -177,11 +177,12 @@ RBAC 策略 | 不支持 | 基于角色的访问控制 (RBAC) 策略在 Vm 上的
 - 如果使用默认设置进行部署，Site Recovery 会根据源设置自动创建磁盘和存储帐户。
 - 如果自定义，请确保遵循指南。
 
-组件 | **支持** | **详细信息**
+组件  | **支持** | **详细信息**
 --- | --- | ---
 OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows/managed-disks-overview.md)VM 磁盘相关信息。
 临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/windows/managed-disks-overview.md)。
 数据磁盘的最大大小 | 4095 GB |
+数据磁盘最小大小 | 非托管磁盘没有限制。 托管磁盘为 2 GB | 
 数据磁盘的最大数量 | 最多为 64，根据对特定的 Azure VM 大小的支持而定 | [深入了解 ](../virtual-machines/windows/sizes.md)VM 大小相关信息。
 数据磁盘更改率 | 每个高级存储的磁盘最大为 10 MBps。 每个标准存储的磁盘最大为 2 MBps。 | 如果磁盘上的平均数据更改率持续高于最大值，复制将跟不上。<br/><br/>  但是，如果偶尔超出最大值，则复制可跟上，但可能会看到稍有延迟的恢复点。
 数据磁盘 - 标准存储帐户 | 支持 |
@@ -238,7 +239,7 @@ NIC | 特定 Azure VM 大小支持的最大数量 | 在故障转移期间创建 
 公共 IP 地址 | 支持 | 将现有的公共 IP 地址与 NIC 关联。 或者，在恢复计划中使用 Azure 自动化脚本创建公共 IP 地址并将其与 NIC 关联。
 NIC 上的 NSG | 支持 | 在恢复计划中使用 Azure 自动化脚本将 NSG 与 NIC 关联。
 子网上的 NSG | 支持 | 在恢复计划中使用 Azure 自动化脚本将 NSG 与子网关联。
-保留（静态）IP 地址 | 支持 | 如果源 VM 上的 NIC 具有静态 IP 地址，并且目标子网具有相同的可用 IP 地址，则会将它分配给故障转移 VM。<br/><br/> 如果目标子网没有相同的可用 IP 地址，则为 VM 保留子网中的某个可用 IP 地址。<br/><br/> 此外可以在“复制的项” > “设置” > “计算和网络” > “网络接口”中指定固定的 IP 地址和子网。
+保留（静态）IP 地址 | 支持 | 如果源 VM 上的 NIC 具有静态 IP 地址，并且目标子网具有相同的可用 IP 地址，则会将它分配给故障转移 VM。<br/><br/> 如果目标子网没有相同的可用 IP 地址，则为 VM 保留子网中的某个可用 IP 地址。<br/><br/> 此外可以在“复制的项” > “设置” > “计算和网络” > “网络接口”     中指定固定的 IP 地址和子网。
 动态 IP 地址 | 支持 | 如果源上的 NIC 具有动态 IP 地址，故障转移 VM 上的 NIC 也默认为动态。<br/><br/> 如果有需要，可以将其修改为固定的 IP 地址。
 多个 IP 地址 | 不支持 | 当故障转移了多个 IP 地址的 NIC 的 VM 时，保留只能的主要 IP 地址的源区域中的 NIC。 若要分配多个 IP 地址，你可以添加到 Vm[恢复计划](recovery-plan-overview.md)并附加一个脚本来将其他 IP 地址分配给计划，或您可以进行更改手动或使用脚本故障转移后。 
 流量管理器     | 支持 | 可以预配置流量管理器，这样在正常情况下，流量路由到源区域中的终结点；发生故障转移时，流量路由到目标区域中的终结点。

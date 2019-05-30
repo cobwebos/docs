@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 51fd1195942a7bae86bb4cc0af9df3146d6e45c2
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 8e711c0586ce63d4293e2fb0914bbe884b55971f
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921906"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389968"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>连接外部解决方案是使用通用事件格式
 
@@ -44,6 +44,8 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
 2. Syslog 代理收集的数据，并将其安全地发送到 Log Analytics，在进行分析和丰富。
 3. 代理在 Log Analytics 工作区中存储的数据，以便根据需要使用分析、 关联规则和仪表板进行查询。
 
+> [!NOTE]
+> 代理可以从多个源收集日志，但必须在专用的代理计算机上安装。
 
 ## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>步骤 1：连接到专用 Azure VM 通过将 CEF 设备
 
@@ -61,7 +63,7 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
 1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。 
 
 1. 下**Linux Syslog 代理配置**:
-   - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将您带入购买页面专用的 Linux VM 的自动连接到工作区，是的。 VM 处于**标准 D2s v3 （2 个 Vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
+   - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将转到购买页为专用的 Linux VM 的自动连接到工作区。 VM 处于**标准 D2s v3 （2 个 Vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
       1. 在中**自定义部署**页上，提供你的详细信息和选择用户名和密码，如果你同意条款和条件，购买的 VM。
       1. 配置你的设备，可使用连接页中列出的设置发送日志。 适用于通用的通用事件格式连接器，使用以下设置：
          - 协议 = UDP
@@ -118,17 +120,24 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
   
  若要使用 CEF 事件相关的架构在 Log Analytics 中，搜索`CommonSecurityLog`。
 
+## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>步骤 2：将通用事件格式 (CEF) 日志转发到 Syslog 代理
+
+设置安全解决方案以将 CEF 格式的 Syslog 消息发送到 Syslog 代理。 请确保在代理配置中使用显示的相同参数。 这些通常是：
+
+- 端口 514
+- 设施 local4
+
 ## <a name="step-3-validate-connectivity"></a>步骤 3：验证连接
 
 它可能需要 1-2 20 分钟，直到你的日志开始在 Log Analytics 中显示。 
 
 1. 请确保使用正确的工具。 设备必须在你的设备和 Azure Sentinel 相同。 您可检查使用的 Azure Sentinel 中并在文件中修改哪些设施文件`security-config-omsagent.conf`。 
 
-2. 请确保你的日志会转到 Syslog 代理中的正确端口。 Syslog 代理计算机上运行以下命令：`tcpdump -A -ni any  port 514 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保源设备上的正确的端口和右设施从接收到日志。
+2. 请确保你的日志会转到 Syslog 代理中的正确端口。 Syslog 代理计算机上运行以下命令：`tcpdump -A -ni any  port 514 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。 请确保源设备上的正确的端口和右设施从接收到日志。
 
 3. 请确保您发送的日志符合[RFC 5424](https://tools.ietf.org/html/rfc542)。
 
-4. 在上运行的系统日志代理的计算机，请确保这些端口 514，25226 是打开并在侦听，使用命令`netstat -a -n:`。 有关使用此命令的详细信息请参阅[netstat(8)-Linux 手册页](https://linux.die.netman/8/netstat)。 如果它正在侦听正确，您将看到：
+4. 在上运行的系统日志代理的计算机，请确保这些端口 514，25226 是打开并在侦听，使用命令`netstat -a -n:`。 有关使用此命令的详细信息请参阅[netstat(8)-Linux 手册页](https://linux.die.net/man/8/netstat)。 如果它正在侦听正确，您将看到：
 
    ![Azure Sentinel 端口](./media/connect-cef/ports.png) 
 

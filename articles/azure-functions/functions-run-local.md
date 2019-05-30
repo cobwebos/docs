@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: fe483f00c5711c2b2b62add32e951d26f732de2f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 3c8d64f34f01e4339b27bdeba455fac143ad53ff
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131405"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241162"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -130,7 +130,7 @@ func init MyFunctionProj
 ```
 
 提供项目名称时，将创建并初始化具有该名称的新文件夹。 否则，初始化当前文件夹。  
-在版本 2.x 中运行命令时，必须为项目选择一个运行时。 如果你打算开发 JavaScript 函数，请选择“节点”：
+在版本 2.x 中运行命令时，必须为项目选择一个运行时。 如果你打算开发 JavaScript 函数，请选择“节点”： 
 
 ```output
 Select a worker runtime:
@@ -151,7 +151,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init` 支持以下选项，除非另有说明，否则这些选项仅限版本 2.x：
 
-| 选项     | 描述                            |
+| Option     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--csx`** | 初始化 C# 脚本 (.csx) 项目。 必须在后续命令中指定 `--csx`。 |
 | **`--docker`** | 使用基于所选 `--worker-runtime` 的基础映像创建容器的 Dockerfile。 如果你打算发布到自定义 Linux 容器，请使用此选项。 |
@@ -186,8 +186,8 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
   },
   "Host": {
     "LocalHttpPort": 7071,
-    "CORS": "*"
-    "CORSCredentials": true
+    "CORS": "*",
+    "CORSCredentials": false
   },
   "ConnectionStrings": {
     "SQLConnectionString": "<sqlclient-connection-string>"
@@ -203,7 +203,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`LocalHttpPort`** | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此值。 |
 | **`CORS`** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (\*)，它允许使用任何来源的请求。 |
 | **`CORSCredentials`** |  将其设置为 true，以允许`withCredentials`请求 |
-| **`ConnectionStrings`** | 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供通常从配置文件的 `ConnectionStrings` 节获取连接字符串的框架使用，例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 的环境中。 此集合中的项不使用其他应用设置发布到 Azure 中。 必须将这些值显式添加到函数应用设置的 `Connection strings` 集合中。 如果要在函数代码中创建 [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)，则应将连接字符串值与其他连接一起存储在门户的“应用程序设置”中。 |
+| **`ConnectionStrings`** | 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供通常从配置文件的 `ConnectionStrings` 节获取连接字符串的框架使用，例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) 的环境中。 此集合中的项不使用其他应用设置发布到 Azure 中。 必须将这些值显式添加到函数应用设置的 `Connection strings` 集合中。 如果要在函数代码中创建 [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)，则应将连接字符串值与其他连接一起存储在门户的“应用程序设置”中  。 |
 
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：
 
@@ -221,11 +221,11 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 即使在使用存储仿真器进行开发时，你也可能希望使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-create-storage-account.md)，则可以通过下列方式之一获取有效的存储连接字符串：
 
-+ 通过 [Azure 门户]。 导航到你的存储帐户，在“设置”中选择“访问密钥”，然后复制其中一个**连接字符串**值。
++ 通过 [Azure 门户]。 导航到你的存储帐户，在“设置”中选择“访问密钥”，然后复制其中一个**连接字符串**值。  
 
   ![从 Azure 门户复制连接字符串](./media/functions-run-local/copy-storage-connection-portal.png)
 
-+ 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”中，展开你的订阅，选择你的存储帐户，然后复制主或辅助连接字符串。
++ 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”  中，展开你的订阅，选择你的存储帐户，然后复制主或辅助连接字符串。
 
   ![从存储资源管理器复制连接字符串](./media/functions-run-local/storage-explorer.png)
 
@@ -311,7 +311,7 @@ func host start
 
 `func host start` 支持以下选项：
 
-| 选项     | 描述                            |
+| Option     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 在运行之前请勿生成当前项目。 仅限于 dotnet 项目。 默认设置为 false。 仅限版本 2.x。 |
 | **`--cert`** | 包含私钥的 .pfx 文件的路径。 仅与 `--useHttps` 结合使用。 仅限版本 2.x。 |
@@ -322,7 +322,7 @@ func host start
 | **`--password`** | 密码或包含 .pfx 文件密码的文件。 仅与 `--cert` 结合使用。 仅限版本 2.x。 |
 | **`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
-| **`--script-root --prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
+| **`--script-root --prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。  在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
 | **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
 | **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
 
@@ -358,13 +358,13 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 请确保使用相同的服务器名称和 Functions 主机正在侦听的端口。 在启动 Function 主机时所生成的输出中可以看到该信息。 可以使用触发器所支持的任何 HTTP 方法来调用此 URL。
 
-以下 cURL 命令使用查询字符串中传递的 name 参数从 GET 请求触发 `MyHttpTrigger` quickstart 函数。
+以下 cURL 命令使用查询字符串中传递的 name  参数从 GET 请求触发 `MyHttpTrigger` quickstart 函数。
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
-下面的示例是在请求主体中传递 name 的 POST 请求中调用的相同函数：
+下面的示例是在请求主体中传递 name  的 POST 请求中调用的相同函数：
 
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
@@ -374,7 +374,7 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azu
 
 #### <a name="non-http-triggered-functions"></a>非 HTTP 触发的函数
 
-对于 HTTP 触发器和 webhook 以外的所有类型函数，你可以通过调用管理终结点在本地测试函数。 在本地服务器上通过 HTTP POST 请求调用此终结点会触发该函数。 可以选择通过 POST 请求正文将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”选项卡。
+对于 HTTP 触发器和 webhook 以外的所有类型函数，你可以通过调用管理终结点在本地测试函数。 在本地服务器上通过 HTTP POST 请求调用此终结点会触发该函数。 可以选择通过 POST 请求正文将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”  选项卡。
 
 可以调用以下管理员终结点以触发非 HTTP 函数：
 
@@ -399,11 +399,11 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 >[!IMPORTANT]
 > 该工具的 2.x 版本不支持 `func run` 命令。 有关详细信息，请参阅主题[如何指向 Azure Functions 运行时版本](set-runtime-version.md)。
 
-也可以使用 `func run <FunctionName>` 直接调用函数并为函数提供输入数据。 此命令类似于在 Azure 门户中使用“测试”选项卡运行函数。
+也可以使用 `func run <FunctionName>` 直接调用函数并为函数提供输入数据。 此命令类似于在 Azure 门户中使用“测试”  选项卡运行函数。
 
 `func run` 支持以下选项：
 
-| 选项     | 描述                            |
+| Option     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | 内联内容。 |
 | **`--debug -d`** | 运行函数前，将调试程序附加到主机进程。|
@@ -443,14 +443,14 @@ func azure functionapp publish <FunctionAppName>
 
 以下项目发布选项同时适用于 1.x 和 2.x 版本：
 
-| 选项     | 描述                            |
+| Option     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果在使用存储仿真器，则将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|
 
 以下项目发布选项仅在版本 2.x 中受支持：
 
-| 选项     | 描述                            |
+| Option     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  仅发布设置，并跳过内容。 默认为提示。 |
 |**`--list-ignored-files`** | 基于 .funcignore 文件显示发布期间忽略的文件列表。 |
@@ -473,7 +473,7 @@ func deploy
 
 可使用以下自定义容器部署选项：
 
-| 选项     | 描述                            |
+| Option     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 当前用户登录到的 Docker 注册表的名称。 |
 | **`--platform`** | 函数应用的托管平台。 有效选项为 `kubernetes` |

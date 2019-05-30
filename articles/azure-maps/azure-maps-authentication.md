@@ -4,17 +4,17 @@ description: 使用 Azure Maps 服务时进行身份验证。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/12/2019
-ms.topic: tutorial
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9dfe4024607e106565984d6d49de94d793bf7a8f
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
-ms.translationtype: HT
+ms.openlocfilehash: 22aba19e16e4349a5b495b307c9906f7ded5a636
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010406"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393673"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
@@ -41,7 +41,7 @@ Azure Maps 现在提供 [Azure Active Directory (Azure AD)](https://docs.microso
 * 使用用户委托权限的合作伙伴应用程序。
 * Azure 资源的托管标识。
 
-Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端 ID）。 将此客户端 ID 与其他参数相结合，可以通过指定以下值从 Azure AD 请求令牌：
+Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端 ID）。  将此客户端 ID 与其他参数相结合，可以通过指定以下值从 Azure AD 请求令牌：
 
 ```
 https://login.microsoftonline.com

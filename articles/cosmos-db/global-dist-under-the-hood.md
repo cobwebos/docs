@@ -4,15 +4,15 @@ description: 本文提供 Azure Cosmos DB 全局分布相关的技术详细信�
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 8c916a2fcff606a99e5c567318c1818ff7d5d273
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: c490657eb67a34e79c8dbaea31cb59b49cc6448e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071950"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241095"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB 全局数据分布 - 揭秘
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 是一项基本服务在 Azure 中，以便在全球范围内包
 
 **在 Azure Cosmos DB 全局分发是统包：** 随时可以点击几下鼠标或者使用单个 API 调用以编程方式来添加或删除与 Cosmos 数据库关联的地理区域。 而 Cosmos 数据库包含一组 Cosmos 容器。 在 Cosmos DB 中，容器充当逻辑性的分布和缩放单元。 创建的集合、表和图形（在内部）只是 Cosmos 容器。 容器对架构完全不可知，它提供查询范围。 Cosmos 容器中的数据在引入时会自动编制索引。 自动编制索引，用户可以查询无需苦心架构或索引管理，尤其是在全局分布式设置中的数据。  
 
-- 在给定的区域中，可以使用分区键来分布容器中的数据。分区键由你提供，并由基础物理分区以透明方式进行管理（本地分布）。  
+- 在给定的区域中，可以使用分区键来分布容器中的数据。分区键由你提供，并由基础物理分区以透明方式进行管理（本地分布）。   
 
 - 每个物理分区还将跨地理区域进行复制 (*全局分发*)。 
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 是一项基本服务在 Azure 中，以便在全球范围内包
 
 ![物理分区](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
 
-物理分区是通过一组副本（称作副本集）实现的。 每台计算机托管数百个副本，这些副本对应于一组固定进程中的各个物理分区，如上图所示。 对应于物理分区的副本在区域中群集与数据中心内的计算机之间进行动态定位和负载均衡。  
+物理分区是通过一组副本（称作副本集）实现的。  每台计算机托管数百个副本，这些副本对应于一组固定进程中的各个物理分区，如上图所示。 对应于物理分区的副本在区域中群集与数据中心内的计算机之间进行动态定位和负载均衡。  
 
 一个副本专属于一个 Azure Cosmos DB 租户。 每个副本托管 Cosmos DB [数据库引擎](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)的实例，该实例管理资源以及关联的索引。 Cosmos DB 数据库引擎在基于原子记录序列 (ARS) 的系统上运行。 该引擎对架构概念不可知，并将记录的结构与实例值之间的边界模糊化。 Cosmos DB 通过在引入时为所有内容自动编制索引来有效实现架构的完全不可知性，使用户无需处理架构或索引管理，即可查询其全球分布式数据。
 
@@ -50,7 +50,7 @@ Cosmos DB 的全局分发依赖于两个关键抽象 –*副本集*并*分区集
 
 ## <a name="partition-sets"></a>分区集
 
-一组物理分区，其中的每个分区配置了 Cosmos 数据库区域，旨在管理跨所有已配置分区复制的相同键集。 这种更高的协调基元称为分区集 - 管理给定键集的物理分区的地理分布式动态叠加层。 给定的物理分区（副本集）限定在群集范围内，而分区集可跨群集、数据中心和地理区域，如下图所示：  
+一组物理分区，其中的每个分区配置了 Cosmos 数据库区域，旨在管理跨所有已配置分区复制的相同键集。 这种更高的协调基元称为分区集 - 管理给定键集的物理分区的地理分布式动态叠加层。  给定的物理分区（副本集）限定在群集范围内，而分区集可跨群集、数据中心和地理区域，如下图所示：  
 
 ![分区集](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
@@ -68,7 +68,7 @@ Cosmos DB 的全局分发依赖于两个关键抽象 –*副本集*并*分区集
 
 对于配置了多个写入区域的 Cosmos 数据库，该系统提供多种灵活的自动冲突解决策略供开发人员选择，包括： 
 
-- **最后写入优先 (LWW)**：默认使用系统定义的时间戳属性（基于时间同步时钟协议）。 Cosmos DB 还允许指定其他任何自定义数字属性用于解决冲突。  
+- **最后写入优先 (LWW)** ：默认使用系统定义的时间戳属性（基于时间同步时钟协议）。 Cosmos DB 还允许指定其他任何自定义数字属性用于解决冲突。  
 - **应用程序定义的自定义冲突解决策略**（通过合并过程表示）：旨在使用应用程序定义的语义来调解冲突。 在服务器端检测到数据库事务造成的写入-写入冲突时，将会调用这些过程。 在执行提交协议过程中，该系统可保证正好执行合并过程一次。 我们提供了[多个冲突解决方法示例](how-to-manage-conflicts.md)供你演练。  
 
 ## <a name="consistency-models"></a>一致性模型

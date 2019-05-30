@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 2195c9a5e1f0d3683ea8cf6564d97cbabd072f81
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 825170be5dc4d1b25980c7d5037d72779169b3cc
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834196"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258070"
 ---
 # <a name="update-an-existing-saas-application-offer"></a>更新现有的 SaaS 应用程序产品/服务
 
@@ -20,6 +20,7 @@ ms.locfileid: "65834196"
 
 > [!IMPORTANT] 
 > SaaS 产品/服务功能迁移到[Microsoft 合作伙伴中心](https://partner.microsoft.com/dashboard/directory)。  所有新的发布服务器必须使用合作伙伴中心创建新的 SaaS 产品/服务和管理现有产品/服务。  使用 SaaS 产品/服务的当前发布服务器正在 batchwise 迁移从云合作伙伴门户到合作伙伴中心。  云合作伙伴门户将显示状态消息以指示何时已迁移特定的现有产品/服务。
+> 有关详细信息，请参阅[创建新的 SaaS 产品/服务](../../partner-center-portal/create-new-saas-offer.md)。
 
 我们可能会出于多个原因更新套餐，例如：
 
@@ -28,7 +29,7 @@ ms.locfileid: "65834196"
 - 向应用添加新功能。
 - 更新产品/服务的市场元数据。
 
-为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。
+为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。  
 
 ## <a name="unpermitted-changes-to-a-saas-offer"></a>SaaS 产品/服务的未经许可更改
 
@@ -47,9 +48,9 @@ ms.locfileid: "65834196"
 使用以下步骤更新产品/服务的支持联系人。
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
-2. 在“所有产品/服务”下，找到要更新的产品/服务。
-3. 转到“联系人”选项卡。更新你的联系人。
-4. 选择“发布”，启动发布更改的工作流。
+2. 在“所有产品/服务”下，找到要更新的产品/服务。 
+3. 转到“联系人”  选项卡。更新你的联系人。
+4. 选择“发布”，启动发布更改的工作流。 
 
 
 ### <a name="update-offer-marketplace-metadata"></a>更新套餐市场元数据
@@ -57,9 +58,9 @@ ms.locfileid: "65834196"
 使用以下步骤更新与套餐关联的市场元数据。 （例如：公司名称、徽标等）
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
-2. 在“所有产品/服务”下，找到要更新的产品/服务。
-3. 转到“店面详细信息”选项卡。使用[发布 SaaS 产品/服务](./cpp-publish-offer.md)中的说明进行元数据更改。
-4. 选择“发布”，启动发布更改的工作流。
+2. 在“所有产品/服务”下，找到要更新的产品/服务。 
+3. 转到“店面详细信息”选项卡。  使用[发布 SaaS 产品/服务](./cpp-publish-offer.md)中的说明进行元数据更改。
+4. 选择“发布”，启动发布更改的工作流。 
 
 ## <a name="compare-feature"></a>“比较”功能
 
@@ -74,7 +75,7 @@ ms.locfileid: "65834196"
 
 ## <a name="publishing-history"></a>发布历史记录
 
-若要查看历史发布活动，请选择云合作伙伴门户左侧导航菜单栏中的“历史记录”选项卡。 可以看到在 Azure 市场套餐生存期内执行的带时间戳的操作。
+若要查看历史发布活动，请选择云合作伙伴门户左侧导航菜单栏中的“历史记录”选项卡。  可以看到在 Azure 市场套餐生存期内执行的带时间戳的操作。
 
 ![在云合作伙伴门户中查看产品/服务历史记录](./media/saas-offer-history.png)
 

@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 01/14/2019
+ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 244b2d1764f30f790c3e51e23cd2fa0af6375960
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1df35c82ffb8b98f8b7bf86c21694b62b3804e4
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60480189"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298305"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>将 Azure 日志集成与 Azure 诊断日志记录和 Windows 事件转发相结合
 
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将在弃用 06/15/2019年。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 如果无法从安全事件和事件管理 (SIEM) 供应商获取 [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) 连接器，应仅使用 Azure 日志集成。
 
@@ -36,7 +36,7 @@ Azure 日志集成可以将 Azure 日志提供给 SIEM，并可以用来创建�
 > [!IMPORTANT]
 > 如果你的主要兴趣是收集虚拟机日志，那么大多数 SIEM 供应商会将此包含在其解决方案中。 使用 SIEM 供应商的连接器始终是首选替代方法。
 
-本文可帮助你学习 Azure 日志集成的入门知识。 其中重点介绍了如何安装 Azure 日志集成服务，以及如何将该服务与 Azure 诊断集成。 然后，Azure 日志集成服务就可以从 Azure 基础结构即服务中部署的虚拟机，通过 Windows 安全事件通道收集 Windows 事件日志信息。 这类似于在本地系统中使用的“事件转发”。
+本文可帮助你学习 Azure 日志集成的入门知识。 其中重点介绍了如何安装 Azure 日志集成服务，以及如何将该服务与 Azure 诊断集成。 然后，Azure 日志集成服务就可以从 Azure 基础结构即服务中部署的虚拟机，通过 Windows 安全事件通道收集 Windows 事件日志信息。 这类似于在本地系统中使用的“事件转发”。 
 
 > [!NOTE]
 > SIEM 自身能够将 Azure 日志集成的输出与 SIEM 集成。 有关详细信息，请参阅[将 Azure 日志集成与本地 SIEM 集成](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)。
@@ -96,7 +96,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 * 关于所用 Azlog.exe 命令行选项的统计信息。 
 
 > [!NOTE]
-> 建议允许 Microsoft 收集遥测数据。 清除“允许 Microsoft 收集遥测数据”复选框可以关闭遥测数据的收集。
+> 建议允许 Microsoft 收集遥测数据。 清除“允许 Microsoft 收集遥测数据”复选框可以关闭遥测数据的收集。 
 >
 
 ![安装窗格的屏幕截图，其中的遥测复选框已选中](./media/security-azure-log-integration-get-started/telemetry.png)
@@ -111,10 +111,10 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 完成基本安装后，可以执行以下安装后和验证步骤：
 
 1. 以管理员身份打开 PowerShell。 然后导航到 C:\Program Files\Microsoft Azure Log Integration。
-2. 导入 Azure 日志集成 cmdlet。 若要导入 cmdlet，请运行脚本 `LoadAzlogModule.ps1`。 输入 `.\LoadAzlogModule.ps1` 并按 Enter（请注意，此命令中使用了 **.\\**）。 应该会看到如下图所示的内容：
+2. 导入 Azure 日志集成 cmdlet。 若要导入 cmdlet，请运行脚本 `LoadAzlogModule.ps1`。 输入 `.\LoadAzlogModule.ps1` 并按 Enter（请注意，此命令中使用了 **.\\** ）。 应该会看到如下图所示的内容：
 
    ![LoadAzlogModule.ps1 命令的输出屏幕截图](./media/security-azure-log-integration-get-started/loaded-modules.png)
-3. 接下来，将 Azure 日志集成配置为使用特定的 Azure 环境。 “Azure 环境”是要使用的 Azure 云数据中心的类型。 虽然有多个可用的 Azure 环境，但目前最相关的选项是 **AzureCloud** 或者 **AzureUSGovernment**。 以管理员身份运行 PowerShell，确保在 C:\program files\Microsoft Azure Log Integration\ 中操作。 然后运行以下命令：
+3. 接下来，将 Azure 日志集成配置为使用特定的 Azure 环境。 “Azure 环境”是要使用的 Azure 云数据中心的类型。  虽然有多个可用的 Azure 环境，但目前最相关的选项是 **AzureCloud** 或者 **AzureUSGovernment**。 以管理员身份运行 PowerShell，确保在 C:\program files\Microsoft Azure Log Integration\ 中操作。 然后运行以下命令：
 
    `Set-AzlogAzureEnvironment -Name AzureCloud`（适用于 **AzureCloud**）
   
@@ -123,7 +123,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
    > [!NOTE]
    > 如果命令成功，则不会受到任何反馈。 
 
-4. 监视系统之前，需要用于 Azure 诊断的存储帐户的名称。 在 Azure 门户中，转到“虚拟机”。 查找要监视的 Windows 虚拟机。 在“属性”部分，选择“诊断设置”。  然后选择“代理”。 记下指定的存储帐户名称。 后面的步骤中需要此帐户名称。
+4. 监视系统之前，需要用于 Azure 诊断的存储帐户的名称。 在 Azure 门户中，转到“虚拟机”  。 查找要监视的 Windows 虚拟机。 在“属性”  部分，选择“诊断设置”  。  然后选择“代理”。  记下指定的存储帐户名称。 后面的步骤中需要此帐户名称。
 
    ![Azure 诊断设置窗格的屏幕截图](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
@@ -135,13 +135,13 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 5. 现在，请返回到 Azure 日志集成计算机。 验证已安装 Azure 日志集成的系统是否连接到了存储帐户。 运行 Azure 日志集成服务的计算机需要访问存储帐户，以检索 Azure 诊断在每台受监视系统上记录的信息。 验证连接： 
    1. [下载 Azure 存储资源管理器](https://storageexplorer.com/)。
    2. 完成安装。
-   3. 完成安装后，选择“下一步”。 将“启动 Microsoft Azure 存储资源管理器”复选框保留选中状态。  
+   3. 完成安装后，选择“下一步”  。 将“启动 Microsoft Azure 存储资源管理器”复选框保留选中状态。   
    4. 登录 Azure。
    5. 验证是否可以看到为 Azure 诊断配置的存储帐户： 
 
    ![存储资源管理器中的存储帐户屏幕截图](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
-   1. 存储帐户下面有几个选项。 在“表”下，应该可以看到名为 **WADWindowsEventLogsTable** 的表。
+   1. 存储帐户下面有几个选项。 在“表”  下，应该可以看到名为 **WADWindowsEventLogsTable** 的表。
 
    如果在创建虚拟机时未启用监视，可根据前面所述启用监视。
 
@@ -157,8 +157,8 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 
 若要获取存储密钥，请完成以下步骤：
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 在导航窗格中，选择“所有服务”。
-3. 在“筛选器”框中，输入“存储”。 然后选择“存储帐户”。
+2. 在导航窗格中，选择“所有服务”  。
+3. 在“筛选器”框中，输入“存储”   。 然后选择“存储帐户”。 
 
    ![显示“所有服务”中的存储帐户的屏幕截图](./media/security-azure-log-integration-get-started/filter.png)
 
@@ -166,11 +166,11 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 
    ![显示存储帐户列表的屏幕截图](./media/security-azure-log-integration-get-started/storage-accounts.png)
 
-5. 在“设置”下，选择“访问密钥”。
+5. 在“设置”下，选择“访问密钥”   。
 
    ![显示菜单中“访问密钥”选项的屏幕截图](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
 
-6. 复制“密钥 1”，并将其保存在下一步骤可以访问的安全位置。
+6. 复制“密钥 1”  ，并将其保存在下一步骤可以访问的安全位置。
 7. 在安装了 Azure 日志集成的服务器上，以管理员身份打开命令提示符窗口。 （请务必以管理员身份打开命令提示符窗口，而不要打开 PowerShell）。
 8. 转到 C:\Program Files\Microsoft Azure Log Integration。
 9. 运行以下命令：`Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>`。
@@ -188,7 +188,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
    `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
 > [!NOTE]
-> 最多等待 60 分钟，然后查看从存储帐户提取的事件。 若要查看事件，请在 Azure 日志集成中选择“事件查看器” > “Windows 日志” > “已转发事件”。
+> 最多等待 60 分钟，然后查看从存储帐户提取的事件。 若要查看事件，请在 Azure 日志集成中选择“事件查看器” > “Windows 日志” > “已转发事件”。   
 
 以下视频介绍了上述步骤：<br /><br />
 
@@ -203,12 +203,12 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
    1. 打开文件资源管理器。
    2. 转到 C:\users。
    3. 右键单击“C:\users\Azlog”。
-   4. 选择“安全性”。
-   5. 选择“NT Service\Azlog”。 检查帐户权限。 如果此选项卡中没有帐户，或者未显示相应的权限，可以在此选项卡中授予帐户权限。
+   4. 选择“安全性”。 
+   5. 选择“NT Service\Azlog”。  检查帐户权限。 如果此选项卡中没有帐户，或者未显示相应的权限，可以在此选项卡中授予帐户权限。
 3. 运行命令 `Azlog source list` 时，请确保输出中列出了在命令 `Azlog source add` 中添加的存储帐户。
-4. 若要查看 Azure 日志集成服务是否报告了任何错误，请转到“事件查看器” > “Windows 日志” > “应用程序”。
+4. 若要查看 Azure 日志集成服务是否报告了任何错误，请转到“事件查看器” > “Windows 日志” > “应用程序”。   
 
-如果在安装和配置期间遇到任何问题，请创建[支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 对于服务，请选择“日志集成”。
+如果在安装和配置期间遇到任何问题，请创建[支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 对于服务，请选择“日志集成”  。
 
 另一个支持选项是 [Azure 日志集成 MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration)。 在 MSDN 论坛中，社区可以解答有关如何充分利用 Azure 日志集成的问题并分享提示和技巧，以此提供支持。 此外，Azure 日志集成团队也会关注此论坛， 并尽可能地提供帮助。
 

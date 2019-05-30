@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 4cca65e2be44d2c846cd4034f0a9d7e8c7d9af28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ab30351bfff9c5bbf070a1e8a54a4919e4d2231a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130863"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226272"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>使用 Application Insights Profiler 探查在 Azure 虚拟机或虚拟机规模集上运行的 Web 应用
 
@@ -31,7 +31,8 @@ Azure Application Insights Profiler 也可以部署在以下服务上：
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>在虚拟机或虚拟机规模集上部署 Profiler
 本文介绍如何在 Azure 虚拟机 (VM) 或 Azure 虚拟机规模集上运行 Application Insights Profiler。 Profiler 与适用于 VM 的 Azure 诊断扩展一同安装。 请将该扩展配置为运行 Profiler，并将 Application Insights SDK 内置到应用程序中。
 
-1. 将 Application Insights SDK 添加到 [ASP.NET 应用程序](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)或常规 [.NET 应用程序](windows-services.md?toc=/azure/azure-monitor/toc.json)。  
+1. 添加 Application Insights SDK 为你[ASP.NET 应用程序](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)。
+
    若要查看请求的探查结果，必须将请求遥测数据发送到 Application Insights。
 
 1. 在 VM 上安装 Azure 诊断扩展。 有关完整的资源管理器模板示例，请参阅：  

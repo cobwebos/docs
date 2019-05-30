@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 05/24/2018
 ms.author: jingwang
-ms.openlocfilehash: 1c8cbcd2e5f137b1e8381dcce164ae9a4b87e804
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: faf0cab55ec0cef034638d218f2172f3676ff39b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60998466"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245109"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
@@ -77,7 +77,7 @@ Azure 搜索链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Azure 搜索数据集支持的属性列表。
 
-要将数据复制到 Azure 搜索，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+若要将数据复制到 Azure 搜索，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -108,7 +108,7 @@ Azure 搜索链接的服务支持以下属性：
 
 ### <a name="azure-search-as-sink"></a>Azure 搜索作为接收器
 
-要将数据复制到 Azure 搜索，请将复制活动中的源类型设置为“AzureSearchIndexSink”。 复制活动接收器部分中支持以下属性：
+要将数据复制到 Azure 搜索，请将复制活动中的源类型设置为“AzureSearchIndexSink”  。 复制活动接收器部分中支持以下属性  ：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

@@ -5,17 +5,17 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 02/22/2019
+ms.date: 05/24/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 498a4471d1ba6803d68e0b497c7c8352f19ff743
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 2b250f9f722bb1992d72b0555207a64dbc2dd972
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153445"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66271563"
 ---
-| Category | 数据存储 |
+| 类别 | 数据存储 |
 |:--- |:--- |
 | **Azure** |[Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
@@ -50,6 +50,7 @@ ms.locfileid: "66153445"
 | &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
 | &nbsp; |[通过 MDX 实现的 SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
+| &nbsp; |[SAP 表](../articles/data-factory/connector-sap-table.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |
@@ -67,7 +68,7 @@ ms.locfileid: "66153445"
 | &nbsp; |[泛型 OData](../articles/data-factory/connector-odata.md) |
 | &nbsp; |[泛型 ODBC](../articles/data-factory/connector-odbc.md) |
 | **服务和应用** |[Amazon Marketplace Web Service（预览）](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
-| &nbsp; |[Common Data Service for Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓
+| &nbsp; |[Common Data Service for Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Concur（预览）](../articles/data-factory/connector-concur.md) |
 | &nbsp; |[Dynamics 365](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Dynamics AX（预览）](../articles/data-factory/connector-dynamics-ax.md) |
@@ -95,4 +96,4 @@ ms.locfileid: "66153445"
 | &nbsp; |[Zoho（预览）](../articles/data-factory/connector-zoho.md) |
 
 > [!NOTE]
-> 连接器标记为“预览”意味着，可以试用它并向我们提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+> 连接器标记为“预览”  意味着，可以试用它并向我们提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。

@@ -5,18 +5,18 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 05/24/2019
 ms.author: danlep
-ms.openlocfilehash: 0a3d2d0e858dc052095c0a58287970d10c06f0ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18ac3fcb2797b24c9d5e5f05968eed4bf8732af7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787238"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389455"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure 容器注册表 webhook
 
-Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类似于 Docker Hub 存储公共 Docker 映像。 它还可以托管存储库[Helm 图表](container-registry-helm-repos.md)（预览版），一种封装格式应用程序部署到 Kubernetes。 可以使用 Webhook 在其中一个注册表存储库中发生特定操作时触发事件。 Webhook 可在注册表级别响应事件或者将其范围缩小到特定存储库标记。
+Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类似于 Docker Hub 存储公共 Docker 映像。 它还可以托管存储库[Helm 图表](container-registry-helm-repos.md)（预览版），一种封装格式应用程序部署到 Kubernetes。 可以使用 Webhook 在其中一个注册表存储库中发生特定操作时触发事件。 Webhook 可在注册表级别响应事件或者将其范围缩小到特定存储库标记。 与[异地复制](container-registry-geo-replication.md)注册表中，你可以配置每个 webhook 以响应特定的区域副本中的事件。
 
 有关 Webhook 请求的详细信息，请参阅 [Azure 容器注册表 Webhook 架构参考](container-registry-webhook-reference.md)。
 
@@ -29,13 +29,14 @@ Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 导航到要在其中创建 Webhook 的容器注册表。
-1. 在“服务”下，选择“Webhook”。
-1. 在 Webhook 工具栏中选择“添加”。
-1. 使用以下信息完成“创建 webhook”窗体：
+1. 在“服务”下  ，选择“Webhook”  。
+1. 在 Webhook 工具栏中选择“添加”  。
+1. 使用以下信息完成“创建 webhook”窗体  ：
 
 | 值 | 描述 |
 |---|---|
-| 名称 | 想要赋予 webhook 的名称。 它只能包含字母和数字，且长度必须为 5-50 个字符。 |
+| Webhook 名称 | 想要赋予 webhook 的名称。 它只能包含字母和数字，且长度必须为 5-50 个字符。 |
+| Location | 有关[异地复制](container-registry-geo-replication.md)注册表中，指定的 Azure 区域的注册表副本。 
 | 服务 URI | Webhook 应向其发送 POST 通知的 URI。 |
 | 自定义标头 | 想要随 POST 请求一起传递的标头。 它们的格式应该为：“键: 值”。 |
 | 触发操作 | 触发 webhook 的操作。 操作包括映像推送、映像删除、Helm 图表推送、Helm 图表删除以及映像隔离。 你可以选择一个或多个操作来触发 Webhook。 |
@@ -61,8 +62,8 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 在使用 Webhook 之前，可以使用 **Ping** 按钮对其进行测试。 Ping 将向指定的终结点发送泛型 POST 请求并记录响应。 使用 ping 功能可帮助验证是否已正确配置 Webhook。
 
 1. 选择想要测试的 webhook。
-2. 在顶部工具栏中，选择“Ping”。
-3. 在“HTTP 状态”列中检查终结点的响应。
+2. 在顶部工具栏中，选择“Ping”  。
+3. 在“HTTP 状态”  列中检查终结点的响应。
 
 ![Azure 门户中的 ACR webhook 创建 UI](./media/container-registry-webhook/webhook-02.png)
 
@@ -84,7 +85,7 @@ az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook0
 
 ### <a name="azure-portal"></a>Azure 门户
 
-每个 webhook 均可通过在 Azure 门户中选择 webhook，然后选择“删除”按钮进行删除。
+每个 webhook 均可通过在 Azure 门户中选择 webhook，然后选择“删除”  按钮进行删除。
 
 ### <a name="azure-cli"></a>Azure CLI
 

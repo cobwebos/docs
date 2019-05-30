@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: a4e0432260cfb9ee11ed318305fb967d160de835
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 901544886e0a0c90c29e83fc71f7a7a25ffc6862
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129690"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244885"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Azure Monitor 配合使用
+# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>从 Azure 存储中收集 Azure 诊断日志
 
 Azure Monitor 可以读取将诊断写入到表存储的以下服务的日志或写入到 Blob 存储的 IIS 日志：
 
@@ -61,17 +61,17 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 
 1. 创建虚拟机时安装 VM 代理。 如果虚拟机已存在，请验证 VM 代理是否已安装。
 
-   * 在 Azure 门户中，导航到虚拟机、选择“可选配置”、选择“诊断”，然后将“状态”设置为“开”。
+   * 在 Azure 门户中，导航到虚拟机、选择“可选配置”  、选择“诊断”  ，然后将“状态”  设置为“开”  。
 
      完成后，VM 已安装 Azure 诊断扩展，并且该扩展正在运行。 此扩展将负责收集诊断数据。
 2. 在现有 VM 中启用监视，并配置事件日志记录。 可以启用 VM 级别的诊断。 若要启用诊断并配置事件日志记录，请执行以下步骤：
 
    1. 选择 VM。
-   2. 单击“监视”。
-   3. 单击“诊断”。
-   4. 将“状态”设置为“开”。
+   2. 单击“监视”  。
+   3. 单击“诊断”  。
+   4. 将“状态”  设置为“开”  。
    5. 选择想要收集的每个诊断日志。
-   6. 单击“确定”。
+   6. 单击“确定”。 
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>在 Web 角色中为 IIS 日志和事件收集启用 Azure 诊断
 
@@ -132,8 +132,8 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 
 在 Azure 门户中，导航到 Log Analytics 工作区，并执行以下任务：
 
-1. 单击“存储帐户日志”
-2. 单击“添加”任务
+1. 单击“存储帐户日志” 
+2. 单击“添加”  任务
 3. 选择包含诊断日志的存储帐户
    * 此帐户可以是经典存储帐户或 Azure 资源管理器存储帐户
 4. 选择要收集的日志的数据类型

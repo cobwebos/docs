@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: bking
-ms.openlocfilehash: 7c074d5d25453e2b2a1ddfc32422790235815f1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6afaa2f497fa1a23d083c3ddd76359a49105732d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431151"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384843"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 生成控制台应用搜索客户端
 
@@ -38,26 +38,26 @@ ms.locfileid: "61431151"
 
 在 Visual Studio 中，使用 `Ctrl`+`Shift`+`N` 创建项目。
 
-在“新建项目”对话框中，单击“Visual C#”>“Windows 经典桌面”>“控制台应用(.NET Framework)”。
+在“新建项目”对话框中，单击“Visual C#”>“Windows 经典桌面”>“控制台应用(.NET Framework)”   。
 
-将应用程序命名为“MyConsoleSearchApp”，然后单击“确定”。
+将应用程序命名为“MyConsoleSearchApp”，然后单击“确定”   。
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>向项目添加 JSON.net Nuget 包
 
 JSON.net 允许使用 API 返回的 JSON 响应。 将其 NuGet 包添加到项目中：
 
-- 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包...”。
-- 在“浏览”选项卡中，搜索 `Newtonsoft.Json`。 选择最新版本，然后单击“安装”。
-- 单击“查看更改”窗口中的“确定”按钮。
-- 关闭标题为“NuGet: MyConsoleSearchApp”的 Visual Studio 选项卡。
+- 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包...”   。
+- 在“浏览”选项卡中，搜索 `Newtonsoft.Json`  。 选择最新版本，然后单击“安装”  。
+- 单击“查看更改”窗口中的“确定”按钮   。
+- 关闭标题为“NuGet:  MyConsoleSearchApp”的 Visual Studio 选项卡。
 
 ## <a name="add-a-reference-to-systemweb"></a>添加对 System.Web 的引用
 
 本教程依赖于 `System.Web` 程序集。 将对此程序集的引用添加到项目中：
 
-- 在“解决方案资源管理器”中，右键单击“引用”并选择“添加引用...”
-- 选择“程序集”>“框架”，然后向下滚动并选中“System.Web”
-- 选择“确定”
+- 在“解决方案资源管理器”中，右键单击“引用”并选择“添加引用...”   
+- 选择“程序集”>“框架”，然后向下滚动并选中“System.Web”  
+- 选择“确定” 
 
 ## <a name="add-some-necessary-using-statements"></a>添加一些必要的 using 语句
 
@@ -70,7 +70,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>要求用户发出查询
 
-在“解决方案资源管理器”中，打开“Program.cs”。 更新 `Main()` 方法：
+在“解决方案资源管理器”中，打开“Program.cs”   。 更新 `Main()` 方法：
 
 ```csharp
 static void Main()
@@ -221,7 +221,7 @@ static void RunQueryAndDisplayResults(string userQuery)
 }
 ```
 
-`rankingResponse` JSON 对象（[文档](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)）描述了搜索结果的相应显示顺序。 它包括以下一个或多个按优先级排列的组：
+`rankingResponse` JSON 对象（[文档](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)）描述了搜索结果的相应显示顺序。 它包括以下一个或多个按优先级排列的组：
 
 - `pole`：要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。
 - `mainline`：要显示在主线中的搜索结果。

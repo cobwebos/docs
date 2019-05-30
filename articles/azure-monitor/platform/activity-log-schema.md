@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba5e0f696f54f46fb14086b542dc3b2e64155975
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777383"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244938"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
-通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](./diagnostic-logs-schema.md)的映射。
+通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件  。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](activity-log-export.md)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](diagnostic-logs-schema.md)的映射。
 
 ## <a name="administrative"></a>管理
 此类别包含对通过资源管理器执行的所有创建、更新、删除和操作的记录。 此类别中的事件类型的示例包括“创建虚拟机”和“删除网络安全组”。用户或应用程序通过资源管理器所进行的每一个操作都会作为特定资源类型上的操作建模。 如果操作类型为“写入”、“删除”或“操作”，则该操作的开始、成功或失败记录都会记录在管理类别中。 管理类别还包括任何对订阅中基于角色的访问控制进行的更改。
@@ -216,7 +216,7 @@ ms.locfileid: "60777383"
         "localizedValue": "Resource Health"
     },
     "eventTimestamp": "2018-09-04T15:33:43.65Z",
-    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "id": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
     "level": "Critical",
     "operationId": "",
     "operationName": {
@@ -232,7 +232,7 @@ ms.locfileid: "60777383"
         "value": "Microsoft.Compute/virtualMachines",
         "localizedValue": "Microsoft.Compute/virtualMachines"
     },
-    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "resourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
     "status": {
         "value": "Active",
         "localizedValue": "Active"
@@ -242,7 +242,7 @@ ms.locfileid: "60777383"
         "localizedValue": ""
     },
     "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
-    "subscriptionId": "<subscription Id>",
+    "subscriptionId": "<subscription ID>",
     "properties": {
         "stage": "Active",
         "title": "Virtual Machine health status changed to unavailable",
@@ -656,7 +656,7 @@ ms.locfileid: "60777383"
 
 ## <a name="policy"></a>策略
 
-此类别包含 [Azure Policy](../../governance/policy/overview.md) 执行的所有效果操作的记录。 在此类别中看到的事件类型示例包括“审核”和“拒绝”。 Policy 执行的每个操作建模为对资源执行的操作。
+此类别包含 [Azure Policy](../../governance/policy/overview.md) 执行的所有效果操作的记录。 在此类别中看到的事件类型示例包括“审核”和“拒绝”。   Policy 执行的每个操作建模为对资源执行的操作。
 
 ### <a name="sample-policy-event"></a>示例 Policy 事件
 
@@ -789,7 +789,7 @@ ms.locfileid: "60777383"
 | correlationId | correlationId |  |
 | identity | 声明和授权属性 |  |
 | 级别 | 级别 |  |
-| 位置 | 不适用 | 处理事件的位置。 这不是资源所在位置，而是处理事件的位置。未来更新中将删除此属性。 |
+| 位置 | 不适用 | 处理事件的位置。 这不是资源所在位置，而是处理事件的位置。  未来更新中将删除此属性。 |
 | 属性 | properties.eventProperties |  |
 | properties.eventCategory | category | 如果不存在 properties.eventCategory，则 category 是“管理” |
 | properties.eventName | eventName |  |
@@ -798,6 +798,6 @@ ms.locfileid: "60777383"
 
 
 ## <a name="next-steps"></a>后续步骤
-* [详细了解活动日志（以前称为审核日志）](../../azure-monitor/platform/activity-logs-overview.md)
-* [将 Azure 活动日志流式传输到事件中心](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+* [了解有关活动日志的更多信息](activity-logs-overview.md)
+* [将活动日志导出到 Azure 存储或事件中心](activity-log-export.md)
 

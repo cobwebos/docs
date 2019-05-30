@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: rogarana
-ms.openlocfilehash: af903ce3ce7cfa165c278e415827dda36630e7b4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ad8ddf7e9e324bbcc48f15c95870a24fe7476828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209729"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237772"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>通过 SMB 为 Azure 文件进行 Azure Active Directory 身份验证概述（预览）
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "65209729"
     Azure Active Directory (Azure AD) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 Azure AD 将核心目录服务、应用程序访问管理和标识保护融入一个解决方案中。 有关详细信息，请参阅[什么是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure AD 域服务**  
-    Azure AD 域服务提供托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 这些服务与 Windows Server Active Directory 完全兼容。 有关详细信息，请参阅 [Azure Active Directory (AD) 域服务](../../active-directory-domain-services/active-directory-ds-overview.md)。
+    Azure AD 域服务提供托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 这些服务与 Windows Server Active Directory 完全兼容。 有关详细信息，请参阅 [Azure Active Directory (AD) 域服务](../../active-directory-domain-services/overview.md)。
 
 -   **Azure 基于角色的访问控制 (RBAC)**  
     Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可通过向用户授予执行其作业所需的最少权限来管理对资源的访问权限。 有关 RBAC 的详细信息，请参阅[什么是 Azure 中基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)
@@ -60,7 +60,7 @@ Azure 文件使用 Azure AD 域服务，支持通过已加入域的 VM 中的 Az
 ### <a name="enable-azure-ad-authentication-over-smb"></a>启用通过 SMB 进行 Azure AD 身份验证
 可对 2018 年 9 月 24 日之后创建的新存储帐户和现有存储帐户启用通过 SMB 为 Azure 文件进行 Azure AD 身份验证这一功能。 
 
-在启用通过 SMB 进行 Azure AD 身份验证之前，请验证是否已为与存储帐户关联的主 Azure AD 租户部署了 Azure AD 域服务。 如果尚未设置 Azure AD 域服务，请按照[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-getting-started.md)中提供的分步指导进行操作。
+在启用通过 SMB 进行 Azure AD 身份验证之前，请验证是否已为与存储帐户关联的主 Azure AD 租户部署了 Azure AD 域服务。 如果尚未设置 Azure AD 域服务，请按照[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/create-instance.md)中提供的分步指导进行操作。
 
 部署 Azure AD 域服务通常需要 10 至 15 分钟。 部署 Azure AD 域服务后，即可启用通过 SMB 为 Azure 文件进行 Azure AD 身份验证这一功能。 有关详细信息，请参阅[通过 SMB 为 Azure 文件启用 Azure Active Directory 身份验证（预览）](storage-files-active-directory-enable.md)。 
 

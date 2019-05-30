@@ -3,22 +3,21 @@ title: 使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复�
 description: 了解如何在 Azure 数据工厂管道中使用复制活动，通过 Open Hub 将数据从 SAP Business Warehouse (BW) 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 03/08/2019
-ms.date: 04/22/2019
-ms.author: v-jay
-ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/08/2019
+ms.author: jingwang
+ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848858"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256904"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 
@@ -72,7 +71,7 @@ ADF SAP BW 开放中心连接器提供两个可选属性：`excludeLastRequest`�
 
 - 设置 3.13 或更高版本的自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 
-- 从 SAP 的网站下载 **64 位 [SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html)**，将其安装在自承载 IR 计算机上。 安装时，请在可选的安装步骤窗口中确保选择“将程序集安装到 GAC”选项，如下图所示。 
+- 从 SAP 的网站下载 **64 位 [SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html)** ，将其安装在自承载 IR 计算机上。 安装时，请在可选的安装步骤窗口中确保选择“将程序集安装到 GAC”选项，如下图所示。  
 
     ![安装 SAP .NET Connector](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
@@ -81,7 +80,7 @@ ADF SAP BW 开放中心连接器提供两个可选属性：`excludeLastRequest`�
     - RFC 和 SAP BW 的授权。 
     - “执行”授权对象“S_SDSAUTH”的活动的权限。
 
-- 将 SAP Open Hub Destination 类型创建为“数据库表”（勾选“技术密钥”选项）。  另外还建议取消选中“从表中删除数据”，虽然这不是必需的操作。 利用 DTP（直接执行或集成到现有进程链中）将数据从所选源对象（例如多维数据集）移到 Open Hub Destination 表。
+- 将 SAP Open Hub Destination 类型创建为“数据库表”（勾选“技术密钥”选项）。   另外还建议取消选中“从表中删除数据”，虽然这不是必需的操作。 利用 DTP（直接执行或集成到现有进程链中）将数据从所选源对象（例如多维数据集）移到 Open Hub Destination 表。
 
 ## <a name="getting-started"></a>入门
 
@@ -135,7 +134,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Salesforce 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 SAP BW Open Hub 数据集支持的属性列表。
 
 若要从/向 SAP BW Open Hub 复制数据，请将数据集的 type 属性设置为 **SapOpenHubTable**。 支持以下属性。
 
@@ -173,7 +172,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 ### <a name="sap-bw-open-hub-as-source"></a>将 SAP BW Open Hub 作为源
 
-若要从 SAP BW Open Hub 复制数据，请将复制活动中的源类型设置为“SapOpenHubSource”。 复制活动的 **source** 节中没有其他特定于类型的必需属性。
+若要从 SAP BW Open Hub 复制数据，请将复制活动中的源类型设置为“SapOpenHubSource”  。 需要将复制活动中没有其他特定于类型的属性**源**部分。
 
 **示例：**
 

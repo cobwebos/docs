@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd78e98c37bea0fed1787e1e07a026fa35597f47
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 24e933399454942f4ee50440cffd791599679074
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65593927"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299143"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -39,15 +39,15 @@ ms.locfileid: "65593927"
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 门户声明应用角色
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶栏中选择帐户，然后选择“切换目录”。
-1. “目录 + 订阅”窗格打开后，请从“收藏夹”或“所有目录”列表中选择要在其中注册应用程序的 Active Directory 租户。
-1. 选择左侧导航栏中的“所有服务”，并选择“Azure Active Directory”。
-1. 在“Azure Active Directory”窗格中选择“应用注册”，查看一个包含所有应用程序的列表。
+1. 在顶栏中选择帐户，然后选择“切换目录”。 
+1. “目录 + 订阅”窗格打开后，请从“收藏夹”或“所有目录”列表中选择要在其中注册应用程序的 Active Directory 租户。   
+1. 选择左侧导航栏中的“所有服务”  ，并选择“Azure Active Directory”  。
+1. 在“Azure Active Directory”窗格中选择“应用注册”，查看一个包含所有应用程序的列表   。
 
-     如果看不到希望其显示在这里的应用程序，请使用“应用注册”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。
+     如果看不到希望其显示在这里的应用程序，请使用“应用注册”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。 
 
 1. 选择一个应用程序，以便在其中定义应用角色。
-1. 在应用程序的边栏选项卡中，选择“清单”。
+1. 在应用程序的边栏选项卡中，选择“清单”  。
 1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
 
      > [!NOTE]
@@ -84,7 +84,7 @@ ms.locfileid: "65593927"
 > [!NOTE]
 >`displayName`不能包含空格。
 
-可以针对 `users` 和/或 `applications` 来定义应用角色。 可供 `applications` 使用时，应用角色在“所需的权限”边栏选项卡中显示为应用程序权限。 以下示例显示一个以 `Application` 为目标的应用角色。
+可以针对 `users` 和/或 `applications` 来定义应用角色。 可供 `applications` 使用时，应用角色在“所需的权限”边栏选项卡中显示为应用程序权限。  以下示例显示一个以 `Application` 为目标的应用角色。
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -93,7 +93,7 @@ ms.locfileid: "65593927"
       "allowedMemberTypes": [
         "Application"
       ],
-      "displayName": "Consumer Apps",
+      "displayName": "ConsumerApps",
       "id": "47fbb575-859a-4941-89c9-0f7a6c30beac",
       "isEnabled": true,
       "description": "Consumer apps have access to the consumer data.",
@@ -109,23 +109,23 @@ ms.locfileid: "65593927"
 
 在应用程序中添加应用角色以后，即可将这些角色分配给用户和组。
 
-1. 使用 **Azure Active Directory** 左侧导航菜单，在“Azure Active Directory”窗格中选择“企业应用程序”。
-1. 选择“所有应用程序”，查看所有应用程序的列表。
+1. 使用 **Azure Active Directory** 左侧导航菜单，在“Azure Active Directory”窗格中选择“企业应用程序”   。
+1. 选择“所有应用程序”  ，查看所有应用程序的列表。
 
-     如果看不到希望其显示在这里的应用程序，请使用“所有应用程序”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。
+     如果看不到希望其显示在这里的应用程序，请使用“所有应用程序”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。 
 
 1. 选择一个应用程序，以便在其中为角色分配用户或安全组。
-1. 在应用程序的左侧导航菜单中选择“用户和组”窗格。
-1. 在“用户和组”列表顶部选择“添加用户”按钮，以便打开“添加分配”窗格。
-1. 在“添加分配”窗格中，选择“用户和组”选择器。
+1. 在应用程序的左侧导航菜单中选择“用户和组”窗格  。
+1. 在“用户和组”列表顶部选择“添加用户”按钮，以便打开“添加分配”窗格。   
+1. 在“添加分配”  窗格中，选择“用户和组”  选择器。
 
      将会显示用户和安全组的列表和一个文本框，后者用于搜索和查找特定用户或组。 此屏幕允许一次选择多个用户和组。
 
-1. 选择好用户和组以后，按底部的“选择”按钮即可转到下一部分。
-1. 在“添加分配”窗格中，选择“选择角色”选择器。 此前在应用清单中声明的所有角色都会显示。
-1. 选择一个角色，然后按“选择”按钮。
-1. 按底部的“分配”按钮即可完成将用户和组分配到应用的操作。
-1. 确认已添加的用户和组显示在更新的“用户和组”列表中。
+1. 选择好用户和组以后，按底部的“选择”按钮即可转到下一部分。 
+1. 在“添加分配”  窗格中，选择“选择角色”  选择器。 此前在应用清单中声明的所有角色都会显示。
+1. 选择一个角色，然后按“选择”  按钮。
+1. 按底部的“分配”按钮即可完成将用户和组分配到应用的操作。 
+1. 确认已添加的用户和组显示在更新的“用户和组”列表中。 
 
 ## <a name="more-information"></a>详细信息
 

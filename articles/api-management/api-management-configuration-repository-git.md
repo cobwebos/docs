@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b5bf778f06ff0223fd48a1282aadf223ff032b0f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c371333dcc7db0b60ffa5f94d6e2d55ae500a4f6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919855"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241190"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -48,7 +48,7 @@ ms.locfileid: "64919855"
 
 ## <a name="access-git-configuration-in-your-service"></a>访问服务中的 Git 配置
 
-若要查看和配置 Git 配置设置，可单击“安全”菜单并导航到“配置存储库”选项卡。
+若要查看和配置 Git 配置设置，可单击“安全”  菜单并导航到“配置存储库”  选项卡。
 
 ![启用 Git][api-management-enable-git]
 
@@ -57,25 +57,25 @@ ms.locfileid: "64919855"
 >
 >
 
-有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](/rest/api/apimanagement/tenantaccess?EnableGit)。
+有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)。
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>将服务配置保存到 Git 存储库
 
-克隆存储库之前的第一个步骤是将服务配置的当前状态保存到存储库。 单击“保存到存储库”。
+克隆存储库之前的第一个步骤是将服务配置的当前状态保存到存储库。 单击“保存到存储库”  。
 
-在确认屏幕上进行任何所需的更改，并单击“确定”保存。
+在确认屏幕上进行任何所需的更改，并单击“确定”  保存。
 
 片刻后配置已保存，并显示存储库的配置状态，包括上次配置更改和服务配置与存储库之间上次同步的日期和时间。
 
 将配置保存到存储库后，可以克隆它。
 
-有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 提交配置快照](/rest/api/apimanagement/tenantaccess?CommitSnapshot)。
+有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 提交配置快照](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot)。
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>将存储库克隆到本地计算机
 
-若要克隆存储库，需要存储库的 URL、用户名和密码。 若要获取用户名和其他凭据，请单击页面顶部附近的“访问凭据”。
+若要克隆存储库，需要存储库的 URL、用户名和密码。 若要获取用户名和其他凭据，请单击页面顶部附近的“访问凭据”  。
 
-若要生成密码，先确保“到期”设置为所需的到期日期和时间，然后单击“生成”。
+若要生成密码，先确保“到期”  设置为所需的到期日期和时间，然后单击“生成”  。
 
 > [!IMPORTANT]
 > 记下此密码。 离开此页面后，不会再次显示该密码。
@@ -97,7 +97,7 @@ git clone https://{name}.scm.azure-api.net/
 git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，并在“即时窗口”中发出以下命令。 要打开“即使窗口”，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），并从“调试”菜单中依次选择“Windows”、“即时”。
+如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，并在“即时窗口”  中发出以下命令。 要打开“即使窗口”  ，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），并从“调试”  菜单中依次选择“Windows”  、“即时”  。
 
 ```
 ?System.NetWebUtility.UrlEncode("password from the Azure portal")
@@ -113,7 +113,7 @@ git clone https://username:url encoded password@{name}.scm.azure-api.net/
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>使用最新服务实例配置更新本地存储库
 
-如果在 Azure 门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用最新更改更新本地存储库。 要执行此操作，请单击 Azure 门户中“配置存储库”选项卡上的“将配置保存到存储库”，然后在本地存储库中发布以下命令。
+如果在 Azure 门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用最新更改更新本地存储库。 要执行此操作，请单击 Azure 门户中“配置存储库”  选项卡上的“将配置保存到存储库”  ，然后在本地存储库中发布以下命令。
 
 ```
 git pull
@@ -143,7 +143,7 @@ git push
 
 将本地更改提交并推送到服务器存储库后，可将它们部署到 API 管理服务实例。
 
-有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 将 Git 更改部署到配置数据库](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration)。
+有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 将 Git 更改部署到配置数据库](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration)。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>本地 Git 存储库的文件和文件夹结构参考
 
@@ -173,9 +173,9 @@ git push
 > [!NOTE]
 > 以下实体不包含在 Git 存储库中，并且无法使用 Git 进行配置。
 >
-> * [用户](https://docs.microsoft.com/rest/api/apimanagement/user)
-> * [订阅](https://docs.microsoft.com/rest/api/apimanagement/subscription)
-> * [命名值](https://docs.microsoft.com/rest/api/apimanagement/property)
+> * [用户](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
+> * [订阅](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
+> * [命名值](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
 > * 样式以外的开发人员门户实体
 >
 
@@ -199,38 +199,38 @@ git push
 }
 ```
 
-前四个设置（`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`）映射到“安全”部分中的“标识”选项卡上的以下设置。
+前四个设置（`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`）映射到“安全”  部分中的“标识”  选项卡上的以下设置。
 
 | 标识设置 | 映射到 |
 | --- | --- |
 | RegistrationEnabled |是否存在**用户名和密码**标识提供者 |
-| UserRegistrationTerms |“用户登录时的使用条款”文本框 |
-| UserRegistrationTermsEnabled |“显示用户登录时的使用条款”复选框 |
-| UserRegistrationTermsConsentRequired |“需要同意”复选框 |
-| RequireUserSigninEnabled |“将匿名用户重定向到登录页”复选框 |
+| UserRegistrationTerms |“用户登录时的使用条款”  文本框 |
+| UserRegistrationTermsEnabled |“显示用户登录时的使用条款”  复选框 |
+| UserRegistrationTermsConsentRequired |“需要同意”  复选框 |
+| RequireUserSigninEnabled |“将匿名用户重定向到登录页”  复选框 |
 
-接下来的四个设置（`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`）映射到“安全”部分中的“委派”选项卡上的以下设置。
+接下来的四个设置（`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`）映射到“安全”  部分中的“委派”  选项卡上的以下设置。
 
 | 委派设置 | 映射到 |
 | --- | --- |
-| DelegationEnabled |“委派登录和注册”复选框 |
-| DelegationUrl |“委派终结点 URL”文本框 |
-| DelegatedSubscriptionEnabled |“委派产品订阅”复选框 |
-| DelegationValidationKey |“委派验证密钥”文本框 |
+| DelegationEnabled |“委派登录和注册”  复选框 |
+| DelegationUrl |“委派终结点 URL”  文本框 |
+| DelegatedSubscriptionEnabled |“委派产品订阅”  复选框 |
+| DelegationValidationKey |“委派验证密钥”  文本框 |
 
 最后的设置 `$ref-policy` 映射到服务实例的全局策略声明文件。
 
 ### <a name="apis-folder"></a>apis 文件夹
 `apis` 文件夹针对服务实例中的每个 API 都包含一个文件夹，该文件夹包含以下项目。
 
-* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://docs.microsoft.com/rest/api/apimanagement/apis/get) 时会返回的相同信息。
+* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) 时会返回的相同信息。
 * `apis\<api name>\api.description.html` - 这是 API 的说明，对应于 [API 实体](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property)的 `description` 属性。
 * `apis\<api name>\operations\` - 此文件夹包含映射到 API 中的操作的 `<operation name>.description.html` 文件。 每个文件包含 API 中单个操作的说明，该说明映射到 REST API 中[操作实体](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties)的 `description` 属性。
 
 ### <a name="groups-folder"></a>groups 文件夹
 `groups` 文件夹针对服务实例中定义的每个组都包含一个文件夹。
 
-* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://docs.microsoft.com/rest/api/apimanagement/group/get)操作时会返回的相同信息。
+* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get)操作时会返回的相同信息。
 * `groups\<group name>\description.html` - 这是组的说明，对应于[组实体](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)的 `description` 属性。
 
 ### <a name="policies-folder"></a>policies 文件夹
@@ -250,7 +250,7 @@ git push
 ### <a name="products-folder"></a>products 文件夹
 `products` 文件夹针对服务实例中定义的每个产品都包含一个文件夹。
 
-* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://docs.microsoft.com/rest/api/apimanagement/product/get)操作时会返回的相同信息。
+* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get)操作时会返回的相同信息。
 * `products\<product name>\product.description.html` - 这是产品的说明，对应于 REST API 中[产品实体](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity)的 `description` 属性。
 
 ### <a name="templates"></a>模板

@@ -10,12 +10,12 @@ ms.subservice: load data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8ca3b52d181578e6b35090489b7133a94b55cbd
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ac0f8cb4d9069d2ef7ce48939ad2dd1c92732d1a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65852070"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242962"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>教程：将纽约出租车数据加载到 Azure SQL 数据仓库
 
@@ -48,9 +48,9 @@ ms.locfileid: "65852070"
 
 按照以下步骤创建空白 SQL 数据仓库。 
 
-1. 在 Azure 门户的左上角单击“创建资源”。
+1. 在 Azure 门户的左上角单击“创建资源”。 
 
-2. 从“新建”页中选择“数据库”，然后从“新建”页的“特色”下选择“SQL 数据仓库”。
+2. 从“新建”  页中选择“数据库”  ，然后从“新建”  页的“特色”  下选择“SQL 数据仓库”  。
 
     ![创建数据仓库](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
@@ -65,33 +65,33 @@ ms.locfileid: "65852070"
 
     ![创建数据仓库](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
-4. 单击“服务器”，为新数据库创建并配置新服务器。 使用以下信息填写“新建服务器”窗体： 
+4. 单击“服务器”，为新数据库创建并配置新服务器。  使用以下信息填写“新建服务器”窗体：  
 
     | 设置 | 建议的值 | Description | 
     | ------- | --------------- | ----------- |
     | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 | 
-    | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。|
+    | 服务器管理员登录名  | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。|
     | **密码** | 任何有效的密码 | 密码必须至少有八个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
     | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
 
     ![创建数据库服务器](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. 单击“选择”。
+5. 单击“选择”  。
 
-6. 单击“性能级别”，指定数据仓库是 Gen1 还是 Gen2，以及数据仓库单位的数量。 
+6. 单击“性能级别”  ，指定数据仓库是 Gen1 还是 Gen2，以及数据仓库单位的数量。 
 
-7. 对于本教程，请选择 SQL 数据仓库的“Gen2”。 滑块默认设置为“DW1000c”。  请尝试上下移动滑块，以查看其工作原理。 
+7. 对于本教程，请选择 SQL 数据仓库的“Gen2”  。 滑块默认设置为“DW1000c”  。  请尝试上下移动滑块，以查看其工作原理。 
 
     ![配置性能](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. 单击“应用”。
-9. 在“SQL 数据仓库”页中，为空白数据库选择“排序规则”。 对于本教程，请使用默认值。 有关排序规则的详细信息，请参阅 [Collations](/sql/t-sql/statements/collations)（排序规则）
+8. 单击“应用”  。
+9. 在“SQL 数据仓库”页中，为空白数据库选择“排序规则”  。 对于本教程，请使用默认值。 有关排序规则的详细信息，请参阅 [Collations](/sql/t-sql/statements/collations)（排序规则）
 
-11. 完成 SQL 数据库表单后，即可单击“创建”对数据库进行预配。 预配需要数分钟。 
+11. 完成 SQL 数据库表单后，即可单击“创建”对数据库进行预配。  预配需要数分钟。 
 
     ![单击“创建”](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
-12. 在工具栏上，单击“通知”可监视部署过程。
+12. 在工具栏上，单击“通知”可监视部署过程。 
     
      ![通知](media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
@@ -103,7 +103,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 > SQL 数据仓库通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
 >
 
-1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“mySampleDatabase”。 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 mynewserver-20180430.database.windows.net），并提供了其他配置的选项。 
+1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“mySampleDatabase”。    此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 mynewserver-20180430.database.windows.net），并提供了其他配置的选项  。 
 
 2. 在后续的快速入门中，请复制此完全限定的服务器名称，将其用于连接到服务器及其数据库。 然后单击服务器名称，打开服务器设置。
 
@@ -113,28 +113,28 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
     ![服务器设置](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
 
-5. 单击“显示防火墙设置”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
+5. 单击“显示防火墙设置”  。 此时会打开 SQL 数据库服务器的“防火墙设置”页。  
 
     ![服务器防火墙规则](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png) 
 
-4. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+4. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。  防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 单击“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+5. 单击“保存”。  此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
-6. 单击“确定”，然后关闭“防火墙设置”页。
+6. 单击“确定”，然后关闭“防火墙设置”页。  
 
 现在，可使用此 IP 地址连接到 SQL Server 及其数据仓库。 可从 SQL Server Management Studio 或另一种所选工具进行连接。 连接时，请使用之前创建的 ServerAdmin 帐户。  
 
 > [!IMPORTANT]
-> 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 单击此页上的“关闭”，然后单击“保存”，对所有 Azure 服务禁用防火墙。
+> 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 单击此页上的“关闭”  ，然后单击“保存”  ，对所有 Azure 服务禁用防火墙。
 
 ## <a name="get-the-fully-qualified-server-name"></a>获取完全限定的服务器名称
 
 请在 Azure 门户中获取 SQL Server 的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据仓库”，然后单击“SQL 数据仓库”页上的数据库。 
-3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。 在此示例中，完全限定名称为 mynewserver-20180430.database.windows.net。 
+2. 从左侧菜单中选择“SQL 数据仓库”  ，然后单击“SQL 数据仓库”  页上的数据库。 
+3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。   在此示例中，完全限定名称为 mynewserver-20180430.database.windows.net。 
 
     ![连接信息](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -144,21 +144,21 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 1. 打开 SQL Server Management Studio。
 
-2. 在“连接到服务器”对话框中，输入以下信息：
+2. 在“连接到服务器”对话框中，输入以下信息： 
 
     | 设置      | 建议的值 | 说明 | 
     | ------------ | --------------- | ----------- | 
     | 服务器类型 | 数据库引擎 | 此值是必需的 |
-    | 服务器名称 | 完全限定的服务器名称 | 该名称应类似于 mynewserver-20180430.database.windows.net。 |
+    | 服务器名称 | 完全限定的服务器名称 | 该名称应类似于 mynewserver-20180430.database.windows.net  。 |
     | Authentication | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
     | 登录 | 服务器管理员帐户 | 此帐户是在创建服务器时指定的帐户。 |
     | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 
     ![连接到服务器](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. 单击“连接”。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
+4. 单击“连接”  。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
 
-5. 在对象资源管理器中，展开“数据库”。 然后展开“系统数据库”和“master”，查看 master 数据库中的对象。  展开“mySampleDatabase”，查看新数据库中的对象。
+5. 在对象资源管理器中，展开“数据库”  。 然后展开“系统数据库”  和“master”  ，查看 master 数据库中的对象。  展开“mySampleDatabase”  ，查看新数据库中的对象。
 
     ![数据库对象](media/load-data-from-azure-blob-storage-using-polybase/connected.png) 
 
@@ -168,9 +168,9 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 最好创建专用于加载数据的登录名和用户。 然后，将加载用户添加到启用相应最大内存分配的[资源类](resource-classes-for-workload-management.md)。
 
-由于当前是以服务器管理员的身份连接的，因此可以创建登录名和用户。 使用以下步骤创建名为 LoaderRC20 的登录名和用户。 然后将该用户分配到 staticrc20 资源类。 
+由于当前是以服务器管理员的身份连接的，因此可以创建登录名和用户。 使用以下步骤创建名为 LoaderRC20  的登录名和用户。 然后将该用户分配到 staticrc20  资源类。 
 
-1.  在 SSMS 中，右键单击“master”，然后在显示的下拉菜单中选择“新建查询”。 此时会打开一个新的查询窗口。
+1.  在 SSMS 中，右键单击“master”  ，然后在显示的下拉菜单中选择“新建查询”  。 此时会打开一个新的查询窗口。
 
     ![在 Master 中新建查询](media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -181,9 +181,9 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
     ```
 
-3. 单击“执行” 。
+3. 单击“执行”  。
 
-4. 右键单击“mySampleDataWarehouse”，然后选择“新建查询”。 此时会打开一个新的查询窗口。  
+4. 右键单击“mySampleDataWarehouse”  ，然后选择“新建查询”  。 此时会打开一个新的查询窗口。  
 
     ![针对示例数据仓库的新查询](media/load-data-from-azure-blob-storage-using-polybase/create-loading-user.png)
  
@@ -195,19 +195,19 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
     ```
 
-6. 单击“执行” 。
+6. 单击“执行”  。
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>以加载用户的身份连接到服务器
 
 加载数据的第一步是以 LoaderRC20 的身份登录。  
 
-1. 在对象资源管理器中，单击“连接”下拉菜单，然后选择“数据库引擎”。 此时会显示“连接到服务器”对话框。
+1. 在对象资源管理器中，单击“连接”  下拉菜单，然后选择“数据库引擎”  。 此时会显示“连接到服务器”  对话框。
 
     ![使用新登录名连接](media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
-2. 输入完全限定的服务器名称，并输入“LoaderRC20”作为登录名。  输入 LoaderRC20 的密码。
+2. 输入完全限定的服务器名称，并输入“LoaderRC20”  作为登录名。  输入 LoaderRC20 的密码。
 
-3. 单击“连接”。
+3. 单击“连接”  。
 
 4. 当连接准备就绪时，对象资源管理器中出现两个服务器连接。 一个是作为 ServerAdmin 连接，另一个是作为 MedRCLogin 连接。
 
@@ -219,7 +219,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 运行以下 SQL 脚本，指定有关想要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。 
 
-1. 在前一节中，已经以 LoaderRC20 的身份登录数据仓库。 在 SSMS 中，右键单击 LoaderRC20 连接，然后选择“新建查询”。  此时会显示一个新的查询窗口。 
+1. 在前一节中，已经以 LoaderRC20 的身份登录数据仓库。 在 SSMS 中，右键单击 LoaderRC20 连接，然后选择“新建查询”  。  此时会显示一个新的查询窗口。 
 
     ![新的加载查询窗口](media/load-data-from-azure-blob-storage-using-polybase/new-loading-query.png)
 
@@ -231,7 +231,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     CREATE MASTER KEY;
     ```
 
-4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”。
+4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”  。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -567,10 +567,10 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 ### <a name="prerequisites"></a>必备组件
 1.  按照此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安装 Azure PowerShell。
 2.  如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户升级到常规用途 v2 帐户。
-3.  必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下启用“允许受信任的 Microsoft 服务访问此存储帐户”。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
+3.   必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下  启用“允许受信任的 Microsoft 服务访问此存储帐户”。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
 
 #### <a name="steps"></a>Steps
-1. 在 PowerShell 中，向 Azure Active Directory (AAD) 注册 SQL 数据库服务器：
+1. 在 PowerShell 中，向 Azure Active Directory (AAD) 注册 SQL 数据库服务器  ：
 
    ```powershell
    Connect-AzAccount
@@ -583,7 +583,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
    > [!NOTE]
    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
     
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。 向 SQL 数据库服务器分配“存储 Blob 数据参与者”RBAC 角色。
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。   向 SQL 数据库服务器分配“存储 Blob 数据参与者”  RBAC 角色。
 
    > [!NOTE] 
    > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
@@ -597,7 +597,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
        ```
        > [!NOTE] 
        > - 使用 Azure 存储访问密钥时，不需指定 SECRET，因为此机制在后台使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
-       > - 使用 Azure 存储帐户时，IDENTITY 名称应该为 **'托管服务标识'**，以便通过 PolyBase 进行连接。
+       > - 使用 Azure 存储帐户时，IDENTITY 名称应该为 **'托管服务标识'** ，以便通过 PolyBase 进行连接。
     
    1. 创建外部数据源，使用托管服务标识指定数据库范围的凭据。
         
@@ -618,13 +618,13 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
     ![清理资源](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 要暂停计算，请单击“暂停”按钮。 暂停数据仓库后，可看到“启动”按钮。  要恢复计算，请单击“启动”。
+2. 要暂停计算，请单击“暂停”  按钮。 暂停数据仓库后，可看到“启动”  按钮。  要恢复计算，请单击“启动”  。
 
-3. 要删除数据仓库，以便不再为计算或存储付费，请单击“删除”。
+3. 要删除数据仓库，以便不再为计算或存储付费，请单击“删除”  。
 
-4. 要删除所创建的 SQL Server，请单击上图中的“mynewserver-20180430.database.windows.net”，然后单击“删除”。  请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
+4. 要删除所创建的 SQL Server，请单击上图中的“mynewserver-20180430.database.windows.net”，然后单击“删除”   。  请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
 
-5. 要删除资源组，请单击“myResourceGroup”，然后单击“删除资源组”。
+5. 要删除资源组，请单击“myResourceGroup”  ，然后单击“删除资源组”  。
 
 ## <a name="next-steps"></a>后续步骤 
 在本教程中，已学习了如何创建数据仓库以及用于加载数据的用户。 创建了外部表以定义 Azure 存储 Blob 中存储的数据的结构，然后使用 PolyBase CREATE TABLE AS SELECT 语句将数据加载到数据仓库。 
@@ -640,7 +640,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 > * 查看了正在加载的数据的进度
 > * 创建了新加载的数据的统计信息
 
-转到迁移概述，了解如何将现有数据库迁移到 SQL 数据仓库。
+请转到要了解如何将现有数据库迁移到 SQL 数据仓库开发概述。
 
 > [!div class="nextstepaction"]
->[了解如何将现有数据库迁移到 SQL 数据仓库](sql-data-warehouse-overview-migrate.md)
+>[若要将现有数据库迁移到 SQL 数据仓库的设计决策](sql-data-warehouse-overview-migrate.md)

@@ -3,7 +3,7 @@ title: Azure AD Join 与 Azure Active Directory 域服务的比较 | Microsoft D
 description: 在 Azure AD Join 与 Azure AD 域服务之间做出决定
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2017
-ms.author: ergreenl
-ms.openlocfilehash: d4f50ea89f2623d387fb77acb09e609def547468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: eaa8cb54a46b1ff3c2c0f7c40c824f6ddcca16b9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359426"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234957"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>在 Azure Active Directory Join 与 Azure Active Directory 域服务之间进行选择
 本文介绍 Azure Active Directory (AD) Join 与 Azure AD 域服务之间的差异，帮助根据用例做出选择。
@@ -66,14 +66,14 @@ Azure AD 域服务在 Azure 虚拟网络中提供 AD 托管域。 可以使用�
 
 ## <a name="next-steps"></a>后续步骤
 ### <a name="learn-more-about-azure-ad-domain-services"></a>了解有关 Azure AD 域服务的详细信息
-* [Azure AD 域服务概述](active-directory-ds-overview.md)
+* [Azure AD 域服务概述](overview.md)
 * [功能](active-directory-ds-features.md)
-* [部署方案](active-directory-ds-scenarios.md)
-* [了解 Azure AD 域服务是否适合用例](active-directory-ds-comparison.md)
-* [了解如何将 Azure AD 域服务与 Azure AD 目录同步](active-directory-ds-synchronization.md)
+* [部署方案](scenarios.md)
+* [了解 Azure AD 域服务是否适合用例](comparison.md)
+* [了解如何将 Azure AD 域服务与 Azure AD 目录同步](synchronization.md)
 
 ### <a name="learn-more-about-azure-ad-join"></a>详细了解 Azure AD Join
 * [Azure Active Directory 中的设备管理简介](../active-directory/device-management-introduction.md)
 
 ### <a name="get-started-with-azure-ad-domain-services"></a>Azure AD 域服务入门
-* [使用 Azure 门户启用 Azure AD 域服务](active-directory-ds-getting-started.md)
+* [使用 Azure 门户启用 Azure AD 域服务](create-instance.md)

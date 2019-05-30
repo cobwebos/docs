@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: b6a5712c617ab1e16b5341d9727b840fe8ea2213
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68c83809cba0585d99751760c0e4f51893806170
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894401"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257194"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -118,8 +118,8 @@ ms.locfileid: "60894401"
    |int getNumberOfDocumentsImported()  |   从提供给批量导入 API 调用的文档中成功导入的文档总数。      |
    |double getTotalRequestUnitsConsumed()   |  批量导入 API 调用消耗的请求单位 (RU) 总数。       |
    |Duration getTotalTimeTaken()   |    批量导入 API 调用完成执行所花费的总时间。     |
-   |列表\<异常 > getErrors() |  如果分批提供给批量导入 API 调用的某些文档无法插入，则获取错误列表。       |
-   |列表\<对象 > getBadInputDocuments()  |    未在批量导入 API 调用中成功导入的格式不当文档列表。 用户应修复返回的文档，并重试导入。 格式不当的文档包括其 ID 值不是字符串（null 或其他任何数据类型被视为无效）的文档。     |
+   |List\<Exception> getErrors() |  如果分批提供给批量导入 API 调用的某些文档无法插入，则获取错误列表。       |
+   |List\<Object> getBadInputDocuments()  |    未在批量导入 API 调用中成功导入的格式不当文档列表。 用户应修复返回的文档，并重试导入。 格式不当的文档包括其 ID 值不是字符串（null 或其他任何数据类型被视为无效）的文档。     |
 
 5. 准备好批量导入应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 
@@ -182,7 +182,7 @@ ms.locfileid: "60894401"
    |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
    |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |
    |Duration getTotalTimeTaken()  |   批量更新 API 调用完成执行所花费的总时间。      |
-   |列表\<异常 > getErrors()   |    如果分批提供给批量更新 API 调用的某些文档无法插入，则获取错误列表。      |
+   |List\<Exception> getErrors()   |    如果分批提供给批量更新 API 调用的某些文档无法插入，则获取错误列表。      |
 
 3. 准备好批量更新应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 

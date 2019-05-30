@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 7d607b4370d51ea2605fae6543bd3336853b0806
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 574dd9fd6189b6d0f1e5d455146d6d083ad7ff77
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954222"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389467"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>使用数据库、 容器和 Azure Cosmos DB 中的项
 
@@ -39,10 +39,10 @@ ms.locfileid: "65954222"
 
 | Operation | Azure CLI | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- |
-|枚举所有数据库| “是” | “是” | 是（将数据库映射至密钥空间） | “是” | NA | NA |
-|读取数据库| “是” | “是” | 是（将数据库映射至密钥空间） | “是” | NA | NA |
-|新建数据库| “是” | “是” | 是（将数据库映射至密钥空间） | “是” | NA | NA |
-|更新数据库| “是” | “是” | 是（将数据库映射至密钥空间） | “是” | NA | NA |
+|枚举所有数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
+|读取数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
+|创建新的数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
+|更新数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos 容器
@@ -54,6 +54,9 @@ Azure Cosmos 容器是针对预配的吞吐量和存储可伸缩性的单位。 
 * **专用预配的吞吐量模式**:针对容器预配的吞吐量是专门为该容器保留的，由 SLA 提供支持。 若要了解详细信息，请参阅[如何预配 Azure Cosmos 容器的吞吐量](how-to-provision-container-throughput.md)。
 
 * **共享预配的吞吐量模式**:这些容器与同一数据库 （不包括已配置了专用预配的吞吐量的容器） 中的其他容器共享预配的吞吐量。 换而言之，在"共享的吞吐量"的所有容器之间共享上，对数据库的预配的吞吐量。 若要了解详细信息，请参阅[如何预配 Azure Cosmos 数据库上的吞吐量](how-to-provision-database-throughput.md)。
+
+> [!NOTE]
+> 只有在创建数据库和容器时，可以配置共享和专用吞吐量。 若要从专用的吞吐量模式切换到共享的吞吐量模式 （反之亦然） 创建容器后，必须创建一个新的容器并将数据迁移到新容器。 可以使用 Azure Cosmos DB 更改源功能，从而将数据迁移。
 
 是否使用专用或共享预配的吞吐量模式创建容器，可以弹性，缩放 Azure Cosmos 容器。
 
@@ -79,15 +82,15 @@ Azure Cosmos 容器具备一组系统定义的属性。 具体取决于您使用
 
 | 系统定义的属性 | 由系统生成或用户可配置 | 目的 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | System-generated | 容器的唯一标识符 | “是” | 否 | 否 | 否 | “否” |
-|\_etag | System-generated | 用于乐观并发控制的实体标记 | “是” | 否 | 否 | 否 | “否” |
-|\_ts | System-generated | 容器上次更新的时间戳 | “是” | 否 | 否 | 否 | “否” |
-|\_self | System-generated | 容器的可寻址 URI | “是” | 否 | 否 | 否 | “否” |
-|ID | 用户可配置 | 用户定义的容器唯一名称 | “是” | 是 | 是 | 是 | “是” |
-|indexingPolicy | 用户可配置 | 提供的功能更改路径的索引、 索引类型和索引模式 | “是” | 否 | 否 | 否 | “是” |
-|TimeToLive | 用户可配置 | 提供的功能以设定的时间段后从容器中自动删除项。 有关详细信息，请参阅[生存时间](time-to-live.md)。 | “是” | 否 | 否 | 否 | “是” |
-|changeFeedPolicy | 用户可配置 | 用于读取对容器中的项所做的更改。 有关详细信息，请参阅[更改源](change-feed.md)。 | “是” | 否 | 否 | 否 | “是” |
-|uniqueKeyPolicy | 用户可配置 | 用于确保的逻辑分区中的一个或多个值的唯一性。 有关详细信息，请参阅[唯一键约束](unique-keys.md)。 | “是” | 否 | 否 | 否 | “是” |
+|\_id | System-generated | 容器的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
+|\_etag | System-generated | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
+|\_ts | System-generated | 容器上次更新的时间戳 | 是 | 否 | 否 | 否 | 否 |
+|\_self | System-generated | 容器的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
+|id | 用户可配置 | 用户定义的容器唯一名称 | 是 | 是 | 是 | 是 | 是 |
+|indexingPolicy | 用户可配置 | 提供的功能更改路径的索引、 索引类型和索引模式 | 是 | 否 | 否 | 否 | 是 |
+|TimeToLive | 用户可配置 | 提供的功能以设定的时间段后从容器中自动删除项。 有关详细信息，请参阅[生存时间](time-to-live.md)。 | 是 | 否 | 否 | 否 | 是 |
+|changeFeedPolicy | 用户可配置 | 用于读取对容器中的项所做的更改。 有关详细信息，请参阅[更改源](change-feed.md)。 | 是 | 否 | 否 | 否 | 是 |
+|uniqueKeyPolicy | 用户可配置 | 用于确保的逻辑分区中的一个或多个值的唯一性。 有关详细信息，请参阅[唯一键约束](unique-keys.md)。 | 是 | 否 | 否 | 否 | 是 |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>对 Azure Cosmos 容器执行的操作
 
@@ -95,11 +98,11 @@ Azure Cosmos 容器具备一组系统定义的属性。 具体取决于您使用
 
 | Operation | Azure CLI | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- |
-| 枚举数据库中的容器 | “是” | 是 | 是 | “是” | NA | NA |
-| 读取容器 | “是” | 是 | 是 | “是” | NA | NA |
-| 创建新容器 | “是” | 是 | 是 | “是” | NA | NA |
-| 更新容器 | “是” | 是 | 是 | “是” | NA | NA |
-| 删除容器 | “是” | 是 | 是 | “是” | NA | NA |
+| 枚举数据库中的容器 | 是 | 是 | 是 | 是 | NA | NA |
+| 读取容器 | 是 | 是 | 是 | 是 | NA | NA |
+| 创建新的容器 | 是 | 是 | 是 | 是 | NA | NA |
+| 更新容器 | 是 | 是 | 是 | 是 | NA | NA |
+| 删除容器 | 是 | 是 | 是 | 是 | NA | NA |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos 项
 
@@ -107,7 +110,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 具体取决于您使用
 
 | Cosmos 实体 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 项 | 文档 | 行 | 文档 | 节点或边界 | 项 |
+|Azure Cosmos 项 | Document | 行 | Document | 节点或边界 | Item |
 
 ### <a name="properties-of-an-item"></a>项的属性
 
@@ -115,12 +118,12 @@ Azure Cosmos 容器具备一组系统定义的属性。 具体取决于您使用
 
 | 系统定义的属性 | 由系统生成或用户可配置| 目的 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | System-generated | 项的唯一标识符 | “是” | 否 | 否 | 否 | “否” |
-|\_etag | System-generated | 用于乐观并发控制的实体标记 | “是” | 否 | 否 | 否 | “否” |
-|\_ts | System-generated | 项的上次更新时间戳 | “是” | 否 | 否 | 否 | “否” |
-|\_self | System-generated | 项的可寻址 URI | “是” | 否 | 否 | 否 | “否” |
-|ID | 任一个 | 用户定义的逻辑分区中唯一的名称。 如果用户未指定 ID，系统会自动生成一个密钥。 | “是” | 是 | 是 | 是 | “是” |
-|任意用户定义的属性 | 用户定义 | 在 API 的本机表示形式 （包括 JSON、 BSON 和 CQL） 中表示的用户定义的属性 | “是” | 是 | 是 | 是 | “是” |
+|\_id | System-generated | 项的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
+|\_etag | System-generated | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
+|\_ts | System-generated | 项的上次更新时间戳 | 是 | 否 | 否 | 否 | 否 |
+|\_self | System-generated | 项的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
+|id | 任一个 | 用户定义的逻辑分区中唯一的名称。 如果用户未指定 ID，系统会自动生成一个密钥。 | 是 | 是 | 是 | 是 | 是 |
+|任意用户定义的属性 | 用户定义 | 在 API 的本机表示形式 （包括 JSON、 BSON 和 CQL） 中表示的用户定义的属性 | 是 | 是 | 是 | 是 | 是 |
 
 ### <a name="operations-on-items"></a>对项执行的操作
 
@@ -128,7 +131,7 @@ Azure Cosmos 项支持以下操作。 可以使用任何 Azure Cosmos Api 来执
 
 | Operation | Azure CLI | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- |
-| 插入、替换、删除、Upsert、读取 | “否” | 是 | 是 | 是 | 是 | “是” |
+| 插入、替换、删除、Upsert、读取 | 否 | 是 | 是 | 是 | 是 | 是 |
 
 ## <a name="next-steps"></a>后续步骤
 

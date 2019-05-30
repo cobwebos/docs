@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 05/23/2019
 ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecd55cbb3a8eefc150db731901458561d90f033
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 621ca9a7a55f86a92f0c809b6e220245f47dfd39
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783410"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233712"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -70,31 +70,32 @@ ms.locfileid: "65783410"
    - 预身份验证方法：Azure Active Directory
    - 转换 URL 标头：否
 2. 将用户分配到已发布的 RD 应用程序。 确保这些用户也都有权访问 RDS。
-3. 将应用程序的单一登录方法保留为“已禁用 Azure AD 单一登录”。 用户必须在 Azure AD 和 RD Web 上各执行身份验证一次，但可以单一登录到 RD 网关。
-4. 转到“Azure Active Directory” > “应用注册” > *应用程序* > “设置”。
-5. 选择“属性”并将“主页 URL”字段更新为指向 RD Web 终结点（如 `https://\<rdhost\>.com/RDWeb`）。
+3. 将应用程序的单一登录方法保留为“已禁用 Azure AD 单一登录”。  用户必须在 Azure AD 和 RD Web 上各执行身份验证一次，但可以单一登录到 RD 网关。
+4. 选择**Azure Active Directory**，然后**应用注册**。 从列表中选择您的应用程序。
+5. 下**管理**，选择**品牌**。
+6. 更新**主页 URL**字段为指向 RD Web 终结点 (如`https://\<rdhost\>.com/RDWeb`)。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>将 RDS 流量定向到应用程序代理
 
 以管理员身份连接到 RDS 部署，并更改部署的 RD 网关服务器名称。 此配置可确保连接通过 Azure AD 应用程序代理服务。
 
 1. 连接到运行 RD 连接代理角色的 RDS 服务器。
-2. 启动“服务器管理器”。
-3. 在左侧窗格中选择“远程桌面服务”。
-4. 选择“概述”。
-5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。
-6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。
-7. 将“登录方法”字段更改为“密码身份验证”。
+2. 启动“服务器管理器”。 
+3. 在左侧窗格中选择“远程桌面服务”。 
+4. 选择“概述”。 
+5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。 
+6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。 
+7. 将“登录方法”字段更改为“密码身份验证”。  
 
    ![RDS 上的“部署属性”屏幕](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. 为所有集合运行此命令。 用自己的信息替换 \<yourcollectionname\> 和 \<proxyfrontendurl\>。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
+8. 为所有集合运行此命令。 用自己的信息替换 \<yourcollectionname\>  和 \<proxyfrontendurl\>  。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   例如：
+   例如： 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -129,7 +130,7 @@ ms.locfileid: "65783410"
 相比传递流，预身份验证流可提供更多的安全优势。 使用预身份验证，你可以将单一登录、条件性访问和双重验证等 Azure AD 身份验证功能应用于本地资源。 此外，你还可以确保只有经过身份验证的流量才能访问你的网络。
 
 若要使用传递身份验证，本文列出的步骤仅有下面两处修改：
-1. 在[发布 RD 主机终结点](#publish-the-rd-host-endpoint)步骤 1 中，将预身份验证方法设置为“传递”。
+1. 在[发布 RD 主机终结点](#publish-the-rd-host-endpoint)步骤 1 中，将预身份验证方法设置为“传递”  。
 2. 在[使 RDS 流量直接流向应用程序代理](#direct-rds-traffic-to-application-proxy)中，完全跳过步骤 8。
 
 ## <a name="next-steps"></a>后续步骤

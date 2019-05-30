@@ -1,5 +1,5 @@
 ---
-title: 数据集定义和使用 azureml 数据集进行版本控制
+title: 版本和管理使用 azureml 数据集的数据集定义
 titleSuffix: Azure Machine Learning service
 description: 了解如何更新数据集定义和管理定义的生命周期
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: e58ce156deaaad259ea7b74521bcf9b79afbd183
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4476bdd902f054683fa544dc44b548689f3a1881
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146206"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241886"
 ---
-# <a name="update-and-manage-the-lifecycle-of-dataset-definitions"></a>更新和管理数据集定义的生命周期
+# <a name="version-and-manage-your-dataset-definitions"></a>版本和管理数据集定义
 
 了解如何更新和管理 Azure 机器学习数据集 （预览版） 使用的数据集定义。
 
@@ -37,7 +37,7 @@ ms.locfileid: "66146206"
 
 本文档中的示例中使用的示例文件位于[ https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv ](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv)。
 
-## <a name="update-dataset-definitions"></a>更新数据集定义
+## <a name="create-and-update-definitions"></a>创建和更新定义
 
 首先，我们将创建并注册你的工作区的数据集。
 
@@ -173,7 +173,7 @@ ds_def_old.head(5)
       <th>ID</th>
       <th>案例号</th>
       <th>Date</th>
-      <th>阻止</th>
+      <th>街区</th>
       <th>IUCR</th>
       <th>主要类型</th>
       <th>描述</th>
@@ -344,7 +344,7 @@ dataset.get_definition(version_id=1)
 
 可以独立管理每个数据集定义的生命周期。 有三个阶段的生命周期： 活动、 不推荐使用，或已存档。
 
-### <a name="active"></a>活跃
+### <a name="active"></a>活动
 
 创建新的数据集定义后，它默认处于活动状态。 
 

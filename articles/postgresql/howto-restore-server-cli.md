@@ -1,20 +1,20 @@
 ---
-title: 如何在 Azure Database for PostgreSQL 中备份和还原服务器
-description: 了解如何使用 Azure CLI 在 Azure Database for PostgreSQL 中备份和还原服务器。
+title: 如何在 Azure Database for PostgreSQL（单一服务器）中备份和还原服务器
+description: 了解如何使用 Azure CLI 在 Azure Database for PostgreSQL（单一服务器）中备份和还原服务器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 3415910426d365ea2dc17e7515871c1bf4841fd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: 85fb00ad221ae982e4d3ddc9d2d5d20dd4f2793d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419915"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65069098"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for PostgreSQL 中备份和还原服务器
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for PostgreSQL（单一服务器）中备份和还原服务器
 
 ## <a name="backup-happens-automatically"></a>自动进行备份
 Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功能。 通过此功能，用户可将服务器及其所有数据库还原到新服务器上的某个较早时间点。
@@ -72,7 +72,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 | 设置 | 建议的值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
-| 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
+| name | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可以使用自己的本地时区，如 `2018-03-13T05:59:00-08:00`。 也可以使用 UTC Zulu 格式，如 `2018-03-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
 
@@ -112,7 +112,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 | 设置 | 建议的值 | 描述  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新服务器将属于的资源组的名称。|
-|名称 | mydemoserver-georestored | 新服务器的名称。 |
+|name | mydemoserver-georestored | 新服务器的名称。 |
 |source-server | mydemoserver | 将使用其异地冗余备份的现有服务器的名称。 |
 |位置 | eastus | 新服务器的位置。 |
 |sku-name| GP_Gen4_8 | 此参数设置新服务器的定价层、计算层代和 vCore 数。 GP_Gen4_8 映射为一台第 4 代常规用途服务器，具有 8 个 vCore。|

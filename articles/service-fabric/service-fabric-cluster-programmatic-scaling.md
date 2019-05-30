@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111286"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306935"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以编程方式缩放 Service Fabric 群集 
 
@@ -29,16 +29,16 @@ ms.locfileid: "62111286"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>管理凭据
-编写服务来处理缩放的难题之一是，该服务必须能够在无需交互式登录的情况下访问虚拟机规模集资源。 如果缩放服务可修改自身的 Service Fabric 应用程序，则访问 Service Fabric 群集的过程就很轻松，但访问规模集则需要提供凭据。 若要登录，可以使用在 [Azure CLI](https://github.com/azure/azure-cli) 中创建的[服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)。
+编写服务来处理缩放的难题之一是，该服务必须能够在无需交互式登录的情况下访问虚拟机规模集资源。 如果缩放服务可修改自身的 Service Fabric 应用程序，则访问 Service Fabric 群集的过程就很轻松，但访问规模集则需要提供凭据。 若要登录，可以使用[服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)附带[Azure CLI](https://github.com/azure/azure-cli)。
 
 可以使用以下步骤创建服务主体：
 
-1. 以有权访问虚拟机规模集的用户身份登录到 Azure CLI (`az login`)
+1. 登录到 Azure CLI (`az login`) 作为用户有权访问虚拟机规模集
 2. 使用 `az ad sp create-for-rbac` 创建服务主体
     1. 记下 appId（在某些文档中称为“客户端 ID”）、名称、密码和租户供稍后使用。
     2. 还需要准备好订阅 ID（可使用 `az account list` 查看）
 
-Fluent 计算库可以使用这些凭据进行登录，如下所示（请注意，`IAzure` 等核心 Fluent Azure 类型位于 [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) 包中）：
+Fluent 计算库可以按如下所示使用这些凭据登录 (请注意，核心 fluent Azure 类型类似于`IAzure`位于[Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)包):
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {

@@ -4,15 +4,15 @@ description: 本文说明了 Azure Cosmos DB 存在的区域以及不同云环�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/23/2019
 ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 851da72a308b164b9a01b7ccfa3d541fc06810ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 787bcc8f0db60868008ec93fcacdec1283946d2f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926214"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243737"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB 的区域可用性
 
@@ -22,13 +22,13 @@ Azure Cosmos DB 是 Azure 中的一项基础服务，默认情况下，在所有
 
 Cosmos DB 在提供给客户的所有五种不同的 Azure 云环境中均可使用：
 
-* Azure 公有云，全球通用。
+* Azure 公有云，全球通用  。
 
 * **Azure 中国 21Vianet**可通过 Microsoft 和 21Vianet，一个国家/地区的中国最大的 internet 供应商合作。
 
-* Azure 德国以数据受托人模式提供服务，这可确保客户数据仍保留在德国，由 Deutsche Telecom 的子公司 T-Systems International GmbH 充当德国数据受托人，对这些数据进行管控。
+* Azure 德国以数据受托人模式提供服务，这可确保客户数据仍保留在德国，由 Deutsche Telecom 的子公司 T-Systems International GmbH 充当德国数据受托人，对这些数据进行管控  。
 
-* Azure 政府在美国的四个区域向美国政府机构及其合作伙伴提供服务。 
+* Azure 政府在美国的四个区域向美国政府机构及其合作伙伴提供服务  。 
 
 * **美国国防部 (DoD) 适用的 azure 政府**仅在美国国防部到美国的两个区域可用。
 

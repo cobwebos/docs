@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9520cbb9973071bf1c52266d7718837607c1d10f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572512"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256131"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
@@ -34,7 +34,7 @@ ms.locfileid: "64572512"
 
 ## <a name="pre-aggregated-metrics"></a>预先聚合的指标
 
-除了基于日志的指标以外，在 2018 年秋季，Application Insights 团队交付了存储在专用存储库（已针对时序进行优化）中的指标的公共预览版。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)、响应能力更强的[仪表板](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards)等方案。
+除了基于日志的指标以外，在 2018 年秋季，Application Insights 团队交付了存储在专用存储库（已针对时序进行优化）中的指标的公共预览版。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)、响应能力更强的[仪表板](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)等方案。
 
 > [!IMPORTANT]
 > 基于日志的指标和预先聚合的指标可在 Application Insights 中共存。 为了区分两者，在 Application Insights UX 中，预先聚合的指标现在称为“标准指标(预览版)”，而事件中的传统指标已重命名为“基于日志的指标”。

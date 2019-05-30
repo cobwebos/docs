@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 572f8694d31728a3ca570f6ddb60475e13d71e80
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415735"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235593"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合的安全信息注册 （预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "60415735"
 
 ![我的配置文件显示已注册的用户的安全信息](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-启用新的体验之前, 查看此管理员为中心的文档和专注于用户的文档以确保您了解的功能和此功能的效果。 使您的用户文档的新体验准备你的用户和帮助确保成功推出的培训。
+启用新的体验之前, 查看此管理员为中心的文档和专注于用户的文档以确保您了解的功能和此功能的效果。 根据您的培训[用户文档](../user-help/user-help-security-info-overview.md)用于准备你的用户以新体验，并帮助确保成功推出。
 
 Azure AD 相结合的注册不是当前可用于 Azure 美国政府、 Azure 德国或 Azure 中国的 21Vianet 等的国家/地区云的安全信息。
 
@@ -44,15 +44,15 @@ Azure AD 相结合的注册不是当前可用于 Azure 美国政府、 Azure 德
 
 结合使用注册支持以下身份验证方法和操作：
 
-|   | 注册 | 更改 | 删除 |
+|   | 注册 | 更改 | DELETE |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | 是 （最多 5 个） | 否 | 是 |
 | 其他身份验证器应用 | 是 （最多 5 个） | 否 | 是 |
-| 硬件标志 | 否 | 否 | 是 |
-| 电话 | 是 | 是 | 是 |
+| 硬件令牌 | 否 | 否 | 是 |
+| Phone | 是 | 是 | 是 |
 | 备用号码 | 是 | 是 | 是 |
 | 办公电话 | 否 | 否 | 否 |
-| 电子邮件 | 是 | 是 | 是 |
+| Email | 是 | 是 | 是 |
 | 安全提问 | 是 | 否 | 是 |
 | 应用密码 | 是 | 否 | 是 |
 
@@ -84,20 +84,20 @@ Azure AD 相结合的注册不是当前可用于 Azure 美国政府、 Azure 德
 
 下面是在其中可能会提示用户注册或刷新其安全信息的几个方案：
 
-* 通过 Identity Protection 来强制实施多重身份验证注册：要求用户在登录期间注册。 他们注册多重身份验证方法和 SSPR 方法 （如果用户已启用的 SSPR）。
-* 通过每用户多重身份验证来强制实施多重身份验证注册：要求用户在登录期间注册。 他们注册多重身份验证方法和 SSPR 方法 （如果用户已启用的 SSPR）。
-* 通过条件性访问策略或其他策略强制执行多重身份验证注册：要求用户注册使用时，它们需要多重身份验证的资源。 他们注册多重身份验证方法和 SSPR 方法 （如果用户已启用的 SSPR）。
-* 强制实施的 SSPR 注册：要求用户在登录期间注册。 仅 SSPR 方法注册它们。
-* SSPR 刷新强制执行：用户需要管理员设置的时间间隔查看其安全信息用户显示其信息和可以确认当前信息或根据需要进行更改。
+- 通过 Identity Protection 来强制实施多重身份验证注册：要求用户在登录期间注册。 他们注册多重身份验证方法和 SSPR 方法 （如果用户已启用的 SSPR）。
+- 通过每用户多重身份验证来强制实施多重身份验证注册：要求用户在登录期间注册。 他们注册多重身份验证方法和 SSPR 方法 （如果用户已启用的 SSPR）。
+- 通过条件性访问策略或其他策略强制执行多重身份验证注册：要求用户注册使用时，它们需要多重身份验证的资源。 他们注册多重身份验证方法和 SSPR 方法 （如果用户已启用的 SSPR）。
+- 强制实施的 SSPR 注册：要求用户在登录期间注册。 仅 SSPR 方法注册它们。
+- SSPR 刷新强制执行：用户需要管理员设置的时间间隔查看其安全信息用户显示其信息和可以确认当前信息或根据需要进行更改。
 
 当强制注册时，用户会显示符合的多重身份验证和 SSPR 策略，以最不安全的大多数所需的方法的最小数目。
 
 例如：
 
-* 为用户启用 sspr。 SSPR 策略所需重置两个方法，并启用了移动应用程序代码、 电子邮件和电话。
-   * 此用户需要注册两个方法。
-      * 用户是默认情况下显示的验证器应用和 phone。
-      * 用户可以选择注册而不是身份验证器应用或电话的电子邮件。
+- 为用户启用 sspr。 SSPR 策略所需重置两个方法，并启用了移动应用程序代码、 电子邮件和电话。
+   - 此用户需要注册两个方法。
+      - 用户是默认情况下显示的验证器应用和 phone。
+      - 用户可以选择注册而不是身份验证器应用或电话的电子邮件。
 
 此流程图描述了哪些方法显示给用户时中断以在登录期间注册：
 

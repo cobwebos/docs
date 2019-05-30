@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ac5ef5f03f800a8f90259db3e382b3bc5c5e2c
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: e82a78953c4385f7688705d4ab3f697be9c3ddbd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875644"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235168"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
 由 Azure AD 中标识数据存储在基于 Office 365 和 Azure 等 Microsoft Online 服务订阅时，你的组织提供的地址的地理位置时。 有关标识数据的存储位置的信息，可以使用[位于数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) Microsoft 信任中心部分。
@@ -28,7 +28,9 @@ ms.locfileid: "64875644"
     
 - 所有的双因素身份验证使用电话呼叫或短信来源于美国数据中心，并且也由全球提供商路由。
 - 推送通知使用 Microsoft Authenticator 应用源自美国数据中心。 此外，设备供应商特定的服务也可能会进入 play 和欧洲之外可能是这些服务。
-- OATH 代码始终在美国验证。 
+- OATH 代码始终在美国验证。
+
+有关哪些用户信息收集的 Azure 多重身份验证服务器 （MFA 服务器） 和基于云的 Azure MFA 的详细信息，请参阅[Azure 多重身份验证用户数据收集](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection)。
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 

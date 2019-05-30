@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791130"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399580"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -26,7 +26,7 @@ ms.locfileid: "60791130"
 
 下表汇总了 Azure VM 灾难恢复所涉及的组件。
 
-组件 | **要求**
+组件  | **要求**
 --- | ---
 **源区域中的 VM** | [受支持源区域](azure-to-azure-support-matrix.md#region-support)中的一个或多个 Azure VM。<br/><br/> VM 可以运行任何[受支持的操作系统](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)。
 **源 VM 存储** | 可以管理 Azure VM；它们还可以包含分散在不同存储帐户之间的非托管磁盘。<br/><br/>[了解](azure-to-azure-support-matrix.md#replicated-machines---storage)支持的 Azure 存储。

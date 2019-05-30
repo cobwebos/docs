@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fcc1926d580007750e7e1f5a3de06ef6578e1b5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c0f8a56df5b41236256115ced0d46a87c5ee91a5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957457"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400234"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动化的机器学习实验
 
@@ -59,6 +59,14 @@ ms.locfileid: "65957457"
 [朴素贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
 [随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
+使用`task`中的参数`AutoMLConfig`构造函数来指定您试验的类型。
+
+```python
+from azureml.train.automl import AutoMLConfig
+
+# task can be one of classification, regression, forecasting
+automl_config = AutoMLConfig(task="classification")
+```
 
 ## <a name="data-source-and-format"></a>数据源和格式
 自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 可将数据读取成 scikit-learn 支持的数据格式。 可将数据读取成：
@@ -121,38 +129,14 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 ---|---|---|---
 X | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |  用于训练的所有特征
 y | Pandas 数据帧或 Numpy 数组 |   label   | 用于训练的标签数据。 对于分类，应是一个整数数组。
-X_valid | Pandas 数据帧或 Numpy 数组   | data_train、label | （可选）用于验证的所有特征。 如果未指定，则在 train 与 validate 之间拆分 X
-y_valid |   Pandas 数据帧或 Numpy 数组 | data_train、label | （可选）用于验证的标签数据。 如果未指定，则在 train 与 validate 之间拆分 y
-sample_weight | Pandas 数据帧或 Numpy 数组 |   data_train、label、columns| （可选）每个样本的权重值。 需要为数据点分配不同的权重时使用
-sample_weight_valid | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |    （可选）每个验证样本的权重值。 如果未指定，则在 train 与 validate 之间拆分 sample_weight
+X_valid | Pandas 数据帧或 Numpy 数组   | data_train、label | _可选_功能窗体的验证集的数据。 如果未指定，则在 train 与 validate 之间拆分 X
+y_valid |   Pandas 数据帧或 Numpy 数组 | data_train、label | （可选）用于验证的标签数据。  如果未指定，则在 train 与 validate 之间拆分 y
+sample_weight | Pandas 数据帧或 Numpy 数组 |   data_train、label、columns| （可选）每个样本的权重值。  需要为数据点分配不同的权重时使用
+sample_weight_valid | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |    （可选）每个验证样本的权重值。  如果未指定，则在 train 与 validate 之间拆分 sample_weight
 data_train |    Pandas 数据帧 |  X、y、X_valid、y_valid |    用于训练的所有数据（特征+标签）
 label | string  | X、y、X_valid、y_valid |  data_train 中的哪个列表示标签
-列 | 字符串数组  ||  （可选）用于特征的列的白名单
-cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行交叉验证的索引列表
-
-### <a name="load-and-prepare-data-using-data-prep-sdk"></a>加载和准备数据使用数据准备 SDK
-自动化的机器学习试验支持数据加载和转换使用数据准备 SDK。 使用 SDK 可以
-
->* 使用分析参数推理（编码、分隔符和标头）从多种文件类型进行加载
->* 在文件加载时使用推理进行类型转换
->* 支持 MS SQL Server 和 Azure Data Lake Storage 连接
->* 使用表达式添加列
->* 估算缺失值
->* 按示例派生列
->* 筛选
->* 自定义 Python 转换
-
-若要了解 DataPrep SDK，请参阅[如何准备要建模的数据](how-to-load-data.md)一文。
-下面是使用 DataPrep SDK 加载数据的示例。
-```python
-# The data referenced here was pulled from `sklearn.datasets.load_digits()`.
-simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
-X = dprep.auto_read_file(simple_example_data_root + 'X.csv').skip(1)  # Remove the header row.
-# You can use `auto_read_file` which intelligently figures out delimiters and datatypes of a file.
-
-# Here we read a comma delimited file and convert all columns to integers.
-y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelector(term='.*', use_regex = True))
-```
+列 | 字符串数组  ||  （可选）用于特征的列的白名单 
+cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行交叉验证的索引列表 
 
 ## <a name="train-and-validation-data"></a>训练和验证数据
 
@@ -501,6 +485,8 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 ![特征重要性图形](./media/how-to-configure-auto-train/feature-importance.png)
+
+有关如何在 SDK 自动化的机器学习以外的其他区域中启用模型的说明和特征重要性的详细信息，请参阅[概念](machine-learning-interpretability-explainability.md)interpretability 上的文章。
 
 ## <a name="next-steps"></a>后续步骤
 

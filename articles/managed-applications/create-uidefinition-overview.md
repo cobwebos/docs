@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2017
+ms.date: 05/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: ab777b487159b009bf2cac6086bb09cc71714b0d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d0a6d97440404904c041369a4631fdd3fb618b4
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587744"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257566"
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>为托管应用程序创建 Azure 门户用户界面
 本文档介绍 createUiDefinition.json 文件的核心概念。 Azure 门户使用此文件生成用于创建托管应用程序的用户界面。
@@ -48,6 +48,8 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 建议包括 `$schema`，但这是可选的。 如果指定，则 `version` 的值必须与 `$schema` URI 中的版本匹配。
 
+可以使用 JSON 编辑器来创建 UI 定义，或 UI 定义沙盒可用于创建和预览的 UI 定义。 有关在沙盒的详细信息，请参阅[用于 Azure 托管应用程序的测试门户界面](test-createuidefinition.md)。
+
 ## <a name="basics"></a>基础
 基础步骤始终是 Azure 门户在分析文件时生成的向导的第一个步骤。 除了会显示 `basics` 中指定的元素外，该门户还会为用户注入其他元素以用于为部署选择订阅、资源组和位置。 通常，对部署范围内的参数进行查询的元素（例如群集名称或管理员凭据）应当放在此步骤中。
 
@@ -59,7 +61,7 @@ steps 属性可以包含要在 basics 后显示的零个或多个其他步骤，
 ## <a name="outputs"></a>Outputs
 Azure 门户使用 `outputs` 属性来将 `basics` 和 `steps` 中的元素映射到 Azure 资源管理器部署模板的参数。 此字典中的键是模板参数的名称，值是所引用元素中的输出对象的属性。
 
-若要设置托管应用程序资源名称，必须在 outputs 属性中包括名为 `applicationResourceName` 的值。 如果未设置此值，应用程序将为名称分配 GUID。 可以在用户界面中包含一个文本框，用于向用户请求名称。
+若要设置托管应用程序资源名称，必须在 outputs 属性中包括名为 `applicationResourceName` 的值。 如果未设置此值，应用程序分配的名称 GUID。 可以在用户界面中包含一个文本框，用于向用户请求名称。
 
 ```json
 "outputs": {
@@ -72,7 +74,7 @@ Azure 门户使用 `outputs` 属性来将 `basics` 和 `steps` 中的元素映�
 ```
 
 ## <a name="functions"></a>函数
-与 Azure 资源管理器中的模板函数类似（在语法和功能方面），CreateUiDefinition 提供了用于处理元素的输入和输出的函数，以及条件语句等诸多功能。
+类似于模板函数在 Azure 资源管理器 （同时在语法和功能），CreateUiDefinition 提供了函数用于处理元素的输入和输出和条件语句等诸多功能。
 
 ## <a name="next-steps"></a>后续步骤
 createUiDefinition.json 文件本身具有一个简单的架构。 它的实际深度来自所有受支持的元素和函数。 在以下页中更详细地说明了这些项：

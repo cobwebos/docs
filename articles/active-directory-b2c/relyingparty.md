@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ca78e7a9ce44b492dafcc00c1663d54718ca7fac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e8718d9216bb2f4a83f8e0373b4788210015b75
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705081"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253773"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-RelyingParty 元素指定用户旅程，以执行当前对 Azure Active Directory (Azure AD) B2C 的请求。 它还指定依赖方 (RP) 应用程序需要作为已颁发令牌一部分的声明列表。 RP 应用程序（例如 Web、移动或桌面应用程序）调用 RP 策略文件。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 多个应用程序可以使用相同的 RP 策略，单个应用程序可以使用多个策略。 所有 RP 应用程序都接收具有相同声明的令牌，用户会经历相同的用户旅程。
+RelyingParty  元素指定用户旅程，以执行当前对 Azure Active Directory (Azure AD) B2C 的请求。 它还指定依赖方 (RP) 应用程序需要作为已颁发令牌一部分的声明列表。 RP 应用程序（例如 Web、移动或桌面应用程序）调用 RP 策略文件。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 多个应用程序可以使用相同的 RP 策略，单个应用程序可以使用多个策略。 所有 RP 应用程序都接收具有相同声明的令牌，用户会经历相同的用户旅程。
 
-下面的示例演示 B2C_1A_signup_signin 策略文件中的 RelyingParty 元素：
+下面的示例演示 B2C_1A_signup_signin  策略文件中的 RelyingParty  元素：
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -72,7 +72,7 @@ RelyingParty 元素指定用户旅程，以执行当前对 Azure Active Director
   ...
 ```
 
-可选 RelyingParty 元素包含下列元素：
+可选 RelyingParty  元素包含下列元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
@@ -82,9 +82,9 @@ RelyingParty 元素指定用户旅程，以执行当前对 Azure Active Director
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-`DefaultUserJourney` 元素指定对通常在基本或扩展策略中定义的用户旅程标识符的引用。 下面的示例演示在 RelyingParty 元素中指定的注册或登录用户旅程：
+`DefaultUserJourney` 元素指定对通常在基本或扩展策略中定义的用户旅程标识符的引用。 下面的示例演示在 RelyingParty  元素中指定的注册或登录用户旅程：
 
-B2C_1A_signup_signin 策略：
+B2C_1A_signup_signin  策略：
 
 ```XML
 <RelyingParty>
@@ -92,7 +92,7 @@ B2C_1A_signup_signin 策略：
   ...
 ```
 
-B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
+B2C_1A_TrustFrameWorkBase  或 B2C_1A_TrustFrameworkExtensionPolicy  ：
 
 ```XML
 <UserJourneys>
@@ -100,15 +100,15 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
   ...
 ```
 
-DefaultUserJourney 元素包含以下属性：
+DefaultUserJourney  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 策略中用户旅程的标识符。 有关详细信息，请参阅[用户旅程](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
-UserJourneyBehaviors 元素包含下列元素：
+UserJourneyBehaviors  元素包含下列元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
@@ -120,18 +120,18 @@ UserJourneyBehaviors 元素包含下列元素：
 
 ### <a name="singlesignon"></a>SingleSignOn
 
-SingleSignOn 元素包含在以下属性中：
+SingleSignOn  元素包含在以下属性中：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | 范围 | 是 | 单一登录行为的范围。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 `Suppressed` 值指示已取消行为。 例如，在单一登录会话的情况下，不会为用户维护会话，并且始终提示用户选择标识提供者。 `TrustFramework` 值指示该行为适用于信任框架中的所有策略。 例如，不会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 `Tenant` 值指示该行为适用于租户中的所有策略。 例如，不会提示在两个策略旅程中导航租户的用户选择标识提供者。 `Application` 值指示该行为适用于发出请求的应用程序的所有策略。 例如，不会提示在应用程序的两个策略旅程中导航的用户选择标识提供者。 `Policy` 值指示该行为仅适用于一个策略。 例如，当在策略之间切换时，会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 |
 | KeepAliveInDays | 是 | 控制用户保持登录状态的时间长短。 将此值设置为 0 会关闭 KMSI 功能。 有关详细信息，请参阅[使我保持登录状态](active-directory-b2c-reference-kmsi-custom.md)。 |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
-JourneyInsights 元素包含以下属性：
+JourneyInsights  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 | 
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
@@ -150,15 +150,15 @@ JourneyInsights 元素包含以下属性：
 
 `https://login.microsoft.com/contoso.onmicrosoft.com/oauth2/v2.0/authorize?pB2C_1A_signup_signin&client_id=a415078a-0402-4ce3-a9c6-ec1947fcfb3f&nonce=defaultNonce&redirect_uri=http%3A%2F%2Fjwt.io%2F&scope=openid&response_type=id_token&prompt=login&campaignId=hawaii`
 
-ContentDefinitionParameters 元素包含以下元素：
+ContentDefinitionParameters  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | 一个字符串，包含追加到内容定义负载 URI 查询字符串的键值对。 |
 
-ContentDefinitionParameters 元素包含以下属性：
+ContentDefinitionParameters  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | Name | 是 | 键值对的名称。 |
 
@@ -168,9 +168,9 @@ ContentDefinitionParameters 元素包含以下属性：
 
 **TechnicalProfile** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- | 
-| ID | 是 | 值必须是 `PolicyProfile`。 |
+| Id | 是 | 值必须是 `PolicyProfile`。 |
 
 **TechnicalProfile** 包含以下元素：
 
@@ -179,43 +179,43 @@ ContentDefinitionParameters 元素包含以下属性：
 | DisplayName | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的名称。 |
 | 描述 | 0:1 | 一个字符串，其中包含向用户显示的技术配置文件的说明。 |
 | Protocol | 1:1 | 用于联合的协议。 |
-| 元数据 | 0:1 | 一个键/值对项集合，由协议在事务过程中与终结点进行通信，以配置依赖方与其他社区参与者之间的交互。 |
-| OutputClaims | 0:1 | 作为技术配置文件中的输出的声明类型列表。 这些元素中的每一个都包含对已在 ClaimsSchema 部分或策略文件继承自的策略中定义的 ClaimType。 |
+| 元数据 | 0:1 | 一个键/值对项  集合，由协议在事务过程中与终结点进行通信，以配置依赖方与其他社区参与者之间的交互。 |
+| OutputClaims | 0:1 | 作为技术配置文件中的输出的声明类型列表。 这些元素中的每一个都包含对已在 ClaimsSchema  部分或策略文件继承自的策略中定义的 ClaimType  。 |
 | SubjectNamingInfo | 0:1 | 在令牌中使用的使用者名称。 |
 
-Protocol 元素包含以下属性：
+Protocol  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | Name | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 不要在生产环境中使用 SAML 令牌。 |
 
 ## <a name="outputclaims"></a>OutputClaims
 
-OutputClaims 元素包含以下元素：
+OutputClaims  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 信赖方订阅的策略中受支持列表的预期声明类型的名称。 此声明可作为技术配置文件输出。 |
 
-OutputClaim 元素包含以下属性：
+OutputClaim  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
+| ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema  部分定义的 ClaimType  的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
 | PartnerClaimType | 否 | 按照 ClaimType 定义中配置的不同名称发送声明。 |
 
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
-使用 SubjectNameingInfo 元素，可以控制令牌使用者的值：
-- JTW 令牌 - `sub` 声明。 这是令牌针对其断言信息的主体，例如应用程序的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 有关详细信息，请参阅[令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。
-- SAML 令牌 - 标识使用者元素的 `<Subject><NameID>` 元素。
+使用 SubjectNameingInfo  元素，可以控制令牌使用者的值：
+- **JWT 令牌**-`sub`声明。 这是令牌针对其断言信息的主体，例如应用程序的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 有关详细信息，请参阅[令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。
+- SAML 令牌  - 标识使用者元素的 `<Subject><NameID>` 元素。
 
-SubjectNamingInfo 元素包含以下属性：
+SubjectNamingInfo  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| ClaimType | 是 | 对输出声明的 PartnerClaimType 的引用。 输出声明必须在信赖方策略 OutputClaims 集合中定义。 |
+| ClaimType | 是 | 对输出声明的 PartnerClaimType  的引用。 输出声明必须在信赖方策略 OutputClaims  集合中定义。 |
 
 下面的示例演示如何定义 OpenId Connect 信赖方。 使用者名称信息配置为 `objectId`：
 

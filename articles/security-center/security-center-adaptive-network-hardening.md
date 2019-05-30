@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 17f01d89598d99425d157e4c9c31e64ab1ccbcda
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 05/24/2019
+ms.author: monhaber
+ms.openlocfilehash: f35f410ddc039ee264fa1de317e152cb03f391b5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966988"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241527"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心中的自适应网络强化
 了解如何在 Azure 安全中心中配置自适应网络强化。
@@ -33,7 +33,6 @@ ms.locfileid: "65966988"
 
 ![网络强化视图](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
-
 > [!NOTE]
 > 自适应网络强化建议支持对以下端口：22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
 
@@ -42,8 +41,8 @@ ms.locfileid: "65966988"
 1. 在安全中心，选择**联网** -> **自适应网络强化**。 下面三个单独的选项卡会列出网络 Vm:
    * **不正常的资源**:当前具有的建议和运行自适应网络强化算法来触发的警报的虚拟机。 
    * **正常运行的资源**:没有警报和建议的 Vm。
-   * **扫描资源**:由于以下原因之一，自适应网络强化算法不能在运行的 Vm:
-      * **Vm 是经典 Vm**:-支持仅 Azure 资源管理器 Vm。
+   * **扫描资源**:自适应网络强化算法不能在由于以下原因之一运行的 Vm:
+      * **Vm 是经典 Vm**:支持仅 Azure 资源管理器 Vm。
       * **没有足够的数据是可用**:为了生成准确强化建议的流量，安全中心需要至少 30 天的流量数据。
       * **VM 不受 ASC 标准版**:设置为安全中心的标准定价层的 Vm 有资格获得此功能。
 
@@ -57,18 +56,23 @@ ms.locfileid: "65966988"
 ## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>查看并应用自适应网络强化建议规则
 
 1. 从**不正常的资源**选项卡上，选择一个 VM。 列出的警报和建议的强化规则。
-   ![强化警报](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+
+     ![强化规则](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
 
    > [!NOTE]
    > **规则**选项卡列出了自适应网络强化建议您添加的规则。 **警报**选项卡列出了由于流量流到不在推荐的规则中允许的 IP 范围内的资源生成的警报。
-
-   ![强化规则](./media/security-center-adaptive-network-hardening/hardening-rules.png)
 
 2. 如果你想要更改某些规则的参数，则可以修改它，如中所述[修改规则](#modify-rule)。
    > [!NOTE]
    > 此外可以[删除](#delete-rule)或[添加](#add-rule)规则。
 
-3. 选择你想要在 NSG 上应用并单击的规则**强制实施**。 
+3. 选择你想要在 NSG 上应用并单击的规则**强制实施**。
+
+      > [!NOTE]
+      > 已强制实施的规则添加到保护 VM NSG(s)。 （虚拟机无法通过 NSG 关联到的 NIC、 虚拟机驻留在其中的子网和 / 或受保护）
+
+    ![强制实施规则](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
+
 
 ### 修改规则  <a name ="modify-rule"> </a>
 
@@ -82,13 +86,13 @@ ms.locfileid: "65966988"
   > [!NOTE]
   > 创建和修改"拒绝"规则操作的直接在 NSG 的更多详细信息，请参阅[创建、 更改或删除网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
 
-* 一个**拒绝所有流量**规则是将在此处，列出的"都拒绝"规则的唯一类型，不能修改它。 可以但是，可以将其删除 (请参阅[删除规则](#delete-rule))。
+* 一个**拒绝所有流量**规则是将在此处，列出的"都拒绝"规则的唯一类型，不能修改它。 但是，可以删除它 (请参阅[删除规则](#delete-rule))。
   > [!NOTE]
-  > 一个**拒绝所有流量**规则建议时，因此运行该算法后，安全中心不会确定应允许，请根据现有的 NSG 配置的流量。 因此，建议的规则是拒绝所有流量流向指定的端口。 此类型的规则的名称显示为"系统生成"。 强制实施此规则之后, 该 NSG 中的其实际名称将是协议、 流量方向、"拒绝"和一个随机数字组成的字符串。
+  > 一个**拒绝所有流量**规则建议时，因此运行该算法后，安全中心不会确定应允许，请根据现有的 NSG 配置的流量。 因此，建议的规则是拒绝所有流量流向指定的端口。 此类型的规则的名称显示为"*由系统生成*"。 强制实施此规则之后, 该 NSG 中的其实际名称将是协议、 流量方向、"拒绝"和一个随机数字组成的字符串。
 
 *若要修改的自适应网络强化规则：*
 
-1. 若要修改的某些规则的参数在**规则**选项卡上，单击该规则的行末尾的三个点 （...），单击**编辑规则**。
+1. 若要修改的某些规则的参数在**规则**选项卡上，单击该规则的行末尾的三个点 （...），单击**编辑**。
 
    ![编辑规则](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
@@ -97,10 +101,13 @@ ms.locfileid: "65966988"
    > [!NOTE]
    > 单击后**保存**，已成功更改该规则。 *但是，你已不应用它到 NSG。* 若要将其应用，必须在列表中，选择的规则，并单击**强制实施**（如下所述，在下一步）。
 
+   ![编辑规则](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+
 3. 若要应用已更新的规则，从列表中，选择已更新的规则，然后单击**强制实施**。
 
-### 添加新规则 <a name ="add-rule"> </a>
+    ![强制实施规则](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
+### 添加新规则 <a name ="add-rule"> </a>
 
 您可以添加一个"允许"规则，不建议的安全中心。
 
@@ -113,13 +120,14 @@ ms.locfileid: "65966988"
 
    ![添加规则](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
 
-1. 在中**编辑规则**窗口中，输入详细信息，然后单击**保存**。
+1. 在中**新的规则**窗口中，输入详细信息，然后单击**添加**。
 
    > [!NOTE]
-   > 单击后**保存**，你已成功添加规则，并列出的其他建议的规则。 但是，你已不应用它在 NSG 上。 若要激活它，您必须在列表中，选择的规则，并单击**强制实施**（如下所述，在下一步）。
+   > 单击后**添加**，你已成功添加规则，并列出的其他建议的规则。 但是，你已不应用它在 NSG 上。 若要激活它，您必须在列表中，选择的规则，并单击**强制实施**（如下所述，在下一步）。
 
 3. 若要应用新规则，请从列表中，选择新的规则，然后单击**强制实施**。
 
+    ![强制实施规则](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
 ### 删除规则 <a name ="delete-rule"> </a>
@@ -128,9 +136,9 @@ ms.locfileid: "65966988"
 
 *若要删除的自适应网络强化规则：*
 
-1. 在中**规则**选项卡上，单击该规则的行末尾的三个点 （...），单击**删除规则**。
+1. 在中**规则**选项卡上，单击该规则的行末尾的三个点 （...），单击**删除**。  
 
-   ![删除规则](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
+    ![强化规则](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
 
 
 

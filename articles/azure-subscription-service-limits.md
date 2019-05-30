@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: byvinyal
-ms.openlocfilehash: 3f01e15e4ac39127263c8c68590b6c50be04847d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 3bdc8580749761242b1fc811b2182d73a2d46328
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66023217"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238715"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间推移，将扩展和更新，包含更多服务列表。
@@ -134,10 +134,10 @@ ms.locfileid: "66023217"
 
 #### <a name="shared-image-gallery-limits"></a>共享映像库限制
 
-有限制，对于每个订阅，使用共享映像库部署资源：
-- 每个订阅，每个区域 100 共享的图像库
-- 1,000 图像定义，每个订阅，每个区域
-- 每个订阅，每个区域 10,000 映像版本
+使用共享映像库部署资源时，每个订阅存在限制：
+- 每个区域的每个订阅限制为 100 个共享映像库
+- 每个区域的每个订阅限制为 1,000 个映像定义
+- 每个区域的每个订阅限制为 10,000 个映像版本
 
 ### <a name="virtual-machine-scale-sets-limits"></a>虚拟机规模集限制
 [!INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]
@@ -155,8 +155,6 @@ ms.locfileid: "66023217"
 
 ### <a name="azure-machine-learning-service-limits"></a>Azure 机器学习服务限制
 可在 Azure 机器学习计算配额的最新值[Azure 机器学习配额页](../articles/machine-learning/service/how-to-manage-quotas.md)
-
-[!INCLUDE [how-to-manage-quotas](../articles/machine-learning/service/how-to-manage-quotas.md)]
 
 ### <a name="networking-limits"></a>网络限制
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
@@ -262,7 +260,7 @@ ms.locfileid: "66023217"
 定价层决定了搜索服务的容量和限制。 层包括：
 
 * **免费**多租户服务，与其他 Azure 订户共享仅用于评估和小型开发项目。
-* 基本层为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
+* 基本层  为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
 * **标准**，其中包括 S1、 S2、 S3 和 S3 High Density 为更大的生产工作负荷。 以便你可以选择最符合您工作负荷的配置文件的资源配置的标准层中有多个级别。
 
 **基于订阅的限制**

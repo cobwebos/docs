@@ -2,17 +2,17 @@
 title: 使用 Web 仪表板管理 Azure Kubernetes 服务群集
 description: 了解如何使用内置的 Kubernetes Web UI 仪表板管理 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: iainfou
-ms.openlocfilehash: e831979e0a9f9c8b4d812f682403ecf466abbd13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: twhitney
+ms.openlocfilehash: 80c0bd630ba2263696b72b003e27c53f1e457704
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465401"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304525"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -61,16 +61,16 @@ kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-adm
 
 若要创建应用程序，请完成以下步骤：
 
-1. 选择窗口右上角的“创建”按钮。
-1. 若要使用图形化向导，请选择“创建应用”。
+1. 选择窗口右上角的“创建”按钮。 
+1. 若要使用图形化向导，请选择“创建应用”  。
 1. 为部署提供一个名称，例如 *nginx*
 1. 输入要使用的容器映像的名称，例如 *nginx:1.15.5*
-1. 若要为 Web 流量公开端口 80，请创建一个 Kubernetes 服务。 在“服务”下，选择“外部”，对于端口和目标端口，都输入 **80**。
-1. 准备就绪后，选择“部署”来创建应用。
+1. 若要为 Web 流量公开端口 80，请创建一个 Kubernetes 服务。 在“服务”下，选择“外部”，对于端口和目标端口，都输入 **80**。  
+1. 准备就绪后，选择“部署”  来创建应用。
 
 ![在 Kubernetes Web 仪表板中部署应用](./media/kubernetes-dashboard/create-app.png)
 
-为 Kubernetes 服务分配公共外部 IP 地址需要一到两分钟时间。 在左侧，在“发现和负载均衡”下，选择“服务”。 此时将列出应用的服务，包括“外部终结点”，如以下示例中所示：
+为 Kubernetes 服务分配公共外部 IP 地址需要一到两分钟时间。 在左侧，在“发现和负载均衡”  下，选择“服务”。  此时将列出应用的服务，包括“外部终结点”  ，如以下示例中所示：
 
 ![查看服务和终结点的列表](./media/kubernetes-dashboard/view-services.png)
 
@@ -82,7 +82,7 @@ kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-adm
 
 Kubernetes 仪表板可以提供基本的监视指标和故障排除信息，例如日志。
 
-若要查看有关应用程序 Pod 的详细信息，请在左侧菜单中选择“Pod”。 此时会显示可用 Pod 的列表。 选择你的 *nginx* Pod 来查看信息，例如资源消耗：
+若要查看有关应用程序 Pod 的详细信息，请在左侧菜单中选择“Pod”  。 此时会显示可用 Pod 的列表。 选择你的 *nginx* Pod 来查看信息，例如资源消耗：
 
 ![查看 Pod 信息](./media/kubernetes-dashboard/view-pod-info.png)
 
@@ -92,14 +92,14 @@ Kubernetes 仪表板可以提供基本的监视指标和故障排除信息，例
 
 若要编辑部署，请执行以下操作：
 
-1. 在左侧菜单中选择“部署”，然后选择你的 *nginx* 部署。
-1. 在右上角的导航栏中选择“编辑”。
+1. 在左侧菜单中选择“部署”  ，然后选择你的 *nginx* 部署。
+1. 在右上角的导航栏中选择“编辑”。 
 1. 找到 `spec.replica` 值，大约在第 20 行。 若要增加应用程序的副本数，请将此值从 *1* 更改为 *3*。
-1. 在完成后，选择“更新”。
+1. 在完成后，选择“更新”。 
 
 ![编辑部署以更新副本数](./media/kubernetes-dashboard/edit-deployment.png)
 
-在副本集内创建新 Pod 需要花费一些时间。 在左侧菜单上，选择“副本集”，然后选择你的 *nginx* 副本集。 Pod 列表现在反映了已更新的副本计数，如以下示例输出中所示：
+在副本集内创建新 Pod 需要花费一些时间。 在左侧菜单上，选择“副本集”  ，然后选择你的 *nginx* 副本集。 Pod 列表现在反映了已更新的副本计数，如以下示例输出中所示：
 
 ![查看副本集的信息](./media/kubernetes-dashboard/view-replica-set.png)
 

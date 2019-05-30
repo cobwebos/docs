@@ -7,16 +7,20 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 4efd9556e255709204654cf0acbf1b08fa2c1fc0
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: d240fd7097f0dc284377063df72efd888c09adb6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872144"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258095"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 Api 版本 2 
 
 本文详细介绍在 Azure Marketplace 和 AppSource 使独立软件供应商 (Isv) 销售其 SaaS 应用程序的 API。 此 API 是 Azure Marketplace 和 AppSource 上提供了适用于事务的 SaaS 要求。
+
+> [!IMPORTANT] 
+> SaaS 产品/服务的功能已迁移到[Microsoft 合作伙伴中心](https://partner.microsoft.com/dashboard/directory)。  所有新的发布服务器必须使用合作伙伴中心创建新的 SaaS 产品/服务和管理现有产品/服务。  使用 SaaS 产品/服务的当前发布服务器正在 batchwise 迁移从云合作伙伴门户到合作伙伴中心。  云合作伙伴门户将显示状态消息以指示何时已迁移特定的现有产品/服务。
+> 有关详细信息，请参阅[创建新的 SaaS 产品/服务](../../partner-center-portal/create-new-saas-offer.md)。
 
 ## <a name="managing-the-saas-subscription-lifecycle"></a>SaaS 订阅生命周期管理
 
@@ -35,7 +39,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 
 ![API 调用为预配 SaaS 服务。](./media/saas-post-provisioning-api-v2-calls.png)
 
-#### <a name="provisioned"></a>已设置
+#### <a name="provisioned"></a>已预配
 
 此状态是预配服务的稳定状态。
 
@@ -61,7 +65,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 - 订阅必须保存在可恢复状态，可以还原不会丢失任何数据或设置的全部功能。 
 - 您有望在宽限期结束获取复原请求履行 API，通过此订阅或取消预配的请求。 
 
-#### <a name="unsubscribed"></a>取消订阅 
+#### <a name="unsubscribed"></a>已取消的订阅 
 
 订阅达到此状态，以响应到的显式客户请求，或者作为要归因未付款的响应。 Isv 预期结果是客户的数据是保留的最小 X 天的请求上进行恢复，然后删除。 
 
@@ -104,7 +108,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  内容类型      | `application/json` |
+|  Content-Type      | `application/json` |
 |  x-ms-requestid    |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
@@ -112,7 +116,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 
 *响应代码：*
 
-代码:200<br>
+代码：200<br>
 解析为 SaaS 订阅的不透明的令牌。<br>
 
 ```json
@@ -126,16 +130,16 @@ Response body:
 }
 ```
 
-代码:404<br>
+代码：404<br>
 未找到
 
-代码:400<br>
+代码：400<br>
 请求错误。 x ms marketplace 令牌已丢失、 格式不正确或已过期。
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
-代码:500<br>
+代码：500<br>
 内部服务器错误
 
 ```json
@@ -168,14 +172,14 @@ Response body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| 内容类型       |  `application/json`  |
+| Content-Type       |  `application/json`  |
 | x-ms-requestid     |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
 | authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
-代码:200 <br/>
+代码：200 <br/>
 根据身份验证令牌，获取发布服务器和发布服务器的所有产品/服务的相应订阅。<br> 响应有效负载：<br>
 
 ```json
@@ -207,10 +211,10 @@ Response body:
 
 继续标记才会显示是否存在的计划，以检索其他"页"。 
 
-代码:403 <br>
+代码：403 <br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。 
 
-代码:500 内部服务器错误
+代码：500 内部服务器错误
 
 ```json
 {
@@ -238,14 +242,14 @@ Response body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  内容类型      |  `application/json`  |
+|  Content-Type      |  `application/json`  |
 |  x-ms-requestid    |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
 |  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
-代码:200<br>
+代码：200<br>
 从标识符获取 SaaS 订阅<br> 响应有效负载：<br>
 
 ```json
@@ -269,13 +273,13 @@ Response Body:
 }
 ```
 
-代码:404<br>
+代码：404<br>
 未找到<br> 
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
-代码:500<br>
+代码：500<br>
 内部服务器错误<br>
 
 ```json
@@ -302,14 +306,14 @@ Response Body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   内容类型     |  `application/json` |
+|   Content-Type     |  `application/json` |
 |   x-ms-requestid   |   用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid  | 在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *响应代码：*
 
-代码:200<br>
+代码：200<br>
 获取客户的可用计划列表。<br>
 
 响应正文：
@@ -324,13 +328,13 @@ Response Body:
 }
 ```
 
-代码:404<br>
+代码：404<br>
 未找到<br> 
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。 <br> 
 
-代码:500<br>
+代码：500<br>
 内部服务器错误<br>
 
 ```json
@@ -356,7 +360,7 @@ Response Body:
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  内容类型      | `application/json`  |
+|  Content-Type      | `application/json`  |
 |  x-ms-requestid    | 用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid  | 在客户端上的操作的唯一字符串值。 此字符串将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
 |  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
@@ -372,19 +376,19 @@ Response Body:
 
 *响应代码：*
 
-代码:200<br>
+代码：200<br>
 激活订阅。<br>
 
-代码:404<br>
+代码：404<br>
 未找到
 
-代码:400<br>
+代码：400<br>
 错误的请求验证失败
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
-代码:500<br>
+代码：500<br>
 内部服务器错误
 
 ```json
@@ -413,7 +417,7 @@ Response Body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  内容类型      | `application/json` |
+|  Content-Type      | `application/json` |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。    |
 | authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
@@ -435,22 +439,22 @@ Request Body:
 
 *响应代码：*
 
-代码:202<br>
+代码：202<br>
 若要更改计划的请求已被接受。 ISV 应轮询操作位置来确定成功/失败。 <br>
 
-代码:404<br>
+代码：404<br>
 未找到
 
-代码:400<br>
+代码：400<br>
 错误的请求验证失败。
 
 >[!Note]
 >仅对计划或数量可以一次修补，而不是两者。 对与某一订阅编辑**更新**不在`allowedCustomerOperations`。
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
-代码:500<br>
+代码：500<br>
 内部服务器错误
 
 ```json
@@ -479,7 +483,7 @@ Request Body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  内容类型      | `application/json` |
+|  Content-Type      | `application/json` |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。    |
 | authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
@@ -501,22 +505,22 @@ Request Body:
 
 *响应代码：*
 
-代码:202<br>
+代码：202<br>
 已接受。 更改数量的请求已被接受。 ISV 应轮询操作位置来确定成功/失败。 <br>
 
-代码:404<br>
+代码：404<br>
 未找到
 
-代码:400<br>
+代码：400<br>
 错误的请求验证失败。
 
 >[!Note]
 >仅对计划或数量可以一次修补，而不是两者。 对与某一订阅编辑**更新**不在`allowedCustomerOperations`。
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
-代码:500<br>
+代码：500<br>
 内部服务器错误
 
 ```json
@@ -545,26 +549,26 @@ Request Body:
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   内容类型     |  `application/json` |
+|   Content-Type     |  `application/json` |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。   |
 |  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。   |
 |  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
-代码:202<br>
+代码：202<br>
 ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 
-代码:404<br>
+代码：404<br>
 未找到
 
-代码:400<br>
+代码：400<br>
 对与某一订阅删除**删除**不在`allowedCustomerOperations`。
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
-代码:500<br>
+代码：500<br>
 内部服务器错误
 
 ```json
@@ -598,14 +602,14 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   内容类型     |  `application/json` |
+|   Content-Type     |  `application/json` |
 |  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
 |  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
-代码:200<br> 获取挂起的订阅上的操作的列表。<br>
+代码：200<br> 获取挂起的订阅上的操作的列表。<br>
 响应有效负载：
 
 ```json
@@ -623,16 +627,16 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 }]
 ```
 
-代码:404<br>
+代码：404<br>
 未找到
 
-代码:400<br>
+代码：400<br>
 错误的请求验证失败
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
-代码:500<br>
+代码：500<br>
 内部服务器错误
 
 ```json
@@ -661,12 +665,12 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  内容类型      |  `application/json`   |
+|  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
 |  authorization     |[获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
-*响应代码：* 代码:200<br> 获取指定挂起 SaaS 操作<br>
+*响应代码：* 代码：200<br> 获取指定挂起 SaaS 操作<br>
 响应有效负载：
 
 ```json
@@ -686,16 +690,16 @@ Response body:
 
 ```
 
-代码:404<br>
+代码：404<br>
 未找到
 
-代码:400<br>
+代码：400<br>
 错误的请求验证失败
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
  
-代码:500<br> 内部服务器错误
+代码：500<br> 内部服务器错误
 
 ```json
 {
@@ -724,7 +728,7 @@ Response body:
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   内容类型     | `application/json`   |
+|   Content-Type     | `application/json`   |
 |   x-ms-requestid   |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
 |  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
@@ -742,21 +746,21 @@ Response body:
 
 *响应代码：*
 
-代码:200<br> 调用以通知的 ISV 端操作的完成。 例如，此响应可能表示席位/计划的更改。
+代码：200<br> 调用以通知的 ISV 端操作的完成。 例如，此响应可能表示席位/计划的更改。
 
-代码:404<br>
+代码：404<br>
 未找到
 
-代码:400<br>
+代码：400<br>
 错误的请求验证失败
 
-代码:403<br>
+代码：403<br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前发布服务器获取。
 
-代码:409<br>
+代码：409<br>
 冲突。 例如，已满足更高版本的事务
 
-代码:500<br> 内部服务器错误
+代码：500<br> 内部服务器错误
 
 ```json
 {

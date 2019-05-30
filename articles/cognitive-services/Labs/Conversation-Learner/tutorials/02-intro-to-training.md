@@ -3,19 +3,19 @@ title: Conversation Learner 模型训练简介 - Microsoft 认知服务 | Micros
 titleSuffix: Azure
 description: 了解如何通过 Conversation Learner 训练一个模型，包括如何对以前的训练进行分支和编辑。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 1e6dea521207ec00efe948a879c705bd28a75d57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 0bf5b71a4b0f51a586febbdaeaf8caba03c5b25a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707625"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387917"
 ---
 # <a name="introduction-to-training"></a>训练简介
 

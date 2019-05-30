@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 3f33fb09a4b6c19bae3c02ecc47dae193a3a6cb0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6f4bd125847aa789f6f3ed06e808b40738e12260
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925234"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304111"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。
@@ -29,13 +29,13 @@ ms.locfileid: "64925234"
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>将新磁盘附加到 VM
 
-如果只需要在 VM 上添加新的空数据磁盘，请使用 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令以及 `--new` 参数。 如果 VM 位于某个可用性区域中，则会自动在与 VM 相同的区域中创建磁盘。 有关详细信息，请参阅[可用性区域概述](../../availability-zones/az-overview.md)。 以下示例创建一个名为“myDataDisk”且大小为 50 GB 的磁盘：
+如果只需要在 VM 上添加新的空数据磁盘，请使用 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令以及 `--new` 参数。 如果 VM 位于某个可用性区域中，则会自动在与 VM 相同的区域中创建磁盘。 有关详细信息，请参阅[可用性区域概述](../../availability-zones/az-overview.md)。 以下示例创建一个名为“myDataDisk”  且大小为 50 GB 的磁盘：
 
 ```azurecli
 az vm disk attach \
    -g myResourceGroup \
    --vm-name myVM \
-   --disk myDataDisk \
+   --name myDataDisk \
    --new \
    --size-gb 50
 ```
@@ -47,7 +47,7 @@ az vm disk attach \
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 
-az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
+az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>连接到 Linux VM 以装入新磁盘
@@ -194,7 +194,7 @@ sudo blkid
 sudo vi /etc/fstab
 ```
 
-在此示例中，使用在之前的步骤中创建的 /dev/sdc1 设备的 UUID 值并使用装入点 /datadrive。 将以下行添加到 */etc/fstab* 文件的末尾：
+在此示例中，使用在之前的步骤中创建的 /dev/sdc1  设备的 UUID 值并使用装入点 /datadrive  。 将以下行添加到 */etc/fstab* 文件的末尾：
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2

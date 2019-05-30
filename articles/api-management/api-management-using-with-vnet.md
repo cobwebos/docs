@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 73785422a7c45a12671e6cd53da89609190a8352
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66141444"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243282"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将你的任何 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -47,7 +47,7 @@ ms.locfileid: "66141444"
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>使用 Azure 门户启用 VNET 连接
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 APIM 实例。
-2. 选择“虚拟网络”。
+2. 选择“虚拟网络”  。
 3. 配置要在虚拟网络内部署的 API 管理实例。
 
     ![API 管理的虚拟网络菜单][api-management-using-vnet-menu]
@@ -55,11 +55,11 @@ ms.locfileid: "66141444"
 
    * **外部**：可以通过外部负载均衡器从公共 Internet 访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
 
-     ![公共对等][api-management-vnet-public]
+     ![公共对等互连][api-management-vnet-public]
 
    * **内部**：只能通过内部负载均衡器从虚拟网络内部访问 API 管理网关和开发人员门户。 网关可以访问虚拟网络中的资源。
 
-     ![私有对等][api-management-vnet-private]
+     ![专用对等互连][api-management-vnet-private]
 
      此时会显示一个列表，其中包含预配了 API 管理服务的所有区域。 选择每个区域的 VNET 和子网。 该列表中填充了在配置的区域中设置的 Azure 订阅中可用的经典和 Resource Manager 虚拟网络。
 
@@ -74,8 +74,8 @@ ms.locfileid: "66141444"
 
      ![选择 VPN][api-management-setup-vpn-select]
 
-5. 单击顶部导航栏中的“保存”。
-6. 单击顶部导航栏中的“应用网络配置”。
+5. 单击顶部导航栏中的“保存”  。
+6. 单击顶部导航栏中的“应用网络配置”。 
 
 > [!NOTE]
 > 每次启用或禁用 VNET 时，API 管理实例的 VIP 地址都会更改。
@@ -93,7 +93,7 @@ ms.locfileid: "66141444"
 * **在 VNET 内部署现有 API 管理服务**：使用 cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 Azure API 管理服务移到虚拟网络内。
 
 ## <a name="connect-vnet"></a>连接到虚拟网络中托管的 Web 服务
-将 API 管理服务连接到 VNET 后，访问 VNET 中的后端服务与访问公共服务无异。 在创建新的 API 或编辑现有 API 时，只需将 Web 服务的本地 IP 地址或主机名（如果为 VNET 配置了 DNS 服务器）键入“Web 服务 URL”字段。
+将 API 管理服务连接到 VNET 后，访问 VNET 中的后端服务与访问公共服务无异。 在创建新的 API 或编辑现有 API 时，只需将 Web 服务的本地 IP 地址或主机名（如果为 VNET 配置了 DNS 服务器）键入“Web 服务 URL”字段。 
 
 ![从 VPN 添加 API][api-management-setup-vpn-add-api]
 
@@ -103,7 +103,7 @@ ms.locfileid: "66141444"
 * **自定义 DNS 服务器设置**：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此指南](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)进行自定义 DNS 设置。 有关参考信息，请参阅下面的端口表和其他网络要求。
 
 > [!IMPORTANT]
-> 如果计划对 VNET 使用自定义 DNS 服务器，应在向其部署 API 管理服务**之前**完成该设置。 否则，需要在每次通过运行[应用网络配置操作](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)更改 DNS 服务器时更新 API 管理服务
+> 如果计划对 VNET 使用自定义 DNS 服务器，应在向其部署 API 管理服务**之前**完成该设置。 否则，需要在每次通过运行[应用网络配置操作](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/ApplyNetworkConfigurationUpdates)更改 DNS 服务器时更新 API 管理服务
 
 * **API 管理所需的端口**：可以使用[网络安全组][Network Security Group]控制其中部署了 API 管理的子网的入站和出站流量。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 在 VNET 中使用 API 管理时，另一个常见的错误配置问题是阻止了这些端口中的一个或多个。
 
@@ -127,7 +127,7 @@ ms.locfileid: "66141444"
 | * / *                        | 入站            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure 基础结构负载均衡器                          | 外部和内部  |
 
 >[!IMPORTANT]
-> “用途”为**粗体**的端口是成功部署 API 管理服务所必需的。 不过，阻止其他端口将导致使用和监视运行中服务的能力降级。
+> “用途”为**粗体**的端口是成功部署 API 管理服务所必需的。  不过，阻止其他端口将导致使用和监视运行中服务的能力降级。
 
 + **SSL 功能**：若要启用 SSL 证书链生成和验证，API 管理服务需要到 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的出站网络连接。 如果上传到 API 管理的任何证书包含指向 CA 根的完整链，则此依赖关系不是必需的。
 
@@ -138,7 +138,7 @@ ms.locfileid: "66141444"
     | Azure 环境 | 终结点                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `East US 2` 是 eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure 政府  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Government   | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure 中国       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **SMTP 中继**：在主机 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` 下解析的 SMTP 中继的出站网络连接
@@ -170,7 +170,7 @@ ms.locfileid: "66141444"
   > [!IMPORTANT]
   > 在验证连接后，在将 API 管理部署到子网中之前，请确保删除子网中部署的所有资源。
 
-* **增量更新**：如果对网络进行更改，请参阅[NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus)，验证 API 管理服务已不丢失任何要依赖的关键资源的访问权限。 连接状态应每 15 分钟更新一次。
+* **增量更新**：如果对网络进行更改，请参阅[NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/networkstatus)，验证 API 管理服务已不丢失任何要依赖的关键资源的访问权限。 连接状态应每 15 分钟更新一次。
 
 * **资源导航链接**：部署到资源管理器样式的 VNET 子网中时，API 管理会通过创建一个资源导航链接来保留子网。 如果子网已包含来自其他提供程序的资源，则部署将**失败**。 类似地，将 API 管理服务移动到其他子网中或删除它时，将会删除该资源导航链接。
 

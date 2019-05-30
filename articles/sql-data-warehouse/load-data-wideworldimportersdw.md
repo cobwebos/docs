@@ -10,16 +10,16 @@ ms.subservice: load data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6bc1431ace55538c489d73e0a62d18f274c06d57
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a8bca6c1e56595e4a7d64f9f388c9daca0b166ac
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873761"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242913"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>教程：将数据加载到 Azure SQL 数据仓库
 
-本教程使用 PolyBase 将 WideWorldImportersDW 数据仓库从 Azure Blob 存储加载到 Azure SQL 数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 执行以下操作： 
+本教程使用 PolyBase 将 WideWorldImportersDW 数据仓库从 Azure Blob 存储加载到 Azure SQL 数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建数据仓库
@@ -38,7 +38,6 @@ ms.locfileid: "65873761"
 
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
-
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -49,9 +48,9 @@ ms.locfileid: "65873761"
 
 按照以下步骤创建空白 SQL 数据仓库。 
 
-1. 在 Azure 门户的左上角单击“创建资源”。
+1. 在 Azure 门户的左上角单击“创建资源”。 
 
-2. 从“新建”页中选择“数据库”，然后从“新建”页的“特色”下选择“SQL 数据仓库”。
+2. 从“新建”  页中选择“数据库”  ，然后从“新建”  页的“特色”  下选择“SQL 数据仓库”  。
 
     ![创建数据仓库](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
@@ -66,33 +65,33 @@ ms.locfileid: "65873761"
 
     ![创建数据仓库](media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-4. 单击“服务器”，为新数据库创建并配置新服务器。 使用以下信息填写“新建服务器”窗体： 
+4. 单击“服务器”，为新数据库创建并配置新服务器。  使用以下信息填写“新建服务器”窗体：  
 
     | 设置 | 建议的值 | Description | 
     | ------- | --------------- | ----------- |
     | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 | 
-    | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。|
+    | 服务器管理员登录名  | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。|
     | **密码** | 任何有效的密码 | 密码必须至少有八个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
     | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
 
     ![创建数据库服务器](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. 单击“选择”。
+5. 单击“选择”  。
 
-6. 单击“性能层”，指定是否针对弹性或计算，以及数据仓库单位对数据仓库进行优化。 
+6. 单击“性能层”  ，指定是否针对弹性或计算，以及数据仓库单位对数据仓库进行优化。 
 
-7. 对于本教程，选择“针对弹性进行优化”服务层级。 默认情况下，滑块设置为“DW400”。  请尝试上下移动滑块，以查看其工作原理。 
+7. 对于本教程，选择“针对弹性进行优化”  服务层级。 默认情况下，滑块设置为“DW400”  。  请尝试上下移动滑块，以查看其工作原理。 
 
     ![配置性能](media/load-data-wideworldimportersdw/configure-performance.png)
 
-8. 单击“应用”。
-9. 在“SQL 数据仓库”页中，为空白数据库选择“排序规则”。 对于本教程，请使用默认值。 有关排序规则的详细信息，请参阅 [Collations](/sql/t-sql/statements/collations)（排序规则）
+8. 单击“应用”  。
+9. 在“SQL 数据仓库”页中，为空白数据库选择“排序规则”  。 对于本教程，请使用默认值。 有关排序规则的详细信息，请参阅 [Collations](/sql/t-sql/statements/collations)（排序规则）
 
-11. 完成 SQL 数据库表单后，即可单击“创建”对数据库进行预配。 预配需要数分钟。 
+11. 完成 SQL 数据库表单后，即可单击“创建”对数据库进行预配。  预配需要数分钟。 
 
     ![单击“创建”](media/load-data-wideworldimportersdw/click-create.png)
 
-12. 在工具栏上，单击“通知”可监视部署过程。
+12. 在工具栏上，单击“通知”可监视部署过程。 
     
      ![通知](media/load-data-wideworldimportersdw/notification.png)
 
@@ -104,7 +103,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 > SQL 数据仓库通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
 >
 
-1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“SampleDW”。 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 **sample-svr.database.windows.net**），并提供了其他配置的选项。 
+1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“SampleDW”。    此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 **sample-svr.database.windows.net**），并提供了其他配置的选项。 
 
 2. 在后续的快速入门中，请复制此完全限定的服务器名称，将其用于连接到服务器及其数据库。 若要打开服务器设置，请单击服务器名称。
 
@@ -114,28 +113,28 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
     ![服务器设置](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. 单击“显示防火墙设置”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
+5. 单击“显示防火墙设置”  。 此时会打开 SQL 数据库服务器的“防火墙设置”页。  
 
     ![服务器防火墙规则](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 
-4.  在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+4.  在工具栏上单击“添加客户端 IP”  ，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 单击“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+5. 单击“保存”。  此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
-6. 单击“确定”，然后关闭“防火墙设置”页。
+6. 单击“确定”，然后关闭“防火墙设置”页。  
 
 现在，可使用此 IP 地址连接到 SQL Server 及其数据仓库。 可从 SQL Server Management Studio 或另一种所选工具进行连接。 连接时，使用之前创建的 serveradmin 帐户。  
 
 > [!IMPORTANT]
-> 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 单击此页上的“关闭”，然后单击“保存”，对所有 Azure 服务禁用防火墙。
+> 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 单击此页上的“关闭”  ，然后单击“保存”  ，对所有 Azure 服务禁用防火墙。
 
 ## <a name="get-the-fully-qualified-server-name"></a>获取完全限定的服务器名称
 
 请在 Azure 门户中获取 SQL Server 的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
-3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。 在此示例中，完全限定的名称为 mynewserver-20171113.database.windows.net。 
+2. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。   
+3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。   在此示例中，完全限定的名称为 mynewserver-20171113.database.windows.net。 
 
     ![连接信息](media/load-data-wideworldimportersdw/find-server-name.png)  
 
@@ -145,7 +144,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 1. 打开 SQL Server Management Studio。
 
-2. 在“连接到服务器”对话框中，输入以下信息：
+2. 在“连接到服务器”对话框中，输入以下信息： 
 
     | 设置      | 建议的值 | 说明 | 
     | ------------ | --------------- | ----------- | 
@@ -157,9 +156,9 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
     ![连接到服务器](media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. 单击“连接”。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
+4. 单击“连接”  。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
 
-5. 在对象资源管理器中，展开“数据库”。 然后展开“系统数据库”和“master”，查看 master 数据库中的对象。  展开“mySampleDatabase”，查看新数据库中的对象。
+5. 在对象资源管理器中，展开“数据库”  。 然后展开“系统数据库”  和“master”  ，查看 master 数据库中的对象。  展开“mySampleDatabase”  ，查看新数据库中的对象。
 
     ![数据库对象](media/load-data-wideworldimportersdw/connected.png) 
 
@@ -171,7 +170,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 由于当前是以服务器管理员的身份连接的，因此可以创建登录名和用户。 使用以下步骤创建名为 **LoaderRC60** 的登录名和用户。 然后将该用户分配到 **staticrc60** 资源类。 
 
-1.  在 SSMS 中，右键单击“master”，然后在显示的下拉菜单中选择“新建查询”。 此时会打开一个新的查询窗口。
+1.  在 SSMS 中，右键单击“master”  ，然后在显示的下拉菜单中选择“新建查询”  。 此时会打开一个新的查询窗口。
 
     ![在 Master 中新建查询](media/load-data-wideworldimportersdw/create-loader-login.png)
 
@@ -182,9 +181,9 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
     ```
 
-3. 单击“执行” 。
+3. 单击“执行”  。
 
-4. 右键单击“SampleDW”，并选择“新建查询”。 此时会打开一个新的查询窗口。  
+4. 右键单击“SampleDW”，并选择“新建查询”。   此时会打开一个新的查询窗口。  
 
     ![针对示例数据仓库的新查询](media/load-data-wideworldimportersdw/create-loading-user.png)
  
@@ -196,19 +195,19 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     EXEC sp_addrolemember 'staticrc60', 'LoaderRC60';
     ```
 
-6. 单击“执行” 。
+6. 单击“执行”  。
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>以加载用户的身份连接到服务器
 
 加载数据的第一步是以 LoaderRC60 的身份登录。  
 
-1. 在对象资源管理器中，单击“连接”下拉菜单，然后选择“数据库引擎”。 此时会显示“连接到服务器”对话框。
+1. 在对象资源管理器中，单击“连接”  下拉菜单，然后选择“数据库引擎”  。 此时会显示“连接到服务器”  对话框。
 
     ![使用新登录名连接](media/load-data-wideworldimportersdw/connect-as-loading-user.png)
 
 2. 输入完全限定的服务器名称，并输入 **LoaderRC60** 作为登录名。  输入 LoaderRC60 的密码。
 
-3. 单击“连接”。
+3. 单击“连接”  。
 
 4. 当连接准备就绪时，对象资源管理器中出现两个服务器连接。 一个是作为 ServerAdmin 连接，另一个是作为 LoaderRC60 连接。
 
@@ -220,7 +219,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 运行以下 SQL 脚本，指定有关想要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。 数据位于公共 Azure Blob 中。
 
-1. 在前一部分，我们以 LoaderRC60 的身份登录到了数据仓库。 在 SSMS 中，右键单击 LoaderRC60 连接下面的“SampleDW”，并选择“新建查询”。  此时会显示一个新的查询窗口。 
+1. 在前一部分，我们以 LoaderRC60 的身份登录到了数据仓库。 在 SSMS 中，右键单击 LoaderRC60 连接下面的“SampleDW”，并选择“新建查询”。    此时会显示一个新的查询窗口。 
 
     ![新的加载查询窗口](media/load-data-wideworldimportersdw/new-loading-query.png)
 
@@ -232,7 +231,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     CREATE MASTER KEY;
     ```
 
-4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”。
+4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”  。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -1099,13 +1098,13 @@ SQL 数据仓库通过将数据缓存到每个计算节点来复制表。 针对
 
     ![清理资源](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 如果想要将数据保留在存储中，可以在不使用数据仓库时暂停计算。 暂停计算后，仅需为数据存储付费，并且随时都可在准备处理数据时恢复计算。 要暂停计算，请单击“暂停”按钮。 暂停数据仓库后，可看到“启动”按钮。  要恢复计算，请单击“启动”。
+2. 如果想要将数据保留在存储中，可以在不使用数据仓库时暂停计算。 暂停计算后，仅需为数据存储付费，并且随时都可在准备处理数据时恢复计算。 要暂停计算，请单击“暂停”  按钮。 暂停数据仓库后，可看到“启动”  按钮。  要恢复计算，请单击“启动”  。
 
-3. 如果不想支付将来的费用，则可以删除数据仓库。 要删除数据仓库，以便不再为计算或存储付费，请单击“删除”。
+3. 如果不想支付将来的费用，则可以删除数据仓库。 要删除数据仓库，以便不再为计算或存储付费，请单击“删除”  。
 
-4. 若要删除创建的 SQL Server，请单击上图中的“sample-svr.database.windows.net”，然后单击“删除”。  请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
+4. 若要删除创建的 SQL Server，请单击上图中的“sample-svr.database.windows.net”，然后单击“删除”。    请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
 
-5. 若要删除资源组，请单击“SampleRG”，然后单击“删除资源组”。
+5. 若要删除资源组，请单击“SampleRG”，然后单击“删除资源组”。  
 
 ## <a name="next-steps"></a>后续步骤 
 在本教程中，已学习了如何创建数据仓库以及用于加载数据的用户。 创建了外部表以定义 Azure 存储 Blob 中存储的数据的结构，然后使用 PolyBase CREATE TABLE AS SELECT 语句将数据加载到数据仓库。 
@@ -1121,7 +1120,7 @@ SQL 数据仓库通过将数据缓存到每个计算节点来复制表。 针对
 > * 查看了正在加载的数据的进度
 > * 创建了新加载的数据的统计信息
 
-转到迁移概述，了解如何将现有数据库迁移到 SQL 数据仓库。
+请转到要了解如何将现有数据库迁移到 SQL 数据仓库开发概述。
 
 > [!div class="nextstepaction"]
->[了解如何将现有数据库迁移到 SQL 数据仓库](sql-data-warehouse-overview-migrate.md)
+>[若要将现有数据库迁移到 SQL 数据仓库的设计决策](sql-data-warehouse-overview-develop.md)

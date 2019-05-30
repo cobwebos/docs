@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/14/2019
+ms.date: 05/28/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: c644d81b647fc1151b10a94fb636e3eeaba1ce5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65e256b476c1e459ae937d9f6cbb43e0020fd9fe
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478289"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298128"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Azure 日志集成简介
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将在弃用 06/15/2019年。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Azure 日志集成可用于简化将 Azure 日志与本地安全信息和事件管理 (SIEM) 系统集成的任务。
 
@@ -66,7 +66,7 @@ Azure 日志集成支持 ArcSight、QRadar 和 Splunk。 与你的 SIEM 供应�
 > [!NOTE]
 > 虽然 Azure 日志集成是免费解决方案，但是存在与日志文件信息存储相关的 Azure 存储费用。
 
-如果需要帮助，可以创建[支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 对于服务，请选择“日志集成”。
+如果需要帮助，可以创建[支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 对于服务，请选择“日志集成”  。
 
 ## <a name="next-steps"></a>后续步骤
 
