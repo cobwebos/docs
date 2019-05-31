@@ -295,9 +295,9 @@ Azure 数据工厂服务通过使用 MongoDB 集合中最新的 100 个文档来
 
 | MongoDB 类型 | .NET Framework 类型 |
 | --- | --- |
-| 二进制 |Byte[] |
+| Binary |Byte[] |
 | Boolean |Boolean |
-| date |DateTime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
