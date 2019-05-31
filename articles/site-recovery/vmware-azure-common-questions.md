@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 05/10/2019
+ms.date: 05/30/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 4cc305e51113e67eb389bde8cb4cd28a3de8e3df
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 59be8e0585f0bedcafc868ee42f5113509c9c4ef
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969310"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417774"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关常见问题 VMware 到 Azure 的复制
 
@@ -255,7 +255,7 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>设置配置服务器时，是否可以手动下载并安装 MySQL？
 
-是的。 下载 MySQL 并将其放在 C:\Temp\ASRSetup 文件夹中。 然后，手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。
+是的。 下载 MySQL 并将其放在 C:\Temp\ASRSetup 文件夹中。 然后，手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。  
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>我是否可以避免下载 MySQL 但让 Site Recovery 安装它？
 
