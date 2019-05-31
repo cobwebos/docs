@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 86efb6b655405500f994a5a5ec7acbd18c645004
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957845"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417928"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表常见问题
 
@@ -253,10 +253,11 @@ az acr login -n MyRegistry
 - [新的用户权限不可能在更新后立即生效](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [未上直接的 REST API 调用的正确格式提供身份验证信息](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [为什么不会在 Azure 门户列出我的存储库或标记？](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [如何在 Windows 上收集 http 跟踪？](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker 拉取失败，出现错误： net/http： 等待连接 (Client.Timeout 时等待标头超出了) 时取消请求
 
- - 如果此错误是暂时性问题，然后重试将会成功。 
+ - 如果此错误是暂时性问题，然后重试将会成功。
  - 如果`docker pull`连续失败，则可能有 docker 守护程序的问题。 重新启动 docker 守护程序，通常可以缓解此问题。 
  - 如果继续遇到此问题，重新启动 docker 守护程序后，问题可能是计算机的一些网络连接问题。 要查看在计算机上的常规网络是否正常运行，请尝试命令如`ping www.bing.com`。
  - Docker 客户端的所有操作，应始终具有重试机制。
@@ -283,7 +284,7 @@ unauthorized: authentication required
 ```
 
 解决该错误：
-1. 将选项添加`--signature-verification=false`docker 守护程序配置文件到`/etc/sysconfig/docker`。 例如:
+1. 将选项添加`--signature-verification=false`docker 守护程序配置文件到`/etc/sysconfig/docker`。 例如：
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -386,7 +387,29 @@ curl $redirect_url
 
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>为什么不会在 Azure 门户列出我的存储库或标记？ 
 
-如果使用的 Edge 浏览器，可以看到最多 100 存储库或列出的标记。 如果注册表具有 100 多个存储库或标记，我们建议使用 Firefox 或 Chrome 浏览以全部列出这些。
+如果使用 Microsoft Edge 浏览器，可以看到最多 100 存储库或列出的标记。 如果注册表具有 100 多个存储库或标记，我们建议使用 Firefox 或 Chrome 浏览以全部列出这些。
+
+### <a name="how-do-i-collect-http-traces-on-windows"></a>如何在 Windows 上收集 http 跟踪？
+
+#### <a name="prerequisites"></a>必备组件
+
+- 启用解密 https 在 fiddler 中：  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- 启用 Docker 若要使用的代理通过 Docker ui: <https://docs.docker.com/docker-for-windows/#proxies>
+- 请确保还原完成后。  启用此功能不起作用 docker 和 fiddler 未运行。
+
+#### <a name="windows-containers"></a>Windows 容器
+
+配置 Docker 代理到 127.0.0.1: 8888
+
+#### <a name="linux-containers"></a>Linux 容器
+
+查找 vm 的虚拟交换机的 Docker ip:
+
+```powershell
+(Get-NetIPAddress -InterfaceAlias "*Docker*" -AddressFamily IPv4).IPAddress
+```
+
+配置 Docker 代理输出的前一命令和端口 8888 (例如 10.0.75.1:8888)
 
 ## <a name="tasks"></a>任务
 

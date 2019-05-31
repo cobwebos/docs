@@ -837,6 +837,8 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: 实现逻辑应用操作
                   href: platform/action-groups-logic-app.md
+                - name: 将常见警报架构与逻辑应用集成
+                  href: platform/alerts-common-schema-integrations.md
             - name: 警报管理解决方案
               href: platform/alert-management-solution.md
             - name: 警报用户界面

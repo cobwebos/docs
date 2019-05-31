@@ -1,7 +1,10 @@
 - name: Azure Dev Spaces
+  href: ./index.yml
   items:
     - name: 概述
-      href: index.yml
+      items:
+        - name: 关于 Azure Dev Spaces
+          href: about.md
     - name: 快速入门
       items:
         - name: 团队开发
@@ -10,7 +13,7 @@
           href: quickstart-java.md
         - name: .NET Core（VS Code 和 CLI）
           href: quickstart-netcore.md
-        - name: .NET Core (Visual Studio 2017)
+        - name: .NET Core (Visual Studio)
           href: quickstart-netcore-visualstudio.md
         - name: Node.js（VS Code 和 CLI）
           href: quickstart-nodejs.md
@@ -32,7 +35,7 @@
               href: multi-service-netcore.md
             - name: 3 - 团队开发
               href: team-development-netcore.md
-        - name: .NET Core (Visual Studio 2017)
+        - name: .NET Core (Visual Studio)
           items:
             - name: 1 - 入门
               href: get-started-netcore-visualstudio.md

@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 5df82d811d3807b988cb950bccddd1767baba5c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 171a88045531f1fdc01d7046ef0ad8157859d28c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60565935"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418269"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>将 VMware/物理服务器复制到辅助本地站点的体系结构
 
@@ -22,7 +22,7 @@ ms.locfileid: "60565935"
 
 ## <a name="architectural-components"></a>体系结构组件
 
-**区域** | 组件 | **详细信息**
+**区域** | 组件  | **详细信息**
 --- | --- | ---
 **Azure** | 使用 InMage Scout 部署此方案。 | 若要获取 InMage Scout，需要 Azure 订阅。<br/><br/> 创建恢复服务保管库后，可以下载 InMage Scout 并安装最新的更新，以设置部署。
 **进程服务器** | 位于主站点 | 可以部署进程服务器来处理缓存、压缩和数据优化操作。<br/><br/> 它还可以将安装的统一代理推送到你要保护的计算机。

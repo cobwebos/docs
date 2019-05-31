@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 215f7c9c65658ddbb10498bb59f3d326bf3a10f1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988290"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417710"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
@@ -23,7 +23,7 @@ ms.locfileid: "65988290"
 
 ## <a name="check-your-azure-sql-data-warehouse-version"></a>检查你的 Azure SQL 数据仓库版本
 
-是的新功能的正在推出到所有区域，请检查版本部署到你的实例和功能可用性的最新 Azure SQL DW 发行说明。 若要检查你的 Azure SQL DW 版本，请连接到数据仓库通过 SQL Server Management Studio (SSMS) 并运行`SELECT @@VERSION AS 'SQL Data Warehouse';`返回 Azure SQL 数据仓库的当前版本。
+新功能正在向所有区域推出，请部署到你的实例和功能可用性的最新 Azure SQL DW 发行说明的版本。 若要检查你的 Azure SQL DW 版本，请连接到数据仓库通过 SQL Server Management Studio (SSMS) 并运行`SELECT @@VERSION AS 'SQL Data Warehouse';`返回 Azure SQL 数据仓库的当前版本。
 
 示例输出：![SQL 数据仓库版本](./media/release-notes/sql_data_warehouse_version.png)
 
@@ -38,6 +38,7 @@ ms.locfileid: "65988290"
 |**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围已扩展为包括对支持： </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**JSON 函数**|现在，业务分析师可以使用熟悉的 T-SQL 语言来查询和操作的格式为 JSON 数据使用 Azure 数据仓库中的以下新的 JSON 函数的文档：</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**结果集缓存 （预览）**|结果集缓存启用即时查询响应时间，同时减少时间见解的业务分析师和报告的用户。 有关详细信息，请参阅：</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE SET 选项 (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [设置结果集缓存 (Transact SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET 语句 (Transact SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+|**排序聚集列存储索引 （预览版）**|列存储是用于存储和有效地查询大量数据的主要推动者。 对于每个表，它划分为传入的数据行组和行组窗体的每个列段在磁盘上。  排序聚集列存储索引进一步优化，从而高效段消除查询执行。   有关详细信息，请参阅：</br> -  [CREATE TABLE （Azure SQL 数据仓库）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
 ## <a name="march-2019"></a>2019 年 3 月
 

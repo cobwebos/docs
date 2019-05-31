@@ -83,7 +83,7 @@
           displayName: roles
         - name: 提取自由格式数据
           href: luis-tutorial-pattern-any.md
-    - name: 使用机器人
+    - name: 使用 V4 Bot Framework
       items:
         - name: '利用 C#'
           href: luis-csharp-tutorial-bf-v4.md
@@ -198,7 +198,7 @@
           href: luis-tutorial-bing-spellcheck.md
         - name: 使用语音服务
           href: luis-tutorial-speech-to-intent.md
-        - name: 使用机器人
+        - name: 使用 V3 Bot Framework
           items:
             - name: Web 应用机器人
               items:
@@ -279,6 +279,8 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: 边界
       href: luis-boundaries.md
+    - name: 应用程序设置
+      href: luis-reference-application-settings.md
     - name: 预构建的实体参考
       items:
         - name: 每个语言区域的实体

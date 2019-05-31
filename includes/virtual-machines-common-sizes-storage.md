@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0c85685f9ace70ea94eea158d91f0d8b01827a43
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 5123ee3f65744f3d0c255712efe990b01be58e26
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391404"
+ms.locfileid: "66420733"
 ---
 存储优化 VM 大小可提供较高的磁盘吞吐量和 IO，非常适合用于大数据、SQL 和 NoSQL 数据库、数据仓库和大型事务数据库。  示例包括 Cassandra、MongoDB、Cloudera 和 Redis。 本文介绍关于 vCPU、数据磁盘和 NIC 的数量以及每个优化大小的本地存储吞吐量和网络带宽的信息。
 
@@ -41,7 +41,7 @@ ACU：150-175
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 800000 / 4000 | 16000/320 | 32 | 4 / 6400  |
 | Standard_L32s_v2  | 32 | 256 | 320 |  4x1.92 TB  | 1.5M / 8000    | 32000/640 | 32 | 8 / 12800 |
 | Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.9M / 16000   | 64000/1280 | 32 | 8 / 16000+ |
-| Standard_L80s_v2  | 80 | 640 | 800 | 10x1.92TB   | 3.8M / 20000   | 80000/1400 | 32 | 8 / 16000+ |
+| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x1.92TB   | 3.8M / 20000   | 80000/1400 | 32 | 8 / 16000+ |
 
 <sup>1</sup> Lsv2 系列 VM 具有标准的基于 SCSI 的临时资源磁盘，用于 OS 分页/交换文件的使用（对于 Windows，为 D:；对于 Linux，为 /dev/sdb）。 此磁盘为每 8 个 vCPU 提供 80 GiB 的存储空间、4000 IOPS 和 80 MBps 的传输速率（例如，Standard_L80s_v2 在 40000 IOPS 和 800 MBps 下提供 800 GiB）。 这确保 NVMe 驱动器可以完全专用于应用程序的使用。 此磁盘是临时的，停止/解除分配时将丢失所有数据。
 
@@ -50,6 +50,18 @@ ACU：150-175
 <sup>3</sup> Hyper-V NVMe Direct 技术提供对安全映射到来宾 VM 空间的本地 NVMe 驱动器的无限制访问。  实现最大性能需要使用最新的 WS2019 版本或者 Azure 市场上的 Ubuntu 18.04 或 16.04。  写入性能因 IO 大小、驱动器负载和容量利用率而异。
 
 <sup>4</sup> Lsv2 系列 VM 不为数据磁盘提供主机缓存，因为这不会让 Lsv2 工作负荷受益。  然而，Lsv2 VM 可以调整 Azure 的临时 VM OS 磁盘选项（最多 30 GiB）。
+
+<sup>5</sup>具有超过 64 Vcpu 的 Vm 需要以下受支持的来宾操作系统之一：
+- Windows Server 2016 或更高版本
+- Ubuntu 16.04 LTS 或更高版本，与 Azure 优化内核 (4.15 内核或更高版本)
+- SLES 12 SP2 或更高版本
+- RHEL 或 CentOS 6.7 版通过 6.10，与 Microsoft 提供的 LIS 包 4.3.1 或更高版本安装
+- RHEL 或 CentOS 7.3 版，与 Microsoft 提供的 LIS 4.2.1 包 （或更高版本） 安装
+- RHEL 或 CentOS 版本 7.4 或更高版本
+- UEK4 或更高版本的 oracle Linux
+- 具有 backports 内核，Debian 10 或更高版本的 debian 9
+- CoreOS 4.14 内核或更高版本
+
 
 ## <a name="size-table-definitions"></a>大小表定义
 

@@ -8,12 +8,12 @@ manager: barbkess
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: d003e851dcfa77b18a67450946a71e4a13ce495c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 00274f8e15006f6f58a7c5f153bf0bbc0d26afb9
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700975"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416436"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -39,9 +39,9 @@ ms.locfileid: "64700975"
 以下是配置防火墙和虚拟网络所需的步骤。 无论使用的是 PowerShell、Azure CLI 还是 Azure 门户，上述步骤均适用。
 
 1. 启用 [Key Vault 日志记录](key-vault-logging.md)以查看详细的访问日志。 当防火墙和虚拟网络规则阻止访问 Key Vault 时，此操作有助于进行诊断。 （此为可选步骤，但强烈建议你执行。）
-2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”。
+2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”  。
 3. 为 Key Vault 设置防火墙和虚拟网络规则，仅限特定虚拟网络、子网和 IPv4 地址范围能够访问该 Key Vault。
-4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。
+4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。 
 
 有关详细信息，请参阅[配置 Azure 密钥保管库防火墙和虚拟网络](key-vault-network-security.md)。
 
@@ -53,12 +53,12 @@ ms.locfileid: "64700975"
 > 注意以下配置限制：
 > * 最多允许 127 条虚拟网络规则和 127 条 IPv4 规则。 
 > * 不支持使用“/31”或“/32”前缀大小的小型地址范围。 改为使用单独的 IP 地址规则配置这些范围。
-> * IP 网络规则仅适用于公共 IP 地址。 IP 规则不允许为专用网络保留的 IP 地址范围（如 RFC 1918 中所定义）。 专用网络包括以开头的地址**10。**， **172.16 31**，并**192.168。**。 
+> * IP 网络规则仅适用于公共 IP 地址。 IP 规则不允许为专用网络保留的 IP 地址范围（如 RFC 1918 中所定义）。 专用网络包括以开头的地址**10。** ， **172.16 31**，并**192.168。** 。 
 > * 目前仅支持 IPv4 地址。
 
 ## <a name="trusted-services"></a>受信服务
 
-以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。
+以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。 
 
 |受信服务|使用方案|
 | --- | --- |
@@ -68,7 +68,7 @@ ms.locfileid: "64700975"
 |Azure 备份|允许使用 [Azure 备份](../backup/backup-introduction-to-azure-backup.md)在 Azure 虚拟机备份期间备份和还原相关密钥和机密。|
 |Exchange Online 和 SharePoint Online|允许使用[客户密钥](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697)访问 Azure 存储服务加密的客户密钥。|
 |Azure 信息保护|允许访问 [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)的租户密钥。|
-|Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)。|
+|Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
 |Azure SQL 数据库|[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|[在 Azure Data Lake Store 中使用客户托管密钥进行数据加密](../data-lake-store/data-lake-store-encryption.md)。|

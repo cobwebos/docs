@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/21/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4685d02fa9a1f08d86bdbe2915b94f177235b864
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 929a4ae2e954933bf00550770ba9d41319dc6241
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016421"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418043"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -224,7 +224,7 @@ InferenceConfig 功能的信息，请参阅[高级的配置](#advanced-config)�
 
 | 计算目标 | 部署配置示例 |
 | ----- | ----- |
-| 本地 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Local | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure 容器实例 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes 服务 | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -235,9 +235,6 @@ InferenceConfig 功能的信息，请参阅[高级的配置](#advanced-config)�
 ### <a id="local"></a> 本地部署
 
 若要将本地部署，您必须具备**安装 Docker**在本地计算机上。
-
-本节在此示例使用[deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-)，则需要您在执行部署之前注册的模型和图像。 有关其他部署方法的详细信息，请参阅[部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-)并[deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-)。
-
 
 + **使用 SDK**
 

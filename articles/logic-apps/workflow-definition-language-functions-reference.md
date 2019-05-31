@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: b42d376be0d26c8ced60344793dbc8f7dd4a3d53
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 24e0a0ae2a6af964d3ed87d1817de6e5f403c9b1
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303765"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416351"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure 逻辑应用和 Microsoft Flow 中的工作流定义语言的函数参考
 
@@ -246,7 +246,8 @@ ms.locfileid: "66303765"
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | 创建一个数组，其中包含与表单数据或表单编码操作输出中某个键名匹配的值。   |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | 返回与操作的表单数据或表单编码输出中的键名称匹配的单个值。   |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | 位于针对数组的重复操作中时，返回在操作的当前迭代过程中数组中的当前项。 |
-| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | 位于 for-each 或 do-until-loop 中时，返回指定循环中的当前项。|
+| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | 在 Foreach 内时或 Until 循环，从指定的循环中返回的当前项。|
+| [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Until 循环内时返回当前迭代的索引值。 您可以使用此函数内部嵌套 Until 循环。 |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | 返回调用某个触发器或操作的“回调 URL”。 |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 返回具有多个部分的操作输出中某个特定部分的正文。 |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中所述的参数的值。 |
@@ -2278,6 +2279,96 @@ items('<loopName>')
 
 ```
 items('myForEachLoopName')
+```
+
+<a name="iterationIndexes"></a>
+
+### <a name="iterationindexes"></a>iterationIndexes
+
+返回当前迭代 Until 循环内的索引值。 您可以使用此函数内部嵌套 Until 循环。 
+
+```
+iterationIndexes('<loopName>')
+```
+
+| 参数 | 需要 | Type | 描述 | 
+| --------- | -------- | ---- | ----------- | 
+| <*loopName*> | 是 | String | Until 循环的名称 | 
+||||| 
+
+| 返回值 | Type | 描述 | 
+| ------------ | ---- | ----------- | 
+| <*index*> | Integer | 当前迭代中指定的索引值 Until 循环 | 
+|||| 
+
+*示例* 
+
+此示例创建一个计数器变量并增加该变量由 Until 循环的每个迭代期间直到计数器值达到五个。 此示例还创建一个变量，用于跟踪每次迭代的当前索引。 Until 循环，在每次迭代过程中的示例递增的计数器，然后将计数器值分配给当前的索引值，然后递增的计数器。 在任何时候，您可以通过检索当前的索引值来确定当前的迭代数。
+
+```
+{
+   "actions": {
+      "Create_counter_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [ 
+               {
+                  "name": "myCounter",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {}
+      },
+      "Create_current_index_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [
+               {
+                  "name": "myCurrentLoopIndex",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {
+            "Create_counter_variable": [ "Succeeded" ]
+         }
+      },
+      "Until": {
+         "type": "Until",
+         "actions": {
+            "Assign_current_index_to_counter": {
+               "type": "SetVariable",
+               "inputs": {
+                  "name": "myCurrentLoopIndex",
+                  "value": "@variables('myCounter')"
+               },
+               "runAfter": {
+                  "Increment_variable": [ "Succeeded" ]
+               }
+            },
+            "Increment_variable": {
+               "type": "IncrementVariable",
+               "inputs": {
+                  "name": "myCounter",
+                  "value": 1
+               },
+               "runAfter": {}
+            }
+         },
+         "expression": "@equals(variables('myCounter'), 5),
+         "limit": {
+            "count": 60,
+            "timeout": "PT1H"
+         },
+         "runAfter": {
+            "Create_current_index_variable": [ "Succeeded" ]
+         }
+      }
+   }
+}
 ```
 
 <a name="json"></a>

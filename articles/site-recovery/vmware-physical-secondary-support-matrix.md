@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 742f1359d928aa05a8b8d36bde2ccf022db93b79
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564844"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418250"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
 

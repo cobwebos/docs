@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: c6c32265e6fc2fc2bb0d6b00d89862e200731a2a
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 36f3d421ee0b41a0ff71b549a4d4b5646188c3fa
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66016446"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417349"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>创建 Azure 机器学习服务工作区
 
@@ -168,7 +168,7 @@ ms.locfileid: "66016446"
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
-此 `write_config()` API 调用在当前目录中创建配置文件。 config.json 文件包含以下内容：
+此 `write_config()` API 调用在当前目录中创建配置文件。 *.Azureml/config.json*文件包含如下内容：
 
 ```json
 {

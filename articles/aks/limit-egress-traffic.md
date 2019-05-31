@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 4c2dad687d31597954b023dde9d1b9d69788fe04
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 13fbb20cde454a0aaab156a74a9fbcbac2d90d07
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241409"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418129"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>预览版-有关群集节点和控制对所需的端口和服务在 Azure Kubernetes 服务 (AKS) 的访问限制传出流量
 
@@ -69,7 +69,7 @@ az provider register --namespace Microsoft.ContainerService
 以下出站端口 / 网络规则所需的 AKS 群集：
 
 * TCP 端口*443*
-* TCP 端口*9000*的隧道前端 pod 进行通信与 API 服务器上的隧道端。
+* TCP 端口*9000*和 TCP 端口*22*的隧道前端 pod 进行通信与 API 服务器上的隧道端。
 
 以下 FQDN / 应用程序规则所需：
 

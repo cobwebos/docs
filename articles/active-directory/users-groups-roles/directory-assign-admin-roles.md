@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 05/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79082056403460a7f1be50c386960ce1476c8ad
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 5044567396d832d3c3b2b46e3c3e90e053834595
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66397915"
+ms.locfileid: "66417896"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -58,6 +58,8 @@ ms.locfileid: "66397915"
   * 安全组和 Office 365 组所有者，可以管理组成员身份。 这些组可能会授予对 Azure AD 或其他位置敏感或私有信息或关键配置的访问权限。
   * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
   * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
+
+* **[Azure 信息保护管理员](#azure-information-protection-administrator)** :具有此角色的用户拥有 Azure 信息保护服务中的所有权限。 此角色可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。 此角色不会授予 Identity Protection Center、Privileged Identity Management、监视 Office 365 服务运行状况或 Office 365 安全与合规中心的权限。
 
 * **[B2C 用户流管理员](#b2c-user-flow-administrator)** ：具有此角色的用户可以在 Azure 门户中创建和管理 B2C 用户流（也称为“内置”策略）。 通过创建或编辑用户流，这些用户可以更改用户体验的 html/CSS/javascript 内容、更改每个用户流的 MFA 要求、更改令牌中的声明，以及调整租户中所有策略的会话设置。 但是，此角色无法查看用户数据，或者对租户架构中包含的属性进行更改。 对 Identity Experience Framework（也称为“自定义”）策略的更改超出了此角色的权限范围。
 
@@ -135,8 +137,6 @@ ms.locfileid: "66397915"
 
 * **[来宾邀请者](#guest-inviter)** ：此角色的用户可在“成员可以邀请”用户设置设置为“否”时管理 Azure Active Directory B2B 来宾用户邀请  。 [关于 Azure AD B2B 协作](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中提供了有关 B2B 协作的详细信息。 它不包括任何其他权限。
 
-* **[信息保护管理员](#information-protection-administrator)** ：具有此角色的用户拥有 Azure 信息保护服务中的所有权限。 此角色可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。 此角色不会授予 Identity Protection Center、Privileged Identity Management、监视 Office 365 服务运行状况或 Office 365 安全与合规中心的权限。
-
 * **[Intune 管理员](#intune-service-administrator)** ：具有此角色的用户具有 Microsoft Intune Online 内的全局权限（如果该服务存在）。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)
   > [!NOTE]
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“Intune 管理员”。
@@ -185,9 +185,9 @@ ms.locfileid: "66397915"
   * 强制用户针对现有非密码凭据（例如 MFA、FIDO）重新注册
   * 撤销“在设备上记住 MFA”（下次登录时提示执行 MFA）
 
-* **[特权角色管理员](#privileged-role-administrator)** ：具有此角色的用户可以管理角色分配以及 Azure AD Privileged Identity Management 中的 Azure Active Directory。 此外，此角色允许 Privileged Identity Management 的所有方面。
+* **[特权角色管理员](#privileged-role-administrator)** ：具有此角色的用户可以管理角色分配以及 Azure AD Privileged Identity Management 中的 Azure Active Directory。 此外，此角色允许管理 Privileged Identity Management 和管理单元的所有方面。
 
-  <b>重要说明</b>：此角色授予管理所有 Azure AD 角色（包括全局管理员角色）的分配的能力。 此角色不包括 Azure AD 中的任何其他权限功能，如创建或更新用户。 但是，分配到此角色的用户可通过分配其他角色，授予自己或其他人额外的特权。
+  <b>重要</b>：此角色授予管理所有 Azure AD 角色（包括全局管理员角色）的分配的能力。 此角色不包括 Azure AD 中的任何其他权限功能，如创建或更新用户。 但是，分配到此角色的用户可通过分配其他角色，授予自己或其他人额外的特权。
 
 * **[报告读取者](#reports-reader)** ：具有此角色的用户可以查看使用情况报告数据和 Microsoft 365 管理中心中的报表仪表板和采用上下文包在 Power BI 中。 此外，此角色还提供对 Azure AD 中的登录报告和活动以及 Microsoft Graph 报告 API 返回的数据的访问权限。 分配到“报告读者”角色的用户只能访问相关使用情况和采用指标。 它们没有任何管理员权限，无法配置设置或访问产品特定的管理中心（如 Exchange）。 此角色无权查看、创建或管理支持票证。
 
@@ -341,6 +341,22 @@ ms.locfileid: "66397915"
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+
+### <a name="azure-information-protection-administrator"></a>Azure 信息保护管理员
+可以管理 Azure 信息保护服务的所有方面。
+
+  > [!NOTE]
+  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
+  >
+  >
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.azure.informationProtection/allEntities/allTasks | 管理 Azure 信息保护的各个方面。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
@@ -770,22 +786,6 @@ ms.locfileid: "66397915"
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
-### <a name="information-protection-administrator"></a>信息保护管理员
-可以管理 Azure 信息保护产品的所有方面。
-
-  > [!NOTE]
-  > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
-  >
-  >
-
-| **操作** | **说明** |
-| --- | --- |
-| microsoft.azure.informationProtection/allEntities/allTasks | 管理 Azure 信息保护的各个方面。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
-| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
-| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-
 ### <a name="intune-service-administrator"></a>Intune 服务管理员
 可以管理 Intune 产品的所有方面。
 
@@ -998,8 +998,12 @@ ms.locfileid: "66397915"
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.directory/directoryRoles/update | 更新 Azure Active Directory 中的 directoryRoles。 |
 | microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.aad.privilegedIdentityManagement 中的标准属性。 |
+| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/allTasks | 读取和 Azure Active Directory 中配置 servicePrincipals.appRoleAssignedTo 属性。 |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/allTasks | 读取和 Azure Active Directory 中配置 servicePrincipals.oAuth2PermissionGrants 属性。 |
+| microsoft.aad.directory/administrativeUnits/allProperties/allTasks | 创建和管理管理单元 （包括成员） |
+| microsoft.aad.directory/roleAssignments/allProperties/allTasks | 创建和管理角色分配。 |
+| microsoft.aad.directory/roleDefinitions/allProperties/allTasks | 创建和管理角色定义。 |
 
 ### <a name="reports-reader"></a>报告读者
 可以读取登录和审核报告。
@@ -1251,6 +1255,7 @@ ms.locfileid: "66397915"
 应用程序管理员 | 应用程序管理员 | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 应用程序开发人员 | 应用程序开发人员 | CF1C38E5-3621-4004-A7CB-879624DCED7C
 身份验证管理员 | 身份验证管理员 | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Azure 信息保护管理员 | Azure 信息保护管理员 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C 用户流管理员 | B2C 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 B2C 用户流属性管理员 | B2C 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 B2C IEF 键集管理员 | B2C IEF 键集管理员 | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1275,7 +1280,6 @@ Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3
 外部标识提供者管理员 | 外部标识提供者管理员 | be2f45a1-457d-42af-a067-6ec1fa63bc45
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 支持管理员 | 密码管理员 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
-信息保护管理员 | 信息保护管理员 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Intune 服务管理员 | Intune 管理员 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理员 | Kaizala 管理员 | 74ef975b-6605-40af-a5d2-b9539d836353
 许可证管理员 | 许可证管理员 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a

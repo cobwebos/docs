@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a1d2cc50b405df2c71d94e74973b3291a4e908cb
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 04808dda193a3a472813cda852a1a2f24d00e112
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393490"
+ms.locfileid: "66417998"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
 
@@ -25,7 +25,7 @@ ms.locfileid: "66393490"
 
 若要指定你的流上的加密选项，您需要创建[流式处理策略](streaming-policy-concept.md)并将其与你[流式处理定位符](streaming-locators-concept.md)。 您创建[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)若要配置如何内容密钥 (提供对安全访问你[资产](assets-concept.md)) 传递来的最终客户端。 您需要设置的要求 （限制） 上必须满足密钥使用传递到客户端的指定配置内容密钥策略。 此内容的密钥策略不需要明确的流式处理或下载。 
 
-通常情况下，关联您**内容密钥策略**与你**流式处理定位符**。 或者，可以指定在流式处理策略的内部内容的密钥策略 （在创建自定义的流式处理策略对于高级方案时）。 
+通常情况下，关联您**内容密钥策略**与你[流式处理定位符](streaming-locators-concept.md)。 或者，可以指定在内容密钥策略[流式处理策略](streaming-policy-concept.md)（当创建自定义流式处理策略的高级方案）。 
 
 建议让媒体服务自动生成内容密钥。 通常情况下，您将使用且生存期较长的密钥，并检查策略是否存在与**获取**。 若要获取密钥，需调用单独的操作方法来获取机密或凭据，请参阅下面的示例。
 

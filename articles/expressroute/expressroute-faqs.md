@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 75c0deaa8bca94349091e3317e4ca70129bb4426
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 1a6f3fbc0160a78fb76f810257d3285725445eba
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991605"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257960"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -57,11 +57,11 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-peerings.md)。
 
-### <a name="private-peering"></a>私有对等
+### <a name="private-peering"></a>专用对等互连
 
 * 虚拟网络，包括所有虚拟机和云服务
 
-### <a name="public-peering"></a>公共对等
+### <a name="public-peering"></a>公共对等互连
 
 >[!NOTE]
 >在新的 ExpressRoute 线路上已禁用公共对等互连。 Azure 服务在 Microsoft 对等互连上可用。
@@ -76,7 +76,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
     * 多重身份验证
     * 流量管理器
 
-### <a name="microsoft-peering"></a>Microsoft 对等
+### <a name="microsoft-peering"></a>Microsoft 对等互连
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
@@ -288,7 +288,7 @@ ExpressRoute 高级版是以下功能的集合：
 
 ## <a name="expressroute-local"></a>ExpressRoute 本地
 ### <a name="what-is-expressroute-local"></a>什么是 ExpressRoute 本地？
-ExpressRoute 本地是 SKU 的 ExpressRoute 线路。 本地的一个重要功能是在 ExpressRoute 对等互连位置为您提供了本地 circit 访问仅向一个或两个 Azure 区域中或同一 metro 附近。 与此相反，标准线路允许你访问地缘政治区域和高级线路到所有 Azure 区域中的所有 Azure 区域全局。 
+ExpressRoute 本地是 SKU 的 ExpressRoute 线路。 本地的一个重要功能是在 ExpressRoute 对等互连位置为您提供了本地线路访问仅向一个或两个 Azure 区域中或同一 metro 附近。 与此相反，标准线路允许你访问地缘政治区域和高级线路到所有 Azure 区域中的所有 Azure 区域全局。 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>ExpressRoute 局部变量的优点是什么？
 你需要支付标准或高级 ExpressRoute 线路的传出数据传输，而无需付费传出数据传输单独本地 ExpressRoute 线路。 换而言之，ExpressRoute 本地价格包括数据传输费用。 ExpressRoute 本地是更经济的解决方案，如果你有大量要传输的数据并且可以在你所需的 Azure 区域附近到某一 ExpressRoute 对等互连位置的专用连接将你的数据。 

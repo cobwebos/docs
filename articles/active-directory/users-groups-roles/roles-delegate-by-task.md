@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 05/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e65f7ca0a01e0ceee6448ea49e1d6d6da696cf6
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60468311"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417076"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -338,7 +338,7 @@ ms.locfileid: "60468311"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-提交支持票证 | 服务管理员 | 应用程序管理员、计费管理员、云应用程序管理员、符合性管理员、Dynamics 365 管理员、桌面分析管理员、Exchange 管理员、密码管理员、信息保护管理员、Intune 管理员、Skype for Business 管理员、Power BI 管理员、特权身份验证管理员、SharePoint 管理员、Teams 通信管理员、Teams 管理员、用户管理员、工作区分析管理员
+提交支持票证 | 服务管理员 | 应用程序管理员、 Azure 信息保护管理员计费管理员、 云应用程序管理员、 合规性管理员、 Dynamics 365 管理员桌面分析管理员、 Exchange 管理员密码管理员，Intune 管理员、 企业管理员、 Power BI 管理员、 特权身份验证管理员、 SharePoint 管理员、 团队通信管理员、 团队管理员、 用户管理员、 SkypeWorkplace Analytics 管理员
 
 ## <a name="next-steps"></a>后续步骤
 

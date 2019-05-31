@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 5/10/2019
+ms.date: 5/30/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: fba5119feb1ff7a0170a573371e479caa5fc33eb
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f4f10191ea28f73732f81eb9dc25321f82683652
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544476"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416964"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -27,27 +27,27 @@ ms.locfileid: "65544476"
 
 * **名称**：操作组中的唯一标识符。  
 * **操作类型**：执行的操作。 示例包括发送语音呼叫、短信、电子邮件，或者触发各种类型的自动化操作。 请参阅本文下文中的“类型”。
-* **详细信息**：因“操作类型”而异的相应详细信息。
+* **详细信息**：因“操作类型”而异的相应详细信息。 
 
 有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)。
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>使用 Azure 门户创建操作组 ##
-1. 在[门户](https://portal.azure.com)中，选择“监视器”。 “监视器”窗格将所有监视设置和数据合并到一个视图中。
+1. 在[门户](https://portal.azure.com)中，选择“监视器”  。 “监视器”  窗格将所有监视设置和数据合并到一个视图中。
 
     ![“监视”服务](./media/action-groups/home-monitor.png)
-1. 选择“警报”，然后选择“管理操作组”。
+1. 选择**警报**然后选择**管理操作**。
 
-    ![“管理操作组”按钮](./media/action-groups/manage-action-groups.png)
-1. 选择“添加操作组”，并填写字段。
+    ![管理操作按钮](./media/action-groups/manage-action-groups.png)
+1. 选择“添加操作组”  ，并填写字段。
 
     ![“添加操作组”命令](./media/action-groups/add-action-group.png)
-1. 在“操作组名称”框中输入名称，然后在“短名称”框中输入名称。 使用此组发送通知时，短名称被用来代替完整的操作组名称。
+1. 在“操作组名称”  框中输入名称，然后在“短名称”  框中输入名称。 使用此组发送通知时，短名称被用来代替完整的操作组名称。
 
       ![“添加操作组”对话框](./media/action-groups/action-group-define.png)
 
-1. “订阅”框会自动填充当前订阅。 此“订阅”是在其中保存操作组的订阅。
+1. “订阅”  框会自动填充当前订阅。 此“订阅”是在其中保存操作组的订阅。
 
-1. 选择在其中保存操作组的“资源组”。
+1. 选择在其中保存操作组的“资源组”  。
 
 1. 定义一个操作列表。 为每个操作提供以下信息：
 
@@ -55,12 +55,12 @@ ms.locfileid: "65544476"
 
     b. **操作类型**：选择电子邮件/短信/推送/语音、逻辑应用、Webhook、ITSM 或自动化 Runbook。
 
-    c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
+    c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”  和其他字段。
 
-1. 选择“确定”创建操作组。
+1. 选择“确定”  创建操作组。
 
 ## <a name="manage-your-action-groups"></a>管理操作组 ##
-创建操作组后，它会显示在“监视器”边栏选项卡的“操作组”部分中。 选择要管理的操作组：
+创建操作组后，它会显示在“监视器”  边栏选项卡的“操作组”  部分中。 选择要管理的操作组：
 
 * 添加、编辑或删除操作。
 * 删除操作组。
@@ -102,6 +102,8 @@ ms.locfileid: "65544476"
  - 13.106.57.196
  - 52.244.68.117
  - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
  - 51.4.138.199
  - 51.5.148.86
  - 51.5.149.19

@@ -16,16 +16,18 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: abd893c68f2e9cac713e09dd0bdafb7f277ae889
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5687e6d0094083a9ee58455cc72b0b2e4da32d65
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707529"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417147"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
 
-有四个选项适用于 Azure 托管磁盘：Azure 超高磁盘存储、 高级 SSD、 标准 SSD 和标准 HDD。 可以根据性能需求在这些存储类型之间切换，切换过程只会造成极短暂的停机。 非托管磁盘不支持此功能。 但是，可以轻松[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，然后即可切换磁盘类型。
+有四个磁盘类型的 Azure 托管磁盘：Azure 超高 Ssd （预览版）、 高级 SSD、 标准 SSD 和 HDD 标准。 您可以在三个 GA 磁盘类型之间切换 (高级 SSD、 标准 SSD 和 HDD 标准) 根据性能需求。 你尚不能够切换来自或发往超高的 SSD，必须部署一个新。
+
+非托管磁盘不支持此功能。 但是，可以轻松[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，然后即可切换磁盘类型。
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -121,13 +123,13 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 执行以下步骤:
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在门户上的“虚拟机”列表中选择 VM。
-3. 如果该 VM 未停止，请在 VM“概述”窗格的顶部选择“停止”，然后等待该 VM 停止。
-3. 在 VM 对应的窗格中，从菜单中选择“磁盘”。
+2. 在门户上的“虚拟机”列表中选择 VM。 
+3. 如果该 VM 未停止，请在 VM“概述”窗格的顶部选择“停止”，然后等待该 VM 停止。  
+3. 在 VM 对应的窗格中，从菜单中选择“磁盘”  。
 4. 选择要转换的磁盘。
-5. 在菜单中选择“配置”。
-6. 将“帐户类型”从“标准 HDD”更改为“高级 SSD”。
-7. 单击“保存”并关闭磁盘窗格。
+5. 在菜单中选择“配置”  。
+6. 将“帐户类型”从“标准 HDD”更改为“高级 SSD”。   
+7. 单击“保存”并关闭磁盘窗格。 
 
 磁盘类型转换会瞬间完成。 转换后，可以重启 VM。
 

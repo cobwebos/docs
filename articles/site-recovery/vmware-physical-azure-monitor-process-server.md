@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/24/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: f3ba08bc1d557d53bca2421b5052f496c740b185
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 4ff52e737438210296b8f2201d5e66e1d38b7bc9
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969328"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418282"
 ---
 # <a name="monitor-the-process-server"></a>监视进程服务器
 
@@ -53,7 +53,7 @@ ms.locfileid: "65969328"
 
 **警报类型** | **详细信息**
 --- | ---
-![状态良好][green] | 进程服务器已连接并且正常运行。
+![Healthy][green] | 进程服务器已连接并且正常运行。
 ![警告][yellow] | 在过去 15 分钟的 CPU 利用率 > 80%
 ![警告][yellow] | 过去 15 分钟内的内存使用率 > 80%
 ![警告][yellow] | 在过去 15 分钟的缓存文件夹的可用空间 < 30%

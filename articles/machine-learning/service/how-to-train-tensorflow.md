@@ -10,18 +10,20 @@ ms.author: minxia
 author: mx-iao
 ms.date: 05/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f3d675d0eac1255974995fd7717192ec6a21bac1
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 314917ce91407206d786b191df118893696ac82c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400232"
+ms.locfileid: "66417121"
 ---
-# <a name="use-azure-machine-learning-service-to-train-and-register-tensorflow-models"></a>使用 Azure 机器学习服务来训练和注册 TensorFlow 模型
+# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>训练和 TensorFlow 模型大规模注册 Azure 机器学习服务
 
 本文介绍如何训练和注册使用 Azure 机器学习服务的 TensorFlow 模型。 我们将使用常用[MNIST 数据集](http://yann.lecun.com/exdb/mnist/)分类手写的数字使用基于 TensorFlow 的深度神经网络。
 
-使用 Azure 机器学习服务时，你将能够快速横向扩展的开源培训作业使用的弹性云计算资源。 您还可以跟踪训练运行、 版本模型、 部署模型，以及更多。 无论要开发从从头 TensorFlow 模型还是正在将现有模型到云中，Azure 机器学习服务此处是帮助你生成生产的模型。
+使用 Azure 机器学习服务时，你将能够快速横向扩展的开源培训作业使用的弹性云计算资源。 您还可以跟踪训练运行、 版本模型、 部署模型，以及更多。 
+
+无论要开发从从头 TensorFlow 模型还是到云中，正在将现有模型，您可以构建与 Azure 机器学习服务的生产就绪模型。
 
 ## <a name="prerequisites"></a>必备组件
 
