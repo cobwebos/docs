@@ -312,14 +312,14 @@ ms.locfileid: "60823940"
 | decimal |Decimal |
 | 双精度 |Double |
 | double |Double |
-| 枚举 |String |
+| enum |String |
 | float |Single |
 | 无符号 int |Int64 |
 | int |Int32 |
 | 无符号 integer |Int64 |
 | integer |Int32 |
-| 长 varbinary |Byte[] |
-| 长 varchar |String |
+| long varbinary |Byte[] |
+| long varchar |String |
 | longblob |Byte[] |
 | longtext |String |
 | mediumblob |Byte[] |
