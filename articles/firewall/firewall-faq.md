@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 5/3/2019
+ms.date: 5/30/2019
 ms.author: victorh
-ms.openlocfilehash: 84b42654ec472ea2c7c81bed545f56b647158c95
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 75b1131f2853cb444481b9c7a6c96e28f8537538
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016023"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384671"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -34,7 +34,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Azure 防火墙的典型部署模型是什么？
 
-可在任何虚拟网络中部署 Azure 防火墙，但客户往往在中心虚拟网络中部署它，并在中心辐射模型中将其对等互连到其他虚拟网络。 然后，可将对等互连的虚拟网络中的默认路由设置为指向此中心防火墙虚拟网络。 支持全局 VNet 对等互连，但不是建议由于潜在的性能和延迟问题跨区域。 为了获得最佳性能，部署每个区域一个防火墙。
+可在任何虚拟网络中部署 Azure 防火墙，但客户往往在中心虚拟网络中部署它，并在中心辐射模型中将其对等互连到其他虚拟网络。 然后，可将对等互连的虚拟网络中的默认路由设置为指向此中心防火墙虚拟网络。 支持全局 VNet 对等互连，但跨区域由于潜在的性能和延迟问题而不建议。 为了获得最佳性能，部署每个区域一个防火墙。
 
 该模型的优点是能够跨不同订阅集中控制多个辐射 VNET。 由于不需要在每个 VNet 中单独部署防火墙，因此还能节约成本。 应根据客户流量模式衡量成本节约与相关对等互连成本。
 
@@ -62,7 +62,7 @@ Azure 防火墙与 Azure Monitor 集成，可用于查看和分析防火墙日�
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure 防火墙的工作原理与市场中现有的服务（例如 NVA）有何不同？
 
-Azure 防火墙是一项基础防火墙服务，可解决特定客户方案的问题。 应将第三方 NVA 与 Azure 防火墙混合使用。 更好地合作是核心任务。
+Azure 防火墙是一项基础防火墙服务，可解决特定客户方案的问题。 应将有多种第三方 Nva 和 Azure 防火墙。 更好地合作是核心任务。
 
 ## <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>应用程序网关 WAF 与 Azure 防火墙之间有何区别？
 
@@ -71,6 +71,11 @@ Web 应用程序防火墙 (WAF) 是应用程序网关的一项功能，可在出
 ## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>网络安全组 (NSG) 和 Azure 防火墙之间有何区别？
 
 Azure 防火墙服务为网络安全组功能提供了补充。 两者共同提供了更好的“深层防御”网络安全性。 网络安全组提供分布式网络层流量过滤，以限制每个订阅中虚拟网络内资源的流量。 Azure 防火墙是一个服务形式的完全有状态的集中式网络防火墙，可跨不同的订阅和虚拟网络提供网络和应用程序级别的保护。
+
+## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>支持 Azure 防火墙子网上的网络安全组 (Nsg)？
+
+Azure 防火墙是托管的服务的多个保护层，包括平台保护使用 NIC 级别 Nsg （不可见）。  子网级 Nsg 不需要对 Azure 防火墙子网，而且已禁用，以确保不会中断服务。
+
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>如何使用服务终结点设置 Azure 防火墙？
 
@@ -84,7 +89,7 @@ Azure 防火墙服务为网络安全组功能提供了补充。 两者共同提�
 
 可以使用 Azure PowerShell 的 *deallocate* 和 *allocate* 方法。
 
-例如:
+例如：
 
 ```azurepowershell
 # Stop an existing firewall
@@ -121,11 +126,11 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>强制隧道/链接到支持网络虚拟设备？
 
-默认情况下，不支持强制隧道，但可以从支持的帮助下启用它。
+强制隧道不支持在默认情况下，但可以从支持的帮助下启用它。
 
-Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接。 默认情况下，Azure 防火墙不支持强制的安全加密链路连接到本地网络。
+Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接   。 默认情况下，Azure 防火墙不支持强制的安全加密链路连接到本地网络。
 
-但是，如果你的配置要求强制的安全加密链路连接到本地网络，Microsoft 将基于具体的情况提供支持。 请联系支持人员，以便我们可以查看你的情况。 如果接受，我们会将你的订阅添加到白名单，确保保持所需的防火墙 Internet 连接。
+但是，如果你的配置要求强制的安全加密链路连接到本地网络，Microsoft 将基于具体的情况提供支持。 请联系支持人员，以便我们可以查看你的情况。 如果接受，我们将允许你的订阅，并确保维持所需的防火墙的 Internet 连接。
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火墙资源组限制？
 
@@ -137,7 +142,7 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>通配符应用程序规则目标 FQDN 中如何工作？
 
-如果配置 ***。 contoso.com**，它允许*anyvalue*。 contoso.com，但不是 contoso.com （域顶点）。 如果你想要允许域顶点，您必须显式配置它作为目标 FQDN。
+如果配置 * **。 contoso.com**，它允许*anyvalue*。 contoso.com，但不是 contoso.com （域顶点）。 如果你想要允许域顶点，您必须显式配置它作为目标 FQDN。
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>用途*预配状态：失败*意味着？
 

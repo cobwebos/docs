@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: 7916e9493a5d572f844bca23a1dd7806e5fbe572
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: af14d5eb521d531f86433712a0d6c325ae7a1cd6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790164"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258623"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -40,7 +40,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 [虚拟网络规则](sql-database-vnet-service-endpoint-rule-overview.md)使 Azure SQL 数据库仅接受从虚拟网络中的所选子网发送的通信。
 
 > [!NOTE]
-> 使用防火墙规则控制访问权限不适用于托管实例。 有关所需网络配置的详细信息，请参阅[连接到托管实例](sql-database-managed-instance-connect-app.md)
+> 使用防火墙规则控制访问权限不  适用于托管实例  。 有关所需网络配置的详细信息，请参阅[连接到托管实例](sql-database-managed-instance-connect-app.md)
 
 ## <a name="access-management"></a>访问管理
 
@@ -59,22 +59,22 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
     Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) 中的标识连接到 Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。 使用 Azure AD 身份验证，管理员可在一个中心位置集中管理数据库用户以及其他 Microsoft 服务的标识和权限。 这包括最小化密码存储并启用集中式密码轮换策略。
 
-     必须创建一个名为“Active Directory 管理员”的服务器管理员，以便在 SQL 数据库中使用 Azure AD 身份验证。 有关详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库](sql-database-aad-authentication.md)。 Azure AD 身份验证同时支持托管帐户和联合帐户。 联合帐户支持与 Azure AD 联合的客户域的 Windows 用户和组。
+     必须创建一个名为“Active Directory 管理员”  的服务器管理员，以便在 SQL 数据库中使用 Azure AD 身份验证。 有关详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库](sql-database-aad-authentication.md)。 Azure AD 身份验证同时支持托管帐户和联合帐户。 联合帐户支持与 Azure AD 联合的客户域的 Windows 用户和组。
 
     其他可用的 Azure AD 身份验证选项包括[适用于 SQL Server Management Studio 的 Active Directory 通用身份验证](sql-database-ssms-mfa-authentication.md)连接，其中包括[多重身份验证](../active-directory/authentication/concept-mfa-howitworks.md)和[条件访问](sql-database-conditional-access.md)。
 
 > [!IMPORTANT]
-> 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/overview.md)。 使用防火墙规则控制访问权限不适用于托管实例。 有关所需网络配置的详细信息，请参阅以下有关[连接到托管实例](sql-database-managed-instance-connect-app.md)的文章。
+> 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/overview.md)。 使用防火墙规则控制访问权限不  适用于托管实例  。 有关所需网络配置的详细信息，请参阅以下有关[连接到托管实例](sql-database-managed-instance-connect-app.md)的文章。
 
 ## <a name="authorization"></a>授权
 
-授权是指在 Azure SQL 数据库中分配给用户的权限，并决定允许用户执行的操作。 通过添加到用户帐户控制权限[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)以及将数据库级别权限分配到这些角色或通过授予用户某些[对象级权限](/sql/relational-databases/security/permissions-database-engine)。 有关详细信息，请参阅[登录和用户](sql-database-manage-logins.md)
+授权是指在 Azure SQL 数据库中分配给用户的权限，并决定允许用户执行的操作。 权限控制通过将用户帐户添加到[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)并向这些角色分配数据库级权限来实现，也可以通过授予用户特定的[对象级权限](/sql/relational-databases/security/permissions-database-engine)来实现。 有关详细信息，请参阅[登录和用户](sql-database-manage-logins.md)
 
-最佳做法是创建自定义角色时需要。 将用户添加到角色中，执行其工作职责所需的最低权限。 不要直接向用户分配权限。 服务器管理员帐户是具有广泛的权限，并且应仅授予少数用户的管理职责的内置 db_owner 角色的成员。 对于 Azure SQL 数据库应用程序，使用[EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql)若要指定调用模块的执行上下文或使用[应用程序角色](/sql/relational-databases/security/authentication-access/application-roles)具有有限权限。 这种做法可确保连接到数据库的应用程序包含应用程序所需的最低权限。 遵循以下最佳做法也可以帮助职责的分离。
+最佳做法是根据需要创建自定义角色。 将用户添加到具有完成其作业功能所需的最低权限的角色中。 请勿直接将权限分配给用户。 服务器管理员帐户是内置的 db_owner 角色的成员，该角色具有广泛权限，只应将其授予部分具有管理职责的用户。 对于 Azure SQL 数据库应用程序，请使用 [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) 来指定被调用模块的执行上下文，或者使用权限受限的[应用程序角色](/sql/relational-databases/security/authentication-access/application-roles)。 此做法可确保连接到数据库的应用程序具有应用程序所需的最低权限。 按这些最佳做法操作也有助于职责分离。
 
 ### <a name="row-level-security"></a>行级别安全性
 
-行级别安全性使客户能够根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 此外可以使用行级别安全性来实现自定义基于标签的安全概念。 有关详细信息，请参阅[行级别安全性](/sql/relational-databases/security/row-level-security)。
+行级别安全性使客户能够根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 行级别安全性也可用于实现基于自定义标签的安全概念。 有关详细信息，请参阅[行级别安全性](/sql/relational-databases/security/row-level-security)。
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
@@ -88,7 +88,7 @@ SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到�
 
 ### <a name="advanced-threat-protection"></a>高级威胁防护
 
-高级的威胁防护正在分析 SQL 服务器日志，以检测异常行为和潜在有害尝试访问或利用数据库。 警报创建的可疑活动，如 SQL 注入、 潜在的数据渗透和暴力攻击强制攻击或模式捕获的特权提升和违反的凭据使用访问中的异常情况。 从查看警报[Azure 安全中心](https://azure.microsoft.com/services/security-center/)，其中将提供可疑活动的详细信息，建议进一步调查与操作一起提供，以缓解威胁。 每个额外的费用的服务器，可以启用高级的威胁防护。 有关详细信息，请参阅[开始使用 SQL 数据库高级威胁防护](sql-database-threat-detection.md)。
+高级威胁防护通过对你的 SQL Server 日志进行分析来检测异常行为和对数据库的潜在恶意访问或利用。 针对可疑活动（例如 SQL注入、潜在的数据渗透和暴力攻击）或访问模式中的异常情况创建警报，以捕获特权提升和违规的凭据使用。 从查看警报[Azure 安全中心](https://azure.microsoft.com/services/security-center/)，其中将提供可疑活动的详细信息，建议进一步调查与操作一起提供，以缓解威胁。 可以为每台服务器启用高级威胁防护，但需要额外付费。 有关详细信息，请参阅 [SQL 数据库高级威胁防护入门](sql-database-threat-detection.md)。
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
@@ -100,7 +100,7 @@ SQL 数据库通过使用[传输层安全](https://support.microsoft.com/help/31
 
 SQL Server 始终对所有连接强制要求加密 (SSL/TLS)。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 **Encrypt** 或 **TrustServerCertificate** 设置如何。
 
-作为最佳做法，我们建议在应用程序的连接字符串中指定加密的连接，而不要信任服务器证书。__ 这会强制应用程序验证服务器证书，因此可以防止中间人攻击利用应用程序的漏洞。
+作为最佳做法，我们建议在应用程序的连接字符串中指定加密的连接，而不要信任服务器证书。 _ _ 这会强制应用程序验证服务器证书，因此可以防止中间人攻击利用应用程序的漏洞。
 
 例如，使用 ADO.NET 驱动程序时，可以通过 **Encrypt=True** 和 **TrustServerCertificate=False** 实现此目的。如果从 Azure 门户获取连接字符串，其中会包含正确的设置。
 
@@ -123,7 +123,7 @@ SQL Server 始终对所有连接强制要求加密 (SSL/TLS)。 这样可以确�
 
 ![azure-database-ae.png](media/sql-database-security-overview/azure-database-ae.png)
 
-[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能旨在保护特定数据库列中存储的敏感数据不被访问（如信用卡号或、国民身份证号或视需要而定的数据）。 这包括数据库管理员或其他特权用户，他们被授权访问数据库以执行管理任务，但不需要访问加密列中的特定数据。 数据始终处于加密状态，这意味着加密数据只在有权访问加密密钥的客户端应用程序需要处理数据时才解密。  加密密钥从不暴露给 SQL，而且可以存储在 [Windows 证书存储区](sql-database-always-encrypted.md)或 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) 中。
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 功能旨在保护特定数据库列中存储的敏感数据不被访问（如信用卡号或、国民身份证号或视需要而定的  数据）。 这包括数据库管理员或其他特权用户，他们被授权访问数据库以执行管理任务，但不需要访问加密列中的特定数据。 数据始终处于加密状态，这意味着加密数据只在有权访问加密密钥的客户端应用程序需要处理数据时才解密。  加密密钥从不暴露给 SQL，而且可以存储在 [Windows 证书存储区](sql-database-always-encrypted.md)或 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) 中。
 
 ### <a name="dynamic-data-masking"></a>动态数据掩码
 
@@ -150,6 +150,10 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 ### <a name="compliance"></a>合规性
 
 除了上述有助于应用程序符合各项安全要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
+
+### <a name="feature-restrictions"></a>功能限制
+
+功能限制有助于防止某些形式的泄漏有关数据库的信息，即使 SQL 注入是成功的 SQL 注入。 有关详细信息，请参阅[Azure SQL 数据库功能限制](sql-database-feature-restrictions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,22 +5,18 @@ services: Azure, Marketplace, Cloud Partner Portal, Azure portal
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: pabutler
-ms.openlocfilehash: e31efb9a52ff004e6e35ddfc251732c014eedae9
+ms.date: 05/23/2019
+ms.author: evansma
+ms.openlocfilehash: abe499c081c73d42e712d5872e121262a1a50197
 ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257446"
+ms.locfileid: "66259159"
 ---
 # <a name="register-a-saas-application"></a>注册 SaaS 应用程序
 
 本文介绍如何使用 Microsoft 的 SaaS 应用程序注册[Azure 门户](https://portal.azure.com/)。  成功注册后，您将收到可用于访问 SaaS 执行 Api 的 Azure Active Directory (Azure AD) 安全令牌。  有关 Azure AD 的详细信息，请参阅[什么是身份验证？](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
-
-> [!IMPORTANT] 
-> SaaS 产品/服务的功能已迁移到[Microsoft 合作伙伴中心](https://partner.microsoft.com/dashboard/directory)。  所有新的发布服务器必须使用合作伙伴中心创建新的 SaaS 产品/服务和管理现有产品/服务。  使用 SaaS 产品/服务的当前发布服务器正在 batchwise 迁移从云合作伙伴门户到合作伙伴中心。  云合作伙伴门户将显示状态消息以指示何时已迁移特定的现有产品/服务。
-> 有关详细信息，请参阅[创建新的 SaaS 产品/服务](../../partner-center-portal/create-new-saas-offer.md)。
 
 
 ## <a name="service-to-service-authentication-flow"></a>服务到服务身份验证流
@@ -37,7 +33,7 @@ Azure 不会对 SaaS 服务公开给其最终用户的身份验证施加任何�
 任何想要使用 Azure AD 功能的应用程序都必须先在 Azure AD 租户中注册。 此注册过程涉及到提供有关应用程序的 Azure AD 详细信息，例如，该应用程序所在位置的 URL、对用户进行身份验证后用于发送答复的 URL、用于标识应用程序的 URI，等等。  若要使用 Azure 门户注册新应用程序，请执行以下步骤：
 
 1.  登录到 [Azure 门户](https://portal.azure.com/)。
-2.  如果你的帐户有权访问多个租户，请在右上角单击该帐户，并将门户会话设置为所需的 Azure AD 租户。
+2.  如果你的帐户有权访问多个，在右上角，单击该帐户并将门户会话设置为所需的 Azure AD 租户。
 3.  在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”、“新建应用程序注册”。   
 
     ![SaaS AD 应用注册](./media/saas-offer-app-registration-v1.png)
@@ -131,4 +127,4 @@ HTTP 方法
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以使用 Azure AD 保护应用[SaaS 履行 API 版本 2](./cpp-saas-fulfillment-api-v2.md)。
+现在可以使用 Azure AD 保护应用[SaaS 履行 API 版本 2](./pc-saas-fulfillment-api-v2.md)。

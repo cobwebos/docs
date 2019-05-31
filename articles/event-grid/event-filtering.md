@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f284fea701220906a994cf108ed58cb6998aef9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187661"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305057"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -43,7 +43,7 @@ ms.locfileid: "65187661"
 
 将事件发布到自定义主题时，可为事件创建主题，便于订阅者们了解他们是否对该事件感兴趣。 订阅者使用主题属性来筛选和路由事件。 考虑添加事件发生位置的路径，以便订阅者可以按该路径的段进行筛选。 通过路径，订阅者可精确或宽泛地筛选事件。 如果在主题中提供一个由三个段构成的路径（如 `/A/B/C`），订阅者可根据第一个段 `/A` 进行筛选，获取范围较宽泛的一组事件。 这些订阅者会获取主题为 `/A/B/C` 或 `/A/D/E` 这样的事件。 其他订阅者可通过 `/A/B` 进行筛选，这样可以获取范围更精确的一组事件。
 
-按使用者进行筛选的 JSON 语法是：
+按主题筛选的 JSON 语法是：
 
 ```json
 "filter": {
@@ -107,7 +107,7 @@ ms.locfileid: "65187661"
 
 对于事件网格架构中的事件，请使用以下键值：
 
-* ID
+* Id
 * 主题
 * Subject
 * EventType
@@ -139,9 +139,7 @@ ms.locfileid: "65187661"
 
 * 每个事件网格订阅有五个高级筛选器
 * 每个字符串值有 512 个字符
-* “in”和“not in”运算符有 5 个值
-* 键只能有一个嵌套级别（如 data.key1）
-* 自定义事件架构只能基于顶级字段进行筛选
+* “in”和“not in”运算符有 5 个值  
 
 可以在多个筛选器中使用相同的键。
 

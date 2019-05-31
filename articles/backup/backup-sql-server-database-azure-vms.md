@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 2fba8b0056c80a62837682a6820b68f71fba9ea8
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
-ms.translationtype: HT
+ms.openlocfilehash: 0307dc5c83782119f6c10279563b8b9f0a999d28
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65952936"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236883"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -21,7 +21,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
 本文介绍如何备份到 Azure 备份恢复服务保管库的 Azure VM 运行的 SQL Server 数据库。
 
-在本文中，你将了解如何：
+本文将介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建并配置保管库。
@@ -49,7 +49,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
 建立连接使用下列选项之一：
 
-- **允许 Azure 数据中心 IP 范围**。 此选项允许[IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的下载中。 若要访问的网络安全组 (NSG)，请使用 Set-azurenetworksecurityrule cmdlet。 如果您允许列表仅特定于区域的 Ip，你将还需要列入允许列表 Azure Active Directory (Azure AD) 服务标记来启用身份验证。
+- **允许 Azure 数据中心 IP 范围**。 此选项允许[IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的下载中。 若要访问的网络安全组 (NSG)，请使用 Set-azurenetworksecurityrule cmdlet。 如果你是安全收件人列表仅特定于区域的 Ip 中，您还需要更新 Azure Active Directory (Azure AD) 服务标记，若要启用身份验证的安全收件人列表。
 
 - **允许访问使用 NSG 标记**。 如果使用 Nsg 来限制连接，此选项将规则添加到 NSG，允许通过 AzureBackup 标记的 Azure 备份对出站访问。 除了此标记，还将需要对应[规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)Azure ad 和 Azure 存储，以允许进行身份验证和数据传输的连接。 仅在 PowerShell 上目前已 AzureBackup 标记。 若要通过使用 AzureBackup 标记创建一个规则：
 
@@ -68,7 +68,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
   - 保存 NSG<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
 - **允许使用 Azure 防火墙标记访问**。 如果正在使用 Azure 防火墙，创建一个应用程序规则使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)。 这允许对 Azure 备份的出站访问。
-- **部署 HTTP 代理服务器将流量路由到**。 Azure VM 上备份 SQL Server 数据库，请在 VM 上的备份扩展使用 HTTPS Api 将管理命令发送到 Azure 备份和到 Azure 存储的数据。 备份扩展也使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 扩展是配置为向公共 internet 访问的唯一组件。
+- **部署 HTTP 代理服务器将流量路由到**。 Azure VM 上备份 SQL Server 数据库，请在 VM 上的备份扩展使用 HTTPS Api 将管理命令发送到 Azure 备份和到 Azure 存储的数据。 备份扩展也使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
 
 连接选项包括以下优点和缺点：
 
@@ -96,7 +96,8 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
   * 尾随和前导空格
   * 尾随感叹号 （！）
   * 右方括号 (])
-  * 从开始 F:\
+  * 以分号;
+  * 正斜杠 /
 
 别名可用于不支持的字符，但我们建议避免它们。 有关详细信息，请参阅 [Understanding the Table Service Data Model](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)（了解表服务数据模型）。
 
@@ -115,11 +116,11 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
 3. 在**备份目标**，请设置**你的工作负荷的运行位置？** 到**Azure**。
 
-4. 在“要备份哪些内容”中，选择“Azure VM 中的 SQL Server”。
+4. 在“要备份哪些内容”中，选择“Azure VM 中的 SQL Server”。  
 
     ![选择“Azure VM 中的 SQL Server”进行备份](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-5. 在“备份目标” > “发现 VM 中的数据库”中，选择“开始发现”以搜索订阅中不受保护的 VM。 此搜索可能需要一段时间，具体取决于订阅中的未受保护的 Vm 数量。
+5. 在“备份目标” > “发现 VM 中的数据库”中，选择“开始发现”以搜索订阅中不受保护的 VM。    此搜索可能需要一段时间，具体取决于订阅中的未受保护的 Vm 数量。
 
    - 发现后，未受保护的 VM 应会按名称和资源组列在列表中。
    - 如果 VM 未列出按预期，请参阅是否已备份保管库中。
@@ -127,7 +128,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
      ![在搜索 VM 中的数据库期间，备份将会挂起。](./media/backup-azure-sql-database/discovering-sql-databases.png)
 
-6. 在 VM 列表中，选择运行 SQL Server 数据库的VM，然后选择“发现数据库”。
+6. 在 VM 列表中，选择运行 SQL Server 数据库的VM，然后选择“发现数据库”。 
 
 7. 在跟踪数据库发现**通知**。 此操作所需的时间取决于 VM 数据库的数量。 发现选定的数据库后，会显示一条成功消息。
 
@@ -162,7 +163,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
      * 若要对 50 个以上的数据库提供保护，请配置多个备份。
      * 若要启用[](#enable-auto-protection)整个实例或 Always On 可用性组。 在中**AUTOPROTECT**下拉列表中，选择**ON**，然后选择**确定**。
-     
+
     > [!NOTE]
     > [自动保护](#enable-auto-protection)功能不仅使所有现有数据库上的保护，但也会自动保护添加到该实例或可用性组的任何新数据库。  
 
@@ -174,7 +175,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
    - 选择作为 HourlyLogBackup 默认策略。
    - 选择前面为 SQL 创建的现有备份策略。
-   - 定义基于 RPO 和保留期范围的新策略。
+   - 根据 RPO 和保留范围定义新策略。
 
      ![选择“备份策略”](./media/backup-azure-sql-database/select-backup-policy.png)
 
@@ -182,7 +183,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
     ![启用选定的备份策略](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. 跟踪配置进度 **通知** 门户的区域。
+7. 在门户的“通知”区域跟踪配置进度 ****  。
 
     ![通知区域](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -203,11 +204,11 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
    ![为新的备份策略选择策略类型](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. 在“策略名称”处输入新策略的名称。
+3. 在“策略名称”处输入新策略的名称  。
 4. 在中**完整备份策略**，选择**备份频率**。 请执行以下某**每日**或**每周**。
 
-   - 如果选择“每日”，请选择备份作业开始时的小时和时区。
-   - 如果选择“每周”，请选择备份作业开始时的星期、小时和时区。
+   - 如果选择“每日”，请选择备份作业开始时的小时和时区。 
+   - 如果选择“每周”，请选择备份作业开始时的星期、小时和时区。 
    - 运行完整备份，因为不能关闭**完整备份**选项。
    - 选择**完整备份**若要查看的策略。
    - 对于每日完整备份，无法创建差异备份。
@@ -223,30 +224,30 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
        ![保留范围间隔设置](./media/backup-azure-sql-database/retention-range-interval.png)
 
-6. 在“完整备份策略”菜单中，选择“确定”接受设置。
-7. 若要添加差异备份策略，请选择“差异备份”。
+6. 在“完整备份策略”菜单中，选择“确定”接受设置。  
+7. 若要添加差异备份策略，请选择“差异备份”。 
 
    ![保留范围间隔设置](./media/backup-azure-sql-database/retention-range-interval.png)
    ![打开差异备份策略菜单](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
-8. 在“差异备份策略”中，选择“启用”打开频率和保留控件。
+8. 在“差异备份策略”中，选择“启用”打开频率和保留控件。  
 
     - 可以触发每天只有一个差异备份。
     - 差异备份最多可以保留 180 天。 对于较长的保留期，使用完整备份。
 
-9. 选择“确定”保存策略，并返回“备份策略”主菜单。
+9. 选择“确定”保存策略，并返回“备份策略”主菜单。  
 
-10. 若要添加事务日志备份策略，请选择“日志备份”。
-11. 在“日志备份”中选择“启用”，并设置频率和保留控件。 日志备份可以随时按每隔 15 分钟发生，并可以保留最多 35 天。
-12. 选择“确定”保存策略，并返回“备份策略”主菜单。
+10. 若要添加事务日志备份策略，请选择“日志备份”。 
+11. 在“日志备份”中选择“启用”，并设置频率和保留控件。   日志备份可以随时按每隔 15 分钟发生，并可以保留最多 35 天。
+12. 选择“确定”保存策略，并返回“备份策略”主菜单。  
 
     ![编辑日志备份策略](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. 在“备份策略”菜单中，选择是否启用“SQL 备份压缩”。
+13. 在“备份策略”菜单中，选择是否启用“SQL 备份压缩”。  
     - 默认已禁用压缩。
     - Azure 备份在后端使用 SQL 本机备份压缩。
 
-14. 完成备份策略的编辑后，选择“确定”。
+14. 完成备份策略的编辑后，选择“确定”。 
 
 
 ### <a name="modify-policy"></a>修改策略
@@ -270,12 +271,12 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
 若要启用自动保护：
 
-  1. 在“要备份的项”中，选择要为其启用自动保护的实例。
+  1. 在“要备份的项”中，选择要为其启用自动保护的实例。 
   2. 选择下的下拉列表**AUTOPROTECT**，选择**ON**，然后选择**确定**。
 
       ![启用可用性组的自动保护](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-  3. 备份是针对所有数据库统一配置的，可以在“备份作业”中跟踪备份。
+  3. 备份是针对所有数据库统一配置的，可以在“备份作业”中跟踪备份。 
 
 如果你需要禁用自动保护，选择下面的实例名称**配置备份**，然后选择**禁用 Autoprotect**的实例。 所有数据库将都继续进行备份，但将来的数据库不会自动受到保护。
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 5/7/2019
+ms.date: 5/28/2019
 ms.author: borisb
-ms.openlocfilehash: 7909ee1dc3980a5a4ff2418d4d6790361a66a65e
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e950a92925e77fa05708d2af3e04e7991243f613
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410705"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357751"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -37,7 +37,7 @@ ms.locfileid: "65410705"
 
     要避免此行为，请按照[为 Azure 创建和上传基于 Red Hat 的虚拟机](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文的描述，构建自己的映像。 然后将其连接到不同的更新基础结构（直接连接到 [Red Hat 内容传送服务器](https://access.redhat.com/solutions/253273)或 [Red Hat 卫星服务器](https://access.redhat.com/products/red-hat-satellite)）。
 
-* RHEL PAYG 映像价格涵盖了 Azure 托管 RHUI 的访问权限。 从 Azure 托管的 RHUI 注销 PAYG RHEL VM 不会将虚拟机转换为自带许可 (BYOL) 类型的 VM。 如果向另一更新源注册同一 VM，可能会产生间接双倍费用。 第一次你需要支付 Azure RHEL 软件费。 第二次你需要支付之前已购买的 Red Hat 订阅费。 如果始终需要使用 Azure 托管的 RHUI 以外的更新基础结构，请考虑创建并部署自己的（BYOL 类型）映像。 [为 Azure 创建和上传基于 Red Hat 的虚拟机](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)介绍了此过程。
+* RHEL PAYG 映像价格涵盖了 Azure 托管 RHUI 的访问权限。 从 Azure 托管的 RHUI 注销 PAYG RHEL VM 不会将虚拟机转换为自带许可 (BYOL) 类型的 VM。 如果向另一更新源注册同一 VM，可能会产生间接双倍费用  。 第一次你需要支付 Azure RHEL 软件费。 第二次你需要支付之前已购买的 Red Hat 订阅费。 如果始终需要使用 Azure 托管的 RHUI 以外的更新基础结构，请考虑创建并部署自己的（BYOL 类型）映像。 [为 Azure 创建和上传基于 Red Hat 的虚拟机](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)介绍了此过程。
 
 * Azure 中的 RHEL SAP PAYG 映像（RHEL for SAP、RHEL for SAP HANA 以及 RHEL for SAP Business Application）已根据 SAP 认证需要，连接到保留在特定 RHEL 次要版本上的专用 RHUI 通道。
 
@@ -102,7 +102,7 @@ ms.locfileid: "65410705"
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>更新 VM 上已过期的 RHUI 客户端证书
 
-如果使用较旧的 RHEL VM 映像（例如，RHEL 7.4（映像 URN：`RedHat:RHEL:7.4:7.4.2018010506`）），则由于 SSL 客户端证书现已过期，你将遇到与 RHUI 的连接问题。 你看到的错误可能类似于“SSL 对等机已拒绝你的证书，因为已过期”或“错误：无法为存储库检索存储库元数据(repom .xml): ...请验证其路径并重试”_。 若要解决此问题，请使用以下命令更新 VM 上的 RHUI 客户端程序包：
+如果使用较旧的 RHEL VM 映像（例如，RHEL 7.4（映像 URN：`RedHat:RHEL:7.4:7.4.2018010506`）），则由于 SSL 客户端证书现已过期，你将遇到与 RHUI 的连接问题。 你看到的错误可能类似于“SSL 对等机已拒绝你的证书，因为已过期”或“错误：  无法为存储库检索存储库元数据(repom .xml): ...请验证其路径并重试”_ 。 若要解决此问题，请使用以下命令更新 VM 上的 RHUI 客户端程序包：
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
@@ -138,89 +138,15 @@ sudo yum makecache
 ### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>执行手动更新过程以使用 Azure RHUI 服务器
 此过程仅供参考。 RHEL PAYG 映像已包含用于连接 Azure RHUI 的正确配置。 要手动更新配置以使用 Azure RHUI 服务器，请完成以下步骤：
 
-1. 通过 curl 下载公钥签名。
-
-   ```bash
-   curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc
-   ```
-
-1. 验证下载密钥的有效性。
-
-   ```bash
-   gpg --list-packets --verbose < RPM-GPG-KEY-microsoft-azure-release
-   ```
-
-1. 检查输出，然后验证 `keyid` 和 `user ID packet`。
-
-   ```bash
-   Version: GnuPG v1.4.7 (GNU/Linux)
-   :public key packet:
-           version 4, algo 1, created 1446074508, expires 0
-           pkey[0]: [2048 bits]
-           pkey[1]: [17 bits]
-           keyid: EB3E94ADBE1229CF
-   :user ID packet: "Microsoft (Release signing) <gpgsecurity@microsoft.com>"
-   :signature packet: algo 1, keyid EB3E94ADBE1229CF
-           version 4, created 1446074508, md5len 0, sigclass 0x13
-           digest algo 2, begin of digest 1a 9b
-           hashed subpkt 2 len 4 (sig created 2015-10-28)
-           hashed subpkt 27 len 1 (key flags: 03)
-           hashed subpkt 11 len 5 (pref-sym-algos: 9 8 7 3 2)
-           hashed subpkt 21 len 3 (pref-hash-algos: 2 8 3)
-           hashed subpkt 22 len 2 (pref-zip-algos: 2 1)
-           hashed subpkt 30 len 1 (features: 01)
-           hashed subpkt 23 len 1 (key server preferences: 80)
-           subpkt 16 len 8 (issuer key ID EB3E94ADBE1229CF)
-           data: [2047 bits]
-   ```
-
-1. 安装公钥。
-
-   ```bash
-   sudo install -o root -g root -m 644 RPM-GPG-KEY-microsoft-azure-release /etc/pki/rpm-gpg
-   sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release
-   ```
-
-1. 下载、验证和安装客户端 RPM 包管理器 (RPM)。
-
-    >[!NOTE]
-    >包版本已发生更改。 如果手动连接到 Azure RHUI，可通过从库预配最新的映像，找到每个 RHEL 系列的最新版客户端包。
-
-   a. 下载。
-
-    - 适用于 RHEL 6：
-        ```bash
-        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel6/Packages/r/rhui-azure-rhel6-2.2-74.noarch.rpm
-        ```
-
-    - 适用于 RHEL 7：
-        ```bash
-        curl -o azureclient.rpm https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel7/Packages/r/rhui-azure-rhel7-2.2-74.noarch.rpm
-        ```
-
-   b. 验证。
-
-   ```bash
-   rpm -Kv azureclient.rpm
-   ```
-
-   c. 检查输出，确保包签名正确。
-
-   ```bash
-   azureclient.rpm:
-       Header V3 RSA/SHA256 Signature, key ID be1229cf: OK
-       Header SHA1 digest: OK (927a3b548146c95a3f6c1a5d5ae52258a8859ab3)
-       V3 RSA/SHA256 Signature, key ID be1229cf: OK
-       MD5 digest: OK (c04ff605f82f4be8c96020bf5c23b86c)
-   ```
-
-   d. 安装 RPM。
-
-    ```bash
-    sudo rpm -U azureclient.rpm
-    ```
-
-1. 完成后，验证是否可以从 VM 访问 Azure RHUI。
+- 适用于 RHEL 6：
+  ```bash
+  yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel6.config' install 'rhui-azure-rhel6'
+  ```
+        
+- 适用于 RHEL 7：
+  ```bash
+  yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
+  ```
 
 ## <a name="next-steps"></a>后续步骤
 * 要通过 Azure 市场 PAYG 映像创建 Red Hat Enterprise Linux VM 并利用 Azure 托管的 RHUI，请转到 [Azure 市场](https://azure.microsoft.com/marketplace/partners/redhat/)。

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/24/2019
 ms.author: spelluru
-ms.openlocfilehash: 9ad6f82d7b9bd7c4957df1dd37d0f2ddf7462e9e
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 389d467bd9672743d4a086e8a1c505fb0366dba7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410954"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237141"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>启用和使用 Azure 实验室服务中的实验室中的 Linux 虚拟机的远程桌面
 本文介绍如何执行以下任务：
@@ -31,6 +31,10 @@ ms.locfileid: "65410954"
 在过程中创建实验室，教师可以启用**远程桌面连接**有关**Linux**映像。 **启用远程桌面连接**何时选择该模板的 Linux 映像，则显示选项。 启用此选项后，教师可以连接到模板，VM 和学生 Vm 通过 RDP （远程桌面）。 
 
 ![启用远程桌面连接的 Linux 映像](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+
+上**启用远程桌面连接**消息框中，选择**继续使用远程桌面**。 
+
+![启用远程桌面连接的 Linux 映像](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
 > 启用**远程桌面连接**仅打开**RDP** Linux 计算机上的端口。 您作为一名教师，连接到 Linux 计算机首次使用 SSH 和安装 RDP 和 GUI 包，以便可以连接到更高版本使用 RDP 的 Linux 计算机。 然后，你**发布**图像，以便学生可以通过中的 RDP 连接到 Linux Vm 的学生。 
@@ -54,27 +58,32 @@ ms.locfileid: "65410954"
 
 ![创建实验室后连接到通过 RDP 的模板](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
 
-当选择**RDP**选项，它将下载的 RDP 文件。 您将其打开以连接到 Linux 计算机。 
+有关连接到 VM 使用 SSH 或 rdp 连接的详细信息，请参阅 [使用 SSH 或 RDP]((#connect-using-ssh-or-rdp) 的连接。 
 
 ## <a name="teachers-connecting-to-a-student-vm-using-rdp"></a>连接到 VM 的学生的教师使用 RDP
-实验室所有者 （教师/教授） 可以连接到 VM 的学生通过切换到**虚拟机**查看，并选择**连接**图标。 在此之前，必须教师**发布**通过 RDP 和 GUI 包在其上安装的模板映像。 
+教师/教授可以连接到 VM 的学生通过切换到**虚拟机**查看，并选择**连接**图标。 在此之前，必须教师**发布**通过 RDP 和 GUI 包在其上安装的模板映像。 
 
 ![连接到 VM 的学生的教师](../media/how-to-enable-remote-desktop-linux/teacher-connect-to-student-vm.png)
+
+有关连接到 VM 使用 SSH 或 rdp 连接的详细信息，请参阅 [使用 SSH 或 RDP]((#connect-using-ssh-or-rdp) 的连接。 
 
 ## <a name="students-connecting-to-the-student-vm"></a>连接到 VM 的学生的学生
 实验室所有者 （教师/教授） 后，学生可以中它们对 Linux Vm 的 RDP**发布**模板在计算机上安装的 VM 通过 RDP 和 GUI 包。 下面是相关步骤： 
 
 1. 当一名学生在登录到 Labs 门户网站直接 (`https://labs.azure.com`) 或通过使用注册链接 (`https://labs.azure.com/register/<registrationCode>`)，显示一个磁贴的每个实验室学生有权访问。 
 2. 在磁贴中，选择**启动**如果 VM 已停止。 
-3. 选择“连接”。 此操作下载 RDP 文件到你的计算机。 将其保存并打开以连接到 Linux 计算机通过 RDP。 
+3. 选择“连接”  。 将看到两个选项连接到 VM:**SSH**并**远程桌面**。
 
-    ![学生 VM 的 RDP 下载](../media/how-to-enable-remote-desktop-linux/student-rdp-download.png)
+    ![学生 VM 的连接选项](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 
-    您仍可以使用 SSH 连接到 Linux VM。 选择 **...（省略号）** 才能看到 SSH 选项。 
-    
-    ![学生 VM 的 ssh 配合使用](../media/how-to-enable-remote-desktop-linux/student-ssh.png)
+## <a name="connect-using-ssh-or-rdp"></a>使用 SSH 或 RDP 连接
+如果选择**SSH**选项，请参阅以下**连接到虚拟机**对话框：  
 
-    复制并保存上的 SSH 连接字符串**连接到虚拟机**对话框。 从 SSH 终端使用此连接字符串（如 [Putty](https://www.putty.org/)）连接到虚拟机。 
+![SSH 连接字符串](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
+
+选择**复制**按钮旁边的文本框，以将其复制到剪贴板。 保存的 SSH 连接字符串。 从 SSH 终端使用此连接字符串（如 [Putty](https://www.putty.org/)）连接到虚拟机。
+
+如果选择**RDP**选项，RDP 文件下载到你的计算机。 将其保存并打开它以连接到计算机。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

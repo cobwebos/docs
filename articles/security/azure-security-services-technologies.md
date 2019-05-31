@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 13183282e5e607f0052194a474203f97e0160adb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c100bd6815e003d49efcdca65b16d7efa35ac34
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610913"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234242"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
 
@@ -69,7 +69,7 @@ ms.locfileid: "60610913"
 | [Azure&nbsp;角色&nbsp;基于&nbsp;访问控制](../active-directory/role-based-access-control-configure.md)|一项访问控制功能，它基于用户在组织内的角色，仅允许用户访问其必须访问的内容。  |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)|一个基于云的身份验证存储库，它支持基于云的多租户目录和 Azure 中的多标识管理服务。  |
 | [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)|一项标识管理服务，帮助控制客户使用基于 Azure 的应用程序时如何注册、登录和管理其配置文件。   |
-| [Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-overview.md)| Active Directory 域服务基于云的托管版本。 |
+| [Azure Active Directory 域服务](../active-directory-domain-services/overview.md)| Active Directory 域服务基于云的托管版本。 |
 | [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)| 一项安全性设置，它会采用几种形式的身份验证和验证，再允许访问安全信息。 |
 
 ## <a name="backup-and-disaster-recovery"></a>备份和灾难恢复

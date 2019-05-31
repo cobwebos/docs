@@ -3,19 +3,19 @@ title: 协作性翻译框架 (CTF) 报告 - 文本翻译 API
 titlesuffix: Azure Cognitive Services
 description: 如何使用协作性翻译框架 (CTF) 报告。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 178747ffddbadb06751ce0db7d16701c3cea7416
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: v-pawal
+ms.openlocfilehash: 166c152828a91889d7d1d7eb6f8c03dac48172f5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712816"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389377"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
 
@@ -70,7 +70,7 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 >            int? take);
 > ```
 
-**参数**
+**Parameters**
 
 | 参数 | 描述 |
 |:---|:---|
@@ -105,7 +105,7 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 
 **异常**
 
-| 异常 | 消息 | 条件 |
+| 异常 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | 参数“**maxDateUtc**”必须大于或等于“**minDateUtc**”。| 参数 **maxDateUtc** 的值小于参数 **minDateUtc** 的值。|
 | TranslateApiException | IP 超过配额。| <ul><li>达到每分钟请求数限制。</li><li>请求大小一直限制为 10000 个字符。</li><li>每小时和每日配额限制了 Microsoft Translator API 将接受的字符数。</li></ul>|
@@ -141,7 +141,7 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 >             int? take);
 > ```
 
-**参数**
+**Parameters**
 
 | 参数 | 描述 |
 |:---|:---|
@@ -178,7 +178,7 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 
 **异常**
 
-| 异常 | 消息 | 条件 |
+| 异常 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | 参数“**maxDateUtc**”必须大于或等于“**minDateUtc**”。| 参数 **maxDateUtc** 的值小于参数 **minDateUtc** 的值。|
 | TranslateApiException | IP 超过配额。| <ul><li>达到每分钟请求数限制。</li><li>请求大小一直限制为 10000 个字符。</li><li>每小时和每日配额限制了 Microsoft Translator API 将接受的字符数。</li></ul>|
