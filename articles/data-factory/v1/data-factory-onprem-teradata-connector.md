@@ -300,8 +300,8 @@ ms.locfileid: "60610744"
 | Integer |Int32 |
 | Number |Double |
 | SmallInt |Int16 |
-| date |DateTime |
-| 时间 |TimeSpan |
+| Date |DateTime |
+| Time |TimeSpan |
 | Time With Time Zone |String |
 | Timestamp |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
