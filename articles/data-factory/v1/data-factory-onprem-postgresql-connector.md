@@ -321,7 +321,7 @@ ms.locfileid: "61461997"
 | circle | |Byte[], String |
 | date | |Datetime |
 | daterange | |String |
-| 双精度 |float8 |Double |
+| double precision |float8 |Double |
 | inet | |Byte[], String |
 | intarry | |String |
 | int4range | |String |
@@ -330,14 +330,14 @@ ms.locfileid: "61461997"
 | interval [fields] [(p)] | |Timespan |
 | json | |String |
 | jsonb | |Byte[] |
-| 折线图 | |Byte[], String |
+| line | |Byte[], String |
 | lseg | |Byte[], String |
 | macaddr | |Byte[], String |
 | money | |Decimal |
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
 | numrange | |String |
 | oid | |Int32 |
-| 路径 | |Byte[], String |
+| path | |Byte[], String |
 | pg_lsn | |Int64 |
 | point | |Byte[], String |
 | polygon | |Byte[], String |
@@ -345,7 +345,7 @@ ms.locfileid: "61461997"
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| Text | |String |
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
