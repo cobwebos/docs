@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: c814f4bb0cc24350e45400d141c97d1b2eb4998d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864385"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237794"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>快速入门：通过自己的 Notebook 服务器开始使用 Azure 机器学习
 
@@ -35,12 +35,27 @@ ms.locfileid: "65864385"
 * 一个 Azure 机器学习服务工作区
 * 一个工作区配置文件 (.azureml/config.json)  。
 
-从[创建 Azure 机器学习服务工作区](setup-create-workspace.md#portal)获取所有这些先决条件。
+从[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)获取所有这些先决条件。
+
 
 
 ## <a name="use-the-workspace"></a>使用工作区
 
-在工作区配置文件所在目录中创建一个脚本或启动一个笔记本。 运行使用 SDK 基本 API 来跟踪试验运行的代码。
+在工作区配置文件 (.azureml/config.json)  所在目录中创建一个脚本或启动一个笔记本。
+
+### <a name="attach-to-workspace"></a>附加到工作区
+
+此代码从要附加到工作区的配置文件中读取信息。
+
+```
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+### <a name="log-values"></a>记录值
+
+运行使用 SDK 基本 API 来跟踪试验运行的代码。
 
 1. 在工作区中创建一个试验。
 1. 将单个值记录到试验中。

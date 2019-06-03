@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 28ba4397ca5a5fd3c281555238fc7eec8a82943d
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: b0e48a0db63eded9e9c4921d33b03af39656ce0d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413669"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299268"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>教程：在 .NET Core 应用中使用功能标志
 
-.NET Core 功能管理库能够顺畅地支持在 .NET 或 ASP.NET Core 应用程序中实施功能标志。 使用这些库能够以更强的声明性将功能标志添加到代码中，因此不需要手动编写这些功能标志的所有 `if` 语句。 这些库在幕后管理功能标志生命周期（例如刷新和缓存标志状态、保证标志状态在请求调用期间保持不变）。 此外，ASP.NET Core 库提供现成的集成，包括 MVC 控制器操作、视图、路由和中间件。
+.NET Core 功能管理库能够顺畅地支持在 .NET 或 ASP.NET Core 应用程序中实施功能标志。 使用这些库能够以更强的声明性将功能标志添加到代码中，因此不需要手动编写这些功能标志的所有 `if` 语句。 这些库在后台管理功能标志生命周期（例如刷新和缓存标志状态、保证标志状态在请求调用期间保持不变）。 此外，ASP.NET Core 库提供现成的集成，包括 MVC 控制器操作、视图、路由和中间件。
 
 [将功能标志添加到 ASP.NET Core 应用](./quickstart-feature-flag-aspnet-core.md)快速入门介绍了在 ASP.NET Core 应用程序中添加功能标志的多种方法。 本教程将更详细地介绍这些方法。 有关完整参考信息，请参阅 [ASP.NET Core 功能管理文档](https://go.microsoft.com/fwlink/?linkid=2091410)。
 
-本教程介绍如何执行下列操作：
+在本教程中，将了解如何：
 
 > [!div class="checklist"]
 > * 在应用程序的关键组件中添加功能标志，以控制功能可用性。
@@ -112,7 +112,7 @@ config.AddAzureAppConfiguration(options => {
 
 ## <a name="feature-flag-declaration"></a>功能标志声明
 
-每个功能标志有两个组成部分：一个名称，以及用于评估功能状态是否为“打开”（即，其值为 `True`）的一个或多个筛选器的列表。 筛选器定义要启用某个功能的用例。 如果某个功能标志包含多个筛选器，则会按顺序遍历筛选器列表，直到其中一个筛选器确定应启用该功能。 此时，会将该功能标志视为“打开”，并跳过所有剩余的筛选器结果。 如果没有任何筛选器指示应启用该功能，则表示该功能标志为“关闭”。
+每个功能标志有两个组成部分：一个名称，以及用于评估功能状态是否为“打开”（即，其值为 `True`）的一个或多个筛选器的列表。  筛选器定义要启用某个功能的用例。 如果某个功能标志包含多个筛选器，则会按顺序遍历筛选器列表，直到其中一个筛选器确定应启用该功能。 此时，会将该功能标志视为“打开”，并跳过所有剩余的筛选器结果。  如果没有任何筛选器指示应启用该功能，则表示该功能标志为“关闭”。 
 
 功能管理器支持将 *appsettings.json* 用作功能标志的配置源。 以下示例演示如何在 JSON 文件中设置功能标志。
 
@@ -135,9 +135,9 @@ config.AddAzureAppConfiguration(options => {
 
 按照约定，此 JSON 文档的 `FeatureManagement` 节用于功能标志设置。 以上示例演示了三个功能标志，其筛选器已在 *EnabledFor* 属性中定义：
 
-* **FeatureA** 状态为“打开”。
-* **FeatureB** 状态为“关闭”。
-* **FeatureC** 指定包含 *Parameters* 属性的名为 *Percentage* 的筛选器。 *Percentage* 是可配置的筛选器示例，将打开 **FeatureC** 标志的概率指定为 50%。
+* **FeatureA** 状态为“打开”。 
+* **FeatureB** 状态为“关闭”。 
+* **FeatureC** 指定包含 *Parameters* 属性的名为 *Percentage* 的筛选器。 *Percentage* 是可配置的筛选器示例，将打开 **FeatureC** 标志的概率指定为 50%。 
 
 ## <a name="referencing"></a>引用
 
@@ -154,7 +154,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-check"></a>功能标志检查
 
-功能管理的基本模式是首先检查功能标志是否设置为“打开”，如果是，则执行包含的操作。
+功能管理的基本模式是首先检查功能标志是否设置为“打开”，如果是，则执行包含的操作。 
 
 ```csharp
 IFeatureManager featureManager;
@@ -183,7 +183,7 @@ public class HomeController : Controller
 
 ## <a name="controller-action"></a>控制器操作
 
-在 MVC 控制器中，`Feature` 属性可用于控制是要启用整个控制器类还是特定的操作。 以下 `HomeController` 控制器要求 *FeatureA* 状态为“打开”，才能执行其中包含的任何操作。
+在 MVC 控制器中，`Feature` 属性可用于控制是要启用整个控制器类还是特定的操作。 以下 `HomeController` 控制器要求 *FeatureA* 状态为“打开”，才能执行其中包含的任何操作。 
 
 ```csharp
 [Feature(MyFeatureFlags.FeatureA)]
@@ -193,7 +193,7 @@ public class HomeController : Controller
 }
 ```
 
-以下 `Index` 操作要求 *FeatureA* 状态为“打开”才能运行。
+以下 `Index` 操作要求 *FeatureA* 状态为“打开”才能运行。 
 
 ```csharp
 [Feature(MyFeatureFlags.FeatureA)]
@@ -203,7 +203,7 @@ public IActionResult Index()
 }
 ```
 
-当由于控制功能标志状态为“关闭”而阻止了 MVC 控制器或操作时，将调用已注册的 `IDisabledFeatureHandler`。 默认的 `IDisabledFeatureHandler` 向客户端返回 404 状态代码，但不返回响应正文。
+当由于控制功能标志状态为“关闭”而阻止了 MVC 控制器或操作时，将调用已注册的 `IDisabledFeatureHandler`。  默认的 `IDisabledFeatureHandler` 向客户端返回 404 状态代码，但不返回响应正文。
 
 ## <a name="view"></a>查看
 
@@ -262,6 +262,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 本教程已介绍如何利用 `Microsoft.FeatureManagement` 库在 ASP.NET Core 应用程序中实施功能标志。 有关 ASP.NET Core 和应用程序配置中的功能管理支持的详细信息，请参阅以下资源。
 
-* [ASP.NET Core 功能标志示例代码]()
-* [Microsoft.FeatureManagement 文档]()
+* [ASP.NET Core 功能标志示例代码](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Microsoft.FeatureManagement 文档](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [管理功能标志](./manage-feature-flags.md)

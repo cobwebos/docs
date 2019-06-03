@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6f85b0088fac97f4b9f2dd2835e3052cb598a987
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6c48aaf404803c45122ed3fad0d6af1345406f7b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142764"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239666"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块进行部署（预览版）
 
@@ -60,29 +60,29 @@ Azure IoT Edge 设备：
 
 1. 导航到 Azure Notebooks 项目。 可以从 [Azure 门户](https://portal.azure.com)中的 Azure 机器学习服务工作区导航到该处，也可以通过使用 Azure 帐户登录到 [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) 来这样做。
 
-2. 选择“上传 GitHub 存储库”。
+2. 选择“上传 GitHub 存储库”  。
 
-3. 提供以下 GitHub 存储库名称：`Azure/ai-toolkit-iot-edge`。 如果要将项目设为专用，请取消选中“公共”框。 选择“导入”。 
+3. 提供以下 GitHub 存储库名称：`Azure/ai-toolkit-iot-edge`。 如果要将项目设为专用，请取消选中“公共”框  。 选择“导入”  。 
 
-4. 导入完成后，导航到新的 ai-toolkit-iot-edge 项目，然后打开“IoT Edge 异常情况检测教程”文件夹。 
+4. 导入完成后，导航到新的 ai-toolkit-iot-edge 项目，然后打开“IoT Edge 异常情况检测教程”文件夹   。 
 
-5. 验证项目是否正在运行。 如果没有，请选择“在免费计算上运行”。
+5. 验证项目是否正在运行。 如果没有，请选择“在免费计算上运行”  。
 
    ![在免费计算上运行](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
 
-6. 打开 aml_config/config.json 文件。
+6. 打开 aml_config/config.json 文件  。
 
-7. 编辑配置文件以包含以下值：Azure 订阅 ID、订阅中的资源组以及 Azure 机器学习服务工作区名称。 可以从 Azure 工作区的“概述”部分获取所有这些值。 
+7. 编辑配置文件以包含以下值：Azure 订阅 ID、订阅中的资源组以及 Azure 机器学习服务工作区名称。 可以从 Azure 工作区的“概述”部分获取所有这些值  。 
 
 8. 保存 config 文件。
 
-9. 打开 00-anomaly-detection-tutorial.ipynb 文件。
+9. 打开 00-anomaly-detection-tutorial.ipynb 文件  。
 
-10. 出现提示时，选择“Python 3.6”内核，然后选择“设置内核”。
+10. 出现提示时，选择“Python 3.6”内核，然后选择“设置内核”   。
 
 11. 根据注释中的说明编辑笔记本中的第一个单元格。 使用添加到配置文件的相同资源组、订阅 ID 和工作区名称。
 
-12. 通过选择它们并选择“运行”或按下 `Shift + Enter` 来运行笔记本中的单元格。
+12. 通过选择它们并选择“运行”或按下 `Shift + Enter` 来运行笔记本中的单元格  。
 
     >[!TIP]
     >异常情况检测教程笔记本中的一些单元是可选的，因为它们创建了一些用户可能拥有或可能没有的资源，如 IoT 中心。 如果将现有资源信息放在第一个单元格中，则在运行创建新资源的单元格时会收到错误，因为 Azure 不会创建重复的资源。 这没什么关系，可以忽略错误或完全跳过这些可选部分。 
@@ -95,15 +95,15 @@ Azure IoT Edge 设备：
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 Azure 机器学习服务工作区。 
 
-2. 概述部分列出了工作区详细信息及其相关资源。 选择“注册表”值，该值应为工作区名称，后跟随机数字。 
+2. 概述部分列出了工作区详细信息及其相关资源  。 选择“注册表”值，该值应为工作区名称，后跟随机数字  。 
 
-3. 在容器注册表中，选择“存储库”。 应会看到一个名为“tempanomalydetection”的存储库，它是通过在前面部分中运行的笔记本创建的。 
+3. 在容器注册表中，选择“存储库”  。 应会看到一个名为“tempanomalydetection”的存储库，它是通过在前面部分中运行的笔记本创建的  。 
 
-4. 选择“tempanomalydetection”。 应看到存储库中有一个标记：1。 
+4. 选择“tempanomalydetection”  。 应看到存储库中有一个标记：1  。 
 
-   现在你已知道注册表名称、存储库名称和标记，你知道了容器的完整映像路径。 映像路径如下所示 \<registry_name\>.azurecr.io/tempanomalydetection:1。 映像路径可用于将此容器部署到 IoT Edge 设备。 
+   现在你已知道注册表名称、存储库名称和标记，你知道了容器的完整映像路径。 映像路径如下所示 \<registry_name\>.azurecr.io/tempanomalydetection:1  。 映像路径可用于将此容器部署到 IoT Edge 设备。 
 
-5. 在容器注册表中，选择“访问密钥”。 应看到多个访问凭据，包括“登录服务器”以及管理员用户的“用户名”和“密码”。
+5. 在容器注册表中，选择“访问密钥”  。 应看到多个访问凭据，包括“登录服务器”以及管理员用户的“用户名”和“密码”    。
 
    这些凭据可以包含在部署清单中，使 IoT Edge 设备能够从注册表中拉取容器映像。 
 
@@ -137,17 +137,17 @@ Azure IoT Edge 设备：
 
 以下步骤介绍如何设置 Visual Studio Code，以便监视到达 IoT 中心的设备到云消息。
 
-1. 在 Visual Studio Code 中，选择“IoT 中心设备”。
+1. 在 Visual Studio Code 中，选择“IoT 中心设备”。 
 
-2. 选择 **...**，然后从菜单中选择“设置 IoT 中心连接字符串”。
+2. 选择 **...** ，然后从菜单中选择“设置 IoT 中心连接字符串”。 
 
    ![设置 IoT 中心连接字符串](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. 在页面顶部打开的文本框中，输入你的 IoT 中心的 iothubowner 连接字符串。 你的 IoT Edge 设备应当会出现在“IoT 中心设备”列表中。
 
-4. 再次选择 **...**，然后选择“开始监视 D2C 消息”。
+4. 再次选择“...”  ，然后选择“开始监视内置事件终结点”。 
 
-5. 观察每五秒来自 tempSensor 的消息。 消息正文包含 machinelearningmodule 提供的名为 anomaly、值为 true 或 false 的属性。 如果模型成功运行，**AzureMLResponse** 属性包含值“OK”。
+5. 观察每五秒来自 tempSensor 的消息。 消息正文包含 machinelearningmodule 提供的名为 anomaly、值为 true 或 false 的属性  。 如果模型成功运行，**AzureMLResponse** 属性包含值“OK”。
 
    ![消息正文中的 Azure 机器学习服务响应](./media/tutorial-deploy-machine-learning/ml-output.png)
 

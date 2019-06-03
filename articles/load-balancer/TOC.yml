@@ -18,6 +18,9 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: 创建标准负载均衡器 - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
+    - name: 创建标准负载均衡器 - Azure 资源管理器模板
+      displayName: ARM
+      href: quickstart-load-balancer-standard-public-template.md
 - name: 教程
   items:
     - name: 对传入 VM 的 Internet 流量进行负载均衡

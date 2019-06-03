@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861534"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253068"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的“Azure AD 密码重置”
 
@@ -29,7 +29,7 @@ ms.locfileid: "65861534"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 至少必须运行 Windows 10 2018 年 4 月更新版，且设备必须符合下述条件之一：
+* 至少必须运行 Windows 10 2018 年 4 月更新版 (v1803)，且设备必须符合下述条件之一：
    * [已加入 Azure AD](../device-management-azure-portal.md)，或者
    * [已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)，可以通过网络连接到域控制器。
 * 必须启用 Azure AD 自助密码重置。
@@ -122,7 +122,7 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 * 目前不支持从远程桌面进行密码重置。
 
-在 1809 之前的 Windows 10 版本中，如果策略要求使用 Ctrl+Alt+Del，，则“重置密码”将无效。 
+在 v1809 之前的 Windows 10 版本中，如果策略要求使用 Ctrl+Alt+Del，则“重置密码”将无效。 
 
 如果锁屏通知已关闭，则“重置密码”将无效。 
 

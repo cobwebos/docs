@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 28cc2bf4794620641fb6af46bd4017d74f87e955
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 67334a0e8ae3e6dcca86830cd088e6e446331aee
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666982"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306711"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>教程：清理独立群集
 
@@ -63,7 +63,7 @@ The cluster is successfully removed.
 * 登录到 AWS 帐户
 * 转到 EC2 控制台。
 * 选择在本教程的第一部分中创建的三个节点。
-* 单击“操作” > “实例状态” > “终止”
+* 单击“操作”   > “实例状态”   > “终止” 
 
 ## <a name="next-steps"></a>后续步骤
 

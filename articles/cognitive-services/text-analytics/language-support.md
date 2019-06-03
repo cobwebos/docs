@@ -10,22 +10,26 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4f1ce8fd44a501f594f3093789d1ef03e664d018
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69c14c6b98b572bc413f5a35696269e13344387e
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829542"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417313"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 
-此文章介绍了每个操作支持的语言： 情绪分析、 关键短语提取、 语言检测和命名的实体识别。
+本文介绍了以下每项操作支持哪些语言：情绪分析、关键短语提取、语言检测和命名的实体识别。
 
 ## <a name="language-detection"></a>语言检测
 
-文本分析 API 可以检测多达 120 种不同的语言。 语言检测返回一种语言的“脚本”。 例如，对于短语“I have a dog”，它将返回 `en` 而非 `en-US`。 唯一的特例是中文，对于中文，如果语言检测功能可以确定所提供的文本的脚本，则它将返回 `zh_CHS` 或 `zh_CHT`。 当无法识别中文文档的具体脚本时，它将简单地返回 `zh`。
+文本分析 API 可以检测到各种语言、 变体、 方言和某些区域和文化的语言。  语言检测返回一种语言的“脚本”。 例如，对于短语“I have a dog”，它将返回 `en` 而非 `en-US`。 唯一的特例是中文，对于中文，如果语言检测功能可以确定所提供的文本的脚本，则它将返回 `zh_CHS` 或 `zh_CHT`。 当无法识别中文文档的具体脚本时，它将简单地返回 `zh`。
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>情绪分析、 关键短语提取和命名的实体识别
+我们未发布此功能的语言的确切列表，但它可以检测各种语言、 变体、 方言和某些区域和文化的语言。 
+
+如果有较少使用的语言所表示的内容，则可以尝试语言检测，以查看是否返回代码。 无法检测的语言的响应为 `unknown`。
+
+## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>情绪分析、关键短语提取和命名的实体识别
 
 对于情绪分析、关键短语提取和实体识别，所支持语言的列表更具选择性，因为分析器已优化为适应更多语言的语言规则。
 
@@ -58,9 +62,9 @@ ms.locfileid: "60829542"
 | 瑞典语     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
 | 土耳其语     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
 
-\* 语言支持处于预览状态
+\* 语言支持为预览版
 
-\*\* 命名实体识别并[实体链接](how-tos/text-analytics-how-to-entity-linking.md)都是可用于此语言。    
+\*\* 命名的实体识别和[实体链接](how-tos/text-analytics-how-to-entity-linking.md)均适用于此语言。    
 
 ## <a name="see-also"></a>另请参阅
 

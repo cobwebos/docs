@@ -205,6 +205,8 @@
               href: devtest-lab-announcements.md
             - name: 将支持信息添加到实验室
               href: devtest-lab-internal-support-message.md
+            - name: 在 Azure 开发测试实验室中配置共享映像库
+              href: configure-shared-image-gallery.md
         - name: 选择自定义映像或公式
           href: devtest-lab-comparing-vm-base-image-types.md
         - name: 管理自定义映像

@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: bd68e2803b3b538011cfa37378890f2cc7b22223
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 942f84723bc207c200b36a63ca7f65cb9d7dab59
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906989"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235609"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>快速入门：使用 REST API 和 cURL 训练表单识别器模型并提取表单数据
 
@@ -108,7 +108,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "C
 
 1. 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获取的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
 1. 将 `<modelID>` 替换为在上一部分收到的模型 ID。
-1. 将 `<path to your form>` 替换为你的窗体的文件路径。
+1. 将 `<path to your form>` 替换为你的窗体的文件路径。 例如 c:\temp\file.pdf。 
 1. 将 `<file type>` 替换为文件类型。 支持的类型：pdf、image/jpeg、image/png。
 1. 将 `<subscription key>` 替换为订阅密钥。
 

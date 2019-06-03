@@ -22,7 +22,7 @@ ms.locfileid: "65506963"
 
 ## <a name="before-you-begin"></a>开始之前
 
-ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
+ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级  网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本  网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
 
 如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 可以使用 [az provider list][az-provider-list] 命令检查 ACI 提供程序注册的状态，如下面的示例所示：
 
@@ -30,7 +30,7 @@ ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-Microsoft.ContainerInstance 提供程序应报告为“已注册”，如下面的示例输出所示：
+Microsoft.ContainerInstance  提供程序应报告为“已注册”  ，如下面的示例输出所示：
 
 ```
 Namespace                    RegistrationState
@@ -38,7 +38,7 @@ Namespace                    RegistrationState
 Microsoft.ContainerInstance  Registered
 ```
 
-如果提供程序显示为“未注册”，请使用 [az provider register][az-provider-register] 注册提供程序，如下面的示例所示：
+如果提供程序显示为“未注册”  ，请使用 [az provider register][az-provider-register] 注册提供程序，如下面的示例所示：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -74,13 +74,13 @@ az provider register --namespace Microsoft.ContainerInstance
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。
 
-若要打开 Cloud Shell，请从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，请从代码块的右上角选择“试一试”  。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
 如果希望在本地安装并使用 CLI，则本文需要 Azure CLI 版本 2.0.49 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 使用 [az group create][az-group-create] 命令创建资源组。 以下示例在 westus 位置创建名为 myResourceGroup 的资源组。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 使用 [az group create][az-group-create] 命令创建资源组。 以下示例在 westus 位置创建名为 myResourceGroup 的资源组。  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -88,7 +88,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [az network vnet create][az-network-vnet-create] 命令创建虚拟网络。 以下示例使用 10.0.0.0/8 地址前缀创建一个名为 myVnet 的虚拟网络和一个名为 myAKSSubnet 的子网。 此子网的地址前缀默认为 10.240.0.0/16：
+使用 [az network vnet create][az-network-vnet-create] 命令创建虚拟网络。 以下示例使用 10.0.0.0/8  地址前缀创建一个名为 myVnet  的虚拟网络和一个名为 myAKSSubnet  的子网。 此子网的地址前缀默认为 10.240.0.0/16  ：
 
 ```azurecli-interactive
 az network vnet create \
@@ -99,7 +99,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-现在，使用 [az network vnet subnet create][az-network-vnet-subnet-create] 命令为虚拟节点创建其他子网。 以下示例使用 10.241.0.0/16 地址前缀创建一个名为 myVirtualNodeSubnet 的子网。
+现在，使用 [az network vnet subnet create][az-network-vnet-subnet-create] 命令为虚拟节点创建其他子网。 以下示例使用 10.241.0.0/16  地址前缀创建一个名为 myVirtualNodeSubnet  的子网。
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -157,7 +157,7 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 将 `<subnetId>` 替换为上一步中获取的 ID，然后将 `<appId>` 和 `<password>` 替换为 
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为  myAKSCluster 的群集。 将 `<subnetId>` 替换为上一步中获取的 ID，然后将 `<appId>` 和 `<password>` 替换为 
 
 ```azurecli-interactive
 az aks create \
@@ -201,7 +201,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出依次显示了所创建的单个 VM 节点以及用于 Linux 的虚拟节点 virtual-node-aci-linux：
+以下示例输出依次显示了所创建的单个 VM 节点以及用于 Linux 的虚拟节点 virtual-node-aci-linux  ：
 
 ```
 $ kubectl get nodes
@@ -280,7 +280,7 @@ kubectl run -it --rm virtual-node-test --image=debian
 apt-get update && apt-get install -y curl
 ```
 
-现在使用 `curl` 访问 Pod 的地址，例如 *http://10.241.0.4*。 提供上一个 `kubectl get pods` 命令中所示的你自己的内部 IP 地址：
+现在使用 `curl` 访问 Pod 的地址，例如 *http://10.241.0.4* 。 提供上一个 `kubectl get pods` 命令中所示的你自己的内部 IP 地址：
 
 ```console
 curl -L http://10.241.0.4

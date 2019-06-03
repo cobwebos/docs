@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2018
 ms.author: kumud
-ms.openlocfilehash: 44094a38fff17908fd5ea851209130f89a49c988
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 23093cd8bcb5793b9e5b9abc835f64233e666ce1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707020"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241746"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
-Azure 虚拟网络允许许多类型的 Azure 资源（例如 Azure 虚拟机 (VM)）以安全方式彼此通信、与 Internet 通信，以及与本地网络通信。 一个虚拟网络局限于一个区域；但是，可以使用虚拟网络对等互连将不同区域的多个虚拟网络连接起来。
+Azure 虚拟网络允许许多类型的 Azure 资源（例如 Azure 虚拟机 (VM)）以安全方式彼此通信、与 Internet 通信，以及与本地网络通信。 虚拟网络的范围限定为单个 Azure 区域。 Azure [区域](https://azure.microsoft.com/global-infrastructure/regions/)是一组数据中心，部署在定义了延迟的外围中，并通过专用的区域性低延迟网络互相连接。 
+
+虚拟网络由子网组成。 子网是虚拟网络中某个范围内的 IP 地址。 与虚拟网络一样，子网的范围限定为单个 Azure 区域。 
+
+可以使用虚拟网络对等互连将不同区域的多个虚拟网络连接起来。
 
 Azure 虚拟网络提供以下重要功能：
 

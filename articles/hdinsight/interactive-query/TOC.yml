@@ -320,12 +320,14 @@
       maintainContext: true
     - name: 网络访问
       items:
+        - name: HDInsight 虚拟网络体系结构
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: 使用防火墙限制出站流量
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: Azure VNet 中的 HDInsight
           href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: 将 HDInsight 与本地网络相连
           href: ../connect-on-premises-network.md
-          maintainContext: true
     - name: 使用 Azure Monitor 日志进行监视
       items:
         - name: 使用 Azure Monitor 日志

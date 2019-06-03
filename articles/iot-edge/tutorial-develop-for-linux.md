@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41589dccae4e1259e4dc9368d5825ba770b4bdcc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 11fa72f5853350c76b2a8d0aa4fd7b96b598b670
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146700"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303852"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教程：开发适用于 Linux 设备的 IoT Edge 模块
 
@@ -42,18 +42,18 @@ ms.locfileid: "66146700"
 
 开发 IoT Edge 模块时，了解开发计算机和最终将部署模块的目标 IoT Edge 设备之间的差异非常重要。 为保存模块代码而生成的容器必须与*目标设备*的操作系统 (OS) 匹配。 例如，最常见的方案是在 Windows 计算机上开发面向运行 IoT Edge 的 Linux 设备的模块。 在这种情况下，容器操作系统将为 Linux。 在学习本教程的过程中，请记住*开发计算机 OS* 和*容器 OS* 之间的差异。
 
-本教程针对运行 IoT Edge 的 Linux 设备。 只要开发计算机可以运行 Linux 容器，就可以使用首选开发计算机操作系统。 我们建议使用 Visual Studio Code 进行 Linux 设备开发，这也是本教程将使用的工具。 还可以使用 Visual Studio 2017，但两个工具提供的支持存在差异。
+本教程针对运行 IoT Edge 的 Linux 设备。 只要开发计算机可以运行 Linux 容器，就可以使用首选开发计算机操作系统。 我们建议使用 Visual Studio Code 进行 Linux 设备开发，这也是本教程将使用的工具。 还可以使用 Visual Studio，但这两个工具提供的支持存在差异。
 
-下表列出 Visual Studio Code 和 Visual Studio 2017 支持的 **Linux 容器**开发方案。
+下表列出了 Visual Studio Code 和 Visual Studio 支持的 **Linux 容器**开发方案。
 
-|   | Visual Studio Code | Visual Studio 2017 |
+|   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Linux 设备体系结构** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
 | **Azure 服务** | Azure Functions <br> Azure 流分析 <br> Azure 机器学习 |   |
 | **语言** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **详细信息** | [适用于 Visual Studio Code 的 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [适用于 Visual Studio 2017 的 Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **详细信息** | [适用于 Visual Studio Code 的 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [适用于 Visual Studio 2017 的 Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)、[适用于 Visual Studio 2019 的 Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-本教程讲解适用于 Visual Studio Code 的开发步骤。 如果想要使用 Visual Studio 2017，请参阅[使用 Visual Studio 2017 为 Azure IoT Edge 开发和调试模块](how-to-visual-studio-develop-module.md)中的说明。
+本教程讲解适用于 Visual Studio Code 的开发步骤。 如果想要使用 Visual Studio，请参阅[使用 Visual Studio 2019 为 Azure IoT Edge 开发和调试模块](how-to-visual-studio-develop-module.md)中的说明。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -284,7 +284,7 @@ Visual Studio Code 现在有权访问容器注册表，因此可以将解决方�
 
 SampleModule 代码通过其输入队列接收消息，并通过其输出队列传递消息。 部署清单声明了从 tempSensor 将消息传递到 SampleModule，再将消息从 SampleModule 转发到 IoT 中心的路由。 适用于 Visual Studio Code 的 Azure IoT Tools 允许查看从各个设备到达 IoT 中心的消息。 
 
-1. 在 Visual Studio Code 资源管理器中，右键单击想要监视的 IoT Edge 设备，然后选择“开始监视 D2C 消息”  。 
+1. 在 Visual Studio Code 资源管理器中，右键单击想要监视的 IoT Edge 设备，然后选择“开始监视内置事件终结点”  。 
 
 2. 观察 Visual Studio Code 的输出窗口，查看到达 IoT 中心的消息。 
 

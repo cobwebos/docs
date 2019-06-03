@@ -210,6 +210,8 @@
         - name: 基于角色的访问控制
           displayName: rbac
           href: role-based-access-control.md
+        - name: 安全属性
+          href: cosmos-db-security-attributes.md
     - name: 企业就绪情况
       items:
         - name: 联机备份和本地还原

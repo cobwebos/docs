@@ -12,23 +12,23 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e471f447b0c50c9c65923d7135b2b48789728df
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a8a200df2f474cead197a0e74ae7e27927f814d2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470700"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242273"
 ---
 # <a name="security-info-preview-overview"></a>安全信息（预览版）概述
 
-“安全信息”页可帮助你设置双重验证方法和密码重置信息。 它还可以帮助你更新个人安全信息和默认的验证方法。
+“安全信息”页可帮助你设置双重验证方法和密码重置信息。  它还可以帮助你更新个人安全信息和默认的验证方法。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
 >此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
 
-## <a name="security-info-articles"></a>“安全信息”文章
+## <a name="security-info-related-articles"></a>与安全信息相关的文章
 
 有关添加、更新和删除安全信息的详细信息和说明，请（根据所用的方法）参阅以下文章：
 

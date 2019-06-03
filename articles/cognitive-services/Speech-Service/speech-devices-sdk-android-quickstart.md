@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 073166a594088bca04d81883247a5880fcbd1cb7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bd0160073898a5a83af2e7b2bba2dba007c04513
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234496"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425664"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>快速入门：在 Android 上运行语音设备 SDK 示例应用
 
@@ -84,7 +84,7 @@ ms.locfileid: "66234496"
 
 1. 将语音订阅密钥添加到源代码。 如果想要尝试意向识别，还需要添加[语言理解服务](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)订阅密钥和应用程序 ID。
 
-   语音和 LUIS 你的信息进入 MainActivity.java:
+   对于语音和 LUIS，你的信息进入 MainActivity.java:
 
    ```java
     // Subscription
@@ -95,7 +95,7 @@ ms.locfileid: "66234496"
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    如果您使用的会话听录 conversation.java 也需要语音密钥和区域信息：
+    如果使用的会话的脚本，conversation.java 也需要语音密钥和区域信息：
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
@@ -145,7 +145,7 @@ ms.locfileid: "66234496"
 
    ![示例语音设备 SDK 的示例应用程序和选项](media/speech-devices-sdk/qsg-8.png)
 
-1. 新添加的是会话脚本演示。 开始使用启动会话转录。 默认情况下每个人都是来宾，但是如果您的参与者的语音签名它们可以放入文件 /video/participants.properties 在设备上。 若要生成语音签名看[转录对话 (SDK)](how-to-use-conversation-transcription-service.md)。
+1. 请尝试新的会话的脚本演示。 开始使用启动会话转录。 默认情况下，每个人都是来宾。 但是，如果您的参与者的语音签名就可以为文件`/video/participants.properties`在设备上。 若要生成语音签名，请查看[转录对话 (SDK)](how-to-use-conversation-transcription-service.md)。
 
    ![演示会话脚本应用程序](media/speech-devices-sdk/qsg-15.png)
 

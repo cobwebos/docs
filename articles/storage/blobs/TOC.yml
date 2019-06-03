@@ -275,6 +275,8 @@
           href: storage-blob-event-overview.md
         - name: 页 Blob 功能
           href: storage-blob-pageblob-overview.md
+        - name: 静态网站
+          href: storage-blob-static-website.md
     - name: 如何
       items:
         - name: 创建和管理存储帐户
@@ -353,7 +355,7 @@
         - name: 设置和检索属性与元数据
           href: storage-properties-metadata.md
         - name: 托管静态网站
-          href: storage-blob-static-website.md
+          href: storage-blob-static-website-how-to.md
         - name: 将 Azure CDN 映射到自定义域，以便通过 HTTPS 进行访问
           href: storage-https-custom-domain-cdn.md
         - name: 配置自定义域

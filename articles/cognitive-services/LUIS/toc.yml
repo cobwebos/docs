@@ -400,6 +400,8 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: 资源
   items:
+    - name: 新增功能
+      href: whats-new.md
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 语言和区域支持

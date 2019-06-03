@@ -11,16 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: b114b1c3b1c421c6e6944666e3fd928d2aced966
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f922f9c64f182377365192543305b48659c518da
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225874"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417977"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
 本文包含有关语言理解 (LUIS) 的常见问题的解答。
+
+## <a name="whats-new"></a>新增功能
+
+[了解详细信息](whats-new.md)有关什么是语言理解中的新增功能。
 
 <a name="luis-authoring"></a>
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 01/31/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0dbd0445f4167485172a2b98cec3bb2b2a47ac20
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a54ec7349317fdd8621fecec57cb06ad98f4660b
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668409"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306739"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教程：使用 Yeoman 将容器打包并部署为 Service Fabric 应用程序
 
@@ -92,7 +92,7 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
 
 若要将其他容器服务添加到已使用 Yeoman 创建的应用程序，请执行以下步骤：
 
-1. 将一级目录更改到 **TestContainer** 目录，例如，*./TestContainer*
+1. 将一级目录更改到 **TestContainer** 目录，例如， *./TestContainer*
 2. 运行 `yo azuresfcontainer:AddService`
 3. 将服务命名为“azurevoteback”
 4. 为 Redis 提供容器映像路径 - 'alpine:redis'
@@ -111,7 +111,7 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-在本教程的其余部分中，将在“TestContainer”目录中工作。 例如，*./TestContainer/TestContainer*。 此目录的内容应如下所示。
+在本教程的其余部分中，将在“TestContainer”  目录中工作。 例如， *./TestContainer/TestContainer*。 此目录的内容应如下所示。
 
 ```bash
 $ ls
@@ -120,7 +120,7 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 ## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>使用 Azure 容器注册表的凭据配置应用程序清单
 
-为了让 Service Fabric 能够从 Azure 容器注册表提取容器映像，我们需要提供“ApplicationManifest.xml”中的凭据。
+为了让 Service Fabric 能够从 Azure 容器注册表提取容器映像，我们需要提供“ApplicationManifest.xml”  中的凭据。
 
 登录到 ACR 实例。 使用 **az acr login** 命令完成此操作。 请提供创建容器注册表时所使用的唯一名称。
 
@@ -128,7 +128,7 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 az acr login --name <acrName>
 ```
 
-完成后，该命令会返回“登录成功”消息。
+完成后，该命令会返回“登录成功”  消息。
 
 接下来，运行以下命令以获取容器注册表的密码。 此密码供 Service Fabric 用于对 ACR 进行验证以提取容器映像。
 
@@ -136,7 +136,7 @@ az acr login --name <acrName>
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-在“ApplicationManifest.xml”中，会在前端服务的“ServiceManifestImport”元素下添加代码片段。 为“AccountName”字段插入 **acrName**，从上一命令返回的密码将用于“密码”字段。 本文档末尾提供完整的“ApplicationManifest.xml”。
+在“ApplicationManifest.xml”  中，会在前端服务的“ServiceManifestImport”  元素下添加代码片段。 为“AccountName”  字段插入 **acrName**，从上一命令返回的密码将用于“密码”  字段。 本文档末尾提供完整的“ApplicationManifest.xml”  。
 
 ```xml
 <Policies>
@@ -150,7 +150,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="configure-communication-port"></a>配置通信端口
 
-配置 HTTP 终结点，使客户端能够与服务通信。 打开 *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* 文件，并在“ServiceManifest”元素中声明终结点资源。  添加协议、端口和名称。 在本教程中，服务会在端口 80 上进行侦听。 以下代码片段放置在资源中的 *ServiceManifest* 标记下。
+配置 HTTP 终结点，使客户端能够与服务通信。 打开 *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* 文件，并在“ServiceManifest”  元素中声明终结点资源。  添加协议、端口和名称。 在本教程中，服务会在端口 80 上进行侦听。 以下代码片段放置在资源中的 *ServiceManifest* 标记下。
 
 ```xml
 <Resources>
@@ -164,7 +164,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ```
 
-同样，修改后端服务的服务清单。 打开 *./TestContainer/azurevotebackPkg/ServiceManifest.xml*，并在“ServiceManifest”元素中声明终结点资源。 在本教程中，保留 redis 默认值 6379。 以下代码片段放置在资源中的 *ServiceManifest* 标记下。
+同样，修改后端服务的服务清单。 打开 *./TestContainer/azurevotebackPkg/ServiceManifest.xml*，并在“ServiceManifest”  元素中声明终结点资源。 在本教程中，保留 redis 默认值 6379。 以下代码片段放置在资源中的 *ServiceManifest* 标记下。
 
 ```xml
 <Resources>
@@ -181,7 +181,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="map-container-ports-to-a-service"></a>将容器端口映射到服务
 
-为了公开群集中的容器，我们还需要在“ApplicationManifest.xml”中创建一个端口绑定。 “PortBinding”策略引用了我们在“ServiceManifest.xml”文件中定义的“终结点”。 对这些终结点的传入请求将映射到此处打开和绑定的容器端口。 在“ApplicationManifest.xml” 件中，添加以下代码以将端口 80 和 6379 绑定到终结点。 本文档末尾提供完整的“ApplicationManifest.xml”。
+为了公开群集中的容器，我们还需要在“ApplicationManifest.xml”中创建一个端口绑定。 “PortBinding”  策略引用了我们在“ServiceManifest.xml”  文件中定义的“终结点”  。 对这些终结点的传入请求将映射到此处打开和绑定的容器端口。 在“ApplicationManifest.xml”  件中，添加以下代码以将端口 80 和 6379 绑定到终结点。 本文档末尾提供完整的“ApplicationManifest.xml”  。
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code">
@@ -197,7 +197,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="add-a-dns-name-to-the-backend-service"></a>将 DNS 名称添加到后端服务
 
-为了 Service Fabric 将此 DNS 名称分配给后端服务，需要在“ApplicationManifest.xml”中指定名称。 将“ServiceDnsName”属性添加到“Service”元素，如下所示：
+为了 Service Fabric 将此 DNS 名称分配给后端服务，需要在“ApplicationManifest.xml”  中指定名称。 将“ServiceDnsName”  属性添加到“Service”  元素，如下所示：
 
 ```xml
 <Service Name="azurevoteback" ServiceDnsName="redisbackend.testapp">
@@ -276,7 +276,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
 ```
 
-使用“TestContainer”目录中提供的安装脚本可将应用程序包复制到群集的映像存储、注册应用程序类型并创建应用程序的实例。
+使用“TestContainer”  目录中提供的安装脚本可将应用程序包复制到群集的映像存储、注册应用程序类型并创建应用程序的实例。
 
 ```bash
 ./install.sh

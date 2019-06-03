@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 24869981595cd68eb833f7b176e17a2683127945
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cbf6409efa2fbb56500c6919edc6c741c4a2c45a
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787911"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306759"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
@@ -40,7 +40,7 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
+* 使用以下工作负荷安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
   - **Azure 开发**
 
   ![Azure 开发（在“Web 和云”下）](media/storage-create-geo-redundant-storage/workloads.png)
@@ -82,6 +82,8 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
    | **部署模型** | 资源管理器  | “资源管理器”包含最新功能。|
    | **帐户种类** | StorageV2 | 若要详细了解帐户类型，请参阅[存储帐户类型](../common/storage-introduction.md#types-of-storage-accounts) |
    | **性能** | 标准 | “标准”足以满足示例方案需求。 |
+   | **复制**| 读取访问异地冗余存储 (RA-GRS) | 此设置为示例正常运行所必需。 |
+   |**订阅** | 用户订阅 |有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
    | **复制**| 读取访问异地冗余存储 (RA-GRS) | 此为示例正常运行所必需。 |
    |**订阅** | 用户订阅 |有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions)。 |
    |**ResourceGroup** | myResourceGroup |如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
@@ -194,7 +196,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 通过导航到存储帐户并在“设置”部分中选择“访问密钥”，可以在 Azure 门户中找到此信息   。
 
-此外必须安装所需的依赖项。 要执行此操作，请打开命令提示符，导航到示例文件夹，然后输入 `npm install`。
+安装必需的依赖项。 要执行此操作，请打开命令提示符，导航到示例文件夹，然后输入 `npm install`。
 
 ---
 
@@ -231,11 +233,11 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 此示例在默认目录中创建一个测试文件。 对于 Windows 用户，此目录是 **AppData\Local\Temp**。然后，示例会提供下述可以输入的命令选项：
 
-- 输入 **P** 可执行一个放置 Blob 操作，将临时文件上传到存储帐户。
-- 输入 **L** 可执行一个列表 Blob 操作，列出目前在容器中的 Blob。
-- 输入 **G** 可执行一个获取 Blob 操作，将文件从存储帐户下载到本地计算机。
-- 输入 **D** 可执行一个删除 Blob 操作，将 Blob 从存储帐户中删除。
-- 输入 **E** 可关闭示例，同时也会删除示例创建的所有资源。
+- 输入 **P** 可执行一个放置 Blob 操作，此命令将临时文件上传到存储帐户。
+- 输入 **L** 可执行一个列出 Blob 操作，此命令列出目前在容器中的 Blob。
+- 输入 **G** 可执行一个获取 Blob 操作，此命令将文件从存储帐户下载到本地计算机。
+- 输入 **D** 可执行一个删除 Blob 操作，此命令将 Blob 从存储帐户中删除。
+- 输入 **E** 可关闭示例，此命令也会删除示例创建的所有资源。
 
 如果在 Windows 上运行应用程序，则此示例显示输出。
 

@@ -22,6 +22,8 @@
   items:
     - name: SSO 到本地资源
       href: azuread-join-sso.md
+    - name: 主刷新令牌
+      href: concept-primary-refresh-token.md
     - name: Azure 托管工作站
       href: concept-azure-managed-workstation.md
 - name: 操作指南
@@ -35,7 +37,7 @@
       href: azureadjoin-plan.md
     - name: 计划混合 Azure AD 加入实现
       href: hybrid-azuread-join-plan.md
-    - name: 控制设备的混合 Azure AD 加入
+    - name: 以受控方式验证混合 Azure AD 加入
       href: hybrid-azuread-join-control.md
     - name: 将本地管理员分配到加入 Azure AD 的设备
       href: assign-local-admin.md

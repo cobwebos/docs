@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 05/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 69068304a6bc72f503ed85edf05229f10e4a8bc0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258770"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236355"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
@@ -56,6 +56,9 @@ A.  若要了解目前在哪些区域提供 Data Box Disk，请转到[区域可�
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>问： 使用 Data Box 磁盘可在哪些区域存储数据？
 A. 美国、加拿大、澳大利亚、西欧和北欧、韩国及日本的所有区域支持 Data Box Disk。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
 
+### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>问： 我的 Data Box Disk 在运输过程中是否将跨越国家/地区边界？
+A. Data Box Disk 从其目的地所在的国家/地区发运，不会跨越任何国际边界。 唯一的例外是在欧盟 (EU) 的订单，磁盘可以在任何 EU 国家/地区之间寄送。
+
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>问： 如果 Data Box 磁盘出现任何问题，我应该与谁联系？
 A. 如果 Data Box Disk 出现任何问题，请联系 [Microsoft 支持部门](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)。
 
@@ -65,7 +68,7 @@ A. 如果 Data Box Disk 出现任何问题，请联系 [Microsoft 支持部门](
 A.  不是。 根据数据大小和磁盘的供货情况，你最多会收到 5 个 8 TB 磁盘。  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>问： 如何解锁 Data Box 磁盘？ 
-A.  在 Azure 门户中，转到自己的 Data Box 磁盘订单，并导航到“设备详细信息”。 复制支持密钥。 从 Azure 门户下载并提取适用于操作系统的 Data Box Disk 解锁工具。 在具有要复制到磁盘的数据的计算机上运行该工具。 提供支持密钥以解锁磁盘。 同一个支持密钥可解锁所有磁盘。 
+A.  在 Azure 门户中，转到自己的 Data Box 磁盘订单，并导航到“设备详细信息”。  复制支持密钥。 从 Azure 门户下载并提取适用于操作系统的 Data Box Disk 解锁工具。 在具有要复制到磁盘的数据的计算机上运行该工具。 提供支持密钥以解锁磁盘。 同一个支持密钥可解锁所有磁盘。 
 
 有关分步说明，请转至[在 Windows 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)或[在 Linux 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)。
 
@@ -84,7 +87,7 @@ A. 是的。 可将多个 Data Box 磁盘连接到同一主机来传输数据，
 A.  可以在 Azure 门户中跟踪 Data Box 磁盘的订单状态。 创建订单时，系统还会提示你提供通知电子邮件。 如果已提供，则在订单状态发生任何变化时，你都会收到电子邮件通知。 详细了解如何[配置通知电子邮件](data-box-portal-ui-admin.md#edit-notification-details)。
 
 ### <a name="q-how-do-i-return-the-disks"></a>问： 如何退回磁盘？ 
-A.  Microsoft 会在发货包装中连同 Data Box 磁盘一起提供一个发货标签。 在快递公司寄件时，请将该标签贴在包装箱上，并密封包装。 如果该标签已损坏或丢失，请转到“概述”>“下载发货标签”，并下载新的退货标签。
+A.  Microsoft 会在发货包装中连同 Data Box 磁盘一起提供一个发货标签。 在快递公司寄件时，请将该标签贴在包装箱上，并密封包装。 如果该标签已损坏或丢失，请转到“概述”>“下载发货标签”，并下载新的退货标签。 
 
 ## <a name="migrate-data"></a>迁移数据
 

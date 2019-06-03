@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a2d793a1fbd68d6a71f48b556a77ddcaaaf111
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 93a1ad1f9fbc01cd06b3aaffc8a718634e8454d6
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66112153"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357033"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>教程：将 Displayr 与 Azure Active Directory 集成
 
@@ -91,11 +91,11 @@ ms.locfileid: "66112153"
 
    ![证书下载链接](common/certificatebase64.png)
 
-1. Displayr 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+1. Displayr 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     ![image](common/edit-attribute.png)
 
-1. 除了上述属性，Displayr 应用程序还要求在 SAML 响应中传递回更多的属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤 ****   ****  ：
+1. 除了上述属性，Displayr 应用程序还要求在 SAML 响应中传递回更多的属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤   ：
 
     a. 单击“声明中返回的组”旁边的**笔**。 
 
@@ -123,7 +123,7 @@ ms.locfileid: "66112153"
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
-2. 将扩展添加到浏览器后，单击“设置 Displayr”，此时将定向到 Displayr 应用程序  。 在此处，提供管理员凭据以登录到 Displayr。 浏览器扩展会自动配置应用程序，并自动执行第 3 步到第 6 步。
+2. 将扩展添加到浏览器后，单击“设置 Displayr”，此时将定向到 Displayr 应用程序  。 在此处，提供管理员凭据以登录到 Displayr。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
 
     ![设置配置](common/setup-sso.png)
 

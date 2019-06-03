@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 05/28/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8af927bee11d66c473707b603951fa693f6840e3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540899"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299031"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>什么是 Azure 搜索中的“认知搜索”？
 
@@ -86,7 +86,7 @@ Azure 搜索中的认知技能基于认知服务 API 中的机器学习模型：
 | 自然语言处理 | 进行文本处理以提供见解，并提供有关文本输入的信息。 语言检测、情绪分析和关键短语提取是属于自然语言处理的技能。  | [关键短语提取技能](cognitive-search-skill-keyphrases.md)、[语言检测技能](cognitive-search-skill-language-detection.md)、[情绪分析技能](cognitive-search-skill-sentiment.md) |
 | 文档破解 | 在索引编制期间从非文本源提取或创建文本内容的过程。 光学字符识别 (OCR) 就是一个例子，但它通常是指索引器从应用程序文件中提取内容时使用的核心索引器功能。 提供源文件位置的数据源，以及提供字段映射的索引器定义都是文档破解中的两个关键因素。 | 请参阅[索引器](search-indexer-overview.md) |
 | 造型 | 将文本片段整合到较大的结构，或反之，将较大的文本区块分解成易于管理的大小，以进一步执行下游处理。 | [造型程序技能](cognitive-search-skill-shaper.md)、[文本合并技能](cognitive-search-skill-textmerger.md)、[文本拆分技能](cognitive-search-skill-textsplit.md) |
-| 扩充文档 | 过渡性的内部结构不能在代码中直接访问。 扩充的文档在处理期间生成，但搜索索引中只保留最终输出。 字段映射确定要将哪些数据元素添加到索引。 | 请参阅[访问扩充的文档](cognitive-search-tutorial-blob.md#access-enriched-document)。 |
+| 扩充文档 | 在处理过程中生成的临时内部结构，其最终输出反映在搜索索引中。 技能集决定执行哪些扩充。 字段映射确定要将哪些数据元素添加到索引。 （可选）可以使用存储资源管理器、Power BI 等工具或连接到 Azure Blob 存储的任何其他工具创建知识存储，以保留和浏览丰富的文档。 | 请参阅[知识存储（预览版）](knowledge-store-concept-intro.md)。 |
 | 索引器 |  一种爬网程序，它从外部数据源提取可搜索的数据和元数据，并根据索引与数据源之间字段到字段的映射填充索引，以进行文档破解。 针对认知搜索扩充，索引器会调用技能集，并包含字段映射，以便将扩充输出关联到索引中的目标字段。 索引器定义包含管道操作的所有说明和引用，运行索引器时会调用管道。 | [索引器](search-indexer-overview.md) |
 | 数据源  | 由索引器用来连接 Azure 中受支持类型的外部数据源的对象。 | 请参阅[索引器](search-indexer-overview.md) |
 | 索引 | Azure 搜索中的持久化搜索索引，通过定义字段结构和用法的索引架构生成。 | [Azure 搜索中的索引](search-what-is-an-index.md) | 

@@ -11,10 +11,10 @@ ms.date: 05/13/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 0883b8e5ae2eab39fca6434141d6591432ad341e
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 05/31/2019
 ms.locfileid: "65595708"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
@@ -44,7 +44,7 @@ ms.locfileid: "65595708"
 
 下面这些表按服务类别突出显示了语言可用性；不包括核心语言。 请通过下面的链接了解其他的语言支持、国家/地区和市场可用性。
 
-### <a name="vision"></a>视觉
+### <a name="vision"></a>影像
 
 | | 阿拉伯语 | 保加利亚语 | 加泰罗尼亚语 | 克罗地亚语 | 捷克语 | 丹麦语 | 荷兰语 | 爱沙尼亚语 | 芬兰语 | 希腊语 | 印地语 | 匈牙利语 | 冰岛语 | 印度尼西亚语 | 拉脱维亚语 | 立陶宛语 | 马来语 | 挪威语 | 波兰语 | 罗马尼亚语 | 俄语 | 塞尔维亚语 | 斯洛伐克语 | 斯洛文尼亚语 | 瑞典语 | 泰米尔语 | 泰语 | 土耳其语 | 乌克兰语 | 越南语 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|

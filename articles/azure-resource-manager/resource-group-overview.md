@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2019
+ms.date: 05/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0ad1d12a4a2ca3a293546f2bac85210bb9152269
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b6d84a07de408cedb0e21181c70e5c1481ac62bc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269281"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225905"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
 
@@ -89,9 +89,9 @@ Azure 提供四个级别的管理范围：[管理组](../governance/management-g
 
 ## <a name="resource-providers"></a>资源提供程序
 
-每个资源提供程序提供一组资源以及用于处理这些资源的操作。 例如，若要存储密钥和密码，可以使用 **Microsoft.KeyVault** 资源提供程序。 此资源提供程序提供名为“保管库”的资源类型，用于创建密钥保管库。
+每个资源提供程序提供一组资源以及用于处理这些资源的操作。 例如，若要存储密钥和密码，可以使用 **Microsoft.KeyVault** 资源提供程序。 此资源提供程序提供名为“保管库”的资源类型，用于创建密钥保管库。 
 
-资源类型的名称采用以下格式：{resource-provider}/{resource-type}。 Key Vault 的资源类型为 **Microsoft.KeyVault/vaults**。
+资源类型的名称采用以下格式：{resource-provider}/{resource-type}  。 Key Vault 的资源类型为 **Microsoft.KeyVault/vaults**。
 
 开始部署资源之前，应了解可用的资源提供程序。 了解资源提供程序和资源的名称可帮助确定要部署到 Azure 的资源。 此外，还需要知道每种资源类型的有效位置和 API 版本。 有关详细信息，请参阅[资源提供程序和类型](resource-manager-supported-services.md)。
 
@@ -174,7 +174,21 @@ Azure 资源管理器会分析依赖关系，以确保按正确的顺序创建�
 
 将复杂服务部署到 Azure 时，你可能需要将服务部署到多个区域，并且在继续执行下一步骤前需要检查其运行状况。 可以使用 [Azure 部署管理器](deployment-manager-overview.md)来协调服务的分阶段推出。 通过分阶段推出服务，你可以在服务已部署到所有区域之前发现潜在的问题。 如果不需要这些预防措施，则执行上一部分中的部署操作是更好的选择。
 
-部署管理器当前为专用预览版。
+部署管理器当前为公共预览版。
+
+## <a name="resiliency-of-azure-resource-manager"></a>Azure 资源管理器的复原能力
+
+Azure 资源管理器服务旨在实现复原能力和持续可用性。 REST API 中的资源管理器和控制平面操作（发送到 management.azure.com 的请求）具有以下特性：
+
+* 跨区域分布。 某些服务具有区域性。
+
+* 在具有多个可用性区域的位置上跨可用性区域（以及区域）分布。
+
+* 不依赖于单个逻辑数据中心。
+
+* 从未因维护活动而停机。
+
+这种复原能力适用于通过资源管理器接收请求的服务。 例如，Key Vault 可以利用这种复原能力。
 
 [!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 

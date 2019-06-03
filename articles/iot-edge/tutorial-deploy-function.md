@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2694d0f22acfb34c07220ad0145b933457961931
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5b7d903c8be74e4c0561bb4a857619c9c62f95a9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575936"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239660"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
@@ -40,12 +40,12 @@ ms.locfileid: "64575936"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始本教程之前，你应该已经完成了上一个教程，为 Linux 容器开发设置了开发环境：[为 Linux 设备开发 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件： 
+在开始学习本教程之前，应已完成上一篇教程，了解如何设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件： 
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* [运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
-* 容器注册表，如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
-* 使用 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 配置的 [Visual Studio Code](https://code.visualstudio.com/)。
+* 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
+* 一个容器注册表，例如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
+* 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * [Docker CE](https://docs.docker.com/install/) 已配置为运行 Linux 容器。
 
 要使用 Azure Functions 开发 IoT Edge 模块，请在开发计算机上安装以下附加先决条件： 
@@ -87,11 +87,11 @@ ms.locfileid: "64575936"
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 
-目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发 C 模块。 需要选择针对每种解决方案的体系结构，因为容器是针对每种体系结构类型构建和运行的。 默认值为 Linux AMD64。 
+目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发 C 模块。 你需要选择每种解决方案的目标体系结构，因为容器是针对每种体系结构类型以不同的方式生成和运行的。 默认设置为 Linux AMD64。 
 
-1. 打开命令面板并搜索 **Azure IoT Edge：为边缘解决方案设置默认目标平台**，或选择窗口底部侧栏中的快捷方式图标。 
+1. 打开命令面板并搜索 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或选择窗口底部侧栏中的快捷方式图标。 
 
-2. 在命令面板中，从选项列表中选择目标体系结构。 在本教程中，我们使用 Ubuntu 虚拟机作为 IoT Edge 设备，因此将保留默认的“amd64”  。 
+2. 在命令面板中，从选项列表中选择目标体系结构。 本教程将使用 Ubuntu 虚拟机作为 IoT Edge 设备，因此将保留默认设置 **amd64**。 
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
@@ -222,12 +222,11 @@ ms.locfileid: "64575936"
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-若要查看到达 IoT 中心的所有消息，请在命令面板中运行 **Azure IoT Hub:Start Monitoring D2C Message**。
+若要查看到达 IoT 中心的所有消息，请在命令面板中运行 **Azure IoT Hub:开始监视内置事件终结点**。
 
-也可通过筛选视图来查看从特定设备到达 IoT 中心的所有消息。 右键单击“Azure IoT 中心设备”部分的设备，然后选择“开始监视 D2C 消息”。  
+也可通过筛选视图来查看从特定设备到达 IoT 中心的所有消息。 右键单击“Azure IoT 中心设备”部分中的设备，然后选择“开始监视内置事件终结点”。  
 
-若要停止监视消息，请在命令面板中运行 **Azure IoT Hub:Start Monitoring D2C Message** 命令。 
-
+若要停止监视消息，请在命令面板中运行 **Azure IoT Hub:停止监视内置事件终结点**。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -245,4 +244,3 @@ ms.locfileid: "64575936"
 
 > [!div class="nextstepaction"]
 > [在 Azure 流分析中使用浮动窗口查找平均值](tutorial-deploy-stream-analytics.md)
-

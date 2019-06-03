@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: d42e266de9c958c8a71cc5fa680a78c2278cec6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1a1acde81baa596e71b7e39763b0464c8de2fb86
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956773"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>教程：Azure Active Directory 与 NetDocuments 集成
 
@@ -109,7 +109,7 @@ ms.locfileid: "65956773"
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际的登录 URL 和回复 URL 更新这些值。 存储库 ID 是一个值，它以 CA 开头，后跟与 NetDocuments 存储库关联的由 8 个字符组成的代码。 有关详细信息，可以检查 [NetDocuments 联合身份支持文档](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login)。 或者，如果在使用上述信息进行配置时遇到困难，可以联系 [NetDocuments 客户端支持团队](https://support.netdocuments.com/hc/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际的登录 URL 和回复 URL 更新这些值。 存储库 ID 是一个值，它以 **CA-** 开头，后跟与 NetDocuments 存储库关联的由 8 个字符组成的代码。 有关详细信息，可以检查 [NetDocuments 联合身份支持文档](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login)。 或者，如果在使用上述信息进行配置时遇到困难，可以联系 [NetDocuments 客户端支持团队](https://support.netdocuments.com/hc/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 

@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 194ebcc1f1779c927503e09e9c42a96afddb12c9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575810"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239683"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -38,12 +38,12 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始本教程之前，你应该已经完成了上一个教程，为 Linux 容器开发设置了开发环境：[为 Linux 设备开发 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件： 
+在开始学习本教程之前，应已完成上一篇教程，了解如何设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件： 
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* [运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
-* 容器注册表，如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
-* 使用 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 配置的 [Visual Studio Code](https://code.visualstudio.com/)。
+* 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
+* 一个容器注册表，例如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
+* 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * [Docker CE](https://docs.docker.com/install/) 已配置为运行 Linux 容器。
 
 要使用自定义视觉设备开发 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件： 
@@ -173,9 +173,9 @@ Visual Studio Code 窗口会加载 IoT Edge 解决方案工作区。
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 
-目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发模块。 需要选择针对每种解决方案的体系结构，因为容器是针对每种体系结构类型构建和运行的。 默认值为 Linux AMD64。 
+目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发模块。 需要选择针对每种解决方案的体系结构，因为容器是针对每种体系结构类型构建和运行的。 默认设置为 Linux AMD64。 
 
-1. 打开命令面板并搜索 **Azure IoT Edge：为边缘解决方案设置默认目标平台**，或选择窗口底部侧栏中的快捷方式图标。 
+1. 打开命令面板并搜索 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或选择窗口底部侧栏中的快捷方式图标。 
 
 2. 在命令面板中，从选项列表中选择目标体系结构。 在本教程中，我们使用 Ubuntu 虚拟机作为 IoT Edge 设备，因此将保留默认的“amd64”  。 
 
@@ -437,7 +437,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
    iotedge logs cameraCapture
    ```
 
-在 Visual Studio Code 中右键单击 IoT Edge 设备的名称，选择“开始监视 D2C 消息”。  
+在 Visual Studio Code 中右键单击 IoT Edge 设备的名称，选择“开始监视内置事件终结点”。  
 
 自定义视觉模块中的结果是从 cameraCapture 模块作为消息发送的，其中包括图像为铁杉树或樱花树的概率。 由于图像为铁杉，因此会看到概率为 1.0。 
 
@@ -446,7 +446,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 如果打算继续学习下一篇建议的文章，可以保留已创建的资源和配置，以便重复使用。 还可以继续使用相同的 IoT Edge 设备作为测试设备。 
 
-否则，可以删除本文中使用的本地配置和 Azure 资源，以避免收费。 
+否则，可以删除本文中使用的本地配置和 Azure 资源，以免产生费用。 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 

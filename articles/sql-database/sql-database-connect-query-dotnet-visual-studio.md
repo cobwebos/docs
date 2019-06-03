@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 3959eb789102cd3d54fc7bab32e585b3c09d897b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7870322746d8cb647547e5c85036579611ac3292
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792157"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303309"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>快速入门：使用 Visual Studio 中的 .NET 和 C# 来连接和查询 Azure SQL 数据库
 
@@ -43,7 +43,7 @@ ms.locfileid: "65792157"
   > [!IMPORTANT]
   > 本文中脚本的编写目的是使用 Adventure Works 数据库。 使用托管实例时，必须将 Adventure Works 数据库导入一个实例数据库，或者修改本文中的脚本，以便使用 Wide World Importers 数据库。
 
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) Community、Professional 或 Enterprise 版本。
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community、Professional 或 Enterprise 版本。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 
@@ -51,29 +51,29 @@ ms.locfileid: "65792157"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。
+2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
-3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。 
+3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。 
 
 ## <a name="create-code-to-query-the-sql-database"></a>创建代码来查询 SQL 数据库
 
-1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。 
+1. 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。 
    
-1. 在“新建项目”对话框中，选择“Visual C#”，然后选择“控制台应用(.NET Framework)”。
+1. 在“新建项目”对话框中，选择“Visual C#”，然后选择“控制台应用(.NET Framework)”    。
    
-1. 输入“sqltest”作为项目名称，然后选择“确定”。 创建新项目。 
+1. 输入“sqltest”作为项目名称，然后选择“确定”   。 创建新项目。 
    
-1. 选择“项目” > “管理 NuGet 包”。 
+1. 选择“项目” > “管理 NuGet 包”   。 
    
-1. 在“NuGet 包管理器”中，选择“浏览”选项卡，然后搜索并选择“System.Data.SqlClient”。
+1. 在“NuGet 包管理器”中，选择“浏览”选项卡，然后搜索并选择“System.Data.SqlClient”    。
    
-1. 在“System.Data.SqlClient”页上选择“安装”。 
-   - 如果出现提示，请选择“确定”继续安装。 
-   - 如果显示“接受许可证”窗口，则选择“我接受”。
+1. 在“System.Data.SqlClient”页上选择“安装”   。 
+   - 如果出现提示，请选择“确定”继续安装  。 
+   - 如果显示“接受许可证”窗口，则选择“我接受”   。
    
-1. 安装完成后，可以关闭“NuGet 包管理器”。 
+1. 安装完成后，可以关闭“NuGet 包管理器”  。 
    
-1. 在代码编辑器中，将 Program.cs 内容替换为以下代码。 将值替换为 `<server>`、`<username>`、`<password>` 和 `<database>`。
+1. 在代码编辑器中，将 Program.cs 内容替换为以下代码  。 替换 `<server>`、`<username>`、`<password>` 和 `<database>` 的值。
    
    >[!IMPORTANT]
    >本示例中的代码使用示例 AdventureWorksLT 数据，在创建数据库时可以选择该数据作为源。 如果数据库有不同数据，请在 SELECT 查询中使用自己数据库中的表。 
@@ -134,7 +134,7 @@ ms.locfileid: "65792157"
 
 ## <a name="run-the-code"></a>运行代码
 
-1. 若要运行该应用，请选择“调试” > “开始调试”，或选择工具栏上的“开始”，或按 F5。
+1. 若要运行该应用，请选择“调试” > “开始调试”，或选择工具栏上的“开始”，或按 F5     。
 1. 验证是否返回了数据库中的前 20 个类别/产品行，然后关闭应用窗口。
 
 ## <a name="next-steps"></a>后续步骤

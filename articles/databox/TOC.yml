@@ -111,7 +111,7 @@
           items:
             - name: 通过 Azure 门户管理
               href: data-box-portal-ui-admin.md
-            - name: 排查磁盘问题
+            - name: 排查 Data Box Heavy 问题
               href: data-box-disk-troubleshoot.md
             - name: 联系支持人员
               href: data-box-disk-contact-microsoft-support.md
@@ -121,12 +121,32 @@
           items:
             - name: 什么是 Data Box Heavy？
               href: data-box-heavy-overview.md
+        - name: 教程
+          items:
+            - name: 1 - 顺序
+              href: data-box-heavy-deploy-ordered.md
+            - name: 2 - 设置
+              href: data-box-heavy-deploy-set-up.md
+            - name: 3 - 连接和复制
+              items:
+                - name: 通过 SMB
+                  href: data-box-heavy-deploy-copy-data.md
+            - name: 4 - 返回、上传、验证
+              href: data-box-heavy-deploy-picked-up.md
         - name: 概念
           items:
             - name: 审查要求
               href: data-box-heavy-system-requirements.md
             - name: 了解限制
               href: data-box-heavy-limits.md
+        - name: 如何
+          items:
+            - name: 通过 Azure 门户管理
+              href: data-box-portal-admin.md
+            - name: 排查设备问题
+              href: data-box-troubleshoot.md
+            - name: 联系支持人员
+              href: data-box-disk-contact-microsoft-support.md
     - name: 资源
       items:
         - name: Data Box 产品
