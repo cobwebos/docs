@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8b9709e7294e8cb7819afe3ec9f6eb5a06427
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 7110d7004ae9be58bb150674d516692049507608
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015428"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299083"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -51,9 +51,9 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 2. 连接器服务器和 Web 应用程序服务器应属于同一个 Active Directory 域，或者跨信任域。 若要配合 Windows 集成身份验证 (IWA) 和 Kerberos 约束委派 (KCD) 使用单一登录 (SSO)，这些服务器必须位于同一个域或信任域中。 如果连接器服务器和 Web 应用程序服务器处于不同的 Active Directory 域，则你需要使用基于资源的委派进行单一登录。 有关详细信息，请参阅[用于使用应用程序代理进行单一登录的 KCD](application-proxy-configure-single-sign-on-with-kcd.md)。
 
-#### <a name="software-requirements"></a>软件要求
+#### <a name="tls-requirements"></a>TLS 要求
 
-在安装应用程序代理连接器之前，需要为 Windows 连接器服务器启用 TLS 1.2。 版本低于 1.5.612.0 的现有连接器继续使用早期版本的 TLS，直到另行通知。 
+在安装应用程序代理连接器之前，需要为 Windows 连接器服务器启用 TLS 1.2。
 
 若要启用 TLS 1.2，请执行以下操作：
 
@@ -67,6 +67,9 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
     ```
 
 2. 重新启动服务器。
+
+>[!Important] 
+> 为了向客户提供最佳加密，我们对应用程序代理服务进行更新，只允许访问 TLS 1.2 协议。 根据客户就绪情况，所做的更改会逐渐推广到只使用 TLS 1.2 协议的客户，不会因为此更改而造成任何影响。 将会在 2019 年 8 月 31 日完全弃用 TLS 1.0 和 1.1。客户会提前收到通知，做好此更改的准备。 为了做好此更改的准备，请确保将所有客户端-服务器和浏览器-服务器组合更新为使用 TLS 1.2，以便能够连接到应用程序代理服务。 这包括用户用来访问那些通过应用程序代理发布的应用程序的客户端。 请查看如何为 [Office 365 中的 TLS 1.2](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) 做准备，了解有用的参考和资源。
 
 ## <a name="prepare-your-on-premises-environment"></a>准备本地环境
 
