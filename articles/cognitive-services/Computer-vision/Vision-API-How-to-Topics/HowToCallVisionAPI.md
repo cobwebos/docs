@@ -166,7 +166,7 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
 
 字段 | Type | 内容
 ------|------|------|
-标记  | `object` | 标记数组的顶级对象
+Tags  | `object` | 标记数组的顶级对象
 tags[].Name | `string`  | 标记分类器中的关键字
 tags[].Score    | `number`  | 置信度分数，介于 0 和 1 之间。
 description  | `object` | 说明的顶级对象。
