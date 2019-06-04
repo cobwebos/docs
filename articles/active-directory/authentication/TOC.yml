@@ -43,8 +43,6 @@
       items:
         - name: MFA 工作原理
           href: concept-mfa-howitworks.md
-        - name: 哪个版本适合？
-          href: concept-mfa-whichversion.md
         - name: 为用户授予许可
           href: concept-mfa-licensing.md
         - name: 管理身份验证提供程序

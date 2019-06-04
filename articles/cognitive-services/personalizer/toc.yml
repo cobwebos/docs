@@ -27,6 +27,9 @@
         - name: 特征 - 操作和上下文
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: 主动学习
+          href: concept-active-learning.md
+          displayName: 'active, inactive'
         - name: 奖励
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -44,7 +47,7 @@
   items:
     - name: 创建并配置个性化体验创建服务
       href: how-to-settings.md
-      displayName: 'azure, portal, settings, evaluation, offline, policy'
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model'
     - name: 分析
       items:
         - name: 脱机评估

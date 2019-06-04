@@ -20,14 +20,6 @@
       href: concepts-dependency-visualization.md
 - name: 操作指南
   items:
-    - name: 迁移最佳做法
-      items:
-        - name: 迁移后安全和管理的最佳做法
-          href: migrate-best-practices-security-management.md
-        - name: 迁移后网络的最佳做法
-          href: migrate-best-practices-networking.md
-        - name: 迁移后成本计算和大小调整的最佳做法
-          href: migrate-best-practices-costs.md
     - name: 迁移示例 - Contoso 系列
       href: contoso-migration-overview.md
     - name: 发现和评估大型环境
