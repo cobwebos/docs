@@ -286,25 +286,25 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 | Salesforce 类型 | 基于 .NET 的类型 |
 | --- | --- |
-| 自动编号 |String |
-| 复选框 |Boolean |
-| 货币 |Decimal |
-| date |DateTime |
-| 日期/时间 |DateTime |
-| 电子邮件 |String |
-| ID |String |
-| 查找关系 |String |
-| 多选择列表 |String |
+| Auto Number |String |
+| Checkbox |Boolean |
+| Currency |Decimal |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Number |Decimal |
-| 百分比 |Decimal |
-| 电话 |String |
-| 选择列表 |String |
+| Percent |Decimal |
+| Phone |String |
+| Picklist |String |
 | Text |String |
-| 文本区域 |String |
-| 文本区域（长型值） |String |
-| 文本区域（丰富） |String |
-| 文本（加密） |String |
-| 代码 |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
 > [!NOTE]
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
