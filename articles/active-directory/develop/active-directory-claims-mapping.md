@@ -87,7 +87,7 @@ ms.locfileid: "65546201"
 | cloud_graph_host_name |
 | cloud_instance_name |
 | cnf |
-| 代码 |
+| code |
 | controls |
 | credential_keys |
 | csr |
@@ -97,7 +97,7 @@ ms.locfileid: "65546201"
 | domain_dns_name |
 | domain_netbios_name |
 | e_exp |
-| 电子邮件 |
+| email |
 | endpoint |
 | enfpolids |
 | exp |
@@ -158,7 +158,7 @@ ms.locfileid: "65546201"
 | request_nonce |
 | resource |
 | role |
-| 角色 |
+| roles |
 | scope |
 | scp |
 | sid |
