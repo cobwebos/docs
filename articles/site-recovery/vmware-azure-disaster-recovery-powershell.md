@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 使用 Set-ASRVaultContext cmdlet 设置保管库上下文。 设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
 
 > [!TIP]
-> Azure Site Recovery PowerShell 模块 （Az.RecoveryServices 模块） 附带了易于使用的大多数 cmdlet 的别名。 模块中的 cmdlet 采用*\<操作 >-**AzRecoveryServicesAsr**\<对象 >* 并具有采用以下形式的等效别名 *\<操作 >-**ASR**\<对象 >*。 本文使用 cmdlet 别名以便阅读。
+> Azure Site Recovery PowerShell 模块 （Az.RecoveryServices 模块） 附带了易于使用的大多数 cmdlet 的别名。 模块中的 cmdlet 采用 *\<操作 >-**AzRecoveryServicesAsr**\<对象 >* 并具有采用以下形式的等效别名  *\<操作 >-**ASR**\<对象 >* 。 本文使用 cmdlet 别名以便阅读。
 
 在以下示例中，使用来自 $vault 变量的保管库详细信息指定 PowerShell 会话的保管库上下文。
 
@@ -131,7 +131,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 对于此示例，我们具备以下先决条件：
 
 - 配置服务器 (**ConfigurationServer**) 已注册到此保管库。
-- 其他进程服务器 (**ScaleOut-ProcessServer**) 已注册到 ConfigurationServer
+- 其他进程服务器 (**ScaleOut-ProcessServer**) 已注册到 ConfigurationServer 
 - 配置服务器上已设置了帐户（**vCenter_account**、**WindowsAccount**、**LinuxAccount**）。 这些帐户用于添加 vCenter Server 以发现虚拟机，以及在要复制的 Windows 和 Linux 服务器上推送安装移动服务软件。
 
 1. 已注册的配置服务器由 Site Recovery 中的结构对象表示。 获取保管库中结构对象的列表，并标识配置服务器。
@@ -198,7 +198,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 > [!NOTE]
 > 大多数 Azure Site Recovery 操作异步执行。 启动操作时，将提交 Azure Site Recovery 作业，并返回跟踪对象的作业。 此作业跟踪对象可以用于监视操作的状态。
 
-1. 创建名为 ReplicationPolicy 的复制策略，使用的指定属性将 VMware 虚拟机复制到 Azure。
+1. 创建名为 ReplicationPolicy  的复制策略，使用的指定属性将 VMware 虚拟机复制到 Azure。
 
    ```azurepowershell
    $Job_PolicyCreate = New-ASRPolicy -VMwareToAzure -Name "ReplicationPolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
@@ -238,7 +238,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    $Job_FailbackPolicyCreate = New-ASRPolicy -AzureToVMware -Name "ReplicationPolicy-Failback" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
    ```
 
-   使用 $Job_FailbackPolicyCreate 中的作业详细信息，以跟踪操作直到完成。
+   使用 $Job_FailbackPolicyCreate  中的作业详细信息，以跟踪操作直到完成。
 
    * 创建保护容器映射，以便通过配置服务器映射复制策略。
 
@@ -279,7 +279,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 
 ## <a name="add-a-vcenter-server-and-discover-vms"></a>添加 vCenter 服务器，并发现 VM
 
-按 IP 地址或主机名添加 vCenter 服务器。 **-port** 参数指定 vCenter 服务器上要连接到的端口，**-Name** 参数指定要用于 vCenter 服务器的友好名称，**-Account** 参数指定配置服务器上用于发现由 vCenter 服务器托管的虚拟机的帐户句柄。
+按 IP 地址或主机名添加 vCenter 服务器。 **-port** 参数指定 vCenter 服务器上要连接到的端口， **-Name** 参数指定要用于 vCenter 服务器的友好名称， **-Account** 参数指定配置服务器上用于发现由 vCenter 服务器托管的虚拟机的帐户句柄。
 
 ```azurepowershell
 # The $AccountHandles[0] variable holds details of vCenter_account
@@ -452,7 +452,7 @@ Errors           : {}
    #Start the test failover operation
    $TFOJob = Start-ASRTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
    ```
-2. 测试故障转移作业成功完成后，可以注意到在 Azure 中创建了名称包含后缀“-Test”（在本例中即 Win2K12VM1-Test）的虚拟机。
+2. 测试故障转移作业成功完成后，可以注意到在 Azure 中创建了名称包含后缀“-Test”  （在本例中即 Win2K12VM1-Test）的虚拟机。
 3. 现可连接到测试故障转移虚拟机，并验证测试故障转移。
 4. 使用 Start-ASRTestFailoverCleanupJob cmdlet 清理测试故障转移。 此操作将删除在测试故障转移过程中创建的虚拟机。
 
