@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-pawal
-ms.openlocfilehash: 153fd5a8202ca0d919a2254449d846f8798bd10d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 1cfe4038ff422ecba68f110707e9535226ccd4a5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382494"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472099"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -213,6 +213,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 波斯尼亚语(拉丁语系)      | `bs`          |
 | 保加利亚语      | `bg`          |
 | 中文(简体)      | `zh-Hans`          |
+|中文(繁体)|   `zh-Hant`   |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
 | 丹麦语      | `da`          |

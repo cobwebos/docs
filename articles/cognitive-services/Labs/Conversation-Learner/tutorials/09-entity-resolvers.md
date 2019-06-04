@@ -1,5 +1,5 @@
 ---
-title: 对话学习器模型-Microsoft 认知服务中的实体冲突解决程序 |Microsoft Docs
+title: 对话学习器模型-Azure 认知服务中的实体冲突解决程序 |Microsoft Docs
 titleSuffix: Azure
 description: 了解如何在 Conversation Learner 中使用实体解析程序。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7b5f5645a8b5d1d993f87d18503fe270f42c5de5
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 51f74f504f0ad70c8c7f73be8ee6a05add685824
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390025"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475750"
 ---
 # <a name="entity-resolvers"></a>实体解析程序
 
@@ -94,4 +94,4 @@ ms.locfileid: "66390025"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [备用输入](./10-alternative-inputs.md)
+> [枚举实体](./tutorial-enum-set-entity.md)

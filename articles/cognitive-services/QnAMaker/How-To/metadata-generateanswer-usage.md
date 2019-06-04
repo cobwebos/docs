@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 05/30/2019
 ms.author: tulasim
-ms.openlocfilehash: 2454e07e4fc4600f846acc7afbcc19cc0b677450
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3088d0f161496cfd2e1cb8897cef36365ece9962
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792239"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496958"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>获取一个使用 GenerateAnswer API 和元数据的知识答案
 
@@ -47,13 +47,13 @@ ms.locfileid: "65792239"
 
 获取终结点详细信息：
 1. 登录到 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
-1. 在“我的知识库”中，单击知识库的“查看代码”。
+1. 在“我的知识库”中，单击知识库的“查看代码”   。
     ![我的知识库](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. 获取 GenerateAnswer 终结点的详细信息。
 
     ![终结点详细信息](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-还可以在知识库的“设置”选项卡中获取终结点详细信息。
+还可以在知识库的“设置”选项卡中获取终结点详细信息  。
 
 <a name="generateanswer-request"></a>
 
@@ -67,11 +67,11 @@ ms.locfileid: "65792239"
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|HTTP 请求属性|名称|Type|目的|
+|HTTP 请求属性|Name|Type|目的|
 |--|--|--|--|
 |URL 路由参数|知识库 ID|string|知识库的 GUID。|
 |URL 路由参数|QnAMaker 终结点主机|string|部署在 Azure 订阅中的终结点的主机名。 这是可在设置页上后发布该知识库。 |
-|Header|Content-Type|string|发送到 API 的正文的媒体类型。 默认值是: '|
+|Header|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值是: '|
 |Header|授权|string|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|使用设置问题|
 
@@ -86,6 +86,7 @@ JSON 正文具有多个设置：
 |`scoreThreshold`|可选|integer|将返回仅与置信度高于此阈值的答案。 默认值为 0。|
 |`isTest`|可选|boolean|如果设置为 true，返回结果`testkb`搜索索引，而不是已发布的索引。|
 |`strictFilters`|可选|string|若指定此参数，将指示 QnA Maker 仅返回含有指定元数据的答案。 使用`none`以指示响应应具有任何元数据筛选器。 |
+|`RankerType`|可选|string|如果指定为`QuestionOnly`，告知 QnA Maker 搜索仅问题。 如果未指定，QnA Maker 搜索问题和解答。
 
 一个 JSON 正文示例如下所示：
 
@@ -113,13 +114,13 @@ JSON 正文具有多个设置：
 |答案属性 （按评分排序）|目的|
 |--|--|
 |score|排名分数，介于 0 到 100 之间。|
-|ID|分配给答案的唯一 ID。|
+|Id|分配给答案的唯一 ID。|
 |问题|用户提供的问题。|
 |回应|问题的答案。|
 |source|从中提取答案或将其存储在知识库中的源名称。|
 |metadata|与答案关联的元数据。|
 |metadata.name|元数据名称。 （字符串，最大长度：100，必填）|
-|metadata.value:元数据值。 （字符串，最大长度：100，必填）|
+|metadata.value|元数据值。 （字符串，最大长度：100，必填）|
 
 
 ```json
@@ -148,7 +149,7 @@ JSON 正文具有多个设置：
 
 ## <a name="using-metadata-allows-you-to-filter-answers-by-custom-metadata-tags"></a>使用元数据，可按自定义元数据标记筛选答案
 
-添加元数据可以按这些元数据标记筛选答案。 添加的元数据列**视图选项**菜单。 通过单击元数据将元数据添加到您的知识库**+** 图标以添加的元数据对。 此对组成一个键和一个值。
+添加元数据可以按这些元数据标记筛选答案。 添加的元数据列**视图选项**菜单。 通过单击元数据将元数据添加到您的知识库 **+** 图标以添加的元数据对。 此对组成一个键和一个值。
 
 ![添加元数据](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -172,7 +173,7 @@ JSON 正文具有多个设置：
 }
 ```
 
-<name="keep-context"></a>
+<a name="keep-context"></a>
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>使用问题和答案的结果以保持会话上下文
 
@@ -201,6 +202,21 @@ JSON 正文具有多个设置：
             ]
         }
     ]
+}
+```
+
+## <a name="match-questions-only-by-text"></a>按文本匹配问题，
+
+默认情况下，QnA Maker 搜索问题和解答。 如果你想要通过问题仅搜索，若要生成答案，使用`RankerType=QuestionOnly`GenerateAnswer 请求的 POST 正文中。
+
+您可以搜索发布的知识库，通过使用`isTest=false`，或在测试 kb 使用`isTest=true`。
+
+```json
+{
+  "question": "Hi",
+  "top": 30,
+  "isTest": true,
+  "RankerType":"QuestionOnly"
 }
 ```
 

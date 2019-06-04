@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 8c2ed8932e67a2e0c83fe4e3fdf6783c24e56a6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956981"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473516"
 ---
 # <a name="collaborating-with-other-authors"></a>与其他作者协作
 
@@ -31,7 +31,7 @@ LUIS 帐户与一个 [Microsoft Live](https://login.live.com/) 帐户相关联�
 
 ## <a name="luis-app-owner"></a>LUIS 应用所有者
 
-创建应用的帐户是所有者，每个应用都有一个所有者。 应用的[“设置”](luis-how-to-collaborate.md)页上列出了所有者。 当终结点配额达到每月限制的 75% 时，所有者可以删除应用接收电子邮件。 
+创建应用的帐户是所有者，每个应用都有一个所有者。 应用的[“设置”](luis-how-to-collaborate.md)页上列出了所有者  。 终结点配额达到 75%的每月限制时，所有者将收到电子邮件。 
 
 ## <a name="authorization-roles"></a>授权角色
 LUIS 不支持所有者和协作者的不同角色，但有一个例外。 所有者是唯一可以删除应用的帐户。
@@ -42,7 +42,7 @@ LUIS 不支持所有者和协作者的不同角色，但有一个例外。 所�
 无法通过 LUIS 进行所有权转让，但协作者可导出应用，然后通过导入来创建该应用。 请注意，新应用的应用 ID 不同。 需训练、发布新应用，并使用新的终结点。
 
 ## <a name="luis-app-collaborators"></a>LUIS 应用协作者
-应用所有者可向应用添加协作者。 所有者需要在应用[“设置”](luis-how-to-collaborate.md)上添加协作者的电子邮件地址。 协作者具有应用的完全访问权限。 如果协作者删除应用，则应用会从协作者的帐户中删除，但仍存在于所有者帐户中。 
+应用所有者可向应用添加协作者。 所有者需要在应用[“设置”](luis-how-to-collaborate.md)上添加协作者的电子邮件地址  。 协作者具有应用的完全访问权限。 如果协作者删除应用，则应用会从协作者的帐户中删除，但仍存在于所有者帐户中。 
 
 如果想要与协作者共享多个应用，则需在每个应用中添加协作者的电子邮件。 
 
@@ -54,14 +54,14 @@ LUIS 不支持所有者和协作者的不同角色，但有一个例外。 所�
 
 每位作者对其自己版本的应用进行更改。 得到满意的模型后，将新版本导出到 JSON 文件中。  
 
-导出的应用为 JSON 格式的文件，可比较所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。 
+导出的应用为 JSON 格式的文件，可比较所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本  。 将该版本导入原始应用。 
 
 通过此方法可获得一个活动版本、阶段版本和已发布版本的应用。 可在交互式测试窗格中比较三个版本的结果。
 
 ## <a name="manage-multiple-versions-as-apps"></a>将各版本作为应用进行管理
 [导出](luis-how-to-manage-versions.md#export-version)基础版本。 各创建者导入该版本。 导入应用的创建者即为该版本的所有者。 修改应用后，导出该版本。 
 
-导出的应用为 JSON 格式的文件，可与导出的基础版进行比较，发现所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。
+导出的应用为 JSON 格式的文件，可与导出的基础版进行比较，发现所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本  。 将该版本导入原始应用。
 
 ## <a name="collaborator-roles-vs-entity-roles"></a>协作者角色与实体角色
 

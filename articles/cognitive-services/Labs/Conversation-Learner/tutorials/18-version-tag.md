@@ -1,5 +1,5 @@
 ---
-title: 如何对 Conversation Learner 模型使用版本标记 - Microsoft 认知服务 | Microsoft Docs
+title: 如何使用版本标记对话学习器模型-Azure 认知服务 |Microsoft Docs
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用版本控制和标记。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7a1d94700cf84068f918ecff4f4dd433358341e0
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4067c7fb43cc200b8f49dbc14151c69a188e4e8e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388395"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475708"
 ---
 # <a name="how-to-use-version-tagging"></a>如何使用版本标记
 
@@ -109,4 +109,4 @@ ms.locfileid: "66388395"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [演示 - 密码重置](./demo-password-reset.md)
+> [枚举实体和设置实体的操作](./tutorial-enum-set-entity.md)
