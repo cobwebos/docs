@@ -19,6 +19,16 @@
       href: app-service-web-get-started-dotnet-framework.md
     - name: 创建 Node.js 应用
       href: app-service-web-get-started-nodejs.md
+    - name: 使用 Visual Studio Code 创建 Node.js 应用
+      items:
+        - name: 入门
+          href: tutorial-javascript-vscode-get-started.md
+        - name: 创建应用程序
+          href: tutorial-javascript-vscode-create-app.md
+        - name: 部署网站
+          href: tutorial-javascript-vscode-deploy-app.md
+        - name: 查看日志
+          href: tutorial-javascript-vscode-tail-logs.md
     - name: 创建 PHP 应用
       href: app-service-web-get-started-php.md
     - name: 创建 Java 应用
@@ -78,8 +88,12 @@
           href: overview-patch-os-runtime.md
         - name: 安全属性
           href: app-service-security-attributes.md
+    - name: 网络功能
+      href: networking-features.md
     - name: 入站和出站 IP
       href: overview-inbound-outbound-ips.md
+    - name: 虚拟网络集成
+      href: web-sites-integrate-with-vnet.md
     - name: 混合连接
       href: app-service-hybrid-connections.md
     - name: 流量管理器集成
@@ -98,8 +112,6 @@
           href: web-sites-php-configure.md
         - name: 配置 Java
           href: configure-language-java.md
-        - name: 连接到本地资源
-          href: web-sites-integrate-with-vnet.md
     - name: “部署到 Azure”
       items:
         - name: 部署应用

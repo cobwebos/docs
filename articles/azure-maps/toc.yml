@@ -164,6 +164,8 @@
       items:
         - name: 地图控件
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: 绘图工具
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: 服务模块
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
     - name: 资源管理器模板

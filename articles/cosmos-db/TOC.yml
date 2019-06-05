@@ -600,6 +600,8 @@
       items:
         - name: 性能提示
           items:
+            - name: 获取查询执行指标
+              href: profile-sql-api-query.md
             - name: 调整查询性能
               href: sql-api-query-metrics.md
             - name: .NET SDK 性能提示

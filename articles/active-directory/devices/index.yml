@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure AD 设备管理文档
+title: Azure AD 设备标识管理文档
 metadata:
   document_id: null
-  title: Azure Active Directory 设备管理文档 - 教程、概念和参考 | Microsoft Docs
-  description: 了解如何配置和测试 Azure Active Directory 设备管理。
+  title: Azure Active Directory 设备标识管理文档 - 教程、概念和参考 | Microsoft Docs
+  description: 了解如何在 Azure AD 中配置和管理设备标识。
   services: active-directory
   ms.subservice: devices
   author: MicrosoftGuyJFlo
@@ -16,7 +16,7 @@ metadata:
   ms.date: 08/14/2018
   ms.author: joflore
 abstract:
-  description: 用户可通过设备访问企业资产。 为了保护企业资产，IT 管理员需要控制这些设备。 这可确保用户使用满足安全性和符合性标准的设备访问资源。<br>设备管理也是基于设备的条件性访问的基础。 通过基于设备的条件访问，可确保只有受管理设备才能访问环境中的资源。
+  description: 用户可通过 Azure AD 中的设备访问企业资产。 为了保护企业资产，IT 管理员需要在 Azure AD 中管理这些设备标识。 这可确保用户使用满足安全性和符合性标准的设备访问资源。<br>对于基于设备的条件访问，设备标识管理也是其基础。 通过基于设备的条件访问，可确保只有受管理设备才能访问环境中的资源。
 sections:
   - title: 分步教程
     items:

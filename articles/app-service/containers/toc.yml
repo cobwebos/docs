@@ -17,6 +17,18 @@
       href: quickstart-php.md
     - name: 创建 Node.js 应用
       href: quickstart-nodejs.md
+    - name: 使用 Docker 和 Visual Studio Code 创建 Node.js 应用
+      items:
+        - name: 入门
+          href: tutorial-javascript-vscode-get-started.md
+        - name: 创建容器注册表
+          href: tutorial-javascript-vscode-create-registry.md
+        - name: 创建映像
+          href: tutorial-javascript-vscode-containerize-app.md
+        - name: 部署映像
+          href: tutorial-javascript-vscode-deploy-container.md
+        - name: 查看日志
+          href: tutorial-javascript-vscode-tail-logs.md
     - name: 创建 Java 应用
       href: quickstart-java.md
     - name: 创建 Python 应用

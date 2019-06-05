@@ -7,34 +7,10 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建群集和数据库
-      items:
-        - name: Azure 门户
-          href: create-cluster-database-portal.md
-        - name: Azure CLI
-          href: create-cluster-database-cli.md
-        - name: PowerShell
-          href: create-cluster-database-powershell.md
-        - name: 'C#'
-          href: create-cluster-database-csharp.md
-        - name: Python
-          href: create-cluster-database-python.md
-    - name: 引入数据
-      items:
-        - name: 流式处理数据 - 事件中心
-          href: ingest-data-event-hub.md
-        - name: 流式处理数据 - 事件网格
-          href: ingest-data-event-grid.md
-        - name: 流式处理数据 - Kafka
-          href: ingest-data-kafka.md
-        - name: 批处理数据 - Python
-          href: python-ingest-data.md
-        - name: 批处理数据 - Node SDK
-          href: node-ingest-data.md
-        - name: 批处理数据 - .NET 标准 SDK
-          href: net-standard-ingest-data.md
-        - name: 批处理数据 - Logstash
-          href: ingest-data-logstash.md
+    - name: 创建群集和数据库 - Azure 门户
+      href: create-cluster-database-portal.md
+    - name: 引入示例数据
+      href: ingest-sample-data.md
     - name: 查询数据
       items:
         - name: Web UI
@@ -52,12 +28,38 @@
     - name: 数据引入概述
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
+    - name: 数据可视化概述
+      href: viz-overview.md
 - name: 操作指南
   items:
-    - name: 入门
+    - name: 创建群集和数据库
       items:
-        - name: 引入示例数据
-          href: ingest-sample-data.md
+        - name: Azure CLI
+          href: create-cluster-database-cli.md
+        - name: PowerShell
+          href: create-cluster-database-powershell.md
+        - name: 'C#'
+          href: create-cluster-database-csharp.md
+        - name: Python
+          href: create-cluster-database-python.md
+    - name: 引入数据
+      items:
+        - name: 事件中心
+          href: ingest-data-event-hub.md
+        - name: 事件网格
+          href: ingest-data-event-grid.md
+        - name: Kafka
+          href: ingest-data-kafka.md
+        - name: Python
+          href: python-ingest-data.md
+        - name: Node SDK
+          href: node-ingest-data.md
+        - name: .NET 标准 SDK
+          href: net-standard-ingest-data.md
+        - name: Logstash
+          href: ingest-data-logstash.md
+        - name: 使用 Azure 数据工厂复制数据
+          href: data-factory-load-data.md
     - name: 部署
       items:
         - name: DevOps 任务
@@ -82,10 +84,14 @@
               href: power-bi-imported-query.md
             - name: SQL 查询
               href: power-bi-sql-query.md
+        - name: ODBC 连接器
+          href: connect-odbc.md
         - name: Sisense
           href: sisense.md
         - name: Grafana
           href: grafana.md
+        - name: Tableau
+          href: tableau.md
     - name: 管理
       items:
         - name: 管理数据库权限
@@ -104,7 +110,7 @@
       items:
         - name: 使用指标来监视群集运行状况
           href: using-metrics.md
-    - name: 与其他工具配合使用
+    - name: 与其他工具集成
       items:
         - name: Apache Spark 连接器
           href: spark-connector.md
@@ -112,10 +118,6 @@
           href: connect-from-databricks.md
         - name: 在 Jupyter Notebook 和 Kqlmagic 中分析数据
           href: kqlmagic.md
-        - name: 使用 Azure 数据工厂复制数据
-          href: data-factory-load-data.md
-        - name: 与 ODBC 连接
-          href: connect-odbc.md
     - name: 故障排除
       items:
         - name: 创建群集

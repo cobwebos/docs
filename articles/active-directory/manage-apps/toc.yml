@@ -74,7 +74,11 @@
         - name: 配置 SAML 令牌加密（预览版）
           href: howto-saml-token-encryption.md
     - name: 单一登录
-      href: what-is-single-sign-on.md
+      items:
+        - name: 什么是单一登录
+          href: what-is-single-sign-on.md
+        - name: 规划单一登录部署
+          href: plan-sso-deployment.md
     - name: 最终用户门户
       href: end-user-experiences.md
 - name: 操作指南
@@ -93,7 +97,9 @@
           href: application-proxy-configure-for-claims-aware-applications.md
         - name: 注册连接器 - 无提示安装
           href: application-proxy-register-connector-powershell.md
-        - name: 配置本机客户端应用
+        - name: 授予移动和桌面应用对本地 API 的访问权限
+          href: application-proxy-secure-api-access.md
+        - name: 配置移动和桌面客户端应用
           href: application-proxy-configure-native-client-application.md
         - name: 配置自定义主页
           href: application-proxy-configure-custom-home-page.md

@@ -39,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: 测试门户界面
           href: test-createuidefinition.md
+        - name: 请求实时访问
+          href: request-just-in-time-access.md
         - name: 更新托管资源
           href: update-managed-resources.md
         - name: 使用门户发布应用程序定义
@@ -51,6 +53,8 @@
       items:
         - name: 监视托管应用程序
           href: monitor-managed-application-portal.md
+        - name: 批准实时访问
+          href: approve-just-in-time-access.md
 - name: 引用
   items:
     - name: Azure CLI
