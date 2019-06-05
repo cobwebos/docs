@@ -329,7 +329,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 | 属性 | 说明 | 需要 |
 | -------- | ----------- | -------- |
-| 名称 | 管道中活动的名称。 | 是 |
+| name | 管道中活动的名称。 | 是 |
 | description | 描述活动用途的文本。 | 否 |
 | type | 此属性必须设置为 HDInsightSpark。 | 是 |
 | linkedServiceName | 运行 Spark 程序的 HDInsight 链接服务的名称。 | 是 |
