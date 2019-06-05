@@ -55,11 +55,11 @@
     - name: 教程
       items:
         - name: 启用资源提供程序
-          href: 'https://docs.azure.cloudsimple.com/enable-cloudsimple-service/'
+          href: enable-cloudsimple-service.md
         - name: 创建 CloudSimple 服务
-          href: 'https://docs.azure.cloudsimple.com/create-cloudsimple-service/'
+          href: create-cloudsimple-service.md
         - name: 访问 CloudSimple 门户
-          href: 'https://docs.azure.cloudsimple.com/access-cloudsimple-portal/'
+          href: access-cloudsimple-portal.md
         - name: 管理节点
           items:
             - name: 购买节点

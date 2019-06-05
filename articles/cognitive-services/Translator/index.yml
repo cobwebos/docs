@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/21/2019
+  ms.date: 06/04/2019
   ms.author: v-jansko
 abstract:
   description: '文本翻译是一种基于云的机器翻译服务，可用于通过简单的 REST API 调用几乎实时地翻译文本。 该 API 使用先进的神经机器翻译技术并提供统计机器翻译技术。 “自定义翻译”是文本翻译 API 的扩展，用于构建神经翻译系统。 可以将自定义的翻译系统与文本翻译 API 或 <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft 语音服务</a>配合使用来翻译文本。 有关神经机器翻译和统计机器翻译支持的语言的列表，请参阅<a href="languages.md">支持的语言</a>。'

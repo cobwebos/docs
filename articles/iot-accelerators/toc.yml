@@ -147,16 +147,12 @@
       items:
         - name: OPC 孪生体系结构
           href: overview-opc-twin-architecture.md
-        - name: 互联工厂体系结构
-          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: 操作指南
       items:
         - name: 互连工厂
           items:
             - name: 使用仪表板
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: 部署网关
-              href: iot-accelerators-connected-factory-gateway-deployment.md
             - name: 使用 OPC 发布服务器
               href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: 配置解决方案加速器

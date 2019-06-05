@@ -123,6 +123,10 @@
           items:
             - name: 什么是 Data Box Heavy？
               href: data-box-heavy-overview.md
+        - name: 快速入门
+          items:
+            - name: 设置 - Azure 门户
+              href: data-box-heavy-quickstart-portal.md
         - name: 教程
           items:
             - name: 1 - 顺序

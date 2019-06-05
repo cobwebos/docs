@@ -58,8 +58,6 @@
         - name: 市场权益
           href: ./gtm-your-marketplace-benefits.md
           items:
-            - name: 通过 Microsoft 促进业务发展
-              href: ./gtm-promote-your-business.md
             - name: 首选解决方案
               href: ./preferred-solutions.md
             - name: 集成的解决方案
