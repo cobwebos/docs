@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 91cc002f373318e5124fc21f76edbfd000d17238
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796906"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514644"
 ---
 # <a name="request-limits-for-translator-text"></a>文本翻译的请求限制
 
@@ -38,7 +38,7 @@ ms.locfileid: "65796906"
 
 ## <a name="character-limits-per-hour"></a>每小时的字符限制
 
-每小时的字符限制取决于文本翻译订阅层。 应在一小时内平均消费每小时配额。 如果达到或超过这些限制，或在短时间内发送过大的配额一部分，你可能会收到配额响应不足。 
+每小时的字符限制取决于文本翻译订阅层。 应在一小时内平均消费每小时配额。 如果达到或超过这些限制，或在短时间内发送过大的配额一部分，你可能会收到配额响应不足。
 
 | 层 | 字符限制 |
 |------|-----------------|

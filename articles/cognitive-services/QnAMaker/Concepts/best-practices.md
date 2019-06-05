@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: b599beb6a8d14d0e62d236251fb5f5b1e1a8bcfd
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: fde10da8d46a3aa5d0163a89d1212911701c4b60
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496940"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693222"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
 [知识库开发生命周期](../Concepts/development-lifecycle-knowledge-base.md)介绍如何从头至尾地管理 KB。 使用这些最佳做法来改进知识库，并向应用程序/聊天机器人的最终用户提供更好的结果。
@@ -113,7 +113,7 @@ QnA Maker 让用户可以在知识库上进行[协作](../How-to/collaborate-kno
 
 ## <a name="active-learning"></a>主动学习
 
-[主动学习](../How-to/improve-knowledge-base.md)在提供大量基于用户的高质量和高数量的查询时，可以最好地建议备选问题。 重要的是允许客户端应用程序的用户查询在没有审查的情况下参与主动学习反馈循环。 后问题建议 QnA Maker 门户中，你可以 **[筛选器由建议](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** 然后审阅和接受或拒绝这些建议。 
+[主动学习](../How-to/improve-knowledge-base.md)在提供大量基于用户的高质量和高数量的查询时，可以最好地建议备选问题。 重要的是允许客户端应用程序的用户查询在没有审查的情况下参与主动学习反馈循环。 后问题建议 QnA Maker 门户中，你可以 **[筛选器由建议](../How-To/improve-knowledge-base.md)** 然后审阅和接受或拒绝这些建议。 
 
 ## <a name="next-steps"></a>后续步骤
 

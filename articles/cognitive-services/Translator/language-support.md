@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: v-pawal
-ms.openlocfilehash: 1cfe4038ff422ecba68f110707e9535226ccd4a5
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 924324b11f49a50bfb5f00e117b33c0cc572e3bb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472099"
+ms.locfileid: "66514987"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -35,7 +35,7 @@ ms.locfileid: "66472099"
 * 神经默认：神经是默认的翻译系统。 使用参数 `category=smt` 可访问适用于 Microsoft Translator Hub 的统计系统。
 * 仅神经：只有神经翻译可用。
 
-**V3 Translator API** V3 Translator API 在默认情况下为神经，统计系统仅在没有神经系统时才可用。 
+**V3 Translator API** V3 Translator API 在默认情况下为神经，统计系统仅在没有神经系统时才可用。
 
 > [!NOTE]
 > 目前，神经语言子集可自定义转换器，我们会逐渐添加附加索引。 [查看自定义转换器中的当前可用的语言](#customization)。
