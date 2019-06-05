@@ -677,7 +677,7 @@ create table dbo.TargetTbl
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| Text |String, Char[] |
+| text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
