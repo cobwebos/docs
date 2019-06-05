@@ -28,7 +28,7 @@ ms.locfileid: "64727391"
 
 ## <a name="how-apache-kafka-mirroring-works"></a>Apache Kafka 镜像的工作原理
 
-镜像的工作原理是通过 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 工具（属于 Apache Kafka）来使用源群集上主题中的记录，然后在目标群集上创建本地副本。 MirrorMaker 使用从源群集进行读取的一个（或多个）使用者，以及会写入本地（目标）群集的一个创建器。
+镜像的工作原理是通过 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 工具（属于 Apache Kafka）来使用源群集上主题中的记录，然后在目标群集上创建本地副本。 MirrorMaker 使用从源群集进行读取的一个（或多个）使用者  ，以及会写入本地（目标）群集的一个创建器  。
 
 下图说明镜像过程：
 
@@ -63,12 +63,12 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json" target="_blank"><img src="./media/apache-kafka-mirroring/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure 资源管理器模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json**。
+    Azure 资源管理器模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json** 。
 
     > [!WARNING]  
     > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个辅助角色节点。
 
-2. 使用以下信息来填充“自定义部署”边栏选项卡上的项：
+2. 使用以下信息来填充“自定义部署”  边栏选项卡上的项：
     
     ![HDInsight 自定义部署](./media/apache-kafka-mirroring/parameters.png)
     
@@ -86,12 +86,12 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     * **SSH 密码**：源和目标 Kafka 群集的 SSH 用户的密码。
 
-3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
+3. 阅读“条款和条件”  ，并选择“我同意上述条款和条件”  。
 
-4. 最后，选中“固定到仪表板”，并选择“购买”。 创建群集大约需要 20 分钟时间。
+4. 最后，选中“固定到仪表板”  ，并选择“购买”  。 创建群集大约需要 20 分钟时间。
 
 > [!IMPORTANT]  
-> HDInsight 群集的名称为 source-BASENAME 和 dest-BASENAME，其中 BASENAME 是为模板提供的名称。 在连接到群集的后续步骤中，会用到这些名称。
+> HDInsight 群集的名称为 source-BASENAME 和 dest-BASENAME，其中 BASENAME 是为模板提供的名称   。 在连接到群集的后续步骤中，会用到这些名称。
 
 ## <a name="create-topics"></a>创建主题
 
@@ -154,7 +154,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-2. `consumer.properties` 文件用于配置与源群集的通信。 若要创建文件，请使用以下命令：
+2. `consumer.properties` 文件用于配置与源群集的通信  。 若要创建文件，请使用以下命令：
 
     ```bash
     nano consumer.properties
@@ -187,7 +187,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
         wn0-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn1-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092
 
-4. `producer.properties` 文件用于与目标群集的通信。 若要创建文件，请使用以下命令：
+4. `producer.properties` 文件用于与目标群集的通信  。 若要创建文件，请使用以下命令：
 
     ```bash
     nano producer.properties
@@ -235,9 +235,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
         2. 从群集概述中，选择__群集仪表板__。 然后选择 __HDInsight 群集仪表板__。 出现提示时，进行身份验证使用群集的登录名 (admin) 凭据。
         3. 从页面左侧的列表选择 __Kafka__ 服务。
         4. 在中间页中选择__配置__。
-        5. 在“筛选器”字段中输入值 `auto.create`。 这将筛选的属性，并显示列表`auto.create.topics.enable`设置。
+        5. 在“筛选器”  字段中输入值 `auto.create`。 这将筛选的属性，并显示列表`auto.create.topics.enable`设置。
         6. 更改的值`auto.create.topics.enable`为 true，然后选择__保存__。 添加注释，然后选择__保存__。
-        7. 选择 __Kafka__ 服务，选择__重启__，然后选择__重启所有受影响的__。 出现提示时，选择“确认全部重启”。
+        7. 选择 __Kafka__ 服务，选择__重启__，然后选择__重启所有受影响的__。 出现提示时，选择“确认全部重启”  。
 
 ## <a name="start-mirrormaker"></a>启动 MirrorMaker
 
@@ -274,7 +274,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     将 `$CLUSTERNAME` 替换为源群集的名称。 出现提示时，输入群集登录（管理员）帐户的密码。
 
-     出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到源群集上的主题。 完成后，使用 **Ctrl + C** 结束生成者进程。
+     出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到源群集上的主题  。 完成后，使用 **Ctrl + C** 结束生成者进程。
 
 3. 从**目标**群集的 SSH 连接开始，使用 **Ctrl + C** 结束 MirrorMaker 进程。 它可能需要几秒钟时间结束进程。 若要验证是否已将主题和消息复制到目标，请使用以下命令：
 

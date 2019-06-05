@@ -24,10 +24,10 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 
 1. 登录配置服务器计算机。
 2. 使用桌面快捷方式启动 cspsconfigtool.exe。
-3. 在“管理帐户”选项卡中，单击“添加帐户”。
+3. 在“管理帐户”  选项卡中，单击“添加帐户”  。
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
-1. 提供帐户详细信息并单击“确定”以添加该帐户。  该帐户应具备下表中概述的权限。 
+1. 提供帐户详细信息并单击“确定”以添加该帐户  。  该帐户应具备下表中概述的权限。 
 
 大约需要 15 分钟才能将帐户信息同步到 Site Recovery 服务。
 
@@ -35,15 +35,15 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 
 |**任务** | **帐户** | **权限** | **详细信息**|
 |--- | --- | --- | ---|
-|**自动发现/迁移（无故障回复）** | 至少需要一个只读用户 | 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
-|**复制/故障转移** | 至少需要一个只读用户| 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。<br/><br/> 用于迁移，但不用于完全复制、故障转移和故障回复。|
-|**复制/故障转移/故障回复** | 建议创建一个拥有所需权限的角色 (AzureSiteRecoveryRole)，然后将它分配到 VMware 用户或组 | 数据中心对象 –> 传播到子对象、角色=AzureSiteRecoveryRole<br/><br/> 数据存储->分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上传<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
+|**自动发现/迁移（无故障回复）** | 至少需要一个只读用户 | 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 要限制访问权限，请在选中“传播到子对象”  的情况下将“无访问权”  角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
+|**复制/故障转移** | 至少需要一个只读用户| 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 要限制访问权限，请在选中“传播到子对象”  的情况下将“无访问权”  角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。<br/><br/> 用于迁移，但不用于完全复制、故障转移和故障回复。|
+|**复制/故障转移/故障回复** | 建议创建一个拥有所需权限的角色 (AzureSiteRecoveryRole)，然后将它分配到 VMware 用户或组 | 数据中心对象 –> 传播到子对象、角色=AzureSiteRecoveryRole<br/><br/> 数据存储->分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上传<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 要限制访问权限，请在选中“传播到子对象”  的情况下将“无访问权”  角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
 
 
 ## <a name="add-vmware-server-to-the-vault"></a>将 VMware 服务器添加到保管库
 
-1. 在 Azure 门户中，打开你的保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器。
-2. 在“详细信息”页上单击“+vCenter”。
+1. 在 Azure 门户中，打开你的保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器   。
+2. 在“详细信息”页上单击“+vCenter”   。
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
 
@@ -52,22 +52,22 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 修改用于连接到 vCenter 服务器或 ESXi 主机的凭据，如下所示：
 
 1. 登录到配置服务器并从桌面启动 cspsconfigtool.exe。
-2. 在“管理帐户”选项卡中，单击“添加帐户”。
+2. 在“管理帐户”  选项卡中，单击“添加帐户”  。
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
-3. 提供新帐户的详细信息并单击“确定”以添加该帐户。 该帐户应具备[上方](#account-permissions)列出的权限。
-4. 在 Azure 门户上，打开保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器。
-5. 在“详细信息”页上，单击“刷新服务器”。
-6. 刷新服务器作业完成后，选择“vCenter 服务器”以打开 vCenter“摘要”页面。
-7. 在“vCenter 服务器/vSphere 主机帐户”字段选择新添加的帐户，并单击“保存”。
+3. 提供新帐户的详细信息并单击“确定”以添加该帐户  。 该帐户应具备[上方](#account-permissions)列出的权限。
+4. 在 Azure 门户上，打开保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器   。
+5. 在“详细信息”页上，单击“刷新服务器”   。
+6. 刷新服务器作业完成后，选择“vCenter 服务器”以打开 vCenter“摘要”页面  。
+7. 在“vCenter 服务器/vSphere 主机帐户”字段选择新添加的帐户，并单击“保存”   。
 
    ![modify-account](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
 ## <a name="delete-a-vcenter-server"></a>删除 vCenter 服务器
 
-1. 在 Azure 门户中，打开你的保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器。
-2. 在“详细信息”页上，选择 vCenter 服务器。
-3. 单击“删除”按钮。
+1. 在 Azure 门户中，打开你的保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器   。
+2. 在“详细信息”页上，选择 vCenter 服务器  。
+3. 单击“删除”按钮  。
 
    ![delete-account](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
 
@@ -98,7 +98,7 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 ## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>将几个受保护的虚拟机迁移到新的 vCenter
 
 > [!NOTE]
-> 仅当要将迁移受保护的虚拟机的一些到新 vCenter，此部分才适用。 如果你想要防止新 vCenter，一组新的虚拟机[将新的 vCenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault)并且开头**[启用保护](vmware-azure-tutorial.md#enable-replication)**。
+> 仅当要将迁移受保护的虚拟机的一些到新 vCenter，此部分才适用。 如果你想要防止新 vCenter，一组新的虚拟机[将新的 vCenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault)并且开头 **[启用保护](vmware-azure-tutorial.md#enable-replication)** 。
 
 若要将几个虚拟机移动到新的 vCenter:
 
@@ -108,7 +108,7 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 4. 现在，保护已迁移的虚拟机[启用保护时选择新的 vCenter](vmware-azure-tutorial.md#enable-replication)。
 
 > [!TIP]
-> 如果要迁移的虚拟机的数目**更高版本**数的虚拟机保留在旧的 vCenter 中的更新新的 vCenter 使用此处提供的说明的 IP 地址。 在旧 vCenter 上保留的几个虚拟机[禁用复制](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure);[将新的 vCenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault)，并启动**[启用保护](vmware-azure-tutorial.md#enable-replication)**。
+> 如果要迁移的虚拟机的数目**更高版本**数的虚拟机保留在旧的 vCenter 中的更新新的 vCenter 使用此处提供的说明的 IP 地址。 在旧 vCenter 上保留的几个虚拟机[禁用复制](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure);[将新的 vCenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault)，并启动 **[启用保护](vmware-azure-tutorial.md#enable-replication)** 。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

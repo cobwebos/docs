@@ -36,8 +36,8 @@ ms.locfileid: "60546618"
 具体而言，此泛型 REST 连接器支持：
 
 - 使用 **GET** 或 **POST** 方法从 REST 终结点检索数据。
-- 使用以下身份验证方法之一检索数据：“匿名”、“基本”、“AAD 服务主体”和“Azure 资源的托管标识”。
-- REST API 中的**[分页](#pagination-support)**。
+- 使用以下身份验证方法之一检索数据：“匿名”、“基本”、“AAD 服务主体”和“Azure 资源的托管标识”。    
+- REST API 中的 **[分页](#pagination-support)** 。
 - [按原样](#export-json-response-as-is)复制 REST JSON 响应，或使用[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)对其进行分析。 仅支持 **JSON** 格式的响应有效负载。
 
 > [!TIP]
@@ -57,7 +57,7 @@ REST 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | **类型**属性必须设置为**因此**。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
-| enableServerCertificateValidation | 连接到终结点时是否要验证服务器端 SSL 证书。 | 否<br /> （默认值为 true） |
+| enableServerCertificateValidation | 连接到终结点时是否要验证服务器端 SSL 证书。 | 否<br /> （默认值为 true）  |
 | authenticationType | 用于连接到 REST 服务的身份验证类型。 允许的值为 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 有关其他属性和示例，请参阅下面的相应部分。 | 是 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则此属性使用默认 Azure Integration Runtime。 |否 |
 
@@ -68,7 +68,7 @@ REST 链接服务支持以下属性：
 | 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
-| password | 用户（userName 值）的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
+| password | 用户（userName 值）的密码  。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
 
 **示例**
 
@@ -171,7 +171,7 @@ REST 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
-| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | 否 |
+| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post   。 | 否 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
 | paginationRules | 用于撰写下一页请求的分页规则。 有关详细信息，请参阅[分页支持](#pagination-support)部分。 | 否 |
@@ -228,12 +228,12 @@ REST 链接服务支持以下属性：
 
 ### <a name="rest-as-source"></a>REST 作为源
 
-复制活动源部分支持以下属性：
+复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
-| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。  | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40  。  | 否 |
 | requestInterval | 发送下一页请求之前等待的时间。 默认值为 **00:00:01** |  否 |
 
 **示例**
@@ -355,7 +355,7 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 
 ## <a name="export-json-response-as-is"></a>按原样导出 JSON 响应
 
-可以使用此 REST 连接器将 REST API JSON 响应按原样导出到各种基于文件的存储。 若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射。
+可以使用此 REST 连接器将 REST API JSON 响应按原样导出到各种基于文件的存储。 若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射  。
 
 ## <a name="schema-mapping"></a>架构映射
 

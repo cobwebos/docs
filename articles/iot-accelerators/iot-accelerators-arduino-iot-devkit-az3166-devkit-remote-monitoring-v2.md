@@ -36,9 +36,9 @@ ms.locfileid: "65473471"
 
 1. 确保 IoT DevKit 未连接到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
 
-1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:**打开示例...”** 。然后选择“IoT DevKit”作为开发板。
+1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:**打开示例...”** 。然后选择“IoT DevKit”作为开发板。 
 
-1. 找到“远程监视”，然后单击“打开示例”。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹：
+1. 找到“远程监视”  ，然后单击“打开示例”  。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹：
 
    ![IoT Workbench，选择“远程监视”示例](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
@@ -46,16 +46,16 @@ ms.locfileid: "65473471"
 
 若要在 DevKit 设备上配置 IoT 中心设备连接字符串，请执行以下操作：
 
-1. 将 IoT DevKit 转换为“配置模式”：
+1. 将 IoT DevKit 转换为“配置模式”  ：
 
-    * 按住按钮 A。
-    * 按下然后松开“重置”按钮。
+    * 按住按钮 A  。
+    * 按下然后松开“重置”  按钮。
 
 1. 屏幕将显示 DevKit ID 和 `Configuration`。
 
     ![IoT DevKit 配置模式](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. 按 F1 打开命令面板，键入并选择“Azure IoT Device Workbench：配置设备设置... > 配置设备连接字符串” **。
+1. 按 F1 打开命令面板，键入并选择“Azure IoT Device Workbench  ：配置设备设置... > 配置设备连接字符串”  。
 
 1. 粘贴以前复制的连接字符串，然后按 **Enter** 对设备进行配置。
 
@@ -63,7 +63,7 @@ ms.locfileid: "65473471"
 
 若要生成并上传设备代码，请执行以下操作：
 
-1. 按 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench：上传设备代码” **：
+1. 按 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench：上传设备代码”  ：
 
 1. VS Code 会编译代码并将其上传到 DevKit 设备：
 
@@ -93,11 +93,11 @@ ms.locfileid: "65473471"
 
 若要更改某个 DevKit LED 的颜色，请使用 **LedColor** 方法：
 
-1. 从设备列表中选择设备名称，然后单击“作业”：
+1. 从设备列表中选择设备名称，然后单击“作业”  ：
 
     ![创建作业](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-job.png)
 
-1. 使用以下值配置“作业”，然后单击“应用”：
+1. 使用以下值配置“作业”，然后单击“应用”： 
 
    * 选择作业：**Run 的方法**
    * 方法名称：**LedColor**
