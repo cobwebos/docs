@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946812"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431299"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -57,7 +57,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - 必须允许来自 **AzureLoadBalancer** 标记的流量。
 
-##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>将应用程序网关列入允许列表以便能够访问一些源 IP
+##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允许应用程序网关访问权限将一些源 Ip
 
 对于此方案，请在应用程序网关子网中使用 NSG。 按以下优先顺序对子网施加以下限制：
 
@@ -80,7 +80,7 @@ V2 sku，不支持应用程序网关子网 Udr。 有关详细信息，请参阅
 
 可将应用程序网关配置为使用公共 IP 地址和/或专用 IP 地址。 托管需要由客户端在 Internet 中通过面向 Internet 的虚拟 IP (VIP) 访问的后端时，必须使用公共 IP。 
 
-不向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点。 应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层级应用程序中的服务和层级，ILB 也很有用，但需要启用轮循机制负载分配、会话粘性或 SSL 终止。
+不向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点。  应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层级应用程序中的服务和层级，ILB 也很有用，但需要启用轮循机制负载分配、会话粘性或 SSL 终止。
 
 仅支持 1 个公共 IP 地址或 1 个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
 
@@ -88,7 +88,7 @@ V2 sku，不支持应用程序网关子网 Udr。 有关详细信息，请参阅
 
 - 对于专用 IP，可以在创建应用程序网关的子网中指定一个专用 IP 地址。 如果不显式指定专用 IP 地址，则系统会在子网中自动选择一个任意 IP 地址。 有关详细信息，请参阅[创建包含内部负载均衡器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)。
 
-某个前端 IP 地址将关联到检查前端 IP 上的传入请求的侦听器。
+某个前端 IP 地址将关联到检查前端 IP 上的传入请求的侦听器。 
 
 ## <a name="listeners"></a>侦听器
 
@@ -98,7 +98,7 @@ V2 sku，不支持应用程序网关子网 Udr。 有关详细信息，请参阅
 
 ### <a name="listener-type"></a>侦听器类型
 
-创建新侦听器时，可以选择[“基本”或“多站点”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners)。
+创建新侦听器时，可以选择[“基本”或“多站点”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners)。  
 
 - 如果在应用程序网关后面托管单个站点，请选择“基本”。 了解[如何创建包含基本侦听器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)。
 
@@ -160,7 +160,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="ssl-policy"></a>SSL 策略
 
-可以集中管理 SSL 证书，以及减小后端服务器场的加密-解密开销。 采用集中式 SSL 处理还能指定符合安全要求的集中 SSL 策略。 可以选择默认、预定义或自定义的 SSL 策略。
+可以集中管理 SSL 证书，以及减小后端服务器场的加密-解密开销。 采用集中式 SSL 处理还能指定符合安全要求的集中 SSL 策略。 可以选择默认、预定义或自定义的 SSL 策略。   
 
 可以配置 SSL 策略来控制 SSL 协议版本。 可将应用程序网关配置为拒绝 TLS1.0、TLS1.1 和 TLS1.2。 默认情况下，SSL 2.0 和 3.0 已禁用且不可配置。 有关详细信息，请参阅[应用程序网关 SSL 策略概述](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)。
 
@@ -172,9 +172,9 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="rule-type"></a>规则类型
 
-创建规则时，可以选择[“基本”或“基于路径”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule)。
+创建规则时，可以选择[“基本”或“基于路径”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule)。  
 
-- 若要将关联的侦听器（例如 *blog<i></i>.contoso.com/\**）上的所有请求转发到单个后端池，请选择“基本”。
+- 若要将关联的侦听器（例如 *blog<i></i>.contoso.com/\** ）上的所有请求转发到单个后端池，请选择“基本”。
 - 若要将来自特定 URL 路径的请求路由到特定的后端池，请选择“基于路径”。 路径模式仅应用到 URL 的路径，而不应用到该 URL 的查询参数。
 
 #### <a name="order-of-processing-rules"></a>规则的处理顺序
@@ -185,7 +185,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="associated-listener"></a>关联的侦听器
 
-将一个侦听器关联到该规则，以评估与该侦听器关联的请求路由规则，从而确定请求要路由到的后端池。
+将一个侦听器关联到该规则，以评估与该侦听器关联的请求路由规则，从而确定请求要路由到的后端池。 
 
 ### <a name="associated-back-end-pool"></a>关联的后端池
 
@@ -209,13 +209,13 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="redirection-setting"></a>重定向设置
 
-如果为基本规则配置了重定向，则关联的侦听器上的所有请求将重定向到目标。 此过程称为全局重定向。 如果为基于路径的规则配置了重定向，则只会重定向特定站点区域中的请求。 区域的示例包括 */cart/\** 表示的购物车区域。 此过程称为基于路径的重定向。
+如果为基本规则配置了重定向，则关联的侦听器上的所有请求将重定向到目标。 此过程称为全局重定向。  如果为基于路径的规则配置了重定向，则只会重定向特定站点区域中的请求。 区域的示例包括 */cart/\** 表示的购物车区域。 此过程称为基于路径的重定向。 
 
 有关重定向的详细信息，请参阅[应用程序网关重定向概述](https://docs.microsoft.com/azure/application-gateway/redirect-overview)。
 
 #### <a name="redirection-type"></a>重定向类型
 
-选择所需的重定向类型：*Permanent(301)*、*Temporary(307)*、*Found(302)* 或 *See other(303)*。
+选择所需的重定向类型：*Permanent(301)* 、*Temporary(307)* 、*Found(302)* 或 *See other(303)* 。
 
 #### <a name="redirection-target"></a>重定向目标
 
@@ -228,9 +228,9 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ![应用程序网关组件对话框](./media/configuration-overview/configure-redirection.png)
 
 有关 HTTP 到 HTTPS 的重定向的详细信息，请参阅：
-- [使用 Azure 门户的 HTTP 到 HTTPS 重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [使用 PowerShell 的 HTTP 到 HTTPS 重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [使用 Azure CLI 的 HTTP 到 HTTPS 重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [使用 Azure 门户配置 HTTP 到 HTTPS 的重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
+- [使用 PowerShell 配置 HTTP 到 HTTPS 的重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
+- [使用 Azure CLI 配置 HTTP 到 HTTPS 的重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
 ##### <a name="external-site"></a>外部站点
 
@@ -257,7 +257,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="connection-draining"></a>连接清空
 
-连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 在创建规则期间，可将此设置应用到后端池的所有成员。 此设置可确保后端池的所有已取消注册实例不再收到任何新请求。 同时，允许现有请求在所配置的时间限制内完成。 连接清空将应用到已通过 API 调用从后端池中显式删除的后端实例。 它还会应用到被运行状况探测报告为“不正常”的后端实例。
+连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 在创建规则期间，可将此设置应用到后端池的所有成员。 此设置可确保后端池的所有已取消注册实例不再收到任何新请求。 同时，允许现有请求在所配置的时间限制内完成。 连接清空将应用到已通过 API 调用从后端池中显式删除的后端实例。 它还会应用到被运行状况探测报告为“不正常”的后端实例。 
 
 ### <a name="protocol"></a>Protocol
 
@@ -265,7 +265,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 在侦听器中结合 HTTPS 使用此设置将有助于实现[端到端的 SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。 这样，就可以安全地将敏感数据以加密的形式传输到后端。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
 
-### <a name="port"></a>端口
+### <a name="port"></a>Port
 
 此设置指定后端服务器要在哪个端口上侦听来自应用程序网关的流量。 可以配置 1 到 65535 的端口号。
 
@@ -275,7 +275,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="override-back-end-path"></a>替代后端路径
 
-使用此设置可以配置可选的自定义转发路径，以便在将请求转发到后端时使用。 与“替代后端路径”字段中的自定义路径匹配的任意传入路径部分将复制到转发的路径。 下表描述了此功能的工作原理：
+使用此设置可以配置可选的自定义转发路径，以便在将请求转发到后端时使用。 与“替代后端路径”字段中的自定义路径匹配的任意传入路径部分将复制到转发的路径。  下表描述了此功能的工作原理：
 
 - 将 HTTP 设置附加到基本请求路由规则时：
 
@@ -297,7 +297,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="use-for-app-service"></a>用于应用服务
 
-这是一个 UI 快捷方式，用于选择 Azure 应用服务后端的两个所需设置。 它会启用“从后端地址中选取主机名”，并创建新的自定义探测。 （有关详细信息，请参阅本文的[从后端地址中选取主机名](#pick)设置部分。）将创建新的探测，并从后端成员的地址中选取探测标头。
+这是一个 UI 快捷方式，用于选择 Azure 应用服务后端的两个所需设置。 它会启用“从后端地址中选取主机名”，并创建新的自定义探测。  （有关详细信息，请参阅本文的[从后端地址中选取主机名](#pick)设置部分。）将创建新的探测，并从后端成员的地址中选取探测标头。
 
 ### <a name="use-custom-probe"></a>使用自定义探测
 
@@ -314,7 +314,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 例如，使用多租户服务作为后端时。 应用服务是使用共享空间和单个 IP 地址的多租户服务。 因此，只能通过自定义域设置中配置的主机名访问应用服务。
 
-自定义域名默认为 *example.azurewebsites.<i></i>net*。 若要通过未显式注册到应用服务中的主机名或者通过应用程序网关的 FQDN 使用应用程序网关访问应用服务，请将原始请求中的主机名替代为应用服务的主机名。 为此，请启用“从后端地址中选取主机名”设置。
+自定义域名默认为 *example.azurewebsites.<i></i>net*。 若要通过未显式注册到应用服务中的主机名或者通过应用程序网关的 FQDN 使用应用程序网关访问应用服务，请将原始请求中的主机名替代为应用服务的主机名。 为此，请启用“从后端地址中选取主机名”设置。 
 
 对于其现有自定义 DNS 名称已映射到应用服务的自定义域，不需要启用此设置。
 

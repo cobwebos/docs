@@ -9,19 +9,19 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: 8ee50289083b12b7b2abd3b9ece2c8de345df9fe
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 900529d54a26729d9d0fb949d9217d5e2d618254
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851436"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515293"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>使用 Azure Dev Space 时如何管理机密
 
 你的服务可能需要适用于某些服务（例如数据库或其他安全的 Azure 服务）的特定密码、连接字符串和其他机密。 在配置文件中设置这些机密的值即可让其以环境变量的形式在代码中使用。  必须小心处理，以免机密的安全性受损。
 
-Azure Dev Spaces 提供两个建议用于存储机密的选项：一是存储在 values.dev.yaml 文件中，二是以内联方式直接存储在 azds.yaml 中。 建议不要将机密存储在 values.yaml 中。
- 
+Azure 开发人员空间提供用于在 Azure 开发人员空间客户端工具生成的 Helm 图表中存储机密的两个建议、 更流畅地选项： 在此 values.dev.yaml 文件，并直接在 azds.yaml 中的内联。 建议不要将机密存储在 values.yaml 中。 外部 Helm 的两种方法生成客户端工具的图表中定义本文中，如果您创建 Helm 图表，您可以使用 Helm 图表直接用于管理和存储的机密。
+
 ## <a name="method-1-valuesdevyaml"></a>方法 1：values.dev.yaml
 1. 使用为 Azure Dev Spaces 启用的项目打开 VS Code。
 2. 添加名为的文件_values.dev.yaml_中相同的现有文件夹_azds.yaml_和定义的机密密钥和值，如以下示例所示：

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: d5ccf3e9f35a8d35387962278577333ff92ff02b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c593b472326fc373c0b715865b839cca3b6bcf45
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60238266"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480244"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教程：使用 Python 创建并运行 Jupyter Notebook
 
@@ -30,15 +30,15 @@ ms.locfileid: "60238266"
 
 1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
 
-1. 在公用个人资料页面中，选择页面顶部的“我的项目”：
+1. 在公用个人资料页面中，选择页面顶部的“我的项目”  ：
 
     ![浏览器窗口顶部的“我的项目”链接](media/quickstarts/my-projects-link.png)
 
-1. 在“我的项目”页面上，选择“+ 新建项目”（键盘快捷方式：N）；如果浏览器窗口较窄，该按钮可能仅显示为 +：
+1. 在“我的项目”页面上，选择“+ 新建项目”（键盘快捷方式：N）；如果浏览器窗口较窄，该按钮可能仅显示为 +    ：
 
     ![“我的项目”页面上的“新建项目”命令](media/quickstarts/new-project-command.png)
 
-1. 在出现的“创建新项目”弹出窗口中，输入或设置以下详细信息，然后选择“创建”：
+1. 在出现的“创建新项目”弹出窗口中，输入或设置以下详细信息，然后选择“创建”   ：
 
     - **项目名称**：Linear Regression Example - Cricket Chirps
     - **项目 ID**：linear-regression-example
@@ -53,8 +53,8 @@ ms.locfileid: "60238266"
 
 ### <a name="upload-the-data-file"></a>上传数据文件
 
-1. 在 Azure Notebooks 中的项目仪表板上，选择“上传” > “从 URL”
-1. 在弹出窗口上的“文件 URL”中输入以下 URL，在“文件名”中输入 *cricket_chirps.csv*，然后选择“完成”。
+1. 在 Azure Notebooks 中的项目仪表板上，选择“上传” > “从 URL”  
+1. 在弹出窗口上的“文件 URL”中输入以下 URL，在“文件名”中输入 *cricket_chirps.csv*，然后选择“完成”。   
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
@@ -66,9 +66,9 @@ ms.locfileid: "60238266"
 
 ### <a name="create-a-file-from-scratch"></a>从头开始创建文件
 
-1. 在 Azure Notebooks 中的项目仪表板上，选择“+ 新建” > “空白文件”
+1. 在 Azure Notebooks 中的项目仪表板上，选择“+ 新建” > “空白文件”  
 1. 项目的文件列表中会显示一个字段。 输入 *cricket_chirps.csv* 并按 Enter。
-1. 右键单击“cricket_chirps.csv”并选择“编辑文件”。
+1. 右键单击“cricket_chirps.csv”并选择“编辑文件”。  
 1. 在显示的编辑器中输入以下数据：
 
     ```csv
@@ -90,7 +90,7 @@ ms.locfileid: "60238266"
     14.4,76.3
     ```
 
-1. 选择“保存文件”以保存文件并返回到项目仪表板。
+1. 选择“保存文件”以保存文件并返回到项目仪表板。 
 
 ## <a name="install-project-level-packages"></a>安装项目级包
 
@@ -107,12 +107,12 @@ ms.locfileid: "60238266"
 
     如果需要，还可以根据[上传数据文件](#upload-the-data-file)中所述从本地计算机上传 `requirements.txt` 文件。
 
-1. 在项目仪表板上，选择“项目设置”。
-1. 在显示的弹出窗口中，依次选择“环境”选项卡、“+添加”。
-1. 在“环境设置步骤”下的第一个下拉控件（操作）中，选择“Requirements.txt”。
-1. 在第二个下拉控件（文件名）中，选择“requirements.txt”（创建的文件）。
-1. 在第三个下拉控件（Python 版本）中，选择“Python 版本 3.6”。
-1. 选择“保存”。
+1. 在项目仪表板上，选择“项目设置”  。
+1. 在显示的弹出窗口中，依次选择“环境”选项卡、“+添加”。  
+1. 在“环境设置步骤”下的第一个下拉控件（操作）中，选择“Requirements.txt”。  
+1. 在第二个下拉控件（文件名）中，选择“requirements.txt”（创建的文件）。 
+1. 在第三个下拉控件（Python 版本）中，选择“Python 版本 3.6”。 
+1. 选择“保存”。 
 
 ![指定 requirements.txt 文件的“项目设置 - 环境”选项卡](media/tutorial/tutorial-requirements-txt.png)
 
@@ -122,17 +122,17 @@ ms.locfileid: "60238266"
 
 准备好数据文件并设置项目环境后，可以创建并打开 Notebook。
 
-1. 在项目仪表板上，选择“+ 新建” > “Notebook”。
-1. 在弹出窗口中，为“项名称”输入 *Linear Regression Example - Cricket Chirps.ipynb*，选择“Python 3.6”作为语言，然后选择“新建”。
+1. 在项目仪表板上，选择“+ 新建” > “Notebook”。  
+1. 在弹出窗口中，为“项名称”输入 *Linear Regression Example - Cricket Chirps.ipynb*，选择“Python 3.6”作为语言，然后选择“新建”。   
 1. 新 Notebook 显示在文件列表中后，请将其选中以启动 Notebook。 此时会自动打开一个新的浏览器标签页。
-1. 由于已在环境设置中添加了 *requirements.txt* 文件，因此会看到消息“正在等待容器准备完成。” 可以选择“确定”关闭该消息并继续在 Notebook 中操作；但是，在完全设置好环境之前，无法运行代码单元。
+1. 由于已在环境设置中添加了 *requirements.txt* 文件，因此会看到消息“正在等待容器准备完成。” 可以选择“确定”关闭该消息并继续在 Notebook 中操作；但是，在完全设置好环境之前，无法运行代码单元。 
 1. 该 Notebook 将在 Jupyter 界面中打开，其中默认包含单个空代码单元。
 
     [![Azure Notebooks 中新 Notebook 的初始视图](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>在 Notebook 界面中导航
 
-当 Notebook 正在运行时，你可以添加代码和 Markdown 单元、运行这些单元，以及管理 Notebook 的操作。 但是，首先值得花费几分钟的时间来熟悉界面。 如需完整文档，请选择“帮助” > “Notebook 帮助”菜单命令。
+当 Notebook 正在运行时，你可以添加代码和 Markdown 单元、运行这些单元，以及管理 Notebook 的操作。 但是，首先值得花费几分钟的时间来熟悉界面。 如需完整文档，请选择“帮助” > “Notebook 帮助”菜单命令。  
 
 在窗口顶部可以看到以下项：
 
@@ -141,28 +141,28 @@ ms.locfileid: "60238266"
 (C) 一个菜单，其中包含用于操作 Notebook 的命令。
 (D) 一个工具栏，其中包含常用操作的快捷方式。
 (E) 包含单元的编辑画布。
-(F) 指示该 Notebook 是否受信任（默认为“不受信任”）。
+(F) 指示该 Notebook 是否受信任（默认为“不受信任”）。 
 (G) 用于运行 Notebook 的内核以及活动指示器。
 
 [![Jupyter 界面的主要 UI 区域](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
-Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “用户界面导航”命令并在各个弹出窗口中单击可以开始导航。
+Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “用户界面导航”命令并在各个弹出窗口中单击可以开始导航。  
 
 菜单命令的分组如下：
 
 | 菜单 | 描述 |
 | --- | --- |
 | 文件 | 用于管理 Notebook 文件的命令，包括用于创建和复制 Notebook、显示打印预览，以及以各种格式下载 Notebook 的命令。 |
-| 编辑 | 用于剪切、复制和粘贴单元、查找和替换值、管理单元附件，以及插入图像的典型命令。  |
+| Edit | 用于剪切、复制和粘贴单元、查找和替换值、管理单元附件，以及插入图像的典型命令。  |
 | 查看 | 用于控制 Jupyter UI 不同部分的可见性的命令。 |
-| 插入 | 用于在当前单元的上方或下方插入新单元的命令。 创建 Notebook 时经常要使用这些命令。 |
-| 单元 | 各种“运行”命令用于运行一个单元，或运行采用不同组合形式的多个单元。 “单元类型”命令用于在“代码”、“Markdown”和“原始 NBConvert”（纯文本）之间更改单元的类型。 “当前输出”和“所有输出”命令控制运行代码的输出显示方式，包括一个用于清除所有输出的命令。 |
-| 内核 | 用于管理代码在内核中的运行方式的命令，此外还有一个“更改内核”命令，它可以更改用于运行 Notebook 的语言或 Python 版本。 |
+| Insert | 用于在当前单元的上方或下方插入新单元的命令。 创建 Notebook 时经常要使用这些命令。 |
+| 单元 | 各种“运行”命令用于运行一个单元，或运行采用不同组合形式的多个单元。  “单元类型”命令用于在“代码”、“Markdown”和“原始 NBConvert”（纯文本）之间更改单元的类型。     “当前输出”和“所有输出”命令控制运行代码的输出显示方式，包括一个用于清除所有输出的命令。   |
+| 内核 | 用于管理代码在内核中的运行方式的命令，此外还有一个“更改内核”命令，它可以更改用于运行 Notebook 的语言或 Python 版本。  |
 | 数据 | 用于从项目或会话上传和下载文件的命令。 请参阅[使用项目数据文件](work-with-project-data-files.md) |
 | 小组件 | 用于管理 [Jupyter 小组件](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)的命令。这些小组件提供有关可视化、映射和绘制的附加功能。|
-| 帮助 | 用于提供 Jupyter 界面帮助和文档的命令。 |
+| Help | 用于提供 Jupyter 界面帮助和文档的命令。 |
 
-工具栏上的大多数命令都有等效的菜单命令， 但[共享和演示 Notebook](present-jupyter-notebooks-slideshow.md) 中所述的“进入/编辑 RISE 幻灯片”例外。
+工具栏上的大多数命令都有等效的菜单命令， 但[共享和演示 Notebook](present-jupyter-notebooks-slideshow.md) 中所述的“进入/编辑 RISE 幻灯片”例外。 
 
 在后续部分填充 Notebook 时，将使用其中的某些命令。
 
@@ -172,7 +172,7 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
     ![单元类型工具栏下拉列表](media/tutorial/tutorial-cell-type-drop-down.png)
 
-1. 使用工具栏下拉列表将单元类型更改为“Markdown”；或者，使用“单元” > “单元类型” > “Markdown”菜单命令：
+1. 使用工具栏下拉列表将单元类型更改为“Markdown”；或者，使用“单元” > “单元类型” > “Markdown”菜单命令：    
 
     ![单元类型菜单命令](media/tutorial/tutorial-cell-type-menu.png)
 
@@ -197,7 +197,7 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
     When you run a code cell, Jupyter executes the code; when you run a Markdown cell, Jupyter renders all the formatting into text that's suitable for presentation.
     ```
 
-1. 若要在浏览器的 HTML 中呈现 Markdown，请在工具栏上选择“运行”命令，或使用“单元” > “运行单元”命令。 现在，浏览器中会按预期方式显示有关格式和链接的 Markdown 代码。
+1. 若要在浏览器的 HTML 中呈现 Markdown，请在工具栏上选择“运行”命令，或使用“单元” > “运行单元”命令。    现在，浏览器中会按预期方式显示有关格式和链接的 Markdown 代码。
 
 1. 运行 Notebook 中的最后一个单元时，Jupyter 会自动在运行的单元下面创建一个新单元。 重复本部分所述的步骤，将更多的 Markdown 插入此单元，其中包括以下 Markdown：
 
@@ -219,7 +219,7 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
 与前面所述的 Markdown 单元一样，可以直接在 Notebook 中包含命令。 可以使用命令来安装包、运行 curl 或 wget 以检索数据，或执行其他任何操作。 Jupyter Notebook 能够有效地在 Linux 虚拟机中运行，因此，整套 Linux 命令都可供使用。
 
-1. 在针对前一 Markdown 单元使用“运行”后显示的代码单元中输入以下命令。 如果未看到新单元，请使用“插入” > “在下面插入”或使用工具栏上的 **+** 按钮创建一个单元。
+1. 在针对前一 Markdown 单元使用“运行”后显示的代码单元中输入以下命令。  如果未看到新单元，请使用“插入” > “在下面插入”或使用工具栏上的 **+** 按钮创建一个单元。  
 
     ```bash
     !pip install numpy
@@ -234,13 +234,13 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
     Note that when you run a code block that contains install commands, and also those with `import` statements, it make take the notebooks a little time to complete the task. To the left of the code block you see `In [*]` to indicate that execution is happening. The Notebook's kernel on the upper right also shows a filled-in circle to indicate "busy."
     ```
 
-1. 选择“单元” > “全部运行”命令运行 Notebook 中的所有单元。 请注意以 HTML 呈现的 Markdown 单元以及内核中运行的命令，并观察 Markdown 本身中描述的内核指示器：
+1. 选择“单元” > “全部运行”命令运行 Notebook 中的所有单元。   请注意以 HTML 呈现的 Markdown 单元以及内核中运行的命令，并观察 Markdown 本身中描述的内核指示器：
 
     ![Notebook 内核繁忙指示器](media/tutorial/tutorial-kernel-busy.png)
 
-1. 运行所有 `pip install` 命令也要花费一小段时间；由于已在项目环境中安装这些包（并且这些包默认也包含在 Azure Notebooks 中），因此，会看到许多消息指出“已满足要求”。 所有这些输出可能会分散注意力，因此请选择该单元（单击），然后使用“单元” > “单元输出” > “切换”来隐藏输出。 还可以使用同一子菜单中的“清除”命令将输出完全删除。
+1. 运行所有 `pip install` 命令也要花费一小段时间；由于已在项目环境中安装这些包（并且这些包默认也包含在 Azure Notebooks 中），因此，会看到许多消息指出“已满足要求”。 所有这些输出可能会分散注意力，因此请选择该单元（单击），然后使用“单元” > “单元输出” > “切换”来隐藏输出。    还可以使用同一子菜单中的“清除”命令将输出完全删除。 
 
-    “切换”命令只会隐藏单元中最近的输出；如果再次运行该单元，该输出会重新出现。
+    “切换”命令只会隐藏单元中最近的输出；如果再次运行该单元，该输出会重新出现。 
 
 1. 由于包已安装在项目环境中，因此请使用 `#` 注释掉 `! pip install` 命令；这样，它们可以作为指导材料保留在 Notebook 中，但不会花费任何时间来运行，也不会生成不必要的输出。 在这种情况下，在 Notebook 中保留带有注释的命令还会指示 Notebook 的依赖关系。
 
@@ -257,7 +257,7 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
 尽管可以等到在创建每个单元之后再运行 Notebook，但一边创建一边运行每个单元比较有乐趣。 并非所有单元都显示输出；如果未看到任何错误，则认为单元运行正常。
 
-每个代码单元依赖于前面单元中运行的代码，如果在运行某个单元时出现疏忽，后续单元可能会生成错误。 如果你发现自己忘记了运行某个单元，请先尝试使用“单元” > “运行前面的所有单元”，然后运行当前单元。
+每个代码单元依赖于前面单元中运行的代码，如果在运行某个单元时出现疏忽，后续单元可能会生成错误。 如果你发现自己忘记了运行某个单元，请先尝试使用“单元” > “运行前面的所有单元”，然后运行当前单元。  
 
 如果看到意外的结果（有可能出现这种情况！），请检查每个单元是否按需要设置为“代码”或“Markdown”。 例如，在代码单元中输入 Markdown 时，通常会发生“语法无效”错误。
 
@@ -307,7 +307,7 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
     With two independent variables you can imagine a three-dimensional plot with a line fitted to the data. At three or more independent variables, however, it's no longer easy to visualize the fit, but you get the idea. In the end, it's all just mathematics, which a computer can handle easily without having to form a mental picture!
 
-    The regressor's `fit` method here creates the line, which algebraically is of the form `y = x*b1 + b0`, where b1 is the coefficient or slope of the line (which you can get to through `regressor.coef_`), and b0 is the intercept of the line at x=0 (which you can get to through `regressor.intercept`).
+    The regressor's `fit` method here creates the line, which algebraically is of the form `y = x*b1 + b0`, where b1 is the coefficient or slope of the line (which you can get to through `regressor.coef_`), and b0 is the intercept of the line at x=0 (which you can get to through `regressor.intercept_`).
     ```
 
 1. 代码单元；运行时，此单元显示输出 `LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)`。
@@ -326,7 +326,7 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
     With the regressor in hand, we can predict the test set results using its `predict` method. That method takes a vector of independent variables for which you want predictions.
 
-    Because the regressor is fit to the data by virtue of `coef_` and `intercept_` and `coef_`, a prediction is the result of `coef_ * x + intercept_`. (Indeed, `predict(0)` returns `intercept_` and `predict(1)` returns `intercept_ + coef_`.)
+    Because the regressor is fit to the data by virtue of `coef_` and `intercept_`, a prediction is the result of `coef_ * x + intercept_`. (Indeed, `predict(0)` returns `intercept_` and `predict(1)` returns `intercept_ + coef_`.)
 
     In the code, the `y_test` matrix (from when we split the set) contains the real observations. `y_pred` assigned here contains the predictions for the same `X_test` inputs. It's not expected that the test or training points exactly fit the regression; the regression is trying to find the model that we can use to make predictions with new observations of the independent variables.
     ```
@@ -393,27 +393,27 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
 现在，请尝试重新运行整个 Notebook：
 
-1. 选择“内核” > “重启并清除输出”，清除内核的所有会话数据和所有单元输出。 如果你已完成某个 Notebook，现在只需确保不会在代码单元之间创建任何不合理的依赖关系，则始终很适合运行此命令。
+1. 选择“内核” > “重启并清除输出”，清除内核的所有会话数据和所有单元输出。   如果你已完成某个 Notebook，现在只需确保不会在代码单元之间创建任何不合理的依赖关系，则始终很适合运行此命令。
 
-1. 使用“单元” > “全部运行”重新运行 Notebook。 请注意，当代码正在运行时，会填充内核指示器。
+1. 使用“单元” > “全部运行”重新运行 Notebook。   请注意，当代码正在运行时，会填充内核指示器。
 
-    如果有任何代码的运行时间过长或者停滞，可以使用“内核” > “中断”命令来停止内核。
+    如果有任何代码的运行时间过长或者停滞，可以使用“内核” > “中断”命令来停止内核。  
 
 1. 滚动浏览 Notebook 以检查结果。 （如果绘图仍未出现，请重新运行该单元。）
 
 ## <a name="save-halt-and-close-the-notebook"></a>保存、停止和关闭 Notebook
 
-在编辑 Notebook 的过程中，可以使用“文件” > “保存并设置检查点”命令或使用工具栏上的“保存”按钮来保存 Notebook 的当前状态。 “检查点”会创建一个快照。在会话期间，随时可以还原到该快照。 使用检查点可以做出一系列试验性更改，如果这些更改不起作用，使用“文件” > “还原到检查点”命令即可还原到某个检查点。 另一种方法是创建额外的单元，并注释掉你不想要运行的任何代码；这两种方法都是可行的。
+在编辑 Notebook 的过程中，可以使用“文件” > “保存并设置检查点”命令或使用工具栏上的“保存”按钮来保存 Notebook 的当前状态。   “检查点”会创建一个快照。在会话期间，随时可以还原到该快照。 使用检查点可以做出一系列试验性更改，如果这些更改不起作用，使用“文件” > “还原到检查点”命令即可还原到某个检查点。   另一种方法是创建额外的单元，并注释掉你不想要运行的任何代码；这两种方法都是可行的。
 
-还可以随时使用“文件” > “创建副本”命令，在项目的新文件中创建 Notebook 当前状态的副本。 该副本将自动在新浏览器标签页中打开。
+还可以随时使用“文件” > “创建副本”命令，在项目的新文件中创建 Notebook 当前状态的副本。   该副本将自动在新浏览器标签页中打开。
 
-处理完 Notebook 后，可以使用“文件” > “关闭并停止”命令关闭 Notebook，并关闭运行 Notebook 的内核。 然后，Azure Notebooks 会自动关闭浏览器标签页。
+处理完 Notebook 后，可以使用“文件” > “关闭并停止”命令关闭 Notebook，并关闭运行 Notebook 的内核。   然后，Azure Notebooks 会自动关闭浏览器标签页。
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>使用 Visual Studio Code 调试 Notebook
 
 如果 Notebook 中代码单元的行为不符合预期，则可能表示代码中存在 bug 或其他缺陷。 但是，典型的 Jupyter 环境不提供任何调试工具，只能使用 `print` 语句来显示变量的值。
 
-幸运的是，可以下载笔记本的 .ipynb 文件，然后使用 Python 扩展在 Visual Studio Code 中打开它。 该扩展直接将笔记本作为单个代码文件导入，在注释中保留 Markdown 单元。 导入笔记本后，可以使用 Visual Studio Code 调试程序来逐步运行代码、设置断点、检查状态，等等。 在对代码进行更正后，从 Visual Studio Code 导出 .ipynb 文件并将其上传回 Azure Notebooks。
+幸运的是，可以下载笔记本的 .ipynb 文件，然后使用 Python 扩展在 Visual Studio Code 中打开它  。 该扩展直接将笔记本作为单个代码文件导入，在注释中保留 Markdown 单元。 导入笔记本后，可以使用 Visual Studio Code 调试程序来逐步运行代码、设置断点、检查状态，等等。 在对代码进行更正后，从 Visual Studio Code 导出 .ipynb 文件并将其上传回 Azure Notebooks  。
 
 有关详细信息，请参阅 Visual Studio Code 文档中的[调试 Jupyter 笔记本](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook)。
 

@@ -1,24 +1,24 @@
 ---
-title: 快速入门：将数据从事件中心引入到 Azure 数据资源管理器
-description: 在本快速入门中，将了解如何将数据从事件中心引入（加载）到 Azure 数据资源管理器。
+title: 将数据从事件中心引入到 Azure 数据资源管理器
+description: 在本文中，您将了解如何将 （加载） 数据引入到 Azure 数据资源管理器从事件中心。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 05/29/2019
-ms.openlocfilehash: 18ce5e9d7cff0d32021e97cd85f1e18c0309f00b
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: c68662fbcc73d6c91d3fd40dc67804baa9205e53
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357680"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494813"
 ---
-# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>快速入门：将数据从事件中心引入到 Azure 数据资源管理器
+# <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本快速入门中，将创建事件中心，从 Azure 数据资源管理器中连接到该事件中心，并查看系统中的数据流。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，创建事件中心，从 Azure 数据资源管理器和整个系统，请参阅数据流连接到它。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -34,11 +34,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="create-an-event-hub"></a>创建事件中心
 
-在本快速入门中，生成示例数据并将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器模板在 Azure 门户中执行此操作。
+在本文中，将生成示例数据和将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器模板在 Azure 门户中执行此操作。
 
 1. 若要创建事件中心，请使用以下按钮开始部署。 右键单击并选择“在新窗口中打开”  ，以便按本文中的剩余步骤操作。
 
-    [![部署到 Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![部署到 Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstarts-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     “部署到 Azure”  按钮将转到 Azure 门户以填写部署窗体。
 
@@ -58,7 +58,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     |---|---|---|
     | 订阅 | 订阅 | 选择要用于事件中心的 Azure 订阅。|
     | 资源组 | test-hub-rg  | 创建新的资源组。 |
-    | 位置 | *美国西部* | 为此快速入门选择美国西部  。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
+    | Location | *美国西部* | 选择*美国西部*本文。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
     | 命名空间名称 | 唯一的命名空间名称 | 选择用于标识命名空间的唯一名称。 例如，mytestnamespace  。 域名 servicebus.windows.net  将追加到所提供的名称。 该名称只能包含字母、数字和连字符。 名称必须以字母开头，并且必须以字母或数字结尾。 值长度必须介于 6 到 50 个字符之间。
     | 事件中心名称 | test-hub  | 事件中心位于命名空间下，该命名空间提供唯一的范围容器。 事件中心名称在命名空间中必须唯一。 |
     | 使用者组名称 | test-group  | 使用者组允许多个使用应用程序各自具有事件流的单独视图。 |
@@ -205,5 +205,4 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)
+* [在 Azure 数据资源管理器中查询数据](web-query-data.md)

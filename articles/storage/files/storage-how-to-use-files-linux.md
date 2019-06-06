@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 75987c7838846aacb099b725e2a222967b32fe64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691261"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427926"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 
@@ -30,7 +30,7 @@ ms.locfileid: "64691261"
 * **存储帐户名称和密钥**若要完成本文，需要提供存储帐户名称和密钥。 如果你参考 CLI 快速入门创建了一个存储帐户，则已经获得了这些凭据，否则，请查阅前面链接的 CLI 快速入门，了解如何检索存储帐户密钥。
 
 * **选择 Linux 发行版以满足你的装载需求。**  
-      可以通过 SMB 2.1 和 SMB 3.0 装载 Azure 文件。 对于来自本地或其他 Azure 区域中的客户端的连接，必须使用 SMB 3.0；Azure 文件会拒绝 SMB 2.1（或没有加密的 SMB 3.0）。 如果从同一个 Azure 区域内的 VM 访问 Azure 文件共享，则可使用 SMB 2.1 访问文件共享，当且仅当托管 Azure 文件共享的存储帐户禁用了“需要安全传输”时适用。 始终建议要求安全传输并仅使用带加密的 SMB 3.0。
+      可以通过 SMB 2.1 和 SMB 3.0 装载 Azure 文件。 对于来自本地或其他 Azure 区域中的客户端的连接，必须使用 SMB 3.0；Azure 文件会拒绝 SMB 2.1（或没有加密的 SMB 3.0）。 如果从同一个 Azure 区域内的 VM 访问 Azure 文件共享，则可使用 SMB 2.1 访问文件共享，当且仅当托管 Azure 文件共享的存储帐户禁用了“需要安全传输”时适用  。 始终建议要求安全传输并仅使用带加密的 SMB 3.0。
 
     SMB 3.0 加密支持在 Linux 内核版本 4.11 中引入，已向后移植到常见 Linux 分发版的早期内核版本中。 在本文档发布时，Azure 库中的以下发行版支持表标题中指定的装载选项。 
 
@@ -81,56 +81,57 @@ ms.locfileid: "64691261"
 
 ## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>使用 `mount` 按需装载 Azure 文件共享
 
-1. [安装适用于 Linux 分发版的 cifs-utils 包](#install-cifs-utils)。
+1. [安装适用于 Linux 分发版的 cifs-utils 包](#install-cifs-utils)  。
 
-1. **为装入点创建文件夹**：可以在文件系统上的任何位置创建装入点的文件夹，但是通用约定是在 `/mnt` 文件夹下创建此文件夹。 例如：
+1. **为装入点创建文件夹**：可以在文件系统上，任何位置创建装入点的文件夹，但若要创建此新文件夹下的通用约定是。 例如，以下命令将创建一个新目录中，替换 **< storage_account_name >** 并 **< file_share_name >** 为您的环境的相应信息：
 
     ```bash
-    mkdir /mnt/MyAzureFileShare
+    mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **使用 mount 命令装载 Azure 文件共享**：请记得将 `<storage-account-name>``<share-name>``<smb-version>``<storage-account-key>` 和 `<mount-point>` 替换为适合你的环境的信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
+1. **使用 mount 命令装载 Azure 文件共享**：请记得替换 **< storage_account_name >** ， **< 服务器 >** ， **< smb_version >** ， **< storage_account_key >** ，并 **< mount_point >** 为您的环境的相应信息。 如果使用加密的 Linux 分发版支持 SMB 3.0 (请参阅[了解 SMB 客户端要求](#smb-client-reqs)有关详细信息)，使用**3.0**有关 **< smb_version >** 。 对于不支持 SMB 3.0 加密的 Linux 分发版，使用**2.1**有关 **< smb_version >** 。 只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
 
     ```bash
-    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+    sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
-> 使用完 Azure 文件共享后，可以使用 `sudo umount <mount-point>` 卸载共享。
+> 使用完 Azure 文件共享后，可以使用 `sudo umount <mount_point>` 卸载共享。
 
 ## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>使用 `/etc/fstab` 为 Azure 文件共享创建持久装入点
 
-1. [安装适用于 Linux 分发版的 cifs-utils 包](#install-cifs-utils)。
+1. [安装适用于 Linux 分发版的 cifs-utils 包](#install-cifs-utils)  。
 
-1. **为装入点创建文件夹**：可以在文件系统上的任何位置创建装入点的文件夹，但是通用约定是在 `/mnt` 文件夹下创建此文件夹。 无论在何处创建此文件夹，请记下此文件夹的绝对路径。 例如，以下命令在 `/mnt` 下创建新文件夹（路径为绝对路径）。
+1. **为装入点创建文件夹**：可以在文件系统上，任何位置创建装入点的文件夹，但若要创建此新文件夹下的通用约定是。 无论在何处创建此文件夹，请记下此文件夹的绝对路径。 例如，以下命令将创建一个新目录中，替换 **< storage_account_name >** 并 **< file_share_name >** 为您的环境的相应信息。
 
     ```bash
-    sudo mkdir /mnt/MyAzureFileShare
+    sudo mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **创建凭据文件以存储文件共享的用户名（存储帐户名称）和密码（存储帐户密钥）。** 请记得将 `<storage-account-name>` 和 `<storage-account-key>` 替换为适合你的环境的信息。 
+1. **创建凭据文件以存储文件共享的用户名（存储帐户名称）和密码（存储帐户密钥）。** 替换 **< storage_account_name >** 并 **< storage_account_key >** 为您的环境的相应信息。
 
     ```bash
     if [ ! -d "/etc/smbcredentials" ]; then
-        sudo mkdir /etc/smbcredentials
+    sudo mkdir /etc/smbcredentials
     fi
-
-    if [ ! -f "/etc/smbcredentials/<storage-account-name>.cred" ]; then
-        sudo bash -c 'echo "username=<storage-account-name>" >> /etc/smbcredentials/<storage-account-name>.cred'
-        sudo bash -c 'echo "password=<storage-account-key>" >> /etc/smbcredentials/<storage-account-name>.cred'
+    if [ ! -f "/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred" ]; then
+    sudo bash -c 'echo "username=<STORAGE ACCOUNT NAME>" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
+    sudo bash -c 'echo "password=7wRbLU5ea4mgc<DRIVE LETTER>PIpUCNcuG9gk2W4S2tv7p0cTm62wXTK<DRIVE LETTER>CgJlBJPKYc4VMnwhyQd<DRIVE LETTER>UT<DRIVE LETTER>yR5/RtEHyT/EHtg2Q==" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
     fi
     ```
 
 1. **更改凭据文件的权限，以便只有 root 才能读取或修改密码文件。** 由于存储帐户密钥实质上是存储帐户的超级管理员密码，因此重要的是在文件上设置权限使只有 root 才能访问，这样较低权限的用户将无法检索存储帐户密钥。   
 
     ```bash
-    sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
+    sudo chmod 600 /etc/smbcredentials/<storage_account_name>.cred
     ```
 
-1. **使用以下命令将以下行追加到 `/etc/fstab`**：请记得将 `<storage-account-name>``<share-name>``<smb-version>` 和 `<mount-point>` 替换为适合你的环境的信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
+1. **使用以下命令将以下行追加到 `/etc/fstab`** ：请记得替换 **< storage_account_name >** ， **< 服务器 >** ， **< smb_version >** ，和 **< mount_point >** 你的环境的相应信息。 如果使用加密的 Linux 分发版支持 SMB 3.0 (请参阅[了解 SMB 客户端要求](#smb-client-reqs)有关详细信息)，使用**3.0**有关 **< smb_version >** 。 对于不支持 SMB 3.0 加密的 Linux 分发版，使用**2.1**有关 **< smb_version >** 。 只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。
 
     ```bash
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-name>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+
+    sudo mount /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME>
     ```
 
 > [!Note]  

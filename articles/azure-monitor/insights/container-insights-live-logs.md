@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 06/04/2019
 ms.author: magoedte
-ms.openlocfilehash: 376a7f3f83cc7fcf7490675d9c0aef1513862e8a
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 8d4cc5e46066ad2f18d596d0484f62f478b4cc23
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521734"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514325"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>如何在实时 （预览版） 中查看日志和事件
 用于容器的 azure 监视器包含一项功能，目前以预览版提供，而无需运行 kubectl 命令提供到您的 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderr) 和事件的实时视图。 选择任一选项，一个新窗格将显示下面的性能数据的表上**节点**，**控制器**，并**容器**视图。 它显示实时日志记录和生成容器引擎，为进一步协助解决在真实时间中的问题的事件。 
@@ -27,7 +27,7 @@ ms.locfileid: "65521734"
 >**参与者**需要即可使用此功能的访问权限的群集资源。
 >
 
-实时日志支持以三种不同的方式来控制对日志的访问：
+实时日志支持三种不同方法来控制对日志的访问：
 
 1. 没有启用 Kubernetes RBAC 授权的 AKS 
 2. 启用了 Kubernetes RBAC 授权的 AKS
@@ -66,10 +66,13 @@ ms.locfileid: "65521734"
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. 如果要第一次配置，则通过运行以下命令创建群集规则绑定： `kubectl create -f LogReaderRBAC.yaml`。 如果您以前启用了支持的实时日志预览之前我们引入了实时事件日志，以更新你的配置，运行以下命令： `kubectl apply -f LiveLogRBAC.yml`。 
+2. 如果你首次配置此项，则创建群集规则绑定通过运行以下命令： `kubectl create -f LogReaderRBAC.yaml`。 如果您以前启用了支持的实时日志预览之前我们引入了实时事件日志，以更新你的配置，运行以下命令： `kubectl apply -f LogReaderRBAC.yml`。 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>为 AKS 配置 Azure Active Directory
-可将 AKS 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 如果是第一次进行此项配置，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/azure-ad-integration.md)。 在创建[客户端应用程序](../../aks/azure-ad-integration.md#create-client-application)并指定“重定向 URI”的过程中，需向列表添加另一个 URI `https://ininprodeusuxbase.microsoft.com/*`。  
+可将 AKS 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 如果你首次配置此项，请参阅[集成 Azure Active Directory 与 Azure Kubernetes 服务](../../aks/azure-ad-integration.md)。 在创建步骤期间[客户端应用程序](../../aks/azure-ad-integration.md#create-client-application)，则需要指定两个**重定向 URI**条目。 以下是两个 Uri:
+
+- https://ininprodeusuxbase.microsoft.com/*
+- https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html  
 
 >[!NOTE]
 >通过 Azure Active Directory 配置身份验证以便实现单一登录的操作只能在初次部署新 AKS 群集过程中完成。 不能为已部署的 AKS 群集配置单一登录。 您必须配置从身份验证**应用注册 （旧版）** 为了在 URI 中支持通配符的使用和，而 Azure AD 中的选项将其添加到列表中，将其注册为**本机**应用。

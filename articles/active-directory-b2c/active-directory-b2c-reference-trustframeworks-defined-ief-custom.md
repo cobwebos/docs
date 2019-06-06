@@ -2,20 +2,20 @@
 title: 参考 - Azure Active Directory B2C 中的信任框架 | Microsoft Docs
 description: 本主题介绍了 Azure Active Directory B2C 自定义策略和标识体验框架。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 20767c8903cd6617db4d37b756c3d8ae95cfb6ad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 47e45a7dac8abc65f414fedd0fd910e3a7a78113
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701208"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508813"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>使用 Azure AD B2C 标识体验框架定义信任框架
 
@@ -112,11 +112,11 @@ TF 规范是用于相关社区治理的一个或多个参考文档，让相关�
 >
 > 使用术语“声明”的另一个原因在于，使用标识体验框架的 Azure AD B2C 自定义策略旨在以一致的方式简化所有类型的数字标识信息的交换，而不考虑是否为用户身份验证或属性检索定义了基本协议。  同样，如果我们不想要区分标识提供者、属性提供者和属性验证程序的具体功能，我们会使用术语“声明提供程序”来统称这些参与者。   
 
-因此，声明提供程序控制了信赖方、标识提供者、属性提供者和属性验证程序之间的标识信息交换方式。 它们控制了需要使用哪些标识提供者和属性提供者来完成信赖方的身份验证。 应该将它们视为域特定的语言 (DSL)，即，包含继承、if 语句和多形性的特定应用程序域专用的计算机语言。
+因此，声明提供程序控制了信赖方、标识提供者、属性提供者和属性验证程序之间的标识信息交换方式。 它们控制了需要使用哪些标识提供者和属性提供者来完成信赖方的身份验证。 应该将它们视为域特定的语言 (DSL)，即，包含继承、if  语句和多形性的特定应用程序域专用的计算机语言。
 
 这些策略构成利用标识体验框架的 Azure AD B2C 自定义策略中 TF 构造的计算机可读部分。 它们包括所有操作详细信息，具体涵盖声明提供程序的元数据和技术配置文件、声明架构定义、声明转换函数以及填充的用户旅程，以便推动操作业务流程和自动化。  
 
-它们被假定为动态文档，因其内容很有可能随着时间的推移而发生变化，其中涉及策略中声明的活动参与者。 此外，成为参与者的条款和条件也有可能会发生更改。  
+它们被假定为动态文档  ，因其内容很有可能随着时间的推移而发生变化，其中涉及策略中声明的活动参与者。 此外，成为参与者的条款和条件也有可能会发生更改。  
 
 当不同的声明提供程序/验证程序加入或离开策略集（社区代表方）时，将信赖方与不断进行的信任和连接重新配置相区分可以大大简化联合的设置和维护。
 

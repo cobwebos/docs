@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620003"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734925"
 ---
 # <a name="action-rules-preview"></a>操作规则 （预览版）
 
@@ -33,7 +33,7 @@ ms.locfileid: "65620003"
 
 ## <a name="configuring-an-action-rule"></a>操作规则配置
 
-可以通过选择访问功能**管理操作**从登录页上，在 Azure Monitor 中的警报。 然后选择**操作规则 （预览版）**。 可以通过选择访问它们**操作规则 （预览版）** 警报的登陆页面的仪表板。
+可以通过选择访问功能**管理操作**从登录页上，在 Azure Monitor 中的警报。 然后选择**操作规则 （预览版）** 。 可以通过选择访问它们**操作规则 （预览版）** 警报的登陆页面的仪表板。
 
 ![从 Azure 监视器登陆页面的操作规则](media/alerts-action-rules/action-rules-landing-page.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "65620003"
 * **警报规则 ID**:允许您筛选有关使用警报规则的资源管理器 ID 的特定警报规则。
 * **监视条件**:与"已触发"或"已解决"作为监视器条件的警报实例的筛选器。
 * **说明**：正则表达式匹配中定义为警报规则的一部分的说明。
-* **警报上下文 （有效负载）**:正则表达式中匹配[警报上下文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)警报实例的字段。
+* **警报上下文 （有效负载）** :正则表达式中匹配[警报上下文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)警报实例的字段。
 
 两台一起应用这些筛选器。 例如，如果我设置资源类型 = 虚拟机和严重性 = Sev0，则我在我的 Vm 上已筛选的所有 Sev0 警报。 
 
@@ -80,7 +80,7 @@ ms.locfileid: "65620003"
 #### <a name="suppression"></a>禁止显示
 
 如果选择**抑制**，配置的操作和通知的禁止显示的持续时间。 选择以下项之一：
-* **从现在起 （始终）**:无限期地禁止显示所有通知。
+* **从现在起 （始终）** :无限期地禁止显示所有通知。
 * **在计划时间**:有限持续时间内取消通知。
 * **并且指定了 recurrence**:按定期计划每日、 每周或每月可禁止显示。
 
@@ -98,7 +98,7 @@ ms.locfileid: "65620003"
 ### <a name="action-rule-details"></a>操作规则的详细信息
 
 最后，配置操作规则的以下详细信息
-* 名称
+* Name
 * 在其中保存的资源组
 * 描述 
 
@@ -128,12 +128,15 @@ Contoso 希望为所有日志生成的"计算机-01"警报抑制通知中 Contos
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>方案 3：在资源组中定义的操作组
 
-具有定义的 Contoso[指标警报在订阅级别](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)，但想要定义为其资源组 ContosoRG 单独的警报触发的操作。
+具有定义的 Contoso[指标警报在订阅级别](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)，但想要定义专用于其资源组 ContosoRG 从生成的警报触发的操作。
 
 **解决方案：** 创建与操作规则
 * Scope = 'ContosoRG'
 * 没有筛选器
 * 设置为 ContosoActionGroup 的操作组
+
+> [!NOTE]
+> **操作规则中定义的操作组和警报规则操作独立，与任何重复数据消除**。 如果一个操作组，上面所述的方案中为警报规则定义，它将触发一起使用，通过在操作规则中定义操作组。 
 
 ## <a name="managing-your-action-rules"></a>管理操作规则
 

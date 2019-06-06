@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 90c7e4653b879c2432f08506cea08646e84bb69a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 46be01c57be0e4f5fa74f8e8b0d91db3d78f441c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297706"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480413"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据的流性能和优化指南
 
@@ -29,15 +29,28 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 
 ![调试按钮](media/data-flow/debugb1.png "调试")
 
+## <a name="monitor-data-flow-performance"></a>监视数据流性能
+
+设计您的映射数据的流在浏览器中，您可以单元测试每个单独的转换通过单击数据预览选项卡在底部设置窗格中的每个转换。 应采取的下一步是在管道设计器中测试你的数据流端到端。 添加执行数据流活动并使用调试按钮以测试数据的流的性能。 在管道窗口的底部窗格中，您将看到在"操作"下的一个眼镜图标：
+
+![数据流监视器](media/data-flow/mon002.png "数据流监视器 2")
+
+单击该图标将显示执行计划和后续的性能配置文件的数据的流。 可以使用此信息来估计数据的流对不同大小的数据源的性能。 请注意，可以在您的整体性能计算假设群集作业执行设置时间的 1 分钟，如果使用默认 Azure 集成运行时，可能需要添加群集启动时的 5 分钟。
+
+![数据流监视](media/data-flow/mon003.png "数据流监视器 3")
+
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>针对 Azure SQL 数据库和 Azure SQL 数据仓库进行优化
 
 ![源部件](media/data-flow/sourcepart2.png "源部件")
 
-### <a name="you-can-match-spark-data-partitioning-to-your-source-database-partitioning-based-on-a-database-table-column-key-in-the-source-transformation"></a>您可以匹配的 Spark 数据分区到源数据库分区基于源转换中的数据库表列键
+### <a name="partition-your-source-data"></a>将源数据分区
 
 * 转到"优化"并选择"源"。 在查询中设置特定的表的列或类型。
 * 如果选择"列"，然后选择分区列。
 * 此外，设置为 Azure SQL DB 的最大连接数。 你可以尝试更高版本的设置，以获得并行连接到你的数据库。 但是，某些情况下可能会导致有限数目的连接具有更快的性能。
+* 不需要对源数据库表进行分区。
+* 设置查询源转换相匹配的数据库表的分区方案中，要利用分区排除的源数据库引擎。
+* 如果您的源未分区，ADF 将仍使用 Spark 转换环境选择源转换中的关键字中的数据分区。
 
 ### <a name="set-batch-size-and-query-on-source"></a>在源上设置批大小和查询
 
@@ -51,7 +64,7 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 
 ![接收器](media/data-flow/sink4.png "接收器")
 
-* 为了避免数据 floes 的行的处理，Azure SQL DB 的接收器设置中设置"批大小"。 这将告知 ADF 到处理数据库写入分批基于提供的大小。
+* 为了避免你数据的流的行的处理，Azure SQL DB 的接收器设置中设置"批大小"。 这将告知 ADF 到处理数据库写入分批基于提供的大小。
 
 ### <a name="set-partitioning-options-on-your-sink"></a>设置分区在接收器上的选项
 
@@ -84,7 +97,7 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 
 ### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>使用临时过程来批量通过 Polybase 将数据加载
 
-* 若要避免通过行处理的数据 floes，"过渡"选项中设置接收器设置 ADF 才能利用 Polybase 来避免行的行插入到数据仓库。 这将指示 ADF，若要使用 Polybase，以便可以在大容量加载数据。
+* 为了避免你数据的流的行的处理，"过渡"选项中设置接收器设置，以便 ADF 可以利用以避免由行插入到数据仓库的 Polybase。 这将指示 ADF，若要使用 Polybase，以便可以在大容量加载数据。
 * 当执行从您数据的流活动的管道，使用临时过程开启，将需要选择用于大容量加载临时数据的 Blob 存储位置。
 
 ### <a name="increase-the-size-of-your-azure-sql-dw"></a>增加 Azure SQL 数据仓库的大小
@@ -113,4 +126,4 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 
 - [数据流概述](concepts-data-flow-overview.md)
 - [数据流活动](control-flow-execute-data-flow-activity.md)
-
+- [监视数据流性能](concepts-data-flow-monitoring.md)

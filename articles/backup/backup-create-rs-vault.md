@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: sogup
-ms.openlocfilehash: b345f5e7f6f32d7fbb76d4f0227c8f4f925ff884
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 9fba7d679b7d0edb3c99207c99b23f9616c6fa0e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400291"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477583"
 ---
 # <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -76,7 +76,7 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
    - 详细了解[异地冗余](../storage/common/storage-redundancy-grs.md)和[本地冗余](../storage/common/storage-redundancy-lrs.md)。
 
 > [!NOTE]
-> 选择后**存储复制类型**从**异地冗余**到**本地冗余**，不能还原。
+> 更改**存储复制类型**（本地冗余 / 地域冗余） 对于恢复服务保管库必须在配置备份保管库中之前完成。 一旦配置备份，若要修改此选项已禁用，而且不能更改**存储复制类型**。 
 
 ## <a name="next-steps"></a>后续步骤
 

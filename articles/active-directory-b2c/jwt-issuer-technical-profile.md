@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 的自定义策略中定义 JWT 令牌颁发者的技术配置文件 | Microsoft Docs
 description: 在 Azure Active Directory B2C 的自定义策略中定义 JWT 令牌颁发者的技术配置文件。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33dce27b69d080c57b925562ba83db0046b77ca9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 573463d91fc7a4119bd1bc30182588ff9dfdecb7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683785"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510702"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 JWT 令牌颁发者的技术配置文件
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C 在每个身份验证流的处理过程中
 
 ## <a name="protocol"></a>Protocol
 
-“Protocol”元素的“Name”属性必须设置为 `None`。 将 **OutputTokenFormat** 元素设置为 `JWT`。
+“Protocol”  元素的“Name”  属性必须设置为 `None`。 将 **OutputTokenFormat** 元素设置为 `JWT`。
 
 以下示例演示了 `JwtIssuer` 的技术配置文件：
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) B2C 在每个身份验证流的处理过程中
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | 是 | 应在 OAuth2 授权代码和刷新令牌中用作用户标识声明的声明。 默认情况下，除非指定了不同的 SubjectNamingInfo 声明类型，否则应将其设置为 `objectId`。 | 
 | SendTokenResponseBodyWithJsonNumbers | 否 | 始终设置为 `true`。 对于以字符串而不是 JSON 数字形式指定数字值的旧格式，请将此属性设置为 `false`。 依赖于以字符串形式返回此类属性的早期实现的客户端需要此属性。 | 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) B2C 在每个身份验证流的处理过程中
 
 CryptographicKeys 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | issuer_secret | 是 | 用于对 JWT 令牌进行签名的 X509 证书（RSA 密钥集）。 这是在[自定义策略入门](active-directory-b2c-get-started-custom.md)中配置的 `B2C_1A_TokenSigningKeyContainer` 密钥。 | 
 | issuer_refresh_token_key | 是 | 用于加密刷新令牌的 X509 证书（RSA 密钥集）。 在[自定义策略入门](active-directory-b2c-get-started-custom.md)中已配置 `B2C_1A_TokenEncryptionKeyContainer` 密钥 |

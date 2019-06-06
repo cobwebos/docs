@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128696"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497257"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -26,23 +26,22 @@ ms.locfileid: "62128696"
 
 为帮助收集和审查来自多个源的数据，Azure Monitor 日志提供了查询语言和分析引擎，该引擎可提供环境的见解。 工作区用于整理和分析数据，并可与 Application Insights 和安全中心等其他 Azure 服务集成。 若要使用不同的平台分析日志，可以选择将诊断日志发送到 Azure 存储帐户或事件中心。 有关详细信息，请参阅[什么是 Azure Monitor 日志？][log-analytics-overview]。
 
-在 Azure 门户中启用和管理 Azure Monitor 日志。 若要为 AKS 群集中的 Kubernetes 主组件启用日志收集，请在 Web 浏览器中打开 Azure 门户并完成以下步骤：
+启用并在 Azure 门户中管理 azure Monitor 日志。 若要为 AKS 群集中的 Kubernetes 主组件启用日志收集，请在 Web 浏览器中打开 Azure 门户并完成以下步骤：
 
 1. 选择 AKS 群集的资源组，例如 *myResourceGroup*。 不要选择包含单个 AKS 群集资源的资源组，例如 *MC_myResourceGroup_myAKSCluster_eastus*。
-1. 在左侧选择“诊断设置”。
-1. 选择 AKS 群集（例如 *myAKSCluster*），然后选择“启用诊断”。
-1. 输入名称（例如 myAKSClusterLogs），然后选择“发送到 Log Analytics 工作区”选项。
-    * 选择配置 Log Analytics 工作区，然后选择现有的工作区，或“创建新工作区”。
-    * 如果需要创建工作区，请提供一个名称、资源组和位置。
-1. 在可用日志列表中，选择要启用的日志。 默认情况下，kube-apiserver、kube-controller-manager 和 kube-scheduler 日志已启用。 你可以启用其他日志，例如 kube-audit 和 cluster-autoscaler。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
-1. 准备就绪后，选择“保存”以启用收集选定日志。
+1. 在左侧选择“诊断设置”。 
+1. 选择你的 AKS 群集，如*myAKSCluster*，然后选择**添加诊断设置**。
+1. 输入名称（例如 myAKSClusterLogs  ），然后选择“发送到 Log Analytics”选项。 
+1. 选择现有的工作区或创建一个新。 如果您创建工作区，提供工作区名称、 资源组和位置。
+1. 在可用日志列表中，选择要启用的日志。 常见日志包括*kube apiserver*， *kube 控制管理器*，并*kube 计划程序*。 你可以启用其他日志，例如 kube-audit  和 cluster-autoscaler  。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
+1. 准备就绪后，选择“保存”以启用收集选定日志。 
 
 > [!NOTE]
 > AKS 仅捕获在订阅上启用功能标志后创建或升级的群集的审核日志。 若要注册 *AKSAuditLog* 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
 >
 > `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
 >
-> 等待状态显示“已注册”。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+> 等待状态显示“已注册”  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
 >
 > `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
 >
@@ -50,7 +49,7 @@ ms.locfileid: "62128696"
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
-以下示例门户屏幕截图显示了“诊断设置”窗口，以及用于创建 Log Analytics 工作区的选项：
+下面的示例门户屏幕截图演示*诊断设置*窗口：
 
 ![为 AKS 群集的 Azure Monitor 日志启用 Log Analytics 工作区](media/view-master-logs/enable-oms-log-analytics.png)
 
@@ -92,7 +91,7 @@ pod/nginx created
 
 ![选择 AKS 群集的 Log Analytics 工作区](media/view-master-logs/select-log-analytics-workspace.png)
 
-在左侧选择“日志”。 若要查看 *kube-apiserver*，请在文本框中输入以下查询：
+在左侧选择“日志”。  若要查看 *kube-apiserver*，请在文本框中输入以下查询：
 
 ```
 AzureDiagnostics
@@ -130,7 +129,7 @@ AzureDiagnostics
 | *properties.log*         | 来自组件的日志的完整文本 |
 | *properties.stream*      | *stderr* 或 *stdout* |
 | *properties.pod*         | 日志的来源 pod 名称 |
-| *properties.containerID* | 此日志的来源 Docker 容器的 ID |
+| *properties.containerID* | 此日志来自的 docker 容器的 ID |
 
 ## <a name="next-steps"></a>后续步骤
 

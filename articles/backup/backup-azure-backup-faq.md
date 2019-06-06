@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 479edc11604670189b0accba67aa8f345f6260cd
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: a0a2bc58603a81ba23ff3f1feb05f4d2350cfe72
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551367"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688740"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 本文回答有关 Azure 备份服务的常见问题。
@@ -21,7 +21,7 @@ ms.locfileid: "65551367"
 ## <a name="recovery-services-vault"></a>恢复服务保管库
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>在每个 Azure 订阅中可以创建的保管库数量是否有任何限制？
-可以。 在 Azure 备份支持的区域中，可以为每个订阅最多创建 500 个恢复服务保管库。 如果需要更多保管库，请创建另一订阅。
+是的。 在 Azure 备份支持的区域中，可以为每个订阅最多创建 500 个恢复服务保管库。 如果需要更多保管库，请创建另一订阅。
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>可针对每个保管库注册的服务器/计算机数量是否有限制？
 每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果使用 Microsoft Azure 备份代理，每个保管库最多可以注册 50 个 MAB 代理。 可以将 50 个 MAB 服务器/DPM 服务器注册到一个保管库。
@@ -30,7 +30,7 @@ ms.locfileid: "65551367"
 设置备份时，你想要一起恢复的服务器数据应使用相同密码。 如果要将恢复隔离到一个特定服务器或多个服务器，仅使用该服务器的密码。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>是否可以在订阅之间移动我的保管库？
-可以。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
+是的。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
 不。 保管库中存储的备份数据无法移动到不同的保管库。
@@ -54,7 +54,7 @@ ms.locfileid: "65551367"
 ## <a name="vmware-and-hyper-v-backup"></a>VMware 和 Hyper-V 备份
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>是否可以将 VMware vCenter 服务器备份到 Azure？
-可以。 可以使用 Azure 备份服务器将 VMware vCenter Server 和 ESXi 主机备份到 Azure。
+是的。 可以使用 Azure 备份服务器将 VMware vCenter Server 和 ESXi 主机备份到 Azure。
 
 - [详细了解](backup-mabs-protection-matrix.md)支持的版本。
 - [请按照下列步骤](backup-azure-backup-server-vmware.md)备份 VMware 服务器。
@@ -74,18 +74,18 @@ ms.locfileid: "65551367"
 不。 一个 DPM 或 Azure 备份服务器只能注册到一个保管库。
 
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>是否可以使用 Azure 备份服务器为物理服务器创建裸机恢复 (BMR) 备份？ <br/>
-可以。
+是的。
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>可以使用 DPM 来备份 Azure Stack 中的应用吗？
 不。 可以使用 Azure 备份来保护 Azure Stack，但 Azure 备份不支持使用 DPM 来备份 Azure Stack 中的应用。
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>如果已经安装 Azure 备份代理来保护我的文件和文件夹，是否可以安装 System Center DPM 将本地工作负载备份到 Azure？
-可以。 但应首先设置 DPM，然后再安装 Azure 备份代理。  按此顺序安装组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装代理。
+是的。 但应首先设置 DPM，然后再安装 Azure 备份代理。  按此顺序安装组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装代理。
 
 ## <a name="general-backup"></a>常规备份
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>备份计划是否有限制？
-可以。
+是的。
 - 可以备份 Windows Server 或 Windows 计算机，最多一天三次。 可以将计划策略设置为每日或每周计划。
 - 可以备份 DPM，最多一天两次。 可以将计划策略设置为每日、每周、每月或每年。
 - Azure VM 可每日备份一次。
@@ -175,15 +175,15 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 典型的长期保留点产品将备份数据存储为完整的点。
 
 - 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。
-- 增量复制为高效存储，但要求还原数据链，这会影响恢复时间
+- 增量复制为高效  存储，但要求还原数据链，这会影响恢复时间
 
 Azure 备份存储体系结构提供这两个领域的最佳产品，它以最佳方式用于快速恢复的数据存储中，产生较低的存储成本。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>可创建的恢复点数量是否有限制？
 最多可为单个受保护实例创建 9999 个恢复点。 受保护的实例包括计算机、服务器（物理或虚拟）或备份到 Azure 的工作负载。
 
-- 了解有关[备份和保留](./backup-introduction-to-azure-backup.md#backup-and-retention)的更多信息。
-- 了解[受保护的实例](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)？
+- 了解有关[备份和保留](./backup-overview.md#backup-and-retention)的更多信息。
+
 
 ### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>我可以恢复多少次备份到 Azure 的数据？
 从 Azure 备份执行恢复的次数没有限制。
@@ -200,10 +200,10 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 ## <a name="encryption"></a>加密
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>发送到 Azure 的数据会加密吗？
-可以。 使用 AES256 在本地计算机上对数据进行加密。 数据通过安全的 HTTPS 链接发送。 在云中传输的数据仅在存储和恢复服务之间通过 HTTPS 链接进行保护。 iSCSI 协议可保护恢复服务和用户计算机之间传输的数据。 安全隧道用于保护 iSCSI 通道。
+是的。 使用 AES256 在本地计算机上对数据进行加密。 数据通过安全的 HTTPS 链接发送。 在云中传输的数据仅在存储和恢复服务之间通过 HTTPS 链接进行保护。 iSCSI 协议可保护恢复服务和用户计算机之间传输的数据。 安全隧道用于保护 iSCSI 通道。
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Azure 中的备份数据也会加密吗？
-可以。 Azure 中的数据为静态加密。
+是的。 Azure 中的数据为静态加密。
 
 - 对于本地备份，使用在备份到 Azure 时提供的密码提供静态加密。
 - 对于 Azure VM，使用存储服务加密 (SSE) 对数据进行静态加密。

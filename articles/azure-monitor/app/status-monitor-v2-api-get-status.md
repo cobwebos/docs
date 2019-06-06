@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2 API 参考：获取状态 |Microsoft Docs
-description: 状态监视器 v2 API 引用 Get-ApplicationInsightsMonitoringStatus。 监视网站性能，无需重新部署该网站。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
+description: 状态监视器 v2 API 引用。 Get-ApplicationInsightsMonitoringStatus. 监视网站性能，无需重新部署该网站。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,27 +12,27 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: ff61cf2bfb49a64d2f885cb13fd6c48e32c1f8f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 860226320fe1a546798cc462e4e5c06d4b9228cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416001"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514307"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v022-alpha"></a>状态监视器 v2 API:Get ApplicationInsightsMonitoringStatus (v0.2.2-alpha)
 
-本文档介绍了作为的成员提供的 cmdlet [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
+本文介绍的 cmdlet 时的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
 
 > [!IMPORTANT]
 > 状态监视器 v2 目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅[Supplemental Terms of Use 针对 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="description"></a>描述
 
-此 cmdlet 用于故障排除中使用的 PowerShell 模块。
-此 cmdlet 将报告版本信息和监视所需的密钥文件。
-其他参数的当前状态的监视提供额外的报告。
+启用故障排除正在使用的 PowerShell 模块。
+此 cmdlet 将会报告版本信息并监视所需的密钥文件的信息。
+其他参数提供有关监视状态的额外的报告。
 
 > [!IMPORTANT] 
 > 此 cmdlet 需要具有管理员权限的 PowerShell 会话。
@@ -40,9 +40,9 @@ ms.locfileid: "65416001"
 ## <a name="examples"></a>示例
 
 
-### <a name="example-basic-information"></a>示例： 基本信息
+### <a name="example-basic-information"></a>示例：基本信息
 
-运行命令：`Get-ApplicationInsightsMonitoringStatus`以获取有关此模块的信息的输出：
+运行`Get-ApplicationInsightsMonitoringStatus`以显示有关当前模块的信息：
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus
@@ -77,11 +77,11 @@ Machine Identifier:
 0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF
 ```
 
-### <a name="example-runtime-status"></a>示例： 运行时状态
+### <a name="example-runtime-status"></a>示例：运行时状态
 
-您可以检查以查看是否已加载所有 Dll 检测计算机上的进程。 监视正常运行，如果应加载至少为 12 的 DLL。
+您可以检查以查看是否所有 Dll 都加载的已检测计算机上的进程。 监视正常运行，如果应加载至少为 12 的 Dll。
 
-- Cmd: `Get-ApplicationInsightsMonitoringStatus -InspectProcess`
+运行命令`Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -115,19 +115,19 @@ listdlls64.exe -accepteula w3wp
 0x000000000ad60000  0x108000  C:\Windows\TEMP\2.4.0.0.Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
 ```
 
-## <a name="parameters"></a>parameters 
+## <a name="parameters"></a>parameters
 
-### <a name="no-params"></a>（无参数）
+### <a name="no-parameters"></a>（不带参数）
 
-通过**默认**，此 cmdlet 将会报告版本号并监视所需的 Dll 的路径。
+默认情况下，此 cmdlet 将报告的版本号和监视所需的 Dll 的路径。
 
 如果您需要确定的任何 DLL，包括 Application Insights SDK 的版本，请使用此选项。
 
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-可选。 此 cmdlet 将报告是否正在运行 IIS。
-此 cmdlet 还会下载外部工具来检查如果所需的 Dll 加载到 IIS 运行时。
+可选  。 此参数用于报告是否正在运行 IIS。
+它将下载外部工具来确定如果所需的 Dll 加载到 IIS 运行时。
 
 
 如果出于任何原因，此过程失败，您可以手动运行以下命令：
@@ -138,10 +138,10 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="-force"></a>-Force
 
-可选。 仅与 InspectProcess 一起使用。 此开关将跳过下载其他工具的用户提示。
+可选  。 仅与 InspectProcess 一起使用。 使用此开关用于跳过下载其他工具之前，会出现用户提示。
 
 
 ## <a name="next-steps"></a>后续步骤
 
  用做更多状态监视器 v2:
- - 使用指南，了解如何[疑难解答](status-monitor-v2-troubleshoot.md)状态监视器 v2。
+ - 使用指南，了解如何[进行故障排除](status-monitor-v2-troubleshoot.md)状态监视器 v2。

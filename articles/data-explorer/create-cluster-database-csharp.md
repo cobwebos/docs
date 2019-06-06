@@ -1,18 +1,18 @@
 ---
-title: 快速入门：使用 C# 创建 Azure 数据资源管理器群集和数据库
+title: 使用 C# 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 C# 创建 Azure 数据资源管理器群集和数据库
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 719aba498c08617b42d248d3c677499f8eb3e4b2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: e51551d4ce8061122fce52b05e68e102b71c27a8
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900826"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494613"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>使用 C# 创建 Azure 数据资源管理器群集和数据库
 
@@ -24,9 +24,9 @@ ms.locfileid: "65900826"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本快速入门中，你将使用 C# 创建群集和数据库。
+Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，您创建的群集、 数据库使用C#。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。 
 
@@ -112,7 +112,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-* 如果计划学习其他快速入门和教程，请保留创建的资源。
+* 如果你打算按照我们的其他文章，请创建的资源。
 * 若要清理资源，请删除群集。 删除群集时，也会删除其中的所有数据库。 使用以下命令删除群集：
 
     ```C#-interactive
@@ -121,5 +121,4 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [快速入门：使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据](net-standard-ingest-data.md)
+* [使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据](net-standard-ingest-data.md)

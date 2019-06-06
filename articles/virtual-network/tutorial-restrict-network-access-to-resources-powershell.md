@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b3218b44a04bec3f4e50ebd1963714af4885fc6c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b76256ef70b85df0c504427179518d175f08b645
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712266"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66727660"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>使用 PowerShell 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -39,9 +39,9 @@ ms.locfileid: "64712266"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您选择本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -61,7 +61,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-创建的子网配置[新建 AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)。 以下示例为名为 *Public* 的子网创建子网配置：
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网配置。 以下示例为名为 *Public* 的子网创建子网配置：
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -70,7 +70,7 @@ $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-子网配置写入虚拟网络中的虚拟网络创建子网[集 AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork):
+通过使用 [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) 将子网配置写入虚拟网络，在虚拟网络中创建子网：
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
@@ -78,7 +78,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="enable-a-service-endpoint"></a>启用服务终结点
 
-只能为支持服务终结点的服务启用服务终结点。 查看与某个 Azure 位置中可用的服务终结点启用了服务[Get AzVirtualNetworkAvailableEndpointService](/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice)。 以下示例返回 *eastus* 区域中可用的启用了服务终结点的服务列表。 随着更多的 Azure 服务启用服务终结点，返回的服务列表将随时间增大。
+只能为支持服务终结点的服务启用服务终结点。 使用 [Get-AzVirtualNetworkAvailableEndpointService](/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice) 查看某个 Azure 位置中可用的启用了服务终结点的服务。 以下示例返回 *eastus* 区域中可用的启用了服务终结点的服务列表。 随着更多的 Azure 服务启用服务终结点，返回的服务列表将随时间增大。
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkAvailableEndpointService -Location eastus | Select Name
@@ -98,7 +98,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="restrict-network-access-for-a-subnet"></a>限制子网的网络访问
 
-创建网络安全组安全规则与[新建 AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)。 以下规则允许对分配给 Azure 存储服务的公用 IP 地址进行出站访问： 
+使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建网络安全组安全规则。 以下规则允许对分配给 Azure 存储服务的公用 IP 地址进行出站访问： 
 
 ```azurepowershell-interactive
 $rule1 = New-AzNetworkSecurityRuleConfig `
@@ -153,7 +153,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $rule1,$rule2,$rule3
 ```
 
-将关联到的网络安全组*私有*子网[集 AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) ，然后将子网配置写入虚拟网络。 以下示例将 *myNsgPrivate* 网络安全组关联到 *Private* 子网：
+使用 [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将该网络安全组添加到 *Private* 子网，然后将子网配置写入到虚拟网络。 以下示例将 *myNsgPrivate* 网络安全组关联到 *Private* 子网：
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -172,7 +172,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-创建与 Azure 存储帐户[新建 AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)。 将 `<replace-with-your-unique-storage-account-name>` 替换为在所有 Azure 位置中唯一的、长度为 3-24 个字符且仅使用数字和小写字母的名称。
+使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 创建 Azure 存储帐户。 将 `<replace-with-your-unique-storage-account-name>` 替换为在所有 Azure 位置中唯一的、长度为 3-24 个字符且仅使用数字和小写字母的名称。
 
 ```azurepowershell-interactive
 $storageAcctName = '<replace-with-your-unique-storage-account-name>'
@@ -185,7 +185,7 @@ New-AzStorageAccount `
   -Kind StorageV2
 ```
 
-创建存储帐户后，检索到的变量的存储帐户的密钥[Get AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey):
+创建存储帐户后，使用 [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) 将存储帐户的密钥检索到一个变量中：
 
 ```azurepowershell-interactive
 $storageAcctKey = (Get-AzStorageAccountKey `
@@ -197,19 +197,19 @@ $storageAcctKey = (Get-AzStorageAccountKey `
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>在存储帐户中创建文件共享
 
-创建你的存储帐户的上下文和密钥用于[新建 AzStorageContext](/powershell/module/az.storage/new-AzStoragecontext)。 该上下文封装了存储帐户名称和帐户密钥：
+使用 [New-AzStorageContext](/powershell/module/az.storage/new-AzStoragecontext) 为存储帐户和密钥创建上下文。 该上下文封装了存储帐户名称和帐户密钥：
 
 ```azurepowershell-interactive
 $storageContext = New-AzStorageContext $storageAcctName $storageAcctKey
 ```
 
-创建使用文件共享[新建 AzStorageShare](/powershell/module/az.storage/new-azstorageshare):
+使用 [New-AzStorageShare](/powershell/module/az.storage/new-azstorageshare) 创建一个文件共享：
 
 $share = New-AzStorageShare my-file-share -Context $storageContext
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>拒绝对存储帐户的所有网络访问
 
-默认情况下，存储帐户接受来自任何网络中的客户端的网络连接。 若要限制对所选网络的访问，将默认操作更改为*拒绝*与[更新 AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)。 在拒绝网络访问后，将无法从任何网络访问存储帐户。
+默认情况下，存储帐户接受来自任何网络中的客户端的网络连接。 若要仅允许所选的网络进行访问，请使用 [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset) 将默认操作更改为 *Deny*。 在拒绝网络访问后，将无法从任何网络访问存储帐户。
 
 ```azurepowershell-interactive
 Update-AzStorageAccountNetworkRuleSet  `
@@ -220,7 +220,7 @@ Update-AzStorageAccountNetworkRuleSet  `
 
 ### <a name="enable-network-access-from-a-subnet"></a>启用从子网的网络访问
 
-检索与创建的虚拟网络[Get AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) ，然后检索到一个变量中使用的专用子网对象[Get AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig):
+使用 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) 检索所创建的虚拟网络，然后使用 [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) 将专用子网对象检索到一个变量中：
 
 ```azurepowershell-interactive
 $privateSubnet = Get-AzVirtualNetwork `
@@ -230,7 +230,7 @@ $privateSubnet = Get-AzVirtualNetwork `
   -Name "Private"
 ```
 
-允许从存储帐户的网络访问*私有*子网[添加 AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig)。
+使用 [Add-AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig) 允许从 Private  子网对存储帐户进行网络访问。
 
 ```azurepowershell-interactive
 Add-AzStorageAccountNetworkRule `
@@ -245,7 +245,7 @@ Add-AzStorageAccountNetworkRule `
 
 ### <a name="create-the-first-virtual-machine"></a>创建第一个虚拟机
 
-创建中的虚拟机*公共*子网[New-azvm](/powershell/module/az.compute/new-azvm)。 运行以下命令时，会提示输入凭据。 输入的值将配置为用于 VM 的用户名和密码。 `-AsJob` 选项会在后台创建 VM，因此可继续执行下一步。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在 Public  子网中创建虚拟机。 运行以下命令时，会提示输入凭据。 输入的值将配置为用于 VM 的用户名和密码。 `-AsJob` 选项会在后台创建 VM，因此可继续执行下一步。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -297,7 +297,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机。 打开下载的 rdp 文件。 出现提示时，选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”，然后选择“使用其他帐户”，以指定在创建 VM 时输入的凭据。 选择“确定”。 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。
+此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机。 打开下载的 rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。 选择“确定”  。 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  
 
 在 *myVmPrivate* VM 上，使用 PowerShell 将 Azure 文件共享映射到驱动器 Z。 在运行下面的命令之前，将 `<storage-account-key>` 和 `<storage-account-name>` 替换为在[创建存储帐户](#create-a-storage-account)中提供或检索的值。
 
@@ -323,7 +323,7 @@ Azure 文件共享已成功映射到驱动器 Z。
 ping bing.com
 ```
 
-不会收到回复，因为除了分配给 Azure 存储服务的地址以外，关联到“专用”子网的网络安全组不允许与其他公共 IP 地址建立出站访问。
+不会收到回复，因为除了分配给 Azure 存储服务的地址以外，关联到“专用”子网的网络安全组不允许与其他公共 IP 地址建立出站访问。 
 
 关闭与 *myVmPrivate* VM 建立的远程桌面会话。
 
@@ -352,7 +352,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在 *Public* 子网中。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。
+对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在 *Public* 子网中。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
 
 关闭与 *myVmPublic* VM 建立的远程桌面会话。
 
@@ -364,7 +364,7 @@ Get-AzStorageFile `
   -Context $storageContext
 ```
 
-访问被拒绝，并且您收到*Get AzStorageFile:远程服务器返回错误：(403) 禁止访问。HTTP 状态代码：403 - HTTP 错误消息：此请求无权执行此操作* 错误，因为你的计算机不在 *MyVirtualNetwork* 虚拟网络的 *Private* 子网中。
+访问被拒绝，并且你会收到 *Get-AzStorageFile：远程服务器返回错误：(403) 禁止访问。HTTP 状态代码：403 - HTTP 错误消息：此请求无权执行此操作* 错误，因为你的计算机不在 *MyVirtualNetwork* 虚拟网络的 *Private* 子网中。
 
 ## <a name="clean-up-resources"></a>清理资源
 

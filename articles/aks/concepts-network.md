@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 2d51699138914e4a8ad5d2a133161fcfce71e9fe
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5ce3290f7af32b10e1dfbf9b72686e5d30c885bb
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074048"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431322"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -27,15 +27,15 @@ ms.locfileid: "65074048"
 
 ## <a name="kubernetes-basics"></a>Kubernetes 基础知识
 
-为允许访问应用程序或让应用程序组件相互通信，Kubernetes 为虚拟网络提供了抽象层。 Kubernetes 节点连接到虚拟网络，可为 Pod 提供入站和出站连接。 kube-proxy 组件在每个节点上运行，以提供这些网络功能。
+为允许访问应用程序或让应用程序组件相互通信，Kubernetes 为虚拟网络提供了抽象层。 Kubernetes 节点连接到虚拟网络，可为 Pod 提供入站和出站连接。 kube-proxy 组件在每个节点上运行，以提供这些网络功能  。
 
-在 Kubernetes 中，服务以逻辑方式对 Pod 进行分组，以允许通过 IP 地址或 DNS 名称以及特定端口进行直接访问。 此外，还可使用负载均衡器分发流量。 使用入口控制器也可实现更复杂的应用程序流量路由。 使用 Kubernetes 网络策略可提供安全性，还可筛选 Pod 网络流量（在 AKS 中，为预览版）。
+在 Kubernetes 中，服务以逻辑方式对 Pod 进行分组，以允许通过 IP 地址或 DNS 名称以及特定端口进行直接访问  。 此外，还可使用负载均衡器分发流量  。 使用入口控制器也可实现更复杂的应用程序流量路由  。 使用 Kubernetes 网络策略可提供安全性，还可筛选 Pod 网络流量（在 AKS 中，为预览版）  。
 
-Azure 平台还有助于简化 AKS 群集的虚拟网络。 创建 Kubernetes 负载均衡器时，将创建和配置基础 Azure 负载均衡器资源。 打开 Pod 的网络端口时，会配置相应的 Azure 网络安全组规则。 对于 HTTP 应用程序路由，Azure 还可以在配置新的入口路由时配置外部 DNS。
+Azure 平台还有助于简化 AKS 群集的虚拟网络。 创建 Kubernetes 负载均衡器时，将创建和配置基础 Azure 负载均衡器资源。 打开 Pod 的网络端口时，会配置相应的 Azure 网络安全组规则。 对于 HTTP 应用程序路由，Azure 还可以在配置新的入口路由时配置外部 DNS  。
 
 ## <a name="services"></a>服务
 
-为简化应用程序工作负载的网络配置，Kubernetes 使用服务以逻辑方式对一组 Pod 进行分组并提供网络连接。 可用的服务类型如下：
+为简化应用程序工作负载的网络配置，Kubernetes 使用服务以逻辑方式对一组 Pod 进行分组并提供网络连接  。 可用的服务类型如下：
 
 - **群集 IP** - 创建在 AKS 群集中使用的内部 IP 地址。 适用于支持群集中其他工作负载的仅限内部使用的应用程序。
 
@@ -55,18 +55,18 @@ Azure 平台还有助于简化 AKS 群集的虚拟网络。 创建 Kubernetes �
 
 可以动态分配负载均衡器和服务的 IP 地址，也可以指定要使用的现有静态 IP 地址。 可以分配内部和外部静态 IP 地址。 这个现有静态 IP 地址通常与 DNS 条目绑定。
 
-可以创建内部和外部负载均衡器。 内部负载均衡器仅分配一个专用 IP 地址，因此无法从 Internet 访问。
+可以创建内部和外部负载均衡器   。 内部负载均衡器仅分配一个专用 IP 地址，因此无法从 Internet 访问。
 
 ## <a name="azure-virtual-networks"></a>Azure 虚拟网络
 
 在 AKS 中，可以部署使用以下两种网络模型之一的群集：
 
-- Kubenet 网络 - 通常在部署 AKS 群集时创建和配置网络资源。
-- Azure 容器网络接口 (CNI) 网络 - AKS 群集连接到现有的虚拟网络资源和配置。
+- Kubenet 网络 - 通常在部署 AKS 群集时创建和配置网络资源  。
+- Azure 容器网络接口 (CNI) 网络 - AKS 群集连接到现有的虚拟网络资源和配置  。
 
 ### <a name="kubenet-basic-networking"></a>Kubenet（基本）网络
 
-kubenet 网络选项是用于创建 AKS 群集的默认配置。 使用 kubenet，节点从 Azure 虚拟网络子网获取 IP 地址。 Pod 接收从逻辑上不同的地址空间到节点的 Azure 虚拟网络子网的 IP 地址。 然后配置网络地址转换 (NAT)，以便 Pod 可以访问 Azure 虚拟网络上的资源。 流量的源 IP 地址是 NAT 到节点的主 IP 地址。
+kubenet 网络选项是用于创建 AKS 群集的默认配置  。 使用 kubenet，节点从 Azure 虚拟网络子网获取 IP 地址  。 Pod 接收从逻辑上不同的地址空间到节点的 Azure 虚拟网络子网的 IP 地址。 然后配置网络地址转换 (NAT)，以便 Pod 可以访问 Azure 虚拟网络上的资源。 流量的源 IP 地址是 NAT 到节点的主 IP 地址。
 
 节点使用 [kubenet][kubenet] Kubernetes 插件。 可以让 Azure 平台创建和配置虚拟网络，或选择将 AKS 群集部署到现有虚拟网络子网中。 同样，只有 Pod 和接收可路由 IP 地址的节点才能使用 NAT 与 AKS 群集外的其他资源进行通信。 这种方法大大减少了需要在网络空间中保留供 Pod 使用的 IP 地址数量。
 
@@ -92,13 +92,15 @@ Azure CNI 通过 kubenet 网络提供以下功能：
 
 创建 LoadBalancer 类型服务时，系统会创建基础 Azure 负载均衡器资源。 负载均衡器配置为在给定端口上将流量分发到服务中的 Pod。 LoadBalancer 仅在第 4 层工作 - 服务不知道实际的应用程序，不会考虑任何其他路由。
 
-入口控制器在第 7 层工作，可使用更智能的规则来分发应用程序流量。 入口控制器的一个常见用途是基于入站 URL 将 HTTP 流量路由到不同的应用程序。
+入口控制器在第 7 层工作，可使用更智能的规则来分发应用程序流量  。 入口控制器的一个常见用途是基于入站 URL 将 HTTP 流量路由到不同的应用程序。
 
 ![显示 AKS 群集中入口流量的示意图][aks-ingress]
 
-在 AKS 中，可以使用 NGINX 之类的服务器创建入口资源，或使用 AKS HTTP 应用程序路由功能。 为 AKS 群集启用 HTTP 应用程序路由时，Azure 平台会创建入口控制器和 External-DNS 控制器。 在 Kubernetes 中创建新的入口资源时，系统会在特定于群集的 DNS 区域中创建所需的 DNS A 记录。 有关详细信息，请参阅[部署 HTTP 应用程序路由][aks-http-routing]。
+在 AKS 中，可以使用 NGINX 之类的服务器创建入口资源，或使用 AKS HTTP 应用程序路由功能。 为 AKS 群集启用 HTTP 应用程序路由时，Azure 平台会创建入口控制器和 External-DNS 控制器  。 在 Kubernetes 中创建新的入口资源时，系统会在特定于群集的 DNS 区域中创建所需的 DNS A 记录。 有关详细信息，请参阅[部署 HTTP 应用程序路由][aks-http-routing]。
 
 入口的另一个常见功能是 SSL/TLS 终止。 在通过 HTTPS 访问的大型 Web 应用程序上，TLS 终止可以由入口资源处理，而不是在应用程序自身内部处理。 要提供自动 TLS 认证生成和配置，可以将入口资源配置为使用 Let's Encrypt 之类的提供程序。 有关使用 Let's Encrypt 配置 NGINX 入口控制器的详细信息，请参阅 [Ingress 和 TLS ][aks-ingress-tls]。
+
+此外可以配置要保留到 AKS 群集中的容器的请求上的客户端源 IP 为入口控制器。 当客户端的请求路由到通过入口控制器在 AKS 群集中的容器时，该请求的原始源 ip 将不能对目标容器。 如果你启用*客户端源 IP 保留*，客户端的源 IP 是在请求标头中*X-转发-对于*。 如果入口控制器上使用客户端源 IP 保留，不能使用 SSL 传递身份验证。 客户端源 IP 保留和 SSL 直通可与其他服务，如*负载均衡器*类型。
 
 ## <a name="network-security-groups"></a>网络安全组
 

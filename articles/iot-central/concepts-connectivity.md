@@ -7,13 +7,13 @@ ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: f11d1c6b727799f2cc67c6f5012dc4d117556d2e
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+manager: philmea
+ms.openlocfilehash: 533327ca1d202f15376e580d20317ddaf0b1d302
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467809"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693188"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -113,7 +113,7 @@ IoT 中心启用的关键方案是 oem 可以批量制造设备可以连接到 I
 
 1. 配置的连接设置：
 
-    - **X.509 证书：**[添加和验证根/中间证书](#connect-devices-using-x509-certificates)并使用它在以下步骤中生成设备证书。
+    - **X.509 证书：** [添加和验证根/中间证书](#connect-devices-using-x509-certificates)并使用它在以下步骤中生成设备证书。
     - **SAS：** 复制主密钥。 此密钥是 IoT 中心应用程序组 SAS 密钥。 使用密钥生成下一个步骤中的设备的 SAS 密钥。
     ![连接设置 SAS](media/concepts-connectivity/connection-settings-sas.png)
 
@@ -137,9 +137,9 @@ IoT 中心启用的关键方案是 oem 可以批量制造设备可以连接到 I
 
 1. 然后打开适用于其能够连接到 IoT 中心应用程序的设备。 在切换设备时，它是第一次连接到分发点以检索其 IoT 中心注册信息的过程。
 
-1. 已连接的设备最初显示为**未关联的设备**上**Device Explorer**页。 设备预配状态为“已注册”。 **将关联**设备连接到适当的设备模板和批准设备连接到 IoT 中心应用程序。 然后，设备可以从 IoT 中心检索连接字符串，并开始发送数据。 设备预配已完成，现已预配状态**已设置**。
+1. 已连接的设备最初显示为**未关联的设备**上**Device Explorer**页。 设备预配状态为“已注册”  。 **将关联**设备连接到适当的设备模板和批准设备连接到 IoT 中心应用程序。 然后，设备可以从 IoT 中心检索连接字符串，并开始发送数据。 设备预配已完成，现已预配状态**已设置**。
 
-## <a name="provisioning-status"></a>当前设置状态
+## <a name="provisioning-status"></a>预配状态
 
 当实际设备连接到 IoT Central 应用程序，其预配状态更改，如下所示：
 

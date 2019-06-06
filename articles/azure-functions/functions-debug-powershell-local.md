@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: b699379448863c8df84fda0e059fc10846c09931
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f02d2eed2030a5d2f54b3bee85885bbb572ac762
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230074"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476670"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions 在本地进行调试
 
@@ -95,15 +95,28 @@ if($name) {
 
 ## <a name="debug-in-visual-studio-code"></a>在 Visual Studio Code 中调试
 
-若要调试您在 Visual Studio Code 的 PowerShell 函数，必须针对 Visual Studio Code 具有下列扩展名：
+若要调试您在 Visual Studio Code 的 PowerShell 函数，必须安装以下组件：
 
-* [PowerShell](/powershell/scripting/components/vscode/using-vscode)
-* [Azure Functions](functions-create-first-function-vs-code.md)
+* [PowerShell 适用于 Visual Studio Code 扩展](/powershell/scripting/components/vscode/using-vscode)
+* [适用于 Visual Studio Code 的 Azure Functions 扩展](functions-create-first-function-vs-code.md)
+* [PowerShell Core 6.2 或更高版本](/powershell/scripting/install/installing-powershell#powershell-core)
 
-在安装后的 PowerShell 和 Azure Functions 扩展，加载现有的函数应用项目。 此外可以[创建函数项目](functions-create-first-function-vs-code.md)。
+安装这些依赖项后, 加载现有的 PowerShell 函数项目，或[创建第一个 PowerShell 函数项目](functions-create-first-function-powershell.md)。
 
 >[!NOTE]
 > 你的项目不应具有所需的配置文件，系统会提示将其添加。
+
+### <a name="set-the-powershell-version"></a>设置 PowerShell 版本
+
+与 Windows PowerShell 并行安装 PowerShell Core。 设置为要使用 PowerShell 扩展用于 Visual Studio Code 的 PowerShell 版本的 PowerShell Core。
+
+1. 按 F1 显示命令货盘，然后搜索`Session`。
+
+1. 选择**PowerShell:显示会话菜单**。
+
+1. 如果你**当前会话**不是**PowerShell Core 6**，选择**切换到：PowerShell Core 6**。
+
+PowerShell 文件打开后，您将看到绿色右下角的窗口中显示的版本。 选择此文本还将显示会话菜单。 若要了解详细信息，请参阅[选择的要用于该扩展的 PowerShell 版本](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)。
 
 ### <a name="start-the-function-app"></a>启动函数应用
 
@@ -140,7 +153,7 @@ Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 * 未在 PowerShell 控制台`Invoke-RestMethod`已返回了结果
 * 在 Visual Studio Code 中的 PowerShell 集成控制台正在等待要执行脚本
 
-后续调用相同的函数，在 PowerShell 中紧靠其后扩展将中断调试器时的时间`Wait-Debugger`。
+更高版本时调用同一函数中 PowerShell 扩展调试器中断紧靠其后`Wait-Debugger`。
 
 ## <a name="debugging-in-a-powershell-console"></a>在 PowerShell 控制台中进行调试
 

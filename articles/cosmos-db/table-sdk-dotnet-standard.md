@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/18/2018
-ms.openlocfilehash: 8e8baf9ba8fca2966825620d0588ab005abd37b9
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 03/18/2019
+ms.openlocfilehash: 1c9894772f440a568cbc08890feb961471d84137
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604380"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480215"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "65604380"
 |   |   |
 |---|---|
 |**SDK 下载**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
-|**示例**|[Cosmos DB 表 API.NET 示例](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
+|**示例**|[Cosmos DB 表 API .NET 示例](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
 |**快速入门**|[快速入门](create-table-dotnet.md)|
 |**教程**|[教程](tutorial-develop-table-dotnet.md)|
 |**当前受支持的框架**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
@@ -61,7 +61,7 @@ ms.locfileid: "65604380"
    >  0.9.1 预览版尚不支持 Azure 存储表终结点。
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
-Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
+Microsoft 至少会在停用 SDK 前提前 12 个月  发出通知，以便顺利转换为更高版本/受支持版本。
 
 此跨平台.NET Standard 库[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)将替换为.NET Framework 库[Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
 

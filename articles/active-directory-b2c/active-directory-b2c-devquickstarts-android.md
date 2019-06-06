@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中使用 Android 应用程序获取令牌 | Microsoft Docs
 description: 本文说明如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 Android 应用。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: acd0e9616f830d9378709e67f0d05e3ae549700d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4db4806b6be018bfc53a155627de825bf62d8395
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703332"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510111"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Android 应用程序登录
 
@@ -44,9 +44,9 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 在 Azure AD B2C 中，每个用户体验都是由[用户流](active-directory-b2c-reference-policies.md)定义的，这是一组控制 Azure AD 行为的策略。 该应用程序需要登录和注册用户流。 创建用户流时，请务必：
 
-* 选择“显示名称”作为用户流中的注册属性。
-* 在每个用户流中，选择“显示名称”和“对象 ID”应用程序声明。 也可以选择其他声明。
-* 创建用户流后，请复制每个用户流的名称。 其前缀应为 `b2c_1_`。  稍后需要用户流名称。
+* 选择“显示名称”  作为用户流中的注册属性。
+* 在每个用户流中，选择“显示名称”  和“对象 ID”  应用程序声明。 也可以选择其他声明。
+* 创建用户流后，请复制每个用户流的名称  。 其前缀应为 `b2c_1_`。  稍后需要用户流名称。
 
 创建用户流后，可以开始构建应用。
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: 2f48e0d8b46684d067fe2e32f241e28d94c2edbd
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399673"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743181"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 可以使用[Azure 备份服务](backup-overview.md)备份的本地计算机和工作负荷和 Azure 虚拟机 (Vm)。 使用 Azure 备份的 Azure Vm 备份时，本文汇总了支持设置和限制。
@@ -54,6 +54,8 @@ Azure Vm (仅 Windows) 的直接备份  | 备份特定的文件/文件夹/卷。
 每月/每年备份   | 使用 Azure VM 扩展备份时不受支持。 仅支持每日和每周备份。<br/><br/> 可将策略设置为按每月/每年保留期保留每日/每周备份。
 自动时钟调整 | 不支持。<br/><br/> 备份 VM 时，azure 备份不会自动调整为夏时制更改。<br/><br/>  请根据需要手动修改策略。
 [混合备份的安全功能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  禁用安全功能不受支持。
+备份 VM 更改其计算机的时间 | 不支持。<br/><br/> 如果在计算机时间已更改为将来日期时间后为该 VM; 启用备份但是即使还原时间更改，不保证成功备份。  
+
 
 ## <a name="operating-system-support-windows"></a>操作系统支持 (Windows)
 
@@ -146,7 +148,7 @@ VM 大小 |   至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小�
 备份[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)中的 VM |  不支持。
 使用部署的 Vm 备份[混合使用权益 (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | 。
 在中部署的 Vm 备份[规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) |  不支持。
-从部署的 Vm 备份[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> （由 Microsoft、 第三方发布） |  。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。
+从部署的 Vm 备份[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> （由 Microsoft、 第三方发布） |  。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。 我们不要还原这些需求采购信息而仅作为磁盘备份 Vm，Azure Marketplace 虚拟机。
 备份自定义映像 （第三方） 中部署的 Vm |   。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。
 迁移到 Azure 的 Vm 备份  | 。<br/><br/> 若要备份 VM，必须在迁移的计算机上安装 VM 代理。
 备份多 VM 一致性 | Azure 备份不提供跨多个 Vm 的数据和应用程序一致性。

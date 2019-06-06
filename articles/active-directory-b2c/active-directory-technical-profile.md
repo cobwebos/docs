@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件 | Microsoft Docs
 description: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 433307791201e3799b3bc9e54aec765d9fbeb4af
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b8bbe540d9e296b0f6a0c11a62d3b861e0115d3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718705"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507431"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C 为 Azure Active Directory 用户管理提
 
 ## <a name="protocol"></a>Protocol
 
-“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含协议处理程序程序集 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 的完全限定名称。
+“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 **handler** 属性必须包含协议处理程序程序集 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 的完全限定名称。
 
 所有 Azure AD 的技术配置文件包括 **AAD-Common** 技术配置文件。 以下技术配置文件不会指定协议，因为协议是在 **AAD-Common** 技术配置文件中配置的：
 
@@ -252,7 +252,7 @@ Azure Active Directory (Azure AD) B2C 为 Azure Active Directory 用户管理提
 ```
 ## <a name="metadata"></a>元数据
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | Operation | 是 | 要执行的操作。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 | 
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果目录中不存在该用户对象，则引发错误。 可能的值：`true` 或 `false`。 | 

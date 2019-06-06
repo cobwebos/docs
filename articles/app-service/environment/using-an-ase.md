@@ -11,19 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d536e9d14edfa17e890480c07951eccb70e9eb9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9c34d3cfd5ce9bb3a8f9a9072f2843331065100
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228315"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496504"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
-
-## <a name="overview"></a>概述 ##
 
 Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网络的子网中。 该环境包括：
 
@@ -50,7 +48,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 在 ASE 中创建应用：
 
-1. 选择“创建资源” > “Web + 移动” > “Web 应用”。
+1. 选择“创建资源”   > “Web + 移动”   >   “Web 应用”。
 
 2. 输入应用程序的名称。 如果已在 ASE 中选择了应用服务计划，则应用的域名会反映 ASE 的域名。
 
@@ -58,24 +56,21 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 1. 选择一个订阅。
 
-1. 输入新资源组的名称，或选择“使用现有”并从下拉列表中选择一个资源组。
+1. 输入新资源组的名称，或选择“使用现有”并从下拉列表中选择一个资源组。 
 
 1. 选择 OS。 
 
-    * 在 ASE 中托管 Linux 应用是一项新的预览功能，因此建议不要将 Linux 应用添加到当前正在运行生产工作负荷的 ASE 中。 
-    * 将 Linux 应用添加到 ASE 中意味着 ASE 也将处于预览模式。 
-
 1. 在 ASE 中选择现有的应用服务计划，或遵循以下步骤创建一个新的计划：
 
-    a. 选择“新建”。
+    a. 选择“新建”。 
 
     b. 输入应用服务计划的名称。
 
-    c. 在“位置”下拉列表中选择自己的 ASE。 在 ASE 中托管 Linux 应用仅在 6 个区域中启用，这 6 个区域目前为：**美国西部、美国东部、西欧、北欧、澳大利亚东部、东南亚。** 
+    c. 在“位置”下拉列表中选择自己的 ASE。  
+    
+    d. 选择“隔离”定价层。  选择“选择”  。
 
-    d. 选择“隔离”定价层。 选择“选择”。
-
-    e. 选择“确定”。
+    e. 选择“确定”  。
     
     ![“隔离”定价层][2]
 
@@ -83,7 +78,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
     > Linux 应用和 Windows 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
     >
 
-2. 选择“创建”。
+2. 选择“创建”  。
 
 ## <a name="how-scale-works"></a>缩放的工作原理 ##
 
@@ -139,11 +134,11 @@ URL contoso.scm.external-ase.p.azurewebsites.net 用于访问 Kudu 控制台，�
 
 默认情况下，基于 Internet 的 CI 系统，例如 GitHub 和 Azure DevOps，不使用 ILB ASE 因为发布终结点不可访问 Internet。 Azure DevOps 所需的可解决此问题通过它可以在其中访问 ILB 在内部网络中安装自承载的版本代理。 或者，您还可以使用使用请求模型，如 Dropbox 的 CI 系统。
 
-ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可以在应用的发布配置文件和应用门户的边栏选项卡中查看此信息（在“概述” > “软件包”以及“属性”中查看）。 
+ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可以在应用的发布配置文件和应用门户的边栏选项卡中查看此信息（在“概述” > “软件包”以及“属性”中查看）    。 
 
 ## <a name="pricing"></a>定价 ##
 
-创建了名为 Isolated 的定价 SKU，仅用于与 ASEv2 一起使用。 ASEv2 中托管的所有应用服务计划都在“隔离”定价 SKU 中。 独立应用服务计划费率可能因区域而异。 
+创建了名为 Isolated 的定价 SKU，仅用于与 ASEv2 一起使用  。 ASEv2 中托管的所有应用服务计划都在“隔离”定价 SKU 中。 独立应用服务计划费率可能因区域而异。 
 
 除了应用服务计划的价格以外，ASE 本身也会收取一笔统一的费用。 统一费率不会随 ASE 的大小发生改变，并按每 15 个应用服务计划实例 1 个额外前端的默认缩放率为 ASE 基础结构计费。  
 
@@ -159,7 +154,7 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可�
 
 若要删除 ASE，请执行以下操作： 
 
-1. 使用“应用服务环境”边栏选项卡顶部的“删除”。 
+1. 使用“应用服务环境”边栏选项卡顶部的“删除”。   
 
 1. 输入 ASE 的名称，确认想要将它删除。 删除 ASE 时，会同时删除它包含的所有内容。 
 

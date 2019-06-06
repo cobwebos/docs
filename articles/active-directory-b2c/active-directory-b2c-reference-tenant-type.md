@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的区域可用性和数据驻留 | Microsoft Docs
 description: 有关 Azure Active Directory B2C 租户类型的主题。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/10/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8c5d39244c835de7d46c074e62dae32d4ace0f67
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 30f13a3b85e68babcaef62b9200a296105b3ce83
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719772"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509010"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：上市区域和数据驻留
 区域可用性和数据驻留是两个截然不同的概念，它们以不同方式应用到 Azure AD B2C 和 Azure 的其余部分。 本文介绍这两个概念之间的区别，并对它们应用到 Azure 和 Azure AD B2C 的方式进行比较。
@@ -52,7 +52,7 @@ Azure AD B2C 将用户数据存储在美国或欧洲。
 > 阿富汗、阿根廷、澳大利亚、巴西、智利、哥伦比亚、厄瓜多尔、香港特别行政区、印度、印度尼西亚、伊拉克、日本、韩国、马来西亚、新西兰、巴拉圭、秘鲁、菲律宾、新加坡、斯里兰卡、台湾、泰国、乌拉圭以及委内瑞拉。
 
 ## <a name="preview-tenant"></a>预览租户
-如果在 Azure AD B2C 预览期间创建了 B2C 租户，那么“租户类型”可能会显示为“预览租户”。 如果是这种情况，必须只能将租户用于开发和测试目的，而不能用于生产应用。
+如果在 Azure AD B2C 预览期间创建了 B2C 租户，那么“租户类型”  可能会显示为“预览租户”  。 如果是这种情况，必须只能将租户用于开发和测试目的，而不能用于生产应用。
 
 > [!IMPORTANT]
 > 没有从预览 B2C 租户到生产规模 B2C 租户的迁移路径。 请注意，删除预览 B2C 租户并重新创建具有相同域名的生产规模 B2C 租户时，会发生已知问题。 必须创建具有不同域名的生产规模 B2C 租户。

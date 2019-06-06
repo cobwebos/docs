@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的语言自定义 | Microsoft Docs
 description: 了解如何自定义语言体验。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c319349d721a390562faac0fc6f90a7b471db0f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 48633b195df997f0e9a8f06bd4f5c553ca620e98
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703418"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509396"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的语言自定义
 
@@ -38,17 +38,17 @@ ms.locfileid: "64703418"
 在语言自定义正式版发布之前创建的策略将需要先启用此功能。 之后创建的策略和用户流默认情况下已启用语言自定义。 
 
 在用户流中启用语言自定义后，可以通过添加 `ui_locales` 参数来控制用户流的语言。
-1. 在 Azure AD B2C 租户中，选择“用户流”。
+1. 在 Azure AD B2C 租户中，选择“用户流”  。
 2. 单击想要启用翻译的用户流。
-3. 选择“语言”。  
-4. 选择“启用语言自定义”。
+3. 选择“语言”  。  
+4. 选择“启用语言自定义”。 
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>选择要在用户流中启用的语言 
 为用户流启用一组语言，以便在无 `ui_locales` 参数的浏览器提出请求时翻译成这些语言。
 1. 确保已根据前面的说明为用户流启用语言自定义。
-2. 在用户流的“语言”页面，选择想要支持的语言。
-3. 在属性窗格中，将“已启用”更改为“是”。  
-4. 选择属性窗格顶部的“保存”。
+2. 在用户流的“语言”页面，选择想要支持的语言  。
+3. 在属性窗格中，将“已启用”更改为“是”。    
+4. 选择属性窗格顶部的“保存”  。
 
 >[!NOTE]
 >如果未提供 `ui_locales` 参数，则仅当客户的浏览器语言已启用时，才将页面翻译成此语言
@@ -57,9 +57,9 @@ ms.locfileid: "64703418"
 ## <a name="customize-your-strings"></a>自定义字符串
 使用语言自定义可以自定义用户流中的任何字符串。
 1. 确保已根据前面的说明为用户流启用语言自定义。
-2. 在用户流的“语言”页面，选择想要自定义的语言。
-3. 在“页面级别资源文件”下，选择想要编辑的页面。
-4. 选择“下载默认值”（如果以前已编辑这种语言，则选择“下载重写”）。
+2. 在用户流的“语言”页面，选择想要自定义的语言  。
+3. 在“页面级别资源文件”下，选择想要编辑的页面  。
+4. 选择“下载默认值”（如果以前已编辑这种语言，则选择“下载重写”）。  
 
 执行这些步骤可以创建用于开始编辑字符串的 JSON 文件。
 
@@ -125,8 +125,8 @@ ms.locfileid: "64703418"
 
 ### <a name="upload-your-changes"></a>上传更改
 1. 完成对 JSON 文件的更改后，返回到 B2C 租户。
-2. 选择“用户流”，单击想要启用翻译的用户流。
-3. 选择“语言”。
+2. 选择“用户流”，单击想要启用翻译的用户流  。
+3. 选择“语言”  。
 4. 选择要翻译成的语言。
 5. 选择想要提供翻译的页面。
 6. 选择文件夹图标，选择要上传的 JSON 文件。
@@ -151,13 +151,13 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 还可以添加 Microsoft 目前未为其提供翻译的语言。 需要为用户流中的所有字符串提供翻译。  语言和区域设置代码仅限于 ISO 639-1 标准中的代码。 
 
-1. 在 Azure AD B2C 租户中，选择“用户流”。
-2. 单击想要添加自定义语言的用户流，然后单击“语言”。
-3. 从页面顶部选择“添加自定义语言”。
+1. 在 Azure AD B2C 租户中，选择“用户流”  。
+2. 单击想要添加自定义语言的用户流，然后单击“语言”  。
+3. 从页面顶部选择“添加自定义语言”  。
 4. 在打开的上下文窗格中，通过输入有效的区域设置代码确定要为其提供翻译的语言。
 5. 对于每个页，可以下载一组英语重写，并处理翻译。
 6. 完成 JSON 文件后，可为每个页面上传这些文件。
-7. 选择“启用”，用户流即可为用户显示此语言。
+7. 选择“启用”，用户流即可为用户显示此语言  。
 8. 保存语言。
 
 >[!IMPORTANT]

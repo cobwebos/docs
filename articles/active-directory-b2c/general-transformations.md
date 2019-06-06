@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 标识体验框架架构的常规声明转换示例 | Microsoft Docs
 description: Azure Active Directory B2C 标识体验框架架构的常规声明转换示例。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 831ecf2924ab6c321f69bb50c4a95a4156482585
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a5f8068ea7e97343749c719d2d0800e20701079c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683959"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510984"
 ---
 # <a name="general-claims-transformations"></a>常规声明转换
 
@@ -25,7 +25,7 @@ ms.locfileid: "64683959"
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
-检查 inputClaim 是否存在并将 outputClaim 相应地设置为 true 或 false。
+检查 inputClaim  是否存在并将 outputClaim  相应地设置为 true 或 false。
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
@@ -58,10 +58,10 @@ ms.locfileid: "64683959"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 纯文本 | string | 要加密的输入声明 |
-| InputClaim | 加密盐 | string | 加密盐参数。 可以使用 `CreateRandomString` 声明转换创建随机值。 |
-| InputParameter | randomizerSecret | string | 指向现有的 Azure AD B2C 策略密钥。 若要新建一个：在 Azure AD B2C 租户中，请选择“B2C 设置 > 标识体验框架”。 选择“策略密钥”，查看租户中的可用密钥。 选择 **添加** 。 对于“选项”，请选择“手动”。 提供名称（可能会自动添加前缀 B2C_1A_。）。 在“机密”框中，输入要使用的任何机密，如 1234567890。 对于“密钥用法”，请选择“机密”。 选择“创建”。 |
-| OutputClaim | hash | string | 调用此声明转换后生成的 ClaimType。 在 `plaintext` inputClaim 中配置的声明。 |
+| InputClaim | 纯文本 | 字符串 | 要加密的输入声明 |
+| InputClaim | 加密盐 | 字符串 | 加密盐参数。 可以使用 `CreateRandomString` 声明转换创建随机值。 |
+| InputParameter | randomizerSecret | 字符串 | 指向现有的 Azure AD B2C 策略密钥  。 若要新建一个：在 Azure AD B2C 租户中，请选择“B2C 设置 > 标识体验框架”  。 选择“策略密钥”，查看租户中的可用密钥。  选择 **添加** 。 对于“选项”，请选择“手动”   。 提供名称（可能会自动添加前缀 B2C_1A_。）。 在“机密”框中，输入要使用的任何机密，如 1234567890。 对于“密钥用法”，请选择“机密”  。 选择“创建”  。 |
+| OutputClaim | hash | 字符串 | 调用此声明转换后生成的 ClaimType。 在 `plaintext` inputClaim 中配置的声明。 |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

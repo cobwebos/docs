@@ -1,8 +1,8 @@
 ---
-title: Azure 生产操作和管理
-description: 本文提供有关 Microsoft Azure 生产网络管理和操作的一般说明。
+title: Azure 生产网络-Microsoft Azure 的管理
+description: 本指南介绍了 Microsoft 如何管理和运行 Azure 生产网络来保护 Azure 数据中心。
 services: security
-documentationcenter: na
+documentationcenter: n
 author: TerryLanfear
 manager: barbkess
 editor: TomSh
@@ -12,16 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 05/30/2019
 ms.author: terrylan
-ms.openlocfilehash: 0099eb61d97f813f7adca320b47c195fa1aabbdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 515896851c5bf7b9c847416ebadedf1242e0eeb9
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591481"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428262"
 ---
-# <a name="azure-production-operations-and-management"></a>Azure 生产操作和管理    
+# <a name="management-and-operation-of-the-azure-production-network"></a>管理和操作的 Azure 生产网络    
+本指南介绍了 Microsoft 如何管理和运行 Azure 生产网络来保护 Azure 数据中心。
+
+## <a name="monitor-log-and-report"></a>监视、 日志和报表
+
 Azure 生产网络的管理和操作需要在 Azure 运营团队与 Azure SQL 数据库之间做出协调。 团队在环境中使用了多个系统和应用程序性能监视工具。 他们使用适当的工具来监视网络设备、服务器、服务和应用程序进程。
 
 为确保安全执行 Azure 环境中运行的服务，运营团队实施多种级别的监视、日志记录和报告，包括以下操作：

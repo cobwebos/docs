@@ -2,20 +2,20 @@
 title: 使用隐式流-Azure Active Directory B2C 的单页登录 |Microsoft Docs
 description: 了解如何添加在 OAuth 2.0 隐式流中使用 Azure Active Directory B2C 的单页的注册。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 06156b1050bbf77fbbd5be8559b3c1683c2ced24
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a66fa70f6f5615257554e98e40e605d6a7e981fe
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698951"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508972"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OAuth 2.0 隐式流的单页的登录
 
@@ -88,7 +88,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | scope | 是 | 范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 `openid` 作用域表示允许使用 ID 令牌的形式使用户登录并获取有关用户的数据。 `offline_access` 作用域对 Web 应用是可选的。 它表示你的应用需要刷新令牌才能长期访问资源。 |
 | state | 否 | 同时随令牌响应返回的请求中所包含的值。 它可以是你想要使用的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 该状态也用于在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户之前所在的页面。 |
 | nonce | 是 | 由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可用于识别请求的来源。 |
-| p | 是 | 要执行的策略。 它是在 Azure AD B2C 租户中创建的策略（用户流）的名称。 策略名称值应以“b2c\_1\_”开头。 |
+| p | 是 | 要执行的策略。 它是在 Azure AD B2C 租户中创建的策略（用户流）的名称。 策略名称值应以“b2c\_1\_”  开头。 |
 | prompt | 否 | 需要的用户交互类型。 目前唯一有效的值是 `login`。 此参数将强制用户在该请求上输入其凭据。 单一登录才会生效。 |
 
 此时，要求用户完成策略的工作流。 用户可能必须输入其用户名和密码，注册使用社交标识登录目录或任何其他若干步骤。 用户操作取决于用户流是如何定义的。
@@ -194,14 +194,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
 | client_id |需要 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
-| response_type |需要 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
+| response_type |必选 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri |建议 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
-| scope |需要 |范围的空格分隔列表。  若要获取令牌，请包含相应资源所需的所有范围。 |
+| scope |必选 |范围的空格分隔列表。  若要获取令牌，请包含相应资源所需的所有范围。 |
 | response_mode |建议 |指定用于将生成的令牌送回到应用的方法。  可以是 `query`、`form_post` 或 `fragment`。 |
 | state |建议 |随令牌响应返回的请求中所包含的值。  它可以是你想要使用的任何内容的字符串。  随机生成的唯一值通常用于防止跨站点请求伪造攻击。  它还可用于在身份验证请求发生前，对有关用户在应用中的状态信息进行编码。 例如，用户之前所在的页面或视图。 |
 | nonce |需要 |由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可识别请求的来源。 |
 | prompt |需要 |若要刷新并获取隐藏的 iframe 中的令牌，请使用 `prompt=none` 以确保 iframe 会立即返回，而不会停滞在登录页面上。 |
-| login_hint |需要 |若要刷新并获取隐藏的 iframe 中的令牌，请在此提示中加入用户的用户名，以便区分用户在给定时间内可能具有的多个会话。 可以使用 `preferred_username` 声明从以前的登录中提取用户名。 |
+| login_hint |必选 |若要刷新并获取隐藏的 iframe 中的令牌，请在此提示中加入用户的用户名，以便区分用户在给定时间内可能具有的多个会话。 可以使用 `preferred_username` 声明从以前的登录中提取用户名。 |
 | domain_hint |需要 |可以是 `consumers` 或 `organizations`。  对于刷新并获取隐藏的 iframe 中的令牌，包括`domain_hint`请求中的值。  从以前登录的 ID 令牌提取 `tid` 声明，以确定要使用哪个值。  如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，请使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
 
 通过设置 `prompt=none` 参数，此请求会立即成功或立即失败，并返回到应用程序。  成功的响应会通过 `response_mode` 参数中指定的方法，发送到位于所指示的重定向 URI 的应用。
@@ -258,7 +258,7 @@ p=b2c_1_sign_in
 
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
-| p |需要 |要用于从应用程序中注销用户的策略。 |
+| p |必选 |要用于从应用程序中注销用户的策略。 |
 | post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |
 
 > [!NOTE]

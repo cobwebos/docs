@@ -2,24 +2,24 @@
 title: Azure Active Directory B2C 中的扩展应用程序 | Microsoft Docs
 description: 还原 b2c-extensions-app。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 9/06/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: aee21e6ea3c598818091aa11c3d13b9d6172743c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d9fbceee8fb0e565df668406f09df27272318dd0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703440"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509482"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C：扩展应用
 
-创建 Azure AD B2C 目录后，将在新目录内部自动创建一个名为 `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` 的应用。 此应用称为 b2c-extensions-app，可在“应用注册”中显示。 Azure AD B2C 服务使用它来存储用户和自定义属性的相关信息。 如果删除了此应用，Azure AD B2C 将无法正常工作，你的生产环境也会受到影响。
+创建 Azure AD B2C 目录后，将在新目录内部自动创建一个名为 `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` 的应用。 此应用称为 b2c-extensions-app  ，可在“应用注册”  中显示。 Azure AD B2C 服务使用它来存储用户和自定义属性的相关信息。 如果删除了此应用，Azure AD B2C 将无法正常工作，你的生产环境也会受到影响。
 
 > [!IMPORTANT]
 > 请勿删除 b2c-extensions-app，除非你计划立刻删除你的租户。 如果此应用被删除 30 天以上，用户信息将永久性丢失。
@@ -28,9 +28,9 @@ ms.locfileid: "64703440"
 
 要验证此 b2c-extensions-app 是否存在：
 
-1. 在 Azure AD B2C 租户内，单击左侧导航菜单中的“所有服务”。
-1. 搜索并打开“应用注册”。
-1. 查找以“b2c-extensions-app”开头的应用
+1. 在 Azure AD B2C 租户内，单击左侧导航菜单中的“所有服务”  。
+1. 搜索并打开“应用注册”  。
+1. 查找以“b2c-extensions-app”  开头的应用
 
 ## <a name="recover-the-extensions-app"></a>恢复此扩展应用
 

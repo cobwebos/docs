@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 4ba38ee0a4c26a99b7cbddc46eef35cfc39a511d
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: eebc484351714c7a30f65e61434076fcde175a8d
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66392572"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430937"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>创建 HTTPS 入口控制器并在 Azure Kubernetes 服务 (AKS) 中使用自己的 TLS 证书
 
@@ -41,6 +41,9 @@ ms.locfileid: "66392572"
 
 > [!TIP]
 > 以下示例为名为 *ingress-basic* 的入口资源创建 Kubernetes 命名空间。 根据需要为你自己的环境指定一个命名空间。 如果 AKS 群集未启用 RBAC，请将 `--set rbac.create=false` 添加到 Helm 命令中。
+
+> [!TIP]
+> 如果你想要启用[客户端源 IP 保留][ client-source-ip]到群集中的容器的请求，将添加`--set controller.service.externalTrafficPolicy=Local`到 Helm install 命令。 IP 存储在请求标头中的客户端源*X-转发-对于*。 当使用与启用客户端源 IP 保留入口控制器，SSL 直通不起作用。
 
 ```console
 # Create a namespace for your ingress resources
@@ -315,3 +318,4 @@ kubectl delete namespace ingress-basic
 [aks-ingress-basic]: ingress-basic.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-tls]: ingress-tls.md
+[client-source-ip]: concepts-network.md#ingress-controllers

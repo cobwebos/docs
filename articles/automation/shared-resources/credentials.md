@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6465fd069e73a571e0671d528f5d0b4da4602dc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb34c3f04302e6a2b5cc307b98bafe93e09fcf2f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60499378"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734696"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
 
@@ -47,11 +47,11 @@ ms.locfileid: "60499378"
 | [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |删除自动化凭据。 |
 | [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |设置现有自动化凭据的属性。 |
 
-## <a name="activities"></a>活动
+## <a name="activities"></a>activities
 
 下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。
 
-| 活动 | 描述 |
+| activities | 描述 |
 |:--- |:--- |
 | Get-AutomationPSCredential |在 Runbook 或 DSC 配置中获取要使用的凭据。 返回 [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) 对象。 |
 
@@ -73,9 +73,9 @@ ms.locfileid: "60499378"
 
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>使用 Azure 门户新建凭据资产
 
-1. 从自动化帐户中，选择“共享资源”下的“凭据”。
-1. 单击“+ 添加凭据”。
-1. 完成表单，并单击“创建”以保存新凭据。
+1. 从自动化帐户中，选择“共享资源”  下的“凭据”  。
+1. 单击“+ 添加凭据”  。
+1. 完成表单，并单击“创建”  以保存新凭据。
 
 > [!NOTE]
 > 不支持将使用多重身份验证的用户帐户用于 Azure 自动化。
@@ -112,7 +112,7 @@ $password = $myCredential.GetNetworkCredential().Password
 也可使用凭据通过 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) 向 Azure 进行身份验证。 大多数情况下，应使用[运行方式帐户](../manage-runas-account.md)并使用 [Get-AutomationConnection](../automation-connections.md) 来检索它。
 
 ```azurepowershell
-$myCred = Get-AutomationPSCredential -Name 'MyCredential`
+$myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
@@ -124,11 +124,11 @@ Connect-AzureRmAccount -Credential $myPsCred
 
 ### <a name="graphical-runbook-sample"></a>图形 Runbook 示例
 
-通过在图形编辑器的“库”窗格中右键单击凭据并选择“添加到画布”，将 **Get-AutomationPSCredential** 活动添加到图形 Runbook。
+通过在图形编辑器的“库”窗格中右键单击凭据并选择“添加到画布”  ，将 **Get-AutomationPSCredential** 活动添加到图形 Runbook。
 
 ![将凭据添加到画布](../media/credentials/credential-add-canvas.png)
 
-下图显示了在图形 Runbook 中使用凭据的示例。  在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，如[使用 Azure AD 用户帐户进行 Runbook 身份验证](../automation-create-aduser-account.md)中所述。  第一个活动检索有权访问 Azure 订阅的凭据。  然后，Add-AzureAccount 活动使用此凭据对它之后的任何活动提供身份验证。  此处是一个[管道链接](../automation-graphical-authoring-intro.md#links-and-workflow)，因为 **Get-AutomationPSCredential** 要求是单个对象。  
+下图显示了在图形 Runbook 中使用凭据的示例。  在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，如[使用 Azure AD 用户帐户进行 Runbook 身份验证](../automation-create-aduser-account.md)中所述。  第一个活动检索有权访问 Azure 订阅的凭据。  然后，Add-AzureAccount  活动使用此凭据对它之后的任何活动提供身份验证。  此处是一个[管道链接](../automation-graphical-authoring-intro.md#links-and-workflow)，因为 **Get-AutomationPSCredential** 要求是单个对象。  
 
 ![将凭据添加到画布](../media/credentials/get-credential.png)
 

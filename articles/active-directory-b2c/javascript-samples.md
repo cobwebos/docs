@@ -2,20 +2,20 @@
 title: JavaScript 示例-Azure Active Directory B2C |Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中使用 JavaScript。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 972c8ec1b67161a3998a1b165072f584db2f7fbb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e19df7c50ca9d2c57ab385a567f4911b200c5e2
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570526"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510885"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
@@ -32,10 +32,10 @@ ms.locfileid: "64570526"
 
 ## <a name="add-the-scriptexecution-element"></a>添加 ScriptExecution 元素
 
-通过向 [RelyingParty](relyingparty.md)元素添加 ScriptExecution 元素来启用脚本执行。
+通过向 [RelyingParty](relyingparty.md)元素添加 ScriptExecution 元素来启用脚本执行  。
 
-1. 打开自定义策略文件。 例如，SignUpOrSignin.xml。
-2. 向 RelyingParty 的 UserJourneyBehaviors 元素添加 ScriptExecution 元素：
+1. 打开自定义策略文件。 例如，SignUpOrSignin.xml  。
+2. 向 RelyingParty 的 UserJourneyBehaviors 元素添加 ScriptExecution 元素    ：
 
     ```XML
     <RelyingParty>
@@ -72,7 +72,7 @@ ms.locfileid: "64570526"
 
 ### <a name="show-or-hide-a-password"></a>显示或隐藏密码
 
-帮助客户成功注册的一种常见的方式是：允许他们查看他们作为密码输入的内容。 该选项使用户能够根据需要轻松查看和更正密码，从而帮助用户登录。 任何密码类型的字段都有一个带有“显示密码”标签的复选框。  这使用户能够看到纯文本形式的密码。 使自断言页面的注册或登录模板中包括以下代码片段：
+帮助客户成功注册的一种常见的方式是：允许他们查看他们作为密码输入的内容。 该选项使用户能够根据需要轻松查看和更正密码，从而帮助用户登录。 任何密码类型的字段都有一个带有“显示密码”标签的复选框  。  这使用户能够看到纯文本形式的密码。 使自断言页面的注册或登录模板中包括以下代码片段：
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -118,7 +118,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>添加使用条款
 
-使需要包含“使用条款”复选框的页面中含有以下代码。 本地帐户注册和社交帐户注册页面中通常需要该复选框。
+使需要包含“使用条款”复选框的页面中含有以下代码  。 本地帐户注册和社交帐户注册页面中通常需要该复选框。
 
 ```Javascript
 function addTermsOfUseLink() {

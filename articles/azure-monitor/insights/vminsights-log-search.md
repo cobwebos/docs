@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 38979aa5cbb7eff0a949dfb77d6a29b2cdb5c67b
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602083"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472590"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>如何从用于 VM 的 Azure Monitor（预览版）查询日志
 适用于 Vm 的 azure Monitor 收集性能和连接指标、 计算机和进程清单数据和运行状况状态信息并将其转发到 Azure Monitor 中的 Log Analytics 工作区。  此数据是可用于[查询](../../azure-monitor/log-query/log-query-overview.md)Azure 监视器中。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
@@ -28,8 +28,8 @@ ms.locfileid: "65602083"
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
-- 计算机：使用 ResourceId 或 ResourceName_s 来唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 ResourceId 来唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
+- 计算机：使用 ResourceId 或 ResourceName_s 来唯一标识 Log Analytics 工作区中的计算机   。
+- 进程：使用 ResourceId 来唯一标识 Log Analytics 工作区中的进程  。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
@@ -43,12 +43,12 @@ ms.locfileid: "65602083"
 
 - 计算机：报告计算机的名称完全限定域名 
 - AgentID:具有 Log Analytics 代理的计算机的唯一标识符  
-- 计算机:机公开的 ServiceMap Azure 资源管理器资源的名称。 它是在窗体*m-{GUID}*，其中*GUID*作为 AgentID 的同一个 guid  
-- 进程：进程由 ServiceMap Azure 资源管理器资源的名称。 它是在窗体*p-{十六进制字符串}*。 进程是计算机范围内唯一的若要跨计算机生成唯一的进程 ID，组合计算机和进程的字段。 
+- 计算机:机公开的 ServiceMap Azure 资源管理器资源的名称。 它是在窗体*m-{GUID}* ，其中*GUID*作为 AgentID 的同一个 guid  
+- 进程：进程由 ServiceMap Azure 资源管理器资源的名称。 它是在窗体*p-{十六进制字符串}* 。 进程是计算机范围内唯一的若要跨计算机生成唯一的进程 ID，组合计算机和进程的字段。 
 - ProcessName:报告的过程可执行文件名称。
 - 所有 IP 地址都的字符串格式 IPv4 规范，例如*13.107.3.160* 
 
-为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection 中的一个逻辑记录内。 
+为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection  中的一个逻辑记录内。 
 
 | 属性 | 描述 |
 |:--|:--|
@@ -111,26 +111,19 @@ ms.locfileid: "65602083"
 | 属性 | 描述 |
 |:--|:--|
 |MaliciousIp |RemoteIp 地址 |
-|IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
+|IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet  、C2  、CryptoMining  、Darknet  、DDos  、MaliciousUrl  、Malware  、Phishing  、Proxy  、PUA  和 Watchlist  。   |
 |Description |观察到的威胁说明。 |
-|TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
-|Confidence |值介于 0 和 100 之间。 |
-|Severity |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
+|TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White  、Green  、Amber  和 Red  。 |
+|Confidence |值介于 0 和 100  之间。 |
+|Severity |值介于 0 和 5  之间，其中 5  表示最严重，0  表示毫不严重。 默认值为 3  。  |
 |FirstReportedDateTime |提供程序第一次报告指标。 |
 |LastReportedDateTime |Interflow 最后一次看到指标。 |
-|IsActive |使用值 True 或 False 指明是否停用标志。 |
+|IsActive |使用值 True  或 False  指明是否停用标志。 |
 |ReportReferenceLink |与给定可观测结果相关的报告的链接。 |
 |AdditionalInformation |提供观测到的威胁的其他信息（若有）。 |
 
 ### <a name="ports"></a>端口 
 在计算机上的主动接受传入的流量或可能无法接受流量，但报告的时间窗口，期间处于空闲状态的端口将写入 VMBoundPort 表。  
-
->[!NOTE]
->Azure 监视的 Vm 不支持收集和记录在以下区域中的 Log Analytics 工作区中的端口数据：  
->- 美国东部  
->- 西欧
->
-> 收集此数据中的其他启用[支持的区域](vminsights-enable-overview.md#log-analytics)Vm 的 Azure 监视器。 
 
 由以下字段标识 VMBoundPort 中的每个记录： 
 

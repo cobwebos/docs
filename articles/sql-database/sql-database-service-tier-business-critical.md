@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e9f40e749642f2025c5298df74f9d8ff87aec14b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90989a9105405f1784b3be9ab59f55cd3433feaf
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709310"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479224"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>业务关键层 - Azure SQL 数据库
 
@@ -49,6 +49,7 @@ SQL 数据库引擎进程和底层 mdf/ldf 文件都放置在同一个节点上�
 
 ## <a name="next-steps"></a>后续步骤
 
+- 查找业务关键层中的资源的特征 （多个内核，IO、 内存）[托管实例](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)单一数据库[vCore 模型](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute-tier)或[DTU 模型](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)，或弹性在池[vCore 模型](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes)并[DTU 模型](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits)。
 - 了解[常规用途](sql-database-service-tier-general-purpose.md)和[超大规模](sql-database-service-tier-hyperscale.md)层。
 - 了解 [Service Fabric](../service-fabric/service-fabric-overview.md)。
 - 有关高可用性和灾难恢复的更多选项，请参阅[业务连续性](sql-database-business-continuity.md)。

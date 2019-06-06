@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 用户旅程中集成 REST API 声明交换 | Microsoft Docs
 description: 在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/30/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e44bb1ed6a7a090b4b1213ca14be2b42642475e4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717293"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510719"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -24,11 +24,11 @@ ms.locfileid: "64717293"
 使用构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架，可在用户旅程中与 RESTful API 相集成。 本演练将会介绍 Azure AD B2C 如何与 .NET Framework RESTful 服务 (Web API) 交互。
 
 ## <a name="introduction"></a>简介
-使用 Azure AD B2C 可以通过调用 RESTful 服务，将自己的业务逻辑添加到用户旅程中。 标识体验框架在“输入声明”集合中将数据发送到 RESTful 服务，在“输出声明”集合中接收 RESTful 返回的数据。 使用 RESTful 服务集成，可以：
+使用 Azure AD B2C 可以通过调用 RESTful 服务，将自己的业务逻辑添加到用户旅程中。 标识体验框架在“输入声明”集合中将数据发送到 RESTful 服务，在“输出声明”集合中接收 RESTful 返回的数据。   使用 RESTful 服务集成，可以：
 
 * **验证用户输入数据**：此操作可防止将格式不正确的数据保存到 Azure AD。 如果用户提供的值无效，RESTful 服务会返回错误消息，指示用户提供有效条目。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在。
 * **覆盖输入声明**：例如，如果用户使用全小写或全大写字母输入了名字，则你可以设置该名字的格式，只将第一个字母大写。
-* **通过进一步与企业业务线应用程序集成来丰富用户数据**：RESTful 服务可以接收用户的电子邮件地址、查询客户的数据库，并向 Azure AD B2C 返回用户的会员号。 返回声明可以存储在用户 Azure AD 帐户中、在后续的业务流程步骤中进行评估，或包含在访问令牌中。
+* **通过进一步与企业业务线应用程序集成来丰富用户数据**：RESTful 服务可以接收用户的电子邮件地址、查询客户的数据库，并向 Azure AD B2C 返回用户的会员号。 返回声明可以存储在用户 Azure AD 帐户中、在后续的业务流程步骤中进行评估，或包含在访问令牌中。 
 * **运行自定义业务逻辑**：可以发送推送通知、更新企业数据库、运行用户迁移过程、管理权限、审核数据库，以及执行其他操作。
 
 可通过以下方式来设计与 RESTful 服务的集成：
@@ -43,7 +43,7 @@ ms.locfileid: "64717293"
    * 发回输出声明。
 
 ## <a name="restful-walkthrough"></a>RESTful 演练
-在本演练中，我们将开发一个可以验证用户输入并提供用户会员号的 .NET Framework Web API。 例如，应用程序可以基于会员号授予“白金权益”访问权限。
+在本演练中，我们将开发一个可以验证用户输入并提供用户会员号的 .NET Framework Web API。 例如，应用程序可以基于会员号授予“白金权益”访问权限。 
 
 概述：
 * 开发 RESTful 服务 (.NET Framework Web API)。
@@ -58,21 +58,21 @@ ms.locfileid: "64717293"
 
 ## <a name="step-1-create-an-aspnet-web-api"></a>步骤 1：创建 ASP.NET Web API
 
-1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”来创建项目。
+1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”来创建项目。   
 
-2. 在“新建项目”窗口中，选择“Visual C#” > “Web” > “ASP.NET Web 应用程序(.NET Framework)”。
+2. 在“新建项目”窗口中，选择“Visual C#” > “Web” > “ASP.NET Web 应用程序(.NET Framework)”。    
 
-3. 在“名称”框中为该应用程序命名（例如 *Contoso.AADB2C.API*），选择“确定”。
+3. 在“名称”框中为该应用程序命名（例如 *Contoso.AADB2C.API*），选择“确定”。  
 
     ![创建新的 Visual Studio 项目](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
-4. 在“新建 ASP.NET Web 应用程序”窗口中，选择“Web API”或“Azure API 应用”模板。
+4. 在“新建 ASP.NET Web 应用程序”窗口中，选择“Web API”或“Azure API 应用”模板。   
 
     ![选择“Web API”模板](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
-5. 确保身份验证设置为“无身份验证”。
+5. 确保身份验证设置为“无身份验证”。 
 
-6. 选择“确定”创建该项目。
+6. 选择“确定”创建该项目。 
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>步骤 2：准备 REST API 终结点
 
@@ -81,8 +81,8 @@ ms.locfileid: "64717293"
 
 执行以下操作，创建一个代表输入声明的模型：
 
-1. 如果解决方案资源管理器尚未打开，请选择“视图” > “解决方案资源管理器”。
-2. 在“解决方案资源管理器”中，右键单击“模型”文件夹，选择“添加”，并选择“类”。
+1. 如果解决方案资源管理器尚未打开，请选择“视图” > “解决方案资源管理器”。  
+2. 在“解决方案资源管理器”中，右键单击“模型”文件夹，选择“添加”，并选择“类”。   
 
     ![添加模型](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
@@ -134,21 +134,21 @@ ms.locfileid: "64717293"
     ```
 
 ### <a name="step-22-add-a-controller"></a>步骤 2.2：添加控制器
-在 Web API 中，控制器是处理 HTTP 请求的对象。 该控制器返回输出声明；如果名字无效，该控制器会引发“HTTP 冲突”错误消息。
+在 Web API 中，控制器是处理 HTTP 请求的对象。  该控制器返回输出声明；如果名字无效，该控制器会引发“HTTP 冲突”错误消息。
 
-1. 在“解决方案资源管理器”中，右键单击“控制器”文件夹，选择“添加”，并选择“控制器”。
+1. 在“解决方案资源管理器”中，右键单击“控制器”文件夹，选择“添加”，并选择“控制器”。   
 
     ![添加新控制器](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
-2. 在“添加基架”窗口中，选择“Web API 控制器 - 空”，再选择“添加”。
+2. 在“添加基架”窗口中，选择“Web API 控制器 - 空”，再选择“添加”。   
 
     ![选择“Web API 2 控制器 - 空”](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
-3. 在“添加控制器”窗口中，将控制器命名为 **IdentityController**，选择“添加”。
+3. 在“添加控制器”窗口中，将控制器命名为 **IdentityController**，选择“添加”。  
 
     ![键入控制器名称](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
-    基架会在“控制器”文件夹中创建名为 *IdentityController.cs* 的文件。
+    基架会在“控制器”文件夹中创建名为 *IdentityController.cs* 的文件。 
 
 4. 如果 *IdentityController.cs* 文件尚未打开，请双击它，并将该文件中的代码替换为以下代码：
 
@@ -204,24 +204,24 @@ ms.locfileid: "64717293"
     ```
 
 ## <a name="step-3-publish-the-project-to-azure"></a>步骤 3：将项目发布到 Azure
-1. 在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。
+1. 在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。  
 
     ![发布到 Microsoft Azure 应用服务](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
-2. 在“发布”窗口中，依次选择“Microsoft Azure 应用服务”、“发布”。
+2. 在“发布”窗口中，依次选择“Microsoft Azure 应用服务”、“发布”。   
 
     ![创建新的 Microsoft Azure 应用服务](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
-    此时会打开“创建应用服务”窗口。 在此窗口中，创建在 Azure 中运行 ASP.NET Web 应用所需的全部 Azure 资源。
+    此时会打开“创建应用服务”窗口。  在此窗口中，创建在 Azure 中运行 ASP.NET Web 应用所需的全部 Azure 资源。
 
     > [!NOTE]
     >有关发布方法的详细信息，请参阅[在 Azure 中创建 ASP.NET Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)。
 
-3. 在“Web 应用名称”框中，键入唯一的应用名称（有效字符为 a-z、0-9 和连字符 (-)）。 Web 应用的 URL 为 http://<app_name>.azurewebsites.NET，其中，*app_name* 是 Web 应用的名称。 可以接受自动生成的名称，它是唯一的。
+3. 在“Web 应用名称”框中，键入唯一的应用名称（有效字符为 a-z、0-9 和连字符 (-)）。  Web 应用的 URL 为 http://<app_name>.azurewebsites.NET，其中，*app_name* 是 Web 应用的名称。 可以接受自动生成的名称，它是唯一的。
 
     ![提供应用服务属性](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. 若要开始创建 Azure 资源，请选择“创建”。  
+4. 若要开始创建 Azure 资源，请选择“创建”。   
     创建 ASP.NET Web 应用后，向导会将该应用发布到 Azure，然后在默认浏览器中启动该应用。
 
 6. 复制 Web 应用的 URL。
@@ -248,13 +248,13 @@ ms.locfileid: "64717293"
 
 以下 XML 片段包含具有两个技术配置文件的声明提供程序节点：
 
-* **TechnicalProfile Id="REST-API-SignUp"**：定义 RESTful 服务。
+* **TechnicalProfile Id="REST-API-SignUp"** ：定义 RESTful 服务。
   * `Proprietary` 描述为基于 RESTful 的提供程序的协议。
   * `InputClaims` 定义要从 Azure AD B2C 发送到 REST 服务的声明。
 
     在此示例中，声明 `givenName` 的内容作为 `firstName` 发送到 REST 服务，声明 `surname` 的内容作为 `lastName` 发送到 REST 服务，`email` 按原样发送。 `OutputClaims` 元素定义要从 RESTful 服务检索回到 Azure AD B2C 的声明。
 
-* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**：将验证技术配置文件添加到现有技术配置文件（在基本策略中定义）。 在执行注册旅程期间，验证技术配置文件调用上述技术配置文件。 如果 RESTful 服务返回 HTTP 错误 409（冲突错误），会向用户显示错误消息。
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"** ：将验证技术配置文件添加到现有技术配置文件（在基本策略中定义）。 在执行注册旅程期间，验证技术配置文件调用上述技术配置文件。 如果 RESTful 服务返回 HTTP 错误 409（冲突错误），会向用户显示错误消息。
 
 找到 `<ClaimsProviders>` 节点，然后在 `<ClaimsProviders>` 节点下添加以下 XML 片段：
 
@@ -325,36 +325,36 @@ ms.locfileid: "64717293"
 
 ## <a name="step-7-upload-the-policy-to-your-tenant"></a>步骤 7：将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，打开“Azure AD B2C”。
+1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，打开“Azure AD B2C”。 
 
-2. 选择“标识体验框架”。
+2. 选择“标识体验框架”  。
 
-3. 打开“所有策略”。
+3. 打开“所有策略”。 
 
-4. 选择“上传策略”。
+4. 选择“上传策略”  。
 
-5. 选中“覆盖策略(如果存在)”复选框。
+5. 选中“覆盖策略(如果存在)”  复选框。
 
 6. 上传 TrustFrameworkExtensions.xml 文件，并确保它能够通过验证。
 
 7. 对 SignUpOrSignIn.xml 文件重复上述步骤。
 
 ## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>步骤 8：使用“立即运行”测试自定义策略
-1. 选择“Azure AD B2C 设置”并转到“标识体验框架”。
+1. 选择“Azure AD B2C 设置”并转到“标识体验框架”。  
 
     > [!NOTE]
-    > “立即运行”需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
+    > “立即运行”  需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
 
-2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。
+2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。 
 
     ![B2C_1A_signup_signin 窗口](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 
-3. 在“名”框中键入 **Test** 来测试该过程。  
+3. 在“名”框中键入 **Test** 来测试该过程。   
     Azure AD B2C 会在窗口顶部显示一条错误消息。
 
     ![测试策略](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4. 在“名”框中键入一个名称（不要键入“Test”）。  
+4. 在“名”框中键入一个名称（不要键入“Test”）。   
     Azure AD B2C 会注册该用户，然后将 loyaltyNumber 发送到应用程序。 请注意此 JWT 中的编号。
 
 ```

@@ -1,6 +1,6 @@
 ---
-title: Microsoft 标识平台和 OAuth 授权代码流 |Azure
-description: 使用 OAuth 2.0 身份验证协议的 Microsoft 标识平台实现构建 web 应用程序。
+title: Microsoft 标识平台和 OAuth 授权代码流 | Azure
+description: 使用 OAuth 2.0 身份验证协议的 Microsoft 标识平台实现生成 Web 应用程序。
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -13,28 +13,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 06/04/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d3ab6f53fdb11b0b8d643868d0692667c8672f9
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: c5c45071406c420546a90a71751045fea926804f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545183"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513528"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-OAuth 2.0 授权代码授予可用于设备上所安装的应用中，以访问受保护的资源，例如 Web API。 使用 OAuth 2.0 的 Microsoft 标识平台实现，可以添加在登录和 API 访问你的移动和桌面应用。 本指南与语言无关，介绍在不使用任何 [Azure 开放源代码身份验证库](active-directory-authentication-libraries.md)的情况下，如何发送和接收 HTTP 消息。
+OAuth 2.0 授权代码授予可用于设备上所安装的应用中，以访问受保护的资源，例如 Web API。 使用 OAuth 2.0 的 Microsoft 标识平台实现，可将登录名及 API 访问添加到移动应用和桌面应用。 本指南与语言无关，介绍在不使用任何 [Azure 开放源代码身份验证库](reference-v2-libraries.md)的情况下，如何发送和接收 HTTP 消息。
 
 > [!NOTE]
-> Microsoft 标识平台终结点支持不是所有 Azure Active Directory 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，阅读[Microsoft 标识平台限制](active-directory-v2-limitations.md)。
+> Microsoft 标识平台终结点并非支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。
 
-[OAuth 2.0 规范第 4.1 部分](https://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权代码流。 它用来在大部分的应用类型，包括执行身份验证和授权[web 应用](v2-app-types.md#web-apps)并[本机安装的应用](v2-app-types.md#mobile-and-native-apps)。 此流，应用安全地获取 access_tokens，用于访问由 Microsoft 标识平台终结点保护的资源。
+[OAuth 2.0 规范第 4.1 部分](https://tools.ietf.org/html/rfc6749)描述了 OAuth 2.0 授权代码流。 它用于在大部分的应用类型（包括 [Web 应用](v2-app-types.md#web-apps)和[本地安装应用](v2-app-types.md#mobile-and-native-apps)）中执行身份验证与授权。 通过此流，应用能安全地获取 access_tokens，用于访问由 Microsoft 标识平台终结点保护的资源。
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -69,17 +69,17 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_type` | 必填    | 必须包括授权代码流的 `code`。       |
 | `redirect_uri`  | 必填 | 应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.microsoftonline.com/common/oauth2/nativeclient`。   |
 | `scope`  | 必填    | 希望用户同意的 [范围](v2-permissions-and-consent.md) 的空格分隔列表。 |
-| `response_mode`   | 建议 | 指定将生成的令牌送回到应用程序所应该使用的方法。 可以是以下值之一：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 在重定向 URI 上提供代码作为查询字符串参数。 如果您请求使用隐式流的 ID 令牌，则无法使用`query`中指定的那样[OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 有关详细信息，请参阅 [OpenID Connect 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)。  |
+| `response_mode`   | 建议 | 指定将生成的令牌送回到应用程序所应该使用的方法。 可以是以下值之一：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 有关详细信息，请参阅 [OpenID Connect 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)。  |
 | `state`                 | 建议 | 同样随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 在发出身份验证请求出现之前，此值对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
-| `prompt`  | 可选    | 表示需要的用户交互类型。 此时唯一有效值为 `login``none` 和 `consent`。<br/><br/>- `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。<br/>- `prompt=none` 完全相反它将确保用户无法看到说明，否则任何交互提示。 如果请求无法通过单一登录静默完成，Microsoft 标识平台终结点将返回`interaction_required`错误。<br/>- `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
+| `prompt`  | 可选    | 表示需要的用户交互类型。 此时唯一有效值为 `login``none` 和 `consent`。<br/><br/>- `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。<br/>- `prompt=none` 则相反 - 它确保不对用户显示任何交互式提示。 如果请求无法通过单一登录静默完成，则 Microsoft 标识平台终结点将返回 `interaction_required` 错误。<br/>- `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
 | `login_hint`  | 可选    | 如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。   |
-| `domain_hint`  | 可选    | 可以是 `consumers` 或 `organizations` 之一。<br/><br/>如果包含，它将跳过的基于电子邮件的发现过程的用户就可以在登录页上，从而导致稍微更加流畅的用户体验。 通常，应用会在重新身份验证期间使用此参数，方法是从前次登录提取 `tid`。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。  |
-| `code_challenge_method` | 可选    | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是以下值之一：<br/><br/>- `plain` <br/>- `S256`<br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台同时支持`plain`和`S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| `domain_hint`  | 可选    | 可以是 `consumers` 或 `organizations` 之一。<br/><br/>如果包含，它跳过用户在登录页上经历的基于电子邮件的发现过程，导致稍微更加流畅的用户体验。 通常，应用会在重新身份验证期间使用此参数，方法是从前次登录提取 `tid`。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。  |
+| `code_challenge_method` | 可选    | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是以下值之一：<br/><br/>- `plain` <br/>- `S256`<br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 | `code_challenge`  | 可选 | 用于通过本地客户端的 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
-此时，请求用户输入其凭据并完成身份验证。 Microsoft 标识平台终结点还将确保用户已经同意中指示的权限`scope`查询参数。 如果用户未曾同意这些权限的任何一项，就请求用户同意请求的权限。 [此处提供了权限、许可与多租户应用](v2-permissions-and-consent.md)的详细信息。
+此时，请求用户输入其凭据并完成身份验证。 Microsoft 标识平台终结点还会确保用户已许可 `scope` 查询参数中指定的权限。 如果用户未曾同意这些权限的任何一项，就请求用户同意请求的权限。 [此处提供了权限、许可与多租户应用](v2-permissions-and-consent.md)的详细信息。
 
-一旦用户进行身份验证并授予许可后，Microsoft 标识平台终结点将返回到位于所指示应用的响应`redirect_uri`，使用指定的方法在`response_mode`参数。
+用户经过身份验证并授予许可后，Microsoft 标识平台终结点将使用 `response_mode` 参数中指定的方法，将响应返回到位于所指示的 `redirect_uri` 的应用。
 
 #### <a name="successful-response"></a>成功的响应
 
@@ -93,7 +93,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 
 | 参数 | 描述  |
 |-----------|--------------|
-| `code` | 应用程序请求的 authorization_code。 应用程序可以使用授权代码请求目标资源的访问令牌。 Authorization_code 的生存期短，它们通常在约 10 分钟后过期。 |
+| `code` | 应用程序请求的 authorization_code。 应用程序可以使用授权代码请求目标资源的访问令牌。 Authorization_codes 的生存期较短，通常在约 10 分钟后即过期。 |
 | `state` | 如果请求中包含状态参数，响应中就应该出现相同的值。 应用应该验证请求和响应中的 state 值是否完全相同。 |
 
 #### <a name="error-response"></a>错误响应
@@ -118,13 +118,13 @@ error=access_denied
 | 错误代码  | 描述    | 客户端操作   |
 |-------------|----------------|-----------------|
 | `invalid_request` | 协议错误，例如，缺少必需的参数。 | 修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。 |
-| `unauthorized_client` | 客户端应用程序不允许请求授权代码。 | 客户端应用程序未在 Azure AD 中注册或不会添加到用户的 Azure AD 租户时，通常会发生此错误。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
-| `access_denied`  | 资源所有者拒绝了许可  | 客户端应用程序可以通知用户除非用户同意，否则无法继续。 |
+| `unauthorized_client` | 不允许客户端应用程序请求授权代码。 | 客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现此错误。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
+| `access_denied`  | 资源所有者拒绝了许可  | 客户端应用程序可以通知用户，除非用户许可，否则无法继续。 |
 | `unsupported_response_type` | 授权服务器不支持请求中的响应类型。 | 修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。  |
 | `server_error`  | 服务器遇到意外的错误。| 重试请求。 这些错误可能是临时状态导致的。 客户端应用程序可能向用户说明，其响应由于临时错误而延迟。 |
-| `temporarily_unavailable`   | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。 |
-| `invalid_resource`  | 目标资源无效，因为它不存在，Azure AD 找不到它，或未正确配置。 | 此错误表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
-| `login_required` | 找到的用户太多或未找到任何用户 | 客户端请求了静默身份验证 (`prompt=none`)，但找不到单个用户。 这可能表示会话中有多个处于活动状态的用户或无用户。 这会考虑所选的租户 (例如，如果有两个活动的 Azure AD 帐户和一个 Microsoft 帐户，和`consumers`无提示身份验证将起作用的选择)。 |
+| `temporarily_unavailable`   | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
+| `invalid_resource`  | 目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 | 此错误表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
+| `login_required` | 找到的用户太多或未找到任何用户 | 客户端请求了静默身份验证 (`prompt=none`)，但找不到单个用户。 这可能表示会话中有多个处于活动状态的用户或无用户。 此时会考虑所选的租户（例如，如果有两个处于活动状态的 Azure AD 帐户和一个 Microsoft 帐户，并且已选择 `consumers`，则会执行静默身份验证）。 |
 | `interaction_required` | 请求需要用户交互。 | 需要额外的身份验证步骤或许可。 请在没有 `prompt=none` 的情况下重试请求。 |
 
 ## <a name="request-an-access-token"></a>请求访问令牌
@@ -154,10 +154,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`   | 必填   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | 必填  | 应用程序 （客户端） ID [Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给您的应用程序。 |
 | `grant_type` | 必填   | 必须是授权代码流的 `authorization_code`。   |
-| `scope`      | 必填   | 范围的空格分隔列表。 在此阶段中请求的范围必须相当于或为第一个阶段中所请求的范围子集。 如果此请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个作用域中指定资源的令牌。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
+| `scope`      | 必填   | 范围的空格分隔列表。 在此阶段中请求的范围必须相当于或为第一个阶段中所请求的范围子集。 如果这个请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个范围内所指定资源的令牌。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
 | `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
 | `redirect_uri`  | 必填  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
-| `client_secret` | Web 应用所需 | 在应用程序注册门户中为应用程序创建的应用程序机密。 不应在本机应用程序中使用的应用程序机密，因为不能在设备上可靠地存储 client_secrets。 它具有所需的 web 应用和 web Api，能够将 client_secret 安全地存储在服务器端。  在发送客户端密码之前必须对其进行 URL 编码。  |
+| `client_secret` | Web 应用所需 | 在应用程序注册门户中为应用程序创建的应用程序机密。 不应在本机应用中使用应用程序机密，因为 client_secrets 不能可靠地存储在设备上。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。  在发送客户端密码之前必须对其进行 URL 编码。  |
 | `code_verifier` | 可选  | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 ### <a name="successful-response"></a>成功的响应
@@ -216,12 +216,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |--------------------|--------------------|------------------|
 | `invalid_request`  | 协议错误，例如，缺少必需的参数。 | 修复并重新提交请求。   |
 | `invalid_grant`    | 授权代码或 PKCE 代码验证程序无效或已过期。 | 尝试向 `/authorize` 终结点发送新请求，并验证 code_verifier 参数是否正确。  |
-| `unauthorized_client` | 经过身份验证的客户端无权使用此权限授予类型。 | 这通常发生在客户端应用程序未在 Azure AD 中注册或不会添加到用户的 Azure AD 租户。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
-| `invalid_client` | 客户端身份验证失败。  | 客户端凭据不是有效的。 若要修复，应用程序管理员应更新凭据。   |
+| `unauthorized_client` | 经过身份验证的客户端无权使用此权限授予类型。 | 客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
+| `invalid_client` | 客户端身份验证失败。  | 客户端凭据无效。 若要修复，应用程序管理员应更新凭据。   |
 | `unsupported_grant_type` | 授权服务器不支持权限授予类型。 | 更改请求中的授权类型。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试过程中检测到。 |
-| `invalid_resource` | 目标资源无效，因为它不存在，Azure AD 找不到它，或未正确配置。 | 这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。  |
+| `invalid_resource` | 目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 | 这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。  |
 | `interaction_required` | 请求需要用户交互。 例如，需要额外的身份验证步骤。 | 使用同一资源重试请求。  |
-| `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。 |
+| `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
 
 ## <a name="use-the-access-token"></a>使用访问令牌
 
@@ -242,7 +242,7 @@ Access_token 生存期很短，必须在其过期后刷新，才能继续访问�
 
 刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理[令牌颁发终结点返回的错误](#error-codes-for-token-endpoint-errors)。 
 
-尽管刷新令牌未吊销用于获取新访问令牌时，应该会丢弃旧的刷新令牌。 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-6)说："授权服务器可能会发出新的刷新令牌，在其中用例客户端必须丢弃旧的刷新令牌，并替换为新的刷新令牌。 授权服务器可以撤销将旧刷新令牌后向客户端发出新的刷新令牌。"  
+尽管刷新令牌在用于获取新访问令牌时不会被吊销，但预期你会丢弃旧的刷新令牌。 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-6)指出：“授权服务器可能会发出新的刷新令牌，在这种情况下，客户端必须丢弃旧的刷新令牌，并将其替换为新的刷新令牌。 授权服务器在向客户端颁发新的刷新令牌后，可能会吊销旧的刷新令牌。”  
 
 ```
 // Line breaks for legibility only
@@ -267,9 +267,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`        | 必填     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
 | `client_id`     | 必填    | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
 | `grant_type`    | 必填    | 必须是授权代码流的此阶段的 `refresh_token`。 |
-| `scope`         | 必填    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于或者为原始 authorization_code 请求阶段中所请求的范围子集。 如果此请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个作用域中指定资源的令牌。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
+| `scope`         | 必填    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于或者为原始 authorization_code 请求阶段中所请求的范围子集。 如果这个请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个范围内所指定资源的令牌。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
 | `refresh_token` | 必填    | 在流的第二个阶段获取的 refresh_token。 |
-| `client_secret` | Web 应用所需 | 在应用程序注册门户中为应用程序创建的应用程序机密。 它不应在本机应用中，因为不能在设备上可靠地存储 client_secrets。 它具有所需的 web 应用和 web Api，能够将 client_secret 安全地存储在服务器端。 |
+| `client_secret` | Web 应用所需 | 在应用程序注册门户中为应用程序创建的应用程序机密。 它不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。 |
 
 #### <a name="successful-response"></a>成功的响应
 

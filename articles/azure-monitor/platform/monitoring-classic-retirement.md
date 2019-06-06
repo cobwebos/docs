@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 82e6f28e00de725042a3d764a898b3c6486e1110
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 1f29a12090ca37f25ea6f5f11e870df924b334f5
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66023202"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497125"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
@@ -53,24 +53,24 @@ Azure 资源的新指标按以下形式提供：
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>经典监视和警报平台的停用
 
 如前文所述，鉴于 Azure 门户的[“警报(经典)”部分](../../azure-monitor/platform/alerts-classic.overview.md)中当前可用的经典监视和警报平台已由新系统代替，经典平台将于接下来数月内停用。
-将在第 31 年 8 月 2019; 上停用较旧的经典监视和警报在其中包括相关的 Api、 Azure 门户界面和服务的闭包。 具体而言，将弃用以下功能：
+较旧的经典监视和警报功能将在停用 31 年 8 月 2019;在其中包括相关的 Api、 Azure 门户界面和服务的闭包。 具体而言，将弃用以下功能：
 
 - 当前可通过 Azure 门户的[警报(经典)部分](../../azure-monitor/platform/alerts-classic.overview.md)使用 Azure 资源的旧（经典）指标和警报；可作为 [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) 资源访问
 - 当前可通过 Azure 门户的[警报(经典)部分](../../azure-monitor/platform/alerts-classic.overview.md)使用 Application Insights 的旧（经典）平台和自定义指标以及相关警报；可作为 [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) 资源访问
 - 旧（经典）故障异常警报当前在 Azure 门户中作为 [Application Insights 内的智能检测](../../azure-monitor/app/proactive-diagnostics.md)提供；其中配置的警报显示在 Azure 门户的[警报(经典)部分](../../azure-monitor/platform/alerts-classic.overview.md)
 
-所有经典监视和警报系统，包括相应的 [API](https://msdn.microsoft.com/library/azure/dn931945.aspx)、[PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)、[CLI](../../azure-monitor/platform/alerts-classic-portal.md)、[Azure 门户页面](../../azure-monitor/platform/alerts-classic-portal.md)和[资源模板](../../azure-monitor/platform/alerts-enable-template.md)在 2019 年 6 月结束之前都可继续使用。 
+经典监视和警报系统包括相对应的所有信息[API](https://msdn.microsoft.com/library/azure/dn931945.aspx)， [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)， [CLI](../../azure-monitor/platform/alerts-classic-portal.md)， [Azure 门户页](../../azure-monitor/platform/alerts-classic-portal.md)，和[资源模板](../../azure-monitor/platform/alerts-enable-template.md)将保持可用状态直到 2019 年 8 月结束。 
 
 年 8 月 2019，Azure Monitor 中的末尾：
 
 - 经典的监视和警报服务将已停用并不再可用于创建新的警报规则。
-- 在 2019 年 6 月之后，继续存在于“警报”（经典）中的任何警报规则将继续执行并引发通知，但是不可修改。
-- 启动第 2019 年 9 月经典的监视和警报可以迁移的中的警报规则将自动移动 Microsoft 到新的 Azure monitor 平台的等效项。 该过程无缝进行且没有任何停机时间，并且客户在监视覆盖范围内将没有任何损失。
+- 继续在警报 （经典） 超出年 8 月 2019年中存在任何警报规则将继续执行，并触发通知，但不是能进行修改。
+- 启动第 2019 年 9 月经典的监视和警报可以迁移的中的警报规则将自动移动 Microsoft 到新的 Azure monitor 平台的等效项分阶段跨越几周。 该过程无缝进行且没有任何停机时间，并且客户在监视覆盖范围内将没有任何损失。
 - 迁移到新的警报平台的警报规则将提供与之前相同的监视覆盖范围，但将触发具有新的有效负载的通知。 任何电子邮件地址、 webhook 终结点或与经典警报规则关联的逻辑应用链接迁移时，将向前执行，但可能不正确会因为警报有效负载将是新的平台中不同。
-- 某些[经典警报规则的不能自动迁移](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated)，需要从用户的手动操作将继续运行到 2020 年 6 月。
+- 某些[无法自动迁移的经典警报规则](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated)，需要从用户的手动操作将继续运行到 2020 年 6 月。
 
 > [!IMPORTANT]
-> 分阶段推出具有 Microsoft Azure Monitor[工具将自动迁移](alerts-using-migration-tool.md)到新的平台很快就其经典警报规则。 并运行它的所有经典警报规则仍然存在，因此可以迁移，从 2019 年 9 月开始的强制。 在迁移经典警报规则后，客户将需要确保对使用经典警报规则有效负载的自动化进行修改以处理来自 [Application Insights 中的统一指标和警报](#unified-metrics-and-alerts-in-application-insights)或[其他 Azure 资源的统一指标和警报](#unified-metrics-and-alerts-for-other-azure-resources)的新有效负载。 有关更多详细信息，请参阅[准备要迁移经典警报规则](alerts-prepare-migration.md)
+> 分阶段推出具有 Microsoft Azure Monitor[工具将自动迁移](alerts-using-migration-tool.md)到新的平台很快就其经典警报规则。 并运行它的所有经典警报规则仍然存在，因此可以迁移，从 2019 年 9 月开始的强制。 在迁移经典警报规则后，客户将需要确保对使用经典警报规则有效负载的自动化进行修改以处理来自 [Application Insights 中的统一指标和警报](#unified-metrics-and-alerts-in-application-insights)或[其他 Azure 资源的统一指标和警报](#unified-metrics-and-alerts-for-other-azure-resources)的新有效负载。 有关详细信息，请参阅[准备要迁移经典警报规则](alerts-prepare-migration.md)
 
 我们推出了迁移工具，以便可以自动迁移从警报[警报 （经典） 部分](../../azure-monitor/platform/alerts-classic.overview.md)的 Azure 门户为新的 Azure 警报。 迁移到新 Azure Monitor 的警报(经典)中配置的所有规则都将继续免费，不收取任何费用。 已迁移的经典警报规则也不会对通过电子邮件、Webhook 或逻辑应用推送通知收取费用。 但是，使用新通知或操作类型（例如短信、语音呼叫、ITSM 迁移等）将收取费用，无论是添加到已迁移的警报还是添加到新警报中。 有关详细信息，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 

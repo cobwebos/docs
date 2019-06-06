@@ -5,17 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: d2312fac64515756f5ed2e0feb22fdc6b7205376
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125188"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735210"
 ---
-**上次文档更新时间**：太平洋标准时间 2019 年 5 月 14 日上午 10:00。
+**上次文档更新时间**：4 年 6 月 2019 年下午 3:00。
 
 发现一种称为推理执行旁道攻击的[新型 CPU 漏洞](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)，这使想要了解其详情的客户向我们提出了问题。  
 
@@ -60,11 +60,11 @@ Azure 尽可能使用[内存保留维护](https://docs.microsoft.com/azure/virtu
 建议实施额外安全功能的示例方案：
 
 - 允许不信任的代码在 VM 中运行。  
-    - 例如，允许某一客户上传你随后要在应用程序内执行的二进制文件或脚本。 
+    -  例如，允许某一客户上传你随后要在应用程序内执行的二进制文件或脚本。 
 - 允许不信任的用户使用权限低的帐户登录到 VM。   
-    - 例如，允许权限低的用户使用远程桌面或 SSH 登录到某个 VM。  
+    -  例如，允许权限低的用户使用远程桌面或 SSH 登录到某个 VM。  
 - 允许不受信任的用户访问通过嵌套虚拟化实现的虚拟机。  
-    - 例如，你控制 Hyper-V 主机，但却将 VM 分配给不受信任的用户。 
+    -  例如，你控制 Hyper-V 主机，但却将 VM 分配给不受信任的用户。 
 
 所实施方案不涉及不受信任代码的客户不需启用这些额外安全功能。 
 
@@ -77,7 +77,7 @@ Azure 尽可能使用[内存保留维护](https://docs.microsoft.com/azure/virtu
 目标操作系统必须为最新才能启用这些额外安全功能。 虽然许多推理执行旁道缓解措施是默认启用的，但此处所述的额外功能必须手动启用，并且可能会造成性能影响。 
 
 
-**步骤 1：在 VM 上禁用超线程功能** - 在超线程 VM 上运行不受信任的代码的客户将需要禁用超线程功能或转换到非超线程的 VM 大小。 若要检查 VM 是否启用了超线程功能，请从 VM 中使用 Windows 命令行来参考下面的脚本。
+**步骤 1：禁用超线程的 VM 上**-超线程的 VM 上运行不受信任的代码的客户将需要禁用超线程或移动到的非超线程的 VM 大小。 引用[此文档](https://docs.microsoft.com/azure/virtual-machines/windows/acu)有关超线程的 VM 大小 （其中核心的 vCPU 的比率是 2:1） 的列表。 若要检查 VM 是否具有启用超线程，请参阅下面的脚本使用 Windows 命令行从 VM 中。
 
 键入 `wmic` 以进入交互式界面。 然后键入以下命令来查看 VM 上的物理和逻辑处理器数量。
 
@@ -85,7 +85,7 @@ Azure 尽可能使用[内存保留维护](https://docs.microsoft.com/azure/virtu
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 ```
 
-如果逻辑处理器数量大于物理处理器（核心）数量，则超线程功能已启用。  如果运行的是超线程 VM，请[联系 Azure 支持](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)以禁用超线程功能。  在超线程功能已禁用后，**支持人员将要求完全重启 VM**。 
+如果逻辑处理器数超过物理处理器 （核心），然后-已启用超线程。  如果运行的超线程的 VM，请[联系 Azure 支持](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)以获取超线程已禁用。  超线程处于禁用状态，一旦**支持将要求在完整的 VM 重启**。 请参阅[核心计数](#core-count)若要了解为什么 VM 核心计数减少。
 
 
 **步骤 2**：在执行步骤 1 的同时，请按照 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中的说明，使用 [SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell 模块验证是否已启用了保护。
@@ -123,14 +123,14 @@ Windows OS support for MDS mitigation is enabled: True
 <a name="linux"></a>在其中启用额外安全功能集要求目标操作系统已彻底更新。 某些缓解措施会默认启用。 以下部分介绍的功能是默认关闭的，以及/或者是依赖于硬件支持（微代码）的。 启用这些功能可能造成性能影响。 如需进一步的说明，请参阅操作系统提供商的文档。
 
 
-**步骤 1：在 VM 上禁用超线程功能** - 在超线程 VM 上运行不受信任的代码的客户将需要禁用超线程功能或转换到非超线程 VM。  若要检查正在运行的 VM 是否是超线程 VM，请在 Linux VM 中运行 `lscpu` 命令。 
+**步骤 1：禁用超线程的 VM 上**-超线程的 VM 上运行不受信任的代码的客户将需要禁用超线程或移到非超线程的 VM。  引用[此文档](https://docs.microsoft.com/azure/virtual-machines/linux/acu)有关超线程的 VM 大小 （其中核心的 vCPU 的比率是 2:1） 的列表。 若要检查是否正在运行的超线程的 VM，请运行`lscpu`命令在 Linux VM 中。 
 
-如果 `Thread(s) per core = 2`，则已启用超线程功能。 
+如果`Thread(s) per core = 2`，然后超线程已启用。 
 
-如果 `Thread(s) per core = 1`，则已禁用超线程功能。 
+如果`Thread(s) per core = 1`，然后超线程已被禁用。 
 
  
-启用了超线程功能的 VM 的输出示例： 
+具有启用超线程的 VM 的示例输出： 
 
 ```console
 CPU Architecture:      x86_64
@@ -145,7 +145,8 @@ NUMA node(s):          1
 
 ```
 
-如果运行的是超线程 VM，请[联系 Azure 支持](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)以禁用超线程功能。  在超线程功能已禁用后，**支持人员将要求完全重启 VM**。
+如果运行的超线程的 VM，请[联系 Azure 支持](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)以获取超线程已禁用。  超线程处于禁用状态，一旦**支持将要求在完整的 VM 重启**。 请参阅[核心计数](#core-count)若要了解为什么 VM 核心计数减少。
+
 
 
 **步骤 2**：若要针对的任何缓解推理执行旁道漏洞，下面请参阅操作系统提供商的文档：   
@@ -153,6 +154,11 @@ NUMA node(s):          1
 - [Redhat 和 CentOS](https://access.redhat.com/security/vulnerabilities) 
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
 - [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/) 
+
+
+### <a name="core-count"></a>核心计数
+
+创建一个超线程的虚拟机后，Azure 会分配每个内核 2 个线程-这些被称为 Vcpu。 当禁用超线程时，Azure 中删除一个线程并启动单线程内核 （物理核心） 的图面。 CPU 的 vCPU 的比率为 2:1，因此一次超线程处于禁用状态，在 VM 中的 CPU 数将显示以减少了一半。 例如，D8_v3 VM 是 8 个 Vcpu （每个核心 x 4 核心的 2 个线程） 上运行的超线程的 VM。  当禁用超线程时，Cpu 将放置到与每个内核的 1 线程的 4 个物理核心数。 
 
 ## <a name="next-steps"></a>后续步骤
 

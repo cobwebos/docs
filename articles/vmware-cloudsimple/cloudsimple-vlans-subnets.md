@@ -8,16 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e88977cc4d99df176116e6be7d8e06adb6297782
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 9d29445054848d798476fed8184b89f9b6c1210f
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209584"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497581"
 ---
 # <a name="vlans-and-subnets-overview"></a>Vlan 和子网的概述
 
 CloudSimple 提供每个区域部署 CloudSimple 服务所在的网络。  网络是默认情况下启用了路由的单一 TCP 第 3 层地址空间。  所有私有云基础架构并在此区域中创建的子网可以进行相互通信而无需任何其他配置。  可以在使用 Vlan 在 vCenter 上创建分布式的端口组。
+
+![CloudSimple 网络拓扑](media/cloudsimple-network-topology.png)
 
 ## <a name="vlans"></a>VLAN
 
@@ -35,11 +37,15 @@ CloudSimple 提供每个区域部署 CloudSimple 服务所在的网络。  网�
 
 最小 vSphere/vSAN 子网 CIDR 范围前缀： **/24**最大值 vSphere/vSAN 子网 CIDR 范围前缀：   **/21**
 
+> [!CAUTION]
+> 私有云基础结构将 vSphere/vSAN CIDR 范围中的 IP 地址保留供。 不在任何虚拟机上的此范围中使用的 IP 地址。
+
+
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN 子网 CIDR 范围限制
 
 选择 vSphere/vSAN 子网 CIDR 范围大小会影响您的私有云的大小。  下表显示了的节点可以有根据的 vSphere/vSAN 子网 CIDR 大小最大数目。
 
-| 指定的 vSphere/vSAN 子网 CIDR 前缀长度 | 节点数上限 |
+| 指定的 vSphere/vSAN 子网 CIDR 前缀长度 | 最大节点数 |
 |---------------------------------------------------|-------------------------|
 | /24 | 26 |
 | /23 | 58 |

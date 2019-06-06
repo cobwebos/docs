@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a160591ef0a47eed097ce8db373878f32965de9b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 18dc3e224df18c900653e4549badcdd93f0df6ec
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247119"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688019"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>配置、 优化和故障排除 AzCopy
 
@@ -21,10 +21,10 @@ AzCopy 是一个命令行实用工具，可用于向 / 从存储帐户复制 blo
 
 > [!NOTE]
 > 如果您正在寻找的内容来帮助你开始使用 AzCopy，请参阅以下文章之一：
-> - [开始使用 AzCopy](storage-use-azcopy-v10.md)
-> - [使用 AzCopy 和 blob 存储传输数据](storage-use-azcopy-blobs.md)
+> - [AzCopy 入门](storage-use-azcopy-v10.md)
+> - [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
 > - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
-> - [使用 AzCopy 和 Amazon S3 存储桶传输数据](storage-use-azcopy-s3.md)
+> - [使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>配置代理设置
 
@@ -52,7 +52,7 @@ AzCopy 是一个命令行实用工具，可用于向 / 从存储帐户复制 blo
 
 ## <a name="change-the-location-of-the-log-files"></a>更改日志文件的位置
 
-默认情况下，日志文件位于`%USERPROFILE\\.azcopy`文件夹上 Windows，或在`$HOME\\.azcopy`Mac 和 Linux 上的文件夹。 如果你需要通过使用以下命令，可以更改此位置。
+默认情况下，日志文件位于`%USERPROFILE\\.azcopy`目录上 Windows，或在`$HOME\\.azcopy`Mac 和 Linux 上的目录。 如果你需要通过使用以下命令，可以更改此位置。
 
 | 操作系统 | 命令  |
 |--------|-----------|
@@ -74,7 +74,7 @@ AzCopy 将创建每个作业日志和计划的文件。 可以使用日志调查
 
 日志将包含失败的状态 (`UPLOADFAILED`， `COPYFAILED`，和`DOWNLOADFAILED`)，完整路径和失败的原因。
 
-默认情况下的日志和计划文件位于`%USERPROFILE\\.azcopy`在 Windows 上的文件夹或`$HOME\\.azcopy`Mac 和 Linux 上的文件夹。
+默认情况下的日志和计划文件位于`%USERPROFILE\\.azcopy`上 Windows 目录或`$HOME\\.azcopy`Mac 和 Linux 上的目录。
 
 > [!IMPORTANT]
 > 提交到 Microsoft 支持部门 （或故障排除问题涉及任何第三方），请求时共享你想要执行的命令经过修订的版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。

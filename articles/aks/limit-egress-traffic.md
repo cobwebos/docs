@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 13fbb20cde454a0aaab156a74a9fbcbac2d90d07
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418129"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475575"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>预览版-有关群集节点和控制对所需的端口和服务在 Azure Kubernetes 服务 (AKS) 的访问限制传出流量
 
@@ -75,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 
 | FQDN                      | Port      | 用途      |
 |---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS:443 | 此地址是 API 服务器终结点。 |
+| *.azmk8s.io               | HTTPS:443,22,9000 | 此地址是 API 服务器终结点。 |
 | aksrepos.azurecr.io       | HTTPS:443 | 此地址，则需要访问映像在 Azure 容器注册表 (ACR)。 |
 | * .blob.core.windows.net   | HTTPS:443 | 此地址是映像存储在 ACR 中的后端存储区。 |
 | mcr.microsoft.com         | HTTPS:443 | 此地址，则需要访问映像中 Microsoft 容器注册表 (MCR)。 |

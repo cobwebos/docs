@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库 - MPP 体系结构 | Microsoft Docs
 description: 了解 Azure SQL 数据仓库如何将大规模并行处理 (MPP) 与 Azure 存储结合，实现高性能和可伸缩性。
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: nicw
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: c3cdd464dffc810e76cf101ac70c2a14bbc4f9ff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 25dc469c9f50dee7d088fccd214020791ff73def
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790714"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515796"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL 数据仓库 - 大规模并行处理 (MPP) 体系结构
 了解 Azure SQL 数据仓库如何将大规模并行处理 (MPP) 与 Azure 存储结合，实现高性能和可伸缩性。 
@@ -37,7 +37,7 @@ SQL 数据仓库使用基于节点的体系结构。 应用程序将 T-SQL 命�
 * 在操作期间恢复计算容量。
 
 ### <a name="azure-storage"></a>Azure 存储
-SQL 数据仓库使用 Azure 存储保护用户数据。  由于数据通过 Azure 存储进行存储和管理，因此 SQL 数据仓库对存储消耗单独收费。 将数据本身分片到“分布区”中来优化系统性能。 可选择在定义表时用于分布数据的分片模式。 SQL 数据仓库支持以下分片模式：
+SQL 数据仓库使用 Azure 存储保护用户数据。  由于数据通过 Azure 存储进行存储和管理，因此 SQL 数据仓库对存储消耗单独收费。 将数据本身分片到“分布区”中来优化系统性能  。 可选择在定义表时用于分布数据的分片模式。 SQL 数据仓库支持以下分片模式：
 
 * 哈希
 * 轮循机制

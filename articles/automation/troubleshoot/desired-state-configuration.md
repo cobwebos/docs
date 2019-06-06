@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63bb5c6338cf230c2bb47cb0a2c03810053f970a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7cb0d77a266dbe8afd331782965e7e9a44663671
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61087262"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514466"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
 
@@ -71,7 +71,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 #### <a name="issue"></a>问题
 
-该节点有一个状态为“失败”的报表，其中包含错误：
+该节点有一个状态为“失败”的报表，其中包含错误  ：
 
 ```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
@@ -101,7 +101,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>原因
 
-如果 DSC 配置中“Node”关键字后面的表达式的计算结果为 `$null`，则不会生成节点配置。
+如果 DSC 配置中“Node”关键字后面的表达式的计算结果为 `$null`，则不会生成节点配置  。
 
 #### <a name="resolution"></a>解决方法
 
@@ -146,10 +146,29 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 * 请确保传入正确**ConfigurationData**若要设置**PSDscAllowPlainTextPassword**为 true 的每个节点配置的配置中所述。 有关详细信息，请参阅 [Azure 自动化 DSC 中的资产](../automation-dsc-compile.md#assets)。
 
+### <a name="failure-processing-extension"></a>场景：载入从 dsc 扩展，"故障处理扩展插件"错误
+
+#### <a name="issue"></a>问题
+
+使用 DSC 扩展，失败的载入时包含错误：
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
+```
+
+#### <a name="cause"></a>原因
+
+通常，当将节点分配节点配置名称的服务中不存在时，将发生此错误。
+
+#### <a name="resolution"></a>解决方法
+
+* 请确保将具有该名称在服务中的完全匹配的节点配置名称的节点。
+* 您可以选择不包含节点配置名称，这将导致载入节点但不是分配节点配置
+
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 

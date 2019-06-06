@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5044567396d832d3c3b2b46e3c3e90e053834595
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: d31bde1a33d622c2c0b7aa716cbbbfbc8ef42ecf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417896"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514577"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -407,7 +407,7 @@ ms.locfileid: "66417896"
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
 ### <a name="desktop-analytics-administrator"></a>桌面分析管理员
-可以访问和管理桌面管理工具和服务，包括 Intune。
+可以管理桌面分析和 Office 自定义项和策略的服务。 对于桌面分析，这包括能够查看资产清单、 创建部署计划，查看部署和运行状况状态。 对于 Office 自定义项和策略的服务，此角色，用户可以管理 Office 策略。
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。

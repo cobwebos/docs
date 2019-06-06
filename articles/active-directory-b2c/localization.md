@@ -2,20 +2,20 @@
 title: Localization - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 Localization 元素。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2291bdd270a15c4932d79b124616400d2667c891
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705843"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510582"
 ---
 # <a name="localization"></a>本地化
 
@@ -39,7 +39,7 @@ ms.locfileid: "64705843"
 
 **Localization** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | Enabled | 否 | 可能的值：`true` 或 `false`。 |
 
@@ -54,7 +54,7 @@ ms.locfileid: "64705843"
 
 **SupportedLanguages** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | 是 | 用作本地化资源默认值的语言。 |
 | MergeBehavior | 否 | 与父策略中具有相同标识符的任何 ClaimType 合并在一起的值的枚举值。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值指定应将现有数据集合追加到父策略中指定的集合的末尾。 `Prepend` 值指定应将现有数据集合添加到父策略中指定的集合的前面。 `ReplaceAll` 值指定应忽略父策略中定义的数据集合，改用当前策略中定义的数据。 |
@@ -71,9 +71,9 @@ ms.locfileid: "64705843"
 
 **LocalizedResources** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
-| ID | 是 | 用于唯一标识本地化资源的标识符。 |
+| Id | 是 | 用于唯一标识本地化资源的标识符。 |
 
 **LocalizedResources** 元素包含以下元素：
 
@@ -94,7 +94,7 @@ ms.locfileid: "64705843"
 
 **LocalizedCollection** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 引用策略文件中的 ClaimType 元素或用户界面元素。 |
 | ElementId | 是 | 一个字符串，包含当 **ElementType** 设置为 ClaimType 时使用的 ClaimsSchema 节中已定义的声明类型的引用。 |
@@ -108,7 +108,7 @@ ms.locfileid: "64705843"
 
 **Item** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | Text | 是 | 应在用户界面中向用户显示的此选项的用户友好字符串。 |
 | 值 | 是 | 与此选项关联的字符串声明值。 |
@@ -144,7 +144,7 @@ ms.locfileid: "64705843"
 
 **LocalizedString** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 对策略中声明类型元素或用户界面元素的引用。 可能的值：`ClaimType`、`UxElement`、`ErrorMessage`、`Predicate` 或 `ClaimType` 值用于本地化 StringId 中指定的某个声明属性。 `UxElement` 值用于本地化 StringId 中指定的某个用户界面元素。 `ErrorMessage` 值用于本地化 StringId 中指定的某个系统错误消息。 `Predicate` 值用于本地化 StringId 中指定的某个 [Predicate](predicates.md) 错误消息。 `InputValidation` 值用于本地化 StringId 中指定的某个 [PredicateValidation](predicates.md) 组错误消息。 |
 | ElementId | 是 | 如果 **ElementType** 设置为 `ClaimType`、`Predicate` 或 `InputValidation`，此元素包含对 ClaimsSchema 节中已定义的声明类型的引用。 | 

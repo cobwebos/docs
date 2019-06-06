@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/21/2019
+ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 929a4ae2e954933bf00550770ba9d41319dc6241
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 1be9d11db9a1c614614e0a4023f84b15588ba5f0
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418043"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742960"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -97,7 +97,7 @@ ms.locfileid: "66418043"
 | [本地 web 服务](#local) | 测试/调试 | 适用于有限的测试和故障排除。
 | [Azure Kubernetes 服务 (AKS)](#aks) | 实时推理 | 非常适合用于大规模生产部署。 提供了自动缩放和快速的响应时间。 |
 | [Azure 容器实例 (ACI)](#aci) | 正在测试 | 非常适用于低规模，基于 CPU 的工作负荷。 |
-| [Azure 机器学习计算](how-to-run-batch-predictions.md) | （预览版）批处理推理 | 运行批处理评分上无服务器计算。 支持的普通和低优先级 Vm。 |
+| [Azure 机器学习计算](how-to-run-batch-predictions.md) | 批处理推理 | 在无服务器计算上运行批处理推理。 支持的普通和低优先级 Vm。 |
 | [Azure IoT Edge](#iotedge) | （预览版）IoT 模块 | 部署和 IoT 设备上提供机器学习模型。 |
 
 
@@ -130,8 +130,9 @@ ms.locfileid: "66418043"
 若要使用架构生成，包括`inference-schema`conda 环境文件中的包。 下面的示例使用`[numpy-support]`由于入口脚本使用 numpy 参数类型： 
 
 #### <a name="example-dependencies-file"></a>示例依赖项文件
-下面是推断的 Conda 依赖项文件的示例。
-```python
+以下 YAML 是推断的 Conda 依赖项文件的示例。
+
+```YAML
 name: project_environment
 dependencies:
   - python=3.6.2
@@ -186,6 +187,48 @@ def run(data):
         return error
 ```
 
+#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>与字典输入 （从 Power BI 支持消耗） 的示例脚本
+
+下面的示例演示如何定义输入的数据作为 < 键： 值 > 字典中，使用数据帧。 使用 Power BI 中的已部署的 web 服务支持此方法 ([了解如何使用 Power BI 中的 web 服务的详细信息](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
+
+```python
+import json
+import pickle
+import numpy as np
+import pandas as pd
+import azureml.train.automl
+from sklearn.externals import joblib
+from azureml.core.model import Model
+
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
+
+def init():
+    global model
+    model_path = Model.get_model_path('model_name')   # replace model_name with your actual model name, if needed
+    # deserialize the model file back into a sklearn model
+    model = joblib.load(model_path)
+
+input_sample = pd.DataFrame(data=[{
+              "input_name_1": 5.1,         # This is a decimal type sample. Use the data type that reflects this column in your data
+              "input_name_2": "value2",    # This is a string type sample. Use the data type that reflects this column in your data
+              "input_name_3": 3            # This is a integer type sample. Use the data type that reflects this column in your data
+            }])
+
+output_sample = np.array([0])              # This is a integer type sample. Use the data type that reflects the expected result
+
+@input_schema('data', PandasParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(data):
+    try:
+        result = model.predict(data)
+        # you can return any datatype as long as it is JSON-serializable
+        return result.tolist()
+    except Exception as e:
+        error = str(e)
+        return error
+```
 有关详细的示例脚本，请参阅下面的示例：
 
 * Pytorch: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -281,7 +324,7 @@ InferenceConfig 功能的信息，请参阅[高级的配置](#advanced-config)�
 
 有关详细信息，请参阅 [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) 和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) 类的参考文档。
 
-### <a id="aks"></a>Azure Kubernetes 服务 （生产）
+### <a id="aks"></a>Azure Kubernetes 服务 （开发测试和生产）
 
 可以使用现有 AKS 群集，也可使用 Azure 机器学习 SDK、CLI 或 Azure 门户创建新群集。
 
@@ -293,6 +336,9 @@ InferenceConfig 功能的信息，请参阅[高级的配置](#advanced-config)�
 
   ```python
   aks_target = AksCompute(ws,"myaks")
+  # If deploying to a cluster configured for dev/test, ensure that it was created with enough
+  # cores and memory to handle this deployment configuration. Note that memory is also used by
+  # things such as dependencies and AML components.
   deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
   service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
   service.wait_for_deployment(show_output = True)
@@ -315,16 +361,23 @@ InferenceConfig 功能的信息，请参阅[高级的配置](#advanced-config)�
 #### 创建新的 AKS 群集<a id="create-attach-aks"></a>
 **预计时间：** 大约需要 5 分钟。
 
-> [!IMPORTANT]
-> 创建或附加 AKS 群集一次处理你的工作区。 可以将此群集重复用于多个部署。 如果你删除群集或包含该资源组，必须创建一个新的群集部署所需的下一个时间。
+创建或附加 AKS 群集一次处理你的工作区。 可以将此群集重复用于多个部署。 如果你删除群集或包含该资源组，必须创建一个新的群集部署所需的下一个时间。 您可以附加到工作区的多个 AKS 群集。
 
-有关详细信息设置`autoscale_target_utilization`， `autoscale_max_replicas`，并`autoscale_min_replicas`，请参阅[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none-)引用。
+如果你想要创建 AKS 群集的开发、 验证和测试，则设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`使用时[ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)。 使用此设置创建的群集将仅具有一个节点。
+
+> [!IMPORTANT]
+> 设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`创建 AKS 群集，不适合于处理生产流量。 推理时间可能长于在生产环境创建的群集。 对于开发/测试群集，容错也不能保证。
+>
+> 我们建议创建用于开发/测试的群集使用至少两个虚拟 Cpu。
+
 下面的示例演示如何创建新的 Azure Kubernetes 服务群集：
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Use the default configuration (you can also provide parameters to customize this)
+# Use the default configuration (you can also provide parameters to customize this).
+# For example, to create a dev/test cluster, use:
+# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksComputee.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
 
 aks_name = 'myaks'
@@ -341,6 +394,7 @@ aks_target.wait_for_completion(show_output = True)
 * [创建 AKS 群集](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [创建 AKS 群集 （门户）](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
+有关详细信息`cluster_purpose`参数，请参阅[AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)引用。
 
 > [!IMPORTANT]
 > 对于 [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果为 agent_count 和 vm_size 选择自定义值，则需要确保 agent_count 乘以 vm_size 的结果大于或等于 12 个虚拟 CPU。 例如，如果对 vm_size 使用“Standard_D3_v2”（有 4 个虚拟 CPU），则应该为 agent_count 选择 3 或更大的数字。
@@ -349,7 +403,16 @@ aks_target.wait_for_completion(show_output = True)
 
 #### <a name="attach-an-existing-aks-cluster"></a>附加现有的 AKS 群集
 
-如果已在 Azure 订阅中有 AKS 群集并且它 1.12 版。 # # 和具有至少为 12 的虚拟 Cpu，可以使用它来部署你的映像。 下面的代码演示如何将附加现有的 AKS 1.12。 # # 为你的工作区的群集：
+如果已在 Azure 订阅中有 AKS 群集并且它 1.12 版。 # #，可用来部署你的映像。
+
+> [!WARNING]
+> 当附加到工作区的 AKS 群集，可以定义如何将通过设置使用群集`cluster_purpose`参数。
+>
+> 如果未设置`cluster_purpose`参数或一组`cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`，则群集必须具有至少为 12 可用的虚拟 Cpu。
+>
+> 如果您设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`，则群集不需要具有 12 个虚拟 Cpu。 但是为开发/测试配置的群集都适用于生产级流量，可能会增加推理时间。
+
+下面的代码演示如何将附加现有的 AKS 1.12。 # # 为你的工作区的群集：
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -357,11 +420,18 @@ from azureml.core.compute import AksCompute, ComputeTarget
 resource_group = 'myresourcegroup'
 cluster_name = 'mycluster'
 
-# Attach the cluster to your workgroup
+# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
+# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+#                                         cluster_name = cluster_name,
+#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
+
+有关详细信息`attack_configuration()`，请参阅[AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)引用。
+
+有关详细信息`cluster_purpose`参数，请参阅[AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)引用。
 
 ## <a name="consume-web-services"></a>使用 Web 服务
 
@@ -395,7 +465,7 @@ print(response.json())
 有关详细信息，请参阅[创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)。
 
 
-### <a id="azuremlcompute"></a> 批处理消耗
+### <a id="azuremlcompute"></a> 批处理推理
 创建和管理 Azure 机器学习服务的 azure 机器学习计算目标。 它们可以用于从 Azure 机器学习管道批处理预测。
 
 使用 Azure 机器学习计算的批处理推理的演练，请阅读[如何运行批预测](how-to-run-batch-predictions.md)一文。

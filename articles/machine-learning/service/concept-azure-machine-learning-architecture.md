@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e57133a750e282484271261d8e4ddb9a12de2a0e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8bb06d04aec8e98308c0f5595b6b39e4b98302ff
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242428"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480056"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -163,7 +163,10 @@ Azure 机器学习数据集 （预览版） 使其更轻松地访问和使用你
 
 提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
 
-## <a name="activity"></a>活动
+> [!NOTE]
+> 若要防止不必要的文件包含在快照，请忽略文件 （.gitignore 或.amlignore）。 将此文件放置在快照目录中并添加要忽略在它的文件名。 .Amlignore 文件使用相同[语法和模式为.gitignore 文件](https://git-scm.com/docs/gitignore)。 如果这两个文件存在，.amlignore 文件优先。
+
+## <a name="activity"></a>activities
 
 活动表示长时间运行的操作。 以下操作是活动的示例：
 

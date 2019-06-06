@@ -2,20 +2,20 @@
 title: 设置通过 OpenID Connect 注册与登录 - Azure Active Directory B2C | Microsoft Docs
 description: 使用 Azure Active Directory B2C 设置通过 OpenID Connect 注册与登录。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 81968aa3ba9f082194f4f447161a3eef7e014374
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 774716aeb28ca5d9563f38272a59c8e675a11e4b
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704147"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508391"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 OpenID Connect 注册与登录
 
@@ -28,16 +28,16 @@ ms.locfileid: "64704147"
 ## <a name="add-the-identity-provider"></a>添加标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
-4. 选择“标识提供者”，然后单击“添加”。
-5. 选择“OpenID Connect (预览版)”作为“标识提供者类型”。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
+3. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
+4. 选择“标识提供者”  ，然后单击“添加”  。
+5. 选择“OpenID Connect (预览版)”作为“标识提供者类型”   。
 
 ## <a name="configure-the-identity-provider"></a>配置标识提供者
 
 每个 OpenID Connect 标识提供者都描述一个元数据文档，该文档包含了登录所需的大部分信息。 这包括要使用的 URL 和服务的公共签名密钥的位置等信息。 OpenID Connect 元数据文档始终位于以 `.well-known\openid-configuration` 结尾的的终结点上。 输入想要添加的 OpenID Connect 标识提供者的元数据 URL。
 
-为了允许用户登录，标识提供者将要求开发人员在其服务中注册应用程序。 此应用程序具备 ID（也就是“客户端 ID”）和客户端密码。 从标识提供者中复制这些值，并将其输入到相应的字段中。
+为了允许用户登录，标识提供者将要求开发人员在其服务中注册应用程序。 此应用程序具备 ID（也就是“客户端 ID”）和客户端密码   。 从标识提供者中复制这些值，并将其输入到相应的字段中。
 
 > [!NOTE]
 > 客户端密码是可选项。 但是，如果想使用[授权代码流](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)（它使用该密码来交换令牌代码），则必须输入客户端密码。

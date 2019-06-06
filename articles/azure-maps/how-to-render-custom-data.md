@@ -3,18 +3,18 @@ title: Azure Maps 中的光栅地图上的自定义数据的呈现方式 |Micros
 description: Azure Maps 中的光栅地图上的自定义数据呈现。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 04/03/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 46f08aaa33563f620e7a011620730249e903f7b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9fed8464bd19c4b8a32e37c8c97698f0a2d9503
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60794576"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734304"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>呈现栅格地图上的自定义数据
 
@@ -42,7 +42,7 @@ Azure Maps 帐户 S0 层支持单个实例的`pins`参数。 它允许你呈现�
 
 2. 若要创建该请求，请选择**新建**试。 在中**创建新**窗口中，选择**请求**。 输入**请求名称**图钉，请选择要保存该请求，然后选择在其中的位置上一步中创建的集合**保存**。
     
-    ![在 Postman 中创建请求](./media/tutorial-geofence/postman-new.png)
+    ![在 Postman 中创建请求](./media/how-to-render-custom-data/postman-new.png)
 
 3. 选择生成器选项卡上的 GET HTTP 方法并输入以下 URL 来创建 GET 请求。
 
@@ -145,7 +145,7 @@ Azure Maps 帐户 S0 层支持单个实例的`pins`参数。 它允许你呈现�
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
     ```
 
-6. 下面是生成的映像：
+    下面是响应映像：
 
     ![从 Azure Maps 数据存储获取数据](./media/how-to-render-custom-data/uploaded-path.png)
 
@@ -164,9 +164,9 @@ Azure Maps 帐户 S0 层支持单个实例的`pins`参数。 它允许你呈现�
     &subscription-key={subscription--key}
     ```
 
-下面是生成的映像：
+    下面是响应映像：
 
-![呈现一个不透明的多边形](./media/how-to-render-custom-data/opaque-polygon.png)
+    ![呈现一个不透明的多边形](./media/how-to-render-custom-data/opaque-polygon.png)
 
 
 ## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>呈现一个圆形和自定义标签图钉
@@ -186,9 +186,9 @@ Azure Maps 帐户 S0 层支持单个实例的`pins`参数。 它允许你呈现�
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co002D62||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
     ```
 
-下面是生成的映像：
+    下面是响应映像：
 
-![呈现的圆形，自定义图钉](./media/how-to-render-custom-data/circle-custom-pins.png)
+    ![呈现的圆形，自定义图钉](./media/how-to-render-custom-data/circle-custom-pins.png)
 
 ## <a name="next-steps"></a>后续步骤
 

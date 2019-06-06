@@ -1,6 +1,6 @@
 ---
 title: Azure Functions 的网络选项
-description: 可在 Azure Functions 中的所有网络选项的概述
+description: 在 Azure Functions 中可用的所有网络选项的概述
 services: functions
 author: alexkarcher-msft
 manager: jeconnoc
@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575602"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492837"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 的网络选项
 
@@ -33,12 +33,12 @@ ms.locfileid: "64575602"
 
 |                |[消耗计划](functions-scale.md#consumption-plan)|[高级计划 （预览版）](functions-scale.md#premium-plan-public-preview)|[应用服务计划](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[入站的 IP 限制](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
-|[出站 IP 限制](#private-site-access)|❌No| ❌No|❌No|✅Yes|
-|[虚拟网络集成](#virtual-network-integration)|❌No|❌No|✅Yes|✅Yes|
-|[预览 （Azure ExpressRoute 和出站的服务终结点） 的虚拟网络集成](#preview-version-of-virtual-network-integration)|❌No|✅Yes|✅Yes|✅Yes|
-|[混合连接](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
-|[专用站点访问](#private-site-access)|❌No| ✅Yes|✅Yes|✅Yes|
+|[入站的 IP 限制](#inbound-ip-restrictions)|✅是|✅是|✅是|✅是|
+|[出站 IP 限制](#private-site-access)|❌No| ❌No|❌No|✅是|
+|[虚拟网络集成](#virtual-network-integration)|❌No|❌No|✅是|✅是|
+|[预览 （Azure ExpressRoute 和出站的服务终结点） 的虚拟网络集成](#preview-version-of-virtual-network-integration)|❌No|✅是|✅是|✅是|
+|[混合连接](#hybrid-connections)|❌No|❌No|✅是|✅是|
+|[专用站点访问](#private-site-access)|❌No| ✅是|✅是|✅是|
 
 ## <a name="inbound-ip-restrictions"></a>入站的 IP 限制
 
@@ -61,7 +61,7 @@ IP 限制可用于定义按优先级顺序排列的 IP 地址的允许/拒绝访
 
 可以使用虚拟网络集成以启用从应用到数据库和虚拟网络中运行的 web 服务的访问。 使用虚拟网络集成，不需要公开 VM 上的应用程序的公共终结点。 可以改为使用专用的非 internet 可路由地址。
 
-虚拟网络集成的已公开发布版本依赖于将函数应用连接到虚拟网络的 VPN 网关。 它现已推出应用服务计划中托管的函数。 若要了解如何配置此功能，请参阅[将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md#enabling-vnet-integration)。
+虚拟网络集成的已公开发布版本依赖于将函数应用连接到虚拟网络的 VPN 网关。 它现已推出应用服务计划中托管的函数。 若要了解如何配置此功能，请参阅[将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 
 ### <a name="preview-version-of-virtual-network-integration"></a>虚拟网络集成预览版本
 

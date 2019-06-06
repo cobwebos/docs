@@ -2,20 +2,20 @@
 title: 请求访问令牌-Azure Active Directory B2C |Microsoft Docs
 description: 了解如何从 Azure Active Directory B2C 请求访问令牌。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d1b4bb58d777d2dc5bd79b66e128a0edd7a88adc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1a545f1e0fd1360d9147280454fb8b75bf216152
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702961"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507393"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>请求 Azure Active Directory B2C 中的访问令牌
 
@@ -65,7 +65,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 - `<tenant-name>` - Azure AD B2C 租户的名称。
 - `<policy-name>` - 自定义策略或用户流的名称。
 - `<application-ID>` 的注册以支持用户流的 web 应用程序应用程序标识符。
-- `<redirect-uri>` - 注册客户端应用程序时输入的重定向 URI。
+- `<redirect-uri>` - 注册客户端应用程序时输入的重定向 URI  。
 
 ```
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?

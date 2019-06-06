@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/11/2019
-ms.openlocfilehash: 4516d61c1bf8a32e807bcbc01ea1e5b283e31060
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/03/2019
+ms.openlocfilehash: ba787ccd51bf5ea9ec8e06e341a0f698afb5a7e2
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762677"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688067"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
@@ -25,7 +25,7 @@ ms.locfileid: "65762677"
 
 ## <a name="overview"></a>概述
 
-数据库副本是源数据库截至复制请求发出时的快照。 可以选择在同一台服务器或另一台服务器。 此外可以选择要保留其服务层，并计算大小，或使用相同的服务层 （版本） 中的不同的计算大小。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，可以升级或降级到任意版本。 登录名、用户和权限可单独进行管理。  
+数据库副本是源数据库截至复制请求发出时的快照。 你可以选择同一服务器或不同的服务器。 另外，你还可以选择保留其服务层级和计算大小，或在同一服务层级中使用不同的计算大小（版本）。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，可以升级或降级到任意版本。 登录名、用户和权限可单独进行管理。  
 
 > [!NOTE]
 > 在创建数据库副本时，将用到[自动数据库备份](sql-database-automated-backups.md)。
@@ -42,15 +42,13 @@ ms.locfileid: "65762677"
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>使用 Azure 门户复制数据库
 
-要使用 Azure 门户复制数据库，请打开数据库页，并单击“复制”。 
+要使用 Azure 门户复制数据库，请打开数据库页，并单击“复制”  。 
 
    ![数据库复制](./media/sql-database-copy/database-copy.png)
 
 ## <a name="copy-a-database-by-using-powershell"></a>使用 PowerShell 复制数据库
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 若要使用 PowerShell 复制数据库，请使用 [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet。 
 
@@ -92,14 +90,14 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
     
 > [!IMPORTANT]
-> 这两个服务器的防火墙必须配置为允许从客户端发出 T-SQL 的复制命令的 IP 的入站的连接。
+> 必须将两台服务器的防火墙都配置为允许来自发出 T-SQL COPY 命令的客户端 IP 的入站连接。
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>将 SQL 数据库复制到不同的订阅
 
-可以使用在上一节中的步骤 descrbed 将你的数据库复制到其他订阅中的 SQL 数据库服务器。 请确保使用源数据库的数据库所有者具有相同的名称和密码的登录名，并且它是 dbmanager 角色的成员或者是服务器级别主体登录名。 
+可以使用上一部分中描述的步骤将数据库复制到不同订阅中的 SQL 数据库服务器。 请确保你使用的登录名具有与源数据库的数据库所有者相同的名称和密码，并且它是 dbmanager 角色的成员或者是服务器级主体登录名。 
 
 > [!NOTE]
-> [Azure 门户](https://portal.azure.com)不支持复制到其他订阅，因为门户调用 ARM API，它使用的订阅证书访问这两个异地复制所涉及的服务器。  
+> [Azure 门户](https://portal.azure.com)不支持复制到其他订阅，因为门户调用 ARM API，并且它使用订阅证书来访问异地复制中涉及的两台服务器。  
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>监视复制操作的进度
 

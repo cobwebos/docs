@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 5bb45ff87f558e1142b68af01147ad55386ee28f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37227b7d0ea1b3630a3c2ce991a61543e6a1503d
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749493"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428247"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>开始在 .NET 中使用中继混合连接 HTTP 请求
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "60749493"
 1. 运行客户端应用程序。 你将在客户端窗口中看到 `hello!`。 客户端向服务器发送了一个 HTTP 请求，服务器以 `hello!` 进行响应。 
 3. 现在，若要关闭控制台窗口，请在两个控制台窗口中按 **ENTER**。 
 
-祝贺你，现已创建端到端混合连接应用程序！
+恭喜，现已创建一个完整的混合连接应用程序 ！
 
 ## <a name="next-steps"></a>后续步骤
 

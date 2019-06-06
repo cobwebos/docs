@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/26/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab18c8f165fc30636cd05091be1181743f9972d
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: aede5e315141251026867f7028ebf989d44da4d5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873644"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473054"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>请求在 Azure AD 授权管理 （预览版） 中的过程和电子邮件通知
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
+> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -42,10 +42,10 @@ ms.locfileid: "64873644"
 
 | 状态 | 描述 |
 | --- | --- |
-| 已提交 | 用户提交请求。 |
+| 提交 | 用户提交请求。 |
 | 待审批 | 如果访问包的策略需要审批，请求将移到挂起的审批。 |
-| 已过期 | 如果没有审批者查看审批请求超时时间内的请求，请求的截止日期。 若要重试，用户将必须重新提交其请求。 |
-| 拒绝 | 审批者拒绝请求。 |
+| 已过期 | 如果没有审批者批准请求在审批请求超时时间内的，请求的截止日期。 若要重试，用户将必须重新提交其请求。 |
+| 被拒绝 | 审批者拒绝请求。 |
 | 已批准 | 审批者批准请求。 |
 | 传送 | 用户已**不**已分配访问权限访问包中的所有资源。 如果这是外部用户，用户尚不具有访问资源目录，并接受权限提示。 |
 | 已交货 | 用户有权访问包中的所有资源。 |
@@ -71,7 +71,7 @@ ms.locfileid: "64873644"
 | 7 | 你的访问 *[访问包]* X 天后到期 | 请求者的包的访问权限的访问之前 X 天内到期 | 请求者 |
 | 8 | 你的访问 *[访问包]* 已过期 | 访问包请求者的访问的到期时 | 请求者 |
 
-### <a name="review-access-request-emails"></a>评审访问权限请求电子邮件
+### <a name="access-request-emails"></a>访问请求电子邮件
 
 当请求者提交时配置为要求批准访问包的访问请求时，在策略中配置的所有审批者收到包含请求的详细信息的电子邮件通知。 详细信息包括请求者的名称、 组织、 访问开始和结束日期，如果提供，业务理由，以及时已提交请求，请求将过期。 电子邮件包含一个链接，审批者批准或拒绝访问请求的位置。 下面是一个简单的电子邮件通知请求者提交访问请求时发送给审批者。
 
@@ -79,7 +79,7 @@ ms.locfileid: "64873644"
 
 ### <a name="approved-or-denied-emails"></a>已批准或拒绝电子邮件
 
-当其访问请求已经过批准且可用于访问，或拒绝其访问请求时，请求者会收到通知。 当审批者评审提交的请求者的访问请求时，它们可以批准或拒绝访问请求。 审批者需要添加其决策的业务理由。
+当其访问请求已经过批准且可用于访问，或拒绝其访问请求时，请求者会收到通知。 当审批者收到访问请求提交的请求者时，他们可以批准或拒绝访问请求。 审批者需要添加其决策的业务理由。
 
 批准访问请求，授权管理启动授予对每个访问包中的资源的请求者访问权限的过程。 请求者拥有访问程序包中每个资源的访问权限后，电子邮件通知发送给请求者已批准其访问请求，他们现在拥有访问包的访问权限。 下面是当他们有权访问包发送至请求者的示例电子邮件通知。
 

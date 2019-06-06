@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/8/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 26db3a67c3efbd0ba2a5c58facd0c07175f7ed12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460201"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479051"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>使用 Azure 门户创建 WAF 策略用于 Azure 第一道防线
 
@@ -63,17 +63,19 @@ ms.locfileid: "61460201"
 
  ![更改 WAF 策略模式](./media/waf-front-door-create-portal/policy.png)
 
+### <a name="custom-rules"></a>自定义规则
+
+可以通过选择创建自定义规则**添加自定义规则**下**自定义规则**部分。 这将启动自定义规则配置页。 下面是配置自定义规则以阻止请求，如果查询字符串中包含的一个示例**blockme**。
+
+![更改 WAF 策略模式](./media/waf-front-door-create-portal/customquerystring2.png)
+
 ### <a name="default-rule-set-drs"></a>默认规则集 (DRS)
 
 默认情况下启用了 azure 托管默认规则集。 若要禁用的规则组内的单个规则，请展开该规则组中，选择中的规则**复选框**规则数，并选择前面**禁用**上面的选项卡上。 若要更改的操作类型用于规则中的单个规则设置，选择规则数，前面的复选框，然后选择**更改操作**上面的选项卡。
 
- ![更改 WAF 规则集](./media/waf-front-door-create-portal/managed.png)
+ ![更改 WAF 规则集](./media/waf-front-door-create-portal/managed2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[Azure web 应用程序防火墙](waf-overview.md)。
 - 详细了解如何[Azure 第一道防线](front-door-overview.md)。
-
-
-
-

@@ -2,20 +2,20 @@
 title: 使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面 | Microsoft Docs
 description: 了解如何使用 Azure Active Directory B2C 中的自定义策略自定义用户界面。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/18/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dc60c1fbdbd04653160db4d7794f8887305859d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c3c97e786e2147f043a63b90b886e01eb5944cb4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696892"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507677"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -37,7 +37,7 @@ ms.locfileid: "64696892"
 
 在标题中创建包含产品的品牌名称的 HTML 内容。
 
-1. 复制以下 HTML 代码段。 它是格式正确的 HTML5，*\<body\>* 标记内包含名为 *\<div id="api"\>\</div\>* 的空元素。 此元素指示要在何处插入 Azure AD B2C 内容。
+1. 复制以下 HTML 代码段。 它是格式正确的 HTML5， *\<body\>* 标记内包含名为 *\<div id="api"\>\</div\>* 的空元素。 此元素指示要在何处插入 Azure AD B2C 内容。
 
    ```html
    <!DOCTYPE html>
@@ -61,67 +61,67 @@ ms.locfileid: "64696892"
 若要将此 HTML 内容托管在 Blob 存储中，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“中心”菜单上，选择“新建” > “存储” > “存储帐户”。
+2. 在“中心”菜单上，选择“新建” > “存储” > “存储帐户”。    
 3. 为存储帐户输入唯一的**名称**。
-4. “部署模型”可保留为“Resource Manager”。
-5. 将“帐户类型”更改为“Blob 存储”。
-6. “性能”可保留为“标准”。
-7. “复制”可保留为“RA-GRS”。
-8. “访问层”可保留为“热”。
-9. “存储服务加密”可保留为“已禁用”。
+4. “部署模型”可保留为“Resource Manager”。  
+5. 将“帐户类型”更改为“Blob 存储”。  
+6. “性能”可保留为“标准”。  
+7. “复制”可保留为“RA-GRS”。  
+8. “访问层”可保留为“热”。  
+9. “存储服务加密”可保留为“已禁用”。  
 10. 为存储帐户选择一个**订阅**。
 11. 创建一个**资源组**或选择现有的资源组。
 12. 为存储帐户选择**地理位置**。
-13. 单击“创建”以创建存储帐户。  
-    在部署完成后，“存储帐户”边栏选项卡将自动打开。
+13. 单击“创建”  以创建存储帐户。  
+    在部署完成后，“存储帐户”边栏选项卡将自动打开。 
 
 ## <a name="create-a-container"></a>创建容器
 
 若要在 Blob 存储中创建公共容器，请执行以下操作：
 
-1. 单击“概述”选项卡。
-2. 单击“容器”。
-3. 对于“名称”，键入“$root”。
-4. 将“访问类型”设置为“Blob”。
-5. 单击“$root”以打开新容器。
-6. 单击“上传”。
-7. 单击“选择文件”旁边的文件夹图标。
-8. 转到 customize-ui.html，这是你之前在“页面 UI 自定义”部分中创建的。
-9. 单击“上传” 。
+1. 单击“概述”选项卡。 
+2. 单击“容器”。 
+3. 对于“名称”，键入“$root”。  
+4. 将“访问类型”设置为“Blob”。  
+5. 单击“$root”以打开新容器。 
+6. 单击“上传”。 
+7. 单击“选择文件”旁边的文件夹图标。 
+8. 转到 customize-ui.html  ，这是你之前在“页面 UI 自定义”部分中创建的。
+9. 单击“上传” 。 
 10. 选择你已上传的 customize-ui.html blob。
-11. 单击“URL”旁边的“复制”。
-12. 在浏览器中，粘贴复制的 URL，然后转到该站点。 如果该站点不可访问，请确保容器访问类型设置为“Blob”。
+11. 单击“URL”旁边的“复制”。  
+12. 在浏览器中，粘贴复制的 URL，然后转到该站点。 如果该站点不可访问，请确保容器访问类型设置为“Blob”。 
 
 ## <a name="configure-cors"></a>配置 CORS
 
 通过执行以下操作为 Blob 存储配置跨域资源共享：
 
-1. 在菜单中，选择“CORS”。
-2. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com`。 输入租户名称时，需要使用全小写字母。
-3. 对于“允许的方法”，请同时选择 `GET` 和 `OPTIONS`。
-4. 对于“允许的标头”，请输入一个星号 (*)。
-5. 对于“公开的标头”，请输入一个星号 (*)。
-6. 对于“最大期限”，请输入 200。
+1. 在菜单中，选择“CORS”  。
+2. 对于“允许的源”  ，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com`。 输入租户名称时，需要使用全小写字母。
+3. 对于“允许的方法”，请同时选择 `GET` 和 `OPTIONS`  。
+4. 对于“允许的标头”  ，请输入一个星号 (*)。
+5. 对于“公开的标头”  ，请输入一个星号 (*)。
+6. 对于“最大期限”  ，请输入 200。
 7. 单击“ **保存**”。
 
 ## <a name="test-cors"></a>测试 CORS
 
 通过执行以下操作验证你已准备就绪：
 
-1. 转到 [www.test-cors.org](https://www.test-cors.org/) 网站，然后将 URL 粘贴到“远程 URL”框中。
-2. 单击“发送请求”。  
+1. 转到 [www.test-cors.org](https://www.test-cors.org/) 网站，然后将 URL 粘贴到“远程 URL”框中。 
+2. 单击“发送请求”。   
     如果收到错误，请确保 [CORS 设置](#configure-cors)正确。 可能还需要清除浏览器缓存，或通过按 Ctrl+Shift+P 打开专用浏览会话。
 
 ## <a name="modify-the-extensions-file"></a>修改扩展文件
 
-要配置 UI 自定义，请将 ContentDefinition 及其子元素从基本文件复制到扩展文件。
+要配置 UI 自定义，请将 ContentDefinition  及其子元素从基本文件复制到扩展文件。
 
 1. 打开策略的基文件。 例如 *TrustFrameworkBase.xml*。
-2. 搜索并复制 ContentDefinitions 元素的全部内容。
-3. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 BuildingBlocks 元素。 如果该元素不存在，请添加该元素。
-4. 粘贴作为 BuildingBlocks 元素的子元素复制的 ContentDefinitions 元素的全部内容。 
-5. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
-6. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
+2. 搜索并复制 ContentDefinitions  元素的全部内容。
+3. 打开扩展文件， 例如，TrustFrameworkExtensions.xml  。 搜索 BuildingBlocks  元素。 如果该元素不存在，请添加该元素。
+4. 粘贴作为 BuildingBlocks  元素的子元素复制的 ContentDefinitions  元素的全部内容。 
+5. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition  元素。
+6. 将 LoadUri  的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
     
     自定义策略应如下所示：
 
@@ -144,17 +144,17 @@ ms.locfileid: "64696892"
 
 ## <a name="upload-your-updated-custom-policy"></a>上传已更新的自定义策略
 
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-4. 选择“标识体验框架”。
-2. 单击“所有策略”。
-3. 单击“上传策略”。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
+4. 选择“标识体验框架”  。
+2. 单击“所有策略”。 
+3. 单击“上传策略”。 
 4. 上传以前已更改的扩展文件。
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
+## <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略 
 
-1. 在“Azure AD B2C”边栏选项卡上，转到“全部策略”。
-2. 选择上传的自定义策略，并单击“立即运行”按钮。
+1. 在“Azure AD B2C”  边栏选项卡上，转到“全部策略”  。
+2. 选择上传的自定义策略，并单击“立即运行”按钮。 
 3. 现在，应该可以使用电子邮件地址进行注册了。
 
 ## <a name="reference"></a>参考

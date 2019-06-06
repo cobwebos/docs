@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/27/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b9baa48c13e317ba3fb54d998ee8f125d2093c7
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921069"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474065"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>什么是 Azure AD 授权管理？ (预览)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>什么是 Azure AD 授权管理？ （预览版）
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
+> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 授权管理可以帮助您管理的内部用�
 - 用户很难找到适当的人员或适当的资源
 - 一旦用户查找和接收对资源的访问，可能保留时间超过是业务所需的访问
 
-这些问题会更加复杂的用户需要从另一个目录，例如来自供应链组织或其他业务合作伙伴的外部用户的访问。 例如:
+这些问题会更加复杂的用户需要从另一个目录，例如来自供应链组织或其他业务合作伙伴的外部用户的访问。 例如：
 
 - 组织可能不知道所有其他目录中的特定个体可以邀请
 - 即使组织能够邀请这些用户，可能不记得组织一致地管理所有用户的访问权限
@@ -70,26 +70,17 @@ Azure AD 授权管理可帮助解决这些难题。
 
 - Azure AD 安全组
 - Office 365 组
-- Azure AD 企业应用程序
-- SaaS 应用程序
-- 自定义集成的应用程序
-- SharePoint Online 网站集
-- SharePoint Online 网站
+- Azure AD 企业应用程序，包括 SaaS 应用程序和自定义集成的应用程序支持联合身份验证或预配
+- SharePoint Online 站点集合和站点
 
-## <a name="prerequisites"></a>必备组件
+此外可以控制依赖于 Azure AD 安全组或 Office 365 组的其他资源的访问权限。  例如：
 
-若要使用 Azure AD 授权管理 （预览版），必须具有以下许可证之一：
-
-- Azure AD Premium P2
-- 企业移动性 + 安全性 (EMS) E5 许可证
-
-有关详细信息，请参阅[注册 Azure Active Directory Premium edition](../fundamentals/active-directory-get-started-premium.md)或[企业移动性 + 安全性 E5 试用版](https://aka.ms/emse5trial)。
-
-专用的云，例如 Azure 政府、 Azure Germany 和 Azure 中国 21Vianet 不是当前可在此预览版中使用。
+- 可以通过访问包中使用的 Azure AD 安全组和配置 Microsoft Office 365 提供的用户许可证[基于组的许可](../users-groups-roles/licensing-groups-assign.md)该组
+- 可通过访问包中使用的 Azure AD 安全组和创建管理 Azure 资源的访问权限授予用户[Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)该组
 
 ## <a name="what-are-access-packages-and-policies"></a>访问包和策略是什么？
 
-权利管理引入的概念*访问包*。 访问包是一个用户需要在处理项目或执行其作业的所有资源的捆绑包。 这些资源包括组、 应用程序，或站点的访问权限。 访问包用于在内部员工，以及你的组织外部的用户控制的访问。 在名为的容器中定义了访问程序包*目录*。
+权利管理引入的概念*访问包*。 访问包是一个用户需要在处理项目或执行其作业的所有资源的捆绑包。 这些资源包括组、 应用程序，或站点的访问权限。 访问包用于在内部员工，以及你的组织外部的用户控制的访问。 在名为 *catalogs* 的容器中定义访问包。
 
 访问包还包括一个或多个*策略*。 策略定义的规则或 guardrails 访问包具有访问权限。 如果启用策略强制实施正确的用户被授予访问权限，到适当的资源，以及适当数量的时间。
 
@@ -132,7 +123,7 @@ Azure AD 授权管理可帮助解决这些难题。
 | policy | 定义访问生命周期，如用户如何获取访问权限、 谁可以批准和多长时间，用户可以访问的规则集。 示例策略包括员工和外部访问权限。 |
 | catalog | 相关的资源和访问包的容器。 |
 | 常规目录 | 始终是可用的内置目录。 若要将资源添加到常规的目录中，需要特定权限。 |
-| 资源 | 资产或用户可以被授予访问权限的服务 （例如组、 应用程序或站点）。 |
+| resource | 资产或用户可以被授予访问权限的服务 （例如组、 应用程序或站点）。 |
 | 资源类型 | 资源，其中包括组、 应用程序和 SharePoint Online 网站的类型。 |
 | 资源角色 | 与资源关联的权限集合。 |
 | 资源目录 | 具有一个或多个资源共享的目录。 |
@@ -173,6 +164,12 @@ Azure AD 授权管理可帮助解决这些难题。
 | [添加/删除对目录资源](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [添加目录所有者或访问包管理器](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [编辑/删除目录](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+
+## <a name="license-requirements"></a>许可要求
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+专用的云，例如 Azure 政府、 Azure Germany 和 Azure 中国 21Vianet 不是当前可在此预览版中使用。
 
 ## <a name="next-steps"></a>后续步骤
 

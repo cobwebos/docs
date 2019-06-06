@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/27/2019
+ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: 807bde76bb6bb50490ee599768273a59c49d5e45
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258694"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480538"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure 安全中心支持的平台和功能
 
@@ -93,7 +93,7 @@ ms.locfileid: "66258694"
 |FIM|✔|✔|✔|✔|✔|✔|标准|
 |磁盘加密评估|✔|✔|X|✔|✔|X|免费|
 |第三方部署|✔|X|X|✔|X|X|免费|
-|Nsg 评估|✔|✔|X|✔|✔|X|免费|
+|NSG 评估|✔|✔|X|✔|✔|X|免费|
 |无文件威胁检测|✔|✔|✔|X|X|X|标准|
 |网络映射|✔|✔|X|✔|✔|X|标准|
 |自适应网络控制|✔|✔|X|✔|✔|X|标准|
@@ -129,7 +129,7 @@ ms.locfileid: "66258694"
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
-|Azure Blob 存储帐户*|✔| ✔|
+|Azure Blob 存储帐户|✔| ✔|
 |应用程序服务|✔| ✔|
 |云服务|✔| X|
 |VNet|✔| NA|
@@ -137,7 +137,6 @@ ms.locfileid: "66258694"
 |NIC|✔| NA|
 |NSG|✔| NA|
 |订阅|✔ **| ✔|
-|应用服务|✔| NA|
 |Batch|✔| NA|
 |Service Fabric|✔| NA|
 |自动化帐户|✔| NA|
@@ -147,14 +146,9 @@ ms.locfileid: "66258694"
 |流分析|✔| NA|
 |事件中心|✔| NA|
 |逻辑应用|✔| NA|
-|子网|✔| NA|
-|Vnet|✔| NA|
 |存储帐户|✔| NA|
 |Redis|✔| NA|
-|SQL|✔| NA|
 |Data Lake Analytics|✔| NA|
-|存储帐户|✔| NA|
-|订阅|✔| NA|
 |密钥保管库|✔| NA|
 
 

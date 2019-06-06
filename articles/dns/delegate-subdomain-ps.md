@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
 ms.author: victorh
-ms.openlocfilehash: 40b2a4d98e6269d9740856ba44c1043af75ce1b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ee4d9e6390c9a091096bb7c06160b76fd8af90f
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791110"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730293"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>使用 Azure PowerShell 委托 Azure DNS 子域
 
@@ -25,7 +25,7 @@ ms.locfileid: "60791110"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>必备组件
 

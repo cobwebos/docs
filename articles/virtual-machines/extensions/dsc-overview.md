@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 6ec85e840f8e61c46e86b0fa8fb947fb763a4265
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 410990ecdca8a94be9c7c3d0b48a5092fcaa6060
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518867"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515910"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
@@ -47,7 +47,7 @@ Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到
 本指南假设读者熟悉以下概念：
 
 - **配置**：DSC 配置文档。
-- **节点**：DSC 配置的目标。 在本文档中，“节点”一律指 Azure VM。
+- **节点**：DSC 配置的目标。 在本文档中，“节点”一律指 Azure VM。 
 - **配置数据**：包含配置的环境数据的 psd1 文件。
 
 ## <a name="architecture"></a>体系结构
@@ -81,7 +81,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-对于节点配置名称，请确保使用“节点配置”而不是“配置”的名称。
+对于节点配置名称，请确保 Azure 状态配置中存在的节点配置。  如果不是，扩展部署将返回一个故障。  此外请确保使用的名称*节点配置*和不包含配置。
 配置在用于[编译节点配置（MOF 文件）](https://docs.microsoft.com/azure/automation/automation-dsc-compile)的脚本中定义。
 该名称始终为 Configuration 后接句点 `.` 以及 `localhost` 或特定计算机名。
 
@@ -93,7 +93,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 用于管理 DSC 扩展的 PowerShell cmdlet 最适合用于交互式故障排除和信息收集方案。 可以使用 cmdlet 来打包、发布和监视 DSC 扩展部署。 DSC 扩展的 cmdlet 尚未更新，无法使用[默认配置脚本](#default-configuration-script)。
 
-**Publish-AzVMDscConfiguration** cmdlet 检索配置文件，扫描其中是否有依赖的 DSC 资源，然后创建一个 .zip 文件。 该 .zip 文件包含启用配置所需的配置和 DSC 资源。 该 cmdlet 还可以使用 -OutputArchivePath 参数在本地创建包。 否则，该 cmdlet 会将 .zip 文件发布到 Blob 存储，然后使用 SAS 令牌保护该文件。
+**Publish-AzVMDscConfiguration** cmdlet 检索配置文件，扫描其中是否有依赖的 DSC 资源，然后创建一个 .zip 文件。 该 .zip 文件包含启用配置所需的配置和 DSC 资源。 该 cmdlet 还可以使用 -OutputArchivePath 参数在本地创建包  。 否则，该 cmdlet 会将 .zip 文件发布到 Blob 存储，然后使用 SAS 令牌保护该文件。
 
 该 cmdlet 创建的 .ps1 配置脚本位于存档文件夹根目录中的 .zip 文件内。 模块文件夹位于资源的存档文件夹中。
 
@@ -103,7 +103,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 **Get-AzVMDscExtensionStatus** cmdlet 检索由 DSC 扩展处理程序启用的 DSC 配置的状态。 可在一个或一组 VM 上执行此操作。
 
-**Remove-AzVMDscExtension** cmdlet 从特定的 VM 中删除扩展处理程序。 此 cmdlet 不会删除配置、卸载 WMF 或更改 VM 上已应用的设置。 而只删除扩展处理程序。 
+**Remove-AzVMDscExtension** cmdlet 从特定的 VM 中删除扩展处理程序。 此 cmdlet 不会删除配置、卸载 WMF 或更改 VM 上已应用的设置。  而只删除扩展处理程序。 
 
 有关资源管理器 DSC 扩展 cmdlet 的重要信息：
 
@@ -114,7 +114,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 ### <a name="get-started-with-cmdlets"></a>cmdlet 入门
 
-Azure DSC 扩展可在部署过程中使用 DSC 配置文档直接配置 Azure VM。 此步骤不会将节点注册到自动化。 不会集中管理节点。
+Azure DSC 扩展可在部署过程中使用 DSC 配置文档直接配置 Azure VM。 此步骤不会将节点注册到自动化。 不会集中管理节点。 
 
 下面是一个简单的配置示例。 以 IisInstall.ps1 为名称将配置保存在本地。
 
@@ -177,13 +177,13 @@ az vm extension set \
 在门户中设置 DSC：
 
 1. 转到某个 VM。
-2. 在“设置”下选择“扩展”。
-3. 在创建的新页面中，依次选择“添加”、“PowerShell Desired State Configuration”。
-4. 在扩展信息页面底部，单击“创建”。
+2. 在“设置”  下选择“扩展”  。
+3. 在创建的新页面中，依次选择“添加”、“PowerShell Desired State Configuration”   。
+4. 在扩展信息页面底部，单击“创建”  。
 
 门户收集以下输入：
 
-- **配置模块或脚本**：这是必填字段（[默认配置脚本](#default-configuration-script)的窗体尚未更新。 配置模块和脚本需要一个包含配置脚本的 .ps1 文件，或者需要一个 .zip 文件，其中的 .ps1 配置脚本位于根目录。 如果使用 .zip 文件，则必须将所有依赖资源包含在 .zip 的模块文件夹中。 可以使用 Azure PowerShell SDK 随附的 Publish-AzureVMDscConfiguration -OutputArchivePath cmdlet 来创建 .zip 文件。 系统会将 .zip 文件上传到用户 Blob 存储中，并使用 SAS 令牌对其进行保护。
+- **配置模块或脚本**：这是必填字段（[默认配置脚本](#default-configuration-script)的窗体尚未更新。 配置模块和脚本需要一个包含配置脚本的 .ps1 文件，或者需要一个 .zip 文件，其中的 .ps1 配置脚本位于根目录。 如果使用 .zip 文件，则必须将所有依赖资源包含在 .zip 的模块文件夹中。 可以使用 Azure PowerShell SDK 随附的 Publish-AzureVMDscConfiguration -OutputArchivePath cmdlet 来创建 .zip 文件  。 系统会将 .zip 文件上传到用户 Blob 存储中，并使用 SAS 令牌对其进行保护。
 
 - **配置的模块限定名称**：可以在 .ps1 文件中包含多个配置函数。 请输入配置 .ps1 脚本的名称，后跟 \\ 和配置函数的名称。 例如，如果 .ps1 脚本的名称为 configuration.ps1，而配置为 **IisInstall**，请输入 **configuration.ps1\IisInstall**。
 
@@ -197,7 +197,7 @@ az vm extension set \
 
 - **版本**：指定要安装的 DSC 扩展的版本。 有关版本信息，请参阅 [DSC 扩展版本历史记录](/powershell/dsc/azuredscexthistory)。
 
-- **自动升级次要版本**：此字段映射到 cmdlet 中的 **AutoUpdate** 开关，使扩展能够在安装过程中自动更新到最新版本。 “是”将指示扩展处理程序使用最新可用版本，“否”将强制安装指定的版本。 既不选择“是”也不选择“否”相当于选择“否”。
+- **自动升级次要版本**：此字段映射到 cmdlet 中的 **AutoUpdate** 开关，使扩展能够在安装过程中自动更新到最新版本。 “是”  将指示扩展处理程序使用最新可用版本，“否”  将强制安装指定的版本  。 既不选择“是”  也不选择“否”  相当于选择“否”  。
 
 ## <a name="logs"></a>日志
 

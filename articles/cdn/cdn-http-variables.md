@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d572da27cee33cf546933e55a59c27dac4c1efd9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709914"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475200"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 HTTP 变量
 HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后可使用此元数据动态更改请求或响应。 以下规则引擎功能对 HTTP 变量的使用具有一定的限制：
 
-- [Cache-Key 重写](cdn-rules-engine-reference-features.md#cache-key-rewrite)
-- [修改客户端请求标头](cdn-rules-engine-reference-features.md#modify-client-request-header)
-- [修改客户端响应标头](cdn-rules-engine-reference-features.md#modify-client-response-header)
-- [URL 重定向](cdn-rules-engine-reference-features.md#url-redirect)
-- [URL 重写](cdn-rules-engine-reference-features.md#url-rewrite)
+- [Cache-Key 重写](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
+- [修改客户端请求标头](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
+- [修改客户端响应标头](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
+- [URL 重定向](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
+- [URL 重写](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
 
 ## <a name="definitions"></a>定义
 下表介绍了受支持的 HTTP 变量。 如果某个特定请求无法使用 GEO 元数据（例如邮政编码），则会返回空值。
 
 
-| 名称 | 变量 | 描述 | 示例值 |
+| Name | 变量 | 描述 | 示例值 |
 | ---- | -------- | ----------- | ------------ |
-| ASN（申请者） | %{geo_asnum} | 指示申请者的 AS 号码。 <br /><br />**已弃用：**%{virt_dst_asnum}。 <br />此变量已被弃用，以支持 %{geo_asnum}。 虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。 | AS15133 |
+| ASN（申请者） | %{geo_asnum} | 指示申请者的 AS 号码。 <br /><br />**已弃用：** %{virt_dst_asnum}。 <br />此变量已被弃用，以支持 %{geo_asnum}。 虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。 | AS15133 |
 | 市/县（申请者） | %{geo_city} | 指示申请者所在的市/县。 | 洛杉矶 |
-| 洲（申请者） | %{geo_continent} | 指示申请者所在的大洲（缩写形式） <br />有效值是： <br />AF:非洲<br />一样：亚洲<br />欧洲：欧洲<br />NA:北美<br />OC:大洋洲<br />SA:南美洲<br /><br />**已弃用：**%{virt_dst_continent}。 <br />此变量具有支持 %{geo_continent} 已弃用。 <br />虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。| 不适用 |
+| 洲（申请者） | %{geo_continent} | 指示申请者所在的大洲（缩写形式） <br />有效值是： <br />AF:非洲<br />一样：亚洲<br />欧洲：欧洲<br />NA:北美<br />OC:大洋洲<br />SA:南美洲<br /><br />**已弃用：** %{virt_dst_continent}。 <br />此变量具有支持 %{geo_continent} 已弃用。 <br />虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。| 不适用 |
 | Cookie 值 | %{cookie_Cookie} | 返回的值对应于由 Cookie 术语标识的 cookie 项。 | 示例用法： <br />%{cookie__utma}<br /><br />示例值：<br />111662281.2.10.1222100123 |
-| 国家/地区（申请者） | %{geo_country} | 指示申请者所在的国家/地区（用国家/地区代码表示） <br />**已弃用：**%{virt_dst_country}。 <br /><br />此变量已被弃用，以支持 %{geo_country}。 虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。 | 美国 |
+| 国家/地区（申请者） | %{geo_country} | 指示申请者所在的国家/地区（用国家/地区代码表示） <br />**已弃用：** %{virt_dst_country}。 <br /><br />此变量已被弃用，以支持 %{geo_country}。 虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。 | 美国 |
 | 指定的市场区域（申请者） | %{geo_dma_code} |表示申请者所在的媒体市场（用地区代码表示）。 <br /><br />此字段仅适用于源自美国国内的请求。| 745 |
 | HTTP 请求方法 | %{request_method} | 指示 HTTP 请求方法。 | GET |
 | HTTP 状态代码 | %{status} | 指示响应的 HTTP 状态代码。 | 200 |
@@ -113,7 +113,7 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
 | 条件 | 描述 | 示例 |
 | --------- | ----------- | --------|
 | 转义 % 符号 | 可使用反斜杠转义百分比符号。 <br />右侧的示例值将被视为文本值，不会被视为 HTTP 变量。| \%{host} |
-| 未知变量 | 未知变量始终返回空字符串。 | %{unknownvariable} |
+| 未知变量 | 未知变量始终返回空字符串。 | %{unknown_variable} |
 | 字符或语法无效 | 包含无效字符或语法的变量将被视为文本值。 <br /><br />示例 #1:指定的值包含无效字符 (例如，-)。 <br /><br />示例 #2:指定的值包含一双的大括号。 <br /><br />示例 #3:指定的值缺少右大括号。<br /> | 示例 #1：%{resp_user-agent} <br /><br />示例 #2：%{{host}} <br /><br />示例 #3：%{host |
 | 缺少变量名 | 未指定变量时，始终返回 NULL 值。 | %{} |
 | 尾随字符 | 结尾为变量的字符被视为文本值。 <br />右侧的示例值包含将被视为文本值的尾随大括号。 | %{host}} |
@@ -127,9 +127,9 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
 
 | 条件 | 语法 | 示例 | 描述 |
 | --------- | ------ | --------| ----------- |
-| 当满足以下任何条件时，可将标头设置为默认值： <br /><br />- 缺少标头 <br /><br />- 标头值设置为 NULL。| %{Variable:=Value} | %{http_referer:=unspecified} | 当 Referer 标头缺失或设置为 NULL 时，只能将其设置为“未指定”。 如果已设置，则无需执行任何操作。 |
-| 如果标头未设置，请将其设置为默认值。 | %{Variable=Value} | %{http_referer=unspecified} | 缺少 Referer 标头时，只能将其设置为“未指定”。 如果已设置，则无需执行任何操作。 |
-| 如果不满足以下任何条件，请将标头设置为默认值： <br /><br />- 缺失<br /><br /> - 设置为 NULL。 | %{Variable:+Value} | %{http_referer:+unspecified} | 如果 Referer 标头分配有一个值，则只能将其设置为“未指定”。 如果该标头丢失或设置为 NULL，则无需执行任何操作。 |
+| 当满足以下任何条件时，可将标头设置为默认值： <br /><br />- 缺少标头 <br /><br />- 标头值设置为 NULL。| %{Variable:=Value} | %{http_referrer:=unspecified} | 引用站点标头将仅设置为*未指定*时缺失或设置为 NULL。 如果已设置，则无需执行任何操作。 |
+| 如果标头未设置，请将其设置为默认值。 | %{Variable=Value} | %{http_referrer=unspecified} | 引用站点标头将仅设置为*未指定*时丢失。 如果已设置，则无需执行任何操作。 |
+| 如果不满足以下任何条件，请将标头设置为默认值： <br /><br />- 缺失<br /><br /> - 设置为 NULL。 | %{Variable:+Value} | %{http_referrer:+unspecified} | 引用站点标头将仅设置为*未指定*时，将值分配给它。 如果该标头丢失或设置为 NULL，则无需执行任何操作。 |
 
 ## <a name="manipulating-variables"></a>操作变量
 可以通过以下方式操作变量：
@@ -150,7 +150,7 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
      - 零：子字符串的起始字符是在字符串中的第一个字符。
      - 负值：子字符串的起始字符会计算从字符串中的最后一个字符。
 
-- 子字符串的长度由 Length 术语确定：
+- 子字符串的长度由 Length  术语确定：
 
      - 省略：通过省略的长度术语，要包括的起始字符和字符串的末尾之间的所有字符的子字符串。
      - 正：确定从起始字符右侧的子字符串的长度。
@@ -181,7 +181,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 #### <a name="example"></a>示例：
 
-在此示例方案中，request_uri 变量设置为：
+在此示例方案中，request_uri  变量设置为：
 
 `/800001/myorigin/marketing/product.html?language=en-US`
 
@@ -245,6 +245,6 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
      - `^`：指示将捕获启动使用指定的模式的文本。
      - `$`：指示结束使用指定的模式的文本会捕获。
  
-- 如果省略 /Rewrite值，则会删除与模式匹配的文本。
+- 如果省略 /Rewrite  值，则会删除与模式匹配的文本。
 
 

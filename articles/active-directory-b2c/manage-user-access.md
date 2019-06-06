@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中管理用户访问 | Microsoft Docs
 description: 了解如何识别未成年人、 收集的出生和国家/地区数据的日期和使用 Azure AD B2C 应用程序中获取接受的使用条款。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f4f2b93316c87a5e8ba572ca2b584dbd13f6536c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 6aead01ec0084eb75ea385a67f7c85ea185b017a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956950"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510571"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -50,13 +50,13 @@ ms.locfileid: "65956950"
 
 2. 应用程序处理 JSON 令牌，并显示屏幕的一个到次要，通知他们需要家长同意，并请求父联机的同意。 
 
-3. Azure AD B2C 显示可让用户正常登录的登录旅程，并向应用程序颁发一个令牌，该令牌设置为包含 **legalAgeGroupClassification ="minorWithParentalConsent"**。 应用程序收集家长的电子邮件地址，并验证该家长是否为成年人。 为此，它会使用受信任的源，例如身份证颁发机构、执照验证或信用卡证明。 如果验证成功，则应用程序会提示未成年人使用 Azure AD B2C 用户流登录。 如果同意被拒绝（例如 **legalAgeGroupClassification ="minorWithoutParentalConsent"**），则 Azure AD B2C 会向应用程序返回 JSON 令牌（并非登录名），以重启同意过程。 可以选择性地自定义用户流，让未成年人或成年人重获未成年人帐户的访问权限，方法是向记录的未成年人电子邮件地址或成年人电子邮件地址发送一个注册码。
+3. Azure AD B2C 显示可让用户正常登录的登录旅程，并向应用程序颁发一个令牌，该令牌设置为包含 **legalAgeGroupClassification ="minorWithParentalConsent"** 。 应用程序收集家长的电子邮件地址，并验证该家长是否为成年人。 为此，它会使用受信任的源，例如身份证颁发机构、执照验证或信用卡证明。 如果验证成功，则应用程序会提示未成年人使用 Azure AD B2C 用户流登录。 如果同意被拒绝（例如 **legalAgeGroupClassification ="minorWithoutParentalConsent"** ），则 Azure AD B2C 会向应用程序返回 JSON 令牌（并非登录名），以重启同意过程。 可以选择性地自定义用户流，让未成年人或成年人重获未成年人帐户的访问权限，方法是向记录的未成年人电子邮件地址或成年人电子邮件地址发送一个注册码。
 
 4. 应用程序提供一个选项让未成年人撤消同意。
 
 5. 未成年人或成人撤消同意时，可以使用 Azure AD 图形 API 将 **consentProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
 
-有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:2011-01-01T00:00:00Z。
+有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:2011-01-01T00:00:00Z  。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>收集的出生和国家/地区的数据的日期
 
@@ -78,7 +78,7 @@ ms.locfileid: "65956950"
 
 4. 如果任何计算都未返回 true，则计算会返回 **Adult**。
 
-如果应用程序已通过其他方法中可靠地收集 DOB 或国家/地区的数据，应用程序可能会使用图形 API 来更新用户记录的此信息。 例如:
+如果应用程序已通过其他方法中可靠地收集 DOB 或国家/地区的数据，应用程序可能会使用图形 API 来更新用户记录的此信息。 例如：
 
 - 如果已知某个用户是成年人，则使用 **Adult** 值更新目录属性 **ageGroup**。
 - 如果已知某个用户是未成年人，则使用 **Minor** 值更新目录属性 **ageGroup**，并相应地设置 **consentProvidedForMinor**。

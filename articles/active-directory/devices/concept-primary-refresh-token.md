@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ecf6d04056a91f1f9dd62a5238f60177d2bf59
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 16e4a5f63ba80b02a967888ad76fedf165a576c8
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420583"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473394"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>主刷新令牌是什么？
 
@@ -111,8 +111,11 @@ PRT 续订在两种不同方法：
 PRT 可以在特定情况下获取多重身份验证 (MFA) 声明。 当基于 MFA 的 PRT 用于请求令牌的应用程序时，MFA 声明会传输到这些应用程序令牌。 此功能通过阻止 MFA 质询，每个应用都需要它来向用户提供无缝体验。 PRT 可以按以下方式获取 MFA 声明：
 
 * **使用 Windows Hello for Business 登录**:Windows hello 企业版将替换密码并使用加密密钥来提供强大的双因素身份验证。 Windows hello 企业版是特定于设备上的用户和本身需要预配进行 MFA。 当用户记录时使用 Windows hello 企业版时，用户的 PRT 获取 MFA 声明。 这种情况下也适用于如果智能卡身份验证生成从 ADFS MFA 声明使用智能卡登录的用户。
+   * 因为 Windows hello 企业版被认为多重身份验证，MFA 声明时，将更新刷新 PRT 本身，因此当使用 WIndows hello 企业版的用户登录时，将持续延长 MFA 持续时间
 * **WAM 交互式登录的 MFA**:通过 WAM 的令牌请求，期间是否需要执行 MFA，以便在访问该应用，用户在这种交互过程续订 PRT 是压印使用 MFA 声明。
+   * 在这种情况下，MFA 声明不会更新连续，因此 MFA 持续时间开始算起的目录上设置的生存期。
 * **设备注册期间 MFA**:如果管理员已向 Azure AD 中配置其设备设置[要求进行 MFA 注册设备](device-management-azure-portal.md#configure-device-settings)，用户需要执行 MFA，以便在完成注册。 在此过程中，向用户颁发 PRT 已在注册过程中获取的 MFA 声明。 此功能仅适用于执行联接操作，不适用于其他用户登录到该设备的用户。
+   * 类似于在 WAM 交互式登录，MFA 声明是不会不断更新，因此 MFA 持续时间开始算起的目录上设置的生存期。
 
 Windows 10 维护每个凭据 Prt 的分区的列表。 因此，是为每个 Windows Hello for Business、 密码或智能卡 PRT。 分区可确保 MFA 声明是独立基于使用，并且不混在令牌请求期间的凭据。
 

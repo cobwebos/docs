@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的自定义策略故障排除 | Microsoft Docs
 description: 了解一些方法，用于解决使用 Azure Active Directory B2C 中的自定义策略时出现的错误。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5345069005f9161ff04fffb063fda99b7594ec08
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 552f056a6637b3ebacfbd15eb878c28adbec6b88
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703040"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509979"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C 自定义策略和标识体验框架故障排除
 
@@ -62,7 +62,7 @@ XML 架构验证在上传 XML 文件之前会识别错误。 在初学者包的�
 
 * 若要跟踪客户端浏览器与 Azure AD B2C 之间的消息交换，请使用 [Fiddler](https://www.telerik.com/fiddler)。 通过它可以了解用户旅程在业务流程步骤中的哪个环节失败。
 
-* 在“开发模式”下，使用 **Application Insights** 跟踪标识体验框架用户旅程的活动。 在“开发模式”下，可以观察标识体验框架与技术配置文件定义的各种声明提供程序（例如标识提供者、基于 API 的服务、Azure AD B2C 用户目录以及 Azure 多重身份验证等其他服务）之间的声明交换。  
+* 在“开发模式”  下，使用 **Application Insights** 跟踪标识体验框架用户旅程的活动。 在“开发模式”  下，可以观察标识体验框架与技术配置文件定义的各种声明提供程序（例如标识提供者、基于 API 的服务、Azure AD B2C 用户目录以及 Azure 多重身份验证等其他服务）之间的声明交换。  
 
 ## <a name="recommended-practices"></a>建议的做法
 

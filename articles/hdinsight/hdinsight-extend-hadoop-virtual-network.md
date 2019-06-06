@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 9316ca0dfaa2d550ea9a2b89d2c93e0e37230f62
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 46fa1c5a4874508cf8e2d288a99c908744347b69
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388337"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480079"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -27,10 +27,10 @@ ms.locfileid: "66388337"
 > [!IMPORTANT]  
 > 2019 年 2 月 28 日以后，在 VNET 中创建的新群集的网络资源（例如 NIC、LB 等）会在同一 HDInsight 群集资源组中进行预配。 以前，这些资源在 VNET 资源组中预配。 当前运行的群集以及那些在没有 VNET 的情况下创建的群集没有任何更改。
 
-## <a name="prerequisites-for-code-samples-and-examples"></a>有关代码示例和示例的先决条件
+## <a name="prerequisites-for-code-samples-and-examples"></a>代码示例和示例的先决条件
 
-* TCP/IP 网络的了解。 如果你不熟悉 TCP/IP 网络，应与之前对生产网络进行修改的人员合作。
-* 如果使用 PowerShell，则需要[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 了解 TCP/IP 网络。 如果你不熟悉 TCP/IP 网络，应与之前对生产网络进行修改的人员合作。
+* 如果使用 PowerShell，你将需要 [AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
 * 若要使用 Azure CLI 但尚未安装它，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]  
@@ -79,7 +79,7 @@ ms.locfileid: "66388337"
 
     * 网络安全组
 
-        替换为`RESOURCEGROUP`包含虚拟网络，然后输入该命令的资源组的名称：
+        将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入命令：
     
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
@@ -96,7 +96,7 @@ ms.locfileid: "66388337"
 
     * 用户定义路由
 
-        替换为`RESOURCEGROUP`包含虚拟网络，然后输入该命令的资源组的名称：
+        将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入命令：
 
         ```powershell
         Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
@@ -182,7 +182,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 1. 若要发现 HDInsight 群集节点的内部完全限定的域名 (FQDN)，请使用以下其中一种方法：
 
-    替换为`RESOURCEGROUP`包含虚拟网络，然后输入该命令的资源组的名称：
+    将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入命令：
 
     ```powershell
     $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}
@@ -272,7 +272,8 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
     | ---- | ---- | ---- | ---- | ----- |
     | 亚洲 | 东亚 | 23.102.235.122</br>52.175.38.134 | \*:443 | 入站 |
     | &nbsp; | 东南亚 | 13.76.245.160</br>13.76.136.249 | \*:443 | 入站 |
-    | 澳大利亚 | 澳大利亚东部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 入站 |
+    | 澳大利亚 | 澳大利亚中部 | 20.36.36.33</br>20.36.36.196 | \*:443 | 入站 |
+    | &nbsp; | 澳大利亚东部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 入站 |
     | &nbsp; | 澳大利亚东南部 | 13.77.2.56</br>13.77.2.94 | \*:443 | 入站 |
     | 巴西 | 巴西南部 | 191.235.84.104</br>191.235.87.113 | \*:443 | 入站 |
     | 加拿大 | 加拿大东部 | 52.229.127.96</br>52.229.123.172 | \*:443 | 入站 |
@@ -445,7 +446,7 @@ $vnet | Set-AzVirtualNetwork
 
 使用以下步骤创建可限制入站流量的虚拟网络，但允许来自 HDInsight 所需的 IP 地址的流量。
 
-1. 使用以下命令创建名为 `hdisecure` 的新网络安全组。 替换为`RESOURCEGROUP`与包含 Azure 虚拟网络的资源组。 替换为`LOCATION`中已创建组的位置 （区域）。
+1. 使用以下命令创建名为 `hdisecure` 的新网络安全组。 将 `RESOURCEGROUP` 替换为包含 Azure 虚拟网络的资源组。 将 `LOCATION` 替换为组创建在的位置（区域）。
 
     ```azurecli
     az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
@@ -453,7 +454,7 @@ $vnet | Set-AzVirtualNetwork
 
     在创建组后，将收到有关新组的信息。
 
-2. 使用以下命令将规则添加新的网络安全组，这些规则允许从 Azure HDInsight 运行状况和管理服务通过端口 443 发起的入站通信。 替换为`RESOURCEGROUP`具有包含 Azure 虚拟网络的资源组的名称。
+2. 使用以下命令将规则添加新的网络安全组，这些规则允许从 Azure HDInsight 运行状况和管理服务通过端口 443 发起的入站通信。 将 `RESOURCEGROUP` 替换为包含 Azure 虚拟网络的资源组的名称。
 
     > [!IMPORTANT]  
     > 更改本示例中使用的 IP 地址以匹配正在使用的 Azure 区域。 可以在[使用网络安全组和用户定义的路由的 HDInsight](#hdinsight-ip) 一节找到此信息。
@@ -479,7 +480,7 @@ $vnet | Set-AzVirtualNetwork
 
     使用双引号围绕`id`命令如果没有获得预期的结果中。
 
-4. 使用以下命令将网络安全组应用于子网。 替换`GUID`和`RESOURCEGROUP`上一步中返回的值。 替换`VNETNAME`和`SUBNETNAME`与虚拟网络名称和你想要创建的子网名称。
+4. 使用以下命令将网络安全组应用于子网。 将 `GUID` 和 `RESOURCEGROUP` 值替换为从上一步骤中返回的值。 将 `VNETNAME` 和 `SUBNETNAME` 替换为要创建的虚拟网络名称和子网名称。
 
     ```azurecli
     az network vnet subnet update -g RESOURCEGROUP --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
@@ -512,7 +513,7 @@ $vnet | Set-AzVirtualNetwork
 
 1. 使用 Azure PowerShell 或 Azure CLI 来查找虚拟网络的 DNS 后缀：
 
-    替换为`RESOURCEGROUP`包含虚拟网络，然后输入该命令的资源组的名称：
+    将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入命令：
 
     ```powershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
@@ -594,7 +595,7 @@ $vnet | Set-AzVirtualNetwork
 
 1. 使用 Azure PowerShell 或 Azure CLI 来查找两个虚拟网络的 DNS 后缀：
 
-    替换为`RESOURCEGROUP`包含虚拟网络，然后输入该命令的资源组的名称：
+    将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入命令：
 
     ```powershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"

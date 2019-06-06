@@ -1,6 +1,6 @@
 ---
 title: 在 Office 365 组-Azure Active Directory 组命名策略强制实施 |Microsoft Docs
-description: 如何在 Azure Active Directory 中为 Office 365 组设置命名策略（预览版）
+description: 如何设置 Azure Active Directory 中的 Office 365 组命名策略
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d21616938978e501cc112fde105be4db4499b2a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605545"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734790"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中的 Office 365 组命名策略强制实施
 
@@ -76,28 +76,28 @@ ms.locfileid: "65605545"
 - 用户管理员
 - 目录写入者
 
-## <a name="configure-naming-policy-in-azure-portal-preview"></a>在 Azure 门户 （预览版） 中配置命名策略
+## <a name="configure-naming-policy-in-azure-portal"></a>在 Azure 门户中配置命名策略
 
 1. 使用用户管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
-1. 选择**组**，然后选择**命名策略**打开命名策略页。
+1. 选择“组”，然后选择“命名策略”，以便打开“命名策略”页。  
 
-    ![在管理中心中打开命名策略页](./media/groups-naming-policy/policy-preview.png)
+    ![在管理中心打开“命名策略”页](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>查看或编辑前后缀命名策略
 
-1. 上**命名策略**页上，选择**组命名策略**。
-1. 您可以查看或编辑当前的前缀或后缀命名策略单独选择的属性或你想要强制实施命名策略的一部分的字符串。
-1. 若要从列表中删除前缀或后缀，选择的前缀或后缀，然后选择**删除**。 可以同时删除多个项。
+1. 在“命名策略”页上，选择“组命名策略”。  
+1. 可以单独查看或编辑当前的前缀或后缀命名策略，只需选择需要在命名策略中强制实施的属性或字符串即可。
+1. 若要从列表中删除某个前缀或后缀，请选择该前缀或后缀，然后选择“删除”。  可以同时删除多个项。
 1. 保存新策略的生效通过选择所做的更改**保存**。
 
 ### <a name="edit-custom-blocked-words"></a>编辑自定义阻止的字词
 
-1. 上**命名策略**页上，选择**阻止字词**。
+1. 在“命名策略”页上，选择“阻止字词”。  
 
-    ![编辑和上传的命名策略阻止的字词列表](./media/groups-naming-policy/blockedwords-preview.png)
+    ![编辑并上传命名策略的阻止字词列表](./media/groups-naming-policy/blockedwords.png)
 
-1. 查看或编辑通过选择当前的自定义阻止字词列表**下载**。
-1. 选择文件图标上传新的自定义阻止字词列表。
+1. 查看或编辑自定义阻止字词的当前列表，方法是选择“下载”。 
+1. 上传自定义阻止字词的新列表，方法是选择文件图标。
 1. 保存新策略的生效通过选择所做的更改**保存**。
 
 ## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
@@ -130,7 +130,7 @@ ms.locfileid: "65605545"
    Connect-AzureAD
    ```
 
-   在打开的“登录到你的帐户”屏幕上，输入管理员帐户和密码以连接到服务，然后选择“登录”。
+   在打开的“登录到你的帐户”屏幕上，输入管理员帐户和密码以连接到服务，然后选择“登录”   。
 
 1. 按照[用于配置组设置的 Azure Active Directory cmdlet](groups-settings-cmdlets.md) 中的步骤创建此租户的组设置。
 
@@ -198,10 +198,10 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="remove-the-naming-policy"></a>删除命名策略
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>删除命名策略使用 Azure 门户 （预览版）
+### <a name="remove-the-naming-policy-using-azure-portal"></a>删除命名策略使用 Azure 门户
 
-1. 上**命名策略**页上，选择**删除策略**。
-1. 确认删除后，删除命名策略，包括所有的前后缀命名策略和任何自定义阻止的字词。
+1. 在“命名策略”页上，选择“删除策略”。  
+1. 确认删除之后，将会删除命名策略，包括所有前缀-后缀命名策略和任何自定义阻止字词。
 
 ### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>删除命名策略使用 Azure AD PowerShell
 

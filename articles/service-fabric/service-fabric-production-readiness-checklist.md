@@ -12,28 +12,22 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 7/10/2018
+ms.date: 6/05/2019
 ms.author: aljo
-ms.openlocfilehash: e94280f9df1d4ac59856a73f6f6c2b7f7a0b9cc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a75b02b8173507a28204a3ec2030ce7ed9838495
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726581"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729859"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
 应用程序和群集是否准备好接收生产流量？ 运行和测试应用程序及群集并不一定意味着它们已准备好投入生产。 通过查看以下核对清单，使应用程序和群集保持平稳运行。 强烈建议检查所有这些项目。 显然，可以选择为特定明细项目（例如，自己的诊断框架）使用替代解决方案。
 
 
-## <a name="pre-requisites-for-production"></a>生产的先决条件
-1. [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)是： 
-1. 使用 X.509 证书
-1. 配置安全性策略
-1. 配置适用于 Azure Service Fabric 的 SSL
-1. 将 Azure Service Fabric 与网络隔离和安全功能结合使用
-1. 出于安全考虑，设置 Azure Key Vault
-1. Microsoft.Network/loadBalancers 将用户分配到角色
+## <a name="prerequisites-for-production"></a>生产的先决条件
+1. Azure Service Fabric 最佳实践：[应用程序设计](./service-fabric-best-practices-applications.md)，[安全](./service-fabric-best-practices-security.md)，[网络](./service-fabric-best-practices-networking.md)，[容量规划和缩放](./service-fabric-best-practices-capacity-scaling.md)，[基础结构即代码](./service-fabric-best-practices-infrastructure-as-code.md)，并[监视和诊断](./service-fabric-best-practices-monitoring.md)。 
 1. 如果使用执行组件编程模型，则实现 Reliable Actors 安全配置
 1. 对于具有超过 20 个核心或 10 个节点的群集，请为系统服务创建专用的主节点类型。 添加[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，保留系统服务的主节点类型。
 1. 对主节点类型使用 D2v2 或更高版本的 SKU。 建议选择至少有 50 GB 硬盘容量的 SKU。

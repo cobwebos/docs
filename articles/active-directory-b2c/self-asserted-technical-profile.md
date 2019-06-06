@@ -2,20 +2,20 @@
 title: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件 | Microsoft Docs
 description: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41305cc5825344a61ff15ddb5deb629cd0f1c679
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c728660f1a77c02f1e4b5fdeb467a7dbba4e36a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691028"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512657"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -25,7 +25,7 @@ ms.locfileid: "64691028"
 
 ## <a name="protocol"></a>Protocol
 
-“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 “handler”属性必须包含 Azure AD B2C 用来自断言的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 “handler”  属性必须包含 Azure AD B2C 用来自断言的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 下面的示例显示了电子邮件注册的自断言技术配置文件：
 
@@ -37,7 +37,7 @@ ms.locfileid: "64691028"
  
 ## <a name="input-claims"></a>输入声明
 
-在自断言技术配置文件中，你可以使用“InputClaims”和“InputClaimsTransformations”元素预填充自断言页面上出现的声明的值（输出声明）。 例如，在编辑配置文件策略中，用户旅程首先从 Azure AD B2C 目录服务读取用户配置文件，然后自断言技术配置文件使用用户配置文件中存储的用户数据设置输入声明。 这些声明是从用户配置文件中收集的，然后呈现给可以编辑现有数据的用户。
+在自断言技术配置文件中，你可以使用“InputClaims”  和“InputClaimsTransformations”  元素预填充自断言页面上出现的声明的值（输出声明）。 例如，在编辑配置文件策略中，用户旅程首先从 Azure AD B2C 目录服务读取用户配置文件，然后自断言技术配置文件使用用户配置文件中存储的用户数据设置输入声明。 这些声明是从用户配置文件中收集的，然后呈现给可以编辑现有数据的用户。
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -53,11 +53,11 @@ ms.locfileid: "64691028"
 
 ## <a name="output-claims"></a>输出声明
 
-“OutputClaims”元素包含要呈现以从用户处收集数据的声明列表。 若要使用某些值预填充输出声明，请使用前面描述的输入声明。 另外，此元素还可能包含默认值。 “OutputClaims”中的声明顺序将控制 Azure AD B2C 将声明呈现在屏幕上的顺序。 “DefaultValue”属性只有在从未设置过声明时才会生效。 但是，如果之前在上一业务流程步骤中设置过，即使用户将值留空，默认值也不会生效。 若要强制使用默认值，请将“AlwaysUseDefaultValue”属性设置为 `true`。 若要强制用户提供特定输出声明的值，请将“OutputClaims”元素的“Required”属性设置为 `true`。
+“OutputClaims”  元素包含要呈现以从用户处收集数据的声明列表。 若要使用某些值预填充输出声明，请使用前面描述的输入声明。 另外，此元素还可能包含默认值。 “OutputClaims”  中的声明顺序将控制 Azure AD B2C 将声明呈现在屏幕上的顺序。 “DefaultValue”  属性只有在从未设置过声明时才会生效。 但是，如果之前在上一业务流程步骤中设置过，即使用户将值留空，默认值也不会生效。 若要强制使用默认值，请将“AlwaysUseDefaultValue”  属性设置为 `true`。 若要强制用户提供特定输出声明的值，请将“OutputClaims”  元素的“Required”  属性设置为 `true`。
 
-“OutputClaims”集合中的“ClaimType”元素需要将“UserInputType”元素设置为 Azure AD B2C 支持的任意用户输入类型，例如 `TextBox` 或 `DropdownSingleSelect`。 或者“OutputClaim”元素必须设置“DefaultValue”。  
+“OutputClaims”  集合中的“ClaimType”  元素需要将“UserInputType”  元素设置为 Azure AD B2C 支持的任意用户输入类型，例如 `TextBox` 或 `DropdownSingleSelect`。 或者“OutputClaim”  元素必须设置“DefaultValue”  。  
 
-“OutputClaimsTransformations”元素可能包含用于修改输出声明或生成新声明的“OutputClaimsTransformation”元素的一个集合。
+“OutputClaimsTransformations”  元素可能包含用于修改输出声明或生成新声明的“OutputClaimsTransformation”  元素的一个集合。
 
 下面的输出声明始终将设置为 `live.com`：
 
@@ -69,12 +69,12 @@ ms.locfileid: "64691028"
 
 关于输出声明，有四种场景：
 
-- **从用户处收集输出声明** - 当你需要从用户处收集信息（如出生日期）时，应将声明添加到“OutputClaims”集合。 呈现给用户的声明必须指定“UserInputType”，如 `TextBox` 或 `DropdownSingleSelect`。 如果自断言技术配置文件包含输出相同声明的验证技术配置文件，则 Azure AD B2C 不会将声明呈现给用户。 如果没有任何要呈现给用户的输出声明，Azure AD B2C 将跳过技术配置文件。
-- **在输出声明中设置默认值** - 无需从用户处收集数据或从验证技术配置文件返回数据。 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件将“executed-SelfAsserted-Input”声明设置为 `true`。
+- **从用户处收集输出声明** - 当你需要从用户处收集信息（如出生日期）时，应将声明添加到“OutputClaims”  集合。 呈现给用户的声明必须指定“UserInputType”  ，如 `TextBox` 或 `DropdownSingleSelect`。 如果自断言技术配置文件包含输出相同声明的验证技术配置文件，则 Azure AD B2C 不会将声明呈现给用户。 如果没有任何要呈现给用户的输出声明，Azure AD B2C 将跳过技术配置文件。
+- **在输出声明中设置默认值** - 无需从用户处收集数据或从验证技术配置文件返回数据。 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件将“executed-SelfAsserted-Input”  声明设置为 `true`。
 - **验证技术配置文件返回输出声明** - 你的技术配置文件可以调用返回某些声明的验证技术配置文件。 你需要发出声明并将其返回到用户旅程中的下一个业务流程步骤。 例如，当使用本地帐户登录时，名为 `SelfAsserted-LocalAccountSignin-Email` 的自断言技术配置文件会调用名为 `login-NonInteractive` 的验证技术配置文件。 此技术配置文件将验证用户凭据，并返回用户配置文件。 例如“userPrincipalName”、“displayName”、“givenName”和“surName”。
 - **通过输出声明转换输出声明**
 
-在以下示例中，`LocalAccountSignUpWithLogonEmail` 自断言技术配置文件演示了如何使用输出声明并将“executed-SelfAsserted-Input”设置为 `true`。 `objectId`、`authenticationSource`、`newUser` 声明是 `AAD-UserWriteUsingLogonEmail` 验证技术配置文件的输出，不会显示给用户。
+在以下示例中，`LocalAccountSignUpWithLogonEmail` 自断言技术配置文件演示了如何使用输出声明并将“executed-SelfAsserted-Input”  设置为 `true`。 `objectId`、`authenticationSource`、`newUser` 声明是 `AAD-UserWriteUsingLogonEmail` 验证技术配置文件的输出，不会显示给用户。
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -115,7 +115,7 @@ ms.locfileid: "64691028"
 
 ## <a name="persist-claims"></a>保存声明
 
-如果“PersistedClaims”元素不存在，则自断言技术配置文件不会将数据保存到 Azure AD B2C。 而是改为调用负责保留数据的验证技术配置文件。 例如，注册策略使用 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件来收集新用户配置文件。 `LocalAccountSignUpWithLogonEmail` 技术配置文件调用验证技术配置文件来在 Azure AD B2C 中创建帐户。
+如果“PersistedClaims”  元素不存在，则自断言技术配置文件不会将数据保存到 Azure AD B2C。 而是改为调用负责保留数据的验证技术配置文件。 例如，注册策略使用 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件来收集新用户配置文件。 `LocalAccountSignUpWithLogonEmail` 技术配置文件调用验证技术配置文件来在 Azure AD B2C 中创建帐户。
 
 ## <a name="validation-technical-profiles"></a>验证技术配置文件
 
@@ -127,7 +127,7 @@ ms.locfileid: "64691028"
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
@@ -140,7 +140,7 @@ ms.locfileid: "64691028"
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
-不使用“CryptographicKeys”元素。
+不使用“CryptographicKeys”  元素。
 
 
 

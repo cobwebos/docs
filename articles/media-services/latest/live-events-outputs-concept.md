@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/06/2019
 ms.author: juliako
-ms.openlocfilehash: c025a4c6e2a5a06e12e25ce226a327b099b95306
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: f04ae727957d988e75ea0984d0005a6a140ca63f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550965"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66732985"
 ---
 # <a name="live-events-and-live-outputs"></a>实时事件和实时输出
 
@@ -54,7 +54,7 @@ ms.locfileid: "65550965"
 
 ![实时编码](./media/live-streaming/live-encoding.svg)
 
-将实时编码与媒体服务配合使用时，需配置本地实时编码器，以便将单比特率视频作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 实时事件会将该传入的单比特率流编码为[多比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，使其可通过 MPEG-DASH、HLS 和平滑流式处理等协议传送到播放设备。 创建此类实时事件时，请将编码类型指定为“标准”(LiveEventEncodingType.Standard)。
+将实时编码与媒体服务配合使用时，需配置本地实时编码器，以便将单比特率视频作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 实时事件会将该传入的单比特率流编码为[多比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，使其可通过 MPEG-DASH、HLS 和平滑流式处理等协议传送到播放设备。 创建此类实时事件时，请将编码类型指定为“标准”(LiveEventEncodingType.Standard)  。
 
 发送的贡献源的最高分辨率可为 1080p，帧速率可为 30 帧/秒，采用 H.264/AVC 视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。 有关详细信息，请参阅[实时事件类型比较](live-event-types-comparison.md)一文。
 
@@ -79,48 +79,53 @@ ms.locfileid: "65550965"
 
 可以使用非虚 URL 或虚 URL。 
 
+> [!NOTE] 
+> 对于要预测的引入 URL，设置的"虚构"模式。
+
 * 非虚 URL
 
     在 AMS v3 中，非虚 URL 是默认模式。 可以快速获取实时事件，但只有在实时事件启动后，才会知道引入 URL。 如果停止/启动实时事件，此 URL 会更改。 <br/>非虚 URL 适用于这样的情况：最终用户希望使用应用进行流式处理，而应用希望尽快获取实时事件，并且可以使用动态引入 URL。
 * 虚 URL
 
     对于使用硬件广播编码器且不希望在启动实时事件时重新配置其编码器的大型媒体广播者来说，虚模式是首选。 他们需要不随时间而改变的预测性引入 URL。
+    
+    若要指定此模式下，您可以设置`vanityUrl`到`true`在创建时 (默认值是`false`)。 您还需要将你自己的访问令牌 (`LiveEventInput.accessToken`) 可以在创建时。 指定令牌值，以避免在 URL 中的随机令牌。 访问令牌必须是有效的 GUID 字符串 （带或不带短划线）。 不能更新模式设置。
 
-> [!NOTE] 
-> 若要让引入 URL 成为预测性 URL，需使用“虚”模式并传递你自己的访问令牌（避免在 URL 中使用随机令牌）。
+    访问令牌需要在数据中心保持唯一。 如果你的应用程序需要使用虚构的 URL，建议始终创建访问令牌 （而不是重复使用现有的任何 GUID） 的新 GUID 实例。 
 
 ### <a name="live-ingest-url-naming-rules"></a>实时引入 URL 命名规则
 
-下面的随机字符串是一个 128 位的十六进制数字（由 32 个 0-9 a-f 字符组成）。<br/>
-下面的访问令牌是需为固定 URL 指定的内容。 它也是 128 位的十六进制数字。
+下面的随机  字符串是一个 128 位的十六进制数字（由 32 个 0-9 a-f 字符组成）。<br/>
+*访问令牌*是您需要指定固定的 url。 必须设置为有效长度 GUID 字符串的访问令牌字符串。 <br/>
+*流名称*指示特定连接的流名称。 流名称值通常由添加实时编码器使用。
 
 #### <a name="non-vanity-url"></a>非虚 URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/<access token>`
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/<access token>`
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/<access token>`
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/<access token>`
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>平滑流
 
-`http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
-`https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
+`http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
 
 #### <a name="vanity-url"></a>虚 URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/<access token>`
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/<access token>`
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/<access token>`
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/<access token>`
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>平滑流
 
-`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
-`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
+`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
 
 ## <a name="live-event-preview-url"></a>实时事件预览 URL
 

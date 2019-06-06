@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中使用 iOS 应用程序的 AppAuth | Microsoft Docs
 description: 本文说明如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 iOS 应用。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dc429861d97715505ed48e06d216bd2c8292addf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1f7c864102a4985aa1b2c66e12b42cbe3bc19bca
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703090"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510083"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 
@@ -36,14 +36,14 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 * 在应用程序中包含**本机客户端**。
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要用到此 GUID。
-* 使用自定义方案（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）设置“重定向 URI”。 稍后需要用到此 URI。
+* 使用自定义方案（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）设置“重定向 URI”。  稍后需要用到此 URI。
 
 ## <a name="create-your-user-flows"></a>创建用户流
 在 Azure AD B2C 中，每个用户体验由[用户流](active-directory-b2c-reference-policies.md)定义。 此应用程序包含一个标识体验：合并的登录和注册。 创建用户流时，请务必：
 
-* 在“注册属性”下，选择“显示名称”属性。  还可选择其他属性。
-* 在“应用程序声明”下，选择“显示名称”和“用户的对象 ID”声明。 也可选择其他声明。
-* 创建用户流后，请复制每个用户流的名称。 保存用户流时，用户流名称带有前缀 `b2c_1_`。  稍后需要用户流名称。
+* 在“注册属性”  下，选择“显示名称”  属性。  还可选择其他属性。
+* 在“应用程序声明”  下，选择“显示名称”  和“用户的对象 ID”  声明。 也可选择其他声明。
+* 创建用户流后，请复制每个用户流的名称  。 保存用户流时，用户流名称带有前缀 `b2c_1_`。  稍后需要用户流名称。
 
 创建用户流后，可以开始构建应用。
 

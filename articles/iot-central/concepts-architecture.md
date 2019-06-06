@@ -3,17 +3,17 @@ title: Azure IoT Central 中的体系结构概念 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 的体系结构相关的重要概念
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/26/2019
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: 4f4b917808f4973dc83294391f58d7e0e2d01c4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: philmea
+ms.openlocfilehash: 4bc9a79576c3165585a4a2c897bd41bfb77c080c
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887381"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693127"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
 
@@ -79,6 +79,14 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 一个应用程序可以有一个或多个基于每个设备模板的模拟设备和真实设备。
 
+## <a name="data-export"></a>数据导出
+
+在 Azure IoT Central 应用程序，你可以[将数据持续导出](howto-export-data-event-hubs-service-bus.md)到自己的 Azure 事件中心和 Azure 服务总线实例。 也会定期可以将数据导出到 Azure Blob 存储帐户。 度量值、 设备和设备模板，可以导出 IoT 中心。
+
+## <a name="batch-device-updates"></a>批量设备更新
+
+在 Azure IoT Central 应用程序，你可以[创建和运行作业](howto-run-a-job.md)来管理连接的设备。 这些作业可以用来执行大容量更新设备属性或设置，或运行命令。 例如，可以创建一个作业来提高多个 refrigerated 自动贩卖机风扇速度。
+
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
 [管理员可以使用预定义的角色定义适用于 Azure IoT Central 应用程序的访问规则](howto-administer.md)。 管理员可以通过为用户分配角色来决定用户可以访问的应用程序的具体区域。
@@ -95,7 +103,10 @@ Azure IoT Central 中的安全功能包括：
 ## <a name="ui-shell"></a>UI Shell
 
 UI Shell 是一个现代的基于 HTML5 浏览器的应用程序，响应速度快。
+管理员可以通过应用自定义主题和修改为指向您自己的自定义帮助的资源的帮助链接来自定义应用程序的 UI。 若要了解有关自定义 UI 的详细信息，请参阅[自定义 Azure IoT Central UI](howto-customize-ui.md)一文。
+
+操作员可以创建个性化的应用程序仪表板。 可以有多个仪表板，以显示不同的数据以及它们之间进行切换。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure IoT Central 的体系结构以后，建议接下来继续学习 Azure IoT Central 中的[设备连接](concepts-connectivity.md)。
+现在，已了解 Azure IoT Central 的体系结构，建议下一步是了解如何[设备连接性](concepts-connectivity.md)中 Azure IoT 中心。

@@ -9,22 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 99b0cab3fd277f90a675f0e6087d572853053a08
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 903405c8fada6165b79e780a7828c6de3b95163e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387337"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478919"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>配置 web 应用程序防火墙速率限制规则使用 Azure PowerShell
 Azure web 应用程序防火墙 (WAF) 速率限制规则的 Azure 第一道防线控制一分钟持续期间允许从单个客户端 IP 的请求数。
 本文介绍如何配置 WAF 速率限制规则，用于控制允许从单个客户端到包含的 web 应用程序的请求数 */promo*中使用 Azure PowerShell 的 URL。
-
-> [!IMPORTANT]
-> WAF 速率限制规则功能的 Azure 第一道防线当前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

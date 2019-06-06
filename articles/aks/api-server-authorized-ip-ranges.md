@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c27d47a918939d012abee3c2317eba39587d734
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 185c16e76094fe55a54fb17bef24fcd03d7b54f0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243583"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475154"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>预览版-对 API 服务器使用的安全访问授权所需的 IP 地址范围中 Azure Kubernetes 服务 (AKS)
 
@@ -74,8 +74,6 @@ az provider register --namespace Microsoft.ContainerService
 Kubernetes API 服务器是如何公开底层 Kubernetes Api。 此组件为管理工具（如 `kubectl` 或 Kubernetes 仪表板）提供交互。 AKS 提供了单租户群集主机，与专用的 API 服务器。 默认情况下，为 API 服务器分配一个公共 IP 地址，你应访问和控制使用基于角色的访问控制 (RBAC)。
 
 保护对否则为可公开访问的 AKS 控制平面访问 / API 服务器，你可以启用和使用授权的 IP 范围。 这些授权的 IP 范围只允许定义的 IP 地址范围内与 API 服务器进行通信。 阻止通过不属于这些经过授权的 IP 范围的 IP 地址对 API 服务器所做的请求。 应继续使用 RBAC 然后，授权用户和他们请求的操作。
-
-若要使用已授权的 IP 范围功能，公共 IP 地址公开节点池上通过部署一个基本的 NGINX 服务。 API 服务器进行通信与通过此授权的公共 IP 地址的节点池。 然后定义可以访问 API 服务器的其他 IP 地址范围。
 
 有关 API 服务器和其他群集组件的详细信息，请参阅[Kubernetes 核心概念适用于 AKS][concepts-clusters-workloads]。
 

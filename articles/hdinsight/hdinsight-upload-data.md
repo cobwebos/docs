@@ -1,33 +1,32 @@
 ---
 title: 在 HDInsight 中上传 Apache Hadoop 作业的数据
 description: 了解如何使用 Azure 经典 CLI、Azure 存储资源管理器、Azure PowerShell、Hadoop 命令行或 Sqoop 在 HDInsight 中上传和访问 Apache Hadoop 作业的数据。
-keywords: etl hadoop, 将数据引入 hadoop, hadoop 加载数据
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/08/2019
-ms.openlocfilehash: 3283c885956c5b43171c6287dc00efa9a82db28e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/03/2019
+ms.openlocfilehash: 0dbd5a886e2369d29a568eca47dda5558f43c8cd
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722798"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479135"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Apache Hadoop 作业的数据
 
-Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen1 和 Gen2）的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储以及 Data Lake Storage Gen1 和 Data Lake Storage Gen2 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data lake Storage Gen2 是独特的文件系统，并且已针对数据的存储和计算进行了优化。 有关使用 Azure Blob 存储的好处的信息，请参阅[将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]、[将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)和[将 Data Lake Storage Gen2 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen1 和 Gen2）的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储以及 Data Lake Storage Gen1 和 Data Lake Storage Gen2 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data lake Storage Gen2 是独特的文件系统，并且已针对数据的存储和计算进行了优化。 使用 Azure 存储的优点的信息，请参阅[将 Azure 存储用于 HDInsight](hdinsight-hadoop-use-blob-storage.md)，[与 HDInsight 使用的数据湖存储 Gen1](hdinsight-hadoop-use-data-lake-store.md)，和[与使用数据湖存储 Gen2HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
 在开始下一步之前，请注意以下要求：
 
-* 一个 Azure HDInsight 群集。 有关说明，请参阅 [Azure HDInsight 入门][hdinsight-get-started]或[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+* 一个 Azure HDInsight 群集。 有关说明，请参阅[开始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)或[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 * 了解以下文章：
 
-    - [将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]
+    - [使用 Azure 存储与 HDInsight](hdinsight-hadoop-use-blob-storage.md)
     - [将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)
     - [将 Data Lake Storage Gen2 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
@@ -36,7 +35,7 @@ Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen
 ## <a name="utilities"></a>实用程序
 Microsoft 提供以下实用工具用于操作 Azure 存储：
 
-| 工具 | Linux | OS X | Windows |
+| Tool | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
@@ -64,11 +63,11 @@ hadoop -copyFromLocal <localFilePath> <storageFilePath>
 
 由于 HDInsight 的默认文件系统在 Azure 存储中，/example/data.txt 实际是在 Azure 存储中。 也可以将该文件表示为：
 
-    wasb:///example/data/data.txt
+    wasbs:///example/data/data.txt
 
 或
 
-    wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
 若要查看可用于文件的其他 Hadoop 命令的列表，请参阅 [https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
@@ -104,7 +103,7 @@ Azure 数据工厂服务是完全托管的服务，可将数据存储、数据�
 ### <a id="sqoop"></a>Apache Sqoop
 Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工具。 可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL Server、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Hive 转换数据，然后回过来将数据导出到 RDBMS。
 
-有关详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]。
+有关详细信息，请参阅[将 sqoop 与 HDInsight 配合](hadoop/hdinsight-use-sqoop.md)。
 
 ### <a name="development-sdks"></a>开发 SDK
 还可以使用 Azure SDK 通过以下编程语言来访问 Azure 存储：
@@ -152,28 +151,21 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 还可使用 Apache Ambari 以全局方式增加 `fs.azure.write.request.size` 的值。 可使用以下步骤在 Ambari Web UI 中更改该值：
 
-1. 在浏览器中，转到群集的 Ambari Web UI。 该地址为 https://CLUSTERNAME.azurehdinsight.net，其中“CLUSTERNAME”是群集名称。
+1. 在浏览器中，转到群集的 Ambari Web UI。 这是`https://CLUSTERNAME.azurehdinsight.net`，其中`CLUSTERNAME`是群集的名称。
 
     出现提示时，输入群集的管理员名称和密码。
-2. 在屏幕左侧选择“HDFS”，并选择“配置”选项卡。
-3. 在“筛选...”字段中输入 `fs.azure.write.request.size`。 这会在页面中间显示字段和当前值。
+2. 在屏幕左侧选择“HDFS”  ，并选择“配置”  选项卡。
+3. 在“筛选...”  字段中输入 `fs.azure.write.request.size`。 这会在页面中间显示字段和当前值。
 4. 将值从 262144 (256 KB) 更改为新的值。 例如，4194304 (4 MB)。
 
-![通过 Ambari Web UI 更改值的图像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
+    ![通过 Ambari Web UI 更改值的图像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
 有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
 
 ## <a name="next-steps"></a>后续步骤
 现在，已了解如何将数据导入 HDInsight，请阅读以下文章了解如何执行分析：
 
-* [Azure HDInsight 入门][hdinsight-get-started]
-* [以编程方式提交 Apache Hadoop 作业][hdinsight-submit-jobs]
-* [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
-* [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
-
-[hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-[hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
+* [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [以编程方式提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
+* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)

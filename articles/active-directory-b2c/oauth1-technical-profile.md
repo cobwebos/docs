@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中的自定义策略中定义 OAuth1 技术配置文件 |Microsoft Docs
 description: 在 Azure Active Directory B2C 中的自定义策略中定义 OAuth1 技术配置文件。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b3d579e9d4ceb92ee961778ba6083292461c144
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 993fc8b2e318b59775f61de391ac75fa765485f0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699823"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513121"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 ## <a name="protocol"></a>Protocol
 
-“Protocol”元素的“Name”属性必须设置为 `OAuth1`。 例如，**Twitter-OAUTH1** 技术配置文件的协议为 `OAuth1`。
+“Protocol”  元素的“Name”  属性必须设置为 `OAuth1`。 例如，**Twitter-OAUTH1** 技术配置文件的协议为 `OAuth1`。
 
 ```XML
 <TechnicalProfile Id="Twitter-OAUTH1">
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | ProviderName | 否 | 标识提供者的名称。 |
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。   | 
 

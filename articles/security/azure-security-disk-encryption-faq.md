@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 04/16/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c49a639c0426b4535c4c2e88d36d447c10826f1
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 149452bd7d43ce46f320b9bae63a6f9cd48d98d4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416702"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730700"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -82,6 +82,9 @@ Azure 不认可的 Linux 服务器分发版不支持 Azure 磁盘加密，并且
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>如何旋转秘密或加密密钥？
 
 若要轮换机密，只需调用您最初用于启用磁盘加密在同一命令，指定不同的密钥保管库。 若要轮换的密钥加密密钥，调用您最初用于启用磁盘加密，指定新的密钥加密在同一命令。 
+
+>[!WARNING]
+> - 如果您曾经[如何使用 Azure AD 应用 Azure 磁盘加密](azure-security-disk-encryption-prerequisites-aad.md)通过指定 Azure AD 凭据来加密此 VM，你必须继续使用此选项可加密 VM。 无法在此加密的 VM 上使用 [Azure 磁盘加密](azure-security-disk-encryption-prerequisites.md)，因为不支持此方案，这意味着尚不支持为此加密的 VM 实施 AAD 应用程序切换操作。
 
 ## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>如何添加或删除密钥加密密钥，如果我最初未使用其中一个？
 

@@ -12,20 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 80ef8870bafa00f3debda99db299018a39d42a82
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245037"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475668"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>将数据从 Office 365 复制到 Azure 中使用 Azure 数据工厂
 
-Azure 数据工厂允许你以可缩放的方式将 Office 365 租户中的丰富组织数据引入 Azure，并生成分析应用程序和基于这些有价值的数据资产提取见解。 与 Privileged Access Management 的集成为 Office 365 中组织有序的有价值的数据提供安全访问控制。  有关 Microsoft Graph 数据连接的详细信息，请参阅[此链接](https://docs.microsoft.com/graph/data-connect-concept-overview)。
+与 azure 数据工厂集成[Microsoft Graph 数据连接](https://docs.microsoft.com/graph/data-connect-concept-overview)，使您能够将 Office 365 中的组织数据到 Azure 租户中可缩放的方式，并生成分析应用程序的丰富并提取见解基于这些有价值的数据资产。 与 Privileged Access Management 的集成为 Office 365 中组织有序的有价值的数据提供安全访问控制。  请参阅[此链接](https://docs.microsoft.com/graph/data-connect-concept-overview)有关 Microsoft Graph 数据的概述连接，并参考[此链接](https://docs.microsoft.com/graph/data-connect-policies#licensing)有关许可信息。
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Office 365 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
+ADF Office 365 连接器和 Microsoft Graph 数据连接在不同类型的数据集的规模引入时启用从 Exchange 电子邮件已启用邮箱，包括通讯簿联系人、 日历事件、 电子邮件消息、 用户信息、 邮箱设置和等等。  请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets)若要查看可用的数据集的完整列表。
 
 现在，在单次复制活动可以只**将数据复制到 Office 365 [Azure Blob 存储](connector-azure-blob-storage.md)， [Azure 数据湖存储 Gen1](connector-azure-data-lake-store.md)，并[Azure 数据湖存储第 2 代](connector-azure-data-lake-storage.md)采用 JSON 格式**（键入 setOfObjects）。 如果要将 Office 365 加载到其他类型的或其他格式的数据存储，可以将第一个副本活动与后续复制活动链接在一起，以进一步将数据加载到任何[支持的 ADF 目标存储](copy-activity-overview.md#supported-data-stores-and-formats)（请参阅“支持的数据存储和格式”表中的“作为接收器支持”列）。
 

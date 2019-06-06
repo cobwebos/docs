@@ -2,20 +2,20 @@
 title: 使用 OpenID Connect 进行 Web 登录 - Azure Active Directory B2C | Microsoft Docs
 description: 构建 web 应用程序在 Azure Active Directory B2C 中使用的 OpenID Connect 身份验证协议。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4137360fadab0206c6569b58d6a9a0519ce74450
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 85639e2648131f9475ad2ae77f31d43e64bf82e7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703949"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509208"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -72,7 +72,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 应用程序 ID [Azure 门户](https://portal.azure.com/)分配给你的应用程序。 |
 | response_type | 是 | 必须包括用于 OpenID Connect ID 令牌。 如果 web 应用程序还需要使用令牌来调用 web API，则可以使用`code+id_token`。 |
@@ -100,7 +100,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 | 参数 | 描述 |
 | --------- | ----------- |
 | id_token | 应用程序请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 |
-| 代码 | 应用程序请求，如果您使用的授权代码`response_type=code+id_token`。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码通常在约 10 分钟后过期。 |
+| code | 应用程序请求，如果您使用的授权代码`response_type=code+id_token`。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码通常在约 10 分钟后过期。 |
 | state | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序应验证`state`请求和响应中的值相等。 |
 
 错误响应还可以发送到`redirect_uri`参数，以便应用程序可以适当地处理：
@@ -168,7 +168,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | client_id | 是 | 应用程序 ID [Azure 门户](https://portal.azure.com/)分配给你的应用程序。 |
 | grant_type | 是 | 授予类型，该类型必须是授权代码流的 `authorization_code`。 |
 | scope | 否 | 范围的空格分隔列表。 `openid` 作用域表示允许使用 id_token 参数的形式使用户登录并获取有关用户的数据。 它可以用于获取应用程序自身的后端 web API，由客户端相同的应用程序 ID 表示的令牌。 `offline_access`作用域表示应用程序需要扩展访问资源刷新令牌。 |
-| 代码 | 是 | 在用户流的开头获取授权代码。 |
+| code | 是 | 在用户流的开头获取授权代码。 |
 | redirect_uri | 是 | 在其中收到授权代码的应用程序的 `redirect_uri` 参数。 |
 | client_secret | 是 | 在生成的应用程序机密[Azure 门户](https://portal.azure.com/)。 此应用程序密码是重要的安全项目。 应将其安全地存储在服务器上。 更改定期更新此客户端密码。 |
 
@@ -229,7 +229,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | p | 是 | 用于获取原始刷新令牌的用户流。 在此请求中，不能使用不同的用户流。 添加此参数的查询字符串，而不 POST 正文。 |
 | client_id | 是 | 应用程序 ID [Azure 门户](https://portal.azure.com/)分配给你的应用程序。 |
@@ -286,10 +286,10 @@ p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| 参数 | 需要 | 描述 |
+| 参数 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | p | 是 | 想要用于从应用程序中注销用户的用户流。 |
-| post_logout_redirect_uri | 否 | 用户成功注销后应会重定向到 URL。如果它不包含，Azure AD B2C 向用户显示一条常规消息。 |
+| post_logout_redirect_uri | 否 | 用户在成功注销后应重定向到的 URL。如果它不包含，Azure AD B2C 向用户显示一条常规消息。 |
 
 将定向到用户`end_session`终结点中清除的某些用户的单一登录状态与 Azure AD B2C，但它不会将用户从其社交标识提供者 (IDP) 会话注销。 如果用户在后续登录中选择的 IDP，它们将重新进行身份验证，而无需输入其凭据。 如果用户想要注销应用程序，并不一定意味着他们想要注销其 Facebook 帐户。 但是，如果使用本地帐户，则用户的会话将正常结束。
 

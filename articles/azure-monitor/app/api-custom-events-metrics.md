@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6e20aef77625fe426526884c3fcee83019afd0c0
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 5194b9e6f40dbcd5e48b33c12db4b3cd94f75de3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299255"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478414"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -153,7 +153,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 [Application Insights Analytics](analytics.md) 的 `customEvents` 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。
 
-如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvents | summarize sum(itemCount)` 之类的代码。
+如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取正确的自定义事件数，因此应用代码如`customEvents | summarize sum(itemCount)`。
 
 ## <a name="getmetric"></a>GetMetric
 

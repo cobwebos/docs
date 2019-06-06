@@ -1,43 +1,43 @@
 ---
-title: 跟踪和记录 Azure Data Box 事件 |Microsoft Docs
-description: 介绍如何跟踪和日志事件在不同的 Azure Data Box 订单阶段。
+title: 跟踪和日志 Azure Data Box，Azure 数据框大量的事件 |Microsoft Docs
+description: 介绍如何跟踪和事件记录在你的 Azure Data Box 和 Azure 数据框大量订单的各个阶段。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7a6adc72c1dfbe67311ae2ca98d5b07dfab41719
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 108d17d3e0ca5f32648f9d4f6cf4b5f9a2984d0c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806501"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495810"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box"></a>跟踪和 Azure Data Box 的事件日志记录
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>跟踪和你的 Azure Data Box 和 Azure 数据框大量的事件日志记录
 
-Data Box 订单将完成以下步骤： 订单，设置，数据将复制、 返回、 上传到 Azure 和验证，并且数据擦除。 对应于每个步骤的顺序，可以执行多个操作来控制对顺序的访问、 审核事件、 跟踪订单，并解释生成的各种日志。
+数据框或数据框高顺序将完成以下步骤： 订单，设置，数据将复制、 返回、 上传到 Azure 和验证，并且数据擦除。 对应于每个步骤的顺序，可以执行多个操作来控制对顺序的访问、 审核事件、 跟踪订单，并解释生成的各种日志。
 
-下表显示的数据框顺序步骤和工具可跟踪和审核顺序在每个步骤的摘要。
+下表显示的数据框或数据框高顺序步骤和工具可跟踪和审核顺序在每个步骤的摘要。
 
 | 数据框顺序阶段       | 工具，用于跟踪和审核                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | 创建订单               | [设置的顺序通过 RBAC 对访问控制](#set-up-access-control-on-the-order)                                                    |
 | 处理顺序            | [跟踪的顺序](#track-the-order)通过 <ul><li> Azure 门户 </li><li> 传送快递商网站 </li><li>电子邮件通知</ul> |
 | 设置设备              | 设备凭据登录访问[活动日志](#query-activity-logs-during-setup)                                              |
-| 数据复制到设备        | [视图*error.xml*文件](#view-error-log-during-data-copy-to-data-box)数据副本                                                             |
+| 数据复制到设备        | [视图*error.xml*文件](#view-error-log-during-data-copy)数据副本                                                             |
 | 准备交付            | [检查物料清单文件](#inspect-bom-during-prepare-to-ship)或在设备上的清单文件                                      |
 | 数据上传到 Azure       | [审阅*拷贝*](#review-copy-log-during-upload-to-azure)数据期间发生的错误上传在 Azure 数据中心                         |
 | 从设备数据擦除   | [查看托管链日志链](#get-chain-of-custody-logs-after-data-erasure)包括审核日志和订单历史记录                                                   |
 
-本文详细介绍各种机制或工具可用来跟踪和审核 Data Box 订单。
+本文详细介绍各种机制或工具可用来跟踪和审核数据框或数据框高的顺序。 在本文中的信息适用于 Data Box 和数据框大量同时。 在后续部分中，对 Data Box 的任何引用也适用于大量的数据框。
 
 ## <a name="set-up-access-control-on-the-order"></a>设置访问控制的顺序
 
 您可以控制谁可以访问你的订单，订单首次创建时。 设置基于角色的访问控制 (RBAC) 角色的不同范围内来控制对 Data Box 订单的访问权限。 RBAC 角色确定的访问权限 – 读写、 只读、 读写操作的一个子集的类型。
 
-可以定义两个 Data Box 角色是：
+可以为 Azure Data Box 服务定义的两个角色包括：
 
 - **数据框读取器**-有由作用域定义到订单的只读访问权限。 他们只能查看订单的详细信息。 它们不能访问任何其他相关存储帐户的详细信息或编辑订单详细信息，如地址，等等。
 - **数据框参与者**-只能创建一个订单以将数据传输到给定的存储帐户*如果他们已有对存储帐户的写入访问*。 如果它们没有存储帐户的访问权限，他们甚至不能创建一个 Data Box 订单将数据复制到该帐户。 此角色不定义任何存储帐户与存储帐户相关的权限，也不授予访问权限。  
@@ -70,9 +70,9 @@ Data Box 订单将完成以下步骤： 订单，设置，数据将复制、 返
 
 - 每个登录到 Data Box 是记录的实际时间。 但是，此信息将仅出现在[审核日志](#audit-logs)顺序成功完成后。
 
-## <a name="view-error-log-during-data-copy-to-data-box"></a>数据复制到 Data Box 期间查看错误日志
+## <a name="view-error-log-during-data-copy"></a>数据复制期间查看错误日志
 
-期间的数据复制到 Data Box，如果有任何问题与要复制的数据，则会生成错误文件。
+期间对数据框或数据框大量的数据复制，如果有任何问题与要复制的数据，则会生成一个错误文件。
 
 ### <a name="errorxml-file"></a>Error.xml 文件
 
@@ -147,7 +147,7 @@ Data Box 订单将完成以下步骤： 订单，设置，数据将复制、 返
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH">\Starting with Capital</file>
 ```
 
-在每个上述情况下，在继续进行下一步之前解决这些错误。 在数据复制到 Data Box 通过 SMB 或 NFS 协议期间收到的错误的详细信息，请转到[问题进行故障排除数据框](data-box-troubleshoot.md)。 在数据复制到 Data Box 通过 REST 期间收到的错误的信息，请转到[进行故障排除数据框 Blob 存储空间问题](data-box-troubleshoot-rest.md)。
+在每个上述情况下，在继续进行下一步之前解决这些错误。 在数据复制到 Data Box 通过 SMB 或 NFS 协议期间收到的错误的详细信息，请转到[进行故障排除数据框和数据框大量问题](data-box-troubleshoot.md)。 在数据复制到 Data Box 通过 REST 期间收到的错误的信息，请转到[进行故障排除数据框 Blob 存储空间问题](data-box-troubleshoot-rest.md)。
 
 ## <a name="inspect-bom-during-prepare-to-ship"></a>检查 BOM 期间准备交付
 
@@ -157,7 +157,7 @@ Data Box 订单将完成以下步骤： 订单，设置，数据将复制、 返
 - 使用此文件来验证文件的实际大小。
 - 确认*crc64*对应于一个非零值字符串。 <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-有关详细信息过程中接收到的错误准备交付，请转到[问题进行故障排除数据框](data-box-troubleshoot.md)。
+有关详细信息过程中接收到的错误准备交付，请转到[进行故障排除数据框和数据框大量问题](data-box-troubleshoot.md)。
 
 ### <a name="bom-or-manifest-file"></a>物料清单或清单文件
 
@@ -253,7 +253,7 @@ Copylog 路径也会显示在**概述**门户边栏选项卡。
 
 ### <a name="audit-logs"></a>审核日志
 
-审核日志包含有关电源上的和 Azure 数据中心之外时共享上 Data Box 的访问权限。 这些日志位于以下位置： `storage-account/azuredatabox-chainofcustodylogs`
+审核日志包含有关电源上的和 Azure 数据中心之外时共享上的数据框或数据框大量的访问权限。 这些日志位于以下位置： `storage-account/azuredatabox-chainofcustodylogs`
 
 下面是从数据中的审核日志的一个示例：
 
@@ -310,7 +310,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>下载订单历史记录
 
-Azure 门户中提供了订单历史记录。 如果订单处理完成，并且设备清理 （从磁盘数据擦除） 已完成，然后转到 **Data Box 订单 > 订单详细信息**。 **下载订单历史记录** 选项才可用。 有关详细信息，请参阅[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
+Azure 门户中提供了订单历史记录。 如果订单处理完成，并且设备清理 （从磁盘数据擦除） 已完成，然后转到您设备的订单并导航到**订单详细信息**。 **下载订单历史记录** 选项才可用。 有关详细信息，请参阅[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
 
 如果滚动浏览订单历史记录时，将看到：
 
@@ -324,7 +324,7 @@ Azure 门户中提供了订单历史记录。 如果订单处理完成，并且�
 -------------------------------
 Microsoft Data Box Order Report
 -------------------------------
-Name                                               : gus-pinto                              
+Name                                               : gus-poland                              
 StartTime(UTC)                              : 9/19/2018 8:49:23 AM +00:00                       
 DeviceType                                     : DataBox                                           
 -------------------
@@ -362,11 +362,11 @@ Time(UTC)                 | Activity                       | Status          | D
 Data Box Log Links
 ------------------
 Account Name         : gusacct
-Copy Logs Path       : databoxcopylog/gus-pinto_<Device-serial-no>_CopyLog_<GUID>.xml
+Copy Logs Path       : databoxcopylog/gus-poland_<Device-serial-no>_CopyLog_<GUID>.xml
 Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[对 Data Box 上的问题进行故障排除](data-box-troubleshoot.md)。
+- 了解如何[对你的数据框和大量数据框上的问题进行故障排除](data-box-troubleshoot.md)。

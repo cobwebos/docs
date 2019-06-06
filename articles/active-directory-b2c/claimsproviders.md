@@ -2,20 +2,20 @@
 title: ClaimsProviders  - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 ClaimsProvider 元素。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ababd7e9f1de33eb8679e583c2db18d2992cfb1c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8d2570af6abb34a87ac4c69dd63408c8ec2e8005
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699632"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511526"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -39,7 +39,7 @@ ms.locfileid: "64699632"
 </ClaimsProviders>
 ```
 
-ClaimsProviders 元素包含以下元素：
+ClaimsProviders  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
@@ -47,13 +47,13 @@ ClaimsProviders 元素包含以下元素：
 
 ## <a name="claimsprovider"></a>ClaimsProvider
 
-ClaimsProvider 元素包含以下子元素：
+ClaimsProvider  元素包含以下子元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ---------- | ----------- |
-| 域 | 0:1 | 一个字符串，包含声明提供程序的域名。 例如，如果声明提供程序包含 Facebook 技术配置文件，则域名为 Facebook.com。 此域名用于声明提供程序中定义的所有技术配置文件，除非被技术配置文件覆盖。 域名也可以在 **domain_hint** 中引用。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md)的**将登录重定向到社交提供者**部分。 |
+| Domain | 0:1 | 一个字符串，包含声明提供程序的域名。 例如，如果声明提供程序包含 Facebook 技术配置文件，则域名为 Facebook.com。 此域名用于声明提供程序中定义的所有技术配置文件，除非被技术配置文件覆盖。 域名也可以在 **domain_hint** 中引用。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md)的**将登录重定向到社交提供者**部分。 |
 | DisplayName | 0:1 | 一个字符串，其中包含可以向用户显示的声明提供程序的名称。 |
-| [技术配置文件](technicalprofiles.md) | 0:1 | 声明提供程序支持的一组技术配置文件 |
+| [TechnicalProfiles](technicalprofiles.md) | 0:1 | 声明提供程序支持的一组技术配置文件 |
 
 **ClaimsProvider**组织技术配置文件如何与声明提供程序相关联。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：
 

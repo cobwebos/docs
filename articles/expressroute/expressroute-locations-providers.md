@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/28/2019
-ms.author: mialdrid
-ms.openlocfilehash: a86d3f44d3c2177185fa81602f953be4f726badb
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.date: 05/31/2019
+ms.author: jaredr80
+ms.openlocfilehash: c443d4705da83a43af10763f633f340b1eab69d3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257881"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478162"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -86,10 +86,10 @@ ms.locfileid: "66257881"
 | **金奈** | Tata Communications | 印度南部 | Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **金奈 2** | Airtel | 印度南部 | Airtel |
 | **芝加哥** | Equinix | 美国中北部 | Aryaka Networks、 AT & T NetBond、 Cologix、 Comcast、 Coresite、 Equinix、 InterCloud、 Internet2，Level 3 Communications、 Megaport、 PacketFabric、 PCCW Global Limited、 冲刺 （sprint)、 Telia 运营商、 Verizon、 Zayo |
-| **达拉斯** | Equinix | 不适用 | Aryaka Networks、 AT & T NetBond、 Cologix、 Equinix、 Internet2，Level 3 Communications、 Megaport、 Neutrona Networks、 Telmex Uninet Telia 运营商、 Verizon、 Zayo|
+| **达拉斯** | Equinix | 不适用 | Aryaka Networks、 AT & T NetBond、 Cologix、 Equinix、 Internet2，Level 3 Communications、 Megaport、 Neutrona Networks、 Telmex Uninet Telia 承运人，Transtelco、 Verizon、 Zayo|
 | **丹佛** | CoreSite | 美国中西部 | CoreSite、 Megaport、 Zayo |
 | **Dubai** | Etisalat 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | Etisalat 阿拉伯联合酋长国 |
-| **Dubai2** | du datamena | 阿拉伯联合酋长国北部 | du datamena |
+| **Dubai2** | du datamena | 阿拉伯联合酋长国北部 | du datamena Orixcom |
 | **都柏林** | Equinix | 北欧 | Colt、eir、Equinix、Interxion、Megaport |
 | **法兰克福** | Interxion | 不适用 | DE CIX、 Interxion |
 | **香港特別行政区** | Equinix | 东亚 | Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
@@ -100,13 +100,13 @@ ms.locfileid: "66257881"
 | **London2** | Telehouse | 英国南部 | IX 市场宣传 Equinix |
 | **洛杉矶** | CoreSite | 不适用 | CoreSite、Equinix、Megaport、Neutrona Networks、NTT、Zayo |
 | **马赛** |Interxion | 法国南部 | Interxion |
-| **墨尔本** | NextDC | 澳大利亚东南部 | AARNet、 Equinix、 Megaport、 NEXTDC、 Optus、 Telstra Corporation，TPG 电信 |
+| **墨尔本** | NextDC | 澳大利亚东南部 | AARNet，Devoli，Equinix、 Megaport、 NEXTDC、 Optus、 Telstra Corporation，TPG 电信 |
 | **迈阿密** | Equinix | 不适用 | C3ntro+、Equinix、Megaport、Neutrona Networks |
 | **Montreal** | Cologix | 不适用 | Bell Canada、Cologix、Telus、Zayo |
 | **Mumbai** | Tata Communications | 印度西部 | Global CloudXchange (GCX)、 依赖性 Jio、 Sify、 Tata Communications、 Verizon |
 | **孟买 2** | Airtel | 印度西部 | Airtel、Sify、Vodafone Idea |
 | **纽约** | Equinix | 不适用 | CenturyLink Cloud Connect、 Coresite、 Equinix、 InterCloud、 Megaport、 数据包、 Zayo |
-| **Newport(Wales)** | Next Generation Data | 英国西部 | British Telecom、Level 3 Communications、Next Generation Data |
+| **Newport(Wales)** | Next Generation Data | 英国西部 | British Telecom、 Colt、 Level 3 Communications、 下一代数据 |
 | **大阪** | Equinix | 日本西部 | Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |
 | **巴黎** | Interxion | 法国中部 | Colt、 Equinix、 Intercloud、 Interxion、 橙色、 Telia 运营商、 Zayo |
 | **珀斯** | NextDC | 不适用 | Megaport、 NextDC |

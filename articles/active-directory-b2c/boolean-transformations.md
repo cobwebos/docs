@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 标识体验框架架构的布尔型声明转换示例 | Microsoft Docs
 description: Azure Active Directory B2C 标识体验框架架构的布尔型声明转换示例。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8afe530a2194fd8c2137f6d4aa7ac97fa8ed9a53
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a08849340d19055a03f85ca401757a81cd2c95d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695105"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511740"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -65,7 +65,7 @@ ms.locfileid: "64695105"
 | inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
 
-AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual 自断言技术配置文件元数据控制向用户显示的技术配置文件。
+AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual  自断言技术配置文件元数据控制向用户显示的技术配置文件。
 
 ![AssertStringClaimsAreEqual 执行](./media/boolean-transformations/assert-execution.png)
 
@@ -93,7 +93,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </TechnicalProfile>
 ```
 
-自断言技术配置文件调用验证 login-NonInteractive 技术配置文件。
+自断言技术配置文件调用验证 login-NonInteractive  技术配置文件。
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">

@@ -1,18 +1,18 @@
 ---
-title: 快速入门：使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
+title: 使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 04/10/2019
-ms.openlocfilehash: 1fb9027ab3301bb860d260aed737ab7674039d9b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: e771def95db00b5de8c27011641a628560952970
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524712"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494788"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 
@@ -24,15 +24,15 @@ ms.locfileid: "59524712"
 > * [Python](create-cluster-database-python.md)
 >
 
-Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本快速入门中，你将使用 Azure CLI 创建群集和数据库。
+Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，您创建的群集、 数据库使用 Azure CLI。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-若要完成本快速入门，需要一个 Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+若要完成本文，需要 Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 Azure CLI，本快速入门要求 Azure CLI 2.0.4 或更高版本。 请运行 `az --version` 检查版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您选择本地安装并使用 Azure CLI，本文需要 Azure CLI 2.0.4 或更高版本。 请运行 `az --version` 检查版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="configure-the-cli-parameters"></a>配置 CLI 参数
 
@@ -60,7 +60,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | 名称 | *azureclitest* | 所需的群集名称。|
+   | name | *azureclitest* | 所需的群集名称。|
    | sku | *D13_v2* | 将用于群集的 SKU。 |
    | resource-group | *testrg* | 将在其中创建群集的资源组名称。 |
 
@@ -85,10 +85,10 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
    | cluster-name | *azureclitest* | 将在其中创建数据库的群集的名称。|
-   | 名称 | *clidatabase* | 数据库名称。|
+   | name | *clidatabase* | 数据库名称。|
    | resource-group | *testrg* | 将在其中创建群集的资源组名称。 |
-   | soft-delete-period | P365D | 表示供查询使用的数据的保留时间。 有关详细信息，请参阅[保留策略](/azure/kusto/concepts/retentionpolicy)。 |
-   | hot-cache-period | P31D | 表示数据将在缓存中保留的时间。 有关详细信息，请参阅[缓存策略](/azure/kusto/concepts/cachepolicy)。 |
+   | soft-delete-period | P365D  | 表示供查询使用的数据的保留时间。 有关详细信息，请参阅[保留策略](/azure/kusto/concepts/retentionpolicy)。 |
+   | hot-cache-period | P31D  | 表示数据将在缓存中保留的时间。 有关详细信息，请参阅[缓存策略](/azure/kusto/concepts/cachepolicy)。 |
 
 1. 若要查看已创建的数据库，请运行以下命令：
 
@@ -100,7 +100,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-* 如果计划学习其他快速入门和教程，请保留创建的资源。
+* 如果你打算按照我们的其他文章，请创建的资源。
 * 若要清理资源，请删除群集。 删除群集时，也会删除其中的所有数据库。 使用以下命令删除群集：
 
     ```azurecli-interactive
@@ -109,5 +109,4 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [快速入门：使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)
+* [使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)

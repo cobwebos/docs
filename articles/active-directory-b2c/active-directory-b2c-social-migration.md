@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中迁移具有社交标识的用户 | Microsoft Docs
 description: 介绍使用图形 API 将具有社交标识的用户迁移到 Azure AD B2C 的核心概念。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/03/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cb52cc85ea4e09890cf7c489d817c0b01192c65e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bca802bb0099b0d854d752db8341dfe74031ef3b
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684602"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508026"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C：迁移具有社交标识的用户
 计划将标识提供者迁移到 Azure AD B2C 时，可能还需要迁移具有社交标识的用户。 本文介绍如何将现有社交标识帐户（例如：Facebook、LinkedIn、Microsoft 和 Google 帐户）迁移到 Azure AD B2C。 本文也适用于联合标识，但这种迁移不太常见。
@@ -148,7 +148,7 @@ ms.locfileid: "64684602"
 > 使用 B2C 租户本地的 B2C 租户管理员帐户。 帐户名的语法为 admin@tenant-name.onmicrosoft.com。
 
 ### <a name="is-it-possible-to-add-social-identity-to-an-existing-local-account"></a>是否可将社交标识添加到现有的本地帐户？
-可以。 创建本地帐户后，可以添加社交标识。 运行 HTTPS PATCH 请求。 将 userObjectId 替换为要更新的用户 ID。 
+是的。 创建本地帐户后，可以添加社交标识。 运行 HTTPS PATCH 请求。 将 userObjectId 替换为要更新的用户 ID。 
 
 **PATCH** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
@@ -166,7 +166,7 @@ ms.locfileid: "64684602"
 ```
 
 ### <a name="is-it-possible-to-add-multiple-social-identities"></a>是否可以添加多个社交标识？
-可以。 可为单个 Azure AD B2C 帐户添加多个社交标识。 运行 HTTPS PATCH 请求。 将 userObjectId 替换为用户 ID。 
+是的。 可为单个 Azure AD B2C 帐户添加多个社交标识。 运行 HTTPS PATCH 请求。 将 userObjectId 替换为用户 ID。 
 
 **PATCH** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 

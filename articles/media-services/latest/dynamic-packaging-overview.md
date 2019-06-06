@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: c25aef76b5559b6d00ccf60675d61ea5ea346773
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299186"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494350"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
@@ -114,10 +114,10 @@ Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编�
     * DTS Express (dtse)
     * DTS HD 无损 （没有核） (dtsl)
 
-### <a name="hls-support"></a>HLS 支持
+### <a name="multi-audio-tracks"></a>多音频曲目
 
-动态打包支持 HLS (第 4 版或更高版本) 的多个音频曲目具有多个编解码器和语言的资产。
-
+动态打包时流式传输资产，具有多个音频曲目具有多个编解码器和语言，支持多音频轨道 HLS 输出 (版本 4 或更高版本)。
+ 
 ### <a name="not-supported"></a>不支持
 
 动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。

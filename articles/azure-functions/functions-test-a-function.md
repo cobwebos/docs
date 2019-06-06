@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 9a078579fff355d7ddb996316af2a2136fb62335
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 7489f42719223dbd7f9cc2908f666dca53fe7c04
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473333"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496390"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -43,7 +43,7 @@ ms.locfileid: "65473333"
 1. [创建新函数应用](./functions-create-first-azure-function.md)并将其命名为 *Functions*
 2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为 *HttpTrigger*。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为 *TimerTrigger*。
-4. 单击“文件”>“新建”>“项目”>“Visual C#”>“.NET Core”>“xUnit 测试项目”，在 Visual Studio 中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为“Functions.Test”。 
+4. 单击“文件”>“新建”>“项目”>“Visual C#”>“.NET Core”>“xUnit 测试项目”，在 Visual Studio 中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为“Functions.Test”   。 
 5. 使用 Nuget 添加引用从测试应用[Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [从 *Functions.Test* 应用引用 *Functions* 应用](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
 
@@ -119,7 +119,7 @@ namespace Functions.Tests
 
 `Logs` 集合是 `List<string>` 的实例，在构造函数中初始化。
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **LoggerTypes.cs**，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **LoggerTypes.cs**，然后输入以下代码：  
 
 ```csharp
 namespace Functions.Tests
@@ -133,7 +133,7 @@ namespace Functions.Tests
 ```
 此枚举指定测试使用的记录器类型。 
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **TestFactory.cs**，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **TestFactory.cs**，然后输入以下代码：  
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -204,7 +204,7 @@ namespace Functions.Tests
 
 - **CreateLogger**：此方法基于记录器类型返回用于测试的记录器类。 `ListLogger` 跟踪可在测试中评估的记录消息。
 
-接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **FunctionsTests.cs**，然后输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **FunctionsTests.cs**，然后输入以下代码：  
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -257,13 +257,13 @@ namespace Functions.Tests
 
 ### <a name="run-tests"></a>运行测试
 
-若要运行测试，请导航到“测试资源管理器”并单击“全部运行”。
+若要运行测试，请导航到“测试资源管理器”并单击“全部运行”。  
 
 ![使用 Visual Studio 中的 C# 测试 Azure Functions](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>调试测试
 
-若要调试测试，请在测试中设置一个断点，导航到“测试资源管理器”，然后单击“运行”>“调试上次运行”。
+若要调试测试，请在测试中设置一个断点，导航到“测试资源管理器”，然后单击“运行”>“调试上次运行”。  
 
 ## <a name="javascript-in-vs-code"></a>VS Code 中的 JavaScript
 
@@ -312,7 +312,7 @@ module.exports = {
 ```
 此模块实现 `IsPastDue` 属性，表示该实例是一个虚构的计时器实例。
 
-接下来，使用 VS Code Functions 扩展[创建新的 JavaScript HTTP 函数](https://code.visualstudio.com/tutorials/functions-extension/getting-started)，并将其命名为 *HttpTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
+接下来，使用 VS Code Functions 扩展[创建新的 JavaScript HTTP 函数](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started)，并将其命名为 *HttpTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
 
 ```javascript
 const httpFunction = require('./index');

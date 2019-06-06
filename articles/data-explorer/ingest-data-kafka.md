@@ -1,24 +1,24 @@
 ---
-title: 快速入门：将数据从 Kafka 引入到 Azure 数据资源管理器
-description: 本快速入门介绍如何将数据从 Kafka 引入（加载）到 Azure 数据资源管理器。
+title: 将数据从 Kafka 引入到 Azure 数据资源管理器
+description: 在本文中，您将了解如何将 （加载） 数据引入到 Azure 数据资源管理器从 Kafka。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 05/17/2019
-ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901024"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497279"
 ---
-# <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>快速入门：将数据从 Kafka 引入到 Azure 数据资源管理器
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>将数据从 Kafka 引入到 Azure 数据资源管理器
  
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从 Kafka 引入数据（加载数据）的功能。 Kafka 是一个分布式流式处理平台，可用于构建实时流式处理数据管道，在系统或应用程序之间可靠地移动数据。
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
  
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。 
  
@@ -43,7 +43,7 @@ git clone git://github.com:Azure/kafka-sink-azure-kusto.git
 cd ./kafka-sink-azure-kusto/kafka/
 ```
 
-#### <a name="build"></a>构建
+#### <a name="build"></a>Build
 
 通过 Maven 进行本地构建，以便生成一个带依赖项的 `.jar`。
 
@@ -162,5 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>后续步骤
  
-> [!div class="nextstepaction"]
-> [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)
+* [在 Azure 数据资源管理器中查询数据](web-query-data.md)

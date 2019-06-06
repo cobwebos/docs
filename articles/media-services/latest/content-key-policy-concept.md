@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 04808dda193a3a472813cda852a1a2f24d00e112
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: a597ab3519f4ba1696e111622541bcab89488558
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417998"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425431"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
 
@@ -35,7 +35,7 @@ ms.locfileid: "66417998"
 > * **内容密钥策略**的 Datetime 类型的属性始终采用 UTC 格式。
 > * 应为媒体服务帐户设计一组有限的策略，并在需要相同的选项时重新将这些策略用于流式处理定位符。 有关详细信息，请参阅[配额和限制](limits-quotas-constraints.md)。
 
-## <a name="example"></a>示例
+### <a name="example"></a>示例
 
 若要获取的键，使用**GetPolicyPropertiesWithSecretsAsync**，如下所示[从现有策略获取签名密钥](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets)示例。
 

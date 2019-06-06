@@ -2,29 +2,29 @@
 title: Azure Active Directory B2C 中的用户流版本 | Microsoft Docs
 description: 了解 Azure Active Directory B2C 中可用的用户流版本。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af44658b42e9132ea89aadcbff29bdba1c13f46d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ed57a9fa3b041961ce220e8f10d9aed5e7bef60e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689659"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511928"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流版本
 
 >[!IMPORTANT]
-> 除非标识为“推荐”，否则本文中列出的任何用户流均处于公开预览状态。 应仅为生产应用程序使用推荐的用户流。
+> 除非标识为“推荐”，否则本文中列出的任何用户流均处于公开预览状态  。 应仅为生产应用程序使用推荐的用户流。
 
 Azure Active Directory (Azure AD) B2C 中的用户流可帮助设置完全描述客户标识体验的常见[策略](active-directory-b2c-reference-policies.md)。 这些体验包括注册、登录、密码重置和配置文件编辑。 在 Azure AD B2C 中，可从推荐用户流和预览用户流的集合中进行选择。 
 
-新用户流将作为新版本添加。 随着用户流变得稳定，将建议使用这些用户流。 如果用户流已经过全面测试，则会将其标记为“推荐”。 在标记为“推荐”之前，均将用户流视为处于预览状态。 对任何生产应用程序使用推荐的用户流，但从其他版本中选择以在可用时测试新功能。 不应使用旧版本的推荐用户流。
+新用户流将作为新版本添加。 随着用户流变得稳定，将建议使用这些用户流。 如果用户流已经过全面测试，则会将其标记为“推荐”  。 在标记为“推荐”之前，均将用户流视为处于预览状态。 对任何生产应用程序使用推荐的用户流，但从其他版本中选择以在可用时测试新功能。 不应使用旧版本的推荐用户流。
 
 ## <a name="v1"></a>V1
 

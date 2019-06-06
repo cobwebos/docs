@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: feab3ee1a21a52e8b18d59e67e8410fcbeb4ff5e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c8907f1b1c8069a3a3e92d01a5fa6341c06ec952
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953786"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688804"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 1. **连接策略：使用直接连接模式**
 
-    客户端连接到 Azure Cosmos DB 的方式对性能有重大影响（尤其在观察到的客户端延迟方面）。 有两个密钥配置设置可用于配置客户端连接策略 – 连接“模式”和连接“协议”。  两种可用模式：
+    客户端连接到 Azure Cosmos DB 的方式对性能有重大影响（尤其在观察到的客户端延迟方面）。 有两个密钥配置设置可用于配置客户端连接策略 – 连接“模式”和连接“协议”   。  两种可用模式：
 
    * 网关模式（默认）
       
@@ -137,13 +137,21 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
    <a id="tune-page-size"></a>
 1. **调整查询/读取源的页面大小以获得更好的性能**
 
-    使用读取源功能（例如 ReadDocumentFeedAsync）执行批量文档读取，或发出 SQL 查询时，如果结果集太大，则会以分段方式返回结果。 默认情况下，以包括 100 个项的块或 1 MB 大小的块返回结果（以先达到的限制为准）。
+   使用读取源功能（例如 ReadDocumentFeedAsync）执行批量文档读取，或发出 SQL 查询时，如果结果集太大，则会以分段方式返回结果。 默认情况下，以包括 100 个项的块或 1 MB 大小的块返回结果（以先达到的限制为准）。
 
-    若要减少检索所有适用结果所需的网络往返次数，可以使用 [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 请求标头将页面大小最大增加到 1000。 在只需要显示几个结果的情况下（例如，用户界面或应用程序 API 一次只返回 10 个结果），也可以将页面大小缩小为 10，以降低读取和查询所耗用的吞吐量。
+   若要减少检索所有适用结果所需的网络往返次数，可以使用 [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 请求标头将页面大小最大增加到 1000。 在只需要显示几个结果的情况下（例如，用户界面或应用程序 API 一次只返回 10 个结果），也可以将页面大小缩小为 10，以降低读取和查询所耗用的吞吐量。
 
-    也可以使用可用的 Azure Cosmos DB SDK 设置页面大小。  例如:
+   > [!NOTE] 
+   > MaxItemCount 属性不应只用于分页目的。 它是主要使用它通过减少最大项目数来提高查询的性能在单个页面中返回。  
 
-        IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+   此外可以设置使用可用的 Azure Cosmos DB Sdk 的页大小。 [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) FeedOptions 中的属性可以设置要在 enmuration 操作中返回的项的最大数。 当`maxItemCount`设置为-1，SDK 会自动查找具体取决于文档大小的最大程度优化值。 例如：
+    
+   ```csharp
+    IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+   ```
+    
+   当执行查询时，TCP 数据包中发送生成的数据。 如果指定太低值`maxItemCount`，将发送的 TCP 数据包中的数据所需的行程数较高，这会影响性能。 因此，如果您不确定要设置的值`maxItemCount`属性，则最好将其设置为-1，并允许选择默认值的 SDK。 
+
 10. **增加线程/任务数目**
 
     请参阅“网络”部分中的 [增加线程/任务数目](#increase-threads) 。
@@ -152,13 +160,13 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     在使用 SQL .NET SDK 1.11.4 及更高版本时，SQL SDK 可以在 32 位的主机进程中运行。 但是，如果使用跨分区查询，建议使用 64 位主机进程来提高性能。 以下类型的应用程序默认为 32 位主机进程，为了将其更改为 64 位，请根据应用程序类型执行以下步骤：
 
-    - 对于可执行应用程序，在“生成”选项卡的“项目属性”窗口中，通过取消“首选 32 位”选项可实现以上目的。
+    - 对于可执行应用程序，在“生成”  选项卡的“项目属性”  窗口中，通过取消“首选 32 位”  选项可实现以上目的。
 
-    - 对于基于 VSTest 的测试项目，可通过从“Visual Studio 测试”菜单选项中选择“测试”->“测试设置”->“默认处理器体系结构为 X64”来完成。
+    - 对于基于 VSTest 的测试项目，可通过从“Visual Studio 测试”  菜单选项中选择“测试”  ->“测试设置”  ->“默认处理器体系结构为 X64”  来完成。
 
-    - 对于本地部署的 ASP.NET Web 应用程序，可以通过在“工具”->“选项”->“项目和解决方案”->“Web 项目”下勾选“对网站和项目使用 IIS Express 的 64 位版”来完成。
+    - 对于本地部署的 ASP.NET Web 应用程序，可以通过在“工具”->“选项”->“项目和解决方案”->“Web 项目”下勾选“对网站和项目使用 IIS Express 的 64 位版”来完成。     
 
-    - 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”中选择“64 位平台”来完成。
+    - 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”  中选择“64 位平台”  来完成。
 
 ## <a name="indexing-policy"></a>索引策略
  
