@@ -38,7 +38,7 @@ ms.locfileid: "64681948"
 
 * **下载** 24 个 [NYC 出租车行程数据](https://www.andresmh.com/nyctaxitrips)文件（12 个行程文件和 12 个费用文件），
 * 将所有文件**解压缩**为 .csv 文件，然后
-* 将它们上传到 Azure 存储帐户的默认设置（或适当的容器）；在[将 Azure 存储与 Azure HDInsight 群集配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)主题中介绍了用于这类帐户的选项。 可在此[文章](hive-walkthrough.md#upload)中找到将 .csv 文件上传到存储帐户的默认容器的流程。
+* 将它们上传  到 Azure 存储帐户的默认设置（或适当的容器）；在[将 Azure 存储与 Azure HDInsight 群集配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)主题中介绍了用于这类帐户的选项。 可在此[文章](hive-walkthrough.md#upload)中找到将 .csv 文件上传到存储帐户的默认容器的流程。
 
 ## <a name="submit"></a>如何提交 Hive 查询
 可通过以下方法提交 Hive 查询：
@@ -137,19 +137,19 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 
 以下是需要插入的字段以及其他配置的说明：
 
-* **\<数据库名称\>**：要创建的数据库的名称。 如果只想使用默认数据库，则可以省略 *create database...* 查询。
-* **\<表名称\>**：要在指定的数据库内创建的表的名称。 如果你要使用默认的数据库，则该表可通过 *\<表名称\>* 而非 \<数据库名称\> 直接引用。
-* **\<字段分隔符\>**：用于分隔数据文件（要上传到 Hive 表）中的字段的分隔符。
-* **\<行分隔符\>**：用于分隔数据文件中的行的分隔符。
-* **\<存储位置\>**：用于保存 Hive 表数据的 Azure 存储位置。 如果你未指定 *LOCATION \<存储位置\>*，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/ 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为 *'wasb:///<directory 1>/'* 或 *'wasb:///<directory 1>/<directory 2>/'* 等。执行查询后，相对目录会创建在默认容器中。
-* **TBLPROPERTIES("skip.header.line.count"="1")**：如果数据文件具有标题行，则必须在 create table 查询的**末尾处**添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
+* **\<数据库名称\>** ：要创建的数据库的名称。 如果只想使用默认数据库，则可以省略 *create database...* 查询。
+* **\<表名称\>** ：要在指定的数据库内创建的表的名称。 如果你要使用默认的数据库，则该表可通过 *\<表名称\>* 而非 \<数据库名称\> 直接引用。
+* **\<字段分隔符\>** ：用于分隔数据文件（要上传到 Hive 表）中的字段的分隔符。
+* **\<行分隔符\>** ：用于分隔数据文件中的行的分隔符。
+* **\<存储位置\>** ：用于保存 Hive 表数据的 Azure 存储位置。 如果你未指定 *LOCATION \<存储位置\>* ，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/  目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为 *'wasb:///<directory 1>/'* 或 *'wasb:///<directory 1>/<directory 2>/'* 等。执行查询后，相对目录会创建在默认容器中。
+* **TBLPROPERTIES("skip.header.line.count"="1")** ：如果数据文件具有标题行，则必须在 create table  查询的**末尾处**添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
 
 ## <a name="load-data"></a>将数据加载到 Hive 表
 以下是将数据加载到 Hive 表的 Hive 查询。
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<Blob 数据的路径\>**：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器*\<对 blob 数据的路径\>* 应采用格式*wasb: / /\<此容器中目录 > /\<blob 文件名称 >*。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下， *\<对 blob 数据的路径\>* 应采用格式*wasb: / /\<容器名称 >\<存储帐户名称 >.blob.core.windows.net/\<blob 文件名称 >*。
+* **\<Blob 数据的路径\>** ：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器 *\<对 blob 数据的路径\>* 应采用格式 *wasb: / /\<此容器中目录 > /\<blob 文件名称 >* 。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下， *\<对 blob 数据的路径\>* 应采用格式*wasb: / /\<容器名称 >\<存储帐户名称 >.blob.core.windows.net/\<blob 文件名称 >* 。
 
   > [!NOTE]
   > 要上传到 Hive 表的 blob 数据必须位于 Hadoop 群集存储帐户的默认或其他容器中。 否则，*LOAD DATA* 查询会失败，并声称它无法访问数据。
@@ -225,7 +225,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-在所有数据都已插入到 *\<数据库名称\>.\<ORC 表名称\>* 后，使用以下查询可以安全地删除 *\<外部 textfile 表名称\>*：
+在所有数据都已插入到 *\<数据库名称\>.\<ORC 表名称\>* 后，使用以下查询可以安全地删除 *\<外部 textfile 表名称\>* ：
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

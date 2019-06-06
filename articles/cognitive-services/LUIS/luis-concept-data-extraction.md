@@ -24,16 +24,16 @@ ms.locfileid: "65150682"
 最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所需的数据。
 
 ## <a name="data-location-and-key-usage"></a>数据位置和密钥用法
-LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境。
+LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境  。
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-在编辑 LUIS 应用时，`appID` 可在该 LUIS 应用的“设置”页上找到，也可在 URL 中找到（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
+在编辑 LUIS 应用时，`appID` 可在该 LUIS 应用的“设置”  页上找到，也可在 URL 中找到（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
 
-HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息。 终结点 URL 位于 [LUIS](luis-reference-regions.md) 网站的“管理”部分的“密钥和终结点”页上。
+HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息  。 终结点 URL 位于 [LUIS](luis-reference-regions.md) 网站的“管理”  部分的“密钥和终结点”  页上。
 
 ## <a name="data-from-intents"></a>意向中的数据
-主数据是评分最高的意向名称。 使用 `MyStore` [快速入门](luis-quickstart-intents-only.md)，则终结点响应为：
+主数据是评分最高的意向名称  。 使用 `MyStore` [快速入门](luis-quickstart-intents-only.md)，则终结点响应为：
 
 ```JSON
 {
@@ -118,7 +118,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 陈述中的单个单词或短语可以匹配多个实体。 在这种情况下，会返回每个匹配实体及其评分。
 
-所有实体都返回在终结点响应中的“实体”数组中：
+所有实体都返回在终结点响应中的“实体”数组中  ：
 
 ```JSON
 "entities": [
@@ -408,17 +408,17 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="names-of-people"></a>人的姓名
 
-人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用任一预构建**[personName](luis-reference-prebuilt-person.md)** 实体或**[简单实体](luis-concept-entity-types.md#simple-entity)** 与[角色](luis-concept-roles.md)的第一个和最后一个名称。 
+人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用任一预构建 **[personName](luis-reference-prebuilt-person.md)** 实体或 **[简单实体](luis-concept-entity-types.md#simple-entity)** 与[角色](luis-concept-roles.md)的第一个和最后一个名称。 
 
 如果您使用简单的实体，请确保提供跨所有意图包括无使用语音样本，在不同长度的查询文本和语音样本中的不同部分中的第一个和最后一个名称的示例意向。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ### <a name="names-of-places"></a>地名
 
-设置和城市、 县、 状态、 省和国家/地区等的已知位置名称。 使用预生成的实体**[geographyV2](luis-reference-prebuilt-geographyv2.md)** 提取位置信息。
+设置和城市、 县、 状态、 省和国家/地区等的已知位置名称。 使用预生成的实体 **[geographyV2](luis-reference-prebuilt-geographyv2.md)** 提取位置信息。
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
 
-一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是难度最大数据提取的类型。 以开头**[简单实体](luis-concept-entity-types.md#simple-entity)** ，并添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是难度最大数据提取的类型。 以开头 **[简单实体](luis-concept-entity-types.md#simple-entity)** ，并添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ## <a name="pattern-roles-data"></a>模式角色数据
 角色是实体间的上下文差别。

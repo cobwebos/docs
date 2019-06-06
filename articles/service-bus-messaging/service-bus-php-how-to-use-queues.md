@@ -163,7 +163,7 @@ catch(ServiceException $e){
 }
 ```
 
-消息发送到 （和接收自） Service Bus 队列是的实例[BrokeredMessage] [ BrokeredMessage]类。 [BrokeredMessage][BrokeredMessage] 对象包含一组标准方法和属性，用于保存特定于自定义应用程序的属性，以及大量随机应用程序数据。
+消息发送到 （和接收自） Service Bus 队列是的实例[BrokeredMessage][BrokeredMessage]类。 [BrokeredMessage][BrokeredMessage] 对象包含一组标准方法和属性，用于保存特定于自定义应用程序的属性，以及大量随机应用程序数据。
 
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 队列大小的上限为 5 GB。
 
