@@ -90,12 +90,12 @@ Blob 删除事件的架构与此类似：
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | string | 事件主题的发布者定义路径。 |
 | eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | string | 事件的唯一标识符。 |
-| 数据 | 对象 | Blob 存储事件数据。 |
+| data | 对象 | Blob 存储事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -104,7 +104,7 @@ Blob 删除事件的架构与此类似：
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | api | string | 触发事件的操作。 |
-| ClientRequestId | string | 客户端生成的不透明值，限制为 1-KB 字符。 启用存储分析日志记录后，该值会记录在分析日志中。 |
+| clientRequestId | string | 客户端生成的不透明值，限制为 1-KB 字符。 启用存储分析日志记录后，该值会记录在分析日志中。 |
 | requestId | string | 请求的唯一标识符。 可使用它来排查请求问题。 |
 | eTag | string | 可用于根据条件执行操作的值。 |
 | contentType | string | 为 Blob 指定的内容类型。 |
