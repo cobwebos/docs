@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: a0678dc42d8c22c8dcc20137cf70f81a1eb4f61c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496072"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473682"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -42,15 +42,6 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 是用于
 - 开展**访问评审**，以确保用户仍然需要角色
 - 下载**审核历史记录**进行内部或外部审核
 
-## <a name="prerequisites"></a>先决条件
-
-若要使用 PIM，必须拥有以下付费或试用许可证之一。 有关详细信息，请参阅[什么是 Azure Active Directory？](../fundamentals/active-directory-whatis.md)。
-
-- Azure AD Premium P2
-- 企业移动性 + 安全性 (EMS) E5
-
-有关用户许可证的信息，请参阅[使用 PIM 所要满足的许可证要求](subscription-requirements.md)。
-
 ## <a name="terminology"></a>术语
 
 为了更好地理解 PIM 及其文档，应查看以下术语。
@@ -71,7 +62,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 是用于
 
 ## <a name="what-does-pim-look-like"></a>PIM 的布局是怎样的？
 
-设置 PIM 时，左侧导航菜单中会显示“任务”、“管理”和“活动”选项。 管理员可以选择管理 **Azure AD 角色**或 **Azure 资源**角色。 选择要管理的角色类型时，会看到该角色类型适用的一组类似选项。
+设置 PIM 时，左侧导航菜单中会显示“任务”、“管理”和“活动”选项。    管理员可以选择管理 **Azure AD 角色**或 **Azure 资源**角色。 选择要管理的角色类型时，会看到该角色类型适用的一组类似选项。
 
 ![Azure 门户中的 PIM 屏幕截图](./media/pim-configure/pim-overview.png)
 
@@ -104,6 +95,12 @@ PIM 支持以下方案：
 - 请求激活需要审批的角色
 - 查看要激活的请求的状态
 - 批准激活后，在 Azure AD 中完成任务
+
+## <a name="license-requirements"></a>许可要求
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+有关用户许可证的信息，请参阅[使用 PIM 所要满足的许可证要求](subscription-requirements.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

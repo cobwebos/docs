@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6510099f9fb145951cbce1ea168b36dba5f76e07
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: db9424ff4ddd2663ae1342294181dc885c6ed937
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540917"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479553"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>什么是 Azure 资源的基于角色的访问控制 (RBAC)？
 
@@ -50,18 +50,18 @@ RBAC 是在 [Azure 资源管理器](../azure-resource-manager/resource-group-ove
 
 ### <a name="security-principal"></a>安全主体
 
-安全主体是一个对象，表示请求访问 Azure 资源的用户、组、服务主体或托管标识。
+安全主体是一个对象，表示请求访问 Azure 资源的用户、组、服务主体或托管标识。 
 
 ![角色分配的安全主体](./media/overview/rbac-security-principal.png)
 
 - 用户 - 在 Azure Active Directory 中具有配置文件的人员。 也可以将角色分配到其他租户中的用户。 有关其他组织中的用户的信息，请参阅 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md)。
 - 组 - 在 Azure Active Directory 中创建的一组用户。 将某个角色分配到某个组时，该组中的所有用户都拥有该角色。 
-- 服务主体 - 应用程序或服务用来访问特定 Azure 资源的安全标识。 可将服务主体视为应用程序的用户标识（用户名和密码或证书）。
+- 服务主体 - 应用程序或服务用来访问特定 Azure 资源的安全标识。 可将服务主体视为应用程序的用户标识（用户名和密码或证书）。 
 - 托管标识 - Azure Active Directory 中由 Azure 自动托管的标识。 在开发云应用程序时，通常使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)来管理用于向 Azure 服务进行身份验证的凭据。
 
 ### <a name="role-definition"></a>角色定义
 
-角色定义是权限的集合。 它有时简称为“角色”。 角色定义列出可以执行的操作，例如读取、写入和删除。 角色可以是高级别的（例如所有者），也可以是特定的（例如虚拟机读取者）。
+角色定义是权限的集合。  它有时简称为“角色”  。 角色定义列出可以执行的操作，例如读取、写入和删除。 角色可以是高级别的（例如所有者），也可以是特定的（例如虚拟机读取者）。
 
 ![角色分配的角色定义](./media/overview/rbac-role-definition.png)
 
@@ -78,7 +78,7 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 
 ### <a name="scope"></a>范围
 
-范围是访问权限适用于的资源集。 分配角色时，可以通过定义范围来进一步限制允许的操作。 如果你想要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则使用范围就很有帮助。
+范围是访问权限适用于的资源集。  分配角色时，可以通过定义范围来进一步限制允许的操作。 如果你想要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则使用范围就很有帮助。
 
 在 Azure 中，可在多个级别指定范围：[管理组](../governance/management-groups/index.md)、订阅、资源组或资源。 范围采用父子关系结构。
 
@@ -92,7 +92,7 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 
 ### <a name="role-assignments"></a>角色分配
 
-角色分配是出于授予访问权限的目的，将角色定义附加到特定范围内的用户、组、服务主体或托管标识的过程。 通过创建角色分配来授予访问权限，通过删除角色分配来撤销访问权限。
+角色分配是出于授予访问权限的目的，将角色定义附加到特定范围内的用户、组、服务主体或托管标识的过程。  通过创建角色分配来授予访问权限，通过删除角色分配来撤销访问权限。
 
 下图显示了角色分配的示例。 在此示例中，为“营销”组分配了医药销售资源组的[参与者](built-in-roles.md#contributor)角色。 这意味着，“营销”组中的用户可以在医药销售资源组中创建或管理任何 Azure 资源。 “营销”用户无权访问医药销售资源组外部的资源，除非他们属于另一个角色分配。
 
@@ -108,7 +108,7 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 
 ## <a name="deny-assignments"></a>拒绝分配
 
-以前，RBAC 是一种仅允许模型，没有拒绝功能，但 RBAC 现在以有限方式支持拒绝分配。 *拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组、服务主体或托管标识，以便拒绝访问。 角色分配定义了一组允许的操作，而拒绝分配定义了一组不允许的操作。 换而言之，即使角色分配授予用户访问权限，拒绝分配也会阻止用户执行指定的操作。 拒绝分配优先于角色分配。 有关详细信息，请参阅[了解 Azure 资源的拒绝分配](deny-assignments.md)，以及[使用 Azure 门户查看 Azure 资源的拒绝分配](deny-assignments-portal.md)。
+以前，RBAC 是一种仅允许模型，没有拒绝功能，但 RBAC 现在以有限方式支持拒绝分配。 *拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组、服务主体或托管标识，以便拒绝访问。 角色分配定义了一组允许  的操作，而拒绝分配定义了一组不允许  的操作。 换而言之，即使角色分配授予用户访问权限，拒绝分配也会阻止用户执行指定的操作。 拒绝分配优先于角色分配。 有关详细信息，请参阅[了解 Azure 资源的拒绝分配](deny-assignments.md)，以及[使用 Azure 门户查看 Azure 资源的拒绝分配](deny-assignments-portal.md)。
 
 > [!NOTE]
 > 此时，可以添加自己的拒绝分配的唯一方法是使用 Azure 蓝图。 有关详细信息，请参阅[使用 Azure 蓝图资源锁保护新资源](../governance/blueprints/tutorials/protect-new-resources.md)。
@@ -132,6 +132,10 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 1. 如果用户在请求的范围内没有具有该操作的角色，则不授予访问权限。 否则，Azure 资源管理器会检查是否适用拒绝分配。
 
 1. 如果拒绝分配适用，则阻止访问。 否则授予访问权限。
+
+## <a name="license-requirements"></a>许可要求
+
+[!INCLUDE [Azure AD free license](../../includes/active-directory-free-license.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
