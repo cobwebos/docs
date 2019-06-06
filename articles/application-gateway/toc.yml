@@ -73,6 +73,8 @@
           href: waf-overview.md
         - name: WAF 配置
           href: application-gateway-waf-configuration.md
+        - name: 自定义规则
+          href: custom-waf-rules-overview.md
     - name: 运行状况监视
       items:
         - name: 运行状况探测
@@ -141,6 +143,12 @@
           href: application-gateway-customize-waf-rules-powershell.md
         - name: Azure CLI
           href: application-gateway-customize-waf-rules-cli.md
+    - name: WAF 自定义规则
+      items:
+        - name: 自定义规则示例
+          href: create-custom-waf-rules.md
+        - name: 使用自定义规则配置 WAF
+          href: configure-waf-custom-rules.md
     - name: 按 URL 路由
       items:
         - name: Azure PowerShell

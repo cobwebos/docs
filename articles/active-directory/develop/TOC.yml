@@ -235,6 +235,8 @@
               href: msal-js-sso.md
             - name: 提示行为 (JS)
               href: msal-js-prompt-behavior.md
+            - name: ADFS 支持 (.NET)
+              href: msal-net-adfs-support.md
             - name: 与 Azure AD B2C 集成
               items:
                 - name: JavaScript

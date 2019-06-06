@@ -226,6 +226,8 @@
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
       items:
+        - name: 按审核范围划分的 Azure 服务
+          href: ./compliance/azure-services-in-fedramp-auditscope.md
         - name: 数据分析
           href: ./blueprints/fedramp-analytics-overview.md
         - name: 数据仓库

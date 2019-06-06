@@ -1,8 +1,8 @@
-- name: 设备管理文档
+- name: 设备标识文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure AD 中的设备管理？
+    - name: 设备标识是什么？
       href: overview.md
     - name: 什么是企业状态漫游？
       href: enterprise-state-roaming-overview.md
@@ -29,7 +29,7 @@
 - name: 操作指南
   expanded: true
   items:
-    - name: 使用 Azure 门户管理设备
+    - name: 管理设备标识
       href: device-management-azure-portal.md
     - name: 管理过时设备
       href: manage-stale-devices.md
