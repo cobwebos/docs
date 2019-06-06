@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 588fe452473ddc2434d92f90afbf8a0e1bc8c275
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5602298ffe60ad15d3daf52587c50357c310200c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795770"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480114"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>为 Azure VM 设置灾难恢复
 
@@ -35,7 +35,7 @@ ms.locfileid: "65795770"
 
 完成本教程：
 
-- 请确保了解[方案体系结构和组件](concepts-azure-to-azure-architecture.md)。
+- 查看[方案体系结构和组件](concepts-azure-to-azure-architecture.md)。
 - 在开始之前，请查看[支持要求](site-recovery-support-matrix-azure-to-azure.md)。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
@@ -74,7 +74,7 @@ ms.locfileid: "65795770"
 | * .blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | login.microsoftonline.com | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | *.hypervrecoverymanager.windowsazure.com | 允许 VM 与 Site Recovery 服务进行通信。 |
-| * .servicebus.windows.net | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
+| *.servicebus.windows.net | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 

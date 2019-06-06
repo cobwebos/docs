@@ -2,20 +2,20 @@
 title: 教程 - 授予对 ASP.NET Web API 的访问权限 - Azure Active Directory B2C | Microsoft Docs
 description: 有关如何使用 Active Directory B2C 保护 ASP.NET Web API 并通过 ASP.NET Web 应用程序对其进行调用的教程。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 77e3eaeffba862c727e021427e5f27967fcf35bd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6b93a7848e5c8516507c825d3064fb61a404e3cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687994"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507766"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 授予对 ASP.NET Web API 的访问权限
 
@@ -40,24 +40,24 @@ ms.locfileid: "64687994"
 Web API 资源需要先在租户中注册，然后才能接受并响应提供访问令牌的客户端应用程序所提出的受保护资源请求。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-4. 选择“应用程序”，然后选择“添加”。
-5. 输入应用程序的名称。 例如，“webapi1”。
-6. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。
-7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点。 本教程中的示例在本地运行并在 `https://localhost:44332` 上进行侦听。
-8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。 包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api`。
-9. 单击“创建”。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
+4. 选择“应用程序”，然后选择“添加”   。
+5. 输入应用程序的名称。 例如，“webapi1”  。
+6. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。   
+7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点  。 本教程中的示例在本地运行并在 `https://localhost:44332` 上进行侦听。
+8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。  包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api`。
+9. 单击“创建”。 
 10. 在属性页上，记录在配置 Web 应用程序时要使用的应用程序 ID。
 
 ## <a name="configure-scopes"></a>配置范围
 
 可通过范围控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 在本教程中，请使用作用域为 Web API 定义读取和写入权限。
 
-1. 选择“应用程序”，然后选择“webapi1”。
-2. 选择“已发布的范围”。
-3. 在“范围”中输入 `Hello.Read`，在“说明”中输入 `Read access to hello`。
-4. 在“范围”中输入 `Hello.Write`，在“说明”中输入 `Write access to hello`。
+1. 选择“应用程序”，然后选择“webapi1”   。
+2. 选择“已发布的范围”  。
+3. 在“范围”中输入 `Hello.Read`，在“说明”中输入 `Read access to hello`  。
+4. 在“范围”中输入 `Hello.Write`，在“说明”中输入 `Write access to hello`  。
 5. 单击“ **保存**”。
 
 可以使用已发布的范围向客户端应用程序授予访问 Web API 的权限。
@@ -66,11 +66,11 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 
 若要从应用程序调用受保护的 Web API，需授予应用程序访问该 API 的权限。 在先决条件教程中，已在 Azure AD B2C 中创建名为 *webapp1* 的 Web 应用程序。 使用此应用程序调用 Web API。
 
-1. 依次选择“应用程序”、“webapp1”。
-2. 依次选择“API 访问”、“添加”。
-3. 在“选择 API”下拉列表中，选择“webapi1”。
-4. 在“选择范围”下拉列表中，选择之前定义的“Hello.Read”和“Hello.Write”范围。
-5. 单击“确定”。
+1. 依次选择“应用程序”、“webapp1”   。
+2. 依次选择“API 访问”、“添加”   。
+3. 在“选择 API”下拉列表中，选择“webapi1”   。
+4. 在“选择范围”下拉列表中，选择之前定义的“Hello.Read”和“Hello.Write”范围    。
+5. 单击“确定”。 
 
 注册应用程序以调用受保护的 Web API。 用户通过 Azure AD B2C 进行身份验证，以便使用该应用程序。 该应用程序从 Azure AD B2C 获取授权，以访问受保护的 Web API。
 
@@ -135,15 +135,15 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 
 **TaskWebApp** 和 **TaskService** 项目都需要运行。 
 
-1. 在解决方案资源管理器中，右键单击解决方案并选择“设置启动项目...”。 
-2. 选择“多启动项目”。
-3. 将两个项目的“操作”更改为“启动”。
-4. 单击“确定”以保存配置。
+1. 在解决方案资源管理器中，右键单击解决方案并选择“设置启动项目...”。  
+2. 选择“多启动项目”。 
+3. 将两个项目的“操作”更改为“启动”。  
+4. 单击“确定”以保存配置。 
 5. 按 **F5** 运行这两个应用程序。 每个应用程序将在其自身的浏览器标签页中打开。`https://localhost:44316/` 为 Web 应用程序。
     `https://localhost:44332/` 为 Web API。
 
-6. 在 Web 应用程序中，单击“注册/登录”以登录到 Web 应用程序。 使用前面创建的帐户。 
-7. 登录后，单击“待办事项列表”并创建待办事项列表项。
+6. 在 Web 应用程序中，单击“注册/登录”以登录到 Web 应用程序。  使用前面创建的帐户。 
+7. 登录后，单击“待办事项列表”并创建待办事项列表项。 
 
 创建待办事项列表项时，Web 应用程序会向 Web API 发起生成待办事项列表项的请求。 受保护的 Web 应用程序将调用 Azure AD B2C 租户中的受保护 Web API。
 

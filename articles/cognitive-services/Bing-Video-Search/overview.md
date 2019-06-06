@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: f56893f830720c57c66eb4c17bb2771efbb73f6f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2f6be01a3aee4e156b7af184fa2537455fc73f3f
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "62124623"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386518"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>什么是必应视频搜索 API？
 
@@ -50,6 +50,6 @@ ms.locfileid: "62124623"
 
 ## <a name="see-also"></a>另请参阅
 
-* [必应视频搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) 参考页包含用来请求搜索结果的终结点、标头和查询参数的列表。
+* [必应视频搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) 参考页包含用来请求搜索结果的终结点、标头和查询参数的列表。
 
 * [必应使用和显示要求](./useanddisplayrequirements.md)指定了允许用户如何使用通过必应搜索 API 获得的内容和信息。

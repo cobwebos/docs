@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522071"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474698"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
 
@@ -44,15 +44,15 @@ ms.locfileid: "58522071"
 
 编辑文件 `App.config` 并添加 Active Directory 租户名称、服务终结点和用 `#####` 表示的订阅密钥。 你需要以下信息：
 
-    |密钥|说明|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Azure 媒体服务 (AMS) API 的终结点|
-    |`ClientSecret`|Azure 媒体服务的订阅密钥|
-    |`ClientId`|Azure 媒体服务的客户端 ID|
-    |`AzureAdTenantName`|表示组织的 Active Directory 租户名称|
-    |`ContentModeratorReviewApiSubscriptionKey`|内容审查器评论 API 的订阅密钥|
-    |`ContentModeratorApiEndpoint`|内容审查器 API 的终结点|
-    |`ContentModeratorTeamId`|内容审查器团队 ID|
+|密钥|说明|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Azure 媒体服务 (AMS) API 的终结点|
+|`ClientSecret`|Azure 媒体服务的订阅密钥|
+|`ClientId`|Azure 媒体服务的客户端 ID|
+|`AzureAdTenantName`|表示组织的 Active Directory 租户名称|
+|`ContentModeratorReviewApiSubscriptionKey`|内容审查器评论 API 的订阅密钥|
+|`ContentModeratorApiEndpoint`|内容审查器 API 的终结点|
+|`ContentModeratorTeamId`|内容审查器团队 ID|
 
 ## <a name="examine-the-main-code"></a>检查主代码
 

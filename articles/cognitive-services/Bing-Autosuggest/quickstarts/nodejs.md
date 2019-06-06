@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: b8f7fbe386400babac033de0efbaaabbe8832397
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: a8782951baccd63d3087ef0628a8fca31b9a4bc1
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010083"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390407"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>快速入门：使用必应自动建议 REST API 和 Node.js 建议搜索查询
 
@@ -37,7 +37,7 @@ ms.locfileid: "57010083"
     let https = require ('https');
     ```
 
-2. 为 API 终结点主机和路径、订阅密钥、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)和搜索词创建变量。
+2. 为 API 终结点主机和路径、订阅密钥、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和搜索词创建变量。
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -94,7 +94,7 @@ ms.locfileid: "57010083"
         };
         ```
 
-    2. 在调用数据标志时存储响应的正文
+    2. 在调用数据  标志时存储响应的正文
         
         ```javascript
         response.on ('data', function (d) {
@@ -191,4 +191,4 @@ ms.locfileid: "57010083"
 > [创建单页 Web 应用](../tutorials/autosuggest.md)
 
 - [什么是必应自动建议？](../get-suggested-search-terms.md)
-- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

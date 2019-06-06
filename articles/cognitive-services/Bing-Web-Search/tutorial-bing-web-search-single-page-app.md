@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 668c380f38f410083ffe7d2cd6690be447f614dc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798339"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390050"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 
@@ -80,7 +80,7 @@ npm install
 
 ## <a name="query-options"></a>查询选项
 
-HTML 表单包含用于映射到[必应 Web 搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) 中的查询参数的选项。 下表分类介绍了用户可如何使用示例应用筛选搜索结果：
+HTML 表单包含用于映射到[必应 Web 搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) 中的查询参数的选项。 下表分类介绍了用户可如何使用示例应用筛选搜索结果：
 
 | 参数 | 说明 |
 |-----------|-------------|
@@ -93,7 +93,7 @@ HTML 表单包含用于映射到[必应 Web 搜索 API v7](https://docs.microsof
 | `offset` | 隐藏的字段。 请求中第一个搜索结果的偏移量，它用于进行分页。 通过每个新的请求将其重置为 `0`。 |
 
 > [!NOTE]
-> 必应 Web 搜索 API 提供了额外的查询参数，可帮助优化搜索结果。 本示例仅使用其中一些参数。 有关可用参数的完整列表，请参阅[必应 Web 搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters)。
+> 必应 Web 搜索 API 提供了额外的查询参数，可帮助优化搜索结果。 本示例仅使用其中一些参数。 有关可用参数的完整列表，请参阅[必应 Web 搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)。
 
 `bingSearchOptions()` 会转换这些选项，使其与必应搜索 API 所要求的格式相一致。
 
@@ -130,9 +130,9 @@ function bingSearchOptions(form) {
 
 可将 `SafeSearch` 设置为 `strict`、`moderate` 或 `off`，其中 `moderate` 是必应 Web 搜索的默认值。 此表单使用一个具有两个状态的复选框。 在此片段中，将安全搜索设置为 `strict` 或 `off`，且不使用 `moderate`。
 
-如果选择任一“提升”复选框，则向查询添加 `answerCount` 参数。 使用 `promote` 参数时，`answerCount` 是必需的。 在此片段中，将值设置为 `9`，以返回所有可用的结果类型。
+如果选择任一“提升”复选框，则向查询添加 `answerCount` 参数  。 使用 `promote` 参数时，`answerCount` 是必需的。 在此片段中，将值设置为 `9`，以返回所有可用的结果类型。
 > [!NOTE]
-> 提升结果类型后，该类型不一定会包含在搜索结果中。 不过，提升可以提高此类结果的排名（相对于其通常的排名而言）。 若要将搜索限制为特定类型的结果，请使用 `responseFilter` 查询参数，或者调用更具体的终结点，例如必应图像搜索或必应新闻搜索。
+> 提升结果类型后，该类型不一定会包含在搜索结果中  。 不过，提升可以提高此类结果的排名（相对于其通常的排名而言）。 若要将搜索限制为特定类型的结果，请使用 `responseFilter` 查询参数，或者调用更具体的终结点，例如必应图像搜索或必应新闻搜索。
 
 将 `textDecoration` 和 `textFormat` 查询参数硬编码到脚本中，这两个参数可使搜索词在搜索结果中显示为粗体。 这些参数并非必需。
 
@@ -283,7 +283,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 请求成功并不表示搜索本身会成功。 如果搜索操作中出现错误，必应 Web 搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 如果请求速率受到限制，该 API 会返回空响应。
+> HTTP 请求成功并不表示搜索本身会成功  。 如果搜索操作中出现错误，必应 Web 搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 如果请求速率受到限制，该 API 会返回空响应。
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 

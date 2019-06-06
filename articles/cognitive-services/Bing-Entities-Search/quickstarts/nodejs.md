@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 8007d576a6b896f12423087cfd4a483d9171abc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 177e0ef0adab3b683657a9b872300cb38185d795
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104363"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384572"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>快速入门：使用 Node.js 向必应实体搜索 REST API 发送搜索请求
 
@@ -67,14 +67,14 @@ ms.locfileid: "58104363"
         };
         ```
 
-    2. 在调用数据标志时存储响应的正文
+    2. 在调用数据  标志时存储响应的正文
         ```javascript
         response.on('data', function (d) {
             body += d;
         });
         ```
 
-    3. 指示了 end 标志后，请分析并输出 JSON。
+    3. 指示了 end 标志后，请分析并输出 JSON  。
 
         ```javascript
         response.on ('end', function () {
@@ -179,4 +179,4 @@ ms.locfileid: "58104363"
 > [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
 * [什么是必应实体搜索 API？](../overview.md )
-* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

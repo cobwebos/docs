@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9c8d1fb234efd5df297082cfc1001f28ca1656
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2b9e4f5208eb1f6abb0d6fd786630c183a04ce50
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990379"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388868"
 ---
 # <a name="tutorial-integrate-workday-with-azure-active-directory"></a>教程：将 Workday 与 Azure Active Directory 集成
 
@@ -88,7 +88,7 @@ ms.locfileid: "65990379"
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 回复 URL 必须具有一个子域（例如：www、wd2、wd3、wd3-impl、wd5 和 wd5-impl）。
-    > 可以使用类似于 `http://www.myworkday.com` 的内容，但不能使用 `http://myworkday.com`。 请联系 [Workday 客户端支持团队](https://www.workday.com/partners-services/services/support.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 可以使用类似于 `http://www.myworkday.com` 的内容，但不能使用 `http://myworkday.com`。 请联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 6. Workday 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Workday 应用程序要求将 **nameidentifier** 与 **user.mail**、**UPN** 等进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
@@ -138,7 +138,7 @@ ms.locfileid: "65990379"
    > [!NOTE]
    > “环境”属性的值与租户 URL 的值绑定：  
    > 如果 Workday 租户 URL 的域名以 impl 开头（例如：*https:\//impl.workday.com/\<tenant\>/login-saml2.flex*），则“环境”属性必须设置为“实现”  。  
-   > 如果域名以其他内容开头，则需要联系 [Workday 客户端支持团队](https://www.workday.com/partners-services/services/support.html)，获取匹配的“环境”值  。
+   > 如果域名以其他内容开头，则需要联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)，获取匹配的“环境”值  。
 
 4. 在“SAML 设置”  部分中执行以下步骤：
 

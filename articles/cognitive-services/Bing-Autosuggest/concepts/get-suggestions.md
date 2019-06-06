@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 293dcaadfc20116455983b3fc0069f9e9df3f843
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 7cd81a937a3fe24e16e3f77e38686378aa28e10a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010542"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382686"
 ---
 # <a name="suggesting-query-terms"></a>建议查询词
 
@@ -23,7 +23,7 @@ ms.locfileid: "57010542"
 
 ## <a name="example-request"></a>示例请求
 
-以下示例显示了一个请求，该请求针对 *sail* 返回建议的查询字符串。 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#query) 查询参数时，请记得对用户的部分查询词进行 URL 编码。 例如，如果用户输入了 *sailing les*，请将 `q` 设置为 `sailing+les` 或 `sailing%20les`。
+以下示例显示了一个请求，该请求针对 *sail* 返回建议的查询字符串。 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#query) 查询参数时，请记得对用户的部分查询词进行 URL 编码。 例如，如果用户输入了 *sailing les*，请将 `q` 设置为 `sailing+les` 或 `sailing%20les`。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1
@@ -34,7 +34,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-以下响应列出了包含建议查询词的 [SearchAction](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#searchaction) 对象。
+以下响应列出了包含建议查询词的 [SearchAction](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#searchaction) 对象。
 
 ```json
 {

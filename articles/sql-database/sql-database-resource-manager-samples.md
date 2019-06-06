@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 1e2f55d334d432544ffc185e5c68dfe4325b2b09
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b967dc872529ec8b045df81542eec4c555b17a6c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59356820"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418431"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL 数据库的 Azure 资源管理器模板
 
@@ -33,7 +33,6 @@ ms.locfileid: "59356820"
 | [逻辑服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | 此 Azure 资源管理器模板创建 Azure SQL 数据库的逻辑服务器。 |
 | [弹性池](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | 使用此模板可以部署新的弹性池，并在其中分配新的关联 SQL Server 和新的 SQL 数据库。 |
 | [故障转移组](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | 此模板创建两个 Azure SQL 逻辑服务器、一个 SQL 数据库和一个故障转移组。|
-| [高级威胁防护](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-advanced-threat-protection-server-policy) | 使用此模板可以部署一个启用了高级威胁防护的 Azure SQL 逻辑服务器和可选的 Azure SQL 数据库。 SQL 高级威胁防护是高级 SQL 安全功能的统一程序包。|
 | [威胁检测](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | 使用此模板可以部署启用了威胁检测的 Azure SQL 逻辑服务器和一组 Azure SQL 数据库。对于每个数据库，需要提供用于接收警报的电子邮件地址。 威胁检测是 SQL 高级威胁防护 (ATP) 产品/服务的一部分，它提供一个安全层来应对 SQL 服务器和数据库受到的潜在威胁。|
 | [在 Azure Blob 存储中审核](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | 使用此模板可以部署启用了审核的 Azure SQL 逻辑服务器，以将审核日志写入 Blob 存储。 Azure SQL 数据库审核会跟踪数据库事件，并将这些事件写入到可放入 Azure 存储帐户、OMS 工作区或事件中心的审核日志。|
 | [在 Azure 事件中心审核](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | 使用此模板可以部署启用了审核的 Azure SQL 服务器，以将审核日志写入现有的事件中心。 若要将审核事件发送到事件中心，请使用 `Enabled` `State` 指定审核设置，并将 `IsAzureMonitorTargetEnabled` 设置为 `true`。 此外，请在 `master` 数据库中使用 `SQLSecurityAuditEvents` 诊断日志类别配置诊断设置（以实现服务器级审核）。 Azure SQL 数据库和 SQL 数据仓库审核会跟踪数据库事件，并将这些事件写入到可放入 Azure 存储帐户、OMS 工作区或事件中心的审核日志。|

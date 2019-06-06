@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2deaa0ed8b21d5e091fe5d3b3e6986eaf2340281
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078119"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514711"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
@@ -59,10 +59,10 @@ ms.locfileid: "58078119"
 
 要做的第一件事是在 Visual Studio 中设置项目。
 
-1. 打开 Visual Studio。 然后选择“文件”>“新建”>“项目”。
-2. 在左侧面板中，找到并选择“Visual C#”。 然后在中间面板中选择“WPF 应用(.NET Framework)”。
+1. 打开 Visual Studio。 然后选择“文件”>“新建”>“项目”。 
+2. 在左侧面板中，找到并选择“Visual C#”。  然后在中间面板中选择“WPF 应用(.NET Framework)”。 
    ![在 Visual Studio 中创建 WPF 应用](media/create-wpf-project-visual-studio.png)
-3. 为项目命名，将框架版本设置为 **.NET Framework 4.5.2 或更高版本**，然后单击“确定”。
+3. 为项目命名，将框架版本设置为 **.NET Framework 4.5.2 或更高版本**，然后单击“确定”。 
 4. 现已创建项目。 你会注意到，有两个选项卡已打开：`MainWindow.xaml` 和 `MainWindow.xaml.cs`。 在整个教程中，我们会将代码添加到这两个文件。 第一个文件用于应用的用户界面；第二个文件用于调用文本翻译和必应拼写检查。
    ![检查环境](media/blank-wpf-project.png)
 
@@ -76,13 +76,13 @@ ms.locfileid: "58078119"
 
 将程序集添加到项目，以序列化和反序列化对象，以及管理 HTTP 请求和响应。
 
-1. 在 Visual Studio 的解决方案资源管理器中找到你的项目（在右侧面板中）。 右键单击该项目，然后选择“添加”>“引用...”打开“引用管理器”。
+1. 在 Visual Studio 的解决方案资源管理器中找到你的项目（在右侧面板中）。 右键单击该项目，然后选择“添加”>“引用...”打开“引用管理器”。  
    ![添加程序集引用](media/add-assemblies-sample.png)
 2. “程序集”选项卡列出了可供引用的所有 .NET Framework 程序集。 使用屏幕右上方的搜索栏来搜索这些引用，并将其添加到项目：
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization?view=netframework-4.7.2)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
-   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
-3. 添加对项目的这些引用后，可以单击“确定”关闭“引用管理器”。
+   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
+   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
+3. 添加对项目的这些引用后，可以单击“确定”关闭“引用管理器”。  
 
 > [!NOTE]
 > 若要详细了解程序集引用，请参阅[如何：使用引用管理器添加或删除引用](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2017)。
@@ -91,11 +91,11 @@ ms.locfileid: "58078119"
 
 我们的应用将使用 NewtonSoft.Json 来反序列化 JSON 对象。 遵照以下说明安装相应的包。
 
-1. 在 Visual Studio 的解决方案资源管理器中找到你的项目，并右键单击该项目。 选择“管理 NuGet 包...”。
-2. 找到并选择“浏览”选项卡。
+1. 在 Visual Studio 的解决方案资源管理器中找到你的项目，并右键单击该项目。 选择“管理 NuGet 包...”。 
+2. 找到并选择“浏览”选项卡。 
 3. 在搜索栏中键入 [NewtonSoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)。
    ![找到并安装 NewtonSoft.Json](media/add-nuget-packages.png)
-4. 选择该包并单击“安装”。
+4. 选择该包并单击“安装”。 
 5. 安装完成后，关闭该选项卡。
 
 ## <a name="create-a-wpf-form-using-xaml"></a>使用 XAML 创建 WPF 窗体
@@ -108,7 +108,7 @@ ms.locfileid: "58078119"
 
 用户界面包括以下组件：
 
-| Name | 类型 | 说明 |
+| 名称 | 类型 | 说明 |
 |------|------|-------------|
 | `FromLanguageComboBox` | 组合框 | 显示 Microsoft 文本翻译支持的语言列表。 用户选择他们要进行翻译的语言。 |
 | `ToLanguageComboBox` | 组合框 | 显示与 `FromComboBox` 相同的语言列表，但用于选择用户要翻译到的语言。 |
@@ -170,7 +170,7 @@ ms.locfileid: "58078119"
 `MainWindow.xaml.cs` 包含用于控制应用的代码。 在接下来的几个部分，我们将添加代码以填充下拉菜单，并调用文本翻译和必应拼写检查公开的几个 API。
 
 * 启动程序并实例化 `MainWindow` 时，将调用文本翻译 API 的 `Languages` 方法来检索和填充语言选择下拉菜单。 此操作只会在每个会话开始时发生一次。
-* 单击“翻译”按钮时，将检索用户选择的语言和文本、针对输入执行拼写检查，然后向用户显示翻译内容和检测到的语言。
+* 单击“翻译”按钮时，将检索用户选择的语言和文本、针对输入执行拼写检查，然后向用户显示翻译内容和检测到的语言。 
   * 调用文本翻译 API 的 `Translate` 方法来翻译 `TextToTranslate` 中的文本。 此调用还包括使用下拉菜单选择的 `to` 和 `from` 语言。
   * 调用文本翻译 API 的 `Detect` 方法来确定 `TextToTranslate` 的文本语言。
   * 使用必应拼写检查来验证 `TextToTranslate` 并调整拼写错误。
@@ -322,7 +322,7 @@ ms.locfileid: "58078119"
 
 ## <a name="populate-language-drop-down-menus"></a>填充语言下拉菜单
 
-用户界面是使用 XAML 定义的，因此除了调用 `InitializeComponent()` 以外，不需要执行过多的操作即可对其进行设置。 需要做的一件事是使用 `PopulateLanguageMenus()` 方法将友好的语言名称添加到“翻译源语言”和“翻译目标语言”下拉菜单。
+用户界面是使用 XAML 定义的，因此除了调用 `InitializeComponent()` 以外，不需要执行过多的操作即可对其进行设置。 需要做的一件事是使用 `PopulateLanguageMenus()` 方法将友好的语言名称添加到“翻译源语言”和“翻译目标语言”下拉菜单。  
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
 2. 将以下代码添加到项目中的 `GetLanguagesForTranslate()` 方法下面：
@@ -347,12 +347,12 @@ ms.locfileid: "58078119"
    // In the following sections, we'll add code below this.
    ```
 
-此方法循环访问 `languageCodesAndTitles` 字典并将每个密钥添加到两个菜单。 填充菜单后，默认的源语言和目标语言将分别设置为“检测”和“英语”。
+此方法循环访问 `languageCodesAndTitles` 字典并将每个密钥添加到两个菜单。 填充菜单后，默认的源语言和目标语言将分别设置为“检测”和“英语”。  
 
 > [!TIP]
-> 如果没有为菜单设置默认选择，则用户可以单击“翻译”而无需选择“目标语言”或“源语言”。 默认设置消除了处理此问题的需要。
+> 如果没有为菜单设置默认选择，则用户可以单击“翻译”  而无需选择“目标语言”或“源语言”。 默认设置消除了处理此问题的需要。
 
-初始化 `MainWindow` 并创建用户界面后，只有在单击“翻译”按钮之后，此代码才会运行。
+初始化 `MainWindow` 并创建用户界面后，只有在单击“翻译”按钮之后，此代码才会运行。 
 
 ## <a name="detect-language-of-source-text"></a>检测源文本的语言
 
@@ -412,7 +412,7 @@ ms.locfileid: "58078119"
 
 ## <a name="spell-check-the-source-text"></a>对源文本执行拼写检查
 
-现在，我们将创建一个方法，用于通过必应拼写检查 API 对源文本执行拼写检查。 这可以确保文本翻译 API 返回准确的翻译。 单击“翻译”按钮时，对源文本所做的任何更正将连同翻译请求一起传递。
+现在，我们将创建一个方法，用于通过必应拼写检查 API 对源文本执行拼写检查。 这可以确保文本翻译 API 返回准确的翻译。 单击“翻译”按钮时，对源文本所做的任何更正将连同翻译请求一起传递。 
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
 2. 将以下代码添加到项目中的 `DetectLanguage()` 方法下面：
@@ -476,7 +476,7 @@ private string CorrectSpelling(string text)
 
 ## <a name="translate-text-on-click"></a>单击后翻译文本
 
-要做的最后一件事是，创建一个在用户界面中单击“翻译”按钮时要调用的方法。
+要做的最后一件事是，创建一个在用户界面中单击“翻译”按钮时要调用的方法。 
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
 2. 将以下代码添加到项目中的 `CorrectSpelling()` 方法下面并保存：  
@@ -553,7 +553,7 @@ private string CorrectSpelling(string text)
    }
    ```
 
-第一步是获取“源”和“目标”语言，以及用户在窗体中输入的文本。 如果源语言设置为“检测”，则调用 `DetectLanguage()` 来确定源文本的语言。 文本可能采用了翻译 API 不支持的语言。 在这种情况下，会显示一条消息来通知用户，并返回且不翻译文本。
+第一步是获取“源”和“目标”语言，以及用户在窗体中输入的文本。 如果源语言设置为“检测”，则调用 `DetectLanguage()` 来确定源文本的语言。  文本可能采用了翻译 API 不支持的语言。 在这种情况下，会显示一条消息来通知用户，并返回且不翻译文本。
 
 如果源语言是英语（无论是指定的还是检测到的），将使用 `CorrectSpelling()` 进行文本拼写检查并应用任何更正。 更正的文本将添加回到文本区域，使用户能够看到已做出更正。
 
@@ -563,7 +563,7 @@ private string CorrectSpelling(string text)
 
 ## <a name="run-your-wpf-app"></a>运行 WPF 应用
 
-现已使用 WPF 生成了一个可正常运行的翻译应用。 若要运行该应用，请在 Visual Studio 中单击“启动”按钮。
+现已使用 WPF 生成了一个可正常运行的翻译应用。 若要运行该应用，请在 Visual Studio 中单击“启动”按钮。 
 
 ## <a name="source-code"></a>源代码
 

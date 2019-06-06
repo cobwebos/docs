@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 65e28b557a3708c155bf80f21a784374c4497783
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60648123"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383042"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>什么是必应 Web 搜索 API？
 
@@ -50,5 +50,5 @@ ms.locfileid: "60648123"
 
 * 根据 [Python 快速入门](quickstarts/python.md)中的说明对必应 Web 搜索 API 进行第一次调用。  
 * [生成单页 Web 应用](tutorial-bing-web-search-single-page-app.md)。
-* 查看 [Web 搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)文档。  
+* 查看 [Web 搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)文档。  
 * 详细了解必应 Web 搜索的[使用和显示要求](UseAndDisplayRequirements.md)。  
