@@ -12,12 +12,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 18dde6b028365cc04343b6d2f461cdb8c1a2bede
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 3a0f3154142dc02a9ab48bc288c543b02fef46ea
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074336"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389068"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库
 
@@ -41,22 +41,22 @@ ms.locfileid: "65074336"
 
 若要创建包含 Adventure Works LT 示例数据的单一数据库，请执行以下操作：
 
-1. 在 Azure 门户的左上角选择“创建资源”。
-2. 选择“数据库”，然后选择“SQL 数据库”打开“创建 SQL 数据库”页。
+1. 在 Azure 门户的左上角选择“创建资源”。 
+2. 选择“数据库”，然后选择“SQL 数据库”打开“创建 SQL 数据库”页。   
 
    ![创建单一数据库](./media/sql-database-get-started-portal/create-database-1.png)
 
-3. 在“项目详细信息”部分的“基本信息”选项卡上，键入或选择以下值：
+3. 在“项目详细信息”部分的“基本信息”选项卡上，键入或选择以下值：  
 
    - **订阅**：下拉列表并选择正确的订阅（如果它没有出现）。
-   - **资源组**：选择“新建”，键入 `myResourceGroup`，然后选择“确定”。
+   - **资源组**：选择“新建”，键入 `myResourceGroup`，然后选择“确定”   。
 
      ![“新建 SQL 数据库 - 基本信息”选项卡](media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. 在“数据库详细信息”部分，键入或选择以下值：
+4. 在“数据库详细信息”部分，键入或选择以下值： 
 
    - **数据库名称**：输入 `mySampleDatabase` 。
-   - **服务器**：选择“新建”并输入以下值，然后选择“创建”。
+   - **服务器**：选择“新建”并输入以下值，然后选择“创建”。  
        - **服务器名称**：键入 `mysqlserver` 和一些数字，使名称唯一。
        - **服务器管理员登录名**：键入 `azureuser`。
        - **密码**：键入符合密码要求的复杂密码。
@@ -65,46 +65,46 @@ ms.locfileid: "65074336"
          ![新建服务器](media/sql-database-get-started-portal/new-server.png)
 
       > [!IMPORTANT]
-      > 请记得记录服务器管理员登录名和密码，以便可以登录服务器和数据库以获取此快速入门和其他快速入门。 如果忘记了登录名或密码，可在“SQL 服务器”页上获取登录名或重置密码。 若要打开“SQL 服务器”页，请在创建数据库后在数据库“概述”页上选择服务器名称。
+      > 请记得记录服务器管理员登录名和密码，以便可以登录服务器和数据库以获取此快速入门和其他快速入门。 如果忘记了登录名或密码，可在“SQL 服务器”页上获取登录名或重置密码  。 若要打开“SQL 服务器”页，请在创建数据库后在数据库“概述”页上选择服务器名称   。
 
         ![SQL 数据库详细信息](media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - **想要使用 SQL 弹性池**：选择“否”选项。
-   - **计算 + 存储**：选择“配置数据库”，对于此快速入门，选择“基于 vCore 的购买选项”
+   - **想要使用 SQL 弹性池**：选择“否”选项。 
+   - **计算 + 存储**：选择“配置数据库”，对于此快速入门，选择“基于 vCore 的购买选项”  
 
      ![基于 vCore 的购买选项](media/sql-database-get-started-portal/create-database-vcore.png)
 
-   - 选择“无服务器”。
+   - 选择“无服务器”  。
 
      ![无服务器计算层](media/sql-database-get-started-portal/create-database-serverless.png)
 
-   - 查看“最大 vCore 数目”、“最小 vCore 数目”、“自动暂停延迟”和“数据最大大小”的设置。 根据需要进行更改。
-   - 接受预览版条款，然后单击“确定”。
-   - 选择“应用”。
+   - 查看“最大 vCore 数目”、“最小 vCore 数目”、“自动暂停延迟”和“数据最大大小”的设置     。 根据需要进行更改。
+   - 接受预览版条款，然后单击“确定”  。
+   - 选择“应用”。 
 
-5. 选择“其他设置”选项卡。 
-6. 在“数据源”部分的“使用现有数据”下，选择 `Sample`。 
+5. 选择“其他设置”选项卡。  
+6. 在“数据源”部分的“使用现有数据”下，选择 `Sample`。   
 
    ![其他 SQL 数据库设置](media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
-   > 确保选择“示例(AdventureWorksLT)”数据，这样就可以轻松地按照本指南以及使用此数据的其他 Azure SQL 数据库快速入门进行操作。
+   > 确保选择“示例(AdventureWorksLT)”数据，这样就可以轻松地按照本指南以及使用此数据的其他 Azure SQL 数据库快速入门进行操作  。
 
-7. 将剩余字段保留默认值，然后选择窗体底部的“查看 + 创建”。
-8. 检查最终的设置，然后选择“创建”。
+7. 将剩余字段保留默认值，然后选择窗体底部的“查看 + 创建”。 
+8. 检查最终的设置，然后选择“创建”。 
 
-9. 在“SQL 数据库”窗体中，选择“创建”来部署和预配资源组、服务器和数据库。
+9. 在“SQL 数据库”窗体中，选择“创建”来部署和预配资源组、服务器和数据库   。
 
 ## <a name="query-the-database"></a>查询数据库
 
 创建数据库后，即可使用 Azure 门户中的内置查询工具连接到数据库并查询数据。
 
-1. 在数据库的 SQL 数据库页的左侧菜单中，选择“查询编辑器(预览)”。
+1. 在数据库的 SQL 数据库页的左侧菜单中，选择“查询编辑器(预览)”   。
 
    ![登录到查询编辑器](./media/sql-database-get-started-portal/query-editor-login.png)
 
-2. 输入你的登录信息，并选择“确定”。
-3. 在“查询编辑器”窗格中输入以下查询。
+2. 输入你的登录信息，并选择“确定”  。
+3. 在“查询编辑器”窗格中输入以下查询  。
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -113,11 +113,11 @@ ms.locfileid: "65074336"
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-4. 选择“运行”，然后在“结果”窗格中查看查询结果。
+4. 选择“运行”，然后在“结果”窗格中查看查询结果。  
 
    ![查询编辑器结果](./media/sql-database-get-started-portal/query-editor-results.png)
 
-5. 关闭“查询编辑器”页，并在系统提示时选择“确定”，以放弃未保存的修改。
+5. 关闭“查询编辑器”页，并在系统提示时选择“确定”，以放弃未保存的修改   。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -125,9 +125,9 @@ ms.locfileid: "65074336"
 
 使用完这些资源后，可以通过如下方式将其删除：
 
-1. 在 Azure 门户的左侧菜单中，选择“资源组”，然后选择“myResourceGroup”。
-2. 在资源组页上，选择“删除资源组”。
-3. 在字段中输入 *myResourceGroup*，然后选择“删除”。
+1. 在 Azure 门户的左侧菜单中，选择“资源组”，然后选择“myResourceGroup”   。
+2. 在资源组页上，选择“删除资源组”  。
+3. 在字段中输入 *myResourceGroup*，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -137,4 +137,4 @@ ms.locfileid: "65074336"
   - [使用 Azure Data Studio 连接和查询](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - 要使用 Azure CLI 在预配计算层中创建单一数据库，请参阅 [Azure CLI 示例](sql-database-cli-samples.md)。
 - 要使用 Azure PowerShell 在预配计算层中创建单一数据库，请参阅 [Azure PowerShell 示例](sql-database-powershell-samples.md)。
-- 要在无服务器计算层中使用 Azure Powershell 创建单一数据库，请参阅[使用 PowerShell 创建无服务器数据库](sql-database-serverless.md#create-new-database-using-powershell)
+- 要在无服务器计算层中使用 Azure Powershell 创建单一数据库，请参阅[使用 PowerShell 创建无服务器数据库](sql-database-serverless.md#create-new-serverless-database-using-powershell)

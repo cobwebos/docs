@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: 9137262ffc7c172e6a99920a7abb31459a8703fe
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: a91c61edd773b5742b092f5d72a5a22f1d90e63b
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408564"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393555"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>快速入门：使用应用配置创建 Java Spring 应用
 
@@ -29,7 +29,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成此快速入门，请安装受支持的 [Java 开发套件 (JDK)](https://aka.ms/azure-jdks) 版本 8 以及 [Apache Maven](https://maven.apache.org/) 版本 3.0 或更高版本。
+要完成此快速入门，请安装受支持的 [Java 开发套件 (JDK)](https://docs.microsoft.com/java/azure/jdk) 版本 8 以及 [Apache Maven](https://maven.apache.org/) 版本 3.0 或更高版本。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,13 +37,13 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+创建”来添加以下键值对：
+6. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
 
     | 密钥 | 值 |
     |---|---|
     | /application/config.message | 你好 |
 
-    暂时将“标签”和“内容类型”保留为空。
+    暂时将“标签”和“内容类型”保留为空   。
 
 ## <a name="create-a-spring-boot-app"></a>创建 Spring Boot 应用
 
@@ -54,15 +54,15 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 2. 指定以下选项：
 
    * 使用 **Java** 生成一个 **Maven** 项目。
-   * 指定一个其值大于或等于 2.0 的 Spring Boot 版本。
-   * 指定应用程序的“组”和“项目”名称。
+   * 指定一个其值大于或等于 2.0 的 Spring Boot  版本。
+   * 指定应用程序的“组”和“项目”名称。  
    * 添加 **Web** 依赖项。
 
-3. 指定上述选项后，选择“生成项目”。 出现提示时，将项目下载到本地计算机中的路径。
+3. 指定上述选项后，选择“生成项目”  。 出现提示时，将项目下载到本地计算机中的路径。
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 从本地系统提取文件后，即可使用简单的 Spring Boot 应用程序进行编辑。 在应用的根目录中找到 pom.xml 文件。
+1. 从本地系统提取文件后，即可使用简单的 Spring Boot 应用程序进行编辑。 在应用的根目录中找到 pom.xml 文件  。
 
 2. 在文本编辑器中打开 *pom.xml* 文件，将 Spring Cloud Azure Config Starter 添加到 `<dependencies>` 列表：
 
@@ -74,7 +74,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
     </dependency>
     ```
 
-3. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件。 添加以下行：
+3. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件  。 添加以下行：
 
     ```java
     @ConfigurationProperties(prefix = "config")
@@ -91,7 +91,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
     }
     ```
 
-4. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件。 添加以下行：
+4. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。 添加以下行：
 
     ```java
     @RestController
@@ -135,7 +135,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
     mvn clean package
     mvn spring-boot:run
     ```
-2. 应用程序运行以后，请使用 curl 测试该应用程序，例如：
+2. 应用程序运行以后，请使用 curl 测试该应用程序，例如  ：
 
       ```shell
       curl -X GET http://localhost:8080/

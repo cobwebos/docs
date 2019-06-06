@@ -2,20 +2,20 @@
 title: 快速入门 - 使用 Azure Active Directory B2C 为 ASP.NET 应用程序设置登录 | Microsoft Docs
 description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例 ASP.NET Web 应用。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d2fbe4dbbd7f5549d6c98f8183df58fa3f34e9d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0e38a431970613f34ee3af0fdb0eb55c5ad344bb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190455"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509727"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为 ASP.NET 应用程序设置登录
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 ## <a name="prerequisites"></a>先决条件
 
-- 带有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。 
+- 带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。 
 - Facebook、Google、Microsoft 或 Twitter 中的社交帐户。
 - 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)或克隆示例 Web 应用程序。
 
@@ -41,9 +41,9 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 ## <a name="run-the-application-in-visual-studio"></a>在 Visual Studio 中运行应用程序
 
 1. 在示例应用程序项目文件夹中，打开 Visual Studio 中的 **B2C-WebAPI-DotNet.sln** 解决方案。
-2. 在此快速入门中，请同时运行 **TaskWebApp** 和 **TaskService** 项目。 在解决方案资源管理器中右键单击 **B2C-WebAPI-DotNet** 解决方案，然后选择“设置启动项目”。 
-3. 选择“多个启动项目”，将两个项目的“操作”更改为“启动”。 
-4. 单击“确定”。
+2. 在此快速入门中，请同时运行 **TaskWebApp** 和 **TaskService** 项目。 在解决方案资源管理器中右键单击 **B2C-WebAPI-DotNet** 解决方案，然后选择“设置启动项目”。  
+3. 选择“多个启动项目”，将两个项目的“操作”更改为“启动”。    
+4. 单击“确定”。 
 5. 按 **F5** 调试这两个应用程序。 各应用程序分别在自己的浏览器选项卡中打开：
 
     - `https://localhost:44316/` - ASP.NET Web 应用程序。 在快速入门中，直接与此应用程序交互。
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 ## <a name="sign-in-using-your-account"></a>使用帐户登录
 
-1. 单击 ASP.NET Web 应用程序中的“注册/登录”，启动工作流。
+1. 单击 ASP.NET Web 应用程序中的“注册/登录”，启动工作流。 
 
     ![示例 ASP.NET Web 应用](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
 
@@ -69,19 +69,19 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 Azure Active Directory B2C 提供允许用户更新个人资料的功能。 示例 Web 应用对工作流使用 Azure AD B2C 编辑配置文件用户流。 
 
-1. 在应用程序菜单栏中，单击个人资料名称，并选择“编辑个人资料”以编辑创建的个人资料。
+1. 在应用程序菜单栏中，单击个人资料名称，并选择“编辑个人资料”以编辑创建的个人资料。 
 
     ![编辑个人资料](media/active-directory-b2c-quickstarts-web-app/edit-profile-web.png)
 
-2. 更改“显示名称”或“城市”，然后单击“继续”以更新个人资料。 
+2. 更改“显示名称”或“城市”，然后单击“继续”以更新个人资料。    
 
     更改的内容显示在 Web 应用程序主页的右上部分。
 
 ## <a name="access-a-protected-api-resource"></a>访问受保护的 API 资源
 
-1. 单击“待办事项列表”输入并修改待办事项列表项。 
+1. 单击“待办事项列表”输入并修改待办事项列表项。  
 
-2. 在“新建项”文本框中输入文本。 单击“添加”调用受 Azure AD B2C 保护的 Web API，该 API 可添加待办事项列表项。
+2. 在“新建项”文本框中输入文本。  单击“添加”调用受 Azure AD B2C 保护的 Web API，该 API 可添加待办事项列表项。 
 
     ![添加待办事项列表项](media/active-directory-b2c-quickstarts-web-app/add-todo-item-web.png)
 

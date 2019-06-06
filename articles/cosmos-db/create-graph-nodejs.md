@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: lbosq
-ms.openlocfilehash: b81cedc9376b33b27f3a742fbe5d7410535fa727
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 923d39a87340ffd26b6cc34d412edfbb97c13bbf
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587797"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480501"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 Node.js 应用程序
 
@@ -138,17 +138,17 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 1. 打开 config.js 文件。 
 
-2. 在 config.js 中，使用 Azure 门户的“概述”页中的“Gremlin URI”值填写 `config.endpoint` 密钥。 
+2. 在 config.js 中，使用 Azure 门户的“概述”页中的“Gremlin URI”值填写 `config.endpoint` 密钥。   
 
     `config.endpoint = "GRAPHENDPOINT";`
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-graph-nodejs/gremlin-uri.png)
 
-   如果“Gremlin URI”值为空，可从门户中的“密钥”页生成值。 使用“URI”值，删除 https:// 并将 documents 更改为 gremlin.cosmosdb。 如果图形帐户是在 2017 年 12 月 20 日之前创建的，请将 documents 更改为 graphs。 
+   如果“Gremlin URI”  值为空，可从门户中的“密钥”  页生成值。 使用“URI”  值，删除 https:// 并将 documents 更改为 gremlin.cosmosdb。 如果图形帐户是在 2017 年 12 月 20 日之前创建的，请将 documents 更改为 graphs。 
 
    Gremlin 终结点只能是没有协议/端口号的主机名，例如 `mygraphdb.gremlin.cosmosdb.azure.com`（不能是 `https://mygraphdb.gremlin.cosmosdb.azure.com` 或 `mygraphdb.gremlin.cosmosdb.azure.com:433`）。
 
-3. 在 config.js 中，使用 Azure 门户“密钥”页中的“主密钥”值填充 config.primaryKey 值。 
+3. 在 config.js 中，使用 Azure 门户“密钥”页中的“主密钥”值填充 config.primaryKey 值。   
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -182,9 +182,9 @@ module.exports = config;
 
 现在可以返回到 Azure 门户中的数据资源管理器，查看、查询、修改以及使用新的图形数据。
 
-在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库（后跟容器），然后选择“图形”。
+在数据资源管理器中，新数据库会显示在“图形”窗格中。  展开数据库（后跟容器），然后选择“图形”。 
 
-选择“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。
+选择“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。  
 
 尝试使用 `.has('firstName', 'Thomas')` 来完成 `g.V()`，对筛选器进行测试。 请注意，值区分大小写。
 

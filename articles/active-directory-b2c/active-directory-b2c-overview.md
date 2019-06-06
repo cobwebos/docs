@@ -2,20 +2,20 @@
 title: 什么是 Azure Active Directory B2C？ | Microsoft Docs
 description: 了解如何使用 Azure Active Directory B2C 在应用程序中创建和管理标识体验，例如注册/登录和个人资料管理。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 02/20/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33c6f9e06439ebeb17608aa374532ac4f7a020cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5cceac260979b4322d41843038eab0998c8e8ba4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701359"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509747"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>什么是 Azure Active Directory B2C？
 

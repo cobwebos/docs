@@ -2,21 +2,21 @@
 title: 快速入门 - 使用 Azure Active Directory B2C 为桌面应用设置登录 | Microsoft Docs
 description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例 ASP.NET 桌面应用程序。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 94e7972530afee15937b13ae35239a64d9bc986e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dd0679cc418cb1a15a69c01d3267d5d11b20fd3e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190549"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509837"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为桌面应用设置登录 
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 ## <a name="prerequisites"></a>先决条件
 
-- 带有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。 
+- 带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。 
 - Facebook、Google、Microsoft 或 Twitter 中的社交帐户。
 - 从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip)或克隆示例 Web 应用。
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 ## <a name="sign-in-using-your-account"></a>使用帐户登录
 
-1. 单击“登录”开始“注册或登录”工作流。
+1. 单击“登录”开始“注册或登录”工作流。  
 
     ![示例应用程序](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
@@ -62,19 +62,19 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 Azure AD B2C 提供允许用户更新个人资料的功能。 示例 Web 应用对工作流使用 Azure AD B2C 编辑配置文件用户流。 
 
-1. 在应用程序菜单栏中，单击“编辑个人资料”以编辑创建的个人资料。
+1. 在应用程序菜单栏中，单击“编辑个人资料”以编辑创建的个人资料。 
 
     ![编辑个人资料](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
 2. 选择与创建的帐户相关联的标识提供者。 例如，如果创建帐户时使用 Twitter 作为标识提供者，那么选择使用 Twitter 来修改关联的个人资料详细信息。
 
-3. 更改“显示名称”或“城市”，然后单击“继续”。
+3. 更改“显示名称”或“城市”，然后单击“继续”。   
 
-    新的访问令牌显示在“令牌信息”文本框中。 如果要验证对个人资料的更改，将访问令牌复制并粘贴到令牌解码器 (https://jwt.ms) 中。
+    新的访问令牌显示在“令牌信息”文本框中。  如果要验证对个人资料的更改，将访问令牌复制并粘贴到令牌解码器 (https://jwt.ms) 中。
 
 ## <a name="access-a-protected-api-resource"></a>访问受保护的 API 资源
 
-单击“调用 API”，向受保护的资源发出请求。 
+单击“调用 API”，向受保护的资源发出请求。  
 
     ![Call API](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 
