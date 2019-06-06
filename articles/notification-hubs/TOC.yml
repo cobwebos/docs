@@ -38,10 +38,6 @@
       items:
         - name: 使用百度云推送来推送通知
           href: notification-hubs-baidu-china-android-notifications-get-started.md
-    - name: Chrome
-      items:
-        - name: 向 Chrome 应用推送通知
-          href: notification-hubs-chrome-push-notifications-get-started.md
     - name: iOS
       items:
         - name: 向 iOS 应用推送通知

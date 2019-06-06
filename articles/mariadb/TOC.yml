@@ -51,6 +51,8 @@
           href: concepts-ssl-connection-security.md
         - name: VNet
           href: concepts-data-access-security-vnet.md
+        - name: 连接体系结构
+          href: concepts-connectivity-architecture.md
     - name: 业务连续性
       items:
         - name: 概述

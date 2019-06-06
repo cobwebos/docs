@@ -95,10 +95,6 @@
           href: platform/alerts-overview.md
         - name: 经典警报
           href: platform/alerts-classic.overview.md
-        - name: 智能组
-          href: platform/alerts-smartgroups-overview.md
-        - name: 自动缩放
-          href: platform/autoscale-overview.md
         - name: 指标警报
           href: platform/alerts-metric-overview.md
         - name: 日志警报
@@ -109,6 +105,10 @@
           href: platform/alerts-common-schema.md
         - name: 操作规则
           href: platform/alerts-action-rules.md
+        - name: 智能组
+          href: platform/alerts-smartgroups-overview.md
+        - name: 自动缩放
+          href: platform/autoscale-overview.md
         - name: 更改分析
           href: app/change-analysis.md
     - name: 可视化数据

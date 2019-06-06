@@ -91,6 +91,8 @@
               href: howto-export-data-blob-storage.md
         - name: 创建自定义规则
           href: howto-create-custom-rules.md
+        - name: 创建自定义分析
+          href: howto-create-custom-analytics.md
         - name: 在 Power BI 中直观显示数据
           href: howto-connect-powerbi.md
         - name: 连接其他 IoT 云
