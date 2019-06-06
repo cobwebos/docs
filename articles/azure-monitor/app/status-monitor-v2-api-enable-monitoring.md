@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2 API 参考：启用监视 |Microsoft Docs
-description: 状态监视器 v2 API 引用启用-ApplicationInsightsMonitoring。 监视网站性能，无需重新部署该网站。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
+description: 状态监视器 v2 API 引用。 启用 ApplicationInsightsMonitoring。 监视网站性能，无需重新部署该网站。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,61 +12,58 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 0a443df0c55dc916ef6d12d53811e9d9932370e7
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: e87bfad11eee5b86d35e6b4f2846b094c467e0ef
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66255915"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734167"
 ---
 # <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>状态监视器 v2 API:启用 ApplicationInsightsMonitoring (v0.2.1-alpha)
 
-本文档介绍了作为的成员提供的 cmdlet [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
+本文介绍的 cmdlet 时的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
 
 > [!IMPORTANT]
 > 状态监视器 v2 目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅[Supplemental Terms of Use 针对 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="description"></a>描述
 
-启用无代码的附加监视目标计算机上的 IIS 应用程序。
+启用无代码附加在目标计算机上的 IIS 应用程序的监视。
+
 此 cmdlet 将修改 IIS applicationHost.config 并设置一些注册表项。
-此 cmdlet 还将创建 applicationinsights.ikey.config，用于定义哪些应用程序使用的检测密钥。
-IIS 将加载在启动时，这些应用程序启动时将注入到应用程序的 Application Insights SDK RedfieldModule。
+它还将创建一个 applicationinsights.ikey.config 文件，其中定义了每个应用所使用的检测密钥。
+IIS 将加载在启动时，会将 Application Insights SDK 注入到应用程序，如应用程序启动 RedfieldModule。
 重新启动 IIS 以实现所做的更改才会生效。
 
-启用监视之后，我们建议使用[实时指标](live-stream.md)以快速观察到是否你的应用程序向我们发送遥测数据。
+启用监视后，我们建议你使用[实时指标](live-stream.md)快速检查您的应用程序如果向我们发送遥测数据。
 
 
 > [!NOTE] 
-> 若要开始，你必须具有检测密钥。 有关详细信息，请阅读[创建新的资源](create-new-resource.md#copy-the-instrumentation-key)。
-
+> - 若要开始，你需要检测密钥。 有关详细信息，请参阅[创建资源](create-new-resource.md#copy-the-instrumentation-key)。
+> - 此 cmdlet 需要查看并接受我们的许可协议和隐私声明语句。
 
 > [!IMPORTANT] 
-> 此 cmdlet 需要 PowerShell 会话中具有管理员权限和使用提升权限的执行策略。 读取[此处](status-monitor-v2-detailed-instructions.md#run-powershell-as-administrator-with-an-elevated-execution-policy)有关详细信息。
-
-> [!NOTE] 
-> 此 cmdlet 将要求您查看并接受我们的许可协议和隐私声明语句。
-
+> 此 cmdlet 需要具有管理员权限的 PowerShell 会话和提升权限的执行策略。 有关详细信息，请参阅[以使用提升权限的执行策略管理员身份运行 PowerShell](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy)。
 
 ## <a name="examples"></a>示例
 
-### <a name="example-with-single-instrumentation-key"></a>具有单个检测密钥的示例
-在此示例中，在当前计算机上的所有应用程序将分配单个检测密钥。
+### <a name="example-with-a-single-instrumentation-key"></a>具有单个检测密钥的示例
+在此示例中，在当前计算机上的所有应用都分配单个检测密钥。
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-### <a name="example-with-instrumentation-key-map"></a>使用检测键映射示例
-在此示例中， 
-- `MachineFilter` 将当前的计算机使用的匹配`'.*'`通配符。
-- `AppFilter='WebAppExclude'` 提供了`null`InstrumentationKey。 不会检测此应用。
-- `AppFilter='WebAppOne'` 将此特定应用分配唯一的检测密钥。
-- `AppFilter='WebAppTwo'` 此外会将分配此特定应用唯一检测键。
-- 最后，`AppFilter`还使用`'.*'`通配符来匹配所有其他 web 应用不由早期规则匹配，并将分配默认检测密钥。
-- 为便于阅读仅添加空格。
+### <a name="example-with-an-instrumentation-key-map"></a>使用检测键映射示例
+在本示例中：
+- `MachineFilter` 通过使用与当前计算机`'.*'`通配符。
+- `AppFilter='WebAppExclude'` 提供了`null`检测密钥。 不会检测指定的应用。
+- `AppFilter='WebAppOne'` 将指定的应用分配唯一的检测密钥。
+- `AppFilter='WebAppTwo'` 将指定的应用分配唯一的检测密钥。
+- 最后，`AppFilter`还使用`'.*'`通配符来匹配前面的规则不匹配并将分配默认检测密钥的所有 web 应用。
+- 添加空格，以提高可读性。
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
@@ -78,38 +75,41 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ```
 
 
-## <a name="parameters"></a>parameters 
+## <a name="parameters"></a>parameters
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
-**必需。** 使用此参数由目标计算机上的所有应用程序提供使用单个 iKey。
+**必需。** 使用此参数由目标计算机上的所有应用程序提供单个检测密钥以供使用。
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**必需。** 使用此参数提供多个 ikey 和要使用哪个 ikey 的应用的映射。 通过设置 MachineFilter，可以创建多台计算机的单独的安装脚本。 
+**必需。** 使用此参数提供多个检测密钥和使用的每个应用的检测密钥的映射。
+可以通过设置创建多台计算机的单独的安装脚本`MachineFilter`。
 
-> [!IMPORTANT] 
-> 应用程序将根据规则向其提供的顺序匹配。 这种情况下应首先指定的最具体的规则和最后一个最一般的规则。
+> [!IMPORTANT]
+> 应用程序将根据规则中提供规则的顺序匹配。 因此应首先指定的最具体的规则和最后一个最一般的规则。
 
 #### <a name="schema"></a>架构
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
-- **MachineFilter**是所需的 c# 正则表达式的计算机或虚拟机名称。
+- **MachineFilter**需要C#的计算机或 VM 名称的正则表达式。
     - 。 * 将匹配所有
-    - ComputerName 将匹配只有具有相同名称的计算机。
-- **AppFilter**是所需的 c# 正则表达式的计算机或虚拟机名称。
+    - ComputerName 将匹配仅在计算机与指定的确切名称。
+- **AppFilter**需要C#的计算机或 VM 名称的正则表达式。
     - 。 * 将匹配所有
-    - 应用程序名称将匹配仅 IIS 应用程序使用的确切名称。
-- **InstrumentationKey**需启用与上述两个筛选器匹配的应用程序的监视。
-    - 保留此值为 null，如果你想要定义规则来监视中排除
+    - 应用程序名称将匹配与指定的确切名称仅 IIS 应用程序。
+- **InstrumentationKey**需启用与前面两个筛选器匹配的应用程序的监视。
+    - 保留此值为 null，如果你想要定义规则以排除监视。
 
 
 ### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**可选。** 使用此开关以启用要收集事件和消息的托管进程的执行期间发生到的检测引擎。 包括但不是限于对依赖项结果代码、 HTTP 谓词和 SQL 命令文本。 检测引擎会添加额外的开销，并默认处于关闭状态。
+**可选。** 使用此开关以启用要收集事件和有关托管进程的执行期间所发生的消息的检测引擎。 这些事件和消息包括依赖项结果代码、 HTTP 谓词和 SQL 命令文本。
+
+检测引擎增加开销，并且默认情况下处于关闭状态。
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
 **可选。** 使用此开关以接受许可协议和隐私声明语句在无外设安装中。
 
 ### <a name="-verbose"></a>-Verbose
-**通用参数。** 使用此开关以输出详细的日志。
+**通用参数。** 使用此开关以显示详细的日志。
 
 ### <a name="-whatif"></a>-WhatIf 
 **通用参数。** 使用此开关测试和验证你的输入的参数但不实际进行监视。
@@ -153,17 +153,17 @@ Successfully enabled Application Insights Status Monitor
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况
-- [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)来诊断问题
-- [分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询
-- [创建仪表板](../../azure-monitor/app/overview-dashboard.md)
+ - [浏览指标](../../azure-monitor/app/metrics-explorer.md)监视性能和使用情况。
+- [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)来诊断问题。
+- [使用 Analytics](../../azure-monitor/app/analytics.md)获取更多高级查询。
+- [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
  
  添加更多遥测：
  - [创建 web 测试](monitor-web-app-availability.md)以确保你的站点保持活动状态。
-- [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常，并将其插入跟踪调用。
-- [将 Application Insights SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)，以便您可以插入跟踪和日志调用
+- [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常，并启用跟踪调用。
+- [将 Application Insights SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)以便插入跟踪和记录调用。
  
  用做更多状态监视器 v2:
- - 使用指南，了解如何[疑难解答](status-monitor-v2-troubleshoot.md)状态监视器 v2。
+ - 使用指南，了解如何[进行故障排除](status-monitor-v2-troubleshoot.md)状态监视器 v2。
  - [获取配置](status-monitor-v2-api-get-config.md)以确认已正确记录你的设置。
  - [获取状态](status-monitor-v2-api-get-status.md)检查监视。

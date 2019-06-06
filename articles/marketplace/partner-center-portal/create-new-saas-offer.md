@@ -7,27 +7,28 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9750aa924ba4b6e4e5f3a51e5b34531d3fab0a6e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243311"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455647"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
-若要开始创建与服务 (SaaS) 提供的软件，请确保你第一[创建合作伙伴中心帐户](./create-account.md)，然后打开[商业应用商店仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，与**提供**选定的选项卡。 
+若要开始创建与服务 (SaaS) 提供的软件，请确保你第一[创建合作伙伴中心帐户](./create-account.md)，然后打开[商业应用商店仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，与**概述**选定的选项卡。
 
-![合作伙伴中心中的商业应用商店仪表板](./media/commercial-marketplace-offers.png)
+![合作伙伴中心中的商业应用商店仪表板](./media/new-offer-overview.png)
 
 选择 +**创建一个新...** 按钮，然后选择**软件即服务**菜单项。 
 
 如果你选择的其他产品/服务类型之一，你将定向到较旧[云合作伙伴门户](https://cloudpartner.azure.com/)。  唯一的 SaaS 产品/服务目前在合作伙伴中心上的商业 Marketplace 门户中可用。 
 
-![在合作伙伴中心创建产品/服务窗口](./media/new-offer.png)
+![在合作伙伴中心创建产品/服务窗口](./media/new-offer-click.png)
 
+**新产品/服务**显示对话框。 
 
-**新产品/服务**显示对话框。 ![新建产品/服务对话框](./media/new-offer-popup.png)
+![新建产品/服务对话框](./media/new-offer-popup.png)
 
 
 ## <a name="offer-id-and-name"></a>产品/服务 ID 和名称

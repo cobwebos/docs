@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 8b1a9b3dee999a35950559a049230f7fdbbc47b6
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 03a6ea45577b4a4bf57501b1834f91438feb4e2b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399188"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477865"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>排查 Azure Monitor 中的日志警报  
 
 本文介绍如何解决在 Azure Monitor 中设置日志警报时可能发生的常见问题， 并提供有关日志警报功能或配置的常见问题的解决方法。 
 
-术语*日志警报*介绍了激发，基于一个日志查询中的警报[Azure Log Analytics 工作区](../learn/tutorial-viewdata.md)中或在[Azure Application Insights](../../azure-monitor/app/analytics.md)。 在 [Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)中详细了解功能、术语和类型。
+术语*日志警报*描述触发基于一个日志查询中的规则[Azure Log Analytics 工作区](../learn/tutorial-viewdata.md)中或在[Azure Application Insights](../../azure-monitor/app/analytics.md)。 在 [Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)中详细了解功能、术语和类型。
 
 > [!NOTE]
 > 本文不考虑 Azure 门户中显示警报规则已触发以及不是通过关联的操作组执行通知的情况。 对于此类情况，请参阅[在 Azure 门户中创建和管理操作组](../platform/action-groups.md)中的详细信息。

@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中的自定义策略中定义的 OAuth2 技术配置文件 |Microsoft Docs
 description: 在 Azure Active Directory B2C 中的自定义策略中定义的 OAuth2 技术配置文件。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 65634cb6573a0f163f7a0ca07bf26af9512e240b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 80b196b34e8eee99ed77c3c8a914f89fa68d87b8
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683885"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512955"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义的 OAuth2 技术配置文件
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支�
 
 ## <a name="protocol"></a>Protocol
 
-“Protocol”元素的“Name”属性必须设置为 `OAuth2`。 例如，**Facebook-OAUTH** 技术配置文件的协议为 `OAuth2`：
+“Protocol”  元素的“Name”  属性必须设置为 `OAuth2`。 例如，**Facebook-OAUTH** 技术配置文件的协议为 `OAuth2`：
 
 ```XML
 <TechnicalProfile Id="Facebook-OAUTH">
@@ -76,7 +76,7 @@ Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支�
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支�
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据设置为`id_token`，可以省略的加密密钥。 |  
 

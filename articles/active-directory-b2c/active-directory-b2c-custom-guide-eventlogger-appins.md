@@ -2,20 +2,20 @@
 title: 通过 Azure Active Directory B2C 使用 Application Insights 中的事件跟踪用户行为 | Microsoft Docs
 description: 了解如何通过 Azure AD B2C 用户旅程使用自定义策略在 Application Insights 中启用事件日志（预览版）。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/12/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8284be21db01ed7bd3215f7a67c8bfb40e0d73de
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0c2f9a2a3d431e2948c7d50541b576b23c3ece6a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705152"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507542"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为
 
@@ -45,20 +45,20 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 将 Azure AD B2C 与 Application Insights 配合使用时，只需创建资源并获取检测密钥。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure 订阅的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含订阅的目录。 此租户不是 Azure AD B2C 租户。
-3. 选择 Azure 门户左上角的“创建资源”，然后搜索并选择“Application Insights”。
+2. 请确保使用包含 Azure 订阅的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含订阅的目录  。 此租户不是 Azure AD B2C 租户。
+3. 选择 Azure 门户左上角的“创建资源”，然后搜索并选择“Application Insights”   。
 4. 单击**创建**。
-5. 输入此资源的名称。
-6. 在“应用程序类型”下，选择“ASP.NET web 应用程序”。
-7. 对于资源组，选择现有的组，或输入新组的名称。
+5. 输入此资源的名称  。
+6. 在“应用程序类型”下，选择“ASP.NET web 应用程序”   。
+7. 对于资源组，选择现有的组，或输入新组的名称  。
 8. 单击**创建**。
-4. 创建 Application Insights 资源后，将其打开，展开“Essentials”并复制检测密钥。
+4. 创建 Application Insights 资源后，将其打开，展开“Essentials”并复制检测密钥  。
 
 ![Application Insights 概览和检测密钥](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)
 
 ## <a name="add-new-claimtype-definitions"></a>添加新的 ClaimType 定义
 
-从初学者包中打开 TrustFrameworkExtensions.xml 文件，然后向 [BuildingBlocks](buildingblocks.md) 元素添加以下元素：
+从初学者包中打开 TrustFrameworkExtensions.xml 文件，然后向 [BuildingBlocks](buildingblocks.md) 元素添加以下元素  ：
 
 ```xml
 <ClaimsSchema>
@@ -116,7 +116,7 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 | AzureInsights-UserSignup | 当用户在注册/登录旅程中触发注册选项时创建 UserSignup 事件。 | 
 | AzureInsights-SignInComplete | 在将令牌发送到信赖方应用程序后记录成功完成了身份验证。 | 
 
-将配置文件添加到初学者包中的 TrustFrameworkExtensions.xml 文件。 将以下元素添加到 ClaimsProviders 元素：
+将配置文件添加到初学者包中的 TrustFrameworkExtensions.xml 文件  。 将以下元素添加到 ClaimsProviders 元素  ：
 
 ```xml
 <ClaimsProvider>
@@ -181,7 +181,7 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 </OrchestrationStep>
 ```
 
-添加调用 `Azure-Insights-UserSignup` 的新步骤后，再立即执行 `SendClaims` 业务流程步骤。 当用户在注册/登录旅程中选择注册按钮时，会触发此步骤。
+添加调用 `Azure-Insights-UserSignup` 的新步骤后，再立即执行  `SendClaims` 业务流程步骤。 当用户在注册/登录旅程中选择注册按钮时，会触发此步骤。
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -220,21 +220,21 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 
 ## <a name="upload-your-file-run-the-policy-and-view-events"></a>上传文件，运行策略，并查看事件
 
-保存并上传 TrustFrameworkExtensions.xml 文件。 然后，通过应用程序调用信赖方策略，或者在 Azure 门户中使用“立即运行”。 数秒后，事件就会出现在 Application Insights 中。
+保存并上传 TrustFrameworkExtensions.xml 文件  。 然后，通过应用程序调用信赖方策略，或者在 Azure 门户中使用“立即运行”。  数秒后，事件就会出现在 Application Insights 中。
 
 1. 在 Azure Active Directory 租户中打开 **Application Insights** 资源。
-2. 选择“使用情况” > “事件”。
-3. 将“期间”设置为“过去一小时”，将“截止时间”设置为“3 分钟”。  可能需要选择“刷新”才能查看结果。
+2. 选择“使用情况” > “事件”。  
+3. 将“期间”设置为“过去一小时”，将“截止时间”设置为“3 分钟”。      可能需要选择“刷新”才能查看结果。 
 
 ![Application Insights USAGE-Events 边栏选项卡](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-根据需要向用户旅程添加声明类型和事件。 可以使用[声明解析程序](claim-resolver-overview.md)或任何字符串声明类型，通过向 Application Insights 事件或 AzureInsights-Common 技术配置文件添加 Input Claim 元素来添加声明。 
+根据需要向用户旅程添加声明类型和事件。 可以使用[声明解析程序](claim-resolver-overview.md)或任何字符串声明类型，通过向 Application Insights 事件或 AzureInsights-Common 技术配置文件添加 Input Claim 元素来添加声明  。 
 
-- ClaimTypeReferenceId 是对声明类型的引用。
-- PartnerClaimType 是 Azure Insights 中显示的属性的名称。 使用语法 `{property:NAME}`，其中 `NAME` 是要添加到该事件的属性。 
-- DefaultValue 可使用任何字符串值或声明解析程序。 
+- ClaimTypeReferenceId 是对声明类型的引用  。
+- PartnerClaimType 是 Azure Insights 中显示的属性的名称  。 使用语法 `{property:NAME}`，其中 `NAME` 是要添加到该事件的属性。 
+- DefaultValue 可使用任何字符串值或声明解析程序  。 
 
 ```XML
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />

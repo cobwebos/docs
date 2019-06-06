@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 06/04/2019
 ms.author: juliako
-ms.openlocfilehash: a5ce6467a547b9fded03b3b5a6f40f84d29d3618
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66385141"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688648"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -36,11 +36,18 @@ ms.locfileid: "66385141"
 
 ## <a name="may-2019"></a>2019 年 5 月
 
-### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>HLS v4 及更高版本中动态打包的支持 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>针对媒体服务诊断日志和指标的 azure 监视器支持
 
-添加 HLS (第 4 版或更高版本) 支持中的多个音频曲目具有多个编解码器和语言的资产的动态打包。
+现在可以使用 Azure Monitor 查看媒体服务遥测数据 emmited。
 
-有关详细信息，请参阅[动态打包](dynamic-packaging-overview.md)。
+* 使用 Azure Monitor 诊断日志来监视媒体服务密钥传送终结点发送请求。 
+* 监视媒体服务发出的指标[流式处理终结点](streaming-endpoint-concept.md)。   
+
+有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
+
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>在动态打包中支持多音频曲目 
+
+流式传输资产，具有多个音频曲目具有多个编解码器和语言时,[动态打包](dynamic-packaging-overview.md)HLS 输出现在支持多音频曲目 (版本 4 或更高版本)。
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对处于打开状态，媒体服务 
 

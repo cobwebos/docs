@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: ff8f8c6656c4cd095749b3e048c72572d113f1ad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015263"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743289"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
 
@@ -34,11 +34,11 @@ ms.locfileid: "66015263"
 
 首先，创建一个存储过程，并将其设置为运行一个逻辑来比较传入事件的序号，并在数据库中记录每个设备的最新事件。
 
-1. 在 Cosmos DB SQL API 中，选择“数据资源管理器” > “项” > “新建存储过程”。
+1. 在 Cosmos DB SQL API 中，选择“数据资源管理器” > “项” > “新建存储过程”。   
 
    ![创建存储过程](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
-2. 输入 **LatestDeviceConnectionState** 作为存储过程 ID，并将以下内容粘贴到“存储过程正文”中。 请注意，此代码应替换存储过程正文中的任何现有代码。 此代码为每个设备 ID 保留一行，并通过标识最高序号来记录该设备 ID 的最新连接状态。
+2. 输入 **LatestDeviceConnectionState** 作为存储过程 ID，并将以下内容粘贴到“存储过程正文”中。  请注意，此代码应替换存储过程正文中的任何现有代码。 此代码为每个设备 ID 保留一行，并通过标识最高序号来记录该设备 ID 的最新连接状态。
 
     ```javascript
     // SAMPLE STORED PROCEDURE
@@ -137,7 +137,7 @@ ms.locfileid: "66015263"
 
 ### <a name="create-a-logic-app-resource"></a>创建逻辑应用资源
 
-1. 在 [Azure 门户](https://portal.azure.com)中，依次选择“+ 创建资源”、“集成”、“逻辑应用”。
+1. 在 [Azure 门户](https://portal.azure.com)中，依次选择“+ 创建资源”、“集成”、“逻辑应用”。   
 
    ![创建逻辑应用](./media/iot-hub-how-to-order-connection-state-events/select-logic-app.png)
 
@@ -145,14 +145,14 @@ ms.locfileid: "66015263"
 
    ![新建逻辑应用](./media/iot-hub-how-to-order-connection-state-events/new-logic-app.png)
 
-3. 选择“创建”以创建逻辑应用。
+3. 选择“创建”以创建逻辑应用。 
 
    你现在已为逻辑应用程序创建 Azure 资源。 在 Azure 部署逻辑应用后，逻辑应用设计器会显示针对常用模式的模板，以便你可以更快地入门。
 
    > [!NOTE]
-   > 若要再次查找并打开逻辑应用，请选择“资源组”，然后选择要在本操作指南中使用的资源组。 选择新的逻辑应用。 此时会打开逻辑应用设计器。
+   > 若要再次查找并打开逻辑应用，请选择“资源组”，然后选择要在本操作指南中使用的资源组。  选择新的逻辑应用。 此时会打开逻辑应用设计器。
 
-4. 在逻辑应用设计器中向右滚动，直至看到常用的触发器。 在“模板”下选择“空白逻辑应用”，以便从头开始生成逻辑应用。
+4. 在逻辑应用设计器中向右滚动，直至看到常用的触发器。 在“模板”  下选择“空白逻辑应用”  ，以便从头开始生成逻辑应用。
 
 ### <a name="select-a-trigger"></a>选择触发器
 
@@ -160,15 +160,15 @@ ms.locfileid: "66015263"
 
 1. 在连接器和触发器搜索栏中键入 **HTTP** 并按 Enter。
 
-2. 选择“请求 - 当收到 HTTP 请求时”作为触发器。
+2. 选择“请求 - 当收到 HTTP 请求时”作为触发器。 
 
    ![选择 HTTP 请求触发器](./media/iot-hub-how-to-order-connection-state-events/http-request-trigger.png)
 
-3. 选择“使用示例有效负载生成架构”。
+3. 选择“使用示例有效负载生成架构”。 
 
    ![使用示例有效负载生成架构](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
 
-4. 在文本框中粘贴以下示例 JSON 代码，然后选择“完成”：
+4. 在文本框中粘贴以下示例 JSON 代码，然后选择“完成”： 
 
    ```json
    [{
@@ -194,29 +194,29 @@ ms.locfileid: "66015263"
 
    ![粘贴示例 JSON 有效负载](./media/iot-hub-how-to-order-connection-state-events/paste-sample-payload.png)
 
-5. 可能会收到一条弹出通知，其中指出，“请记住要在请求中包含设为 application/json 的内容类型标头”。 可以放心忽略此建议，并转到下一部分。
+5. 可能会收到一条弹出通知，其中指出，“请记住要在请求中包含设为 application/json 的内容类型标头”。  可以放心忽略此建议，并转到下一部分。
 
 ### <a name="create-a-condition"></a>创建条件
 
 在满足逻辑应用工作流中的特定条件后，条件可帮助运行特定的操作。 一旦满足条件，即可定义所需的操作。 在本教程中，条件是检查 eventType 是“设备已连接”还是“设备已断开连接”。 操作是在数据库中执行存储过程。
 
-1. 依次选择“+ 新建步骤”、“内置”，然后找到并选择“条件”。 单击“选择值”，此时会弹出一个框，其中显示了“动态内容”-- 可选择的字段。 按如下所示填写字段，以便仅对“设备已连接”和“设备已断开连接”事件执行此操作：
+1. 依次选择“+ 新建步骤”、“内置”，然后找到并选择“条件”。    单击“选择值”，此时会弹出一个框，其中显示了“动态内容”-- 可选择的字段。  按如下所示填写字段，以便仅对“设备已连接”和“设备已断开连接”事件执行此操作：
 
    * 选择值：**eventType** - 从单击此字段时显示的动态内容中的字段内选择此值。
-   * 将“等于”更改为“结尾为”。
+   * 将“等于”更改为“结尾为”。 
    * 选择值：**nected**。
 
      ![填写条件](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
-2. 在“如果为 true”对话框中，单击“添加操作”。
+2. 在“如果为 true”对话框中，单击“添加操作”。  
   
    ![为 true 时添加操作](./media/iot-hub-how-to-order-connection-state-events/action-if-true.png)
 
-3. 搜索 Cosmos DB 并选择“Azure Cosmos DB - 执行存储过程”
+3. 搜索 Cosmos DB 并选择“Azure Cosmos DB - 执行存储过程” 
 
    ![搜索 CosmosDB](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-search.png)
 
-4. 在“连接名称”中填写 **cosmosdb-connection**，选择表中的条目，然后选择“创建”。 此时会显示“执行存储过程”面板。 输入以下字段的值：
+4. 在“连接名称”中填写 **cosmosdb-connection**，选择表中的条目，然后选择“创建”。   此时会显示“执行存储过程”面板。  输入以下字段的值：
 
    **数据库 ID**：ToDoList
 
@@ -224,15 +224,15 @@ ms.locfileid: "66015263"
 
    **Sproc ID**：LatestDeviceConnectionState
 
-5. 选择“添加新参数”。 在显示的下拉列表中，选中“分区键”和“存储过程的参数”旁边的复选框，然后单击屏幕上的其他任何位置；此时将为分区键值添加一个字段，并为存储过程的参数添加一个字段。
+5. 选择“添加新参数”。  在显示的下拉列表中，选中“分区键”和“存储过程的参数”旁边的复选框，然后单击屏幕上的其他任何位置；此时将为分区键值添加一个字段，并为存储过程的参数添加一个字段。  
 
    ![填充逻辑应用操作](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
-6. 现在，请按如下所示输入分区键值和参数。 请务必按图中所示添加方括号和双引号。 可能需要单击“添加动态内容”才能获取可在此处使用的有效值。
+6. 现在，请按如下所示输入分区键值和参数。 请务必按图中所示添加方括号和双引号。 可能需要单击“添加动态内容”才能获取可在此处使用的有效值。 
 
    ![填充逻辑应用操作](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. 在显示了“For Each”的窗格顶部的“选择前面步骤的输出”下，请确保“正文”已选中。
+7. 在显示了“For Each”的窗格顶部的“选择前面步骤的输出”下，请确保“正文”已选中。   
 
    ![填充逻辑应用 for-each](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
@@ -242,9 +242,9 @@ ms.locfileid: "66015263"
 
 在退出逻辑应用设计器之前，请复制逻辑应用要侦听的触发器 URL。 稍后要使用此 URL 来配置事件网格。
 
-1. 单击“当收到 HTTP 请求时”触发器配置框将其展开。
+1. 单击“当收到 HTTP 请求时”触发器配置框将其展开。 
 
-2. 选择“HTTP POST URL”旁边的复制按钮复制其值。
+2. 选择“HTTP POST URL”旁边的复制按钮复制其值。 
 
    ![复制 HTTP POST URL](./media/iot-hub-how-to-order-connection-state-events/copy-url.png)
 
@@ -256,29 +256,29 @@ ms.locfileid: "66015263"
 
 1. 在 Azure 门户中导航到 IoT 中心。
 
-2. 选择“事件”。
+2. 选择“事件”  。
 
    ![打开事件网格详细信息](./media/iot-hub-how-to-order-connection-state-events/event-grid.png)
 
-3. 选择“+ 事件订阅”。
+3. 选择“+ 事件订阅”。 
 
    ![创建新的事件订阅](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
-4. 填写“事件订阅详细信息”：提供一个说明性的名称，然后选择“事件网格架构”。
+4. 填写“事件订阅详细信息”：  提供一个说明性的名称，然后选择“事件网格架构”  。
 
-5. 填写“事件类型”字段。 取消选中“订阅所有事件类型”，然后从菜单中选择“设备已连接”和“设备已断开连接”。
+5. 填写“事件类型”字段。  在下拉列表中，选择仅**设备已连接**并**设备断开连接**菜单中。 单击屏幕关闭列表并保存所做选择的其他位置。
 
    ![设置要查找的事件类型](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
-6. 对于“终结点详细信息”，请选择“Webhook”作为“终结点类型”，单击所选终结点并粘贴从逻辑应用中复制的 URL，然后确认选择。
+6. 对于“终结点详细信息”，请选择“Webhook”作为“终结点类型”，单击所选终结点并粘贴从逻辑应用中复制的 URL，然后确认选择。  
 
-   ![选择终结点 URL](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
+   ![选择终结点 URL](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
 7. 表单现在应类似于以下示例：
 
    ![示例事件订阅窗体](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
 
-   选择“创建”保存事件订阅。
+   选择“创建”保存事件订阅。 
 
 ## <a name="observe-events"></a>观察事件
 
@@ -286,27 +286,25 @@ ms.locfileid: "66015263"
 
 ### <a name="register-a-device-in-iot-hub"></a>在 IoT 中心注册设备
 
-1. 在 IoT 中心选择“IoT 设备”。
+1. 在 IoT 中心选择“IoT 设备”。 
 
-2. 选择窗格顶部的“+添加”。
+2. 选择窗格顶部的“+添加”  。
 
-3. 对于“设备 ID”，请输入 `Demo-Device-1`。
+3. 对于“设备 ID”，请输入 `Demo-Device-1`。 
 
-4. 选择“保存”。
+4. 选择“保存”。 
 
 5. 可以添加具有不同设备 ID 的多个设备。
 
    ![设备已添加到中心](./media/iot-hub-how-to-order-connection-state-events/AddIoTDevice.png)
 
-6. 再次单击该设备；现在将会填入连接字符串和密钥。 复制“连接字符串 - 主键”供稍后使用。
+6. 再次单击该设备；现在将会填入连接字符串和密钥。 复制“连接字符串 - 主键”供稍后使用  。
 
    ![设备的 ConnectionString](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
-HostName=test-eventgrid-hub.azure-devices.net;DeviceId=Demo-Device-1;SharedAccessKey=cv8uPNixe7E2R9EHtimoY/PlJfBV/lOYCMajVOp/Cuw=
-
 ### <a name="start-raspberry-pi-simulator"></a>启动 Raspberry Pi 模拟器
 
-1. 让我们使用 Raspberry Pi Web 模拟器来模拟设备连接。
+让我们使用 Raspberry Pi Web 模拟器来模拟设备连接。
 
 [启动 Raspberry Pi 模拟器](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
@@ -318,13 +316,13 @@ HostName=test-eventgrid-hub.azure-devices.net;DeviceId=Demo-Device-1;SharedAcces
 
    ![粘贴设备连接字符串](./media/iot-hub-how-to-order-connection-state-events/raspconnstring.png)
 
-2. 选择“运行”以运行该应用程序。
+2. 选择“运行”以运行该应用程序。 
 
 此时会显示类似于以下输出的信息，其中显示了传感器数据以及发送到 IoT 中心的消息。
 
    ![运行应用程序](./media/iot-hub-how-to-order-connection-state-events/raspmsg.png)
 
-   单击“停止”以停止模拟器，并触发“设备已断开连接”事件。
+   单击“停止”以停止模拟器，并触发“设备已断开连接”事件。  
 
 现已运行示例应用程序来收集传感器数据并将其发送到 IoT 中心。
 
@@ -340,29 +338,29 @@ HostName=test-eventgrid-hub.azure-devices.net;DeviceId=Demo-Device-1;SharedAcces
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程使用的资源会在 Azure 订阅中产生费用。 学习完本教程并测试结果后，请禁用或删除不再想要保留的资源。
+本教程使用的资源会在 Azure 订阅中产生费用。 完成后学习完本教程并测试结果，禁用或删除不想要保留的资源。
 
 如果不希望丢弃针对逻辑应用所执行的操作，可以禁用逻辑应用，但不要将其删除。
 
 1. 导航到逻辑应用。
 
-2. 在“概述”边栏选项卡上，选择“删除”或“禁用”。
+2. 在“概述”边栏选项卡上，选择“删除”或“禁用”。   
 
     每个订阅可以包含一个免费 IoT 中心。 如果在本教程中创建了一个免费中心，则不需要将其删除，以免产生费用。
 
 3. 导航到 IoT 中心。
 
-4. 在“概览”边栏选项卡上，选择“删除”。
+4. 在“概览”边栏选项卡上，选择“删除”。  
 
     即使保留了 IoT 中心中，你也仍可能想要删除创建的事件订阅。
 
-5. 在 IoT 中心，选择“事件网格”。
+5. 在 IoT 中心，选择“事件网格”。 
 
 6. 选择要删除的事件订阅。
 
-7. 选择“删除”。
+7. 选择“删除”。 
 
-若要在 Azure 门户中删除 Azure Cosmos DB 帐户，请右键单击该帐户名，然后单击“删除帐户”。 参阅有关[删除 Azure Cosmos DB 帐户](https://docs.microsoft.com/azure/cosmos-db/manage-account)的详细说明。
+若要在 Azure 门户中删除 Azure Cosmos DB 帐户，请右键单击该帐户名，然后单击“删除帐户”。  参阅有关[删除 Azure Cosmos DB 帐户](https://docs.microsoft.com/azure/cosmos-db/manage-account)的详细说明。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/06/2019
 ms.locfileid: "65150877"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
 ## <a name="overview"></a>概述
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-data-movement-activities.md)
 > * [当前版本](copy-activity-overview.md)
 
@@ -148,15 +148,15 @@ ms.locfileid: "65150877"
 
 ### <a name="monitor-visually"></a>直观地监视
 
-若要直观地监视复制活动运行，请转到数据工厂 ->“创作和监视” -> “监视”选项卡，可看到一个管道运行列表，其“操作”列中提供了“查看活动运行”链接。
+若要直观地监视复制活动运行，请转到数据工厂 ->“创作和监视”   -> “监视”  选项卡，可看到一个管道运行列表，其“操作”  列中提供了“查看活动运行”链接。
 
 ![监视管道运行](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 
-单击以查看此管道运行中的活动列表。 在“操作”列中，具有指向复制活动输入、输出、错误（如果复制活动运行失败）和详细信息的链接。
+单击以查看此管道运行中的活动列表。 在“操作”  列中，具有指向复制活动输入、输出、错误（如果复制活动运行失败）和详细信息的链接。
 
 ![监视活动运行](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-单击“操作”下的“详细信息”链接，查看复制活动的执行详细信息和性能特征。 它显示复制方案的以下信息：从源复制到接收器的数据量/行/文件、吞吐量、所执行的步骤和相应的持续时间，以及使用的配置。
+单击“操作”  下的“详细信息”  链接，查看复制活动的执行详细信息和性能特征。 它显示复制方案的以下信息：从源复制到接收器的数据量/行/文件、吞吐量、所执行的步骤和相应的持续时间，以及使用的配置。
 
 >[!TIP]
 >对于某些方案，你还会在复制监视页面的顶部看到“**性能优化提示**”，这告诉你所识别出的瓶颈并指导你进行一些更改来提升复制吞吐量，请参阅[此处](#performance-and-tuning)包含详细信息的示例。

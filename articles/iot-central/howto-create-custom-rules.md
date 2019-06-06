@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6140a8aea3fe0fe0a8f1c01cd1c97404c41f7a69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805976"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742413"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>使用自定义规则发送通知来扩展 Azure IoT Central
 
@@ -43,7 +43,7 @@ ms.locfileid: "65805976"
 | 付款计划 | 即用即付 |
 | 应用程序模板 | 示例 Contoso |
 | 应用程序名称 | 接受默认值或选择自己的名称 |
-| 代码 | 接受默认值或选择自己唯一的 URL 前缀 |
+| URL | 接受默认值或选择自己唯一的 URL 前缀 |
 | Directory | Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
 | 区域 | 美国东部 |
@@ -67,13 +67,13 @@ ms.locfileid: "65805976"
 | Location | 美国东部 |
 | 吞吐量单位 | 第 |
 
-### <a name="stream-analytics-job"></a>流分析作业
+### <a name="stream-analytics-job"></a>Stream Analytics 作业
 
 使用[Azure 门户创建 Stream Analytics 作业](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)具有以下设置：
 
 | 设置 | 值 |
 | ------- | ----- |
-| 名称    | 选择作业名称 |
+| Name    | 选择作业名称 |
 | 订阅 | 订阅 |
 | 资源组 | DetectStoppedDevices |
 | Location | 美国东部 |
@@ -101,7 +101,7 @@ ms.locfileid: "65805976"
 
 | 设置 | 值 |
 | ------- | ----- |
-| 名称    | 选择你的 SendGrid 帐户名称 |
+| Name    | 选择你的 SendGrid 帐户名称 |
 | 密码 | 创建密码 |
 | 订阅 | 订阅 |
 | 资源组 | DetectStoppedDevices |
@@ -140,7 +140,7 @@ ms.locfileid: "65805976"
 此解决方案使用 Azure Functions 应用 Stream Analytics 作业检测到已停止的设备时发送电子邮件通知。 若要创建函数应用：
 
 1. 在 Azure 门户中，导航到**应用服务**实例中**DetectStoppedDevices**资源组。
-1. 选择**+** 若要创建新的函数。
+1. 选择 **+** 若要创建新的函数。
 1. 上**选择开发环境**页上，选择**门户内**，然后选择**继续**。
 1. 上**CREATE FUNCTION**页上，选择**Webhook + API** ，然后选择**创建**。
 
@@ -152,10 +152,10 @@ ms.locfileid: "65805976"
 
 若要发送电子邮件的 SendGrid，需要配置你的函数的绑定，如下所示：
 
-1. 选择**集成**，选择输出**HTTP ($return)**，然后选择**删除**。
+1. 选择**集成**，选择输出**HTTP ($return)** ，然后选择**删除**。
 1. 选择 **+ 新建输出**，然后选择**SendGrid**，然后选择**选择**。 选择**安装**安装 SendGrid 扩展。
 1. 安装完成后，选择**使用函数返回值**。 添加有效**到地址**接收电子邮件通知。  添加有效**发件人地址**要用作电子邮件发件人。
-1. 选择**新**旁边**SendGrid API 密钥应用设置**。 输入**SendGridAPIKey**密钥，以及前面记下的值的 SendGrid API 密钥。 然后选择“创建”。
+1. 选择**新**旁边**SendGrid API 密钥应用设置**。 输入**SendGridAPIKey**密钥，以及前面记下的值的 SendGrid API 密钥。 然后选择“创建”  。
 1. 选择**保存**以保存你的函数的 SendGrid 绑定。
 
 如以下屏幕截图所示的集成设置：
@@ -298,7 +298,7 @@ test-device-3   2019-05-02T14:24:28.919Z
         RightSide.deviceid2 is NULL
     ```
 
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 若要启动 Stream Analytics 作业，请选择**概述**，然后**启动**，然后**现在**，然后**启动**:
 
     ![流分析](media/howto-create-custom-rules/stream-analytics.png)
@@ -353,4 +353,4 @@ test-device-3   2019-05-02T14:24:28.919Z
 * 创建设备停止发送数据时检测到一个 Stream Analytics 查询。
 * 发送电子邮件通知使用的 Azure Functions 和 SendGrid 服务。
 
-您已经知道了如何创建自定义规则和通知，建议下一步是了解如何[可视化和分析你在 Power BI 仪表板中的 Azure IoT Central 数据](howto-connect-powerbi.md)。
+您已经知道了如何创建自定义规则和通知，建议下一步是了解如何[扩展 Azure IoT 中心使用自定义分析](howto-create-custom-analytics.md)。

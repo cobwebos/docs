@@ -2,20 +2,20 @@
 title: 使用自定义策略添加声明和自定义用户输入 - Azure Active Directory B2C | Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中自定义用户输入并将声明添加到注册或登录旅程。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a64c58d23543279a3a32d2d7b612b43dee8741eb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768010"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507558"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入
 
@@ -261,11 +261,11 @@ ms.locfileid: "65768010"
 ## <a name="test-the-custom-policy"></a>测试自定义策略
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请务必使用包含 Azure AD 租户的目录，具体方法是：单击顶部菜单中的“目录和订阅筛选器”，再选择包含 Azure AD 租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”。
-4. 选择“Identity Experience Framework (预览)”。
-5. 选择“上传自定义策略”，然后上传已更改的两个策略文件。
-2. 选择已上传的注册或登录策略，并单击“立即运行”按钮。
+2. 请务必使用包含 Azure AD 租户的目录，具体方法是：单击顶部菜单中的“目录和订阅筛选器”  ，再选择包含 Azure AD 租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”   。
+4. 选择“Identity Experience Framework (预览)”。 
+5. 选择“上传自定义策略”，然后上传已更改的两个策略文件。 
+2. 选择已上传的注册或登录策略，并单击“立即运行”按钮。 
 3. 现在，应该可以使用电子邮件地址注册。
 
 注册屏幕应类似于：

@@ -2,26 +2,26 @@
 title: BuildingBlocks - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 BuildingBlocks 元素。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a7a5463d24ba15b7bd2b514b8c7bce3799f3191
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 67770661f0660b9a84d16bbbc7d86cfcbca2cfdf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688900"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511587"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-BuildingBlocks 元素添加到 [TrustFrameworkPolicy](trustframeworkpolicy.md) 元素中。
+BuildingBlocks  元素添加到 [TrustFrameworkPolicy](trustframeworkpolicy.md) 元素中。
 
 ```XML
 <TrustFrameworkPolicy
@@ -55,7 +55,7 @@ BuildingBlocks 元素添加到 [TrustFrameworkPolicy](trustframeworkpolicy.md) �
  </BuildingBlocks>
 ```
 
-BuildingBlocks 元素包含以下元素，必须按照定义的顺序指定：
+BuildingBlocks  元素包含以下元素，必须按照定义的顺序指定：
 
 - [ClaimsSchema](claimsschema.md) - 定义了可以引用为策略的一部分的声明类型。 声明架构是发出声明类型的位置。 声明类型类似于许多编程语言中的变量。 可以使用声明类型从应用程序的用户那里收集数据、接收来自社交标识提供者的声明、发送和接收来自自定义 REST API 的数据，也可以存储自定义策略使用的任何内部数据。 
 

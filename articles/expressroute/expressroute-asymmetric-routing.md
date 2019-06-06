@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
 ms.custom: seodec18
-ms.openlocfilehash: 6ece48d892f46a4f8bbeb66d3ebda9f532b621b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2b2b678cad50e45660fb763c2a1f9194500edf8d
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60367744"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730207"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>非对称路由与多个网络路径
 本文说明当网络源与目标之间有多个路径时，正向和返回网络流量如何选择不同的路由。
@@ -50,7 +50,7 @@ ms.locfileid: "60367744"
 
 然后，启用 ExpressRoute，通过 ExpressRoute 使用 Microsoft 提供的服务。 Microsoft 提供的所有其他服务都通过 Internet 使用。 在连接到 ExpressRoute 的边缘服务器上部署不同的防火墙。 Microsoft 通过 ExpressRoute，针对特定服务向网络播发更明确的前缀。 路由基础结构选择 ExpressRoute 作为这些前缀的首选路径。 如果不是通过 ExpressRoute 向 Microsoft 播发公共 IP 地址，Microsoft 将通过 Internet 来与公共 IP 地址通信。 从网络到 Microsoft 的正向流量使用 ExpressRoute，来自 Microsoft 的反向流量使用 Internet。 当边缘服务器上的防火墙看到了在状态表中找不到的流程的响应数据包时，将丢弃返回流量。
 
-如果选择将同一网络地址转译 (NAT) 池用于 ExpressRoute 和 Internet，会发现网络中专用 IP 地址上的客户端有类似的问题。 Windows Update 等服务的请求通过 Internet 传递，因为这些服务的 IP 地址不通过 ExpressRoute 播发。 但是，返回流量通过 ExpressRoute 返回。 如果 Microsoft 从 Internet 和 ExpressRoute 收到具有相同子网掩码的 IP 地址，则首选基于 Internet 的 ExpressRoute。 如果网络边缘中使用 ExpressRoute 的防火墙或其他有状态设备之前没有该网络流的相关信息，就会删除属于该网络流的数据包。
+如果您选择要播发相同的网络地址转换 (NAT) 池用于 ExpressRoute 和 Internet，可以看到类似的问题与客户端上的专用 IP 地址的网络中。 Windows Update 等服务的请求通过 Internet 传递，因为这些服务的 IP 地址不通过 ExpressRoute 播发。 但是，返回流量通过 ExpressRoute 返回。 如果 Microsoft 从 Internet 和 ExpressRoute 收到具有相同子网掩码的 IP 地址，则首选基于 Internet 的 ExpressRoute。 如果网络边缘中使用 ExpressRoute 的防火墙或其他有状态设备之前没有该网络流的相关信息，就会删除属于该网络流的数据包。
 
 ## <a name="asymmetric-routing-solutions"></a>非对称路由解决方案
 有两个主要选项可以解决非对称路由问题。 一个是通过路由，另一个是使用基于源的 NAT (SNAT)。

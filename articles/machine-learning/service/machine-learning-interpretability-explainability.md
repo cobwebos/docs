@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 05/30/2019
-ms.openlocfilehash: 94309a019800b560cf6731d84cea324932e3f357
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 4f1dd0bfc0637c6681b513860a63df2b8c35fe5e
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398538"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430852"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务的模型 interpretability
 
@@ -462,7 +462,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x
 
 自动化的机器学习包含用于解释中自动训练模型的特征重要性的包。 此外，分类方案允许你检索类级别特征重要性。 有两种方法，以启用自动的机器学习中的此行为：
 
-* 若要启用已训练的系综模型的特征重要性，请使用[ `explain_model()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py)函数。
+* 若要启用已训练的系综模型的特征重要性，请使用[ `explain_model()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py)函数。
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
@@ -471,7 +471,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x
         per_class_summary, per_class_imp = explain_model(fitted_model, X_train, X_test)
     ```
 
-* 若要启用培训之前每次单独运行的特征重要性，设置`model_explainability`参数`True`中`AutoMLConfig`对象，并提供验证数据。 然后，使用[ `retrieve_model_explanation()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py)函数。
+* 若要启用培训之前每次单独运行的特征重要性，设置`model_explainability`参数`True`中`AutoMLConfig`对象，并提供验证数据。 然后，使用[ `retrieve_model_explanation()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py)函数。
 
     ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation

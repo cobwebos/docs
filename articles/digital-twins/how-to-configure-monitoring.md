@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 3c35633c9b25eafdb738ed591c7c7022fbd8149a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9765af13a22a0ae9db8a45c396e7d5a32b71b79c
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967820"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730324"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>如何在 Azure 数字孪生中配置监视
 
@@ -38,22 +38,22 @@ Azure 数字孪生支持可靠的日志记录、监视和分析。 解决方案�
 Azure 数字孪生的活动日志记录默认启用，可以通过以下方式在 Azure 门户中找到它：
 
 1. 选择 Azure 数字孪生实例。
-1. 选择“活动日志”以调出显示面板：
+1. 选择“活动日志”  以调出显示面板：
 
-    ![活动日志][1]
+    [![活动日志](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
 对于高级活动日志记录：
 
-1. 选择“日志”选项以显示“Activity Log Analytics 概述”：
+1. 选择“日志”  选项以显示“Activity Log Analytics 概述”  ：
 
-    ![选项][2]
+    [![所选内容](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
-1. “Activity Log Analytics 概述”汇总了基本的活动日志数据：
+1. “Activity Log Analytics 概述”  汇总了基本的活动日志数据：
 
-    ![活动日志分析概述][3]
+    [![活动 log analytics 概述]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
->使用活动日志可以快速了解订阅级事件。
+>使用活动日志  可以快速了解订阅级事件。
 
 ## <a name="enable-customer-diagnostic-logs"></a>启用客户诊断日志
 
@@ -68,19 +68,19 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 为实例启用诊断日志：
 
 1. 在 Azure 门户中打开资源。
-1. 单击“诊断设置”：
+1. 单击“诊断设置”  ：
 
-    ![诊断设置一][4]
+    [![一个诊断设置](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. 单击“启用诊断”收集数据（如果之前未启用）。
+1. 单击“启用诊断”  收集数据（如果之前未启用）。
 1. 填写请求的字段并选择保存数据的方式和位置：
 
-    ![诊断设置二][5]
+    [![诊断设置两个](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     通常使用保存诊断日志[Azure 文件存储](../storage/files/storage-files-deployment-guide.md)以及与[Azure Monitor 日志](../azure-monitor/log-query/get-started-portal.md)。 可以同时选择这两个选项。
 
 >[!TIP]
->使用诊断日志了解资源操作。
+>使用诊断日志  了解资源操作。
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor 和 Log Analytics
 
@@ -96,18 +96,18 @@ Azure 监视器包含强大的日志分析服务，这使日志记录源进行�
 
 通过提供查询日志已满[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)。 设置这些强大的功能：
 
-1. 在 Azure 门户中搜索“Log Analytics”。
-1. 你将看到您的可用**Log Analytics 工作区**实例。 选择一个实例，然后选择“日志”进行查询：
+1. 在 Azure 门户中搜索“Log Analytics”  。
+1. 你将看到您的可用**Log Analytics 工作区**实例。 选择一个实例，然后选择“日志”  进行查询：
 
-    ![Log Analytics][6]
+    [![日志分析](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
 1. 如果还没有**Log Analytics 工作区**实例，您可以通过单击创建一个工作区**添加**按钮：
 
-    ![创建 OMS][7]
+    [![创建 OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 一次你**Log Analytics 工作区**预配实例后，可以使用功能强大的查询在多个日志中查找条目或搜索使用特定的条件使用**日志管理**:
 
-   ![日志管理][8]
+   [![日志管理](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 有关功能强大的查询操作的详细信息，请参阅[开始使用查询](../azure-monitor/log-query/get-started-queries.md)。
 
@@ -116,7 +116,7 @@ Azure 监视器包含强大的日志分析服务，这使日志记录源进行�
 
 Azure Monitor 日志还提供了功能强大的错误和警报通知服务，可通过单击查看**诊断并解决问题**:
 
-   ![警报和错误通知][9]
+   [![警报和错误通知](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >使用**Log Analytics 工作区**到查询日志历史记录，发现多个应用程序功能、 订阅或服务。
@@ -132,14 +132,3 @@ Azure 的数字孪生还支持特定于应用程序的日志记录和安全审�
 - 通过阅读[诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)深入了解 Azure 诊断设置。
 
 - 详细了解[Azure Monitor 日志](../azure-monitor/log-query/get-started-portal.md)。
-
-<!-- Images -->
-[1]: media/how-to-configure-monitoring/activity-log.png
-[2]: media/how-to-configure-monitoring/activity-log-select.png
-[3]: media/how-to-configure-monitoring/log-analytics-overview.png
-[4]: media/how-to-configure-monitoring/diagnostic-settings-one.png
-[5]: media/how-to-configure-monitoring/diagnostic-settings-two.png
-[6]: media/how-to-configure-monitoring/log-analytics.png
-[7]: media/how-to-configure-monitoring/log-analytics-oms.png
-[8]: media/how-to-configure-monitoring/log-analytics-management.png
-[9]: media/how-to-configure-monitoring/log-analytics-notifications.png

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 06/04/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cc9d0a951ac6f7ed18ad6558ae9edb2d1f9c8f4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 84069fb80ac751cbde53b0febdac451b54cd2b29
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544618"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688749"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -32,9 +32,9 @@ Azure AD 中的应用程序有两种表示形式：
 * [服务主体](app-objects-and-service-principals.md#service-principal-object) - 可将其视为应用程序的实例。 服务主体通常引用应用程序对象，一个应用程序对象可由不同目录中的多个服务主体引用。
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>什么是应用程序对象，它们来自何处？
-用户可以在 Azure 门户中通过[应用程序注册](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade)体验来管理[应用程序对象](app-objects-and-service-principals.md#application-object)。 应用程序对象描述 Azure AD 中的应用程序，可将其视为应用程序的定义，使服务能够知道如何根据应用程序的设置，向该应用程序颁发令牌。 应用程序对象只在其主目录中存在，即使它是支持其他目录中服务主体的多租户应用程序也是如此。 应用程序对象可以包括以下任何项（以及此处未提到的其他信息）：
+用户可以在 Azure 门户中通过[应用程序注册](https://aka.ms/appregistrations)体验来管理[应用程序对象](app-objects-and-service-principals.md#application-object)。 应用程序对象描述 Azure AD 中的应用程序，可将其视为应用程序的定义，使服务能够知道如何根据应用程序的设置，向该应用程序颁发令牌。 应用程序对象只在其主目录中存在，即使它是支持其他目录中服务主体的多租户应用程序也是如此。 应用程序对象可以包括以下任何项（以及此处未提到的其他信息）：
 * 名称、徽标和发布者
-* 回复 URL
+* 重定向 URI
 * 机密（用于对应用程序进行身份验证的对称和/或非对称密钥）
 * API 依赖关系 (OAuth)
 * 发布的 API/资源/范围 (OAuth)
@@ -74,7 +74,7 @@ Azure AD 中的应用程序有两种表示形式：
   * 订阅 Office 365 或开始试用时，会在目录中创建一个或多个服务主体，表示传递所有与 Office 365 关联的功能的各种服务。
   * 某些 Office 365 服务（如 SharePoint）会不断地创建服务主体，以允许在组件（包括工作流）之间进行安全通信。
 * 当管理员从应用库添加应用程序时（这也会创建基础应用对象）
-* 添加一个应用程序以使用 [Azure AD 应用程序代理](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+* 添加一个应用程序以使用 [Azure AD 应用程序代理](/azure/active-directory/manage-apps/application-proxy)
 * 连接应用程序，以使用 SAML 或密码单一登录 (SSO) 进行单一登录
 * 通过 Azure AD 图形 API 或 PowerShell 以编程方式实现
 
@@ -101,8 +101,8 @@ Azure AD 中的应用程序有两种表示形式：
   * 声明转换规则
   * 属性映射（用户设置）
 * 有关服务主体和应用程序对象的详细信息，请参阅 Azure AD 图形 REST API 参考文档：
-  * [应用程序](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [服务主体](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [应用程序](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [服务主体](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>应用程序为何要与 Azure AD 集成？
 应用程序将添加到 Azure AD，以利用 Azure AD 提供的一个或多个服务，包括：

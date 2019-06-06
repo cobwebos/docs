@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 165df03ec06081fe9b2e1ab84ffe7579ac457758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 693be80e493a0ba259d147f432dc9d6c07ba876d
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502223"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427512"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机上的数据浏览和可视化工具
 
-数据科学的关键步骤之一是了解数据。 可视化和数据浏览工具可帮助加速数据理解。 下面是 DSVM 上提供的一些工具，这些工具有助于完成这一关键步骤。 
+数据科学的关键步骤之一是了解数据。 可视化和数据浏览工具可帮助加速数据理解。 以下是 DSVM 中提供的一些工具可简化此关键步骤。 
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
@@ -42,7 +42,7 @@ ms.locfileid: "60502223"
 | 它是什么？   |  Weka 是适用于数据挖掘任务的机器学习算法的集合。 这些算法可以直接应用于数据集，也可以从你自己的 Java 代码中调用。 Weka 包含用于数据预处理、分类、回归、群集、关联规则和可视化的工具。 |
 | 支持的 DSVM 版本     | Windows、Linux     |
 | 典型用途      | 常规 ML 工具     |
-| 如何使用/运行它？      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上，使用 X2Go 登录，然后导航到“应用程序”->“开发”->“Weka”。 |
+| 如何使用/运行它？      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上，登录使用 x2go 登录，然后导航到应用程序-> 开发-> Weka。 |
 | 示例链接      | [Weka 示例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | DSVM 上的相关工具      |LightGBM、Rattle、Xgboost   |
 
@@ -56,12 +56,12 @@ ms.locfileid: "60502223"
 | 示例链接      | [Rattle](https://togaware.com/onepager/) |
 | DSVM 上的相关工具      |LightGBM、Weka、Xgboost   |
 
-## <a name="powerbi-desktop"></a>PowerBI Desktop 
+## <a name="power-bi-desktop"></a>Power BI Desktop 
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   | 交互式数据可视化和 BI 工具    |
 | 支持的 DSVM 版本      | Windows  |
 | 典型用途      |  数据可视化和构建仪表板   |
 | 如何使用/运行它？      | 桌面快捷方式 (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| DSVM 上的相关工具      |   Visual Studio 2017、Visual Studio Code、Juno      |
+| DSVM 上的相关工具      |   Visual Studio 2019, Visual Studio Code, Juno      |
 

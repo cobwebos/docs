@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 3d9a5ebb2e25cfbabf8cfdbd94c2d1d04ae1bbee
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788460"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493403"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -20,7 +20,7 @@ ms.locfileid: "65788460"
 通过 Azure 资源运行状况可得知 Azure 资源的当前及历史运行状况。 Azure 资源运行状况警报会在这些资源的运行状况发生变化时几乎实时地发出通知。 通过以编程方式创建资源运行状况警报，用户可以批量创建警报并对其进行自定义。
 
 > [!NOTE]
-> 资源运行状况警报目前处于预览状态。
+> 资源运行状况警报目前为预览版。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "65788460"
 
 若要按本页中的说明操作，需事先进行几项设置：
 
-1. 你需要安装[Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+1. 需安装 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. [创建或重新使用](../azure-monitor/platform/action-groups.md)配置为向你发出通知的操作组
 
 ## <a name="instructions"></a>说明
@@ -76,7 +76,7 @@ ms.locfileid: "65788460"
 
 请注意，如果你打算使该进程完全自动化，只需在第 5 步中将资源管理器模板编辑为不提示值。
 
-## <a name="resource-manager-template-options-for-resource-health-alerts"></a>资源运行状况警报的 resource Manager 模板选项
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>资源运行状况警报的资源管理器模板选项
 
 可将此基本模板用作创建资源运行状况警报的起点。 此模板按创建时指定的方式运行，将你注册为接收订阅中所有资源所有新激活的资源运行状况事件的警报。
 
@@ -286,7 +286,7 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
 
 在此示例中，我们仅对当前和以前的运行状况不是“Unknown”的事件发出通知。 如果你的警报被直接发送到移动电话货电子邮件，这一变化可能比较有用。 
 
-请注意，可能要为 null，在某些事件的 currentHealthStatus 和 previousHealthStatus 属性。 例如，在更新事件发生时只有该附加事件信息可用，则很可能，最后一个报表之后, 未更改资源的运行状况状态 （例如导致）。 因此，使用上述子句可能会导致某些警报未被触发，因为 properties.currentHealthStatus 和 properties.previousHealthStatus 值将设置为 null。
+请注意，在某些事件中，currentHealthStatus 和 previousHealthStatus 属性可能为 null。 例如，发生更新事件时，资源的运行状况状态可能自上次报告以来并未变化，只有该额外的事件信息（例如，原因）可用。 因此，使用上述原因可能导致某些警报无法触发，因为 properties.currentHealthStatus 和 properties.previousHealthStatus 的值将会设置为 null。
 
 ### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>将警报调整为避免通知用户发起的事件
 
@@ -306,11 +306,11 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
     ]
 }
 ```
-请注意，可能要为 null，在某些事件的原因字段。 即，运行状况转换所需的位置 （例如可设为不可用），并立即以防止通知会延迟记录的事件。 因此，使用上述子句可能会导致警报未被触发，因为 properties.clause 属性值将设置为 null。
+请注意，在某些事件中，原因字段可能为 null。 也就是说，发生了运行状况转换（例如，从可用变为不可用），因此系统会立即记录事件，防止通知延迟。 因此，使用上述子句可能导致某个警报无法触发，因为 properties.clause 属性值将会设置为 null。
 
-## <a name="complete-resource-health-alert-template"></a>完整的资源运行状况警报模板
+## <a name="complete-resource-health-alert-template"></a>完成资源运行状况警报模板
 
-使用上一节中所述的不同调整，下面是配置为最大限度地信噪比信号的示例模板。 请记住上文其中 currentHealthStatus、 previousHealthStatus 和原因属性值为 null 的某些事件中所述的注意事项。
+下面是一个示例，该示例使用上一部分所述的不同调整方式进行了配置，可以最大限度增强信噪比。 请牢记上述注意事项，即，在某些事件中，currentHealthStatus、previousHealthStatus 和 cause 属性值可能为 null。
 
 ```json
 {
@@ -442,5 +442,7 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
 -  [Azure 资源运行状况概述](Resource-health-overview.md)
 -  [可通过 Azure 资源运行状况使用的资源类型和运行状况检查](resource-health-checks-resource-types.md)
 
+
 创建服务运行状况警报：
 -  [配置服务运行状况的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Azure 活动日志事件架构](../azure-monitor/platform/activity-log-schema.md)

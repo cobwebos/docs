@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 4af2e97e8ace432c37a770f1930514dd19e30944
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a295dfa1f7f2c58b3e45036212434837ac4bfb4d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235751"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475451"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理群集在 Azure Kubernetes 服务 (AKS) 的多个节点池
 
@@ -74,6 +74,7 @@ az provider register --namespace Microsoft.ContainerService
 * 无法删除第一个节点池。
 * 不能使用 HTTP 应用程序路由外接程序。
 * 无法添加/更新/删除节点池与大多数操作使用现有资源管理器模板。 相反，[使用单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)到 AKS 群集中的节点池进行更改。
+* 不能使用群集自动缩放程序 （目前以预览版在 AKS 中）。
 
 虽然此功能处于预览状态，下面的其他限制适用：
 
@@ -222,7 +223,7 @@ VirtualMachineScaleSets  1        110        nodepool1   1.12.6                 
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>指定节点池的 VM 大小
 
-在上一示例中创建节点池的默认 VM 大小使用在群集中创建的节点。 一种更常见方案是为你要使用不同的 VM 大小和功能创建节点池。 例如，可以创建包含具有大量的 CPU 或内存中，节点的节点池或提供 GPU 支持的节点池。 在下一步，您 [使用 taints 和 tolerations][#schedule-pods-using-taints-and-tolerations] 告知如何限制对 pod 访问的 Kubernetes 计划程序可在这些节点上运行。
+在上一示例中创建节点池的默认 VM 大小使用在群集中创建的节点。 一种更常见方案是为你要使用不同的 VM 大小和功能创建节点池。 例如，可以创建包含具有大量的 CPU 或内存中，节点的节点池或提供 GPU 支持的节点池。 在下一步中，你[使用 taints 和 tolerations](#schedule-pods-using-taints-and-tolerations)告知 Kubernetes 计划程序如何限制对可以在这些节点运行的 pod 的访问。
 
 在以下示例中，将创建使用基于 GPU 的节点池*Standard_NC6* VM 大小。 这些虚拟机采用 NVIDIA Tesla K80 卡。 有关可用的 VM 大小的信息，请参阅[在 Azure 中 Linux 虚拟机的大小][vm-sizes]。
 
@@ -332,7 +333,7 @@ Events:
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>管理节点池使用资源管理器模板
 
-当你使用 Azure 资源管理器模板创建和托管的资源，通常可以更新模板并重新部署中的设置，若要更新的资源。 在 AKS 中 nodepools，与 AKS 群集创建后，无法更新初始 nodepool 配置文件。 此行为意味着你不能更新现有资源管理器模板、 节点池，请进行的更改并重新部署。 相反，必须创建单独的资源管理器模板的更新仅现有 AKS 群集的代理池。
+当你使用 Azure 资源管理器模板创建和托管的资源，通常可以更新模板并重新部署中的设置，若要更新的资源。 使用 AKS 中的节点池，不能更新初始节点池配置文件后创建 AKS 群集。 此行为意味着你不能更新现有资源管理器模板、 节点池，请进行的更改并重新部署。 相反，必须创建单独的资源管理器模板的更新仅现有 AKS 群集的代理池。
 
 创建一个模板，如`aks-agentpools.json`并粘贴下面的示例清单。 此示例模板配置以下设置：
 
@@ -437,7 +438,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建和管理 AKS 群集中的多个节点池。 有关如何跨节点池控制 pod 的详细信息，请参阅[在 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
+在本文中，您学习了如何创建和管理 AKS 群集中的多个节点池。 有关如何跨节点池控制 pod 的详细信息，请参阅[在 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
 
 若要创建和使用 Windows Server 容器节点池，请参阅[在 AKS 中创建的 Windows Server 容器][aks-windows]。
 

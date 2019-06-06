@@ -4,16 +4,16 @@ description: 了解如何排查更新管理问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f286877c6a9e787c06a8a846efaf94668c04fc4e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bcc871ecc9413f02545e6aec4caa6342d563b44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787689"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474567"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -44,7 +44,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 1. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理正常工作。
 2. 如果使用的是克隆的映像：
-   1. 在 Log Analytics 工作区中，从已保存的搜索作用域配置为删除 VM`MicrosoftDefaultScopeConfig-Updates`如果它所示。 已保存的搜索位于工作区的“常规”下。
+   1. 在 Log Analytics 工作区中，从已保存的搜索作用域配置为删除 VM`MicrosoftDefaultScopeConfig-Updates`如果它所示。 已保存的搜索位于工作区的“常规”下  。
    2. 运行 `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`
    3. 运行 `Restart-Service HealthService` 重新启动 `HealthService`。 这将重新创建密钥，并生成新的 UUID。
    4. 如果这不起作用，对映像进行 sysprep 第一个并在这一事实后安装 MMA 代理。
@@ -78,23 +78,52 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="nologs"></a>场景：不显示在一台计算机的 Azure Monitor 日志中的更新管理数据
+### <a name="nologs"></a>场景：计算机不会显示在更新管理下的门户
 
 #### <a name="issue"></a>问题
 
-有显示为计算机**未评估**下**符合性**，但您看到的混合 Runbook 辅助角色但不是更新管理的 Azure Monitor 日志中的检测信号数据。
+可能会遇到以下方案：
+
+* 您计算机节目**未配置**从 VM 的更新管理视图
+
+* 从自动化帐户的更新管理视图中消失了计算机
+
+* 有显示为计算机**未评估**下**符合性**，但您看到的混合 Runbook 辅助角色但不是更新管理的 Azure Monitor 日志中的检测信号数据。
 
 #### <a name="cause"></a>原因
 
+这可能导致潜在的本地配置问题或配置不正确的作用域配置。
+
 混合 Runbook 辅助角色可能需要重新注册并重新安装。
+
+可能已在你已达到并正在停止从所存储数据的工作区中定义了配额。
 
 #### <a name="resolution"></a>解决方法
 
-遵循[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)中的步骤来为 Windows 安装混合辅助角色，或者遵循[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)中的步骤为 Linux 进行安装。
+* 请确保你的计算机报告到正确的工作区。 验证你的计算机报告到哪些工作区。 有关如何对此进行验证的说明，请参阅[验证代理连接到 Log Analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)。 然后，确保这是链接到 Azure 自动化帐户的工作区。 若要确认这一点，导航到自动化帐户，然后单击**链接工作区**下**相关资源**。
+
+* 检查以确保计算机显示在 Log Analytics 工作区。 Log Analytics 工作区链接到自动化帐户中运行以下查询。 如果没有看到您的计算机将查询结果中，你的计算机不是发送检测信号，这意味着则很可能是本地的配置问题。 你可以运行的故障排除工具[Windows](update-agent-issues.md#troubleshoot-offline)或[Linux](update-agent-issues-linux.md#troubleshoot-offline)取决于操作系统，或者你可以[重新安装代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。 如果你的计算机会显示在查询结果中，则您需要非常以下项目符号中指定的作用域配置。
+
+  ```loganalytics
+  Heartbeat
+  | summarize by Computer, Solutions
+  ```
+
+* 检查作用域配置问题。 [作用域配置](../automation-onboard-solutions-from-automation-account.md#scope-configuration)确定哪些计算机获取配置的解决方案。 如果你的计算机在工作区中显示，但不显示运行后，您将需要配置作用域配置目标计算机。 若要了解如何执行此操作，请参阅[工作区中的载入计算机](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)。
+
+* 如果上述步骤未能解决您的问题，请遵循的步骤[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)若要重新安装混合辅助角色的 Windows 或[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)适用于 Linux。
+
+* 在工作区中，运行以下查询。 如果您看到的结果`Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota`具有已达到和已停止数据保存在工作区中定义的配额。 在工作区中，导航到**使用情况和预估的成本** > **数据量管理**并查看你的配额或删除你有的配额。
+
+  ```loganalytics
+  Operation
+  | where OperationCategory == 'Data Collection Status'
+  | sort by TimeGenerated desc
+  ```
 
 ## <a name="windows"></a>Windows
 
-如果在尝试在虚拟机上载入解决方案时遇到问题，请查看本地计算机“应用程序和服务日志”下的“Operations Manager”事件日志中是否存在事件 ID 为 4502、事件消息包含 Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent 的事件。
+如果在尝试在虚拟机上载入解决方案时遇到问题，请查看本地计算机“应用程序和服务日志”下的“Operations Manager”事件日志中是否存在事件 ID 为 4502、事件消息包含 Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent 的事件     。
 
 下一部分突出显示了特定的错误消息，以及每个消息的可能解决方案。 有关其他载入问题，请参阅[排查解决方案载入问题](onboarding.md)。
 
@@ -158,7 +187,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 #### <a name="resolution"></a>解决方法
 
-请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试。
+请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试  。
 
 ### <a name="failed-to-start"></a>场景：一台计算机显示无法在更新部署中启动
 
@@ -196,7 +225,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 #### <a name="issue"></a>问题
 
-有计算机在“符合性”下显示“未评估”，并且能看到下面显示一条异常消息。
+有计算机在“符合性”  下显示“未评估”  ，并且能看到下面显示一条异常消息。
 
 #### <a name="cause"></a>原因
 
@@ -263,7 +292,7 @@ Linux 混合辅助角色运行状况不正常。
 
 某些情况下，包更新可能会干扰更新管理，因而会阻更新部署完成。 如果出现此情况，则必须从将来的更新运行中排除这些包，或者手动安装它们。
 
-如果无法解决修补问题，请在下次更新部署启动之前创建以下日志文件的副本，并保留它以用于故障排除：
+如果无法解决修补问题，请在下次更新部署启动之前创建以下日志文件的副本，并保留它以用于故障排除  ：
 
 ```bash
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
@@ -275,4 +304,4 @@ Linux 混合辅助角色运行状况不正常。
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 

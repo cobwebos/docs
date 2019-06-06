@@ -2,20 +2,20 @@
 title: Azure 数据库迁移服务概述 | Microsoft Docs
 description: Azure 数据库迁移服务，它提供从多个数据库源到 Azure 数据平台的无缝迁移的概述。
 services: database-migration
-author: HJToland3
+author: pochiraju
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.topic: article
-ms.date: 05/24/2019
-ms.openlocfilehash: 05ff39c65ae96e4131f57da513173848bbb6f319
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 05/31/2019
+ms.openlocfilehash: 0b1c45fcb030ac31934a5fb7aad478ef08d66129
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225391"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478189"
 ---
 # <a name="what-is-azure-database-migration-service"></a>什么是 Azure 数据库迁移服务？
 

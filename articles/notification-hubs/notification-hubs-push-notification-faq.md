@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 8af545f5700e90303562174a3c27cc5438b28e24
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 579d50a95ad0e478f401b7db012e7c743ce58491
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925883"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730461"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -56,7 +56,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何将中心升级或降级到不同层的命名空间？
 
-转到 **[Azure 门户]** > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。 请注意以下要求：
+转到 **[Azure 门户]**  > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。  请注意以下要求：
 
 * 更新的定价层将应用到正在使用的命名空间中的*所有*中心。
 * 如果设备计数超出所要降级到的层的限制，则需要删除设备才能降级。
@@ -69,13 +69,13 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="which-client-platforms-do-you-support"></a>支持哪些客户端平台？
 
-[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、[Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China（通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin（[iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和 Android）、[Chrome 应用](notification-hubs-chrome-push-notifications-get-started.md)和 [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) 支持推送通知。 有关详细信息，请转到[通知中心入门教程]页。
+有关支持推送通知[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)， [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)， [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)， [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)， [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)， [android China （通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)，Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和 Android，和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)。 有关详细信息，请转到[通知中心入门教程]页。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>是否支持短信、电子邮件或 Web 通知？
 
 通知中心主用于将通知发送到移动应用。 它不提供电子邮件或短信功能。 但是，提供这些功能的第三方平台可与通知中心集成，使用[移动应用]发送原生推送通知。
 
-通知中心也不提供现成的浏览器内推送通知传递服务。 客户可以在支持的服务器端平台上使用 SignalR 实现此功能。 如果想要在 Chrome 沙盒中将通知发送到浏览器应用，请参阅 [Chrome 应用教程]。
+通知中心也不提供现成的浏览器内推送通知传递服务。 客户可以在支持的服务器端平台上使用 SignalR 实现此功能。 
 
 ### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>移动应用与 Azure 通知中心之间的关系如何？它们各自适用于什么场合？
 
@@ -210,7 +210,6 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [通知中心 REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [通知中心入门教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Chrome 应用教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [后端注册指南]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [后端注册指南 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx

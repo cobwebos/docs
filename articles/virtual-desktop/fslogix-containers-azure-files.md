@@ -7,24 +7,24 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: v-chjenk
-ms.openlocfilehash: c3f31e8d260ea5e462e8782fadd9f61f34d03add
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b3032aa796b3c79572bbf8b2beb85efc252ff73b
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307267"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497540"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
-Windows 虚拟桌面预览服务建议作为用户配置文件解决方案 FSLogix 配置文件的容器。 FSLogix 旨在漫游配置文件在远程计算环境中，如 Windows 虚拟桌面。 它在单个容器中存储的完整用户配置文件。 在登录时，容器将动态附加到在计算环境中使用本机，在来宾虚拟硬盘 (VHD) 和 HYPER-V 虚拟硬盘磁盘 (VHDX) Microsoft 服务。 用户配置文件是立即可用，并显示在完全相同的本机用户配置文件系统。
+Windows 虚拟桌面预览服务建议作为用户配置文件解决方案 FSLogix 配置文件的容器。 FSLogix 旨在漫游配置文件在远程计算环境中，如 Windows 虚拟桌面。 它在单个容器中存储的完整用户配置文件。 在登录时，此容器将动态附加到在计算环境中使用本机支持的虚拟硬盘 (VHD) 和 HYPER-V 虚拟硬盘磁盘 (VHDX)。 用户配置文件是立即可用，并显示在完全相同的本机用户配置文件系统。
 
 在本文中，我们将介绍 FSLogix 配置文件容器用于 Azure 文件。 Windows 虚拟桌面，这是上下文中的信息是[于 3 月 21 日宣布推出](https://www.microsoft.com/microsoft-365/blog/2019/03/21/windows-virtual-desktop-public-preview/)。
 
 ## <a name="user-profiles"></a>用户配置文件
 
-用户配置文件包含有关个人，包括配置信息，例如桌面设置、 持久网络连接和应用程序设置的数据元素。 默认情况下，Windows 创建与操作系统紧密集成的本地用户配置文件。
+用户配置文件包含有关个人，包括桌面设置、 持久网络连接等应用程序设置的配置信息的数据元素。 默认情况下，Windows 创建与操作系统紧密集成的本地用户配置文件。
 
-远程用户配置文件提供了用户数据和操作系统之间分区。 它允许操作系统要替换或更改而不影响用户数据。 在远程桌面会话主机 (RDSH) 和虚拟桌面基础结构 (VDI) 中，操作系统也可能由于以下原因替换为：
+远程用户配置文件提供了用户数据和操作系统之间分区。 它允许操作系统要替换或更改而不会影响用户数据。 在远程桌面会话主机 (RDSH) 和虚拟桌面基础结构 (VDI) 中，操作系统也可能由于以下原因替换为：
 
 - 升级操作系统
 - 替换的现有虚拟机 (VM)
@@ -67,7 +67,7 @@ S2D 群集需要操作系统修补、 更新和维护处于安全状态。 这�
 
 ## <a name="fslogix-profile-containers"></a>FSLogix 配置文件容器
 
-在 2018 年 11 月 19 日[Microsoft 收购 FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/)。 FSLogix 地址很多配置文件容器挑战，其中密钥为：
+于 2018 年 11 月 19 日[Microsoft 收购 FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/)。 FSLogix 解决了多个配置文件容器难题。 主要因素是：
 
 - **性能：** [FSLogix 配置文件容器](https://fslogix.com/products/profile-containers)是高性能和解决性能问题，阻止了从历史上看缓存 exchange 模式。
 - **OneDrive:** 不使用 FSLogix 配置文件的容器，OneDrive for Business 不支持在非持久 RDSH 或 VDI 环境中。 [OneDrive for Business 和 FSLogix 最佳实践](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices)描述它们的交互方式。 有关详细信息，请参阅[使用同步客户端上的虚拟桌面](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi)。

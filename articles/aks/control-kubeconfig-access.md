@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: d4d3d9a3ff57a7a388e9703d0d145d8ce6eafd12
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b55cc226cfbb462cdccd73b3b80cfb0d56c10711
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143007"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475612"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
 
@@ -24,7 +24,7 @@ ms.locfileid: "66143007"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-本文还要求运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+这篇文章还要求运行 Azure CLI 版本 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="available-cluster-roles-permissions"></a>可用的群集角色权限
 
@@ -45,9 +45,9 @@ ms.locfileid: "66143007"
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>将角色权限分配给用户或组
 
-若要将其中一个可用的角色分配，需要获取 AKS 群集的资源 ID 和 Azure AD 用户帐户或组的 ID。 以下示例命令将执行下述步骤：
+若要将其中一个可用的角色分配，需要获取 AKS 群集的资源 ID 和 Azure AD 用户帐户或组的 ID。 下面的示例命令：
 
-* 使用 [az aks show][az-aks-show] 命令获取 *myResourceGroup* 资源组中名为 *myAKSCluster* 的群集的群集资源 ID。 请根据需要提供自己的群集和资源组名称。
+* 获取群集资源 ID 使用[az aks show] [ az-aks-show]命令获取名为群集*myAKSCluster*中*myResourceGroup*资源组。 请根据需要提供自己的群集和资源组名称。
 * 使用[az 帐户 show] [ az-account-show]并[az ad 用户显示][ az-ad-user-show]命令以获取用户 id。
 * 最后，使用 [az role assignment create][az-role-assignment-create] 命令分配角色。
 
@@ -69,9 +69,9 @@ az role assignment create \
 ```
 
 > [!TIP]
-> 如果你想要将权限分配给 Azure AD 组，更新`--assignee`的组，而不是上一示例中所示的用户的对象 id 的参数。 若要获取组的对象 ID，请使用[az ad 组 show] [ az-ad-group-show]命令。 下面的示例获取名为的 Azure AD 组对象 ID *appdev*: `az ad group show --group appdev --query objectId -o tsv`
+> 如果你想要将权限分配给 Azure AD 组，更新`--assignee`参数中的对象 ID 与前面的示例所示*组*而非*用户*。 若要获取组的对象 ID，请使用[az ad 组 show] [ az-ad-group-show]命令。 下面的示例获取名为的 Azure AD 组对象 ID *appdev*: `az ad group show --group appdev --query objectId -o tsv`
 
-可根据需要将上述分配更改为“群集用户角色”。
+可根据需要将上述分配更改为“群集用户角色”。 
 
 以下示例输出显示已成功创建角色分配：
 
@@ -90,13 +90,13 @@ az role assignment create \
 
 ## <a name="get-and-verify-the-configuration-information"></a>获取并验证配置信息
 
-分配 RBAC 角色后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的 *kubeconfig* 定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行：
+分配 RBAC 角色后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的 *kubeconfig* 定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行： 
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-然后，可以使用 [kubectl config view][kubectl-config-view] 命令来验证群集上下文是否显示已应用管理员配置信息：
+然后，可以使用 [kubectl config view][kubectl-config-view] 命令来验证群集上下文是否显示已应用管理员配置信息： 
 
 ```
 $ kubectl config view

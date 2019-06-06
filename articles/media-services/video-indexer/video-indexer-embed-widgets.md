@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 06/05/2019
 ms.author: juliako
-ms.openlocfilehash: 5acd9b68368f56000a0a32d1ade310cf30143950
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799386"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735074"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
@@ -37,14 +37,14 @@ ms.locfileid: "65799386"
 
 **播放器**小组件用于通过自适应比特率来流式传输视频。 播放器小组件支持以下可选的 URL 参数：
 
-|名称|定义|描述|
+|Name|定义|描述|
 |---|---|---|
 |t|距离开始的秒数|让播放器从给定时间点开始播放。<br/>示例：t=60|
 |captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：captions=en-US|
 |showCaptions|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：showCaptions=true|
 |type||激活音频播放器外观（视频部件已删除）。<br/>示例：type=audio|
 |autoplay|布尔值|确定播放器是否会在加载后开始播放视频（默认值为 true）。<br/>示例：autoplay=false|
-|语言|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：language=de-DE|
+|language|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：language=de-DE|
 
 ## <a name="embedding-public-content"></a>嵌入公共内容
 
@@ -61,6 +61,9 @@ ms.locfileid: "65799386"
 5. 复制嵌入代码并将其添加到应用程序。 
 
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+
+> [!NOTE]
+> 如果必须共享视频 Url 的问题，请尝试将 location 参数添加到该链接。 参数应设置为[存在视频索引器的 Azure 区域](regions.md)。 例如，`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
 
 ## <a name="embedding-private-content"></a>嵌入专用内容
 

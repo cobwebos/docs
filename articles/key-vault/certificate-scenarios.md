@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a0ff97eb17dcf2625e1bb75dabf3e4a9686b5b85
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 805f11d57a635f4e73309d025e185049b511570b
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725713"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427837"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -39,8 +39,7 @@ ms.locfileid: "64725713"
 -   对于任何给定公司（例如 Contoso）来说，以 IT 管理员、PKI 管理员或任何可以使用 CA 来管理帐户的人员的身份加入 是使用 Key Vault 证书的先决条件。  
     以下 CA 是目前可以与 Key Vault 配合使用的提供者：  
     -   DigiCert - Key Vault 提供 DigiCert 的 OV SSL 证书。  
-    -   GlobalSign - Key Vault 提供 GlobalSign 的 OV SSL 证书  
-    -   WoSign - Key Vault 根据客户在 WoSign 门户的 WoSign 帐户中配置的设置提供 WoSign 的 OV SSL 或 EV SSL 证书。  
+    -   Globaltrust-Key Vault 提供时，可以选择 SSL 证书与 Globaltrust。  
 
 **步骤 2** - CA 提供者的帐户管理员创建可供 Key Vault 使用的凭据，以便通过 Key Vault 注册、续订和使用 SSL 证书。
 

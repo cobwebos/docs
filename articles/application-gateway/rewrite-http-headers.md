@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
-ms.openlocfilehash: ebb14d97273851585e491e3bcd36f776ec9b61b4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000972"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476033"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头
 
@@ -153,11 +153,11 @@ HTTP 标头允许客户端和服务器将与请求或响应的附加信息传递
 
 ## <a name="limitations"></a>限制
 
+- 如果响应具有多个具有相同名称的标头，然后重写这些标头之一的值将导致在响应中删除其他标头。 这通常可能发生的 Set-cookie 标头，因为可以在响应中有多个 Set-cookie 标头。 一种此类情况是与应用程序网关使用的是应用服务和应用程序网关上配置基于 cookie 的会话相关性。 在这种情况下，响应将包含 2 个 Set-cookie 标头： 其中一个应用服务中，即，使用`Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`，另一个用于应用程序网关关联，即`Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`。 重写在此方案中的 Set-cookie 标头之一可能会导致从响应中删除其他的 Set-cookie 标头。
+
 - 重写连接、 升级和主机标头目前不支持。
 
 - 标头名称可以包含任何字母数字字符和特定符号中定义[RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)。 我们暂不支持下划线字符 (\_) 标头名称中的特殊字符。
-
-- 如果响应具有多个具有相同名称的标头，然后重写这些标头之一的值将导致在响应中删除其他标头。
 
 ## <a name="next-steps"></a>后续步骤
 

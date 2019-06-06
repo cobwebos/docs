@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720464"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479164"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
@@ -123,7 +123,7 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 
 我们建议使用单独的存储容器的默认群集存储和业务数据，来隔离的 HDInsight 日志和从你自己的业务数据的临时文件。 我们还建议删除默认 blob 容器，其中包含应用程序和系统日志之后每次使用，以降低存储成本。 请确保在删除该容器之前检索日志。
 
-如果您选择要保护使用存储帐户**防火墙和虚拟网络**限制**选定的网络**，请务必启用例外**允许受信任的 Microsoft服务...** ，以便 HDInsight 可以访问你的存储帐户。
+如果选择在“选定网络”上通过“防火墙和虚拟网络”限制来保护存储帐户的安全，   请务必启用例外“允许受信任的 Microsoft 服务...”，  这样 HDInsight 就能访问存储帐户。
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
 
@@ -137,18 +137,18 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
 
 通过 HDInsight 还可以访问 Azure 存储中的数据。 语法如下：
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 将 Azure 存储帐户与 HDInsight 群集配合使用时，请注意以下原则：
 
 * **已连接到群集的存储帐户中的容器：** 由于在创建过程中帐户名称和密钥将与群集相关联，因此，对这些容器中的 Blob 具有完全访问权限。
 
-* **未连接到群集的存储帐户中的公用容器或公用 Blob：** 你对容器中的 blob 具有只读权限。
+* **未连接到群集的存储帐户中的公用容器或公用 Blob：**  你对容器中的 blob 具有只读权限。
   
   > [!NOTE]  
   > 利用公共容器，可以获得该容器中可用的所有 Blob 的列表以及容器元数据。 利用公共 Blob，仅在知道正确 URL 时才可访问 Blob。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../storage/blobs/storage-manage-access-to-resources.md)。
 
-* **未连接到群集的存储帐户中的专用容器：** 你无法访问这些容器中的 Blob，除非在提交 WebHCat 作业时定义了存储帐户。 
+* **未连接到群集的存储帐户中的专用容器：**  你无法访问这些容器中的 Blob，除非在提交 WebHCat 作业时定义了存储帐户。 
 
 创建过程中定义的存储帐户及其密钥存储在群集节点上的 %HADOOP/_HOME%/conf/core-site.xml 中。 HDInsight 默认使用 core-site.xml 文件中定义的存储帐户。 可以使用 [Apache Ambari](./hdinsight-hadoop-manage-ambari.md) 修改此设置。
 

@@ -8,22 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 05/31/2019
 ms.author: tyao;kumud
-ms.openlocfilehash: 5368ed8d1e60a646366065e2cf617fb2f3735b53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4ba6cca679ce4910ea941d9578939721514b2ec
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459723"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478967"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure web 应用程序防火墙监视和日志记录 
 
 Azure web 应用程序防火墙 (WAF) 监视和日志记录是通过提供日志记录以及与 Azure Monitor 和 Azure Monitor 集成日志。
-
-> [!IMPORTANT]
-> WAF 监视和日志记录功能的 Azure 第一道防线目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

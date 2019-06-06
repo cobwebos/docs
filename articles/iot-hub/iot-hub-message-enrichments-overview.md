@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2de945d2ef1d87b47ea81aac034916466d3c9bda
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6ddfd90956fde0c57e14083a3704cbf365456c75
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258844"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735161"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>消息正对设备到云的 IoT 中心消息 （预览版）
 
@@ -49,6 +49,8 @@ ms.locfileid: "66258844"
 
 可以将正添加到要发送到 IoT 中心内置终结点的消息或被传送到自定义终结点，例如 Azure Blob 存储、 服务总线队列或服务总线主题的消息。
 
+此外可以通过为事件网格中选择该终结点发布到事件网格的消息添加到。 有关详细信息，请参阅[Iot 中心和事件网格](iot-hub-event-grid.md)。
+
 应用到每个终结点。 如果指定五个正以标记为特定终结点，请转到该终结点的所有消息都标记有相同的五个正。
 
 若要了解如何试用消息到，请参阅[消息正教程](tutorial-message-enrichments.md)
@@ -75,7 +77,7 @@ ms.locfileid: "66258844"
 
 ## <a name="availability"></a>可用性
 
-此功能目前以预览版提供，并在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](/azure-government/documentation-government-welcome.md)， [Azure 中国 21Vianet](/azure/china/china-welcome.md)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+此功能目前以预览版提供，并在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](/azure/azure-government/documentation-government-welcome)， [Azure 中国 21Vianet](/azure/china/china-welcome)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>后续步骤
 

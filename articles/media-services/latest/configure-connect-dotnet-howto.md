@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 464d01b7b818b461024737a83d88c78947453c37
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736133"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428484"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API-.NET
 
@@ -27,7 +27,7 @@ ms.locfileid: "60736133"
 ## <a name="prerequisites"></a>必备组件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住的资源组名称和媒体服务帐户名称
-- 安装想要使用用于.NET 开发的工具。 在本文中的步骤说明如何使用[Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 可以使用 Visual Studio Code，请参阅[使用C# ](https://code.visualstudio.com/docs/languages/csharp)。 或者，可以使用不同的代码编辑器。
+- 安装想要使用用于.NET 开发的工具。 在本文中的步骤说明如何使用[Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 可以使用 Visual Studio Code，请参阅[使用C# ](https://code.visualstudio.com/docs/languages/csharp)。 或者，可以使用不同的代码编辑器。
 
 ## <a name="create-a-console-application"></a>创建控制台应用程序
 
@@ -42,7 +42,7 @@ ms.locfileid: "60736133"
 1. 在 Visual Studio 中，选择**工具** > **NuGet 包管理器** > **NuGet 管理器控制台**。
 2. 在中**程序包管理器控制台**窗口中，使用`Install-Package`命令，将添加以下 NuGet 包。 例如，`Install-Package Microsoft.Azure.Management.Media`。
 
-|程序包|描述|
+|package|描述|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure 媒体服务 SDK。 <br/>若要确保使用最新的 Azure 媒体服务包，请检查[Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)。|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|适用于 NET 的 Azure SDK 的 ADAL 身份验证库|
@@ -140,7 +140,7 @@ namespace ConsoleApp1
 
 ## <a name="connect-to-the-net-client"></a>连接到.NET 客户端
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在下面的代码中，GetCredentialsAsync 函数创建基于本地配置文件中提供的凭据的 ServiceClientCredentials 对象。
+若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象  。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在下面的代码中，GetCredentialsAsync 函数创建基于本地配置文件中提供的凭据的 ServiceClientCredentials 对象。
 
 1. 打开 `Program.cs`。
 1. 粘贴以下代码：

@@ -2,20 +2,20 @@
 title: 可在 Azure Active Directory B2C 中使用的应用程序类型 | Microsoft Docs
 description: 了解有关可在 Azure Active Directory B2C 中使用的应用程序类型。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4c3d63a4510d16268e1be3b853fd5c3225b647cd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e4a9931fa6e2edf8989036eb8dbfbef3638cbbe0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703064"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507524"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
@@ -23,10 +23,10 @@ Azure Active Directory (Azure AD) B2C 支持各种新式应用程序体系结构
 
 必须通过 [Azure 门户](https://portal.azure.com/)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](active-directory-b2c-get-started.md)中。 应用程序注册过程将收集和分配一些值，例如：
 
-* 用于唯一标识应用程序的应用程序 ID。
+* 用于唯一标识应用程序的应用程序 ID  。
 * 可用于将响应定向回应用程序的**回复 URL**。
 
-发送到 Azure AD B2C 的每个请求都指定了一个用户流，这个用户流是一个策略，用于控制 Azure AD 的行为。 也可以使用这些终结点来创建一系列高度可自定义的用户体验。 我们提供一组用户流，以便帮助用户设置常见策略，包括注册、登录和配置文件编辑策略。 但用户也可以创建自己的自定义策略。 如果不熟悉策略，请先了解 Azure AD B2C 的 [可扩展策略框架](active-directory-b2c-reference-policies.md) ，再继续下一步。
+发送到 Azure AD B2C 的每个请求都指定了一个用户流  ，这个用户流是一个策略，用于控制 Azure AD 的行为。 也可以使用这些终结点来创建一系列高度可自定义的用户体验。 我们提供一组用户流，以便帮助用户设置常见策略，包括注册、登录和配置文件编辑策略。 但用户也可以创建自己的自定义策略。 如果不熟悉策略，请先了解 Azure AD B2C 的 [可扩展策略框架](active-directory-b2c-reference-policies.md) ，再继续下一步。
 
 每个应用程序的交互遵循类似的高级模式：
 

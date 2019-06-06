@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 23922ec02f7406b5cbc482c938dbcf6a56cad6d7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 58552914f369c49eed33ccefbb7736cf8dbf1fc6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234163"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475642"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>预览-自动缩放以满足应用程序的需求在 Azure Kubernetes 服务 (AKS) 群集
 
@@ -28,11 +28,11 @@ ms.locfileid: "66234163"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文要求运行 Azure CLI 2.0.55 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+本文要求运行 Azure CLI 版本 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-支持群集自动缩放程序的 AKS 群集必须使用虚拟机规模集并运行 Kubernetes 版本 1.12.4  或更高版本。 此规模集支持处于预览状态。 若要选择加入并创建使用规模集的群集，请先使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，如下面的示例中所示  ：
+支持群集自动缩放程序的 AKS 群集必须使用虚拟机规模集并运行 Kubernetes 版本*1.12.7*或更高版本。 此规模集支持处于预览状态。 若要选择加入并创建使用规模集的群集，请先使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，如下面的示例中所示  ：
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -63,9 +63,10 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="limitations"></a>限制
 
-创建和管理 AKS 群集中使用虚拟机规模集时，应考虑以下限制：
+创建和管理 AKS 群集中使用群集自动缩放程序时，应考虑以下限制：
 
 * 不能使用 HTTP 应用程序路由外接程序。
+* 当前不能使用多个节点池 （目前以预览版在 AKS 中）。
 
 ## <a name="about-the-cluster-autoscaler"></a>关于群集自动缩放程序
 

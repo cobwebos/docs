@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/05/2019
+ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242283"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734656"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -60,17 +60,15 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 在提示符下，输入用户帐户的密码。
 
 ## <a name="monitor-replication"></a>监视复制
-Azure Database for PostgreSQL 在 Azure Monitor 中提供“副本的最大滞后时间”指标。  此指标仅适用于主服务器。 该指标显示主服务器与滞后时间最长的副本之间的滞后时间（以字节为单位）。 
+Azure Database for PostgreSQL 提供用于监视复制的两个指标。 两个指标**跨副本数上限延隔**并**副本滞后**。 若要了解如何查看这些指标，请参阅**监视副本**一部分[读取副本操作指南文章](howto-read-replicas-portal.md)。
 
-Azure Database for PostgreSQL 还在 Azure Monitor 中提供“副本滞后时间”指标。  此指标仅适用于副本。 
+**跨副本数上限延隔**指标显示在主机和大多数滞后复制副本之间 （字节） 之间的延迟。 此指标仅适用于主服务器。
 
-该指标是从 `pg_stat_wal_receiver` 视图计算的：
+**副本滞后**度量值显示的时间，因为最后一个重播事务。 如果主服务器上未发生任何事务，则该指标会反映此滞后时间。 此指标是可用于仅副本服务器。 从计算副本滞后`pg_stat_wal_receiver`视图：
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
-
-“副本滞后时间”指标显示的是自上次重放事务以来所经历的时间。 如果主服务器上未发生任何事务，则该指标会反映此滞后时间。
 
 请设置警报，以便在副本滞后时间达到工作负荷不可接受的值时收到通知。 
 

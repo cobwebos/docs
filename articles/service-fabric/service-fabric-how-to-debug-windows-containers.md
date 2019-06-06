@@ -1,6 +1,6 @@
 ---
 title: 使用 Service Fabric 和 VS 调试 Windows 容器 | Microsoft Docs
-description: 了解如何使用 Visual Studio 2017 在 Azure Service Fabric 中调试 Windows 容器。
+description: 了解如何调试 Azure Service Fabric 使用 Visual Studio 2019 中的 Windows 容器。
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo, mikhegn
-ms.openlocfilehash: 9fe66e40376d9098244a1268fe9884cd416a36c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15f288d5400b49ec05c9ffb936fd2097cc61bae8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482637"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428146"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>如何：使用 Visual Studio 2017 调试 Azure Service Fabric 中的 Windows 容器
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>如何：调试 Azure Service Fabric 使用 Visual Studio 2019 中的 Windows 容器
 
-借助 Visual Studio 2017 Update 7 (15.7)，可以将容器中的 .NET 应用程序作为 Service Fabric 服务进行调试。 本文介绍如何配置环境，然后调试在本地 Service Fabric 群集中运行的容器中的 .NET 应用程序。
+使用 Visual Studio 2019，可以作为 Service Fabric 服务中调试容器中的.NET 应用程序。 本文介绍如何配置环境，然后调试在本地 Service Fabric 群集中运行的容器中的 .NET 应用程序。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -34,7 +34,7 @@ ms.locfileid: "60482637"
 
 1. 确保 Docker for Window 服务正在运行，然后再继续进行下一步。
 
-1. 为了支持容器之间的 DNS 解析，必须使用计算机名称来设置本地开发群集。 如果要通过反向代理寻址服务，则还需要执行这些步骤。
+1. 若要支持容器之间进行 DNS 解析，您需要设置本地开发群集，使用计算机名称。 如果要通过反向代理寻址服务，则还需要执行这些步骤。
    1. 以管理员身份打开 PowerShell
    2. 导航到 SDK 群集安装文件夹，通常为 `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`。
    3. 运行脚本 `DevClusterSetup.ps1`
@@ -53,19 +53,19 @@ ms.locfileid: "60482637"
 
 下面列出了在 Service Fabric 中调试容器时的已知限制以及可能的解决方法：
 
-* 针对 ClusterFQDNorIP 使用 localhost 时不支持容器中的 DNS 解析。
+* 使用 localhost for ClusterFQDNorIP 不支持在容器中的 DNS 解析。
     * 解决方法：使用计算机名称设置本地群集（请参阅上文）
-* 在虚拟机中运行 Windows10 时不会向容器返回 DNS 回复。
+* 在虚拟机中运行 Windows10 不会向容器的 DNS 回复。
     * 解决方法：在虚拟机 NIC 上为 IPv4 禁用 UDP 校验和卸载
-    * 请注意，这会降低计算机的网络性能。
+    * 运行 Windows10 会降低计算机上的网络性能。
     * https://github.com/Azure/service-fabric-issues/issues/1061
-* 如果使用 Docker Compose 部署应用程序，则无法在 Windows10 中使用 DNS 服务名称解析相同应用程序中的服务
+* 解析服务在同一个应用程序中使用 DNS 服务名称不起作用 Windows10，如果使用 Docker Compose 部署应用程序
     * 解决方法：使用 servicename.applicationname 解析服务终结点
     * https://github.com/Azure/service-fabric-issues/issues/1062
 * 如果针对 ClusterFQDNorIP 使用 IP-address，则更改主机上的主 IP 将破坏 DNS 功能。
-    * 解决方法：使用主机上新的主 IP 重新创建群集或使用计算机名称。 这是设计使然。
-* 如果无法在网络上解析创建群集时使用的 FQDN，则 DNS 将失败。
-    * 解决方法：使用主机的主 IP 重新创建本地群集。 这是设计使然。
+    * 解决方法：使用主机上新的主 IP 重新创建群集或使用计算机名称。 此中断是设计使然。
+* 如果使用创建群集的 FQDN 不在网络上可解析，DNS 将失败。
+    * 解决方法：使用主机的主 IP 重新创建本地群集。 此故障是默认设置。
 * 调试容器时，docker 日志只能在 Visual Studio 输出窗口中使用，而不能通过 Service Fabric API（包括 Service Fabric Explorer）使用
 
 ## <a name="debug-a-net-application-running-in-docker-containers-on-service-fabric"></a>调试在 Service Fabric 上的 docker 容器中运行的 .NET 应用程序
@@ -74,11 +74,11 @@ ms.locfileid: "60482637"
 
 1. 打开现有的 .NET 应用程序或新建一个 .NET 应用程序。
 
-1. 右键单击项目并选择“添加”->“容器业务流程协调程序支持”->“Service Fabric”
+1. 右键单击项目并选择“添加”->“容器业务流程协调程序支持”->“Service Fabric” 
 
 1. 按 **F5** 开始调试应用程序。
 
     Visual Studio 支持 .NET 和 .NET Core 的控制台和 ASP.NET 项目类型。
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解 Service Fabric 和容器的功能，请访问此链接：[Service Fabric 容器概述](service-fabric-containers-overview.md)。
+若要了解有关 Service Fabric 和容器的功能的详细信息，请参阅 Service Fabric 容器 overview](service-fabric-containers-overview.md)。

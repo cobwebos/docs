@@ -7,15 +7,15 @@ manager: shivamg
 keywords: Log Analytics;Azure 备份;警报;诊断设置;操作组
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 94fde7714f3efe0a460983966923071bce1afcc6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2d7c158b32c15fb8be153511136eafb73147afa6
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190508"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734859"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>大规模使用 Azure Monitor 监视
 
@@ -46,7 +46,7 @@ ms.locfileid: "65190508"
 
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>解决方案部署到 Log Analytics 工作区
 
-当数据在 LA 工作区中后,[部署 github 模板](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)到 LA 来可视化数据。 请确保你提供相同的资源组、 工作区名称和工作区的位置正确标识工作区并在其上安装此模板。
+当数据在 LA 工作区中后,[部署 GitHub 模板](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)到 LA 来可视化数据。 请确保你提供相同的资源组、 工作区名称和工作区的位置正确标识工作区并在其上安装此模板。
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>查看 Azure 备份数据使用日志分析 (LA)
 
@@ -242,13 +242,13 @@ on BackupItemUniqueId_s
 
 ![Azure VM 备份的活动日志](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-可以单击“JSON”段，获取更多详细信息，并将其复制粘贴到文本编辑器进行查看。 它应显示保管库详细信息和触发活动的项的它是日志备份的项。
+单击它将对操作名称显示的操作和相关的详细信息。
 
-然后单击“添加活动日志警报”以生成所有此类日志的警报。
+![新建警报规则](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-你可以单击"添加活动日志警报"上面所示，它将打开类似于警报创建屏幕的警报创建屏幕[上文所述](#create-alerts-using-log-analytics)。
+单击**新的警报规则**以打开**创建规则**屏幕中，可以在其中创建警报可使用在此所述步骤[文章](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)。
 
-此处的资源是 RS 保管库本身，因此您需要为要在其中通过活动日志通知的所有保管库中重复相同的操作。 由于这是基于事件的警报，条件将不会有任何阈值、 句点、 频率。 只要生成相关的活动日志，触发警报。
+此处的资源是在恢复服务保管库本身，因此您需要为要在其中通过活动日志通知的所有保管库中重复相同的操作。 由于这是基于事件的警报，条件将不会有任何阈值、 句点、 频率。 只要生成相关的活动日志，触发警报。
 
 ## <a name="recommendation"></a>建议
 

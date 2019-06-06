@@ -1,26 +1,18 @@
 ---
-title: Azure 应用程序网关 PowerShell 示例 | Microsoft Docs
+title: Azure 应用程序网关 PowerShell 示例
 description: Azure 应用程序网关 PowerShell 示例
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-origin.date: 01/29/2018
-ms.date: 07/02/2018
-ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: 1616d153dbf27912757eb88fdfc6c4196f3d3a87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 6/7/2019
+ms.author: victorh
+ms.openlocfilehash: 4f747bd570f02d90718766b5cf35d363c08594e4
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715701"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743081"
 ---
 # <a name="azure-application-gateway-powershell-samples"></a>Azure 应用程序网关 PowerShell 示例
 
@@ -28,8 +20,7 @@ ms.locfileid: "60715701"
 
 | | |
 |---|---|
-| [管理 Web 流量](./scripts/create-vmss-powershell.md) | 创建应用程序网关和所有相关资源。|
-| [限制 Web 流量](./scripts/create-vmss-waf-powershell.md) | 创建使用 OWASP 规则限制流量的应用程序网关。|
+| [管理 Web 流量](./scripts/create-vmss-powershell.md) | 创建应用程序网关和所有相关的资源。|
+| [限制 Web 流量](./scripts/create-vmss-waf-powershell.md) | 创建限制使用 OWASP 规则的流量的应用程序网关。|
+|[自定义 WAF 规则](scripts/waf-custom-rules-powershell.md)|使用自定义规则创建应用程序网关 Web 应用程序防火墙。
 | | |
-
-

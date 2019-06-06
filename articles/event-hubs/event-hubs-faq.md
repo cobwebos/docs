@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: acc756ac04e5127d07760746bd0178f0f6cb1d6f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c5e58f7bc89fbe2d93f6610465abf4a92fd31406
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789245"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476111"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -61,45 +61,45 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
-使用 Azure 服务总线中，可以使用以下协议来发送和接收消息：
+可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
 
 - 高级消息队列协议 (AMQP)
 - HTTP
 - Apache Kafka
 
-请参阅下表中的所需打开以显示使用这些协议进行通信和 Azure 事件中心的出站端口。 
+请查看下表，了解需要打开哪些出站端口，以便使用这些协议与 Azure 事件中心通信。 
 
 | Protocol | 端口 | 详细信息 | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 和端口 5672 | 请参阅[AMQP 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP、HTTPS | 80、443 |  |
-| Kafka | 9092 | 请参阅[从 Kafka 应用程序使用事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+| Kafka | 9093 | 请参阅[从 Kafka 应用程序使用事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>哪些 IP 地址需要加入允许列表？
-若要查找你连接到允许列表的正确 IP 地址，请执行以下步骤：
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要将哪些 IP 地址加入允许列表？
+若要找到适合加入连接的允许列表的 IP 地址，请执行以下步骤：
 
 1. 从命令提示符处运行以下命令： 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. 记下中返回的 IP 地址`Non-authoritative answer`。 此 IP 地址是静态的。 它将更改时间的唯一点是如果还原到不同的群集的命名空间。
+2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 此 IP 地址是静态的。 只有在你将命名空间还原到另一群集时，它才会更改。
 
-如果你的命名空间为使用区域冗余，需要执行一些其他步骤： 
+如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
 
-1. 首先，在命名空间上运行 nslookup。
+1. 首先，在命名空间中运行 nslookup。
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. 记下中的名称**非权威应答**部分中，这是采用以下格式之一： 
+2. 记下“非权威回答”  部分中的名称，该名称采用下述格式之一： 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. 为每个后缀 s1、 s2 和 s3 以获取在三个可用性区域中运行的所有三个实例的 IP 地址与运行 nslookup 
+3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka 集成
 
@@ -153,7 +153,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 如果某个命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单位限额，接收方会受到限制，并会收到指明已超出出口配额的错误信息。 入口和出口配额是分开强制实施的，因此，任何发送方都不会使事件耗用速度减慢，并且接收方也无法阻止事件发送到事件中心。
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>可预留/选择的吞吐量单位 (TU) 数量是否有限制？
-在多租户产品/服务中，吞吐量单位最多可扩展到 40 TU（可在门户中最多选择 20 TU，然后提出支持票证，在同一命名空间中将数目提高到 40 TU）。 如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。 专用群集按容量单位 (CU) 销售。
+在多租户产品/服务中，吞吐量单位最多可扩展到 40 TU（可在门户中最多选择 20 TU，然后提出支持票证，在同一命名空间中将数目提高到 40 TU）。 如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。  专用群集按容量单位 (CU) 销售。
 
 ## <a name="dedicated-clusters"></a>专用群集
 

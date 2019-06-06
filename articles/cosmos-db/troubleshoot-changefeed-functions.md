@@ -7,12 +7,12 @@ ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 66eff6ee603ced03a8f4d75d4569752e0b11a6e7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 09ea70ac302806b4cb0e97fde92dda4208e3d659
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242520"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734521"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>诊断和排查在 Azure Functions 中使用 Azure Cosmos DB 触发器时出现的问题
 
@@ -88,6 +88,12 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 此外，如果你知道正在运行多少个 Azure 函数应用实例，则也可以验证这种情况。 如果检查租约容器并统计其中包含的租约项数，这些项中的非重复 `Owner` 属性值应等于函数应用的实例数。 如果所有者数目超过已知的 Azure 函数应用实例数，则表示这些多出的所有者正在“窃取”更改。
 
 解决此问题的简单方法之一是将采用新值/不同值的 `LeaseCollectionPrefix/leaseCollectionPrefix` 应用到你的函数，或使用新的租约容器进行测试。
+
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>绑定只能使用 IReadOnlyList<Document>或 JArray
+
+如果你的 Azure Functions 项目 （或任何引用的项目） 包含对 Azure Cosmos DB SDK 与不同版本而不是由提供的手动 NuGet 引用，将发生此错误[Azure Functions Cosmos DB 扩展](./troubleshoot-changefeed-functions.md#dependencies)。
+
+解决此种情况下，删除手动 NuGet 引用已添加并让 Azure Cosmos DB SDK 引用解析通过 Azure Functions Cosmos DB 扩展包。
 
 ## <a name="next-steps"></a>后续步骤
 

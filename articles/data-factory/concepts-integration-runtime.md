@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232429"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427148"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -114,11 +114,11 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 ### <a name="azure-ir-location"></a>Azure IR 位置
 可以设置 Azure IR 的特定位置，这样数据移动或活动调度就会发生在该特定区域。 
 
-如果选择使用默认的自动解析 Azure IR，则会出现以下情况： 
+如果您选择使用**自动解决 Azure IR**这是默认设置， 
 
 - 对于复制活动，ADF 会尽量自动检测接收器和源数据存储，以便在可用的情况下选择同一区域的最佳位置，或者选择同一地理位置的最近位置，或者在不可检测的情况下使用数据工厂区域作为替代。
 
-- 若要执行查找/GetMetadata 活动和调度转换活动，ADF 会使用数据工厂区域中的 IR。
+- 有关查找/获取/删除活动执行 （也称为管道活动） 调度 （也称为外部活动），和创作操作 （测试连接、 浏览文件夹列表和表格列表中，预览数据） 的转换活动 ADF将在数据工厂区域中使用红外线 （ir）。
 
 - 数据流中，对于 ADF 将数据工厂区域中使用红外线 （ir）。 
 

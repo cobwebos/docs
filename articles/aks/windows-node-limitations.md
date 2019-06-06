@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/31/2019
 ms.author: twhitney
-ms.openlocfilehash: 34ece6e49332f781f688a8741db3514faf8c9a25
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 12fb9dc67e8afae3dcb9ade97dd61ab438e0fac5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304397"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475404"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Windows Server 节点池和应用程序工作负荷在 Azure Kubernetes 服务 (AKS) 的当前限制
 
@@ -45,6 +45,7 @@ Windows Server 容器必须在基于 Windows 的容器主机上运行。 若要�
 以下的其他限制适用于 Windows Server 在 AKS 中的节点池支持：
 
 - AKS 群集始终作为第一个节点池包含 Linux 节点池。 不能删除此第一个基于 Linux 的节点池，除非删除 AKS 群集本身。
+- 目前，AKS 仅支持基本负载均衡器，这样只允许一个后端池，默认 Linux 节点池。 因此，将始终为出站流量从 Windows pod[转换为 Azure 托管的公共 IP 地址][azure-outbound-traffic]。 由于此 IP 地址不是可配置的它不是当前可能来自 Windows pod 的白名单通信。 
 - AKS 群集必须使用 Azure CNI （高级） 网络模型。
     - 不支持 Kubenet （基本） 网络。 无法创建使用 kubenet 的 AKS 群集。 有关网络模型中存在差异的详细信息，请参阅[网络 AKS 中的应用程序的概念][azure-network-models]。
     - Azure CNI 网络模型需要额外的规划和 IP 地址管理的注意事项。 有关如何规划和实施 Azure CNI 的详细信息，请参阅[在 AKS 中的配置 Azure CNI 联网][configure-azure-cni]。
@@ -87,3 +88,4 @@ Kubernetes 是从历史上看面向 Linux 的。 在上游中使用的许多示�
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat

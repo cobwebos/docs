@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 32cad7005b2b4da830ac3febf6da847933967a3d
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: ea2399572177cc10006a5d9ee715190fff4a347b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400015"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471445"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 
@@ -37,10 +37,10 @@ ms.locfileid: "66400015"
 
 可以规划并创建一个恢复组来捕获特定于应用的属性。 例如，让我们考虑一个典型的三层应用程序，该应用程序具有 SQL Server 后端、中间件和 Web 前端。 通常，你将自定义恢复计划，以便使每层中的计算机在故障转移后按正确顺序启动。
 
-    - SQL 后端应首先启动，接下来是中间件，最后是 Web 前端。
-    - 此启动顺序可以确保应用在最后的计算机启动之前一直保持工作。
-    - 此顺序可以确保当中间件启动并尝试连接到 SQL Server 层时，SQL Server 层已在运行。 
-    - 此顺序还可帮助确保前端服务器最后启动，从而确保在所有组件已启动并运行并且应用已准备好接受请求之前，最终用户不会连接到应用 URL。
+- SQL 后端应首先启动，接下来是中间件，最后是 Web 前端。
+- 此启动顺序可以确保应用在最后的计算机启动之前一直保持工作。
+- 此顺序可以确保当中间件启动并尝试连接到 SQL Server 层时，SQL Server 层已在运行。 
+- 此顺序还可帮助确保前端服务器最后启动，从而确保在所有组件已启动并运行并且应用已准备好接受请求之前，最终用户不会连接到应用 URL。
 
 若要创建此顺序，请向恢复组中添加组，然后向组中添加计算机。
 - 如果指定了顺序，则会使用序列。 操作会根据情况并行运行，从而改进应用程序恢复 RTO。

@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中配置资源所有者密码凭据流 | Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中配置资源所有者密码凭据流。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d86caf5e5c6df29e00f17462f6a06602ff1245d8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7a802354f20998c87ac8c2ef1f2c1dbdf47f6930
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688866"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733645"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>使用自定义策略在 Azure Active Directory B2C 中配置资源所有者密码凭据流
 
@@ -42,12 +42,12 @@ ROPC 流支持以下选项：
 ## <a name="register-an-application"></a>注册应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-4. 选择“应用程序”，然后选择“添加”。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
+4. 选择“应用程序”，然后选择“添加”   。
 5. 输入应用程序名称，例如 *ROPC_Auth_app*。
-6. 对“Web 应用/Web API”选择“否”，然后对“本机客户端”选择“是”。
-7. 保留所有其他值不变，然后选择“创建”。
+6. 对“Web 应用/Web API”选择“否”，然后对“本机客户端”选择“是”     。
+7. 保留所有其他值不变，然后选择“创建”  。
 8. 选择新应用程序，并记下应用程序 ID 供以后使用。
 
 ##  <a name="create-a-resource-owner-policy"></a>创建资源所有者策略
@@ -140,7 +140,7 @@ ROPC 流支持以下选项：
     </TechnicalProfile>
     ```
 
-    将 **client_id** 和 **resource_id** 的 **DefaultValue** 替换为在先决条件教程中创建的 ProxyIdentityExperienceFramework 应用程序的应用程序 ID。
+    替换**DefaultValue**的**client_id**先决条件教程中创建 ProxyIdentityExperienceFramework 应用程序的应用程序 id。 然后，替换**DefaultValue**的**resource_id** IdentityExperienceFramework 应用程序还在基础教程中创建的应用程序 id。  
 
 5. 将以下 **ClaimsProvider** 元素及其技术配置文件添加到 **ClaimsProviders** 元素：
 
@@ -233,9 +233,9 @@ ROPC 流支持以下选项：
     </UserJourney>
     ```
 
-7. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-8. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
-9. 单击“上传” 。
+7. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”   。
+8. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件  。
+9. 单击“上传” 。 
 
 ## <a name="create-a-relying-party-file"></a>创建信赖方文件
 
@@ -254,9 +254,9 @@ ROPC 流支持以下选项：
     <OutputClaim ClaimTypeReferenceId="surname" DefaultValue="" />
     ```
 
-5. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-6. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
-7. 单击“上传” 。
+5. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”   。
+6. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件  。
+7. 单击“上传” 。 
 
 ## <a name="test-the-policy"></a>测试策略
 

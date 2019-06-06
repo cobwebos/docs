@@ -2,20 +2,20 @@
 title: 令牌-Azure Active Directory B2C 概述 |Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中使用的令牌。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ac3c2132fc28d9813a9322898f79c7cdfffa12d7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b0a5eca4823bd6ec7d1197adb205f7fb98f8d67e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681895"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509080"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌的概述
 
@@ -72,15 +72,15 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 
 以下属性可用于[管理的安全令牌的生存期](configure-tokens.md)Azure AD B2C 发出的：
 
-- **访问令牌和 ID 令牌生存期（分钟）**- 用于获取受保护资源的访问权限的 OAuth 2.0 持有者令牌的生存期。 默认值为 60 分钟。 最小值 （含） 为 5 分钟。 （含） 的最大值为 1440 分钟。
+- **访问令牌和 ID 令牌生存期（分钟）** - 用于获取受保护资源的访问权限的 OAuth 2.0 持有者令牌的生存期。 默认值为 60 分钟。 最小值 （含） 为 5 分钟。 （含） 的最大值为 1440 分钟。
 
 - **刷新令牌生存期 （天）** -在其之前可以使用刷新令牌获取新的访问或 ID 令牌的最大时间段。 时间段内还介绍了获取新的刷新令牌，如果你的应用程序已被授予`offline_access`作用域。 默认值为 14 天。 最小值 （含） 为一天。 （含） 的最大值为 90 天。
 
-- **刷新令牌滑动窗口生存期 （天）** -后强制用户重新进行身份验证，不考虑的最新刷新有效期由应用程序获取令牌此时间段结束。 仅在此开关设为“有限”时该属性才可用。 它的值必须大于或等于**刷新令牌生存期（天）** 的值。 如果此开关设置为“无限”，则无法提供特定值。 默认值为 90 天。 最小值 （含） 为一天。 （含） 的最大值为 365 天。
+- **刷新令牌滑动窗口生存期 （天）** -后强制用户重新进行身份验证，不考虑的最新刷新有效期由应用程序获取令牌此时间段结束。 仅在此开关设为“有限”时该属性才可用。  它的值必须大于或等于**刷新令牌生存期（天）** 的值。 如果此开关设置为“无限”  ，则无法提供特定值。 默认值为 90 天。 最小值 （含） 为一天。 （含） 的最大值为 365 天。
 
 以下用例是使用这些属性实现的：
 
-- 只要用户在移动应用程序上持续保持活动状态，允许该用户无限期地保持登录此应用程序。 可将登录用户流中的“刷新令牌的滑动窗口生存期(天)”开关设为“无限”。
+- 只要用户在移动应用程序上持续保持活动状态，允许该用户无限期地保持登录此应用程序。 可将登录用户流中的“刷新令牌的滑动窗口生存期(天)”  开关设为“无限”  。
 - 通过设置合适的访问令牌生存期来满足行业的安全性和合规性要求。
 
 这些设置不适用于密码重置用户流。 

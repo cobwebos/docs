@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: f6c00f4ada0590df91fce0c36281d0c0cac67b77
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3611072759c62f42294730405f1dc402c496acce
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257947"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735004"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 
@@ -140,6 +140,15 @@ ms.locfileid: "66257947"
 | [使用事件网格对 Azure Maps 事件做出响应](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 概述了 Azure Maps 与事件网格的集成。 |
 | [教程：设置地理围栏](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教程将引导你完成使用 Azure Maps 设置地理围栏的基本步骤。 你将使用 Azure 事件网格来流式传输地理围栏结果，并根据地理围栏结果设置通知。 |
 | [事件架构](event-schema-azure-maps.md) | 显示了 Azure Maps 事件中的字段。 |
+
+## <a name="app-configuration"></a>应用配置
+订阅 Azure 应用程序配置事件以响应键-值修改事件。
+
+|标题 | 描述 |
+|---------|---------|
+| [对 Azure 应用程序配置事件通过事件网格做出响应](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 将 Azure 应用程序配置与事件网格集成的概述。 |
+| [快速入门： 将 Azure 应用程序配置事件路由到自定义 web 终结点使用 Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 演示如何使用 Azure CLI 将 Azure 应用程序配置事件发送到 WebHook。 |
+| [事件架构](event-schema-app-configuration.md) | 在 Azure 应用程序配置事件中显示字段。 |
 
 
 ## <a name="next-steps"></a>后续步骤

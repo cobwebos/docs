@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7f6dbc869db4a0a444d09a2dc234e171758c706
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 28201e09a4025c0c8820abc6836a5923e48eb885
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414847"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742293"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>配置自定义禁止密码列表
 
@@ -24,17 +24,17 @@ ms.locfileid: "60414847"
 
 ## <a name="add-to-the-custom-list"></a>添加到自定义列表
 
-配置自定义禁止密码列表需要 Active Directory Premium P1 或 P2 许可证。 有关 Azure Active Directory 许可的更多详细信息，请参阅 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
+配置自定义禁止密码列表需要 Active Directory Premium P1 或 P2 许可证。 详细了解 Azure Active Directory 许可的详细信息，请参阅[Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 1. 登录到[Azure 门户](https://portal.azure.com)并浏览到**Azure Active Directory**，**身份验证方法**，然后**密码保护**。
-1. 将选项“强制实施自定义列表”设为“是”。
-1. 将字符串添加到“自定义禁止密码列表”（每行一个字符串）
+1. 将选项“强制实施自定义列表”  设为“是”  。
+1. 将字符串添加到“自定义禁止密码列表”  （每行一个字符串）
    * 自定义禁止密码列表最多可包含 1000 个词。
    * 自定义禁止密码列表不区分大小写。
    * 自定义禁止密码列表会考虑常用字符替换。
       * 示例：“o”和“0”或“a”和“\@”
    * 最小字符串长度为四个字符，最大字符串长度为 16 个字符。
-1. 添加所有字符串后，请单击“保存”。
+1. 添加所有字符串后，请单击“保存”  。
 
 > [!NOTE]
 > 自定义禁止密码列表更新可能需要几个小时才能应用。

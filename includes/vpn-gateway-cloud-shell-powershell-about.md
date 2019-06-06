@@ -5,24 +5,27 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c8f45e4bb16c05c9f322dd04d2c80f6144744e64
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f6af5e5e42a16548b1997845ea5076ddd4dd3be5
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146952"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735955"
 ---
-本文使用 PowerShell cmdlet。 若要运行 cmdlet，可以使用 Azure Cloud Shell。 Azure Cloud Shell 是免费的交互式 shell 具有常用 Azure 工具的预安装并配置为使用与你的帐户。 只需单击**复制**复制代码，将其粘贴到 Cloud Shell 中，并按 enter 来运行它。 可通过多种方式来启动 Cloud Shell：
+本文使用 PowerShell cmdlet。 若要运行这些 cmdlet，可以使用 Azure Cloud Shell 中，在 Azure 中托管并通过浏览器使用的交互式 shell 环境。 Azure Cloud Shell 提供了预安装的 Azure PowerShell cmdlet。
+
+若要运行 Azure Cloud Shell 在本文中包含任何代码，请打开 Cloud Shell 会话，使用**副本**复制代码，并将其粘贴到 Cloud Shell 会话的代码块上按钮__Ctrl + Shift + V__上Windows 和 Linux，或__Cmd + Shift + V__在 macOS 上。 粘贴的文本不会自动执行，因此按**Enter**运行代码。
+
+可以启动与 Azure Cloud Shell:
 
 |  |   |
 |-----------------------------------------------|---|
-| 单击代码块右上角的“试用”。 | ![本文中的 Cloud Shell](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-powershell-try-it.png) |
-| 在浏览器中打开 Cloud Shell。 | [![https://shell.azure.com/powershell](./media/vpn-gateway-cloud-shell-powershell/launchcloudshell.png)](https://shell.azure.com/powershell) |
-| 单击 Azure 门户右上角菜单上的“Cloud Shell”按钮。 | [![门户中的 Cloud Shell](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
-|  |  |
+| 选择代码块右上角的“试用”。  这__不__自动将文本复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/cli-try-it.png) |
+| 打开[shell.azure.com](https://shell.azure.com)在浏览器中。 | [![“启动 Azure Cloud Shell”按钮](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
+| 选择 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”  按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/cloud-shell-menu.png) |
 
 **在本地运行 PowerShell**
 

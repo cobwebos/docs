@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 5ce838897370430c388d74c3d356497f16efdc8d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bd02a95f485f45c223fce4c24a72251481c2aa7e
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245066"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427894"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -531,7 +531,7 @@ PolyBase 负载限制为小于 1 MB 的行。 它不能用于加载到 VARCHR、
 
 **加载到 Decimal 列**
 
-如果您的源数据是以文本格式，并且它包含要加载到 SQL 数据仓库 Decimal 列的空值，则可能达到了以下错误：
+如果源数据是以文本格式或其他非 PolyBase 兼容存储 （使用暂存的复制和 PolyBase），并且它包含要加载到 SQL 数据仓库 Decimal 列的空值，则可能达到了以下错误：
 
 ```
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....

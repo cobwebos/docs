@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f37c501bb53b3b73c30d02d00d49515f907e4ae
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d2889af6000e77fba7a91392c0adb227588b5306
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463632"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430791"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -42,6 +42,7 @@ Azure 订阅已与 Azure Active Directory (Azure AD)，这意味着该订阅信�
     - 使用 RBAC 角色分配的用户将失去访问权限
     - 服务管理员和共同管理员将失去访问权限
     - 如果必须任何密钥保管库，则它们将无法访问，您必须修复在关联后
+    - 如果您具有资源，例如虚拟机或逻辑应用的任何托管的标识，将需要重新启用，或在关联后重新创建它们
     - 如果你有已注册的 Azure Stack，必须关联过后重新注册
 
 1. 使用符合以下条件的帐户登录：
@@ -54,11 +55,11 @@ Azure 订阅已与 Azure Active Directory (Azure AD)，这意味着该订阅信�
 
 1. 登录，然后从 [Azure 门户中的“订阅”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择要使用的订阅。
 
-2. 选择“更改目录”。
+2. 选择“更改目录”  。
 
     ![订阅页面，其中突出显示了“更改目录”选项](media/active-directory-how-subscriptions-associated-directory/change-directory-button.png)
 
-3. 查看出现的任何警告，然后选择“更改”。
+3. 查看出现的任何警告，然后选择“更改”  。
 
     ![“更改目录”页，显示要更改到的目录](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
@@ -76,7 +77,9 @@ Azure 订阅已与 Azure Active Directory (Azure AD)，这意味着该订阅信�
 
 1. 如果你有任何密钥保管库，则必须更改密钥保管库租户 id。 有关详细信息，请参阅[订阅移动后更改密钥保管库租户 ID](../../key-vault/key-vault-subscription-move-fix.md)。
 
-2. 如果你注册 Azure Stack 使用此订阅，则必须重新注册。 有关详细信息，请参阅[使用 Azure 注册 Azure Stack](/azure-stack/operator/azure-stack-registration)。
+2. 如果在使用系统分配管理的标识的资源，则必须重新启用这些。 如果已使用用户分配管理的标识，则必须重新创建这些。 重新启用或重新创建托管标识之后, 必须重新建立分配给这些标识的权限。 有关详细信息请参阅[什么是 Azure 资源的管理的标识？](../managed-identities-azure-resources/overview.md)。
+
+3. 如果你注册 Azure Stack 使用此订阅，则必须重新注册。 有关详细信息，请参阅[使用 Azure 注册 Azure Stack](/azure-stack/operator/azure-stack-registration)。
 
 
 

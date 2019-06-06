@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39495e11e42853bf3cf9481475d970667c56223f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c55dc0cbc175542d0b208bbe72566a0adb55a371
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919100"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496725"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -199,8 +199,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 本地 AD |多重身份验证服务器 |
 
 > [!NOTE]
-> 还应该确保选择的多重身份验证设计选项支持设计所需的功能。  有关详细信息，请参阅 [Choose the multi-factor security solution for you](../authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure)（选择适合自己的多因素安全解决方案）。
-> 
+> 还应该确保选择的多重身份验证设计选项支持设计所需的功能。  有关详细信息，请参阅 [Choose the multi-factor security solution for you](../authentication/concept-mfa-howitworks.md)（选择适合自己的多因素安全解决方案）。
 > 
 
 ## <a name="multi-factor-auth-provider"></a>Multi-Factor Auth 提供程序

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: de1915c7efb4bd8634228f341df2c57c443dd28e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: dab7561db8f223bff87f41ef756605359c3478e4
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242308"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492696"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions 的高级计划 （预览版）
 
@@ -56,7 +56,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>专用网络连接
 
-Azure 函数部署到高级版计划利用[新的 web 应用的 VNet 集成](../app-service/web-sites-integrate-with-vnet.md#new-vnet-integration)。  配置时，您的应用程序可以与在 VNet 中的资源通信，或通过服务终结点保护。  IP 限制，还提供应用程序来限制传入流量。
+Azure 函数部署到高级版计划利用[新的 web 应用的 VNet 集成](../app-service/web-sites-integrate-with-vnet.md)。  配置时，您的应用程序可以与在 VNet 中的资源通信，或通过服务终结点保护。  IP 限制，还提供应用程序来限制传入流量。
 
 在高级版计划中，将子网分配到 function app 中，您将需要具有足够的 IP 地址的子网为每个潜在的实例。 在预览期间，最大实例数可能会有所不同，但我们需要具有至少 100 个可用地址的 IP 块。
 

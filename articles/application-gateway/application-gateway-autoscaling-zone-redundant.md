@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/22/2019
+ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65986877"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431193"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>自动缩放和区域冗余的应用程序网关 
 
@@ -20,14 +20,14 @@ ms.locfileid: "65986877"
 
 新的 v2 SKU 包括以下增强功能：
 
-- 自动缩放：凭借自动缩放 SKU，应用程序网关或 WAF 部署可根据变化中的流量负载模式增加或减少。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 此 SKU 提供，则返回 true 的弹性。 在 Standard_v2 和 WAF_v2 SKU 中，应用程序网关可以同时在固定容量 （已禁用自动缩放） 和启用自动缩放模式下进行操作。 固定容量模式对具有一致性和可预测工作负荷的方案非常有用。 自动缩放模式为有益于应用程序，请参阅中的应用程序流量的变体。
+- 自动缩放  ：凭借自动缩放 SKU，应用程序网关或 WAF 部署可根据变化中的流量负载模式增加或减少。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 此 SKU 提供，则返回 true 的弹性。 在 Standard_v2 和 WAF_v2 SKU 中，应用程序网关可以同时在固定容量 （已禁用自动缩放） 和启用自动缩放模式下进行操作。 固定容量模式对具有一致性和可预测工作负荷的方案非常有用。 自动缩放模式为有益于应用程序，请参阅中的应用程序流量的变体。
 - **区域冗余**：应用程序网关或 WAF 部署可以跨多个可用性区域，无需预配每个区域使用流量管理器中的单独应用程序网关实例。 您可以选择一个区域或多个区域部署应用程序网关实例位置，这将发生区域故障更具弹性。 应用程序的后端池可以通过类似方式分布在多个可用性区域中。
 
   区域冗余是可用仅 Azure 区域提供的。 在其他区域，支持所有其他功能。 有关详细信息，请参阅[在 Azure 中的可用性区域是什么？](../availability-zones/az-overview.md#services-support-by-region)
 - **静态 VIP**：应用程序网关 v2 SKU 支持静态 VIP 类型以独占方式。 这可确保与应用程序网关相关联的 VIP 不会更改的部署，即使在重启后的生命周期。
 - **标头重写**:应用程序网关，可添加、 删除或更新与 v2 SKU 的 HTTP 请求和响应标头。 有关详细信息，请参阅[重写 HTTP 标头与应用程序网关](rewrite-http-headers.md)
-- **密钥保管库集成 （预览版）**:应用程序网关 v2 支持的附加到启用 HTTPS 侦听器的服务器证书 （在公共预览版） 与密钥保管库集成。 有关详细信息，请参阅[使用密钥保管库证书的 SSL 终止](key-vault-certs.md)。
-- **Azure Kubernetes 服务入口控制器 （预览版）**:应用程序网关 v2 入口控制器允许 Azure 应用程序网关要用作入口的 Azure Kubernetes 服务 (AKS) 名为 AKS 群集。 有关详细信息，请参阅[文档页](https://azure.github.io/application-gateway-kubernetes-ingress/)。
+- **密钥保管库集成 （预览版）** :应用程序网关 v2 支持的附加到启用 HTTPS 侦听器的服务器证书 （在公共预览版） 与密钥保管库集成。 有关详细信息，请参阅[使用密钥保管库证书的 SSL 终止](key-vault-certs.md)。
+- **Azure Kubernetes 服务入口控制器 （预览版）** :应用程序网关 v2 入口控制器允许 Azure 应用程序网关要用作入口的 Azure Kubernetes 服务 (AKS) 名为 AKS 群集。 有关详细信息，请参阅[文档页](https://azure.github.io/application-gateway-kubernetes-ingress/)。
 - **性能增强**：V2 SKU 提供最多 5 X 更好 SSL 卸载相比标准/WAF SKU 的性能。
 - **更快的部署和更新时间**v2 SKU 提供标准/WAF SKU 相比更快地部署和更新的时间。 这还包括 WAF 配置更改。
 
@@ -54,6 +54,8 @@ ms.locfileid: "65986877"
 > [!NOTE]
 > 目前，每个实例都能支持大约 10 个容量单位。
 > 计算单元可以处理的请求数取决于各种条件如 TLS 证书密钥大小、 密钥交换算法、 标头重写，如果 WAF 传入的请求大小。 我们建议你执行应用程序测试，以确定每个计算单元的请求速率。 容量单位和计算单元将可作为一项度量计费开始之前。
+
+下表显示了示例价格，并将仅供说明之。
 
 **在美国东部定价**:
 
@@ -110,7 +112,7 @@ ms.locfileid: "65986877"
 | 区域冗余                                   |          | &#x2713; |
 | 静态 VIP                                        |          | &#x2713; |
 | Azure Kubernetes 服务 (AKS) 入口控制器 |          | &#x2713; |
-| Azure Key Vault 集成                       |          | &#x2713; |
+| Azure 密钥保管库集成                       |          | &#x2713; |
 | 重写 HTTP (S) 标头                           |          | &#x2713; |
 | 基于 URL 的路由                                 | &#x2713; | &#x2713; |
 | 多站点托管                             | &#x2713; | &#x2713; |
@@ -122,7 +124,7 @@ ms.locfileid: "65986877"
 | 自定义错误页                                | &#x2713; | &#x2713; |
 | WebSocket 支持                                 | &#x2713; | &#x2713; |
 | HTTP/2 支持                                    | &#x2713; | &#x2713; |
-| 连接排出                               | &#x2713; | &#x2713; |
+| 连接清空                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > SKU 现在支持自动缩放 v2[默认运行状况探测](application-gateway-probe-overview.md#default-health-probe)自动监视后端池中的所有资源的运行状况并突出显示那些被视为不正常的后端成员。 为没有任何自定义探测配置的后端自动配置默认运行状况探测。 若要了解详细信息，请参阅[运行状况探测应用程序网关中](application-gateway-probe-overview.md)。
@@ -142,9 +144,12 @@ ms.locfileid: "65986877"
 |Netwatcher 集成|不支持。|
 |Azure 支持中心集成|尚不可用。
 
+## <a name="migrate-from-v1-to-v2"></a>从 v1 迁移到 v2
+
+Azure PowerShell 脚本是帮助您迁移到 v2 自动缩放 SKU 从 v1 应用程序网关/WAF PowerShell 库中。 此脚本可帮助你将配置复制从 v1 网关。 流量迁移仍由你负责。 有关更多详细信息，请参阅[迁移 Azure 应用程序网关从 v1 到 v2](migrate-v1-v2.md)。
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门：通过 Azure 应用程序网关-Azure 门户直接 web 流量](quick-create-portal.md)
+- [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户](quick-create-portal.md)
 - [使用 Azure PowerShell 创建具有预留虚拟 IP 地址的自动缩放区域冗余应用程序网关](tutorial-autoscale-ps.md)
 - 了解有关[应用程序网关](overview.md)的详细信息。
 - 了解有关 [Azure 防火墙](../firewall/overview.md)的详细信息。

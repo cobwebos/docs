@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: da8433e6c03aec5c5b2ff5d290065804816ac724
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb01aa84201c1e0727414215974a343e8cf3b724
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122303"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475902"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -32,7 +32,7 @@ ms.locfileid: "66122303"
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在 eastus 位置创建名为 myResourceGroupILB 的资源组：
+以下示例在 eastus 位置创建名为 myResourceGroupILB 的资源组：  
 
 ```azurecli-interactive
   az group create \
@@ -60,7 +60,7 @@ ms.locfileid: "66122303"
 
 ### <a name="create-the-load-balancer"></a>创建负载均衡器
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共基本负载均衡器，该负载均衡器包括名为 **myFrontEnd** 的前端 IP 配置，以及名为 **myBackEndPool** 的后端池（与专用 IP 地址 **10.0.0.7 相关联）。
+创建具有内部负载均衡器[创建 az 网络 lb](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest)名为**myLoadBalancer**包括一个名为的前端 IP 配置**myFrontEnd**，一个名为后端池**myBackEndPool**专用 IP 地址与该键相关联 * * 10.0.0.7。
 
 ```azurecli-interactive
   az network lb create \

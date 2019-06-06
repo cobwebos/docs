@@ -10,18 +10,18 @@ reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e91c6fb4949a4902194bb95f98e49327434cdbfd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 250dd691c3ef3146d6768123de52bf0628b10e42
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244109"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66728968"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>从 Azure 时间系列 Insights GA 环境中使用的查询数据C#
 
-此C#的示例演示了如何查询 Azure 时间系列 Insights GA 环境中的数据。 
+此C#的示例演示了如何查询 Azure 时间系列 Insights GA 环境中的数据。
 
 该示例演示了多个基本的查询 API 使用示例：
 
@@ -31,7 +31,7 @@ ms.locfileid: "66244109"
 1. 以 Web 套接字请求为例，可以为感兴趣的环境请求事件聚合数据。 会请求整个可用性时间范围的数据。
 
 > [!NOTE]
-> 示例代码位于[ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample)。
+> 示例代码位于[ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)。
 
 ## <a name="project-dependencies"></a>项目依赖项
 

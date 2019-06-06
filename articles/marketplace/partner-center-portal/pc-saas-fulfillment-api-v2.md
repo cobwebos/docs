@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ae477068e2413678d5dd755cb5a7334f85655c74
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 1aba0ab7083c437210166d2d5a2d77e7a657afe9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259249"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474572"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 Api 版本 2 
 
@@ -774,26 +774,35 @@ Response body:
 
 ```json
 {
-    "operationId": "<guid>",
-    "activityId": "<guid>",
-    "subscriptionId":"<guid>",
-    "offerId": "offer1",
-    "publisherId": "contoso",
-    "planId": "silver",
-    "quantity": "20"  ,
-    "action": "Subscribe",
-    "timeStamp": "2018-12-01T00:00:00"
+  "id": "<this is a Guid operation id, you can call operations API with this to get status>",
+  "activityId": "<this is a Guid correlation id>",
+  "subscriptionId": "<Guid to uniquely identify this resource>",
+  "publisherId": "<this is the publisher’s name>",
+  "offerId": "<this is the offer name>",
+  "planId": "<this is the plan id>",
+  "quantity": "<the number of seats, will be null if not per-seat saas offer>",
+  "timeStamp": "2019-04-15T20:17:31.7350641Z",
+  "action": "Unsubscribe",
+  "status": "NotStarted"  
+
 }
 ```
+其中操作可以是下列之一： 
+- `Subscribe`（当该资源已激活）
+- `Unsubscribe`（时，资源已被删除）
+- `ChangePlan`（当更改计划操作已完成）
+- `ChangeQuantity`（当更改数量操作已完成了），
+- `Suspend`（当资源已被挂起）
+- `Reinstate`（当资源具有已恢复暂挂后）
 
-其中操作可以是以下值之一： 
-- `Subscribe`  （当该资源已激活）
-- `Unsubscribe` （当该资源已被删除）
-- `ChangePlan` （当更改计划操作已完成）
-- `ChangeQuantity` （当更改数量操作已完成）
-- `Suspend` （当该资源已被挂起）
-- `Reinstate` （当资源具有已恢复暂挂后）
+其中状态可以是其中之一： <br>
+        -未启动， <br>
+        -正在进行， <br>
+        -已成功， <br>
+        -失败， <br>
+        -冲突 <br>
 
+可操作状态为成功和失败 webhook 通知中。 操作的生命周期是 NotStarted 到与成功/失败/冲突一样为终端状态。 如果你收到未启动或正在进行中，请继续请求通过 GET 操作 API 的状态，直到采取任何措施前，该操作进入终止状态。 
 
 ## <a name="mock-api"></a>模拟 API
 

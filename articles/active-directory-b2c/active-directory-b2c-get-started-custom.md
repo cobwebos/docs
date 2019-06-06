@@ -2,20 +2,20 @@
 title: 开始使用自定义策略-Azure Active Directory B2C |Microsoft Docs
 description: 了解如何开始使用 Azure Active Directory B2C 中的自定义策略。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f4ecc01f42d491f5d9d967b9983e773c1df22298
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2929c033b4744ea89f8e3d711a5e2e0df6301c14
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65986817"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730007"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -32,36 +32,36 @@ ms.locfileid: "65986817"
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure AD B2C 租户的目录。 单击**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。 
-3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
-4. 在“概述”页上选择“标识体验框架”。
+3. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
+4. 在“概述”页上选择“标识体验框架”  。
 
 ### <a name="create-the-signing-key"></a>创建签名密钥
 
-1. 选择“策略密钥”，然后选择“添加”。
-2. 对于“选项”，请选择 `Generate`。
-3. 在“名称”中，请输入 `TokenSigningKeyContainer`。 可能会自动添加前缀 `B2C_1A_`。
-4. 对于“密钥类型”，请选择“RSA”。
-5. 对于“密钥用法”，请选择“签名”。
+1. 选择“策略密钥”  ，然后选择“添加”  。
+2. 对于“选项”  ，请选择 `Generate`。
+3. 在“名称”  中，请输入 `TokenSigningKeyContainer`。 可能会自动添加前缀 `B2C_1A_`。
+4. 对于“密钥类型”  ，请选择“RSA”  。
+5. 对于“密钥用法”，请选择“签名”   。
 6. 单击**创建**。
 
 ### <a name="create-the-encryption-key"></a>创建加密密钥
 
-1. 选择“策略密钥”，然后选择“添加”。
-2. 对于“选项”，请选择 `Generate`。
-3. 在“名称”中，请输入 `TokenEncryptionKeyContainer`。 可能会自动添加前缀 `B2C_1A`_。
-4. 对于“密钥类型”，请选择“RSA”。
-5. 对于“密钥用法”，请选择“加密”。
+1. 选择“策略密钥”  ，然后选择“添加”  。
+2. 对于“选项”  ，请选择 `Generate`。
+3. 在“名称”  中，请输入 `TokenEncryptionKeyContainer`。 可能会自动添加前缀 `B2C_1A`_。
+4. 对于“密钥类型”  ，请选择“RSA”  。
+5. 对于“密钥用法”，请选择“加密”   。
 6. 单击**创建**。
 
 ### <a name="create-the-facebook-key"></a>创建 Facebook 密钥
 
 如果已有 [Facebook 应用程序机密](active-directory-b2c-setup-fb-app.md)，请将它作为策略密钥添加到租户。 否则，必须创建包含占位符值的密钥，使策略能够通过验证。
 
-1. 选择“策略密钥”，然后选择“添加”。
-2. 对于“选项”，请选择 `Manual`。
-3. 对于“名称”，请输入 `FacebookSecret`。 可能会自动添加前缀 `B2C_1A_`。
-4. 在“机密”中，输入 developers.facebook.com 提供的 Facebook 机密，或输入 `0` 作为占位符。 此值是密码，而不是应用程序 id。
-5. 对于“密钥用法”，请选择“签名”。
+1. 选择“策略密钥”  ，然后选择“添加”  。
+2. 对于“选项”  ，请选择 `Manual`。
+3. 对于“名称”  ，请输入 `FacebookSecret`。 可能会自动添加前缀 `B2C_1A_`。
+4. 在“机密”  中，输入 developers.facebook.com 提供的 Facebook 机密，或输入 `0` 作为占位符。 此值是密码，而不是应用程序 id。
+5. 对于“密钥用法”，请选择“签名”   。
 6. 单击**创建**。
 
 ## <a name="register-identity-experience-framework-applications"></a>注册标识体验框架应用程序
@@ -71,24 +71,24 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
 ### <a name="register-the-identityexperienceframework-application"></a>注册 IdentityExperienceFramework 应用程序
 
 1. 选择**所有服务**在 Azure 门户的左上角，搜索并选择**Azure Active Directory**。
-2. 在菜单中，选择**应用注册 （旧版）**。
-3. 选择“新建应用程序注册”。
-4. 对于“名称”，请输入 `IdentityExperienceFramework`。
-5. 对于“应用程序类型”，请选择“Web 应用/API”。
-6. 对于“登录 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户域名。 现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
+2. 在菜单中，选择**应用注册 （旧版）** 。
+3. 选择“新建应用程序注册”  。
+4. 对于“名称”  ，请输入 `IdentityExperienceFramework`。
+5. 对于“应用程序类型”  ，请选择“Web 应用/API”  。
+6. 对于“登录 URL”  ，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户域名。 现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
 7. 单击**创建**。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>注册 ProxyIdentityExperienceFramework 应用程序
 
-1. 在中**应用注册 （旧版）**，选择**新应用程序注册**。
-2. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
-3. 对于“应用程序类型”，请选择“本机”。
-4. 对于“重定向 URI”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户。
+1. 在中**应用注册 （旧版）** ，选择**新应用程序注册**。
+2. 对于“名称”  ，请输入 `ProxyIdentityExperienceFramework`。
+3. 对于“应用程序类型”，请选择“本机”   。
+4. 对于“重定向 URI”，  请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户。
 5. 单击**创建**。 创建后，复制应用程序 ID 并将其保存以供日后使用。
-6. 在“设置”页上，选择“所需权限”，然后选择“添加”。
+6. 在“设置”页上，选择“所需权限”  ，然后选择“添加”  。
 7. 选择**选择 API**，搜索并选择**IdentityExperienceFramework**，然后单击**选择**。
-9. 选择“访问 IdentityExperienceFramework”旁边的复选框，单击“选择”，然后单击“完成”。
-10. 选择“授予权限”，然后选择“是”进行确认。
+9. 选择“访问 IdentityExperienceFramework”  旁边的复选框，单击“选择”  ，然后单击“完成”  。
+10. 选择“授予权限”  ，然后选择“是”  进行确认。
 
 ## <a name="download-starter-pack-and-modify-policies"></a>下载初学者包并修改策略
 
@@ -120,27 +120,27 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
 
 将应用程序 ID 添加到扩展文件 *TrustFrameworkExtensions.xml*。
 
-1. 打开 TrustFrameworkExtensions.xml 文件并找到元素 `<TechnicalProfile Id="login-NonInteractive">`。
+1. 打开 TrustFrameworkExtensions.xml  文件并找到元素 `<TechnicalProfile Id="login-NonInteractive">`。
 2. 将 `IdentityExperienceFrameworkAppId` 的两个实例替换为前面创建的标识体验框架应用程序的应用程序 ID。 将 `ProxyIdentityExperienceFrameworkAppId` 的两个实例替换为前面创建的代理标识体验框架应用程序的应用程序 ID。
 3. 保存扩展文件。
 
 ## <a name="upload-the-policies"></a>上传策略
 
-1. 在标识体验框架的“自定义策略”页上，选择“上传策略”。
-1. 按此顺序上传 TrustFrameworkBase.xml、TrustFrameworkExtensions.xml、SignUpOrSignin.xml、ProfileEdit.xml 和 PasswordReset.xml。 上传某个文件时，会在策略文件的名称前面加上 `B2C_1A_`。
+1. 在标识体验框架的“自定义策略”页上，选择“上传策略”  。
+1. 按此顺序上传 TrustFrameworkBase.xml  、TrustFrameworkExtensions.xml  、SignUpOrSignin.xml  、ProfileEdit.xml  和 PasswordReset.xml  。 上传某个文件时，会在策略文件的名称前面加上 `B2C_1A_`。
 
 ## <a name="test-the-custom-policy"></a>测试自定义策略
 
-1. 在“自定义策略”页上，选择“B2C_1A_signup_signin”。
+1. 在“自定义策略”页上，选择“B2C_1A_signup_signin”  。
 2. 有关**选择应用程序**在自定义策略的概述页上，选择名为 web 应用程序*webapp1*以前注册的。 请确保**回复 URL**是`https://jwt.ms`。
-3. 选择“立即运行”。
+3. 选择“立即运行”  。
 4. 现在，应该可以使用电子邮件地址注册。
 5. 使用相同的帐户登录，以确认配置正确。
 
 ## <a name="add-facebook-as-an-identity-provider"></a>将 Facebook 添加为标识提供者
 
 1. 配置 [Facebook 应用程序](active-directory-b2c-setup-fb-app.md)。
-2. 在 TrustFrameworkExtensions.xml 文件中，将 `client_id` 的值替换为 Facebook 应用程序 ID：
+2. 在 TrustFrameworkExtensions.xml  文件中，将 `client_id` 的值替换为 Facebook 应用程序 ID：
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">
@@ -148,8 +148,8 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
      <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
        <Item Key="client_id">00000000000000</Item>
    ```
-3. 将 TrustFrameworkExtensions.xml 文件上传到租户。
-4. 使用“立即运行”进行测试，或直接从已注册的应用程序调用该策略。
+3. 将 TrustFrameworkExtensions.xml  文件上传到租户。
+4. 使用“立即运行”  进行测试，或直接从已注册的应用程序调用该策略。
 
 ## <a name="next-steps"></a>后续步骤
 

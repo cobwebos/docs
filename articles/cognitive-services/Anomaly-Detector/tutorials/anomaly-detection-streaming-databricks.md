@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure Databricks 针对流数据的异常情况检测
+title: 教程：使用 Azure Databricks 针对流数据进行异常情况检测
 description: 使用异常检测器 API 和 Azure Databricks 来监视你的数据中的异常。
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: a00ad2523c215fa54d7d19d8c9e923b621f3081a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1808bb88ac1bb27f2fd0652585521fbb2abdf56
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791875"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734667"
 ---
-# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据的异常情况检测
+# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
-Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换和可视化你的数据。 异常情况检测器 API，Azure 认知服务的一部分提供的监视时序数据的方法。 使用本教程中的数据接近实时的速度针对数据流运行异常情况检测使用 Azure Databricks。 将引入 twitter 数据使用 Azure 事件中心，并将其导入使用 Spark 事件中心连接器在 Azure Databricks。 然后，将使用 API 来检测针对流数据的异常。 
+[Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/)是一种快速、 简单和协作的基于 Apache Spark 分析服务。 异常情况检测器 API，Azure 认知服务的一部分提供的监视时序数据的方法。 使用本教程中的数据接近实时的速度针对数据流运行异常情况检测使用 Azure Databricks。 将引入 twitter 数据使用 Azure 事件中心，并将其导入使用 Spark 事件中心连接器在 Azure Databricks。 然后，将使用 API 来检测针对流数据的异常。 
 
 下图演示了应用程序流：
 
@@ -62,11 +62,11 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
 
 在本部分中，创建 Azure Databricks 工作区中使用[Azure 门户](https://portal.azure.com/)。
 
-1. 在 Azure 门户中，选择“创建资源” > “分析” > “Azure Databricks”。
+1. 在 Azure 门户中，选择“创建资源”   >   “分析” >   “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
-3. 在“Azure Databricks 服务”下提供以下值，创建 Databricks 工作区：
+3. 在“Azure Databricks 服务”  下提供以下值，创建 Databricks 工作区：
 
 
     |属性  |说明  |
@@ -75,15 +75,15 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../../azure-resource-manager/resource-group-overview.md)。 |
     |**位置**     | 选择**美国东部 2**或任何其他可用区域之一。 请参阅[推出区域的 Azure 服务](https://azure.microsoft.com/regions/services/)的区域可用性。        |
-    |**定价层**     |  选择“标准”或“高级”。 请不要选择**试用版**。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
+    |**定价层**     |  选择“标准”或“高级”。   请不要选择**试用版**。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
-    选择“创建”。
+    选择“创建”  。
 
-4. 创建帐户需要几分钟时间。 
+4. 创建工作区需要几分钟时间。 
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
-1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后选择“启动工作区”。
+1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后选择“启动工作区”。 
 
 2. 系统随后会将你重定向到 Azure Databricks 门户。 在门户中，选择**新的群集**。
 
@@ -96,24 +96,25 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
     除以下值外，接受其他所有默认值：
 
    * 输入群集的名称。
-   * 对于本文中，创建与群集**5.2**运行时。 不要选择**5.3**运行时。
+   * 在本文中，请创建运行时为 **5.2** 的群集。 不要选择**5.3**运行时。
    * 请确保**处于不活动状态\_\_处于非活动状态的分钟数**选中复选框。 提供持续时间 （以分钟为单位） 以终止群集，如果群集未被使用。
 
-     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+     选择“创建群集”。  
+4. 创建群集需要几分钟时间。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 
 若要接收推文流，必须在 Twitter 中创建一个应用程序。 按步骤创建一个 Twitter 应用程序，并记下稍后需要在本教程中使用的值。
 
-1. 在 Web 浏览器中，转到 [Twitter 应用程序管理](https://apps.twitter.com/) ，选择“创建新应用”。
+1. 在 Web 浏览器中，转到 [Twitter 应用程序管理](https://apps.twitter.com/) ，选择“创建新应用”  。
 
     ![创建 Twitter 应用程序](../media/tutorials/databricks-create-twitter-app.png "创建 Twitter 应用程序")
 
-2. 在“创建应用程序”页中提供新应用的详细信息，然后选择“创建 Twitter 应用程序”。
+2. 在“创建应用程序”  页中提供新应用的详细信息，然后选择“创建 Twitter 应用程序”  。
 
     ![Twitter 应用程序详细信息](../media/tutorials/databricks-provide-twitter-app-details.png "Twitter 应用程序详细信息")
 
-3. 在应用程序页中选择“密钥和访问令牌”选项卡，复制“使用者密钥”和“使用者机密”的值。 此外，请选择“创建我的访问令牌”以生成访问令牌。 复制“访问令牌”和“访问令牌机密”的值。
+3. 在应用程序页中选择“密钥和访问令牌”  选项卡，复制“使用者密钥”  和“使用者机密”  的值。 此外，请选择“创建我的访问令牌”  以生成访问令牌。 复制“访问令牌”  和  “访问令牌机密”的值。
 
     ![Twitter 应用程序详细信息](../media/tutorials/twitter-app-key-secret.png "Twitter 应用程序详细信息")
 
@@ -123,18 +124,18 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
 
 本教程使用 Twitter API 将推文发送到事件中心。 也可以使用 [Apache Spark 事件中心连接器](https://github.com/Azure/azure-event-hubs-spark)在 Azure 事件中心读取和写入数据。 若要将这些 API 用作群集的一部分，请将其作为库添加到 Azure Databricks，然后将其与 Spark 群集相关联。 以下说明介绍如何将添加到库**共享**工作区中的文件夹。
 
-1. 在 Azure Databricks 工作区中选择“工作区”，然后右键单击“共享”。 从上下文菜单中选择“创建” > “库”。
+1. 在 Azure Databricks 工作区中选择“工作区”  ，然后右键单击“共享”  。 从上下文菜单中选择“创建”   >   “库”。
 
    ![“添加库”对话框](../media/tutorials/databricks-add-library-option.png "“添加库”对话框")
 
-2. 在“新建库”页中，为“源”选择“Maven 坐标”。 对于“坐标”，请输入要添加的包的坐标。 下面是本教程中使用的库的 Maven 坐标：
+2. 在新的库页中，对于**源**选择**Maven**。 有关**协调**，输入你想要添加的包的坐标。 下面是本教程中使用的库的 Maven 坐标：
 
    * Spark 事件中心连接器 - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.7`
 
      ![提供 Maven 坐标](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "提供 Maven 坐标")
 
-3. 选择“创建”。
+3. 选择“创建”  。
 
 4. 选择库添加到的文件夹，然后选择库名称。
 
@@ -153,13 +154,13 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“+ 创建资源”。
+2. 选择“+ 创建资源”。 
 
 3. 在 Azure Marketplace 下选择**AI + 机器学习** > **查看所有** > **认知服务-更** >  **异常情况检测器**。 或者，可以使用[此链接](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)若要转到**创建**直接对话框。
 
     ![创建异常情况检测程序资源](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "创建异常情况检测程序资源")
 
-4. 在“创建”对话框中，提供以下值：
+4. 在“创建”  对话框中，提供以下值：
 
     |值 |描述  |
     |---------|---------|
@@ -170,19 +171,15 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
     |资源组     | 指定是要创建新的资源组还是选择现有的资源组。        |
 
 
-     选择“创建”。
+     选择“创建”  。
 
-5. 创建资源后，从**概述**选项卡上，选择**显示访问密钥**。
+5. 创建资源后，从**概述**选项卡上，复制并保存**终结点**URL，如屏幕截图中所示。 然后选择**显示访问密钥**。
 
     ![显示访问密钥](../media/tutorials/cognitive-services-get-access-keys.png "显示访问密钥")
 
-    另请复制终结点 URL 的一部分，如屏幕截图所示。 本教程会用到此 URL。
-
-6. 下**密钥**，选择你想要使用的密钥对复制图标。
+6. 下**密钥**，选择你想要使用的密钥对复制图标。 保存访问密钥。
 
     ![复制访问密钥](../media/tutorials/cognitive-services-copy-access-keys.png "复制访问密钥")
-
-7. 保存终结点 URL 和访问密钥的值，这些值在此步骤中已检索。 本教程后面部分需要它。
 
 ## <a name="create-notebooks-in-databricks"></a>在 Databricks 中创建 Notebook
 
@@ -191,7 +188,7 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
 - **SendTweetsToEventHub** - 用于从 Twitter 获取推文并将其流式传输到事件中心的生成者 Notebook。
 - **AnalyzeTweetsFromEventHub** -用于从事件中心读取推文并运行异常情况检测的使用者笔记本。
 
-1. 在左窗格中选择“工作区”。 在“工作区”下拉列表中选择“创建”，然后选择“Notebook”。
+1. 在 Azure Databricks 工作区中，选择**工作区**在左窗格中。 在“工作区”下拉列表中选择“创建”，然后选择“Notebook”。   
 
     ![在 Databricks 中创建笔记本](../media/tutorials/databricks-create-notebook.png "在 Databricks 中创建笔记本")
 
@@ -199,13 +196,13 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
 
     ![在 Databricks 中创建笔记本](../media/tutorials/databricks-notebook-details.png "在 Databricks 中创建笔记本")
 
-    选择“创建”。
+    选择“创建”  。
 
 3. 重复上述步骤，创建 **AnalyzeTweetsFromEventHub** Notebook。
 
 ## <a name="send-tweets-to-event-hubs"></a>将推文发送到事件中心
 
-在 **SendTweetsToEventHub** Notebook 中粘贴以下代码，并将占位符替换为前面创建的事件中心命名空间和 Twitter 应用程序的值。 此 Notebook 会将包含关键字“Azure”的推文实时流式传输到事件中心。
+在 **SendTweetsToEventHub** Notebook 中粘贴以下代码，并将占位符替换为前面创建的事件中心命名空间和 Twitter 应用程序的值。 此 notebook 使用关键字"Azure"的推文中提取创建时间和数量"Like"，并实时流式那些作为事件传输到事件中心。
 
 ```scala
 //
@@ -302,7 +299,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。 输出中的每个事件是已引入到事件中心的推文。
+若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。 输出中的每个事件是数引入到事件中心的"Like"s 和时间戳的组合。
 
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
@@ -325,7 +322,7 @@ pool.shutdown()
 
 ## <a name="read-tweets-from-event-hubs"></a>读取事件中心的推文
 
-在 **AnalyzeTweetsFromEventHub** Notebook 中粘贴以下代码，并将占位符替换为前面创建的 Azure 事件中心的值。 此 Notebook 读取前面使用 **SendTweetsToEventHub** Notebook 流式传输到事件中心的推文。
+在中**AnalyzeTweetsFromEventHub**笔记本中粘贴以下代码，并将占位符替换为你前面创建的异常情况检测程序资源值。 此 Notebook 读取前面使用 **SendTweetsToEventHub** Notebook 流式传输到事件中心的推文。
 
 首先，编写一个客户端调用异常情况检测程序。 
 ```scala
@@ -387,7 +384,7 @@ object AnomalyDetector extends Serializable {
     return response.toString()
   }
 
-  // Calls the Latest Point Detection API for timeserie.
+  // Calls the Latest Point Detection API.
   def detectLatestPoint(series: Series): Option[AnomalySingleResponse] = {
     try {
       println("Process Timestamp: " + series.series.apply(series.series.length-1).timestamp.toString + ", size: " + series.series.length)
@@ -406,7 +403,7 @@ object AnomalyDetector extends Serializable {
     }
   }
 
-  // Calls the Batch Detection API for timeserie.
+  // Calls the Batch Detection API.
   def detectBatch(series: Series): Option[AnomalyBatchResponse] = {
     try {
       val response = processUsingApi(gson.toJson(series), batchDetectionUrl)
@@ -425,7 +422,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。 :
+若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。
 
     import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
     import java.net.URL
@@ -447,10 +444,9 @@ object AnomalyDetector extends Serializable {
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
 import org.apache.spark.sql.types.{StructType, TimestampType, FloatType, MapType, BooleanType, DataType}
-//import org.apache.spark.sql.functions._
 import scala.collection.immutable.ListMap
 
-class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunction {
+class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
   override def inputSchema: StructType = new StructType().add("timestamp", TimestampType).add("value", FloatType)
   
   override def bufferSchema: StructType = new StructType().add("point", MapType(TimestampType, FloatType))
@@ -482,8 +478,8 @@ class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunc
       
       
       // 0.25 is maxAnomalyRatio. It represents 25%, max anomaly ratio in a time series.
-      // 95 is the sensitivity of the algorithms. 
-      // Check Anomaly detector API reference (https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-last-detect)
+      // 95 is the sensitivity of the algorithms.
+      // Check Anomaly detector API reference (https://aka.ms/anomaly-detector-rest-api-ref)
       
       val series: Series = new Series(detect_points.toArray, 0.25, 95, "hourly")
       val response: Option[AnomalySingleResponse] = AnomalyDetector.detectLatestPoint(series)
@@ -498,7 +494,7 @@ class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunc
 
 ```
 
-若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。 
+若要运行该 Notebook，请按 **SHIFT + ENTER**。 会显示一个输出，如以下代码片段所示。
 
     import org.apache.spark.sql.Row
     import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
@@ -506,7 +502,7 @@ class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunc
     import scala.collection.immutable.ListMap
     defined class AnomalyDetectorAggregationFunction
 
-从异常情况检测的事件中心，然后加载数据。
+从异常情况检测的事件中心，然后加载数据。 将占位符替换为值的前面创建的 Azure 事件中心。
 
 ```scala
 //
@@ -583,7 +579,8 @@ groupTime                       average
 
 ```
 
-然后获取聚合的输出结果与增量。 由于异常情况检测需要更长的历史记录窗口，我们将使用增量至您想要检测的历史记录数据保留。 
+然后获取聚合的输出结果与增量。 由于异常情况检测需要更长的历史记录窗口，我们将使用增量至您想要检测的历史记录数据保留。 替换为"[占位符： 表名]"具有限定增量表名 （例如，"tweets"） 创建。 替换为"[占位符： 检查点的文件夹名称]"字符串值都是唯一的每次运行此代码 (例如，"etl-从-事件中心-20190605")。
+若要了解有关 Azure Databricks 上的增量 Lake 的详细信息，请参阅[增量 Lake 指南](https://docs.azuredatabricks.net/delta/index.html)
 
 
 ```scala
@@ -599,6 +596,7 @@ groupStream.writeStream
 
 ```
 
+替换为"[占位符： 表名]"上面已经选择具有相同的增量表名称。
 ```scala
 //
 // Show Aggregate Result
@@ -625,26 +623,34 @@ groupTime                       average
 
 ```
 
-现在聚合的时序数据是连续引入到增量。 然后您可以计划一个作业每隔一小时来检测最新点的异常情况。 
+现在聚合的时序数据是连续引入到增量。 然后可以安排每小时作业检测到最新点的异常情况。 替换为"[占位符： 表名]"上面已经选择具有相同的增量表名称。
 
 ```scala
 //
-// Anomaly Detection with Batch query
+// Anomaly Detection
 //
 
 import java.time.Instant
+import java.time.format.DateTimeFormatter
+import java.time.ZoneOffset
 import java.time.temporal.ChronoUnit
 
 val detectData = spark.read.format("delta").table("[Placeholder: table name]")
 
-// How long history you want to use in anomaly detection. It is hourly time series in this tutorial, so 72 means 72 hours. 
-val batchSize = 72
+// You could use Databricks to schedule an hourly job and always monitor the latest data point
+// Or you could specify a const value here for testing purpose
+// For example, val endTime = Instant.parse("2019-04-16T00:00:00Z")
+val endTime = Instant.now()
 
-// Change the endTime to where you want to detect. You could use Databricks to schedule a job and change it to the latest hour. 
-val endTime = Instant.parse("2019-04-16T00:00:00Z")
+// This is when your input of anomaly detection starts. It is hourly time series in this tutorial, so 72 means 72 hours ago from endTime.
+val batchSize = 72
 val startTime = endTime.minus(batchSize, ChronoUnit.HOURS)
 
-val series = detectData.filter($"groupTime" < endTime.toString && $"groupTime" >= startTime.toString).sort($"groupTime")
+val DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneOffset.UTC);
+
+val series = detectData.filter($"groupTime" <= DATE_TIME_FORMATTER.format(endTime))
+  .filter($"groupTime" > DATE_TIME_FORMATTER.format(startTime))
+  .sort($"groupTime")
 
 series.createOrReplaceTempView("series")
 
@@ -653,7 +659,7 @@ series.createOrReplaceTempView("series")
 // Register the function to access it
 spark.udf.register("anomalydetect", new AnomalyDetectorAggregationFunction)
 
-val adResult = spark.sql("SELECT '" + endTime.toString + "' as timestamp, anomalydetect(groupTime, average) as anomaly FROM series")
+val adResult = spark.sql("SELECT '" + endTime.toString + "' as datetime, anomalydetect(groupTime, average) as anomaly FROM series")
 adResult.show()
 ```
 结果如下所示： 
@@ -665,36 +671,21 @@ adResult.show()
 |2019-04-16T00:00:00Z|  false|
 +--------------------+-------+
 
-```
-输出返回到增量的异常情况检测结果。 
-```scala
-//
-// Output Batch AD Result to delta
-//
 
-adResult.writeStream
-  .format("delta")
-  .outputMode("complete")
-  .option("checkpointLocation", "/delta/[Placeholder: table name]/_checkpoints/[Placeholder: folder name for checkpoints]")
-  .table("[Placeholder: table name]")
-  
-```
+That's it! Using Azure Databricks, you have successfully streamed data into Azure Event Hubs, consumed the stream data using the Event Hubs connector, and then run anomaly detection on streaming data in near real time.
+Although in this tutorial, the granularity is hourly, you can always change the granularity to meet your need. 
 
+## Clean up resources
 
-就这么简单！ 使用 Azure Databricks，您已成功数据流式传输到 Azure 事件中心，使用使用事件中心连接器的流数据，然后对流中近实时的数据运行了异常情况检测。
-虽然在本教程中，粒度为每小时，你可以随时更改以满足你需求的粒度。 
+After you have finished running the tutorial, you can terminate the cluster. To do so, in the Azure Databricks workspace, select **Clusters** from the left pane. For the cluster you want to terminate, move the cursor over the ellipsis under **Actions** column, and select the **Terminate** icon and then select **Confirm**.
 
-## <a name="clean-up-resources"></a>清理资源
+![Stop a Databricks cluster](../media/tutorials/terminate-databricks-cluster.png "Stop a Databricks cluster")
 
-运行完本教程后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”。 针对想要终止的群集，将光标移到“操作”列下面的省略号上，选择“终止”图标。
+If you don't manually terminate the cluster it will automatically stop, provided you selected the **Terminate after \_\_ minutes of inactivity** checkbox while creating the cluster. In such a case, the cluster will automatically stop if it has been inactive for the specified time.
 
-![停止 Databricks 群集](../media/tutorials/terminate-databricks-cluster.png "停止 Databricks 群集")
+## Next steps
 
-如果不手动终止的群集将自动停止，提供所选**处于不活动状态\_\_处于非活动状态的分钟数**创建群集时的复选框。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
-
-## <a name="next-steps"></a>后续步骤
-
-本教程介绍了如何使用 Azure Databricks 将数据流式传输到 Azure 事件中心，然后从事件中心实时读取流数据。 转到下一步的教程，了解如何调用异常检测器 API 并直观显示使用 Power BI desktop 的异常。 
+In this tutorial, you learned how to use Azure Databricks to stream data into Azure Event Hubs and then read the streaming data from Event Hubs in real time. Advance to the next tutorial to learn how to call the Anomaly Detector API and visualize anomalies using Power BI desktop. 
 
 > [!div class="nextstepaction"]
->[使用 Power BI desktop 的批处理异常情况检测](batch-anomaly-detection-powerbi.md)
+>[Batch anomaly detection with Power BI desktop](batch-anomaly-detection-powerbi.md)

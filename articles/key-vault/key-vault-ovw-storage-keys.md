@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault 托管存储帐户 - CLI
-description: 存储帐户密钥在 Azure Key Vault 与 Azure 存储帐户基于密钥的访问方式之间提供无缝集成。
+title: 管理存储帐户密钥，使用 Azure 密钥保管库和 Azure CLI
+description: 存储帐户密钥提供 Azure 密钥保管库与基于密钥的访问的 Azure 存储帐户之间的无缝集成。
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
@@ -8,160 +8,169 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 190375700f65cf2d3ea47335a646562eb46b2d49
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 91cc3f96f9cdd231c38232c972c2628d12b9f4b3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232560"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476151"
 ---
-# <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault 托管存储帐户 - CLI
+# <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>管理存储帐户密钥，使用 Azure 密钥保管库和 Azure CLI 
+
+Azure Key Vault 管理 Azure 存储帐户和经典存储帐户的密钥。 可以使用 Key Vault 托管的存储帐户功能为你完成多个密钥管理功能。
+
+[Azure 存储帐户](/azure/storage/storage-create-storage-account)使用由帐户名和密钥构成的凭据。 该密钥是自动生成的并作为密码，而不是作为加密密钥。 Key Vault 通过将其作为存储管理存储帐户密钥[Key Vault 机密](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)。 密钥列出 （同步） 的 Azure 存储帐户，并且会定期重新生成或_旋转_。 
+
+当您使用托管的存储帐户密钥功能时，请考虑以下几点：
+
+- 永远不会给调用方的响应中返回密钥值。
+- 只有密钥保管库应管理存储帐户密钥。 不自行管理密钥，并避免干扰 Key Vault 的进程。
+- 仅单个密钥保管库对象应管理存储帐户密钥。 不允许从多个对象的密钥管理。
+- 你可以请求密钥保管库来管理你的存储帐户的用户主体，但不是与服务主体。
+- 通过密钥保管库仅重新生成密钥。 不要手动重新生成存储帐户密钥。 
 
 > [!NOTE]
-> [Azure 存储集成与 Azure Active Directory (Azure AD)] 是 Microsoft 的基于云的标识和访问管理服务。 Azure AD 的集成仅适用于 Blob 和队列服务。(https://docs.microsoft.com/azure/storage/common/storage-auth-aad). 我们建议使用 Azure AD 进行身份验证和授权。与 Azure Key Vault 一样，Azure AD 支持使用 OAuth2 令牌访问 Azure 存储。 这样，便可以：
-> - 使用应用程序标识或用户标识（而不是存储帐户凭据）对客户端应用程序进行身份验证。 
-> - 在 Azure 上运行时使用 [Azure AD 托管标识](/azure/active-directory/managed-identities-azure-resources/)。 托管标识完全消除了客户端身份验证的需要，并可以在应用程序中存储凭据，或者将凭据与应用程序一同存储。
-> - 使用同样受 Key Vault 支持的基于角色的访问控制 (RBAC) 来管理授权。
+> Azure 存储集成与 Azure Active Directory (Azure AD) 是 Microsoft 的基于云的标识和访问管理服务。
+> Azure AD 的集成是可用于[Azure blob 和队列](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)。
+> 使用 Azure AD 进行身份验证和授权。
+> Azure AD 到 Azure 存储，就像 Azure 密钥保管库提供 OAuth2 基于令牌的访问权限。
+>
+> Azure AD，可使用应用程序或用户标识，而不存储帐户凭据在客户端应用程序进行身份验证。
+> 可以使用[Azure AD 托管标识](/azure/active-directory/managed-identities-azure-resources/)在 Azure 上运行时。 管理的标识中删除客户端身份验证和将凭据存储中或与你的应用程序的需要。
+> Azure AD 使用基于角色的访问控制 (RBAC) 来管理授权，还支持由密钥保管库。
 
-[Azure 存储帐户](/azure/storage/storage-create-storage-account)使用由帐户名和密钥构成的凭据。 密钥会自动生成，并主要充当“密码”而不是加密密钥。 Key Vault 可以通过将这些存储帐户密钥存储为 [Key Vault 机密](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)来对其进行管理。 
+### <a name="service-principal-application-id"></a>服务主体应用程序 ID
 
-## <a name="overview"></a>概述
+为每个已注册应用程序提供的 Azure AD 租户[服务主体](/azure/active-directory/develop/developer-glossary#service-principal-object)。 服务主体可作为应用程序标识 (ID)。 应用程序 ID 用于授权安装过程中通过 RBAC 其他 Azure 资源的访问权限。
 
-Key Vault 托管存储帐户功能代你执行多种管理功能：
+密钥保管库是在所有 Azure AD 租户中预注册的 Microsoft 应用程序。 在相同的应用程序 ID 和每个 Azure 云内注册密钥保管库。
 
-- 列出（同步）Azure 存储帐户的密钥。
-- 定期重新生成（轮换）密钥。
-- 管理存储帐户和经典存储帐户的密钥。
-- 响应调用方时永远不会返回密钥值。
+| 租户 | 云 | 应用程序 ID |
+| --- | --- | --- |
+| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure 公共 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-使用托管存储帐户密钥功能时：
+<!-- Add closing sentences to summarize what the user accomplished in this section. -->
 
-- **只允许 Key Vault 管理存储帐户密钥。** 不要尝试自行管理这些密钥，否则会干扰 Key Vault 的流程。
-- **不要允许多个 Key Vault 对象管理存储帐户密钥。**
-- **不要手动重新生成存储帐户密钥。** 我们建议通过 Key Vault 重新生成这些密钥。
-- 要求 Key Vault 来管理你的存储帐户可以通过暂时用户主体和服务主体
+## <a name="prerequisites"></a>必备组件
 
-以下示例演示如何允许 Key Vault 管理存储帐户密钥。
+使用密钥保管库来管理你的存储帐户密钥之前，请查看系统必备组件：
 
-> [!IMPORTANT]
-> Azure AD 租户为每个已注册的应用程序提供充当应用程序标识的[服务主体](/azure/active-directory/develop/developer-glossary#service-principal-object)。 通过基于角色的访问控制 (RBAC) 授权该服务主体访问其他 Azure 资源时，将使用它的应用程序 ID。 由于 Key Vault 是一个 Microsoft 应用程序，因此它已预先注册到每个 Azure 云内同一个应用程序 ID 下的所有 Azure AD 租户中：
-> - Azure 政府云中的 Azure AD 租户使用应用程序 ID `7e7c393b-45d0-48b1-a35e-2905ddf8183c`。
-> - Azure 公有云及所有其他云中的 Azure AD 租户使用应用程序 ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`。
-
-<a name="prerequisites"></a>必备组件
---------------
-1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 安装 Azure CLI   
-2. [创建存储帐户](https://azure.microsoft.com/services/storage/)
-    - 请按照此[文档](https://docs.microsoft.com/azure/storage/)中的步骤创建一个存储帐户  
-    - **命名指南：** 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。        
+- 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+- 创建[Azure 存储帐户](https://azure.microsoft.com/services/storage/)。 请按照[这些步骤](https://docs.microsoft.com/azure/storage/)。
+- 存储帐户名称必须使用小写字母和数字。 名称的长度必须介于 3 到 24 个字符之间。        
       
-<a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>有关如何使用 Key Vault 管理存储帐户密钥的分步说明
---------------------------------------------------------------------------------
-从概念上讲，步骤列表包括：
-- 首先获取（预先存在的）存储帐户
-- 然后提取（预先存在的）Key Vault
-- 然后在保管库中添加 KeyVault 管理的存储帐户，将 Key1 设置为活动密钥，其重新生成期限为 180 天
-- 最后，使用 Key1 为指定的存储帐户设置存储上下文
+## <a name="manage-storage-account-keys"></a>管理存储帐户密钥
 
-在以下说明中，我们将 Key Vault 分配为服务，以便为存储帐户授予操作员权限
+有四个基本步骤来使用密钥保管库用于管理存储帐户密钥：
+
+1. 获取现有的存储帐户。
+1. 提取现有密钥保管库。
+1. 将 Key Vault 托管存储帐户添加到保管库。 设置`key1`作为活动密钥重新生成期为 180 天。
+1. 使用`key1`设置指定的存储帐户的存储上下文。
 
 > [!NOTE]
-> 请注意，设置了 Azure Key Vault 托管存储帐户密钥后，除了通过 Key Vault 进行更改外，这些密钥应**不**再进行更改。 托管存储帐户密钥意味着 Key Vault 将管理存储帐户密钥的轮换
+> 作为一项服务的密钥保管库分配操作员在存储帐户上的权限。
+> 
+> 设置 Azure Key Vault 托管存储帐户密钥后，只能更改密钥通过密钥保管库。
+> 对于托管的存储帐户密钥，密钥保管库管理存储帐户密钥的轮换。
 
-> [!IMPORTANT]
-> Azure AD 租户为每个已注册的应用程序提供充当应用程序标识的[服务主体](/azure/active-directory/develop/developer-glossary#service-principal-object)。 通过基于角色的访问控制 (RBAC) 授权该服务主体访问其他 Azure 资源时，将使用它的应用程序 ID。 由于 Key Vault 是一个 Microsoft 应用程序，因此它已预先注册到每个 Azure 云内同一个应用程序 ID 下的所有 Azure AD 租户中：
-> - Azure 政府云中的 Azure AD 租户使用应用程序 ID `7e7c393b-45d0-48b1-a35e-2905ddf8183c`。
-> - Azure 公有云及所有其他云中的 Azure AD 租户使用应用程序 ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`。
-
-> - 目前可以使用用户主体要求 Key Vault 管理存储帐户和服务主体
-
-
-1. 创建存储帐户后，运行以下命令来获取要管理的存储帐户的资源 ID
-
+1. 创建存储帐户后，运行以下命令来获取存储帐户的资源 ID，以管理：
     ```
-    az storage account show -n storageaccountname 
+    az storage account show -n storageaccountname
     ```
-    复制上面的命令，如下面所示的结果超出 ID 字段
+
+    从命令输出中复制的资源 ID 值：
     ```
-    /subscriptions/0xxxxxx-4310-48d9-b5ca-0xxxxxxxxxx/resourceGroups/ResourceGroup/providers/Microsoft.Storage/storageAccounts/StorageAccountName
+    /subscriptions/<subscription ID>/resourceGroups/ResourceGroup/providers/Microsoft.Storage/storageAccounts/StorageAccountName
     ```
-            "objectId": "93c27d83-f79b-4cb2-8dd4-4aa716542e74"
+
+    示例输出：
+    ```
+    "objectId": "93c27d83-f79b-4cb2-8dd4-4aa716542e74"
+    ```
     
-2. 将"存储帐户密钥操作员服务角色"的 RBAC 角色分配到密钥保管库，限制到存储帐户的访问作用域。 对于经典存储帐户，使用"经典存储帐户密钥操作员服务角色。"
+1. 将"存储帐户密钥操作员服务角色"RBAC 角色分配到密钥保管库中。 此角色限制到存储帐户的访问作用域。 对于经典存储帐户，请使用"经典存储帐户密钥操作员服务角色"角色。
+
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope 93c27d83-f79b-4cb2-8dd4-4aa716542e74
     ```
     
-    "93c27d83-f79b-4cb2-8dd4-4aa716542e74"是为公有云中的密钥保管库的对象 ID。 若要获取国家/地区云中的密钥保管库的对象 ID，请参阅上面的重要部分
+    `93c27d83-f79b-4cb2-8dd4-4aa716542e74` 是 Azure 公有云中的密钥保管库的对象 ID。 若要在 Azure 政府版云中的密钥保管库中获取的对象 ID，请参阅[服务主体应用程序 ID](#service-principal-application-id)。
     
-3. 创建 Key Vault 托管存储帐户。     <br /><br />
-   下面，我们将重新生成周期设置为 90 天。 90 天后，Key Vault 将重新生成“key1”，并将活动密钥从“key2”交换为“key1”。 它会立即将 Key1 标记为活动密钥。 
+1. 创建管理密钥保管库的存储帐户：
+
+    设置为 90 天重新生成周期。 90 天后，将密钥保管库重新生成`key1`并将活动密钥从交换`key2`到`key1`。 `key1` 然后会标记为活动密钥。 
    
     ```
     az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id <Id-of-storage-account>
     ```
 
-<a name="step-by-step-instructions-on-how-to-use-key-vault-to-create-and-generate-sas-tokens"></a>有关如何使用 Key Vault 创建和生成 SAS 令牌的分步说明
---------------------------------------------------------------------------------
-也可以要求 Key Vault 生成 SAS（共享访问签名）令牌。 共享访问签名对存储帐户中的资源提供委托访问。 通过 SAS，可以授予客户端对存储帐户中资源的访问权限，无需共享帐户密钥。 这是在应用程序中使用共享访问签名的关键之处 - SAS 是用于共享存储资源的一种安全方式，它不会危及帐户密钥。
+<!-- Add closing sentences to summarize what the user accomplished in this section. -->
 
-完成上面所列的步骤后，可运行以下命令要求 Key Vault 为你生成 SAS 令牌。 
+## <a name="create-and-generate-tokens"></a>创建和生成令牌
 
-在以下步骤中完成的任务列表包括：
-- 设置一个帐户 SAS 定义名为`<YourSASDefinitionName>`密钥保管库托管存储帐户上`<YourStorageAccountName>`保管库中`<VaultName>`。 
-- 为 Blob、文件、表和队列服务以及“服务”、“容器”和“对象”资源类型创建拥有所有权限、通过 HTTPS 访问并指定了开始和结束日期的帐户 SAS 令牌
-- 在保管库中设置 KeyVault 管理的存储 SAS 定义，其模板 URI 为上面创建的 SAS 令牌，SAS 类型为“帐户”，有效期为 N 天
-- 从对应于 SAS 定义的 KeyVault 机密中检索实际访问令牌
+您还可以要求 Key Vault 来生成共享的访问签名令牌。 共享访问签名对存储帐户中的资源提供委托访问。 您可以授予客户端对资源的访问存储帐户中而无需共享帐户密钥。 共享的访问签名提供共享存储资源，而不会危及帐户密钥的安全方式。
 
-1. 此步骤将创建 SAS 定义。 创建此 SAS 定义后，可以要求 Key Vault 为你生成更多的 SAS 令牌。 此操作需要 storage/setsas 权限。
+在本部分中的命令完成以下操作：
 
-```
-$sastoken = az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-types sco --services bfqt --https-only --account-name storageacct --account-key 00000000
-```
-可在[此处](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas)查看有关上述操作的更多帮助
+- 设置帐户共享访问签名定义`<YourSASDefinitionName>`。 定义已设置为上托管的密钥保管库存储帐户`<YourStorageAccountName>`在 key vault 中`<VaultName>`。
+- 创建 Blob、 文件、 表和队列服务的帐户共享的访问签名令牌。 服务、 容器和对象，该令牌创建为资源类型。 标记创建具有所有权限，通过 https，并使用指定的开始和结束日期。
+- 设置保管库中托管的密钥保管库存储共享访问签名定义。 定义具有模板创建的共享的访问签名令牌的 URI。 定义具有共享的访问签名类型`account`和有效期为 N 天。
+- 从共享的访问签名定义对应的密钥保管库机密检索实际访问令牌。
 
-成功运行此操作后，应会看到如下所示的输出。 请复制该输出
+完成上一节中的步骤后，运行以下命令，以请求密钥保管库生成共享的访问签名令牌。 
 
-```console
-   "se=2020-01-01&sp=***"
-```
+1. 创建共享的访问签名定义。 创建共享的访问签名定义后，请求密钥保管库来生成更多的共享的访问签名令牌。 此操作需要`storage`和`setsas`权限。
+    ```
+    $sastoken = az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-types sco --services bfqt --https-only --account-name storageacct --account-key 00000000
+    ```
 
-1. 此步骤使用上面生成的输出 ($sasToken) 创建 SAS 定义。 [此处](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)提供了更多文档   
+    有关操作的帮助，请参阅[az 存储帐户生成 sas](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas)参考文档。
 
-```
-az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
-```
-                        
+    该操作成功运行后，复制的输出。
+    ```console
+       "se=2020-01-01&sp=***"
+    ```
 
- > [!NOTE] 
- > 如果用户对存储帐户没有权限，我们会先获取用户的对象 ID
+1. 使用`$sasToken`由前一个命令生成并创建共享的访问签名定义。 有关命令参数的详细信息，请参阅[az keyvault 存储 sas 定义创建](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)参考文档。
+    ```
+    az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
+    ```
 
- ```
- az ad user show --upn-or-object-id "developer@contoso.com"
+    当用户不具备对存储帐户的权限时，首先获取用户的对象 ID:
+    ```
+    az ad user show --upn-or-object-id "developer@contoso.com"
 
- az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
- ```
-    
-## <a name="fetch-sas-tokens-in-code"></a>在代码中提取 SAS 令牌
+    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+    ```
 
-在本部分中，我们将讨论如何通过从密钥保管库中提取 [SAS 令牌](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)对存储帐户执行操作
+<!-- Add closing sentences to summarize what the user accomplished in this section. -->
 
-以下部分演示在按前文所述创建 SAS 定义之后，如何提取 SAS 令牌。
+## <a name="fetch-tokens-in-code"></a>在代码中提取令牌
 
-> [!NOTE]
->   有 3 种方式可用于向密钥保管库进行身份验证，如[基本概念](key-vault-whatis.md#basic-concepts)中所述
-> - 使用托管服务标识（强烈推荐）
-> - 使用服务主体和证书 
-> - 使用服务主体和密码（不推荐）
+通过提取执行你的存储帐户上的操作[共享访问签名令牌](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)从密钥保管库。
+
+有三种方法对密钥保管库进行身份验证：
+
+- 使用托管的服务标识。 强烈建议使用此方法。
+- 使用服务主体和证书。 
+- 使用服务主体和密码。 不建议使用此方法。
+
+有关详细信息，请参阅[Azure 密钥保管库：基本概念](key-vault-whatis.md#basic-concepts)。
+
+下面的示例演示如何提取共享的访问签名令牌。 在创建共享的访问签名定义后提取令牌。 
 
 ```cs
-// Once you have a security token from one of the above methods, then create KeyVaultClient with vault credentials
+// After you get a security token, create KeyVaultClient with vault credentials.
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
 
-// Get a SAS token for our storage from Key Vault. SecretUri is of the format https://<VaultName>.vault.azure.net/secrets/<ExamplePassword>
+// Get a shared access signature token for your storage from Key Vault.
+// The format for SecretUri is https://<VaultName>.vault.azure.net/secrets/<ExamplePassword>
 var sasToken = await kv.GetSecretAsync("SecretUri");
 
-// Create new storage credentials using the SAS token.
+// Create new storage credentials by using the shared access signature token.
 var accountSasCredential = new StorageCredentials(sasToken.Value);
 
 // Use the storage credentials and the Blob storage endpoint to create a new Blob service client.
@@ -170,19 +179,22 @@ var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("htt
 var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
 ```
 
-如果 SAS 令牌即将过期，则你将再次从密钥保管库中提取 SAS 令牌并更新代码
+如果你的共享的访问签名令牌即将过期，从密钥保管库重新提取共享的访问签名令牌，并更新代码。
 
 ```cs
-// If your SAS token is about to expire, get the SAS Token again from Key Vault and update it.
+// If your shared access signature token is about to expire,
+// get the shared access signature token again from Key Vault and update it.
 sasToken = await kv.GetSecretAsync("SecretUri");
 accountSasCredential.UpdateSASToken(sasToken);
 ```
 
-### <a name="relevant-azure-cli-commands"></a>相关的 Azure CLI 命令
+<!-- Add closing sentences to summarize what the user accomplished in this section. -->
 
-[Azure CLI 存储命令](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
+### <a name="azure-cli-commands"></a>Azure CLI 命令
 
-## <a name="see-also"></a>另请参阅
+有关与被管理的存储帐户的 Azure CLI 命令的信息，请参阅[az keyvault 存储](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)参考文档。
 
-- [关于键、密钥和证书](https://docs.microsoft.com/rest/api/keyvault/)
-- [Key Vault 团队博客](https://blogs.technet.microsoft.com/kv/)
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解如何[密钥、 机密和证书](https://docs.microsoft.com/rest/api/keyvault/)。
+- 在查看文章[Azure Key Vault 团队博客](https://blogs.technet.microsoft.com/kv/)。

@@ -11,65 +11,63 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/23/2019
+ms.date: 6/6/2019
 ms.author: raiye
-ms.openlocfilehash: 4c0f364e596fbe2bf9083cbcf521902523c92a70
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ecf898d331ec426aa343441d29084b4f2c656fa0
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241322"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743037"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
 
 ## <a name="may-2019-guest-os"></a>2019 年 5 来宾 OS
 
->[!NOTE]
->可能来宾 OS 是当前正在对配置为自动更新的云服务 Vm 推出。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 在可能的来宾 OS 中包含以下修补程序。 此列表可能随时变动。
-
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 19-05   |  [4498206 ]  |  可能 IE 汇总   |  2,86, 3.73, 4.66  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4505050 ]  |  可能 IE 汇总   |  2,86, 3.73, 4.66  |  2019 年 5 月 18 日，  |
-|  Rel 19-05   |  [4497932 ]  |  可能会快速更新   |  3.73, 4.66, 5.31  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4499175 ]  |  5 月安全性汇总   |  2.86  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4495612 ]  |  可能.NET 3.5 的安全性汇总   |  2.86  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4495593 ]  |  可能.NET 4.5.2 的安全性汇总   |  2.86  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4499158 ]  |  5 月安全性汇总   |  3.73  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4495607 ]  |  可能.NET 3.5 的安全性汇总   |  3.73  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4495591 ]  |  可能.NET 4.5.2 的安全性汇总   |  3.73  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4492872 ]  |  IE 汇总   |  3.73  |  2019 年 4 月 16日日  |
-|  Rel 19-05   |  [4499165 ]  |  年 3 月安全性汇总   |  4.66  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4495615 ]  |  可能.NET 3.5 的安全性汇总   |  4.66  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4495589 ]  |  可能.NET 4.5.2 的安全性汇总   |  4.66  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4498947 ]  |  5 月 SSU   |  5.31  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4494175 ]  |  可能微代码更新   |  5.31  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4505052 ]  |  5 月安全性汇总   |  5.31  |  2019 年 5 月 19 日，  |
-|  Rel 19-05   |  [4499728 ]  |  5 月 SSU   |  6.7  |  2019 年 5 月 19 日，  |
-|  Rel 19-05   |  [4505056 ]  |  5 月安全性汇总   |  6.7  |  2019 年 5 月 19 日，  |
-|  Rel 19-05   |  [4494174 ]  |  可能微代码更新   |  6.7  |  2019 年 5 月 14 日，  |
-|  Rel 19-05   |  [4495590 ]  |  可能.NET 的安全性汇总   |  6.7  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4498206]  |  可能 IE 汇总   |  2,86, 3.73, 4.66  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4505050]  |  可能 IE 汇总   |  2,86, 3.73, 4.66  |  2019 年 5 月 18 日，  |
+|  Rel 19-05   |  [4497932]  |  可能会快速更新   |  3.73, 4.66, 5.31  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4499175]  |  5 月安全性汇总   |  2.86  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4495612]  |  可能.NET 3.5 的安全性汇总   |  2.86  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4495593]  |  可能.NET 4.5.2 的安全性汇总   |  2.86  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4499158]  |  5 月安全性汇总   |  3.73  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4495607]  |  可能.NET 3.5 的安全性汇总   |  3.73  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4495591]  |  可能.NET 4.5.2 的安全性汇总   |  3.73  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4492872]  |  IE 汇总   |  3.73  |  2019 年 4 月 16日日  |
+|  Rel 19-05   |  [4499165]  |  年 3 月安全性汇总   |  4.66  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4495615]  |  可能.NET 3.5 的安全性汇总   |  4.66  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4495589]  |  可能.NET 4.5.2 的安全性汇总   |  4.66  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4498947]  |  5 月 SSU   |  5.31  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4494175]  |  可能微代码更新   |  5.31  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4505052]  |  5 月安全性汇总   |  5.31  |  2019 年 5 月 19 日，  |
+|  Rel 19-05   |  [4499728]  |  5 月 SSU   |  6.7  |  2019 年 5 月 19 日，  |
+|  Rel 19-05   |  [4505056]  |  5 月安全性汇总   |  6.7  |  2019 年 5 月 19 日，  |
+|  Rel 19-05   |  [4494174]  |  可能微代码更新   |  6.7  |  2019 年 5 月 14 日，  |
+|  Rel 19-05   |  [4495590]  |  可能.NET 的安全性汇总   |  6.7  |  2019 年 5 月 14 日，  |
 
-[KB4493510]: https://support.microsoft.com/kb/KB4493510
-[KB4493472]: https://support.microsoft.com/kb/KB4493472
-[KB4493451]: https://support.microsoft.com/kb/KB4493451
-[KB4493446]: https://support.microsoft.com/kb/KB4493446
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[4498206]: https://support.microsoft.com/kb/4498206
+[4505050]: https://support.microsoft.com/kb/4505050
+[4497932]: https://support.microsoft.com/kb/4497932
+[4499175]: https://support.microsoft.com/kb/4499175
+[4495612]: https://support.microsoft.com/kb/4495612
+[4495593]: https://support.microsoft.com/kb/4495593
+[4499158]: https://support.microsoft.com/kb/4499158
+[4495607]: https://support.microsoft.com/kb/4495607
+[4495591]: https://support.microsoft.com/kb/4495591
+[4492872]: https://support.microsoft.com/kb/4492872
+[4499165]: https://support.microsoft.com/kb/4499165
+[4495615]: https://support.microsoft.com/kb/4495615
+[4495589]: https://support.microsoft.com/kb/4495589
+[4498947]: https://support.microsoft.com/kb/4498947
+[4494175]: https://support.microsoft.com/kb/4494175
+[4505052]: https://support.microsoft.com/kb/4505052
+[4499728]: https://support.microsoft.com/kb/4499728
+[4505056]: https://support.microsoft.com/kb/4505056
+[4494174]: https://support.microsoft.com/kb/4494174
+[4495590]: https://support.microsoft.com/kb/4495590
 
 
 ## <a name="april-2019-guest-os"></a>2019 年 4 月来宾 OS
@@ -83,11 +81,11 @@ ms.locfileid: "66241322"
 | Rel 19-04 | [4493448] | Windows 安全性 | 2.85 | 2019 年 4 月 9 日 |
 | Rel 19-04 | [4493478] | 闪烁 | 3.72、4.65、5.30、6.6 | 2019 年 4 月 9 日 |
 | Rel 19-04 | [4493435] | Internet Explorer | 2.85、3.72、4.65 | 2019 年 4 月 9 日 |
-| Rel 19-04 | [KB4490628] | 服务堆栈更新 | 2.85 | 2019 年 3 月 12 日 |
-| Rel 19-04 | [KB4474419] | SHA2 支持 | 2.85 | 2019 年 3 月 12 日 |
-| Rel 19-04 | [KB4489878] | 3 月非安全性汇总 | 2.85 | 2019 年 3 月 12 日 |
-| Rel 19-04 | [KB4489891] | 3 月非安全性汇总 | 3.72 | 2019 年 3 月 12 日 |
-| Rel 19-04 | [KB4489881] | 3 月非安全性汇总 | 4.65 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4490628] | 服务堆栈更新 | 2.85 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4474419] | SHA2 支持 | 2.85 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4489878] | 3 月非安全性汇总 | 2.85 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4489891] | 3 月非安全性汇总 | 3.72 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4489881] | 3 月非安全性汇总 | 4.65 | 2019 年 3 月 12 日 |
 
 [4493509]: https://support.microsoft.com/kb/4493509
 [4493470]: https://support.microsoft.com/kb/4493470
@@ -96,11 +94,11 @@ ms.locfileid: "66241322"
 [4493448]: https://support.microsoft.com/kb/4493448
 [4493478]: https://support.microsoft.com/kb/4493478
 [4493435]: https://support.microsoft.com/kb/4493435
-[KB4490628]: https://support.microsoft.com/kb/KB4490628
-[KB4474419]: https://support.microsoft.com/kb/KB4474419
-[KB4489878]: https://support.microsoft.com/kb/KB4489878
-[KB4489891]: https://support.microsoft.com/kb/KB4489891
-[KB4489881]: https://support.microsoft.com/kb/KB4489881
+[4490628]: https://support.microsoft.com/kb/KB4490628
+[4474419]: https://support.microsoft.com/kb/KB4474419
+[4489878]: https://support.microsoft.com/kb/KB4489878
+[4489891]: https://support.microsoft.com/kb/KB4489891
+[4489881]: https://support.microsoft.com/kb/KB4489881
 
 ## <a name="march-2019-guest-os"></a>2019 年 3 月来宾 OS
 

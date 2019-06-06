@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义 | Microsoft Docs
 description: 了解在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2033d37a4a847380003fb95243138082df804bbf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f3621b176e4bbfdfbd171339d6d01a1f91ed0ae7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703384"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509287"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
 
@@ -58,7 +58,7 @@ ms.locfileid: "64703384"
 - **颁发者 (iss) 声明** - 颁发者 (iss) 声明是通过 **IssuanceClaimPattern** 元数据项设置的。 适用的值为 `AuthorityAndTenantGuid` 和 `AuthorityWithTfp`。
 - **设置声明表示策略 ID** - 用于设置此值的选项为 `TFP`（信任框架策略）和 `ACR`（身份验证上下文引用）。 `TFP` 是建议使用的值。 将 **AuthenticationContextReferenceClaimPattern** 设置为值 `None`。 
 
-    在 ClaimsSchema 元素中，添加此元素： 
+    在 ClaimsSchema 元素中，添加此元素  ： 
     
     ```XML
     <ClaimType Id="trustFrameworkPolicy">
@@ -67,7 +67,7 @@ ms.locfileid: "64703384"
     </ClaimType>
     ```
     
-    在 OutputClaims 元素中，添加此元素：
+    在 OutputClaims 元素中，添加此元素  ：
     
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
@@ -102,5 +102,5 @@ ms.locfileid: "64703384"
 上一示例中配置了以下值：
 
 - **单一登录 (SSO)** - 单一登录是通过 **SingleSignOn** 配置的。 适用的值为 `Tenant`、`Application`、`Policy` 和 `Suppressed`。 
-- **Web 应用会话生存期（分钟）**- Web 应用会话生存期是通过 **SessionExpiryInSeconds** 元素设置的。 默认值为 86400 秒（1440 分钟）。
+- **Web 应用会话生存期（分钟）** - Web 应用会话生存期是通过 **SessionExpiryInSeconds** 元素设置的。 默认值为 86400 秒（1440 分钟）。
 - **Web 应用会话超时** - Web 应用会话超时是通过 **SessionExpiryType** 元素设置的。 适用的值为 `Absolute` 和 `Rolling`。

@@ -16,12 +16,12 @@ ms.date: 05/22/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae204ec1789f227150adc560d4a292404d23b7e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ec3909ffbb624284f999360140b7454098643062
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113307"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473373"
 ---
 # <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>完成访问评审的组或 Azure AD 中的应用程序访问评审
 
@@ -40,7 +40,7 @@ ms.locfileid: "66113307"
 
 审阅者完成其审阅时，可以跟踪进度。
 
-1. 登录到 Azure 门户，然后打开[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
+1. 登录到 Azure 门户，然后打开[标识监管页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
 1. 在左侧菜单中，单击**访问评审**。
 
@@ -68,7 +68,7 @@ ms.locfileid: "66113307"
 
 此评审的状态将更改从**已完成**中间状态，例如通过**应用**，最后到状态**结果应用**。 几分钟后，应会看到被拒绝的用户（如果有）已从组成员身份或应用程序分配中删除。
 
-为评审配置自动应用或者选择“应用”不会影响源自本地目录的组，也不会影响动态组。 若要更改源自本地的组，请下载结果，并将这些更改应用到该目录中组的表示形式。
+为评审配置自动应用或者选择“应用”不会影响源自本地目录的组，也不会影响动态组  。 若要更改源自本地的组，请下载结果，并将这些更改应用到该目录中组的表示形式。
 
 ## <a name="retrieve-the-results"></a>检索结果
 

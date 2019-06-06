@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 06/03/2019
 ms.author: banders
-ms.openlocfilehash: 235d93de56289bb2daaa661ee9806732da3b6d6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8f4279d9ac085cdd1ded0dfdda4fad9d3fe12fb8
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417607"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480236"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>取消针对 Azure 的订阅
 
@@ -29,6 +29,7 @@ ms.locfileid: "66417607"
 * 关闭服务。 转到[管理门户中的资源页](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)，**停止**任何正在运行的虚拟机、应用程序或其他服务。
 * 考虑迁移数据。 请参阅[将资源移到新资源组或订阅中](../azure-resource-manager/resource-group-move-resources.md)。
 * 必须删除所有资源和所有资源组。 可以取消订阅之前删除它们是必需的。 必须单独删除每个资源组。 在删除资源组，必须通过键入资源组名称来确认删除。
+* 如果有任何引用此订阅中的自定义角色`AssignableScopes`，应更新这些自定义角色，以删除订阅。 如果你尝试更新自定义角色后取消订阅，可能会遇到错误。 有关详细信息，请参阅[自定义角色的疑难解答](../role-based-access-control/troubleshooting.md#problems-with-custom-roles)并[Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。
 
 如果取消付费的 Azure 支持计划，则仍需为剩余的订阅期付费。 有关详细信息，请参阅 [Azure 支持计划](https://azure.microsoft.com/support/plans/)。
 
@@ -43,11 +44,9 @@ ms.locfileid: "66417607"
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>取消订阅之后会发生什么情况？
 
-在取消后，计费将立即停止。 但是，可能需要花费多达 10 分钟，取消才会显示在门户中。
+取消后，会立即停止计费。 但是，可能需要花费多达 10 分钟，取消才会显示在门户中。 如果在计费周期中途取消订阅，我们会在周期结束后于标准发票日期发送最终帐单。
 
-在那之后，服务被禁用。 那意味着虚拟机已解除分配，临时 IP 地址已释放，并且存储是只读的。
-
-如果在计费周期中途取消订阅，我们会在周期结束后于标准发票日期发送最终帐单。
+取消后，服务被禁用。 那意味着虚拟机已解除分配，临时 IP 地址已释放，并且存储是只读的。
 
 我们会先等待 90 天，才会永久删除用户的数据，这样做是考虑到用户可能需要访问这些数据，或者改变了主意。 我们不会因为保留这些数据而向你收费。 若要了解详细信息，请参阅 [Microsoft Trust Center - How we manage your data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)（Microsoft 信任中心 - 我们如何管理用户的数据）。
 

@@ -8,14 +8,14 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cd2f96954cde367eb99d89e89bcf672b53dd590
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b9e249885bd0e930773d4b374f85d72e60abdbdc
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247989"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427744"
 ---
-# <a name="azure-data-box-heavy-system-requirements"></a>Azure 数据框大量的系统要求
+# <a name="azure-data-box-heavy-system-requirements-preview"></a>Azure 数据框大量的系统要求 （预览版）
 
 本文介绍 Azure 数据框大量设备以及用于连接到设备的客户端的重要的系统要求。 我们建议在部署你的数据框重负载，然后返回到它根据需要在过程中引用的部署和后续操作之前仔细查看此信息。
 

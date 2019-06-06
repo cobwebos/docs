@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 92a0ba8c0f43e26b7a1bbe82cc52f61d390fc04d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cb9edbb508ddd993dcefbf69eb06b4f0d4156485
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827318"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742551"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主 VHD 映像中安装 Office
 
@@ -29,7 +29,9 @@ ms.locfileid: "65827318"
 
 共享的计算机激活可让你将 Office 365 专业增强版部署到多个用户访问你组织中的计算机。 有关共享的计算机激活的详细信息，请参阅[的 Office 365 专业增强版的共享的计算机激活概述](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus)。
 
-使用[Office 部署工具](https://www.microsoft.com/download/details.aspx?id=49117)来安装 Office。 Windows 10 企业版多会话仅支持 Office 365 专业增强版。
+使用[Office 部署工具](https://www.microsoft.com/download/details.aspx?id=49117)来安装 Office。 Windows 10 企业版多会话仅支持以下 Office 版本：
+- Office 365 ProPlus
+- Microsoft 365 商业版订阅随附的 office 365 企业版
 
 Office 部署工具需要配置 XML 文件。 若要自定义下面的示例，请参阅[Office 部署工具的配置选项](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool)。
 
@@ -132,7 +134,7 @@ OneDrive 是通常情况下已安装的每个用户。 在此环境中，它应�
 
 2. 到暂存位置与此链接下载 OneDriveSetup.exe: <https://aka.ms/OneDriveWVD-Installer>
 
-3. 如果使用 OneDrive 中省略安装 office  **\<ExcludeApp ID ="OneDrive"/\>**，通过运行以下命令，从提升的命令提示符卸载任何现有的 OneDrive 每用户安装命令：
+3. 如果使用 OneDrive 中省略安装 office  **\<ExcludeApp ID ="OneDrive"/\>** ，通过运行以下命令，从提升的命令提示符卸载任何现有的 OneDrive 每用户安装命令：
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

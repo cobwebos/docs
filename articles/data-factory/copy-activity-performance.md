@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 47b9ede2d529f78b14c21f53c6cd18ed691a3df3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 81a5f99b0babd79af0034f684c45bfcf1bb25bd8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768131"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425623"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +79,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ## <a name="data-integration-units"></a>数据集成单元
 
-**数据集成单元 (DIU)**（以前称为云数据移动单元或 DMU）是一种度量单位，代表单个单元在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 **DIU 仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**，而不适用于[自承载 Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)。
+**数据集成单元 (DIU)** （以前称为云数据移动单元或 DMU）是一种度量单位，代表单个单元在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 **DIU 仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)** ，而不适用于[自承载 Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)。
 
 **为复制活动运行提供支持的数据集成单元数下限为两个。** 如果未指定，下表列出了不同复制方案中使用的默认 DIU 数目：
 
@@ -93,7 +93,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 监视活动运行时，可以在复制活动输出中看到每次复制运行实际使用的数据集成单元数。 从[复制活动监视](copy-activity-overview.md#monitoring)中了解详细信息。
 
 > [!NOTE]
-> 目前仅在**将多个文件从 Blob 存储/Data Lake Storage/Amazon S3/云 FTP/云 SFTP 复制到其他任何云数据存储**时，才能设置**大于 4** 的 DIU 数。
+> 设置的 DIUs**大于 4**目前仅适用于您**将多个文件从 Azure 存储 /data Lake 存储/Amazon S3/Google 云存储/云 FTP/云 SFTP 复制到任何其他云数据存储**.
 >
 
 **示例：**
@@ -132,12 +132,12 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 | --- | --- |
 | 在基于文件的存储之间复制数据 |取决于文件大小以及用于在两个云数据存储之间复制数据的数据集成单元 (DIU) 数，或自承载 Integration Runtime 计算机的物理配置。 |
 | 将数据从任何源数据存储复制到 Azure 表存储 |4 |
-| 所有其他复制方案 |1 |
+| 所有其他复制方案 |第 |
 
 > [!TIP]
 > 在基于文件的存储之间复制数据时，默认行为（自动确定）通常会提供最佳吞吐量。 
 
-要控制托管数据存储的计算机上的负载或优化复制性能，可选择替代默认值并为 parallelCopies 属性指定值。 该值必须是大于或等于 1 的整数。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
+要控制托管数据存储的计算机上的负载或优化复制性能，可选择替代默认值并为 parallelCopies 属性指定值  。 该值必须是大于或等于 1 的整数。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 
 ```json
 "activities":[
@@ -243,7 +243,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 2. **诊断和优化性能**。 如果观察到的性能不符合预期，则需要识别性能瓶颈。 然后，优化性能以消除或减少瓶颈的影响。 
 
-    在某些情况下，当你在 ADF 中执行复制活动时，将直接在[复制活动监视](copy-activity-overview.md#monitor-visually)页上看到“性能调优技巧”，如以下示例所示。 它不仅告诉你针对给定复制运行所识别出的瓶颈，而且还指导你进行一些更改来提升复制吞吐量。 目前的性能优化提示提供如下建议：在将数据复制到 Azure SQL 数据仓库时使用 PolyBase；在数据存储端资源出现瓶颈时增加 Azure Cosmos DB RU 或 Azure SQL DB DTU；删除不必要的暂存副本等等。性能优化规则也将逐渐丰富。
+    在某些情况下，当你在 ADF 中执行复制活动时，将直接在[复制活动监视](copy-activity-overview.md#monitor-visually)页上看到“性能调优技巧”  ，如以下示例所示。 它不仅告诉你针对给定复制运行所识别出的瓶颈，而且还指导你进行一些更改来提升复制吞吐量。 目前的性能优化提示提供如下建议：在将数据复制到 Azure SQL 数据仓库时使用 PolyBase；在数据存储端资源出现瓶颈时增加 Azure Cosmos DB RU 或 Azure SQL DB DTU；删除不必要的暂存副本等等。性能优化规则也将逐渐丰富。
 
     **示例：复制到 Azure SQL DB 时的性能优化提示**
 
@@ -312,12 +312,12 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
 
-* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 copyBehavior 属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
+* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 copyBehavior  属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
 * **文件格式和压缩**：有关提高性能的更多方法，请参阅[序列化和反序列化注意事项](#considerations-for-serialization-and-deserialization)和[压缩注意事项](#considerations-for-compression)部分。
 
 ### <a name="relational-data-stores"></a>关系数据存储
 
-* **复制行为**：根据已为 sqlSink 设置的属性，复制活动以不同的方式将数据写入目标数据库。
+* **复制行为**：根据已为 sqlSink  设置的属性，复制活动以不同的方式将数据写入目标数据库。
   * 数据移动服务默认使用大容量复制 API 以追加模式插入数据，这提供最佳性能。
   * 如果在接收器中配置存储过程，数据库一次会应用一行数据，而不是大容量加载。 性能会大大降低。 如果数据集较大，请考虑切换为使用 **preCopyScript** 属性（如适用）。
   * 如果为每次复制活动运行配置 **preCopyScript** 属性，该服务会触发脚本，然后使用大容量复制 API 插入数据。 例如，若要使用最新数据覆盖整个表，可指定一个脚本，先删除所有记录，再从源大容量加载新数据。

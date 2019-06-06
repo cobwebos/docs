@@ -4,26 +4,26 @@ description: 将数据从本地 HDFS 存储迁移到 Azure 存储
 services: storage
 author: normesta
 ms.service: storage
-ms.date: 03/01/2019
+ms.date: 06/05/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 1eac7ecce88dc817b9bd7bd5330d10b019cc7dd2
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 9a42135df38cde91cc6626a3f7d0328334af0a5d
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939260"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729045"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>使用 Azure Data Box 将数据从本地 HDFS 存储迁移到 Azure 存储
 
-通过使用 Data Box 设备，可以从本地 HDFS 存储到 Azure 存储 （blob 存储或数据湖存储第 2 代） Hadoop 群集的迁移数据。
+通过使用 Data Box 设备，可以从本地 HDFS 存储到 Azure 存储 （blob 存储或数据湖存储第 2 代） Hadoop 群集的迁移数据。 您可以选择从 80 TB 的数据框或 770 TB 数据框过大。
 
 本文可帮助你完成这些任务：
 
-:heavy_check_mark:将数据复制到 Data Box 设备。
+:heavy_check_mark:将数据复制到数据框或数据框大量的设备。
 
-:heavy_check_mark:寄送到 Microsoft Data Box 设备。
+:heavy_check_mark:将设备发回 Microsoft。
 
 :heavy_check_mark:将移动到你的数据湖存储第 2 代的存储帐户的数据。
 
@@ -37,10 +37,10 @@ ms.locfileid: "64939260"
 
 * 包含源数据的本地 Hadoop 群集。
 
-* [Azure Data Box 设备](https://azure.microsoft.com/services/storage/databox/)。 
+* [Azure Data Box 设备](https://azure.microsoft.com/services/storage/databox/)。
 
-    - [订购 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered)。 时排序你的框，请务必选择存储帐户**不**具有分层命名空间对其启用。 这是因为数据中尚不支持直接引入到 Azure 数据湖存储第 2 代。 你将需要复制到存储帐户，然后执行到 ADLS 第 2 代帐户的另一个副本。 下面的步骤中提供相关说明。
-    - [连接电缆并连接你的数据框](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)到本地网络。
+    - [订购 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered)或[数据框繁重](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 时排序你的设备，请务必选择存储帐户**不**具有分层命名空间对其启用。 这是因为 Data Box 设备尚不支持直接引入到 Azure 数据湖存储第 2 代。 你将需要复制到存储帐户，然后执行到 ADLS 第 2 代帐户的另一个副本。 下面的步骤中提供相关说明。
+    - 连接电缆并连接你[Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)或[数据框大量](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up)到本地网络。
 
 如果一切就绪，让我们开始。
 
@@ -48,12 +48,12 @@ ms.locfileid: "64939260"
 
 要将数据从本地 HDFS 存储复制到 Data Box 设备，将进行一些设置，并使用[DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html)工具。
 
-如果要复制的数据量不只是一个单一的数据框的容量，必须将分解到容纳到数据框的大小将数据集。
+如果要复制的数据量不只是单个数据框的容量或单个节点上的数据框繁重，分解到大小适合你的设备数据集。
 
-请按照下列步骤将通过 REST Api 的 Blob/对象存储的数据复制到 Data Box。 REST API 接口将使显示到群集的 HDFS 存储为数据框。 
+请按照下列步骤将通过 REST Api 的 Blob/对象存储的数据复制到 Data Box 设备。 REST API 接口将使设备出现作为 HDFS 存储到群集。 
 
 
-1. 通过 REST 将数据复制之前，标识连接到数据框上的 REST 接口的安全性和连接基元。 登录到本地 web UI 的数据框中，并转到**连接和复制**页。 针对 Azure 存储帐户为您的数据框下**访问设置**，找到并选择**REST(Preview)**。
+1. 通过 REST 将数据复制之前，标识连接到数据框或数据框高上的 REST 接口的安全性和连接基元。 登录到本地 web UI 的数据框中，并转到**连接和复制**页。 针对 Azure 存储帐户为你的设备，在**访问设置**、 查找和选择**REST**。
 
     !["连接并复制"页](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "64939260"
 
      !["访问存储帐户和将数据上传"对话框](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. 添加终结点和到数据框 IP 地址`/etc/hosts`每个节点上。
+3. 添加终结点和到数据框或数据框大量的节点 IP 地址`/etc/hosts`每个节点上。
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
@@ -122,22 +122,30 @@ ms.locfileid: "64939260"
   
 若要提高复制速度：
 - 请尝试更改映射器数。 (上面的示例使用`m`= 4 的映射器。)
-- 尝试运行多个`distcp`并行。
-- 请记住较大的文件比小型文件的更好地执行。       
+- 请尝试在运行多个`distcp`并行。
+- 请记住较大的文件比小型文件的更好地执行。
     
 ## <a name="ship-the-data-box-to-microsoft"></a>寄送到 Microsoft 的数据框
 
 按照以下步骤来准备并寄回给 Microsoft Data Box 设备。
 
-1. 数据复制完成后，运行[准备交付](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)数据框上。 设备准备完成后，下载物料清单文件。 将使用这些 BOM 或清单文件更高版本以验证数据上传到 Azure。 关闭设备，请拔下电缆。 
-2.  安排提货带到 UPS[寄送到 Azure 在数据框](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)。 
-3.  Microsoft 会收到你的设备、 连接到网络的数据中心和数据上传到存储帐户 （使用禁用的分层命名空间） 指定后当你订购 Data Box。 验证对物料清单文件将数据上载到 Azure。 现在可以将这些数据移到数据湖存储第 2 代存储帐户。
+1. 数据复制完成后，运行：
+    
+    - [准备将传送你的数据框或数据框大量](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)。
+    - 设备准备完成后，下载物料清单文件。 将使用这些 BOM 或清单文件更高版本以验证数据上传到 Azure。 
+    - 关闭设备，请拔下电缆。
+2.  安排 UPS 取件。 遵照说明操作：
+
+    - [提供你的数据框](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) 
+    - [提供在数据框繁重](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
+3.  Microsoft 会收到你的设备、 连接到数据中心网络并将数据上载到 （与层次结构禁用的命名空间） 指定的存储帐户之后当您放置设备顺序。 验证对物料清单文件将数据上载到 Azure。 现在可以将这些数据移到数据湖存储第 2 代存储帐户。
+
 
 ## <a name="move-the-data-onto-your-data-lake-storage-gen2-storage-account"></a>移动到你的数据湖存储第 2 代的存储帐户数据
 
 如果使用 Azure 数据湖存储第 2 代作为数据存储，则需要此步骤。 如果使用的只是 blob 存储帐户层次结构命名空间不作为数据存储区，您不需要执行此步骤。
 
-可以在两种方法来执行此操作。 
+可以通过两种方式来执行此操作。
 
 - 使用[Azure 数据工厂将数据移到 ADLS 第 2 代](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2)。 您必须指定**Azure Blob 存储**作为源。
 

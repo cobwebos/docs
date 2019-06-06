@@ -2,20 +2,20 @@
 title: 登录中使用 LinkedIn 帐户设置使用自定义策略-Azure Active Directory B2C |Microsoft Docs
 description: 设置登录与 Azure Active Directory B2C 中的 LinkedIn 帐户，使用自定义策略。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3d927c2bf9344f2dc93cfe992e87457a0747f605
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b336428592a4897319725782c994c3fae26bfae0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190743"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510415"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 LinkedIn 帐户的登录
 
@@ -34,17 +34,17 @@ ms.locfileid: "65190743"
 若要将 LinkedIn 用作 Azure AD B2C 中的标识提供者，需要创建一个 LinkedIn 应用程序。
 
 1. 使用你的 LinkedIn 帐户凭据登录到 [LinkedIn 应用程序管理](https://www.linkedin.com/secure/developer?newapp=)网站。
-2. 选择“创建应用程序”。
+2. 选择“创建应用程序”。 
 3. 输入你的**公司名称**、**应用程序名称**和**应用程序说明**。
 4. 上传你已创建的**应用程序徽标**。
 5. 从提供的列表中选择一个**应用程序用途**。
-6. 对于“网站 URL”，输入 `https://your-tenant.b2clogin.com`。  将 `your-tenant` 替换为 Azure AD B2C 租户的名称。 例如，contoso.b2clogin.com。
+6. 对于“网站 URL”  ，输入 `https://your-tenant.b2clogin.com`。  将 `your-tenant` 替换为 Azure AD B2C 租户的名称。 例如，contoso.b2clogin.com。
 7. 输入你的**办公电子邮件**地址和**办公电话**号码。
-8. 在页面底部，阅读并接受使用条款，选择“提交”。
-9. 选择“身份验证”，记下“客户端 ID”和“客户端机密”值以便稍后使用。
-10. 在“授权的重定向 URL”中输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant` 替换为租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。 
-11. 选择“更新”。
-12. 选择“设置”，将“应用程序状态”更改为“实时”，选择“更新”。
+8. 在页面底部，阅读并接受使用条款，选择“提交”。 
+9. 选择“身份验证”，记下“客户端 ID”和“客户端机密”值以便稍后使用。   
+10. 在“授权的重定向 URL”  中输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant` 替换为租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。 
+11. 选择“更新”  。
+12. 选择“设置”，将“应用程序状态”更改为“实时”，选择“更新”。    
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
@@ -52,13 +52,13 @@ ms.locfileid: "65190743"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-4. 在“概述”页上选择“标识体验框架”。
-5. 选择“策略密钥”，然后选择“添加”。
-6. 对于“选项”，请选择 `Manual`。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
+4. 在“概述”页上选择“标识体验框架”  。
+5. 选择“策略密钥”  ，然后选择“添加”  。
+6. 对于“选项”  ，请选择 `Manual`。
 7. 输入策略密钥的**名称**。 例如，`LinkedInSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
-8. 在“机密”中，输入前面记录的应用程序机密。
-9. 在“密钥用法”处选择 `Signature`。
+8. 在“机密”中，输入前面记录的应用程序机密  。
+9. 在“密钥用法”处选择 `Signature`。 
 10. 单击**创建**。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
@@ -162,9 +162,9 @@ LinkedIn 技术配置文件需要**ExtractGivenNameFromLinkedInResponse**并**Ex
 
 现在，你已配置了策略，因此 Azure AD B2C 知道如何与 LinkedIn 帐户进行通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
-1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
-3. 单击“上传” 。
+1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”   。
+2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件  。
+3. 单击“上传” 。 
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 
@@ -208,10 +208,10 @@ LinkedIn 技术配置文件需要**ExtractGivenNameFromLinkedInResponse**并**Ex
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-4. 选择“应用程序”，然后选择“添加”。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
+4. 选择“应用程序”，然后选择“添加”   。
 5. 输入应用程序的名称，例如 *testapp1*。
-6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
+6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`   。
 7. 单击**创建**。
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
@@ -223,7 +223,7 @@ LinkedIn 技术配置文件需要**ExtractGivenNameFromLinkedInResponse**并**Ex
 3. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignLinkedIn)。
 5. 保存更改并上传文件，然后选择列表中的新策略。
-6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试。
+6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试   。
 
 ## <a name="migration-from-v10-to-v20"></a>从 1.0 版到 2.0 版的迁移
 

@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8d667d45e1831e0fcc939d302a16f63d4a282963
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 511333342371e18f75b48b60486705571353ee13
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65852048"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735051"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务将模型部署为 FPGA 上的 Web 服务
 
@@ -304,7 +304,7 @@ Docker 映像支持 gRPC 和 TensorFlow 提供服务"预测"API。  使用示例
 
 ```python
 # Using the grpc client in Azure ML Accelerated Models SDK package
-from azureml.accel.client import PredictionClient
+from azureml.accel import PredictionClient
 
 address = aks_service.scoring_uri
 ssl_enabled = address.startswith("https")

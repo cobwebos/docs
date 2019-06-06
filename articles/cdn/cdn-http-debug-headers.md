@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
-ms.openlocfilehash: 4ba42850ee28e2e212d9bc2b7b64be103218757c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5693e0e191b36aa8d4552824c649a38d2f17b5b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736966"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475289"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 X-EC-Debug HTTP 标头
 调试缓存请求标头 `X-EC-Debug` 提供有关应用到所请求资产的缓存策略的附加信息。 这些标头特定于 **Verizon 的 Azure CDN Premium** 产品。
@@ -27,7 +27,7 @@ ms.locfileid: "60736966"
 ## <a name="usage"></a>使用情况
 仅当满足以下条件时，从 POP 服务器发送给用户的响应才包含 `X-EC-Debug` 标头：
 
-- 已针对指定的请求的规则引擎启用[调试缓存响应标头功能](cdn-rules-engine-reference-features.md#debug-cache-response-headers)。
+- 已针对指定的请求的规则引擎启用[调试缓存响应标头功能](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)。
 - 指定的请求定义要包含在响应中的调试缓存响应标头集。
 
 ## <a name="requesting-debug-cache-information"></a>请求调试缓存信息
@@ -54,7 +54,7 @@ X-EC-Debug: x-ec-cache-state | [缓存状态](#cache-state-response-header)
 ## <a name="cache-status-code-information"></a>缓存状态代码信息
 X-EC-Debug 响应标头可以标识服务器及其如何通过以下指令处理了响应：
 
-标头 | 描述
+Header | 描述
 -------|------------
 X-EC-Debug: x-ec-cache | 每当通过 CDN 路由内容时，都会报告此标头。 此标头标识完成请求的 POP 服务器。
 X-EC-Debug: x-ec-cache-remote | 仅当请求的内容已缓存在来源防护服务器或 ADN 网关服务器上时，才报告此标头。
@@ -118,7 +118,7 @@ UNKNOWN | 指示服务器无法评估请求的资产是否可缓存。 如果由
 ## <a name="cache-key-response-header"></a>缓存键响应标头
 `X-EC-Debug: x-ec-cache-key` 响应标头指示与请求内容关联的物理缓存键。 物理缓存键包括一个路径，用于标识要缓存的资产。 换言之，服务器会根据 cache-key 所定义的路径查看缓存版的资产。
 
-此物理缓存键以双正斜杠 (//) 开头，后接用于请求内容的协议（HTTP 或 HTTPS）。 此协议后接所请求资产的相对路径，该路径以内容接入点开头（例如 _/000001/_）。
+此物理缓存键以双正斜杠 (//) 开头，后接用于请求内容的协议（HTTP 或 HTTPS）。 此协议后接所请求资产的相对路径，该路径以内容接入点开头（例如 _/000001/_ ）。
 
 默认情况下，HTTP 平台配置为使用 *standard-cache*，这意味着，查询字符串将被缓存机制忽略。 此类配置会阻止缓存键包含查询字符串数据。
 
@@ -151,7 +151,7 @@ UNKNOWN | 指示服务器无法评估请求的资产是否可缓存。 如果由
 
 - MATimePeriod:（例如，天），请将最大期限值 (即 MASeconds) 转换为单位更大的近似等效项。 
 
-- UnixTime:（也称为以 Unix 时间指示请求的内容的缓存时间戳 POSIX 时间或 Unix 时期）为单位。 缓存时间戳指示计算资产 TTL 的起始日期/时间。 
+- UnixTime:指示请求的内容的缓存时间戳以 Unix 时间 (也称为 POSIX 时间或 Unix epoch 起经过)。 缓存时间戳指示计算资产 TTL 的起始日期/时间。 
 
     如果源服务器不使用第三方 HTTP 缓存服务器或该服务器不返回 Age 响应标头，则缓存时间戳始终为检索或重新验证资产时的日期/时间。 否则，POP 服务器将使用 Age 字段计算资产的 TTL，如下所示：Retrieval/RevalidateDateTime-Age。
 

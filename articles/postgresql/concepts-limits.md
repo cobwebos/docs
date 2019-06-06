@@ -1,27 +1,28 @@
 ---
-title: 在 Azure Database for PostgreSQL-单个服务器的限制
-description: 本文介绍在 Azure Database for PostgreSQL-单个服务器，例如连接数和存储引擎选项的限制。
+title: Azure Database for PostgreSQL - 单一服务器中的限制
+description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器中的限制，例如连接数和存储引擎选项。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 01133662ca3a7364efd362f6db99d33243b2ad4b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 06/05/2019
+ms.openlocfilehash: 3e1597def26c09378d3917ad2d49163ef17732f8
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073540"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66732863"
 ---
-# <a name="limitations-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL-单个服务器的限制
-下列各部分介绍数据库服务中的容量和功能限制。
+# <a name="limitations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的限制
+下列各部分介绍数据库服务中的容量和功能限制。 如果你想要了解有关资源 （计算、 内存、 存储） 层的信息，请参阅[定价层](concepts-pricing-tiers.md)一文。
+
 
 ## <a name="maximum-connections"></a>最大连接数
 每个定价层的最大连接数和 vCore 数如下所示： 
 
-|**定价层**| **vCore(s)**| 最大连接数 |
+|**定价层**| **vCore(s)**| 最大连接数  |
 |---|---|---|
-|基本| 1| 50 |
+|基本| 第| 50 |
 |基本| 2| 100 |
 |常规用途| 2| 150|
 |常规用途| 4| 250|

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 59a35e44c78ea86f3b02eb4ad99dc1fd8fcb4870
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 054aaf6f607bba216f979665a0b0672ec253ba7f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236618"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475977"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标 
 
@@ -31,22 +31,22 @@ ms.locfileid: "66236618"
 
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.6 进行测试。
+> 使用 Azure 机器学习 SDK 版本 1.0.39 测试的这篇文章中的代码。
 
 ## <a name="compute-targets-for-training"></a>训练的计算目标
 
 Azure 机器学习服务为不同的计算目标提供不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
 
 
-|训练的计算目标| GPU 加速 | 自动<br/> 超参数优化 | 自动<br/> 机器学习 | Azure 机器学习管道 |
+|定型&nbsp;目标| GPU 支持 |自动化机器学习 | ML 管道 | 可视界面
 |----|:----:|:----:|:----:|:----:|
-|[本地计算机](#local)| 可能 | &nbsp; | ✓ | &nbsp; |
-|[Azure 机器学习计算](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
-|[远程 VM](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[本地计算机](#local)| 您可能 | 是 | &nbsp; | &nbsp; |
+|[Azure 机器学习计算](#amlcompute)| 是 | 是 （& a) <br/>hyperparameter&nbsp;tuning | 是 | 是 |
+|[远程 VM](#vm) |是 | 是 （& a) <br/>超参数优化 | 是 | &nbsp; |
+|[Azure&nbsp;Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | 是 | 是 | &nbsp; |
+|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | 是 | &nbsp; |
+|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | 是 | &nbsp; |
+|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | 是 | &nbsp; |
 
 **所有计算目标都可重复用于多个训练作业**。 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。
 

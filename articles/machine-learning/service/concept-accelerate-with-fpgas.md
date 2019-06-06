@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1a690ea350ea98589e9134cd6f401c6ac3c58083
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 9204b0d8513d4adbb9c93be94284d7d46de41e06
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851027"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479559"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>现场可编程门阵列 (FPGA) 有哪些？
 
@@ -80,7 +80,7 @@ Microsoft Azure 是世界上在 FPGA 中的最大云投资。 Azure 支持的 Fp
 
 请访问以下视频和博客：
 
-+ [“超大规模”硬件：ML at scale on top of Azure + FPGA :Build 2018 (video)](https://www.youtube.com/watch?v=BMgQAHIx2eY)（超大规模的硬件：基于 Azure + FPGA 的大规模机器学习：Build 2018（视频））
++ [“超大规模”硬件：ML at scale on top of Azure + FPGA :Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)（超大规模的硬件：基于 Azure + FPGA 的大规模机器学习：Build 2018（视频））
 
 + [Inside the Microsoft FPGA-based configurable cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)（深入了解基于 Microsoft FPGA 的可配置云（视频））
 

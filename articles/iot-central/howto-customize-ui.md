@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0256396cd228898f3852772b113e6064a0656746
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4d385f1e8c883453b4153ca4c9119d3be0a608bb
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237652"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495556"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>自定义 Azure IoT 中心 UI 
 
@@ -75,6 +75,5 @@ PNG 图像，不能大于 32 x 32 像素，透明背景。 Web 浏览器可以�
 
 现在，已了解如何自定义 IoT Central 应用程序中的用户界面，下面是一些建议的后续步骤：
 
-> [!div class="nextstepaction"]
-> [管理你的应用程序](./howto-administer.md)
-> [配置应用程序仪表板](./howto-configure-homepage.md)
+- [管理应用程序](./howto-administer.md)
+- [配置应用程序仪表板](./howto-configure-homepage.md)

@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 05/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 16d100256f9252b478500488c2dc5a01c7e6a0b5
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 93eb0fba91ce5064d04a340e8b3e5b984ee73081
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418057"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515569"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -155,11 +155,11 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 
 自动化机器学习如现在还可供其他 Microsoft 解决方案：
 
-|集成|描述
-|------------|-----------
-|ML.NET|自动模型选择和定型使用 ML.NET 使用 Visual Studio 和 Visual Studio Code 的.NET 应用程序中实现自动化机器学习 （预览版）。 [了解详细信息](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)。
-|HDIsnight|横向扩展自动化机器学习训练作业在 HDInsight 中的 Spark 群集中并行。 [了解详细信息](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)。
-|PowerBI|调用直接在 Power BI （预览版） 中的机器学习模型。 [了解详细信息](https://docs.microsoft.com/power-bi/service-machine-learning-automated)。
+|集成|描述|
+|------------|-----------|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|自动模型选择和定型使用 ML.NET 使用 Visual Studio 和 Visual Studio Code 的.NET 应用程序中实现自动化机器学习 （预览版）。|
+|[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|横向扩展自动化机器学习训练作业在 HDInsight 中的 Spark 群集中并行。|
+|[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|调用直接在 Power BI （预览版） 中的机器学习模型。|
 
 ## <a name="next-steps"></a>后续步骤
 

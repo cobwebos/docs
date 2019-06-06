@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: cdd2b24e6f833ee0acb229a37c7cd3b8b6f36339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66143394"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427566"
 ---
 # <a name="deploy-a-new-simulated-device"></a>部署新的模拟设备
 
@@ -40,18 +40,18 @@ ms.locfileid: "66143394"
 按照本操作方法指南操作需要：
 
 - [远程监视解决方案加速器](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2)的一个部署实例。
-- 一个用于运行 `ssh` 和 `scp` 命令的本地 bash shell。 在 Windows 上，安装 bash 的简单方法是安装 [git](https://git-scm.com/download/win)。
+- 一个用于运行 `ssh` 和 `scp` 命令的本地 bash shell  。 在 Windows 上，安装 bash 的简单方法是安装 [git](https://git-scm.com/download/win)  。
 - 自定义的设备模型文件，如[创建并测试新模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)中所述的文件。
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]
 
 ## <a name="configure-docker"></a>配置 Docker
 
-本部分将配置 Docker，以从虚拟机中的 /tmp/devicemodels 文件夹加载设备模型文件，而不是从 Docker 容器内部加载。 在本地计算机上的 bash shell 中运行本部分中的命令：
+本部分将配置 Docker，以从虚拟机中的 /tmp/devicemodels 文件夹加载设备模型文件，而不是从 Docker 容器内部加载  。 在本地计算机上的 bash shell 中运行本部分中的命令  ：
 
-本部分将配置 Docker，以从虚拟机中的 /tmp/devicemodels 文件夹加载设备模型文件，而不是从 Docker 容器内部加载。 在本地计算机上的 bash shell 中运行本部分中的命令：
+本部分将配置 Docker，以从虚拟机中的 /tmp/devicemodels 文件夹加载设备模型文件，而不是从 Docker 容器内部加载  。 在本地计算机上的 bash shell 中运行本部分中的命令  ：
 
-1. 使用 SSH 从本地计算机连接到 Azure 中的虚拟机。 以下命令假设虚拟机 vm-vikxv 的公共 IP 地址为 104.41.128.108，将此值替换为上一部分中虚拟机的公共 IP 地址：
+1. 使用 SSH 从本地计算机连接到 Azure 中的虚拟机。 以下命令假设虚拟机 vm-vikxv 的公共 IP 地址为 104.41.128.108，将此值替换为上一部分中虚拟机的公共 IP 地址   ：
 
    ```sh
     ssh azureuser@104.41.128.108
@@ -65,7 +65,7 @@ ms.locfileid: "66143394"
     sudo nano /app/docker-compose.yml
     ```
 
-    找到 devicesimulation 容器的设置，然后编辑卷设置，如以下代码片段所示：
+    找到 devicesimulation 容器的设置，然后编辑卷设置，如以下代码片段所示   ：
 
     ```yml
     devicesimulation:
@@ -88,18 +88,19 @@ ms.locfileid: "66143394"
 1. 将容器中的现有设备模型文件复制到新位置。 首先，找到设备模拟容器的容器 ID：
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
-    然后将设备模型文件复制到虚拟机中的 tmp 文件夹。 以下命令假定容器 ID 为 c378d6878407，将此值替换为你的设备模拟容器 ID：
+    然后将设备模型文件复制到虚拟机中的 tmp 文件夹  。 以下命令假定容器 ID 为 c378d6878407，将此值替换为你的设备模拟容器 ID：
 
     ```sh
-    docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo chown -R azureuser /tmp/devicemodels/
     ```
 
-    使 bash 窗口和 SSH 会话处于打开状态。
+    使 bash 窗口和 SSH 会话处于打开状态  。
 
-1. 将自定义设备模型文件复制到虚拟机中。 在创建自定义设备模型的计算机上的另一 bash shell 中运行此命令。 首先，导航到包含设备模型 JSON 文件的本地文件夹。 以下命令假设虚拟机的公共 IP 地址为 104.41.128.108，将此值替换为你的虚拟机的公共 IP 地址。 出现提示时输入虚拟机密码：
+1. 将自定义设备模型文件复制到虚拟机中。 在创建自定义设备模型的计算机上的另一 bash shell 中运行此命令  。 首先，导航到包含设备模型 JSON 文件的本地文件夹。 以下命令假设虚拟机的公共 IP 地址为 104.41.128.108，将此值替换为你的虚拟机的公共 IP 地址  。 出现提示时输入虚拟机密码：
 
     ```sh
     scp *json azureuser@104.41.128.108:/tmp/devicemodels
@@ -107,7 +108,7 @@ ms.locfileid: "66143394"
     scp *js azureuser@104.41.128.108:/tmp/devicemodels/scripts
     ```
 
-1. 重新启动设备模拟 Docker 容器以使用新设备模型。 在打开到虚拟机的 SSH 会话的 bash shell 中运行以下命令：
+1. 重新启动设备模拟 Docker 容器以使用新设备模型。 在打开到虚拟机的 SSH 会话的 bash shell 中运行以下命令  ：
 
     ```sh
     sudo /app/start.sh
@@ -116,13 +117,13 @@ ms.locfileid: "66143394"
     如果要查看正在运行的 Docker 容器的状态及其容器 ID，请使用以下命令：
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     如果要查看设备模拟容器中的日志，请运行以下命令。 将容器 ID 替换为你的设备模拟容器的 ID：
 
     ```sh
-    docker logs -f 5d3f3e78822e
+    sudo docker logs -f 5d3f3e78822e
     ```
 
 ## <a name="run-simulation"></a>运行模拟
@@ -131,7 +132,7 @@ ms.locfileid: "66143394"
 
 1. 从 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators#dashboard)启动远程监视仪表板。
 
-1. 通过“设备”页添加模拟设备。 添加新的模拟设备时，可选择新的设备模型。
+1. 通过“设备”页添加模拟设备  。 添加新的模拟设备时，可选择新的设备模型。
 
 1. 可使用仪表板查看设备遥测并调用设备方法。
 
@@ -139,7 +140,7 @@ ms.locfileid: "66143394"
 
 如果打算深入探索，请保留部署的远程监视解决方案加速器。
 
-如果不再需要该解决方案加速器，请在[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中选择它，然后单击“删除解决方案”将其删除。
+如果不再需要该解决方案加速器，请在[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中选择它，然后单击“删除解决方案”  将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

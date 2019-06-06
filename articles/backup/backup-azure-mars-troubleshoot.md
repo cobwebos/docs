@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: f36442c5e26391f410eeb5e39a7485da7199bdad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d8a1d261808eb8f97d1e0dab78b767b37ae6802f
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243438"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743137"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -82,7 +82,15 @@ ms.locfileid: "66243438"
 如果计划的备份未自动触发，而手动备份却能正常进行，请尝试以下操作：
 
 - 确保 Windows Server 备份计划与 Azure 文件和文件夹备份计划不冲突。
-- 转到“控制面板” > “管理工具” > “任务计划程序”。    展开“Microsoft”并选择“联机备份”。   双击“Microsoft-OnlineBackup”，然后转到“触发器”选项卡。   确保状态设置为“已启用”。  如果不是，请选择“编辑”，并选中“已启用”复选框，然后单击“确定”    。 在“常规”选项卡上，转到“安全选项”，并确保为运行任务而选择的用户帐户是服务器上的 **SYSTEM** 或**本地管理员组**   。
+
+- 请确保联机备份状态设置为**启用**。 若要验证状态执行如下：
+
+  - 转到“控制面板” > “管理工具” > “任务计划程序”。   
+    - 展开“Microsoft”并选择“联机备份”。  
+  - 双击“Microsoft-OnlineBackup”，然后转到“触发器”选项卡。  
+  - 验证状态是否设置为**已启用**。 如果不是，请选择“编辑”，并选中“已启用”复选框，然后单击“确定”    。
+
+- 确保选择用于运行任务的用户帐户为**系统**或**本地管理员组**在服务器上。 若要验证的用户帐户，请转到**常规**选项卡并选中**安全选项**。
 
 - 查看服务器上是否已安装 PowerShell 3.0 或更高版本。 若要检查 PowerShell 版本，请运行以下命令，并确认 *Major* 版本号是等于或大于 3。
 
@@ -97,6 +105,15 @@ ms.locfileid: "66243438"
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
+
+- 确保备份代理安装完成后重新启动服务器
+
+- 确保没有缺失或已损坏**PowerShell**模块**MSonlineBackup**。 如果有任何缺失或损坏的文件，若要解决问题，请执行如下：
+
+  - 从另一台计算机 (Windows 2008 R2) 具有 MARS 代理正常运行，复制从 MSOnlineBackup 文件夹 *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* 路径。
+  - 中的有问题计算机的相同路径粘贴这 *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* 。
+  - 如果 **MSOnlineBackup** 文件夹已存在在计算机中粘贴/替换其内部的内容文件。
+
 
 > [!TIP]
 > 为确保一致地应用所做的更改，请在执行上述步骤后重新启动服务器。

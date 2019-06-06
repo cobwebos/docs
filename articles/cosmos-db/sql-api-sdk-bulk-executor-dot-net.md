@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 4f2d8b3246901f139695998224dfe036cccb9833
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74eddadd7fd967daa1eebb9d7cb223fdc708025f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627144"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471420"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -42,6 +42,18 @@ ms.locfileid: "60627144"
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
+
+* 添加了的对图形批量执行器接受顶点和边缘上的 ttl
+
+### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
+
+* 修复了问题，弹性缩放的 Azure Cosmos DB 网关模式下运行时期间导致异常。 该修补程序使功能上等效于 1.4.1 发布。
+
+### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
+
+* 添加了批量删除支持 SQL API 帐户，以接受分区键，若要删除的文档 id 元组。 这一变化使得功能上等效于 1.4.0 发布。
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * 包括了 MongoBulkExecutor 来支持 .NET Standard 2.0。 此功能使其功能等效于 1.3.0 版本，增加了支持使用 .NET Standard 2.0 作为目标框架。
@@ -50,10 +62,24 @@ ms.locfileid: "60627144"
 
 * 添加了 .NET Standard 2.0 作为受支持的目标框架之一，以使 BulkExecutor 库与 .NET Core 应用程序一起工作。
 
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
+
+* 更新批量执行器，以便现在使用最新版本的 Azure Cosmos DB.NET SDK (2.4.0)
+
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
+
+* 添加了的对图形批量执行器接受顶点和边缘上的 ttl
+
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
+
+* 修复了问题，弹性缩放的 Azure Cosmos DB 网关模式下运行时期间导致异常。
+
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
+
+* 添加了批量删除支持 SQL API 帐户，以接受分区键，若要删除的文档 id 元组。
+
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-* 增加了对 SQL API 帐户的 BulkDelete 操作的重载，以接受要删除的分区键、文档 ID 元组。
-* 增加了对 SQL API 帐户的 BulkDelete 操作的重载以接受包含分区键值的 RequestOptions，并且还在输入查询中使用它作为筛选器来指定要删除的文档。
 * 修复了一个问题，该问题导致 BulkExecutor 使用的用户代理出现格式设置问题。
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0

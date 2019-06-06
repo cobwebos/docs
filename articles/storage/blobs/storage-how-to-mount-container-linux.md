@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 2/1/2019
 ms.author: normesta
 ms.reviewer: seguler
-ms.openlocfilehash: 261fd9f820f3e5421d9d0f4f7c9220ec31003283
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d5077b75ff9e760917e9d5d02bea49dc4967a08b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148443"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473444"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 
 ## <a name="overview"></a>概述
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 存储的虚拟文件系统驱动程序。 Blobfuse 允许通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Azure Blob 存储是一项对象存储服务，并且没有分层命名空间。 Blobfuse 使用虚拟目录方案提供这种命名空间，并使用正斜杠“/”作为分隔符。  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 存储的虚拟文件系统驱动程序。 Blobfuse 允许通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Blobfuse 使用虚拟目录方案，使用正斜杠 / 作为分隔符。  
 
 本指南介绍如何使用 Blobfuse，以及如何在 Linux 上装载 Blob 存储容器并访问数据。 若要详细了解 Blobfuse，请阅读 [Blobfuse 存储库](https://github.com/Azure/azure-storage-fuse)中的详细信息。
 

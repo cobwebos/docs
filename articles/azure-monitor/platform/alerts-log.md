@@ -1,6 +1,6 @@
 ---
 title: 创建、 查看和管理使用 Azure Monitor 的日志警报 |Microsoft Docs
-description: 在 Azure 中使用 Azure Monitor 创作、查看和管理日志警报规则。
+description: 使用 Azure Monitor 创建、 查看和管理在 Azure 中的日志警报规则。
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: b7240b38e595fdcf9f9d4f995f71643154ee0f9b
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: f758007a0fa0d7fb619873d94d762e7019077e05
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399174"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427450"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 

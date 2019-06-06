@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: a9f8066896134072665c3f5b325e033b638bf094
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 5ef051f42f3d092cc1d88008eaa8af981684ac6c
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000995"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730042"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>部署 Azure-PowerShell （预览版） 中的 IPv6 双堆栈应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "66000995"
 > [!Important]
 > Azure 虚拟网络的 IPv6 支持当前处于公共预览状态。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果您选择本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块版本 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
@@ -170,7 +170,7 @@ $lb = New-AzLoadBalancer `
 ### <a name="create-an-availability-set"></a>创建可用性集
 要提高应用的高可用性，请将 VM 放置在可用性集中。
 
-使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为“myAvailabilitySet”的可用性集：
+使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为“myAvailabilitySet”  的可用性集：
 
 ```azurepowershell-interactive
 $avset = New-AzAvailabilitySet `
@@ -233,7 +233,7 @@ $nsg = New-AzNetworkSecurityGroup `
 ```
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例创建具有“mySubnet”的名为“myVnet”的虚拟网络：
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例创建具有“mySubnet”  的名为“myVnet”  的虚拟网络：
 
 ```azurepowershell-interactive
 # Create dual stack subnet
@@ -358,7 +358,7 @@ foreach ($NIC in $NICsInRG) {
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 门户中查看 IPv6 双堆栈虚拟网络
 您可以按如下所示在 Azure 门户中查看 IPv6 双堆栈的虚拟网络：
 1. 在门户的搜索栏中，输入*dsVnet*。
-2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。 这将启动**概述**的名为的双堆栈虚拟网络页*dsVnet*。 双堆栈虚拟网络使用 IPv4 和 IPv6 配置位于名为的双堆栈子网中显示两个 Nic *dsSubnet*。
+2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。  这将启动**概述**的名为的双堆栈虚拟网络页*dsVnet*。 双堆栈虚拟网络使用 IPv4 和 IPv6 配置位于名为的双堆栈子网中显示两个 Nic *dsSubnet*。
 
   ![在 Azure 中的 IPv6 双堆栈虚拟网络](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 

@@ -7,22 +7,34 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 461c9f3f3725ba27410088ca19f1ec050375adf2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bf3136969974abbe9a99a5632478e3cbb22307e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806141"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474522"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>检查商业 Marketplace 产品/服务的发布状态
 
 您可以查看您的当前**发布状态**上**产品/服务概述**选项卡[商业 Marketplace 门户](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)在合作伙伴中心。
 
+对于每个套餐，应会显示以下状态指示器之一。
+
+| **Status**    | **说明**  |
+| :---------- | :-------------------|
+| **Draft** | 已创建产品/服务，但它不要发布。 |
+| **发布正在进行** | 产品/服务/计划正在其完成的步骤的发布过程的方式。 |
+| **需要注意** | 由 Microsoft 或任何发布的步骤在认证期间发现的严重问题。 |
+| **预览** | 产品/服务由 Microsoft、 认证和现在等待由发布者进行最终验证。 选择转活动状态，以使产品/服务实时。 |
+| **Live** | 产品/服务在 marketplace 中处于活动和可见且可获取的客户。 |
+| **挂起停止销售** | 发布服务器上的产品/服务或计划中，选择"停止销售"但尚未完成该操作。 |
+| **在 marketplace 中不可用** | 在 marketplace 中的以前发布的产品/服务/计划已删除。 |
+
 ## <a name="automated-validation"></a>自动化的验证
 
 在发布过程中的第一步是一组的自动验证。 每个验证步骤对应于你选择在创建产品/服务中启用的功能。 如果未启用该功能，验证向前跳到下一步的发布步骤。 批准发布的状态之前，必须完成每个验证检查。
 
-- **产品/服务购买流量设置 (> 10 分钟)**
+- **产品/服务购买流安装程序 (< 10 分钟)**
 
 在此步骤中，我们确保由客户通过 Azure 门户购买时，可以实现产品/服务。 此步骤才适用于通过 Microsoft 销售的产品/服务。
 
@@ -34,7 +46,7 @@ ms.locfileid: "65806141"
 
 在此步骤中之后验证数据和功能的体验版在上一步骤中，, 我们将部署和复制体验版的实例，以便它们可供客户使用。  与测试驱动器启用了此步骤才适用的产品/服务。
 
-- **会导致管理验证和注册 (> 15 分钟)**
+- **会导致管理验证和注册 (< 15 分钟)**
 
 在此步骤中，我们确认你的潜在客户管理系统可以接收基于提供的产品/服务设置的详细信息的潜在客户。 与潜在客户管理启用了此步骤才适用的产品/服务。
 

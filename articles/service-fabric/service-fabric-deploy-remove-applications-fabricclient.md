@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: eb131e07b0cf561f3156744472660852bbd69ec4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b2d88004696515169ffde96b50d2771bcc1a669
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60393281"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428128"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>使用 FabricClient 部署和删除应用程序
 > [!div class="op_single_selector"]
@@ -39,15 +39,15 @@ ms.locfileid: "60393281"
 3. 从映像存储中删除应用程序包
 4. 创建应用程序实例
 
-在部署应用程序并且实例在群集中运行后，可以删除应用程序实例及其应用程序类型。 从群集中完全删除某个应用程序涉及以下步骤：
+在部署应用程序并在群集中运行实例后，可以删除应用程序实例和其应用程序类型。 完全应用程序从群集中删除通过执行以下步骤：
 
 1. 删除正在运行的应用程序实例
 2. 如果不再需要该应用程序类型，则将其取消注册
 
-如果使用 Visual Studio 来部署和调试本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便可以在 Visual Studio 外部执行相同的操作。 
+如果使用 Visual Studio 来部署和调试本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供有关这些脚本正在执行的以便可以执行相同的操作，在 Visual Studio 之外的背景。 
  
 ## <a name="connect-to-the-cluster"></a>连接至群集
-在运行本文中的任何代码示例之前，通过创建 [FabricClient](/dotnet/api/system.fabric.fabricclient) 实例连接到群集。 有关连接到本地开发群集、远程群集，或使用 Azure Active Directory、X509 证书或 Windows Active Directory 保护的群集的示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis)。 若要连接到本地部署群集，请运行以下命令：
+在运行本文中的任何代码示例之前，通过创建 [FabricClient](/dotnet/api/system.fabric.fabricclient) 实例连接到群集。 有关连接到本地开发群集、远程群集，或使用 Azure Active Directory、X509 证书或 Windows Active Directory 保护的群集的示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis)。 若要连接到本地开发群集，运行下面的示例：
 
 ```csharp
 // Connect to the local cluster.
@@ -55,9 +55,9 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>上载应用程序包
-假设在 Visual Studio 中生成并打包名为 *MyApplication* 的应用程序。 默认情况下，ApplicationManifest.xml 中列出的应用程序类型名称为“MyApplicationType”。  应用程序包（其中包含必需的应用程序清单、服务清单以及代码/配置/数据包）位于 *C:\Users\&lt;username&gt;\Documents\Visual Studio 2017\Projects\MyApplication\MyApplication\pkg\Debug* 中。
+假设在 Visual Studio 中生成并打包名为 *MyApplication* 的应用程序。 默认情况下，ApplicationManifest.xml 中列出的应用程序类型名称为“MyApplicationType”。  应用程序包，其中包含必需的应用程序清单、 服务清单以及代码/配置/数据包，位于*C:\Users\&l t; 用户名&gt;\Documents\Visual Studio 2019\Projects\MyApplication\MyApplication\pkg\Debug*。
 
-上传应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。 Service Fabric 在注册应用程序包期间会对应用程序包进行验证。 但是，如果要在本地验证应用程序包（例如，在上传之前），请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet。
+上传应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。 Service Fabric 在注册应用程序包期间会对应用程序包进行验证。 但是，如果你想要验证本地应用程序包 （即，之前上传），使用[Test-servicefabricapplicationpackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet。
 
 [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API 可将应用程序包上传到群集映像存储。 
 
@@ -76,14 +76,14 @@ FabricClient fabricClient = new FabricClient();
 建议在成功注册应用程序后删除应用程序包。  从映像存储区中删除应用程序包可以释放系统资源。  保留未使用的应用程序包会占用磁盘存储空间，导致应用程序出现性能问题。 使用 [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API，从映像存储区删除应用程序包。
 
 ## <a name="create-an-application-instance"></a>创建应用程序实例
-可以使用 [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API 通过已成功注册的任何应用程序类型来实例化应用程序。 每个应用程序的名称必须以“fabric:”方案开头，并且必须对每个应用程序实例是唯一的（在群集中）。 还会创建目标应用程序类型的应用程序清单中定义的任何默认服务。
+可以使用 [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API 通过已成功注册的任何应用程序类型来实例化应用程序。 每个应用程序的名称必须以“fabric:”  方案开头，并且必须对每个应用程序实例是唯一的（在群集中）。 还会创建目标应用程序类型的应用程序清单中定义的任何默认服务。
 
 可以为已注册应用程序类型的任何给定版本创建多个应用程序实例。 每个应用程序实例都将隔离运行，具有其自己的工作目录和进程集。
 
 若要查看哪些已命名应用和服务正在群集中运行，请运行 [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) 和 [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) API。
 
 ## <a name="create-a-service-instance"></a>创建服务实例
-可以使用 [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API 通过服务类型实例化服务。  如果该服务被声明为应用程序清单中的默认服务，则该服务在应用程序实例化时实例化。  针对已实例化的服务调用 [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API 将返回类型为 FabricException 的异常，其中包含值为 FabricErrorCode.ServiceAlreadyExists 的错误代码。
+可以使用 [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API 通过服务类型实例化服务。  如果该服务被声明为应用程序清单中的默认服务，则该服务在应用程序实例化时实例化。  调用[CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync)已实例化的服务的 API 将返回类型为 FabricException 的异常。 异常将包含值为 FabricErrorCode.ServiceAlreadyExists 的错误代码。
 
 ## <a name="remove-a-service-instance"></a>删除服务实例
 当不再需要某个服务实例时，可以通过调用 [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) API 从正在运行的应用程序实例中将其删除。  
@@ -98,7 +98,7 @@ FabricClient fabricClient = new FabricClient();
 > 此操作无法撤消，并且无法恢复应用程序状态。
 
 ## <a name="unregister-an-application-type"></a>取消注册应用程序类型
-当不再需要应用程序类型的某个特定版本时，应使用 [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API 取消注册该应用程序类型的该特定版本。 取消注册未使用的应用程序类型版本将释放映像存储使用的存储空间。 只要不存在已根据应用程序类型的某个版本进行实例化的应用程序，并且没有挂起的应用程序升级在引用应用程序类型的该版本，就可以取消注册应用程序类型的该版本。
+当不再需要应用程序类型的某个特定版本时，应使用 [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API 取消注册该应用程序类型的该特定版本。 取消注册未使用的应用程序类型版本将释放映像存储使用的存储空间。 只要针对该版本的应用程序类型实例化的任何应用的应用程序类型版本可以进行注销。 此外，应用程序类型可以具有任何挂起的应用程序升级在引用该版本的应用程序类型。
 
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage 请求 ImageStoreConnectionString
@@ -141,7 +141,7 @@ ImageStoreConnectionString 可在群集清单中找到：
 
 问题：上传包已成功完成，但[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 超时。请尝试：
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。
-压缩可减小文件大小，减少文件数量，这反过来会减少通信流量和 Service Fabric 必须执行的工作量。 上传操作可能会变慢（尤其是包括压缩时间时），但注册和注销应用程序类型会加快。
+压缩可减小文件大小，减少文件数量，这反过来会减少通信流量和 Service Fabric 必须执行的工作量。 上传操作可能会降低 （尤其是包括压缩时间），但注册和注销应用程序类型会更快。
 - 通过 `timeout` 参数为 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API 指定更长的超时时间。
 
 ### <a name="deploy-application-package-with-many-files"></a>部署包含多个文件的应用程序包
@@ -151,7 +151,7 @@ ImageStoreConnectionString 可在群集清单中找到：
 - 通过 `timeout` 参数为 [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) 指定更长的超时时间。
 
 ## <a name="code-example"></a>代码示例
-下面的示例将应用程序包复制到映像存储中、预配应用程序类型、创建应用程序实例、创建服务实例、删除应用程序实例、取消预配应用程序类型，以及从映像存储中删除应用程序包。
+以下示例将应用程序包复制到映像存储区，并预配应用程序类型。 然后，该示例创建应用程序实例，创建一个服务实例。 最后，示例中删除应用程序实例，将取消设置应用程序类型，并从映像存储区中删除应用程序包。
 
 ```csharp
 using System;
@@ -179,7 +179,7 @@ static void Main(string[] args)
     string serviceName = "fabric:/MyApplication/Stateless1";
     string imageStoreConnectionString = "file:C:\\SfDevCluster\\Data\\ImageStoreShare";
     string packagePathInImageStore = "MyApplication";
-    string packagePath = "C:\\Users\\username\\Documents\\Visual Studio 2017\\Projects\\MyApplication\\MyApplication\\pkg\\Debug";
+    string packagePath = "C:\\Users\\username\\Documents\\Visual Studio 2019\\Projects\\MyApplication\\MyApplication\\pkg\\Debug";
     string serviceType = "Stateless1Type";
 
     // Connect to the cluster.

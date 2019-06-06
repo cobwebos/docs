@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76177972cbd002793f5d9fc4ab8bbe6ef2121e91
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: ce1d2aaed85f61e2e18f696d749219a1b951c862
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106685"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474245"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -51,7 +51,7 @@ ms.locfileid: "62106685"
 
 - 每个用户的最大设备数也适用于加入了混合 Azure AD 的下层设备。 
 
-- 当有多个域用户登录到加入了混合 Azure AD 的下层设备时，同一物理设备在 Azure AD 中出现多次。  例如：如果 *jdoe* 和 *jharnett* 登录到某个设备，会在“用户信息”选项卡中为其中每个用户单独创建一个注册 (DeviceID)。 
+- 当有多个域用户登录到加入了混合 Azure AD 的下层设备时，同一物理设备在 Azure AD 中出现多次。  例如：如果 *jdoe* 和 *jharnett* 登录到某个设备，会在“用户信息”  选项卡中为其中每个用户单独创建一个注册 (DeviceID)。 
 
 - 由于操作系统的重新安装或手动重新注册，在用户信息选项卡上也可能会出现同一设备的多个条目。
 
@@ -87,7 +87,7 @@ ms.locfileid: "62106685"
     
   - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 可能的原因如下：AD FS 缺少或配置不当（对于联合域）、Azure AD 无缝单一登录缺少或配置不当（对于托管域）或者网络存在问题。 
     
-    - 还可能是由于为用户启用/配置了多重身份验证 (MFA)，但没有在 AD FS 服务器上配置 WIAORMUTLIAUTHN。 
+    - 它可能是多重身份验证 (MFA) 是为用户启用/配置和 WIAORMULTIAUTHN 没有在 AD FS 服务器上配置。 
      
     - 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 **autoworkplace.exe** 以无提示方式请求令牌。
      
@@ -97,7 +97,7 @@ ms.locfileid: "62106685"
      
     - **Autoworkplace.exe**要求客户端具有直接视距从客户端到组织的本地 AD 域控制器，这意味着该混合 Azure AD 联接成功仅客户端连接到组织的 intranet。
      
-    - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”。
+    - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”  。
 
 - 登录身份不是域用户
 

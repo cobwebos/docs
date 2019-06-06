@@ -1,6 +1,6 @@
 ---
 title: 适用于 Azure Service Fabric Windows 群集启用磁盘加密 |Microsoft Docs
-description: 本文介绍如何使用 Azure 资源管理器 Azure Key Vault 为 Azure 中的 Service Fabric 群集节点启用磁盘加密。
+description: 本文介绍如何使用 Azure 资源管理器中的 Azure 密钥保管库中启用 Azure Service Fabric 群集节点的磁盘加密。
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -13,47 +13,53 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
-ms.openlocfilehash: 2e9c41409c1f528947e3bef281e9a3c34da39e9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c31fc43729bcb58c755959db0c8bc5185b8197f4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66119159"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471411"
 ---
-# <a name="enable-disk-encryption-for-service-fabric-windows-cluster-nodes"></a>为 Service Fabric Windows 群集节点启用磁盘加密 
+# <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>为 Azure Service Fabric 群集节点，在 Windows 中启用磁盘加密 
 > [!div class="op_single_selector"]
 > * [适用于 Windows 的磁盘加密](service-fabric-enable-azure-disk-encryption-windows.md)
 > * [适用于 Linux 的磁盘加密](service-fabric-enable-azure-disk-encryption-linux.md)
 >
 >
 
-按照以下步骤在 Service Fabric Windows 群集节点上启用磁盘加密。 将需要为每个节点类型/虚拟机规模集执行这些步骤。 为了对节点加密，我们将利用虚拟机规模集上的 Azure 磁盘加密功能。
+在本教程中，您将了解如何在 Windows 中的 Service Fabric 群集节点上启用磁盘加密。 你将需要为每个节点类型和虚拟机规模集执行以下步骤。 用于加密节点，我们将虚拟机规模集上使用的 Azure 磁盘加密功能。
 
-该指南包含下列步骤：
+本指南涵盖以下主题：
 
-* 在 Service Fabric Windows 群集虚拟机规模集上启用磁盘加密时需要注意的关键概念。
-* 在 Service Fabric Windows 群集虚拟机规模集上启用磁盘加密之前必须遵循的先决条件步骤。
-* 在 Service Fabric Windows 群集虚拟机规模集上启用磁盘加密时要遵循的步骤。
+* 需要注意的 Service Fabric 群集虚拟机规模上的启用磁盘加密在 Windows 中的设置时的重要概念。
+* 启用 Service Fabric 上的磁盘加密之前，需要遵循的步骤群集在 Windows 中的节点。
+* 若要在 Windows 中的 Service Fabric 群集节点上启用磁盘加密，需要遵循的步骤。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>必备组件
-* **自行注册**：若要使用虚拟机规模集磁盘加密预览版，需自行注册
-* 可通过运行以下步骤自行注册订阅： 
-```powershell
-Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
-```
-* 等待大约 10 分钟，直到状态为“已注册”。 可通过运行以下命令来检查状态： 
-```powershell
-Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-* **Azure Key Vault**：在与规模集相同的订阅和区域中创建 KeyVault，并在 KeyVault 上使用其 PS cmdlet 设置访问策略“EnabledForDiskEncryption”。 也可以使用 Azure 门户中的 KeyVault UI 设置该策略： 
-```powershell
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
-```
-* 安装最新[Azure CLI](/cli/azure/install-azure-cli) ，其中包含新的加密命令。
-* 从 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) 发行版安装最新版本的 Azure SDK。 以下是在规模集实例上启用 ([Set](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) 加密、检索 ([Get](/powershell/module/az.compute/get-azvmssvmdiskencryption)) 加密状态以及删除 ([disable](/powershell/module/az.compute/disable-azvmssdiskencryption)) 加密所需的虚拟机规模集 ADE cmdlet。
+
+**Self-registration** 
+
+虚拟机规模集磁盘加密预览版需要自注册。 请执行以下步骤： 
+
+1. 首先，运行以下命令：
+    ```powershell
+    Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
+    ```
+2. 等待大约 10 分钟，直到状态显示为*已注册*。 可以通过运行以下命令检查状态： 
+    ```powershell
+    Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+    ```
+**Azure Key Vault** 
+
+1. 在同一订阅和与规模集的区域中创建密钥保管库，然后选择**EnabledForDiskEncryption**使用其 PowerShell cmdlet 访问密钥保管库上的策略。 此外可以使用以下命令在 Azure 门户中使用密钥保管库 UI 设置策略：
+    ```powershell
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
+    ```
+2. 安装最新版本[Azure CLI](/cli/azure/install-azure-cli)，其中包含新的加密命令。
+3. 安装最新版本[从 Azure PowerShell 的 Azure SDK](https://github.com/Azure/azure-powershell/releases)发布。 以下是虚拟机规模集启用 Azure 磁盘加密 cmdlet ([设置](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) 加密，检索 ([获取](/powershell/module/az.compute/get-azvmssvmdiskencryption)) 加密状态和删除 ([禁用](/powershell/module/az.compute/disable-azvmssdiskencryption))在刻度上的加密设置实例。
 
 | 命令 | Version |  源  |
 | ------------- |-------------| ------------|
@@ -66,17 +72,17 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
 
 
 ## <a name="supported-scenarios-for-disk-encryption"></a>受支持的磁盘加密方案
-* 只有使用托管磁盘创建的规模集才支持虚拟机规模集加密，本机（或非托管）磁盘规模集则不支持。
-* 虚拟机规模集加密支持的 Windows 虚拟机规模集的 OS 和数据卷。 Windows 规模集的 OS 和数据卷支持禁用加密。
-* 虚拟机规模集 VM 重置映像和当前预览版中不支持的升级操作。
+* 加密虚拟机规模集仅支持使用托管磁盘创建的规模集。 本机（或非托管）磁盘规模集则不支持。
+* 对于 OS 支持加密和 Windows 中的数据卷中虚拟机规模集。 禁用加密也支持的 OS 和 Windows 中的数据卷的虚拟机规模集。
+* 虚拟机规模集的虚拟机重置映像和升级操作不支持在当前的预览版。
 
 
-### <a name="create-new-cluster-and-enable-disk-encryption"></a>新建群集并启用磁盘加密
+## <a name="create-a-new-cluster-and-enable-disk-encryption"></a>创建新群集并启用磁盘加密
 
-使用以下命令创建群集并启用磁盘加密使用 Azure 资源管理器模板和自签名的证书。
+可使用以下命令通过 Azure 资源管理器模板和自签名证书来创建群集并启用磁盘加密。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure 
-
+使用以下命令登录：
 ```powershell
 Login-AzAccount
 Set-AzContext -SubscriptionId <guid>
@@ -90,11 +96,11 @@ az account set --subscription $subscriptionId
 
 ```
 
-#### <a name="use-the-custom-template-that-you-already-have"></a>使用现有的自定义模板 
+### <a name="use-the-custom-template-that-you-already-have"></a>使用现有的自定义模板 
 
-如果需要根据需要编写自定义模板，我们强烈建议从 [Azure Service Fabric 模板示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)中提供的模板之一着手。 请遵照下面[自定义群集模板][customize-your-cluster-template]部分中的指导和说明。
+如果你需要编写自定义模板以满足你的需求，我们强烈建议您开始使用可用模板之一[Azure Service Fabric 群集创建模板示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)页。 向[自定义群集模板][ customize-your-cluster-template]部分中，请参阅以下指南。
 
-如果已有一个自定义模板，请确保模板中的所有三个证书相关参数以及参数文件已按如下所示命名并使用 null 值。
+如果已有自定义模板，请仔细检查所有三个与证书相关参数的模板和参数文件中已命名，如下所示，并且，值为 null 值，如下所示：
 
 ```Json
    "certificateThumbprint": {
@@ -143,11 +149,13 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ```
 
-#### <a name="deploy-application-to-windows-service-fabric-cluster"></a>将应用程序部署到 Windows Service Fabric 群集
-遵照相关步骤和指南[将应用程序部署到群集](service-fabric-deploy-remove-applications.md)
+### <a name="deploy-an-application-to-a-service-fabric-cluster-in-windows"></a>应用程序部署到在 Windows 中的 Service Fabric 群集
+若要部署到群集的应用程序，请按照步骤和相关指导[使用 PowerShell 部署和删除应用程序](service-fabric-deploy-remove-applications.md)。
 
 
-#### <a name="enable-disk-encryption-for-service-fabric-cluster-virtual-machine-scale-set-created-above"></a>为上面创建的 Service Fabric 群集虚拟机规模集启用磁盘加密
+### <a name="enable-disk-encryption-for-the-virtual-machine-scale-sets-created-previously"></a>为以前创建的虚拟机规模集启用磁盘加密
+
+若要启用的虚拟机规模集的磁盘加密设置你通过前面的步骤，运行以下命令创建：
  
 ```powershell
 
@@ -169,9 +177,8 @@ az vmss encryption enable -g <resourceGroupName> -n <VMSS name> --disk-encryptio
 ```
 
 
-#### <a name="validate-if-disk-encryption-enabled-for-windows-virtual-machine-scale-set"></a>验证是否为 Windows 虚拟机规模集启用了磁盘加密。
-获取整个虚拟机规模集或规模集中任意实例的状态。 请参阅下面的命令。
-此外用户可以登录到 VM 规模集中，并确保驱动器加密
+### <a name="validate-if-disk-encryption-is-enabled-for-a-virtual-machine-scale-set-in-windows"></a>验证是否为虚拟机规模集在 Windows 中启用磁盘加密
+获取通过运行以下命令设置范围的整个虚拟机规模集或任何实例的状态。
 
 ```powershell
 
@@ -190,8 +197,10 @@ az vmss encryption show -g <resourceGroupName> -n <VMSS name>
 ```
 
 
-#### <a name="disable-disk-encryption-for-service-fabric-cluster-virtual-machine-scale-set"></a>为 Service Fabric 群集虚拟机规模集禁用磁盘加密 
-禁用磁盘加密适用于整个虚拟机规模集，而不适用于单个实例 
+此外，你可以登录到虚拟机规模集，并确保驱动器加密。
+
+### <a name="disable-disk-encryption-for-a-virtual-machine-scale-set-in-a-service-fabric-cluster"></a>禁用虚拟机规模集的 Service Fabric 群集的磁盘加密 
+为禁用磁盘加密的虚拟机规模集通过运行以下命令。 请注意，禁用磁盘加密适用于整个虚拟机规模集而不是单个实例。
 
 ```powershell
 
@@ -209,6 +218,6 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 
 
 ## <a name="next-steps"></a>后续步骤
-此时，通过了解如何为 Service Fabric 群集虚拟机规模集启用/禁用磁盘加密，你已经拥有一个安全的群集。 接下来，[适用于 Linux 的磁盘加密](service-fabric-enable-azure-disk-encryption-linux.md) 
+此时，应已创建安全群集，并了解如何启用和禁用适用于 Service Fabric 群集节点和虚拟机规模集磁盘加密。 在 Linux 中的 Service Fabric 群集节点上的类似指南，请参阅[适用于 Linux 的磁盘加密](service-fabric-enable-azure-disk-encryption-linux.md)。
 
 [customize-your-cluster-template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure#creating-a-custom-arm-template

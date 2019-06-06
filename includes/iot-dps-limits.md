@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 65c89730e7d3d492b91daa8aba50e5606ca700a1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 610f5fcf80db8ffa0c7207d459b98087cbb4773b
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238780"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66455152"
 ---
 下表列出了适用于 Azure IoT 中心设备预配服务资源的限制。
 
@@ -20,6 +20,7 @@ ms.locfileid: "66238780"
 | 最大注册数 | 1,000,000 |
 | 最大登记组数 | 100 |
 | 最大 CA 数 | 25 |
+| 最大消息大小 | 96 KB|
 
 > [!NOTE]
 > 若要增加订阅中的实例数目，请联系[Microsoft 支持部门](https://azure.microsoft.com/support/options/)。

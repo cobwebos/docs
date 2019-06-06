@@ -1,5 +1,5 @@
 ---
-title: 配置客户容器-Azure 应用服务 |Microsoft Docs
+title: 配置自定义容器的 Azure 应用服务 |Microsoft Docs
 description: 了解如何配置要在 Azure 应用服务中运行的 Node.js 应用程序
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9bfd6c34d81e193fe31610f840474f1e4c91170d
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919735"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430924"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义 Linux 容器
 
@@ -28,7 +28,7 @@ ms.locfileid: "64919735"
 
 ## <a name="configure-port-number"></a>配置端口号
 
-自定义映像中的 web 服务器可能使用非 80 的端口。 通过使用您的自定义的端口告知 Azure`WEBSITES_PORT`应用设置。 [本教程中的 Python 示例](https://github.com/Azure-Samples/docker-django-webapp-linux)的 GitHub 页显示，需将 `WEBSITES_PORT` 设置为 _8000_。 可以将其设置通过运行[ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令在 Cloud Shell 中。 例如：
+自定义映像中的 web 服务器可能使用非 80 的端口。 通过使用自定义容器的端口告知 Azure`WEBSITES_PORT`应用设置。 [本教程中的 Python 示例](https://github.com/Azure-Samples/docker-django-webapp-linux)的 GitHub 页显示，需将 `WEBSITES_PORT` 设置为 _8000_。 可以将其设置通过运行[ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令在 Cloud Shell 中。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -82,7 +82,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器，
     ```
 
     > [!NOTE]
-    > sshd_config 文件必须包括以下项：
+    > sshd_config 文件必须包括以下项  ：
     > - `Ciphers` 必须至少包含此列表中的一项：`aes128-cbc,3des-cbc,aes256-cbc`。
     > - `MACs` 必须至少包含此列表中的一项：`hmac-sha1,hmac-sha1-96`。
 

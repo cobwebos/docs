@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 6bfcd11dd6bfd31583fb2d0cd3f4229d3dd70065
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 1cc03cbcffc5253e8b357b6702cd21c45740ff81
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65887359"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514487"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -66,7 +66,7 @@ Windows Server 中的节点 （当前在 AKS 中的预览版），Windows 更新
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>我是否可为 AKS 基础结构资源组提供自己的名称？
 
-是的。 默认情况下，AKS 资源提供程序会自动创建的辅助资源组 (如*于 MC_myResourceGroup_myAKSCluster_eastus*) 在部署过程。 为了符合企业策略，你可以为此托管群集 (*MC_*) 资源组提供自己的名称。
+是的。 默认情况下，AKS 资源提供程序会自动创建的辅助资源组 (如*于 MC_myResourceGroup_myAKSCluster_eastus*) 在部署过程。 为了符合企业策略，你可以为此托管群集 (*MC_* ) 资源组提供自己的名称。
 
 若要指定资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 *0.3.2* 或更高版本。 当使用创建 AKS 群集[az aks 创建][ az-aks-create]命令，使用 *-节点资源组*参数并指定资源组的名称。 如果您[使用 Azure 资源管理器模板][ aks-rm-template]若要部署 AKS 群集，可以定义的资源组名称使用*nodeResourceGroup*属性。
 
@@ -89,16 +89,16 @@ Windows Server 中的节点 （当前在 AKS 中的预览版），Windows 更新
 
 AKS 支持以下[许可控制器][admission-controllers]：
 
-- NamespaceLifecycle
-- LimitRanger
-- ServiceAccount
-- DefaultStorageClass
-- DefaultTolerationSeconds
-- MutatingAdmissionWebhook
-- ValidatingAdmissionWebhook
-- ResourceQuota
-- DenyEscalatingExec
-- AlwaysPullImages
+- NamespaceLifecycle 
+- LimitRanger 
+- ServiceAccount 
+- DefaultStorageClass 
+- DefaultTolerationSeconds 
+- MutatingAdmissionWebhook 
+- ValidatingAdmissionWebhook 
+- ResourceQuota 
+- DenyEscalatingExec 
+- AlwaysPullImages 
 
 目前，不能修改在 AKS 中的许可控制器的列表。
 
@@ -129,6 +129,10 @@ AKS 没有当前以本机方式集成到 Azure 密钥保管库。 但是， [Kub
 
 用户无法重写所需的最低`maxPods`验证。
 
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>可以将 Azure 预订折扣应用于我 AKS 代理节点？
+
+AKS 代理节点收费作为标准 Azure 虚拟机，因此，如果已购买[Azure 预订][ reservation-discounts]在 AKS 中使用的 VM 大小，会自动应用这些折扣。
+
 <!-- LINKS - internal -->
 
 [aks-regions]: ./quotas-skus-regions.md#region-availability
@@ -145,6 +149,7 @@ AKS 没有当前以本机方式集成到 Azure 密钥保管库。 但是， [Kub
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: windows-node-limitations.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 
 <!-- LINKS - external -->
 

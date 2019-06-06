@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.openlocfilehash: 622261d0f7e602635aa6a638357278a9c63a6ecd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 06/03/2019
+ms.openlocfilehash: eb68421c4f62d94eedf266a0c34a0e276eacc4a6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990524"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479281"
 ---
 # <a name="scale-hdinsight-clusters"></a>缩放 HDInsight 群集
 
@@ -32,7 +32,7 @@ Microsoft 提供以下实用程序来缩放群集：
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<群集名称> -TargetInstanceCount \<NewSize>|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<资源组> --name \<群集名称> --target-instance-count \<NewSize>|
 |[Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<目标实例计数> |
-|[Azure 门户](https://portal.azure.com)|打开 HDInsight 群集的窗格，在左侧菜单中选择“群集大小”，然后在“群集大小”窗格中键入工作节点数并选择“保存”。|  
+|[Azure 门户](https://portal.azure.com)|打开 HDInsight 群集的窗格，在左侧菜单中选择“群集大小”，然后在“群集大小”窗格中键入工作节点数并选择“保存”。 |  
 
 ![缩放群集](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
@@ -58,13 +58,12 @@ Microsoft 提供以下实用程序来缩放群集：
 1. 手动结束作业。
 1. 缩放操作结束后，重新提交这些作业。
 
-若要查看挂起的列表，以及正在运行的作业，可以使用 YARN **ResourceManager UI**，执行以下步骤：
+若要查看挂起的列表，以及正在运行的作业，可以使用 YARN**资源管理器 UI**，执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧导航到“所有服务” > “分析” > “HDInsight 群集”，然后选择群集。
-3. 在主视图中，导航到“群集仪表板” > “Ambari 主页”。 输入群集凭据。
-4. 在 Ambari UI 的左侧菜单中的服务列表内选择“YARN”。  
-5. 在“YARN”页中选择“快速链接”，将鼠标悬停在活动头节点上，然后选择“ResourceManager UI”。
+1. 从[Azure 门户](https://portal.azure.com/)，选择你的群集。  有关说明，请参阅[列出和显示群集](./hdinsight-administer-use-portal-linux.md#showClusters)。 在群集中的新的门户页打开。
+2. 在主视图中，导航到“群集仪表板”   >   “Ambari 主页”。 输入群集凭据。
+3. 在 Ambari UI 的左侧菜单中的服务列表内选择“YARN”。   
+4. 在“YARN”页中选择“快速链接”，将鼠标悬停在活动头节点上，然后选择“ResourceManager UI”。  
 
     ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 
@@ -80,7 +79,7 @@ Microsoft 提供以下实用程序来缩放群集：
 yarn application -kill <application_id>
 ```
 
-例如:
+例如：
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

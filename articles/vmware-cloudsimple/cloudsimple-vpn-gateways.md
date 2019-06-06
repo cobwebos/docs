@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa7730247ddc5f30c3d21a32421a6c55ec4ef72e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 9b2630614e549181f4dd2f4e79871c4594d09201
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872761"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496867"
 ---
 # <a name="vpn-gateways-overview"></a>VPN 网关概述
 
@@ -37,6 +37,8 @@ VPN 网关，可使用从本地对私有云的服务和服务在私有云，从�
 * 方便的传输 VM 模板、 Iso 和和其他文件从你的本地资源到私有云 vCenter。
 * 从你的本地网络在私有云上运行的工作负荷的可访问性。
 
+![站点到站点 VPN 连接拓扑](media/cloudsimple-site-to-site-vpn-connection.png)
+
 ### <a name="cryptographic-parameters"></a>加密的参数
 
 站点到站点 VPN 连接使用以下默认加密参数建立安全连接。  当你创建从本地 VPN 设备的连接时，必须匹配参数。
@@ -50,7 +52,7 @@ VPN 网关，可使用从本地对私有云的服务和服务在私有云，从�
 | SDK 版本 | IKEv1 | IKEv1 | IKEv1 |
 | 加密 | AES 128 | AES 256 | AES 256 |
 | 哈希算法| SHA 256 | SHA 256 | SHA 1 |
-| Diffie Hellman 组 （DH 组） | 1 | 1 | 第 |
+| Diffie Hellman 组 （DH 组） | 第 | 1 | 第 |
 | 生存时间 | 28,800 秒 | 28,800 秒 | 28,800 秒 |
 | 数据大小 | 4 GB | 4 GB | 4 GB |
 

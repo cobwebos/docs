@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: b51b9f08819a4c496e051d375f6d52aaa985c8e6
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 13cb3880662e1665b03dd63f009645acbe97fc75
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66394126"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734886"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见的警报架构与逻辑应用集成
 
@@ -21,7 +21,7 @@ ms.locfileid: "66394126"
 
 ## <a name="overview"></a>概述
 
-[常见警报架构](https://aka.ms/commonAlertSchemaDocs)跨所有不同警报类型提供标准化且可扩展的 JSON 架构。 常见的警报架构是通过 webhook、 runbook 和逻辑应用以编程方式 – 利用时非常有用。 在本文中，我们将演示如何编写单个逻辑应用来处理所有警报。 相同的原则可以应用于其他编程方法。 本文中所述的逻辑应用创建明确定义的变量[重要字段](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)，并且还描述了如何处理[警报类型]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields')特有的逻辑。
+[常见警报架构](https://aka.ms/commonAlertSchemaDocs)跨所有不同警报类型提供标准化且可扩展的 JSON 架构。 常见的警报架构是通过 webhook、 runbook 和逻辑应用以编程方式 – 利用时非常有用。 在本文中，我们将演示如何编写单个逻辑应用来处理所有警报。 相同的原则可以应用于其他编程方法。 本文中所述的逻辑应用创建明确定义的变量[重要字段](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)，并且还描述了如何处理[警报类型](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)特有的逻辑。
 
 
 ## <a name="prerequisites"></a>必备组件 
@@ -125,7 +125,7 @@ ms.locfileid: "66394126"
 
     ![逻辑应用表达式](media/alerts-common-schema-integrations/logic-app-expressions.png "逻辑应用表达式")
     
-     [MonitoringService 字段]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields')，可唯一标识警报的类型，基于其创建条件逻辑。
+     [MonitoringService 字段](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)，可唯一标识警报的类型，基于其创建条件逻辑。
 
     
     例如，下面的代码段检查是否警报是基于 Application Insights 日志警报，以及如果是这样输出搜索结果。 否则，它将打印 NA。

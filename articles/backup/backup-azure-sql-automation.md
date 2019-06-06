@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pullabhk
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 6d17d5c2c0eaebc694abe820318f6ac0c70b0be8
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 6a2e065466ab4426a6472b64fae19d264ff8dd81
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544608"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734225"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>备份和还原使用 PowerShell 的 Azure Vm 中的 SQL 数据库
 
@@ -67,7 +67,7 @@ ms.locfileid: "65544608"
 5. 在显示 web 页上，系统会提示输入你的帐户凭据。
 
     * 或者，可以将帐户凭据包含作为参数传入**Connect AzAccount** cmdlet 并结合 **-凭据**。
-    * 如果你是租户的 CSP 合作伙伴，请将客户指定为使用其 tenantID 或租户主域名对租户。 例如，Connect-AzAccount -Tenant fabrikam.com。
+    * 如果你是租户的 CSP 合作伙伴，请将客户指定为使用其 tenantID 或租户主域名对租户。 例如，Connect-AzAccount -Tenant fabrikam.com  。
 
 6. 你想要使用的帐户，因为一个帐户可以有多个订阅的订阅关联。
 
@@ -75,7 +75,7 @@ ms.locfileid: "65544608"
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-7. 首次使用 Azure 备份时，请使用 Register-AzResourceProvider cmdlet 将 Azure 恢复服务提供程序注册到订阅。
+7. 首次使用 Azure 备份时，请使用 Register-AzResourceProvider cmdlet 将 Azure 恢复服务提供程序注册到订阅  。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -93,7 +93,7 @@ ms.locfileid: "65544608"
 
 请按照以下步骤创建恢复服务保管库。
 
-恢复服务保管库是一种资源管理器资源，因此必须将其放在资源组中。 可以使用现有资源组，也可以使用 New-AzResourceGroup cmdlet 创建资源组。 创建资源组时，请指定资源组的名称和位置。
+恢复服务保管库是一种资源管理器资源，因此必须将其放在资源组中。 可以使用现有资源组，也可以使用 New-AzResourceGroup cmdlet 创建资源组  。 创建资源组时，请指定资源组的名称和位置。
 
 1. 保管库位于资源组中。 如果您不具备现有的资源组中，创建一个具有新[新建 AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0)。 在此示例中，我们将创建新的资源组在美国西部区域中。
 
@@ -144,7 +144,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 * 许多 Azure 备份 cmdlet 需要恢复服务保管库对象作为输入，，因此可以方便地存储在变量中的保管库对象。
 * 保管库上下文是在保管库中受保护的数据的类型。 使用设置该[集 AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0)。 设置的上下文后，它适用于所有后续 cmdlet。
 
-以下示例为 testvault 设置保管库上下文。
+以下示例为 testvault 设置保管库上下文  。
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -281,7 +281,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 
 ````powershell
 $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
-$endDate = Get-Date.ToUniversalTime()
+$endDate = (Get-Date).ToUniversalTime()
 Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $targetVault.ID -StartDate $startdate -EndDate $endDate
 ````
 

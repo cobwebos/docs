@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 52c79a0b883ff4c9ac77d7523764384b88c06a08
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a561d29f462d44eb6bc440bb6110430cc5c51688
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389024"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735242"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 azure 串行控制台
 
@@ -47,6 +47,7 @@ ms.locfileid: "66389024"
 
 - 有关特定于 Linux 分发版的设置，请参阅[串行控制台 Linux 分发版可用性](#serial-console-linux-distribution-availability)。
 
+- 必须为串行输出上配置虚拟机或虚拟机规模集实例`ttys0`。 这是默认的 Azure 映像，但想要仔细检查此自定义映像上。 详细信息[如下](#custom-linux-images)。
 
 
 ## <a name="get-started-with-the-serial-console"></a>开始使用串行控制台
@@ -84,6 +85,9 @@ Vm 和虚拟机规模集的串行控制台可访问只能通过 Azure 门户：
 ## <a name="serial-console-linux-distribution-availability"></a>串行控制台 Linux 分发的可用性
 要使串行控制台正常运行，必须将来宾操作系统配置为向串行端口读取和写入控制台消息。 大多数[认可的 Azure Linux 分发版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)默认都已配置串行控制台。 在 Azure 门户的“支持 + 故障排除”部分选择“串行控制台”即可访问串行控制台。  
 
+> [!NOTE]
+> 如果在串行控制台中没有看到任何内容，请确保在 VM 上启用了启动诊断。 达到**Enter**将通常修复问题的任何内容显示在串行控制台。
+
 分发      | 串行控制台访问
 :-----------|:---------------------
 Red Hat Enterprise Linux    | 默认已启用串行控制台访问。
@@ -92,10 +96,13 @@ Ubuntu      | 默认已启用串行控制台访问。
 CoreOS      | 默认已启用串行控制台访问。
 SUSE        | Azure 中提供的较新 SLES 映像默认已启用串行控制台访问。 如果在 Azure 上使用旧版（10 或更低）SLES，请参阅此[知识库文章](https://www.novell.com/support/kb/doc.php?id=3456486)启用串行控制台。
 Oracle Linux        | 默认已启用串行控制台访问。
-自定义 Linux 映像     | 若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 有关正确创建自定义映像的详细信息，请参阅[在 Azure 中创建和上传 Linux VHD](https://aka.ms/createuploadvhd)。 如果你正在生成自定义内核，请考虑启用以下内核标志：`CONFIG_SERIAL_8250=y` 和 `CONFIG_MAGIC_SYSRQ_SERIAL=y`。 配置文件通常位于 */boot/* 路径。
 
-> [!NOTE]
-> 如果在串行控制台中没有看到任何内容，请确保在 VM 上启用了启动诊断。 达到**Enter**将通常修复问题的任何内容显示在串行控制台。
+### <a name="custom-linux-images"></a>自定义 Linux 映像
+若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。
+
+此外需要将 ttys0 添加为串行输出的目标。 有关配置自定义映像以使用串行控制台的详细信息，请参阅常规系统要求[创建并上传 Linux VHD 在 Azure 中](https://aka.ms/createuploadvhd#general-linux-system-requirements)。
+
+如果你正在生成自定义内核，请考虑启用以下内核标志：`CONFIG_SERIAL_8250=y` 和 `CONFIG_MAGIC_SYSRQ_SERIAL=y`。 配置文件通常位于 */boot/* 路径。 |
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>访问串行控制台的常见场景
 
@@ -201,6 +208,7 @@ Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.c
 无法粘贴长字符串。 | 串行控制台将粘贴到终端的字符串长度限制为 2048 个字符，以防止串行端口带宽过载。
 串行控制台不能与存储帐户防火墙一起使用。 | 根据设计串行控制台无法与启动诊断存储帐户上启用的存储帐户防火墙一起使用。
 串行控制台并不适用于 Azure 数据湖存储第 2 代中使用分层命名空间的存储帐户。 | 这是分层命名空间的已知的问题。 若要缓解问题，请确保你的 VM 的启动诊断存储帐户不创建使用 Azure 数据湖存储第 2 代。 仅可以在存储帐户创建时设置此选项。 您可能需要创建单独的引导诊断存储帐户没有 Azure 数据湖存储第 2 代启用来缓解此问题的情况下。
+不正常的键盘输入在 SLES BYOS 映像中。 只能零星识别键盘输入。 | 这是 Plymouth 包出现问题。 因为不需要初始屏幕和 Plymouth 干扰使用串行控制台的平台功能，则不应在 Azure 中运行 Plymouth。 删除与 Plymouth `sudo zypper remove plymouth` ，然后重新启动。 或者，通过追加中修改内核行的 GRUB 配置`plymouth.enable=0`至行尾。 要做到这一点[编辑在引导时启动条目](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)，或通过编辑 GRUB_CMDLINE_LINUX 中行`/etc/default/grub`、 重新生成 GRUB 使用`grub2-mkconfig -o /boot/grub2/grub.cfg`，然后重新启动。
 
 
 ## <a name="frequently-asked-questions"></a>常见问题

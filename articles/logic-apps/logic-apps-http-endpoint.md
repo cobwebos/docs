@@ -1,29 +1,25 @@
 ---
-title: 使用 HTTP 终结点调用、触发或嵌套工作流 - Azure 逻辑应用 | Microsoft Docs
+title: 使用 HTTP 终结点调用、触发或嵌套工作流 - Azure 逻辑应用
 description: 设置 HTTP 终结点用于调用、触发或嵌套 Azure 逻辑应用的工作流
 services: logic-apps
-keywords: 工作流, HTTP 终结点
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: integration
+author: ecfan
+ms.author: klam; LADocs
+ms.reviewer: jehollan, klam, LADocs
+manager: carmonm
+ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
+ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: klam; LADocs
-ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b091fb8c6f0b2b655ce0595188c362206f79d702
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303997"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495056"
 ---
-# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流
+# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>调用、 触发或嵌套工作流使用 Azure 逻辑应用中的 HTTP 终结点
 
 可以在逻辑应用中以触发器的形式本机公开同步的 HTTP 终结点，以便通过 URL 触发或调用逻辑应用。 还可以通过可调用的终结点模式在逻辑应用中嵌套工作流。
 
@@ -36,7 +32,7 @@ ms.locfileid: "60303997"
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > 尽管这些示例使用“请求”触发器，但也可使用任何所列的 HTTP 触发器，所有原理同样适用于其他触发器类型。
+   > 尽管这些示例使用“请求”触发器，但也可使用任何所列的 HTTP 触发器，所有原理同样适用于其他触发器类型  。
 
 ## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>设置逻辑应用的 HTTP 终结点
 
@@ -44,9 +40,9 @@ ms.locfileid: "60303997"
 
 1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。 转到逻辑应用，并打开逻辑应用设计器。
 
-2. 添加可让逻辑应用接收传入请求的触发器。 例如，将“请求”触发器添加到逻辑应用。
+2. 添加可让逻辑应用接收传入请求的触发器。 例如，将“请求”  触发器添加到逻辑应用。
 
-3.  在“请求正文 JSON 架构”下面，可以选择性地输入期望该触发器接收的有效负载（数据）的 JSON 架构。
+3.  在“请求正文 JSON 架构”下面，可以选择性地输入期望该触发器接收的有效负载（数据）的 JSON 架构。 
 
     设计器使用此架构生成可让逻辑应用通过工作流使用、分析数据并从触发器传递数据的令牌。 
     有关[从 JSON 架构生成的令牌](#generated-tokens)的详细信息。
@@ -71,8 +67,8 @@ ms.locfileid: "60303997"
 
     > [!TIP]
     > 
-    > 可以通过 [jsonschema.net](https://jsonschema.net/) 等工具为示例 JSON 有效负载生成架构，也可以选择“使用示例有效负载生成架构”，在“请求”触发器中生成该架构。 
-    > 输入示例有效负载，并选择“完成”。
+    > 可以通过 [jsonschema.net](https://jsonschema.net/) 等工具为示例 JSON 有效负载生成架构，也可以选择“使用示例有效负载生成架构”，在“请求”触发器中生成该架构。   
+    > 输入示例有效负载，并选择“完成”。 
 
     例如，此示例有效负载：
 
@@ -95,12 +91,12 @@ ms.locfileid: "60303997"
     }
     ```
 
-4.  保存逻辑应用。 在“指向此 URL 的 HTTP POST”下面，应会显示一个生成的回调 URL，如以下示例所示：
+4.  保存逻辑应用。 在“指向此 URL 的 HTTP POST”下面，应会显示一个生成的回调 URL，如以下示例所示： 
 
     ![为终结点生成的回调 URL](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
 
     此 URL 在查询参数中包含用于身份验证的共享访问签名 (SAS) 密钥。 
-    也可以通过 Azure 门户中的逻辑应用概述获取 HTTP 终结点 URL。 在“触发器历史记录”下面选择触发器：
+    也可以通过 Azure 门户中的逻辑应用概述获取 HTTP 终结点 URL。 在“触发器历史记录”下面选择触发器： 
 
     ![从 Azure 门户获取 HTTP 终结点 URL][2]
 
@@ -112,14 +108,14 @@ ms.locfileid: "60303997"
 
 ## <a name="change-the-http-method-for-your-trigger"></a>更改触发器的 HTTP 方法
 
-默认情况下，“请求”触发器需要 HTTP POST 请求，但可以使用不同的 HTTP 方法。 
+默认情况下，“请求”触发器需要 HTTP POST 请求，但可以使用不同的 HTTP 方法。  
 
 > [!NOTE]
 > 只能指定一个方法类型。
 
-1. 在“请求”触发器上，选择“显示高级选项”。
+1. 在“请求”触发器上，选择“显示高级选项”。  
 
-2. 打开“方法”列表。 对于本示例，请选择“GET”，以便稍后可以测试 HTTP 终结点的 URL。
+2. 打开“方法”列表。  对于本示例，请选择“GET”，以便稍后可以测试 HTTP 终结点的 URL。 
 
     > [!NOTE]
     > 可以选择其他任何 HTTP 方法，或者为自己的逻辑应用指定自定义方法。
@@ -130,20 +126,20 @@ ms.locfileid: "60303997"
 
 如果希望 HTTP 终结点 URL 接受参数，请自定义触发器的相对路径。
 
-1. 在“请求”触发器上，选择“显示高级选项”。 
+1. 在“请求”触发器上，选择“显示高级选项”。   
 
-2. 在“方法”下面，指定希望请求使用的 HTTP 方法。 对于本示例，请选择“GET”方法（如果尚未选择），以便可以测试 HTTP 终结点的 URL。
+2. 在“方法”下面，指定希望请求使用的 HTTP 方法。  对于本示例，请选择“GET”方法（如果尚未选择），以便可以测试 HTTP 终结点的 URL。 
 
       > [!NOTE]
       > 指定触发器的相对路径时，还必须显式指定触发器的 HTTP 方法。
 
-3. 在“相对路径”下面，指定 URL 应接受的参数的相对路径，例如 `customers/{customerID}`。
+3. 在“相对路径”下面，指定 URL 应接受的参数的相对路径，例如 `customers/{customerID}`。 
 
     ![指定 HTTP 方法以及参数的相对路径](./media/logic-apps-http-endpoint/relativeurl.png)
 
-4. 要使用参数，请将“响应”操作添加到逻辑应用。 （在触发器下面，选择“新建步骤” > “添加操作” > “响应”） 
+4. 要使用参数，请将“响应”操作添加到逻辑应用。  （在触发器下面，选择“新建步骤” > “添加操作” > “响应”）    
 
-5. 在响应的“正文”下面，包含触发器相对路径中指定的参数的令牌。
+5. 在响应的“正文”下面，包含触发器相对路径中指定的参数的令牌。 
 
     例如，若要返回 `Hello {customerID}`，请使用 `Hello {customerID token}` 更新响应的**正文**。 
     此时应会显示动态内容列表，其中显示了 `customerID` 令牌供你选择。
@@ -170,7 +166,7 @@ ms.locfileid: "60303997"
 
 ### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>从 JSON 架构为逻辑应用生成的令牌
 
-在“请求”触发器中提供 JSON 架构时，逻辑应用设计器会在该架构中生成属性的令牌。 然后，可以使用这些令牌通过逻辑应用工作流传递数据。
+在“请求”触发器中提供 JSON 架构时，逻辑应用设计器会在该架构中生成属性的令牌。  然后，可以使用这些令牌通过逻辑应用工作流传递数据。
 
 例如，如果将 `title` 和 `name` 属性添加到 JSON 架构，这些属性的令牌现可用于后续工作流步骤。 
 
@@ -200,7 +196,7 @@ ms.locfileid: "60303997"
 
 ## <a name="create-nested-workflows-for-logic-apps"></a>为逻辑应用创建嵌套工作流
 
-通过添加可接收请求的其他逻辑应用，可以在逻辑应用中嵌套工作流。 要包含这些逻辑应用，请将“Azure 逻辑应用 - 选择逻辑应用工作流”操作添加到触发器。 然后，可以从符合条件的逻辑应用中选择。
+通过添加可接收请求的其他逻辑应用，可以在逻辑应用中嵌套工作流。 要包含这些逻辑应用，请将“Azure 逻辑应用 - 选择逻辑应用工作流”操作添加到触发器。  然后，可以从符合条件的逻辑应用中选择。
 
 ![添加另一个逻辑应用](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -209,7 +205,7 @@ ms.locfileid: "60303997"
 创建 HTTP 终结点之后，可以通过针对整个 URL 执行 `POST` 方法来触发逻辑应用。 逻辑应用对直接访问终结点提供内置支持。
 
 > [!NOTE] 
-> 在任何时候若要手动运行逻辑应用，请在逻辑应用设计器或逻辑应用代码视图工具栏上，选择“运行”。
+> 在任何时候若要手动运行逻辑应用，请在逻辑应用设计器或逻辑应用代码视图工具栏上，选择“运行”  。
 
 ## <a name="reference-content-from-an-incoming-request"></a>引用传入请求中的内容
 
@@ -232,14 +228,14 @@ ms.locfileid: "60303997"
 
 ## <a name="respond-to-requests"></a>对请求的响应
 
-可能想要通过向调用方返回内容，对启动逻辑应用的某些请求做出响应。 若要构造响应的状态代码、标头和正文，可以使用“响应”操作。 此操作可以出现在逻辑应用中的任何位置，而不仅仅是工作流的末尾。
+可能想要通过向调用方返回内容，对启动逻辑应用的某些请求做出响应。 若要构造响应的状态代码、标头和正文，可以使用“响应”操作。  此操作可以出现在逻辑应用中的任何位置，而不仅仅是工作流的末尾。
 
 > [!NOTE] 
-> 如果逻辑应用不包含“响应”，HTTP 终结点会*立即*响应“202 已接受”状态。 另外，要使原始请求能够获取响应，除非调用用作嵌套逻辑应用的工作流，否则响应所需的所有步骤必须在[请求超时限制](./logic-apps-limits-and-config.md)内完成。 如果在此限制时间内未发生任何响应，传入请求会超时，并收到 HTTP 响应“408 客户端超时”。 对于嵌套逻辑应用，父逻辑应用会继续等待响应，直到完成为止（不考虑所需的时间）。
+> 如果逻辑应用不包含“响应”，HTTP 终结点会*立即*响应“202 已接受”状态。   另外，要使原始请求能够获取响应，除非调用用作嵌套逻辑应用的工作流，否则响应所需的所有步骤必须在[请求超时限制](./logic-apps-limits-and-config.md)内完成。 如果在此限制时间内未发生任何响应，传入请求会超时，并收到 HTTP 响应“408 客户端超时”。  对于嵌套逻辑应用，父逻辑应用会继续等待响应，直到完成为止（不考虑所需的时间）。
 
 ### <a name="construct-the-response"></a>构造响应
 
-可以在响应正文中包含多个标头和任何类型的内容。 在示例响应中，标头指定响应的内容类型为 `application/json`。 正文根据前面为“请求”触发器更新的 JSON 架构包含 `title` 和 `name`。
+可以在响应正文中包含多个标头和任何类型的内容。 在示例响应中，标头指定响应的内容类型为 `application/json`。 正文根据前面为“请求”触发器更新的 JSON 架构包含 `title` 和 `name`。 
 
 ![HTTP 响应操作][3]
 
@@ -251,7 +247,7 @@ ms.locfileid: "60303997"
 | headers |定义要包含在响应中的任意数目的标头。 |
 | body |指定正文对象，可以是字符串、JSON 对象甚至是从上一步引用的二进制内容。 |
 
-下面是“响应”操作的 JSON 架构的当前外观：
+下面是“响应”操作的 JSON 架构的当前外观： 
 
 ``` json
 "Response": {
@@ -271,7 +267,7 @@ ms.locfileid: "60303997"
 ```
 
 > [!TIP]
-> 若要查看逻辑应用的完整 JSON 定义，请在逻辑应用设计器中选择“代码视图”。
+> 若要查看逻辑应用的完整 JSON 定义，请在逻辑应用设计器中选择“代码视图”。 
 
 ## <a name="q--a"></a>问题解答
 
@@ -300,13 +296,13 @@ ms.locfileid: "60303997"
 
 | 2014 年 12 月 1 日预览版 | 2016 年 6 月 1 日 |
 | --- | --- |
-| 单击“HTTP 侦听器”API 应用 |单击“手动触发器”（无需 API 应用） |
-| HTTP 侦听器设置“自动发送响应” |在工作流定义中包含或不包含“响应”操作 |
+| 单击“HTTP 侦听器”  API 应用 |单击“手动触发器”  （无需 API 应用） |
+| HTTP 侦听器设置“自动发送响应”  |在工作流定义中包含或不包含“响应”操作  |
 | 配置基本或 OAuth 身份验证 |通过 API 管理 |
-| 配置 HTTP 方法 |在“显示高级选项”下面，选择一个 HTTP 方法 |
-| 配置相对路径 |在“显示高级选项”下面，添加一个相对路径 |
+| 配置 HTTP 方法 |在“显示高级选项”下面，选择一个 HTTP 方法  |
+| 配置相对路径 |在“显示高级选项”下面，添加一个相对路径  |
 | 通过 `@triggerOutputs().body.Content` 引用传入正文 |通过 `@triggerOutputs().body` 引用 |
-| 对 HTTP 侦听器执行的“发送 HTTP 响应”操作 |单击“响应 HTTP 请求”（无需 API 应用） |
+| 对 HTTP 侦听器执行的“发送 HTTP 响应”  操作 |单击“响应 HTTP 请求”  （无需 API 应用） |
 
 ## <a name="get-help"></a>获取帮助
 

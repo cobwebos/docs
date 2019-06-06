@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: f5ec5a64f1de39cd0d196242fb1a93669dbab15d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d850cb222b0028f862cdba302140ce12af8576db
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681850"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492742"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -46,11 +46,11 @@ Azure 备份显示中的所有手动触发的作业**备份作业**门户。 请
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在保管库仪表板中，选择“警报和事件”。
+2. 在保管库仪表板中，选择“警报和事件”。 
 
    ![选择“警报和事件”](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-3. 在“警报和事件”中，选择“备份警报”。
+3. 在“警报和事件”  中，选择“备份警报”  。
 
    ![选择“备份警报”](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -64,8 +64,8 @@ Azure 备份显示中的所有手动触发的作业**备份作业**门户。 请
 如果选择保留恢复点，请记住这些详细信息：
 
 * 所有恢复点不限次数将都保持不变，所有修剪应都停止在都停止保护保留数据。
-* 你将为受保护的实例占用的存储空间付费。 有关详细信息，请参阅[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
-* 如果无需停止备份删除数据源，新备份将失败。
+* 你将为受保护的实例占用的存储空间付费。 有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
+* 如果在不停止备份的情况下删除数据源，则新备份将会失败。
 
 停止数据库的保护：
 
@@ -79,7 +79,7 @@ Azure 备份显示中的所有手动触发的作业**备份作业**门户。 请
 
     ![选择要停止保护的数据库](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-4. 在数据库菜单中，选择“停止备份”。
+4. 在数据库菜单中，选择“停止备份”  。
 
     ![选择“停止备份”](./media/backup-azure-sql-database/stop-db-button.png)
 
@@ -89,6 +89,14 @@ Azure 备份显示中的所有手动触发的作业**备份作业**门户。 请
     ![保留或删除在停止备份菜单上的数据](./media/backup-azure-sql-database/stop-backup-button.png)
 
 6. 选择**停止备份**。
+
+>
+> [!NOTE]
+请参阅下面的删除数据选项的详细信息的常见问题： <br/>
+* [如果从 autoprotected 实例中删除数据库，则会发生什么情况，备份？](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)<br/>
+* [如果我执行停止 autoprotected 数据库的备份操作将其行为的内容？](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>
+>
 
 
 ## <a name="resume-protection-for-a-sql-database"></a>恢复 SQL 数据库的保护
@@ -101,7 +109,7 @@ Azure 备份显示中的所有手动触发的作业**备份作业**门户。 请
 
     ![选择“恢复备份”以恢复数据库保护](./media/backup-azure-sql-database/resume-backup-button.png)
 
-2. 在“备份策略”菜单中选择策略，然后选择“保存”。
+2. 在“备份策略”菜单中选择策略，然后选择“保存”。  
 
 ## <a name="run-an-on-demand-backup"></a>运行按需备份
 
@@ -123,11 +131,11 @@ Azure 备份显示中的所有手动触发的作业**备份作业**门户。 请
 
    ![选择“备份基础结构”。](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
-2. 在“管理服务器”下，选择“受保护的服务器”。
+2. 在“管理服务器”下，选择“受保护的服务器”。  
 
    ![选择“受保护的服务器”](./media/backup-azure-sql-database/protected-servers.png)
 
-3. 在“受保护的服务器”中，选择要取消注册的服务器。 若要删除保管库，必须取消注册所有服务器。
+3. 在“受保护的服务器”中，选择要取消注册的服务器。  若要删除保管库，必须取消注册所有服务器。
 
 4. 右键单击受保护的服务器，然后选择**注销**。
 

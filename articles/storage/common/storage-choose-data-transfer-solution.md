@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4e2a182493b1e9de3d2ba9d586a9560e42fe0ecb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56470c08f0ac940dae42821ae61846f1c86d52eb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484059"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479512"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
 
@@ -42,7 +42,7 @@ ms.locfileid: "61484059"
 
 ![Azure 数据传输工具](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-*脱机传输设备（Data Box Disk、Data Box 和 Data Box Heavy）的上限可以通过对一种设备类型下多个订单来进行扩展。
+*脱机传输设备（Data Box Disk、Data Box 和 Data Box Heavy）的上限可以通过对一种设备类型下多个订单来进行扩展。 
 
 ## <a name="selecting-a-data-transfer-solution"></a>选择数据传输解决方案
 
@@ -63,6 +63,11 @@ ms.locfileid: "61484059"
 - 是否在寻找持续数据传输？
 
     如果是，请使用[方案 4：定期数据传输](storage-solution-periodic-data-transfer.md)中概述的脚本化/编程选项。
+ 
+
+## <a name="data-transfer-feature-in-azure-portal"></a>在 Azure 门户中的数据传输功能
+
+也可以转到 Azure 门户，选择你的 Azure 存储帐户**数据传输**功能。 提供在环境中的网络带宽、 传输的数据的大小和数据传输的频率。 您将看到最佳的数据传输解决方案对应于您所提供的信息。 
 
 ## <a name="next-steps"></a>后续步骤
 
