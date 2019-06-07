@@ -2,26 +2,26 @@
 title: 本地化字符串 ID - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中使用自定义策略的 api.signuporsignin ID 指定内容定义的 ID。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c6cabcc89e66e9fbf153f2931bfe8b9b70c5f426
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41a72013f1538b0a857c76bc949a7109e1cd54b4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682702"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510930"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Localization 元素使你能够在用户旅程的策略中支持多个区域设置或语言。 本文提供了可在策略中使用的本地化 ID 列表。 若要熟悉 UI 本地化，请参阅[本地化](localization.md)。
+Localization  元素使你能够在用户旅程的策略中支持多个区域设置或语言。 本文提供了可在策略中使用的本地化 ID 列表。 若要熟悉 UI 本地化，请参阅[本地化](localization.md)。
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>注册或登录页面元素
 
@@ -33,7 +33,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **logonIdentifier_email** | 电子邮件地址 |
 | **requiredField_email** | 请输入电子邮件地址 |
 | **invalid_email** | 请输入有效的电子邮件地址 |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&’' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
 | **local_intro_username** | 使用用户名登录 |
 | **logonIdentifier_username** | 用户名 |
 | **requiredField_username** | 请输入用户名 |
@@ -54,7 +54,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ![注册或登录页面 UX 元素](./media/localization-string-ids/localization-susi.png)
 
-标识提供者的 ID 在用户旅程 ClaimsExchange 元素中配置。 若要本地化标识提供者的标题，请将 ElementType 设置为 `ClaimsProvider`，同时将 StringId 设置为 `ClaimsExchange` 的 ID。
+标识提供者的 ID 在用户旅程 ClaimsExchange  元素中配置。 若要本地化标识提供者的标题，请将 ElementType  设置为 `ClaimsProvider`，同时将 StringId  设置为 `ClaimsExchange` 的 ID。
 
 ```XML
 <OrchestrationStep Order="2" Type="ClaimsExchange">

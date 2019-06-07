@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 3f939154d2b34e6dc043e505ab89897221bcfe23
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149234"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515730"
 ---
-# <a name="streaming-endpoints-origin"></a>流式处理终结点 （来源）
+# <a name="streaming-endpoints"></a>流式处理终结点 
 
 在 Microsoft Azure Media Services[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)表示可直接向客户端播放器应用程序，使用其中一个传送实时和按需内容的动态 （实时） 打包和原始服务常用流式处理媒体协议 （HLS 或 DASH）。 此外，**流式处理终结点**提供到行业领先的 Drm 的动态 （实时） 加密。
 
-用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认流式处理终结点。 无法删除“默认”流式处理终结点。 可以在帐户下创建其他流式处理终结点 (请参阅[配额和限制](limits-quotas-constraints.md))。 
+用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认  流式处理终结点。 无法删除“默认”流式处理终结点  。 可以在帐户下创建其他流式处理终结点 (请参阅[配额和限制](limits-quotas-constraints.md))。 
 
 > [!NOTE]
 > 若要开始流式处理视频，需启动要从中流式处理视频的**流式处理终结点**。 
@@ -37,14 +37,14 @@ ms.locfileid: "65149234"
 
 ## <a name="types"></a>类型  
 
-有两种类型的**流式处理终结点**：**标准**（预览版） 和**高级**。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。 
+有两种类型的**流式处理终结点**：标准（预览版）和**高级**。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。 
 
 下表描述了类型：  
 
 |Type|缩放单元|描述|
 |--------|--------|--------|  
 |**标准**|0|默认的流式处理终结点是**标准**类型，可以通过调整更改为高级类型`scaleUnits`。|
-|**高级**|>0|**高级**流式处理终结点是适用于高级工作负荷提供专用且可缩放带宽容量。 将移动到**Premium**类型通过调整`scaleUnits`（流式处理单位）。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |
+|**高级**|>0|**高级**流式处理终结点是适用于高级工作负荷提供专用且可缩放带宽容量。 将移动到**Premium**类型通过调整`scaleUnits`（流式处理单位）。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级  类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |
 
 > [!NOTE]
 > 对于想要将内容传送到大型的 internet 受众的客户，我们建议启用 CDN 的流式处理终结点上。
@@ -55,10 +55,10 @@ ms.locfileid: "65149234"
 
 Feature|标准|高级
 ---|---|---
-前 15 天免费<sup>1</sup>| 是 |否
+前 15 天免费 <sup>1</sup>| 是 |否
 Throughput |达 600 Mbps 并使用 CDN 时，可提供多更高的有效吞吐量。|每个流单元 (SU) 200 Mbps。 使用 CDN 时，可以提供多更高的有效吞吐量。
 CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
-按比例计费| 每日|每日
+按比例计费| 每天|每天
 动态加密|是|是
 动态打包|是|是
 缩放|自动增加到目标吞吐量。|额外的 Su
@@ -66,7 +66,7 @@ IP 筛选/G20/自定义主机<sup>2</sup>|是|是
 渐进式下载|是|是
 建议的用法 |建议用于绝大多数的流式处理方案。|专业用法。
 
-<sup>1</sup>免费试用版仅适用于新创建的媒体服务帐户和默认的流式处理终结点。<br/>
+<sup>1</sup> 免费试用仅适用于新创建的媒体服务帐户和默认的流式处理终结点。<br/>
 <sup>2</sup> CDN 终结点上未启用时才使用直接在流式处理终结点上。<br/>
 
 ## <a name="properties"></a>属性 
@@ -122,7 +122,7 @@ IP 筛选/G20/自定义主机<sup>2</sup>|是|是
     - 停止-正在过渡到停止状态
     - Deleting-正在删除
     
-- `scaleUnits` -为您提供可按照 200 Mbps 的增量购买的专用的出口容量。 如果需要转到高级类型，请调整 `scaleUnits`。
+- `scaleUnits` -为您提供可按照 200 Mbps 的增量购买的专用的出口容量。 如果需要转到高级  类型，请调整 `scaleUnits`。
 
 ## <a name="working-with-cdn"></a>配合 CDN 使用
 
@@ -143,7 +143,7 @@ IP 筛选/G20/自定义主机<sup>2</sup>|是|是
 
 流式处理终结点都预配有启用 CDN 后使用媒体服务上定义的等待时间进行 DNS 更新流式处理终结点映射到 CDN 终结点之前。
 
-如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，可以启动流式处理终结点和流，而不会被流式处理终结点中断，集成完成后，将从 CDN 传送流。 在预配期间，流式处理终结点的状态为“正在启动”，可能会观测到性能降低。
+如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”  状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，可以启动流式处理终结点和流，而不会被流式处理终结点中断，集成完成后，将从 CDN 传送流。 在预配期间，流式处理终结点的状态为“正在启动”  ，可能会观测到性能降低。
 
 创建标准流式处理终结点时，它是默认情况下，与标准 Verizon 配置。 你可以配置使用 REST Api 的高级 Verizon 或 Akamai 标准提供程序。 
 
@@ -156,7 +156,7 @@ IP 筛选/G20/自定义主机<sup>2</sup>|是|是
 
 可以通过确定是否已流式处理终结点 （流量将被定向到 Azure CDN） 上进行 DNS 更改 https://www.digwebinterface.com。 如果结果包含在结果中 azureedge.net 域名称，流量现在指向 CDN。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、 提供反馈，获取更新
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 

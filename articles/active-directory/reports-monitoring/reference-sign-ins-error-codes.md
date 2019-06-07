@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0986610007f5c470589eb94d6761b8d31dd79e72
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3208afc7ec18013c6e70e148995d33114cf7e06c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463497"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513667"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -40,7 +40,7 @@ ms.locfileid: "65463497"
 
 ![登录活动](./media/reference-sign-ins-error-codes/61.png "登录活动")
 
-在“登录状态”下拉框中选择“失败”，以筛选报告，显示所有失败的登录。
+在“登录状态”下拉框中选择“失败”，以筛选报告，显示所有失败的登录。  
 
 ![登录活动](./media/reference-sign-ins-error-codes/06.png "登录活动")
 
@@ -181,6 +181,8 @@ ms.locfileid: "65463497"
 |500121| 身份验证期间强身份验证请求失败。|
 |500133| 断言不在其有效时间范围内。 确保访问令牌在用于用户断言或请求新令牌之前没有过期。|
 |530021|应用程序不符合批准条件访问应用程序要求。|
+|7000218|请求正文必须包含以下参数: client_assertion 或 client_secret。|
+
 
 ## <a name="next-steps"></a>后续步骤
 
