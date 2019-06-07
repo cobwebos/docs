@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/30/2019
-ms.openlocfilehash: 0e3a35c2ceed5f3bb08b2d332f05bbaf416c94b2
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 4ce3ca31163c286f54b9630e5d4779e2e47a032f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743251"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754585"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>配置出站网络流量的 Azure HDInsight 群集使用的防火墙 （预览版）
 
@@ -162,7 +162,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以通过[在 Azure Monitor 中分析日志数据](../azure-monitor/log-query/log-query-overview.md)详细了解 Azure Monitor 日志
 
 ## <a name="access-to-the-cluster"></a>对群集的访问
-之后的防火墙设置已成功，可以使用内部终结点 (https://<clustername>-int.azurehdinsight.net) 来访问 VNET 中的从 Ambari。 若要使用的公共终结点 (https://<clustername>。 azurehdinsight.net) 或 ssh 终结点 (<clustername>-ssh.azurehdinsight.net)，请确保正确路由在路由表和 NSG 规则设置以避免 asymetric 路由问题所述[此处](https://docs.microsoft.com/azure/firewall/integrate-lb)。
+之后的防火墙设置已成功，可以使用内部终结点 (`https://<clustername>-int.azurehdinsight.net`) 来访问 VNET 中的从 Ambari。 若要使用的公共终结点 (`https://<clustername>.azurehdinsight.net`) 或 ssh 终结点 (`<clustername>-ssh.azurehdinsight.net`)，请确保正确路由在路由表和 NSG 规则设置以避免 asymetric 路由问题所述[此处](https://docs.microsoft.com/azure/firewall/integrate-lb)。
 
 ## <a name="configure-another-network-virtual-appliance"></a>配置另一个网络虚拟设备
 

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 59a45791676f62f42763e0e834d327b0c0c4106d
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025354"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755094"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>使用 Azure 搜索索引器连接 Azure SQL 数据库并为其内容编制索引
 
@@ -158,29 +158,13 @@ ms.locfileid: "65025354"
 
 **间隔**参数是必需的。 间隔是指开始两个连续的索引器执行之间的时间。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为：`P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
 
-可选 **startTime** 指示应该开始计划执行的时间。 如果省略，则使用当前 UTC 时间。 此时间可以是过去时间，在此情况下计划第一个执行，就像索引器在 startTime 之后连续运行一样。  
-
-一次只能运行一个索引器执行。 如果索引器在计划其执行时运行，该执行将推迟到下一个计划时间。
-
-让我们考虑更具体的示例。 假设我们已配置以下每小时计划：
-
-    "schedule" : { "interval" : "PT1H", "startTime" : "2015-03-01T00:00:00Z" }
-
-下面是发生的具体情况：
-
-1. 第一个索引器执行于 2015 年 3 月 1 日午夜 12:00 或大约时间开始。 UTC。
-2. 假设此执行需要 20 分钟（或小于 1 小时的任何时间）。
-3. 第二个执行于 2015 年 3 月 1 日凌晨 1:00 或大约时间开始。
-4. 现在，假设此执行需要超过 1 小时（例如 70 分钟），以便在大约凌晨 2:10 完成。
-5. 现在是凌晨 2:00，即将开始第三个执行。 但是，由于从凌晨 1:00 开始的第二个执行 仍在运行，将跳过第三个执行。 第三个执行于凌晨 3:00 开始。
-
-可使用 **PUT 索引器请求**针对现有索引器添加、更改或删除计划。
+有关定义索引器计划的详细信息请参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
 
 <a name="CaptureChangedRows"></a>
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>捕获新的、更改的和删除的行
 
-Azure 搜索使用“增量索引编制”来避免索引器每次运行时都必须为整个表或视图重新编制索引。 Azure 搜索提供了两个更改检测策略来支持增量索引编制。 
+Azure 搜索使用  “增量索引编制”来避免索引器每次运行时都必须为整个表或视图重新编制索引。 Azure 搜索提供了两个更改检测策略来支持增量索引编制。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 集成的更改跟踪策略
 如果 SQL 数据库支持[更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我们建议使用 **SQL 集成的更改跟踪策略**。 这是最有效的策略。 此外，它允许 Azure 搜索标识删除的行，无需向表中添加显式“软删除”列。
@@ -305,7 +289,7 @@ SQL 索引器公开多个配置设置：
 
 | 设置 | 数据类型 | 目的 | 默认值 |
 | --- | --- | --- | --- |
-| queryTimeout |string |设置 SQL 查询执行的超时 |5 分钟（“00:05:00”） |
+| queryTimeout |字符串 |设置 SQL 查询执行的超时 |5 分钟（“00:05:00”） |
 | disableOrderByHighWaterMarkColumn |bool |导致高使用标记策略使用的 SQL 查询省略 ORDER BY 子句。 请参阅[高使用标记策略](#HighWaterMarkPolicy) |false |
 
 在索引器定义的 `parameters.configuration` 对象中使用这些设置。 例如，要将查询超时设置为 10 分钟，请使用以下配置创建或更新索引器：

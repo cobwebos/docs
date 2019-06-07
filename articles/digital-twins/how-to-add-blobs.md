@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 06/05/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: b77960961a7c032faad7000f7a2ce297802a1497
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9490772226ecdb90cdd2e0b98fe8336b91db6044
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967046"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754499"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>将 Blob 添加到 Azure 数字孪生中的对象
 
@@ -36,7 +36,7 @@ Azure 数字孪生支持将 Blob 附加到设备、空间和用户。 Blob 可�
 
 四个主要 JSON 架构是：
 
-![JSON 架构][1]
+[![JSON 架构](media/how-to-add-blobs/blob-models.PNG)](media/how-to-add-blobs/blob-models.PNG#lightbox)
 
 JSON Blob 元数据符合以下模型：
 
@@ -183,7 +183,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 最后，[cURL](https://curl.haxx.se/) 用户可以相同的方式发出多部分表单请求：
 
-![设备 Blob][5]
+[![设备 blob](media/how-to-add-blobs/curl.PNG)](media/how-to-add-blobs/curl.PNG#lightbox)
 
 ```bash
 curl
@@ -211,7 +211,7 @@ curl
 
 可以将 blob 附加到设备。 下图显示了管理 API 的 Swagger 参考文档。 其中指定了使用 Blob 时所需的设备相关 API 终结点，以及要传入其中的所有必需路径参数。
 
-![设备 Blob][2]
+[![设备 blob](media/how-to-add-blobs/blobs-device-api.PNG)](media/how-to-add-blobs/blobs-device-api.PNG#lightbox)
 
 例如，若要更新或创建某个 Blob 并将其附加到设备，请向以下项发出经身份验证的 HTTP PATCH 请求：
 
@@ -229,7 +229,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 此外，还可以将 blob 附加到空间。 下图列出了负责处理 Blob 的所有空间 API 终结点。 此外，它还列出了传入这些终结点的所有路径参数。
 
-![空间 Blob][3]
+[![空间 blob](media/how-to-add-blobs/blobs-space-api.PNG)](media/how-to-add-blobs/blobs-space-api.PNG#lightbox)
 
 例如，若要返回附加到某个空间的 Blob，请向以下项发出经身份验证的 HTTP GET 请求：
 
@@ -249,7 +249,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 可将 Blob 附加到用户模型（例如，关联个人资料图片）。 下图显示了相关的用户 API 终结点和所有必需的路径参数（例如 `id`）：
 
-![用户 Blob][4]
+[![用户的 blob](media/how-to-add-blobs/blobs-users-api.PNG)](media/how-to-add-blobs/blobs-users-api.PNG#lightbox)
 
 例如，若要提取附加到某个用户的 Blob，请向以下项发出包含所有必需表单数据的经身份验证的 HTTP GET 请求：
 
@@ -288,10 +288,3 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 - 若要详细了解 Azure 数字孪生 Swagger 参考文档，请阅读[使用数字孪生 Swagger](how-to-use-swagger.md)。
 
 - 若要通过 Postman 上传 Blob，请参阅[如何配置 Postman](./how-to-configure-postman.md)。
-
-<!-- Images -->
-[1]: media/how-to-add-blobs/blob-models.PNG
-[2]: media/how-to-add-blobs/blobs-device-api.PNG
-[3]: media/how-to-add-blobs/blobs-space-api.PNG
-[4]: media/how-to-add-blobs/blobs-users-api.PNG
-[5]: media/how-to-add-blobs/curl.PNG

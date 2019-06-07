@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: f08845dbf4168627d0198e81d2092a1fe56c6c89
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 73a9aebfd0c5338f63927860ce3f6c57b20428a4
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733866"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754777"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
@@ -25,7 +25,7 @@ ms.locfileid: "66733866"
 
 ## <a name="regional-availability"></a>区域可用性
 
-事件网格集成适用于支持事件网格的区域中的 IoT 中心。 设备遥测事件的所有设备事件都已公开上市。 设备遥测事件处于公共预览状态，在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](/azure/azure-government/documentation-government-welcome)， [Azure 中国 21Vianet](/azure/china/china-welcome)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/). 有关区域的最新列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
+事件网格集成适用于支持事件网格的区域中的 IoT 中心。 设备遥测事件的所有设备事件都已公开上市。 设备遥测事件处于公共预览状态，在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](/azure/azure-government/documentation-government-welcome)， [Azure 中国 21Vianet](/azure/china)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/). 有关区域的最新列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
 
 ## <a name="event-types"></a>事件类型
 

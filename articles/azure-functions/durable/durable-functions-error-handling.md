@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f3d7f916d31a03d7b868749026f541dd646459f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 79af90d1c2c5b698ee7394f7fb20486b3069038c
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60732512"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751943"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
-Durable Function 业务流程采用代码实现，并可使用编程语言的错误处理功能。 考虑到这一点，将错误处理和补偿合并到业务流程时，无需了解任何新概念。 但应注意以下事项。
+Durable Function 业务流程采用代码实现，并可使用编程语言的错误处理功能。 这一点，实际上并没有任何所需了解如何将错误处理和补偿合并到您的业务流程的新概念。 但应注意以下事项。
 
 ## <a name="errors-in-activity-functions"></a>活动函数中的错误
 
@@ -102,7 +102,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-如果目标帐户的 CreditAccount 函数调用失败，则业务流程协调程序函数通过将资金归还源帐户来进行补偿。
+如果目标帐户的 CreditAccount 函数调用失败，则业务流程协调程序函数通过将资金归还源帐户来进行补偿  。
 
 ## <a name="automatic-retry-on-failure"></a>失败时自动重试
 

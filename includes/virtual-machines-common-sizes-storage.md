@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 5123ee3f65744f3d0c255712efe990b01be58e26
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: de998265188b1482be22225bba3c6ab3d58e562b
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420733"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66755586"
 ---
 存储优化 VM 大小可提供较高的磁盘吞吐量和 IO，非常适合用于大数据、SQL 和 NoSQL 数据库、数据仓库和大型事务数据库。  示例包括 Cassandra、MongoDB、Cloudera 和 Redis。 本文介绍关于 vCPU、数据磁盘和 NIC 的数量以及每个优化大小的本地存储吞吐量和网络带宽的信息。
 
@@ -57,7 +57,7 @@ ACU：150-175
 - SLES 12 SP2 或更高版本
 - RHEL 或 CentOS 6.7 版通过 6.10，与 Microsoft 提供的 LIS 包 4.3.1 或更高版本安装
 - RHEL 或 CentOS 7.3 版，与 Microsoft 提供的 LIS 4.2.1 包 （或更高版本） 安装
-- RHEL 或 CentOS 版本 7.4 或更高版本
+- RHEL 或 CentOS 版本 7.6 或更高版本
 - UEK4 或更高版本的 oracle Linux
 - 具有 backports 内核，Debian 10 或更高版本的 debian 9
 - CoreOS 4.14 内核或更高版本

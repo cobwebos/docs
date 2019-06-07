@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7687abf5fc4af0eea9fa6aa210cfd6734cec2b36
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410573"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755130"
 ---
 # <a name="automatically-scale-session-hosts"></a>自动缩放会话主机
 
@@ -26,7 +26,7 @@ ms.locfileid: "65410573"
 
 - Windows 虚拟桌面租户和帐户或查询 （如 RDS 参与者） 该租户的权限的服务主体。
 - 会话主机池 Vm 配置和注册到 Windows 虚拟机服务。
-- 其他虚拟机，通过任务计划程序运行计划的任务，并且具有对会话主机的网络访问。 这将作为 scaler VM 是 reffered 到文档中的更高版本。
+- 其他虚拟机，通过任务计划程序运行计划的任务，并且具有对会话主机的网络访问。 这将被称为文档后面 scaler VM。
 - [Microsoft Azure 资源管理器 PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)运行计划的任务在 VM 上安装。
 - [Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)运行计划的任务在 VM 上安装。
 

@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: 897634ac0c30b4a2cc496c225965f465a94fe4e9
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455647"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751897"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -74,7 +74,7 @@ ms.locfileid: "66455647"
 
 - 产品/服务必须与 Azure 客户端兼容。 (通常 SaaS 应用也托管在 Azure 上的最佳性能和兼容性，但这不是一项要求。) 
 - 产品/服务必须使用[Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/)进行标识管理和身份验证。
-- 产品/服务必须使用[SaaS 履行 Api](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2)将与 Azure Marketplace 进行集成。
+- 产品/服务必须使用[SaaS 履行 Api](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)将与 Azure Marketplace 进行集成。
 
 #### <a name="billing-infrastructure-costs"></a>计费基础结构成本
 对于 SaaS 产品/服务，作为发布者，必须考虑 Azure 基础结构使用费和软件许可费用作为单个成本项。 此成本表示为对客户每月固定费用。 管理并直接付款给您的合作伙伴，azure 基础结构使用情况。 客户将无法看到实际的基础结构使用费。 发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。 

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bb06d04aec8e98308c0f5595b6b39e4b98302ff
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: f369f899d4a383205ad124e4fcd8dabf9f92f63f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480056"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753187"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -27,7 +27,7 @@ ms.locfileid: "66480056"
 
 机器学习工作流通常采用以下顺序：
 
-1. 在 **Python** 中开发机器学习培训脚本。
+1. 开发训练脚本中的机器学习**Python**或可视界面。
 1. 创建和配置**计算目标**。
 1. **将脚本提交**到配置的计算目标以在该环境中运行。 在训练期间，脚本可以读取或写入**数据存储**。 并且执行记录在**工作区**中保存为**运行**，并在**试验**下分组。
 1. **查询试验**了解当前和过去的运行中已记录的指标。 如果指标未指示所需结果，请循环回到步骤 1 并循环访问脚本。
@@ -107,34 +107,7 @@ Azure 机器学习数据集 （预览版） 使其更轻松地访问和使用你
 
 ## <a name="compute-target"></a>计算目标
 
-计算目标是用于运行训练脚本或托管服务部署的计算资源。 支持的计算目标为：
-
-| 计算目标 | 培训 | 部署 |
-| ---- |:----:|:----:|
-| 本地计算机 | ✓ | &nbsp; |
-| Azure 机器学习计算 | ✓ | &nbsp; |
-| Azure 中的 Linux VM</br>（例如 Data Science Virtual Machine） | ✓ | &nbsp; |
-| Azure Databricks | ✓ | &nbsp; |
-| Azure Data Lake Analytics | ✓ | &nbsp; |
-| Apache Spark for HDInsight | ✓ | &nbsp; |
-| Azure 容器实例 | &nbsp; | ✓ |
-| Azure Kubernetes 服务 | &nbsp; | ✓ |
-| Azure IoT Edge | &nbsp; | ✓ |
-| 现场可编程门阵列 (FPGA) | &nbsp; | ✓ |
-
-计算目标附加到工作区。 本地计算机以外的计算目标由工作区的用户共享。
-
-### <a name="managed-and-unmanaged-compute-targets"></a>托管和非托管的计算目标
-
-* **托管**：由 Azure 机器学习服务创建和管理的计算目标。 这些计算目标已针对机器学习工作负荷进行优化。 截至 2018 年 12 月 4 日，Azure 机器学习计算是仅有的托管计算目标。 将来可能会添加其他托管计算目标。
-
-    可以使用 Azure 门户、Azure 机器学习 SDK 或 Azure CLI 通过工作区直接创建机器学习计算实例。 所有其他计算目标必须在工作区外创建，然后再附加到工作区。
-
-* **非托管**：不是由 Azure 机器学习服务管理的计算目标。  可能需要在 Azure 机器学习外部创建它们，然后在使用前将它们附加到工作区。 非托管计算目标可能需要执行额外的步骤来保持或提高机器学习工作负荷的性能。
-
-有关为训练选择计算目标的信息，请参阅[选择并使用计算目标来训练模型](how-to-set-up-training-targets.md)。
-
-有关为部署选择计算目标的信息，请参阅[使用 Azure 机器学习服务部署模型](how-to-deploy-and-where.md)。
+一个[计算目标](concept-compute-target.md)使你能够指定运行训练脚本或主机服务部署的计算资源。 此位置可能是在本地计算机或基于云的计算资源。 计算目标，使其可以轻松地更改您的计算环境而无需更改你的代码。 
 
 ## <a name="training-script"></a>培训脚本
 

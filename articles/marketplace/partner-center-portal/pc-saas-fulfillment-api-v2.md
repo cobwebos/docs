@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 1aba0ab7083c437210166d2d5a2d77e7a657afe9
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: da23b90e44869dcbd21acf9b2c4e04f30153ae09
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474572"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751775"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 Api 版本 2 
 
@@ -107,7 +107,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 |  x-ms-marketplace-token  |  当用户重定向到 SaaS ISV 的网站与 Azure 在 URL 中的令牌查询参数 (例如： `https://contoso.com/signup?token=..`)。 *注意：* URL 解码然后再使用它从浏览器的令牌值。  |
 
 *响应代码：*
@@ -171,7 +171,7 @@ Response body:
 | Content-Type       |  `application/json`  |
 | x-ms-requestid     |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
@@ -198,7 +198,7 @@ Response body:
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
+          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
   "continuationToken": ""
@@ -241,7 +241,7 @@ Response body:
 |  Content-Type      |  `application/json`  |
 |  x-ms-requestid    |  用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid |  在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
@@ -305,7 +305,7 @@ Response Body:
 |   Content-Type     |  `application/json` |
 |   x-ms-requestid   |   用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid  | 在客户端上的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *响应代码：*
 
@@ -359,7 +359,7 @@ Response Body:
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | 用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid  | 在客户端上的操作的唯一字符串值。 此字符串将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *请求：*
 
@@ -416,7 +416,7 @@ Response Body:
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。    |
-| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *请求有效负载：*
 
@@ -482,7 +482,7 @@ Request Body:
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。    |
-| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| authorization      |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *请求有效负载：*
 
@@ -548,7 +548,7 @@ Request Body:
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，其中一个将生成并在响应标头中提供。   |
 |  x-ms-correlationid  |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。   |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
@@ -601,7 +601,7 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：*
 
@@ -664,7 +664,7 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 |  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
-|  authorization     |[获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |[获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *响应代码：* 代码：200<br> 获取指定挂起 SaaS 操作<br>
 响应有效负载：
@@ -727,7 +727,7 @@ Response body:
 |   Content-Type     | `application/json`   |
 |   x-ms-requestid   |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 |  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。 |
-|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [获取 JSON web 令牌 (JWT) 持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *请求有效负载：*
 

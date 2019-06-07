@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2eaf819870e2b70cc6238af6d1e9fa1dcb5caab8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236755"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755003"
 ---
 # <a name="azure-storage-account-overview"></a>Azure 存储帐户概述
 
-Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据位于可从任意位置在世界通过 HTTP 或 HTTPS 提供唯一的命名空间。 Azure 存储帐户中的数据是持久和高度可用、 安全且高度可缩放。
+Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
 
 若要了解如何创建 Azure 存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
@@ -62,7 +62,11 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 ### <a name="block-blob-storage-accounts"></a>块 Blob 存储帐户
 
-块 Blob 存储帐户是一种专用存储帐户，可以将非结构化对象数据作为块 Blob 或追加 Blob 存储。 块 Blob 存储帐户提供多个访问层，可以根据使用模式来存储数据。 有关详细信息，请参阅[块 Blob 数据的访问层](#access-tiers-for-block-blob-data)。
+块 blob 存储帐户是用于存储非结构化的对象数据作为块 blob 的专用的存储帐户。 此存储帐户键入支持块 blob 和追加 blob，但不是页 blob、 表或队列。
+
+与常规用途 v2 和 blob 存储帐户相比，块 blob 存储帐户提供低和一致延迟和更高版本的事务速率。
+
+块 blob 存储帐户当前不支持分层热、 冷或存档访问层。
 
 ### <a name="filestorage-preview-storage-accounts"></a>文件存储 （预览版） 存储帐户
 
@@ -75,12 +79,16 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 - 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 - 存储帐户名称在 Azure 中必须是唯一的。 没有两个存储帐户可以有相同的名称。
 
-## <a name="general-purpose-performance-tiers"></a>通用性能层
+## <a name="performance-tiers"></a>性能层
 
 可为以下任一性能层配置常规用途存储帐户：
 
 * 用于存储 Blob、文件、表、队列和 Azure 虚拟机磁盘的标准性能层。
 * 仅用于存储非托管虚拟机磁盘的高级性能层。
+
+块 blob 存储帐户提供高级性能层用于存储块 blob 和追加 blob。
+
+文件存储 （预览版） 存储帐户提供 Azure 文件共享的高级性能层。
 
 ## <a name="access-tiers-for-block-blob-data"></a>块 Blob 数据的访问层
 
@@ -90,7 +98,7 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 
 * **热**访问层，已针对存储帐户中频繁访问的对象进行优化。 访问热层中的数据是最具成本效益，而存储的成本是更高版本。 默认情况下，新存储帐户在热层中创建。
 * **冷**访问层，已针对存储不常访问且存储时间至少为 30 天的大量数据进行优化。 将数据存储在冷层是更具成本效益，但访问该数据可能会比访问热层中的数据更昂贵。
-* **存档**层，仅适用于单个块 Blob。 存档层已针对可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据进行优化。 存档层是用于存储数据的最经济高效的选项，但访问这些数据的开销比访问热层或冷层中的数据要高一些。
+* **存档**层，仅适用于单个块 Blob。 存档层适用于可以容忍几个小时的检索延迟并仍会在存档层至少 180 天的数据。 存档层是用于存储数据的最经济高效的选项，但访问这些数据的开销比访问热层或冷层中的数据要高一些。
 
 如果数据的使用模式有所更改，则可以随时在这些访问层之间切换。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
 
@@ -119,7 +127,7 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 * Azure 文件： http://*mystorageaccount*.file.core.windows.net
 
 > [!NOTE]
-> Blob 存储帐户仅公开 Blob 服务终结点。
+> 块 blob 和 blob 存储帐户公开仅仅对 blob 服务终结点。
 
 用于访问存储帐户中某个对象的 URL 是通过将存储帐户中对象的位置附加到终结点而构造的。 例如，Blob 地址可能具有以下格式： http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*。
 
@@ -177,5 +185,6 @@ AzCopy 是一个 Windows 命令行实用工具，旨在实现高性能地将数�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何创建 Azure 存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+* 若要了解如何创建通用的 Azure 存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+* 若要了解如何创建块 blob 存储帐户，请参阅[创建块 blob 存储帐户](../blobs/storage-blob-create-account-block-blob.md)。
 * 若要管理或删除现有存储帐户，请参阅[管理 Azure 存储帐户](storage-account-manage.md)。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: 15232c92e60d21d759bec59597cb161480b8c2ea
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: d42b929807bf67b73d0587232608efc0cea6d717
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743233"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752573"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 
@@ -93,7 +93,7 @@ Azure 安全中心通过与 [Windows Defender 高级威胁防护](https://www.mi
 
 ## <a name="set-the-firewall-configuration"></a>设置防火墙配置
 
-如果当 Windows Defender ATP 传感器从系统上下文建立连接时代理或防火墙阻止了匿名流量，请确保允许匿名流量。 遵照[在代理服务器中启用对 Windows Defender ATP 服务 URL 的访问](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-windows-defender-atp-service-urls-in-the-proxy-server)中的说明操作。
+如果当 Windows Defender ATP 传感器从系统上下文建立连接时代理或防火墙阻止了匿名流量，请确保允许匿名流量。 遵照[在代理服务器中启用对 Windows Defender ATP 服务 URL 的访问](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)中的说明操作。
 
 ## <a name="test-the-feature"></a>测试功能
 

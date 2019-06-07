@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 6ab6ec6a88dbba066be9ecf9919be876090cfdff
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: edadb369461bb3865dd6894c3329e7079fa9d13f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121495"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752554"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 
@@ -279,7 +279,7 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 |[应用程序映射](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|应用的组件，包含关键指标和警报。|
 |[实例数据的诊断搜索](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| 搜索和筛选事件，例如请求、异常、依赖项调用、日志跟踪和页面视图。|
 |[聚合数据的指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/app/metrics-explorer)|浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。|
-|[仪表板](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|混合使用来自多个资源的数据并与他人共享。 对于多组件应用程序和在团队聊天室中连续显示很有用。|
+|[仪表板](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)|混合使用来自多个资源的数据并与他人共享。 对于多组件应用程序和在团队聊天室中连续显示很有用。|
 |[实时指标流](https://docs.microsoft.com/azure/azure-monitor/app/live-stream)|部署新的生成时，观看这些准实时性能指示器，确保一切按预期工作。|
 |[分析](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|使用此功能强大的查询语言，回答有关应用的性能和使用情况的疑难问题。|
 |[自动和手动警报](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|当某些内容处于异常模式时，自动警报适应应用的遥测和触发器正常模式。 还可以在自定义或标准指标的特定级别上设置警报。|
@@ -324,13 +324,13 @@ Azure Monitor 中心日志是 Log Analytics 工作区中，在 Azure 中托管�
 
 * 到 Azure 存储到 Azure Monitor 的 azure 诊断日志 (**存储**下表中)
 
-* Azure 服务的连接器（下表中的“连接器”）
+* Azure 服务的连接器（下表中的“连接器”） 
 
 * 脚本收集，然后将数据发布到 Azure Monitor 日志 （空白单元格下表中和未列出的服务）
 
 | 服务 | 资源类型 | 日志 | 度量值 | 解决方案 |
 | :------ | :------------ | :--- | :------ | :------- |
-|Azure 应用程序网关| Microsoft.Network/<br>applicationGateways|  诊断|诊断|    [Azure 应用程序](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)[网关分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
+|Azure 应用程序网关| Microsoft.Network/<br>applicationGateways|  诊断|诊断|    [Azure 应用程序](https://docs.microsoft.com/azure/azure-monitor/insights/azure-networking-analytics)[网关分析](https://docs.microsoft.com/azure/azure-monitor/insights/azure-networking-analytics#azure-application-gateway-analytics-solution-in-azure-monitor)|
 |Application Insights||     连接器|  连接器|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [连接器（预览版）](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Azure 自动化帐户| Microsoft.Automation/<br>AutomationAccounts|    诊断||       [详细信息](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Azure Batch 帐户|  Microsoft.Batch/<br>batchAccounts|  诊断|    诊断||
@@ -344,7 +344,7 @@ Azure Monitor 中心日志是 Log Analytics 工作区中，在 Azure 中托管�
 |Azure 负载均衡器|   Microsoft.Network/<br>loadBalancers|    诊断|||
 |Azure 逻辑应用|  Microsoft.Logic/<br>workflows|  诊断|    诊断||
 ||Microsoft.Logic/<br>integrationAccounts||||
-|网络安全组|   Microsoft.Network/<br>networksecuritygroups|诊断||   [Azure 网络安全组分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
+|网络安全组|   Microsoft.Network/<br>networksecuritygroups|诊断||   [Azure 网络安全组分析](https://docs.microsoft.com/azure/azure-monitor/insights/azure-networking-analytics#azure-application-gateway-and-network-security-group-analytics)|
 |恢复保管库|   Microsoft.RecoveryServices/<br>vaults|||[Azure 恢复服务分析（预览版）](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |搜索服务|   Microsoft.Search/<br>searchServices|    诊断|    诊断||
 |服务总线命名空间| Microsoft.ServiceBus/<br>namespaces|    诊断|诊断|    [Service Fabric 分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|

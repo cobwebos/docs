@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 054aaf6f607bba216f979665a0b0672ec253ba7f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a815ec4ac97f8476403f773aeedb19ff84092b03
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475977"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752967"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标 
 
@@ -37,18 +37,8 @@ ms.locfileid: "66475977"
 
 Azure 机器学习服务为不同的计算目标提供不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
 
+[!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
-|定型&nbsp;目标| GPU 支持 |自动化机器学习 | ML 管道 | 可视界面
-|----|:----:|:----:|:----:|:----:|
-|[本地计算机](#local)| 您可能 | 是 | &nbsp; | &nbsp; |
-|[Azure 机器学习计算](#amlcompute)| 是 | 是 （& a) <br/>hyperparameter&nbsp;tuning | 是 | 是 |
-|[远程 VM](#vm) |是 | 是 （& a) <br/>超参数优化 | 是 | &nbsp; |
-|[Azure&nbsp;Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | 是 | 是 | &nbsp; |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | 是 | &nbsp; |
-|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | 是 | &nbsp; |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | 是 | &nbsp; |
-
-**所有计算目标都可重复用于多个训练作业**。 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。
 
 > [!NOTE]
 > Azure 机器学习计算资源可以创建为持久资源，也可以在你请求运行时动态创建。 基于运行的创建在训练运行完成后会删除计算目标，因此无法重复使用以这种方式创建的计算目标。

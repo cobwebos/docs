@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f60146e4e11e50b2f2254a0d8d7f59c01ba74464
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 832be20f78d1e88a3bb6d1c25c7aaf5d7354e857
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479934"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753975"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
 本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
@@ -116,6 +116,8 @@ Blob 索引器可从以下文档格式提取文本：
 
 有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
+有关定义索引器计划的详细信息请参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
+
 ## <a name="how-azure-search-indexes-blobs"></a>Azure 搜索如何为 Blob 编制索引
 
 根据具体的[索引器配置](#PartsOfBlobToIndex)，Blob 索引器可以仅为存储元数据编制索引（如果只关注元数据，而无需为 Blob 的内容编制索引，则此功能非常有用）、为存储元数据和内容元数据编制索引，或者同时为元数据和文本内容编制索引。 默认情况下，索引器提取元数据和内容。
@@ -139,7 +141,8 @@ Blob 索引器可从以下文档格式提取文本：
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 Blob 的时间戳。 Azure 搜索服务使用此时间戳来识别已更改的 Blob，避免在初次编制索引之后再次为所有内容编制索引。
   * **metadata\_storage\_size** (Edm.Int64) - Blob 大小，以字节为单位。
   * **metadata\_storage\_content\_md5** (Edm.String) - Blob 内容的 MD5 哈希（如果有）。
-  * **元数据\_存储\_sas\_令牌**(Edm.String)-可由一个临时令牌[自定义技能](cognitive-search-custom-skill-interface.md)若要获取正确的 blob 的访问权限。 此 sas 令牌不是应存储以供将来使用，因为它可能会过期。
+  * **元数据\_存储\_sas\_令牌**(Edm.String)-可由一个临时 SAS 令牌[自定义技能](cognitive-search-custom-skill-interface.md)若要获取对 blob 的访问。 此令牌不应存储以供将来使用，因为它可能已过期。
+
 * 特定于每种文档格式的元数据属性将提取到[此处](#ContentSpecificMetadata)所列的字段。
 
 无需在搜索索引中针对上述所有属性定义字段 - 系统只捕获应用程序所需的属性。

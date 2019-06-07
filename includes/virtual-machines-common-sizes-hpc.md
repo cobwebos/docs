@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: virtual-machines
-author: jonbeck7
+author: vermagit
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/26/2019
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: f3c1a946afb7f51a1c7543dabae7f2f42ff466be
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9b4bdee19c883252e7de140ac7b19babd43d1df8
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145827"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755167"
 ---
 Azure H 系列虚拟机 (Vm) 旨在提供领导类性能，MPI 可伸缩性和成本效率的真实 HPC 工作负荷有多种。
 
@@ -27,7 +27,11 @@ H 系列 Vm 的高 CPU 频率或每个核心要求较大内存由驱动应用程
 
 ## <a name="hb-series"></a>HB 系列
 
-高级存储：支持高级存储缓存：支持
+ACU：199-216
+
+高级存储：支持
+
+高级存储缓存：支持
 
 | 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (GB/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -37,7 +41,11 @@ H 系列 Vm 的高 CPU 频率或每个核心要求较大内存由驱动应用程
 
 ## <a name="hc-series"></a>HC 系列
 
-高级存储：支持高级存储缓存：支持
+ACU：297-315
+
+高级存储：支持
+
+高级存储缓存：支持
 
 
 | 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (GB/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
@@ -51,19 +59,19 @@ H 系列 Vm 的高 CPU 频率或每个核心要求较大内存由驱动应用程
 
 ACU：290-300
 
-高级存储：不受支持
+高级存储：不支持
 
-高级存储缓存：不受支持
+高级存储缓存：不支持
 
 | 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率 （g h z，峰值） | 单核频率 （g h z，峰值） | RDMA 性能 (GB/s) | MPI 支持 | 临时存储 (GB) | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8 | 8 | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x，MS MPI | 1000 | 32 | 2 |
-| Standard_H16 | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  56 | Intel 5.x，MS MPI | 2000 | 64 | 4 |
-| Standard_H8m | 8 | Intel Xeon E5 2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x，MS MPI | 1000 | 32 | 2 |
-| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x，MS MPI | 2000 | 64 | 4 |
+| Standard_H8 | 8 | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x，MS MPI | 1000 | 32 | 2 |
+| Standard_H16 | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  - | Intel 5.x，MS MPI | 2000 | 64 | 4 |
+| Standard_H8m | 8 | Intel Xeon E5 2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x，MS MPI | 1000 | 32 | 2 |
+| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 5.x，MS MPI | 2000 | 64 | 4 |
 | Standard_H16r <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x，MS MPI | 2000 | 64 | 4 |
 | Standard_H16mr <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x，MS MPI | 2000 | 64 | 4 |
 
-<sup>1</sup> 对于 MPI 应用程序来说，专用 RDMA 后端网络是通过 FDR InfiniBand 网络启用的，后者可以提供相当低的延迟和高带宽。
+<sup>1</sup>对于 MPI 应用程序，专用的 RDMA 后端网络通过 FDR InfiniBand 网络启用。
 
 <br>

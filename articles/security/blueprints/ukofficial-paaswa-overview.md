@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: e3ee5a0aa22d1231dca7d02a77d39e0a2b569314
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62109321"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753846"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -191,7 +191,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 #### <a name="azure-activity-logs"></a>Azure 活动日志
 
-[Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs#what-you-can-do-with-the-activity-log)审核订阅的控制平面事件。 通过活动日志，可确定订阅中对资源执行的任何写入操作（PUT、POST、DELETE）的“内容、执行者和时间”等信息。 还可以了解该操作和其他相关属性的状态。
+[Azure 活动日志](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)审核订阅的控制平面事件。 通过活动日志，可确定订阅中对资源执行的任何写入操作（PUT、POST、DELETE）的“内容、执行者和时间”等信息。 还可以了解该操作和其他相关属性的状态。
 
 #### <a name="azure-monitor"></a>Azure Monitor
 

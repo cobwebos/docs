@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e65f7ca0a01e0ceee6448ea49e1d6d6da696cf6
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: f3f21f552add551ac2434618b184eb18c53ad5be
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417076"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752237"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -56,6 +56,9 @@ ms.locfileid: "66417076"
 创建、读取、更新和删除用户 | 全局管理员（[请参阅文档](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)）
 读取所有配置 | 全局管理员角色 | 
 读取 B2C 审核日志 | 全局管理员（[请参阅文档](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)） | 
+
+> [!NOTE]
+> Azure AD B2C 的全局管理员没有与 Azure AD 全局管理员相同的权限。 如果您具有 Azure AD B2C 全局管理员权限，请确保您已在 Azure AD B2C 目录，而不是 Azure AD 目录中。
 
 ## <a name="company-branding"></a>公司品牌
 

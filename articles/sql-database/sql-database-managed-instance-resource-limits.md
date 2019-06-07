@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 05/22/2019
-ms.openlocfilehash: 7ff8405bba39e274c4f9f0cbacb7c295564c877e
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: ef431754db222554c6543e12e4cb6cf0431f7b51
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303208"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755051"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例的资源限制
 
@@ -38,8 +38,8 @@ Azure SQL 数据库托管的实例可以部署在两个硬件代次：Gen4 和 G
 | --- | --- | --- |
 | 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
 | vCore 数 | 8、16、24 个 vCore | 8、16、24、32、40、64、80 个 vCore |
-| 内存 | 每个 vCore 7 GB | 每个 vCore 5.1 GB |
-| 最大内存中 OLTP 内存 | 每个 vCore 3 GB | 每个 vCore 2.6 GB |
+| 内存 （内存/内核之比） | 每个 vCore 7 GB | 每个 vCore 5.1 GB |
+| 最大内存中 OLTP 内存 | 实例的限制：每个 vCore 3 GB<br/>数据库限制：<br/> -8 核：每个数据库的 8 GB<br/> -16 核心：每个数据库为 20 GB<br/> -24 核心：每个数据库的 36 GB | 实例的限制：每个 vCore 2.5 GB<br/>数据库限制：<br/> -8 核：每个数据库的 13 GB<br/> -16 核心：每个数据库的 32 GB |
 | 最大实例存储（常规用途） |  8 TB | 8 TB |
 | 最大实例存储（业务关键） | 1 TB | 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
@@ -50,14 +50,14 @@ Azure SQL 数据库托管的实例可以部署在两个硬件代次：Gen4 和 G
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
 | vCore 数目\* | 第 4 代：8、16、24<br/>第 5 代：8、16、24、32、40、64、80 | 第 4 代：8、16、24、32 <br/> 第 5 代：8、16、24、32、40、64、80 |
-| 内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore) | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore) |
+| 内存 （内存/内核之比） | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore) | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：40.8 GB - 408 GB (5.1GB/vCore) |
 | 最大实例存储大小 | 8 TB | Gen4：1 TB <br/> Gen5： <br/>- 8、16 个 vCore 1 TB<br/>- 24 个 vCore 2 TB<br/>- 4 TB（适用于 32、40、64、80 个 vCore） |
 | 每个数据库的最大存储 | 由每个实例的最大存储大小决定 | 由每个实例的最大存储大小决定 |
 | 每个实例的数据库数目上限 | 100 | 100 |
 | 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
 | 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1375/vCore) |
 | 日志吞吐量 | 3 MB/s（每个 vCore）<br/>每个实例的最大 22 MB/秒 | 每个 vCore 4 MB/秒<br/>最大为 48 MB/秒（每个实例）|
-| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | |
+| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不适用 |
 | IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
 | 最大 tempDB 大小 | 192 - 1,920 GB（每个 vCore 为 24 GB） | 无约束 - 受最大实例存储大小限制 |
 | 最大会话数 | 30000 | 30000 |

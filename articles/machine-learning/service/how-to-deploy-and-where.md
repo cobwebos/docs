@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1be9d11db9a1c614614e0a4023f84b15588ba5f0
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 89539509e759da7f041ce0216397b1a9c8ff1f16
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742960"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753087"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -92,14 +92,7 @@ ms.locfileid: "66742960"
 
 以下计算目标，或计算资源，可用于托管 web 服务部署。 
 
-| 计算目标 | 使用情况 | 描述 |
-| ----- | ----- | ----- |
-| [本地 web 服务](#local) | 测试/调试 | 适用于有限的测试和故障排除。
-| [Azure Kubernetes 服务 (AKS)](#aks) | 实时推理 | 非常适合用于大规模生产部署。 提供了自动缩放和快速的响应时间。 |
-| [Azure 容器实例 (ACI)](#aci) | 正在测试 | 非常适用于低规模，基于 CPU 的工作负荷。 |
-| [Azure 机器学习计算](how-to-run-batch-predictions.md) | 批处理推理 | 在无服务器计算上运行批处理推理。 支持的普通和低优先级 Vm。 |
-| [Azure IoT Edge](#iotedge) | （预览版）IoT 模块 | 部署和 IoT 设备上提供机器学习模型。 |
-
+[!INCLUDE [aml-compute-target-deploy](../../../includes/aml-compute-target-deploy.md)]
 
 ## <a name="prepare-to-deploy"></a>准备部署
 

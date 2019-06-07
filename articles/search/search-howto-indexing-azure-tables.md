@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 5f0e7feb52b34a4bd29bef01925bf9ea8f84d7db
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bca7c1b9ffe7ac0ab82f4287bba201a78fbf726a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024787"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755084"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>使用 Azure 搜索编制 Azure 表存储的索引
 本文介绍如何使用 Azure 搜索对 Azure 表存储中存储的数据编制索引。
@@ -67,7 +67,7 @@ ms.locfileid: "65024787"
 
 可通过以下一种方式提供表的凭据： 
 
-- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可通过转到“存储帐户”边栏选项卡  > “设置” > “密钥”（适用于经典存储帐户）或“设置” > “访问密钥”（适用于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 可通过转到“存储帐户”边栏选项卡  > “设置” > “密钥”（适用于经典存储帐户）或“设置” > “访问密钥”（适用于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串      。
 - **存储帐户共享访问签名连接字符串**：`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共享访问签名应具有容器（本例中为表）和对象（表行）的列表和读取权限。
 -  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共享访问签名应具有表的查询（读取）权限。
 
@@ -114,6 +114,8 @@ ms.locfileid: "65024787"
 此索引器每两小时运行一次。 （已将计划间隔设置为“PT2H”）。若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的；如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
 有关创建索引器 API 的详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+
+有关定义索引器计划的详细信息请参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
 
 ## <a name="deal-with-different-field-names"></a>处理不同的字段名称
 有时，现有索引中的字段名称会不同于表中的属性名称。 可以使用字段映射将表中的属性名称映射到搜索索引中的字段名称。 若要详细了解字段映射，请参阅 [Azure 搜索索引器字段映射弥补数据源和搜索索引之间的差异](search-indexer-field-mappings.md)。

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8587fb0138309040232b6e0abc0f3eb17cc3093a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 33ca86fc2d13fb7f6e29c43e9a7c1d2dc6ef4169
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244079"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755236"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -37,7 +37,7 @@ Parquet 文件类型，时间系列 Insights 预览版使用 Azure Blob 存储�
 
 有关 Azure Blob 存储的概述，请参阅[存储 Blob 简介](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)。
 
-有关 Parquet 文件类型的详细信息，请参阅 [Azure 存储中支持的文件类型](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#Parquet-format)。
+有关 Parquet 文件类型的详细信息，请参阅 [Azure 存储中支持的文件类型](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#parquet-format)。
 
 ## <a name="parquet-file-format"></a>Parquet 文件格式
 

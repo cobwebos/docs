@@ -3,7 +3,7 @@ title: Azure Windows VM 大小 - HPC | Microsoft Docs
 description: 列出 Azure 中适用于 Windows 高性能计算虚拟机的各种大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
 services: virtual-machines-windows
 documentationcenter: ''
-author: jonbeck7
+author: vermagit
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
-ms.author: jonbeck
-ms.openlocfilehash: 58d4ced041b6f5cf767b45191e28a4b395f584b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: jonbeck;amverma
+ms.openlocfilehash: ad490084b34a8bf6e89c7feb14d5cd2e70a8138f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540469"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755317"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>高性能计算 VM 大小
 
@@ -35,20 +35,29 @@ ms.locfileid: "60540469"
 
 * **MPI**：Microsoft MPI (MS-MPI) 2012 R2 或更高版本、Intel MPI Library 5.x
 
-  支持的 MPI 实现使用 Microsoft Network Direct 接口在实例之间通信。 
+  在非 SR-IOV 启用 Vm 上支持的 MPI 实现使用 Microsoft 网络直接 (ND) 界面实例之间进行通信。 在 Azure 上的已启用的 VM 大小 （HB 和 HC 系列） 允许几乎任何版本的 MPI 可与 Mellanox OFED SR IOV。 
 
-* **RDMA 网络地址空间** - Azure 中的 RDMA 网络保留地址空间 172.16.0.0/16。 若要在 Azure 虚拟网络中部署的实例上运行 MPI 应用程序，请确保虚拟网络地址空间不与 RDMA 网络重叠。
+* **InfiniBandDriverWindows VM 扩展**-在支持 RDMA 的 Vm 上添加 InfiniBandDriverWindows 扩展以启用 InfiniBand。 此 Windows VM 扩展安装 （在非 SR-IOV 的 Vm) 上的 Windows Network Direct 驱动程序或 RDMA 连接 Mellanox OFED SR-IOV Vm 上的驱动程序。
+在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。 请注意，HpcVmDrivers VM 扩展已被弃用;它将不会更新。 若要将 VM 扩展添加到 VM，可以使用 [Azure PowerShell](/powershell/azure/overview) cmdlet。 
 
-* **HpcVmDrivers VM 扩展** - 在支持 RDMA 的 VM 上，添加 HpcVmDrivers 扩展以安装 RDMA 连接所需的 Windows 网络设备驱动程序。 （在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。）若要将 VM 扩展添加到 VM，可以使用 [Azure PowerShell](/powershell/azure/overview) cmdlet。 
-
-  
-  以下命令在 *West US* 区域的 *myResourceGroup* 资源组中部署的、支持 RDMA 的现有 VM *myVM* 上安装最新的 HpcVMDrivers 扩展版本 1.1：
+  以下命令在名为支持 RDMA 的现有 VM 上安装最新版本 1.0 InfiniBandDriverWindows 扩展*myVM*中名为的资源组部署*myResourceGroup* 中*美国西部*区域：
 
   ```powershell
-  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
+  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.0"
+  ```
+  或者，可以使用下面的 JSON 元素的简单部署的 Azure 资源管理器模板中包括 VM 扩展：
+  ```json
+  "properties":{
+  "publisher": "Microsoft.HpcCompute",
+  "type": "InfiniBandDriverWindows",
+  "typeHandlerVersion": "1.0",
+  } 
   ```
   
   有关详细信息，请参阅[虚拟机扩展和功能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 还可使用[经典部署模型](classic/manage-extensions.md)中部署的 VM 扩展。
+
+* **RDMA 网络地址空间** - Azure 中的 RDMA 网络保留地址空间 172.16.0.0/16。 若要在 Azure 虚拟网络中部署的实例上运行 MPI 应用程序，请确保虚拟网络地址空间不与 RDMA 网络重叠。
+
 
 ### <a name="cluster-configuration-options"></a>群集配置选项
 
@@ -56,7 +65,7 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 
 * **虚拟机**：在同一可用性集中部署支持 RDMA 的 HPC VM（在使用 Azure 资源管理器部署模型时）。 如果使用经典部署模型，请在同一云服务中部署 VM。 
 
-* **虚拟机规模集**：在 VM 规模集中，请确保将部署限制为单个放置组。 例如，在资源管理器模板中，将 `singlePlacementGroup` 属性设置为 `true`。 
+* **虚拟机规模集**-在虚拟机规模集，请确保限制为单个放置组部署。 例如，在资源管理器模板中，将 `singlePlacementGroup` 属性设置为 `true`。 
 
 * **Azure CycleCloud**：在 [Azure CycleCloud](/azure/cyclecloud/) 中创建 HPC 群集，以在 Windows 节点上运行 MPI 作业。
 
@@ -79,7 +88,3 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 - 若要在 Azure Batch 中运行 MPI 应用程序时使用计算密集型实例，请参阅[在 Azure Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序](../../batch/batch-mpi.md)。
 
 - 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
-
-
-
-

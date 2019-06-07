@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2019
+ms.date: 06/06/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 5a08c2ae0b82841fd15aac4af06a8874cf64ba53
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 04ceac3b06972687ef6cdeac4dad1f07fea611cb
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949993"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754893"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
 
@@ -28,7 +28,7 @@ ms.locfileid: "65949993"
 
 ## <a name="role-definition-structure"></a>角色定义结构
 
-*角色定义*是权限的集合。 它有时简称为“角色”。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出不能执行的操作，或者与基础数据相关的操作。 角色定义具有以下结构：
+*角色定义*是权限的集合。 它有时简称为“角色”  。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出不能执行的操作，或者与基础数据相关的操作。 角色定义具有以下结构：
 
 ```
 Name
@@ -171,7 +171,7 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 - 2018-01-01-preview
 
-Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 Blob 容器的内容。 若要查看和管理队列或 Blob 容器的内容，请单击“存储帐户概述”上的“使用 Azure AD 预览版浏览数据”。
+Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 Blob 容器的内容。 若要查看和管理队列或 Blob 容器的内容，请单击“存储帐户概述”上的“使用 Azure AD 预览版浏览数据”  。
 
 ![使用 Azure AD 预览版探索队列和 Blob 容器](./media/role-definitions/rbac-dataactions-browsing.png)
 
@@ -216,7 +216,7 @@ Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` 属性指定角色可供分配的范围（订阅、资源组或资源）。 可以让角色只在需要它的订阅或资源组中进行分配，而不影响其他订阅或资源组的用户体验。 必须使用至少一个订阅、资源组或资源 ID。
+`AssignableScopes`属性指定具有此角色定义可用的作用域 （订阅、 资源组或资源）。 您可以使该角色可用于分配订阅或需要这样做，资源组中，而不影响的订阅或资源组的其余部分的用户体验。 必须使用至少一个订阅、资源组或资源 ID。
 
 内置角色已将 `AssignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 有效的可分配范围的示例包括：
 

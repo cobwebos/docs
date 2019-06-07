@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5d964ebd40ac1bd8817bc93d5e4f78096f221be2
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 427c4615fcbb036ffff56a8fc592f258fb98845e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977769"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755122"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -56,7 +56,7 @@ ms.locfileid: "65977769"
 | [Avere 操作员](#avere-operator) | 由 Avere vFXT 群集用来管理群集 |
 | [Azure Kubernetes 服务群集管理员角色](#azure-kubernetes-service-cluster-admin-role) | 列出群集管理员凭据操作。 |
 | [Azure Kubernetes 服务群集用户角色](#azure-kubernetes-service-cluster-user-role) | 列出群集用户凭据操作。 |
-| [Azure Maps 数据读取器 （预览版）](#azure-maps-data-reader-preview) | 授予从 Azure Maps 帐户中读取相关数据的权限。 |
+| [Azure Maps 数据读取器 （预览版）](#azure-maps-data-reader-preview) | 授予访问权限以读取映射 Azure maps 帐户的相关的数据。 |
 | [Azure Stack 注册所有者](#azure-stack-registration-owner) | 允许管理 Azure Stack 注册。 |
 | [备份参与者](#backup-contributor) | 允许管理备份服务，但不允许创建保管库以及授予其他人访问权限 |
 | [备份操作员](#backup-operator) | 允许管理备份服务，但删除备份、创建保管库以及授予其他人访问权限除外 |
@@ -76,7 +76,7 @@ ms.locfileid: "65977769"
 | [认知服务数据读者（预览）](#cognitive-services-data-reader-preview) | 可以读取认知服务数据。 |
 | [认知服务用户](#cognitive-services-user) | 允许读取和列出认知服务密钥。 |
 | [Cosmos DB 帐户读者角色](#cosmos-db-account-reader-role) | 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 |
-| [Cosmos DB 运算符](#cosmos-db-operator) | 允许你管理 Azure Cosmos DB 帐户，但不是访问它们中的数据。 可防止对帐户密钥和连接字符串的访问。 |
+| [Cosmos DB 操作员](#cosmos-db-operator) | 允许你管理 Azure Cosmos DB 帐户，但不是访问它们中的数据。 可防止对帐户密钥和连接字符串的访问。 |
 | [CosmosBackupOperator](#cosmosbackupoperator) | 可以为帐户提交 Cosmos DB 数据库或容器的还原请求 |
 | [成本管理参与者](#cost-management-contributor) | 可以查看成本和管理成本配置（例如预算、导出） |
 | [成本管理读者](#cost-management-reader) | 可以查看成本数据和配置（例如预算、导出） |
@@ -91,7 +91,7 @@ ms.locfileid: "65977769"
 | [事件中心数据所有者](#event-hubs-data-owner) | 允许到 Azure 事件中心资源的完全访问权限 | 
 | [EventGrid EventSubscription 参与者](#eventgrid-eventsubscription-contributor) | 可以管理 EventGrid 事件订阅操作。 |
 | [EventGrid EventSubscription 读者](#eventgrid-eventsubscription-reader) | 可以读取 EventGrid 事件订阅。 |
-| [HDInsight 群集运算符](#hdinsight-cluster-operator) | 允许读取和修改 HDInsight 群集配置。 |
+| [HDInsight 群集操作员](#hdinsight-cluster-operator) | 允许你读取和修改 HDInsight 群集配置。 |
 | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 |
 | [智能系统帐户参与者](#intelligent-systems-account-contributor) | 允许管理智能系统帐户，但不允许访问这些帐户。 |
 | [密钥保管库参与者](#key-vault-contributor) | 允许管理密钥保管库，但不允许对其进行访问。 |
@@ -127,7 +127,7 @@ ms.locfileid: "65977769"
 | [空间定位点帐户所有者](#spatial-anchors-account-owner) | 允许管理帐户中的空间定位点，包括删除它们 |
 | [空间定位点帐户读取者](#spatial-anchors-account-reader) | 允许查找并读取帐户中的空间定位点的属性 |
 | [SQL DB 参与者](#sql-db-contributor) | 允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 |
-| [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例和所需网络配置，但无法向其他人授予访问权限。 |
+| [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例和所需的网络配置，但无法向其他人授予访问权限。 |
 | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 |
 | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL 服务器和数据库，但不允许访问它们及其安全相关的策略。 |
 | [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户，但不允许对其进行访问。 |
@@ -334,7 +334,7 @@ ms.locfileid: "65977769"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | **不操作** |  |
-> | Microsoft.ApiManagement/service/users/keys/read | 获取与用户相关联的密钥 |
+> | Microsoft.ApiManagement/service/users/keys/read | 获取与用户关联的密钥 |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |
@@ -356,7 +356,7 @@ ms.locfileid: "65977769"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | **不操作** |  |
-> | Microsoft.ApiManagement/service/users/keys/read | 获取与用户相关联的密钥 |
+> | Microsoft.ApiManagement/service/users/keys/read | 获取与用户关联的密钥 |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |
@@ -582,7 +582,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 授予从 Azure Maps 帐户中读取相关数据的权限。 |
+> | **说明** | 授予访问权限以读取映射 Azure maps 帐户的相关的数据。 |
 > | **Id** | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | **操作** |  |
 > | *无* |  |
@@ -834,7 +834,7 @@ ms.locfileid: "65977769"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="blockchain-member-node-access-preview"></a>Blockchain 成员节点访问(预览版)
+## <a name="blockchain-member-node-access-preview"></a>区块链成员节点访问 （预览）
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1236,7 +1236,7 @@ ms.locfileid: "65977769"
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | 列出与订单相关的未加密凭据。 |
 > | Microsoft.Databox/locations/availableSkus/action | 此方法返回可用 SKU 列表。 |
-> | Microsoft.Databox/locations/validateAddress/action | 验证送货地址，并提供备用地址(如有)。 |
+> | Microsoft.Databox/locations/validateAddress/action | 验证送货地址，并提供备用地址（如有）。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | **不操作** |  |
@@ -1472,7 +1472,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许读取和修改 HDInsight 群集配置。 |
+> | **说明** | 允许你读取和修改 HDInsight 群集配置。 |
 > | **Id** | 61ed4efc-fab3-44fd-b111-e24485cc132a |
 > | **操作** |  |
 > | Microsoft.HDInsight/*/read |  |
@@ -2360,7 +2360,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理 SQL 托管实例和所需网络配置，但无法向其他人授予访问权限。 |
+> | **说明** | 允许你管理 SQL 托管实例和所需的网络配置，但无法向其他人授予访问权限。 |
 > | **Id** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
 > | **操作** |  |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -2533,7 +2533,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 读取、写入和删除 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。 |
+> | **说明** | 读取、写入和删除 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 > | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | **操作** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | 删除容器。 |
@@ -2552,7 +2552,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 提供对 Azure 存储 blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。 |
+> | **说明** | 提供对 Azure 存储 blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 > | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **操作** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/* | 对容器的完全权限。 |
@@ -2567,7 +2567,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 读取和列出 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。 |
+> | **说明** | 读取和列出 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 > | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **操作** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | 返回容器或容器列表。 |
@@ -2582,7 +2582,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 读取、写入和删除 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。 |
+> | **说明** | 读取、写入和删除 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 > | **Id** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | **操作** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/delete | 删除队列。 |
@@ -2601,7 +2601,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 在 Azure 存储队列中扫视、检索和删除消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。 |
+> | **说明** | 在 Azure 存储队列中扫视、检索和删除消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 > | **Id** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | **操作** |  |
 > | *无* |  |
@@ -2617,7 +2617,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 向 Azure 存储队列添加消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。 |
+> | **说明** | 向 Azure 存储队列添加消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 > | **Id** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | **操作** |  |
 > | *无* |  |
@@ -2632,7 +2632,7 @@ ms.locfileid: "65977769"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 读取和列出 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。 |
+> | **说明** | 读取和列出 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 |
 > | **Id** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **操作** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | 返回队列或队列列表。 |

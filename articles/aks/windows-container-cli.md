@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/06/2019
 ms.author: twhitney
-ms.openlocfilehash: 5f727cb5c56c31e769edcb365f6d571253174567
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: cdcc1b985c570d1af4bbb33ac29a37e63b1dfa90
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305306"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752388"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 的 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -86,7 +86,6 @@ az provider register --namespace Microsoft.ContainerService
 * AKS 群集可以具有最多八个节点池。
 * AKS 群集可以在这些八个节点的池之间具有最多 400 节点。
 * Windows Server 节点池名称的限制为 6 个字符。
-* Windows Server 节点池不可用在加拿大区域这一次。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

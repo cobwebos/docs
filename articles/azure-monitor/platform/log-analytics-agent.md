@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 06/06/2019
 ms.author: magoedte
-ms.openlocfilehash: b410dab40d5434a6f23950a9f151e50240ace63b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916366"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751981"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>使用 Azure Log Analytics 代理收集日志数据
 
@@ -30,11 +30,11 @@ Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS 
 
 ![Log Analytics 代理通信示意图](./media/log-analytics-agent/log-analytics-agent-01.png)
 
-在之前分析和收集的数据操作，首先必须安装并连接你想要将数据发送到 Azure Monitor 服务的计算机的所有代理。 可以使用适用于 Windows 和 Linux 的 Azure Log Analytics VM 扩展在 Azure VM 上安装代理；对于混合环境中的计算机，可以使用 Azure 自动化中的安装程序、命令行或 Desired State Configuration (DSC) 来安装代理。 
+在分析和处理收集的数据之前，首先需要为要将数据发送到 Azure Monitor 服务的所有计算机安装代理并进行连接。 可以使用适用于 Windows 和 Linux 的 Azure Log Analytics VM 扩展在 Azure VM 上安装代理；对于混合环境中的计算机，可以使用 Azure 自动化中的安装程序、命令行或 Desired State Configuration (DSC) 来安装代理。 
 
-适用于 Linux 和 Windows 代理进行出站通信到 Azure Monitor 服务通过 TCP 端口 443，并且如果计算机连接通过防火墙或代理服务器进行通信通过 Internet 上，查看以下要求，以了解网络配置必填。 如果你的 IT 安全策略不允许计算机上要连接到 Internet 的网络，你可以设置[Log Analytics 网关](gateway.md)，然后配置代理以通过 Azure Monitor 日志到网关连接。 然后，该代理可以接收配置信息并发送具体取决于哪些数据收集规则收集的数据和监视解决方案已启用在工作区中。 
+适用于 Linux 和 Windows 的代理通过 TCP 端口 443 与 Azure Monitor 服务进行出站通信；如果计算机通过防火墙或代理服务器连接以通过 Internet 进行通信，请查看以下要求来了解所需的网络配置。 如果 IT 安全策略不允许网络上的计算机连接到 Internet，则可以设置 [Log Analytics 网关](gateway.md)并将代理配置为通过该网关连接到 Azure Monitor 日志。 然后，代理可以接收配置信息，并发送根据已在工作区中启用的数据收集规则和监视解决方案收集的数据。 
 
-如果所监视的 System Center Operations Manager 2012 R2 或更高版本的计算机，它可以是与 Azure Monitor 服务以便收集数据并转发到该服务，且仍受监视的多宿主[Operations Manager](../../azure-monitor/platform/om-agents.md)。 与 Linux 计算机，代理不包括运行状况服务组件，因为 Windows 代理执行，并且收集信息并处理由代表其自身的管理服务器。 与 Operations Manager 以不同的方式监视 Linux 计算机，因为用户接收配置或直接收集数据，并通过管理组转发，类似 Windows 代理托管系统执行的操作。 因此，这种情况下不支持报告到 Operations Manager 的 Linux 计算机。  
+如果使用 System Center Operations Manager 2012 R2 或更高版本监视计算机，该计算机可以与 Azure Monitor 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 [Operations Manager](../../azure-monitor/platform/om-agents.md) 监视。 对于 Linux 计算机，代理不像 Windows 代理那样包含运行状况服务组件，信息由管理服务器代表它收集和处理。 由于 Linux 计算机与 Operations Manager 的监视方式不同，因此它们不会直接接收配置或收集数据，而是像 Windows 代理管理的系统那样通过管理组转发。 因此，向 OperationsManager 报告的 Linux 计算机不支持此方案。  
 
 Windows 代理最多可以向四个 Log Analytics 工作区报告，而 Linux 代理只支持向单个工作区报告。  
 
@@ -59,7 +59,8 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 * 不支持新版本的 AMI。  
 * 默认仅支持运行 SSL 1.x 的版本。
 
-如果使用的是当前不受支持且与我们的支持模型不一致的发行版或版本，我们建议对此存储库创建分支，并接受 Microsoft 支持不会为已分支的代理版本提供帮助。
+>[!NOTE]
+>如果使用的是当前不受支持且与我们的支持模型不一致的发行版或版本，我们建议对此存储库创建分支，并接受 Microsoft 支持不会为已分支的代理版本提供帮助。
 
 * Amazon Linux 2017.09 (x64)
 * CentOS Linux 6 (x86/x64) 和 7 (x64)  
@@ -72,6 +73,21 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 >[!NOTE]
 >仅 x86_x64 平台（64 位）支持 OpenSSL 1.1.0，任何平台均不支持早于 1.x 版本的 OpenSSL。
 >
+
+### <a name="agent-prerequisites"></a>代理先决条件
+
+下表列出了在安装代理的受支持 Linux 发行版的所需的包。
+
+|所需的包 |描述 |最低版本 |
+|-----------------|------------|----------------|
+|Glibc |    GNU C 库 | 2.5-12 
+|Openssl    | OpenSSL 库 | 1.0.x 或 1.1.x |
+|Curl | cURL Web 客户端 | 7.15.5 |
+|Python-ctype | | 
+|PAM | 可插入验证模块 | | 
+
+>[!NOTE]
+>收集 Syslog 消息时需要 rsyslog 或 syslog ng。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 rsyslog 守护程序以替换 sysklog。
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 协议
 为了确保传输到 Azure Monitor 日志中的数据的安全性，我们强烈建议你配置代理至少使用传输层安全 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。  有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)。 
@@ -90,7 +106,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接并注册自动化服务以在环境中使用 Runbook，则它必须可以访问[针对混合 Runbook 辅助角色配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 URL。 
 
-Windows 和 Linux 代理支持通过代理服务器或 Log Analytics 网关与 Azure Monitor 使用 HTTPS 协议进行通信。  并同时支持匿名身份验证和基本身份验证（用户名/密码）。  对于直接连接到服务的 Windows 代理，代理配置在安装过程中指定，或[在部署后](agent-manage.md#update-proxy-settings)从控制面板或使用 PowerShell 指定。  
+Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log Analytics 网关与 Azure Monitor 进行通信。  并同时支持匿名身份验证和基本身份验证（用户名/密码）。  对于直接连接到服务的 Windows 代理，代理配置在安装过程中指定，或[在部署后](agent-manage.md#update-proxy-settings)从控制面板或使用 PowerShell 指定。  
 
 对于 Linux 代理，代理服务器在安装过程中指定，或者[在安装后](agent-manage.md#update-proxy-settings)通过修改 proxy.conf 配置文件来指定。  Linux 代理的代理配置值具有以下语法：
 
@@ -113,7 +129,7 @@ Windows 和 Linux 代理支持通过代理服务器或 Log Analytics 网关与 A
 > 如果密码中使用了特殊字符（如“\@”），则会收到代理连接错误，因为值解析不正确。  若要解决此问题，请使用 [URLDecode](https://www.urldecoder.org/) 等工具在 URL 中对密码进行编码。  
 
 ## <a name="install-and-configure-agent"></a>安装并配置代理 
-可以使用不同的方法，具体取决于您的要求完成你的 Azure 订阅或混合环境中的计算机将直接与 Azure Monitor 日志。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
+可以根据要求使用不同的方法，将 Azure 订阅或混合环境中的计算机直接连接到 Azure Monitor 日志。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
 
 |源 | 方法 | 描述|
 |-------|-------------|-------------|

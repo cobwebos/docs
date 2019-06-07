@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0f8a56df5b41236256115ced0d46a87c5ee91a5
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: df05bd984667283b0ccc143ba14fff6b35d69144
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400234"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753172"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动化的机器学习实验
 
@@ -134,7 +134,7 @@ y_valid |   Pandas 数据帧或 Numpy 数组 | data_train、label | （可选）
 sample_weight | Pandas 数据帧或 Numpy 数组 |   data_train、label、columns| （可选）每个样本的权重值。  需要为数据点分配不同的权重时使用
 sample_weight_valid | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |    （可选）每个验证样本的权重值。  如果未指定，则在 train 与 validate 之间拆分 sample_weight
 data_train |    Pandas 数据帧 |  X、y、X_valid、y_valid |    用于训练的所有数据（特征+标签）
-label | string  | X、y、X_valid、y_valid |  data_train 中的哪个列表示标签
+label | 字符串  | X、y、X_valid、y_valid |  data_train 中的哪个列表示标签
 列 | 字符串数组  ||  （可选）用于特征的列的白名单 
 cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行交叉验证的索引列表 
 
@@ -158,7 +158,7 @@ cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行�
 
 接下来，确定要在何处训练模型。 自动化机器学习训练试验可在以下计算选项中运行：
 *   本地台式机或便携式计算机等本地计算机  – 如果数据集较小，并且仍处于探索阶段，则通常使用此选项。
-*   云中的远程计算机 – [Azure 机器学习托管计算](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets)是一个托管服务，可用于在 Azure 虚拟机群集上训练机器学习模型。
+*   云中的远程计算机 – [Azure 机器学习托管计算](concept-compute-target.md#amlcompute)是一个托管服务，可用于在 Azure 虚拟机群集上训练机器学习模型。
 
 有关包含本地和远程计算目标的示例 Notebook，请参阅 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)。
 

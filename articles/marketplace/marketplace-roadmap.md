@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: BrianLevenson
-ms.openlocfilehash: 881d62cd7b7b9d4434a807a2aab62b75e9a8e97b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 5e20d65160e66937668d9f504245a8c042d58fee
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937775"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751656"
 ---
 # <a name="azure-marketplace-and-appsource-roadmap"></a>Azure 市场和 AppSource 路线图
 
@@ -21,12 +21,15 @@ ms.locfileid: "64937775"
 
 欢迎提供建议！ 加入 [Microsoft 合作伙伴社区](https://www.microsoftpartnercommunity.com/)中的对话，获取新功能、计划和事件的最新更新。
 
+
 ## <a name="roadmap"></a>路线图
 ![](./media/marketplace-publishers-guide/roadmap.png)
+
 
 ## <a name="recent-releases"></a>最新版本
 
 实时功能后，它将删除从路线图。 添加到 Marketplace 的功能包括以下内容。
+
 
 ### <a name="for-march-2019"></a>为 2019 年 3 月
 
@@ -34,12 +37,11 @@ ms.locfileid: "64937775"
 * [发布产品/服务集成到 CSP 通道 (ISV)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)
 * [转售 Marketplace 产品/服务 (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
 * [标准合同](https://docs.microsoft.com/azure/marketplace/standard-contract)
-* [SaaS 执行 API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis)
+* [SaaS 执行 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-apis)
 * [Marketplace 地区和货币](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
 * [卖方 Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+
 
 ## <a name="next-steps"></a>后续步骤
 
 访问 [Azure 市场和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)页。
-
----

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3fa463cb7178fa5cc2108383047a7ca94ffb48a3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797376"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755057"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>在 Azure 搜索中监视资源使用情况和查询活动
 
@@ -28,17 +28,17 @@ ms.locfileid: "65797376"
 
 ## <a name="metrics-at-a-glance"></a>指标概览
 
-内置到“概览”页中的“使用情况”和“监视”部分会针对资源使用情况和查询执行指标进行报告。 只要你开始使用此服务，就可以使用此信息，不需进行配置。 此页每隔几分钟就会刷新一次。 对于[将哪个层用于生产工作负荷](search-sku-tier.md)或是否要[调整活动副本和分区的数目](search-capacity-planning.md)这样的问题，可以根据这些指标进行最终决策，因为这些指标会显示资源的消耗速度，以及当前配置处理现有负载的有效程度。
+内置到“概览”页中的“使用情况”和“监视”部分会针对资源使用情况和查询执行指标进行报告。   只要你开始使用此服务，就可以使用此信息，不需进行配置。 此页每隔几分钟就会刷新一次。 对于[将哪个层用于生产工作负荷](search-sku-tier.md)或是否要[调整活动副本和分区的数目](search-capacity-planning.md)这样的问题，可以根据这些指标进行最终决策，因为这些指标会显示资源的消耗速度，以及当前配置处理现有负载的有效程度。
 
-“使用情况”选项卡显示资源可用性（相当于当前[限制](search-limits-quotas-capacity.md)而言）。 下图描述免费服务的情况，该服务的上限是每个类型 3 个对象，最大存储为 50 MB。 “基本”或“标准”服务的限制更高，在增加分区计数的情况下，最大存储会按比例增大。
+“使用情况”  选项卡显示资源可用性（相当于当前[限制](search-limits-quotas-capacity.md)而言）。 下图描述免费服务的情况，该服务的上限是每个类型 3 个对象，最大存储为 50 MB。 “基本”或“标准”服务的限制更高，在增加分区计数的情况下，最大存储会按比例增大。
 
 ![相对于有效限制的使用状态](./media/search-monitor-usage/usage-tab.png
  "相对于有效限制的使用状态")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>每秒查询次数 (QPS) 和其他指标
 
-“监视”选项卡显示每秒搜索查询数（简称 QPS，每分钟汇总一次）之类的指标的移动平均。 
-搜索延迟是搜索服务处理搜索查询所需的时间（每分钟汇总一次）。 限制的搜索查询百分比（未显示）是受限制的搜索查询的百分比（也是每分钟汇总一次）。
+“监视”选项卡  显示每秒搜索查询数  （简称 QPS，每分钟汇总一次）之类的指标的移动平均。 
+搜索延迟是搜索服务处理搜索查询所需的时间（每分钟汇总一次）。  限制的搜索查询百分比（未显示）是受限制的搜索查询的百分比（也是每分钟汇总一次）。 
 
 这些数字是大概的数字，只是让你大致了解系统处理请求的情况。 实际的 QPS 可能高于或低于门户中报告的数字。
 
@@ -48,7 +48,7 @@ ms.locfileid: "65797376"
 
 **活动日志**从 Azure 资源管理器收集信息。 例如，在活动日志中发现的信息包括：创建或删除服务、更新资源组、查看名称可用性，或者获取处理请求所需的服务访问密钥。 
 
-可以通过左侧导航窗格、顶部窗口命令栏中的“通知”或者“诊断并解决问题”页访问**活动日志**。
+可以通过左侧导航窗格、顶部窗口命令栏中的“通知”或者“诊断并解决问题”页访问**活动日志**。 
 
 对于服务内任务（例如创建索引或删除数据源），你会看到针对每个请求的常规通知（例如“获取管理密钥”），但看不到具体操作本身。 对于这种级别的信息，必须启用附加监视解决方案。
 
@@ -60,12 +60,12 @@ Azure 搜索不在其管理的对象之外存储任何数据，这意味着日�
 
 | 资源 | 用途 |
 |----------|----------|
-| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | 记录的事件和查询指标，基于下面的架构上与应用程序中的用户事件关联起来。 这是唯一会考虑用户操作或信号的解决方案，它会映射用户发起的搜索中的事件，而不会筛选应用程序代码提交的请求。 若要使用此方法，请将检测代码复制并粘贴到源文件中，以便将请求信息路由到 Application Insights。 有关详细信息，请参阅[搜索流量分析](search-traffic-analytics.md)。 |
-| [Azure Monitor 日志](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 记录的事件和查询指标，基于下面的架构。 事件会记录到 Log Analytics 工作区。 可以针对工作区运行查询，以便从日志返回详细信息。 有关详细信息，请参阅[开始使用 Azure Monitor 日志](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
+| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | 记录的事件和查询指标，基于下面的架构并与应用中的用户事件关联。 这是唯一会考虑用户操作或信号的解决方案，它会映射用户发起的搜索中的事件，而不会筛选应用程序代码提交的请求。 若要使用此方法，请将检测代码复制并粘贴到源文件中，以便将请求信息路由到 Application Insights。 有关详细信息，请参阅[搜索流量分析](search-traffic-analytics.md)。 |
+| [Azure Monitor 日志](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 记录的事件和查询指标，基于下面的架构。 事件记录到 Log Analytics 工作区。 可以针对工作区运行查询，以便从日志返回详细信息。 有关详细信息，请参阅 [Azure Monitor 日志入门](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 记录的事件和查询指标，基于下面的架构。 事件记录到 Blob 容器并存储在 JSON 文件中。 使用 JSON 编辑器来查看文件内容。|
 | [事件中心](https://docs.microsoft.com/azure/event-hubs/) | 记录的事件和查询指标，基于本文中记录的架构。 对于很大的日志，请选择此项作为备用数据收集服务。 |
 
-Azure Monitor 日志和 Blob 存储都可用作一项免费共享服务，以便您可以尝试一下你的 Azure 订阅的生存期内无需任何费用。 Application Insights 可以免费注册和使用，前提是应用程序数据大小不超出特定限制（有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/monitor/)）。
+Azure Monitor 日志和 Blob 存储均以免费共享服务的形式提供，让你可以在 Azure 订阅的生存期内免费试用它。 Application Insights 可以免费注册和使用，前提是应用程序数据大小不超出特定限制（有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/monitor/)）。
 
 下一部分详述如何通过多个步骤来启用和使用 Azure Blob 存储，以便收集和访问 Azure 搜索操作创建的日志数据。
 
@@ -77,15 +77,15 @@ Azure Monitor 日志和 Blob 存储都可用作一项免费共享服务，以便
 
 1. [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)（如果还没有）。 可以将它置于 Azure 搜索所在的资源组中，这样当你以后需要删除本练习中使用的所有资源时，就可以简化清理过程。
 
-   你的存储帐户必须位于与 Azure 搜索相同的区域。
+   存储帐户必须存在于 Azure 搜索所在的区域。
 
-2. 打开搜索服务的“概览”页。 在左侧导航窗格中，向下滚动到“监视”，然后单击“启用监视”。
+2. 打开搜索服务的“概览”页。 在左侧导航窗格中，向下滚动到“监视”，然后单击“启用监视”。  
 
    ![启用监视](./media/search-monitor-usage/enable-monitoring.png "启用监视")
 
-3. 选择要导出的数据：日志和/或指标。 可以将其复制到存储帐户，将其发送到事件中心或将其导出到 Azure Monitor 日志。
+3. 选择要导出的数据：日志和/或指标。 可将数据复制到存储帐户，将其发送到事件中心，或将其导出到 Azure Monitor 日志。
 
-   若要存档到 Blob 存储，只有存储帐户必须存在。 容器和 blob 时将创建按需导出日志数据。
+   若要存档到 Blob 存储，只有存储帐户必须存在。 容器和 Blob 会在导出日志数据时根据需要创建。
 
    ![配置 Blob 存储存档](./media/search-monitor-usage/configure-blob-storage-archive.png "配置 Blob 存储存档")
 
@@ -98,7 +98,7 @@ Azure Monitor 日志和 Blob 存储都可用作一项免费共享服务，以便
 * insights-logs-operationlogs：用于搜索流量日志
 * insights-metrics-pt1m：用于指标
 
-**需要一个小时之前容器会在 Blob 存储中。没有一个 blob，每小时，每个容器。**
+**一个小时后，容器才会出现在 Blob 存储中。每个容器每小时会有一个 Blob。**
 
 可以使用 [Visual Studio Code](#download-and-open-in-visual-studio-code) 或其他 JSON 编辑器来查看文件。 
 
@@ -116,7 +116,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
 | resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
 | operationName |字符串 |“Query.Search” |操作的名称 |
-| operationVersion |string |"2019-05-06" |使用的 api-version |
+| operationVersion |string |“2019-05-06” |使用的 api-version |
 | category |字符串 |“OperationLogs” |常量 |
 | resultType |字符串 |“Success” |可能的值：Success 或 Failure |
 | resultSignature |int |200 |HTTP 结果代码 |
@@ -125,10 +125,10 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 **属性架构**
 
-| 名称 | Type | 示例 | 说明 |
+| Name | Type | 示例 | 说明 |
 | --- | --- | --- | --- |
 | 描述 |字符串 |“GET /indexes('content')/docs” |操作的终结点 |
-| 查询 |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |查询参数 |
+| 查询 |字符串 |"?search=AzureSearch&$count=true&api-version=2019-05-06" |查询参数 |
 | 文档 |int |42 |处理的文档数目 |
 | IndexName |字符串 |“testindex” |与操作关联的索引名称 |
 
@@ -161,7 +161,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 1. 在 Azure 门户中打开存储帐户。 
 
-2. 在左侧导航窗格中，单击“Blob”。 此时会看到 **insights-logs-operationlogs** 和 **insights-metrics-pt1m**。 这些容器是在将日志数据导出到 Blob 存储时由 Azure 搜索创建的。
+2. 在左侧导航窗格中，单击“Blob”  。 此时会看到 **insights-logs-operationlogs** 和 **insights-metrics-pt1m**。 这些容器是在将日志数据导出到 Blob 存储时由 Azure 搜索创建的。
 
 3. 单击文件夹层次结构，直至找到 .json 文件。  通过上下文菜单来下载文件。
 
@@ -175,7 +175,7 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标、
 * [计数文档](/rest/api/searchservice/count-documents)
 * [获取索引器状态](/rest/api/searchservice/get-indexer-status)
 
-若要使用 PowerShell 或 Azure CLI 来启用监视，请参阅[此处](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs)的文档。
+若要使用 PowerShell 或 Azure CLI 来启用监视，请参阅[此处](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)的文档。
 
 ## <a name="next-steps"></a>后续步骤
 

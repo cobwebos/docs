@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
-ms.openlocfilehash: 935d2e1c96705506636c2883113a64bb70c39336
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806186"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752857"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何管理在合作伙伴中心商业 Marketplace 帐户 
 
@@ -177,7 +177,7 @@ ms.locfileid: "65806186"
 * 如果选择多个用户将添加到合作伙伴中心帐户，你必须将它们分配相同的角色或自定义权限集。 若要添加多个用户具有不同的角色权限，请为每个角色或自定义权限集重复这些步骤。
 3.  在完成选择用户，请单击**添加所选**。
 5.  在中**角色**部分中，指定的角色或所选用户的自定义的权限。
-6.  选择“保存”。
+6.  选择“保存”。 
 
 #### <a name="create-new-users"></a>创建新用户
 
@@ -189,7 +189,7 @@ ms.locfileid: "65806186"
 1. 如果选中的框**使此用户的全局管理员**，将需要提供**电子邮件密码恢复**要恢复其密码，如有必要的用户。
 1. 在中**组成员身份**部分中，选择新用户属于任何组。
 1. 在中**角色**部分中，指定的角色或用户的自定义的权限。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 在合作伙伴中心中创建新的用户还将创建该用户的帐户与你登录到工作帐户 （Azure AD 租户） 中。 对合作伙伴中心中的用户的名称进行更改将在你组织的工作帐户 （Azure AD 租户） 中进行相同的更改。
 
@@ -200,7 +200,7 @@ ms.locfileid: "65806186"
 1. 转到**用户**(下**帐户设置**)，选择**将用户添加**，然后选择**通过电子邮件邀请用户**。
 2. 输入一个或多个电子邮件地址 （最多 10)，由逗号或分号分隔。
 3. 在中**角色**部分中，指定的角色或用户的自定义的权限。
-4. 选择“保存”。
+4. 选择“保存”。 
 
 你受邀用户将收到电子邮件邀请以加入你的合作伙伴中心帐户。 将你的工作帐户 （Azure AD 租户） 中创建新的来宾用户帐户。 每个用户将需要接受其邀请才能访问你的帐户。
 
@@ -236,7 +236,7 @@ ms.locfileid: "65806186"
 如果选择多个组将添加到合作伙伴中心帐户，你必须将它们分配相同的角色或自定义权限集。 若要添加多个具有不同的角色权限组，请为每个角色或自定义权限集重复这些步骤。
 3.  在完成选择组，请单击**添加所选**。
 4.  在中**角色**部分中，指定的角色或所选的组的自定义的权限。 组的所有成员将都能够访问合作伙伴中心帐户的权限应用于组，而不考虑的角色和权限与其单个帐户相关联。
-5.  选择“保存”。
+5.  选择“保存”。 
 
 时添加现有组，是该组的成员的每个用户将能够访问合作伙伴中心帐户，与关联的组分配角色的权限。
 
@@ -250,7 +250,7 @@ ms.locfileid: "65806186"
 4.  指定的角色或组的自定义的权限。 组的所有成员将都能够访问合作伙伴中心帐户的权限在这里，应用而不考虑其个人帐户与关联的角色/权限。
 5.  从显示的列表中选择新组的用户。 可以使用搜索框搜索特定用户。
 6.  完成用户的选择，单击**添加所选**以将其添加到新的组。
-7.  选择“保存”。
+7.  选择“保存”。 
 
 请注意，此创建新组将在你组织的工作帐户 （Azure AD 租户） 中，而不仅仅是在合作伙伴中心帐户中。
 
@@ -270,7 +270,7 @@ ms.locfileid: "65806186"
 2.  从显示的列表中选择一个或多个 Azure AD 应用程序。 您可以使用搜索框搜索特定于 Azure AD 应用程序。 如果选择多个 Azure AD 应用程序将添加到合作伙伴中心帐户，你必须将它们分配相同的角色或自定义权限集。 若要添加多个 Azure AD 应用程序具有不同的角色权限，请为每个角色或自定义权限集重复这些步骤。
 3.  完成选择 Azure AD 应用程序后，单击**添加所选**。
 5.  在中**角色**部分中，指定的角色或自定义的权限为所选 Azure AD 应用程序。
-6.  选择“保存”。
+6.  选择“保存”。 
 
 #### <a name="add-new-azure-ad-applications"></a>添加新的 Azure AD 应用程序 
 
@@ -279,9 +279,9 @@ ms.locfileid: "65806186"
 1.  从**用户**页 (下**帐户设置**)，选择**将 Azure AD 应用程序添加**。
 2.  在下一页上，选择**新建 Azure AD 应用程序**。
 3.  输入**回复 URL**新的 Azure AD 应用程序。 这是用户可以登录并使用 Azure AD 应用程序 （有时也称为应用 URL 或单一登录 URL） 的 URL。 **回复 URL**不能超过 256 个字符，并且必须是唯一在你的目录。
-4.  输入**应用程序 ID URI**新的 Azure AD 应用程序。 这是 Azure AD 应用程序时的单一登录请求发送到 Azure AD 呈现的逻辑标识符。 请注意，**应用程序 ID URI**必须是唯一的目录中每个 Azure AD 应用程序。 此 ID 不能超过 256 个字符。 有关应用程序 ID URI 的详细信息，请参阅[将应用程序集成与 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#changing-the-application-registration-to-support-multi-tenant)。
+4.  输入**应用程序 ID URI**新的 Azure AD 应用程序。 这是 Azure AD 应用程序时的单一登录请求发送到 Azure AD 呈现的逻辑标识符。 请注意，**应用程序 ID URI**必须是唯一的目录中每个 Azure AD 应用程序。 此 ID 不能超过 256 个字符。 有关应用程序 ID URI 的详细信息，请参阅[将应用程序集成与 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts)。
 5.  在中**角色**部分中，指定的角色或 Azure AD 应用程序的自定义的权限。
-6.  选择“保存”。
+6.  选择“保存”。 
 
 添加或创建一个 Azure AD 应用程序后，您可以返回到**用户**部分，并选择要查看应用程序，包括租户 ID、 客户端 ID、 回复 URL 和应用程序 ID URI 设置的应用程序名称。
 

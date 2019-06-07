@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 06/06/2019
 ms.author: iainfou
-ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475575"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752176"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>预览版-有关群集节点和控制对所需的端口和服务在 Azure Kubernetes 服务 (AKS) 的访问限制传出流量
 
-默认情况下，AKS 群集中有不受限制的出站 （传出） internet 访问权限。 网络访问此级别允许节点和运行以根据需要访问外部资源的服务。 如果你想要将限制传出流量，有限的数量的端口和地址必须是可访问以保持正常运行的群集维护任务。 然后您的群集配置为仅使用从 Microsoft 容器注册表 (MCR) 或 Azure 容器注册表 (ACR) 不外部公共存储库的基础系统容器映像。
+默认情况下，AKS 群集中有不受限制的出站 （传出） internet 访问权限。 网络访问此级别允许节点和运行以根据需要访问外部资源的服务。 如果你想要将限制传出流量，有限的数量的端口和地址必须是可访问以保持正常运行的群集维护任务。 然后您的群集配置为仅使用从 Microsoft 容器注册表 (MCR) 或 Azure 容器注册表 (ACR) 不外部公共存储库的基础系统容器映像。 必须配置你首选的防火墙和安全规则，以允许这些所需的端口和地址。
 
 本文详细介绍哪些网络端口和完全限定的域名 (Fqdn) 的必需和可选如果你限制在 AKS 群集中的出口流量。  此功能目前处于预览状态。
 
@@ -28,7 +28,7 @@ ms.locfileid: "66475575"
 
 ## <a name="before-you-begin"></a>开始之前
 
-需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+你需要 Azure CLI 版本 2.0.66 或更高版本安装和配置。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 若要创建的 AKS 群集，可以限制传出流量，请先启用你的订阅上的一个功能标志。 此功能注册配置任何 AKS 群集中创建要使用的基础系统从 MCR 或 ACR 的容器映像。 若要注册*AKSLockingDownEgressPreview*功能标志，请使用[az 功能注册][ az-feature-register]命令，在下面的示例所示：
 
@@ -54,7 +54,7 @@ az provider register --namespace Microsoft.ContainerService
 
 若要增加 AKS 群集的安全，您可能希望限制传出流量。 群集配置为提取从 MCR 或 ACR 的容器映像的基础系统。 如果你锁定以这种方式的传出流量，必须定义特定的端口和以便正确地与所需的外部服务进行通信的 AKS 节点的 Fqdn。 如果没有这些授权的端口和 Fqdn，AKS 节点不能与 API 服务器进行通信或安装核心组件。
 
-可以使用[Azure 防火墙][ azure-firewall]或第三方防火墙设备来保护你的出口流量并定义这些所需端口和地址。
+可以使用[Azure 防火墙][ azure-firewall]或第三方防火墙设备来保护你的出口流量并定义这些所需端口和地址。 AKS 不为您自动创建这些规则。 以下端口和地址是用于引用在网络防火墙中创建合适的规则。
 
 在 AKS，有两个集的端口和地址：
 
@@ -70,23 +70,26 @@ az provider register --namespace Microsoft.ContainerService
 
 * TCP 端口*443*
 * TCP 端口*9000*和 TCP 端口*22*的隧道前端 pod 进行通信与 API 服务器上的隧道端。
+    * 若要获取更具体，请参阅 * *.hcp。\<位置\>。 azmk8s.io*和 * *。 tun.\<位置\>。 azmk8s.io*下表中的地址。
 
 以下 FQDN / 应用程序规则所需：
 
-| FQDN                      | Port      | 用途      |
-|---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS:443,22,9000 | 此地址是 API 服务器终结点。 |
-| aksrepos.azurecr.io       | HTTPS:443 | 此地址，则需要访问映像在 Azure 容器注册表 (ACR)。 |
-| * .blob.core.windows.net   | HTTPS:443 | 此地址是映像存储在 ACR 中的后端存储区。 |
-| mcr.microsoft.com         | HTTPS:443 | 此地址，则需要访问映像中 Microsoft 容器注册表 (MCR)。 |
-| management.azure.com      | HTTPS:443 | 此地址是 Kubernetes GET/PUT 操作所必需的。 |
-| login.microsoftonline.com | HTTPS:443 | 此地址是必需的 Azure Active Directory 身份验证。 |
+| FQDN                       | Port      | 用途      |
+|----------------------------|-----------|----------|
+| *.hcp.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | 此地址是 API 服务器终结点。 替换 *\<位置\>* 与部署 AKS 群集所在的区域。 |
+| *.tun.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | 此地址是 API 服务器终结点。 替换 *\<位置\>* 与部署 AKS 群集所在的区域。 |
+| aksrepos.azurecr.io        | HTTPS:443 | 此地址，则需要访问映像在 Azure 容器注册表 (ACR)。 |
+| * .blob.core.windows.net    | HTTPS:443 | 此地址是映像存储在 ACR 中的后端存储区。 |
+| mcr.microsoft.com          | HTTPS:443 | 此地址，则需要访问映像中 Microsoft 容器注册表 (MCR)。 |
+| *.cdn.mscr.io              | HTTPS:443 | 此地址是必需的支持的 Azure 内容分发网络 (CDN) MCR 存储。 |
+| management.azure.com       | HTTPS:443 | 此地址是 Kubernetes GET/PUT 操作所必需的。 |
+| login.microsoftonline.com  | HTTPS:443 | 此地址是必需的 Azure Active Directory 身份验证。 |
+| api.snapcraft.io           | HTTPS:443, HTTP:80 | 此地址需要 Linux 节点上安装管理包。 |
+| ntp.ubuntu.com             | UDP:123   | 此地址是必需的 Linux 节点上的 NTP 时间同步。 |
+| *.docker.io                | HTTPS:443 | 此地址需要拉取隧道前面的所需的容器映像。 |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>可选建议地址和端口为 AKS 群集
 
-以下出站端口 / 不需要的 AKS 群集才能正常工作，但建议使用网络规则：
-
-* UDP 端口*123* NTP 时间同步
 * UDP 端口*53* dns
 
 以下 FQDN / 应用程序规则建议用于 AKS 群集才能正常工作：

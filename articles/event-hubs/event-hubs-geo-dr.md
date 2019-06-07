@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7b3b3b019df70b6c27833afdd0447ecf32da32ff
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: a1dafb8e4c16a59bfed51016ce9ccb0ec3eb7d6c
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305011"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754762"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
@@ -98,7 +98,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
  
 2. 未复制数据是指未复制当前处于活动状态的会话。 此外，重复检测和计划消息可能无法正常工作。 新的会话、计划消息和新的重复项可以正常工作。 
 
-3. 故障转移复杂的分布式基础结构应至少[演练](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation)一次。 
+3. 故障转移复杂的分布式基础结构应至少[演练](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)一次。 
 
 4. 同步实体可能需要一些时间，每分钟大约 50-100 个实体。
 

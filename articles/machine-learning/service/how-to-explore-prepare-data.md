@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: e692b0dc1089804b1d68b79c1a6f438f30554602
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e29ef2616a43223ec582575ca6363f78b26e5f22
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146300"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753063"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>探索和准备数据与数据集类 （预览版）
 
@@ -63,7 +63,7 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|Date|阻止|IUCR|主要类型|...|
+||ID|案例号|Date|街区|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|欺骗性的做法|...
 第|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
@@ -80,7 +80,7 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|Date|阻止|IUCR|主要类型|...|
+||ID|案例号|Date|街区|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
 第|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTO AVE|1154|欺骗性的做法|...
@@ -103,7 +103,7 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||ID|案例号|Date|阻止|IUCR|主要类型|...|
+||ID|案例号|Date|街区|IUCR|主要类型|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD AVE|890|THEFT|...
 第|10534446|HZ277630|4/15/2016 10:00|055XX KEDZIE 保存 N|890|THEFT|...
@@ -122,7 +122,7 @@ dataset.get_profile()
 ID|FieldType.INTEGER|1.04986e+07|1.05351e+07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e+07|1.04992e+07|1.04986e+07|1.05166e+07|1.05209e+07|1.05259e+07|1.05351e+07|1.05351e+07|1.05351e+07|1.05195e+07|12302.7|1.51358e+08|-0.495701|-1.02814
 案例号|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-阻止|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+街区|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 主要类型|FieldType.STRING|欺骗性的做法|THEFT|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 描述|FieldType.STRING|虚假检查|通过 500 美元|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -130,7 +130,7 @@ IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1
 逮捕|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 国内|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 检测信号|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
-区|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
+学区|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
 病房|FieldType.INTEGER|第|48|10.0|0.0|10.0|0.0|0.0|0.0|第|5|第|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
 社区范围|FieldType.INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37.5|71|77|77|77|41.2|26.6366|709.511|0.112157|-1.73379
 FBI 代码|FieldType.INTEGER|6|11|10.0|0.0|10.0|0.0|0.0|0.0|6|6|6|6|11|11|11|11|11|9.4|2.36643|5.6|-0.702685|-1.59582
@@ -148,7 +148,7 @@ Location|FieldType.STRING||(41.903206037, -87.676361925)|10.0|0.0|10.0|0.0|0.0|7
 
 从前面部分中生成的数据集的配置文件的情况下，我们看到`Latitude`和`Longitude`列具有较高百分比的缺失值。 在此示例中，我们计算的平均值，并输入为这两个列的缺失值。
 
-首先，获取与数据集的最新定义[ `get_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-)和削减与数据[ `keep_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow)，因此，我们仅查看我们想要介绍的列。
+首先，获取与数据集的最新定义[ `get_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-)和削减与数据[ `keep_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#keep-columns-columns--multicolumnselection--validate-column-exists--bool---false-----azureml-dataprep-api-dataflow-dataflow)，因此，我们仅查看我们想要介绍的列。
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -288,13 +288,13 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||ID|案例号|Date|阻止|...|
+||ID|案例号|Date|街区|...|
 -|---------|-----|---------|----|---
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|...
 第|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|...
 2|10519196|HZ261252|2016-04-15 10:00:00|104XX S SACRAMENTO AVE|...
 
-假设您需要转换的日期和时间格式为"2016年-04-04 晚上 10 点-凌晨 12 点。 在中[ `derive_column_by_example()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#derive-column-by-example-source-columns--sourcecolumns--new-column-name--str--example-data--exampledata-----azureml-dataprep-api-dataflow-dataflow)自变量，提供所需输出中的示例`example_data`参数按以下格式： *（原始输出、 所需的输出）*。
+假设您需要转换的日期和时间格式为"2016年-04-04 晚上 10 点-凌晨 12 点。 在中[ `derive_column_by_example()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#derive-column-by-example-source-columns--sourcecolumns--new-column-name--str--example-data--exampledata-----azureml-dataprep-api-dataflow-dataflow)自变量，提供所需输出中的示例`example_data`参数按以下格式： *（原始输出、 所需的输出）* 。
 
 下面的代码提供所需输出的两个示例 ("2016年-04-04 23:56:00"，"2016年-04-04 10 PM-12 AM") 和 ("2016年-04-15 17:00:00"，"2016年-04-15 下午 4 点-下午 6 点")
 

@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0275d27a0a27d0279886f6f7fd15b14d312a44ea
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 6206ad1a7356221bf94134e5d293c27d778cc187
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472005"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752866"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>编写并使用 Azure 机器学习数据准备 SDK 配置数据
 
@@ -40,7 +40,7 @@ ms.locfileid: "65472005"
 使用 Azure 机器学习数据准备 Python SDK，可以写入到的数据：
 + 本地文件系统
 + Azure Blob 存储
-+ Azure Data Lake Storage
++ Azure Data Lake 存储
 
 ## <a name="spark-considerations"></a>Spark 注意事项
 
@@ -73,7 +73,7 @@ t.head(5)
 
 ### <a name="delimited-file-example"></a>带分隔符的文件示例
 
-下面的代码使用[ `write_to_csv()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#write-to-csv-directory-path--destinationpath--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow)函数将数据写入到带分隔符的文件。
+下面的代码使用[ `write_to_csv()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-csv-directory-path--datadestination--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow)函数将数据写入到带分隔符的文件。
 
 ```python
 # Create a new data flow using `write_to_csv` 
@@ -90,11 +90,11 @@ written_files.head(5)
 
 | | Column1 | Column2 | Column3 | Column4 | Column5 | Column6 | Column7 | Column8 | Column9 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-|0| 10000.0 | 99999.0 | 错误 | 否 | 否 | ENRS | NaN    | NaN | NaN |   
-|第| 10003.0 | 99999.0 | 错误 | 否 | 否 | ENSO |    NaN | NaN | NaN |   
-|2| 10010.0 | 99999.0 | 错误 | 否 | JN | ENJA |    70933.0 | -8667.0 | 90.0 |
-|3| 10013.0 | 99999.0 | 错误 | 否 | 否 |     | NaN | NaN | NaN |
-|4| 10014.0 | 99999.0 | 错误 | 否 | 否 | ENSO |    59783.0 | 5350.0 |  500.0|
+|0| 10000.0 | 99999.0 | ERROR | 否 | 否 | ENRS | NaN    | NaN | NaN |   
+|第| 10003.0 | 99999.0 | ERROR | 否 | 否 | ENSO |    NaN | NaN | NaN |   
+|2| 10010.0 | 99999.0 | ERROR | 否 | JN | ENJA |    70933.0 | -8667.0 | 90.0 |
+|3| 10013.0 | 99999.0 | ERROR | 否 | 否 |     | NaN | NaN | NaN |
+|4| 10014.0 | 99999.0 | ERROR | 否 | 否 | ENSO |    59783.0 | 5350.0 |  500.0|
 
 在前面的输出中，由于未正确分析数字，数值列中出现了多个错误。 默认情况下，写入 CSV 时，NULL 值将替换为字符串“ERROR”。
 
@@ -121,7 +121,7 @@ written_files.head(5)
 
 ### <a name="parquet-file-example"></a>Parquet 文件示例
 
-类似于`write_to_csv()`，则[ `write_to_parquet()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#write-to-parquet-file-path--typing-union--destinationpath--nonetype----none--directory-path--typing-union--destinationpath--nonetype----none--single-file--bool---false--error--str----error---row-groups--int---0-----azureml-dataprep-api-dataflow-dataflow)函数将返回写入 Parquet 数据流运行时执行的步骤与新的数据流。
+类似于`write_to_csv()`，则[ `write_to_parquet()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-parquet-file-path--typing-union--datadestination--nonetype----none--directory-path--typing-union--datadestination--nonetype----none--single-file--bool---false--error--str----error---row-groups--int---0-----azureml-dataprep-api-dataflow-dataflow)函数将返回写入 Parquet 数据流运行时执行的步骤与新的数据流。
 
 ```python
 write_parquet_t = t.write_to_parquet(directory_path=dprep.LocalFileOutput('./test_parquet_out/'),

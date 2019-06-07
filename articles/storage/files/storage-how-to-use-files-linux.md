@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 375d0de60b916becc8e86a1e33cf4ed46f12c077
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427926"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754834"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 
@@ -75,7 +75,10 @@ ms.locfileid: "66427926"
 
     在其他分发版上，请使用相应的包管理器，或[从源编译](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **确定已装载共享的目录/文件权限**：在以下示例中，权限 `0777` 用于向所有用户授予读取、写入和执行权限。 可以根据需要将这些权限替换为其他 [chmod 权限](https://en.wikipedia.org/wiki/Chmod)。
+* **确定已装载共享的目录/文件权限**：在以下示例中，权限 `0777` 用于向所有用户授予读取、写入和执行权限。 可以将它与其他[chmod 权限](https://en.wikipedia.org/wiki/Chmod)根据需要，但这意味着可能会限制的访问。 如果您使用其他权限，应考虑还保留为所选的本地组的访问权限才能使用 uid 和 gid。
+
+> [!NOTE]
+> 如果未显式分配 dir_mode 和 file_mode 目录和文件权限，它们将默认为 0755年。
 
 * **确保端口 445 处于打开状态**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。
 
@@ -89,7 +92,7 @@ ms.locfileid: "66427926"
     mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **使用 mount 命令装载 Azure 文件共享**：请记得替换 **< storage_account_name >** ， **< 服务器 >** ， **< smb_version >** ， **< storage_account_key >** ，并 **< mount_point >** 为您的环境的相应信息。 如果使用加密的 Linux 分发版支持 SMB 3.0 (请参阅[了解 SMB 客户端要求](#smb-client-reqs)有关详细信息)，使用**3.0**有关 **< smb_version >** 。 对于不支持 SMB 3.0 加密的 Linux 分发版，使用**2.1**有关 **< smb_version >** 。 只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
+1. **使用 mount 命令装载 Azure 文件共享**：请记得替换 **< storage_account_name >** ， **< 服务器 >** ， **< smb_version >** ， **< storage_account_key >** ，并 **< mount_point >** 为您的环境的相应信息。 如果使用加密的 Linux 分发版支持 SMB 3.0 (请参阅[了解 SMB 客户端要求](#smb-client-reqs)有关详细信息)，使用**3.0**有关 **< smb_version >** 。 对于不支持 SMB 3.0 加密的 Linux 分发版，使用**2.1**有关 **< smb_version >** 。 只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 如果你愿意，可以更改已装载的共享目录和文件权限，但这就意味着限制访问权限。
 
     ```bash
     sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino

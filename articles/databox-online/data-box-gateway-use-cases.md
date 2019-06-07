@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: cdc1b07b93386c0225c1e6c5f570ea1247e450b5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924396"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754177"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的用例
 
@@ -50,7 +50,7 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 - 上传数据后，需要将其移至存档层。 可通过两种方式设置 Blob 层：Azure PowerShell 脚本或 Azure 存储生命周期管理策略。  
     - 如果使用 Azure PowerShell，请按照这些[步骤](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier)将数据移至存档层。
     - 如果使用 Azure 生命周期管理，请按照以下步骤将数据移至存档层。
-        - [注册](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview) Blob 生命周期管理服务预览版以使用存档层。
+        - [注册](/azure/storage/common/storage-lifecycle-management-concepts) Blob 生命周期管理服务预览版以使用存档层。
         - 使用以下策略[在引入时存档数据](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest)。
 - 将 Blob 标记为存档后，除非将它们移至热层或冷层，否则网关再也不能修改它们。 如果文件位于本地存储中，则对本地副本所做的任何更改（包括删除）都不会上传到存档层。
 - 若要读取存档存储中的数据，必须通过将 Blob 层更改为热层或冷层来解除冻结。 在网关上[刷新共享](data-box-gateway-manage-shares.md#refresh-shares)不会将 Blob 解除冻结。
@@ -79,11 +79,11 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 
 按照以下步骤使用 Data Box Gateway 进行持续引入。
 
-1. 在 Data Box Gateway 上创建云共享。 此共享会自动将所有数据上传到 Azure 存储帐户。 转到 Data Box Gateway 资源中的“共享”，然后单击“+ 添加共享”。
+1. 在 Data Box Gateway 上创建云共享。 此共享会自动将所有数据上传到 Azure 存储帐户。 转到 Data Box Gateway 资源中的“共享”，然后单击“+ 添加共享”   。
 
     ![单击“+ 添加共享”](media/data-box-gateway-use-cases/add-share1.png)
 
-2. 确保此共享映射到包含已播种数据的容器。 对于“选择 Blob 容器”，请选择“使用现有容器”并浏览到已将 Data Box 中的数据传输到的容器。
+2. 确保此共享映射到包含已播种数据的容器。 对于“选择 Blob 容器”，请选择“使用现有容器”并浏览到已将 Data Box 中的数据传输到的容器   。
 
     ![共享设置](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
 

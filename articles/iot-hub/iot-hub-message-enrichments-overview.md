@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 6ddfd90956fde0c57e14083a3704cbf365456c75
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735161"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754549"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>消息正对设备到云的 IoT 中心消息 （预览版）
 
@@ -77,7 +77,7 @@ ms.locfileid: "66735161"
 
 ## <a name="availability"></a>可用性
 
-此功能目前以预览版提供，并在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](/azure/azure-government/documentation-government-welcome)， [Azure 中国 21Vianet](/azure/china/china-welcome)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+此功能目前以预览版提供，并在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](/azure/azure-government/documentation-government-welcome)， [Azure 中国 21Vianet](/azure/china)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>后续步骤
 
