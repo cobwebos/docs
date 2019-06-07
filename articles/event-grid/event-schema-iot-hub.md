@@ -151,11 +151,11 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | id | string | 事件的唯一标识符。 |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | string | 事件主题的发布者定义路径。 |
 | eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| 数据 | 对象 | IoT 中心事件数据。  |
+| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| data | 对象 | IoT 中心事件数据。  |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -201,7 +201,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | x509Thumbprint | string | 指纹是 x509 证书的唯一值，通常用于在证书存储中查找特定证书。 指纹是使用 SHA1 算法动态生成的，并非在证书中实际存在。 | 
 | primaryThumbprint | string | x509 证书的主要指纹。 |
 | secondaryThumbprint | string | x509 证书的次要指纹。 | 
-| 版本 | integer | 一个整数，每次更新设备孪生时递增 1。 |
+| version | integer | 一个整数，每次更新设备孪生时递增 1。 |
 | desired | 对象 | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
 | reported | 对象 | 只能由设备写入并且由应用程序后端读取的属性部分。 |
 | lastUpdated | string | 上次设备孪生属性更新的 ISO8601 时间戳。 | 
