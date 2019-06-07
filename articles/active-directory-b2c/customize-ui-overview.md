@@ -2,20 +2,20 @@
 title: 有关 Azure Active Directory B2C 中的用户界面自定义 | Microsoft Docs
 description: 了解如何为使用 Azure Active Directory B2C 的应用程序自定义用户界面。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 26dea1b636fce9e7f5defddd5cf4bc4c7d78d5da
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6c9109cf4d6d67d3d8001a9de1d54e24622a9286
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682021"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511177"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的用户界面自定义
 
@@ -48,15 +48,15 @@ Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源
 
 对于 v2 用户流，你可以选择一个预先设计的模板，它为你的默认页面提供更好的外观，并用作你的自定义的良好基础。
 
-在左侧菜单中，在“自定义”下选择“页面布局”。 然后，选择“模板(预览版)”。
+在左侧菜单中，在“自定义”下选择“页面布局”。   然后，选择“模板(预览版)”  。
 
 ![选择一个页面布局模板](media/customize-ui-overview/template.png)
 
-从列表中选择一个模板。 例如，“海蓝”模板向用户流页面应用以下布局：
+从列表中选择一个模板。 例如，“海蓝”  模板向用户流页面应用以下布局：
 
 ![“海蓝”模板](media/customize-ui-overview/ocean-blue.png)
 
-选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”字段中。
+选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”  字段中。
 
 ## <a name="where-do-i-store-ui-content"></a>在何处存储 UI 内容？
 

@@ -2,20 +2,20 @@
 title: 将重定向 URL 设置为 b2clogin.com - Azure Active Directory B2C | Microsoft Docs
 description: 了解在 Azure Active Directory B2C 的重定向 URL 中使用 b2clogin.com。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/28/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5f706a086c3dfe24f22e63cfe84f330d866eca70
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4d70fe3f3f19723cd37080ae09dce97bfd8f3d34
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703070"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511697"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
@@ -38,7 +38,7 @@ ms.locfileid: "64703070"
 - 将标识提供者应用程序中的重定向 URL 设置为使用 b2clogin.com。 
 - 将 Azure AD B2C 应用程序设置为将 b2clogin.com 用于用户流引用和令牌终结点。 
 - 如果使用的是 MSAL，则需要将 **ValidateAuthority** 属性设置为 `false`。
-- 请确保更改[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)的 CORS 设置中定义的任何“允许的源”。  
+- 请确保更改[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)的 CORS 设置中定义的任何“允许的源”  。  
 
 ## <a name="change-redirect-urls"></a>更改重定向 URL
 

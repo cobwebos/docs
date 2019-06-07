@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3843b5022aaf218bf91e25ecf6d9c36bb2db2dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575422"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478595"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -77,7 +77,7 @@ ms.locfileid: "64575422"
 - 如果子网中不同 VM 需要应用不同的安全规则，则可将 VM 中的网络接口与一个或多个应用程序安全组相关联。 安全规则可以在其源和/或目标中指定应用程序安全组。 该规则仅适用于属于应用程序安全组成员的网络接口。 详细了解[网络安全组](security-overview.md)和[应用程序安全组](security-overview.md#application-security-groups)。
 - Azure 在每个网络安全组中创建了多个默认安全规则。 其中一个默认规则允许所有流量在虚拟网络中的所有资源之间流动。 若要替代此行为，可使用网络安全组和/或自定义路由将流量路由到 NVA。 建议熟悉 Azure 的所有[默认安全规则](security-overview.md#default-security-rules)，并了解网络安全组规则如何应用于资源。
 
-您可以查看示例设计用于实现外围网络 (也称为 DMZ) Azure 与 internet 使用之间[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)或[网络安全组](virtual-networks-dmz-nsg.md)。
+您可以查看示例设计用于实现外围网络 (也称为 DMZ) Azure 与 internet 使用之间[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)。
 
 ### <a name="traffic-routing"></a>流量路由
 

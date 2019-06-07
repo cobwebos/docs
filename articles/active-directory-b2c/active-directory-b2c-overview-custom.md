@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 自定义策略 | Microsoft Docs
 description: 了解 Azure Active Directory B2C 自定义策略。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ddc77cbcf004ddbd1738e598d5073a11f13e2c5a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2938ae075bbd4c38b686ca6654bede678f876857
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695421"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509804"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
@@ -39,9 +39,9 @@ ms.locfileid: "64695421"
 
 使用以下三种类型的策略文件：
 
-- 基本文件 - 包含大多数定义。 建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略。
-- 扩展文件保存租户的唯一配置更改。
-- 信赖方 (RP) 文件注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。 每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
+- 基本文件  - 包含大多数定义。 建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略。
+- 扩展文件  保存租户的唯一配置更改。
+- 信赖方 (RP) 文件  注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。 每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
 
 Azure AD B2C 中的用户流遵循上面描述的三文件模式，但开发人员只能看到 RP 文件，同时，Azure 门户会在后台对扩展文件进行更改。
 
@@ -50,7 +50,7 @@ Azure AD B2C 中的用户流遵循上面描述的三文件模式，但开发人�
 Azure 中的客户标识和访问管理 (CIAM) 服务包括：
 
 - 一个用户目录，可通过使用 Microsoft Graph 进行访问，并保存本地帐户和联合帐户的用户数据。
-- 访问“标识体验框架”。此框架协调用户与实体之间的信任，并在两者之间传递声明，以完成标识或访问管理任务。 
+- 访问“标识体验框架”  。此框架协调用户与实体之间的信任，并在两者之间传递声明，以完成标识或访问管理任务。 
 - 安全令牌服务 (STS)，颁发 ID 令牌、刷新令牌和访问令牌（以及等效的 SAML 断言），并对其进行验证以保护资源。
 
 Azure AD B2C 依次与标识提供程序、用户、其他系统和本地用户目录交互，以完成标识任务。 例如，登录用户、注册新用户或重置密码。 “标识体验框架”和策略（亦称为“用户旅程”或“信任框架策略”）可建立多方信任并显式定义执行组件、操作、协议和要完成的步骤顺序。

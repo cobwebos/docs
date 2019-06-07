@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 05/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 3602e4ca83e828270ebef56c688670b896ca58a4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357059"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472735"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>使用 RBAC 和 REST API 管理对 Azure 资源的访问权限
 
@@ -52,9 +52,9 @@ ms.locfileid: "66357059"
 
     | 筛选器 | 描述 |
     | --- | --- |
-    | `$filter=atScope()` | 只列出指定范围内的角色分配，而不包括子范围内的角色分配。 |
-    | `$filter=principalId%20eq%20'{objectId}'` | 列出特定用户、组或服务主体的角色分配。 |
-    | `$filter=assignedTo('{objectId}')` | 列出特定用户（包括继承自组的用户）的角色分配。 |
+    | `$filter=atScope()` | 列出了仅指定的范围不包括子范围内的角色分配的角色分配。 |
+    | `$filter=principalId%20eq%20'{objectId}'` | 列出指定的用户、 组或服务主体的角色分配。 |
+    | `$filter=assignedTo('{objectId}')` | 列出指定的用户或服务主体的角色分配。 如果用户具有的角色分配的组的成员，也会列出该角色分配。 此筛选器是可传递组，这意味着，如果用户组的成员，该组有角色分配的另一个组的成员，还会列出该角色分配。 此筛选器仅接受用户或服务主体的对象 id。 不能为组传递的对象 id。 |
 
 ## <a name="grant-access"></a>授予访问权限
 

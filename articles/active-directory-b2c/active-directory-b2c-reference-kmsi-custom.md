@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中使我保持登录状态 | Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中设置“使我保持登录状态 (KMSI)”。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cd48f2c194cc643d131a7def4b96285cde0bcbf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0ae6f19ea9a04aa6b2547fa031dbb09d03b887c3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712532"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509424"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用“使我保持登录状态 (KMSI)”
 
@@ -150,11 +150,11 @@ ms.locfileid: "64712532"
 2. 打开新文件，并使用唯一的值更新 **TrustFrameworkPolicy** 的 **PolicyId** 属性。 这是策略的名称。 例如，`SignUpOrSignInWithKmsi`。
 3. 更改 **DefaultUserJourney** 元素的 **ReferenceId** 属性，以匹配创建的新用户旅程的标识符。 例如，`SignUpOrSignInWithKmsi`。
 
-    使用 UserJourneyBehaviors 元素并将 SingleSignOnSessionExpiryType 和 SessionExpiryInSeconds 作为其第一个子元素，来配置 KMSI。 **KeepAliveInDays** 属性控制用户保持登录状态的时间。 在以下示例中，KMSI 会话在 `7` 天后自动过期，不管用户执行无提示身份验证的频率有多大。 将 **KeepAliveInDays** 值设置为 `0` 会禁用 KMSI 功能。 此值默认为 `0`。 如果 **SessionExpiryType** 的值为 `Rolling`，则每当用户执行无提示身份验证时，KMSI 会话会延长 `7` 天。  如果选择了 `Rolling`，应保持最小的天数。 
+    使用 UserJourneyBehaviors  元素并将 SingleSignOn  SessionExpiryType  和 SessionExpiryInSeconds  作为其第一个子元素，来配置 KMSI。 **KeepAliveInDays** 属性控制用户保持登录状态的时间。 在以下示例中，KMSI 会话在 `7` 天后自动过期，不管用户执行无提示身份验证的频率有多大。 将 **KeepAliveInDays** 值设置为 `0` 会禁用 KMSI 功能。 此值默认为 `0`。 如果 **SessionExpiryType** 的值为 `Rolling`，则每当用户执行无提示身份验证时，KMSI 会话会延长 `7` 天。  如果选择了 `Rolling`，应保持最小的天数。 
 
-    **SessionExpiryInSeconds** 的值表示 SSO 会话的过期时间。 Azure AD B2C 在内部使用此值来检查 KMSI 的会话是否已过期。 **KeepAliveInDays** 的值确定 Web 浏览器中 SSO Cookie 的 Expires/Max-Age 值。 与 **SessionExpiryInSeconds** 不同，**KeepAliveInDays** 用于防止在关闭浏览器时清除 Cookie。 仅当 SSO 会话 Cookie 存在（由 KeepAliveInDays 控制）且未过期（由 SessionExpiryInSeconds 控制）时，用户才能静默登录。 
+    **SessionExpiryInSeconds** 的值表示 SSO 会话的过期时间。 Azure AD B2C 在内部使用此值来检查 KMSI 的会话是否已过期。 **KeepAliveInDays** 的值确定 Web 浏览器中 SSO Cookie 的 Expires/Max-Age 值。 与 **SessionExpiryInSeconds** 不同，**KeepAliveInDays** 用于防止在关闭浏览器时清除 Cookie。 仅当 SSO 会话 Cookie 存在（由 KeepAliveInDays 控制）且未过期（由 SessionExpiryInSeconds 控制）时，用户才能静默登录   。 
     
-    如果用户未在注册和登录页面上启用“使我保持登录”，则超过 SessionExpiryInSeconds 指定的时间后或关闭浏览器后，会话将过期。 如果用户启用“使我保持登录”，KeepAliveInDays 的值将覆盖 SessionExpiryInSeconds 的值并指定会话过期时间。 即使用户关闭浏览器后再重新打开，只要在 **KeepAliveInDays** 的时间内，用户仍然可以静默登录。 建议将 SessionExpiryInSeconds 的值设置为较短时间段（1200 秒），而将 KeepAliveInDays 的值设置为较长时间段（7 天），如下例所示：
+    如果用户未在注册和登录页面上启用“使我保持登录”，则超过 SessionExpiryInSeconds 指定的时间后或关闭浏览器后，会话将过期   。 如果用户启用“使我保持登录”，KeepAliveInDays 的值将覆盖 SessionExpiryInSeconds 的值并指定会话过期时间    。 即使用户关闭浏览器后再重新打开，只要在 **KeepAliveInDays** 的时间内，用户仍然可以静默登录。 建议将 SessionExpiryInSeconds 的值设置为较短时间段（1200 秒），而将 KeepAliveInDays 的值设置为较长时间段（7 天），如下例所示   ：
 
     ```XML
     <RelyingParty>
@@ -180,7 +180,7 @@ ms.locfileid: "64712532"
     ```
 
 4. 保存更改，然后上传文件。
-5. 若要测试所上传的自定义策略，请在 Azure 门户中转到策略页，并选择“立即运行”。
+5. 若要测试所上传的自定义策略，请在 Azure 门户中转到策略页，并选择“立即运行”  。
 
 可在[此处](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in)找到示例策略。
 

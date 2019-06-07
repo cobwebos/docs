@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中配置资源所有者密码凭据流 | Microsoft Docs
 description: 了解如何在 Azure AD B2C 中配置资源所有者密码凭据流。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da7fe9310f50d2d2a3c247a410db204903d3412b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2e590e4765f4795123e219f8da4b3e62bc79ca30
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715885"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511345"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
@@ -38,13 +38,13 @@ ms.locfileid: "64715885"
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
 2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
-3. 单击“用户流”，然后选择“新建用户流”。
-4. 单击“全部”选项卡，然后选择“使用 ROPC 登录”。
-5. 提供用户流名称，例如 ROPC_Auth。
-6. 在“应用程序声明”下，单击“显示更多”。
+3. 单击“用户流”  ，然后选择“新建用户流”  。
+4. 单击“全部”  选项卡，然后选择“使用 ROPC 登录”  。
+5. 提供用户流名称，例如 ROPC_Auth  。
+6. 在“应用程序声明”  下，单击“显示更多”  。
 7. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
-8. 选择“确定”，然后选择“创建”。
-9. 单击“运行用户流”。
+8. 选择“确定”，然后选择“创建”   。
+9. 单击“运行用户流”  。
 
    你随后会看到一个终结点，如以下示例所示：
 
@@ -53,10 +53,10 @@ ms.locfileid: "64715885"
 
 ## <a name="register-an-application"></a>注册应用程序
 
-1. 在 B2C 设置中，选择“应用程序”，然后选择“添加”。
+1. 在 B2C 设置中，选择“应用程序”，然后选择“添加”。  
 2. 输入应用程序名称，例如 *ROPC_Auth_app*。
-3. 对“Web 应用/Web API”选择“否”，然后对“本机客户端”选择“是”。
-4. 保留所有其他值不变，然后选择“创建”。
+3. 对“Web 应用/Web API”选择“否”，然后对“本机客户端”选择“是”     。
+4. 保留所有其他值不变，然后选择“创建”  。
 5. 选择新应用程序，并记下应用程序 ID 供以后使用。
 
 ## <a name="test-the-user-flow"></a>测试用户流

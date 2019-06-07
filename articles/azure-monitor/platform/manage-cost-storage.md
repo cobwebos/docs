@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 06/03/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: ead3122d2040a544c6f09e434f27b7970f0d5840
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8eeb29b2d1fe17ae5581dab81c34d5c2c635a6c2
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417868"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496338"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>通过 Azure Monitor 日志管理使用情况和成本
 
@@ -58,6 +58,9 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 可以配置工作区的每日上限并限制每日引入量，但请谨慎设置，因为目标是避免达到每日限制。  否则，会丢失该天剩余时间的数据，这可能会影响其功能依赖于工作区中提供的最新数据的其他 Azure 服务和解决方案。  因此，需要具有在支持 IT 服务的资源的运行状况受到影响时监视和接收警报的能力。  每日上限旨在用作一种调控受管理资源数据量意外增长并使其保留在限制范围内，或者限制工作区产生计划外费用的方式。  
 
 达到每日限制后，在当天的剩余时间，应计费数据类型的收集将会停止。 选定 Log Analytics 工作区的页面顶部会显示警告横幅，同时会将一个操作事件发送到“LogManagement”类别下的“操作”表。   在“每日限制设置时间”定义的重置时间过后，数据收集将会恢复。  我们建议基于此操作事件定义一个警报规则，并将其配置为在达到每日数据限制时发出通知。 
+
+> [!NOTE]
+> 每日上限不会停止从 Azure 安全中心的数据的集合。
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>确定要定义的每日数据限制
 
@@ -105,7 +108,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 ## <a name="legacy-pricing-tiers"></a>旧版定价层
 
-2018 年 7 月 1 日以前签订企业协议的客户或者已在订阅中创建 Log Analytics 工作区的客户，仍可以访问免费计划  。 如果订阅未绑定到现有的 EA 注册，那么，2018 年 4 月 2 日后，在新订阅中创建工作区时免费层不再可用  。  “免费”层数据最多保留七天  。  对于旧版“独立”或“每个节点”层，以及当前的 2018 单一定价层，可以为过去 31 天收集数据   。 “免费”层的每日引入限制为 500 MB。如果发现一直超出允许的量，可将工作区更改为另一计划，从而收集超出该限制的数据  。 
+2018 年 4 月 2 日之前, 在其中具有 Log Analytics 工作区或 Application Insights 资源，或链接到在 2019 年 2 月 1 日之前, 启动了企业协议订阅将继续有权访问旧的定价层：免费版、 独立 （按 gb 计） 和每个节点 (OMS)。  在免费定价层中的工作区将有每日数据限制为 500 MB （除了 Azure 安全中心收集的安全数据类型） 的数据引入和数据保留期被限制为 7 天。 在免费定价层仅用于评估目的。 独立或每个节点定价层中的工作区包含到 2 年最多数据保留期的访问权限。 
 
 > [!NOTE]
 > 若要使用通过购买用于 System Center 的 OMS E1 套件、OMS E2 套件或 OMS 附加产品所获得的权利，请选择 Log Analytics 的“按节点”定价层  。
@@ -131,7 +134,9 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 如果采用的是旧版免费定价层并且某天已发送的数据超过 500 MB，则该天的剩余时间会停止数据收集。 达到每日限制是 Log Analytics 停止数据收集或者看起来缺少数据的常见原因。  在数据收集启动和停止时，Log Analytics 会创建一个类型为“操作”的事件。 请在搜索中运行以下查询来检查是否已达到每日限制并缺少数据： 
 
-`Operation | where OperationCategory == 'Data Collection Status'`
+```kusto
+Operation | where OperationCategory == 'Data Collection Status'
+```
 
 当数据收集停止时，OperationStatus 为 **Warning**。 当数据收集启动时，OperationStatus 为 **Succeeded**。 下表描述了数据收集停止的原因以及用于恢复数据收集的建议操作：  
 
@@ -153,51 +158,63 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 若要了解计算机报告在上个月中每一天的检测信号的数量，请使用
 
-`Heartbeat | where TimeGenerated > startofday(ago(31d))
+```kusto
+Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
-| render timechart`
+| render timechart
+```
 
 若要获取的早期每个节点定价层的工作区是否将按节点计费的计算机的列表，查找节点发送**计费数据类型**（某些数据类型是免费的）。 若要执行此操作，请使用`_IsBillable`[属性](log-standard-properties.md#_isbillable)和使用的完全限定的域名最左边的字段。 此命令返回计费数据的计算机的列表：
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName
+```
 
 可计费所示的节点数可以通过如下方式计算： 
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| billableNodes=dcount(computerName)`
+| billableNodes=dcount(computerName)
+```
 
 > [!NOTE]
 > 请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。 此查询将使用 Usage 数据类型替换旧的查询单个计算机信息的方式。  
 
 更准确地计算实际计费什么是获取每小时发送计费的数据类型的计算机数。 （旧的每个节点定价层中的工作区，Log Analytics 计算需要按小时计费的节点数。） 
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
 
 ## <a name="understanding-ingested-data-volume"></a>了解引入的数据量
 
 在“使用情况和预估成本”页上，  “单个解决方案的数据引入”图表  显示发送的总数据量以及每个解决方案发送的量。 这样就可以确定趋势，例如总数据使用量（或特定解决方案的使用量）是正在增长、保持平稳还是正在下降。 用于生成此指标的查询是：
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 请注意，子句“where IsBillable = true”从某些解决方案中筛选掉没有引入费用的数据类型。 
 
 可以进一步钻取，以查看特定数据类型的数据趋势，例如，可以研究 IIS 日志的数据：
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 ### <a name="data-volume-by-computer"></a>按计算机的数据量
 

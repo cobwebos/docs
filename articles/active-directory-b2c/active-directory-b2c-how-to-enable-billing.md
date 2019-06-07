@@ -2,20 +2,20 @@
 title: 如何链接 Azure 订阅 - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure 订阅中启用 Azure AD B2C 租户计费的分步指南。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/24/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f9e3e63942c8fac5fc24ca26969b71e6ef4257f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d2440b638a9c8eb27505b747d26917de8032e6cd
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706813"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510124"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>将 Azure 订阅链接到 Azure Active Directory B2C 租户
 
@@ -45,17 +45,17 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>在 Azure 市场中找到 Azure AD B2C
 
-单击“创建资源”按钮。 在“在市场中搜索”字段中，输入 `B2C`。
+单击“创建资源”  按钮。 在“在市场中搜索”  字段中，输入 `B2C`。
 
 ![添加突出显示的按钮，并在“在市场中搜索”字段中添加文本“Azure AD B2C”](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
-在结果列表中，选择“Azure AD B2C”。
+在结果列表中，选择“Azure AD B2C”  。
 
 ![已在结果列表中选择“Azure AD B2C”](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c-result.png)
 
-此时会显示有关 Azure AD B2C 的详细信息。 若要开始配置新的 Azure Active Directory B2C 租户，请单击“创建”按钮。
+此时会显示有关 Azure AD B2C 的详细信息。 若要开始配置新的 Azure Active Directory B2C 租户，请单击“创建”按钮。 
 
-在资源创建屏幕中，选择“将现有的 Azure AD B2C 租户链接到我的 Azure 订阅”。
+在资源创建屏幕中，选择“将现有的 Azure AD B2C 租户链接到我的 Azure 订阅”  。
 
 ## <a name="create-an-azure-ad-b2c-resource-within-the-azure-subscription"></a>在 Azure 订阅中创建 Azure AD B2C 资源
 

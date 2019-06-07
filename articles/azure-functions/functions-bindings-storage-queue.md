@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 2f6b693e11ccbb759b59c949b24690e8a2054f94
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 72460136f5fa0dcfec78716fc02e0aaf9e860840
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132398"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472293"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -40,7 +40,7 @@ ms.locfileid: "66132398"
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="encoding"></a>编码
-函数需要 base64 编码字符串。 对编码类型进行的任何调整（若要将数据作为 base64 编码字符串进行准备）需要在调用服务中实现。
+函数需要 base64  编码字符串。 对编码类型进行的任何调整（若要将数据作为 base64  编码字符串进行准备）需要在调用服务中实现。
 
 ## <a name="trigger"></a>触发器
 
@@ -74,9 +74,9 @@ public static class QueueFunctions
 
 ### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
 
-以下示例演示 function.json 文件中的一个队列触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
+以下示例演示 function.json 文件中的一个队列触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码  。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
 
-function.json 文件如下所示：
+function.json  文件如下所示：
 
 ```json
 {
@@ -131,7 +131,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 以下示例演示 *function.json* 文件中的一个队列触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
 
-function.json 文件如下所示：
+function.json  文件如下所示：
 
 ```json
 {
@@ -246,7 +246,7 @@ module.exports = async function (context, message) {
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 function.json 文件和 `QueueTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `QueueTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -340,9 +340,9 @@ public static class QueueFunctions
 
 ### <a name="output---c-script-example"></a>输出 - C# 脚本示例
 
-以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 该函数针对收到的每个 HTTP 请求创建一个包含 CustomQueueMessage 对象有效负载的队列项。
+以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码  。 该函数针对收到的每个 HTTP 请求创建一个包含 CustomQueueMessage 对象有效负载的队列项  。
 
-function.json 文件如下所示：
+function.json  文件如下所示：
 
 ```json
 {
@@ -401,9 +401,9 @@ public static void Run(
 
 ### <a name="output---javascript-example"></a>输出 - JavaScript 示例
 
-以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数针对收到的每个 HTTP 请求创建一个队列项。
+以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)  。 该函数针对收到的每个 HTTP 请求创建一个队列项。
 
-function.json 文件如下所示：
+function.json  文件如下所示：
 
 ```json
 {
@@ -500,7 +500,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 function.json 文件和 `Queue` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `Queue` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -566,7 +566,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 |属性  |默认 | 描述 |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒）。 |
+|maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 最小值是 00:00:00.100 （100 毫秒），并增加最多 00:01:00 （1 分钟）。 |
 |visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |
 |batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 |
 |maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。|

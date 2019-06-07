@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的验证形式的 REST API 声明交换 | Microsoft Docs
 description: 有关 Azure Active Directory B2C 自定义策略的主题。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 090b0ef4d4f5f3d883ba1255e6f30d2bb0566274
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0779e4a93230a90b8eee76f1898154c1a5b82661
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681254"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508726"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -113,7 +113,7 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
 
 ## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>步骤 3：在要验证用户输入的自我断言技术配置文件中包含 RESTful 服务声明交换
 
-验证步骤的最常见用途是与用户交互。 用户预期需要提供输入的所有交互都属于自我断言技术配置文件。 在本示例中，我们会将此验证添加到 Self-Asserted-ProfileUpdate 技术配置文件。 这是信赖方 (RP) 策略文件 `Profile Edit` 所使用的技术配置文件。
+验证步骤的最常见用途是与用户交互。 用户预期需要提供输入的所有交互都属于自我断言技术配置文件  。 在本示例中，我们会将此验证添加到 Self-Asserted-ProfileUpdate 技术配置文件。 这是信赖方 (RP) 策略文件 `Profile Edit` 所使用的技术配置文件。
 
 将声明交换添加到自我断言技术配置文件：
 
@@ -124,8 +124,8 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>步骤 4：上传并测试配置文件编辑 RP 策略文件
 
 1. 上传新版本的 TrustFrameworkExtensions.xml 文件。
-2. 使用“立即运行”测试配置文件编辑 RP 策略文件。
-3. 通过在“给定名称”字段中提供某个现有名称（例如：mcvinny）来测试验证。 如果所有设置正确，应会收到一条消息，告知用户播放器标记已被使用。
+2. 使用“立即运行”测试配置文件编辑 RP 策略文件。 
+3. 通过在“给定名称”  字段中提供某个现有名称（例如：mcvinny）来测试验证。 如果所有设置正确，应会收到一条消息，告知用户播放器标记已被使用。
 
 ## <a name="next-steps"></a>后续步骤
 

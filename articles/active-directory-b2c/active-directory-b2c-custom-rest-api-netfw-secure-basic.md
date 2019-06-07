@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中使用 HTTP 基本身份验证保护 RESTful 服务 | Microsoft Docs
 description: 使用 HTTP 基本身份验证保护 Azure AD B2C 中的自定义 REST API 声明交换。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db5642abfca03f97ed258d287f5279cad0a32015
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e07a3fee2cc6c588dee608a68415b554e6fc77f3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694662"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507590"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 
@@ -70,11 +70,11 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 在 *App_Start* 文件夹下添加 `ClientAuthMiddleware.cs` 类。 为此，请执行以下操作：
 
-1. 右键单击“App_Start”文件夹，依次选择“添加”、“类”。
+1. 右键单击“App_Start”文件夹，依次选择“添加”、“类”。   
 
    ![在 App_Start 文件夹中添加 ClientAuthMiddleware.cs 类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth1.png)
 
-2. 在“名称”框中，键入 **ClientAuthMiddleware.cs**。
+2. 在“名称”框中，键入 **ClientAuthMiddleware.cs**。 
 
    ![创建新的 C# 类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
 
@@ -193,7 +193,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ### <a name="step-14-add-an-owin-startup-class"></a>步骤 1.4：添加 OWIN 启动类
 
 将名为 `Startup.cs` 的 OWIN 启动类添加到 API。 为此，请执行以下操作：
-1. 右键单击项目，选择“添加” > “新建项”，并搜索“OWIN”。
+1. 右键单击项目，选择“添加”   > “新建项”  ，并搜索“OWIN”  。
 
    ![添加 OWIN 启动类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
@@ -224,7 +224,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 ## <a name="step-2-publish-to-azure"></a>步骤 2：发布到 Azure
 
-若要发布项目，请在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。
+若要发布项目，请在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。  
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>步骤 3：将 RESTful 服务应用 ID 和应用机密添加到 Azure AD B2C
 
@@ -232,44 +232,44 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>步骤 3.1：添加 RESTful 服务客户端 ID
 
-1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
+1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。  
 
 
-2. 选择“策略密钥”，查看租户中的可用密钥。
+2. 选择“策略密钥”，查看租户中的可用密钥。 
 
 3. 选择 **添加** 。
 
-4. 对于“选项”，请选择“手动”。
+4. 对于“选项”，请选择“手动”   。
 
-5. 对于“名称”，请键入 **B2cRestClientId**。  
-    可能会自动添加前缀 *B2C_1A_*。
+5. 对于“名称”，请键入 **B2cRestClientId**。   
+    可能会自动添加前缀 *B2C_1A_* 。
 
-6. 在“机密”框中，输入前面定义的应用 ID。
+6. 在“机密”框中，输入前面定义的应用 ID。 
 
-7. 对于“密钥用法”，请选择“签名”。
+7. 对于“密钥用法”，请选择“签名”   。
 
-8. 选择“创建”。
+8. 选择“创建”  。
 
 9. 确认已创建 `B2C_1A_B2cRestClientId` 密钥。
 
 ### <a name="step-32-add-a-restful-services-client-secret"></a>步骤 3.2：添加 RESTful 服务客户端机密
 
-1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
+1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。  
 
-2. 选择“策略密钥”，查看租户中的可用密钥。
+2. 选择“策略密钥”，查看租户中的可用密钥。 
 
 3. 选择 **添加** 。
 
-4. 对于“选项”，请选择“手动”。
+4. 对于“选项”，请选择“手动”   。
 
-5. 对于“名称”，请键入 **B2cRestClientSecret**。  
-    可能会自动添加前缀 *B2C_1A_*。
+5. 对于“名称”，请键入 **B2cRestClientSecret**。   
+    可能会自动添加前缀 *B2C_1A_* 。
 
-6. 在“机密”框中，输入前面定义的应用机密。
+6. 在“机密”框中，输入前面定义的应用机密。 
 
-7. 对于“密钥用法”，请选择“签名”。
+7. 对于“密钥用法”，请选择“签名”   。
 
-8. 选择“创建”。
+8. 选择“创建”  。
 
 9. 确认已创建 `B2C_1A_B2cRestClientSecret` 密钥。
 
@@ -302,33 +302,33 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>步骤 5：将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，打开“Azure AD B2C”。
+1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，打开“Azure AD B2C”。 
 
-2. 选择“标识体验框架”。
+2. 选择“标识体验框架”  。
 
-3. 打开“所有策略”。
+3. 打开“所有策略”。 
 
-4. 选择“上传策略”。
+4. 选择“上传策略”  。
 
-5. 选中“覆盖策略(如果存在)”复选框。
+5. 选中“覆盖策略(如果存在)”  复选框。
 
 6. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>步骤 6：使用“立即运行”测试自定义策略
 
-1. 打开“Azure AD B2C 设置”，选择“标识体验框架”。
+1. 打开“Azure AD B2C 设置”，选择“标识体验框架”。  
 
     >[!NOTE]
     >“立即运行”需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
 
-2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。
+2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。 
 
-3. 在“名”框中键入 **Test** 来测试该过程。  
+3. 在“名”框中键入 **Test** 来测试该过程。   
     Azure AD B2C 会在窗口顶部显示一条错误消息。
 
     ![测试标识 API](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. 在“名”框中键入一个名称（不要键入“Test”）。  
+4. 在“名”框中键入一个名称（不要键入“Test”）。   
     Azure AD B2C 会注册该用户，然后将会员号发送到应用程序。 请注意此示例中的编号：
 
     ```
