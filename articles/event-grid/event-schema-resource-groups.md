@@ -236,12 +236,12 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | string | 事件主题的发布者定义路径。 |
 | eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | string | 事件的唯一标识符。 |
-| 数据 | 对象 | 资源组事件数据。 |
+| data | 对象 | 资源组事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -250,7 +250,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | authorization | 对象 | 操作请求的授权。 |
-| 声明 | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
+| claims | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
 | correlationId | string | 用于故障排除的操作 ID。 |
 | httpRequest | 对象 | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
 | resourceProvider | string | 操作的资源提供程序。 |
