@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: wellsi
-ms.openlocfilehash: fab23c86ee2e8f654ac4a9619c39d05ee4e9e4c1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1c91cde45a6a420376af36f70487adf7fe0ee83a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237937"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751808"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>认知服务语音设备 SDK 发行说明
 以下部分列出了最新版本中的更改。
@@ -49,7 +49,7 @@ ms.locfileid: "66237937"
 
 **重大更改** 
 
-*   [安装唤醒文字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application)已简化，现在是应用程序的一部分并且不需要单独安装在设备上的。
+*   [安装唤醒文字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)已简化，现在是应用程序的一部分并且不需要单独安装在设备上的。
 *   唤醒单词标识已更改，并支持两个事件。
     - RecognizingKeyword，指示语音结果包含 （未验证） 关键字的文本。
     - RecognizedKeyword，指示完成该关键字识别识别给定的关键字。

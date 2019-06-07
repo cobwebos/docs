@@ -154,6 +154,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/data'
         - name: 地理位置服务
           href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
+        - name: 移动服务
+          href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: 呈现服务
           href: 'https://docs.microsoft.com/rest/api/maps/render'
         - name: 路线服务

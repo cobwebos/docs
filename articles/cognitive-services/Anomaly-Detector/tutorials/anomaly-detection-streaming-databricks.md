@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: d1808bb88ac1bb27f2fd0652585521fbb2abdf56
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: a5790b5412023f06d9f9fd1d2ff61c11db4c53f3
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734667"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807482"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
-[Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/)是一种快速、 简单和协作的基于 Apache Spark 分析服务。 异常情况检测器 API，Azure 认知服务的一部分提供的监视时序数据的方法。 使用本教程中的数据接近实时的速度针对数据流运行异常情况检测使用 Azure Databricks。 将引入 twitter 数据使用 Azure 事件中心，并将其导入使用 Spark 事件中心连接器在 Azure Databricks。 然后，将使用 API 来检测针对流数据的异常。 
+[Azure Databricks](https://azure.microsoft.com/services/databricks/)是一种快速、 简单和协作的基于 Apache Spark 分析服务。 异常情况检测器 API，Azure 认知服务的一部分提供的监视时序数据的方法。 使用本教程中的数据接近实时的速度针对数据流运行异常情况检测使用 Azure Databricks。 将引入 twitter 数据使用 Azure 事件中心，并将其导入使用 Spark 事件中心连接器在 Azure Databricks。 然后，将使用 API 来检测针对流数据的异常。 
 
 下图演示了应用程序流：
 
@@ -164,7 +164,7 @@ ms.locfileid: "66734667"
 
     |值 |描述  |
     |---------|---------|
-    |名称     | 异常情况检测程序资源的名称。        |
+    |Name     | 异常情况检测程序资源的名称。        |
     |订阅     | 将与之关联的 Azure 订阅资源。        |
     |Location     | 一个 Azure 位置。        |
     |定价层     | 服务的定价层。 有关异常情况检测程序定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)。        |

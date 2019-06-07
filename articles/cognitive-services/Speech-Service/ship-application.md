@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 9bb721221f8f90a39b1c84bcdd66429bbd628494
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d8330ff663a7adc2f1cae3ed6bdf1cec2fa972c5
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65912664"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808454"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 
@@ -30,8 +30,8 @@ ms.locfileid: "65912664"
 
 认知服务语音 SDK 需要[Microsoft VisualC++可再发行组件的 Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)系统上。 可在此处下载最新版 `Microsoft Visual C++ Redistributable for Visual Studio 2019` 安装程序：
 
-- [Win32](https://aka.ms/vs/15/release/vc_redist.x86.exe)
-- [x64](https://aka.ms/vs/15/release/vc_redist.x64.exe)
+- [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
+- [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
 
 如果应用程序使用托管代码，则目标计算机上需要 `.NET Framework 4.6.1` 或更高版本。
 

@@ -12,6 +12,8 @@
       href: workloads/oracle/oracle-considerations.md
     - name: SAP
       href: workloads/sap/get-started.md
+    - name: 高性能计算
+      href: workloads/hpc/configure.md
     - name: 大型机重新托管
       href: workloads/mainframe-rehosting/overview.md
 - name: 经典部署
