@@ -56,7 +56,7 @@ sections:
         className: cardsD
         items:
           - title: 时序见解 GA API
-            html: <p><a href="rest/api/time-series-insights/ga">数据访问</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">查询 API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">查询语法</a></p>
+            html: <p><a href="/rest/api/time-series-insights/ga">数据访问</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">查询 API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">查询语法</a></p>
           - title: 时序见解预览版 API
             html: <p><a href="/rest/api/time-series-insights/preview-query">查询 API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">模型 API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">环境 API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">时序表达式 API</a></p>
           - title: 客户端 SDK

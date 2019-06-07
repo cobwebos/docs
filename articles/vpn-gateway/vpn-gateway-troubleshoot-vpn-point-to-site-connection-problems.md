@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2018
+ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cab40284f36f21f9de72ee4dc1faf78153621d26
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457470"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475973"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -41,34 +41,34 @@ ms.locfileid: "60457470"
 
 若要解决该问题，请执行以下步骤：
 
-1. 打开证书管理器：单击“开始”，键入“管理计算机证书”，然后单击搜索结果中的“管理计算机证书”。
+1. 打开证书管理器：单击“开始”  ，键入“管理计算机证书”  ，然后单击搜索结果中的“管理计算机证书”  。
 
 2. 请确保已正确的位置安装下列证书：
 
     | 证书 | 位置 |
     | ------------- | ------------- |
     | AzureClient.pfx  | Current User\Personal\Certificates |
-    | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
-    | AzureGateway-GUID.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
+    | Azuregateway-GUID  .cloudapp.net  | Current User\Trusted Root Certification Authorities|
+    | AzureGateway-GUID  .cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
 
 3. 转到 C:\Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>，在用户和计算机的存储上手动安装证书（*.cer 文件）。
 
 若要详细了解如何安装客户端证书，请参阅[为点到站点连接生成并导出证书](vpn-gateway-certificates-point-to-site.md)。
 
 > [!NOTE]
-> 导入客户端证书时，请勿选择“启用强私钥保护”选项。
+> 导入客户端证书时，请勿选择“启用强私钥保护”  选项。
 
-## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>无法建立您的计算机和 VPN 服务器之间的网络连接，因为远程服务器未响应
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>无法在计算机与 VPN 服务器之间建立网络连接，因为远程服务器不响应
 
 ### <a name="symptom"></a>症状
 
-尝试连接到 Azure 虚拟网络 gteway 正使用 IKEv2 在 Windows 上，将获得以下错误消息：
+尝试连接到正使用 IKEv2 在 Windows 上的 Azure 虚拟网络网关，将获得以下错误消息：
 
-**无法建立您的计算机和 VPN 服务器之间的网络连接，因为远程服务器未响应**
+**无法在计算机与 VPN 服务器之间建立网络连接，因为远程服务器不响应**
 
 ### <a name="cause"></a>原因
  
- 如果 Windows 版本不具有支持 IKE 碎片会出现问题
+ 如果 Windows 版本不支持 IKE 碎片，则会出现此问题
  
 ### <a name="solution"></a>解决方案
 
@@ -78,7 +78,7 @@ ms.locfileid: "60457470"
 
 1. 安装更新。
 
-   | OS 版本 | date | 编号/链接 |
+   | OS 版本 | Date | 编号/链接 |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 版本 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 版本 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
@@ -125,8 +125,8 @@ ms.locfileid: "60457470"
     | 证书 | 位置 |
     | ------------- | ------------- |
     | AzureClient.pfx  | Current User\Personal\Certificates |
-    | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
-    | AzureGateway-GUID.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
+    | Azuregateway-GUID  .cloudapp.net  | Current User\Trusted Root Certification Authorities|
+    | AzureGateway-GUID  .cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
 
 2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 **azuregateway-*GUID*.cloudapp.net** 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
 
@@ -173,9 +173,9 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 提取 VPN 客户端配置包，并找到 .cer 文件。 若要安装证书，请执行以下步骤：
 
 1. 打开 mmc.exe。
-2. 添加“证书”管理单元。
-3. 选择本地计算机的“计算机”帐户。
-4. 右键单击“受信任的根证书颁发机构”节点。 单击“所有任务” > “导入”，浏览到从 VPN 客户端配置包中提取的 .cer 文件。
+2. 添加“证书”  管理单元。
+3. 选择本地计算机的“计算机”  帐户。
+4. 右键单击“受信任的根证书颁发机构”节点。  单击“所有任务” > “导入”，浏览到从 VPN 客户端配置包中提取的 .cer 文件。  
 5. 重启计算机。 
 6. 尝试安装 VPN 客户端。
 
@@ -185,7 +185,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息：
 
-无法保存虚拟网络网关 &lt;网关名称&gt;**。证书 &lt;证书 ID&gt; 的数据无效**。
+无法保存虚拟网络网关 &lt;网关名称&gt; ** 。证书 &lt;证书 ID&gt; 的数据无效  **。
 
 ### <a name="cause"></a>原因 
 
@@ -220,7 +220,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息： 
 
-无法保存虚拟网络网关 &lt;网关名称&gt;**。资源名称 &lt;尝试上传的证书名称 无效&gt;**。
+无法保存虚拟网络网关 &lt;网关名称&gt; ** 。资源名称 &lt;尝试上传的证书名称 无效&gt;  **。
 
 ### <a name="cause"></a>原因
 
@@ -246,7 +246,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 ### <a name="solution"></a>解决方案
 
-若要解决此问题，请重新下载，并重新部署点到站点包上的所有客户端。
+若要解决此问题，请重新下载并重新部署所有客户端上点到站点的包。
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一次性连接的 VPN 客户端过多
 
@@ -301,11 +301,11 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="symptom"></a>症状
 
-先删除了点到站点 VPN 连接，再重新安装 VPN 客户端。 在这种情况下，VPN 连接未成功配置。 在 Windows 的“网络连接”设置中看不到 VPN 连接。
+先删除了点到站点 VPN 连接，再重新安装 VPN 客户端。 在这种情况下，VPN 连接未成功配置。 在 Windows 的“网络连接”  设置中看不到 VPN 连接。
 
 ### <a name="solution"></a>解决方案
 
-要解决此问题，请从 C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId> 删除旧的 VPN 客户端配置文件，再重新运行 VPN 客户端安装程序。
+要解决此问题，请从 C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId>  删除旧的 VPN 客户端配置文件，再重新运行 VPN 客户端安装程序。
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>点到站点 VPN 客户端无法解析本地域中的资源的 FQDN
 
@@ -366,9 +366,9 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 更新网卡驱动程序：
 
-1. 单击“开始”，键入“设备管理器”，然后从结果列表中选择它。 如果系统提示需要管理员密码或确认，请键入密码或进行确认。
-2. 在“网络适配器”类别中，找到要更新的 NIC。  
-3. 双击设备名称，选择“更新驱动程序”，选择“自动搜索更新的驱动程序软件”。
+1. 单击“开始”，键入“设备管理器”，然后从结果列表中选择它   。 如果系统提示需要管理员密码或确认，请键入密码或进行确认。
+2. 在“网络适配器”  类别中，找到要更新的 NIC。  
+3. 双击设备名称，选择“更新驱动程序”，选择“自动搜索更新的驱动程序软件”   。
 4. 如果 Windows 找不到新的驱动程序，可以尝试在设备制造商的网站上查找，并按照说明执行操作。
 5. 重启计算机并再次尝试连接。
 
@@ -380,7 +380,7 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="solution"></a>解决方案
 
-Azure VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased。
+Azure VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased  。
 
 ## <a name="vpn-package-installer-doesnt-complete"></a>VPN 包安装程序未完成
 
@@ -390,7 +390,7 @@ Azure VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased。
 
 ### <a name="solution"></a>解决方案
 
-从 C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId> 删除旧的 VPN 客户端配置文件，再次运行 VPN 客户端安装程序。 
+从 C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId> 删除旧的 VPN 客户端配置文件，再次运行 VPN 客户端安装程序  。 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN 客户端在一段时间后进入休眠状态或睡眠状态
 

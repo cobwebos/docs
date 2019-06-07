@@ -326,39 +326,6 @@
               href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS 应用程序套餐
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
-          items:
-            - name: 先决条件
-              href: ./cloud-partner-portal/saas-app/cpp-prerequisites.md
-            - name: 创建 SaaS 应用程序套餐
-              href: ./cloud-partner-portal/saas-app/cpp-create-offer.md
-              items:
-                - name: “产品/服务设置”选项卡
-                  href: ./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md
-                - name: “技术信息”选项卡
-                  href: ./cloud-partner-portal/saas-app/cpp-technical-info-tab.md
-                - name: “计划”选项卡
-                  href: ./cloud-partner-portal/saas-app/cpp-plans-tab.md
-                - name: “通道信息”选项卡
-                  href: ./cloud-partner-portal/saas-app/cpp-channel-info-tab.md
-                - name: “体验版”选项卡
-                  href: ./cloud-partner-portal/saas-app/cpp-testdrive-tab.md
-                - name: “店面详细信息”选项卡
-                  href: ./cloud-partner-portal/saas-app/cpp-storefront-tab.md
-                - name: “联系人”选项卡
-                  href: ./cloud-partner-portal/saas-app/cpp-contacts-tab.md
-            - name: 发布套餐
-              href: ./cloud-partner-portal/saas-app/cpp-publish-offer.md
-            - name: 更新现有套餐
-              href: ./cloud-partner-portal/saas-app/cpp-update-existing-offer.md
-            - name: SaaS 履行 API
-              href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
-              items:
-                - name: 注册 SaaS 应用程序
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
-                - name: SaaS API v1（已弃用）
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
-                - name: SaaS API v2
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
         - name: 虚拟机套餐
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:
