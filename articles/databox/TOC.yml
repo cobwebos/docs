@@ -111,9 +111,7 @@
           items:
             - name: 通过 Azure 门户管理
               href: data-box-portal-ui-admin.md
-            - name: 将数据移到 blob 层
-              href: data-box-how-to-set-data-tier.md
-            - name: 排查 Data Box Heavy 问题
+            - name: 排查 Data Box Disk 问题
               href: data-box-disk-troubleshoot.md
             - name: 联系支持人员
               href: data-box-disk-contact-microsoft-support.md
@@ -155,12 +153,18 @@
               href: data-box-local-web-ui-admin.md
             - name: 排查设备问题
               href: data-box-troubleshoot.md
+            - name: 将数据移到 blob 层
+              href: data-box-how-to-set-data-tier.md
             - name: 联系支持人员
               href: data-box-disk-contact-microsoft-support.md
             - name: 迁移
               items:
+                - name: 到 Sharepoint Online
+                  href: data-box-heavy-migrate-spo.md
                 - name: 到 Azure 文件同步
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: 从 HDFS 存储
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: 资源
       items:
         - name: Data Box 产品

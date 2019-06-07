@@ -18,6 +18,10 @@
       href: tutorial-phs-backup.md
 - name: 概念
   items:
+    - name: 混合标识
+      items:
+        - name: 针对本地工作负荷的云治理管理
+          href: cloud-governed-management-for-on-premises.md
     - name: Azure AD Connect 和 Connect Health
       items:
         - name: 什么是 Azure AD Connect 和 Connect Health？

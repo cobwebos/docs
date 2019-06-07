@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/23/2019
+  ms.date: 06/03/2019
   ms.author: anshan
 abstract:
   description: 欢迎使用 Azure 时序见解。 Azure 时序见解提供功能强大的数据浏览和遥测工具，有助于改进运营分析。 本文档介绍了此服务、如何开始使用其多项功能、客户端 SDK 和功能强大的时序见解 API。 提供的信息适用于两个版本，一个是已经公开发行的版本（时序见解 GA），另一个是主要服务更新预览版（时序见解预览版）。
@@ -46,9 +46,9 @@ sections:
         className: cardsD
         items:
           - title: Azure 时序见解 GA
-            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">创建环境</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">创建单页 Web 应用</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">浏览 JavaScript 客户端库</a></p>
+            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">创建 Azure 时序见解环境</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">创建单页 Web 应用</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">浏览 JavaScript 客户端库</a></p>
           - title: Azure 时序见解预览版
-            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">预览版教程</a></p>
+            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">设置 Azure 时序见解预览版环境</a></p>
   - title: 引用
     items:
       - type: list
@@ -56,6 +56,8 @@ sections:
         className: cardsD
         items:
           - title: 时序见解 GA API
-            html: <p><a href="/rest/api/time-series-insights-management">资源管理 API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">查询 API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">查询语法</a></p>
+            html: <p><a href="rest/api/time-series-insights/ga">数据访问</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">查询 API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">查询语法</a></p>
           - title: 时序见解预览版 API
             html: <p><a href="/rest/api/time-series-insights/preview-query">查询 API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">模型 API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">环境 API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">时序表达式 API</a></p>
+          - title: 客户端 SDK
+            html: '<p><a href="https://github.com/microsoft/tsiclient/blob/master/docs/API.md">JavaScript 客户端 SDK</a></p>'

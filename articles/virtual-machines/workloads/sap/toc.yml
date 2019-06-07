@@ -86,6 +86,8 @@
       href: cal-s4h.md
     - name: Azure 上的 SAP HANA 基础结构配置和操作
       href: hana-vm-operations.md
+    - name: SAP HANA Azure 虚拟机存储配置
+      href: hana-vm-operations-storage.md
     - name: Azure 虚拟机中的 SAP HANA 可用性
       items:
         - name: Azure SAP HANA 可用性概述
