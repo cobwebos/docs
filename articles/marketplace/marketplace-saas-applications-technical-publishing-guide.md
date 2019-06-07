@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 5106b22500b73b650742e7fe0f881c2a4c984eff
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 4501a343b406f07b4775f3ad0e84d71825412a4b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937714"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752740"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 应用程序产品/服务发布指南
 
@@ -27,7 +27,7 @@ SaaS 应用程序在两个 Azure 店面中均提供。下表介绍了当前的�
 | AppSource | 是(与我联系) | 是(PowerBI/Dynamics) |
 | Azure 市场 | 否 | 是(SaaS 应用) |   
 
-**列表：**“列表”发布选项包含“与我联系”产品/服务类型，在试用级别或交易级别的参与不可行时使用。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
+**列表：** “列表”发布选项包含“与我联系”产品/服务类型，在试用级别或交易级别的参与不可行时使用。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
 **试用/交易：** 客户可以选择直接购买，也可以请求试用解决方案。 提供试用体验可以提升客户参与度，让客户在购买前体验解决方案。 借助面向客户的试用体验，发布者能获得更好的店面促销商机，随着参与客户的增多，可获得越来越多的潜在顾客。 试用版必须包含免费支持（至少在试用时间内）。  
 
 | SaaS 应用产品/服务 | 业务要求 | 技术要求 |  
@@ -148,4 +148,4 @@ Microsoft 托管商业事务。 Microsoft 代你向客户计费。 若要以订�
 如果已注册并正在创建新套餐或正在使用现有套餐，
 
 - [登录到云合作伙伴门户](https://cloudpartner.azure.com)，创建或完成套餐。
-- 请参阅 [Azure SaaS 应用程序产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer)获取详细信息。
+- 请参阅 [Azure SaaS 应用程序产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)获取详细信息。

@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/06/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 1a6f3fbc0160a78fb76f810257d3285725445eba
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: adffb18272d10c579f8b28bef055813b1074a237
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257960"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754740"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -43,7 +43,7 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>如果我购买了具有给定带宽的 ExpressRoute 线路，是否可以根据需要提升到更高的速度？
 
- 是的。 ExpressRoute 线路的配置允许免费将速度提升到所购带宽限制的两倍。 请咨询你的服务提供商，确定他们是否支持此功能。 这不是时间很长一段并不保证。 
+是的。 ExpressRoute 线路的配置允许免费将速度提升到所购带宽限制的两倍。 请咨询你的服务提供商，确定他们是否支持此功能。 这不是时间很长一段并不保证。 
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>能否同时与虚拟网络和其他 Azure 服务使用同一专用网络连接？
 
@@ -288,7 +288,7 @@ ExpressRoute 高级版是以下功能的集合：
 
 ## <a name="expressroute-local"></a>ExpressRoute 本地
 ### <a name="what-is-expressroute-local"></a>什么是 ExpressRoute 本地？
-ExpressRoute 本地是 SKU 的 ExpressRoute 线路。 本地的一个重要功能是在 ExpressRoute 对等互连位置为您提供了本地线路访问仅向一个或两个 Azure 区域中或同一 metro 附近。 与此相反，标准线路允许你访问地缘政治区域和高级线路到所有 Azure 区域中的所有 Azure 区域全局。 
+ExpressRoute 本地是上可用的 SKU 的 ExpressRoute 线路[ExpressRoute 直接](expressroute-erdirect-about.md)。 本地的一个重要功能是在 ExpressRoute 对等互连位置为您提供了本地线路访问仅向一个或两个 Azure 区域中或同一 metro 附近。 与此相反，标准线路允许你访问地缘政治区域和高级线路到所有 Azure 区域中的所有 Azure 区域全局。 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>ExpressRoute 局部变量的优点是什么？
 你需要支付标准或高级 ExpressRoute 线路的传出数据传输，而无需付费传出数据传输单独本地 ExpressRoute 线路。 换而言之，ExpressRoute 本地价格包括数据传输费用。 ExpressRoute 本地是更经济的解决方案，如果你有大量要传输的数据并且可以在你所需的 Azure 区域附近到某一 ExpressRoute 对等互连位置的专用连接将你的数据。 

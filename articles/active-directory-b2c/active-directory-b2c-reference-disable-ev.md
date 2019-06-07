@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中，在使用者注册期间禁用电子邮件验证 | Microsoft Docs
 description: 本主题演示在使用者在 Azure Active Directory B2C 中注册期间如何禁用电子邮件验证。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 01d96370fc7ce601ba5626ca0f1ec28871bf311a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b50b59b6a1f99787b842923cd6ec77ee6500f0a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703347"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509537"
 ---
 # <a name="disable-email-verification-during-consumer-sign-up-in-azure-active-directory-b2c"></a>使用者在 Azure Active Directory B2C 中注册期间禁用电子邮件验证 
 启用后，Azure Active Directory (Azure AD) B2C 让使用者能够通过提供电子邮件地址和创建本地帐户来注册应用程序。 Azure AD B2C 通过要求使用者在注册过程中验证电子邮件地址来确保电子邮件地址有效。 它还阻止恶意的自动化过程生成应用程序的假帐户。
@@ -24,13 +24,13 @@ ms.locfileid: "64703347"
 
 默认情况下，注册用户流已打开电子邮件验证。 使用以下步骤可将其关闭：
 
-1. 单击“用户流”。
+1. 单击“用户流”  。
 2. 单击用户流（例如，“B2C_1_SiUp”）将其打开。 
-3. 单击“页面布局”。
-4. 单击“本地帐户注册页”。
-5. 单击“用户属性”部分下“名称”列中的“电子邮件地址”。
-6. 在“要求验证”下选择“否”。
-7. 单击边栏选项卡顶部的“保存”。 大功告成！
+3. 单击“页面布局”。 
+4. 单击“本地帐户注册页”  。
+5. 单击“用户属性”  部分下“名称”  列中的“电子邮件地址”  。
+6. 在“要求验证”下选择“否”。  
+7. 单击边栏选项卡顶部的“保存”  。 大功告成！
 
 > [!NOTE]
 > 在注册过程中禁用电子邮件验证可能会导致垃圾邮件。 如果禁用了默认的电子邮件验证，我们建议添加自己的验证系统。

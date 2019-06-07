@@ -2,20 +2,20 @@
 title: 有关 Azure Active Directory B2C 的常见问题解答 | Microsoft Docs
 description: 有关 Azure Active Directory B2C 的常见问题解答 (FAQ)。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c837ce66656c0e8a6a15d359c76459b03c2d0dd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9198bd4f88533a8eb5817dcb6edb75931c40ec80
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722776"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510060"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ) 
 此页面解答了有关 Azure Active Directory (Azure AD) B2C 的常见问题。 请随时返回查看更新信息。
@@ -32,7 +32,7 @@ Azure AD B2C 不用于 Microsoft Office 365 用户的身份验证。  Azure AD �
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>什么是 Azure AD B2C 中的本地帐户？ 它们与 Azure AD 中的工作或学校帐户有何不同？
 在 Azure AD 租户中，属于租户的用户使用 `<xyz>@<tenant domain>` 形式的电子邮件地址登录。  `<tenant domain>` 是租户中已验证域之一或初始的 `<...>.onmicrosoft.com` 域。 此类型的帐户是工作或学校帐户。
 
-在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com）登录。 此类型的帐户是本地帐户。  我们还支持任意用户名作为本地帐户（例如，joe、bob、sarah 或 jim）。 在 Azure 门户中配置 Azure AD B2C 的标识提供者时，可以选择这两种本地帐户类型中的一种。 在 Azure AD B2C 租户中，单击“标识提供者”，然后选择“本地帐户”下的“用户名”。 
+在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net、bob@gmail.com、sarah@contoso.com 或 jim@live.com）登录。 此类型的帐户是本地帐户。  我们还支持任意用户名作为本地帐户（例如，joe、bob、sarah 或 jim）。 在 Azure 门户中配置 Azure AD B2C 的标识提供者时，可以选择这两种本地帐户类型中的一种。 在 Azure AD B2C 租户中，单击“标识提供者”，然后选择“本地帐户”下的“用户名”   。 
 
 应用程序的用户帐户必须始终通过注册用户流、注册或登录用户流，或使用 Azure AD Graph API 创建。 在 Azure 门户中创建的用户帐户仅用于管理租户。
 
@@ -69,10 +69,10 @@ Azure AD B2C 还增加了对[自定义策略](active-directory-b2c-overview-cust
 电子邮件签名包含首次创建 Azure AD B2C 租户时提供的 Azure AD B2C 租户名称。 可以使用以下说明更改名称：
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-1. 打开“Azure Active Directory”边栏选项卡。
-1. 单击“属性”选项卡。
-1. 更改“名称”字段。
-1. 单击页顶部的“保存”。
+1. 打开“Azure Active Directory”边栏选项卡  。
+1. 单击“属性”  选项卡。
+1. 更改“名称”  字段。
+1. 单击页顶部的“保存”。 
 
 目前没有办法更改电子邮件中的“发件人:”字段。
 
@@ -100,15 +100,15 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Azure AD B2C 提供哪些报告和审核功能？ 它们是否与 Azure AD Premium 中提供的功能相同？
 否，Azure AD B2C 不支持与 Azure AD Premium 相同的报告集。 但是，有许多共性：
 
-* 登录报告提供每次登录的记录以及简短的详细信息。
-* 审核报告包括管理活动和应用程序活动。 
-* 使用情况报告包括用户数、登录次数和 MFA 次数。 
+*  登录报告提供每次登录的记录以及简短的详细信息。
+*  审核报告包括管理活动和应用程序活动。 
+*  使用情况报告包括用户数、登录次数和 MFA 次数。 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>我可以本地化 Azure AD B2C 所提供页面的 UI 吗？ 支持哪些语言？
- 能！  请阅读公共预览版中的[语言自定义](active-directory-b2c-reference-language-customization.md)。  我们提供 36 种语言的翻译版本，并且你可以根据需要替代任何字符串。
+能！  请阅读公共预览版中的[语言自定义](active-directory-b2c-reference-language-customization.md)。  我们提供 36 种语言的翻译版本，并且你可以根据需要替代任何字符串。
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>我可以在 Azure AD B2C 提供的注册和登录页面上使用自己的 URL 吗？ 例如，可以将 URL 从 login.microsoftonline.com 更改为 login.contoso.com 吗？
-目前不可以。 该功能在我们的计划之中。 在 Azure 门户上的“域”选项卡中验证域并不能实现此目标。
+目前不可以。 该功能在我们的计划之中。 在 Azure 门户上的“域”选项卡中验证域并不能实现此目标。 
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>如何删除 Azure AD B2C 租户？
 请按照以下步骤删除 Azure AD B2C 租户：
@@ -118,12 +118,12 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 现在，以订阅管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 （使用在注册 Azure 时使用的同一工作或学校帐户，或同一 Microsoft 帐户。）
 1. 切换到要删除的 Azure AD B2C 租户。
 2. 导航到左侧的 Active Directory 菜单。
-3. 选择“用户和组”。
-4. 依次选择每个用户（排除当前以订阅管理员身份登录的用户）。 单击页面底部的“删除”，并在出现提示时单击“是”。
-5. 单击“应用注册”。
-6. 选择名为“b2c-extensions-app”的应用程序。 单击“删除”，出现提示时，单击“是”。
-7. 选择“概述”。
-8. 单击“删除目录”。 要完成该过程，请按照屏幕上的说明进行操作。
+3. 选择“用户和组”  。
+4. 依次选择每个用户（排除当前以订阅管理员身份登录的用户）。 单击页面底部的“删除”  ，并在出现提示时单击“是”  。
+5. 单击“应用注册”。 
+6. 选择名为“b2c-extensions-app”的应用程序。  单击“删除”，出现提示时，单击“是”。  
+7. 选择“概述”。 
+8. 单击“删除目录”。  要完成该过程，请按照屏幕上的说明进行操作。
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>我可以将 Azure AD B2C 作为企业移动性套件的一部分吗？
 不，Azure AD B2C 是即用即付 Azure 服务，不是企业移动套件的一部分。

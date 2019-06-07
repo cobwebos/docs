@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库常见问题解答 | Microsoft Docs
 description: 本文列出客户和开发人员提出的 Azure SQL 数据仓库常见问题
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: nicw
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: c16d95ea15fc358cb81b17b42570cb35f2e8c52d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4679a3bb1935e9f3e2bc90c9bc9ef1247b7ecb30
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795564"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515874"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL 数据仓库常见问题解答
 
@@ -31,7 +31,7 @@ A. 请访问 [Microsoft 符合性]页面，查明产品（如 SOC 和 ISO）的�
 
 问： 是否可以连接 PowerBI？
 
-A.  能！ 尽管 PowerBI 支持使用 SQL DW 进行直接查询，但不适合大量用户或实时数据。 要将 PowerBI 用于生产用途，建议基于 Azure Analysis Services 或 Analysis Service IaaS 使用 PowerBI。 
+A. 能！ 尽管 PowerBI 支持使用 SQL DW 进行直接查询，但不适合大量用户或实时数据。 要将 PowerBI 用于生产用途，建议基于 Azure Analysis Services 或 Analysis Service IaaS 使用 PowerBI。 
 
 问： SQL 数据仓库容量限制有哪些？
 
@@ -73,7 +73,7 @@ A. 目前 Visual Studio 对于 SQL 数据仓库，不支持数据库项目。 �
 
 问： SQL 数据仓库是否支持 REST API？
 
-A. 可以。 SQL 数据仓库还提供可与 SQL 数据库搭配使用的大多数 REST 功能。 可以在 REST 文档页或 [MSDN] 中找到 API 信息。
+A. 是的。 SQL 数据仓库还提供可与 SQL 数据库搭配使用的大多数 REST 功能。 可以在 REST 文档页或 [MSDN] 中找到 API 信息。
 
 
 ## <a name="loading"></a>加载
