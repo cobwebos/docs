@@ -5,21 +5,25 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/14/2018
+ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 787eb12faff381509fab3faf3b0e74c2c640d51c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3ef848d12e3a39c3bd83ea44fcb86d67bbdb38dc
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149778"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735924"
 ---
-Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 请直接单击“复制”对代码进行复制，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 可通过多种方式来启动 Cloud Shell：
+本文使用 PowerShell cmdlet。 若要运行这些 cmdlet，可以使用 Azure Cloud Shell（在 Azure 中托管并通过浏览器使用的交互式 shell 环境）。 Azure Cloud Shell 随预安装的 Azure PowerShell cmdlet 一起提供。
+
+若要在 Azure Cloud Shell 上运行本文中包含的任何代码，请打开 Cloud Shell 会话，对代码块使用“复制”  按钮以复制代码，然后使用 __Ctrl + Shift + V__（在 Windows 和 Linux 上）或 __Cmd + Shift + V__（在 macOS 上）将其粘贴到 Cloud Shell 会话中。 粘贴的文本不会自动执行，因此请按 **Enter** 运行代码。
+
+可以通过以下方式启动 Azure Cloud Shell：
 
 |  |   |
 |-----------------------------------------------|---|
-| 单击代码块右上角的“试用”。 | ![本文中的 Cloud Shell](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-powershell-try-it.png) |
-| 在浏览器中打开 Cloud Shell。 | [![https://shell.azure.com/powershell](./media/vpn-gateway-cloud-shell-powershell/launchcloudshell.png)](https://shell.azure.com/powershell) |
-| 单击 Azure 门户右上角菜单上的“Cloud Shell”按钮。 | [![门户中的 Cloud Shell](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
-|  |  |
+| 选择代码块右上角的“试用”。  这__不__会自动将文本复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/cli-try-it.png) |
+| 在浏览器中打开 [shell.azure.com](https://shell.azure.com)。 | [![“启动 Azure Cloud Shell”按钮](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
+| 选择 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”  按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+

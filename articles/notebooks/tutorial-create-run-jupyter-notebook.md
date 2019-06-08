@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: c593b472326fc373c0b715865b839cca3b6bcf45
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: 09d4038e705fb3bc4ff2c82daf5dc4c07f346f94
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480244"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751755"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教程：使用 Python 创建并运行 Jupyter Notebook
 
@@ -49,7 +49,7 @@ ms.locfileid: "66480244"
 
 ## <a name="create-the-data-file"></a>创建数据文件
 
-在 Notebook 中创建的线性回归模型将从项目中名为 *cricket_chirps.csv* 的文件抽取数据。 您可以创建此文件可将其从复制[GitHub-Azure 笔记本示例](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)，或通过直接输入数据。 以下部分将介绍这两种方法。
+在 Notebook 中创建的线性回归模型将从项目中名为 *cricket_chirps.csv* 的文件抽取数据。 可以通过从 [GitHub - Azure Notebooks 示例](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)复制文件或者通过直接输入数据来创建此文件。 以下部分将介绍这两种方法。
 
 ### <a name="upload-the-data-file"></a>上传数据文件
 
@@ -150,17 +150,17 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
 菜单命令的分组如下：
 
-| 菜单 | 描述 |
+| 菜单 | 说明 |
 | --- | --- |
 | 文件 | 用于管理 Notebook 文件的命令，包括用于创建和复制 Notebook、显示打印预览，以及以各种格式下载 Notebook 的命令。 |
-| Edit | 用于剪切、复制和粘贴单元、查找和替换值、管理单元附件，以及插入图像的典型命令。  |
+| 编辑 | 用于剪切、复制和粘贴单元、查找和替换值、管理单元附件，以及插入图像的典型命令。  |
 | 查看 | 用于控制 Jupyter UI 不同部分的可见性的命令。 |
-| Insert | 用于在当前单元的上方或下方插入新单元的命令。 创建 Notebook 时经常要使用这些命令。 |
+| 插入 | 用于在当前单元的上方或下方插入新单元的命令。 创建 Notebook 时经常要使用这些命令。 |
 | 单元 | 各种“运行”命令用于运行一个单元，或运行采用不同组合形式的多个单元。  “单元类型”命令用于在“代码”、“Markdown”和“原始 NBConvert”（纯文本）之间更改单元的类型。     “当前输出”和“所有输出”命令控制运行代码的输出显示方式，包括一个用于清除所有输出的命令。   |
 | 内核 | 用于管理代码在内核中的运行方式的命令，此外还有一个“更改内核”命令，它可以更改用于运行 Notebook 的语言或 Python 版本。  |
 | 数据 | 用于从项目或会话上传和下载文件的命令。 请参阅[使用项目数据文件](work-with-project-data-files.md) |
 | 小组件 | 用于管理 [Jupyter 小组件](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)的命令。这些小组件提供有关可视化、映射和绘制的附加功能。|
-| Help | 用于提供 Jupyter 界面帮助和文档的命令。 |
+| 帮助 | 用于提供 Jupyter 界面帮助和文档的命令。 |
 
 工具栏上的大多数命令都有等效的菜单命令， 但[共享和演示 Notebook](present-jupyter-notebooks-slideshow.md) 中所述的“进入/编辑 RISE 幻灯片”例外。 
 
