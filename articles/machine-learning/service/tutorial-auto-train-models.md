@@ -11,16 +11,16 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: d6e478cba13c7b4cf628535a4a1ecdbec344a733
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035454"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417305"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>教程：通过自动化机器学习来构建回归模型
 
-本教程是由两个部分构成的系列教程的第二部分。 在上一教程中，[已准备用于回归建模的纽约市出租车数据](tutorial-data-prep.md)。
+本教程是由两个部分构成的系列教程的第二部分  。 在上一教程中，[已准备用于回归建模的纽约市出租车数据](tutorial-data-prep.md)。
 
 现在可以使用 Azure 机器学习服务来生成模型了。 在教程的此部分，你将使用准备好的数据自动生成一个回归模型，用于预测出租车费用价格。 使用该服务的自动化机器学习功能定义机器学习目标和约束。 启动自动化机器学习过程。 然后进行算法选择和超参数优化。 自动化机器学习技术会对算法和超参数的多种组合进行迭代访问，直到找到符合条件的最佳模型。
 
@@ -38,7 +38,7 @@ ms.locfileid: "65035454"
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.0 进行测试。
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.39 进行测试。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,12 +54,12 @@ ms.locfileid: "65035454"
 
 从以下任一部分获取所有这些必备组件。
 
-* 使用[工作区中的云笔记本服务器](#azure) 
+* 使用[工作区中的云 Notebook 服务器](#azure) 
 * 使用[自己的 Notebook 服务器](#server)
 
-### <a name="azure"></a>使用工作区中的云笔记本服务器
+### <a name="azure"></a>使用工作区中的云 Notebook 服务器
 
-可以从你自己的基于云的笔记本服务器着手，这很容易。 当你创建此云资源时，[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 就已为你安装和配置了。
+可以轻松地从你自己的基于云的 Notebook 服务器着手。 当你创建此云资源时，[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 就已为你安装和配置了。
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
@@ -103,7 +103,7 @@ import os
 
 从现有工作区创建工作区对象。 [工作区](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。
 
-`Workspace.from_config()` 读取文件 config.json 并将详细信息加载到一个名为 `ws` 的对象。  在本教程中，`ws` 在代码的其余部分使用。
+`Workspace.from_config()` 读取文件 config.json  并将详细信息加载到一个名为 `ws` 的对象。  在本教程中，`ws` 在代码的其余部分使用。
 
 创建工作区对象之后，请为试验指定一个名称。 创建一个本地目录并将其注册到工作区。 所有运行的历史记录都记录在指定的试验下和 [Azure 门户](https://portal.azure.com)中。
 

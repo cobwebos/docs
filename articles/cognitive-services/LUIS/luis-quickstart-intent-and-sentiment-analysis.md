@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 3315af0898cb3b18af0334a433a94242b056a8bd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1408e29793fdac77b89e3f0cc0a7be525f7fa1d2
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236210"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479766"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>教程：获取话语的情绪
 
@@ -54,12 +54,13 @@ ms.locfileid: "65236210"
 
 ## <a name="add-personname-prebuilt-entity"></a>添加 PersonName 预生成实体 
 
+1. 从导航菜单中选择“生成”  。
 
-1. 在左侧导航菜单中选择“实体”。
+1. 在左侧导航菜单中选择“实体”  。
 
-1. 选择“添加预生成的实体”按钮。
+1. 选择“添加预生成的实体”按钮  。
 
-1. 从预生成的实体列表中选择以下实体，然后选择“完成”：
+1. 从预生成的实体列表中选择以下实体，然后选择“完成”： 
 
    * **[PersonName](luis-reference-prebuilt-person.md)** 
 
@@ -69,11 +70,11 @@ ms.locfileid: "65236210"
 
 添加一个新意向来从公司的成员捕获员工反馈。 
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. 在左侧面板中选择“意向”。 
 
-2. 选择“创建新意向”。
+1. 选择“创建新意向”  。
 
-3. 将新意向命名为 `EmployeeFeedback`。
+1. 将新意向命名为 `EmployeeFeedback`。
 
     ![以 EmployeeFeedback 为名称创建新意向的对话框](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
@@ -90,7 +91,7 @@ ms.locfileid: "65236210"
     |Mark Mathews 在哈佛进行了令人震撼的推销|
     |Walter Williams 在斯坦福的演讲做得很好|
 
-    选择“查看选项”，然后选择“显示实体值”来查看名称。
+    选择“查看选项”，然后选择“显示实体值”来查看名称   。
 
     [![在 EmployeeFeedback 意向中包含了示例陈述的 LUIS 应用的屏幕截图](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
@@ -104,9 +105,9 @@ ms.locfileid: "65236210"
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>将应用配置为包含情绪分析
 
-1. 在右上角的导航栏中选择“管理”，然后从左侧菜单中选择“发布设置”。
+1. 在右上角的导航栏中选择“管理”  ，然后从左侧菜单中选择“发布设置”  。
 
-1. 选择“情绪分析”以启用此设置。 
+1. 选择“使用情绪分析来确定用户的话语是积极、消极还是中性的。”  以启用此设置。 
 
     ![开启“情绪分析”作为发布设置](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
@@ -118,7 +119,11 @@ ms.locfileid: "65236210"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. 将光标定位到地址中 URL 的末尾，并输入 `Jill Jones work with the media team on the public portal was amazing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的情绪分析的 `EmployeeFeedback` 意向。
+1. 转到地址中 URL 的末尾并输入以下话语：
+
+    `Jill Jones work with the media team on the public portal was amazing` 
+
+    最后一个查询字符串参数为 `q`，表示陈述**查询**。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的情绪分析的 `EmployeeFeedback` 意向。
     
     ```json
     {
@@ -153,6 +158,8 @@ ms.locfileid: "65236210"
     ```
 
     sentimentAnalysis 是积极的，评分为 86%。 
+
+    通过删除浏览器地址栏中 `q` 的值来尝试另一个话语：`William Jones did a terrible job presenting his ideas.` 情绪评分通过返回较低的分数 `0.18597582` 来指示消极的情绪。
 
 ## <a name="clean-up-resources"></a>清理资源
 

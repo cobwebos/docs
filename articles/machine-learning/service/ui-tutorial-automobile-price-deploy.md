@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: fe26417c6e3a9f159e884c19d7bd7c9dc7569229
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8512ca2fe01c772d7e4c21a5cb09303b9804899c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787833"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389204"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>教程：使用可视界面部署机器学习模型
 
-本教程详细介绍如何在 Azure 机器学习服务可视界面中开发预测解决方案。 本教程是由两个部分构成的系列教程的第二部分。 在[本教程的第一部分](ui-tutorial-automobile-price-train-score.md)，你已训练、评分并评估了一个模型用于预测汽车价格。 本教程部分介绍以下操作：
+本教程详细介绍如何在 Azure 机器学习服务可视界面中开发预测解决方案。 本教程是由两个部分构成的系列教程的第二部分  。 在[本教程的第一部分](ui-tutorial-automobile-price-train-score.md)，你已训练、评分并评估了一个模型用于预测汽车价格。 本教程部分介绍以下操作：
 
 > [!div class="checklist"]
 > * 准备好要部署的模型
@@ -39,10 +39,10 @@ ms.locfileid: "65787833"
 
 部署准备过程由两个步骤构成：  
 
-1. 将创建的训练试验转换为预测试验
+1. 将创建的训练试验转换为预测试验  
 1. 将预测试验外部署为 Web 服务
 
-可能需要选择试验画布底部的“另存为”，先创建一个试验副本。
+可能需要选择试验画布底部的“另存为”，先创建一个试验副本。 
 
 ### <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>将训练实验转换为预测实验
 
@@ -52,13 +52,13 @@ ms.locfileid: "65787833"
 1. 修整试验，删除只有训练需要的模块
 1. 定义 Web 服务接受输入数据的位置以及生成输出的位置
 
-可以手动执行这些步骤，也可以选择试验画布底部的“设置 Web 服务”，让系统自动完成这些步骤。
+可以手动执行这些步骤，也可以选择试验画布底部的“设置 Web 服务”，让系统自动完成这些步骤。 
 
 ![显示如何将训练试验自动转换为预测试验的 Gif 动画](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 
-选择“设置 Web 服务”时，会发生以下情况：
+选择“设置 Web 服务”时，会发生以下情况： 
 
-* 训练的模型将转换为单个“训练的模型”模块。 该模块存储在试验画布左侧的模块控制板中。 可以在“训练的模型”下找到它。
+* 训练的模型将转换为单个“训练的模型”模块。  该模块存储在试验画布左侧的模块控制板中。 可以在“训练的模型”下找到它。 
 * 用于训练的模块被删除，具体包括：
   * 训练模型
   * 拆分数据
@@ -66,36 +66,36 @@ ms.locfileid: "65787833"
 * 保存的训练模型已添加回实验中
 * 已添加 **Web 服务输入**和 **Web 服务输出**模块。 这些模块标识用户数据进入模型的位置，以及返回数据的位置。
 
-可以看到，试验分两部分保存在试验画布顶部的新选项卡下。 原始训练实验位于“训练实验”选项卡下，新创建的预测实验位于“预测实验”下。 将预测试验是将要部署为 Web 服务的试验。
+可以看到，试验分两部分保存在试验画布顶部的新选项卡下。 原始训练实验位于“训练实验”选项卡下，新创建的预测实验位于“预测实验”下。   将预测试验是将要部署为 Web 服务的试验。
 
 试验现在应如下所示：  
 
 ![显示做好部署准备后试验的预期配置的屏幕截图](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-最后一次运行试验（选择“运行”）。 在弹出对话框中选择要运行试验的计算目标。 若要验证模型是否仍然正常工作，请选择“评分模型”模块的输出，然后选择“查看结果”。 此时会显示原始数据，以及预测的价格（“评分标签”）。
+最后一次运行试验（选择“运行”）。  在弹出对话框中选择要运行试验的计算目标。 若要验证模型是否仍然正常工作，请选择“评分模型”模块的输出，然后选择“查看结果”。  此时会显示原始数据，以及预测的价格（“评分标签”）。
 
 ## <a name="deploy-the-web-service"></a>部署 Web 服务
 
 若要部署从试验派生的新的 Web 服务，请执行以下操作：
 
-1. 选择画布下面的“部署 Web 服务”。
+1. 选择画布下面的“部署 Web 服务”。 
 1. 选择要运行 Web 服务的**计算目标**。
 
     目前，可视界面仅支持部署到 Azure Kubernetes 服务 (AKS) 计算目标。 可以从机器学习服务工作区内的可用 AKS 计算目标中进行选择，或者使用显示的对话框中的步骤配置新的 AKS 环境。
 
     ![显示新计算目标的可能配置的屏幕截图](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
 
-1. 选择“部署 Web 服务”。 部署完成后，将看到以下通知。 部署可能需要几分钟时间。
+1. 选择“部署 Web 服务”  。 部署完成后，将看到以下通知。 部署可能需要几分钟时间。
 
     ![显示成功部署确认消息的屏幕截图。](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
 
 ## <a name="test-the-web-service"></a>测试 Web 服务
 
-用户输入数据将通过“Web 服务输入”模块进入部署的模型。 然后在“评分模型”模块中为输入评分。 根据设置预测试验的方式，模型预期采用的数据格式与原始汽车价格数据集的格式相同。 最后，结果将通过“Web 服务输出”模块返回给用户。
+用户输入数据将通过“Web 服务输入”模块进入部署的模型。  然后在“评分模型”模块中为输入评分。  根据设置预测试验的方式，模型预期采用的数据格式与原始汽车价格数据集的格式相同。 最后，结果将通过“Web 服务输出”模块返回给用户。 
 
 可以在可视界面上的“Web 服务”选项卡中测试 Web 服务。
 
-1. 转到“Web 服务”部分。 将会看到所部署的名为“教程 - 预测汽车价格 [预测开支]”的 Web 服务。
+1. 转到“Web 服务”部分。 将会看到所部署的名为“教程 - 预测汽车价格 [预测开支]”的 Web 服务。 
 
      ![显示“Web 服务”选项卡的屏幕截图，其中突出显示了最近创建的 Web 服务](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
@@ -103,17 +103,17 @@ ms.locfileid: "65787833"
 
      ![显示“Web 服务”视图中提供的其他详细信息的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-details.png)
 
-1. 选择“测试”。
+1. 选择“测试”。 
 
     ![显示 Web 服务测试页的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
 
-1. 输入测试数据或使用自动填充的示例数据，然后选择底部的“测试”。 测试请求将提交到 Web 服务，结果将显示在页面上。
+1. 输入测试数据或使用自动填充的示例数据，然后选择底部的“测试”。  测试请求将提交到 Web 服务，结果将显示在页面上。 尽管为输入数据生成了价格值，但它不用于生成预测值。
 
 ## <a name="manage-the-web-service"></a>管理 Web 服务
 
-部署 Web 服务后，可以通过可视界面中的“Web 服务”选项卡管理该服务。
+部署 Web 服务后，可以通过可视界面中的“Web 服务”选项卡管理该服务。 
 
-在 Web 服务详细信息页中选择“删除”可以删除 Web 服务。
+在 Web 服务详细信息页中选择“删除”可以删除 Web 服务。 
 
    ![显示窗口底部用于删除 Web 服务的按钮位置的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-delete.png)
 
@@ -123,11 +123,11 @@ ms.locfileid: "65787833"
 
 **请求/响应** - 用户可以使用 HTTP 协议向该服务发送一行或多行汽车数据。 该服务将使用一个或多个结果集做出响应。
 
-可以在 Web 服务详细信息页的“使用”选项卡中找到示例 REST 调用。
+可以在 Web 服务详细信息页的“使用”选项卡中找到示例 REST 调用。 
 
    ![显示用户可在“使用”选项卡中找到的示例 REST 调用的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
 
-导航到“API 文档”选项卡可以找到更多 API 详细信息。
+导航到“API 文档”选项卡可以找到更多 API 详细信息。 
 
   ![显示用户可在“API 文档”选项卡中找到的其他 API 详细信息的屏幕截图](./media/ui-tutorial-automobile-price-deploy/web-service-api.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "65787833"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中打开你的工作区。  
 
-1. 在工作区中选择“模型”。 然后选择创建的试验。
+1. 在工作区中选择“模型”。  然后选择创建的试验。
 
     ![显示如何在 Azure 门户中导航到试验的屏幕截图](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "65787833"
 
     ![显示 Azure 门户中试验统计信息概览的屏幕截图](./media/ui-tutorial-automobile-price-deploy/model-details.png)
 
-1. 选择“部署”；随即会列出使用该模型的所有 Web 服务。 选择 Web 服务名称会转到 Web 服务详细信息页。 在此页中，可以获取 Web 服务的更多详细信息。
+1. 选择“部署”；随即会列出使用该模型的所有 Web 服务。  选择 Web 服务名称会转到 Web 服务详细信息页。 在此页中，可以获取 Web 服务的更多详细信息。
 
     ![详细运行报告的屏幕截图](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)
 

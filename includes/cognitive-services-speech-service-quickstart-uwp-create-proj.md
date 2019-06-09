@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: fe2978e176b986164ebb01fddbd29481f8a117bd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: faa93b75bde3a14e48baa7d27a3eb6439a137e44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145434"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482272"
 ---
-1. 启动 Visual Studio 2017。
+1. 启动 Visual Studio 2019。
 
 1. 确保“通用 Windows 平台开发”  工作负荷可用。 在 Visual Studio 菜单栏中选择“工具”   >   “获取工具和功能”，以便打开 Visual Studio 安装程序。 如果此工作负荷已启用，请关闭对话框。
 

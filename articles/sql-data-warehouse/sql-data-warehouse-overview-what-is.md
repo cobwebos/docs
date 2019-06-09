@@ -2,27 +2,28 @@
 title: 什么是 Azure SQL 数据仓库？ | Microsoft Docs
 description: 企业级分布式数据库，可处理 PB 量级的关系数据和非关系数据。 它是行业首个云数据仓库，可以在数秒内增长、收缩和暂停。
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
-ms.author: nicw
+ms.date: 05/30/2019
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 29296d703e59cb234177349ca477c3fdab74ee61
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+mscustom: sqlfreshmay19
+ms.openlocfilehash: a9126e9023091dd8c3df71f2aa2558a01227a8be
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790859"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428031"
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>什么是 Azure SQL 数据仓库？
 
 SQL 数据仓库是基于云的企业数据仓库 (EDW)，可利用大规模并行处理 (MPP) 对数 PB 的数据快速运行复杂的查询。 将 SQL 数据仓库用作大数据解决方案的关键组件。 使用简单的 [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL 查询将大数据导入 SQL 数据仓库，然后利用 MPP 运行高性能分析。 进行集成和分析时，数据仓库是企业获取见解能够依赖的唯一事实来源。  
 
-
 ## <a name="key-component-of-big-data-solution"></a>大数据解决方案的关键组件
+
 SQL 数据仓库是云中端到端大数据解决方案的关键组件。
 
 ![数据仓库解决方案](media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png) 
@@ -33,19 +34,21 @@ SQL 数据仓库通过列存储将数据存储到关系表中。 此格式可显
 
 分析结果可以传输到世界各地的报告数据库或应用程序。 然后即可通过业务分析获得进行明智的业务决策所需的见解。
 
-
 ## <a name="next-steps"></a>后续步骤
-对 SQL 数据仓库有了初步的认识后，请继续学习如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]和[加载示例数据][load sample data]。 如果不熟悉 Azure，在遇到新术语时，可以参考 [Azure 术语表][Azure glossary]。 或者，查看一下以下一些其他 SQL 数据仓库资源。  
 
-* [客户成功案例]
-* [博客]
-* [功能请求]
-* [视频]
-* [客户顾问团队博客]
+- 探索 [Azure SQL 数据仓库体系结构](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+- 快速[创建 SQL 数据仓库][create a SQL Data Warehouse]
+- [加载示例数据][load sample data]。
+- 浏览[视频](/azure/sql-data-warehouse/sql-data-warehouse-videos)
+
+或者，查看一下以下一些其他 SQL 数据仓库资源。  
+* 搜索[博客]
+* 提交[功能请求]
+* 搜索[客户顾问团队博客]
 * [创建支持票证]
-* [MSDN 论坛]
-* [Stackoverflow 论坛]
-* [Twitter]
+* 搜索 [MSDN 论坛]
+* 搜索 [Stackoverflow 论坛]
+
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
@@ -63,14 +66,13 @@ SQL 数据仓库通过列存储将数据存储到关系表中。 此格式可显
 <!--MSDN references-->
 
 <!--Other Web references-->
-[客户成功案例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [博客]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN 论坛]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
 [Stackoverflow 论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
-[视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

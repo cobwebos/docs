@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bd90d315fd5590a8bd862a1a3397cf8c254fccc8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e926ca2625f98522652ae7e7d245ecf2ed576c4
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714278"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688712"
 ---
 # <a name="what-is-azure-backup"></a>什么是 Azure 备份？
 
@@ -32,7 +32,7 @@ Azure 备份具有以下主要优势：
     - 如果使用 Azure 导入/导出服务执行脱机初始备份以导入大量数据，则入站数据将产生相关费用。  [了解详细信息](backup-azure-backup-import-export.md)。
 - **保护数据安全**：Azure 备份为传输中的数据和静态数据提供保护解决方案。
 - **获取应用一致性备份**：应用程序一致性备份意味着恢复点包含还原备份副本所需的所有数据。 Azure 备份提供了应用程序一致性备份，确保了还原数据时无需额外的修补程序。 还原应用程序一致型数据可减少还原时间，因此可快速恢复到运行状态。
-- **保留短期和长期数据**：可将恢复服务保管库用于短期和长期数据保留。 Azure 不会限制恢复服务保管库中数据的保留时间长度。 可将数据保留任意时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。 [详细了解](backup-introduction-to-azure-backup.md#backup-and-retention)此限制对备份需求的影响。
+- **保留短期和长期数据**：可将恢复服务保管库用于短期和长期数据保留。 Azure 不会限制恢复服务保管库中数据的保留时间长度。 可将数据保留任意时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。 
 - **自动存储管理** - 混合环境常常需要异类存储（部分在本地，部分在云端）。 通过 Azure 备份，使用本地存储设备时无需付费。 Azure 备份会自动分配和管理备份存储，且采用即用即付模型，因此，你只需为消耗的存储付费。 [详细了解](https://azure.microsoft.com/pricing/details/backup)定价情况。
 - **多个存储选项** - Azure 备份提供两种类型的复制来保持存储/数据的高可用性。
     - [本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
@@ -109,6 +109,25 @@ Azure 备份可以备份本地计算机和 Azure VM。
 **我想要备份本地运行的应用** | 若要进行应用感知的备份，计算机必须受 DPM 或 MABS 的保护。
 **我想要对 Azure VM 使用精细且灵活的备份和恢复设置** | 使用在 Azure 中运行的 MABS/DPM 来保护 Azure VM，这样可以在备份计划方面获得更大的灵活性，并在保护和还原文件、文件夹、卷、应用和系统状态方面获得最大的灵活性。
 
+## <a name="backup-and-retention"></a>备份和保留
+
+Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备份副本或快照）的限制。 
+
+- 受保护的实例是计算机、服务器（物理或虚拟）或配置为向 Azure 备份数据的工作负荷。 保存数据的备份副本时，将保护实例。
+- 数据的备份副本是保护项。 如果源数据丢失或损坏，备份副本可还原源数据。
+
+下表显示了每个组件的最大备份频率。备份策略配置决定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额会耗尽。如果每月创建一个恢复点，可以保留恢复点 833 年。备份服务未针对恢复点实施过期时间限制。
+
+|  | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
+| --- | --- | --- | --- | --- |
+| 备份频率<br/> （到恢复服务保管库） |每天三次备份 |每天两次备份 |每天两次备份 |每天一次备份 |
+| 备份频率<br/> （到磁盘） |不适用 |SQL Server 每隔 15 分钟<br/><br/> 其他工作负荷每隔 1 小时 |SQL Server 每隔 15 分钟<br/><br/> 其他工作负荷每隔 1 小时 |不适用 |
+| 保留期选项 |每日、每周、每月、每年 |每日、每周、每月、每年 |每日、每周、每月、每年 |每日、每周、每月、每年 |
+| 每个受保护实例的恢复点数上限 |9999|9999|9999|9999|
+| 最长数据保留期 |取决于备份频率 |取决于备份频率 |取决于备份频率 |取决于备份频率 |
+| 本地磁盘上的恢复点 |不适用 | 对于文件服务器为 64<br/><br/> 对于应用程序服务器为 448 | 对于文件服务器为 64<br/><br/> 对于应用程序服务器为 448 |不适用 |
+| 磁带上的恢复点 |不适用 |不受限制 |不适用 |不适用 |
+
 ## <a name="how-does-azure-backup-work-with-encryption"></a>Azure 备份如何使用加密？
 
 **加密** | **本地备份** | **备份 Azure VM** | **在 Azure VM 上备份 SQL Server**
@@ -119,7 +138,7 @@ Azure 备份可以备份本地计算机和 Azure VM。
 ## <a name="next-steps"></a>后续步骤
 
 - [查看](backup-architecture.md)不同备份方案的体系结构和组件。
-- [验证](backup-support-matrix.md)备份的支持功能和设置。
+- [验证](backup-support-matrix.md)对备份和 [Azure VM 备份](backup-support-matrix-iaas.md)的支持要求和限制。
 
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png

@@ -1,21 +1,17 @@
 ---
 title: Azure 托管应用程序概述 | Microsoft 文档
 description: 介绍 Azure 托管应用程序的概念
-services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.date: 10/04/2018
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 48bb241a7871d2a209636f66837fb2afd95fd22c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 5b6cb030c6eba5d80dfd046f1c3950609da1ed73
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001794"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479822"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -55,7 +51,9 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 ## <a name="resource-groups-for-managed-applications"></a>托管应用程序的资源组
 
-通常，托管应用程序的资源驻留在两个资源组中。 使用者管理一个资源组，发布者管理另一个资源组。 定义托管应用程序时，发布者可指定访问级别。 目前，Azure 中的所有数据提供程序都不支持限制[数据操作](../role-based-access-control/role-definitions.md)的访问。
+通常，托管应用程序的资源位于两个资源组中。 使用者管理一个资源组，发布者管理另一个资源组。 定义托管应用程序时，发布者可指定访问级别。 发布者可以请求永久角色分配，也可以请求[实时访问](request-just-in-time-access.md)限制在某个时间段内的分配。
+
+目前，Azure 中的所有数据提供程序都不支持限制[数据操作](../role-based-access-control/role-definitions.md)的访问。
 
 下图显示了发布者请求托管资源组所有者角色的方案。 发布者在此资源组中针对使用者放置了一个只读锁。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
 
@@ -69,7 +67,7 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 ### <a name="managed-resource-group"></a>托管资源组
 
-此资源组包含托管应用程序所需的所有资源。 例如，此资源组包含解决方案的虚拟机、存储帐户和虚拟网络。 使用者对此资源组拥有有限的访问权限，因为使用者不会管理托管应用程序的单个资源。 发布者对此资源组的访问权限对应于托管应用程序定义中指定的角色。 例如，发布者可以请求此资源组的“所有者”或“参与者”角色。
+此资源组包含托管应用程序所需的所有资源。 例如，此资源组包含解决方案的虚拟机、存储帐户和虚拟网络。 使用者对此资源组拥有有限的访问权限，因为使用者不会管理托管应用程序的单个资源。 发布者对此资源组的访问权限对应于托管应用程序定义中指定的角色。 例如，发布者可以请求此资源组的“所有者”或“参与者”角色。 访问权限可以是永久性的，也可以限制为特定的时间。
 
 当使用者删除托管应用程序时，也会一并删除托管资源组。
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ea890a49fc7b6a153ece183b153f5bc2a49760b5
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864515"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496566"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>在 Azure 中创建 HTTP 触发的函数
 
@@ -175,7 +175,7 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 ```
 
 > [!NOTE]
-> Linux 和 Windows 应用不能托管在同一个资源组中。 如果名为 `myResourceGroup` 的现有资源组有 Windows 函数应用或 Web 应用，必须使用其他资源组。
+> Azure Functions（适用于 Linux 的消耗计划）目前处于预览状态，仅可以下区域使用：美国西部、美国东部、西欧、东亚。 此外，Linux 和 Windows 应用不能托管在同一个资源组中。 如果名为 `myResourceGroup` 的现有资源组有 Windows 函数应用或 Web 应用，必须使用其他资源组。
 
 现在，可以将本地函数项目发布到 Azure 中的函数应用了。
 

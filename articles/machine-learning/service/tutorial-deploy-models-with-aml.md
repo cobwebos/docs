@@ -10,16 +10,16 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: f2984ed9a7edd36b166c0dff9aa87d86c6d2ab45
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9709d18b00d65578ca3a63fe5044e0b9f7b52d58
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800720"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515583"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 
-本教程是由两个部分构成的系列教程的第二部分。 在[上一个教程](tutorial-train-models-with-aml.md)中，定型了机器学习模型，然后在云中的工作区内注册了模型。  
+本教程是由两个部分构成的系列教程的第二部分  。 在[上一个教程](tutorial-train-models-with-aml.md)中，定型了机器学习模型，然后在云中的工作区内注册了模型。  
 
 现在，你已准备好在 [Azure 容器实例](https://docs.microsoft.com/azure/container-instances/)中部署模型作为 Web 服务。 Web 服务是一个映像，在本例中是 Docker 映像。 它用于封装评分逻辑和模型本身。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "65800720"
 容器实例是用于测试和了解工作流的理想解决方案。 对于可缩放的生产部署，请考虑使用 Azure Kubernetes 服务。 有关详细信息，请参阅[部署方式及位置](how-to-deploy-and-where.md)。
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.8 进行测试。
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.41 进行测试。
 
 ## <a name="prerequisites"></a>先决条件
 跳到[设置开发环境](#start)来通读 Notebook 步骤。  

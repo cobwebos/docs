@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a8513344c35c14ebf06f3693da618ed20047d07b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f1eac83f2b5460bf56ddff1bf15d9180adb49a48
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792051"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382276"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>快速入门：Azure SQL 数据库连接和查询
 
@@ -39,6 +39,7 @@ ms.locfileid: "65792051"
 |[PHP](sql-database-connect-query-php.md)|此快速入门演示如何使用 PHP 来创建连接到 Azure SQL 数据库的程序，并使用 Transact-SQL 语句来查询数据。|
 |[Python](sql-database-connect-query-python.md)|本快速入门演示了如何使用 Python 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句查询数据。 |
 |[Ruby](sql-database-connect-query-ruby.md)|此快速入门演示如何使用 Ruby 来创建连接到 Azure SQL 数据库的程序，并使用 Transact-SQL 语句来查询数据。|
+|[R](sql-database-connect-query-r.md)|本快速入门演示了如何将 R 与 Azure SQL 数据库机器学习服务配合使用来创建连接到 Azure SQL 数据库并使用 Transact-SQL 语句来查询数据的程序。|
 |||
 
 ## <a name="tls-considerations-for-sql-database-connectivity"></a>SQL 数据库连接的 TLS 注意事项
@@ -57,7 +58,7 @@ Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连
 
 可以使用各种库和框架来连接到 Azure SQL 数据库。 查看[入门教程](https://aka.ms/sqldev)，快速开始使用 C#、Java、Node.js、PHP 和 Python 等编程语言。 然后使用 Linux、Windows 或 Docker（对于 macOS）上的 SQL Server 生成应用。
 
-下表列出的连接库或驱动程序可供客户端应用程序使用各种语言进行连接并使用在本地或云中运行的 SQL Server。 可以在 Linux、Windows 或 Docker 上使用它们，并将其用于连接到 Azure SQL 数据库和 Azure SQL 数据仓库。 
+下表列出的连接库或驱动程序可供客户端应用程序使用各种语言进行连接并使用在本地或云中运行的 SQL Server  。 可以在 Linux、Windows 或 Docker 上使用它们，并将其用于连接到 Azure SQL 数据库和 Azure SQL 数据仓库。 
 
 | 语言 | 平台 | 其他资源 | 下载 | 入门 |
 | :-- | :-- | :-- | :-- | :-- |

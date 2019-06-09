@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: raynew
-ms.openlocfilehash: f69c2ea334109a42d63b85cb71de0deb7174beab
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2a6319565aa05f34ce31a14c5fc57e591248f4ee
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701675"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399696"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -25,7 +25,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 * 指定要保护的 SQL Server VM 并查询其中的数据库后，Azure 备份服务将在此 VM 上以 `AzureBackupWindowsWorkload` 扩展名安装工作负荷备份扩展。
 * 此扩展包含协调器和 SQL 插件。 协调器负责触发多种操作（如配置备份、备份和还原）的工作流，插件负责实际数据流。
-* 为了发现此 VM 上的数据库，Azure 备份创建帐户  `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 Azure 备份将  `NT AUTHORITY\SYSTEM`  帐户用于数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 UserErrorSQLNoSysadminMembership ****。 如果发生此错误，请 [遵照这些说明](backup-azure-sql-database.md)予以解决。
+* 为了发现此 VM 上的数据库，Azure 备份创建帐户  `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 Azure 备份将  `NT AUTHORITY\SYSTEM`  帐户用于数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 UserErrorSQLNoSysadminMembership **** 。 如果发生此错误，请 [遵照这些说明](backup-azure-sql-database.md)予以解决。
 * 在所选数据库上触发配置保护后，备份服务将通过备份计划和其他策略详细信息设置协调器，扩展在 VM 上本地缓存协调器 
 * 在计划的时间，协调器与插件通信，并开始使用 VDI 从 SQL 服务器流式处理备份数据。  
 * 插件将数据直接发送到恢复服务保管库，因此不需要暂存位置。 Azure 备份服务在存储帐户中加密和存储数据。
@@ -53,18 +53,18 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ## <a name="feature-consideration-and-limitations"></a>功能注意事项和限制
 
-- SQL Server 备份可配置在 Azure 门户或 PowerShell 中。 我们不支持 CLI。
+- SQL Server 备份可配置在 Azure 门户或 PowerShell 中  。 我们不支持 CLI。
 - 此解决方案在 Azure 资源管理器 VM 和经典 VM 这两种[部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)上均受支持。
 - 运行 SQL Server 的 VM 需要建立 Internet 连接才能访问 Azure 公共 IP 地址。
 - 不支持 SQL Server **故障转移群集实例 (FCI)** 和 SQL Server Always on 故障转移群集实例。
 - 不支持对镜像数据库和数据库快照执行备份和还原操作。
 - 使用多个备份解决方案来备份独立的 SQL Server 实例或 SQL Always On 可用性组可能导致备份失败，请避免执行此操作。
 - 如果通过相同或不同的解决方案单独备份可用性组的两个节点，可能也会导致备份失败。
-- Azure 备份支持只读数据库的仅完整备份和仅复制完整备份类型
-- 无法保护包含大量文件的数据库。 支持的最大文件数约为 1000。  
-- 在一个保管库中最多可以备份约 2000 个 SQL Server 数据库。 如果有大量数据库，可创建多个保管库。
-- 一次最多可配置 50 个数据库的备份；此限制有助于优化备份负载。
-- 我们支持最高 2TB 大小的数据库；对于超过此大小的数据库，可能会出现性能问题。
+- Azure 备份支持只读数据库的仅完整备份和仅复制完整备份类型 
+- 无法保护包含大量文件的数据库。 支持的最大文件数约为 1000  。  
+- 在一个保管库中最多可以备份约 2000 个 SQL Server 数据库  。 如果有大量数据库，可创建多个保管库。
+- 一次最多可配置 50 个数据库的备份；此限制有助于优化备份负载  。
+- 我们支持最高 2TB 大小的数据库；对于超过此大小的数据库，可能会出现性能问题  。
 - 若要了解每个服务器可以保护多少个数据库，我们需要考虑带宽、VM 大小、备份频率、数据库大小等因素。我们正在开发一个规划器，它可以帮助你自行计算这些数字。 我们很快将发布此规划器。
 - 对于可用性组，将基于几个因素从不同节点获取备份。 下面概述了可用性组的备份行为。
 
@@ -119,30 +119,32 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
   如果由于出现 **UserErrorSQLNoSysadminMembership** 错误而需要解决权限问题，请执行以下步骤：
 
   1. 使用拥有 SQL Server sysadmin 权限的帐户登录到 SQL Server Management Studio (SSMS)。 除非需要特殊权限，否则 Windows 身份验证应该正常运行。
-  2. 在 SQL 服务器上，打开“安全/登录名”文件夹。
+  2. 在 SQL 服务器上，打开“安全/登录名”文件夹。 
 
       ![打开“安全/登录名”文件夹以查看帐户](./media/backup-azure-sql-database/security-login-list.png)
 
-  3. 右键单击“登录名”文件夹并选择“新建登录名”。 在“登录名 - 新建”中，选择“搜索”。
+  3. 右键单击“登录名”文件夹并选择“新建登录名”。   在“登录名 - 新建”中，选择“搜索”。  
 
       ![在“登录名 - 新建”对话框中选择“搜索”](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 NT SSERVICE\AzureWLBackupPluginSvc。 输入“输入要选择的对象名称”中显示的帐户名。 选择“检查名称”以解析名称。 单击“确定”。
+  4. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 NT SSERVICE\AzureWLBackupPluginSvc  。 输入“输入要选择的对象名称”中显示的帐户名。  选择“检查名称”以解析名称。  单击“确定”。 
 
       ![选择“检查名称”以解析未知的服务名称](./media/backup-azure-sql-database/check-name.png)
 
-  5. 在“服务器角色”中，确保“sysadmin”角色已选中。 单击“确定”。 现在，所需的权限应会存在。
+  5. 在“服务器角色”中，确保“sysadmin”角色已选中。   单击“确定”。  现在，所需的权限应会存在。
 
       ![确保 sysadmin 服务器角色已选中](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
-  6. 现在，将数据库与恢复服务保管库相关联。 在 Azure 门户上的“受保护的服务器”列表中，右键单击处于错误状态的服务器，并选择“重新发现数据库”。
+  6. 现在，将数据库与恢复服务保管库相关联。 在 Azure 门户上的“受保护的服务器”列表中，右键单击处于错误状态的服务器，并选择“重新发现数据库”   。
 
       ![验证服务器是否拥有相应的权限](./media/backup-azure-sql-database/check-erroneous-server.png)
 
-  7. 在“通知”区域查看进度。 找到选定的数据库后，会显示一条成功消息。
+  7. 在“通知”区域查看进度。  找到选定的数据库后，会显示一条成功消息。
 
       ![部署成功消息](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
+> [!NOTE]
+> 如果 SQL Server 安装了多个 SQL Server 实例，则必须将 **NT Service\AzureWLBackupPluginSvc** 帐户的 sysadmin 权限添加到所有 SQL 实例。
 
 ## <a name="next-steps"></a>后续步骤
 

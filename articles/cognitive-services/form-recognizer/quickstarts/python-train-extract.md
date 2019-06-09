@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 139c0c29033dc45d07fd0987c2eee92308512329
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ebed76c82b647d11e34a17ae94edf208929f8c56
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906986"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475256"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
 
@@ -26,7 +26,7 @@ ms.locfileid: "65906986"
 若要完成本快速入门，必须具备以下条件：
 - 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
-- 至少有五个相同类型的表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。
+- 至少有五个相同类型的表单。 你将使用这些数据来训练模型。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将数据上传到 Azure Blob 存储帐户的根目录。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -45,9 +45,12 @@ ms.locfileid: "65906986"
 
 表单识别器资源完成部署以后，请在门户的“所有资源”列表中找到并选中它。  然后，选择“密钥”选项卡以查看订阅密钥。  任一密钥都会为应用提供资源访问权限。 复制**密钥 1** 的值。 在接下来的部分中将使用它。
 
-## <a name="create-and-run-the-sample"></a>创建并运行示例
+## <a name="train-a-form-recognizer-model"></a>训练表单识别器模型
 
-若要创建并运行示例，请对以下代码片段进行如下更改：
+首先，你需要 Azure 存储 blob 中的一组训练数据。 应至少有五个类型/结构与主要输入数据相同的示例表单（PDF 文档和/或图像）。 或者，可以使用一个空表单和两个已填充表单。 空表单的文件名需要包括单词“empty”。
+
+若要使用 Azure Blob 容器中的文档训练表单识别器模型，请通过运行下面的 python 代码来调用“训练”API。  运行该代码之前，请进行以下更改：
+
 1. 将 `<Endpoint>` 替换为获取的订阅密钥所在的 Azure 区域中的表单识别器资源的终结点 URL。
 1. 将 `<SAS URL>` 替换为训练数据所在位置的 Azure Blob 存储容器共享访问签名 (SAS) URL。  
 1. 将 `<Subscription key>` 替换为从上一步复制的订阅密钥。

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Azure 门户创建和查询 Azure SQL 数据仓库 | Microsoft Docs
+title: 快速入门：创建和查询 Azure SQL 数据仓库 - Azure 门户 | Microsoft Docs
 description: 在 Azure 门户中使用 Azure SQL 数据仓库创建和查询数据仓库。
 services: sql-data-warehouse
 author: XiaoyuL-Preview
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: development
-ms.date: 08/02/2018
+ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ee18a78aea67d0270b105f8703259b65c706d2e7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.custom: sqlfreshmay19
+ms.openlocfilehash: 9072caf29be0ebf47207266b7313e989034c3a18
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66169263"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428045"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建和查询 Azure SQL 数据仓库
 
@@ -81,7 +82,7 @@ ms.locfileid: "66169263"
 
 8. 单击“应用”  。
 
-9. 填写 SQL 数据仓库表单后，即可单击“创建”进行数据库预配  。 预配需要数分钟。 
+9. 填写 SQL 数据仓库表单后，即可单击“创建”对数据库进行预配  。 预配需要数分钟。
 
     ![单击“创建”](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -91,31 +92,30 @@ ms.locfileid: "66169263"
 
 ## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
-SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。 按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../sql-database/sql-database-firewall-configure.md)。 
+SQL 数据仓库服务会在服务器级别创建防火墙。 此防火墙会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。 按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../sql-database/sql-database-firewall-configure.md)。
 
 > [!NOTE]
 > SQL 数据仓库通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
 
-1. 部署完成后，在左侧菜单中单击“SQL 数据仓库”，然后在“SQL 数据仓库”页上单击“mySampleDatabase”    。 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 mynewserver-20180430.database.windows.net），并提供了其他配置的选项  。 
+1. 部署完成后，从左侧菜单中选择“所有服务”  。 选择“数据库”  ，选择“SQL 数据仓库”  旁边的星号，以将 SQL 数据仓库添加到收藏夹中。
+1. 从左侧菜单中选择“SQL 数据仓库”  ，然后单击“SQL 数据仓库”  页上的“mySampleDatabase”  。 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 mynewserver-20180430.database.windows.net），并提供了其他配置的选项  。
+1. 复制此完全限定的服务器名称，以便在此快速入门和其他快速入门中使用它连接到服务器及其数据库。 单击服务器名称，打开服务器设置。
 
-2. 在后续的快速入门中，请复制此完全限定的服务器名称，将其用于连接到服务器及其数据库。 单击服务器名称，打开服务器设置。
+   ![查找服务器名称](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
-   ![查找服务器名称](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png) 
+1. 单击“显示防火墙设置”  。
 
-3. 若要打开服务器设置， 
-4. 请单击服务器名称。
+   ![服务器设置](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-   ![服务器设置](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
+1. 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
 
-5. 单击“显示防火墙设置”  。 此时会打开 SQL 数据库服务器的“防火墙设置”页。  
+   ![服务器防火墙规则](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
-   ![服务器防火墙规则](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png) 
+1. 在工具栏上单击“添加客户端 IP”  ，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-4. 在工具栏上单击“添加客户端 IP”  ，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+1. 单击“保存”。  此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
-5. 单击“保存”。  此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
-
-6. 单击“确定”，然后关闭“防火墙设置”页。  
+1. 单击“确定”，然后关闭“防火墙设置”页。  
 
 现在，可使用此 IP 地址连接到 SQL Server 及其数据仓库。 可从 SQL Server Management Studio 或另一种所选工具进行连接。 连接时，请使用之前创建的 ServerAdmin 帐户。
 
@@ -127,8 +127,8 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 请在 Azure 门户中获取 SQL Server 的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据仓库”，然后单击“SQL 数据仓库”页上的数据仓库   。 
-3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。   在此示例中，完全限定名称为 mynewserver-20180430.database.windows.net。 
+2. 从左侧菜单中选择“SQL 数据仓库”，然后单击“SQL 数据仓库”页上的数据仓库   。
+3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。   在此示例中，完全限定名称为 mynewserver-20180430.database.windows.net。
 
     ![连接信息](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
@@ -145,8 +145,8 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
    | 服务器类型 | 数据库引擎 | 此值是必需的 |
    | 服务器名称 | 完全限定的服务器名称 | 示例：mynewserver-20180430.database.windows.net  。 |
    | Authentication | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
-   | 登录 | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
-   | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
+   | 登录 | 服务器管理员帐户 | 创建服务器时指定的帐户。 |
+   | 密码 | 服务器管理员帐户的密码 | 创建服务器时指定的密码。 |
    ||||
 
     ![连接到服务器](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -183,12 +183,12 @@ SQL 数据仓库使用 T-SQL 作为查询语言。 打开一个查询窗口并�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-针对数据仓库资源用量和数据仓库存储的数据，将会收取你的费用。 这些计算和存储资源是分开计费的。 
+针对数据仓库单位数和数据仓库存储的数据，会向你收取费用。 这些计算和存储资源是分开计费的。
 
-- 如果想要将数据保留在存储中，可以在不使用数据仓库时暂停计算。 通过暂停计算，将仅收取数据存储费用。 只要准备好处理数据，便可以恢复计算。
-- 如果不想支付将来的费用，则可以删除数据仓库。 
+- 如果想要将数据保留在存储中，可以在不使用数据仓库时暂停计算。 如果暂停计算资源，则你只需支付数据存储费用。 只要准备好处理数据，便可以恢复计算。
+- 如果不想支付将来的费用，则可以删除数据仓库。
 
-请按照下列步骤按需清理资源。
+按照以下步骤清理不再需要的资源。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，单击数据仓库。
 

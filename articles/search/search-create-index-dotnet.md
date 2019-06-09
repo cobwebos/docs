@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/16/2019
-ms.openlocfilehash: 8d186ae83e1016de9c4548d4b1c39303025a5270
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0392cc6334aaf383f43d55134fa65f82c44270c3
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795816"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428406"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>快速入门：1 - 使用 C# 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "65795816"
 > * [Postman](search-fiddler.md)
 >*
 
-本文介绍了使用 C# 和 [.NET SDK](https://aka.ms/search-sdk) 创建 [Azure 搜索索引](search-what-is-an-index.md)的过程。 这是第一课，分为创建、加载和查询索引三部分练习。 执行以下任务，完成索引创建：
+本文介绍了使用 C# 和 [.NET SDK](https://aka.ms/search-sdk) 创建 [Azure 搜索索引](search-what-is-an-index.md)的过程。 此快速入门是创建、加载和查询索引三部分练习中的第一课。 执行以下任务，完成索引创建：
 
 > [!div class="checklist"]
 > * 创建 [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) 对象以连接到搜索服务。
@@ -39,7 +39,7 @@ ms.locfileid: "65795816"
 
 + [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
-+ [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
+[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
 
 + [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 提供了示例解决方案，一个用 C# 编写的 .NET Core 控制台应用程序，位于 Azure 示例 GitHub 存储库中。 下载并提取该解决方案。 默认情况下，解决方案是只读的。 右键单击解决方案并清除只读属性，以便可以修改文件。 数据包含在解决方案中。
 
@@ -47,9 +47,9 @@ ms.locfileid: "65795816"
 
 对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
 ![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
 
@@ -61,15 +61,13 @@ ms.locfileid: "65795816"
 
 1. 在 appsettings.json 中，使用以下示例替换默认内容，然后为服务提供服务名称和管理员 API 密钥。 
 
-
    ```json
    {
        "SearchServiceName": "Put your search service name here (not the full URL)",
        "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
     }
    ```
-
-  对于服务名称，只需要名称本身。 例如，如果你的 URL 为 https://mydemo.search.windows.net，请将 `mydemo` 添加到 JSON 文件。
+   对于服务名称，只需要名称本身。 例如，如果你的 URL 为 https://mydemo.search.windows.net，请将 `mydemo` 添加到 JSON 文件。
 
 1. 按 F5 生成解决方案并运行控制台应用。 本练习中的其余步骤以及后续步骤将介绍此代码的工作原理。 
 
@@ -108,7 +106,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 
 1. 将 `Index` 对象的 `Name` 属性设置为索引的名称。
 
-2. 将 `Index` 对象的 `Fields` 属性设置为 `Field` 对象的数组。 若要创建 `Field` 对象，最简单的方法是调用 `FieldBuilder.BuildForType`，为类型参数传递模型类。 模型类具有映射到索引的字段属性。 因此，可将来自搜索索引的文档绑定到模型类的实例。
+2. 将 `Index` 对象的 `Fields` 属性设置为 `Field` 对象的数组。 若要创建 `Field` 对象，最简单的方法是调用 `FieldBuilder.BuildForType`，为类型参数传递模型类。 模型类具有映射到索引的字段属性。 使用此映射可将搜索索引中的文档绑定到模型类的实例。
 
 > [!NOTE]
 > 如果不打算使用模型类，仍可通过直接创建 `Field` 对象来定义索引。 可以向构造函数提供字段的名称以及数据类型（或分析器（用于字符串字段））。 此外可以设置其他属性，如 `IsSearchable`、`IsFilterable`，仅举几例。
@@ -175,7 +173,7 @@ public partial class Hotel
 
 根据每个字段在应用程序中的预期使用方式，谨慎选择每个属性的特性。 例如，搜索酒店的人员很可能对匹配 `description` 字段的关键字感兴趣，因此通过将 `IsSearchable` 特性添加到 `Description` 属性来为该字段启用全文搜索。
 
-请注意，必须通过添加 `Key` 特性将索引中类型为 `string` 的一个字段指定为“key”字段（请参见上例中的 `HotelId`）。
+请注意，必须通过添加 `Key` 特性将索引中类型为 `string` 的仅一个字段指定为“key”  字段（请参见上例中的 `HotelId`）。
 
 上述索引定义对 `description_fr` 字段使用了语言分析器，因为它用于存储法语文本。 有关详细信息，请参阅[向 Azure 搜索索引添加语言分析器](index-add-language-analyzers.md)。
 

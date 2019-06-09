@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/06/2019
+ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8ffc64359faab539ab74e354caad4081f31fcd43
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d43a0e7c48db9dd42c7cf3b52e5d4072a4827898
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790132"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479178"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>教程：在 Azure 部署管理器（公共预览版）中使用运行状况检查
 
@@ -50,18 +50,18 @@ ms.locfileid: "65790132"
 若要完成本文，需要做好以下准备：
 
 * 完成[将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)教程。
-* 下载本教程使用的[模板和项目](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip)。 
+* 下载本教程使用的[模板和项目](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip)。
 
 ## <a name="create-a-health-check-service-simulator"></a>创建运行状况检查服务模拟器
 
-在生产环境中，通常会使用一个或多个监视提供程序。 为了尽量简化运行状况集成，Microsoft 一直与某些顶级服务运行状况监视公司合作，以便为客户提供简单的复制/粘贴解决方案，用于将运行状况检查与部署相集成。 有关公司列表，请参阅[运行状况监视提供商](./deployment-manager-health-check.md#health-monitoring-providers)。 在本教程中，你将创建一个 [Azure 函数](/azure/azure-functions/)来模拟运行状况监视服务。 此函数提取一个状态代码，并返回相同的代码。 Azure 部署管理器模板使用该状态代码来确定如何继续部署。 
+在生产环境中，通常会使用一个或多个监视提供程序。 为了尽量简化运行状况集成，Microsoft 一直与某些顶级服务运行状况监视公司合作，以便为客户提供简单的复制/粘贴解决方案，用于将运行状况检查与部署相集成。 有关公司列表，请参阅[运行状况监视提供商](./deployment-manager-health-check.md#health-monitoring-providers)。 在本教程中，你将创建一个 [Azure 函数](/azure/azure-functions/)来模拟运行状况监视服务。 此函数提取一个状态代码，并返回相同的代码。 Azure 部署管理器模板使用该状态代码来确定如何继续部署。
 
 以下两个文件用于部署 Azure 函数。 无需下载这些文件即可完成本教程。
 
-* 资源管理器模板位于 [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json)。 你将部署此模板以创建 Azure 函数。  
-* Azure 函数源代码的 zip 文件 [http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](http://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip)。 资源管理器模板将调用此 zip 文件。
+* 资源管理器模板位于 [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json)。 你将部署此模板以创建 Azure 函数。
+* Azure 函数源代码的 zip 文件 [http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip)。 资源管理器模板将调用此 zip 文件。
 
-若要部署 Azure 函数，请选择“尝试”打开 Azure Cloud shell，然后在 shell 窗口中粘贴以下脚本。  若要粘贴代码，请右键单击 shell 窗口并选择“粘贴”。 
+若要部署 Azure 函数，请选择“尝试”打开 Azure Cloud shell，然后在 shell 窗口中粘贴以下脚本。   若要粘贴代码，请右键单击 shell 窗口并选择“粘贴”  。
 
 > [!IMPORTANT]
 > PowerShell 脚本中的 **projectName** 用于生成要在本教程中部署的 Azure 服务的名称。 不同 Azure 服务对名称的要求各不相同。 为确保成功部署，请选择仅包含小写字母和数字且长度不超过 12 个字符的名称。
@@ -81,12 +81,12 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 1. 打开 [Azure 门户](https://portal.azure.com)。
 1. 打开资源组。  默认名称是追加了 **rg** 的项目名称。
 1. 从资源组中选择应用服务。  应用服务的默认名称是追加了 **webapp** 的项目名称。
-1. 展开“函数”，然后选择“HttpTrigger1”。 
+1. 展开“函数”，然后选择“HttpTrigger1”。  
 
     ![Azure 部署管理器运行状况检查 - Azure 函数](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. 选择“&lt;/> 获取函数 URL”。
-1. 选择“复制”将 URL 复制到剪贴板。  URL 类似于：
+1. 选择“&lt;/> 获取函数 URL”。 
+1. 选择“复制”将 URL 复制到剪贴板。   URL 类似于：
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
@@ -178,7 +178,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
     },
     ```
 
-    根据定义，如果运行状态为 *healthy* 或 *warning*，则实施将会继续。 
+    根据定义，如果运行状态为 *healthy* 或 *warning*，则实施将会继续。
 
 1. 更新实施定义的 **dependsON**，以包含新定义的运行状况检查步骤：
 
@@ -189,7 +189,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
     ],
     ```
 
-1. 更新 **stepGroups**，以包含运行状况检查步骤。 **healthCheckStep** 在 **stepGroup2** 的 **postDeploymentSteps** 中调用。 仅当运行状态为 *healthy* 或 *warning* 时，才部署 **stepGroup3** 和 **stepGroup4**。 
+1. 更新 **stepGroups**，以包含运行状况检查步骤。 **healthCheckStep** 在 **stepGroup2** 的 **postDeploymentSteps** 中调用。 仅当运行状态为 *healthy* 或 *warning* 时，才部署 **stepGroup3** 和 **stepGroup4**。
 
     ```json
     "stepGroups": [
@@ -240,7 +240,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 * 拓扑模板： https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
 * 项目存储： https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
-若要部署拓扑，请选择“尝试”打开 Cloud shell，然后粘贴 PowerShell 脚本。
+若要部署拓扑，请选择“尝试”打开 Cloud shell，然后粘贴 PowerShell 脚本  。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
@@ -261,11 +261,11 @@ New-AzResourceGroupDeployment `
 
 ![Azure 部署管理器教程 - 已部署服务拓扑资源](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-deployed-topology-resources.png)
 
-必须选择“显示隐藏的类型”才能查看资源。
+必须选择“显示隐藏的类型”才能查看资源。 
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>部署状态不正常的实施方案
 
-为了简化本教程，修订的实施模板将在以下位置共享，因此你不需要准备自己的副本。 若要使用自己的副本，请遵照以下文档中的说明操作：[教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)。
+为了简化本教程，修订的推出模板将在以下位置共享，因此你不需要准备自己的副本。 若要使用自己的副本，请遵照以下文档中的说明操作：[教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)。
 
 * 拓扑模板： https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
 * 项目存储： https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
@@ -387,15 +387,15 @@ Tags                    :
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
-2. 使用“按名称筛选”字段来缩小本教程创建的资源组的范围。 应有 3-4 个资源组：
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
+2. 使用“按名称筛选”字段来缩小本教程创建的资源组的范围。  应有 3-4 个资源组：
 
     * **&lt;namePrefix>rg**：包含部署管理器资源。
     * **&lt;namePrefix>ServiceWUSrg**：包含 ServiceWUS 定义的资源。
     * **&lt;namePrefix>ServiceEUSrg**：包含 ServiceEUS 定义的资源。
     * 用户定义的托管标识的资源组。
-3. 选择资源组名称。  
-4. 在顶部菜单中选择“删除资源组”。
+3. 选择资源组名称。
+4. 在顶部菜单中选择“删除资源组”。 
 5. 重复最后两个步骤，以删除本教程创建的其他资源组。
 
 ## <a name="next-steps"></a>后续步骤

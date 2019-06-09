@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 14cf500cff9f1f7f8b1573862c3060326e6518fa
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551320"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688862"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
@@ -25,11 +25,14 @@ Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和
 
 下面是软件开发人员或团队会使用内容审察器的一些场景：
 
-- 在联机市场中审查产品目录和其他用户生成的内容
-- 在游戏公司中审查用户生成的游戏项目和聊天室
-- 在社交通讯平台中审查用户添加的图像、文本和视频
-- 企业媒体公司对其内容进行集中式审查
-- K-12 教育解决方案提供商为学生和教师筛选掉不当的内容
+- 在联机市场中审查产品目录和其他用户生成的内容。
+- 在游戏公司中审查用户生成的游戏项目和聊天室。
+- 在社交消息平台中审查用户添加的图像、文本和视频。
+- 企业媒体公司对其内容进行集中式审查。
+- K-12 教育解决方案提供商为学生和教师筛选掉不当的内容。
+
+> [!NOTE]
+> 不能使用内容审查器检测非法儿童剥削图像。 不过，合格组织可以使用 [PhotoDNA 云服务](https://www.microsoft.com/photodna "Microsoft PhotoDNA 云服务")筛查此类内容。
 
 ## <a name="what-it-includes"></a>组成部分
 
@@ -51,7 +54,7 @@ Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和
 |[**自定义图像列表**](try-image-list-api.md)| 针对自定义图像列表对图像进行扫描。 使用自定义图像列表筛选掉常常反复出现的内容的实例，这些实例不需再次分类。|
 |[**视频审查**](video-moderation-api.md)| 扫描视频中是否存在成人内容或挑逗性内容，并针对上述内容返回时间标记。|
 
-## <a name="review-apis"></a>审阅 API
+## <a name="review-apis"></a>查看 API
 
 审阅 API 允许你将审查管道与人工审阅者进行集成。 使用[作业](review-api.md#jobs)、[审阅](review-api.md#reviews)和[工作流](review-api.md#workflows)操作在[审阅工具](#the-review-tool)（下文）中创建和自动执行人工干预工作流。
 

@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: afeaccd798204ab0973be87ea36c275e1d633403
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03f2f6bb572c46a1683d73ba42f435eca59829e5
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66110412"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428097"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入门：将 Windows 容器部署到 Service Fabric
 
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理可缩放的可靠微服务和容器。
 
-在 Service Fabric 群集上运行 Windows 容器中的现有应用程序不需要对应用程序进行任何更改。 本快速入门介绍如何在 Service Fabric 应用程序中部署预建的 Docker 容器映像。 完成后，你会有一个正在运行的 Windows Server Core 2016 Server 和 IIS 容器。 本快速入门介绍如何部署 Windows 容器。若要部署 Linux 容器，请阅读[此快速入门](service-fabric-quickstart-containers-linux.md)。
+在 Service Fabric 群集上运行 Windows 容器中的现有应用程序不需要对应用程序进行任何更改。 本快速入门介绍如何在 Service Fabric 应用程序中部署预建的 Docker 容器映像。 完成后，你会有一个正在运行的 Windows Server Core 2016 Server 和 IIS 容器。 本快速入门介绍如何部署 Windows 容器。 阅读[此快速入门](service-fabric-quickstart-containers-linux.md)以部署 Linux 容器。
 
 ![IIS 默认网页][iis-default]
 
@@ -44,24 +44,24 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 * 一个 Azure 订阅（可以创建[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)）。
 * 一台运行以下软件的开发计算机：
-  * Visual Studio 2015 或 Visual Studio 2017。
+  * Visual Studio 2015 或 Windows 2019。
   * [Service Fabric SDK 和工具](service-fabric-get-started.md)。
 
 ## <a name="package-a-docker-image-container-with-visual-studio"></a>使用 Visual Studio 打包 Docker 映像容器
 
 Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Service Fabric 群集。
 
-以“管理员”身份启动 Visual Studio。  选择“文件” > “新建” > “项目”。
+以“管理员”身份启动 Visual Studio。  选择“文件” > “新建” > “项目”    。
 
-选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“确定”。
+选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“确定”。  
 
-从“托管的容器和应用程序”模板中选择“容器”。
+从“托管的容器和应用程序”模板中选择“容器”。  
 
-在“映像名称”中输入“mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016”，即 [Windows Server Core Server 和 IIS 基映像](https://hub.docker.com/r/microsoft-windows-servercore-iis)。
+在“映像名称”中  输入“mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016”，即 [Windows Server Core Server 和 IIS 基映像](https://hub.docker.com/r/microsoft-windows-servercore-iis)。
 
-配置容器的“端口到主机”端口映射，使端口 80 上针对服务的传入请求映射到容器上的端口 80。  将“容器端口”设置为“80”并将“主机端口”设置为“80”。  
+配置容器的“端口到主机”端口映射，使端口 80 上针对服务的传入请求映射到容器上的端口 80。  将“容器端口”设置为“80”并将“主机端口”设置为“80”   。  
 
-将服务命名为“MyContainerService”，然后单击“确定”。
+将服务命名为“MyContainerService”，然后单击“确定”。 
 
 ![新服务对话框][new-service]
 
@@ -100,7 +100,7 @@ Microsoft 为不同版本的 Windows Server 上生成的 IIS 版本发布不同�
 
 在运行以下脚本之前，请在 PowerShell 中运行 `Connect-AzAccount` 来与 Azure 建立连接。
 
-将以下脚本复制到剪贴板，并打开 **Windows PowerShell ISE**。  将内容粘贴到空的 Untitled1.ps1 窗口。 然后，为脚本中的变量提供值：`subscriptionId`、`certpwd`、`certfolder`、`adminuser`、`adminpwd` 等等。运行该脚本之前，为 `certfolder` 指定的目录必须存在。
+将以下脚本复制到剪贴板，并打开 **Windows PowerShell ISE**。  将内容粘贴到空的 Untitled1.ps1 窗口。 然后，为脚本中的变量提供值：`subscriptionId`、`certpwd`、`certfolder`、`adminuser`、`adminpwd` 等等。  运行该脚本之前，为 `certfolder` 指定的目录必须存在。
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
@@ -140,19 +140,19 @@ Thumbprint                                Subject
 
 至此，应用程序已准备就绪，可以直接通过 Visual Studio 将它部署到群集了。
 
-在解决方案资源管理器中右键单击“MyFirstContainer”，选择“发布”。 此时，“发布”对话框显示。
+在解决方案资源管理器中右键单击“MyFirstContainer”，选择“发布”。   此时，“发布”对话框显示。
 
-运行上述 `Import-PfxCertificate` 命令时，请复制 PowerShell 窗口中 **CN =** 后面的内容，并将端口 `19000` 添加到其中。 例如，`mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`。 复制到“连接终结点”字段。 请记下此值，因为在后面的步骤中需要用到。
+运行上述 `Import-PfxCertificate` 命令时，请复制 PowerShell 窗口中 **CN =** 后面的内容，并将端口 `19000` 添加到其中。 例如，`mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`。 复制到“连接终结点”  字段。 请记下此值，因为在后面的步骤中需要用到。
 
-单击“高级连接参数”，验证连接参数信息。  *FindValue* 和 *ServerCertThumbprint* 值必须与在前一步骤中运行 `Import-PfxCertificate` 时安装的证书的指纹匹配。
+单击“高级连接参数”，验证连接参数信息。   *FindValue* 和 *ServerCertThumbprint* 值必须与在前一步骤中运行 `Import-PfxCertificate` 时安装的证书的指纹匹配。
 
 ![发布对话框](./media/service-fabric-quickstart-containers/publish-app.png)
 
-单击“发布” 。
+单击“发布”  。
 
 群集中的每个应用程序都必须具有唯一名称。 如果存在名称冲突，请重命名 Visual Studio 项目并重新部署。
 
-打开浏览器，并导航到在前一步骤中输入“连接终结点”字段的地址。 可以选择性地在 URL 的前面添加方案标识符 `http://`，并在后面追加端口 `:80`。 例如，http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80。
+打开浏览器，并导航到在前一步骤中输入“连接终结点”字段的地址  。 可以选择性地在 URL 的前面添加方案标识符 `http://`，并在后面追加端口 `:80`。 例如，http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80。
 
  此时会看到 IIS 默认网页：![IIS 默认网页][iis-default]
 

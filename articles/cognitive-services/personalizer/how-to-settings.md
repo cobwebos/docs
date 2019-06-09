@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 80e5feeccc4acc3e1f3dab6b815c8605332c7c71
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834302"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478573"
 ---
 # <a name="personalizer-settings"></a>个性化体验创建服务设置
 
@@ -63,7 +63,9 @@ ms.locfileid: "65834302"
 
 ### <a name="model-update-frequency"></a>模型更新频率
 
-“模型更新频率”设置重新训练新个性化体验创建服务模型的频率。  
+从每个活动事件的奖励 API 调用训练得来的最新模型不会被个性化体验创建服务排名调用自动使用。 **模型更新频率**设置排名调用所使用的模型的更新频率。 
+
+如果你希望密切跟踪用户行为变化，则高模型更新频率非常有用。 例如，涉及实时新闻、病毒内容或实时产品投标的站点。 在这些情况下，可以使用 15 分钟的频率。 对于大多数用例，更低的更新频率是有效的。 在使用个性化体验创建服务调试应用程序代码、进行演示或以交互方式测试机器学习方面时，一分钟的更新频率非常有用。
 
 ![“模型更新频率”设置重新训练新个性化体验创建服务模型的频率。](media/settings/configure-model-update-frequency-settings.png)
 
@@ -77,7 +79,7 @@ ms.locfileid: "65834302"
 
 ## <a name="export-the-personalizer-model"></a>导出个性化体验创建服务模型
 
-在“模型和策略”的“资源管理”部分，查看模型创建日期和上次更新日期，然后导出当前模型。 
+在“模型和策略”的“资源管理”部分，查看模型创建日期和上次更新日期，然后导出当前模型。  可以使用 Azure 门户或个性化体验创建服务 API 导出模型文件以进行存档。 
 
 ![导出当前个性化体验创建服务模型](media/settings/export-current-personalizer-model.png)
 

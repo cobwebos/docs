@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: mmontwil
-ms.openlocfilehash: 10f85ea697ad0ffae181112ae51eac928424ccc3
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 0677eb4c65da242f8cfcb20754ec88ffb02c5929
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861722"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393165"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>通过 Java 开始使用 Azure Dev Spaces
 
@@ -56,7 +56,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>创建为 Azure Dev Spaces 启用的 Kubernetes 群集
 
-在命令提示符处，在[支持 Azure Dev Spaces 的区域](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)中创建资源组。
+在命令提示符处，在[支持 Azure Dev Spaces 的区域][supported-regions]中创建资源组。
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -94,13 +94,13 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --g
 在此部分中，将创建一个 Java Web 应用并让其在 Kubernetes 的容器中运行。
 
 ### <a name="create-a-java-web-app"></a>创建 Java Web 应用
-请从 GitHub 下载代码，方法是：导航到 https://github.com/Azure/dev-spaces，然后选择“Clone or Download”（克隆或下载），将 GitHub 存储库下载到本地环境。 本指南的代码位于 `samples/java/getting-started/webfrontend` 中。
+请从 GitHub 下载代码，方法是：导航到 https://github.com/Azure/dev-spaces，然后选择“Clone or Download”（克隆或下载）  ，将 GitHub 存储库下载到本地环境。 本指南的代码位于 `samples/java/getting-started/webfrontend` 中。
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>准备用于 Docker 和 Kubernetes 开发的代码
 到目前为止，已有一个可以在本地运行的基本 Web 应用。 现在，将通过创建定义应用的容器以及将应用部署到 Kubernetes 的方式的资产来将其容器化。 使用 Azure Dev Spaces，可以很容易完成此任务： 
 
 1. 启动 VS Code 并打开 `webfrontend` 文件夹。 （可以忽略任何默认提示以添加调试资产或还原项目。）
-1. 在 VS Code 中打开集成终端（使用“视图”>“集成终端”菜单）。
+1. 在 VS Code 中打开集成终端（使用“视图”>“集成终端”  菜单）。
 1. 运行此命令（确保 **webfrontend** 是当前文件夹）：
 
     ```cmd
@@ -154,7 +154,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 
 此命令重新生成容器映像并重新部署 Helm 图表。 若要查看代码更改是否在正在运行的应用程序中生效，只需刷新浏览器即可。
 
-不过，还有一种更快的开发代码的方法，该方法在下一部分介绍。 
+不过，还有一种更快的开发代码的方法，该方法在下一部分介绍。  
 
 ## <a name="debug-a-container-in-kubernetes"></a>在 Kubernetes 中调试容器
 
@@ -168,7 +168,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>使用 VS Code 扩展初始化调试资产
 首先需要配置代码项目，以便 VS Code 与 Azure 中的开发空间进行通信。 Azure Dev Spaces 的 VS Code 扩展提供了一个帮助程序命令来设置调试配置。 
 
-打开**命令面板**（使用“视图”|“命令面板”菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
+打开**命令面板**（使用“视图”|“命令面板”  菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
 
 这将在 `.vscode` 文件夹下为 Azure Dev Spaces 添加调试配置。 此命令不应与 `azds prep` 命令混淆，后者配置部署的项目。
 
@@ -176,7 +176,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 
 ### <a name="select-the-azds-debug-configuration"></a>选择 AZDS 调试配置
 1. 若要打开“调试”视图，请单击 VS Code 侧**活动栏**中的“调试”图标。
-1. 选择“启动 Java 程序(AZDS)”作为活动的调试配置。
+1. 选择“启动 Java 程序(AZDS)”作为活动的调试配置。 
 
 ![](media/get-started-java/debug-configuration.png)
 
@@ -207,7 +207,7 @@ public String greeting()
 }
 ```
 
-保存文件，然后在“调试操作”窗格中单击“刷新”按钮。
+保存文件，然后在“调试操作”窗格中单击“刷新”按钮。  
 
 ![](media/get-started-java/debug-action-refresh.png)
 
@@ -221,3 +221,6 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 
 > [!div class="nextstepaction"]
 > [了解多服务开发](multi-service-java.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

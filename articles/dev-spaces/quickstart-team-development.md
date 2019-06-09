@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务进行 Kubernetes 团队开发
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 94083639ca769d12b04c4dc316a9f9867e4209b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e9f9198f8e086bee6c6b02b67ae7dd9cf523416c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765245"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480359"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 上进行团队开发
 
@@ -35,7 +35,7 @@ ms.locfileid: "65765245"
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
 
-必须在[支持的区域](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)中创建 AKS 群集。 以下命令创建名为 *MyResourceGroup* 的资源组，以及名为 *MyAKS* 的 AKS 群集。
+必须在[支持的区域][supported-regions]中创建 AKS 群集。 以下命令创建名为 *MyResourceGroup* 的资源组，以及名为 *MyAKS* 的 AKS 群集。
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -92,6 +92,8 @@ cd charts/
 helm init --wait
 helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
 ```
+> [!Note]
+> **如果你使用的是启用 RBAC 的群集**，请务必[为 Tiller 配置服务帐户](https://helm.sh/docs/using_helm/#role-based-access-control)。 否则 `helm` 命令将失败。
 
 `helm install` 命令可能需要几分钟才能完成。 完成后，该命令的输出将显示由它部署到群集的所有服务的状态：
 
@@ -125,7 +127,7 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-通过 `azds list-uris` 命令打开公共 URL，导航到 *bikesharingweb* 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`。 选择“Aurelia Briggs (客户)”作为用户。 检查顶部是否显示了文本“Hi Aurelia Briggs | 注销”。
+通过 `azds list-uris` 命令打开公共 URL，导航到 *bikesharingweb* 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`。 选择“Aurelia Briggs (客户)”作为用户。  检查顶部是否显示了文本“Hi Aurelia Briggs | 注销”。 
 
 ![Azure Dev Spaces 单车共享示例应用程序](media/quickstart-team-development/bikeshare.png)
 
@@ -164,7 +166,7 @@ http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 
 确认 `azds list-uris` 命令显示的 URL 是否带有 *azureuser2.s.dev* 前缀。 此前缀确认当前选择的空间是 *azureuser2*，即 *dev* 的子级。
 
-通过 `azds list-uris` 命令打开公共 URL，导航到 *dev/azureuser2* 开发空间的 *bikesharingweb* 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`。 选择“Aurelia Briggs (客户)”作为用户。 检查顶部是否显示了文本“Hi Aurelia Briggs | 注销”。
+通过 `azds list-uris` 命令打开公共 URL，导航到 *dev/azureuser2* 开发空间的 *bikesharingweb* 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`。 选择“Aurelia Briggs (客户)”作为用户。  检查顶部是否显示了文本“Hi Aurelia Briggs | 注销”。 
 
 ## <a name="update-code"></a>更新代码
 
@@ -196,7 +198,7 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 
 此命令在 *dev/azureuser2* 开发空间中生成并运行 *bikesharingweb* 服务。 此服务将与 *dev* 中运行的 *bikesharingweb* 服务一同运行，仅用于包含 *azureuser2.s* URL 前缀的请求。 有关父子开发空间之间的路由工作原理的详细信息，请参阅 [Azure Dev Spaces 的工作原理及其配置方式](how-dev-spaces-works.md)。
 
-通过打开 `azds up` 命令输出中显示的公共 URL，导航到 *dev/azureuser2* 开发空间的 *bikesharingweb* 服务。 选择“Aurelia Briggs (客户)”作为用户。 检查右上角是否显示了更新的文本。 如果此项更改未立即出现，你可能需要刷新页面或清除浏览器缓存。
+通过打开 `azds up` 命令输出中显示的公共 URL，导航到 *dev/azureuser2* 开发空间的 *bikesharingweb* 服务。 选择“Aurelia Briggs (客户)”作为用户。  检查右上角是否显示了更新的文本。 如果此项更改未立即出现，你可能需要刷新页面或清除浏览器缓存。
 
 ![Azure Dev Spaces 单车共享示例应用程序已更新](media/quickstart-team-development/bikeshare-update.png)
 
@@ -216,7 +218,7 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/               Available
 http://dev.gateway.fedcab0987.eus.azds.io/                      Available
 ```
 
-在浏览器中导航到 *bikesharingweb* 的 *dev* 版本，选择“Aurelia Briggs (客户)”作为用户，并检查右上角是否显示了原始文本。 使用 *dev/azureuser1* URL 重复这些步骤。 可以看到，更改仅应用到了 *bikesharingweb* 的 *dev/azureuser2* 版本。 对 *dev/azureuser2* 进行这种隔离式的更改可让 *azureuser2* 在不影响 *azureuser1* 的情况下做出更改。
+在浏览器中导航到 *bikesharingweb* 的 *dev* 版本，选择“Aurelia Briggs (客户)”作为用户，并检查右上角是否显示了原始文本。  使用 *dev/azureuser1* URL 重复这些步骤。 可以看到，更改仅应用到了 *bikesharingweb* 的 *dev/azureuser2* 版本。 对 *dev/azureuser2* 进行这种隔离式的更改可让 *azureuser2* 在不影响 *azureuser1* 的情况下做出更改。
 
 若要在 *dev* 和 *dev/azureuser1* 中反映这些更改，应遵循团队的现有工作流或 CI/CD 管道。 例如，此工作流可能涉及到向版本控制系统提交更改，并使用 CI/CD 管道或 Helm 等工具部署更新。
 
@@ -232,3 +234,6 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 > [!div class="nextstepaction"]
 > [使用多个容器和团队开发](multi-service-nodejs.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

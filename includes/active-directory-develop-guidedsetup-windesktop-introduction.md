@@ -14,21 +14,21 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: f0cc888eaf3724737e9c868c69a641094a19348c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ae17ef749a353cd60227e31ba4dadf328b1dc935
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121597"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482347"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>从 Windows 桌面应用调用 Microsoft Graph API
 
-本指南演示本机 Windows 桌面 .NET (XAML) 应用程序如何从面向开发人员的 Microsoft 标识平台（以前称为 Azure AD）v2.0 终结点获取访问令牌并调用 Microsoft Graph API 或需要访问令牌的其他 API。
+本指南演示了本机 Windows 桌面 .NET (XAML) 应用程序如何使用访问令牌来调用 Microsoft Graph API。 该应用还可以访问其他 API，这些 API 需要来自面向开发人员的 Microsoft 标识平台 v2.0 终结点的访问令牌。 此平台以前名为 Azure AD。
 
 完成本指南后，你的应用程序将能够调用使用个人帐户（包括 outlook.com、live.com 等）的受保护 API。 应用程序还将使用任何使用 Azure Active Directory 的公司或组织提供的工作和学校帐户。  
 
 > [!NOTE]
-> 本指南需要 Visual Studio 2015 Update 3 或 Visual Studio 2017。 没有这些版本？ [免费下载 Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+> 本指南需要 Visual Studio 2015 Update 3 或 Visual Studio 2019。 没有这些版本？ [免费下载 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 

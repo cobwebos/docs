@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Dev Spaces 和 Visual Studio 2017 在 AKS 中进行 .NET Core 开发
+title: 使用 Azure Dev Spaces 和 Visual Studio 在 AKS 中进行 .NET Core 开发
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -13,30 +13,29 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm,
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 7a85afd3c0a00260112ef2a945b0f5c5a538194e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 110962c03f0236ebb26c9ed586981b51f36c635f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765305"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399221"
 ---
-# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 中进行 .NET Core 开发 (Visual Studio 2017)
+# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 中进行 .NET Core 开发 (Visual Studio)
 
 本指南介绍如何：
 
 - 使用 Azure 中的托管 Kubernetes 群集设置 Azure Dev Spaces。
-- 使用 Visual Studio 2017 在容器中以迭代方式开发代码。
-- 使用 Visual Studio 2017 调试群集中运行的代码。
+- 使用 Visual Studio 在容器中以迭代方式开发代码。
+- 使用 Visual Studio 调试群集中运行的代码。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有帐户，可以[创建一个免费帐户](https://azure.microsoft.com/free)。
-- 已安装包含“Web 开发”工作负荷的 Windows 版 Visual Studio 2017。 如果尚未安装，请在[此处](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)进行下载。
-- 已安装 [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools)。
+- 已安装包含“Azure 开发”工作负荷的 Windows 版 Visual Studio 2019。 还可以使用安装了“Web 开发”工作负荷和 [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) 的 Windows 版 Visual Studio 2017。 如果尚未安装 Visual Studio，请在[此处](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)下载。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
 
-必须在[支持的区域](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)中创建 AKS 群集。 创建群集：
+必须在[支持的区域][supported-regions]中创建 AKS 群集。 创建群集：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
 1. 选择“+ 创建资源”>“Kubernetes 服务”。  
@@ -55,7 +54,7 @@ ms.locfileid: "65765305"
 
 ## <a name="create-a-new-aspnet-web-app"></a>创建新的 ASP.NET Web 应用
 
-1. 打开 Visual Studio 2017。
+1. 打开 Visual Studio。
 1. 创建新项目。
 1. 选择“ASP.NET Core Web 应用程序”，并将项目命名为 *webfrontend*。 
 1. 单击“确定”。 
@@ -101,7 +100,7 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 
 ## <a name="update-code"></a>更新代码
 
-如果 Visual Studio 2017 仍已连接到开发空间，请单击停止按钮。 将 `Controllers/HomeController.cs` 中的第 20 行更改为：
+如果 Visual Studio 仍连接到开发空间，请单击“停止”按钮。 将 `Controllers/HomeController.cs` 中的第 20 行更改为：
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
@@ -113,9 +112,9 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>设置并使用用于调试的断点
 
-如果 Visual Studio 2017 仍已连接到开发空间，请单击停止按钮。 打开 `Controllers/HomeController.cs` 并单击第 20 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。   若要在开发空间中以调试模式启动服务，请按 *F5*，或者依次单击“调试”、“开始调试”。  
+如果 Visual Studio 仍连接到开发空间，请单击“停止”按钮。 打开 `Controllers/HomeController.cs` 并单击第 20 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。   若要在开发空间中以调试模式启动服务，请按 *F5*，或者依次单击“调试”、“开始调试”。  
 
-在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio 2017，将会看到，第 20 行已突出显示。 设置的断点在第 20 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。   返回浏览器，你会发现，现在显示了消息。
+在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio，将会看到第 20 行已突出显示。 设置的断点在第 20 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。   返回浏览器，你会发现，现在显示了消息。
 
 在附加调试器的情况下在 Kubernetes 中运行服务时，你对调试信息（例如调用堆栈、局部变量和异常信息）拥有完全访问权限。
 
@@ -135,3 +134,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [使用多个容器和团队开发](multi-service-netcore-visualstudio.md)
 
 [ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
+[supported-regions]: about.md#supported-regions-and-configurations

@@ -9,18 +9,18 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 07b86138a95853673b5d54e272b40af41d58f418
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545037"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475941"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>快速入门：在 Azure 机器学习中在不编写代码的情况下准备数据并将其可视化
 
-在 Azure 机器学习的拖放可视界面（预览版）中准备数据并将其可视化。 将要使用的数据包含各种个人汽车的条目，包括制造商、车型、技术规格、价格等信息。  
+在 Azure 机器学习的拖放可视界面（预览版）中准备数据并将其可视化。 将要使用的数据包含各种个人汽车的条目，包括制造商、车型、技术规格、价格等信息。 完成此快速入门后，你就可以使用这些数据来预测汽车的价格。 
 
-在本快速入门中，我们将浏览并准备数据：
+在训练机器学习模型之前，你需要了解并准备数据。  在本快速入门中，请执行以下操作：
 
 - 创建第一个试验，以便添加和预览数据
 - 准备数据，删除缺失的值
@@ -131,7 +131,7 @@ ms.locfileid: "65545037"
 
      ![预览数据](./media/ui-quickstart-run-experiment/preview-data.gif)
 
-1. 单击每个列即可详细了解数据集。
+1. 单击每一列以了解有关数据集的更多信息，并考虑这些列对预测汽车价格是否有用。
 
 ## <a name="prepare-data"></a>准备数据
 
@@ -176,7 +176,7 @@ ms.locfileid: "65545037"
 
 ### <a name="clean-missing-data"></a>清理缺失数据
 
-现在添加另一模块，该模块删除有缺失值的任何余下的行。
+训练模型时，必须对缺少的数据执行某些操作。  在本例中，你将添加一个模块以删除任何缺少数据的剩余行。  
 
 1. 在“搜索”框中键入“清理”，查找“清理缺失数据”模块。  
 
@@ -216,7 +216,7 @@ ms.locfileid: "65545037"
 
     现在有 193 行和 25 列。
 
-    单击 **num-of-doors** 时，可以看到它仍有 2 个唯一值，但现在有 0 个缺失值。  
+    单击 **num-of-doors** 时，可以看到它仍有 2 个唯一值，但现在有 0 个缺失值。 通过单击浏览所有其余列以查看数据集中是否有缺失的值。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -228,7 +228,7 @@ ms.locfileid: "65545037"
 
 - 创建第一个试验，以便添加和预览数据
 - 准备数据，删除缺失的值
-- 可视化生成的数据
+- 可视化准备好的数据
 
 继续阅读教程，了解如何使用该数据来预测汽车的价格。
 

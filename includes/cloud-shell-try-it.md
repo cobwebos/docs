@@ -1,24 +1,26 @@
 ---
-author: cynthn
+author: sptramer
 ms.service: azure
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: cynthn
-ms.openlocfilehash: b9ecccfef48af8cf3fe7e679277b870256443fab
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
+ms.date: 05/31/2019
+ms.author: sttramer
+ms.openlocfilehash: 8eafa0a07f760c64c45aeaec8876a485ab95d5d7
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111078"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66726758"
 ---
 ## <a name="open-azure-cloud-shell"></a>打开 Azure Cloud Shell
 
-Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的操作步骤。 Cloud Shell 中预安装并配置了常用的 Azure 工具以供你的帐户使用。 选择“复制”以复制代码，将其粘贴到 Cloud Shell 中，然后按回车来运行它。 可通过多种方式打开 Cloud Shell：
+Azure Cloud Shell 是一个托管在 Azure 中的交互式 shell 环境，可通过浏览器使用。 Azure Cloud Shell 允许你使用 `bash` 或 `PowerShell` shell 运行各种工具来使用 Azure 服务。 Azure Cloud Shell 预安装了一些命令，允许你运行本文的内容，而不必在本地环境中安装任何内容。
+
+若要在 Azure Cloud Shell 上运行本文中包含的任何代码，请打开 Cloud Shell 会话，对代码块使用“复制”  按钮以复制代码，然后使用 __Ctrl+Shift+V__（在 Windows 和 Linux 上）或 __Cmd+Shift+V__（在 macOS 上）将其粘贴到 Cloud Shell 会话中。 粘贴的文本不会自动执行，因此请按 **Enter** 运行代码。
+
+可以通过以下方式启动 Azure Cloud Shell：
 
 |  |   |
 |-----------------------------------------------|---|
-| 选择代码块右上角的“试用”。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/cli-try-it.png) |
-| 在浏览器中打开 Cloud Shell。 | [![“启动 Azure Cloud Shell”按钮](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash) |
-| 选择 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”按钮。 |    ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/cloud-shell-menu.png) |
-|  |  |
-
+| 选择代码块右上角的“试用”。  这__不__会自动将文本复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/cli-try-it.png) |
+| 在浏览器中打开 [shell.azure.com](https://shell.azure.com)。 | [![“启动 Azure Cloud Shell”按钮](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
+| 选择 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”  按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/cloud-shell-menu.png) |
