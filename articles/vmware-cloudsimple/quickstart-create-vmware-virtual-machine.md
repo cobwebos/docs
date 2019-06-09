@@ -1,86 +1,86 @@
 ---
-title: Azure 的 VMware 解决方案 CloudSimple 快速入门-使用 Azure 上的 VMware Vm
-description: 了解如何配置和使用 VMware Vm 从 Azure 门户使用 Azure CloudSimple VMware 解决方案
+title: CloudSimple 提供的 Azure VMware 解决方案快速入门 - 使用 Azure 上的 VMware VM
+description: 本快速入门介绍如何在 Azure 门户中通过 CloudSimple 提供的 Azure VMware 解决方案来配置和使用 VMware VM
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/11/2019
-ms.topic: article
+ms.topic: quickstart
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0bb8d7a5a1ea30b704b44c9337cd28043597ff7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: b430efbc931d72de4b095a7eac4c1e7ca496b1b9
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209528"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393492"
 ---
-# <a name="quickstart---consume-vmware-vms-on-azure"></a>快速入门-使用 Azure 上的 VMware Vm
+# <a name="quickstart-consume-vmware-vms-on-azure"></a>快速入门：使用 Azure 上的 VMware VM
 
-若要在 Azure 门户中创建虚拟机，请为你的订阅使用 CloudSimple 管理员已启用的虚拟机模板。 这些虚拟机模板位于 VMware 基础结构上。
+若要在 Azure 门户中创建虚拟机，可以使用私有云 vCenter 中提供的虚拟机模板。 VCenter 管理员可以在私有云中创建其他模板。
 
-## <a name="cloudsimple-vm-creation-on-azure-requires-a-vm-template"></a>在 Azure 上的 CloudSimple VM 创建所需的 VM 模板
+## <a name="create-a-vm-template"></a>创建 VM 模板
 
-从 vCenter UI 在私有云上创建虚拟机。 若要创建模板，请按照中的说明[克隆到 vSphere Web 客户端中的模板的虚拟机](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-FE6DE4DF-FAD0-4BB0-A1FD-AFE9A40F4BFE.html)。 在私有云 vCenter 上存储的 VM 模板。
+首先，使用 vCenter UI 在私有云中创建一个虚拟机。 若要创建模板，请遵照 VMware 文章[在 vSphere Web 客户端中将虚拟机克隆到模板](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-FE6DE4DF-FAD0-4BB0-A1FD-AFE9A40F4BFE.html)中的说明。 将 VM 模板存储在私有云 vCenter 中。
 
 ## <a name="create-a-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中创建虚拟机
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 
-2. 搜索**CloudSimple 虚拟机**。
+2. 搜索“CloudSimple 虚拟机”。 
 
-3. 单击“添加”。
+3. 选择 **添加** 。
 
-    ![创建 CloudSimple 虚拟机](media/create-cloudsimple-virtual-machine.png)
+    ![选择“添加”](media/create-cloudsimple-virtual-machine.png)
 
-4. 输入基本信息，请单击**下一步： 大小**。
+4. 输入有关虚拟机的以下信息，然后选择“下一步:  大小”。
 
-    ![创建 CloudSimple 虚拟机的基础知识](media/create-cloudsimple-virtual-machine-basic-info.png)
+    ![创建 CloudSimple 虚拟机 - 基本信息](media/create-cloudsimple-virtual-machine-basic-info.png)
 
-    | 字段 | 描述 |
+    | 字段 | 说明 |
     | ------------ | ------------- |
-    | 订阅 | 与您的私有云关联的 azure 订阅。  |
-    | 资源组 | 要向其分配 VM 的资源组。 可以选择现有组或新建一个。 |
-    | 名称 | 若要确定 VM 的名称。  |
-    | Location | 在其中承载此 VM 的 azure 区域。  |
-    | 私有云 | 你想要创建虚拟机 CloudSimple 私有云。 |
-    | 资源池 | VM 的映射的资源池。 选择从可用的资源池。 |
-    | vSphere 模板 | VM 的 vSphere 模板。  |
-    | 用户名 | 用户名的虚拟机管理员 （适用于 Windows 模板）|
-    | 密码 |  （适用于 Windows 模板） VM 管理员密码。 |
-    | 确认密码 | 确认密码 |
+    | **订阅** | 与私有云关联的 Azure 订阅。  |
+    | **资源组** | VM 要分配到的资源组。 可以选择现有的组，或创建新组。 |
+    | **名称** | 用于标识 VM 的名称。  |
+    | **位置** | 托管该 VM 的 Azure 区域。  |
+    | **私有云** | 要在其中创建 VM 的 CloudSimple 私有云。 |
+    | **资源池** | VM 的映射资源池。 请从可用的资源池中进行选择。 |
+    | **vSphere 模板** | VM 的 vSphere 模板。  |
+    | **用户名** | VM 管理员的用户名（适用于 Windows 模板）。|
+    | **密码** |  VM 管理员的密码（适用于 Windows 模板）。 |
+    | **确认密码** | 在上一字段中提供的密码。 |
 
-5. 选择的核心数和内存容量的 VM，然后单击**下一步： 配置**。 如果你想要公开与来宾操作系统的完整 CPU 虚拟化，请选中复选框。 需要硬件虚拟化的应用程序可以无需二进制转换或半虚拟化的虚拟机上运行。 有关详细信息，请参阅 VMware 文章<a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html" target="_blank">公开 VMware 硬件辅助虚拟化</a>。
+5. 选择 VM 的核心数和内存容量。 若要向来宾操作系统公开整个 CPU 虚拟化，请选择“向来宾 OS 公开”。  需要硬件虚拟化的应用程序可在虚拟机上运行，而无需进行二进制转换或半虚拟化。 有关详细信息，请参阅 VMware 文章<a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html" target="_blank">公开 VMware 硬件辅助虚拟化</a>。 完成后，选择“下一步:  配置”。
 
-    ![创建 CloudSimple 虚拟机的大小](media/create-cloudsimple-virtual-machine-size.png)
+    ![创建 CloudSimple 虚拟机 - 大小](media/create-cloudsimple-virtual-machine-size.png)
 
-6. 下表中所述配置网络接口和磁盘，然后单击**查看 + 创建**。
+6. 根据下表中所述配置网络接口和磁盘，然后选择“查看 + 创建”。 
 
-    ![创建 CloudSimple 虚拟机-配置](media/create-cloudsimple-virtual-machine-configurations.png)
+    ![创建 CloudSimple 虚拟机 - 配置](media/create-cloudsimple-virtual-machine-configurations.png)
 
-    对于网络接口，请单击**添加网络接口**和配置下列设置。
+    对于网络接口，请选择“添加网络接口”，然后配置以下设置： 
     
-    | 控制 | 描述 |
+    | 设置 | 说明 |
     | ------------ | ------------- |
-    | 名称 | 输入用于标识接口的名称。  |
-    | 网络 | 从私有云 vSphere 中配置的分布式的端口组的列表中选择。  |
-    | 适配器 | 从为 VM 配置的可用类型列表中选择 vSphere 适配器。 有关详细信息，请参阅 VMware 知识库文章<a href="https://kb.vmware.com/s/article/1001805" target="_blank">选择用于你的虚拟机的网络适配器</a>。 |
-    | 在启动开机 | 选择是否要在启动 VM 时，启用 NIC 硬件。 默认值是**启用**。 |
+    | **名称** | 输入一个名称用于标识接口。  |
+    | **网络** | 从私有云 vSphere 中已配置的分布式端口组列表中进行选择。  |
+    | **适配器** | 从为 VM 配置的可用类型列表中选择一个 vSphere 适配器。 有关详细信息，请参阅 VMware 文章<a href="https://kb.vmware.com/s/article/1001805" target="_blank">选择虚拟机的网络适配器</a>。 |
+    | **启动时开机** | 选择是否要在启动 VM 时启用 NIC 硬件。 默认设置为“启用”。  |
 
-    对于磁盘，请单击**添加磁盘**和配置下列设置。
+    对于磁盘，请选择“添加磁盘”，然后配置以下设置： 
 
-    | 项 | 描述 | 
-    | ------------ | ------------- | 
-    | 名称 | 输入用于标识磁盘的名称。  | 
-    | 大小 | 选择其中一个可用的大小。  | 
-    | SCSI 控制器 | 选择该磁盘的 SCSI 控制器。  |
-    | 模式 | 确定如何在快照中加入该磁盘。 选择以下选项之一： <br> 的永久独立于：向磁盘写入的所有数据将永久都写入。<br> 的非持久性独立于：当你关闭或重置虚拟机，向磁盘写入的更改将被丢弃。  独立的非持久性模式，可始终处于相同的状态重启 VM。 有关详细信息，请参阅<a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware 文档</a>。
+    | 设置 | 说明 |
+    | ------------ | ------------- |
+    | **名称** | 输入一个名称用于标识磁盘。  |
+    | **大小** | 选择一种可用大小。  |
+    | **SCSI 控制器** | 选择磁盘的 SCSI 控制器。  |
+    | **模式** | 模式指定磁盘如何参与快照。 选择以下选项之一： <br> **独立永久性**：已写入到磁盘的所有更改将永久性写入。<br> **独立非永久性**：关闭或重置虚拟机时，会丢弃已写入到磁盘的更改。 使用独立非永久性模式可始终以相同的状态重启 VM。 有关详细信息，请参阅 <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware 文档</a>。
 
-7. 完成验证后，查看设置，然后单击**创建**。 若要进行任何更改，请单击顶部的选项卡，或单击。
+7. 验证完成后，检查设置，然后选择“创建”。  若要进行更改，请选择顶部的选项卡，或选择“上一步:  配置”。
 
-    ![创建 CloudSimple 虚拟机-查看](media/create-cloudsimple-virtual-machine-review.png)
+    ![创建 CloudSimple 虚拟机 - 查看 + 创建](media/create-cloudsimple-virtual-machine-review.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [查看 CloudSimple 虚拟机的列表](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
+* [查看 CloudSimple 虚拟机列表](https://docs.azure.cloudsimple.com/azure-create-vm/#view-list-of-cloudsimple-virtual-machines)
 * [从 Azure 管理 CloudSimple 虚拟机](https://docs.azure.cloudsimple.com/azure-manage-vm/)

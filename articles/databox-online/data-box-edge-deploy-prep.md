@@ -6,18 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d7e66970db3397531c798bc37bf7c1f346e999bf
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 364ceabc3c9e7a577bd126b81bcd5256d947bbe3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924773"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476778"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>教程：准备部署 Azure Data Box Edge  
-
 
 本文是有关完全部署 Azure Data Box Edge 的教程系列的第一篇教程。 本教程介绍如何在 Azure 门户中做好准备，以部署 Data Box Edge 资源。
 
@@ -31,7 +30,6 @@ ms.locfileid: "64924773"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-
 ### <a name="get-started"></a>入门
 
 若要部署 Data Box Edge，请按顺序参阅以下教程。
@@ -42,7 +40,7 @@ ms.locfileid: "64924773"
 | 2. |**[安装 Data Box Edge](data-box-edge-deploy-install.md)**|将 Data Box Edge 物理设备拆包、装入机架并布线。  |
 | 3. |**[连接、设置并激活 Data Box Edge](data-box-edge-deploy-connect-setup-activate.md)** |连接到本地 Web UI，完成设备设置，然后激活设备。 现已准备好在设备设置 SMB 或 NFS 共享。  |
 | 4. |**[使用 Data Box Edge 传输数据](data-box-edge-deploy-add-shares.md)** |添加共享，并通过 SMB 或 NFS 连接到共享。 |
-| 5. |**[使用 Data Box Edge 转换数据](data-box-edge-deploy-configure-compute.md)** |在设备上配置 Edge 模块，以便在将数据移到 Azure 时转换数据。 |
+| 5. |**[使用 Data Box Edge 转换数据](data-box-edge-deploy-configure-compute.md)** |在设备上配置计算模块，以便在将数据移到 Azure 时转换数据。 |
 
 现在可以开始设置 Azure 门户。
 
@@ -55,7 +53,11 @@ ms.locfileid: "64924773"
 在开始之前，请确保：
 
 - 为 Data Box Edge 资源启用 Microsoft Azure 订阅。 不支持即用即付订阅。
-- 你拥有对自己订阅的所有者或参与者访问权限。
+- 你在资源组级别拥有 Data Box Edge/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
+
+    - 若要创建任何 Data Box Edge/Data Box Gateway 资源，你应该具有资源组级别范围内的参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+    - 若要创建任何 IoT 中心资源，请确保已注册 Microsoft.Devices 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+    - 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
 - 你拥有对 Azure Active Directory 图形 API 的管理员或用户访问权限。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 - 具有 Microsoft Azure 存储帐户和访问凭据。
 
@@ -64,7 +66,7 @@ ms.locfileid: "64924773"
 在部署物理设备之前，请确保：
 
 - 你已经查看配送包中包含的安全信息。
-- 在数据中心的标准 19 英寸机架中提供一个 1U 插槽用于安装设备。 
+- 在数据中心的标准 19 英寸机架中提供一个 1U 插槽用于安装设备。
 - 将设备安全放置在平坦、稳定的水平工作台面上。
 - 用于安装设备的位置具有来自独立源的标准交流电，或具有带不间断电源 (UPS) 的机架电源分配单元 (PDU)。
 - 有权访问物理设备。

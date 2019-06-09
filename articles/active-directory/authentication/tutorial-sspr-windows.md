@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2a4bdaba45c466b7f1f6fb8e91033f9a7665e034
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253068"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730551"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的“Azure AD 密码重置”
 
@@ -113,6 +113,8 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 当用户在 Windows 10 设备的登录屏幕中重置其密码时，会创建名为“defaultuser1”且权限较低的临时帐户。 使用此帐户可以确保密码重置过程的安全。 帐户本身有一个随机生成的密码，该密码在进行设备登录时不显示，在用户重置其密码后会由系统自动删除。 可能存在多个“defaultuser”配置文件，不过可以放心地忽略它们。
 
 ## <a name="limitations"></a>限制
+
+SSPR for Windows 10 不支持帐户解锁、移动应用通知和移动应用代码。
 
 使用 Hyper-V 测试此功能时，“重置密码”链接不显示。
 
