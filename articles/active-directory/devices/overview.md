@@ -17,12 +17,12 @@ ms.date: 06/04/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f91ff65d0e11ed2e9f923f94c740314c9136d99
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: faabc65a78626c053aecfac81b560b4731e40b95
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688685"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729994"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
 
@@ -155,5 +155,5 @@ Azure AD 加入  适用于希望成为云优先（即主要使用云服务，旨
 - 若要设置：
    - 已注册 Azure Active Directory 的 Windows 10 设备，请参阅[如何配置已注册 Azure Active Directory 的 Windows 10 设备](../user-help/device-management-azuread-registered-devices-windows10-setup.md)。
    - 已加入 Azure Active Directory 的设备，请参阅[如何计划 Azure Active Directory 加入实现](azureadjoin-plan.md)。
-   - 若要设置已加入混合 Azure AD 的设备，请参阅[如何计划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)。   
+   - 若要设置已加入混合 Azure AD 的设备，请参阅[如何计划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)。
 - 若要详细了解基于设备的条件访问，请参阅[配置 Azure Active Directory 基于设备的条件访问策略](../conditional-access/require-managed-devices.md)。
