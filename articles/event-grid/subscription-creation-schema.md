@@ -35,7 +35,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 目标 | 对象 | 定义终结点的对象。 |
+| destination | 对象 | 定义终结点的对象。 |
 | filter | 对象 | 用于筛选事件类型的可选字段。 |
 
 ### <a name="destination-object"></a>目标对象
