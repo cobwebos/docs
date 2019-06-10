@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seodec18
-ms.date: 12/07/2018
-ms.openlocfilehash: 056e5a0f56e1a8998288e6a78f448f0f91777e1d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.custom: mvc
+ms.date: 06/03/2019
+ms.openlocfilehash: f78555b37cc82c1e97a6f51ec504bc47937ee8c4
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969296"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493415"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
-本教程介绍如何使用 Azure 流分析来分析电话呼叫数据。 由客户端应用程序生成的电话呼叫数据包含一些将要通过流分析作业来筛选的欺诈性呼叫。
+本教程介绍如何使用 Azure 流分析来分析电话呼叫数据。 由客户端应用程序生成的电话呼叫数据包含一些欺诈性呼叫，这些呼叫将由流分析作业进行筛选。
 
 本教程介绍如何执行下列操作：
 
@@ -32,7 +32,7 @@ ms.locfileid: "65969296"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确保具有以下各项：
+开始之前，请执行以下操作：
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -71,7 +71,7 @@ ms.locfileid: "65969296"
 
 在应用程序可以将数据发送到 Azure 事件中心之前，事件中心必须具有允许适当访问的策略。 访问策略生成包含授权信息的连接字符串。
 
-1. 导航到在上一步创建的事件中心“MyEventHub”。  在“设置”下选择“共享访问策略”，然后选择“+ 添加”。   
+1. 导航到在上一步中创建的事件中心“MyEventHub”。 在“设置”下选择“共享访问策略”，然后选择“+ 添加”。   
 
 2. 将策略命名为“MyPolicy”，并确保选中“管理”。   然后选择“创建”  。
 
@@ -140,7 +140,7 @@ ms.locfileid: "65969296"
    |订阅    |  用户的订阅\<\>   |   选择要在其中创建作业的 Azure 订阅。       |
    |资源组   |   MyASADemoRG      |   选择“使用现有”  ，然后输入帐户的新资源组名称。      |
    |位置   |    美国西部 2     |      一个位置，可在其中部署作业。 为获得最佳性能，建议将作业和事件中心放置在同一区域，这样在不同区域之间传输数据时就不需要付费。      |
-   |宿主环境    | 云        |     流分析作业可以部署到云或边缘设备。 可以通过“Cloud”部署到 Azure Cloud，通过“Edge”部署到 IoT Edge 设备。    |
+   |宿主环境    | 云        |     流分析作业可以部署到云或边缘设备。 可以通过云部署到 Azure 云，通过“Edge”部署到 IoT Edge 设备。    |
    |流式处理单位     |    1       |      流单元表示执行作业所需的计算资源。 默认情况下，此值设置为 1。 若要了解如何缩放流单元，请参阅[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)一文。      |
 
 4. 对其余设置使用默认选项，然后选择“创建”，等待部署成功完成。 
@@ -163,7 +163,7 @@ ms.locfileid: "65969296"
    |订阅    |   用户的订阅\<\>      |   选择在其中创建了事件中心的 Azure 订阅。 事件中心可以位于流分析作业所在的订阅中，也可以位于另一订阅中。       |
    |事件中心命名空间    |  myEventHubsNS       |  选择在上一部分创建的事件中心命名空间。 当前订阅中所有可用的事件中心命名空间均列在下拉列表中。       |
    |事件中心名称    |   MyEventHub      |  选择在上一部分创建的事件中心。 当前订阅中所有可用的事件中心均列在下拉列表中。       |
-   |事件中心策略名称   |  Mypolicy       |  选择在上一部分创建的事件中心共享访问策略。 当前订阅中所有可用的事件中心策略均列在下拉列表中。       |
+   |事件中心策略名称   |  MyPolicy       |  选择在上一部分创建的事件中心共享访问策略。 当前订阅中所有可用的事件中心策略均列在下拉列表中。       |
 
 4. 对其余设置使用默认选项，然后选择“保存”。 
 
@@ -248,7 +248,7 @@ ms.locfileid: "65969296"
 
 4. 从 Power BI 工作区选择“+ 创建”，  创建名为“欺诈性呼叫”的新仪表板。 
 
-5. 在窗口顶部，选择“添加磁贴”  。 然后选择“自定义流数据”和“下一步”。   在“你的数据集”下选择“ASAdataset”。   在“可视化效果类型”下拉列表中选择“卡”，然后向“字段”添加“fraudulentcalls”     。 选择“下一步”  ，为磁贴输入一个名称，然后选择“应用”，创建该磁贴。 
+5. 在窗口顶部，选择“添加磁贴”  。 然后选择“自定义流数据”和“下一步”。   在“你的数据集”下选择“ASAdataset”。   从“可视化效果类型”下拉列表中选择“卡”，然后向“字段”添加“欺诈性呼叫”     。 选择“下一步”  ，为磁贴输入一个名称，然后选择“应用”，创建该磁贴。 
 
    ![创建 Power BI 仪表板磁贴](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
@@ -258,18 +258,18 @@ ms.locfileid: "65969296"
    * 添加值，然后选择“fraudulentcalls”  。
    * 对于“要显示的时间窗口”，请选择最近 10 分钟  。
 
-7. 添加两个磁贴以后，仪表板应该如以下示例所示。 请注意，如果事件中心发送器应用程序和流分析应用程序正在运行，则 PowerBI 仪表板会在新数据到达时定期进行更新。
+7. 添加两个磁贴以后，仪表板应该如以下示例所示。 请注意，如果事件中心发送器应用程序和流分析应用程序正在运行，则 Power BI 仪表板会在新数据到达时定期进行更新。
 
    ![在 Power BI 仪表板中查看结果](media/stream-analytics-manage-job/power-bi-results-dashboard.png)
 
-## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>将 PowerBI 仪表板嵌入到 Web 应用程序中
+## <a name="embedding-your-power-bi-dashboard-in-a-web-application"></a>将 Power BI 仪表板嵌入到 Web 应用程序中
 
-在本教程的此部分，请使用 PowerBI 团队创建的示例性 [ASP.NET](https://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
+在本教程的此部分中，请使用 Power BI 团队创建的示例性 [ASP.NET](https://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
 
 若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-dashboard-web-app** 子部分的重定向 URL 和主页 URL）。  由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)中的 **integrate-dashboard-web-app** 示例代码。
 在浏览器中运行应用程序以后，请执行以下步骤，将此前创建的仪表板嵌入网页中：
 
-1. 选择“登录到 Power BI”  ，以便授予应用程序访问 PowerBI 帐户中的仪表板的权限。
+1. 选择“登录到 Power BI”  ，以便授予应用程序访问 Power BI 帐户中的仪表板的权限。
 
 2. 选择“获取仪表板”按钮，此时会在表中显示帐户的仪表板。  找到此前创建的仪表板的名称 **powerbi-embedded-dashboard**，然后复制相应的 **EmbedUrl**。
 

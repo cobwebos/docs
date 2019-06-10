@@ -13,7 +13,7 @@ metadata:
   ms.date: 02/14/2019
   ms.author: philmea
 abstract:
-  description: Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了可用于为 Web 和移动应用程序提供地理环境的最新地图数据。 Azure Maps 是一组兼容 Azure One API 的 REST API，适用于地图、搜索、路线、交通、时区、地理位置、地理围栏、地图数据和空间操作，随 Web 和 Android SDK 一起提供，可以使开发变得简单、灵活且可跨多个平台移植。
+  description: Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了可用于为 Web 和移动应用程序提供地理环境的最新地图数据。 Azure Maps 是一组兼容 Azure One API 的 REST API，适用于地图、搜索、路线、交通、出行、时区、地理位置、地理围栏、地图数据和空间操作，随 Web 和 Android SDK 一起提供，可以使开发变得简单、灵活且可跨多个平台移植。
 sections:
   - title: 5 分钟快速入门
     items:
@@ -54,4 +54,4 @@ sections:
           - title: JavaScript
             html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">地图控件</a></p>'
           - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">数据服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">地理位置服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">呈现服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">路线服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">搜索服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空间服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">时区服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">交通服务</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">数据服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">地理位置服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">移动服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">呈现服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">路线服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">搜索服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空间服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">时区服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">交通服务</a></p>'

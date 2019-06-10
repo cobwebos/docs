@@ -533,8 +533,8 @@
           href: how-to-sql-subquery.md
     - name: 更改源
       items:
-        - name: Azure Cosmos DB 触发器日志
-          href: how-to-configure-cosmos-db-trigger-logs.md
+        - name: Azure Cosmos DB 触发器连接策略
+          href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: 多个 Azure Cosmos DB 触发器
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: 排查 Azure Cosmos DB 触发器问题

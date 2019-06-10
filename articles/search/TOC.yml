@@ -163,24 +163,28 @@
       items:
         - name: 索引器概述
           href: search-indexer-overview.md
-        - name: Blob 存储索引器
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: 表存储索引器
+        - name: Azure 表存储索引器
           href: search-howto-indexing-azure-tables.md
-        - name: SQL DB 索引器
+        - name: Azure SQL DB 索引器
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Cosmos DB 索引器
+        - name: Azure Cosmos DB 索引器
           href: search-howto-index-cosmosdb.md
-        - name: 一对多 blob 索引编制
-          href: search-howto-index-one-to-many-blobs.md
-        - name: CSV Blob 索引编制
-          href: search-howto-index-csv-blobs.md
-        - name: JSON Blob 索引编制
-          href: search-howto-index-json-blobs.md
+        - name: Azure Blob 存储索引器
+          items:
+            - name: 设置 blob 索引器
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: 为一对多 blob 创建索引
+              href: search-howto-index-one-to-many-blobs.md
+            - name: 为 CSV Blob 创建索引
+              href: search-howto-index-csv-blobs.md
+            - name: 为 JSON Blob 创建索引
+              href: search-howto-index-json-blobs.md
+        - name: 计划索引器
+          href: search-howto-schedule-indexers.md
+        - name: 映射字段
+          href: search-indexer-field-mappings.md
         - name: 连接到 SQL Server VM
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: 字段映射
-          href: search-indexer-field-mappings.md
         - name: 排查常见问题
           href: search-indexer-troubleshooting.md
     - name: 使用 AI 扩充

@@ -1,0 +1,30 @@
+- name: 高性能计算文档
+  items:
+    - name: 概述
+      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+    - name: 配置
+      items:
+        - name: 针对 Linux 进行优化
+          href: configure.md
+        - name: 启用 Infiniband
+          href: enable-infiniband.md
+    - name: 设置 MPI
+      href: setup-mpi.md
+    - name: 缩放应用程序
+      href: compiling-scaling-applications.md
+    - name: 虚拟机
+      items:
+        - name: HB 系列
+          items:
+            - name: 概述
+              href: hb-series-overview.md
+            - name: 性能
+              href: hb-series-performance.md
+        - name: HC 系列
+          items:
+            - name: 概述
+              href: hc-series-overview.md
+            - name: 性能
+              href: hc-series-performance.md
+        - name: HB 系列和 HC 系列 VM 的已知问题
+          href: hb-hc-known-issues.md
