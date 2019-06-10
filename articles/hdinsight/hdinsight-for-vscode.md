@@ -312,14 +312,14 @@ Spark 2.2 群集和 Spark2.3 群集不再支持 PySpark3，只有 Python 支持�
     | args | 应用程序的命令行参数 | 字符串列表 | 
     | jars | 此会话中要使用的 jars | 字符串列表 | 
     | pyFiles | 此会话中要使用的 Python 文件 | 字符串列表 |
-    | 文件 | 此会话中要使用的文件 | 字符串列表 |
+    | files | 此会话中要使用的文件 | 字符串列表 |
     | driverMemory | 要用于驱动程序进程的内存量 | 字符串 |
     | driverCores | 要用于驱动程序进程的内核数 | int |
     | executorMemory | 每个执行程序进程要使用的内存量 | 字符串 |
     | executorCores | 用于每个执行程序的内核数 | int |
     | numExecutors | 为此会话启动的执行程序数量 | int |
     | archives | 此会话中要使用的存档 | 字符串列表 |
-    | 队列 | 要提交的 YARN 队列的名称 | 字符串 |
+    | queue | 要提交的 YARN 队列的名称 | 字符串 |
     | name | 此会话的名称 | string |
     | conf | Spark 配置属性 | key=val 的映射 |
 
