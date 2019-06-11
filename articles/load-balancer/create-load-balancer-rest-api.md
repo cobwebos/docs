@@ -35,9 +35,9 @@ Azure 负载均衡器根据规则和运行状况探测，将抵达负载均衡�
 
 |名称  |In  |需要 |Type |描述 |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  路径       |  True       |   string      |  可以唯一标识 Microsoft Azure 订阅的订阅凭据。 此订阅 ID 是每个服务调用的 URI 的一部分。      |
-|resourceGroupName     |     路径    | True        |  string       |   资源组的名称。     |
-|loadBalancerName     |  路径       |      True   |    string     |    负载均衡器的名称。    |
+|subscriptionId   |  path       |  True       |   string      |  可以唯一标识 Microsoft Azure 订阅的订阅凭据。 此订阅 ID 是每个服务调用的 URI 的一部分。      |
+|resourceGroupName     |     path    | True        |  string       |   资源组的名称。     |
+|loadBalancerName     |  path       |      True   |    string     |    负载均衡器的名称。    |
 |api-version    |   query     |  True       |     string    |  客户端 API 版本。      |
 
 
