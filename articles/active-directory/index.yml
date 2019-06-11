@@ -12,6 +12,12 @@ metadata:
   ms.date: 04/25/2019
   ms.author: mtillman
   ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 1a019b58d4c2f1e5569cc4e8dd9109e08f313d6c
+  ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/07/2019
+  ms.locfileid: "66481859"
 highlightedContent:
   items:
   - title: 什么是 Azure AD？
@@ -256,9 +262,3 @@ additionalContent:
     - title: 用于 Azure AD 的 Azure CLI 命令
       summary: 在 CLI 参考中查找 Azure AD 命令。
       url: https://docs.microsoft.com/cli/azure/ad
-ms.openlocfilehash: 1a019b58d4c2f1e5569cc4e8dd9109e08f313d6c
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66481859"
