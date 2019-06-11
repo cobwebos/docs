@@ -48,7 +48,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 
 ## <a name="example-event"></a>示例事件
 
-以下示例展示了 ResourceWriteSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式。
+以下示例展示了 ResourceWriteSuccess 事件的架构  。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式   。
 
 ```json
 [{
@@ -108,7 +108,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 }]
 ```
 
-以下示例展示了 ResourceDeleteSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceDeleteFailure 和 ResourceDeleteCancel 事件会使用相同的模式。
+以下示例展示了 ResourceDeleteSuccess 事件的架构  。 具有不同 `eventType` 值的 ResourceDeleteFailure 和 ResourceDeleteCancel 事件会使用相同的模式   。
 
 ```json
 [{
@@ -174,7 +174,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 }]
 ```
 
-以下示例展示了 ResourceActionSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceActionFailure 和 ResourceActionCancel 事件会使用相同的模式。
+以下示例展示了 ResourceActionSuccess 事件的架构  。 具有不同 `eventType` 值的 ResourceActionFailure 和 ResourceActionCancel 事件会使用相同的模式   。
 
 ```json
 [{   
