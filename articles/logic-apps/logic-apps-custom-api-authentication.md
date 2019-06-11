@@ -193,8 +193,8 @@ ms.locfileid: "66167304"
 | tenant | “是” | Azure AD 租户的 GUID | 
 | audience | “是” | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
 | clientId | “是” | 请求访问权限的客户端的 GUID - 逻辑应用的应用程序标识中的客户端 ID | 
-| 密 | “是” | 请求访问令牌的客户端的应用程序标识中的密钥或密码 | 
-| 类型 | “是” | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
+| secret | “是” | 请求访问令牌的客户端的应用程序标识中的密钥或密码 | 
+| type | “是” | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
 |||| 
 
 例如:
@@ -236,7 +236,7 @@ ms.locfileid: "66167304"
 
 | 元素 | 需要 | 描述 | 
 | ------- | -------- | ----------- | 
-| 类型 | “是” | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
+| type | “是” | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 | 
 | password | “是” | 用于访问客户端证书（PFX 文件）的密码 | 
 | pfx | “是” | 客户端证书（PFX 文件）的 base64 编码内容 | 
 |||| 
@@ -253,7 +253,7 @@ ms.locfileid: "66167304"
 
 | 元素 | 需要 | 描述 | 
 | ------- | -------- | ----------- | 
-| 类型 | “是” | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
+| type | “是” | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | “是” | 要用于身份验证的用户名 | 
 | password | “是” | 要用于身份验证的密码 | 
 |||| 
