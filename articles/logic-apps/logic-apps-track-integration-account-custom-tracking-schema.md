@@ -59,7 +59,7 @@ ms.locfileid: "60847180"
 | 属性 | Type | 描述 |
 | --- | --- | --- |
 | sourceType |   | 运行的源的类型。 允许的值为“Microsoft.Logic/workflows”和“自定义”。 （必需） |
-| 源 |   | 如果源类型为 **Microsoft.Logic/workflows**，则源信息必须遵循此架构。 如果源类型为“自定义”；架构为 JToken。 （必需） |
+| source |   | 如果源类型为 **Microsoft.Logic/workflows**，则源信息必须遵循此架构。 如果源类型为“自定义”；架构为 JToken。 （必需） |
 | systemId | String | 逻辑应用系统 ID。 （必需） |
 | runId | String | 逻辑应用运行 ID。 （必需） |
 | operationName | String | 操作（例如操作或触发）的名称。 （必需） |
@@ -67,9 +67,9 @@ ms.locfileid: "60847180"
 | repeatItemIndex | Integer | 操作是否位于 `foreach`/`until` 循环内。 指示重复的项索引。 （必需） |
 | trackingId | String | 跟踪 ID，用于关联消息。 (可选) |
 | correlationId | String | 相关性 ID，用于关联消息。 (可选) |
-| ClientRequestId | String | 客户端可以填充它以关联消息。 (可选) |
-| EventLevel |   | 事件的级别。 （必需） |
-| EventTime |   | 事件的时间（UTC 格式 YYYY-MM-DDTHH:MM:SS.00000Z）。 （必需） |
+| clientRequestId | String | 客户端可以填充它以关联消息。 (可选) |
+| eventLevel |   | 事件的级别。 （必需） |
+| eventTime |   | 事件的时间（UTC 格式 YYYY-MM-DDTHH:MM:SS.00000Z）。 （必需） |
 | recordType |   | 跟踪记录的类型。 允许的值为“自定义”。 （必需） |
 | record |   | 自定义记录类型。 允许的格式为 JToken。 （必需） |
 ||||
