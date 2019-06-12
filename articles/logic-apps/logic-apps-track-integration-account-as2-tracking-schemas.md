@@ -75,8 +75,8 @@ ms.locfileid: "60845777"
 | incomingHeaders |JToken 字典 | 传入 AS2 消息标头的详细信息。 (可选) |
 | outgoingHeaders |JToken 字典 | 传出 AS2 消息标头的详细信息。 (可选) |
 | isNrrEnabled | Boolean | 如果值未知，请使用默认值。 （必需） |
-| isMdnExpected | 布尔 | 如果值未知，请使用默认值。 （必需） |
-| mdnType | 枚举 | 允许的值为 **NotConfigured**、**Sync** 和 **Async**。 （必需） |
+| isMdnExpected | Boolean | 如果值未知，请使用默认值。 （必需） |
+| mdnType | Enum | 允许的值为 **NotConfigured**、**Sync** 和 **Async**。 （必需） |
 ||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN 跟踪架构
@@ -123,8 +123,8 @@ ms.locfileid: "60845777"
 | isMessageFailed |Boolean | AS2 消息是否失败。 （必需） |
 | isMessageSigned |Boolean | AS2 消息是否已签名。 （必需） |
 | isNrrEnabled | Boolean | 如果值未知，请使用默认值。 （必需） |
-| statusCode | 枚举 | 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
-| micVerificationStatus | 枚举 | 允许的值为 **NotApplicable**、**Succeeded** 和 **Failed**。 （必需） |
+| statusCode | Enum | 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
+| micVerificationStatus | Enum | 允许的值为 **NotApplicable**、**Succeeded** 和 **Failed**。 （必需） |
 | correlationMessageId | String | 相关性 ID。 原始消息 ID（为其配置 MDN 的消息的消息 ID）。 (可选) |
 | incomingHeaders | JToken 字典 | 指示传入消息标头的详细信息。 (可选) |
 | outgoingHeaders |JToken 字典 | 指示传出消息标头的详细信息。 (可选) |
