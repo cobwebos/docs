@@ -43,7 +43,7 @@ ms.locfileid: "60837481"
 | type | 获取 Service Fabric 群集中与指定名称完全匹配的应用程序类型的列表。 |
 | type-list | 获取 Service Fabric 群集中应用程序类型的列表。 |
 | unprovision | 从群集中删除或注销 Service Fabric 应用程序类型。 |
-| 升级 | 开始升级 Service Fabric 群集中的应用程序。 |
+| upgrade | 开始升级 Service Fabric 群集中的应用程序。 |
 | upgrade-resume | 继续升级 Service Fabric 群集中的应用程序。 |
 | upgrade-rollback | 开始回滚 Service Fabric 群集中当前正在进行的应用程序升级。 |
 | upgrade-status | 获取对此应用程序执行的最近一次升级的详细信息。 |
