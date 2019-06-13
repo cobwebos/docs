@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 7562d720b200e127fbfd56c403f0e29e28b3b5d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6e26f9d344a4c11c335d1ea34998c848cbe3598a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793741"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753762"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>将 Azure VM 移到可用性区域中
-数据中心发生故障时，Azure 中的可用性区域可帮助保护应用程序和数据。 每个可用性区域都由一个或多个数据中心组成，这些数据中心都配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可帮助保护应用程序和数据。 随着可用性区域的推出，Azure 可为虚拟机 (VM) 的运行时间提供 99.99% 的服务级别协议 (SLA)。 [什么是 Azure 中的可用性区域？](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)中所述的选定区域支持可用性区域。
+数据中心发生故障时，Azure 中的可用性区域可帮助保护应用程序和数据。 每个可用性区域都由一个或多个数据中心组成，这些数据中心都配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可帮助保护应用程序和数据。 随着可用性区域的推出，Azure 可为虚拟机 (VM) 的运行时间提供 99.99% 的服务级别协议 (SLA)。 [什么是 Azure 中的可用性区域？](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)中所述的选定区域支持可用性区域。
 
 如果你将 VM 作为单一实例部署到了特定的区域，并想要通过将这些 VM 移到可用性区域来提高可用性，可以使用 Azure Site Recovery  。 此操作可进一步划分为：
 
@@ -28,7 +28,7 @@ ms.locfileid: "65793741"
 
 ## <a name="check-prerequisites"></a>检查先决条件
 
-- 检查目标区域是否[支持可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)。 检查所选的[源区域/目标区域组合是否受支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)。 在目标区域方面做出明智的决策。
+- 检查目标区域是否[支持可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)。 检查所选的[源区域/目标区域组合是否受支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)。 在目标区域方面做出明智的决策。
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看[支持限制和要求](azure-to-azure-support-matrix.md)。
 - 检查帐户权限。 如果你刚刚创建了免费 Azure 帐户，那么你就是订阅的管理员。 如果你不是订阅管理员，请与管理员一起分配所需的权限。 若要为 VM 启用复制，并使用 Azure Site Recovery 将数据最终复制到目标，必须拥有：
@@ -86,7 +86,7 @@ ms.locfileid: "65793741"
 
 1. 在 Azure 门户中选择“虚拟机”，然后选择要移到可用性区域中的 VM。 
 2. 在“操作”中，选择“灾难恢复”   。
-3. 在“配置灾难恢复”   > “目标区域”  中，选择要复制到的目标区域。 确保此区域[支持](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)可用性区域。
+3. 在“配置灾难恢复”   > “目标区域”  中，选择要复制到的目标区域。 确保此区域[支持](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)可用性区域。
 
     ![选择目标区域](media/azure-vms-to-zones/enable-rep-1.PNG)
 
