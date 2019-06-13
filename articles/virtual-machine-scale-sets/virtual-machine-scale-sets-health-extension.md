@@ -66,7 +66,7 @@ ms.locfileid: "60619818"
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| 发布者 | `Microsoft.ManagedServices` | string |
+| publisher | `Microsoft.ManagedServices` | string |
 | type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
@@ -74,7 +74,7 @@ ms.locfileid: "60619818"
 
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
-| 协议 | `http` 或 `tcp` | string |
+| protocol | `http` 或 `tcp` | string |
 | port | 协议为 `http` 时为可选，协议为 `tcp` 时为必需 | int |
 | requestPath | 协议为 `http` 时为必需，协议为 `tcp` 时为不允许 | string |
 
