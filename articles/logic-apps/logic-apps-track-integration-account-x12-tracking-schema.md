@@ -66,7 +66,7 @@ ms.locfileid: "60845760"
 | receiverQualifier | String | 接收合作伙伴限定符。 （必需） |
 | receiverIdentifier | String | 接收合作伙伴标识符。 （必需） |
 | agreementName | String | 用于解析消息的 X12 协议的名称。 (可选) |
-| direction | 枚举 | 消息流的方向，接收或发送。 （必需） |
+| direction | Enum | 消息流的方向，接收或发送。 （必需） |
 | interchangeControlNumber | String | 交换控制编号。 (可选) |
 | functionalGroupControlNumber | String | 功能控制编号。 (可选) |
 | transactionSetControlNumber | String | 事务集控制编号。 (可选) |
@@ -122,7 +122,7 @@ ms.locfileid: "60845760"
 | receiverQualifier | String | 接收合作伙伴限定符。 （必需） |
 | receiverIdentifier | String | 接收合作伙伴标识符。 （必需） |
 | agreementName | String | 用于解析消息的 X12 协议的名称。 (可选) |
-| direction | 枚举 | 消息流的方向，接收或发送。 （必需） |
+| direction | Enum | 消息流的方向，接收或发送。 （必需） |
 | interchangeControlNumber | String | 功能确认的交换控制编号。 只有发送方已收到发送给合作伙伴的消息的功能确认时，才会为发送方填充此值。 (可选) |
 | functionalGroupControlNumber | String | 功能确认的功能组控制编号。 只有发送方已收到发送给合作伙伴的消息的功能确认时，才会为发送方填充此值。 (可选) |
 | isaSegment | String | 消息的 ISA 段。 只有发送方已收到发送给合作伙伴的消息的功能确认时，才会为发送方填充此值。 (可选) |
@@ -132,8 +132,8 @@ ms.locfileid: "60845760"
 | respondingtransactionSetControlNumber | String | 响应事务集控制编号。 (可选) |
 | respondingTransactionSetId | String | 确认中映射到 AK201 的响应事务集 ID。 (可选) |
 | statusCode | Boolean | 事务集确认状态代码。 （必需） |
-| segmentsCount | 枚举 | 确认状态代码。 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
-| processingStatus | 枚举 | 确认的处理状态。 允许的值为 **Received**、**Generated** 和 **Sent**。 （必需） |
+| segmentsCount | Enum | 确认状态代码。 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
+| processingStatus | Enum | 确认的处理状态。 允许的值为 **Received**、**Generated** 和 **Sent**。 （必需） |
 | CorrelationMessageId | String | 关联消息 ID。 {AgreementName}{*GroupControlNumber*}{TransactionSetControlNumber} 的组合。 (可选) |
 | isMessageFailed | Boolean | X12 消息是否失败。 （必需） |
 | ak2Segment | String | 对接收的功能组内的事务集的确认。 (可选) |
@@ -180,7 +180,7 @@ ms.locfileid: "60845760"
 | receiverQualifier | String | 接收合作伙伴限定符。 （必需） |
 | receiverIdentifier | String | 接收合作伙伴标识符。 （必需） |
 | agreementName | String | 用于解析消息的 X12 协议的名称。 (可选) |
-| direction | 枚举 | 消息流的方向，接收或发送。 （必需） |
+| direction | Enum | 消息流的方向，接收或发送。 （必需） |
 | interchangeControlNumber | String | 交换控制编号。 (可选) |
 | isaSegment | String | 消息 ISA 段。 (可选) |
 | isTechnicalAcknowledgmentExpected | Boolean | 是否已在 X12 协议中配置了技术确认。 （必需） |
@@ -231,13 +231,13 @@ ms.locfileid: "60845760"
 | receiverQualifier | String | 接收合作伙伴限定符。 （必需） |
 | receiverIdentifier | String | 接收合作伙伴标识符。 （必需） |
 | agreementName | String | 用于解析消息的 X12 协议的名称。 (可选) |
-| direction | 枚举 | 消息流的方向，接收或发送。 （必需） |
+| direction | Enum | 消息流的方向，接收或发送。 （必需） |
 | interchangeControlNumber | String | 从合作伙伴收到的技术确认的交换控制编号。 (可选) |
 | isaSegment | String | 从合作伙伴收到的技术确认的 ISA 段。 (可选) |
 | respondingInterchangeControlNumber |String | 从合作伙伴收到的技术确认的交换控制编号。 (可选) |
 | isMessageFailed | Boolean | X12 消息是否失败。 （必需） |
-| statusCode | 枚举 | 交换确认状态代码。 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
-| processingStatus | 枚举 | 确认状态。 允许的值为 **Received**、**Generated** 和 **Sent**。 （必需） |
+| statusCode | Enum | 交换确认状态代码。 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
+| processingStatus | Enum | 确认状态。 允许的值为 **Received**、**Generated** 和 **Sent**。 （必需） |
 | ta102 | String | 交换日期。 (可选) |
 | ta103 | String | 交换时间。 (可选) |
 | ta105 | String | 交换注释代码。 (可选) |
@@ -284,7 +284,7 @@ ms.locfileid: "60845760"
 | receiverQualifier | String | 接收合作伙伴限定符。 （必需） |
 | receiverIdentifier | String | 接收合作伙伴标识符。 （必需） |
 | agreementName | String | 用于解析消息的 X12 协议的名称。 (可选) |
-| direction | 枚举 | 消息流的方向，接收或发送。 （必需） |
+| direction | Enum | 消息流的方向，接收或发送。 （必需） |
 | interchangeControlNumber | String | 交换控制编号。 (可选) |
 | functionalGroupControlNumber | String | 功能控制编号。 (可选) |
 | gsSegment | String | 消息 GS 段。 (可选) |
@@ -340,7 +340,7 @@ ms.locfileid: "60845760"
 | receiverQualifier | String | 接收合作伙伴限定符。 （必需） |
 | receiverIdentifier | String | 接收合作伙伴标识符。 （必需） |
 | agreementName | String | 用于解析消息的 X12 协议的名称。 (可选) |
-| direction | 枚举 | 消息流的方向，接收或发送。 （必需） |
+| direction | Enum | 消息流的方向，接收或发送。 （必需） |
 | interchangeControlNumber | String | 交换控制编号，当从合作伙伴收到了技术确认时，会为发送方填充此值。 (可选) |
 | functionalGroupControlNumber | String | 技术确认的功能组控制编号，当从合作伙伴收到了技术确认时，会为发送方填充此值。 (可选) |
 | isaSegment | String | 与交换控制编号相同，但仅在特定情况下填充。 (可选) |
@@ -348,8 +348,8 @@ ms.locfileid: "60845760"
 | respondingfunctionalGroupControlNumber | String | 原始功能组的控制编号。 (可选) |
 | respondingFunctionalGroupId | String | 在确认功能组 ID 中映射到 AK101。 (可选) |
 | isMessageFailed | Boolean | X12 消息是否失败。 （必需） |
-| statusCode | 枚举 | 确认状态代码。 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
-| processingStatus | 枚举 | 确认的处理状态。 允许的值为 **Received**、**Generated** 和 **Sent**。 （必需） |
+| statusCode | Enum | 确认状态代码。 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
+| processingStatus | Enum | 确认的处理状态。 允许的值为 **Received**、**Generated** 和 **Sent**。 （必需） |
 | ak903 | String | 收到的事务集的数量。 (可选) |
 | ak904 | String | 在标识的功能组中接受的事务集的数量。 (可选) |
 | ak9Segment | String | 是接受还是拒绝 AK1 段中标识的功能组，以及原因是什么。 (可选) |
