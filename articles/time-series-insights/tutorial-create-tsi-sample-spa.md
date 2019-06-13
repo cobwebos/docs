@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 5ee6e9aefb235feb28468798c3bd6b107f8c7c49
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2f25267b95e9ed5f7d5f6e6373fb9e3807927a7f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244043"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735354"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>教程：创建 Azure 时序见解单页 Web 应用
 
@@ -126,7 +126,7 @@ ms.locfileid: "66244043"
 
    1. 对注释 `"PROD RESOURCE LINKS"` 下的三行取消注释，以将依赖项从 DEVELOPMENT 切换到 PRODUCTION。 注释掉注释 `"DEV RESOURCE LINKS"` 下的三行。
 
-      [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
+      [!code-html[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
       依赖项应如以下示例所示进行注释：
 

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
-ms.reviewer: carlrab
+ms.reviewer: carlrab, sstein
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 3a0f3154142dc02a9ab48bc288c543b02fef46ea
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 85bbd14c8d2bcd8e3699e5f5efdae9f52acd63e5
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389068"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808559"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库
 
@@ -137,4 +137,4 @@ ms.locfileid: "66389068"
   - [使用 Azure Data Studio 连接和查询](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - 要使用 Azure CLI 在预配计算层中创建单一数据库，请参阅 [Azure CLI 示例](sql-database-cli-samples.md)。
 - 要使用 Azure PowerShell 在预配计算层中创建单一数据库，请参阅 [Azure PowerShell 示例](sql-database-powershell-samples.md)。
-- 要在无服务器计算层中使用 Azure Powershell 创建单一数据库，请参阅[使用 PowerShell 创建无服务器数据库](sql-database-serverless.md#create-new-serverless-database-using-powershell)
+- 要在无服务器计算层中使用 Azure Powershell 创建单一数据库，请参阅[使用 PowerShell 创建无服务器数据库](sql-database-serverless.md#create-new-database-in-serverless-compute-tier-using-powershell)

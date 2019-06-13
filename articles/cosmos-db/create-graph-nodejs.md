@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/08/2019
+ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 923d39a87340ffd26b6cc34d412edfbb97c13bbf
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 31c2846c628553e74eff5ea9a9627c871f4f810c
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480501"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734554"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 Node.js 应用程序
 
@@ -140,13 +140,9 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 2. 在 config.js 中，使用 Azure 门户的“概述”页中的“Gremlin URI”值填写 `config.endpoint` 密钥。   
 
-    `config.endpoint = "GRAPHENDPOINT";`
+    `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-graph-nodejs/gremlin-uri.png)
-
-   如果“Gremlin URI”  值为空，可从门户中的“密钥”  页生成值。 使用“URI”  值，删除 https:// 并将 documents 更改为 gremlin.cosmosdb。 如果图形帐户是在 2017 年 12 月 20 日之前创建的，请将 documents 更改为 graphs。 
-
-   Gremlin 终结点只能是没有协议/端口号的主机名，例如 `mygraphdb.gremlin.cosmosdb.azure.com`（不能是 `https://mygraphdb.gremlin.cosmosdb.azure.com` 或 `mygraphdb.gremlin.cosmosdb.azure.com:433`）。
 
 3. 在 config.js 中，使用 Azure 门户“密钥”页中的“主密钥”值填充 config.primaryKey 值。   
 
@@ -162,7 +158,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 var config = {}
 
 // Note that this must not have HTTPS or the port number
-config.endpoint = "testgraphacct.gremlin.cosmosdb.azure.com";
+config.endpoint = "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"; 
 config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"
 config.collection = "Persons"

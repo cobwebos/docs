@@ -9,12 +9,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: e40a0b35cd99565bec4e26862c938f6228bf9836
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 193c00354b6222152e26476d0b06cfb1555c207e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393731"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754879"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储
 
@@ -79,7 +79,7 @@ azcopy login
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>将文件夹的内容上传到 Blob 存储
 
-可使用 AzCopy 将文件夹中的所有文件上传到 [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage) 或 [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#blob-download) 上的 Blob 存储中。 若要上传文件夹中的所有 Blob，请输入以下 AzCopy 命令：
+可使用 AzCopy 将文件夹中的所有文件上传到 [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) 或 [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) 上的 Blob 存储中。 若要上传文件夹中的所有 Blob，请输入以下 AzCopy 命令：
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
