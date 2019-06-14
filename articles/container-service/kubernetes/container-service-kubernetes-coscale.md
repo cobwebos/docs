@@ -10,10 +10,10 @@ ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60713012"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>（已弃用）使用 CoScale 监视 Azure 容器服务 Kubernetes 群集
@@ -72,7 +72,7 @@ DaemonSet 还特别适合用于运行监视代理，例如 CoScale 代理。
 
 ![启动 CoScale 代理](./media/container-service-kubernetes-coscale/agent_script.png)
 
-就这么简单！ 代理安装完毕并开始运行后，几分钟内即可在控制台中查看数据。 请访问[代理页](https://app.coscale.com/)，以查看群集的摘要、执行其他配置步骤并查看“Kubernetes 群集概述”等仪表板。
+就这么简单！ 代理安装完毕并开始运行后，几分钟内即可在控制台中查看数据。 请访问[代理页](https://app.coscale.com/)，以查看群集的摘要、执行其他配置步骤并查看“Kubernetes 群集概述”  等仪表板。
 
 ![Kubernetes 群集概述](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 

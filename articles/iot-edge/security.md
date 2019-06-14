@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 8aadddbc9ae13a87f89db4d7e7189ea7aa8aeef5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60612032"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Azure IoT Edge 的安全标准
@@ -68,7 +68,7 @@ Azure IoT Edge 在不同的硬件品牌和型号上运行，支持多种操作�
 
 为了帮助客户在采购用于其部署的 Azure IoT Edge 设备时作出明智的决定，Azure IoT Edge 框架需包括认证要求。  这些要求的基础是关于安全声明的认证和关于安全实现的认证。  例如，安全声明认证将通知：IoT Edge 设备使用用于抵御启动攻击的安全硬件。 验证认证将通知：已正确实现安全硬件，以便在设备中提供这一值。  为了符合简单性原则，该框架会尽量减轻认证负担。   
 
-## <a name="extensibility"></a>可扩展性
+## <a name="extensibility"></a>扩展性
 
 随着 IoT 技术推动不同类型的业务转型，安全性应当同步发展以应对新出现的方案。  Azure IoT Edge 安全框架有着坚实的基础，在此之上扩展到不同的维度，包括： 
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: 51a0ee6f2d928d79e60ca9976d7651c70867a41f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64717604"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
@@ -67,7 +67,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 
 **缓解：**
 
-必须改用 Spark-HBase 连接器。 相关说明请参阅[如何使用 Spark-HBase 连接器](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
+必须改用 Spark-HBase 连接器。 相关说明请参阅[如何使用 Spark-HBase 连接器](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter 笔记本的相关问题
 下面是与 Jupyter 笔记本相关的一些已知问题。
@@ -76,7 +76,7 @@ HDInsight Spark 群集不支持 Spark-Phoenix 连接器。
 不要在 Jupyter Notebook 文件名中使用非 ASCII 字符。 如果尝试通过 Jupyter UI 来上传具有非 ASCII 文件名的文件，则上传将失败且不会显示任何错误消息。 Jupyter 不会让你上传文件，但是也不会引发可见的错误。
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>加载大型笔记本时发生错误
-加载大型笔记本时，可能会看到错误 **`Error loading notebook`**。  
+加载大型笔记本时，可能会看到错误 **`Error loading notebook`** 。  
 
 **缓解：**
 

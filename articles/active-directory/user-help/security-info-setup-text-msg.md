@@ -13,14 +13,14 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea9e4ae21ecc6538b33aed1566c10ddcd22b86c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60482216"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>设置安全信息以使用短信（预览版）
-可以按照以下步骤添加双因素验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
+可以按照以下步骤添加双因素验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息  。
 
 如果在登录工作或学校帐户后系统提示立即进行设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
@@ -41,19 +41,19 @@ ms.locfileid: "60482216"
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
-2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
+2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”     。
 
     ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”。
+3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”    。
 
     ![添加方法框，选中电话](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. 在“电话”页上，键入移动设备的电话号码，选择“以短信形式向我发送验证码”，然后选择“下一步”。
+4. 在“电话”页上，键入移动设备的电话号码，选择“以短信形式向我发送验证码”，然后选择“下一步”    。
 
     ![添加电话号码并选择短信](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
-5. 输入以短信形式发送到移动设备的验证码，然后选择“下一步”。
+5. 输入以短信形式发送到移动设备的验证码，然后选择“下一步”  。
 
     ![添加电话号码并选择短信](media/security-info/securityinfo-myprofile-phonetext-entercode.png)
 
@@ -64,33 +64,33 @@ ms.locfileid: "60482216"
     安全信息已更新，你可以在使用双重验证或密码重置时使用短信验证身份。 如果要将短信作为默认方法，请参阅本文的[更改默认的安全信息方法](#change-your-default-security-info-method)部分。
 
 ## <a name="delete-text-messaging-from-your-security-info-methods"></a>从安全信息方法中删除短信
-如果不想再将短信用作安全信息方法，可从“安全信息”页将其删除。
+如果不想再将短信用作安全信息方法，可从“安全信息”页将其删除  。
 
 >[!Important]
 >如果错误地删除了短信，则无法将其撤消。 你必须按照本文[设置文本信息](#set-up-text-messages-from-the-security-info-page)部分中的步骤再次添加该方法。
 
 ### <a name="to-delete-text-messaging"></a>删除短信
 
-1. 在“安全信息”页上，选择“电话”选项旁边的“删除”链接。
+1. 在“安全信息”页上，选择“电话”选项旁边的“删除”链接    。
 
     ![从安全信息中删除电话和短信方法的链接](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. 从确认框中选择“是”，以删除“电话”号码。。 删除电话号码后，该帐户将从你的安全信息中删除，并从“安全信息”页消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
+2. 从确认框中选择“是”，以删除“电话”号码。   。 删除电话号码后，该帐户将从你的安全信息中删除，并从“安全信息”页消失  。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法  。
 
 ## <a name="change-your-default-security-info-method"></a>更改默认的安全信息方法
-如果想要使用双因素验证或密码重置请求登录工作或学校帐户时使用短信方式，则可以从“安全信息”页进行设置。
+如果想要使用双因素验证或密码重置请求登录工作或学校帐户时使用短信方式，则可以从“安全信息”页进行设置  。
 
 ### <a name="to-change-your-default-security-info-method"></a>更改默认的安全信息方法
 
-1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接。
+1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接    。
 
     ![默认登录方法的“更改”链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 从可用方法的下拉列表中选择“电话 - 短信 (_your_phone_number_)”，然后选择“确认”。
+2. 从可用方法的下拉列表中选择“电话 - 短信 (_your_phone_number_)”，然后选择“确认”。   
 
     ![选择默认登录方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    用于登录的默认方法更改为“电话 - 短信 (_your_phone_number_ )”。
+    用于登录的默认方法更改为“电话 - 短信 (_your_phone_number_ )”   。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
 基于你想要执行的操作，还可以选择组织如何联系你以验证你的身份的其他选项。 选项包括：

@@ -16,10 +16,10 @@ ms.date: 07/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60264234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>教程：Azure Active Directory 与 Kanbanize 集成
@@ -60,19 +60,19 @@ ms.locfileid: "60264234"
 
 **若要从库中添加 Kanbanize，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。 
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 导航到“企业应用程序”。  然后转到“所有应用程序”  。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Kanbanize”，在结果面板中选择“Kanbanize”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Kanbanize”，在结果面板中选择“Kanbanize”，然后单击“添加”按钮添加该应用程序    。
 
     ![结果列表中的 Kanbanize](./media/kanbanize-tutorial/tutorial_kanbanize_addfromgallery.png)
 
@@ -96,84 +96,84 @@ ms.locfileid: "60264234"
 
 **若要配置 Kanbanize 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中的 **Kanbanize** 应用程序集成页上，单击“单一登录”。
+1. 在 Azure 门户中的 **Kanbanize** 应用程序集成页上，单击“单一登录”。 
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 在“单一登录”  对话框中，选择“基于 SAML 的单一登录”  作为“模式”  以启用单一登录。
  
     ![“单一登录”对话框](./media/kanbanize-tutorial/tutorial_kanbanize_samlbase.png)
 
-3. 在“Kanbanize 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+3. 在“Kanbanize 域和 URL”部分中，如果要在“IDP”  发起的模式下配置应用程序，请执行以下步骤  ：
 
     ![Kanbanize 域和 URL 单一登录信息](./media/kanbanize-tutorial/tutorial_kanbanize_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/saml/acs`
+    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.kanbanize.com/saml/acs`
 
-    c. 选中“显示高级 URL 设置”。
+    c. 选中“显示高级 URL 设置”。 
 
-    d.  在“中继状态”文本框中，键入 URL：`/ctrl_login/saml_login`
+    d.  在“中继状态”  文本框中，键入 URL：`/ctrl_login/saml_login`
 
-    e. 如果要在 **SP** 发起的模式下配置应用程序，请在“登录 URL”文本框中使用以下模式键入一个 URL：`https://<subdomain>.kanbanize.com`
+    e. 如果要在 **SP** 发起的模式下配置应用程序，请在“登录 URL”  文本框中使用以下模式键入一个 URL：`https://<subdomain>.kanbanize.com`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Kanbanize 客户端支持团队](mailto:support@ms.kanbanize.com)获取这些值。 
 
-5. Kanbanize 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “用户标识符”的默认值是“user.userprincipalname”，但 Kanbanize 要求通过用户的电子邮件地址映射此项。 为此，可以使用列表中的 user.mail 属性，或使用基于组织配置的相应属性值
+5. Kanbanize 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “用户标识符”的默认值是“user.userprincipalname”，但 Kanbanize 要求通过用户的电子邮件地址映射此项   。 为此，可以使用列表中的 user.mail 属性，或使用基于组织配置的相应属性值 
     
     ![配置单一登录](./media/kanbanize-tutorial/tutorial_Kanbanize_attribute.png)
 
-6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。  
 
     ![证书下载链接](./media/kanbanize-tutorial/tutorial_kanbanize_certificate.png) 
 
-7. 单击“保存”按钮。
+7. 单击“保存”按钮  。
 
     ![配置单一登录“保存”按钮](./media/kanbanize-tutorial/tutorial_general_400.png)
     
-8. 在“Kanbanize 配置”部分中，单击“配置 Kanbanize”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+8. 在“Kanbanize 配置”  部分中，单击“配置 Kanbanize”  打开“配置登录”  窗口。 从“快速参考”  部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”  。
 
     ![Kanbanize 配置](./media/kanbanize-tutorial/tutorial_kanbanize_configure.png)
 
 9. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Kanbanize。 
 
-10. 转到页面右上角，单击“设置”徽标。
+10. 转到页面右上角，单击“设置”  徽标。
 
     ![Kanbanize 设置](./media/kanbanize-tutorial/tutorial_kanbanize_set.png)
 
-11. 在“管理面板”页上的菜单左侧，单击“集成”，然后启用“单一登录”。 
+11. 在“管理面板”页上的菜单左侧，单击“集成”  ，然后启用“单一登录”  。 
 
     ![Kanbanize 集成](./media/kanbanize-tutorial/tutorial_kanbanize_admin.png)
 
-12. 在“集成”部分下，单击“配置”打开“单一登录集成”页。
+12. 在“集成”部分下，单击“配置”  打开“单一登录集成”  页。
 
     ![Kanbanize 配置](./media/kanbanize-tutorial/tutorial_kanbanize_config.png)
 
-13. 在“单一登录集成”页上的“配置”下，执行以下步骤：
+13. 在“单一登录集成”  页上的“配置”  下，执行以下步骤：
 
     ![Kanbanize 集成](./media/kanbanize-tutorial/tutorial_kanbanize_save.png)
 
-    a. 在“Idp 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+    a. 在“Idp 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值   。
 
-    b. 在“Idp 登录终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    b. 在“Idp 登录终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值   。
 
-    c. 在“Idp 注销终结点”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    c. 在“Idp 注销终结点”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
 
-    d. 在“电子邮件的属性名称”文本框中，输入此值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    d. 在“电子邮件的属性名称”  文本框中，输入此值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    e. 在“名字的属性名称”文本框中，输入此值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    e. 在“名字的属性名称”  文本框中，输入此值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    f. 在“姓氏的属性名称”文本框中，输入此值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` 
+    f. 在“姓氏的属性名称”  文本框中，输入此值 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` 
     > [!Note]
     > 可以通过组合 Azure 门户的“用户属性”部分中相应属性的命名空间和名称值来获取这些值。
 
-    g. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容（不带开始和结束标记），然后将其粘贴到“Idp X.509 证书”框中 ****。
+    g. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容（不带开始和结束标记），然后将其粘贴到“Idp X.509 证书”框中 **** 。
 
-    h. 选中“启用同时使用 SSO 和 Kanbanize 登录”。
+    h. 选中“启用同时使用 SSO 和 Kanbanize 登录”  。
     
-    i. 单击“保存设置”。
+    i. 单击“保存设置”。 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -183,27 +183,27 @@ ms.locfileid: "60264234"
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。 
 
     ![“Azure Active Directory”按钮](./media/kanbanize-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”   。
 
     ![“用户和组”以及“所有用户”链接](./media/kanbanize-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”    。
 
     ![“添加”按钮](./media/kanbanize-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+4. 在“用户”  对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/kanbanize-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”  框中，键入“BrittaSimon”  。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。 
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
 
     d. 单击**创建**。
  
@@ -222,27 +222,27 @@ ms.locfileid: "60264234"
 
 **若要将 Britta Simon 分配到 Kanbanize，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”  ，并单击“所有应用程序”  。
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Kanbanize”。
+2. 在应用程序列表中，选择“Kanbanize”  。
 
     ![应用程序列表中的 Kanbanize 链接](./media/kanbanize-tutorial/tutorial_kanbanize_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+3. 在左侧菜单中，单击“用户和组”  。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加”按钮。  然后在“添加分配”对话框中选择“用户和组”。  
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”  对话框的“用户”列表中，选择“Britta Simon”。 
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+6. 在“用户和组”对话框中单击“选择”按钮。  
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+7. 在“添加分配”对话框中单击“分配”按钮。  
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

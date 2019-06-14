@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: crdun
 ms.openlocfilehash: 352e64664e6796fb4e0a7941de91ef4045076aed
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104593"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>向 Android 应用添加推送通知
@@ -66,7 +66,7 @@ ms.locfileid: "62104593"
 
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-下一步就是安装 Google Play Services。 Firebase Cloud Messaging 针对开发和测试有一些最低的 API 级别要求，清单中的 minSdkVersion 属性必须符合这些要求。
+下一步就是安装 Google Play Services。 Firebase Cloud Messaging 针对开发和测试有一些最低的 API 级别要求，清单中的 minSdkVersion  属性必须符合这些要求。
 
 如果要测试一台较旧的设备，请查阅[将 Firebase 添加到 Android 项目]，以确定此值可设置到的最小值，并相应地进行设置。
 
@@ -93,4 +93,4 @@ ms.locfileid: "62104593"
 
 <!-- URLs -->
 [Android 快速入门]: app-service-mobile-android-get-started.md
-[将 Firebase 添加到 Android 项目]:https://firebase.google.com/docs/android/setup
+[将 Firebase 添加到 Android 项目]: https://firebase.google.com/docs/android/setup

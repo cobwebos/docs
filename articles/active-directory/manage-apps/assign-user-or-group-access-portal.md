@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 702eb5008c60764cd84e2787a8e2c2818d3f9268
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780935"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中向企业应用分配用户或组
@@ -31,30 +31,30 @@ ms.locfileid: "65780935"
 
 ## <a name="assign-a-user-to-an-app---portal"></a>将用户分配到应用 - 门户
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 选择“所有服务”，在文本框中输入 Azure Active Directory，并选择“Enter”。
-1. 选择“企业应用程序”。
-1. 上**企业应用程序-所有应用程序**窗格中，您将看到一系列你可以管理的应用。 选择一个应用。
-1. 上***appname***窗格 （即，窗格的标题中的所选应用名称） 中选择**用户和组**。
-1. 上***appname*** **-用户和组**窗格中，选择**添加用户**。
+1. 选择“所有服务”  ，在文本框中输入 Azure Active Directory，并选择“Enter”  。
+1. 选择“企业应用程序”。 
+1. 在“企业应用程序 - 所有应用程序”  窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
+1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“用户和组”  。
+1. 在“appname - 用户和组”窗格中，选择“添加用户”。  
 1. 上**添加分配**窗格中，选择**用户和组**。
 
     ![将用户或组分配给应用](./media/assign-user-or-group-access-portal/assign-users.png)
 1. 上**用户和组**窗格中，从列表中选择一个或多个用户或组，然后选择**选择**窗格底部的按钮。
-1. 上**添加分配**窗格中，选择**角色**。 然后，在**选择角色**窗格中，选择一个角色将应用到所选的用户或组，然后选择**确定**窗格的底部。
-1. 上**添加分配**窗格中，选择**分配**窗格底部的按钮。 已分配用户或组的权限将是该企业应用的选定角色所定义的权限。
+1. 在“添加分配”窗格中选择“角色”   。 然后，在**选择角色**窗格中，选择一个角色将应用到所选的用户或组，然后选择**确定**窗格的底部。
+1. 在“添加分配”窗格中，选择窗格底部的“分配”按钮。   已分配用户或组的权限将是该企业应用的选定角色所定义的权限。
 
 ## <a name="allow-all-users-to-access-an-app---portal"></a>允许所有用户访问某个应用 - 门户
 允许所有用户访问某个应用程序：
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 选择“所有服务”，在文本框中输入 Azure Active Directory，并选择“Enter”。
-1. 选择“企业应用程序”。
-1. 在“企业应用程序”窗格中，选择“所有应用程序”。 随后会列出你可以管理的应用。
-1. 在“企业应用程序 - 所有应用程序”窗格中，选择一个应用。
-1. 上***appname***窗格中，选择**属性**。
-1. 上 ***appname*的属性**窗格中，设置**需要进行用户分配？** 设置为**否**。 
+1. 选择“所有服务”  ，在文本框中输入 Azure Active Directory，并选择“Enter”  。
+1. 选择“企业应用程序”。 
+1. 在“企业应用程序”  窗格中，选择“所有应用程序”  。 随后会列出你可以管理的应用。
+1. 在“企业应用程序 - 所有应用程序”  窗格中，选择一个应用。
+1. 在“appname”窗格上，选择“属性”  。
+1. 在“appname - 属性”窗格上，将“需要进行用户分配?”设置设置为“否”。     
 
-“需要进行用户分配?”选项：
+“需要进行用户分配?”选项  ：
 
 - 不会影响应用程序出现在应用程序访问面板上。 要在访问面板上显示应用程序，需要为应用程序分配相应的用户或组。
 - 仅适用于为 SAML 单一登录配置的云应用程序以及使用应用程序代理配置的本地应用程序。 请参阅[应用程序的单一登录](what-is-single-sign-on.md)。

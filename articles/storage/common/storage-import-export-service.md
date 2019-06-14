@@ -9,10 +9,10 @@ ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603112"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
@@ -138,9 +138,9 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 对于导入作业，驱动器有两种加密方式。  
 
 
-- 在运行 WAImportExport 工具准备驱动器时，使用 dataset.csv 文件指定该选项。 
+- 在运行 WAImportExport 工具准备驱动器时，使用 dataset.csv 文件指定该选项  。 
 
-- 手动对驱动器启用 BitLocker 加密。 在驱动器准备期间运行 WAImportExport 命令行工具时，在 driveset.csv 文件中指定加密密钥。
+- 手动对驱动器启用 BitLocker 加密。 在驱动器准备期间运行 WAImportExport 命令行工具时，在 driveset.csv 文件中指定加密密钥  。
 
 
 对于导出作业，在将数据复制到驱动器以后，此服务会使用 BitLocker 加密驱动器，然后再将驱动器寄回给你。 加密密钥是通过 Azure 门户提供的。
@@ -160,7 +160,7 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 
 **事务成本**
 
-[标准存储事务费用](https://azure.microsoft.com/pricing/details/storage/)在导入，以及将数据导出过程中应用。 从 Azure 存储导出数据时，都还存储事务费用以及适用标准的传出费用。 数据传出费用的详细信息，请参阅[数据传输定价](https://azure.microsoft.com/pricing/details/data-transfers/)。
+[标准存储事务费用](https://azure.microsoft.com/pricing/details/storage/)在导入，以及将数据导出过程中应用。 从 Azure 存储导出数据时，都还存储事务费用以及适用标准的传出费用。 数据传出费用的详细信息，请参阅[数据传输定价。](https://azure.microsoft.com/pricing/details/data-transfers/)。
 
 
 

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.openlocfilehash: a4c601e81390efa3bb53a6f07225bb6e939bc9bb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726444"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
@@ -31,7 +31,7 @@ ms.locfileid: "64726444"
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* 如果使用 PowerShell，则需要[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果使用 PowerShell，你将需要 [AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
 * 文本编辑器。 本文使用 Microsoft 记事本。
 
@@ -74,7 +74,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>更新项目对象模型
 
-Pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html。  输入以下命令打开 `pom.xml`：
+Pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html 。  输入以下命令打开 `pom.xml`：
 
 ```cmd
 notepad pom.xml
@@ -693,7 +693,7 @@ public class DeleteTable {
           Gabriela Ingram - ID: 6
           Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-    将 **fabrikam.com** 用于 `-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。 还可以使用正则表达式作为搜索词。 例如，**^r** 返回以字母“r”开头的电子邮件地址。
+    将 **fabrikam.com** 用于 `-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。 还可以使用正则表达式作为搜索词。 例如， **^r** 返回以字母“r”开头的电子邮件地址。
 
 7. 若要删除表，请使用以下命令：
 

@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.openlocfilehash: 6f89e27b06179c33857d581c0c6e3fc78c683d48
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119803"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语表
@@ -75,7 +75,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="connection-string"></a>连接字符串
 使用应用程序代码中的连接字符串来封装连接到终结点所需的信息。 连接字符串通常包含终结点的地址和安全信息，但连接字符串的格式因服务而异。 与 IoT 中心服务关联的连接字符串有两种：
-- 设备连接字符串使设备能够连接到 IoT 中心上面向设备的终结点。
+- 设备连接字符串  使设备能够连接到 IoT 中心上面向设备的终结点。
 - *IoT 中心连接字符串* 使后端应用能够连接到 IoT 中心上面向服务的终结点。
 
 ## <a name="custom-endpoints"></a>自定义终结点

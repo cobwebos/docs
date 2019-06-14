@@ -13,10 +13,10 @@ ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: bbe220780a3c21e7bfb15d0568904af4ed47f765
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61486783"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>关于使用 Azure SQL 数据库的多租户 SaaS 应用的视频，包含索引和批注
@@ -25,7 +25,7 @@ ms.locfileid: "61486783"
 
 该视频扩充了以下书面文档中的信息： 
 - *概念：* 多租户 SaaS 数据库租户模式[saas-concept-design-patterns-563e]
-- *教程：*[Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
+- *教程：* [Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
 
 视频和文章描述在云中的 Azure SQL 数据库上创建多租户应用程序的多个阶段。 Azure SQL 数据库的特殊功能使多租户应用更易于开发、实施和管理且性能可靠。
 
@@ -37,14 +37,14 @@ ms.locfileid: "61486783"
 
 本节将在 81 分钟的视频中对 38 个讨论的时间位置进行索引。 每个时间索引都带有视频中屏幕截图的批注，有时还有其他信息。
 
-每个时间索引采用的格式均为 h:mm: ss。 例如，标记为“会话目标”的第二个索引时间位置大概始于 0:03:11。
+每个时间索引采用的格式均为 h:mm: ss  。 例如，标记为“会话目标”  的第二个索引时间位置大概始于 0:03:11  。
 
 
 ### <a name="compact-links-to-video-indexed-time-locations"></a>到视频索引时间位置的紧凑型链接
 
 以下标题是到本文后面相应批注部分的链接：
 
-- [1.（开始）欢迎使用幻灯片，0:00:03](#anchor-image-wtip-min00001)
+- [1.（开始）  欢迎使用幻灯片，0:00:03](#anchor-image-wtip-min00001)
 - [2.会话目标，0:03:11](#anchor-image-wtip-min00311)
 - [3.议程，0:04:17](#anchor-image-wtip-min00417)
 - [4.多租户 Web 应用，0:05:05](#anchor-image-wtip-min00505)
@@ -92,9 +92,9 @@ ms.locfileid: "61486783"
 
 
 &nbsp; <a name="anchor-image-wtip-min00001"/>
-#### <a name="1-start-welcome-slide-00001"></a>1.（开始）欢迎使用幻灯片，0:00:01
+#### <a name="1-start-welcome-slide-00001"></a>1.（开始）  欢迎使用幻灯片，0:00:01
 
-借鉴 MYOB：设计 Azure SQL 数据库上的 SaaS 应用程序模式 - BRK3120
+借鉴 MYOB：  设计 Azure SQL 数据库上的 SaaS 应用程序模式 - BRK3120
 
 [![欢迎使用幻灯片][image-wtip-min00003-brk3120-whole-welcome]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=1)
 
@@ -296,7 +296,7 @@ ms.locfileid: "61486783"
 
 - *概念：* 多租户 SaaS 数据库租户模式[saas-concept-design-patterns-563e]
 
-- *教程：*[Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
+- *教程：* [Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
 
 - Wingtip Tickets SaaS 租户应用程序风格的 GitHub 存储库：
     - [GitHub 存储库 - 用于独立应用程序模型][github-wingtip-standaloneapp]。

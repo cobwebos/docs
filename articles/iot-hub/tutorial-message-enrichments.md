@@ -1,6 +1,6 @@
 ---
-title: 教程-使用 Azure IoT 中心消息到
-description: 演示如何使用消息正进行 Azure IoT 中心的消息教程
+title: 教程 - 使用 Azure IoT 中心消息扩充
+description: 介绍如何使用 Azure IoT 中心消息扩充的教程
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: e4906bf9f2aead69c315ddb7b2e3b10489378d87
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66259069"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>教程：使用 Azure IoT 中心消息正 （预览版）
+# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>教程：使用 Azure IoT 中心消息扩充（预览版）
 
-*消息正*是一种向 IoT 中心能力*戳*之前将消息发送到指定终结点的其他信息的消息。 使用消息正的一个原因是包含可用于简化下游处理的数据。 例如，丰富设备的遥测消息数与设备孪生标记可以减少对客户进行 API 调用获取此信息的设备孪生的负载。 有关详细信息，请参阅[概述消息正](iot-hub-message-enrichments-overview.md)。
+“消息扩充”是 IoT 中心在将消息发送到指定的终结点之前，使用附加的信息为消息添加戳记的功能。   使用消息扩充的原因之一是包含可用于简化下游处理的数据。 例如，使用设备孪生标记扩充设备遥测消息可以减少客户对此信息发出设备孪生 API 调用所造成的负载。 有关详细信息，请参阅[消息扩充概述](iot-hub-message-enrichments-overview.md)。
 
-在本教程中，你使用 Azure CLI 设置资源，包括指向两个不同的存储容器-的两个终结点**丰富**并**原始**。 然后，使用[Azure 门户](https://portal.azure.com)若要配置消息到要应用于发送到具有终结点的消息仅**丰富**存储容器。 您将消息发送到 IoT 中心路由到这两个存储容器。 仅发送到的终结点的消息**丰富**将增加存储容器。
+在本教程中，你将使用 Azure CLI 来设置资源，其中包括两个终结点，它们指向两个不同的存储容器 -- **enriched** 和 **original**。 然后，使用 [Azure 门户](https://portal.azure.com)配置仅对发送到包含 **enriched** 存储容器的终结点的消息应用消息扩充。 消息将发送到 IoT 中心，然后路由到这两个存储容器。 只会扩充发送到 **enriched** 存储容器的终结点的消息。
 
-下面是为完成本教程将执行的任务：
+下面是完成本教程所要执行的任务：
 
-**使用 IoT 中心消息到**
+**使用 IoT 中心消息扩充**
 > [!div class="checklist"]
-> * 使用 Azure CLI 创建资源--IoT 中心、 具有两个终结点的存储帐户和路由配置。
-> * 使用 Azure 门户配置消息正。
-> * 运行模拟 IoT 设备向中心发送消息的应用。
-> * 查看结果并验证消息到按预期工作。
+> * 使用 Azure CLI 创建资源 -- IoT 中心、包含两个终结点的存储帐户，以及路由配置。
+> * 使用 Azure 门户配置消息扩充。
+> * 运行一个应用，用于模拟向中心发送消息的 IoT 设备。
+> * 查看结果，并验证消息扩充是否按预期方式运行。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -40,40 +40,40 @@ ms.locfileid: "66259069"
 
 ## <a name="retrieve-the-sample-code"></a>检索示例代码
 
-下载[IoT 设备模拟](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)并将其解压缩。 此存储库中，包括的一个将用于将消息发送到 IoT 中心有多个应用程序。
+下载 [IoT 设备模拟](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)并将其解压缩。 此存储库包含多个应用程序，其中包括用于向 IoT 中心发送消息的应用程序。
 
-此下载还包含用于创建用来测试消息正的资源的脚本。 脚本位于 /azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli。 现在，可以看一下脚本，并使用它。 此外可以直接从本文复制该脚本。
+此下载内容还包含用于创建资源以测试消息扩充的脚本。 该脚本位于 /azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli 中。 现在，可以查看并使用该脚本。 也可以直接在本文中复制该脚本。
 
-当准备好开始测试，将使用此下载中的设备模拟应用程序将消息发送到 IoT 中心。
+准备好开始测试时，将使用此下载内容中的设备模拟应用程序向 IoT 中心发送消息。
 
-## <a name="set-up-and-configure-resources"></a>设置和配置资源
+## <a name="set-up-and-configure-resources"></a>设置并配置资源
 
-除了创建所需的资源，Azure CLI 脚本还配置在两个路由到终结点是单独的存储容器。 配置路由的详细信息，请参阅[路由教程](tutorial-routing.md)。 资源设置后，使用[Azure 门户](https://portal.azure.com)配置消息正对于每个终结点，然后再继续到测试步骤。
+除了创建所需的资源以外，Azure CLI 脚本还会配置终结点（独立的存储容器）的两个路由。 有关配置路由的详细信息，请参阅[路由教程](tutorial-routing.md)。 设置资源后，使用 [Azure 门户](https://portal.azure.com)配置每个终结点的消息扩充，然后继续执行测试步骤。
 
 > [!NOTE]
-> 所有消息都路由到两个终结点，但将丰富仅转到与配置的消息到终结点的消息。
+> 所有消息将路由到这两个终结点，但只会扩充发送到已配置了消息扩充的终结点的消息。
 >
 
-可以使用以下脚本，也可以下载存储库的 /resources 文件夹中打开该脚本。 下面是该脚本将执行的步骤：
+可以使用以下脚本，或者打开已下载的存储库的 /resources 文件夹中的脚本。 下面是该脚本执行的步骤：
 
 * 创建 IoT 中心。
 * 创建存储帐户。
-* 在存储帐户-一个丰富的消息，一个用于不丰富的消息中创建两个容器。
-* 设置路由的两个不同的存储帐户。
-    * 创建每个存储帐户容器的终结点。
-    * 创建到每个存储帐户容器终结点的路由。
+* 在存储帐户中创建两个容器 - 一个容器用于已扩充的消息，另一个容器用于未扩充的消息。
+* 为两个不同的存储帐户设置路由。
+    * 为每个存储帐户容器创建一个终结点。
+    * 创建每个存储帐户容器终结点的路由。
 
-有几个资源名称必须全局唯一，例如 IoT 中心名称和存储帐户名称。 若要使更轻松地运行该脚本，这些资源名称后面附加了名为的随机字母数字值*randomValue*。 randomValue 在脚本的顶部生成一次，并根据需要追加到整个脚本中的资源名称。 如果不想要使用随机后缀，可将其设置为空字符串或特定值。
+有几个资源名称必须全局唯一，例如 IoT 中心名称和存储帐户名称。 为方便运行脚本，这些资源名称的后面追加了名为 *randomValue* 的随机字母数字值。 randomValue 在脚本的顶部生成一次，并根据需要追加到整个脚本中的资源名称。 如果不想要使用随机后缀，可将其设置为空字符串或特定值。
 
-如果尚未这样做，打开[的 Bash Cloud Shell 窗口](https://shell.azure.com)。 在已解压缩的存储库中打开该脚本，请使用 Ctrl-A 选择所有它，然后按 CTRL-C 将其复制。 或者，可以复制以下 CLI 脚本或直接在 cloud shell 中将其打开。 将脚本粘贴在 Azure cloud shell 窗口中，在命令行上右键单击并选择**粘贴**。 该脚本一次运行一个语句。 该脚本停止运行后，选择**Enter**以确保它在运行最后一个命令。 下面的代码块显示了使用，并且使用注释解释了它的作用的脚本。
+如果尚未这样做，打开[的 Bash Cloud Shell 窗口。](https://shell.azure.com)。 打开已解压缩的存储库中的脚本，使用 Ctrl-A 选择其整个内容，然后按 Ctrl-C 复制这些内容。 也可以复制以下 CLI 脚本，或者直接在 Cloud Shell 中将其打开。 右键单击命令行并选择“粘贴”，在 Azure Cloud Shell 窗口中粘贴该脚本。  该脚本每次运行一条语句。 脚本停止运行后，按 **Enter** 确保运行最后一条命令。 以下代码块显示了使用的脚本，并提供了注释用于解释脚本的作用。
 
-以下是由脚本创建的资源。 **丰富**意味着资源具有正的消息。 **原始**意味着资源不丰富的消息。
+下面是脚本创建的资源。 **Enriched** 表示该资源用于扩充的消息。 **Original** 表示该资源用于未扩充的消息。
 
 | 名称 | 值 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
-| 容器名称 | 源语言  |
-| 容器名称 | 丰富  |
+| 容器名称 | original  |
+| 容器名称 | enriched  |
 | IoT 设备名称 | Contoso-Test-Device |
 | IoT 中心名称 | ContosoTestHubMsgEn |
 | 存储帐户名称 | contosostorage |
@@ -236,50 +236,50 @@ az iot hub route create \
   --condition $condition
 ```
 
-此时，资源已启动的所有设置和配置路由。 您可以在门户中查看的消息路由配置和设置消息路由到消息正**丰富**存储容器。
+现已设置所有资源并已配置路由。 可在门户中查看消息路由配置，并为发往 **enriched** 存储容器的消息设置消息扩充。
 
-### <a name="view-routing-and-configure-the-message-enrichments"></a>查看路由和配置消息到
+### <a name="view-routing-and-configure-the-message-enrichments"></a>查看路由并配置消息扩充
 
-1. 转到 IoT 中心，通过选择**资源组**，然后选择本教程中设置的资源组 (**ContosoResources_MsgEn**)。 在列表中查找 IoT 中心，并选择它。 选择*消息路由** 的 Iot 中心。
+1. 选择“资源组”转到 IoT 中心，然后选择为本教程设置的资源组 (**ContosoResources_MsgEn**)。  在列表找到“IoT 中心”并将其选中。 选择 IoT 中心的“消息路由”*。 
 
    ![选择消息路由](./media/tutorial-message-enrichments/select-iot-hub.png)
 
-   消息路由的窗格会显示三个选项卡-**路由**，**自定义终结点**，并**丰富消息**。 您可以浏览前两个选项卡中，若要查看配置设置的脚本。 使用第三个选项卡添加到消息。 让我们来丰富消息路由到名为的存储容器的终结点**丰富**。 填写名称和值，并选择终结点，然后**ContosoStorageEndpointEnriched**从下拉列表中。 下面是设置将 IoT 中心名称添加到消息充实示例：
+   “消息路由”窗格包含三个选项卡 -“路由”、“自定义终结点”和“扩充消息”。    可以浏览前两个选项卡，以查看脚本设置的配置。 使用第三个选项卡添加消息扩充。 让我们扩充要发往名为 **enriched** 的存储容器的终结点的消息。 填写名称和值，然后从下拉列表中选择终结点 **ContosoStorageEndpointEnriched**。 以下示例设置一个将 IoT 中心名称添加到消息的扩充：
 
    ![添加第一个扩充](./media/tutorial-message-enrichments/add-message-enrichments.png)
 
 2. 将这些值添加到 ContosoStorageEndpointEnriched 终结点的列表。
 
-   | 名称 | 值 | 终结点 （下拉列表中） |
+   | 名称 | 值 | 终结点（下拉列表） |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | 设备位置 | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
    |customerID | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
-   > 如果你的设备不具有孪生，在此处放置中的值将标记为消息到中的值的字符串。 若要查看设备孪生信息，请转到你在门户中的中心，然后选择**IoT 设备**，选择你的设备，并选择**设备孪生**页的顶部。
+   > 如果你的设备没有孪生，则此处输入的值将会根据消息扩充中的值戳记为字符串。 若要查看设备孪生信息，请在门户中转到你的中心，选择“IoT 设备”，选择你的设备，然后在页面顶部选择“设备孪生”。  
    >
-   > 可以编辑要添加的标记 （如位置） 并将其设置为特定值，如果想要的孪生信息。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)
+   > 可以编辑孪生信息以添加标记（例如位置），并将其设置为所需的特定值。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)
 
-3. 完成后，您的窗格应类似于此图像：
+3. 完成后，窗格应如下图所示：
 
-   ![与所有正添加的表](./media/tutorial-message-enrichments/all-message-enrichments.png)
+   ![包含所有已添加扩充的表](./media/tutorial-message-enrichments/all-message-enrichments.png)
 
-4. 选择**应用**以保存所做的更改。
+4. 选择“应用”保存更改。 
 
 ## <a name="send-messages-to-the-iot-hub"></a>将消息发送到 IoT 中心
 
-现在，消息到终结点，运行模拟设备应用程序将消息发送到 IoT 中心进行配置。 中心已完成以下的规则设置：
+为终结点配置消息扩充后，请运行模拟设备应用程序，以将消息发送到 IoT 中心。 为中心设置了可实现以下目的的规则：
 
-* 将消息路由到存储终结点 ContosoStorageEndpointOriginal 不来丰富并将其存储的存储容器中`original`。
+* 路由到存储终结点 ContosoStorageEndpointOriginal 的消息不会扩充，将会存储在存储容器 `original` 中。
 
-* 将丰富和存储容器中存储消息路由到存储终结点 ContosoStorageEndpointEnriched `enriched`。
+* 路由到存储终结点 ContosoStorageEndpointEnriched 的消息将会扩充，并存储在存储容器 `enriched` 中。
 
-模拟设备应用程序是一个已解压缩的下载中的应用程序。 应用程序将消息发送为每个不同的消息中的路由方法[路由教程](tutorial-routing.md); 这包括 Azure 存储。
+模拟设备应用程序是已解压缩的下载内容中的应用程序之一。 该应用程序针对[路由教程](tutorial-routing.md)中每个不同的消息路由方法（包括 Azure 存储）发送消息。
 
-双击解决方案文件 (IoT_SimulatedDevice.sln) 以在 Visual Studio 中打开代码，然后打开 Program.cs。 替换`{your hub name}`与 IoT 中心名称。 IoT 中心主机名的格式 **{中心名称}.azure-devices.net**。 对于本教程中，中心主机名是**ContosoTestHubMsgEn.azure devices.net**。 接下来，将替换`{device key}`具有设备密钥保存在运行该脚本创建的资源时前面。
+双击解决方案文件 (IoT_SimulatedDevice.sln) 以在 Visual Studio 中打开代码，然后打开 Program.cs。 请将 `{your hub name}` 替换为 IoT 中心名称。 IoT 中心主机名的格式为 **{中心名称}.azure-devices.net**。 本教程中的中心主机名为 **ContosoTestHubMsgEn.azure-devices.net**。 接下来，请将 `{device key}` 替换为前面在运行脚本创建资源时所保存的设备密钥。
 
-如果没有设备密钥，可以从门户进行检索。 登录后，请转到**资源组**，选择资源组中，然后选择 IoT 中心。 下查找**IoT 设备**测试设备，然后选择你的设备。 选择复制图标旁边**主键**将其复制到剪贴板。
+如果没有设备密钥，可以从门户中检索。 登录后，转到“资源组”，选择你的资源组，然后选择你的 IoT 中心。  在“IoT 设备”下找到你的测试设备，然后选择该设备。  选择“主密钥”旁边的复制图标，将主密钥复制到剪贴板。 
 
    ```csharp
         static string myDeviceId = "contoso-test-device";
@@ -291,31 +291,31 @@ az iot hub route create \
 
 ## <a name="run-and-test"></a>运行和测试
 
-运行控制台应用程序。 稍等几分钟。 正在发送的消息的应用程序的控制台屏幕上显示。
+运行控制台应用程序。 稍等几分钟。 发送的消息将显示在应用程序的控制台屏幕上。
 
-此应用每隔一秒发送一条新的设备到云消息到 IoT 中心。 此消息包含一个 JSON 序列化对象，其中具有设备 ID、温度、湿度和消息级别（级别默认为 `normal`）。 它随机分配的级别`critical`或`storage`，从而导致出现消息要路由到存储帐户或默认终结点。 发送到的消息**丰富**将丰富的存储帐户中的容器。
+此应用每隔一秒发送一条新的设备到云消息到 IoT 中心。 此消息包含一个 JSON 序列化对象，其中具有设备 ID、温度、湿度和消息级别（级别默认为 `normal`）。 它会随机分配 `critical` 或 `storage` 级别，导致消息路由到存储帐户或默认终结点。 发送到存储帐户中 **enriched** 容器的消息将会扩充。
 
-在发送多个存储消息后，查看数据。
+发送多条存储消息后，查看数据。
 
-1. 选择**资源组**，然后查找你的资源组 (ContosoResourcesMsgEn) 并选择它。
+1. 选择“资源组”，然后找到你的资源组 (ContosoResourcesMsgEn) 并将其选中。 
 
-2. 选择你的存储帐户 (contosostorage)。 然后选择**存储资源管理器 （预览版）** 从所选内容左窗格中。
+2. 选择你的存储帐户 (contosostorage)。 然后在左侧的选择窗格中选择“存储资源管理器(预览版)”。 
 
    ![选择存储资源管理器](./media/tutorial-message-enrichments/select-storage-explorer.png)
 
-   选择**BLOB 容器**若要查看可用的两个容器。
+   选择“BLOB 容器”查看可用的两个容器。 
 
-   ![请参阅存储帐户中的容器](./media/tutorial-message-enrichments/show-blob-containers.png)
+   ![查看存储帐户中的容器](./media/tutorial-message-enrichments/show-blob-containers.png)
 
-在容器中的消息调用**丰富**具有在消息中包含消息正。 在容器中的消息调用**原始**将具有不到与原始消息。 向下钻取到某个容器之前获取到底部并打开最新的消息文件，然后执行要验证没有正添加到该容器中的消息的其他容器相同的。
+名为 **enriched** 的容器中的消息包含扩充内容。 名为 **original** 的容器中的消息包含原始内容，而不包含扩充内容。 在其中一个容器中向下钻取到底部，打开最近的消息文件，然后，针对另一个容器执行相同的操作，以确认未将任何扩充内容添加到该容器中的消息。
 
-当您查看已增加的消息时，应会看到"我将 IoT 中心"中心名称以及位置和客户 ID，如下：
+查看已扩充的消息时，应会看到带有中心名称、位置和客户 ID 的“我的 IoT 中心”，如下所示：
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","device location":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
 ```
 
-和下面是 unenriched 的消息。 ""我 IoT 中心"，"设备位置"和"customerID"根本不显示在这里，因为此终结点有不到。
+下面是一条未扩充的消息。 此处未显示“我的 IoT 中心”、“设备位置”和“客户 ID”，因为此终结点未启用扩充。
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
@@ -323,7 +323,7 @@ az iot hub route create \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果你想要删除所有已在本教程中创建的资源，删除资源组。 此操作会一并删除组中包含的所有资源。 在此示例中，它会删除 IoT 中心、存储帐户和资源组本身。
+若要删除在本教程中创建的所有资源，请删除资源组。 此操作会一并删除组中包含的所有资源。 在此示例中，它会删除 IoT 中心、存储帐户和资源组本身。
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 
@@ -335,19 +335,19 @@ az group delete --name $resourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你配置并测试过添加消息正向 IoT 中心的消息使用以下步骤：
+在本教程中，你已使用以下步骤配置并测试了为 IoT 中心消息添加消息扩充：
 
-**使用 IoT 中心消息到**
+**使用 IoT 中心消息扩充**
 > [!div class="checklist"]
-> * 使用 Azure CLI 创建资源--IoT 中心、 具有两个 enendpoints 的存储帐户和路由配置。
-> * 使用 Azure 门户配置消息正。
-> * 运行的应用程序可模拟 IoT 设备发送消息到中心。
-> * 查看结果并验证消息到按预期工作。
+> * 使用 Azure CLI 创建资源 -- IoT 中心、包含两个终结点的存储帐户，以及路由配置。
+> * 使用 Azure 门户配置消息扩充。
+> * 运行一个应用，用于模拟向中心发送消息的 IoT 设备。
+> * 查看结果，并验证消息扩充是否按预期方式运行。
 
-有关消息到详细信息，请参阅[概述消息正](iot-hub-message-enrichments-overview.md)。
+有关消息扩充的详细信息，请参阅[消息扩充概述](iot-hub-message-enrichments-overview.md)。
 
 有关消息路由的详细信息，请参阅以下文章：
 
-* [使用 IoT 中心消息路由到不同的终结点发送设备到云的消息](iot-hub-devguide-messages-d2c.md)
+* [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](iot-hub-devguide-messages-d2c.md)
 
-* [教程：路由的 IoT 中心](tutorial-routing.md)
+* [教程：IoT 中心路由](tutorial-routing.md)
