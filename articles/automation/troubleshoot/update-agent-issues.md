@@ -10,15 +10,15 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: 864fe70d7702680f21234a1a15c02515b19f770b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60597705"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
 
-可能会有许多原因导致计算机在更新管理中不显示“就绪”。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。
+可能会有许多原因导致计算机在更新管理中不显示“就绪”  。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。
 
 下表列出计算机可能处于的三个就绪状态：
 
@@ -31,14 +31,14 @@ ms.locfileid: "60597705"
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接会转到本文。 请参阅[离线说明](#troubleshoot-offline)来排查非 Azure 计算机问题。
+对于 Azure 计算机，通过单击门户中“更新代理准备”  列下的“故障排除”  链接，可以启动“更新代理故障排除”  页。 对于非 Azure 计算机，该链接会转到本文。 请参阅[离线说明](#troubleshoot-offline)来排查非 Azure 计算机问题。
 
 ![虚拟机更新管理列表](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> 要检查代理的运行状况，必须运行 VM。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮。
+> 要检查代理的运行状况，必须运行 VM。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮  。
 
-在“更新代理故障排除”页上选择“运行检查”，启动故障排除。 故障排除使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证代理依赖项。 完成故障排除时，它会返回检查的结果。
+在“更新代理故障排除”页上选择“运行检查”，启动故障排除   。 故障排除使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证代理依赖项。 完成故障排除时，它会返回检查的结果。
 
 ![“更新代理故障排除”页面](../media/update-agent-issues/troubleshoot-page.png)
 

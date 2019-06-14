@@ -18,10 +18,10 @@ ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60295828"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>如何：调查有风险的用户和登录 
@@ -39,7 +39,7 @@ ms.locfileid: "60295828"
 
 
 
-此报告的第一个入口点是“安全性”页上的“调查”部分。
+此报告的第一个入口点是“安全性”页上的“调查”  部分。
 
 ![“有风险用户”报告](./media/howto-investigate-risky-users-signins/01.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "60295828"
 ![“有风险用户”报告](./media/howto-investigate-risky-users-signins/03.png)
 
 
-单击工具栏中的“列”即可自定义列表视图。
+单击工具栏中的“列”即可自定义列表视图。 
 
 ![“有风险用户”报告](./media/howto-investigate-risky-users-signins/04.png)
 
@@ -121,29 +121,29 @@ ms.locfileid: "60295828"
 
 
 
-使用“名称”筛选器，可以指定你关注用户的用户名或用户主体名称 (UPN)。
+使用“名称”  筛选器，可以指定你关注用户的用户名或用户主体名称 (UPN)。
 
 
-使用“风险状态”筛选器，可以选择：
+使用“风险状态”  筛选器，可以选择：
 
 - 存在风险
 - 已修正
 - 已消除
 
 
-使用“风险级别”筛选器，可以选择：
+使用“风险级别”  筛选器，可以选择：
 
 - 高
 - 中型
 - 低
 
 
-使用“类型”筛选器，可以选择：
+使用“类型”  筛选器，可以选择：
 
 - 来宾
 - 成员
 
-使用“状态”筛选器，可以选择：
+使用“状态”  筛选器，可以选择：
 
 - Deleted
 - 活动
@@ -179,13 +179,13 @@ ms.locfileid: "60295828"
 
 
 
-此报告的第一个入口点是“安全性”页上的“调查”部分。
+此报告的第一个入口点是“安全性”页上的“调查”  部分。
 
 ![风险登录报告](./media/howto-investigate-risky-users-signins/02.png)
 
 “有风险登录”报告的默认视图显示以下信息：
 
-- date
+- Date
 
 - 用户
 
@@ -207,7 +207,7 @@ ms.locfileid: "60295828"
 ![风险登录报告](./media/howto-investigate-risky-users-signins/09.png)
 
 
-单击工具栏中的“列”即可自定义列表视图。
+单击工具栏中的“列”即可自定义列表视图。 
 
 ![“有风险用户”报告](./media/howto-investigate-risky-users-signins/11.png)
 
@@ -258,25 +258,25 @@ ms.locfileid: "60295828"
 - 风险级别(总计)
 - 风险级别(实时)
 - 条件性访问
-- date
+- Date
 - 风险级别类型
 
 ![风险登录报告](./media/howto-investigate-risky-users-signins/14.png)
 
 
 
-使用“名称”筛选器，可以指定你关注用户的用户名或用户主体名称 (UPN)。
+使用“名称”  筛选器，可以指定你关注用户的用户名或用户主体名称 (UPN)。
 
-使用“应用”筛选器，可以指定用户已尝试访问的云应用。
+使用“应用”  筛选器，可以指定用户已尝试访问的云应用。
 
-“登录状态”筛选器用于选择：
+“登录状态”筛选器用于选择： 
 
 - All
 - Success
 - 失败
 
 
-使用“风险状态”筛选器，可以选择：
+使用“风险状态”  筛选器，可以选择：
 
 - 存在风险
 - 已确认遭入侵
@@ -285,20 +285,20 @@ ms.locfileid: "60295828"
 - 已修正
 
 
-使用“风险级别(总计)”筛选器，可以选择：
+使用“风险级别(总计)”  筛选器，可以选择：
 
 - 高
 - 中型
 - 低
 
-使用“风险级别(实时)”筛选器，可以选择：
+使用“风险级别(实时)”  筛选器，可以选择：
 
 - 高
 - 中型
 - 低
 
 
-使用“条件访问”筛选器，可以选择：
+使用“条件访问”  筛选器，可以选择：
 
 - 全部
 - 未应用
@@ -306,7 +306,7 @@ ms.locfileid: "60295828"
 - 失败
 
 
-“日期”筛选器用于定义已返回数据的时间范围。
+“日期”筛选器用于定义已返回数据的时间范围。 
 可能的值包括：
 
 - 过去 1 个月

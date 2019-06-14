@@ -16,10 +16,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22bf80c13ef3b18ab3119b6b35e529c8ad32f504
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60248058"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
@@ -44,21 +44,21 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 > 有关计费或订阅问题，必须使用[Microsoft 365 管理中心内](https://admin.microsoft.com)。
 > 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，然后打开“Azure Active Directory”。
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后打开“Azure Active Directory”。 
    
-2. 向下滚动到“故障排除 + 支持”并选择“新建支持请求”。
+2. 向下滚动到“故障排除 + 支持”并选择“新建支持请求”。  
    
-3. 在“基本信息”边栏选项卡上，请为“问题类型”选择“技术”。
+3. 在“基本信息”边栏选项卡上，请为“问题类型”选择“技术”。   
    
-4. 为“服务”选择“Azure Active Directory”，然后选择“下一步”。
+4. 为“服务”选择“Azure Active Directory”，然后选择“下一步”。   
 
-5. 在“问题”边栏选项卡上，选择一种[严重性](https://azure.microsoft.com/support/plans/response/)。
+5. 在“问题”边栏选项卡上，选择一种[严重性](https://azure.microsoft.com/support/plans/response/)。 
   
-6. 选择“问题类型”，然后选择适用于该类型的某个**类别**。 此时，屏幕上还会针对问题类别提供自助信息。
+6. 选择“问题类型”，然后选择适用于该类型的某个**类别**。  此时，屏幕上还会针对问题类别提供自助信息。
   
-7. 添加剩余的问题信息，然后单击“下一步”。
+7. 添加剩余的问题信息，然后单击“下一步”。 
   
-8. 提供联系信息，然后选择“创建”。
+8. 提供联系信息，然后选择“创建”。 
   ![问题类别自助屏幕截图](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>如何在 Microsoft 365 管理中心内为 Azure AD 开具支持票证
@@ -68,19 +68,19 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 
 1. 登录到[Microsoft 365 管理中心内](https://admin.microsoft.com)使用具有企业移动性 + 安全性 (EMS) 许可证的帐户。
 
-2. 在“支持”磁贴上，选择“新建服务请求”：
+2. 在“支持”磁贴上，选择“新建服务请求”   ：
 
-3. 在“支持概述”页上，选择“标识管理”或“用户和域管理”：
+3. 在“支持概述”页上，选择“标识管理”或“用户和域管理”    ：
 
-4. 对于“功能”，请选择需要获得相关支持的 Azure AD 功能。
+4. 对于“功能”，请选择需要获得相关支持的 Azure AD 功能。 
 
-5. 对于“症状”，请选择适当的症状，概述问题并提供相关详细信息，然后选择“下一步”。
+5. 对于“症状”，请选择适当的症状，概述问题并提供相关详细信息，然后选择“下一步”。  
 
-6. 选择提供的自助资源之一，或者选择“是，继续”或“否，取消请求”。
+6. 选择提供的自助资源之一，或者选择“是，继续”或“否，取消请求”。  
 
-7. 如果继续，系统会要求提供更多详细信息。 可以附加现有的任何文件来陈述问题，然后选择“下一步”。
+7. 如果继续，系统会要求提供更多详细信息。 可以附加现有的任何文件来陈述问题，然后选择“下一步”。 
 
-8. 提供联系信息，然后选择“提交请求”。
+8. 提供联系信息，然后选择“提交请求”。 
 
 ## <a name="get-phone-support"></a>获取电话支持
 

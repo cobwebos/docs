@@ -39,6 +39,8 @@
   items:
     - name: 使用 Azure PowerShell 进行部署
       href: deploy-ps.md
+    - name: 使用 Azure CLI 进行部署
+      href: deploy-cli.md
     - name: 使用模板进行部署
       href: deploy-template.md
     - name: 与负载均衡器集成

@@ -1,0 +1,60 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 机器学习
+      tocHref: /azure/open-datasets/
+      topicHref: /azure/machine-learning/index
+      items:
+        - name: 服务
+          tocHref: /azure/open-datasets/
+          topicHref: /azure/machine-learning/service/index
+          items:
+            - name: 开放数据集
+              tocHref: /azure/open-datasets/
+              topicHref: /azure/open-datasets/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 机器学习
+      tocHref: /azure/iot-edge/
+      topicHref: /azure/machine-learning/index
+      items:
+        - name: 服务
+          tocHref: /azure/iot-edge/
+          topicHref: /azure/machine-learning/service/index
+          items:
+            - name: IoT Edge
+              tocHref: /azure/iot-edge/
+              topicHref: /azure/iot-edge/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 机器学习
+      tocHref: /azure/architecture/
+      topicHref: /azure/machine-learning/index
+      items:
+        - name: 服务
+          tocHref: /azure/architecture/data-guide/technology-choices/
+          topicHref: /azure/machine-learning/service/index
+          items:
+            - name: 数据体系结构指南
+              tocHref: /azure/architecture/data-guide/
+              topicHref: /azure/architecture/data-guide/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 机器学习
+      tocHref: /azure/devops/
+      topicHref: /azure/machine-learning/index
+      items:
+        - name: 服务
+          tocHref: /azure/devops/pipelines/
+          topicHref: /azure/machine-learning/service/index
+          items:
+            - name: 管道
+              tocHref: /azure/devops/pipelines/languages/
+              topicHref: /azure/devops/pipelines/index

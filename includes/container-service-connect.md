@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: container-service
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 06/05/2019
 ms.author: danlep
-ms.openlocfilehash: 48deeec7a2c8767ab5dbb81b622e6d40483ed455
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fb6dec606169eb0bf2bfbeff042700cff441560b
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202817"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808904"
 ---
 # <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>建立到 Kubernetes、DC/OS 或 Docker Swarm 群集的远程连接
 创建 Azure 容器服务群集后，需要连接到该群集才能部署和管理工作负荷。 本文介绍如何通过远程计算机连接到群集的主 VM。 
@@ -32,7 +32,7 @@ Kubernetes、DC/OS 和 Docker Swarm 群集在本地提供 HTTP 终结点。 对�
 > 
 
 ### <a name="install-kubectl"></a>安装 kubectl
-若要安装此工具的一种方法是使用`az acs kubernetes install-cli`Azure CLI 命令。 若要运行此命令，请确保您[安装](/cli/azure/install-az-cli2)最新版本的 Azure cli 并登录到 Azure 帐户 (`az login`)。
+若要安装此工具的一种方法是使用`az acs kubernetes install-cli`Azure CLI 命令。 若要运行此命令中，[安装 Azure CLI](/cli/azure/install-azure-cli)并登录到 Azure 帐户与`az login`。
 
 ```azurecli
 # Linux or macOS
@@ -78,7 +78,7 @@ kubectl proxy
 
 Kubernetes UI 现已显示在 `http://localhost:8001/ui` 上。
 
-有关详细信息，请参阅 [Kubernetes 快速入门](http://kubernetes.io/docs/user-guide/quick-start/)。
+有关详细信息，请参阅[Kubernetes 快速入门](http://kubernetes.io/docs/user-guide/quick-start/)。
 
 ## <a name="connect-to-a-dcos-or-swarm-cluster"></a>连接到 DC/OS 或 Swarm 群集
 
@@ -94,7 +94,7 @@ Kubernetes UI 现已显示在 `http://localhost:8001/ui` 上。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到包含容器服务群集的资源组。 展开资源组，显示每个资源。 
 
-2. 单击“容器服务”资源，并单击“概览”。 群集的“主 FQDN”会显示在“概要”下面。 保存此名称以供稍后使用。 
+2. 单击“容器服务”资源，并单击“概览”。   群集的“主 FQDN”会显示在“概要”下面。   保存此名称以供稍后使用。 
 
     ![公用 DNS 名称](./media/container-service-connect/pubdns.png)
 
@@ -171,15 +171,15 @@ docker info
 
 2. 运行应用程序。
 
-3. 输入主机名 - 由群集管理员用户名和群集中第一个主机的公用 DNS 名组成。 “主机名”类似于 `azureuser@PublicDNSName`。 输入 2200 作为“端口” 。
+3. 输入主机名 - 由群集管理员用户名和群集中第一个主机的公用 DNS 名组成。 “主机名”类似于 `azureuser@PublicDNSName`。  输入 2200 作为“端口”  。
 
     ![PuTTY 配置 1](./media/container-service-connect/putty1.png)
 
-4. 选择“SSH”>“身份验证”。添加用于身份验证的专用密钥文件（.ppk 格式）的路径。 可以使用 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 等工具，通过用于创建群集的 SSH 密钥生成此文件。
+4. 选择“SSH”>“身份验证”。  添加用于身份验证的专用密钥文件（.ppk 格式）的路径。 可以使用 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 等工具，通过用于创建群集的 SSH 密钥生成此文件。
 
     ![PuTTY 配置 2](./media/container-service-connect/putty2.png)
 
-5. 选择“SSH”>“隧道”并配置以下转发端口：
+5. 选择“SSH”>“隧道”并配置以下转发端口： 
 
    * **源端口：** 对于 Swarm，80 使用 DC/OS 或 2375年。
    * **目标：** 使用 DC/OS 或 localhost:2375 localhost:80 Swarm。
@@ -192,9 +192,9 @@ docker info
 
      ![PuTTY 配置 3](./media/container-service-connect/putty3.png)
 
-6. 完成后，单击“会话”>“保存”保存连接配置。
+6. 完成后，单击“会话”>“保存”保存连接配置。 
 
-7. 若要连接到 PuTTY 会话，请单击“打开”。 连接时，可以在 PuTTY 事件日志中看到端口配置。
+7. 若要连接到 PuTTY 会话，请单击“打开”。  连接时，可以在 PuTTY 事件日志中看到端口配置。
 
     ![PuTTY 事件日志](./media/container-service-connect/putty4.png)
 

@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/2018
 ms.openlocfilehash: 89e0294db3178cedd3b14aada0b505787b17c75e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60303683"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
@@ -25,28 +25,28 @@ ms.locfileid: "60303683"
 
 ## <a name="popular-starting-points-for-logic-app-workflows"></a>逻辑应用工作流的常用起点
 
-每个逻辑应用均由[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)启动，并且只有一个触发器，该触发器可启动逻辑应用工作流并将任何数据作为该触发器的一部分进行传递。 某些连接器提供触发器，类型包括：
+每个逻辑应用均由[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)启动，并且只有一个触发器，该触发器可启动逻辑应用工作流并将任何数据作为该触发器的一部分进行传递  。 某些连接器提供触发器，类型包括：
 
-* 轮询触发器：定期检查服务终结点以获取新数据。 如果存在新数据，触发器会创建并运行新的工作流实例（将数据作为输入）。
+* 轮询触发器：  定期检查服务终结点以获取新数据。 如果存在新数据，触发器会创建并运行新的工作流实例（将数据作为输入）。
 
-* 推送触发器：侦听服务终结点上的数据并等到特定事件发生。 事件发生时触发器会立即触发，创建并运行新的工作流实例（将任何可用数据用作输入）。
+* 推送触发器：  侦听服务终结点上的数据并等到特定事件发生。 事件发生时触发器会立即触发，创建并运行新的工作流实例（将任何可用数据用作输入）。
 
 下面提供了几个常用触发器示例：
 
 * 轮询： 
 
-  * 使用[计划 - 重复触发器](../connectors/connectors-native-recurrence.md)可设置启动日期和时间以及触发逻辑应用的重复周期。 
+  * 使用[计划 - 重复触发器](../connectors/connectors-native-recurrence.md)可设置启动日期和时间以及触发逻辑应用的重复周期  。 
   例如，可以选择在星期几和一天中某个时间触发逻辑应用。
 
   * “收到电子邮件时”触发器允许逻辑应用从逻辑应用支持的任何邮件提供程序检查是否有新的电子邮件，例如 [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、[Gmail](https://docs.microsoft.com/connectors/gmail/) 和 [Outlook.com](https://docs.microsoft.com/connectors/outlook/) 等。
 
-  * [HTTP 触发器](../connectors/connectors-native-http.md)允许逻辑应用通过使用 HTTP 进行通信来检查指定的服务终结点。
+  * [HTTP 触发器](../connectors/connectors-native-http.md)允许逻辑应用通过使用 HTTP 进行通信来检查指定的服务终结点  。
   
 * 推送：
 
-  * [请求/响应 - 请求触发器](../connectors/connectors-native-reqres.md)允许逻辑应用接收 HTTP 请求并以某种方式实时响应事件。
+  * [请求/响应 - 请求触发器](../connectors/connectors-native-reqres.md)允许逻辑应用接收 HTTP 请求并以某种方式实时响应事件  。
 
-  * [HTTP Webhook 触发器](../connectors/connectors-native-webhook.md)通过向该服务注册回叫 URL 来订阅服务终结点。 
+  * [HTTP Webhook 触发器](../connectors/connectors-native-webhook.md)通过向该服务注册回叫 URL 来订阅服务终结点   。 
   这样一来，服务可只在指定事件发生时通知触发器，触发器便无需轮询服务。
 
 收到有关新数据或事件的通知后，触发器随即触发，创建新的逻辑应用工作流实例并在工作流中运行操作。 通过工作流可访问触发器中任何数据。 例如，“发布新推文时”触发器会将推文内容传递到逻辑应用运行。 

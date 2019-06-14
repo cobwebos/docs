@@ -1,18 +1,18 @@
 ---
 title: 使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
 description: 使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
-author: lingliw
+author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/12/19
-ms.author: v-lingwu
+ms.date: 09/24/2018
+ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60253880"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
@@ -39,7 +39,7 @@ ms.locfileid: "60253880"
 打开一个命令提示符并运行以下命令：
 
 ```shell
-curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step> " -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
+curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step>" -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
 ```
 保存响应中的访问令牌。
 
@@ -77,7 +77,7 @@ curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/toke
     } 
     ``` 
 
-2. 在命令提示符窗口中，发布指标数据： 
+1. 在命令提示符窗口中，发布指标数据： 
    - **azureRegion**。 必须与你要为其发布指标的资源的部署区域相匹配。 
    - **resourceID**。  你要跟踪其指标的 Azure 资源的资源 ID。  
    - **AccessToken**。 粘贴你之前获取的令牌。
@@ -85,8 +85,8 @@ curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/toke
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-3. 更改 JSON 文件中的时间戳和值。 
-4. 多次重复前两个步骤，以便获得几分钟的数据。
+1. 更改 JSON 文件中的时间戳和值。 
+1. 多次重复前两个步骤，以便获得几分钟的数据。
 
 ## <a name="troubleshooting"></a>故障排除 
 如果在过程的某个部分中收到错误消息，请考虑使用以下故障排除信息：
@@ -102,20 +102,21 @@ curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/toke
 
 1. 登录到 Azure 门户。 
 
-1. 在左侧菜单中选择“监视”。 
+1. 在左侧菜单中选择“监视”  。 
 
-1. 在“监视”页上选择“指标”。 
+1. 在“监视”页上选择“指标”   。 
 
    ![选择“指标”](./media/metrics-store-custom-rest-api/metrics.png) 
 
-1. 将聚合时限更改为“过去 30 分钟”。  
+1. 将聚合时限更改为“过去 30 分钟”  。  
 
-1. 在“资源”下拉菜单中，选择你针对其发布了指标的资源。  
+1. 在“资源”  下拉菜单中，选择你针对其发布了指标的资源。  
 
-1. 在“命名空间”下拉菜单中，选择“QueueProcessing”。 
+1. 在“命名空间”  下拉菜单中，选择“QueueProcessing”  。 
 
-1. 在“指标”下拉菜单中，选择“QueueDepth”。  
+1. 在“指标”  下拉菜单中，选择“QueueDepth”  。  
 
  
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[自定义指标](../../azure-monitor/platform/metrics-custom-overview.md)。
+

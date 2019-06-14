@@ -13,10 +13,10 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60248105"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 添加或更新用户的配置文件信息
@@ -28,19 +28,19 @@ ms.locfileid: "60248105"
 ## <a name="to-add-or-change-profile-information"></a>添加或更改配置文件信息的步骤
 1. 以组织的用户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 依次选择“Azure Active Directory”、“用户”，然后选择一个用户。 例如，Alain Charon。
+2. 依次选择“Azure Active Directory”、“用户”，然后选择一个用户   。 例如，Alain Charon  。
 
-    Alain Charon - 配置文件页面随即出现。
+    Alain Charon - 配置文件页面随即出现  。
 
     ![用户的配置文件页面，其中包括可编辑信息](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. 选择“编辑”以选择性地添加或更新每个可用部分中包含的信息。
+3. 选择“编辑”以选择性地添加或更新每个可用部分中包含的信息  。
 
     ![用户的配置文件页面，其中显示可编辑区域](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
 
     - **配置文件图片。** 为用户帐户选择缩略图图像。 该图显示在 Azure Active Directory 和用户的个人页面上（如 myapps.microsoft.com 页面）。
 
-    - **身份。** 添加或更新用户，如已婚姓氏一个附加的标识值。 名字和姓氏的值中，可以单独设置此名称。 例如，可以将它包括姓名首字母缩写，公司名称，或更改显示名称的序列。 在另一个示例中，为两个名为 Chris Green 的用户可以使用的标识字符串将其名称设置为 Chris B.Green Chris。 Green (Contoso)。
+    - **身份。** 添加或更新用户的其他标识值，例如结婚后的姓氏。 可以独立于姓氏和名称的值来设置此名称。 例如，可以使用它来包括首字母缩写、公司名称，或者更改所显示名称的顺序。 又比如，如果两个用户的姓名均为“Chris Green”，则可使用标识字符串将其姓名设置为“Chris B. Green”和“Chris R. Green (Contoso)”。
 
     - **工作信息。** 添加与工作相关的任何信息（如用户的职务、部门或经理）。
 
@@ -50,7 +50,7 @@ ms.locfileid: "60248105"
 
     - **身份验证联系人信息。** 验证此信息以确保用户的电话号码和电子邮件地址有效。 Azure Active Directory 使用此信息在登录期间确保用户为本人。 身份验证联系人信息只能由全局管理员更新。
 
-4. 选择“保存”。
+4. 选择“保存”。 
 
     为用户保存所做的所有更改。
 

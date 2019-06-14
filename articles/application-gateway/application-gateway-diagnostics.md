@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8b0ee159b1c4a4072ce5a86f9fb925744a415b3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66135463"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048711"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
 
@@ -38,12 +38,12 @@ ms.locfileid: "66135463"
 
 ### <a name="view-back-end-health-through-the-portal"></a>通过门户查看后端运行状况
 
-门户中会自动提供后端运行状况。 在现有应用程序网关中，选择“监视” > “后端运行状况”。 
+门户中会自动提供后端运行状况。 在现有应用程序网关中，选择“监视”   > “后端运行状况”  。 
 
-此页面将列出后端池中的每个成员（无论是 NIC、IP，还是 FQDN）。 将显示后端池名称、端口、后端 HTTP 设置名称和运行状况。 运行状况的有效值为“正常”、“不正常”和“未知”。
+此页面将列出后端池中的每个成员（无论是 NIC、IP，还是 FQDN）。 将显示后端池名称、端口、后端 HTTP 设置名称和运行状况。 运行状况的有效值为“正常”  、“不正常”  和“未知”  。
 
 > [!NOTE]
-> 如果后端运行状况显示为“未知”，请确保 NSG 规则、用户定义的路由 (UDR) 或虚拟网络中的自定义 DNS 没有阻止对后端的访问。
+> 如果后端运行状况显示为“未知”  ，请确保 NSG 规则、用户定义的路由 (UDR) 或虚拟网络中的自定义 DNS 没有阻止对后端的访问。
 
 ![后端运行状况][10]
 
@@ -131,7 +131,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="enable-logging-through-the-azure-portal"></a>通过 Azure 门户启用日志记录
 
-1. 在 Azure 门户中找到资源，然后选择“诊断设置”。
+1. 在 Azure 门户中找到资源，然后选择“诊断设置”  。
 
    对于应用程序网关，提供 3 种日志：
 
@@ -139,15 +139,15 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
    * 性能日志
    * 防火墙日志
 
-2. 若要开始收集数据，请选择“启用诊断”。
+2. 若要开始收集数据，请选择“启用诊断”  。
 
    ![启用诊断][1]
 
-3. “诊断设置”页提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存诊断日志。
+3. “诊断设置”  页提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存诊断日志。
 
    ![启动配置过程][2]
 
-5. 键入设置的名称，确认设置，然后选择“保存”。
+5. 键入设置的名称，确认设置，然后选择“保存”。 
 
 ### <a name="activity-log"></a>活动日志
 
@@ -155,8 +155,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="access-log"></a>访问日志
 
-只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录，如以下示例所示：
-
+只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 V1 的下面的示例中所示，将以 JSON 格式记录应用程序网关的每个访问：
 
 |值  |描述  |
 |---------|---------|
@@ -193,6 +192,58 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
         "sentBytes": 553,
         "timeTaken": 205,
         "sslEnabled": "off"
+    }
+}
+```
+对于应用程序网关 WAF v2，日志显示更多的信息：
+
+|值  |描述  |
+|---------|---------|
+|instanceId     | 为请求服务的应用程序网关实例。        |
+|clientIP     | 请求的初始 IP。        |
+|clientPort     | 请求的起始端口。       |
+|httpMethod     | 请求使用的 HTTP 方法。       |
+|requestUri     | 已收到请求的 URI。        |
+|RequestQuery     | **Server-Routed**：请求已发送至后端池实例。</br>**X-AzureApplicationGateway-LOG-ID**：用于请求的相关 ID。 它可用于排查后端服务器上的流量问题。 </br>**SERVER-STATUS**：应用程序网关接收从后端的 HTTP 响应代码。       |
+|UserAgent     | HTTP 请求标头中的用户代理。        |
+|httpStatus     | 从应用程序网关返回到客户端的 HTTP 状态代码。       |
+|httpVersion     | 请求的 HTTP 版本。        |
+|receivedBytes     | 接收的数据包大小（以字节为单位）。        |
+|sentBytes| 发送的数据包大小（以字节为单位）。|
+|timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
+|sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
+|sslCipher| 所使用的 SSL 通信 （如果已启用 SSL） 密码套件。|
+|sslProtocol| （如果启用了 SSL） 所使用的 SSL 协议。|
+|serverRouted| 后端服务器的应用程序网关将路由到请求。|
+|serverStatus| 后端服务器的 HTTP 状态代码。|
+|serverResponseLatency| 从后端服务器响应延迟。|
+|host| 列出请求的主机标头中的地址。|
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayAccess",
+    "time": "2017-04-26T19:27:38Z",
+    "category": "ApplicationGatewayAccessLog",
+    "properties": {
+        "instanceId": "ApplicationGatewayRole_IN_0",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "requestQuery": "X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.4.0.4&X-AzureApplicationGateway-LOG-ID=874f1f0f-6807-41c9-b7bc-f3cfa74aa0b1&SERVER-STATUS=404",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off"
+        "sslCipher": "",
+        "sslProtocol": "",
+        "serverRouted": "104.41.114.59:80",
+        "serverStatus": "200",
+        "serverResponseLatency": "0.023",
+        "host": "52.231.230.101"
     }
 }
 ```
@@ -328,7 +379,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。
 
-浏览到应用程序网关，并在“监视”下选择“指标”。 若要查看可用值，请选择“指标”下拉列表。
+浏览到应用程序网关，并在“监视”下选择“指标”   。 若要查看可用值，请选择“指标”下拉列表  。
 
 在下图中可以看到过去 30 分钟显示的三个指标的示例：
 
@@ -348,11 +399,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 2. 上**添加规则**页上，填写名称、 条件和通知部分，然后选择**确定**。
 
-   * 在“条件”选择器中，选择以下四个值之一：**大于**、**大于或等于**、**小于**、**小于或等于**。
+   * 在“条件”  选择器中，选择以下四个值之一：**大于**、**大于或等于**、**小于**、**小于或等于**。
 
-   * 在“时间段”选择器中，选择 5 分钟到 6 小时之间的一个时间段。
+   * 在“时间段”  选择器中，选择 5 分钟到 6 小时之间的一个时间段。
 
-   * 如果选择“电子邮件所有者、参与者和读者”，则电子邮件将基于有权访问该资源的用户动态发送。 否则，可以在“其他管理员电子邮件”框中提供用户名单并以逗号分隔。
+   * 如果选择“电子邮件所有者、参与者和读者”  ，则电子邮件将基于有权访问该资源的用户动态发送。 否则，可以在“其他管理员电子邮件”  框中提供用户名单并以逗号分隔。
 
    ![添加规则页][7]
 

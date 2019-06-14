@@ -17,10 +17,10 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
 ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60502075"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>机器学习和数据科学工具
@@ -35,7 +35,7 @@ Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工
 | 支持的版本     | Windows（conda 环境：AzureML），Linux（conda 环境：py36）    |
 | 典型用途      | 常规 ML 平台      |
 | 如何配置或安装它？      |  使用 GPU 支持安装   |
-| 如何使用或运行它      | 与 Python SDK 和 Azure CLI 一样。 激活到 Windows 版本上的 conda 环境 `AzureML` 或 Linux 版本上的 `py36`。      |
+| 如何使用或运行它      | 与 Python SDK 和 Azure CLI 一样。 激活到 Windows 版本上的 conda 环境 `AzureML` 或 Linux 版本上的 `py36`。       |
 | 指向示例的链接      | Notebook 下的 `AzureML` 目录中包含了示例 Jupyter Notebook。  |
 | 相关工具      | Visual Studio Code、Jupyter   |
 
@@ -70,7 +70,7 @@ Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工
 | 它是什么？   |  Weka 是适用于数据挖掘任务的 ML 算法的集合。 这些算法可以直接应用于数据集，也可以从你自己的 Java 代码中调用。 Weka 包含用于数据预处理、分类、回归、群集、关联规则和可视化的工具。 |
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | 常规 ML 工具     |
-| 如何使用或运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上，使用 X2Go 进行登录，然后转到“应用程序” > “开发” > “Weka”。 |
+| 如何使用或运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上，使用 X2Go 进行登录，然后转到“应用程序” > “开发” > “Weka”。    |
 | 指向示例的链接      | [Weka 示例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | 相关工具      |LightGBM、Rattle、XGBoost   |
 
