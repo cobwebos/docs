@@ -15,10 +15,10 @@ ms.date: 04/03/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: f76dd423cb3f7fbae6cc88d064e49dc2d56f1a1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60766039"
 ---
 # <a name="app-service-environment-management-addresses"></a>应用服务环境管理地址
@@ -38,7 +38,7 @@ ms.locfileid: "60766039"
 
 ## <a name="configuring-a-network-security-group"></a>配置网络安全组
 
-使用网络安全组，不需要担心的单个地址或维护你自己的配置。 没有名为 AppServiceManagement 进行更新的所有地址的 IP 服务标记。 若要在 NSG 中使用此 IP 服务标记，请转到门户，打开网络安全组 UI，并选择入站的安全规则。 如果你有一个预先存在规则的入站的管理流量，对其进行编辑。 如果未对 ASE 创建此 NSG，或者此 NSG 是全新的，请选择“添加”。 在“源”下拉列表中，选择“服务标记”。  在源服务标记中，选择**AppServiceManagement**。 将源端口范围设置为 \*，将“目标”设置为“任何”，将目标端口范围设置为 **454-455**，将“协议”设置为“TCP”，将“操作”设置为“允许”。 如果要建立的规则，然后您需要设置的优先级。 
+使用网络安全组，不需要担心的单个地址或维护你自己的配置。 没有名为 AppServiceManagement 进行更新的所有地址的 IP 服务标记。 若要在 NSG 中使用此 IP 服务标记，请转到门户，打开网络安全组 UI，并选择入站的安全规则。 如果你有一个预先存在规则的入站的管理流量，对其进行编辑。 如果未对 ASE 创建此 NSG，或者此 NSG 是全新的，请选择“添加”。  在“源”下拉列表中，选择“服务标记”。   在源服务标记中，选择**AppServiceManagement**。 将源端口范围设置为 \*，将“目标”设置为“任何”，将目标端口范围设置为 **454-455**，将“协议”设置为“TCP”，将“操作”设置为“允许”。    如果要建立的规则，然后您需要设置的优先级。 
 
 ![使用服务标记创建 NSG][1]
 

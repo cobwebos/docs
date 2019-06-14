@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61346337"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
@@ -79,7 +79,7 @@ ms.locfileid: "61346337"
 
 ## <a name="type-properties"></a>Type 属性
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | dataset | 提供数据集引用以确定要删除的文件或文件夹 | 是 |
 | recursive | 表明从子文件夹中以递归方式删除数据，还是只从指定文件夹中删除数据。  | 不。 默认为 `false`。 |
@@ -87,7 +87,7 @@ ms.locfileid: "61346337"
 | enablelogging | 表明是否需要记录已删除的文件夹或文件名。 如果为 true，则需要进一步提供存储帐户来保存日志文件，以便可以通过读取日志文件跟踪 Delete 活动的行为。 | 否 |
 | logStorageSettings | 仅适用于 enablelogging = true 时。<br/><br/>可指定的一组存储属性，您要在其中保存包含已由 Delete 活动删除的文件夹或文件名的日志文件。 | 否 |
 | linkedServiceName | 仅适用于 enablelogging = true 时。<br/><br/>链接的服务[Azure 存储](connector-azure-blob-storage.md#linked-service-properties)， [Azure 数据湖存储 Gen1](connector-azure-data-lake-store.md#linked-service-properties)，或[Azure 数据湖存储第 2 代](connector-azure-data-lake-storage.md#linked-service-properties)to store log file 的包含的文件夹或文件名称已删除了删除活动。 | 否 |
-| 路径 | 仅适用于 enablelogging = true 时。<br/><br/>在存储帐户中保存日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否 |
+| path | 仅适用于 enablelogging = true 时。<br/><br/>在存储帐户中保存日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否 |
 
 ## <a name="monitoring"></a>监视
 

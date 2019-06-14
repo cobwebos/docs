@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
 ms.openlocfilehash: df741b34e1268c547723af87401760197d395780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61293823"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 区域
@@ -106,7 +106,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>使用标记创建 DNS 区域
 
-下面的示例演示如何通过 `--tags` 参数（缩写形式 `-t`）使用两个 [Azure 资源管理器标记](dns-zones-records.md#tags)、project = demo 和 env = test创建 DNS 区域：
+下面的示例演示如何通过 `--tags` 参数（缩写形式 `-t`）使用两个 [Azure 资源管理器标记](dns-zones-records.md#tags)、project = demo  和 env = test  创建 DNS 区域：
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"

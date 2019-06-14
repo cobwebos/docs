@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61422250"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
@@ -29,7 +29,7 @@ sys_schema 中有 52 个视图，每个视图具有以下前缀之一：
 - 用户：按用户分组和消耗的资源。 示例包括文件 I/O、连接和内存。
 - 等待：等待按主机或用户分组的事件。
 
-现在，让我们了解 sys_schema 的一些常见使用模式。 首先，我们将使用模式分为两类：“性能调优”和“数据库维护”。
+现在，让我们了解 sys_schema 的一些常见使用模式。 首先，我们将使用模式分为两类：“性能调优”和“数据库维护”   。
 
 ## <a name="performance-tuning"></a>性能调优
 

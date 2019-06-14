@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 629a97048ceba4ac02e3aa1dd59310980e5a0c95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55f68d777d291c7d12fcbae93884a5596b84c8ca
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327451"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062248"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 
@@ -40,9 +40,9 @@ ms.locfileid: "60327451"
 * 在计算机处于开启但未处于休眠状态下安装网关。
 * 不要在使用无线网络连接的计算机上安装网关。 否则，可能会降低性能。
 * 安装网关时，你用来登录到计算机的用户帐户必须具有“作为服务登录”权限。 安装完成后，本地数据网关服务使用 NT SERVICE\PBIEgwService 帐户作为服务登录。 可以在安装期间指定一个不同的帐户，也可以在安装完成后在“服务”中指定一个不同的帐户。 请确保组策略设置同时允许你在安装时登录的帐户以及你选择的具有“作为服务登录”权限的服务帐户。
-* 在 Azure AD 中使用与要在其中注册网关的订阅相同[租户](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant)的帐户登录到 Azure。 安装和注册网关时不支持 Azure B2B（来宾）帐户。
+* 在 Azure AD 中使用与要在其中注册网关的订阅相同[租户](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant)的帐户登录到 Azure。 安装和注册网关时不支持 Azure B2B（来宾）帐户。
 * 如果数据源位于 Azure 虚拟网络 (VNet) 上，则必须配置 [AlwaysUseGateway](analysis-services-vnet-gateway.md) 服务器属性。
-* Azure 德国区域不支持此处所述的（统一）网关。 请改用从门户中服务器的快速入门安装的“用于 Azure Analysis Services 的专用本地网关”。 
+* Azure 德国区域不支持此处所述的（统一）网关。 请改用从门户中服务器的快速入门  安装的“用于 Azure Analysis Services 的专用本地网关”  。 
 
 
 ## <a name="download"></a>下载
@@ -53,7 +53,7 @@ ms.locfileid: "60327451"
 
 1. 运行安装程序。
 
-2. 选择一个位置，接受条款，然后单击“安装”。
+2. 选择一个位置，接受条款，然后单击“安装”  。
 
    ![安装位置和许可条款](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
@@ -68,11 +68,11 @@ ms.locfileid: "60327451"
 
 若要在 Azure 中创建网关资源，则必须在网关云服务中注册你安装的本地实例。 
 
-1.  选择“在此计算机上注册新网关”。
+1.  选择“在此计算机上注册新网关”  。
 
     ![注册](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
-2. 为你的网关键入名称和恢复密钥。 默认情况下，网关使用你订阅的默认区域。 如果你需要选择其他区域，请选择“更改区域”。
+2. 为你的网关键入名称和恢复密钥。 默认情况下，网关使用你订阅的默认区域。 如果你需要选择其他区域，请选择“更改区域”  。
 
     > [!IMPORTANT]
     > 将恢复密钥保存在安全位置。 接管、迁移或还原网关时需要使用恢复密钥。 
@@ -84,11 +84,11 @@ ms.locfileid: "60327451"
 
 在安装并注册了网关后，需要在 Azure 订阅中创建网关资源。 使用注册网关时使用的帐户登录到 Azure。
 
-1. 在 Azure 门户中，单击“创建资源” > “集成” > “本地数据网关”。
+1. 在 Azure 门户中，单击“创建资源” > “集成” > “本地数据网关”。   
 
    ![创建网关资源](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
-2. 在“创建连接网关”中，输入以下设置：
+2. 在“创建连接网关”中  ，输入以下设置：
 
    * **名称**：输入网关资源的名称。 
 
@@ -102,15 +102,15 @@ ms.locfileid: "60327451"
 
    * **安装名称**：如果尚未选择网关安装，请选择注册的网关。 
 
-     完成后，单击“创建”。
+     完成后，单击“创建”。 
 
 ## <a name="connect-servers"></a>将服务器连接到网关资源
 
-1. 在 Azure Analysis Services 服务器概述中，单击“本地数据网关”。
+1. 在 Azure Analysis Services 服务器概述中，单击“本地数据网关”  。
 
    ![将服务器连接到网关](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
 
-2. 在“选取要连接的本地数据网关”，选择你的网关资源，然后单击“连接所选网关”。
+2. 在“选取要连接的本地数据网关”  ，选择你的网关资源，然后单击“连接所选网关”  。
 
    ![将服务器连接到网关资源](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 

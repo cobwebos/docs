@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 638703e4d67cbd004f0bd616ba31475f507dfd8a
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64873428"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
@@ -120,9 +120,9 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 作为 NPS 扩展配置的一部分，你需要为 Azure AD 租户提供管理员凭据和 Azure AD ID。 以下步骤演示如何获取租户 ID。
 
 1. 以 Azure 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航栏中，选择“Azure Active Directory”图标。
-1. 选择“属性”。
-1. 在“属性”边栏选项卡的“目录ID”旁边，单击“复制”图标，如下所示，将 ID 复制到剪贴板。
+1. 在左侧导航栏中，选择“Azure Active Directory”  图标。
+1. 选择“属性”  。
+1. 在“属性”边栏选项卡的“目录ID”旁边，单击“复制”  图标，如下所示，将 ID 复制到剪贴板。
 
    ![从 Azure 门户中获取目录 ID](./media/howto-mfa-nps-extension-rdg/image1.png)
 
@@ -136,9 +136,9 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 1. 下载 [NPS 扩展](https://aka.ms/npsmfa)。
 1. 将安装程序可执行文件 (NpsExtnForAzureMfaInstaller.exe) 复制到 NPS 服务器。
-1. 在 NPS 服务器上，双击“NpsExtnForAzureMfaInstaller.exe”。 系统提示后，单击“运行”。
-1. 在“适用于 Azure MFA 设置的 NPS 扩展”对话框中，查看软件许可条款，勾选“我同意许可条款和条件”，然后单击“安装”。
-1. 在“适用于 Azure MFA 设置的 NPS 扩展”对话框中，单击“关闭”。
+1. 在 NPS 服务器上，双击“NpsExtnForAzureMfaInstaller.exe”  。 系统提示后，单击“运行”  。
+1. 在“适用于 Azure MFA 设置的 NPS 扩展”对话框中，查看软件许可条款，勾选“我同意许可条款和条件”  ，然后单击“安装”  。
+1. 在“适用于 Azure MFA 设置的 NPS 扩展”对话框中，单击“关闭”  。
 
 ### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>使用 PowerShell 脚本配置用于 NPS 扩展的证书
 
@@ -157,12 +157,12 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 要使用该脚本，请提供 Azure AD 管理员凭据和之前复制的 Azure AD 租户 ID 的扩展。 在安装 NPS 扩展的每个 NPS 服务器上运行脚本。 然后执行以下操作：
 
 1. 打开管理 Windows PowerShell 提示符。
-1. 在 PowerShell 命令提示符处，键入 `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’` 并按 ENTER。
-1. 键入 `.\AzureMfaNpsExtnConfigSetup.ps1`，然后按 ENTER。 该脚本将检查是否已安装 Azure Active Directory PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
+1. 在 PowerShell 命令提示符处，键入 `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’` 并按 ENTER  。
+1. 键入 `.\AzureMfaNpsExtnConfigSetup.ps1`，然后按 ENTER  。 该脚本将检查是否已安装 Azure Active Directory PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
 
    ![在 Azure AD PowerShell 中运行 AzureMfaNpsExtnConfigSetup.ps1](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-1. 脚本验证 PowerShell 模块的安装情况后，它将显示 Azure Active Directory PowerShell 模块对话框。 在对话框中，输入 Azure AD 管理员凭据和密码，然后单击“登录”。
+1. 脚本验证 PowerShell 模块的安装情况后，它将显示 Azure Active Directory PowerShell 模块对话框。 在对话框中，输入 Azure AD 管理员凭据和密码，然后单击“登录”  。
 
    ![对 PowerShell 中的 Azure AD 进行身份验证](./media/howto-mfa-nps-extension-rdg/image5.png)
 
@@ -184,17 +184,17 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 远程桌面连接授权策略 (RD CAP) 指定连接到远程桌面网关服务器的要求。 可以本地存储 RD CAP（默认），也可以存储在运行 NPS 的中央 RD CAP 存储中。 要配置 Azure MFA 与 RDS 的集成，需要指定使用中央存储。
 
-1. 在 RD 网关服务器上，打开“服务器管理器”。
-1. 在此菜单上，单击“工具”，指向“远程桌面服务”，然后单击“远程桌面网关管理器”。
-1. 在 RD 网关管理器中，右键单击**\[\]**“服务器名称(本地)”，然后单击“属性”。
-1. 在“属性”对话框中，选择“RD CAP 存储”选项卡。
-1. 在“RD CAP 存储”选项卡上，选择“运行 NPS 的中心服务器”。 
-1. 在“输入正在运行 NPS 的服务器的名称或 IP 地址”字段中，键入安装了 NPS 扩展的服务器的 IP 地址或服务器名称。
+1. 在 RD 网关服务器上，打开“服务器管理器”  。
+1. 在此菜单上，单击“工具”  ，指向“远程桌面服务”  ，然后单击“远程桌面网关管理器”  。
+1. 在 RD 网关管理器中，右键单击 **\[\]** “服务器名称(本地)”，然后单击“属性”  。
+1. 在“属性”对话框中，选择“RD CAP 存储”  选项卡。
+1. 在“RD CAP 存储”选项卡上，选择“运行 NPS 的中心服务器”  。 
+1. 在“输入正在运行 NPS 的服务器的名称或 IP 地址”  字段中，键入安装了 NPS 扩展的服务器的 IP 地址或服务器名称。
 
    ![输入名称或 NPS 服务器的 IP 地址](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. 单击“添加”。
-1. 在“共享密钥”对话框中，输入一个共享密钥，然后单击“确定”。 确保记录此共享密钥并安全地存储该记录。
+1. 单击“添加”  。
+1. 在“共享密钥”  对话框中，输入一个共享密钥，然后单击“确定”  。 确保记录此共享密钥并安全地存储该记录。
 
    >[!NOTE]
    >共享密钥用于在 RADIUS 服务器和客户端之间建立信任关系。 创建长且复杂的密码。
@@ -202,47 +202,47 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![创建共享的机密来建立信任关系](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. 单击“确定”以关闭该对话框。
+1. 单击“确定”以关闭该对话框。 
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在远程桌面网关 NPS 上配置 RADIUS 超时值
 
 为确保有时间验证用户凭据、执行双重验证、接收响应和响应 RADIUS 消息，必须调整 RADIUS 超时值。
 
-1. 在 RD 网关服务器上，打开“服务器管理器”。 在菜单中，单击“工具”，然后单击“网络策略服务器”。
-1. 在“NPS (本地)”控制台中，展开“RADIUS 客户端和服务器”，然后选择“远程 RADIUS 服务器”。
+1. 在 RD 网关服务器上，打开“服务器管理器”。 在菜单中，单击“工具”  ，然后单击“网络策略服务器”  。
+1. 在“NPS (本地)”  控制台中，展开“RADIUS 客户端和服务器”  ，然后选择“远程 RADIUS 服务器”  。
 
    ![显示远程 RADIUS 服务器的网络策略服务器管理控制台](./media/howto-mfa-nps-extension-rdg/image12.png)
 
-1. 在详细信息窗格中，双击“TS 网关服务器组”。
+1. 在详细信息窗格中，双击“TS 网关服务器组”  。
 
    >[!NOTE]
    >当为 NPS 策略配置中央服务器时，创建了此 RADIUS 服务器组。 RD 网关将 RADIUS 消息转发到该服务器或服务器组（如果组中有多台服务器）。
    >
 
-1. 在“TS 网关服务器组属性”对话框中，选择配置为存储 RD CAP 的 NPS 服务器的 IP 地址或名称，然后单击“编辑”。
+1. 在“TS 网关服务器组属性”  对话框中，选择配置为存储 RD CAP 的 NPS 服务器的 IP 地址或名称，然后单击“编辑”  。
 
    ![选择前面配置的 NPS 服务器的名称的 IP](./media/howto-mfa-nps-extension-rdg/image13.png)
 
-1. 在“编辑 RADIUS 服务器”对话框中，选择“负载平衡”选项卡。
-1. 在“负载平衡”选项卡的“考虑放弃请求之前的不响应秒数”字段中，将默认值从 3 更改为 30 到 60 秒之间的值。
-1. 在“将服务器标识为不可用时请求之间的秒数”字段中，将默认值 30 秒更改为等于或大于上一步中指定的值。
+1. 在“编辑 RADIUS 服务器”  对话框中，选择“负载平衡”  选项卡。
+1. 在“负载平衡”  选项卡的“考虑放弃请求之前的不响应秒数”  字段中，将默认值从 3 更改为 30 到 60 秒之间的值。
+1. 在“将服务器标识为不可用时请求之间的秒数”  字段中，将默认值 30 秒更改为等于或大于上一步中指定的值。
 
    ![编辑 Radius 服务器的负载平衡选项卡上的超时设置](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-1. 单击“确定”两次，以关闭该对话框。
+1. 单击“确定”两次，以关闭该对话框  。
 
 ### <a name="verify-connection-request-policies"></a>验证连接请求策略
 
 默认情况下，当将 RD 网关配置为使用中央策略存储进行授权策略连接时，RD 网关配置为将 CAP 请求转发到 NPS 服务器。 安装了 Azure MFA 扩展的 NPS 服务器处理 RADIUS 访问请求。 以下步骤显示如何验证默认连接请求策略。
 
-1. 在 RD 网关的“NPS (本地)”控制台中，展开“策略”，然后选择“连接请求策略”。
-1. 双击“TS 网关授权策略”。
-1. 在“TS 网关授权策略”属性对话框中，单击“设置”选项卡。
-1. 在“设置”选项卡的“转发连接请求”下，单击“身份验证”。 RADIUS 客户端配置为转发请求进行身份验证。
+1. 在 RD 网关的“NPS (本地)”控制台中，展开“策略”  ，然后选择“连接请求策略”  。
+1. 双击“TS 网关授权策略”  。
+1. 在“TS 网关授权策略”属性  对话框中，单击“设置”  选项卡。
+1. 在“设置”  选项卡的“转发连接请求”下，单击“身份验证”  。 RADIUS 客户端配置为转发请求进行身份验证。
 
    ![配置身份验证设置指定的服务器组](./media/howto-mfa-nps-extension-rdg/image15.png)
 
-1. 单击“取消”。
+1. 单击“取消”  。
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>在安装了 NPS 扩展的服务器上配置 NPS
 
@@ -252,10 +252,10 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 要在这种情况下正常工作，需要在 Active Directory 中注册 NPS 服务器。
 
-1. 在 NPS 服务器上，打开“服务器管理器”。
-1. 在“服务器管理器”中，单击“工具”，然后单击“网络策略服务器”。
-1. 在“网络策略服务器”控制台中，右键单击“NPS(本地)”，然后单击“在 Active Directory 中注册服务器”。
-1. 单击“确定”两次。
+1. 在 NPS 服务器上，打开“服务器管理器”  。
+1. 在“服务器管理器”中，单击“工具”  ，然后单击“网络策略服务器”  。
+1. 在“网络策略服务器”控制台中，右键单击“NPS(本地)”  ，然后单击“在 Active Directory 中注册服务器”  。
+1. 单击“确定”  两次。
 
    ![在 Active Directory 中注册 NPS 服务器](./media/howto-mfa-nps-extension-rdg/image16.png)
 
@@ -265,40 +265,40 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 远程桌面网关需要配置为 NPS 服务器的 RADIUS 客户端。
 
-1. 在安装了 NPS 扩展的 NPS 服务器上，在“ NPS (本地)”控制台中，右键单击“RADIUS 客户端”，然后单击“新建”。
+1. 在安装了 NPS 扩展的 NPS 服务器上，在“ NPS (本地)”  控制台中，右键单击“RADIUS 客户端”  ，然后单击“新建”  。
 
    ![在 NPS 控制台中创建新的 RADIUS 客户端](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-1. 在“新建 RADIUS 客户端”对话框中，提供一个友好名称，如“网关”，以及远程桌面网关服务器的 IP 地址或 DNS 名称。
-1. 在“共享密钥”和“确认共享密钥”字段中，输入与之前使用的相同的密码。
+1. 在“新建 RADIUS 客户端”  对话框中，提供一个友好名称，如“网关”  ，以及远程桌面网关服务器的 IP 地址或 DNS 名称。
+1. 在“共享密钥”  和“确认共享密钥”  字段中，输入与之前使用的相同的密码。
 
    ![配置的友好名称和 IP 或 DNS 地址](./media/howto-mfa-nps-extension-rdg/image18.png)
 
-1. 单击“确定”，以关闭“新建 RADIUS 客户端”对话框。
+1. 单击“确定”  ，以关闭“新建 RADIUS 客户端”对话框。
 
 ### <a name="configure-network-policy"></a>配置网络策略
 
 撤回 NPS 服务器与 Azure MFA 扩展是连接授权策略 (CAP) 的指定中央策略存储。 因此，需要在 NPS 服务器上实现 CAP，以授权有效的连接请求。  
 
-1. 在 NPS 服务器上，打开“NPS (本地)”控制台，展开“策略”，然后单击“网络策略”。
-1. 右键单击“到其他访问服务器的连接”，然后单击“重复策略”。
+1. 在 NPS 服务器上，打开“NPS (本地)”控制台，展开“策略”  ，然后单击“网络策略”  。
+1. 右键单击“到其他访问服务器的连接”  ，然后单击“重复策略”  。
 
    ![复制到其他访问服务器策略的连接](./media/howto-mfa-nps-extension-rdg/image19.png)
 
-1. 右键单击“复制到其他访问服务器的连接”，然后单击“属性”。
-1. 在“复制到其他访问服务器的连接”对话框中，在“策略名称”中输入合适的名称，如“RDG_CAP”。 勾选“策略已启用”，然后选择“授权访问”。 （可选）在“网络访问服务器类型”中，选择“远程桌面网关”，也可以将其保留为“未指定”。
+1. 右键单击“复制到其他访问服务器的连接”  ，然后单击“属性”  。
+1. 在“复制到其他访问服务器的连接”对话框中，在“策略名称”中输入合适的名称，如“RDG_CAP”    。 勾选“策略已启用”  ，然后选择“授权访问”  。 （可选）在“网络访问服务器类型”中，选择“远程桌面网关”，也可以将其保留为“未指定”    。
 
    ![策略名称、 启用以及授予的访问权限](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-1. 单击“约束”选项卡，然后选中“允许客户端连接时不必协商身份验证方法”。
+1. 单击“约束”  选项卡，然后选中“允许客户端连接时不必协商身份验证方法”  。
 
    ![修改身份验证方法，以允许客户端连接](./media/howto-mfa-nps-extension-rdg/image22.png)
 
-1. （可选）单击“条件”选项卡，并添加授权连接必须满足的条件，例如特定 Windows 组中的成员资格。
+1. （可选）单击“条件”  选项卡，并添加授权连接必须满足的条件，例如特定 Windows 组中的成员资格。
 
    ![（可选） 指定连接的条件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 单击“确定”。 当系统提示查看相应帮助主题时，请单击“否”。
+1. 单击“确定”。  当系统提示查看相应帮助主题时，请单击“否”  。
 1. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
 
    ![将你的策略移到列表的顶部](./media/howto-mfa-nps-extension-rdg/image24.png)
@@ -307,7 +307,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 若要验证配置，需要使用合适的 RDP 客户端登录远程桌面网关。 确保使用连接授权策略允许的帐户，并为 Azure MFA 启用了此帐户。
 
-如下图所示，你可以使用“远程桌面 Web 访问”页面。
+如下图所示，你可以使用“远程桌面 Web 访问”  页面。
 
 ![在远程桌面 Web 访问中测试](./media/howto-mfa-nps-extension-rdg/image25.png)
 
@@ -327,7 +327,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 要查看 Windows 事件查看器日志中的成功登录事件，可以发出以下 Windows PowerShell 命令来查询 Windows 终端服务和 Windows 安全日志。
 
-要在网关操作日志（Event Viewer\应用程序和服务日志\Microsoft\Windows\TerminalServices-Gateway\Operational）中查询成功登录事件，请使用以下 PowerShell 命令：
+要在网关操作日志（Event Viewer\应用程序和服务日志\Microsoft\Windows\TerminalServices-Gateway\Operational）中查询成功登录事件，请使用以下 PowerShell 命令  ：
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
 * 此命令显示 Windows 事件，这些事件可显示符合资源授权策略要求 (RD RAP) 的用户并向其授予访问权限。
@@ -350,7 +350,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 ![网络策略和访问服务事件查看器](./media/howto-mfa-nps-extension-rdg/image31.png)
 
-在安装了适用于 Azure MFA 的 NPS 扩展的服务器上，可以在 Application and Services Logs\Microsoft\AzureMfa 位置找到特定于此扩展的事件查看器应用程序日志。
+在安装了适用于 Azure MFA 的 NPS 扩展的服务器上，可以在 Application and Services Logs\Microsoft\AzureMfa  位置找到特定于此扩展的事件查看器应用程序日志。
 
 ![事件查看器授权应用程序日志](./media/howto-mfa-nps-extension-rdg/image32.png)
 
@@ -368,7 +368,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 ![在事件查看器中的示例 Azure MFA 日志](./media/howto-mfa-nps-extension-rdg/image34.png)
 
-要执行高级故障排除选项，请参阅安装了 NPS 服务的 NPS 数据库格式日志文件。 这些日志文件以逗号分隔的文本文件形式在 %SystemRoot%\System32\Logs 文件夹中创建。
+要执行高级故障排除选项，请参阅安装了 NPS 服务的 NPS 数据库格式日志文件。 这些日志文件以逗号分隔的文本文件形式在 %SystemRoot%\System32\Logs  文件夹中创建。
 
 有关这些日志文件的说明，请参阅[解释 NPS 数据库格式日志文件](https://technet.microsoft.com/library/cc771748.aspx)。 如果不将这些日志文件中的条目导入电子表格或数据库，可能难以解释这些条目。 你可以在线查找几个 IAS 分析程序，以帮助你解释日志文件。
 

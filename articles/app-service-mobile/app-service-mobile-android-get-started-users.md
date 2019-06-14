@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
 ms.openlocfilehash: 7b80c1148cf2716e71308d953ac445c4bb50cbc5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119755"
 ---
 # <a name="add-authentication-to-your-android-app"></a>将身份验证添加到 Android 应用
@@ -36,20 +36,20 @@ ms.locfileid: "62119755"
 
 1. 在 [Azure 门户]中，选择“应用服务”。
 
-2. 单击“身份验证/授权”菜单选项。
+2. 单击“身份验证/授权”  菜单选项。
 
-3. 在“允许的外部重定向 URL”中，输入 `appname://easyauth.callback`。  此字符串中的 _appname_ 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”  中，输入 `appname://easyauth.callback`。  此字符串中的 _appname_ 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击“确定”。
+4. 单击“确定”。 
 
 5. 单击“ **保存**”。
 
 ## <a name="permissions"></a>将权限限制为已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* 在 Android Studio 中，打开按照[Get started with Mobile Apps]教程完成的项目。 从“运行”菜单中单击“运行应用”；验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未经处理的异常。
+* 在 Android Studio 中，打开按照[Get started with Mobile Apps]教程完成的项目。 从“运行”  菜单中单击“运行应用”  ；验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未经处理的异常。
 
-     发生此异常的原因是应用尝试以未经身份验证的用户身份访问后端，但 TodoItem 表现在要求身份验证。
+     发生此异常的原因是应用尝试以未经身份验证的用户身份访问后端，但 TodoItem  表现在要求身份验证。
 
 接下来，需要更新应用，以便在从移动应用后端请求资源之前对用户进行身份验证。
 

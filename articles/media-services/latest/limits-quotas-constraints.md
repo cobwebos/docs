@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: juliako
 ms.openlocfilehash: 1aa15a42893d867ae18c267e163e8df94af50723
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824456"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的配额和限制
 
 本文介绍 Azure 媒体服务 v3 中的配额和限制。
 
-| 资源 | 默认限制 | 
+| Resource | 默认限制 | 
 | --- | --- | 
 | 每个 Azure 媒体服务帐户的资产数 | 1,000,000|
 | 动态清单筛选器|100|

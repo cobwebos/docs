@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 086161b73e2a3e07df835394dc26082e12fbd434
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963982"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
@@ -91,7 +91,7 @@ Azure AD 功能预先集成了对许多常用 SaaS 应用和人力资源系统�
 
 使用 Azure Active Directory 门户配置 Azure AD 预配为所选应用程序的服务。
 
-1. 打开 **[Azure Active Directory 门户](https://aad.portal.azure.com)**。
+1. 打开 **[Azure Active Directory 门户](https://aad.portal.azure.com)** 。
 
 1. 选择**企业应用程序**在左窗格中。 显示了已配置的所有应用的列表。
 
@@ -166,7 +166,7 @@ Azure AD 功能预先集成了对许多常用 SaaS 应用和人力资源系统�
 预配服务将继续无限期，在中定义的间隔运行连续的增量同步[特定于每个应用程序的教程](../saas-apps/tutorial-list.md)，直到发生以下事件之一：
 
 - 使用 Azure 门户或使用相应的图形 API 命令手动停止了该服务 
-- 在 Azure 门户中使用“清除状态并重启”选项，或使用相应的图形 API 命令触发了新的初始同步。 此操作将清除所有存储的水印，并导致重新评估所有源对象。
+- 在 Azure 门户中使用“清除状态并重启”选项，或使用相应的图形 API 命令触发了新的初始同步  。 此操作将清除所有存储的水印，并导致重新评估所有源对象。
 - 由于属性映射或范围筛选器中的更改而触发了新的初始同步。 此操作也清除所有存储的水印，并导致重新评估所有源对象。
 - 预配过程错误率较高，因为也隔离状态 （见下文），并保留在隔离区四周以上。 在此情况下，该服务会自动禁用。
 
@@ -211,7 +211,7 @@ Azure AD 功能预先集成了对许多常用 SaaS 应用和人力资源系统�
 | 同步 Azure AD 中的所有用户 | 1,000 - 10,000  | 43 - 86 分钟 | < 30 分钟 |
 
 
-对于“仅同步已分配的用户和组”配置，可以使用以下公式来确定大概的最小和最大预计**初始同步**时间：
+对于“仅同步已分配的用户和组”  配置，可以使用以下公式来确定大概的最小和最大预计**初始同步**时间：
 
     Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
     Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 

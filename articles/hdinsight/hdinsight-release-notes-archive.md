@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 95a530ea57237453a3b0d7d8dd42963f4b9c3dde
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713037"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight 发行说明
@@ -638,7 +638,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 -   [RANGER-2008](https://issues.apache.org/jira/browse/RANGER-2008)：策略评估对于多行策略条件失败。
 
-### <a name="slider"></a>滑块
+### <a name="slider"></a>Slider
 
 此版本提供了 Slider 0.92.0，但未提供其他 Apache 修补程序。
 
@@ -822,73 +822,73 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 ### <a name="cve-2017-7676"></a>**CVE-2017-7676**
 
-| **摘要：** Apache Ranger 策略评估忽略“\*”通配符后面的字符 |
+| **摘要：**  Apache Ranger 策略评估忽略“\*”通配符后面的字符 |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **严重性：** 关键                                                                           |
-| **供应商：** Hortonworks                                                                          |
-| **受影响的版本：** HDInsight 3.6 版本，包括 Apache Ranger 版本 0.5.x/0.6.x/0.7.0     |
-| **受影响的用户：** 使用在“\*”通配符后面包含字符的 Ranger 策略的环境 – 如 my\*test、test\*.txt |
-| **影响：** 策略资源匹配程序将忽略“\*”通配符后面的字符，从而可能导致意外的行为。      |
-| **修复详细信息：** Ranger 策略资源匹配程序已更新，可以正确处理通配符匹配。           |
-| **建议的操作：** 升级到 HDI 3.6（使用 Apache Ranger 0.7.1+）。                                |
+| **严重性：**  关键                                                                           |
+| **供应商：**  Hortonworks                                                                          |
+| **受影响的版本：**  HDInsight 3.6 版本，包括 Apache Ranger 版本 0.5.x/0.6.x/0.7.0     |
+| **受影响的用户：**  使用在“\*”通配符后面包含字符的 Ranger 策略的环境 – 如 my\*test、test\*.txt |
+| **影响：**  策略资源匹配程序将忽略“\*”通配符后面的字符，从而可能导致意外的行为。      |
+| **修复详细信息：**  Ranger 策略资源匹配程序已更新，可以正确处理通配符匹配。           |
+| **建议的操作：**  升级到 HDI 3.6（使用 Apache Ranger 0.7.1+）。                                |
 
 ### <a name="cve-2017-7677"></a>**CVE-2017-7677**
 
-| **摘要：** 指定了外部位置时，Apache Ranger Hive 授权者应检查 RWX 权限 |
+| **摘要：**  指定了外部位置时，Apache Ranger Hive 授权者应检查 RWX 权限 |
 |--------------------------------------------------------------------------------------------------|
-| **严重性：** 关键                                                                           |
-| **供应商：** Hortonworks                                                                          |
-| **受影响的版本：** HDInsight 3.6 版本，包括 Apache Ranger 版本 0.5.x/0.6.x/0.7.0 |
-| **受影响的用户：** 对 hive 表使用外部位置的环境 |
-| **影响：** 在对 hive 表使用外部位置的环境中，Apache Ranger Hive 授权者应检查指定用于创建表的外部位置的 RWX 权限。 |
-| **修复详细信息：** Ranger Hive 授权者已更新，可以使用外部位置正确处理权限检查。 |
-| **建议的操作：** 用户应升级到 HDI 3.6（使用 Apache Ranger 0.7.1+）。 |
+| **严重性：**  关键                                                                           |
+| **供应商：**  Hortonworks                                                                          |
+| **受影响的版本：**  HDInsight 3.6 版本，包括 Apache Ranger 版本 0.5.x/0.6.x/0.7.0 |
+| **受影响的用户：**  对 hive 表使用外部位置的环境 |
+| **影响：**  在对 hive 表使用外部位置的环境中，Apache Ranger Hive 授权者应检查指定用于创建表的外部位置的 RWX 权限。 |
+| **修复详细信息：**  Ranger Hive 授权者已更新，可以使用外部位置正确处理权限检查。 |
+| **建议的操作：**  用户应升级到 HDI 3.6（使用 Apache Ranger 0.7.1+）。 |
 
 ### <a name="cve-2017-9799"></a>**CVE-2017-9799**
 
-| **摘要：** 可能以 Apache Storm 中错误用户的身份执行代码 |
+| **摘要：**  可能以 Apache Storm 中错误用户的身份执行代码 |
 |--------------------------------------------------------------------------------------------------|
-|**严重性：** 重要 |
-| **供应商：** Hortonworks |
-| **受影响的版本：** HDP-2.4.0、HDP-2.5.0、HDP-2.6.0 |
-| **受影响的用户：** 在安全模式下使用 Storm，并使用 Blob 存储来分发基于拓扑的项目或使用 Blob 存储来分发任何拓扑资源的用户。 |
-| **影响：** 在某些情况下使用 storm 的配置时，在理论上，拓扑的所有者能够以不同的非 root 用户身份欺骗监督程序来启动辅助角色。 在最坏的情况下，这可能导致其他用户的安全凭据泄密。 此漏洞仅适用于已启用安全性的 Apache Storm 安装。 |
-| **缓解措施：** 目前没有解决方法，只能升级到 HDP 2.6.2.1。  |
+|**严重性：**  重要 |
+| **供应商：**  Hortonworks |
+| **受影响的版本：**  HDP-2.4.0、HDP-2.5.0、HDP-2.6.0 |
+| **受影响的用户：**  在安全模式下使用 Storm，并使用 Blob 存储来分发基于拓扑的项目或使用 Blob 存储来分发任何拓扑资源的用户。 |
+| **影响：**  在某些情况下使用 storm 的配置时，在理论上，拓扑的所有者能够以不同的非 root 用户身份欺骗监督程序来启动辅助角色。 在最坏的情况下，这可能导致其他用户的安全凭据泄密。 此漏洞仅适用于已启用安全性的 Apache Storm 安装。 |
+| **缓解措施：**  目前没有解决方法，只能升级到 HDP 2.6.2.1。  |
 
 ### <a name="cve-2016-4970"></a>**CVE-2016-4970**
 
-| **摘要：** 4.0.37.Final 之前的 Netty 4.0.x 以及 4.1.1.Final 之前的 4.1.x 中的 handler/ssl/OpenSslEngine.java 允许远程攻击者造成拒绝服务（无限循环） |
+| **摘要：**  4.0.37.Final 之前的 Netty 4.0.x 以及 4.1.1.Final 之前的 4.1.x 中的 handler/ssl/OpenSslEngine.java 允许远程攻击者造成拒绝服务（无限循环） |
 |--------------------------------------------------------------------------------------------------|
 | **严重性：** 中等  |
-| **供应商：** Hortonworks  |
-| **受影响的版本：** 从 2.3.x 开始的 HDP 2.x.x  |
-| **受影响的用户：** 使用 HDFS 的所有用户。 |
-| **影响：** 影响较低，因为 Hortonworks 不直接在 Hadoop 代码库中使用 OpenSslEngine.java。     |
-| **建议的操作：** 升级到 HDP 2.6.3。   |
+| **供应商：**  Hortonworks  |
+| **受影响的版本：**  从 2.3.x 开始的 HDP 2.x.x  |
+| **受影响的用户：**  使用 HDFS 的所有用户。 |
+| **影响：**  影响较低，因为 Hortonworks 不直接在 Hadoop 代码库中使用 OpenSslEngine.java。     |
+| **建议的操作：**  升级到 HDP 2.6.3。   |
 
 ### <a name="cve-2016-8746"></a>**CVE-2016-8746**
 
-| **摘要：** 策略评估中存在 Apache Ranger 路径匹配问题                                                                    |
+| **摘要：**  策略评估中存在 Apache Ranger 路径匹配问题                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
-| **严重性：** 普通                                                                                                                   |
+| **严重性：**  普通                                                                                                                   |
 | **供应商：** Hortonworks                                                                                                                |
-| **受影响的版本：** 所有 HDP 2.5 版本，包括 Apache Ranger 版本 0.6.0/0.6.1/0.6.2                                         |
-| **受影响的用户：** Ranger 策略管理工具的所有用户。                                                                         |
-| **影响：** 在某些情况下，当策略包含通配符和递归标志时，Ranger 策略引擎不会正确匹配路径。 |
+| **受影响的版本：**  所有 HDP 2.5 版本，包括 Apache Ranger 版本 0.6.0/0.6.1/0.6.2                                         |
+| **受影响的用户：**  Ranger 策略管理工具的所有用户。                                                                         |
+| **影响：**  在某些情况下，当策略包含通配符和递归标志时，Ranger 策略引擎不会正确匹配路径。 |
 | **修复详细信息：** 已修复策略评估逻辑                                                                                          |
-| **建议的操作：** 用户应升级到 HDP 2.5.4+（使用 Apache Ranger 0.6.3+）或 HDP 2.6+（使用 Apache Ranger 0.7.0+）         |
+| **建议的操作：**  用户应升级到 HDP 2.5.4+（使用 Apache Ranger 0.6.3+）或 HDP 2.6+（使用 Apache Ranger 0.7.0+）         |
 
 ### <a name="cve-2016-8751"></a>**CVE-2016-8751**
 
-| **摘要：** Apache Ranger 存储跨站点脚本问题  |
+| **摘要：**  Apache Ranger 存储跨站点脚本问题  |
 |--------------------------------------------------------------------------------------------------|
-| **严重性：** 普通 |
-| **供应商：** Hortonworks |
-| **受影响的版本：** 所有 HDP 2.3/2.4/2.5 版本，包括 Apache Ranger 版本 0.5.x/0.6.0/0.6.1/0.6.2  |
-| **受影响的用户：** Ranger 策略管理工具的所有用户。 |
-| **影响：** 进入自定义的策略条件时，Apache Ranger 容易受到存储跨站点脚本攻击。 当普通用户登录和访问策略时，管理员用户可能会存储一些任意 javascript 代码执行。 |
-| **修复详细信息：** 添加了逻辑来清理用户输入。  |
-| **建议的操作：** 用户应升级到 HDP 2.5.4+（使用 Apache Ranger 0.6.3+）或 HDP 2.6+（使用 Apache Ranger 0.7.0+）  |
+| **严重性：**  普通 |
+| **供应商：**  Hortonworks |
+| **受影响的版本：**  所有 HDP 2.3/2.4/2.5 版本，包括 Apache Ranger 版本 0.5.x/0.6.0/0.6.1/0.6.2  |
+| **受影响的用户：**  Ranger 策略管理工具的所有用户。 |
+| **影响：**  进入自定义的策略条件时，Apache Ranger 容易受到存储跨站点脚本攻击。 当普通用户登录和访问策略时，管理员用户可能会存储一些任意 javascript 代码执行。 |
+| **修复详细信息：**  添加了逻辑来清理用户输入。  |
+| **建议的操作：**  用户应升级到 HDP 2.5.4+（使用 Apache Ranger 0.6.3+）或 HDP 2.6+（使用 Apache Ranger 0.7.0+）  |
 
 ## <a name="fixed-issues-for-support"></a>修复了支持问题
 
@@ -1247,7 +1247,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 | BUG-95595              | [HIVE-15563](https://issues.apache.org/jira/browse/HIVE-15563)                                                                                                                                                                                                                 | 忽略 SQLOperation.runQuery 中的非法操作状态转换异常，以公开实际异常。                                                       |
 | BUG-95685              | [ATLAS-2422](https://issues.apache.org/jira/browse/ATLAS-2422)                                                                                                                                                                                                                 | 导出：支持基于类型的导出                                                                                                                            |
 | BUG-95798              | [PHOENIX-2714](https://issues.apache.org/jira/browse/PHOENIX-2714)、 [PHOENIX-2724](https://issues.apache.org/jira/browse/PHOENIX-2724)、 [PHOENIX-3023](https://issues.apache.org/jira/browse/PHOENIX-3023)、 [PHOENIX-3040](https://issues.apache.org/jira/browse/PHOENIX-3040) | 不要使用 guideposts 串行执行查询                                                                                                          |
-| BUG-95969              | [HIVE-16828](https://issues.apache.org/jira/browse/HIVE-16828)、 [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063)、 [HIVE-18390](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | 分区视图失败并出现 FAILED：IndexOutOfBoundsException 索引：1，大小：1                                                                              |
+| BUG-95969              | [HIVE-16828](https://issues.apache.org/jira/browse/HIVE-16828)、 [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063)、 [HIVE-18390](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | 分区视图失败并出现 FAILED：IndexOutOfBoundsException 索引：1，大小：第                                                                              |
 | BUG-96019              | [HIVE-18548](https://issues.apache.org/jira/browse/HIVE-18548)                                                                                                                                                                                                                 | 修复 log4j 导入                                                                                                                                             |
 | BUG-96288              | [HBASE-14123](https://issues.apache.org/jira/browse/HBASE-14123)、 [HBASE-14135](https://issues.apache.org/jira/browse/HBASE-14135)、 [HBASE-17850](https://issues.apache.org/jira/browse/HBASE-17850)                                                                           | 向后移植 Hbase 备份/还原 2.0                                                                                                                            |
 | BUG-96313              | [KNOX-1119](https://issues.apache.org/jira/browse/KNOX-1119)                                                                                                                                                                                                                   | Pac4J OAuth/OpenID 主体需可配置                                                                                                        |
@@ -1371,7 +1371,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
     
   如果用户想要创建包含自定义策略条件和表达式的策略，或文本中含有特殊字符，则无法强制实施策略。 在数据库中保存策略之前，特殊字符将转换为 ASCII。
     
-  **特殊字符：** & &lt; &gt; " \` '
+  **特殊字符：**  & &lt; &gt; " \` '
     
   例如，保存策略后，条件 tags.attributes\['type'\]='abc' 将转换为以下内容。
     

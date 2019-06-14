@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630810"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
@@ -256,7 +256,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
    * 8 数据位
    * 1 停止位
    * 无奇偶校验位
-   * 流控制设置为“无”
+   * 流控制设置为“无” 
 6. 在控制台中按 Enter 键确认连接是否正常。 将出现串行控制台菜单。
 
 > [!NOTE]

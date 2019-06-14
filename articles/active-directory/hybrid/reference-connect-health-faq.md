@@ -16,10 +16,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62096108"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
@@ -28,7 +28,7 @@ ms.locfileid: "62096108"
 ## <a name="general-questions"></a>一般问题
 **问：我要管理多个 Azure AD 目录。如何切换到包含 Azure Active Directory Premium 的 Azure AD 目录？**
 
-要切换 Azure AD 租户，可以在右上角选择当前登录的**用户名**，并选择相应的帐户。 如果此处未列出该帐户，可选择“注销”，并使用已启用 Azure Active Directory Premium 的目录的全局管理员凭据来登录。
+要切换 Azure AD 租户，可以在右上角选择当前登录的**用户名**，并选择相应的帐户。 如果此处未列出该帐户，可选择“注销”  ，并使用已启用 Azure Active Directory Premium 的目录的全局管理员凭据来登录。
 
 **问：Azure AD Connect Health 支持哪个版本的标识角色？**
 
@@ -101,14 +101,14 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：Azure AD Connect Health 是否通过直通型 HTTP 代理进行工作？**
 
-可以。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
+是的。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
 有关详细信息，请阅读[为 Health 代理配置 HTTP 代理](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。
 
 如果要在代理注册过程中配置代理，可能需要事先修改 Internet Explorer 代理设置。
 
-1. 打开“Internet Explorer”>“设置” > “Internet 选项” > “连接” > “LAN 设置”。
-2. 选择“为 LAN 使用代理服务器”。
-3. 如果针对 HTTP 和 HTTPS/Secure 设置不同的代理端口，请选择“高级”。
+1. 打开“Internet Explorer”>“设置”   > “Internet 选项”   > “连接”   > “LAN 设置”  。
+2. 选择“为 LAN 使用代理服务器”  。
+3. 如果针对 HTTP 和 HTTPS/Secure 设置不同的代理端口，请选择“高级”  。
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 

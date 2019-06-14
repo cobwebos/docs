@@ -14,14 +14,14 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 578ca5fa1de338a92280e2dc7cc252fb616e2111
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706692"
 ---
 # <a name="update-your-groups-info-from-the-my-apps-portal"></a>更新你的组信息从我的应用门户
-可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
+可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，  以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。  如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "64706692"
 
 1.  登录到工作或学校帐户。
 
-2.  打开 web 浏览器并转到 https://myapps.microsoft.com，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com。
+2.  打开 web 浏览器并转到 https://myapps.microsoft.com ，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com 。
 
     **应用**页出现后，显示所有基于云的应用，由你的组织拥有和可供你使用。
 
@@ -88,7 +88,7 @@ ms.locfileid: "64706692"
 
     - **组策略。** 选择要允许所有人加入组，或若要仅允许将成员添加的组的所有者。
 
-3. 选择“创建”。
+3. 选择“创建”  。
 
     与你作为所有者创建新组并出现在你**我拥有的组**列表。 由于你是所有者，此组也将出现在**我加入的组**列表。
 
@@ -96,7 +96,7 @@ ms.locfileid: "64706692"
 创建组后，可以编辑其详细信息，包括更新的任何现有信息。
 
 ### <a name="to-edit-your-details"></a>若要编辑你的详细信息
-1. 选择你想要编辑的组**组**页上，并选择**编辑详细信息**上*&lt;group_name&gt;* 页。
+1. 选择你想要编辑的组**组**页上，并选择**编辑详细信息**上 *&lt;group_name&gt;* 页。
 
     **编辑详细信息**框出现，可以更新添加最初创建组时的信息。
 
@@ -106,7 +106,7 @@ ms.locfileid: "64706692"
 可以添加或删除任何你自己的组的成员。
 
 ### <a name="to-add-or-remove-a-member"></a>若要添加或删除成员
-1. 选择你想要将成员添加到，然后选择的组**+** 上*&lt;group_name&gt;* 页。
+1. 选择你想要将成员添加到，然后选择的组 **+** 上 *&lt;group_name&gt;* 页。
 
     ![添加组成员具有 + 登录突出显示](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "64706692"
 
     邀请发送到新的成员，若要开始访问组织的应用。
 
-3. 如果错误地添加了成员，或者如果成员已从组织离职，可以通过选择中删除该成员**删除成员**上的成员的名称旁边*&lt;group_name&gt;* 页。
+3. 如果错误地添加了成员，或者如果成员已从组织离职，可以通过选择中删除该成员**删除成员**上的成员的名称旁边 *&lt;group_name&gt;* 页。
 
     ![删除成员，但突出显示的删除链接](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "64706692"
 您可以在任何时候删除任何你自己的组。 但是，如果错误地删除了某个组你必须创建它并再次添加成员。
 
 ### <a name="to-delete-the-group"></a>若要删除组
-1. 选择你想要永久删除，然后选择的组**删除组**上*&lt;group_name&gt;* 页。
+1. 选择你想要永久删除，然后选择的组**删除组**上 *&lt;group_name&gt;* 页。
 
     ![< 组名 > 页与突出显示删除组链接](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 

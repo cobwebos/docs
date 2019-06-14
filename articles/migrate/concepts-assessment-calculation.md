@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
 ms.openlocfilehash: 012a352b00de2e2d1bf64fd18125ddd10faba5cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60679113"
 ---
 # <a name="assessment-calculations"></a>评估计算
@@ -65,14 +65,14 @@ Windows 10 专业版桌面 | Azure 提供了对[多租户托管权限](https://d
 Windows Vista、XP Professional | 这些操作系统的支持日期已结束，计算机可以在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。
 Linux | Azure 予以认可这些 [Linux 操作系统](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 操作系统可能在 Azure 中启动，但建议在迁移到 Azure 前将 OS 升级到认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本不受认可，则为 Azure 有条件的就绪。
 其他操作系统<br/><br/> 例如 Oracle Solaris、Apple Mac 操作系统、FreeBSD 等。 | Azure 不认可这些操作系统。 计算机课在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前安装已升级的 OS。  
-vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 无法确认 OS。 | 就绪性未知。 确保 VM 内部运行的 OS 在 Azure 中受到支持。
+vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrate 无法确认 OS。 | 就绪性未知。 确保 VM 内部运行的 OS 在 Azure 中受到支持。
 32 位操作系统 | 计算机可在 Azure 中启动，但 Azure 可能不会提供完全支持。 | Azure 有条件的就绪，在迁移到 Azure 前考虑将计算机的 OS 从 32 位 OS 升级到 64 位 OS。
 
-## <a name="sizing"></a>调整大小
+## <a name="sizing"></a>大小调整
 
 计算机被标记为 Azure 已就绪后，Azure Migrate 会调整 VM 大小及其用于 Azure 的磁盘大小。 如果评估属性中指定的大小调整条件是执行基于性能的大小调整，则 Azure Migrate 将考虑计算机的性能历史记录以确认 Azure 中的 VM 大小和磁盘类型。 当你超额分配了本地 VM 但利用率较低，而又希望适当调整 Azure 中的 VM 大小以节省成本时，此方法非常有用。
 
-如果不想考虑 VM 大小调整的性能历史记录而希望按原样将 VM 迁移到 Azure，可指定大小调整条件为“按本地”，这样 Azure Migrate 便会基于本地配置调整 VM 大小，而不会考虑利用率数据。 在这种情况下，磁盘的大小调整将根据你在评估属性中指定的存储类型（标准磁盘或高级磁盘）来完成
+如果不想考虑 VM 大小调整的性能历史记录而希望按原样将 VM 迁移到 Azure，可指定大小调整条件为“按本地”  ，这样 Azure Migrate 便会基于本地配置调整 VM 大小，而不会考虑利用率数据。 在这种情况下，磁盘的大小调整将根据你在评估属性中指定的存储类型（标准磁盘或高级磁盘）来完成
 
 ### <a name="performance-based-sizing"></a>基于性能的大小
 
@@ -101,7 +101,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
     - 如果有多个合格的 Azure VM 大小，建议选择成本最低的那一个。
 
 ### <a name="as-on-premises-sizing"></a>按本地大小调整
-如果大小调整条件为“按本地大小调整”，Azure Migrate 不会考虑 VM 和磁盘的性能历史记录，并将基于本地分配的大小分配 Azure 中的 VM SKU。 同样对于磁盘的大小调整，它将查找在评估属性中指定的存储类型（标准/高级），并相应地建议磁盘类型。 默认存储类型为高级磁盘。
+如果大小调整条件为“按本地大小调整”  ，Azure Migrate 不会考虑 VM 和磁盘的性能历史记录，并将基于本地分配的大小分配 Azure 中的 VM SKU。 同样对于磁盘的大小调整，它将查找在评估属性中指定的存储类型（标准/高级），并相应地建议磁盘类型。 默认存储类型为高级磁盘。
 
 ### <a name="confidence-rating"></a>置信度分级
 在 Azure Migrate 中进行的每个基于性能的评估都会与置信度分级相关联。置信度分级分为 1 星到 5 星（1 星表示置信度最低，5 星表示置信度最高）。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 对评估的置信度分级可以用来评估 Azure Migrate 提供的大小建议的可靠性。 置信度分级不适用于本地评估。
@@ -125,7 +125,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 - 在进行评估计算期间创建了一些 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 则在这种情况下，新建 VM 的性能历史记录并非在整个期间都有。
 
   > [!NOTE]
-  > 如果任何评估的置信度评级低于五星，我们建议等待至少一天以便设备对环境进行分析，然后重新计算评估。 如果前述操作无法完成，则基于性能的大小调整可能不可靠，建议通过更改评估属性切换到“按本地大小调整”。
+  > 如果任何评估的置信度评级低于五星，我们建议等待至少一天以便设备对环境进行分析，然后重新计算  评估。 如果前述操作无法完成，则基于性能的大小调整可能不可靠，建议通过更改评估属性切换到“按本地大小调整”。 
 
 ## <a name="monthly-cost-estimation"></a>每月成本估计
 

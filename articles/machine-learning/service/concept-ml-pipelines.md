@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e3fe64baca6e61c7eee214b84fd1ccdc88d3629
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f49b384f6f943e8c6767a6133a835011bc1e6bac
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059323"
 ---
 # <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>生成 Azure 机器学习服务中的可重复使用机器学习管道
 
@@ -34,6 +34,7 @@ ms.locfileid: "66237822"
 
 ![Azure 机器学习服务中的机器学习管道](./media/concept-ml-pipelines/pipelines.png)
 
+<a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>应使用哪种 Azure 管道技术？
 
 在 Azure 云中提供了多个其他管道，每个都有不同的用途。 下表列出了不同的管道和它们的用途：

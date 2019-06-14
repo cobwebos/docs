@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: e0513bc18f1cf14beb4c1becfc1835235a5ddc96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61483088"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导出作业
@@ -52,7 +52,7 @@ ms.locfileid: "61483088"
 
 遵循以下步骤获取寄送位置：
 
--   指定存储帐户位置的名称。 可在 Azure 门户中存储帐户的“仪表板”上的“位置”字段下找到该值，或者使用服务管理 API 操作[获取存储帐户属性](/rest/api/storagerp/storageaccounts)来查询该值。
+-   指定存储帐户位置的名称。 可在 Azure 门户中存储帐户的“仪表板”  上的“位置”  字段下找到该值，或者使用服务管理 API 操作[获取存储帐户属性](/rest/api/storagerp/storageaccounts)来查询该值。
 
 -   通过调用“`Get Location`”操作来检索可用于处理此存储帐户的位置。
 

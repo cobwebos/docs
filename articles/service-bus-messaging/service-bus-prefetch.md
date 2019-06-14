@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: aschhab
 ms.openlocfilehash: c63e6bf66e4832a1a5b0b5e6fc3dfbbf02d1e490
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125842"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>预提取 Azure 服务总线消息
 
-如果在任何正式的服务总线客户端中启用了预提取，接收方会静默地获取更多消息，直至达到 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 上限，超出应用程序起初请求的量。
+如果在任何正式的服务总线客户端中启用了预提取，接收方会静默地获取更多消息，直至达到 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 上限，超出应用程序起初请求的量  。
 
 因此，单个初始 [Receive](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) 或 [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) 调用将获取及时返回的可供立即使用的消息。 然后，客户端在后台获取更多信息，填充预提取缓冲区。
 
 ## <a name="enable-prefetch"></a>启用预提取
 
-使用 .NET，通过将 MessageReceiver、QueueClient 或 SubscriptionClient 的 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 属性设置为大于零的数字，可启用预提取功能。 将该值设为零可关闭预提取。
+使用 .NET，通过将 MessageReceiver、QueueClient 或 SubscriptionClient 的 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 属性设置为大于零的数字，可启用预提取功能    。 将该值设为零可关闭预提取。
 
 可轻松向 [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) 或 [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) 示例的设置的接收方添加此设置来查看这些上下文中的效果。
 
-尽管消息在预提取缓存区中提供，但后续的任何 Receive/ReceiveAsync 调用均可从缓冲区立即完成，并且随着空间变得可用，缓冲区也会在后台得到补充。 如果没有消息用于传送，接收操作将清空缓存区，并按预期进行等待或阻止。
+尽管消息在预提取缓存区中提供，但后续的任何 Receive/ReceiveAsync 调用均可从缓冲区立即完成，并且随着空间变得可用，缓冲区也会在后台得到补充   。 如果没有消息用于传送，接收操作将清空缓存区，并按预期进行等待或阻止。
 
 预提取也同样适用于 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 和 [OnMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API。
 
@@ -40,7 +40,7 @@ ms.locfileid: "62125842"
 
 预提取可加快消息流程，方法是在应用程序请求消息时及请求消息前，准备好消息用于本地检索。 这种吞吐量提升是应用程序作者不得不明确作出的某种权衡的结果：
 
-通过 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 接收模式，预提取缓存区获取的所有消息在队列中不再可用，仅驻留在内存中预提取缓存区，直到应用程序通过 Receive/ReceiveAsync 或 OnMessage/OnMessageAsync API 接收到它们。 如果在应用程序接收到消息前终止应用程序，这些消息将丢失，且不可恢复。
+通过 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 接收模式，预提取缓存区获取的所有消息在队列中不再可用，仅驻留在内存中预提取缓存区，直到应用程序通过 Receive/ReceiveAsync 或 OnMessage/OnMessageAsync API 接收到它们     。 如果在应用程序接收到消息前终止应用程序，这些消息将丢失，且不可恢复。
 
 在 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) 接收模式下，提取到预提取缓存区的消息将以锁定状态进入缓存区，并且将超时时钟用于锁定计时。 如果预提取缓存区很大，且处理所需时间过长，以致消息锁定在驻留于预提取缓存区，甚至应用程序还在处理消息时就到期，可能出现一些令人困惑的事件要应用程序处理。
 

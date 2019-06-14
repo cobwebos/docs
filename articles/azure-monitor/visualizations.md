@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
 ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61088211"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
@@ -43,7 +43,7 @@ ms.locfileid: "61088211"
 
 
 ### <a name="limitations"></a>限制
-- 对日志可视化效果具有有限控制，不支持数据表。 数据系列总数限制为 10，其他数据系列在“其他” Bucket 下进行分组。
+- 对日志可视化效果具有有限控制，不支持数据表。 数据系列总数限制为 10，其他数据系列在“其他”  Bucket 下进行分组。
 - 对于日志图表，不支持自定义参数。
 - 日志图表仅限于过去 30 天。
 - 日志图表只能固定到共享仪表板。

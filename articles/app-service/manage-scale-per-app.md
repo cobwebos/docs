@@ -16,10 +16,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: 824abbdfd1b3980b419e6d6c46814bb0318adf13
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602330"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>使用每个应用缩放 Azure 应用服务上进行高密度托管
@@ -31,7 +31,7 @@ ms.locfileid: "65602330"
 *每个应用缩放*可以在应用服务计划级别启用，以允许缩放应用时独立于承载它的应用服务计划。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅用 5 个。
 
 > [!NOTE]
-> 按应用缩放仅适用于标准、高级、高级 V2 和独立定价层。
+> 按应用缩放仅适用于标准  、高级  、高级 V2  和独立  定价层。
 >
 
 应用分配到可用的应用服务计划使用均匀分布在实例之间的最有效的方法。 尽管不保证均匀分布，平台将确保同一应用程序的两个实例将不在同一个应用服务计划实例上托管。

@@ -12,16 +12,16 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: b09182ef06c708e9c606173f02b006e7802f29ed
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7066b600cf50df583fbf8e9e674ef17d77b86183
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477821"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061389"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
-透明数据加密 (TDE) 有助于保护 Azure SQL 数据库、Azure SQL 托管实例和 Azure 数据仓库免受恶意活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 默认情况下，为所有新部署的 Azure SQL 数据库启用了 TDE。 不能使用 TDE 来加密 SQL 数据库中的逻辑 **master** 数据库。  **master** 数据库包含对用户数据库执行 TDE 操作时所需的对象。
+透明数据加密 (TDE) 可帮助保护 Azure SQL 数据库、 Azure SQL 托管实例和 Azure 数据仓库免受脱机的恶意活动的威胁，通过加密静态数据。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 默认情况下，为所有新部署的 Azure SQL 数据库启用了 TDE。 不能使用 TDE 来加密 SQL 数据库中的逻辑 **master** 数据库。  **master** 数据库包含对用户数据库执行 TDE 操作时所需的对象。
 
 需要为 Azure SQL 托管实例、Azure SQL 数据库的早期版本数据库或 Azure SQL 数据仓库手动启用 TDE。  
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 1/9/2018
 ms.author: rkarlin
 ms.openlocfilehash: b6babf7d5d5a0f5796efa9418044366c6a135ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60909256"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>在 Azure 安全中心提供安全联系人详细信息
@@ -41,18 +41,18 @@ Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（�
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”下，选择“提供安全联系人详细信息”。
+1. 在“建议”  下，选择“提供安全联系人详细信息”  。
    ![提供安全联系人][1]
 2. 选择要对其提供联系人信息的 Azure 订阅。
-3. 这将打开“电子邮件通知”。
+3. 这将打开“电子邮件通知”  。
 
    ![提供安全联系人详细信息][2]
 
    * 输入安全联系人的电子邮件地址或地址，用逗号隔开。 输入的电子邮件地址数量无限制。
    * 输入一个安全联系人的国际电话号码。
-   * 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”。
+   * 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”  。
    * 以后，可选择向订阅所有者发送电子邮件通知。 当前此选项处于灰色状态。
-   * 选择“保存”将安全联系人信息应用到订阅。
+   * 选择“保存”  将安全联系人信息应用到订阅。
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关安全中心的详细信息，请参阅以下文章：

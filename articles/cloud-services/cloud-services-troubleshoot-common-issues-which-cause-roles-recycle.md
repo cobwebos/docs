@@ -16,10 +16,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 2a9214b918883e493ebe5c93fc7f56e7ce9c77ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60652207"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>导致角色回收的常见问题
@@ -32,9 +32,9 @@ ms.locfileid: "60652207"
 
 生成和打包应用程序之前，请验证以下各项：
 
-* 如果使用 Visual Studio，请确保针对项目中每个不属于 Azure SDK 或 .NET Framework 的引用程序集，将其“复制本地”属性设置为“True”。
+* 如果使用 Visual Studio，请确保针对项目中每个不属于 Azure SDK 或 .NET Framework 的引用程序集，将其“复制本地”属性设置为“True”   。
 * 请确保 web.config 文件在 compilation 元素中未引用任何未使用的程序集。
-* 每个 .cshtml 文件的“生成操作”将设置为“内容”。 这可确保这些文件会正确显示在包中，并允许其他引用的文件显示在包中。
+* 每个 .cshtml 文件的“生成操作”将设置为“内容”   。 这可确保这些文件会正确显示在包中，并允许其他引用的文件显示在包中。
 
 ## <a name="assembly-targets-wrong-platform"></a>程序集针对的平台错误
 Azure 是一个 64 位的环境。 因此，针对 32 位目标编译的 .NET 程序集不会在 Azure 上运行。

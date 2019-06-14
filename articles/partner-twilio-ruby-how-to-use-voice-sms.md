@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457645"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>如何通过 Ruby 使用 Twilio 实现语音和 SMS 功能
@@ -48,27 +48,27 @@ TwiML 是一组基于 XML 的指令，可指示 Twilio 如何处理呼叫或短�
 所有 TwiML 文档都将 `<Response>` 作为其根元素。 可以在根元素中使用 Twilio 谓词定义应用程序的行为。
 
 ### <a id="Verbs"></a>TwiML 谓词
-Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，**&lt;Say&gt;** 谓词指示 Twilio 在呼叫时传递语音消息。 
+Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如， **&lt;Say&gt;** 谓词指示 Twilio 在呼叫时传递语音消息。 
 
 下面是 Twilio 谓词的列表。
 
-* **&lt;Dial&gt;**：将呼叫方连接到其他电话。
-* **&lt;Gather&gt;**：收集通过电话按键输入的数字。
-* **&lt;Hangup&gt;**：结束呼叫。
-* **&lt;Play&gt;**：播放音频文件。
-* **&lt;Pause&gt;**：安静地等待指定的秒数。
-* **&lt;Record&gt;**：录制呼叫方的声音并返回包含该录音的文件的 URL。
-* **&lt;Redirect&gt;**：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
-* **&lt;Reject&gt;**：拒绝对 Twilio 号码的传入呼叫且无需付费
-* **&lt;Say&gt;**：将文本转换为通话语音。
-* **&lt;Sms&gt;**：发送短信。
+* **&lt;Dial&gt;** ：将呼叫方连接到其他电话。
+* **&lt;Gather&gt;** ：收集通过电话按键输入的数字。
+* **&lt;Hangup&gt;** ：结束呼叫。
+* **&lt;Play&gt;** ：播放音频文件。
+* **&lt;Pause&gt;** ：安静地等待指定的秒数。
+* **&lt;Record&gt;** ：录制呼叫方的声音并返回包含该录音的文件的 URL。
+* **&lt;Redirect&gt;** ：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
+* **&lt;Reject&gt;** ：拒绝对 Twilio 号码的传入呼叫且无需付费
+* **&lt;Say&gt;** ：将文本转换为通话语音。
+* **&lt;Sms&gt;** ：发送短信。
 
 有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][twiml]。 有关 Twilio API 的其他信息，请参阅 [Twilio API][twilio_api]。
 
 ## <a id="CreateAccount"></a>创建 Twilio 帐户
 准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级帐户。
 
-注册 Twilio 帐户时，将收到适用于应用程序的一个免费电话号码。 还会收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 你的帐户 SID 和身份验证令牌分别显示在 [Twilio 帐户页][twilio_account]（可能为英文页面）上标记为“ACCOUNT SID”（帐户 SID）和“AUTH TOKEN”（身份验证令牌）的字段中。
+注册 Twilio 帐户时，将收到适用于应用程序的一个免费电话号码。 还会收到帐户 SID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 你的帐户 SID 和身份验证令牌分别显示在 [Twilio 帐户页][twilio_account]（可能为英文页面）上标记为“ACCOUNT SID”（帐户 SID）和“AUTH TOKEN”（身份验证令牌）  的字段中。 
 
 ### <a id="VerifyPhoneNumbers"></a>验证电话号码
 除了 Twilio 提供的号码外，还可以验证自己控制用于应用程序的号码（即手机号码或住宅电话号码）。 
@@ -110,7 +110,7 @@ Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，*
 现在已经可以在 Web 应用程序中使用用于 Ruby 的 Twilio 帮助程序库。
 
 ## <a id="howto_make_call"></a>如何：发起传出呼叫
-下面演示如何发起传出呼叫。 主要概念包括使用用于 Ruby 的 Twilio 帮助程序调用 REST API 以及呈现 TwiML。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。
+下面演示如何发起传出呼叫。 主要概念包括使用用于 Ruby 的 Twilio 帮助程序调用 REST API 以及呈现 TwiML。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。   
 
 将此函数添加到 `web.md`：
 

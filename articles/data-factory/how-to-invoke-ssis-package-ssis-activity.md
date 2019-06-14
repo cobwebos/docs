@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 7287dc2fccf461cf23c45202336e3d92bc5a40aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153072"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
@@ -35,23 +35,23 @@ ms.locfileid: "66153072"
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用“执行 SSIS 包”活动创建管道
 在此步骤中，将使用 ADF UI/应用创建管道。 将“执行 SSIS 包”活动添加到管道，并将该活动配置为运行 SSIS 包。 
 
-1. 在 Azure 门户中的 ADF 概述/主页上，单击“创建者和监视器”磁贴，在单独的选项卡中启动 ADF UI/应用。 
+1. 在 Azure 门户中的 ADF 概述/主页上，单击“创建者和监视器”磁贴，在单独的选项卡中启动 ADF UI/应用  。 
 
    ![数据工厂主页](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
-   在“开始使用”页中，单击“创建管道”： 
+   在“开始使用”页中，单击“创建管道”   ： 
 
    ![“入门”页](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 
-2. 在“活动”工具箱中展开“常规”，然后将“执行 SSIS 包”活动拖放到管道设计面。 
+2. 在“活动”工具箱中展开“常规”，然后将“执行 SSIS 包”活动拖放到管道设计面    。 
 
    ![将“执行 SSIS 包”活动拖到设计面](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-3. 在“执行 SSIS 包”活动的“常规”选项卡上，提供活动的名称和说明。 设置可选的超时和重试值。
+3. 在“执行 SSIS 包”活动的“常规”选项卡上，提供活动的名称和说明  。 设置可选的超时和重试值。
 
    ![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. 在“执行 SSIS 包”活动的“设置”选项卡上，选择与部署包的 SSISDB 数据库关联的 Azure-SSIS IR。 如果您的包使用 Windows 身份验证来访问数据存储，例如将 SQL 服务器/文件共享在本地，Azure 文件，等等，检查**Windows 身份验证**复选框并输入域/用户名/密码对包执行。 如果包需要 32 位运行时才能运行，请选中“32 位运行时”复选框。 对于“日志记录级别”，请为包执行选择预定义的日志记录范围。 如果要改为输入自定义日志记录名称，请选中“自定义”复选框。 如果 Azure-SSIS IR 正在运行且未选中“手动输入内容”复选框，可以从 SSISDB 浏览并选择现有的文件夹/项目/包/环境。 单击“刷新”按钮可从 SSISDB 获取新添加的文件夹/项目/包/环境，以便可以进行浏览和选择。 
+4. 在“执行 SSIS 包”活动的“设置”选项卡上，选择与部署包的 SSISDB 数据库关联的 Azure-SSIS IR  。 如果您的包使用 Windows 身份验证来访问数据存储，例如将 SQL 服务器/文件共享在本地，Azure 文件，等等，检查**Windows 身份验证**复选框并输入域/用户名/密码对包执行。 如果包需要 32 位运行时才能运行，请选中“32 位运行时”复选框  。 对于“日志记录级别”，请为包执行选择预定义的日志记录范围  。 如果要改为输入自定义日志记录名称，请选中“自定义”复选框  。 如果 Azure-SSIS IR 正在运行且未选中“手动输入内容”复选框，可以从 SSISDB 浏览并选择现有的文件夹/项目/包/环境  。 单击“刷新”按钮可从 SSISDB 获取新添加的文件夹/项目/包/环境，以便可以进行浏览和选择  。 
 
    ![在“设置”选项卡上设置属性 - 自动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "66153072"
 
    ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-5. 在“执行 SSIS 包”活动的“SSIS 参数”选项卡上，如果 Azure-SSIS IR 正在运行且未选中“设置”选项卡上的“手动输入内容”复选框，则会显示 SSISDB 中选定项目/包中现有的 SSIS 参数，以便为它们赋值。 否则，可以逐个输入以便手动为它们赋值 - 为了使包成功执行，请确保它们存在并已正确输入。 您可以向使用表达式、 函数、 ADF 系统变量和 ADF 管道参数/变量及其值添加动态内容。 或者，可以使用作为其值存储在 Azure Key Vault (AKV) 中的机密。 为此，请单击**AZURE 密钥保管库**相关参数旁边的复选框选择/编辑现有链接的 AKV 服务或创建一个新的活动，并选择机密名称/版本的参数值。  在您创建/编辑 AKV 链接服务，可以选择/编辑现有 AKV 或创建一个新，但请授予对你 AKV ADF 托管标识访问权限，如果你尚未这样做已经。 您还可以直接采用以下格式输入机密： `<AKV linked service name>/<secret name>/<secret version>`。
+5. 在“执行 SSIS 包”活动的“SSIS 参数”选项卡上，如果 Azure-SSIS IR 正在运行且未选中“设置”选项卡上的“手动输入内容”复选框，则会显示 SSISDB 中选定项目/包中现有的 SSIS 参数，以便为它们赋值    。 否则，可以逐个输入以便手动为它们赋值 - 为了使包成功执行，请确保它们存在并已正确输入。 您可以向使用表达式、 函数、 ADF 系统变量和 ADF 管道参数/变量及其值添加动态内容。 或者，可以使用作为其值存储在 Azure Key Vault (AKV) 中的机密。 为此，请单击**AZURE 密钥保管库**相关参数旁边的复选框选择/编辑现有链接的 AKV 服务或创建一个新的活动，并选择机密名称/版本的参数值。  在您创建/编辑 AKV 链接服务，可以选择/编辑现有 AKV 或创建一个新，但请授予对你 AKV ADF 托管标识访问权限，如果你尚未这样做已经。 您还可以直接采用以下格式输入机密： `<AKV linked service name>/<secret name>/<secret version>`。
 
    ![在“SSIS 参数”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
@@ -67,30 +67,30 @@ ms.locfileid: "66153072"
 
    ![在“连接管理器”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
-7. 在“执行 SSIS 包”活动的“属性替代”选项卡上，可以逐个输入 SSISDB 中选定包的现有属性的路径，以便手动为其赋值 - 为了使包成功执行，请确保它们存在并已正确输入，例如，若要替代用户变量的值，请按以下格式输入其路径：`\Package.Variables[User::YourVariableName].Value`。 还可以使用表达式、函数、ADF 系统变量和 ADF 管道参数/变量将动态内容添加到其值中。
+7. 在“执行 SSIS 包”活动的“属性替代”选项卡上，可以逐个输入 SSISDB 中选定包的现有属性的路径，以便手动为其赋值 - 为了使包成功执行，请确保它们存在并已正确输入，例如，若要替代用户变量的值，请按以下格式输入其路径：`\Package.Variables[User::YourVariableName].Value`  。 还可以使用表达式、函数、ADF 系统变量和 ADF 管道参数/变量将动态内容添加到其值中。
 
    ![在“属性替代”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
-8. 若要验证管道配置，请单击工具栏中的“验证”。 若要关闭“管道验证报告”，请单击 **>>**。
+8. 若要验证管道配置，请单击工具栏中的“验证”  。 若要关闭“管道验证报告”，  请单击 **>>** 。
 
-9. 单击“全部发布”按钮，将管道发布到 ADF。 
+9. 单击“全部发布”按钮，将管道发布到 ADF  。 
 
 ### <a name="run-the-pipeline"></a>运行管道
 在此步骤中，将触发管道运行。 
 
-1. 若要触发某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。 
+1. 若要触发某个管道运行，请在工具栏中单击“触发器”  ，然后单击“立即触发”  。 
 
    ![立即触发](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
-2. 在“管道运行”窗口中选择“完成”。 
+2. 在“管道运行”窗口中选择“完成”。   
 
 ### <a name="monitor-the-pipeline"></a>监视管道
 
-1. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态以及其他信息（比如运行开始时间）。 若要刷新视图，请单击“刷新”。
+1. 在左侧切换到“监视”选项卡。  随即显示管道运行及其状态以及其他信息（比如运行开始时间）。 若要刷新视图，请单击“刷新”  。
 
    ![管道运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-2. 在“操作”列中单击“查看活动运行”链接。 此时只显示一个活动运行，因为管道只有一个活动（“执行 SSIS 包”活动）。
+2. 在“操作”  列中单击“查看活动运行”  链接。 此时只显示一个活动运行，因为管道只有一个活动（“执行 SSIS 包”活动）。
 
    ![活动运行](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
@@ -288,7 +288,7 @@ while ($True) {
 ### <a name="schedule-the-pipeline-with-a-trigger"></a>使用触发器计划管道
 在上一步骤中，已按需运行了管道。 还可创建一个计划触发器，按计划（按小时、每天等）运行管道。
 
-1. 在 C:\ADF\RunSSISPackage 文件夹中创建一个名为 MyTrigger.json 的 JSON 文件，并在其中包含以下内容： 
+1. 在 C:\ADF\RunSSISPackage 文件夹中创建一个名为 MyTrigger.json 的 JSON 文件，并在其中包含以下内容   ： 
 
    ```json
    {
@@ -313,7 +313,7 @@ while ($True) {
        }
    }    
    ```
-2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹。
+2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹   。
 3. 运行**集 AzDataFactoryV2Trigger** cmdlet，后者创建触发器。 
 
    ```powershell

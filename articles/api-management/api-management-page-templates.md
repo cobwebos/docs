@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1fbafcdab938a0f8653df48631d7733cc58a3668
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60656769"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的页模板
@@ -221,18 +221,18 @@ ms.locfileid: "60656769"
 </p>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  
   
 |属性|Type|描述|  
 |--------------|----------|-----------------|  
-|referenceCode|string|因内部错误显示页面时生成的代码。|  
-|errorCode|string|因内部错误显示页面时生成的代码。|  
-|emailBody|string|因内部错误显示页面时生成的电子邮件正文。|  
-|requestedUrl|string|找不到页面时请求的 URL。|  
-|referrerUrl|string|所请求的 URL 的引用 URL。|  
+|referenceCode|字符串|因内部错误显示页面时生成的代码。|  
+|errorCode|字符串|因内部错误显示页面时生成的代码。|  
+|emailBody|字符串|因内部错误显示页面时生成的电子邮件正文。|  
+|requestedUrl|字符串|找不到页面时请求的 URL。|  
+|referrerUrl|字符串|所请求的 URL 的引用 URL。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

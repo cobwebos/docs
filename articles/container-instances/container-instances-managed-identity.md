@@ -9,10 +9,10 @@ ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152327"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
@@ -45,13 +45,13 @@ ms.locfileid: "66152327"
 
 Azure 容器实例支持以下两种类型的 Azure 托管标识：用户分配和系统分配。 在容器组中，可以启用系统分配的标识、一个或多个用户分配的标识或这两种类型的标识。 
 
-* 用户分配的托管标识作为独立的 Azure 资源在使用中的订阅所信任的 Azure AD 租户中创建。 创建标识后，可以将标识分配到一个或多个 Azure 资源（在 Azure 容器实例或其他 Azure 服务中）。 用户分配标识的生命周期与它所分配到的容器组或其他服务资源的生命周期是分开管理的。 此行为在 Azure 容器实例中特别有用。 由于标识扩展到了容器组的生命周期之外，可以将其与其他标准设置一起重用，从而使容器组部署具有高度可重复性。
+* 用户分配  的托管标识作为独立的 Azure 资源在使用中的订阅所信任的 Azure AD 租户中创建。 创建标识后，可以将标识分配到一个或多个 Azure 资源（在 Azure 容器实例或其他 Azure 服务中）。 用户分配标识的生命周期与它所分配到的容器组或其他服务资源的生命周期是分开管理的。 此行为在 Azure 容器实例中特别有用。 由于标识扩展到了容器组的生命周期之外，可以将其与其他标准设置一起重用，从而使容器组部署具有高度可重复性。
 
-* 系统分配的托管标识直接在 Azure 容器实例的容器组上启用。 启用标识后，Azure 将在实例的订阅信任的 Azure AD 租户中创建组的标识。 创建标识后，系统会将凭据预配到容器组的每个容器中。 系统分配标识的生命周期直接绑定到启用它的容器组。 如果组遭删除，Azure 会自动清理 Azure AD 中的凭据和标识。
+* 系统分配  的托管标识直接在 Azure 容器实例的容器组上启用。 启用标识后，Azure 将在实例的订阅信任的 Azure AD 租户中创建组的标识。 创建标识后，系统会将凭据预配到容器组的每个容器中。 系统分配标识的生命周期直接绑定到启用它的容器组。 如果组遭删除，Azure 会自动清理 Azure AD 中的凭据和标识。
 
 ### <a name="use-a-managed-identity"></a>使用托管标识
 
-若要使用托管标识，必须在一开始便授予标识对订阅中一个或多个 Azure 服务资源的访问权限（例如 Web 应用、Key Vault 或存储帐户）。 若要从正在运行的容器访问 Azure 资源，代码必须从 Azure AD 终结点获得访问令牌。 然后，代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。 
+若要使用托管标识，必须在一开始便授予标识对订阅中一个或多个 Azure 服务资源的访问权限（例如 Web 应用、Key Vault 或存储帐户）。 若要从正在运行的容器访问 Azure 资源，代码必须从 Azure AD 终结点获得访问令牌  。 然后，代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。 
 
 在正在运行的容器中使用托管标识与在 Azure VM 中使用标识本质上是相同的。 请参阅有关使用[令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)、[Azure PowerShell 或 Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) 或 [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) 的 VM 指南。
 
@@ -63,7 +63,7 @@ Azure 容器实例支持以下两种类型的 Azure 托管标识：用户分配�
 
 本文中示例使用 Azure 容器实例中的托管标识来访问 Azure Key Vault 机密。 
 
-首先，使用以下 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令在 eastus 位置中创建一个名为“myResourceGroup”的资源组：
+首先，使用以下 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令在 eastus  位置中创建一个名为“myResourceGroup”  的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -170,7 +170,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必替换 URL 中 Key Vault 的名称 (*https://mykeyvault.vault.azure.net/...*)：
+现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必替换 URL 中 Key Vault 的名称 ( *https://mykeyvault.vault.azure.net/...* )：
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -252,7 +252,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必替换为密钥保管库 URL 中的名称 (*https:\//mykeyvault.vault.azure.net/...*):
+现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必替换为密钥保管库 URL 中的名称 (*https:\//mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

@@ -9,10 +9,10 @@ ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 53ab1e28c5864b403d52bf5e73f0c5c41b8f18a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478447"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>预览导出作业的驱动器使用情况
@@ -26,12 +26,12 @@ ms.locfileid: "61478447"
 
 |命令行参数|描述|  
 |--------------------------|-----------------|  
-|**/logdir:**<LogDirectory\>|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  
-|/sn:<StorageAccountName\>|必需。 导出作业的存储帐户的名称。|  
-|**/sk:**<StorageAccountKey\>|当且仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|  
-|**/csas:**<ContainerSas\>|当且仅当未指定存储帐户密钥时才是必需的。 用于列出要在导出作业中导出的 Blob 的容器 SAS。|  
-|**/ExportBlobListFile:**<ExportBlobListFile\>|必需。 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 导入/导出服务 REST API 的[放置作业](/rest/api/storageimportexport/jobs)操作的 `BlobListBlobPath` 元素中使用的文件格式。|  
-|**/DriveSize:**<DriveSize\>|必需。 用于导出作业的驱动器大小，例如 500GB、1.5TB。|  
+|**/logdir:** <LogDirectory\>|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  
+|/sn:  <StorageAccountName\>|必需。 导出作业的存储帐户的名称。|  
+|**/sk:** <StorageAccountKey\>|当且仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|  
+|**/csas:** <ContainerSas\>|当且仅当未指定存储帐户密钥时才是必需的。 用于列出要在导出作业中导出的 Blob 的容器 SAS。|  
+|**/ExportBlobListFile:** <ExportBlobListFile\>|必需。 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 导入/导出服务 REST API 的[放置作业](/rest/api/storageimportexport/jobs)操作的 `BlobListBlobPath` 元素中使用的文件格式。|  
+|**/DriveSize:** <DriveSize\>|必需。 用于导出作业的驱动器大小，例如  500GB、1.5TB。|  
 
 ## <a name="command-line-example"></a>命令行示例
 

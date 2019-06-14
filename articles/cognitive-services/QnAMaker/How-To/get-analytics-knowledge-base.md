@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/04/2019
 ms.author: tulasim
 ms.openlocfilehash: 09369e760c654e7e56067e6da02bb772bffa7400
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61372575"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
@@ -26,7 +26,7 @@ ms.locfileid: "61372575"
 
     ![选择你的 Application Insights 资源](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. 选择“分析”。 此时将打开一个新窗口，可以在其中查询 QnA Maker 遥测数据。
+2. 选择“分析”。  此时将打开一个新窗口，可以在其中查询 QnA Maker 遥测数据。
 
     ![选择 Analytics](../media/qnamaker-how-to-analytics-kb/analytics.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "61372575"
         | project KbId, timestamp, resultCode, duration, question, answer
     ```
 
-    选择“运行”以运行查询。
+    选择“运行”  以运行查询。
 
     ![运行查询](../media/qnamaker-how-to-analytics-kb/run-query.png)
 

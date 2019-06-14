@@ -15,10 +15,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c19550adf500ba91462af12b4c5f7f5e38240e67
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783520"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>使用应用程序代理通过密码存储进行单一登录
@@ -32,18 +32,18 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 ## <a name="set-up-password-vaulting-for-your-application"></a>为应用程序设置密码存储
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Azure Active Directory” > “企业应用程序” > “所有应用程序”。
+2. 选择“Azure Active Directory”   > “企业应用程序”   >   “所有应用程序”。
 3. 从列表中选择要设置 SSO 的应用。  
-4. 选择“单一登录”。
+4. 选择“单一登录”  。
 
    ![选择“单一登录”](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
-5. 对于 SSO 模式，请选择“基于密码的登录”。
+5. 对于 SSO 模式，请选择“基于密码的登录”  。
 6. 对于登录 URL，请输入用户在公司网络外登录应用时在其中输入用户名和密码的页面的 URL。 该 URL 可能是通过应用程序代理发布应用时创建的外部 URL。 
 
    ![选择“基于密码的登录”并输入 URL](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
-7. 选择“保存”。
+7. 选择“保存”。 
 
 <!-- Need to repro?
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 

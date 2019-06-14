@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66115506"
 ---
 如果拥有的共享访问签名 (SAS) URL 能够授予对存储帐户中资源的访问权限，则可以在连接字符串中使用 SAS。 由于 SAS 包含验证请求所需的信息，因此带 SAS 的连接字符串将提供协议、服务终结点以及访问资源所需的凭据。

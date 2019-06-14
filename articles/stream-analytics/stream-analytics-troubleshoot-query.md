@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60762337"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
@@ -22,18 +22,18 @@ ms.locfileid: "60762337"
 
 ## <a name="query-is-not-producing-expected-output"></a>查询未生成预期输出 
 1.  通过本地测试检查错误：
-    - 在“查询”选项卡上，选择“测试”。 使用下载的示例数据[测试查询](stream-analytics-test-query.md)。 检查并尝试修正所有错误。   
+    - 在“查询”选项卡上，选择“测试”   。 使用下载的示例数据[测试查询](stream-analytics-test-query.md)。 检查并尝试修正所有错误。   
     - 还可以使用适用于 Visual Studio 的流分析工具[直接针对实时输入测试查询](stream-analytics-live-data-local-testing.md)。
 
-2.  如果使用了 [Timestamp By](https://msdn.microsoft.com/library/azure/mt573293.aspx)，请验证事件的时间戳是否大于[作业开始时间](stream-analytics-out-of-order-and-late-events.md)。
+2.  如果使用了 [Timestamp By  ](https://msdn.microsoft.com/library/azure/mt573293.aspx)，请验证事件的时间戳是否大于[作业开始时间](stream-analytics-out-of-order-and-late-events.md)。
 
 3.  避免常犯的错误，例如：
-    - 查询中的一个 [WHERE](https://msdn.microsoft.com/library/azure/dn835048.aspx) 子句筛选掉了所有事件，从而阻止生成输出。
-    - [CAST](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) 函数失败，导致作业失败。 为了避免类型强制转换失败，请改用 [TRY_CAST](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics)。
+    - 查询中的一个 [WHERE  ](https://msdn.microsoft.com/library/azure/dn835048.aspx) 子句筛选掉了所有事件，从而阻止生成输出。
+    - [CAST  ](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) 函数失败，导致作业失败。 为了避免类型强制转换失败，请改用 [TRY_CAST  ](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics)。
     - 使用窗口函数时，请等待整个窗口持续时间完成，以查看查询中的输出。
     - 事件的时间戳要先于作业开始时间，因此事件会被删除。
 
-4.  确保按预期方式配置事件排序策略。 转到“设置”，选择“[事件排序](stream-analytics-out-of-order-and-late-events.md)”。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。 
+4.  确保按预期方式配置事件排序策略。 转到“设置”，选择“[事件排序](stream-analytics-out-of-order-and-late-events.md)”   。 使用“测试”  按钮测试查询时，不会  应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。 
 
 5. 使用审核和诊断日志进行调试：
     - 使用[审核日志](../azure-resource-manager/resource-group-audit.md)，并进行筛选以识别和调试错误。
@@ -44,13 +44,13 @@ ms.locfileid: "60762337"
 
 ## <a name="debug-queries-progressively"></a>逐步调试查询
 
-在实时数据处理中，掌握查询过程中数据的状态是十分有用的。 由于可以多次读取 Azure 流分析作业的输入或步骤，因此可以编写额外的 SELECT INTO 语句。 这样做会将中间数据输出至存储，并允许检查数据的正确性，就如调试程序时的监视变量一样。
+在实时数据处理中，掌握查询过程中数据的状态是十分有用的。 由于可以多次读取 Azure 流分析作业的输入或步骤，因此可以编写额外的 SELECT INTO 语句。 这样做会将中间数据输出至存储，并允许检查数据的正确性，就如调试程序时的监视变量一样  。
 
 下列 Azure 流分析作业中的示例查询具有一个流输入、两个引用数据输入和一个向 Azure 表存储的输出。 查询联接数据中心和两个引用 blob 中的数据，以获取名称和类别信息：
 
 ![流分析 SELECT INTO 查询示例](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-请注意，虽然作业正在运行，但在输出中未生成任何事件。 在如下所示的“监视”磁贴上，可以看见输入正在生成数据，但你不知道 JOIN 的哪个步骤导致删除所有事件。
+请注意，虽然作业正在运行，但在输出中未生成任何事件。 在如下所示的“监视”磁贴上，可以看见输入正在生成数据，但你不知道 JOIN 的哪个步骤导致删除所有事件   。
 
 ![流分析监视磁贴](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  

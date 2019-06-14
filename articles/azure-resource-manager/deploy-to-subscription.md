@@ -12,17 +12,17 @@ ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: bdba294e1ee776d90b93f715e930ec26765abb7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129156"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
 通常情况下，你可将 Azure 资源部署到 Azure 订阅中的资源组。 但是，你还可以创建 Azure 资源组，并在订阅级别创建 Azure 资源。 若要在订阅级别部署模板，请使用 Azure CLI 和 Azure PowerShell。 Azure 门户不支持在订阅级别部署。
 
-若要在 Azure 资源管理器模板中创建资源组，请为该资源组定义包含名称和位置的 [Microsoft.Resources/resourceGroups](/azure/templates/microsoft.resources/allversions) 资源。 你可以创建一个资源组并在同一模板中将资源部署到该资源组。 可以在订阅级别部署的资源包括：[策略](../governance/policy/overview.md)和[基于角色的访问控制](../role-based-access-control/overview.md)。
+若要在 Azure 资源管理器模板中创建资源组，请为该资源组定义包含名称和位置的 [Microsoft.Resources/resourceGroups  ](/azure/templates/microsoft.resources/allversions) 资源。 你可以创建一个资源组并在同一模板中将资源部署到该资源组。 可以在订阅级别部署的资源包括：[策略](../governance/policy/overview.md)和[基于角色的访问控制](../role-based-access-control/overview.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -67,7 +67,7 @@ New-AzDeployment `
 
 对于订阅级别部署，在使用模板函数时有一些重要注意事项：
 
-* 不支持 [resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) 函数。
+* 不支持 [resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) 函数。 
 * 支持 [resourceId()](resource-group-template-functions-resource.md#resourceid) 函数。 可以使用它获取在订阅级部署中使用的资源的资源 ID。 例如，使用 `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` 获取策略定义的资源 ID
 * 支持 [reference()](resource-group-template-functions-resource.md#reference) 和 [list()](resource-group-template-functions-resource.md#list) 函数。
 

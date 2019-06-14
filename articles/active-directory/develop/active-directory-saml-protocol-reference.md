@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07d07f73412e889b018c1f667a500d7625912751
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546151"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD 使用 SAML 协议的方式
@@ -33,11 +33,11 @@ SAML 协议要求标识提供者 (Azure AD) 与服务提供者（应用程序）
 
 将应用程序注册到 Azure AD 时，应用开发人员需将联合身份验证相关的信息注册到 Azure AD。 这些信息包括应用程序的**重定向 URI** 和**元数据 URI**。
 
-Azure AD 使用云服务的**元数据 URI** 来检索签名密钥和注销 URI。 客户可以在“Azure AD”->“应用注册”中打开应用，然后可以在“设置”->“属性”中更新注销 URL。 这样，Azure AD 可以将响应发送到正确的 URL。 
+Azure AD 使用云服务的**元数据 URI** 来检索签名密钥和注销 URI。 客户可以在“Azure AD”->“应用注册”  中打开应用，然后可以在“设置”->“属性”  中更新注销 URL。 这样，Azure AD 可以将响应发送到正确的 URL。 
 
 Azure Active Directory 公开特定于租户的和公用的（独立于租户的）单一登录和单一注销终结点。 这些 URL 表示可寻址位置（不只是标识符），方便你转到终结点读取元数据。
 
-* 特定于租户的终结点位于 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`。  *\<TenantDomainName >* 占位符表示已注册的域名或 Azure AD 租户的 TenantID GUID。 例如，contoso.com 租户的联合元数据位于： https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* 特定于租户的终结点位于 `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`。 *\<TenantDomainName >* 占位符表示已注册的域名或 Azure AD 租户的 TenantID GUID。 例如，contoso.com 租户的联合元数据位于： https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 * 独立于租户的终结点位于 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。 此终结点地址中显示 **common**，而不是租户域名或 ID。
 

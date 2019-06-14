@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
 ms.openlocfilehash: 132909931291daf3aefddd5e1a44273050d98e06
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62120903"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加身份验证
@@ -37,11 +37,11 @@ ms.locfileid: "62120903"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择“应用服务”。
 
-2. 单击“身份验证/授权”菜单选项。
+2. 单击“身份验证/授权”  菜单选项。
 
-3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”  中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案  。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击“确定”。
+4. 单击“确定”。 
 
 5. 单击“ **保存**”。
 
@@ -85,7 +85,7 @@ ms.locfileid: "62120903"
     ```
 
     > [!NOTE]
-    > 如果使用 Google 以外的标识提供程序，请将以上传递至 LoginAsync 的值更改为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory。
+    > 如果使用 Google 以外的标识提供程序，请将以上传递至 LoginAsync  的值更改为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory     。
 
 3. 打开 **QSTodoListViewController.cs**。 修改 **ViewDidLoad** 的方法定义，删除接近结尾处对 **RefreshAsync()** 的调用：
 
@@ -120,7 +120,7 @@ ms.locfileid: "62120903"
     // rest of RefreshAsync method
     ```
 
-5. 打开 AppDelegate.cs，添加以下方法：
+5. 打开 AppDelegate.cs，添加以下方法  ：
 
     ```csharp
     public static Func<NSUrl, bool> ResumeWithURL;
@@ -131,7 +131,7 @@ ms.locfileid: "62120903"
     }
     ```
 
-6. 打开 Info.plist 文件，导航到“高级”部分中的“URL 类型”。 现在配置 URL 类型的标识符和 URL 方案，然后单击“添加 URL 类型”。 URL 方案应与你的 {url_scheme_of_your_app} 相同。
+6. 打开 Info.plist 文件，导航到“高级”部分中的“URL 类型”    。 现在配置 URL 类型的标识符  和 URL 方案  ，然后单击“添加 URL 类型”  。 URL 方案  应与你的 {url_scheme_of_your_app} 相同。
 7. 在已连接到 Mac 主机的 Visual Studio 中或在 Visual Studio for Mac 中，针对设备或模拟器运行客户端项目。 验证应用程序是否未显示任何数据。
 
     通过向下拉动项列表来执行刷新笔势，这会导致显示登录屏幕。 成功输入有效的凭据后，应用会显示待办事项列表，用户可以对数据进行更新。

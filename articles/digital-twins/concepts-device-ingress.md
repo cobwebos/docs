@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
 ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60925831"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>设备连接与遥测数据入口
@@ -69,9 +69,9 @@ YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
 | 属性名称 | 值 | 需要 | 描述 |
 |---|---|---|---|
-| DigitalTwins-Telemetry | 1.0 | 是 | 在系统中标识消息的常量值。 |
-| DigitalTwins-SensorHardwareId | `string(72)` | 是 | 发送**消息**的传感器的唯一标识符。 该值必须与对象的 HardwareId 属性匹配，以便系统可以处理它。 例如，`00FF0643BE88-CO2`。 |
-| CreationTimeUtc | `string` | 否 | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 格式的日期字符串，用于标识有效负载的采样时间。 例如，`2018-09-20T07:35:00.8587882-07:00`。 |
+| DigitalTwins-Telemetry  | 1.0 | 是 | 在系统中标识消息的常量值。 |
+| DigitalTwins-SensorHardwareId  | `string(72)` | 是 | 发送**消息**的传感器的唯一标识符。 该值必须与对象的 HardwareId 属性匹配，以便系统可以处理它  。 例如，`00FF0643BE88-CO2`。 |
+| CreationTimeUtc  | `string` | 否 | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 格式的日期字符串，用于标识有效负载的采样时间。 例如，`2018-09-20T07:35:00.8587882-07:00`。 |
 | **CorrelationId** | `string` | 否 | 用于跟踪整个系统中的事件的 UUID。 例如，`cec16751-ab27-405d-8fe6-c68e1412ce1f`。
 
 ### <a name="send-your-message-to-digital-twins"></a>将消息发送到数字孪生

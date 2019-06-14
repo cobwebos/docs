@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 8eeb29b2d1fe17ae5581dab81c34d5c2c635a6c2
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 3cad3722a9d0a52b1a0e66c760e948ceb3c1671c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061049"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>通过 Azure Monitor 日志管理使用情况和成本
 
@@ -108,10 +108,12 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 ## <a name="legacy-pricing-tiers"></a>旧版定价层
 
-2018 年 4 月 2 日之前, 在其中具有 Log Analytics 工作区或 Application Insights 资源，或链接到在 2019 年 2 月 1 日之前, 启动了企业协议订阅将继续有权访问旧的定价层：免费版、 独立 （按 gb 计） 和每个节点 (OMS)。  在免费定价层中的工作区将有每日数据限制为 500 MB （除了 Azure 安全中心收集的安全数据类型） 的数据引入和数据保留期被限制为 7 天。 在免费定价层仅用于评估目的。 独立或每个节点定价层中的工作区包含到 2 年最多数据保留期的访问权限。 
+2018 年 4 月 2 日之前, 在其中具有 Log Analytics 工作区或 Application Insights 资源，或链接到在 2019 年 2 月 1 日之前, 启动了企业协议订阅将继续有权访问旧的定价层：**免费**， **（按 gb 计） 的独立**并**每个节点 (OMS)** 。  在免费定价层中的工作区将有每日数据限制为 500 MB （除了 Azure 安全中心收集的安全数据类型） 的数据引入和数据保留期被限制为 7 天。 在免费定价层仅用于评估目的。 在独立或每个节点定价层中的工作区包含用户可配置保留期长达 2 年。 
 
 > [!NOTE]
 > 若要使用通过购买用于 System Center 的 OMS E1 套件、OMS E2 套件或 OMS 附加产品所获得的权利，请选择 Log Analytics 的“按节点”定价层  。
+
+Log Analytics 的最早的采用者也有权访问原始的定价层**标准**并**高级**，其中分别具有固定数据保留期为 30 到 365 天。 
 
 ## <a name="changing-pricing-tier"></a>更改定价层
 
@@ -410,6 +412,11 @@ union withsource = $table Usage
 指定现有的操作组或创建一个新[操作组](action-groups.md)，以便当日志警报匹配条件时，你会收到通知。
 
 收到警报后，请执行以下部分介绍的步骤，排查使用量超出预期的原因。
+
+## <a name="limits-summary"></a>限制摘要
+
+有一些其他的 Log Analytics 限制，其中一些依赖于 Log Analytics 定价层。 记录了这些[此处](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-limits)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

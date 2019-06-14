@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: c01cdb967fd7f9516b4403aa4f0c76f2577d5050
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d7c1d9b59e802343f6d8fe258e8e4ac961bb2df
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394517"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061004"
 ---
 # <a name="standard-properties-in-azure-monitor-log-records"></a>Azure Monitor 日志记录中的标准属性
 Azure Monitor 中的日志数据[以一组记录的形式存储](../log-query/log-query-overview.md)，每个记录都有一个特定的数据类型，该数据类型具有一组独特属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
@@ -40,7 +40,7 @@ Event
 ```
 
 ## <a name="type"></a>Type
-**Type** 属性包含从中检索记录的表的名称，也可以将其视为记录类型。 此属性在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方，**$table** 可以用来替代 **Type**。
+**Type** 属性包含从中检索记录的表的名称，也可以将其视为记录类型。 此属性在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方， **$table** 可以用来替代 **Type**。
 
 ### <a name="examples"></a>示例
 以下查询返回过去一小时内按类型收集的记录计数。
@@ -54,7 +54,7 @@ search *
 ## <a name="resourceid"></a>\_ResourceId
 **\_ResourceId** 属性包含与记录关联的资源的唯一标识符。 这为你提供了一个标准属性，用于将查询范围限定为仅来自特定资源的记录，或者跨多个表联接相关数据。
 
-对于 Azure 资源，**_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/resource-group-template-functions-resource.md)。 该属性目前仅限于 Azure 资源，但它将扩展到 Azure 之外的资源，例如本地计算机。
+对于 Azure 资源， **_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/resource-group-template-functions-resource.md)。 该属性目前仅限于 Azure 资源，但它将扩展到 Azure 之外的资源，例如本地计算机。
 
 > [!NOTE]
 > 某些数据类型已具有包含 Azure 资源 ID 或至少包含其一部分（例如订阅 ID）的字段。 虽然为了实现向后兼容而保留了这些字段，但是建议使用 _ResourceId 来执行交叉关联，因为它将更为一致。
@@ -136,6 +136,26 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
 ```
 
+若要查看的引入每个订阅可计费事件的大小，请使用以下查询：
+
+```Kusto
+union withsource=table * 
+| where _IsBillable == true 
+| parse _ResourceId with "/subscriptions/" SubscriptionId "/" *
+| summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
+```
+
+若要查看的引入每个资源组的可计费事件的大小，请使用以下查询：
+
+```Kusto
+union withsource=table * 
+| where _IsBillable == true 
+| parse _ResourceId with "/subscriptions/" SubscriptionId "/resourcegroups/" ResourceGroupName "/" *
+| summarize Bytes=sum(_BilledSize) by  SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
+
+```
+
+
 若要查看每台计算机引入的事件数，请使用以下查询：
 
 ```Kusto
@@ -151,7 +171,7 @@ union withsource = tt *
 | summarize count() by Computer  | sort by count_ nulls last
 ```
 
-若要查看向特定计算机发送数据的可计费数据类型计数，请使用以下查询：
+若要查看从特定计算机的可计费的数据类型的计数，请使用以下查询：
 
 ```Kusto
 union withsource = tt *
@@ -159,7 +179,6 @@ union withsource = tt *
 | where _IsBillable == true 
 | summarize count() by tt | sort by count_ nulls last 
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

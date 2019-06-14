@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: fda1d3d626c91ba984f08b96c79ab6a2fd2ec74b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61477580"
 ---
 # <a name="repairing-an-import-job"></a>修复导入作业
@@ -32,15 +32,15 @@ Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的
   
 |||  
 |-|-|  
-|**/r:**<RepairFile\>|**必需。** 修复文件的路径。该文件用于跟踪修复进度，以及恢复已中断的修复。 每个驱动器都必须有且仅有一个修复文件。 在开始对给定驱动器进行修复时，会传入尚不存在的修复文件的路径。 若要恢复已中断的修复，应该传入现有修复文件的名称。 始终必须指定与目标驱动器对应的修复文件。|  
-|**/logdir:**<LogDirectory\>|**可选。** 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  
-|**/d:**<TargetDirectories\>|**必需。** 包含已导入的原始文件的一个或多个目录（以分号分隔）。 也可以使用导入驱动器，但如果原始文件的备用位置可用，则无需使用该驱动器。|  
-|**/bk:**<BitLockerKey\>|**可选。** 如果希望工具将原始文件所在的已加密驱动器解锁，应指定 BitLocker 密钥。|  
-|**/sn:**<StorageAccountName\>|**必需。** 导入作业的存储帐户的名称。|  
-|/sk:<StorageAccountKey\>|当且仅当未指定容器 SAS 时才是**必需**的。 导入作业的存储帐户的帐户密钥。|  
-|**/csas:**<ContainerSas\>|**必需** 的。 用于访问与导入作业关联的 Blob 的容器 SAS。|  
-|**/CopyLogFile:**<DriveCopyLogFile\>|**必需。** 驱动器复制日志文件（详细日志或错误日志）的路径。 该文件由 Microsoft Azure 导入/导出服务生成，可以从与该作业关联的 Blob 存储下载。 复制日志文件包含有关要修复的失败 Blob 或文件的信息。|  
-|**/PathMapFile:**<DrivePathMapFile\>|**可选。** 可用于解决歧义（如果在同一作业中导入多个同名文件）的文本文件的路径。 工具首次运行时，会在此文件中填充所有不明确的名称。 工具后续运行时会使用此文件来解决歧义。|  
+|**/r:** <RepairFile\>|**必需。** 修复文件的路径。该文件用于跟踪修复进度，以及恢复已中断的修复。 每个驱动器都必须有且仅有一个修复文件。 在开始对给定驱动器进行修复时，会传入尚不存在的修复文件的路径。 若要恢复已中断的修复，应该传入现有修复文件的名称。 始终必须指定与目标驱动器对应的修复文件。|  
+|**/logdir:** <LogDirectory\>|**可选。** 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  
+|**/d:** <TargetDirectories\>|**必需。** 包含已导入的原始文件的一个或多个目录（以分号分隔）。 也可以使用导入驱动器，但如果原始文件的备用位置可用，则无需使用该驱动器。|  
+|**/bk:** <BitLockerKey\>|**可选。** 如果希望工具将原始文件所在的已加密驱动器解锁，应指定 BitLocker 密钥。|  
+|**/sn:** <StorageAccountName\>|**必需。** 导入作业的存储帐户的名称。|  
+|/sk:  <StorageAccountKey\>|当且仅当未指定容器 SAS 时才是**必需**的。 导入作业的存储帐户的帐户密钥。|  
+|**/csas:** <ContainerSas\>|**必需** 的。 用于访问与导入作业关联的 Blob 的容器 SAS。|  
+|**/CopyLogFile:** <DriveCopyLogFile\>|**必需。** 驱动器复制日志文件（详细日志或错误日志）的路径。 该文件由 Microsoft Azure 导入/导出服务生成，可以从与该作业关联的 Blob 存储下载。 复制日志文件包含有关要修复的失败 Blob 或文件的信息。|  
+|**/PathMapFile:** <DrivePathMapFile\>|**可选。** 可用于解决歧义（如果在同一作业中导入多个同名文件）的文本文件的路径。 工具首次运行时，会在此文件中填充所有不明确的名称。 工具后续运行时会使用此文件来解决歧义。|  
   
 ## <a name="using-the-repairimport-command"></a>使用 RepairImport 命令  
 若要通过网络流式传输导入数据来修复这些数据，必须使用 `/d` 参数指定包含导入的原始文件的目录。 此外，必须指定从存储帐户下载的复制日志文件。 下面显示了一个用于修复部分失败的导入作业的典型命令行：  

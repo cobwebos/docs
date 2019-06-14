@@ -13,10 +13,10 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6380488faa9a4554df5df5ea67e11dbeb8853fff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61389705"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>设置和多租户 SQL 数据库 SaaS 应用与使用 Azure Monitor 日志
@@ -57,7 +57,7 @@ OMS 工作区现在称为 Log Analytics 工作区。 Log Analytics 工作区和�
 
 1. 现在请启动负载生成器，在所有租户上运行模拟的负载。
 
-    a. 设置 **$DemoScenario = 2**，_生成正常强度负载 (约 30 DTU)_。
+    a. 设置 **$DemoScenario = 2**，_生成正常强度负载 (约 30 DTU)_ 。
 
     b. 若要运行脚本，请按 F5。
 
@@ -102,7 +102,7 @@ Azure Monitor 是单独的服务，必须配置。 Azure 监视器日志在 Log 
 
     ![Log analytics 仪表板](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
-1. 更改筛选器设置来修改时间范围。 对于本教程，请选择“过去 1 小时”。
+1. 更改筛选器设置来修改时间范围。 对于本教程，请选择“过去 1 小时”  。
 
     ![时间筛选器](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
@@ -114,7 +114,7 @@ Azure Monitor 是单独的服务，必须配置。 Azure 监视器日志在 Log 
  
      ![数据库指标](media/saas-dbpertenant-log-analytics/log-analytics-database-metrics.png)
 
-1. 在分析页中向左滚动，并在“资源信息”列表中选择服务器磁贴。  
+1. 在分析页中向左滚动，并在“资源信息”列表中选择服务器磁贴。   
 
     ![“资源信息”列表](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
 
@@ -127,7 +127,7 @@ Azure Monitor 是单独的服务，必须配置。 Azure 监视器日志在 Log 
     ![池指标](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
 
 
-1. 返回到 Log Analytics 工作区，选择“OMS 门户”以在那里打开工作区。
+1. 返回到 Log Analytics 工作区，选择“OMS 门户”  以在那里打开工作区。
 
     ![Log Analytics 工作区](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 

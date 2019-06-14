@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
 ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143279"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
@@ -32,7 +32,7 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>内核和 RAM 的数量是否有配额限制？
 
-可以。 每个订阅的配额是：
+是的。 每个订阅的配额是：
 
 - 应用程序数量：5
 - 每个应用程序的核心数：12

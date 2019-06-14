@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
 ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60924488"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>如何使用 Azure 数字孪生管理 API
@@ -35,11 +35,11 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 
 * [/ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies)：这些 API 可帮助你管理本体，即，扩展类型的集合。 本体根据它们表示的物理空间提供对象类型的名称。 例如，*BACnet* 本体为 *sensortypes*、*datatypes*、*datasubtypes* 和 *dataunittypes* 提供特定的名称。 本体由服务托管和创建。 用户可以加载和卸载本体。 加载某个本体时，它的所有关联类型名称都将启用，并可在空间图形进行预配。 
 
-* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys)：可以使用这些 API 为空间、设备、用户和传感器创建自定义属性。 这些属性以键/值对的形式创建。 可以通过设置这些属性的 *PrimitiveDataType* 来为其定义数据类型。 例如，可为传感器定义名为 *BasicTemperatureDeltaProcessingRefreshTime*、类型为 *uint* 的属性，然后为每个传感器分配此属性的值。 还可以在创建属性时为这些值添加约束（例如 *Min* 和 *Max* 范围）以及允许的值（例如 *ValidationData*）。
+* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys)：可以使用这些 API 为空间、设备、用户和传感器创建自定义属性。     这些属性以键/值对的形式创建。 可以通过设置这些属性的 *PrimitiveDataType* 来为其定义数据类型。 例如，可为传感器定义名为 *BasicTemperatureDeltaProcessingRefreshTime*、类型为 *uint* 的属性，然后为每个传感器分配此属性的值。 还可以在创建属性时为这些值添加约束（例如 *Min* 和 *Max* 范围）以及允许的值（例如 *ValidationData*）。
 
 * [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers)：这些 API 用于指定要在传入的设备数据中评估的条件。 有关详细信息，请参阅[此文](concepts-user-defined-functions.md#matchers)。 
 
-* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions)：这些 API 用于创建、删除或更新当满足 *matchers* 定义的条件时要执行的自定义函数，以处理来自设置的数据。 有关这些自定义函数（也称为“用户定义的函数”）的详细信息，请参阅[此文](concepts-user-defined-functions.md#user-defined-functions)。 
+* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions)：这些 API 用于创建、删除或更新当满足 *matchers* 定义的条件时要执行的自定义函数，以处理来自设置的数据。 有关这些自定义函数（也称为“用户定义的函数”）的详细信息，请参阅[此文](concepts-user-defined-functions.md#user-defined-functions)。  
 
 * [/endpoints](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints)：这些 API 用于创建终结点，使数字孪生解决方案能够与其他 Azure 数据存储和分析服务通信。 有关详细信息，请阅读[此文](concepts-events-routing.md)。 
 

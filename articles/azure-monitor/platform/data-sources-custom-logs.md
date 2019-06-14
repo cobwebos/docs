@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: bwren
 ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60996081"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
@@ -56,24 +56,24 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 ### <a name="step-1-open-the-custom-log-wizard"></a>步骤 1. 打开自定义日志向导
 自定义日志向导在 Azure 门户中运行，使用它可以定义要收集的新自定义日志。
 
-1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”。
-2. 单击“数据” > “自定义日志”。
-3. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，则取消选中“将下面的配置应用到我的 Linux 计算机”框即可。
-4. 单击“添加+”，打开自定义日志向导。
+1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”   。
+2. 单击“数据”   > “自定义日志”  。
+3. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，则取消选中“将下面的配置应用到我的 Linux 计算机”  框即可。
+4. 单击“添加+”  ，打开自定义日志向导。
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>步骤 2. 上载和分析示例日志
 首先上载自定义日志示例。  该向导将分析并显示此文件中的条目，以便进行验证。  Azure Monitor 将使用指定的分隔符标识每个记录。
 
-“换行”是默认分隔符，用于每行包含单个条目的日志文件。  如果行以日期和时间开头且格式符合要求，则可以指定“时间戳”分隔符，它可支持跨多行的条目。
+“换行”  是默认分隔符，用于每行包含单个条目的日志文件。  如果行以日期和时间开头且格式符合要求，则可以指定“时间戳”  分隔符，它可支持跨多行的条目。
 
 如果使用时间戳分隔符，则存储在Azure Monitor 中的每个记录的 TimeGenerated 属性将填充为日志文件中为该条目指定的日期/时间。  如果使用换行分隔符，则 TimeGenerated 将填充为 Azure Monitor 收集此条目的日期和时间。
 
 
-1. 单击“浏览”，浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“选择文件”。
-2. 单击“下一步”。
+1. 单击“浏览”  ，浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“选择文件”  。
+2. 单击“下一步”。 
 3. 自定义日志向导将上传文件，并列出其标识的记录。
 4. 更改用于标识新记录的分隔符。根据日志文件中的记录，选择标识效果最好的分隔符。
-5. 单击“下一步”。
+5. 单击“下一步”。 
 
 ### <a name="step-3-add-log-collection-paths"></a>步骤 3. 添加日志集合路径
 必须在可查找自定义日志的代理上定义一个或多个路径；  可以提供日志文件的特定路径和名称，也可以使用通配符为名称指定路径。 这样，应用程序就可以每天创建新文件，或者在某个文件达到一定大小时创建新文件。 还可以为单个日志文件提供多个路径。
@@ -84,7 +84,7 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 > 如果应用程序每天或在日志达到一定大小时创建新的日志文件，则适用于 Linux 的 Log Analytics 代理在重启之前不会发现这些日志文件。 这是因为代理仅在启动时才通过指定的日志枚举并开始监视模式，因此需要通过自动重启代理来进行进一步的安排。  适用于 Windows 的 Log Analytics 代理不存在此限制。  
 >
 
-下表提供了有效模式示例，用来指定不同的日志文件。 
+下表提供了有效模式示例，用来指定不同的日志文件。
 
 | 描述 | 路径 |
 |:--- |:--- |
@@ -101,8 +101,8 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 指定的名称将用于上述日志类型。  它始终以 _CL 结尾，与自定义日志区分开来。
 
 1. 为日志键入名称。  系统会自动提供 **\_CL** 后缀。
-2. 添加可选“说明”。
-3. 单击“下一步”，保存自定义日志的定义。
+2. 添加可选“说明”  。
+3. 单击“下一步”  ，保存自定义日志的定义。
 
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>步骤 5. 验证是否正在收集自定义日志
 新自定义日志的初始数据可能需要一个小时才能在 Azure Monitor 中出现。  它将从指定路径的日志中，收集在自定义日志的定义时间之后生成的条目。  它不会在自定义日志创建过程中保留上传的条目，但是它将收集它找到的日志文件中的现有条目。
@@ -119,8 +119,8 @@ Azure Monitor 开始从自定义日志收集后，它的记录将可用于日志
 ## <a name="removing-a-custom-log"></a>删除自定义日志
 在 Azure 门户中使用以下过程删除以前定义的自定义日志。
 
-1. 从工作区的“高级设置”中的“数据”菜单中选择“自定义日志”，以便列出所有自定义日志。
-2. 单击要删除的自定义日志旁边的“删除”。
+1. 从工作区的“高级设置”中的“数据”  菜单  中选择“自定义日志”  ，以便列出所有自定义日志。
+2. 单击要删除的自定义日志旁边的“删除”  。
 
 
 ## <a name="data-collection"></a>数据收集
@@ -159,17 +159,17 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ![日志集合路径](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>提供日志名称及描述
-我们使用名称“MyApp_CL”，然后键入“说明”。
+我们使用  名称“MyApp_CL”，然后键入“说明”  。
 
 ![日志名称](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>验证是否正在收集自定义日志
-我们使用查询“Type=MyApp_CL”，从收集的日志返回所有记录。
+我们使用  查询“Type=MyApp_CL”，从收集的日志返回所有记录。
 
 ![没有自定义字段的日志查询](media/data-sources-custom-logs/query-01.png)
 
 ### <a name="parse-the-custom-log-entries"></a>分析自定义日志条目
-我们使用自定义字段来定义“EventTime”、“Code”、“Status”和“Message”字段，这样就可以看到查询返回的记录中的差异。
+我们使用自定义字段来定义“EventTime”  、“Code”  、“Status”  和“Message”  字段，这样就可以看到查询返回的记录中的差异。
 
 ![具有自定义字段的日志查询](media/data-sources-custom-logs/query-02.png)
 

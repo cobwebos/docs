@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: be3c31951c4721a861f9239c5220419dec11b6bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60799148"
 ---
 # <a name="extending-geojson-geometries"></a>扩展 GeoJSON 几何图形
@@ -38,16 +38,16 @@ Azure Maps 提供功能强大的 API 列表，用于在地理功能内搜索/基
 
 [GeoJSON 规范][1]不支持 `Circle` 几何图形。我们使用 `GeoJSON Feature` 对象表示圆形。
 
-使用 `GeoJSON Feature` 对象表示的 `Circle` 几何图形必须包含以下各项：
+使用 `GeoJSON Feature` 对象表示的 `Circle` 几何图形必须包含以下各项  ：
 
 1. 中心
    >圆形的中心使用 `GeoJSON Point` 类型表示。
 
 2. 半径
-   >圆形的 `radius` 使用 `GeoJSON Feature` 的属性表示。 半径值以米为单位，并且其类型必须为 `double`。
+   >圆形的 `radius` 使用 `GeoJSON Feature` 的属性表示。 半径值以米为单位，并且其类型必须为 `double`  。
 
 3. 子类型
-   >圆形几何图形还必须包含 `subType` 属性。 此属性必须属于 `GeoJSON Feature` 属性的一部分，并且其值应为“Circle”
+   >圆形几何图形还必须包含 `subType` 属性。 此属性必须属于 `GeoJSON Feature` 属性的一部分，并且其值应为“Circle” 
 
 
 #### <a name="example"></a>示例

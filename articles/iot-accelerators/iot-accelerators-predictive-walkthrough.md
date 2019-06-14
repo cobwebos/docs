@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3387996dc0e1953eaafee9c4c61eb8faa865b654
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61447488"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>预测性维护解决方案加速器概述
@@ -39,7 +39,7 @@ ms.locfileid: "61447488"
 
 ![加速器资源][img-resource-group]
 
-预配该解决方案加速器时，会收到一封电子邮件，其中包含机器学习工作区的链接。 还可以从 [Microsoft Azure IoT 解决方案加速器][lnk-azureiotsolutions]页导航到机器学习工作区。 当解决方案处于“就绪”状态时，该页中会提供一个磁贴。
+预配该解决方案加速器时，会收到一封电子邮件，其中包含机器学习工作区的链接。 还可以从 [Microsoft Azure IoT 解决方案加速器][lnk-azureiotsolutions]页导航到机器学习工作区。 当解决方案处于“就绪”状态时，该页中会提供一个磁贴。 
 
 ![机器学习模型][img-machine-learning]
 
@@ -65,13 +65,13 @@ IoT 中心会提供设备命令确认。
 **作业：遥测**会使用两个语句来操作传入设备遥测流：
 
 * 第一个语句会从设备选择所有遥测，然后将这些数据 从该存储中，数据在 Web 应用中进行可视化。
-* 第二个语句会通过两分钟的滑动窗口计算平均传感器值，然后通过事件中心将这些数据发送到事件处理器。
+* 第二个语句会通过两分钟的滑动窗口计算平均传感器值，然后通过事件中心将这些数据发送到事件处理器  。
 
 ## <a name="event-processor"></a>事件处理器
 **事件处理器主机**在 Azure Web 作业中运行。 **事件处理器** 为已完成的周期获取平均传感器值。 然后，它将这些值传递给用于计算引擎 RUL 的已训练模型。 API 提供对属于解决方案一部分的机器学习工作区中的模型的访问。
 
 ## <a name="machine-learning"></a>机器学习
-机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 您可以导航到机器学习工作区从你的解决方案的磁贴上[azureiotsolutions.com] [ lnk-azureiotsolutions]页。 当解决方案处于“就绪”状态时，会提供一个磁贴。
+机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 您可以导航到机器学习工作区从你的解决方案的磁贴上[azureiotsolutions.com] [ lnk-azureiotsolutions]页。 当解决方案处于“就绪”状态时，会提供一个磁贴。 
 
 Azure 机器学习模型可用作模板，它展示了如何使用通过 IoT 解决方案加速器服务收集的遥测数据。 Microsoft 基于公开的数据<sup>\[1\]</sup> 构建了飞机引擎的[回归模型][lnk_regression_model]，并发布了有关如何使用该模型的分步指南。
 

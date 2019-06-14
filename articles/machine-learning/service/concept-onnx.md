@@ -12,10 +12,10 @@ author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: f1eca5bdd81a384efe04f769ebd12be9d91fc78a
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65849731"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建并加速机器学习模型
@@ -83,7 +83,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="more-info"></a>详细信息
+## <a name="more-info"></a>更多信息
 
 详细了解 ONNX 或为项目做出贡献：
 + [ONNX 项目网站](https://onnx.ai)

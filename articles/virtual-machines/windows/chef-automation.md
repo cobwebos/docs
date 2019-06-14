@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
 ms.openlocfilehash: 9cb7172fb529d8f0cd8650db7c06a78176ef342d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64729555"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
@@ -46,8 +46,8 @@ Chef 客户端（节点）是位于在管理的服务器上的代理。
 
 Chef 工作站是在其中创建策略和执行管理命令与 Chef 工具软件包的管理工作站的名称。
 
-一般情况下，可将自己的工作站视为在其中执行操作的位置，以及用于运行软件包的 Chef 工作站。
-例如，你要在 Chef 工作站中下载 knife 命令，但要从自己的工作站运行 knife 命令来管理基础结构。
+一般情况下，可将自己的工作站视为在其中执行操作的位置，以及用于运行软件包的 Chef 工作站。  
+例如，你要在 Chef 工作站中下载 knife 命令，但要从自己的工作站运行 knife 命令来管理基础结构。  
 
 Chef 还使用“食谱”和“配方”的概念，它们实际上是我们要定义并应用到服务器的策略。
 
@@ -264,7 +264,7 @@ Chef Workstation: 0.2.29
 导航到 `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` 文件。 通过添加一些简单的“Hello World”html 代码来编辑该文件，并保存该文件。
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>将食谱上传到 Chef 服务器
-此步骤生成在本地计算机上创建的食谱的副本，并将其上传到 Chef 托管服务器。 上传后，食谱将显示在“策略”选项卡下。
+此步骤生成在本地计算机上创建的食谱的副本，并将其上传到 Chef 托管服务器。 上传后，食谱将显示在“策略”选项卡下  。
 
     knife cookbook upload webserver
 

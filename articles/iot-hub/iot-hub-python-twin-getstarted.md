@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: kgremban
 ms.openlocfilehash: 3e703c999d57cf62064291cf91059a17a959a2c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442579"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64569248"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
 
@@ -31,14 +31,14 @@ ms.locfileid: "61442579"
 
 要完成本教程，需要以下各项：
 
-* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
+* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip  - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
 
 * 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包](https://www.microsoft.com/download/confirmation.aspx?id=48145)，以便使用 Python 中的本机 DLL。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 > [!NOTE]
-> 适用于 `azure-iothub-service-client` 和 `azure-iothub-device-client` 的 pip 包目前仅供 Windows OS 使用。 对于 Linux/Mac OS，请参阅于 Linux 和 Mac OS 特定部分，在[准备开发环境以便使用 Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)发布。
+> 适用于 `azure-iothub-service-client` 和 `azure-iothub-device-client` 的 pip  包目前仅供 Windows OS 使用。 对于 Linux/Mac OS，请参阅于 Linux 和 Mac OS 特定部分，在[准备开发环境以便使用 Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)发布。
 >
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -55,7 +55,7 @@ ms.locfileid: "61442579"
 
 ## <a name="create-the-service-app"></a>创建服务应用
 
-在本部分中，您可以创建一个 Python 控制台应用，将位置元数据添加到关联的设备孪生你 **{Device ID}**。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
+在本部分中，您可以创建一个 Python 控制台应用，将位置元数据添加到关联的设备孪生你 **{Device ID}** 。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
 1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
 
@@ -151,13 +151,13 @@ ms.locfileid: "61442579"
 
     在查询位于 **Redmond43** 的所有设备的查询结果中，应该会看到一个设备，而在将结果限制为使用蜂窝网络的设备的查询结果中没有任何设备。
 
-    ![Redmond 中显示所有设备的第一个查询](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
+    ![第一个显示 Redmond 中所有设备的查询](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
 
 在下一部分中，创建的设备应用将报告连接信息，并更改上一部分中查询的结果。
 
 ## <a name="create-the-device-app"></a>创建设备应用
 
-在本部分中，您可以创建一个 Python 控制台应用，连接到作为中心你 **{Device ID}**，然后更新设备孪生的报告属性，以包含它已连接移动电话网络使用的信息。
+在本部分中，您可以创建一个 Python 控制台应用，连接到作为中心你 **{Device ID}** ，然后更新设备孪生的报告属性，以包含它已连接移动电话网络使用的信息。
 
 1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
 
@@ -264,7 +264,7 @@ ms.locfileid: "61442579"
     python AddTagsAndQuery.py
     ```
 
-    这一次你 **{Device ID}** 应出现在两个查询结果。
+    这一次，两个查询结果中应当都会显示你的 **{Device ID}** 。
 
     ![第二个查询](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
 

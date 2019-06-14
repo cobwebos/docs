@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61074810"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的用户配置文件模板
@@ -96,7 +96,7 @@ ms.locfileid: "61074810"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  
@@ -106,15 +106,15 @@ ms.locfileid: "61074810"
   
 |属性|Type|描述|  
 |--------------|----------|-----------------|  
-|`firstName`|string|当前用户的名字。|  
-|`lastName`|string|当前用户的姓氏。|  
-|`companyName`|string|当前用户所在公司的名称。|  
-|`addresserEmail`|string|当前用户的电子邮件地址。|  
-|`developersUsageStatisticsLink`|string|相对 URL，用于查看当前用户的分析。|  
+|`firstName`|字符串|当前用户的名字。|  
+|`lastName`|字符串|当前用户的姓氏。|  
+|`companyName`|字符串|当前用户所在公司的名称。|  
+|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
 |`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
-|`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
 |`canChangePassword`|boolean|当前用户是否可更改其密码。|  
 |`isSystemUser`|boolean|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
@@ -315,7 +315,7 @@ ms.locfileid: "61074810"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  此模板使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [subscription-cancel](api-management-page-controls.md#subscription-cancel)  
@@ -327,15 +327,15 @@ ms.locfileid: "61074810"
   
 |属性|Type|描述|  
 |--------------|----------|-----------------|  
-|`firstName`|string|当前用户的名字。|  
-|`lastName`|string|当前用户的姓氏。|  
-|`companyName`|string|当前用户所在公司的名称。|  
-|`addresserEmail`|string|当前用户的电子邮件地址。|  
-|`developersUsageStatisticsLink`|string|相对 URL，用于查看当前用户的分析。|  
+|`firstName`|字符串|当前用户的名字。|  
+|`lastName`|字符串|当前用户的姓氏。|  
+|`companyName`|字符串|当前用户所在公司的名称。|  
+|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
 |`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
-|`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
 |`canChangePassword`|boolean|当前用户是否可更改其密码。|  
 |`isSystemUser`|boolean|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
@@ -478,7 +478,7 @@ ms.locfileid: "61074810"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  此模板使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [app-actions](api-management-page-controls.md#app-actions)  
@@ -490,15 +490,15 @@ ms.locfileid: "61074810"
   
 |属性|Type|描述|  
 |--------------|----------|-----------------|  
-|`firstName`|string|当前用户的名字。|  
-|`lastName`|string|当前用户的姓氏。|  
-|`companyName`|string|当前用户所在公司的名称。|  
-|`addresserEmail`|string|当前用户的电子邮件地址。|  
-|`developersUsageStatisticsLink`|string|相对 URL，用于查看当前用户的分析。|  
+|`firstName`|字符串|当前用户的名字。|  
+|`lastName`|字符串|当前用户的姓氏。|  
+|`companyName`|字符串|当前用户所在公司的名称。|  
+|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
 |`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
-|`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
 |`canChangePassword`|boolean|当前用户是否可更改其密码。|  
 |`isSystemUser`|boolean|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
@@ -569,7 +569,7 @@ ms.locfileid: "61074810"
 ```  
   
 ##  <a name="UpdateAccountInfo"></a> 更新帐户信息  
- “更新帐户信息”模板用于自定义开发人员门户中的“更新帐户信息”页。  
+ “更新帐户信息”模板用于自定义开发人员门户中的“更新帐户信息”页。    
   
  ![用户帐户信息页开发人员门户模板](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM 用户帐户信息页开发人员门户模板")  
   
@@ -605,7 +605,7 @@ ms.locfileid: "61074810"
 </a>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  

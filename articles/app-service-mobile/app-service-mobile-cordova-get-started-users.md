@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 23b5967782cf237ed5af2b802aabbbf9c2f781e7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62114204"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>将身份验证添加到 Apache Cordova 应用
@@ -38,7 +38,7 @@ ms.locfileid: "62114204"
 现在，可以验证是否已禁用对后端的匿名访问。 在 Visual Studio 中：
 
 * 打开完成[移动应用入门]教程后创建的项目。
-* 在“Google Android 模拟器”中运行应用程序。
+* 在“Google Android 模拟器”  中运行应用程序。
 * 验证在应用启动后，是否显示“意外的连接失败”。
 
 接下来，需要更新应用程序，以便在从移动应用后端请求资源之前对用户进行身份验证。

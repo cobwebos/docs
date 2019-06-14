@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: danlep
 ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60686885"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
@@ -56,7 +56,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
 
 每次更新后，容器的 IP 地址通常不会更改，但也不能保证该地址保持不变。 只要将容器组部署到相同的基础主机，容器组就会保留其 IP 地址。 尽管 Azure 容器实例会尽量重新部署到同一主机，但某些 Azure 内部事件可能导致重新部署到不同的主机（这种情况很少见）。 为了避免此问题，请始终对容器实例使用 DNS 名称标签。
 
-已终止或已删除的容器组无法更新。 停止（处于“已终止”状态）或删除某个容器组后，将全新部署该组。
+已终止或已删除的容器组无法更新。 停止（处于“已终止”状态）或删除某个容器组后，将全新部署该组。 
 
 ## <a name="properties-that-require-container-delete"></a>需要容器删除操作的属性
 

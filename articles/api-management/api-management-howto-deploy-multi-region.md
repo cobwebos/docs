@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60658131"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
@@ -36,11 +36,11 @@ Azure API 管理多区域部署，该部署可使 API 发布者在任意数量�
 > [!NOTE]
 > 如果尚未创建 API 管理服务实例，请参阅[创建 API 管理服务实例][Create an API Management service instance]。
 
-在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”页。 
+在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”  页。 
 
 ![“缩放”选项卡][api-management-scale-service]
 
-若要部署到新的区域，请单击工具栏中的“+ 添加区域”。
+若要部署到新的区域，请单击工具栏中的“+ 添加区域”。 
 
 ![添加区域][api-management-add-region]
 
@@ -48,19 +48,19 @@ Azure API 管理多区域部署，该部署可使 API 发布者在任意数量�
 
 ![指定单位][api-management-select-location-units]
 
-单击“添加”将选择放置在“位置”表中。 
+单击“添加”将选择放置在“位置”表中。  
 
-重复此过程，直到配置所有位置，并单击工具栏中的“保存”，启动部署过程。
+重复此过程，直到配置所有位置，并单击工具栏中的“保存”，启动部署过程。 
 
 ## <a name="remove-region"> </a>从位置中删除 API 管理服务实例
 
-在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”页。 
+在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”  页。 
 
 ![“缩放”选项卡][api-management-scale-service]
 
-若要删除位置，请使用表右端的“...”按钮打开上下文菜单。 选择“删除”选项。
+若要删除位置，请使用表右端的“...”按钮打开上下文菜单。  选择“删除”  选项。
 
-确认删除，并单击“保存”应用所做的更改。
+确认删除，并单击“保存”应用所做的更改。 
 
 ## <a name="route-backend"> </a>将 API 调用路由到区域后端服务
 
@@ -68,9 +68,9 @@ Azure API 管理只有一个后端服务 URL。 即使不同的区域中存在 A
 
 若要充分利用系统的地理分布性，应在 Azure API 管理实例所在的同一区域中部署后端服务。 然后，可以使用策略和 `@(context.Deployment.Region)` 属性将流量路由到后端的本地实例。
 
-1. 导航到 Azure API 管理实例，然后在左侧菜单中单击“API”。
+1. 导航到 Azure API 管理实例，然后在左侧菜单中单击“API”。 
 2. 选择所需的 API。
-3. 在“入站处理”中的箭头式下拉列表内单击“代码编辑器”。
+3. 在“入站处理”中的箭头式下拉列表内单击“代码编辑器”。  
 
     ![API 代码编辑器](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
 
@@ -111,7 +111,7 @@ Azure API 管理只有一个后端服务 URL。 即使不同的区域中存在 A
 
 ## <a name="custom-routing"> </a>使用 API 管理区域网关的自定义路由
 
-API 管理根据[最低延迟](../traffic-manager/traffic-manager-routing-methods.md#performance)将请求路由到区域网关。 尽管无法在 API 管理中替代此设置，但可以结合自定义路由规则使用自己的流量管理器。
+API 管理根据[最低延迟](../traffic-manager/traffic-manager-routing-methods.md#performance)将请求路由到区域网关  。 尽管无法在 API 管理中替代此设置，但可以结合自定义路由规则使用自己的流量管理器。
 
 1. 创建自己的 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)。
 1. 如果使用自定义域，请[将它与流量管理器配合使用](../traffic-manager/traffic-manager-point-internet-domain.md)，而不要与 API 管理服务配合使用。

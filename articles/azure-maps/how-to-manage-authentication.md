@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952563"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
@@ -61,17 +61,17 @@ ms.locfileid: "65952563"
 
 你将 Azure Maps 帐户与 Azure AD 租户相关联后，您可以通过将用户或应用程序到一个或多个 Azure Maps 访问控制角色分配授予访问控制。
 
-1. 转到**访问控制 (IAM)**，选择**角色分配**，然后选择**添加角色分配**。
+1. 转到**访问控制 (IAM)** ，选择**角色分配**，然后选择**添加角色分配**。
 
     ![授予 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在中**添加的角色分配**窗口下**角色**，选择**Azure Maps 日期读取器 （预览版）**。 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”。 下**选择**，选择用户或应用程序。 选择“保存”。
+2. 在中**添加的角色分配**窗口下**角色**，选择**Azure Maps 日期读取器 （预览版）** 。 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”   。 下**选择**，选择用户或应用程序。 选择“保存”。 
 
     ![添加角色分配](./media/how-to-manage-authentication/add-role-assignment.png)
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>查看可用 Azure Maps RBAC 角色
 
-若要查看 Azure 地图提供的基于角色的访问控制 (RBAC) 角色，请转到**访问控制 (IAM)**，选择**角色**，然后搜索角色从和**Azure Maps**. 这些是可以授予访问权限的角色。
+若要查看 Azure 地图提供的基于角色的访问控制 (RBAC) 角色，请转到**访问控制 (IAM)** ，选择**角色**，然后搜索角色从和**Azure Maps**. 这些是可以授予访问权限的角色。
 
 ![查看可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "65952563"
 
 RBAC 提供精细的访问控制。
 
-若要查看用户和已被授予 Azure 地图的 RBAC 的应用，请转到**访问控制 (IAM)**，选择**角色分配**，然后筛选**Azure Maps**。
+若要查看用户和已被授予 Azure 地图的 RBAC 的应用，请转到**访问控制 (IAM)** ，选择**角色分配**，然后筛选**Azure Maps**。
 
 ![查看用户和应用程序授予 RBAC](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 

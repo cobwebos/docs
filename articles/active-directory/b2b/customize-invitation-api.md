@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0369988bc6f6503f9940e6aabccb91ab843d63f5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65811871"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
@@ -100,12 +100,12 @@ New-AzureADMSInvitation
 
 ### <a name="invitation-status"></a>邀请状态
 
-向外部用户发送邀请后，可使用 Get-AzureADUser cmdlet 查看是否用户已接受该邀请。 向外部用户发送邀请时，将填充 Get-AzureADUser 的以下属性：
+向外部用户发送邀请后，可使用 Get-AzureADUser cmdlet 查看是否用户已接受该邀请  。 向外部用户发送邀请时，将填充 Get-AzureADUser 的以下属性：
 
-* **UserState** 指示邀请是“PendingAcceptance”还是“Accepted”。
-* **UserStateChangedOn** 显示 UserState 属性最新更改的时间戳。
+* **UserState** 指示邀请是“PendingAcceptance”还是“Accepted”   。
+* **UserStateChangedOn** 显示 UserState 属性最新更改的时间戳  。
 
-可使用“筛选器”选项按 UserState 筛选结果。 以下示例显示了如何筛选结果以仅显示具有待处理邀请的用户。 该示例还显示了 Format-List 选项，借助该选项可以指定要显示的属性。 
+可使用“筛选器”选项按 UserState 筛选结果   。 以下示例显示了如何筛选结果以仅显示具有待处理邀请的用户。 该示例还显示了 Format-List 选项，借助该选项可以指定要显示的属性  。 
  
 
 ```powershell

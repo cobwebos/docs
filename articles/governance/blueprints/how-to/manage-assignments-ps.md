@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: d8eacffe4b792eda5d81051f6aa65caa3292c896
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60682826"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何管理使用 PowerShell 分配
@@ -33,7 +33,7 @@ Azure 蓝图模块需要以下软件：
 
 PowerShell 蓝图模块**Az.Blueprint**。
 
-1. 从管理 PowerShell 提示符运行以下命令：
+1. 从管理 PowerShell 提示符运行以下命令  ：
 
    ```azurepowershell-interactive
    # Install the Blueprints module from PowerShell Gallery

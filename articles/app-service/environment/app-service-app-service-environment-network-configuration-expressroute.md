@@ -16,10 +16,10 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130664"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
@@ -59,7 +59,7 @@ ms.locfileid: "62130664"
 
 * 必须允许应用服务环境通过入站网络访问所需的端口。 有关详细信息，请参阅[如何控制应用服务环境的入站流量][requiredports]。
 
-若要满足 DNS 要求，请确保针对虚拟网络配置并维护有效的 DNS 基础结构。 如果创建应用服务环境之后更改了 DNS 配置，开发人员可以强制应用服务环境选择新的 DNS 配置。 可以在 [Azure 门户][NewPortal]中使用“应用服务环境管理”下的“重启”图标，触发滚动环境重新启动。 重新启动后，环境即会选择新的 DNS 配置。
+若要满足 DNS 要求，请确保针对虚拟网络配置并维护有效的 DNS 基础结构。 如果创建应用服务环境之后更改了 DNS 配置，开发人员可以强制应用服务环境选择新的 DNS 配置。 可以在 [Azure 门户][NewPortal]中使用“应用服务环境管理”下的“重启”图标，触发滚动环境重新启动。  重新启动后，环境即会选择新的 DNS 配置。
 
 若要满足入站网络访问要求，请在应用服务环境子网中配置[网络安全组 (NSG)][NetworkSecurityGroups]。 NSG 允许进行所需的访问，以[控制应用服务环境的入站流量][requiredports]。
 
@@ -95,7 +95,7 @@ ms.locfileid: "62130664"
 
 ### <a name="prerequisites"></a>必备组件
 
-* 从 [Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” > “Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。
+* 从 [Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” > “Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。   
 
 * 创建专供应用服务环境使用的唯一子网。 该唯一子网确保应用到子网的 UDR 只会打开应用服务环境的出站流量。
 

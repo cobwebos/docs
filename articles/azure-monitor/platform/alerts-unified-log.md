@@ -9,10 +9,10 @@ ms.date: 5/31/2019
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: ae35c735cffeb8cd85af1f32bb2d14ede6dc6b69
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427410"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 4cc1456aa9928cbd4a24c203eab62e3e75b4d7c1
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: a453e82f47bb9eed25c8d5caf986bc854085e8ac
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256185"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061215"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -310,7 +310,7 @@ public class AppInsightsConfig {
 
 单击任一图表可查看详细聚合指标。
 
-![使用图表的应用程序见解失败窗格](./media/java-get-started/006-barcharts.png)
+![带有图表的“Application Insights 故障”窗格](./media/java-get-started/006-barcharts.png)
 
 > Application Insights 假设 MVC 应用程序的 HTTP 请求的格式为： `VERB controller/action`。 例如，将 `GET Home/Product/f9anuh81`、`GET Home/Product/2dffwrf5` 和 `GET Home/Product/sdf96vws` 分组到 `GET Home/Product` 中。 这种分组可提供有意义的请求聚合，例如请求数量和请求的平均执行时间。
 >
@@ -344,7 +344,7 @@ public class AppInsightsConfig {
 
 ## <a name="azure-app-service-config-spring-boot"></a>Azure 应用服务配置 (Spring Boot)
 
-在 Windows 上运行的 spring Boot 应用需要其他配置，以在 Azure 应用服务上运行。 修改**web.config**并添加以下：
+在 Windows 上运行的 Spring Boot 应用需要额外的配置才能在 Azure 应用服务上运行。 修改 **web.config** 并添加以下项：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -379,9 +379,9 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 [AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 
 ## <a name="performance-counters"></a>性能计数器
-打开**调查**，**指标**，以查看一系列性能计数器。
+打开“调查”、“指标”，查看一系列性能计数器   。
 
-![与所选的进程专用字节指标窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
+![已选中进程专用字节的指标窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>自定义性能计数器收集
 要禁用收集性能计数器的标准集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
@@ -476,7 +476,7 @@ SpringBoot application.properties 和 applicationinsights.xml 配置的默认值
 ## <a name="availability-web-tests"></a>可用性 Web 测试
 Application Insights 可以定期测试网站，检查网站是否正常运行且做出响应。
 
-[了解有关如何设置可用性 web 测试的详细信息。][availability]
+[详细了解如何设置可用性 Web 测试。][availability]
 
 ## <a name="questions-problems"></a>有疑问？ 遇到问题？
 [Java 故障排除](java-troubleshoot.md)

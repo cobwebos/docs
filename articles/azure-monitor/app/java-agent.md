@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
 ms.openlocfilehash: ce5f7ab1e6751a9ce68aa2d9c466a112c9cac182
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900602"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
@@ -25,8 +25,8 @@ ms.locfileid: "60900602"
 如果已[使用 Application Insights 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
 
 * **依赖项：** 有关应用程序对其他组件的调用数据，包括：
-  * 已捕获通过 HttpClient、OkHttp 和 RestTemplate (Spring) 发出的 REST 调用。
-  * 已捕获通过 Jedis 客户端发出的 Redis 调用。
+  * 已捕获通过 HttpClient、OkHttp 和 RestTemplate (Spring) 发出的 REST 调用  。
+  * 已捕获通过 Jedis 客户端发出的 Redis 调用  。
   * **[JDBC 调用](https://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** - 会自动捕获 MySQL、SQL Server 和 Oracle DB 命令。 对于 MySQL，如果调用时间长于 10 秒，代理将报告查询计划。
 * **捕获异常：** 代码处理的异常相关信息。
 * **方法执行时间：** 有关执行特定方法所花费的时间的信息。
@@ -144,7 +144,7 @@ public RestTemplate dcrAccessRestTemplate() {
 
 理想情况下，所有服务都已更新为支持 W3C 协议的较新版 SDK 时，就会出现这种情况。 强烈建议尽快迁移到提供 W3C 支持的新版 SDK。
 
-请确保[传入](correlation.md#w3c-distributed-tracing)和传出（代理）配置完全相同。
+请确保[传入](correlation.md#w3c-distributed-tracing)和传出（代理）配置完全相同  。
 
 ## <a name="view-the-data"></a>查看数据
 在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示在[“性能”磁贴下][metrics]。

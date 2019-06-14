@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 凭据来访问 blob 或队列数据运行 Azure CLI 或 PowerShell 命令 |Microsoft Docs
-description: Azure CLI 和 PowerShell 支持使用 Azure AD 凭据登录 Azure 存储 blob 和队列数据上运行命令。 针对该会话提供了一个访问令牌，该访问令牌用于授权调用操作。 权限取决于分配给 Azure AD 安全主体的 RBAC 角色。
+title: 使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 Blob 或队列数据 | Microsoft Docs
+description: Azure CLI 和 PowerShell 支持使用 Azure AD 凭据登录，以便对 Azure 存储 Blob 和队列数据运行命令。 针对该会话提供了一个访问令牌，该访问令牌用于授权调用操作。 权限取决于分配给 Azure AD 安全主体的 RBAC 角色。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,27 +10,27 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 41ca1c5f413e5e15691f336d203edb918f21dc1a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147292"
 ---
-# <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>使用 Azure AD 凭据来访问 blob 或队列数据运行 Azure CLI 或 PowerShell 命令
+# <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 Blob 或队列数据
 
-Azure 存储提供的 Azure CLI 和 PowerShell，您可以登录并使用 Azure Active Directory (Azure AD) 凭据运行脚本命令扩展。 当你登录到 Azure CLI 或 PowerShell 与 Azure AD 凭据时，则返回 OAuth 2.0 访问令牌。 该令牌自动使用通过 CLI 或 PowerShell 来授权对 Blob 或队列存储执行的后续数据操作。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
+Azure 存储为 Azure CLI 和 PowerShell 提供扩展，使用户可使用 Azure Active Directory (Azure AD) 凭据登录并运行脚本命令。 使用 Azure AD 凭据登录 Azure CLI 或 PowerShell 时，会返回 OAuth 2.0 访问令牌。 CLI 或 PowerShell 自动使用该令牌针对 Blob 或队列存储进行后续数据操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
 
-可以将权限分配给 blob 和队列数据到 Azure AD 安全主体通过基于角色的访问控制 (RBAC)。 有关 Azure 存储中 RBAC 角色的详细信息，请参阅[通过 RBAC 管理 Azure 存储数据访问权限](storage-auth-aad-rbac.md)。
+可通过基于角色的访问控制 (RBAC) 向 Azure AD 安全主体分配对 Blob 和队列数据的权限。 有关 Azure 存储中 RBAC 角色的详细信息，请参阅[通过 RBAC 管理 Azure 存储数据访问权限](storage-auth-aad-rbac.md)。
 
 ## <a name="supported-operations"></a>支持的操作
 
-扩展支持针对容器和队列的操作。 可以调用哪些操作取决于与你登录到 Azure CLI 或 PowerShell 的 Azure AD 安全主体授予的权限。 Azure 存储容器或队列的权限通过基于角色的访问控制 (RBAC) 进行分配。 例如，如果你已被分配**Blob 数据读取器**角色，则你可以运行从容器或队列读取数据的脚本命令。 如果你被分配**Blob 数据参与者**角色，则你可以运行脚本命令的读取、 写入或删除容器或队列或所包含的数据。 
+扩展支持针对容器和队列的操作。 可调用的操作取决于向 Azure AD 安全主体授予的权限，此安全主体用于登录 Azure CLI 或 PowerShell。 Azure 存储容器或队列的权限通过基于角色的访问控制 (RBAC) 进行分配。 例如，如果为你分配了“Blob 数据读取者”角色，你可以运行从容器或队列读取数据的脚本命令。  如果为你分配了“Blob 数据参与者”角色，你可以运行脚本命令来读取、写入或删除容器、队列或其中所含数据。  
 
 若要详细了解针对容器或队列的每个 Azure 存储操作所需的权限，请参阅[用于调用 REST 操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。  
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>使用 Azure AD 凭据调用 CLI 命令
 
-Azure CLI 支持`--auth-mode`blob 和队列数据操作的参数：
+Azure CLI 支持使用 `--auth-mode` 参数进行 Blob 和队列数据操作：
 
 - 将 `--auth-mode` 参数设置为 `login`，以使用 Azure AD 安全主体登录。
 - 将 `--auth-mode` 参数设置为旧的 `key` 值，以便在未提供帐户的身份验证参数时，查询帐户密钥。 
@@ -62,7 +62,7 @@ Azure CLI 支持`--auth-mode`blob 和队列数据操作的参数：
         --encryption-services blob
     ```
     
-1. 创建容器之前，请向自己分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](storage-auth-aad-rbac.md)。
+1. 创建容器之前，请向自己分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关如何分配 RBAC 角色的详细信息，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
     > 传播 RBAC 角色分配可能需要花费几分钟时间。
@@ -115,7 +115,7 @@ Azure CLI 支持`--auth-mode`blob 和队列数据操作的参数：
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. 创建容器之前，请向自己分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](storage-auth-aad-rbac.md)。
+1. 创建容器之前，请向自己分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关如何分配 RBAC 角色的详细信息，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
     > 传播 RBAC 角色分配可能需要花费几分钟时间。

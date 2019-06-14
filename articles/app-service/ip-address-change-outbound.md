@@ -12,10 +12,10 @@ ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: ac62217af096653d61a79ff29ae352c8e950f8af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61269714"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>如何为出站 IP 地址更改做准备
@@ -36,13 +36,13 @@ ms.locfileid: "61269714"
 
 1.  打开 [Azure 门户](https://portal.azure.com)。
 
-2.  在左侧导航菜单中选择“应用服务”。
+2.  在左侧导航菜单中选择“应用服务”。 
 
 3.  从列表中选择自己的应用服务应用。
 
 1.  如果应用是一个函数应用，请参阅[函数应用出站 IP 地址](../azure-functions/ip-addresses.md#find-outbound-ip-addresses)。
 
-4.  在“设置”标题下，单击左侧导航栏中的“属性”，找到标有“出站 IP 地址”的部分。
+4.  在“设置”  标题下，单击左侧导航栏中的“属性”  ，找到标有“出站 IP 地址”  的部分。
 
 5. 复制 IP 地址，并将其添加到对出站流量的特殊处理中，例如筛选器或允许列表。 请勿删除列表中的现有 IP 地址。
 

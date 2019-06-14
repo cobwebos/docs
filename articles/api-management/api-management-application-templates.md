@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 732fdf3f9210a1484895e0b43e061b4bbc586b43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60657870"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的应用程序模板
@@ -72,7 +72,7 @@ ms.locfileid: "60657870"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  `Product list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
@@ -83,7 +83,7 @@ ms.locfileid: "60657870"
 |--------------|----------|-----------------|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
 |`Applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|对当前用户可见的应用程序。|  
-|`CategoryName`|string|应用程序的类别。|  
+|`CategoryName`|字符串|应用程序的类别。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -179,7 +179,7 @@ ms.locfileid: "60657870"
   
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  `Application` 模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  

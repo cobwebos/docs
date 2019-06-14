@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60859335"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>在 Azure 上安装 IBM zD & T 开发/测试环境
@@ -58,7 +58,7 @@ ZD （& T） 的所有版本仅在 x86 上都运行 Linux 系统，不是 Window
 
 3. 获取上显示的 SSH 凭据**概述**通过 VM 的边栏选项卡**Connect**按钮。 选择**SSH**选项卡上，并将 SSH 登录命令复制到剪贴板。
 
-4. 登录到[Bash shell](/azure/cloud-shell/quickstart)从本地 PC 和粘贴命令。 它将在窗体**ssh\<用户 id\>\@\<IP 地址\>**。 当系统提示输入凭据，请输入它们来连接到的主目录。
+4. 登录到[Bash shell](/azure/cloud-shell/quickstart)从本地 PC 和粘贴命令。 它将在窗体**ssh\<用户 id\>\@\<IP 地址\>** 。 当系统提示输入凭据，请输入它们来连接到的主目录。
 
 ## <a name="copy-the-installation-file-to-the-server"></a>将安装文件复制到服务器
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 16871bdc59d141334bc2c95f26929f270d7971cf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62106733"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 JavaScript 客户端库
@@ -75,11 +75,11 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 
 1. 登录到 [Azure 门户]
 2. 导航到移动应用后端。
-3. 在“开发工具”菜单中，选择“资源浏览器”。
-4. 单击“开始”在新选项卡或窗口中打开移动应用后端的资源管理器。
-5. 展开应用的“config” > “authsettings”节点。
-6. 单击“编辑”按钮可对资源进行编辑。
-7. 查找应为 null 的“allowedExternalRedirectUrls”元素。 在数组中添加 URL：
+3. 在“开发工具”  菜单中，选择“资源浏览器”  。
+4. 单击“开始”  在新选项卡或窗口中打开移动应用后端的资源管理器。
+5. 展开应用的“config”   > “authsettings”  节点。
+6. 单击“编辑”  按钮可对资源进行编辑。
+7. 查找应为 null 的“allowedExternalRedirectUrls”  元素。 在数组中添加 URL：
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
@@ -87,15 +87,15 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
          ],
 
     将数组中的 URL 替换为服务的 URL，在本示例中为本地 Node.js 示例服务的 `http://localhost:3000`。 对于 Ripple 服务，也可以根据应用的配置方式，使用 `http://localhost:4400` 或其他某个 URL。
-8. 在页面顶部，单击“读/写”，并单击“PUT”保存更新。
+8. 在页面顶部，单击“读/写”  ，并单击“PUT”  保存更新。
 
 还需要将相同的环回 URL 添加到 CORS 允许列表设置：
 
 1. 导航回到 [Azure 门户]。
 2. 导航到移动应用后端。
-3. 在“API”菜单中单击“CORS”。
-4. 在空的“允许的来源”文本框中输入每个 URL。  将创建新的文本框。
-5. 单击“保存”
+3. 在“API”  菜单中单击“CORS”  。
+4. 在空的“允许的来源”  文本框中输入每个 URL。  将创建新的文本框。
+5. 单击“保存” 
 
 后端更新后，可以在应用中使用新的环回 URL。
 

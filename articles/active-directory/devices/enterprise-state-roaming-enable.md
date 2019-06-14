@@ -18,10 +18,10 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 88e825ebc08b4bfbd65f81b7b2480ead9be314b5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954949"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
@@ -33,16 +33,16 @@ ms.locfileid: "65954949"
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
 
-1. 选择“Azure Active Directory”&gt;“设备”&gt;“企业状态漫游”。
+1. 选择“Azure Active Directory”  &gt;“设备”  &gt;“企业状态漫游”  。
 
-1. 选择“用户可以跨设备同步设置和应用数据”。 有关详细信息，请参阅[如何配置设备设置](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)。
+1. 选择“用户可以跨设备同步设置和应用数据”。  有关详细信息，请参阅[如何配置设备设置](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)。
   
    ![标有“用户可以跨设备同步设置和应用数据”的设备设置的图像](./media/enterprise-state-roaming-enable/device-settings.png)
   
 要让 Windows 10 设备使用企业状态漫游服务，设备必须使用 Azure AD 标识进行身份验证。 对于已加入到 Azure AD 的设备，用户的主登录标识为 Azure AD 标识，因此不需要其他配置。 对于使用本地 Active Directory 的设备，IT 管理员必须[配置加入混合 Azure Active Directory 的设备](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps)。 
 
 ## <a name="data-storage"></a>数据存储
-企业状态漫游数据托管在一个或多个 [Azure 区域](https://azure.microsoft.com/regions/)中，这些区域与 Azure Active Directory 实例中设置的国家/地区值最为匹配。 企业状态漫游数据基于三个主要地理区域进行分区：北美、EMEA 和 APAC。 租户的企业状态漫游数据位于本地所在的地理区域，不会跨区域复制。  例如:
+企业状态漫游数据托管在一个或多个 [Azure 区域](https://azure.microsoft.com/regions/)中，这些区域与 Azure Active Directory 实例中设置的国家/地区值最为匹配。 企业状态漫游数据基于三个主要地理区域进行分区：北美、EMEA 和 APAC。 租户的企业状态漫游数据位于本地所在的地理区域，不会跨区域复制。  例如：
 
 国家/地区值 | 数据托管位置
 ---------------------|-------------------------
@@ -58,11 +58,11 @@ ms.locfileid: "65954949"
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
 
-1. 选择“Azure Active Directory”&gt;“用户”&gt;“所有用户”。
+1. 选择“Azure Active Directory”&gt;“用户”&gt;“所有用户”    。
 
-1. 选择用户，再选择“设备”。
+1. 选择用户，再选择“设备”。 
 
-1. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。
+1. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。  
   
    ![设备同步数据设置图像](./media/enterprise-state-roaming-enable/sync-status.png)
   
@@ -81,7 +81,7 @@ ms.locfileid: "65954949"
 * **按请求删除**：如果 Azure AD 管理员要手动删除特定用户的数据或设置数据，可以通过 [Azure 支持](https://azure.microsoft.com/support/)提交票证。 
 
 ### <a name="stale-data-deletion"></a>删除过时的数据
-一年（“保留期”）内未访问的数据会被视为过时，可能会从 Microsoft 云中删除。 保留期可能会发生变化，但不会少于 90 天。 过时数据可以是一组特定的 Windows/应用程序设置或用户的所有设置。 例如:
+一年（“保留期”）内未访问的数据会被视为过时，可能会从 Microsoft 云中删除。 保留期可能会发生变化，但不会少于 90 天。 过时数据可以是一组特定的 Windows/应用程序设置或用户的所有设置。 例如：
 
 * 如果没有设备访问特定设置集合（例如从设备中删除了应用程序，或者对某用户的所有设备禁用了“主题”等设置组），则该集合会在保留期后变为过时，并可能被删除。 
 * 如果用户已关闭其所有设备上的设置同步，然后将访问的任何设置数据，并为该用户的所有设置数据会变得陈旧，并且可能会在保留期后删除。 

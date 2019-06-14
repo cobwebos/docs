@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61450658"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>保护 OPC UA 客户端和 OPC UA 服务器应用程序 
@@ -37,11 +37,11 @@ OPC 保管库的脚本：
 **快速入门**
 1. 转到[OPC 保管库网站](https://opcvault.azurewebsites.net/)
 
-1. 选择 `Register New`
+1. 选择`Register New`
 
 1. 输入 OPC PLC 信息，因为它已显示在上一个测试床日志输出`CreateSigningRequest information`上相应的输入字段中的区域`Register New OPC UA Application`页上，选择`Server`为 ApplicationType。
 
-1. 选择 `Register`
+1. 选择`Register`
 
 1. 在下一页上，`Request New Certificate for OPC UA Application`选择 `Request new KeyPair and Certificate`
 
@@ -51,7 +51,7 @@ OPC 保管库的脚本：
 
 1. 在下一页上`Generate a new KeyPair and for an OPC UA Application`输入`CN=OpcPlc`SubjectName，作为`opcplc-<_OPCVAULTID>`(替换`<_OPCVAULTID>`自己) 作为 DomainName，选择`PEM`PrivateKeyFormat 作为，并输入密码 (我们之所以将其作为更高版本`<certpassword-string>`)
 
-1. 选择 `Generate New KeyPair`
+1. 选择`Generate New KeyPair`
 
 1. 您现在向前移动到`View Certificate Request Details`。 在此页上，你可以下载所需的所有信息来预配证书存储区的`opc-plc`。
 

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: crdun
 ms.openlocfilehash: be579b631fd910c56f2c360d6aace5b8d35c22e5
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66236000"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>通过 Azure 后端创建 Windows 应用
@@ -48,26 +48,26 @@ ms.locfileid: "66236000"
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>创建数据库连接和配置客户端和服务器项目
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>创建数据库连接并配置客户端和服务器项目
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="run-the-client-project"></a>运行客户端项目
 
 1. 打开 UWP 项目。
 
-2. 转到[Azure 门户](https://portal.azure.com/)并导航到你创建的移动应用。 在`Overview`边栏选项卡，查找这是你的移动应用的公共终结点的 URL。 示例-将为我的应用程序名称"test123"sitename https://test123.azurewebsites.net。
+2. 转到 [Azure 门户](https://portal.azure.com/)，并导航到已创建的移动应用。 在 `Overview` 边栏选项卡上，查找作为移动应用公共终结点的 URL。 示例 - 我的应用名称“test123”的站点名将为 https://test123.azurewebsites.net 。
 
-3. 打开文件`App.xaml.cs`在此文件夹-windows-uwp-cs/ZUMOAPPNAME /。 应用程序名称是`ZUMOAPPNAME`。
+3. 打开此文件夹（windows-uwp-cs/ZUMOAPPNAME/）中的文件 `App.xaml.cs`。 应用程序名称为 `ZUMOAPPNAME`。
 
-4. 在中`App`类中，将为`ZUMOAPPURL`参数具有更高版本的公共终结点。
+4. 在 `App` 类中，将 `ZUMOAPPURL` 参数替换为上面的公共终结点。
 
     `public static MobileServiceClient MobileService = new MobileServiceClient("ZUMOAPPURL");`
 
-    将成为
+    变为
     
     `public static MobileServiceClient MobileService = new MobileServiceClient("https://test123.azurewebsites.net");`
 
-5. 按 F5 键来部署和运行应用程序。
+5. 按 F5 键部署并运行应用。
 
 6. 在应用的“插入待办事项”文本框中键入有意义的文本（例如“完成教程”  ），并单击“保存”   。
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: 4df8b854a94374346eec6f77d761e65a04ef78a2
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523981"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建主机池
@@ -42,7 +42,7 @@ ms.locfileid: "65523981"
 
 1. 向下滚动并右键单击**部署到 Azure**，然后选择**复制链接位置**。
 2. 打开记事本之类的文本编辑器并粘贴存在的链接。
-3. 之后"https://portal.azure.com/"并输入之前井号标签 （#） at 符号 (@) 后面是租户域名。 下面是应使用的格式示例： https://portal.azure.com/@Contoso.onmicrosoft.com#create/。
+3. 之后"https://portal.azure.com/ "并输入之前井号标签 （#） at 符号 (@) 后面是租户域名。 下面是应使用的格式示例： https://portal.azure.com/@Contoso.onmicrosoft.com#create/ 。
 4. 具有到云解决方案提供商订阅的管理员/参与者权限的用户登录到 Azure 门户。
 5. 粘贴到文本编辑器复制到的地址栏的链接。
 

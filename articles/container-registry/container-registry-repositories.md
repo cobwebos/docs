@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/05/2018
 ms.author: cristyg
 ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60427085"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64710185"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>在 Azure 门户中查看容器注册表存储库
 
@@ -41,7 +41,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 1. 登录 [Azure 门户][portal]
 1. 选择向其推送了 Nginx 映像的 **Azure 容器注册表**
-1. 选择“存储库”可查看包含注册表中映像的存储库的列表
+1. 选择“存储库”  可查看包含注册表中映像的存储库的列表
 1. 选择某个存储库以查看该存储库中的映像标记
 
 例如，如果已按照[推送和拉取映像](container-registry-get-started-docker-cli.md)中的说明推送了 Nginx 映像，应看到的内容如下所示：

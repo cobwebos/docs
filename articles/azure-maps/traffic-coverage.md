@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794042"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
@@ -105,8 +105,8 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |乌克兰     |✓         |✓         |
 |英国     |✓         |✓         |
 |+直布罗陀     |✓         |✓         |
-|+ 格恩西岛和泽西岛     |✓         |✓         |
-|+ 马恩岛     |✓         |✓         |
+|\+ 格恩西岛和泽西岛     |✓         |✓         |
+|\+ 马恩岛     |✓         |✓         |
 |梵蒂冈   |✓         |✓         |
 
 

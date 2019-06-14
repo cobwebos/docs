@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: db73363a05734db5d7e3375a5755a807eb7ce2a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790020"
 ---
 # <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务
@@ -61,14 +61,14 @@ ms.locfileid: "60790020"
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>使用接口创建中继协定
 
-1. 在“开始”菜单中右键单击 Visual Studio，以便以管理员身份启动该程序，然后选择“以管理员身份运行”。
-2. 创建新的控制台应用程序项目。 单击“文件”菜单并选择“新建”，并单击“项目”。 在“新建项目”对话框中，单击“Visual C#”（如果“Visual C#”未出现，则在“其他语言”下方查看）。 单击“控制台应用 (.NET Framework)”模板，并将其命名为“EchoService”。 单击“确定”以创建该项目  。
+1. 在“开始”  菜单中右键单击 Visual Studio，以便以管理员身份启动该程序，然后选择“以管理员身份运行”  。
+2. 创建新的控制台应用程序项目。 单击“文件”  菜单并选择“新建”  ，并单击“项目”  。 在“新建项目”  对话框中，单击“Visual C#”  （如果“Visual C#”  未出现，则在“其他语言”  下方查看）。 单击“控制台应用 (.NET Framework)”  模板，并将其命名为“EchoService”  。 单击“确定”以创建该项目  。
 
     ![创建控制台应用][2]
 
 3. 安装服务总线 NuGet 包。 该包自动添加对服务总线库和 WCF **System.ServiceModel**的引用。 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) 是可以以编程方式访问 WCF 基本功能的命名空间。 服务总线使用 WCF 的许多对象和属性来定义服务约定。
 
-    在“解决方案资源管理器”中，右键单击项目，然后单击“管理 NuGet 程序包”。单击“浏览”选项卡，然后搜索“WindowsAzure.ServiceBus”。 确保在“版本”  框中选定项目名称。 单击“安装” 并接受使用条款。
+    在“解决方案资源管理器”中，右键单击项目，然后单击“管理 NuGet 程序包”  。单击“浏览”  选项卡，然后搜索“WindowsAzure.ServiceBus”  。 确保在“版本”  框中选定项目名称。 单击“安装”  并接受使用条款。
 
     ![服务总线包][3]
 4. 在解决方案资源管理器中，双击 Program.cs 文件以在编辑器中将其打开（如果尚未打开）。
@@ -81,7 +81,7 @@ ms.locfileid: "60790020"
 6. 将命名空间的默认名称 **EchoService** 更改为 **Microsoft.ServiceBus.Samples**。
 
    > [!IMPORTANT]
-   > 本教程使用 C# 命名空间“Microsoft.ServiceBus.Samples”，它是基于协定的管理类型的命名空间，此类型用于[配置 WCF 客户端](#configure-the-wcf-client)步骤中的配置文件。 在构建此示例时，可以指定任何想要的命名空间，在配置文件中修改了协定以及相应服务的命名空间后，本教程才会生效。 在 App.config 文件中指定的命名空间必须与在 C# 文件中指定的命名空间相同。
+   > 本教程使用 C# 命名空间“Microsoft.ServiceBus.Samples”  ，它是基于协定的管理类型的命名空间，此类型用于[配置 WCF 客户端](#configure-the-wcf-client)步骤中的配置文件。 在构建此示例时，可以指定任何想要的命名空间，在配置文件中修改了协定以及相应服务的命名空间后，本教程才会生效。 在 App.config 文件中指定的命名空间必须与在 C# 文件中指定的命名空间相同。
    >
    >
 7. 直接在 `Microsoft.ServiceBus.Samples` 命名空间声明后面（但在命名空间内）定义一个名为 `IEchoContract` 的新接口，然后将 `ServiceContractAttribute` 属性应用于该接口，命名空间值为 `https://samples.microsoft.com/ServiceModel/Relay/`。 该命名空间值不同于在整个代码范围内使用的命名空间。 相反，该命名空间值将用作此协定的唯一标识符。 显式指定命名空间可防止将默认的命名空间值添加到约定名称中。 在命名空间声明后，粘贴以下代码：
@@ -110,7 +110,7 @@ ms.locfileid: "60790020"
     ```
 
     通道是主机和客户端用来互相传递信息的 WCF 对象。 随后，将针对通道编写代码，以在两个应用程序之间回显信息。
-10. 在“生成”菜单中，单击“生成解决方案”或按 **Ctrl+Shift+B** 以确认到目前为止操作的准确性。
+10. 在“生成”  菜单中，单击“生成解决方案”  或按 **Ctrl+Shift+B** 以确认到目前为止操作的准确性。
 
 ### <a name="example"></a>示例
 
@@ -172,7 +172,7 @@ namespace Microsoft.ServiceBus.Samples
         return text;
     }
     ```
-4. 单击“生成”，然后单击“生成解决方案”以确认工作的准确性。
+4. 单击“生成”  ，然后单击“生成解决方案”  以确认工作的准确性。
 
 ### <a name="define-the-configuration-for-the-service-host"></a>定义服务主机的配置
 
@@ -204,7 +204,7 @@ namespace Microsoft.ServiceBus.Samples
     ```
 
     终结点用于定义客户端会在何处查找主机应用程序。 接下来，本教程使用此步骤创建一个通过 Azure 中继完全公开主机的 URI。 绑定声明我们要将 TCP 用作协议，以与中继服务进行通信。
-7. 在“生成”菜单中，单击“生成解决方案”以确认工作的准确性。
+7. 在“生成”  菜单中，单击“生成解决方案”  以确认工作的准确性。
 
 ### <a name="example"></a>示例
 
@@ -425,13 +425,13 @@ namespace Microsoft.ServiceBus.Samples
 
 1. 通过执行以下操作为客户端通在当前 Visual Studio 解决方案中创建一个新的项目：
 
-   1. 在解决方案资源管理器中，在包含该服务的同一解决方案中，右键单击当前解决方案（不是项目），并单击“添加”。 然后，单击“新建项目”。
-   2. 在“添加新项目”对话框中，单击“Visual C#”（如果未显示“Visual C#”，则在“其他语言”下方查看），再选择“控制台应用 (.NET Framework)”模板，并将其命名为“EchoClient”。
-   3. 单击“确定”。
+   1. 在解决方案资源管理器中，在包含该服务的同一解决方案中，右键单击当前解决方案（不是项目），并单击“添加”  。 然后，单击“新建项目”  。
+   2. 在“添加新项目”  对话框中，单击“Visual C#”  （如果未显示“Visual C#”  ，则在“其他语言”  下方查看），再选择“控制台应用 (.NET Framework)”  模板，并将其命名为“EchoClient”  。
+   3. 单击“确定”。 
       <br />
 2. 在解决方案资源管理器中，双击 **EchoClient** 项目中的 Program.cs 文件以在编辑器中将其打开（如果尚未打开）。
 3. 将命名空间名称从其默认名称 `EchoClient` 更改为 `Microsoft.ServiceBus.Samples`。
-4. 安装[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)：在解决方案资源管理器中，右键单击“EchoClient”项目，然后单击“管理 NuGet 包”。 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。
+4. 安装[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)：在解决方案资源管理器中，右键单击“EchoClient”  项目，然后单击“管理 NuGet 包”  。 单击“浏览”  选项卡，并搜索 `Microsoft Azure Service Bus`。 单击“安装”  并接受使用条款。
 
     ![][3]
 5. 为 Program.cs 文件中的 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) 命名空间添加 `using` 语句。
@@ -439,7 +439,7 @@ namespace Microsoft.ServiceBus.Samples
     ```csharp
     using System.ServiceModel;
     ```
-6. 如下面的示例中所示，将服务协定定义添加到命名空间。 请注意，此定义等同于“服务”项目中所使用的定义。 `Microsoft.ServiceBus.Samples` 命名空间的顶部。
+6. 如下面的示例中所示，将服务协定定义添加到命名空间。 请注意，此定义等同于“服务”  项目中所使用的定义。 `Microsoft.ServiceBus.Samples` 命名空间的顶部。
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -488,7 +488,7 @@ namespace Microsoft.ServiceBus.Samples
 
 在此步骤中，可以为之前在本教程中创建的访问服务的基本客户端应用程序创建 App.config 文件。 此 App.config 文件用于定义终结点的协定、绑定和名称。 该过程后面的示例中提供了这些任务所用的代码。
 
-1. 在解决方案资源管理器的 **EchoClient** 项目中，双击“App.config”以在 Visual Studio 编辑器中打开该文件。
+1. 在解决方案资源管理器的 **EchoClient** 项目中，双击“App.config”  以在 Visual Studio 编辑器中打开该文件。
 2. 在 `<appSettings>` 元素中，将占位符替换为服务命名空间的名称以及在先前步骤中复制的 SAS 密钥。
 3. 在 system.serviceModel 元素中，添加 `<client>` 元素。
 
@@ -512,7 +512,7 @@ namespace Microsoft.ServiceBus.Samples
     ```
 
     此步骤定义终结点的名称、服务中定义的协定，以及客户端应用程序使用 TCP 与 Azure 中继进行通信的事实。 终结点名称在下一步中用于将此终结点配置与服务 URI 链接。
-5. 单击“文件”，然后单击“全部保存”。
+5. 单击“文件”  ，然后单击“全部保存”  。
 
 ### <a name="example"></a>示例
 
@@ -692,17 +692,17 @@ namespace Microsoft.ServiceBus.Samples
 ## <a name="run-the-applications"></a>运行应用程序
 
 1. 按 **Ctrl+Shift+B** 生成解决方案。 这会生成在先前步骤中创建的客户端项目和服务项目。
-2. 在运行客户端应用程序之前，必须确保服务应用程序正在运行。 在 Visual Studio 的解决方案资源管理器中，右键单击“EchoService”解决方案，并单击“属性”。
-3. 在“解决方案属性”对话框中，单击“启动项目”，并单击“多启动项目”按钮。 **EchoService** 显示在列表的最前面。
-4. 将 **EchoService** 和 **EchoClient** 项目的“操作”框设置为“启动”。
+2. 在运行客户端应用程序之前，必须确保服务应用程序正在运行。 在 Visual Studio 的解决方案资源管理器中，右键单击“EchoService”  解决方案，并单击“属性”  。
+3. 在“解决方案属性”对话框中，单击“启动项目”  ，并单击“多启动项目”  按钮。 **EchoService** 显示在列表的最前面。
+4. 将 **EchoService** 和 **EchoClient** 项目的“操作”  框设置为“启动”  。
 
     ![][5]
-5. 单击“项目依赖项” 。 在“项目”框中，选择“EchoClient”。 在“依赖于”框中，确保选中“EchoService”。
+5. 单击“项目依赖项”  。 在“项目”  框中，选择“EchoClient”  。 在“依赖于”  框中，确保选中“EchoService”  。
 
     ![][6]
-6. 单击“确定”，关闭“属性”对话框。
+6. 单击“确定”  ，关闭“属性”  对话框。
 7. 按 **F5** 运行这两个项目。
-8. 此时会打开两个控制台窗口并提示输入命名空间名称。 必须先运行服务，因此在“EchoService”控制台窗口中输入命名空间，并按“Enter”。
+8. 此时会打开两个控制台窗口并提示输入命名空间名称。 必须先运行服务，因此在“EchoService”  控制台窗口中输入命名空间，并按“Enter”  。
 9. 接下来，会提示提供 SAS 密钥。 输入 SAS 密钥并按“ENTER”。
 
     以下是来自控制台窗口的示例输出。 请注意，此处提供的值仅限于示例目的。

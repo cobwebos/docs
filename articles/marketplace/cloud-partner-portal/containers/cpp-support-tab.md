@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: 71436d7ee82d9e5162780719d9a7a063fa903c6e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942583"
 ---
 # <a name="container-support-tab"></a>容器的“支持”选项卡
 
-使用“新建产品/服务”页的“支持”选项卡为产品/服务提供技术和用户支持资源。  支持窗体上提供了以下输入几个方面：**工程联系人**，**客户支持部门**，和**支持 Url**。 名称旁边附有星号 (*) 的字段表示必填字段。
+使用“新建产品/服务”  页的“支持”  选项卡为产品/服务提供技术和用户支持资源。  支持窗体上提供了以下输入几个方面：**工程联系人**，**客户支持部门**，和**支持 Url**。 名称旁边附有星号 (*) 的字段表示必填字段。
 
 
 ## <a name="support-form-fields"></a>“支持”窗体字段

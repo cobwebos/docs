@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 06879164c6f72891b734da077c667c6f90448fe4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512971"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
@@ -39,7 +39,7 @@ Predicates  元素包含以下元素：
 
 Predicate  元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 用于谓词的标识符。 其他元素可以在策略中使用此标识符。 |
 | 方法 | 是 | 用于验证的方法类型。 可能的值：IsLengthRange、MatchesRegex、IncludesCharacters 或 IsDateRange     。 IsLengthRange  值检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 MatchesRegex  值检查字符串声明值是否与正则表达式相匹配。 IncludesCharacters  值检查字符串声明值是否包含字符集。 IsDateRange  值检查日期声明值是否在指定的最小和最大参数范围内。 |
@@ -156,7 +156,7 @@ PredicateGroups  元素包含以下元素：
 
 PredicateGroup  元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 是 | 用于谓词组的标识符。  |
 
@@ -169,7 +169,7 @@ PredicateGroup  元素包含以下元素：
 
 PredicateReferences  元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | MatchAtLeast | 否 | 指定该值针对要接受的输入必须至少匹配多个谓词定义。 |
 

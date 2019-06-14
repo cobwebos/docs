@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
 ms.openlocfilehash: 421e0db48f045c5cbce52a0641902e6d2a11276e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132464"
 ---
 ## <a name="trigger"></a>触发器
@@ -260,7 +260,7 @@ module.exports = function (context, eventHubMessage) {
 };
 ```
 
-若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many`，如以下示例所示。
+若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many`  ，如以下示例所示。
 
 #### <a name="version-2x"></a>版本 2.x
 
@@ -307,7 +307,7 @@ module.exports = function (context, eventHubMessages) {
 
 ### <a name="trigger---python-example"></a>触发器 - Python 示例
 
-以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)。 此函数将读取[事件元数据](#trigger---event-metadata)并记录消息。
+以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)  。 此函数将读取[事件元数据](#trigger---event-metadata)并记录消息。
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
@@ -336,7 +336,7 @@ def main(event: func.EventHubEvent):
 
 ### <a name="trigger---java-example"></a>触发器 - Java 示例
 
-以下示例演示 function.json 文件中的一个事件中心触发器绑定以及使用该绑定的 [Java 函数](../articles/azure-functions/functions-reference-java.md)。 该函数记录事件中心触发器的消息正文。
+以下示例演示 function.json  文件中的一个事件中心触发器绑定以及使用该绑定的 [Java 函数](../articles/azure-functions/functions-reference-java.md)。 该函数记录事件中心触发器的消息正文。
 
 ```json
 {
@@ -380,7 +380,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 function.json 文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -391,7 +391,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../articles/event-hubs/event-hubs-features.md)#event-consumers)，该组用于订阅事件中心的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
 |**基数** | 不适用 | 适用于 JavaScript。 设为 `many` 以启用批处理。  如果省略或设为 `one`，将向函数传递一条消息。 |
-|**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md)#create-an-event-hubs-namespace)（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
+|**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md)#create-an-event-hubs-namespace)（而不是事件中心本身）  的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
 |**路径**|**EventHubName**|事件中心的名称。 可以通过应用设置 `%eventHubName%` 引用|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
@@ -609,7 +609,7 @@ module.exports = function(context) {
 
 ### <a name="output---python-example"></a>输出 - Python 示例
 
-以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)。 该函数将消息写入事件中心。
+以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)  。 该函数将消息写入事件中心。
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
@@ -670,7 +670,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 function.json 文件和 `EventHub` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `EventHub` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -679,7 +679,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
-|**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
+|**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）  的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 

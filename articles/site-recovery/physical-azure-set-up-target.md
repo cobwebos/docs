@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60949061"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>准备目标（VMware 到 Azure）
@@ -26,7 +26,7 @@ ms.locfileid: "60949061"
 
 ## <a name="prepare-target"></a>准备目标
 
-完成“步骤 1：选择保护目标”和“步骤 2：准备源”后，会转到“步骤 3：目标”
+完成“步骤 1：选择保护目标”  和“步骤 2：准备源”  后，会转到“步骤 3：目标” 
 
 ![准备目标](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "60949061"
 
 成功完成验证后，单击“确定”转到下一步。
 
-如果你没有兼容的资源管理器存储帐户或虚拟网络，则可单击页面顶部的“+ 存储帐户”或“+ 网络”按钮来创建一个。
+如果你没有兼容的资源管理器存储帐户或虚拟网络，则可单击页面顶部的“+ 存储帐户”  或“+ 网络”  按钮来创建一个。
 
 ## <a name="next-steps"></a>后续步骤
 [配置复制设置](vmware-azure-set-up-replication.md)。

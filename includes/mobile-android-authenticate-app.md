@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141028"
 ---
 1. 在 Android Studio 中打开项目。
 
-2. 在 Android Studio 的“项目资源管理器”中，打开 `ToDoActivity.java` 文件，并添加以下 import 语句：
+2. 在 Android Studio 的“项目资源管理器”中，打开 `ToDoActivity.java` 文件，并添加以下 import 语句  ：
 
     ```java
     import java.util.concurrent.ExecutionException;
@@ -132,7 +132,7 @@ ms.locfileid: "66141028"
     }
     ```
 
-9. 然后，从“运行”菜单中单击“运行应用”，以启动应用，并使用所选的标识提供者登录。
+9. 然后，从“运行”  菜单中单击“运行应用”  ，以启动应用，并使用所选的标识提供者登录。
 
 > [!WARNING]
 > 所述的 URL 方案区分大小写。 请确保出现的所有 `{url_scheme_of_you_app}` 使用相同的大小写。

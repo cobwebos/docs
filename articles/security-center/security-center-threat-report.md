@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: ba5ab7ce85933545a41f23e2ecd913acbb7e72d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60703842"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure 安全中心威胁智能报告
@@ -54,13 +54,13 @@ ms.locfileid: "60703842"
 可以通过查看“安全警报”  磁贴查看当前警报。 打开 Azure 门户，按照以下步骤查看每个警报的更多详细信息：
 
 1. 在安全中心仪表板中，可以看到“安全警报”  磁贴。
-2. 单击磁贴打开包含有关警报的更多详细信息的“安全警报”边栏选项卡，并单击要获取更多相关详细信息的安全警报。
+2. 单击磁贴打开包含有关警报的更多详细信息的“安全警报”  边栏选项卡，并单击要获取更多相关详细信息的安全警报。
 
     ![安全警报](./media/security-center-threat-report/security-center-threat-report-fig1.png)
-3. 在本例中，“已执行的可疑进程”边栏选项卡显示了有关警报的详细信息，如下图所示：
+3. 在本例中，“已执行的可疑进程”  边栏选项卡显示了有关警报的详细信息，如下图所示：
 
     ![安全警报详细信息](./media/security-center-threat-report/security-center-threat-report-fig2.png)
-4. 每个安全警报的可用信息量因警报类型而异。 “报表”字段包含威胁智能报告的链接。 单击它，另一个浏览器窗口会显示 PDF 文件。
+4. 每个安全警报的可用信息量因警报类型而异。 “报表”  字段包含威胁智能报告的链接。 单击它，另一个浏览器窗口会显示 PDF 文件。
 
    ![存储选择](./media/security-center-threat-report/security-center-threat-report-fig3.png)
 

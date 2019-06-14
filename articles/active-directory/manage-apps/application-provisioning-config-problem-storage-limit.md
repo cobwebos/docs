@@ -17,17 +17,17 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e4af70ae8628f612b8858b99c0d5ae57e78ace4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963602"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>配置 Azure Active Directory 库应用程序的用户预配时保存管理员凭据时遇到问题 
 
 使用 Azure 门户为企业应用程序配置[自动化用户预配](user-provisioning.md)时，可能会遇到以下情况：
 
-* 为应用程序输入的**管理员凭据**有效，并且“测试连接”按钮起作用。 但是，无法保存凭据，并且 Azure 门户返回一条一般错误消息。
+* 为应用程序输入的**管理员凭据**有效，并且“测试连接”  按钮起作用。 但是，无法保存凭据，并且 Azure 门户返回一条一般错误消息。
 
 如果还为同一应用程序配置了基于 SAML 的单一登录，则发生此错误的最可能原因是已超出了 Azure AD 内部针对证书和凭据设定的每应用程序存储限制。
 
@@ -43,7 +43,7 @@ Azure AD 当前对与应用程序的单个实例关联的所有证书、机密�
 
 1. **使用两个库应用程序实例，一个用于单一登录，一个用于用户预配** - 以库应用程序 [LinkedIn Elevate](../saas-apps/linkedinelevate-tutorial.md) 为例，可以从库中添加 LinkedIn Elevate 并为其配置单一登录。 对于预配，从 Azure AD 应用库中添加 LinkedIn Elevate 的另一个实例，并将其命名为“LinkedIn Elevate (Provisioning)”。 对于这第二个实例，配置[预配](../saas-apps/linkedinelevate-provisioning-tutorial.md)，但不配置单一登录。 使用此解决方法时，需要向两个应用程序[分配](assign-user-or-group-access-portal.md)相同的用户和组。 
 
-2. **减少所存储的配置数据量** - 在“预配”选项卡的[管理员凭据](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)部分中输入的所有数据都与 SAML 证书存储在同一位置。 虽然不可能减小所有这些数据的长度，但是可以删除诸如“通知电子邮件”之类的可选配置字段。
+2. **减少所存储的配置数据量** - 在“预配”选项卡的[管理员凭据](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)部分中输入的所有数据都与 SAML 证书存储在同一位置。 虽然不可能减小所有这些数据的长度，但是可以删除诸如“通知电子邮件”之类的可选配置字段。 
 
 ## <a name="next-steps"></a>后续步骤
 [为 SaaS 应用程序配置用户预配和取消预配](user-provisioning.md)

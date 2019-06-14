@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: bd863a8ddd9e2277b628673d2146efd8c458c319
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 81e6b5558ab90f154ebf121a558704b00b97444d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979490"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64684332"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -38,7 +38,7 @@ ms.locfileid: "55979490"
 > 
 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
 ## <a name="resize-a-managed-disk"></a>调整托管磁盘的大小
@@ -86,7 +86,7 @@ ms.locfileid: "55979490"
 
 这就是所有的操作！ 现在，请通过 RDP 访问 VM，打开“计算机管理”（或“磁盘管理”），并使用刚刚分配的空间扩展驱动器。
 
-## <a name="resize-an-unmanaged-disk"></a>调整费托管磁盘的大小
+## <a name="resize-an-unmanaged-disk"></a>非托管磁盘的大小
 
 在管理模式下打开 Powershell ISE 或 Powershell 窗口，并遵循以下步骤：
 
@@ -185,7 +185,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 
 
-同样，如上所示使用索引或磁盘的“名称属性”可以引用附加到 VM 的其他数据磁盘：
+同样，如上所示使用索引或磁盘的“名称属性”可以引用附加到 VM 的其他数据磁盘  ：
 
 
 **托管磁盘**
@@ -202,17 +202,17 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 ## <a name="expand-the-volume-within-the-os"></a>扩展 OS 中的卷
 
-展开 VM 的磁盘后，需要转到 OS 并展开卷以包含新的空间。 以下几种方法可用于扩展分区。 本部分介绍了如何使用 RDP 连接来连接 VM 以使用 DiskPart 展开分区。
+展开 VM 的磁盘后，需要转到 OS 并展开卷以包含新的空间。 以下几种方法可用于扩展分区。 本部分介绍了如何使用 RDP 连接来连接 VM 以使用 DiskPart 展开分区  。
 
 1. 打开与 VM 的 RDP 连接。
 
-2.  打开命令提示符并键入 diskpart
+2.  打开命令提示符并键入 diskpart 
 
-2.  在 DISKPART 提示符处，键入 `list volume`。 记下要扩展的卷。
+2.  在 DISKPART 提示符处，键入 `list volume`  。 记下要扩展的卷。
 
-3.  在 DISKPART 提示符处，键入 `select volume <volumenumber>`。 这将选择将扩展到同一磁盘上的连续可用空间的卷 volumenumber。
+3.  在 DISKPART 提示符处，键入 `select volume <volumenumber>`  。 这将选择将扩展到同一磁盘上的连续可用空间的卷 volumenumber  。
 
-4.  在 DISKPART 提示符处，键入 `extend [size=<size>]`。 这将按大小（MB）扩展所选的卷。
+4.  在 DISKPART 提示符处，键入 `extend [size=<size>]`  。 这将按大小（MB）扩展所选的卷  。
 
 
 ## <a name="next-steps"></a>后续步骤

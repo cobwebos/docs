@@ -9,10 +9,10 @@ ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 809c98c1e2e51ae51d7fe03f2165a5d9eecb05cc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64681805"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
@@ -33,7 +33,7 @@ Webhook 操作需要下表中的属性：
 | 自定义 JSON 负载 |如果在创建警报期间选择了此选项，请自定义要通过 webhook 发送的有效负载。 [管理日志警报](alerts-log.md)中提供了详细信息 |
 
 > [!NOTE]
-> 单击日志警报的“包括 Webhook 的自定义 JSON 有效负载”选项旁边的“查看 Webhook”按钮会显示所提供的自定义的示例 Webhook 有效负载。 它不包含实际数据，也不代表用于日志警报的 JSON 架构。 
+> 单击日志警报的“包括 Webhook 的自定义 JSON 有效负载”  选项旁边的“查看 Webhook”按钮会显示所提供的自定义的示例 Webhook 有效负载。 它不包含实际数据，也不代表用于日志警报的 JSON 架构。 
 
 Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据）。  默认情况下，有效负载包括下表中的值：可以选择将此负载替换成自己的自定义负载。  在这种情况下，可以使用下表中每个参数的变量，将其值包含在自定义负载中。
 
@@ -41,7 +41,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 | 参数 | 变量 | 描述 |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |警报规则的名称。 |
-| 严重性 |#severity |为触发的日志警报设置的严重性。 |
+| Severity |#severity |为触发的日志警报设置的严重性。 |
 | AlertThresholdOperator |#thresholdoperator |警报规则的阈值运算符。  *大于*或*小于*。 |
 | AlertThresholdValue |#thresholdvalue |警报规则的阈值。 |
 | LinkToSearchResults |#linktosearchresults |指向 Analytics 门户的链接，该门户会从创建警报的查询返回记录。 |
@@ -56,7 +56,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 | 订阅 ID |#subscriptionid |用于 Application Insights 的 Azure 订阅的 ID。 
 
 > [!NOTE]
-> LinkToSearchResults 将参数（如 SearchQuery、搜索时间间隔开始时间和搜索时间间隔结束时间）传递到 Azure 门户的 URL，以便在“Analytics”部分中查看。 Azure 门户的 URI 大小限制约为 2000 个字符，如果参数值超过此限制，将不会打开警报中提供的链接。 用户可手动输入详细信息，以在 Analytics 门户中查看结果，或使用 [Application Insights Analytics REST API ](https://dev.applicationinsights.io/documentation/Using-the-API) 或 [Log Analytics REST API](/rest/api/loganalytics/) 以编程方式检索结果 
+> LinkToSearchResults 将参数（如 SearchQuery、搜索时间间隔开始时间和搜索时间间隔结束时间）传递到 Azure 门户的 URL，以便在“Analytics”部分中查看。 Azure 门户的 URI 大小限制约为 2000 个字符，如果参数值超过此限制，将不会打开警报中提供的链接  。 用户可手动输入详细信息，以在 Analytics 门户中查看结果，或使用 [Application Insights Analytics REST API ](https://dev.applicationinsights.io/documentation/Using-the-API) 或 [Log Analytics REST API](/rest/api/loganalytics/) 以编程方式检索结果 
 
 例如，可以指定以下自定义负载，其中包含名为 *text* 的单一参数。  该 Webhook 调用的服务将需要此参数。
 

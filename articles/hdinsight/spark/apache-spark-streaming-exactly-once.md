@@ -8,10 +8,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 388723624fde73899809b95ff8ae4ee23cf49a9d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64705100"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>使用“恰好一次”事件处理创建 Apache Spark 流式处理作业
@@ -38,13 +38,13 @@ ms.locfileid: "64705100"
 
 ### <a name="replayable-sources"></a>可重播源
 
-Spark 流应用程序从中读取事件的源必须可重播。 这意味着，如果已检测到消息，但在持久保存或处理该消息之前系统发生故障，则源必须再次提供同一消息。
+Spark 流应用程序从中读取事件的源必须可重播。  这意味着，如果已检测到消息，但在持久保存或处理该消息之前系统发生故障，则源必须再次提供同一消息。
 
 在 Azure 中，Azure 事件中心和 HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 提供可重播源。 可重播源的另一个示例是 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 等容错的文件系统、Azure 存储 Blob 或 Azure Data Lake Storage，其中的所有数据将永久保留，随时都可以重新读取整个数据。
 
 ### <a name="reliable-receivers"></a>可靠的接收器
 
-在 Spark 流中，事件中心和 Kafka 等源具有可靠的接收器，其中的每个接收器可跟踪它在读取源时的进度。 可靠的接收器将其状态持久保存在以下容错存储中：[Apache ZooKeeper](https://zookeeper.apache.org/)，或者写入 HDFS 的 Spark 流检查点。 如果此类接收器发生故障并随后重启，它可以从上次中断的位置继续拾取数据。
+在 Spark 流中，事件中心和 Kafka 等源具有可靠的接收器，其中的每个接收器可跟踪它在读取源时的进度。  可靠的接收器将其状态持久保存在以下容错存储中：[Apache ZooKeeper](https://zookeeper.apache.org/)，或者写入 HDFS 的 Spark 流检查点。 如果此类接收器发生故障并随后重启，它可以从上次中断的位置继续拾取数据。
 
 ### <a name="use-the-write-ahead-log"></a>使用预写日志
 
@@ -78,7 +78,7 @@ Spark 流支持使用预写日志，其中每个收到的事件首先写入容�
 
 ### <a name="use-idempotent-sinks"></a>使用幂等接收器
 
-作业将结果写入到的目标接收器必须能够处理多次提供相同结果的情况。 该接收器必须能够检测此类重复结果并将其忽略。 可以使用相同的数据多次调用幂等接收器，而不会更改状态。
+作业将结果写入到的目标接收器必须能够处理多次提供相同结果的情况。 该接收器必须能够检测此类重复结果并将其忽略。 可以使用相同的数据多次调用幂等接收器，而不会更改状态。 
 
 若要创建幂等接收器，可以实现相应的逻辑来首先检查数据存储中是否存在传入的结果。 如果已存在该结果，则从 Spark 作业的角度看，写入操作看上去已成功，但实际上数据存储忽略了重复的数据。 如果结果不存在，则接收器应将此新结果插入到其存储中。 
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
 ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119296"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
@@ -60,14 +60,14 @@ public class TodoItem
 }
 ```
 
-[JsonPropertyAttribute][6] 用于定义客户端字段与表字段之间的 PropertyName 映射。
+[JsonPropertyAttribute][6] 用于定义客户端字段与表字段之间的 PropertyName  映射。
 
-若要了解如何在移动应用后端中创建表，请参阅 [.NET 服务器 SDK 主题][7]或 [Node.js 服务器 SDK 主题][8]。 如果已在 Azure 门户中使用快速入门项目创建移动应用后端，则也可以在 [Azure 门户]中使用“简易表”设置。
+若要了解如何在移动应用后端中创建表，请参阅 [.NET 服务器 SDK 主题][7]或 [Node.js 服务器 SDK 主题][8]。 如果已在 Azure 门户中使用快速入门项目创建移动应用后端，则也可以在 [Azure 门户]中使用“简易表”  设置。
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>如何：安装托管客户端 SDK 包
 使用下述某个方法从 [NuGet][9] 安装适用于移动应用的托管客户端 SDK 包：
 
-* **Visual Studio** 右键单击项目，单击“管理 NuGet 包”，搜索 `Microsoft.Azure.Mobile.Client` 包，并单击“安装”。
+* **Visual Studio** 右键单击项目，单击“管理 NuGet 包”  ，搜索 `Microsoft.Azure.Mobile.Client` 包，并单击“安装”  。
 * **Xamarin Studio**右键单击你的项目，单击**添加** > **添加 NuGet 包**，搜索`Microsoft.Azure.Mobile.Client`包，然后依次**添加包**.
 
 在主活动文件中，请记得添加以下 **using** 语句：
@@ -517,13 +517,13 @@ PullOptions pullOptions = new PullOptions
 ## <a name="#offlinesync"></a>使用脱机表
 脱机表使用本地 SQLite 存储来存储脱机时要使用的数据。  并针对本地 SQLite 存储（而非远程服务器存储）完成所有表操作。  若要创建脱机表，首先应准备项目：
 
-1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”，并在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
+1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”  ，并在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
 2. （可选）若要支持 Windows 设备，请安装以下 SQLite 运行时包之一：
 
    * **Windows 8.1 运行时：** 安装 [SQLite for Windows 8.1][3]。
    * **Windows Phone 8.1：** 安装 [SQLite for Windows Phone 8.1][4]。
    * **通用 Windows 平台** 安装[适用于通用 Windows 的 SQLite][5]。
-3. （可选）。 对于 Windows 设备，单击“引用” > >“添加引用...”，展开 **Windows** 文件夹 >“扩展”，并启用相应的 **SQLite for Windows** SDK 和 **Visual C++ 2013 Runtime for Windows** SDK。
+3. （可选）。 对于 Windows 设备，单击“引用”   > >“添加引用...”  ，展开 **Windows** 文件夹 >“扩展”  ，并启用相应的 **SQLite for Windows** SDK 和 **Visual C++ 2013 Runtime for Windows** SDK。
     每个 Windows 平台的 SQLite SDK 名称略有不同。
 
 必须先准备本地存储，之后才能创建表引用：
@@ -654,10 +654,10 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
 2. 在 Visual Studio 或 Xamarin Studio 中打开项目，并添加对 `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet 包的引用。 搜索时，请包含预发行版。
 3. 根据使用的平台，将以下代码添加到应用程序。 在每条代码中进行以下替换：
 
-   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
-   * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”下面的“高级”选项卡获取此客户端 ID。
+   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com 。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
+   * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”  下面的“高级”  选项卡获取此客户端 ID。
    * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
-   * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done*。
+   * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done* 。
 
      每个平台所需的代码如下：
 
@@ -909,11 +909,11 @@ private async void InitNotificationsAsync()
 
 若要获取此值，请执行以下操作：
 
-1. 在“Visual Studio 解决方案资源管理器”中，右键单击 Microsoft Store 应用项目，再单击“Store” > “将应用与 Store 关联...”。
-2. 在向导中，单击“下一步”，使用 Microsoft 帐户登录，在“保留新应用名称”中键入应用的名称，并单击“保留”。
-3. 成功创建应用注册后，选择应用名称，再依次单击“下一步”和“关联”。
-4. 使用 Microsoft 帐户登录到 [Windows 开发人员中心]。 在“我的应用”下面，单击创建的应用注册。
-5. 单击“应用管理” > “应用标识”，并向下滚动找到“包 SID”。
+1. 在“Visual Studio 解决方案资源管理器”中，右键单击 Microsoft Store 应用项目，再单击“Store”   > “将应用与 Store 关联...”  。
+2. 在向导中，单击“下一步”  ，使用 Microsoft 帐户登录，在“保留新应用名称”  中键入应用的名称，并单击“保留”  。
+3. 成功创建应用注册后，选择应用名称，再依次单击“下一步”  和“关联”  。
+4. 使用 Microsoft 帐户登录到 [Windows 开发人员中心]。 在“我的应用”  下面，单击创建的应用注册。
+5. 单击“应用管理”   > “应用标识”  ，并向下滚动找到“包 SID”  。
 
 包 SID 的许多用法将其视为 URI，在这种情况下，需要使用 *ms-app://* 作为方案。 记下包 SID 的版本，其中串联了此值作为前缀。
 

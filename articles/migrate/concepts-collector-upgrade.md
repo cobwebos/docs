@@ -8,10 +8,10 @@ ms.date: 03/29/2019
 ms.author: hamusa
 services: azure-migrate
 ms.openlocfilehash: 7cd44318716200d665ece9ffecc45225bdfb85eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60685913"
 ---
 # <a name="collector-appliance-updates"></a>收集器设备更新
@@ -32,8 +32,8 @@ Azure Migrate 收集器是一种轻量级设备，用于在迁移到 Azure 之�
 
     示例：**C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256)**
 4. 将 zip 文件复制到收集器设备虚拟机。
-5. 右键单击 zip 文件 >“全部提取”。
-6. 右键单击 Setup.ps1 > “使用 PowerShell 运行”，并按照安装说明进行操作。
+5. 右键单击 zip 文件 >“全部提取”  。
+6. 右键单击 Setup.ps1   > “使用 PowerShell 运行”  ，并按照安装说明进行操作。
 
 ## <a name="collector-update-release-history"></a>收集器更新版本历史记录
 

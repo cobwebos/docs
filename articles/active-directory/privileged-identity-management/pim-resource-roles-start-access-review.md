@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78e4de5bbc56f95c0e903b1dac4e8481373716f3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143522"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>在 PIM 中创建 Azure 资源角色的访问评审
@@ -36,7 +36,7 @@ ms.locfileid: "65143522"
 
 1. 登录到[Azure 门户](https://portal.azure.com/)与用户特权角色管理员角色的成员。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
 1. 在左侧菜单中，单击**Azure 资源**。
 
@@ -52,7 +52,7 @@ ms.locfileid: "65143522"
 
 ## <a name="start-the-access-review"></a>启动访问评审
 
-指定访问评审的设置后，单击“启动”。 访问评审会在其状态指示符列表中显示。
+指定访问评审的设置后，单击“启动”。  访问评审会在其状态指示符列表中显示。
 
 ![访问评审列表](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 

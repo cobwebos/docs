@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 51a812762659bcc67762b82e9c120772065aab53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60814418"
 ---
 # <a name="schema-format"></a>架构格式
@@ -49,16 +49,16 @@ ms.locfileid: "60814418"
 | `Double` | 双精度浮点值 | equals、starts_with、is_between | 1.602e-19 |
 | `Date` | 日期（1400-01-01 到 9999-12-31） | equals、is_between | '2016-03-14' |
 | `Guid` | 全局唯一标识符 | equals | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
-| `Blob` | 内部压缩的非索引数据 | 无 | "Empower every person and every organization on the planet to achieve more" |
+| `Blob` | 内部压缩的非索引数据 | *无* | "Empower every person and every organization on the planet to achieve more" |
 | `Composite` | 多个子属性的复合| *不适用* | { "Name":"harry shum", "Affiliation":"microsoft" } |
 
-String 属性用于表示可能在用户查询中显示的字符串值。  它们支持完全匹配的 equals 操作，以及适用于查询完成方案的 starts_with 操作（如匹配“micros”与“microsoft”）。  今后推出的版本将支持不区分大小写和模糊匹配，以便处理拼写错误。
+String 属性用于表示可能在用户查询中显示的字符串值。  它们支持完全匹配的 equals  操作，以及适用于查询完成方案的 starts_with  操作（如匹配“micros”与“microsoft”）。  今后推出的版本将支持不区分大小写和模糊匹配，以便处理拼写错误。
 
-Int32/Int64/Double 属性用于表示数值。  is_between 操作在运行时支持不等式（lt、le、gt、ge）。  starts_with 操作支持查询完成方案，如匹配“20”与“2016”或匹配“3.” 与“3.14”。
+Int32/Int64/Double 属性用于表示数值。  is_between  操作在运行时支持不等式（lt、le、gt、ge）。  starts_with  操作支持查询完成方案，如匹配“20”与“2016”或匹配“3.” 与“3.14”。
 
-Date 属性用于对日期值进行高效编码。  is_between 操作在运行时支持不等式（lt、le、gt、ge）。
+Date 属性用于对日期值进行高效编码。  is_between  操作在运行时支持不等式（lt、le、gt、ge）。
   
-Guid 属性用于有效表示 GUID 值，默认支持 equals 操作。
+Guid 属性用于有效表示 GUID 值，默认支持 equals  操作。
 
 Blob 属性用于对可能很大的数据 blob 进行高效编码，以便从相应对象执行运行时查找，而无需支持以 blob 值内容为依据的任何索引操作。
 
@@ -70,12 +70,12 @@ Composite 属性用于表示一组属性值。  每个子属性的名称以复�
 
 ## <a name="attribute-operations"></a>属性操作
 
-默认将每个属性都编入索引，以支持属性数据类型可用的所有操作。  如果不需要特定操作，可以明确指定索引操作集，从而减少索引大小。  在下面取自上述示例架构的代码片段中，已将 Author.Id 属性编入索引，以仅支持 equals 操作，而不支持适用于 Int32 属性的其他操作 starts_with 和 is_between。
+默认将每个属性都编入索引，以支持属性数据类型可用的所有操作。  如果不需要特定操作，可以明确指定索引操作集，从而减少索引大小。  在下面取自上述示例架构的代码片段中，已将 Author.Id 属性编入索引，以仅支持 equals  操作，而不支持适用于 Int32 属性的其他操作 starts_with  和 is_between  。
 ```json
 {"name":"Author.Id", "type":"Int32", "operations":["equals"]}
 ```
 
-在语法内引用属性时，需要在架构中指定 starts_with 操作，这样服务才能在部分查询的基础上完成查询。  
+在语法内引用属性时，需要在架构中指定 starts_with  操作，这样服务才能在部分查询的基础上完成查询。  
 
 ## <a name="attribute-synonyms"></a>属性同义词
 

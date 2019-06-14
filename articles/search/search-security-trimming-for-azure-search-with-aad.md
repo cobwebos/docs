@@ -10,10 +10,10 @@ ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61282199"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器
@@ -43,12 +43,12 @@ Azure 搜索中的索引必须有一个[安全字段](search-security-trimming-f
 
 此步骤将应用程序与 AAD 集成，以接受用户和组帐户的登录。 如果你不是组织中的 AAD 管理员，可能需要[创建新租户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)才能执行以下步骤。
 
-1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com)  >   选择“聚合应用” > “添加应用”。
-2. 输入应用程序的名称，单击“创建”。 
+1. 转到[**应用程序注册门户**](https://apps.dev.microsoft.com)  >   选择“聚合应用” > “添加应用”。  
+2. 输入应用程序的名称，单击“创建”。  
 3. 在“我的应用程序”页中选择新注册的应用程序。
-4. 在应用程序注册页上 > 选择“平台” > “添加平台”>“Web API”。
-5. 仍在应用程序注册页上，转到“Microsoft Graph 权限” > “添加”。
-6. 在“选择权限”中添加以下委托权限，单击“确定”：
+4. 在应用程序注册页上 > 选择“平台” > “添加平台”>“Web API”。   
+5. 仍在应用程序注册页上，转到“Microsoft Graph 权限” > “添加”。  
+6. 在“选择权限”中添加以下委托权限，单击“确定”： 
 
    + **Directory.ReadWrite.All**
    + **Group.ReadWrite.All**

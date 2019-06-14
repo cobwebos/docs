@@ -10,10 +10,10 @@ ms.date: 02/25/2019
 ms.author: kgremban
 ms.custom: seodec18
 ms.openlocfilehash: 1c9855f982b888e8e1d68bfe5233983db8c826ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61247986"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备
@@ -43,19 +43,19 @@ ms.locfileid: "61247986"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中转到 IoT 中心。
 
-2. 转到“IoT Edge”，然后单击 IoT Edge 设备。
+2. 转到“IoT Edge”  ，然后单击 IoT Edge 设备。
 
-3. 选择“设置模块”。
+3. 选择“设置模块”  。
 
 4. 添加 Modbus 模块：
 
-   1. 单击“添加”，然后选择“IoT Edge 模块”。
+   1. 单击“添加”，然后选择“IoT Edge 模块”。  
 
-   2. 在“名称”字段中，输入“modbus”。
+   2. 在“名称”  字段中，输入“modbus”。
 
-   3. 在“映像”字段中，输入示例容器的映像 URI：`mcr.microsoft.com/azureiotedge/modbus:1.0`。
+   3. 在“映像”字段中，输入示例容器的映像  URI：`mcr.microsoft.com/azureiotedge/modbus:1.0`。
 
-   4. 勾选“启用”框，更新模块孪生的所需属性。
+   4. 勾选“启用”框，更新  模块孪生的所需属性。
 
    5. 将以下 JSON 复制到文本框中。 将 **SlaveConnection** 的值更改为 Modbus 设备的 IPv4 地址。
 
@@ -81,11 +81,11 @@ ms.locfileid: "61247986"
       }
       ```
 
-   6. 选择“保存”。
+   6. 选择“保存”。 
 
-5. 返回到“添加模块”步骤，选择“下一步”。
+5. 返回到“添加模块”  步骤，选择“下一步”  。
 
-7. 在“指定路由”步骤中，将以下 JSON 复制到文本框中。 此路由将 Modbus 模块收集的所有消息发送到 IoT 中心。 在此路由中，“modbusOutput”是 Modbus 模块用于输出数据的终结点，“upstream”则是一个特殊目标，告知 IoT Edge 中心将消息发送到 IoT 中心。
+7. 在“指定路由”步骤中，将以下 JSON 复制到文本框中  。 此路由将 Modbus 模块收集的所有消息发送到 IoT 中心。 在此路由中，“modbusOutput”是 Modbus 模块用于输出数据的终结点，“upstream”则是一个特殊目标，告知 IoT Edge 中心将消息发送到 IoT 中心。
    ```JSON
    {
     "routes": {
@@ -96,9 +96,9 @@ ms.locfileid: "61247986"
 
 8. 选择“**下一步**”。
 
-9. 在“复查部署”步骤中，选择“提交”。
+9. 在“复查部署”步骤中，选择“提交”   。
 
-10. 返回到“设备详细信息”页，并选择“刷新”。 此时会看到新的 **modbus** 模块与 IoT Edge 运行时一起运行。
+10. 返回到“设备详细信息”页，并选择“刷新”  。 此时会看到新的 **modbus** 模块与 IoT Edge 运行时一起运行。
 
 ## <a name="view-data"></a>查看数据
 查看通过 modbus 模块发送过来的数据：

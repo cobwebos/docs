@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: chstone
 ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61291873"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>示例：为 Azure 搜索的 AdventureWorks Inventory 数据库建模
@@ -43,7 +43,7 @@ ms.locfileid: "61291873"
 
 ## <a name="use-a-collection-data-type"></a>使用 Collection 数据类型
 
-“正确方法”是利用搜索架构功能，该功能在数据库模型中没有直接的对应项：**Collection(Edm.String)**。 如果有一个由单个字符串组成的列表，而不是一个很长的字符串，则使用 Collection 数据类型。 如果有标记或关键字，则对此字段使用 Collection 数据类型。
+“正确方法”是利用搜索架构功能，该功能在数据库模型中没有直接的对应项：**Collection(Edm.String)** 。 如果有一个由单个字符串组成的列表，而不是一个很长的字符串，则使用 Collection 数据类型。 如果有标记或关键字，则对此字段使用 Collection 数据类型。
 
 针对“color”、“size”和“image”定义 **Collection(Edm.String)** 的多值索引字段后，就会保留用于分面和筛选的辅助信息，不会使用重复项来“污染”索引。 类似地，将聚合函数应用到 Product 表的数字字段，为 **minListPrice** 而不是每个产品 **listPrice** 编制索引。
 

@@ -16,10 +16,10 @@ ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66475215"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
@@ -147,7 +147,7 @@ ms.locfileid: "66475215"
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> 一个**注意安全**为自定义域意味着尚不支持绑定到 SSL 的证书，并会收到任何从浏览器到自定义域的 HTTPS 请求和错误或警告，具体取决于浏览器标签。 若要配置 SSL 绑定，请参阅[购买和配置 Azure 应用服务 SSL 证书](web-sites-purchase-ssl-web-site.md)。
+> 自定义域的 **Note Secure** 标签意味着该域还没有绑定到 SSL 证书，浏览器对自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要配置 SSL 绑定，请参阅[购买和配置 Azure 应用服务 SSL 证书](web-sites-purchase-ssl-web-site.md)。
 >
 
 若要测试主机名，请在浏览器中导航到列出的主机名。 在上面的屏幕截图中的示例，请尝试导航到_kontoso.net_并_www\.kontoso.net_。

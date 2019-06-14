@@ -8,32 +8,32 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 26c3466080cb356ca3610d42eaaf5ee4975d3731
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61471833"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
-本文将介绍 Azure Site Recovery 如何与 Azure 自动化集成，以便扩展恢复计划。 恢复计划可以安排恢复受 Site Recovery 保护的 VM。 恢复计划支持复制到辅助云和复制到 Azure。 恢复计划还有助于实现恢复的一致准确性、可重复性和自动化。 如果从 VM 故障转移到 Azure，与 Azure 自动化集成可以扩展恢复计划。 可用于执行 Runbook，从而提供功能强大的自动化任务。
+本文将介绍 Azure Site Recovery 如何与 Azure 自动化集成，以便扩展恢复计划。 恢复计划可以安排恢复受 Site Recovery 保护的 VM。 恢复计划支持复制到辅助云和复制到 Azure。 恢复计划还有助于实现恢复的一致准确性  、可重复性  和自动化  。 如果从 VM 故障转移到 Azure，与 Azure 自动化集成可以扩展恢复计划。 可用于执行 Runbook，从而提供功能强大的自动化任务。
 
 如果刚开始接触 Azure 自动化，可以[注册](https://azure.microsoft.com/services/automation/)和[下载示例脚本](https://azure.microsoft.com/documentation/scripts/)。 有关详细信息，以及若要了解如何使用[恢复计划](./site-recovery-create-recovery-plans.md)来安排恢复到 Azure，请参阅 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)。
 
 本文将介绍如何将 Azure 自动化 Runbook 集成到恢复计划中。 我们使用示例，自动执行以前需要手动干预的基本任务。 本文还将介绍如何将多步骤恢复过程转换为一键式恢复操作。
 
 ## <a name="customize-the-recovery-plan"></a>自定义恢复计划
-1. 转到“Site Recovery”恢复计划资源边栏选项卡。 对于此示例，恢复计划包含两个要恢复的 VM。 若要开始添加 Runbook，请单击“自定义”选项卡。
+1. 转到“Site Recovery”  恢复计划资源边栏选项卡。 对于此示例，恢复计划包含两个要恢复的 VM。 若要开始添加 Runbook，请单击“自定义”  选项卡。
 
     ![单击“自定义”按钮](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-2. 右键单击“组 1: 启动”，然后选择“添加后操作”。
+2. 右键单击“组 1:  启动”，然后选择“添加后操作”  。
 
     ![右键单击“组 1:”启动和添加后操作](media/site-recovery-runbook-automation-new/customize-rp.png)
 
-3. 单击“选择脚本”。
+3. 单击“选择脚本”  。
 
-4. 在“更新操作”边栏选项卡中，将脚本命名为“Hello World”。
+4. 在“更新操作”  边栏选项卡中，将脚本命名为“Hello World”  。
 
     ![“更新操作”边栏选项卡](media/site-recovery-runbook-automation-new/update-rp.png)
 
@@ -43,14 +43,14 @@ ms.locfileid: "61471833"
 
 6. 在自动化帐户中，选择一个 Runbook。 此 Runbook 是在恢复第一组后执行恢复计划期间运行的脚本。
 
-7. 选择“确定”，保存脚本。 此脚本添加到“组 1: **后步骤”**。
+7. 选择“确定”  ，保存脚本。 此脚本添加到“组 1: **后步骤”** 。
 
     ![“组 1：后步骤”](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
 
 ## <a name="considerations-for-adding-a-script"></a>添加脚本时的注意事项
 
-* 若要删除步骤或更新脚本，请右键单击脚本。
+* 若要删除步骤  或更新脚本  ，请右键单击脚本。
 * 从本地计算机故障转移到 Azure 期间，可以在 Azure 上运行脚本。 从 Azure 故障回复到本地计算机期间，它还可以在关闭前，在 Azure 上作为主站点脚本运行。
 * 当脚本运行时，它将注入恢复计划上下文。 下面的示例展示了上下文变量：
 
@@ -206,7 +206,7 @@ workflow AddPublicIPAndNSG {
         New-AzureRmAutomationVariable -ResourceGroupName <RG of Automation Account> -AutomationAccountName <AA Name> -Name <RecoveryPlanName> -Value $VMDetails -Encrypted $false
     ```
 
-3. 在此复杂变量中，VMDetails 是受保护 VM 的 VM ID。 若要获取 VM ID，请在 Azure 门户中查看 VM 属性。 下面的屏幕截图展示了一个存储两个 VM 详细信息的变量：
+3. 在此复杂变量中，VMDetails  是受保护 VM 的 VM ID。 若要获取 VM ID，请在 Azure 门户中查看 VM 属性。 下面的屏幕截图展示了一个存储两个 VM 详细信息的变量：
 
     ![将 VM ID 用作 GUID](media/site-recovery-runbook-automation-new/vmguid.png)
 
@@ -216,7 +216,7 @@ workflow AddPublicIPAndNSG {
     $VMDetailsObj = (Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName).ToObject([hashtable])
     ```
 
-4. 在 Runbook 中，循环访问恢复计划上下文的 VM。 检查 $VMDetailsObj 中是否有 VM。 如果有，请访问变量属性，以应用 NSG：
+4. 在 Runbook 中，循环访问恢复计划上下文的 VM。 检查 $VMDetailsObj  中是否有 VM。 如果有，请访问变量属性，以应用 NSG：
 
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -240,7 +240,7 @@ workflow AddPublicIPAndNSG {
 
 ## <a name="sample-scripts"></a>示例脚本
 
-单击“部署到 Azure”按钮，将示例脚本部署到自动化帐户。
+单击“部署到 Azure”  按钮，将示例脚本部署到自动化帐户。
 
 [![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 

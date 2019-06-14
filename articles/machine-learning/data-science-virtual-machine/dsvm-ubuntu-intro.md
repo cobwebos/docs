@@ -17,10 +17,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: 5a9fdebc8db0c2a1acc20a894f80cfcc87fb89d5
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66236489"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
@@ -231,7 +231,7 @@ R 是数据分析和机器学习的最常用语言之一。 如果要使用 R �
 
 ### <a name="python"></a>Python
 
-使用 Python 2.7 和 3.5 环境安装 Anaconda Python。 2.7 环境称为根环境，3.5 环境称为 py35 环境   。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。
+使用 Python 2.7 和 3.5 环境安装 Anaconda Python。 2\.7 环境称为根环境，3.5 环境称为 py35 环境   。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。
 
 默认为 py35 环境。 激活根 (2.7) 环境：
 

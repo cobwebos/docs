@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65979553"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
@@ -24,7 +24,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
-- 模式
+- mode
 - parameters
 - 显示名称
 - description
@@ -77,9 +77,9 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - `all`：评估资源组和所有资源类型
 - `indexed`：仅评估支持标记和位置的资源类型
 
-大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
+大多数情况下，建议将“mode”设置为  `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
-在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 如需支持标记的资源的列表，请参阅 [Azure 资源的标记支持](../../../azure-resource-manager/tag-support.md)。
+在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外  。 在资源组上强制执行位置或标记的策略应将“mode”  设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 如需支持标记的资源的列表，请参阅 [Azure 资源的标记支持](../../../azure-resource-manager/tag-support.md)。
 
 ## <a name="parameters"></a>parameters
 
@@ -87,7 +87,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
 
 > [!NOTE]
-> 参数可以添加到现有和已分配的定义。 新参数必须包含 defaultValue 属性。 这可以防止策略或计划的现有分配间接被设为无效。
+> 参数可以添加到现有和已分配的定义。 新参数必须包含 defaultValue  属性。 这可以防止策略或计划的现有分配间接被设为无效。
 
 ### <a name="parameter-properties"></a>参数属性
 
@@ -165,7 +165,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 ## <a name="display-name-and-description"></a>显示名称和说明
 
-请使用“displayName”和“description”来标识策略定义，并提供其使用上下文。 **displayName** 的最大长度为 128 个字符，**description** 的最大长度为 512 个字符。
+请使用“displayName”和“description”来标识策略定义，并提供其使用上下文   。 **displayName** 的最大长度为 128  个字符，**description** 的最大长度为 512  个字符。
 
 ## <a name="policy-rule"></a>策略规则
 
@@ -194,7 +194,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 **not** 语法反转条件的结果。 **allOf** 语法（与逻辑 **And** 操作相似）要求所有条件为 true。 **anyOf** 语法（与逻辑 **Or** 操作相似）要求一个或多个条件为 true。
 
-可以嵌套逻辑运算符。 以下示例显示了嵌套在 allOf 操作中的 not 操作。
+可以嵌套逻辑运算符。 以下示例显示了嵌套在 allOf  操作中的 not  操作。
 
 ```json
 "if": {
@@ -236,11 +236,11 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
-使用 like 和 notLike 条件时，请在值中指定通配符 `*`。
+使用 like  和 notLike  条件时，请在值中指定通配符 `*`。
 值不应包含多个通配符 `*`。
 
-使用时**匹配**和**notMatch**条件，提供`#`以匹配一个数字`?`的信件，`.`来匹配任何字符和任何其他字符来匹配该实际字符。
-“match”和“notMatch”区分大小写。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案。 例如，请参阅[允许多个名称模式](../samples/allow-multiple-name-patterns.md)。
+当使用 match  和 notMatch  条件时，请提供 `#` 来匹配数字，提供 `?` 来匹配字母，提供 `.` 来匹配任何字符，并提供任何其他字符来匹配该实际字符。
+“match”和“notMatch”区分大小写   。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案   。 例如，请参阅[允许多个名称模式](../samples/allow-multiple-name-patterns.md)。
 
 ### <a name="fields"></a>字段
 
@@ -261,11 +261,11 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - `tags['<tagName>']`
   - 此括号语法支持具有标点符号的标记名称，例如连字符、句点或空格。
   - 其中 **\<tagName\>** 是要验证其条件的标记的名称。
-  - 示例：`tags['Acct.CostCenter']`，其中 Acct.CostCenter 是标记的名称。
+  - 示例：`tags['Acct.CostCenter']`，其中 Acct.CostCenter 是标记的名称  。
 - `tags['''<tagName>''']`
   - 此括号语法通过双撇号进行转义，可支持在其中包含撇号的标记名称。
-  - 其中“\<tagName\>”是要验证其条件的标记的名称。
-  - 示例：`tags['''My.Apostrophe.Tag''']`，其中“\<tagName\>”是标记的名称。
+  - 其中“\<tagName\>”是要验证其条件的标记的名称  。
+  - 示例：`tags['''My.Apostrophe.Tag''']`，其中“\<tagName\>”是标记的名称  。
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
 > [!NOTE]
@@ -275,7 +275,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 参数值可以传递给标记字段。 将参数传递给标记字段可在策略分配期间提高策略定义的灵活性。
 
-在以下示例中，`concat` 用于为名为 tagName 参数值的标记创建标记字段查找。 如果该标记不存在，则使用“追加”效果来添加该标记，该效果使用 `resourcegroup()` 查找函数在审计资源父资源组上使用同一命名标记集的值来添加该标记。
+在以下示例中，`concat` 用于为名为 tagName 参数值的标记创建标记字段查找  。 如果该标记不存在，则使用“追加”效果来添加该标记，该效果使用 `resourcegroup()` 查找函数在审计资源父资源组上使用同一命名标记集的值来添加该标记  。
 
 ```json
 {
@@ -299,7 +299,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 **value** 可与任何支持的[条件](#conditions)配对。
 
 > [!WARNING]
-> 如果模板函数的结果是错误，策略评估将会失败。 失败的评估是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板错误](#avoiding-template-failures)。
+> 如果模板函数的结果是错误，策略评估将会失败。  失败的评估是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板错误](#avoiding-template-failures)。
 
 #### <a name="value-examples"></a>Value 示例
 
@@ -343,7 +343,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 #### <a name="avoiding-template-failures"></a>避免模板错误
 
-在 **value** 中使用模板函数可以指定许多复杂的嵌套函数。 如果模板函数的结果是错误，策略评估将会失败。 失败的评估是一种隐式**拒绝**。 在特定情况下失败的 **value** 示例：
+在 **value** 中使用模板函数可以指定许多复杂的嵌套函数。  如果模板函数的结果是错误，策略评估将会失败。  失败的评估是一种隐式**拒绝**。 在特定情况下失败的 **value** 示例：
 
 ```json
 {
@@ -402,7 +402,7 @@ Azure Policy 支持以下类型的效果：
 
 值可以是字符串或 JSON 格式对象。
 
-AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并应用规则。 如果资源与规则不匹配，则会实现效果。 例如，可以要求为所有虚拟网络部署网络观察程序。 有关更多信息，请参阅[在扩展不存在的情况下审核](../samples/audit-ext-not-exist.md)示例。
+AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并应用规则   。 如果资源与规则不匹配，则会实现效果。 例如，可以要求为所有虚拟网络部署网络观察程序。 有关更多信息，请参阅[在扩展不存在的情况下审核](../samples/audit-ext-not-exist.md)示例。
 
 **DeployIfNotExists** 效果需要策略规则的 **details** 部分中的 **roleDefinitionId** 属性。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
 
@@ -498,7 +498,7 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 
 ### <a name="understanding-the--alias"></a>了解 [*] 别名
 
-可用的几个别名的版本显示为“普通”名称，另一个版本的名称则附加了 **[\*]**。 例如:
+可用的几个别名的版本显示为“普通”名称，另一个版本的名称则附加了 **[\*]** 。 例如：
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
@@ -614,4 +614,4 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)。
 - 了解如何[修正的不合规资源](../how-to/remediate-resources.md)。
-- 查看管理组与[使用 Azure 管理组组织资源](../../management-groups/overview.md)。
+- 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

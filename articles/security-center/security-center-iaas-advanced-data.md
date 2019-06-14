@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/29/2019
 ms.author: monhaber
 ms.openlocfilehash: e7420adfe1608df39ef72124817f1d6dadf07db8
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66400139"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-iaas"></a>IaaS 上的 SQL 服务器的高级的数据安全性

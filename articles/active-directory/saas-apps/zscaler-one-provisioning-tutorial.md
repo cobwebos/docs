@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 5319b0ac06c4ddf1a7627a4e7fe0bfb2694f79f6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706603"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>教程：将 Zscaler One 配置自动用户预配
@@ -52,11 +52,11 @@ ms.locfileid: "64706603"
 
     ![Azure Active Directory 图标](common/select-azuread.png)
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。
+2. 转到“企业应用程序”，并选择“所有应用程序”。  
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请在对话框顶部选择“新建应用程序”。
+3. 若要添加新应用程序，请在对话框顶部选择“新建应用程序”  。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
@@ -74,7 +74,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 * 我们建议将分配一个 Azure AD 用户与 Zscaler One 测试自动用户预配配置。 可以稍后分配其他用户或组。
 
-* 当将用户分配到 Zscaler One 时，请选择任何有效的特定于应用程序的角色，如果可用，在分配对话框中。 具有“默认访问权限”角色的用户排除在预配之外。
+* 当将用户分配到 Zscaler One 时，请选择任何有效的特定于应用程序的角色，如果可用，在分配对话框中。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="configure-automatic-user-provisioning-to-zscaler-one"></a>配置自动用户预配到 Zscaler One
 
@@ -89,21 +89,21 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Zscaler One”。
+2. 在应用程序列表中，选择“Zscaler One”  。
 
     ![应用程序列表中的 Zscaler One 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![Zscaler One 预配](./media/zscaler-one-provisioning-tutorial/provisioning-tab.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![Zscaler 一种预配模式](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
 5. 下**管理员凭据**部分中，填写**租户 URL**并**机密令牌**框的设置你的 Zscaler One 帐户在步骤 6 中所述。
 
-6. 若要获取租户 URL 和机密令牌，请转到**Administration** > **身份验证设置**Zscaler One 的门户 UI 中。 下**身份验证类型**，选择**SAML**。
+6. 若要获取租户 URL 和机密令牌，请转到**Administration** > **身份验证设置**Zscaler One 的门户 UI 中。 在“身份验证类型”下选择“SAML”。  
 
     ![Zscaler One 身份验证设置](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
@@ -121,7 +121,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![Zscaler One 通知电子邮件](./media/zscaler-one-provisioning-tutorial/notification.png)
 
-9. 选择“保存”。
+9. 选择“保存”。 
 
 10. 下**映射**部分中，选择**Azure Active Directory 用户同步到 Zscaler One**。
 

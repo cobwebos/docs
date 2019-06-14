@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
 ms.openlocfilehash: dcfcd4b55f848e1725e286e6ef2a87a2c36e5a71
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64684936"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
@@ -248,7 +248,7 @@ beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
     > [!NOTE]  
     > 与外部表不同，删除内部表会同时删除基础数据。
 
-3. 要保存文件，请使用 **Ctrl**+**_X**，并输入 **Y**，最后按 **Enter**。
+3. 要保存文件，请使用 **Ctrl**+ **_X**，并输入 **Y**，最后按 **Enter**。
 
 4. 使用以下命令以通过 Beeline 运行该文件：
 
@@ -265,7 +265,7 @@ beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
     SELECT * from errorLogs;
     ```
 
-    应返回三行数据，所有行都包含 t4 列中的 **[ERROR]**：
+    应返回三行数据，所有行都包含 t4 列中的 **[ERROR]** ：
 
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         | errorlogs.t1  | errorlogs.t2  | errorlogs.t3  | errorlogs.t4  | errorlogs.t5  | errorlogs.t6  | errorlogs.t7  |

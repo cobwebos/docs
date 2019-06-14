@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
 ms.openlocfilehash: 99dd3c0b07307f2d0bf97dbff697e32e648705ae
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66400180"
 ---
 # <a name="azure-backup-support-matrix"></a>Azure 备份支持矩阵

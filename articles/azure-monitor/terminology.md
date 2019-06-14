@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2019
 ms.author: bwren
 ms.openlocfilehash: 8f645f7d569546a8362d0149806a2b4636567fd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61086730"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor 命名和术语更改
@@ -26,15 +26,15 @@ ms.locfileid: "61086730"
 将不同的服务合并到 Azure Monitor 下以后，我们将执行下一步，修改文档中的术语，以便更好地描述 Azure Monitor 服务及其不同的组件。 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure Monitor 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析，但我们会在许多位置将术语 _Log Analytics_ 更改为“Azure Monitor 日志”。 该术语更好地反映其在 Azure Monitor 中的角色，提供更好的一致性[指标（在 Azure Monitor 中）](platform/data-platform-metrics.md)。
+Azure Monitor 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析，但我们会在许多位置将术语 _Log Analytics_ 更改为“Azure Monitor 日志”  。 该术语更好地反映其在 Azure Monitor 中的角色，提供更好的一致性[指标（在 Azure Monitor 中）](platform/data-platform-metrics.md)。
 
 术语 _Log Analytics_ 现在主要应用于 Azure 门户中的页面，用于编写和运行查询以及分析日志数据。 它在功能上相当于[指标资源管理器](platform/metrics-charts.md)，后者是 Azure 门户中的页面，用于分析指标数据。
 
 ### <a name="log-analytics-workspaces"></a>Log Analytics 工作区
-在 Azure Monitor 中保存日志数据的[工作区](platform/manage-access.md)仍然称为 Log Analytics 工作区。 Azure 门户中的“Log Analytics”菜单已重命名为“Log Analytics 工作区”，是[创建新工作区](learn/quick-create-workspace.md)和配置数据源的地方。 在 **Azure Monitor** 中分析日志和其他监视数据，在 **Log Analytics 工作区**中配置工作区。
+在 Azure Monitor 中保存日志数据的[工作区](platform/manage-access.md)仍然称为 Log Analytics 工作区。 Azure 门户中的“Log Analytics”菜单已重命名为“Log Analytics 工作区”，是[创建新工作区](learn/quick-create-workspace.md)和配置数据源的地方   。 在 **Azure Monitor** 中分析日志和其他监视数据，在 **Log Analytics 工作区**中配置工作区。
 
 ### <a name="management-solutions"></a>管理解决方案
-[管理解决方案](insights/solutions.md)已重命名为“监视解决方案”，以便更好地描述其功能。
+[管理解决方案](insights/solutions.md)已重命名为“监视解决方案”  ，以便更好地描述其功能。
 
 
 ## <a name="august-2018---consolidation-of-monitoring-services-into-azure-monitor"></a>2018 年 8 月 - 将监视服务合并到了 Azure Monitor 中

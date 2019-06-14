@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764316"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure 数据工厂中的验证活动
@@ -59,9 +59,9 @@ ms.locfileid: "60764316"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-名称 | 验证活动的名称 | String | 是 |
+name | 验证活动的名称 | String | 是 |
 type | 必须设置为**验证**。 | String | 是 |
 dataset | 活动将阻止执行，直到其已经验证此数据集引用存在，并且满足指定的条件时，或达到超时。 提供数据集应支持"MinimumSize"或"ChildItems"属性。 | 数据集引用 | 是 |
 timeout | 指定活动运行的超时。 如果未不指定任何值，默认值为 7 天 ("7.00:00:00")。 格式是 d.hh:mm:ss | String | 否 |

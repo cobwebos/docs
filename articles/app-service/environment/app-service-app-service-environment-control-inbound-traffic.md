@@ -16,15 +16,15 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130783"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>如何控制应用服务环境的入站流量
 ## <a name="overview"></a>概述
-可以在 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中创建应用服务环境。  创建应用服务环境时，可以定义新的虚拟网络和新的子网。  或者，可以在预先存在的虚拟网络和预先存在的子网中创建应用服务环境。  2016 年 6 月进行更改以后，也可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络。  有关创建应用服务环境的更多详细信息，请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]。
+可以在 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中创建应用服务环境  。  创建应用服务环境时，可以定义新的虚拟网络和新的子网。  或者，可以在预先存在的虚拟网络和预先存在的子网中创建应用服务环境。  2016 年 6 月进行更改以后，也可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络。  有关创建应用服务环境的更多详细信息，请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]。
 
 应用服务环境始终必须在子网中创建，由于子网提供网络边界用于锁定上游设备和服务后面的入站流量，因此只接受来自特定上游 IP 地址的 HTTP 和 HTTPS 流量。
 
@@ -39,8 +39,8 @@ ms.locfileid: "62130783"
 
 以下是应用服务环境使用的端口列表。 所有端口都是 **TCP**，除非另有明确的说明：
 
-* 454：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的“必需端口”。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
-* 455：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的“必需端口”。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 454：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的“必需端口”  。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 455：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的“必需端口”  。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
 * 80：默认端口，用于将入站 HTTP 流量发往应用服务环境的应用服务计划中运行的应用。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
 * 443：默认端口，用于将入站 SSL 流量发往应用服务环境的应用服务计划中运行的应用。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
 * 21：FTP 的控制通道。  如果未使用 FTP，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
@@ -111,7 +111,7 @@ ms.locfileid: "62130783"
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
 ## <a name="special-considerations-for-explicit-ip-ssl"></a>有关显式 IP-SSL 的特殊注意事项
-如果使用显式 IP-SSL 地址配置应用（仅适用于具有公共 VIP 的 ASE）而不是使用应用服务环境的默认 IP 地址，则 HTTP 和 HTTPS 流量将通过一组非 80 和 443 的端口发往子网。
+如果使用显式 IP-SSL 地址配置应用（仅  适用于具有公共 VIP 的 ASE）而不是使用应用服务环境的默认 IP 地址，则 HTTP 和 HTTPS 流量将通过一组非 80 和 443 的端口发往子网。
 
 可以从门户用户界面的应用服务环境的详细信息 UX 边栏选项卡中找到每个 IP-SSL 地址所使用的单个端口对。  选择“所有设置”-->“IP 地址”。  “IP 地址”边栏选项卡显示应用服务环境的所有显式配置的 IP-SSL 地址表，以及用于路由与每个 IP-SSL 地址关联的 HTTP 和 HTTPS 流量的特殊端口对。  在网络安全组中配置规则时，需要针对 DestinationPortRange 参数使用此端口对。
 

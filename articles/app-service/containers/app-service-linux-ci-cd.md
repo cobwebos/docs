@@ -17,10 +17,10 @@ ms.date: 11/08/2018
 ms.author: yili
 ms.custom: seodec18
 ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60852483"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用于容器的 Web 应用进行持续部署
@@ -32,12 +32,12 @@ ms.locfileid: "60852483"
 ![ACR Webhook 的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择页面左侧的“应用服务”选项。
+2. 选择页面左侧的“应用服务”选项。 
 3. 选择要为其配置持续部署的应用的名称。
-4. 在“容器设置”页上，选择“单个容器”
-5. 选择“Azure 容器注册表”
-6. 选择“持续部署”>“启用”
-7. 选择“保存”以启用持续部署。
+4. 在“容器设置”  页上，选择“单个容器” 
+5. 选择“Azure 容器注册表” 
+6. 选择“持续部署”>“启用” 
+7. 选择“保存”  以启用持续部署。
 
 ## <a name="use-the-acr-webhook"></a>使用 ACR Webhook
 
@@ -50,12 +50,12 @@ ms.locfileid: "60852483"
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>使用 Docker 中心启用持续部署（可选）
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择页面左侧的“应用服务”选项。
+2. 选择页面左侧的“应用服务”选项。 
 3. 选择要为其配置持续部署的应用的名称。
-4. 在“容器设置”页上，选择“单个容器”
-5. 选择“Docker 中心”
-6. 选择“持续部署”>“启用”
-7. 选择“保存”以启用持续部署。
+4. 在“容器设置”  页上，选择“单个容器” 
+5. 选择“Docker 中心” 
+6. 选择“持续部署”>“启用” 
+7. 选择“保存”  以启用持续部署。
 
 ![应用设置的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/ci-cd-docker-02.png)
 
