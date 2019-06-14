@@ -9,10 +9,10 @@ ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 8d7ac457041474f4e774414b1d5e6f9ed09dc856
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146538"
 ---
 <!-- this tells how to get the connection string for your hub -->
@@ -20,11 +20,11 @@ ms.locfileid: "66146538"
 
 创建中心以后，请检索中心的连接字符串。 该字符串用于将设备和应用程序连接到中心。 
 
-1. 单击中心，查看“IoT 中心”窗格，其中包含“设置”等内容。 单击“共享访问策略”。
+1. 单击中心，查看“IoT 中心”窗格，其中包含“设置”等内容。 单击“共享访问策略”。 
    
-2. 在“共享访问策略”中，选择 **iothubowner** 策略。 
+2. 在“共享访问策略”中，选择 **iothubowner** 策略。  
 
-3. 在“共享访问密钥”下，复制“连接字符串 -- 主密钥”供以后使用。
+3. 在“共享访问密钥”下，复制“连接字符串 -- 主密钥”供以后使用   。
 
     ![显示如何检索连接字符串](./media/iot-hub-include-find-connection-string/iot-hub-get-connection-string.png)
 
