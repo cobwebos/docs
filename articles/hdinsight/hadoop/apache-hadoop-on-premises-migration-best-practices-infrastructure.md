@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1bd06507bd8a20cf504c1ff4cd9fe7e3b9196a3c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5bdd5049b7ddeaac4425734aa6f4d633b08cd3b4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687767"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057470"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
 
@@ -25,7 +25,7 @@ ms.locfileid: "64687767"
 
 - **选择区域** - Azure 区域确定了群集的物理预配位置。 为了将读写延迟最小化，群集应与数据位于同一区域。
 - **选择存储位置和大小** - 默认存储必须与群集位于同一区域。 对于 48 节点群集，建议创建 4 到 8 个存储帐户。 尽管存储总量可能已足够，但每个存储帐户能够为计算节点提供额外的网络带宽。 如果有多个存储帐户，请为每个存储帐户使用不带前缀的随机名称。 使用随机名称的目的是降低出现存储瓶颈（限制）或所有帐户发生共模故障的可能性。 为提高性能，请对每个存储帐户仅使用一个容器。
-- **选择 VM 大小和类型（现在支持 G 系列）**- 每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定。 可以使用模拟工作负荷来确定每个节点类型的最佳 VM 大小和类型。
+- **选择 VM 大小和类型（现在支持 G 系列）** - 每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定。 可以使用模拟工作负荷来确定每个节点类型的最佳 VM 大小和类型。
 - **选择工作节点数** - 可以使用模拟工作负荷来确定初始的工作节点数。 以后可以通过添加更多工作节点来扩展群集，以满足峰值负载需求。 以后不再需要额外的工作节点时，可以缩减群集。
 
 有关详细信息，请参阅 [HDInsight 群集的容量规划](../hdinsight-capacity-planning.md)一文。
@@ -36,7 +36,7 @@ ms.locfileid: "64687767"
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>检查 HDInsight 中 Hadoop 组件的可用性
 
-每个 HDInsight 版本是某个 Hortonworks 数据平台 (HDP) 版本的云分发版，包括一组 Hadoop 生态系统组件。 有关所有 HDInsight 组件及其最新版本的详细信息，请参阅 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)。
+每个 HDInsight 版本是一系列 Hadoop 生态系统组件的云分发。 有关所有 HDInsight 组件及其最新版本的详细信息，请参阅 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)。
 
 还可以使用 Apache Ambari UI 或 Ambari REST API 来检查 HDInsight 中的 Hadoop 组件和版本。
 
@@ -73,7 +73,7 @@ ms.locfileid: "64687767"
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义 HDInsight 群集
 
-HDInsight 提供名为“脚本操作”的群集配置方法。 脚本操作是一个 Bash 脚本，在 HDInsight 群集中的节点上运行，可用于安装附加的组件和更改配置设置。
+HDInsight 提供名为“脚本操作”的群集配置方法。  脚本操作是一个 Bash 脚本，在 HDInsight 群集中的节点上运行，可用于安装附加的组件和更改配置设置。
 
 必须将脚本操作存储在可从 HDInsight 群集访问的 URI 上。 在创建群集期间或之后可以使用脚本操作，也可以将它们限制为只能在特定的节点类型上运行。
 

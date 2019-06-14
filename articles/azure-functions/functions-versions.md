@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
 ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61036197"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
@@ -25,13 +25,13 @@ ms.locfileid: "61036197"
 
 ## <a name="cross-platform-development"></a>跨平台开发
 
-2.x 版运行时在 .NET Core 2 上运行，因此，它可以在 .NET Core 支持的所有平台（包括 macOS 和 Linux）上运行。 在 .NET Core 上运行可以实现跨平台开发和托管方案。
+2\.x 版运行时在 .NET Core 2 上运行，因此，它可以在 .NET Core 支持的所有平台（包括 macOS 和 Linux）上运行。 在 .NET Core 上运行可以实现跨平台开发和托管方案。
 
 相比之下，1.x 版运行时仅支持 Azure 门户或 Windows 计算机上的开发和托管。
 
 ## <a name="languages"></a>Languages
 
-2.x 版运行时使用新的语言扩展性模型。 在版本 2.x 中，函数应用中的所有函数必须共享相同的语言。 函数应用中的函数语言是在创建应用时选择的。
+2\.x 版运行时使用新的语言扩展性模型。 在版本 2.x 中，函数应用中的所有函数必须共享相同的语言。 函数应用中的函数语言是在创建应用时选择的。
 
 Azure Functions 1.x 试验性语言不会更新为使用新模型，因此它们在 2.x 中不受支持。 下表指示每个运行时版本目前支持的编程语言。
 
@@ -61,7 +61,7 @@ Azure Functions 1.x 试验性语言不会更新为使用新模型，因此它们
 
 * 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本 1.x 中，密钥默认存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，将重置文件存储中的现有机密。
 
-* 2.x 版运行时不包含对 Webhook 提供程序的内置支持。 做出此项更改的目的是提高性能。 仍可以使用 HTTP 触发器作为 Webhook 的终结点。
+* 2\.x 版运行时不包含对 Webhook 提供程序的内置支持。 做出此项更改的目的是提高性能。 仍可以使用 HTTP 触发器作为 Webhook 的终结点。
 
 * 主机配置文件 (host.json) 应该为空或包含字符串 `"version": "2.0"`。
 
@@ -113,7 +113,7 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 ## <a name="bindings"></a>绑定
 
-2.x 版运行时使用新的[绑定扩展性模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，该模型提供以下优势：
+2\.x 版运行时使用新的[绑定扩展性模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，该模型提供以下优势：
 
 * 支持第三方绑定扩展。
 

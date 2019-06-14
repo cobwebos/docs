@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
 ms.openlocfilehash: b42eb51b510423ffc0d15ee3a646bca3d4392f7f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686854"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 群集的日志
@@ -75,19 +75,19 @@ HDInsight 日志管理的典型步骤如下：
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>使用 Ambari UI 查看群集配置设置
 
-Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、配置和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户的“HDInsight”页上选择“群集仪表板”窗格，打开“群集仪表板”链接页。  接下来，选择“HDInsight 群集仪表板”窗格打开 Ambari UI。  系统会提示输入群集登录凭据。
+Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、配置和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户的“HDInsight”页上选择“群集仪表板”窗格，打开“群集仪表板”链接页。    接下来，选择“HDInsight 群集仪表板”窗格打开 Ambari UI。   系统会提示输入群集登录凭据。
 
-若要打开服务视图列表，请在 Azure 门户页上选择 HDInsight 对应的“Ambari 视图”窗格。  此列表的内容根据安装的库而异。  例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择任一服务链接以查看配置和服务信息。  Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。 若要导航到 Ambari UI 的此部分，请选择“管理”菜单，然后选择“堆栈和版本”。  选择“版本”选项卡查看服务版本信息。
+若要打开服务视图列表，请在 Azure 门户页上选择 HDInsight 对应的“Ambari 视图”窗格。   此列表的内容根据安装的库而异。  例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择任一服务链接以查看配置和服务信息。  Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。  若要导航到 Ambari UI 的此部分，请选择“管理”菜单，然后选择“堆栈和版本”。    选择“版本”选项卡查看服务版本信息。 
 
 ![堆栈和版本](./media/hdinsight-log-management/stack-versions.png)
 
-使用 Ambari UI 可以下载群集中特定主机（或节点）上运行的任一（或所有）服务的配置。  选择“主机”菜单，然后选择所需主机的链接。 在该主机的页面上，依次选择“主机操作”按钮和“下载客户端配置”。 
+使用 Ambari UI 可以下载群集中特定主机（或节点）上运行的任一（或所有）服务的配置。  选择“主机”菜单，然后选择所需主机的链接。  在该主机的页面上，依次选择“主机操作”按钮和“下载客户端配置”。   
 
 ![主机客户端配置](./media/hdinsight-log-management/client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>查看脚本操作日志
 
-使用 HDInsight [脚本操作](hdinsight-hadoop-customize-cluster-linux.md)可以手动或者根据指定在群集上运行脚本。 例如，可以使用脚本操作在群集上安装其他软件，或者更改配置设置的默认值。 在脚本操作日志中可以深入了解设置群集过程中发生的错误，以及可能影响群集性能和可用性的配置设置更改。  若要查看脚本操作的状态，请在 Ambari UI 中选择“操作”按钮，或访问默认存储帐户中的状态日志。 存储日志位于 `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`。
+使用 HDInsight [脚本操作](hdinsight-hadoop-customize-cluster-linux.md)可以手动或者根据指定在群集上运行脚本。 例如，可以使用脚本操作在群集上安装其他软件，或者更改配置设置的默认值。 在脚本操作日志中可以深入了解设置群集过程中发生的错误，以及可能影响群集性能和可用性的配置设置更改。  若要查看脚本操作的状态，请在 Ambari UI 中选择“操作”按钮，或访问默认存储帐户中的状态日志。  存储日志位于 `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`。
 
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>步骤 3：管理群集作业执行日志文件
 
@@ -99,7 +99,7 @@ Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、�
 
 HDInsight 将其日志文件同时存储在群集文件系统和 Azure 存储中。 若要检查群集中的日志文件，可与群集建立 [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 连接并浏览文件系统，或者在远程头节点服务器上使用 Hadoop YARN 状态门户。 使用可以访问和下载 Azure 存储中的数据的任何工具，即可检查 Azure 存储中的日志文件。 这些工具包括 [AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) 和 Visual Studio 服务器资源管理器。 此外，可以使用 PowerShell 和 Azure 存储客户端库或 Azure.NET SDK 访问 Azure Blob 存储中的数据。
 
-Hadoop 在群集中的各个节点上以“任务尝试”的形式运行作业。 HDInsight 可以发起推理任务尝试，并终止一开始就无法完成的其他任何任务尝试。 这会即时生成大量的活动并将其记录到控制器、stderr 和 syslog 日志文件。 此外，多个任务尝试会同时运行，但日志文件只能以线性方式显示结果。
+Hadoop 在群集中的各个节点上以“任务尝试”的形式运行作业。  HDInsight 可以发起推理任务尝试，并终止一开始就无法完成的其他任何任务尝试。 这会即时生成大量的活动并将其记录到控制器、stderr 和 syslog 日志文件。 此外，多个任务尝试会同时运行，但日志文件只能以线性方式显示结果。
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>写入 Azure Blob 存储的 HDInsight 日志
 
@@ -132,7 +132,7 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net`。 将 CLUSTERNAME 替换为 HDInsight 群集的名称。
 2. 在左侧的服务列表中选择“YARN”。
-3. 在“快速链接”下拉列表中选择一个群集头节点，然后选择“ResourceManager 日志”。 此时将显示 YARN 日志的链接列表。
+3. 在“快速链接”下拉列表中选择一个群集头节点，然后选择“ResourceManager 日志”。  此时将显示 YARN 日志的链接列表。
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>步骤 4：预测日志卷存储大小和成本
 
@@ -146,7 +146,7 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 确定可以删除哪些日志文件后，可以调整许多 Hadoop 服务上的日志记录参数，以便在指定的时间段后自动删除日志文件。
 
-对于某些日志文件，可以使用价格较低的日志文件存档方法。 对于 Azure 资源管理器活动日志，可以浏览使用 Azure 门户来探索此方法。  在 Azure 门户中选择 HDInsight 实例对应的“活动日志”链接，设置 ARM 日志的存档。  在“活动日志”搜索页面顶部，选择“导出”菜单项打开“导出活动日志”窗格。  填写订阅、区域、是否导出到存储帐户，以及日志的保留天数。 在同一窗格中，还可以指定是否导出到事件中心。 
+对于某些日志文件，可以使用价格较低的日志文件存档方法。 对于 Azure 资源管理器活动日志，可以浏览使用 Azure 门户来探索此方法。  在 Azure 门户中选择 HDInsight 实例对应的“活动日志”链接，设置 ARM 日志的存档。   在“活动日志”搜索页面顶部，选择“导出”菜单项打开“导出活动日志”窗格。    填写订阅、区域、是否导出到存储帐户，以及日志的保留天数。 在同一窗格中，还可以指定是否导出到事件中心。 
 
 ![导出日志文件](./media/hdinsight-log-management/archive.png)
 
@@ -175,5 +175,5 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 ## <a name="next-steps"></a>后续步骤
 
 * [适用于 HDInsight 的监视和日志记录做法](https://msdn.microsoft.com/library/dn749790.aspx)
-* [访问 Apache Hadoop YARN 应用程序中基于 Linux 的 HDInsight 日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [在基于 Linux 的 HDInsight 中访问 Apache Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [如何控制各种 Apache Hadoop 组件的日志文件大小](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

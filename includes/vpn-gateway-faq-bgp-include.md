@@ -9,14 +9,14 @@ ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119516"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
-否，BGP 在 Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、标准 VPN 网关和高性能 VPN 网关上受支持。 **基本** SKU。
+否，BGP 在 Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、标准  VPN 网关和高性能  VPN 网关上受支持。 **基本** SKU。
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>能否将 BGP 用于基于 Azure Policy 的 VPN 网关？
 否，只有基于路由的 VPN 网关支持 BGP。

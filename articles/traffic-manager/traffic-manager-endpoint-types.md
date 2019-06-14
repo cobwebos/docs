@@ -3,7 +3,7 @@ title: 流量管理器终结点类型 | Microsoft 文档
 description: 本文介绍可以通过 Azure 流量管理器来使用的不同类型的终结点
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,18 +11,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: kumud
-ms.openlocfilehash: dc76f56b6c05f22a380ff33715fe22e8c72e4891
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.author: allensu
+ms.openlocfilehash: 469b6543b380cb6b3b10c3def8484bed944f8556
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508429"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071209"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
+
 使用 Microsoft Azure 流量管理器可以控制如何将网络流量分布到在不同数据中心运行的应用程序部署。 需要在流量管理器中将每个应用程序部署配置为一个“终结点”。 当流量管理器收到 DNS 请求时，将选择要在 DNS 响应中返回的可用终结点。 流量管理器根据当前终结点状态和流量路由方法做出这种选择。 相关详细信息，请参阅[流量管理器工作原理](traffic-manager-how-it-works.md)。
 
 流量管理器支持三种类型的终结点：
+
 * **Azure 终结点**用于在 Azure 中托管的服务。
 * **外部终结点**用于 IPv4/IPv6 地址、 Fqdn，或可以是本地的 Azure 外部或与其他托管提供商托管的服务。
 * **嵌套终结点**用于组合流量管理器配置文件，以便创建更灵活的流量路由方案，从而满足更大、更复杂部署的需求。
@@ -36,20 +38,20 @@ ms.locfileid: "65508429"
 Azure 终结点用于流量管理器中基于 Azure 的服务。 支持以下 Azure 资源类型：
 
 * PaaS 云服务。
-* Web Apps
+* Web 应用
 * Web 应用槽
 * PublicIPAddress 资源（可直接或通过 Azure 负载均衡器连接到 VM）。 必须为 publicIpAddress 分配一个 DNS 名称，才能在流量管理器配置文件中使用它。
 
 PublicIPAddress 资源属于 Azure 资源管理器资源。 经典部署模型中没有这些资源。 因此，这些资源仅在流量管理器的 Azure 资源管理器体验中受支持。 其他终结点类型通过 Resource Manager 和经典部署模型受到支持。
 
-使用 Azure 终结点时，流量管理器可检测“经典”IaaS VM、云服务或 Web 应用的停止和启动时间。 此状态反映在终结点状态中。 有关详细信息，请参阅[流量管理器终结点监视](traffic-manager-monitoring.md#endpoint-and-profile-status)。 当基础服务停止时，流量管理器不会执行终结点运行状况检查，或者将流量定向到终结点。 已停止的实例不会发生流量管理器计费事件。 重新启动服务后，计费会恢复，终结点可以接收流量。 此项检测不适用于 PublicIpAddress 终结点。
+使用 Azure 终结点，流量管理器检测到时停止和启动 Web 应用。 此状态反映在终结点状态中。 有关详细信息，请参阅[流量管理器终结点监视](traffic-manager-monitoring.md#endpoint-and-profile-status)。 当基础服务停止时，流量管理器不会执行终结点运行状况检查，或者将流量定向到终结点。 已停止的实例不会发生流量管理器计费事件。 重新启动服务后，计费会恢复，终结点可以接收流量。 此项检测不适用于 PublicIpAddress 终结点。
 
 ## <a name="external-endpoints"></a>外部终结点
 
 外部终结点用于任一 IPv4/IPv6 地址、 Fqdn 或 Azure 外部的服务。 使用 IPv4/IPv6 地址终结点允许流量管理器检查终结点的运行状况，而无需为其指定 DNS 名称。 因此，在响应中返回终结点时，流量管理器可以使用 A/AAAA 记录响应查询。 Azure 外部的服务可以包括本地托管的服务或通过其他提供商托管的服务。 外部终结点可以单独使用，也可以与同一流量管理器配置文件中的 Azure 终结点结合使用，但指定为 IPv4 或 IPv6 地址的终结点除外，这些终结点只能是外部终结点。 可以将 Azure 终结点与外部终结点结合用于多种方案：
 
 * 在主动-主动或主动-被动故障转移模型中，可以使用 Azure 为现有的本地应用程序提供增强的冗余。 
-* 将流量路由到没有与其关联的 DNS 名称的终结点。 此外，由于无需运行第二个 DNS 查询以返回 DNS 名称的 IP 地址，减少了整体 DNS 查找延迟。 
+* 将流量路由到没有与其关联的 DNS 名称的终结点。 此外，由于无需运行第二个 DNS 查询以返回 DNS 名称的 IP 地址，减少了整体 DNS 查找延迟。
 * 要为全球各地的用户降低应用程序延迟，可以将现有的本地应用程序扩展到 Azure 中的其他地理位置。 有关详细信息，请参阅[流量管理器“性能”流量路由](traffic-manager-routing-methods.md#performance)。
 * 使用 Azure 为现有的本地应用程序提供额外容量，既可以持续满足高峰需求，也可以通过“云爆发”解决方案满足此类需求。
 

@@ -16,10 +16,10 @@ ms.date: 02/22/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: d4c64433089f14d845cea8be9adf0ef13675cfd1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127627"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>查看和下载你的组织的 Azure 定价
@@ -31,16 +31,16 @@ Azure 客户具有企业协议 (EA) 或[Microsoft 客户协议](#check-your-acce
 只有某些管理角色可以访问你的组织的 EA 定价信息，具体取决于企业管理员为你的组织设置的策略。 有关详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](billing-understand-ea-roles.md)。
 
 1. 以企业管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-ea-pricing/portal-cm-billing-search.png)
 
-1. 在计费帐户下，选择“使用情况 + 费用”。
+1. 在计费帐户下，选择“使用情况 + 费用”。 
 
    ![其中显示了“计费”下的使用情况和费用的屏幕截图](./media/billing-ea-pricing/ea-pricing-usage-charges-nav.png)
 
 1. 针对相应的月份选择 ![其中显示了 Azure 门户搜索的屏幕截图](./media/billing-ea-pricing/download-icon.png) **下载**。
-1. 在“价目表”下，选择“下载 csv”。
+1. 在“价目表”  下，选择“下载 csv”  。
 
    ![其中显示了价目表“下载 csv”按钮的屏幕截图](./media/billing-ea-pricing/download-ea-price-sheet.png)
 
@@ -51,7 +51,7 @@ Azure 客户具有企业协议 (EA) 或[Microsoft 客户协议](#check-your-acce
 ### <a name="download-price-sheets-for-the-current-billing-period"></a>下载适用于当前计费周期价目表
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 1. 选择计费的配置文件。 具体取决于您的访问权限，可能需要首先选择计费帐户。
 1. 在中**概述**边栏选项卡中找到的月-日费用下方的下载链接。
 1. 选择**Azure 价目表**。
@@ -60,9 +60,9 @@ Azure 客户具有企业协议 (EA) 或[Microsoft 客户协议](#check-your-acce
 ### <a name="download-price-sheets-for-billed-charges"></a>下载计费费用的价目表
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 1. 选择计费的配置文件。 具体取决于您的访问权限，可能需要首先选择计费帐户。
-1. 选择“发票”。
+1. 选择“发票”  。
 1. 在发票网格中，查找对应于你想要下载的价目表的发票。
 1. 单击省略号 (`...`) 的行的末尾。
 ![显示所选的省略号的屏幕截图](./media/billing-ea-pricing/billingprofile-invoicegrid.png)
@@ -77,14 +77,14 @@ Azure 客户具有企业协议 (EA) 或[Microsoft 客户协议](#check-your-acce
 此外可以使用组织的定价与 Azure 定价计算器估算成本。
 
 1. 转到 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator)。
-1. 在右上角，选择“登录”。
-1. 在“程序和产品/服务” > “许可计划”下，选择“企业协议 (EA)”。
-1. 在“程序和产品/服务” > “所选协议”下，选择“未选择任何项”。
+1. 在右上角，选择“登录”  。
+1. 在“程序和产品/服务” > “许可计划”下，选择“企业协议 (EA)”。   
+1. 在“程序和产品/服务” > “所选协议”下，选择“未选择任何项”。   
 
     ![其中显示了价目表“下载 csv”按钮的屏幕截图](./media/billing-ea-pricing/ea-pricing-calculator-estimate.png)
 
 1. 选择组织。
-1. 选择“应用”。
+1. 选择“应用”。 
 1. 搜索产品并将其添加到估计中。
 1. 将根据适用于你所选组织的定价显示估计的价格。
 

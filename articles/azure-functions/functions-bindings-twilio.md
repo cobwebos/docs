@@ -13,11 +13,11 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306626"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511798"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 绑定
 
@@ -397,13 +397,13 @@ public static CreateMessageOptions Run(
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `TwilioSms` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `TwilioSms` 特性中设置的绑定配置属性。
 
 | v1 function.json 属性 | v2 function.json 属性 | Attribute 属性 |说明|
 |---------|---------|---------|----------------------|
-|type|type| 必须设置为 `twilioSms`。|
-|direction|direction| 必须设置为 `out`。|
-|name|name| 在 Twilio 短信的函数代码中使用的变量名。 |
+|**type**|**type**| 必须设置为 `twilioSms`。|
+|**direction**|**direction**| 必须设置为 `out`。|
+|**name**|**name**| 在 Twilio 短信的函数代码中使用的变量名。 |
 |**accountSid**|**AccountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称，例如 TwilioAccountSid。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
 |**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌的应用设置的名称，例如 TwilioAccountAuthToken。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
 |**to**| 不适用 - 在代码中指定 | **收件人**| 此值设置为短信将发送到的电话号码。|

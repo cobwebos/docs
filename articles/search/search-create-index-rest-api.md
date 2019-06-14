@@ -1,7 +1,7 @@
 ---
-title: 快速入门：PowerShell 和 REST Api-Azure 搜索
-description: 创建、 加载和查询索引使用 PowerShell 的 Invoke-restmethod 和 Azure 搜索 REST API。
-ms.date: 05/16/2019
+title: 快速入门：PowerShell 和 REST API - Azure 搜索
+description: 使用 PowerShell 的 Invoke-RestMethod 与 Azure 搜索 REST API 创建、加载和查询索引。
+ms.date: 06/10/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,14 +10,14 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: a82ee51a168a018a4df537c05d987974e775b6cc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7121bfceb177a7dc06d1c2a65b7c3edfca1d8c31
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795937"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063651"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-powershell"></a>快速入门：创建使用 PowerShell 的 Azure 搜索索引
+# <a name="quickstart-create-an-azure-search-index-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "65795937"
 > * [门户](search-create-index-portal.md)
 > 
 
-本文将指导你完成创建、 加载和查询 Azure 搜索的过程[索引](search-what-is-an-index.md)使用 PowerShell 和[Azure 搜索服务 REST Api](https://docs.microsoft.com/rest/api/searchservice/)。 索引定义和可搜索内容作为格式正确的 JSON 内容提供请求正文中。
+本文将引导你完成使用 PowerShell 与 [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) 创建、加载和查询 Azure 搜索[索引](search-what-is-an-index.md)的过程。 索引定义和可搜索内容作为正确格式的 JSON 内容在请求正文中提供。
 
 如果还没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，然后[注册 Azure 搜索](search-create-service-portal.md)。
 
@@ -34,17 +34,17 @@ ms.locfileid: "65795937"
 
 本快速入门使用以下服务和工具。 
 
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
++ [PowerShell 5.1 或更高版本](https://github.com/PowerShell/PowerShell)，使用 [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) 按序完成交互式步骤。
 
-+ [PowerShell 5.1 或更高版本](https://github.com/PowerShell/PowerShell)，并使用[Invoke-restmethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod)的顺序和交互式步骤。
++ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
 ![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
 
@@ -52,7 +52,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="connect-to-azure-search"></a>连接到 Azure 搜索
 
-1. 在 PowerShell 中，创建 **$headers**要存储的内容类型和 API 密钥对象。 （您的管理的 API 密钥） 的管理 API 密钥替换为有效的搜索服务的密钥。 只需一次将此标头设置会话的持续时间内，但会将其添加到每个请求。 
+1. 在 PowerShell 中，创建一个 **$headers** 对象用于存储内容类型和 API 密钥。 将管理 API 密钥 (YOUR-ADMIN-API-KEY) 替换为对搜索服务有效的值。 在整个会话持续时间内，只需设置此标头一次，但需要将它添加到每个请求。 
 
     ```powershell
     $headers = @{
@@ -61,19 +61,19 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     'Accept' = 'application/json' }
     ```
 
-2. 创建 **$url**对象，它指定服务的索引集合。 服务名称 （您的搜索的服务的名称） 替换为有效的搜索服务。
+2. 创建一个 **$url** 对象，用于指定服务的索引集合。 将服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为有效的搜索服务。
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06"
     ```
 
-3. 运行**Invoke-restmethod**将 GET 请求发送到服务并验证的连接。 添加**Convertto-json** ，以便您可以查看从服务发送回的响应。
+3. 运行 **Invoke-RestMethod** 将 GET 请求发送到服务，并验证连接。 添加 **ConvertTo-Json**，以便可以查看服务发回的响应。
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-   如果该服务为空，并且没有索引，结果将类似于下面的示例。 否则，您将看到索引定义的 JSON 表示形式。
+   如果服务为空且没有索引，则结果将类似于以下示例。 否则，会看到索引定义的 JSON 表示形式。
 
     ```
     {
@@ -86,65 +86,70 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
-除非使用门户，可以加载数据之前，服务上必须存在索引。 此步骤中定义索引，并将其推送到服务。 [创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)用于此步骤。
+除非使用门户，否则在加载数据之前，服务中必须存在一个索引。 此步骤定义索引并将其推送到服务。 此步骤使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
-所需的元素的索引包含一个名称和字段集合。 字段集合定义的结构*文档*。 每个字段有一个名称、 类型和特性，以确定如何使用它 (例如，是否是全文索引时才可搜索、 筛选或可在搜索结果中检索)。 一个索引，其中一个类型的字段中`Edm.String`必须指定为*密钥*文档标识。
+索引的所需元素包括名称和字段集合。 字段集合定义文档的结构。  每个字段具有一个确定其用法的名称、类型和属性（例如，该字段在搜索结果是否可全文搜索、可筛选或可检索）。 在索引中，必须将一个 `Edm.String` 类型的字段指定为文档标识的键。 
 
-此索引名为"hotels powershell"，并且请参阅下面的字段定义。 它是更大的子集[Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)在其他演练中使用。 我们修整它在此快速入门中为了简单起见。
+此索引名为"hotels 快速入门"，并且请参阅下面的字段定义。 它是其他演练中使用的一个更大 [Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)的子集。 为简明起见，本快速入门已对其进行修整。
 
-1. 将此示例粘贴到 PowerShell 来创建 **$body**对象，包含索引架构。
+1. 将此示例粘贴到 PowerShell，以创建包含索引架构的 **$body** 对象。
 
     ```powershell
     $body = @"
     {
-        "name": "hotels-powershell",  
+        "name": "hotels-quickstart",  
         "fields": [
-            {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-            {"name": "baseRate", "type": "Edm.Double"},
-            {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-            {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
-            {"name": "hotelName", "type": "Edm.String", "facetable": false},
-            {"name": "category", "type": "Edm.String"},
-            {"name": "tags", "type": "Collection(Edm.String)"},
-            {"name": "parkingIncluded", "type": "Edm.Boolean", "sortable": false},
-            {"name": "smokingAllowed", "type": "Edm.Boolean", "sortable": false},
-            {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-            {"name": "rating", "type": "Edm.Int32"},
-            {"name": "location", "type": "Edm.GeographyPoint"}
-        ]
+            {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
+            {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
+            {"name": "Description", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false, "analyzer": "en.lucene"},
+            {"name": "Category", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+            {"name": "Tags", "type": "Collection(Edm.String)", "searchable": true, "filterable": true, "sortable": false, "facetable": true},
+            {"name": "ParkingIncluded", "type": "Edm.Boolean", "filterable": true, "sortable": true, "facetable": true},
+            {"name": "LastRenovationDate", "type": "Edm.DateTimeOffset", "filterable": true, "sortable": true, "facetable": true},
+            {"name": "Rating", "type": "Edm.Double", "filterable": true, "sortable": true, "facetable": true},
+            {"name": "Address", "type": "Edm.ComplexType", 
+            "fields": [
+            {"name": "StreetAddress", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "searchable": true},
+            {"name": "City", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+            {"name": "StateProvince", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+            {"name": "PostalCode", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+            {"name": "Country", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true}
+            ]
+         }
+      ]
     }
     "@
     ```
 
-2. 将 URI 设置为你的服务上的索引集合和*hotels powershell*索引。
+2. 将 URI 设置为你的服务上的索引集合和*hotels-快速入门*索引。
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-powershell?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
     ```
 
-3. 运行该命令与 **$url**， **$headers**，并 **$body**在服务上创建索引。 
+3. 结合 **$url**、 **$headers** 和 **$body** 运行该命令，以在服务中创建索引。 
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertTo-Json
     ```
 
-    结果应类似于此 （到前两个字段为简洁起见已截断）：
+    结果应如下所示（为简明起见，已截断前两个字段后面的内容）：
 
     ```
     {
         "@odata.context":  "https://mydemo.search.windows.net/$metadata#indexes/$entity",
-        "@odata.etag":  "\"0x8D6A99E2DED96B0\"",
-        "name":  "hotels-powershell",
+        "@odata.etag":  "\"0x8D6EDE28CFEABDA\"",
+        "name":  "hotels-quickstart",
         "defaultScoringProfile":  null,
         "fields":  [
                     {
-                        "name":  "hotelId",
+                        "name":  "HotelId",
                         "type":  "Edm.String",
-                        "searchable":  false,
+                        "searchable":  true,
                         "filterable":  true,
                         "retrievable":  true,
-                        "sortable":  false,
-                        "facetable":  false,
+                        "sortable":  true,
+                        "facetable":  true,
                         "key":  true,
                         "indexAnalyzer":  null,
                         "searchAnalyzer":  null,
@@ -152,13 +157,13 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
                         "synonymMaps":  ""
                     },
                     {
-                        "name":  "baseRate",
-                        "type":  "Edm.Double",
-                        "searchable":  false,
-                        "filterable":  true,
+                        "name":  "HotelName",
+                        "type":  "Edm.String",
+                        "searchable":  true,
+                        "filterable":  false,
                         "retrievable":  true,
                         "sortable":  true,
-                        "facetable":  true,
+                        "facetable":  false,
                         "key":  false,
                         "indexAnalyzer":  null,
                         "searchAnalyzer":  null,
@@ -169,77 +174,119 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     ```
 
 > [!Tip]
-> 可能还检查索引列表在门户中，或重新运行用于验证服务连接的命令，以查看进行验证， *hotels powershell*索引集合中列出的索引。
+> 进行验证，还可以检查在门户中的索引列表。
 
 <a name="load-documents"></a>
 
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-若要将推送文档，请使用对索引的 URL 终结点的 HTTP POST 请求。 此任务的 REST api[添加、 更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
+若要推送文档，请向索引的 URL 终结点发出 HTTP POST 请求。 此任务的 REST API 为 [添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
 
-1. 将此示例粘贴到 PowerShell 来创建 **$body**对象，其中包含你想要上载的文档。 
+1. 将此示例粘贴到 PowerShell，以创建包含所要上传的文档的 **$body** 对象。 
 
-    此请求包括两个完整备份和一个部分的记录。 部分记录演示你可以上传不完整的文档。 `@search.action`参数指定索引如何实现。 有效值包括上传、 合并、 mergeOrUpload 和删除。 MergeOrUpload 行为会创建新文档 hotelId = 3，或更新内容，如果它已存在。
+    此请求包含两条完整记录和一条不完整的记录。 不完整的记录演示可以上传不完整的文档。 `@search.action` 参数指定如何编制索引。 有效值包括 upload、merge、mergeOrUpload 和 delete。 mergeOrUpload 行为将创建 hotelId 为 3 的新文档，如果该文档已存在，则更新内容。
 
     ```powershell
     $body = @"
     {
         "value": [
+        {
+        "@search.action": "upload",
+        "HotelId": "1",
+        "HotelName": "Secret Point Motel",
+        "Description": "The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Time's Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.",
+        "Category": "Boutique",
+        "Tags": [ "pool", "air conditioning", "concierge" ],
+        "ParkingIncluded": false,
+        "LastRenovationDate": "1970-01-18T00:00:00Z",
+        "Rating": 3.60,
+        "Address": 
             {
-                "@search.action": "upload",
-                "hotelId": "1",
-                "baseRate": 199.0,
-                "description": "Best hotel in town",
-                "hotelName": "Fancy Stay",
-                "category": "Luxury",
-                "tags": ["pool", "view", "wifi", "concierge"],
-                "parkingIncluded": false,
-                "smokingAllowed": false,
-                "lastRenovationDate": "2010-06-27T00:00:00Z",
-                "rating": 5,
-                "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
-            },
+            "StreetAddress": "677 5th Ave",
+            "City": "New York",
+            "StateProvince": "NY",
+            "PostalCode": "10022",
+            "Country": "USA"
+            } 
+        },
+        {
+        "@search.action": "upload",
+        "HotelId": "2",
+        "HotelName": "Twin Dome Motel",
+        "Description": "The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.",
+        "Category": "Boutique",
+        "Tags": [ "pool", "free wifi", "concierge" ],
+        "ParkingIncluded": false,
+        "LastRenovationDate": "1979-02-18T00:00:00Z",
+        "Rating": 3.60,
+        "Address": 
             {
-                "@search.action": "upload",
-                "hotelId": "2",
-                "baseRate": 79.99,
-                "description": "Cheapest hotel in town",
-                "hotelName": "Roach Motel",
-                "category": "Budget",
-                "tags": ["motel", "budget"],
-                "parkingIncluded": true,
-                "smokingAllowed": true,
-                "lastRenovationDate": "1982-04-28T00:00:00Z",
-                "rating": 1,
-                "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
-            },
+            "StreetAddress": "140 University Town Center Dr",
+            "City": "Sarasota",
+            "StateProvince": "FL",
+            "PostalCode": "34243",
+            "Country": "USA"
+            } 
+        },
+        {
+        "@search.action": "upload",
+        "HotelId": "3",
+        "HotelName": "Triple Landscape Hotel",
+        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+        "Category": "Resort and Spa",
+        "Tags": [ "air conditioning", "bar", "continental breakfast" ],
+        "ParkingIncluded": true,
+        "LastRenovationDate": "2015-09-20T00:00:00Z",
+        "Rating": 4.80,
+        "Address": 
             {
-                "@search.action": "mergeOrUpload",
-                "hotelId": "3",
-                "baseRate": 129.99,
-                "description": "Close to town hall and the river"
+            "StreetAddress": "3393 Peachtree Rd",
+            "City": "Atlanta",
+            "StateProvince": "GA",
+            "PostalCode": "30326",
+            "Country": "USA"
+            } 
+        },
+        {
+        "@search.action": "upload",
+        "HotelId": "4",
+        "HotelName": "Sublime Cliff Hotel",
+        "Description": "Sublime Cliff Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 1800 palace.",
+        "Category": "Boutique",
+        "Tags": [ "concierge", "view", "24-hour front desk service" ],
+        "ParkingIncluded": true,
+        "LastRenovationDate": "1960-02-06T00:00:00Z",
+        "Rating": 4.60,
+        "Address": 
+            {
+            "StreetAddress": "7400 San Pedro Ave",
+            "City": "San Antonio",
+            "StateProvince": "TX",
+            "PostalCode": "78216",
+            "Country": "USA"
             }
-        ]
+        }
+    ]
     }
     "@
     ```
 
-1. 将终结点设置为*hotels powershell*文档集合，包括在索引操作 (索引/酒店的 powershell/docs/index)。
+1. 将终结点设置为*hotels-快速入门*文档集合，包括在索引操作 (索引/酒店-快速入门/docs/index)。
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-powershell/docs/index?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
     ```
 
-1. 运行该命令与 **$url**， **$headers**，并 **$body**若要将文档加载到 hotels powershell 索引。
+1. 运行该命令与 **$url**， **$headers**，并 **$body**若要将文档加载到快速入门的酒店索引。
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    结果应类似于下面的示例。 您应看到状态代码 201。 所有状态代码的说明，请参阅[HTTP 状态代码 （Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
+    结果应类似于以下示例。 应会看到[状态代码 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
 
     ```
     {
-        "@odata.context":  "https://mydemo.search.windows.net/indexes/hotels-powershell/$metadata#Collection(Microsoft.Azure.Search.V2017_11_11.IndexResult)",
+        "@odata.context":  "https://mydemo.search.windows.net/indexes(\u0027hotels-quickstart\u0027)/$metadata#Collection(Microsoft.Azure.Search.V2019_05_06.IndexResult)",
         "value":  [
                     {
                         "key":  "1",
@@ -258,6 +305,12 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
                         "status":  true,
                         "errorMessage":  null,
                         "statusCode":  201
+                    },
+                    {
+                        "key":  "4",
+                        "status":  true,
+                        "errorMessage":  null,
+                        "statusCode":  201
                     }
                 ]
     }
@@ -265,15 +318,19 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="3---search-an-index"></a>3 - 搜索索引
 
-此步骤说明如何使用索引进行查询[搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+此步骤说明如何使用[搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 查询索引。
 
-1. 将终结点设置为*hotels-powershell*文档集合，并添加**搜索**要包括查询字符串参数。 此字符串是空搜索并返回所有文档的 unranked 的列表。
+请确保搜索 $urls 上使用单引号。 查询字符串包含 **$** 字符，并且您可以省略无需对它们进行转义，如果整个字符串括在单引号中...
+
+1. 将终结点设置为*hotels-快速入门*文档集合，并添加**搜索**要在查询字符串中传递参数。 
+  
+   此字符串执行空搜索 (搜索 = *)，返回 unranked 的列表 (搜索分数 = 1.0) 的任意文档。 默认情况下，Azure 搜索一次返回 50 个匹配项。 作为结构化，此查询将返回整个文档结构和值。 添加 **$count = true**才能得到的结果中的所有文档的计数。
 
     ```powershell
-    $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-powershell/docs?api-version=2019-05-06&search=*'
+    $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
     ```
 
-1. 运行命令以发送 **$url**到服务。
+1. 运行该命令以将 **$url** 发送到服务。
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
@@ -283,82 +340,65 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
     ```
     {
-        "@odata.context":  "https://mydemo.search.windows.net/indexes/hotels-powershell/$metadata#docs(*)",
-        "value":  [
-                    {
-                        "@search.score":  1.0,
-                        "hotelId":  "1",
-                        "baseRate":  199.0,
-                        "description":  "Best hotel in town",
-                        "description_fr":  null,
-                        "hotelName":  "Fancy Stay",
-                        "category":  "Luxury",
-                        "tags":  "pool view wifi concierge",
-                        "parkingIncluded":  false,
-                        "smokingAllowed":  false,
-                        "lastRenovationDate":  "2010-06-27T00:00:00Z",
-                        "rating":  5,
-                        "location":  "@{type=Point; coordinates=System.Object[]; crs=}"
-                    },
-                    {
-                        "@search.score":  1.0,
-                        "hotelId":  "2",
-                        "baseRate":  79.99,
-                        "description":  "Cheapest hotel in town",
-                        "description_fr":  null,
-                        "hotelName":  "Roach Motel",
-                        "category":  "Budget",
-                        "tags":  "motel budget",
-                        "parkingIncluded":  true,
-                        "smokingAllowed":  true,
-                        "lastRenovationDate":  "1982-04-28T00:00:00Z",
-                        "rating":  1,
-                        "location":  "@{type=Point; coordinates=System.Object[]; crs=}"
-                    },
-                    {
-                        "@search.score":  1.0,
-                        "hotelId":  "3",
-                        "baseRate":  129.99,
-                        "description":  "Close to town hall and the river",
-                        "description_fr":  null,
-                        "hotelName":  null,
-                        "category":  null,
-                        "tags":  "",
-                        "parkingIncluded":  null,
-                        "smokingAllowed":  null,
-                        "lastRenovationDate":  null,
-                        "rating":  null,
-                        "location":  null
-                    }
-                ]
-    }
+    "@odata.context":  "https://mydemo.search.windows.net/indexes(\u0027hotels-quickstart\u0027)/$metadata#docs(*)",
+    "@odata.count":  4,
+    "value":  [
+                  {
+                      "@search.score":  0.1547872,
+                      "HotelId":  "2",
+                      "HotelName":  "Twin Dome Motel",
+                      "Description":  "The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.",
+                      "Category":  "Boutique",
+                      "Tags":  "pool free wifi concierge",
+                      "ParkingIncluded":  false,
+                      "LastRenovationDate":  "1979-02-18T00:00:00Z",
+                      "Rating":  3.6,
+                      "Address":  "@{StreetAddress=140 University Town Center Dr; City=Sarasota; StateProvince=FL; PostalCode=34243; Country=USA}"
+                  },
+                  {
+                      "@search.score":  0.009068266,
+                      "HotelId":  "3",
+                      "HotelName":  "Triple Landscape Hotel",
+                      "Description":  "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel\u0027s restaurant services.",
+                      "Category":  "Resort and Spa",
+                      "Tags":  "air conditioning bar continental breakfast",
+                      "ParkingIncluded":  true,
+                      "LastRenovationDate":  "2015-09-20T00:00:00Z",
+                      "Rating":  4.8,
+                      "Address":  "@{StreetAddress=3393 Peachtree Rd; City=Atlanta; StateProvince=GA; PostalCode=30326; Country=USA}"
+                  },
+                . . . 
     ```
 
-请尝试几个其他查询示例，若要了解的语法。 可以执行字符串搜索，原义 $filter 查询，结果集，作用域搜索到特定字段，以及更多限制。
+请尝试其他几个查询示例，以大致了解语法。 可以执行字符串搜索、原义 $filter 查询、限制结果集、将搜索范围限定为特定的字段，等待。
 
 ```powershell
 # Query example 1
-# Search the entire index for the term 'budget'
-# Return only the `hotelName` field, "Roach hotel"
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-powershell/docs?api-version=2019-05-06&search=budget&$select=hotelName'
+# Search the entire index for the terms 'hotels' and 'wifi'
+# Return only the HotelName and HotelId fields
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=hotels wifi&$count=true&$select=HotelName,HotelId'
 
 # Query example 2 
-# Apply a filter to the index to find hotels cheaper than $150 per night
-# Returns the `hotelId` and `description`. Two documents match.
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-powershell/docs?api-version=2019-05-06&search=*&$filter=baseRate lt 150&$select=hotelId,description'
+# Apply a filter to the index to find hotels rated 4 or highter
+# Returns the HotelId and Description. Two documents match.
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
 
 # Query example 3
-# Search the entire index, order by a specific field (`lastRenovationDate`) in descending order
-# Take the top two results, and show only `hotelName` and `lastRenovationDate`
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-powershell/docs?api-version=2019-05-06&search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate'
+# Take the top two results, and show only HotelId,HotelName,Description in the results
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
+
+# Query example 4
+# Sort by a specific field (`lastRenovationDate`) in descending order
+
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
 ```
 ## <a name="clean-up"></a>清理 
 
-如果不再需要应删除该索引。 一项免费服务被限制为三个索引。 您可能想要删除任何未主动使用，以便可以单步执行其他教程的索引。
+应该删除不再需要的索引。 在免费服务中最多只能创建三个索引。 建议删除所有未真正使用的索引，以便能够顺利完成其他教程中的每个步骤。
 
 ```powershell
 # Set the URI to the hotel index
-$url = 'https://mydemo.search.windows.net/indexes/hotels-powershell?api-version=2019-05-06'
+$url = 'https://mydemo.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06'
 
 # Delete the index
 Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
@@ -366,7 +406,7 @@ Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
 
 ## <a name="next-steps"></a>后续步骤
 
-尝试将法语说明添加到索引。 下面的示例包括法语字符串，并演示其他搜索操作。 使用 mergeOrUpload 创建或添加到现有字段。 以下字符串需要是 utf-8 编码。
+尝试将法语说明添加到索引。 以下示例包含法语字符串，演示其他搜索操作。 使用 mergeOrUpload 创建字段或者在现有字段中添加内容。 以下字符串需采用 UTF-8 编码。
 
 ```json
 {

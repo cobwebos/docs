@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
 ms.openlocfilehash: 3c0152726aba115e1b370838308a7bf0af08cab7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708130"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>脱机重置 Azure VM 的本地 Windows 密码
@@ -62,16 +62,16 @@ ms.locfileid: "64708130"
 
 1. 在 Azure 门户中删除受影响的 VM。 删除 VM 只会删除元数据，以及 Azure 中对 VM 的引用。 删除 VM 时，会保留虚拟磁盘：
    
-   * 在 Azure 门户中选择 VM，并单击“删除”：
+   * 在 Azure 门户中选择 VM，并单击“删除”： 
      
      ![删除现有 VM](./media/reset-local-password-without-agent/delete_vm.png)
 2. 将源 VM 的 OS 磁盘附加到故障排除 VM。 故障排除 VM 必须与源 VM 的 OS 磁盘位于同一区域（例如 `West US`）：
    
-   * 在 Azure 门户中选择故障排除 VM。 单击“磁盘” | “附加现有磁盘”：
+   * 在 Azure 门户中选择故障排除 VM。 单击“磁盘” | “附加现有磁盘”：  
      
      ![附加现有磁盘](./media/reset-local-password-without-agent/disks_attach_existing.png)
      
-     选择“VHD 文件”，并选择包含源 VM 的存储帐户：
+     选择“VHD 文件”，并选择包含源 VM 的存储帐户： 
      
      ![选择存储帐户](./media/reset-local-password-without-agent/disks_select_storageaccount.PNG)
      
@@ -79,12 +79,12 @@ ms.locfileid: "64708130"
      
      ![选择存储容器](./media/reset-local-password-without-agent/disks_select_container.png)
      
-     选择要附加的 OS VHD。 单击“选择”完成该过程：
+     选择要附加的 OS VHD。 单击“选择”完成该过程： 
      
      ![选择源虚拟磁盘](./media/reset-local-password-without-agent/disks_select_source_vhd.png)
 3. 使用远程桌面连接到故障排除的 VM，确保源 VM 的 OS 磁盘可见：
    
-   * 在 Azure 门户中选择故障排除 VM，并单击“连接”。
+   * 在 Azure 门户中选择故障排除 VM，并单击“连接”。 
    * 打开下载的 RDP 文件。 输入故障排除 VM 的用户名和密码。
    * 在文件资源管理器中，找到附加的数据磁盘。 如果源 VM 的 VHD 是附加到故障排除 VM 的唯一数据磁盘，它应该是 F: 驱动器：
      
@@ -130,24 +130,24 @@ ms.locfileid: "64708130"
     定义新密码时，必须符合针对 VM 配置的密码复杂性要求。
 7. 在 Azure 门户中，从故障排除 VM 分离该磁盘：
    
-   * 在 Azure 门户中选择故障排除 VM，并单击“磁盘”。
-   * 选择步骤 2 中附加的数据磁盘，并单击“分离”：
+   * 在 Azure 门户中选择故障排除 VM，并单击“磁盘”。 
+   * 选择步骤 2 中附加的数据磁盘，并单击“分离”： 
      
      ![分离磁盘](./media/reset-local-password-without-agent/detach_disk.png)
 8. 在创建 VM 之前，请获取源 OS 磁盘的 URI：
    
-   * 在 Azure 门户中选择存储帐户，并单击“Blob”。
+   * 在 Azure 门户中选择存储帐户，并单击“Blob”。 
    * 选择容器。 源容器通常为 *vhd*：
      
      ![选择存储帐户 Blob](./media/reset-local-password-without-agent/select_storage_details.png)
      
-     选择源 VM 的 OS VHD，并单击“URL”名称旁边的“复制”按钮：
+     选择源 VM 的 OS VHD，并单击“URL”名称旁边的“复制”按钮：  
      
      ![复制磁盘 URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. 从源 VM 的 OS 磁盘创建一个 VM：
    
    * 使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet)从专用的 VHD 创建一个 VM。 单击 `Deploy to Azure` 按钮打开 Azure 门户，其中填充了模板化详细信息。
-   * 如果想要保留 VM 的所有先前设置，请选择“编辑模板”，提供现有的 VNet、子网、网络适配器或公共 IP。
+   * 如果想要保留 VM 的所有先前设置，请选择“编辑模板”，提供现有的 VNet、子网、网络适配器或公共 IP。 
    * 在 `OSDISKVHDURI` 参数文本框中，粘贴在上一步骤中获取的源 VHD 的 URI：
      
      ![从模板创建 VM](./media/reset-local-password-without-agent/create_new_vm_from_template.png)
@@ -156,7 +156,7 @@ ms.locfileid: "64708130"
     
     * 从 %windir%\System32 中
       * 删除 FixAzureVM.cmd
-    * From %windir%\System32\GroupPolicy\Machine\Scripts
+    * 从 %windir%\System32\GroupPolicy\Machine\Scripts 中
       * 删除 scripts.ini
     * 从 %windir%\System32\GroupPolicy 中
       * 删除 gpt.ini（如果 gpt.ini 事先已存在并已重命名为 gpt.ini.bak，请将 .bak 文件改回 gpt.ini）

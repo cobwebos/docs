@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pabutler
 ms.openlocfilehash: 98eb537a5c064cd22b995ae214c8d61db7a8b6b5
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942500"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>使用云合作伙伴门户创建新的 IoT Edge 模块套餐
@@ -27,13 +27,13 @@ ms.locfileid: "64942500"
 
 ## <a name="new-offer-form"></a>“新建套餐”窗体 
 
-登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建套餐”。 在“新建套餐”菜单中，选择“IoT Edge 模块”显示“新建套餐”窗体，然后开始定义新 IoT Edge 模块套餐的资产。 
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建套餐”。  在“新建套餐”菜单中，选择“IoT Edge 模块”显示“新建套餐”窗体，然后开始定义新 IoT Edge 模块套餐的资产。   
 
 ![新建 IoT Edge 模块套餐用户界面中的选项](./media/new-iot-edge-module-offer.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-IoT Edge 模块套餐类型的“新建套餐”页提供一组选项卡和窗体字段用于创建新的套餐。 以下每篇文章介绍了如何使用选项卡来定义新 IoT Edge 模块套餐的资产组和支持服务。
+IoT Edge 模块套餐类型的“新建套餐”页提供一组选项卡和窗体字段用于创建新的套餐。  以下每篇文章介绍了如何使用选项卡来定义新 IoT Edge 模块套餐的资产组和支持服务。
 
 - [“产品/服务设置”选项卡](./cpp-offer-settings-tab.md)
 - [“SKU”选项卡](./cpp-skus-tab.md)

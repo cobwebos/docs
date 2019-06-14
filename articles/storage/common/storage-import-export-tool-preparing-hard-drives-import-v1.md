@@ -9,10 +9,10 @@ ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 03b504524b2f489f1ee042c6e825ccffe0a60bb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478464"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
@@ -58,7 +58,7 @@ ms.locfileid: "61478464"
   确保准备好所需数量的硬盘驱动器，以便能够存储所要传输的数据。
 
 ## <a name="copy-data-to-your-hard-drive"></a>将数据复制到硬盘驱动器
- 本部分介绍如何调用 Azure 导入/导出工具，将数据复制到一个或多个硬盘驱动器。 每次调用 Azure 导入/导出工具都会创建一个新的复制会话。 需要为数据复制到的每个驱动器至少创建一个复制会话；在某些情况下，可能需要使用多个复制会话将所有数据复制到单个驱动器。 下面是可能需要多个复制会话的一些原因：
+ 本部分介绍如何调用 Azure 导入/导出工具，将数据复制到一个或多个硬盘驱动器。 每次调用 Azure 导入/导出工具都会创建一个新的复制会话  。 需要为数据复制到的每个驱动器至少创建一个复制会话；在某些情况下，可能需要使用多个复制会话将所有数据复制到单个驱动器。 下面是可能需要多个复制会话的一些原因：
 
 -   必须为将数据复制到的每个驱动器创建一个单独的复制会话。
 
@@ -104,14 +104,14 @@ ms.locfileid: "61478464"
 
 |命令行参数|描述|
 |-----------------------------|-----------------|
-|**/sk:**<StorageAccountKey\>|`Optional.` 将数据导入到的存储帐户的存储帐户密钥。 必须在命令中包含 **/sk:**<StorageAccountKey\> 或 **/csas:**<ContainerSas\>。|
-|**/csas:**<ContainerSas\>|`Optional`。 用于将数据导入存储帐户的容器 SAS。 必须在命令中包含 **/sk:**<StorageAccountKey\> 或 **/csas:**<ContainerSas\>。<br /><br /> 此参数的值必须以容器名称开头，后接问号 (?) 和 SAS 令牌。 例如：<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> 无论是在 URL 上还是存储的访问策略中指定，权限都必须包括“读取”、“写入”和“删除”导入作业，以及“读取”、“写入”和“列出”导出作业。<br /><br /> 指定此参数时，要导入或导出的所有 Blob 都必须位于共享访问签名中指定的容器内。|
-|**/t:**<TargetDriveLetter\>|`Required.` 当前复制会话的目标硬盘驱动器的驱动器号（不带尾随冒号）。|
+|**/sk:** <StorageAccountKey\>|`Optional.` 将数据导入到的存储帐户的存储帐户密钥。 必须在命令中包含 **/sk:** <StorageAccountKey\> 或 **/csas:** <ContainerSas\>。|
+|**/csas:** <ContainerSas\>|`Optional`。 用于将数据导入存储帐户的容器 SAS。 必须在命令中包含 **/sk:** <StorageAccountKey\> 或 **/csas:** <ContainerSas\>。<br /><br /> 此参数的值必须以容器名称开头，后接问号 (?) 和 SAS 令牌。 例如：<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> 无论是在 URL 上还是存储的访问策略中指定，权限都必须包括“读取”、“写入”和“删除”导入作业，以及“读取”、“写入”和“列出”导出作业。<br /><br /> 指定此参数时，要导入或导出的所有 Blob 都必须位于共享访问签名中指定的容器内。|
+|**/t:** <TargetDriveLetter\>|`Required.` 当前复制会话的目标硬盘驱动器的驱动器号（不带尾随冒号）。|
 |**/format**|`Optional.` 在需要格式化驱动器时指定此参数；否则，请将其忽略。 在对驱动器进行格式化之前，该工具将提示你通过控制台进行确认。 若不希望显示该确认，请指定 /silentmode 参数。|
 |**/silentmode**|`Optional.` 指定此参数不会显示对目标驱动器进行格式化的确认。|
 |**/encrypt**|`Optional.` 在尚未使用 BitLocker 对驱动器进行加密但需要使用此工具进行加密时，指定此参数。 如果已使用 BitLocker 对驱动器进行加密，则忽略此参数并指定 `/bk` 参数，同时还提供现有 BitLocker 密钥。<br /><br /> 如果指定 `/format` 参数，则还必须指定 `/encrypt` 参数。|
-|**/bk:**<BitLockerKey\>|`Optional.` 如果指定 `/encrypt`，请省略此参数。 如果省略 `/encrypt`，则需要事先使用 BitLocker 为驱动器加密。 使用此参数可指定 BitLocker 密钥。 导入作业的所有硬盘驱动器都需要 BitLocker 加密。|
-|**/logdir:**<LogDirectory\>|`Optional.` 日志目录指定用于存储详细日志和临时清单文件的目录。 如果未指定，则使用当前目录作为日志目录。|
+|**/bk:** <BitLockerKey\>|`Optional.` 如果指定 `/encrypt`，请省略此参数。 如果省略 `/encrypt`，则需要事先使用 BitLocker 为驱动器加密。 使用此参数可指定 BitLocker 密钥。 导入作业的所有硬盘驱动器都需要 BitLocker 加密。|
+|**/logdir:** <LogDirectory\>|`Optional.` 日志目录指定用于存储详细日志和临时清单文件的目录。 如果未指定，则使用当前目录作为日志目录。|
 
 ### <a name="parameters-required-for-all-copy-sessions"></a>所有复制会话所需的参数
  日记文件包含硬盘驱动器的所有复制会话的状态。 它还包含创建导入作业所需的信息。 运行 Azure 导入/导出工具时，必须始终指定一个日志文件，以及一个复制会话 ID：
@@ -119,32 +119,32 @@ ms.locfileid: "61478464"
 |||
 |-|-|
 |命令行参数|描述|
-|**/j:**<JournalFile\>|`Required.` 日记文件的路径。 每个驱动器必须正好有一个日志文件。 请注意，日志文件不得驻留在目标驱动器上。 日记文件扩展名为 `.jrn`。|
-|**/id:**<SessionId\>|`Required.` 会话 ID 标识复制会话。 它用于确保准确恢复中断的复制会话。 复制会话中复制的文件将存储在以目标驱动器上的会话 ID 命名的目录中。|
+|**/j:** <JournalFile\>|`Required.` 日记文件的路径。 每个驱动器必须正好有一个日志文件。 请注意，日志文件不得驻留在目标驱动器上。 日记文件扩展名为 `.jrn`。|
+|**/id:** <SessionId\>|`Required.` 会话 ID 标识复制会话。 它用于确保准确恢复中断的复制会话。 复制会话中复制的文件将存储在以目标驱动器上的会话 ID 命名的目录中。|
 
 ### <a name="parameters-for-copying-a-single-directory"></a>用于复制单个目录的参数
  复制单个目录时，可应用以下必需和可选参数：
 
 |命令行参数|描述|
 |----------------------------|-----------------|
-|**/srcdir:**<SourceDirectory\>|`Required.` 包含要复制到目标驱动器中的文件的源目录。 目录路径必须是绝对路径（而非相对路径）。|
-|**/dstdir:**<DestinationBlobVirtualDirectory\>|`Required.` Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。<br /><br /> 可以指定容器或 Blob 前缀（如 `music/70s/`）。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br /><br /> 当目标容器为根容器时，必须显式指定包含正斜杠的根容器（如 `$root/`）。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，不会复制源目录中的任何子目录。<br /><br /> 在指定目标虚拟目录或 blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。|
-|**/Disposition:**<rename&#124;no-overwrite&#124;overwrite>|`Optional.` 指定存在带指定地址的 Blob 时的行为。 此参数的有效值为：`rename`、`no-overwrite` 和 `overwrite`。 请注意，这些值区分大小写。 如果未指定任何值，将使用默认值 `rename`。<br /><br /> 为此参数指定的值会影响 `/srcdir` 参数指定的目录中的所有文件。|
-|**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` 指定目标 Blob 的 Blob 类型。 有效值为：`BlockBlob` 和 `PageBlob`。 请注意，这些值区分大小写。 如果未指定任何值，将使用默认值 `BlockBlob`。<br /><br /> 在大多数情况下，建议使用 `BlockBlob`。 如果指定 `PageBlob`，目录中每个文件的长度必须是 512 的倍数（即页 Blob 的页面大小）。|
-|**/PropertyFile:**<PropertyFile\>|`Optional.` 目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。|
-|**/MetadataFile:**<MetadataFile\>|`Optional.` 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。|
+|**/srcdir:** <SourceDirectory\>|`Required.` 包含要复制到目标驱动器中的文件的源目录。 目录路径必须是绝对路径（而非相对路径）。|
+|**/dstdir:** <DestinationBlobVirtualDirectory\>|`Required.` Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。<br /><br /> 可以指定容器或 Blob 前缀（如 `music/70s/`）。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br /><br /> 当目标容器为根容器时，必须显式指定包含正斜杠的根容器（如 `$root/`）。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，不会复制源目录中的任何子目录。<br /><br /> 在指定目标虚拟目录或 blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。|
+|**/Disposition:** <rename&#124;no-overwrite&#124;overwrite>|`Optional.` 指定存在带指定地址的 Blob 时的行为。 此参数的有效值为：`rename`、`no-overwrite` 和 `overwrite`。 请注意，这些值区分大小写。 如果未指定任何值，将使用默认值 `rename`。<br /><br /> 为此参数指定的值会影响 `/srcdir` 参数指定的目录中的所有文件。|
+|**/BlobType:** <BlockBlob&#124;PageBlob>|`Optional.` 指定目标 Blob 的 Blob 类型。 有效值为：`BlockBlob` 和 `PageBlob`。 请注意，这些值区分大小写。 如果未指定任何值，将使用默认值 `BlockBlob`。<br /><br /> 在大多数情况下，建议使用 `BlockBlob`。 如果指定 `PageBlob`，目录中每个文件的长度必须是 512 的倍数（即页 Blob 的页面大小）。|
+|**/PropertyFile:** <PropertyFile\>|`Optional.` 目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。|
+|**/MetadataFile:** <MetadataFile\>|`Optional.` 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。|
 
 ### <a name="parameters-for-copying-a-single-file"></a>用于复制单个文件的参数
  复制单个文件时，可应用以下必需和可选参数：
 
 |命令行参数|描述|
 |----------------------------|-----------------|
-|**/srcfile:**<SourceFile\>|`Required.` 要复制的文件的完整路径。 目录路径必须是绝对路径（而非相对路径）。|
-|**/dstblob:**<DestinationBlobPath\>|`Required.` Windows Azure 存储帐户中的目标 Blob 的路径。 该 Blob 可能存在，也可能不存在。<br /><br /> 指定以容器名称开头的 Blob 名称。 Blob 名称不能以“/”或存储帐户名称开头。 有关 Blob 命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。<br /><br /> 当目标容器为根容器时，必须显式将 `$root` 指定为容器，如 `$root/sample.txt`。 请注意，根容器下的 Blob 的名称中不能包含“/”。|
-|**/Disposition:**<rename&#124;no-overwrite&#124;overwrite>|`Optional.` 指定存在带指定地址的 Blob 时的行为。 此参数的有效值为：`rename`、`no-overwrite` 和 `overwrite`。 请注意，这些值区分大小写。 如果未指定任何值，将使用默认值 `rename`。|
-|**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` 指定目标 Blob 的 Blob 类型。 有效值为：`BlockBlob` 和 `PageBlob`。 请注意，这些值区分大小写。 如果未指定任何值，将使用默认值 `BlockBlob`。<br /><br /> 在大多数情况下，建议使用 `BlockBlob`。 如果指定 `PageBlob`，目录中每个文件的长度必须是 512 的倍数（即页 Blob 的页面大小）。|
-|**/PropertyFile:**<PropertyFile\>|`Optional.` 目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。|
-|**/MetadataFile:**<MetadataFile\>|`Optional.` 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。|
+|**/srcfile:** <SourceFile\>|`Required.` 要复制的文件的完整路径。 目录路径必须是绝对路径（而非相对路径）。|
+|**/dstblob:** <DestinationBlobPath\>|`Required.` Windows Azure 存储帐户中的目标 Blob 的路径。 该 Blob 可能存在，也可能不存在。<br /><br /> 指定以容器名称开头的 Blob 名称。 Blob 名称不能以“/”或存储帐户名称开头。 有关 Blob 命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。<br /><br /> 当目标容器为根容器时，必须显式将 `$root` 指定为容器，如 `$root/sample.txt`。 请注意，根容器下的 Blob 的名称中不能包含“/”。|
+|**/Disposition:** <rename&#124;no-overwrite&#124;overwrite>|`Optional.` 指定存在带指定地址的 Blob 时的行为。 此参数的有效值为：`rename`、`no-overwrite` 和 `overwrite`。 请注意，这些值区分大小写。 如果未指定任何值，将使用默认值 `rename`。|
+|**/BlobType:** <BlockBlob&#124;PageBlob>|`Optional.` 指定目标 Blob 的 Blob 类型。 有效值为：`BlockBlob` 和 `PageBlob`。 请注意，这些值区分大小写。 如果未指定任何值，将使用默认值 `BlockBlob`。<br /><br /> 在大多数情况下，建议使用 `BlockBlob`。 如果指定 `PageBlob`，目录中每个文件的长度必须是 512 的倍数（即页 Blob 的页面大小）。|
+|**/PropertyFile:** <PropertyFile\>|`Optional.` 目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。|
+|**/MetadataFile:** <MetadataFile\>|`Optional.` 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。|
 
 ### <a name="resuming-an-interrupted-copy-session"></a>恢复已中断的复制会话
  如果复制会话因任何原因导致中断，可通过在仅指定日记文件的情况下运行该工具来恢复会话：

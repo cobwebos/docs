@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: dc07b4eea553e6cb3d9b522826e860ddbfbc1513
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64577040"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple 私有云概述
@@ -119,7 +119,7 @@ CloudSimple 转换，并在几分钟内扩展到公有云的 VMware 工作负荷
 
 下表显示了在私有云的资源上的节点限制。
 
-| 资源 | 限制 |
+| Resource | 限制 |
 |----------|-------|
 | 要创建私有云的节点的最小数量 | 3 |
 | 私有云上的群集中的节点的最大数目 | 16 |

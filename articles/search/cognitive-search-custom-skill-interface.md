@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: 1bf42e5f418f99f5e5327d790c1adffe2357b84e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65021939"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>如何将自定义技能添加到认知搜索管道
@@ -42,13 +42,13 @@ Azure 搜索中的[认知搜索索引管道](cognitive-search-concept-intro.md)�
 
 Web API 必须接受要处理的一组记录。 每条记录都必须包含一个“属性包”，该属性包是提供给 Web API 的输入。 
 
-假设要创建一个简单的扩充器来识别合同文本中提到的第一个日期。 在此示例中，技能接受单个输入 contractText 作为合同文本。 技能也具有单个输出，即合同的日期。 若要使扩充器更有趣，请将此 contractDate 以多部分复杂类型的形式返回。
+假设要创建一个简单的扩充器来识别合同文本中提到的第一个日期。 在此示例中，技能接受单个输入 contractText 作为合同文本  。 技能也具有单个输出，即合同的日期。 若要使扩充器更有趣，请将此 contractDate 以多部分复杂类型的形式返回  。
 
-你的 Web API 应该可以接收一批输入记录。 values 数组中的每个成员都表示特定记录的输入。 每条记录都需要具有以下元素：
+你的 Web API 应该可以接收一批输入记录。 values 数组中的每个成员都表示特定记录的输入  。 每条记录都需要具有以下元素：
 
-+ recordId 成员是特定记录的唯一标识符。 当扩充器返回结果时，它必须提供此 recordId 以便允许调用方将记录结果与其输入进行匹配。
++ recordId 成员是特定记录的唯一标识符  。 当扩充器返回结果时，它必须提供此 recordId 以便允许调用方将记录结果与其输入进行匹配  。
 
-+ data 成员，基本上是每条记录的输入域的包。
++ data 成员，基本上是每条记录的输入域的包  。
 
 更具体地说，根据上面的示例，你的 Web API 的请求应该类似于下：
 
@@ -85,7 +85,7 @@ Web API 必须接受要处理的一组记录。 每条记录都必须包含一�
 
 ### <a name="2-web-api-output-format"></a>2.Web API 输出格式
 
-输出的格式是一组包含 recordId 和属性包的记录 
+输出的格式是一组包含 recordId 和属性包的记录  
 
 ```json
 {

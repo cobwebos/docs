@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7499dbe1f3f0b89a11814ad1b65a52bb9ba9fd05
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66016065"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
@@ -69,13 +69,13 @@ ms.locfileid: "66016065"
 
 ## <a name="check-the-applications-internal-url"></a>检查应用程序的内部 URL
 
-作为第一个快捷步骤，请通过“企业应用程序”打开此应用程序，并选择“应用程序代理”菜单， 进行仔细检查并修复内部 URL。 确认内部 URL 是使用从本地网络访问应用程序。
+作为第一个快捷步骤，请通过“企业应用程序”  打开此应用程序，并选择“应用程序代理”  菜单， 进行仔细检查并修复内部 URL。 确认内部 URL 是使用从本地网络访问应用程序。
 
 ## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>检查应用程序是否已分配到正常工作的连接器组
 
 若要确认应用程序已分配到正常工作的连接器组：
 
-1. 通过转到“Azure Active Directory”，并依次单击“企业应用程序”和“所有应用程序”，在门户中打开应用程序。 打开应用程序，并从左侧菜单中选择“应用程序代理”。
+1. 通过转到“Azure Active Directory”  ，并依次单击“企业应用程序”  和“所有应用程序”  ，在门户中打开应用程序。 打开应用程序，并从左侧菜单中选择“应用程序代理”  。
 
 2. 查看“连接器组”字段。 如果组中没有活动连接器，将看到一条警告。 如果未显示任何警告，则继续验证所需的所有允许的端口。
 
@@ -105,7 +105,7 @@ ms.locfileid: "66016065"
 
 如果上述方法未能解决该问题，存在几个不同的可能原因。 若要确定问题：
 
-如果应用程序配置为使用集成 Windows 身份验证 (IWA)，则在不使用单一登录的情况下测试应用程序。 如果未配置，则转到下一段落。 要在不使用单一登录的情况下检查应用程序，可通过“企业应用程序”打开应用程序，并转到“单一登录”菜单。 将下拉列表从“集成 Windows 身份验证”更改为“已禁用 Azure AD 单一登录”。 
+如果应用程序配置为使用集成 Windows 身份验证 (IWA)，则在不使用单一登录的情况下测试应用程序。 如果未配置，则转到下一段落。 要在不使用单一登录的情况下检查应用程序，可通过“企业应用程序”  打开应用程序，并转到“单一登录”  菜单。 将下拉列表从“集成 Windows 身份验证”更改为“已禁用 Azure AD 单一登录”。 
 
 此时打开浏览器，并尝试重新访问该应用程序。 系统应该会提示进行身份验证，并进入应用程序。 如果你能够进行身份验证，则表示已启用单一登录的 Kerberos 约束委派 (KCD) 配置存在问题。 有关详细信息，请参阅“KCD 故障排除”页。
 

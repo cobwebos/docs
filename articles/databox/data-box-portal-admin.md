@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure Data Box，Azure 数据框大量通过 Azure 门户 |Microsoft Docs
-description: 介绍如何使用 Azure 门户管理你的 Azure Data Box 和 Azure 数据框繁重。
+title: 通过 Azure 门户管理 Azure Data Box、Azure Data Box Heavy | Microsoft Docs
+description: 介绍如何使用 Azure 门户管理 Azure Data Box 和 Azure Data Box Heavy。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: alkohli
 ms.openlocfilehash: 5ece12e117db7b334bce8edfd49a5a622e46e13c
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427715"
 ---
-# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 门户管理你的 Azure Data Box 和 Azure 数据框大量
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 门户管理 Azure Data Box 和 Azure Data Box Heavy
 
-本文适用于 Azure Data Box 和 Azure 数据框繁重。 本文介绍的一些复杂的工作流和可执行 Azure Data Box 设备的管理任务。 可以管理 Data Box 设备通过 Azure 门户或通过本地 web UI。
+本文同时适用于 Azure Data Box 和 Azure Data Box Heavy。 本文介绍了可对 Azure Data Box 设备执行的一些复杂工作流和管理任务。 可以通过 Azure 门户或本地 Web UI 管理 Data Box 设备。
 
-本文重点介绍可以使用 Azure 门户执行的任务。 使用 Azure 门户来管理订单、 管理 Data Box 设备，并在其继续完成跟踪订单的状态。
+本文重点介绍可以使用 Azure 门户执行的任务。 使用 Azure 门户可以管理订单、管理 Data Box 设备，以及跟踪订单在从头到尾的处理过程中的状态。
 
 
 ## <a name="cancel-an-order"></a>取消订单
 
-下达订单后，你可能会出于各种原因需要取消订单。 只能在订单处理之前取消订单。 处理订单并 Data Box 设备已准备好后，不能取消订单。
+下达订单后，你可能会出于各种原因需要取消订单。 只能在订单处理之前取消订单。 一旦订单已处理并且已准备好 Data Box 设备，就不能取消订单。
 
 可以执行以下步骤来取消订单。
 
@@ -40,7 +40,7 @@ ms.locfileid: "66427715"
 
 ## <a name="clone-an-order"></a>克隆订单
 
-克隆操作在某些情况下很有用。 例如，用户已使用 Data Box 传输了一些数据。 生成更多的数据，还有另一个 Data Box 设备，若要将数据传输到 Azure 需要。 在这种情况下，只需克隆同一份订单即可。
+克隆操作在某些情况下很有用。 例如，用户已使用 Data Box 传输了一些数据。 随着生成的数据越来越多，需要使用另一个 Data Box 设备将这些数据传输到 Azure。 在这种情况下，只需克隆同一份订单即可。
 
 执行以下步骤来克隆订单。
 
@@ -69,7 +69,7 @@ ms.locfileid: "66427715"
 
 ## <a name="download-shipping-label"></a>下载发货标签
 
-如果 Data Box 的电子墨水显示屏不工作并且没有返回发货标签，则你可能需要下载发货标签。 没有电子墨迹显示器都不在数据框繁重，因此此工作流不适用于大量数据框。
+如果 Data Box 的电子墨水显示屏不工作并且没有返回发货标签，则你可能需要下载发货标签。 由于 Data Box Heavy 上没有电子墨水显示屏，因此此工作流程不适用于 Data Box Heavy。
 
 执行以下步骤下载发货标签。
 
@@ -120,7 +120,7 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 
     ![下载订单历史记录](media/data-box-portal-admin/download-order-history-1.png)
 
-2. 单击“下载订单历史记录”。  在下载的历史记录中，会看到一个有关承运人跟踪日志的记录。 将两个集的对应于两个节点上的数据框大量的日志。 如果向下滚动到该日志的底部，则可看到以下内容的链接：
+2. 单击“下载订单历史记录”。  在下载的历史记录中，会看到一个有关承运人跟踪日志的记录。 将有两组日志对应于 Data Box Heavy 上的两个节点。 如果向下滚动到该日志的底部，则可看到以下内容的链接：
     
    - **复制日志** - 包含一个文件列表，其中的文件是在将数据从 Data Box 复制到 Azure 存储帐户的过程中出错的。
    - **审核日志** - 包含有关 Data Box 启动的信息，以及当它位于 Azure 数据中心外部时在其上共享访问权限的信息。
@@ -215,4 +215,4 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[进行故障排除数据框和数据框大量问题](data-box-troubleshoot.md)。
+- 了解如何[排查 Data Box 和 Data Box Heavy 问题](data-box-troubleshoot.md)。

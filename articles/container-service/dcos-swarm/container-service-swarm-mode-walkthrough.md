@@ -10,10 +10,10 @@ ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
 ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60721772"
 ---
 # <a name="deprecated-deploy-docker-ce-cluster"></a>（已弃用）部署 Docker CE 群集
@@ -22,7 +22,7 @@ ms.locfileid: "60721772"
 
 在本快速入门中，将使用 Azure CLI 部署 Docker CE 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
 
-Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷。
+Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷  。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -32,7 +32,7 @@ Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。
 
-以下示例在 westus2 位置创建名为 myResourceGroup 的资源组。
+以下示例在 westus2 位置创建名为 myResourceGroup 的资源组。  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location westus2
 
 使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Docker CE 群集。 有关 Docker CE 区域可用性的信息，请访问 [Docker CE 的 ACS 区域](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
-以下示例创建名为 mySwarmCluster 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
+以下示例创建名为 mySwarmCluster  的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
 
 ```azurecli-interactive
 az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys

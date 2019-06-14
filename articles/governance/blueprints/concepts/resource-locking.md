@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719755"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
@@ -21,21 +21,21 @@ ms.locfileid: "64719755"
 
 ## <a name="locking-modes-and-states"></a>锁定模式和状态
 
-锁定模式适用于蓝图分配，具有三个选项：“不锁定”、“只读”或“不要删除”。 在蓝图分配过程中的项目部署过程中配置锁定模式。 可以通过更新蓝图分配来设置不同的锁定模式。
+锁定模式适用于蓝图分配，具有三个选项：“不锁定”  、“只读”  或“不要删除”  。 在蓝图分配过程中的项目部署过程中配置锁定模式。 可以通过更新蓝图分配来设置不同的锁定模式。
 但是，不能在蓝图外部更改锁定模式。
 
-蓝图分配中由项目创建的资源具有四种状态：“未锁定”、“只读”、“无法编辑/删除”或“无法删除”。 每种项目类型都可以处于“未锁定”状态。 下表可以用于确定资源的状态：
+蓝图分配中由项目创建的资源具有四种状态：“未锁定”  、“只读”  、“无法编辑/删除”  或“无法删除”  。 每种项目类型都可以处于“未锁定”  状态。 下表可以用于确定资源的状态：
 
-|Mode|项目资源类型|状态|描述|
+|模式|项目资源类型|状态|描述|
 |-|-|-|-|
-|不锁定|*|未锁定|资源不受蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”或“不要删除”资源组项目的资源。|
-|只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
+|不锁定|*|未锁定|资源不受蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”  或“不要删除”  资源组项目的资源。|
+|只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”  资源。|
 |只读|非资源组|只读|以任何方式都无法更改资源 -- 无更改且无法将其删除。|
-|不要删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
+|不要删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”  资源。|
 
 ## <a name="overriding-locking-states"></a>重写锁定状态
 
-通常可以允许在订阅上具有合适的[基于角色的访问控制](../../../role-based-access-control/overview.md) (RBAC) 的某人（例如“所有者”角色）更改或删除任何资源。 当蓝图在已部署的分配中应用了锁定时，无法进行此访问。 如果使用“只读”或“不要删除”选项设置了分配，则即使订阅所有者也无法对受保护资源执行阻止的操作。
+通常可以允许在订阅上具有合适的[基于角色的访问控制](../../../role-based-access-control/overview.md) (RBAC) 的某人（例如“所有者”角色）更改或删除任何资源。 当蓝图在已部署的分配中应用了锁定时，无法进行此访问。 如果使用“只读”  或“不要删除”  选项设置了分配，则即使订阅所有者也无法对受保护资源执行阻止的操作。
 
 此安全措施可以保护已定义的蓝图与设计用于通过意外或以编程方式删除或更改创建的环境之间的一致性。
 
@@ -43,20 +43,20 @@ ms.locfileid: "64719755"
 
 如果需要修改或删除受分配保护的资源，则可通过两种方法来实现。
 
-- 将蓝图分配更新为“不锁定”锁定模式
+- 将蓝图分配更新为“不锁定”  锁定模式
 - 删除蓝图分配
 
 删除分配后，将删除由蓝图创建的锁定。 但是，资源会留在原地，需要通过正常方式删除。
 
 ## <a name="how-blueprint-locks-work"></a>蓝图锁定的工作原理
 
-如果蓝图分配选择了“只读”或“不要删除”选项，则会在分配期间将 RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并防止在蓝图外部删除蓝图锁定。
+如果蓝图分配选择了“只读”  或“不要删除”  选项，则会在分配期间将 RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并防止在蓝图外部删除蓝图锁定。
 
 ![蓝图拒绝对资源组的分配](../media/resource-locking/blueprint-deny-assignment.png)
 
 [拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)的每种模式如下所示：
 
-|Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|模式 |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
 |只读 |**\*** |**\*/read** |系统定制 (Everyone) |蓝图分配和用户定义中**excludedPrincipals** |资源组- _，则返回 true_;资源- _false_ |
 |不要删除 |**\*/delete** | |系统定制 (Everyone) |蓝图分配和用户定义中**excludedPrincipals** |资源组- _，则返回 true_;资源- _false_ |

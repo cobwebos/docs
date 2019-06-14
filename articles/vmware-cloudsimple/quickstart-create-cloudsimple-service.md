@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9b3b95db24f4b0f9a0cf8f5102dfeea5dc51e29f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64577565"
 ---
 # <a name="quickstart---create-service"></a>快速入门-创建服务
@@ -33,7 +33,7 @@ CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建�
 
 请按照以下步骤来启用 CloudSimple 服务的资源提供程序。
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 2. 搜索并选择**订阅**。
 
     ![选择订阅](media/cloudsimple-service-select-subscriptions.png)
@@ -50,7 +50,7 @@ CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建�
 >[!NOTE]
 > 必须在你的订阅上启用 CloudSimple 服务。 如果你的订阅未启用，你将收到错误，当你尝试创建服务时。  按照中的步骤[启用 CloudSimple 服务](https://docs.azure.cloudsimple.com/enable-cloudsimple-service)文章以启用该服务。
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 2. 搜索**CloudSimple 服务**。
 
     ![搜索 CloudSimple 服务](media/create-cloudsimple-service-search.png)
@@ -67,7 +67,7 @@ CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建�
 
     ![创建 CloudSimple 服务](media/create-cloudsimple-service.png)
 
-9. 单击“确定”。
+9. 单击“确定”。 
 
 创建服务并将其添加到服务的列表。
 
@@ -75,7 +75,7 @@ CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建�
 
 若要将设置付款现转容量 CloudSimple 私有云环境中，在 Azure 门户中的第一个设置节点。
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 2. 搜索**CloudSimple 节点**。
 
     ![搜索 CloudSimple 节点](media/create-cloudsimple-node-search.png)
@@ -92,9 +92,9 @@ CloudSimple 服务，可使用 Azure CloudSimple VMware 解决方案。  创建�
 9. 选择要托管节点资源的专用的位置。
 10. 选择的节点类型。 你可以选择[CS28 或 CS36 选项](cloudsimple-node.md)。 后一种包含的最大的计算和内存容量。
 11. 选择预配的节点数。
-12. 选择“查看 + 创建”。
+12. 选择“查看 + 创建”  。
 13. 查看设置。 若要修改任何设置，请单击**上一步**。
-14. 选择“创建”。
+14. 选择“创建”  。
 
 ## <a name="next-steps"></a>后续步骤
 

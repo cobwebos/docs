@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 6a895d7978f1af3914bbb9dee3594dbfffd9f317
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442370"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64569843"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
 
@@ -76,7 +76,7 @@ ms.locfileid: "61442370"
 * 散射的 10 毫米 LED 灯。
 
 > [!NOTE]
-> 这些项是可选的因为此代码示例支持模拟的传感器数据。
+> 上述项为可选项，因为代码示例支持模拟的传感器数据。
 >
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -121,13 +121,13 @@ ms.locfileid: "61442370"
 
 ### <a name="enable-ssh-and-spi"></a>启用 SSH 和 SPI
 
-1. 将 Pi 连接到监视器、 键盘和鼠标，启动 Pi，通过使用然后登录到 Raspbian`pi`作为用户名和`raspberry`作为密码。
+1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，然后通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
  
-2. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
+2. 依次单击 Raspberry 图标 >“首选项”   > “Raspberry Pi 配置”  。
 
    ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，并单击“确定”。 如果没有物理传感器，但希望使用模拟传感器数据，可选择执行此步骤。
+3. 在“接口”  选项卡上，将“SPI”  和“SSH”  设置为“启用”  ，并单击“确定”  。 如果没有物理传感器，但希望使用模拟传感器数据，可选择执行此步骤。
 
    ![在 Raspberry Pi 上启用 SPI 和 SSH](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
@@ -205,7 +205,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
    ```
 
    > [!NOTE] 
-   > 如果没有物理 BME280，可使用“--simulated-data”作为命令行参数来模拟温度和湿度数据。 `sudo ./setup.sh --simulated-data`
+   > 如果没有物理 BME280，可使用“--simulated-data”作为命令行参数来模拟温度和湿度数据  。 `sudo ./setup.sh --simulated-data`
    >
 
 ### <a name="build-and-run-the-sample-application"></a>生成并运行示例应用程序
@@ -232,11 +232,11 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 ![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](./media/iot-hub-raspberry-pi-kit-c-get-started/8-run-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>读取中心收到的消息
+## <a name="read-the-messages-received-by-your-hub"></a>读取 IoT 中心收到的消息
 
-若要监视 IoT 中心从设备收到的消息的一种方法是使用用于 Visual Studio Code 的 Azure IoT 工具。 若要了解详细信息，请参阅[使用针对 Visual Studio Code 进行发送和接收消息在设备与 IoT 中心之间的 Azure IoT 工具](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+若要监视 IoT 中心从设备收到的消息，一种方法是使用适用于 Visual Studio Code 的 Azure IoT Tools。 若要了解详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure IoT Tools 在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
-有关更多方法来处理设备发送的数据，继续学习下一节。
+若要了解如何通过更多方式来处理设备发送的数据，请转到下一部分。
 
 ## <a name="next-steps"></a>后续步骤
 

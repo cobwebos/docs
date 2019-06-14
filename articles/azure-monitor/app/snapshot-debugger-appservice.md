@@ -13,10 +13,10 @@ ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
 ms.openlocfilehash: 7ff93dffe2dd82bdbba204b4235a297b337438f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60784052"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>启用 Azure 应用服务中的.NET 应用程序的快照调试器
@@ -32,8 +32,8 @@ ms.locfileid: "60784052"
 
 Application Insights 快照调试程序预装的应用服务运行时，但需要将其启用以获取快照，以实现应用服务应用。 部署应用后，即使在源代码中包括了 Application Insights SDK，请执行以下步骤来启用快照调试程序。
 
-1. 转到 Azure 门户中的“应用服务”窗格。
-2. 导航到“设置”>“Application Insights”窗格。
+1.  转到 Azure 门户中的“应用服务”窗格。
+2. 导航到“设置”>“Application Insights”窗格  。
 
    ![在应用服务门户上启用 App Insights](./media/snapshot-debugger/applicationinsights-appservices.png)
 

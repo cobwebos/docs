@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e25060152577e7947a78aa0e8d78c85cc7fd2fad
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65138344"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
@@ -77,7 +77,7 @@ Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 
 ## <a name="required-attributes"></a>必需属性
 此表显示了 SAML 2.0 消息中特定属性的需求。
  
-|属性|描述|
+|特性|描述|
 | ----- | ----- |
 |NameID|此断言的值必须与 Azure AD 用户的 ImmutableID 一样。 它最多可由 64 个字母数字字符组成。 任何非 html 安全型字符都必须进行编码，例如，“+”字符显示为“.2B”。|
 |IDPEmail|用户主体名称 (UPN) 将以名为 IDPEmail 的元素的形式列入 SAML 响应中，这是用户在 Azure AD/Office 365 中的 UserPrincipalName (UPN)。 UPN 采用电子邮件地址格式。 Windows Office 365 (Azure Active Directory) 中的 UPN 值。|

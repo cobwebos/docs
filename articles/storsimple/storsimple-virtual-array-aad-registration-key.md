@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: alkohli
 ms.openlocfilehash: 080f49ca1078858462264f229e9acfee6fad17d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61387606"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>将新身份验证用于 StorSimple
@@ -78,11 +78,11 @@ AAD 身份验证在运行 Update 1 或更高版本的 StorSimple 虚拟阵列（
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>生成 AAD 服务注册密钥的步骤
 
-1. 在“StorSimple 设备管理器”中，转到“管理”**&gt;**“密钥”。
+1. 在“StorSimple 设备管理器”  中，转到“管理” **&gt;** “密钥”  。
     
     ![转到“密钥”](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
 
-2. 单击“生成密钥”。
+2. 单击“生成密钥”  。
 
     ![单击“重新生成”](./media/storsimple-virtual-array-aad-registration-key/aad-click-generate-registration-key.png)
 

@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc0042d6392891e8282c563afea2212031a0f49a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f0224c215c1d5f6e0c36402926a594dcd79d2af0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121881"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057238"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>桌面应用程序调用 web Api 的代码配置
 
@@ -45,7 +45,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-如果你想要使用交互式身份验证，如上图所示，你想要使用`.WithRedirectUri`修饰符：
+如果你想要使用交互式身份验证或设备代码流，如上图所示，你想要使用`.WithRedirectUri`修饰符：
 
 ```CSharp
 IPublicClientApplication app;

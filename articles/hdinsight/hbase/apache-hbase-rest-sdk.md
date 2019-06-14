@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
 ms.openlocfilehash: 707869880c5df619def2d707264b59e22e03c521
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64720299"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>使用适用于 Apache HBase.NET SDK
@@ -40,9 +40,9 @@ client = new HBaseClient(credentials);
 
 ## <a name="create-a-new-table"></a>创建新表
 
-HBase 在表中存储数据。 表包含 *Rowkey*、主键以及一个或多个名为“列系列”的列组。 每个表中的数据按 Rowkey 范围水平分布到多个区域。 每个区域都有一个开始键和结束键。 一个表可以有一个或多个区域。 随着表中数据的增长，HBase 会将大区域拆分为较小的区域。 区域存储在区域服务器中，一个区域服务器可以存储多个区域。
+HBase 在表中存储数据。 表包含 *Rowkey*、主键以及一个或多个名为“列系列”的列组。  每个表中的数据按 Rowkey 范围水平分布到多个区域。  每个区域都有一个开始键和结束键。 一个表可以有一个或多个区域。 随着表中数据的增长，HBase 会将大区域拆分为较小的区域。 区域存储在区域服务器  中，一个区域服务器可以存储多个区域。
 
-数据以物理方式存储在 *HFile* 中。 单个 HFile 包含的数据适用于一个表、一个区域和一个列系列。 HFile 中的行在存储时按 Rowkey 排序。 每个 HFile 都有一个 B+ 树索引，用于快速检索行。
+数据以物理方式存储在 *HFile* 中。 单个 HFile 包含的数据适用于一个表、一个区域和一个列系列。 HFile 中的行在存储时按 Rowkey 排序。 每个 HFile 都有一个  B+ 树索引，用于快速检索行。
 
 若要创建新表，请指定 `TableSchema` 和列。 以下代码检查“RestSDKTable”表是否已存在 - 如果不存在，则会创建该表。
 

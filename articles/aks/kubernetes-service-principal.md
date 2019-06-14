@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: d8a8a2f005a92988158b3f9c36ce24936fb020b4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 82ceb332ca377da1953908abba3f7c52874b995e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475629"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066792"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -102,9 +102,10 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - 创建一个[自定义角色][rbac-custom-role]，并定义以下角色权限：
   - *Microsoft.Network/virtualNetworks/subnets/join/action*
   - *Microsoft.Network/virtualNetworks/subnets/read*
+  - *Microsoft.Network/virtualNetworks/subnets/write*
+  - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft.Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
-  - *Microsoft.Network/publicIPAddresses/join/action*
 - 或者，在虚拟网络的子网上分配[网络参与者][rbac-network-contributor]内置角色
 
 ### <a name="storage"></a>存储

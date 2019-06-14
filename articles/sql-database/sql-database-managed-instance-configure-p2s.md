@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab, bonova, jovanpop
 manager: craigg
 ms.date: 03/13/2019
 ms.openlocfilehash: 9ca9506ad9ca826349b2815e504e9ba8bf976faa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60702003"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接
@@ -69,28 +69,28 @@ ms.locfileid: "60702003"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 打开在其中创建了虚拟网络网关的资源组，然后打开虚拟网络网关资源。
-3. 选择“点到站点配置”，然后选择“下载 VPN 客户端”。
+3. 选择“点到站点配置”，然后选择“下载 VPN 客户端”   。
 
     ![下载 VPN 客户端](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
 4. 在本地客户端计算机上，从 zip 文件中提取文件，然后打开包含已提取文件的文件夹。
 5. 打开 **WindowsAmd64** 文件夹，然后打开 **VpnClientSetupAmd64.exe** 文件。
-6. 如果收到“Windows 已保护你的电脑”消息，请单击“更多信息”，然后单击“仍然运行”。
+6. 如果收到“Windows 已保护你的电脑”消息，请单击“更多信息”，然后单击“仍然运行”。   
 
     ![安装 VPN 客户端](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
-7. 在“用户帐户控制”对话框中单击“是”，继续下一步。
-8. 在引用虚拟网络的对话框中选择“是”，为虚拟网络安装 VPN 客户端。
+7. 在“用户帐户控制”  对话框中单击“是”，继续下一步。
+8. 在引用虚拟网络的对话框中选择“是”，为虚拟网络安装 VPN 客户端。 
 
 ## <a name="connect-to-the-vpn-connection"></a>连接到 VPN 连接
 
-1. 在本地客户端计算机上的“网络和 Internet”中转到“VPN”，选择“托管实例”虚拟网络，以便建立到此 VNet 的连接。 在下图中，VNet 命名为 **MyNewVNet**。
+1. 在本地客户端计算机上的“网络和 Internet”中转到“VPN”，选择“托管实例”虚拟网络，以便建立到此 VNet 的连接。   在下图中，VNet 命名为 **MyNewVNet**。
 
     ![VPN 连接](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
-2. 选择“连接”。
-3. 在对话框中，选择“连接”。
+2. 选择“连接”  。
+3. 在对话框中，选择“连接”  。
 
     ![VPN 连接](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  
-4. 当系统提示连接管理器需要提升的权限才能更新路由表时，请选择“继续”。
-5. 在“用户帐户控制”对话框中选择“是”以继续。
+4. 当系统提示连接管理器需要提升的权限才能更新路由表时，请选择“继续”  。
+5. 在“用户帐户控制”对话框中选择“是”以继续  。
 
    已建立到托管实例 VNet 的 VPN 连接。
 
@@ -99,8 +99,8 @@ ms.locfileid: "60702003"
 ## <a name="use-ssms-to-connect-to-the-managed-instance"></a>使用 SSMS 连接到托管实例
 
 1. 在本地客户端计算机上，打开 SQL Server Management Studio (SSMS)。
-2. 在“连接到服务器”对话框的“服务器名称”框中输入托管实例的完全限定**主机名**。
-3. 选择“SQL Server 身份验证”，提供用户名和密码，然后选择“连接”。
+2. 在“连接到服务器”对话框的“服务器名称”框中输入托管实例的完全限定  **主机名**。 
+3. 选择“SQL Server 身份验证”，提供用户名和密码，然后选择“连接”。  
 
     ![ssms 连接](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 

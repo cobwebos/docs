@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
 ms.openlocfilehash: cb306a32a9388113a9c81fa363a6e1ee2c3b30ad
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938101"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
@@ -60,8 +60,8 @@ ms.locfileid: "64938101"
 
 | **发布选项**    | **说明**  |
 | :------------------- | :-------------------|
-| **列表** | 直接列出应用程序或服务，这样市场用户就可以通过“与我联系”广告语请求你与客户联系。 |
-| **试用** | 通过市场增加曝光率，自动预配应用程序的试用体验，让潜在用户在有限的时间内免费使用你的 SaaS、IaaS 或 Microsoft 应用内体验，然后再决定是否购买。 用于试用发布选项的广告语是：免费试用版或体验版。 |
+| **列表** | 直接列出应用程序或服务，这样市场用户就可以通过“与我联系”广告语请求你与客户联系  。 |
+| **试用** | 通过市场增加曝光率，自动预配应用程序的试用体验，让潜在用户在有限的时间内免费使用你的 SaaS、IaaS 或 Microsoft 应用内体验，然后再决定是否购买。 用于试用发布选项的广告语是：免费试用版或体验版   。 |
 | **事务处理** | 应用程序在 Azure 上运行，当客户选择“马上购买”广告语时，可以作为资源直接预配到客户的 Azure 订阅中。 你的软件许可可以选择性地购买和开票，具体取决于客户选择的付款方式和条款。你可以允许客户在有限的时间内访问**免费试用软件**（只能在 Azure 市场中使用）。 |
 
 >[!Note]

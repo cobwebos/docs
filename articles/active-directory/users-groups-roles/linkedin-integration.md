@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1130885cc3168582935264ffaad9fd7a8ba3c60b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64920266"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>集成 Azure Active Directory 中的 LinkedIn 帐户连接
@@ -39,8 +39,8 @@ ms.locfileid: "64920266"
 可以启用想要具有访问权限，只有你的组织中的所选用户到整个组织中用户的 LinkedIn 帐户连接。
 
 1. 登录到[Azure AD 管理中心](https://aad.portal.azure.com/)与 Azure AD 组织的全局管理员帐户。
-1. 选择“用户”。
-1. 在“用户”边栏选项卡中，选择“用户设置”。
+1. 选择“用户”  。
+1. 在“用户”  边栏选项卡中，选择“用户设置”  。
 1. 下**LinkedIn 帐户连接**，允许用户连接其帐户以访问其某些 Microsoft 应用中的 LinkedIn 连接。 直到用户同意连接其帐户不共享任何数据。
 
     * 选择**是**若要启用你的组织中的所有用户服务
@@ -91,15 +91,15 @@ ms.locfileid: "64920266"
 ## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>使用组策略启用 LinkedIn 帐户连接
 
 1. 下载 [Office 2016 管理模板文件 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
-1. 提取 ADMX 文件然后将其复制到中央存储。
+1. 提取 ADMX 文件然后将其复制到中央存储  。
 1. 打开组策略管理。
-1. 使用以下设置创建一个组策略对象：“用户配置” > “管理模板” > “Microsoft Office 2016” > “杂项” > “在 Office 应用程序中显示 LinkedIn 的功能”。
-1. 选择“已启用”或“已禁用”。
+1. 使用以下设置创建一个组策略对象：“用户配置” > “管理模板” > “Microsoft Office 2016” > “杂项” > “在 Office 应用程序中显示 LinkedIn 的功能”      。
+1. 选择“已启用”或“已禁用”。  
   
    状态 | 效果
    ------ | ------
-   **已启用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。 你的组织中的用户可以在其 Office 2016 应用程序中使用 LinkedIn 功能。
-   **已禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
+   **已启用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。  你的组织中的用户可以在其 Office 2016 应用程序中使用 LinkedIn 功能。
+   **已禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。  组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
 
 此组策略只会影响本地计算机上的 Office 2016 应用。 如果用户在其 Office 2016 应用中禁用 LinkedIn，他们仍可以看到在 Office 365 中的 LinkedIn 功能。
 

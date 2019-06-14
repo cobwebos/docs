@@ -17,10 +17,10 @@ ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783291"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 应用程序代理：版本发行历史记录
@@ -28,7 +28,7 @@ ms.locfileid: "65783291"
 
 下面是相关资源的列表：
 
-资源 |  详细信息
+Resource |  详细信息
 --------- | --------- |
 如何启用应用程序代理 | 启用应用程序代理并安装并注册连接器的必备组件所述[教程](application-proxy-add-on-premises-application.md)。
 了解 Azure AD 应用程序代理连接器 | 详细了解如何[连接器管理](application-proxy-connectors.md)以及连接器[自动升级](application-proxy-connectors.md#automatic-updates)。

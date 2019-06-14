@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: 1a42b590fc83b89cd9f90998f835fc58f84ea960
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: af35a84c299544e43988547771ddce75fd71bd90
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597402"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065785"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>计划和广播作业 (Node)
 
@@ -38,7 +38,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 本教程演示如何：
 
-* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor。
+* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor  。
 
 * 创建一个 Node.js 控制台应用，该应用使用作业调用模拟设备应用中的 **lockDoor** 直接方法，并使用设备作业更新所需属性。
 
@@ -46,7 +46,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * **simDevice.js**，它使用设备标识连接到 IoT 中心，并接收 **lockDoor** 直接方法。
 
-* scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性。
+* scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性  。
 
 要完成本教程，需要以下各项：
 
@@ -66,7 +66,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法。
+本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法  。
 
 1. 新建名为 **simDevice** 的空文件夹。  在 **simDevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
@@ -105,7 +105,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
    
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
-            if (!err) {
+            if (err) {
                 console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
@@ -265,7 +265,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 现在，已准备就绪，可以运行应用程序了。
 
-1. 在 simDevice 文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
+1. 在 simDevice  文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
    
     ```
     node simDevice.js
@@ -283,6 +283,6 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 在本教程中，使用了作业来安排用于设备的直接方法以及设备孪生属性的更新。
 
-若要继续开始使用 IoT 中心和设备管理模式，如远程无线固件更新，请参阅[教程：如何进行固件更新](tutorial-firmware-update.md)。
+若要继续开始使用 IoT 中心和设备管理模式，如远程无线固件更新，请参阅[教程：如何执行固件更新](tutorial-firmware-update.md)。
 
 若要继续开始使用 IoT 中心，请参阅[开始使用 Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)。

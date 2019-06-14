@@ -19,10 +19,10 @@ ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed4e7559ff6c3b76bbdf49b538ffebf3ad09cc58
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001221"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 允许应用程序使用自己的凭据进行�
 ## <a name="assertion-format"></a>断言格式
 若要计算断言，可使用所选语言中的许多 [JSON Web 令牌](https://jwt.ms/)库之一。 令牌携带的信息如下所示：
 
-### <a name="header"></a>页眉
+### <a name="header"></a>Header
 
 | 参数 |  备注 |
 | --- | --- |
@@ -100,7 +100,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 在客户端应用程序的 Azure 应用注册中：
 1. 选择**证书和机密**。 
 2. 单击**上传证书**，然后选择要上载的证书文件。
-3. 单击“添加”。
+3. 单击“添加”  。
   后上传证书，则会显示指纹、 开始日期和过期值。 
 
 ### <a name="updating-the-application-manifest"></a>更新应用程序清单

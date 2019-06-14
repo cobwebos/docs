@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66159460"
 ---
 # <a name="clean-up-your-azure-stream-analytics-job"></a>清理 Azure 流分析作业
@@ -29,7 +29,7 @@ ms.locfileid: "66159460"
 
 2. 找到正在运行的流分析作业并选择它。
 
-3. 在流分析作业页上，选择“停止”以停止作业。 
+3. 在流分析作业页上，选择“停止”  以停止作业。 
 
    ![停止 Azure 流分析作业](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "66159460"
 
 2. 找到现有流分析作业并选择它。
 
-3. 在流分析作业页上，选择“删除”以删除作业。 
+3. 在流分析作业页上，选择“删除”  以删除作业。 
 
    ![删除 Azure 流分析作业](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
 

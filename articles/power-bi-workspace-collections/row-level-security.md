@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 2d0c8629e4abf9e27cd204b9a13b79808b177501
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64715199"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>将行级别安全性用于 Power BI 工作区集合
@@ -46,45 +46,45 @@ RLS 是在 Power BI Desktop 中编写的。 打开数据集和报表时，可以
 
 下面是此架构的一些注意事项：
 
-* 所有度量值，例如“总销售额”，存储在“销售”事实表中。
-* 有四个附加的相关维度表：“项”、“时间”、“商店”和“区域”。
-* 关系线的箭头表示筛选器可以从一个表流向另一个表的方向。 例如，如果筛选器位于 **Time[Date]** 中，则在当前架构中，它只向下筛选“销售”表中的值。 其他表不受此筛选器的影响，因为关系线的所有箭头都指向销售表，未指向其他方向。
-* “区域”表指明谁是每个区域的经理：
+* 所有度量值，例如“总销售额”  ，存储在“销售”  事实表中。
+* 有四个附加的相关维度表：“项”  、“时间”  、“商店”  和“区域”  。
+* 关系线的箭头表示筛选器可以从一个表流向另一个表的方向。 例如，如果筛选器位于 **Time[Date]** 中，则在当前架构中，它只向下筛选“销售”  表中的值。 其他表不受此筛选器的影响，因为关系线的所有箭头都指向销售表，未指向其他方向。
+* “区域”  表指明谁是每个区域的经理：
   
   ![区域表行](media/row-level-security/district-table-4.png)
 
-根据此架构，如果将筛选器应用到“区域”表中的“区域经理”列，并且该筛选器与查看报表的用户匹配，则该筛选器也向下筛选“商店”和“销售”表，只显示该特定区域经理的数据。
+根据此架构，如果将筛选器应用到“区域”表中的“区域经理”  列，并且该筛选器与查看报表的用户匹配，则该筛选器也向下筛选“商店”  和“销售”  表，只显示该特定区域经理的数据。
 
 方法如下：
 
-1. 在“建模”选项卡中，单击“管理角色”。  
+1. 在“建模”选项卡中，单击“管理角色”  。  
    ![“建模”功能区中的“管理角色”按钮](media/row-level-security/modeling-tab-5.png)
-2. 创建名为“经理”的新角色。  
+2. 创建名为“经理”  的新角色。  
    ![Power BI Desktop 中的角色创建](media/row-level-security/manager-role-6.png)
-3. 在“区域”表中输入以下 DAX 表达式：**[District Manager] = USERNAME()**  
+3. 在“区域”  表中输入以下 DAX 表达式： **[District Manager] = USERNAME()**  
    ![角色中用于表的 DAX 筛选表达式](media/row-level-security/manager-role-7.png)
-4. 为确保规则正常运行，请在“建模”选项卡中单击“以角色身份查看”，并输入以下内容：  
+4. 为确保规则正常运行，请在“建模”  选项卡中单击“以角色身份查看”  ，并输入以下内容：  
    ![以角色身份查看](media/row-level-security/view-as-roles-8.png)
 
    报表随即会显示数据，与使用 **Andrew Ma** 登录时的情况一样。
 
-如前所述应用筛选器可向下筛选“区域”、“商店”和“销售”表中的所有记录。 但是，由于对“销售”与“时间”之间的关系应用了筛选方向，因此，“销售”和“项”，以及“项”和“时间”表不会向下筛选。
+如前所述应用筛选器可向下筛选“区域”  、“商店”  和“销售”  表中的所有记录。 但是，由于对“销售”  与“时间”  之间的关系应用了筛选方向，因此，“销售”  和“项”  ，以及“项”  和“时间”  表不会向下筛选。
 
 ![突出显示关系的图示视图](media/row-level-security/diagram-view-9.png)
 
-这种模式也许能够满足某种要求，但如果不希望经理查看他们没有任何销售的项，则可以针对关系启用双向交叉筛选，使安全筛选器同时流向两个方向。 为此，可以编辑“销售”与“项”之间的关系，如下所示：
+这种模式也许能够满足某种要求，但如果不希望经理查看他们没有任何销售的项，则可以针对关系启用双向交叉筛选，使安全筛选器同时流向两个方向。 为此，可以编辑“销售”  与“项”  之间的关系，如下所示：
 
 ![针对关系的交叉筛选器方向](media/row-level-security/edit-relationship-10.png)
 
-现在，筛选器可以从“销售”表流向“项”表：
+现在，筛选器可以从“销售”表流向“项”  表：
 
 ![图示视图中关系的筛选器方向图标](media/row-level-security/diagram-view-11.png)
 
 > [!NOTE]
 > 如果针对数据使用 DirectQuery 模式，必须选择以下两个选项来启用双向交叉筛选：
 
-1. “文件” -> “选项和设置” -> “预览功能” -> “为 DirectQuery 启用两个方向的交叉筛选”。
-2. “文件” -> “选项和设置” -> “DirectQuery” -> “允许 DirectQuery 模式下不受限制的度量”。
+1. “文件”   -> “选项和设置”   -> “预览功能”   -> “为 DirectQuery 启用两个方向的交叉筛选”  。
+2. “文件”   -> “选项和设置”   -> “DirectQuery”   -> “允许 DirectQuery 模式下不受限制的度量”  。
 
 若要了解有关双向交叉筛选的详细信息，请下载 [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](https://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx)（SQL Server Analysis Services 2016 和 Power BI Desktop 中的双向交叉筛选）白皮书。
 

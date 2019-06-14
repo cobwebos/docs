@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304361"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
@@ -156,7 +156,7 @@ ms.locfileid: "66304361"
 |System.Security.Cryptography.SymmetricAlgorithm|全部|
 |System.Security.Cryptography.X509Certificates.PublicKey|全部|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|全部|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|名称|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name|
 |System.Security.Cryptography.X509Certificates.X509Certificate|全部|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|全部|
 |System.Security.Cryptography.X509Certificates.X509ContentType|全部|

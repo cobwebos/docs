@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 05/21/2019
+ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93eb0fba91ce5064d04a340e8b3e5b984ee73081
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 1dcdbbf0a2a71fa38b6eacd6a8d179cdad979937
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515569"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059293"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -62,6 +62,19 @@ ms.locfileid: "66515569"
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 <a name="preprocess"></a>
+
+## <a name="time-series-forecasting"></a>时序预测
+构建预测是任何商业实体、 不可或缺的一部分，无论它是收入、 库存、 销售或客户的需求。 自动化机器学习使用数合并的技术和建议高质量时序预测的解决方法。 时间序列中自动机器学习的试验将被视为多元回归问题。 过去的时间序列的值是"透视"以供其他预测值以及回归量的额外的维度。 
+
+此方法时，与传统时序方法，不同的自然地将合并多个上下文变量并在定型期间的关系的另一个优点。 中实际预测应用程序，多个因素会影响预测。 例如时预测销售额，交互的历史趋势、 汇率和价格所有共同推动销售结果。 更多的好处是回归模型的所有最新创新立即应用到预测。
+
+预测应如何遥远的将来扩展 （预测时间范围） 是基本的预测规范的一部分。 设置所需的参数的`max_horizon`在试验中定义了多少个单位阶段 （根据训练数据，例如每月、 每周 forecaster 应预测出的时间间隔。 
+
+自动化机器学习研究单个，但通常在内部分支模型的数据集和预测视野中的所有项。 因此，更多的数据是可用来估计模型参数，而且不可见的系列的泛化成为可能。 
+
+从定型数据中提取的功能方面发挥关键作用。 自动化机器学习执行标准的预处理步骤，并生成其他时序功能 （例如年、 月、 日的周等） 来捕获季节效应和最大程度提高预测准确性。 
+
+如果适用于你的方案，您可以指示自动机器学习来创建滞后 (`target_lags`) 滚动窗口数据或聚合 (`target_rolling_window_size`) 从你的目标 (`y_value`) 过去的值。 
 
 ## <a name="preprocessing"></a>预处理
 
@@ -160,6 +173,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|自动模型选择和定型使用 ML.NET 使用 Visual Studio 和 Visual Studio Code 的.NET 应用程序中实现自动化机器学习 （预览版）。|
 |[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|横向扩展自动化机器学习训练作业在 HDInsight 中的 Spark 群集中并行。|
 |[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|调用直接在 Power BI （预览版） 中的机器学习模型。|
+|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|创建新的机器学习模型通过 SQL Server 2019 大数据群集中的数据。|
 
 ## <a name="next-steps"></a>后续步骤
 

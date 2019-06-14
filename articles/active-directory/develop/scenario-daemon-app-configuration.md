@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8d377db827a6548c380128624c21f4ae7896aff
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075320"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055762"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>守护程序应用程序调用 web Api 的代码配置
 
@@ -39,9 +39,11 @@ ms.locfileid: "65075320"
 
 ## <a name="configuration-of-the-authority"></a>颁发机构的配置
 
-考虑到守护程序应用程序不使用委派的权限，但应用程序权限，其*受支持的帐户类型*不能为*任何组织的目录中的帐户和个人 Microsoft 帐户 （例如，Skype，Xbox、 Outlook.com)*。 实际上，是没有租户管理员同意 Microsoft 个人帐户的守护程序应用程序。 将需要选择*我的组织中的帐户*或*任何组织中的帐户*。
+考虑到守护程序应用程序不使用委派的权限，但应用程序权限，其*受支持的帐户类型*不能为*任何组织的目录中的帐户和个人 Microsoft 帐户 （例如，Skype，Xbox、 Outlook.com)* 。 实际上，是没有租户管理员同意 Microsoft 个人帐户的守护程序应用程序。 将需要选择*我的组织中的帐户*或*任何组织中的帐户*。
 
-因此在应用程序配置中指定的颁发机构应租户 ed （指定租户 ID 或与组织关联的域名）。 如果你是 ISV 并且想要提供多租户工具，则可以使用`organizations`。 但请记住，您还需要向客户说明如何授予管理员同意。 请参阅[请求整个租户的许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)有关详细信息
+因此在应用程序配置中指定的颁发机构应租户 ed （指定租户 ID 或与组织关联的域名）。
+
+如果你是 ISV 并且想要提供多租户工具，则可以使用`organizations`。 但请记住，您还需要向客户说明如何授予管理员同意。 请参阅[请求整个租户的许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)有关详细信息。 此外没有当前限制在 MSAL 的`organizations`只允许客户端凭据时应用程序密码 （而不是证书）。 请参阅[MSAL.NET bug #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
 ## <a name="application-configuration-and-instantiation"></a>应用程序配置和实例化
 

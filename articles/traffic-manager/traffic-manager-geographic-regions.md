@@ -3,7 +3,7 @@ title: Azure 流量管理器地理路由类型使用的国家/地区层次结构
 description: 本文列出了 Azure 流量管理器地理路由类型使用的国家/地区层次结构
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7e3ea1d2a0c3e8501222d57a92fad917d465022e
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: allensu
+ms.openlocfilehash: d16529e966fb2e16d1012f4aa0aafcff204a3093
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866995"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071161"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理器将国家/地区层次结构用于地理流量路由方法
 
@@ -99,7 +99,7 @@ ms.locfileid: "64866995"
 
         - ME(黑山)
 
-        - MK （北部前）
+        - MK(北马其顿)
 
         - MT(马耳他)
 
@@ -128,7 +128,7 @@ ms.locfileid: "64866995"
         - SM(圣马力诺)
 
         - UA(乌克兰)
-            - 克里米亚的区域
+            - 克里米亚区域
 
         - VA(梵蒂冈城)
 

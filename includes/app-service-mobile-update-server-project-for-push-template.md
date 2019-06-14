@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66140157"
 ---
 在本部分中，更新现有移动应用后端项目中的代码，以便在每次添加新项目时发送推送通知。 此过程由 Azure 通知中心的[模板](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)功能提供支持，允许跨平台推送。 各种客户端使用模板注册推送通知，因此只需单个通用推送即可将内容发送到所有客户端平台。
@@ -17,8 +17,8 @@ ms.locfileid: "66140157"
 
 ### <a name="dotnet"></a>.NET 后端项目
 
-1. 在 Visual Studio 中，右键单击服务器项目。 然后选择“管理 NuGet 包”。 搜索 `Microsoft.Azure.NotificationHubs`，并选择“安装”。 此过程将安装通知中心库，以便从后端发送通知。
-2. 在服务器项目中，打开“控制器” > “TodoItemController.cs”。 然后，添加以下 using 语句：
+1. 在 Visual Studio 中，右键单击服务器项目。 然后选择“管理 NuGet 包”。  搜索 `Microsoft.Azure.NotificationHubs`，并选择“安装”  。 此过程将安装通知中心库，以便从后端发送通知。
+2. 在服务器项目中，打开“控制器” > “TodoItemController.cs”。   然后，添加以下 using 语句：
 
     ```csharp
     using System.Collections.Generic;

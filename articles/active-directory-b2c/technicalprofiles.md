@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512282"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
@@ -139,7 +139,7 @@ Protocol  元素包含以下属性：
 
 **Key** 元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | Id | 否 | 从策略文件中的其他元素引用的特定密钥对的唯一标识符。 |
 | StorageReferenceId | 是 | 从策略文件中的其他元素引用的存储密钥容器的标识符。 |
@@ -156,7 +156,7 @@ Protocol  元素包含以下属性：
 
 **InputClaimsTransformation** 元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的声明转换的标识符。 |
 
@@ -190,7 +190,7 @@ InputClaim  元素包含以下属性：
 
 **PersistedClaim** 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 | DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
@@ -259,7 +259,7 @@ OutputClaim  元素包含以下属性：
 
 **IncludeTechnicalProfile** 元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 
@@ -267,7 +267,7 @@ OutputClaim  元素包含以下属性：
 
 **UseTechnicalProfileForSessionManagement** 元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 

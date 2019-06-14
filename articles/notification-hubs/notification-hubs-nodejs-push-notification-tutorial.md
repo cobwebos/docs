@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc5266bc37a0b58913feb08452e173949b64c112
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457851"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061612"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 
@@ -79,10 +79,10 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 通过执行以下步骤从 [Azure 门户] 获取连接 `connectionstring` 值：
 
-1. 在左侧导航窗格中，单击“浏览”。
-2. 选择“通知中心”，并找到要用于示例的中心。 您可以参考[Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)如果您需要创建新的通知中心的帮助。
-3. 选择“设置”。
-4. 单击“访问策略”。 会看到共享连接字符串和完全访问连接字符串。
+1. 在左侧导航窗格中，单击“浏览”。 
+2. 选择“通知中心”，并找到要用于示例的中心。  您可以参考[Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)如果您需要创建新的通知中心的帮助。
+3. 选择“设置”。 
+4. 单击“访问策略”。  会看到共享连接字符串和完全访问连接字符串。
 
 ![Azure 门户 — 通知中心](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
@@ -106,7 +106,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** — 消息的 JSON 或原始字符串的有效负载。
 - **Callback** — 回调函数。
 
-有关有效负载格式的详细信息，请参阅 [Implementing GCM Server](https://developer.android.com/google/gcm/server.html#payload)（实现 GCM 服务器）文档中的 **Payload**（有效负载）部分。
+有关有效负载格式的详细信息，请参阅 [Implementing GCM Server](https://developers.google.com/cloud-messaging/)（实现 GCM 服务器）文档中的 **Payload**（有效负载）部分。
 
 以下代码使用由 `NotificationHubService` 公开的 `GcmService` 实例将推送通知发送到所有已注册的客户端。
 

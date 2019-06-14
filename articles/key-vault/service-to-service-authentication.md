@@ -10,10 +10,10 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.openlocfilehash: defb67c7e100a50a81d55afee03aa84be8e1e8e9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64722465"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
@@ -84,11 +84,11 @@ ms.locfileid: "64722465"
 
 2. [Visual Studio 的应用身份验证扩展](https://go.microsoft.com/fwlink/?linkid=862354)以 Visual Studio 2017 Update 5 的独立扩展形式发布，与 Update 6 及更高版本中的产品绑定在一起。 使用 Update 6 或更高版本时，可以验证是否安装了应用身份验证扩展，方法是在 Visual Studio 安装程序中选择 Azure 开发工具。
  
-登录到 Visual Studio，通过“工具”&nbsp;>&nbsp;“选项”&nbsp;>&nbsp;“Azure 服务身份验证”选择一个用于本地开发的帐户。 
+登录到 Visual Studio，通过“工具”  &nbsp;>&nbsp;  “选项”&nbsp;>&nbsp;  “Azure 服务身份验证”选择一个用于本地开发的帐户。 
 
 如果在使用 Visual Studio 时遇到问题，例如有关令牌提供程序文件的错误，请仔细查看这些步骤。 
 
-可能还需对开发人员令牌重新进行身份验证。 为此，请转到“工具”&nbsp;>&nbsp;“选项”>**&nbsp;&nbsp;**“Azure 服务身份验证”，查找所选帐户下的“重新进行身份验证”链接。  选择该链接进行身份验证。 
+可能还需对开发人员令牌重新进行身份验证。 为此，请转到“工具”  &nbsp;>&nbsp;  “选项”> **&nbsp;&nbsp;** “Azure 服务身份验证”，查找所选帐户下的“重新进行身份验证”  链接。  选择该链接进行身份验证。 
 
 ### <a name="authenticating-with-azure-cli"></a>使用 Azure CLI 进行身份验证
 
@@ -168,7 +168,7 @@ az account list
 
 1. 创建[服务主体证书](../azure-resource-manager/resource-group-authenticate-service-principal.md)。 
 
-2. 将证书部署到 LocalMachine 或 CurrentUser 存储。 
+2. 将证书部署到  LocalMachine 或  CurrentUser 存储。 
 
 3. 将名为 **AzureServicesAuthConnectionString** 的环境变量设置为：
 
@@ -177,7 +177,7 @@ az account list
           CertificateStoreLocation={CertificateStore}
     ```
  
-    将 {AppId}、{TenantId} 和 {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 `LocalMachine` 或 `CurrentUser`。
+    将  {AppId}、  {TenantId} 和  {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 `LocalMachine` 或 `CurrentUser`。
 
 4. 运行应用程序。 
 
@@ -191,7 +191,7 @@ az account list
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret} 
     ```
 
-    将 _{AppId}_、_{TenantId}_ 和 _{ClientSecret}_ 替换为步骤 1 中生成的值。
+    将 _{AppId}_ 、 _{TenantId}_ 和 _{ClientSecret}_ 替换为步骤 1 中生成的值。
 
 3. 运行应用程序。 
 
@@ -201,7 +201,7 @@ az account list
 
 默认情况下，`AzureServiceTokenProvider` 使用多种方法来检索令牌。 
 
-若要控制此过程，请使用传递到 `AzureServiceTokenProvider` 构造函数或在 AzureServicesAuthConnectionString 环境变量中指定的连接字符串。 
+若要控制此过程，请使用传递到 `AzureServiceTokenProvider` 构造函数或在  AzureServicesAuthConnectionString 环境变量中指定的连接字符串。 
 
 可以使用以下选项：
 

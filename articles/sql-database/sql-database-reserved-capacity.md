@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 04/26/2019
 ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64574182"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用
@@ -29,7 +29,7 @@ ms.locfileid: "64574182"
 可在 [Azure 门户](https://portal.azure.com)中购买 Azure SQL 数据库预留容量。 购买 SQL 数据库预留容量：
 
 - 你必须是至少一个企业或即用即付订阅的“所有者”角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 SQL 数据库预留容量。
 
 有关预留购买如何针对企业客户和即用即付客户进行计费的详细信息，请参阅[了解适用于企业合约的 Azure 预留使用情况](../billing/billing-understand-reserved-instance-usage-ea.md)和[了解即用即付订阅的 Azure 预留使用情况](../billing/billing-understand-reserved-instance-usage.md)。
@@ -43,8 +43,8 @@ ms.locfileid: "64574182"
 ## <a name="buy-sql-database-reserved-capacity"></a>购买 SQL 数据库预留容量
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “预订”。
-3. 选择“添加”，然后在“选择产品类型”窗格中，选择“SQL 数据库”以购买 SQL 数据库的新预留容量。
+2. 选择“所有服务”   > “预订”  。
+3. 选择“添加”，然后在“选择产品类型”窗格中，选择“SQL 数据库”以购买 SQL 数据库的新预留容量。  
 4. 填写必填字段。 与所选属性匹配的现有或新的单一数据库、弹性池或托管实例符合享受预留容量折扣的条件。 获得折扣的 SQL 数据库实例的实际数目取决于所选范围和数量。
 
    ![提交 SQL 数据库预留容量订单之前的屏幕截图](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
@@ -62,14 +62,14 @@ ms.locfileid: "64574182"
     |||
 
 5. 在**费用**部分查看 SQL 数据库预留容量的预订费用。
-6. 选择“购买”。
-7. 选择“查看此预订”以查看购买的状态。
+6. 选择“购买”。 
+7. 选择“查看此预订”  以查看购买的状态。
 
 ## <a name="cancellations-and-exchanges"></a>取消和更换
 
-如果需要取消你的 SQL 数据库预留容量预订，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要请求取消，请在 Azure 门户中访问该预留，并选择“退款”创建支持请求。
+如果需要取消你的 SQL 数据库预留容量预订，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要请求取消，请在 Azure 门户中访问该预留，并选择“退款”  创建支持请求。
 
-如果需要将 SQL 数据库预留容量预订更改为其他区域、部署类型、性能层或期限，可以将其更换为价值相等或更高的另一个预订。 新订购项目的期限开始日期不是从交换的订购项目延续。 1 年或 3 年期限从创建新订购项目开始算起。 若要请求交换，请在 Azure 门户中访问该预留，并选择“交换”创建支持请求。
+如果需要将 SQL 数据库预留容量预订更改为其他区域、部署类型、性能层或期限，可以将其更换为价值相等或更高的另一个预订。 新订购项目的期限开始日期不是从交换的订购项目延续。 1 年或 3 年期限从创建新订购项目开始算起。 若要请求交换，请在 Azure 门户中访问该预留，并选择“交换”  创建支持请求。
 
 有关如何对 exchange 或退款保留的详细信息，请参阅[保留交换和退款](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
 

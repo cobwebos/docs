@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
 ms.openlocfilehash: 89f9ef37ed7c53817854442b3a32b32b7d11ae27
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706022"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
@@ -126,10 +126,10 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 * 所有经过身份验证 REST API 请求，包括由于访问权限、 系统错误或错误请求而失败的请求。
 * 操作针对密钥保管库本身，包括创建、 删除、 设置密钥保管库访问策略，以及更新密钥保管库属性，例如标记。
-* 对密钥保管库中密钥和机密的操作包括：
-  * 创建、 修改或删除这些密钥或机密。
-  * 签名、 验证、 加密、 解密、 包装和解包密钥，获取机密，并列出密钥和机密 （和其版本）。
-* 导致出现 401 响应的未经身份验证的请求。 示例包括的请求不包含持有者令牌、 格式不正确或已过期，或包含无效的令牌。  
+* 针对 Key Vault 中的密钥和机密执行的操作，包括：
+  * 创建、修改或删除这些密钥或机密。
+  * 签名、验证、加密、解密、包装和解包密钥、获取机密，以及列出密钥和机密（及其版本）。
+* 导致出现 401 响应的未经身份验证的请求。 示例包括不包含持有者令牌、格式不正确或已过期，或者包含无效令牌的请求。  
 
 ## <a id="access"></a>访问日志
 
@@ -186,7 +186,7 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-运行第二个命令时，blob 名称中的 / 分隔符会在目标文件夹下创建完整的文件夹结构。 此结构将用于下载并存储为文件的 blob。
+运行第二个命令时，blob 名称中的 / 分隔符会在目标文件夹下创建完整的文件夹结构  。 此结构将用于下载并存储为文件的 blob。
 
 若要选择性地下载 Blob，请使用通配符。 例如：
 

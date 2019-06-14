@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 752c502268ef53d3c0575d92e75ce6a965fccd9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61464974"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>使用 Azure 媒体服务传送实时流
@@ -30,9 +30,9 @@ Microsoft Azure 媒体服务提供了相应的 API 来向媒体服务发送启�
 媒体服务 .NET SDK 提供了用来发送请求并等待操作完成的 API（在内部，这些 API 以特定的时间间隔轮询操作进度）。 例如，当调用 channel.Start() 时，该方法将在频道启动后返回。 还可以使用异步版本：await channel.StartAsync()（有关基于任务的异步模式的信息，请参阅 [TAP](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)。 发送操作请求并且在操作完成之前一直轮询操作状态的 API 称作“轮询方法”。 建议为富客户端应用程序和/或有状态服务使用这些方法（特别是异步版本）。
 
 某些情况下，应用程序不能等待长时运行的 http 请求并且希望手动轮询操作进度。 一个典型的示例是与无状态 web 服务进行交互的浏览器：当浏览器请求创建频道时，web 服务会启动一个长时运行的操作并将操作 ID 返回到浏览器。 然后，浏览器可以根据该 ID 询问 web 服务来获取操作状态。 媒体服务 .NET SDK 提供了非常适用于此情况的 API。 这些 API 称为“非轮询方法”。
-“非轮询方法”有以下命名模式：发送 OperationName 操作（例如，SendCreateOperation）。 Send*OperationName*Operation 方法返回 **IOperation** 对象；返回的对象包含可以用来跟踪操作的信息。 发送*OperationName*OperationAsync 方法将返回**任务\<IOperation >**。
+“非轮询方法”有以下命名模式：发送 OperationName 操作（例如，SendCreateOperation）  。 Send*OperationName*Operation 方法返回 **IOperation** 对象；返回的对象包含可以用来跟踪操作的信息。 发送*OperationName*OperationAsync 方法将返回**任务\<IOperation >** 。
 
-当前，以下类支持非轮询方法：Channel、StreamingEndpoint 和 Program。
+当前，以下类支持非轮询方法：Channel、StreamingEndpoint 和 Program    。
 
 若要轮询操作状态，请对 **OperationBaseCollection** 类使用 **GetOperation** 方法。 使用以下时间间隔来检查操作状态：对于 **Channel** 和 **StreamingEndpoint** 操作，使用 30 秒；对于 **Program** 操作，使用 10 秒。
 

@@ -69,6 +69,9 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> Gen5 硬件生成 4 个 Vcore</a>'
+          - html: '对于具有订阅的支持<a href="https://aka.ms/sql-mi-visual-studio-subscribers" >Visual Studio 订户的 Azure 每月信用额度 </a>'
+          - html: '为支持<a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">SharePoint 2016 和 SharePoint 2019</a>和<a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central </a>'
           - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">配置时区</a>实例创建过程。'
           - html: '创建具有实例<a href="https://aka.ms/managed-instance-collation">所选的服务器级排序规则</a>。'
           - html: '通过“异地还原”功能可以<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 将数据库还原到另一个数据中心</a>。'

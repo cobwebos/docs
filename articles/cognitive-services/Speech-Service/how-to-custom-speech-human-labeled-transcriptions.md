@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f0b467284872f3d936984741c6d092705008a5a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ba6d137a7eb5fc2c56bfc39aa8f831d76411fb46
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025918"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060849"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建用户标记为转录
 
@@ -49,7 +49,7 @@ ms.locfileid: "65025918"
 
 | 原始文本 | 经过规范化之后的文本 |
 |---------------|--------------------------|
-| Dr.Bruce Banner | Doctor Bruce Banner |
+| ScriptoBruce Banner | Doctor Bruce Banner |
 | James Bond, 007 | James Bond, double oh seven |
 | Ke$ha | Kesha |
 | How long is the 2x4 | How long is the two by four |
@@ -78,7 +78,7 @@ ms.locfileid: "65025918"
 | Pi is about 3.14 | pi is about three point one four |
 It costs $3.14| it costs three fourteen |
 
-## <a name="mandarin-chinese-zh-cn"></a>普通话中文 (zh cn)
+## <a name="mandarin-chinese-zh-cn"></a>普通话中文 (zh CN)
 
 用户标记为转录普通话中文音频必须是 utf-8 编码的字节顺序标记。 避免使用半角标点字符。 这些字符可以包含无意中准备字处理程序中的数据或擦除网页中的数据时。 如果这些字符都存在，请确保使用适当的全角替换更新这些值。
 

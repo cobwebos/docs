@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61472033"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
@@ -100,7 +100,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
     ![选择网络](./media/site-recovery-sharepoint/select-network.png)
 
 
-* 如果使用的是静态 IP，请在“目标 IP”字段中指定希望虚拟机采用的 IP
+* 如果使用的是静态 IP，请在“目标 IP”字段中指定希望虚拟机采用的 IP 
 
     ![设置静态 IP](./media/site-recovery-sharepoint/set-static-ip.png)
 

@@ -11,10 +11,10 @@ ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, 用于 Azure 的 Open Service Broker
 ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61028404"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>将现有的 MongoDB 应用程序与用于 MongoDB 的 Azure Cosmos DB API 和用于 Azure 的 Open Service Broker (OSBA) 集成
@@ -129,7 +129,7 @@ $ svcat get instance musicdb
   musicdb   default     azure-cosmosdb-mongo-account   account   Ready
 ```
 
-如果在“状态”下看到“就绪”，则表明数据库已准备就绪。
+如果在“状态”下看到“就绪”，则表明数据库已准备就绪。  
 
 数据库完成预配以后，需将其元数据绑定到 [Kubernetes 机密](https://kubernetes.io/docs/concepts/configuration/secret/)。 在将该数据绑定到机密以后，其他应用程序就可以访问该数据。 若要将数据库的元数据绑定到某个机密，请使用 `svcat bind` 命令：
 
@@ -267,7 +267,7 @@ press Ctrl+C to detach
 ...
 ```
 
-导航到日志中显示的 URL。 在上一示例中，应使用 *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/*。 
+导航到日志中显示的 URL。 在上一示例中，应使用 *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* 。 
 
 验证是否可以看到应用程序以及你所做的更改。
 

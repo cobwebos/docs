@@ -7,10 +7,10 @@ ms.author: mbaldwin
 manager: barbkess
 ms.date: 07/03/2017
 ms.openlocfilehash: d75ce953f73912428ee88fe2e19a138799f979fa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704710"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault 安全体系和地理边界
@@ -35,12 +35,12 @@ Azure Key Vault 是一项多租户服务，在每个 Azure 位置使用一个硬
 
 区域映射到安全体系，如表中的主要标题所示：
 
-例如，在产品（按区域）文章中，“美国”标签包含美国东部、美国中部、美国西部，这些都会映射到美国区域。 
+例如，在产品（按区域）文章中，“美国”标签包含美国东部、美国中部、美国西部，这些都会映射到美国区域  。 
 
 >[!NOTE]
 >例外情况是美国 DOD 东部和美国 DOD 中部具有自己的安全体系。 
 
-同样，在“欧洲”标签上，欧洲北部和欧洲西部都映射到欧洲区域。 “亚太区”标签也是如此。
+同样，在“欧洲”标签上，欧洲北部和欧洲西部都映射到欧洲区域  。 “亚太区”标签也是如此  。
 
 
 

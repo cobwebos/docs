@@ -9,10 +9,10 @@ ms.date: 09/26/2018
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60839207"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure 门户
@@ -86,7 +86,7 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 1 个路由筛选器只能有 1 个规则，并且规则类型必须是“允许”。 此规则可以有与之关联的 BGP 团体值列表。
 
 ### <a name="1-create-a-route-filter"></a>1.创建路由筛选器
-可以通过选择创建新资源的选项来创建路由筛选器。 单击“创建资源” > “网络” > “RouteFilter”，如下图所示：
+可以通过选择创建新资源的选项来创建路由筛选器。 单击“创建资源” > “网络” > “RouteFilter”，如下图所示    ：
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 

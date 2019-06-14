@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
 ms.openlocfilehash: 44bc5a245d1bcbc8ff53991af4193ef86f7cd704
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62107068"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="选择正在使用的 Azure Functions 运行时版本： "]
 > * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
-*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v1 运行时的设置。 JSON 架构位于 http://json.schemastore.org/host。
+*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v1 运行时的设置。 JSON 架构位于 http://json.schemastore.org/host 。
 
 > [!NOTE]
 > 本文适用于 Azure Functions 1.x。  有关 Functions 2.x 中 host.json 的参考，请参阅 [Azure Functions 2.x 的 host.json 参考](functions-host-json.md)。
@@ -286,7 +286,7 @@ ms.locfileid: "62107068"
 
 ## <a name="tracing"></a>tracing
 
-版本 1.x
+ 版本 1.x
 
 使用 `TraceWriter` 对象创建的日志的配置设置。 请参阅 [C# 日志记录](functions-reference-csharp.md#logging)和 [Node.js 日志记录](functions-reference-node.md#writing-trace-output-to-the-console)。
 

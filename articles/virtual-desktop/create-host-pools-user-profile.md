@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: f6516e37107a16d80c4d9eb9514782bdbcc44184
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925214"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>为主机池设置用户配置文件共享
@@ -43,8 +43,8 @@ Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案
 1. Windows 虚拟桌面 Active Directory 将用户添加到[Active Directory 安全组](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups)。 将使用此安全组，只需创建的文件共享虚拟机到 Windows 虚拟桌面用户进行身份验证。
 2. [连接到文件共享虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
 3. 在文件共享虚拟机上创建一个文件夹**C 驱动器**要使用的配置文件共享。
-4. 右键单击新文件夹，选择**属性**，选择**共享**，然后选择**高级共享...**.
-5. 选择**共享此文件夹**，选择**权限...**，然后选择**添加...**.
+4. 右键单击新文件夹，选择**属性**，选择**共享**，然后选择**高级共享...** .
+5. 选择**共享此文件夹**，选择**权限...** ，然后选择**添加...** .
 6. 搜索安全组添加 Windows 虚拟桌面用户，则请确保该组具有**完全控制**。
 7. 添加后的安全组，右键单击该文件夹中，选择**属性**，选择**共享**，然后向下复制**网络路径**以供稍后使用。
 
@@ -62,7 +62,7 @@ Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案
 6. 创建名为**配置文件**。
 7. 创建配置文件项的以下值：
 
-| 名称                | Type               | 数据/值                        |
+| Name                | Type               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
 | Enabled             | DWORD              | 第                                 |
 | VHDLocations        | 多字符串值 | "网络文件共享路径"     |

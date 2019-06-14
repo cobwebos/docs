@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc82f69c8dee4cc8c45e9fcf7fbf6fa184ad72b6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783057"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序 
@@ -115,7 +115,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 在 [MyApps 面板](https://myapps.microsoft.com)中，通配符应用程序只是以一个磁贴表示。 此磁贴默认已隐藏。 若要显示该磁贴并让用户首先看到特定的页面：
 
 1. 遵照有关[设置主页 URL](application-proxy-configure-custom-home-page.md) 的指导。
-2. 在应用程序属性页上将“显示应用程序”设置为“true”。
+2. 在应用程序属性页上将“显示应用程序”设置为“true”。  
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos 约束委派
 
@@ -188,11 +188,11 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 根据[所述的步骤](application-proxy-add-on-premises-application.md)，此方案需要以下设置：
 
 
-- 在“内部 URL”中，设置 **finance** 而不是通配符。 
+- 在“内部 URL”中，设置 **finance** 而不是通配符。  
 
     ![内部 URL](./media/application-proxy-wildcard/52.png)
 
-- 在“外部 URL”中，设置 **finance** 而不是通配符。 
+- 在“外部 URL”中，设置 **finance** 而不是通配符。  
 
     ![外部 URL](./media/application-proxy-wildcard/53.png)
 

@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: hrasheed
 ms.openlocfilehash: 49375b00607f1f23a99855f8b80f5f5c3c4dac22
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686659"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>使用 HDInsight 中用于 Apache Hadoop 的 Azure PowerShell 运行 Apache Sqoop 作业
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Azure PowerShell 在 Azure HDInsight 导入和导出数据的 HDInsight 群集和 Azure SQL 数据库或 SQL Server 数据库之间运行 Apache Sqoop 作业。 此示例将数据从导出`/tutorials/usesqoop/data/sample.log`从默认存储帐户，然后导入到表名为`log4jlogs`SQL Server 数据库中。 本文是的延续[使用 HDInsight 中的 Hadoop 使用 Apache Sqoop](./hdinsight-use-sqoop.md)。
+了解如何使用 Azure PowerShell 运行 Azure HDInsight 中的 Apache Sqoop 作业，以便在 HDInsight 群集与 Azure SQL 数据库或 SQL Server 数据库之间导入和导出数据。 此示例从默认存储帐户中的 `/tutorials/usesqoop/data/sample.log` 导出数据，然后将其导入到 SQL Server 数据库中名为 `log4jlogs` 的表中。 本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)的续篇。
 
 ## <a name="prerequisites"></a>必备组件
 
 开始学习本教程之前，必须做好以下准备：
 
-* 使用 Azure PowerShell 的工作站[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)安装。
+* 安装有 Azure PowerShell [AZ 模块](https://docs.microsoft.com/powershell/azure/overview)的工作站。
 
-* 完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)从[使用 HDInsight 中的 Hadoop 使用 Apache Sqoop](./hdinsight-use-sqoop.md)。
+* 从[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)中完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
 
 ## <a name="run-apache-sqoop-by-using-powershell"></a>使用 PowerShell 运行 Apache Sqoop
-以下 PowerShell 脚本预处理源文件，然后将其导出到 Azure SQL 数据库表`log4jlogs`。 替换`CLUSTERNAME`， `CLUSTERPASSWORD`，和`SQLPASSWORD`的必要条件中使用的值。
+下面的 PowerShell 脚本预处理源文件，然后将它导出到 Azure SQL 数据库中的 `log4jlogs` 表中。 将 `CLUSTERNAME`、`CLUSTERPASSWORD` 和 `SQLPASSWORD` 替换为你在先决条件中使用的值。
 
 ```powershell 
 <#------ BEGIN USER INPUT ------#>

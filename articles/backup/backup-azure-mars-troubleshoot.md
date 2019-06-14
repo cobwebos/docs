@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: d8a1d261808eb8f97d1e0dab78b767b37ae6802f
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 2c2ed46ed6e4a5d6663387777d3425d18b50500e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743137"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060216"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -41,9 +41,29 @@ ms.locfileid: "66743137"
 
 ## <a name="invalid-vault-credentials-provided"></a>提供的保管库凭据无效
 
-| 错误详细信息 | 可能的原因 | 建议的操作 |
-| ---     | ---     | ---    |
-| **错误** </br> *提供的保管库凭据无效。该文件已损坏，或者没有与恢复服务关联的最新凭据。(ID:34513)* | <ul><li> 保管库凭据无效（也就是说，它们是在注册之前的 48 小时前下载的）。<li>MARS 代理无法将文件下载到 Windows Temp 目录。 <li>保管库凭据位于某个网络位置。 <li>TLS 1.0 已禁用<li> 所配置的某个代理服务器正在阻止连接。 <br> |  <ul><li>下载新的保管库凭据。（**注意**：如果以前下载了多个保管库凭据文件，则只有最新下载的文件在 48 小时内有效。） <li>启动“IE” > “设置” > “Internet 选项” > “安全” > “Internet”      。 接下来，选择“自定义级别”，并滚动直至看到“文件下载”部分。  然后选择“启用”。 <li>可能还需要将这些站点添加到 IE 的[受信任的站点](https://docs.microsoft.com/azure/backup/backup-configure-vault#verify-internet-access)中。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。 <li> 使日期和时间与你的计算机匹配。<li>如果收到的错误指出不允许下载文件，则可能是因为 C:/Windows/Temp 目录中存在大量文件。<li>转到 C:/Windows/Temp，检查是否存在超过 60,000 或 65,000 个扩展名为 .tmp 的文件。 如果存在，请删除这些文件。<li>确保已安装了 .NET Framework 4.6.2。 <li>如果由于 PCI 符合性而禁用了 TLS 1.0，请参阅此[故障排除页面](https://support.microsoft.com/help/4022913)。 <li>如果服务器中安装了防病毒软件，请从防病毒软件扫描中排除以下文件： <ul><li>CBengine.exe<li>与 .NET Framework 相关的 CSC.exe。 服务器上安装的每个 .NET 版本都有一个 CSC.exe。 排除受影响服务器上的所有 .NET Framework 版本绑定的 CSC.exe 文件。 <li>Scratch 文件夹或缓存位置。 <br>scratch 文件夹的默认位置或缓存位置路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <br><li>bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+**错误消息**：提供的保管库凭据无效。 该文件已损坏，或者没有与恢复服务关联的最新凭据。 (ID:34513)
+
+| 原因 | 建议的操作 |
+| ---     | ---    |
+| **保管库凭据是无效** <br/> <br/> 保管库凭据文件可能已损坏或可能已过期 （即下载之前注册的时间超过 48 小时）| 从恢复服务保管库从 Azure 门户下载新的凭据 (请参阅*第 6 步*下[**下载 MARS 代理**](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent)部分)，并执行如下： <ul><li> 如果已安装并注册 Microsoft Azure 备份代理，然后打开 Microsoft Azure 备份代理 MMC 控制台，并选择**注册服务器**从操作窗格，可以向新下载完成注册凭据 <br/> <li> 如果新的安装失败，然后尝试重新安装使用新凭据</ul> **注意**：如果以前下载多个保管库凭据文件，在 48 小时内仅最新下载的文件是有效。 因此建议全新新保管库凭据文件下载。
+| **代理服务器/防火墙阻止<br/>或<br/>无 Internet 连接** <br/><br/> 如果您的计算机或代理服务器具有有限的 Internet 访问则而不列出所必需的 Url 注册将失败。| 若要解决此问题，请执行如下：<br/> <ul><li> 使用你的 IT 团队，以确保系统已建立 Internet 连接<li> 如果没有代理服务器，然后确保未选择代理选项，注册代理时，验证是否列出代理服务器设置步骤[此处](#verifying-proxy-settings-for-windows)<li> 如果您具有防火墙/代理服务器与网络团队以确保以下 Url 和 IP 实现工作具有访问权限<br/> <br> **URLs**<br> - *www.msftncsi.com* <br>-  *.Microsoft.com* <br> -  *.WindowsAzure.com* <br>-  *.microsoftonline.com* <br>-  *.windows.net* <br>IP 地址 <br> - *20.190.128.0/18* <br> - *40.126.0.0/18* <br/></ul></ul>请尝试重新注册后完成上述疑难解答步骤
+| **防病毒软件正在阻止** | 如果必须在服务器上安装的防病毒软件，然后添加需要排除规则的以下文件从防病毒软件扫描： <br/><ui> <li> *CBengine.exe* <li> *CSC.exe*<li> Scratch 文件夹的默认位置是*C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch* <li> 在 bin 文件夹*C:\Program Files\Microsoft Azure Recovery Services Agent\Bin*
+
+### <a name="additional-recommendations"></a>其他建议
+- 转到*c: / Windows/Temp*并检查是否存在超过 60,000 或 65,000 个扩展名为.tmp 的文件。 如果有，请删除这些文件
+- 确保计算机的日期和时间使用本地时区匹配
+- 请确保[以下](backup-configure-vault.md#verify-internet-access)站点添加到 IE 受信任的站点
+
+### <a name="verifying-proxy-settings-for-windows"></a>验证 Windows 代理设置
+
+- 下载**psexec**从[此处](https://docs.microsoft.com/sysinternals/downloads/psexec)
+- 运行此`psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"`命令从提升的提示符：
+- 这将启动*Internet Explorer*窗口
+- 转到*工具* -> *Internet 选项* -> *连接* -> *LAN 设置*
+- 验证代理设置*系统*帐户
+- 如果未配置代理则提供了代理服务器详细信息，然后删除详细信息
+-   如果配置代理和代理的详细信息不正确，则请确保*代理 IP*并*端口*详细信息的准确性
+- 关闭*Internet 资源管理器*
 
 ## <a name="unable-to-download-vault-credential-file"></a>无法下载保管库凭据文件
 
@@ -85,34 +105,31 @@ ms.locfileid: "66743137"
 
 - 请确保联机备份状态设置为**启用**。 若要验证状态执行如下：
 
-  - 转到“控制面板” > “管理工具” > “任务计划程序”。   
-    - 展开“Microsoft”并选择“联机备份”。  
+  - 打开**任务计划程序**展开**Microsoft**，然后选择**联机备份**。
   - 双击“Microsoft-OnlineBackup”，然后转到“触发器”选项卡。  
-  - 验证状态是否设置为**已启用**。 如果不是，请选择“编辑”，并选中“已启用”复选框，然后单击“确定”    。
+  - 验证状态是否设置为**已启用**。 如果不可用，然后选择**编辑** > **已启用**复选框，然后单击**确定**。
 
-- 确保选择用于运行任务的用户帐户为**系统**或**本地管理员组**在服务器上。 若要验证的用户帐户，请转到**常规**选项卡并选中**安全选项**。
+- 确保选择用于运行任务的用户帐户为**系统**或**本地管理员组**在服务器上。 若要验证的用户帐户，请转到**常规**选项卡并选中**安全**选项。
 
-- 查看服务器上是否已安装 PowerShell 3.0 或更高版本。 若要检查 PowerShell 版本，请运行以下命令，并确认 *Major* 版本号是等于或大于 3。
+- 请确保在服务器上安装 PowerShell 3.0 或更高版本。 若要检查 PowerShell 版本，请运行以下命令，并确认 *Major* 版本号是等于或大于 3。
 
   `$PSVersionTable.PSVersion`
 
-- 查看 *PSMODULEPATH* 环境变量中包含以下路径。
+- 请确保以下路径的一部分*PSMODULEPATH*环境变量
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- 如果 *LocalMachine* 的 PowerShell 执行策略设置为 restricted，则触发备份任务的 PowerShell cmdlet 可能失败。 以权限提升的模式运行以下命令，将执行策略设置为 *Unrestricted* 或 *RemoteSigned* 并检查。
+- 如果 *LocalMachine* 的 PowerShell 执行策略设置为 restricted，则触发备份任务的 PowerShell cmdlet 可能失败。 在提升模式下，若要检查和设置执行策略为运行以下命令*Unrestricted*或*RemoteSigned*
 
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
 
-- 确保备份代理安装完成后重新启动服务器
+- 确保没有缺失或已损坏**PowerShell**模块**MSonlineBackup**。 如果有任何缺失或损坏的文件，若要解决此问题，请执行如下：
 
-- 确保没有缺失或已损坏**PowerShell**模块**MSonlineBackup**。 如果有任何缺失或损坏的文件，若要解决问题，请执行如下：
-
-  - 从另一台计算机 (Windows 2008 R2) 具有 MARS 代理正常运行，复制从 MSOnlineBackup 文件夹 *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* 路径。
+  - 从任何计算机具有是否正常工作的 MARS 代理复制 MSOnlineBackup 文件夹从 *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* 路径。
   - 中的有问题计算机的相同路径粘贴这 *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* 。
-  - 如果 **MSOnlineBackup** 文件夹已存在在计算机中粘贴/替换其内部的内容文件。
+  - 如果 **MSOnlineBackup** 文件夹已经存在于计算机中，粘贴或替换其内部的内容文件。
 
 
 > [!TIP]

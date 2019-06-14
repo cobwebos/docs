@@ -14,15 +14,15 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 963d7d44ef3ef77604fc5a9faac479a9e4c91ee6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61487354"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS 应用程序
 
-三个示例均实现了同一个 Wingtip Tickets SaaS 应用程序。 此应用是面向小型场所（电影院、俱乐部等）的事件清单和票证 SaaS 应用。每个场所都是此应用的一个租户，并有自己的数据：场所详细信息、事件列表、客户、票证订单等。此应用与管理脚本和教程一起展示了一个端到端的 SaaS 方案。 此方案包括预配租户、监视并管理性能、架构管理和跨租户报告和分析。
+三个示例均实现了同一个 Wingtip Tickets SaaS  应用程序。 此应用是面向小型场所（电影院、俱乐部等）的事件清单和票证 SaaS 应用。每个场所都是此应用的一个租户，并有自己的数据：场所详细信息、事件列表、客户、票证订单等。此应用与管理脚本和教程一起展示了一个端到端的 SaaS 方案。 此方案包括预配租户、监视并管理性能、架构管理和跨租户报告和分析。
 
 ## <a name="three-saas-application-and-tenancy-patterns"></a>三种 SaaS 应用程序和租户模式
 
@@ -48,7 +48,7 @@ ms.locfileid: "61487354"
 
 多租户数据库适用于希望降低每个租户的成本并可接受租户隔离性降低的服务提供商。 此模式可将大量租户封装到单个数据库，从而降低每个租户的成本。 可以通过跨多个数据库将租户分片来实现几乎无限制的缩放。 目录数据库将租户映射到数据库。  
 
-此模式还可实现混合模型，在此模型中可以通过将多个租户置于一个数据库中来优化成本，或通过将单个租户置于他们自己的数据库中来优化隔离。 在预配租户时或在此之后，可以根据租户做出选择，并且不会影响此应用程序。  如果需要以不同的方式处理不同租户组，使用此模式可获得良好效果。 例如，可将低成本租户分配到共享数据库，而将高级租户分配到其自己的数据库。 
+此模式还可实现混合  模型，在此模型中可以通过将多个租户置于一个数据库中来优化成本，或通过将单个租户置于他们自己的数据库中来优化隔离。 在预配租户时或在此之后，可以根据租户做出选择，并且不会影响此应用程序。  如果需要以不同的方式处理不同租户组，使用此模式可获得良好效果。 例如，可将低成本租户分配到共享数据库，而将高级租户分配到其自己的数据库。 
 
 请查看相关[教程][docs-tutorials-for-wingtip-mt]和 GitHub [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt] 上的代码。
 

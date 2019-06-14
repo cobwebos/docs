@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
 ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64683988"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 的使用情况和费用文件中的条款
@@ -43,8 +43,8 @@ Microsoft 客户协议 (MCA) | 是 | 是 | 是 | 是
 术语 | 帐户类型 | 描述
 --- | --- | ---
 AccountName | EA | 注册帐户的显示名称。
-帐户所有者 ID | EA | 注册帐户的唯一标识符。
-其他信息 | 全部 | 服务特定的元数据。 例如，虚拟机的映像类型。
+AccountOwnerId | EA | 注册帐户的唯一标识符。
+AdditionalInfo | 全部 | 服务特定的元数据。 例如，虚拟机的映像类型。
 BillingAccountId | EA, MCA | 计费帐户的根的唯一标识符。
 BillingAccountName | EA, MCA | 计费帐户的名称。
 BillingCurrency | EA, MCA | 与计费帐户关联的货币。
@@ -55,13 +55,13 @@ BillingProfileId | EA, MCA | EA 注册或 MCA 计费配置文件的唯一标识�
 BillingProfileName | EA, MCA | EA 注册或 MCA 计费配置文件的名称。
 ChargeType | EA, MCA | 指示该费用是否表示使用情况 (**使用情况**)，购买 (**购买**)，或退款 (**退款**)。
 ConsumedQuantity | PAYG | 请参阅数量。
-已使用的服务 | 全部 | 与关联的服务费用的名称。
+ConsumedService | 全部 | 与关联的服务费用的名称。
 成本 | EA | 请参阅 CostInBillingCurrency。
 CostCenter | EA, MCA | 定义用于跟踪成本 （仅在打开的 MCA 帐户的计费周期中可用） 的订阅成本中心。
 CostInBillingCurrency | MCA | 计费货币信用额度或税前费用的成本。
 CostInPricingCurrency | MCA | 定价的货币信用额度或税前费用的成本。
-货币 | PAYG | 请参阅 BillingCurrency。
-date | EA, MCA | 电量使用情况或购买日期。
+Currency | PAYG | 请参阅 BillingCurrency。
+Date | EA, MCA | 电量使用情况或购买日期。
 ExchangeRateDate | MCA | 已建立汇率的日期。
 ExchangeRatePricingToBilling | MCA | 用于将定价货币成本转换为计费货币的汇率。
 频率 | EA, MCA | 指示是否应费用重复。 费用是可以执行一次 (**OneTime**)，请重复按每月或每年 (**重复执行**)，或根据使用情况 (**UsageBased**)。
@@ -73,17 +73,17 @@ InvoiceSectionId | EA, MCA | EA 部门或 MCA 发票部分的唯一标识符。
 InvoiceSectionName | EA, MCA | EA 部门或 MCA 发票部分的名称。
 IsAzureCreditEligible | EA, MCA | 指示是否可为使用 Azure 信用额度支付费用 (值：True、 False)。
 Location | EA, MCA | 该资源正在其中运行的数据中心位置。
-计量类别 | 全部 | 测定仪分类类别的名称。 例如，*云服务*并*网络*。
+MeterCategory | 全部 | 测定仪分类类别的名称。 例如，*云服务*并*网络*。
 计量 ID | 全部 | 计量的唯一标识符。
-计量名称 | 全部 | 计量的名称。
-计量区域 | 全部 | 基于位置的数据中心位置定价的服务的名称。 请参阅位置。
-计量子类别 | 全部 | 计量子分类类别的名称。
+MeterName | 全部 | 计量的名称。
+MeterRegion | 全部 | 基于位置的数据中心位置定价的服务的名称。 请参阅位置。
+MeterSubCategory | 全部 | 计量子分类类别的名称。
 OfferId | EA, MCA | 购买的产品/服务的名称。
 PartNumber | EA | 用于获取特定计量定价的标识符。
 planName | EA | Marketplace 计划名称。
 PreviousInvoiceId | MCA | 对原始发票如果此行项是退款的引用。
 PricingCurrency | MCA | 评级基于协商价格时使用的货币。
-Products | MCA | 请参阅产品名称。
+产品 | MCA | 请参阅产品名称。
 ProductId | EA, MCA | 该产品的唯一标识符。
 ProductName | EA | 产品的名称。
 ProductOrderId | EA, MCA | 产品订单的唯一标识符。
@@ -97,19 +97,19 @@ ReservationName | EA, MCA | 购买的预订实例的名称。
 ResourceGroupId | EA, MCA | 唯一标识符[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)资源处于。
 ResourceGroupName | EA, MCA | 名称[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)资源处于。
 ResourceId | EA, MCA | 唯一标识符[Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/resources)资源。
-资源位置 | EA, MCA | 该资源正在其中运行的数据中心位置。 请参阅位置。
+ResourceLocation | EA, MCA | 该资源正在其中运行的数据中心位置。 请参阅位置。
 ResourceName | EA | 资源的名称。
 ResourceType | MCA | 资源实例的类型。
 ServiceFamily | EA, MCA | 服务所属的服务系列。
-服务信息 1 | 全部 | 服务特定的元数据。
-服务信息 2 | 全部 | 使用可选的服务特定元数据的旧字段。
+ServiceInfo1 | 全部 | 服务特定的元数据。
+ServiceInfo2 | 全部 | 使用可选的服务特定元数据的旧字段。
 ServicePeriodEndDate | MCA | 分级周期的结束日期的定义和锁定的已使用或购买服务的定价。
 ServicePeriodStartDate | MCA | 分级周期的开始日期的定义和锁定的已使用或购买服务的定价。
 SubscriptionId | 全部 | 订阅的的唯一标识符。
 SubscriptionName | 全部 | 订阅的名称。
 标记 | 全部 | 分配给资源标记。 不包括资源组标记。 可用于分组或分配内部退款的费用。 有关详细信息，请参阅[使用标记来组织 Azure 资源](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。
 单位 | PAYG | 请参阅 UnitOfMeasure。
-度量单位 | 全部 | 对服务计费的度量单位。 例如，计算每小时对服务进行计费。
+UnitOfMeasure | 全部 | 对服务计费的度量单位。 例如，计算每小时对服务进行计费。
 UnitPrice | EA | 每个单位的费用价格。
 UsageDate | PAYG | 请参阅日期。
 

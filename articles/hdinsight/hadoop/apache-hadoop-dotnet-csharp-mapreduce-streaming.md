@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: b06f19736c4d50ab7d246a5c71da04ada95b6f98
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727363"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
@@ -144,29 +144,29 @@ namespace reducer
 
 ## <a name="upload-to-storage"></a>上传到存储
 
-1. 在 Visual Studio 中，打开“服务器资源管理器”。
+1. 在 Visual Studio 中，打开“服务器资源管理器”  。
 
-2. 依次展开“Azure”和“HDInsight”。
+2. 依次展开“Azure”  和“HDInsight”  。
 
-3. 如果出现提示，请输入 Azure 订阅凭据，并单击“登录”。
+3. 如果出现提示，请输入 Azure 订阅凭据，并单击“登录”  。
 
-4. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”的条目。
+4. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”  的条目。
 
     ![显示群集存储帐户的服务器资源管理器](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/storage.png)
 
-    * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”。
+    * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”  。
 
-    * 如果此条目无法展开，则在使用 __Azure Data Lake Storage__ 作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”条目。
+    * 如果此条目无法展开，则在使用 __Azure Data Lake Storage__ 作为该群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”  条目。
 
 5. 若要上传 .exe 文件，请使用以下方法之一：
 
-   * 如果使用的是 __Azure 存储帐户__，请单击“上传”图标，并浏览到“mapper” 项目的“bin\debug”文件夹。 最后，选择“mapper.exe”文件，并单击“确定”。
+   * 如果使用的是 __Azure 存储帐户__，请单击“上传”图标，并浏览到“mapper”  项目的“bin\debug”  文件夹。 最后，选择“mapper.exe”  文件，并单击“确定”  。
 
        ![上传图标](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
-   * 如果使用的是 __Azure Data Lake Storage__，请右键单击文件列表中的空白区域，并选择“上传”。 最后，选择“mapper.exe”文件，并单击“打开”。
+   * 如果使用的是 __Azure Data Lake Storage__，请右键单击文件列表中的空白区域，并选择“上传”  。 最后，选择“mapper.exe”  文件，并单击“打开”  。
 
-     上传“mapper.exe”完成后，请为“reducer.exe”文件重复该上传过程。
+     上传“mapper.exe”  完成后，请为“reducer.exe”  文件重复该上传过程。
 
 ## <a name="run-a-job-using-an-ssh-session"></a>运行作业：使用 SSH 会话
 

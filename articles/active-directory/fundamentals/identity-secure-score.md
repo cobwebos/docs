@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6cdff2305914ca6e4144f7784d1a60026a1d27c0
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65988697"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>什么是 Azure Active Directory 中的标识安全评分？
@@ -50,7 +50,7 @@ ms.locfileid: "65988697"
 
 标识安全分数是在所有版本的 Azure AD 中可用。 若要访问评分，请转到 [Azure AD 概述仪表板](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/IdentitySecureScore)。
 
-## <a name="how-does-it-work"></a>它是如何工作的?
+## <a name="how-does-it-work"></a>工作原理
 
 Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳做法进行比较。 根据此评估的结果，为你的目录来计算新分数。 很可能你的安全配置不完全符合最佳实践指导，而且仅部分满足改进操作。 在这些情况下，您将只颁奖可用于该控件的最大分数的一部分。
 
@@ -110,7 +110,7 @@ Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳�
 - 数据
 - 设备
 - 基础结构
-- 应用程序
+- 应用
 
 安全的标识的分数表示 Microsoft 安全分数的标识部分。 这种重叠意味着标识建议保护分数和 Microsoft 中的标识分数是相同的。
 

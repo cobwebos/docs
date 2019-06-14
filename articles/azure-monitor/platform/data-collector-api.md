@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
 ms.openlocfilehash: 0f5a996d68c80fd9b1f55a36de37579ea245d99d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922785"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
@@ -42,9 +42,9 @@ Log Analytics 工作区中的所有数据都存储为具有某种特定记录类
 若要使用 HTTP 数据收集器 API，可以创建一个 POST 请求，其中包含要以 JavaScript 对象表示法 (JSON) 格式发送的数据。  接下来的三个表列出了每个请求所需的属性。 在本文的后面部分将更详细地介绍每个属性。
 
 ### <a name="request-uri"></a>请求 URI
-| 属性 | 属性 |
+| 特性 | 属性 |
 |:--- |:--- |
-| 方法 |POST |
+| 方法 |发布 |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | 内容类型 |application/json |
 
@@ -52,11 +52,11 @@ Log Analytics 工作区中的所有数据都存储为具有某种特定记录类
 | 参数 | 描述 |
 |:--- |:--- |
 | CustomerID |Log Analytics 工作区的唯一标识符。 |
-| 资源 |API 资源名称: /api/logs。 |
+| Resource |API 资源名称: /api/logs。 |
 | API 版本 |用于此请求的 API 版本。 目前，API 版本为 2016-04-01。 |
 
 ### <a name="request-headers"></a>请求标头
-| 标头 | 描述 |
+| Header | 描述 |
 |:--- |:--- |
 | 授权 |授权签名。 在本文的后面部分，可以了解有关如何创建 HMAC-SHA256 标头的信息。 |
 | Log-Type |指定正在提交的数据的记录类型。 此参数的大小限制为 100 个字符。 |
@@ -139,7 +139,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 为了识别属性的数据类型，Azure Monitor 将为属性名称添加后缀。 如果某个属性包含 null 值，该属性将不包括在该记录中。 下表列出了属性数据类型及相应的后缀：
 
-| 属性数据类型 | 后缀 |
+| 属性数据类型 | Suffix |
 |:--- |:--- |
 | String |_s |
 | Boolean |_b |
@@ -198,7 +198,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 | 400 |错误的请求 |MissingApiVersion |未指定 API 版本。 |
 | 400 |错误的请求 |MissingContentType |未指定内容类型。 |
 | 400 |错误的请求 |MissingLogType |未指定所需的值日志类型。 |
-| 400 |错误的请求 |UnsupportedContentType |内容类型未设为“application/json”。 |
+| 400 |错误的请求 |UnsupportedContentType |内容类型未设为“application/json”  。 |
 | 403 |禁止 |InvalidAuthorization |服务未能对请求进行身份验证。 验证工作区 ID 和连接密钥是否有效。 |
 | 404 |未找到 | | 提供的 URL 不正确，或请求太大。 |
 | 429 |请求过多 | | 服务遇到来自帐户的大量数据。 请稍后重试请求。 |
@@ -214,7 +214,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 对于每个示例，执行以下步骤来设置授权标头的变量：
 
 1. 在 Azure 门户中，找到 Log Analytics 工作区。
-2. 依次选择“高级设置”和“已连接的源”。
+2. 依次选择“高级设置”  和“已连接的源”  。
 2. 在 **Workspace ID** 的右侧，选择复制图标，并粘贴该 ID 作为 **Customer ID** 变量的值。
 3. 在 **Primary Key** 的右侧，选择复制图标，并粘贴该 ID 作为 **Shared Key** 变量的值。
 

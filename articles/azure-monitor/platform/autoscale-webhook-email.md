@@ -9,10 +9,10 @@ ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787287"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
@@ -21,13 +21,13 @@ ms.locfileid: "60787287"
 ## <a name="webhooks"></a>Webhook
 通过 webhook 可以将 Azure 警报通知路由到其他系统以便用于后处理或自定义通知。 例如，将警报路由到可以处理传入 web 请求的服务，以便使用聊天或消息服务等来发送 SMS、记录 bug、通知团队。Webhook URI 必须是有效 HTTP 或 HTTPS 终结点。
 
-## <a name="email"></a>电子邮件
+## <a name="email"></a>Email
 电子邮件可以发送到任何有效电子邮件地址。 还将通知运行规则的订阅的管理员和共同管理员。
 
 ## <a name="cloud-services-and-web-apps"></a>云服务和 Web 应用
 可以从 Azure 门户选择加入云服务和服务器场 (Web 应用)。
 
-* 选择“缩放依据”指标。
+* 选择“缩放依据”  指标。
 
 ![缩放依据](./media/autoscale-webhook-email/insights-autoscale-notify.png)
 
@@ -110,7 +110,7 @@ webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌
 | 上下文 |是 |自动缩放操作上下文 |
 | timestamp |是 |触发自动缩放操作时的时间戳 |
 | id |是 |自动缩放设置的 Resource Manager ID |
-| 名称 |是 |自动缩放设置的名称 |
+| name |是 |自动缩放设置的名称 |
 | 详细信息 |是 |自动缩放服务执行的操作和实例计数的更改的说明 |
 | subscriptionId |是 |所缩放的目标资源的订阅 ID |
 | resourceGroupName |是 |所缩放的目标资源的资源组名 |

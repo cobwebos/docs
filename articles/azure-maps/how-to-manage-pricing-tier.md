@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 43f5c6ea42464a83d070775fae8c5befe35bf60d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794176"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>管理 Azure Maps 帐户的定价层
@@ -23,13 +23,13 @@ ms.locfileid: "60794176"
 
 ## <a name="view-your-pricing-tier"></a>查看定价层
 
-若要查看选择的定价层，请导航到设置菜单中的“定价层”选项。
+若要查看选择的定价层，请导航到设置菜单中的“定价层”  选项。
 
 ![查看选择的定价层](./media/how-to-manage-pricing-tier/view-pricing-tier.png)
 
 ## <a name="change-a-pricing-tier"></a>更改定价层
 
-创建 Azure Maps 帐户后，可以升级或降级 Azure Maps 帐户的定价层。 若要进行升级或降级，请导航到设置菜单中的“定价层”选项。 选择未突出显示的定价层。 选择“保存”按钮以保存所选的定价层选项。
+创建 Azure Maps 帐户后，可以升级或降级 Azure Maps 帐户的定价层。 若要进行升级或降级，请导航到设置菜单中的“定价层”  选项。 选择未突出显示的定价层。 选择“保存”  按钮以保存所选的定价层选项。
 
 ![更改定价层](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
 

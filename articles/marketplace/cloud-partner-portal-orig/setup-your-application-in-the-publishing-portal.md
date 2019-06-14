@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943564"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>在发布门户中设置应用程序
@@ -47,13 +47,13 @@ ms.locfileid: "64943564"
 
 这是发布者个人资料内产品/服务的唯一标识符。 此 ID 将显示在产品 URL 中。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 此字段在套餐推出后处于锁定状态。
 
-例如，如果发布服务器 **"contoso"** 发布服务器创建产品/服务产品/服务 ID **"示例 web 应用"**，它将显示在 AppSource 为"https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
+例如，如果发布服务器 **"contoso"** 发布服务器创建产品/服务产品/服务 ID **"示例 web 应用"** ，它将显示在 AppSource 为"https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
 
 ### <a name="publisher-id"></a>发布者 ID
 
 通过此下拉列表，可以选择要在其下发布此产品/服务的发布者个人资料。 此字段在套餐推出后处于锁定状态。
 
-### <a name="name"></a>名称
+### <a name="name"></a>Name
 
 这是产品/服务的显示名称。 这是显示在 [AppSource](https://appsource.microsoft.com/) 中的名称。 该名称不能超过 50 个字符。
 
@@ -78,7 +78,7 @@ ms.locfileid: "64943564"
 
 * 包的文件名：在上述步骤中创建 CRM AppSource 包的 zip 文件时创建的文件名。 在上述示例中，文件名为“Microsoft\_SamplePackage.zip”。
 * 包位置的 URL：这是包含上面指定的包文件名的 Azure 存储帐户的 URL。 它是在上述部分的“步骤 9”中创建的 URL。
-* 包文件中是否有多个 crm 包：仅当支持多个版本的、包含不同包的 CRM 时，才选择“是”。 大多数合作伙伴会选择“否”。 如果选择“是”，则需要为每个版本的解决方案创建 AppSource 包。 _注意：这并非询问是否存在多个 **zip** 文件。如果有多个 solution.zip 文件，但只有一个版本，则仍应选择“否”。打包工具会自动将这些文件合并到一起。_
+* 包文件中是否有多个 crm 包：仅当支持多个版本的、包含不同包的 CRM 时，才选择“是”。  大多数合作伙伴会选择“否”。 如果选择“是”，则需要为每个版本的解决方案创建 AppSource 包。 _注意：这并非询问是否存在多个 **zip** 文件。如果有多个 solution.zip 文件，但只有一个版本，则仍应选择“否”。打包工具会自动将这些文件合并到一起。_
 
 ### <a name="crm-package-availability"></a>CRM 包可用性
 

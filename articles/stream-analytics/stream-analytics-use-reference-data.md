@@ -4,19 +4,19 @@ description: 本文介绍如何使用参考数据在 Azure 流分析作业的查
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 06/11/2019
+ms.openlocfilehash: 99917fa01fcdb3faf731e9d0909d67ff41222f22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066767"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
+
 参考数据（也称为查找表）是一个静态的或本质上缓慢变化的有限数据集，用于执行查找或与数据流相关联。 例如，在 IoT 方案中，可以将关于传感器的元数据（不经常更改）存储在参考数据中，并将其与实时 IoT 数据流相联接。 Azure 流分析在内存中加载参考数据以实现低延迟流处理。 为了在 Azure 流分析作业中利用参考数据，通常会在查询中使用[参考数据联接](https://msdn.microsoft.com/library/azure/dn949258.aspx)。 
 
 流分析支持将 Azure Blob 存储和 Azure SQL 数据库用作参考数据的存储层。 你还可以通过 Azure 数据工厂对参考数据进行转换并/或将其复制到 Blob 存储，以使用[任意数量的基于云的数据存储和本地数据存储](../data-factory/copy-activity-overview.md)。
@@ -43,7 +43,7 @@ ms.locfileid: "66393122"
 
 ### <a name="static-reference-data"></a>静态参考数据
 
-如果不希望参考数据发生变化，则可以通过在输入配置中指定静态路径来启用对静态参考数据的支持。 Azure 流分析从指定路径中获取 Blob。 不需要 {date} 和 {time} 替换令牌。 参考数据在流分析中不可变。 因此，不建议覆盖静态参考数据 Blob。
+如果不希望参考数据发生变化，则可以通过在输入配置中指定静态路径来启用对静态参考数据的支持。 Azure 流分析从指定路径中获取 Blob。 不需要 {date} 和 {time} 替换令牌。 由于引用数据是在 Stream Analytics 中不可变的不建议覆盖静态引用数据 blob。
 
 ### <a name="generate-reference-data-on-a-schedule"></a>按计划生成参考数据
 
@@ -54,7 +54,7 @@ Azure 流分析每间隔一分钟都会自动扫描刷新的参考数据 Blob。
 > [!NOTE]
 > 当前，流分析作业仅在计算机时间提前于 blob 名称中的编码时间时才查找 blob 刷新。 例如，该作业将尽可能查找 `sample/2015-04-16/17-30/products.csv`，但不会早于 2015 年 4 月 16 日下午 5:30（UTC 时区）。 它*永远不会*查找编码时间早于发现的上一个 blob 的 blob。
 > 
-> 例如 作业找到 blob `sample/2015-04-16/17-30/products.csv` 后，它将忽略编码日期早于 2015 年 4 月 16 日下午 5:30 的任何文件，因此如果晚到达的 `sample/2015-04-16/17-25/products.csv` blob 在同一容器中创建，该作业不会使用它。
+> 例如，一旦作业找到 blob`sample/2015-04-16/17-30/products.csv`它将忽略编码日期早于 2015 年 4 月 16 日，下午 5:30 的任何文件因此如果晚到达`sample/2015-04-16/17-25/products.csv`获取创建的 blob 在同一容器中该作业将不使用它。
 > 
 > 同样，如果 `sample/2015-04-16/17-30/products.csv` 仅在 2015 年 4 月 16 日晚上 10:03 生成，但容器中没有更早日期的 blob，则该作业将从 2015 年 4 月 16 日晚上 10:03 起开始使用此文件，而在此之前使用以前的引用数据。
 > 
@@ -78,7 +78,7 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 
 如果参考数据是缓慢变化的数据集，则需要定期刷新作业中使用的快照。 流分析允许你在配置 Azure SQL 数据库输入连接时设置刷新率。 流分析运行时将按刷新率指定的时间间隔查询 Azure SQL 数据库。 支持的最快刷新率是每分钟一次。 对于每次刷新，流分析都会在所提供的存储帐户中存储一个新快照。
 
-流分析提供了两个用于查询 Azure SQL 数据库的选项。 快照查询是必需的，必须包括在每个作业中。 流分析根据刷新时间间隔定期运行快照查询，并将查询结果（快照）用作参考数据集。 快照查询在大多数情况下应该都是适用的，但如果在使用大型数据集和快速刷新率时出现性能问题，则可以使用增量查询选项。 需要超过 60 秒，以返回引用数据集的查询将导致超时。
+流分析提供了两个用于查询 Azure SQL 数据库的选项。 快照查询是必需的，必须包括在每个作业中。 流分析根据刷新时间间隔定期运行快照查询，并将查询结果（快照）用作参考数据集。 快照查询在大多数情况下应该都是适用的，但如果在使用大型数据集和快速刷新率时出现性能问题，则可以使用增量查询选项。 返回参考数据集需要 60 秒以上的查询将导致超时。
 
 使用增量查询选项时，流分析最初会运行快照查询来获取基线参考数据集。 之后，流分析会根据刷新时间间隔定期运行增量查询来检索增量更改。 这些增量更改不断适用于参考数据集，以使其保持更新。 使用增量查询有助于减少存储成本和网络 I/O 操作。
 

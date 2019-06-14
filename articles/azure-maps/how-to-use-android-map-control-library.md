@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: e655b442ba9290d4b4525108521f2d1a0c766b48
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64869824"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>开始使用 Azure Maps Android SDK
@@ -36,7 +36,7 @@ Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将指�
 
 1. 下**选择你的项目**，选择**手机和平板电脑**。 你的应用程序将此窗体上运行。
 2. 上**手机和平板电脑**选项卡上，选择**空活动**，然后选择**下一步**。
-3. 在“配置项目”下，选择 `API 21: Android 5.0.0 (Lollipop)` 作为最低要求的 SDK。 这是 Azure Maps Android SDK 支持的最早版本。
+3. 在“配置项目”下，选择 `API 21: Android 5.0.0 (Lollipop)` 作为最低要求的 SDK。  这是 Azure Maps Android SDK 支持的最早版本。
 4. 接受默认值`Activity Name`并`Layout Name`，然后选择**完成**。
 
 请参阅[Android Studio 文档](https://developer.android.com/studio/intro/)有关的详细信息帮助安装 Android Studio 以及创建新的项目。

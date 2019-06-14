@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: b-juche
 ms.openlocfilehash: fd8e380ad68b86b9ffd0f1e40efde8bdadfb19c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711819"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>将子网委派给 Azure NetApp 文件 
@@ -33,14 +33,14 @@ ms.locfileid: "64711819"
 * 创建[用户定义的自定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)上 VM 子网地址前缀 （目标） 到委派给 Azure NetApp 文件的子网不受支持。 执行此操作会影响 VM 连接。
 
 ## <a name="steps"></a>Steps 
-1.  在 Azure 门户中，转到“虚拟网络”边栏选项卡，选择要用于 Azure NetApp 文件的虚拟网络。    
+1.  在 Azure 门户中，转到“虚拟网络”  边栏选项卡，选择要用于 Azure NetApp 文件的虚拟网络。    
 
-1. 从“虚拟网络”边栏选项卡中选择“子网”，单击“+子网”按钮。 
+1. 从“虚拟网络”边栏选项卡中选择“子网”  ，单击“+子网”按钮。  
 
 1. 在“添加子网”页面中完成以下必需字段来新建要用于 Azure NetApp 文件的子网：
     * **名称**：指定子网名称。
     * **地址范围**：指定 IP 地址范围。
-    * **子网委派**：选择“Microsoft.NetApp/卷”。 
+    * **子网委派**：选择“Microsoft.NetApp/卷”。  
 
       ![子网委派](../media/azure-netapp-files/azure-netapp-files-subnet-delegation.png)
     

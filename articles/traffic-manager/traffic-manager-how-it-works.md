@@ -3,7 +3,7 @@ title: Azure 流量管理器的工作原理 | Microsoft Docs
 description: 本文将帮助你了解流量管理器如何路由流量以确保 Web 应用程序的高性能和可用性
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: kumud
-ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: a74af002dfdad5df9640be4b5fdd7f657b183bd4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330276"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071189"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理器的工作原理
 
@@ -34,7 +34,7 @@ ms.locfileid: "60330276"
 
 ## <a name="traffic-manager-example"></a>流量管理器示例
 
-Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 https://partners.contoso.com/login.aspx。 该应用程序托管在三个 Azure 区域中。 为了改善可用性并在全球最大程度地提高性能，他们使用流量管理器将客户端流量分布到最靠近的可用终结点。
+Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 https://partners.contoso.com/login.aspx 。 该应用程序托管在三个 Azure 区域中。 为了改善可用性并在全球最大程度地提高性能，他们使用流量管理器将客户端流量分布到最靠近的可用终结点。
 
 为了实现此配置，他们完成以下步骤：
 

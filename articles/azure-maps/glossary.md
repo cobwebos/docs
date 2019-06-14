@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575355"
 ---
 # <a name="glossary"></a>术语表
@@ -37,11 +37,11 @@ ms.locfileid: "64575355"
 
 <a name="antimeridian"></a> **下子午圈**：也称为第 180 个子午线，它是 -180 度和 180 度经度相交的点。<sup></sup> 这与地球上的本初子午线相反。
 
-<a name="application-programming-interface-api"></a> **应用程序编程接口 (API)**：让开发人员创建应用程序的规范。
+<a name="application-programming-interface-api"></a> **应用程序编程接口 (API)** ：让开发人员创建应用程序的规范。
 
 <a name="api-key"></a> **API 密钥**：请参阅“Azure Maps 密钥”。
 
-<a name="area-of-interest-aoi"></a> **兴趣区域 (AOI)**：用于定义地图或数据库生产焦点区域的范围。
+<a name="area-of-interest-aoi"></a> **兴趣区域 (AOI)** ：用于定义地图或数据库生产焦点区域的范围。
 
 <a name="asset-tracking"></a> **资产跟踪**：跟踪资产（例如人员、车辆或某些其他对象）的位置的过程。
 
@@ -51,7 +51,7 @@ ms.locfileid: "64575355"
 
 <a name="autosuggest"></a> **自动建议**：应用程序中的一项功能，可预测用户输入内容的逻辑可能性。
 
-<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)**：Azure Maps 预览版的名称。
+<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** ：Azure Maps 预览版的名称。
 
 <a name="azure-maps-key"></a> **Azure Maps 密钥**：Azure Maps 密钥是一个唯一的字符串，用于验证用户的 Azure Maps 应用程序或服务请求。 
 
@@ -109,7 +109,7 @@ ms.locfileid: "64575355"
 
 <a name="dbf-file"></a> **DBF 文件**：与形状文件 (SHP) 结合使用的数据库文件格式。
 
-<a name="degree-minutes-seconds-dms"></a> **度分秒 (DMS)**：描述纬度和经度的度量单位。 1 度是一个圆的 1/360<sup></sup>。 1 度进一步分为 60 分钟，1 分钟分为 60 秒。
+<a name="degree-minutes-seconds-dms"></a> **度分秒 (DMS)** ：描述纬度和经度的度量单位。 1 度是一个圆的 1/360<sup></sup>。 1 度进一步分为 60 分钟，1 分钟分为 60 秒。
 
 <a name="delaunay-triangulation"></a> **Delaunay 三角剖分**：一种在点数据集中创建连续的非重叠三角形网格的技术。 每个三角形的外接圆都不包含内部数据集中的点。
 
@@ -117,7 +117,7 @@ ms.locfileid: "64575355"
 
 <a name="destination"></a> **目的地**：某人前往的终点或位置。
 
-<a name="digital-elevation-model-dem"></a> **数字高程模型 (DEM)**：与表面相关的高程值的数据集，使用公共基准以固定间隔在区域上捕获。 DEM 通常用于表示地形缓解。
+<a name="digital-elevation-model-dem"></a> **数字高程模型 (DEM)** ：与表面相关的高程值的数据集，使用公共基准以固定间隔在区域上捕获。 DEM 通常用于表示地形缓解。
 
 <a name="dijkstra's-algorithm"></a> **Dijkstra 算法**：一种算法，用于检查网络的连接性，以找到两点之间的最短路径。
 
@@ -185,7 +185,7 @@ ms.locfileid: "64575355"
 
 <a name="great-circle-distance"></a> **大圆距离**：球体表面上两点之间的最短距离。
 
-<a name="greenwich-mean-time-gmt"></a> **格林威治标准时间 (GMT)**：在本初子午线上的时间，经过英国格林威治的皇家天文台。
+<a name="greenwich-mean-time-gmt"></a> **格林威治标准时间 (GMT)** ：在本初子午线上的时间，经过英国格林威治的皇家天文台。
 
 <a name="guid"></a> **GUID**：全局唯一标识符。 用于唯一标识接口、类、类型库、组件类别或记录的字符串。
 
@@ -273,7 +273,7 @@ ms.locfileid: "64575355"
 
 <a name="point"></a> **点**：表示地图上单个位置的几何图形。 
 
-<a name="points-of-interest-poi"></a> **兴趣点 (POI)**：企业、地标或共同兴趣位置。
+<a name="points-of-interest-poi"></a> **兴趣点 (POI)** ：企业、地标或共同兴趣位置。
 
 <a name="polygon"></a> **多边形**：表示地图上某个区域的实体几何图形。 
 
@@ -297,7 +297,7 @@ ms.locfileid: "64575355"
 
 <a name="quadtree"></a> **Quadtree**：一种数据结构，其中每个节点只有四个子节点。 Azure Maps 中使用的图块系统使用四叉树结构，使用户放大一个级别时，每个地图图块分解为四个子图块。  有关详细信息，请参阅[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)文档。
 
-<a name="queries-per-second-qps"></a> **每秒查询次数 (QPS)**：一秒钟内可以对服务或平台进行的查询或请求的数量。 
+<a name="queries-per-second-qps"></a> **每秒查询次数 (QPS)** ：一秒钟内可以对服务或平台进行的查询或请求的数量。 
 
 ## <a name="r"></a>R
 
@@ -321,7 +321,7 @@ ms.locfileid: "64575355"
 
 <a name="route"></a> **路线**：两个或多个位置之间的路径，它还可能包括附加信息，例如沿着路线的路标的指令。
 
-<a name="requests-per-second-rps"></a> **每秒请求数 (RPS)**：请参阅[每秒查询次数 (QPS)](#queries-per-second-qps)。 
+<a name="requests-per-second-rps"></a> **每秒请求数 (RPS)** ：请参阅[每秒查询次数 (QPS)](#queries-per-second-qps)。 
 
 <a name="rss"></a> **RSS**：Really Simple Syndication、Resource Description Framework (RDF) Site Summary 或 Rich Site Summary 的缩写，具体取决于源。 一种简单的结构化 XML 格式，用于在不同网站之间共享内容。 RSS 文档包括关键元数据元素，例如作者、日期、标题、简要描述和超文本链接。 此信息有助于用户（或 RSS 发布者服务）决定哪些材料值得进一步调查。
 
@@ -329,9 +329,9 @@ ms.locfileid: "64575355"
 
 <a name="satellite-imagery"></a> **卫星图像**：由垂直向下指向的飞机和卫星捕获的图像。
 
-<a name="software-development-kit-sdk"> </a> **软件开发工具包 (SDK)**：一组文档、示例代码和示例应用，可帮助开发人员使用 API 构建应用。
+<a name="software-development-kit-sdk"> </a> **软件开发工具包 (SDK)** ：一组文档、示例代码和示例应用，可帮助开发人员使用 API 构建应用。
 
-<a name="shapefile-shp"></a> **形状文件 (SHP)**：也称为 ESRI 形状文件，是一种矢量数据存储格式，用于存储地理特征的位置、形状和属性。 形状文件存储在一组相关文件中。
+<a name="shapefile-shp"></a> **形状文件 (SHP)** ：也称为 ESRI 形状文件，是一种矢量数据存储格式，用于存储地理特征的位置、形状和属性。 形状文件存储在一组相关文件中。
 
 <a name="spherical-mercator-projection"></a> **球形墨卡托投影**：请参阅 [Web 墨卡托](#web-mercator)。 
 
@@ -364,7 +364,7 @@ ms.locfileid: "64575355"
 
 <a name="transformation"></a> **转换**：在不同地理坐标系之间转换数据的过程。 例如，你的一些数据可能在英国捕获且基于 OSGB 1936 地理坐标系统。 Azure Maps 使用 WGS84 的 [EPSG:3857](https://epsg.io/3857) 坐标参考系统变体。 因此，为了正确显示数据，需要将其坐标从一个系统转换为另一个系统。
 
-<a name="traveling-salesmen-problem-tsp"></a> **旅行商问题 (TSP)**：哈密尔顿线路问题，销售人员必须找到访问一系列拜访地点，然后返回起始地点的最有效方法。  
+<a name="traveling-salesmen-problem-tsp"></a> **旅行商问题 (TSP)** ：哈密尔顿线路问题，销售人员必须找到访问一系列拜访地点，然后返回起始地点的最有效方法。  
 
 <a name="trilateration"></a> **三边测量法**：通过测量所有三个点之间的距离来确定地球表面上的点相对于另外两个点的位置的过程。
 
@@ -376,7 +376,7 @@ ms.locfileid: "64575355"
 
 <a name="vector-tile"></a> **矢量图块**：一种开放数据规范，用于使用与地图控件相同的图块系统存储地理空间矢量数据。 另请参阅[图块层](#tile-layer)。
 
-<a name="vehicle-routing-problem-vrp"></a> **车辆路线问题 (VRP)**：一类问题，该类问题需计算车队的一组有序路线，并考虑一系列约束。 这些约束可能包括递送时间期限、多个路线容量和行程持续时间约束。
+<a name="vehicle-routing-problem-vrp"></a> **车辆路线问题 (VRP)** ：一类问题，该类问题需计算车队的一组有序路线，并考虑一系列约束。 这些约束可能包括递送时间期限、多个路线容量和行程持续时间约束。
 
 <a name="voronoi-diagram"></a> **Voronoi 图**：划分为区域或单元格的空间分区（围绕一系列几何对象，通常是点要素）。 这些单元格或多边形必须满足 Delaunay 三角形的标准。 与该集中的其他对象相比，区域内的所有位置都更靠近其围绕的对象。 Voronoi 图通常用于描绘地理特征周围的影响区域。 
 
@@ -386,7 +386,7 @@ ms.locfileid: "64575355"
 
 <a name="waypoint-optimization"></a> **航点优化**：重新排序一组航点的过程，以尽可能减少通过所有提供的航点所需的行程时间或距离。 通常称之为[旅行商问题](#traveling-salesmen-problem-tsp)或[车辆路线问题](#vehicle-routing-problem-vrp)，具体取决于优化的复杂性。
 
-<a name="web-map-service-wms"></a> **Web 地图服务 (WMS)**：WMS 是一种开放地理空间信息联盟 (OGC) 标准，用于定义基于图像的地图服务。 WMS 服务根据需要为地图内的特定区域提供地图图像。 图像包括预呈现的符号系统，若由服务定义，则可以其中一种命名样式呈现。
+<a name="web-map-service-wms"></a> **Web 地图服务 (WMS)** ：WMS 是一种开放地理空间信息联盟 (OGC) 标准，用于定义基于图像的地图服务。 WMS 服务根据需要为地图内的特定区域提供地图图像。 图像包括预呈现的符号系统，若由服务定义，则可以其中一种命名样式呈现。
 
 <a name="web-mercator"></a> **Web 墨卡托**：也称为球形墨卡托投影，是墨卡托投影的略微变体，主要用于基于 Web 的绘图程序。 它使用与用于小比例地图的标准墨卡托投影相同的公式。 但是，Web 墨卡托在所有比例都使用球形公式，而大型墨卡托地图通常使用投影的椭圆形式。 这种差异在全球范围内难以察觉，但可导致局部区域的地图与真正的椭圆形墨卡托地图在相同比例下略有偏差。
 

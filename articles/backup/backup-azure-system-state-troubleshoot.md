@@ -9,16 +9,39 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: srinathvasireddy
-ms.openlocfilehash: 53b9f8fb58a6e70a4bd2cd02adb9ce824466d7de
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 8a94994d697784fb9dab8027e5a43f24c135b32c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481589"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059745"
 ---
 # <a name="troubleshoot-system-state-backup"></a>解决系统状态备份问题
 
 本指南介绍了使用系统状态备份时可能遇到的问题的解决方案。
+
+## <a name="basic-troubleshooting"></a>基本故障排除
+我们建议你执行以下验证，在开始操作之前进行系统状态备份故障排除：
+
+- [请确保是最新的 Microsoft Azure 恢复服务 (MARS) 代理](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [确保在 MARS 代理和 Azure 之间存在网络连接](https://aka.ms/AB-A4dp50)
+- 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 根据需要重启，然后重试此操作
+- [确保在暂存文件夹位置有 5-10% 的可用卷空间](https://aka.ms/AB-AA4dwtt)
+- [检查其他进程或防病毒软件是否正在干扰 Azure 备份](https://aka.ms/AB-AA4dwtk)
+- [计划的备份失败，但手动备份成功](https://aka.ms/ScheduledBackupFailManualWorks)
+- 确保 OS 有最新更新
+- [确保不受支持的驱动器，并具有不受支持的属性的文件从备份中排除](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
+- 请确保受保护系统上的系统时钟配置为正确时区  <br>
+- [确保服务器至少具有 .Net Framework 版本 4.5.2 和更高版本](https://www.microsoft.com/download/details.aspx?id=30653)<br>
+- 如果尝试**将服务器重新注册**到保管库，则请执行以下操作： <br>
+  - 确保在服务器上卸载代理并将其从门户中删除 <br>
+  - 使用的密码正是一开始用于注册服务器的 <br>
+- 如果脱机备份出现，请确保在开始脱机备份操作之前，源和副本计算机上安装 Azure PowerShell 版本 3.7.0
+- [Azure 虚拟机上运行备份代理时的考虑事项](https://aka.ms/AB-AA4dwtr)
+
+### <a name="limitation"></a>限制
+- Microsoft 不建议使用系统状态恢复来恢复到不同的硬件
+- 系统状态备份目前支持"本地"Windows 服务器，此功能适用于 Azure Vm。
 
 ## <a name="pre-requisite"></a>先决条件
 

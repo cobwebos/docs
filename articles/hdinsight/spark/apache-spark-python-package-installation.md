@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64574660"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>使用脚本操作在 HDInsight 上的 Apache Spark 群集中安装 Jupyter 笔记本的外部 Python 包
@@ -19,7 +19,7 @@ ms.locfileid: "64574660"
 > * [使用单元格 magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [使用脚本操作](apache-spark-python-package-installation.md)
 
-了解如何使用脚本操作来配置[Apache Spark](https://spark.apache.org/)上使用外部、 由社区贡献的 HDInsight 群集**python**包不包含在群集中的框。
+了解如何使用脚本操作在 HDInsight 上配置 [Apache Spark](https://spark.apache.org/) 群集，以使用未现成包含在群集中的、由社区贡献的 **python** 外部包。
 
 > [!NOTE]  
 > 还可使用 `%%configure` magic 配置 Jupyter 笔记本以便使用外部包。 有关说明，请参阅[在 HDInsight 上的 Apache Spark 群集中将外部包与 Jupyter notebook 配合使用](apache-spark-jupyter-notebook-use-external-packages.md)。
@@ -39,7 +39,7 @@ ms.locfileid: "64574660"
    
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>支持 HDInsight 群集上使用的开放源代码软件
 
-Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术生态系统。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答网站](https://azure.microsoft.com/support/faq/)的“支持范围”部分。 HDInsight 服务为内置组件提供附加的支持级别。
+Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术生态系统。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答网站](https://azure.microsoft.com/support/faq/)的“支持范围”  部分。 HDInsight 服务为内置组件提供附加的支持级别。
 
 HDInsight 服务中有两种类型的开放源代码组件：
 
@@ -54,21 +54,21 @@ HDInsight 服务中有两种类型的开放源代码组件：
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>将外部包与 Jupyter 笔记本配合使用
 
-1. 从[Azure 门户](https://portal.azure.com/)，导航到群集。  
+1. 在 [Azure 门户](https://portal.azure.com/)中导航到群集。  
 
-2. 与你的群集，左窗格中，从下面选择**设置**，选择**脚本操作**。
+2. 在选中群集的情况下，在左窗格的“设置”下选择“脚本操作”   。
 
-3. 选择 **+ 提交新**。
+3. 选择“+ 提交新项”。 
 
-4. 输入以下值：**提交脚本操作**窗口：  
+4. 对于“提交脚本操作”窗口，请输入以下值：   
 
 
     |参数 | 值 |
     |---|---|
-    |脚本类型 | 从下拉列表中选择“- 自定义”。|
-    |名称 |在文本框中输入 `tensorflow`。|
+    |脚本类型 | 从下拉列表中选择“- 自定义”。 |
+    |Name |在文本框中输入 `tensorflow`。|
     |Bash 脚本 URI |在文本框中输入 `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh`。 |
-    |节点类型 | 选择**Head**，并**辅助**复选框。 |
+    |节点类型 | 选中“头”和“工作”复选框。   |
 
     `tensorflowinstall.sh` 包含以下命令：
 
@@ -77,11 +77,11 @@ HDInsight 服务中有两种类型的开放源代码组件：
     /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. 选择“创建”。  访问有关[如何使用自定义脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)的文档。
+5. 选择“创建”  。  访问有关[如何使用自定义脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)的文档。
 
-6. 等待脚本来完成。  **脚本操作**窗格将状态**在当前的群集操作完成后，可以提交新脚本操作**执行脚本时。  可以从 Ambari UI 中查看进度栏**后台操作**窗口。
+6. 等待脚本完成。  当脚本正在执行时，“脚本操作”窗格会显示“在当前的群集操作完成后，可以提交新的脚本操作”。    可以从 Ambari UI 的“后台操作”窗口查看进度栏。 
 
-7. 打开 PySpark Jupyter 笔记本。  请参阅[创建 Jupyter notebook 在 Spark HDInsight 上](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight)的步骤。
+7. 打开 PySpark Jupyter 笔记本。  有关步骤，请参阅[在 Spark HDInsight 上创建 Jupyter 笔记本](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight)。
 
     ![创建新的 Jupyter 笔记本](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "创建新的 Jupyter 笔记本")
 

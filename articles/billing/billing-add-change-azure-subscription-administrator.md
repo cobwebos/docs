@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922901"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>添加或更改 Azure 订阅管理员
@@ -45,23 +45,23 @@ Microsoft 建议你使用 RBAC 来管理对资源的访问权限。 但是，如
 
 1. 单击要授予访问权限的订阅。
 
-1. 单击“访问控制(IAM)”。
+1. 单击“访问控制(IAM)”  。
 
-1. 单击“角色分配”选项卡以查看此订阅的所有角色分配。
+1. 单击“角色分配”选项卡以查看此订阅的所有角色分配  。
 
     ![其中显示了角色分配的屏幕截图](./media/billing-add-change-azure-subscription-administrator/role-assignments.png)
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。   
 
     如果你无权分配角色，则此选项会被禁用。
 
-1. 在“角色”下拉列表中，选择“所有者”角色。
+1. 在“角色”  下拉列表中，选择“所有者”  角色。
 
-1. 在“选择”列表中，选择用户。 如果没有在列表中看到用户，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称和电子邮件地址。
+1. 在“选择”  列表中，选择用户。 如果没有在列表中看到用户，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称和电子邮件地址。 
 
     ![显示所选所有者角色的屏幕截图](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
-1. 单击“保存”以分配该角色。
+1. 单击“保存”以分配该角色  。
 
     片刻之后，会在订阅范围内为该用户分配“所有者”角色。
 

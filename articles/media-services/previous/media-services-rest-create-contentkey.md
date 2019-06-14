@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 84fd4f0971c56d8cf2cdf138ba8ac8ea1a6e07eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711520"
 ---
 # <a name="create-content-keys-with-rest"></a>使用 REST 创建内容密钥
@@ -30,9 +30,9 @@ ms.locfileid: "60711520"
 
 媒体服务允许传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
 
-创建新资产时（例如，[上传文件](media-services-rest-upload-files.md)之前），可以指定以下加密选项：StorageEncrypted、CommonEncryptionProtected 或 EnvelopeEncryptionProtected。 
+创建新资产时（例如，[上传文件](media-services-rest-upload-files.md)之前），可以指定以下加密选项：StorageEncrypted、CommonEncryptionProtected 或 EnvelopeEncryptionProtected    。 
 
-将资产传送到客户端时，可以使用以下两个加密选项之一[将资产配置为动态加密](media-services-rest-configure-asset-delivery-policy.md)：DynamicEnvelopeEncryption 或 DynamicCommonEncryption。
+将资产传送到客户端时，可以使用以下两个加密选项之一[将资产配置为动态加密](media-services-rest-configure-asset-delivery-policy.md)：DynamicEnvelopeEncryption 或 DynamicCommonEncryption   。
 
 加密的资产必须与 **ContentKey** 关联。 本文介绍如何创建内容密钥。
 
@@ -66,7 +66,7 @@ ms.locfileid: "60711520"
              Array.Copy(array, array2, 8);
              return Convert.ToBase64String(array2);
          }
-5. 使用前面步骤中收到的“EncryptedContentKey”（转换为 base64 编码的字符串）、“ProtectionKeyId”、“ProtectionKeyType”、“ContentKeyType”和“Checksum”值创建内容密钥。
+5. 使用前面步骤中收到的“EncryptedContentKey”  （转换为 base64 编码的字符串）、“ProtectionKeyId”  、“ProtectionKeyType”  、“ContentKeyType”  和“Checksum”  值创建内容密钥。
 6. 通过 $links 操作将 **ContentKey** 实体与**资产**实体相关联。
 
 本文中未说明如何生成 AES 密钥、加密密钥以及计算校验和。 

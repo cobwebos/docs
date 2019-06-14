@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 9154e5d58a36bde1827d63d11d57a77b4289a781
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64689375"
 ---
 # <a name="analyzing-video-and-audio-files"></a>分析视频和音频文件
@@ -62,11 +62,11 @@ ms.locfileid: "64689375"
 
 ### <a name="transcript"></a>脚本
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |id|行 ID。|
-|Text|脚本本身。|
-|语言|脚本语言。 旨在支持每行语言不同的脚本。|
+|text|脚本本身。|
+|language|脚本语言。 旨在支持每行语言不同的脚本。|
 |instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
 示例：
@@ -100,12 +100,12 @@ ms.locfileid: "64689375"
 
 ### <a name="ocr"></a>ocr
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |id|OCR 行 ID。|
-|Text|OCR 文本。|
+|text|OCR 文本。|
 |confidence|识别置信度。|
-|语言|OCR 语言。|
+|language|OCR 语言。|
 |instances|出现此 OCR 的时间范围列表（同一 OCR 可重复多次出现）。|
 
 ```json
@@ -146,7 +146,7 @@ ms.locfileid: "64689375"
 |名称|描述|
 |---|---|
 |id|人脸 ID。|
-|名称|人脸姓名。 可以为“Unknown #0”、公认的名人或客户训练的人。|
+|name|人脸姓名。 可以为“Unknown #0”、公认的名人或客户训练的人。|
 |confidence|人脸识别置信度。|
 |description|名人的说明。 |
 |thumbnailId|该人脸的缩略图 ID。|
@@ -188,7 +188,7 @@ ms.locfileid: "64689375"
 
 ### <a name="shots"></a>截图
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |id|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
@@ -293,11 +293,11 @@ ms.locfileid: "64689375"
 
 ### <a name="labels"></a>标签
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |id|标签 ID。|
-|名称|标签名称（例如“计算机”、“电视”）。|
-|语言|标签名称语言（转换后）。 BCP-47|
+|name|标签名称（例如“计算机”、“电视”）。|
+|language|标签名称语言（转换后）。 BCP-47|
 |instances|出现此标签的时间范围列表（一个标签可重复多次出现）。 每个实例都有置信度字段。 |
 
 
@@ -352,12 +352,12 @@ ms.locfileid: "64689375"
 
 ### <a name="keywords"></a>关键字
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |id|关键字 ID。|
-|Text|关键字文本。|
+|text|关键字文本。|
 |confidence|关键字的识别置信度。|
-|语言|关键字语言（转换后）。|
+|language|关键字语言（转换后）。|
 |instances|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|
 
 ```json
@@ -403,7 +403,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|

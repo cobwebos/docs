@@ -9,10 +9,10 @@ ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d1ec5168b898d0aa75c12e6eb435e20c09de1929
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700277"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>将大容量数据迁移到 Azure 文件同步
@@ -49,9 +49,9 @@ ms.locfileid: "64700277"
 
 ![关系图显示了如何设置 Azure 文件同步](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
 
-| 步骤 | 详细信息 |
+| 步骤 | Detail |
 |---|---------------------------------------------------------------------------------------|
-| ![步骤 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [订购 Data Box](../../databox/data-box-deploy-ordered.md)。 Data Box 系列产品/服务[多个产品](https://azure.microsoft.com/services/storage/databox/data)以满足你的需求。 在收到数据框中，请遵循其[文档，以将数据复制](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)到数据对话框上此 UNC 路径：  *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>*。 在这里， *ShareName*是临时共享的名称。 将 Data Box 发送回 Azure。 |
+| ![步骤 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [订购 Data Box](../../databox/data-box-deploy-ordered.md)。 Data Box 系列产品/服务[多个产品](https://azure.microsoft.com/services/storage/databox/data)以满足你的需求。 在收到数据框中，请遵循其[文档，以将数据复制](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)到数据对话框上此 UNC 路径：  *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>* 。 在这里， *ShareName*是临时共享的名称。 将 Data Box 发送回 Azure。 |
 | ![步骤 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 等待，直到你的文件显示在您选择作为临时过渡共享的 Azure 文件共享中。 *不要启用同步到这些共享。* |
 | ![步骤 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | 创建新的空共享的数据框为你创建的每个文件共享。 Data Box 共享同一个存储帐户应为此新共享。 [如何创建新的 Azure 文件共享](storage-how-to-create-file-share.md)。 |
 | ![步骤 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [创建同步组](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)存储同步服务中。 作为云终结点引用的空共享。 对每个 Data Box 文件共享重复此步骤。 [设置 Azure 文件同步](storage-sync-files-deployment-guide.md)。 |

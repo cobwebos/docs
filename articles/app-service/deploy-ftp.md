@@ -16,10 +16,10 @@ ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
 ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130103"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
@@ -32,17 +32,17 @@ ms.locfileid: "62130103"
 
 在 [Azure 门户](https://portal.azure.com)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
 
-若要打开 FTP 仪表板，请单击“部署中心” > “FTP” > “仪表板”。
+若要打开 FTP 仪表板，请单击“部署中心”   > “FTP”   > “仪表板”  。
 
 ![打开 FTP 仪表板](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>获取 FTP 连接信息
 
-在 FTP 仪表板中，单击“复制”以复制 FTPS 终结点和应用凭据。
+在 FTP 仪表板中，单击“复制”  以复制 FTPS 终结点和应用凭据。
 
 ![复制 FTP 信息](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-建议你使用**应用凭据**部署到应用，因为它对每个应用都是唯一的。 但是，如果单击“用户凭据”，会将可用于 FTP/S 登录的用户级凭据设置到订阅中的所有应用服务应用。
+建议你使用**应用凭据**部署到应用，因为它对每个应用都是唯一的。 但是，如果单击“用户凭据”  ，会将可用于 FTP/S 登录的用户级凭据设置到订阅中的所有应用服务应用。
 
 > [!NOTE]
 > 使用用户级凭据向 FTP/FTPS 终结点进行身份验证时需要使用以下格式的用户名： 
@@ -55,7 +55,7 @@ ms.locfileid: "62130103"
 ## <a name="deploy-files-to-azure"></a>将文件部署到 Azure
 
 1. 从 FTP 客户端（例如 [Visual Studio](https://www.visualstudio.com/vs/community/)、[Cyberduck](https://cyberduck.io/) 或 [WinSCP](https://winscp.net/index.php)），使用收集到的连接信息连接到应用。
-2. 将文件及其各自的目录结构复制到 Azure 中的 [**/site/wwwroot** 目录](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure)（对于 Web 作业，复制到 **/site/wwwroot/App_Data/Jobs/** 目录）。
+2. 将文件及其各自的目录结构复制到 Azure 中的 [ **/site/wwwroot** 目录](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure)（对于 Web 作业，复制到 **/site/wwwroot/App_Data/Jobs/** 目录）。
 3. 浏览到应用的 URL，以验证该应用是否正在正常运行。 
 
 > [!NOTE] 
@@ -72,9 +72,9 @@ ms.locfileid: "62130103"
 
 为了增强安全性，只应启用基于 SSL 的 FTP。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
 
-如果应用的资源页位于 [Azure 门户](https://portal.azure.com)中，请在左侧导航中选择“应用设置”。
+如果应用的资源页位于 [Azure 门户](https://portal.azure.com)中，请在左侧导航中选择“应用设置”。 
 
-若要禁用未加密的 FTP，请选择“仅 FTPS”。 若要将 FTP 和 FTPS 都禁用，请选择“禁用”。 完成后，单击“保存”。 如果使用“仅 FTPS”，则必须通过导航到 Web 应用的“SSL 设置”边栏选项卡来强制实施 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支持“仅 FTPS”。
+若要禁用未加密的 FTP，请选择“仅 FTPS”  。 若要将 FTP 和 FTPS 都禁用，请选择“禁用”  。 完成后，单击“保存”  。 如果使用“仅 FTPS”  ，则必须通过导航到 Web 应用的“SSL 设置”边栏选项卡来强制实施 TLS 1.2 或更高版本。  TLS 1.0 和 1.1 不支持“仅 FTPS”。 
 
 ![禁用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 

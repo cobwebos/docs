@@ -10,10 +10,10 @@ ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
 ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61289718"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java 中的 Azure 搜索入门
@@ -69,59 +69,59 @@ ms.locfileid: "61289718"
 
 ## <a name="download-the-sample-files"></a>下载示例文件
 1. 转到 GitHub 上的[搜索 java 索引器演示](https://github.com/Azure-Samples/search-java-indexer-demo)。
-2. 单击“下载 ZIP”，将该 .zip 文件保存到磁盘，然后解压缩其包含的所有文件。 可考虑将文件解压缩到 Java 工作区中，以便于以后查找项目。
+2. 单击“下载 ZIP”  ，将该 .zip 文件保存到磁盘，然后解压缩其包含的所有文件。 可考虑将文件解压缩到 Java 工作区中，以便于以后查找项目。
 3. 示例文件是只读文件。 右键单击文件夹属性，并清除只读属性。
 
 将对此文件夹中的文件进行所有后续文件修改并运行语句。  
 
 ## <a name="import-project"></a>导入项目
-1. 在 Eclipse 中，选择“文件” > “导入” > “常规” > “工作区中的现有项目”。
+1. 在 Eclipse 中，选择“文件” > “导入” > “常规” > “工作区中的现有项目”     。
    
     ![][4]
-2. 在“选择根目录” 中，浏览到包含示例文件的文件夹。 选择包含 .project 文件夹的文件夹。 该项目应在“项目”  列表中显示为所选项目。
+2. 在“选择根目录”  中，浏览到包含示例文件的文件夹。 选择包含 .project 文件夹的文件夹。 该项目应在“项目”  列表中显示为所选项目。
    
     ![][12]
-3. 单击“完成”。
-4. 使用 **项目资源管理器** 查看和编辑文件。 如果它尚未打开，请单击“窗口” > “显示视图” > “项目资源管理器”或使用快捷方式将其打开。
+3. 单击 **“完成”** 。
+4. 使用 **项目资源管理器** 查看和编辑文件。 如果它尚未打开，请单击“窗口” > “显示视图” > “项目资源管理器”或使用快捷方式将其打开。   
 
 ## <a name="configure-the-service-url-and-api-key"></a>配置服务 URL 和 API 密钥
-1. 在“项目资源管理器”中，双击 **config.properties** 编辑包含服务器名称和 API 密钥的配置设置。
+1. 在“项目资源管理器”  中，双击 **config.properties** 编辑包含服务器名称和 API 密钥的配置设置。
 2. 请参考本文中前面的步骤，在 [Azure 门户](https://portal.azure.com)中找到服务 URL 和 API 密钥，获取现在会在 **config.properties**中输入的值。
 3. 在 **config.properties**中，将“Api Key”替换为服务的 API 密钥。 接下来，使用服务名称（URL https://servicename.search.windows.net) 的第一部分）替换同一文件中的“service name”。
    
     ![][5]
 
 ## <a name="configure-the-project-build-and-runtime-environments"></a>配置项目，构建运行时环境
-1. 在 Eclipse 的“项目资源管理器”中，右击该项目，并单击“属性” > “项目方面”。
-2. 选择“动态 Web 模块”、“Java”和“JavaScript”。
+1. 在 Eclipse 的“项目资源管理器”中，右击该项目，并单击“属性” > “项目方面”   。
+2. 选择“动态 Web 模块”、“Java”和“JavaScript”    。
    
     ![][6]
-3. 单击“应用”。
-4. 选择“窗口” > “首选项” > “服务器” > “运行时环境” > “添加..”。
+3. 单击“应用”  。
+4. 选择“窗口”   > “首选项”   > “服务器”   > “运行时环境”   > “添加..”  。
 5. 展开 Apache 并选择以前安装的 Apache Tomcat 服务器的版本。 在我们的系统上安装的是版本 8。
    
     ![][7]
-6. 在下一页上，指定 Tomcat 安装目录。 在 Windows 计算机上，这很可能是 C:\Program Files\Apache Software Foundation\Tomcat 版本。
-7. 单击“完成”。
-8. 选择“窗口” > “首选项” > “Java” > “已安装 JRE” > “添加”。
-9. 在“添加 JRE”中，选择“标准 VM”。
-10. 单击“下一步”。
-11. 在“JRE 定义”中，单击“JRE 主目录”中的“目录” 。
-12. 导航到“程序文件” > “Java”，并选择以前安装的 JDK。 请务必将 JDK 选为 JRE。
-13. 在“已安装 JRE”中，选择“JDK” 。 设置应类似于以下屏幕截图。
+6. 在下一页上，指定 Tomcat 安装目录。 在 Windows 计算机上，这很可能是 C:\Program Files\Apache Software Foundation\Tomcat 版本  。
+7. 单击 **“完成”** 。
+8. 选择“窗口”   > “首选项”   > “Java”   > “已安装 JRE”   > “添加”  。
+9. 在“添加 JRE”中，选择“标准 VM”   。
+10. 单击“下一步”。 
+11. 在“JRE 定义”中，单击“JRE 主目录”中的“目录”  。
+12. 导航到“程序文件” > “Java”，并选择以前安装的 JDK。   请务必将 JDK 选为 JRE。
+13. 在“已安装 JRE”中，选择“JDK”  。 设置应类似于以下屏幕截图。
     
     ![][9]
-14. 根据需要可以选择“窗口” > “Web 浏览器” > “Internet Explorer”，在外部浏览器窗口中打开应用程序。 使用外部浏览器可以获得更好的 Web 应用程序体验。
+14. 根据需要可以选择“窗口” > “Web 浏览器” > “Internet Explorer”，在外部浏览器窗口中打开应用程序。    使用外部浏览器可以获得更好的 Web 应用程序体验。
     
     ![][8]
 
 现在已完成配置任务。 接下来，生成并运行项目。
 
 ## <a name="build-the-project"></a>生成项目
-1. 在“项目资源管理器”中，右键单击项目名称，并选择“运行方式” > “Maven 生成...”以配置项目。
+1. 在“项目资源管理器”中，右键单击项目名称，并选择“运行方式” > “Maven 生成...”以配置项目   。
    
     ![][10]
-2. 在“编辑配置”中，在“目标”中键入“clean install”，并单击“运行” 。
+2. 在“编辑配置”中，在“目标”中键入“clean install”，并单击“运行”  。
 
 状态消息将输出到控制台窗口。 应看到“BUILD SUCCESS”，该项指示项目生成无错误。
 
@@ -130,11 +130,11 @@ ms.locfileid: "61289718"
 
 如果尚未在 Eclipse 中指定服务器运行时环境，则需要先执行该操作。
 
-1. 在项目资源管理器中，展开“WebContent” 。
-2. 右键单击“Search.jsp” > “运行方式” > “在服务器上运行”。 选择 Apache Tomcat 服务器，并单击“运行” 。
+1. 在项目资源管理器中，展开“WebContent”  。
+2. 右键单击“Search.jsp” > “运行方式” > “在服务器上运行”    。 选择 Apache Tomcat 服务器，并单击“运行”  。
 
 > [!TIP]
-> 如果已使用非默认工作区来存储项目，则需要修改“运行配置”使其指向项目位置，以避免服务器启动错误。 在“项目资源管理器”中，右键单击“Search.jsp” > “运行方式” > “运行配置”。 选择 Apache Tomcat 服务器。 单击“参数” 。 单击“工作区”或“文件系统”，设置包含项目的文件夹。
+> 如果已使用非默认工作区来存储项目，则需要修改“运行配置”  使其指向项目位置，以避免服务器启动错误。 在“项目资源管理器”中，右键单击“Search.jsp” > “运行方式” > “运行配置”    。 选择 Apache Tomcat 服务器。 单击“参数”  。 单击“工作区”  或“文件系统”  ，设置包含项目的文件夹。
 > 
 > 
 
@@ -143,7 +143,7 @@ ms.locfileid: "61289718"
 在单击“搜索”前  等待大约一分钟，以提供用于创建和加载索引的服务时间。 如果收到 HTTP 404 错误，只需再等待长点时间，并重试。
 
 ## <a name="search-on-usgs-data"></a>搜索 USGS 数据
-USGS 数据集包含罗得岛州的相关记录。 如果在空白搜索框中单击“搜索”，按照默认设置，会获得前 50 个条目。
+USGS 数据集包含罗得岛州的相关记录。 如果在空白搜索框中单击“搜索”  ，按照默认设置，会获得前 50 个条目。
 
 输入搜索词，为搜索引擎提供可搜索的内容。 尝试输入区域名称。 “Roger Williams”是罗得岛的第一任州长。 许多公园、建筑和学校都以他的名字命名。
 

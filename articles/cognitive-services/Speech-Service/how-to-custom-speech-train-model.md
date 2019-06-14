@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 194ae477bb3cba4ac7e3350da6b793c6fea6ecdb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e12cef052db6aabad94b47283eda11f60f3b2b13
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025853"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063918"
 ---
 # <a name="train-a-model-for-custom-speech"></a>为自定义语音训练模型
 
@@ -27,7 +27,7 @@ ms.locfileid: "65025853"
 
 | 使用案例 | 数据类型 | 数据数量 |
 |----------|-----------|---------------|
-| 专有名词是错误识别 | 相关文本 （句子语音样本） | 10 MB 到 500 MB |
+| 专有名词是错误识别 | 相关的文本 （句子语音样本） | 10 MB 到 500 MB |
 | 单词将由于强调文字颜色 | 相关的文本 （发音） | 提供 misrecognized 的单词 |
 | 常见的单词被删除或错误识别 | 音频 + 标记人为的学习记录 | 10 到 1,000 个转录小时 |
 

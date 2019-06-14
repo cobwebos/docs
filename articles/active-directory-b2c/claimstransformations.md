@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: c904ac9d4c59a467dd8402ec44682c3cbd03fd8d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511535"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -35,7 +35,7 @@ ClaimsTransformations  元素包含一个可在用户旅程中用作[自定义�
 
 ClaimsTransformation  元素包含以下属性：
 
-| 特性 |必选 | 描述 |
+| 特性 |需要 | 描述 |
 | --------- |-------- | ----------- |
 | Id |是 | 用于唯一标识声明转换的标识符。 从策略中的其他 XML 元素引用此标识符。 |
 | TransformationMethod | 是 | 用于声明转换的转换方法。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#claims-transformations-reference)。 |
@@ -77,7 +77,7 @@ InputClaims  元素包含以下元素：
 
 InputClaim  元素包含以下属性：
 
-| 特性 |需要 | 描述 |
+| 特性 |必选 | 描述 |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |是 | 对在策略的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | TransformationClaimType |是 | 用于引用转换声明类型的标识符。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#claims-transformations-reference)。 |

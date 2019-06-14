@@ -13,10 +13,10 @@ ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61252266"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
@@ -42,7 +42,7 @@ ms.locfileid: "61252266"
 也可在其他可以访问下载中心的计算机上从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载最新网关的安装文件。 然后即可将安装程序文件复制到网关主机并以手动方式运行，以便安装和更新网关。
 
 ### <a name="2-problem"></a>2.问题
-通过在 Azure 门户中单击“直接安装在此计算机上”来尝试安装网关时会出现此错误。
+通过在 Azure 门户中单击“直接安装在此计算机上”来尝试安装网关时会出现此错误。 
 
 `Error:  Abort installing a new gateway on this computer because this computer has an existing installed gateway and a computer without any installed gateway is required for installing a new gateway.`  
 
@@ -50,7 +50,7 @@ ms.locfileid: "61252266"
 计算机上已安装有网关。
 
 #### <a name="resolution"></a>解决方法
-卸载计算机上的现有网关，并再次单击“直接安装在此计算机上”链接。
+卸载计算机上的现有网关，并再次单击“直接安装在此计算机上”链接。 
 
 ### <a name="3-problem"></a>3.问题
 注册新网关时可能会出现此错误。
@@ -108,7 +108,7 @@ ms.locfileid: "61252266"
 发生此错误的原因可能是已删除了网关或已重新生成了关联的网关密钥。
 
 #### <a name="resolution"></a>解决方法
-如果网关已被删除，请在门户中重新创建网关，单击“注册”，从门户中复制并粘贴密钥，尝试注册网关。
+如果网关已被删除，请在门户中重新创建网关，单击“注册”，从门户中复制并粘贴密钥，尝试注册网关。 
 
 如果网关仍然存在但已重新生成其密钥，则使用新的密钥注册网关。 如果没有密钥，请在门户中再次重新生成密钥。
 
@@ -125,7 +125,7 @@ ms.locfileid: "61252266"
 在其他主机计算机上还原网关时，注册向导会请求此证书解密先前使用此证书加密的凭据。  如果没有此证书，新网关便无法解密凭据，且与此新网关相关联的后续复制活动执行会失败。  
 
 #### <a name="resolution"></a>解决方法
-如果已通过使用“数据管理网关配置管理器”的“设置”选项卡上的“导出”按钮，从原始网关计算机中导出了凭据证书，则请在此处使用该证书。
+如果已通过使用“数据管理网关配置管理器”的“设置”选项卡上的“导出”按钮，从原始网关计算机中导出了凭据证书，则请在此处使用该证书。  
 
 恢复网关时不能跳过此阶段。 如果证书丢失，则需从门户中删除网关，并重新创建新的网关。  此外，需要通过重新输入凭据来更新所有与网关相关的关联服务。
 
@@ -205,8 +205,8 @@ ms.locfileid: "61252266"
 请按照下列步骤来解决此问题：
 
 1. 启动数据管理网关配置管理器。
-2. 切换到“设置”选项卡。  
-3. 单击“更改”按钮更改 SSL 证书。
+2. 切换到“设置”  选项卡。  
+3. 单击“更改”  按钮更改 SSL 证书。
 
    ![更改证书按钮](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
 4. 选择一个新证书作为 SSL 证书。 可使用自己或任何组织生成的任何 SSL 证书。
@@ -233,9 +233,9 @@ ms.locfileid: "61252266"
 如果看到数据存储连接或驱动程序相关错误，请完成以下步骤：
 
 1. 在网关计算机上启动数据管理网关配置管理器。
-2. 切换到“诊断”选项卡。
-3. 在“测试连接”中，添加网关组值。
-4. 单击“测试”，查看是否可使用连接信息和凭据从网关计算机连接到本地数据源。 如果在安装驱动程序后测试连接仍然失败，请重新启动网关以便选择最新的更改。
+2. 切换到“诊断”  选项卡。
+3. 在“测试连接”中，添加网关组值。 
+4. 单击“测试”  ，查看是否可使用连接信息和凭据从网关计算机连接到本地数据源。 如果在安装驱动程序后测试连接仍然失败，请重新启动网关以便选择最新的更改。
 
 ![在“诊断”选项卡中测试连接](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
 
@@ -243,21 +243,21 @@ ms.locfileid: "61252266"
 ### <a name="send-gateway-logs-to-microsoft"></a>向 Microsoft 发送网关日志
 联系 Microsoft 支持部门以获取解决网关问题的帮助时，可能会要求共享网关日志。 网关发布以后，只需在数据管理网关配置管理器中点击两次按钮便可轻松共享所需的网关日志。    
 
-1. 切换到数据管理网关配置管理器中的“诊断”选项卡。
+1. 切换到数据管理网关配置管理器中的“诊断”选项卡。 
 
     ![数据管理网关 -“诊断”选项卡](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
-2. 单击“发送日志”查看以下对话框。
+2. 单击“发送日志”  查看以下对话框。
 
     ![数据管理网关 - 发送日志](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
-3. （可选）单击“查看日志”在事件查看器中查看日志。
-4. （可选）单击“隐私”查看 Microsoft Web 服务隐私声明。
-5. 如若对要上传的内容感到满意，便可单击“发送日志”将过去 7 天内的日志发送给 Microsoft，以便进行故障排除。 应该会看到“发送日志”操作的状态如以下屏幕快照所示。
+3. （可选）单击“查看日志”  在事件查看器中查看日志。
+4. （可选）单击“隐私”  查看 Microsoft Web 服务隐私声明。
+5. 如若对要上传的内容感到满意，便可单击“发送日志”  将过去 7 天内的日志发送给 Microsoft，以便进行故障排除。 应该会看到“发送日志”操作的状态如以下屏幕快照所示。
 
     ![数据管理网关 - 发送日志状态](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. 操作完成后，会看到如以下屏幕快照所示的对话框。
 
     ![数据管理网关 - 发送日志状态](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
-7. 保存“报告 ID”，并将其与 Microsoft 支持部门共享。 此报告 ID 用于查找已经上传以进行故障排除的网关日志。  此报告 ID 也会保存在事件查看器中。  可通过查找事件 ID“25”找到该报表 ID，并查看日期和时间。
+7. 保存“报告 ID”  ，并将其与 Microsoft 支持部门共享。 此报告 ID 用于查找已经上传以进行故障排除的网关日志。  此报告 ID 也会保存在事件查看器中。  可通过查找事件 ID“25”找到该报表 ID，并查看日期和时间。
 
     ![数据管理网关 - 发送日志报告 ID](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
 
@@ -272,7 +272,7 @@ ms.locfileid: "61252266"
 
 ![数据管理网关 - 注册错误](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
 
-单击“存档网关”日志链接，存档并保存日志，并与 Microsoft 支持部门共享 zip 文件。
+单击“存档网关”  日志链接，存档并保存日志，并与 Microsoft 支持部门共享 zip 文件。
 
 ![数据管理网关 - 存档日志](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
 
@@ -280,7 +280,7 @@ ms.locfileid: "61252266"
 可以在 Windows 事件日志中找到详细的网关日志信息。
 
 1. 启动 Windows **事件查看器**。
-2. 在“应用程序和服务日志” > **Data Management Gateway** 文件夹中查找日志。
+2. 在“应用程序和服务日志”   > **Data Management Gateway** 文件夹中查找日志。
 
    解决网关相关问题时，在事件查看器中查找错误级别事件。
 

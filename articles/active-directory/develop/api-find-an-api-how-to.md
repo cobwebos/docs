@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a017c13008288b26ddb11bf58be1966d652bbae
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540557"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>如何为自定义开发的应用程序查找所需的特定 API
@@ -28,7 +28,7 @@ ms.locfileid: "65540557"
 
 ## <a name="configuring-a-resource-application-to-expose-web-apis"></a>将资源应用程序配置为公开 Web API
 
-当 Web API 公开后，将权限添加到应用注册时，API 会显示在“选择 API”列表中。 要添加访问作用域，请按照[将访问作用域添加到资源应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)中概述的步骤操作。
+当 Web API 公开后，将权限添加到应用注册时，API 会显示在“选择 API”  列表中。 要添加访问作用域，请按照[将访问作用域添加到资源应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)中概述的步骤操作。
 
 ## <a name="configuring-a-client-application-to-access-web-apis"></a>将客户端应用程序配置为访问 Web API
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 67720256cfac68c350c800291653a4a0c1d7ee46
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427824"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
@@ -31,7 +31,7 @@ ms.locfileid: "66427824"
 1. 上图中，通过在密钥保管库中创建密钥，应用程序可从内部开始创建证书。
 2. Key Vault 将证书签名请求 (CSR) 返回给应用程序
 3. 应用程序将 CSR 传递给所选 CA。
-4. 你所选择的 CA 响应使用 X509 证书。
+4. 所选 CA 以 X509 证书进行响应。
 5. 应用程序通过合并 CA 中的 X509 证书来完成新证书创建过程。
 
 -   **使用已知的证书颁发者提供程序创建证书：** 此方法要求你执行一项一次性任务，即创建一个证书颁发者对象。 在密钥保管库中创建证书颁发者对象以后，即可在 KV 证书的策略中引用其名称。 请求创建此类 KV 证书时，将在保管库中创建一个密钥对，并使用所引用的证书颁发者对象中的信息与证书颁发者提供者服务通信，以便获取 x509 证书。 从证书颁发者服务中检索 x509 证书并将其与密钥对合并以完成 KV 证书创建过程。  
@@ -82,7 +82,7 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 |提供程序|证书类型|  
 |--------------|----------------------|  
 |DigiCert|Key Vault 提供 DigiCert 的 OV 或 EV SSL 证书|
-|GlobalCert|密钥保管库提供了与 Globaltrust 时，可以选择或 EV SSL 证书 |
+|GlobalCert|Key Vault 提供 Globaltrust 的 OV 或 EV SSL 证书 |
 
  证书颁发者是 Azure Key Vault (KV) 中表示为 CertificateIssuer 资源的实体。 它用于提供有关 KV 证书来源的信息，例如颁发者名称、提供者、凭据和其他管理详细信息。
 

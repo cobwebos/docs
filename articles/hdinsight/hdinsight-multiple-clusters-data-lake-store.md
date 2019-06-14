@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: b580890b1663aa6ce742443e927e4d760585d4ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700293"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>通过一个 Azure Data Lake Storage 帐户使用多个 HDInsight 群集
@@ -50,10 +50,10 @@ Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大�
 
 需要考虑一些要点。
 
-- 在将存储帐户用于群集**之前**，Data Lake Storage 管理员必须使用适当的权限创建并预配双级文件夹结构 (**/clusters/finance/**)。 创建群集时不会自动创建此结构。
+- 在将存储帐户用于群集**之前**，Data Lake Storage 管理员必须使用适当的权限创建并预配双级文件夹结构 ( **/clusters/finance/** )。 创建群集时不会自动创建此结构。
 - 上面的示例建议将拥有组 **/clusters/finance** 设置为 **FINGRP**，并允许 FINGRP 对从根目录开始的整个文件夹层次结构进行 **r-x** 访问。 这可以确保 FINGRP 的成员能够导航从根目录开始的文件夹结构。
 - 如果不同的 AAD 服务主体可以在 **/clusters/finance** 下创建群集，则粘性位（如果已针对 **finance** 文件夹设置）可确保一个服务主体创建的文件夹不能被另一个服务主体删除。
-- HDInsight 群集创建过程的文件夹结构和权限就位后, 创建的特定于群集的存储位置下 **/clusters/finance/**。 例如，名为 fincluster01 的群集的存储可以是 **/clusters/finance/fincluster01**。 下表显示了 HDInsight 群集创建的文件夹的所有权和权限。
+- HDInsight 群集创建过程的文件夹结构和权限就位后, 创建的特定于群集的存储位置下 **/clusters/finance/** 。 例如，名为 fincluster01 的群集的存储可以是 **/clusters/finance/fincluster01**。 下表显示了 HDInsight 群集创建的文件夹的所有权和权限。
 
     |Folder  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
     |---------|---------|---------|---------|---------|---------|---------|---------|
@@ -88,7 +88,7 @@ Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大�
 如前面链接的 YARN JIRA 中所述，本地化公共资源时，本地化程序将通过检查所有被请求资源对远程文件系统的权限，来验证这些资源是否确实是公共资源。 不符合该条件的任何 LocalResource 会被拒绝本地化。 检查权限，包括“其他对象”对文件的读取访问权限。 如果将 HDInsight 群集托管在 Azure Data Lake 上，则无法现成地运行此方案，因为 Azure Data Lake 会拒绝“其他对象”在根文件夹级别的访问。
 
 #### <a name="workaround"></a>解决方法
-通过层次结构为**其他对象**设置读取-执行权限，例如，在上表中所示的 **/**、**/clusters** 和 **/clusters/finance** 级别。
+通过层次结构为**其他对象**设置读取-执行权限，例如，在上表中所示的 **/** 、 **/clusters** 和 **/clusters/finance** 级别。
 
 ## <a name="see-also"></a>另请参阅
 

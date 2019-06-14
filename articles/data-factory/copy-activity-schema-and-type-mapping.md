@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 9108f83e854b51720c64c5a74a828543cc5e7688
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64875802"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
@@ -95,7 +95,7 @@ ms.locfileid: "64875802"
 | path     | 若要提取或映射的每个字段的 JSON 路径表达式。 适用于层次结构数据例如 MongoDB/REST。<br>对于根对象下的字段，JSON 路径以开头根 $;有关选择的数组中的字段，`collectionReference`从数组元素的属性，JSON 路径开始。 | 否       |
 | type     | 源或接收器列的数据工厂临时数据类型。 | 否       |
 | culture  | 源或接收器列的区域性。 <br>应用类型时`Datetime`或`Datetimeoffset`。 默认为 `en-us`。 | 否       |
-| format   | 格式字符串类型时，使用`Datetime`或`Datetimeoffset`。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否       |
+| 格式   | 格式字符串类型时，使用`Datetime`或`Datetimeoffset`。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否       |
 
 在下，支持以下属性`translator`  ->  `mappings`除了具有对象`source`和`sink`:
 
@@ -105,7 +105,7 @@ ms.locfileid: "64875802"
 
 ### <a name="alternative-column-mapping"></a>备用列映射
 
-您可以指定复制活动-> `translator`  ->  `columnMappings`形表格数据之间进行映射。 在这种情况下，"structure"节是必需的输入和输出数据集的。 列映射支持将源数据集“structure”中的所有列或列子集接收器数据集“structure”中的所有列。 以下是导致异常的错误条件：
+您可以指定复制活动-> `translator`  ->  `columnMappings`形表格数据之间进行映射。 在这种情况下，"structure"节是必需的输入和输出数据集的。 列映射支持将源数据集“structure”中的所有列或列子集接收器数据集“structure”中的所有列  。 以下是导致异常的错误条件：
 
 * 源数据存储查询结果中没有输入数据集“structure”部分中指定的列名称。
 * 接收器数据存储（如果具有预定义架构）没有输出数据集“structure”部分中指定的列名称。
@@ -236,7 +236,7 @@ ms.locfileid: "64875802"
 }
 ```
 
-而你需要按以下格式通过平展数组中数据（order_pd 和 order_price）的方式将其复制到 Azure SQL 表中，并使用常见的根信息（数字、日期和城市）进行交叉联接：
+而你需要按以下格式通过平展数组中数据（order_pd 和 order_price）的方式将其复制到 Azure SQL 表中，并使用常见的根信息（数字、日期和城市）  进行交叉联接： 
 
 | orderNumber | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |

@@ -16,15 +16,15 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: aea51234d26e5dbaef836419c2a13a12f8083e6f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130698"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>从应用服务环境安全地连接到后端资源
 ## <a name="overview"></a>概述
-由于应用服务环境始终创建于 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中，因此从应用服务环境发往其他后端资源的出站连接可以独占方式通过虚拟网络发送。  随着 2016 年 6 月的最新更改，可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络中。  
+由于应用服务环境始终创建于 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中，因此从应用服务环境发往其他后端资源的出站连接可以独占方式通过虚拟网络发送。   随着 2016 年 6 月的最新更改，可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络中。  
 
 例如，SQL Server 可能在已锁定端口 1433 的虚拟机群集上运行。  此终结点可能已纳入 ACL，只允许从相同虚拟网络上的其他资源进行访问。  
 

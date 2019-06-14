@@ -4,14 +4,14 @@ description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/10/2019
+ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7ef37323fb8150e3a6b52800bfafa2585ae328c2
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523223"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056888"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。 标记为的列**支持标记**指示资源类型是否具有标记的属性。 标记为的列**成本报表中的标记**指示是否该资源类型会将标记传递给成本报表。
@@ -43,7 +43,7 @@ ms.locfileid: "65523223"
 | 代理 | 否 |  否 |
 | anonymousapiusers | 否 |  否 |
 | 配置 | 否 |  否 |
-| 日志 | 否 |  否 |
+| logs | 否 |  否 |
 | 报表 | 否 |  否 |
 | services | 否 |  否 |
 
@@ -667,7 +667,7 @@ ms.locfileid: "65523223"
 | extendedDiagnosticSettings | 否 |  否 |
 | logDefinitions | 否 |  否 |
 | logprofiles | 否 |  否 |
-| 日志 | 否 |  否 |
+| logs | 否 |  否 |
 | metricAlerts | 是 | 是 |
 | migrateToNewPricingModel | 否 |  否 |
 | myWorkbooks | 否 |  否 |
@@ -729,7 +729,7 @@ ms.locfileid: "65523223"
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | 资源类型 | 支持标记 | 在成本报表中标记 |
 | ------------- | ----------- | ----------- |
-| 日志 | 否 |  否 |
+| logs | 否 |  否 |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | 资源类型 | 支持标记 | 在成本报表中标记 |
@@ -1231,7 +1231,7 @@ ms.locfileid: "65523223"
 | customApis | 是 | 是 |
 | deletedSites | 否 |  否 |
 | functions | 否 |  否 |
-| hostingEnvironments | 是 | 否 |
+| hostingEnvironments | 是 | 是 |
 | hostingEnvironments/multiRolePools | 否 |  否 |
 | hostingEnvironments/multiRolePools/instances | 否 |  否 |
 | hostingEnvironments/workerPools | 否 |  否 |

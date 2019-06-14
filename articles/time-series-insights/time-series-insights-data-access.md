@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 53489ef9c1264fa31b06f4660e545e6efbd1f616
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66237030"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限

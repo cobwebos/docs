@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
 ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64691525"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 存储最佳做法
@@ -90,7 +90,7 @@ Azure Data Lake Storage 实现了 HDFS 和 POSIX 样式的访问控制模型。 
 
 ### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure 数据湖存储第 2 代是最新的存储产品/服务。 它统一了第一代 Azure Data Lake Storage 的核心功能和直接集成到 Azure Blob 存储中的 Hadoop 兼容文件系统。 此增强功能将对象存储的规模和成本优势与通常仅与本地文件系统相关联的可靠性和性能相结合。
+Azure Data Lake Storage Gen2 是最新的存储套餐。 它统一了第一代 Azure Data Lake Storage 的核心功能和直接集成到 Azure Blob 存储中的 Hadoop 兼容文件系统。 此增强功能将对象存储的规模和成本优势与通常仅与本地文件系统相关联的可靠性和性能相结合。
 
 ADLS Gen 2 基于  [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md)构建，可使用文件系统和对象存储范例与数据进行交互。  [Azure Data Lake Storage Gen1](../../data-lake-store/index.md) 的功能（如文件系统语义、文件级安全性和规模）可与低成本的分层存储、高可用性/灾难恢复功能以及  [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md)中的大量 SDK/工具生态系统结合使用。 在 Data Lake Storage Gen2 中，在添加针对分析工作负载优化的文件系统接口的优点的同时，还保留了对象存储的所有功能。
 
@@ -171,13 +171,13 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 5. 要限制对具有共享访问签名的容器的访问，请在“Ambari HDFS 配置高级自定义”核心站点的“添加”属性下为群集的核心站点配置添加自定义条目。
 
-6. 在“密钥”和“值”字段中使用以下值：
+6. 在“密钥”  和“值”  字段中使用以下值：
 
     **密钥**：`fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **值**：Python 应用程序从上面的步骤 4 返回的 SAS 密钥。
 
-7. 单击“添加”按钮以保存此密钥和值，并单击“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”。
+7. 单击“添加”  按钮以保存此密钥和值，并单击“保存”  按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”  。
 
-8. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表中选择“重启所有受影响项” **** 。 出现提示时，选择“确认全部重启” ****。
+8. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表中选择“重启所有受影响项” ****  。 出现提示时，选择“确认全部重启” **** 。
 
 9. 对 MapReduce2 和 YARN 重复此过程。
 

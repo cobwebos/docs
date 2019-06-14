@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: rimman
-ms.openlocfilehash: f30155c0fbdbdd93ab4ffc3ae85ef2ad62b188c9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ce059e542ee7bfa67e899b4923e3410e13e4930e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389253"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067506"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -87,7 +87,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 使用 .NET SDK 时，可以通过 [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) 方法检索容器或数据库的最小吞吐量。 
 
-可以随时缩放容器或数据库的预配吞吐量。 
+可以随时缩放容器或数据库的预配吞吐量。 执行缩放操作时以增加吞吐量，可能需要更长时间，这取决要预配所需的资源的系统任务。 可以检查在 Azure 门户或使用 Sdk 以编程方式缩放操作的状态。 使用.Net SDK，你可以使用获取缩放操作的状态`DocumentClient.ReadOfferAsync`方法。
 
 ## <a name="comparison-of-models"></a>模型比较
 

@@ -11,10 +11,10 @@ ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
 ms.openlocfilehash: 3cbd1445640f37cbc63d74d1366c390c774aecd5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65151116"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何通过 Java 使用队列存储
@@ -67,7 +67,7 @@ String storageConnectionString =
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
-利用 **CloudQueueClient** 对象，可以获取队列的引用对象。 以下代码将创建 **CloudQueueClient** 对象。 （注意：还有其他方式来创建 CloudStorageAccount 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 CloudStorageAccount。
+利用 **CloudQueueClient** 对象，可以获取队列的引用对象。 以下代码将创建 **CloudQueueClient** 对象。 （注意：还有其他方式来创建 CloudStorageAccount 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 CloudStorageAccount   。
 
 使用 **CloudQueueClient** 对象获取对要使用的队列的引用。 如果队列不存在，可以创建它。
 

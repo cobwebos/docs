@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
 ms.openlocfilehash: 25f9d4e02bcb354acf1c771157622f07c5f4bcc1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64712802"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
@@ -95,13 +95,13 @@ ms.locfileid: "64712802"
 
 虚拟网络和子网地址前缀分别指定虚拟网络和子网的地址空间。 这些值以无类域间路由 (CIDR) 表示法表示，例如 `10.0.0.0/16`。 有关使用子网的详细信息，请参阅[添加、更改或删除虚拟网络子网](../virtual-network/virtual-network-manage-subnet.md)。
 
-使用此方法部署第一个容器组后，可以通过指定虚拟网络和子网名称或者 Azure 自动创建的网络配置文件，来部署到同一子网。 由于 Azure 将该子网委托给了 Azure 容器实例，因此只能将容器组部署到该子网。
+使用此方法部署第一个容器组后，可以通过指定虚拟网络和子网名称或者 Azure 自动创建的网络配置文件，来部署到同一子网。 由于 Azure 将该子网委托给了 Azure 容器实例，因此只能将容器组部署到该子网。 
 
 ### <a name="existing-virtual-network"></a>现有虚拟网络
 
 将容器组部署到现有虚拟网络：
 
-1. 在现有虚拟网络中创建一个子网，或者在现有子网中清空其他所有资源
+1. 在现有虚拟网络中创建一个子网，或者在现有子网中清空其他所有资源 
 1. 使用 [az container create][az-container-create] 并指定以下信息之一来部署容器组：
    * 虚拟网络名称和子网名称
    * 虚拟网络资源 ID 和子网资源 ID，它允许使用其他资源组中的虚拟网络
@@ -268,7 +268,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 执行该脚本之前，请将 `RES_GROUP` 变量设置为包含所要删除的虚拟网络和子网的资源组的名称。 如果未使用更新的虚拟网络和子网名称`aci-vnet`和`aci-subnet`名称前面建议。 此脚本已针对 Bash Shell 格式化。 若要使用其他 shell（例如 PowerShell 或命令提示符），需要相应地调整变量赋值和访问器。
 
 > [!WARNING]
-> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。 一旦删除，**这些资源就不可恢复**。
+> 此脚本会删除资源！ 它会删除虚拟网络及其包含的所有子网。 运行此脚本之前，请确认你不再需要该虚拟网络中的任何资源，包括其中的任何子网。  一旦删除，**这些资源就不可恢复**。
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group

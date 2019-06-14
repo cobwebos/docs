@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: 31755dcc247ea3be5fb38249afd98dc72dcbc544
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64717115"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 生成机器学习应用程序并分析数据集
@@ -197,7 +197,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
     ![Spark 机器学习应用程序输出：包含五个不同检测结果的饼图](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark 机器学习结果输出")
 
-    若要预测食物检测结果，需要基于违规行为开发一个模型。 由于逻辑回归是二元分类方法，因此有必要将结果数据分为两个类别：“失败”和“通过”：
+    若要预测食物检测结果，需要基于违规行为开发一个模型。 由于逻辑回归是二元分类方法，因此有必要将结果数据分为两个类别：“失败”和“通过”   ：
 
    - 通过
        - 通过
@@ -255,7 +255,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>使用另一个数据集评估模型
 
-可使用先前创建的模型基于所观察到的违规行为来预测后续检查将产生哪些结果。 通过数据集 Food_Inspections1.csv 来训练此模型。 可以使用另一个数据集 **Food_Inspections2.csv** 来评估此模型对新数据的功能性。 第二个数据集 (**Food_Inspections2.csv**) 位于与群集关联的默认存储容器中。
+可使用先前创建的模型基于所观察到的违规行为来预测后续检查将产生哪些结果  。 通过数据集 Food_Inspections1.csv 来训练此模型  。 可以使用另一个数据集 **Food_Inspections2.csv** 来评估此模型对新数据的功能性。  第二个数据集 (**Food_Inspections2.csv**) 位于与群集关联的默认存储容器中。
 
 1. 运行以下代码创建新的数据帧 **predictionsDf**，其中包含由模型生成的预测。 该代码片段还根据数据帧创建一个名为 **Predictions** 的临时表。
 
@@ -314,7 +314,7 @@ model = pipeline.fit(labeledData)
 ## <a name="create-a-visual-representation-of-the-prediction"></a>创建预测的直观表示形式
 现在可以构造一个最终可视化效果，以帮助推理此测试的结果。
 
-1. 首先，提取之前创建的“Predictions”临时表中的不同预测和结果。 以下查询将输出分为 *true_positive*、*false_positive*、*true_negative* 和 *false_negative*。 在以下查询中，使用 `-q` 关闭可视化，同时使用 `-o` 将输出保存为随后可用于 `%%local` 幻数的数据帧。
+1. 首先，提取之前创建的“Predictions”临时表中的不同预测和结果  。 以下查询将输出分为 *true_positive*、*false_positive*、*true_negative* 和 *false_negative*。 在以下查询中，使用 `-q` 关闭可视化，同时使用 `-o` 将输出保存为随后可用于 `%%local` 幻数的数据帧。
 
     ```PySpark
     %%sql -q -o true_positive
@@ -357,7 +357,7 @@ model = pipeline.fit(labeledData)
     在该图中，“正”的结果指未通过食品检验，而“负”的结果指通过检验。
 
 ## <a name="shut-down-the-notebook"></a>关闭笔记本
-运行完应用程序之后，应该关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”。 这会关闭笔记本。
+运行完应用程序之后，应该关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 这会关闭笔记本。
 
 ## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)

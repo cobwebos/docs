@@ -9,10 +9,10 @@ ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478566"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答 
@@ -28,19 +28,19 @@ ms.locfileid: "61478566"
 
 ### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>是否可以使用 Azure 导入/导出服务复制 Azure 文件存储？
 
-可以。 Azure 导入/导出服务支持导入到 Azure 文件存储。 目前它不支持导出 Azure 文件。
+是的。 Azure 导入/导出服务支持导入到 Azure 文件存储。 目前它不支持导出 Azure 文件。
 
 ### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Azure 导入/导出服务是否适用于 CSP 订阅？
 
-可以。 Azure 导入/导出服务支持云解决方案提供商 (CSP) 订阅。
+是的。 Azure 导入/导出服务支持云解决方案提供商 (CSP) 订阅。
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>是否可以使用 Azure 导入/导出服务将 PST 邮箱和 SharePoint 数据复制到 O365？
 
-可以。 有关详细信息，请转到[将 PST 文件或 SharePoint 数据导入到 Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx)。
+是的。 有关详细信息，请转到[将 PST 文件或 SharePoint 数据导入到 Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx)。
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>是否可以使用 Azure 导入/导出服务将我的备份脱机复制到 Azure 备份服务？
 
-可以。 有关详细信息，请转到 [Azure 备份中的脱机备份工作流](../../backup/backup-azure-backup-import-export.md)。
+是的。 有关详细信息，请转到 [Azure 备份中的脱机备份工作流](../../backup/backup-azure-backup-import-export.md)。
 
 ### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>是否可以从 Microsoft 购买用于导入/导出作业的驱动器？
 
@@ -60,7 +60,7 @@ ms.locfileid: "61478566"
 ## <a name="importexport-jobs"></a>导入/导出作业
 
 ### <a name="can-i-cancel-my-job"></a>是否可以取消我的作业？
-可以。 可以取消状态为“正在创建”或“正在寄送”的作业。 在这些阶段之外，无法取消作业，它将一直执行到最终阶段。
+是的。 可以取消状态为“正在创建”或“正在寄送”的作业。   在这些阶段之外，无法取消作业，它将一直执行到最终阶段。
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>在 Azure 门户中可以查看多长时间的已完成作业的状态？
 可以查看最长 90 天的已完成作业的状态。 已完成作业在 90 天后会被删除。

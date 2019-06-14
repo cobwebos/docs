@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1f29a12090ca37f25ea6f5f11e870df924b334f5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: d7c8c8e6931c3e677273fab17755031527aff978
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497125"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069359"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
 Azure Monitor 现已成为统一的完整堆栈监视服务，支持跨资源“一个指标”和“一个警报”；如需更多信息，请参阅[关于新 Azure Monitor 的博客文章](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/)。新的 Azure 监视和警报致力于成为更快速、更智能和可扩展的平台 - 与不断增长的云计算扩展齐头并进，并与 Microsoft 智能云理念保持一致。 
 
-使用新的 Azure 监视和警报中的位置平台，我们将在停用"经典"监视和警报中托管的平台-*查看经典警报*部分中的 Azure 警报，**将由不推荐使用在 Azure 公共年 8 月 2019年云**。 [Azure 政府云](../../azure-government/documentation-government-welcome.md)不受影响。
+使用新的 Azure 监视和警报中的位置平台，我们将在停用"经典"监视和警报中托管的平台-*查看经典警报*部分中的 Azure 警报，**将由不推荐使用在 Azure 公共年 8 月 2019年云**。 [Azure 政府版云](../../azure-government/documentation-government-welcome.md)并[Azure 中国区](https://docs.azure.cn/)不会受到影响。
 
 > [!NOTE]
 > 由于推出的迁移工具中的延迟，经典警报迁移的停用日期已[延长到 2019 年 8 月 31 日](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/)从 2019 年 6 月 30 日的最初公布日期。
@@ -63,10 +63,10 @@ Azure 资源的新指标按以下形式提供：
 
 年 8 月 2019，Azure Monitor 中的末尾：
 
-- 经典的监视和警报服务将已停用并不再可用于创建新的警报规则。
+- 经典监视和警报服务将停用，并且不再可用于创建新的警报规则。
 - 继续在警报 （经典） 超出年 8 月 2019年中存在任何警报规则将继续执行，并触发通知，但不是能进行修改。
 - 启动第 2019 年 9 月经典的监视和警报可以迁移的中的警报规则将自动移动 Microsoft 到新的 Azure monitor 平台的等效项分阶段跨越几周。 该过程无缝进行且没有任何停机时间，并且客户在监视覆盖范围内将没有任何损失。
-- 迁移到新的警报平台的警报规则将提供与之前相同的监视覆盖范围，但将触发具有新的有效负载的通知。 任何电子邮件地址、 webhook 终结点或与经典警报规则关联的逻辑应用链接迁移时，将向前执行，但可能不正确会因为警报有效负载将是新的平台中不同。
+- 迁移到新的警报平台的警报规则将提供与之前相同的监视覆盖范围，但将触发具有新的有效负载的通知。 与经典警报规则相关联的任何电子邮件地址、Webhook 终结点或逻辑应用链接在迁移时都将被转移，但行为可能不正确，因为警报有效负载在新平台中将有所不同。
 - 某些[无法自动迁移的经典警报规则](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated)，需要从用户的手动操作将继续运行到 2020 年 6 月。
 
 > [!IMPORTANT]

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: fca76b632e9bcc27ed762886eaea696a5696ad3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60761862"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>使用样本数据测试流分析查询
@@ -26,13 +26,13 @@ ms.locfileid: "60761862"
 
 2. 找到现有流分析作业并选择它。
 
-3. 在“流分析作业”页上的“作业拓扑”标题下，选择“查询”以打开“查询编辑器”窗口。 
+3. 在“流分析作业”页上的“作业拓扑”  标题下，选择“查询”  以打开“查询编辑器”窗口。 
 
-4. 若要使用样本输入数据来测试查询，请右键单击任意输入，  并选择“上传文件中的样本数据”。 此数据必须以 JSON、CSV 或 AVRO 进行序列化。 示例输入必须以 UTF-8 进行编码，并且不能进行压缩。 仅支持使用逗号 (,) 分隔符来测试门户上的 CSV 输入。
+4. 若要使用样本输入数据来测试查询，请右键单击任意输入，  并选择“上传文件中的样本数据”  。 此数据必须以 JSON、CSV 或 AVRO 进行序列化。 示例输入必须以 UTF-8 进行编码，并且不能进行压缩。 仅支持使用逗号 (,) 分隔符来测试门户上的 CSV 输入。
 
     ![流分析查询编辑器测试查询](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-5. 完成上传后，选择“测试”，以针对已提供的样本数据来测试此查询。
+5. 完成上传后，选择“测试”  ，以针对已提供的样本数据来测试此查询。
 
     ![流分析查询编辑器测试示例数据](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 

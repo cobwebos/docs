@@ -9,17 +9,17 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 64185a951b25b4e04ea5fc65aeede9b0e617d0c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001676"
 ---
 # <a name="data-profile-data-sources"></a>数据配置文件数据源
 ## <a name="introduction"></a>简介
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录**旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源向 **Azure 数据目录**注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。
 
-**Azure 数据目录**的“数据分析”功能检查目录中受支持数据源的数据，并收集有关该数据的统计信息和信息。 想要包括数据资产的配置文件很简单。 注册数据资产时，在数据源注册工具中选择“包括数据配置文件”。
+**Azure 数据目录**的“数据分析”  功能检查目录中受支持数据源的数据，并收集有关该数据的统计信息和信息。 想要包括数据资产的配置文件很简单。 注册数据资产时，在数据源注册工具中选择“包括数据配置文件”  。
 
 ## <a name="what-is-data-profiling"></a>什么是数据分析
 数据分析检查正在注册的数据源中的数据，并收集有关该数据的统计信息和信息。 在发现数据源的过程中，这些统计信息有助于确定数据是否适用于解决其业务问题。
@@ -48,7 +48,7 @@ ms.locfileid: "61001676"
 <a name="howto"/>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>如何在注册数据源时包括数据配置文件
-想要包括数据源的配置文件很简单。 注册数据资产时，在数据源注册工具的“要注册的对象”面板中选择“包括数据配置文件”。
+想要包括数据源的配置文件很简单。 注册数据资产时，在数据源注册工具的“要注册的对象”  面板中选择“包括数据配置文件”  。
 
 ![](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
@@ -58,16 +58,16 @@ ms.locfileid: "61001676"
 若要发现包括数据配置文件的数据资产，可以包括 `has:tableDataProfiles` 或 `has:columnsDataProfiles` 作为搜索条件之一。
 
 > [!NOTE]
-> 在数据源注册工具中选择“包括数据配置文件”将包括表和列级配置文件信息。 但是，数据目录 API 允许数据资产在只包含一组配置文件信息的情况下进行注册。
+> 在数据源注册工具中选择“包括数据配置文件”  将包括表和列级配置文件信息。 但是，数据目录 API 允许数据资产在只包含一组配置文件信息的情况下进行注册。
 >
 >
 
 ## <a name="viewing-data-profile-information"></a>查看数据配置文件信息
-找到含有配置文件的合适数据源后，就可以查看数据配置文件详细信息。 要查看数据配置文件，请在数据目录门户窗口选择数据资产，并选择“数据配置文件”。
+找到含有配置文件的合适数据源后，就可以查看数据配置文件详细信息。 要查看数据配置文件，请在数据目录门户窗口选择数据资产，并选择“数据配置文件”  。
 
 ![](media/data-catalog-data-profile/data-catalog-view.png)
 
-“Azure 数据目录”中的数据配置文件显示表和列配置文件信息，包括：
+“Azure 数据目录”  中的数据配置文件显示表和列配置文件信息，包括：
 
 ### <a name="object-data-profile"></a>对象数据配置文件
 * 行数

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 03fcbb0216d85e337b4161aa24ceeb7d3a2bdebe
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66479460"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
@@ -430,7 +430,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 ### <a name="the-apache-ambari-web-ui"></a>Apache Ambari Web UI
 
-1. 在浏览器中转到 https://CLUSTERNAME.azurehdinsight.net。 将 **CLUSTERNAME** 替换为 HDInsight 群集名。
+1. 在浏览器中转到 https://CLUSTERNAME.azurehdinsight.net 。 将 **CLUSTERNAME** 替换为 HDInsight 群集名。
 
     出现提示时，为群集输入管理员帐户名 **admin** 和密码。 可能需要在 Web 表单中重新输入管理员凭据。
 

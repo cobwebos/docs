@@ -17,10 +17,10 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 3fe1e72d277bffd4bc9b38ac377e33b341967e17
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65806351"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的使用情况和见解报告
@@ -45,7 +45,7 @@ ms.locfileid: "65806351"
 2. 选择正确的目录，然后选择**Azure Active Directory** ，然后选择**企业应用程序**。
 3. 从**活动**部分中，选择**根据使用情况和见解**以打开该报表。 
 
-![使用情况和见解的报表](./media/concept-usage-insights-report/main-menu.png)
+![使用情况和见解报表](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>使用报表
@@ -58,7 +58,7 @@ ms.locfileid: "65806351"
 
 当应用程序使用情况图中选择某一天时，你会获取应用程序的登录活动的详细的列表。  
 
-![使用情况和见解的报表](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![使用情况和见解报表](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
 ## <a name="next-steps"></a>后续步骤
 

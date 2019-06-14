@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113083"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
@@ -61,13 +61,13 @@ ms.locfileid: "66113083"
 
  ![AzureAD 应用程序代理连接器](./media/application-proxy-connectors/app-proxy-connectors.png)
 
-无需手动删除未使用的连接器。 当连接器运行时，它会在连接到服务时保持活动状态。 未使用的连接器标记为非活动状态，保持这种状态 10 天后将被删除。 不过，如果想要卸载某个连接器，则需要在服务器中卸载连接器服务和更新程序服务。 重新启动计算机以完全删除该服务。
+无需手动删除未使用的连接器。 当连接器运行时，它会在连接到服务时保持活动状态。 未使用的连接器标记为非活动状态，保持这种状态 10 天后将被删除。  不过，如果想要卸载某个连接器，则需要在服务器中卸载连接器服务和更新程序服务。 重新启动计算机以完全删除该服务。
 
 ## <a name="automatic-updates"></a>自动更新
 
 Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代理连接器更新程序服务保持运行，连接器就会自动更新。 如果在服务器上未看到连接器更新程序服务，需要[重新安装连接器](application-proxy-add-on-premises-application.md)才能获得所有更新。 
 
-如果不想等连接器自动更新，可以执行手动升级。 转到连接器所在服务器上的[连接器下载页](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)，选择“下载”。 此过程启动本地连接器升级。 
+如果不想等连接器自动更新，可以执行手动升级。 转到连接器所在服务器上的[连接器下载页](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)，选择“下载”  。 此过程启动本地连接器升级。 
 
 对于有多个连接器的租户，每次自动更新每个组中的一个连接器，以防环境中出现停机现象。 
 
@@ -85,13 +85,13 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关连接器组的详细信息，请参阅[使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)。
 
-## <a name="capacity-planning"></a>容量计划 
+## <a name="capacity-planning"></a>容量规划 
 
 请务必确保已在连接器之间规划足够的容量以处理预期的流量。 我们建议每个连接器组具有至少两个连接器，以便提供高可用性和缩放。 可能需要在任意点的计算机提供服务的情况下，具有三个连接器是最佳的。 
 
 通常，用户越多，需要的计算机容量越大。 下面是表概述了卷，并可以处理不同的计算机的预计的延迟。 请注意，它们全都基于预期的每秒事务数 (TPS) 而非按用户计算的，因为使用模式会变化，无法用来预测负载。 还会根据响应大小和后端应用程序响应时间，会有一些差异 - 较大的响应大小和较慢的响应时间将产生较低的最大 TPS。 我们还建议附加计算机，以便跨计算机的分布式的负载始终提供足够的缓冲区。 额外的容量将确保高可用性和复原能力。
 
-|内核|RAM|预期的延迟 (MS)-P99|最大 TPS|
+|核心数|RAM|预期的延迟 (MS)-P99|最大 TPS|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
@@ -170,7 +170,7 @@ Register-AppProxyConnector
 
 连接器提供管理日志和会话日志。 管理日志包括关键事件及其错误。 会话日志包括所有事务及其处理详细信息。 
 
-要查看日志，请转到事件查看器，打开“视图”菜单，并启用“显示分析和调试日志”。 然后，启用这些日志以开始收集事件。 这些日志不会显示在 Windows Server 2012 R2 上的 Web 应用程序代理中，因为连接器基于更新的版本。
+要查看日志，请转到事件查看器，打开“视图”  菜单，并启用“显示分析和调试日志”  。 然后，启用这些日志以开始收集事件。 这些日志不会显示在 Windows Server 2012 R2 上的 Web 应用程序代理中，因为连接器基于更新的版本。
 
 可在“服务”窗口中检查服务的状态。 连接器由两个 Windows 服务组成：实际的连接器和更新程序。 二者都必须一直运行。
 

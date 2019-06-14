@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1c9c24f5b594935c0057eb15acec09a0b27324
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8b1461999679935587370f66349a440d588465cd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496788"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052532"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何时使用 Azure 多重身份验证提供程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "66496788"
 使用 Azure 多重身份验证提供程序以便利用 Azure 多重身份验证为**没有许可证的用户**提供的功能。
 
 > [!NOTE]
-> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 可以继续使用和更新现有的身份验证提供程序。 多重身份验证将继续以 Azure AD Premium 许可证中的功能的形式提供。
+> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 现有的身份验证提供程序可以继续使用和更新，但迁移时不可能。 多重身份验证将继续以 Azure AD Premium 许可证中的功能的形式提供。
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>与 Azure MFA SDK 相关的注意事项
 

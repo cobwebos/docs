@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a76f61902c6affdab9f70526d2de40852747f34e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66118325"
 ---
 #### <a name="to-get-the-storsimple-service-registration-key"></a>获取 StorSimple 服务注册密钥
 
-1. 在“StorSimple 设备管理器”边栏选项卡上，单击你创建的服务。 这会在右侧打开一个新的边栏选项卡。
+1. 在“StorSimple 设备管理器”边栏选项卡上，单击你创建的服务。  这会在右侧打开一个新的边栏选项卡。
    
      ![StorSimple Device Manager 边栏选项卡](./media/storsimple-8000-get-service-registration-key/createssdevman5.png)
 
-2.  转到“管理”>“密钥”。
+2.  转到“管理”>“密钥”。 
    
      ![“密钥”边栏选项卡](./media/storsimple-8000-get-service-registration-key/getregkey2.png)
 

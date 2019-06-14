@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: de24b64ecd95eec79d7508f978acda9f0ae5a8d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097503"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加推送通知
@@ -142,13 +142,13 @@ ms.locfileid: "62097503"
 
 ## <a name="test"></a>在应用程序中测试推送通知
 
-1. 在支持 iOS 的设备中按“运行”按钮，生成项目并启动应用，并单击“确定”接受推送通知。
+1. 在支持 iOS 的设备中按“运行”  按钮，生成项目并启动应用，并单击“确定”  接受推送通知。
 
    > [!NOTE]
    > 必须显式接受来自应用程序的推送通知。 此请求只会在首次运行应用程序时出现。
 
-2. 在应用中，键入一项任务，然后单击加号 (**+**) 图标。
-3. 检查是否已收到通知，并单击“确定”取消通知。
+2. 在应用中，键入一项任务，然后单击加号 ( **+** ) 图标。
+3. 检查是否已收到通知，并单击“确定”  取消通知。
 4. 重复步骤 2 并立即关闭应用，并检查是否已显示通知。
 
 已成功完成本教程。

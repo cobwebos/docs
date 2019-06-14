@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 2bb1a9c3922f435b6be78614aacff6e85bf475ff
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130732"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>应用服务环境 v1 简介
@@ -68,7 +68,7 @@ ms.locfileid: "62130732"
 
 ## <a name="virtual-network-support"></a>虚拟网络支持
 
-可以在 Azure 资源管理器虚拟网络**或者**经典的部署模型虚拟网络中创建应用服务环境（[关于虚拟网络的更多信息][MoreInfoOnVirtualNetworks]）。  由于应用服务环境始终位于虚拟网络中（更准确地说，是位于虚拟网络的子网中），因此可以利用虚拟网络的安全功能来控制入站和出站网络通信。  
+可以在 Azure 资源管理器虚拟网络**或者**经典的部署模型虚拟网络中创建应用服务环境（[关于虚拟网络的更多信息][MoreInfoOnVirtualNetworks]）。   由于应用服务环境始终位于虚拟网络中（更准确地说，是位于虚拟网络的子网中），因此可以利用虚拟网络的安全功能来控制入站和出站网络通信。  
 
 应用服务环境既可以是面向 Internet 的（使用公共 IP 地址），也可以是面向内部的（只使用 Azure 内部负载均衡器 (ILB) 地址）。
 

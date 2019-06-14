@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66110307"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
@@ -50,7 +50,7 @@ ms.locfileid: "66110307"
 
 3. 添加要收集到上一步中声明的 `PerformanceCounterConfiguration` 中的性能计数器。 要收集的每个计数器都通过 `counterSpecifier`、`sampleRate`、`unit`、`annotation` 和任何相关的 `sinks` 来定义。
 
-下面是一个配置示例，其中有总处理器时间（CPU 处理操作所用的时间）的计数器和每秒 Service Fabric 执行组件方法调用数的计数器（Service Fabric 的自定义性能计数器之一）。 若要获取 Service Fabric 自定义性能计数器的完整列表，请参考 [Reliable Actor 性能计数器](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)和 [Reliable Service 性能计算器](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)。
+下面是一个配置示例，其中有总处理器时间（CPU 处理操作所用的时间）的计数器和每秒 Service Fabric 执行组件方法调用数的计数器（Service Fabric 的自定义性能计数器之一）   。 若要获取 Service Fabric 自定义性能计数器的完整列表，请参考 [Reliable Actor 性能计数器](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)和 [Reliable Service 性能计算器](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters)。
 
  ```json
  "WadCfg": {
@@ -206,4 +206,4 @@ ms.locfileid: "66110307"
 ## <a name="next-steps"></a>后续步骤
 * 收集群集的更多性能计数器。 有关应收集的计数器列表，请参阅[性能指标](service-fabric-diagnostics-event-generation-perf.md)。
 * [将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../virtual-machines/windows/extensions-diagnostics-template.md)，以进一步修改 `WadCfg`，包括配置向其发送诊断数据的其他存储帐户。
-* 请访问[WadCfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)生成从零开始的模板，请确保你的语法是否正确。 (https://azure.github.io/azure-diagnostics-tools/config-builder/)生成从零开始的模板，请确保你的语法是否正确。
+* 请访问[WadCfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)生成从零开始的模板，请确保你的语法是否正确。 (https://azure.github.io/azure-diagnostics-tools/config-builder/) 生成从零开始的模板，请确保你的语法是否正确。

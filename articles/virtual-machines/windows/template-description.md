@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: d234e7f8a6005722a33a797f2b8ae6a1e1f4b98b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: f4a69fd57bf2e9535fdb1664365b074927e27585
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327759"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64707284"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure 资源管理器模板中的虚拟机
 
@@ -28,7 +28,7 @@ ms.locfileid: "56327759"
 
 [在库中](https://azure.microsoft.com/documentation/templates/?term=VM)有许多包含 VM 资源的模板。 本文并未介绍可在模板中包含的所有元素。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 本示例演示了模板中用于创建指定数量的 VM 的典型资源节：
 
@@ -445,7 +445,7 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 ![获取扩展状态](./media/template-description/virtual-machines-show-extensions.png)
 
-此外，也可以使用 Get-AzVMExtension PowerShell 命令、vm extension get Azure CLI 命令或“获取扩展信息”REST API 来获取扩展信息。
+此外，也可以使用 Get-AzVMExtension PowerShell 命令、vm extension get Azure CLI 命令或“获取扩展信息”REST API 来获取扩展信息    。
 
 ## <a name="deployments"></a>部署
 
@@ -455,7 +455,7 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 ![获取部署信息](./media/template-description/virtual-machines-deployment-info.png)
     
-完全可以使用同一个模板来创建资源或更新现有资源。 使用命令部署模板时，可以指定想要使用的[模式](../../resource-group-template-deploy.md)。 模式可设置为“完整”(Complete) 或“增量”(Incremental)。 默认设置为执行增量更新。 请谨慎使用“完整”模式，因为这可能会意外删除资源。 在模式设置为“完整”时，资源管理器会删除资源组中不包含在模板内的所有资源。
+完全可以使用同一个模板来创建资源或更新现有资源。 使用命令部署模板时，可以指定想要使用的[模式](../../resource-group-template-deploy.md)。 模式可设置为“完整”(Complete) 或“增量”(Incremental)。   默认设置为执行增量更新。 请谨慎使用“完整”模式，因为这可能会意外删除资源。  在模式设置为“完整”时，资源管理器会删除资源组中不包含在模板内的所有资源。 
 
 ## <a name="next-steps"></a>后续步骤
 

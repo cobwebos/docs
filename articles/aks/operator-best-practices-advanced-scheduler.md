@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 78f54e9e86de7a8b1b80300e0ed79a5e54f29282
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5affcd5ee1e51ac754d8a9bb81560a6cc3626860
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074185"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055614"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
@@ -38,7 +38,7 @@ Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行
 * 将**排斥**应用到指明了只能计划特定 pod 的节点。
 * 然后，将**容许**应用到可以*容许*节点排斥的 pod。
 
-将 pod 部署到 AKS 群集时，Kubernetes 只会在容许与排斥相符的节点上计划 pod。 例如，假设你有支持 GPU 的节点在 AKS 群集中节点池。 你定义了名称（例如 *gpu*），然后定义了计划值。 如果将此值设置为 *NoSchedule*，当 pod 未定义相应的容许时，Kubernetes 计划程序无法在节点上计划 pod。
+将 pod 部署到 AKS 群集时，Kubernetes 只会在容许与排斥相符的节点上计划 pod。 例如，假设你在 AKS 群集中为支持 GPU 的节点创建了一个节点池。 你定义了名称（例如 *gpu*），然后定义了计划值。 如果将此值设置为 *NoSchedule*，当 pod 未定义相应的容许时，Kubernetes 计划程序无法在节点上计划 pod。
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -77,22 +77,22 @@ spec:
 
 有关如何使用在 AKS 中的多个节点池的详细信息，请参阅[创建和管理在 AKS 中为群集的多个节点池][use-multiple-node-pools]。
 
-### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Taints 和 tolerations 在 AKS 中的行为
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS 中的排斥和容许的行为
 
-当升级在 AKS 中的节点池时，taints 和 tolerations 按照组模式要应用到新节点：
+升级 AKS 中的节点池时，排斥和容许在应用于新节点时遵循一个设定的模式：
 
-- **默认群集而不使用虚拟机扩展支持**
-  - 我们假设您有两个节点群集- *node1*并*node2*。 当您升级，其他节点 (*node3*) 创建。
-  - 从 taints *node1*应用于*node3*，然后*node1*就会被删除。
-  - 创建另一个新节点 (名为*node1*，上次*node1*已被删除)，和*node2* taints 应用于新*node1*. 然后， *node2*被删除。
-  - 实际上*node1*变得*node3*，并*node2*变得*node1*。
+- **不支持虚拟机缩放的默认群集**
+  - 假设你的群集有两个节点 - *node1* 和 *node2*。 在升级时，将创建另一个节点 (*node3*)。
+  - *node1* 中的排斥将应用于 *node3*，然后 *node1* 将被删除。
+  - 将创建另一个新节点（名为 *node1*，因为以前的 *node1* 被删除），并且 *node2* 排斥将应用于新的 *node1*。 然后，将删除 *node2*。
+  - 实际上，*node1* 变成了 *node3*，*node2* 变成了 *node1*。
 
 - **群集使用的虚拟机规模集**（目前以预览版在 AKS 中）
   - 同样，我们假设您有两个节点群集- *node1*并*node2*。 升级的节点池。
   - 创建两个其他节点， *node3*并*节点 4*，而 taints 分别上传递。
   - 原始*node1*并*node2*被删除。
 
-当你缩放在 AKS 中的节点池时，taints 和 tolerations 不携带转移设计。
+缩放 AKS 中的节点池时，排斥和容许不会转移，这是设计使然。
 
 ## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>使用节点选择器和关联控制 pod 计划
 
@@ -134,7 +134,7 @@ spec:
 
 ### <a name="node-affinity"></a>节点关联
 
-节点选择器是将 pod 分配到给定节点的基本方法。 使用节点关联可以获得更高的灵活性。 使用节点关联可以定义当 pod 无法与节点匹配时发生的情况。 可以要求 Kubernetes 计划程序与包含标记主机的 pod 相匹配。 或者，可以优先选择匹配，但如果不匹配，则允许在其他主机上计划 pod。
+节点选择器是将 pod 分配到给定节点的基本方法。 使用节点关联可以获得更高的灵活性。  使用节点关联可以定义当 pod 无法与节点匹配时发生的情况。 可以要求 Kubernetes 计划程序与包含标记主机的 pod 相匹配。  或者，可以优先选择匹配，但如果不匹配，则允许在其他主机上计划 pod。 
 
 以下示例将节点关联设置为 *requiredDuringSchedulingIgnoredDuringExecution*。 这种关联要求 Kubernetes 计划使用具有匹配标签的节点。 如果没有可用的节点，则 pod 必须等待计划继续。 若要允许在其他节点上计划 pod，可将值设置为 *preferredDuringScheduledIgnoreDuringExecution*：
 
@@ -157,11 +157,11 @@ spec:
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: hardware
-          operator: In
-          values: highmem
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: hardware
+            operator: In
+            values: highmem
 ```
 
 该设置的 *IgnoredDuringExecution* 部分表示当节点标签更改时，不应从节点中逐出 pod。 Kubernetes 计划程序仅对所要计划的新 pod 使用更新的节点标签，对于已在节点上计划的 pod 则不使用。
@@ -170,7 +170,7 @@ spec:
 
 ### <a name="inter-pod-affinity-and-anti-affinity"></a>pod 间关联和反关联
 
-Kubernetes 计划程序逻辑隔离工作负荷的最终方法之一是使用 pod 间关联或反关联。 这些设置定义不应在具有现有匹配 pod 的节点上计划 pod，或者应该计划 pod。 默认情况下，Kubernetes 计划程序会尝试在跨节点的副本集3中计划多个 pod。 可围绕此行为定义更具体的规则。
+Kubernetes 计划程序逻辑隔离工作负荷的最终方法之一是使用 pod 间关联或反关联。 这些设置定义不应在具有现有匹配 pod 的节点上计划 pod，或者应该计划 pod。   默认情况下，Kubernetes 计划程序会尝试在跨节点的副本集3中计划多个 pod。 可围绕此行为定义更具体的规则。
 
 同时使用 Azure Redis 缓存的 Web 应用程序就是一个很好的例子。 可以使用 pod 反关联规则来请求 Kubernetes 计划程序跨节点分配副本。 然后，可以使用关联规则来确保在相应缓存所在的同一主机上计划每个 Web 应用组件。 跨节点的 pod 分配如以下示例所示：
 

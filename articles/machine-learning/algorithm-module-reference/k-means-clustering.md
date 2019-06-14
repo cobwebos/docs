@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7e9b7c8f2cf86245322679198b84b50d2c5edce8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464665"
 ---
 # <a name="module-k-means-clustering"></a>模块：K 平均值聚类
@@ -75,7 +75,7 @@ K 平均值是一个简单的最广为人知*非监督式*学习算法。 该算
 
          此方法也称为*随机分区*方法。  
   
-    -   **K-平均值 + +**:这是初始化群集的默认方法。  
+    -   **K-平均值 + +** :这是初始化群集的默认方法。  
   
          **K-平均值 + +** 算法提议，在 2007 年由 David Arthur 和 Sergei Vassilvitskii 以避免标准 K 平均值算法的不佳聚类分析。 **K-平均值 + +** 通过使用另一种方法选择初始聚类中心改进了标准 K 平均值。  
   

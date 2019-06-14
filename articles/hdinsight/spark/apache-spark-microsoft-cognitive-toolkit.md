@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
 ms.openlocfilehash: 3462255311eaa6e418f97de5da598eb985b2a935
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64695063"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>将 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集配合使用
@@ -77,11 +77,11 @@ ms.locfileid: "64695063"
 
     也可以通过转到 URL `https://<clustername>.azurehdinsight.net/jupyter/` 来启动 Jupyter 笔记本。 将 \<clustername> 替换为 HDInsight 群集名。
 
-3. 从 Jupyter 笔记本中，单击右上角的“上传”，并导航至克隆 GitHub 存储库的位置。
+3. 从 Jupyter 笔记本中，单击右上角的“上传”  ，并导航至克隆 GitHub 存储库的位置。
 
     ![将 Jupyter 笔记本上传到 Azure HDInsight Spark 群集](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Upload Jupyter notebook to Azure HDInsight Spark cluster")
 
-4. 再次单击“上传”。
+4. 再次单击“上传”  。
 
 5. 笔记本上传后，单击笔记本的名称，并按照笔记本中有关如何加载数据集和执行教程的说明进行操作。
 

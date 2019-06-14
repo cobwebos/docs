@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
 ms.openlocfilehash: 4b4f2ec779c37f78b371c27df80c354eccb41e7a
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64869437"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="选择正在使用的媒体服务的版本："]
 > * [第 3 版](../latest/dynamic-packaging-overview.md)
 > * [第 2 版](media-services-dynamic-packaging-overview.md)
 

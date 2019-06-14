@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 22d85f7a1c5b89c005b4c5b92f2f6b9ea449fe8d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190401"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064075"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
@@ -66,8 +66,8 @@ Batch 听录 API 支持以下格式：
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<local to us, for example en-US>",
-  "name": "<user define name of the transcription batch>",
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
     "ProfanityFilterMode": "Masked",
@@ -83,18 +83,20 @@ Batch 听录 API 支持以下格式：
 
 ### <a name="configuration-properties"></a>配置属性
 
-| 参数 | 描述 | 必需/可选 |
-|-----------|-------------|---------------------|
-| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `none`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置是 `masked`。 | 可选 |
-| `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `none`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 | 可选 |
- | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 | 可选 |
- | `AddSentiment` | 指定情绪应添加到查询文本。 接受的值是`true`可让每个查询文本的情绪和`false`（默认值） 以禁用它。 | 可选 |
+使用以下可选属性来配置脚本：
+
+| 参数 | 描述 |
+|-----------|-------------|
+| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `none`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置是 `masked`。 |
+| `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `none`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 |
+ | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
+ | `AddSentiment` | 指定情绪应添加到查询文本。 接受的值是`true`可让每个查询文本的情绪和`false`（默认值） 以禁用它。 |
 
 ### <a name="storage"></a>存储
 
 批处理脚本支持[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)音频和编写转录到存储中读取。
 
-## <a name="webhooks"></a>Webhooks 
+## <a name="webhooks"></a>Webhook 
 
 轮询听录状态不能性能最好，或提供最佳用户体验。 若要轮询状态，可以注册将在长时间运行的脚本任务已完成时通知客户端的回调。
 
@@ -151,9 +153,9 @@ JSON 输出示例类似于下面：
 ```
 用于当前处于测试阶段的情绪模型功能。
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 
-完整示例可在 `samples/batch` 子目录的 [GitHub 示例存储库](https://aka.ms/csspeech/samples)中获得。
+完整示例位于[GitHub 示例存储库](https://aka.ms/csspeech/samples)内`samples/batch`子目录。
 
 如要使用自定义声学或语言模型，必须使用订阅信息、服务区域、指向要转录的音频文件的 SAS URI 和模型 ID 来自定义示例代码。 
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
-ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e9002b96467d6fa3a5c4fb03fb20bde4e1bf87a1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151192"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059340"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Azure 机器学习服务的企业安全性
 
@@ -75,7 +75,7 @@ print(primary)
 | 视图模型/图像 | ✓ | ✓ | ✓ |
 | 调用 web 服务 | ✓ | ✓ | ✓ |
 
-如果内置角色不能满足需要，还可以创建自定义角色。 请注意，仅自定义角色，我们支持的工作区和机器学习计算上的操作。 自定义的角色可能具有读取、 写入或删除工作区和该工作区中的计算资源上的权限。 您可以使该角色可用在特定工作区级别、 特定资源组级别或特定的订阅级别。 有关详细信息，请参阅[管理用户和 Azure 机器学习工作区中的角色](how-to-assign-roles.md)
+如果内置角色不能满足需要，还可以创建自定义角色。 我们支持仅自定义角色是工作区和机器学习计算上的操作。 自定义的角色可能具有读取、 写入或删除工作区和该工作区中的计算资源上的权限。 您可以使该角色可用在特定工作区级别、 特定资源组级别或特定的订阅级别。 有关详细信息，请参阅[管理用户和 Azure 机器学习工作区中的角色](how-to-assign-roles.md)
 
 ### <a name="securing-compute-and-data"></a>计算和数据保护
 所有者和参与者可以使用的所有计算目标和数据存储附加到工作区。  
@@ -94,7 +94,7 @@ print(primary)
 
 建议管理员不会撤消该托管身份与上面所述的资源的访问权限。 可以使用重新同步密钥操作恢复访问权限。
 
-Azure 机器学习服务创建参与者级别访问你的订阅中的每个工作区区域与其他应用程序 （使用 aml-名称开始）。 有关示例。 如果你有一个工作区在美国东部和同一订阅中另一个在欧洲北部中的工作区，您将看到 2 个此类应用程序。 这被必需的以便服务可以帮助管理 Azure 机器学习计算资源。
+Azure 机器学习服务创建附加的应用程序 (名称以开头`aml-`) 使用参与者级别访问你的订阅中的每个工作区区域。 有关示例。 如果你有一个工作区在美国东部和同一订阅中另一个在欧洲北部中的工作区，您将看到两个此类应用程序。 这被必需的以便服务可以帮助管理 Azure 机器学习计算资源。
 
 
 ## <a name="network-security"></a>网络安全
@@ -112,6 +112,8 @@ Azure 机器学习服务绑定到的 Azure 机器学习服务工作区，并驻�
 有关如何将你自己的密钥存储在 Azure Blob 存储中的数据的详细信息，请参阅[使用 Azure Key Vault 中客户托管密钥的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)。
 
 定型数据通常也存储在 Azure Blob 存储，以便训练计算对其进行访问。 此存储不是由 Azure 机器学习而装载来计算为远程文件系统。
+
+有关重新生成访问密钥与工作区使用的 Azure 存储帐户的信息，请参阅[重新生成存储访问密钥](how-to-change-storage-access-key.md)一文。
 
 #### <a name="cosmos-db"></a>Cosmos DB
 Azure 机器学习服务中管理 Azure 机器学习服务的 Microsoft 订阅存储指标和居住在 Cosmos DB 的元数据。 使用 Microsoft 托管密钥的其余部分进行加密存储在 Cosmos DB 中的所有数据。

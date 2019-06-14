@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf818756f583974a8a9b53a9a0cce31dd93d042b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 23d7b0626dba5a88c100868907ecf868a895fc9e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299308"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059617"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
@@ -52,7 +52,7 @@ ms.locfileid: "66299308"
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](../../azure-monitor/app/windows-desktop.md)。
 * 请务必使用 [Visual Studio 2013 Update 3 或更高版本](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
 * 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。    如果是，请单击“更新”查看是否有可用的更新。 
-* 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 如果没有，请尝试卸载然后重新安装 Developer Analytics Tools。
+* 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 否则，请尝试卸载再重新安装 Developer Analytics Tools。
 
 ## <a name="q02"></a>添加 Application Insights 失败
 *尝试将 Application Insights 添加到现有项目时看到错误消息。*
@@ -94,7 +94,7 @@ ms.locfileid: "66299308"
 * 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。    如果是，请单击“更新”查看是否有可用的更新。 
 * 在解决方案资源管理器中右键单击项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。 
 
-否则，开发人员分析工具不直接支持项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中选择“Application Insights”，然后选择应用程序。
+否则，Developer Analytics Tools 不会直接支持项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中选择“Application Insights”，然后选择应用程序。
 
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>从 Visual Studio 打开 Application Insights 时出现“拒绝访问”
 *使用“打开 Application Insights”菜单命令时转到了 Azure 门户，但同时出现“拒绝访问”错误。*
@@ -215,7 +215,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 ### <a name="net-core"></a>.NET Core
 
-1. 安装[Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup)从 NuGet 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsights` 版本匹配
+1. 从 NuGet 安装 [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsights` 版本匹配
 
 2. 修改 `Startup.cs` 类中的 `ConfigureServices` 方法：
 
@@ -232,6 +232,27 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 3. 重新启动进程，以便 SDK 获取这些新设置
 
 4. 完成后还原这些更改。
+
+
+## <a name="PerfView"></a> 使用 PerfView 收集日志
+[PerfView](https://github.com/Microsoft/perfview)是免费的诊断和性能分析工具，帮助隔离 CPU、 内存和其他问题，通过收集和可视化来自多个源的诊断信息。
+
+Application Insights SDK 日志，PerfView 可以捕获的 EventSource 自故障排除日志。
+
+若要收集日志，请下载 PerfView 并运行以下命令：
+```cmd
+PerfView.exe collect /onlyProviders=*Microsoft-ApplicationInsights-* -MaxCollectSec:300
+```
+
+你可以根据需要修改这些参数。
+
+- **MaxCollectSec**。 设置此参数以防止 PerfView 从无限期地运行，并且会影响服务器的性能。
+- **OnlyProviders**。 设置此参数仅从 SDK 收集日志。 可以自定义基于特定调查此列表。 
+
+
+有关详细信息，
+- [记录性能跟踪使用 PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
+- [应用程序见解事件源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
+ms.date: 06/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e875108e0349c0ab08a7217074e2afe23bcacc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 79718b14210bfdf139bca76db91c57c38a791434
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544924"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052247"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 设备代码流
 
@@ -31,12 +31,14 @@ ms.locfileid: "65544924"
 Microsoft 标识平台支持[设备代码授予](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12)，它允许用户登录到输入受限的设备，例如智能电视、 IoT 设备或打印机。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。  
 
 > [!IMPORTANT]
-> 在此期间，Microsoft 标识平台终结点仅支持设备流用于 Azure AD 租户，但不适用于个人帐户。  这意味着，您必须使用将设置为一个租户的终结点或`organizations`终结点。  
+> 在此期间，Microsoft 标识平台终结点仅支持设备流用于 Azure AD 租户，但不适用于个人帐户。  这意味着，您必须使用将设置为一个租户的终结点或`organizations`终结点。  这种支持将尽快启用。 
 >
 > 受邀加入 Azure AD 租户的个人帐户可以使用设备流授予，但只能在该租户的上下文中使用。
+>
+> 作为附加的说明， `verification_uri_complete` response 字段不包含或支持这一次。  
 
 > [!NOTE]
-> Microsoft 标识平台终结点不支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读[Microsoft 标识平台限制](active-directory-v2-limitations.md)。
+> Microsoft 标识平台终结点不支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -65,7 +67,7 @@ scope=user.read%20openid%20profile
 
 | 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 需要 |要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。  |
+| `tenant` | 必选 |要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。  |
 | `client_id` | 需要 | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
 | `scope` | 建议 | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  |
 
@@ -78,7 +80,6 @@ scope=user.read%20openid%20profile
 |`device_code`     | String | 一个长字符串，用于验证客户端与授权服务器之间的会话。 客户端使用此参数从授权服务器请求访问令牌。 |
 |`user_code`       | String | 用于标识的辅助设备上的会话的用户显示一个短字符串。|
 |`verification_uri`| URI | 用户在登录时应使用 `user_code` 转到的 URI。 |
-|`verification_uri_complete`| URI | 一个 URI，它结合了`user_code`和`verification_uri`，用于非文本发送给用户 （例如，通过蓝牙到一台设备，或通过 QR 码）。  |
 |`expires_in`      | int | `device_code` 和 `user_code` 过期之前的秒数。 |
 |`interval`        | int | 在发出下一个轮询请求之前客户端应等待的秒数。 |
 | `message`        | String | 用户可读的字符串，包含面向用户的说明。 可以通过在请求中包含 `?mkt=xx-XX` 格式的**查询参数**并填充相应的语言区域性代码，将此字符串本地化。 |
@@ -98,10 +99,10 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-| 参数 | 需要 | 描述|
+| 参数 | 必选 | 描述|
 | -------- | -------- | ---------- |
 | `grant_type` | 需要 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | 需要 | 必须与初始请求中使用的 `client_id` 匹配。 |
+| `client_id`  | 必选 | 必须与初始请求中使用的 `client_id` 匹配。 |
 | `device_code`| 需要 | 设备授权请求中返回的 `device_code`。  |
 
 ### <a name="expected-errors"></a>预期错误

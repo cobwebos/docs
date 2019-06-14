@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/12/2018
+ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 3ce881da4b683cf7034100d5044dd0f3c93edb52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b5b1f24fb22ff0922c362bd9911ad5c42236ee6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800181"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051716"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>适用于 Linux 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -40,7 +40,42 @@ Azure 磁盘加密利用 Linux 中的 dm-crypt 子系统在[选择 Azure Linux �
 
 适用于 Linux 的 Azure 磁盘加密需要 Internet 连接才能访问 Active Directory、Key Vault、存储和包管理终结点。  有关详细信息，请参阅 [Azure 磁盘加密先决条件](../../security/azure-security-disk-encryption-prerequisites.md)。
 
-## <a name="extension-schema"></a>扩展架构
+## <a name="extension-schemata"></a>扩展架构
+
+有两个架构的 Azure 磁盘加密： v1.1、 不使用 Azure Active Directory (AAD) 属性和 0.1 版的更高版本，建议架构、 需要 AAD 属性的较旧架构。 必须使用对应于正在使用的扩展的架构版本： AzureDiskEncryptionForLinux 扩展版本 1.1，AzureDiskEncryptionForLinux 扩展版本 0.1 的架构 v0.1 的架构 v1.1。
+### <a name="schema-v11-no-aad-recommended"></a>架构 1.1 版：无 AAD （推荐）
+
+V1.1 架构建议，并且不需要 Azure Active Directory 属性。
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2015-06-15",
+  "location": "[location]",
+  "properties": {
+        "publisher": "Microsoft.Azure.Security",
+        "settings": {
+          "DiskFormatQuery": "[diskFormatQuery]",
+          "EncryptionOperation": "[encryptionOperation]",
+          "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KeyVaultURL": "[keyVaultURL]",
+          "SequenceVersion": "sequenceVersion]",
+          "VolumeType": "[volumeType]"
+        },
+        "type": "AzureDiskEncryptionForLinux",
+        "typeHandlerVersion": "[extensionVersion]"
+  }
+}
+```
+
+
+### <a name="schema-v01-with-aad"></a>架构 v0.1： 使用 AAD 
+
+0\.1 架构要求`aadClientID`并将`aadClientSecret`或`AADClientCertificate`。
+
+使用 `aadClientSecret`：
 
 ```json
 {
@@ -70,25 +105,56 @@ Azure 磁盘加密利用 Linux 中的 dm-crypt 子系统在[选择 Azure Linux �
 }
 ```
 
+使用 `AADClientCertificate`：
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2015-06-15",
+  "location": "[location]",
+  "properties": {
+    "protectedSettings": {
+      "AADClientCertificate": "[aadClientCertificate]",
+      "Passphrase": "[passphrase]"
+    },
+    "publisher": "Microsoft.Azure.Security",
+    "settings": {
+      "AADClientID": "[aadClientID]",
+      "DiskFormatQuery": "[diskFormatQuery]",
+      "EncryptionOperation": "[encryptionOperation]",
+      "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KeyVaultURL": "[keyVaultURL]",
+      "SequenceVersion": "sequenceVersion]",
+      "VolumeType": "[volumeType]"
+    },
+    "type": "AzureDiskEncryptionForLinux",
+    "typeHandlerVersion": "[extensionVersion]"
+  }
+}
+```
+
+
 ### <a name="property-values"></a>属性值
 
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 发布者 | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0.1, 1.1 (VMSS) | int |
-| AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| AADClientSecret | password | string |
-| AADClientCertificate | thumbprint | string |
+| publisher | Microsoft.Azure.Security | 字符串 |
+| type | AzureDiskEncryptionForLinux | 字符串 |
+| typeHandlerVersion | 0.1, 1.1 | int |
+| （0.1 架构）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (0.1 schema) AADClientSecret | password | 字符串 |
+| (0.1 schema) AADClientCertificate | thumbprint | 字符串 |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
-| KeyEncryptionKeyURL | url | string |
-| KeyVaultURL | url | string |
-| 通行短语 | password | string | 
-| SequenceVersion | uniqueidentifier | string |
-| VolumeType | OS, Data, All | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | 字符串 | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | 字符串 |
+| KeyEncryptionKeyURL | url | 字符串 |
+| （可选）KeyVaultURL | url | 字符串 |
+| 通行短语 | password | 字符串 | 
+| SequenceVersion | uniqueidentifier | 字符串 |
+| VolumeType | OS, Data, All | 字符串 |
 
 ## <a name="template-deployment"></a>模板部署
 

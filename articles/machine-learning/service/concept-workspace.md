@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 3ecdf62cfed7d70873f3dc752bfacd134e367a90
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 2f3d9eeca1404fcae121ae5fead222cbde4037b1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388955"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059266"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>什么是 Azure 机器学习服务工作区？
 
@@ -32,16 +32,16 @@ ms.locfileid: "66388955"
 
 + 工作区可以包含[Notebook Vm](quickstart-run-cloud-notebook.md)，云资源配置了运行 Azure 机器学习所需的 Python 环境。
 + [用户角色](how-to-assign-roles.md)使您能够与其他用户、 团队或项目共享你的工作区。
-+ [计算目标](concept-azure-machine-learning-architecture.md#compute-target)用于运行试验。
++ [计算目标](concept-azure-machine-learning-architecture.md#compute-targets)用于运行试验。
 + 当创建工作区中，[关联的资源](#resources)还为你创建。
-+ [试验](concept-azure-machine-learning-architecture.md#experiment)是用于构建模型的训练运行。  您可以创建和运行使用试验
++ [试验](concept-azure-machine-learning-architecture.md#experiments)是用于构建模型的训练运行。  您可以创建和运行使用试验
     + [Azure 机器学习的 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
     + [自动化的机器学习试验 （预览版）](how-to-create-portal-experiments.md)在 Azure 门户中的部分。
     + [（预览版） 的可视界面](ui-concept-visual-interface.md)。
-+ [管道](concept-azure-machine-learning-architecture.md#pipeline)是为定型集和重新训练模型的可重用工作流。
-+ [数据集](concept-azure-machine-learning-architecture.md#dataset)用于模型训练和管道创建的数据管理提供帮助。
-+ 你想要部署的模型后，您创建[已注册的模型](concept-azure-machine-learning-architecture.md#model-registry)。
-+ 使用已注册的模型和评分脚本来创建[部署](concept-azure-machine-learning-architecture.md#image-registry)。
++ [管道](concept-azure-machine-learning-architecture.md#ml-pipelines)是为定型集和重新训练模型的可重用工作流。
++ [数据集](concept-azure-machine-learning-architecture.md#datasets-and-datastores)用于模型训练和管道创建的数据管理提供帮助。
++ 你想要部署的模型后，您将创建已注册的模型。
++ 使用已注册的模型和评分脚本来创建[部署](concept-azure-machine-learning-architecture.md#deployment)。
 
 ## <a name="tools-for-workspace-interaction"></a>工作区交互的工具
 

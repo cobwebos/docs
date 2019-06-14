@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: a933824e9553ee7f638da495b46ebed19e04169d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60846670"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到本地文件系统
@@ -60,7 +60,7 @@ ms.locfileid: "60846670"
 
 ## <a name="add-actions"></a>添加操作
 
-1. 在触发器下，选择“下一步”。 在搜索框中，输入“文件系统”作为筛选器。 在操作列表中选择此操作：**创建文件 - 文件系统**
+1. 在触发器下，选择“下一步”。  在搜索框中，输入“文件系统”作为筛选器。 在操作列表中选择此操作：**创建文件 - 文件系统**
 
    ![查找文件系统连接器](media/logic-apps-using-file-connector/find-file-system-action.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "60846670"
 
    | 属性 | 需要 | Value | 描述 | 
    | -------- | -------- | ----- | ----------- | 
-   | **连接名称** | 是 | <connection-name> | 连接使用的名称 | 
+   | **连接名称** | 是 | <connection-name  > | 连接使用的名称 | 
    | **根文件夹** | 是 | <*root-folder-name*> | 文件系统的根文件夹，例如，如果安装了本地数据网关，比如安装了本地数据网关的计算机上的本地文件夹，或者计算机可以访问的网络共享文件夹。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根文件夹是主要的父文件夹，用作所有与文件有关的操作的相对路径。 | 
    | **身份验证类型** | 否 | <*auth-type*> | 文件系统使用的身份验证类型，例如 **Windows** | 
    | **用户名** | 是 | <*domain*>\\<*username*> | 拥有文件系统的计算机用户名 | 
@@ -78,12 +78,12 @@ ms.locfileid: "60846670"
    | **gateway** | 是 | <*installed-gateway-name*> | 以前安装的网关的名称 | 
    ||| 
 
-1. 完成后，选择“创建”。
+1. 完成后，选择“创建”  。
 
    逻辑应用会配置和测试连接，以确保连接正常运行。 
    如果正确建立连接，会显示用于之前所选操作的选项。 
 
-1. 在“创建文件”操作中，提供用于将文件从 Dropbox 复制到本地文件共享中的根文件夹的详细信息。 若要添加前面步骤的输出，请在框中单击，然后在显示动态内容列表时从可用字段中进行选择。
+1. 在“创建文件”操作中，提供用于将文件从 Dropbox 复制到本地文件共享中的根文件夹的详细信息  。 若要添加前面步骤的输出，请在框中单击，然后在显示动态内容列表时从可用字段中进行选择。
 
    ![创建文件操作](media/logic-apps-using-file-connector/create-file-filled.png)
 

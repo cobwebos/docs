@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 2ed74a4ba19af3a441bcf26a48890f033e6c365f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151681"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814854"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -19,17 +19,17 @@ ms.locfileid: "66151681"
 
 ## <a name="scale-with-the-azure-portal"></a>使用 Azure 门户缩放
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览“容器服务”，并单击要修改的容器服务。
-2. 在“容器服务”边栏选项卡中，单击“代理”。
-3. 在“VM 计数”中，输入所需的代理节点数。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览“容器服务”  ，并单击要修改的容器服务。
+2. 在“容器服务”  边栏选项卡中，单击“代理”  。
+3. 在“VM 计数”  中，输入所需的代理节点数。
 
     ![在门户中缩放池](./media/container-service-scale/container-service-scale-portal.png)
 
-4. 若要保存配置，请单击“保存”。
+4. 若要保存配置，请单击“保存”  。
 
 ## <a name="scale-with-the-azure-cli"></a>使用 Azure CLI 缩放
 
-确保[已安装](/cli/azure/install-az-cli2)最新的 Azure CLI 并已登录到 Azure 帐户 (`az login`)。
+[安装 Azure CLI](/cli/azure/install-azure-cli)并登录到 Azure 帐户与`az login`。
 
 ### <a name="see-the-current-agent-count"></a>查看当前代理计数
 若要查看群集中当前的代理数，请运行 `az acs show` 命令。 这会显示群集配置。 例如，以下命令显示资源组 `myResourceGroup` 中名为 `containerservice-myACSName` 的容器服务的配置：

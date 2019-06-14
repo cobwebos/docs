@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 45cbb26eb74dd78bf46a6b148a32a7762bb31fbc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 730ecd306bf33709ed5d9fa334b64f7cd7a482dc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696878"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066493"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>使用 HDInsight 上的 Apache Spark 分析 Application Insights 遥测日志
 
@@ -26,9 +26,6 @@ ms.locfileid: "64696878"
 * 配置为使用 Application Insights 的应用程序。
 
 * 熟悉基于 Linux 的 HDInsight 群集的创建过程。 有关详细信息，请参阅[在 HDInsight 上创建 Apache Spark](apache-spark-jupyter-spark-sql.md)。
-
-  > [!IMPORTANT]  
-  > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * Web 浏览器。
 
@@ -73,13 +70,13 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 ## <a name="analyze-the-data-pyspark"></a>分析数据：PySpark
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”部分中，选择“群集仪表板”，并从“群集仪表板”部分中选择“Jupyter Notebook”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”  部分中，选择“群集仪表板”  ，并从“群集仪表板”部分中选择“Jupyter Notebook”  。
 
     ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
 
-2. 在 Jupyter 页面右上角选择“新建”，并选择“PySpark”。 此时会打开新浏览器选项卡，其中包含基于 Python 的 Jupyter 笔记本。
+2. 在 Jupyter 页面右上角选择“新建”  ，并选择“PySpark”  。 此时会打开新浏览器选项卡，其中包含基于 Python 的 Jupyter 笔记本。
 
-3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
+3. 在页面上的第一个字段（称为“单元格”  ）中输入以下文本：
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
@@ -216,11 +213,11 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 ## <a name="analyze-the-data-scala"></a>分析数据：Scala
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”部分中，选择“群集仪表板”，并从“群集仪表板”部分中选择“Jupyter Notebook”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”  部分中，选择“群集仪表板”  ，并从“群集仪表板”部分中选择“Jupyter Notebook”  。
 
     ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
-2. 在 Jupyter 页面右上角选择“新建”，并选择“Scala”。 此时会打开新浏览器选项卡，其中包含基于 Scala 的 Jupyter Notebook。
-3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
+2. 在 Jupyter 页面右上角选择“新建”  ，并选择“Scala”  。 此时会打开新浏览器选项卡，其中包含基于 Scala 的 Jupyter Notebook。
+3. 在页面上的第一个字段（称为“单元格”  ）中输入以下文本：
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")

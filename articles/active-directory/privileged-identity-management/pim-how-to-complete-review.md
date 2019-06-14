@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a7fa3bfe159620130bc0962b470cea8e7422646
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602165"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>完成 Azure AD PIM 中的角色的访问评审
@@ -27,8 +27,8 @@ ms.locfileid: "65602165"
 访问评审期限结束，或者所有用户已完成其自评审后，请按照本文中的步骤管理评审并查看结果。
 
 ## <a name="manage-access-reviews"></a>管理访问评审
-1. 转到 [Azure 门户](https://portal.azure.com/)，并在仪表板上选择“Azure AD Privileged Identity Management”应用程序。
-2. 选择仪表板的“访问审阅”部分。
+1. 转到 [Azure 门户](https://portal.azure.com/)，并在仪表板上选择“Azure AD Privileged Identity Management”  应用程序。
+2. 选择仪表板的“访问审阅”  部分。
 3. 选择要管理的访问审阅。
 
 在访问评审的详细信息边栏选项卡上，有大量用于管理该评审的选项。
@@ -36,19 +36,19 @@ ms.locfileid: "65602165"
 ![PIM 访问审阅按钮 - 屏幕截图](./media/pim-how-to-complete-review/review-buttons.png)
 
 ### <a name="remind"></a>提醒
-如果设置了用于用户审阅自身的访问审阅，“提醒”按钮将发送一条通知。 
+如果设置了用于用户审阅自身的访问审阅，“提醒”  按钮将发送一条通知。 
 
 ### <a name="stop"></a>停止
-所有访问审阅都有结束日期，但可以使用“停止”按钮提前结束。 如果此时还有未审阅的用户，他们在停止审阅后将无法再得到审阅。 停止后，无法重新开始审阅。
+所有访问审阅都有结束日期，但可以使用“停止”  按钮提前结束。 如果此时还有未审阅的用户，他们在停止审阅后将无法再得到审阅。 停止后，无法重新开始审阅。
 
 ### <a name="apply"></a>应用
-结束访问审阅后，“应用”按钮将实现审阅结果，因为结束日期已到或已手动停止它。 如果在审阅中拒绝了用户的访问，在此步骤中将删除其角色分配。  
+结束访问审阅后，“应用”  按钮将实现审阅结果，因为结束日期已到或已手动停止它。 如果在审阅中拒绝了用户的访问，在此步骤中将删除其角色分配。  
 
 ### <a name="export"></a>导出
-如果要手动应用访问评审的结果，可以导出该评审。 “导出”按钮将开始下载 CSV 文件。 可以在 Excel 或可打开 CSV 文件的其他程序中管理结果。
+如果要手动应用访问评审的结果，可以导出该评审。 “导出”  按钮将开始下载 CSV 文件。 可以在 Excel 或可打开 CSV 文件的其他程序中管理结果。
 
 ### <a name="delete"></a>DELETE
-如果不想要进一步了解审阅，请将其删除。 “删除”按钮可从 PIM 应用程序中删除审阅。
+如果不想要进一步了解审阅，请将其删除。 “删除”  按钮可从 PIM 应用程序中删除审阅。
 
 > [!IMPORTANT]
 > 在发生删除前不会收到任何警告，因此请确保要删除该审阅。 

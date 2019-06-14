@@ -10,10 +10,10 @@ ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c77f26187914b2c6e52426bb2a07303b22ccb2b0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024000"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure 搜索 - 常见问题解答 (FAQ)
@@ -44,7 +44,7 @@ Azure 搜索支持多个数据源、[针对多种语言的语言分析](https://
 
 ### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>备份和还原 （或下载和移动）索引或索引快照？
 
-尽管可随时[获取索引定义](https://docs.microsoft.com/rest/api/searchservice/get-index)，但并无索引提取、快照或备份-还原功能用于将云中运行的“已填充”索引下载到本地系统，或将它移动到另一个 Azure 搜索服务。
+尽管可随时[获取索引定义](https://docs.microsoft.com/rest/api/searchservice/get-index)，但并无索引提取、快照或备份-还原功能用于将云中运行的“已填充”索引下载到本地系统，或将它移动到另一个 Azure 搜索服务  。
 
 索引由写入的代码创建和填充，仅在云中的 Azure 搜索上运行。 通常，如果客户希望将一个索引移动到另一个服务，会通过编辑代码以使用新的终结点，然后重新运行索引。 如果希望能够拍摄快照或备份索引，请在 [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) 上投票。
 
@@ -64,7 +64,7 @@ Azure 搜索支持多个数据源、[针对多种语言的语言分析](https://
 
 不，不支持此操作。 搜索始终限制在单一索引内。
 
-### <a name="can-i-restrict-search-index-access-by-user-identity"></a>可以按用户标识限制搜索索引访问？
+### <a name="can-i-restrict-search-index-access-by-user-identity"></a>能否根据用户身份限制搜索索引访问？
 
 可以使用 `search.in()` 筛选器实现[安全筛选器](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)。 使用 [Azure Active Directory(AAD) 等标识管理服务](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad)可很好地编写筛选器，并基于定义的用户组成员身份裁剪搜索结果。
 

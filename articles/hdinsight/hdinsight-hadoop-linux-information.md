@@ -8,19 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: c52574485a62b081224a36ca5deb0fdae114f9bc
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b00630354834897793bbf357be378051bcf74698
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65859660"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059376"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
 Azure HDInsight 群集提供了基于熟悉的 Linux 环境并在 Azure 云中运行的 Apache Hadoop。 在大多数情况下，它的工作方式应该与其他任何 Hadoop-on-Linux 安装完全相同。 本文档指出了应注意的具体差异。
-
-> [!IMPORTANT]  
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -39,25 +36,25 @@ Azure HDInsight 群集提供了基于熟悉的 Linux 环境并在 Azure 云中�
 
 ## <a name="domain-names"></a>域名
 
-完全限定的域名 (FQDN) 从 internet 连接到群集时要使用的是`CLUSTERNAME.azurehdinsight.net`或`CLUSTERNAME-ssh.azurehdinsight.net`（适用于仅限 SSH)。
+从 Internet 连接到群集时要使用的完全限定域名 (FQDN) 是 `CLUSTERNAME.azurehdinsight.net` 或 `CLUSTERNAME-ssh.azurehdinsight.net`（仅适用于 SSH）。
 
-在内部，群集中每个节点都具有一个名称，该名称在群集配置期间分配。 若要查找群集名称，请参阅 Ambari Web UI 上的“主机”页面。 还可以使用以下方法从 Ambari REST API 返回主机列表：
+在内部，群集中每个节点都具有一个名称，该名称在群集配置期间分配。 若要查找群集名称，请参阅 Ambari Web UI 上的“主机”  页面。 还可以使用以下方法从 Ambari REST API 返回主机列表：
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-将 `CLUSTERNAME` 替换为群集的名称。 出现提示时，请输入管理员帐户的密码。 此命令返回包含群集中主机列表的 JSON 文档。 [jq](https://stedolan.github.io/jq/)用于提取`host_name`元素为每个主机的值。
+将 `CLUSTERNAME` 替换为群集的名称。 出现提示时，请输入管理员帐户的密码。 此命令返回包含群集中主机列表的 JSON 文档。 [jq](https://stedolan.github.io/jq/) 用于为每个主机提取 `host_name` 元素值。
 
 如果要查找某个特定服务的节点名称，可以在 Ambari 中查询该组件。 例如，若要查找 HDFS 名称节点的主机，请使用以下命令：
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-此命令将返回描述该服务的 JSON 文档，然后[jq](https://stedolan.github.io/jq/)将只拉取`host_name`主机的值。
+此命令会返回一个描述该服务的 JSON 文档，然后 [jq](https://stedolan.github.io/jq/) 就会只拉取主机的 `host_name` 值。
 
 ## <a name="remote-access-to-services"></a>对服务的远程访问
 
-* **Ambari (web)** - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
 
-    使用群集管理员用户和密码进行身份验证并登录到 Ambari。
+    使用群集管理员用户和密码进行身份验证，并登录到 Ambari。
 
     身份验证是纯文本身份验证 - 始终使用 HTTPS 来帮助确保连接是安全的。
 
@@ -66,14 +63,14 @@ Azure HDInsight 群集提供了基于熟悉的 Linux 环境并在 Azure 云中�
     >
     > 要使用 Ambari web UI 的全部功能，请使用 SSH 隧道通过代理将 Web 流量传送到群集头节点。 请参阅[使用 SSH 隧道访问 Apache Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)** - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > 通过使用群集管理员用户和密码进行身份验证。
     >
     > 身份验证是纯文本身份验证 - 始终使用 HTTPS 来帮助确保连接是安全的。
 
-* **WebHCat (Templeton)** - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
     > 通过使用群集管理员用户和密码进行身份验证。
@@ -91,8 +88,8 @@ Azure HDInsight 群集提供了基于熟悉的 Linux 环境并在 Azure 云中�
 
 Hadoop 相关文件可在群集节点上的 `/usr/hdp` 中找到。 此目录包含以下子目录：
 
-* **2.6.5.3006-29**:目录名称是 HDInsight 使用的 Hortonworks 数据平台的版本。 群集上的数字可能与这里列出的有所不同。
-* **current**：此目录包含子目录下的链接**2.6.5.3006-29**目录。 由于该目录存在，因此，无需记住版本号。
+* **2.6.5.3006-29**：目录名称是 HDInsight 使用的 Hortonworks 数据平台的版本。 群集上的数字可能与这里列出的有所不同。
+* **current**：此目录包含 **2.6.5.3006-29** 目录下的子目录的链接。 由于该目录存在，因此，无需记住版本号。
 
 可以在 Hadoop 分布式文件系统上的 `/example` 和 `/HdiSamples` 处找到示例数据和 JAR 文件。
 
@@ -183,7 +180,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 HDInsight 群集。
 
-2. 在“属性”部分中，选择“存储帐户”。 将显示群集的存储信息。
+2. 在“属性”  部分中，选择“存储帐户”  。 将显示群集的存储信息。
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>如何从外部 HDInsight 访问文件
 
@@ -216,7 +213,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 ## <a name="scaling"></a>缩放群集
 
-使用群集缩放功能可动态更改群集使用的数据节点数。 可以在其他作业或进程正在群集上运行时执行缩放操作。  此外，请参阅[缩放 HDInsight 群集](./hdinsight-scaling-best-practices.md)
+使用群集缩放功能可动态更改群集使用的数据节点数。 可以在其他作业或进程正在群集上运行时执行缩放操作。  另请参阅[缩放 HDInsight 群集](./hdinsight-scaling-best-practices.md)
 
 不同的群集类型会受缩放操作影响，如下所示：
 
@@ -244,7 +241,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     * **Storm UI**：使用以下步骤来重新平衡使用 Storm UI 的拓扑。
 
         1. 打开`https://CLUSTERNAME.azurehdinsight.net/stormui`在 web 浏览器中，其中`CLUSTERNAME`是 Storm 群集的名称。 如果系统提示，请输入创建群集时指定的 HDInsight 群集管理员 (admin) 名称和密码。
-        2. 选择要重新平衡的拓扑，并选择“重新平衡”按钮。 输入执行重新平衡操作前的延迟。
+        2. 选择要重新平衡的拓扑，并选择“重新平衡”  按钮。 输入执行重新平衡操作前的延迟。
 
 * **Kafka**：执行缩放操作后，应重新均衡分区副本。 有关详细信息，请参阅[通过 Apache Kafka on HDInsight 实现数据的高可用性](./kafka/apache-kafka-high-availability.md)文档。
 
@@ -288,7 +285,6 @@ HDInsight 是一个托管服务。 如果 Azure 检测到群集问题，可以�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [从基于 Windows 的 HDInsight 迁移到基于 Linux 的 HDInsight](hdinsight-migrate-from-windows-to-linux.md)
 * [使用 Apache Ambari REST API 管理 HDInsight 群集](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
 * [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)

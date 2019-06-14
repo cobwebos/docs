@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
 ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752857"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>如何管理在合作伙伴中心商业 Marketplace 帐户 
@@ -84,7 +84,7 @@ ms.locfileid: "66752857"
 
 现在，你的 Microsoft 帐户相关联时，若要添加付款帐户时，您将需要：
 - **选择支付方式**:银行帐户或 PayPal
-- **添加付款信息**:这可能包括选择帐户类型 （支票或储蓄） 中，输入帐户持有者姓名、 帐号和路由号、 帐单地址、 电话号码或 PayPal 的电子邮件地址。 * 有关你帐户的付款方式，并了解是否支持你的市场区域中使用 PayPal 的详细信息，请参阅[PayPal 信息](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。
+- **添加付款信息**:这可能包括选择帐户类型 （支票或储蓄） 中，输入帐户持有者姓名、 帐号和路由号、 帐单地址、 电话号码或 PayPal 的电子邮件地址。 \* 有关你帐户的付款方式，并了解是否支持你的市场区域中使用 PayPal 的详细信息，请参阅[PayPal 信息](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。
 
 > [!IMPORTANT]
 > 更改付款帐户可能会推迟付款（最多一个付款周期）。 因为我们需要验证帐户更改，就像我们做的第一次设置付款帐户时，会发生这种延迟。 帐户通过验证后，仍会收到全额款项；当前付款周期应得的任何付款将添加到下一个付款周期。  
@@ -174,7 +174,7 @@ ms.locfileid: "66752857"
 
 1. 转到**用户**(下**帐户设置**)，然后选择**将用户添加**。
 2. 从显示的列表中选择一个或多个用户。 可以使用搜索框搜索特定用户。
-* 如果选择多个用户将添加到合作伙伴中心帐户，你必须将它们分配相同的角色或自定义权限集。 若要添加多个用户具有不同的角色权限，请为每个角色或自定义权限集重复这些步骤。
+\* 如果选择多个用户将添加到合作伙伴中心帐户，你必须将它们分配相同的角色或自定义权限集。 若要添加多个用户具有不同的角色权限，请为每个角色或自定义权限集重复这些步骤。
 3.  在完成选择用户，请单击**添加所选**。
 5.  在中**角色**部分中，指定的角色或所选用户的自定义的权限。
 6.  选择“保存”。 

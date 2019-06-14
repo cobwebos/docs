@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: tulasim
 ms.openlocfilehash: b18d47b4b09c6fa9c4d5f0ef87d7ebe73f151c60
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66693244"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>获取与 GenerateAnswer API 和元数据的答案
@@ -67,12 +67,12 @@ QnA Maker，可以将元数据，键和值对的形式添加到你的问题和�
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|HTTP 请求属性|名称|Type|目的|
+|HTTP 请求属性|Name|Type|目的|
 |--|--|--|--|
 |URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
-|URL 路由参数|QnAMaker 终结点主机|string|部署在 Azure 订阅中的终结点的主机名。 这是可在上找到**设置**页后发布该知识库。 |
-|Header|Content-Type|string|发送到 API 的正文的媒体类型。 默认值是: '|
-|Header|授权|string|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|URL 路由参数|QnAMaker 终结点主机|字符串|部署在 Azure 订阅中的终结点的主机名。 这是可在上找到**设置**页后发布该知识库。 |
+|Header|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值是: '|
+|Header|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|使用设置问题。|
 
 
@@ -82,7 +82,7 @@ JSON 正文具有多个设置：
 |--|--|--|--|
 |`question`|必填|字符串|若要发送到您的知识库用户提出的问题。|
 |`top`|可选|integer|要包含在输出中的排序结果数。 默认值为 1。|
-|`userId`|可选|string|用于标识用户的唯一 ID。 此 ID 将记录在聊天日志中。|
+|`userId`|可选|字符串|用于标识用户的唯一 ID。 此 ID 将记录在聊天日志中。|
 |`scoreThreshold`|可选|integer|将返回仅与置信度高于此阈值的答案。 默认值为 0。|
 |`isTest`|可选|Boolean|如果设置为 true，返回结果`testkb`搜索索引，而不是已发布的索引。|
 |`strictFilters`|可选|字符串|若指定此参数，将指示 QnA Maker 仅返回含有指定元数据的答案。 使用`none`以指示响应应具有任何元数据筛选器。 |

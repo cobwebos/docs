@@ -3,17 +3,17 @@ title: 在 Azure IoT Central 应用程序中使用设备集 | Microsoft Docs
 description: 如何以操作员的身份在 Azure IoT Central 应用程序中使用设备集。
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 02/05/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68599a539b3d79b759142d2178aa753f895ea37f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60517325"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052943"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中使用设备集
 
@@ -25,7 +25,7 @@ ms.locfileid: "60517325"
 
 若要创建设备集：
 
-1. 在左侧导航菜单中选择“设备集”。
+1. 在左侧导航菜单中选择“设备集”  。
 
 1. 选择 **+ 新**。
 
@@ -40,41 +40,41 @@ ms.locfileid: "60517325"
     > [!NOTE]
     > 设备集是动态查询。 每当查看设备列表时，列表中都可能显示不同的设备。 列表内容取决于哪些设备当前满足查询的条件。
 
-1. 选择“保存”。
+1. 选择“保存”  。
 
 ## <a name="configure-the-dashboard-for-your-device-set"></a>配置设备集的仪表板
 
 创建设备集后，可以配置其**仪表板**。 **仪表板**是一个主页，可在其中放置图像和链接。 还可以添加网格，用于列出设备集中的设备。
 
-1. 在左侧导航菜单中选择“设备集”。
+1. 在左侧导航菜单中选择“设备集”  。
 
 1. 选择设备集。
 
 1. 选择“仪表板”选项卡  。
 
-1. 选择“编辑”。
+1. 选择“编辑”  。
 
     ![设计模式已打开](media/howto-use-device-sets/image3.png)
 
 1. 有关添加图像的详细信息，请参阅[准备图像并将其上传到 Azure IoT Central 应用程序](howto-prepare-images.md)。
 
 1. 添加链接磁贴：
-    1. 在右窗格中选择“链接”。
+    1. 在右窗格中选择“链接”。 
     1. 为链接指定**标题**。
     1. 选择要在选定该链接时打开的 URL。
     1. 为链接提供说明，该说明将显示在**标题**下面。
-    1. 选择“保存”。
+    1. 选择“保存”  。
 
         ![保存链接](media/howto-use-device-sets/image7.png)
 
     1. 可以在**仪表板**上移动链接磁贴并并调整其大小。
 
 1. 添加网格。 网格是设备集中的设备表格，其中包含所选的列。
-    1. 在右窗格中选择“网格”。
+    1. 在右窗格中选择“网格”。 
     1. 为网格指定**标题**。
-    1. 选择按下“添加/删除”按钮时要显示的列。 在弹出的面板中，选择要显示的列，并使用右箭头将其选中。
-    1. 选择“确定”。
-    1. 选择“保存”。
+    1. 选择按下“添加/删除”  按钮时要显示的列。 在弹出的面板中，选择要显示的列，并使用右箭头将其选中。
+    1. 选择“确定”。 
+    1. 选择“保存”  。
 
         ![保存网格](media/howto-use-device-sets/image9.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "60517325"
         > [!NOTE]
         > 可以添加多个图像、链接和网格。
   
-    1. 选择“完成”。
+    1. 选择“完成”  。
 
 ### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>在设备集仪表板中配置位置地图
 
@@ -103,11 +103,11 @@ ms.locfileid: "60517325"
 
 创建设备集后，可以配置**列表**。 **列表**在包含所选列的表格中显示设备集中的所有设备。
 
-1. 在左侧导航菜单中选择“设备集”。
+1. 在左侧导航菜单中选择“设备集”  。
 
-1. 选择“列表”选项卡。
+1. 选择“列表”选项卡。 
 
-1. 选择“列选项”。
+1. 选择“列选项”。 
 
     ![列选项](media/howto-use-device-sets/image11.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "60517325"
 
     ![选择列](media/howto-use-device-sets/image12.png)
 
-1. 选择“确定”。
+1. 选择“确定”。 
 
 ## <a name="analytics"></a>分析
 

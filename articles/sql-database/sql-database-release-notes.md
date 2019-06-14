@@ -10,50 +10,62 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: d527c4fed9c43e62d815078c049d4d8e6f8a46b7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 04c19c9a8603fee46914eb94b50c4f97e34e9c42
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787720"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070215"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
 本文列出了 SQL 数据库服务和 SQL 数据库文档中的新功能和改进。 有关 SQL 数据库服务的改进，另请参阅[SQL 数据库服务更新](https://azure.microsoft.com/updates/?product=sql-database)。 对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)。
 
-## <a name="features-in-public-preview"></a>公共预览版中的功能
+## <a name="features-in-public-preview"></a>处于公共预览版的功能
 
 | Feature | 详细信息 |
 | ---| --- |
 | 使用单一数据库和弹性池的加速的数据库恢复 | 有关信息，请参阅[加速数据库恢复](sql-database-accelerated-database-recovery.md)。|
 |估计非重复计数|有关信息，请参阅[近似 Count Distinct](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)。|
-|行存储 （在兼容性级别 150） 的批处理模式|有关信息，请参阅[批处理模式下在行存储](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)。|
+|行存储上的批处理模式（在兼容性级别 150 下）|有关信息，请参阅[批处理模式下在行存储](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)。|
 | 数据发现和分类  |有关信息，请参阅[Azure SQL 数据库和 SQL 数据仓库数据发现和分类](sql-database-data-discovery-and-classification.md)。|
 | 弹性数据库作业 | 有关信息，请参阅[创建、 配置和管理弹性作业](elastic-jobs-overview.md)。 |
 | 弹性查询 | 有关信息，请参阅[弹性查询概述](sql-database-elastic-query-overview.md)。 |
 | 弹性事务 | [跨云数据库的分布式事务](sql-database-elastic-transactions-overview.md)。 |
-| 与托管实例的实例排序规则 |有关信息，请参阅[使用 PowerShell 与 Azure 资源管理器模板在 Azure SQL 数据库中创建的托管的实例](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)。|
-|（在兼容性级别 150） 的内存授予反馈 （行模式）|有关信息，请参阅[内存授予反馈 （行模式）](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)。|
-| 在 Azure 门户中的查询编辑器 |有关信息，请参阅[使用 Azure 门户的 SQL 查询编辑器进行连接和查询数据](sql-database-connect-query-portal.md)。|
+|内存授予反馈（行模式）（在兼容性级别 150 下）|有关信息，请参阅[内存授予反馈 （行模式）](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)。|
+| Azure 门户中的查询编辑器 |有关信息，请参阅[使用 Azure 门户的 SQL 查询编辑器进行连接和查询数据](sql-database-connect-query-portal.md)。|
 | R services/机器学习与单一数据库和弹性池 |有关信息，请参阅[Azure SQL 数据库中的机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)。|
 | 重新创建与托管实例的删除的数据库 |有关信息，请参阅[重新创建 Azure SQL 托管实例中删除数据库](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266)。|
 | 与托管实例的复制 |有关信息，请参阅[在 Azure SQL 数据库托管的实例数据库中配置复制](replication-with-sql-database-managed-instance.md)。|
-| 无服务器计算层 | 有关信息，请参阅[SQL 数据库无服务器 （预览版）](sql-database-serverless.md)。|
+| 无服务器计算层 | 有关信息，请参阅 [SQL 数据库无服务器（预览版）](sql-database-serverless.md)。|
 |SQL Analytics|有关信息，请参阅[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)。|
-|表变量延迟编译 （在兼容性级别 150）|有关信息，请参阅[表变量延迟编译](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)。|
+|表变量延迟编译（在兼容性级别 150 下）|有关信息，请参阅[表变量延迟编译](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)。|
 | 与托管实例威胁检测 |有关信息，请参阅[配置威胁检测的 Azure SQL 数据库托管实例](sql-database-managed-instance-threat-detection.md)。|
-| 托管实例的时区支持|有关详细信息，请参阅[中 Azure SQL 数据库托管实例所在的时区](sql-database-managed-instance-timezone.md)。|
-| 透明数据加密 (TDE 使用自带带密钥 (BYOK) 与托管实例) |有关信息，请参阅[Azure SQL 透明数据加密，使用 Azure Key Vault 中客户托管密钥：自带密钥支持](transparent-data-encryption-byok-azure-sql.md)。|
+| 托管实例的透明数据加密 (TDE) 和自带密钥 (BYOK) |有关信息，请参阅[使用 Azure Key Vault 中由客户管理的密钥进行 Azure SQL 透明数据加密：自带密钥支持](transparent-data-encryption-byok-azure-sql.md)。|
 | &nbsp; |
 
-## <a name="may-2019"></a>2019 年 5
+## <a name="june-2019"></a>2019 年 6 月
+
+### <a name="service-improvements"></a>服务改进
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+| 4 个 Vcore 托管的实例上 Gen5 硬件代次| 有关详细信息，请参阅 https://aka.ms/four-cores-sql-mi-update 。 |
+| 托管的实例-支持订阅的 Azure 每月信用额度与 Visual Studio 订阅者 | 有关详细信息，请参阅 https://aka.ms/sql-mi-visual-studio-subscribers 。 |
+|托管实例的较大区域限制| 有关详细信息，请参阅[区域的资源限制](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)。
+| &nbsp; |
+
+
+## <a name="may-2019"></a>2019 年 5 月
 
 ### <a name="service-improvements"></a>服务改进
 
 | 服务改进 | 详细信息 |
 | --- | --- |
 |超大规模服务层为正式发布| 有关详细信息，请参阅[达 100 TB 的超大规模服务层](sql-database-service-tier-hyperscale.md)并[获得高性能的 Azure 数据库工作负荷的超大规模缩放](https://azure.microsoft.com/blog/get-high-performance-scaling-for-your-azure-database-workloads-with-hyperscale/)。|
-|无服务器计算层为公共预览版发布 | 有关详细信息，请参阅[SQL 数据库无服务器 （预览版）](sql-database-serverless.md)。|
+|无服务器计算层为公共预览版发布 | 有关详细信息，请参阅 [SQL 数据库无服务器（预览版）](sql-database-serverless.md)。|
+|发布正式版的托管实例的时区支持 |有关详细信息，请参阅[中 Azure SQL 数据库托管实例所在的时区](sql-database-managed-instance-timezone.md)。|
+|实例的排序规则，用于发布正式版的托管实例 |有关信息，请参阅[使用 PowerShell 与 Azure 资源管理器模板在 Azure SQL 数据库中创建的托管的实例](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)。|
 | 事务日志速率和目标 IOPS 增加了使用基于 vCore 的购买模型的数据库| 有关详细信息，请参阅[使用基于 vCore 的购买模型的单一数据库的资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)并[使用基于 DTU 的购买模型的单一数据库的资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)。
 | &nbsp; |
 
@@ -61,8 +73,8 @@ ms.locfileid: "65787720"
 
 | 文档改进 | 详细信息 |
 | --- | --- |
-| GA 版本中更新的超大规模服务层 docs| 有关详细信息，请参阅[达 100 TB 的超大规模服务层](sql-database-service-tier-hyperscale.md)。|
-|发布公共预览版中的无服务器计算层 docs| 有关详细信息，请参阅[SQL 数据库无服务器 （预览版）](sql-database-serverless.md)。|
+| GA 版本中更新的超大规模服务层 docs| 有关详细信息，请参阅[最多 100 TB 的“超大规模”服务层级](sql-database-service-tier-hyperscale.md)。|
+|发布公共预览版中的无服务器计算层 docs| 有关详细信息，请参阅 [SQL 数据库无服务器（预览版）](sql-database-serverless.md)。|
 | &nbsp; |
 
 ## <a name="april-2019"></a>2019 年 4 月

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62126743"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 5
@@ -47,7 +47,7 @@ Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update5-via-portal.md)]
 
-确保设备运行的是 **StorSimple 8000 系列 Update 5 (6.3.9600.17845)**。 应修改“上次更新日期”。
+确保设备运行的是 **StorSimple 8000 系列 Update 5 (6.3.9600.17845)** 。 应修改“上次更新日期”。 
 
 现在，会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。 下一部分详细介绍了如何安装维护模式更新。
 

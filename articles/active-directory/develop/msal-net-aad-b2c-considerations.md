@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c26a5007c2dcaa5d41be46f685f0f259866ca2c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8240a487bdb01cdbe9017ddc7cb95ce4fc0e1503
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544058"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052345"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 具有社交标识的用户登录
 
@@ -177,7 +177,7 @@ AcquireTokenByUsernamePassword(
 或者，可以使用`tid`声明，如果使用的[B2C 自定义策略](https://aka.ms/ief)，因为它提供的功能，以返回到应用程序的其他声明。 若要详细了解[声明转换](/azure/active-directory-b2c/claims-transformation-technical-profile)
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"令牌响应中缺少"的缓解措施
-一种方法是使用"name"声明作为首选的用户名。 在此提到过程[B2C 文档](/azure/active-directory-b2c/active-directory-b2c-reference-policies#frequently-asked-questions)->"在返回的声明栏中选择你希望在发回给你成功配置文件编辑体验后的应用程序的授权令牌中返回的声明。 例如，选择显示名称、 邮政编码。"
+一种方法是使用"name"声明作为首选的用户名。 在此提到过程[B2C 文档](../../active-directory-b2c/active-directory-b2c-reference-policies.md)->"在返回的声明栏中选择你希望在发回给你成功配置文件编辑体验后的应用程序的授权令牌中返回的声明。 例如，选择显示名称、 邮政编码。"
 
 ## <a name="next-steps"></a>后续步骤 
 

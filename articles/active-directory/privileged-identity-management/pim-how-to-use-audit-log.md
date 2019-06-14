@@ -10,59 +10,65 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/14/2017
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8061cff8d39db66cb22a5650c7688657aa8b3554
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440777"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053931"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>在 PIM 中的 Azure AD 角色查看审核历史记录
-可以使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 审核历史记录以查看所有特权角色的在给定的时间段内的所有用户分配和激活。 如果想要在租户中查看活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用 [Azure Active Directory 访问和使用情况报告。](../reports-monitoring/overview-reports.md)
 
-## <a name="navigate-to-audit-history"></a>导航到审核历史记录
-从 [Azure 门户](https://portal.azure.com)仪表板中，选择“Azure AD Privileged Identity Management”应用。 在此处，通过在 PIM 仪表板中依次单击“管理特权角色” > “审核历史记录”访问审核历史记录。
+可以使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 审核历史记录以查看所有特权角色在过去 30 天内的所有角色分配和激活。 如果你想要查看完整的审核历史记录的目录，包括管理员、 最终用户和同步活动中的活动可以使用[Azure Active Directory 的安全和活动报告](../reports-monitoring/overview-reports.md)。
 
-![审核历史记录](media/azure-ad-pim-approval-workflow/image021.png)
+## <a name="view-audit-history"></a>查看审核历史记录
 
-> [!NOTE]
-> 可以按操作对数据排序，并查找“已批准的激活”
+按照以下步骤，若要查看 Azure AD 角色审核历史记录。
 
+1. 使用[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色成员用户的身份登录到 [Azure 门户](https://portal.azure.com/)。
 
-## <a name="audit-history-graph"></a>审核历史记录图
-可以使用审核历史记录在折线图中查看总激活数、每日最大激活数以及每日平均激活数。  如果审核历史记录中存在多个角色，还可以按角色筛选数据。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-使用“时间”、“操作”和“角色”按钮对历史记录进行排序。
+1. 单击“Azure AD 角色”。 
 
-## <a name="audit-history-list"></a>审核历史记录列表
-审核历史记录列表中的各列如下：
+1. 单击**目录角色审核历史记录**。
 
-* **请求者** - 已请求角色激活或更改的用户。  如果该值为“Azure 系统”，请查看 Azure 审核历史记录获取详细信息。
-* **用户** - 正在激活或已分配给角色的用户。
-* **角色** - 由用户分配或激活的角色。
-* **操作** - 请求者所采取的操作。 这可能包括分配、取消分配、激活或取消激活。
-* **时间** - 发生操作的时间。
-* **原因** - 如果在激活期间向原因字段中输入了任何文本，该文本会显示在此处。
-* **过期** - 仅与激活角色相关。
+    具体取决于你审核历史记录中，柱形图显示以及激活总数、 最大激活数每日和每日平均激活。
+
+    ![目录角色审核历史记录](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+
+    在页面的底部，并介绍了可用的审核历史记录中每个操作显示的表。 列具有以下含义：
+
+    | 列 | 描述 |
+    | --- | --- |
+    | Time | 当发生此操作。 |
+    | 请求者 | 请求角色激活或更改的用户。 如果值为**Azure 系统**，检查的详细信息的 Azure 审核历史记录。 |
+    | 操作 | 请求者所采取的操作。 操作可以包括分配、 取消分配、 激活、 停用或 AddedOutsidePIM。 |
+    | 成员 | 正在激活或分配给角色的用户。 |
+    | 角色 | 分配或由用户激活角色。 |
+    | 推论 | 在激活期间向原因字段输入的文本。 |
+    | 过期时间 | 激活的角色时过期。 仅适用于符合条件的角色分配。 |
+
+1. 若要对审核历史记录进行排序，请单击**时间**，**操作**，并**角色**按钮。
 
 ## <a name="filter-audit-history"></a>筛选审核历史记录
-可以通过单击“筛选”按钮筛选显示在审核历史记录中的信息。  将显示“更新图表参数边栏选项卡”。
 
-设置筛选器后，单击“更新”筛选历史记录中的数据。  如果数据未立即显示，请刷新该页面。
+1. 在审核历史记录页的顶部，单击**筛选器**按钮。
 
-### <a name="change-the-date-range"></a>更改数据范围
-使用“今天”、“上一周”、“上个月”或“自定义”按钮更改审核历史记录的时间范围。
+    **更新图表参数**窗格会显示。
 
-选择“自定义”按钮时，会获得“从”日期字段和“至”日期字段，可为历史记录指定日期范围。  可以采用 YYYY/MM/DD 格式输入日期，也可以单击“日历”图标并从日历中选择日期。
+1. 在中**时间范围**，选择时间范围。
 
-### <a name="change-the-roles-included-in-the-history"></a>更改历史记录中包含的角色
-选中或取消选中每个角色旁边的“角色”复选框，以便在历史记录中包含或排除该角色。
+1. 在中**角色**，添加你想要查看的角色的复选标记。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+    ![更新图表参数窗格](media/pim-how-to-use-audit-log/update-chart-parameters.png)
+
+1. 单击**完成**若要查看已筛选的审核历史记录。
+
 ## <a name="next-steps"></a>后续步骤
 
 - [在 PIM 中查看 Azure 资源角色的活动和审核历史记录](azure-pim-resource-rbac.md)

@@ -8,17 +8,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: WenJason
-ms.author: v-jay
+author: anosov1960
+ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: digimobile
-origin.date: 04/04/2019
-ms.date: 04/15/2019
+manager: craigg
+ms.date: 04/04/2019
 ms.openlocfilehash: dfa5d4cb2d782f1466329300157a64fd17765460
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61412337"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
@@ -64,7 +63,7 @@ SQL 数据库提供多种可以缓解此类情况的业务连续性功能，包�
 | 手动数据库故障转移 |ERT = 30 秒<br>RPO < 5 秒 |ERT = 30 秒<br>RPO < 5 秒 |ERT = 30 秒<br>RPO < 5 秒 |ERT = 30 秒<br>RPO < 5 秒|ERT = 30 秒<br>RPO < 5 秒|
 
 > [!NOTE]
-> “手动数据库故障转移”是指使用[计划外模式](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)将单一数据库故障转移到其异地复制的辅助数据库。
+> “手动数据库故障转移”  是指使用[计划外模式](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)将单一数据库故障转移到其异地复制的辅助数据库。
 
 ## <a name="recover-a-database-to-the-existing-server"></a>将数据库恢复到现有服务器
 

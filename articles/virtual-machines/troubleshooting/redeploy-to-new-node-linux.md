@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 1c1ac1a20c1c06db10c1462c95f4d924c5ec09d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62116935"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>将 Linux 虚拟机重新部署到新的 Azure 节点
@@ -30,7 +30,7 @@ ms.locfileid: "62116935"
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
-使用 [az vm redeploy](/cli/azure/vm) 重新部署 VM。 以下示例在名为“myResourceGroup”的资源组中重新部署名为“myVM”的 VM：
+使用 [az vm redeploy](/cli/azure/vm) 重新部署 VM。 以下示例在名为“myResourceGroup”  的资源组中重新部署名为“myVM”  的 VM：
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM 
@@ -39,7 +39,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 ## <a name="use-the-azure-classic-cli"></a>使用 Azure 经典 CLI
 安装[最新的 Azure 经典 CLI](../../cli-install-nodejs.md) 并登录到 Azure 帐户。 请确保处于资源管理器模式 (`azure config mode arm`)。
 
-以下示例在名为“myResourceGroup”的资源组中重新部署名为“myVM”的 VM：
+以下示例在名为“myResourceGroup”  的资源组中重新部署名为“myVM”  的 VM：
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 

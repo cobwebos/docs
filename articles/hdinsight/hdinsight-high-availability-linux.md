@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704928"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
@@ -108,7 +108,7 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 ![已安装的服务](./media/hdinsight-high-availability-linux/services.png)
 
-服务旁边可能会出现一系列表示状态的图标。 可以使用页面顶部的“警报”链接查看与服务相关的任何警报。  Ambari 提供多个预定义的警报。
+服务旁边可能会出现一系列表示状态的图标。 可以使用页面顶部的“警报”  链接查看与服务相关的任何警报。  Ambari 提供多个预定义的警报。
 
 以下警报可以帮助监视群集的可用性：
 
@@ -153,7 +153,7 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 可以选择每个服务来查看其详细信息。
 
-尽管服务页提供了有关每个服务的状态和配置的信息，但并不提供有关该服务正在哪个头节点上运行的信息。 若要查看此信息，请使用页面顶部的“主机”链接。 此页会显示群集内的主机，包括头节点。
+尽管服务页提供了有关每个服务的状态和配置的信息，但并不提供有关该服务正在哪个头节点上运行的信息。 若要查看此信息，请使用页面顶部的“主机”  链接。 此页会显示群集内的主机，包括头节点。
 
 ![主机列表](./media/hdinsight-high-availability-linux/hosts.png)
 
@@ -192,7 +192,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 该 URL 表示，服务当前在名为 **hn0-CLUSTERNAME** 的头节点上运行。
 
-该状态表示，此服务目前正在运行，或“已启动”。
+该状态表示，此服务目前正在运行，或“已启动”  。
 
 如果不知道有哪些服务安装在该群集上，可以使用以下命令检索列表：
 
@@ -214,7 +214,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 ### <a name="ssh"></a>SSH
 
-通过 SSH 连接到头节点时，可以在 **/var/log** 中找到日志文件。 例如，**/var/log/hadoop-yarn/yarn** 包含 YARN 的日志。
+通过 SSH 连接到头节点时，可以在 **/var/log** 中找到日志文件。 例如， **/var/log/hadoop-yarn/yarn** 包含 YARN 的日志。
 
 每个头节点可能具有唯一的日志条目，因此应该检查两个头节点上的日志。
 
@@ -239,7 +239,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 > [!NOTE]  
 > 若要通过 Ambari 访问日志文件，必须使用 SSH 隧道。 个体服务的 Web 接口没有通过 Internet 公开。 有关使用 SSH 隧道的信息，请参阅[使用SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)文档。
 
-在 Ambari Web UI 中选择要查看其日志的服务（例如 YARN）。 然后使用“快速链接”选择要查看其日志的头节点。
+在 Ambari Web UI 中选择要查看其日志的服务（例如 YARN）。 然后使用“快速链接”选择要查看其日志的头节点  。
 
 ![使用快速链接查看日志](./media/hdinsight-high-availability-linux/viewlogs.png)
 
@@ -247,15 +247,15 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 只能在创建群集期间选择节点大小。 可以在 [HDInsight 定价页](https://azure.microsoft.com/pricing/details/hdinsight/)上找到 HDInsight 可用的不同 VM 大小的列表。
 
-创建群集时，可以指定节点的大小。 以下信息介绍了如何指定大小使用[Azure 门户][preview-portal]， [Azure PowerShell 模块 Az][azure-powershell]，并[Azure CLI][azure-cli]:
+创建群集时，可以指定节点的大小。 以下信息介绍了如何使用 [Azure 门户][preview-portal]、[Azure PowerShell 模块 Az][azure-powershell] 和 [Azure CLI][azure-cli] 指定大小：
 
 * **Azure 门户**：创建群集时，可以设置群集所用节点的大小：
 
     ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure CLI**：使用时[az hdinsight 创建](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令时，可以使用设置的头节点、 辅助角色与 ZooKeeper 节点大小`--headnode-size`， `--workernode-size`，和`--zookeepernode-size`参数。
+* **Azure CLI**：使用 [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) 命令时，可以使用 `--headnode-size`、`--workernode-size` 和 `--zookeepernode-size` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
 
-* **Azure PowerShell**：使用时[新建 AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet，你可以通过使用设置的头节点、 辅助角色与 ZooKeeper 节点大小`-HeadNodeSize`， `-WorkerNodeSize`，和`-ZookeeperNodeSize`参数。
+* **Azure PowerShell**：使用 [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 时，可以使用 `-HeadNodeSize`、`-WorkerNodeSize` 和 `-ZookeeperNodeSize` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
 
 ## <a name="next-steps"></a>后续步骤
 

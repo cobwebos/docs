@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
 ms.openlocfilehash: 6ffce339fe7b1a434c8f007b417ee81a42529dfc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66142520"
 ---
 # <a name="refresh-with-logic-apps"></a>使用逻辑应用进行刷新
@@ -65,7 +65,7 @@ ms.locfileid: "66142520"
 
 |属性  |值  |
 |---------|---------|
-|**方法**     |POST         |
+|**方法**     |发布         |
 |**URI**     | https://*服务器区域*/servers/*作为服务器名称*/models/*你的数据库名称*/ <br /> <br /> 例如： https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
 |**标头**     |   内容类型、 应用程序/json <br /> <br />  ![标头](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**正文**     |   若要了解有关构成请求正文的详细信息，请参阅[异步刷新使用 REST API-POST /refreshes](analysis-services-async-refresh.md#post-refreshes)。 |
@@ -73,7 +73,7 @@ ms.locfileid: "66142520"
 |**租户**     |填写在 Azure Active Directory 租户 Id         |
 |**受众**     |https://*.asazure.windows.net         |
 |**客户端 ID**     |输入你的服务主体名称 ClientID         |
-|**凭据类型**     |机密         |
+|**凭据类型**     |Secret         |
 |**机密**     |输入服务主体名称机密         |
 
 示例：

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 98962182da86fceb0b6fcc8540422f93bc0058f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65026295"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>墨迹识别器 API 的语言和区域支持
@@ -30,9 +30,9 @@ ms.locfileid: "65026295"
 | 巴斯克语                                     |     `eu-ES`     |
 | 波斯尼亚语(拉丁语系)                            | `bs-Latn-BA`    |
 | 加泰罗尼亚语                                    |     `ca-ES`     |
-| 中文(简体，中国)                |     `zh-CN`     |
-| 中文(繁体，台湾)              |     `zh-TW`     |
-| 克罗地亚语(克罗地亚)                         |     `hr-HR`     |
+| 中文 （简体，中国）                |     `zh-CN`     |
+| 中文 (繁体，中国台湾)              |     `zh-TW`     |
+| 克罗地亚语 （克罗地亚）                         |     `hr-HR`     |
 | 捷克语                                      |     `cs-CZ`     |
 | 丹麦语                                     |     `da-DK`     |
 | 荷兰语(比利时)                            |     `nl-BE`     |
@@ -54,11 +54,11 @@ ms.locfileid: "65026295"
 | 意大利语(意大利)                            |     `it-IT`     |
 | 日语                                   |     `ja-JP`     |
 | 卢旺达语                                |     `rw-RW`     |
-| 斯瓦希里语(肯尼亚)                          |     `sw-KE`     |
+| 斯瓦希里语 （肯尼亚）                          |     `sw-KE`     |
 | 韩语                                     |     `ko-KR`     |
 | 卢森堡语                              |     `lb-LU`     |
-| 马来语(文莱达鲁萨兰)                  |     `ms-BN`     |
-| 马来语(马来西亚)                           |     `ms-MY`     |
+| 马来语 （文莱达鲁萨兰国）                  |     `ms-BN`     |
+| 马来语 （马来西亚）                           |     `ms-MY`     |
 | 毛利语                                      |     `mi-NZ`     |
 | 挪威语(博克马尔语)                         |     `nb-NO`     |
 | 挪威语(尼诺斯克语)                        |     `nn-NO`     |
@@ -71,12 +71,12 @@ ms.locfileid: "65026295"
 | 苏格兰盖尔语                            |     `gd-GB`     |
 | 北索托语                           |    `nso-ZA`     |
 | 塞尔维亚语(西里尔文，波斯尼亚和黑塞哥维那) |  `sr-Cyrl-BA`   |
-| 塞尔维亚语(西里尔文，黑山)             |  `sr-Cyrl-ME`   |
-| 塞尔维亚语(西里尔文，塞尔维亚)                 |  `sr-Cyrl-RS`   |
+| 塞尔维亚语 （西里尔文，黑山）             |  `sr-Cyrl-ME`   |
+| 塞尔维亚语 （西里尔文，塞尔维亚共和国）                 |  `sr-Cyrl-RS`   |
 | 塞尔维亚语 （拉丁语，波斯尼亚和黑塞哥维那）    |  `sr-Latn-BA`   |
-| 塞尔维亚语(拉丁语，黑山)                |  `sr-Latn-ME`   |
-| 塞尔维亚语(拉丁语，塞尔维亚)                    |  `sr-Latn-RS`   |
-| 茨瓦纳语(南非)                    |     `tn-ZA`     |
+| 塞尔维亚语 （拉丁语，黑山）                |  `sr-Latn-ME`   |
+| 塞尔维亚语 （拉丁语，塞尔维亚共和国）                    |  `sr-Latn-RS`   |
+| 茨瓦纳语 （南非）                    |     `tn-ZA`     |
 | 斯洛伐克语                                     |     `sk-SK`     |
 | 斯洛文尼亚语                                  |     `sl-SI`     |
 | 西班牙语(阿根廷)                        |     `es-AR`     |
@@ -86,10 +86,10 @@ ms.locfileid: "65026295"
 | 土耳其语                                    |     `tr-TR`     |
 | 威尔士语                                      |     `cy-GB`     |
 | 沃洛夫语                                      |     `wo-SN`     |
-| 科萨语                                      |     `xh-ZA`     |
+| 班图语                                      |     `xh-ZA`     |
 | 祖鲁语                                       |     `zu-ZA`     |
 
 ## <a name="see-also"></a>另请参阅
 
-* [墨迹识别器 API 是什么？](overview.md)
+* [什么是墨迹识别器 API？](overview.md)
 * [向手写识别器 API 发送数字墨迹笔画](concepts/send-ink-data.md)

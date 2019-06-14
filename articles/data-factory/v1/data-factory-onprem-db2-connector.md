@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60824008"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-db2-connector.md)
 > * [版本 2（当前版本）](../connector-db2.md)
 
@@ -81,7 +81,7 @@ ms.locfileid: "60824008"
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
-| type |必须将此属性设置为 **OnPremisesDb2**。 |是 |
+| **type** |必须将此属性设置为 **OnPremisesDb2**。 |是 |
 | **server** |DB2 服务器的名称。 |是 |
 | **database** |DB2 数据库的名称。 |是 |
 | **schema** |DB2 数据库中架构的名称。 此属性区分大小写。 |否 |
@@ -93,18 +93,18 @@ ms.locfileid: "60824008"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的各节和属性的列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 所有数据集类型（Azure SQL、Azure Blob 存储、Azure 表存储等）的数据集 JSON 的 **structure**、**availability** 和 **policy** 等节类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息  。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | **tableName** |链接服务引用的 DB2 数据库实例中表的名称。 此属性区分大小写。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义复制活动的各节和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 等复制活动属性可用于所有类型的活动。 可在活动的 typeProperties 节中使用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
+有关可用于定义复制活动的各节和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 等复制活动属性可用于所有类型的活动。 可在活动的 typeProperties  节中使用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
 
 对于复制活动，当源的类型为 **RelationalSource**（包括 DB2）时，以下属性在 **typeProperties** 节中可用：
 
-| 属性 | 说明 | 允许的值 | 需要 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | **query** |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""` |否（如果指定了数据集的 **tableName** 属性） |
 
@@ -317,15 +317,15 @@ ms.locfileid: "60824008"
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| date |DateTime |
-| 时间 |TimeSpan |
+| Date |DateTime |
+| Time |TimeSpan |
 | Timestamp |DateTime |
 | Xml |Byte[] |
 | Char |String |
 | VarChar |String |
 | LongVarChar |String |
 | DB2DynArray |String |
-| 二进制 |Byte[] |
+| Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
 | Graphic |String |
@@ -343,8 +343,8 @@ ms.locfileid: "60824008"
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| date |DateTime |
-| 时间 |TimeSpan |
+| Date |DateTime |
+| Time |TimeSpan |
 | Timestamp |DateTime |
 | Xml |Byte[] |
 | Char |String |

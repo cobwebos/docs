@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 037f0ff64b114ce9341702564147825099695aa0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110024"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>在 Azure 中设置进程服务器以便进行故障回复
@@ -28,16 +28,16 @@ ms.locfileid: "62110024"
 
 ## <a name="deploy-a-process-server-in-azure"></a>在 Azure 中部署进程服务器
 
-1. 在保管库 >“Site Recovery 基础结构”> “管理” > “配置服务器”中，选择配置服务器。
-2. 在服务器页中，单击“+ 进程服务器”
-3. 在“添加进程服务器”页中，选择在 Azure 中部署进程服务器。
+1. 在保管库 >“Site Recovery 基础结构”  > “管理”   > “配置服务器”  中，选择配置服务器。
+2. 在服务器页中，单击“+ 进程服务器” 
+3. 在“添加进程服务器”  页中，选择在 Azure 中部署进程服务器。
 4. 指定 Azure 设置，包括用于故障转移的订阅、资源组、用于故障转移的 Azure 区域以及 Azure VM 所位于的虚拟网络。 如果使用多个 Azure 网络，则需要在每个 Azure 网络中部署进程服务器。
 
    ![添加进程服务器库项](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
 4. 在**服务器名称**、**用户名**和**密码**中指定进程服务器的名称以及将为其分配服务器上的管理员权限的凭据。
 5. 指定要用于服务器 VM 磁盘的存储帐户、进程服务器 VM 将位于的子网以及 VM 启动时将分配的服务器 IP 地址。
-6. 单击“确定”按钮开始部署进程服务器 VM。
+6. 单击“确定”  按钮开始部署进程服务器 VM。
 
 >
 

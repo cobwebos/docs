@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90dbb33fa516d3a831d4e60969ac6b6c8312d539
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332553"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64574138"
 ---
 # <a name="azure-security-center-search"></a>Azure 安全中心搜索
+
+> [!NOTE]
+> 安全中心搜索仪表板将在 2019 年 7 月 31 日停用。 有关详细信息和备用服务，请参阅用[安全中心功能的停用（2019 年 7 月）](security-center-features-retirement-july2019.md#menu_search)。
+
 Azure 安全中心使用[Azure Monitor 日志搜索](../log-analytics/log-analytics-log-searches.md)来检索和分析安全数据。 Azure Monitor 日志提供用于快速检索和整合数据的查询语言。 从安全中心，您可以利用 Azure Monitor 日志搜索来构造查询并分析收集的数据。
 
 安全中心的免费层和标准层均提供了此搜索功能。  日志搜索提供的数据取决于应用到工作区的层级别。  请参阅安全中心[定价页](../security-center/security-center-pricing.md)了解详细信息。
@@ -33,7 +37,7 @@ Azure 安全中心使用[Azure Monitor 日志搜索](../log-analytics/log-analyt
 >
 
 ## <a name="access-search"></a>访问“搜索”
-1. 在“安全中心”主菜单下，选择“搜索”。
+1. 在“安全中心”主菜单下，选择“搜索”  。
 
    ![选择“日志搜索”][1]
 
@@ -41,11 +45,11 @@ Azure 安全中心使用[Azure Monitor 日志搜索](../log-analytics/log-analyt
 
    ![选择工作区][2]
 
-3. “日志搜索”将打开。 若要在所选工作区下查询更多数据，请输入以下查询示例：
+3. “日志搜索”  将打开。 若要在所选工作区下查询更多数据，请输入以下查询示例：
 
    SecurityEvent | where EventID == 4625 | summarize count() by TargetAccount
 
-   结果将显示登录失败（事件 4625）的所有帐户。
+   结果显示了失败登录 （事件 4625） 的所有帐户。
 
    ![搜索结果][3]
 

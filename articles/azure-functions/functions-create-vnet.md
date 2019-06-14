@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche, glenga
-ms.openlocfilehash: 07c7d7fb682708bf813820440d9c790c28b1f3e5
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 55cce60ab3d1cda3cb870afd2f6214f917a04189
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834586"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063274"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教程： 将与 Azure 虚拟网络集成函数
 
@@ -91,7 +91,7 @@ ms.locfileid: "65834586"
 
 1. 选择**管理**选项卡上，然后在**诊断存储帐户**，选择与你的函数应用创建的存储帐户。
 
-1. 选择“查看 + 创建”。 验证完成后，选择**创建**。 VM 创建过程需要几分钟时间。 将创建的 VM 只能访问虚拟网络。
+1. 选择“查看 + 创建”  。 验证完成后，选择**创建**。 VM 创建过程需要几分钟时间。 将创建的 VM 只能访问虚拟网络。
 
 1. 创建 VM 后，请选择**转到资源**若要查看的页面，为新的 VM，然后选择**网络**下**设置**。
 
@@ -113,7 +113,7 @@ ms.locfileid: "65834586"
 
     ![用于配置网络功能状态](./media/functions-create-vnet/Networking-1.png)
 
-1. 在虚拟网络集成页中，选择**添加 VNet （预览版）**。
+1. 在虚拟网络集成页中，选择**添加 VNet （预览版）** 。
 
     ![添加 VNet 集成预览版](./media/functions-create-vnet/networking-2.png)
 
@@ -124,7 +124,7 @@ ms.locfileid: "65834586"
     | 设置      | 建议的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
     | **虚拟网络** | MyResourceGroup-vnet | 此虚拟网络是前面创建的一个。 |
-    | **子网** | 创建新子网 | 在函数应用使用的虚拟网络中创建子网。 VNet 集成必须配置为使用空的子网。 它并不重要函数使用比 VM 的不同子网。 虚拟网络会自动将路由两个子网之间的流量。 |
+    | **子网** | 创建新的子网 | 在函数应用使用的虚拟网络中创建子网。 VNet 集成必须配置为使用空的子网。 它并不重要函数使用比 VM 的不同子网。 虚拟网络会自动将路由两个子网之间的流量。 |
     | **子网名称** | Function-Net | 新子网的名称。 |
     | **虚拟网络地址块** | 10.10.0.0/16 | 选择 WordPress 站点使用的同一个地址块。 你只应具有定义的一个地址块。 |
     | **地址范围** | 10.10.2.0/24   | 子网大小限制高级计划函数应用可以横向扩展到的实例的总数。 此示例使用`/24`254 个可用的主机地址的子网。 此子网是过度预配，但计算更容易。 |
@@ -137,7 +137,7 @@ ms.locfileid: "65834586"
 
 启用 VNet 集成，可以在函数应用将请求转发到虚拟网络中运行的 VM 中创建代理。
 
-1. 在 function app 中，选择**代理** > **+**，然后在图像下的表中使用的代理设置：
+1. 在 function app 中，选择**代理** >  **+** ，然后在图像下的表中使用的代理设置：
 
     ![定义代理设置](./media/functions-create-vnet/create-proxy.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "65834586"
 
 1. 选择**创建**将代理添加到函数应用。
 
-## <a name="try-it-out"></a>试试吧
+## <a name="try-it-out"></a>试用
 
 1. 在浏览器中，尝试访问作为所用的 URL**后端 URL**。 按预期运行，该请求将会超时。因为你的 WordPress 站点仅连接到虚拟网络并不是 internet 发生超时。
 
@@ -170,4 +170,4 @@ ms.locfileid: "65834586"
 > [!div class="nextstepaction"]
 > [了解有关在函数中的网络选项的详细信息](./functions-networking-options.md)
 
-[高级版计划]: functions-scale.md#premium-plan-public-preview
+[高级版计划]: functions-scale.md#premium-plan

@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61477138"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>将 Azure 存储用于 SQL Server 备份和还原
@@ -51,14 +51,14 @@ SQL Server 2016 引入了新功能；可以使用[文件快照备份](https://ms
 | --- | --- |
 | **存储帐户** |存储帐户是所有存储服务的起点。 若要访问 Azure Blob 存储服务，请先创建一个 Azure 存储帐户。 有关 Azure Blob 存储服务的详细信息，请参阅[如何使用 Azure Blob 存储服务](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
 | **容器** |容器提供一组 Blob 集，并且可存储无限数量的 Blob。 要将 SQL Server 备份写入到 Azure Blob 服务，必须至少创建一个根容器。 |
-| **Blob** |任何类型和大小的文件。 可使用以下 URL 格式对 Blob 进行寻址：**https://[存储帐户].blob.core.windows.net/[容器]/[blob]**。 有关页 Blob 的详细信息，请参阅[了解块和页 Blob](https://msdn.microsoft.com/library/azure/ee691964.aspx)。 |
+| **Blob** |任何类型和大小的文件。 可使用以下 URL 格式对 Blob 进行寻址：**https://[存储帐户].blob.core.windows.net/[容器]/[blob]** 。 有关页 Blob 的详细信息，请参阅[了解块和页 Blob](https://msdn.microsoft.com/library/azure/ee691964.aspx)。 |
 
 ## <a name="sql-server-components"></a>SQL Server 组件
 备份到 Azure Blob 存储服务时，会使用以下 SQL Server 组件。
 
 | 组件 | 描述 |
 | --- | --- |
-| **URL** |URL 指定到唯一备份文件的统一资源标识符 (URI)。 URL 用于提供 SQL Server 备份文件的位置和名称。 URL 必须指向实际 blob，而不是仅指向容器。 如果 blob 不存在，则会创建一个。 如果指定了现有 blob，除非指定了 > WITH FORMAT 选项，否则 BACKUP 会失败。 以下是在 BACKUP 命令中指定的 URL 示例：**http[s]://[存储帐户].blob.core.windows.net/[容器]/[文件名.bak]**。 HTTPS 不是必需的，但建议使用它。 |
+| **URL** |URL 指定到唯一备份文件的统一资源标识符 (URI)。 URL 用于提供 SQL Server 备份文件的位置和名称。 URL 必须指向实际 blob，而不是仅指向容器。 如果 blob 不存在，则会创建一个。 如果指定了现有 blob，除非指定了 > WITH FORMAT 选项，否则 BACKUP 会失败。 以下是在 BACKUP 命令中指定的 URL 示例：**http[s]://[存储帐户].blob.core.windows.net/[容器]/[文件名.bak]** 。 HTTPS 不是必需的，但建议使用它。 |
 | **凭据** |连接到 Azure Blob 存储服务并通过其进行身份验证所需的信息将存储为凭据。  为了使 SQL Server 将备份写入 Azure Blob 或从中进行还原，必须创建 SQL Server 凭据。 有关详细信息，请参阅 [SQL Server 凭据](https://msdn.microsoft.com/library/ms189522.aspx)。 |
 
 > [!NOTE]

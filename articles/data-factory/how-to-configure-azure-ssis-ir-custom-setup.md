@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711571"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的安装
@@ -66,19 +66,19 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
 1. 下载、安装并启动 [Azure 存储资源管理器](https://storageexplorer.com/)。
 
-   1. 在“(本地和附加)”下面，右键单击“存储帐户”并选择“连接到 Azure 存储”。
+   1. 在“(本地和附加)”下面，右键单击“存储帐户”并选择“连接到 Azure 存储”。   
 
       ![连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
-   1. 选择“使用存储帐户名和密钥”并选择“下一步”。
+   1. 选择“使用存储帐户名和密钥”并选择“下一步”。  
 
       ![使用存储帐户名称和密钥](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image2.png)
 
-   1. 输入 Azure 存储帐户名和密钥，并依次选择“下一步”、“连接”。
+   1. 输入 Azure 存储帐户名和密钥，并依次选择“下一步”、“连接”。  
 
       ![提供存储帐户名和密钥](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
 
-   1. 在已连接的 Azure 存储帐户下面，右键单击“Blob 容器”，选择“创建 Blob 容器”，并为新容器命名。
+   1. 在已连接的 Azure 存储帐户下面，右键单击“Blob 容器”，选择“创建 Blob 容器”，并为新容器命名。  
 
       ![创建 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
@@ -86,7 +86,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
       ![将文件上传到 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
-   1. 右键单击容器，并选择“获取共享访问签名”。
+   1. 右键单击容器，并选择“获取共享访问签名”。 
 
       ![获取容器的共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
@@ -101,7 +101,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
       ![复制并保存共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-   1. 使用数据工厂 UI 预配或重新配置你的 Azure-SSIS IR 时，在启动 Azure-SSIS IR 之前，在“高级设置”面板上的相应字段中输入你的容器的 SAS URI：
+   1. 使用数据工厂 UI 预配或重新配置你的 Azure-SSIS IR 时，在启动 Azure-SSIS IR 之前，在“高级设置”  面板上的相应字段中输入你的容器的 SAS URI：
 
       ![输入共享访问签名](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
@@ -122,11 +122,11 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
 1. 若要查看其他自定义安装示例，请使用 Azure 存储资源管理器连接到公共预览版容器。
 
-   a.  在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。
+   a.  在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。     
 
       ![使用共享访问签名连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
-   b.  选择“使用 SAS URI”并输入公共预览版容器的以下 SAS URI。 依次选择“下一步”、“连接”。
+   b.  选择“使用 SAS URI”并输入公共预览版容器的以下 SAS URI。  依次选择“下一步”、“连接”。  
 
       `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c`
 

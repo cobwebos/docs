@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: e10717b0fe14d2ed6ee720a2414e753bdd2474f1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 77bbb333157f5c8cec9fa87e5f76fa4ae2678058
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708892"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070611"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Apache Hive 和 Apache Hadoop 分析 Twitter 数据
 
@@ -21,8 +21,6 @@ ms.locfileid: "64708892"
 
 > [!IMPORTANT]  
 > 本文档中的步骤已在 HDInsight 3.6 上进行测试。
->
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="get-the-data"></a>获取数据
 
@@ -30,29 +28,29 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
 
 ### <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 
-1. 在 Web 浏览器中登录到 [https://apps.twitter.com/](https://apps.twitter.com/)。 单击“立即注册”链接（如果没有 Twitter 帐户）。
+1. 在 Web 浏览器中登录到 [https://apps.twitter.com/](https://apps.twitter.com/)。 单击“立即注册”  链接（如果没有 Twitter 帐户）。
 
-2. 单击“创建新应用”。
+2. 单击“创建新应用”  。
 
-3. 输入“名称”、“说明”、“网站”。 可为“网站”字段补充 URL。 下表显示了一些要使用的示例值：
+3. 输入“名称”  、“说明”  、“网站”  。 可为“网站”  字段补充 URL。 下表显示了一些要使用的示例值：
 
    | 字段 | 值 |
    |:--- |:--- |
-   | 名称 |MyHDInsightApp |
+   | Name |MyHDInsightApp |
    | 描述 |MyHDInsightApp |
    | 网站 |https:\//www.myhdinsightapp.com |
 
-4. 选中“是，我同意”，并单击“创建 Twitter 应用程序”。
+4. 选中“是，我同意”  ，并单击“创建 Twitter 应用程序”  。
 
-5. 单击“权限”选项卡。默认权限为“只读”。
+5. 单击“权限”  选项卡。默认权限为“只读”  。
 
-6. 单击“密钥和访问令牌”选项卡。
+6. 单击“密钥和访问令牌”  选项卡。
 
-7. 单击“创建我的访问令牌”。
+7. 单击“创建我的访问令牌”  。
 
-8. 在页面右上角单击“测试 OAuth”。
+8. 在页面右上角单击“测试 OAuth”  。
 
-9. 记下“使用者密钥”、“使用者机密”、“访问令牌”和“访问令牌机密”。
+9. 记下“使用者密钥”  、“使用者机密”  、“访问令牌”  和“访问令牌机密”  。
 
 ### <a name="download-tweets"></a>下载推文
 
@@ -302,7 +300,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
    ```
 
-    此命令会运行 twitter.hql 文件。 查询完成之后，会看到 `jdbc:hive2//localhost:10001/>` 提示符。
+    此命令会运行 twitter.hql 文件  。 查询完成之后，会看到 `jdbc:hive2//localhost:10001/>` 提示符。
 
 4. 根据 beeline 提示，使用以下查询验证数据是否已导入：
 
@@ -317,7 +315,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
     这会在消息文本中返回最多 10 篇包含 **Azure** 一词的推文。
 
     > [!NOTE]  
-    > 如果已更改 `gettweets.py` 脚本中的筛选器，请将 Azure 替换为用过的筛选器之一。
+    > 如果已更改 `gettweets.py` 脚本中的筛选器，请将 Azure 替换为用过的筛选器之一  。
 
 ## <a name="next-steps"></a>后续步骤
 

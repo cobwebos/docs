@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: 1b028fe016d6ae3df8c1dfce548fc0c11479d5a6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942716"
 ---
 # <a name="storefront-details-tab"></a>“店面详细信息”选项卡
 
-本文介绍如何输入店面详细信息。 “店面详细信息”选项卡由以下部分组成：
+本文介绍如何输入店面详细信息。 “店面详细信息”选项卡由以下部分组成： 
 
 -   **套餐详细信息**
 -   **发布者信息**
@@ -28,7 +28,7 @@ ms.locfileid: "64942716"
 
 ## <a name="offer-details"></a>套餐详细信息
 
-“套餐详细信息”部分包含以下输入框：
+“套餐详细信息”部分包含以下输入框： 
 
 -   **产品/服务摘要\***
 -   **产品/服务描述\***
@@ -66,9 +66,9 @@ ms.locfileid: "64942716"
 
 ### <a name="offer-description"></a>产品/服务描述\*
 
-在“套餐说明”框中输入咨询服务套餐的说明。 合理的套餐说明包括互动功能的具体详细信息，以及最终向客户交付的内容。 此说明应该可以帮助客户明确了解他们会得到的服务。 说明该套餐与你要为其提供咨询服务的 Microsoft 产品的关系。
+在“套餐说明”框中输入咨询服务套餐的说明。  合理的套餐说明包括互动功能的具体详细信息，以及最终向客户交付的内容。 此说明应该可以帮助客户明确了解他们会得到的服务。 说明该套餐与你要为其提供咨询服务的 Microsoft 产品的关系。
 
-不要在套餐说明中包含电子邮件链接或电话号码。 套餐应附带一个“与我联系”按钮，使用该按钮可将潜在顾客上传到你在套餐中指定的潜在顾客管理目标。
+不要在套餐说明中包含电子邮件链接或电话号码。 套餐应附带一个“与我联系”按钮，使用该按钮可将潜在顾客上传到你在套餐中指定的潜在顾客管理目标。 
 
 以 Markdown 格式输入套餐说明。 如果你不熟悉 Markdown 或 HTML 格式，请参阅[使用 Markdown 编写文档](https://docs.microsoft.com/contribute/how-to-write-use-markdown)。
 
@@ -171,13 +171,13 @@ Microsoft 专门侧重于提供给单个客户的固定范围、固定持续时�
 
 **持续时间**
 
-在“持续时间”下选择一个数字（例如 3 或 4），然后选择“小时”、“天”或“周”。
+在“持续时间”下选择一个数字（例如 3 或 4），然后选择“小时”、“天”或“周”。    
 
 **主要产品**
 
-若要发布到 Azure 市场，请选择“Azure”作为主要产品。 然后选择相关的“解决方案区域”。
+若要发布到 Azure 市场，请选择“Azure”作为主要产品。  然后选择相关的“解决方案区域”。 
 
-若要发布到 AppSource，请选择“Dynamics 365”、“Power BI”或“PowerApps”作为主要产品。 也可以选择其他相关的“适用产品”。 然后，咨询服务套餐将显示在 AppSource 上与其中每个产品关联的商品清单中。
+若要发布到 AppSource，请选择“Dynamics 365”、“Power BI”或“PowerApps”作为主要产品。    也可以选择其他相关的“适用产品”。  然后，咨询服务套餐将显示在 AppSource 上与其中每个产品关联的商品清单中。
 
 **相关资质**
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 06/10/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91ee8b6e614cf12deccd1429ad67323c277954a0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461963"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061482"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Azure web 应用程序防火墙的常见问题解答
 
@@ -32,16 +32,13 @@ Azure WAF 策略可以应用于应用程序网关或 Azure 第一道防线服务
 
 Azure 的第一道防线是一个高度可缩放的全球分布式应用程序和内容交付网络。 Azure WAF，与第一道防线，集成时停止拒绝服务和目标应用程序在 Azure 网络边缘的攻击，攻击源进入虚拟网络之前, 提供保护，而无需牺牲性能。
 
-## <a name="how-will-i-be-charged-for-azure-waf-for-front-door"></a>如何将收取 Azure WAF 的第一道防线？
-公共预览期间，WAF 使用情况，第一道防线是免费。 请注意，额外第一道防线费用。 请参阅第一道防线服务定价[此处](https://azure.microsoft.com/pricing/details/frontdoor/)。
-
 ## <a name="does-azure-waf-support-https"></a>Azure WAF 支持 HTTPS？
 
 第一道防线服务提供 SSL 卸载。 WAF 与第一道防线本机集成，并解密后，可以检查请求。
 
 ## <a name="does-azure-waf-support-ipv6"></a>Azure WAF 是否支持 IPv6？
 
-可以。 你可以配置为 IPv4 和 IPv6 IP 限制。
+是的。 你可以配置为 IPv4 和 IPv6 IP 限制。
 
 ## <a name="how-up-to-date-are-the-managed-rule-sets"></a>托管规则集的更新？
 
@@ -77,5 +74,5 @@ Azure 的第一道防线是一个高度可缩放的全球分布式应用程序�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[Azure web 应用程序防火墙](waf-overview.md)。
+- 了解 [Azure Web 应用程序防火墙](waf-overview.md)。
 - 详细了解如何[Azure 第一道防线](front-door-overview.md)。

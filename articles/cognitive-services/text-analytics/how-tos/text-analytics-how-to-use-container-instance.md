@@ -3,19 +3,19 @@ title: 运行 Kubernetes 服务
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: 使用正在运行的示例将语言检测容器部署到 Azure Kubernetes 服务，并在 Web 浏览器中对其进行测试。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/22/2019
-ms.author: diberry
-ms.openlocfilehash: 95ba3c905541d2168dcbbc1bb2c1bc1d05468cb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 1468b0a8a37ba1ec3455252b80139ae5db1e7af8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828662"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069201"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>将语言检测容器部署到 Azure Kubernetes 服务
 
@@ -31,12 +31,12 @@ ms.locfileid: "60828662"
 * [Docker 引擎](https://www.docker.com/products/docker-engine)并验证 Docker CLI 是否可在控制台窗口中工作。
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。 
 * 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：
-    * 仅具有 F0 或标准定价层的文本分析资源。
-    * 具有 S0 定价层的认知服务资源。
+    * 仅具有 F0 或标准定价层的文本分析资源  。
+    * 具有 S0 定价层的认知服务资源  。
 
 ## <a name="running-the-sample"></a>运行示例
 
-此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 需要将这些映像都推送到自己的 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能。 使用 HTTP 请求访问客户端应用程序，并查看结果。 
+此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 需要将这些映像都推送到自己的 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能  。 使用 HTTP 请求访问客户端应用程序，并查看结果。 
 
 ![运行示例容器的概念性想法](../media/how-tos/container-instance-sample/containers.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "60828662"
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    保存结果，以获取 loginServer 属性。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
+    保存结果，以获取 loginServer 属性  。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
 
     ```console
     >az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -290,9 +290,9 @@ ms.locfileid: "60828662"
 
 ## <a name="load-the-orchestration-definition-into-your-kubernetes-service"></a>将业务流程定义加载到 Kubernetes 服务中
 
-本部分使用 kubectl CLI 与 Azure Kubernetes 服务通信。 
+本部分使用 kubectl CLI 与 Azure Kubernetes 服务通信  。 
 
-1. 在加载业务流程定义之前，请检查 kubectl 是否有权访问节点。
+1. 在加载业务流程定义之前，请检查 kubectl 是否有权访问节点  。
 
     ```console
     kubectl get nodes
@@ -327,7 +327,7 @@ ms.locfileid: "60828662"
     |第 91 行<br> `apiKey` 属性|文本分析资源密钥|
     |第 92 行<br> `billing` 属性|文本分析资源的账单终结点。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。 
+    由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递   。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。 
 
 1. 从创建和保存 `language.yml` 的文件夹中加载此示例的业务流程定义文件。 
 

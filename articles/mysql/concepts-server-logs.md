@@ -1,27 +1,27 @@
 ---
 title: Azure Database for MySQL 的服务器日志
-description: 介绍了 Azure Database for MySQL 中提供的日志，以及用于启用不同日志记录级别的可用参数。
+description: 介绍 for MySQL，并启用不同的日志记录级别的可用参数的 Azure 数据库中可用的慢查询日志。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/29/2019
+ms.openlocfilehash: 1a8956d40ef30e8d52fbdded3448019e14ab16a5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525838"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062404"
 ---
-# <a name="server-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器日志
-在 Azure Database for MySQL 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。 
+# <a name="slow-query-logs-in-azure-database-for-mysql"></a>慢查询中的日志 Azure Database for MySQL
+在 Azure Database for MySQL 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
 
 有关 MySQL 慢查询日志的详细信息，请参阅 MySQL 参考手册中的[慢查询日志部分](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
 
-## <a name="access-server-logs"></a>访问服务器日志
-可以使用 Azure 门户和 Azure CLI 列出和下载 Azure Database for MySQL 服务器日志。
+## <a name="access-slow-query-logs"></a>访问慢查询日志
+可以列出和下载 Azure Database for MySQL 慢查询日志使用 Azure 门户和 Azure CLI。
 
-在 Azure 门户中，选择 Azure Database for MySQL 服务器。 在“监视”标题下，选择“服务器日志”页面。
+在 Azure 门户中，选择 Azure Database for MySQL 服务器。 在“监视”标题下，选择“服务器日志”页面。  
 
 有关 Azure CLI 的详细信息，请参阅[使用 Azure CLI 配置和访问服务器日志](howto-configure-server-logs-in-cli.md)。
 
@@ -30,8 +30,7 @@ ms.locfileid: "60525838"
 
 日志每 24 小时或每 7 GB 轮换一次（以先达到的条件为准）。
 
-
-## <a name="configure-logging"></a>配置日志记录 
+## <a name="configure-slow-query-logging"></a>配置慢查询日志记录 
 默认情况下，慢查询日志被禁用。 若要启用它，请将 slow_query_log 设置为 ON。
 
 可以调整的其他参数包括：

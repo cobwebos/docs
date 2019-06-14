@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: 6953329bfabe99fc4bb28f2494cb412ba9cbbba0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942908"
 ---
 # <a name="container-skus-tab"></a>“容器 SKU”选项卡
 
-在“新建套餐”页的“SKU”选项卡中，可以创建一个或多个 SKU 并将其关联到新套餐。  可以使用不同的 SKU 按功能集、计费模型或其他特征来区分解决方案。
+在“新建套餐”页的“SKU”选项卡中，可以创建一个或多个 SKU 并将其关联到新套餐。    可以使用不同的 SKU 按功能集、计费模型或其他特征来区分解决方案。
 
 ## <a name="sku-settings"></a>SKU 设置
 
 开始创建新套餐时，该套餐没有任何关联的 SKU。 若要创建新 SKU，请执行以下步骤：
 
-1. 在“SKU”选项卡中，选择“新建 SKU”
+1. 在“SKU”选项卡中，选择“新建 SKU” 
 
    ![新建 SKU 提示](./media/containers-sku-settings.png)
 

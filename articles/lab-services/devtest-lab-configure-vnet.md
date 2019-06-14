@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 8fb3b4ac748fcae2e3aad5b3bfb2a893340dc61a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60694708"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置虚拟网络
@@ -30,20 +30,20 @@ ms.locfileid: "60694708"
 以下步骤介绍如何将现有虚拟网络（以及子网）添加到实验室，以便在同一实验室创建 VM 时使用它。 
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 1. 从实验室列表，选择所需的实验室。 
-1. 在实验室的主窗格中，选择“配置和策略”。
+1. 在实验室的主窗格中，选择“配置和策略”  。
 
     ![访问实验室的配置和策略](./media/devtest-lab-configure-vnet/policies-menu.png)
-1. 在“外部资源”部分，选择“虚拟网络”。 将显示为当前实验室配置的虚拟网络列表以及为实验室创建的默认虚拟网络。 
-1. 选择“+ 添加”。
+1. 在“外部资源”部分，选择“虚拟网络”   。 将显示为当前实验室配置的虚拟网络列表以及为实验室创建的默认虚拟网络。 
+1. 选择 **+ 添加**。
    
     ![将现有虚拟网络添加到实验室](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
-1. 在“虚拟网络”窗格中，选择“[选择虚拟网络]”。
+1. 在“虚拟网络”窗格中，选择“[选择虚拟网络]”   。
    
     ![选择现有虚拟网络](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
-1. 在“选择虚拟网络”窗格中，选择所需虚拟网络。 将显示一个列表，其中显示订阅中所有与实验室在同一区域的虚拟网络。
-1. 选择虚拟网络后，将返回到“虚拟网络”窗格。 选择底部列表中的子网。
+1. 在“选择虚拟网络”窗格中，选择所需虚拟网络  。 将显示一个列表，其中显示订阅中所有与实验室在同一区域的虚拟网络。
+1. 选择虚拟网络后，将返回到“虚拟网络”窗格  。 选择底部列表中的子网。
 
     ![子网列表](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
     
@@ -52,12 +52,12 @@ ms.locfileid: "60694708"
     ![“实验室子网”窗格](./media/devtest-lab-configure-vnet/lab-subnet.png)
      
    - 指定**实验室子网名称**。
-   - 若要允许在实验室 VM 创建中使用子网，请选择“在虚拟机创建中使用”。
-   - 若要启用 [共享公共 IP 地址](devtest-lab-shared-ip.md)，请选择“启用共享公共 IP”。
-   - 若要在子网中允许公共 IP 地址，请选择“允许公共 IP 创建”。
-   - 在“每个用户的最大虚拟机数量”字段中，指定每个子网中每个用户的最大 VM 数量。 如果不希望限制的 VM 的数目，请将此字段留空。
-1. 选择“确定”关闭“实验室子网”窗格。
-1. 选择“保存”关闭“虚拟网络”窗格。
+   - 若要允许在实验室 VM 创建中使用子网，请选择“在虚拟机创建中使用”  。
+   - 若要启用 [共享公共 IP 地址](devtest-lab-shared-ip.md)，请选择“启用共享公共 IP”  。
+   - 若要在子网中允许公共 IP 地址，请选择“允许公共 IP 创建”  。
+   - 在“每个用户的最大虚拟机数量”  字段中，指定每个子网中每个用户的最大 VM 数量。 如果不希望限制的 VM 的数目，请将此字段留空。
+1. 选择“确定”关闭“实验室子网”窗格  。
+1. 选择“保存”关闭“虚拟网络”窗格  。
 
 既然已配置虚拟网络，则可在创建 VM 时选择它。 要了解如何创建 VM 和指定虚拟网络，请参阅文章[将 VM 添加到实验室](devtest-lab-add-vm.md)。 
 

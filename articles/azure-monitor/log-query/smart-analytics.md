@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/15/2019
 ms.author: bwren
 ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61425792"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics 智能分析示例
@@ -95,7 +95,7 @@ week
 ![队列分析输出](media/smart-analytics/cohorts.png)
 
 ## <a name="rolling-monthly-active-users-and-user-stickiness"></a>滚动每月活动用户数和用户粘性
-以下示例结合 [series_fir](/azure/kusto/query/series-firfunction) 函数使用时序分析，该函数用于执行滑动窗口计算。 受监视的示例应用程序是一个通过自定义事件跟踪用户活动的网上商店。 查询跟踪两种类型的用户活动：_AddToCart_和 _Checkout_，并将活动用户定义为在给定的一天内至少执行了一次结算的用户。
+以下示例结合 [series_fir](/azure/kusto/query/series-firfunction) 函数使用时序分析，该函数用于执行滑动窗口计算。 受监视的示例应用程序是一个通过自定义事件跟踪用户活动的网上商店。 查询跟踪两种类型的用户活动：_AddToCart_和 _Checkout_，并将活动用户定义为在给定的一天内至少执行了一次结算的用户。 
 
 
 

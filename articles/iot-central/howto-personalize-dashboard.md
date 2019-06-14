@@ -3,17 +3,17 @@ title: 创建 Azure IoT Central 的个人仪表板 |Microsoft Docs
 description: 作为用户，了解如何创建和管理你的个人仪表板。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/13/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: fb74669dcaa802ad06a9c4dff3ffdf25726f518c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1641c4f3ae4eaa175657db8ff4064fa2202aea6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60518535"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053016"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>创建和管理个人仪表板
 
@@ -29,7 +29,7 @@ ms.locfileid: "60518535"
 
 ![仪表板库](media/howto-personalize-dashboard/dashboardeditor.png)
 
-例如，您可以添加**的设备设置和属性**磁贴以显示一个所管理的设备的设置和属性值。 为此，请先选择“设备模板”，然后选择“设备实例”。 然后，为该磁贴标题和选择**设置**或**属性**显示。 以下屏幕截图显示**风扇速度**选择要添加到磁贴设置。 选择**完成**若要将更改保存到你的仪表板。
+例如，您可以添加**的设备设置和属性**磁贴以显示一个所管理的设备的设置和属性值。 为此，请先选择“设备模板”  ，然后选择“设备实例”  。 然后，为该磁贴标题和选择**设置**或**属性**显示。 以下屏幕截图显示**风扇速度**选择要添加到磁贴设置。 选择**完成**若要将更改保存到你的仪表板。
 
 ![带有设置和属性详细信息的“配置设备详细信息”窗体](media/howto-personalize-dashboard/dashboardsetting.png)
 

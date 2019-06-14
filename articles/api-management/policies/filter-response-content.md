@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 26829dfc04acdac2a25fe0d4fdc3e95e4d219057
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60637057"
 ---
 # <a name="filter-response-content"></a>筛选响应内容
@@ -26,7 +26,7 @@ ms.locfileid: "60637057"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“出站”块中。
+将代码粘贴到“出站”块中  。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Filter response content based on product name.policy.xml)]
 

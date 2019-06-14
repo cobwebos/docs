@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61445251"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 0.5
@@ -42,7 +42,7 @@ ms.locfileid: "61445251"
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-完成安装后，转到 StorSimple Device Manager 服务。 选择“设备”，并选择并单击刚刚更新的设备。 转到“设置”>“管理”>“设备更新”。 显示的软件版本应为 **10.0.10290.0**。
+完成安装后，转到 StorSimple Device Manager 服务。 选择“设备”  ，并选择并单击刚刚更新的设备。 转到“设置”>“管理”>“设备更新”  。 显示的软件版本应为 **10.0.10290.0**。
 
 ## <a name="use-the-local-web-ui"></a>使用本地 Web UI
 
@@ -59,24 +59,24 @@ ms.locfileid: "61445251"
 
 1. 启动 Internet Explorer，并转到 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 
-2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
+2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。 
 
-3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号。 针对 Update 0.5 输入 **4021576**，并单击“搜索”。
+3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号。 针对 Update 0.5 输入 **4021576**，并单击“搜索”  。
    
     随即显示修补程序列表（例如 **StorSimple Virtual Array Update 0.5**）。
    
     ![搜索目录](./media/storsimple-virtual-array-install-update-05/download1.png)
 
-4. 单击“下载”。 
+4. 单击“下载”  。 
 
-5. 应显示两个要下载的文件：*.msu* 和 *.cab* 文件。 请将其中每个文件下载到一个文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
+5. 应显示两个要下载的文件： *.msu* 和 *.cab* 文件。 请将其中每个文件下载到一个文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
 
 6. 打开文件所在的文件夹。
     ![程序包中的文件](./media/storsimple-virtual-array-install-update-05/update05folder.png)
 
     可看到：
     -  Microsoft 更新独立程序包文件 `WindowsTH-KB3011067-x64`。 此文件用于更新设备软件。
-    - Geneva 监视代理程序包文件 `GenevaMonitoringAgentPackageInstaller`。 此文件用于更新监视和诊断服务 (MDS) 代理。 双击 cab 文件。 随即显示一个 .msi 文件。 选择该文件，右键单击并“提取”该文件。 将使用该 _.msi_ 文件来更新代理。
+    - Geneva 监视代理程序包文件 `GenevaMonitoringAgentPackageInstaller`。 此文件用于更新监视和诊断服务 (MDS) 代理。 双击 cab 文件。 随即显示一个 .msi 文件。 选择该文件，右键单击并“提取”  该文件。 将使用该 _.msi_ 文件来更新代理。
 
         ![提取 MDS 代理更新文件](./media/storsimple-virtual-array-install-update-05/extract-geneva-monitoring-agent-installer.png)
         
@@ -90,11 +90,11 @@ ms.locfileid: "61445251"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 Web UI 中，转到“维护” > “软件更新”。
+1. 在本地 Web UI 中，转到“维护”   > “软件更新”  。
    
     ![更新设备](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. 在“更新文件路径”中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
+2. 在“更新文件路径”  中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”  。
    
     ![更新设备](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
@@ -106,14 +106,14 @@ ms.locfileid: "61445251"
    
     ![更新设备](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. 重新启动完成后，会转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 Update 0.5 显示的软件版本应为 **10.0.0.0.0.10290.0**。
+5. 重新启动完成后，会转到“登录”  页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护”   > “软件更新”  。 Update 0.5 显示的软件版本应为 **10.0.0.0.0.10290.0**。
    
    > [!NOTE]
    > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 **10.0.0.0.0.10290**，而 Azure 门户则报告 **10.0.10290.0**。
    
     ![更新设备](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
-6. 下一步是更新 MDS 代理。 在“软件更新”页上，转到“更新文件路径”并浏览到 `GenevaMonitoringAgentPackageInstaller.msi` 文件。 重复步骤 2-4。 在 Virtual Array 重启后，登录到本地 Web UI。
+6. 下一步是更新 MDS 代理。 在“软件更新”  页上，转到“更新文件路径”  并浏览到 `GenevaMonitoringAgentPackageInstaller.msi` 文件。 重复步骤 2-4。 在 Virtual Array 重启后，登录到本地 Web UI。
 
 现在已完成更新。
 

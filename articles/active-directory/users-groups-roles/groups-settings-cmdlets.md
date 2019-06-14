@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c9b07e7524488d0336a55af6e1d5f36af59a870
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c5ccc4ef6c095eacd29590504d46756ead856574
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058620"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 本文包含有关使用 Azure Active Directory (Azure AD) PowerShell cmdlet 创建和更新组的说明。 此内容仅适用于 Office 365 组（有时称为统一组）。 
@@ -78,7 +78,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    ```
 6. 你可以阅读使用的值：
 
-  ```powershell
+   ```powershell
    $Setting.Values
    ```  
 ## <a name="update-settings-at-the-directory-level"></a>在目录级别更新设置
@@ -86,7 +86,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 若要删除的 UsageGuideLinesUrl 值，请编辑 URL 为空字符串使用上面的步骤 4:
 
- ```powershell
+   ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
 然后，执行步骤 5 以设置新值。
@@ -112,7 +112,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>示例：在目录级别上配置组的来宾策略
 1. 获取所有设置模板：
-  ```powershell
+   ```powershell
    Get-AzureADDirectorySettingTemplate
    ```
 2. 若要在目录级别的组设置来宾策略，你需要 Group.Unified 模板
@@ -135,7 +135,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    ```
 6. 你可以阅读使用的值：
 
-  ```powershell
+   ```powershell
    $Setting.Values
    ```   
 
@@ -143,9 +143,9 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 如果知道要检索的设置的名称，可以使用以下 cmdlet 检索当前的设置值。 在此示例中，我们要检索名为“UsageGuidelinesUrl”的设置的值。 
 
-  ```powershell
-  (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
-  ```
+   ```powershell
+   (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
+   ```
 这些步骤在目录级别读取设置，这些设置适用于目录中的所有 Office 组。
 
 1. 读取所有现有的目录设置：
@@ -188,11 +188,11 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 ## <a name="remove-settings-at-the-directory-level"></a>在目录级别删除设置
 这些步骤在目录级别删除设置，这些设置适用于目录中的所有 Office 组。
-  ```powershell
-  Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
-  ```
+   ```powershell
+   Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
+   ```
 
-## <a name="update-settings-for-a-specific-group"></a>更新特定组的设置
+## <a name="create-settings-for-a-specific-group"></a>创建特定组的设置
 
 1. 搜索名为“Groups.Unified.Guest”的设置模板
    ```powershell
@@ -219,13 +219,49 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    ```powershell
    $SettingCopy["AllowToAddGuests"]=$False
    ```
-5. 在目录中为所需组创建新设置：
+5. 获取你想要应用到此设置的组 ID:
    ```powershell
-   New-AzureADObjectSetting -TargetType Groups -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -DirectorySetting $SettingCopy
+   $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
    ```
-6. 若要验证设置，请运行以下命令：
+6. 在目录中为所需组创建新设置：
    ```powershell
-   Get-AzureADObjectSetting -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -TargetType Groups | fl Values
+   New-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -DirectorySetting $SettingCopy
+   ```
+7. 若要验证设置，请运行以下命令：
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
+   ```
+
+## <a name="update-settings-for-a-specific-group"></a>更新特定组的设置
+1. 获取你想要更新其设置的组 ID:
+   ```powershell
+   $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
+   ```
+2. 检索组的设置：
+   ```powershell
+   $Setting = Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
+   ```
+3. 更新组的设置，您可以根据需要例如
+   ```powershell
+   $Setting["AllowToAddGuests"] = $True
+   ```
+4. 然后获取此特定组的设置的 ID:
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
+   ```
+   你将收到类似于以下响应：
+   ```powershell
+   Id                                   DisplayName            TemplateId                             Values
+   --                                   -----------            -----------                            ----------
+   2dbee4ca-c3b6-4f0d-9610-d15569639e1a Group.Unified.Guest    08d542b9-071f-4e16-94b0-74abb372e3d9   {class SettingValue {...
+   ```
+5. 然后可以为此设置来设置新值：
+   ```powershell
+   Set-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -Id 2dbee4ca-c3b6-4f0d-9610-d15569639e1a -DirectorySetting $Setting
+   ```
+6. 你可以读取设置，以确保正确更新的值：
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Cmdlet 语法参考

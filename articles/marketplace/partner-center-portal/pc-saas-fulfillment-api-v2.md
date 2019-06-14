@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ms.openlocfilehash: da23b90e44869dcbd21acf9b2c4e04f30153ae09
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66751775"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 Api 版本 2 

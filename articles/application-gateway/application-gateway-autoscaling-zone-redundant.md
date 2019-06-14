@@ -1,20 +1,20 @@
 ---
-title: 自动缩放和在 Azure 中的区域冗余的应用程序网关
+title: 自动缩放和区域冗余的应用程序网关 v2
 description: 本文介绍了 Azure 应用程序 Standard_v2 和 WAF_v2 SKU，其中包括自动缩放和区域冗余的功能。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/1/2019
+ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 7cf6b4984f3941da3b2cd0e4eada5eb1d87f2b01
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431193"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054742"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway"></a>自动缩放和区域冗余的应用程序网关 
+# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余的应用程序网关 v2 
 
 应用程序网关和 Web 应用程序防火墙 (WAF) 也是下 Standard_v2 和 WAF_v2 SKU 提供的。 V2 SKU 提供性能增强功能，并添加了对关键新功能，如自动缩放、 区域冗余和支持为静态 Vip 支持。 标准和 WAF SKU 下的现有功能继续支持在新的 v2 SKU，但有少数例外中列出[比较](#differences-with-v1-sku)部分。
 
@@ -71,7 +71,7 @@ ms.locfileid: "66431193"
 应用程序网关 Standard_v2 固定容量的五个实例而无需手动缩放模式中的自动缩放设置。
 
 固定的价格 = 744(hours) * 0.20 美元 = $148.8 <br>
-容量单位 = 每个实例的 744 （小时） 10 容量单位 * 5 个实例 * 每个容量单位小时 0.008 美元 = $297.6
+容量单位 = 744 （小时数） * 每个实例的 10 个容量单位 * 5 个实例 * 每个容量单位小时 0.008 美元 = $297.6
 
 总价格 = $148.8 + $297.6 = $446.4
 
@@ -85,6 +85,9 @@ ms.locfileid: "66431193"
 
 总价格 = $148。 23.81 8 + = $172.61
 
+> [!NOTE]
+> Max 函数返回的值对中的最大值。
+
 **示例 3**
 
 一个月内预配应用程序网关 WAF_v2。 在此期间，它接收 25 新 SSL 连接数/秒，平均 8.88 Mbps 数据传输，并每秒 80 请求。 假设连接较短，而且，应用程序的计算单元计算每个计算单位支持 10 个 RPS，您的价格将为：
@@ -95,11 +98,14 @@ ms.locfileid: "66431193"
 
 总价格 = $267.84 + $85.71 = $353.55
 
+> [!NOTE]
+> Max 函数返回的值对中的最大值。
+
 ## <a name="scaling-application-gateway-and-waf-v2"></a>缩放应用程序网关和 WAF v2
 
 可以将应用程序网关和 WAF 配置的两种模式中的扩展：
 
-- **自动缩放**-可以通过启用自动缩放，Sku 增加或减少根据应用程序流量需求的应用程序网关和 WAF v2。 此模式提供了更好地为你的应用程序的弹性，无需猜测应用程序网关大小或实例计数。 此模式还可以通过不要求若要运行网关在预计的最大流量负载的预配的峰值容量来节省成本。 客户必须指定的最小值和 （可选） 最大实例计数。 最小容量可确保，应用程序网关和 WAF v2 执行不低于指定即使在流量不存在的最小实例计数。 您将收取此最小容量甚至在没有任何流量。 您还可以选择指定最大实例计数，这可确保应用程序网关不会扩展到指定数量的实例。 将继续付费网关提供服务的流量。 实例计数的范围可以介于 0 到 125。 如果未指定，则最大实例计数的默认值为 20。
+- **自动缩放**-可以通过启用自动缩放，Sku 增加或减少根据应用程序流量需求的应用程序网关和 WAF v2。 此模式提供了更好地为你的应用程序的弹性，无需猜测应用程序网关大小或实例计数。 此模式还可以通过不要求若要运行网关在预计的最大流量负载的预配的峰值容量来节省成本。 客户必须指定的最小值和 （可选） 最大实例计数。 最小容量可确保应用程序网关和 WAF v2 不低于指定即使在流量不存在的最小实例计数。 您将收取此最小容量甚至在没有任何流量。 您还可以选择指定最大实例计数，这可确保应用程序网关不会扩展到指定数量的实例。 将继续付费网关提供服务的流量。 实例计数的范围可以介于 0 到 125。 如果未指定，则最大实例计数的默认值为 20。
 - **手动**-或者，可以选择手动模式下，网关不会自动缩放。 在此模式下，如果没有更多流量比什么应用程序网关或 WAF 可以处理，它可能导致流量丢失。 手动模式下，指定实例计数是必需的。 实例计数可能会不同于 1 到 125 实例。
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>SKU v1 和 v2 SKU 之间的功能比较
@@ -142,11 +148,12 @@ ms.locfileid: "66431193"
 |FIPS 模式|目前不支持。|
 |“仅 ILB”模式|目前不支持。 同时支持公共和 ILB 模式。|
 |Netwatcher 集成|不支持。|
-|Azure 支持中心集成|尚不可用。
+|Azure 安全中心集成|尚不可用。
 
 ## <a name="migrate-from-v1-to-v2"></a>从 v1 迁移到 v2
 
-Azure PowerShell 脚本是帮助您迁移到 v2 自动缩放 SKU 从 v1 应用程序网关/WAF PowerShell 库中。 此脚本可帮助你将配置复制从 v1 网关。 流量迁移仍由你负责。 有关更多详细信息，请参阅[迁移 Azure 应用程序网关从 v1 到 v2](migrate-v1-v2.md)。
+Azure PowerShell 脚本是帮助您迁移到 v2 自动缩放 SKU 从 v1 应用程序网关/WAF PowerShell 库中。 此脚本可帮助你将配置复制从 v1 网关。 流量迁移仍由你负责。 有关详细信息，请参阅[迁移 Azure 应用程序网关从 v1 到 v2](migrate-v1-v2.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户](quick-create-portal.md)

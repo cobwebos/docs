@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: bbaf4d490fcebb4cd741a9b83ffc5d7e85699755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61224338"
 ---
 #  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用 Azure Media Encoder Standard 自动生成比特率阶梯  
@@ -28,11 +28,11 @@ ms.locfileid: "61224338"
 
 ### <a name="encoding-for-streaming-only"></a>编码为仅流式处理
 
-如果打算将源视频编码为仅用于流式处理，则应在创建编码任务时使用“自适应流式处理”预设。 使用“自适应流式处理”预设时，MES 编码器会以智能方式为比特率阶梯设置一个上限。 但是，用户无法控制编码成本，因为是由服务确定要使用的层数和分辨率。 可以在本文末尾看到 MES 生成的输出层示例，这些示例是使用“自适应流式处理”预设进行编码得来的。 输出资产包含无音频和视频交错的 MP4 文件。
+如果打算将源视频编码为仅用于流式处理，则应在创建编码任务时使用“自适应流式处理”预设。 使用“自适应流式处理”预设时，  MES 编码器会以智能方式为比特率阶梯设置一个上限。 但是，用户无法控制编码成本，因为是由服务确定要使用的层数和分辨率。 可以在本文末尾看到 MES 生成的输出层示例，这些示例是使用“自适应流式处理”预设进行编码得来的  。 输出资产包含无音频和视频交错的 MP4 文件。
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>编码为流式处理和渐进式下载
 
-如果打算将源视频编码为用于流式处理以及生成可供渐进式下载的 MP4 文件，则应在创建编码任务时使用“内容自适应多比特率 MP4”预设。 使用“内容自适应多比特率 MP4”预设时，MES 编码器将应用与上述相同的编码逻辑，但现在输出资产将包含音频和视频交叠的 MP4 文件。 可使用其中一个 MP4 文件（例如，最高比特率版本）作为渐进式下载文件。
+如果打算将源视频编码为用于流式处理以及生成可供渐进式下载的 MP4 文件，则应在创建编码任务时使用“内容自适应多比特率 MP4”预设。 使用“内容自适应多比特率 MP4”预设时，MES 编码器将应用与上述相同的编码逻辑，但现在输出资产将包含音频和视频交叠的 MP4 文件  。 可使用其中一个 MP4 文件（例如，最高比特率版本）作为渐进式下载文件。
 
 ## <a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
@@ -40,7 +40,7 @@ ms.locfileid: "61224338"
 
 - 创建编码作业。
 - 获取对 Media Encoder Standard 编码器的引用。
-- 向作业添加一个编码任务，指定使用“自适应流式处理”预设。 
+- 向作业添加一个编码任务，指定使用“自适应流式处理”预设。  
 - 创建包含所编码资产的输出资产。
 - 添加事件处理程序以检查作业进度。
 - 提交作业。
@@ -169,7 +169,7 @@ namespace AdaptiveStreamingMESPresest
 
 ## <a id="output"></a>输出
 
-此部分显示 MES 生成的输出层的三个示例，是使用“自适应流式处理”预设进行编码得来的。 
+此部分显示 MES 生成的输出层的三个示例，是使用“自适应流式处理”  预设进行编码得来的。 
 
 ### <a name="example-1"></a>示例 1
 高度为“1080”，帧速率为“29.970”的源生成 6 个视频层：
@@ -199,7 +199,7 @@ namespace AdaptiveStreamingMESPresest
 
 |层|高度|宽度|比特率 (kbps)|
 |---|---|---|---|
-|1|360|640|700|
+|第|360|640|700|
 |2|270|480|440|
 |3|180|320|230|
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

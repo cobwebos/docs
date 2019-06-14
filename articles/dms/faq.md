@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 856eee294eaa1426bc7c06661ac62ed0f9824dcb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66225352"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答

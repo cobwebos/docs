@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: e7407f62bd3401411d56076b298bd8cd134ece62
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65028090"
 ---
 # <a name="select-columns-in-dataset-module"></a>选择数据集模块中的列
@@ -80,7 +80,7 @@ ms.locfileid: "65028090"
 
 + 如果选择**无列**选项，都为空，启动的列的列表。 然后指定条件*添加*到列表的列。 
 
-    如果应用多个规则，每个条件都**累加性**。 例如，假设您开头没有列，然后再添加一个规则，以获取所有数值列。 在汽车价格数据集，该操作会在 16 个列中。 然后，单击**+** 登录，以添加新的条件，然后选择**包括所有功能**。 生成的数据集包含所有数值列，以及所有特征列，其中包括一些字符串特征列。
+    如果应用多个规则，每个条件都**累加性**。 例如，假设您开头没有列，然后再添加一个规则，以获取所有数值列。 在汽车价格数据集，该操作会在 16 个列中。 然后，单击 **+** 登录，以添加新的条件，然后选择**包括所有功能**。 生成的数据集包含所有数值列，以及所有特征列，其中包括一些字符串特征列。
 
 ### <a name="choose-by-column-index"></a>选择的列索引
 

@@ -1,19 +1,19 @@
 ---
 title: 将 Azure 监视数据流式传输到事件中心
 description: 了解如何将 Azure 监视数据流式传输到事件中心，以将数据获取到合作伙伴 SIEM 或分析工具。
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: johnkem
+ms.author: nikiest
 ms.subservice: ''
-ms.openlocfilehash: 72d744808d6b52ccd151645c97005bfdfe1a5541
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8a4de244d0fa07bfc162625f577015317fca7e6a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243452"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069333"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 
@@ -43,8 +43,8 @@ ms.locfileid: "66243452"
 * 使用吞吐量单位数，可增加事件中心的吞吐量规模。 使用分区数可以在多个使用者之间并行使用。 单个分区最多可以执行 20MBps，或者大约每秒 20,000 条消息。 不一定支持从多个分区使用，具体取决于使用数据的工具。 如果不确定要设置的分区数，我们建议从四个分区开始。
 * 我们建议将事件中心的消息保留期设置为 7 天。 如果使用的工具多天出现故障，这可确保该工具可以从它中断的位置重新开始（因为事件最多可保存 7 天）。
 * 我们建议将默认使用者组用于事件中心。 除非你打算使用两个不同的工具使用同一事件中心内的相同数据，否则无需创建其他使用者组或使用单独的使用者组。
-* 对于 Azure 活动日志中，选择事件中心命名空间和 Azure Monitor 创建名为 insights-日志-operationallogs。 该命名空间中的事件中心 对于其他日志类型，可以选择现有事件中心（可以重复使用同一 insights-logs-operationallogs 事件中心），也可以让 Azure Monitor 为每个日志类别创建一个事件中心。
-* 通常，必须在使用事件中心数据的计算机上打开端口 5671 和端口 5672。
+* 对于 Azure 活动日志中，选择事件中心命名空间和 Azure Monitor 创建名为 insights-日志的操作的日志。 该命名空间中的事件中心 对于其他日志类型，可以选择现有的事件中心 （让你重复使用同一 insights 日志的操作日志事件中心） 或让 Azure Monitor 创建每个日志类别的事件中心。
+* 通常情况下，必须使用来自事件中心的数据的 VNET 在计算机上打开出站端口 5671 和端口 5672。
 
 另请参阅 [Azure 事件中心常见问题解答](../../event-hubs/event-hubs-faq.md)。
 

@@ -11,10 +11,10 @@ ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: cc657e079949b8217031906efeb84049217d6493
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510240"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Twitter 帐户的登录
@@ -35,7 +35,7 @@ ms.locfileid: "66510240"
 1. 使用 Twitter 帐户凭据登录到 [Twitter 开发人员](https://developer.twitter.com/en/apps)网站。
 2. 选择“创建应用”。 
 3. 输入“应用名称”和“应用程序说明”   。
-4. 在“网站 URL”  中，输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如， https://contosob2c.b2clogin.com。
+4. 在“网站 URL”  中，输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如， https://contosob2c.b2clogin.com 。
 5. 对于“回调 URL”  ，输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`。 将 `your-tenant` 替换为你的租户的名称，并将 `your-policy-Id` 替换为你的策略的标识符。 例如，`b2c_1A_signup_signin_twitter`。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
 6. 在页面底部，阅读并接受条款，然后选择“创建”。 
 7. 在“应用详细信息”  页上，选择“编辑”>“编辑详细信息”  ，勾选“启用 Twitter 登录”  框，然后选择“保存”  。
@@ -46,7 +46,7 @@ ms.locfileid: "66510240"
 你需要存储前面在 Azure AD B2C 租户中记录的机密密钥。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 4. 在“概述”页上，选择“标识体验框架 - 预览”  。
 5. 选择“策略密钥”  ，然后选择“添加”  。
@@ -157,7 +157,7 @@ ms.locfileid: "66510240"
 通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 4. 选择“应用程序”，然后选择“添加”   。
 5. 输入应用程序的名称，例如 *testapp1*。

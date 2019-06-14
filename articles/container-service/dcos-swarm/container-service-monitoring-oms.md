@@ -10,10 +10,10 @@ ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
 ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60810002"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务 DC/OS 群集
@@ -43,14 +43,14 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 
    ![](media/container-service-monitoring-oms/image2.png)
 
-2. 单击“安装”。 将看到包含版本信息并带有“安装包”或“高级安装”按钮的弹出窗口。 单击“高级安装”，可转到 **OMS 特定的配置属性**页面。
+2. 单击“安装”  。 将看到包含版本信息并带有“安装包”  或“高级安装”  按钮的弹出窗口。 单击“高级安装”  ，可转到 **OMS 特定的配置属性**页面。
 
    ![](media/container-service-monitoring-oms/image3.png)
 
    ![](media/container-service-monitoring-oms/image4.png)
 
 3. 需在此页面上输入 `wsid`（Log Analytics 工作区 ID）和 `wskey`（工作区 ID 的主键）。 若要获取 `wsid` 和 `wskey`，需要在 <https://mms.microsoft.com> 创建一个帐户。
-   按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取 `wsid` 和 `wskey`，如下所示。
+   按照步骤创建帐户。 帐户创建完成后，依次单击“设置”  、“连接源”  和“Linux 服务器”  ，获取 `wsid` 和 `wskey`，如下所示。
 
    ![](media/container-service-monitoring-oms/image5.png)
 
@@ -64,15 +64,15 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 
 ### <a name="azure-portal"></a>Azure 门户 
 
-在 <https://portal.microsoft.com/> 登录 Azure 门户。 转到“市场”，选择“监视 + 管理”，并单击“查看全部”。 然后在搜索中键入 `containers`。 搜索结果中将显示“容器”。 选择“容器”，并单击“创建”。
+在 <https://portal.microsoft.com/> 登录 Azure 门户。 转到“市场”  ，选择“监视 + 管理”  ，并单击“查看全部”  。 然后在搜索中键入 `containers`。 搜索结果中将显示“容器”。 选择“容器”  ，并单击“创建”  。
 
 ![](media/container-service-monitoring-oms/image9.png)
 
-单击“创建”后，将要求提供工作区。 选择工作区或创建新的工作区（如果没有）。
+单击“创建”  后，将要求提供工作区。 选择工作区或创建新的工作区（如果没有）。
 
 ![](media/container-service-monitoring-oms/image10.PNG)
 
-选择工作区后，单击“创建”。
+选择工作区后，单击“创建”  。
 
 ![](media/container-service-monitoring-oms/image11.png)
 

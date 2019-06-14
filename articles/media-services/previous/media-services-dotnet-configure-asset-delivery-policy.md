@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b5e733c93fef8920c73c8cf460dac7a7051fddb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465603"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>使用 .NET SDK 配置资产传送策略
@@ -30,13 +30,13 @@ ms.locfileid: "61465603"
 本文介绍为何以及如何创建和配置资产传送策略。
 
 >[!NOTE]
->创建 AMS 帐户后，系统会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+>创建 AMS 帐户后，系统会将一个处于“已停止”状态的默认  流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
 >
 >此外，要使用动态打包和动态加密，资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 
 可以将不同的策略应用到同一个资产。 例如，可以将 PlayReady 加密应用到平滑流式处理，将 AES 信封加密应用到 MPEG DASH 和 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果根本没有定义任何资产传送策略，则属例外。 此时，将允许所有明文形式的协议。
 
-如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，再使用指定的传送策略流式传输用户的内容。 例如，若要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为“DynamicEnvelopeEncryption”。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设置为 **NoDynamicEncryption**。 下面是演示如何配置这些策略类型的示例。
+如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，再使用指定的传送策略流式传输用户的内容。 例如，若要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为“DynamicEnvelopeEncryption”  。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设置为 **NoDynamicEncryption**。 下面是演示如何配置这些策略类型的示例。
 
 根据配置资产传送策略的方式，可以动态打包、加密和流式传输以下流式处理协议：平滑流式处理、HLS 和 MPEG DASH。
 
@@ -62,7 +62,7 @@ MPEG DASH
 
 ## <a name="clear-asset-delivery-policy"></a>清除资产传送策略
 
-以下 ConfigureClearAssetDeliveryPolicy 方法会指定不应用动态加密，而是使用以下任一协议传送流：MPEG DASH、HLS 和平滑流式处理协议。 可能需要对存储加密资产应用此策略。
+以下 ConfigureClearAssetDeliveryPolicy 方法会指定不应用动态加密，而是使用以下任一协议传送流：  MPEG DASH、HLS 和平滑流式处理协议。 可能需要对存储加密资产应用此策略。
 
 有关创建 AssetDeliveryPolicy 时可以指定哪些值的信息，请参阅[定义 AssetDeliveryPolicy 时使用的类型](#types)部分。
 
@@ -79,7 +79,7 @@ MPEG DASH
 ```
 ## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption 资产传送策略
 
-以下 **CreateAssetDeliveryPolicy** 方法将创建 **AssetDeliveryPolicy**，该策略配置为将动态常用加密 (**DynamicCommonEncryption**) 应用到平滑流式处理协议（将阻止流式处理其他协议）。 该方法采用以下两种参数：Asset（要将传送策略应用到的资产）和 IContentKey（CommonEncryption 类型的内容密钥。有关详细信息，请参阅：[创建内容密钥](media-services-dotnet-create-contentkey.md#common_contentkey)。
+以下 **CreateAssetDeliveryPolicy** 方法将创建 **AssetDeliveryPolicy**，该策略配置为将动态常用加密 (**DynamicCommonEncryption**) 应用到平滑流式处理协议（将阻止流式处理其他协议）。 该方法采用以下两种参数：Asset（要将传送策略应用到的资产）和 IContentKey（CommonEncryption 类型的内容密钥。有关详细信息，请参阅：    [创建内容密钥](media-services-dotnet-create-contentkey.md#common_contentkey)。
 
 有关创建 AssetDeliveryPolicy 时可以指定哪些值的信息，请参阅[定义 AssetDeliveryPolicy 时使用的类型](#types)部分。
 
@@ -156,7 +156,7 @@ Azure 媒体服务还允许添加 Widevine 加密。 以下示例演示将 PlayR
 > 
 
 ## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption 资产传送策略
-以下 **CreateAssetDeliveryPolicy** 方法将创建 **AssetDeliveryPolicy**，该策略配置为将动态信封加密 (**DynamicEnvelopeEncryption**) 应用到平滑流式处理、HLS 和 DASH 协议（如果不指定协议，则将阻止对这些协议进行流式处理）。 该方法采用以下两种参数：Asset（要将传送策略应用到的资产）和 IContentKey（EnvelopeEncryption 类型的内容密钥。有关详细信息，请参阅：[创建内容密钥](media-services-dotnet-create-contentkey.md#envelope_contentkey)。
+以下 **CreateAssetDeliveryPolicy** 方法将创建 **AssetDeliveryPolicy**，该策略配置为将动态信封加密 (**DynamicEnvelopeEncryption**) 应用到平滑流式处理、HLS 和 DASH 协议（如果不指定协议，则将阻止对这些协议进行流式处理）。 该方法采用以下两种参数：Asset（要将传送策略应用到的资产）和 IContentKey（EnvelopeEncryption 类型的内容密钥。有关详细信息，请参阅：    [创建内容密钥](media-services-dotnet-create-contentkey.md#envelope_contentkey)。
 
 有关创建 AssetDeliveryPolicy 时可以指定哪些值的信息，请参阅[定义 AssetDeliveryPolicy 时使用的类型](#types)部分。   
 

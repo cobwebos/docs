@@ -11,13 +11,13 @@ ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 41cdec1d7f1c3932b17da6f9b1de518071f3f542
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65028075"
 ---
-# <a name="train-clustering-model"></a>训练聚类分析模型
+# <a name="train-clustering-model"></a>训练聚类模型
 
 本指南介绍了 Azure 机器学习服务的可视界面 （预览版） 的模块。
 

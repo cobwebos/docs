@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 18e1bb486c47baf7648a74e31451e2db73f72250
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 23ba45804632163cc5de41ac2353091b7cf850c1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063198"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>准备数据以创建自定义语音
 
@@ -49,7 +49,7 @@ ms.locfileid: "65156855"
 若要生成良好的语音字体，请在一个安静的房间内使用高质量麦克风创建录制。 一致的卷，说到速率，说话音调、 和的富有表现力习惯动作是语音的必不可少的。
 
 > [!TIP]
-> 若要创建生产用的语音，建议使用专业录音棚和语音专家。 有关详细信息，请参阅[如何录制自定义语音的语音示例](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/record-custom-voice-samples)。
+> 若要创建生产用的语音，建议使用专业录音棚和语音专家。 有关详细信息，请参阅[如何录制自定义语音的语音示例](record-custom-voice-samples.md)。
 
 ### <a name="audio-files"></a>音频文件
 

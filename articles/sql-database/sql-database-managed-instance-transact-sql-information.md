@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5c8a15aa5198983a56a0238c1bb56f9345d07acc
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258592"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070358"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -276,6 +276,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="sql-server-agent"></a>SQL Server 代理
 
+- 托管实例中当前不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
 - SQL Server 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。 
 - 作业
   - 支持 T-SQL 作业步骤。
@@ -456,13 +457,13 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 请参阅[扩展存储过程](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)。
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 
-## <a name="Environment"></a>Environmet 约束
+## <a name="Environment"></a>环境约束的限制
 
 ### <a name="subnet"></a>子网
 - 在为你的托管实例保留的子网不能将任何其他资源 （例如虚拟机）。 将这些资源放在其他子网。
 - 子网必须具有足够数量的可用[IP 地址](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 最小值是 16，而建议是在子网中拥有至少 32 个 IP 地址。
 - [服务终结点不能为与托管的实例子网相关联](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 创建虚拟网络时，请务必禁用“服务终结点”选项。
-- 数量和类型的实例，可以将它们放在子网在一定程度上[约束和限制](sql-database-managed-instance-resource-limits.md#strategies-for-deploying-mixed-general-purpose-and-business-critical-instances)
+- Vcore 数目和类型的实例可以在一个区域中部署的具有一些[约束和限制](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)。
 - 有一些[必须应用于子网的安全规则](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。
 
 ### <a name="vnet"></a>VNET

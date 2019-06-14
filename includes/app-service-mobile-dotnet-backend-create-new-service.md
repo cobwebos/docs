@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
 ms.openlocfilehash: be8384225d213cd83cbbac8bdfb92ec1e823c38b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235970"
 ---
 1. 登录到 [Azure 门户]。
@@ -21,11 +21,11 @@ ms.locfileid: "66235970"
 
 3. 在“搜索”框中键入“移动应用”  。
 
-4. 在结果列表中，选择**移动应用**，然后选择**创建**。
+4. 在结果列表中，选择“移动应用”  ，然后选择“创建”  。
 
 5. 选择一个唯一**应用名称**。 此名称也将成为应用服务的域名的一部分。
 
-6. 选择**订阅**此移动应用程序。
+6. 为此移动应用选择“订阅”  。
 
 7. 在“资源组”下  ，选择现有资源组，_或_创建新组（使用与应用相同的名称）。
 

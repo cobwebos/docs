@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e12dc6bf9bcb50dc58e7730f3a08dd6a9d4440
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ceae908b37c825721a42c49db4503382eb35c71c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66512202"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055101"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 应用程序
 
@@ -46,7 +46,7 @@ ms.locfileid: "66512202"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 请务必使用包含 Azure AD 租户的目录，具体方法是：单击顶部菜单中的“目录和订阅筛选器”  ，再选择包含 Azure AD 租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”   。
+3. 选择**所有服务**左上角的 Azure 门户中，然后搜索并选择**应用注册 （旧版）** 。
 4. 选择“新建应用程序注册”  。
 5. 输入应用程序的名称。 例如，`Azure AD B2C App`。
 6. 对于“应用程序类型”，选择 `Web app / API`  。
@@ -106,7 +106,7 @@ ms.locfileid: "66512202"
     例如，`https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`。
 
 8. 对于“客户端 ID”  ，输入先前记录的应用程序 ID；对于“客户端密码”  ，输入先前记录的密钥值。
-9. （可选）输入  Domain_hint 的值。 例如，`ContosoAD`。 
+9. （可选）输入  Domain_hint 的值。 例如，`ContosoAD`。 域提示 (https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) 是从应用程序的身份验证请求中包含的指令。 它们可用于加速将用户转到其联合的 IdP 登录页。 或者可由多租户应用程序用来帮助用户更快地直接转到其租户的品牌 Azure AD 登录页。
 10. 单击“确定”。 
 11. 选择“映射此标识提供者的声明”  并设置以下声明：
     

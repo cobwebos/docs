@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d2f0956b44d6df64fb73e5eee7844574237d8755
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067639"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>在 Azure AD Connect 中修复已修改的默认规则
@@ -166,7 +166,7 @@ Azure AD 同步负责的大多数对象。 可以缩小的作用域的对象，�
 
 ![Synchronization Service Manager](media/how-to-connect-fix-default-rules/default11.png)
 
-上**Metaverse 对象属性**，选择**连接器**，选择相应的连接器 （林） 中的对象，并选择**属性...**.
+上**Metaverse 对象属性**，选择**连接器**，选择相应的连接器 （林） 中的对象，并选择**属性...** .
 
 ![Metaverse 对象属性](media/how-to-connect-fix-default-rules/default12.png)
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: 819f6ee4ab079361279a567bceeb74c33fe14186
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60952341"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志的性能监视
@@ -36,11 +36,11 @@ ms.locfileid: "60952341"
 
 1. 请求 Cloud Shell 之后，请确保在资源所在的订阅中工作。 请使用 `az account show` 进行检查，并确保“名称”值与群集订阅的值匹配。
 
-2. 在门户中，导航到 Log Analytics 工作区所在的资源组。 单击进入 log analytics 资源 （资源类型为 Log Analytics 工作区）。 进入资源概述页后，单击左侧菜单中“设置”部分下面的“高级设置”。
+2. 在门户中，导航到 Log Analytics 工作区所在的资源组。 单击进入 log analytics 资源 （资源类型为 Log Analytics 工作区）。 进入资源概述页后，单击左侧菜单中“设置”部分下面的“高级设置”。 
 
     ![Log analytics 属性页](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
 
-3. 若要建立 Windows 群集，请单击“Windows 服务器”；若要创建 Linux 群集，请单击“Linux 服务器”。 此页将显示 `workspace ID` 和 `workspace key`（在门户中列为“主键”）。 下一步骤需要使用这两个值。
+3. 若要建立 Windows 群集，请单击“Windows 服务器”；若要创建 Linux 群集，请单击“Linux 服务器”   。 此页将显示 `workspace ID` 和 `workspace key`（在门户中列为“主键”）。 下一步骤需要使用这两个值。
 
 4. 使用 Cloud Shell 中的 `vmss extension set` API 运行命令，将 Log Analytics 代理安装到群集中：
 
@@ -76,19 +76,19 @@ ms.locfileid: "60952341"
 
 添加 Log Analytics 代理后，请转到 Log Analytics 门户，选择要收集的性能计数器。
 
-1. 在 Azure 门户中，转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**。
+1. 在 Azure 门户中，转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfLog AnalyticsWorkspace\>** 。
 
-2. 单击“Log Analytics”。
+2. 单击“Log Analytics”  。
 
-3. 单击“高级设置”。
+3. 单击“高级设置”  。
 
-4. 单击“数据”，然后单击“Windows 或 Linux 性能计数器”。 此时会显示一个可以选择的默认计数器列表，此外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)中介绍了正确的格式。
+4. 单击“数据”  ，然后单击“Windows 或 Linux 性能计数器”  。 此时会显示一个可以选择的默认计数器列表，此外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)中介绍了正确的格式。
 
-5. 单击“保存”，然后单击“确定”。
+5. 单击“保存”，然后单击“确定”   。
 
 6. 关闭“高级设置”边栏选项卡。
 
-7. 在“常规”标题下，单击“工作区摘要”。
+7. 在“常规”标题下，单击“工作区摘要”  。
 
 8. 将看到每个已启用的解决方案的图形形式的磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
 

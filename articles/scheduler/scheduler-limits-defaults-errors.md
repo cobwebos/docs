@@ -3,19 +3,18 @@ title: Azure 计划程序中的限制、配额和阈值
 description: 了解 Azure 计划程序的限制、配额、默认值和限制阈值
 services: scheduler
 ms.service: scheduler
-author: WenJason
-ms.author: v-jay
+author: derek1ee
+ms.author: deli
 ms.reviewer: klam
 ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.topic: article
-origin.date: 08/18/2016
-ms.date: 11/12/2018
+ms.date: 08/18/2016
 ms.openlocfilehash: 478afb20f3dabec74d66d00bec325408ce6604fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531288"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64713735"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Azure 计划程序中的限制、配额和限制阈值
 

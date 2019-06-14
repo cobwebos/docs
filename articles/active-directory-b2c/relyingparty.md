@@ -11,10 +11,10 @@ ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 2b5e9bfe6eaa9b84e259d941760792635a2994f4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512841"
 ---
 # <a name="relyingparty"></a>RelyingParty
@@ -131,7 +131,7 @@ SingleSignOn  元素包含在以下属性中：
 
 JourneyInsights  元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 | 
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
@@ -168,7 +168,7 @@ ContentDefinitionParameters  元素包含以下属性：
 
 **TechnicalProfile** 元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- | 
 | Id | 是 | 值必须是 `PolicyProfile`。 |
 
@@ -185,7 +185,7 @@ ContentDefinitionParameters  元素包含以下属性：
 
 Protocol  元素包含以下属性：
 
-| 特性 | 必选 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | Name | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 不要在生产环境中使用 SAML 令牌。 |
 
@@ -199,7 +199,7 @@ OutputClaims  元素包含以下元素：
 
 OutputClaim  元素包含以下属性：
 
-| 特性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema  部分定义的 ClaimType  的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
@@ -208,7 +208,7 @@ OutputClaim  元素包含以下属性：
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 使用 SubjectNameingInfo  元素，可以控制令牌使用者的值：
-- **JWT 令牌**-`sub`声明。 这是令牌针对其断言信息的主体，例如应用程序的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 有关详细信息，请参阅[令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。
+- **JWT 令牌** - `sub` 声明。 这是令牌针对其断言信息的主体，例如应用程序的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 有关详细信息，请参阅[令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。
 - SAML 令牌  - 标识使用者元素的 `<Subject><NameID>` 元素。
 
 SubjectNamingInfo  元素包含以下属性：

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919152"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>为 Microsoft 客户协议设置计费帐户
@@ -81,7 +81,7 @@ ms.locfileid: "64919152"
 
 用户在你的组织，Microsoft 客户协议签名者添加为上计费的配置文件的所有者。 请求用户，以便您可以完成安装程序将你添加为所有者。  <!-- Todo Are there any next steps -->
 
-## <a name="understand-changes-to-your-billing-hierarchy"></a>了解对计费层级结构的更改
+## <a name="understand-changes-to-your-billing-hierarchy"></a>了解对你计费的层次结构的更改
 
 新的计费帐户简化了为你的组织同时提供增强的计费和成本管理功能计费。 下图说明如何计费的组织结构的新的计费帐户。
 
@@ -205,7 +205,7 @@ ms.locfileid: "64919152"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 在“成本管理 + 计费”  中进行搜索。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -221,7 +221,7 @@ ms.locfileid: "64919152"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 在“成本管理 + 计费”  中进行搜索。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -241,7 +241,7 @@ ms.locfileid: "64919152"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 在“成本管理 + 计费”  中进行搜索。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
@@ -257,7 +257,7 @@ ms.locfileid: "64919152"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 在“成本管理 + 计费”  中进行搜索。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png).
 

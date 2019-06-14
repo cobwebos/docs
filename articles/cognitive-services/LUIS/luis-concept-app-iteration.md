@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: 67bcb33727bc808f5e5bea701daffc77dde736ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813764"
 ---
 # <a name="authoring-cycle-for-your-luis-app"></a>LUIS 应用的创作周期
@@ -33,7 +33,7 @@ LUIS 在反复的模型变更、陈述示例、发布以及从终结点查询收
 ## <a name="add-training-examples"></a>添加训练示例
 LUIS 需要意向的示例陈述。 这些示例需要有足够的字词选择和字词顺序方面的变化，才能确定陈述的意向。 每个示例陈述都需要将任何所需的数据标记为实体。 
 
-通过将陈述分配到 None 意向，指示 LUIS 忽略与应用域不相关的陈述。 任何不需要从陈述中提取出来的字词或短语都不需要进行标记。 要忽略的字词或短语均无标记。 
+通过将陈述分配到 None 意向，指示 LUIS 忽略与应用域不相关的陈述  。 任何不需要从陈述中提取出来的字词或短语都不需要进行标记。 要忽略的字词或短语均无标记。 
 
 ## <a name="train-and-publish-the-app"></a>训练并发布应用
 每个意向具有 10 到 15 个不同的话语并且所需实体被标记后，就可以进行训练并发布。 使用发布成功通知中的链接获取终结点。 确保创建应用并发布应用，以便它在需要的[终结点区域](luis-reference-regions.md)中可用。 

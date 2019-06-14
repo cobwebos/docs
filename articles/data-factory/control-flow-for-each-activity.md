@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: shlo
 ms.openlocfilehash: c5c12a66e8f66195a096588d779648d7486ab47b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60808769"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
@@ -69,14 +69,14 @@ ForEach 活动在管道中定义重复的控制流。 此活动用于循环访�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-名称 | For-Each 活动的名称。 | String | 是
+name | For-Each 活动的名称。 | String | 是
 type | 必须设置为 **ForEach** | String | 是
 isSequential | 指定是否应按顺序或并行执行循环。  一次最多可以并行执行 20 个循环迭代。 例如，如果你有 ForEach 活动，在 **isSequential** 设置为 False 的情况下循环访问含有 10 个不同源和接收器数据集的复制活动，所有副本都执行一次。 默认值为 false。 <br/><br/> 如果“isSequential”被设置为 False，则确保有运行多个可执行文件的正确配置。 否则，应谨慎使用此属性，以避免产生写入冲突。 有关详细信息，请参阅[并行执行](#parallel-execution)部分。 | Boolean | 不。 默认值为 false。
 batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 | 整数（最大值为 50） | 不。 默认值为 20。
-Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回 JSON 数组） | 是
-活动 | 要执行的活动。 | 活动列表 | 是
+项 | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回 JSON 数组） | 是
+activities | 要执行的活动。 | 活动列表 | 是
 
 ## <a name="parallel-execution"></a>并行执行
 如果 **isSequential** 被设置为 False，则活动以并行方式迭代，最多包含 20 个并发迭代。 应谨慎使用此设置。 如果并发迭代写入同一文件夹中的不同文件，此方法仍然适用。 如果并发迭代以并发的方式写入同一文件，则此方法很有可能出错。 
@@ -476,7 +476,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 
 聚合输出的__foreach__活动，请利用_变量_并_追加变量_活动。
 
-首先，在管道中声明 `array` 变量。 然后，在每个 foreach 循环内调用追加变量活动。 随后，你可以从数组中检索聚合。
+首先，在管道中声明 `array` 变量  。 然后，在每个 foreach  循环内调用追加变量  活动。 随后，你可以从数组中检索聚合。
 
 ## <a name="limitations-and-workarounds"></a>限制和解决方法
 

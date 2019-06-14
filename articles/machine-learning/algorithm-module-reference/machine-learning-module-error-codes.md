@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 09a2b616e2bba93be86241c64d37daec7d6dea3b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65029755"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>异常和错误代码，这些算法和模块参考
@@ -1192,7 +1192,7 @@ Hive 中的错误消息是正常情况下报告回错误日志中，以便您可
   
  如果没有 SQL 生成消息由模块异常报告，需要基于所报告的错误的操作。 例如，错误消息有时包括可能的错误的具体指导：
 + *没有这样的列或丢失的数据库*，指示可能有键入错误的列名称。 如果您确信列名称正确无误，请尝试使用括号或引号括起来的列标识符。
-+ *SQL 逻辑附近存在语法错误\<SQL 关键字\>*，表明您可能有之前指定关键字的语法错误
++ *SQL 逻辑附近存在语法错误\<SQL 关键字\>* ，表明您可能有之前指定关键字的语法错误
 
   
 |异常消息|  
@@ -1879,7 +1879,7 @@ Hive 中的错误消息是正常情况下报告回错误日志中，以便您可
 |异常消息|  
 |------------------------|  
 |指定的文件未找到该 zip 文件的 int。|  
-|未找到指定的文件。 找到以下文件： {0}|  
+|找不到指定的文件。 找到以下文件： {0}|  
   
 
 ## <a name="error-0134"></a>错误 0134

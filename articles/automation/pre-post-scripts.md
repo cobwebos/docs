@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7317b634ee4c8886ce5c99bb2b3395d7d1f646d5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8a11602919a8b68a078b0b2690411358b4b5f814
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65913859"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063495"
 ---
 # <a name="manage-pre-and-post-scripts"></a>管理 pre 和 post 脚本
 
@@ -26,21 +26,21 @@ ms.locfileid: "65913859"
 
 ## <a name="using-a-prepost-script"></a>使用前脚本/后脚本
 
-若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择**操作前脚本 + 后处理脚本**。 此操作会打开“选择前脚本 + 后脚本”页面。  
+若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择**操作前脚本 + 后处理脚本**。 此操作会打开“选择前脚本 + 后脚本”页面。   
 
 ![选择脚本](./media/pre-post-scripts/select-scripts.png)
 
-选择要使用的脚本，本示例使用了 **UpdateManagement-TurnOnVms** Runbook。 当选择 runbook**配置脚本**页随即打开，选择**前脚本**。 完成后单击“确定”。
+选择要使用的脚本，本示例使用了 **UpdateManagement-TurnOnVms** Runbook。 当选择 runbook**配置脚本**页随即打开，选择**前脚本**。 完成后单击“确定”  。
 
-针对 **UpdateManagement-TurnOffVms** 脚本重复此过程。 但是，在选择“脚本类型”时，请选择“后脚本”。
+针对 **UpdateManagement-TurnOffVms** 脚本重复此过程。 但是，在选择“脚本类型”时，请选择“后脚本”。  
 
-现在，“选定的项”部分会显示选择的两个脚本：一个前脚本，一个后脚本。
+现在，“选定的项”部分会显示选择的两个脚本：一个前脚本，一个后脚本。 
 
 ![选定的项](./media/pre-post-scripts/selected-items.png)
 
 完成更新部署的配置。
 
-更新部署完成后，可以转到“更新部署”查看结果。 可以看到，此处提供了前脚本和后脚本的状态。
+更新部署完成后，可以转到“更新部署”查看结果。  可以看到，此处提供了前脚本和后脚本的状态。
 
 ![更新结果](./media/pre-post-scripts/update-results.png)
 
@@ -64,11 +64,11 @@ ms.locfileid: "65913859"
 
 如果需要其他对象类型，可以在 runbook 中使用自己的逻辑将它强制转换为其他类型。
 
-除了标准的 Runbook 参数以外，还提供了一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串；如果在前脚本或后脚本中定义该参数，更新部署会自动传入该参数。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
+除了标准的 Runbook 参数以外，还提供了一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串，并且如果前置或后置脚本中定义该参数，则会自动传递中的更新部署。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
 
 ## <a name="stopping-a-deployment"></a>停止某一部署
 
-如果你想要停止的部署前脚本，您必须基于[引发](automation-runbook-execution.md#throw)异常。 如果不会引发异常，仍将运行的部署和后脚本。 [示例 runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0)在库中显示了如何执行此操作。 下面是该 runbook 的代码段。
+如果你想要停止基于前脚本的部署，则必须[引发](automation-runbook-execution.md#throw)异常。 如果您不会引发异常，仍将运行的部署和后脚本。 [示例 runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0)在库中显示了如何执行此操作。 下面是该 runbook 的代码段。
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -136,7 +136,7 @@ foreach($summary in $finalStatus)
 
 ## <a name="samples"></a>示例
 
-可以在[脚本中心库](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell)中找到前脚本和后脚本的示例，或者可以通过 Azure 门户导入这些示例。 若要通过门户导入这些示例，请在自动化帐户中的“过程自动化”下，选择“Runbook 库”。 使用“更新管理”作为筛选器。
+可以在[脚本中心库](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell)中找到前脚本和后脚本的示例，或者可以通过 Azure 门户导入这些示例。 若要通过门户导入这些示例，请在自动化帐户中的“过程自动化”下，选择“Runbook 库”。   使用“更新管理”作为筛选器。 
 
 ![库列表](./media/pre-post-scripts/runbook-gallery.png)
 
@@ -149,7 +149,7 @@ foreach($summary in $finalStatus)
 * 更新管理 - 具有 Run 命令运行脚本
 
 > [!IMPORTANT]
-> 导入 Runbook 后，必须先**发布**，然后才可以使用它们。 为此，请在自动化帐户中找到该 Runbook，选择“编辑”，然后单击“发布”。
+> 导入 Runbook 后，必须先**发布**，然后才可以使用它们。 为此，请在自动化帐户中找到该 Runbook，选择“编辑”，然后单击“发布”。  
 
 所有这些示例基于以下示例中定义的基本模板。 使用此模板可以创建自己的 Runbook 来配合前脚本和后脚本。 此模板还包含了用于在 Azure 中进行身份验证以及处理 `SoftwareUpdateConfigurationRunContext` 参数的逻辑。
 
@@ -210,7 +210,7 @@ Pre 和 post 的任务作为 runbook 在自动化帐户中并不是直接在你�
 
 ### <a name="interacting-with-azure-machines"></a>与 Azure 机交互
 
-Pre 和 post 的任务是以 runbook 的形式运行，在你的部署中的 Azure Vm 上不以本机方式运行。 若要与 Azure 虚拟机进行交互，必须具有以下各项：
+Pre 和 post 任务以 runbook 的形式运行，并不在你的部署中的 Azure Vm 上本机运行。 若要与 Azure 虚拟机进行交互，必须具有以下各项：
 
 * 一个运行方式帐户
 * 你想要运行 runbook
@@ -239,9 +239,10 @@ if (<My custom error logic>)
     throw "There was an error, abort deployment"
 }
 ```
+
 ## <a name="known-issues"></a>已知问题
 
-* 使用前脚本和后脚本时，无法将对象或数组传递给参数。 Runbook 将会失败。
+* 你无法向参数传递一个布尔值、 对象或数组时使用 pre 和 post 脚本。 Runbook 将会失败。 有关支持的类型的完整列表，请参阅[参数](#passing-parameters)。
 
 ## <a name="next-steps"></a>后续步骤
 

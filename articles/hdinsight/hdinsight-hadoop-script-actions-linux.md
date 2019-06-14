@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687446"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
@@ -73,7 +73,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="bps10"></a> 目标操作系统版本
+### <a name="bps10"></a> 确定针对的操作系统版本
 
 基于 Linux 的 HDInsight 取决于 Ubuntu Linux 分发。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 和更高版本取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
 
@@ -146,7 +146,7 @@ fi
 
 在群集上安装的组件可能具有使用 Apache Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 HDInsight 使用 Azure 存储或 Data Lake Storage 作为默认存储。 两者可以提供与 HDFS 兼容的文件系统，即使删除了群集，也能保存数据。 可能需要将安装的组件配置为使用 WASB 或 ADL，而不是 HDFS。
 
-对于大多数操作，不需要指定文件系统。 例如，以下脚本将复制 hadoop common.jar 文件从本地文件系统到群集存储：
+对于大多数操作，不需要指定文件系统。 例如，以下脚本将 hadoop-common.jar 文件从本地文件系统复制到群集存储：
 
 ```bash
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
@@ -256,7 +256,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 在某些情况下，脚本可能需要参数。 例如，使用 Ambari REST API 时，可能需要群集的管理员密码。
 
-传递给脚本的参数称为“位置参数”，将分配到 `$1` 作为第一个参数，分配到 `$2` 作为第二个参数，依此类推。 `$0` 包含该脚本本身的名称。
+传递给脚本的参数称为“位置参数”  ，将分配到 `$1` 作为第一个参数，分配到 `$2` 作为第二个参数，依此类推。 `$0` 包含该脚本本身的名称。
 
 作为参数传递给脚本的值应括在单引号 (') 中。 这样可以确保将传递的值视为文本。
 

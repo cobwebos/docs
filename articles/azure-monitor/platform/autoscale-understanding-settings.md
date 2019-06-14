@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.component: autoscale
+ms.subservice: autoscale
 ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787489"
 ---
 # <a name="understand-autoscale-settings"></a>了解自动缩放设置
@@ -92,11 +92,11 @@ ms.locfileid: "60787489"
 | 部分 | 元素名称 | 描述 |
 | --- | --- | --- |
 | 设置 | ID | 自动缩放设置的资源 ID。 自动缩放设置属于 Azure 资源管理器资源。 |
-| 设置 | 名称 | 自动缩放设置的名称。 |
+| 设置 | name | 自动缩放设置的名称。 |
 | 设置 | 位置 | 自动缩放设置的位置。 此位置可与缩放的资源所在的位置不同。 |
 | properties | targetResourceUri | 缩放的资源的资源 ID。 针对每个资源，只能使用一项自动缩放设置。 |
 | properties | 配置文件 | 自动缩放设置由一个或多个配置文件组成。 自动缩放引擎每次运行时，将会执行一个配置文件。 |
-| 个人资料 | 名称 | 配置文件的名称。 可以选择有助于识别该配置文件的任何名称。 |
+| 个人资料 | name | 配置文件的名称。 可以选择有助于识别该配置文件的任何名称。 |
 | 个人资料 | Capacity.maximum | 允许的最大容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源扩展到超过此数字。 |
 | 个人资料 | Capacity.minimum | 允许的最小容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源缩减到低于此数字。 |
 | 个人资料 | Capacity.default | 如果读取资源指标（在本例中，为“vmss1”的 CPU）时出现问题，且当前容量低于默认容量，则自动缩放将扩展到默认值。 这是为了确保资源可用性。 如果当前容量已大于默认容量，则自动缩放不会缩减。 |
@@ -107,11 +107,11 @@ ms.locfileid: "60787489"
 | metricTrigger | timeGrain | 指标采样持续时间。 例如，**TimeGrain = "PT1M"** 表示应使用 statistic 元素中指定的聚合方法每分钟聚合一次指标。 |
 | metricTrigger | statistic | timeGrain 时间段内的聚合方法。 例如，**statistic = "Average"** 且 **timeGrain = "PT1M"** 表示每分钟取平均值来聚合指标。 此属性规定指标的采样方式。 |
 | metricTrigger | timeWindow | 查找指标的时间范围。 例如，**timeWindow = "PT10M"** 表示自动缩放每次运行时，都会查询过去 10 分钟的指标。 使用该时间范围可将指标规范化，避免对暂时性的峰值作出反应。 |
-| metricTrigger | timeAggregation | 用于聚合已采样指标的聚合方法。 例如，如果 **TimeAggregation = "Average"**，则应取平均值来聚合采样的指标。 上例取 10 个 1 分钟样本并求其平均值。 |
+| metricTrigger | timeAggregation | 用于聚合已采样指标的聚合方法。 例如，如果 **TimeAggregation = "Average"** ，则应取平均值来聚合采样的指标。 上例取 10 个 1 分钟样本并求其平均值。 |
 | 规则 | scaleAction | 触发规则的 metricTrigger 时要执行的操作。 |
 | scaleAction | direction | “Increase”表示扩展，“Decrease”表示缩减。|
 | scaleAction | value | 要将资源容量增大或减小多少。 |
-| scaleAction | cooldown | 在执行缩放操作之后、再次执行缩放操作之前所要等待的时间。 例如，如果 **cooldown = "PT10M"**，则自动缩放只会在 10 分钟之后才尝试再次执行缩放。 在添加或删除实例之后，cooldown（冷却）可让指标变稳定。 |
+| scaleAction | cooldown | 在执行缩放操作之后、再次执行缩放操作之前所要等待的时间。 例如，如果 **cooldown = "PT10M"** ，则自动缩放只会在 10 分钟之后才尝试再次执行缩放。 在添加或删除实例之后，cooldown（冷却）可让指标变稳定。 |
 
 ## <a name="autoscale-profiles"></a>自动缩放配置文件
 
@@ -310,3 +310,4 @@ ms.locfileid: "60787489"
 * [Azure 监视器自动缩放的最佳做法](../../azure-monitor/platform/autoscale-best-practices.md)
 * [使用自动缩放操作发送电子邮件和 webhook 警报通知](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+

@@ -8,22 +8,22 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 345f492c5b2c754cbbcfa150561ee06b5a4154a5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718682"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>在中使用 curl 通过 HDInsight 运行 Apache Sqoop 作业
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Curl 在 HDInsight 中的 Apache Hadoop 群集上运行 Apache Sqoop 作业。 本文演示如何从 Azure 存储中导出数据并将其导入 SQL Server 数据库，使用 Curl。 本文是的延续[使用 HDInsight 中的 Hadoop 使用 Apache Sqoop](./hdinsight-use-sqoop.md)。
+了解如何使用 Curl 在 HDInsight 中的 Apache Hadoop 群集上运行 Apache Sqoop 作业。 本文演示如何从 Azure 存储中导出数据并将其导入 SQL Server 数据库，使用 Curl。 本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)的续篇。
 
 本文档使用 Curl 演示如何使用原始 HTTP 请求来与 HDInsight 交互，以便运行、监视和检索 Sqoop 作业的结果。 若要执行这些操作，需要使用 HDInsight 群集提供的 WebHCat REST API（前称 Templeton）。
 
 ## <a name="prerequisites"></a>必备组件
 
-* 完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)从[使用 HDInsight 中的 Hadoop 使用 Apache Sqoop](./hdinsight-use-sqoop.md)。
+* 从[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)中完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
 * 若要查询 Azure SQL 数据库客户端。 请考虑使用[SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md)或[Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)。
 
@@ -87,7 +87,7 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
    > [!NOTE]  
    > 此 Curl 请求返回具有作业相关信息的 JavaScript 对象表示法 (JSON) 文档；使用 jq 可以仅检索状态值。
 
-4. 在作业的状态更改为“SUCCEEDED”后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `wasb:///example/data/sqoop/curl`。 此地址会将存储在作业的输出`example/data/sqoop/curl`目录上的 HDInsight 群集使用的默认存储容器。
+4. 在作业的状态更改为“SUCCEEDED”  后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `wasb:///example/data/sqoop/curl`。 此地址会将存储在作业的输出`example/data/sqoop/curl`目录上的 HDInsight 群集使用的默认存储容器。
 
     可使用 Azure 门户访问 stderr 和 stdout blob。
 

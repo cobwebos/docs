@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64867969"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
@@ -52,9 +52,9 @@ Azure Monitor 指标收集的数据存储在时序数据库中，该数据库经
 * 如[多维指标](#multi-dimensional-metrics)中所述，某指标可能包含多个维度。 自定义指标最多可以包含 10 个维度。
 
 ## <a name="multi-dimensional-metrics"></a>多维指标
-指标数据的一大难题在于，它通常包含有限的信息，以致无法提供所收集值的上下文。 Azure Monitor 通过多维指标解决了这一难题。 指标维度是携带附加数据来描述指标值的名称/值对。 例如，指标“可用磁盘空间”可能包含名为“驱动器”并具有值“C:”和“D:”的维度，通过此维度可以查看所有驱动器的可用磁盘空间，或者可以分别查看每个驱动器的可用磁盘空间。
+指标数据的一大难题在于，它通常包含有限的信息，以致无法提供所收集值的上下文。 Azure Monitor 通过多维指标解决了这一难题。 指标维度是携带附加数据来描述指标值的名称/值对。 例如，指标“可用磁盘空间”可能包含名为“驱动器”并具有值“C:”和“D:”的维度，通过此维度可以查看所有驱动器的可用磁盘空间，或者可以分别查看每个驱动器的可用磁盘空间。    
 
-以下示例演示了名为“网络吞吐量”的假设指标的两个数据集。 第一个数据集不包含维度。 第二个数据集使用两个维度（_IP 地址_和_方向_）显示值：
+以下示例演示了名为“网络吞吐量”的假设指标的两个数据集。  第一个数据集不包含维度。 第二个数据集使用两个维度（_IP 地址_和_方向_）显示值：
 
 ### <a name="network-throughput"></a>网络吞吐量
 
@@ -93,14 +93,14 @@ Azure Monitor 从三个基本源收集指标。 在 Azure Monitor 指标数据�
 
 **来宾 OS 指标**是从虚拟机的来宾操作系统收集的。 对于 Windows 虚拟机和 Linux 虚拟机，可以分别使用 [Windows 诊断扩展 (WAD)](../platform/diagnostics-extension-overview.md) 和 [InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)启用来宾 OS 指标。
 
-**应用程序指标**由 Application Insights 为受监视的应用程序创建，可帮助检测性能问题，以及跟踪应用程序的用法趋势。 此类指标包括“服务器响应时间”和“浏览器异常”等值。
+**应用程序指标**由 Application Insights 为受监视的应用程序创建，可帮助检测性能问题，以及跟踪应用程序的用法趋势。 此类指标包括“服务器响应时间”和“浏览器异常”等值。  
 
 **自定义指标**是在自动提供的标准指标之外定义的指标。 可以在受 Application Insights 监视的[应用程序中定义自定义指标](../app/api-custom-events-metrics.md)，或者使用[自定义指标 API](metrics-store-custom-rest-api.md) 为 Azure 服务创建自定义指标。
 
 ## <a name="retention-of-metrics"></a>指标的保留期
-有关在 Azure 中的大多数资源，存储指标 93 天。 有一些例外情况：
-  * **经典的来宾 OS 指标**。 经典的来宾 OS 指标将保留 14 天。 对于较长的保留期，我们建议使用与收集的新来宾 OS 指标[Windows 诊断扩展 (WAD)](../platform/diagnostics-extension-overview.md)以及与 Linux 虚拟机[InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)。
-  * **Application Insights 的基于日志的指标**。 在场景后面[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md)转换日志查询。 其数据保留与基础日志中的事件的保留期相匹配。 有关 Application Insights 资源，日志存储 90 天。 
+对于 Azure 中的大多数资源，指标存储 93 天。 有一些例外情况：
+  * **经典来宾 OS 指标**。 经典来宾 OS 指标会保留 14 天。 若要保留期更长，我们建议使用新的来宾 OS 指标，这些指标使用 [Windows 诊断扩展 (WAD)](../platform/diagnostics-extension-overview.md) 收集，并用于具有 [InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)的 Linux 虚拟机。
+  * **Application Insights 基于日志的指标**。 在场景后面[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md)转换日志查询。 其保留期与基础日志中事件的保留期相匹配。 对于 Application Insights 资源，日志存储 90 天。 
 
 > [!NOTE]
 > 可[将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区](diagnostic-logs-stream-log-store.md)以分析长期趋势。

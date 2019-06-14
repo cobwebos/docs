@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61004035"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 数据目录常见问题
@@ -60,7 +60,7 @@ ms.locfileid: "61004035"
 
 ## <a name="how-do-i-register-my-data"></a>如何注册我的数据？
 在数据目录中注册数据：
-1. 在 Azure 数据目录门户的“发布”区域中，启动 Azure 数据目录注册工具。 
+1. 在 Azure 数据目录门户的“发布”  区域中，启动 Azure 数据目录注册工具。 
 2. 在数据目录数据源注册工具中，使用用于访问数据目录门户的同一凭据登录。
 3. 选择要注册的数据源和特定资产。
 
@@ -80,7 +80,7 @@ ms.locfileid: "61004035"
 >
 
 > [!NOTE]
-> 对于具有一流“说明”属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于 SQL Server 关系型数据库（缺少第一类“说明”属性），数据目录数据源注册工具提取对象和列的“ms_description”扩展属性中的值。 有关详细信息，请参阅[对数据库对象使用扩展属性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
+> 对于具有一流“说明”  属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于 SQL Server 关系型数据库（缺少第一类“说明”  属性），数据目录数据源注册工具提取对象和列的“ms_description”  扩展属性中的值。 有关详细信息，请参阅[对数据库对象使用扩展属性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
 >
 >
 
@@ -90,10 +90,10 @@ ms.locfileid: "61004035"
 ## <a name="how-do-i-annotate-and-enrich-the-metadata-for-my-registered-data-assets"></a>如何批注和丰富已注册数据资产的元数据？
 为已注册资产提供元数据最简单的方法是在数据目录门户中选择资产，然后在属性窗格或架构窗格中为选定对象输入值。
 
-此外，还可在注册过程中提供某些元数据（例如专家和标记）。 在数据目录发布服务中提供的值适用于此时注册的所有资产。 若要查看门户中最近注册对象的更多注释，请选择数据目录数据源注册工具的最终屏幕上的“查看门户”按钮。
+此外，还可在注册过程中提供某些元数据（例如专家和标记）。 在数据目录发布服务中提供的值适用于此时注册的所有资产。 若要查看门户中最近注册对象的更多注释，请选择数据目录数据源注册工具的最终屏幕上的“查看门户”  按钮。
 
 ## <a name="how-do-i-delete-my-registered-data-objects"></a>如何删除已注册的数据对象？
-可通过在门户中选择对象并单击“删除”按钮，删除数据目录中的对象。 删除对象会从数据目录中删除其元数据，但不会影响基础数据源。
+可通过在门户中选择对象并单击“删除”  按钮，删除数据目录中的对象。 删除对象会从数据目录中删除其元数据，但不会影响基础数据源。
 
 ## <a name="what-is-an-expert"></a>什么是专家？
 专家是对数据对象具有明智观点的人员。 一个对象可以具有多个专家。 专家不需要是对象的“所有者”，只需知道可以怎样和应该怎样使用数据。
@@ -121,7 +121,7 @@ ms.locfileid: "61004035"
 如果想要包含列/架构元数据、预览或其中的数据源注册工具，不提取此元数据的数据源的数据配置文件，可以使用数据目录 API 添加此元数据。 有关详细信息，请参阅 [Azure 数据目录 REST API](https://docs.microsoft.com/rest/api/datacatalog/)。
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>如何限制已注册数据资产的可见性，仅允许特定人员发现它们？
-在数据目录中选择数据资产，然后单击“取得所有权”按钮。 数据目录中数据资产的所有者可更改可见性设置，允许所有用户发现拥有的资产或对特定用户限制可见性。 有关详细信息，请参阅[在 Azure 数据目录中管理数据资产](data-catalog-how-to-manage.md)。
+在数据目录中选择数据资产，然后单击“取得所有权”  按钮。 数据目录中数据资产的所有者可更改可见性设置，允许所有用户发现拥有的资产或对特定用户限制可见性。 有关详细信息，请参阅[在 Azure 数据目录中管理数据资产](data-catalog-how-to-manage.md)。
 
 ## <a name="how-do-i-update-the-registration-for-a-data-asset-so-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>如何更新数据资产的注册，将数据源中的更改都反映到目录中？
 若要更新已在目录中注册的数据资产的元数据，仅需重新注册包含该资产的数据源即可。 数据源中的任何更改（例如添加列、从表或视图中删除列）都会在目录中更新，但会保留用户提供的所有批注。

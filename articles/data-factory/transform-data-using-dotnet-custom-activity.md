@@ -11,16 +11,16 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8076ae81b111aa6b524b7e286ed15ca0661d748b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165963"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062116"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-use-custom-activities.md)
 > * [当前版本](transform-data-using-dotnet-custom-activity.md)
 
@@ -104,14 +104,14 @@ ms.locfileid: "66165963"
 | :-------------------- | :--------------------------------------- | :------- |
 | 名称                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
-| 类型                  | 对于自定义活动，活动类型为 **Custom**。 | “是”      |
-| linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | “是”      |
-| command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | “是”      |
+| type                  | 对于自定义活动，活动类型为 **Custom**。 | 是      |
+| linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
+| command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | 是      |
 | resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否 &#42;       |
 | folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否 &#42;       |
-| referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | “否”       |
-| extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | “否”       |
-| retentionTimeInDays | 提交以供自定义活动的文件保留时间。 默认值为 30 天。 | “否” |
+| referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | 否       |
+| extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | 否       |
+| retentionTimeInDays | 提交以供自定义活动的文件保留时间。 默认值为 30 天。 | 否 |
 
 &#42; 属性 `resourceLinkedService` 和 `folderPath` 必须同时指定或同时省略。
 
@@ -120,7 +120,7 @@ ms.locfileid: "66165963"
 
 ## <a name="custom-activity-permissions"></a>自定义活动权限
 
-自定义活动将 Azure Batch 自动用户帐户设置为“任务范围内非管理员访问权限”（默认自动用户规范）。 无论更改自动用户帐户的权限级别。 有关详细信息，请参阅[在 Batch 中的用户帐户下运行任务 | 自动用户帐户](../batch/batch-user-accounts.md#auto-user-accounts)。
+自定义活动将 Azure Batch 自动用户帐户设置为“任务范围内非管理员访问权限”  （默认自动用户规范）。 无论更改自动用户帐户的权限级别。 有关详细信息，请参阅[在 Batch 中的用户帐户下运行任务 | 自动用户帐户](../batch/batch-user-accounts.md#auto-user-accounts)。
 
 ## <a name="executing-commands"></a>执行命令
 
@@ -301,7 +301,7 @@ Activity Error section:
 如果要在下游活动中使用 stdout.txt 的内容，则可以在表达式“\@activity('MyCustomActivity').output.outputs[0]”中获取 stdout.txt 文件的路径。
 
 > [!IMPORTANT]
-> - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/”路径中。 必要时需要单独清理它们。
+> - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 对于此示例中，activity.json、 linkedServices.json 和 datasets.json 存储在`"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"`路径。 必要时需要单独清理它们。
 > - 对于使用自承载集成运行时的链接服务，将通过自承载集成运行时对敏感信息（例如密钥或密码）进行加密，以确保凭据保留在客户定义的专用网络环境中。 以此方式在自定义应用程序代码中进行引用时，可能会丢掉一些敏感字段。 如果需要，请在 extendedProperties 中使用 SecureString 而非使用链接服务引用。
 
 ## <a name="pass-outputs-to-another-activity"></a>将输出传递给另一个活动
@@ -310,7 +310,7 @@ Activity Error section:
 
 ## <a name="retrieve-securestring-outputs"></a>检索 SecureString 输出
 
-指定为 *SecureString* 类型的敏感属性值（如本文中的某些示例所示）在数据工厂用户界面的“监视”选项卡中被屏蔽。  但是，在实际的管道执行中，*SecureString* 属性在 `activity.json` 文件中以纯文本形式序列化为 JSON。 例如:
+指定为 *SecureString* 类型的敏感属性值（如本文中的某些示例所示）在数据工厂用户界面的“监视”选项卡中被屏蔽。  但是，在实际的管道执行中，*SecureString* 属性在 `activity.json` 文件中以纯文本形式序列化为 JSON。 例如：
 
 ```json
 "extendedProperties": {
