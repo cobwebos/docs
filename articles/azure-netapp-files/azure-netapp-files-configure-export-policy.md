@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: b-juche
 ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61086141"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>为 NFS 卷配置导出策略
@@ -27,7 +27,7 @@ ms.locfileid: "61086141"
 
 ## <a name="steps"></a>Steps 
 
-1.  从“管理卷”边栏选项卡中单击“创建导出策略”边栏选项卡。 
+1.  从“管理卷”边栏选项卡中单击“创建导出策略”  边栏选项卡。 
 
 2.  为以下字段指定信息来创建导出策略规则：   
     *  **索引**   

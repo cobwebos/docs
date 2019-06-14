@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: b736bb5549b7d236e746ba7b161cde79209e927b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60906364"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>在 Azure 安全中心中通过面向 Internet 的终结点限制访问
@@ -32,23 +32,23 @@ ms.locfileid: "60906364"
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡，选择“通过面向 Internet 的终结点限制访问”。
+1. 在“建议”边栏选项卡  ，选择“通过面向 Internet 的终结点限制访问”  。
 
    ![通过面向 Internet 的终结点限制访问][1]
-2. 这会打开“通过面向 Internet 的终结点限制访问”边栏选项卡。 此边栏选项卡列出了具有潜在安全问题的入站规则的虚拟机 (VM)。 选择 VM。
+2. 这会打开“通过面向 Internet 的终结点限制访问”  边栏选项卡。 此边栏选项卡列出了具有潜在安全问题的入站规则的虚拟机 (VM)。 选择 VM。
 
    ![选择 VM][2]
-3. “NSG”边栏选项卡显示网络安全组信息、相关入站规则，以及相关联的 VM。 选择“编辑入站规则”以继续进行编辑入站规则。
+3. “NSG”  边栏选项卡显示网络安全组信息、相关入站规则，以及相关联的 VM。 选择“编辑入站规则”  以继续进行编辑入站规则。
 
    ![“网络安全组”边栏选项卡][3]
-4. 在“入站安全规则”边栏选项卡中，选择要编辑的入站规则。 在此示例中，选择“AllowWeb”。
+4. 在“入站安全规则”  边栏选项卡中，选择要编辑的入站规则。 在此示例中，选择“AllowWeb”  。
 
    ![入站安全规则][4]
 
-   请注意，还可以选择“默认规则”以查看所有 NSG 都包含的默认规则集。 默认规则无法删除，但由于给它们分配的优先级较低，可以用创建的规则来重写它们。 详细了解[默认规则](../virtual-network/security-overview.md#default-security-rules)。
+   请注意，还可以选择“默认规则”  以查看所有 NSG 都包含的默认规则集。 默认规则无法删除，但由于给它们分配的优先级较低，可以用创建的规则来重写它们。 详细了解[默认规则](../virtual-network/security-overview.md#default-security-rules)。
 
    ![默认规则][5]
-5. 在“AllowWeb”边栏选项卡中，编辑入站规则的属性，以便**源**是 IP 地址或 IP 地址块。 若要了解有关的入站规则的属性的详细信息，请参阅 [NSG 规则](../virtual-network/security-overview.md#security-rules)。
+5. 在“AllowWeb”  边栏选项卡中，编辑入站规则的属性，以便**源**是 IP 地址或 IP 地址块。 若要了解有关的入站规则的属性的详细信息，请参阅 [NSG 规则](../virtual-network/security-overview.md#security-rules)。
 
    ![编辑入站规则][6]
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
 ms.openlocfilehash: c06a338ec041c83588c3ee5126795b8c445ef469
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937991"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
@@ -45,7 +45,7 @@ ms.locfileid: "64937991"
 
 从网站中的 AppSource 或 Azure 市场徽章链接到市场列表时，可在 URL 末尾包含以下查询参数，以便为强大的分析和报告功能提供支持：
 * **src**：包括路由到 AppSource 的流量的来源（例如网站、LinkedIn 或 Facebook）。
-* **mktcmpid**：市场营销活动 ID，可以包含字母、数字、下划线和连字符的任意组合，最多 16 个字符（例如 blogpost_12）。
+* **mktcmpid**：市场营销活动 ID，可以包含字母、数字、下划线和连字符的任意组合，最多 16 个字符（例如 blogpost_12  ）。
 
 以下示例 URL 包含前面所述的两个查询参数：`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: d34ac159a216c5c77214b4c8b799a233c3671235
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61447345"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>将 IoT Edge 设备添加到远程监视解决方案加速器
@@ -24,9 +24,9 @@ ms.locfileid: "61447345"
 
 ## <a name="add-the-iot-edge-device"></a>添加 IoT Edge 设备
 
-若要将 IoT Edge 设备添加到远程监视解决方案加速器，请在 Web UI 中导航到“设备资源管理器”页，然后单击“+ 新建设备”。
+若要将 IoT Edge 设备添加到远程监视解决方案加速器，请在 Web UI 中导航到“设备资源管理器”页，然后单击“+ 新建设备”。  
 
-在“新建设备”面板中，选择“IoT Edge 设备”。 对于其他设置，可以保留默认值。 然后单击“应用”：
+在“新建设备”面板中，选择“IoT Edge 设备”   。 对于其他设置，可以保留默认值。 然后单击“应用”： 
 
 ![添加 IoT Edge 设备](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 

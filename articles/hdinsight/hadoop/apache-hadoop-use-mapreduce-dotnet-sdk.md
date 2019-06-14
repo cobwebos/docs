@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.openlocfilehash: 1ac2dda20ba1219c9f62e834b5cd2cfba8a50086
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718956"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 MapReduce 作业
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-了解如何使用 HDInsight .NET SDK 提交 MapReduce 作业。 HDInsight 群集附带含有一些 MapReduce 示例的 jar 文件。 该 jar 文件位于 /example/jars/hadoop-mapreduce-examples.jar。  其中一个示例是 wordcount。 开发 C# 控制台应用程序，提交 wordcount 作业。  作业会读取 /example/data/gutenberg/davinci.txt 文件，并将结果输出到 /example/data/davinciwordcount。  如果想要重新运行该应用程序，必须清理输出文件夹。
+了解如何使用 HDInsight .NET SDK 提交 MapReduce 作业。 HDInsight 群集附带含有一些 MapReduce 示例的 jar 文件。 该 jar 文件位于 /example/jars/hadoop-mapreduce-examples.jar  。  其中一个示例是 wordcount  。 开发 C# 控制台应用程序，提交 wordcount 作业。  作业会读取 /example/data/gutenberg/davinci.txt 文件，并将结果输出到 /example/data/davinciwordcount   。  如果想要重新运行该应用程序，必须清理输出文件夹。
 
 > [!NOTE]  
 > 必须从 Windows 客户端执行本文中的步骤。 有关使用 Linux、OS X 或 Unix 客户端来使用 Hive 的信息，请使用本文顶部显示的选项卡选择器。

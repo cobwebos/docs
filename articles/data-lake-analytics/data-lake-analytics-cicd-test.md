@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 4532e0c6e8095c9d64897410e0492e2135d8a478
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630061"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>测试 Azure Data Lake Analytics 代码
@@ -29,7 +29,7 @@ U-SQL 脚本针对可执行代码进行编译和优化，以便在云或本地�
 
 针对 Visual Studio 的 Azure Data Lake 工具可用于创建 U-SQL 脚本测试用例。
 
-1.  在解决方案资源管理器中，右键单击 U-SQL 脚本，然后选择“创建单元测试”。
+1.  在解决方案资源管理器中，右键单击 U-SQL 脚本，然后选择“创建单元测试”  。
 2.  创建一个新的测试项目或向现有测试项目插入测试用例。
 
     ![针对 Visual Studio 的 Data Lake 工具 - 创建 U-SQL 测试项目](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project.png) 
@@ -38,7 +38,7 @@ U-SQL 脚本针对可执行代码进行编译和优化，以便在云或本地�
 
 ### <a name="manage-the-test-data-source"></a>管理测试数据源
 
-在测试 U-SQL 脚本时，需要使用测试输入文件。 可以通过配置 U-SQL 项目属性中的“测试数据源”来管理这些测试数据。 
+在测试 U-SQL 脚本时，需要使用测试输入文件。 可以通过配置 U-SQL 项目属性中的“测试数据源”来管理这些测试数据  。 
 
 在调用 U-SQL 测试 SDK 中的 `Initialize()` 接口时，会在测试项目的工作目录下创建一个临时的本地数据根文件夹，在运行 U-SQL 脚本测试用例前，测试数据源文件夹中的所有文件和子文件夹（以及子文件夹下的文件）都将被复制到这个临时本地数据根文件夹。 通过使用分号拆分测试数据文件夹路径，可以添加更多测试数据源文件夹。
 
@@ -56,13 +56,13 @@ U-SQL 脚本针对可执行代码进行编译和优化，以便在云或本地�
 
 ### <a name="run-test-cases-in-visual-studio"></a>在 Visual Studio 中运行测试用例
 
-U-SQL 脚本测试项目是基于 C# 单元测试框架生成的。 在生成项目后，可以通过“测试资源管理器”>“播放列表”来运行所有测试用例。 也可以右键单击 .cs 文件并选择“运行测试”。
+U-SQL 脚本测试项目是基于 C# 单元测试框架生成的。 在生成项目后，可以通过“测试资源管理器”>“播放列表”来运行所有测试用例  。 也可以右键单击 .cs 文件并选择“运行测试”  。
 
 ## <a name="test-c-udos"></a>测试 C# UDO
 
 ### <a name="create-test-cases-for-c-udos"></a>为 C# UDO 创建测试用例
 
-可以使用 C# 单元测试框架来测试 C# UDO（用户定义的运算符）。 在测试 UDO 时，需要准备相应的 IRowset 对象作为输入。
+可以使用 C# 单元测试框架来测试 C# UDO（用户定义的运算符）。 在测试 UDO 时，需要准备相应的 IRowset 对象作为输入  。
 
 可通过两种方法创建 IRowset 对象：
 
@@ -105,15 +105,15 @@ U-SQL 脚本测试项目是基于 C# 单元测试框架生成的。 在生成项
 
 ### <a name="verify-test-results"></a>验证测试结果
 
-调用 UDO 函数后，可以使用 C# 断言函数，通过架构和 Rowset 值验证来验证结果。 可在 U-SQL C# UDO 单元测试示例项目中使用示例代码（在 Visual Studio 中的“文件”>“新建”>“项目”中）。
+调用 UDO 函数后，可以使用 C# 断言函数，通过架构和 Rowset 值验证来验证结果。 可在 U-SQL C# UDO 单元测试示例项目中使用示例代码（在 Visual Studio 中的“文件”>“新建”>“项目”中）  。
 
 ### <a name="run-test-cases-in-visual-studio"></a>在 Visual Studio 中运行测试用例
 
-在生成测试项目后，可以通过“测试资源管理器”>“播放列表”来运行所有测试用例，或右键单击 .cs 文件，然后选择“运行测试”。
+在生成测试项目后，可以通过“测试资源管理器”>“播放列表”来运行所有测试用例，或右键单击 .cs 文件，然后选择“运行测试”   。
 
 ## <a name="run-test-cases-in-azure-devops"></a>在 Azure DevOps 中运行测试用例
 
-U-SQL 脚本测试项目和 C# UDO 测试项目都继承 C# 单元测试项目。 Azure DevOps 中的 [Visual Studio 测试任务](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts)可以运行这些测试用例。 
+U-SQL 脚本测试项目和 C# UDO 测试项目都继承 C# 单元测试项目   。 Azure DevOps 中的 [Visual Studio 测试任务](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts)可以运行这些测试用例。 
 
 ### <a name="run-u-sql-test-cases-in-azure-devops"></a>在 Azure DevOps 中运行 U-SQL 测试用例
 

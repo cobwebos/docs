@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125791"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务在 StorSimple 虚拟阵列上管理卷
@@ -47,7 +47,7 @@ StorSimple 卷可以是：
 | 本地固定卷的大小上限                    | 500 GB        |
 
 ## <a name="the-volumes-blade"></a>“卷”边栏选项卡
-StorSimple 服务摘要边栏选项卡上的“卷”菜单显示给定 StorSimple 阵列上的存储卷列表，并允许用户管理它们。
+StorSimple 服务摘要边栏选项卡上的“卷”  菜单显示给定 StorSimple 阵列上的存储卷列表，并允许用户管理它们。
 
 ![“卷”边栏选项卡](./media/storsimple-virtual-array-manage-volumes/volumes-blade.png)
 
@@ -71,20 +71,20 @@ StorSimple 服务摘要边栏选项卡上的“卷”菜单显示给定 StorSimp
 
 ## <a name="add-a-volume"></a>添加卷
 
-1. 在“StorSimple 服务摘要”边栏选项卡上，单击命令栏中的“+ 添加卷”。 此时会打开“添加卷”边栏选项卡。
+1. 在“StorSimple 服务摘要”边栏选项卡上，单击命令栏中的“+ 添加卷”  。 此时会打开“添加卷”  边栏选项卡。
    
     ![添加卷](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
-2. 在“添加卷”边栏选项卡中，执行以下操作：
+2. 在“添加卷”  边栏选项卡中，执行以下操作：
    
-   * 在“卷名”字段中，输入卷的唯一名称。 该名称必须是包含 3 到 127 个字符的字符串。
-   * 在“类型”下拉列表中，指定要创建**分层**卷还是要创建**本地固定**卷。 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定卷”。 对于所有其他数据，请选择“分层卷”。
-   * 在“容量”字段中，指定卷的大小。 分层卷的大小必须介于 500 GB 到 5 TB 之间，本地固定卷的大小必须介于 50 GB 到 500 GB 之间。
-   * * 单击“已连接主机”，选择要连接到此卷的 iSCSI 发起程序所对应的访问控制记录 (ACR)，并单击“选择”。
-3. 要添加新连接的主机，请单击“新增”，输入主机的名称及其 iSCSI 限定名称 (IQN)，并单击“添加”。
+   * 在“卷名”  字段中，输入卷的唯一名称。 该名称必须是包含 3 到 127 个字符的字符串。
+   * 在“类型”  下拉列表中，指定要创建**分层**卷还是要创建**本地固定**卷。 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定卷”。  对于所有其他数据，请选择“分层卷”。 
+   * 在“容量”  字段中，指定卷的大小。 分层卷的大小必须介于 500 GB 到 5 TB 之间，本地固定卷的大小必须介于 50 GB 到 500 GB 之间。
+   * * 单击“已连接主机”  ，选择要连接到此卷的 iSCSI 发起程序所对应的访问控制记录 (ACR)，并单击“选择”  。
+3. 要添加新连接的主机，请单击“新增”  ，输入主机的名称及其 iSCSI 限定名称 (IQN)，并单击“添加”  。
    
     ![添加卷](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
-4. 完成配置卷后，单击“创建”。 此时会使用指定的设置创建卷，成功创建后，会显示一条通知。 默认情况下，将为卷启用备份功能。
-5. 若要确认已成功创建卷，请转到“卷”边栏选项卡。 此时会看到列出的卷。
+4. 完成配置卷后，单击“创建”  。 此时会使用指定的设置创建卷，成功创建后，会显示一条通知。 默认情况下，将为卷启用备份功能。
+5. 若要确认已成功创建卷，请转到“卷”边栏选项卡  。 此时会看到列出的卷。
    
     ![卷创建成功](./media/storsimple-virtual-array-manage-volumes/volume-success.png)
 
@@ -94,11 +94,11 @@ StorSimple 服务摘要边栏选项卡上的“卷”菜单显示给定 StorSimp
 
 #### <a name="to-modify-a-volume"></a>修改卷
 
-1. 从“StorSimple 服务摘要”边栏选项卡上的“卷”设置中，选择要修改的卷所驻留的虚拟阵列。
-2. **选择**卷，然后单击“已连接主机”，以便查看当前连接的主机并将其修改为其他服务器。
+1. 从“StorSimple 服务摘要”边栏选项卡上的“卷”  设置中，选择要修改的卷所驻留的虚拟阵列。
+2. **选择**卷，然后单击“已连接主机”  ，以便查看当前连接的主机并将其修改为其他服务器。
    
     ![编辑卷](./media/storsimple-virtual-array-manage-volumes/volume-edit-acr.png)
-3. 单击命令栏上的“保存”以保存所做的更改。 此时会应用指定的设置，会看到一条通知。
+3. 单击命令栏上的“保存”以保存所做的更改  。 此时会应用指定的设置，会看到一条通知。
 
 ## <a name="take-a-volume-offline"></a>使卷脱机
 
@@ -110,12 +110,12 @@ StorSimple 服务摘要边栏选项卡上的“卷”菜单显示给定 StorSimp
 2. 先在主机上使卷脱机。 这样可以消除任何造成卷上数据损坏的潜在风险。 有关具体的步骤，请参阅适用于主机操作系统的说明。
 3. 主机上的卷脱机后，执行以下步骤在阵列上使卷脱机：
    
-   * 从“StorSimple 服务摘要”边栏选项卡上的“卷”设置中，选择要脱机的卷所驻留的虚拟阵列。
-   * **选择**该卷，单击“...”（或者在此行中右键单击），并从上下文菜单中选择“脱机”。
+   * 从“StorSimple 服务摘要”边栏选项卡上的“卷”  设置中，选择要脱机的卷所驻留的虚拟阵列。
+   * **选择**该卷，单击“...”  （或者在此行中右键单击），并从上下文菜单中选择“脱机”  。
      
         ![脱机卷](./media/storsimple-virtual-array-manage-volumes/volume-offline.png)
-   * 在“脱机”边栏选项卡中查看信息并确认接受该操作。 单击“脱机”使该卷脱机。 此时会显示“正在进行操作”的通知。
-   * 要确认已成功将卷脱机，请转到“卷”边栏选项卡。 此时会看到卷的状态为“脱机”。
+   * 在“脱机”  边栏选项卡中查看信息并确认接受该操作。 单击“脱机”  使该卷脱机。 此时会显示“正在进行操作”的通知。
+   * 要确认已成功将卷脱机，请转到“卷”边栏选项卡  。 此时会看到卷的状态为“脱机”。
      
        ![脱机卷确认](./media/storsimple-virtual-array-manage-volumes/volume-offline-confirm.png)
 
@@ -130,12 +130,12 @@ StorSimple 服务摘要边栏选项卡上的“卷”菜单显示给定 StorSimp
 
 #### <a name="to-delete-a-volume"></a>删除卷
 
-1. 从“StorSimple 服务摘要”边栏选项卡上的“卷”设置中，选择要删除的卷所驻留的虚拟阵列。
-2. **选择**该卷，单击“...”（或者在此行中右键单击），并从上下文菜单中选择“删除”。
+1. 从“StorSimple 服务摘要”边栏选项卡上的“卷”  设置中，选择要删除的卷所驻留的虚拟阵列。
+2. **选择**该卷，单击“...”  （或者在此行中右键单击），并从上下文菜单中选择“删除”  。
    
     ![删除卷](./media/storsimple-virtual-array-manage-volumes/volume-delete.png)
 3. 检查要删除的卷的状态。 如果要删除的卷未脱机，请根据[使卷脱机](#take-a-volume-offline)中的步骤使其脱机。
-4. 当系统提示在“删除”边栏选项卡中进行确认时，接受确认，并单击“删除”。 随即会删除该卷，“卷”边栏选项卡会显示虚拟阵列中卷的更新列表。
+4. 当系统提示在“删除”  边栏选项卡中进行确认时，接受确认，并单击“删除”  。 随即会删除该卷，“卷”边栏选项卡会显示虚拟阵列中卷的更新列表。 
 
 ## <a name="next-steps"></a>后续步骤
 

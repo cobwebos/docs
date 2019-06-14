@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: gregman
 ms.openlocfilehash: 7062bd2dbd8c375b8dd3fad348e5cc26de8f36d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60595133"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
@@ -28,28 +28,28 @@ ms.locfileid: "60595133"
 
 ## <a name="deploy-from-the-azure-marketplace"></a>从 Azure 市场部署
 1.  导航到 [Ubuntu 上的 Azure IoT Edge](https://aka.ms/azure-iot-edge-ubuntuvm) 市场套餐，或者在 [Azure 市场](https://azuremarketplace.microsoft.com/)中搜索“Ubuntu 上的 Azure IoT Edge”
-2.  选择“立即获取”，然后在下一个对话框中单击“继续”。
-3.  进入 Azure 门户后，选择“创建”并遵循向导部署 VM。 
+2.  选择“立即获取”，然后在下一个对话框中单击“继续”。  
+3.  进入 Azure 门户后，选择“创建”并遵循向导部署 VM。  
     *   首次试用 VM 时，在公共入站端口菜单中可以十分方便地使用密码和启用 SSH。 
     *   如果你有资源密集型工作负荷，应通过添加更多 CPU 和/或内存来升级虚拟机大小。
 4.  部署虚拟机后，请将其配置为连接到 IoT 中心：
     1.  复制在 IoT 中心创建的 IoT Edge 设备中的设备连接字符串（如果你不熟悉此过程，可以遵循[从 Azure 门户注册新的 Azure IoT Edge 设备](how-to-register-device-portal.md)操作指南）
-    1.  在 Azure 门户中选择新建的虚拟机资源，并打开“运行命令”选项
-    1.  选择“RunShellScript”选项
+    1.  在 Azure 门户中选择新建的虚拟机资源，并打开“运行命令”选项 
+    1.  选择“RunShellScript”选项 
     1.  使用设备连接字符串通过命令窗口执行以下脚本：`/etc/iotedge/configedge.sh “{device_connection_string}”`
-    1.  选择“运行”
+    1.  选择“运行” 
     1.  片刻之后，屏幕上应会显示一条成功消息，指出已成功设置了连接字符串。
 
 
-## <a name="deploy-from-the-azure-portal"></a>从 Azure 门户进行部署
-在 Azure 门户中，搜索“Azure IoT Edge”并选择“Ubuntu Server 16.04 LTS + Azure IoT Edge 运行时”开始 VM 创建工作流。 在此处，请完成上述“从 Azure 市场部署”说明中的步骤 3 到 4。
+## <a name="deploy-from-the-azure-portal"></a>从 Azure 门户部署
+在 Azure 门户中，搜索“Azure IoT Edge”并选择“Ubuntu Server 16.04 LTS + Azure IoT Edge 运行时”开始 VM 创建工作流。  在此处，请完成上述“从 Azure 市场部署”说明中的步骤 3 到 4。
 
 ## <a name="deploy-from-azure-cli"></a>从 Azure CLI 部署
 1. 首次通过 CLI 部署虚拟机时，需要为 Azure 订阅启用编程部署：
    1. 打开 [Ubuntu 上的 Azure IoT Edge](https://aka.ms/azure-iot-edge-ubuntuvm) 市场套餐
-   1. 选择“立即获取”，然后在下一个对话框中单击“继续”
-   1. 在门户中对话框的底部选择“想要以编程方式进行部署?开始使用”
-   1. 在“配置编程部署”页中单击“启用”按钮，然后单击“保存”
+   1. 选择“立即获取”，然后在下一个对话框中单击“继续”  
+   1. 在门户中对话框的底部选择“想要以编程方式进行部署?  开始使用”
+   1. 在“配置编程部署”页中单击“启用”按钮，然后单击“保存”   
 1. 如果在桌面上使用 Azure CLI，请先登录：
 
    ```azurecli-interactive

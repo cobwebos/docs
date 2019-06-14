@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: ed101df5cd3d6e5754b88c5f66807f9fda846cf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60998790"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>适用于 Azure 数据目录的键盘快捷方式
@@ -51,7 +51,7 @@ ms.locfileid: "60998790"
 | 包括“数据配置文件”复选框（如果可用） |ALT+D |
 | 导航到每个列表项 |向上或向下箭头 |
 | 服务器层次结构，展开树视图的节点 |向右箭头 |
-| 为“可用对象” 或“要注册的对象”移动所选项 |空格键 |
+| 为“可用对象”  或“要注册的对象”  移动所选项 |空格键 |
 
 ### <a name="publish-progress-page"></a>发布进度页
 | Operation | 按 |
@@ -77,6 +77,6 @@ ms.locfileid: "60998790"
 | 在发现页上，当某项资产具有焦点时，选择资产 |空格键或 Enter 键 |
 | 从多选中添加/删除资产 |Ctrl+空格键或 Enter 键 |
 | 切换“搜索匹配项”菜单 |ALT+S |
-| 切换“打开方式”菜单 |ALT+O |
+| 切换“打开方式”  菜单 |ALT+O |
 | 浏览容器（如果资产为容器） |ALT+L |
 

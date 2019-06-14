@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: d4f9617a5c2ba6f6cf8dc261845aa98e33d70a55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60649175"
 ---
 # <a name="create-a-new-device-template-version"></a>创建新设备模板版本
@@ -58,8 +58,8 @@ Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、�
 
 1. 转到**Device Explorer**页。
 1. 选择需迁移到另一版本的设备。
-1. 选择“迁移设备”。
-1. 选择需将设备迁移到其中的版本号，然后选择“迁移”。
+1. 选择“迁移设备”。 
+1. 选择需将设备迁移到其中的版本号，然后选择“迁移”。 
 
 ![如何迁移设备](media/howto-version-devicetemplate/pick-version.png)
 

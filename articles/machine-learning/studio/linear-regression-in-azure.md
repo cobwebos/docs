@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60861078"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>将 Excel 中的分析信息迁移到 Azure 机器学习工作室
@@ -100,7 +100,7 @@ ms.locfileid: "60861078"
 ### <a name="integration-with-excel"></a>与 Excel 集成
 我们的解决方案是：通过从训练模型中创建 Web 服务，使我们的机器学习回归模型实现可操作化。 在数分钟内，Web 服务即已创建，我们可以直接从 Excel 进行调用，以返回预测的收入值。 
 
-*Web 服务仪表板*部分包括可下载的 Excel 工作簿。 该工作簿已使用 Web 服务 API 进行预格式化，并嵌入了架构信息。 单击“下载 Excel 工作簿”时，工作簿会打开，用户可以将其保存到本地计算机。 
+*Web 服务仪表板*部分包括可下载的 Excel 工作簿。 该工作簿已使用 Web 服务 API 进行预格式化，并嵌入了架构信息。 单击“下载 Excel 工作簿”时，工作簿会打开，用户可以将其保存到本地计算机。  
 
 ![从 Web 服务仪表板下载 Excel 工作簿](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 

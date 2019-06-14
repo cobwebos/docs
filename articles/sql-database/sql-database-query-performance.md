@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 5d892005881436dec89c0d0d010f7f02e7bdebf9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60585194"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Query Performance Insight
@@ -53,13 +53,13 @@ ms.locfileid: "60585194"
 查询性能见解很容易使用：
 
 1. 打开 [Azure 门户](https://portal.azure.com/)并找到要检查的数据库。
-2. 在左侧菜单中，打开“智能性能” > “Query Performance Insight”。
+2. 在左侧菜单中，打开“智能性能” > “Query Performance Insight”   。
   
    ![菜单上的 Query Performance Insight](./media/sql-database-query-performance/tile.png)
 
 3. 在第一个选项卡上，查看资源占用排名靠前的查询列表。
 4. 选择单个查询以查看其详细信息。
-5. 打开“智能性能” > “性能建议”，并检查是否有任何性能建议可用。 有关内置性能建议的详细信息，请参阅 [SQL 数据库顾问](sql-database-advisor.md)。
+5. 打开“智能性能” > “性能建议”，并检查是否有任何性能建议可用   。 有关内置性能建议的详细信息，请参阅 [SQL 数据库顾问](sql-database-advisor.md)。
 6. 使用滑块或缩放图标更改观察间隔。
 
    ![性能仪表板](./media/sql-database-query-performance/performance.png)
@@ -73,7 +73,7 @@ ms.locfileid: "60585194"
 
 1. 使用复选框选择或清除单个查询，以在图表中包含或排除它们。
 
-    第一行显示数据库的整体 DTU 百分比。 条形图显示选定查询在选定间隔内消耗的 CPU 的百分比。 例如，如果选择“过去一周”，则每个条形代表一天。
+    第一行显示数据库的整体 DTU 百分比。 条形图显示选定查询在选定间隔内消耗的 CPU 的百分比。 例如，如果选择“过去一周”，则每个条形代表一天  。
 
     ![排名靠前的查询](./media/sql-database-query-performance/top-queries.png)
 
@@ -84,11 +84,11 @@ ms.locfileid: "60585194"
    >
    > 如需进行更精细的比较（最多一分钟），请考虑创建自定义 DTU 利用率图表：
    >
-   > 1. 在 Azure 门户中，选择“Azure SQL 数据库” > “监视”。
-   > 2. 选择“指标”。
-   > 3. 选择“+添加图表”。
+   > 1. 在 Azure 门户中，选择“Azure SQL 数据库” > “监视”   。
+   > 2. 选择“指标”  。
+   > 3. 选择“+添加图表”  。
    > 4. 在图表上选择 DTU 百分比。
-   > 5. 此外，在左上方的菜单中选择“过去 24 小时”并将其更改为一分钟。
+   > 5. 此外，在左上方的菜单中选择“过去 24 小时”并将其更改为一分钟  。
    >
    > 使用具有更精细级别详细信息的自定义 DTU 图表与查询执行图表进行比较。
 
@@ -99,13 +99,13 @@ ms.locfileid: "60585194"
    * 每个查询的持续时间，这也取决于聚合函数。
    * 特定查询的总执行次数。
 
-2. 如果数据过时，请选择“刷新”按钮。
+2. 如果数据过时，请选择“刷新”按钮  。
 
 3. 使用滑块和缩放按钮更改观察间隔并检查消耗峰值：
 
    ![用于更改间隔的滑块和缩放按钮](./media/sql-database-query-performance/zoom.png)
 
-4. （可选）可以选择“自定义”选项卡来自定义以下视图：
+4. （可选）可以选择“自定义”选项卡来自定义以下视图  ：
 
    * 指标（CPU、持续时间、执行计数）。
    * 时间间隔（过去 24 小时、过去一周、过去一个月）。
@@ -114,7 +114,7 @@ ms.locfileid: "60585194"
   
    ![“自定义”选项卡](./media/sql-database-query-performance/custom-tab.png)
   
-5. 选择“转到 >”按钮以查看自定义视图。
+5. 选择“转到 >”按钮以查看自定义视图  。
 
    > [!IMPORTANT]
    > Query Performance Insight 被限制为显示消耗排名前五到排名前二十的查询，具体取决于所做的选择。 数据库可以运行超出所示排名名次数量的查询，但这些查询将不会包含在图表中。
@@ -144,7 +144,7 @@ ms.locfileid: "60585194"
 
    ![查询详细信息](./media/sql-database-query-performance/query-details.png)
 
-3. 或者，可使用滑块、使用缩放按钮或选择“设置”来自定义查询数据的显示方式，或选取其他时间范围。
+3. 或者，可使用滑块、使用缩放按钮或选择“设置”来自定义查询数据的显示方式，或选取其他时间范围  。
 
    > [!IMPORTANT]
    > Query Performance Insight 不捕获任何 DDL 查询。 在某些情况下，它可能不会捕获所有即席查询。
@@ -158,8 +158,8 @@ Query Performance Insight 中有两个指标可以帮助找到潜在瓶颈：持
 
 若要识别长时间运行的查询，请执行以下操作：
 
-1. 在选定数据库的 Query Performance Insight 中打开“自定义”选项卡。
-2. 将指标更改为“持续时间”。
+1. 在选定数据库的 Query Performance Insight 中打开“自定义”选项卡  。
+2. 将指标更改为“持续时间”  。
 3. 选择查询数和观察间隔。
 4. 选择聚合函数：
 
@@ -169,18 +169,18 @@ Query Performance Insight 中有两个指标可以帮助找到潜在瓶颈：持
 
    ![查询持续时间](./media/sql-database-query-performance/top-duration.png)
 
-5. 选择“转到 >”按钮以查看自定义视图。
+5. 选择“转到 >”按钮以查看自定义视图  。
 
    > [!IMPORTANT]
    > 调整查询视图不会更新 DTU 行。 DTU 行始终显示间隔内的最大消耗值。
    >
    > 若要更详细地了解数据库 DTU 消耗（最多一分钟），请考虑在 Azure 门户中创建自定义图表：
    >
-   > 1. 选择“Azure SQL 数据库” > “监视”。
-   > 2. 选择“指标”。
-   > 3. 选择“+添加图表”。
+   > 1. 选择“Azure SQL 数据库” > “监视”   。
+   > 2. 选择“指标”  。
+   > 3. 选择“+添加图表”  。
    > 4. 在图表上选择 DTU 百分比。
-   > 5. 此外，在左上方的菜单中选择“过去 24 小时”并将其更改为一分钟。
+   > 5. 此外，在左上方的菜单中选择“过去 24 小时”并将其更改为一分钟  。
    >
    > 我们建议使用自定义 DTU 图表与查询性能图表进行比较。
    >
@@ -195,10 +195,10 @@ Query Performance Insight 中有两个指标可以帮助找到潜在瓶颈：持
 
 若要识别频繁执行的（“聊天式”）查询，请执行以下操作：
 
-1. 在选定数据库的 Query Performance Insight 中打开“自定义”选项卡。
-2. 将指标更改为“执行计数”。
+1. 在选定数据库的 Query Performance Insight 中打开“自定义”选项卡  。
+2. 将指标更改为“执行计数”  。
 3. 选择查询数和观察间隔。
-4. 选择“转到 >”按钮以查看自定义视图。
+4. 选择“转到 >”按钮以查看自定义视图  。
 
    ![查询执行计数](./media/sql-database-query-performance/top-execution.png)
 
@@ -237,7 +237,7 @@ Query Performance Insight 中有两个指标可以帮助找到潜在瓶颈：持
 
 有两种类型的保留策略：
 
-* **基于大小**：如果此策略设置为“自动”，则会在快要达到最大大小时自动清除数据。
+* **基于大小**：如果此策略设置为“自动”，则会在快要达到最大大小时自动清除数据  。
 * **基于时间**：默认情况下，此策略设置为 30 天。 如果查询存储空间不足，则会删除超过 30 天的查询信息。
 
 可将捕获策略设置为：
@@ -246,7 +246,7 @@ Query Performance Insight 中有两个指标可以帮助找到潜在瓶颈：持
 * **自动**：查询存储会忽略不频繁的查询和包含不重要的编译和执行持续时间的查询。 执行计数、编译持续时间和运行时持续时间的阈值在内部确定。 这是默认选项。
 * **无**：查询存储会停止捕获新查询，但仍会收集已捕获查询的运行时统计信息。
 
-我们建议通过从 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户执行以下命令，将所有策略设置为“自动”并将清理策略设置为 30 天。 （将 `YourDB` 替换为数据库名称。）
+我们建议通过从 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户执行以下命令，将所有策略设置为“自动”并将清理策略设置为 30 天  。 （将 `YourDB` 替换为数据库名称。）
 
 ```sql
     ALTER DATABASE [YourDB]

@@ -9,10 +9,10 @@ ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: efd2fc9d164564126b7b641ef35bbb10c4834f49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60996169"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>将 Log Analytics 警报扩展到 Azure 警报
@@ -20,7 +20,7 @@ ms.locfileid: "60996169"
 > [!NOTE]
 > Microsoft 已完成本文中针对 Azure 公共版所述的过程。 但是，它仍适用于美国政府版。  
 
-Azure Log Analytics 包含自身的警报功能，可以根据 Log Analytics 数据将相关情况主动通知给你，这种情况到最近才有所改变。 过去是在 Microsoft Operations Management Suite 门户中管理预警规则。 新的警报体验现在已在 Microsoft Azure 的各种服务中集成了警报。 该体验在 Azure 门户中通过 Azure Monitor 下的“警报”提供，支持的警报来自活动日志、指标以及 Log Analytics 和 Azure Application Insights 提供的日志。
+Azure Log Analytics 包含自身的警报功能，可以根据 Log Analytics 数据将相关情况主动通知给你，这种情况到最近才有所改变。 过去是在 Microsoft Operations Management Suite 门户中管理预警规则。 新的警报体验现在已在 Microsoft Azure 的各种服务中集成了警报。 该体验在 Azure 门户中通过 Azure Monitor 下的“警报”  提供，支持的警报来自活动日志、指标以及 Log Analytics 和 Azure Application Insights 提供的日志。
 
 从 **2019 年 2 月 1 日**起，使用 OMS 门户的 Azure 政府云客户可以[自愿将其警报规则扩展到 Azure ](alerts-extend-tool.md)。 从 **2019 年 3 月 1 日**开始，Microsoft 将系统地将 Azure 政府 - OMS 门户中的所有现有警报规则自动扩展到 Azure，而不会出现任何停机或中断你的监视。 **2019 年 3 月 1 日**或之后在 Azure 政府云 OMS 门户中创建的任何新工作区将自动扩展到 Azure。
 

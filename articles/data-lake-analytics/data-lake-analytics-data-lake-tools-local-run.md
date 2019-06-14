@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62113929"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>在本地计算机上运行 U-SQL 脚本
@@ -51,13 +51,13 @@ U-SQL 本地运行引擎是 U-SQL 作业的**本地计算帐户**。 用户可�
 
 ## <a name="local-runs-in-microsoft-visual-studio"></a>Microsoft Visual Studio 中的本地运行
 
-针对 Visual Studio 的 Azure Data Lake 工具具有内置的本地运行引擎。 这些工具将引擎展现为本地计算帐户。 若要在本地运行 U-SQL 脚本，请在脚本的编辑器边缘下拉菜单中选择“本地计算机”或“本地项目”帐户。 然后选择“提交”。
+针对 Visual Studio 的 Azure Data Lake 工具具有内置的本地运行引擎。 这些工具将引擎展现为本地计算帐户。 若要在本地运行 U-SQL 脚本，请在脚本的编辑器边缘下拉菜单中选择“本地计算机”或“本地项目”帐户。   然后选择“提交”。 
 
 ![将 U-SQL 脚本提交到本地帐户](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
  
 ## <a name="local-runs-with-a-local-machine-account"></a>使用本地计算机帐户的本地运行
 
-**本地计算机**帐户是一个共享的本地计算帐户，它含有单个本地数据根文件夹，作为本地存储帐户。 数据根文件夹默认位于 **C:\Users\<username>\AppData\Local\USQLDataRoot**。 也可以通过“工具” > “Data Lake” > “选项和设置”对其进行配置。
+**本地计算机**帐户是一个共享的本地计算帐户，它含有单个本地数据根文件夹，作为本地存储帐户。 数据根文件夹默认位于 **C:\Users\<username>\AppData\Local\USQLDataRoot**。 也可以通过“工具”   > “Data Lake”   > “选项和设置”  对其进行配置。
 
 ![配置本地数据根文件夹](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   
@@ -75,7 +75,7 @@ U-SQL 项目通过项目引用和属性来管理独立的本地运行环境。 �
 
 U-SQL 项目为**本地项目**帐户创建本地数据根文件夹和设置数据。 每次重新生成和在本地运行时，将在 U-SQL 项目工作目录下清理并重新创建临时数据根文件夹。 由 U-SQL 项目配置的所有数据源将在本地作业运行之前复制到此临时本地数据根文件夹。 
 
-可以配置数据源的根文件夹。 右键单击“U-SQL 项目” > “属性” > “测试数据源”。 在**本地项目**帐户中运行 U-SQL 脚本时，“测试数据源”文件夹中的所有文件和子文件夹将复制到临时本地数据根文件夹。 包括子文件夹下的文件。 运行本地作业后，还可以在项目工作目录中的临时本地数据根文件夹下找到输出结果。 重新生成和清理项目时，将删除并清理所有这些输出。 
+可以配置数据源的根文件夹。 右键单击“U-SQL 项目”   > “属性”   > “测试数据源”  。 在**本地项目**帐户中运行 U-SQL 脚本时，“测试数据源”文件夹中的所有文件和子文件夹将复制到临时本地数据根文件夹。  包括子文件夹下的文件。 运行本地作业后，还可以在项目工作目录中的临时本地数据根文件夹下找到输出结果。 重新生成和清理项目时，将删除并清理所有这些输出。 
 
 ![配置项目的测试数据源](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
@@ -95,8 +95,8 @@ U-SQL 项目为**本地项目**帐户创建本地数据根文件夹和设置数�
 |差异角度|本地计算机|本地项目|
 |----------------|---------------|---------------|
 |本地访问|可由所有项目访问。|只有相应的项目能够访问此帐户。|
-|本地数据根文件夹|永久本地文件夹。 通过“工具” > “Data Lake” > “选项和设置”进行配置。|为在 U-SQL 项目工作目录下的每个本地运行创建的临时文件夹。 重新生成或重新运行时会清理该文件夹。|
-|U-SQL 脚本的输入数据|永久本地数据根文件夹下的相对路径。|通过“U-SQL 项目属性” > “测试数据源”进行设置。 在本地运行之前，会将所有文件和子文件夹复制到临时数据根文件夹。|
+|本地数据根文件夹|永久本地文件夹。 通过“工具”   > “Data Lake”   > “选项和设置”  进行配置。|为在 U-SQL 项目工作目录下的每个本地运行创建的临时文件夹。 重新生成或重新运行时会清理该文件夹。|
+|U-SQL 脚本的输入数据|永久本地数据根文件夹下的相对路径。|通过“U-SQL 项目属性”   >   “测试数据源”进行设置。 在本地运行之前，会将所有文件和子文件夹复制到临时数据根文件夹。|
 |U-SQL 脚本的输出数据|永久本地数据根文件夹下的相对路径。|输出到临时数据根文件夹。 在重新生成或重新运行时清理结果。|
 |引用的数据库部署|针对**本地计算机**帐户运行时，不会自动部署引用的数据库。 在提交到 Azure Data Lake Analytics 帐户时也是如此。|引用的数据库在本地运行之前自动部署到**本地项目**帐户。 重新生成或重新运行时，会清理和重新部署所有数据库环境。|
 

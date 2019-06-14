@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/06/2019
 ms.author: danlep
 ms.openlocfilehash: b8a2280fe82e0f4be8e2812f5494150927642692
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60827283"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
@@ -48,7 +48,7 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 
 ### <a name="import-from-docker-hub"></a>从 Docker 中心导入
 
-例如，使用 [az acr import][az-acr-import] 命令将多体系结构 `hello-world:latest` 映像从 Docker 中心导入到名为 myregistry 的注册表。 由于 `hello-world` 是来自 Docker 中心的官方映像，因此该映像位于默认的 `library` 存储库中。 `--source` 映像参数的值中包含存储库名称和（可选）标记。 （可以选择性根据映像的清单摘要而不是标签来标识映像，这确保映像为特定版本。）
+例如，使用 [az acr import][az-acr-import] 命令将多体系结构 `hello-world:latest` 映像从 Docker 中心导入到名为 myregistry 的注册表  。 由于 `hello-world` 是来自 Docker 中心的官方映像，因此该映像位于默认的 `library` 存储库中。 `--source` 映像参数的值中包含存储库名称和（可选）标记。 （可以选择性根据映像的清单摘要而不是标签来标识映像，这确保映像为特定版本。）
  
 ```azurecli
 az acr import --name myregistry --source docker.io/library/hello-world:latest --image hello-world:latest
@@ -84,7 +84,7 @@ az acr import --name myregistry --source mcr.microsoft.com/windows/servercore:la
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>从同一订阅的注册表中导入
 
-例如，在同一 Azure 订阅中，将 `aci-helloworld:latest` 映像从源注册表 mysourceregistry 导入到 myregistry。
+例如，在同一 Azure 订阅中，将 `aci-helloworld:latest` 映像从源注册表 mysourceregistry 导入到 myregistry   。
 
 ```azurecli
 az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-helloworld:latest --image hello-world:latest
@@ -98,7 +98,7 @@ az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-hellowo
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>从不同订阅的注册表导入
 
-在下面的示例中，mysourceregistry 与 myregistry 处于同一 Active Directory 租户的不同订阅中。 使用 `--registry` 参数提供源注册表的资源 ID。 注意，`--source` 参数只指定源存储库和映像名，而非注册表登录服务器名称。
+在下面的示例中，mysourceregistry 与 myregistry 处于同一 Active Directory 租户的不同订阅中   。 使用 `--registry` 参数提供源注册表的资源 ID。 注意，`--source` 参数只指定源存储库和映像名，而非注册表登录服务器名称。
  
 ```azurecli
 az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --image aci-hello-world:latest --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry

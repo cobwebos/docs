@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61459030"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的复制中数据
@@ -84,15 +84,15 @@ ms.locfileid: "61459030"
 
    **MySQL Workbench**
 
-   若要在 MySQL Workbench 中创建复制角色，请从“管理”面板打开“用户和特权”面板。 然后单击“添加帐户”。 
+   若要在 MySQL Workbench 中创建复制角色，请从“管理”面板打开“用户和特权”面板。   然后单击“添加帐户”  。 
  
    ![用户和特权](./media/howto-data-in-replication/users_privileges.png)
 
-   在“登录名”字段中键入用户名。 
+   在“登录名”字段中键入用户名。  
 
    ![同步用户](./media/howto-data-in-replication/syncuser.png)
  
-   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属角色”。 然后单击“应用”创建复制角色。
+   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属角色”。    然后单击“应用”创建复制角色。 
 
    ![复制从属角色](./media/howto-data-in-replication/replicationslave.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "61459030"
        - 建议以变量形式传入此参数。 有关详细信息，请参阅以下示例。
 
 > [!NOTE]
-> 如果主服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许主服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置。 请参阅[使用门户管理防火墙规则](howto-manage-firewall-using-portal.md)获取详细信息。
+> 如果主服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许主服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置  。 请参阅[使用门户管理防火墙规则](howto-manage-firewall-using-portal.md)获取详细信息。
 
    **示例**
 

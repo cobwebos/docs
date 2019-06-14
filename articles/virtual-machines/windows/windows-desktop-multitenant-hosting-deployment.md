@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: 7f43528c55cd22c2649ca0f1208da6f41695b98e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485439"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
@@ -108,7 +108,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>有关联接 Azure AD 的其他信息
 >[!NOTE]
->Azure 使用内置 Administrator 帐户预配所有 Windows，但不能使用此方法联接 AAD。 例如，“设置”>“帐户”>“访问工作或学校帐户”>“+连接”将不起作用。 若要手动加入 Azure AD，必须创建另一个管理员帐户并以其身份登录。 还可以使用预配包配置 Azure AD，使用“后续步骤”部分中的链接了解详细信息。
+>Azure 使用内置 Administrator 帐户预配所有 Windows，但不能使用此方法联接 AAD。 例如，“设置”>“帐户”>“访问工作或学校帐户”>“+连接”将不起作用  。 若要手动加入 Azure AD，必须创建另一个管理员帐户并以其身份登录。 还可以使用预配包配置 Azure AD，使用“后续步骤”部分中的链接了解详细信息  。
 >
 >
 

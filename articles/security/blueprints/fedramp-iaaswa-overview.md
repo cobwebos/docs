@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1ba5b813843ce2f5d31f337ab4d3d94e521b0e0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586099"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure 安全性与合规性蓝图：适用于 FedRAMP 的 laaS Web 应用
@@ -149,8 +149,8 @@ ms.locfileid: "60586099"
 
 Azure Monitor 日志可广泛记录系统和用户活动以及系统运行状况。 [Azure Monitor 日志](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)解决方案收集和分析 Azure 中资源生成的数据，并在本地环境。
 
-- **活动日志：**[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志：**[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。
+- **活动日志：** [活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **诊断日志：** [诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。
 - **日志存档：** 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Monitor 日志进行处理、 存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分进行安装。 请注意，客户负责配置这些解决方案，使之符合 FedRAMP 安全控制的要求：
@@ -189,7 +189,7 @@ Azure Monitor 日志可广泛记录系统和用户活动以及系统运行状况
 
 2. 运行预部署 PowerShell 脚本：azure-blueprint/predeploy/Orchestration_InitialSetup.ps1。
 
-3. 单击下面的按钮，登录到 Azure 门户，输入所需的 ARM 模板参数，然后单击“购买”。
+3. 单击下面的按钮，登录到 Azure 门户，输入所需的 ARM 模板参数，然后单击“购买”。 
 
     [![部署到 Azure](https://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Ffedramp-iaas-webapp%2Fmaster%2Fazuredeploy.json)
 

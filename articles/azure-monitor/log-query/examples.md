@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
 ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759905"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
@@ -25,7 +25,7 @@ ms.locfileid: "60759905"
 
 有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](https://docs.microsoft.com/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
 
-## <a name="events"></a>活动
+## <a name="events"></a>Events
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>搜索描述为“加密”的应用程序级事件
 此示例在 **Events** 表中搜索 **EventLog** 为 _Application_ 并且 **RenderedDescription** 包含 _cryptographic_ 的记录。 包括过去 24 小时的记录。
@@ -38,7 +38,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>搜索拆收相关的事件
-在 Event 和 SecurityEvents 表中搜索提到了 unmashaling 的记录。
+在 Event 和 SecurityEvents 表中搜索提到了 unmashaling 的记录    。
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
@@ -120,7 +120,7 @@ union withsource=sourceTable *
 ```
 
 ### <a name="count-all-logs-collected-over-the-last-hour-by-type"></a>按类型统计过去一小时收集的所有日志
-以下示例搜索过去一小时内报告的任何内容，并按“类型”统计每个表的记录数。 结果将在条形图中显示。
+以下示例搜索过去一小时内报告的任何内容，并按“类型”统计每个表的记录数。  结果将在条形图中显示。
 
 ```Kusto
 search *

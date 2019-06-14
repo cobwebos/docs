@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: adsolank;juliako;johndeu
 ms.openlocfilehash: a11ae0414d6737f1588515ec19524bcf499f0c74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61215799"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>使用 Azure Media Indexer 为媒体文件编制索引
@@ -247,16 +247,16 @@ ms.locfileid: "61215799"
 ### <a id="preset"></a> Azure Media Indexer 的任务预设
 可以通过连同任务一起提供可选任务预设，来自定义 Azure Media Indexer 的处理操作。  下面描述了此配置 xml 文件的格式。
 
-| 名称 | 必需 | 描述 |
+| Name | 必需 | 描述 |
 | --- | --- | --- |
-| **input** |false |要编制索引的资产文件。</p><p>Azure Media Indexer 支持以下格式的媒体文件：MP4、WMV、MP3、M4A、WMA、AAC、WAV。</p><p>可以在 **input** 元素的“名称”或“列表”属性中指定文件名（如下所示）。如果不指定要编制索引的文件，则选择主文件。 如果未设置主资产文件，则为输入资产中的第一个文件编制索引。</p><p>若要显式指定资产文件名，请执行：<br/>`<input name="TestFile.wmv">`<br/><br/>还可以一次为多个资产文件编制索引（最多 10 个文件）。 为此，请按以下步骤操作：<br/><br/><ol class="ordered"><li><p>创建一个文本文件（清单文件），并为其指定扩展名 .lst。 </p></li><li><p>将输入资产中所有资产文件名的列表添加到此清单文件。 </p></li><li><p>将该清单文件添加（上传）到资产。  </p></li><li><p>在输入的列表属性中指定清单文件的名称。<br/>`<input list="input.lst">`</li></ol><br/><br/>请注意:如果在清单文件中添加了 10 个以上的文件，则索引作业会失败并显示 2006 错误代码。 |
+| **input** |false |要编制索引的资产文件。</p><p>Azure Media Indexer 支持以下格式的媒体文件：MP4、WMV、MP3、M4A、WMA、AAC、WAV。</p><p>可以在 **input** 元素的“名称”  或“列表”  属性中指定文件名（如下所示）。如果不指定要编制索引的文件，则选择主文件。 如果未设置主资产文件，则为输入资产中的第一个文件编制索引。</p><p>若要显式指定资产文件名，请执行：<br/>`<input name="TestFile.wmv">`<br/><br/>还可以一次为多个资产文件编制索引（最多 10 个文件）。 为此，请按以下步骤操作：<br/><br/><ol class="ordered"><li><p>创建一个文本文件（清单文件），并为其指定扩展名 .lst。 </p></li><li><p>将输入资产中所有资产文件名的列表添加到此清单文件。 </p></li><li><p>将该清单文件添加（上传）到资产。  </p></li><li><p>在输入的列表属性中指定清单文件的名称。<br/>`<input list="input.lst">`</li></ol><br/><br/>请注意:如果在清单文件中添加了 10 个以上的文件，则索引作业会失败并显示 2006 错误代码。 |
 | **metadata** |false |用于词汇自适应的指定资产文件的元数据。  在准备索引器以使其能够识别非标准词汇（例如专有名词）时，该元素非常有用。<br/>`<metadata key="..." value="..."/>` <br/><br/>可以提供预定义**键**的**值**。 当前支持以下键：<br/><br/>“title”和“description”- 用于词汇适应，以微调作业的语言模型及改进语音辨识准确度。  值将植入 Internet 搜索以查找上下文相关的文本文档，并在执行索引任务期间使用内容来扩大内部字典。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
 | **features** <br/><br/> 在版本 1.2 中添加。 目前，唯一支持的功能是语音识别（“ASR”）。 |false |语音识别功能具有以下设置键：<table><tr><th><p>密钥</p></th>        <th><p>描述</p></th><th><p>示例值</p></th></tr><tr><td><p>语言</p></td><td><p>要在多媒体文件中识别的自然语言。</p></td><td><p>英语、西班牙语</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>以分号分隔的所需输出字幕格式的列表（如果有）</p></td><td><p>ttml; sami; webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>布尔标志，指定是否需要 AIB 文件（用于 SQL Server 和客户索引器 IFilter）。  有关详细信息，请参阅 <a href="https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">Using AIB Files with Azure Media Indexer and SQL Server</a>（在 Azure 媒体索引器和 SQL Server 中使用 AIB 文件）。</p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>布尔标志，指定是否需要关键字 XML 文件。</p></td><td><p>True; False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>布尔型标志，指定是否强制完整字幕（不考虑可信度）。  </p><p>默认值为 false，在此情况下，将忽略最终字幕输出中可信度小于 50% 的单词和短语并将其替换为省略号（“...”）。  省略号可用于字幕质量控制和审核。</p></td><td><p>True；False。 </p></td></tr></table> |
 
 ### <a id="error_codes"></a>错误代码
 如果发生错误，Azure Media Indexer 应返回以下错误代码之一：
 
-| 代码 | 名称 | 可能的原因 |
+| 代码 | Name | 可能的原因 |
 | --- | --- | --- |
 | 2000 |配置无效 |配置无效 |
 | 2001 |输入资产无效 |输入资产缺失或资产为空。 |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: kgremban
 ms.openlocfilehash: 7ac668bdbc3698be3ed2aa50a428cef84e68369a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61441355"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
@@ -31,7 +31,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * 在设备上接收云到设备的消息。
 
-* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈）。
+* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈  ）。
 
 你可以找到有关云到设备的消息的详细信息[IoT 中心开发人员指南](iot-hub-devguide-messaging.md)。
 
@@ -47,14 +47,14 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 要完成本教程，需要以下各项：
 
-* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
+* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip  - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
 
 * 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包](https://www.microsoft.com/download/confirmation.aspx?id=48145)，以便使用 Python 中的本机 DLL。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 > [!NOTE]
-> 适用于 `azure-iothub-service-client` 和 `azure-iothub-device-client` 的 pip 包目前仅供 Windows OS 使用。 对于 Linux/Mac OS，请参阅于 Linux 和 Mac OS 特定部分，在[准备开发环境以便使用 Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)发布。
+> 适用于 `azure-iothub-service-client` 和 `azure-iothub-device-client` 的 pip  包目前仅供 Windows OS 使用。 对于 Linux/Mac OS，请参阅于 Linux 和 Mac OS 特定部分，在[准备开发环境以便使用 Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)发布。
 >
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息

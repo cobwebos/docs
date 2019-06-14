@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60658282"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理实例的容量
@@ -69,13 +69,13 @@ ms.locfileid: "60658282"
 ![容量指标](./media/api-management-capacity/capacity-metric.png)  
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 APIM 实例。
-2. 选择“指标(预览)”。
-3. 在紫色部分，从可用指标中选择“容量”，并保留默认的“平均值”聚合。
+2. 选择“指标(预览)”。 
+3. 在紫色部分，从可用指标中选择“容量”，并保留默认的“平均值”聚合。  
 
     > [!TIP]
     > 为避免解释错误，**容量**指标始终按位置分解。
 
-4. 在绿色部分选择“位置”，以便按维度拆分指标。
+4. 在绿色部分选择“位置”，以便按维度拆分指标。 
 5. 从该部分的顶部栏中选择所需的时间范围。
 
     可以设置指标警报，以便在发生意外的情况时收到通知。 例如，当 APIM 实例超出预期峰值容量有 20 分钟以上时收到通知。

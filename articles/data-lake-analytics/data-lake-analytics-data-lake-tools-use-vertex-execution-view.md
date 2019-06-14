@@ -10,10 +10,10 @@ ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: conceptual
 ms.date: 10/13/2016
 ms.openlocfilehash: 73314c5864e3036d102deee2792021345b80bf2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60687726"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>在用于 Visual Studio 的 Data Lake 工具中使用顶点执行视图
@@ -21,7 +21,7 @@ ms.locfileid: "60687726"
 
 
 ## <a name="open-the-vertex-execution-view"></a>打开顶点执行视图
-在用于 Visual Studio 的 Data Lake 工具中打开 U-SQL 作业。 在左下角单击“顶点执行视图”。 系统可能提示先加载配置文件，此操作可能需要一些时间，具体取决于网络连接状况。
+在用于 Visual Studio 的 Data Lake 工具中打开 U-SQL 作业。 在左下角单击“顶点执行视图”  。 系统可能提示先加载配置文件，此操作可能需要一些时间，具体取决于网络连接状况。
 
 ![Data Lake Analytics 工具顶点执行视图](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
 
@@ -30,11 +30,11 @@ ms.locfileid: "60687726"
 
 ![Data Lake Analytics 工具顶点执行视图](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
-可在左边的“顶点选择器”按功能选择顶点（例如：前 10 个数据读取，或按阶段选择）。 其中一个最常用筛选器是查看“关键路径上的顶点”。 “关键路径”是 U-SQL 作业顶点中最长的链。 了解关键路径有助于通过检查哪个顶点耗时最长来优化作业。
+可在左边的“顶点选择器”  按功能选择顶点（例如：前 10 个数据读取，或按阶段选择）。 其中一个最常用筛选器是查看“关键路径上的顶点”  。 “关键路径”  是 U-SQL 作业顶点中最长的链。 了解关键路径有助于通过检查哪个顶点耗时最长来优化作业。
   
 ![Data Lake Analytics 工具顶点执行视图](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
-顶部中心窗格显示“所有顶点的运行状态”。
+顶部中心窗格显示“所有顶点的运行状态”  。
   
 ![Data Lake Analytics 工具顶点执行视图](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 

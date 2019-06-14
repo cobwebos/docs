@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 6f3f06ff54fc76416ba63f4f09835897d546f8dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61349626"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Azure 数据工厂窗口转换
@@ -44,7 +44,7 @@ Over 子句的另一部分是设置 ```Order By```。 该操作将设置数据�
 
 ![窗口选项](media/data-flow/windows7.png "窗口 7")
 
-此处列出了可通过表达式生成器采用 ADF 数据流表达式语言使用的聚合和分析函数的完整列表： https://aka.ms/dataflowexpressions。
+此处列出了可通过表达式生成器采用 ADF 数据流表达式语言使用的聚合和分析函数的完整列表： https://aka.ms/dataflowexpressions 。
 
 ## <a name="next-steps"></a>后续步骤
 

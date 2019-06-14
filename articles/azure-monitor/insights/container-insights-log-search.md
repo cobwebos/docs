@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: 66fc55d8c3dbb8487d1e796d5f30b08a94f717f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60494758"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何查询 Azure 监视器中的容器的日志
@@ -44,7 +44,7 @@ ms.locfileid: "60494758"
 ## <a name="search-logs-to-analyze-data"></a>搜索日志以分析数据
 Azure Monitor 日志可以帮助您查找所的趋势，诊断瓶颈，预测，或相关联的数据可帮助您确定是否以最佳方式执行的当前群集配置。 提供预定义日志搜索，可直接使用，也可通过自定义来按自己想要的方式返回信息。 
 
-通过在预览窗格中选择“查看 Kubernetes 事件日志”或“查看容器日志”选项，对工作区中的数据执行交互式分析。 “日志搜索”页面在用户所处的 Azure 门户页面的右侧显示。
+通过在预览窗格中选择“查看 Kubernetes 事件日志”或“查看容器日志”选项，对工作区中的数据执行交互式分析   。 “日志搜索”页面在用户所处的 Azure 门户页面的右侧显示  。
 
 ![在 Log Analytics 中分析数据](./media/container-insights-analyze/container-health-log-search-example.png)   
 
@@ -58,8 +58,8 @@ Azure Monitor 日志可以帮助您查找所的趋势，诊断瓶颈，预测，
 | ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | 列出容器的所有生命周期信息| 
 | KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes 事件|
 | ContainerImageInventory<br> &#124; summarize AggregatedValue = count() by Image, ImageTag, Running | 映像清单 | 
-| 选择“折线图”显示选项：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器 CPU | 
-| 选择“折线图”显示选项：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器内存 |
+| 选择“折线图”显示选项  ：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器 CPU | 
+| 选择“折线图”显示选项  ：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器内存 |
 
 ## <a name="next-steps"></a>后续步骤
 用于容器的 azure 监视器不包括一组预定义的警报。 审阅[适用于容器的 Azure Monitor 创建性能警报](container-insights-alerts.md)若要了解如何创建高的 CPU 和内存使用率，以支持 DevOps 或操作流程和过程建议的警报。 

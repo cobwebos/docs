@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60636211"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>通过 Azure CDN 进行媒体流式处理优化 
@@ -67,11 +67,11 @@ ms.locfileid: "60636211"
  
 你可以配置内容分发网络 (CDN) 终结点，以优化通过 Azure 门户的大型文件分发。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户进行的 **Akamai 推出的 Azure CDN 标准版**配置文件的分发过程：
 
-1. 若要添加新的终结点，请在 Akamai“CDN 配置文件”页上选择“终结点”。
+1. 若要添加新的终结点，请在 Akamai“CDN 配置文件”  页上选择“终结点”  。
   
     ![新建终结点](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
-2. 在“针对以下项优化”下拉列表中，针对点播视频资产选择“点播视频媒体流”。 如果对实时流和点播视频流进行了组合，请选择“常规媒体流”。
+2. 在“针对以下项优化”  下拉列表中，针对点播视频资产选择“点播视频媒体流”  。 如果对实时流和点播视频流进行了组合，请选择“常规媒体流”  。
 
     ![已选择“流式处理”](./media/cdn-media-streaming-optimization/02_Creating.png) 
  

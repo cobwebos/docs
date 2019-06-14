@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 42fdd6645a7a0e7cd9a2f0a7bc969e8eee62758c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60874954"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
@@ -23,9 +23,9 @@ ms.locfileid: "60874954"
 
 将蓝图分配到作用域是许多错误产生的原因。 分配失败时，蓝图会提供失败部署的详细信息。 此信息会指出存在的问题，以便可以修复问题并确保后续部署成功进行。
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
-1. 选择**分配蓝图**的页面上的左侧和使用的搜索框进行筛选以查找失败的分配的蓝图分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
+1. 选择**分配蓝图**的页面上的左侧和使用的搜索框进行筛选以查找失败的分配的蓝图分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项  。
 
 1. 左键单击与蓝图_失败_状态或右键单击并选择**查看分配的详细信息**。
 
@@ -72,4 +72,4 @@ ms.locfileid: "60874954"
 
 - 从通过 Azure 专家那里获得答案[Azure 论坛](https://azure.microsoft.com/support/forums/)。
 - 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 

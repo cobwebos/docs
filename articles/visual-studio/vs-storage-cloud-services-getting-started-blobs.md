@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 9f1ef06e0275954343c548d0f6937b9c6fbcfd18
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122934"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 Visual Studio 云服务项目中创建或引用 Azure 存储帐户之后，如何开始使用 Azure blob 存储。 将介绍如何访问和创建 blob 容器以及如何执行常见任务（如上传、列出和下载 blob）。 示例是使用 C\# 编写的并使用了[适用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 Visual Studio 云服务项目中创建或引用 Azure 存储帐户之后，如何开始使用 Azure blob 存储。  将介绍如何访问和创建 blob 容器以及如何执行常见任务（如上传、列出和下载 blob）。 示例是使用 C\# 编写的并使用了[适用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
 Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。 单个 Blob 可以是任意大小。 Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。
 

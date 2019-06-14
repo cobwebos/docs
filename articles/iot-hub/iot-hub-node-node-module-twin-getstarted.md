@@ -10,10 +10,10 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.openlocfilehash: 312d3abad2ee2c9e668f8b354aaba96f8a652698
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626192"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>使用 Node.js 后端和 Node.js 设备创建 IoT 中心模块标识和模块孪生入门
@@ -44,14 +44,14 @@ ms.locfileid: "60626192"
 
 1. 创建目录以保存代码。
 
-2. 在该目录中，首先运行“npm init -y” ，使用默认值创建一个空的 package.json ****。 这是代码的项目文件。
+2. 在该目录中，首先运行“npm init -y” ，使用默认值创建一个空的 package.json **** 。 这是代码的项目文件。
 
 3. 运行 **npm 安装-S 的 azure iot 中心\@模块预览**若要安装的服务 SDK 内 **node_modules** 子目录。
 
     > [!NOTE]
     > 子目录名称 node_modules 使用字“模块”来表示“节点库”。 此处的术语与 IoT 中心模块无关。
 
-4. 在目录中创建以下 .js 文件。 将它命名为 add.js。 复制并粘贴中心连接字符串和中心名称。
+4. 在目录中创建以下 .js 文件。 将它命名为 add.js  。 复制并粘贴中心连接字符串和中心名称。
 
     ```javascript
     var Registry = require('azure-iothub').Registry;
@@ -108,7 +108,7 @@ ms.locfileid: "60626192"
 
     ```
 
-此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
+此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识    。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
 
 使用节点 add.js 运行它。 它将为设备标识提供一个连接字符串，并为模块标识提供另一个连接字符串。
 
@@ -182,7 +182,7 @@ ms.locfileid: "60626192"
     });
     ```
 
-4. 现在请使用命令“node twin.js”来运行它 ****。
+4. 现在请使用命令“node twin.js”来运行它 **** 。
 
     ```
     F:\temp\module_twin>node twin.js

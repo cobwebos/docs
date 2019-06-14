@@ -17,10 +17,10 @@ ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 95ada2cb146bdbc972afee883a1d174c95aa67d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60650242"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>跨 Azure 区域的 SAP HANA 可用性
@@ -81,7 +81,7 @@ SAP 使用 HANA 2.0 SPS3 引入了[多目标系统复制](https://help.sap.com/v
 使用 logreplay 作为操作模式时，此配置在主要区域内提供低 RTO 的 RPO=0。 如果需要转移到第二个区域，此配置还能提供更低的 RPO。 第二个区域的 RTO 时间取决于是否预加载数据。 许多客户使用次要区域中的 VM 来运行测试系统。 在这种用例中，无法预加载数据。
 
 > [!IMPORTANT]
-> 不同层之间的操作模式需要是同类的。 不能使用 logreply 作为第 1 层与第 2 层之间的操作模式，同时使用 delta_datashipping 提供第 3 层。 只能选择一种或另一种操作模式，需要对所有层保持一致。 由于 delta_datashipping 不适合提供 RPO=0，因此对于这类多层配置，唯一合理的操作模式仍是 logreplay。 有关操作模式和某些限制的详细信息，请参阅 SAP 文章 [SAP HANA 系统复制的操作模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)。 
+> 不同层之间的操作模式需要是同类的。 不能  使用 logreply 作为第 1 层与第 2 层之间的操作模式，同时使用 delta_datashipping 提供第 3 层。 只能选择一种或另一种操作模式，需要对所有层保持一致。 由于 delta_datashipping 不适合提供 RPO=0，因此对于这类多层配置，唯一合理的操作模式仍是 logreplay。 有关操作模式和某些限制的详细信息，请参阅 SAP 文章 [SAP HANA 系统复制的操作模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128560"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务的性能
@@ -31,11 +31,11 @@ ms.locfileid: "62128560"
 本文包含了 CPU 采样分析方法，可在模拟器中本地执行该方法。 CPU 采样是一种干预性不是很强的分析方法。 探查器将按照指定的采样时间间隔拍摄调用堆栈的快照。 将收集一段时间内的数据并将其显示在报告中。 此分析方法倾向于指示在具有大量计算的应用程序中执行大多数 CPU 工作的位置。  这使你能够侧重于应用程序在其上花费最多时间的“热路径”。
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1:配置 Visual Studio 以进行分析
-首先，提供了几个 Visual Studio 配置选项，这些选项在分析时可能会有用。 为便于理解分析报表，需要应用程序的符号（.pdb 文件）与系统库的符号。 需确保引用可用的符号服务器。 为此，请在 Visual Studio 中的“**工具**”菜单上，依次选择“**选项**”、“**调试**”和“**符号**”。 确保**符号文件 (.pdb) 位置**下方列出了 Microsoft 符号服务器。  还可以引用 https://referencesource.microsoft.com/symbols，它可能具有附加的符号文件。
+首先，提供了几个 Visual Studio 配置选项，这些选项在分析时可能会有用。 为便于理解分析报表，需要应用程序的符号（.pdb 文件）与系统库的符号。 需确保引用可用的符号服务器。 为此，请在 Visual Studio 中的“**工具**”菜单上，依次选择“**选项**”、“**调试**”和“**符号**”。 确保**符号文件 (.pdb) 位置**下方列出了 Microsoft 符号服务器。  还可以引用 https://referencesource.microsoft.com/symbols ，它可能具有附加的符号文件。
 
 ![“符号”选项][4]
 
-如果需要，可通过设置“仅我的代码”来简化探查器生成的报告。 通过启用“仅我的代码”，可简化函数调用堆栈，以便从报告中隐藏对库和 .NET Framework 的完全内部调用。 在“**工具**”菜单上，选择“**选项**”。 然后展开“性能工具”节点，并选择“常规”。 选中“**为探查器报告启用‘仅我的代码’**”的复选框。
+如果需要，可通过设置“仅我的代码”来简化探查器生成的报告。 通过启用“仅我的代码”，可简化函数调用堆栈，以便从报告中隐藏对库和 .NET Framework 的完全内部调用。 在“**工具**”菜单上，选择“**选项**”。 然后展开“性能工具”节点，并选择“常规”   。 选中“**为探查器报告启用‘仅我的代码’** ”的复选框。
 
 ![“仅我的代码”选项][17]
 
@@ -75,12 +75,12 @@ private async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-本地生成并运行云服务且不进行调试 (Ctrl+F5)，并将解决方案配置设置为“发布”。 这会确保创建的所有文件和文件夹都用于本地运行应用程序，并确保启动所有仿真程序。 从任务栏启动计算模拟器 UI，以验证辅助角色是否正在运行。
+本地生成并运行云服务且不进行调试 (Ctrl+F5)，并将解决方案配置设置为“发布”  。 这会确保创建的所有文件和文件夹都用于本地运行应用程序，并确保启动所有仿真程序。 从任务栏启动计算模拟器 UI，以验证辅助角色是否正在运行。
 
 ## <a name="2-attach-to-a-process"></a>2:附加到进程
 必须将探查器附加到正在运行的进程，而不是通过从 Visual Studio 2010 IDE 中启动应用程序来分析该应用程序。 
 
-若要将探查器附加到进程，请在“分析”菜单上选择“探查器”和“附加/分离”。
+若要将探查器附加到进程，请在“分析”菜单上选择“探查器”和“附加/分离”    。
 
 ![“附加配置文件”选项][6]
 

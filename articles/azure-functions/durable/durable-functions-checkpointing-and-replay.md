@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60648493"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions 中的检查点和重播 (Azure Functions)
@@ -61,7 +61,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-执行到每条 `await` (C#) 或 `yield` (JavaScript) 语句时，Durable Task Framework 会在表存储中创建该函数的执行状态检查点。 此状态称为“业务流程历史记录”。
+执行到每条 `await` (C#) 或 `yield` (JavaScript) 语句时，Durable Task Framework 会在表存储中创建该函数的执行状态检查点。 此状态称为“业务流程历史记录”。 
 
 ## <a name="history-table"></a>历史记录表
 
@@ -74,11 +74,11 @@ module.exports = df.orchestrator(function*(context) {
 完成检查点之后，在业务流程协调程序函数需要执行其他工作之前，可以从内存中任意删除该函数。
 
 > [!NOTE]
-> 在将数据保存到表存储和队列的间隔期限内，Azure 存储不提供任何事务保证。 若要处理错误，Durable Functions 存储提供程序会使用“最终一致性”模式。 这些模式可确保在发生崩溃时不会丢失数据，或者在创建检查点的中途不会断开连接。
+> 在将数据保存到表存储和队列的间隔期限内，Azure 存储不提供任何事务保证。 若要处理错误，Durable Functions 存储提供程序会使用“最终一致性”模式。  这些模式可确保在发生崩溃时不会丢失数据，或者在创建检查点的中途不会断开连接。
 
 完成后，前面所示的函数历史记录在 Azure 表存储中如下所示（为方便演示，此处采用了缩写）：
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 输入 | 名称             | 结果                                                    | 状态 |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 输入 | Name             | 结果                                                    | 状态 |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Null  | E1_HelloSequence |                                                           |                     |
@@ -145,7 +145,7 @@ module.exports = df.orchestrator(function*(context) {
 
   如果业务流程协调程序需要延迟，可以使用 [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) 或 `createTimer` (JavaScript) API。
 
-* 除非使用 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API 或 `context.df` 对象的 API，否则业务流程协调程序不得发起任何异步操作。 例如，.NET 中没有 `Task.Run`、`Task.Delay` 或 `HttpClient.SendAsync`，JavaScript 中没有 `setTimeout()` 和 `setInterval()`。 Durable Task Framework 在单个线程上执行业务流程协调程序代码，不能与可由其他异步 API 计划的其他任何线程交互。
+* 除非使用 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API 或 `context.df` 对象的 API，否则业务流程协调程序不得发起任何异步操作  。 例如，.NET 中没有 `Task.Run`、`Task.Delay` 或 `HttpClient.SendAsync`，JavaScript 中没有 `setTimeout()` 和 `setInterval()`。 Durable Task Framework 在单个线程上执行业务流程协调程序代码，不能与可由其他异步 API 计划的其他任何线程交互。
 
 * 在业务流程协调程序代码中，**应避免无限循环**。 由于 Durable Task Framework 在业务流程函数的执行过程中会保存执行历史记录，无限循环可能会导致业务流程协调程序实例耗尽内存。 对于无限循环方案，可使用 [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) 或 `continueAsNew` (JavaScript) 等 API 来重启函数执行，并丢弃以前的执行历史记录。
 
@@ -161,9 +161,9 @@ module.exports = df.orchestrator(function*(context) {
 > [!NOTE]
 > 本部分介绍 Durable Task Framework 的内部实现详细信息。 在不了解这些信息的情况下也可以使用 Durable Functions。 本部分旨在帮助读者了解重播行为。
 
-可在业务流程协调程序函数中安全等待的任务有时称为“持久任务”。 这些任务由 Durable Task Framework 创建和管理。 示例包括 `CallActivityAsync`、`WaitForExternalEvent` 和 `CreateTimer` 返回的任务。
+可在业务流程协调程序函数中安全等待的任务有时称为“持久任务”。  这些任务由 Durable Task Framework 创建和管理。 示例包括 `CallActivityAsync`、`WaitForExternalEvent` 和 `CreateTimer` 返回的任务。
 
-使用 `TaskCompletionSource` 对象的列表在内部管理这些持久任务。 在重播期间，这些任务在业务流程协调程序代码执行过程中予以创建，并在调度程序枚举相应历史记录事件时完成。 在重播所有历史记录之前，所有这些操作会通过单个线程以同步方式完成。 针对在历史记录重播结束时尚未完成的任何持久任务，将会执行相应的操作。例如，可能会将一条消息排队，以调用活动函数。
+使用 `TaskCompletionSource` 对象的列表在内部管理这些持久任务。  在重播期间，这些任务在业务流程协调程序代码执行过程中予以创建，并在调度程序枚举相应历史记录事件时完成。 在重播所有历史记录之前，所有这些操作会通过单个线程以同步方式完成。 针对在历史记录重播结束时尚未完成的任何持久任务，将会执行相应的操作。例如，可能会将一条消息排队，以调用活动函数。
 
 借助此处所述的执行行为，我们应该可以理解业务流程协调程序函数代码为何不得将非持久任务置于 `await` 状态：调度程序线程无法等待该任务完成，并且该任务发出的任何回调可能会破坏业务流程协调程序函数的跟踪状态。 一些运行时检查可以尽量防止发生这种情况。
 

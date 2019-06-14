@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60550039"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
@@ -58,7 +58,7 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 * 安装有 Visual Studio 2015 的一台计算机。 Batch 模板当前仅支持 Visual Studio 2015。
 * Batch 模板，可从 [Visual Studio 库][vs_gallery]以 Visual Studio 扩展的形式获取。 有两种方式可获取模板：
   
-  * 使用 Visual Studio 中的“扩展和更新”对话框安装模板（有关详细信息，请参阅[查找和使用 Visual Studio 扩展][vs_find_use_ext]）。 在“扩展和更新”对话框中，搜索并下载以下两个扩展：
+  * 使用 Visual Studio 中的“扩展和更新”  对话框安装模板（有关详细信息，请参阅[查找和使用 Visual Studio 扩展][vs_find_use_ext]）。 在“扩展和更新”  对话框中，搜索并下载以下两个扩展：
     
     * 随附作业拆分器的 Azure Batch 作业管理器
     * Azure Batch 任务处理器
@@ -68,10 +68,10 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 ## <a name="preparation"></a>准备工作
 建议创建可在其中包含作业管理器和任务处理器的解决方案，因为这样可以更轻松地在作业管理器和任务处理器程序之间共享代码。 若要创建此解决方案，请遵循以下步骤：
 
-1. 打开 Visual Studio，并选择“文件” > “新建” > “项目”。
-2. 在“模板”下展开“其他项目类型”，单击“Visual Studio 解决方案”，并选择“空白解决方案”。
+1. 打开 Visual Studio，并选择“文件”   > “新建”   > “项目”  。
+2. 在“模板”  下展开“其他项目类型”  ，单击“Visual Studio 解决方案”  ，并选择“空白解决方案”  。
 3. 键入用于描述应用程序和此解决方案用途的名称（例如，“LitwareBatchTaskPrograms”）。
-4. 若要创建新解决方案，请单击“确定”。
+4. 若要创建新解决方案，请单击“确定”  。
 
 ## <a name="job-manager-template"></a>作业管理器模板
 作业管理器模板可帮助实现作业管理器任务以执行以下操作：
@@ -88,10 +88,10 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 若要在前面创建的解决方案中添加作业管理器，请遵循以下步骤：
 
 1. 在 Visual Studio 中打开现有解决方案。
-2. 在解决方案资源管理器中，右键单击解决方案，并单击“添加” > “新建项目”。
-3. 在“Visual C#”下单击“云”，并单击“随附作业拆分器的 Azure Batch 作业管理器”。
+2. 在解决方案资源管理器中，右键单击解决方案，并单击“添加”   > “新建项目”  。
+3. 在“Visual C#”  下单击“云”  ，并单击“随附作业拆分器的 Azure Batch 作业管理器”  。
 4. 键入用于描述应用程序并将此项目标识为作业管理器的名称（例如“LitwareJobManager”）。
-5. 若要创建项目，请单击“确定”。
+5. 若要创建项目，请单击“确定”  。
 6. 最后，生成项目来强制 Visual Studio 加载所有引用的 NuGet 包，并验证项目是否有效以便能开始对其进行修改。
 
 ### <a name="job-manager-template-files-and-their-purpose"></a>作业管理器模板文件及其用途
@@ -194,7 +194,7 @@ Split() 实现具有以下项的访问权限：
 | 代码 | 描述 |
 | --- | --- |
 | 0 |作业管理器成功完成。 作业拆分器代码已运行完成，并且所有任务都已添加到作业中。 |
-| 1 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
+| 第 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
 | 2 |作业管理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但作业管理器无法添加任何额外的诊断或补救信息。 |
 
 在作业管理器任务失败的情况下，某些任务可能仍在错误发生之前就已添加到服务中。 这些任务将正常运行。 请参阅上面的“作业拆分器失败”，获取有关此代码路径的介绍。
@@ -228,19 +228,19 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 **作业管理器任务设置**
 
-客户端应该将作业管理器的 killJobOnCompletion 标志设置为 false。
+客户端应该将作业管理器的 killJobOnCompletion  标志设置为 false  。
 
-客户端通常可以安全地将 runExclusive 设置为 false。
+客户端通常可以安全地将 runExclusive  设置为 false  。
 
-客户端应使用 resourceFiles 或 applicationPackageReferences 集合将作业管理器可执行文件（及其所需的 DLL）部署到计算节点。
+客户端应使用 resourceFiles  或 applicationPackageReferences  集合将作业管理器可执行文件（及其所需的 DLL）部署到计算节点。
 
-默认情况下，作业管理器在失败时不重试。 根据作业管理器逻辑，客户端可能需要通过 constraints/maxTaskRetryCount 启用重试。
+默认情况下，作业管理器在失败时不重试。 根据作业管理器逻辑，客户端可能需要通过 constraints  /maxTaskRetryCount  启用重试。
 
 **作业设置**
 
 如果作业拆分器发出具有依赖项的任务，客户端必须将作业的 usesTaskDependencies 设置为 true。
 
-在作业拆分器模型中，除了作业拆分器所创建的任务外，客户端通常不需要将任务添加到作业中。 因此一般而言，客户端应该将作业的 onAllTasksComplete 设置为 terminatejob。
+在作业拆分器模型中，除了作业拆分器所创建的任务外，客户端通常不需要将任务添加到作业中。 因此一般而言，客户端应该将作业的 onAllTasksComplete  设置为 terminatejob  。
 
 ## <a name="task-processor-template"></a>任务处理器模板
 任务处理器模板可帮助实现任务处理器来执行以下操作：
@@ -257,10 +257,10 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 若要在前面创建的解决方案中添加任务处理器，请遵循以下步骤：
 
 1. 在 Visual Studio 中打开现有解决方案。
-2. 在解决方案资源管理器中，右键单击解决方案，单击“添加”，并单击“新建项目”。
-3. 在“Visual C#”下单击“云”，并单击“Azure Batch 任务处理器”。
+2. 在解决方案资源管理器中，右键单击解决方案，单击“添加”  ，并单击“新建项目”  。
+3. 在“Visual C#”  下单击“云”  ，并单击“Azure Batch 任务处理器”  。
 4. 键入用于描述应用程序并将此项目标识为任务处理器的名称（例如“LitwareTaskProcessor”）。
-5. 若要创建项目，请单击“确定”。
+5. 若要创建项目，请单击“确定”  。
 6. 最后，生成项目来强制 Visual Studio 加载所有引用的 NuGet 包，并验证项目是否有效以便能开始对其进行修改。
 
 ### <a name="task-processor-template-files-and-their-purpose"></a>任务处理器模板文件及其用途
@@ -385,7 +385,7 @@ Run() 实现具有以下项的访问权限：
 ### <a name="client-considerations"></a>客户端注意事项
 **存储凭据**
 
-如果任务处理器使用 Azure Blob 存储来保存输出，例如使用文件约定帮助器库，则它需要访问云存储帐户凭据或包含共享访问签名 (SAS) 的 Blob 容器 URL。 模板支持通过通用环境变量来提供凭据。 客户端可按如下所示传递存储凭据：
+如果任务处理器使用 Azure Blob 存储来保存输出，例如使用文件约定帮助器库，则它需要访问云存储帐户凭据或包含共享访问签名 (SAS) 的 Blob 容器 URL   。 模板支持通过通用环境变量来提供凭据。 客户端可按如下所示传递存储凭据：
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {

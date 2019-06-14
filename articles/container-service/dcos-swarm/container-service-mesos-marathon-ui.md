@@ -10,10 +10,10 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61468146"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>（已弃用）通过 Marathon Web UI 管理 Azure 容器服务 DC/OS 群集
@@ -46,7 +46,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 ![Marathon UI](./media/container-service-mesos-marathon-ui/dcos3.png)
 
 ## <a name="deploy-a-docker-formatted-container"></a>部署 Docker 格式容器
-要使用 Marathon 部署新容器，请单击“创建应用程序”，并在窗体选项卡中输入以下信息：
+要使用 Marathon 部署新容器，请单击“创建应用程序”，并在窗体选项卡中输入以下信息： 
 
 | 字段 | 值 |
 | --- | --- |
@@ -55,7 +55,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 | Image |nginx |
 | 网络 |桥接 |
 | 主机端口 |80 |
-| 协议 |TCP |
+| Protocol |TCP |
 
 ![新应用程序 UI - 常规](./media/container-service-mesos-marathon-ui/dcos4.png)
 
@@ -63,7 +63,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
 ![新应用程序 UI - 端口和服务发现](./media/container-service-mesos-marathon-ui/dcos6.png)
 
-如果想以静态方式将容器端口映射到代理端口，则需要使用 JSON 模式。 为此，请使用切换功能将“新建应用程序”向导切换到“JSON 模式”。 然后在应用程序定义的 `portMappings` 节下输入以下设置。 此示例将容器的端口 80 绑定到 DC/OS 代理的端口 80。 进行更改后，可切换向导退出 JSON 模式。
+如果想以静态方式将容器端口映射到代理端口，则需要使用 JSON 模式。 为此，请使用切换功能将“新建应用程序”向导切换到“JSON 模式”  。 然后在应用程序定义的 `portMappings` 节下输入以下设置。 此示例将容器的端口 80 绑定到 DC/OS 代理的端口 80。 进行更改后，可切换向导退出 JSON 模式。
 
 ```none
 "hostPort": 80,
@@ -71,17 +71,17 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
 ![新应用程序 UI - 端口 80 示例](./media/container-service-mesos-marathon-ui/dcos13.png)
 
-如果想要启用运行状况检查，请在“运行状况检查”选项卡中设置路径。
+如果想要启用运行状况检查，请在“运行状况检查”选项卡中设置路径。 
 
 ![新应用程序 UI - 运行状况检查](./media/container-service-mesos-marathon-ui/dcos_healthcheck.png)
 
-使用专用和公用代理组部署 DC/OS 群集。 为使群集能从 Internet 访问应用程序，需将应用程序部署到公用代理。 为此，请选择“新建应用程序”向导上的“可选”选项卡，并输入 **slave_public** 作为“已接受资源角色”。
+使用专用和公用代理组部署 DC/OS 群集。 为使群集能从 Internet 访问应用程序，需将应用程序部署到公用代理。 为此，请选择“新建应用程序”向导上的“可选”选项卡，并输入 **slave_public** 作为“已接受资源角色”。  
 
-然后单击“创建应用程序”。
+然后单击“创建应用程序”  。
 
 ![新应用程序 UI - 公用代理设置](./media/container-service-mesos-marathon-ui/dcos14.png)
 
-返回 Marathon 主页，会看到容器的部署状态。 最初会显示“正在部署”状态。 成功部署后，状态将更改为“正在运行”。
+返回 Marathon 主页，会看到容器的部署状态。 最初会显示“正在部署”状态。  成功部署后，状态将更改为“正在运行”。 
 
 ![Marathon 主页 UI - 容器部署状态](./media/container-service-mesos-marathon-ui/dcos7.png)
 
@@ -89,7 +89,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
 ![DC/OS Web UI - 任务在群集上运行](./media/container-service-mesos-marathon-ui/dcos8.png)
 
-若要查看运行任务的群集节点，请单击“节点”选项卡。
+若要查看运行任务的群集节点，请单击“节点”选项卡。 
 
 ![DC/OS Web UI - 任务群集节点](./media/container-service-mesos-marathon-ui/dcos9.png)
 

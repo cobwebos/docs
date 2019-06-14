@@ -9,14 +9,13 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-origin.date: 06/20/2018
-ms.date: 12/31/2018
-ms.author: v-yiso
+ms.date: 06/20/2018
+ms.author: apimpm
 ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62123461"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>自动缩放 Azure API 管理实例  
@@ -50,21 +49,21 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 
 遵循以下步骤为 Azure API 管理服务配置自动缩放：
 
-1. 在 Azure 门户中导航到“Monitor”实例。
+1. 在 Azure 门户中导航到“Monitor”实例。 
 
     ![Azure Monitor](media/api-management-howto-autoscale/01.png)
 
-2. 在左侧菜单中选择“自动缩放”。
+2. 在左侧菜单中选择“自动缩放”  。
 
     ![Azure Monitor - 自动缩放 - 资源](media/api-management-howto-autoscale/02.png)
 
 3. 基于下拉菜单中的筛选器找到自己的 Azure API 管理服务。
 4. 选择所需的 Azure API 管理服务实例。
-5. 在新打开的部分，单击“启用自动缩放”按钮。
+5. 在新打开的部分，单击“启用自动缩放”按钮。 
 
     ![Azure Monitor - 自动缩放 - 启用](media/api-management-howto-autoscale/03.png)
 
-6. 在“规则”部分，单击“+ 添加规则”。
+6. 在“规则”部分，单击“+ 添加规则”。  
 
     ![Azure Monitor - 自动缩放 - 添加规则](media/api-management-howto-autoscale/04.png)
 
@@ -87,11 +86,11 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
     | 实例计数        | 第                 | 以 1 个单位为增量横向扩展 Azure API 管理实例。                                                                                                                                                                                                                          |
     | 冷却(分钟)   | 60                | 横向扩展 Azure API 管理服务至少需要 20 分钟。在大多数情况下，60 分钟冷却期可以防止触发许多的横向扩展操作。                                                                                                  |
 
-8. 单击“添加”保存规则。
+8. 单击“添加”保存规则。 
 
     ![Azure Monitor - 横向扩展规则](media/api-management-howto-autoscale/05.png)
 
-9. 再次单击“+ 添加规则”。
+9. 再次单击“+ 添加规则”。 
 
     这次需要定义横向缩减规则。 这可以确保在 API 用量减少时不会浪费资源。
 
@@ -114,7 +113,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
     | 实例计数        | 第                 | 横向扩展规则所用的相同值。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | 冷却(分钟)   | 90                | 横向缩减应该比横向扩展更保守，因此冷却期应该更长。                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-11. 单击“添加”保存规则。
+11. 单击“添加”保存规则。 
 
     ![Azure Monitor - 横向缩减规则](media/api-management-howto-autoscale/06.png)
 

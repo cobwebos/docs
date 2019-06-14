@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
 ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836072"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet（经典）
@@ -52,7 +52,7 @@ ms.locfileid: "60836072"
 
 ## <a name="points-to-consider"></a>考虑的要点
 
-不可通过门户更改此虚拟网络。 需更改网络配置文件，而不是使用门户。 若在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
+不可通过门户更改此虚拟网络。  需更改网络配置文件，而不是使用门户。 若在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
 
 在完成多站点过程后，便可轻松自如地使用网络配置文件。 但是，如果有多个人在处理网络配置，需要确保每个人都知道这个限制。 这并不意味着完全不能使用门户。 除了无法对此特定虚拟网络进行配置更改以外，可以使用它来完成其他任何操作。
 

@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: 789b783629b3cc3528eba1883b21051604cf6e14
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942934"
 ---
 # <a name="azure-application-offer-settings-tab"></a>Azure 应用程序产品/服务设置选项卡
 
 本文介绍如何配置 Azure 应用程序的产品/服务设置。
 
-“Azure 应用程序”>“新建产品/服务”页打开时将聚焦在“产品/服务设置”选项卡。名称旁边附有星号 (*) 的字段表示必填字段。
+“Azure 应用程序”>“新建产品/服务”页打开时将聚焦在“产品/服务设置”选项卡   。名称旁边附有星号 (*) 的字段表示必填字段。
 
 ![套餐标识窗体](./media/azureapp-offer-settings-tab.png)
 
 ## <a name="offer-identity-settings"></a>“产品/服务标识”设置
 
-在“产品/服务标识”下，必须为下表中描述的字段提供信息。  
+在“产品/服务标识”  下，必须为下表中描述的字段提供信息。  
 
 |    字段         |       描述                                                            |
 |  ---------       |     ---------------                                                          |
@@ -33,7 +33,7 @@ ms.locfileid: "64942934"
 | **名称\***          | 产品/服务的显示名称。 此名称显示在 Azure 市场和云合作伙伴门户中。 该名称不能超过 50 个字符。 建议为你的产品使用可识别的品牌名称。 不要包括你的组织的名称，除非那是你的产品的营销方式。 如果你在其他网站和出版物中营销此产品/服务，请确保名称在所有出版物中相同。 |
 |  |  |
 
-选择“保存”以保存你的产品/服务设置。
+选择“保存”以保存你的产品/服务设置  。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: f502e3228274840d23b9f52512280fc0d9f0553b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60544688"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>实时流式处理故障排除指南  
@@ -31,8 +31,8 @@ ms.locfileid: "60544688"
 * **潜在问题**：找不到可帮助调试问题的编码器日志。
   
   * **Telestream Wirecast**：通常可以在 C:\Users\{username}\AppData\Roaming\Wirecast\ 下找到日志 
-  * **Elemental Live**：可以在管理门户上找到日志的链接。 单击“统计信息”，并单击“日志”。 在“日志文件”页上，可以看到所有 LiveEvent 项的日志列表；选择与当前会话匹配的日志。 
-  * **Flash Media Live Encoder**：可以通过导航到“编码日志”选项卡找到“日志目录...”。
+  * **Elemental Live**：可以在管理门户上找到日志的链接。 单击“统计信息”  ，并单击“日志”  。 在“日志文件”  页上，可以看到所有 LiveEvent 项的日志列表；选择与当前会话匹配的日志。 
+  * **Flash Media Live Encoder**：可以通过导航到“编码日志”  选项卡找到“日志目录...”  。
 
 ### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>问题：没有输出渐进式流的选项
 * **潜在问题**：使用的编码器不自动取消隔行扫描。 

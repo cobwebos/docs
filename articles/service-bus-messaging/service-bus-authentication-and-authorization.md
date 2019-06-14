@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 7c5a45504b7c44d97ff2250663ef9c47ef6e3595
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60714500"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
@@ -41,7 +41,7 @@ SAS 令牌既可由服务总线客户端直接生成，也可由某些颁发与�
 * *KeyName*：标识规则。
 * *PrimaryKey*：用于对 SAS 令牌进行签名/验证的加密密钥。
 * *SecondaryKey*：用于对 SAS 令牌进行签名/验证的加密密钥。密钥。
-* *Rights*：表示授予的“侦听”、“发送”或“管理”权限的集合。
+* *Rights*：表示授予的“侦听”、“发送”或“管理”权限的集合。   
 
 通过在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予命名空间中所有实体的访问权限。 在服务总线命名空间、队列或主题上最多可配置 12 个此类规则。 默认情况下，首次预配时，将为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。
 

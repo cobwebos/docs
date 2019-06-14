@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61479552"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure 流分析 JavaScript 用户定义的聚合（预览）
@@ -124,9 +124,9 @@ computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（
 现在，让我们执行以下步骤在现有的 ASA 作业下创建一个 JavaScript UDA。
 
 1. 登录到 Azure 门户，并找到现有的流分析作业。
-1. 然后单击“作业拓扑”下的函数链接。
-1. 单击“添加”图标添加新函数。
-1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。
+1. 然后单击“作业拓扑”下的函数链接。 
+1. 单击“添加”图标添加新函数。 
+1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。 
 1. 填入“TWA”作为 UDA 别名，并按如下所示更改函数实现：
 
     ```JavaScript

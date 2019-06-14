@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
 ms.openlocfilehash: 527ae9eb59e09885b9b606d74e72817351c31a7f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121753"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 安全中心与 Azure 虚拟机
@@ -51,14 +51,14 @@ ms.locfileid: "62121753"
 * 有关操作系统可支持性的信息，请参阅 [Azure 安全中心常见问题 (FAQ)](security-center-faq.md)。 
 
 ## <a name="set-security-policy"></a>设置安全策略
-需启用数据收集，使 Azure 安全中心能够收集所需信息，以便提供基于所配置的安全策略生成的建议和警报。 在下图中可见，“数据收集”已“打开”。
+需启用数据收集，使 Azure 安全中心能够收集所需信息，以便提供基于所配置的安全策略生成的建议和警报。 在下图中可见，“数据收集”  已“打开”  。
 
 安全策略用于定义一组控制，这些控制是针对指定订阅或资源组中的资源建议的。 启用安全策略之前，必须启用数据收集。安全中心从虚拟机收集数据，以评估其安全状态、提供安全建议和威胁警报。 在安全中心，根据公司的安全需求、应用程序的类型或每个订阅中数据的敏感度，为 Azure 订阅或资源组定义策略。 
 
 ![安全策略](./media/security-center-virtual-machine/security-center-virtual-machine-fig1.png)
 
 > [!NOTE]
-> 若要详细了解可用的每个“防护策略”，请参阅[设置安全策略](tutorial-security-policy.md)一文。
+> 若要详细了解可用的每个“防护策略”  ，请参阅[设置安全策略](tutorial-security-policy.md)一文。
 > 
 > 
 
@@ -85,7 +85,7 @@ ms.locfileid: "62121753"
 > 
 
 ## <a name="monitor-security-health"></a>监视安全运行状况
-用户为订阅的资源启用[安全策略](tutorial-security-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”磁贴中单击“虚拟机”，“虚拟机”边栏选项卡随即打开，其中包含针对 VM 的建议。 
+用户为订阅的资源启用[安全策略](tutorial-security-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”  边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”  磁贴中单击“虚拟机”  ，“虚拟机”  边栏选项卡随即打开，其中包含针对 VM 的建议。 
 
 ![安全运行状况](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 

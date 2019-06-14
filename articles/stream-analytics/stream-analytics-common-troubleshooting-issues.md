@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 0191c56e1140870b1710b48c4fa1189fd92a337b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61362110"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>流分析的常见问题以及故障排除的步骤
@@ -22,7 +22,7 @@ ms.locfileid: "61362110"
 
  当流分析作业的输入流包含格式不当的消息时，会导致序列化问题。 例如，JSON 对象中缺少圆括号或大括号，或者时间字段中的时间戳格式不当，都可能导致消息格式不当。 
  
- 当流分析作业从某个输入收到格式不当的消息时，它会丢弃该消息并通过警告来通知用户。 警告符号显示在流分析作业的“输入”磁贴上（该警告符号在作业运行状态中始终存在）：
+ 当流分析作业从某个输入收到格式不当的消息时，它会丢弃该消息并通过警告来通知用户。 警告符号显示在流分析作业的“输入”磁贴上（该警告符号在作业运行状态中始终存在）： 
 
 ![Azure 流分析仪表板上的“输入”磁贴](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "61362110"
 - 上游源是否受限制
 - 查询中的处理逻辑是否是计算密集型的
 
-若要查看这些详细信息，请在 Azure 门户中选择流作业，然后选择“作业关系图”。 每个输入都有一个分区积压工作 (backlog) 事件指标。 如果积压工作事件指标不断增大，则表示系统资源受到约束。 原因可能在于输出接收器限制或 CPU 利用率偏高。 有关使用作业关系图的详细信息，请参阅[使用作业关系图进行数据驱动的调试](stream-analytics-job-diagram-with-metrics.md)。
+若要查看这些详细信息，请在 Azure 门户中选择流作业，然后选择“作业关系图”。  每个输入都有一个分区积压工作 (backlog) 事件指标。 如果积压工作事件指标不断增大，则表示系统资源受到约束。 原因可能在于输出接收器限制或 CPU 利用率偏高。 有关使用作业关系图的详细信息，请参阅[使用作业关系图进行数据驱动的调试](stream-analytics-job-diagram-with-metrics.md)。
 
 ## <a name="handle-duplicate-records-in-azure-sql-database-output"></a>处理 Azure SQL 数据库输出中的重复记录
 

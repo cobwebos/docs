@@ -13,10 +13,10 @@ ms.reviewer: carlrab, jovanpop
 manager: craigg
 ms.date: 04/25/2019
 ms.openlocfilehash: f54950ab96664b17aab056b468db0644216e8654
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706104"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>将 TDE 保护的数据库的证书迁移到 Azure SQL 数据库托管实例
@@ -31,7 +31,7 @@ ms.locfileid: "64706104"
 有关使用完全托管服务无缝迁移 TDE 保护的数据库和相应证书的替代选项，请参阅[如何使用 Azure 数据库迁移服务将本地数据库迁移到托管实例](../dms/tutorial-sql-server-to-managed-instance.md)。
 
 > [!IMPORTANT]
-> 迁移的证书仅用于还原 TDE 保护的数据库。 不同的保护程序，很快就完成还原后，已迁移的证书被替换为服务管理证书或非对称密钥保管库，具体取决于类型的实例设置透明数据加密密钥。
+> 迁移的证书仅用于还原 TDE 保护的数据库。 还原后不久，迁移的证书即会替换为不同的保护程序，可能是服务托管证书，也可能是密钥保管库中的非对称密钥，具体取决于在实例上设置的透明数据加密类型。
 
 ## <a name="prerequisites"></a>必备组件
 

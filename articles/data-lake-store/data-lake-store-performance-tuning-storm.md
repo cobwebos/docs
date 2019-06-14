@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61436471"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
@@ -27,7 +27,7 @@ ms.locfileid: "61436471"
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
-* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集  。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
 * **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)。  
 
@@ -132,7 +132,7 @@ ms.locfileid: "61436471"
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
-1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level=”debug”&gt;**。 重新启动所有节点/服务使配置生效。
+1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level=”debug”&gt;** 。     重新启动所有节点/服务使配置生效。
 2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen1 限制异常。
 
 ## <a name="next-steps"></a>后续步骤

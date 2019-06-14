@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 8883c1e7f2874e1e2e61b8eca122f2ec294c7849
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60808961"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
@@ -67,7 +67,7 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 
 下表对 Azure Monitor 中的指标和日志做了比较。
 
-| 属性  | 度量值 | 日志 |
+| 特性  | 度量值 | 日志 |
 |:---|:---|:---|
 | 优点 | 轻型数据，支持警报等近实时方案。 非常适合用于快速检测问题。 | 使用丰富查询语言进行分析。 非常适合用于深入分析和识别根本原因。 |
 | 数据 | 仅限数字值 | 文本或数字数据 |

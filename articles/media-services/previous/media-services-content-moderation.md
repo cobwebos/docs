@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465671"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 
@@ -46,7 +46,7 @@ ms.locfileid: "61465671"
 
 | 元素 | 描述 |
 | --- | --- |
-| 版本 |内容审查器的版本。 |
+| version |内容审查器的版本。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
 | offset |时间戳的时间偏移量。 在版本 1.0 的视频 API 中，此值将始终为 0。 此值在将来可能会更改。 |
 | 帧速率 |视频的每秒帧数。 |

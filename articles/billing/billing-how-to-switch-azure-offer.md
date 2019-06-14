@@ -16,17 +16,17 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 11d3deb029ef0d8478844b64c54db7982ed1091e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64570977"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>将 Azure 即用即付订阅更改为其他套餐
 
 [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)客户可以在[帐户中心](https://account.windowsazure.com/Subscriptions)将 Azure 订阅切换到其他套餐。 例如，可以通过此功能充分利用 [Visual Studio 订户的每月信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 
 
-只想从免费试用版升级？ 请参阅[升级到即用即付版](billing-upgrade-azure-subscription.md)。
+只想从免费试用版升级  ？ 请参阅[升级到即用即付版](billing-upgrade-azure-subscription.md)。
 
 ## <a name="whats-supported"></a>支持的操作：
 
@@ -52,7 +52,7 @@ ms.locfileid: "64570977"
 
 1. 在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)登录。
 1. 选择即用即付订阅。
-1. 单击“切换到其他套餐”。 仅当用户使用“即用即付”且已完成第一个计费周期的情况下，此按钮才可用。
+1. 单击“切换到其他套餐”  。 仅当用户使用“即用即付”且已完成第一个计费周期的情况下，此按钮才可用。
 
    ![请注意页面右侧的“切换套餐”按钮](./media/billing-how-to-switch-azure-offer/switchbutton.png)
 1. 从订阅可以切换到的套餐的列表中**选择所需套餐**。 此列表因帐户的关联成员资格而异。 如果没有任何可用的产品/服务，请检查 [可以切换到的可用产品/服务的列表](#whats-supported)，并确保具有合适的成员身份。 
@@ -61,7 +61,7 @@ ms.locfileid: "64570977"
 1. 根据要切换到的产品/服务，可能会看到一条有关切换所造成的影响的备注。 继续操作之前，请仔细查看此列表并遵循相关说明。
 
    ![查看说明](./media/billing-how-to-switch-azure-offer/thingstonote.png)
-1. 可以重命名订阅。 默认情况下，我们会将它设置为新的产品/服务名称。 单击“切换套餐”以完成该过程。
+1. 可以重命名订阅。 默认情况下，我们会将它设置为新的产品/服务名称。 单击“切换套餐”  以完成该过程。
 
    ![单击绿色按钮](./media/billing-how-to-switch-azure-offer/confirmpage.png)
 1. 成功！ 订阅现在已经切换到新的套餐。
@@ -76,7 +76,7 @@ Azure 套餐是用户拥有的 Azure 订阅*类型*。 例如，[即用即付](h
 
 ### <a name="why-dont-i-see-the-button"></a>为什么我看不到按钮？
 
-如果出现以下情况，可能看不到“切换到其他套餐”按钮：
+如果出现以下情况，可能看不到“切换到其他套餐”按钮： 
 
 * 没有使用[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)。 当前只有即用即付订阅可以转换到其他套餐。
   * 如果使用的是[免费试用版](https://azure.microsoft.com/free/)，请了解如何[升级到即用即付](billing-upgrade-azure-subscription.md)。

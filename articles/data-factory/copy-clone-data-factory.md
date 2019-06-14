@@ -12,10 +12,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60780917"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>在 Azure 数据工厂中复制或克隆数据工厂
@@ -40,7 +40,7 @@ ms.locfileid: "60780917"
 
 1. 如果你处于 GIT 模式下，则每次从门户发布时，工厂的资源管理器模板都会保存到存储库的 adf_publish 分支中的 GIT 中。
 
-1. 对于其他场景，可以通过单击门户中的“导出资源管理器模板”按钮下载资源管理器模板。
+1. 对于其他场景，可以通过单击门户中的“导出资源管理器模板”按钮下载资源管理器模板  。
 
 1. 下载资源管理器模板之后，可以通过标准的资源管理器模板部署方法将其部署。
 

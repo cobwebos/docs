@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
 ms.openlocfilehash: b9c035c1c9088957f59550bf6564cc02bc7972f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60620594"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux 代理扩展
@@ -55,7 +55,7 @@ Retrace 代理可以针对这些 Linux 分发运行
 
 适用于 Linux 的 Stackify 代理扩展要求目标虚拟机已连接到 Internet。 
 
-可能需要调整网络配置才可连接到 Stackify，请参阅 https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall。 
+可能需要调整网络配置才可连接到 Stackify，请参阅 https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall 。 
 
 
 ## <a name="extension-schema"></a>扩展架构

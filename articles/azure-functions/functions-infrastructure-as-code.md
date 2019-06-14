@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 283487eeb0f1f85940da4db8c932602e1b45efd3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737051"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64695804"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -37,9 +37,9 @@ ms.locfileid: "60737051"
 
 Azure Functions 部署这些资源通常包括：
 
-| 资源                                                                           | 要求 | 语法和属性参考                                                         |   |
+| Resource                                                                           | 要求 | 语法和属性参考                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 函数应用                                                                     | 需要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| 函数应用                                                                     | 必选    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
 | [Azure 存储](../storage/index.yml)帐户                                   | 需要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | [Application Insights](../azure-monitor/app/app-insights-overview.md)组件 | 可选    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | 一个[托管计划](./functions-scale.md)                                             | Optional<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
@@ -69,7 +69,7 @@ Azure Functions 部署这些资源通常包括：
 
 此外，在站点配置中，必须将属性 `AzureWebJobsStorage` 指定为应用设置。 如果函数应用未使用 Application Insights 进行监视，还应将 `AzureWebJobsDashboard` 指定为应用设置。
 
-Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内部队列。  未启用 Application Insights 时，运行时使用 `AzureWebJobsDashboard` 连接字符串登录到 Azure 表存储并启动门户中的“监视”选项卡。
+Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内部队列。  未启用 Application Insights 时，运行时使用 `AzureWebJobsDashboard` 连接字符串登录到 Azure 表存储并启动门户中的“监视”选项卡  。
 
 这些属性在 `siteConfig` 对象中的 `appSettings` 集合中指定：
 
@@ -663,6 +663,27 @@ Linux 应用程序还应包括`linuxFxVersion`属性下的`siteConfig`。 如果
 ```html
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
 ```
+
+### <a name="deploy-using-powershell"></a>使用 PowerShell 进行部署
+
+以下 PowerShell 命令创建资源组和部署使用其所需的资源创建 function app 的模板。 若要本地运行，必须具有[Azure PowerShell](/powershell/azure/install-az-ps)安装。 运行[ `Connect-AzAccount` ](/powershell/module/az.accounts/connect-azaccount)进行登录。
+
+```powershell
+# Register Resource Providers if they're not already registered
+Register-AzResourceProvider -ProviderNamespace "microsoft.web"
+Register-AzResourceProvider -ProviderNamespace "microsoft.storage"
+
+# Create a resource group for the function app
+New-AzResourceGroup -Name "MyResourceGroup" -Location 'West Europe'
+
+# Create the parameters for the file, which for this template is the function app name.
+$TemplateParams = @{"appName" = "<function-app-name>"}
+
+# Deploy the template
+New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
+```
+
+若要测试此部署，可以使用[与此类似的模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json)函数应用在 Windows 上在消耗计划中创建。 替换为`<function-app-name>`替换为 function app 的唯一名称。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60629848"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>为云解决方案提供商计划部署 StorSimple Virtual Array
@@ -40,19 +40,19 @@ ms.locfileid: "60629848"
 
 如果添加客户，会自动创建订阅。 若要添加客户（并自动创建订阅），请在合作伙伴门户中执行下列步骤。
 
-1. 转至[合作伙伴中心](https://partnercenter.microsoft.com/)，使用 CSP 凭据登录。 单击“仪表板”。
+1. 转至[合作伙伴中心](https://partnercenter.microsoft.com/)，使用 CSP 凭据登录。 单击“仪表板”  。
 
      ![合作伙伴中心中的仪表板](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. 在左窗格中，单击“客户”。 在右窗格中，单击“添加客户”。 输入客户的详细信息。 单击“下一步:**订阅**创建客户订阅。
+2. 在左窗格中，单击“客户”  。 在右窗格中，单击“添加客户”  。 输入客户的详细信息。 单击“下一步:**订阅**创建客户订阅。
 
     ![添加客户](./media/storsimple-partner-csp-deploy/image2.png)
 
-3.  选择“Microsoft Azure”产品/服务。 滚动到页面底部，单击“查看”。
+3.  选择“Microsoft Azure”  产品/服务。 滚动到页面底部，单击“查看”  。
 
     ![查看订阅信息](./media/storsimple-partner-csp-deploy/image3.png)
                               
-4. 查看信息，并单击“提交”。
+4. 查看信息，并单击“提交”  。
 
     ![提交订阅](./media/storsimple-partner-csp-deploy/image4.png)
 
@@ -60,15 +60,15 @@ ms.locfileid: "60629848"
 
     ![保存确认](./media/storsimple-partner-csp-deploy/image5.png)
 
-6. 查找或导航至刚添加的客户。 单击“公司名称”，深入获取详细信息。
+6. 查找或导航至刚添加的客户。 单击“公司名称”  ，深入获取详细信息。
 
     ![搜索客户](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. 在左窗格中，选择“服务管理”。 在右窗格的“管理服务”下，单击“Microsoft Azure 管理门户”，以客户的 Azure 管理员身份登录。
+7. 在左窗格中，选择“服务管理”  。 在右窗格的“管理服务”  下，单击“Microsoft Azure 管理门户”  ，以客户的 Azure 管理员身份登录。
 
     ![登录到 Azure 门户](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. 要创建 StorSimple 设备管理器，请单击“+ 新建”，并搜索或导航到“StorSimple 虚拟设备系列”。 有关详细信息，请转到[部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
+8. 要创建 StorSimple 设备管理器，请单击“+ 新建”  ，并搜索或导航到“StorSimple 虚拟设备系列”  。 有关详细信息，请转到[部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
 
     ![创建 StorSimple 设备管理器服务](./media/storsimple-partner-csp-deploy/image8.png)
 
@@ -77,27 +77,27 @@ ms.locfileid: "60629848"
 
 在某些情况下，可能存在现有客户，需要添加订阅。 要对现有客户添加订阅，请在合作伙伴门户中执行下列步骤。
 
-1. 转至[合作伙伴中心](https://partnercenter.microsoft.com/)，使用 CSP 凭据登录。 单击“仪表板”。
+1. 转至[合作伙伴中心](https://partnercenter.microsoft.com/)，使用 CSP 凭据登录。 单击“仪表板”  。
 
      ![合作伙伴中心中的仪表板](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. 在左窗格中，单击“客户”。 查找或导航到要向其添加订阅的客户。 单击![展开复选图标](./media/storsimple-partner-csp-deploy/expand_pane_icon.png)图标，展开客户的公司名称的行。 在详细信息中，单击“添加订阅”。
+2. 在左窗格中，单击“客户”  。 查找或导航到要向其添加订阅的客户。 单击![展开复选图标](./media/storsimple-partner-csp-deploy/expand_pane_icon.png)图标，展开客户的公司名称的行。 在详细信息中，单击“添加订阅”  。
 
     ![客户](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. 在订阅的“热门套餐”中勾选“Microsoft Azure”，并单击“提交”。 这会创建一个新订阅。
+3. 在订阅的“热门套餐”  中勾选“Microsoft Azure”  ，并单击“提交”  。 这会创建一个新订阅。
 
     ![添加新订阅](./media/storsimple-partner-csp-deploy/image11.png)
 
-6. 创建新订阅后，在左窗格中单击“<-- 客户”可以返回“客户”页。 搜索刚为其创建了订阅的客户。 单击“公司名称”，深入获取详细信息。
+6. 创建新订阅后，在左窗格中单击“<-- 客户”  可以返回“客户”  页。 搜索刚为其创建了订阅的客户。 单击“公司名称”  ，深入获取详细信息。
 
     ![搜索客户](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. 在左窗格中，选择“服务管理”。 在右窗格的“管理服务”下，单击“Microsoft Azure 管理门户”，以客户的 Azure 管理员身份登录。
+7. 在左窗格中，选择“服务管理”  。 在右窗格的“管理服务”  下，单击“Microsoft Azure 管理门户”  ，以客户的 Azure 管理员身份登录。
 
     ![登录到 Azure 门户](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. 要创建 StorSimple 设备管理器，请单击“+ 新建”，并搜索或导航到“StorSimple 虚拟设备系列”。 有关详细信息，请转到[部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
+8. 要创建 StorSimple 设备管理器，请单击“+ 新建”  ，并搜索或导航到“StorSimple 虚拟设备系列”  。 有关详细信息，请转到[部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
 
     ![创建 StorSimple 设备管理器服务](./media/storsimple-partner-csp-deploy/image8.png)
 

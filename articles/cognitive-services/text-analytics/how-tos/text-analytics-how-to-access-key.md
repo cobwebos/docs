@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: 813659b9b1a25e03bf599b0aa1dc9d6af67f1935
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60829102"
 ---
 # <a name="how-to-find-endpoints-and-access-keys-for-the-text-analytics-cognitive-service"></a>如何查找文本分析认知服务的终结点和访问密钥
@@ -27,11 +27,11 @@ ms.locfileid: "60829102"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在左侧的导航窗格中，选择“所有服务”。
+2. 在左侧的导航窗格中，选择“所有服务”  。
 
-3. 在筛选器中，键入“认知服务”。 若订阅包含文本分析，则它会显示在列表中，且 API 类型为“文本分析 API”。
+3. 在筛选器中，键入“认知服务”  。 若订阅包含文本分析，则它会显示在列表中，且 API 类型为“文本分析 API”  。
 
-4. 单击链接以打开服务边栏选项卡。 现在即可在“资源”>“密钥”中获得密钥，或通过概要窗格中的“展示访问密钥”。 终结点也会显示在概要窗格中。
+4. 单击链接以打开服务边栏选项卡。 现在即可在“资源”>“密钥”中获得密钥，或通过概要窗格中的“展示访问密钥”   。 终结点也会显示在概要窗格中。
 
    ![带有终结点和密钥的门户页](../media/portal-keys-endpoint.png)
 

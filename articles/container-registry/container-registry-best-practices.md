@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: danlep
 ms.openlocfilehash: 2cf64c7c4f99a57c4a4a6cf03e68e8af803ceca9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787338"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
@@ -75,7 +75,7 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-此外，在 Azure 门户的注册表“概述”中，还可以找到当前已用存储：
+此外，在 Azure 门户的注册表“概述”中，还可以找到当前已用存储： 
 
 ![Azure 门户中的注册表使用情况信息][registry-overview-quotas]
 

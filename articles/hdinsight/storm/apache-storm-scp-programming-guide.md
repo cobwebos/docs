@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.openlocfilehash: c85074a2b26a79dbf5e464972e7f82b5955d15f1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64692469"
 ---
 # <a name="scp-programming-guide"></a>SCP 编程指南
@@ -27,7 +27,7 @@ SCP 中的数据以连续的元组流形式建模。 一般情况下，元组首
 
 ![馈送待处理数据的队列（在数据存储中馈送数据）示意图](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
 
-在 Storm 中，应用程序拓扑定义计算图。 拓扑中的每个节点都包含处理逻辑，节点之间的链接指明数据流。 用于将输入数据注入到拓扑中的节点名为 Spout，这些节点还可排列数据。 输入数据可驻留在文件日志、事务性数据库、系统性能计数器中或其他位置。具有输入和输出数据流的节点名为 Bolt。，这些节点执行实际数据过滤、选择和汇总。
+在 Storm 中，应用程序拓扑定义计算图。 拓扑中的每个节点都包含处理逻辑，节点之间的链接指明数据流。 用于将输入数据注入到拓扑中的节点名为 Spout，这些节点还可排列数据  。 输入数据可驻留在文件日志、事务性数据库、系统性能计数器中或其他位置。具有输入和输出数据流的节点名为 Bolt。，这些节点执行实际数据过滤、选择和汇总  。
 
 SCP 支持“尽力”、“至少一次”数据处理和“恰一次”数据处理。 在分布式流处理应用程序中，数据处理过程中可能会出现各种错误，例如，网络中断、机器故障、用户代码错误等等。“至少一次”处理会在出现错误时自动重新处理原来的数据，从而确保所有数据均至少被处理一次。 “至少一次”处理简单且可靠，适用于许多应用程序。 但是，当应用程序需要确切计数时，进行“至少一次”处理是不够的，因为相同的数据有可能用于应用程序拓扑中。 在此情况下，“恰一次”处理可确保即使数据被多次重复使用和处理，结果也是正确。
 
@@ -561,7 +561,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
 
 ## <a name="scp-programming-examples"></a>SCP 编程示例
 ### <a name="helloworld"></a>HelloWorld
-**HelloWorld**是一个简单的示例，若要显示的 scp.net 编程。 它使用非事务性拓扑，带有一个名为 **generator** 的 Spout，以及两个分别名为 **splitter** 和 **counter** 的 Bolt。 Spout 生成器会随机生成一些句子，然后将生成的句子发送到 拆分器。 Bolt 拆分器会将句子拆分为字词并将其发送到计数器 Bolt。 Bolt "counter" 使用字典记录每个字词出现的次数。
+**HelloWorld**是一个简单的示例，若要显示的 scp.net 编程。 它使用非事务性拓扑，带有一个名为 **generator** 的 Spout，以及两个分别名为 **splitter** 和 **counter** 的 Bolt。 Spout 生成器会随机生成一些句子，然后将生成的句子发送到 拆分器   。 Bolt 拆分器会将句子拆分为字词并将其发送到计数器 Bolt   。 Bolt "counter" 使用字典记录每个字词出现的次数。
 
 在本示例中，有两个规范文件：**HelloWorld.spec** 和 **HelloWorld\_EnableAck.spec**。 在 C\# 代码中，可以通过从 Java 端获取 pluginConf 来确定是否已启用确认功能。
 
@@ -593,9 +593,9 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-**HelloWorldTx** 示例展示如何实施事务性拓扑。 它有一个名为生成器的 Spout、一个名为 partial-count 的批处理 Bolt 以及一个名为 count-sum 的提交 Bolt。 还有三个预创建的 txt 文件：DataSource0.txt、DataSource1.txt 和 DataSource2.txt。
+**HelloWorldTx** 示例展示如何实施事务性拓扑。 它有一个名为生成器的 Spout、一个名为 partial-count 的批处理 Bolt 以及一个名为 count-sum 的提交 Bolt    。 还有三个预创建的 txt 文件：DataSource0.txt、DataSource1.txt 和 DataSource2.txt    。
 
-在每个事务中，Spout 生成器从预先创建的三个文件中随机选择两个文件，并将那两个文件的名称发送给 partial-count Bolt。 Bolt partial-count 从接收到的元组获取文件名，然后打开文件并计算文件中的字词数量，最后将计算出的字词数量发送给 count-sum Bolt。 count-sum Bolt 对总计数进行汇总。
+在每个事务中，Spout 生成器从预先创建的三个文件中随机选择两个文件，并将那两个文件的名称发送给 partial-count Bolt   。 Bolt partial-count 从接收到的元组获取文件名，然后打开文件并计算文件中的字词数量，最后将计算出的字词数量发送给 count-sum Bolt   。 count-sum Bolt 对总计数进行汇总  。
 
 为了获得 **exactly once** 语义，提交 Bolt **count-sum** 需要判断事务是否是重复处理的事务。 在本示例中，它具有静态成员变量：
 
@@ -635,7 +635,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
 
 
 ### <a name="hybridtopology"></a>HybridTopology
-此拓扑包含一个 Java Spout 和一个 C\# Bolt。 它使用 SCP 平台提供的默认序列化和反序列化实现方法。 有关规范文件的详细信息，请参阅“示例\\HybridTopology”文件夹中的 HybridTopology.spec；有关如何指定 Java classpath，请参阅 SubmitTopology.bat。
+此拓扑包含一个 Java Spout 和一个 C\# Bolt。 它使用 SCP 平台提供的默认序列化和反序列化实现方法。 有关规范文件的详细信息，请参阅“示例\\HybridTopology”文件夹中的 HybridTopology.spec；有关如何指定 Java classpath，请参阅 SubmitTopology.bat    。
 
 ### <a name="scphostdemo"></a>SCPHostDemo
 本质上，本示例与 HelloWorld 相同。 唯一不同之处是，在本示例中，用户代码被编译为 DLL，而且使用 SCPHost.exe 提交拓扑。 有关更详细说明，请参阅“SCP 主机模式”部分。

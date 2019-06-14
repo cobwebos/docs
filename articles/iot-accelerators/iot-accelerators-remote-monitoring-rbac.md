@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61443047"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
@@ -21,7 +21,7 @@ ms.locfileid: "61443047"
 
 ## <a name="default-settings"></a>默认设置
 
-首次部署远程监视解决方案时，有两个角色：“管理员”和“只读”。
+首次部署远程监视解决方案时，有两个角色：“管理员”和“只读”   。
 
 具有**管理员**角色的任何用户对解决方案都具有完全访问权限，包括以下权限。 具有**只读**角色的用户将仅有权查看解决方案。
 
@@ -45,7 +45,7 @@ ms.locfileid: "61443047"
 默认情况下，部署解决方案的用户将自动分配有**管理员**角色，并且是 Azure Active Directory 应用程序的所有者。 应用程序所有者可以通过 Azure 门户向其他用户分配角色。 如果希望另一个用户可在解决方案中分配角色，则也必须在 Azure 门户将该用户设置为应用程序所有者。
 
 > [!NOTE]
-> 只有部署解决方案的用户可以在创建解决方案后立即查看它。 若要向其他人授予“只读”、“管理员”或“自定义”角色访问权限以查看应用程序，请参阅下面有关添加或删除用户的说明。
+> 只有部署解决方案的用户可以在创建解决方案后立即查看它。  若要向其他人授予“只读”、“管理员”或“自定义”角色访问权限以查看应用程序，请参阅下面有关添加或删除用户的说明。
 
 ## <a name="add-or-remove-users"></a>添加或删除用户
 
@@ -55,31 +55,31 @@ Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程�
 
 1. 检查[用户是否在所用的目录中](../active-directory/fundamentals/add-users-azure-active-directory.md)。 登录到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)站点时，已选择要使用的目录。 目录名称显示在[页面](https://www.azureiotsolutions.com/Accelerators)的右上角。
 
-1. 在 Azure 门户中找到解决方案的“企业应用程序”。 在那里，通过将“应用程序类型”设置为“所有应用程序”来筛选列表。 按应用程序名称搜索应用程序。 应用程序名称即是远程监视解决方案的名称。 在以下屏幕截图中，解决方案和应用程序显示名称为 **contoso-rm4**。
+1. 在 Azure 门户中找到解决方案的“企业应用程序”。  在那里，通过将“应用程序类型”  设置为“所有应用程序”  来筛选列表。 按应用程序名称搜索应用程序。 应用程序名称即是远程监视解决方案的名称。 在以下屏幕截图中，解决方案和应用程序显示名称为 **contoso-rm4**。
 
     ![企业应用程序](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 
-1. 依次单击应用程序和“所有者”，检查你是否为应用程序的所有者。 在以下屏幕截图中，“Contoso 管理员”是 **contoso-rm4** 应用程序的所有者：
+1. 依次单击应用程序和“所有者”，检查你是否为应用程序的所有者。  在以下屏幕截图中，“Contoso 管理员”是 **contoso-rm4** 应用程序的所有者： 
 
     ![所有者](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
-    如果你不是所有者，则需要请求现有的所有者将你添加到列表。 只有所有者才能将“管理员”或“只读”等应用程序角色分配到其他用户。
+    如果你不是所有者，则需要请求现有的所有者将你添加到列表。 只有所有者才能将“管理员”或“只读”等应用程序角色分配到其他用户。  
 
-1. 若要查看应用程序中已分配到角色的用户列表，请单击“用户和组”。
+1. 若要查看应用程序中已分配到角色的用户列表，请单击“用户和组”。 
 
-1. 若要添加用户，请单击“+ 添加用户”，然后单击“用户和组，未选择”，以便从目录中选择用户。
+1. 若要添加用户，请单击“+ 添加用户”，然后单击“用户和组，未选择”，以便从目录中选择用户。  
 
-1. 若要将用户分配到角色，请单击“选择角色，未选择”，然后为用户选择“管理员”或“只读”角色。 依次单击“选择”、“分配”。
+1. 若要将用户分配到角色，请单击“选择角色，未选择”，然后为用户选择“管理员”或“只读”角色。    依次单击“选择”、“分配”   。
 
     ![选择角色](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
 
 1. 现在，该用户可以使用该角色定义的权限访问远程监视解决方案。
 
-1. 可以在门户中的“用户和组”页上从应用程序中删除用户。
+1. 可以在门户中的“用户和组”页上从应用程序中删除用户。 
 
 ## <a name="create-a-custom-role"></a>创建自定义角色
 
-首次部署远程监视解决方案时，它包含“管理员”和“只读”角色。 可以添加具有不同权限集的自定义角色。 若要定义自定义角色，需要：
+首次部署远程监视解决方案时，它包含“管理员”和“只读”角色。   可以添加具有不同权限集的自定义角色。 若要定义自定义角色，需要：
 
 - 在 Azure 门户中将新角色添加到应用程序。
 - 为身份验证和授权微服务中的新角色定义策略。
@@ -89,11 +89,11 @@ Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程�
 
 以下步骤说明如何将角色添加到 Azure Active Directory 中的应用程序。 此示例创建一个新角色，使成员能够在远程监视解决方案中创建、更新和删除设备。
 
-1. 在 Azure 门户中找到解决方案的“应用注册”。 应用程序名称即是远程监视解决方案的名称。 在以下屏幕截图中，解决方案和应用程序显示名称为 **contoso-rm4**。
+1. 在 Azure 门户中找到解决方案的“应用注册”。  应用程序名称即是远程监视解决方案的名称。 在以下屏幕截图中，解决方案和应用程序显示名称为 **contoso-rm4**。
 
     ![应用注册](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
 
-1. 选择应用程序，然后单击“清单”。 可以看到，为应用程序定义了两个现有的[应用角色](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)：
+1. 选择应用程序，然后单击“清单”。  可以看到，为应用程序定义了两个现有的[应用角色](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)：
 
     ![查看清单](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
 
@@ -142,7 +142,7 @@ Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程�
 
 1. 将[远程监视微服务](https://github.com/Azure/remote-monitoring-services-dotnet)存储库从 GitHub 克隆到本地计算机。
 
-1. 按以下代码片段中所示编辑 Sauth/Services/data/policies/roles.json 文件，为 ManageDevices 角色添加策略。 **ID** 和 **Role** 值必须与前一部分所述应用清单中的角色定义相匹配。 充当 **ManageDevices** 角色的人员可以使用允许的操作列表来创建、更新设备，以及删除已连接到解决方案的设备：
+1. 按以下代码片段中所示编辑 Sauth/Services/data/policies/roles.json 文件，为 ManageDevices 角色添加策略   。 **ID** 和 **Role** 值必须与前一部分所述应用清单中的角色定义相匹配。 充当 **ManageDevices** 角色的人员可以使用允许的操作列表来创建、更新设备，以及删除已连接到解决方案的设备：
 
     ```json
     {
@@ -197,7 +197,7 @@ X-Source: true
 Authorization: Bearer <JWT Token from ADAL>
 ```
 
-对于充当 **ManageDevices** 角色、名为“设备管理员”的用户，响应正文包含以下 JSON：
+对于充当 **ManageDevices** 角色、名为“设备管理员”的用户，响应正文包含以下 JSON： 
 
 ```json
 {

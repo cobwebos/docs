@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
 ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442080"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
@@ -181,7 +181,7 @@ SELECT * FROM devices.modules
 
 ### <a name="c-example"></a>C# 示例
 
-查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开。
+查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开  。
 
 下面是一个简单的查询示例：
 
@@ -197,13 +197,13 @@ while (query.HasMoreResults)
 }
 ```
 
-“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面。
+“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面  。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="nodejs-example"></a>Node.js 示例
 
-查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开。
+查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开  。
 
 下面是一个简单的查询示例：
 
@@ -226,9 +226,9 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 nextAsTwin 方法来检索多个页面。
+“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 nextAsTwin 方法来检索多个页面  。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="limitations"></a>限制
 
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 子句
 
-FROM <from_specification> 子句只能假定两个值：用于查询设备孪生的“FROM devices”，或用于根据设备详情查询作业“FROM devices.jobs”。
+FROM <from_specification> 子句只能假定两个值  ：用于查询设备孪生的“FROM devices”，或用于根据设备详情查询作业“FROM devices.jobs”   。
 
 
 ## <a name="where-clause"></a>WHERE 子句
@@ -401,7 +401,7 @@ GROUP BY <group_by_element>
 * 求值结果为 JSON 类型的实例（例如布尔值、数字、字符串、数组或对象）。
 * 由设备 JSON 文档中的操作数据以及使用内置运算符和函数的常量定义。
 
-条件是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false”。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”。
+条件  是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false”   。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”    。
 
 表达式的语法为：
 

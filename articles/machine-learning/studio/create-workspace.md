@@ -1,7 +1,7 @@
 ---
 title: 创建机器学习工作室工作区
 titleSuffix: Azure Machine Learning Studio
-description: '若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。 '
+description: 若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,15 +11,15 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
 ms.openlocfilehash: 7aeee4f24f6c7133ad978bc0c6c7fb8853bc4c35
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62109342"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>创建并共享 Azure 机器学习工作室工作区
 
-若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。 
+若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。
 
 ## <a name="create-a-studio-workspace"></a>创建工作室工作区
 
@@ -30,9 +30,9 @@ ms.locfileid: "62109342"
     >
     > 
 
-2. 单击“+新建”
+2. 单击“+新建” 
 
-3. 在搜索框中，键入“机器学习工作室工作区”，并选择匹配项。 然后在页面底部选择单击“创建”。
+3. 在搜索框中，键入“机器学习工作室工作区”，并选择匹配项  。 然后在页面底部选择单击“创建”  。
 
 4. 输入工作区信息：
 
@@ -55,7 +55,7 @@ ms.locfileid: "62109342"
 
     ![选择工作区](./media/create-workspace/open-workspace.png)
 
-3. 单击“我的试验”。
+3. 单击“我的试验”  。
 
     ![打开试验](./media/create-workspace/my-experiments.png)
 
@@ -78,11 +78,11 @@ ms.locfileid: "62109342"
 
 1. 在 [https://studio.azureml.net/Home](https://studio.azureml.net/Home) 处登录到机器学习工作室
 
-2. 在左面板中，单击“设置”
+2. 在左面板中，单击“设置” 
 
-3. 单击“用户”选项卡
+3. 单击“用户”  选项卡
 
-4. 单击页面底部的“邀请更多用户”
+4. 单击页面底部的“邀请更多用户” 
 
     ![工作室设置](./media/create-workspace/settings.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "62109342"
 
 6. 选择是要将用户添加为“所有者”还是“用户”。
 
-7. 单击“确定”复选标记按钮。
+7. 单击“确定”  复选标记按钮。
 
 添加的每个用户都将收到一封电子邮件，其中包含如何登录共享工作区的说明。
 

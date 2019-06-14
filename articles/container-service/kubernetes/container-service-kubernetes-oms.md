@@ -10,10 +10,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711758"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务群集
@@ -72,7 +72,7 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 
 ### <a name="obtain-your-workspace-id-and-key"></a>获取工作区 ID 和密钥
 为了使 Log Analytics 代理与服务进行通信，需要为其配置工作区 ID 和工作区密钥。 若要获取工作区 ID 和密钥，需要在 <https://mms.microsoft.com> 创建帐户。
-请按照步骤创建帐户。 创建帐户后，可以通过单击“Log Analytics”边栏选项卡，然后单击工作区名称来获取 ID 和密钥。 然后，在“高级设置”下，依次单击“连接源”、“Linux 服务器”，将发现所需的信息，如下所示。
+请按照步骤创建帐户。 创建帐户后，可以通过单击“Log Analytics”  边栏选项卡，然后单击工作区名称来获取 ID 和密钥。 然后，在“高级设置”  下，依次单击“连接源”  、“Linux 服务器”  ，将发现所需的信息，如下所示。
 
  ![](media/container-service-monitoring-oms/image5.png)
 

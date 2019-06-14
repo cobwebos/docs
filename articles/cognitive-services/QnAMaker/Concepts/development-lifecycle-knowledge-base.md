@@ -12,10 +12,10 @@ ms.date: 04/16/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 3f78b8a2566137d596f4ab3f083e1d14289365c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61379225"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知识库生命周期
@@ -31,7 +31,7 @@ QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供�
 知识库只要填充了内容（无论是以编辑方式填充还是通过自动提取填充），就可以用于测试。 交互式测试可以在通过 QnA Maker 门户完成**测试**通过输入常见用户查询并验证响应返回正确的响应和足够的置信度得分的面板。 
 
 * **若要解决低置信度得分**： 添加备用的问题。 
-* **查询错误地返回[默认响应](confidence-score.md#change-default-answer)**： 添加新的答案正确的问题。 
+* **查询错误地返回[默认响应](confidence-score.md#change-default-answer)** ： 添加新的答案正确的问题。 
 
 测试更新这一紧凑周期会持续至得到满意的结果为止。 了解如何[测试知识库](../How-To/test-knowledge-base.md)。
 
@@ -47,7 +47,7 @@ QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供�
 ```
 
 ## <a name="publish-the-knowledge-base"></a>发布知识库
-完成知识库的测试后，即可发布此知识库。 发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
+完成知识库的测试后，即可发布此知识库。 发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引  。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
 
 这样一来，对知识库的测试版本进行的任何更改都不会影响可能已进入生产应用程序的已发布版本。
 

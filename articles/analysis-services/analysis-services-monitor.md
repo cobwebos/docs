@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61065026"
 ---
 # <a name="monitor-server-metrics"></a>监视服务器指标
@@ -24,7 +24,7 @@ Analysis Services 提供的指标可帮助你监视服务器的性能和运行�
 
 ## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>监视 Analysis Services 服务器指标
 
-1. 在 Azure 门户中，选择“指标”。
+1. 在 Azure 门户中，选择“指标”  。
 
     ![在 Azure 门户中监视](./media/analysis-services-monitor/aas-monitor-portal.png)
 
@@ -46,7 +46,7 @@ Analysis Services 提供的指标可帮助你监视服务器的性能和运行�
 |mashup_engine_memory_metric|M 引擎内存|字节|平均值|糅合引擎进程的内存使用率|
 |mashup_engine_qpu_metric|M 引擎 QPU|Count|平均值|糅合引擎进程的 QPU 使用率|
 |memory_metric|内存|字节|平均值|内存。 S1 范围为 0-25 GB，S2 范围为 0-50 GB，S4 范围为 0-100 GB|
-|memory_thrashing_metric|内存抖动|百分比|平均值|平均内存抖动。|
+|memory_thrashing_metric|内存抖动|Percent|平均值|平均内存抖动。|
 |CleanerCurrentPrice|内存: 清理器当前价格|Count|平均值|内存的当前价格，$/字节/时间，标准化为 1000。|
 |CleanerMemoryNonshrinkable|内存: 不可收缩的清理器内存|字节|平均值|不受后台清理器执行的清除影响的内存量（字节）。|
 |CleanerMemoryShrinkable|内存: 可收缩的清理器内存|字节|平均值|受后台清理器执行的清除影响的内存量（字节）。|

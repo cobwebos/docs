@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 3a6c9e50804db573395984b8ba38838eb15b0792
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61276620"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>运行用于从 VMware 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
@@ -95,7 +95,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-使用默认设置时，若要分析特定数量的 VM（例如 1500 个 VM），请创建两个 VMList.txt 文件。 一个包含 1000 个 VM，另一个是 500 个 VM 的列表。 运行 Azure Site Recovery Deployment Planner，另一个使用 VMList1.txt，另一种具有 VMList2.txt 的两个实例。 可以使用同一目录路径来存储两个 VMList VM 的已分析数据。
+使用默认设置时，若要分析特定数量的 VM（例如 1500 个 VM），请创建两个 VMList.txt 文件。 一个包含 1000 个 VM，另一个是 500 个 VM 的列表。 运行 Azure Site Recovery 部署规划器的这两个实例：一个使用 VMList1.txt，另一个使用 VMList2.txt。 可以使用同一目录路径来存储两个 VMList VM 的已分析数据。
 
 我们已经看到，根据硬件配置（尤其是在其中运行报表生成工具的服务器的 RAM 大小），在内存不足的情况下，操作可能会失败。 如果硬件良好，可将 MaxVMsSupported 更改为更高的值。  
 
@@ -136,10 +136,10 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>生成报告
-该工具生成一个启用了宏的 Microsoft Excel 文件（XLSM 文件）作为报告输出，对所有部署建议进行了汇总。 报告名为`DeploymentPlannerReport_<unique numeric identifier>.xlsm`，置于指定目录中。
+该工具生成一个启用了宏的 Microsoft Excel 文件（XLSM 文件）作为报告输出，对所有部署建议进行了汇总。 该报告名为 `DeploymentPlannerReport_<unique numeric identifier>.xlsm`，置于指定目录中。
 
 >[!NOTE]
->报表生成要求的 Windows 电脑或 Windows Server 与 Excel 2013 或更高版本。 在此计算机上的十进制符号应配置为"。"以生成成本估算。 如果你有安装程序"、"作为小数符号，请转到"更改日期、 时间或数字格式"控件面板中并转到"其他设置"以将十进制符号更改为"。"。
+>生成报告需要安装了 Excel 2013 或更高版本的 Windows 电脑或 Windows Server。 此计算机上的小数点符号应配置为“.”以生成成本估算。 如果已设置了“,”作为小数点符号，请转到“控制面板”中的“更改日期、时间或数字格式”，然后转到“其他设置”将小数点符号更改为“.”。
 
 完成分析后，可在报告生成模式下运行该工具。 下表包含一系列必需的和可选的工具参数，适用于在报告生成模式下 运行。
 
@@ -159,11 +159,11 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 |-Protocol|（可选）用于连接到 vCenter 的指定协议，即“http”或“https”。 默认协议为 https。|
 | -DesiredRPO | （可选）以分钟为单位的所需恢复点目标。 默认值为 15 分钟。|
 | -Bandwidth | 以 Mbps 为单位的带宽。 一个参数，用于计算指定的带宽可实现的 RPO。 |
-| -StartDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的开始日期和时间。 “StartDate”必须与“EndDate”一起指定。 如果指定 StartDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
-| -EndDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的结束日期和时间。 “EndDate”必须与“StartDate”一起指定。 如果指定 EndDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
+| -StartDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的开始日期和时间。 “StartDate”必须与“EndDate”一起指定。   如果指定 StartDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
+| -EndDate | （可选）采用 MM-DD-YYYY:HH:MM 格式（24 小时制）的结束日期和时间。 “EndDate”必须与“StartDate”一起指定。   如果指定 EndDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
 | -GrowthFactor | （可选）增长系数，以百分比表示。 默认值为 30%。 |
 | -UseManagedDisks | （可选）UseManagedDisks - 是/否。 默认值为“是”。 计算可放置到单个存储帐户中的虚拟机数量时要考虑到：对虚拟机进行的故障转移/测试性故障转移是在托管磁盘而不是非托管磁盘上完成的。 |
-|-SubscriptionId |（可选）订阅 GUID。 请注意，当你需要根据订阅、与订阅相关联的套餐使用“指定的货币”中的特定目标 Azure 区域的最新价格生成成本估算报告时，此参数是必需的。|
+|-SubscriptionId |（可选）订阅 GUID。 请注意，当你需要根据订阅、与订阅相关联的套餐使用“指定的货币”  中的特定目标 Azure 区域的最新价格生成成本估算报告时，此参数是必需的。|
 |-TargetRegion|（可选）充当复制目标的 Azure 区域。 由于 Azure 的成本因区域而异，因此可使用此参数来生成特定目标 Azure 区域的报表。<br>默认值为 WestUS2 或上次使用的目标区域。<br>请参阅[支持的目标区域](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions)的列表。|
 |-OfferId|（可选）与给定订阅关联的套餐。 默认值为 MS-AZR-0003P（即用即付）。|
 |-Currency|（可选）在生成的报表中显示的成本所采用的货币。 默认为美元 ($) 或上次使用的货币。<br>请参阅[支持的货币](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)的列表。|
@@ -218,7 +218,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 该工具默认使用分析所有 VM 期间收集的读/写 IOPS、写入 IOPS 和数据变动量的第 95 百分位值。 此指标可确保系统不使用第 100 百分位峰值（在发生临时事件时，可能会出现在 VM 中）来确定目标存储帐户和源带宽需求。 例如，临时事件可能是一天运行一次的备份作业、定期发生的数据库索引编制或分析报告生成活动，或者其他类似的短期时间点事件。
 
-使用第 95 百分位值可以反映真实的工作负荷特征，使这些工作负荷在 Azure 中运行时提供最佳性能。 我们预计不需要更改此数字。 如果更改此值（例如更改为第 90 百分位），则可在默认文件夹中更新并保存配置文件“ASRDeploymentPlanner.exe.config”，针对现有的分析数据生成新报告。
+使用第 95 百分位值可以反映真实的工作负荷特征，使这些工作负荷在 Azure 中运行时提供最佳性能。 我们预计不需要更改此数字。 如果更改此值（例如更改为第 90 百分位），则可在默认文件夹中更新并保存配置文件“ASRDeploymentPlanner.exe.config”，针对现有的分析数据生成新报告。 
 ```xml
 <add key="WriteIOPSPercentile" value="95" />      
 <add key="ReadWriteIOPSPercentile" value="95" />      
@@ -263,7 +263,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 |-Virtualization|指定虚拟化类型（VMware 或 Hyper-V）。|
 | -Directory | （可选）UNC 或本地目录路径，其中存储了分析数据（在分析期间生成的文件）。 需要使用此数据来生成报告。 如果未指定目录名称，请使用“ProfiledData”目录。 |
 | -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上传到此存储帐户来确定消耗的带宽。 存储帐户必须是常规用途 v1 (GPv1) 类型。|
-| -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <存储帐户名称> >“设置”>“访问密钥”> 密钥 1（或经典存储帐户的主访问密钥）。 |
+| -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <存储帐户名称  > >“设置”>“访问密钥”> 密钥 1（或经典存储帐户的主访问密钥）。 |
 | -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 此文件应该每行包含一个 VM 名称/IP 地址。 此文件中指定的 VM 名称应与 vCenter 服务器/vSphere ESXi 主机上的 VM 名称相同。<br>例如，VMList.txt 文件包含以下 VM：<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 | -Environment | （可选）这是目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 Azure 美国政府或 Azure 中国的 21Vianet 在目标 Azure 区域时使用的参数。 |
 

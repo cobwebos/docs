@@ -1,6 +1,6 @@
 ---
-title: 删除 Azure AD 目录的 Azure Active Directory |Microsoft Docs
-description: 介绍如何进行准备以进行删除，包括自助服务目录的 Azure AD 目录
+title: 删除 Azure AD 目录 - Azure Active Directory | Microsoft Docs
+description: 介绍如何准备要删除的 Azure AD 目录，包括自助服务目录
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,40 +15,40 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91ac6b4530414850c52605bac8cb701aa2b877d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60473063"
 ---
-# <a name="delete-a-directory-in-azure-active-directory"></a>删除 Azure Active Directory 的目录中
+# <a name="delete-a-directory-in-azure-active-directory"></a>删除 Azure Active Directory 中的目录
 
-删除 Azure AD 目录时，也会删除该目录中包含的所有资源。 通过最小化及其关联的资源，在删除之前准备你的组织。 只有 Azure Active Directory (Azure AD) 全局管理员可以从门户删除 Azure AD 目录。
+删除 Azure AD 目录时，也会删除包含在该目录中的所有资源。 准备组织时，尽量减少关联的资源，然后才能将其删除。 只有 Azure Active Directory (Azure AD) 全局管理员可以从门户中删除 Azure AD 目录。
 
 ## <a name="prepare-the-directory"></a>准备目录
 
-无法在 Azure AD 之前将传递多个检查中删除一个目录。 这些检查降低风险，删除 Azure AD 目录产生负面影响用户访问权限，例如能够在登录到 Azure 中的 Office 365 或访问资源。 例如，如果无意中删除与订阅关联的目录，用户无法访问该订阅的 Azure 资源。 需检查以下条件：
+在删除 Azure AD 中的某个目录之前，必须对其进行多项检查。 这些检查可以降低删除 Azure AD 目录后对用户访问造成负面影响（例如，影响用户登录 Office 365 或访问 Azure 中的资源）的风险。 例如，如果与某个订阅关联的目录被无意删除，则用户无法访问该订阅的 Azure 资源。 需检查以下条件：
 
-* 除一个全局管理员是，以删除该目录的目录中可以有任何用户。 只有在删除所有其他用户后，才能删除该目录。 如果用户从本地同步的则同步必须首先已关闭，并且必须使用 Azure 门户或 Azure PowerShell cmdlet 的云目录中删除这些用户。
-* 该目录中不能有任何应用程序。 必须先删除任何应用程序，可以删除目录。
-* 可以有任何多重身份验证提供程序，链接到该目录。
+* 目录中不能有用户，只能有一个负责删除该目录的全局管理员。 只有在删除所有其他用户后，才能删除该目录。 如果用户是从本地同步的，则必须先关闭同步，并且必须使用 Azure 门户或 Azure PowerShell cmdlet 从云目录中删除这些用户。
+* 该目录中不能有任何应用程序。 只有在删除所有应用程序后，才能删除目录。
+* 不能有任何多重身份验证提供程序关联到该目录。
 * 与该目录相关联的任何 Microsoft Online Services（例如 Microsoft Azure、Office 365 或 Azure AD Premium）不存在任何订阅。 例如，如果在 Azure 中创建了一个默认目录，并且 Azure 订阅仍然依赖于此目录进行身份验证，则你不能删除此目录。 类似地，如果其他用户已将订阅与某个目录相关联，则你无法删除该目录。
 
 ## <a name="delete-the-directory"></a>删除目录
 
 1. 登录到[Azure AD 管理中心](https://aad.portal.azure.com)是为你的组织的全局管理员的帐户。
 
-2. 选择“Azure Active Directory”。
+2. 选择“Azure Active Directory”  。
 
-3. 切换到你想要删除的目录。
+3. 切换到要删除的目录。
   
    ![在删除之前确认组织](./media/directory-delete-howto/delete-directory-command.png)
 
-4. 选择“删除目录”。
+4. 选择“删除目录”  。
   
    ![选择用于删除组织的命令](./media/directory-delete-howto/delete-directory-list.png)
 
-5. 如果你的目录不会通过一个或多个检查，你要提供如何将传递的详细信息的链接。 通过所有检查后，选择“删除”以完成此过程。
+5. 如果目录没有通过一项或多项检查，则会出现一个详细说明如何通过的链接。 通过所有检查后，选择“删除”  以完成此过程。
 
 ## <a name="if-you-cant-delete-the-directory"></a>如果您不能删除目录
 
@@ -69,15 +69,15 @@ ms.locfileid: "60473063"
 
 1. 登录到[Microsoft 365 管理中心内](https://admin.microsoft.com)是你的组织中的全局管理员的帐户。 如果想要删除"Contoso"初始默认域 contoso.onmicrosoft.com 的目录，请使用登录 UPN 如admin@contoso.onmicrosoft.com。
 
-2. 选择**计费**，然后选择**订阅**，然后选择你想要取消的订阅。 单击“取消”后，刷新该页面。
+2. 选择**计费**，然后选择**订阅**，然后选择你想要取消的订阅。 单击“取消”后，  刷新该页面。
   
    ![删除用于删除订阅的链接](./media/directory-delete-howto/delete-command.png)
   
-3. 选择“删除”，删除订阅并接受条款和条件。 所有数据将在三天内永久删除。 如果改变心意，可在这三天时间内重新激活订阅。
+3. 选择“删除”  ，删除订阅并接受条款和条件。 所有数据将在三天内永久删除。 如果改变心意，可在这三天时间内重新激活订阅。
   
    ![请仔细阅读条款和条件](./media/directory-delete-howto/delete-terms.png)
 
-4. 现在订阅状态已改变，订阅已被标记以进行删除。 订阅在 72 小时后会进入“已取消预配”状态。
+4. 现在订阅状态已改变，订阅已被标记以进行删除。 订阅在 72 小时后会进入“已取消预配”  状态。
 
 5. 后已在目录中删除订阅和 72 小时，可以注册恢复到 Azure AD 管理员中心正常再次和有应是任何所需的操作并阻止目录删除任何订阅。 您应能够成功地删除你的 Azure AD 目录。
   

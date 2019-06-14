@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ccc194dd4120762a30da3ad28cdabed6faf53ba2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611506"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop MapReduce 活动转换数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-map-reduce.md)
 > * [当前版本](transform-data-using-hadoop-map-reduce.md)
 
@@ -62,7 +62,7 @@ ms.locfileid: "60611506"
 
 | 属性          | 说明                              | 需要 |
 | ----------------- | ---------------------------------------- | -------- |
-| 名称              | 活动名称                     | 是      |
+| name              | 活动名称                     | 是      |
 | description       | 描述活动用途的文本 | 否       |
 | type              | 对于 MapReduce 活动，活动类型是 HDinsightMapReduce | 是      |
 | linkedServiceName | 引用在数据工厂中注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
@@ -72,7 +72,7 @@ ms.locfileid: "60611506"
 | jarlibs           | 作业引用的 Jar 库文件路径的字符串数组，该作业存储在 jarLinkedService 中定义的 Azure 存储中。 文件名称需区分大小写。 | 否       |
 | getDebugInfo      | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）jarLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
 | arguments         | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
-| 定义           | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | 否       |
+| defines           | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | 否       |
 
 
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
 ms.openlocfilehash: 4f093251ce3c711cc060369abb27770157024d91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61488546"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>在政府门户中部署本地 StorSimple 设备
@@ -172,7 +172,7 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 
 如果需要在不同的区域创建 Azure 存储帐户，请参阅 [关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md) 了解逐步说明。
 
-在政府门户的“StorSimple Device Manager 服务”页中执行以下步骤。
+在政府门户的“StorSimple Device Manager 服务”页中执行以下步骤。 
 
 [!INCLUDE [storsimple-configure-new-storage-account-u1](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 

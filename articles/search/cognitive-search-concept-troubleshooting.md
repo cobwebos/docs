@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ebc0ca718ab8edf5ef644993c71b0353861265b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334873"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64696599"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>认知搜索故障排除提示
 
@@ -84,7 +84,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 缺少内容可能是由于文档在索引编制过程中被丢弃。 免费层和基本层对文档大小的限制都很低。 如果文件超出此限制，则会在索引编制过程中将其丢弃。 可以在 Azure 门户中查找丢弃的文档。 在搜索服务仪表板中，双击“索引器”磁贴。 查看成功地进行索引的文档的比率。 如果不是 100%，可以单击该比率以获取更多详细信息。 
 
-如果问题与文件大小相关，则可能会看到这样的错误：“Blob <file-name> 的大小为 <file-size> 字节，这超出了当前服务层的文档提取的最大大小。” 有关索引器限制的详细信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
+如果问题与文件大小相关，则可能会看到这样的错误：“Blob \<file-name> 的大小为 \<file-size> 字节，这超出了当前服务层级的文档提取的最大大小。” 有关索引器限制的详细信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
 内容没有出现的另一原因可能与输入/输出映射错误相关。 例如，输出目标名称为“People”，但索引字段名称为“people”（小写）。 系统可能会针对整个管道返回“201 成功”消息，因此你认为索引编制成功，但实际上有一个字段是空的。 
 

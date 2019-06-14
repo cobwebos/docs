@@ -13,15 +13,15 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: f94d731fd7b9a9fa85ae42d22949c7ca4024aabe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61416473"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>启用自动优化以监视查询并提高工作负荷性能
 
-Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识别可为改善工作负荷性能执行的操作。 可查看建议并手动应用，或让 Azure SQL 数据库自动应用正确的操作 - 这称为“自动优化模式”。
+Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识别可为改善工作负荷性能执行的操作。 可查看建议并手动应用，或让 Azure SQL 数据库自动应用正确的操作 - 这称为“自动优化模式”  。
 
 可以通过 [Azure 门户](sql-database-automatic-tuning-enable.md#azure-portal)、[REST API](sql-database-automatic-tuning-enable.md#rest-api) 调用和 [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 命令在服务器或数据库级别启用自动优化。
 
@@ -37,15 +37,15 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要对 Azure SQL 数据库逻辑服务器启用自动优化，请在 Azure 门户中导航到该服务器，然后选择菜单中的“自动优化”。
+若要对 Azure SQL 数据库逻辑服务器启用自动优化，请在 Azure 门户中导航到该服务器，然后选择菜单中的“自动优化”   。
 
 ![服务器](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下启用。
+> 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下启用  。
 >
 
-选择想要启用的自动优化选项，然后选择“应用”。
+选择想要启用的自动优化选项，然后选择“应用”  。
 
 服务器上的自动优化选项将应用到此服务器上的所有数据库。 默认情况下，所有数据库将从其父服务器继承配置，但可替代此配置并为每个数据库单独指定配置。
 
@@ -58,12 +58,12 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 Azure SQL 数据库支持为每个数据库单独指定自动优化配置。 在数据库级别中，可选择从“Azure 默认值”继承自动优化配置，或选择不继承配置。 Azure 默认值设为启用 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用 DROP_INDEX。
 
 > [!TIP]
-> 常规建议是在服务器级别管理自动优化配置，以便为每个数据库自动应用相同的配置设置。 仅在需要该数据库与其他从相同服务器继承设置的数据库有不同设置时，在单个数据库上配置自动优化。
+> 常规建议是在服务器级别管理自动优化配置，以便为每个数据库自动应用相同的配置设置  。 仅在需要该数据库与其他从相同服务器继承设置的数据库有不同设置时，在单个数据库上配置自动优化。
 >
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要对单个数据库启用自动优化，请在 Azure 门户中导航到该数据库，然后选择“自动优化”。
+若要对单个数据库启用自动优化，请在 Azure 门户中导航到该数据库，然后选择“自动优化”   。
 
 可以为每个数据库单独配置各自的自动优化设置。 可以手动配置单个自动优化选项，或指定选项从服务器继承其设置。
 
@@ -71,7 +71,7 @@ Azure SQL 数据库支持为每个数据库单独指定自动优化配置。 在
 
 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下启用。
 
-选择所需配置后，单击“应用”。
+选择所需配置后，单击“应用”  。
 
 ### <a name="rest-api"></a>REST API
 

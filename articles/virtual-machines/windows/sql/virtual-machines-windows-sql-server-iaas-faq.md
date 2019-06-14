@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
 ms.openlocfilehash: 5299437dea18510fa5f85ee27240c8afc434d125
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61477257"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
@@ -47,16 +47,16 @@ ms.locfileid: "61477257"
 
 1. **是否可以从库中删除 SQL Server 虚拟机映像？**
 
-   可以。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
+   是的。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
 
 
-1. **是否可以部署在 Azure 门户中不可见的 SQL Server 的较旧映像？**
+1. **是否可以部署 Azure 门户中不可见的较旧的 SQL Server 映像？**
 
    是的，使用 PowerShell。 有关使用 PowerShell 部署 SQL Server VM 的详细信息，请参阅[如何使用 Azure PowerShell 预配 SQL Server 虚拟机](virtual-machines-windows-ps-sql-create.md)。
 
 1. **是否可以从 SQL Server VM 创建 VHD 映像？**
 
-   可以，但需注意以下事项。 如果将此 VHD 部署到 Azure 中的新 VM 时，不会收到在门户中的 SQL Server 配置部分。 此时必须通过 PowerShell 管理 SQL Server 配置选项。 此外，将会按该映像最初基于的 SQL VM 的费率进行计费。 即使在部署前已从 VHD 中删除 SQL Server，也是如此。 
+   可以，但需注意以下事项。 如果将此 VHD 部署到 Azure 中的新 VM，则无法在门户网站中获取 SQL Server 配置部分。 此时必须通过 PowerShell 管理 SQL Server 配置选项。 此外，将会按该映像最初基于的 SQL VM 的费率进行计费。 即使在部署前已从 VHD 中删除 SQL Server，也是如此。 
 
 1. **是否可以设置虚拟机库中未显示的配置（例如 Windows 2008 R2 + SQL Server 2012）？**
 
@@ -86,7 +86,7 @@ ms.locfileid: "61477257"
 
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
-   可以。 如果最初是从即用即付库映像开始的，则可以轻松地在两个许可模式之间移动。 但是，如果最初是从 BYOL 映像开始的，则无法将许可证切换到 PAYG。 有关详细信息，请参阅[如何更改 SQL Server VM 的许可模型](virtual-machines-windows-sql-ahb.md)。
+   是的。 如果最初是从即用即付库映像开始的，则可以轻松地在两个许可模式之间移动。 但是，如果最初是从 BYOL 映像开始的，则无法将许可证切换到 PAYG。 有关详细信息，请参阅[如何更改 SQL Server VM 的许可模型](virtual-machines-windows-sql-ahb.md)。
 
    > [!Note]
    > 目前，此功能仅面向公有云客户提供。
@@ -109,19 +109,19 @@ ms.locfileid: "61477257"
 
 1. **SQL VM 资源提供程序是否适用于所有客户？**
  
-   可以。 所有客户都可以将 VM 注册到新的 SQL VM 资源提供程序。 但是，只有享受软件保障权益的客户能够在 SQL Server VM 上激活 [Azure 混合权益 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/)（或 BYOL）。 
+   是的。 所有客户都可以将 VM 注册到新的 SQL VM 资源提供程序。 但是，只有享受软件保障权益的客户能够在 SQL Server VM 上激活 [Azure 混合权益 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/)（或 BYOL）。 
 
-1. **会发生什么情况_Microsoft.SqlVirtualMachine_如果移动或删除 VM 资源的资源？** 
+1. **如果移动或删除 VM 资源，_Microsoft.SqlVirtualMachine_ 资源会发生什么情况？** 
 
    删除或移动 Microsoft.Compute/VirtualMachine 资源时，会通知关联的 Microsoft.SqlVirtualMachine 资源以异步方式复制此操作。
 
-1. **如果，VM 会发生什么情况_Microsoft.SqlVirtualMachine_删除资源？**
+1. **如果删除 _Microsoft.SqlVirtualMachine_ 资源，VM 会发生什么情况？**
 
     删除 Microsoft.SqlVirtualMachine 资源时，Microsoft.Compute/VirtualMachine 资源不受影响。 但是，许可更改会默认回退到原始的映像源。 
 
 1. **是否可以将自行部署的 SQL Server VM 注册到 SQL VM 资源提供程序？**
 
-    可以。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，不能将自行部署的 SQL VM 转换为即用即付。
+    是的。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，不能将自行部署的 SQL VM 转换为即用即付。
 
 ## <a name="administration"></a>管理
 
@@ -131,7 +131,7 @@ ms.locfileid: "61477257"
 
 1. **是否可以卸载 SQL Server 的默认实例？**
 
-   可以，但需注意以下事项。 如前面的解答中所述，某些功能依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。  如果卸载默认实例但未同时删除 IaaS 扩展，该扩展会继续查找默认实例并可能生成事件日志错误。 这些错误来自以下两个源：Microsoft SQL Server 凭据管理和 Microsoft SQL Server IaaS 代理。 其中一个错误可能类似于以下内容：
+   可以，但需注意以下事项。 如前面的解答中所述，某些功能依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。  如果卸载默认实例但未同时删除 IaaS 扩展，该扩展会继续查找默认实例并可能生成事件日志错误。 这些错误来自以下两个源：Microsoft SQL Server 凭据管理和 Microsoft SQL Server IaaS 代理   。 其中一个错误可能类似于以下内容：
 
       建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。
 
@@ -139,7 +139,7 @@ ms.locfileid: "61477257"
 
 1. **是否可将 SQL Server 的命名实例与 IaaS 扩展配合使用**？
    
-   是的如果命名的实例是 SQL Server 上的唯一实例和原始的默认实例已[正确卸载](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md#installation)。 如果没有默认实例，并且单个 SQL Server VM 上有多个命名的实例，IaaS 扩展将无法安装。 
+   如果该命名实例是 SQL Server 上的唯一实例，并且[正确卸载](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md#installation)了原始的默认实例，则可以这样做。 如果没有默认实例，但是在单个 SQL Server VM 上有多个命名实例，则此扩展无法安装。 
 
 1. **是否可从 SQL VM 完全删除 SQL Server？**
 
@@ -147,7 +147,7 @@ ms.locfileid: "61477257"
    
 ## <a name="updating-and-patching"></a>更新和修补
 
-1. **如何更改到新的 Azure VM 中的 SQL Server 版本/版本？**
+1. **如何更改为 Azure VM 中 SQL Server 的新版本？**
 
    享有软件保障的客户可以使用批量许可门户中的安装媒体对 Azure VM 上运行的 SQL Server 执行就地升级。 但是，目前没有任何办法可以更改 SQL Server 实例的版本。 请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用[标准数据迁移技术](virtual-machines-windows-migrate-sql.md)，将数据库迁移到新的服务器。
 
@@ -159,7 +159,7 @@ ms.locfileid: "61477257"
 
 1. **Azure VM 是否支持 SQL Server 故障转移群集实例 (FCI)？**
 
-   可以。 可在 [Windows Server 2016 上创建 Windows 故障转移群集 ](virtual-machines-windows-portal-sql-create-failover-cluster.md)，并将存储空间直通 (S2D) 用于群集存储。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
+   是的。 可在 [Windows Server 2016 上创建 Windows 故障转移群集 ](virtual-machines-windows-portal-sql-create-failover-cluster.md)，并将存储空间直通 (S2D) 用于群集存储。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
 
    > [!IMPORTANT]
    > 目前，Azure 上的 SQL Server FCI 不支持 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 我们建议你从参与 FCI 的 VM 中卸载扩展。 此扩展支持自动备份和修补等功能，以及 SQL 的一些门户功能。 卸载代理后，这些功能对 SQL VM 不起作用。
@@ -174,7 +174,7 @@ ms.locfileid: "61477257"
 
 1. **是否支持在 SQL Server Vm 上的 MSDTC 分布式的事务？**
    
-    可以。 本地 DTC 是受支持的 SQL Server 2016 SP2 及更高版本。 但是，作为事务正在进行故障转移期间使用 Always On 可用性组中，将失败，并且必须重试时，必须测试应用程序。 群集的 DTC 是从 Windows Server 2019 开始提供。 
+    是的。 本地 DTC 是受支持的 SQL Server 2016 SP2 及更高版本。 但是，作为事务正在进行故障转移期间使用 Always On 可用性组中，将失败，并且必须重试时，必须测试应用程序。 群集的 DTC 是从 Windows Server 2019 开始提供。 
 
 ## <a name="resources"></a>资源
 

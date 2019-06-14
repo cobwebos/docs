@@ -11,10 +11,10 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60648799"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
@@ -50,7 +50,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要为 Azure VM 备份创建策略，需在请求正文中包含以下组成部分。
 
-|名称  |需要  |Type  |描述  |
+|Name  |必选  |Type  |描述  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
 |标记     |         | Object        |  资源标记       |
@@ -152,7 +152,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 > [!IMPORTANT]
 > 计划和保留期的时间格式仅支持日期时间， 不支持单独的时间格式。
 
-## <a name="responses"></a>响应
+## <a name="responses"></a>Responses
 
 创建/更新备份策略是一项[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 

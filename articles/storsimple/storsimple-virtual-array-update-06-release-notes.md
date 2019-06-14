@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60870700"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array 更新 0.6 发行说明
@@ -29,7 +29,7 @@ ms.locfileid: "60870700"
 
 发行说明会持续进行更新，并且会陆续将所发现的需要解决的重要问题添加到说明中。 部署 StorSimple Virtual Array 之前，请仔细查看发行说明中包含的信息。
 
-更新 0.6 对应软件版本 10.0.10293.0。
+更新 0.6 对应软件版本 10.0.10293.0  。
 
 > [!IMPORTANT]
 > - 更新会造成中断，并且会使设备重新启动。 如果正在进行 I/O，则会导致设备停机。 有关如何应用此更新的详细说明，请转到[安装更新 0.6](storsimple-virtual-array-install-update-06.md)。
@@ -40,12 +40,12 @@ ms.locfileid: "60870700"
 ## <a name="whats-new-in-the-update-06"></a>更新 0.6 中的新增内容
 更新 0.6 是关键更新，应该立即部署。 此更新包含以下修补程序： 
 
-- Windows 安全修补程序 - 此版本具有 Windows 关键安全修补程序。 查看以下安全更新，详细了解安全问题及相关的修补程序：
+- Windows 安全修补程序 - 此版本具有 Windows 关键安全修补程序   。 查看以下安全更新，详细了解安全问题及相关的修补程序：
     - [2016 年 12 月 Windows 8.1 和 Windows Server 2012 R2 仅用于安全的质量更新](https://support.microsoft.com/help/3205400/december-2016-security-only-quality-update-for-windows-8.1-and-windows-server-2012-r2)
     - [2017 年 3 月 Windows 8.1 和 Windows Server 2012 R2 仅用于安全的质量更新](https://support.microsoft.com/help/4012213/march-2017-security-only-quality-update-for-windows-8-1-and-windows-server-2012-r23)
     - [2017 年 5 月 9 日—KB4019213（仅用于安全的更新）](https://support.microsoft.com/help/4019213/windows-8-update-kb4019213)
 
-- 还原修补程序 - 早期版本中存在阻止还原完成的 bug。 此版本中已修复这个 bug。
+- 还原修补程序 - 早期版本中存在阻止还原完成的 bug  。 此版本中已修复这个 bug。
 
 
 ## <a name="issues-fixed-in-the-update-06"></a>更新 0.6 中修复的问题
@@ -80,7 +80,7 @@ ms.locfileid: "60870700"
 | **14.** |文件服务器 |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 | **15.** |文件服务器 |不支持符号链接。 | |
 | **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时会导致不受支持的配置。  | |
-| 17. |更新 |如果您看到错误代码：2359302 （十六进制 0x240006） 时尝试进行安装的修补程序通过本地 UI，则表示在设备上已安装的修补程序。   | |
+| 17\.  |更新 |如果您看到错误代码：2359302 （十六进制 0x240006） 时尝试进行安装的修补程序通过本地 UI，则表示在设备上已安装的修补程序。   | |
 
 ## <a name="next-step"></a>后续步骤
 在 StorSimple Virtual Array 上[安装更新 0.6](storsimple-virtual-array-install-update-06.md)。

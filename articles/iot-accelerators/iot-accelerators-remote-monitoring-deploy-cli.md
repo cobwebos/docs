@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61447006"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署远程监视解决方案加速器
@@ -23,7 +23,7 @@ ms.locfileid: "61447006"
 
 若要部署远程监视解决方案加速器，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 要运行 CLI，需在本地计算机上安装 [Node.js](https://nodejs.org/)。
 
@@ -49,10 +49,10 @@ pcs login
 
 在部署解决方案加速器时，有几种选项可用于配置部署进程：
 
-| 选项 | 值 | 描述 |
+| Option | 值 | 描述 |
 | ------ | ------ | ----------- |
-| SKU    | `basic`、`standard`、`local` | 基本部署适用于测试和演示，它将所有微服务部署到一个虚拟机上。 标准部署适用于生产，它将微服务部署到多个虚拟机上。 本地部署通过配置 Docker 容器在本地计算机中运行微服务，并使用 Azure 云服务（如存储和 Cosmos DB）。 |
-| 运行时 | `dotnet`、`java` | 选择微服务的语言实现。 |
+| SKU    | `basic`、`standard`、`local` | 基本部署适用于测试和演示，它将所有微服务部署到一个虚拟机上  。 标准部署适用于生产，它将微服务部署到多个虚拟机上  。 本地部署通过配置 Docker 容器在本地计算机中运行微服务，并使用 Azure 云服务（如存储和 Cosmos DB）  。 |
+| 运行时 | `dotnet`， `java` | 选择微服务的语言实现。 |
 
 若要了解如何使用本地部署选项，请参阅[在本地运行远程监视解决方案](iot-accelerators-remote-monitoring-deploy-local.md)。
 
@@ -68,10 +68,10 @@ pcs login
 
 基本部署在 Azure 订阅中创建以下服务：
 
-| Count | 资源                       | Type         | 用途 |
+| Count | Resource                       | Type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 第     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/) | 标准 D1 V2  | 托管微服务 |
-| 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 - 标准层 | 设备管理和通信 |
+| 第     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 - 标准层 | 设备管理和通信 |
 | 第     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 标准        | 存储配置数据、规则、警报和其他冷存储 |  
 | 第     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 标准        | 适用于 VM 和流式处理检查点的存储 |
 | 第     | [Web 应用程序](https://azure.microsoft.com/services/app-service/web/)        |                 | 托管前端 Web 应用程序 |
@@ -79,7 +79,7 @@ pcs login
 | 第     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 标准                | 查看资产位置 |
 | 第     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
 | 第     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
-| 1     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
+| 第     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
 
 ### <a name="standard"></a>标准
 
@@ -89,17 +89,17 @@ pcs login
 
 标准部署在 Azure 订阅中创建以下服务：
 
-| Count | 资源                                     | SKU/大小      | 用途 |
+| Count | Resource                                     | SKU/大小      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
 | 第     | [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service)| 使用完全托管的 Kubernetes 容器业务流程服务，默认值为 3 个代理|
 | 第     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                     | S2 - 标准层 | 设备管理、命令和控制 |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 标准        | 存储配置数据和设备遥测数据，例如规则、警报和消息 |
+| 第     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 标准        | 存储配置数据和设备遥测数据，例如规则、警报和消息 |
 | 5     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 标准        | 4 个用于 VM 存储，1 个用于流式处理检查点 |
 | 第     | [应用服务](https://azure.microsoft.com/services/app-service/web/)             | S1 标准     | 基于 SSL 的应用程序网关 |
 | 第     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | 管理用户标识和安全性 |
 | 第     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 标准                | 查看资产位置 |
 | 第     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
-| 1     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
+| 第     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
 | 第     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
 
 > [!NOTE]

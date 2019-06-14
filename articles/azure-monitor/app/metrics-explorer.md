@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: mbullwin
 ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60700564"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
@@ -31,7 +31,7 @@ ms.locfileid: "60700564"
 
 ![](./media/metrics-explorer/01-overview.png)
 
-可在 Application Insights 门户中的任何位置找到指标图表。 在大多数情况下，它们可以进行自定义，可以向边栏选项卡添加更多图表。 在“概览”边栏选项卡中，单击“浏览更详细的图表”（它们具有诸如“服务器”这类的标题），或单击“指标资源管理器”以打开新边栏选项卡，可以在其中创建自定义图表。
+可在 Application Insights 门户中的任何位置找到指标图表。 在大多数情况下，它们可以进行自定义，可以向边栏选项卡添加更多图表。 在“概览”边栏选项卡中，单击“浏览更详细的图表”（它们具有诸如“服务器”这类的标题），或单击“指标资源管理器”  以打开新边栏选项卡，可以在其中创建自定义图表。
 
 ## <a name="time-range"></a>时间范围
 可以在任何边栏选项卡上更改图表或网格覆盖的时间范围。
@@ -69,7 +69,7 @@ ms.locfileid: "60700564"
 
 ![在指标资源管理器中，选择“添加图表”](./media/metrics-explorer/04-add.png)
 
-在现有图表或新图表中选择“编辑”来编辑其显示内容：
+在现有图表或新图表中选择“编辑”来编辑其显示内容： 
 
 ![选择一个或多个指标](./media/metrics-explorer/08-select.png)
 
@@ -136,9 +136,9 @@ ms.locfileid: "60700564"
 筛选器将应用到边栏选项卡上的所有图表。 如果要将不同的筛选器应用到不同的图表，请创建并保存不同的指标边栏选项卡。 如果需要，可将不同边栏选项卡中的图表固定到仪表板，以便并排查看这些图表。
 
 ### <a name="remove-bot-and-web-test-traffic"></a>删除 Bot 和 Web 测试流量
-使用筛选器“实际或综合流量”并选中“实际”。
+使用筛选器“实际或综合流量”并选中“实际”。  
 
-也可以按“综合流量的源”筛选。
+也可以按“综合流量的源”筛选。 
 
 ### <a name="to-add-properties-to-the-filter-list"></a>将属性添加到筛选列表
 想要根据自己选择的类别筛选遥测数据？ 例如，要将用户划分到不同的类别，并根据这些类别将数据分段。

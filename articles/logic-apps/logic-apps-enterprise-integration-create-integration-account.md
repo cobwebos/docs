@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
 ms.openlocfilehash: 43ecdafac4f0a5cdc9e619537cdbe2a42ff7fe1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60999424"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>使用逻辑应用创建和管理 B2B 解决方案的集成帐户
@@ -40,11 +40,11 @@ ms.locfileid: "60999424"
 
 ## <a name="create-integration-account"></a>创建集成帐户
 
-1. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中，输入“集成帐户”作为筛选器，然后选择“集成帐户”。
+1. 在 Azure 主菜单中，选择“所有服务”  。 在搜索框中，输入“集成帐户”作为筛选器，然后选择“集成帐户”  。
 
    ![查找集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
-2. 在“集成帐户”下，选择“添加”。
+2. 在“集成帐户”  下，选择“添加”  。
 
    ![选择“添加”以创建集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/add-integration-account.png)
 
@@ -52,17 +52,17 @@ ms.locfileid: "60999424"
 
    ![提供集成帐户的详细信息](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | 属性 | 需要 | 示例值 | 描述 | 
+   | 属性 | 必选 | 示例值 | 描述 | 
    |----------|----------|---------------|-------------|
    | Name | 是 | test-integration-account | 集成帐户的名称。 对于此示例，请使用指定的名称。 | 
    | 订阅 | 是 | <*Azure-subscription-name*> | 要使用的 Azure 订阅的名称 | 
    | 资源组 | 是 | test-integration-account-rg | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 对于此示例，请使用指定的名称创建新的资源组。 | 
-   | 定价层 | 是 | 免费 | 要使用的定价层。 对于此示例，请选择“免费”，但有关详细信息，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md)和[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 | 
+   | 定价层 | 是 | 免费 | 要使用的定价层。 对于此示例，请选择“免费”  ，但有关详细信息，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md)和[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 | 
    | Location | 是 | 美国西部 | 用于存储集成帐户信息的区域。 选择与逻辑应用相同的位置，或者在与集成帐户相同的位置创建逻辑应用。 | 
-   | Log Analytics 工作区 | 否 | 关闭 | 对于诊断日志记录，请保留“关闭”设置。 | 
+   | Log Analytics 工作区 | 否 | 关闭 | 对于诊断日志记录，请保留“关闭”设置。  | 
    ||||| 
 
-4. 准备就绪后，请选择“固定到仪表板”，并选择“创建”。
+4. 准备就绪后，请选择“固定到仪表板”  ，并选择“创建”  。
 
    Azure 将集成帐户部署到所选位置（通常在一分钟内完成）后，Azure 将打开集成帐户。
 
@@ -81,11 +81,11 @@ ms.locfileid: "60999424"
 
 1. 在 Azure 门户中，查找并打开逻辑应用。
 
-2. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。 从“选择集成帐户”列表中，选择想要链接到逻辑应用的集成帐户。
+2. 在逻辑应用的菜单中，在“设置”  下，选择“工作流设置”  。 从“选择集成帐户”列表中，选择想要链接到逻辑应用的集成帐户。 
 
    ![选择集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-2.png)
 
-3. 若要完成链接，请选择“保存”。
+3. 若要完成链接，请选择“保存”。 
 
    ![选择集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-3.png)
 
@@ -107,11 +107,11 @@ ms.locfileid: "60999424"
 
    ![查找并选择逻辑应用](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-find-logic-app.png)
 
-3. 在浏览器标题栏上，选择“读/写”。
+3. 在浏览器标题栏上，选择“读/写”  。
 
    ![启用“读/写”模式](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-choose-read-write-mode.png)
 
-4. 在“数据”选项卡上，选择“编辑”。
+4. 在“数据”  选项卡上，选择“编辑”  。
 
    ![在“数据”选项卡上，选择“编辑”](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-choose-edit.png)
 
@@ -129,11 +129,11 @@ ms.locfileid: "60999424"
 
    ![找到“integrationAccount”属性定义](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 
-6. 在“数据”选项卡上，选择 **Put** 保存所做的更改。 
+6. 在“数据”  选项卡上，选择 **Put** 保存所做的更改。 
 
    ![选择“Put”保存更改](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-save-changes.png)
 
-7. 在 Azure 门户中，在逻辑应用的“工作流设置”下，检查“集成帐户”属性现在是否显示为空。
+7. 在 Azure 门户中，在逻辑应用的“工作流设置”  下，检查“集成帐户”  属性现在是否显示为空。
 
    ![检查集成帐户是否未链接](./media/logic-apps-enterprise-integration-create-integration-account/unlinked-account.png)
 
@@ -141,11 +141,11 @@ ms.locfileid: "60999424"
 
 可以将集成帐户移到另一个 Azure 订阅或资源组。
 
-1. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中，输入“集成帐户”作为筛选器，然后选择“集成帐户”。
+1. 在 Azure 主菜单中，选择“所有服务”  。 在搜索框中，输入“集成帐户”作为筛选器，然后选择“集成帐户”  。
 
    ![查找集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
-2. 在“集成帐户”下，选择要移动的集成帐户。 在集成帐户菜单上的“设置”下，选择“属性”。
+2. 在“集成帐户”下，选择要移动的集成帐户。  在集成帐户菜单上的“设置”  下，选择“属性”  。
 
    ![在“设置”下选择“属性”](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-properties.png)
 
@@ -157,15 +157,15 @@ ms.locfileid: "60999424"
 
 ## <a name="delete-integration-account"></a>删除集成帐户
 
-1. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中，输入“集成帐户”作为筛选器，然后选择“集成帐户”。
+1. 在 Azure 主菜单中，选择“所有服务”  。 在搜索框中，输入“集成帐户”作为筛选器，然后选择“集成帐户”  。
 
    ![查找集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
-2. 在“集成帐户”下，选择要删除的集成帐户。 在集成帐户菜单上，选择“概述”，然后选择“删除”。 
+2. 在“集成帐户”下，选择要删除的集成帐户。  在集成帐户菜单上，选择“概述”  ，然后选择“删除”  。 
 
    ![选择“集成帐户”。 在“概述”页上，选择“删除”](./media/logic-apps-enterprise-integration-create-integration-account/delete-integration-account.png)
 
-3. 若要确认要删除集成帐户，请选择“是”。
+3. 若要确认要删除集成帐户，请选择“是”  。
 
    ![若要确认删除，请选择“是”](./media/logic-apps-enterprise-integration-create-integration-account/confirm-delete.png)
 

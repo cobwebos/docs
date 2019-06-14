@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 28b4667a9ceb4b3534d85ba28668f06c750e22c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60703811"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>使用 Azure 安全中心加强安全态势
@@ -27,7 +27,7 @@ ms.locfileid: "60703811"
 ## <a name="how-do-you-strengthen-your-security-posture"></a>如何加强安全态势？
 通常可以认为，监视就是指观察并等待某个事件的发生，以便采取应对措施。 加强安全态势是指制定前瞻性策略对资源进行审核，确定不符合组织标准或最佳做法的系统。
 
-用户为订阅的资源启用[安全策略](tutorial-security-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。 可立即提供有关网络配置的信息。 根据安装了代理的 VM 和计算机的数目，在可以使用前可能需要一小时或更长的时间来收集 VM 和计算机配置信息，例如安全更新状态和操作系统配置。 可以在“建议”磁贴中查看完整的问题列表和强化网络和缓解风险的方式。
+用户为订阅的资源启用[安全策略](tutorial-security-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。 可立即提供有关网络配置的信息。 根据安装了代理的 VM 和计算机的数目，在可以使用前可能需要一小时或更长的时间来收集 VM 和计算机配置信息，例如安全更新状态和操作系统配置。 可以在“建议”磁贴中查看完整的问题列表和强化网络和缓解风险的方式  。
 
 可以根据资源类型查看资源的安全状态以及任何问题：
 

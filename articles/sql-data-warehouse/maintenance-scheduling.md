@@ -11,10 +11,10 @@ ms.date: 03/13/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.openlocfilehash: b97e27b86ecad1f7f87a6de4d43b09d69c167c6f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61075308"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
@@ -37,7 +37,7 @@ ms.locfileid: "61075308"
 
 如果提前收到了维护通知，但 SQL 数据仓库无法在此期间执行维护，则你会收到取消通知。 随即会在下一个计划的维护期间继续进行维护。
 
-所有活动维护事件显示在“服务运行状况 - 计划内维护”部分中。 服务运行状况历史记录包括以往事件的完整记录。 可以在活动事件期间通过 Azure 服务运行状况检查门户仪表板监视维护。
+所有活动维护事件显示在“服务运行状况 - 计划内维护”部分中。  服务运行状况历史记录包括以往事件的完整记录。 可以在活动事件期间通过 Azure 服务运行状况检查门户仪表板监视维护。
 
 ### <a name="maintenance-schedule-availability"></a>维护计划可用性
 

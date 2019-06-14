@@ -8,10 +8,10 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: ad32f7ff883812830dbcf2ed900c4034bd90abfc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64927502"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows 虚拟桌面 PowerShell
@@ -32,7 +32,7 @@ ms.locfileid: "64927502"
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
 ```
 
-原因：使用的用户名具有已分配给不同类型的应用程序组。 无法将用户分配到同一个会话主机池下的远程桌面和远程应用程序组。
+原因：  使用的用户名具有已分配给不同类型的应用程序组。 无法将用户分配到同一个会话主机池下的远程桌面和远程应用程序组。
 
 **解决方法：** 如果用户需要远程应用和远程桌面时，创建不同的主机池或授予对远程桌面会话主机 VM 将允许使用任何应用程序的用户访问权限。
 
@@ -42,7 +42,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName “Desktop Application Group” -UserPrincipalName <UserPrincipalName>
 ```
 
-原因：绑定到 Windows 虚拟桌面租户在 Azure Active Directory 中找不到指定的 UserPrincipalName 的用户。
+原因：  绑定到 Windows 虚拟桌面租户在 Azure Active Directory 中找不到指定的 UserPrincipalName 的用户。
 
 **解决方法：** 确认以下列表中的项。
 
@@ -66,7 +66,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 Get-RdsDiagnosticActivities -Deployment -username <username>
 ```
 
-原因：使用-部署开关。
+原因：  使用-部署开关。
 
 **修复：** -部署开关可仅由部署管理员。 这些管理员通常是远程桌面服务/Windows 虚拟桌面团队的成员。 替换为与-TenantName-部署开关<TenantName>。
 

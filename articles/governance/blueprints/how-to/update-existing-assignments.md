@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: c75bd8c3831bad0c8217f16315843cbe3824fe4d
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "63766588"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
@@ -21,21 +21,21 @@ ms.locfileid: "63766588"
 
 - 添加或删除[资源锁定](../concepts/resource-locking.md)
 - 更改[动态参数](../concepts/parameters.md#dynamic-parameters)的值
-- 将分配升级到新发布的蓝图版本
+- 将分配升级到新发布的  蓝图版本
 
 ## <a name="updating-assignments"></a>更新分配
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
-1. 从左侧页面选择“分配的蓝图”。
+1. 从左侧页面选择“分配的蓝图”  。
 
 1. 在蓝图列表中，左键单击蓝图分配。 然后单击**更新分配**按钮，或右键单击蓝图分配并选择**更新分配**。
 
    ![更新现有的蓝图分配](../media/update-existing-assignments/update-assignment.png)
 
-1. **分配蓝图**页将加载预先填入从原始分配的所有值。 可以更改“蓝图定义版本”、“锁定分配”状态，以及蓝图定义上存在的任何动态参数。 完成更改时，单击“分配”。
+1. **分配蓝图**页将加载预先填入从原始分配的所有值。 可以更改“蓝图定义版本”  、“锁定分配”  状态，以及蓝图定义上存在的任何动态参数。 完成更改时，单击“分配”  。
 
-1. 在更新后的分配详细信息页上，查看新状态。 在此示例中，我们向分配添加了“锁定”。
+1. 在更新后的分配详细信息页上，查看新状态。 在此示例中，我们向分配添加了“锁定”  。
 
    ![更新现有的蓝图分配的锁模式发生更改](../media/update-existing-assignments/updated-assignment.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "63766588"
   - 如果策略分配的定义已发生更改，则会创建一个新的策略分配。 以前部署的策略分配将会保留。
   - 如果从蓝图中删除策略分配项目，已部署的策略分配将会保留。
 - Azure 资源管理器模板
-  - 该模板通过资源管理器作为 PUT 处理。 由于每个资源类型以不同的方式处理此操作，因此请查看包含的每个资源的文档，以确定在蓝图运行时该操作的影响。
+  - 该模板通过资源管理器作为 PUT  处理。 由于每个资源类型以不同的方式处理此操作，因此请查看包含的每个资源的文档，以确定在蓝图运行时该操作的影响。
 
 ## <a name="possible-errors-on-updating-assignments"></a>更新分配上可能出现的错误
 

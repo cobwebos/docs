@@ -16,33 +16,33 @@ ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60714098"
 ---
 # <a name="service-bus-diagnostic-logs"></a>服务总线诊断日志
 
 可以查看两种类型的 Azure 服务总线日志：
-* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)**。 这些日志包含对作业执行的操作的相关信息。 这些日志始终启用。
-* **[诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)**。 可以配置诊断日志，以便更深入地了解作业内发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
+* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)** 。 这些日志包含对作业执行的操作的相关信息。 这些日志始终启用。
+* **[诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)** 。 可以配置诊断日志，以便更深入地了解作业内发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
 ## <a name="turn-on-diagnostic-logs"></a>启用诊断日志
 
 诊断日志默认已禁用。 若要启用诊断日志，请按照以下步骤操作：
 
-1.  在[Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，点击“诊断日志”。
+1.  在[Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，点击“诊断日志”   。
 
     ![在边栏选项卡中导航到诊断日志](./media/service-bus-diagnostic-logs/image1.png)
 
 2. 单击想要监视的资源。  
 
-3.  单击“启用诊断”。
+3.  单击“启用诊断”  。
 
     ![启用诊断日志](./media/service-bus-diagnostic-logs/image2.png)
 
-4.  对于“状态”，单击“打开”。
+4.  对于“状态”  ，单击“打开”  。
 
     ![更改诊断日志的状态](./media/service-bus-diagnostic-logs/image3.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "60714098"
 
 6.  保存新的诊断设置。
 
-新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”边栏选项卡上配置的存档目标中。
+新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”边栏选项卡上配置的存档目标中  。
 
 有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)。
 

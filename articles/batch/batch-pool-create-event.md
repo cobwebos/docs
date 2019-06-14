@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776501"
 ---
 # <a name="pool-create-event"></a>池创建事件
@@ -55,7 +55,7 @@ ms.locfileid: "60776501"
 |[cloudServiceConfiguration](#bk_csconf)|复杂类型|池的云服务配置。|
 |[virtualMachineConfiguration](#bk_vmconf)|复杂类型|池的虚拟机配置。|
 |[networkConfiguration](#bk_netconf)|复杂类型|池的网络配置。|
-|resizeTimeout|时间|为针对池的上一次调整大小操作指定的将计算节点分配到池的超时。  （创建池时的初始大小计为一次调整大小。）|
+|resizeTimeout|Time|为针对池的上一次调整大小操作指定的将计算节点分配到池的超时。  （创建池时的初始大小计为一次调整大小。）|
 |targetDedicated|Int32|池请求的计算节点数。|
 |enableAutoScale|Bool|指定池大小是否随时间自动调整。|
 |enableInterNodeCommunication|Bool|指定是否针对节点间的直接通信设置池。|
@@ -68,7 +68,7 @@ ms.locfileid: "60776501"
 |元素名称|Type|说明|
 |------------------|----------|-----------|
 |osFamily|String|要安装在池中虚拟机上的 Azure 来宾 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，等效于 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，等效于Windows Server 2012。<br /><br /> **4** – OS 系列 4，等效于 Windows Server 2012 R2。<br /><br /> 有关详细信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
-|targetOSVersion|String|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为 **\***，用于指定特定系列的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
+|targetOSVersion|String|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为 **\*** ，用于指定特定系列的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
@@ -82,10 +82,10 @@ ms.locfileid: "60776501"
 
 |元素名称|Type|说明|
 |------------------|----------|-----------|
-|发布者|String|映像的发布者。|
+|publisher|String|映像的发布者。|
 |offer|String|映像的产品/服务。|
 |sku|String|映像的 SKU。|
-|版本|String|映像的版本。|
+|version|String|映像的版本。|
 
 ###  <a name="bk_winconf"></a> windowsConfiguration
 

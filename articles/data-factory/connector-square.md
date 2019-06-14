@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: f22311af277f860c1501287b5be0f5dc149880b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61462354"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Square 复制数据
@@ -77,7 +77,7 @@ Square 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Square 数据集支持的属性列表。
 
-要从 Square 复制数据，请将数据集的 type 属性设置为“SquareObject”。 支持以下属性：
+要从 Square 复制数据，请将数据集的 type 属性设置为“SquareObject”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -106,7 +106,7 @@ Square 链接的服务支持以下属性：
 
 ### <a name="square-as-source"></a>Square 作为源
 
-要从 Square 复制数据，请将复制活动中的源类型设置为“SquareSource”。 复制活动源部分支持以下属性：
+要从 Square 复制数据，请将复制活动中的源类型设置为“SquareSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

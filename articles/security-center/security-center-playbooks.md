@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: ec16e6daec099adbede625c5ec6fe6909059143b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60906903"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Azure 安全中心安全攻略（预览版）
@@ -33,24 +33,24 @@ ms.locfileid: "60906903"
 ## <a name="how-to-create-a-security-playbook-from-security-center"></a>如何在安全中心创建安全攻略？
 请按以下步骤在安全中心创建新的安全攻略：
 
-1.  打开“安全中心”仪表板。
-2.  在左窗格中的“自动化和业务流程”部分单击“攻略(预览版)”。
+1.  打开“安全中心”  仪表板。
+2.  在左窗格中的“自动化和业务流程”部分单击“攻略(预览版)”。  
 
     ![逻辑应用](./media/security-center-playbooks/security-center-playbooks-fig17.png)
 
-3. 在“安全中心 - 攻略(预览版)”页中，单击“添加”按钮。
+3. 在“安全中心 - 攻略(预览版)”页中，单击“添加”按钮。  
 
     ![创建逻辑应用](./media/security-center-playbooks/security-center-playbooks-fig2.png)
 
-4. 在“创建逻辑应用”页中，键入创建新逻辑应用所需的请求信息，然后单击“创建”按钮。 创建完以后，新的攻略会显示在列表中。 如果不显示，请单击“刷新”按钮。 显示以后，即可通过单击来编辑该攻略。
+4. 在“创建逻辑应用”页中，键入创建新逻辑应用所需的请求信息，然后单击“创建”按钮。   创建完以后，新的攻略会显示在列表中。 如果不显示，请单击“刷新”按钮。  显示以后，即可通过单击来编辑该攻略。
 
     ![创建逻辑应用](./media/security-center-playbooks/security-center-playbooks-fig3.png)
 
-5. 此时会显示逻辑应用设计器。 单击“空白逻辑应用”创建新的 playbook。 也可在类别下选择“安全性”，使用其中的一个模板。
+5. 此时会显示逻辑应用设计器。  单击“空白逻辑应用”创建新的 playbook。  也可在类别下选择“安全性”，使用其中的一个模板。 
 
     ![逻辑应用设计器](./media/security-center-playbooks/security-center-playbooks-fig4.png)
 
-6. 在“搜索所有连接器和触发器”字段中，键入“Azure 安全中心”，然后选择“触发对 Azure 安全中心警报的响应时”。
+6. 在“搜索所有连接器和触发器”  字段中，键入“Azure 安全中心”  ，然后选择“触发对 Azure 安全中心警报的响应时”。 
 
     ![触发器](./media/security-center-playbooks/security-center-playbooks-fig12.png)
 
@@ -62,17 +62,17 @@ ms.locfileid: "60906903"
 
 在需要进行协调、从其他服务获取更多信息或进行修正时，可以运行安全中心安全攻略。 若要访问攻略，请执行以下步骤：
 
-1.  打开“安全中心”仪表板。
-2.  在左窗格的“威胁检测”下单击“安全事件和警报”。
+1.  打开“安全中心”  仪表板。
+2.  在左窗格的“威胁检测”下单击“安全事件和警报”。  
 
     ![警报](./media/security-center-playbooks/security-center-playbooks-fig6.png)
 
 3.  单击要调查的警报。
-4.  在警报页面顶部，单击“运行攻略”按钮。
+4.  在警报页面顶部，单击“运行攻略”  按钮。
 
     ![运行攻略](./media/security-center-playbooks/security-center-playbooks-fig7.png)
 
-5. 在“攻略”页面选择要运行的攻略，然后单击“运行”按钮。 若要在触发之前查看攻略，可以单击该攻略，然后设计器就会打开。
+5. 在“攻略”页面选择要运行的攻略，然后单击“运行”按钮。  若要在触发之前查看攻略，可以单击该攻略，然后设计器就会打开。
 
     ![攻略](./media/security-center-playbooks/security-center-playbooks-fig13.png)
 

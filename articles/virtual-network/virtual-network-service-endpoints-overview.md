@@ -14,10 +14,10 @@ ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
 ms.openlocfilehash: 73621c3bbab7f0c49feacab29e1e5de1792b80e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61032565"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
@@ -28,21 +28,21 @@ ms.locfileid: "61032565"
 
 **正式发布版**
 
-- **[Azure 存储](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**：在所有 Azure 区域正式发布。
-- **[Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在所有 Azure 区域正式发布。
-- **[Azure SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在所有 Azure 区域正式发布。
-- **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在所有 Azure 区域正式发布。
-- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)**：在所有 Azure 区域正式发布。
-- **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在所有 Azure 区域正式发布。
-- **[Azure 事件中心](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在所有 Azure 区域正式发布。
-- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在提供了 ADLS Gen1 的所有 Azure 区域正式发布。
+- **[Azure 存储](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** ：在所有 Azure 区域正式发布。
+- **[Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
+- **[Azure SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
+- **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** ：在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
+- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** ：在所有 Azure 区域正式发布。
+- **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
+- **[Azure 事件中心](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在所有 Azure 区域正式发布。
+- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** ：在提供了 ADLS Gen1 的所有 Azure 区域正式发布。
 
 **公共预览版**
 
-- **[Azure 容器注册表](../container-registry/container-registry-vnet.md)**:在 Azure 容器注册表是可用的所有 Azure 区域中预览可用。
+- **[Azure 容器注册表](../container-registry/container-registry-vnet.md)** :在 Azure 容器注册表是可用的所有 Azure 区域中预览可用。
 
 有关最新通知，请查看 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
 
@@ -132,7 +132,7 @@ ms.locfileid: "61032565"
 
 虚拟网络中的服务终结点总数没有限制。
 
-某些 Azure 服务，例如 Azure 存储帐户，可能会强制实施用于保护资源的子网的数量限制。 有关详细信息，请参阅[后续步骤](#next-steps)中所述的各种服务的文档。
+某些 Azure 服务（例如 Azure 存储帐户）可能会对用于保护资源的子网数目施加限制。 有关详细信息，请参阅[后续步骤](#next-steps)中所述的各种服务的文档。
 
 ## <a name="virtual-network-service-endpoint-policies"></a>虚拟网络服务终结点策略 
 

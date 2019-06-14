@@ -11,10 +11,10 @@ ms.reviewer: klam, deli, LADocs
 ms.suite: integration
 ms.date: 10/05/2018
 ms.openlocfilehash: 0fec590523fa130af2e5670a92914c056df289d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60512372"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>快速入门：创建和管理自动化逻辑应用工作流 - Visual Studio Code
@@ -62,17 +62,17 @@ ms.locfileid: "60512372"
 
    ![选择 Azure 图标](./media/create-logic-apps-visual-studio-code/open-extension.png)
 
-1. 在 Azure 窗口中的“逻辑应用”下，选择“登录到 Azure”。 
+1. 在 Azure 窗口中的“逻辑应用”  下，选择“登录到 Azure”  。 
 
    ![选择“登录到 Azure”](./media/create-logic-apps-visual-studio-code/sign-in-azure.png)
 
    系统将提示你使用提供的身份验证代码登录。 
 
-1. 复制身份验证代码，然后选择“复制并打开”，这将打开新的浏览器窗口。
+1. 复制身份验证代码，然后选择“复制并打开”  ，这将打开新的浏览器窗口。
 
    ![登录提示](./media/create-logic-apps-visual-studio-code/sign-in-prompt.png)
 
-1. 输入你的身份验证代码。 出现提示时，选择“继续”。
+1. 输入你的身份验证代码。 出现提示时，选择“继续”  。
 
    ![输入代码](./media/create-logic-apps-visual-studio-code/authentication-code.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "60512372"
 
    ![选择订阅](./media/create-logic-apps-visual-studio-code/select-azure-subscription.png)
 
-   如果没有看到预期的订阅，在“逻辑应用”标签旁，选择“选择订阅”（筛选器图标）。 找到并选择想要使用的订阅。
+   如果没有看到预期的订阅，在“逻辑应用”  标签旁，选择“选择订阅”  （筛选器图标）。 找到并选择想要使用的订阅。
 
 1. 若要在 Azure 订阅中查看任何现有逻辑应用或集成帐户，请展开你的订阅。
 
@@ -94,11 +94,11 @@ ms.locfileid: "60512372"
 
 1. 如果你尚未从 Visual Studio Code 内登录到你的 Azure 订阅，请按照本文中的步骤操作，以[立即登录](#sign-in-azure)。
 
-1. 在订阅的上下文菜单中，选择“创建”。
+1. 在订阅的上下文菜单中，选择“创建”  。
 
    ![选择“创建”](./media/create-logic-apps-visual-studio-code/create-logic-app.png)
 
-1. 从订阅中显示的 Azure 资源组列表中，选择现有资源组或“创建新资源组”。 
+1. 从订阅中显示的 Azure 资源组列表中，选择现有资源组或“创建新资源组”  。 
 
    此示例将创建新的资源组。
 
@@ -118,7 +118,7 @@ ms.locfileid: "60512372"
 
    新逻辑应用现在显示在 Azure 订阅下的 Azure 窗口中。 现在可以开始创建逻辑应用的工作流定义。
 
-1. 在逻辑应用的快捷菜单中，选择“在编辑器中打开”。 
+1. 在逻辑应用的快捷菜单中，选择“在编辑器中打开”  。 
 
    ![在编辑器中打开逻辑应用](./media/create-logic-apps-visual-studio-code/open-new-logic-app.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "60512372"
    }   
    ```
 
-1. 完成后，保存逻辑应用定义文件。 当 Visual Studio Code 提示你确认将逻辑应用定义上传到你的 Azure 订阅时，选择“上传”。
+1. 完成后，保存逻辑应用定义文件。 当 Visual Studio Code 提示你确认将逻辑应用定义上传到你的 Azure 订阅时，选择“上传”  。
 
    ![上传你的新逻辑应用](./media/create-logic-apps-visual-studio-code/upload-new-logic-app.png)
 
@@ -202,9 +202,9 @@ ms.locfileid: "60512372"
 
 1. 如果你尚未从 Visual Studio Code 内登录到你的 Azure 订阅，请按照本文中的步骤操作，以[立即登录](#sign-in-azure)。
 
-1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，然后选择想要使用的逻辑应用。 
+1. 在 Azure 窗口中的“逻辑应用”  下，展开 Azure 订阅，然后选择想要使用的逻辑应用。 
 
-1. 在逻辑应用的菜单中，选择“在编辑器中打开”。 或者，选择逻辑应用名称旁的编辑图标。
+1. 在逻辑应用的菜单中，选择“在编辑器中打开”  。 或者，选择逻辑应用名称旁的编辑图标。
 
    ![打开现有逻辑应用的编辑器](./media/create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
@@ -216,7 +216,7 @@ ms.locfileid: "60512372"
 
 1. 完成后，保存所做的更改。
 
-1. 当 Visual Studio Code 提示你在 Azure 订阅中更新逻辑应用定义时，选择“上传”。 
+1. 当 Visual Studio Code 提示你在 Azure 订阅中更新逻辑应用定义时，选择“上传”  。 
 
    ![上传编辑](./media/create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
 

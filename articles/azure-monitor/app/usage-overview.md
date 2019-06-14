@@ -14,10 +14,10 @@ ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
 ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60783396"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
@@ -30,7 +30,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 1. **服务器代码：** 为 [ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md) 或[其他](../../azure-monitor/app/platforms.md)应用安装适当的模块。
 
-    * 不想安装服务器代码？只需[创建 Azure Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。
+    * 不想安装服务器代码？  只需[创建 Azure Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。
 
 2. **网页代码**：将以下脚本添加到网页的结束标记 ``</head>`` 之前。 将检测密钥替换为 Application Insights 资源的相应值：
 
@@ -67,8 +67,8 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 右侧的见解指出了数据集中的相关模式。  
 
-* “用户”报告统计所选时间段内访问页面的唯一用户数目。 对于 Web 应用，将使用 Cookie 统计用户。 如果某个用户使用不同的浏览器或客户端计算机访问站点或者清除了其 Cookie，该用户会被统计多次。
-* “会话”报告统计访问站点的用户会话数。 会话是指某个用户的活动时段，如果有半个小时以上处于非活动状态，会话会被终止。
+* “用户”报告统计所选时间段内访问页面的唯一用户数目。  对于 Web 应用，将使用 Cookie 统计用户。 如果某个用户使用不同的浏览器或客户端计算机访问站点或者清除了其 Cookie，该用户会被统计多次。
+* “会话”报告统计访问站点的用户会话数。  会话是指某个用户的活动时段，如果有半个小时以上处于非活动状态，会话会被终止。
 
 [有关用户、会话和事件工具的详细信息](usage-segmentation.md)  
 

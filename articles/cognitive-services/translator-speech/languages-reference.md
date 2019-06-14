@@ -12,10 +12,10 @@ ms.date: 05/18/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60827895"
 ---
 # <a name="translator-speech-api-languages"></a>语音翻译 API：Languages
@@ -132,18 +132,18 @@ Langagues { speech (object, optional), text (object, optional), tts (object, opt
 
 ### <a name="headers"></a>标头
 
-|标头|描述|Type|
+|Header|描述|Type|
 :--|:--|:--|
-X-RequestId|服务器生成的值，用于标识请求并用于故障排除目的。|string|
+X-RequestId|服务器生成的值，用于标识请求并用于故障排除目的。|字符串|
 
 ### <a name="parameters"></a>parameters
 
 |参数|描述|参数类型|数据类型|
 |:--|:--|:--|:--|
-|api-version    |客户端所请求的 API 的版本。 允许值包括：`1.0`。|query|string|
-|scope  |要返回给客户端的受支持语言或语音集。 此参数指定为以逗号分隔的关键字列表。 以下关键字可用：<ul><li>`speech`：提供支持转录语音的语言集。</li><li>`tts`：提供支持文本-语音转换的语音集。</li><li>`text`：提供支持翻译文本的语言集。</li></ul>如果未指定值，则 `scope` 的值默认为 `text`。|query|string|
-|X-ClientTraceId    |客户端生成的 GUID，用于跟踪请求。 为了便于对问题进行故障排除，客户端应为每个请求提供新值并记录该值。|标头的值开始缓存响应|string|
-|Accept-Language    |响应中的某些字段是语言或区域的名称。 使用此参数可以定义要以哪种语言返回名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 从与 `text` 范围一起返回的语言标识符列表中选择一个标记。 对于不受支持的语言，名称以英语提供。<br/>例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。|标头的值开始缓存响应|string|
+|api-version    |客户端所请求的 API 的版本。 允许值包括：`1.0`。|query|字符串|
+|scope  |要返回给客户端的受支持语言或语音集。 此参数指定为以逗号分隔的关键字列表。 以下关键字可用：<ul><li>`speech`：提供支持转录语音的语言集。</li><li>`tts`：提供支持文本-语音转换的语音集。</li><li>`text`：提供支持翻译文本的语言集。</li></ul>如果未指定值，则 `scope` 的值默认为 `text`。|query|字符串|
+|X-ClientTraceId    |客户端生成的 GUID，用于跟踪请求。 为了便于对问题进行故障排除，客户端应为每个请求提供新值并记录该值。|标头的值开始缓存响应|字符串|
+|Accept-Language    |响应中的某些字段是语言或区域的名称。 使用此参数可以定义要以哪种语言返回名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 从与 `text` 范围一起返回的语言标识符列表中选择一个标记。 对于不受支持的语言，名称以英语提供。<br/>例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。|标头的值开始缓存响应|字符串|
 
 ### <a name="response-messages"></a>响应消息
 

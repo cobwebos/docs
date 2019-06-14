@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 970eeb871775e24abb87c8b977e214645e514d3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60789467"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>配置事件排序策略用于 Azure Stream Analytics
@@ -51,7 +51,7 @@ Stream Analytics 作业可以处理事件的任*事件时间*或*到达时间*�
 
 ## <a name="can-these-settings-delay-output-of-my-job"></a>这些设置可能会延迟我作业的输出？ 
 
-可以。 默认情况下，无序策略设置为零 （00 分 00 秒）。 如果更改默认值时，作业的第一个输出是延迟此值 （或更高版本）。 
+是的。 默认情况下，无序策略设置为零 （00 分 00 秒）。 如果更改默认值时，作业的第一个输出是延迟此值 （或更高版本）。 
 
 如果你的输入分区中的一个不会接收事件，则会输出延迟到达策略值会延迟。 若要了解原因，请阅读下面 InputPartition 错误部分。 
 
@@ -73,7 +73,9 @@ Stream Analytics 作业可以处理事件的任*事件时间*或*到达时间*�
 <br><code>
 {"message Time":"2/3/2019 8:54:16 PM UTC","message":"Input Partition [2] does not have additional data for more than [5] minute(s). Partition will not progress until either events arrive or late arrival threshold is met.","type":"InputPartitionNotProgressing","correlation ID":"2328d411-52c7-4100-ba01-1e860c757fc2"} 
 </code><br><br>
-此消息，通知你，在输入中的至少一个分区为空，并且将由延迟到达阈值延迟输出。 若要解决此问题，建议你或者：1. 请确保所有分区的事件中心/IoT 中心都接收的输入。 2. 通过在查询中的 PartitionID 子句中使用分区。 
+此消息，通知你，在输入中的至少一个分区为空，并且将由延迟到达阈值延迟输出。 若要解决此问题，建议你或者： 
+1. 请确保所有分区的事件中心/IoT 中心都接收的输入。 
+2. 通过在查询中的 PartitionID 子句中使用分区。 
 
 ## <a name="next-steps"></a>后续步骤
 * [时间处理注意事项](stream-analytics-time-handling.md)

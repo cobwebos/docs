@@ -3,21 +3,20 @@ title: 使用 Azure 数据工厂从 Hive 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Hive 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 12/07/2018
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 12/07/2018
+ms.author: jingwang
 ms.openlocfilehash: b245a80967d91b793fcf360772c0dec758f8f252
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60808902"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>使用 Azure 数据工厂从 Hive 复制数据 
@@ -45,9 +44,9 @@ Hive 链接的服务支持以下属性：
 | type | Type 属性必须设置为：**Hive** | 是 |
 | host | Hive 服务器的 IP 地址或主机名；对于多台主机，将以“;”分隔（仅限启用了 serviceDiscoveryMode 时）。  | 是 |
 | port | Hive 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
-| serverType | Hive 服务器的类型。 <br/>允许值包括：HiveServer1、HiveServer2、HiveThriftServer | 否 |
-| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP | 否 |
-| authenticationType | 用于访问 Hive 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService | 是 |
+| serverType | Hive 服务器的类型。 <br/>允许值包括：HiveServer1、HiveServer2、HiveThriftServer    | 否 |
+| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP    | 否 |
+| authenticationType | 用于访问 Hive 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService     | 是 |
 | serviceDiscoveryMode | true 指示使用 ZooKeeper 服务，false 指示不使用。  | 否 |
 | zooKeeperNameSpace | ZooKeeper 上要将 Hive Server 2 节点添加到其下的命名空间。  | 否 |
 | useNativeQuery | 指定驱动程序是使用本机 HiveQL 查询，还是将其转换为 HiveQL 中的等效形式。  | 否 |
@@ -115,7 +114,7 @@ Hive 链接的服务支持以下属性：
 
 ### <a name="hivesource-as-source"></a>HiveSource 作为源
 
-要从 Hive 复制数据，请将复制活动中的源类型设置为 **HiveSource**。 复制活动源部分支持以下属性：
+要从 Hive 复制数据，请将复制活动中的源类型设置为 **HiveSource**。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: d89a701f1d4528e1f3dff08daf31873891778f07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60751324"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适合初学者的数据科学视频 1：5 个数据科学可解答的问题
-通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
+通过顶级数据科学家制作的“适合初学者的数据科学”  的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
 
 第一个视频是有关数据科学可回答的这类问题。 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
 <br>
@@ -28,16 +28,16 @@ ms.locfileid: "60751324"
 >
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
-“适合初学者的数据科学”是对数据科学的简要介绍，学习时间共约 25 分钟。 观看所有五个视频：
+“适合初学者的数据科学”  是对数据科学的简要介绍，学习时间共约 25 分钟。 观看所有五个视频：
 
 * 视频 1：5 个数据科学可解答的问题
-* 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
-* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒）
-* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
-* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
+* 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒） 
+* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒） 
+* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒） 
+* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒） 
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>脚本：5 个数据科学可解答的问题
-好！ 欢迎观看“适合初学者的数据科学”系列视频。
+好！ 欢迎观看“适合初学者的数据科学”  系列视频。
 
 数据科学知识的广博令人生畏，因此这里只简单介绍一些基础知识，不会涉及任何公式或计算机编程专业术语。
 
@@ -45,7 +45,7 @@ ms.locfileid: "60751324"
 
 数据科学使用数字和名称（也称为类别或标签）预测问题的答案。
 
-这可能会让人感到惊讶，但数据科学只可解答以下五种问题：
+这可能会让人感到惊讶，但数据科学只可解答以下五种问题  ：
 
 * 这是 A 还是 B？
 * 这是否很奇怪？
@@ -116,7 +116,7 @@ ms.locfileid: "60751324"
 通过了解数据的组织方式，可以更好地了解并预测行为和事件。  
 
 ## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>问题 5：“现在应该做什么？”使用强化学习算法
-最后一个问题 – 现在应该做什么？ - 使用称为强化学习的算法系列。
+最后一个问题 – 现在应该做什么？ \- 使用称为强化学习的算法系列。
 
 强化学习的灵感来自于老鼠和人类的大脑对惩罚和奖励的反应。 这些算法从结果中学习，并决定下一步操作。
 

@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61363141"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
@@ -95,7 +95,7 @@ IoT 中心标识注册表包含名为 **connectionState**的字段。 开发和�
 更复杂的实现可包含来自 [Azure Monitor](../azure-monitor/index.yml) 和 [Azure 资源运行状况](../service-health/resource-health-overview.md)的信息，以便识别尝试连接或通信但失败的设备，请查阅[使用诊断进行监视](iot-hub-monitor-resource-health.md)指南。 实施检测信号模式时，请务必查看 [IoT 中心配额与限制](iot-hub-devguide-quotas-throttling.md)。
 
 > [!NOTE]
-> 如果 IoT 解决方案只使用连接状态来决定是否发送云到设备的消息，并且没有把消息广播到大量设备，则考虑使用更简单的较短到期时间模式。 此模式达到的效果与使用检测信号模式维护设备连接状态注册表达到的效果一样，而且更加有效。 如果请求消息确认，则 IoT 中心可以通知你哪些设备可以接收消息以及哪些设备不能接收。
+> 如果 IoT 解决方案只使用连接状态来决定是否发送云到设备的消息，并且没有把消息广播到大量设备，则考虑使用更简单的较短到期时间  模式。 此模式达到的效果与使用检测信号模式维护设备连接状态注册表达到的效果一样，而且更加有效。 如果请求消息确认，则 IoT 中心可以通知你哪些设备可以接收消息以及哪些设备不能接收。
 
 ## <a name="device-and-module-lifecycle-notifications"></a>设备和模块生命周期通知
 
@@ -105,7 +105,7 @@ IoT 中心标识注册表包含名为 **connectionState**的字段。 开发和�
 
 设备的通知消息：
 
-| 名称 | 值 |
+| Name | 值 |
 | --- | --- |
 |$content-type | application/json |
 |$iothub-enqueuedtime |  发送通知的时间 |
@@ -141,7 +141,7 @@ IoT 中心标识注册表包含名为 **connectionState**的字段。 开发和�
 ```
 模块的通知消息：
 
-| 名称 | 值 |
+| Name | 值 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  发送通知的时间 |

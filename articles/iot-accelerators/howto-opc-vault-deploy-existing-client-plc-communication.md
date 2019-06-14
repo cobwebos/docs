@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61451083"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>保护 OPC 客户端和 OPC PLC 的通信
@@ -92,7 +92,7 @@ opcclient-123456 | Opc.Ua.ServiceResultException: Certificate is not trusted.
     
 1. 转到[OPC 保管库网站](https://opcvault.azurewebsites.net/)。
 
-1. 选择 `Register New`
+1. 选择`Register New`
 
 1. 从日志输出输入 OPC PLC 信息`CreateSigningRequest information`上相应的输入字段中的区域`Register New OPC UA Application`页上，选择`Server`为 ApplicationType。
 

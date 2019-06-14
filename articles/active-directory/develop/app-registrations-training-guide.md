@@ -18,10 +18,10 @@ ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 118c6ecb16d325a384246a0b3d9e685f6f6f04ee
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64870112"
 ---
 # <a name="training-guide-app-registrations-in-the-azure-portal"></a>培训指南：在 Azure 门户中的应用注册  
@@ -47,7 +47,7 @@ ms.locfileid: "64870112"
 
 ## <a name="the-legacy-properties-page"></a>旧的属性页
 
-旧的体验有**属性**没有的新体验的页。 **属性**边栏选项卡具有以下字段：**名称**，**对象 ID**，**应用程序 ID**，**应用程序 ID URI**，**徽标**，**主页 URL****注销 URL**，**服务条款 URL**，**隐私声明 URL**，**应用程序类型**，和**多租户。**
+旧的体验有**属性**没有的新体验的页。 **属性**边栏选项卡具有以下字段：**名称**，**对象 ID**，**应用程序 ID**，**应用程序 ID URI**，**徽标**，**主页 URL** **注销 URL**，**服务条款 URL**，**隐私声明 URL**，**应用程序类型**，和**多租户。**
 
 下面是可以在其中找到的等效功能在新的体验：
 
@@ -60,7 +60,7 @@ ms.locfileid: "64870112"
 
 ## <a name="reply-urlsredirect-urls"></a>回复 Url/重定向 Url
 
-在旧体验中，应用程序必须**答复 Url**页。 在新体验中，可以应用的上找到回复 Url**身份验证**部分。 此外，它们被称为**重定向 Uri**。 此外，重定向的格式已更改的 Uri。 它们都需要与应用程序类型 （web 或公共） 相关联。 此外，出于安全原因，通配符和 http:// 方案不支持 (除 http://localhost)。
+在旧体验中，应用程序必须**答复 Url**页。 在新体验中，可以应用的上找到回复 Url**身份验证**部分。 此外，它们被称为**重定向 Uri**。 此外，重定向的格式已更改的 Uri。 它们都需要与应用程序类型 （web 或公共） 相关联。 此外，出于安全原因，通配符和 http:// 方案不支持 (除 http://localhost) 。
 
 ## <a name="keyscertificates--secrets"></a>密钥/证书和机密
 

@@ -17,10 +17,10 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
 ms.openlocfilehash: 59f88d54d3542738f1a500c8c476995eb1535ecf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130258"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>深度学习和人工智能框架
@@ -120,7 +120,7 @@ jupyter notebook
 | 如何在 DSVM 上配置/安装它？  | Chainer 安装在 [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 中。 同时还会安装 ChainerRL 和 ChainerCV。   |
 | 示例链接      | 示例笔记本包含在 JupyterHub 中。 |
 | DSVM 上的相关工具      | Caffe      |
-| 如何使用/运行它？  | *在终端上：激活 [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 环境，运行 python，然后导入 Chainer。 <br/> *在 JupyterHub 中：[连接到 JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)，然后导航到要查找示例笔记本的 Chainer 目录。
+| 如何使用/运行它？  | *在终端上：激活 [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 环境，运行 python  ，然后导入 Chainer。 <br/> *在 JupyterHub 中：[连接到 JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux)，然后导航到要查找示例笔记本的 Chainer 目录。
 
 
 ## <a name="deep-water"></a>Deep Water
@@ -195,7 +195,7 @@ export CUDA_ROOT=/usr/local/cuda-8.0
 | 支持的 DSVM 版本      | Ubuntu     |
 | 如何在 DSVM 上配置/安装它？  | Theano 在 Python 2.7 (_root_) 以及 Python 3.5 (_py35_) 环境中安装。   |
 | DSVM 上的相关工具      | Keras      |
-| 如何使用/运行它？    | *在终端上，激活所需的 Python 版本（root 或 py35），运行 python，然后导入 theano。 <br/> * 在 Jupyter 中，选择 Python 2.7 或 3.5 内核，然后导入 theano。  <br/>若要解决最近的 MKL bug，首先需要设置 MKL 线程层：<br/><br/>export MKL_THREADING_LAYER=GNU|
+| 如何使用/运行它？    | *在终端上，激活所需的 Python 版本（root 或 py35），运行 python，然后导入 theano。 <br/> * 在 Jupyter 中，选择 Python 2.7 或 3.5 内核，然后导入 theano。  <br/>若要解决最近的 MKL bug，首先需要设置 MKL 线程层：<br/><br/>export MKL_THREADING_LAYER=GNU |
 
 
 

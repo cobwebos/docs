@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: tulasim
 ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61372183"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>共享或升级你 QnA Maker 服务
@@ -40,11 +40,11 @@ QnA Maker 创建多个 Azure 资源。 为了减少管理和受益于成本共�
 
 升级 QnA Maker 管理 SKU：
 
-1. 转到 Azure 门户中的 QnA Maker 资源，然后选择“定价层”。
+1. 转到 Azure 门户中的 QnA Maker 资源，然后选择“定价层”  。
 
     ![QnA Maker 资源](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
 
-2. 选择合适的 SKU 并按“选择”。
+2. 选择合适的 SKU 并按“选择”  。
 
     ![QnA Maker 定价](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
@@ -54,7 +54,7 @@ QnA Maker 创建多个 Azure 资源。 为了减少管理和受益于成本共�
 
 你可以[扩大](https://docs.microsoft.com/azure/app-service/web-sites-scale)或缩减应用服务。
 
-1. 转到 Azure 门户中的应用服务资源，并根据需要选择“扩大”或“缩减”选项。
+1. 转到 Azure 门户中的应用服务资源，并根据需要选择“扩大”  或  “缩减”选项。
 
     ![QnA Maker 应用服务缩放](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
@@ -70,7 +70,7 @@ QnA Maker 创建多个 Azure 资源。 为了减少管理和受益于成本共�
 
 2. 将索引从原始 Azure 搜索资源还原到新资源。 有关备份还原示例代码，请参阅[此处](https://github.com/pchoudhari/QnAMakerBackupRestore)。
 
-3. 还原数据后，转到新的 Azure 搜索资源，选择“密钥”，并记下“名称”和“管理密钥”。
+3. 还原数据后，转到新的 Azure 搜索资源，选择“密钥”  ，并记下“名称”  和“管理密钥”  。
 
     ![QnA Maker Azure 搜索密钥](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
@@ -78,7 +78,7 @@ QnA Maker 创建多个 Azure 资源。 为了减少管理和受益于成本共�
 
     ![QnA Maker 应用服务](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-5. 选择“应用程序设置”并替换步骤 3 中的“AzureSearchName”和“AzureSearchAdminKey”字段。
+5. 选择  “应用程序设置”并替换步骤 3 中的“AzureSearchName”  和  “AzureSearchAdminKey”字段。
 
     ![QnA Maker 应用服务设置](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 

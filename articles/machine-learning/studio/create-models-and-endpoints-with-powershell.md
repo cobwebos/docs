@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
 ms.openlocfilehash: a191a7adc2c43337b663fc44a8ef40df9d8ffef4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60773663"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>使用 PowerShell 从一个试验创建多个工作室模型和 Web 服务终结点
@@ -49,23 +49,23 @@ ms.locfileid: "60773663"
 请注意，**Web 服务输出**模块已添加到**训练模型**模块。
 如果此实验部署为 Web 服务，那么与此输出关联的终结点以 .ilearner 文件的格式返回训练的模板。
 
-另请注意，所设置的 Web 服务参数可定义“导入数据”模块使用的 URL。 这样即可使用参数来指定单个训练数据集，以便训练每个位置的模型。
-也可通过其他方式来这样做。 可将 SQL 查询与 Web 服务参数结合使用，从 SQL Azure 数据库获取数据。 也可使用“Web 服务输入”模块将数据集传递到 Web 服务。
+另请注意，所设置的 Web 服务参数可定义“导入数据”  模块使用的 URL。 这样即可使用参数来指定单个训练数据集，以便训练每个位置的模型。
+也可通过其他方式来这样做。 可将 SQL 查询与 Web 服务参数结合使用，从 SQL Azure 数据库获取数据。 也可使用“Web 服务输入”  模块将数据集传递到 Web 服务。
 
 ![训练模型模块输出到 Web 服务输出模块](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-现在，请使用默认值 *rental001.csv* 作为训练数据集来运行此训练实验。 如果查看**评估**模块的输出（单击输出并选择“可视化”），则可以看到获得了不错的性能，即 *AUC* = 0.91。 此时，你已准备好部署超出此训练实验的 Web 服务。
+现在，请使用默认值 *rental001.csv* 作为训练数据集来运行此训练实验。 如果查看**评估**模块的输出（单击输出并选择“可视化”  ），则可以看到获得了不错的性能，即 *AUC* = 0.91。 此时，你已准备好部署超出此训练实验的 Web 服务。
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>部署训练和评分 Web 服务
-要部署训练 Web 服务，可单击实验画布下的“设置 Web 服务”按钮，并选择“部署 Web 服务”。 调用此 Web 服务“自行车租赁训练”。
+要部署训练 Web 服务，可单击实验画布下的“设置 Web 服务”  按钮，并选择“部署 Web 服务”  。 调用此 Web 服务“自行车租赁训练”。
 
 现在需要部署评分 Web 服务。
-若要执行此操作，可单击画布下的“设置 Web 服务”，然后选择“预测 Web 服务”。 这会创建评分实验。
+若要执行此操作，可单击画布下的“设置 Web 服务”  ，然后选择“预测 Web 服务”  。 这会创建评分实验。
 需要进行一些细微调整，使之可以作为 Web 服务使用。 请从输入数据中删除标签列“cnt”，使输出只能是实例 ID 和相应的预测值。
 
 若要保存该工作，可以打开已准备好的库中的[预测实验](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1)。
 
-要部署 Web 服务，请运行预测实验，并单击画布下的“部署 Web 服务”按钮。 将评分 Web 服务命名为“自行车租赁评分”。
+要部署 Web 服务，请运行预测实验，并单击画布下的“部署 Web 服务”  按钮。 将评分 Web 服务命名为“自行车租赁评分”。
 
 ## <a name="create-10-identical-web-service-endpoints-with-powershell"></a>使用 PowerShell 创建 10 个完全相同的 Web 服务终结点
 此 Web 服务附带了一个默认终结点。 但是，你不会对此默认终结点感兴趣，因为它不能进行更新。 需要执行的操作是创建 10 个其他终结点，每个位置一个。 可以使用 PowerShell 执行此操作。
@@ -94,7 +94,7 @@ ms.locfileid: "60773663"
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>更新终结点以通过 PowerShell 使用单独的训练数据集
 下一步是使用在每个客户单独数据上唯一训练的模型来更新终结点。 但是，首先需要从**自行车租赁训练** Web 服务中生成这些模型。 让我们回到**自行车租赁训练** Web 服务。 需要使用 10 个不同的训练数据集调用其 BES 终结点 10 次，以便生成 10 个不同的模型。 请使用 **InovkeAmlWebServiceBESEndpoint** PowerShell cmdlet 来执行此操作。
 
-还需要将 Blob 存储帐户的凭据提供到 `$configContent` 中。 也即提供到 `AccountName`、`AccountKey` 和 `RelativeLocation` 字段中。 `AccountName` 可以是帐户名称的一个，如 **Azure 门户**（“存储”选项卡）中所示。 单击存储帐户之后，可通过按底部的“管理访问键”按钮和复制“主访问键”来查找其 `AccountKey`。 `RelativeLocation`是相对于存储（其中存储了新模型）的路径。 例如，以下脚本中的 `hai/retrain/bike_rental/` 路径指向名为 `hai` 的容器，`/retrain/bike_rental/` 是子文件夹。 目前，不能通过门户 UI 创建子文件夹，但是有[几个 Azure 存储资源管理器](../../storage/common/storage-explorers.md)可允许这样做。 建议在存储中创建新的容器以存储新的训练模型（.iLearner 文件），如下所示：在存储页中，单击底部的“添加”按钮并将其命名为 `retrain`。 总之，对以下脚本进行的必要更改包括 `AccountName`、`AccountKey` 和 `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`)。
+还需要将 Blob 存储帐户的凭据提供到 `$configContent` 中。 也即提供到 `AccountName`、`AccountKey` 和 `RelativeLocation` 字段中。 `AccountName` 可以是帐户名称的一个，如 **Azure 门户**（“存储”  选项卡）中所示。 单击存储帐户之后，可通过按底部的“管理访问键”  按钮和复制“主访问键”  来查找其 `AccountKey`。 `RelativeLocation`是相对于存储（其中存储了新模型）的路径。 例如，以下脚本中的 `hai/retrain/bike_rental/` 路径指向名为 `hai` 的容器，`/retrain/bike_rental/` 是子文件夹。 目前，不能通过门户 UI 创建子文件夹，但是有[几个 Azure 存储资源管理器](../../storage/common/storage-explorers.md)可允许这样做。 建议在存储中创建新的容器以存储新的训练模型（.iLearner 文件），如下所示：在存储页中，单击底部的“添加”  按钮并将其命名为 `retrain`。 总之，对以下脚本进行的必要更改包括 `AccountName`、`AccountKey` 和 `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`)。
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service

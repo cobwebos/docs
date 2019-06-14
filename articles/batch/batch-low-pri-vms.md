@@ -13,10 +13,10 @@ ms.date: 03/19/2018
 ms.author: markscu
 ms.custom: seodec18
 ms.openlocfilehash: 17668470be3e997c215aacc4cc2c32c80de2dd81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776114"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
@@ -124,7 +124,7 @@ int? numLowPri = pool1.CurrentLowPriorityComputeNodes;
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-当池中的一个或多个节点被占用时，池上的列表节点操作仍会返回这些节点。 低优先级节点的当前数量保持不变，但这些节点会将其状态设置为“已占用”。 Batch 会尝试查找替代 VM，如果成功，节点将依次经历“正在创建”和“正在启动”状态，然后才可用于执行任务，就像新的节点一样。
+当池中的一个或多个节点被占用时，池上的列表节点操作仍会返回这些节点。 低优先级节点的当前数量保持不变，但这些节点会将其状态设置为“已占用”  。 Batch 会尝试查找替代 VM，如果成功，节点将依次经历“正在创建”  和“正在启动”  状态，然后才可用于执行任务，就像新的节点一样。
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>缩放包含低优先级 VM 的池
 
@@ -158,10 +158,10 @@ pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 
 VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作：
 
--   将已取代的 VM 的状态更新为“已取代”。
+-   将已取代的 VM 的状态更新为“已取代”。 
 -   如果已取代的节点 VM 上有运行中的任务，这些任务将重新排队并重新运行。
 -   VM 被实际删除，导致 VM 本地存储的所有数据丢失。
--   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到替代容量，节点将保留其 ID 但会被重新初始化，依次经历“正在创建”和“正在启动”状态，然后可供任务计划使用。
+-   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到替代容量，节点将保留其 ID 但会被重新初始化，依次经历“正在创建”  和“正在启动”  状态，然后可供任务计划使用。
 -   Azure 门户以指标形式提供取代计数。
 
 ## <a name="metrics"></a>度量值
@@ -175,8 +175,8 @@ VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作�
 在 Azure 门户中查看指标：
 
 1. 在门户中导航到 Batch 帐户，查看此帐户设置。
-2. 从“监视”部分选择“指标”。
-3. 从“可用指标”列表选择所需指标。
+2. 从“监视”部分选择“指标”   。
+3. 从“可用指标”列表选择所需指标  。
 
 ![低优先级节点的指标](media/batch-low-pri-vms/low-pri-metrics.png)
 

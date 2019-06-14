@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 1e637f58b392b2de67a5ead9d57a6a87ab705b93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60631596"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>用于从 StorSimple 5000-7000 系列迁移数据的选项 
@@ -69,7 +69,7 @@ Nasuni 具有丰富的经验来轻松迁移-立即开始： https://info.nasuni.
 
 Talon 轻松 StorSimple 5000-7000 客户可以继续使用更大的函数中利用这些值在 StorSimple 平台 （现场的轻量型由不受限制的云资源提供支持） 中如此多的优势。  使用快速 Talon 的解决方案，客户可以将迁移和保留其数据在 Azure 中，现在具有更小的仅限软件的现场占用空间和添加权益，例如全局文件时锁定，全局命名空间和多站点协作。  Talon 是一款领先的 Azure 生态系统解决方案，使用全球客户迁移到统一的、 基于 Azure 的占用空间中，不会损害用户工作流或体验其本地文件服务器工作负荷。  
 
-要详细了解如何在云合并的企业发展 https://www.talonstorage.com/alliances/microsoft-storsimple。
+要详细了解如何在云合并的企业发展 https://www.talonstorage.com/alliances/microsoft-storsimple 。
 
 
 ## <a name="migration---frequently-asked-questions"></a>迁移 - 常见问题解答
@@ -102,7 +102,7 @@ A. 根据具体的方案，StorSimple 5000-7000 系列用户可以使用以下�
 
 ### <a name="q-is-migration-to-other-storage-solutions-supported"></a>问： 是否支持迁移到其他存储解决方案？
 
-A. 可以。 支持迁移到使用数据主机复制的其他存储解决方案。
+A. 是的。 支持迁移到使用数据主机复制的其他存储解决方案。
 
 ### <a name="q-is-migration-supported-by-microsoft"></a>问： Microsoft 是否为迁移提供支持？ 
 

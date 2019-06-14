@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 462cbd6261723aa91bbfd23292611e758a800ed2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60844085"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 系列 Update 5 发行说明
@@ -44,7 +44,7 @@ Update 5 中进行了以下重大改进和 bug 修复。
 
     如果未将身份验证 URL 包含在防火墙规则中，用户会看到一条关键警报，指出其 StorSimple 设备无法对服务进行身份验证。 如果用户看到此警报，则需要包含新的身份验证 URL。 有关详细信息，请转到 [StorSimple 网络警报](storsimple-8000-manage-alerts.md#networking-alerts)。
 
-* StorSimple Snapshot Manager 的新版本 - 包含更新 5 的新版 StorSimple Snapshot Manager 已发布，它与运行更新 4 或更高版本的所有 StorSimple 设备保持兼容。 我们建议更新到此版本。 早期版本的 StorSimple Snapshot Manager 适用于运行更新 3 或更早版本的 StorSimple 设备。 [下载 StorSimple Snapshot Manager 的相应版本](https://www.microsoft.com/en-us/download/details.aspx?id=44220)并参考[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
+* StorSimple Snapshot Manager 的新版本 - 包含更新 5 的新版 StorSimple Snapshot Manager 已发布，它与运行更新 4 或更高版本的所有 StorSimple 设备保持兼容  。 我们建议更新到此版本。 早期版本的 StorSimple Snapshot Manager 适用于运行更新 3 或更早版本的 StorSimple 设备。 [下载 StorSimple Snapshot Manager 的相应版本](https://www.microsoft.com/en-us/download/details.aspx?id=44220)并参考[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 
 
 ## <a name="issues-fixed-in-update-5"></a>在 Update 5 中修复的问题

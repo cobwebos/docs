@@ -14,10 +14,10 @@ ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60e4d9a4cb555dfbc9f05961487a8f794d19e1bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60472952"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>使用双重验证或安全信息登录
@@ -32,13 +32,13 @@ ms.locfileid: "60472952"
 
 1. 使用用户名和密码登录到你的帐户。
 
-2. 从发送到移动设备的审批通知中选择“批准”。
+2. 从发送到移动设备的审批通知中选择“批准”  。
 
 ## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>使用验证器应用代码在移动设备上登录
 
 1. 使用用户名和密码登录到你的帐户。
 
-2. 打开验证器应用，然后在“输入代码”框中键入为帐户随机生成的代码。
+2. 打开验证器应用，然后在“输入代码”  框中键入为帐户随机生成的代码。
 
 ## <a name="sign-in-using-your-phone-number"></a>使用电话号码登录
 
@@ -50,7 +50,7 @@ ms.locfileid: "60472952"
 
 1. 使用用户名和密码登录到你的帐户。
 
-2. 打开短信，然后将短信中的代码键入到“输入代码”框。
+2. 打开短信，然后将短信中的代码键入到“输入代码”  框。
 
 ## <a name="sign-in-using-another-verification-method"></a>使用其他验证方法登录
 如果出于某种原因您无法使用主登录方法，可以使用另一个以前设置了验证方法。

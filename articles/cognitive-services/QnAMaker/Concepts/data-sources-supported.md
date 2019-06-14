@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: tulasim
 ms.openlocfilehash: 8fcc3ea8340a8645a1983eebb4a619904f884a19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61379264"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
@@ -25,7 +25,7 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 
 |源类型|内容类型| 示例|
 |--|--|--|
-|代码|常见问题解答<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|URL|常见问题解答<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
 |PDF / DOC|常见问题解答、<br> 产品手册、<br> 小册子、<br> 论文、<br> 传单策略、<br> 支持指南、<br> 结构化 QnA，<br> 等等|[Structured QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
 |Excel|结构化 QnA 文件<br> （包括 RTF、HTML 支持）|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|结构化 QnA 文件|[示例 chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
@@ -124,7 +124,7 @@ Answer2
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>结构化 *TXT*、*TSV* 和 *XLS* 文件
 
-采用结构化 *.txt*、*.tsv* 或 *.xls* 文件形式的 QnA 也可上传到 QnA Maker，以便创建或增强知识库。  它们的内容可以是纯文本，也可以是 RTF 或 HTML 格式。 
+采用结构化 *.txt*、 *.tsv* 或 *.xls* 文件形式的 QnA 也可上传到 QnA Maker，以便创建或增强知识库。  它们的内容可以是纯文本，也可以是 RTF 或 HTML 格式。 
 
 | 问题  | Answer  | 元数据 (1 键：1 个值） |
 |-----------|---------|-------------------------|
@@ -141,7 +141,7 @@ Answer2
 
 导入知识库将替换现有知识库的内容。 导入需要包含数据源信息的结构化 .tsv 文件。 这些信息可帮助 QnA Maker 将问答对分组，并将它们归因于特定数据源。
 
-| 问题  | Answer  | 源| 元数据 (1 键：1 个值） |          
+| 问题  | Answer  | source| 元数据 (1 键：1 个值） |          
 |-----------|---------|----|---------------------|
 | 问题 1 | 答案 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 问题 2 | 答案 2 | 编辑|    `Key:Value`       |
@@ -152,7 +152,7 @@ Answer2
 
 ## <a name="formatting-considerations"></a>格式设置注意事项
 
-导入文件或 URL 后，它将转换为 Markdown 并以该格式存储。 如果转换过程未正确转换文件中的链接和 URL，则应在“编辑”页上编辑问题和答案。 
+导入文件或 URL 后，它将转换为 Markdown 并以该格式存储。 如果转换过程未正确转换文件中的链接和 URL，则应在“编辑”  页上编辑问题和答案。 
 
 |格式|目的|
 |--|--|
@@ -163,9 +163,9 @@ Answer2
 
 创建知识库后，建议在 [QnA Maker 门户](https://qnamaker.ai)中对知识库文本进行编辑，而不是通过导出并重新导入本地文件来进行编辑。 但是，有时可能需要在本地编辑知识库。 
 
-从“设置”页面上导出知识库，然后使用 Microsoft Excel 编辑知识库。 如果选择使用其他应用程序来编辑你的已导出 TSV 文件，则应用程序可能会引发语法错误，因为它不是完全符合 TSV。 Microsoft Excel 的 TSV 文件通常不会引发任何格式设置错误。 
+从“设置”  页面上导出知识库，然后使用 Microsoft Excel 编辑知识库。 如果选择使用其他应用程序来编辑你的已导出 TSV 文件，则应用程序可能会引发语法错误，因为它不是完全符合 TSV。 Microsoft Excel 的 TSV 文件通常不会引发任何格式设置错误。 
 
-在完成编辑后，从“设置”页重新导入 TSV 文件。 这将完全将当前知识库替换为导入的知识库。 
+在完成编辑后，从“设置”  页重新导入 TSV 文件。 这将完全将当前知识库替换为导入的知识库。 
 
 ## <a name="testing-your-markdown"></a>测试 Markdown
 

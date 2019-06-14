@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60860308"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 4
@@ -45,7 +45,7 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update4-via-portal.md)]
 
-验证确保设备运行的是 **StorSimple 8000 系列 Update 4 (6.3.9600.17820)**。 还应修改“上次更新日期”。
+验证确保设备运行的是 **StorSimple 8000 系列 Update 4 (6.3.9600.17820)** 。 还应修改“上次更新日期”。 
 
 * 现在，会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。 维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。
 

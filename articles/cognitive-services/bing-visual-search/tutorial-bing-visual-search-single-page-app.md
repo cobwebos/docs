@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: aahi
 ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60829593"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>创建视觉搜索单页 Web 应用
@@ -101,7 +101,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>捕获 insights 令牌
 
-将以下代码添加到`searchItemsRenderer`对象。 此代码添加“查找类似”链接，该链接在单击时调用 `bingVisualSearch` 函数。 在函数收到`imageInsightsToken`作为自变量。
+将以下代码添加到`searchItemsRenderer`对象。 此代码添加  “查找类似”链接，该链接在单击时调用 `bingVisualSearch` 函数。 在函数收到`imageInsightsToken`作为自变量。
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
@@ -118,7 +118,7 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 </div>
 ```
 
-所有新的 JavaScript 代码和 HTML 元素就绪后，搜索结果将通过“查找类似”链接显示。 单击此链接以使用与你选择的图像类似的图像填充“相似”部分。 你可能需要展开“相似”部分以显示图像。
+所有新的 JavaScript 代码和 HTML 元素就绪后，搜索结果将通过  “查找类似”链接显示。 单击此链接以使用与你选择的图像类似的图像填充  “相似”部分。 你可能需要展开  “相似”部分以显示图像。
 
 ## <a name="next-steps"></a>后续步骤
 

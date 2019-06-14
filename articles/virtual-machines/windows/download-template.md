@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 4ef0c09d2d2ea2ed06708342ab45abcaf149c23e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61075874"
 ---
 # <a name="download-the-template-for-a-vm"></a>下载 VM 模板
@@ -27,10 +27,10 @@ ms.locfileid: "61075874"
 
 ## <a name="download-the-template-using-the-portal"></a>使用门户下载模板
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左侧菜单中，选择“虚拟机”。
+2. 在左侧菜单中，选择“虚拟机”  。
 3. 从列表中选择虚拟机。
-4. 选择**导出模板**。
-5. 从顶部菜单中选择“下载”，将 .zip 文件保存到本地计算机。
+4. 选择“导出模板”  。
+5. 从顶部菜单中选择“下载”，将 .zip 文件保存到本地计算机。 
 6. 打开 .zip 文件，将文件解压缩到某个文件夹。 该 .zip 文件包含：
    
    * deploy.ps1

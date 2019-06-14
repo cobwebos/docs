@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61481819"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
@@ -51,7 +51,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
    2. 在打开的对话框中，输入设备管理员密码。 默认密码为 _Password1_。
      
       ![“PowerShell 凭据”对话框](./media/storsimple-8000-create-manage-support-package/IC740962.png)
-   3. 选择“确定”。
+   3. 选择“确定”  。
    4. 在命令提示符处，输入：
      
       `Enter-PSSession $MS`
@@ -74,12 +74,12 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 
 | 参数 | 必需/可选 | 描述 |
 | --- | --- | --- |
-| `-Path` |需要 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
+| `-Path` |必选 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
 | `-EncryptionPassphrase` |需要 |用于提供一个密码，以便加密支持包。 |
 | `-Credential` |可选 |用于提供网络共享文件夹的访问凭据。 |
 | `-Force` |可选 |用于跳过加密密码确认步骤。 |
-| `-PackageTag` |可选 |用于在“路径”下指定一个目录，以便放置支持包。 默认值为 [设备名称]-[当前日期和时间:yyyy-MM-dd-HH-mm-ss]。 |
-| `-Scope` |可选 |指定为“群集”（默认值），以便为两个控制器创建支持包。 如果只需为当前控制器创建包，请指定“控制器”。 |
+| `-PackageTag` |可选 |用于在“路径”下指定一个目录，以便放置支持包。  默认值为 [设备名称]-[当前日期和时间:yyyy-MM-dd-HH-mm-ss]。 |
+| `-Scope` |可选 |指定为“群集”  （默认值），以便为两个控制器创建支持包。 如果只需为当前控制器创建包，请指定“控制器”。  |
 
 ## <a name="edit-a-support-package"></a>编辑支持包
 

@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60824025"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>移动数据使用 Azure 数据工厂从 OData 源
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](data-factory-odata-connector.md)
 > * [版本 2（当前版本）](../connector-odata.md)
 
@@ -66,7 +66,7 @@ ms.locfileid: "60824025"
 | type |type 属性必须设置为：**OData** |是 |
 | url |OData 服务的 URL。 |是 |
 | authenticationType |用于连接 OData 源的身份验证类型。 <br/><br/> 对于云 OData，可能的值为 Anonymous、Basic 和 OAuth（请注意：Azure 数据工厂目前仅支持基于 Azure Active Directory 的 OAuth）。 <br/><br/> 对于本地 OData，可能的值为 Anonymous、Basic 和 Windows。 |是 |
-| username |如果使用基本身份验证，请指定用户名。 |是（仅在使用基本身份验证时适用） |
+| userName |如果使用基本身份验证，请指定用户名。 |是（仅在使用基本身份验证时适用） |
 | password |指定为用户名指定的用户帐户的密码。 |是（仅在使用基本身份验证时适用） |
 | authorizedCredential |如果使用 OAuth，请在数据工厂复制向导或编辑器中单击“授权”  按钮，并输入凭据，此时会自动生成此属性的值。 |是（仅在使用 OAuth 身份验证时适用） |
 | gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅指定是否要将数据从本地 OData 源上的进行复制。 |否 |

@@ -6,15 +6,15 @@ keywords: 编码;编码器;媒体
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 01/17/2019
+ms.date: 06/12/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 50b22cefccf620d7b79202a5c432e2e6a4e3e3be
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 1bede8ff7c33988a4e11a84d3a51ca098a608f33
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550052"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055278"
 ---
 # <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
 
@@ -24,7 +24,7 @@ ms.locfileid: "65550052"
 
   > [!NOTE]
   > 实时传送视频流时，使用直通方法是最经济的。
-
+ 
 * 本地实时编码器采用以下格式之一将单比特率流发送至能够使用媒体服务执行实时编码的实时事件：RTMP 或平滑流式处理（分片 MP4）。 然后，实时事件将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。
 
 若要详细了解如何使用媒体服务进行实时编码，请参阅[使用媒体服务 v3 的实时传送视频流](live-streaming-overview.md)。
@@ -86,13 +86,13 @@ ms.locfileid: "65550052"
 ### <a name="pass-through-live-event-verification"></a>直通实时事件验证
 
 1. 在媒体服务帐户中，确保**流式处理终结点**正在运行。 
-2. 创建并启动直通实时事件。 <br/> 有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
+2. 创建并启动直通  实时事件。 <br/> 有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
 3. 获取引入 URL 并配置本地编码器以使用 URL 将多比特率实时流发送到媒体服务。
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的流式处理策略类型创建流式处理定位符。
-8. 列出流式处理定位器的路径，以取回要使用的 URL。
+7. 使用内置的流式处理策略  类型创建流式处理定位符  。
+8. 列出流式处理定位器的路径，以取回要使用的 URL  。
 9. 获取要从中流式传输的**流式处理终结点**的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
 11. 运行实时编码器大约 10 分钟。
@@ -105,13 +105,13 @@ ms.locfileid: "65550052"
 ### <a name="live-encoding-live-event-verification"></a>实时编码实时事件验证
 
 1. 在媒体服务帐户中，确保**流式处理终结点**正在运行。 
-2. 创建并启动实时编码实时事件。 <br/> 有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
+2. 创建并启动实时编码  实时事件。 <br/> 有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
 3. 获取引入 URL，并配置编码器以将单比特率实时流推送到媒体服务。
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的流式处理策略类型创建流式处理定位符。
-8. 列出流式处理定位器的路径，以取回要使用的 URL。
+7. 使用内置的流式处理策略  类型创建流式处理定位符  。
+8. 列出流式处理定位器的路径，以取回要使用的 URL  。
 9. 获取要从中流式传输的**流式处理终结点**的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
 11. 运行实时编码器大约 10 分钟。
@@ -127,7 +127,7 @@ ms.locfileid: "65550052"
 
 ### <a name="email-your-recorded-settings"></a>通过电子邮件发送记录的设置
 
-最后，通过电子邮件将记录的设置和实时存档参数作为通知发送到 Azure 媒体服务 (amsstreaming@microsoft.com)，告知所有自我验证检查已通过。 另请提供联系信息，以方便跟进。 在此过程中如有任何问题，可以联系 Azure 媒体服务团队。
+最后，通过电子邮件将记录的设置和实时存档参数作为通知发送到 Azure 媒体服务 (amslived@microsoft.com)，告知所有自我验证检查已通过。 另请提供联系信息，以方便跟进。 在此过程中如有任何问题，可以联系 Azure 媒体服务团队。
 
 ## <a name="next-steps"></a>后续步骤
 

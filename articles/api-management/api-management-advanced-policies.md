@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60795881"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
@@ -135,7 +135,7 @@ ms.locfileid: "60795881"
 
 ### <a name="attributes"></a>属性
 
-| 特性                                              | 描述                                                                                               | 需要 |
+| 特性                                              | 描述                                                                                               | 必选 |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | condition="布尔表达式 &#124; 布尔常量" | 对包含 `when` 的策略语句求值时需求值的布尔表达式或常量。 | 是      |
 
@@ -245,7 +245,7 @@ ms.locfileid: "60795881"
 
 ### <a name="elements"></a>元素
 
-| 元素         | 描述   | 需要 |
+| 元素         | 描述   | 必选 |
 | --------------- | ------------- | -------- |
 | forward-request | 根元素。 | 是      |
 
@@ -349,13 +349,13 @@ ms.locfileid: "60795881"
 
 ### <a name="elements"></a>元素
 
-| 元素         | 描述                                                                     | 需要 |
+| 元素         | 描述                                                                     | 必选 |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
 | log-to-eventhub | 根元素。 此元素的值是要记录到事件中心的字符串。 | 是      |
 
 ### <a name="attributes"></a>属性
 
-| 特性     | 描述                                                               | 需要                                                             |
+| 特性     | 描述                                                               | 必选                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | logger-id     | 注册到 API 管理服务的记录器的 ID。         | 是                                                                  |
 | partition-id  | 指定在其中发送消息的分区的索引。             | 可选。 如果使用 `partition-key`，则不能使用此属性。 |
@@ -461,7 +461,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 | 特性        | 描述                                                                                                                                           | 需要 | 默认 |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| 条件        | 一个布尔文本或[表达式](api-management-policy-expressions.md)，指定是应停止重试 (`false`) 还是应继续重试 (`true`)。      | 是      | 不适用     |
+| condition        | 一个布尔文本或[表达式](api-management-policy-expressions.md)，指定是应停止重试 (`false`) 还是应继续重试 (`true`)。      | 是      | 不适用     |
 | 计数            | 一个正数，指定进行尝试时的最大重试次数。                                                                                | 是      | 不适用     |
 | interval         | 一个以秒为单位的正数，指定两次重试之间的等待时间。                                                                 | 是      | 不适用     |
 | max-interval     | 一个以秒为单位的正数，指定两次重试之间的最长等待时间， 用于实现指数重试算法。 | 否       | 不适用     |
@@ -471,7 +471,7 @@ status code and media type. If no example or schema found, the content is empty.
 > [!NOTE]
 > 仅指定 `interval` 时，则会执行**固定**时间间隔的重试。
 > 仅指定 `interval` 和 `delta` 时，将使用**线性**时间间隔重试算法，其中，两次重试之间的等待时间按以下公式计算：`interval + (count - 1)*delta`。
-> 指定 `interval`、`max-interval`、`delta` 时，将应用指数时间间隔重试算法，其中，两次重试之间的等待时间根据以下公式从 `interval` 值呈指数增长到 `max-interval` 值：`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
+> 指定 `interval`、`max-interval`、`delta` 时，将应用指数时间间隔重试算法，其中，两次重试之间的等待时间根据以下公式从 `interval` 值呈指数增长到 `max-interval` 值：`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`  。
 
 ### <a name="usage"></a>使用情况
 
@@ -510,7 +510,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>元素
 
-| 元素         | 描述                                                                               | 需要 |
+| 元素         | 描述                                                                               | 必选 |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
 | return-response | 根元素。                                                                             | 是      |
 | set-header      | [set-header](api-management-transformation-policies.md#SetHTTPheader) 策略语句。 | 否       |
@@ -519,7 +519,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| 特性              | 描述                                                                                                                                                                          | 需要  |
+| 特性              | 描述                                                                                                                                                                          | 必选  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
 | response-variable-name | 上下文变量的名称，该变量引用自特定的策略（例如上游 [send-request](api-management-advanced-policies.md#SendRequest) 策略）且包含 `Response` 对象 | 可选。 |
 
@@ -580,7 +580,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>元素
 
-| 元素                    | 描述                                                                                                 | 需要                        |
+| 元素                    | 描述                                                                                                 | 必选                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-one-way-request       | 根元素。                                                                                               | 是                             |
 | url                        | 请求的 URL。                                                                                     | 如果 mode=copy，则为否；否则为是。 |
@@ -594,7 +594,7 @@ status code and media type. If no example or schema found, the content is empty.
 | 特性     | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 需要 | 默认  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string" | 确定请求是新请求还是当前请求的副本。 在出站模式下，mode=copy 不会初始化请求正文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 否       | 新建      |
-| 名称          | 指定要设置的标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | 不适用      |
+| name          | 指定要设置的标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | 不适用      |
 | exists-action | 指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -override-替换现有标头的值。<br />-skip-不替换现有标头值。<br />-append-将值追加到现有标头值。<br />-delete-删除请求中的标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。 | 否       | override |
 
 ### <a name="usage"></a>使用情况
@@ -681,7 +681,7 @@ status code and media type. If no example or schema found, the content is empty.
 | response-variable-name="string" | 将收到响应对象的上下文变量的名称。 如果该变量不存在，则将在成功执行策略时创建该变量，并且可通过 [`context.Variable`](api-management-policy-expressions.md#ContextVariables) 集合访问该变量。                                                                                                                                                                                                                                                                                                                          | 是      | 不适用      |
 | timeout="整数"               | 以秒为单位的超时间隔，此时间过后对 URL 的调用会失败。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 否       | 60       |
 | ignore-error                    | 如果为 true，请求会导致错误：<br /><br /> -如果已指定响应变量名称，它将包含 null 值。<br />-如果未指定响应变量名称，上下文。请求将不会更新。                                                                                                                                                                                                                                                                                                                                                                                   | 否       | false    |
-| 名称                            | 指定要设置的标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | 不适用      |
+| name                            | 指定要设置的标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | 不适用      |
 | exists-action                   | 指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -override-替换现有标头的值。<br />-skip-不替换现有标头值。<br />-append-将值追加到现有标头值。<br />-delete-删除请求中的标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。 | 否       | override |
 
 ### <a name="usage"></a>使用情况
@@ -714,7 +714,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>元素
 
-| 元素 | 描述  | 需要 |
+| 元素 | 描述  | 必选 |
 | ------- | ------------ | -------- |
 | proxy   | Root 元素 | 是      |
 
@@ -777,7 +777,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>元素
 
-| 元素    | 描述                                                       | 需要 |
+| 元素    | 描述                                                       | 必选 |
 | ---------- | ----------------------------------------------------------------- | -------- |
 | set-method | 根元素。 此元素的值指定 HTTP 方法。 | 是      |
 
@@ -820,7 +820,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>元素
 
-| 元素    | 描述   | 需要 |
+| 元素    | 描述   | 必选 |
 | ---------- | ------------- | -------- |
 | set-status | 根元素。 | 是      |
 
@@ -858,7 +858,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>元素
 
-| 元素      | 描述   | 需要 |
+| 元素      | 描述   | 必选 |
 | ------------ | ------------- | -------- |
 | set-variable | 根元素。 | 是      |
 
@@ -866,7 +866,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 | 特性 | 描述                                                              | 需要 |
 | --------- | ------------------------------------------------------------------------ | -------- |
-| 名称      | 变量的名称。                                                | 是      |
+| name      | 变量的名称。                                                | 是      |
 | value     | 变量的值， 可以是表达式或文本值。 | 是      |
 
 ### <a name="usage"></a>使用情况
@@ -928,7 +928,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>元素
 
-| 元素 | 描述   | 需要 |
+| 元素 | 描述   | 必选 |
 | ------- | ------------- | -------- |
 | trace   | 根元素。 | 是      |
 
@@ -998,7 +998,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>元素
 
-| 元素 | 描述                                                                                                   | 需要 |
+| 元素 | 描述                                                                                                   | 必选 |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
 | wait    | 根元素。 可能只包含 `send-request`、`cache-lookup-value`、`choose` 策略作为子元素。 | 是      |
 

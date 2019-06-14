@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: sajagtap
 ms.openlocfilehash: a482ecf4a0d321525ab7e392695d2c4c0eebeadc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60628975"
 ---
 # <a name="create-human-reviews"></a>创建人工审阅
@@ -46,7 +46,7 @@ ms.locfileid: "60628975"
 
     ![在单独窗格中列出审阅详细信息的图像](images/review-images-4.png)
 
-1. 根据需要审核并更新标记分配后，单击“下一步”即可提交评论。 提交后，你有大约五秒的时间来单击“上一步”按钮返回上一屏幕并再次查看图像。 之后，图像不再位于“提交”队列中，并且“上一步”按钮不再可用。
+1. 根据需要审核并更新标记分配后，单击  “下一步”即可提交评论。 提交后，你有大约五秒的时间来单击  “上一步”按钮返回上一屏幕并再次查看图像。 之后，图像不再位于“提交”队列中，并且  “上一步”按钮不再可用。
 
 ## <a name="text-reviews"></a>文本评审
 

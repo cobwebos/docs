@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60873126"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备推送通知
@@ -153,7 +153,7 @@ ms.locfileid: "60873126"
     > [!NOTE]
     > 由于使用客户端应用程序分发的凭据通常是不安全的，只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
-9. 将 `AppDelegate.m` 中 `didRegisterForRemoteNotificationsWithDeviceToken` 方法内的代码替换为以下代码，以将设备令牌传递给 `notifications` 类。 `notifications` 类将通知注册到类别。 如果用户更改类别选择，则调用 `subscribeWithCategories` 方法以响应“订阅”按钮，从而进行更新。
+9. 将 `AppDelegate.m` 中 `didRegisterForRemoteNotificationsWithDeviceToken` 方法内的代码替换为以下代码，以将设备令牌传递给 `notifications` 类。 `notifications` 类将通知注册到类别。 如果用户更改类别选择，则调用 `subscribeWithCategories` 方法以响应“订阅”按钮，从而进行更新  。
 
     > [!NOTE]
     > 由于 Apple Push Notification 服务 (APNS) 分配的设备标记随时可能更改，因此，应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。

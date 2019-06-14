@@ -8,10 +8,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: f5c5a980a99bac3bf02eaaf9c072861ca753d449
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61038478"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>解决 Azure Databases for MariaDB 的连接问题
@@ -48,7 +48,7 @@ ms.locfileid: "61038478"
 
 * 防火墙配置：Azure Database for MariaDB 服务器或客户端防火墙正在阻止连接。
 * 客户端上的网络重新配置：已添加新的 IP 地址或代理服务器。
-* 用户错误：例如，你可能有误连接参数，如服务器名称中的连接字符串或缺少 *\@servername*中的用户名称后缀。
+* 用户错误：例如，连接参数的键入错误（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 

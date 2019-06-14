@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant
 ms.openlocfilehash: 4e028429ca8a22915eff2b90ca63c6d05a67741b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64692239"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>教程：Atlassian Cloud 配置自动用户预配
@@ -48,11 +48,11 @@ ms.locfileid: "64692239"
 
 **若要从 Azure AD 应用程序库中添加 Atlassian Cloud，请执行以下步骤：**
 
-1. 在中 **[Azure 门户](https://portal.azure.com)**，在左侧的导航窗格中，选择**Azure Active Directory**。
+1. 在中 **[Azure 门户](https://portal.azure.com)** ，在左侧的导航窗格中，选择**Azure Active Directory**。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。
+2. 转到“企业应用程序”，并选择“所有应用程序”。  
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -76,7 +76,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 * 建议将单个 Azure AD 用户分配到 Atlassian Cloud，以测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 如果将用户分配到 Atlassian Cloud，必须在分配对话框中选择任何有效的特定于应用程序角色 （如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
+* 如果将用户分配到 Atlassian Cloud，必须在分配对话框中选择任何有效的特定于应用程序角色 （如果可用）。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="configuring-automatic-user-provisioning-to-atlassian-cloud"></a>配置自动用户预配到 Atlassian Cloud 
 
@@ -91,15 +91,15 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Atlassian Cloud”。
+2. 在应用程序列表中，选择“Atlassian Cloud”。 
 
     ![应用程序列表中的 Atlassian Cloud 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/provisioning-tab.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/credentials.png)
 
@@ -107,7 +107,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
    * 在中**租户 URL**字段中，填充接收来自 Atlassian 的特定租户终结点，在步骤 6 中所述。 例如： `https://api.atlassian.com/scim/directory/{directoryId}`。
 
-   * 在“机密令牌”字段中，填充步骤 6 中所述的机密令牌。
+   * 在“机密令牌”字段中，填充步骤 6 中所述的机密令牌。 
 
 6. 导航到[Atlassian 组织经理](https://admin.atlassian.com) **> 用户预配**，然后单击**创建令牌**。 复制**Directory 基 URL**并**持有者令牌**到**租户 URL**并**机密令牌**分别字段。
 
@@ -119,7 +119,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/test-connection.png)
 
-8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
+8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”   。
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
@@ -129,7 +129,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/provision-users.png)
 
-11. 查看从 Azure AD 同步到 Atlassian Cloud 中的用户属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配在 Atlassian Cloud 中的用户帐户，以执行更新操作。 选择“保存”按钮以提交任何更改。
+11. 查看从 Azure AD 同步到 Atlassian Cloud 中的用户属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配在 Atlassian Cloud 中的用户帐户，以执行更新操作。 选择“保存”按钮以提交任何更改  。
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/user-mapping.png)
 
@@ -137,7 +137,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/provision-groups.png)
 
-13. 查看从 Azure AD 同步到 Atlassian Cloud 中的组属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配在 Atlassian Cloud 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
+13. 查看从 Azure AD 同步到 Atlassian Cloud 中的组属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配在 Atlassian Cloud 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/group-mapping.png)
 
@@ -151,11 +151,11 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/provisioning-options.png)
 
-17. 已准备好预配时，单击“保存”。
+17. 已准备好预配时，单击“保存”  。
 
     ![预配的 Atlassian Cloud](./media/atlassian-cloud-provisioning-tutorial/save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用**同步详细信息**部分监视进度并跟踪指向预配活动报告，其中描述了执行预配服务对 Atlassian Cloud 的 Azure AD 的所有操作。
+此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步   。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用**同步详细信息**部分监视进度并跟踪指向预配活动报告，其中描述了执行预配服务对 Atlassian Cloud 的 Azure AD 的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 04fc1da04d9da715acfed8ca9d26e9c325afb403
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61441791"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64569436"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
 
@@ -36,7 +36,7 @@ ms.locfileid: "61441791"
 
 要完成本教程，需要以下各项：
 
-* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
+* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip  - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
 
 * 安装[azure iot 中心的设备客户端](https://pypi.org/project/azure-iothub-device-client/)打包，请使用命令       `pip install azure-iothub-device-client`
 
@@ -77,7 +77,7 @@ ms.locfileid: "61441791"
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
     ```
 
-3. 添加变量（包括 CONNECTION_STRING 变量）和客户端初始化。  将连接字符串替换为设备连接字符串。  
+3. 添加变量（包括 CONNECTION_STRING  变量）和客户端初始化。  将连接字符串替换为设备连接字符串。  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"

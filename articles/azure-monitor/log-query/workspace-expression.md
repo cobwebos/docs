@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60785670"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 workspace() 表达式
@@ -27,11 +27,11 @@ ms.locfileid: "60785670"
 
 ## <a name="syntax"></a>语法
 
-`workspace(`标识符`)`
+`workspace(`标识符`)` 
 
 ## <a name="arguments"></a>参数
 
-- 标识符：使用下表中的某种格式标识工作区。
+- 标识符：  使用下表中的某种格式标识工作区。
 
 | 标识符 | 描述 | 示例
 |:---|:---|:---|

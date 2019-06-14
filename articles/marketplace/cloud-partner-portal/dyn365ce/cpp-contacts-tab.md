@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: cdd3d01c9295ef5ae8e7bc1936b5926fb38cfe77
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942514"
 ---
 # <a name="azure-application-contacts-tab"></a>Azure 应用程序“联系人”选项卡
 
-使用“联系人”选项卡为 Dynamics 365 for Customer Engagement 产品/服务提供工程和客户支持信息。
+使用“联系人”选项卡为 Dynamics 365 for Customer Engagement 产品/服务提供工程和客户支持信息  。
 
 ![产品/服务的“联系人”选项卡](./media/dynce-contacts-tab.png)
 
 
 ## <a name="specify-customer-and-engineering-contacts"></a>指定客户和工程联系人
 
-提供以下值以定义主要“工程联系人以及产品/服务的“工程联系人”。 必填字段用星号 (*) 表示。
+提供以下值以定义主要“工程联系人以及产品/服务的“工程联系人”  。 必填字段用星号 (*) 表示。
 
 |    字段        |  描述                    |
 |    ---------    |  ---------------                |
@@ -32,7 +32,7 @@ ms.locfileid: "64942514"
 |  **Phone\***      |  工程联系人的电话号码  |
 |  |  |
 
-提供以下值以定义主要“支持联系人”以及产品/服务的“支持联系人”。
+提供以下值以定义主要“支持联系人”以及产品/服务的“支持联系人”  。
 
 |    字段        |   描述                   |
 |    ---------    |  ---------------                |

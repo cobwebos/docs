@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60789631"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>StorSimple 虚拟阵列 Update 1.1 发行说明
@@ -50,7 +50,7 @@ Update 1.1 对应于软件版本 **10.0.10307.0**。
 
 | 不。 | Feature | 问题 |
 | --- | --- | --- |
-| 1 |备份| 此版本包含通过提高对云故障和 CPU 消耗量偏高的复原能力针对备份故障进行了改进的更改。|
+| 第 |备份| 此版本包含通过提高对云故障和 CPU 消耗量偏高的复原能力针对备份故障进行了改进的更改。|
 | 2 |日志记录| 此版本包含对设备处于支持会话时的详细模式日志记录的更改。|
 
 
@@ -76,7 +76,7 @@ Update 1.1 对应于软件版本 **10.0.10307.0**。
 | **14.** |文件服务器 |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 | **15.** |文件服务器 |不支持符号链接。 | |
 | **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时会导致不受支持的配置。  | |
-| 17. |更新 |如果您看到错误代码：2359302 （十六进制 0x240006） 时尝试进行安装的修补程序通过本地 UI，则表示在设备上已安装的修补程序。   | |
+| 17\.  |更新 |如果您看到错误代码：2359302 （十六进制 0x240006） 时尝试进行安装的修补程序通过本地 UI，则表示在设备上已安装的修补程序。   | |
 | **18.** |更新 |如果使用本地 Web UI 在虚拟阵列上安装 Update 1，必须确保你运行的是 Update 0.6。 如果你运行的版本低于 Update 0.6，则必须先安装 Update 0.6，然后应用 Update 1。 如果直接从 Update 0.6 之前的版本安装 Update 1.0，则会丢失某些更新，监视图表将不会工作。   | |
 
 

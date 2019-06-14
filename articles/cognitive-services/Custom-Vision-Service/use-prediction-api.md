@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
 ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60816742"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>您的模型使用预测 API
@@ -26,7 +26,7 @@ ms.locfileid: "60816742"
 
 ## <a name="publish-your-trained-iteration"></a>发布已训练的迭代
 
-从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡。
+从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡  。
 
 若要提交映像分发到预测 API，你将首先需要发布用于预测，这可以通过选择迭代__发布__和指定的名称的已发布的迭代。 这将使您的模型可以预测 API 自定义视觉 Azure 资源的访问。
 
@@ -53,7 +53,7 @@ ms.locfileid: "60816742"
 
 1. 在 Visual Studio 中，创建一个新C#控制台应用程序。
 
-1. 使用以下代码作为“Program.cs”文件的主体。
+1. 使用以下代码作为“Program.cs”文件的主体  。
 
     ```csharp
     using System;

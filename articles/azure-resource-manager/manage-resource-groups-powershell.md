@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 8ae86d8bc7914a7a9c41eee93bb16b2f774993b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60550489"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
@@ -88,7 +88,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
-此功能也称为“出错时回滚”。 有关详细信息，请参阅[在部署失败时重新部署](./resource-group-template-deploy.md#redeploy-when-deployment-fails)。
+此功能也称为“出错时回滚”  。 有关详细信息，请参阅[在部署失败时重新部署](./resource-group-template-deploy.md#redeploy-when-deployment-fails)。
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>移到另一个资源组或订阅
 
