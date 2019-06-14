@@ -141,20 +141,20 @@ V1.1 架构建议，并且不需要 Azure Active Directory 属性。
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | 字符串 |
-| type | AzureDiskEncryptionForLinux | 字符串 |
-| typeHandlerVersion | 0.1, 1.1 | int |
-| （0.1 架构）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0.1 schema) AADClientSecret | password | 字符串 |
-| (0.1 schema) AADClientCertificate | thumbprint | 字符串 |
+| publisher | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForLinux | string |
+| typeHandlerVersion | 0.1, 1.1 (VMSS) | int |
+| (0.1 架构) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (0.1 schema) AADClientSecret | password | string |
+| (0.1 schema) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | 字符串 | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | 字符串 |
-| KeyEncryptionKeyURL | url | 字符串 |
-| （可选）KeyVaultURL | url | 字符串 |
-| 通行短语 | password | 字符串 | 
-| SequenceVersion | uniqueidentifier | 字符串 |
-| VolumeType | OS, Data, All | 字符串 |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
+| KeyEncryptionKeyURL | url | string |
+| (可选) KeyVaultURL | url | string |
+| Passphrase | password | string | 
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | OS, Data, All | string |
 
 ## <a name="template-deployment"></a>模板部署
 
