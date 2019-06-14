@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 74a9764187b15bddf1dc48fa2b7988217d31abce
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66149590"
 ---
 ## <a name="troubleshooting-update-failures"></a>排查更新失败
 **出现升级前检查失败的通知时该怎么办？**
 
-如果预先检查失败，请务必查看页面底部的详细通知栏。 其中提供了有关哪项预先检查失败的指导。 下图显示了会出现此类通知的某种场合。 在此情况下，控制器运行状况检查和硬件组件运行状况检查失败。 在“硬件状态”部分下，可以看到“控制器 0”和“控制器 1”组件需要引以关注。
+如果预先检查失败，请务必查看页面底部的详细通知栏。 其中提供了有关哪项预先检查失败的指导。 下图显示了会出现此类通知的某种场合。 在此情况下，控制器运行状况检查和硬件组件运行状况检查失败。 在“硬件状态”部分下，可以看到“控制器 0”和“控制器 1”组件需要引以关注。   
 
   ![预先检查失败](./media/storsimple-install-troubleshooting/HCS_PreUpdateCheckFailed-include.png)
 

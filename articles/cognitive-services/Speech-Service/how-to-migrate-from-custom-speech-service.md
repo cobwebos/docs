@@ -12,10 +12,10 @@ ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: 8a2c149faa0ec9d135713a123a33d7c220522496
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60995607"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>从自定义语音服务迁移到语音服务
@@ -50,9 +50,9 @@ ms.locfileid: "60995607"
 
 1. 登录到 [cris.ai](https://cris.ai/Home/CustomSpeech) 门户，然后在右上角菜单中选择订阅。
 
-2. 选择“迁移选定的订阅”。
+2. 选择“迁移选定的订阅”。 
 
-3. 在文本框中输入订阅密钥，然后选择“迁移”。
+3. 在文本框中输入订阅密钥，然后选择“迁移”  。
 
 ## <a name="next-steps"></a>后续步骤
 

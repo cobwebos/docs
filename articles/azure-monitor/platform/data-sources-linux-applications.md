@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60628908"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
@@ -50,7 +50,7 @@ MySQL 身份验证文件存储在 `/var/opt/microsoft/mysql-cimprov/auth/omsagen
 
 | 属性 | 描述 |
 |:--|:--|
-| 端口 | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
+| Port | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
 | Bind-Address| 当前 MySQL 绑定地址。 |
 | username| 用来监视 MySQL 服务器实例的 MySQL 用户。 |
 | Base64 编码的密码| MySQL 监视用户的密码（采用 Base64 编码）。 |

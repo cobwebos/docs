@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
 ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60647336"
 ---
 # <a name="azure-backup-architecture"></a>Azure 备份体系结构
@@ -49,8 +49,8 @@ Azure 备份将备份数据存储在恢复服务保管库中。 保管库是用�
 - 你可以监视备份保管库，包括 Azure Vm 和本地计算机中的项。
 - 可以使用 Azure [基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 来管理对保管库的访问。
 - 指定如何复制保管库中的数据以实现冗余：
-    - **本地冗余存储 (LRS)**：若要防止在数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-    - **异地冗余存储 (GRS)**：若要避免出现全区域服务中断，可以使用 GRS。 GRS 将数据复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。 
+    - **本地冗余存储 (LRS)** ：若要防止在数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
+    - **异地冗余存储 (GRS)** ：若要避免出现全区域服务中断，可以使用 GRS。 GRS 将数据复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。 
     - 默认情况下，恢复服务保管库使用 GRS。 
 
 ## <a name="backup-agents"></a>备份代理
@@ -110,17 +110,17 @@ Azure 备份提供了不同的备份代理，具体取决于哪种类型的计�
 ## <a name="architecture-direct-backup-of-azure-vms"></a>体系结构：直接备份 Azure VM
 
 1. 时为 Azure VM 启用备份，备份将根据您指定的计划运行。
-1. 在过程中的第一个备份，备份扩展被安装在 VM 上如果 VM 正在运行。
+1. 首次备份期间，如果 VM 已运行，则会在 VM 上安装备份扩展。
     - 对于 Windows Vm，安装 VMSnapshot 扩展。
     - 对于 Linux Vm，安装 VMSnapshot Linux 扩展。
 1. 该扩展会创建存储级快照。 
-    - 对于正在运行的 Windows Vm，备份协调与 Windows 卷影复制服务 (VSS) 来创建 VM 应用一致快照。 默认情况下，备份将完整的 VSS 备份。 如果 Azure 备份无法创建应用一致性快照，则会创建文件一致性快照。
-    - 对于 Linux Vm，备份采用文件一致的快照。 对于应用一致性快照，您需要手动自定义前期/后期脚本。
+    - 对于正在运行的 Windows Vm，备份协调与 Windows 卷影复制服务 (VSS) 来创建 VM 应用一致快照。 备份服务默认创建完整的 VSS 备份。 如果 Azure 备份无法创建应用一致性快照，则会创建文件一致性快照。
+    - 对于 Linux Vm，备份采用文件一致的快照。 对于应用一致性快照，需要手动自定义前脚本/后脚本。
     - 可以通过并行备份每个 VM 磁盘来优化备份。 对于每个要备份的磁盘，Azure 备份将读取磁盘上的块，并只存储已更改的数据。 
 1. 创建快照后，数据将传输到保管库。 
     - 只会更改，因为上一次备份将复制的数据块。
     - 不会加密数据。 Azure 备份可以备份使用 Azure 磁盘加密加密的 Azure Vm。
-    - 快照数据可能不会立即复制到保管库。 在高峰时间，备份可能需要几个小时。 为 vm 备份总时间将是 24 小时内每日备份策略。
+    - 快照数据可能不会立即复制到保管库。 在高峰时间，备份可能需要几个小时。 每日备份策略规定的 VM 备份总时间不会超过 24 小时。
 1. 将数据发送到保管库后，会删除快照，并创建恢复点。
 
 Azure Vm 需要 internet 访问权限的控制命令。 如果你要备份 VM （例如，SQL Server 数据库备份） 内的工作负荷后, 端数据也需要访问 internet。 
@@ -178,7 +178,7 @@ Vm 磁盘存储空间和可用的磁盘类型的详细信息，请参阅以下�
 
 可以使用高级存储的 Azure 备份来备份 Azure Vm:
 
-- 在备份虚拟机使用高级存储的过程中，备份服务会创建名为的临时暂存位置*AzureBackup-*，存储帐户中。 暂存位置的大小等于恢复点快照大小。
+- 在备份虚拟机使用高级存储的过程中，备份服务会创建名为的临时暂存位置*AzureBackup-* ，存储帐户中。 暂存位置的大小等于恢复点快照大小。
 - 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 [了解详细信息](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits)。 不要修改暂存位置。
 - 备份作业完成后，将删除暂存位置。
 - 用于暂存位置的存储的价格与[高级存储定价](../virtual-machines/windows/disks-types.md#billing)相一致。

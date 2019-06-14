@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: shlo
 ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60716673"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>以可视化方式监视 Azure 数据工厂
@@ -52,7 +52,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 ![监视管道运行](media/monitor-visually/pipeline-runs.png)
 
 ## <a name="monitor-activity-runs"></a>监视活动运行
-以下列表视图展示了与每个管道运行对应的活动运行。 单击“操作”列下的“活动运行”图标可查看每个管道运行的活动运行。 包括的列：
+以下列表视图展示了与每个管道运行对应的活动运行。 单击“操作”列下的“活动运行”图标可查看每个管道运行的活动运行。   包括的列：
 
 | **列名称** | **说明** |
 | --- | --- |
@@ -68,12 +68,12 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 ![监视活动运行](media/monitor-visually/activity-runs.png)
 
 > [!IMPORTANT]
-> 需要单击顶部的“刷新”图标来刷新管道和活动运行的列表。 当前不支持自动刷新。
+> 需要单击顶部的“刷新”图标来刷新管道和活动运行的列表。  当前不支持自动刷新。
 
 ![刷新](media/monitor-visually/refresh.png)
 
 ## <a name="select-a-data-factory-to-monitor"></a>选择要监视的数据工厂
-将鼠标指针悬停在左上角的“数据工厂”图标上。 单击“箭头”图标以查看可以监视的 azure 订阅和数据工厂的列表。
+将鼠标指针悬停在左上角的“数据工厂”  图标上。 单击“箭头”图标以查看可以监视的 azure 订阅和数据工厂的列表。
 
 ![选择数据工厂](media/monitor-visually/select-datafactory.png)
 
@@ -101,7 +101,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="promote-user-properties-to-monitor"></a>提升要监视的用户属性
 
-可以将任何管道活动属性提升为用户属性，使其成为可以监视的实体。 例如，可以将管道中复制活动的**源**和**目标**属性提升为用户属性。 还可以选择“自动生成”，为复制活动生成**源**和**目标**用户属性。
+可以将任何管道活动属性提升为用户属性，使其成为可以监视的实体。 例如，可以将管道中复制活动的**源**和**目标**属性提升为用户属性。 还可以选择“自动生成”  ，为复制活动生成**源**和**目标**用户属性。
 
 ![创建用户属性](media/monitor-visually/monitor-user-properties-image1.png)
 
@@ -118,7 +118,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="rerun-activities-inside-a-pipeline"></a>重新运行管道中的活动
 
-现在可以重新运行管道中的活动。 单击“查看活动运行”并选择要从管道中的活动中的哪个点重新运行管道。
+现在可以重新运行管道中的活动。 单击“查看活动运行”  并选择要从管道中的活动中的哪个点重新运行管道。
 
 ![查看活动运行](media/monitor-visually/rerun-activities-image1.png)
 
@@ -146,7 +146,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ## <a name="alerts"></a>警报
 
-可在数据工厂中发出有关受支持指标的警报。 在“数据工厂监视器”页面上选择“监视器”->“警报和指标”以开始。 
+可在数据工厂中发出有关受支持指标的警报。 在“数据工厂监视器”页面上选择“监视器”->“警报和指标”以开始。   
 
 ![](media/monitor-visually/alerts01.png)
 
@@ -156,7 +156,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ### <a name="create-alerts"></a>创建警报
 
-1.  单击“新建警报规则”以创建新警报。 
+1.  单击“新建警报规则”以创建新警报。   
 
     ![](media/monitor-visually/alerts02.png)
 

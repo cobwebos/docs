@@ -9,10 +9,10 @@ ms.date: 02/07/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 9e5d842cece316bc9c53e1e8583f40a0f222b91d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66151958"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT 中心
@@ -31,7 +31,7 @@ ms.locfileid: "66151958"
 
 ## <a name="create-an-application"></a>创建应用程序
 
-使用[az iotcentral 应用创建](/cli/azure/iotcentral/app#az-iotcentral-app-create)命令在 Azure 订阅中创建的 IoT Central 应用程序。 例如:
+使用[az iotcentral 应用创建](/cli/azure/iotcentral/app#az-iotcentral-app-create)命令在 Azure 订阅中创建的 IoT Central 应用程序。 例如：
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -54,10 +54,10 @@ az iotcentral app create \
 | ----------------- | ----------- |
 | resource-group    | 包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
 | 位置          | 默认情况下，此命令使用的资源组的位置。 目前，可以在**美国东部**、**美国西部**、**北欧**或**西欧**区域创建 IoT Central 应用程序。 |
-| 名称              | 应用程序在 Azure 门户中的名称。 |
-| 子域         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com。 |
+| name              | 应用程序在 Azure 门户中的名称。 |
+| 子域         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com 。 |
 | sku               | 目前，唯一的值是 **S1**（标准层）。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
-| 模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
+| template          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
 | display-name      | UI 中显示的应用程序名称。 |
 
 **应用程序模板**
@@ -84,7 +84,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>删除应用程序
 
-使用[az iotcentral 应用删除](/cli/azure/iotcentral/app#az-iotcentral-app-delete)命令删除 IoT Central 应用程序。 例如:
+使用[az iotcentral 应用删除](/cli/azure/iotcentral/app#az-iotcentral-app-delete)命令删除 IoT Central 应用程序。 例如：
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \

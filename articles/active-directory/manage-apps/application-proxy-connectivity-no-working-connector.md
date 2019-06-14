@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f829b8e8a4bc08b43d3c30a6333771ccd4e26e8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783606"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>找不到应用程序代理应用程序的工作连接器组
@@ -46,7 +46,7 @@ ms.locfileid: "65783606"
 
    ![Azure 门户中的连接器组选择](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-关于这些选项的详细信息，请参阅以下相应部分。 说明假定从连接器管理页开始操作。 如果想要查看上述错误消息，可以通过单击警告消息转到此页。 还可以通过转到“Azure Active Directory”，单击“企业应用程序”，并单击“应用程序代理”到达该页。
+关于这些选项的详细信息，请参阅以下相应部分。 说明假定从连接器管理页开始操作。 如果想要查看上述错误消息，可以通过单击警告消息转到此页。 还可以通过转到“Azure Active Directory”  ，单击“企业应用程序”  ，并单击“应用程序代理”  到达该页。
 
    ![Azure 门户中的连接器组管理](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 

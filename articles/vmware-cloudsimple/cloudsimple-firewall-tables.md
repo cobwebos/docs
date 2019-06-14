@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 861c2e86d623c46c14366f19457d1f689386a316
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64577340"
 ---
 # <a name="firewall-tables-overview"></a>防火墙表概述
@@ -28,7 +28,7 @@ ms.locfileid: "64577340"
 | **名称** | 唯一标识该防火墙规则，并且它的用途的名称。 |
 | **Priority** | 介于 100 和 4096，与最高优先级的 100 之间的数字。 规则按优先顺序处理。 当流量会通过规则匹配时，将停止处理规则。 因此，不被处理优先级较低的优先级较高的规则相同的属性存在任何规则。  请注意避免冲突规则。 |
 | **状态跟踪** | 跟踪可以是无状态 （私有云、 Internet 或 VPN） 或有状态 (公共 IP)。  |
-| 协议 | 选项包括任何，TCP 或 UDP。 如果需要 ICMP，则使用任何。 |
+| 协议  | 选项包括任何，TCP 或 UDP。 如果需要 ICMP，则使用任何。 |
 | **Direction** | 该规则是应用到入站还是出站流量。 |
 | **Action** | 允许或拒绝流量规则中定义的类型。 |
 | **源** | IP 地址、 无类域间路由 (CIDR) 块 (10.0.0.0/24，例如)，或 Any。  指定的范围，服务标记或应用程序安全组，可创建较少的安全规则。 |
@@ -53,7 +53,7 @@ ms.locfileid: "64577340"
 
 在防火墙中的每个表上创建以下默认规则。
 
-|优先度|名称|状态跟踪|Direction|流量类型|Protocol|源|Source Port|目标|Destination Port|操作|
+|优先度|名称|状态跟踪|Direction|流量类型|Protocol|source|Source Port|目标|Destination Port|操作|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|allow-all-to-internet|有状态|出站|公共 IP 或 internet 流量|全部|任意|任意|任意|任意|允许|
 |65001|deny-all-from-internet|有状态|入站|公共 IP 或 internet 流量|全部|任意|任意|任意|任意|拒绝|

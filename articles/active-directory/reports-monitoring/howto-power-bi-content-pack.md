@@ -16,10 +16,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 934562147fedcc81b16fd1ad2534af5662ef4b78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60437583"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>如何使用 Azure Active Directory Power BI 内容包
@@ -53,7 +53,7 @@ Azure AD Power BI 内容包中包含以下报表。 这些报表包含**过去 3
  
 还可以通过选择特定的日期或位置来筛选结果。
 
-**每个应用的唯一用户**：此报表提供使用给定应用的所有唯一用户的视图。 其中只包含“成功”登录到应用程序的用户。
+**每个应用的唯一用户**：此报表提供使用给定应用的所有唯一用户的视图。 其中只包含“成功”登录到应用程序的用户。 
 
 **设备登录**：此报表可帮助你了解组织中使用的各种设备配置文件，并基于用法确定设备策略。 其中提供了有关 OS 类型和用于登录应用程序的浏览器的数据，以及有关用户的详细信息，包括：
 
@@ -66,7 +66,7 @@ Azure AD Power BI 内容包中包含以下报表。 这些报表包含**过去 3
 
 ## <a name="customize-azure-ad-activity-content-pack"></a>自定义 Azure AD 活动内容包
 
-**更改可视化效果**：可以通过单击“编辑报表”并选择所要的可视化效果来更改报表可视化效果。
+**更改可视化效果**：可以通过单击“编辑报表”并选择所要的可视化效果来更改报表可视化效果  。
  
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/09.png) 
  
@@ -86,7 +86,7 @@ Azure AD Power BI 内容包中包含以下报表。 这些报表包含**过去 3
 
 ## <a name="schedule-a-daily-refresh-of-your-power-bi-report"></a>计划每日刷新 Power BI 报表
 
-若要计划每日刷新 Power BI 报表，请转到“数据集” > “设置” > “计划刷新”，然后对其进行设置，如下所示。
+若要计划每日刷新 Power BI 报表，请转到“数据集” > “设置” > “计划刷新”，然后对其进行设置，如下所示。   
  
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/15.png) 
 
@@ -96,7 +96,7 @@ Azure AD Power BI 内容包中包含以下报表。 这些报表包含**过去 3
 
 - 下载新的内容包，并使用本文中的说明安装该包：
 
-- 安装后，转到“数据源” > “设置” > “数据源凭据”，然后重新输入凭据。
+- 安装后，转到“数据源” > “设置” > “数据源凭据”，然后重新输入凭据。   
 
     ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/16.png) 
 

@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 02/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9fe689e6911c5e9497ee82132e8b70bd9aada7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60322227"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>媒体服务事件的 Azure 事件网格架构
@@ -26,7 +26,7 @@ ms.locfileid: "60322227"
 
 ## <a name="job-related-event-types"></a>作业相关事件类型
 
-媒体服务会发出如下所述的**作业**相关事件类型。 有两类作业相关事件：“监视作业状态更改”和“监视作业输出状态更改”。 
+媒体服务会发出如下所述的**作业**相关事件类型。 有两类作业相关事件  ：“监视作业状态更改”和“监视作业输出状态更改”。 
 
 可通过订阅 JobStateChange 事件来注册所有事件。 或者，可以只订阅特定事件（例如，JobErrored、JobFinished 和 JobCanceled 等最终状态）。 
 
@@ -130,13 +130,13 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| previousState | string | 事件发生前的作业状态。 |
-| state | string | 此事件中通知的作业的新状态。 例如，“已计划：作业已准备就绪”或“已完成：作业已完成。”|
+| previousState | 字符串 | 事件发生前的作业状态。 |
+| state | 字符串 | 此事件中通知的作业的新状态。 例如，“已计划：作业已准备就绪”或“已完成：作业已完成。”|
 
-作业状态可以是以下任何一个值：已排队、已计划、正在处理、已完成、错误、已取消、正在取消
+作业状态可以是以下任何一个值：已排队、已计划、正在处理、已完成、错误、已取消、正在取消       
 
 > [!NOTE]
-> 已排队仅出现在 previousState 属性中，不出现在 state 属性中。
+> 已排队仅出现在 previousState 属性中，不出现在 state 属性中    。
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled、JobProcessing、JobCanceling
 
@@ -316,11 +316,11 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
-| ingestUrl | string | 实时事件提供的引入 URL。 |  
-| encoderIp | string | 编码器的 IP。 |
-| encoderPort | string | 此流的来源编码器的端口。 |
-| resultCode | string | 拒绝连接的原因。 下表中列出了结果代码。 |
+| streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
+| ingestUrl | 字符串 | 实时事件提供的引入 URL。 |  
+| encoderIp | 字符串 | 编码器的 IP。 |
+| encoderPort | 字符串 | 此流的来源编码器的端口。 |
+| resultCode | 字符串 | 拒绝连接的原因。 下表中列出了结果代码。 |
 
 结果代码为：
 
@@ -363,10 +363,10 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
-| ingestUrl | string | 实时事件提供的引入 URL。 |
-| encoderIp | string | 编码器的 IP。 |
-| encoderPort | string | 此流的来源编码器的端口。 |
+| streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
+| ingestUrl | 字符串 | 实时事件提供的引入 URL。 |
+| encoderIp | 字符串 | 编码器的 IP。 |
+| encoderPort | 字符串 | 此流的来源编码器的端口。 |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -397,11 +397,11 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
-| ingestUrl | string | 实时事件提供的引入 URL。 |  
-| encoderIp | string | 编码器的 IP。 |
-| encoderPort | string | 此流的来源编码器的端口。 |
-| resultCode | string | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
+| streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
+| ingestUrl | 字符串 | 实时事件提供的引入 URL。 |  
+| encoderIp | 字符串 | 编码器的 IP。 |
+| encoderPort | 字符串 | 此流的来源编码器的端口。 |
+| resultCode | 字符串 | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
 
 错误结果代码为：
 
@@ -454,12 +454,12 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| trackType | string | 轨道类型（音频/视频）。 |
-| trackName | string | 轨道名称。 |
+| trackType | 字符串 | 轨道类型（音频/视频）。 |
+| trackName | 字符串 | 轨道名称。 |
 | 比特率 | integer | 轨道的比特率。 |
-| timestamp | string | 已删除的数据区块的时间戳。 |
-| 时间刻度 | string | 时间戳的时间刻度。 |
-| resultCode | string | 删除数据区块的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
+| timestamp | 字符串 | 已删除的数据区块的时间戳。 |
+| 时间刻度 | 字符串 | 时间戳的时间刻度。 |
+| resultCode | 字符串 | 删除数据区块的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -494,14 +494,14 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| trackType | string | 轨道类型（音频/视频）。 |
-| trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
+| trackType | 字符串 | 轨道类型（音频/视频）。 |
+| trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
 | 比特率 | integer | 轨道的比特率。 |
-| ingestUrl | string | 实时事件提供的引入 URL。 |
-| encoderIp | string  | 编码器的 IP。 |
-| encoderPort | string | 此流的来源编码器的端口。 |
-| timestamp | string | 收到数据区块的第一个时间戳。 |
-| 时间刻度 | string | 用于表示时间戳的时间刻度。 |
+| ingestUrl | 字符串 | 实时事件提供的引入 URL。 |
+| encoderIp | 字符串  | 编码器的 IP。 |
+| encoderPort | 字符串 | 此流的来源编码器的端口。 |
+| timestamp | 字符串 | 收到数据区块的第一个时间戳。 |
+| 时间刻度 | 字符串 | 用于表示时间戳的时间刻度。 |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -533,12 +533,12 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| minLastTimestamp | string | 所有轨迹（音频或视频）中最后一个时间戳的最小值。 |
-| typeOfTrackWithMinLastTimestamp | string | 最后一个时间戳最小的轨迹的类型（音频或视频）。 |
-| maxLastTimestamp | string | 所有轨迹（音频或视频）中所有时间戳的最大值。 |
-| typeOfTrackWithMaxLastTimestamp | string | 最后一个时间戳最大的轨迹的类型（音频或视频）。 |
-| timescaleOfMinLastTimestamp| string | 获取用于表示“MinLastTimestamp”的时间刻度。|
-| timescaleOfMaxLastTimestamp| string | 获取用于表示“MaxLastTimestamp”的时间刻度。|
+| minLastTimestamp | 字符串 | 所有轨迹（音频或视频）中最后一个时间戳的最小值。 |
+| typeOfTrackWithMinLastTimestamp | 字符串 | 最后一个时间戳最小的轨迹的类型（音频或视频）。 |
+| maxLastTimestamp | 字符串 | 所有轨迹（音频或视频）中所有时间戳的最大值。 |
+| typeOfTrackWithMaxLastTimestamp | 字符串 | 最后一个时间戳最大的轨迹的类型（音频或视频）。 |
+| timescaleOfMinLastTimestamp| 字符串 | 获取用于表示“MinLastTimestamp”的时间刻度。|
+| timescaleOfMaxLastTimestamp| 字符串 | 获取用于表示“MaxLastTimestamp”的时间刻度。|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -569,11 +569,11 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| firstTimestamp | string | 收到视频类型的某个轨迹/质量级别的时间戳。 |
-| firstDuration | string | 具有第一个时间戳的数据区块的持续时间。 |
-| secondTimestamp | string  | 收到视频类型的其他某个轨迹/质量级别的时间戳。 |
-| secondDuration | string | 具有第二个时间戳的数据区块的持续时间。 |
-| 时间刻度 | string | 时间戳和持续时间的时间刻度。|
+| firstTimestamp | 字符串 | 收到视频类型的某个轨迹/质量级别的时间戳。 |
+| firstDuration | 字符串 | 具有第一个时间戳的数据区块的持续时间。 |
+| secondTimestamp | 字符串  | 收到视频类型的其他某个轨迹/质量级别的时间戳。 |
+| secondDuration | 字符串 | 具有第二个时间戳的数据区块的持续时间。 |
+| 时间刻度 | 字符串 | 时间戳和持续时间的时间刻度。|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -611,17 +611,17 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| trackType | string | 轨道类型（音频/视频）。 |
-| trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
+| trackType | 字符串 | 轨道类型（音频/视频）。 |
+| trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
 | 比特率 | integer | 轨道的比特率。 |
 | incomingBitrate | integer | 基于来自编码器的数据区块计算出的比特率。 |
-| lastTimestamp | string | 在过去 20 秒收到的轨迹的最新时间戳。 |
-| 时间刻度 | string | 用于表示时间戳的时间刻度。 |
+| lastTimestamp | 字符串 | 在过去 20 秒收到的轨迹的最新时间戳。 |
+| 时间刻度 | 字符串 | 用于表示时间戳的时间刻度。 |
 | overlapCount | integer | 在过去 20 秒数据区块数目包含重叠的时间戳。 |
 | discontinuityCount | integer | 在过去 20 秒观察到的不连续性数目。 |
 | nonIncreasingCount | integer | 在过去 20 秒收到的具有以往时间戳的数据区块数。 |
 | unexpectedBitrate | bool | 在过去 20 秒，预期和实际比特率之差是否超过了允许的限制。 当且仅当 incomingBitrate >= 2* 比特率，或者 incomingBitrate <= 比特率/2，或者 IncomingBitrate = 0 时，此属性的值才为 true。 |
-| state | string | 实时事件的状态。 |
+| state | 字符串 | 实时事件的状态。 |
 | healthy | bool | 指示引入是否正常（基于计数和标志判断）。 如果 overlapCount = 0 并且 discontinuityCount = 0 并且 nonIncreasingCount = 0 并且 unexpectedBitrate = false，则 Healthy 为 true。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -655,13 +655,13 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| trackType | string | 轨道类型（音频/视频）。 |
-| trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
+| trackType | 字符串 | 轨道类型（音频/视频）。 |
+| trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
 | 比特率 | integer | 轨道的比特率。 |
-| previousTimestamp | string | 前一个片段的时间戳。 |
-| newTimestamp | string | 当前片段的时间戳。 |
-| discontinuityGap | string | 上面两个时间戳之间的差距。 |
-| 时间刻度 | string | 用于表示时间戳和非连续性差距的时间刻度。 |
+| previousTimestamp | 字符串 | 前一个片段的时间戳。 |
+| newTimestamp | 字符串 | 当前片段的时间戳。 |
+| discontinuityGap | 字符串 | 上面两个时间戳之间的差距。 |
+| 时间刻度 | 字符串 | 用于表示时间戳和非连续性差距的时间刻度。 |
 
 ### <a name="common-event-properties"></a>自定义事件属性
 
@@ -669,12 +669,12 @@ ms.locfileid: "60322227"
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 主题 | string | EventGrid 主题。 此属性包含媒体服务帐户的资源 ID。 |
-| subject | string | 媒体服务帐户下媒体服务通道的资源路径。 连接主题和使用者可以获得作业的资源 ID。 |
+| topic | 字符串 | EventGrid 主题。 此属性包含媒体服务帐户的资源 ID。 |
+| subject | 字符串 | 媒体服务帐户下媒体服务通道的资源路径。 连接主题和使用者可以获得作业的资源 ID。 |
 | eventType | string | 此事件源的一个注册事件类型。 例如，“Microsoft.Media.JobStateChange”。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | string | 事件的唯一标识符。 |
-| 数据 | 对象 | 媒体服务事件数据。 |
+| data | 对象 | 媒体服务事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 

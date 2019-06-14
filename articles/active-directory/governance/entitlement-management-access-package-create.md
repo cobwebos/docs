@@ -17,16 +17,16 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 312658bd653d94f3e1a32204b3c5ae4ae290558e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65832797"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理 （预览版） 中创建新的访问包
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
+> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -48,15 +48,15 @@ ms.locfileid: "65832797"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中，单击**访问包**。
+1. 在左侧菜单中，单击“访问包”。 
 
-    ![在 Azure 门户中的权利管理](./media/entitlement-management-shared/elm-access-packages.png)
+    ![Azure 门户中的权利管理](./media/entitlement-management-shared/elm-access-packages.png)
 
-1. 单击**新访问包**。
+1. 单击“新建访问包”。 
 
-## <a name="basics"></a>基本
+## <a name="basics"></a>基础
 
 上**基础知识**选项卡上，为访问包提供一个名称并指定哪些目录创建在访问包。
 
@@ -74,7 +74,7 @@ ms.locfileid: "65832797"
 
     若要创建一个新的目录，您必须至少是用户管理员或目录创建者。
 
-1. 单击“下一步”。
+1. 单击“下一步”。 
 
 ## <a name="resource-roles"></a>资源角色
 
@@ -96,7 +96,7 @@ ms.locfileid: "65832797"
 
     ![访问包-资源角色选择](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. 单击“下一步”。
+1. 单击“下一步”。 
 
 ## <a name="policy"></a>策略
 

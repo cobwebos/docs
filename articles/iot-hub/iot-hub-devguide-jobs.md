@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409063"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>在多个设备上计划作业
@@ -68,7 +68,7 @@ Content-Type: application/json; charset=utf-8
 
 [IoT 中心查询语言](iot-hub-devguide-query-language.md)格外详细地介绍了 IoT 中心查询语言。
 
-以下代码片段显示了请求和作业计划为调用一个名为 contoso-中心-1 上的所有设备上的 testMethod 的直接方法的响应：
+以下代码片段演示了特定作业的请求和响应，该作业计划在 contoso-hub-1 的所有设备上调用名为 testMethod 的直接方法：
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job01?api-version=2018-06-30 HTTP/1.1
@@ -121,9 +121,9 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> *UpdateTwin*属性需要有效的 etag 匹配; 例如， `etag="*"`。
+> *updateTwin* 属性要求有效的 etag 匹配，例如 `etag="*"`。
 
-以下代码片段显示了请求和响应作业计划更新的测试设备在 contoso-中心-1 的设备孪生属性：
+以下代码片段演示了特定作业的请求和响应，该作业计划在 contoso-hub-1 上更新 test-device 的设备孪生属性：
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job02?api-version=2018-06-30 HTTP/1.1
@@ -183,22 +183,22 @@ Content-Type: application/json; charset=utf-8
 | **startTime** |应用程序提供的作业开始时间(ISO-8601)。 |
 | **endTime** |IoT 中心提供的作业完成时的日期(ISO-8601)。 只有在作业达到“完成”状态后才有效。 |
 | **type** |作业的类型： |
-| | **scheduleUpdateTwin**:用于更新一组所需的属性或标记的作业。 |
-| | **scheduleDeviceMethod**:用于调用设备方法对一组设备孪生的作业。 |
+| | **scheduleUpdateTwin**：用于更新一组所需属性或标记的作业。 |
+| | **scheduleDeviceMethod**：用于对一组设备孪生调用设备方法的作业。 |
 | **status** |作业的当前状态。 可能的状态值： |
-| | **挂起**:计划并等待作业服务选取。 |
-| | **计划**:计划在将来某个时间。 |
-| | **运行**:当前活动的作业。 |
-| | **取消**:作业已取消。 |
-| | **失败**:作业失败。 |
-| | **完成**:作业已完成。 |
+| | **挂起**：已计划并等待作业服务选取。 |
+| | **已计划**：计划将来的某个时间。 |
+| | **正在运行**：当前活动的作业。 |
+| | **已取消**：作业已取消。 |
+| | **失败**：作业失败。 |
+| | **完成**：作业已完成。 |
 | **deviceJobStatistics** |有关作业执行的统计信息。 |
 | | **deviceJobStatistics** 属性： |
-| | **deviceJobStatistics.deviceCount**:作业中的设备数。 |
-| | **deviceJobStatistics.failedCount**:作业失败的设备数。 |
+| | **deviceJobStatistics.deviceCount**：作业中的设备数。 |
+| | **deviceJobStatistics.failedCount**：作业失败的设备数。 |
 | | **deviceJobStatistics.succeededCount**:作业成功的设备数。 |
-| | **deviceJobStatistics.runningCount**:当前正在运行作业的设备数。 |
-| | **deviceJobStatistics.pendingCount**:等待运行作业的设备数。 |
+| | **deviceJobStatistics.runningCount**：当前正在运行作业的设备数。 |
+| | **deviceJobStatistics.pendingCount**：等待运行作业的设备数。 |
 
 ### <a name="additional-reference-material"></a>其他参考资料
 

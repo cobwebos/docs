@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: f96c3a693ce8fc099374c998b35ce2fa90f4bb3f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66124720"
 ---
 某些必应响应包括必应提供的缩略图的 URL。 可以调整缩略图的大小，也可以对其进行裁剪。 
@@ -17,7 +17,7 @@ ms.locfileid: "66124720"
 > 确保缩略图的大小和裁剪提供了搜索方案并尊重第三方权利，如必应搜索 API 使用和显示要求所要求的那样。
 
 
-若要调整图像大小，包括 w （宽） 查询参数，h （高度） 查询参数，或在缩略图的 URL。 以像素为单位指定宽和高。 例如:  
+若要调整图像大小，包括 w （宽） 查询参数，h （高度） 查询参数，或在缩略图的 URL。 以像素为单位指定宽和高。 例如：  
   
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=200&h=200`  
   

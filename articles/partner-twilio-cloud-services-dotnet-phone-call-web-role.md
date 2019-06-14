@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: jeconnoc
 ms.openlocfilehash: c41057203da949e371f62332e938feb92e84534f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60422778"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>如何在 Azure 的 Web 角色中使用 Twilio 发起电话呼叫
@@ -38,11 +38,11 @@ ms.locfileid: "60422778"
 <a id="use_nuget"></a>向你的 Web 角色项目中添加 Twilio 库：
 
 1. 在 Visual Studio 中打开解决方案。
-2. 右键单击“引用”。
-3. 单击“管理 NuGet 包”。
-4. 单击“联机”。
+2. 右键单击“引用”。 
+3. 单击“管理 NuGet 包”。 
+4. 单击“联机”。 
 5. 在联机搜索框中，键入 *twilio*。
-6. 单击 Twilio 程序包对应的“安装”。
+6. 单击 Twilio 程序包对应的“安装”。 
 
 以下代码演示了如何创建 Web 窗体来检索用于发起呼叫的用户数据。 本示例创建名为 **TwilioCloud** 的 ASP.NET Web 角色。
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60325419"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
@@ -37,7 +37,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 又叫[应用服务应用](#app-service-app)。
 
 ## <a name="app-service-app"></a>应用服务应用
-[Azure 应用服务](app-service/overview.md)提供的用于托管网站或 Web 应用程序、Web API 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)的计算资源。 应用服务应用也称为“应用服务”、“Web 应用”、“API 应用”和“移动应用”。
+[Azure 应用服务](app-service/overview.md)提供的用于托管网站或 Web 应用程序、Web API 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)的计算资源。 应用服务应用也称为“应用服务”  、“Web 应用”  、“API 应用”  和“移动应用”  。
 
 ## <a name="availability-set"></a>可用性集
 可一起管理的、用于提供应用程序冗余和可靠性的虚拟机集合。 使用可用性集可确保在计划内或计划外维护事件期间，至少有一个虚拟机可用。  
@@ -91,7 +91,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 用于部署和管理 Azure 服务的安全 Web 门户。
 
 ## <a name="region"></a>region
-某个地区内不跨国界且包含一个或多个数据中心的区域。 定价、区域性服务和优惠类型在区域级别公开。 一个区域通常与另一个区域配对，两者距离最多可达数百英里。 区域对可用作灾难恢复和高可用性方案的机制。 也称为位置。  
+某个地区内不跨国界且包含一个或多个数据中心的区域。 定价、区域性服务和优惠类型在区域级别公开。 一个区域通常与另一个区域配对，两者距离最多可达数百英里。 区域对可用作灾难恢复和高可用性方案的机制。 也称为位置  。  
 请参阅 [Azure 区域](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>resource

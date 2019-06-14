@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414609"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>故障排除结合安全信息注册 （预览版）
@@ -35,7 +35,7 @@ ms.locfileid: "60414609"
 
 下表列出了生成的组合注册的所有审核事件：
 
-| 活动 | 状态 | 原因 | 描述 |
+| activities | 状态 | 原因 | 描述 |
 | --- | --- | --- | --- |
 | 用户已注册的所有所需的安全信息 | Success | 用户已注册的所有所需的安全信息。 | 当用户成功完成注册时发生此事件。|
 | 用户已注册的所有所需的安全信息 | 失败 | 用户已取消安全信息注册。 | 当用户取消注册从中断模式时，将发生此事件。|

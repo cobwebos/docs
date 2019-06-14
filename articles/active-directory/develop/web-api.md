@@ -18,10 +18,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 484e6b4c5f0e064254c957b07b8ba15ef98f2634
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545217"
 ---
 # <a name="web-api"></a>Web API
@@ -71,7 +71,7 @@ Web API 应用是需要通过 Web API 获取资源的 Web 应用。 在此方案
 
 若要向 Azure AD v1.0 终结点注册应用程序，请参阅[注册应用](quickstart-register-app.md)。
 
-* 单租户 - 对于应用程序标识和委托用户标识这两种情况，Web 应用和 Web API 都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制 Web 应用程序对其资源的访问。 如果使用的是委托用户标识类型，则 Web 应用需要从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
+* 单租户 - 对于应用程序标识和委托用户标识这两种情况，Web 应用和 Web API 都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制 Web 应用程序对其资源的访问。 如果使用的是委托用户标识类型，则 Web 应用需要从 Azure 门户的“对其他应用程序的权限”  下拉菜单中选择所需的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
 * 多租户 - 首先，Web 应用在配置后会指示它在正常运行时所需的权限。 当目标目录中的用户或管理员表示许可应用程序的要求时（这会使应用程序可供其组织使用），此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，会在其目录中注册 Web 应用程序和 Web API。
 
 ## <a name="token-expiration"></a>令牌过期

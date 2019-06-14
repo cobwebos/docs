@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: jingwang
 ms.openlocfilehash: 4c388f012cd52f0adea93ae62cc31832488fca74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60387904"
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure Database for MySQL 复制数据
@@ -47,7 +47,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 描述 | 选项 | 需要 |
+| 属性 | 描述 | 选项 | 必选 |
 |:--- |:--- |:--- |:--- |
 | SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 SSL 加密和验证。 例如 `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | UseSystemTrustStore | 此选项指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 例如 `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Default)** | 否 |
@@ -137,7 +137,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 ### <a name="azure-database-for-mysql-as-source"></a>Azure Database for MySQL 用作源
 
-要从 Azure Database for MySQL 复制数据，请将复制活动中的源类型设置为 **AzureMySqlSource**。 复制活动源部分支持以下属性：
+要从 Azure Database for MySQL 复制数据，请将复制活动中的源类型设置为 **AzureMySqlSource**。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

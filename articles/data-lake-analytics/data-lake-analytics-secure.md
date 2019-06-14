@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.openlocfilehash: 9fbc94259d6fdfb6758204efd6e6f0a346dc58da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813366"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中配置对作业信息的用户访问权限 
@@ -25,7 +25,7 @@ ms.locfileid: "60813366"
 
 ## <a name="configure-user-access-to-job-information"></a>配置对作业信息的用户访问权限
 
-你可以使用“添加用户向导”在文件夹上配置 ACL。 有关详细信息，请参阅[添加新用户](data-lake-analytics-manage-use-portal.md#add-a-new-user)。
+你可以使用“添加用户向导”  在文件夹上配置 ACL。 有关详细信息，请参阅[添加新用户](data-lake-analytics-manage-use-portal.md#add-a-new-user)。
 
 如果需要更细化控制或需要为权限编写脚本，则按如下方式保护文件夹：
 

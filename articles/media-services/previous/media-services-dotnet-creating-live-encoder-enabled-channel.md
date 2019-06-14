@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako;anilmur
 ms.openlocfilehash: b2ff6caa4c1b3626e4be1684976441be6ecbfe30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61231397"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
@@ -28,7 +28,7 @@ ms.locfileid: "61231397"
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
 > 
 > 
 
@@ -65,7 +65,7 @@ ms.locfileid: "61231397"
 11. 通过创建按需定位器发布与节目关联的资产。
 
     >[!NOTE]
-    >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+    >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
 
 12. 在准备好开始流式传输和存档时，启动节目。
 13. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
@@ -89,7 +89,7 @@ ms.locfileid: "61231397"
 ## <a name="prerequisites"></a>必备组件
 以下是完成本教程所需具备的条件。
 
-* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完后，也可保留帐户并使用免费的 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
+* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完后，也可保留帐户并使用免费的 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
 * 必须使用适用于 .NET 的媒体服务 SDK 版本 3.2.0.0 或更高版本。

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153428"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
@@ -159,7 +159,7 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 您可以找到从 Azure 门户的托管的标识信息-> 数据工厂-> 属性：
 
 - 托管标识对象 ID
-- 托管标识租户
+- 托管的标识租户
 - **托管标识应用程序 ID** > 复制此值
 
 ![检索托管的标识](media/data-factory-service-identity/retrieve-service-identity-portal.png)

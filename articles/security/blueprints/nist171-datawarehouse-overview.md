@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: a1850ecfbb21eb9495bb0e6de362dc8dee3026a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609595"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Azure 安全性和符合性蓝图 - 符合 NIST SP 800-171 的数据仓库
@@ -39,7 +39,7 @@ SQL Server 负载均衡器将管理 SQL 流量以确保高性能。 此参考体
 
 为了增强安全性，将通过 Azure 资源管理器以资源组的形式管理此解决方案中的所有资源。 Azure Active Directory (Azure AD) 基于角色的访问控制 (RBAC) 用于控制对已部署资源的访问。 这些资源包括 Azure Key Vault 中的客户密钥。 通过 Azure 安全中心和 Azure Monitor 监视系统运行状况。 客户可将这两个监视服务均配置为捕获日志。 系统运行状况在一个仪表板中显示，方便使用。
 
-VM 可作为管理守护主机。 它可为管理员提供安全连接以访问部署的资源。 数据将通过此管理守护主机加载到临时区域。 我们建议配置 VPN 或 Azure ExpressRoute 连接，以便进行管理和将数据导入参考体系结构子网。
+VM 可作为管理守护主机。 它可为管理员提供安全连接以访问部署的资源。 数据将通过此管理守护主机加载到临时区域。 我们建议配置 VPN 或 Azure ExpressRoute 连接，以便进行管理和将数据导入参考体系结构子网。 
 
 ![符合 NIST SP 800-171 的数据仓库的参考体系结构关系图](images/nist171-dw-architecture.png "符合 NIST SP 800-171 的数据仓库的参考体系结构关系图")
 
@@ -117,7 +117,7 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 -   [加密列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)可以确保敏感数据永远不会在数据库系统中以明文形式显示。 启用数据加密后，只有具有密钥访问权限的客户端应用程序或应用服务器才能访问明文数据。
 - [扩展属性](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addextendedproperty-transact-sql)可用于停止处理数据主体。 用户可以向数据库对象添加自定义属性。 另外，他们还可以将数据标记为“已停止”，以支持应用程序逻辑防止处理关联的财务数据。
 - [行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)使用户能够定义策略来限制对数据的访问，以停止处理。
-- [SQL 数据库动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)通过对非特权用户或应用程序模糊化敏感数据来限制此类数据的泄露。 它可以自动发现潜在的敏感数据，并建议应用合适的掩码。 动态数据掩码有助于减少访问，以便敏感数据不会由未经授权访问而退出数据库。 客户需要负责根据其数据库架构调整设置。
+- [SQL 数据库动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)通过对非特权用户或应用程序模糊化敏感数据来限制此类数据的泄露。 它可以自动发现潜在的敏感数据，并建议应用合适的掩码。 动态数据掩码有助于减少访问，以便敏感数据不会由未经授权访问而退出数据库。 客户需要负责根据其数据库架构调整设置。 
 
 ### <a name="identity-management"></a>身份管理
 以下技术在 Azure 环境中提供用于管理数据访问的功能：

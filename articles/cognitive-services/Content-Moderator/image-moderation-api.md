@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60699267"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
@@ -66,7 +66,7 @@ ms.locfileid: "60699267"
 
 ## <a name="detecting-faces"></a>检测人脸
 
-检测人脸有助于检测图像中的个人数据，例如人脸。 可以检测每个图像中的潜在人脸和潜在人脸的数量。
+检测人脸有助于检测个人数据，例如图像中的人脸。 可以检测每个图像中的潜在人脸和潜在人脸的数量。
 
 响应包括以下信息：
 
@@ -106,7 +106,7 @@ ms.locfileid: "60699267"
 可以将令人反感的图像添加到阻止内容的自定义列表中，而不是多次审核同一图像。 这样，内容审核系统就会将传入图像与自定义列表进行比较，并停止任何进一步处理。
 
 > [!NOTE]
-> 最大限制为“5 个图像列表”，每个列表“不超过 10,000 个图像”。
+> 最大限制为“5 个图像列表”  ，每个列表“不超过 10,000 个图像”  。
 >
 
 内容审查器提供了完整的[图像列表管理 API](try-image-list-api.md)，其中包含用于管理自定义图像列表的操作。 从[图像列表 API 控制台](try-image-list-api.md)开始，使用 REST API 代码示例。 如果熟悉 Visual Studio 和 C#，还请参阅[图像列表 .NET 快速入门](image-lists-quickstart-dotnet.md)。

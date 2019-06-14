@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
 ms.openlocfilehash: 352833b12c00abbefcf7016d27dfb580ee25e450
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60409228"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
@@ -24,7 +24,7 @@ ms.locfileid: "60409228"
 在 Azure 门户中创建新的 Azure 订阅：
 
 * 导航到[订阅边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
-* 单击顶部的“+ 添加”按钮
+* 单击顶部的“+ 添加”按钮 
 * 如果提示，请登录
 * 选择套餐，逐步完成创建新订阅的各个步骤
 
@@ -91,12 +91,12 @@ ms.locfileid: "60409228"
 
 从 Azure 门户创建存储服务终结点。 
 
-1. 在门户中，单击左侧的“虚拟网络”。
+1. 在门户中，单击左侧的“虚拟网络”  。
 1. 选择群集的 vnet。 
-1. 单击左侧的“服务终结点”。
-1. 单击顶部的“添加”。
+1. 单击左侧的“服务终结点”  。
+1. 单击顶部的“添加”  。
 1. 将服务作为``Microsoft.Storage``选择群集的子网。
-1. 在底部单击“添加”。
+1. 在底部单击“添加”  。
 
    ![带注释的 Azure 门户屏幕截图，注释标明创建服务终结点的步骤](media/avere-vfxt-service-endpoint.png)
 

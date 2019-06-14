@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60770540"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>教程：查询 Azure Databricks 笔记本中的虚拟网络中的 SQL Server Linux Docker 容器
@@ -64,8 +64,8 @@ ms.locfileid: "60770540"
     
     |设置|建议的值|描述|
     |-------|---------------|-----------|
-    |源|IP 地址|IP 地址指定的特定源 IP 地址将允许或拒绝此规则从传入的流量。|
-    |源 IP 地址|< 你的公共 ip\>|输入公共 IP 地址。 可以通过访问查找公共 IP 地址[bing.com](https://www.bing.com/)并搜索 **"我的 IP"**。|
+    |source|IP 地址|IP 地址指定的特定源 IP 地址将允许或拒绝此规则从传入的流量。|
+    |源 IP 地址|< 你的公共 ip\>|输入公共 IP 地址。 可以通过访问查找公共 IP 地址[bing.com](https://www.bing.com/)并搜索 **"我的 IP"** 。|
     |源端口范围|*|允许来自任何端口的流量。|
     |目标|IP 地址|IP 地址指定的特定源 IP 地址将允许或拒绝此规则的传出流量。|
     |目标 IP 地址|< 你 vm 的公共 ip\>|输入虚拟机的公共 IP 地址。 您可以在上找到此**概述**虚拟机的页面。|
@@ -80,7 +80,7 @@ ms.locfileid: "60770540"
 
     |设置|建议的值|描述|
     |-------|---------------|-----------|
-    |源|IP 地址|IP 地址指定的特定源 IP 地址将允许或拒绝此规则从传入的流量。|
+    |source|IP 地址|IP 地址指定的特定源 IP 地址将允许或拒绝此规则从传入的流量。|
     |源 IP 地址|10.179.0.0/16|输入你的虚拟网络的地址范围。|
     |源端口范围|*|允许来自任何端口的流量。|
     |目标|IP 地址|IP 地址指定的特定源 IP 地址将允许或拒绝此规则的传出流量。|
@@ -197,9 +197,9 @@ ms.locfileid: "60770540"
 
 若不再需要资源组、Azure Databricks 工作区以及所有相关资源，请将其删除。 删除作业可避免产生不必要的计费。 若计划将来使用 Azure Databricks 工作区，则可停止群集并在以后重启。 如果不打算继续使用此 Azure Databricks 工作区，请使用以下步骤删除在本教程中创建的所有资源：
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击所创建的资源的名称。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，并单击所创建的资源的名称。
 
-2. 在资源组页上选择“删除”，在文本框中键入要删除的资源的名称，然后再次选择“删除”。
+2. 在资源组页上选择“删除”，在文本框中键入要删除的资源的名称，然后再次选择“删除”   。
 
 ## <a name="next-steps"></a>后续步骤
 

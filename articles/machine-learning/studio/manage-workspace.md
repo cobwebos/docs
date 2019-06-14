@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
 ms.openlocfilehash: a947f9a94dd4ceed624e6b04a671b21b8926d25e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60322781"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>管理 Azure 机器学习工作室工作区
@@ -33,13 +33,13 @@ ms.locfileid: "60322781"
 若要在 Azure 门户中管理工作室工作区，请执行以下操作：
 
 1. 使用 Azure 订阅管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在页面顶部的搜索框中，输入“机器学习工作室工作区”，并选择“机器学习工作室工作区”。
+2. 在页面顶部的搜索框中，输入“机器学习工作室工作区”，并选择“机器学习工作室工作区”  。
 3. 单击想要管理的工作区。
 
 除了标准的资源管理信息和可用选项外，还可以：
 
 - 查看**属性** - 此页显示工作区和资源信息，并可以更改此工作区连接到的订阅和资源组。
-- **重新同步存储密钥** - 此工作区维护存储帐户的密钥。 如果存储帐户更改密钥，则可以单击“重新同步密钥”将密钥与工作区同步。
+- **重新同步存储密钥** - 此工作区维护存储帐户的密钥。 如果存储帐户更改密钥，则可以单击“重新同步密钥”  将密钥与工作区同步。
 
 若要管理与此工作区关联的 Web 服务，请使用“机器学习工作室 Web 服务”门户。 有关完整信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
 

@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955960"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自动缩放和应用服务环境 v1
@@ -35,7 +35,7 @@ Azure 应用服务环境支持*自动调整规模*。 可以根据指标或计�
 自动缩放可以自动地增长和收缩应用服务环境，使之与预算和/或负载分布相适应，从而优化资源利用情况。
 
 ## <a name="configure-worker-pool-autoscale"></a>配置辅助池自动缩放
-可以通过工作节点池的“设置”选项卡访问自动调整规模功能。
+可以通过工作节点池的“设置”选项卡访问自动调整规模功能。 
 
 ![辅助池的“设置”选项卡。][settings-scale]
 

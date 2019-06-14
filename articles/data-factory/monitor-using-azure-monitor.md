@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
 ms.openlocfilehash: e96e462709ab0c715c831bd10c628869d5c617fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60319061"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
@@ -412,7 +412,7 @@ ADFV2 发出以下指标
 
 为数据工厂启用诊断设置。
 
-1.  选择“Azure Monitor” -> “诊断设置”-> 选择数据工厂 -> 启用诊断。
+1.  选择“Azure Monitor” -> “诊断设置”-> 选择数据工厂 -> 启用诊断。  
 
     ![monitor-oms-image1.png](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
@@ -426,7 +426,7 @@ ADFV2 发出以下指标
 
 ![monitor-oms-image4.png](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-单击“创建”并选择工作区和工作区设置。
+单击“创建”  并选择工作区和工作区设置。
 
 ![monitor-oms-image5.png](media/data-factory-monitor-oms/monitor-oms-image5.png)
 
@@ -462,20 +462,20 @@ ADFV2 发出以下指标
 
 ## <a name="alerts"></a>警报
 
-登录到 Azure 门户，然后依次单击“监视器”-&gt;“警报”以创建警报。
+登录到 Azure 门户，然后依次单击“监视器”-&gt;“警报”  以创建警报。
 
 ![门户菜单中的警报](media/monitor-using-azure-monitor/alerts_image3.png)
 
 ### <a name="create-alerts"></a>创建警报
 
-1.  单击“+ 新建警报规则”，创建新的警报。
+1.  单击“+ 新建警报规则”，创建新的警报  。
 
     ![新建警报规则](media/monitor-using-azure-monitor/alerts_image4.png)
 
-2.  定义警报条件。
+2.  定义警报条件  。
 
     > [!NOTE]
-    > 请务必在“按资源类型筛选”中选择“所有”。
+    > 请务必在“按资源类型筛选”中选择“所有”   。
 
     ![警报条件，第 1 屏，共 3 屏](media/monitor-using-azure-monitor/alerts_image5.png)
 
@@ -483,11 +483,11 @@ ADFV2 发出以下指标
 
     ![警报条件，第 3 屏，共 3 屏](media/monitor-using-azure-monitor/alerts_image7.png)
 
-3.  定义警报详细信息。
+3.  定义警报详细信息  。
 
     ![警报详细信息](media/monitor-using-azure-monitor/alerts_image8.png)
 
-4.  定义操作组。
+4.  定义操作组  。
 
     ![操作组，第 1 屏，共 4 屏](media/monitor-using-azure-monitor/alerts_image9.png)
 

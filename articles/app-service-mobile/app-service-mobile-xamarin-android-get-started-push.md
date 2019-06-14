@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: f2c58d64a662a6e2be355c1f672c01e5a679b3f8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127928"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加推送通知
@@ -70,7 +70,7 @@ ms.locfileid: "62127928"
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
-2. 单击“应用” > “设置” > “添加帐户”，然后按提示操作将 Google 帐户添加到 Android 设备。
+2. 单击“应用”   > “设置”   > “添加帐户”  ，然后按提示操作将 Google 帐户添加到 Android 设备。
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 

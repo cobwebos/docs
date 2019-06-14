@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 652175e99c800b8e4aa69c639f0bdb9aba838987
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544658"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
@@ -209,7 +209,7 @@ AcquireToken 是用于获取令牌的默认 ADAL 方法。 在需要用户标识
 
 #### <a name="net"></a>.NET
 
-以下指南提供了与所有非自动 AcquireToken(…) ADAL 方法相关的错误处理示例，但以下方法除外： 
+以下指南提供了与所有非自动 AcquireToken(…) ADAL 方法相关的错误处理示例，但以下方法除外  ： 
 
 - AcquireTokenAsync(…, IClientAssertionCertification, …)
 - AcquireTokenAsync(…,ClientCredential, …)
@@ -376,7 +376,7 @@ AcquireToken 失败存在以下情况：
 |------|-------------|
 | **情况 1**：<br>可通过交互式式请求解决 | 1.如果 login() 失败，请勿立即执行重试。 仅在用户执行某一操作，提示重试后才重试。|
 | **情况 2**：<br>不可通过交互式请求解决。 错误可重试。 | 1.执行一次重试，因为最终用户可能已进入某种会带来成功的状态。<br><br>2.如果重试失败，请根据调用重试的特定错误向最终用户显示操作（“尝试再次登录”）。 |
-| 情况 3：<br>不可通过交互式请求解决。 错误不可重试。 | 1.不要尝试立即重试。 根据调用重试的特定错误向最终用户显示操作（“尝试再次登录”）。 |
+| 情况 3  ：<br>不可通过交互式请求解决。 错误不可重试。 | 1.不要尝试立即重试。 根据调用重试的特定错误向最终用户显示操作（“尝试再次登录”）。 |
 
 代码按如下所示进行实现：
 
@@ -409,7 +409,7 @@ AuthContext.acquireToken(…, function(error, errorDesc, token) {
 
 #### <a name="all-scenarios"></a>所有情况
 
-对于所有服务到服务应用程序情况，包括代表：
+对于所有服务到服务应用程序情况，包括代表  ：
 
 - 不要尝试立即重试。 ADAL 尝试对某些失败的请求执行一次重试。 
 - 只有在用户或应用操作提示重试后才能继续重试。 例如，守护程序应用程序在某个设置间隔内未正常运行，应等到下一时间间隔再进行重试。
@@ -440,7 +440,7 @@ catch (AdalException e) {
 
 #### <a name="on-behalf-of-scenarios"></a>代表情况
 
-适用于所有代表服务到服务应用程序情况。
+适用于所有代表服务到服务应用程序情况  。
 
 以下指南提供了与 ADAL 方法有关的错误处理示例： 
 

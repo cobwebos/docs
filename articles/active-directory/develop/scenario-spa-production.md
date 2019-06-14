@@ -16,10 +16,10 @@ ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6a04f5d62ec750cfbe44765e833552bd694654d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65075005"
 ---
 # <a name="single-page-application---move-to-production"></a>单页面应用程序-移动到生产环境
@@ -30,11 +30,11 @@ ms.locfileid: "65075005"
 
 按照准备将应用生产所需的步骤。
 
-- [启用日志记录](msal-logging.md)在应用程序中。
+- 在你的应用程序中[启用日志记录](msal-logging.md)。
 
 ## <a name="test-your-integration"></a>测试你的集成
 
-- 按照测试你的集成[Microsoft 标识平台集成清单](identity-platform-integration-checklist.md)。
+- 按照 [Microsoft 标识平台集成清单](identity-platform-integration-checklist.md)测试你的集成。
 
 ## <a name="next-steps"></a>后续步骤
 

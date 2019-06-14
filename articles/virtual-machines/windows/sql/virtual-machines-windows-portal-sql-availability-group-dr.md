@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.openlocfilehash: f9e31ac7685d597c741033bc165c6a51280e3d72
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571728"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure 虚拟机上配置 Always On 可用性组
@@ -96,7 +96,7 @@ ms.locfileid: "64571728"
 
 1. 在群集上创建 IP 地址资源。
 
-   可在故障转移群集管理器中创建 IP 地址资源。 右键单击可用性组角色，单击“添加资源”，“更多资源”，然后单击“IP 地址”。
+   可在故障转移群集管理器中创建 IP 地址资源。 右键单击可用性组角色，单击“添加资源”  ，“更多资源”  ，然后单击“IP 地址”  。
 
    ![创建 IP 地址](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "64571728"
    ![可用性组](./media/virtual-machines-windows-portal-sql-availability-group-dr/50-configure-dependency-multiple-ip.png)
 
    >[!IMPORTANT]
-   >群集资源组包括了两个 IP 地址。 两个 IP 地址都是侦听器客户端访问点的依赖项。 在群集依赖项配置中使用“OR”群集运算符。
+   >群集资源组包括了两个 IP 地址。 两个 IP 地址都是侦听器客户端访问点的依赖项。 在群集依赖项配置中使用“OR”  群集运算符。
 
 1. [在 PowerShell 中设置群集参数](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam)。
 
@@ -145,23 +145,23 @@ ms.locfileid: "64571728"
 
 最好是通过更新客户端连接字符串来设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 连接](https://msdn.microsoft.com/library/gg471494#Anchor_0)。
 
-如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[超时错误，并且你无法连接到多子网环境中的 SQL Server 2012 AlwaysOn 可用性组侦听器](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
+如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[出现超时错误并且在多子网环境中无法连接到 SQL Server 2012 AlwaysOn 可用性组侦听程序](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
 
 ## <a name="fail-over-to-remote-region"></a>故障转移到远程区域
 
 要测到远程区域的试侦听器连接性，可将副本故障转移到远程区域。 副本异步时，故障转移容易出现潜在的数据丢失。 要故障转移且不丢失数据，请将可用性模式改为同步，并将故障转移模式设置为自动。 请执行以下步骤：
 
-1. 在“对象资源管理器”中连接到承载主副本的 SQL Server 实例。
-1. 在“AlwaysOn 可用性组”的“可用性组”下，右键单击可用性组，然后单击“属性”。
-1. 在“常规”页上的“可用性副本”下，将灾难恢复站点中的辅助副本设置为使用“同步提交”可用性模式和“自动”故障转移模式。
-1. 如果辅助副本和主副本位于同一站点，且辅助副本具有高可用性，则将辅助副本设置为“异步提交”和“手动”。
+1. 在“对象资源管理器”  中连接到承载主副本的 SQL Server 实例。
+1. 在“AlwaysOn 可用性组”  的“可用性组”  下，右键单击可用性组，然后单击“属性”  。
+1. 在“常规”  页上的“可用性副本”  下，将灾难恢复站点中的辅助副本设置为使用“同步提交”  可用性模式和“自动”  故障转移模式。
+1. 如果辅助副本和主副本位于同一站点，且辅助副本具有高可用性，则将辅助副本设置为“异步提交”  和“手动”  。
 1. 单击“确定”。
-1. 在“对象资源管理器”中，右键单击可用性组中，并单击“显示仪表板”。
+1. 在“对象资源管理器”  中，右键单击可用性组中，并单击“显示仪表板”  。
 1. 在仪表板上确认灾难恢复恢复上的副本为同步。
-1. 在“对象资源管理器”中，右键单击可用性组中，然后单击“付账转移...”。SQL Server Management Studio 将打开向导对 SQL Server 进行故障转移。  
-1. 单击“下一步”，并选择灾难恢复站点中的 SQL Server 实例。 再次单击“下一步”。
-1. 连接到灾难恢复站点中的 SQL Server 实例，并单击“下一步”。
-1. 在“摘要”页上查看设置，并单击“完成”。
+1. 在“对象资源管理器”  中，右键单击可用性组中，然后单击“付账转移...”  。SQL Server Management Studio 将打开向导对 SQL Server 进行故障转移。  
+1. 单击“下一步”  ，并选择灾难恢复站点中的 SQL Server 实例。 再次单击“下一步”  。
+1. 连接到灾难恢复站点中的 SQL Server 实例，并单击“下一步”  。
+1. 在“摘要”  页上查看设置，并单击“完成”  。
 
 测试连接性之后，将主副本移回主数据中心，并将可用性模式设置回其正常运行设置。 下表显示了本文档所述体系结构的正常运行设置：
 
@@ -174,7 +174,7 @@ ms.locfileid: "64571728"
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>有关计划和强制的手动故障转移的详细信息
 
-相关详细信息，请参阅以下主题：
+有关详细信息，请参阅下列主题：
 
 - [对可用性组执行计划的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [对可用性组执行强制的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mstephen
 ms.openlocfilehash: 295a991e610e76971413a2abdba1e2fcc5f9eba6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246684"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD 域服务托管域中的同步
@@ -60,7 +60,7 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>特定的属性如何同步到托管域
 下表列出一些常用属性，并说明它们如何同步到托管域。
 
-| 托管域中的属性 | 源 | 说明 |
+| 托管域中的属性 | source | 说明 |
 |:--- |:--- |:--- |
 | UPN |用户在 Azure AD 租户中的 UPN 属性 |Azure AD 租户中的 UPN 属性将按原样同步到托管域。 因此，登录到托管域的最可靠方法是使用 UPN。 |
 | SAMAccountName |用户在 Azure AD 租户中的或自动生成的 mailNickname 属性 |SAMAccountName 属性源自 Azure AD 租户中的 mailNickname 属性。 如果多个用户帐户具有相同的 mailNickname 属性，会自动生成 SAMAccountName。 如果用户的 mailNickname 或 UPN 前缀长度超过 20 个字符，会自动生成 SAMAccountName，以满足 SAMAccountName 属性不超过 20 个字符的限制。 |

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08a265637274f396497da37706391bf44e0c9107
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60437016"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>将 Azure Active Directory 日志与 ArcSight 使用 Azure Monitor 集成
@@ -40,14 +40,14 @@ ms.locfileid: "60437016"
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>将 Azure AD 日志与 ArcSight 集成
 
-1. 首先，完成配置指南“先决条件”部分中的步骤。 此部分包括下列步骤：
-    * 在 Azure 中设置用户权限，以确保某个用户具有“所有者”角色，可部署和配置连接器。
+1. 首先，完成配置指南“先决条件”  部分中的步骤。 此部分包括下列步骤：
+    * 在 Azure 中设置用户权限，以确保某个用户具有“所有者”  角色，可部署和配置连接器。
     * 在具有 Syslog NG 守护程序 SmartConnector 的服务器上打开端口，以便可从 Azure 访问它。 
     * 部署会运行 Windows PowerShell 脚本，因此必须启用 PowerShell 以在要部署连接器的计算机上运行脚本。
 
-2. 按照配置指南“部署连接器”部分中的步骤来部署连接器。 此部分会演示如何下载和提取连接器、配置应用程序属性以及从提取的文件夹运行部署脚本。 
+2. 按照配置指南“部署连接器”  部分中的步骤来部署连接器。 此部分会演示如何下载和提取连接器、配置应用程序属性以及从提取的文件夹运行部署脚本。 
 
-3. 按照“在 Azure 中验证部署”部分中的步骤来确保连接器已设置并正常工作。 验证以下各项：
+3. 按照“在 Azure 中验证部署”  部分中的步骤来确保连接器已设置并正常工作。 验证以下各项：
     * 在 Azure 订阅中创建了必要的 Azure 函数。
     * Azure AD 日志流式传输到正确的目标。 
     * 部署中的应用程序设置保留在 Azure Function App 的“应用程序设置”中。 

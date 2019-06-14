@@ -11,17 +11,17 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 80b196b34e8eee99ed77c3c8a914f89fa68d87b8
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512955"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义的 OAuth2 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支持。 OAuth2 授权和委派的身份验证的主要协议。 有关详细信息，请参阅 [RFC 6749 - OAuth 2.0 授权框架](https://tools.ietf.org/html/rfc6749)。 使用 OAuth2 技术配置文件，您可以联合使用 OAuth2 基于的标识提供程序，如 Facebook。 与标识提供者联合允许用户使用其现有的社交登录或企业标识。
+Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支持。 OAuth2 授权和委派的身份验证的主要协议。 有关详细信息，请参阅 [RFC 6749 - OAuth 2.0 授权框架](https://tools.ietf.org/html/rfc6749)。 使用 OAuth2 技术配置文件，您可以联合使用 OAuth2 基于的标识提供程序，如 Facebook。 与标识提供者联合允许用户使用其现有的社交或企业标识登录。
 
 ## <a name="protocol"></a>Protocol
 

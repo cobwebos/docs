@@ -13,10 +13,10 @@ ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900883"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
@@ -170,7 +170,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>进程
+#### <a name="process"></a>Process
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -229,8 +229,8 @@ module.Initialize(TelemetryConfiguration.Active);
 
 此示例演示如何跟踪 `Enqueue` 操作。 可以：
 
- - **关联重试（如果有）**：它们都有一个共同的父级，即 `Enqueue` 操作。 否则，它们都作为传入请求的子级进行跟踪。 如果有多个对队列的逻辑请求，可能很难发现导致重试的调用。
- - **关联存储日志（如果需要）**：它们与 Application Insights 遥测相关联。
+ - **关联重试（如果有）** ：它们都有一个共同的父级，即 `Enqueue` 操作。 否则，它们都作为传入请求的子级进行跟踪。 如果有多个对队列的逻辑请求，可能很难发现导致重试的调用。
+ - **关联存储日志（如果需要）** ：它们与 Application Insights 遥测相关联。
 
 `Enqueue` 操作是某个父操作（例如，传入 HTTP 请求）的子级。 HTTP 依赖项调用是 `Enqueue` 操作的子级以及传入请求的孙级：
 
@@ -335,7 +335,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>进程
+#### <a name="process"></a>Process
 
 在以下示例中，通过类似于跟踪传入 HTTP 请求的方式跟踪传入消息：
 

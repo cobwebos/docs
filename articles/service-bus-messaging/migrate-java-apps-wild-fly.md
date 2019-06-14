@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: asirveda
 ms.openlocfilehash: 60f4e410c7c4e3854235029acade550c9279c981
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158716"
 ---
 # <a name="migrate-java-enterprise-edition-ee-apps-to-azure"></a>将 Java enterprise edition (EE) 应用程序迁移到 Azure
@@ -886,7 +886,7 @@ Picked up _JAVA_OPTIONS: -Djava.net.preferIPv4Stack=true
      --resource-group ${RESOURCEGROUP_NAME} \
       --web-server-logging filesystem
     ```
-2. 从本地计算机中打开 Java Web 应用远程日志流：
+2. 从本地计算机打开 Java Web 应用远程日志流：
 
     ```bash
     az webapp log tail --name ${WEBAPP_NAME} \
@@ -1063,7 +1063,7 @@ open https://websocket-hello-app.azurewebsites.net
 ![Websocket Hello 映像 ](./media/migrate-java-apps-wild-fly/websocket-hello.png)
 
 
-恭喜! 现有的 Java 企业工作负荷迁移到 Azure： 应用到应用服务 Linux 和应用程序的消息传送到 Azure 服务总线的系统。
+祝贺你！ 现有的 Java 企业工作负荷迁移到 Azure： 应用到应用服务 Linux 和应用程序的消息传送到 Azure 服务总线的系统。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 

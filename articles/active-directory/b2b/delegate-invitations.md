@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11dda7fc3760f468c094fb4cf4484a27895f83b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65812675"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>启用 B2B 外部协作和管理谁可以邀请来宾
@@ -36,10 +36,10 @@ ms.locfileid: "65812675"
 ### <a name="to-configure-external-collaboration-settings"></a>若要配置外部协作设置：
 
 1. 登录到[Azure 门户](https://portal.azure.com)作为租户管理员。
-2. 选择“Azure Active Directory” > “用户” > “用户设置”。
-3. 在“外部用户”下，选择“管理外部协作设置”。
+2. 选择“Azure Active Directory” > “用户” > “用户设置”。   
+3. 在“外部用户”下，选择“管理外部协作设置”。  
    > [!NOTE]
-   > “外部协作设置”也可从“组织关系”页获得。 在 Azure Active Directory 中的“管理”下，转到“组织关系” > “设置”。
+   > “外部协作设置”  也可从“组织关系”  页获得。 在 Azure Active Directory 中的“管理”  下，转到“组织关系”   > “设置”  。
 4. 上**外部协作设置**页上，选择你想要启用的策略。
 
    ![外部协作设置](./media/delegate-invitations/control-who-to-invite.png)

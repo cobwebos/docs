@@ -16,10 +16,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3d1a8afdbad1878f4ce134edeeb95dad79e98a1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65784816"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
@@ -51,7 +51,7 @@ ms.locfileid: "65784816"
 | --- | --- |
 | 一般公众 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - 端口：5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此终结点仅用于在注册过程中进行相关发现。</li> |
 | Azure 德国 | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此终结点仅用于在注册过程中进行相关发现。</li> |
-| Azure Government  | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此终结点仅用于在注册过程中进行相关发现。</li> |
+| Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此终结点仅用于在注册过程中进行相关发现。</li> |
 
 
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>下载并安装 Azure AD Connect Health 代理
@@ -124,43 +124,43 @@ ms.locfileid: "65784816"
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>在 Windows Server 2008 R2 上启用 AD FS 审核的步骤
 
-1. 单击“开始”，指向“程序”，指向“管理工具”，并单击“本地安全策略”。
-2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
-3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 2.0 服务帐户。 如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。
+1. 单击“开始”，指向“程序”，指向“管理工具”，并单击“本地安全策略”。    
+2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。  
+3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 2.0 服务帐户。  如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。  
 4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>。
-5. 关闭“本地安全策略”。
+5. 关闭“本地安全策略”  。
 <br />   -- **仅主 AD FS 服务器需要执行以下步骤。** -- <br />
-6. 打开“AD FS 管理”管理单元。 若要打开“AD FS 管理”管理单元，请单击“开始”，指向“程序”，指向“管理工具”，然后单击“AD FS 2.0 管理”。
-7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
-8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
-9. 选择“成功审核”和“失败审核”复选框。
-10. 单击“确定”。
+6. 打开“AD FS 管理”  管理单元。 若要打开“AD FS 管理”管理单元，请单击“开始”，指向“程序”，指向“管理工具”，然后单击“AD FS 2.0 管理”。    
+7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。  
+8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。  
+9. 选择“成功审核”和“失败审核”复选框。  
+10. 单击“确定”。 
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上启用 AD FS 审核的步骤
 
-1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。
-2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
-3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。
+1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。   
+2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。  
+3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。  如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。  
 4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
-5. 关闭“本地安全策略”。
+5. 关闭“本地安全策略”  。
 <br />   -- **仅主 AD FS 服务器需要执行以下步骤。** -- <br />
-6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
-7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
-8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
-9. 选择“成功审核”和“失败审核”复选框，并单击“确定”。
+6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。 
+7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。  
+8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。  
+9. 选择“成功审核”和“失败审核”复选框，并单击“确定”。  
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>在 Windows Server 2016 上针对 AD FS 启用审核
 
-1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。
-2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
-3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”将 AD FS 服务帐户添加到列表中，然后单击“确定”。
+1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。   
+2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。  
+3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。  如果该帐户不存在，请单击“添加用户或组”将 AD FS 服务帐户添加到列表中，然后单击“确定”。  
 4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
-5. 关闭“本地安全策略”。
+5. 关闭“本地安全策略”  。
 <br />   -- **仅主 AD FS 服务器需要执行以下步骤。** -- <br />
-6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
-7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
-8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
-9. 选择“成功审核”和“失败审核”复选框，并单击“确定”。 默认情况下，会启用此项。
+6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。 
+7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。  
+8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。  
+9. 选择“成功审核”和“失败审核”复选框，并单击“确定”。   默认情况下，会启用此项。
 10. 打开 PowerShell 窗口并运行以下命令：```Set-AdfsProperties -AuditLevel Verbose```。
 
 请注意，默认情况下启用“基本”审核级别。 请阅读有关 [Windows Server 2016 中的 AD FS 审核增强功能](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server)的更多内容
@@ -168,10 +168,10 @@ ms.locfileid: "65784816"
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>查找 AD FS 审核日志的步骤
 
-1. 打开“事件查看器”。
-2. 转到“Windows 日志”，并选择“安全”。
-3. 在右侧单击“筛选当前日志”。
-4. 在“事件源”下选择“AD FS 审核”。
+1. 打开“事件查看器”。 
+2. 转到“Windows 日志”，并选择“安全”。 
+3. 在右侧单击“筛选当前日志”。 
+4. 在“事件源”下选择“AD FS 审核”。 
 
     选择简短的适用于审核日志的[常见问题解答说明](reference-connect-health-faq.md#operations-questions)。
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463814"
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>创建生成 fMP4 区块的编码任务
@@ -38,7 +38,7 @@ ms.locfileid: "61463814"
 
 - 创建编码作业。
 - 获取对 **Media Encoder Standard** 编码器的引用。
-- 向作业添加一个编码任务，指定使用“自适应流式处理”预设。 
+- 向作业添加一个编码任务，指定使用“自适应流式处理”预设。  
 - 创建一个输出资产，其中将包含 fMP4 区块和 .ism 文件。
 - 添加事件处理程序以检查作业进度。
 - 提交作业。

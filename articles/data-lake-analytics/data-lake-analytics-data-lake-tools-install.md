@@ -10,10 +10,10 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.openlocfilehash: 3269d38b691ec4dd9573a241c89dadc285787143
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60408102"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>安装针对 Visual Studio 的 Data Lake 工具
@@ -26,22 +26,22 @@ ms.locfileid: "60408102"
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013
-* Microsoft Azure SDK for .NET 2.7.1 版或更高版本。  使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)进行安装。
-* Data Lake Analytics 帐户。 若要创建帐户，请参阅[通过 Azure 门户开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)。
+* Microsoft Azure SDK for .NET 2.7.1 版或更高版本  。  使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)进行安装。
+* Data Lake Analytics 帐户  。 若要创建帐户，请参阅[通过 Azure 门户开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)。
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2017"></a>安装针对 Visual Studio 2017 的 Azure Data Lake 工具
 
-Visual Studio 2017 15.3 或更高版本支持针对 Visual Studio 的 Azure Data Lake 工具。 Visual Studio 安装程序中的数据存储和处理以及 Azure 开发工作负载包含此工具。 在 Visual Studio 安装过程中，启用这两个工作负载中的任何一个。  
+Visual Studio 2017 15.3 或更高版本支持针对 Visual Studio 的 Azure Data Lake 工具。 Visual Studio 安装程序中的数据存储和处理以及 Azure 开发工作负载包含此工具   。 在 Visual Studio 安装过程中，启用这两个工作负载中的任何一个。  
 
-启用“数据存储和处理”工作负载，如下所示：![启用数据存储和处理工作负荷](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
+启用“数据存储和处理”  工作负载，如下所示：![启用数据存储和处理工作负荷](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
 
-启用“Azure 开发”工作负载，如下所示：![启用 Azure 开发工作负载](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
+启用“Azure 开发”  工作负载，如下所示：![启用 Azure 开发工作负载](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>安装针对 Visual Studio 2013 和 2015 的 Azure Data Lake 工具
 
 从[下载中心](https://aka.ms/adltoolsvs)下载并安装针对 Visual Studio 的 Azure Data Lake 工具。 安装后，请注意：
-* “服务器资源管理器” > “Azure”节点包含“Data Lake Analytics”节点。 
-* “工具”菜单中有一个“Data Lake”项。
+* “服务器资源管理器” > “Azure”节点包含“Data Lake Analytics”节点    。 
+* “工具”菜单中有一个“Data Lake”项   。
 
 
 ## <a name="next-steps"></a>后续步骤

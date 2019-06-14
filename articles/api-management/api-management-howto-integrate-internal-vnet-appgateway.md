@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
 ms.openlocfilehash: 4ee970f14a6da3d65849a79ff4afae68601f106f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141661"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
@@ -81,7 +81,7 @@ ms.locfileid: "66141661"
 
 ## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>通过公开应用程序网关向外部公开开发人员门户
 
-在本指南中，我们还将通过应用程序网关向外部用户公开开发人员门户。 创建开发人员门户的侦听器、探测、设置和规则需要其他步骤。 相应步骤中提供了所有详细信息。
+在本指南中，我们还将通过应用程序网关向外部用户公开开发人员门户  。 创建开发人员门户的侦听器、探测、设置和规则需要其他步骤。 相应步骤中提供了所有详细信息。
 
 > [!WARNING]
 > 如果使用 Azure AD 或第三方身份验证，请在应用程序网关中启用[基于 cookie 的会话相关性](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)功能。
@@ -141,7 +141,7 @@ $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10
 
 ### <a name="step-3"></a>步骤 3
 
-在美国西部地区的资源组“apim-appGw-RG”中创建名为“appgwvnet”的虚拟网络。 使用前缀 10.0.0.0/16 以及子网 10.0.0.0/24 和 10.0.1.0/24。
+在美国西部地区的资源组“apim-appGw-RG”中创建名为“appgwvnet”的虚拟网络   。 使用前缀 10.0.0.0/16 以及子网 10.0.0.0/24 和 10.0.1.0/24。
 
 ```powershell
 $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
@@ -215,7 +215,7 @@ Set-AzApiManagement -InputObject $apimService
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>创建前端配置的公共 IP 地址
 
-在资源组中，创建公共 IP 资源 publicIP01。
+在资源组中，创建公共 IP 资源 publicIP01  。
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "publicIP01" -location $location -AllocationMethod Dynamic
@@ -229,7 +229,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "public
 
 ### <a name="step-1"></a>步骤 1
 
-创建名为“gatewayIP01” 的应用程序网关 IP 配置。 当应用程序网关启动时，它会从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
+创建名为“gatewayIP01”  的应用程序网关 IP 配置。 当应用程序网关启动时，它会从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata

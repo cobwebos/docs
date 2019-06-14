@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 0803ade7613480621a0cd87f9944ee5f55bf432c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586299"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架：输入验证 | 缓解措施 
@@ -34,12 +34,12 @@ ms.locfileid: "60586299"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [XSLT 安全](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx)、[XsltSettings.EnableScript 属性](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **步骤** | XSLT 支持使用 `<msxml:script>` 元素在样式表内编写脚本。 这样，便可以在 XSLT 转换中使用自定义函数。 该脚本在执行转换的进程的上下文中执行。 在不受信任的环境中必须禁用 XSLT 脚本，防止执行不受信任的代码。 如果使用 .NET：XSLT 脚本默认已禁用；但是，必须确保未通过 `XsltSettings.EnableScript` 属性显式将它启用。|
+| **步骤** | XSLT 支持使用 `<msxml:script>` 元素在样式表内编写脚本。 这样，便可以在 XSLT 转换中使用自定义函数。 该脚本在执行转换的进程的上下文中执行。 在不受信任的环境中必须禁用 XSLT 脚本，防止执行不受信任的代码。 如果使用 .NET：  XSLT 脚本默认已禁用；但是，必须确保未通过 `XsltSettings.EnableScript` 属性显式将它启用。|
 
 ### <a name="example"></a>示例 
 
@@ -66,8 +66,8 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [IE8 安全性第五部分 - 全面保护](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
@@ -135,8 +135,8 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [XML 实体扩展](https://capec.mitre.org/data/definitions/197.html)、[XML 拒绝服务攻击和防护](https://msdn.microsoft.com/magazine/ee335713.aspx)、[MSXML 安全概述](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx)、[有关保护 MSXML 代码的最佳做法](https://msdn.microsoft.com/library/ms759188(VS.85).aspx)、[NSXMLParserDelegate 协议参考](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html)、[解析外部引用](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
@@ -197,8 +197,8 @@ XmlReader reader = XmlReader.Create(stream, settings);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -208,8 +208,8 @@ XmlReader reader = XmlReader.Create(stream, settings);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [不受限制的文件上传](https://www.owasp.org/index.php/Unrestricted_File_Upload)、[文件签名表](https://www.garykessler.net/library/file_sigs.html) |
@@ -324,8 +324,8 @@ XmlReader reader = XmlReader.Create(stream, settings);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -354,19 +354,19 @@ myCommand.Fill(userDataset);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | [元数据特性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute)、[公共密钥安全漏洞和缓解措施](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation)、[有关 ASP.NET MVC 中的大规模分配的完整指南](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx)、[通过 MVC 开始使用 EF](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
-| **步骤** | <ul><li>**在什么情况下应该查找过度提交漏洞？**- 在绑定用户输入中的模型类的任何位置，都可能存在过度提交漏洞。 MVC 等框架可在自定义 .NET 类中表示用户数据，包括普通旧 CLR 对象 (POCO)。 MVC 会在这些模型类中自动填充请求中的数据，提供一种便利的表示形式来处理用户输入。 如果这些类包含不应由用户设置的属性，应用程序将很容易遭到过度提交攻击，使用户能够控制应用程序永远不希望他们控制的数据。 与 MVC 模型绑定一样，数据库访问技术（例如，包括 Entity Framework 在内的对象/关系映射器）通常也支持使用 POCO 对象来表示数据库数据。 使用这些数据模型类同样能够方便地处理数据库数据，就如同使用 MVC 处理用户输入一样。 由于 MVC 和数据库支持类似的模型（例如 POCO 对象），因此，似乎可以轻松地重复使用相同的类来实现这两种目的。 这种做法无法保留关注点分离，这是向模型绑定公共非预期属性，造成过度提交攻击的一个常见区域。</li><li>**为何不应使用未筛选的数据库模型类作为 MVC 操作的参数？**- 因为 MVC 模型绑定会绑定该类中的任何内容。 即使数据未显示在视图中，恶意用户也可以发送包含此数据的 HTTP 请求，而 MVC 会自然而然地绑定此请求，因为操作指出，数据库类就是它应该接受用户输入的数据形状。</li><li>**为何应关心用于模型绑定的形状？**- 结合过度扩散的模型使用 ASP.NET MVC 模型绑定会使应用程序曝露在过度提交攻击之下。 攻击者可能会利用过度提交来更改应用程序数据，使之超出开发人员的预期，例如，覆盖某个商品的价格，或者帐户的安全特权。 应用程序应使用操作特定的绑定模型（或特定的受允许属性筛选列表）来提供显式约定，规定允许通过模型绑定提供哪些不受信任的输入。</li><li>**是否存在只复制代码的单独绑定模型？**- 没有，这是一个关注点分离的问题。 如果在操作方法中重复使用数据库模型，则表示 HTTP 请求中的用户可以设置该类中的任何属性（或子属性）。 如果不希望 MVC 这样做，则需要使用筛选列表或单独的类形状来告知 MVC，可以通过用户输入提供哪些数据。</li><li>**如果针对用户输入使用单独的绑定模型，是否需要复制所有数据批注特性？**- 没有必要。 可在数据库模型类中使用 MetadataTypeAttribute 来链接到模型绑定类中的元数据。 只需注意，MetadataTypeAttribute 所引用的类型必须是引用类型（可能包含更少或更多的属性）的子集。</li><li>**在用户输入模型与数据库模型之间来回移动数据是个繁琐的过程。是否可以只使用反射来复制所有属性？**- 可以。 在绑定模型中显示的属性无非就是你确定对于用户输入安全的属性。 没有安全方面的理由会阻止使用反射来复制这两个模型之间共有的所有属性。</li><li>**[Bind(Exclude ="â€¦")] 怎么样？是否可以使用它来取代单独的绑定模型？**- 不建议采用这种做法。 使用 [Bind(Exclude ="â€¦")] 意味着默认情况下任何新属性都是可绑定的。 添加新属性后，记得执行一个额外的步骤来保持安全性，而不要采用默认的设计安全性。 根据具体的开发人员，每次添加一个属性都要检查此列表是有风险的。</li><li>**[Bind(Include ="â€¦")] 是否可用于“编辑”操作？-** 不可以。 [Bind(Include ="â€¦")] 只适用于 INSERT 式操作（添加新数据）。 对于 UPDATE 式操作（修改现有数据），请使用另一种方式，例如，使用单独的绑定模型，或者将允许属性的显式列表传递给 UpdateModel 或 TryUpdateModel。 在“编辑”操作上添加 [Bind(Include ="â€¦")] 属性意味着 MVC 将创建一个对象实例，并仅设置列出的属性，使所有其他属性保持默认值。 如果数据是持久保存的，将完全替换现有实体，将所有已省略属性的值重置为默认值。 例如，如果在“编辑”操作的 [Bind(Include ="â€¦")] 属性中省略了 IsAdmin，则通过此操作编辑其名称的任何用户都将重置为 IsAdmin = false（任何已编辑的用户都将丢失管理员 状态）。 如果想要防止对某些属性进行更新，请使用上述其他方式之一。 请注意，某些版本的 MVC 工具会在“编辑”操作上生成带有 [Bind(Include ="â€¦")] 的控制器类，并暗示从该列表中删除属性可防止过度发布攻击。 但是，如上所述，这种方式无法按预期工作，而是将已省略属性中的任何数据重置为默认值。</li><li>**对于“创建”操作，是否有任何使用 [Bind(Include ="â€¦")] 而不是单独的绑定模型的注意事项？-** 有。 首先，这种方式不适用于 Edit 方案，它需要保留采用两种不同的方式来缓解所有过度提交漏洞。 其次，单独的绑定模型强制分离用于用户输入的形状和用于持久性的形状之间的关注点，而 [Bind(Include ="â€¦")] 做不到这一点。 第三，请注意 [Bind(Include ="â€¦")] 只能处理顶级属性；不能仅允许属性中的部分子属性（例如“Details.Name”）。 最后，也许最重要的是，使用 [Bind(Include ="â€¦")] 添加了一个额外步骤，只要该类用于模型绑定，就必须记住这一步骤。 如果新的操作方法直接绑定到数据类而忘记包含 [Bind(Include ="â€¦")] 属性，则它可能容易受到过度发布攻击，因此 [Bind(Include ="â€¦")] 方法默认情况下不太安全。 如果使用 [Bind(Include ="â€¦")]，请务必记住每次数据类作为操作方法参数出现时都指定它。</li><li>**对于“创建”操作，将 [Bind(Include ="â€¦")] 属性放在模型类本身上怎么样？使用这种方式是否就不需要记得在每个操作方法中放置该特性？**- 在某些情况下，这种方式是可行的。 在模型类型本身上（而不是在使用此类的操作参数上）使用 [Bind(Include ="â€¦")]，确实不需要记住在每个操作方法上包含 [Bind(Include ="â€¦")] 属性。 在类中直接使用该特性可以针对模型绑定目的，有效创建此类的独立外围应用。 但是，这种方式只允许为每个模型类创建一个模型绑定形状。 如果某个操作方法需要允许字段的模型绑定（例如，用于更新用户角色的仅限管理员的操作），而其他操作需要防止字段的模型绑定，则此方式不起作用。 每个类只能有一个模型绑定形状；如果不同的操作需要不同的模型绑定形状，就需要使用单独的模型绑定类或操作方法上的单独 [Bind(Include ="â€¦")] 属性来表示这些单独的形状。</li><li>**什么是绑定模型？它们与视图模型一样吗？**- 这是两个相关的概念。 术语“绑定模型”表示操作中使用的模型类是参数列表（从 MVC 模型绑定传递给操作方法的形状）。 术语“视图模型”表示从操作方法传递给视图的模型类。 我们经常使用视图特定的模型将数据从操作方法传递给视图。 通常情况下，此形状也是适用于模型绑定和术语视图模型可用于这两个位置中使用的相同模式，请参阅。 为追求精确，本过程将专门讨论绑定模型并侧重于传递给操作的形状，这是有关大规模分配的一个要点。</li></ul>| 
+| **步骤** | <ul><li>**在什么情况下应该查找过度提交漏洞？** - 在绑定用户输入中的模型类的任何位置，都可能存在过度提交漏洞。 MVC 等框架可在自定义 .NET 类中表示用户数据，包括普通旧 CLR 对象 (POCO)。 MVC 会在这些模型类中自动填充请求中的数据，提供一种便利的表示形式来处理用户输入。 如果这些类包含不应由用户设置的属性，应用程序将很容易遭到过度提交攻击，使用户能够控制应用程序永远不希望他们控制的数据。 与 MVC 模型绑定一样，数据库访问技术（例如，包括 Entity Framework 在内的对象/关系映射器）通常也支持使用 POCO 对象来表示数据库数据。 使用这些数据模型类同样能够方便地处理数据库数据，就如同使用 MVC 处理用户输入一样。 由于 MVC 和数据库支持类似的模型（例如 POCO 对象），因此，似乎可以轻松地重复使用相同的类来实现这两种目的。 这种做法无法保留关注点分离，这是向模型绑定公共非预期属性，造成过度提交攻击的一个常见区域。</li><li>**为何不应使用未筛选的数据库模型类作为 MVC 操作的参数？** - 因为 MVC 模型绑定会绑定该类中的任何内容。 即使数据未显示在视图中，恶意用户也可以发送包含此数据的 HTTP 请求，而 MVC 会自然而然地绑定此请求，因为操作指出，数据库类就是它应该接受用户输入的数据形状。</li><li>**为何应关心用于模型绑定的形状？** - 结合过度扩散的模型使用 ASP.NET MVC 模型绑定会使应用程序曝露在过度提交攻击之下。 攻击者可能会利用过度提交来更改应用程序数据，使之超出开发人员的预期，例如，覆盖某个商品的价格，或者帐户的安全特权。 应用程序应使用操作特定的绑定模型（或特定的受允许属性筛选列表）来提供显式约定，规定允许通过模型绑定提供哪些不受信任的输入。</li><li>**是否存在只复制代码的单独绑定模型？** - 没有，这是一个关注点分离的问题。 如果在操作方法中重复使用数据库模型，则表示 HTTP 请求中的用户可以设置该类中的任何属性（或子属性）。 如果不希望 MVC 这样做，则需要使用筛选列表或单独的类形状来告知 MVC，可以通过用户输入提供哪些数据。</li><li>**如果针对用户输入使用单独的绑定模型，是否需要复制所有数据批注特性？** - 没有必要。 可在数据库模型类中使用 MetadataTypeAttribute 来链接到模型绑定类中的元数据。 只需注意，MetadataTypeAttribute 所引用的类型必须是引用类型（可能包含更少或更多的属性）的子集。</li><li>**在用户输入模型与数据库模型之间来回移动数据是个繁琐的过程。是否可以只使用反射来复制所有属性？** - 可以。 在绑定模型中显示的属性无非就是你确定对于用户输入安全的属性。 没有安全方面的理由会阻止使用反射来复制这两个模型之间共有的所有属性。</li><li>**[Bind(Exclude ="â€¦")] 怎么样？是否可以使用它来取代单独的绑定模型？** - 不建议采用这种做法。 使用 [Bind(Exclude ="â€¦")] 意味着默认情况下任何新属性都是可绑定的。 添加新属性后，记得执行一个额外的步骤来保持安全性，而不要采用默认的设计安全性。 根据具体的开发人员，每次添加一个属性都要检查此列表是有风险的。</li><li>**[Bind(Include ="â€¦")] 是否可用于“编辑”操作？-** 不可以。 [Bind(Include ="â€¦")] 只适用于 INSERT 式操作（添加新数据）。 对于 UPDATE 式操作（修改现有数据），请使用另一种方式，例如，使用单独的绑定模型，或者将允许属性的显式列表传递给 UpdateModel 或 TryUpdateModel。 在“编辑”操作上添加 [Bind(Include ="â€¦")] 属性意味着 MVC 将创建一个对象实例，并仅设置列出的属性，使所有其他属性保持默认值。 如果数据是持久保存的，将完全替换现有实体，将所有已省略属性的值重置为默认值。 例如，如果在“编辑”操作的 [Bind(Include ="â€¦")] 属性中省略了 IsAdmin，则通过此操作编辑其名称的任何用户都将重置为 IsAdmin = false（任何已编辑的用户都将丢失管理员 状态）。 如果想要防止对某些属性进行更新，请使用上述其他方式之一。 请注意，某些版本的 MVC 工具会在“编辑”操作上生成带有 [Bind(Include ="â€¦")] 的控制器类，并暗示从该列表中删除属性可防止过度发布攻击。 但是，如上所述，这种方式无法按预期工作，而是将已省略属性中的任何数据重置为默认值。</li><li>**对于“创建”操作，是否有任何使用 [Bind(Include ="â€¦")] 而不是单独的绑定模型的注意事项？-** 有。 首先，这种方式不适用于 Edit 方案，它需要保留采用两种不同的方式来缓解所有过度提交漏洞。 其次，单独的绑定模型强制分离用于用户输入的形状和用于持久性的形状之间的关注点，而 [Bind(Include ="â€¦")] 做不到这一点。 第三，请注意 [Bind(Include ="â€¦")] 只能处理顶级属性；不能仅允许属性中的部分子属性（例如“Details.Name”）。 最后，也许最重要的是，使用 [Bind(Include ="â€¦")] 添加了一个额外步骤，只要该类用于模型绑定，就必须记住这一步骤。 如果新的操作方法直接绑定到数据类而忘记包含 [Bind(Include ="â€¦")] 属性，则它可能容易受到过度发布攻击，因此 [Bind(Include ="â€¦")] 方法默认情况下不太安全。 如果使用 [Bind(Include ="â€¦")]，请务必记住每次数据类作为操作方法参数出现时都指定它。</li><li>**对于“创建”操作，将 [Bind(Include ="â€¦")] 属性放在模型类本身上怎么样？使用这种方式是否就不需要记得在每个操作方法中放置该特性？** - 在某些情况下，这种方式是可行的。 在模型类型本身上（而不是在使用此类的操作参数上）使用 [Bind(Include ="â€¦")]，确实不需要记住在每个操作方法上包含 [Bind(Include ="â€¦")] 属性。 在类中直接使用该特性可以针对模型绑定目的，有效创建此类的独立外围应用。 但是，这种方式只允许为每个模型类创建一个模型绑定形状。 如果某个操作方法需要允许字段的模型绑定（例如，用于更新用户角色的仅限管理员的操作），而其他操作需要防止字段的模型绑定，则此方式不起作用。 每个类只能有一个模型绑定形状；如果不同的操作需要不同的模型绑定形状，就需要使用单独的模型绑定类或操作方法上的单独 [Bind(Include ="â€¦")] 属性来表示这些单独的形状。</li><li>**什么是绑定模型？它们与视图模型一样吗？** - 这是两个相关的概念。 术语“绑定模型”表示操作中使用的模型类是参数列表（从 MVC 模型绑定传递给操作方法的形状）。 术语“视图模型”表示从操作方法传递给视图的模型类。 我们经常使用视图特定的模型将数据从操作方法传递给视图。 通常情况下，此形状也是适用于模型绑定和术语视图模型可用于这两个位置中使用的相同模式，请参阅。 为追求精确，本过程将专门讨论绑定模型并侧重于传递给操作的形状，这是有关大规模分配的一个要点。</li></ul>| 
 
 ## <a id="rendering"></a>在呈现之前为不受信任的 Web 输出编码
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、Web 窗体、MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | [如何在 ASP.NET 中防止跨站点脚本](https://msdn.microsoft.com/library/ms998274.aspx)、[跨站点脚本](https://cwe.mitre.org/data/definitions/79.html)、[XSS（跨站点脚本）预防速查表](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) |
@@ -390,8 +390,8 @@ myCommand.Fill(userDataset);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | [添加验证](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation)、[验证 MVC 应用程序中的模型数据](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC 应用程序指导原则](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -401,8 +401,8 @@ myCommand.Fill(userDataset);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [为不安全的输入编码](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3)、[HTML 净化器](https://github.com/mganss/HtmlSanitizer) |
@@ -412,8 +412,8 @@ myCommand.Fill(userDataset);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -434,8 +434,8 @@ $('body').append(resHTML);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [OAuth 2.0 授权框架 - 开放重定向程序](https://tools.ietf.org/html/rfc6749#section-10.15) |
@@ -445,8 +445,8 @@ $('body').append(resHTML);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | [验证 MVC 应用程序中的模型数据](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC 应用程序指导原则](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -456,8 +456,8 @@ $('body').append(resHTML);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、Web 窗体、MVC5、MVC6  |
 | **属性**              | 不适用  |
 | **参考**              | [DefaultRegexMatchTimeout 属性](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
@@ -474,8 +474,8 @@ $('body').append(resHTML);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -499,8 +499,8 @@ $('body').append(resHTML);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -559,8 +559,8 @@ AS
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | [ASP.NET Web API 中的模型验证](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
@@ -616,8 +616,8 @@ namespace MyApi.Controllers
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、MVC 5、MVC 6 |
 | **属性**              | 不适用  |
 | **参考**              | [验证 MVC 应用程序中的模型数据](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC 应用程序指导原则](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -627,8 +627,8 @@ namespace MyApi.Controllers
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -657,8 +657,8 @@ myCommand.Fill(userDataset);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure Document DB | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure Document DB | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [宣布推出 Azure Cosmos DB 中的 SQL 参数化](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
@@ -668,8 +668,8 @@ myCommand.Fill(userDataset);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
@@ -679,8 +679,8 @@ myCommand.Fill(userDataset);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |

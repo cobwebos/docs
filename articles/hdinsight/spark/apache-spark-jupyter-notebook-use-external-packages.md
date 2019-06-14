@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
 ms.openlocfilehash: 6af25b95aa3a38c4a2e9f3bd8147604dccae0abb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64715150"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>在 HDInsight 上的 Apache Spark 群集中将外部包与 Jupyter 笔记本配合使用
@@ -32,16 +32,16 @@ ms.locfileid: "64715150"
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>将外部包与 Jupyter 笔记本配合使用
-1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
+1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览”   > “HDInsight 群集”  导航到群集。   
 
-1. 在 Spark 群集边栏选项卡中单击“快速链接”，并在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+1. 在 Spark 群集边栏选项卡中单击“快速链接”  ，并在“群集仪表板”  边栏选项卡中单击“Jupyter 笔记本”  。 出现提示时，请输入群集的管理员凭据。
 
     > [!NOTE]  
     > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
     > 
     > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. 创建新的笔记本。 单击“新建”，并单击“Spark”。
+1. 创建新的笔记本。 单击“新建”  ，并单击“Spark”  。
    
     ![创建新的 Jupyter 笔记本](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "创建新的 Jupyter 笔记本")
 
@@ -67,7 +67,7 @@ ms.locfileid: "64715150"
    
     ![将外部包与 Jupyter 笔记本配合使用](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "将外部包与 Jupyter 笔记本配合使用")
    
-    c. 串连这三个值并以冒号分隔 (**:**)。
+    c. 串连这三个值并以冒号分隔 ( **:** )。
    
         com.databricks:spark-csv_2.10:1.4.0
 

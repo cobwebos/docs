@@ -17,10 +17,10 @@ ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
 ms.openlocfilehash: e26ec4d268b9bd8852ef8cd2c522995902e15923
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62108004"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>使用网络配置文件配置虚拟网络（经典）
@@ -67,7 +67,7 @@ ms.locfileid: "62108004"
 
 ### <a name="example-xml-for-use-with-powershell"></a>用于 PowerShell 的示例 XML
 
-以下示例网络配置文件在“美国东部”Azure 区域创建名为 *myVirtualNetwork*、地址空间为 *10.0.0.0/16* 的虚拟网络。 该虚拟网络包含一个名为 *mySubnet*、地址前缀为 *10.0.0.0/24* 的子网。
+以下示例网络配置文件在“美国东部”Azure 区域创建名为 *myVirtualNetwork*、地址空间为 *10.0.0.0/16* 的虚拟网络。  该虚拟网络包含一个名为 *mySubnet*、地址前缀为 *10.0.0.0/24* 的子网。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -94,7 +94,7 @@ ms.locfileid: "62108004"
 
 ### <a name="example-json-for-use-with-the-classic-cli"></a>用于经典 CLI 的示例 JSON
 
-以下示例网络配置文件在“美国东部”Azure 区域创建名为 *myVirtualNetwork*、地址空间为 *10.0.0.0/16* 的虚拟网络。 该虚拟网络包含一个名为 *mySubnet*、地址前缀为 *10.0.0.0/24* 的子网。
+以下示例网络配置文件在“美国东部”Azure 区域创建名为 *myVirtualNetwork*、地址空间为 *10.0.0.0/16* 的虚拟网络。  该虚拟网络包含一个名为 *mySubnet*、地址前缀为 *10.0.0.0/24* 的子网。
 
 ```json
 {

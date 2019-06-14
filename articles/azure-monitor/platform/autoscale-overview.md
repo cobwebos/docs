@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
-ms.component: autoscale
+ms.subservice: autoscale
 ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787554"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure 虚拟机、云服务和 Web 应用自动缩放概述
@@ -43,7 +43,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ## <a name="custom-metrics"></a>自定义指标
 还可以利用应用程序可以发出的自己的自定义指标。 如果已将应用程序配置为向 Application Insights 发送指标，则可以利用这些指标来决定是否要进行缩放。
 
-## <a name="time"></a>时间
+## <a name="time"></a>Time
 基于计划的规则以 UTC 为基础。 设置规则时，必须正确设置时区。  
 
 ## <a name="rules"></a>规则
@@ -102,7 +102,6 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>支持进行自动缩放的服务
-
 | 服务 | 架构和文档 |
 | --- | --- |
 | Web 应用 |[缩放 Web 应用](../../azure-monitor/platform/autoscale-get-started.md) |
@@ -121,3 +120,4 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 * [使用自动缩放操作发送电子邮件和 webhook 警报通知](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 * [虚拟机规模集自动缩放疑难解答](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+

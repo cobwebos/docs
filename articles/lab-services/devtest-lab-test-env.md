@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: c6b458091a8e5e22cca55d401e89e5e13bcf9de9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60623166"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>将 Azure 开发测试实验室用于 VM 和 PaaS 测试环境
@@ -46,7 +46,7 @@ Azure 开发测试实验室可用于实现许多关键方案，但其中一个�
    | 任务 | 学习内容 |
    | --- | --- |
    | [在 Azure 开发测试实验室中创建实验室](devtest-lab-create-lab.md) |了解如何在 Azure 门户中的 Azure 开发测试实验室中创建实验室。 |
-2. 使用现成市场映像和自定义映像在几分钟内创建 VM 
+2. 使用现成市场映像和自定义映像在几分钟内创建 VM  
    
     可从 Azure 市场的多种映像中选择现成映像并使它们在实验室中可用。 如果现成的映像不能满足需求，可使用 Azure 市场中的现成映像创建实验室 VM，安装所需的所有软件并在实验室中将 VM 保存为自定义映像来创建自定义映像。
 

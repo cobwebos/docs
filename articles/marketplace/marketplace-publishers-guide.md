@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956748"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure 市场和 AppSource 发布指南
@@ -30,7 +30,7 @@ ms.locfileid: "65956748"
 
 本指南包含在列出你的应用程序和服务之前，需要执行的步骤的相关技术和业务信息。 使用目录转到指南的不同部分并直接转到关键主题。
 
-有关 Azure 市场和 AppSource 的问题，请在“问题类型” > “市场加入”下向我们发送消息。  我们的市场发布者载入团队将乐于为你提供帮助！ 
+有关 Azure 市场和 AppSource 的问题，请在“问题类型” > “市场加入”   下向我们发送消息。  我们的市场发布者载入团队将乐于为你提供帮助！ 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>加入市场的好处 
 

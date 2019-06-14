@@ -16,10 +16,10 @@ ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7d41e9b7774bf8840db9e729d3aa9371f5bac04f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615940"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>为何禁用 Azure for Students 订阅？如何重新激活它？
@@ -37,7 +37,7 @@ Azure for Students 帐户提供 100 美元的信用额度，以及 12 个月的�
    
     ![屏幕截图，显示 Azure for Students 订阅的信用额度信息](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-balance.png)
 
-3. 若要检查使用 Azure 信用额度的服务的使用情况，请从左侧导航中选择“使用情况”，然后选择 Azure for Students 订阅。
+3. 若要检查使用 Azure 信用额度的服务的使用情况，请从左侧导航中选择“使用情况”  ，然后选择 Azure for Students 订阅。
 
     ![屏幕截图，显示 Azure for Students 信用额度的使用情况信息](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-usage.png)
 

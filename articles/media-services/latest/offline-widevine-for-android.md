@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 5102720242edd3ffc0a377bbddf0f7f3ade68b63
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937224"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理
@@ -46,7 +46,7 @@ ms.locfileid: "64937224"
 - 熟悉为使用 Widevine DRM 的联机内容保护引入的概念。 以下文档/示例对此进行了详细介绍：
     - [设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)
     - [使用 DRM 动态加密和许可证传送服务](protect-with-drm.md)
-- 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git。
+- 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git 。
 
     需要修改[使用 .NET 加密 DRM ](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)中的代码以添加 Widevine 配置。  
 - 熟悉适用于 Android 的 Google ExoPlayer SDK，此开源视频播放器 SDK 能够支持脱机 Widevine DRM 播放。 
@@ -89,7 +89,7 @@ ms.locfileid: "64937224"
 
 ## <a name="enable-offline-mode"></a>启用脱机模式
 
-若要为 Widevine 许可证启用“脱机”模式，需要配置 [Widevine 许可证模板](widevine-license-template-overview.md)。 在“policy_overrides”对象中，将“can_persist”属性设置为“true”（默认值为 false），如 [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563) 中所示。 
+若要为 Widevine 许可证启用“脱机”  模式，需要配置 [Widevine 许可证模板](widevine-license-template-overview.md)。 在“policy_overrides”对象中，将“can_persist”属性设置为“true”（默认值为 false），如 [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563) 中所示    。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#ConfigureWidevineLicenseTempate)]
 
@@ -116,9 +116,9 @@ ExoPlayer 2.6 和更高版本包括许多支持脱机 Widevine DRM 播放的类�
 
 ### <a name="working-with-older-android-devices"></a>使用较旧的 Android 设备
 
-对于某些较旧的 Android 设备，必须设置以下 policy_overrides 属性（在 [Widevine 许可证模板](widevine-license-template-overview.md) 中定义）的值：rental_duration_seconds、playback_duration_seconds 和license_duration_seconds。 此外，也可以将它们设置为零，表示无限/无限制的持续时间。  
+对于某些较旧的 Android 设备，必须设置以下 policy_overrides 属性（在 [Widevine 许可证模板](widevine-license-template-overview.md) 中定义）的值：rental_duration_seconds、playback_duration_seconds 和license_duration_seconds     。 此外，也可以将它们设置为零，表示无限/无限制的持续时间。  
 
-值的设置须避免整数溢出 bug。 有关此问题的详细说明，请参阅 https://github.com/google/ExoPlayer/issues/3150 和 https://github.com/google/ExoPlayer/issues/3112。 <br/>如果未对值进行显式设置，则会向 PlaybackDurationRemaining 和 LicenseDurationRemaining 分配非常大的值（例如 9223372036854775807，即 64 位整数的最大正值）。 结果，Widevine 许可证显示为过期，因此不会进行解密。 
+值的设置须避免整数溢出 bug。 有关此问题的详细说明，请参阅 https://github.com/google/ExoPlayer/issues/3150 和 https://github.com/google/ExoPlayer/issues/3112 。 <br/>如果未对值进行显式设置，则会向 PlaybackDurationRemaining 和 LicenseDurationRemaining 分配非常大的值（例如 9223372036854775807，即 64 位整数的最大正值）   。 结果，Widevine 许可证显示为过期，因此不会进行解密。 
 
 Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.0 是首个旨在完全支持 ARMv8（[高级 RISC 计算机](https://en.wikipedia.org/wiki/ARM_architecture)）和 64 位平台的 Android 版本，而 Android 4.4 KitKat 最初设计用于支持 ARMv7 和 32 位平台，与其他较旧的 Android 版本相同。
 
@@ -144,7 +144,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 上面的开源 PWA 应用是在 Node.js 中编写的。 如果希望在 Ubuntu 服务器上托管自己的版本，请注意以下可能会阻止播放的常见问题：
 
-1. CORS 问题：示例应用中的示例视频托管在 https://storage.googleapis.com/biograf-video-files/videos/ 中。 Google 已为其托管在 Google 云存储桶中的所有测试示例设置了 CORS。 它们会使用 CORS 标头，显式指定 CORS 条目： https://biograf-155113.appspot.com（google 托管其示例的域），从而阻止任何其他站点的访问。 如果尝试访问，将看到以下 HTTP 错误：无法加载 https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: 请求的资源中没有出现“Access-Control-Allow-Origin”标头。 原点 https:\//13.85.80.81:8080 因此不允许访问。 如果非跳转响应可满足需求，请将请求的模式设置为“no-cors”，以便在禁用 CORS 的情况下提取资源。
+1. CORS 问题：示例应用中的示例视频托管在 https://storage.googleapis.com/biograf-video-files/videos/ 中。 Google 已为其托管在 Google 云存储桶中的所有测试示例设置了 CORS。 它们会使用 CORS 标头，显式指定 CORS 条目： https://biograf-155113.appspot.com （google 托管其示例的域），从而阻止任何其他站点的访问。 如果尝试访问，将看到以下 HTTP 错误：无法加载 https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: 请求的资源中没有出现“Access-Control-Allow-Origin”标头。 原点 https:\//13.85.80.81:8080 因此不允许访问。 如果非跳转响应可满足需求，请将请求的模式设置为“no-cors”，以便在禁用 CORS 的情况下提取资源。
 2. 证书问题：从 Chrome v 58 开始，EME for Widevine 需要 HTTPS。 因此，需要使用 X509 证书通过 HTTPS 来托管示例应用。 由于以下要求，常用的测试证书不起作用：需要获得符合以下最低要求的证书：
     - Chrome 和 Firefox 要求证书中具备 SAN 使用者可选名称设置
     - 证书必须具备受信任的 CA，自签名开发证书无法使用

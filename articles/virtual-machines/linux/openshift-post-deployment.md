@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
 ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60771319"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
-部署 OpenShift 群集后，可以配置附加的项。 本文介绍：
+部署 OpenShift 群集后，可以配置附加的项。 本文包含以下内容：
 
 - 了解如何使用 Azure Active Directory (Azure AD) 配置单一登录
 - 如何配置 Azure Monitor 日志以监视 OpenShift
@@ -75,23 +75,23 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 在 Azure 门户中：
 
-1. 选择“Azure Active Directory” > “应用注册”。
+1. 选择“Azure Active Directory” > “应用注册”。  
 2. 搜索应用注册（例如 OCPAzureAD）。
 3. 在结果中，单击“应用注册”。
-4. 在“设置”下，选择“所需的权限”。
-5. 在“所需的权限”下，选择“添加”。
+4. 在“设置”下，选择“所需的权限”。  
+5. 在“所需的权限”下，选择“添加”。  
 
    ![应用注册](media/openshift-post-deployment/app-registration.png)
 
-6. 依次单击“步骤 1:选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。 单击底部的“选择”。
+6. 依次单击“步骤 1:选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。  单击底部的“选择”。 
 
    ![应用注册选择 API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. 在“步骤 2:选择权限”中，选择“委托的权限”下的“登录并读取用户配置文件”，并单击“选择”。
+7. 在“步骤 2:选择权限”中，选择“委托的权限”下的“登录并读取用户配置文件”，并单击“选择”。   
 
    ![应用注册访问权限](media/openshift-post-deployment/app-registration-access.png)
 
-8. 选择“完成”。
+8. 选择“完成”  。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>为 Azure AD 身份验证配置 OpenShift
 

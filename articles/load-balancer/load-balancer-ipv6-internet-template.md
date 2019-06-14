@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61216709"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
@@ -70,7 +70,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. 单击“编辑参数”。 在“参数”边栏选项卡中，根据指导在“模板参数”部分中指定值，并单击“保存”关闭“参数”边栏选项卡。 在“自定义部署”边栏选项卡中选择订阅、选择现有资源组或创建一个资源组。 如果要创建资源组，请选择资源组的位置。 接下来，单击“法律条款”，并单击法律条款后面的“购买”。 Azure 开始部署资源。 部署所有资源需要花费几分钟时间。
+6. 单击“编辑参数”。 在“参数”边栏选项卡中，根据指导在“模板参数”部分中指定值，并单击“保存”关闭“参数”边栏选项卡。 在“自定义部署”边栏选项卡中选择订阅、选择现有资源组或创建一个资源组。 如果要创建资源组，请选择资源组的位置。 接下来，单击“法律条款”  ，并单击法律条款后面的“购买”  。 Azure 开始部署资源。 部署所有资源需要花费几分钟时间。
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 

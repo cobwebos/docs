@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: ea7e4757aac0fccf60a44c70e9de6a63c1ec9498
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147014"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>将 Azure CLI 用于 Azure 存储
@@ -134,12 +134,12 @@ echo "Done"
 
 2. 接下来，更新脚本的变量以反映用户的配置设置。 按照明确的说明替换以下值：
 
-   * \<storage_account_name\>：存储帐户的名称。
-   * **\<storage_account_key\>**：存储帐户的主访问密钥或辅助访问密钥。
-   * **\<container_name\>**：要创建的新容器的名称，例如“azure-cli-sample-container”。
-   * **\<blob_name\>**：容器中目标 Blob 的名称。
-   * **\<file_to_upload\>**：本地计算机上小文件的路径，例如：“~/images/HelloWorld.png”。
-   * \<destination_file\>：目标文件路径，如“~/downloadedImage.png”。
+   * \<storage_account_name\>：存储帐户的名称  。
+   * **\<storage_account_key\>** ：存储帐户的主访问密钥或辅助访问密钥。
+   * **\<container_name\>** ：要创建的新容器的名称，例如“azure-cli-sample-container”。
+   * **\<blob_name\>** ：容器中目标 Blob 的名称。
+   * **\<file_to_upload\>** ：本地计算机上小文件的路径，例如：“~/images/HelloWorld.png”。
+   * \<destination_file\>：目标文件路径，如“~/downloadedImage.png”  。
 
 3. 更新了必要的变量后，保存脚本并退出编辑器。 后续步骤假定已将脚本命名为 **my_storage_sample.sh**。
 

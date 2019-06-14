@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b6f069489738e9dceeee350a36aa2b45715a314
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825031"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何使用组策略部署 Internet Explorer 的访问面板扩展
@@ -38,13 +38,13 @@ ms.locfileid: "65825031"
 首先，必须将安装程序包放在网络位置中，该位置可以由要在其上远程安装扩展的计算机访问。 为此，请执行以下步骤：
 
 1. 以管理员身份登录到服务器
-2. 在“服务器管理器”窗口中，转到“文件和存储服务”。
+2. 在“服务器管理器”窗口中，转到“文件和存储服务”。  
    
     ![打开文件和存储服务](./media/deploy-access-panel-browser-extension/files-services.png)
-3. 转到“共享”选项卡。然后单击“任务” > “新建共享...”
+3. 转到“共享”选项卡。  然后单击“任务” > “新建共享...”  
    
     ![打开文件和存储服务](./media/deploy-access-panel-browser-extension/shares.png)
-4. 完成“新建共享向导”并设置权限，确保可以从用户的计算机访问该共享位置。 [了解有关共享的详细信息。](https://technet.microsoft.com/library/cc753175.aspx)
+4. 完成“新建共享向导”并设置权限，确保可以从用户的计算机访问该共享位置。  [了解有关共享的详细信息。](https://technet.microsoft.com/library/cc753175.aspx)
 5. 下载以下 Microsoft Windows Installer 程序包（.msi 文件）：[Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 6. 将该安装程序包复制到共享中所需的位置。
    
@@ -53,35 +53,35 @@ ms.locfileid: "65825031"
 
 ## <a name="step-2-create-the-group-policy-object"></a>步骤 2：创建组策略对象
 1. 登录托管所安装的 Active Directory 域服务 (AD DS) 的服务器。
-2. 在“服务器管理器”中，转到“工具” > “组策略管理”。
+2. 在“服务器管理器”中，转到“工具” > “组策略管理”。  
    
     ![转到“工具”>“组策略管理”](./media/deploy-access-panel-browser-extension/tools-gpm.png)
-3. 在“组策略管理”窗口的左窗格中，查看组织单位 (OU) 层次结构并确定想要应用组策略的范围。 例如，可以选择一个小型 OU 并将其部署到少量用户以进行测试，或者选择一个顶级 OU 并将其部署到整个组织。
+3. 在“组策略管理”窗口的左窗格中，查看组织单位 (OU) 层次结构并确定想要应用组策略的范围。  例如，可以选择一个小型 OU 并将其部署到少量用户以进行测试，或者选择一个顶级 OU 并将其部署到整个组织。
    
    > [!NOTE]
-   > 如果想要创建或编辑组织单位 (OU)，请切换回到“服务器管理器”，并转到“工具” > “Active Directory 用户和计算机”。
+   > 如果想要创建或编辑组织单位 (OU)，请切换回到“服务器管理器”，并转到“工具” > “Active Directory 用户和计算机”。  
    > 
    > 
-4. 选择 OU 后，请右键单击它，并选择“在这个域中创建 GPO 并在此处链接它...”
+4. 选择 OU 后，请右键单击它，并选择“在这个域中创建 GPO 并在此处链接它...” 
    
     ![创建新 GPO](./media/deploy-access-panel-browser-extension/create-gpo.png)
-5. 在“新建 GPO”提示窗口中，输入新组策略对象的名称。
+5. 在“新建 GPO”提示窗口中，输入新组策略对象的名称。 
    
     ![为新 GPO 命名](./media/deploy-access-panel-browser-extension/name-gpo.png)
-6. 右键单击创建的组策略对象，并选择“编辑”。
+6. 右键单击创建的组策略对象，并选择“编辑”。 
    
     ![编辑新 GPO](./media/deploy-access-panel-browser-extension/edit-gpo.png)
 
 ## <a name="step-3-assign-the-installation-package"></a>步骤 3：分配安装包
-1. 确定是要根据“计算机配置”还是“用户配置”部署扩展。 如果使用[计算机配置](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)，则无论哪个用户登录到计算机，都会在该计算机上安装扩展。 如果使用[用户配置](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)，则无论用户登录到哪一台计算机，系统都会为该用户安装扩展。
-2. 在“组策略管理编辑器”窗口的左窗格中，根据选择的配置类型，转到以下文件夹路径之一：
+1. 确定是要根据“计算机配置”还是“用户配置”部署扩展。   如果使用[计算机配置](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)，则无论哪个用户登录到计算机，都会在该计算机上安装扩展。 如果使用[用户配置](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)，则无论用户登录到哪一台计算机，系统都会为该用户安装扩展。
+2. 在“组策略管理编辑器”窗口的左窗格中，根据选择的配置类型，转到以下文件夹路径之一： 
    
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
-3. 右键单击“软件安装”，并选择“新建” > “包...”
+3. 右键单击“软件安装”，并选择“新建” > “包...”   
    
     ![创建新的软件安装包](./media/deploy-access-panel-browser-extension/new-package.png)
-4. 转到[步骤 1：创建分发点](#step-1-create-the-distribution-point)中包含安装程序包的共享文件夹，选择 .msi 文件，然后单击“打开”。
+4. 转到[步骤 1：创建分发点](#step-1-create-the-distribution-point)中包含安装程序包的共享文件夹，选择 .msi 文件，然后单击“打开”  。
    
    > [!IMPORTANT]
    > 如果该共享也位于此服务器上，请验证是否可以通过网络文件路径（而不是本地文件路径）访问此 .msi。
@@ -89,7 +89,7 @@ ms.locfileid: "65825031"
    > 
    
     ![从共享文件夹中选择安装包。](./media/deploy-access-panel-browser-extension/select-package.png)
-5. 在“部署软件”提示窗口中，选择“已分配”作为部署方法。 然后单击“确定”。
+5. 在“部署软件”提示窗口中，选择“已分配”作为部署方法。   然后单击“确定”  。
    
     ![选择“已分配”，并单击“确定”。](./media/deploy-access-panel-browser-extension/deployment-method.png)
 
@@ -98,23 +98,23 @@ ms.locfileid: "65825031"
 ## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>步骤 4：自动启用 Internet Explorer 的扩展
 除了运行安装程序以外，还必须显式启用 Internet Explorer 的每个扩展，只有这样才能使用该扩展。 请执行以下步骤，使用组策略启用访问面板扩展：
 
-1. 在“组策略管理编辑器”窗口中，根据[步骤 3：分配安装包](#step-3-assign-the-installation-package)中选择的配置类型，转到以下路径之一：
+1. 在“组策略管理编辑器”  窗口中，根据[步骤 3：分配安装包](#step-3-assign-the-installation-package)中选择的配置类型，转到以下路径之一：
    
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
-2. 右键单击“加载项列表”，并选择“编辑”。
+2. 右键单击“加载项列表”，并选择“编辑”。  
     ![编辑加载项列表。](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
-3. 在“加载项列表”窗口中，选择“已启用”。 然后，在“选项”部分下单击“显示...”。
+3. 在“加载项列表”窗口中，选择“已启用”。   然后，在“选项”部分下单击“显示...”。  
    
     ![单击“启用”，并单击“显示...”](./media/deploy-access-panel-browser-extension/edit-add-on-list-window.png)
-4. 在“显示内容”窗口中执行以下步骤：
+4. 在“显示内容”窗口中执行以下步骤： 
    
-   1. 对于第一列（“值名称”字段），请复制并粘贴以下类 ID：`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   2. 对于第二列（“值”字段），请输入以下值：`1`
-   3. 单击“确定”关闭“显示内容”窗口。
+   1. 对于第一列（“值名称”字段），请复制并粘贴以下类 ID：  `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+   2. 对于第二列（“值”字段），请输入以下值：  `1`
+   3. 单击“确定”关闭“显示内容”窗口。  
       
       ![如上所示填写值。](./media/deploy-access-panel-browser-extension/show-contents.png)
-5. 单击“确定”应用更改并关闭“加载项列表”窗口。
+5. 单击“确定”应用更改并关闭“加载项列表”窗口。  
 
 现在，应该为选定 OU 中的计算机启用了该扩展。 [详细了解如何使用组策略启用或禁用 Internet Explorer 加载项。](https://technet.microsoft.com/library/dn454941.aspx)
 
@@ -125,22 +125,22 @@ ms.locfileid: "65825031"
 
 如果不希望用户看到此提示，请根据以下步骤防止自动完成功能记住密码：
 
-1. 在“组策略管理编辑器”窗口中，转到下面列出的路径。 此配置设置仅在“用户配置”下提供。
+1. 在“组策略管理编辑器”窗口中，转到下面列出的路径。  此配置设置仅在“用户配置”下提供。 
    
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
-2. 查找名为“对表单上的用户名和密码打开自动完成功能”的设置。
+2. 查找名为“对表单上的用户名和密码打开自动完成功能”的设置。 
    
    > [!NOTE]
-   > 旧版的 Active Directory 可能列出此设置，但其名称为“不允许自动完成功能保存密码”。 该设置的配置不同于本教程中所述的设置。
+   > 旧版的 Active Directory 可能列出此设置，但其名称为“不允许自动完成功能保存密码”。  该设置的配置不同于本教程中所述的设置。
    > 
    > 
    
     ![请记得在“用户设置”下查找此设置。](./media/deploy-access-panel-browser-extension/disable-auto-complete.png)
-3. 右键单击上述设置，并选择“编辑”。
-4. 在标题为“对表单上的用户名和密码打开自动完成功能”的窗口中选择“禁用”。
+3. 右键单击上述设置，并选择“编辑”。 
+4. 在标题为“对表单上的用户名和密码打开自动完成功能”的窗口中选择“禁用”。  
    
     ![选择“禁用”](./media/deploy-access-panel-browser-extension/disable-passwords.png)
-5. 单击“确定”应用这些更改并关闭窗口。
+5. 单击“确定”应用这些更改并关闭窗口。 
 
 用户不再能存储其凭据或使用自动完成功能来访问以前存储的凭据。 但是，此策略允许用户对其他类型的表单字段（例如搜索字段）继续使用自动完成功能。
 
@@ -152,13 +152,13 @@ ms.locfileid: "65825031"
 ## <a name="step-6-testing-the-deployment"></a>步骤 6：测试部署
 遵循以下步骤验证是否已成功部署扩展：
 
-1. 如果扩展是使用“计算机配置”部署的，请登录到属于[步骤 2：创建组策略对象](#step-2-create-the-group-policy-object)中选择的 OU 的客户端计算机。 如果扩展是使用“用户配置”部署的，请务必使用属于该 OU 的用户的身份登录。
-2. 可能要登录好几次才能在此计算机上完全更新组策略更改。 要强制更新，请打开“命令提示”窗口，并运行以下命令：`gpupdate /force`
+1. 如果扩展是使用“计算机配置”  部署的，请登录到属于[步骤 2：创建组策略对象](#step-2-create-the-group-policy-object)中选择的 OU 的客户端计算机。 如果扩展是使用“用户配置”部署的，请务必使用属于该 OU 的用户的身份登录。 
+2. 可能要登录好几次才能在此计算机上完全更新组策略更改。 要强制更新，请打开“命令提示”窗口，并运行以下命令：  `gpupdate /force`
 3. 必须重新启动计算机才能开始安装。 安装扩展时，启动花费的时间可能比平时要长很多。
-4. 重新启动后，打开 **Internet Explorer**。 在窗口右上角单击“工具”（齿轮图标），并选择“管理加载项”。
+4. 重新启动后，打开 **Internet Explorer**。 在窗口右上角单击“工具”（齿轮图标），并选择“管理加载项”。  
    
     ![转到“工具”>“管理加载项”](./media/deploy-access-panel-browser-extension/manage-add-ons.png)
-5. 在“管理加载项”窗口中，检查“访问面板扩展”是否已安装且其“状态”设置为“已启用”。
+5. 在“管理加载项”窗口中，检查“访问面板扩展”是否已安装且其“状态”设置为“已启用”。    
    
     ![检查访问面板扩展是否已安装并启用。](./media/deploy-access-panel-browser-extension/verify-install.png)
 

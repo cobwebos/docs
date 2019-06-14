@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
 ms.openlocfilehash: a4aaf440856746895a31914aeee2bddec2ce23f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60544972"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>了解 Azure 安全中心资源建议
@@ -50,7 +50,7 @@ ms.locfileid: "60544972"
 | 应为 Web 应用程序禁用 Web 套接字| 建议你仔细检查 Web 应用程序中 Web 套接字的使用。  Web 套接字协议容易受到不同类型的安全威胁的攻击。 |
 | 对 Web 应用程序使用自定义域 | 建议使用自定义域保护 Web 应用程序免受常见攻击（钓鱼和其他 DNS 相关攻击）的威胁。 |
 | 为 Web 应用程序配置 IP 限制 | 建议你定义允许访问应用程序的 IP 地址列表。  使用 IP 限制保护 Web 应用程序免受常见攻击的威胁。 |
-| 不允许所有 ('*') 资源访问你的应用程序 | 建议不要将 WEBSITE_LOAD_CERTIFICATES 参数设置为“*”。将参数设置为“*”表示所有证书都将加载到 Web 应用程序个人证书存储。  这可能导致滥用最小特权原则，因为站点在运行时不太可能需要访问所有证书。 |
+| 不允许所有 ('*') 资源访问你的应用程序 | 建议不要将 WEBSITE_LOAD_CERTIFICATES 参数设置为“ *”。将参数设置为“* ”表示所有证书都将加载到 Web 应用程序个人证书存储。  这可能导致滥用最小特权原则，因为站点在运行时不太可能需要访问所有证书。 |
 | CORS 不应允许所有资源都能访问你的应用程序 | 建议你仅允许必需的域与 Web 应用程序进行交互。 跨源资源共享 (CORS) 不应允许所有域都能访问你的 Web 应用程序。 |
 | 对 Web 应用程序使用受支持的最新版 .NET Framework | 建议使用最新的 .NET Framework 版本以使用最新安全类。 使用较旧的类和类型可能会使应用程序易受攻击。 |
 | 对 Web 应用程序使用受支持的最新版 Java | 建议使用最新的 Java 版本以使用最新安全类。 使用较旧的类和类型可能会使应用程序易受攻击。 |

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
 ms.openlocfilehash: 73dd46d1ca0a20748d7a3a7838c499f0c659253d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66241679"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
@@ -52,7 +52,7 @@ ms.locfileid: "66241679"
     - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `backend-app`。 
     - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。   
 
-1. 将保留**重定向 URI**部分现在为空。
+1. 暂时将“重定向 URI”  部分留空。
 
 1. 选择“注册”  以创建应用程序。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "66241679"
     - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `client-app`。 
     - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。   
 
-1. 在中**重定向 URI**部分中，选择`Web`和输入的 URL `https://contoso5.portal.azure-api.net/signin`
+1. 在“重定向 URI”  部分中，选择 `Web` 并输入 URL `https://contoso5.portal.azure-api.net/signin`
 
 1. 选择“注册”  以创建应用程序。 
 
@@ -80,9 +80,9 @@ ms.locfileid: "66241679"
 
 现在，请创建此应用程序的客户端机密，以便在后续步骤中使用。
 
-1. 从客户端应用程序页的列表中选择**证书和机密**，然后选择**新的客户端机密**。
+1. 从客户端应用的页面列表中，选择“证书和机密”  ，然后选择“新建客户端密码”  。
 
-2. 下**添加客户端密码**，提供**说明**。 选择在密钥应过期，并选中**添加**。
+2. 在“添加客户端密码”  下，提供**说明**。 选择密钥过期时间，然后选择“添加”。 
 
 记下密钥值。 
 
@@ -90,17 +90,17 @@ ms.locfileid: "66241679"
 
 注册用于表示 API 和开发人员控制台的两个应用程序之后，需要授予权限，使客户端应用能够调用后端应用。  
 
-1. 导航到**应用注册**。 
+1. 导航到“应用注册”。  
 
-2. 选择`client-app`，并在列表中的应用页转到**API 权限**。
+2. 选择 `client-app`，然后在应用的页面列表中转到“API 权限”  。
 
-3. 选择**添加权限**。
+3. 选择“添加权限”  。
 
-4. 下**选择 API**，查找并选择`backend-app`。
+4. 在“选择 API”  下，找到并选择 `backend-app`。
 
-5. 下**委托的权限**，选择适当的权限`backend-app`。
+5. 在“委托的权限”  下，选择 `backend-app` 的相应权限。
 
-6. 选择**添加权限** 
+6. 选择“添加权限”  
 
 > [!NOTE]
 > 如果“Azure Active Directory”未在“对其他应用程序的权限”下列出，请选择“添加”并从列表中添加该项。  

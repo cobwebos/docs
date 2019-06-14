@@ -9,10 +9,10 @@ ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
 ms.openlocfilehash: 78162983601e9126bd34cb737e74783df982bacb
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258934"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS 履行 Api 版本 1 （已弃用）
@@ -332,7 +332,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | **参数名称** | **数据类型** | **说明**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
 | id                 | String        | 操作的 ID。                                                                      |
-| status             | 枚举          | 操作状态，值为下列其中一项：`In Progress`、`Succeeded` 或 `Failed`。          |
+| status             | Enum          | 操作状态，值为下列其中一项：`In Progress`、`Succeeded` 或 `Failed`。          |
 | resourceLocation   | String        | 链接到已创建或修改的订阅。 这可以帮助客户端获取更新的状态发布操作。 不会对 `Unsubscribe` 操作设置此值。 |
 | created            | DateTime      | 操作创建时间 (UTC)。                                                           |
 | lastModified       | DateTime      | 上次更新操作的时间 (UTC)。                                                      |
@@ -405,7 +405,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | offerId                | String        | 用户订阅的套餐 ID。         |
 | planId                 | String        | 用户订阅的计划 ID。          |
 | saasSubscriptionName   | String        | SaaS 订阅的名称。                |
-| saasSubscriptionStatus | 枚举          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
+| saasSubscriptionStatus | Enum          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
 | created                | DateTime      | 订阅创建时间戳值 (UTC)。 |
 | lastModified           | DateTime      | 订阅修改时间戳值 (UTC)。 |
 |  |  |  |
@@ -477,7 +477,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | offerId                | String        | 用户订阅产品/服务 ID         |
 | planId                 | String        | 用户订阅的计划 ID          |
 | saasSubscriptionName   | String        | SaaS 订阅的名称                |
-| saasSubscriptionStatus | 枚举          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
+| saasSubscriptionStatus | Enum          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
 | created                | DateTime      | Utc 格式的订阅创建时间戳值 |
 | lastModified           | DateTime      | 订阅修改以 UTC 时间戳值 |
 |  |  |  |

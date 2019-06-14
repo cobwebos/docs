@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: ee53cc3a639a79e1b29ac6cd537bfb04e05b1bca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478617"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure 导入/导出服务清单文件格式
@@ -106,7 +106,7 @@ block-list ::=
 |`BlobList/PropertiesPath/@Hash`|属性，字符串|为 properties 文件指定 Base16 编码 MD5 哈希值。|  
 |`Blob`|嵌套的 XML 元素|包含每个 Blob 列表中每个 Blob 的相关信息。|  
 |`Blob/BlobPath`|String|Blob 的相对 URI，以容器名称开头。 如果该 Blob 在根容器中，则必须以 `$root` 开头。|  
-|`Blob/FilePath`|String|指定驱动器上文件的相对路径。 对于导出作业，如果可能，该 Blob 路径将用作文件路径；例如，`pictures/bob/wild/desert.jpg` 将导出到 `\pictures\bob\wild\desert.jpg`。 但是，由于 NTFS 名称的限制，Blob 可能会导出到路径并不像 Blob 路径的文件。|  
+|`Blob/FilePath`|String|指定驱动器上文件的相对路径。 对于导出作业，如果可能，该 Blob 路径将用作文件路径；例如  ，`pictures/bob/wild/desert.jpg` 将导出到 `\pictures\bob\wild\desert.jpg`。 但是，由于 NTFS 名称的限制，Blob 可能会导出到路径并不像 Blob 路径的文件。|  
 |`Blob/ClientData`|String|可选。 包含客户提供的注释。 导入/导出服务不解释该值。|  
 |`Blob/Snapshot`|DateTime|对于导出作业而言是可选的。 指定某个已导出的 Blob 快照的快照标识符。|  
 |`Blob/Length`|Integer|指定 Blob 的总长度（字节）。 对于块 Blob，该值最大可为 200 GB；对于页 Blob，该值最大可为 1 TB。 对于页 Blob，该值必须是 512 的倍数。|  

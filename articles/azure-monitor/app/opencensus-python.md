@@ -10,10 +10,10 @@ ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae9db483e15197e6cdaaaa5981410630184cc6ca
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957243"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>从 Python（预览版）收集分布式跟踪
@@ -28,7 +28,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="sign-in-to-the-azure-portal"></a>登录 Azure 门户
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -36,7 +36,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 首先需创建一个 Application Insights 资源，该资源将生成一个检测密钥 (ikey)。 然后使用 ikey 配置本地转发器，将 OpenCensus 检测应用程序中的分布式跟踪发送到 Application Insights。   
 
-1. 选择“创建资源” > “开发人员工具” > “Application Insights”。
+1. 选择“创建资源”   > “开发人员工具”   > “Application Insights”  。
 
    ![添加 Application Insights 资源](./media/opencensus-python/0001-create-resource.png)
 
@@ -53,7 +53,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 ## <a name="configure-local-forwarder"></a>配置本地转发器
 
-1. 选择“概述” > “概要”> 复制应用程序的**检测密钥**。
+1. 选择“概述”   > “概要”  > 复制应用程序的**检测密钥**。
 
    ![检测密钥的屏幕截图](./media/opencensus-python/0003-instrumentation-key.png)
 
@@ -169,7 +169,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>开始在 Azure 门户中监视
 
-1. 现在可以在 Azure 门户中重新打开 Application Insights“概览”页，查看当前正在运行的应用程序的详细信息。 选择“实时指标流”。
+1. 现在可以在 Azure 门户中重新打开 Application Insights“概览”  页，查看当前正在运行的应用程序的详细信息。 选择“实时指标流”  。
 
    ![概览窗格的屏幕截图，其中的实时指标流在红框中呈选中状态。](./media/opencensus-python/0005-overview-live-metrics-stream.png)
 
@@ -177,7 +177,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    ![实时指标流的屏幕截图，其中显示了性能数据](./media/opencensus-python/0006-stream.png)
 
-3. 导航回“概览”页，选择“应用程序映射”以获取应用程序组件之间依赖关系和调用时间的可视布局。
+3. 导航回“概览”页，选择“应用程序映射”以获取应用程序组件之间依赖关系和调用时间的可视布局。  
 
     ![基本应用程序映射的屏幕截图](./media/opencensus-python/0007-application-map.png)
 
@@ -185,11 +185,11 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    ![应用程序地图](media/opencensus-python/application-map.png)
 
-4. 选择“调查性能”，执行详细的性能分析并确定性能减慢的根本原因。
+4. 选择“调查性能”，执行详细的性能分析并确定性能减慢的根本原因。 
 
     ![性能窗格的屏幕截图](./media/opencensus-python/0008-performance.png)
 
-5. 选择“示例”，然后单击显示在右窗格中的任意示例，这将启动端到端事务详细信息体验。 虽然我们的示例应用只会显示单个事件，但更复杂的应用程序会让你在探索端到端事务时，可以深入到单个事件的调用堆栈级别。
+5. 选择“示例”，然后单击显示在右窗格中的任意示例，这将启动端到端事务详细信息体验。  虽然我们的示例应用只会显示单个事件，但更复杂的应用程序会让你在探索端到端事务时，可以深入到单个事件的调用堆栈级别。
 
      ![端到端事务界面的屏幕截图](./media/opencensus-python/0009-end-to-end-transaction.png)
 

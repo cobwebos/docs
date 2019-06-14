@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155856"
 ---
 > [!NOTE]
@@ -17,19 +17,19 @@ ms.locfileid: "66155856"
 > 
 
 #### <a name="to-configure-rbs"></a>配置 RBS
-1. 打开“SharePoint 管理中心”页，导航到“系统设置”。 
-2. 在“Azure StorSimple”部分中，单击“配置 StorSimple Adapter”。
+1. 打开“SharePoint 管理中心”页，导航到“系统设置”。  
+2. 在“Azure StorSimple”部分中，单击“配置 StorSimple Adapter”。  
    
     ![配置 StorSimple Adapter](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
-3. 在“配置 StorSimple Adapter”页上：
+3. 在“配置 StorSimple Adapter”页上： 
    
-   1. 确保选中“启用编辑路径”复选框。
+   1. 确保选中“启用编辑路径”复选框。 
    2. 在文本框中，键入 BLOB 存储的通用命名约定 (UNC) 路径。
       
       > [!NOTE]
       > 必须在 StorSimple 设备上配置的 iSCSI 卷中托管 BLOB 存储卷。
 
-   3. 单击想要为其配置远程存储的每个内容数据库下面的“启用”按钮。
+   3. 单击想要为其配置远程存储的每个内容数据库下面的“启用”按钮。 
       
       > [!NOTE]
       > BLOB 存储必须由所有 Web 前端 (WFE) 服务器共享和访问，为 SharePoint 服务器场配置的用户帐户必须有权访问该共享。
@@ -40,7 +40,7 @@ ms.locfileid: "66155856"
       
       ![配置 StorSimple Adapter - 启用和禁用](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. 单击“更新”按钮以应用配置。 单击“更新”按钮时，所有 WFE 服务器上的 RBS 配置状态会更新，整个服务器场将启用 RBS。 此时会显示以下消息。
+   4. 单击“更新”按钮以应用配置。  单击“更新”按钮时，所有 WFE 服务器上的 RBS 配置状态会更新，整个服务器场将启用 RBS。  此时会显示以下消息。
       
       ![适配器配置消息](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
@@ -49,7 +49,7 @@ ms.locfileid: "66155856"
 
 4. 验证配置：
    
-   1. 登录到 SharePoint 管理中心网站，并浏览到“配置 StorSimple Adapter”页。
+   1. 登录到 SharePoint 管理中心网站，并浏览到“配置 StorSimple Adapter”  页。
    2. 检查配置详细信息，确保与输入的设置一致。 
 5. 验证 RBS 是否正常工作：
    

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
 ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607912"
 ---
 # <a name="trusted-internet-connections-guidance"></a>受信任 Internet 连接指南
@@ -23,7 +23,7 @@ ms.locfileid: "60607912"
 
 TIC 计划旨在优化和标准化联邦政府机构使用的各个外部网络连接的安全性。 [预算局 (OMB) 备忘录 M-08-05](https://georgewbush-whitehouse.archives.gov/omb/memoranda/fy2008/m08-05.pdf) 中概述了该策略。
 
-2007 年 11 月，OMB 建立了 TIC 计划，以增强联邦网络周边安全和事件响应功能。 TIC 旨在对所有入站和出站政府流量进行网络分析，以识别特定签名和基于模式的数据。 TIC 可发现行为异常，如僵尸网络活动。 授权各机构整合其外部网络连接，并通过入侵检测和防御设备（称为 EINSTEIN）路由所有流量。 这些设备托管在有限数量的网络终结点上，这些终结点称为“受信任 Internet 连接”。
+2007 年 11 月，OMB 建立了 TIC 计划，以增强联邦网络周边安全和事件响应功能。 TIC 旨在对所有入站和出站政府流量进行网络分析，以识别特定签名和基于模式的数据。 TIC 可发现行为异常，如僵尸网络活动。 授权各机构整合其外部网络连接，并通过入侵检测和防御设备（称为 EINSTEIN）路由所有流量。 这些设备托管在有限数量的网络终结点上，这些终结点称为“受信任 Internet 连接”  。
 
 TIC 的目标是让各机构了解：
 - 谁在使用我的网络（已授权或未授权）？
@@ -45,9 +45,9 @@ TIC 的目标是让各机构了解：
 介质是公共的，因为它遍历站点的标准 Internet 连接，但在隧道中加密了连接，以确保隐私。 带宽受限于 VPN 设备和所选配置。 Azure 点到站点连接通常限制为 100 Mbps，而站点到站点连接限制为 1.25 Gbps。
 - Azure ExpressRoute：ExpressRoute 直接连接到 Microsoft 服务。 由于连接是通过独立的纤程通道进行的，因此根据所使用的配置，该连接可为公共连接或专用连接。 带宽通常限制为最大 10 Gbps。
 
-在国土安全部的“受信任 Internet 连接 (TIC) 引用体系结构文档，2.0 版”中，指定了几种方法可以满足 TIC 附录 H（云注意事项）的要求。 在本文中，DHS TIC 指南称为 TIC 2.0。
+在国土安全部的“受信任 Internet 连接 (TIC) 引用体系结构文档，2.0 版”中，指定了几种方法可以满足 TIC 附录 H（云注意事项）的要求。 在本文中，DHS TIC 指南称为 TIC 2.0  。
 
-要实现从部门或代理 (D/A) 到 Azure 或 Office 365 的连接，而无需通过 D/A TIC 路由流量，D/A 必须使用加密隧道或云服务提供商 (CSP) 的专用连接。 CSP 服务可确保不向公共 Internet 提供与 D/A 云资产的连接，以便代理人员直接访问。
+要实现从部门或代理 (D/A) 到 Azure 或 Office 365 的连接，而无需通过 D/A TIC 路由流量，D/A 必须使用加密隧道或云服务提供商 (CSP) 的专用连接  。 CSP 服务可确保不向公共 Internet 提供与 D/A 云资产的连接，以便代理人员直接访问。
 
 Office 365 符合 TIC 2.0 附录 H，该附录使用启用了 [Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)的 ExpressRoute 或使用 TLS 1.2 加密所有流量的 Internet 连接。 D/A 网络上的 D/A 最终用户可通过其代理网络和 TIC 基础结构通过 Internet 进行连接。 阻止了 Office 365 的所有远程 Internet 访问并通过该代理路由。 通过 ExpressRoute 连接与启用的 Microsoft 对等互连（公共对等互连的一种）的连接，D/A 也可连接到 Office 365。  
 
@@ -59,7 +59,7 @@ Office 365 符合 TIC 2.0 附录 H，该附录使用启用了 [Microsoft 对等�
 
 使用 Azure IaaS 遵守 TIC 策略相对简单，因为 Azure 客户管理其自己的虚拟网络路由。
 
-帮助确保符合 TIC 引用体系结构的主要要求是确保虚拟网络是 D/A 网络的专用扩展。 要成为专用扩展，该策略要求除了通过本地 TIC 网络连接之外，没有流量离开网络。 此过程称为强制隧道。 对于 TIC 符合性，该过程将 CSP 环境中任何系统的所有流量通过组织网络上的本地网关通过 TIC 路由到 Internet。
+帮助确保符合 TIC 引用体系结构的主要要求是确保虚拟网络是 D/A 网络的专用扩展。 要成为专用  扩展，该策略要求除了通过本地 TIC 网络连接之外，没有流量离开网络。 此过程称为强制隧道  。 对于 TIC 符合性，该过程将 CSP 环境中任何系统的所有流量通过组织网络上的本地网关通过 TIC 路由到 Internet。
 
 Azure IaaS TIC 符合性分为两个主要步骤：
 
@@ -81,7 +81,7 @@ Azure IaaS 网络通过子网组成的虚拟网络进行，虚拟机的网络接
 Azure 自动创建系统路由，并将路由分配到虚拟网络中的每个子网。 无法创建或删除系统路由，但可以使用自定义路由替代某些系统路由。 Azure 为每个子网创建默认系统路由。 使用特定的 Azure 功能时，Azure 向特定子网或每个子网添加可选默认路由。 这种类型的路由可确保：
 - 虚拟网络中的流量保留在虚拟网络内。
 - IANA 指定的专用地址空间（如 10.0.0.0/8）将被丢弃，除非包含在虚拟网络的地址空间中。
-- 0.0.0.0/0 的“最后手段”路由到虚拟网络的 Internet 终结点。
+- 0\.0.0.0/0 的“最后手段”路由到虚拟网络的 Internet 终结点。
 
 ![TIC 强制隧道](media/tic-diagram-c.png)
 
@@ -89,7 +89,7 @@ Azure 自动创建系统路由，并将路由分配到虚拟网络中的每个�
 
 #### <a name="add-user-defined-routes"></a>添加用户定义的路由
 
-如果使用基于路由的虚拟网关，则可在 Azure 中强制隧道。 添加用户定义的路由 (UDR)，将 0.0.0.0/0 流量设置为路由到虚拟网关的“下一跃点”。 Azure 将用户定义的路由设置为优先于系统定义的路由。 所有非虚拟网络流量都会发送到虚拟网关，然后将流量路由到本地。 定义 UDR 后，将路由与 Azure 环境中所有虚拟网络内的现有子网或新子网关联。
+如果使用基于路由的虚拟网关，则可在 Azure 中强制隧道。 添加用户定义的路由 (UDR)，将 0.0.0.0/0 流量设置为路由到虚拟网关的“下一跃点”  。 Azure 将用户定义的路由设置为优先于系统定义的路由。 所有非虚拟网络流量都会发送到虚拟网关，然后将流量路由到本地。 定义 UDR 后，将路由与 Azure 环境中所有虚拟网络内的现有子网或新子网关联。
 
 ![用户定义的路由和 TIC](media/tic-diagram-d.png)
 
@@ -103,7 +103,7 @@ Azure 提供了多种审核 TIC 符合性的方法。
 
 #### <a name="view-effective-routes"></a>查看有效路由
 
-通过观察 [Azure 门户](https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-portal#diagnose-using-azure-portal)或 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-powershell#diagnose-using-powershell) 中特定虚拟机、特定 NIC 或用户定义路由表的有效路由，确认已传播默认路由。 “有效路由”显示适用于相关实体的相关用户定义路由、播发 BGP 的路由和系统路由，如下图所示：
+通过观察 [Azure 门户](https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-portal#diagnose-using-azure-portal)或 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-powershell#diagnose-using-powershell) 中特定虚拟机、特定 NIC 或用户定义路由表的有效路由  ，确认已传播默认路由。 “有效路由”显示适用于相关实体的相关用户定义路由、播发 BGP 的路由和系统路由，如下图所示  ：
 
 ![有效路由](media/tic-screen-1.png)
 
@@ -173,7 +173,7 @@ Azure 网络观察程序提供了多种审核 TIC 符合性的工具。 有关�
 2. Azure VPN 网关与 ExpressRoute 和 Microsoft 对等互连一起使用时，可覆盖客户虚拟网络与本地边缘之间的端到端的 IPSec 加密。 
 3. 使用 NSG 控制与客户虚拟网络的网络连接，该 NSG 可让客户根据 IP、端口和协议允许/拒绝连接。
 4. 通过为客户服务创建服务终结点，客户虚拟网络扩展到 PaaS 服务。
-5. 将 PaaS 服务终结点确认为“默认拒绝所有”，且仅允许从客户虚拟网络内的指定子网进行访问。 默认拒绝还包括源自 Internet 的连接。
+5. 将 PaaS 服务终结点确认为“默认拒绝所有”，且仅允许从客户虚拟网络内的指定子网进行访问  。 默认拒绝还包括源自 Internet 的连接。
 6. 需要访问客户虚拟网络中资源的其他 Azure 服务应：  
    - 直接部署到虚拟网络中。
    - 根据相应 Azure 服务中的指南进行选择。
@@ -219,7 +219,7 @@ Azure Policy 以订阅级别为目标。 该服务提供了一个集中的接口
 |每个 NIC 上的 NSG X。 | 确保将阻止 Internet 流量的 NSG 应用于所有虚拟机上的所有 NIC。 | 开始使用此[模板](../../governance/policy/samples/nsg-on-nic.md)。 |
 |将已批准的虚拟网络用于虚拟机网络接口。  | 确保所有 NIC 都位于已批准的虚拟网络上。 | 开始使用此[模板](../../governance/policy/samples/use-approved-vnet-vm-nics.md)。 |
 |允许的位置。 | 确保将所有资源部署到符合虚拟网络和网络观察程序配置的区域。  | 开始使用此[模板](../../governance/policy/samples/allowed-locations.md)。 |
-|不允许的资源类型，如 PublicIP。 | 禁止部署没有符合性计划的资源类型。 使用此策略禁止部署公共 IP 地址资源。 虽然 NSG 规则可用于有效阻止入站 Internet 流量，但阻止使用公共 IP 可进一步减少攻击面。   | 开始使用此[模板](../../governance/policy/samples/not-allowed-resource-types.md)。  |
+|不允许的资源类型，如 PublicIP  。 | 禁止部署没有符合性计划的资源类型。 使用此策略禁止部署公共 IP 地址资源。 虽然 NSG 规则可用于有效阻止入站 Internet 流量，但阻止使用公共 IP 可进一步减少攻击面。   | 开始使用此[模板](../../governance/policy/samples/not-allowed-resource-types.md)。  |
 
 ### <a name="network-watcher-traffic-analytics"></a>网络观察程序流量分析
 
@@ -227,11 +227,11 @@ Azure Policy 以订阅级别为目标。 该服务提供了一个集中的接口
 
 ![流量分析](media/tic-traffic-analytics-1.png)
 
-使用“异地映射”快速识别虚拟机的 Internet 流量的可能物理目标。 可识别和会审可疑位置或模式更改：
+使用“异地映射”快速识别虚拟机的 Internet 流量的可能物理目标  。 可识别和会审可疑位置或模式更改：
 
 ![异地映射](media/tic-traffic-analytics-2.png)
 
-使用“虚拟网络拓扑”快速调查现有虚拟网络：
+使用“虚拟网络拓扑”快速调查现有虚拟网络  ：
 
 ![网络拓扑映射](media/tic-traffic-analytics-3.png)
 

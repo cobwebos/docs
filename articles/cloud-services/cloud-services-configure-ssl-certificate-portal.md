@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2a9879ebc55a5f25c1a358e386697dce1c55ec90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61434017"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 中为应用程序配置 SSL
@@ -40,7 +40,7 @@ ms.locfileid: "61434017"
 
 * 证书必须包含私钥。
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构 (CA) 处获取针对 cloudapp.net 域的 SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名**contoso.com**会从你的 CA 请求证书 ***。 contoso.com**或**www\.contoso.com**。
+* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构 (CA) 处获取针对 cloudapp.net 域的 SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名**contoso.com**会从你的 CA 请求证书 * **。 contoso.com**或**www\.contoso.com**。
 * 该证书必须使用至少 2048 位加密。
 
 出于测试目的，可以[创建](cloud-services-certs-create.md)并使用自签名证书。 自签名证书不通过 CA 进行身份验证并可使用 cloudapp.net 域作为网站 URL。 例如，以下任务使用其公用名 (CN) 为 **sslexample.cloudapp.net** 的自签名证书。
@@ -117,7 +117,7 @@ ms.locfileid: "61434017"
     ```
 
    对服务定义文件进行的所有必需更改已完成，但仍需要将证书信息添加到服务配置文件中。
-4. 在服务配置文件 (CSCFG) ServiceConfiguration.Cloud.cscfg 中，用你的证书值添加“证书”值。 以下代码示例提供有关“证书”部分的详细信息，指纹值除外。
+4. 在服务配置文件 (CSCFG) ServiceConfiguration.Cloud.cscfg 中，用你的证书值添加“证书”  值。 以下代码示例提供有关“证书”  部分的详细信息，指纹值除外。
 
    ```xml
     <Role name="Deployment">
@@ -134,14 +134,14 @@ ms.locfileid: "61434017"
     </Role>
     ```
 
-（此示例将 sha1 用于指纹算法。 请为证书的指纹算法指定适当的值。）
+（此示例将 sha1  用于指纹算法。 请为证书的指纹算法指定适当的值。）
 
 现在已更新服务定义和服务配置文件，请打包部署以上传到 Azure。 如果使用的是 **cspack**，请勿使用 **/generateConfigurationFile** 标志，因为这会覆盖你刚插入的证书信息。
 
 ## <a name="step-3-upload-a-certificate"></a>步骤 3：上传证书
 连接到 Azure 门户和...
 
-1. 在门户的“所有资源”部分中，选择你的云服务。
+1. 在门户的“所有资源”  部分中，选择你的云服务。
 
     ![发布云服务](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
@@ -149,11 +149,11 @@ ms.locfileid: "61434017"
 
     ![单击证书图标](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 
-3. 单击证书区域顶部的“上传”。
+3. 单击证书区域顶部的“上传”  。
 
     ![单击“上传”菜单项](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
-4. 提供“文件”、“密码”，然后单击数据输入区域底部的“上传”。
+4. 提供“文件”  、“密码”  ，然后单击数据输入区域底部的“上传”  。
 
 ## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>步骤 4：使用 HTTPS 连接到角色实例
 在 Azure 中启动并运行部署后，便可以使用 HTTPS 连接到该部署。

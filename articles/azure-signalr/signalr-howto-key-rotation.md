@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 15b0ff0bbb96e5fa96d81cfa265e83abf749cf85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60688873"
 ---
 # <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>如何为 Azure SignalR 服务轮换访问密钥
@@ -25,11 +25,11 @@ ms.locfileid: "60688873"
 
 1. 转到 [Azure 门户](https://portal.azure.com/)并使用自己的凭据登录。
 
-1. 在要重新生成其密钥的 Azure SignalR 服务实例中找到“密钥”部分。
+1. 在要重新生成其密钥的 Azure SignalR 服务实例中找到“密钥”部分。 
 
-1. 在导航菜单中选择“密钥”。
+1. 在导航菜单中选择“密钥”  。
 
-1. 选择“重新生成主密钥”或“重新生成辅助密钥”。
+1. 选择“重新生成主密钥”或“重新生成辅助密钥”。  
 
    此时将创建并显示新的密钥和相应的连接字符串。
 

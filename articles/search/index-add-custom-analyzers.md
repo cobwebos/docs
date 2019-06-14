@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b670b5aeffcd699226a088d8db21a12dbaf40042
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242817"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加自定义分析器
@@ -221,7 +221,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|Name|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |Type|必须是“#Microsoft.Azure.Search.CustomAnalyzer”。|  
 |CharFilters|设置为[字符筛选器](#char-filters-reference)表中列出的预定义字符筛选器之一或索引定义中指定的自定义字符筛选器。|  
 |分词器|必需。 设置为下面 [Tokenizer](#Tokenizers) 表中列出的预定义 tokenizer 之一或索引定义中指定的自定义 tokenizer。|  
@@ -251,7 +251,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 |||  
 |-|-|  
-|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|Name|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |Type|Tokenizer 名称来自受支持 tokenizer 列表。 请参阅下面 [Tokenizer](#Tokenizers) 表中的 **tokenizer_type** 列。|  
 |选项|必须是下面 [Tokenizer](#Tokenizers) 表中列出的给定 tokenizer 类型的有效选项。|  
 

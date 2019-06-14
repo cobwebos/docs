@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: c1784111cd2fc2c93b67510f310b9e513cf2b86e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132469"
 ---
 Azure Functions [触发器和绑定](../articles/azure-functions/functions-triggers-bindings.md)与各种 Azure 服务进行通信。 与这些服务集成时，可能会遇到来源于底层 Azure 服务 API 的引发错误。 尝试使用 REST 或客户端库通过函数代码与其他服务进行通信时，也可能会发生错误。 若要避免数据丢失并确保函数的行为正常，请务必处理来自任一源的错误。

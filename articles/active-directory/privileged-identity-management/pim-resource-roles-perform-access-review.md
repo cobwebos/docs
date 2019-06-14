@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ede412292caf682c3078002d23e1956bd68d1378
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602211"
 ---
 # <a name="review-access-to-azure-resource-roles-in-pim"></a>评审在 PIM 中的 Azure 资源角色的访问权限
@@ -35,20 +35,20 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 选择 Azure 门户右上角的用户名，并选择要操作的目录。
-3. 选择“所有服务”，并使用“筛选器”框搜索“Azure AD Privileged Identity Management”。
-4. 选择“固定到仪表板”，然后选择“创建”。 PIM 应用程序随即打开。
+3. 选择“所有服务”  ，并使用“筛选器”框搜索“Azure AD Privileged Identity Management”   。
+4. 选择“固定到仪表板”  ，然后选择“创建”  。 PIM 应用程序随即打开。
 
 ## <a name="approve-or-deny-access"></a>批准或拒绝访问权限
-批准或拒绝访问权限时，只是告诉审查人你是否仍要使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。 你的状态仅在审阅者应用结果时才会更改。
+批准或拒绝访问权限时，只是告诉审查人你是否仍要使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。   你的状态仅在审阅者应用结果时才会更改。
 
 请遵循以下步骤来查找并完成访问权限审查：
 1. 浏览到 Azure AD PIM 应用程序。
-2. 选择“审阅访问权限”边栏选项卡。
+2. 选择“审阅访问权限”  边栏选项卡。
 
    ![PIM 应用程序屏幕截图，选中了“审阅访问权限”边栏选项卡](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 3. 选择想要完成的审查。 
-4. 选择“批准”或“拒绝”。 可能需要在“提供原因”文本框中提供做出该决定的原因。
+4. 选择“批准”或“拒绝”。   可能需要在“提供原因”文本框中提供做出该决定的原因。 
 
    ![“审阅详细信息”页的屏幕截图](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 

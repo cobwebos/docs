@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60343760"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-sap-hana-connector.md)
 > * [当前版本](connector-sap-hana.md)
 
@@ -37,7 +37,7 @@ ms.locfileid: "60343760"
 - 使用**基本**或 **Windows** 身份验证复制数据。
 
 > [!NOTE]
-> 要将数据复制到 SAP HANA 数据存储，请使用泛型 ODBC 连接器。 有关详细信息，请参阅 [SAP HANA 接收器](connector-odbc.md#sap-hana-sink)。 注意：适用于 SAP HANA 连接器和 ODBC 连接器的链接服务采用不同的类型，因此不能重用。
+> 要将数据复制到  SAP HANA 数据存储，请使用泛型 ODBC 连接器。 有关详细信息，请参阅 [SAP HANA 接收器](connector-odbc.md#sap-hana-sink)。 注意：适用于 SAP HANA 连接器和 ODBC 连接器的链接服务采用不同的类型，因此不能重用。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -93,7 +93,7 @@ SAP HANA 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 SAP HANA 数据集支持的属性列表。
 
-要从 SAP HANA 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 RelationalTable 类型的 SAP HANA 数据集不支持任何类型特定的属性时。
+要从 SAP HANA 复制数据，请将数据集的 type 属性设置为“RelationalTable”  。 RelationalTable 类型的 SAP HANA 数据集不支持任何类型特定的属性时。
 
 **示例：**
 
@@ -117,7 +117,7 @@ SAP HANA 链接的服务支持以下属性：
 
 ### <a name="sap-hana-as-source"></a>以 SAP HANA 作为源
 
-要从 SAP HANA 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+要从 SAP HANA 复制数据，请将复制活动中的源类型设置为“RelationalSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

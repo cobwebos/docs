@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66140237"
 ---
 1. 在名为 `ToDoBroadcastReceiver` 的项目中创建一个新类。
@@ -66,7 +66,7 @@ ms.locfileid: "66140237"
     请注意，此类派生自 **GcmServiceBase**，必须对此类应用 **Service** 属性。
 
     > [!NOTE]
-    > **GcmServiceBase** 类实现 **OnRegistered()**、**OnUnRegistered()**、**OnMessage()** 和 **OnError()** 方法。 必须在 **PushHandlerService** 类中重写这些方法。
+    > **GcmServiceBase** 类实现 **OnRegistered()** 、**OnUnRegistered()** 、**OnMessage()** 和 **OnError()** 方法。 必须在 **PushHandlerService** 类中重写这些方法。
 
 6. 将以下代码添加到 **PushHandlerService** 类，以便重写 **OnRegistered** 事件处理程序。
 

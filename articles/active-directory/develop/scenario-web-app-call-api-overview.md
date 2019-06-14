@@ -16,13 +16,13 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce45f11a697b72ebdd0fe01166a70e7b47aa8e9f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65076295"
 ---
-# <a name="scenario-web-app-that-calls-web-apis"></a>场景：调用 web Api 的 web 应用
+# <a name="scenario-web-app-that-calls-web-apis"></a>场景：用于调用 Web API 的 Web 应用
 
 了解如何在 Microsoft 标识平台上构建的 web 应用登录用户并调用 web Api 代表已登录用户。
 
@@ -39,7 +39,7 @@ ms.locfileid: "65076295"
 
 将身份验证添加到 Web 应用，因此可以在用户登录并调用 web API 代表已登录用户。
 
-![调用 web Api 的 web 应用](./media/scenario-webapp/web-app.svg)
+![用于调用 Web API 的 Web 应用](./media/scenario-webapp/web-app.svg)
 
 Web 应用调用 web Api:
 

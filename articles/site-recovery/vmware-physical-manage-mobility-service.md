@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 69b8e1c533747d1bade69949911ea43f299f49e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117327"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>管理受保护计算机上的移动代理
@@ -24,12 +24,12 @@ ms.locfileid: "66117327"
 ## <a name="update-mobility-service-from-azure-portal"></a>从 Azure 门户更新移动服务
 
 1. 开始在受保护的计算机上更新移动服务之前，请确保部署中的配置服务器、横向扩展进程服务器及所有主目标服务器均已更新。
-2. 在门户中打开保管库 >“复制的项”。
+2. 在门户中打开保管库 >“复制的项”。 
 3. 如果配置服务器是最新版本，则会看到一条通知，指出“新的 Site Recovery 复制代理更新已可用。 单击可安装。”
 
      ![“复制的项”窗口](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. 单击该通知，并在“代理更新”中选择要在其上升级移动服务的计算机。 然后单击“确定”。
+4. 单击该通知，并在“代理更新”中选择要在其上升级移动服务的计算机。  然后单击“确定”  。
 
      ![“复制的项”VM 列表](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
@@ -53,7 +53,7 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 
 从 UI 或命令提示符卸载。
 
-- **通过 UI**：在计算机的控制面板中，选择“程序”。 选择“Microsoft Azure Site Recovery 移动服务/主目标服务器” > “卸载”。
+- **通过 UI**：在计算机的控制面板中，选择“程序”。  选择“Microsoft Azure Site Recovery 移动服务/主目标服务器” > “卸载”。  
 - **通过命令提示符**：在计算机上以管理员身份打开命令提示符窗口。 运行以下命令： 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"

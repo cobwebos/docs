@@ -9,10 +9,10 @@ ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: d78c110f3317f4dd9f16cbe243aeca437e9890a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60364579"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
@@ -25,7 +25,7 @@ ms.locfileid: "60364579"
 
 ## <a name="circuit-metrics"></a>线路指标
 
-若要导航到“指标”，请单击要监视的线路的 ExpressRoute 页。 在“监视”下，可以查看**指标**。 选择 BitsInPerSecond 或 BitsOutPerSecond 以及聚合。 （可选）可以应用拆分，这将显示每个对等互连类型的指标。
+若要导航到“指标”  ，请单击要监视的线路的 ExpressRoute 页。 在“监视”  下，可以查看**指标**。 选择 BitsInPerSecond 或 BitsOutPerSecond 以及聚合。 （可选）可以应用拆分，这将显示每个对等互连类型的指标。
 
 ![线路指标](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
@@ -41,13 +41,13 @@ ms.locfileid: "60364579"
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>ExpressRoute 网关连接的警报
 
-1. 若要配置警报，请导航到 **Azure Monitor**，然后单击“警报”。
+1. 若要配置警报，请导航到 **Azure Monitor**，然后单击“警报”  。
 
    ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
-2. 单击“+选择目标”，然后选择 ExpressRoute 网关连接资源。
+2. 单击“+选择目标”  ，然后选择 ExpressRoute 网关连接资源。
 
-   ![目标]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. 定义警报详细信息。
 
    ![操作组](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
@@ -62,7 +62,7 @@ ms.locfileid: "60364579"
 
 ## <a name="configure-alerts-for-activity-logs-on-circuits"></a>为线路上的活动日志配置警报
 
-在**警报条件**中，可以选择“活动日志”作为信号类型并选择“信号”。
+在**警报条件**中，可以选择“活动日志”  作为信号类型并选择“信号”。
 
   ![另一个](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   

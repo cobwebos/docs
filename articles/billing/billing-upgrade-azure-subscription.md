@@ -18,10 +18,10 @@ ms.date: 03/14/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d6af7106e991f0306ae2fef69129888219a9c0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369541"
 ---
 # <a name="upgrade-your-free-trial-or-azure-for-students-starter-subscription-to-pay-as-you-go"></a>升级免费试用版或 Azure for Students Starter 订阅到即用即付
@@ -52,9 +52,9 @@ ms.locfileid: "60369541"
 
 1. 选择你的订阅的支持计划。 若要了解有关支持计划的详细信息，请参阅[Azure 支持计划](https://azure.microsoft.com/us/support/plans/)。
 
-1. 单击“升级”。
+1. 单击“升级”。 
 
-如果想要在升级后[转移订阅](billing-subscription-transfer.md)，则必须等到订阅套餐 ID 更改为 MS-AZR-003P。 出现以下情况时，套餐 ID 会更改：
+如果想要在升级后[转移订阅](billing-subscription-transfer.md)，则必须等到订阅套餐 ID 更改为 MS-AZR-003P  。 出现以下情况时，套餐 ID 会更改：
 
 * 使用所有剩余信用额度，或
 * 自开始免费试用 30 天之后
@@ -80,7 +80,7 @@ ms.locfileid: "60369541"
 1. 键入你的订阅的名称。
 1. 如果要升级到即用即付，选择你的订阅的支持计划。 若要了解有关支持计划的详细信息，请参阅[Azure 支持计划](https://azure.microsoft.com/us/support/plans/)。
 
-1. 单击“升级”。
+1. 单击“升级”。 
 
 ## <a name="next-steps"></a>后续步骤
 

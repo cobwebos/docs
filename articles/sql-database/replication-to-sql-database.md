@@ -13,10 +13,10 @@ ms.reviewer: mathoma
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: b9d6569504b5352c6187afe12d903c986019c517
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646788"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单一数据库和共用数据库
@@ -107,7 +107,7 @@ Azure SQL 数据库订阅不支持以下选项：
 创建发布和推送订阅。 有关详细信息，请参阅：
   
 - [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是将 Azure SQL 数据库服务器名称用作订阅服务器（例如 N'azuresqldbdns.database.windows.net'），将 Azure SQL 数据库名称用作目标数据库（例如 AdventureWorks）。  
+- [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是将 Azure SQL 数据库服务器名称用作订阅服务器（例如 N'azuresqldbdns.database.windows.net'  ），将 Azure SQL 数据库名称用作目标数据库（例如 AdventureWorks  ）。  
 
 ## <a name="see-also"></a>另请参阅  
 

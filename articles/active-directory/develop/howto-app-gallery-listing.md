@@ -19,10 +19,10 @@ ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 005e5c92a16760d8eec5dc37526f4b1f2dbd751c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540536"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出你的应用程序
@@ -63,11 +63,11 @@ ms.locfileid: "65540536"
 
 添加帐户后，你可以登录到 Microsoft Application Network Portal。
 
-如果登录后出现以下页面，请在文本框中提供需要进行访问的业务理由，然后选择“请求访问”。
+如果登录后出现以下页面，请在文本框中提供需要进行访问的业务理由，然后选择“请求访问”  。
 
   ![SharePoint 门户上的访问请求](./media/howto-app-gallery-listing/accessrequest.png)
 
-我们的团队将审核详细信息并相应地为你提供访问权限。 请求获得批准后，单击主页上的“提交请求(ISV)”磁贴即可登录门户并提交请求。
+我们的团队将审核详细信息并相应地为你提供访问权限。 请求获得批准后，单击主页上的“提交请求(ISV)”磁贴即可登录门户并提交请求  。
 
 ![SharePoint 门户主页](./media/howto-app-gallery-listing/homepage.png)
 
@@ -82,14 +82,14 @@ ms.locfileid: "65540536"
 
     ![将 OpenID Connect 应用程序列到库中的时间线](./media/howto-app-gallery-listing/openid.png)
 
-    * 如果想要使用 OpenID Connect 将你的应用程序添加到库中的列表，请如上所述选择“OpenID Connect & OAuth 2.0”。
+    * 如果想要使用 OpenID Connect 将你的应用程序添加到库中的列表，请如上所述选择  “OpenID Connect & OAuth 2.0”。
     * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
 
 - **SAML 2.0** 或 **WS 联合身份验证**：如果你的应用支持 SAML 2.0，则可以根据[用来添加自定义应用程序的说明](../active-directory-saas-custom-apps.md)将其直接与 Azure AD 租户集成。
 
   ![将 SAML 2.0 或 WS-Fed 应用程序列到库中的时间线](./media/howto-app-gallery-listing/saml.png)
 
-  * 如果想要使用 SAML 2.0 或 WS-Fed 将你的应用程序添加到库中的列表，请如上所述选择“SAMl 2.0/WS-Fed”。
+  * 如果想要使用  SAML 2.0 或 WS-Fed  将你的应用程序添加到库中的列表，请如上所述选择“SAMl 2.0/WS-Fed”  。
   * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
 ## <a name="implementing-sso-using-password-sso"></a>使用密码 SSO 实现 SSO
@@ -98,7 +98,7 @@ ms.locfileid: "65540536"
 
 ![将 Password SSO 应用程序列到库中的时间线](./media/howto-app-gallery-listing/passwordsso.png)
 
-* 如果想要使用 Password SSO 将你的应用程序添加到库中的列表，请如上所述选择“Password SSO”。
+* 如果想要使用 Password SSO 将你的应用程序添加到库中的列表，请如上所述选择“Password SSO”  。
 * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
 ## <a name="updateremove-existing-listing"></a>更新/删除现有列表
@@ -109,8 +109,8 @@ ms.locfileid: "65540536"
 
     ![将 SAML 应用程序列到库中的时间线](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * 如果要更新现有应用程序，请选择“更新现有应用程序列表”。
-    * 如果要从 Azure AD 库中删除现有应用程序，请选择“删除现有应用程序列表”。
+    * 如果要更新现有应用程序，请选择“更新现有应用程序列表”  。
+    * 如果要从 Azure AD 库中删除现有应用程序，请选择“删除现有应用程序列表”  。
     * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
 
 ## <a name="listing-requests-by-customers"></a>列出由客户的请求

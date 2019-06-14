@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
 ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60614392"
 ---
 # <a name="application-upgrade-parameters"></a>应用程序升级参数
@@ -39,7 +39,7 @@ ms.locfileid: "60614392"
 
 通过 PowerShell 进行的 Service Fabric 应用程序升级使用 [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) 命令。 将 **Monitored**、**UnmonitoredAuto** 或 **UnmonitoredManual** 参数传递给 [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) 即可选择升级模式。
 
-Visual Studio Service Fabric 应用程序升级参数通过“Visual Studio 升级设置”对话框进行设置。 Visual Studio 升级模式通过“升级模式”下拉框从“Monitored”、“UnmonitoredAuto”或“UnmonitoredManual”中进行选择。 有关详细信息，请参阅[在 Visual Studio 中配置 Service Fabric 应用程序的升级](service-fabric-visualstudio-configure-upgrade.md)。
+Visual Studio Service Fabric 应用程序升级参数通过“Visual Studio 升级设置”对话框进行设置。 Visual Studio 升级模式通过“升级模式”下拉框从“Monitored”、“UnmonitoredAuto”或“UnmonitoredManual”中进行选择。     有关详细信息，请参阅[在 Visual Studio 中配置 Service Fabric 应用程序的升级](service-fabric-visualstudio-configure-upgrade.md)。
 
 ### <a name="required-parameters"></a>必需的参数
 （PS=PowerShell，VS=Visual Studio）
@@ -64,7 +64,7 @@ UnmonitoredManual | PS | 指示升级模式为“不受监视的手动”。 Ser
 
 | 参数 | 应用于 | 描述 |
 | --- | --- | --- |
-| ApplicationParameter |PS、VS| 指定应用程序参数的替代。<br>PowerShell 应用程序参数指定为哈希表名称/值对。 例如，@{ "VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1" }。<br>Visual Studio 应用程序参数可以在“发布 Service Fabric 应用程序”对话框的“应用程序参数文件”字段中指定。
+| ApplicationParameter |PS、VS| 指定应用程序参数的替代。<br>PowerShell 应用程序参数指定为哈希表名称/值对。 例如，@{ "VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1" }。<br>Visual Studio 应用程序参数可以在“发布 Service Fabric 应用程序”对话框的“应用程序参数文件”字段中指定。 
 | 确认 |PS| 允许的值为 **True** 和 **False**。 提示你在运行 cmdlet 之前进行确认。 |
 | ConsiderWarningAsError |PS、VS |允许的值为 **True** 和 **False**。 默认值为 **False**。 在升级期间评估应用程序的运行状况时，将应用程序的警告运行状况事件视为错误。 默认情况下，Service Fabric 不会将警告运行状况事件评估为失败（错误），因此即使存在警告事件，升级也可以继续。 |
 | DefaultServiceTypeHealthPolicy | PS、VS |以 MaxPercentUnhealthyPartitionsPerService、MaxPercentUnhealthyReplicasPerPartition、MaxPercentUnhealthyServices 格式指定用于受监视升级的默认服务类型的运行状况策略。 例如，5,10,15 指示以下值：MaxPercentUnhealthyPartitionsPerService = 5，MaxPercentUnhealthyReplicasPerPartition = 10，MaxPercentUnhealthyServices = 15。 |

@@ -2,22 +2,22 @@
 title: IoT 设备预配服务中的安全性终结点 | Microsoft Docs
 description: 概念 - 如何控制后端应用对 IoT 设备预配服务的访问权限。 包括安全令牌的相关信息。
 author: wesmc7777
-manager: timlt
+manager: philmea
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 7ff622ceac9c49eda7ba6bca1a8bb3aaabccb816
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626634"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
-本文介绍了用于保护 IoT 设备预配服务的选项。 预配服务使用“权限”向每个终结点授予访问权限。 权限可根据功能限制对服务实例的访问。
+本文介绍了用于保护 IoT 设备预配服务的选项。 预配服务使用“权限”向每个终结点授予访问权限  。 权限可根据功能限制对服务实例的访问。
 
 本文介绍：
 
@@ -32,7 +32,7 @@ ms.locfileid: "60626634"
 
 可以通过以下方式授予[权限](#device-provisioning-service-permissions)：
 
-* 共享访问授权策略。 共享访问策略可以授予任意[权限](#device-provisioning-service-permissions)组合。 可在 [Azure 门户][lnk-management-portal]中定义策略，也可使用[设备预配服务 REST API][lnk-resource-provider-apis] 以编程方式进行定义。 新建的预配服务有以下默认策略：
+* 共享访问授权策略  。 共享访问策略可以授予任意[权限](#device-provisioning-service-permissions)组合。 可在 [Azure 门户][lnk-management-portal]中定义策略，也可使用[设备预配服务 REST API][lnk-resource-provider-apis] 以编程方式进行定义。 新建的预配服务有以下默认策略：
 
 * **provisioningserviceowner**：包含所有权限的策略。
 
@@ -48,7 +48,7 @@ Azure IoT 中心设备预配服务通过针对共享访问策略验证令牌，�
 
 有关如何构造和使用安全令牌的详细信息，请参阅下一部分。
 
-HTTP 是唯一受支持的协议，它通过在“Authorization”请求标头中包含有效的令牌来实现身份验证。
+HTTP 是唯一受支持的协议，它通过在“Authorization”请求标头中包含有效的令牌来实现身份验证  。
 
 #### <a name="example"></a>示例
 ```csharp
@@ -148,7 +148,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 | `{your-service}.azure-devices-provisioning.net/registrations/{id}` |提供用于检索和管理设备注册状态的操作。 |
 
 
-例如，使用名为 enrollmentread 的预创建共享访问策略生成的服务将使用以下参数创建令牌：
+例如，使用名为 enrollmentread 的预创建共享访问策略生成的服务将使用以下参数创建令牌  ：
 
 * 资源 URI：`{mydps}.azure-devices-provisioning.net`，
 * 签名密钥：`enrollmentread` 策略的密钥之一，
@@ -179,11 +179,11 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 | 权限 | 说明 |
 | --- | --- |
-| ServiceConfig |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
-| EnrollmentRead |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |
-| EnrollmentWrite |授予对设备注册和注册组的写入访问权限。 <br/>后端云服务将使用此权限。 |
-| RegistrationStatusRead |授予对设备注册状态的读取访问权限。 <br/>后端云服务将使用此权限。 |
-| RegistrationStatusWrite  |授予对设备注册状态的删除访问权限。 <br/>后端云服务将使用此权限。 |
+| ServiceConfig  |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
+| EnrollmentRead  |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |
+| EnrollmentWrite  |授予对设备注册和注册组的写入访问权限。 <br/>后端云服务将使用此权限。 |
+| RegistrationStatusRead  |授予对设备注册状态的读取访问权限。 <br/>后端云服务将使用此权限。 |
+| RegistrationStatusWrite   |授予对设备注册状态的删除访问权限。 <br/>后端云服务将使用此权限。 |
 
 <!-- links and images -->
 

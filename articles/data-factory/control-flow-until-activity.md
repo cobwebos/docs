@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155173"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
@@ -52,13 +52,13 @@ Until 活动提供的功能与 do-until 循环结构以编程语言提供的功�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | `Until` 活动的名称。 | String | “是”
-类型 | 必须设置为 Until。 | String | “是”
-表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | “是”
-timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为：90 天。 | “否”
-活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  “是”
+name | `Until` 活动的名称。 | String | 是
+type | 必须设置为 Until  。 | String | 是
+表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
+timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为：90 天。 | 否
+activities | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  是
 
 ## <a name="example-1"></a>示例 1
 
@@ -210,7 +210,7 @@ timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。
 ```
 
 ### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>参数化的 Azure Blob 数据集 (BlobDataset.json)
-管道将 folderPath 设置为管道参数 outputPath1 或 outputPath2 的值。 
+管道将 folderPath  设置为管道参数 outputPath1  或 outputPath2  的值。 
 
 ```json
 {

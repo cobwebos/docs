@@ -1,9 +1,8 @@
 ---
 title: Azure 云服务角色架构 | Microsoft Docs
 ms.custom: ''
-origin.date: 12/07/2016
-ms.date: 11/06/2017
-ms.prod: azure
+ms.date: 12/07/2016
+services: cloud-services
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -11,14 +10,14 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: e4fbffc1-98eb-449c-971c-de415e45ab34
 caps.latest.revision: 12
-author: ''
-ms.author: adegeo
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: aa6f8a821edea6261d64bb411154e82fdf212a8d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130239"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Azure 云服务配置角色架构
@@ -46,9 +45,9 @@ ms.locfileid: "62130239"
 
 下表介绍了 `Role` 元素的属性。
 
-| 属性 | 描述 |
+| 特性 | 描述 |
 | --------- | ----------- |
-| 名称   | 必需。 指定角色的名称。 该名称必须与在服务定义文件中为角色提供的名称匹配。|
+| name   | 必需。 指定角色的名称。 该名称必须与在服务定义文件中为角色提供的名称匹配。|
 | vmName | 可选。 指定虚拟机的 DNS 名称。 该名称不能超过 10 个字符。|
 
 下表介绍了 `Role` 元素的子元素。

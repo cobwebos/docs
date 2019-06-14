@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 5/21/2017
 ms.author: raiye
 ms.openlocfilehash: d6429766b6aac547fd99279659acb1067298e77c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60518968"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
@@ -54,7 +54,7 @@ foreach($subscription in Get-AzureSubscription) {
 ## <a name="recommendations-if-you-are-affected"></a>如果受到影响，请遵循以下建议
 建议将云服务角色迁移到支持的来宾 OS 系列之一：
 
-基于 Windows Server 2012 R2 的**来宾 OS 系列 4.x***（建议）*
+基于 Windows Server 2012 R2 的**来宾 OS 系列 4.x** *（建议）*
 
 1. 确保应用程序使用了 SDK 2.1 或更高版本以及 .NET framework 4.0、4.5 或 4.5.1。
 2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“4”，并重新部署云服务。

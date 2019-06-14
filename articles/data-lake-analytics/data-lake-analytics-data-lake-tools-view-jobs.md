@@ -10,10 +10,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 905100f8a1444f6f6ee18d3bf9e9eab2ede8c805
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60616059"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>对 Azure Data Lake Analytics 使用作业浏览器和作业视图
@@ -25,7 +25,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
 请参阅[用于 Visual Studio 的 Data Lake 工具先决条件](data-lake-analytics-data-lake-tools-get-started.md#prerequisites)。
 
 ## <a name="open-the-job-browser"></a>打开作业浏览器
-在 Visual Studio 中，通过“服务器资源管理器”>“Azure”>“Data Lake Analytics”>“作业”访问作业浏览器。  使用此浏览器，可访问 Data Lake Analytics 帐户的查询存储。 作业浏览器的左侧显示“查询存储”，其中显示基本的作业信息，而右侧的“作业视图”显示详细的作业信息。
+在 Visual Studio 中，通过“服务器资源管理器”>“Azure”>“Data Lake Analytics”>“作业”访问作业浏览器  。  使用此浏览器，可访问 Data Lake Analytics 帐户的查询存储。 作业浏览器的左侧显示“查询存储”，其中显示基本的作业信息，而右侧的“作业视图”显示详细的作业信息。
 
 ## <a name="job-view"></a>作业视图
 作业视图显示作业详细信息。 若要打开作业，可在作业浏览器中双击作业，或单击作业视图从 Data Lake 菜单打开。 随即可看到填充有作业 URL 的对话框。

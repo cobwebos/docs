@@ -17,10 +17,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65075365"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>守护程序应用调用 web Api-获取令牌
@@ -65,7 +65,7 @@ public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.de
 
 > [!IMPORTANT]
 > 对于要求接受 v1.0 访问令牌的资源的访问令牌 MSAL （v2.0 终结点），Azure AD 通过采用最后一个反斜杠之前的所有内容并将其用作资源标识符分析期望的受众，从所请求的范围。
-> 因此如果，如 Azure SQL (**https://database.windows.net**) 资源需要结尾斜杠的受众 (Azure sql: `https://database.windows.net/`)，你将需要请求的范围为`https://database.windows.net//.default`（请注意双斜杠）。 另请参阅 MSAL.NET 问题[#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747):省略资源 url 尾部反斜杠，导致 sql 身份验证失败。
+> 因此如果，如 Azure SQL ( **https://database.windows.net** ) 资源需要结尾斜杠的受众 (Azure sql: `https://database.windows.net/` )，你将需要请求的范围为`https://database.windows.net//.default` （请注意双斜杠）。 另请参阅 MSAL.NET 问题[#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747):省略资源 url 尾部反斜杠，导致 sql 身份验证失败。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 

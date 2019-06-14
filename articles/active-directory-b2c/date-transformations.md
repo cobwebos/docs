@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: ad4c6c78556f98e2905b3583910e498055257c36
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511130"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
@@ -29,7 +29,7 @@ ms.locfileid: "66511130"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | leftOperand | string | 第一个声明的类型，应晚于第二个声明。 |
+| inputClaim | leftOperand | 字符串 | 第一个声明的类型，应晚于第二个声明。 |
 | inputClaim | rightOperand | 字符串 | 第二个声明的类型，应早于第一个声明。 |
 | InputParameter | AssertIfEqualTo | boolean | 指定如果左操作数等于右操作数，是否应传递此断言。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | 指定如果缺少右操作数，是否应传递此断言。 |
@@ -143,7 +143,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | 第一个日期/时间，用于比较它是在第二个日期/时间之前还是之后。 Null 值会引发异常。 |
 | InputClaim | secondDateTime | dateTime | 第二个日期/时间，用于比较它是在第一个日期/时间之前还是之后。 NULL 值被视为当前日期/时间。 |
-| InputParameter | operator | string | 以下值之一：same、later than 或 earlier than。 |
+| InputParameter | operator | 字符串 | 以下值之一：same、later than 或 earlier than。 |
 | InputParameter | timeSpanInSeconds | int | 向第一个日期/时间添加的时间范围。 |
 | OutputClaim | 结果 | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
 ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60728060"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
@@ -32,14 +32,14 @@ ms.locfileid: "60728060"
 
 ## <a name="create-a-function"></a>创建函数
 
-创建函数与 Log Analytics 在 Azure 门户中通过单击**保存**然后提供下表中的信息。
+在 Azure 门户中单击“保存”  ，然后提供下表中的信息，使用 Log Analytics 创建函数。
 
 | 设置 | 描述 |
 |:---|:---|
-| 名称           | 查询资源管理器中查询的显示名称。 |
+| Name           | 查询资源管理器中查询的显示名称  。 |
 | 另存为        | 函数 |
 | 函数别名 | 在其他查询中使用该函数的短名称。 不可包含空格，必须唯一。 |
-| 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别。 |
+| 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别  。 |
 
 > [!NOTE]
 > Azure Monitor 中的函数不能包含其他函数。
@@ -53,7 +53,7 @@ ms.locfileid: "60728060"
 通过在另一个查询中添加其别名来使用函数。 可以像使用其他任何表一样使用它。
 
 ## <a name="example"></a>示例
-以下示例查询将返回最近一天报告的所有缺失的安全更新。 使用别名 security_updates_last_day 将此查询另存为函数。 
+以下示例查询将返回最近一天报告的所有缺失的安全更新。 使用别名 security_updates_last_day  将此查询另存为函数。 
 
 ```Kusto
 Update
@@ -62,7 +62,7 @@ Update
 | where UpdateState == "Needed"
 ```
 
-创建另一个查询并引用 security_updates_last_day 函数，以搜索 SQL 相关的必需安全更新。
+创建另一个查询并引用 security_updates_last_day 函数，以搜索 SQL 相关的必需安全更新  。
 
 ```Kusto
 security_updates_last_day | where Title contains "SQL"

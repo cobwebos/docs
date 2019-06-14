@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
 ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60691743"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
@@ -476,7 +476,7 @@ Add the attribute to the service implementations:
 ## <a name="exception-performance-counters"></a>异常性能计数器
 如果在服务器上[安装了 Application Insights 代理](../../azure-monitor/app/monitor-performance-live-website-now.md)，可以获取 .NET 测量的异常率图表。 这包括经处理和未经处理的 .NET 异常。
 
-打开“指标资源管理器”边栏选项卡、添加新图表，并选择在“性能计数器”下列出的“异常率”。
+打开“指标资源管理器”边栏选项卡、添加新图表，并选择在“性能计数器”下列出的“异常率”  。
 
 .NET Framework 通过对间隔中的异常数进行计数并除以间隔长度计算异常率。
 

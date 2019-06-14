@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.openlocfilehash: 5508a1dbd105fc47a4ed7b3484f55532904956ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60407065"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>使用 Azure CLI 创建托管多个站点的应用程序网关
 
-创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure CLI 配置[多个网站的托管](application-gateway-multi-site-overview.md)。 本教程中使用虚拟机规模集创建后端池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本教程假定你拥有多个域，并使用示例 *www.contoso.com* 和 *www.fabrikam.com*。
+创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure CLI 配置[多个网站的托管](application-gateway-multi-site-overview.md)。 本教程中使用虚拟机规模集创建后端池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本教程假定你拥有多个域，并使用示例 *www.contoso.com* 和 *www.fabrikam.com* 。
 
 在本文中，学习如何：
 
@@ -44,7 +44,7 @@ ms.locfileid: "60407065"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组   。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -227,7 +227,7 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-在浏览器的地址栏中输入域名。 例如 http://www.contoso.com。
+在浏览器的地址栏中输入域名。 例如 http://www.contoso.com 。
 
 ![在应用程序网关中测试 contoso 站点](./media/tutorial-multisite-cli/application-gateway-nginxtest1.png)
 
@@ -237,7 +237,7 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 设置网络

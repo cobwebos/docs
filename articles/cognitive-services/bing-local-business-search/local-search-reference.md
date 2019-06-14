@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796749"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
@@ -70,7 +70,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。  
   
   
-|名称|值|Type|需要|  
+|Name|值|Type|需要|  
 |----------|-----------|----------|--------------|
 |<a name="count" />count|若要返回，从开始索引指定的结果数`offset`参数。|String|否|   
 |<a name="localCategories" />localCategories|按企业类别定义搜索的选项列表。  请参阅[当地企业类别搜索](local-categories.md)|String|否|  
@@ -107,7 +107,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="errorresponse"></a>ErrorResponse  
 请求失败时响应包含的顶级对象。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|  
@@ -129,7 +129,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |名称|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
-|Text|显示文本。|String|  
+|text|显示文本。|String|  
 |url|一个 URL。 使用 URL 和显示文本创建超链接。|String|  
   
 
@@ -140,7 +140,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 注意，发布者可能提供其名称和/或网站。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |name|发布者名称。|String|  
 |url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
@@ -150,7 +150,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="place"></a>位置  
 定义有关餐厅或酒店等当地企业的信息。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示，可设置为以下值之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐厅</ul><li>|String|  
 |地址|实体所在位置的邮政地址。|PostalAddress|  
@@ -174,21 +174,21 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 ### <a name="identifiable"></a>Identifiable
 
-|名称|值|Type|  
+|Name|值|Type|  
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 定义搜索结果组，例如 mainline。
 
-|名称|值|Type|  
+|Name|值|Type|  
 |-------------|-----------------|----------|
 |items|要显示在组中的搜索结果的列表。|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 定义要显示的搜索结果项。
 
-|名称|值|Type|  
+|Name|值|Type|  
 |-------------|-----------------|----------|
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
@@ -209,7 +209,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 请注意，如果该服务怀疑存在拒绝服务攻击，则请求会成功（HTTP 状态代码为“200 正常”），但响应正文将为空。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 SearchResponse。|String|  
 |places|与搜索查询相关的实体列表。|JSON 对象|  

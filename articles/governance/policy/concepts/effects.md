@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116208"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
@@ -33,8 +33,8 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 创建或更新资源通过 Azure 资源管理器请求首先通过 Azure 策略计算。 Azure 策略创建适用于资源，然后计算结果对每个定义的资源的所有分配的列表。 Azure 策略进行处理多个效果将请求传递给相应的资源提供程序之前。 这样做会阻止由资源提供程序不必要的处理资源不满足 Azure 策略的设计的管理控制。
 
 - 首先检查**已禁用**以确定是否应评估策略规则。
-- 然后评估“追加​​”。 由于“附加”可能会改变请求，因此由“附加”所做的更改可能会阻止“审核”或“拒绝”效果的触发。
-- 然后评估“拒绝”。 通过在“审核”之前评估“拒绝”，可以防止两次记录不需要的资源。
+- 然后评估“追加​​”  。 由于“附加”可能会改变请求，因此由“附加”所做的更改可能会阻止“审核”或“拒绝”效果的触发。
+- 然后评估  “拒绝”。 通过在“审核”之前评估“拒绝”，可以防止两次记录不需要的资源。
 - 然后在请求传输到资源提供程序之前评估**审核**。
 
 资源提供程序返回成功代码后，将会评估 **AuditIfNotExists** 和 **DeployIfNotExists** 以确定是否需要其他合规性日志记录或操作。
@@ -51,11 +51,11 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 在创建或更新资源期间，会在资源提供程序处理请求之前进行“附加”评估。 当满足策略规则的 **if** 条件时，“附加”会向资源添加字段。 如果“附加”效果使用其他值替代原始请求中的值，则它会充当拒绝效果并拒绝该请求。 若要将新值附加到现有数组，请使用别名的 **[\*]** 版本。
 
-当使用附加效果的策略定义作为评估周期的一部分运行时，它不会更改已存在的资源。 相反，它会将符合 if 条件的任意资源标记为不符合。
+当使用附加效果的策略定义作为评估周期的一部分运行时，它不会更改已存在的资源。 相反，它会将符合  if 条件的任意资源标记为不符合。
 
 ### <a name="append-properties"></a>“附加”属性
 
-附加效果只有“详细信息”数组，它是必需的。 因为“详细信息”是一个数组，它可能需要单个或多个字段/值对。 请参阅[定义结构](definition-structure.md#fields)，获取可接受的字段列表。
+附加效果只有“详细信息”  数组，它是必需的。 因为  “详细信息”是一个数组，它可能需要单个或多个字段/值  对。 请参阅[定义结构](definition-structure.md#fields)，获取可接受的字段列表。
 
 ### <a name="append-examples"></a>“附加”示例
 
@@ -170,11 +170,11 @@ AuditIfNotExists 对匹配 **if** 条件的资源启用审核，但没有在 **t
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists 评估
 
-AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 Azure 策略添加`Microsoft.Authorization/policies/audit/action`到活动的操作以审核效果登录相同的方式。 触发后，满足 if 条件的资源是标记为不符合的资源。
+AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 Azure 策略添加`Microsoft.Authorization/policies/audit/action`到活动的操作以审核效果登录相同的方式。 触发后，满足 if 条件  的资源是标记为不符合的资源。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists 属性
 
-AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资源的所有子属性。
+AuditIfNotExists 效果的  “details”属性具有定义要匹配的相关资源的所有子属性。
 
 - **Type** [必选]
   - 指定要匹配的相关资源的类型。
@@ -185,20 +185,20 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
-  - 默认值是 if 条件资源的资源组。
+  - 默认值是 if  条件资源的资源组。
 - **ExistenceScope**（可选）
-  - 允许的值为 Subscription 和 ResourceGroup。
+  - 允许的值为 Subscription  和 ResourceGroup  。
   - 设置从中获取相关资源以在其中进行匹配的范围。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
-  - ResourceGroup 将限制在 if 条件资源的资源组或 ResourceGroupName 中指定的资源组。
-  - 对于 Subscription，则查询全部订阅以获取相关资源。
-  - 默认值是 ResourceGroup。
+  - ResourceGroup  将限制在 if  条件资源的资源组或 ResourceGroupName  中指定的资源组。
+  - 对于 Subscription  ，则查询全部订阅以获取相关资源。
+  - 默认值是 ResourceGroup  。
 - **ExistenceCondition**（可选）
   - 如果未指定，任何 **type** 的相关资源均满足此效果，并且不会触发审核。
-  - 使用与 if 条件的策略规则相同的语言，但会分别针对每个相关资源进行评估。
+  - 使用与 if  条件的策略规则相同的语言，但会分别针对每个相关资源进行评估。
   - 如果任何匹配的相关资源评估结果为 true，该效果就会得到满足并且不会触发审核。
-  - 可以使用 [field()] 检查 if 条件中的值的等效性。
-  - 例如，可用于验证父资源（位于 if 条件中）与匹配的相关资源位于相同的资源位置。
+  - 可以使用 [field()] 检查 if  条件中的值的等效性。
+  - 例如，可用于验证父资源（位于 if  条件中）与匹配的相关资源位于相同的资源位置。
 
 ### <a name="auditifnotexists-example"></a>AuditIfNotExists 示例
 
@@ -245,44 +245,44 @@ DeployIfNotExists 在资源提供程序处理资源创建或更新请求并返�
 
 ### <a name="deployifnotexists-properties"></a>DeployIfNotExists 属性
 
-DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关资源和要执行的模板部署的所有子属性。
+DeployIfNotExists 效果的  “details”属性具有可定义要匹配的相关资源和要执行的模板部署的所有子属性。
 
 - **Type** [必选]
   - 指定要匹配的相关资源的类型。
-  - 首先尝试提取 if 条件资源下的资源，然后在与 if 条件资源相同的资源组中进行查询。
+  - 首先尝试提取 if  条件资源下的资源，然后在与  if 条件资源相同的资源组中进行查询。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
   - 当条件值**if.field.type**和**then.details.type**匹配，然后**名称**变得_必需_，并且必须`[field('name')]`.
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
-  - 默认值是 if 条件资源的资源组。
+  - 默认值是 if  条件资源的资源组。
   - 如果执行模板部署，则将其部署在此值的资源组中。
 - **ExistenceScope**（可选）
-  - 允许的值为 Subscription 和 ResourceGroup。
+  - 允许的值为 Subscription  和 ResourceGroup  。
   - 设置从中获取相关资源以在其中进行匹配的范围。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
-  - ResourceGroup 将限制在 if 条件资源的资源组或 ResourceGroupName 中指定的资源组。
-  - 对于 Subscription，则查询全部订阅以获取相关资源。
-  - 默认值是 ResourceGroup。
+  - ResourceGroup  将限制在 if  条件资源的资源组或 ResourceGroupName  中指定的资源组。
+  - 对于 Subscription  ，则查询全部订阅以获取相关资源。
+  - 默认值是 ResourceGroup  。
 - **ExistenceCondition**（可选）
   - 如果未指定，任何 **type** 的相关资源均满足此效果，并且不会触发部署。
-  - 使用与 if 条件的策略规则相同的语言，但会分别针对每个相关资源进行评估。
+  - 使用与 if  条件的策略规则相同的语言，但会分别针对每个相关资源进行评估。
   - 如果任何匹配的相关资源评估结果为 true，该效果就会得到满足并且不会触发部署。
-  - 可以使用 [field()] 检查 if 条件中的值的等效性。
-  - 例如，可用于验证父资源（位于 if 条件中）与匹配的相关资源位于相同的资源位置。
+  - 可以使用 [field()] 检查 if  条件中的值的等效性。
+  - 例如，可用于验证父资源（位于 if  条件中）与匹配的相关资源位于相同的资源位置。
 - **roleDefinitionIds** [必选]
   - 此属性必须包含与可通过订阅访问的基于角色的访问控制角色 ID 匹配的字符串数组。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
 - **DeploymentScope**（可选）
-  - 允许的值为 Subscription 和 ResourceGroup。
+  - 允许的值为 Subscription  和 ResourceGroup  。
   - 设置要触发的部署类型。 _Subscription_ 指示[在订阅级别部署](../../../azure-resource-manager/deploy-to-subscription.md)，_ResourceGroup_ 指示部署到资源组。
   - 使用订阅级别部署时，必须在 _Deployment_ 中指定 _location_ 属性。
-  - 默认值是 ResourceGroup。
+  - 默认值是 ResourceGroup  。
 - **Deployment** [必选]
   - 该属性应包含完整的模板部署，因为它将传递给 `Microsoft.Resources/deployments` PUT API。 有关详细信息，请参阅[部署 REST API](/rest/api/resources/deployments)。
 
   > [!NOTE]
-  > Deployment 属性中的所有函数都将作为模板（而不是策略）的组件进行评估。 此异常是将值从策略传递到模板的 parameters 属性。 本节中模板参数名称下的 value 用于执行此值传递操作（请参阅 DeployIfNotExists 示例中的 _fullDbName_）。
+  >  Deployment 属性中的所有函数都将作为模板（而不是策略）的组件进行评估。 此异常是将值从策略传递到模板的 parameters  属性。 本节中模板参数名称下的 value  用于执行此值传递操作（请参阅 DeployIfNotExists 示例中的 _fullDbName_）。
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists 示例
 
@@ -339,7 +339,7 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
 
 ## <a name="layering-policies"></a>分层策略
 
-资源可能会受到多个分配的影响。 这些分配可能处于相同或不同的范围。 这些分配中的每一个也可能具有不同的定义效果。 将单独评估每个策略的条件和效果。 例如:
+资源可能会受到多个分配的影响。 这些分配可能处于相同或不同的范围。 这些分配中的每一个也可能具有不同的定义效果。 将单独评估每个策略的条件和效果。 例如：
 
 - 策略 1
   - 将资源位置限制为“westus”
@@ -373,4 +373,4 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)。
 - 了解如何[修正的不合规资源](../how-to/remediate-resources.md)。
-- 查看管理组与[使用 Azure 管理组组织资源](../../management-groups/overview.md)。
+- 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

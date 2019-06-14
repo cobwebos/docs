@@ -17,10 +17,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: crdun
 ms.openlocfilehash: ac6c2b0f93c56de6e0a2b559645884b60d761ba8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66240239"
 ---
 # <a name="create-an-apache-cordova-app"></a>创建 Apache Cordova 应用
@@ -43,13 +43,13 @@ ms.locfileid: "66240239"
 ## <a name="create-an-azure-mobile-app-backend"></a>创建 Azure 移动应用后端
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>创建数据库连接和配置客户端和服务器项目
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>创建数据库连接并配置客户端和服务器项目
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="download-and-run-the-apache-cordova-app"></a>下载并运行 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
 <!-- URLs -->
-[Azure 门户]: https://portal.azure.com/
+[Azure 门户]： https://portal.azure.com/
 
 [Visual Studio Community 2017]: https://www.visualstudio.com/
 [用于 Apache Cordova 的 Visual Studio 工具]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx

@@ -15,10 +15,10 @@ ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
 ms.openlocfilehash: aac60d3d4fd154847bdfae3dfb590b947e861e9e
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978818"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
@@ -31,7 +31,7 @@ ms.locfileid: "65978818"
 - 启用默认生成过程的选项，包括包还原。
 - [部署自定义](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings)，包括运行部署脚本。  
 - 部署日志。 
-- 文件大小限制为 2048 MB。
+- 文件大小上限是 2048 MB。
 
 有关详细信息，请参阅 [Kudu 文档](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)。
 
@@ -81,7 +81,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 此命令将 zip 文件中的文件和目录部署到默认的应用服务应用程序文件夹 (`\home\site\wwwroot`) 并重启应用。
 
-默认情况下，部署引擎将假定 ZIP 文件已准备好以运行的是，并且不会运行任何生成自动化。 若要启用所在的生成作为中的自动化[Git 部署](deploy-local-git.md)，请设置`SCM_DO_BUILD_DURING_DEPLOYMENT`通过运行以下命令的应用设置[Cloud Shell](https://shell.azure.com):
+默认情况下，部署引擎假定 ZIP 文件已准备好按原样运行，并且不运行任何生成自动化。 若要启用所在的生成作为中的自动化[Git 部署](deploy-local-git.md)，请设置`SCM_DO_BUILD_DURING_DEPLOYMENT`通过运行以下命令的应用设置[Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true

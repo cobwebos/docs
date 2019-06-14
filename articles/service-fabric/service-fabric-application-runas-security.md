@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/29/2018
 ms.author: aljo
 ms.openlocfilehash: 28cd1162d7cae2b3a16062bdf18a2971e1f05aad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60621167"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>以本地用户帐户或本地系统帐户运行服务
@@ -29,7 +29,7 @@ ms.locfileid: "60621167"
 默认情况下，RunAs 策略应用于主入口点。  如果需要[在系统帐户下运行特定的高权限设置操作](service-fabric-run-script-at-service-startup.md)，则还可以将 RunAs 策略应用于安装程序入口点，或者同时应用于主入口点和安装程序入口点。  
 
 > [!NOTE] 
-> 如果将 RunAs 策略应用到服务，且服务清单使用 HTTP 协议声明终结点资源，则必须指定 SecurityAccessPolicy。  有关详细信息，请参阅[为 HTTP 和 HTTPS 终结点分配安全访问策略](service-fabric-assign-policy-to-endpoint.md)。 
+> 如果将 RunAs 策略应用到服务，且服务清单使用 HTTP 协议声明终结点资源，则必须指定 SecurityAccessPolicy  。  有关详细信息，请参阅[为 HTTP 和 HTTPS 终结点分配安全访问策略](service-fabric-assign-policy-to-endpoint.md)。 
 >
 
 ## <a name="run-a-service-as-a-local-user"></a>以本地用户身份运行服务

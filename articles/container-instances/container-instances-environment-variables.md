@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66149153"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
@@ -53,7 +53,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-两个容器的状态显示为“已终止”后（使用 [az container show][az-container-show] 来查看状态），请使用 [az container logs][az-container-logs] 来显示其日志，以便查看输出。
+两个容器的状态显示为“已终止”后  （使用 [az container show][az-container-show] 来查看状态），请使用 [az container logs][az-container-logs] 来显示其日志，以便查看输出。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1

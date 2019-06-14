@@ -13,10 +13,10 @@ ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
 ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65151010"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>实验性识别内容的编码预设
@@ -43,11 +43,11 @@ ms.locfileid: "65151010"
 
 ![使用 PSNR RD 曲线](media/cae-experimental/msrv3.png)
 
-图 3：**（在 1080p) 的低质量输入使用 PSNR RD 曲线**
+图 3： **（在 1080p) 的低质量输入使用 PSNR RD 曲线**
 
 ![使用 VMAF RD 曲线](media/cae-experimental/msrv4.png)
 
-图 4：**（在 1080p) 的低质量输入使用 VMAF RD 曲线**
+图 4： **（在 1080p) 的低质量输入使用 VMAF RD 曲线**
 
 ## <a name="use-the-experimental-preset"></a>使用实验性预设
 

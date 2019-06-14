@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.component: autoscale
+ms.subservice: autoscale
 ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129731"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
@@ -157,7 +157,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 ## <a name="commonly-used-storage-metrics"></a>常用的存储指标
 可以将存储队列长度作为缩放依据，它是存储队列中的消息数目。 存储队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
-在 Azure 门户的“设置”边栏选项卡中配置此配置。 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName 用作 ApproximateMessageCount，并传递存储队列的 ID 作为 metricResourceUri。
+在 Azure 门户的“设置”  边栏选项卡中配置此配置。 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName  用作 ApproximateMessageCount  ，并传递存储队列的 ID 作为 metricResourceUri  。
 
 例如，对于经典存储帐户，自动缩放设置 metricTrigger 将包括：
 
@@ -178,7 +178,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 ## <a name="commonly-used-service-bus-metrics"></a>常用的服务总线指标
 可以按服务总线队列的长度进行缩放，该长度是服务总线队列中的消息数量。 服务总线队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
-若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName 用作 ApproximateMessageCount，并传递存储队列的 ID 作为 metricResourceUri。
+若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName  用作 ApproximateMessageCount  ，并传递存储队列的 ID 作为 metricResourceUri  。
 
 ```
 "metricName": "MessageCount",
@@ -190,3 +190,4 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 > 若使用服务总线，则不存在资源组这一概念，但 Azure 资源管理器会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-EastUS”、“Default-ServiceBus-WestUS”、“Default-ServiceBus-AustraliaEast”等等。
 >
 >
+

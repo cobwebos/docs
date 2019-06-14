@@ -12,10 +12,10 @@ ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1b33b60f674eebb15fdc6112e1d630b93b98494b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60404701"
 ---
 # <a name="analyzers-method"></a>分析器方法
@@ -23,7 +23,7 @@ ms.locfileid: "60404701"
 > [!IMPORTANT]
 > 语言分析预览版已在 2018 年 8 月 9 日停止使用。 我们建议使用 [Azure 机器学习文本分析模块](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)进行文本处理和分析。
 
-分析器 REST API 提供了服务当前支持的分析器列表。
+ 分析器 REST API 提供了服务当前支持的分析器列表。
 响应包括其[名称](Analyzer-Names.md)以及每个名称支持的语言（例如英语中的“en”）。
 
 ## <a name="request-parameters"></a>请求参数
@@ -36,10 +36,10 @@ ms.locfileid: "60404701"
 Name | 类型 | 描述
 -----|------|--------------
 语言 | 字符串列表 | 此分析器可以使用的两个字母 ISO 语言代码的列表。
-id   | string | 此分析器的唯一 ID
-kind | string | 此分析器的广泛类型
-specification | string | 用于此分析器规范的名称
-implementation | string | 此分析器后的模型和/或算法描述
+id   | 字符串 | 此分析器的唯一 ID
+kind | 字符串 | 此分析器的广泛类型
+specification | 字符串 | 用于此分析器规范的名称
+implementation | 字符串 | 此分析器后的模型和/或算法描述
 
 <br>
 

@@ -11,10 +11,10 @@ ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 4510074619ff513b7284819d88fdb2532e4ce33a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510432"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
@@ -33,7 +33,7 @@ ms.locfileid: "66510432"
 需要将你的证书存储在 Azure AD B2C 租户中。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 4. 在“概述”页上选择“标识体验框架”  。
 5. 选择“策略密钥”  ，然后选择“添加”  。

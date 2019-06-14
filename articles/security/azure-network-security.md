@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587265"
 ---
 # <a name="azure-network-security"></a>Azure 网络安全
@@ -284,9 +284,9 @@ NSG 附带了一些应当注意的内置规则。 其中包括：
 
 -   **允许特定虚拟网络中的所有流量：** 同一 Azure 虚拟网络上的所有 VM 可以相互通信。
 
--   **允许 Azure 负载均衡到入站流量：** 此规则允许 Azure 负载均衡器从任何源地址流向任何目标地址的流量。
+-   **允许 Azure 负载均衡到入站流量：**  此规则允许 Azure 负载均衡器从任何源地址流向任何目标地址的流量。
 
--   **拒绝所有入站流量：** 此规则阻止源自已显式允许的 Internet 的所有流量。
+-   **拒绝所有入站流量：**  此规则阻止源自已显式允许的 Internet 的所有流量。
 
 -   **允许到 Internet 的所有出站流量：** 此规则允许 VM 启动到 Internet 的连接。 如果不希望启动这些连接，则需创建一个规则来阻止这些连接或实施强制隧道。
 

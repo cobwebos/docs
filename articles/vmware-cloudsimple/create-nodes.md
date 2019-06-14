@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9f5108207c4f8debc65b9d1fe625ae7033ca4e70
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64577175"
 ---
 # <a name="purchase-nodes-for-vmware-solution-by-cloudsimple---azure"></a>购买 VMware 解决方案通过 CloudSimple-Azure 节点
@@ -21,7 +21,7 @@ ms.locfileid: "64577175"
 
 ## <a name="add-a-purchased-node-to-your-cloudsimple-private-cloud"></a>将已购买的节点添加到 CloudSimple 私有云
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 2. 搜索**CloudSimple 节点**。
 
    ![搜索 CloudSimple 节点](media/create-cloudsimple-node-search.png)
@@ -38,9 +38,9 @@ ms.locfileid: "64577175"
 9. 选择要托管节点资源的专用的位置。
 10. 选择的节点类型。 你可以选择[CS28 或 CS36 选项](cloudsimple-node.md)。 后一种包含的最大的计算和内存容量。
 11. 选择预配的节点数。
-12. 选择“查看 + 创建”。
+12. 选择“查看 + 创建”  。
 13. 查看设置。 若要修改任何设置，请单击**上一步**。
-14. 选择“创建”。
+14. 选择“创建”  。
 
 ## <a name="next-steps"></a>后续步骤
 

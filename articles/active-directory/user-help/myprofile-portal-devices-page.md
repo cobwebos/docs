@@ -13,21 +13,21 @@ ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60475818"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>从“我的个人资料”（预览版）门户管理连接的设备
-从“我的个人资料”门户的“设备”页，可以管理使用工作或学校帐户连接到的设备，禁用不再拥有的任何设备。
+从“我的个人资料”门户的“设备”页，可以管理使用工作或学校帐户连接到的设备，禁用不再拥有的任何设备   。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-connected-devices"></a>查看连接的设备
 1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
-2. 从左侧导航窗格选择“设备”，或从“设备”块选择“管理设备”链接。
+2. 从左侧导航窗格选择“设备”，或从“设备”块选择“管理设备”链接    。
 
     ![“我的个人资料”页，显示突出显示的“设备”链接](media/myprofile-portal/myprofile-portal-devices.png)
 
@@ -41,11 +41,11 @@ ms.locfileid: "60475818"
 >[!Important]
 >如果错误地禁用了设备，则无法撤消该操作。 必须联系组织的管理员以重新添加设备。
 
-1. 从想要删除的设备选择“禁用”。
+1. 从想要删除的设备选择“禁用”  。
 
     ![包含突出显示的“禁用”链接的“设备”页](media/myprofile-portal/myprofile-portal-devices-disable.png)
 
-2. 选择“是”以确认想要禁用设备。
+2. 选择“是”以确认想要禁用设备  。
 
 ## <a name="next-steps"></a>后续步骤
 

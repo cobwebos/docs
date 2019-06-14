@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
 ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66254653"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
@@ -106,7 +106,7 @@ Azure 顾问利用基于工作负荷的试探法如读取与写入服务器上�
 
 Azure 顾问将标识正在使用的默认索引策略，但无法受益于基于工作负荷模式的自定义索引策略的 Cosmos DB 容器。 所有属性编制都索引的默认索引策略，但与查询筛选器中使用的显式包含或排除路径中使用自定义索引策略可以降低 Ru，然后在为索引使用的存储。 [了解有关修改索引策略的详细信息](https://aka.ms/cosmosdb/modify-index-policy)
 
-## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>配置 Azure Cosmos DB 查询页面大小 (MaxItemCount) 为-1 
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>将 Azure Cosmos DB 查询页大小 (MaxItemCount) 配置为 -1 
 
 Azure 顾问会标识 Azure Cosmos DB 容器使用的查询页大小 100，建议使用更快地扫描的页大小为-1。 [了解有关最大项计数的详细信息](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
 ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60401402"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
@@ -38,7 +38,7 @@ ms.locfileid: "60401402"
 
 NPM 的计费基于以下两个组件的用量和消耗量：
 * **节点**：所有综合事务都在节点上发起和终结。 节点也称为代理或 Microsoft 管理代理。
-* **Data**：各种网络测试结果存储在 Log Analytics 工作区中。
+* **Data**：各种网络测试的结果存储在 Log Analytics 工作区中。
 
 在旧模型中，帐单是根据节点数和生成的数据量计算的。 
 
@@ -63,7 +63,7 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 **如何对性能监视器生成的数据收费？**
 
-引入 （数据上传到 Azure Monitor，处理数据和索引中的 Log Analytics 工作区） 的费用是可在上找到[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)Log analytics，在数据引入部分。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
+Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了针对引入（将数据上传到 Azure Monitor 的 Log Analytics 工作区，以及数据处理和编制索引）收取的费用。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 监视器

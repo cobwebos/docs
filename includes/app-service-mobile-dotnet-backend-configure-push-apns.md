@@ -5,16 +5,16 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66140696"
 ---
-**.NET 后端 (C#)**：
+**.NET 后端 (C#)** ：
   
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”。 这会安装通知中心库，以便从后端发送通知。
-2. 在后端的 Visual Studio 项目中，依次打开“控制器” > “TodoItemController.cs”。 在文件的顶部，添加以下 `using` 语句：
+1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”  ，搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”  。 这会安装通知中心库，以便从后端发送通知。
+2. 在后端的 Visual Studio 项目中，依次打开“控制器” > “TodoItemController.cs”。   在文件的顶部，添加以下 `using` 语句：
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;

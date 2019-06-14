@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 8/29/2018
 ms.author: markgal
 ms.openlocfilehash: 56310b7356dd9e263238234cf3e28bd498fa70fc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66127825"
 ---
 ## <a name="upgrade-the-mars-agent"></a>升级 MARS 代理

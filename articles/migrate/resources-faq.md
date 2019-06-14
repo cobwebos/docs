@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
 ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61292963"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
@@ -52,7 +52,7 @@ Azure Migrate 当前支持将欧洲、美国和 Azure 政府作为项目地域�
 
 **地域** | **元数据存储位置**
 --- | ---
-Azure Government  | 美国政府弗吉尼亚州
+Azure Government | 美国政府弗吉尼亚州
 亚洲 | 东南亚
 欧洲 | 欧洲北部或欧洲西部
 美国 | 美国东部或美国中西部
@@ -144,7 +144,7 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-the-assessment"></a>我更改了计算机的大小。 是否可以重新运行评估？
 
-如果在要评估的 VM 上更改设置，则触发器会使用收集器设备再次发现。 在设备中，使用“再次启动收集”选项来执行此操作。 收集完成以后，请在门户中选择用于评估的“重新计算”选项，以便获取更新的评估结果。
+如果在要评估的 VM 上更改设置，则触发器会使用收集器设备再次发现。 在设备中，使用“再次启动收集”  选项来执行此操作。 收集完成以后，请在门户中选择用于评估的“重新计算”选项，以便获取更新的评估结果。 
 
 ### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>如何在 Azure Migrate 中发现多租户环境？
 

@@ -17,17 +17,17 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 104b98cba0948ec5d0896877e54eab1e7cd4049f
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825821"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>创建应用程序代理应用程序时出现问题 
 
 以下是用户在创建新应用程序代理应用程序时遇到的一些常见问题。
 
-## <a name="recommended-documents"></a>推荐文档 
+## <a name="recommended-documents"></a>建议的文档 
 
 若要了解通过管理门户创建应用程序代理应用程序的详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
 

@@ -11,10 +11,10 @@ ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60565424"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
@@ -28,11 +28,11 @@ ms.locfileid: "60565424"
 Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自定义应用中生成丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
 
 > [!div class="checklist"]
-> * 管理对用于服务读取或写入的 api-keys 的访问。
+> * 管理对用于服务读取或写入的 api-keys  的访问。
 > * 通过更改分区和副本的分配以调整服务容量。
 > * 根据服务层级的最大限制，监视资源使用情况。
 
-请注意，“升级”未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 搜索服务](search-create-service-portal.md)。
+请注意，“升级”  未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 搜索服务](search-create-service-portal.md)。
 
 > [!Tip]
 > 查找有关如何分析搜索流量或查询性能的帮助？ 可以监视查询卷、用户搜索哪些术语，以及搜索结果在指引客户使用索引中特定文档方面的成功率如何。 有关更多信息，请参阅 [Azure 搜索的搜索流量分析](search-traffic-analytics.md)、[监视使用情况和查询指标](search-monitor-usage.md)以及[性能和优化](search-performance-optimization.md)。
@@ -60,7 +60,7 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
-在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果你想要捕获和保存已记录的事件，可以预配外部资源，例如 Azure 监视。 有关详细信息，请参阅[监视 Azure 搜索](search-monitor-usage.md)。
+在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果你希望捕获并持久保存所记录的事件，可以预配外部资源，例如 Azure 监视。 有关详细信息，请参阅[监视 Azure 搜索](search-monitor-usage.md)。
 
 使用搜索服务 REST API，可以通过编程方式获取文档和索引的计数： 
 
@@ -87,7 +87,7 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 <a id="scale"></a>
 
 ## <a name="scale-up-or-down"></a>增加或减少
-每个搜索服务从至少一个副本和一个分区开始操作。 如果已注册[提供专用资源的层](search-limits-quotas-capacity.md)，请单击服务仪表板中的“规模”磁贴，调整资源使用情况。
+每个搜索服务从至少一个副本和一个分区开始操作。 如果已注册[提供专用资源的层](search-limits-quotas-capacity.md)，请单击服务仪表板中的“规模”磁贴，调整资源使用情况  。
 
 如果通过任一资源添加容量，服务会自动使用它们。 无需执行任何进一步的操作，但在新资源产生作用之前，会有轻微延迟。 可能需要 15 分钟或更长的时间才能预配其他资源。
 

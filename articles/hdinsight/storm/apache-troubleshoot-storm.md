@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 3866e25cc3c87f569e84b2d5639d25aa9386cc78
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713752"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
@@ -25,8 +25,8 @@ ms.locfileid: "64713752"
 
 ### <a name="ambari-ui"></a>Ambari UI
 1. 转到 Ambari 仪表板。
-2. 在服务列表中，选择“Storm”。
-3. 在“快速链接”菜单中，选择“Storm UI”。
+2. 在服务列表中，选择“Storm”。 
+3. 在“快速链接”菜单中，选择“Storm UI”。  
 
 ### <a name="direct-link"></a>直接链接
 可通过以下 URL 访问 Storm UI：

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60437299"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志集成与 Azure Monitor 日志
@@ -57,24 +57,24 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * Azure AD 租户。
-* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。
+* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。  
 * 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 
 ## <a name="send-logs-to-azure-monitor"></a>将日志发送到 Azure Monitor
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-2. 选择“Azure Active Directory” > “诊断设置” -> “添加诊断设置”。 还可以从“审核日志”或“登录”页选择“导出设置”，以转到诊断设置配置页。  
+2. 选择“Azure Active Directory”   > “诊断设置”   -> “添加诊断设置”  。 还可以从“审核日志”  或“登录”  页选择“导出设置”  ，以转到诊断设置配置页。  
     
-3. 在“诊断设置”菜单中，选中“发送到 Log Analytics 工作区”复选框，并选择“配置”。
+3. 在“诊断设置”菜单中，选中“发送到 Log Analytics 工作区”复选框，并选择“配置”    。
 
 4. 选择要将日志发送到的 Log Analytics 工作区，或在提供的对话框中创建新的工作区。  
 
 5. 执行下列两项操作或之一：
-    * 若要将审核日志发送到 Log Analytics 工作区，请选中“AuditLogs”复选框。 
-    * 若要将登录日志发送到 Log Analytics 工作区，请选中“SignInLogs”复选框。
+    * 若要将审核日志发送到 Log Analytics 工作区，请选中“AuditLogs”  复选框。 
+    * 若要将登录日志发送到 Log Analytics 工作区，请选中“SignInLogs”  复选框。
 
-6. 选择“保存”，保存设置。
+6. 选择“保存”  ，保存设置。
 
     ![诊断设置](./media/howto-integrate-activity-logs-with-log-analytics/Configure.png)
 

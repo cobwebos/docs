@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
 ms.openlocfilehash: a1a605bc733597430f64dceeb6c485db0abf657b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60589251"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
@@ -28,12 +28,12 @@ ms.locfileid: "60589251"
 
 ## <a name="syntax"></a>语法
 
-`app(`标识符`)`
+`app(`标识符`)` 
 
 
 ## <a name="arguments"></a>参数
 
-- 标识符：使用下表中的某种格式标识应用。
+- 标识符  ：使用下表中的某种格式标识应用。
 
 | 标识符 | 描述 | 示例
 |:---|:---|:---|

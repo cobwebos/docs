@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: b6eb0c5b0d52bba3d34c9853a73b1f3e07b112a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61322694"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理和 IoT Edge 中心模块孪生的属性
@@ -26,7 +26,7 @@ IoT Edge 代理和 IoT Edge 中心是构成 IoT Edge 运行时的两个模块。
 
 IoT Edge 代理的模块孪生称为 `$edgeAgent`，用于协调设备上运行的 IoT Edge 代理与 IoT 中心之间的通信。 在特定设备上将部署清单作为单一设备或规模部署的一部分应用时，将会设置所需的属性。 
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必须为“1.0” | 是 |
 | runtime.type | 必须为“docker” | 是 |
@@ -34,7 +34,7 @@ IoT Edge 代理的模块孪生称为 `$edgeAgent`，用于协调设备上运行�
 | runtime.settings.loggingOptions | 字符串化的 JSON 包含 IoT Edge 代理容器的日志记录选项。 [Docker 日志记录选项](https://docs.docker.com/engine/admin/logging/overview/) | 否 |
 | runtime.settings.registryCredentials<br>.{registryId}.username | 容器注册表的用户名。 对于 Azure 容器注册表，用户名通常是注册表名称。<br><br> 对于任何未公开的模块图像，注册表凭据是必需的。 | 否 |
 | runtime.settings.registryCredentials<br>.{registryId}.password | 容器注册表的密码。 | 否 |
-| runtime.settings.registryCredentials<br>.{registryId}.address | 容器注册表的地址。 对于 Azure 容器注册表，地址通常为 {registry name}.azurecr.io。 | 否 |  
+| runtime.settings.registryCredentials<br>.{registryId}.address | 容器注册表的地址。 对于 Azure 容器注册表，地址通常为 {registry name}.azurecr.io  。 | 否 |  
 | systemModules.edgeAgent.type | 必须为“docker” | 是 |
 | systemModules.edgeAgent.settings.image | IoT Edge 代理的映像 URI。 目前，IoT Edge 代理不能自行更新。 | 是 |
 | systemModules.edgeAgent.settings<br>.createOptions | 字符串化的 JSON 包含用于创建 IoT Edge 代理容器的选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 2fdd82c2f0c96b3bd20231911bb88cf54c172931
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60457742"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>故障排除：Azure 站点到站点 VPN 间歇性地断开连接
@@ -68,7 +68,7 @@ ms.locfileid: "60457742"
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>步骤 7 检查本地 VPN 设备是否已启用“完全向前保密”
 
-“完全向前保密”功能可能会导致断开连接问题。 如果 VPN 设备已启用“完全向前保密”，请禁用该功能。 然后[更新虚拟网络网关 IPsec 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
+“完全向前保密”功能可能会导致断开连接问题  。 如果 VPN 设备已启用“完全向前保密”  ，请禁用该功能。 然后[更新虚拟网络网关 IPsec 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 503b7764ba7958a5448903b217b00e204ffcbf61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61459258"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>如何将应用程序连接到 Azure Database for MySQL
@@ -62,7 +62,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>从 Azure 门户获取连接字符串详细信息
-在 [Azure 门户](https://portal.azure.com)中，转到 Azure Database for MySQL 服务器，再单击“连接字符串”，以获取实例的字符串列表：![Azure 门户中的“连接字符串”窗格](./media/howto-connection-strings/connection-strings-on-portal.png)
+在 [Azure 门户](https://portal.azure.com)中，转到 Azure Database for MySQL 服务器，再单击“连接字符串”  ，以获取实例的字符串列表：![Azure 门户中的“连接字符串”窗格](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 字符串提供驱动程序、服务器和其他数据库连接参数等详细信息。 修改这些示例以使用自己的参数，例如数据库名称、密码等。 然后，可以在代码和应用程序中使用此字符串连接到服务器。
 

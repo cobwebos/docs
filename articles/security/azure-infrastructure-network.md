@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2019
 ms.author: terrylan
 ms.openlocfilehash: 48a7e52d4284e5c2db1d77d24d91fd4701aad8d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587134"
 ---
 # <a name="azure-network-architecture"></a>Azure 网络体系结构
@@ -54,7 +54,7 @@ Quantum 10 设计通过 Clos/mesh 设计中的多个设备执行第 3 层交换�
 这些设备充当 L2 流量的聚合点。 它们是 L2 结构的分配层，可以处理大量的流量。 由于这些设备聚合流量，因此需要 802.1q 功能，以及端口聚合和 10GE 等高带宽技术。
 
 ### <a name="l2-host-switches"></a>L2 主机交换机
-主机直接连接到这些交换机。 它们可以是机架安装式交换机，也可以是机箱部署设备。 802.1q 标准允许将一个 VLAN 指定为本机 VLAN，并将该 VLAN 视为正常（未标记）以太网帧。 在正常情况下，将通过 802.1q 中继端口以未标记的形式传输和接收本机 VLAN 上的帧。 此功能可用于迁移到 802.1q，并与不支持 802.1q 的设备实现兼容。 在此体系结构中，只有网络基础结构使用本机 VLAN。
+主机直接连接到这些交换机。 它们可以是机架安装式交换机，也可以是机箱部署设备。 802\.1q 标准允许将一个 VLAN 指定为本机 VLAN，并将该 VLAN 视为正常（未标记）以太网帧。 在正常情况下，将通过 802.1q 中继端口以未标记的形式传输和接收本机 VLAN 上的帧。 此功能可用于迁移到 802.1q，并与不支持 802.1q 的设备实现兼容。 在此体系结构中，只有网络基础结构使用本机 VLAN。
 
 此体系结构指定了本机 VLAN 的选择标准。 该标准确保 AR 设备尽量为每个中继以及 L2Aggregation 到 L2Aggregation 的中继使用唯一的本机 VLAN。 L2Aggregation 到 L2Host 的交换中继采用非默认的本机 VLAN。
 

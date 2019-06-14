@@ -16,10 +16,10 @@ ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1cb96f4aaef461d049ca496780d542ad7db229e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307754"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
@@ -32,7 +32,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>必备组件
 
-- 如果不熟悉 Azure 管理器部署模板，请查看[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
+- 如果不熟悉 Azure 管理器部署模板，请查看[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)  。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
@@ -106,13 +106,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>向 VM 的系统分配的托管标识分配一个角色
 
-在 VM 上启用系统分配的托管标识后，建议向其授予一个角色，例如对创建它的资源组的“读者”访问权限。
+在 VM 上启用系统分配的托管标识后，建议向其授予一个角色，例如对创建它的资源组的“读者”访问权限  。
 
 若要为 VM 的系统分配标识分配角色，你的帐户需要[用户访问管理员](/azure/role-based-access-control/built-in-roles#user-access-administrator)角色分配。
 
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
  
-2. 将模板加载到[编辑器](#azure-resource-manager-templates)并添加以下信息，向 VM 授予对创建它的资源组的“读者”访问权限。  模板结构可能会有所不同，具体取决于所选的编辑器和部署模型。
+2. 将模板加载到[编辑器](#azure-resource-manager-templates)并添加以下信息，向 VM 授予对创建它的资源组的“读者”访问权限  。  模板结构可能会有所不同，具体取决于所选的编辑器和部署模型。
    
    在 `parameters` 部分下添加以下代码：
 

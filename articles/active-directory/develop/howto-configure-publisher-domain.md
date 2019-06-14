@@ -1,6 +1,6 @@
 ---
-title: 配置应用程序的发行者域 |Azure
-description: 了解如何配置应用程序的发行者域，让用户了解其信息发送位置。
+title: 配置应用程序的发布者域 | Azure
+description: 了解如何配置应用程序的发布者域，以告知用户其信息将发送到何处。
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,64 +18,64 @@ ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d47075f9e18b299341a98983ffb8a47389fd7063
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540243"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>如何：配置应用程序的发行者域 （预览版）
+# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>如何：配置应用程序的发布者域（预览）
 
-应用程序的发行者域向用户显示上[应用程序的许可提示](application-consent-experience.md)，让用户了解其信息发送位置。 多租户应用程序后，2019 年 5 月 21 日注册没有发布服务器域名显示为**未经验证**。 多租户应用程序都支持单个组织目录中; 外部帐户的应用程序例如，支持所有 Azure AD 帐户，或支持所有 Azure AD 帐户和个人 Microsoft 帐户。
+应用程序的发布者域将在[应用程序的许可提示](application-consent-experience.md)中显示给用户，以告知用户其信息将发送到何处。 在 2019 年 5 月 21 日之后注册的且没有发布者域的多租户应用程序将显示为 **unverified**。 多租户应用程序都支持单个组织目录中; 外部帐户的应用程序例如，支持所有 Azure AD 帐户，或支持所有 Azure AD 帐户和个人 Microsoft 帐户。
 
-## <a name="new-applications"></a>新的应用程序
+## <a name="new-applications"></a>新应用程序
 
-注册新的应用程序时，您的应用程序发行者域可能设置为默认值。 值取决于注册应用程序所在，特别是是否在租户中注册应用和租户具有租户是否已验证的域。
+注册新应用时，应用的发布者域可设置为默认值。 该值取决于应用的注册位置，具体而言，取决于该应用是否已在某个租户中注册，以及该租户是否具有租户验证的域。
 
-如果租户已验证域，应用程序的发行者域将默认为租户的主域已验证。 如果有没有租户已验证域 （这是当未在租户中注册应用程序时），应用程序的发行者域将被设置为 null。
+如果存在租户验证的域，则应用的发布者域将默认为该租户的主要已验证域。 如果不存在租户验证的域（应用程序未在租户中注册时会存在这种情况），则应用的发布者域将设置为 null。
 
-下表总结了发布服务器的域值的默认行为。  
+下表汇总了发布者域值的默认行为。  
 
-| 租户已验证域 | 默认值为发行者域 |
+| 租户验证的域 | 发布者域的默认值 |
 |-------------------------|----------------------------|
 | Null | Null |
 | *.onmicrosoft.com | *.onmicrosoft.com |
-| - *.onmicrosoft.com<br/>- domain1.com<br/>-domain2.com （主） | domain2.com |
+| - *.onmicrosoft.com<br/>- domain1.com<br/>- domain2.com（主要） | domain2.com |
 
 如果未设置多租户应用程序的发布服务器域，或如果设置为域中结束。 onmicrosoft.com，应用程序的许可提示将显示**未经验证**代替发行者域。
 
-## <a name="grandfathered-applications"></a>Grandfathered 应用程序
+## <a name="grandfathered-applications"></a>祖父应用程序
 
-如果您的应用程序已注册，2019 年 5 月 21 日之前将不会显示应用程序的许可提示**未经验证**如果你尚未设置发行者域。 我们建议设置发布服务器的域值，以便用户可以在应用程序的许可提示上看到此信息。
+如果应用是在 2019 年 5 月 21 日之前注册的，而你尚未设置发布者域，则应用程序的许可提示将不显示 **unverified**。 我们建议设置发布者域值，使用户能够在应用的许可提示中看到此信息。
 
-## <a name="configure-publisher-domain-using-the-azure-portal"></a>使用 Azure 门户的发布服务器域配置
+## <a name="configure-publisher-domain-using-the-azure-portal"></a>使用 Azure 门户配置发布者域
 
-若要设置应用的发行者域，请执行以下步骤。
+若要设置应用的发布者域，请执行以下步骤。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 如果你的帐户存在多个 Azure AD 租户中：
-   1. 从在页上，在右上角菜单中选择你的配置文件，然后**切换目录**。
-   1. 将你的会话更改为你想要创建你的应用程序的 Azure AD 租户。
+1. 如果你的帐户在多个 Azure AD 租户中存在：
+   1. 从页面右上角的菜单中选择你的个人资料，然后选择“切换目录”。 
+   1. 将会话切换到要在其中创建应用程序的 Azure AD 租户。
 
-1. 导航到[Azure Active Directory > 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)查找并选择你想要配置的应用。
+1. 导航到[“Azure Active Directory”>“应用注册”](https://go.microsoft.com/fwlink/?linkid=2083908)，找到并选择要配置的应用。
 
-   选择应用后，会看到应用的**概述**页。
+   选择应用后，会看到该应用的“概述”页。 
 
-1. 从应用程序的**概述**页上，选择**品牌**部分。
+1. 在应用的“概述”页中，选择“品牌”部分。  
 
-1. 查找**发行者域**字段中，选择下列选项之一：
+1. 找到“发布者域”字段并选择以下选项之一： 
 
-   - 选择**配置域**如果还没有已配置一个域。
-   - 选择**更新域**如果域已配置。
+   - 如果尚未配置域，请选择“配置域”。 
+   - 如果已配置域，请选择“更新域”。 
 
-如果在租户中注册您的应用程序，则可以看到两个选项卡从中进行选择：**选择已验证的域**并**验证新域**。
+如果应用已在租户中注册，则你会看到两个可供选择的选项卡：“选择已验证的域”和“验证新域”。  
 
-如果您的应用程序未在租户中注册，则只能看到验证你的应用程序的新域的选项。
+如果应用尚未在租户中注册，则你只会看到用来为应用程序验证新域的选项。
 
-### <a name="to-verify-a-new-domain-for-your-app"></a>若要验证您的应用程序的新域
+### <a name="to-verify-a-new-domain-for-your-app"></a>验证应用的新域
 
-1. 创建名为`microsoft-identity-association.json`并粘贴以下 JSON 代码片段。
+1. 创建名为 `microsoft-identity-association.json` 的文件并粘贴以下 JSON 代码片段。
 
    ```json
    {
@@ -87,35 +87,35 @@ ms.locfileid: "65540243"
     }
    ```
 
-1. 替换占位符 *{YOUR-应用-ID-此处}* 对应于您的应用程序的应用程序 （客户端） id。
+1. 请将占位符 *{YOUR-APP-ID-HERE}* 替换为对应于应用的应用程序（客户端）ID。
 
-1. 在将文件存放： `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`。 替换占位符 *{YOUR 域此处}* 以匹配已验证的域。
+1. 将该文件托管在 `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` 中。 请替换占位符 *{YOUR-DOMAIN-HERE}* ，使之与已验证的域相匹配。
 
-1. 单击**验证和保存域**按钮。
+1. 单击“验证并保存域”按钮。 
 
-### <a name="to-select-a-verified-domain"></a>若要选择已验证的域
+### <a name="to-select-a-verified-domain"></a>选择已验证的域
 
-- 如果你的租户具有已验证的域，选择从域之一**选择一个已验证的域**下拉列表。
+- 如果租户包含已验证的域，请从“选择已验证的域”下拉列表中选择一个域。 
 
-## <a name="implications-on-the-app-consent-prompt"></a>对应用程序的影响许可提示
+## <a name="implications-on-the-app-consent-prompt"></a>对应用许可提示的影响
 
-配置发布服务器域会影响应用程序许可提示上显示的内容。 若要完全了解许可提示的组件，请参阅[了解应用程序许可体验](application-consent-experience.md)。
+配置发布者域会影响用户在应用许可提示中看到的内容。 若要完全了解许可提示的组件，请参阅[了解应用程序许可体验](application-consent-experience.md)。
 
-下表介绍在 2019 年 5 月 21 日之前, 创建的应用程序的行为。
+下表描述了在 2019 年 5 月 21 日之前创建的应用程序的行为。
 
-![2019 5 月 21 日之前创建的应用的许可提示](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
+![在 2019 年 5 月 21 日之前创建的应用的许可提示](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
 
-2019 5 月 21 日之后创建的新应用程序的行为取决于发布服务器域和应用程序的类型。 下表描述了你应该会看到与配置的不同组合的更改。
+在 2019 年 5 月 21 日之后创建的新应用程序的行为取决于发布者域和应用程序的类型。 下表描述了使用不同的配置组合时预期看到的更改。
 
-![许可提示，2019 年 5 月 21 日之后创建的应用](./media/howto-configure-publisher-domain/new-app-behavior-table.png)
+![在 2019 年 5 月 21 日之后创建的应用的许可提示](./media/howto-configure-publisher-domain/new-app-behavior-table.png)
 
-## <a name="implications-on-redirect-uris"></a>对重定向 Uri 的影响
+## <a name="implications-on-redirect-uris"></a>对重定向 URI 的影响
 
 在具有任何工作或学校帐户或个人 Microsoft 帐户的用户登录的应用程序 ([多租户](single-and-multi-tenant-apps.md)) 是受几个限制指定时重定向 Uri。
 
 ### <a name="single-root-domain-restriction"></a>单个根域限制
 
-如果多租户应用的发布服务器域值设置为 null，应用只限于共享单个根域重定向 Uri。 例如，不允许以下值的组合，因为根域、 contoso.com、 fabrikam.com 与不匹配。
+当多租户应用的发布者域值设置为 null 时，应用仅限于共享重定向 URI 的单个根域。 例如，不允许以下值的组合，因为根域 contoso.com 与 fabrikam.com 不匹配。
 
 ```
 "https://contoso.com",
@@ -124,14 +124,14 @@ ms.locfileid: "65540243"
 
 ### <a name="subdomain-restrictions"></a>子域限制
 
-允许子域，但必须显式注册的根域。 例如，以下 Uri 共享单个根域，而不允许组合。
+允许子域，但必须显式注册根域。 例如，尽管以下 URI 共享单个根域，但不允许将其组合。
 
 ```
 "https://app1.contoso.com",
 "https://app2.contoso.com",
 ```
 
-但是，如果开发人员显式添加根级域，则允许组合。
+但是，如果开发人员显式添加根域，则允许组合。
 
 ```
 "https://contoso.com",
@@ -141,12 +141,12 @@ ms.locfileid: "65540243"
 
 ### <a name="exceptions"></a>例外
 
-在以下情况下不受单个根域限制：
+以下方案存在单个根域的限制：
 
-- 单租户应用或目标的单个目录中的帐户的应用
-- 使用的本地主机作为重定向 Uri
-- 使用自定义方案 （非 HTTP 或 HTTPS） 的重定向 Uri
+- 单租户应用，或者面向单个目录中的帐户的应用
+- 使用 localhost 作为重定向 URI
+- 使用自定义方案（非 HTTP 或 HTTPS）的重定向 URI
 
-## <a name="configure-publisher-domain-programmatically"></a>以编程方式配置发布服务器域
+## <a name="configure-publisher-domain-programmatically"></a>以编程方式配置发布者域
 
-目前，没有 REST API 或 PowerShell 支持以编程方式配置发布服务器的域。
+目前，不支持使用 REST API 或 PowerShell 以编程方式配置发布者域。

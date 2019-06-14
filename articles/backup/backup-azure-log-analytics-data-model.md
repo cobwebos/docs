@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: adigan
 ms.openlocfilehash: dd4dad2cc3e541d3b6866c02341161dc1d9e1e6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61234907"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
@@ -34,7 +34,7 @@ ms.locfileid: "61234907"
 | AlertUniqueId_s |Text |生成的警报的唯一标识符 |
 | AlertType_s |Text |警报的类型，例如 Backup |
 | AlertStatus_s |Text |警报的状态，例如 Active |
-| AlertOccurrenceDateTime_s |日期/时间 |警报的创建日期和时间 |
+| AlertOccurrenceDateTime_s |Date/Time |警报的创建日期和时间 |
 | AlertSeverity_s |Text |警报的严重性，例如 Critical |
 |AlertTimeToResolveInMinutes_s    | Number        |若要解决警报所用的时间。 活动警报的空白。         |
 |AlertConsolidationStatus_s   |Text         |确定如果警报或不是合并的警报         |
@@ -49,7 +49,7 @@ ms.locfileid: "61234907"
 | BackupManagementType_s |Text |执行备份的提供程序类型，例如此警报所属的 IaaSVM、FileFolder |
 | OperationName |Text |当前操作的名称，例如 Alert |
 | 类别 |Text |诊断数据推送到 Azure Monitor 日志类别。 始终为 AzureBackupReport |
-| 资源 |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
+| Resource |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | ProtectedServerUniqueId_s |Text |与警报关联的受保护服务器的唯一标识符 |
 | VaultUniqueId_s |Text |与警报关联的受保护保管库的唯一标识符 |
 | SourceSystem |Text |当前数据的源系统 - Azure |
@@ -79,7 +79,7 @@ ms.locfileid: "61234907"
 | BackupManagementType_s |Text |执行备份的提供程序类型，例如此备份项所属的 IaaSVM、FileFolder |
 | OperationName |Text |操作的名称，例如 BackupItem |
 | 类别 |Text |诊断数据推送到 Azure Monitor 日志类别。 始终为 AzureBackupReport |
-| 资源 |Text |正在收集其数据的资源，例如“恢复服务保管库名称” |
+| Resource |Text |正在收集其数据的资源，例如“恢复服务保管库名称” |
 | SourceSystem |Text |当前数据的源系统 - Azure |
 | ResourceId |Text |正在收集其数据的资源 ID，例如“恢复服务保管库资源 ID” |
 | SubscriptionId |Text |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
@@ -102,7 +102,7 @@ ms.locfileid: "61234907"
 | BackupManagementServerUniqueId_s |Text | 如果适用，通过保护字段用于唯一标识备份管理服务器备份项 |
 | 类别 |Text |此字段表示推送到 Log Analytics 的诊断数据的类别，值为 AzureBackupReport |
 | OperationName |Text |此字段表示当前操作的名称 - BackupItemAssociation |
-| 资源 |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
+| Resource |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | PolicyUniqueId_g |Text |与备份项关联的策略的唯一标识符 |
 | ProtectedServerUniqueId_s |Text |与备份项关联的受保护服务器的唯一标识符 |
 | VaultUniqueId_s |Text |包含备份项的保管库的唯一标识符 |
@@ -145,14 +145,14 @@ ms.locfileid: "61234907"
 | BackupManagementType_s |Text |服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
 | OperationName |Text |此字段表示当前操作的名称 - Job |
 | 类别 |Text |此字段表示诊断数据推送到 Azure Monitor 日志类别，值为 AzureBackupReport |
-| 资源 |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
+| Resource |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | ProtectedServerUniqueId_s |Text |与作业关联的受保护服务器的唯一标识符 |
 | ProtectedContainerUniqueId_s |Text | 用于标识受保护的容器在运行作业的唯一 Id |
 | VaultUniqueId_s |Text |受保护保管库的唯一标识符 |
 | JobOperation_s |Text |为其运行作业的操作，例如备份、还原、配置备份 |
 | JobStatus_s |Text |作业的状态，例如 Completed、Failed |
 | JobFailureCode_s |Text |导致作业失败的故障代码字符串 |
-| JobStartDateTime_s |日期/时间 |开始运行作业的日期和时间 |
+| JobStartDateTime_s |Date/Time |开始运行作业的日期和时间 |
 | BackupStorageDestination_s |Text |备份存储目标，例如 Cloud、Disk  |
 | AdHocOrScheduledJob_s |Text | 字段来指定是否 Ad Hoc 或计划的作业 |
 | JobDurationInSecs_s | Number |作业的总持续时间，以秒为单位 |
@@ -180,7 +180,7 @@ ms.locfileid: "61234907"
 | BackupManagementType_s |Text ||服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
 | OperationName |Text ||此字段表示当前操作的名称 - Policy |
 | 类别 |Text ||此字段表示诊断数据推送到 Azure Monitor 日志类别，值为 AzureBackupReport |
-| 资源 |Text ||这是正在收集其数据的资源，显示恢复服务保管库名称 |
+| Resource |Text ||这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | PolicyUniqueId_g |Text ||用于标识策略的唯一 ID |
 | PolicyName_s |Text ||已定义的策略的名称 |
 | BackupFrequency_s |Text ||运行备份的频率，例如 daily、weekly |
@@ -204,7 +204,7 @@ ms.locfileid: "61234907"
 | YearlyRetentionDaysOfTheMonth_s |Text ||选择进行每年保留的日期 |
 | SynchronisationFrequencyPerDay_s |整数 |v2|文件备份同步 SC DPM 和 MABS 一天中的次数 |
 | DiffBackupFormat_s |Text |v2|在 Azure VM 备份的 SQL 格式对于差异备份 |
-| DiffBackupTime_s |时间 |v2|SQL Azure VM 备份中的差异备份的时间|
+| DiffBackupTime_s |Time |v2|SQL Azure VM 备份中的差异备份的时间|
 | DiffBackupRetentionDuration_s |十进制数 |v2|SQL Azure VM 备份中的差异备份的保留持续时间|
 | LogBackupFrequency_s |十进制数 |v2|Sql 日志备份的频率|
 | LogBackupRetentionDuration_s |十进制数 |v2|为 Azure VM 备份中的 SQL 日志备份的保留持续时间|
@@ -228,7 +228,7 @@ ms.locfileid: "61234907"
 | BackupManagementType_s |Text ||服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
 | OperationName |Text ||此字段表示当前操作的名称 - PolicyAssociation |
 | 类别 |Text ||此字段表示诊断数据推送到 Azure Monitor 日志类别，值为 AzureBackupReport |
-| 资源 |Text ||这是正在收集其数据的资源，显示恢复服务保管库名称 |
+| Resource |Text ||这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | PolicyUniqueId_g |Text ||用于标识策略的唯一 ID |
 | VaultUniqueId_s |Text ||此策略所属的保管库的唯一 ID |
 | BackupManagementServerUniqueId_s |Text |v2 |如果适用，通过保护字段用于唯一标识备份管理服务器备份项        |
@@ -271,7 +271,7 @@ ms.locfileid: "61234907"
 | BackupManagementType_s |Text |服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
 | OperationName |Text |此字段表示当前操作的名称 - Storage |
 | 类别 |Text |此字段表示诊断数据推送到 Azure Monitor 日志类别，值为 AzureBackupReport |
-| 资源 |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
+| Resource |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | ProtectedServerUniqueId_s |Text |为其计算存储的受保护服务器的唯一 ID |
 | VaultUniqueId_s |Text |为其计算存储的保管库的唯一 ID |
 | SourceSystem |Text |当前数据的源系统 - Azure |
@@ -306,7 +306,7 @@ ms.locfileid: "61234907"
 | State_s |Text |保管库对象的当前状态，例如 Active、Deleted |
 | OperationName |Text |此字段表示当前操作的名称 - Vault |
 | 类别 |Text |此字段表示诊断数据推送到 Azure Monitor 日志类别，值为 AzureBackupReport |
-| 资源 |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
+| Resource |Text |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | VaultUniqueId_s |Text |保管库的唯一 ID |
 | VaultName_s |Text |保管库的名称 |
 | AzureDataCenter_s |Text |保管库所在的数据中心 |

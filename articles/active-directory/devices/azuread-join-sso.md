@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45941de6a90a5824ebc1e5d31b18b68f5fd9d493
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353187"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理
@@ -50,7 +50,7 @@ ms.locfileid: "60353187"
 
 3. 接收用于访问已加入 AD 的资源的 Kerberos [票证授予票证 (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets)。
 
-当用户尝试访问针对 Windows 集成身份验证配置的所有应用时，它们将顺利进行 SSO。  
+当用户尝试访问针对 Windows 集成身份验证配置的所有应用时，它们将顺利进行 SSO  。  
 
 Windows Hello for Business 需要其他配置才能支持已加入 Azure AD 的设备的本地 SSO。 有关详细信息，请参阅[使用 Windows Hello for Business 配置已加入 Azure AD 的设备进行本地单一登录](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)。 
 

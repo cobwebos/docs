@@ -12,10 +12,10 @@ ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 5d410e1015b751743c171adabda1d5bcbe68b491
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65541004"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
@@ -31,7 +31,7 @@ ms.locfileid: "65541004"
 <!-- added quotes so acrolinx doesn't score these sentences -->
 |个性|示例|
 |--|--|
-|专业的|年龄不会真正适用于我。|
+|专业版|年龄不会真正适用于我。|
 |友好|我真的没有年龄。|
 |与红|我是年龄免费。|
 |关注|我没有年龄。|
@@ -42,12 +42,12 @@ ms.locfileid: "65541004"
 > 聊天内容支持目前仅提供英文形式。 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>在 KB 创建过程中添加聊天内容
-在知识库创建过程中，在添加源 URL 和文件以后，就会有一个添加聊天内容的选项。 选择需要用作聊天内容库的个性。 如果不希望添加聊天内容，或者数据源中已经有聊天内容支持，请选择“无”。 
+在知识库创建过程中，在添加源 URL 和文件以后，就会有一个添加聊天内容的选项。 选择需要用作聊天内容库的个性。 如果不希望添加聊天内容，或者数据源中已经有聊天内容支持，请选择“无”。  
    
 ![在创建过程中添加聊天内容](../media/qnamaker-how-to-chit-chat/create-kb-chit-chat.png)
 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>向现有 KB 添加聊天内容
-选择 KB，导航到“设置”页。 有一个链接，指向所有采用相应 **.tsv** 格式的聊天内容数据集。 下载所需个性，然后将其作为文件源上传。 请确保在下载和上传文件时不编辑格式或元数据。 
+选择 KB，导航到“设置”页。  有一个链接，指向所有采用相应 **.tsv** 格式的聊天内容数据集。 下载所需个性，然后将其作为文件源上传。 请确保在下载和上传文件时不编辑格式或元数据。 
   
 ![向现有 KB 添加聊天内容](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
 
@@ -59,12 +59,12 @@ ms.locfileid: "65541004"
 若要查看元数据，请选择**视图选项**在工具栏中，然后选择**显示元数据**。
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>添加其他的聊天内容问题和解答
-可以添加新的不在预定义集中的聊天内容 QnA。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。 若要确保排名程序理解这是聊天内容，请添加元数据键/值对“编辑: 聊天内容”，如下图所示：
+可以添加新的不在预定义集中的聊天内容 QnA。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。  若要确保排名程序理解这是聊天内容，请添加元数据键/值对“编辑: 聊天内容”，如下图所示：
    
 ![![添加 chit 聊天变](../ media/qnamaker-how-to-chit-chat/add-new-chit-chat.png）](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>从现有 KB 中删除聊天内容
-选择 KB，导航到“设置”页。 特定的聊天内容源作为文件列出，使用所选的个性名称。 可以将其作为源文件删除。
+选择 KB，导航到“设置”页。  特定的聊天内容源作为文件列出，使用所选的个性名称。 可以将其作为源文件删除。
 
 ![从 KB 中删除聊天内容](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
 

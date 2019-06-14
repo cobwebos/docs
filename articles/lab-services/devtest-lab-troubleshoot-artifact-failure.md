@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 29af70a2713e7b4aebf611d8f2b547e38c6c5d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60623085"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>对实验室中的项目失败进行诊断 
@@ -34,11 +34,11 @@ ms.locfileid: "60623085"
 
 1. 在 Azure 门户中的资源列表中选择实验室。
 2. 选择包含想要调查的项目的 Windows VM。
-3. 在左侧面板中，在“常规”下选择“项目”。 随即会出现与该 VM 关联的项目的列表。 其中显示了项目的名称和状态。
+3. 在左侧面板中，在“常规”下选择“项目”   。 随即会出现与该 VM 关联的项目的列表。 其中显示了项目的名称和状态。
 
    ![项目状态](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
 
-4. 选择状态显示为“失败”的项目。 项目随即打开。 此时会显示一条扩展消息，其中包含有关项目失败的详细信息。
+4. 选择状态显示为“失败”的项目  。 项目随即打开。 此时会显示一条扩展消息，其中包含有关项目失败的详细信息。
 
    ![项目错误消息](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
 
@@ -46,11 +46,11 @@ ms.locfileid: "60623085"
 ## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>从虚拟机中对项目失败进行故障排除
 
 1. 登录到包含要诊断的项目的 VM。
-2. 转到 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\1.9\Status，其中 1.9 为 Azure 自定义脚本扩展版本号。
+2. 转到 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\1.9\Status，其中 1.9 为 Azure 自定义脚本扩展版本号   。
 
    ![状态文件](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 
-3. 打开状态文件。
+3. 打开状态文件  。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

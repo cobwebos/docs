@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/21/2019
 ms.author: bwren
 ms.openlocfilehash: 1d92973e32e9c694b1d0488753b9a701e7d71a5d
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66416910"
 ---
 # <a name="monitoring-data-locations-in-azure-monitor"></a>在 Azure Monitor 监视数据位置
@@ -29,7 +29,7 @@ Azure 监视器基于[的数据平台](data-platform.md)的[日志](data-platfor
 
 | Location | 描述 | 访问方法 |
 |:---|:---|:---|:--|
-| Azure Monitor 指标 | 时间序列数据库针对分析加盖时间戳数据进行了优化。 | [Metrics Explorer](metrics-getting-started.md)<br>[Azure Monitor 指标 API](/rest/api/monitor/metrics) |
+| Azure Monitor 指标 | 时间序列数据库针对分析加盖时间戳数据进行了优化。 | [指标资源管理器](metrics-getting-started.md)<br>[Azure Monitor 指标 API](/rest/api/monitor/metrics) |
 | Azure Monitor 日志    | Log Analytics 工作区的基于 Azure 的数据资源管理器提供功能强大的分析引擎和丰富的查询语言。 | [Log Analytics](../log-query/portals.md)<br>[Log Analytics API](https://dev.loganalytics.io/)<br>[Application Insights API](https://dev.applicationinsights.io/reference/get-query) |
 | 活动日志 | 活动日志中的数据发送到 Azure Monitor 日志，以便与其他数据，对其进行分析时非常有用，但它还将收集在其自身以便在 Azure 门户中可以直接查看。 | [Azure 门户](activity-log-view.md#azure-portal)<br>[Azure Monitor 事件 API](/rest/api/monitor/eventcategories) |
 | Azure 存储 | 某些数据源将直接写入 Azure 存储，需要配置以将数据移动到日志。 此外可以将数据发送到 Azure 存储用于存档以及与外部系统的集成。  | [存储分析](/rest/api/storageservices/storage-analytics)<br>[服务器资源管理器](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[存储资源管理器](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) |

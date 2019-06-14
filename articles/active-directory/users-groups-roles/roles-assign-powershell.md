@@ -1,6 +1,6 @@
 ---
-title: 分配并删除使用 Azure PowerShell 的 Azure Active Directory 管理员角色分配 |Microsoft Docs
-description: 对于那些经常管理角色分配，现在可以管理使用 Azure PowerShell 的 Azure AD 管理员角色的成员。
+title: 使用 Azure PowerShell 分配和删除管理员角色分配 - Azure Active Directory | Microsoft Docs
+description: 对于那些频繁管理角色分配的用户，现在可以使用 Azure PowerShell 管理 Azure AD 管理员角色的成员。
 services: active-directory
 author: curtand
 manager: mtillman
@@ -14,15 +14,15 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6877c3e547d625cf58129a546dae798b37a24ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60469088"
 ---
-# <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>将使用 PowerShell 的 Azure Active Directory 管理员角色分配
+# <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>使用 PowerShell 分配 Azure Active Directory 管理员角色
 
-您可以自动化如何将角色分配给用户帐户使用 Azure PowerShell。 本文使用[Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles)模块。
+可以自动使用 Azure PowerShell 将角色分配给用户帐户。 本文使用 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) 模块。
 
 ## <a name="prepare-powershell"></a>准备 PowerShell
 
@@ -50,11 +50,11 @@ get-module azuread
 
 ## <a name="permissions-required"></a>所需的权限
 
-连接到 Azure AD 租户使用全局管理员帐户分配或删除角色。
+连接到 Azure AD 租户，使用全局管理员帐户分配或删除角色。
 
-## <a name="assign-a-single-role"></a>将单个角色分配
+## <a name="assign-a-single-role"></a>分配单个角色
 
-若要将角色分配，你必须首先获取的显示名称和要分配的角色的名称。 该帐户的显示名称和角色的名称时，使用以下 cmdlet 以将角色分配给用户。
+若要分配一个角色，必须先获得其显示名称以及要分配的角色的名称。 有了帐户的显示名称以及角色的名称以后，请使用以下 cmdlet 将角色分配给用户。
 
 ``` PowerShell
 # Fetch user to assign to role
@@ -82,7 +82,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 
 ## <a name="assign-a-role-to-a-service-principal"></a>向服务主体分配角色
 
-向角色分配服务主体的示例。
+将服务主体分配给角色的示例。
 
 ```powershell
 # Fetch a service principal to assign to role
@@ -103,7 +103,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADServicePrin
 
 ## <a name="multiple-role-assignments"></a>多角色分配
 
-分配或一次性删除多个角色的示例。
+一次分配和删除多个角色的示例。
 
 ```powershell
 #File name
@@ -141,7 +141,7 @@ for ($i=2; $i -le $count; $i++)
 
 ## <a name="remove-a-role-assignment"></a>删除角色分配
 
-此示例将删除指定的用户的角色分配。
+此示例删除指定用户的角色分配。
 
 ```powershell
 # Fetch user to assign to role

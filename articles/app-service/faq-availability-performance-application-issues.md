@@ -17,10 +17,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: f455985d2a7d05f45100d4a88b43c688fe1a7767
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955769"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
@@ -54,7 +54,7 @@ ms.locfileid: "65955769"
 查看 Web 应用的事件日志：
 
 1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
-2. 在菜单中，选择“调试控制台” > “CMD”。
+2. 在菜单中，选择“调试控制台”   > “CMD”  。
 3. 选择 **LogFiles** 文件夹。
 4. 若要查看事件日志，请选择 **eventlog.xml** 旁的铅笔图标。
 5. 若要下载日志，请运行 PowerShell cmdlet `Save-AzureWebSiteLog -Name webappname`。
@@ -64,21 +64,21 @@ ms.locfileid: "65955769"
 捕获 Web 应用的用户模式内存转储:
 
 1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
-2. 选择“进程资源管理器”菜单。
+2. 选择“进程资源管理器”  菜单。
 3. 右键单击 **w3wp.exe** 进程或 Web 作业进程。
-4. 选择“下载内存转储” > “完全转储”。
+4. 选择“下载内存转储”   > “完全转储”  。
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>如何查看 Web 应用的进程级信息？
 
 有两个选项可用于查看 Web 应用的进程级信息：
 
 *   在 Azure 门户中：
-    1. 打开 Web 应用的“进程资源管理器”。
+    1. 打开 Web 应用的“进程资源管理器”  。
     2. 若要查看详细信息，请选择 **w3wp.exe** 进程。
 *   在 Kudu 控制台中：
     1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
-    2. 选择“进程资源管理器”菜单。
-    3. 对于 **w3wp.exe** 进程，选择“属性”。
+    2. 选择“进程资源管理器”  菜单。
+    3. 对于 **w3wp.exe** 进程，选择“属性”  。
 
 ## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>当我浏览到我的应用时，看到“错误 403 - 此 Web 应用已停止”。 如何解决此问题？
 
@@ -96,24 +96,24 @@ ms.locfileid: "65955769"
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>如何减少空闲时间之后第一个请求的响应时间？
 
-默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 其缺点是 Web 应用卸载之后的第一个请求的响应时间会较长，以使 Web 应用可以加载并启动服务响应。 在基本和标准服务计划中，可以打开“始终可用”设置以使应用始终加载。 这可消除应用处于空闲状态之后的较长加载时间。 更改“始终可用”设置：
+默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 其缺点是 Web 应用卸载之后的第一个请求的响应时间会较长，以使 Web 应用可以加载并启动服务响应。 在基本和标准服务计划中，可以打开“始终可用”  设置以使应用始终加载。 这可消除应用处于空闲状态之后的较长加载时间。 更改“始终可用”  设置：
 
 1. 在 Azure 门户中，转到你的 Web 应用。
-2. 选择“应用程序设置”。
-3. 对于“始终可用”，选择“打开”。
+2. 选择“应用程序设置”  。
+3. 对于“始终可用”  ，选择“打开”  。
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>如何打开失败请求跟踪？
 
 打开失败请求跟踪：
 
 1. 在 Azure 门户中，转到你的 Web 应用。
-3. 选择“所有设置” > “诊断日志”。
-4. 对于“失败请求跟踪”，选择“打开”。
-5. 选择“保存”。
-6. 在 Web 应用边栏选项卡，选择“工具”。
-7. 选择“Visual Studio Online”。
-8. 如果设置不是“打开”，则选择“打开”。
-9. 选择“转到”。
+3. 选择“所有设置”   > “诊断日志”  。
+4. 对于“失败请求跟踪”  ，选择“打开”  。
+5. 选择“保存”。 
+6. 在 Web 应用边栏选项卡，选择“工具”  。
+7. 选择“Visual Studio Online”  。
+8. 如果设置不是“打开”  ，则选择“打开”  。
+9. 选择“转到”  。
 10. 选择 **Web.config**。
 11. 在 system.webServer 中，添加此配置（用于捕获特定 URL）：
 
@@ -148,8 +148,8 @@ ms.locfileid: "65955769"
     </tracing>
     ```
 13. 若要下载失败请求跟踪，请在[门户](https://portal.azure.com)中，转到你的网站。
-15. 选择“工具” > “Kudu” > “转到”。
-18. 在菜单中，选择“调试控制台” > “CMD”。
+15. 选择“工具”   > “Kudu”   > “转到”  。
+18. 在菜单中，选择“调试控制台”   > “CMD”  。
 19. 选择 **LogFiles** 文件夹，然后选择名称以 **W3SVC** 开头的文件夹。
 20. 若要查看 XML 文件，请选择铅笔图标。
 
@@ -180,7 +180,7 @@ Web 作业旨在用于后台处理。 可以在 Web 作业中根据需要执行�
 
 如果使用应用服务的本地缓存功能，则应用服务实例的日志文件和数据文件夹的文件夹结构会受影响。 使用本地缓存时，会在存储日志文件和数据文件夹中创建子文件夹。 子文件夹使用命名模式“唯一标识符”+ 时间戳。 每个子文件夹都对应于一个 VM 实例，其中的 Web 应用正在运行或已运行。
 
-若要确定是否在使用本地缓存，请检查应用服务“应用程序设置”选项卡。如果使用本地缓存，则应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 设置为 `Always`。
+若要确定是否在使用本地缓存，请检查应用服务“应用程序设置”  选项卡。如果使用本地缓存，则应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 设置为 `Always`。
 
 如果未使用本地缓存并且遇到此问题，请提交支持请求。
 

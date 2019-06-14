@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
 ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604359"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure Monitor 中收集 IIS 日志
@@ -34,7 +34,7 @@ Azure Monitor 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自�
 
 
 ## <a name="data-collection"></a>数据收集
-每次关闭日志并创建新日志时，Azure Monitor 都会从每个代理收集 IIS 日志条目。 此频率由 IIS 站点的**日志文件滚动更新计划**设置控制，默认情况下为每天一次。 例如，如果此设置为“每小时”，则 Azure Monitor 将每小时收集一次日志。  例如，如果此设置为“每日”，则 Azure Monitor 将每 24 小时收集一次日志。
+每次关闭日志并创建新日志时，Azure Monitor 都会从每个代理收集 IIS 日志条目。 此频率由 IIS 站点的**日志文件滚动更新计划**设置控制，默认情况下为每天一次。 例如，如果此设置为“每小时”  ，则 Azure Monitor 将每小时收集一次日志。  例如，如果此设置为“每日”  ，则 Azure Monitor 将每 24 小时收集一次日志。
 
 
 ## <a name="iis-log-record-properties"></a>IIS 日志记录属性

@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7938f2c47e4af8d8804191fbb9e55b379f9554ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390141"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
@@ -78,7 +78,7 @@ az vm list-usage --location "South Central US"
 
 ### <a name="powershell"></a>PowerShell
 
-对于 PowerShell，可使用 Get-AzVMUsage 命令查找虚拟机配额。
+对于 PowerShell，可使用 Get-AzVMUsage 命令查找虚拟机配额  。
 
 ```powershell
 Get-AzVMUsage -Location "South Central US"
@@ -111,11 +111,11 @@ Virtual Machines                             0 10000 Count
 
    ![选择订阅](./media/resource-manager-quota-errors/select-subscription.png)
 
-3. 选择“使用情况 + 配额”
+3. 选择“使用情况 + 配额” 
 
    ![选择使用情况和配额](./media/resource-manager-quota-errors/select-usage-quotas.png)
 
-4. 在右上角选择“请求增加”。
+4. 在右上角选择“请求增加”  。
 
    ![请求增加](./media/resource-manager-quota-errors/request-increase.png)
 

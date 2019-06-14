@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60594923"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>使用 RDP 连接到 Azure VM 时排查身份验证错误
@@ -39,7 +39,7 @@ ms.locfileid: "60594923"
 
 ### <a name="error-message-3-generic-connection-error"></a>错误消息 3（泛型连接错误）
 
-此计算机无法连接到远程计算机。再次尝试连接，如果问题仍然存在，请与远程计算机的所有者或网络管理员联系。
+此计算机无法连接到远程计算机。  再次尝试连接，如果问题仍然存在，请与远程计算机的所有者或网络管理员联系。
 
 ## <a name="cause"></a>原因
 
@@ -188,13 +188,13 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 REG query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v disabledomaincreds
 ```
 
-如果此项设置为“1”，则表示服务器已设置为不允许使用域凭据。 请将此项更改为“0”。
+如果此项设置为“1”，则表示服务器已设置为不允许使用域凭据  。 请将此项更改为“0”  。
 
 ### <a name="for-standalone-vms"></a>对于独立 VM
 
 #### <a name="check-minencryptionlevel"></a>检查 MinEncryptionLevel
 
-在 CMD 实例中，运行以下命令以查询 MinEncryptionLevel 注册表值：
+在 CMD 实例中，运行以下命令以查询 MinEncryptionLevel 注册表值  ：
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
@@ -204,13 +204,13 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 * 4 (FIPS)：转到[检查符合 FIP 的算法连接](#fips-compliant)。
 
-* 3（128 位加密）：通过运行以下命令将严重性设置为“2”：
+* 3（128 位加密）：通过运行以下命令将严重性设置为“2”  ：
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2（可能的最高加密，由客户端指定）：你可以尝试通过运行以下命令将加密设置为最小值“1”：
+* 2（可能的最高加密，由客户端指定）：你可以尝试通过运行以下命令将加密设置为最小值“1”  ：
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f
@@ -228,7 +228,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled
 ```
 
-如果返回值不全是“1”，则表示协议已禁用。 要启用这些协议，请运行以下命令：
+如果返回值不全是“1”，则表示协议已禁用  。 要启用这些协议，请运行以下命令：
 
 ```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
@@ -254,7 +254,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled
 ```
 
-如果该命令返回“1”，请将注册表值更改为“0”。
+如果该命令返回“1”，请将注册表值更改为“0”   。
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled /t REG_DWORD /d 0
@@ -266,7 +266,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Ena
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
 ```
 
-如果该命令返回“4”，请将注册表值更改为“2”
+如果该命令返回“4”，请将注册表值更改为“2”  
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2

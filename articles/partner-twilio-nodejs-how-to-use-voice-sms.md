@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: wpickett
 ms.openlocfilehash: d9f419c48f64ba697e031dfc680bc9cb12bba5c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60422899"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>在 Azure 中使用 Twilio for Voice、VoIP 和 SMS 消息传递

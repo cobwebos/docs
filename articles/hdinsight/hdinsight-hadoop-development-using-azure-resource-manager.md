@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: 36b43ce6636bf918e1e8c42af4c2746865f5ccd1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523344"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具
@@ -83,7 +83,7 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>将 Azure PowerShell 迁移到 Azure 资源管理器
 有关处于 Azure 资源管理器模式的 Azure PowerShell 的一般信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式下的 cmdlet 名称中包含 AzHDInsight，而在 ASM 模式下则包含 AzureHDInsight。  例如，前者为 New-AzHDInsightCluster，后者为*New-AzureHDInsightCluster*. 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
+Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式下的 cmdlet 名称中包含 AzHDInsight，而在 ASM 模式下则包含 AzureHDInsight   。  例如，前者为 New-AzHDInsightCluster  ，后者为*New-AzureHDInsightCluster*. 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
 
 在使用这些 HDInsight cmdlet 之前，必须先连接到 Azure 帐户并创建新资源组：
 

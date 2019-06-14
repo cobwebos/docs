@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
 ms.openlocfilehash: 0a2d964d60d13f0e71de5776112a4edbe3cdcc45
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127907"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加身份验证
@@ -37,11 +37,11 @@ ms.locfileid: "62127907"
 
 1. 在 [Azure 门户]中，选择应用服务。
 
-2. 单击“身份验证/授权”菜单选项。
+2. 单击“身份验证/授权”  菜单选项。
 
-3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”  中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案  。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击“确定”。
+4. 单击“确定”。 
 
 5. 单击“ **保存**”。
 
@@ -53,7 +53,7 @@ ms.locfileid: "62127907"
 接下来，更新客户端应用，以使用经过身份验证的用户从移动应用后端请求资源。
 
 ## <a name="add-authentication"></a>向应用添加身份验证
-已更新应用，在显示数据之前要求用户点击“登录”按钮进行身份验证。
+已更新应用，在显示数据之前要求用户点击“登录”  按钮进行身份验证。
 
 1. 将以下代码添加到 **TodoActivity** 类：
    
@@ -93,10 +93,10 @@ ms.locfileid: "62127907"
             }
         }
    
-    此代码创建一个对用户进行身份验证的新方法和一个针对新“登录”按钮的方法处理程序。 上面示例代码中的用户使用 Facebook 登录进行身份验证。 对话框用于在进行身份验证后显示用户 ID。
+    此代码创建一个对用户进行身份验证的新方法和一个针对新“登录”  按钮的方法处理程序。 上面示例代码中的用户使用 Facebook 登录进行身份验证。 对话框用于在进行身份验证后显示用户 ID。
    
    > [!NOTE]
-   > 如果使用的 Facebook 以外的其他标识提供程序，将更改传递给的值**LoginAsync**上面为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory。
+   > 如果使用的 Facebook 以外的其他标识提供程序，将更改传递给的值**LoginAsync**上面为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory     。
    > 
    > 
 2. 在 **OnCreate** 方法中，删除或注释掉以下代码行：

@@ -11,10 +11,10 @@ ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60847332"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
@@ -70,7 +70,7 @@ ms.locfileid: "60847332"
    ![添加 HTTP 请求触发器](./media/logic-apps-using-sap-connector-old/add-trigger.png)
 
 3. 现在请保存逻辑应用，以便可为逻辑应用生成终结点 URL。
-在设计器工具栏上，选择“保存”。 
+在设计器工具栏上，选择“保存”  。 
 
    终结点 URL 现在会显示在触发器中，例如：
 
@@ -82,7 +82,7 @@ ms.locfileid: "60847332"
 
 在 Azure 逻辑应用中，[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)是指工作流中紧跟在某个触发器或另一操作后面执行的一个步骤。 如果尚未将触发器添加到逻辑应用并想要遵循本示例，请[添加此部分所述的触发器](#add-trigger)。
 
-1. 在逻辑应用设计器的触发器下，选择“新建步骤” > “添加操作”。
+1. 在逻辑应用设计器的触发器下，选择“新建步骤” > “添加操作”。  
 
    ![添加操作](./media/logic-apps-using-sap-connector-old/add-action.png) 
 
@@ -99,10 +99,10 @@ ms.locfileid: "60847332"
 
    **创建本地 SAP 连接**
 
-   1. 对于“网关”，请选择“通过本地数据网关连接”，以显示本地连接属性。
+   1. 对于“网关”，请选择“通过本地数据网关连接”，以显示本地连接属性。  
 
    2. 提供 SAP 服务器的连接信息。 
-   对于“网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关，例如：
+   对于“网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关，例如： 
 
       **SAP 应用程序服务器**
 
@@ -112,13 +112,13 @@ ms.locfileid: "60847332"
 
       ![创建 SAP 消息服务器连接](media/logic-apps-using-sap-connector-old/create-SAP-message-server-connection.png) 
 
-   2. 完成后，选择“创建”。
+   2. 完成后，选择“创建”  。
 
       逻辑应用会设置并测试连接，确保连接正常工作。
 
 4. 现在，请找到并选择 SAP 服务器中的某个操作。 
 
-   1. 在“SAP 操作”框中，选择文件夹图标。 
+   1. 在“SAP 操作”框中，选择文件夹图标。  
    在文件夹列表中，找到并选择要使用的操作。 
 
       本示例选择了 IDoc 操作的 **IDOC** 类别。 
@@ -131,8 +131,8 @@ ms.locfileid: "60847332"
 
       有关 IDoc 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
-   2. 在“输入消息”框中单击，以显示动态内容列表。 
-   在该列表中的“当收到 HTTP 请求时”下面，选择“正文”字段。 
+   2. 在“输入消息”框中单击，以显示动态内容列表。  
+   在该列表中的“当收到 HTTP 请求时”下面，选择“正文”字段。   
 
       此步骤包含来自 HTTP 请求触发器的正文内容，并将该输出发送到 SAP 服务器。
 
@@ -142,7 +142,7 @@ ms.locfileid: "60847332"
 
       ![完成 SAP 操作](./media/logic-apps-using-sap-connector-old/SAP-app-server-complete-action.png)
 
-6. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
+6. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
 
 <a name="add-response"></a>
 
@@ -150,11 +150,11 @@ ms.locfileid: "60847332"
 
 现在，请将响应操作添加到逻辑应用的工作流，并包含来自 SAP 操作的输出。 这样，逻辑应用便可将来自 SAP 服务器的结果返回到原始请求方。 
 
-1. 在逻辑应用设计器中的 SAP 操作下，选择“新建步骤” > “添加操作”。
+1. 在逻辑应用设计器中的 SAP 操作下，选择“新建步骤” > “添加操作”。  
 
 2. 在搜索框中，输入“响应”作为筛选器。 在操作列表中选择此操作：**请求 - 响应**
 
-3. 在“正文”框中单击，以显示动态内容列表。 在该列表中的“发送到 SAP”下面，选择“正文”字段。 
+3. 在“正文”框中单击，以显示动态内容列表。  在该列表中的“发送到 SAP”下面，选择“正文”字段。   
 
    ![完成 SAP 操作](./media/logic-apps-using-sap-connector-old/select-sap-body-for-response-action.png)
 
@@ -162,9 +162,9 @@ ms.locfileid: "60847332"
 
 ## <a name="test-your-logic-app"></a>测试逻辑应用
 
-1. 如果尚未启用逻辑应用，请在逻辑应用菜单中选择“概述”。 在工具栏上选择“启用”。 
+1. 如果尚未启用逻辑应用，请在逻辑应用菜单中选择“概述”。  在工具栏上选择“启用”  。 
 
-2. 在逻辑应用设计器工具栏上，选择“运行”。 此步骤会手动启动逻辑应用。
+2. 在逻辑应用设计器工具栏上，选择“运行”  。 此步骤会手动启动逻辑应用。
 
 3. 通过将 HTTP POST 请求发送到 HTTP 请求触发器中的 URL 来触发逻辑应用，并在请求中包含消息内容。 若要发送请求，可以使用 [Postman](https://www.getpostman.com/apps) 等工具。 
 

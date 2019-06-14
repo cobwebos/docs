@@ -1,6 +1,6 @@
 ---
 title: Azure 监视的服务提供商 |Microsoft Docs
-description: Azure 监视器可以帮助托管服务提供商 (Msp)、 大型企业、 独立软件供应商 (Isv) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。
+description: Azure Monitor 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。
 services: log-analytics
 documentationcenter: ''
 author: MeirMen
@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452647"
 ---
-# <a name="azure-monitor-for-service-providers"></a>Azure 监视的服务提供商
-Azure Monitor 中的 log Analytics 工作区可以帮助托管的服务提供商 (Msp)、 大型企业、 独立软件供应商 (Isv) 和托管服务提供程序管理和监视客户本地或云基础结构中的服务器。 
+# <a name="azure-monitor-for-service-providers"></a>适用于服务提供商的 Azure Monitor
+Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。 
 
 大型企业与服务提供商有许多相似之处，特别是当有一个集中式 IT 团队负责管理许多不同业务部门的 IT 时。 为了简单起见，本文档使用术语*服务提供商*，但同样的功能也可用于企业和其他客户。
 
-为合作伙伴和服务提供商一部分的[云解决方案提供商 (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview)程序，Azure Monitor 中的 Log Analytics 是中可用的 Azure 服务之一[Azure CSP 订阅](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。 
+对于加入[云解决方案提供商 (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) 计划的合作伙伴和服务提供商，Azure Monitor 中的 Log Analytics 是 [Azure CSP 订阅](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)中可用的 Azure 服务之一。 
 
 ## <a name="architectures-for-service-providers"></a>适用于服务提供商的体系结构
 
@@ -70,11 +70,11 @@ Azure Monitor 中的 log Analytics 工作区可以帮助托管的服务提供商
 
 第三种体系结构混合使用两个选项。 它以第一种分布式体系结构为基础，其中日志对于每个客户而言位于本地，但通过某种机制创建了日志的中心存储库。 一部分日志被提取到中心位置用于报告和分析。 此部分可以是少量数据类型，也可以是每日统计数据等活动摘要。
 
-有两个选项在一个中心位置中实现日志：
+在中心位置实现日志有两种选择：
 
 1. 中心工作区：服务提供商可以在其租户中创建工作区，并使用利用[查询 API](https://dev.loganalytics.io/) 和[数据收集 API](../../azure-monitor/platform/data-collector-api.md) 的脚本从各个工作区将数据提取到此中心位置。 脚本之外的另一种选择是使用 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
 
-2. 使用 Power BI 作为中心位置：各种工作区将数据导出到该 Log Analytics 工作区之间使用的集成时，power BI 可以充当中心的位置和[Power BI](../../azure-monitor/platform/powerbi.md)。 
+2. 使用 Power BI 作为中心位置：当各个工作区利用 Log Analytics 工作区和 [Power BI](../../azure-monitor/platform/powerbi.md) 之间的集成将数据导出到 Power BI 时，Power BI 可以充当中心位置。 
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,7 +1,7 @@
 ---
-title: 语言支持的计算机视觉
+title: 语言支持 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 支持的计算机视觉功能的自然语言的列表。
+description: 计算机视觉功能支持的自然语言的列表。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 1a70d1b2ea504d0ccfba925810a2d19d0c7583cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759599"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
 
-计算机视觉的某些功能支持多种语言;此处未提及的任何功能仅支持英语。
+计算机视觉的某些功能支持多种语言；此处未提及的任何功能均只支持英语。
 
 ## <a name="text-recognition"></a>文本识别
 
-计算机视觉可以识别许多语言的文本。 具体而言， [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) API 支持多种语言，而[读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)API 并[识别文本](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)API 仅支持英语。 请参阅[打印和手写文本识别](concept-recognizing-text.md)有关此功能，并且每个 API 的优点的详细信息。
+计算机视觉可以识别许多语言的文本。 具体说来，[OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) API 支持多种语言，而[读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API 和[识别文本](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) API 仅支持英语。 请参阅[识别印刷文本和手写文本](concept-recognizing-text.md)，详细了解此功能以及每个 API 的优势。
 
-OCR 会自动检测的语言输入的材料，因此无需在 API 调用中指定的语言代码。 但是，语言代码始终返回的值作为`"language"`JSON 响应中的节点。
+OCR 会自动检测输入材料的语言，因此无需在 API 调用中指定语言代码。 但是，在 JSON 响应中，语言代码始终作为 `"language"` 节点的值返回。
 
 |语言| 语言代码 | OCR API |
 |:-----|:----:|:-----:|
@@ -58,7 +58,7 @@ OCR 会自动检测的语言输入的材料，因此无需在 API 调用中指�
 
 ## <a name="image-analysis"></a>图像分析
 
-某些操作[分析-图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 可以在其他语言中，使用指定返回的结果`language`查询参数。 无论指定何种语言，在英语中的其他操作返回的结果和其他人引发不受支持语言的异常。 使用指定的操作`visualFeatures`并`details`查询参数; 请参阅[概述](home.md)有关如何使用图像分析的所有操作的列表。
+[分析 - 图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的某些操作可以返回其他语言（使用 `language` 查询参数指定）的结果。 某些操作会返回英语结果而不管你指定何种语言，另外一些操作会针对不支持的语言引发异常。 操作是通过 `visualFeatures` 和 `details` 查询参数指定的；请参阅[概述](home.md)以获取能够通过图像分析完成的所有操作的列表。
 
 |语言 | 语言代码 | Categories | 标记 | 描述 | 成人 | 品牌 | 颜色 | 人脸 | ImageType | 对象 | 名人 | 特征点 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -70,7 +70,7 @@ OCR 会自动检测的语言输入的材料，因此无需在 API 调用中指�
 
 ## <a name="next-steps"></a>后续步骤
 
-开始使用本指南中提到的计算机视觉功能。
+本指南中提及的计算机视觉功能入门。
 
 * [分析本地图像 (REST)](./quickstarts/csharp-analyze.md)
-* [提取打印的文本 (REST)](./quickstarts/csharp-print-text.md)
+* [提取印刷体文本 (REST)](./quickstarts/csharp-print-text.md)

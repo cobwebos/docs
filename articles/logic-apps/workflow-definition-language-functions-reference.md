@@ -1,6 +1,6 @@
 ---
-title: 工作流定义语言-Azure 逻辑应用和 Microsoft Flow 中的函数的参考
-description: 为 Azure 逻辑应用和 Microsoft Flow 创建工作流定义语言使用的表达式中的函数的参考指南
+title: 工作流定义语言中的函数引用 - Azure 逻辑应用和 Microsoft Flow
+description: 使用工作流定义语言为 Azure 逻辑应用和 Microsoft Flow 创建的表达式中的函数引用指南
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,20 +10,20 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
 ms.openlocfilehash: 506076e2d9b171e1ec1ff604519cbbfbe4339e87
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66733068"
 ---
-# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure 逻辑应用和 Microsoft Flow 中的工作流定义语言的函数参考
+# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure 逻辑应用和 Microsoft Flow 中工作流定义语言的函数引用
 
-工作流中的定义[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)并[Microsoft Flow](https://docs.microsoft.com/flow/getting-started)，有些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)可能不存在的运行时操作中获取其值时您的工作流开始运行。 若要引用这些值或处理两个表达式中的值，可以使用*函数*提供[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)。 
+就 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Microsoft Flow](https://docs.microsoft.com/flow/getting-started) 中的工作流定义来说，某些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)获取的值来自运行时操作，而这些运行时操作在你的工作流开始运行时可能尚未存在。 若要在这些表达式中引用或处理这些值，可以使用[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)提供的函数  。 
 
 > [!NOTE]
-> 此参考页适用于 Azure 逻辑应用和 Microsoft Flow，但出现在 Azure 逻辑应用文档中。 虽然此页专指逻辑应用，这些函数将工作流和逻辑应用。 有关函数和 Microsoft Flow 中的表达式的详细信息，请参阅[在条件中使用表达式](https://docs.microsoft.com/flow/use-expressions-in-conditions)。
+> 此引用页面适用于 Azure 逻辑应用和 Microsoft Flow，但会显示在 Azure 逻辑应用文档中。 虽然此页面专门引用逻辑应用，但这些函数适用于流和逻辑应用。 有关 Microsoft Flow 中函数和表达式的详细信息，请参阅[在条件中使用表达式](https://docs.microsoft.com/flow/use-expressions-in-conditions)。
 
-例如，可以通过使用数学函数，如计算值[add （） 函数](../logic-apps/workflow-definition-language-functions-reference.md#add)： 用户需要从整数或浮点数的总和。 下面是可以使用函数执行的其他几个示例任务：
+例如，在需要根据整数或浮点数求和时，可以使用数学函数（例如 [add() 函数](../logic-apps/workflow-definition-language-functions-reference.md#add)）来计算值。 下面是可以使用函数执行的几个其他的示例任务：
 
 | 任务 | 函数语法 | 结果 |
 | ---- | --------------- | ------ |
@@ -31,7 +31,7 @@ ms.locfileid: "66733068"
 | 返回全局唯一标识符 (GUID)。 | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
 ||||
 
-若要查找的函数[基于其常规用途](#ordered-by-purpose)，查看下面的表。 若要了解每个函数的详细信息，请参阅[按字母顺序排序的列表](#alphabetical-list)。
+若要[基于函数的常规用途](#ordered-by-purpose)查找函数，请查看以下各表。 若要了解每个函数的详细信息，请参阅[按字母顺序排序的列表](#alphabetical-list)。
 
 > [!NOTE]
 > 在参数定义的语法中，参数后显示的问号 (?) 表示参数是可选的。
@@ -143,7 +143,7 @@ ms.locfileid: "66733068"
 
 若要更改值的类型或格式，可以使用这些转换函数。
 例如，可将值从布尔值更改为整数。
-有关逻辑应用如何处理内容类型在转换过程的详细信息，请参阅[处理内容类型](../logic-apps/logic-apps-content-type.md)。
+若要详细了解逻辑应用在转换期间如何处理内容类型，请参阅[处理内容类型](../logic-apps/logic-apps-content-type.md)。
 有关每个函数的完整参考，请参阅[按字母顺序排序的列表](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)。
 
 | 转换函数 | 任务 |
@@ -246,11 +246,11 @@ ms.locfileid: "66733068"
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | 创建一个数组，其中包含与表单数据或表单编码操作输出中某个键名匹配的值。   |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | 返回与操作的表单数据或表单编码输出中的键名称匹配的单个值。   |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | 位于针对数组的重复操作中时，返回在操作的当前迭代过程中数组中的当前项。 |
-| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | 在 Foreach 内时或 Until 循环，从指定的循环中返回的当前项。|
-| [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Until 循环内时返回当前迭代的索引值。 您可以使用此函数内部嵌套 Until 循环。 |
+| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | 位于 Foreach 或 Until 循环中时，返回指定循环中的当前项。|
+| [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | 位于 Until 循环中时，返回当前迭代的索引值。 可以在嵌套式的 Until 循环中使用该函数。 |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | 返回调用某个触发器或操作的“回调 URL”。 |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 返回具有多个部分的操作输出中某个特定部分的正文。 |
-| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中所述的参数的值。 |
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中描述的参数的值。 |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的输出。 另请参阅 [triggerOutputs](#triggerOutputs) 和 [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)。 |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 返回触发器在运行时的 `body` 输出。 请参阅 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | 返回与表单数据或表单编码触发器输出中某个键名匹配的单个值。   |
@@ -314,7 +314,7 @@ action()
 action().outputs.body.<property>
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*property*> | 否 | String | 需要获取其值的操作对象属性的名称：**name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId** 和 **clientTrackingId**。 在 Azure 门户中，可以通过查看特定运行历史记录的详细信息来查找这些属性。 有关详细信息，请参阅 [REST API - 工作流运行操作](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)。 |
 |||||
@@ -436,7 +436,7 @@ actionOutputs('Get_user')
 }
 ```
 
-## <a name="all-functions---alphabaetical-list"></a>所有函数-alphabaetical 列表
+## <a name="all-functions---alphabaetical-list"></a>所有函数 - 字母列表
 
 <a name="actions"></a>
 
@@ -455,7 +455,7 @@ actions('<actionName>')
 actions('<actionName>').outputs.body.<property>
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | String | 需要获取其输出的操作对象的名称  |
 | <*property*> | 否 | String | 需要获取其值的操作对象属性的名称：**name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId** 和 **clientTrackingId**。 在 Azure 门户中，可以通过查看特定运行历史记录的详细信息来查找这些属性。 有关详细信息，请参阅 [REST API - 工作流运行操作](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)。 |
@@ -558,7 +558,7 @@ addDays('2018-03-15T00:00:00Z', -5)
 addHours('<timestamp>', <hours>, '<format>'?)
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 | <*hours*> | 是 | Integer | 要加上的正负小时数 |
@@ -600,7 +600,7 @@ addHours('2018-03-15T15:00:00Z', -5)
 addMinutes('<timestamp>', <minutes>, '<format>'?)
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 | <*minutes*> | 是 | Integer | 要加上的正负分钟数 |
@@ -813,7 +813,7 @@ and(equals(1, 2), equals(1, 3))
 array('<value>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 用于创建数组的字符串 |
 |||||
@@ -907,7 +907,7 @@ base64ToBinary('aGVsbG8=')
 base64ToString('<value>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 要解码的 base64 编码字符串 |
 |||||
@@ -937,7 +937,7 @@ base64ToString('aGVsbG8=')
 binary('<value>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 要转换的字符串 |
 |||||
@@ -1016,7 +1016,7 @@ body('Get_user')
 bool(<value>)
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 任意 | 要转换的值 |
 |||||
@@ -1087,7 +1087,7 @@ coalesce(null, null, null)
 concat('<text1>', '<text2>', ...)
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*text1*>, <*text2*>, ... | 是 | String | 至少两个要组合的字符串 |
 |||||
@@ -1126,7 +1126,7 @@ contains([<collection>], '<value>')
 * 数组  ，在其中查找值 
 * 字典  ，在其中查找键 
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串、数组或字典 | 要检查的集合 |
 | <*value*> | 是 | 分别为字符串、数组或字典 | 要查找的项 |
@@ -1163,7 +1163,7 @@ contains('hello world', 'universe')
 convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 | <*destinationTimeZone*> | 是 | String | 目标时区的名称。 有关详细信息，请参阅[时区 ID](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))。 |
@@ -1205,7 +1205,7 @@ convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 | <*sourceTimeZone*> | 是 | String | 源时区的名称。 有关详细信息，请参阅[时区 ID](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))。 |
@@ -1291,7 +1291,7 @@ convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 createArray('<object1>', '<object2>', ...)
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*object1*>, <*object2*>, ... | 是 | 任意，但不能混用 | 至少两个用于创建数组的项 |
 |||||
@@ -1321,7 +1321,7 @@ createArray('h', 'e', 'l', 'l', 'o')
 dataUri('<value>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 要转换的字符串 |
 |||||
@@ -1388,7 +1388,7 @@ dataUriToBinary('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 dataUriToString('<value>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 要转换的数据 URI |
 |||||
@@ -1418,7 +1418,7 @@ dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 dayOfMonth('<timestamp>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 |||||
@@ -1674,7 +1674,7 @@ empty('<collection>')
 empty([<collection>])
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串、数组或对象 | 要检查的集合 |
 |||||
@@ -1787,7 +1787,7 @@ first('<collection>')
 first([<collection>])
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串或数组 | 要在其中查找第一项的集合 |
 |||||
@@ -1816,13 +1816,13 @@ first(createArray(0, 1, 2))
 ### <a name="float"></a>float
 
 将浮点数的字符串版本转换为实际的浮点数。
-仅当将自定义参数传递给应用，例如，逻辑应用或流时，可以使用此函数。
+仅当将自定义参数传递给应用（例如，逻辑应用或流）时，才使用此函数。
 
 ```
 float('<value>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 包含要转换的有效浮点数的字符串 |
 |||||
@@ -1883,7 +1883,7 @@ formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 formDataMultiValues('<actionName>', '<key>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | String | 其输出中具有所需键值的操作 |
 | <*key*> | 是 | String | 需要获取其值的键的名称 |
@@ -1915,7 +1915,7 @@ formDataMultiValues('Send_an_email', 'Subject')
 formDataValue('<actionName>', '<key>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | String | 其输出中具有所需键值的操作 |
 | <*key*> | 是 | String | 需要获取其值的键的名称 |
@@ -2036,7 +2036,7 @@ greater(<value>, <compareTo>)
 greater('<value>', '<compareTo>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 整数、浮点数或字符串 | 要检查是否大于第二个值的第一个值。 |
 | <*compareTo*> | 是 | 分别为整数、浮点数或字符串 | 比较值 |
@@ -2114,7 +2114,7 @@ guid()
 guid('<format>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*format*> | 否 | String | 表示返回的 GUID 的单一[格式说明符](https://msdn.microsoft.com/library/97af8hh4)。 默认情况下，格式为“D”，但可以使用“N”、“D”、“B”、“P”或“X”。 |
 |||||
@@ -2208,7 +2208,7 @@ indexOf('hello world', 'world')
 int('<value>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 要转换的字符串 |
 |||||
@@ -2285,7 +2285,7 @@ items('myForEachLoopName')
 
 ### <a name="iterationindexes"></a>iterationIndexes
 
-返回当前迭代 Until 循环内的索引值。 您可以使用此函数内部嵌套 Until 循环。 
+位于 Until 循环中时，返回当前迭代的索引值。 可以在嵌套式的 Until 循环中使用该函数。 
 
 ```
 iterationIndexes('<loopName>')
@@ -2298,12 +2298,12 @@ iterationIndexes('<loopName>')
 
 | 返回值 | Type | 描述 | 
 | ------------ | ---- | ----------- | 
-| <*index*> | Integer | 当前迭代中指定的索引值 Until 循环 | 
+| <*index*> | Integer | 指定的 Until 循环中当前迭代的索引值 | 
 |||| 
 
 *示例* 
 
-此示例创建一个计数器变量并增加该变量由 Until 循环的每个迭代期间直到计数器值达到五个。 此示例还创建一个变量，用于跟踪每次迭代的当前索引。 Until 循环，在每次迭代过程中的示例递增的计数器，然后将计数器值分配给当前的索引值，然后递增的计数器。 在任何时候，您可以通过检索当前的索引值来确定当前的迭代数。
+此示例创建一个计数器变量，在 Until 循环中每迭代一次该变量就会递增 1，直至计数器值达到 5。 此示例还创建一个变量，用于跟踪每次迭代的当前索引。 在 Until 循环中，在每次迭代时，此示例会递增计数器，然后将计数器值指定给当前索引值，然后再递增计数器。 任何时候都可以通过检索当前索引值来确定当前迭代数。
 
 ```
 {
@@ -2381,7 +2381,7 @@ iterationIndexes('<loopName>')
 json('<value>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 字符串或 XML | 要转换的字符串或 XML |
 |||||
@@ -2453,7 +2453,7 @@ intersection([<collection1>], [<collection2>], ...)
 intersection('<collection1>', '<collection2>', ...)
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ... | 是 | 数组或对象，但不能为两者 | 仅需从中获取共有项的各个集合  |
 |||||
@@ -2615,7 +2615,7 @@ less(<value>, <compareTo>)
 less('<value>', '<compareTo>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 整数、浮点数或字符串 | 要检查是否小于第二个值的第一个值 |
 | <*compareTo*> | 是 | 分别为整数、浮点数或字符串 | 比较项 |
@@ -2652,7 +2652,7 @@ lessOrEquals(<value>, <compareTo>)
 lessOrEquals('<value>', '<compareTo>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 整数、浮点数或字符串 | 要检查是否小于或等于第二个值的第一个值 |
 | <*compareTo*> | 是 | 分别为整数、浮点数或字符串 | 比较项 |
@@ -2710,7 +2710,7 @@ max(<number1>, <number2>, ...)
 max([<number1>, <number2>, ...])
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | 是 | 整数、浮点数或两者 | 需要从中获取最大值的数字集 |
 | [<*number1*>, <*number2*>, ...] | 是 | 数组 - 整数、浮点数或两者 | 需要从中获取最大值的数字数组 |
@@ -2776,7 +2776,7 @@ min(createArray(1, 2, 3))
 mod(<dividend>, <divisor>)
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*dividend*> | 是 | 整数或浮点数 | 要用作 *divisor* 的被除数的数字 |
 | <*divisor*> | 是 | 整数或浮点数 | 用作 *dividend* 的除数的数字，但不能为 0。 |
@@ -2842,7 +2842,7 @@ mul(1.5, 2)
 multipartBody('<actionName>', <index>)
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | 是 | String | 具有多部分输出的操作的名称 |
 | <*index*> | 是 | Integer | 所需部分的索引值 |
@@ -2955,7 +2955,7 @@ or(equals(1, 2), equals(1, 3))
 
 ### <a name="parameters"></a>parameters
 
-返回工作流定义中所述的参数的值。
+返回工作流定义中描述的参数的值。
 
 ```
 parameters('<parameterName>')
@@ -3032,7 +3032,7 @@ range(<startIndex>, <count>)
 
 | 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | 是 | Integer | 一个整数值，作为第一项开始数组 |
+| <*startIndex*> | 是 | Integer | 作为数组开头的第一项的整数值 |
 | <*count*> | 是 | Integer | 数组中的整数个数 |
 |||||
 
@@ -3061,7 +3061,7 @@ range(1, 4)
 replace('<text>', '<oldText>', '<newText>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | String | 包含要替换的子字符串的字符串 |
 | <*oldText*> | 是 | String | 要替换的子字符串 |
@@ -3093,7 +3093,7 @@ replace('the old string', 'old', 'new')
 removeProperty(<object>, '<property>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | Object | 要从中删除属性的 JSON 对象 |
 | <*property*> | 是 | String | 要删除的属性的名称 |
@@ -3154,7 +3154,7 @@ setProperty(json('customerProfile'), 'accountNumber', guid())
 skip([<collection>], <count>)
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | Array | 要删除其项的集合 |
 | <*count*> | 是 | Integer | 要从开头删除的项数（一个正整数） |
@@ -3179,7 +3179,7 @@ skip(createArray(0, 1, 2, 3), 1)
 
 ### <a name="split"></a>split
 
-返回一个数组，包含子字符串，以逗号分隔，基于原始字符串中指定的分隔符字符。
+根据原始字符串中指定的分隔符字符，返回一个包含子字符串（以逗号分隔）的数组。
 
 ```
 split('<text>', '<delimiter>')
@@ -3247,7 +3247,7 @@ startOfDay('2018-03-15T13:30:30Z')
 startOfHour('<timestamp>', '<format>'?)
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
@@ -3278,7 +3278,7 @@ startOfHour('2018-03-15T13:30:30Z')
 startOfMonth('<timestamp>', '<format>'?)
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
@@ -3311,7 +3311,7 @@ startOfMonth('2018-03-15T13:30:30Z')
 startsWith('<text>', '<searchText>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | String | 要检查的字符串 |
 | <*searchText*> | 是 | String | 要查找的起始字符串 |
@@ -3344,7 +3344,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-### <a name="string"></a>string
+### <a name="string"></a>字符串
 
 返回值的字符串版本。
 
@@ -3352,7 +3352,7 @@ startsWith('hello world', 'greetings')
 string(<value>)
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | 任意 | 要转换的值 |
 |||||
@@ -3392,7 +3392,7 @@ string( { "name": "Sophie Owen" } )
 sub(<minuend>, <subtrahend>)
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*minuend*> | 是 | 整数或浮点数 | 要从中减去 *subtrahend* 的数字 |
 | <*subtrahend*> | 是 | 整数或浮点数 | 要从 *minuend* 中减去的数字 |
@@ -3427,7 +3427,7 @@ substring('<text>', <startIndex>, <length>)
 | 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | String | 所需字符所在的字符串 |
-| <*startIndex*> | 是 | Integer | 等于或大于 0，则你想要使用作为起始位置或索引值的正数 |
+| <*startIndex*> | 是 | Integer | 一个等于或大于 0 的正数，需将其用作起始位置或索引值 |
 | <*length*> | 是 | Integer | 希望子字符串中具有的字符数（正数） |
 |||||
 
@@ -3457,7 +3457,7 @@ substring('hello world', 6, 5)
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 | <*interval*> | 是 | Integer | 要减去的指定时间单位数 |
@@ -3501,7 +3501,7 @@ take('<collection>', <count>)
 take([<collection>], <count>)
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | 字符串或数组 | 所需项所在的集合 |
 | <*count*> | 是 | Integer | 从开头算起所需的项数（一个正整数） |
@@ -3656,7 +3656,7 @@ triggerBody()
 triggerFormDataMultiValues('<key>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*key*> | 是 | String | 需要获取其值的键的名称 |
 |||||
@@ -3717,7 +3717,7 @@ triggerFormDataValue('feedUrl')
 triggerMultipartBody(<index>)
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*index*> | 是 | Integer | 所需部分的索引值 |
 |||||
@@ -3754,7 +3754,7 @@ triggerOutputs()
 trim('<text>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | 是 | String | 包含要删除的前导和尾随空格的字符串 |
 |||||
@@ -3818,7 +3818,7 @@ union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 uriComponent('<value>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 要转换为 URI 编码格式的字符串 |
 |||||
@@ -3883,7 +3883,7 @@ uriComponentToBinary('http%3A%2F%2Fcontoso.com')
 uriComponentToString('<value>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 要解码的 URI 编码字符串 |
 |||||
@@ -3913,7 +3913,7 @@ uriComponentToString('http%3A%2F%2Fcontoso.com')
 uriHost('<uri>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | 是 | String | 需要获取其 `host` 值的 URI |
 |||||
@@ -3973,7 +3973,7 @@ uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
 uriPathAndQuery('<uri>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | 是 | String | 需要获取其 `path` 和 `query` 值的 URI |
 |||||
@@ -4003,7 +4003,7 @@ uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 uriPort('<uri>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | 是 | String | 需要获取其 `port` 值的 URI |
 |||||
@@ -4063,7 +4063,7 @@ uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 uriScheme('<uri>')
 ```
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | 是 | String | 需要获取其 `scheme` 值的 URI |
 |||||
@@ -4169,7 +4169,7 @@ variables('numItems')
 workflow().<property>
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*property*> | 否 | String | 需要获取其值的工作流属性的名称 <p>工作流对象应具有以下属性：**name**、**type**、**id**、**location** 和 **run**。 **run** 属性值也是一个对象，它具有以下属性：**name**、**type** 和 **id**。 |
 |||||
@@ -4192,7 +4192,7 @@ workflow().run.name
 xml('<value>')
 ```
 
-| 参数 | 必选 | Type | 描述 |
+| 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | 是 | String | 要转换的包含 JSON 对象的字符串 <p>该 JSON 对象必须只有一个根属性，该属性不能是数组。 <br>请使用反斜杠字符 (\\) 作为双引号 (") 的转义字符。 |
 |||||

@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 37d4c295fe8a89a8b32364f42e8fb4c5a4caf777
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66120403"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>通过 Azure 门户安装更新
 
-1. 转到 StorSimple 设备管理器并选择“设备”。 从连接到服务的设备列表中，选择并单击要更新的设备。 
+1. 转到 StorSimple 设备管理器并选择“设备”。  从连接到服务的设备列表中，选择并单击要更新的设备。 
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate1m.png) 
 
-2. 在“设置”边栏选项卡中，单击“设备更新”。 
+2. 在“设置”边栏选项卡中，单击“设备更新”。   
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate2m.png)  
 
-3. 如果有可用的软件更新，会显示一条消息。 若要检查更新，还可以单击“扫描”。
+3. 如果有可用的软件更新，会显示一条消息。 若要检查更新，还可以单击“扫描”。 
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate3m.png)
 
@@ -29,11 +29,11 @@ ms.locfileid: "66120403"
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate5m.png)
 
-4. 在扫描更新后，单击“下载更新”。 
+4. 在扫描更新后，单击“下载更新”。  
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
 
-5. 在“新的更新”边栏选项卡中，复查在下载更新后确认安装所需的信息。 单击“确定”。
+5. 在“新的更新”边栏选项卡中，复查在下载更新后确认安装所需的信息。  单击“确定”。 
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
 
@@ -41,11 +41,11 @@ ms.locfileid: "66120403"
 
      ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate8m.png)
 
-5. 在“设备更新”边栏选项卡中，单击“安装”。
+5. 在“设备更新”边栏选项卡中，单击“安装”。  
 
      ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate11m.png)   
 
-6. 在“新的更新”边栏选项卡中，会警告该更新会造成中断。 因为虚拟阵列是单节点设备，所以设备在更新后会重新启动。 这会中断正在进行的任何 IO。 单击“确定”以安装更新。 
+6. 在“新的更新”边栏选项卡中，会警告该更新会造成中断。  因为虚拟阵列是单节点设备，所以设备在更新后会重新启动。 这会中断正在进行的任何 IO。 单击“确定”以安装更新。  
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate12m.png) 
 
@@ -53,11 +53,11 @@ ms.locfileid: "66120403"
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate13m.png)
 
-8.  在安装作业成功完成后，单击“设备更新”边栏选项卡中的“查看作业”链接来监视安装。 
+8.  在安装作业成功完成后，单击“设备更新”边栏选项卡中的“查看作业”链接来监视安装。   
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate15m.png)
 
-    这会转到“安装更新”边栏选项卡。 可以在此处查看关于该作业的详细信息。
+    这会转到“安装更新”边栏选项卡。  可以在此处查看关于该作业的详细信息。
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 

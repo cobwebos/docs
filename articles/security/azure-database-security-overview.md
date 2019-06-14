@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
 ms.openlocfilehash: 7e0e93c82279ec1a4fbecbbf27c7a1866286b2f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587567"
 ---
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
@@ -160,7 +160,7 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 
 ## <a name="proactive-monitoring"></a>主动监视
 
-SQL 数据库可提供“审核”和“威胁检测”功能，有助于保护数据。
+SQL 数据库可提供“审核”和“威胁检测”功能，有助于保护数据   。
 
 ### <a name="auditing"></a>审核
 

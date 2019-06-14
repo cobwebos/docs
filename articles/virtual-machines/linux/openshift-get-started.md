@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
 ms.openlocfilehash: d9e3aa3dae81166ef91f57ea6a95087a952001ed
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65550988"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
@@ -32,7 +32,7 @@ OpenShift 包括用于容器业务流程和管理的 Kubernetes 容器。 它增
 - 轻松部署和缩放。
 - 针对团队和应用程序的长期生命期维护。
 
-没有可用的 OpenShift 的多个版本。  这些版本中，只有两个是现在可用于在 Azure 中部署的客户：OpenShift 容器平台和 OKD (以前称为 OpenShift Origin)。
+有多个 OpenShift 版本可用。  在这些版本中，目前只有以下两个可供客户部署到 Azure 中：OpenShift 容器平台和 OKD（以前的 OpenShift Origin）。
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -42,7 +42,7 @@ Microsoft Azure Red Hat OpenShift 是一种完全托管在 Azure 中运行的 Op
 
 容器平台 是 Red Hat 支持的企业就绪[商业版本](https://www.openshift.com)。 使用此版本时，客户需购买 OpenShift 容器平台的必要权利，并负责安装和管理整个基础结构。
 
-由于客户"拥有"整个平台，他们可以在本地数据中心，或在公有云 （例如 Azure) 中安装它。
+由于客户“拥有”整个平台，他们可在本地数据中心或公有云（例如 Azure）位置中进行安装。
 
 ## <a name="okd"></a>OKD
 

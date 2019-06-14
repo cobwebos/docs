@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
 ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60636793"
 ---
 # <a name="how-caching-works"></a>缓存工作原理
@@ -131,7 +131,7 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 
 **优先处理源**：指定是否优先处理支持的缓存指令标头（如果它们存在于源服务器的 HTTP 响应中）。
 
-**CDN 缓存持续时间**：指定在 Azure CDN 上可缓存资源的时间。 然而，如果“优先处理源”为“是”，并且源服务器的 HTTP 响应包括缓存指令标头 `Expires` 或 `Cache-Control: max-age`，则 Azure CDN 将改用由标头指定的持续时间值。 
+**CDN 缓存持续时间**：指定在 Azure CDN 上可缓存资源的时间。 然而，如果“优先处理源”  为“是”，并且源服务器的 HTTP 响应包括缓存指令标头 `Expires` 或 `Cache-Control: max-age`，则 Azure CDN 将改用由标头指定的持续时间值。 
 
 ## <a name="next-steps"></a>后续步骤
 

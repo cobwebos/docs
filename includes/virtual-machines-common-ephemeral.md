@@ -9,10 +9,10 @@ ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66391447"
 ---
 临时 OS 磁盘是本地的虚拟机 (VM) 存储上创建并不会保留到远程 Azure 存储。 临时 OS 磁盘适用于无状态工作负载，其中应用程序容错的单个 VM 失败，但更为关注大规模部署所需的时间或时间进行映像重置单个 VM 实例。 也很适合使用经典部署模型转移到 Resource Manager 部署模型部署的应用程序。 使用 Ephemeral OS 磁盘，你会发现对 OS 磁盘的读/写延迟较低，并且 VM 重置映像速度较快。 此外，临时 OS 磁盘是免费的则会产生的 OS 磁盘存储免费。 

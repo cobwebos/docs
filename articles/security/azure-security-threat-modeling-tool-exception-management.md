@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 7d881454eb857080f1178f228a1f7bec36cae178
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610714"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 |缓解措施 
@@ -32,8 +32,8 @@ ms.locfileid: "60610714"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
@@ -56,8 +56,8 @@ ms.locfileid: "60610714"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 泛型、NET Framework 3 |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
@@ -67,8 +67,8 @@ ms.locfileid: "60610714"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC 5、MVC 6 |
 | **属性**              | 不适用  |
 | **参考**              | [ASP.NET Web API 中的异常处理](https://www.asp.net/web-api/overview/error-handling/exception-handling)、[ASP.NET Web API 中的模型验证](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
@@ -185,8 +185,8 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -196,8 +196,8 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [编辑 ASP.NET 错误页设置对话框](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
@@ -207,7 +207,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -218,8 +218,8 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [安全失败](https://www.owasp.org/index.php/Fail_securely) |

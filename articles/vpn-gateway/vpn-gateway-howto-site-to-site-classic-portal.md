@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: a2d714cae187e4ebcf2eefd37c61484dc48495e0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105938"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
@@ -72,19 +72,19 @@ ms.locfileid: "62105938"
 ### <a name="to-create-a-virtual-network"></a>创建虚拟网络
 
 1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)，并在必要时用 Azure 帐户登录。
-2. 单击“+”。 在“在市场中搜索”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”页。
+2. 单击“+”。  在“在市场中搜索”  字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”  ，单击打开“虚拟网络”  页。
 
    ![搜索虚拟网络页](./media/vpn-gateway-howto-site-to-site-classic-portal/newvnetportal700.png)
-3. 从靠近“虚拟网络”页底部的“选择部署模型”下拉列表中，选择“经典”，然后单击“创建”。
+3. 从靠近“虚拟网络”页底部的“选择部署模型”  下拉列表中，选择“经典”  ，然后单击“创建”  。
 
    ![选择部署模型](./media/vpn-gateway-howto-site-to-site-classic-portal/selectmodel.png)
-4. 在“创建虚拟网络(经典)”页上，配置 VNet 设置。 在此页上，添加第一个地址空间和单个子网地址范围。 完成创建 VNet 之后，可以返回并添加其他子网和地址空间。
+4. 在“创建虚拟网络(经典)”  页上，配置 VNet 设置。 在此页上，添加第一个地址空间和单个子网地址范围。 完成创建 VNet 之后，可以返回并添加其他子网和地址空间。
 
    ![创建虚拟网络页](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "创建虚拟网络页")
 5. 验证“订阅”  是否正确。 可以使用下拉列表更改订阅。
-6. 单击“资源组”，然后选择现有资源组，或通过键入名称创建新资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
+6. 单击“资源组”  ，然后选择现有资源组，或通过键入名称创建新资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
 7. 接下来，选择 VNet 的“位置”  设置。 该位置确定要部署到此 VNet 的资源所在的位置。
-8. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”。 单击“创建”以创建 VNet。
+8. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”  。 单击“创建”以创建 VNet。 
 
    ![固定到仪表板](./media/vpn-gateway-howto-site-to-site-classic-portal/pintodashboard150.png "固定到仪表板")
 9. 单击“创建”后，仪表板上会出现一个磁贴，反映 VNet 的进度。 创建 VNet 时，该磁贴会更改。
@@ -96,8 +96,8 @@ ms.locfileid: "62105938"
 创建虚拟网络后，即可添加其他地址空间。 进行 S2S 配置时，不需添加额外的地址空间，但如果需要多个地址空间，请执行以下步骤：
 
 1. 在门户中找到虚拟网络。
-2. 在虚拟网络页的“设置”部分，单击“地址空间”。
-3. 在“地址空间”页上单击“+添加”，并输入其他地址空间。
+2. 在虚拟网络页的“设置”部分，单击“地址空间”。  
+3. 在“地址空间”页上单击“+添加”，并输入其他地址空间。 
 
 ## <a name="dns"></a>3.指定 DNS 服务器
 
@@ -106,22 +106,22 @@ ms.locfileid: "62105938"
 创建虚拟网络后，可以添加 DNS 服务器的 IP 地址来处理名称解析。 打开虚拟网络的设置，单击 DNS 服务器，并添加要用于名称解析的 DNS 服务器的 IP 地址。
 
 1. 在门户中找到虚拟网络。
-2. 在虚拟网络页的“设置”部分，单击“DNS 服务器”。
+2. 在虚拟网络页的“设置”部分，单击“DNS 服务器”。  
 3. 添加 DNS 服务器。
-4. 若要保存设置，请单击页面顶部的“保存”。
+4. 若要保存设置，请单击页面顶部的“保存”。 
 
 ## <a name="localsite"></a>4.配置本地站点
 
 本地站点通常指本地位置。 它包含 VPN 设备的 IP 地址和地址范围，需要创建到该设备的连接，并且需要通过 VPN 网关将地址范围路由到该设备。
 
 1. 在门户中，导航到要为其创建网关的虚拟网络。
-2. 在虚拟网络页的“概览”页的“VPN 连接”部分，单击“网关”打开“新建 VPN 连接”页。
+2. 在虚拟网络页的“概览”  页的“VPN 连接”部分，单击“网关”打开“新建 VPN 连接”页   。
 
    ![单击此项配置网关设置](./media/vpn-gateway-howto-site-to-site-classic-portal/beforegw125.png "单击此项配置网关设置")
-3. 在“新建 VPN 连接”页上，选择“站点到站点”。
-4. 单击“本地站点 - 配置所需的设置”打开“本地站点”页。 配置设置，并单击“确定”保存设置。
+3. 在“新建 VPN 连接”页上，选择“站点到站点”。  
+4. 单击“本地站点 - 配置所需的设置”  打开“本地站点”  页。 配置设置，并单击“确定”  保存设置。
    - **名称：** 为本地站点创建一个名称，方便进行识别。
-   - **VPN 网关 IP 地址：** 这是本地网络的 VPN 设备的公共 IP 地址。 VPN 设备需要 IPv4 公共 IP 地址。 为要连接到的 VPN 设备指定一个有效的公共 IP 地址。 它必须是可由 Azure 访问。 如果不知道 VPN 设备的 IP 地址，则始终可以先添加一个占位符值（只要其格式是有效的公共 IP 地址），等到以后再更改。
+   - **VPN 网关 IP 地址：** 这是本地网络的 VPN 设备的公共 IP 地址。 VPN 设备需要 IPv4 公共 IP 地址。 为要连接到的 VPN 设备指定一个有效的公共 IP 地址。 它必须可由 Azure 访问。 如果不知道 VPN 设备的 IP 地址，则始终可以先添加一个占位符值（只要其格式是有效的公共 IP 地址），等到以后再更改。
    - **客户端地址空间：** 列出要通过此网关路由到本地网络的 IP 地址范围。 可以添加多个地址空间范围。 请确保在此处指定的范围与虚拟网络连接到的其他网络的范围不重叠，也与虚拟网络本身的地址范围不重叠。
 
    ![本地站点](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "配置本地站点")
@@ -130,25 +130,25 @@ ms.locfileid: "62105938"
 
 必须为 VPN 网关创建一个网关子网。 网关子网包含 VPN 网关服务使用的 IP 地址。
 
-1. 在“新建 VPN 连接”页上，选中“立即创建网关”复选框。 此时会显示“可选网关配置”页。 如果不选中该复选框，则看不到配置网关子网的页面。
+1. 在“新建 VPN 连接”  页上，选中“立即创建网关”复选框  。 此时会显示“可选网关配置”页。 如果不选中该复选框，则看不到配置网关子网的页面。
 
    ![网关配置 - 子网、大小、路由类型](./media/vpn-gateway-howto-site-to-site-classic-portal/optional.png "网关配置 - 子网、大小、路由类型")
-2. 若要打开“网关配置”页，请单击“可选网关配置 - 子网、大小和路由类型”。
-3. 在“网关配置”页上，单击“子网 - 配置所需的设置”打开“添加子网”页。
+2. 若要打开“网关配置”页，请单击“可选网关配置 - 子网、大小和路由类型”。  
+3. 在“网关配置”页上，单击“子网 - 配置所需的设置”打开“添加子网”页。   
 
    ![网关配置 - 网关子网](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "网关配置 - 网关子网")
-4. 在“添加子网”页上，添加网关子网。 指定的网关子网的大小取决于要创建的 VPN 网关配置。 尽管网关子网最小可以创建为 /29，但建议使用 /27 或 /28。 这样可以创建较大的子网，包含的地址更多。 使用更大的网关子网可以有足够的 IP 地址来应对未来可能会有的配置。
+4. 在“添加子网”  页上，添加网关子网。 指定的网关子网的大小取决于要创建的 VPN 网关配置。 尽管网关子网最小可以创建为 /29，但建议使用 /27 或 /28。 这样可以创建较大的子网，包含的地址更多。 使用更大的网关子网可以有足够的 IP 地址来应对未来可能会有的配置。
 
    ![添加网关子网](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "添加网关子网")
 
 ## <a name="sku"></a>6.指定 SKU 和 VPN 类型
 
-1. 选择网关“大小”。 这是用于创建虚拟网关的网关 SKU。 在门户中，“默认 SKU”为“基本”。 经典 VPN 使用老版（旧版）网关 SKU。 有关旧版网关 SKU 的详细信息，请参阅[使用虚拟网关 SKU（老版 SKU）](vpn-gateway-about-skus-legacy.md)。
+1. 选择网关“大小”  。 这是用于创建虚拟网关的网关 SKU。 在门户中，“默认 SKU”为“基本”  。 经典 VPN 使用老版（旧版）网关 SKU。 有关旧版网关 SKU 的详细信息，请参阅[使用虚拟网关 SKU（老版 SKU）](vpn-gateway-about-skus-legacy.md)。
 
    ![选择 SKU 和 VPN 类型](./media/vpn-gateway-howto-site-to-site-classic-portal/sku.png "选择 SKU 和 VPN 类型")
-2. 选择网关的“路由类型”。 这也称为 VPN 类型。 选择正确的网关类型很重要，因为无法将网关从一个类型转换为另一个类型。 VPN 设备必须兼容所选路由类型。 有关 VPN 类型的详细信息，请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。 可能会有文章引用“RouteBased”和“PolicyBased”VPN 类型。 “动态”对应于“RouteBased”，“静态”对应于“PolicyBased”。
-3. 单击“确定”保存设置。
-4. 在“新建 VPN 连接”页中，单击底部的“确定”开始创建虚拟网关。 创建虚拟网关可能需要长达 45 分钟的时间，具体取决于所选 SKU。
+2. 选择网关的“路由类型”  。 这也称为 VPN 类型。 选择正确的网关类型很重要，因为无法将网关从一个类型转换为另一个类型。 VPN 设备必须兼容所选路由类型。 有关 VPN 类型的详细信息，请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。 可能会有文章引用“RouteBased”和“PolicyBased”VPN 类型。 “动态”对应于“RouteBased”，“静态”对应于“PolicyBased”。
+3. 单击“确定”保存设置。 
+4. 在“新建 VPN 连接”  页中，单击底部的“确定”  开始创建虚拟网关。 创建虚拟网关可能需要长达 45 分钟的时间，具体取决于所选 SKU。
 
 ## <a name="vpndevice"></a>7.配置 VPN 设备
 
@@ -207,7 +207,7 @@ ms.locfileid: "62105938"
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
-如果无法进行连接，请参阅左窗格目录的“故障排除”部分。
+如果无法进行连接，请参阅左窗格目录的“故障排除”  部分。
 
 ## <a name="reset"></a>如何重置 VPN 网关
 

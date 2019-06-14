@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
 ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424631"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
@@ -107,7 +107,7 @@ applicationsScoping //this brings data from Application Insights resources
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | 位置 |
 | AvailabilityTestId | id |
-| AvailabilityTestName | 名称 |
+| AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
 | 浏览器 | client_browser |
 | 城市 | client_city |
@@ -116,7 +116,7 @@ applicationsScoping //this brings data from Application Insights resources
 | 国家/地区 | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | 名称 | 
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_type | 
 | ExceptionCount | itemCount | 
@@ -128,12 +128,12 @@ applicationsScoping //this brings data from Application Insights resources
 | 操作系统 | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | 名称 | 
+| PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 
-| RequestName | 名称 | 
+| RequestName | name | 
 | RequestSuccess | 成功 | 
 | ResponseCode | resultCode | 
 | 角色 | cloud_RoleName |
@@ -141,7 +141,7 @@ applicationsScoping //this brings data from Application Insights resources
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryType | type |
-| 代码 | _url |
+| URL | _url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>后续步骤

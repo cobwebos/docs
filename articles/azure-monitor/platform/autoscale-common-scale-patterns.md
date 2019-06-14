@@ -9,10 +9,10 @@ ms.date: 05/07/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 8356a8c8c31a043197485b4913b4a67d7d719778
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60534184"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常见自动缩放模式的概述
@@ -54,7 +54,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ## <a name="scale-based-on-custom-metric"></a>基于自定义指标进行缩放
 
-你具有 web 前端和后端进行通信的 API 层。
+有一个 Web 前端和一个可与后端通信的 API 层。
 
 - 想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结帐进程）
 

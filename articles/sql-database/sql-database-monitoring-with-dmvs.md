@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 371632a28d22583f8b206e4d8b9d2b6b4e510ab0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62103757"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视性能 Azure SQL 数据库
@@ -549,7 +549,7 @@ FROM sys.dm_db_resource_stats;
 Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_stats** 视图中，公开每个活动数据库的资源耗用信息。 表中的数据以 5 分钟为间隔收集而得。 对于“基本”、“标准”和“高级”服务层级，数据可能需要再耗费 5 分钟才会出现在表中，以使此数据更有利于历史分析而非接近实时的分析。 查询 **sys.resource_stats** 视图，以查看数据库的最近历史记录和验证你选择的保留是否提供了所需的性能。
 
 > [!NOTE]
-> 必须连接到 SQL 数据库服务器的 master 数据库，才能查询下面示例中的 sys.resource_stats。
+> 必须连接到 SQL 数据库服务器的 master  数据库，才能查询下面示例中的 sys.resource_stats  。
 
 此示例演示如何公开此视图中的数据：
 

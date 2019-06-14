@@ -14,15 +14,15 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 4093febd19d71512e3c80704e88f9d5cf669d7d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567384"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md)
 > * [Pig 活动](data-factory-pig-activity.md)
 > * [MapReduce 活动](data-factory-map-reduce.md)
@@ -68,7 +68,7 @@ ms.locfileid: "60567384"
 
 1. 创建 Azure 机器学习链接服务。 需要以下值：
 
-   1. 用于批处理执行 API 的**请求 URI**。 在 Web 服务页中，单击“批处理执行”链接可找到此请求 URI。
+   1. 用于批处理执行 API 的**请求 URI**。 在 Web 服务页中，单击“批处理执行”  链接可找到此请求 URI。
    2. 用于已发布 Azure 机器学习 Web 服务的 **API 密钥**。 单击已发布的 Web 服务可找到此 API 密钥。
    3. 使用 **AzureMLBatchExecution** 活动。
 
@@ -236,7 +236,7 @@ ms.locfileid: "60567384"
       }
     }
     ```
-4. 为以下类型创建“链接服务”：AzureMLLinkedService，提供 API 密钥和模型批处理执行 URL。
+4. 为以下类型创建“链接服务”  ：AzureMLLinkedService，提供 API 密钥和模型批处理执行 URL  。
 
     ```JSON
     {
@@ -349,7 +349,7 @@ ms.locfileid: "60567384"
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>使用读取器模块读取 Azure Blob 中多个文件的数据
 含 Pig 和 Hive 等活动的大数据管道可以生成无扩展名的一个或多个输出文件。 例如，指定外部 Hive 表时，可将外部 Hive 表数据存储在 Azure Blob 存储中，并命名为 000000_0。 可在实验中使用读取器模块读取多个文件，并将文件用于预测。
 
-在 Azure 机器学习实验中使用读取器模块时，可指定 Azure Blob 作为输入。 Azure Blob 存储中文件可以是输出文件（例如：000000_0），这些文件由 HDInsight 上运行的 Pig 和 Hive 脚本生成。 使用读取器模块，可通过配置“容器路径、目录/blob”读取文件（无扩展名）。 **容器路径**指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
+在 Azure 机器学习实验中使用读取器模块时，可指定 Azure Blob 作为输入。 Azure Blob 存储中文件可以是输出文件（例如：000000_0），这些文件由 HDInsight 上运行的 Pig 和 Hive 脚本生成。 使用读取器模块，可通过配置“容器路径、目录/blob”  读取文件（无扩展名）。 **容器路径**指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
 
 ![Azure Blob 属性](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -604,7 +604,7 @@ Azure SDK 和 Azure PowerShell 的 2015 年 8 月版中引入了 AzureMLBatchExe
 ```
 
 ### <a name="web-service-parameters"></a>Web 服务参数
-要指定 Web 服务参数的值，请将“typeProperties”部分添加到管道 JSON 中的“AzureMLBatchScoringActivty”部分，如下方示例所示：
+要指定 Web 服务参数的值，请将“typeProperties”部分添加到管道 JSON 中的“AzureMLBatchScoringActivty”部分，如下方示例所示   ：
 
 ```JSON
 "typeProperties": {

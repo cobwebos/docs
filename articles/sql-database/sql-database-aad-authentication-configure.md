@@ -13,10 +13,10 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: abb4a43176026fca5a80409ade13af1f8f96d9f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390397"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 配置和管理 Azure Active Directory 身份验证
@@ -131,17 +131,17 @@ ms.locfileid: "60390397"
 
     ![成功](./media/sql-database-aad-authentication/success.png)
 
-6. 现在即可为托管实例选择 Azure AD 管理员。 为此，请在“Active Directory 管理员”页上选择“设置管理员”命令。
+6. 现在即可为托管实例选择 Azure AD 管理员。 为此，请在“Active Directory 管理员”页上选择“设置管理员”  命令。
 
     ![设置管理员](./media/sql-database-aad-authentication/set-admin.png)
 
-7. 在“AAD 管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。
+7. 在“AAD 管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”  。
 
    “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 请参阅 [Azure AD 功能和限制](sql-database-aad-authentication.md#azure-ad-features-and-limitations)中受支持的管理员列表。 基于角色的访问控制 (RBAC) 仅适用于 Azure 门户，不会传播到 SQL Server。
 
     ![添加管理员](./media/sql-database-aad-authentication/add-admin.png)
 
-8. 在“Active Directory 管理员”页顶部，选择“保存”。
+8. 在“Active Directory 管理员”页顶部，选择“保存”  。
 
     ![保存](./media/sql-database-aad-authentication/save.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "60390397"
 在为托管实例预配 Azure AD 管理员之后，即可开始使用 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 语法创建 Azure AD 服务器主体（登录名）（**公共预览版**）。 有关详细信息，请参阅[托管实例概述](sql-database-managed-instance.md#azure-active-directory-integration)。
 
 > [!TIP]
-> 之后如需删除管理员，请在“Active Directory 管理员”页顶部，选择“删除管理员”，然后选择“保存”。
+> 之后如需删除管理员，请在“Active Directory 管理员”页顶部，选择“删除管理员”  ，然后选择“保存”  。
 
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>为 Azure SQL 数据库服务器预配 Azure Active Directory 管理员
 
@@ -163,28 +163,28 @@ ms.locfileid: "60390397"
 
 1. 在 [Azure 门户](https://portal.azure.com/)右上角，选择你的连接，以下拉可能的 Active Directory 列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL Server 托管的可能是 Azure SQL 数据库或 Azure SQL 数据仓库。）![选择-AD][8]
 
-2. 在左侧横幅中选择“所有服务”，然后在筛选器中键入“SQL Server”。 选择“SQL 服务器”。
+2. 在左侧横幅中选择“所有服务”  ，然后在筛选器中键入“SQL Server”  。 选择“SQL 服务器”  。
 
     ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)
 
     >[!NOTE]
-    > 在此页面上，在选择“SQL 服务器”前，可选择名称旁边的星号标记以收藏该类别，并将“SQL 服务器”添加到左侧导航栏。
+    > 在此页面上，在选择“SQL 服务器”  前，可选择名称旁边的星号标记  以收藏  该类别，并将“SQL 服务器”  添加到左侧导航栏。
 
-3. 在“SQL Server”页上，选择“Active Directory 管理员”。
-4. 在“Active Directory 管理员”页上选择“设置管理员”。![选择 active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+3. 在“SQL Server”  页上，选择“Active Directory 管理员”  。
+4. 在“Active Directory 管理员”页上选择“设置管理员”   。![选择 active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
 
-5. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 SQL 数据仓库进行身份验证结合使用](sql-database-aad-authentication.md)的“Azure AD 功能和限制”部分中支持的管理员列表。）基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。
+5. 在“添加管理员”  页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”  。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 SQL 数据仓库进行身份验证结合使用](sql-database-aad-authentication.md)的“Azure AD 功能和限制”部分中支持的管理员列表  。）基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。
     ![选择管理员](./media/sql-database-aad-authentication/select-admin.png)  
 
-6. 在“Active Directory 管理员”页顶部，选择“保存”。
+6. 在“Active Directory 管理员”  页顶部，选择“保存”  。
     ![保存管理员](./media/sql-database-aad-authentication/save-admin.png)
 
-更改管理员的过程可能需要几分钟时间。 然后，新管理员将出现在“Active Directory 管理员”框中。
+更改管理员的过程可能需要几分钟时间。 然后，新管理员将出现在“Active Directory 管理员”  框中。
 
    > [!NOTE]
    > 设置 Azure AD 管理员时，此新的管理员名称（用户或组）不能已作为 SQL Server 身份验证用户存在于虚拟 master 数据库中。 如果存在，Azure AD 管理员设置会失败；将回滚其创建，并指示此管理员（名称）已存在。 由于这种 SQL Server 身份验证用户不是 Azure AD 的一部分，因此使用 Azure AD 身份验证连接到服务器的任何尝试都会失败。
 
-之后如需删除管理员，请在“Active Directory 管理员”页顶部，选择“删除管理员”，然后选择“保存”。
+之后如需删除管理员，请在“Active Directory 管理员”  页顶部，选择“删除管理员”  ，然后选择“保存”  。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -203,7 +203,7 @@ ms.locfileid: "60390397"
 
 使用 PowerShell 命令 get-help 可查看其中每个命令的详细信息，例如 ``get-help Set-AzSqlServerActiveDirectoryAdministrator``。
 
-以下脚本为名为 Group-23 的资源组中的 demo_server 服务器预配名为 DBA_Group 的 Azure AD 管理员组（对象 ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`）：
+以下脚本为名为 Group-23 的资源组中的 demo_server 服务器预配名为 DBA_Group 的 Azure AD 管理员组（对象 ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`）    ：
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
@@ -315,7 +315,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!NOTE]
 > 如果收到 **Connection Timeout Expired** 消息，则可能需要将连接字符串的 `TransparentNetworkIPResolution` 参数设置为 false。 有关详细信息，请参阅 [.NET Framework 4.6.1 的连接超时问题 - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/)。
 
-创建数据库用户时，该用户会收到 **CONNECT** 权限，并能够以 **PUBLIC** 角色的成员身份连接到该数据库。 最初，仅供用户使用的权限是授予 PUBLIC 角色的任何权限，或者授予其所属任何 Azure AD 组的任何权限。 预配基于 Azure AD 的包含的数据库用户后，可以授予用户其他权限，方法与向任何其他类型的用户授予权限相同。 通常，将权限授予数据库角色，并将用户添加到角色。 有关详细信息，请参阅[数据库引擎权限基础知识](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)。 有关特殊 SQL 数据库角色的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
+创建数据库用户时，该用户会收到 **CONNECT** 权限，并能够以 **PUBLIC** 角色的成员身份连接到该数据库。 最初，仅供用户使用的权限是授予 PUBLIC 角色的任何权限，或者授予其所属任何 Azure AD 组的任何权限  。 预配基于 Azure AD 的包含的数据库用户后，可以授予用户其他权限，方法与向任何其他类型的用户授予权限相同。 通常，将权限授予数据库角色，并将用户添加到角色。 有关详细信息，请参阅[数据库引擎权限基础知识](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)。 有关特殊 SQL 数据库角色的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。
 如果将联合域用户帐户作为外部用户导入到托管域，则此用户必须使用托管域标识。
 
 > [!NOTE]
@@ -338,10 +338,10 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 如果从联合域使用 Azure Active Directory 凭据登录到 Windows，则使用此方法。
 
-1. 启动 Management Studio 或 Data Tools 后，在“连接到服务器”（或“连接到数据库引擎”）对话框的“身份验证”框中，选择“Active Directory - 集成”。 由于会为连接提供现有凭据，因此无需密码，也无法输入密码。
+1. 启动 Management Studio 或 Data Tools 后，在“连接到服务器”  （或“连接到数据库引擎”  ）对话框的“身份验证”  框中，选择“Active Directory - 集成”  。 由于会为连接提供现有凭据，因此无需密码，也无法输入密码。
 
     ![选择 AD 集成身份验证][11]
-2. 选择“选项”按钮，在“连接属性”页上的“连接到数据库”框中，键入所要连接的用户数据库的名称。 （仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”，否则它处于灰显状态。）  
+2. 选择“选项”  按钮，在“连接属性”  页上的“连接到数据库”  框中，键入所要连接的用户数据库的名称。 （仅对“通用且具有 MFA 连接”  选项支持“AD 域名或租户 ID”  ，否则它处于灰显状态。）  
 
     ![选择数据库名称][13]
 
@@ -351,12 +351,12 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 对于本机或联合身份验证 Azure AD 用户，请使用此方法通过 Azure AD 向 SQL DB/DW 进行身份验证。 本机用户是指以显式方式在 Azure AD 中创建并使用用户名和密码进行身份验证的用户，而联合用户则是指其域与 Azure AD 联合的 Windows 用户。 当用户需要使用其 Windows 凭据（例如使用远程访问），但其本地计算机未加入域时，可以使用后一方法（用户和密码）。 在这种情况下，Windows 用户可以指定其域帐户和密码，然后使用联合凭据向 SQL DB/DW 进行身份验证。
 
-1. 启动 Management Studio 或 Data Tools 后，在“连接到服务器”（或“连接到数据库引擎”）对话框的“身份验证”框中，选择“Active Directory - 密码”。
-2. 在“用户名”框中，以 **username\@domain.com** 格式键入 Azure Active Directory 用户名。 用户名必须是来自 Azure Active Directory 的帐户或来自与 Azure Active Directory 联合的域的帐户。
-3. 在“密码”框中，为 Azure Active Directory 帐户或联合域帐户键入用户密码。
+1. 启动 Management Studio 或 Data Tools 后，在“连接到服务器”  （或“连接到数据库引擎”  ）对话框的“身份验证”  框中，选择“Active Directory - 密码”  。
+2. 在“用户名”框中，以 **username\@domain.com** 格式键入 Azure Active Directory 用户名。  用户名必须是来自 Azure Active Directory 的帐户或来自与 Azure Active Directory 联合的域的帐户。
+3. 在“密码”框中，为 Azure Active Directory 帐户或联合域帐户键入用户密码。 
 
     ![选择 AD 密码身份验证][12]
-4. 选择“选项”按钮，在“连接属性”页上的“连接到数据库”框中，键入所要连接的用户数据库的名称。 （请参阅前一选项的图。）
+4. 选择“选项”  按钮，在“连接属性”  页上的“连接到数据库”  框中，键入所要连接的用户数据库的名称。 （请参阅前一选项的图。）
 
 ## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>使用 Azure AD 标识从客户端应用程序进行连接
 

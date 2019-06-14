@@ -7,17 +7,16 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: WenJason
-ms.author: v-jay
+author: bonova
+ms.author: bonova
 ms.reviewer: carlrab
-manager: digimobile
-origin.date: 09/25/2018
-ms.date: 02/25/2019
+manager: craigg
+ms.date: 09/25/2018
 ms.openlocfilehash: 62e88d912c55015f87cc00f21527010ad01ee00c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615676"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>使用保留策略管理临时表中的历史数据
@@ -85,7 +84,7 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ```
 
 > [!IMPORTANT]
-> 将 SYSTEM_VERSIONING 设置为 OFF 不会保存保留期值。 在未显式指定 HISTORY_RETENTION_PERIOD 的情况下将 SYSTEM_VERSIONING 设置为 ON 会导致保留期为 INFINITE。
+> 将 SYSTEM_VERSIONING 设置为 OFF 不会保存  保留期值。 在未显式指定 HISTORY_RETENTION_PERIOD 的情况下将 SYSTEM_VERSIONING 设置为 ON 会导致保留期为 INFINITE。
 
 要查看保留策略的当前状态，请使用以下查询，该查询将数据库级别的临时保留启用标志与单个表的保留期相联接：
 

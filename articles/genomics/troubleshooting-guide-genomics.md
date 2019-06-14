@@ -12,10 +12,10 @@ ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
 ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60790498"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
@@ -43,7 +43,7 @@ msgen status -u URL -k KEY -w ID
 
 * URL - API 的基本 URI
 * 密钥 - 基因组学帐户的访问密钥
-    * 若要查找 URL 和密钥，请转到 Azure 门户并打开 Microsoft 基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
+    * 若要查找 URL 和密钥，请转到 Azure 门户并打开 Microsoft 基因组学帐户页。 在“管理”标题下方，选择“访问密钥”   。 可在此处找到 API URL 和访问密钥。
 
   
 * ID - 工作流 ID

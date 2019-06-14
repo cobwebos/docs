@@ -17,17 +17,17 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be43f0e100bc96de2be916cbf52bca7d3ba51431
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65784536"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>如何为 Azure AD 库应用程序配置用户预配
 
 *用户帐户预配*是一种在应用程序的本地用户配置文件存储中，创建、更新和/或禁用用户帐户记录的操作。 大多数云应用程序和 SaaS 应用程序将用户角色和权限存储在其自身的本地用户配置文件存储中，并且单一登录和访问工作*需要*本地存储中存在此类用户记录。
 
-在 Azure 门户中，企业应用左侧导航窗格中的“预配”选项卡显示该应用支持哪些预配模式。 这可以是以下两个值的其中之一：
+在 Azure 门户中，企业应用左侧导航窗格中的“预配”  选项卡显示该应用支持哪些预配模式。 这可以是以下两个值的其中之一：
 
 ## <a name="configuring-an-application-for-manual-provisioning"></a>将应用程序配置为手动预配
 

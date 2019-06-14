@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
 ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146560"
 ---
 ## <a name="automatic-device-management"></a>自动设备管理
@@ -21,7 +21,7 @@ Azure IoT Edge 支持在本地设备进行 Azure 服务和解决方案特定代�
 IoT Edge 运行时部件负责部署和监视模块。
 
 ## <a name="iot-edge-device"></a>IoT Edge 设备
-IoT Edge 设备已安装 IoT Edge 运行时，并且在设备详细信息中标记为“IoT Edge 设备”。 了解如何[在 Linux 的模拟设备上部署 Azure IoT Edge - 预览](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux)。
+IoT Edge 设备已安装 IoT Edge 运行时，并且在设备详细信息中标记为“IoT Edge 设备”  。 了解如何[在 Linux 的模拟设备上部署 Azure IoT Edge - 预览](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux)。
 
 ## <a name="iot-edge-automatic-deployment"></a>IoT Edge 自动部署
 IoT Edge 自动部署配置 IoT Edge 设备的目标集以运行 IoT Edge 模块集。 每次部署持续确保符合其目标条件的所有设备运行指定的模块集，即使是在创建新设备或者为满足目标条件修改设备时。 每个 IoT Edge 设备仅接收满足其目标条件的最高优先级部署。 了解有关 [IoT Edge 自动部署](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)的详细信息。
@@ -60,4 +60,4 @@ IoT Edge 运行时包括 Microsoft 分发用于安装在 IoT Edge 设备上的�
 在一个设备的模块孪生上复制 IoT Edge 清单内容的操作。 基础 API 是泛型“应用配置”，仅将 IoT Edge 清单作为输入。
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge 目标条件
-在 IoT Edge 部署中，目标条件是设备孪生标记上的任意布尔条件，以选择部署的目标设备（例如 tag.environment = prod）。持续评估目标条件，以包括满足需求的任何新设备或者删除不再满足要求的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息
+在 IoT Edge 部署中，目标条件是设备孪生标记上的任意布尔条件，以选择部署的目标设备（例如 tag.environment = prod）  。持续评估目标条件，以包括满足需求的任何新设备或者删除不再满足要求的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息

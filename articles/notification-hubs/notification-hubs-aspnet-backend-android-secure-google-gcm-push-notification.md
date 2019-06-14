@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 27536b0a3d7e0858a5660b4c7b33cb6679b5fbf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60874544"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>通过 Azure 通知中心发送安全推送通知
@@ -32,7 +32,7 @@ ms.locfileid: "60874544"
 ## <a name="overview"></a>概述
 
 > [!IMPORTANT]
-> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)。
+> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)。
 
 利用 Microsoft Azure 中的推送通知支持，可访问易于使用且横向扩展的多平台推送消息基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。
 
@@ -58,10 +58,10 @@ ms.locfileid: "60874544"
 
 ## <a name="modify-the-android-project"></a>修改 Android 项目
 
-现在，已将应用程序后端修改为只发送推送通知的 ID，因此，必须更改 Android 应用程序以处理此通知，并回调后端以检索要显示的安全消息。
+现在，已将应用程序后端修改为只发送推送通知的 ID，因此，必须更改 Android 应用程序以处理此通知，并回调后端以检索要显示的安全消息  。
 若要实现此目标，必须确保 Android 应用在收到推送通知时知道如何使用后端对自身进行身份验证。
 
-现在，请修改登录流程，以在应用的共享首选项中保存身份验证标头值。 可以使用类似机制来存储应用需要使用的任何身份验证令牌（例如 OAuth 令牌），从而无需用户凭据。
+现在，请修改登录流程，以在应用的共享首选项中保存身份验证标头值  。 可以使用类似机制来存储应用需要使用的任何身份验证令牌（例如 OAuth 令牌），从而无需用户凭据。
 
 1. 在 Android 应用项目中，在 `MainActivity` 类的顶部添加以下常量：
 
@@ -143,4 +143,4 @@ ms.locfileid: "60874544"
 1. 确保 **AppBackend** 已部署在 Azure 中。 如果使用 Visual Studio，则运行 **AppBackend** Web API 应用程序。 将显示 ASP.NET 网页。
 2. 在 Eclipse 中，运行物理 Android 设备或模拟器上的应用。
 3. 在 Android 应用 UI 中，输入用户名和密码。 这些信息可以是任意字符串，但必须是相同的值。
-4. 在 Android 应用 UI 中，单击“**登录**”。 然后单击“发送推送”。
+4. 在 Android 应用 UI 中，单击“**登录**”。 然后单击“发送推送”  。

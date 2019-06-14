@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.openlocfilehash: d086b6f844deb06d98edec8d8ec0f5670d84f066
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129715"
 ---
 # <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>将 Azure 服务日志和指标收集到 Azure Monitor 的 Log Analytics 工作区中
 
 有四种不同方式可收集 Azure 服务的日志和指标：
 
-1. 将 Azure 诊断定向到 Azure Monitor 的 Log Analytics 工作区（下表中的“诊断”）
-2. 从 Azure 诊断到 Azure 存储，再到 Azure Monitor 的 Log Analytics 工作区（下表中的“存储”）
+1. 将 Azure 诊断定向到 Azure Monitor 的 Log Analytics 工作区（下表中的“诊断”） 
+2. 从 Azure 诊断到 Azure 存储，再到 Azure Monitor 的 Log Analytics 工作区（下表中的“存储”） 
 3. Azure 服务的连接器（下表中的*连接器*）
 4. 使用脚本收集，然后将数据发布到 Azure Monitor 的 Log Analytics 工作区中（下表中的空白，用于未列出的服务）
 
@@ -71,7 +71,7 @@ ms.locfileid: "66129715"
 > [!NOTE]
 > 当前不支持通过诊断设置将多维指标发送到 Log Analytics 工作区。 多维指标将按平展后的单维指标导出，并跨维值聚合。
 >
-> 例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
+>  例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
 >
 >
 

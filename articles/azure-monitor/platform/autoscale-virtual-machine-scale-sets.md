@@ -9,10 +9,10 @@ ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787758"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
@@ -56,7 +56,7 @@ ms.locfileid: "60787758"
      自动缩放引擎的配置文件和规则的优先级顺序也在[自动缩放最佳实践](autoscale-best-practices.md)文章中有所介绍。
      有关自动缩放的常用指标列表，请参阅[自动缩放的常用指标](autoscale-common-metrics.md)
 
-5. 确保在资源浏览器中处于“读/写”模式
+5. 确保在资源浏览器中处于“读/写”  模式
 
     ![Autoscalewad，默认自动缩放设置](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
@@ -196,7 +196,7 @@ ms.locfileid: "60787758"
     ```
     有关支持的字段及其值，请参阅[自动缩放 REST API 文档](https://msdn.microsoft.com/library/azure/dn931928.aspx)。 现在，自动缩放设置包含了之前说明的三个配置文件。
 
-7. 最后，来看一下自动缩放“通知”部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
+7. 最后，来看一下自动缩放“通知”  部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
    - 通知订阅的管理员和共同管理员
    - 向一组用户发送电子邮件
    - 触发 webhook 调用。 触发时，此 webhook 将发送关于自动缩放条件和规模集资源的元数据。 若要了解有关自动缩放 webhook 的有效负载的详细信息，请参阅[对自动缩放配置 Webhook 和电子邮件通知](autoscale-webhook-email.md)。
@@ -229,7 +229,7 @@ ms.locfileid: "60787758"
 
    ```
 
-   在资源浏览器中单击“输入”按钮，更新自动缩放设置。
+   在资源浏览器中单击“输入”  按钮，更新自动缩放设置。
 
 已在 VM 规模集上更新了自动缩放设置，以包括多个缩放配置文件和缩放通知。
 

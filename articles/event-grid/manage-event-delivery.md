@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
 ms.openlocfilehash: a1b49fd3a2a85377a56c92aefd1b0056f91895b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119560"
 ---
 # <a name="dead-letter-and-retry-policies"></a>死信与重试策略
@@ -25,7 +25,7 @@ ms.locfileid: "66119560"
 若要设置死信位置，需要一个存储帐户来保存无法传递到终结点的事件。 这些示例获取现有存储帐户的资源 ID。 它们创建一个事件订阅，该事件订阅使用该存储帐户中的容器作为死信终结点。
 
 > [!NOTE]
-> 在这篇文章中运行命令之前在存储中创建存储帐户和 blob 容器。
+> 在本文中，在运行命令之前，请在存储中创建一个存储帐户和一个 blob 容器。
 
 ### <a name="azure-cli"></a>Azure CLI
 

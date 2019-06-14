@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
 ms.openlocfilehash: 7827cee2af2dfc0c1fddc407c1d146dc9a66c514
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607558"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>定义和使用审查作业 (REST)
@@ -51,7 +51,7 @@ ms.locfileid: "60607558"
 
 ### <a name="submit-your-request"></a>提交请求
 
-选择“发送”。 如果操作成功，**响应状态**是`200 OK`，和**响应内容**框会显示作业的 ID。 复制此 ID，然后在以下步骤中使用它。
+选择“发送”。  如果操作成功，**响应状态**是`200 OK`，和**响应内容**框会显示作业的 ID。 复制此 ID，然后在以下步骤中使用它。
 
 ![审查 - 创建控制台响应内容框显示审查 ID](images/test-drive-job-3.PNG)
 
@@ -61,7 +61,7 @@ ms.locfileid: "60607558"
 
 ![作业-Get 区域选择](images/test-drive-region.png)
 
-输入 REST 调用参数，如在上面的部分。 此步骤中，对于**JobId**是在创建作业时收到的唯一 ID 字符串。 选择“发送”。 如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示该作业以 JSON 格式，如下所示：
+输入 REST 调用参数，如在上面的部分。 此步骤中，对于**JobId**是在创建作业时收到的唯一 ID 字符串。 选择“发送”。  如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示该作业以 JSON 格式，如下所示：
 
 ```json
 {  

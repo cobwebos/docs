@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: fa10ff14bf893c268d6b6b1a0d181d11a3f27dc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586252"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure 安全性与合规性蓝图：FedRAMP 的分析
@@ -90,8 +90,8 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 该体系结构通过加密、数据库审核和其他措施保护静态数据。
 
 **数据复制** Azure 政府有两个关于[数据复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)的选项：
- - 数据复制的默认设置为“异地冗余存储(GRS)”，以便在主要区域外的单独数据中心中异步存储客户数据。 这可确保主要数据中心全损事件的数据恢复。
- - 还可以通过 Azure 存储帐户配置“本地冗余存储(LRS)”。 LRS 复制存储缩放单元中的数据，此单元的托管区域与客户创建帐户的区域相同。 为确保在主要存储缩放单元失败时不会出现备份数据丢失情况，需同时复制所有数据。
+ - 数据复制的默认设置为“异地冗余存储(GRS)”，以便在主要区域外的单独数据中心中异步存储客户数据  。 这可确保主要数据中心全损事件的数据恢复。
+ - 还可以通过 Azure 存储帐户配置“本地冗余存储(LRS)”  。 LRS 复制存储缩放单元中的数据，此单元的托管区域与客户创建帐户的区域相同。 为确保在主要存储缩放单元失败时不会出现备份数据丢失情况，需同时复制所有数据。
 
 **Azure 存储** 为满足加密静态数据要求，此参考体系结构中部署的所有服务都利用 [Azure 存储](https://azure.microsoft.com/services/storage/)，以便通过[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)存储数据。
 

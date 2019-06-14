@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65594015"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
@@ -66,7 +66,7 @@ ms.locfileid: "65594015"
 
 ## <a name="risk-events"></a>风险事件
 
-Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 检测到的每个可疑操作都存储在称为“风险事件”的记录中。
+Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 检测到的每个可疑操作都存储在称为“风险事件”  的记录中。
 
 下表列出了风险事件的延迟信息。
 
@@ -75,7 +75,7 @@ Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户�
 | 从匿名 IP 地址登录 |5 分钟 |15 分钟 |2 小时 |
 | 从不熟悉的位置登录 |5 分钟 |15 分钟 |2 小时 |
 | 具有已泄漏凭据的用户 |2 小时 |4 小时 |8 小时 |
-| 不可能前往异常位置 |5 分钟 |1 小时	 |8 小时  |
+| 不可能前往异常位置 |5 分钟 |1 小时 |8 小时  |
 | 从受感染的设备登录 |2 小时 |4 小时 |8 小时  |
 | 从具有可疑活动的 IP 地址登录 |2 小时 |4 小时 |8 小时  |
 

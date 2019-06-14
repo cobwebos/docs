@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: kasinh
 ms.openlocfilehash: 40541596b4da9e0590d497785afd7d6d7f4cbcb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60641407"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
@@ -25,10 +25,10 @@ ms.locfileid: "60641407"
 若要在 Exchange Server 上安装 MABS 保护代理，请遵循以下步骤：
 
 1. 确保已正确配置防火墙。 请参阅[配置代理的防火墙异常](https://technet.microsoft.com/library/Hh758204.aspx)。
-2. 通过在 MABS 管理员控制台中单击“管理”>“代理”>“安装”，在 Exchange Server 上安装代理。 有关详细步骤，请参阅[安装 MABS 保护代理](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396)。
+2. 通过在 MABS 管理员控制台中单击“管理”>“代理”>“安装”  ，在 Exchange Server 上安装代理。 有关详细步骤，请参阅[安装 MABS 保护代理](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396)。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>为 Exchange Server 创建保护组
-1. 在 MABS 管理员控制台中，单击“保护”，并单击工具功能区上的“新建”，打开“新建保护组”向导。
+1. 在 MABS 管理员控制台中，单击“保护”  ，并单击工具功能区上的“新建”  ，打开“新建保护组”  向导。
 2. 在向导的“**欢迎**”屏幕上单击“**下一步**”。
 3. 在“**选择保护组类型**”屏幕上，选择“**服务器**”并单击“**下一步**”。
 4. 选择想要保护的 Exchange Server 数据库，并单击“**下一步**”。
@@ -47,7 +47,7 @@ ms.locfileid: "60641407"
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 单机“下一步”
+6. 单机“下一步” 
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
     选择此选项后，会在 MABS 服务器上运行备份一致性检查，以避免由于在 Exchange Server 上运行 **eseutil** 命令而产生的 I/O 流量。
@@ -57,7 +57,7 @@ ms.locfileid: "60641407"
    > ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 单击“下一步”。
+8. 单击“下一步”。 
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]
@@ -66,7 +66,7 @@ ms.locfileid: "60641407"
    >
 10. 配置“**短期备份**”的目标，并单击“**下一步**”。
 11. 检查可用磁盘空间，并单击“**下一步**”。
-12. 选择 MAB 服务器创建初始复制的时间，并单击“下一步”。
+12. 选择 MAB 服务器创建初始复制的时间，并单击“下一步”  。
 13. 选择一致性检查选项，并单击“**下一步**”。
 14. 选择要备份到 Azure 数据库，并单击“**下一步**”。 例如：
 
@@ -89,7 +89,7 @@ ms.locfileid: "60641407"
 19. 单击“**关闭**”。
 
 ## <a name="recover-the-exchange-database"></a>恢复 Exchange 数据库
-1. 若要恢复 Exchange 数据库，请在 MABS 管理员控制台中单击“恢复”。
+1. 若要恢复 Exchange 数据库，请在 MABS 管理员控制台中单击“恢复”  。
 2. 找到要恢复的 Exchange 数据库。
 3. 从“*恢复时间*”下拉列表中选择在线恢复点。
 4. 单击“**恢复**”启动“**恢复向导**”。

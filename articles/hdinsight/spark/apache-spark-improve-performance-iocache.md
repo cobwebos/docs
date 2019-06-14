@@ -7,10 +7,10 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.openlocfilehash: b77e7e9d5a68439e7f336ecb26e91031d80a7606
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64695209"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负载的性能（预览版）
@@ -34,11 +34,11 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集。
 
-1. 在“概述”页（选择群集时默认打开）中，选择“群集仪表板”下的“Ambari 主页”。
+1. 在“概述”  页（选择群集时默认打开）中，选择  “群集仪表板”下的  “Ambari 主页”。
 
-1. 选择左侧的“IO 缓存”服务。
+1. 选择左侧的“IO 缓存”  服务。
 
-1. 依次选择”操作”和“激活”。
+1. 依次选择”操作”  和“激活”  。
 
     ![在 Ambari 中启用 IO 缓存服务](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "在 Ambari 中启用 IO 缓存服务")
 
@@ -51,27 +51,27 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
   
 启用 IO 缓存后可能会收到运行 Spark 作业时出现的磁盘空间错误。 出现这些错误的原因是 Spark 还将本地磁盘存储用于在执行数据重组操作期间存储数据。 启用 IO 缓存并减少 Spark 存储空间后，Spark 可能会耗尽 SSD 空间。 IO 缓存所用的空间量默认为 SSD 空间总量的一半。 IO 缓存的磁盘空间使用量可以在 Ambari 中进行配置。 如果收到磁盘空间错误，请减少 IO 缓存所用的 SSD 空间量，并重新启动该服务。 若要更改为 IO 缓存设置的空间，请执行以下步骤：
 
-1. 在 Apache Ambari 中，选择左侧的“HDFS”服务。
+1. 在 Apache Ambari 中，选择左侧的“HDFS”服务  。
 
-1. 依次选择“配置”和“高级”选项卡。
+1. 依次选择  “配置”和  “高级”选项卡。
 
     ![编辑 HDFS 高级配置](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "编辑 HDFS 高级配置")
 
-1. 向下滚动并展开“自定义 core-site”区域。
+1. 向下滚动并展开  “自定义 core-site”区域。
 
-1. 查找属性 hadoop.cache.data.fullness.percentage。
+1. 查找属性 hadoop.cache.data.fullness.percentage  。
 
 1. 更改框中的值。
 
     ![编辑 IO 缓存填充度百分比](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "编辑 IO 缓存填充度百分比")
 
-1. 选择右上角的“保存”。
+1. 选择右上角的“保存”  。
 
-1. 选择“重新启动” > “重新启动所有受影响的项”。
+1. 选择“重新启动”   >   “重新启动所有受影响的项”。
 
     ![重新启动所有受影响的项](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "重新启动所有受影响的项")
 
-1. 选择“确认全部重启”。
+1. 选择“确认全部重启”  。
 
 如果不起作用，请禁用 IO 缓存。
 

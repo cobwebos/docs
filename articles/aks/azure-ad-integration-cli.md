@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
 ms.openlocfilehash: d80ad5abecc968a9fe3c82d62ddd8577856a3c54
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65835186"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
@@ -78,7 +78,7 @@ serverApplicationSecret=$(az ad sp credential reset \
 Azure AD 需要执行以下操作的有权：
 
 * 读取目录数据
-* 登录并读取用户个人资料
+* 登录并读取用户配置文件
 
 使用 [az ad app permission add][az-ad-app-permission-add] 命令分配这些权限：
 
@@ -153,7 +153,7 @@ az aks create \
     --aad-tenant-id $tenantId
 ```
 
-最后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下步骤之一中，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。
+最后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下步骤之一中，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。 
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
@@ -161,7 +161,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 ## <a name="create-rbac-binding"></a>创建 RBAC 绑定
 
-在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
+在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户   。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
 
 使用 [az ad signed-in-user show][az-ad-signed-in-user-show] 命令获取用户当前登录用户的用户主体名称 (UPN)。 在下一步骤中，将为 Azure AD 集成启用此用户帐户。
 

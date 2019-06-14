@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 0b17a87fa02c382ae19cca6e4abcfff2ec475450
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66252679"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>比较 IoT 中心的消息路由和事件网格
@@ -23,7 +23,7 @@ Azure IoT 中心可以从已连接的设备流式传输数据并将该数据集�
 
 **[IoT 中心消息路由](iot-hub-devguide-messages-d2c.md)** ：借助此 IoT 中心功能，用户可将设备到云消息路由到服务终结点，如 Azure 存储容器、事件中心、服务总线队列和服务总线主题。 路由还提供了一种查询功能，让你先筛选数据，再将其路由到终结点。 除了设备遥测数据之外，还可以发送可用于触发操作的[非遥测事件](iot-hub-devguide-messages-d2c.md#non-telemetry-events)。 
 
-**IoT 中心与事件网格的集成**：Azure 事件网格是一种完全托管的事件路由服务，使用发布-订阅模型。 IoT 中心和事件网格共同协作，准实时地[将 IoT 中心事件集成到 Azure 和非 Azure 服务中](iot-hub-event-grid.md)。 IoT 中心将发布[设备事件](iot-hub-event-grid.md#event-types)，正式上市，并且现在还会发布遥测事件，这在公共预览版中。
+**IoT 中心与事件网格的集成**：Azure 事件网格是一种完全托管的事件路由服务，使用发布-订阅模型。 IoT 中心和事件网格共同协作，准实时地[将 IoT 中心事件集成到 Azure 和非 Azure 服务中](iot-hub-event-grid.md)。 IoT 中心会发布[设备事件](iot-hub-event-grid.md#event-types)（正式版），现在还会发布遥测事件（目前为公共预览版）。
 
 ## <a name="differences"></a>差异
 
@@ -31,10 +31,10 @@ Azure IoT 中心可以从已连接的设备流式传输数据并将该数据集�
 
 | Feature | IoT 中心消息路由 | IoT 中心与事件网格的集成 |
 | ------- | --------------- | ---------- |
-| **设备的消息和事件** | 是的作为遥测数据，并报告孪生更改设备生命周期事件使用消息路由。 | 是的事件网格可用于遥测数据，但还可以报告设备创建、 删除、 连接，并从 IoT 中心断开连接时 |
+| **设备消息和事件** | 是，消息路由可以用于遥测数据，报告孪生更改和设备生命周期事件。 | 是，事件网格可以用于遥测数据，还可以用于报告设备何时创建、删除、连接以及何时与 IoT 中心断开连接 |
 | **排序** | 是，事件顺序保持不变。  | 否，无法保证事件顺序。 | 
-| **筛选** | 对消息应用程序属性、消息系统属性、消息正文、设备孪生标记和设备孪生属性执行的丰富筛选。 有关示例，请参阅[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)。 | 基于筛选事件类型、 使用者类型和每个事件中的属性。 有关示例，请参阅[了解事件网格订阅中的筛选事件](../event-grid/event-filtering.md)。 订阅时遥测事件，可以应用其他筛选器的数据到针对消息属性筛选器、 消息正文和设备孪生在 IoT 中心，然后才能发布到事件网格中。 请参阅[如何筛选事件](../iot-hub/iot-hub-event-grid.md#filter-events)。 |
-| **EndPoints** | <ul><li>事件中心</li> <li>Azure Blob 存储</li> <li>服务总线队列</li> <li>服务总线主题</li></ul><br>付费 IoT 中心 SKU（S1、S2 和 S3）限制为 10 个自定义终结点。 每个 IoT 中心都可创建 100 个路由。 | <ul><li>Azure Functions</li> <li>Azure 自动化</li> <li>事件中心</li> <li>逻辑应用</li> <li>存储 Blob</li> <li>自定义主题</li> <li>队列存储</li> <li>Microsoft Flow</li> <li>通过 Webhook 的第三方服务</li></ul><br>支持的每个 IoT 中心的 500 终结点。 有关最新的终结点列表，请参阅[事件网格事件处理程序](../event-grid/overview.md#event-handlers)。 |
+| **筛选** | 对消息应用程序属性、消息系统属性、消息正文、设备孪生标记和设备孪生属性执行的丰富筛选。 有关示例，请参阅[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)。 | 基于事件类型、使用者类型和每个事件中的属性进行筛选。 有关示例，请参阅[了解在事件网格订阅中筛选事件](../event-grid/event-filtering.md)。 订阅遥测事件时，在发布到事件网格之前，你可以对数据应用其他筛选器来基于你的 IoT 中心内的消息属性、消息正文和设备孪生进行筛选。 请参阅[如何筛选事件](../iot-hub/iot-hub-event-grid.md#filter-events)。 |
+| **EndPoints** | <ul><li>事件中心</li> <li>Azure Blob 存储</li> <li>服务总线队列</li> <li>服务总线主题</li></ul><br>付费 IoT 中心 SKU（S1、S2 和 S3）限制为 10 个自定义终结点。 每个 IoT 中心都可创建 100 个路由。 | <ul><li>Azure Functions</li> <li>Azure 自动化</li> <li>事件中心</li> <li>逻辑应用</li> <li>存储 Blob</li> <li>自定义主题</li> <li>队列存储</li> <li>Microsoft Flow</li> <li>通过 Webhook 的第三方服务</li></ul><br>每个 IoT 中心支持 500 个终结点。 有关最新的终结点列表，请参阅[事件网格事件处理程序](../event-grid/overview.md#event-handlers)。 |
 | **成本** | 不会针对消息路由单独收费。 仅针对 IoT 中心的遥测数据入口收费。 例如，如果将一条消息路由到三个不同终结点，则只收取一条消息的费用。 | 不收取 IoT 中心费用。 事件网格每月免费提供前 100,000 次操作，之后每百万次操作收取 0.60 美元。 |
 
 ## <a name="similarities"></a>相似性
@@ -58,19 +58,19 @@ IoT 中心消息路由和 IoT 中心与事件网格的集成通过执行不同�
 
    必须将遥测数据发送到其他服务时，请使用 IoT 中心消息路由。 借助消息路由，还可以查询消息应用程序和系统属性、消息正文、设备孪生标记和设备孪生属性。
 
-   IoT 中心与事件网格的集成可与 IoT 中心服务中发生的事件一起使用。 这些 IoT 中心事件包括创建、 删除、 连接和断开连接的设备的遥测数据。 订阅时遥测事件，可以应用其他筛选器的数据到针对消息属性筛选器、 消息正文和设备孪生在 IoT 中心，然后才能发布到事件网格中。 请参阅[如何筛选事件](../iot-hub/iot-hub-event-grid.md#filter-events)。
+   IoT 中心与事件网格的集成可与 IoT 中心服务中发生的事件一起使用。 这些 IoT 中心事件包括遥测数据，设备已创建、已删除、已连接和已断开连接。 订阅遥测事件时，在发布到事件网格之前，你可以对数据应用其他筛选器来基于你的 IoT 中心内的消息属性、消息正文和设备孪生进行筛选。 请参阅[如何筛选事件](../iot-hub/iot-hub-event-grid.md#filter-events)。
 
 * **哪些终结点需要接收此信息？**
 
-   IoT 中心消息路由支持有限的数量的唯一终结点和终结点类型，但可构建连接器以重新路由数据和到其他终结点的事件。 有关受支持终结点的完整列表，请参阅上节中的表。 
+   IoT 中心消息路由支持有限数量的终结点和终结点类型，但可构建连接器以将数据和事件重新路由到其他终结点。 有关受支持终结点的完整列表，请参阅上节中的表。 
 
-   IoT 中心与事件网格集成支持 500 的终结点，每个 IoT 中心和有更多的终结点类型。 它与 Azure Functions、 逻辑应用、 存储和服务总线队列天真集成，并还可与 webhook 一起扩展以外的 Azure 服务生态系统和第三方商业应用程序发送的数据。
+   与事件网格的 IoT 中心集成支持每个 IoT 中心 500 个终结点和大量的终结点类型。 它本身集成了 Azure Functions、逻辑应用和服务总线队列，并且还与 Webhook 一起工作以在 Azure 服务生态系统外部发送数据以及发送到第三方业务应用程序中。
 
 * **数据按顺序到达是否重要？**
 
    IoT 中心消息路由保持消息的发送顺序不变，以便其以相同顺序到达。
 
-   事件网格不保证终结点按照事件的发生顺序接收事件。 在其中的消息的绝对顺序很重要和/或在其中使用者需要的可信唯一标识符的消息的情况下，我们建议使用消息路由。 
+   事件网格不保证终结点按照事件的发生顺序接收事件。 如果消息的绝对顺序至关重要，并/或使用者需要消息的可信唯一标识符，建议使用消息路由。 
 
 ## <a name="next-steps"></a>后续步骤
 

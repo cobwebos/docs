@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61020977"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
@@ -31,10 +31,10 @@ ms.locfileid: "61020977"
 本部分介绍如何在 Functions 门户中创建代理。
 
 1. 打开 [Azure 门户]，并转到 Function App。
-2. 在左窗格中，选择“新建代理”。
+2. 在左窗格中，选择“新建代理”。 
 3. 为代理提供一个名称。
 4. 通过指定**路由模板**和 **HTTP 方法**配置在此 Function App 上公开的终结点。 这些参数的行为取决于 [HTTP 触发器]的规则。
-5. 将“后端 URL”设置为另一个终结点。 此终结点可以是其他 Function App 中的函数，也可以是任何其他 API。 该值不需要是静态值，并且可以引用[应用程序设置]和[原始客户端请求中的参数]。
+5. 将“后端 URL”  设置为另一个终结点。 此终结点可以是其他 Function App 中的函数，也可以是任何其他 API。 该值不需要是静态值，并且可以引用[应用程序设置]和[原始客户端请求中的参数]。
 6. 单击**创建**。
 
 代理现在已作为新终结点存在于 Function App 上。 从客户端角度来看，它等同于 Azure Functions 中的 HttpTrigger。 可以通过复制代理 URL 并使用最喜欢的 HTTP 客户端对其进行测试来试验新代理。
@@ -47,13 +47,13 @@ ms.locfileid: "61020977"
 
 默认情况下，后端请求初始化为原始请求的副本。 除了设置后端 URL 以外，还可以对 HTTP 方法、标头和查询字符串参数进行更改。 修改的值可以引用[应用程序设置]和[原始客户端请求中的参数]。
 
-可在门户中通过展开代理详细信息页的“请求替代”部分修改后端请求。 
+可在门户中通过展开代理详细信息页的“请求替代”  部分修改后端请求。 
 
 ### <a name="modify-response"></a>修改响应
 
 默认情况下，客户端响应初始化为后端响应的副本。 可对响应的状态代码、原因短语、标头和正文进行更改。 修改的值可以引用[应用程序设置]、[原始客户端请求中的参数]和[后端响应中的参数]。
 
-可在门户中通过展开代理详细信息页的“响应替代”部分修改后端请求。 
+可在门户中通过展开代理详细信息页的“响应替代”  部分修改后端请求。 
 
 ## <a name="using-variables"></a>使用变量
 
@@ -66,7 +66,7 @@ ms.locfileid: "61020977"
 
  
 >[!Note]  
->如果函数使用“函数”、“管理员”或“sys” 授权级别，将需要根据原始函数 URL 提供代码和 clientId。 在这种情况下，引用将如下所示：`"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
+>如果函数使用“函数”、“管理员”或“sys”  授权级别，将需要根据原始函数 URL 提供代码和 clientId。 在这种情况下，引用将如下所示：`"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
 
 ### <a name="request-parameters"></a>引用请求参数
 
@@ -80,17 +80,17 @@ ms.locfileid: "61020977"
 #### <a name="additional-request-parameters"></a>其他请求参数
 除了路由模板参数以外，还可以在配置值中使用以下值：
 
-* **{request.method}**：对原始请求使用的 HTTP 方法。
-* **{request.headers.\<HeaderName\>}**：从原始请求中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在请求中，则该值为空字符串。
-* **{request.querystring.\<ParameterName\>}**：可从原始请求中读取的查询字符串参数。 请将 *\<ParameterName\>* 替换为要读取的参数的名称。 如果该参数未包含在请求中，则该值为空字符串。
+* **{request.method}** ：对原始请求使用的 HTTP 方法。
+* **{request.headers.\<HeaderName\>}** ：从原始请求中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在请求中，则该值为空字符串。
+* **{request.querystring.\<ParameterName\>}** ：可从原始请求中读取的查询字符串参数。 请将 *\<ParameterName\>* 替换为要读取的参数的名称。 如果该参数未包含在请求中，则该值为空字符串。
 
 ### <a name="response-parameters"></a>引用后端响应参数
 
 在修改返回给客户端的响应过程中，可以使用响应参数。 可以在配置值中使用以下值：
 
-* **{backend.response.statusCode}**：在后端响应中返回的 HTTP 状态代码。
-* **{backend.response.statusReason}**：在后端响应中返回的 HTTP 原因短语。
-* **{backend.response.headers.\<HeaderName\>}**：可以从后端响应中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在响应中，则该值将为空字符串。
+* **{backend.response.statusCode}** ：在后端响应中返回的 HTTP 状态代码。
+* **{backend.response.statusReason}** ：在后端响应中返回的 HTTP 原因短语。
+* **{backend.response.headers.\<HeaderName\>}** ：可以从后端响应中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在响应中，则该值将为空字符串。
 
 ### <a name="use-appsettings"></a>引用应用程序设置
 
@@ -115,12 +115,12 @@ ms.locfileid: "61020977"
 
 ## <a name="advanced-configuration"></a>高级配置
 
-配置的代理存储在一个 proxies.json 文件中，此文件位于函数应用目录的根目录中。 使用 Functions 支持的任意[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)时，可以手动编辑此文件并将其部署为应用的一部分。 
+配置的代理存储在一个 proxies.json 文件中，此文件位于函数应用目录的根目录中  。 使用 Functions 支持的任意[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)时，可以手动编辑此文件并将其部署为应用的一部分。 
 
 > [!TIP] 
-> 如果尚未设置一种部署方法，也可以在门户中使用 proxies.json 文件。 转到到 Function App，选择“平台功能”，并选择“应用服务编辑器”。 这样，便可以看到 Function App 的整个文件结构并进行更改。
+> 如果尚未设置一种部署方法，也可以在门户中使用 proxies.json 文件  。 转到到 Function App，选择“平台功能”，并选择“应用服务编辑器”。   这样，便可以看到 Function App 的整个文件结构并进行更改。
 
-Proxies.json 是由一个代理对象定义的，包括已命名的代理及其定义。 （可选）可以引用用于代码完成的 [JSON 架构](http://json.schemastore.org/proxies)（如果编辑器支持这样做）。 示例文件可能如下例所示：
+Proxies.json 是由一个代理对象定义的，包括已命名的代理及其定义  。 （可选）可以引用用于代码完成的 [JSON 架构](http://json.schemastore.org/proxies)（如果编辑器支持这样做）。 示例文件可能如下例所示：
 
 ```json
 {
@@ -147,7 +147,7 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
 * **responseOverrides**：定义对客户端响应执行的转换的对象。 请参阅[定义 responseOverrides 对象]。
 
 > [!NOTE] 
-> Azure Functions 代理中的 route 属性不接受 Function App 主机配置的 routePrefix 属性。 如果希望包括一个如 `/api` 等前缀，必须将其包括在 route 属性中。
+> Azure Functions 代理中的 route 属性不接受 Function App 主机配置的 routePrefix 属性   。 如果希望包括一个如 `/api` 等前缀，必须将其包括在 route 属性中  。
 
 ### <a name="disableProxies"></a> 禁用单个代理
 
@@ -189,8 +189,8 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
 requestOverrides 对象定义调用后端资源时对请求所做的更改。 该对象由以下属性定义：
 
 * **backend.request.method**：用于调用后端的 HTTP 方法。
-* **backend.request.querystring.\<ParameterName\>**：可为后端调用设置的查询字符串参数。 请将 *\<ParameterName\>* 替换为要设置的参数的名称。 如果提供空字符串，该参数不会包含在后端请求中。
-* **backend.request.headers.\<HeaderName\>**：可为后端调用设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在后端请求中。
+* **backend.request.querystring.\<ParameterName\>** ：可为后端调用设置的查询字符串参数。 请将 *\<ParameterName\>* 替换为要设置的参数的名称。 如果提供空字符串，该参数不会包含在后端请求中。
+* **backend.request.headers.\<HeaderName\>** ：可为后端调用设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在后端请求中。
 
 值可以引用应用程序设置和原始客户端请求中的参数。
 
@@ -222,7 +222,7 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 * **response.statusCode**：要返回给客户端的 HTTP 状态代码。
 * **response.statusReason**：要返回给客户端的 HTTP 原因短语。
 * **response.body**：要返回给客户端的正文的字符串表示形式。
-* **response.headers.\<HeaderName\>**：可为返回给客户端的响应设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在响应中。
+* **response.headers.\<HeaderName\>** ：可为返回给客户端的响应设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在响应中。
 
 值可以引用应用程序设置、原始客户端请求中的参数和后端响应中的参数。
 

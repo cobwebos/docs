@@ -18,10 +18,10 @@ ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd37366697a9c1f5019d2864e6d81a4dcd02e3a2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235495"
 ---
 # <a name="national-clouds"></a>国家/地区云
@@ -30,7 +30,7 @@ ms.locfileid: "66235495"
 
 全局云，包括 Azure Active Directory (Azure AD) 被部署在以下国家/地区云：  
 
-- Azure Government 
+- Azure Government
 - Azure 德国
 - Azure 中国世纪互联
 

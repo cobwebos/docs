@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575575"
 ---
 # <a name="virtual-appliance-scenario"></a>虚拟设备方案
@@ -30,23 +30,23 @@ ms.locfileid: "64575575"
 * 发往应用程序服务器的所有流量必须流经防火墙虚拟设备。 此虚拟设备用于通过 VPN 网关从本地网络访问后端服务器。
 * 管理员必须能够使用第三个防火墙虚拟设备（专门用于管理目的）从其本地计算机管理防火墙虚拟设备。
 
-这是与外围网络和受保护的网络标准的外围网络 (也作为外围网络的 knowns) 方案。 使用 Nsg、 防火墙虚拟设备或这两者的组合，可以在 Azure 中构造此类方案。 下表显示了 NSG 与防火墙虚拟设备之间的一些优缺点。
+这是一个标准的外围网络（也称为 DMZ）方案，其中包含一个外围网络和一个受保护网络。 可以在 Azure 中使用 NSG 和/或防火墙虚拟设备来构建此类方案。 下表显示了 NSG 与防火墙虚拟设备之间的一些优缺点。
 
 |  | 优点 | 缺点 |
 | --- | --- | --- |
 | NSG |无需付费。 <br/>已集成到 Azure RBAC 中。 <br/>可以在 Azure 资源管理器模板中创建规则。 |在大型环境中复杂性各不相同。 |
 | 防火墙 |完全控制数据平面。 <br/>通过防火墙控制台进行集中管理。 |防火墙设备的费用。 <br/>不与 Azure RBAC 集成。 |
 
-下面的解决方案使用防火墙虚拟设备来实现外围网络 (DMZ) / 受保护网络方案。
+以下解决方案使用防火墙虚拟设备来实施外围网络 (DMZ)/受保护网络方案。
 
 ## <a name="considerations"></a>注意事项
 可以使用当前可用的如下所述的不同功能在 Azure 中部署上述环境。
 
-* **虚拟网络 (VNet)**。 Azure VNet 在形式上与本地网络相似，可分段为一个或多个子网，以提供流量隔离和关注点分离。
+* **虚拟网络 (VNet)** 。 Azure VNet 在形式上与本地网络相似，可分段为一个或多个子网，以提供流量隔离和关注点分离。
 * **虚拟设备**。 有多个合作伙伴在 Azure 市场中提供了虚拟设备，可对上述三种防火墙使用这些设备。 
-* **用户定义的路由 (UDR)**。 路由表可以包含 Azure 网络使用的 UDR 来控制数据包在 VNet 中的流动。 这些路由表可应用到子网。 Azure 中的最新功能之一是将路由表应用到 GatewaySubnet，从而能够通过混合连接将传入 Azure VNet 的所有流量转发到虚拟设备。
+* **用户定义的路由 (UDR)** 。 路由表可以包含 Azure 网络使用的 UDR 来控制数据包在 VNet 中的流动。 这些路由表可应用到子网。 Azure 中的最新功能之一是将路由表应用到 GatewaySubnet，从而能够通过混合连接将传入 Azure VNet 的所有流量转发到虚拟设备。
 * **IP 转发**。 默认情况下，仅当数据包目标 IP 地址与 NIC IP 地址匹配时，Azure 网络引擎才将数据包转发到虚拟网络接口卡 (NIC)。 因此，如果 UDR 定义必须将数据包发送到给定的虚拟设备，则 Azure 网络引擎会丢弃该数据包。 为了确保将数据包传送到并非数据包实际目标的 VM（在本例中为虚拟设备），需要为虚拟设备启用 IP 转发。
-* **网络安全组 (NSG)**。 以下示例未使用 NSG，但可以在此解决方案中使用应用到子网和/或 NIC 的 NSG 来进一步筛选传入和传出子网与 NIC 的流量。
+* **网络安全组 (NSG)** 。 以下示例未使用 NSG，但可以在此解决方案中使用应用到子网和/或 NIC 的 NSG 来进一步筛选传入和传出子网与 NIC 的流量。
 
 ![IPv6 连接](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 
@@ -134,19 +134,19 @@ Azure 中的每个子网可以链接到用于定义该子网中发起的流量�
 ### <a name="opfw"></a>OPFW
 OPFW 代表包含以下规则的本地设备：
 
-* **路由**:10.0.0.0/16 的所有流量 (**azurevnet**) 必须通过隧道发送**ONPREMAZURE**。
-* **策略**：允许之间的所有双向流量**port2**并**ONPREMAZURE**。
+* **路由**：发往 10.0.0.0/16 (**azurevnet**) 的所有流量必须通过隧道 **ONPREMAZURE** 发送。
+* **策略**：允许 **port2** 与 **ONPREMAZURE** 之间的所有双向流量。
 
 ### <a name="azf1"></a>AZF1
 AZF1 代表包含以下规则的 Azure 虚拟设备：
 
-* **策略**：允许之间的所有双向流量**port1**并**port2**。
+* **策略**：允许 **port1** 与 **port2** 之间的所有双向流量。
 
 ### <a name="azf2"></a>AZF2
 AZF2 代表包含以下规则的 Azure 虚拟设备：
 
-* **路由**:10.0.0.0/16 的所有流量 (**onpremvnet**) 必须发送到 Azure 的网关 IP 地址 (即 10.0.0.1) 通过**port1**。
-* **策略**：允许之间的所有双向流量**port1**并**port2**。
+* **路由**：发往 10.0.0.0/16 (**onpremvnet**) 的所有流量必须通过 **port1** 发送到 Azure 网关 IP 地址（即 10.0.0.1）。
+* **策略**：允许 **port1** 与 **port2** 之间的所有双向流量。
 
 ## <a name="network-security-groups-nsgs"></a>网络安全组 (NSG)
 此方案中未使用 NSG。 但是，可以向每个子网应用 NSG，以限制传入和传出的流量。 例如，可将以下 NSG 规则应用到外部 FW 子网。
@@ -167,5 +167,5 @@ AZF2 代表包含以下规则的 Azure 虚拟设备：
 2. 如果要部署 VNet 来模拟本地网络，请预配属于 **ONPREMRG** 的资源。
 3. 预配属于 **AZURERG** 的资源。
 4. 预配从 **onpremvnet** 到 **azurevnet** 的隧道。
-5. 所有资源都预都配后，登录到**onpremvm2**并 ping 10.0.3.101，以测试之间的连接**onpremsn2**并**azsn3**。
+5. 预配所有资源后，登录到 **onpremvm2** 并 ping 10.0.3.101，以测试 **onpremsn2** 与 **azsn3** 之间的连接。
 

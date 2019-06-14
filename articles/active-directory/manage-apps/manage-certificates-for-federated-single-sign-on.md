@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecadb499d140ccfc993820080cae0b749977fc61
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824748"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
@@ -30,11 +30,11 @@ ms.locfileid: "65824748"
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>为库和非库应用程序自动生成的证书
 
-从库中添加新的应用程序和配置基于 SAML 的单一登录时 (通过选择**单一登录** > **SAML**从应用程序概述页上)，Azure AD 将生成证书有效期为三年的应用程序。 若要下载安全证书形式的活动证书 (**.cer**) 文件中，返回到该页 (**基于 SAML 的单一登录**)，然后选择中的下载链接**SAML 签名证书**标题。 您可以选择原始 （二进制） 证书或 Base64 （基 64 编码的文本） 证书。 对于库应用程序，本部分还可能会显示将其作为联合身份验证元数据 XML 下载的证书的链接 ( **.xml**文件)，取决于应用程序的要求。
+从库中添加新的应用程序和配置基于 SAML 的单一登录时 (通过选择**单一登录** > **SAML**从应用程序概述页上)，Azure AD 将生成证书有效期为三年的应用程序。 若要下载安全证书形式的活动证书 ( **.cer**) 文件中，返回到该页 (**基于 SAML 的单一登录**)，然后选择中的下载链接**SAML 签名证书**标题。 您可以选择原始 （二进制） 证书或 Base64 （基 64 编码的文本） 证书。 对于库应用程序，本部分还可能会显示将其作为联合身份验证元数据 XML 下载的证书的链接 ( **.xml**文件)，取决于应用程序的要求。
 
 ![SAML 活动签名证书下载选项](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
-此外可以通过选择下载的活动或非活动证书**SAML 签名证书**标题的**编辑**显示的图标 （铅笔） **SAML 签名证书**页。 选择省略号 (**...**) 想要下载，然后选择哪种证书格式的证书旁边。 必须下载隐私增强邮件 (PEM) 格式的证书的其他选项。 此格式都为 Base64 相同但具有 **.pem**文件扩展名，在作为证书格式的 Windows 中无法识别。
+此外可以通过选择下载的活动或非活动证书**SAML 签名证书**标题的**编辑**显示的图标 （铅笔） **SAML 签名证书**页。 选择省略号 ( **...** ) 想要下载，然后选择哪种证书格式的证书旁边。 必须下载隐私增强邮件 (PEM) 格式的证书的其他选项。 此格式都为 Base64 相同但具有 **.pem**文件扩展名，在作为证书格式的 Windows 中无法识别。
 
 ![SAML 签名证书下载选项 （活动和非活动）](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
@@ -50,13 +50,13 @@ ms.locfileid: "65824748"
 
 以下两个部分帮助你执行这些步骤。
 
-### <a name="create-a-new-certificate"></a>创建新证书
+### <a name="create-a-new-certificate"></a>创建新的证书
 
 首先，创建并使用不同的过期日期保存新的证书：
 
-1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。 **Azure Active Directory 管理中心**页将出现。
+1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。 此时会显示“Azure Active Directory 管理中心”页。 
 
-2. 在左窗格中，选择“企业应用程序”。 将显示你的帐户中的企业应用程序的列表。
+2. 在左窗格中，选择“企业应用程序”  。 将显示你的帐户中的企业应用程序的列表。
 
 3. 选择受影响的应用程序。 应用程序的概览页会显示。
 
@@ -72,7 +72,7 @@ ms.locfileid: "65824748"
 
 9. 使用日历控件设置新的日期。 您可以设置的当前日期和当前日期后的三年之间的任何日期。
 
-10. 选择“保存”。 现在将显示新证书的状态**非活动**，到期日期选择和指纹。
+10. 选择“保存”。  现在将显示新证书的状态**非活动**，到期日期选择和指纹。
 
 11. 选择**X**回到**设置了单一登录使用 SAML-预览**页。
 
@@ -88,7 +88,7 @@ ms.locfileid: "65824748"
 
 3. 按照中的说明[自动生成的库和非库应用程序的证书](#auto-generated-certificate-for-gallery-and-non-gallery-applications)前面部分。 此步骤将下载应用程序上传所需的编码格式中的证书。
 
-4. 当您想要为新证书滚动更新时，请返回到**SAML 签名证书**页，然后在新保存的证书行中，选择省略号 (**...**)，然后选择**使证书处于活动状态**。 新证书的状态将变为**Active**，并将以前的活动证书更改为的状态**非活动**。
+4. 当您想要为新证书滚动更新时，请返回到**SAML 签名证书**页，然后在新保存的证书行中，选择省略号 ( **...** )，然后选择**使证书处于活动状态**。 新证书的状态将变为**Active**，并将以前的活动证书更改为的状态**非活动**。
 
 5. 继续的以下应用程序的 SAML 单一登录配置说明，以便你可以上传 SAML 签名更早版本，显示的证书中的正确的编码格式。
 
@@ -104,7 +104,7 @@ Azure AD 会发送 SAML 证书过期之前使用电子邮件通知 60、 30 和 
 
 4. 对于每个你想要删除的电子邮件地址，请选择**删除**电子邮件地址旁边的图标 （垃圾回收会）。
 
-5. 选择“保存”。
+5. 选择“保存”。 
 
 你将接收来自 aadnotification@microsoft.com 的通知电子邮件。 若要避免电子邮件进入您垃圾邮件的位置，请向联系人添加此电子邮件。
 
@@ -116,7 +116,7 @@ Azure AD 会发送 SAML 证书过期之前使用电子邮件通知 60、 30 和 
 
 2. 如果证书对其应用程序可以自动滚动更新，可以通过执行以下步骤将新的证书设置为活动：
    1. 返回到**SAML 签名证书**页。
-   2. 在新保存的证书行中，选择省略号 (**...**)，然后选择**使证书处于活动状态**。
+   2. 在新保存的证书行中，选择省略号 ( **...** )，然后选择**使证书处于活动状态**。
    3. 跳过接下来两个步骤。
 
 3. 如果应用程序一次只能处理一个证书，选择停机时间间隔，以执行下一步。 （否则，如果应用程序不会自动选取新的证书，但可以处理多个签名证书，你可以执行下一步随时。）

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
 ms.openlocfilehash: c734461f1a57c100b4a00ab5c309659f8b0e903a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964019"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
@@ -45,11 +45,11 @@ IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关店面�
  
 **计费选项**
 
-市场当前支持 IoT Edge 模块的“免费”和“自带许可证 (BYOL)”计费选项。
+市场当前支持 IoT Edge 模块的“免费”  和“自带许可证 (BYOL)”  计费选项。
  
 **发布选项**
 
-在所有情况下，IoT Edge 模块应选择“Transact”发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
+在所有情况下，IoT Edge 模块应选择“Transact”  发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
 
 ## <a name="eligibility-criteria"></a>资格条件
 

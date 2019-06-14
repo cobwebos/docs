@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761975"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
@@ -59,7 +59,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
         TumblingWindow(second, 10)
 ```
 
-**说明**：在“重量”字段中使用 CAST 语句来指定它的数据类型。 请参阅[数据类型（Azure 流分析）](/stream-analytics-query/data-types-azure-stream-analytics)中支持的数据类型列表。
+**说明**：在“重量”字段中使用 CAST 语句来指定它的数据类型   。 请参阅[数据类型（Azure 流分析）](/stream-analytics-query/data-types-azure-stream-analytics)中支持的数据类型列表。
 
 ## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>查询示例：使用 like/not 等进行模式匹配
 
@@ -92,7 +92,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
         LicensePlate LIKE 'A%9'
 ```
 
-**说明**：使用 LIKE 语句检查 LicensePlate 字段的值。 它应以字母 A 开头然后零个或多个字符的任意字符串，然后结尾的数字是 9。 
+**说明**：使用 LIKE 语句检查 LicensePlate 字段的值   。 它应以字母 A 开头然后零个或多个字符的任意字符串，然后结尾的数字是 9。 
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>查询示例：指定不同案例/值的逻辑（CASE 语句）
 
@@ -129,7 +129,7 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
         TumblingWindow(second, 10)
 ```
 
-**说明**：CASE 表达式将表达式与一组简单表达式进行比较以确定结果。 在此示例中，计数为 1 的车返回的是与计数不为 1 的车不同的字符串说明。
+**说明**：CASE  表达式将表达式与一组简单表达式进行比较以确定结果。 在此示例中，计数为 1 的车返回的是与计数不为 1 的车不同的字符串说明。
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>查询示例：将数据发送到多个输出
 
@@ -186,9 +186,9 @@ JSON 和 Avro 都可能包含嵌套对象（记录）或数组等复杂类型。
         [Count] >= 3
 ```
 
-**说明**：INTO 子句告知流分析哪一个输出可通过此语句写入数据。 第一个查询将接收到名为输出的数据传递**ArchiveOutput**。 第二个查询进行了一些简单的聚合和筛选，并且它将结果发送到下游的报警系统**AlertOutput**。
+**说明**：INTO 子句告知流分析哪一个输出可通过此语句写入数据  。 第一个查询将接收到名为输出的数据传递**ArchiveOutput**。 第二个查询进行了一些简单的聚合和筛选，并且它将结果发送到下游的报警系统**AlertOutput**。
 
-请注意，还可重复使用多个输出语句中的公用表表达式 (CTE) 结果（例如 WITH 语句）。 此选项可提供额外权益，即在输入源打开较少的读取器。
+请注意，还可重复使用多个输出语句中的公用表表达式 (CTE) 结果（例如 WITH 语句  ）。 此选项可提供额外权益，即在输入源打开较少的读取器。
 
 例如： 
 
@@ -238,8 +238,8 @@ GROUP BY
 ```
 
 
-**说明：**
-COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值数目。
+**说明：** 
+COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值数目   。
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>查询示例：确定某个值是否已更改
 
@@ -270,7 +270,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 ```
 
-**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值。 然后，将它与当前事件的“制造商”字段进行比较，如果二者不同，则输出该事件。
+**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值   。 然后，将它与当前事件的“制造商”字段进行比较，如果二者不同，则输出该事件  。
 
 ## <a name="query-example-find-the-first-event-in-a-window"></a>查询示例：查找时间范围内的第一个事件
 
@@ -414,7 +414,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 ```
 
-**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值。 将它与当前事件的“制造商”字段进行比较，如果二者相同，则输出该事件。 还可使用 LAG 获取前一辆汽车的数据。
+**说明**：使用 LAG 来查看后退一个事件之后的输入流，并获得“制造商”字段的值   。 将它与当前事件的“制造商”字段进行比较，如果二者相同，则输出该事件  。 还可使用 LAG 获取前一辆汽车的数据  。
 
 ## <a name="query-example-detect-the-duration-between-events"></a>查询示例：检测事件之间的持续时间
 
@@ -424,7 +424,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 | 用户 | 功能 | 事件 | Time |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |开始 |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
 | user@location.com |RightMenu |结束 |2015-01-01T00:00:08.0000000Z |
 
 **输出**：  
@@ -443,7 +443,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
         Event = 'end'
 ```
 
-**说明**：使用 LAST 函数检索上次事件类型为“开始”时的时间值。 LAST 函数使用 PARTITION BY [user] 指示结果应按唯一用户计算。 该查询在“开始”和“停止”事件之间有 1 小时的最大时差阈值，但也可按需配置 (LIMIT DURATION(hour, 1)。
+**说明**：使用 LAST 函数检索上次事件类型为“开始”时的时间值    。 LAST 函数使用 PARTITION BY [user] 指示结果应按唯一用户计算   。 该查询在“开始”和“停止”事件之间有 1 小时的最大时差阈值，但也可按需配置 (LIMIT DURATION(hour, 1)    。
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>查询示例：检测某个条件的持续时间
 **说明**：查看某个条件的持续时间。
@@ -489,7 +489,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
         AND previousWeight > 20000
 ```
 
-**说明**：使用 LAG 查看 24 小时内的输入流并查找因重量 < 20000 而持续的 StartFault 和 StopFault 实例。
+**说明**：使用 LAG 查看 24 小时内的输入流并查找因重量 < 20000 而持续的 StartFault 和 StopFault 实例    。
 
 ## <a name="query-example-fill-missing-values"></a>查询示例：填充缺失值
 
@@ -506,7 +506,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**输出（前 10 行）**：
+**输出（前 10 行）** ：
 
 | windowend | lastevent.t | lastevent.value |
 | --- | --- | --- |
@@ -562,7 +562,7 @@ COUNT(DISTINCT Make) 返回时间范围内的“制造商”列的非重复值�
 
 **输出**：
 
-| EventTime | deviceId | temp | alertMessage | maxPowerDuringLast3mins |
+| eventTime | deviceId | temp | alertMessage | maxPowerDuringLast3mins |
 | --- | --- | --- | --- | --- | 
 | "2018-01-01T16:05:00" | "Oven1" |30 | “加热元件短路” |15 |
 | "2018-01-01T16:06:00" | "Oven1" |20 | “加热元件短路” |15 |

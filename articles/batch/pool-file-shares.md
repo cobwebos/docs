@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
 ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127822"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>将 Batch 池与 Azure 文件共享配合使用
@@ -51,7 +51,7 @@ Batch 原生支持通过 API 使用 Azure 存储 Blob 来读取和写入数据�
 
 例如，包含 `net use` 命令，以将文件共享装载为每个任务命令行的一部分。 若要装载文件共享，需要以下凭据：
 
-* **用户名**：AZURE\\\<存储帐户名称\>，例如，AZURE\\mystorageaccountname
+* **用户名**：AZURE\\\<存储帐户名称\>，例如，AZURE\\mystorageaccountname 
 * **密码**：<以 == 结尾的存储帐户密钥>，例如 *XXXXXXXXXXXXXXXXXXXXX==*
 
 以下命令在存储帐户 *mystorageaccountname* 中将文件共享 *myfileshare* 装载为 *S:* 驱动器：

@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf236bff2300129ec97d3b8946c4c2a2748bca77
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602127"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>使用 MSAL.NET Xamarin 特定于 iOS 的注意事项
@@ -57,8 +57,8 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 ## <a name="enable-keychain-groups"></a>启用密钥链组
 
 为了使令牌缓存的工作，并具有`AcquireTokenSilentAsync`方法的工作，必须执行多个步骤：
-1. 启用密钥链访问中的您*`* Entitlements.plist* 文件，并指定**密钥链组**中捆绑标识符。
-2. 选择*`*Entitlements.plist*`* 中的文件**自定义权利**字段中 iOS 项目选项窗口**捆绑包签名视图**。
+1. 启用密钥链访问中的您 *`* Entitlements.plist* 文件，并指定**密钥链组**中捆绑标识符。
+2. 选择 *`*Entitlements.plist*`* 中的文件**自定义权利**字段中 iOS 项目选项窗口**捆绑包签名视图**。
 3. XCode 时签名证书，请确保使用相同的 Apple id。
 
 ## <a name="enable-token-cache-sharing-across-ios-applications"></a>启用在 iOS 应用程序之间共享的令牌缓存

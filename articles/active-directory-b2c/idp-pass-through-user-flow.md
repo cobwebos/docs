@@ -1,5 +1,5 @@
 ---
-title: 将通过用户流的访问令牌传递给你的应用程序-Azure Active Directory B2C |Microsoft Docs
+title: 通过用户流将访问令牌传递给应用程序 - Azure Active Directory B2C | Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中以用户流中声明的方式传递 OAuth2.0 标识提供者的访问令牌。
 services: active-directory-b2c
 author: mmacy
@@ -11,10 +11,10 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: db4b799aa31a4132609b0dd158b65070fb2474b7
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510954"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用用户流将访问令牌传递给应用程序
@@ -34,13 +34,13 @@ Azure AD B2C 当前仅支持传递 [OAuth 2.0](active-directory-b2c-reference-oa
 ## <a name="enable-the-claim"></a>启用声明
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
-4. 选择**用户流 （策略）** ，然后选择你的用户流。 例如， **B2C_1_signupsignin1**。
+4. 选择“用户流(策略)”  ，然后选择用户流。 例如，**B2C_1_signupsignin1**。
 5. 选择“应用程序声明”  。
-6. 启用**标识提供程序访问令牌**声明。
+6. 启用“标识提供者访问令牌”  声明。
 
-    ![启用标识提供程序访问令牌的声明](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-app-claim.png)
+    ![启用“标识提供者访问令牌”声明](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-app-claim.png)
 
 7. 单击“保存”，保存用户流  。
 
@@ -58,7 +58,7 @@ Azure AD B2C 当前仅支持传递 [OAuth 2.0](active-directory-b2c-reference-oa
 
 ## <a name="next-steps"></a>后续步骤
 
-了解详细信息[的 Azure AD B2C 令牌概述](active-directory-b2c-reference-tokens.md)。
+在 [Azure AD B2C 令牌概述](active-directory-b2c-reference-tokens.md)中了解详细信息。
 
 
 

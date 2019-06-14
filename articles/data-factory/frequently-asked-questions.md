@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
 ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61345748"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
@@ -112,7 +112,7 @@ Azure 数据工厂的可视化工具进行迭代开发和调试。 您可以创�
 ### <a name="pipelines"></a>管道
 数据工厂可以包含一个或多个数据管道。 管道是执行任务单元的活动的逻辑分组。 管道中的活动可以共同执行一项任务。 例如，一个管道可以包含一组活动，这些活动从 Azure Blob 引入数据，并在 HDInsight 群集上运行 Hive 查询，以便对数据分区。 优点在于，可以使用管道以集的形式管理活动，而无需单独管理每个活动。 管道中的活动可以链接在一起来按顺序运行，也可以独立并行运行。
 
-### <a name="activities"></a>活动
+### <a name="activities"></a>activities
 活动表示管道中的处理步骤。 例如，您可以使用复制活动将数据从一个数据存储复制到另一个数据存储。 同样，可以使用在 Azure HDInsight 群集上运行 Hive 查询的 Hive 活动来转换或分析数据。 数据工厂支持三种类型的活动：数据移动活动、数据转换活动和控制活动。
 
 ### <a name="datasets"></a>数据集
@@ -123,7 +123,7 @@ Azure 数据工厂的可视化工具进行迭代开发和调试。 您可以创�
 
 数据工厂中的链接服务有两个用途：
 
-- 代表数据存储，包括但不限于本地 SQL Server 实例、Oracle 数据库实例、文件共享或 Azure Blob 存储帐户。 有关支持的数据存储列表，请参阅 [Azure 数据工厂中的复制活动](copy-activity-overview.md)。
+- 代表数据存储，包括但不限于本地 SQL Server 实例、Oracle 数据库实例、文件共享或 Azure Blob 存储帐户。  有关支持的数据存储列表，请参阅 [Azure 数据工厂中的复制活动](copy-activity-overview.md)。
 - 代表可托管活动执行的*计算资源*。 例如，HDInsight Hive 活动在 HDInsight Hadoop 群集上运行。 有关转换活动列表和支持的计算环境，请参阅[在 Azure 数据工厂中转换数据](transform-data.md)。
 
 ### <a name="triggers"></a>触发器
@@ -168,13 +168,13 @@ Azure 数据工厂的可视化工具进行迭代开发和调试。 您可以创�
 是的参数是数据工厂中第一类的顶层概念。 可以在管道级别定义参数，并在按需或使用触发器执行管道运行时传递自变量。  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>是否可以为管道参数定义默认值？ 
-可以。 可以为管道中的参数定义默认值。 
+是的。 可以为管道中的参数定义默认值。 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>管道中的活动是否可以使用传递给管道运行的自变量？ 
-可以。 管道中的每个活动都可以使用通过 `@parameter` 构造传递给管道运行的参数值。 
+是的。 管道中的每个活动都可以使用通过 `@parameter` 构造传递给管道运行的参数值。 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>活动输出属性是否可以在其他活动中使用？ 
-可以。 在后续活动中可以通过 `@activity` 构造来使用活动输出。
+是的。 在后续活动中可以通过 `@activity` 构造来使用活动输出。
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>如何得体地处理活动输出中的 NULL 值？ 
 可以在表达式中使用 `@coalesce` 构造来得体地处理 NULL 值。 
@@ -192,7 +192,7 @@ Azure 数据工厂的可视化工具进行迭代开发和调试。 您可以创�
 
 ### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>可以将我的个人预览版工厂迁移到数据工厂 V2？
 
-可以。 [按照说明进行操作](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)。
+是的。 [按照说明进行操作](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)。
 
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>我需要帮助来解决我的数据的流逻辑。 提供以获取帮助需要哪些信息？
 

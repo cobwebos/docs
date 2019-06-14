@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.openlocfilehash: 673f4935dce28b30c10e6abf4c7d22e00c1dd73a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60762177"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>安装适用于 Visual Studio 的 Azure 流分析工具
@@ -26,15 +26,15 @@ Azure 流分析工具支持 Visual Studio 2017、2015 和 2013。 本文介绍�
 * 下载 [Visual Studio 2019（预览版 2 或更高版本）和 Visual Studio 2017（15.3 或更高版本）](https://www.visualstudio.com/)。 支持 Enterprise (Ultimate/Premium)、Professional、Community 版本。 不支持 Express 版本。 不支持 Mac 版 Visual Studio 2017。 
 * 流分析工具是 Visual Studio 2017 中 **Azure 开发**以及**数据存储和处理**工作负载的一部分。 在 Visual Studio 安装过程中，启用这两个工作负载中的任何一个。
 
-启用“数据存储和处理”工作负载，如下所示：
+启用“数据存储和处理”  工作负载，如下所示：
 
 ![选择“数据存储和处理”工作负载](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-01.png)
 
-启用“Azure 开发”工作负载，如下所示：
+启用“Azure 开发”  工作负载，如下所示：
 
 ![选择“Azure 开发”工作负载](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-02.png)
 
-* 在“工具”菜单中，选择“扩展和更新”。 在已安装的扩展中查找 Azure Data Lake 和流分析工具，然后单击“更新”以安装最新的扩展。 
+* 在“工具”菜单中，选择“扩展和更新”  。 在已安装的扩展中查找 Azure Data Lake 和流分析工具，然后单击“更新”  以安装最新的扩展。 
 
 ![Visual Studio 扩展和更新](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-extensions-updates.png)
 
@@ -57,10 +57,10 @@ Azure 流分析工具支持 Visual Studio 2017、2015 和 2013。 本文介绍�
 ## <a name="uninstall"></a>卸载
 
 ### <a name="visual-studio-2019-and-2017"></a>Visual Studio 2019 和 2017
-双击 Visual Studio 安装程序并选择“修改”。 从“数据存储和处理”工作负载或“Azure 开发”工作负载中取消选中“Azure Data Lake 和流分析工具”复选框。
+双击 Visual Studio 安装程序并选择“修改”  。 从“数据存储和处理”  工作负载或“Azure 开发”  工作负载中取消选中“Azure Data Lake 和流分析工具”  复选框。
 
 ### <a name="visual-studio-2015-and-2013"></a>Visual Studio 2015 和 2013
-转到控制面板，卸载“适用于 Visual Studio 的 Microsoft Azure Data Lake 和流分析工具”。
+转到控制面板，卸载“适用于 Visual Studio 的 Microsoft Azure Data Lake 和流分析工具”  。
 
 
 

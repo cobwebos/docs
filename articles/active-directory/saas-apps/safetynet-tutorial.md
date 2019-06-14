@@ -17,10 +17,10 @@ ms.date: 04/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fadebc689f10b40131bb0feb12d846d3bdde704
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>教程：Azure Active Directory 与 SafetyNet 集成
@@ -61,19 +61,19 @@ ms.locfileid: "62104667"
 
 **若要从库中添加 SafetyNet，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。 
 
     ![“Azure Active Directory”按钮][1]
 
-1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+1. 导航到“企业应用程序”。  然后转到“所有应用程序”  。
 
     ![“企业应用程序”边栏选项卡][2]
     
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮][3]
 
-1. 在搜索框中，键入“SafetyNet”，在结果面板中选择“SafetyNet”，然后单击“添加”按钮添加该应用程序。
+1. 在搜索框中，键入“SafetyNet”，在结果面板中选择“SafetyNet”，然后单击“添加”按钮添加该应用程序。   
 
     ![结果列表中的 SafetyNet](./media/safetynet-tutorial/tutorial_safetynet_addfromgallery.png)
 
@@ -97,36 +97,36 @@ ms.locfileid: "62104667"
 
 **若要配置 SafetyNet 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中的 **SafetyNet** 应用程序集成页上，单击“单一登录”。
+1. 在 Azure 门户中的 **SafetyNet** 应用程序集成页上，单击“单一登录”。 
 
     ![配置单一登录链接][4]
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+1. 在“单一登录”  对话框中，选择“基于 SAML 的单一登录”  作为“模式”  以启用单一登录。
  
     ![“单一登录”对话框](./media/safetynet-tutorial/tutorial_safetynet_samlbase.png)
 
-1. 在“SafetyNet 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+1. 在“SafetyNet 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤   ：
 
     ![SafetyNet 域和 URL 单一登录信息](./media/safetynet-tutorial/tutorial_safetynet_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.predictivesolutions.com/sp`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.predictivesolutions.com/sp`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.predictivesolutions.com/CRMApp/saml/SSO`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请选中“显示高级 URL 设置”  ，并执行以下步骤：
 
     ![SafetyNet 域和 URL 单一登录信息](./media/safetynet-tutorial/tutorial_safetynet_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.predictivesolutions.com`
+    在“登录 URL”  文本框中，使用以下模式键入 URL： `https://<subdomain>.predictivesolutions.com`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SafetyNet 客户端支持团队](mailto:dev@predictivesolutions.com)获取这些值。
 
-1. 在“SAML 签名证书” 部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本 ****。
+1. 在“SAML 签名证书” 部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本 ****  。
 
     ![证书下载链接](./media/safetynet-tutorial/tutorial_safetynet_certificate.png)
 
-1. 单击“保存”按钮。
+1. 单击“保存”按钮  。
 
     ![配置单一登录“保存”按钮](./media/safetynet-tutorial/tutorial_general_400.png)
 
@@ -140,27 +140,27 @@ ms.locfileid: "62104667"
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。 
 
     ![“Azure Active Directory”按钮](./media/safetynet-tutorial/create_aaduser_01.png)
 
-1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”   。
 
     ![“用户和组”以及“所有用户”链接](./media/safetynet-tutorial/create_aaduser_02.png)
 
-1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”    。
 
     ![“添加”按钮](./media/safetynet-tutorial/create_aaduser_03.png)
 
-1. 在“用户”对话框中，执行以下步骤：
+1. 在“用户”  对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/safetynet-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”  框中，键入“BrittaSimon”  。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。 
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
 
     d. 单击**创建**。
  
@@ -176,27 +176,27 @@ ms.locfileid: "62104667"
 
 **若要将 Britta Simon 分配到 SafetyNet，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”  ，并单击“所有应用程序”  。
 
     ![分配用户][201] 
 
-1. 在应用程序列表中，选择“SafetyNet”。
+1. 在应用程序列表中，选择“SafetyNet”  。
 
     ![应用程序列表中的 SafetyNet 链接](./media/safetynet-tutorial/tutorial_safetynet_app.png)  
 
-1. 在左侧菜单中，单击“用户和组”。
+1. 在左侧菜单中，单击“用户和组”  。
 
     ![“用户和组”链接][202]
 
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+1. 单击“添加”按钮。  然后在“添加分配”对话框中选择“用户和组”。  
 
     ![“添加分配”窗格][203]
 
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+1. 在“用户和组”  对话框的“用户”列表中，选择“Britta Simon”。 
 
-1. 在“用户和组”对话框中单击“选择”按钮。
+1. 在“用户和组”对话框中单击“选择”按钮。  
 
-1. 在“添加分配”对话框中单击“分配”按钮。
+1. 在“添加分配”对话框中单击“分配”按钮。  
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 

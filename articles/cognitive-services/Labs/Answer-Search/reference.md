@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60721005"
 ---
 # <a name="project-answer-search-v7-reference"></a>项目答案搜索 v7 参考
@@ -62,7 +62,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ## <a name="headers"></a>标头  
 下面是请求和响应可能包含的标头。  
   
-|标头|描述|  
+|Header|描述|  
 |------------|-----------------|  
 |Accept|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](https://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
 |<a name="acceptlanguage" />Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 cc 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
@@ -83,7 +83,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。  
   
   
-|名称|值|Type|需要|  
+|Name|值|Type|必选|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** URL 预览 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|String|是|  
 |<a name="query" />q|要预览的 URL|String|是|  
@@ -131,14 +131,14 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
   
 |名称|值|Type|  
 |----------|-----------|----------|  
-|名称|许可证的名称。|String|  
+|name|许可证的名称。|String|  
 |url|为用户提供许可证详细信息的网站的 URL。<br /><br /> 使用名称和 URL 创建超链接。|String|  
   
 
 ### <a name="licenseattribution"></a>LicenseAttribution  
 定义许可证属性的协定规则。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 LicenseAttribution。|String|  
 |license|内容使用许可证。|[许可证](#license)|  
@@ -150,29 +150,29 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="link"></a>链接  
 定义超链接的组件。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
-|Text|显示文本。|String|  
+|text|显示文本。|String|  
 |url|一个 URL。 使用 URL 和显示文本创建超链接。|String|  
   
 
 ### <a name="linkattribution"></a>LinkAttribution  
 定义链接属性的协定规则。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 LinkAttribution。|String|  
 |mustBeCloseToContent|一个布尔值，确定是否必须将规则的内容置于规则所应用到的字段的附近。 如果为 **true**，则必须将内容置于附近。 如果为 **false**，或者此字段不存在，则内容可由调用方随意放置。|Boolean|  
 |targetPropertyName|规则应用到的字段的名称。<br /><br /> 如果目标未指定，则此属性适用于整个实体，会在实体呈现后立即显示。 如果有多个文本和链接属性规则未指定目标，则应将它们连接起来，并使用“数据来自: ”标签来显示它们。 例如，“数据来自 <提供者名称 1\> &#124; <提供者名称 2\>”。|String|  
-|Text|属性文本。|String|  
+|text|属性文本。|String|  
 |url|提供者网站的 URL。 使用 `text` 和 URL 创建超链接。|String|  
   
   
 ### <a name="mediaattribution"></a>MediaAttribution  
 定义媒体属性的协定规则。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 MediaAttribution。|String|  
 |mustBeCloseToContent|一个布尔值，确定是否必须将规则的内容置于规则所应用到的字段的附近。 如果为 **true**，则必须将内容置于附近。 如果为 **false**，或者此字段不存在，则内容可由调用方随意放置。|Boolean|  
@@ -186,9 +186,9 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
   
 注意，发布者可能提供其名称和/或网站。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
-|名称|发布者名称。|String|  
+|name|发布者名称。|String|  
 |url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
   
   
@@ -196,9 +196,9 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="webpage"></a>WebPage  
 定义预览版网页的信息。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|
-|名称|页面标题，不一定是 HTML 标题|String|
+|name|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|  
 |description|对页面和内容的简要说明|String|  
 |isFamilyFriendly|对 Web 索引中的项来说最准确；实时提取完全根据 URL 而非页面内容来执行此检测|boolean|
@@ -225,14 +225,14 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="rankinggroup"></a>RankingGroup
 定义搜索结果组，例如 mainline。
 
-|名称|值|Type|  
+|Name|值|Type|  
 |-------------|-----------------|----------|
 |items|要显示在组中的搜索结果的列表。|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 定义要显示的搜索结果项。
 
-|名称|值|Type|  
+|Name|值|Type|  
 |-------------|-----------------|----------|
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
@@ -242,7 +242,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="rankingresponse"></a>RankingResponse  
 定义应将内容置于搜索结果页的何处以及应采用什么顺序。  
   
-|名称|值|  
+|Name|值|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|要显示在主线中的搜索结果。|  
 |<a name="ranking-pole" />pole|要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。|  
@@ -254,19 +254,19 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
   
 请注意，如果该服务怀疑存在拒绝服务攻击，则请求会成功（HTTP 状态代码为“200 正常”），但响应正文将为空。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 SearchResponse。|String|  
-|WebPage|一个 JSON 对象，用于定义预览版|string|  
+|WebPage|一个 JSON 对象，用于定义预览版|字符串|  
   
   
 ### <a name="textattribution"></a>TextAttribution  
 定义纯文本属性的协定规则。  
   
-|名称|值|Type|  
+|Name|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 TextAttribution。|String|  
-|Text|属性文本。<br /><br /> 文本属性适用于整个实体，会在实体呈现后立即显示。 如果有多个文本或链接属性规则未指定目标，则应将它们连接起来，并使用“数据来自: ”标签来显示它们。|String| 
+|text|属性文本。<br /><br /> 文本属性适用于整个实体，会在实体呈现后立即显示。 如果有多个文本或链接属性规则未指定目标，则应将它们连接起来，并使用“数据来自: ”标签来显示它们。|String| 
 
 
 ## <a name="error-codes"></a>错误代码

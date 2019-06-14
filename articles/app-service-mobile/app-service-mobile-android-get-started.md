@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: crdun
 ms.openlocfilehash: 72fd043321aefe74e95b34ec24c7be2ffd409439
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66240336"
 ---
 # <a name="create-an-android-app"></a>创建 Android 应用
@@ -33,13 +33,13 @@ ms.locfileid: "66240336"
 要完成本教程，需要以下各项：
 
 * [Android 开发人员工具](https://developer.android.com/sdk/index.html)，其中包含 Android Studio 集成开发环境和最新的 Android 平台。
-* Azure 移动的 Android SDK。
+* Azure 移动 Android SDK。
 * [有效的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>创建新的 Azure 移动应用后端
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>创建数据库连接和配置客户端和服务器项目
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>创建数据库连接并配置客户端和服务器项目
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="run-the-android-app"></a>运行 Android 应用

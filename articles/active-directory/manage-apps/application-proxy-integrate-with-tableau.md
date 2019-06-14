@@ -14,10 +14,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783851"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 应用程序代理和 Tableau 
@@ -52,11 +52,11 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
 1. 登录到[Azure 门户](https://portal.azure.com)作为应用程序管理员。 
 
-2. 选择“Azure Active Directory”>“企业应用程序”。 
+2. 选择“Azure Active Directory”>“企业应用程序”。  
 
-3. 单击边栏选项卡顶部的“添加”。 
+3. 单击边栏选项卡顶部的“添加”。  
 
-4. 选择“本地应用程序”。 
+4. 选择“本地应用程序”。  
 
 5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置： 
 
@@ -64,13 +64,13 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
     - **预身份验证方法**：Azure Active Directory（推荐使用但并非必需项）。 
 
-6. 单击边栏选项卡顶部的“添加”。 添加应用程序后，将打开快速启动菜单。 
+6. 单击边栏选项卡顶部的“添加”。  添加应用程序后，将打开快速启动菜单。 
 
-7. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。 确保此测试帐户有权访问本地应用程序。 
+7. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。  确保此测试帐户有权访问本地应用程序。 
 
-8. 选择“分配”，保存测试用户分配。 
+8. 选择“分配”，保存测试用户分配。  
 
-9. （可选）在应用管理页面中选择“单一登录”。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段。 选择“保存”。 
+9. （可选）在应用管理页面中选择“单一登录”  。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段  。 选择“保存”。  
 
  
 

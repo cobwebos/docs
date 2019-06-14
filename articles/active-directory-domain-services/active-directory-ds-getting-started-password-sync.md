@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: mstephen
 ms.openlocfilehash: 734e4bad970229ea8eb770d586062b098e586353
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66234895"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>允许将密码哈希同步到 Azure Active Directory 域服务

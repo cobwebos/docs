@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: zchia
 ms.openlocfilehash: e8414b9737e0ee7f847827a432dd9887931a2532
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65470394"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>教程：配置自动用户预配 Comeet 招聘软件
@@ -45,11 +45,11 @@ ms.locfileid: "65470394"
 
 **若要从 Azure AD 应用程序库中添加 Comeet 招聘软件，请执行以下步骤：**
 
-1. 在中 **[Azure 门户](https://portal.azure.com)**，在左侧的导航窗格中，选择**Azure Active Directory**。
+1. 在中 **[Azure 门户](https://portal.azure.com)** ，在左侧的导航窗格中，选择**Azure Active Directory**。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。
+2. 转到“企业应用程序”，并选择“所有应用程序”。  
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -73,7 +73,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 * 建议将单个 Azure AD 用户分配到 Comeet 招聘软件，以测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 当将用户分配到 Comeet 招聘软件，您必须在分配对话框中选择任何有效的特定于应用程序角色 （如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
+* 当将用户分配到 Comeet 招聘软件，您必须在分配对话框中选择任何有效的特定于应用程序角色 （如果可用）。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>配置自动用户预配到 Comeet 招聘软件 
 
@@ -88,15 +88,15 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Comeet Recruiting Software”。
+2. 在应用程序列表中，选择“Comeet Recruiting Software”  。
 
     ![应用程序列表中的 Comeet Recruiting Software 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![预配选项卡](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![预配选项卡](common/provisioning-automatic.png)
 
@@ -110,7 +110,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![令牌](common/provisioning-testconnection-token.png)
 
-8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
+8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”   。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
@@ -120,7 +120,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![Comeet 招聘软件用户映射](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
-11. 查看从 Azure AD 同步到 Comeet 招聘软件中的用户属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配 Comeet 招聘软件中以执行更新操作的用户帐户。 选择“保存”按钮以提交任何更改。
+11. 查看从 Azure AD 同步到 Comeet 招聘软件中的用户属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配 Comeet 招聘软件中以执行更新操作的用户帐户。 选择“保存”按钮以提交任何更改  。
 
     ![Comeet 招聘软件组属性](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
@@ -134,11 +134,11 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![预配作用域](common/provisioning-scope.png)
 
-15. 已准备好预配时，单击“保存”。
+15. 已准备好预配时，单击“保存”  。
 
     ![正在保存预配配置](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用**同步详细信息**部分监视进度并跟踪指向预配活动报告，其中描述了由 Azure AD 预配服务对 Comeet 招聘软件执行所有操作。
+此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步   。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用**同步详细信息**部分监视进度并跟踪指向预配活动报告，其中描述了由 Azure AD 预配服务对 Comeet 招聘软件执行所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 

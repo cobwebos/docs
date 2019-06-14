@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243242"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
@@ -70,13 +70,13 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|需要|
 |----------|-----------------|--------------|
 |json-to-xml|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|描述|需要|默认|
+|Name|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|不适用|
 |consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|true|
@@ -114,13 +114,13 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|必选|
 |----------|-----------------|--------------|
 |xml-to-json|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|描述|需要|默认|
+|Name|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|不适用|
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|不适用|
@@ -150,13 +150,13 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|需要|
 |----------|-----------------|--------------|
 |find-and-replace|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|描述|需要|默认|
+|Name|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |from|要搜索的字符串。|是|不适用|
 |to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|不适用|
@@ -188,7 +188,7 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|需要|
 |----------|-----------------|--------------|
 |redirect-content-urls|根元素。|是|
 
@@ -261,7 +261,7 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|必选|
 |----------|-----------------|--------------|
 |set-backend-service|根元素。|是|
 
@@ -397,13 +397,13 @@ ms.locfileid: "66243242"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|必选|
 |----------|-----------------|--------------|
 |set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|描述|需要|默认|
+|Name|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否||
 
@@ -504,14 +504,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|需要|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
 |value|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|描述|需要|默认|
+|Name|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有标头的值。<br />-   skip - 不替换现有标头值。<br />-   append - 将值追加到现有标头值。<br />-   delete - 从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。|否|override|
 |name|指定要设置的标头的名称。|是|不适用|
@@ -571,7 +571,7 @@ OriginalUrl.
 
 ### <a name="properties"></a>属性
 
-|名称|描述|需要|默认|
+|Name|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|
 |name|指定要设置的查询参数的名称。|是|不适用|
@@ -643,7 +643,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|必选|
 |----------|-----------------|--------------|
 |rewrite-uri|根元素。|是|
 
@@ -712,7 +712,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|需要|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
 |参数|用于定义在转换中使用的变量|否|

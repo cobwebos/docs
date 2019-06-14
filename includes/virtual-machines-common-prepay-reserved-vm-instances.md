@@ -5,10 +5,10 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 05/14/2019
 ms.openlocfilehash: c7ff7ab0800449c2a3aa9d58bd036981caccaa1c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156267"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>预付 Azure 保留的 VM 实例 (RI) 的虚拟机
@@ -18,7 +18,7 @@ ms.locfileid: "66156267"
 可在 [Azure 门户](https://portal.azure.com)中购买虚拟机预留实例。 若要购买实例：
 
 - 你必须至少具有一个企业或即用即付订阅的所有者角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 - 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理才能购买预留。
 
 预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 可以通过 [Azure 门户](https://portal.azure.com)、PowerShell、CLI 或 API 更新预留的范围。
@@ -66,8 +66,8 @@ ms.locfileid: "66156267"
 ## <a name="buy-a-reserved-vm-instance"></a>购买虚拟机预留实例
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “预订”。
-3. 选择“添加”购买新的预订。
+2. 选择“所有服务”   > “预订”  。
+3. 选择“添加”  购买新的预订。
 4. 填写必填字段。 与所选属性匹配的正在运行的 VM 实例有资格获得预订折扣。 实际获得折扣的 VM 实例数取决于所选范围和数量。
 
     | 字段      | 描述|
@@ -98,15 +98,15 @@ ms.locfileid: "66156267"
 - 现有预订的区域
 - SKU
 - 数量
-- 持续时间
+- Duration
 
 但是，你可以*exchange*一个保留项，如果你想要进行更改。
 
 ## <a name="cancellations-and-exchanges"></a>取消和更换
 
-如果需要取消预留，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要请求取消，请在 Azure 门户中访问该预留，并选择“退款”创建支持请求。
+如果需要取消预留，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要请求取消，请在 Azure 门户中访问该预留，并选择“退款”  创建支持请求。
 
-如果需要将虚拟机预留实例的订购项目更改为其他区域、VM 大小组或期限，可将其交换为价值相同或更高的另一个订购项目。 新订购项目的期限开始日期不是从交换的订购项目延续。 1 年或 3 年期限从创建新订购项目开始算起。 若要请求交换，请在 Azure 门户中访问该预留，并选择“交换”创建支持请求。
+如果需要将虚拟机预留实例的订购项目更改为其他区域、VM 大小组或期限，可将其交换为价值相同或更高的另一个订购项目。 新订购项目的期限开始日期不是从交换的订购项目延续。 1 年或 3 年期限从创建新订购项目开始算起。 若要请求交换，请在 Azure 门户中访问该预留，并选择“交换”  创建支持请求。
 
 有关如何对 exchange 或退款保留的详细信息，请参阅[保留交换和退款](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
 

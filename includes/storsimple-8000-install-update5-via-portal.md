@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d2df7388018c463ba58b57be46945915210b84b6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66171174"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>从 Azure 门户安装更新
@@ -17,15 +17,15 @@ ms.locfileid: "66171174"
 
     ![选择设备](./media/storsimple-8000-install-update5-via-portal/update1.png)
 
-2. 导航到“设备设置” > “设备更新”。
+2. 导航到“设备设置” > “设备更新”。  
 
     ![单击“设备更新”](./media/storsimple-8000-install-update5-via-portal/update2.png)
 
-2. 如果有新的更新可用，则会显示一条通知。 或者，在“设备更新”边栏选项卡中，单击“扫描更新”。 已创建一个用于扫描可用更新的作业。 在作业成功完成时，系统会发出通知。
+2. 如果有新的更新可用，则会显示一条通知。 或者，在“设备更新”边栏选项卡中，单击“扫描更新”。   已创建一个用于扫描可用更新的作业。 在作业成功完成时，系统会发出通知。
 
     ![单击“设备更新”](./media/storsimple-8000-install-update5-via-portal/update3.png)
 
-3. 建议先查看版本信息，然后在设备上应用更新。 若要应用更新，请单击“安装更新”。 在“确认常规更新”边栏选项卡中，在应用更新之前，复查要完成的先决条件。 选中指示已做好更新准备的复选框，并单击“安装”。
+3. 建议先查看版本信息，然后在设备上应用更新。 若要应用更新，请单击“安装更新”。  在“确认常规更新”边栏选项卡中，在应用更新之前，复查要完成的先决条件。  选中指示已做好更新准备的复选框，并单击“安装”。 
 
     ![单击“设备更新”](./media/storsimple-8000-install-update5-via-portal/update4.png)
 
@@ -43,13 +43,13 @@ ms.locfileid: "66171174"
    
     然后，在设备上应用更新。
 
-9. 更新需要数小时才能完成。 随时可以选择更新作业并单击“详细信息”来查看作业详细信息。
+9. 更新需要数小时才能完成。 随时可以选择更新作业并单击“详细信息”来查看作业详细信息。 
 
     ![创建更新作业](./media/storsimple-8000-install-update5-via-portal/update8.png)
 
-     还可以从“设备设置”>“作业”检索更新作业的进度。 在“作业”边栏选项卡上，可以看到更新进度。
+     还可以从“设备设置”>“作业”检索更新作业的进度  。 在“作业”边栏选项卡上，可以看到更新进度。 
 
      ![创建更新作业](./media/storsimple-8000-install-update5-via-portal/update7.png)
 
-10. 在作业完成后，导航到“设备设置”>“设备更新”。 软件版本现在应当已更新。
+10. 在作业完成后，导航到“设备设置”>“设备更新”。  软件版本现在应当已更新。
 

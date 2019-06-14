@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 927987237b51a47d0c8b7c66054842b0a7ff09a7
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66473025"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
@@ -126,7 +126,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 特性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
+    | Name | *提供名称* | 例如“In from AD – User preferredDataLocation” |
     | 描述 | *提供自定义说明* |  |
     | 连接的系统 | *选取本地 Active Directory 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
@@ -137,7 +137,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 5. 将“范围筛选器”留空以包括所有对象。  可能需要根据 Azure AD Connect 部署调整范围筛选器。
 6. 转到“转换”选项卡  并实现以下转换规则：
 
-    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | source | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     |直接 | preferredDataLocation | 选择源属性 | 未选中 | 更新 |
 
@@ -174,7 +174,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 6. 转到“转换”  选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | source | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 直接 | preferredDataLocation | preferredDataLocation | 未选中 | 更新 |
 

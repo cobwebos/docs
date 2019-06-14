@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
 ms.openlocfilehash: 42c3f0ce70467c6a90bcc4e2e6b8a21d7570edc4
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606180"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集
@@ -39,7 +39,7 @@ ms.locfileid: "65606180"
 
 1. 打开 Visual Studio。
 2. 创建新的 Visual C# 控制台应用程序。
-3. 在“工具”菜单中，单击“NuGet 包管理器”，并单击“包管理器控制台”。
+3. 在“工具”  菜单中，单击“NuGet 包管理器”  ，并单击“包管理器控制台”  。
 4. 在控制台中运行下列命令以安装程序包：
 
     ```powershell
@@ -49,7 +49,7 @@ ms.locfileid: "65606180"
     ```
 
     这些命令将 .NET 库以及对这些库的引用添加到当前 Visual Studio 项目中。
-5. 在解决方案资源管理器中双击“Program.cs”将它打开，粘贴以下代码，并提供变量的值：
+5. 在解决方案资源管理器中双击“Program.cs”  将它打开，粘贴以下代码，并提供变量的值：
 
     ```csharp
     using System;

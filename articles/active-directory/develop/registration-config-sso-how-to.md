@@ -16,17 +16,17 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83fae56dd0cf7157575b7c5a07e33ca1888d8560
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545454"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序
 
 通过用于 OpenID Connect、SAML 2.0 或 WS-Fed 的 Azure AD 进行联合身份验证时，可以在应用中自动启用联合单一登录 (SSO)。 如果与 Azure AD 已有一个现有会话，但是最终用户仍然需要登录，这有可能是应用配置错误。
 
-* 如果使用 ADAL/MSAL，请确保将 **PromptBehavior** 设置为“自动”而不是“始终”。
+* 如果使用 ADAL/MSAL，请确保将 **PromptBehavior** 设置为“自动”  而不是“始终”  。
 
 * 如果生成移动应用，可能需要进行额外配置以启用中转或非中转 SSO。
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d285461aef1e56dfd08a162e51ada0340d6eeae4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62095415"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>在 Azure 安全中心中应用磁盘加密
@@ -32,8 +32,8 @@ Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows �
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡中，选择“应用磁盘加密”。
-2. 在“应用磁盘加密”边栏选项卡中，将看到一组建议应用磁盘加密的 VM。
+1. 在“建议”  边栏选项卡中，选择“应用磁盘加密”  。
+2. 在“应用磁盘加密”  边栏选项卡中，将看到一组建议应用磁盘加密的 VM。
 3. 按照说明操作，对这些 VM 应用加密。
 
 ![][1]

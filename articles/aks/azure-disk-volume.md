@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072163"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 磁盘手动创建并使用卷
@@ -33,7 +33,7 @@ ms.locfileid: "65072163"
 
 创建用于 AKS 的 Azure 磁盘时，可以在**节点**资源组中创建磁盘资源。 此方法允许 AKS 群集访问和管理磁盘资源。 如果想要在单独的资源组中创建磁盘，则必须向群集的 Azure Kubernetes 服务 (AKS) 服务主体授予磁盘的资源组的 `Contributor` 角色。
 
-对于本文，请在节点资源组中创建磁盘。 首先，使用 [az aks show][az-aks-show] 命令获取资源组名称并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取名为 myResourceGroup 的资源组中 AKS 群集名称 myAKSCluster 的节点资源组：
+对于本文，请在节点资源组中创建磁盘。 首先，使用 [az aks show][az-aks-show] 命令获取资源组名称并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取名为 myResourceGroup  的资源组中 AKS 群集名称 myAKSCluster  的节点资源组：
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -41,12 +41,12 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-现在，使用 [az disk create][az-disk-create] 命令创建磁盘。 指定在上一命令中获取的节点资源组名称，然后指定磁盘资源的名称，例如 *myAKSDisk*。 以下示例创建一个 *20*GiB 的磁盘，并且在创建后输出磁盘的 ID：
+现在，使用 [az disk create][az-disk-create] 命令创建磁盘。 指定在上一命令中获取的节点资源组名称，然后指定磁盘资源的名称，例如 *myAKSDisk*。 下面的示例创建*20*GiB 磁盘和磁盘一次创建的输出 ID。 如果需要使用 Windows Server 容器 （目前以预览版在 AKS 中） 创建用于磁盘，将添加`--os-type windows`参数，以正确格式化该磁盘。
 
 ```azurecli-interactive
 az disk create \
   --resource-group MC_myResourceGroup_myAKSCluster_eastus \
-  --name myAKSDisk  \
+  --name myAKSDisk \
   --size-gb 20 \
   --query id --output tsv
 ```
@@ -62,7 +62,7 @@ az disk create \
 
 ## <a name="mount-disk-as-volume"></a>装载磁盘作为卷
 
-若要将 Azure 磁盘装载到 Pod 中，请在容器规范中配置卷。使用以下内容创建名为 `azure-disk-pod.yaml` 的新文件。 将 `diskName` 更新为在上一步骤中创建的磁盘的名称，将 `diskURI` 更新为在磁盘创建命令的输出中显示的磁盘 ID。 如果需要，请更新 `mountPath`，这是 Azure 磁盘在 Pod 中的装载路径。
+若要将 Azure 磁盘装载到 Pod 中，请在容器规范中配置卷。使用以下内容创建名为 `azure-disk-pod.yaml` 的新文件。 将 `diskName` 更新为在上一步骤中创建的磁盘的名称，将 `diskURI` 更新为在磁盘创建命令的输出中显示的磁盘 ID。 如果需要，请更新 `mountPath`，这是 Azure 磁盘在 Pod 中的装载路径。 对于 Windows Server 容器 （目前以预览版在 AKS 中），指定*mountPath*使用 Windows 路径约定，如*d:* 。
 
 ```yaml
 apiVersion: v1

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: 7efa5114a903ba88010ec44f2f1038331df62948
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097974"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>借助 API 控制台中的自定义列表进行审查
@@ -22,7 +22,7 @@ ms.locfileid: "62097974"
 在 Azure 内容审查器中使用[列表管理 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) 创建自定义图像列表。 通过图像审查 API 使用自定义图像列表。 图像审查操作将评估图像。 如果创建自定义列表，该操作还会将其与自定义列表中的图像进行比较。 可使用自定义列表来阻止或允许图像。
 
 > [!NOTE]
-> 最大限制为 5 个图像列表，每个列表“不超过 10,000 个图像”。
+> 最大限制为 5 个图像列表，每个列表“不超过 10,000 个图像”   。
 >
 
 使用列表管理 API 执行以下任务：
@@ -36,23 +36,23 @@ ms.locfileid: "62097974"
 - 筛选索引，使新的扫描中包含列表更改项。
 
 ## <a name="use-the-api-console"></a>使用 API 控制台
-必须有订阅密钥，才能在联机控制台中试用 API。 订阅密钥位于“设置”选项卡上的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
+必须有订阅密钥，才能在联机控制台中试用 API。 订阅密钥位于“设置”  选项卡上的“Ocp-Apim-Subscription-Key”  框中。 有关详细信息，请参阅[概述](overview.md)。
 
 ## <a name="refresh-search-index"></a>刷新搜索索引
 
 对图像列表进行更改后，必须刷新其索引，使更改包括在未来的扫描中。 此步骤类似于桌面上的搜索引擎（如果启用）或 Web 搜索引擎的操作，即不断刷新其索引以包含新文件或页面。
 
-1. 在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像列表”，然后选择“刷新搜索索引”。
+1. 在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像列表”，然后选择“刷新搜索索引”   。
 
-   “图像列表 - 刷新搜索索引”页随即打开。
+   “图像列表 - 刷新搜索索引”页随即打开  。
 
-2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。 
+2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域  。 
  
     ![“图像列表 - 刷新搜索索引”页面上的区域选择](images/test-drive-region.png)
 
-    “图像列表 - 刷新搜索索引”API 控制台随即打开。
+    “图像列表 - 刷新搜索索引”API 控制台随即打开  。
 
-3. 在 listId 框中，输入列表 ID。 输入订阅密钥，再选择“发送”。
+3. 在 listId 框中，输入列表 ID  。 输入订阅密钥，再选择“发送”  。
 
    ![“图像列表 - 刷新搜索索引”控制台响应内容框](images/try-image-list-refresh-1.png)
 
@@ -61,17 +61,17 @@ ms.locfileid: "62097974"
 
 1. 转到[图像列表管理 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)。
 
-   “图像列表 - 创建”页随即打开。 
+   “图像列表 - 创建”页随即打开  。 
 
-3. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。
+3. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域  。
 
    ![“图像列表 - 创建”页面上的区域选择](images/test-drive-region.png)
 
-   “图像列表 - 创建”API 控制台随即打开。
+   “图像列表 - 创建”API 控制台随即打开  。
  
-4. 在“Ocp-Apim-Subscription-Key”框中，输入订阅密钥。
+4. 在“Ocp-Apim-Subscription-Key”框中，输入订阅密钥  。
 
-5. 在“请求正文”框中，在“名称”中输入值（例如 MyList），在“说明”中输入相关说明。
+5. 在“请求正文”框中，在“名称”中输入值（例如 MyList），在“说明”中输入相关说明    。
 
    ![“图像列表 - 创建”控制台上的请求正文名称和说明](images/try-terms-list-create-1.png)
 
@@ -89,27 +89,27 @@ ms.locfileid: "62097974"
 
    添加元数据作为键值对，而不是添加实际图像。
  
-7. 选择“发送”。 列表已创建。 请注意，ID 值与新的列表相关联。 需在其他图像列表管理功能中使用此 ID。
+7. 选择“发送”。  列表已创建。 请注意，ID 值与新的列表相关联  。 需在其他图像列表管理功能中使用此 ID。
 
    ![“图像列表 - 创建”控制台上的“响应”内容框中会显示列表 ID](images/try-terms-list-create-2.png)
  
-8. 接下来，向 MyList 添加图像。 在左侧菜单中，选择“图像”，然后选择“添加图像”。
+8. 接下来，向 MyList 添加图像。 在左侧菜单中，选择“图像”，然后选择“添加图像”   。
 
-   “图像 - 添加图像”页随即打开。 
+   “图像 - 添加图像”页随即打开  。 
 
-9. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。
+9. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域  。
 
    ![“图像 - 添加图像”页面上的区域选择](images/test-drive-region.png)
 
-   “图像 - 添加图像”API 控制台随即打开。
+   “图像 - 添加图像”API 控制台随即打开  。
  
-10. 在 listId 框中输入生成的列表 ID，然后输入要添加的图像的 URL。 输入订阅密钥，再选择“发送”。
+10. 在 listId 框中输入生成的列表 ID，然后输入要添加的图像的 URL  。 输入订阅密钥，再选择“发送”  。
 
-11. 要验证已向列表添加图像，请在左侧菜单中选择“图像”，然后选择“获取所有图像 ID”。
+11. 要验证已向列表添加图像，请在左侧菜单中选择“图像”，然后选择“获取所有图像 ID”   。
 
-    “图像 - 获取所有图像 ID”API 控制台随即打开。
+    “图像 - 获取所有图像 ID”API 控制台随即打开  。
   
-12. 在 listId 框中，输入列表 ID，然后输入订阅密钥。 选择“发送”。
+12. 在 listId 框中，输入列表 ID，然后输入订阅密钥  。 选择“发送”。 
 
     ![“图像 - 获取所有图像 ID”控制台上的“响应”内容框中列出了所输入的图像](images/try-image-list-create-11.png)
  
@@ -119,47 +119,47 @@ ms.locfileid: "62097974"
 
 删除图像或列表非常简单。 可使用 API 执行以下任务：
 
-- 删除映像。 （“图像 - 删除”）
-- 删除列表中的所有图像而不删除列表。 （“图像 - 删除所有图像”）
-- 删除列表及其所有内容。 （“图像列表 - 删除”）
+- 删除映像。 （“图像 - 删除”  ）
+- 删除列表中的所有图像而不删除列表。 （“图像 - 删除所有图像”  ）
+- 删除列表及其所有内容。 （“图像列表 - 删除”  ）
 
 此示例将删除单个图像：
 
-1. 在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像”，然后选择“删除”。 
+1. 在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像”，然后选择“删除”   。 
 
-   “图像 - 删除”页随即打开。
+   “图像 - 删除”页随即打开  。
 
-2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。 
+2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域  。 
 
    ![“图像 - 删除”页面上的区域选择](images/test-drive-region.png)
  
-   “图像 - 删除”API 控制台随即打开。
+   “图像 - 删除”API 控制台随即打开  。
  
-3. 在 listId 框中，输入要从中删除图像的列表 ID。  这是对 MyList 在“图像 - 获取所有图像 ID”控制台中返回的数字。 然后，输入要删除图像的 ImageId。 
+3. 在 listId 框中，输入要从中删除图像的列表 ID  。  这是对 MyList 在“图像 - 获取所有图像 ID”控制台中返回的数字  。 然后，输入要删除图像的 ImageId  。 
 
-在本示例中，列表 ID 为 58953，是 ContentSource 的值。 图像 ID 是 59021，是 ContentIds 的值。
+在本示例中，列表 ID 为 58953，是 ContentSource 的值   。 图像 ID 是 59021，是 ContentIds 的值   。
 
-1. 输入订阅密钥，再选择“发送”。
+1. 输入订阅密钥，再选择“发送”  。
 
-1. 要验证已删除图像，请使用“图像 - 获取所有图像 ID”控制台。
+1. 要验证已删除图像，请使用“图像 - 获取所有图像 ID”控制台  。
  
 ## <a name="change-list-information"></a>更改列表信息
 
 可以编辑列表的名称和说明，并添加元数据项。
 
-1. 在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像列表”，然后选择“更新详细信息”。 
+1. 在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像列表”，然后选择“更新详细信息”   。 
 
-   “图像列表 - 更新详细信息”页随即打开。
+   “图像列表 - 更新详细信息”页随即打开  。
 
-2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。  
+2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域  。  
 
     ![“图像列表 - 更新详细信息”页面上的区域选择](images/test-drive-region.png)
 
-    “图像列表 - 更新详细信息”API 控制台随即打开。
+    “图像列表 - 更新详细信息”API 控制台随即打开  。
  
-3. 在 listId 框中，输入列表 ID，然后输入订阅密钥。
+3. 在 listId 框中，输入列表 ID，然后输入订阅密钥  。
 
-4. 在“请求正文”框中，进行编辑，然后选择页面上的“发送”按钮。
+4. 在“请求正文”框中，进行编辑，然后选择页面上的“发送”按钮   。
 
    ![“图像列表 - 更新详细信息”控制台上的请求正文编辑](images/try-terms-list-change-1.png)
  

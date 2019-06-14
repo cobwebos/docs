@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
 ms.openlocfilehash: 7776e0005facb57d223a1ba1e73d1efa30edec49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60327943"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>为 Azure 准备 Ubuntu 虚拟机
@@ -141,7 +141,7 @@ datasource:
         # export HISTSIZE=0
         # logout
 
-1. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
+1. 在 Hyper-V 管理器中单击“操作”->“关闭”  。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="references"></a>参考
 [Ubuntu 硬件支持 (HWE) 内核](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)

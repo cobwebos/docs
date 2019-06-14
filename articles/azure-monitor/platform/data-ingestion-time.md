@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/24/2019
 ms.author: bwren
 ms.openlocfilehash: d508ce217e3a97b3399435cb63295eb28965359a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65605606"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
@@ -82,7 +82,7 @@ Azure Monitor 的首要任务是确保不会丢失任何客户数据，因此系
 由于在不同情况下，不同资源的引入时间可能会有所不同。 可以使用日志查询来识别环境的特定行为。
 
 ### <a name="ingestion-latency-delays"></a>引入延迟延迟
-可以通过比较 [ingestion_time()](/azure/kusto/query/ingestiontimefunction) 函数的结果和 TimeGenerated 字段来测量特定记录的延迟。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
+可以通过比较 [ingestion_time()](/azure/kusto/query/ingestiontimefunction) 函数的结果和 TimeGenerated 字段来测量特定记录的延迟  。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
 
 例如，以下查询将显示哪些计算机当天的引入时间最长： 
 
@@ -123,9 +123,9 @@ AzureDiagnostics
 ```
 
 ### <a name="resources-that-stop-responding"></a>停止响应的资源 
-在某些情况下，资源无法停止发送数据。 若要了解资源是否正在发送数据，请查看由标准 TimeGenerated 字段标识的最新记录。  
+在某些情况下，资源无法停止发送数据。 若要了解资源是否正在发送数据，请查看由标准 TimeGenerated 字段标识的最新记录  。  
 
-使用检测信号表来检查 VM 的可用性，因为检测信号由代理每分钟发送一次。 使用以下查询列出最近尚未报告过检测信号的活动计算机： 
+使用检测信号表来检查 VM 的可用性，因为检测信号由代理每分钟发送一次  。 使用以下查询列出最近尚未报告过检测信号的活动计算机： 
 
 ``` Kusto
 Heartbeat  

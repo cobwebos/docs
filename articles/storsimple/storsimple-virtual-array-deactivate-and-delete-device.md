@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: bb1a56d204a46f89213f20e317494120f0ea565e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60580536"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>停用和删除 StorSimple Virtual Array
@@ -46,13 +46,13 @@ ms.locfileid: "60580536"
 
 #### <a name="to-deactivate-the-device"></a>停用设备
 
-1. 在服务中，转到“管理”>“设备”。 在“设备”边栏选项卡中，单击并选择要停用的设备。
+1. 在服务中，转到“管理”>“设备”  。 在“设备”  边栏选项卡中，单击并选择要停用的设备。
    
     ![选择要停用的设备](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
-2. 在“设备仪表板”边栏选项卡中，单击“...更多”，并从列表中选择“停用”。
+2. 在“设备仪表板”  边栏选项卡中，单击“...更多”  ，并从列表中选择“停用”  。
    
     ![单击“停用”](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
-3. 在“停用”边栏选项卡中，键入设备名称，并单击“停用”。 
+3. 在“停用”  边栏选项卡中，键入设备名称，并单击“停用”  。 
    
     ![确认停用](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
    
@@ -73,11 +73,11 @@ ms.locfileid: "60580536"
 
 #### <a name="to-delete-the-device"></a>删除设备
 
-1. 在 StorSimple Device Manager 中，转到“管理”>“设备”。 在“设备”边栏选项卡中，选择要删除的已停用设备。
-2. 在“设备仪表板”边栏选项卡中，单击“...更多”，并单击“删除”。
+1. 在 StorSimple Device Manager 中，转到“管理”>“设备”  。 在“设备”  边栏选项卡中，选择要删除的已停用设备。
+2. 在“设备仪表板”  边栏选项卡中，单击“...更多”  ，并单击“删除”  。
    
    ![选择要删除的设备](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
-3. 在“删除”边栏选项卡中，键入设备的名称以确认删除，并单击“删除”。 删除设备不会删除与该设备关联的云数据。 
+3. 在“删除”  边栏选项卡中，键入设备的名称以确认删除，并单击“删除”  。 删除设备不会删除与该设备关联的云数据。 
    
    ![确认删除](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete5.png) 
 4. 删除将开始并且需要花费几分钟时间才能完成。

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e7dcdb960fbd9196aca8b667269a4c6e5a1fb8f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794982"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
@@ -64,7 +64,7 @@ Azure Maps 互动地图控件适用于 web 和 Android 支持缩放级别 25 的
 
 通过缩放级别调用磁贴，x 和 y 坐标对应磁贴在该缩放级别的网格上的位置。
 
-在确定要使用的缩放级别，请记住每个位置是在其磁贴上的固定位置中。 这意味着要显示给定范围区域所需的磁贴数量取决于世界上缩放网格的具体位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。 但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
+在确定要使用的缩放级别，请记住每个位置是在其磁贴上的固定位置中。 这意味着要显示给定范围区域所需的磁贴数量取决于世界上缩放网格的具体位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。  但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
 
 ![缩放演示比例](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
 

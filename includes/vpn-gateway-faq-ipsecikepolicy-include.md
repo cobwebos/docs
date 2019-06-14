@@ -9,14 +9,14 @@ ms.date: 12/14/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66151037"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>是否所有 Azure VPN 网关 SKU 都支持自定义 IPsec/IKE 策略？
-自定义 IPsec/IKE 策略在 Azure VpnGw1、VpnGw2、VpnGw3、标准 VPN 网关和高性能 VPN 网关上受支持。 不支持基本 SKU。
+自定义 IPsec/IKE 策略在 Azure VpnGw1、VpnGw2、VpnGw3、标准  VPN 网关和高性能  VPN 网关上受支持。 不支持基本 SKU。  
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>在一个连接上可以指定多少个策略？
 一个给定的连接只能指定一个策略组合。
@@ -27,7 +27,7 @@ ms.locfileid: "66151037"
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>自定义策略中支持的算法和密钥强度有哪些？
 下表列出了支持的加密算法和密钥强度，客户可自行配置。 必须为每个字段选择一个选项。
 
-| IPsec/IKEv2  | 选项                                                                   |
+|  IPsec/IKEv2  |  选项                                                                   |
 | ---              | ---                                                                           |
 | IKEv2 加密 | AES256、AES192、AES128、DES3、DES                                             |
 | IKEv2 完整性  | SHA384、SHA256、SHA1、MD5                                                     |
@@ -35,12 +35,12 @@ ms.locfileid: "66151037"
 | IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、无      |
 | IPsec 完整性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                            |
 | PFS 组        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、无                              |
-| QM SA 生存期   | 秒（整数；至少为 300 秒/默认为 27000 秒）<br>KB（整数；至少为 1024 KB/默认为 102400000 KB）           |
+| QM SA 生存期   | 秒（整数；  至少为 300 秒/默认为 27000 秒）<br>KB（整数；  至少为 1024 KB/默认为 102400000 KB）           |
 | 流量选择器 | UsePolicyBasedTrafficSelectors ($True/$False; default $False)                 |
 |                  |                                                                               |
 
 > [!IMPORTANT]
-> 1. 在 IKE 和 IPsec PFS 中，DHGroup2048 和 PFS2048 与 Diffie-Hellman 组 14 相同。 如需完整的映射，请参阅 [Diffie-Hellman 组](#DH)。
+> 1. 在 IKE 和 IPsec PFS 中，DHGroup2048 和 PFS2048 与 Diffie-Hellman 组  14 相同。 如需完整的映射，请参阅 [Diffie-Hellman 组](#DH)。
 > 2. 对于 GCMAES 算法，必须为 IPsec 加密和完整性指定相同的 GCMAES 算法和密钥长度。
 > 3. 在 Azure VPN 网关上，IKEv2 主模式 SA 生存期固定为 28,800 秒
 > 4. QM SA 生存期是可选参数。 如果未指定，则使用默认值 27,000 秒（7.5 小时）和 102400000 KB (102GB)。
@@ -59,7 +59,7 @@ ms.locfileid: "66151037"
 
 SA 生存期是本地规范，不需匹配。
 
-如果启用 UsePolicyBasedTrafficSelectors，则需确保对于本地网络（本地网关）前缀与 Azure 虚拟网络前缀的所有组合，VPN 设备都定义了与之匹配的流量选择器（而不是任意到任意）。 例如，如果本地网络前缀为 10.1.0.0/16 和 10.2.0.0/16，虚拟网络前缀为 192.168.0.0/16 和 172.16.0.0/16，则需指定以下流量选择器：
+如果启用  UsePolicyBasedTrafficSelectors，则需确保对于本地网络（本地网关）前缀与 Azure 虚拟网络前缀的所有组合，VPN 设备都定义了与之匹配的流量选择器（而不是任意到任意）。 例如，如果本地网络前缀为 10.1.0.0/16 和 10.2.0.0/16，虚拟网络前缀为 192.168.0.0/16 和 172.16.0.0/16，则需指定以下流量选择器：
 * 10.1.0.0/16 <====> 192.168.0.0/16
 * 10.1.0.0/16 <====> 172.16.0.0/16
 * 10.2.0.0/16 <====> 192.168.0.0/16
@@ -70,7 +70,7 @@ SA 生存期是本地规范，不需匹配。
 ### <a name ="DH"></a>支持哪些 Diffie-Hellman 组？
 下表列出了支持的 Diffie-Hellman 组，分别针对 IKE (DHGroup) 和 IPsec (PFSGroup)：
 
-| **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | 密钥长度 |
+| **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | 密钥长度  |
 | ---                       | ---                      | ---          | ---            |
 | 第                         | DHGroup1                 | PFS1         | 768 位 MODP   |
 | 2                         | DHGroup2                 | PFS2         | 1024 位 MODP  |

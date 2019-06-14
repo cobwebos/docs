@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: b21bf1b50152130d7b6edd227c87fcaca28c1e6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001405"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>如何发现 Azure 数据目录中的数据源
@@ -48,11 +48,11 @@ Azure 数据目录是一个完全托管的云服务，充当企业数据源的�
 查看搜索结果时，将突出显示任何与指定搜索词（如数据资产名称、说明和标记）匹配的属性，从而更轻松地确定给定搜索返回给定数据资产的原因。
 
 > [!NOTE]
-> 若要关闭命中词突出显示功能，请使用数据目录门户中的“突出显示”开关。
+> 若要关闭命中词突出显示功能，请使用数据目录门户中的“突出显示”  开关。
 
 当您查看搜索结果时，它可能不总是那么明确的数据资产，包括原因，即使使用启用命中突出显示。 由于默认会搜索所有属性，可能会由于列级属性上的匹配而返回某数据资产。 因为多个用户可以对使用其自己的标记和说明的已注册的数据资产进行批注，并非所有元数据显示在搜索结果列表。
 
-在默认的磁贴视图中，显示在搜索结果中的每个磁贴都包括“查看搜索词匹配项”图标，因此可以快速查看匹配项数目及其位置，并根据需要跳转到它们。
+在默认的磁贴视图中，显示在搜索结果中的每个磁贴都包括“查看搜索词匹配项”  图标，因此可以快速查看匹配项数目及其位置，并根据需要跳转到它们。
 
  ![在 Azure 数据目录门户中命中突出显示并搜索匹配项](./media/data-catalog-how-to-discover/search-matches.png)
 

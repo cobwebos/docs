@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/27/2017
 ms.openlocfilehash: 926c9ebe8675d8b50d4544be813ae0b15492ae35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60681642"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理具有 UNH2.5 段的 EDIFACT 文档
@@ -38,14 +38,14 @@ UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'
 若要解码传入消息，请在 EDIFACT 协议接收设置中配置架构
 1. 将架构添加到集成帐户    
 2. 在 EDIFACT 协议接收设置中配置架构。 
-3. 选择 EDIFACT 协议，并单击“编辑为 JSON”。  在接收协议 **schemaReferences**
+3. 选择 EDIFACT 协议，并单击“编辑为 JSON”  。  在接收协议 **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png) 中添加 UNH2.5 值
 
 ### <a name="edifact-encode"></a>EDIFACT 编码
 若要编码传入消息，请在 EDIFACT 协议发送设置中配置架构
 1. 将架构添加到集成帐户    
 2. 在 EDIFACT 协议发送设置中配置架构。 
-3. 选择 EDIFACT 协议，并单击“编辑为 JSON”。  在发送协议 **schemaReferences**
+3. 选择 EDIFACT 协议，并单击“编辑为 JSON”  。  在发送协议 **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png) 中添加 UNH2.5 值
 
 ## <a name="next-steps"></a>后续步骤

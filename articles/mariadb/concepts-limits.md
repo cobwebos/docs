@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: b78671cc61a4fe755b908ed9f71052cbd0a70b38
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65550512"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
@@ -19,7 +19,7 @@ ms.locfileid: "65550512"
 ## <a name="maximum-connections"></a>最大连接数
 每个定价层的最大连接数和 vCore 数如下所示：
 
-|**定价层**|**vCore(s)**| 最大连接数|
+|**定价层**|**vCore(s)**| 最大连接数 |
 |---|---|---|
 |基本| 第| 50|
 |基本| 2| 100|
@@ -84,7 +84,7 @@ ms.locfileid: "65550512"
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
 ### <a name="storage-size"></a>存储大小
-- 请参阅[定价层](concepts-pricing-tiers.md)为每个定价层的存储大小限制。
+- 有关每个定价层的存储大小限制，请参阅[定价层](concepts-pricing-tiers.md)。
 
 ## <a name="current-known-issues"></a>当前已知的问题
 - 建立连接后，MariaDB 服务器实例显示的服务器版本不正确。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。

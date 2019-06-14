@@ -11,10 +11,10 @@ ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
 ms.openlocfilehash: 30a090aeb2d66c732e70a9acce67d5f3374c32fa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153150"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何通过 Ruby 使用队列存储
@@ -59,7 +59,7 @@ Azure.config.storage_access_key = "<your Azure storage access key>"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到要使用的存储帐户。
-3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”。
+3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”  。
 4. 在显示的“访问密钥”边栏选项卡中，可看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个。 
 5. 单击复制图标以将键复制到剪贴板。 
 
@@ -99,9 +99,9 @@ result = azure_queue_service.peek_messages("test-queue",
 可通过两个步骤从队列中删除消息。
 
 1. 在调用 **list\_messages()** 时，默认情况下会获取队列中的下一条消息。 也可以指定要获取的消息数。 从 **list\_messages()** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 将传递以秒为单位的可见性超时值作为参数。
-2. 还必须调用 **delete_message()**，才能完成队列消息删除操作。
+2. 还必须调用 **delete_message()** ，才能完成队列消息删除操作。
 
-此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message()**。
+此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message()** 。
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)

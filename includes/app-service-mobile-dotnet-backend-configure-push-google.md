@@ -5,17 +5,17 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: d1dcd7895025ea608e5f6c4db5e0967817934f2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141217"
 ---
 选择与后端项目类型 &mdash;[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
 
 ### <a name="dotnet"></a>.NET 后端项目
 
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”。 搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”。 这会安装通知中心客户端库。
+1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”  。 搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”  。 这会安装通知中心客户端库。
 2. 在“控制器”文件夹中，打开“TodoItemController.cs”，添加以下 `using` 语句：
 
     ```csharp

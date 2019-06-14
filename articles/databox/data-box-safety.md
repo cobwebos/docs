@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
 ms.openlocfilehash: d1bad50f2d97434865bb02ad54b1643c54e01790
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953030"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>安全安装和运行 Azure Data Box
@@ -40,7 +40,7 @@ ms.locfileid: "65953030"
 
 ![警告图标](./media/data-box-safety/warning_icon.png)![电击图标](./media/data-box-safety/electrical_shock_hazard_icon.png)![无用户可维修部件图标](./media/data-box-safety/no_user_serviceable_parts_icon.png)**小心** 
 
-* 检查收到的原始设备是否有损坏。 如果设备机箱受损，请联系 Microsoft 支持部门获取更换件。 请勿尝试操作设备。 
+* 检查收到的原始设备是否有损坏。  如果设备机箱受损，请联系 Microsoft 支持部门获取更换件。 请勿尝试操作设备。 
 * 设备上配备了防篡改螺丝。 如果你怀疑设备不正常，请联系 Microsoft 支持部门获取更换件。 请勿尝试自行维修设备。 
 * 设备不包含任何用户可维修部件。 内有危险电压、电流和能量。 请勿拆开机箱。 请将设备退回到 Microsoft 进行检修。
 

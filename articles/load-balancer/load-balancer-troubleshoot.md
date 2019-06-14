@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
 ms.openlocfilehash: c5f92d564a93823fd9c0f932fa95f20d4e827761
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60734467"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>排查 Azure 负载均衡器问题
@@ -40,39 +40,39 @@ ms.locfileid: "60734467"
 
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>原因 1：负载均衡器后端池 VM 不正常 
 
-验证及解决方法
+验证及解决方法 
 
-要解决此问题，请登录参与的 VM，并检查 VM 状态是否正常，能否从池中的另一 VM 响应 PsPing 或 TCPing。 如果 VM 不正常或无法响应探测，必须先解决此问题并使 VM 恢复正常状态，然后该 VM 才可参与负载均衡。
+要解决此问题，请登录参与的 VM，并检查 VM 状态是否正常，能否从池中的另一 VM 响应 PsPing  或 TCPing  。 如果 VM 不正常或无法响应探测，必须先解决此问题并使 VM 恢复正常状态，然后该 VM 才可参与负载均衡。
 
 ### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>原因 2：负载均衡器后端池 VM 未侦听探测端口
 如果 VM 处于正常状态但未响应探测，则可能是因为参与的 VM 上的探测端口未打开，或 VM 未侦听此端口。
 
-验证及解决方法
+验证及解决方法 
 
 1. 登录到后端 VM。 
 2. 打开命令提示符并运行下列命令，以验证是否有应用程序在侦听探测端口：   
             netstat -an
-3. 如果端口状态未列为“正在侦听”，请配置适当的端口。 
-4. 或者，选择其他列为“正在侦听”的端口，并相应地更新负载均衡器配置。              
+3. 如果端口状态未列为“正在侦听”  ，请配置适当的端口。 
+4. 或者，选择其他列为“正在侦听”  的端口，并相应地更新负载均衡器配置。              
 
 ### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>原因 3：防火墙或网络安全组要阻止负载均衡器后端池 VM 上的端口  
 如果 VM 上的防火墙要阻止探测端口，或者子网或 VM 上配置的一个或多个网络安全组禁止探测到达端口，则 VM 无法响应运行状况探测。          
 
-验证及解决方法
+验证及解决方法 
 
 * 如果启用了防火墙，请检查它是否配置为允许探测端口。 如果没有启用防火墙，请将其配置为允许探测端口上的流量并重新测试。 
 * 在网络安全组列表中，检查探测端口上的传入或传出流量是否被干扰。 
-* 此外，检查 VM NIC 或子网上是否存在优先级高于允许 LB 探测和流量的默认规则的“全部拒绝”网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16）。 
+* 此外，检查 VM NIC 或子网上是否存在优先级高于允许 LB 探测和流量的默认规则的“全部拒绝”  网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16）。 
 * 如果上述任意规则阻止探测流量，请将其删除并将规则配置为允许探测流量。  
 * 测试 VM 是否现已开始响应运行状况探测。 
 
 ### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>原因 4：负载均衡器中的其他错误配置
 如果上述各原因貌似都经过验证和正确解决，但后端 VM 仍未响应运行状况探测，请手动测试连接性，并收集一些跟踪信息以了解连接性。
 
-验证及解决方法
+验证及解决方法 
 
-* 使用来自 VNet 中其他 VM 的 Psping 进行探测端口响应测试（例如 .\psping.exe -t 10.0.0.4:3389）并记录结果。 
-* 使用来自 VNet 中其他 VM 的 TCPing 进行探测端口响应测试（例如 .\tcping.exe 10.0.0.4 3389）并记录结果。 
+* 使用来自 VNet 中其他 VM 的 Psping  进行探测端口响应测试（例如 .\psping.exe -t 10.0.0.4:3389）并记录结果。 
+* 使用来自 VNet 中其他 VM 的 TCPing  进行探测端口响应测试（例如 .\tcping.exe 10.0.0.4 3389）并记录结果。 
 * 如果在这些 ping 测试中未收到响应，则
     - 在目标后端池 VM 中同时运行一个 Netsh 跟踪，再运行一个来自相同 VNet 的测试 VM。 现在，运行一段时间的 PsPing 测试，收集一些网络跟踪信息，然后停止测试。 
     - 分析网络捕获，查看是否同时存在与 ping 查询相关的传入和传出数据包。 
@@ -92,7 +92,7 @@ ms.locfileid: "60734467"
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>原因 1：负载均衡器后端池 VM 未侦听数据端口 
 如果 VM 未响应数据流量，这可能是因为参与的 VM 上的目标端口未打开，或者 VM 未侦听此端口。 
 
-验证及解决方法
+验证及解决方法 
 
 1. 登录到后端 VM。 
 2. 打开命令提示符并运行下列命令，以验证是否有应用程序在侦听数据端口：  netstat -an 
@@ -106,7 +106,7 @@ ms.locfileid: "60734467"
 * 列出后端 VM 上配置的网络安全组。 有关详细信息，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)。
 * 在网络安全组列表中，检查：
     - 数据端口上的传入或传出流量是否被干扰。 
-    - 检查 VM NIC 或子网上是否存在优先级高于允许负载均衡探测和流量的默认规则的“全部拒绝”网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16 - 即探测端口） 
+    - 检查 VM NIC 或子网上是否存在优先级高于允许负载均衡探测和流量的默认规则的“全部拒绝”  网络安全组规则（网络安全组必须允许负载均衡器 IP 168.63.129.16 - 即探测端口） 
 * 如果某规则阻止流量，请将其删除并将规则重新配置为允许数据流量。  
 * 测试 VM 是否现已开始响应运行状况探测。
 
@@ -114,7 +114,7 @@ ms.locfileid: "60734467"
 
 如果负载均衡器后端 VM 上托管的应用程序正尝试通过同一网络接口访问同一后端 VM 上托管的其他应用程序，该操作不受支持且会失败。 
 
-解决方法 - 可通以下方法解决该问题：
+解决方法  - 可通以下方法解决该问题：
 * 为每个应用程序配置单独的后端池 VM。 
 * 在双 NIC VM 中配置应用程序，以便每个应用程序均使用自己的网络接口和 IP 地址。 
 
@@ -122,7 +122,7 @@ ms.locfileid: "60734467"
 
 如果在 VNet 中配置了内部负载均衡器，并且某个参与的后端 VM 正在尝试访问内部负载均衡器前端，则当将流映射到原始 VM 时会发生故障。 此方案不受支持。 有关详细讨讨论，请参阅[限制](load-balancer-overview.md#limitations)。
 
-解决方案：有几种方法来取消阻止此方案，包括使用代理。 评估应用程序网关或其他第三方代理服务器（例如 nginx 或 haproxy）。 有关应用程序网关的详细信息，请参阅[应用程序网关概述](../application-gateway/application-gateway-introduction.md)
+解决方案：有几种方法来取消阻止此方案，包括使用代理  。 评估应用程序网关或其他第三方代理服务器（例如 nginx 或 haproxy）。 有关应用程序网关的详细信息，请参阅[应用程序网关概述](../application-gateway/application-gateway-introduction.md)
 
 ## <a name="additional-network-captures"></a>附加网络捕获
 如果决定打开支持案例，请收集下列信息，以更快获得解决方案。 选择单个后端 VM 执行下列测试：

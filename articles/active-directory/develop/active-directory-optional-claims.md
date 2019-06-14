@@ -18,10 +18,10 @@ ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119723"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：提供向 Azure AD 应用程序的可选声明
@@ -81,15 +81,15 @@ ms.locfileid: "66119723"
 
 **表 3：仅限 V2.0 的可选声明**
 
-| JWT 声明     | 名称                            | 描述                                | 说明 |
+| JWT 声明     | Name                            | 描述                                | 说明 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
 | `onprem_sid`  | 本地安全标识符 |                                             |       |
 | `pwd_exp`     | 密码过期时间        | 密码过期的日期时间。 |       |
 | `pwd_url`     | 更改密码 URL             | 用户更改密码时可以访问的 URL。   |   |
 | `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果它们不声明不包括。   |  以 MFA 中的[可信 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 设置为基础。    |
-| `nickname`    | 昵称                        | 用户的附加名称，不同于名字或姓氏。 | 
-| `family_name` | 姓                       | 提供了最后一个名称、 姓氏或家族名称的用户的用户对象中定义。 <br>"family_name":"Miller" | MSA 和 AAD 中受支持   |
+| `nickname`    | 别名                        | 用户的附加名称，不同于名字或姓氏。 | 
+| `family_name` | 姓氏                       | 提供了最后一个名称、 姓氏或家族名称的用户的用户对象中定义。 <br>"family_name":"Miller" | MSA 和 AAD 中受支持   |
 | `given_name`  | 名字                      | 提供了第一个或用户对象上设置为"给定"的用户的名称。<br>"given_name":"Frank"                   | MSA 和 AAD 中受支持  |
 | `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于关键数据。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 |
 
@@ -220,7 +220,7 @@ ms.locfileid: "66119723"
    - "DistributionList"
    - "DirectoryRole"
 
-   例如:
+   例如：
 
    ```json
    "groupMembershipClaims": "SecurityGroup"
@@ -303,9 +303,9 @@ ms.locfileid: "66119723"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
-1. 选择左侧的“应用注册”。
+1. 选择左侧的“应用注册”  。
 1. 在列表中找到要为其配置可选声明的应用程序并单击它。
-1. 在应用程序页面中，单击“清单”打开内联清单编辑器。 
+1. 在应用程序页面中，单击“清单”  打开内联清单编辑器。 
 1. 可使用此编辑器直接编辑清单。 该清单遵循 [Application 实体](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)的架构，保存后会自动设置格式。 新元素将添加到 `OptionalClaims` 属性。
 
     ```json
@@ -337,7 +337,7 @@ ms.locfileid: "66119723"
 
     在本例中，已将不同的可选声明添加到应用程序可以接收的每种令牌。 ID 令牌现在会包含联合用户的完整格式 UPN (`<upn>_<homedomain>#EXT#@<resourcedomain>`)。 其他客户端请求此应用程序的访问令牌现在将包含 auth_time 声明。 SAML 令牌现在会包含 skypeId 目录架构扩展（在本例中，此应用的应用 ID 为 ab603c56068041afb2f6832e2a17e237）。 SAML 令牌会将 Skype ID 公开为 `extension_skypeId`。
 
-1. 更新完清单后，请单击“保存”以保存清单
+1. 更新完清单后，请单击“保存”  以保存清单
 
 ## <a name="next-steps"></a>后续步骤
 

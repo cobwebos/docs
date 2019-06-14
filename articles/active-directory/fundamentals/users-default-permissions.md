@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cb0fe056ff7ff4794667d6b28782daad100609f
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65921032"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
@@ -26,9 +26,9 @@ ms.locfileid: "65921032"
 ## <a name="member-and-guest-users"></a>成员和来宾用户
 获得的默认权限集取决于用户是租户的本机成员（成员用户），还是用户作为 B2B 协作来宾（来宾用户）从另一个目录转入。 有关添加来宾用户的详细信息，请参阅[什么是 Azure AD B2B 协作？](../b2b/what-is-b2b.md)。
 * 成员用户可以注册应用程序、管理自己的个人资料照片和手机号码、更改自己的密码，以及邀请 B2B 来宾。 此外，用户可以读取所有目录信息（少数用户除外）。 
-* 来宾用户的目录权限受到限制。 例如，来宾用户只能浏览自己的个人资料信息，而不能浏览租户中的其他信息。 但是，来宾用户可以通过提供用户主体名称或 objectId 来检索有关另一用户的信息。 来宾用户可以读取他们所属组的属性，包括组成员身份，而不考虑“来宾用户权限处于限制状态”设置。 来宾无法查看有关任何其他租户对象的信息。
+* 来宾用户的目录权限受到限制。 例如，来宾用户只能浏览自己的个人资料信息，而不能浏览租户中的其他信息。 但是，来宾用户可以通过提供用户主体名称或 objectId 来检索有关另一用户的信息。 来宾用户可以读取他们所属组的属性，包括组成员身份，而不考虑“来宾用户权限处于限制状态”设置  。 来宾无法查看有关任何其他租户对象的信息。
 
-默认情况下，来宾的默认权限受到限制。 可将来宾添加到管理员角色，从而向他们授予角色中包含的完全读取和写入权限。 此外还有一条限制，即来宾邀请其他来宾的能力。 将“来宾可邀请”设置为“否”会阻止来宾邀请其他来宾。 有关操作方法，请参阅[委托 B2B 协作邀请](../b2b/delegate-invitations.md)。 若要向来宾用户授予成员用户默认拥有的权限，请将“来宾用户权限处于限制状态”设置为“否”。 此设置向来宾用户授予默认的成员用户权限，并允许将来宾添加到管理角色。
+默认情况下，来宾的默认权限受到限制。 可将来宾添加到管理员角色，从而向他们授予角色中包含的完全读取和写入权限。 此外还有一条限制，即来宾邀请其他来宾的能力。 将“来宾可邀请”设置为“否”会阻止来宾邀请其他来宾。   有关操作方法，请参阅[委托 B2B 协作邀请](../b2b/delegate-invitations.md)。 若要向来宾用户授予成员用户默认拥有的权限，请将“来宾用户权限处于限制状态”设置为“否”。   此设置向来宾用户授予默认的成员用户权限，并允许将来宾添加到管理角色。
 
 ## <a name="compare-member-and-guest-default-permissions"></a>比较成员和来宾的默认权限
 
@@ -50,7 +50,7 @@ Directory | 读取所有公司信息<br>读取所有域<br>读取所有合作伙
 权限 | 设置说明
 ---------- | ------------
 用户可以注册应用程序 | 将此选项设置为否可阻止用户创建应用程序注册。 功能则可以返回到特定的个人通过将它们添加到应用程序开发人员角色授予。
-允许用户将工作或学校帐户与领英相连接 | 将此选项设置为否可阻止用户使用其 LinkedIn 帐户连接其工作或学校帐户。  请参阅[LinkedIn 帐户连接数据共享和同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)有关详细信息。
+允许用户与 LinkedIn 连接工作或学校帐户 | 将此选项设置为否可阻止用户使用其 LinkedIn 帐户连接其工作或学校帐户。  请参阅[LinkedIn 帐户连接数据共享和同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)有关详细信息。
 能够创建安全组 | 将此选项设置为“否”可阻止用户创建安全组。 全局管理员和用户管理员仍可创建安全组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
 能够创建 Office 365 组 | 将此选项设置为“否”可阻止用户创建 Office 365 组。 将此选项设置为“某些”可让选定的一组用户创建 Office 365 组。 全局管理员和用户管理员仍可创建 Office 365 组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
 限制访问 Azure AD 管理门户 | 将此选项设置为是可阻止用户通过 Azure 门户仅访问 Azure Active Directory。

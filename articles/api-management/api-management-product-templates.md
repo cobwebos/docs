@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 14090e21fb7c6ca07fe63220ffd1d44d483ac869
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61088151"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的产品模板
@@ -69,7 +69,7 @@ ms.locfileid: "61088151"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  `Product list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
@@ -196,7 +196,7 @@ ms.locfileid: "61088151"
 {% endif %}  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  `Product list` 模板使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [subscribe-button](api-management-page-controls.md#subscribe-button)  
@@ -210,7 +210,7 @@ ms.locfileid: "61088151"
 |SubscriptionState|数字|订阅的状态。 可能的状态包括：<br /><br /> -   `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br />-   `1 - active` – 订阅处于活动状态。<br />-   `2 - expired` – 订阅已达到其到期日期，因此已停用。<br />-   `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br />-   `4 - rejected` – 管理员已拒绝订阅请求。<br />-   `5 - cancelled` – 开发人员或管理员已取消订阅。|  
 |Limits|数组|此属性已弃用，不应使用。|  
 |DelegatedSubscriptionEnabled|boolean|是否为此订阅启用了[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
-|DelegatedSubscriptionUrl|string|委派的订阅 URL（如果启用了委派）。|  
+|DelegatedSubscriptionUrl|字符串|委派的订阅 URL（如果启用了委派）。|  
 |IsAgreed|boolean|如果产品有条款，当前用户是否已同意这些条款。|  
 |Subscriptions|[订阅摘要](api-management-template-data-model-reference.md#SubscriptionSummary)实体的集合。|对产品的订阅。|  
 |Apis|[API](api-management-template-data-model-reference.md#API) 实体的集合。|此产品中的 API。|  

@@ -10,10 +10,10 @@ ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 8f34a00d9256c288a2842e905c06d5336522eece
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119839"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>（已弃用）通过 Dynatrace SaaS/托管监视 Azure 容器服务 DC/OS 群集
@@ -35,15 +35,15 @@ Dynatrace 是用于高动态容器和群集环境的云原生监视解决方案�
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>通过 Marathon 配置 Dynatrace 部署
 这些步骤将演示如何通过 Marathon 将 Dynatrace 应用程序配置和部署到群集中。
 
-1. 通过 [http://localhost:80/](http://localhost:80/) 访问 DC/OS UI。 在位于 DC/OS UI 中后，导航到“Universe”选项卡，并搜索“Dynatrace”。
+1. 通过 [http://localhost:80/](http://localhost:80/) 访问 DC/OS UI。 在位于 DC/OS UI 中后，导航到“Universe”  选项卡，并搜索“Dynatrace”  。
 
     ![DC/OS Universe 中的 Dynatrace](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 
-2. 现在，要完成该配置，需要一个 Dynatrace SaaS 帐户或免费试用帐户。 登录 Dynatrace 仪表板后，选择“部署 Dynatrace”。
+2. 现在，要完成该配置，需要一个 Dynatrace SaaS 帐户或免费试用帐户。 登录 Dynatrace 仪表板后，选择“部署 Dynatrace”  。
 
     ![Dynatrace 设置 PaaS 集成](./media/container-service-monitoring-dynatrace/setup-paas.png)
 
-3. 在页面上选择“设置 PaaS 集成”。 
+3. 在页面上选择“设置 PaaS 集成”  。 
 
     ![Dynatrace API 令牌](./media/container-service-monitoring-dynatrace/api-token.png) 
 

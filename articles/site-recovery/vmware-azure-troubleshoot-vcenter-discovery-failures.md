@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: v-doglov
 ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60565185"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>排查 vCenter 发现故障
@@ -20,7 +20,7 @@ ms.locfileid: "60565185"
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>MaxSnapShots 属性中的非数字值
 
-9.20 之前版本中，在 vCenter 断开的连接检索属性的非数字值时`snapshot.maxSnapShots`VM 上的属性。
+9\.20 之前版本中，在 vCenter 断开的连接检索属性的非数字值时`snapshot.maxSnapShots`VM 上的属性。
 
 错误 ID 95126 由标识此问题。
 
@@ -52,7 +52,7 @@ vCenter 发现遵循通过系统用户配置的系统默认代理设置。 DRA �
 
 若要解决问题，请执行以下操作：
 
-下载[PsExec 工具](https://aka.ms/PsExec)。 
+下载 [PsExec 工具](https://aka.ms/PsExec)。 
 
 使用 PsExec 工具访问系统用户上下文来确定是否为配置了代理地址。 然后可以使用以下过程在绕过列表到添加 vCenter。
 

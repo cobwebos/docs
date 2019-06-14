@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1416dacd65024457e713547223f5c35290b3d15
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65768164"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
@@ -40,23 +40,23 @@ ms.locfileid: "65768164"
 
 ### <a name="before-invitation-redemption"></a>兑换邀请之前
 
-状态 1 和状态 2 帐户是邀请来宾用户使用来宾用户自己的凭据进行协作的结果。 最初向来宾用户发送邀请时，会在目录中创建帐户。 这个帐户没有与之关联的任何凭据，因为是由来宾用户的标识提供者执行身份验证。 目录中来宾用户帐户的“源”属性设置为“受邀用户”。 
+状态 1 和状态 2 帐户是邀请来宾用户使用来宾用户自己的凭据进行协作的结果。 最初向来宾用户发送邀请时，会在目录中创建帐户。 这个帐户没有与之关联的任何凭据，因为是由来宾用户的标识提供者执行身份验证。 目录中来宾用户帐户的“源”属性设置为“受邀用户”   。 
 
 ![显示产品/服务兑换之前的用户属性的屏幕截图](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>兑换邀请之后
 
-来宾用户接受邀请之后，将根据来宾用户的标识提供者更新“源”属性。
+来宾用户接受邀请之后，将根据来宾用户的标识提供者更新“源”属性  。
 
-对于状态 1 中的来宾用户，“源”为“外部 Azure Active Directory”。
+对于状态 1 中的来宾用户，“源”为“外部 Azure Active Directory”   。
 
 ![兑换产品之后，状态 1 的来宾用户](media/user-properties/after-redemption-state1.png)
 
-对于状态 2 中的来宾用户，“源”为“Microsoft 帐户”。
+对于状态 2 中的来宾用户，“源”为“Microsoft 帐户”   。
 
 ![兑换产品之后，状态 2 的来宾用户](media/user-properties/after-redemption-state2.png)
 
-对于状态 3 和状态 4 中的来宾用户，“源”属性设置为“Azure Active Directory”或“Windows Server Active Directory”，如下一节所述。
+对于状态 3 和状态 4 中的来宾用户，“源”属性设置为“Azure Active Directory”或“Windows Server Active Directory”，如下一节所述    。
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B 协作用户的关键属性
 ### <a name="usertype"></a>UserType
@@ -101,7 +101,7 @@ ms.locfileid: "65768164"
 ![用户设置中显示的外部用户选项的屏幕截图](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全局地址列表中显示来宾用户？
-可以。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅[在 Office 365 组中管理来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq)中的**能否在全局地址列表中显示来宾对象？**。 
+是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅[在 Office 365 组中管理来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq)中的**能否在全局地址列表中显示来宾对象？** 。 
 
 ## <a name="next-steps"></a>后续步骤
 

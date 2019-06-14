@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298821"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect：有关实例的特殊注意事项
@@ -33,7 +33,7 @@ Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例�
 | --- |
 | \*.microsoftonline.de |
 | \*.windows.net |
-| + 证书吊销列表 |
+| \+ 证书吊销列表 |
 
 登录到 Azure AD 租户时，必须使用 onmicrosoft.de 域中的帐户。
 
@@ -53,7 +53,7 @@ DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本�
 | \*.microsoftonline.us |
 | \*。 windows.net （自动 Azure 政府租户检测所必需） |
 | \*.gov.us.microsoftonline.com |
-| + 证书吊销列表 |
+| \+ 证书吊销列表 |
 
 > [!NOTE]
 > 从 Azure AD Connect 版本 1.1.647.0，开始在注册表中设置 AzureInstance 值不再需要时提供的 *。 windows.net 是在代理服务器上打开。 但是，对于不允许从其 Azure AD Connect 服务器的 Internet 连接的客户，以下手动配置可用。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610722"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
@@ -38,8 +38,8 @@ ms.locfileid: "60610722"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [内容安全策略简介](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[内容安全策略参考](https://content-security-policy.com/)、[安全功能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[内容安全策略简介](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[是否可以使用 CSP？](https://caniuse.com/#feat=contentsecuritypolicy) |
@@ -70,8 +70,8 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [XSS 保护筛选器](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
@@ -81,8 +81,8 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [ASP.NET 调试概览](https://msdn.microsoft.com/library/ms227556.aspx)、[ASP.NET 跟踪概览](https://msdn.microsoft.com/library/bb386420.aspx)、[如何：启用 ASP.NET 应用程序跟踪](https://msdn.microsoft.com/library/0x5wc973.aspx)、[如何：启用 ASP.NET 应用程序调试](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
@@ -92,8 +92,8 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -103,8 +103,8 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [OWASP 点击劫持防御速查表](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet)、[IE 内部 - 使用 X-Frame-Options 阻击点击劫持](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
@@ -138,12 +138,12 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | <p>浏览器安全性将阻止网页向另一个域发出 AJAX 请求。 这种限制称为同域策略，可阻止恶意站点读取另一个站点中的敏感数据。 但是，有时可能需要安全公开可由其他站点使用的 API。 跨域资源共享 (CORS) 是一项 W3C 标准，可让服务器放宽同域策略。 使用 CORS，服务器可以显式允许某些跨域请求，同时拒绝另一些跨域请求。</p><p>与 JSONP 等早期技术相比，CORS 更安全且更灵活。 从核心上讲，启用 CORS 就相当于在 Web 应用程序中添加了一些 HTTP 响应标头 (Access-Control-*)，这可以通过多种方式来实现。</p>|
+| **步骤** | <p>浏览器安全策略阻止 Web 页向另一个域发出 AJAX 请求。 这种限制称为同域策略，可阻止恶意站点读取另一个站点中的敏感数据。 但是，有时可能需要安全公开可由其他站点使用的 API。 跨域资源共享 (CORS) 是一项 W3C 标准，可让服务器放宽同域策略。 使用 CORS，服务器可以显式允许某些跨域请求，同时拒绝另一些跨域请求。</p><p>与 JSONP 等早期技术相比，CORS 更安全且更灵活。 从核心上讲，启用 CORS 就相当于在 Web 应用程序中添加了一些 HTTP 响应标头 (Access-Control-*)，这可以通过多种方式来实现。</p>|
 
 ### <a name="example"></a>示例
 如果可以访问 Web.config，则可通过以下代码添加 CORS： 
@@ -169,8 +169,8 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | 不适用  |
 | **参考**              | [请求验证 - 阻止脚本攻击](https://www.asp.net/whitepapers/request-validation) |
@@ -195,8 +195,8 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -206,8 +206,8 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [IE8 安全性第五部分：全面保护](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME 类型](https://en.wikipedia.org/wiki/Mime_type) |
@@ -271,8 +271,8 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
 | **参考**              | [在 Windows Azure 网站中删除标准服务器标头](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
@@ -282,8 +282,8 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | 不适用，SQL 版本 - V12 |
 | **参考**              | [如何配置 Azure SQL 数据库防火墙](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、[为数据库引擎访问配置 Windows 防火墙](https://msdn.microsoft.com/library/ms175043) |
@@ -293,12 +293,12 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC 5 |
 | **属性**              | 不适用  |
 | **参考**              | [在 ASP.NET Web API 2 中启用跨域请求](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 中的 CORS 支持](https://msdn.microsoft.com/magazine/dn532203.aspx) |
-| **步骤** | <p>浏览器安全性将阻止网页向另一个域发出 AJAX 请求。 这种限制称为同域策略，可阻止恶意站点读取另一个站点中的敏感数据。 但是，有时可能需要安全公开可由其他站点使用的 API。 跨域资源共享 (CORS) 是一项 W3C 标准，可让服务器放宽同域策略。</p><p>使用 CORS，服务器可以显式允许某些跨域请求，同时拒绝另一些跨域请求。 与 JSONP 等早期技术相比，CORS 更安全且更灵活。</p>|
+| **步骤** | <p>浏览器安全策略阻止 Web 页向另一个域发出 AJAX 请求。 这种限制称为同域策略，可阻止恶意站点读取另一个站点中的敏感数据。 但是，有时可能需要安全公开可由其他站点使用的 API。 跨域资源共享 (CORS) 是一项 W3C 标准，可让服务器放宽同域策略。</p><p>使用 CORS，服务器可以显式允许某些跨域请求，同时拒绝另一些跨域请求。 与 JSONP 等早期技术相比，CORS 更安全且更灵活。</p>|
 
 ### <a name="example"></a>示例
 在 App_Start/WebApiConfig.cs 中，将以下代码添加到 WebApiConfig.Register 方法 
@@ -389,8 +389,8 @@ public class ResourcesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC 6 |
 | **属性**              | 不适用  |
 | **参考**              | [在 ASP.NET Core 1.0 中启用跨域请求 (CORS)](https://docs.asp.net/en/latest/security/cors.html) |
@@ -481,7 +481,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
+| 组件                | Web API | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -492,7 +492,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
+| 组件                | IoT 设备 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -503,8 +503,8 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 设备 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [在 Windows 10 IoT Core 上启用安全启动和 bit-locker 设备加密](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
@@ -514,8 +514,8 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 设备 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -525,7 +525,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
+| 组件                | IoT 设备 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -536,7 +536,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 | 
+| 组件                | IoT 现场网关 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -547,7 +547,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 | 
+| 组件                | IoT 现场网关 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -558,8 +558,8 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 云网关 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
 | **参考**              | [IoT 中心设备管理概述](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[如何更新设备固件](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
@@ -569,7 +569,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 计算机信任边界 | 
+| 组件                | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -580,7 +580,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
+| 组件                | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -591,8 +591,8 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 存储 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [Azure 存储服务的 CORS 支持](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
@@ -602,8 +602,8 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com) |
@@ -625,8 +625,8 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com) |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 436b7899b1a9d4f9cab1ca2581ff9b5b162de8ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60357919"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>将 Azure 多重身份验证与 Azure AD 帐户配合使用时的安全指南
@@ -94,7 +94,7 @@ Azure 多重身份验证服务器可以使用联合身份验证来保护云资�
 * 应用密码不遵循“本地客户端访问控制”设置。
 * 没有为应用密码提供本地身份验证日志记录/审核功能。
 * 在对客户端使用双重验证时，某些先进的体系结构设计可能需要将组织用户名和密码与应用密码结合使用，具体取决于进行身份验证的位置。 对于针对本地基础结构进行身份验证的客户端，会使用组织用户名和密码。 对于针对 Azure AD 进行身份验证的客户端，会使用应用密码。
-* 默认情况下，用户无法创建应用密码。 如果需要允许用户创建应用密码，请选择“允许用户创建应用密码来登录非浏览器应用程序”选项。
+* 默认情况下，用户无法创建应用密码。 如果需要允许用户创建应用密码，请选择“允许用户创建应用密码来登录非浏览器应用程序”  选项。
 
 ## <a name="additional-considerations"></a>其他注意事项
 

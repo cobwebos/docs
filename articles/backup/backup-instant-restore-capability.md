@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: sogup
 ms.openlocfilehash: c375eac0de3dd89986421f8c6628d0a13784a60d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726424"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
 > [!NOTE]
-> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”重命名为“即时还原”，以减少与 Azure Stack 功能的混淆。<br/><br/> 所有 Azure 备份用户现在已升级到**即时还原**。
+> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”  重命名为“即时还原”  ，以减少与 Azure Stack 功能的混淆。<br/><br/> 所有 Azure 备份用户现在已升级到**即时还原**。
 
 即时还原的新模型提供以下功能增强：
 
@@ -64,7 +64,7 @@ ms.locfileid: "64726424"
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。 可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期。
+在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。   可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期  。
 
 ![即时还原功能](./media/backup-azure-vms/instant-restore-capability.png)
 

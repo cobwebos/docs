@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: 2f0a361d53489e22ccc8e41406e5b86b423ea2f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60324791"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>使用查询字符串控制 Azure CDN 缓存行为 - 高级层
@@ -50,17 +50,17 @@ ms.locfileid: "60324791"
     > 如果查询字符串包含随每个请求更改的参数（例如会话 ID 或用户名），请不要使用此模式，因为这会导致缓存命中率降低。
 
 ## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>为高级 CDN 配置文件更改查询字符串缓存设置
-1. 打开 CDN 配置文件，单击“管理”。
+1. 打开 CDN 配置文件，单击“管理”  。
    
     ![CDN 配置文件管理按钮](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“HTTP 大”选项卡上，然后悬停在“缓存设置”浮出菜单上。 单击“查询字符串缓存”。
+2. 将鼠标悬停在“HTTP 大”选项卡上，然后悬停在“缓存设置”浮出菜单上   。 单击“查询字符串缓存”  。
    
     将显示查询字符串缓存选项。
    
     ![CDN 查询字符串缓存选项](./media/cdn-query-string-premium/cdn-query-string.png)
-3. 选择查询字符串模式，单击“更新”。
+3. 选择查询字符串模式，单击“更新”  。
 
 > [!IMPORTANT]
 > 由于注册通过 CDN 传播需要时间，缓存字符串设置更改不会立即显示。 传播通常在 10 分钟内完成。

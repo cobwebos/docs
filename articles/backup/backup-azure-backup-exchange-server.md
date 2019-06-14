@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: kasinh
 ms.openlocfilehash: ef976667ec580ea75dd1b8566c7bdddf35eeb0fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60647205"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
@@ -61,7 +61,7 @@ ms.locfileid: "60647205"
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 单机“下一步”
+6. 单机“下一步” 
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
     选择此选项后，会在 DPM 服务器上运行备份一致性检查，以免由于在 Exchange Server 上运行 **eseutil** 命令而产生的 I/O 流量。
@@ -71,7 +71,7 @@ ms.locfileid: "60647205"
    > ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 单击“下一步”。
+8. 单击“下一步”。 
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]

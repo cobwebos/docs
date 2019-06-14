@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: b83a6e2c81eac9993c481561e3cebbed681d2c4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60640321"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>如何使用 PowerShell（经典）设置静态内部专用 IP
@@ -46,7 +46,7 @@ ms.locfileid: "60640321"
     OperationStatus      : Succeeded
 
 > [!NOTE]
-> 若要在安全环境中测试上面的命令，请遵循[创建虚拟网络（经典）](virtual-networks-create-vnet-classic-pportal.md)中的指南，创建名为“TestVnet”的 VNet，并确保它使用“10.0.0.0/8”地址空间。
+> 若要在安全环境中测试上面的命令，请遵循[创建虚拟网络（经典）](virtual-networks-create-vnet-classic-pportal.md)中的指南，创建名为“TestVnet”  的 VNet，并确保它使用“10.0.0.0/8”  地址空间。
 > 
 > 
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
 ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603235"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用数据收集器 API 创建数据管道
@@ -67,8 +67,8 @@ ms.locfileid: "65603235"
 
 在此示例中，我们分析 CSV 文件，但任何其他的文件类型也可以进行类似的处理。 请直接修改 Azure Function 的反序列化部分，使之反映特定数据类型的正确逻辑。
 
-1.  在系统提示时使用 Function 运行时 v1 根据使用情况创建新的 Azure Function。  选择以 C# 为目标对象的“HTTP 触发器”模板作为起点，根据我们的要求配置绑定。 
-2.  在右窗格的“查看文件”选项卡中，创建名为 **project.json** 的新文件，然后粘贴以下代码（来自我们正使用的 NuGet 包）：
+1.  在系统提示时使用 Function 运行时 v1 根据使用情况创建新的 Azure Function。  选择以 C# 为目标对象的“HTTP 触发器”模板作为起点，根据我们的要求配置绑定。  
+2.  在右窗格的“查看文件”选项卡中，  创建名为 **project.json** 的新文件，然后粘贴以下代码（来自我们正使用的 NuGet 包）：
 
     ![Azure Functions 示例项目](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
     
@@ -129,7 +129,7 @@ ms.locfileid: "65603235"
     ```
 
 4. 保存函数。
-5. 测试函数，确保代码正常运行。 切换到右窗格中的“测试”选项卡，对测试进行配置，如下所示。 将 Blob 链接和示例数据置于“请求正文”文本框中。 单击“运行”以后，会在“输出”框中看到 JSON 输出：
+5. 测试函数，确保代码正常运行。 切换到右窗格中的“测试”选项卡，对测试进行配置，如下所示。  将 Blob 链接和示例数据置于“请求正文”文本框中。  单击“运行”以后，会在“输出”框中看到 JSON 输出：  
 
     ![Function App 测试代码](./media/create-pipeline-datacollector-api/functions-test-01.png)
 

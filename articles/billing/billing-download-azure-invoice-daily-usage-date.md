@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60616280"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
@@ -42,11 +42,11 @@ ms.locfileid: "60616280"
 
 1. 选择从你的订阅[订阅页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)在 Azure 门户中，如下[用户有权访问发票](billing-manage-access.md)。
 
-2. 选择“发票”。
+2. 选择“发票”  。
 
     ![屏幕快照，显示“计费和使用情况”选项](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. 单击“下载发票”，查看 PDF 发票的副本。 如果它显示“不可用”，请参阅[为何看不到最后一个计费周期的发票？](#noinvoice)
+3. 单击“下载发票”  ，查看 PDF 发票的副本。 如果它显示“不可用”  ，请参阅[为何看不到最后一个计费周期的发票？](#noinvoice)
 
     ![屏幕快照，显示计费周期、下载选项，以及每个计费周期的总费用](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
 
@@ -58,9 +58,9 @@ ms.locfileid: "60616280"
 
 每个生成发票[计费配置文件](billing-mca-overview.md#understand-billing-profiles)Microsoft 客户协议中。 您必须是一个计费配置文件所有者、 参与者、 读取器，或发票管理器从 Azure 门户下载发票。
 
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 2. 选择计费的配置文件。
-3. 选择“发票”。
+3. 选择“发票”  。
 4. 在发票网格中，找到你想要下载的发票的行。
 5. 单击省略号 (`...`) 的行的末尾。
 6. 在下载上下文菜单中，选择**发票**。
@@ -84,11 +84,11 @@ ms.locfileid: "60616280"
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>通过电子邮件获取订阅的发票
 
-1. 从[订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择你的订阅。 为拥有的每个订阅执行选择加入操作。 依次单击“发票”、“通过电子邮件发送我的发票”。
+1. 从[订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择你的订阅。 为拥有的每个订阅执行选择加入操作。 依次单击“发票”  、“通过电子邮件发送我的发票”  。
 
     ![显示了“选择加入”流的屏幕截图](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
 
-2. 单击“选择加入”并接受条款。
+2. 单击“选择加入”  并接受条款。
 
     ![显示了“选择加入”流步骤 2 的屏幕截图](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
 
@@ -108,12 +108,12 @@ ms.locfileid: "60616280"
 
 如果你有 Microsoft 客户协议，你可以选择通过电子邮件获取发票。 所有计费配置文件所有者、 参与者、 读者和发票管理器将通过电子邮件获取发票。 读取器不能更新电子邮件发票首选项。
 
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 1. 选择计费的配置文件。
-1. 在“设置”下，选择“属性”。
+1. 在“设置”下，选择“属性”   。
 1. 下**电子邮件发送发票**，选择**更新电子邮件发票首选项**。
 1. 选择**参与**。
-1. 单击“更新”。
+1. 单击“更新”  。
 
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>选择退出电子邮件中获取计费的配置文件发票
 
@@ -129,7 +129,7 @@ ms.locfileid: "60616280"
 
 2. 选择需要下载其发票和使用信息的订阅。
 
-3. 选择“帐单”。
+3. 选择“帐单”。 
 
     ![屏幕快照，显示帐单选项](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
 
@@ -137,13 +137,13 @@ ms.locfileid: "60616280"
 
     ![屏幕快照，显示计费周期、下载发票和日常使用情况的选项，以及每个计费周期的总费用](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
 
-5. 选择“查看当前对帐单”，查看截至估算生成时的估计费用。 此信息每天只会更新一次，而且可能不包含所有使用信息。 用户的每月发票可能与这项估计有所不同。
+5. 选择“查看当前对帐单”，查看截至估算生成时的估计费用。  此信息每天只会更新一次，而且可能不包含所有使用信息。 用户的每月发票可能与这项估计有所不同。
 
     ![屏幕快照，显示“查看当前对帐单”选项](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
 
     ![屏幕快照，显示当前费用的估计值](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
 
-6. 选择“下载使用信息”，以 CSV 文件形式下载每日使用数据。 如果看到两个版本可用，请下载版本 2。
+6. 选择“下载使用信息”，以 CSV 文件形式下载每日使用数据。  如果看到两个版本可用，请下载版本 2。
 
     ![屏幕快照，显示“下载使用情况”选项](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
@@ -160,8 +160,8 @@ ms.locfileid: "60616280"
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
 
-1. 选择“使用情况 + 费用”。
-1. 针对要下载的月份，选择“下载”。
+1. 选择“使用情况 + 费用”。 
+1. 针对要下载的月份，选择“下载”。 
 
 ### <a name="download-usage-for-your-microsoft-customer-agreement"></a>为 Microsoft 客户协议下载使用情况
 
@@ -169,9 +169,9 @@ ms.locfileid: "60616280"
 
 #### <a name="download-usage-for-billed-charges"></a>下载使用情况的计费费用
 
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 2. 选择计费的配置文件。
-3. 选择“发票”。
+3. 选择“发票”  。
 4. 在发票网格中，查找对应于你想要下载的使用情况的发票。
 5. 单击省略号 (`...`) 的行的末尾。
 6. 在下载上下文菜单中，选择**Azure 使用情况和费用**。
@@ -180,7 +180,7 @@ ms.locfileid: "60616280"
 
 您还可以下载月-日使用情况当前计费期间，这意味着不尚未计费费用。
 
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 2. 选择计费的配置文件。
 3. 在中**概述**边栏选项卡中，单击**下载 Azure 使用情况和费用**。
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409290"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
@@ -24,7 +24,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure 云中的功能可用性
 
-| Feature|全球 Azure 区域 | Azure 政府|Azure 德国|Azure 中国世纪互联|
+| Feature|全球 Azure 区域 | Azure Government|Azure 德国|Azure 中国世纪互联|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | 可用 | 不可用 | 不可用 | 不可用 |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  可用 | 不可用 | 不可用 | 不可用 |
@@ -64,7 +64,7 @@ az account list-locations
 
 从不同的区域 Azure 云连接到媒体服务帐户时，应记住以下终结点。
 
-### <a name="global-azure"></a>全局 Azure
+### <a name="global-azure"></a>全球 Azure
 
 |终结点 ||
 | --- | --- | 
@@ -72,7 +72,7 @@ az account list-locations
 | Authentication | `https://login.microsoftonline.com/` | 
 | 令牌受众 | `https://management.core.windows.net/` |
 
-### <a name="azure-government"></a>Azure 政府
+### <a name="azure-government"></a>Azure Government
 
 |终结点||
 | --- | --- | 

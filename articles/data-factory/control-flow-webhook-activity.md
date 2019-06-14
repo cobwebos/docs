@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764299"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
@@ -54,9 +54,9 @@ Web 挂钩活动可用于通过自定义代码控制执行管道。 使用 webho
 
 
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-名称 | Web 挂钩活动的名称 | String | 是 |
+name | Web 挂钩活动的名称 | String | 是 |
 type | 必须设置为**WebHook**。 | String | 是 |
 method | 目标终结点的 Rest API 方法。 | 字符串。 支持的类型：POST | 是 |
 url | 目标终结点和路径 | 字符串（或带有 resultType 字符串的表达式）。 | 是 |

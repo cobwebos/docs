@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.openlocfilehash: 0da95dbdca52232b4b24ad921bf2d9c78dc76d56
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66247719"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>合作伙伴中心中的商业应用商店的分析
@@ -241,7 +241,7 @@ ms.locfileid: "66247719"
 | Azure 许可证类型：现用现付| 客户、 订单 | 最终客户签署 Azure 和 Marketplace 产品/服务通过"现用现付"协议，直接使用 Microsoft 签名。||
 | 云实例名称| 顺序| 部署 VM 的 Microsoft 云。||
 | 云实例名称：Azure 全球| 顺序| 全局 Microsoft 公有云。|| |
-| 云实例名称：Azure Government  | 顺序| 以下政府之一的特定于政府的 Microsoft 云：中国、 德国或 United States of America。| |
+| 云实例名称：Azure Government | 顺序| 以下政府之一的特定于政府的 Microsoft 云：中国、 德国或 United States of America。| |
 | 客户所在城市| 客户| 提供由客户的城市名称。 城市可能不同于客户的 Azure 订阅中的城市。||
 | 客户通信语言  | 客户| 客户的首选通信语言。||
 | 客户公司名称 | 客户、 订单 | 提供由客户的公司名称。 名称可能不同于客户的 Azure 订阅中的城市。|  |

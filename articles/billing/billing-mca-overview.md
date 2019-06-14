@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: ea625a61ed600dbaa22fef85987e9570a6fb7dbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371440"
 ---
 # <a name="get-started-with-your-billing-account-for-a-microsoft-customer-agreement"></a>开始使用您的计费帐户的 Microsoft 客户协议
@@ -59,7 +59,7 @@ ms.locfileid: "60371440"
 | Type             | 定义  |
 |------------------|-------------|
 |Azure 额度    |  信用额度将自动应用于您计算需要支付的金额的发票上计费总金额。 有关详细信息，请参阅[跟踪你计费的配置文件的 Azure 信用额度余额](billing-mca-check-azure-credits-balance.md)。 |
-|支票或电汇 | 您可以支付应付金额的发票，可以通过检查或网络传输。 在发票上给予了付款说明 |
+|检查或网线传输 | 您可以支付应付金额的发票，可以通过检查或网络传输。 在发票上给予了付款说明 |
 
 ### <a name="control-azure-marketplace-and-reservation-purchases-by-applying-policies"></a>通过应用策略来控制 Azure Marketplace 和预订购买
 
@@ -71,8 +71,8 @@ ms.locfileid: "60371440"
 
 | 计划             | 定义  |
 |------------------|-------------|
-|Microsoft Azure 计划   | 允许用户创建订阅，可以运行任何工作负荷。 有关详细信息，请参阅[Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/) |
-|用于开发/测试的 Microsoft Azure 计划 | 允许 Visual Studio 订阅服务器创建订阅的且限制用于开发或测试工作负荷。 这些订阅在 Azure 门户中获取权益，例如较低费率并可以访问独占的虚拟机映像。 有关详细信息，请参阅[Microsoft Azure 开发测试的计划](https://azure.microsoft.com/offers/ms-azr-0148g/)|
+|Microsoft Azure Plan   | 允许用户创建订阅，可以运行任何工作负荷。 有关详细信息，请参阅[Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/) |
+|Microsoft Azure 开发/测试计划 | 允许 Visual Studio 订阅服务器创建订阅的且限制用于开发或测试工作负荷。 这些订阅在 Azure 门户中获取权益，例如较低费率并可以访问独占的虚拟机映像。 有关详细信息，请参阅[Microsoft Azure 开发测试的计划](https://azure.microsoft.com/offers/ms-azr-0148g/)|
 
 ## <a name="understand-invoice-sections"></a>了解发票部分
 

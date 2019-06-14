@@ -11,10 +11,10 @@ ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60382019"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填充
@@ -52,7 +52,7 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 
 备用登录 ID 允许配置登录体验，用户可以使用其 UPN 以外的属性（如邮件）登录。
 
-若要在 Azure AD 中启用备用登录 ID，可以使用 Azure AD Connect，而无需执行任何附加的配置步骤。 可以直接通过向导配置备用 ID。 请参阅“同步”部分中适用于用户的 Azure AD 登录配置。在“用户主体名称”下拉列表中，选择“备用登录 ID”对应的属性。
+若要在 Azure AD 中启用备用登录 ID，可以使用 Azure AD Connect，而无需执行任何附加的配置步骤。 可以直接通过向导配置备用 ID。 请参阅“同步”部分中适用于用户的 Azure AD 登录配置。在“用户主体名称”下拉列表中，选择“备用登录 ID”对应的属性。 
 
 ![未验证的域](./media/plan-connect-userprincipalname/altloginid.png)  
 

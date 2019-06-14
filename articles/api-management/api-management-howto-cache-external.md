@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: apimpm
 ms.openlocfilehash: e2362d06fa0ef795122a2d47a7a621b66fdd9470
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780357"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>在 Azure API 管理中使用用于 Redis 的外部 Azure 缓存
@@ -68,20 +68,20 @@ ms.locfileid: "65780357"
 ### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>从同一订阅中添加用于 Redis 的 Azure 缓存
 
 1. 在 Azure 门户中浏览到你的 API 管理实例。
-2. 从左侧的菜单中选择“外部缓存”选项卡。
-3. 单击“**+ 添加**”按钮。
-4. 从“缓存实例”下拉字段中选择你的缓存。
+2. 从左侧的菜单中选择“外部缓存”选项卡。 
+3. 单击“ **+ 添加**”按钮。
+4. 从“缓存实例”下拉字段中选择你的缓存。 
 5. 选择**默认**，或指定所需的区域中**从使用**下拉列表中的字段。
 6. 单击“ **保存**”。
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>添加位于当前 Azure 订阅外部或 Azure 外部（后者为一般情况）的用于 Redis 的 Azure 缓存
 
 1. 在 Azure 门户中浏览到你的 API 管理实例。
-2. 从左侧的菜单中选择“外部缓存”选项卡。
-3. 单击“**+ 添加**”按钮。
-4. 从“缓存实例”下拉字段中选择“自定义”。
+2. 从左侧的菜单中选择“外部缓存”选项卡。 
+3. 单击“ **+ 添加**”按钮。
+4. 从“缓存实例”下拉字段中选择“自定义”。  
 5. 选择**默认**，或指定所需的区域中**从使用**下拉列表中的字段。
-6. 在“连接字符串”字段中提供用于 Redis 的 Azure 缓存连接字符串。
+6. 在“连接字符串”字段中提供用于 Redis 的 Azure 缓存连接字符串。 
 7. 单击“ **保存**”。
 
 ## <a name="use-the-external-cache"></a>使用外部缓存

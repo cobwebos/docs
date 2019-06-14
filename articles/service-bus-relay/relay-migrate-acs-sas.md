@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: 7f71b6884413309e6806658f25313c22e074a71b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419622"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64686400"
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 
@@ -32,15 +32,15 @@ SAS 的优势在于，不直接依赖另一服务，但可以授予客户端对 
 
 ## <a name="migration-scenarios"></a>迁移方案
 
-ACS 和中继通过签名密钥这一共用概念进行集成。 ACS 命名空间使用签名密钥对授权令牌进行签名；Azure 中继使用签名密钥验证令牌是否已由配对的 ACS 命名空间颁发。 ACS 命名空间包含服务标识和授权规则。 授权规则定义了哪个服务标识或外部标识提供者颁发的哪个令牌拥有对部分中继命名空间图的何种访问权限（采用最长前缀匹配形式）。
+ACS 和中继通过签名密钥  这一共用概念进行集成。 ACS 命名空间使用签名密钥对授权令牌进行签名；Azure 中继使用签名密钥验证令牌是否已由配对的 ACS 命名空间颁发。 ACS 命名空间包含服务标识和授权规则。 授权规则定义了哪个服务标识或外部标识提供者颁发的哪个令牌拥有对部分中继命名空间图的何种访问权限（采用最长前缀匹配形式）。
 
-例如，ACS 规则可能会向服务标识颁发“发送”声明（路径前缀为 `/`）。也就是说，ACS 根据此规则颁发的令牌授权客户端，允许其向命名空间中的所有实体发送内容。 如果路径前缀为 `/abc`，标识只能向名为 `abc` 的实体或整理到此前缀下的实体发送内容。 为了能够理解此迁移指南，读者必须先熟悉这些概念。
+例如，ACS 规则可能会向服务标识颁发“发送”  声明（路径前缀为 `/`）。也就是说，ACS 根据此规则颁发的令牌授权客户端，允许其向命名空间中的所有实体发送内容。 如果路径前缀为 `/abc`，标识只能向名为 `abc` 的实体或整理到此前缀下的实体发送内容。 为了能够理解此迁移指南，读者必须先熟悉这些概念。
 
 迁移方案分为三大类：
 
-1.  **未更改的默认值**。 一些客户使用 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 对象，同时传递为 ACS 命名空间（与中继命名空间配对）自动生成的所有者服务标识及其密钥，不添加新规则。
+1.  **未更改的默认值**。 一些客户使用 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 对象，同时传递为 ACS 命名空间（与中继命名空间配对）自动生成的所有者  服务标识及其密钥，不添加新规则。
 
-2.  **包含简单规则的自定义服务标识**。 一些客户添加新的服务标识，并授予每个新服务标识对一个特定实体的“发送”、“侦听”和“管理”权限。
+2.  **包含简单规则的自定义服务标识**。 一些客户添加新的服务标识，并授予每个新服务标识对一个特定实体的“发送”  、“侦听”  和“管理”  权限。
 
 3.  **包含复杂规则的自定义服务标识**。 很少有客户使用复杂规则集。在这些集中，外部颁发的令牌映射到中继上的权限，或在多个命名空间路径上通过多个规则为一个服务标识分配不同的权限。
 
@@ -48,7 +48,7 @@ ACS 和中继通过签名密钥这一共用概念进行集成。 ACS 命名空�
 
 ### <a name="unchanged-defaults"></a>未更改默认值
 
-如果应用程序未更改 ACS 默认值，可以将使用的所有 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 替换为 [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) 对象，并使用命名空间预配置的 RootManageSharedAccessKey，而不是 ACS 所有者帐户。 请注意，即使使用 ACS 所有者帐户，通常也都不建议使用这种配置（现在仍不建议），因为此帐户/规则提供对命名空间的完整管理权限，包括删除任何实体的权限。
+如果应用程序未更改 ACS 默认值，可以将使用的所有 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 替换为 [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) 对象，并使用命名空间预配置的 RootManageSharedAccessKey  ，而不是 ACS 所有者  帐户。 请注意，即使使用 ACS 所有者  帐户，通常也都不建议使用这种配置（现在仍不建议），因为此帐户/规则提供对命名空间的完整管理权限，包括删除任何实体的权限。
 
 ### <a name="simple-rules"></a>简单规则
 

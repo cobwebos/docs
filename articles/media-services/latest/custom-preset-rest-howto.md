@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761800"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自定义转换的其余部分进行编码
@@ -145,7 +145,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 选择**正文**选项卡并将替换为使用的 json 正文代码[前面定义](#define-a-custom-preset)。 对于将转换应用到指定的视频或音频的媒体服务，需要提交作业下该转换。
 
-选择“发送”。 
+选择“发送”。  
 
 对于将转换应用到指定的视频或音频的媒体服务，需要提交作业下该转换。 有关演示如何提交下一个转换，转换作业的完整示例，请参阅[教程：Stream 的视频文件的其余部分](stream-files-tutorial-with-rest.md)。
 

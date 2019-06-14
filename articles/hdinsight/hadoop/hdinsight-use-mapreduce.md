@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.openlocfilehash: 9da6b6ba3ab697887e55f9077b44cf6fa100a981
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707968"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>在 Apache Hadoop on HDInsight 中使用 MapReduce
@@ -48,7 +48,7 @@ Hadoop 流式处理通过 STDIN 和 STDOUT 与映射器和化简器通信。 映
 
 有关详细信息，请参阅 [Hadoop Streaming](https://hadoop.apache.org/docs/r1.2.1/streaming.html)（Hadoop 流式处理）。
 
-使用 Hadoop 流式处理与 HDInsight 的示例，请参阅以下文档：
+有关将 Hadoop 流式处理与 HDInsight 配合使用的示例，请参阅以下文档：
 
 * [开发 C# MapReduce 作业](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
@@ -134,7 +134,7 @@ public class WordCount {
 }
 ```
 
-若要编写自己的 MapReduce 应用程序的说明，请参阅以下文档：
+有关编写自己的 MapReduce 应用程序的说明，请参阅以下文档：
 
 * [为 HDInsight 开发 Java MapReduce 应用程序](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 

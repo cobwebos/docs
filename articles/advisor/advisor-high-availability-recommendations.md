@@ -9,10 +9,10 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66254670"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>使用 Azure 顾问提高应用程序的可用性
@@ -72,25 +72,25 @@ Azure 顾问将检查任何 VPN 网关的基本 SKU，并建议您改为使用�
 
 ## <a name="repair-invalid-log-alert-rules"></a>修复无效的日志警报规则
 
-Azure 顾问将检测到具有无效的查询在其条件部分中指定的警报规则。 日志警报规则在 Azure Monitor 中创建，用于在指定的时间间隔运行分析查询。 查询的结果确定是否需要触发警报。 分析查询可能会变得无效加班由于引用的资源、 表或命令中的更改。 顾问建议你先纠正警报规则，以防止获取自动禁用它，并确保在 Azure 中资源的监视范围中的查询。 [了解有关故障排除警报规则的详细信息](https://aka.ms/aa_logalerts_queryrepair)
+Azure 顾问将检测到具有无效的查询在其条件部分中指定的警报规则。 日志警报规则在 Azure Monitor 中创建，用于按指定时间间隔运行分析查询。 查询结果决定了是否需要触发警报。 随着时间的推移，分析查询可能会因所引用资源、表或命令的变化而变得无效。 顾问建议你先纠正警报规则，以防止获取自动禁用它，并确保在 Azure 中资源的监视范围中的查询。 [了解有关故障排除警报规则的详细信息](https://aka.ms/aa_logalerts_queryrepair)
 
 ## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Cosmos DB 集合上配置一致索引模式
 
 使用延迟索引模式配置的 azure Cosmos DB 容器可能会影响查询结果的新鲜度。 顾问将检测到这种方式配置的容器，并且建议切换到一致的模式。 [了解有关索引 Cosmos DB 中的策略的详细信息](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
 
-## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>配置 Azure Cosmos DB 容器的分区键
+## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>为 Azure Cosmos DB 容器配置分区键
 
 Azure 顾问会标识 Azure Cosmos DB 未分区的集合已接近其预配的存储配额。 它将建议迁移到新集合与分区键定义这些集合，以便它们可以自动进行横向扩展服务。 [了解有关选择分区键的详细信息](https://aka.ms/cosmosdb/choose-partitionkey)
 
-## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>从 Nuget 升级到最新版本的 Azure Cosmos DB.NET SDK
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>将 Azure Cosmos DB .NET SDK 升级到 Nuget 提供的最新版本
 
 Azure 顾问会标识 Azure Cosmos DB 帐户，使用的旧版本的.NET SDK 并建议升级到最新版本从 Nuget 的最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB.NET SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
-## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>从 Maven 升级到最新版本的 Azure Cosmos DB Java SDK
+## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>将 Azure Cosmos DB Java SDK 升级到 Maven 提供的最新版本
 
 Azure 顾问会标识 Azure Cosmos DB 帐户，使用的旧版本的 Java SDK 并建议升级到最新版本从 Maven 为最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB Java SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
-## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>从 Maven 升级到最新版本的 Azure Cosmos DB Spark 连接器
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>将 Azure Cosmos DB Spark 连接器升级到 Maven 提供的最新版本
 
 Azure 顾问会标识 Azure Cosmos DB 帐户，正在使用旧版本的 Cosmos DB Spark 连接器并建议升级到最新版本从 Maven 为最新修补程序、 性能改进和新功能。 [了解有关 Cosmos DB Spark 连接器的详细信息](https://aka.ms/cosmosdb/spark-connector)
 

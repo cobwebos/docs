@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
 ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155959"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Linux 虚拟机
@@ -43,7 +43,7 @@ ms.locfileid: "66155959"
 
 下面是目前（此功能的预览期间）受支持的 Linux 发行版：
 
-| 分发组 | Version |
+| 分发 | Version |
 | --- | --- |
 | CentOS | CentOS 6，CentOS 7 |
 | Debian | Debian 9 |
@@ -103,9 +103,9 @@ Azure 基于角色的访问控制 (RBAC) 策略决定了谁能登录到 VM。 �
 - **虚拟机用户登录**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
 
 > [!NOTE]
-> 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。 分配了 VM“所有者”或“参与者”角色的 Azure 用户不会自动获得通过 SSH 登录到 VM 的权限。
+> 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。   分配了 VM“所有者”或“参与者”角色的 Azure 用户   不会自动获得通过 SSH 登录到 VM 的权限。
 
-以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../role-based-access-control/overview.md)
+以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。  活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -149,7 +149,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 
     You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.
 
-关闭浏览器窗口，返回到 SSH 提示符窗口，然后按 **Enter** 键。 现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。 如果你的用户帐户分配了“虚拟机管理员登录名”角色，则可使用 `sudo` 运行需要 root 权限的命令。
+关闭浏览器窗口，返回到 SSH 提示符窗口，然后按 **Enter** 键。 现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。   如果你的用户帐户分配了“虚拟机管理员登录名”角色，  则可使用 `sudo` 运行需要 root 权限的命令。
 
 ## <a name="sudo-and-aad-login"></a>Sudo 和 AAD 登录名
 

@@ -17,15 +17,15 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb36d6a03da07681db468184a489a79f7f0deab7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825492"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>如何使本机客户端应用程序与代理应用程序交互
 
-您可以使用 Azure Active Directory (Azure AD) 应用程序代理发布 web 应用，但它还可用于发布本机客户端应用程序配置与 Azure AD 身份验证库 (ADAL)。 本机客户端应用程序不同于 web 应用，因为它们安装在设备上，而通过浏览器访问 web 应用。
+您可以使用 Azure Active Directory (Azure AD) 应用程序代理发布 web 应用，但它还可用于发布本机客户端应用程序配置与 Azure AD 身份验证库 (ADAL)。 本机客户端应用程序不同于 Web 应用，因为前者安装在设备上，而后者需通过浏览器进行访问。
 
 若要支持本机客户端应用程序，应用程序代理接受标头中发送的 Azure AD 颁发的令牌。 该应用程序代理服务会对用户身份验证。 此解决方案不使用应用程序令牌进行身份验证。
 
@@ -46,7 +46,7 @@ ms.locfileid: "65825492"
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。 **仪表板**有关**Azure Active Directory 管理中心**出现。
 2. 在侧栏中选择**Azure Active Directory**。 **Azure Active Directory**概述页将出现。
 3. 在 Azure AD 的概述侧栏中选择**应用注册**。 显示所有应用程序注册的列表。
-4. 选择“新注册”。 **注册应用程序**页将出现。
+4. 选择“新注册”。  **注册应用程序**页将出现。
 
    ![创建新的应用注册](./media/application-proxy-configure-native-client-application/create.png)
 5. 在中**名称**标题时，指定你的应用程序的面向用户的显示名称。
@@ -54,7 +54,7 @@ ms.locfileid: "65825492"
    - 若要针对你的组织内部的帐户，选择**此组织目录中的帐户**。
    - 若要针对仅企业或教育客户，请选择**任何组织的目录中的帐户**。
    - 若要尽可能最广泛的 Microsoft 标识集目标，请选择**中的任何组织的目录和个人 Microsoft 帐户的帐户**。
-7. 在中**重定向 URI**标题下方，选择**公共客户端 （移动和桌面）**，然后键入你的应用程序的重定向 URI。
+7. 在中**重定向 URI**标题下方，选择**公共客户端 （移动和桌面）** ，然后键入你的应用程序的重定向 URI。
 8. 选择并阅读**Microsoft 平台策略**，然后选择**注册**。 创建并显示新的应用程序注册的概览页。
 
 有关详细信息创建新的应用程序注册，请参阅[将应用程序集成与 Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
@@ -64,7 +64,7 @@ ms.locfileid: "65825492"
 现在，注册本机应用程序后，您可让它访问其他应用程序在你目录中，在这种情况下访问代理应用程序。 若要启用要向代理应用程序公开的本机应用程序：
 
 1. 在新的应用程序注册页上侧栏中选择**API 权限**。 **API 权限**页上将显示新的应用程序注册。
-2. 选择“添加权限”。 **请求 API 权限**页将出现。
+2. 选择“添加权限”  。 **请求 API 权限**页将出现。
 3. 下**选择 API**设置中，选择**我的组织使用的 Api**。 将显示列表，其中包含你的目录中公开的 Api 的应用程序。
 4. 在搜索框或滚动要查找的代理应用程序中发布的类型[步骤 1:发布代理应用程序](#step-1-publish-your-proxy-application)，然后选择代理应用程序。
 5. 在中**应用程序需要哪种类型的权限？** 标题下方，选择权限类型。 如果本机应用程序需要访问作为已登录用户的代理应用程序 API，请选择**委派权限**。 如果本机应用程序运行时作为后台服务或后台程序已登录用户的情况下，选择**应用程序权限**。

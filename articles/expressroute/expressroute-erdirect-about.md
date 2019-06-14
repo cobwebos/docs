@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
 ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60367621"
 ---
 # <a name="about-expressroute-direct"></a>关于 ExpressRoute Direct
@@ -53,7 +53,7 @@ ExpressRoute Direct 提供的主要功能包括但不限于：
 
 ## <a name="circuit-skus"></a>线路 SKU
 
-ExpressRoute Direct 支持将数据大规模引入到 Azure 存储和其他大数据服务中的方案。 ExpressRoute Direct 上的 ExpressRoute 线路现在也支持 40 Gbps 和 100 Gbps 线路 SKU。 物理端口对仅为“100 Gbps”，可以有多个带宽为 5 Gbps、10 Gbps、40 Gbps、100 Gbps 的虚拟电路 - 任意组合最多可达 200 Gbps。 
+ExpressRoute Direct 支持将数据大规模引入到 Azure 存储和其他大数据服务中的方案。 ExpressRoute Direct 上的 ExpressRoute 线路现在也支持 40 Gbps  和 100 Gbps  线路 SKU。 物理端口对仅为“100 Gbps”，可以有多个带宽为 5 Gbps、10 Gbps、40 Gbps、100 Gbps 的虚拟电路 - 任意组合最多可达 200 Gbps  。 
 
 ## <a name="vlan-tagging"></a>VLAN 标记
 

@@ -9,10 +9,10 @@ ms.date: 07/07/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61063376"
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
@@ -38,10 +38,10 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 如果手动将实例计数更新为高于或低于最大值的值，则自动缩放引擎会自动缩放回最小值（如果低于）或最大值（如果高于）。 例如，将范围设置在 3 和 6 之间。 如果有一个正在运行的实例，则自动缩放引擎会在下次运行时缩放为三个实例。 同样，如果将缩放规模手动设置为八个实例，则自动缩放会在下次运行时收缩回六个实例。  手动缩放效果只是暂时的，除非也重置了自动缩放规则。
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>始终使用执行增加和减少的扩大和缩小规则组合
-如果使用仅组合的一部分，自动缩放只需操作的一个方向 （规模扩大或缩小） 直到它达到最大值，或配置文件中定义的最小实例数。 这不是最佳的，理想情况下，你希望资源在使用率过高时纵向扩展以确保可用性。 同样，当使用率过低时，你希望资源纵向收缩，以便可以实现成本节省。
+如果仅使用组合的一个部件，则自动缩放将仅在单个方向采取操作（横向扩展或收缩），直至它达到配置文件中定义的最大或最小实例计数。 这不是最佳的，理想情况下，你希望资源在使用率过高时纵向扩展以确保可用性。 同样，当使用率过低时，你希望资源纵向收缩，以便可以实现成本节省。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>为诊断指标选择相应统计信息
-对于诊断指标，可以选择“平均值”、“最小值”、“最大值”和“总计”作为用作缩放依据的指标。 最常见的统计信息是“平均值”。
+对于诊断指标，可以选择“平均值”  、“最小值”  、“最大值”  和“总计”  作为用作缩放依据的指标。 最常见的统计信息是“平均值”  。
 
 ### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>认真为所有指标类型选择阈值
 我们建议基于实际情况为扩大和缩小认真选择不同阈值。
@@ -114,8 +114,8 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>有关在配置文件中配置多个规则时进行自动缩放的注意事项
 在某些情况下可能必须在一个配置文件中设置多个规则。 设置了多个规则时，服务会使用以下自动缩放规则集。
 
-进行扩大时，如果满足任何规则，则自动缩放会运行。
-进行缩小时，自动缩放需要满足所有规则。
+进行扩大  时，如果满足任何规则，则自动缩放会运行。
+进行缩小  时，自动缩放需要满足所有规则。
 
 为了进一步说明，假定你具有以下 4 个自动缩放规则：
 

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371563"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>在你开发票来组织你的成本创建部分
@@ -30,7 +30,7 @@ ms.locfileid: "60371563"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 在“成本管理 + 计费”  中进行搜索。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "60371563"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-section-invoice/billing-mca-list-invoice-sections.png)
 
-4. 在页面顶部选择“添加”。
+4. 在页面顶部选择“添加”。 
 
 5. 输入的发票节的名称。
 
@@ -46,7 +46,7 @@ ms.locfileid: "60371563"
 
 6. 选择计费的配置文件。 任何使用费用或购买发票部分将反映在账单资料张发票上。
 
-7. 选择“创建”。
+7. 选择“创建”  。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

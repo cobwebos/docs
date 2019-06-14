@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66137064"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
@@ -66,24 +66,24 @@ ms.locfileid: "66137064"
 
 为 Web 应用设置服务器时区：
 
-1. 在 Azure 门户中的应用服务订阅中，转到“应用程序设置”菜单。
-2. 在“应用设置”下，添加此设置：
+1. 在 Azure 门户中的应用服务订阅中，转到“应用程序设置”  菜单。
+2. 在“应用设置”  下，添加此设置：
     * 键 = WEBSITE_TIME_ZONE
     * 值 = *所需时区*
-3. 选择“保存”。
+3. 选择“保存”。 
 
-有关可接受的值，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”列。
+有关可接受的值，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”  列。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为何我的连续 Web 作业有时会失败？
 
-默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 在基本和标准计划中，可以打开“始终可用”设置以使 Web 应用始终加载。 如果 Web 应用运行连续 Web 作业，则应打开“始终打开”，否则 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](webjobs-create.md#CreateContinuous)。
+默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 在基本和标准计划中，可以打开“始终可用”  设置以使 Web 应用始终加载。 如果 Web 应用运行连续 Web 作业，则应打开“始终打开”  ，否则 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](webjobs-create.md#CreateContinuous)。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的出站 IP 地址？
 
 获取 Web 应用的出站 IP 地址列表：
 
-1. 在 Azure 门户中的 Web 应用边栏选项卡，转到“属性”菜单。
-2. 搜索“出站 ip 地址”。
+1. 在 Azure 门户中的 Web 应用边栏选项卡，转到“属性”  菜单。
+2. 搜索“出站 ip 地址”  。
 
 出站 IP 地址列表随即出现。
 
@@ -134,10 +134,10 @@ PCI DSS 版本 3.1 认证要求禁用传输层安全性 (TLS) 1.0。 当前，�
 
 1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
 2. 选择 Web 作业。
-3. 选择“切换输出”按钮。
-4. 若要下载输出文件，请选择“下载”链接。
-5. 对于单个运行，选择“单个调用”。
-6. 选择“切换输出”按钮。
+3. 选择“切换输出”  按钮。
+4. 若要下载输出文件，请选择“下载”  链接。
+5. 对于单个运行，选择“单个调用”  。
+6. 选择“切换输出”  按钮。
 7. 选择下载链接。
 
 ## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>我在尝试对 SQL Server 使用混合连接。 为什么会看到消息“System.OverflowException: 算术运算导致了溢出”？
@@ -185,16 +185,16 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 1. 在 Internet Explorer 中，转到你的网站。 请务必先登录，然后再执行后续步骤。 否则，F12 跟踪会捕获敏感的登录数据。
 2. 按 F12。
-3. 验证是否选择了“网络”选项卡，然后选择绿色的“播放”按钮。
+3. 验证是否选择了“网络”  选项卡，然后选择绿色的“播放”  按钮。
 4. 执行再现问题的步骤。
-5. 选择红色的“停止”按钮。
-6. 选择“保存”按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Microsoft Edge 中），或右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”（在 Chrome 中）。
+5. 选择红色的“停止”  按钮。
+6. 选择“保存”  按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Microsoft Edge 中），或  右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”  （在 Chrome 中）。
 
 ### <a name="f12-console-output"></a>F12 控制台输出
 
-1. 选择“控制台”选项卡。
-2. 对于包含的项数不为零的每个选项卡，选择选项卡（“错误”、“警告”或“信息”）。 如果未选择选项卡，则选项卡图标会在光标离开它时为灰色或黑色。
-3. 在窗格的消息区域中右键单击，然后选择“全部复制”。
+1. 选择“控制台”  选项卡。
+2. 对于包含的项数不为零的每个选项卡，选择选项卡（“错误”  、“警告”  或“信息”  ）。 如果未选择选项卡，则选项卡图标会在光标离开它时为灰色或黑色。
+3. 在窗格的消息区域中右键单击，然后选择“全部复制”  。
 4. 在文件中粘贴复制的文本，然后保存文件。
 
 若要查看 HAR 文件，可以使用 [HAR 查看器](https://www.softwareishard.com/har/viewer/)。
@@ -292,7 +292,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net  域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 

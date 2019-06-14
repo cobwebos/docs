@@ -6,16 +6,16 @@ metadata:
   title: Azure SQL 数据库 - 可伸缩性
   meta.description: Learn how to scale your Azure SQL Database.
   services: sql-database
-  author: WenJason
-  manager: digimobile
+  ms.subservice: scale-out
+  author: jovanpop-msft
+  manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  origin.date: 01/25/2019
-  ms.date: 02/25/2019
-  ms.author: v-jay
+  ms.date: 01/25/2019
+  ms.author: jovanpop-msft
 sections:
   - items:
       - type: paragraph
@@ -26,22 +26,22 @@ sections:
         columns: 3
         items:
           - title: 纵向扩展
-            href: /sql-database/sql-database-scale-resources
+            href: /azure/sql-database/sql-database-scale-resources
             html: <p>在 SQL 数据库中轻松添加或删除资源以实现最佳的性价比或者减轻性能问题。</p>
           - title: 读取横向扩展
-            href: /sql-database/sql-database-read-scale-out
+            href: /azure/sql-database/sql-database-read-scale-out
             html: <p>业务关键层提供了数据库的免费副本，你可以在其中对数据副本运行报表、分析和其他只读查询。</p>
           - title: 数据库分片
-            href: /sql-database/sql-database-elastic-scale-introduction
+            href: /azure/sql-database/sql-database-elastic-scale-introduction
             html: <p>可以使用多个数据库分片对数据库进行横向扩展，使其超越单个数据库的最大计算和存储限制。</p>
           - title: 弹性查询
-            href: /sql-database/sql-database-elastic-query-overview
+            href: /azure/sql-database/sql-database-elastic-query-overview
             html: <p>使用弹性查询，可以对全局分布的一组数据库分片运行标准 Transact-SQL 查询。</p>
           - title: 弹性事务
-            href: /sql-database/sql-database-elastic-transactions-overview
+            href: /azure/sql-database/sql-database-elastic-transactions-overview
             html: <p>使用全局分布式事务确保对分布式数据实现事务一致的访问。</p>
           - title: 跨数据库作业
-            href: /sql-database/elastic-jobs-overview
+            href: /azure/sql-database/elastic-jobs-overview
             html: <p>使用跨数据库弹性作业维护一组数据库。</p>
   - title: 更多资源
     items:

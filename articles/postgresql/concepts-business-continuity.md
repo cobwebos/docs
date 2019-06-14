@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Database for PostgreSQL-单个服务器的业务连续性概述
+title: 有关使用 Azure Database for PostgreSQL - 单一服务器确保业务连续性的概述
 description: 有关使用 Azure Database for PostgreSQL 确保业务连续性的概述。
 author: rachel-msft
 ms.author: raagyema
@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: a31112f3b6f7bd79785f89822e2881b152708254
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65068930"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>使用 Azure Database for PostgreSQL-单个服务器的业务连续性概述
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>有关使用 Azure Database for PostgreSQL - 单一服务器确保业务连续性的概述
 
 本概述介绍了 Azure Database for PostgreSQL 针对业务连续性和灾难恢复所提供的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
 
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL 提供了业务连续性功能，这包括自动�
 | 从异地复制的备份执行异地还原 | 不支持 | ERT < 12 小时<br/>RPO < 1 小时 | ERT < 12 小时<br/>RPO < 1 小时 |
 
 > [!IMPORTANT]
-> 删除的服务器无法还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。
+> 删除的服务器无法还原  。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在发生用户或应用程序错误之后恢复服务器
 

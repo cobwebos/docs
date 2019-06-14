@@ -16,10 +16,10 @@ ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 29446f6f0a86a00cc92fe46211caddd22aaa4859
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66112554"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>使用 Azure SDK 为 VM 配置具有 Azure 资源托管标识
@@ -38,7 +38,7 @@ Azure 资源的托管标识在 Azure Active Directory (AD) 中为 Azure 服务�
 
 Azure 通过一系列 [Azure SDK](https://azure.microsoft.com/downloads) 支持多个编程平台。 其中多个平台已更新为支持 Azure 资源托管标识，并提供相应的示例来演示用法。 由于添加了其他支持，此列表已更新：
 
-| SDK | 示例 |
+| SDK 中 IsInRole 中的声明 | 示例 |
 | --- | ------ | 
 | .NET   | [从具有已启用的 Azure 资源托管标识的已启用的 VM 中管理资源](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
 | Java   | [从具有 Azure 资源托管标识的已启用的 VM 中管理存储](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
@@ -48,4 +48,4 @@ Azure 通过一系列 [Azure SDK](https://azure.microsoft.com/downloads) 支持�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅“为 Azure VM 配置标识”下的相关文章，了解还可以如何使用 Azure 门户、PowerShell、CLI 和资源模板完成此操作。
+- 请参阅“为 Azure VM 配置标识”下的相关文章，了解还可以如何使用 Azure 门户、PowerShell、CLI 和资源模板完成此操作  。
