@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/25/2017
 ms.author: banders
 ms.openlocfilehash: 4e940a12cd57ef136cfd9ead298f9afcd2d6ad1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60617745"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>检查 Azure 免费帐户中包含的免费服务的使用情况 
@@ -29,7 +29,7 @@ ms.locfileid: "60617745"
 
 1.  登录到 [Azure 门户](https://portal.azure.com)。
 
-2.  在左侧的导航区域中，选择“所有服务”。
+2.  在左侧的导航区域中，选择“所有服务”  。
 
 3.  选择 **订阅**。
 
@@ -63,7 +63,7 @@ ms.locfileid: "60617745"
 
 使用文件提供有关 Azure 订阅的详尽信息。 可从 Azure 帐户中心下载每月和每日使用文件。 若要了解如何下载使用文件并了解所需的访问权限，请参阅[获取发票和使用情况](billing-download-azure-invoice-daily-usage-date.md)。 若要了解有关使用文件中列的信息，请参阅[了解有关使用情况的术语](billing-understand-your-usage.md)。
 
-使用文件具有免费服务和付费服务的使用情况信息。 免费服务测定仪在测定仪名称末尾附加 **Free**。 若要查找免费测定仪，请在 Excel 中打开文件并筛选“测定仪类别列”，获取具有文本“- Free”的单元格（使用文本筛选器 &rarr; 包含筛选器）&nbsp;
+使用文件具有免费服务和付费服务的使用情况信息。 免费服务测定仪在测定仪名称末尾附加 **Free**。 若要查找免费测定仪，请在 Excel 中打开文件并筛选“测定仪类别列”，获取具有文本“- Free”的单元格（使用文本筛选器 &rarr; 包含筛选器）&nbsp;  
 
 ![显示免费服务使用情况的屏幕截图](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 

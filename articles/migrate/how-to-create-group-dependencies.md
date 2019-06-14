@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
 ms.openlocfilehash: 3ee528cc68a2a5637e85dc1d5ef68203916138e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60596847"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
@@ -32,7 +32,7 @@ Azure Migrate 利用 Azure Monitor 日志，若要启用的计算机的依赖项
 ### <a name="associate-a-log-analytics-workspace"></a>关联 Log Analytics 工作区
 若要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。 只能在创建迁移项目的同一订阅中创建或附加工作区。
 
-- 若要将 Log Analytics 工作区附加到项目，请在“概述”中转到项目的“Essentials”部分，单击“需要配置”
+- 若要将 Log Analytics 工作区附加到项目，请在“概述”  中转到项目的“Essentials”  部分，单击“需要配置” 
 
     ![关联 Log Analytics 工作区](./media/concepts-dependency-visualization/associate-workspace.png)
 
@@ -46,9 +46,9 @@ Azure Migrate 利用 Azure Monitor 日志，若要启用的计算机的依赖项
 ### <a name="download-and-install-the-vm-agents"></a>下载并安装 VM 代理
 要查看组的依赖项，需要在组中包含的每台本地计算机上下载并安装代理。 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 [Log Analytics 网关](../azure-monitor/platform/gateway.md)。
 
-1. 在“概述”中，单击“管理” > “组”，转到所需组。
-2. 在计算机列表中，单击“依赖项代理”列中的“需要安装”，查看有关如何下载并安装代理的说明。
-3. 在组中包含的每台 VM 上，从“依赖项”页下载并安装 Microsoft Monitoring Agent (MMA) 和依赖项代理。
+1. 在“概述”中，单击“管理” > “组”，转到所需组    。
+2. 在计算机列表中，单击“依赖项代理”列中的“需要安装”，查看有关如何下载并安装代理的说明   。
+3. 在组中包含的每台 VM 上，从“依赖项”页下载并安装 Microsoft Monitoring Agent (MMA) 和依赖项代理  。
 4. 复制工作区 ID 和密钥。 在本地计算机上安装 MMA 时需要这些信息。
 
 ### <a name="install-the-mma"></a>安装 MMA
@@ -58,10 +58,10 @@ Azure Migrate 利用 Azure Monitor 日志，若要启用的计算机的依赖项
 若要在 Windows 计算机上安装代理：
 
 1. 双击下载的代理。
-2. 在“欢迎”页面上，单击“下一步”。 在“许可条款”页面上，单击“我接受”以接受许可协议。
-3. 在“目标文件夹”中，保留或修改默认安装文件夹，然后选择“下一步”。
-4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
-5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
+2. 在“欢迎”页面上，单击“下一步”。   在“许可条款”  页面上，单击“我接受”  以接受许可协议。
+3. 在“目标文件夹”  中，保留或修改默认安装文件夹，然后选择“下一步”  。
+4. 在“代理安装选项”  中，选择“Azure Log Analytics”   > “下一步”  。
+5. 单击“添加”  以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。 
 
 可以从命令行或使用自动的方法，如 System Center Configuration Manager 安装代理。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)如何使用这些方法安装 MMA 代理。
 
@@ -91,8 +91,8 @@ Azure Migrate 利用 Azure Monitor 日志，若要启用的计算机的依赖项
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>通过依赖项可视化优化组
 在组中的所有计算机上都安装代理后，可以可视化该组的依赖项，并通过执行以下步骤优化该组。
 
-1. 在 Azure Migrate 项目中，在 **“管理”** 下，单击 **“组”**，然后选择组。
-2. 在组页面上，单击 **“查看依赖项”**，打开组依赖项映射。
+1. 在 Azure Migrate 项目中，在 **“管理”** 下，单击 **“组”** ，然后选择组。
+2. 在组页面上，单击 **“查看依赖项”** ，打开组依赖项映射。
 3. 组的依赖项映射显示了以下详细信息：
    - 与组中包含的所有计算机的入站（客户端）和出站（服务器）TCP 连接
        - 没有安装 MMA 和依赖项代理的依赖计算机按端口号进行分组
@@ -112,7 +112,7 @@ Azure Migrate 利用 Azure Monitor 日志，若要启用的计算机的依赖项
     - 你只能添加已发现的计算机。
     - 在组中添加和删除计算机会使过去对此组的评估失效。
     - 修改组时，你可以视情况创建新的评估。
-5. 单击“确定”以保存组。
+5. 单击“确定”  以保存组。
 
     ![添加或删除计算机](./media/how-to-create-group-dependencies/add-remove.png)
 
@@ -124,9 +124,9 @@ Azure Migrate 利用 Azure Monitor 日志，若要启用的计算机的依赖项
 
 若要运行 Kusto 查询：
 
-1. 安装代理后，请转到门户并单击“概述”。
-2. 在“概述”中，转到项目的“Essentials”部分，然后单击“OMS 工作区”旁边提供的工作区名称。
-3. 在“Log Analytics 工作区”页上，单击“常规” > “日志”。
+1. 安装代理后，请转到门户并单击“概述”  。
+2. 在“概述”  中，转到项目的“Essentials”  部分，然后单击“OMS 工作区”  旁边提供的工作区名称。
+3. 在“Log Analytics 工作区”页上，单击“常规”   > “日志”  。
 4. 编写查询来收集依赖项数据使用 Azure Monitor 日志。 在下一部分中查找示例的查询。
 5. 通过单击“运行”，运行查询。 
 

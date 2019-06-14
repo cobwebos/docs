@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: 88f713c5695e2453edc58d072899aa417f0514af
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147042"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>结合使用 Azure 经典 CLI 与 Azure 存储
@@ -79,11 +79,11 @@ Azure 经典 CLI 提供了一组开源且跨平台的命令，可结合 Azure �
 5. 在本地计算机中，打开首选的文本编辑器（例如 vim）。 在文本编辑器中键入上述脚本。
 6. 现在，需要基于配置设置更新脚本变量。
 
-   * **<storage_account_name>**：使用脚本中给定的名称，或输入存储帐户的新名称。 **重要提示：** 在 Azure 中，存储帐户名必须是唯一的。 它还必须为小写！
-   * **<storage_account_key>**：存储帐户的访问密钥。
-   * **<container_name>**：使用脚本中给定的名称，或输入容器的新名称。
-   * <image_to_upload>：输入本地计算机上图片的路径，例如：“~/images/HelloWorld.png”。
-   * **<destination_folder>**：输入用于存储从 Azure 存储下载的文件的本地目录路径，例如：“~/downloadImages”。
+   * **<storage_account_name>** ：使用脚本中给定的名称，或输入存储帐户的新名称。 **重要提示：** 在 Azure 中，存储帐户名必须是唯一的。 它还必须为小写！
+   * **<storage_account_key>** ：存储帐户的访问密钥。
+   * **<container_name>** ：使用脚本中给定的名称，或输入容器的新名称。
+   * <image_to_upload>  ：输入本地计算机上图片的路径，例如：“~/images/HelloWorld.png”。
+   * **<destination_folder>** ：输入用于存储从 Azure 存储下载的文件的本地目录路径，例如：“~/downloadImages”。
 7. 在 vim 中更新完必需的变量以后，按组合键 `ESC`、`:`、`wq!` 保存脚本。
 8. 若要运行此脚本，在 bash 控制台中键入脚本文件名即可。 运行此脚本后，应会创建包含已下载图像文件的本地目标文件夹。 以下屏幕截图显示了示例输出：
 
@@ -133,7 +133,7 @@ azure storage container create mycontainer
 ```
 
 > [!NOTE]
-> 有三种级别的匿名读取访问：“关”、“Blob”和“容器”。 要防止对 Blob 进行匿名访问，请将 Permission 参数设置为 **Off**。 默认情况下，新容器是专用容器，只能由帐户所有者访问。 要允许对 Blob 资源进行匿名公共读取访问，但不允许访问容器元数据或容器中的 Blob 列表，请将 Permission 参数设置为 **Blob**。 要允许对 Blob 资源、容器元数据和容器中的 Blob 列表进行完全公开读取访问，请将 Permission 参数设置为 **Container**。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)。
+> 有三种级别的匿名读取访问：“关”  、“Blob”  和“容器”  。 要防止对 Blob 进行匿名访问，请将 Permission 参数设置为 **Off**。 默认情况下，新容器是专用容器，只能由帐户所有者访问。 要允许对 Blob 资源进行匿名公共读取访问，但不允许访问容器元数据或容器中的 Blob 列表，请将 Permission 参数设置为 **Blob**。 要允许对 Blob 资源、容器元数据和容器中的 Blob 列表进行完全公开读取访问，请将 Permission 参数设置为 **Container**。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)。
 >
 >
 
@@ -194,10 +194,10 @@ azure storage share create myshare
 azure storage directory create myshare myDir
 ```
 
-请注意，目录路径可以包括多个级别， *例如***a/b**。 但是，必须确保所有父目录都存在。 例如，对于路径 a/b，必须先创建目录 a，然后创建目录 b。
+请注意，目录路径可以包括多个级别， *例如***a/b**。 但是，必须确保所有父目录都存在。 例如，对于路径 a/b  ，必须先创建目录 a  ，然后创建目录 b  。
 
 ### <a name="upload-a-local-file-to-directory"></a>将本地文件上传到目录
-以下示例将文件从 ~/temp/samplefile.txt 上传到 myDir 目录。 请编辑文件路径，使其指向本地计算机上的有效文件：
+以下示例将文件从 ~/temp/samplefile.txt  上传到 myDir  目录。 请编辑文件路径，使其指向本地计算机上的有效文件：
 
 ```azurecli
 azure storage file upload '~/temp/samplefile.txt' myshare myDir

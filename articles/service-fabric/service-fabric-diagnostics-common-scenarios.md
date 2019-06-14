@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394119"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>使用 Service Fabric 诊断常见情况
@@ -39,7 +39,7 @@ ms.locfileid: "60394119"
 ## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>如何在应用程序中查看未经处理的异常？
 
 1. 导航到应用程序配置的 Application Insights 资源。
-2. 单击左上角的“搜索”。 然后单击下一个面板上的筛选器。
+2. 单击左上角的“搜索”  。 然后单击下一个面板上的筛选器。
 
     ![AI 概述](media/service-fabric-diagnostics-common-scenarios/ai-search-filter.png)
 

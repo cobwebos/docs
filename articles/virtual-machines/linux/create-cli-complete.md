@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: eb4c5897cdadecd074c2764faceeed13f4c724c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60328625"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
@@ -30,7 +30,7 @@ ms.locfileid: "60328625"
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 ## <a name="create-resource-group"></a>创建资源组
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建虚拟机和支持的虚拟网络资源前，必须先创建资源组。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建虚拟机和支持的虚拟网络资源前，必须先创建资源组。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
-接下来，在 Azure 中创建一个虚拟网络，以及一个可在其中创建 VM 的子网。 使用 [az network vnet create](/cli/azure/network/vnet) 创建一个名为 myVnet 的虚拟网络，其地址前缀为 192.168.0.0/16。 还需添加一个名为 mySubnet 的子网，其地址前缀为 192.168.1.0/24：
+接下来，在 Azure 中创建一个虚拟网络，以及一个可在其中创建 VM 的子网。 使用 [az network vnet create](/cli/azure/network/vnet) 创建一个名为 myVnet 的虚拟网络，其地址前缀为 192.168.0.0/16   。 还需添加一个名为 mySubnet 的子网，其地址前缀为 192.168.1.0/24   ：
 
 ```azurecli
 az network vnet create \
@@ -142,7 +142,7 @@ az network public-ip create \
 
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
-若要控制传入和传出 VM 的流量，请将网络安全组应用于虚拟 NIC 或子网。 以下示例使用 [az network nsg create](/cli/azure/network/nsg) 创建一个名为 myNetworkSecurityGroup 的网络安全组：
+若要控制传入和传出 VM 的流量，请将网络安全组应用于虚拟 NIC 或子网。 以下示例使用 [az network nsg create](/cli/azure/network/nsg) 创建一个名为 myNetworkSecurityGroup 的网络安全组  ：
 
 ```azurecli
 az network nsg create \
@@ -150,7 +150,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-定义允许或拒绝特定流量的规则。 若要允许端口 22 上的入站连接（以启用 SSH 访问），请使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 创建入站规则。 以下示例创建名为 myNetworkSecurityGroupRuleSSH 的规则：
+定义允许或拒绝特定流量的规则。 若要允许端口 22 上的入站连接（以启用 SSH 访问），请使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 创建入站规则。 以下示例创建名为 myNetworkSecurityGroupRuleSSH 的规则： 
 
 ```azurecli
 az network nsg rule create \
@@ -163,7 +163,7 @@ az network nsg rule create \
     --access allow
 ```
 
-若要允许端口 80 上的入站连接（以实现 Web 流量），请添加另一网络安全组规则。 以下示例创建名为 myNetworkSecurityGroupRuleHTTP 的规则：
+若要允许端口 80 上的入站连接（以实现 Web 流量），请添加另一网络安全组规则。 以下示例创建名为 myNetworkSecurityGroupRuleHTTP 的规则  ：
 
 ```azurecli
 az network nsg rule create \
@@ -333,7 +333,7 @@ az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGro
 ```
 
 ## <a name="create-a-virtual-nic"></a>创建虚拟 NIC
-由于可将规则应用到虚拟网络接口卡 (NIC) 的使用上，因此能以编程方式使用它。 可以将多个虚拟 NIC 附加到 VM，具体取决于 [VM 大小](sizes.md)。 在以下 [az network nic create](/cli/azure/network/nic) 命令中，会创建一个名为 myNic 的 NIC，并将其与网络安全组相关联。 公共 IP 地址 myPublicIP 也与此虚拟 NIC 相关联。
+由于可将规则应用到虚拟网络接口卡 (NIC) 的使用上，因此能以编程方式使用它。 可以将多个虚拟 NIC 附加到 VM，具体取决于 [VM 大小](sizes.md)。 在以下 [az network nic create](/cli/azure/network/nic) 命令中，会创建一个名为 myNic 的 NIC，并将其与网络安全组相关联  。 公共 IP 地址 myPublicIP 也与此虚拟 NIC 相关联  。
 
 ```azurecli
 az network nic create \
@@ -445,7 +445,7 @@ az network nic create \
 
 将多个 VM 放入一个可用性集时，Azure 会自动将它们分散到容错域和更新域。 有关详细信息，请参阅 [管理 VM 的可用性](manage-availability.md)。
 
-使用 [az vm availability-set create](/cli/azure/vm/availability-set) 为 VM 创建可用性集。 以下示例创建名为“myAvailabilitySet”的可用性集：
+使用 [az vm availability-set create](/cli/azure/vm/availability-set) 为 VM 创建可用性集。 以下示例创建名为“myAvailabilitySet”  的可用性集：
 
 ```azurecli
 az vm availability-set create \

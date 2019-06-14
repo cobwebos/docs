@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
 ms.openlocfilehash: 24611e265788cf046aa0733bc423917aaf305427
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60589717"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
@@ -40,11 +40,11 @@ ms.locfileid: "60589717"
 
 可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持迁移现有命名空间。 在命名空间上启用区域冗余之后，不能将其禁用。
 
-![1][]
+![第][]
 
 
 ## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>防范中断和灾难 - 服务总线标准版
-为了在使用标准消息传送定价层时实现针对数据中心中断的恢复，服务总线支持两种方法：主动和被动复制。 对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，可在两个命名空间中进行创建。 两个实体可以具有相同的名称。 例如，可在 **contosoPrimary.servicebus.windows.net/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.windows.net/myQueue** 下访问其辅助队列。
+为了在使用标准消息传送定价层时实现针对数据中心中断的恢复，服务总线支持两种方法：主动  和被动  复制。 对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，可在两个命名空间中进行创建。 两个实体可以具有相同的名称。 例如，可在 **contosoPrimary.servicebus.windows.net/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.windows.net/myQueue** 下访问其辅助队列。
 
 >[!NOTE]
 > **主动复制**和**被动复制**设置是常规用途解决方案，不是服务总线的特定功能。 复制逻辑（发送到 2 个不同的命名空间）存在于发送方应用程序上，而接收方必须具有用于检测重复项的自定义逻辑。

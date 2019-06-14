@@ -15,10 +15,10 @@ ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956053"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
@@ -86,7 +86,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 
 ### <a name="deploy-your-project"></a>部署项目
 
-回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 使用从[启用应用的 Git](#enable-local-git-with-kudu)中获取的 Git 远程 URL 替换 \<url>。
+回到本地终端窗口  ，将 Azure 远程功能添加到本地 Git 存储库。 使用从[启用应用的 Git](#enable-local-git-with-kudu)中获取的 Git 远程 URL 替换 \<url>  。
 
 ```bash
 git remote add azure <url>
@@ -105,33 +105,33 @@ git push azure master
 ## <a name="deploy-with-azure-devops-builds"></a>使用 Azure DevOps 生成部署
 
 > [!NOTE]
-> 若要让应用服务在 Azure DevOps Services 组织中创建所需的 Azure 管道，Azure 帐户必须在 Azure 订阅中具有“所有者”角色。
+> 若要让应用服务在 Azure DevOps Services 组织中创建所需的 Azure 管道，Azure 帐户必须在 Azure 订阅中具有“所有者”  角色。
 >
 
 若要使用 Kudu 生成服务器为应用启用本地 Git 部署，请在 [Azure 门户](https://portal.azure.com)中导航至应用。
 
-在应用页的左侧导航栏中，单击“部署中心” > “本地 Git” > “继续”。
+在应用页的左侧导航栏中，单击“部署中心”   > “本地 Git”   > “继续”  。
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-单击**Azure 管道 （预览版）** > **继续**。
+单击**Azure 管道 （预览版）**  > **继续**。
 
 ![](media/app-service-deploy-local-git/pipeline-builds.png)
 
-在中**配置**页上，配置新的 Azure DevOps 组织，或指定现有的组织。 完成后，单击“继续”。
+在中**配置**页上，配置新的 Azure DevOps 组织，或指定现有的组织。 完成后，单击“继续”。 
 
 > [!NOTE]
 > 如果你想要使用现有 Azure DevOps 组织未列出，则需要[链接到你的 Azure 订阅的 Azure DevOps 服务组织](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)。
 
-根据应用服务计划的[定价层](https://azure.microsoft.com/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”页。 选择是否要启用部署槽位，然后单击“继续”。
+根据应用服务计划的[定价层](https://azure.microsoft.com/pricing/details/app-service/plans/)，可能还会看到“部署到过渡环境”  页。 选择是否要启用部署槽位，然后单击“继续”  。
 
-在“摘要”页中，确认选项，然后单击“完成”。
+在“摘要”  页中，确认选项，然后单击“完成”  。
 
 Azure DevOps Services 组织需要几分钟时间才能准备就绪。 准备就绪后，在部署中心复制 Git 存储库 URL。
 
 ![](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
-回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 将 _\<url>_ 替换为从上一步获得的 URL。
+回到本地终端窗口  ，将 Azure 远程功能添加到本地 Git 存储库。 将 _\<url>_ 替换为从上一步获得的 URL。
 
 ```bash
 git remote add vsts <url>
@@ -172,7 +172,7 @@ git push vsts master
 
 **原因**：如果在 `git push` 期间未指定分支，或者未在 `.gitconfig` 中设置 `push.default` 值，则会出现此错误。
 
-**解决方法**：再次运行 `git push`，并指定主分支。 例如:
+**解决方法**：再次运行 `git push`，并指定主分支。 例如：
 
 ```bash
 git push azure master
@@ -183,7 +183,7 @@ git push azure master
 
 **原因**：如果尝试推送到“azure”远程网站上主分支之外的分支，则会发生该错误。
 
-**解决方法**：再次运行 `git push`，并指定主分支。 例如:
+**解决方法**：再次运行 `git push`，并指定主分支。 例如：
 
 ```bash
 git push azure master
@@ -203,7 +203,7 @@ git config --global http.postBuffer 524288000
 ---
 **症状**：`Error - Changes committed to remote repository but your web app not updated.`
 
-**原因**：如果部署 Node.js 应用时使用的 package.json 文件指定了其他所需模块，则会发生该错误。
+**原因**：如果部署 Node.js 应用时使用的 package.json 文件指定了其他所需模块，则会发生该错误  。
 
 **解决方法**：应在发生此错误之前记录包含“npm ERR!” 的其他消息，这些消息可提供有关失败的其他上下文。 以下是该错误的已知原因和相应的“npm ERR!” 消息:
 
@@ -212,7 +212,7 @@ git config --global http.postBuffer 524288000
 
   * `npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1`
 
-      OR
+      或
   * `npm ERR! [modulename@version] preinstall: \make || gmake\`
 
 ## <a name="additional-resources"></a>其他资源

@@ -8,10 +8,10 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: f88dee579e44a01dc1a7404ef6a670de34063552
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833571"
 ---
 # <a name="remote-desktop-client-connections"></a>远程桌面客户端连接
@@ -36,19 +36,19 @@ nslookup rdweb.wvd.microsoft.com
 
 ### <a name="error-opening-another-site-fails"></a>错误：打开另一个站点失败
 
-原因：网络问题和/或服务中断。
+原因：  网络问题和/或服务中断。
 
 **解决方法：** 请联系网络支持。
 
 ### <a name="error-nslookup-cannot-resolve-the-name"></a>错误：Nslookup 无法解析名称
 
-原因：网络问题和/或服务中断。
+原因：  网络问题和/或服务中断。
 
 **解决方法：** 请联系网络支持
 
 ### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>错误：无法连接，但其他客户端可以连接
 
-原因：在浏览器不行为如预期的和已停止工作。
+原因：  在浏览器不行为如预期的和已停止工作。
 
 **解决方法：** 按照以下说明来解决浏览器。
 
@@ -63,7 +63,7 @@ nslookup rdweb.wvd.microsoft.com
 
 ### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>错误：其他浏览器和客户端也正常工作，或打开失败
 
-原因：网络和/或操作的系统问题或中断
+原因：  网络和/或操作的系统问题或中断
 
 **解决方法：** 联系支持团队。
 
@@ -135,21 +135,21 @@ Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
     Time              : <Timestampt>
     ```
 
-### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>错误：O_ADD_USER_TO_GROUP_FAILED / 无法将用户添加到组 ≤username≥ = = Remote Desktop Users。 原因:Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>错误：O_ADD_USER_TO_GROUP_FAILED / 无法将用户添加到组 ≤username≥ = = Remote Desktop Users。 原因：Win32.ERROR_NO_SUCH_MEMBER
 
-原因：未将 VM 加入到用户对象的域中。
+原因：  未将 VM 加入到用户对象的域中。
 
 **解决方法：** 将 VM 添加到正确的域。 请参阅[Windows Server 虚拟机加入托管域](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal)。
 
 ### <a name="error-nslookup-cannot-resolve-the-name"></a>错误：Nslookup 无法解析名称
 
-原因：网络问题或中断。
+原因：  网络问题或中断。
 
 **解决方法：** 请联系网络支持
 
 ### <a name="error-connectionfailedclientprotocolerror"></a>错误：ConnectionFailedClientProtocolError
 
-原因：该用户尝试连接到虚拟机未加入域。
+原因：  该用户尝试连接到虚拟机未加入域。
 
 **解决方法：** 加入到域控制器主机池的一部分的所有 Vm。
 

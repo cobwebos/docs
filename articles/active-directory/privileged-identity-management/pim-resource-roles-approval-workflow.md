@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f645b7077ef43dc7eb4d70261b6b601b5e4af1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60288424"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>在 PIM 中批准或拒绝 Azure 资源角色的请求
@@ -34,13 +34,13 @@ ms.locfileid: "60288424"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“审批请求”。
+1. 单击“审批请求”  。
 
     ![Azure 资源 - 审批请求](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
-    在“请求激活角色”部分，将看到等待审批的请求列表。
+    在“请求激活角色”部分，将看到等待审批的请求列表  。
 
 ## <a name="approve-requests"></a>审批请求
 
@@ -48,9 +48,9 @@ ms.locfileid: "60288424"
 
     ![“审批请求”窗格](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. 在“理由”框中，键入一个原因。
+1. 在“理由”框中，键入一个原因  。
 
-1. 单击“批准”。
+1. 单击“批准”  。
 
     审批后会出现一个通知。
 
@@ -62,9 +62,9 @@ ms.locfileid: "60288424"
 
     ![“审批请求”窗格](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. 在“理由”框中，键入一个原因。
+1. 在“理由”框中，键入一个原因  。
 
-1. 单击“拒绝”。
+1. 单击“拒绝”  。
 
     拒绝后会出现一个通知。
 

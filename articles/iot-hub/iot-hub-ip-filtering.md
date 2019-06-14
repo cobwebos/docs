@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
 ms.openlocfilehash: 5e755a528d91d6321f431f256eafdcb01e67d601
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60398964"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
@@ -34,7 +34,7 @@ ms.locfileid: "60398964"
 
 ## <a name="default-setting"></a>默认设置
 
-默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。 此默认设置意味着中心会接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
+默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。  此默认设置意味着中心会接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
 
 ![IoT 中心默认 IP 筛选器设置](./media/iot-hub-ip-filtering/ip-filter-default.png)
 
@@ -42,9 +42,9 @@ ms.locfileid: "60398964"
 
 添加 IP 筛选器规则时，系统会提示输入以下值：
 
-* “IP 筛选器规则名称”，该名称必须是一个唯一的字母数字字符串，不区分大小写并且最大长度为 128 个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
+* “IP 筛选器规则名称”，该名称必须是一个唯一的字母数字字符串，不区分大小写并且最大长度为 128 个字符。  只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
 
-* 选择“拒绝”或“接受”作为 IP 筛选器规则的“操作”。
+* 选择“拒绝”或“接受”作为 IP 筛选器规则的“操作”。   
 
 * 提供单个 IPv4 地址或者以 CIDR 表示法提供一个 IP 地址块。 例如，在 CIDR 表示法中，192.168.100.0/22 表示从 192.168.100.0 到 192.168.103.255 的 1024 个 IPv4 地址。
 
@@ -54,7 +54,7 @@ ms.locfileid: "60398964"
 
 ![关于保存 IP 筛选规则的通知](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
 
-当存在的 IP 筛选规则达到最大数目 10 时，“添加”选项被禁用。
+当存在的 IP 筛选规则达到最大数目 10 时，“添加”  选项被禁用。
 
 可以通过双击包含某个现有规则的行编辑该规则。
 
@@ -66,7 +66,7 @@ ms.locfileid: "60398964"
 
 ## <a name="delete-an-ip-filter-rule"></a>删除 IP 筛选器规则
 
-如果要删除 IP 筛选器规则，请在网格中选择一个或多个规则，并单击“删除”。
+如果要删除 IP 筛选器规则，请在网格中选择一个或多个规则，并单击“删除”。 
 
 ![删除 IoT 中心 IP 筛选规则](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
@@ -158,7 +158,7 @@ IP 筛选器规则按顺序应用，与 IP 地址匹配的第一条规则决定�
 
 可以通过单击行开头的三个竖直点并使用拖放操作更改 IP 筛选规则在网格中的顺序。
 
-若要保存新的 IP 筛选器规则顺序，请单击“保存”。
+若要保存新的 IP 筛选器规则顺序，请单击“保存”。 
 
 ![更改 IoT 中心 IP 筛选规则的顺序](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
 

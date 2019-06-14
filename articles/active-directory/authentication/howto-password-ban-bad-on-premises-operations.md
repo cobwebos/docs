@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca85007bb016cc98d1be61ce08865945e699ad4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60358170"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD 密码保护操作规程
@@ -29,10 +29,10 @@ ms.locfileid: "60358170"
 ## <a name="enable-password-protection"></a>启用密码保护
 
 1. 登录到[Azure 门户](https://portal.azure.com)并浏览到**Azure Active Directory**，**身份验证方法**，然后**密码保护**。
-1. 将“对 Windows Server Active Directory 启用密码保护”设置为“是”
-1. 如[部署指南](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)中所述，我们建议最初将“模式”设置为“审核”
-   * 在熟悉该功能后，可将“模式”切换为“强制”
-1. 单击“保存”
+1. 将“对 Windows Server Active Directory 启用密码保护”  设置为“是” 
+1. 如[部署指南](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)中所述，我们建议最初将“模式”设置为“审核”  
+   * 在熟悉该功能后，可将“模式”切换为“强制”  
+1. 单击“保存” 
 
 ![在 Azure 门户中启用 Azure AD 密码保护组件](./media/howto-password-ban-bad-on-premises-operations/authentication-methods-password-protection-on-prem.png)
 

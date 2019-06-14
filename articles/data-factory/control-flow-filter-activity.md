@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: shlo
 ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60554841"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Filter 活动
@@ -40,7 +40,7 @@ ms.locfileid: "60554841"
 属性 | 说明 | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
 name | `Filter` 活动的名称。 | String | 是
-type | 必须设置为“filter”。 | String | 是
+type | 必须设置为  “filter”。 | String | 是
 condition | 要用于筛选输入的条件。 | 表达式 | 是
 items | 应该应用筛选器的输入数组。 | 表达式 | 是
 

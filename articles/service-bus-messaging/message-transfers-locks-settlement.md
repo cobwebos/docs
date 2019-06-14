@@ -3,29 +3,28 @@ title: Azure 服务总线消息传输、锁定和处置 | Microsoft Docs
 description: 服务总线消息传输和处置操作概述
 services: service-bus-messaging
 documentationcenter: ''
-author: lingliw
-manager: digimobile
-editor: ''
+author: axisc
+manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 09/25/2018
-ms.date: 10/31/2018
-ms.author: v-lingwu
+ms.date: 09/25/2018
+ms.author: aschhab
 ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60403935"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>消息传输、锁定和处置
 
 消息代理（如服务总线）的最核心功能是将消息接受到队列或主题中以及保存它们以用于将来检索。 *发送*是常用于指消息传输到消息代理中的术语。 *接收*是常用于指将消息传输到检索客户端的术语。
 
-当客户端发送消息时，它通常希望了解消息是否正确传输到代理并由代理接受，或是否发生某种形式的错误。 这种肯定或否定确认会使客户端和代理了解消息传输状态，因而称为。
+当客户端发送消息时，它通常希望了解消息是否正确传输到代理并由代理接受，或是否发生某种形式的错误。 这种肯定或否定确认会使客户端和代理了解消息传输状态，因而称为  。
 
 同样，当中转站向客户端传输消息时，中转站和客户端都希望了解消息是已成功处理（因而可以删除消息），还是消息传递或处理失败（因而可能需要再次传递消息）。
 
@@ -89,7 +88,7 @@ await Task.WhenAll(tasks);
 for (int i = 0; i < 100; i++)
 {
 
-  client.SendAsync(message); // DON'T DO THIS
+  client.SendAsync(message); // DON’T DO THIS
 }
 ```
 

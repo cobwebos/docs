@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: a51cd589702320ecb55e6a2e3c5f0a6139e281fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60422349"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>如何通过 PHP 使用 Twilio 实现语音和 SMS 功能
@@ -40,20 +40,20 @@ Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
 ### <a id="Verbs"></a>Twilio 谓词
-API 利用了 Twilio 谓词；例如，**&lt;Say&gt;** 谓词指示 Twilio 在呼叫时传递语音消息。
+API 利用了 Twilio 谓词；例如， **&lt;Say&gt;** 谓词指示 Twilio 在呼叫时传递语音消息。
 
 下面是 Twilio 谓词的列表。 通过 [Twilio 标记语言文档](https://www.twilio.com/docs/api/twiml)了解其他谓词和功能。
 
-* **&lt;Dial&gt;**：将呼叫方连接到其他电话。
-* **&lt;Gather&gt;**：收集通过电话按键输入的数字。
-* **&lt;Hangup&gt;**：结束呼叫。
-* **&lt;Play&gt;**：播放音频文件。
-* **&lt;Pause&gt;**：安静地等待指定的秒数。
-* **&lt;Record&gt;**：录制呼叫方的声音并返回包含该录音的文件的 URL。
-* **&lt;Redirect&gt;**：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
-* **&lt;Reject&gt;**：拒绝对 Twilio 号码的传入呼叫且无需付费
-* **&lt;Say&gt;**：将文本转换为通话语音。
-* **&lt;Sms&gt;**：发送短信。
+* **&lt;Dial&gt;** ：将呼叫方连接到其他电话。
+* **&lt;Gather&gt;** ：收集通过电话按键输入的数字。
+* **&lt;Hangup&gt;** ：结束呼叫。
+* **&lt;Play&gt;** ：播放音频文件。
+* **&lt;Pause&gt;** ：安静地等待指定的秒数。
+* **&lt;Record&gt;** ：录制呼叫方的声音并返回包含该录音的文件的 URL。
+* **&lt;Redirect&gt;** ：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
+* **&lt;Reject&gt;** ：拒绝对 Twilio 号码的传入呼叫且无需付费
+* **&lt;Say&gt;** ：将文本转换为通话语音。
+* **&lt;Sms&gt;** ：发送短信。
 
 ### <a id="TwiML"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
@@ -72,7 +72,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 ## <a id="CreateAccount"></a>创建 Twilio 帐户
 准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级帐户。
 
-注册 Twilio 帐户时，将收到帐户 ID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][twilio_account]上标记为“帐户 SID”和“身份验证令牌”的字段中。
+注册 Twilio 帐户时，将收到帐户 ID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][twilio_account]上标记为“帐户 SID”  和“身份验证令牌”  的字段中。
 
 ## <a id="create_app"></a>创建 PHP 应用程序
 使用 Twilio 服务且在 Azure 中运行的 PHP 应用程序与任何其他使用 Twilio 服务的 PHP 应用程序之间没有任何差别。 Twilio 服务是基于 REST 的且可通过几种方法从 PHP 中调用，本文将重点介绍如何将 Twilio 服务与 [GitHub 提供的用于 PHP 的 Twilio 库][twilio_php]一起使用。 有关使用用于 PHP 的 Twilio 库的详细信息，请参阅 [https://www.twilio.com/docs/libraries/php][twilio_lib_docs]。
@@ -82,9 +82,9 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 ## <a id="configure_app"></a>将应用程序配置为使用 Twilio 库
 可以通过两种方式将应用程序配置为使用用于 PHP 的 Twilio 库：
 
-1. 下载 GitHub 提供的用于 PHP 的 Twilio 库 ([https://github.com/twilio/twilio-php][twilio_php]) 并将 Services 目录添加到应用程序。
+1. 下载 GitHub 提供的用于 PHP 的 Twilio 库 ([https://github.com/twilio/twilio-php][twilio_php]) 并将 Services  目录添加到应用程序。
    
-    - 或 -
+    \- 或 -
 2. 将用于 PHP 的 Twilio 库作为 PEAR 包安装。 可使用以下命令安装它：
    
         $ pear channel-discover twilio.github.com/pear
@@ -97,7 +97,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 有关详细信息，请参阅 [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme]。
 
 ## <a id="howto_make_call"></a>如何：发起传出呼叫
-下面演示了如何使用 **Services_Twilio** 类发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。
+下面演示了如何使用 **Services_Twilio** 类发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。   
 
     // Include the Twilio PHP library.
     require_once 'Services/Twilio.php';
@@ -143,7 +143,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 * **注意**：若要对 SSL 证书验证错误进行故障排除，请参阅 [http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
 
 ## <a id="howto_send_sms"></a>如何：发送短信
-下面演示如何使用 **Services_Twilio** 类发送 SMS 消息。 “呼叫方”号码由 Twilio 提供，供试用帐户用来发送 SMS 消息。 在运行代码前，必须为 Twilio 帐户验证“被呼叫方”号码。
+下面演示如何使用 **Services_Twilio** 类发送 SMS 消息。 “呼叫方”号码由 Twilio 提供，供试用帐户用来发送 SMS 消息。  在运行代码前，必须为 Twilio 帐户验证“被呼叫方”号码。 
 
     // Include the Twilio PHP library.
     require_once 'Services/Twilio.php';

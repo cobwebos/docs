@@ -11,10 +11,10 @@ ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60336206"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
@@ -26,7 +26,7 @@ ms.locfileid: "60336206"
 
 Azure DevOps Services 提供了一种将工作项（情景或任务）与 Git 分支连接的简便方法。 它可以让你将情景或任务直接链接到与它关联的代码。 
 
-若要将工作项与新分支连接，请双击工作项，然后在弹出窗口中的“+ 添加链接”下单击“创建新分支”。  
+若要将工作项与新分支连接，请双击工作项，然后在弹出窗口中的“+ 添加链接”  下单击“创建新分支”  。  
 
 ![第](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
@@ -44,20 +44,20 @@ Azure DevOps Services 提供了一种将工作项（情景或任务）与 Git �
 
     git checkout <branch name>
 
-将 <分支名称\> 更改为主分支会将你重新切换到主分支。 切换到工作分支后，可以开始处理相应的工作项、开发完成该工作项所需的代码或文档项目。 
+将 <分支名称\>  更改为主分支  会将你重新切换到主分支  。 切换到工作分支后，可以开始处理相应的工作项、开发完成该工作项所需的代码或文档项目。 
 
-还可以将工作项链接到现有的分支。 在工作项的“详细信息”页中，单击“+ 添加链接”，而不要单击“创建新分支”。 然后选择想要将该工作项链接到的分支。 
+还可以将工作项链接到现有的分支。 在工作项的“详细信息”  页中，单击“+ 添加链接”  ，而不要单击“创建新分支”  。 然后选择想要将该工作项链接到的分支。 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
-也可以在 Git Bash 命令中创建新分支。 如果缺少 <基分支名称\>，<新分支名称\> 将以主分支为基础。 
+也可以在 Git Bash 命令中创建新分支。 如果缺少 <基分支名称\>，<新分支名称\> 将以主  分支为基础。 
     
     git checkout -b <new branch name> <base branch name>
 
 
 ## 2.<a name='WorkonaBranchandCommittheChanges-2'></a>在分支上工作并提交更改 
 
-现在假设你对工作项的数据\_引入分支进行了一些更改，例如在你的本地计算机的分支上添加了 R 文件。 则在 Git Shell 中的相应分支中使用以下 Git 命令，即可将添加的 R 文件提交到此工作项的分支中：
+现在假设你对工作项的数据\_引入  分支进行了一些更改，例如在你的本地计算机的分支上添加了 R 文件。 则在 Git Shell 中的相应分支中使用以下 Git 命令，即可将添加的 R 文件提交到此工作项的分支中：
 
     git status
     git add .
@@ -70,7 +70,7 @@ Azure DevOps Services 提供了一种将工作项（情景或任务）与 Git �
 
 在已完成几次提交和推送并已准备就绪后，若要将当前分支合并到它的基分支，可以在 Azure DevOps Services 上提交**拉取请求**。 
 
-转到你的项目的主页，然后单击“代码”。 选择要合并的分支及要将此分支合并到的 Git 存储库的名称。 然后单击“拉取请求”，单击“新建拉取请求”，以在将该分支上的工作合并到其基分支前先创建拉取请求评审。
+转到你的项目的主页，然后单击“代码”  。 选择要合并的分支及要将此分支合并到的 Git 存储库的名称。 然后单击“拉取请求”  ，单击“新建拉取请求”  ，以在将该分支上的工作合并到其基分支前先创建拉取请求评审。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
@@ -86,15 +86,15 @@ Azure DevOps Services 提供了一种将工作项（情景或任务）与 Git �
 
 ![9](./media/collaborative-coding-with-git/9-spring-approve-pullrequest.png)
 
-评审结束后，可通过单击“完成”按钮将工作分支合并到它的基分支。 合并此工作分支后，可以选择将其删除。 
+评审结束后，可通过单击“完成”  按钮将工作分支合并到它的基分支。 合并此工作分支后，可以选择将其删除。 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
-在右上角确认请求已被标记为“已完成”。 
+在右上角确认请求已被标记为“已完成”  。 
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-在“代码”下返回到该存储库后，将提示你你已切换到主分支。
+在“代码”  下返回到该存储库后，将提示你你已切换到主分支。
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

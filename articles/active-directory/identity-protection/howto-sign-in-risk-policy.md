@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe9e0a4d481ef7b802c50fdc347872e389fa8ef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60294556"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>如何：配置登录风险策略
@@ -38,7 +38,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
    
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>如何访问登录风险策略？
    
-登录风险策略位于 [Azure AD Identity Protection 页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy)上的“配置”部分中。
+登录风险策略位于 [Azure AD Identity Protection 页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy)上的“配置”  部分中。
    
 ![登录风险策略](./media/howto-sign-in-risk-policy/1014.png "登录风险策略")
 
@@ -99,9 +99,9 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 ## <a name="best-practices"></a>最佳做法
 
-选择“高”阈值可减少触发策略的次数，最大程度地降低对用户的影响。  
+选择“高”阈值可减少触发策略的次数，最大程度地降低对用户的影响。   
 
-但是，它会从策略中排除标记为“低”和“中”风险的登录，而无法阻止攻击者利用遭到入侵的标识。
+但是，它会从策略中排除标记为“低”和“中”风险的登录，而无法阻止攻击者利用遭到入侵的标识。  
 
 设置策略时：
 
@@ -111,11 +111,11 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 - 排除可能会生成大量误报的用户（开发人员、安全分析人员）
 
-- 在首次实施策略期间，或者必须尽量减少向最终用户显示质询时，请使用“高”阈值。
+- 在首次实施策略期间，或者必须尽量减少向最终用户显示质询时，请使用“高”阈值。 
 
-- 如果组织需要更高的安全性，请使用“低”阈值。 选择“低”阈值会显示更多的用户登录质询，但可以提高安全性。
+- 如果组织需要更高的安全性，请使用“低”阈值。  选择“低”阈值会显示更多的用户登录质询，但可以提高安全性。 
 
-对于大多数组织而言，建议的默认值是设置“中”阈值的规则，以便在可用性与安全性之间取得均衡。
+对于大多数组织而言，建议的默认值是设置“中”阈值的规则，以便在可用性与安全性之间取得均衡。 
 
 
 

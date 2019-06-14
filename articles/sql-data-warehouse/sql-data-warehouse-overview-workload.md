@@ -2,20 +2,19 @@
 title: 了解 Azure SQL 数据仓库操作 | Microsoft Docs
 description: '借助 SQL 数据仓库的弹性，可以使用数据仓库单位 (DWU) 的可调缩放性扩大、收缩或暂停计算容量。 本文介绍数据仓库指标以及它们如何与 DWU 相关。 '
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: kevinvngo
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
-origin.date: 04/17/2018
-ms.date: 11/12/2018
-ms.author: v-jay
+ms.subservice: design
+ms.date: 04/17/2018
+ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60531180"
 ---
 # <a name="data-warehouse-workload"></a>数据仓库工作负荷

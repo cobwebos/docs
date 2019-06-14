@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: df189e405dcd5277c1ccbd94e9d5d302660be79b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60359776"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域启用安全 LDAP (LDAPS)
@@ -31,9 +31,9 @@ ms.locfileid: "60359776"
 ## <a name="task-3-enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>任务 3：使用 Azure 门户为托管域启用安全 LDAP
 若要启用安全 LDAP，请执行以下配置步骤：
 
-1. 导航到 [Azure 门户](https://portal.azure.com)。
+1. 导航到 [Azure 门户](https://portal.azure.com)  。
 
-2. 在“搜索资源”搜索框中搜索“域服务”。 从搜索结果中“选择 Azure AD 域服务”。 “Azure AD 域服务”页将列出托管域。
+2. 在“搜索资源”搜索框中搜索“域服务”  。 从搜索结果中“选择 Azure AD 域服务”  。 “Azure AD 域服务”页将列出托管域  。
 
     ![查找正在预配的托管域](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
@@ -41,24 +41,24 @@ ms.locfileid: "60359776"
 
     ![域服务 - 预配状态](./media/getting-started/domain-services-provisioning-state.png)
 
-3. 在导航窗格中单击“安全 LDAP”。
+3. 在导航窗格中单击“安全 LDAP”  。
 
     ![“域服务 - 安全 LDAP”页](./media/active-directory-domain-services-admin-guide/secure-ldap-blade.png)
 
-4. 默认情况下，已禁用对托管域的安全 LDAP 访问。 将“安全 LDAP”切换为“启用”。
+4. 默认情况下，已禁用对托管域的安全 LDAP 访问。 将“安全 LDAP”切换为“启用”   。
 
     ![启用安全 LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. 默认情况下，已禁用通过 Internet 对托管域的安全 LDAP 访问。 如果需要，将“允许通过 Internet 进行安全 LDAP 访问”切换为“启用”。
+5. 默认情况下，已禁用通过 Internet 对托管域的安全 LDAP 访问。 如果需要，将“允许通过 Internet 进行安全 LDAP 访问”切换为“启用”   。
 
     > [!WARNING]
     > 在通过 Internet 启用安全 LDAP 访问时，你的域容易受到来自 Internet 的密钥搜索攻击。 因此，我们建议设置 NSG 以将访问锁定到所需的源 IP 地址范围。 请参阅[通过 Internet 锁定对托管域的 LDAPS 访问](active-directory-ds-ldaps-bind-lockdown.md#task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet)的说明。
     >
 
-6. 单击具有安全 LDAP 证书的 .PFX 文件后面的文件夹图标。 指定具有证书的 PFX 文件的路径，以便对托管域进行安全 LDAP 访问。
+6. 单击具有安全 LDAP 证书的 .PFX 文件后面的文件夹图标  。 指定具有证书的 PFX 文件的路径，以便对托管域进行安全 LDAP 访问。
 
-7. 指定用于解密 .PFX 文件的密码。 请提供将证书导出到 PFX 文件时所用的密码。
+7. 指定用于解密 .PFX 文件的密码  。 请提供将证书导出到 PFX 文件时所用的密码。
 
-8. 完成后，请单击“保存”按钮。
+8. 完成后，请单击“保存”按钮  。
 
 9. 你将收到通知，告知正在为托管域配置安全 LDAP。 完成此操作之前，无法修改域的其他设置。
 

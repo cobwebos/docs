@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc3aea059b6ac4244ea440d26717562e83fdbd09
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824910"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
@@ -45,7 +45,7 @@ Microsoft Azure AD 用户预配到第三方 SaaS 应用，例如 Salesforce、 G
 
    ![Salesforce](./media/customize-application-attributes/21.png) 
 
-1. 选择**映射**配置，以打开相关**属性映射**屏幕。 某些属性映射所需的 SaaS 应用程序才能正常工作。 对于必需属性，“删除”功能将不可用。
+1. 选择**映射**配置，以打开相关**属性映射**屏幕。 某些属性映射所需的 SaaS 应用程序才能正常工作。 对于必需属性，“删除”功能将不可用  。
 
    ![Salesforce](./media/customize-application-attributes/22.png)
 
@@ -76,7 +76,7 @@ Microsoft Azure AD 用户预配到第三方 SaaS 应用，例如 Salesforce、 G
 - **源属性** - 来自源系统的用户属性（示例：Azure Active Directory）。
 - **目标属性** - 目标系统中的用户属性（示例：ServiceNow）。
 - **使用此属性匹配对象**– 是否应使用此映射唯一标识源和目标系统之间的用户。 它通常在 Azure AD 中，此值通常映射到目标应用程序中的用户名字段设置 userPrincipalName 或邮件属性上。
-- 匹配优先级 – 可设置多个匹配属性。 如果有多个，它们是按此字段定义的顺序进行计算。 一旦找到匹配，就不会进一步评估其他匹配属性。
+- 匹配优先级 – 可设置多个匹配属性  。 如果有多个，它们是按此字段定义的顺序进行计算。 一旦找到匹配，就不会进一步评估其他匹配属性。
 - **应用此映射**
     - **始终**– 在这两个用户创建应用此映射和更新操作。
     - **仅创建期间**-仅在用户的创建操作上应用此映射。
@@ -130,7 +130,7 @@ Microsoft Azure AD 用户预配到第三方 SaaS 应用，例如 Salesforce、 G
 * **API 表达式**-不使用，除非要求这样做 （例如 Workday) 特定的预配连接器的文档。
 * **引用的对象属性**-如果它为引用类型的属性，则此菜单允许您选择的表和属性中包含的值与属性关联的目标应用程序。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 引用表和主要 ID 字段给定的应用程序支持的预配置目前不能使用 Azure 门户中，编辑但可使用编辑[图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)。
 
-若要添加新属性，请滚动到受支持属性列表的末尾，使用提供的输入填充上述字段，然后选择“添加属性”。 添加完属性后选择“保存”。 然后，你需要重新加载**预配**将新的属性，属性映射编辑器中可用的选项卡。
+若要添加新属性，请滚动到受支持属性列表的末尾，使用提供的输入填充上述字段，然后选择“添加属性”。  添加完属性后选择“保存”。  然后，你需要重新加载**预配**将新的属性，属性映射编辑器中可用的选项卡。
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>还原默认属性和属性映射
 

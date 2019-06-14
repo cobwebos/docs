@@ -13,14 +13,14 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a4757be00a3633f56aed52dd7af22923e49b0b62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60475606"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>设置安全信息以使用验证器应用（预览）
-可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
+可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息  。
 
 如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
@@ -38,85 +38,85 @@ ms.locfileid: "60475606"
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
-2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
+2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”     。
 
     ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. 在“添加方法”页上，从下拉列表中选择“验证器应用”，然后选择“添加”。
+3. 在“添加方法”页上，从下拉列表中选择“验证器应用”，然后选择“添加”    。
 
     ![“添加方法”框，其中已选择“验证器应用”](media/security-info/securityinfo-myprofile-addauthapp.png)
 
-4. 在“首先获取应用”页上，选择“立即下载”以在移动设备上下载并安装 Microsoft Authenticator 应用，然后选择“下一步”。
+4. 在“首先获取应用”页上，选择“立即下载”以在移动设备上下载并安装 Microsoft Authenticator 应用，然后选择“下一步”。   
 
     有关如何下载和安装该应用的详细信息，请参阅[下载并安装 Microsoft Authenticator 应用](user-help-auth-app-download-install.md)。
 
     ![“首先获取应用”页](media/security-info/securityinfo-myprofile-getauthapp.png)
 
    > [!Note]
-   > 若要使用除 Microsoft Authenticator 应用以外的验证器应用，请选择“我想要使用其他验证器应用”链接。
+   > 若要使用除 Microsoft Authenticator 应用以外的验证器应用，请选择“我想要使用其他验证器应用”链接。 
    > 
-   > 如果你的组织允许选择除验证器应用以外的其他方法，则可以选择“我想要设置其他方法”链接。
+   > 如果你的组织允许选择除验证器应用以外的其他方法，则可以选择“我想要设置其他方法”链接。 
 
-5. 在移动设备上安装 Microsoft Authenticator 应用时，请将“设置帐户”页保持打开。
+5. 在移动设备上安装 Microsoft Authenticator 应用时，请将“设置帐户”页保持打开。 
 
     ![“设置验证器应用”页](media/security-info/securityinfo-myprofile-setupauthapp.png)
 
-6. 打开 Microsoft Authenticator 应用，选择允许通知（如果出现相关提示），通过右上角的“自定义和控制”图标中选择“添加帐户”，然后选择“工作或学校帐户”。
+6. 打开 Microsoft Authenticator 应用，选择允许通知（如果出现相关提示），通过右上角的“自定义和控制”图标中选择“添加帐户”，然后选择“工作或学校帐户”。   
 
-7. 返回到计算机上的“设置帐户”页，然后选择“下一步”。
+7. 返回到计算机上的“设置帐户”页，然后选择“下一步”。  
 
-    此时会出现“扫描 QR 码”页。
+    此时会出现“扫描 QR 码”页。 
 
     ![使用 Authenticator 应用扫描 QR 码](media/security-info/securityinfo-myprofile-qrcodeauthapp.png)
 
 6. 使用在步骤 6 中创建工作或学校帐户后显示在移动设备上的 Microsoft Authenticator 应用 QR 码读取器扫描所提供的代码。
 
-    Authenticator 应用应该会成功添加你的工作或学校帐户，而无需提供其他任何信息。 但是，如果 QR 码读取器无法读取该代码，则你可以选择“无法扫描 QR 码链接”，并将代码和 URL 手动输入到 Microsoft Authenticator 应用中。 有关手动添加代码的详细信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
+    Authenticator 应用应该会成功添加你的工作或学校帐户，而无需提供其他任何信息。 但是，如果 QR 码读取器无法读取该代码，则你可以选择“无法扫描 QR 码链接”，并将代码和 URL 手动输入到 Microsoft Authenticator 应用中。  有关手动添加代码的详细信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
-7. 在计算机上的“扫描 QR 码”页上选择“下一步”。
+7. 在计算机上的“扫描 QR 码”页上选择“下一步”。  
 
     随即有一条通知发送到移动设备上的 Microsoft Authenticator 应用，以测试你的帐户。
 
     ![使用 Authenticator 应用测试帐户](media/security-info/securityinfo-myprofile-tryitauthapp.png)
 
-8. 在 Microsoft Authenticator 应用中确认通知，然后选择“下一步”。
+8. 在 Microsoft Authenticator 应用中确认通知，然后选择“下一步”。 
 
      ![成功通知，指出正在连接应用和帐户](media/security-info/securityinfo-myprofile-successauthapp.png)
 
      在使用双重验证或密码重置时，安全信息默认会更新为使用 Microsoft Authenticator 应用来验证你的身份。
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>从安全信息方法中删除验证器应用
-如果你不再想要使用验证器应用作为安全信息方法，可以从“安全信息”页中将其删除。 这适用于所有身份验证器应用，而不仅仅是 Microsoft Authenticator 应用。 删除该应用后，必须在移动设备上转到验证器应用，并删除帐户。
+如果你不再想要使用验证器应用作为安全信息方法，可以从“安全信息”页中将其删除  。 这适用于所有身份验证器应用，而不仅仅是 Microsoft Authenticator 应用。 删除该应用后，必须在移动设备上转到验证器应用，并删除帐户。
 
 >[!Important]
 >如果错误地删除了验证器应用，无法撤消该操作。 必须遵循本文的[设置验证器应用](#set-up-the-microsoft-authenticator-app-from-the-security-info-page)部分中的步骤再次添加验证器应用。
 
 ### <a name="to-delete-the-authenticator-app"></a>删除验证器应用
 
-1. 在“安全信息”页上，选择“验证器应用”旁边的“删除”链接。
+1. 在“安全信息”页上，选择“验证器应用”旁边的“删除”链接   。
 
     ![“安全信息”中用于删除验证器应用的链接](media/security-info/securityinfo-myprofile-deleteauthapp.png)
 
-2. 在确认框中选择“是”，以删除该验证器应用。 删除验证器应用后，它将从你的安全信息中删除，并在“安全信息”页中消失。 如果验证器应用是默认方法，则默认方法将更改为另一种可用方法。
+2. 在确认框中选择“是”，以删除该验证器应用。  删除验证器应用后，它将从你的安全信息中删除，并在“安全信息”页中消失  。 如果验证器应用是默认方法，则默认方法将更改为另一种可用方法。
 
-3. 在移动设备上打开验证器应用，选择“编辑帐户”，然后从验证器应用中删除你的工作或学校帐户。
+3. 在移动设备上打开验证器应用，选择“编辑帐户”，然后从验证器应用中删除你的工作或学校帐户。 
 
     你的帐户将完全从用于双重验证和密码重置请求的验证器应用中删除。
 
 ## <a name="change-your-default-security-info-method"></a>更改默认的安全信息方法
-如果在使用双重验证登录到工作或学校帐户时想要将验证器应用用作默认的方法，或者希望验证器应用成为默认用于密码重置请求的方法，可以从“安全信息”页设置该方法。
+如果在使用双重验证登录到工作或学校帐户时想要将验证器应用用作默认的方法，或者希望验证器应用成为默认用于密码重置请求的方法，可以从“安全信息”页设置该方法  。
 
 ### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法
 
-1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接。
+1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接    。
 
     ![更改默认登录方法的链接](media/security-info/securityinfo-myprofile-changedefaultauthapp.png)
 
-2. 从可用方法下拉列表中选择“Microsoft Authenticator - 通知”。 如果不使用 Microsoft Authenticator 应用，请选择“验证器应用或硬件令牌”选项。
+2. 从可用方法下拉列表中选择“Microsoft Authenticator - 通知”。  如果不使用 Microsoft Authenticator 应用，请选择“验证器应用或硬件令牌”选项。 
 
     ![选择默认登录的方法](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 
-3. 选择“确认”。
+3. 选择“确认”。 
 
     用于登录的默认方法将更改为 Microsoft Authenticator 应用。
 

@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60565712"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
@@ -28,7 +28,7 @@ ms.locfileid: "60565712"
 
 下表提供了数据工厂所支持的计算环境以及可以在其上运行的活动的列表。 
 
-| 计算环境                      | 活动                               |
+| 计算环境                      | activities                               |
 | ---------------------------------------- | ---------------------------------------- |
 | [按需 Azure HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
@@ -51,7 +51,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 2017 年 12 月 15日后：
 
 - 客户不再能够使用数据工厂版本 1 中的按需 HDInsight 链接服务创建基于 Linux 的 HDInsight 版本 3.3（或更低版本）的群集。 
-- 如果未在现有数据工厂版本 1 按需 HDInsight 链接服务的 JSON 定义中显式指定 [osType 和 Version 属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，则默认值将 从“Version=3.1, osType=Windows”更改为“Version=\<最新 HDI 默认版本\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux”。
+- 如果未在现有数据工厂版本 1 按需 HDInsight 链接服务的 JSON 定义中显式指定 [osType 和 Version 属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，则默认值将 从“Version=3.1, osType=Windows”更改为“Version=\<最新 HDI 默认版本\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux”     。
 
 2018 年 7 月 31 日后：
 
@@ -83,19 +83,19 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 按需链接服务
 数据工厂可自动创建基于 Windows 或 Linux 的按需 HDInsight 群集用于处理数据。 该群集是在与它关联的存储帐户所在的同一区域中创建的。 使用 JSON **linkedServiceName** 属性创建该群集。
 
-请注意以下有关按需 HDInsight 链接服务的要点：
+请注意以下有关按需 HDInsight 链接服务的要点： 
 
 * 按需 HDInsight 群集不会出现在 Azure 订阅中。 数据工厂服务会代你管理按需 HDInsight 群集。
-* 在按需 HDInsight 群集上运行的作业日志将复制到与 HDInsight 群集相关联的存储帐户。 若要访问这些日志，请在 Azure 门户中转到“活动运行详细信息”窗格。 有关详细信息，请参阅[监视和管理管道](data-factory-monitor-manage-pipelines.md)。
+* 在按需 HDInsight 群集上运行的作业日志将复制到与 HDInsight 群集相关联的存储帐户。 若要访问这些日志，请在 Azure 门户中转到“活动运行详细信息”窗格。  有关详细信息，请参阅[监视和管理管道](data-factory-monitor-manage-pipelines.md)。
 * 只需为启动 HDInsight 群集和运行作业的时间付费。
 
 > [!IMPORTANT]
-> 预配按需 HDInsight 群集通常需要 20 分钟或更长时间。
+> 预配按需 HDInsight 群集通常需要 20 分钟或更长时间。 
 >
 > 
 
 ### <a name="example"></a>示例
-以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 处理数据切片时，数据工厂会自动创建基于 Linux 的 HDInsight 群集。 
+以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 处理数据切片时，数据工厂会自动创建基于 Linux 的 HDInsight 群集。  
 
 ```json
 {
@@ -114,7 +114,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 > [!IMPORTANT]
-> HDInsight 群集在 JSON **linkedServiceName** 属性中指定的 Azure Blob 存储内创建默认容器。 根据设计，HDInsight 不会在删除群集时删除此容器。 在按需 HDInsight 链接服务中，除非存在现有的实时群集 (**timeToLive**)，否则每次需要处理切片时，都会创建 HDInsight 群集。 处理完成后会删除该群集。 
+> HDInsight 群集在 JSON **linkedServiceName** 属性中指定的 Azure Blob 存储内创建默认容器。  根据设计，HDInsight 不会在删除群集时删除此容器。 在按需 HDInsight 链接服务中，除非存在现有的实时群集 (**timeToLive**)，否则每次需要处理切片时，都会创建 HDInsight 群集。 处理完成后会删除该群集。 
 >
 > 随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用容器来排查作业问题，可以删除容器以降低存储成本。 这些容器的名称遵循 `adf<your Data Factory name>-<linked service name>-<date and time>` 模式。 可以使用 [Microsoft 存储资源管理器](https://storageexplorer.com/)等工具来删除 Blob 存储中的容器。
 >
@@ -126,7 +126,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 | type                         | 将 type 属性设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中的工作节点/数据节点数。 HDInsight 群集创建时具有 2 个头节点以及一定数量的工作节点（为此属性指定的数量）。 节点大小为 Standard_D3，采用 4 个核心。 包含 4 个工作节点的群集采用 24 个核心（工作节点采用 4\*4 = 16 个核心，头节点采用 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | 是      |
 | timeToLive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。<br /><br />例如，如果一个活动运行需要 6 分钟，而 **timeToLive** 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br /><br />创建按需 HDInsight 群集是一项开销很大的操作（可能需要花费一段时间）。 请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br /><br />如果将 **timeToLive** 值设置为 **0**，则会在活动运行处理完后立即删除群集。 但是，如果设置较高的值，群集可能会保持不必要的空闲状态，从而造成较高成本。 根据具体需要设置适当的值非常重要。<br /><br />如果 **timeToLive** 值设置得当，则多个管道可以共享按需 HDInsight 群集的实例。 | 是      |
-| 版本                      | HDInsight 群集的版本。 有关允许的 HDInsight 版本，请参阅[支持的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，将使用[最新的 HDI 默认版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。 | 否       |
+| version                      | HDInsight 群集的版本。 有关允许的 HDInsight 版本，请参阅[支持的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，将使用[最新的 HDI 默认版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。 | 否       |
 | linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此存储帐户位于同一区域。<p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 若要将 HDInsight 处理后的结果数据存储在 Data Lake Store 中，请使用“复制活动”将数据从 Blob 存储复制到 Data Lake Store。 </p> | 是      |
 | additionalLinkedServiceNames | 为 HDInsight 链接服务指定更多的存储帐户。 数据工厂会代你注册存储帐户。 这些存储帐户必须与 HDInsight 群集位于同一区域。 HDInsight 群集是在 **linkedServiceName** 属性指定的存储帐户所在的同一区域中创建的。 | 否       |
 | osType                       | 操作系统的类型。 允许的值为 **Linux** 和 **Windows**。 如果未指定此值，将使用 **Linux**。  <br /><br />我们强烈建议使用基于 Linux 的 HDInsight 群集。 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
@@ -291,7 +291,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 }
 ```
 
-对于 **accountName** 属性，请在 Batch 帐户名称的末尾追加 **.\<区域名称\>**。 例如：
+对于 **accountName** 属性，请在 Batch 帐户名称的末尾追加 **.\<区域名称\>** 。 例如：
 
 ```json
 "accountName": "mybatchaccount.eastus"
@@ -392,7 +392,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 | 属性          | 说明                              | 需要 |
 | :---------------- | :--------------------------------------- | :------- |
-| authorization | 在数据工厂编辑器中，选择“授权”按钮。 在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
+| authorization | 在数据工厂编辑器中，选择“授权”按钮。  在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
 | sessionId     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是      |
 
 示例：**用户凭据身份验证**
@@ -414,7 +414,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 #### <a name="token-expiration"></a>令牌过期
-选择“授权”按钮后生成的授权代码将在设置的间隔后过期。 
+选择“授权”按钮后生成的授权代码将在设置的间隔后过期。  
 
 身份验证令牌过期时，可能会显示以下错误消息： 
 
@@ -424,10 +424,10 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 | 用户类型                                | 过期时间                            |
 | :--------------------------------------- | :--------------------------------------- |
-| 不是由 Azure AD 管理的用户帐户（Hotmail、Live 等等） | 12 小时。                                 |
-| 由 Azure AD 管理的用户帐户 | 最后一次运行切片后的 14 天。 <br /><br />如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
+| 不是由 Azure AD 管理的用户帐户（Hotmail、Live 等等）  | 12 小时。                                 |
+| 由 Azure AD 管理的用户帐户  | 最后一次运行切片后的 14 天。 <br /><br />如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
-若要避免或解决此错误，请在令牌过期时，选择“授权”按钮重新授权。 然后重新部署链接服务。 还可使用以下代码以编程方式生成 **sessionId** 和 **authorization** 属性的值：
+若要避免或解决此错误，请在令牌过期时，选择“授权”按钮重新授权。  然后重新部署链接服务。 还可使用以下代码以编程方式生成 **sessionId** 和 **authorization** 属性的值：
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||

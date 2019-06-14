@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
 ms.openlocfilehash: 7bb9b1c545d30f66a09817ba977f12666a9f41c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394283"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
@@ -97,7 +97,7 @@ Service Fabric Yeoman 模板包含一个可用于（在导航到应用程序文�
 
 这些命令的参数可以在应用程序包内的已生成清单中找到。
 
-应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
+应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”  节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
 
 > [!IMPORTANT]
 > 必须将证书配置为向 Service Fabric 运行时验证应用程序，才能将应用程序部署到 Azure 中的安全 Linux 群集。 这样做可允许 Reliable Services 服务与基础 Service Fabric 运行时 API 通信。 若要了解详细信息，请参阅[将 Reliable Services 应用程序配置为在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
@@ -108,7 +108,7 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 
 1. 使用监视实用程序运行该脚本来查看 actor 服务的输出。
 
-   MAC OS X，如果您需要将 myactorsvcTestClient 文件夹复制到容器中的相同位置，通过运行以下附加命令。
+   对于 MAC OS X，你需要通过运行以下附加命令将 myactorsvcTestClient 文件夹复制到容器内的同一位置。
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home
@@ -123,7 +123,7 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 2. 在 Service Fabric Explorer 中，找到承载 actor 服务的主副本的节点。 以下屏幕截图中显示的是节点 3。
 
     ![在 Service Fabric Explorer 中查找主副本][sfx-primary]
-3. 单击上一步找到的节点，并在“操作”菜单中选择“停用(重启)”。 此操作在本地群集中重新启动一个节点，从而强制故障转移到在另一个节点上运行的一个辅助副本。 在执行此操作时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但是计数器仍将继续递增。
+3. 单击上一步找到的节点，并在“操作”菜单中选择“停用(重启)”  。 此操作在本地群集中重新启动一个节点，从而强制故障转移到在另一个节点上运行的一个辅助副本。 在执行此操作时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但是计数器仍将继续递增。
 
 ## <a name="adding-more-services-to-an-existing-application"></a>将更多服务添加到现有应用程序
 

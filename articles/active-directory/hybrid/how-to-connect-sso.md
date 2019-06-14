@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c34d8de3dfd06540dd50542ab19da0c1d9b1567
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60242241"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
@@ -40,10 +40,10 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 ## <a name="key-benefits"></a>主要优点
 
-- 出色的用户体验
+- 出色的用户体验 
   - 用户将自动登录到本地和基于云的应用程序。
   - 用户无需重复输入其密码。
-- 易于部署和管理
+- 易于部署和管理 
   - 不需要本地任何其他组件来完成此操作。
   - 与云身份验证的任何方法 - [密码哈希同步](how-to-connect-password-hash-synchronization.md)或[直通身份验证](how-to-connect-pta.md)结合使用。
   - 可以分发给某些或所有使用组策略的用户。
@@ -82,10 +82,10 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
+- [快速入门  ](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
 - [**部署计划**](https://aka.ms/AuthenticationDeploymentPlan) - 分步部署计划。
-- [深入技术探究](how-to-connect-sso-how-it-works.md) - 了解此功能如何运作。
-- [常见问题解答](how-to-connect-sso-faq.md) - 常见问题的解答。
-- [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- [深入技术探究  ](how-to-connect-sso-how-it-works.md) - 了解此功能如何运作。
+- [常见问题解答](how-to-connect-sso-faq.md) - 常见问题的解答  。
+- [故障排除  ](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [UserVoice  ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
 

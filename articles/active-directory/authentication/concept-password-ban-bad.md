@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50452dc5a0c2074c452878c890643f7b21591689
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65977307"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
@@ -67,7 +67,7 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 
 示例：假定已禁止密码“abcdef”，并且用户尝试将密码更改为以下密码之一：
 
-“abcdeg”（最后一个字符由“f”变为“g”）    **；“abcdefg”（末尾附加了“g”）   **；“abcde”（删除了末尾的尾随“f”）     **
+“abcdeg”（最后一个字符由“f”变为“g”）    ** ；“abcdefg”（末尾附加了“g”）   ** ；“abcde”（删除了末尾的尾随“f”）     **
 
 上述每个密码都不与禁止的密码“abcdef”精确匹配。 但是，由于每个示例与禁止令牌“abcdef”的编辑距离都为 1，因此它们都被视为与“abcdef”匹配。
 

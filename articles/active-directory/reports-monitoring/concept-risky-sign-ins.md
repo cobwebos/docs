@@ -16,17 +16,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40e125f8e1e7909c5866a03c0571f49ec42d690a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60287346"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的登录”报告
 
-Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑操作。 每检测到一个可疑操作，就会创建一个名为“风险事件”的记录。 有关更多详细信息，请参阅 [Azure AD 风险事件](concept-risk-events.md)。 
+Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑操作。 每检测到一个可疑操作，就会创建一个名为“风险事件”的记录。  有关更多详细信息，请参阅 [Azure AD 风险事件](concept-risk-events.md)。 
 
-你可以从 [Azure 门户](https://portal.azure.com)中通过选择“Azure Active Directory”边栏选项卡并导航到“安全性”部分来访问安全报告。 
+你可以从 [Azure 门户](https://portal.azure.com)中通过选择“Azure Active Directory”  边栏选项卡并导航到“安全性”  部分来访问安全报告。 
 
 有两个不同的安全报告，它们是根据风险事件计算的：
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑�
 
 - 此外，**Azure Active Directory Premium 1** 版本还允许你检查每个报告中检测到的某些底层风险事件。 
 
-- Azure Active Directory Premium 2 版本提供有关所有潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
+-  Azure Active Directory Premium 2 版本提供有关所有潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
 
 ## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Azure AD 免费版和基本版的风险登录报告
 
@@ -90,7 +90,7 @@ Azure AD 免费版和基本版提供针对用户检测到的有风险的登录�
 
 Azure AD Premium 版的风险登录报告提供：
 
-- 有关已检测到的[风险事件类型](concept-risk-events.md)的聚合信息。 使用 **Azure AD Premium P1 版本**时，许可证未涵盖的检测项会显示为风险事件“登录时检测到其他风险”。 使用 **Azure AD Premium P2 版本**时，可以获取有关所有基础检测的最详细的信息。
+- 有关已检测到的[风险事件类型](concept-risk-events.md)的聚合信息。 使用 **Azure AD Premium P1 版本**时，许可证未涵盖的检测项会显示为风险事件“登录时检测到其他风险”  。 使用 **Azure AD Premium P2 版本**时，可以获取有关所有基础检测的最详细的信息。
 
 - 一个用于下载报表的选项
 
@@ -124,7 +124,7 @@ Azure AD Premium 版的风险登录报告提供：
 ![有风险的登录](./media/concept-risky-sign-ins/324.png)
 
 若要调查风险事件，请从列表选择某个事件。  
-这会打开此风险事件的“详细信息”边栏选项卡。 在“详细信息”边栏选项卡上，可选择手动关闭风险事件或重新激活已手动关闭的风险事件。 
+这会打开此风险事件的“详细信息”  边栏选项卡。 在“详细信息”边栏选项卡上，可选择手动关闭风险事件或重新激活已手动关闭的风险事件  。 
 
 ![有风险的登录](./media/concept-risky-sign-ins/325.png)
 

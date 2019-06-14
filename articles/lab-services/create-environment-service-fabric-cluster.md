@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: enewman
 ms.openlocfilehash: 9848f197800c391285c4065685b910685f0ac64b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312021"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>使用 Azure 开发测试实验室中的独立 Service Fabric 群集创建环境
@@ -35,7 +35,7 @@ ms.locfileid: "60312021"
     1. 选择**订阅**左侧导航菜单中，然后选择你**订阅**
     2. 上**订阅**页上，选择**资源提供程序**中**设置**在左侧菜单中的部分。 
     3. 如果**Microsoft.ServiecFabric**不是已注册，选择**注册**。 
-3. 在实验室的“开发测试实验室”页上，选择工具栏中的“+ 添加”。 
+3. 在实验室的“开发测试实验室”页上，选择工具栏中的“+ 添加”   。 
     
     ![在工具栏上添加按钮](./media/create-environment-service-fabric-cluster/add-button.png)
 3. 上**选择基本**页上，选择**Service Fabric 实验室群集**列表中。 
@@ -96,7 +96,7 @@ Service Fabric 群集还可以启动或停止按计划。 这种体验是类似�
 
 1. 选择**自动启动**在左侧菜单中
 2. 选择**上**有关**允许安排为自动启动此 service fabric 群集**。 实验室所有者具有允许用户自动启动其虚拟机或 Service Fabric 群集时，才启用此页。
-3. 在工具栏上选择“保存”。 
+3. 在工具栏上选择“保存”。  
 
     ![自动星型页](./media/create-environment-service-fabric-cluster/set-auto-start-settings.png)
 
@@ -110,7 +110,7 @@ Service Fabric 群集还可以启动或停止按计划。 这种体验是类似�
     2. 指定**时区**次。 
     3. 指定是否要发送的开发测试实验室**通知**之前自动关闭。 
     4. 如果所选**是**通知选项时，指定**Webhook URL**和/或**电子邮件地址**发送通知。 
-    5. 在工具栏上选择“保存”。
+    5. 在工具栏上选择“保存”。 
 
         ![自动关闭的情况下页](./media/create-environment-service-fabric-cluster/auto-shutdown-settings.png)
 

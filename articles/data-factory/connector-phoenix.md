@@ -3,21 +3,20 @@ title: 使用 Azure 数据工厂从 Phoenix 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Phoenix 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 12/07/2018
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 12/07/2018
+ms.author: jingwang
 ms.openlocfilehash: 012057c7d01924ab1998a010b6ea0c7d83651a4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60405913"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>使用 Azure 数据工厂从 Phoenix 复制数据 
@@ -46,7 +45,7 @@ Phoenix 链接服务支持以下属性：
 | host | Phoenix 服务器的 IP 地址或主机名。 （即，192.168.222.160）  | 是 |
 | port | Phoenix 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8765。 如果连接到 Azure HDInsights，请指定端口 443。 | 否 |
 | httpPath | 对应于 Phoenix 服务器的部分 URL。 （即，/gateway/sandbox/phoenix/version）。 如果使用 HDInsights 群集，请指定 `/hbasephoenix0`。  | 否 |
-| authenticationType | 用于连接到 Phoenix 服务器的身份验证机制。 <br/>允许值包括：Anonymous、UsernameAndPassword、WindowsAzureHDInsightService | 是 |
+| authenticationType | 用于连接到 Phoenix 服务器的身份验证机制。 <br/>允许值包括：Anonymous、UsernameAndPassword、WindowsAzureHDInsightService    | 是 |
 | username | 用于连接到 Phoenix 服务器的用户名。  | 否 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值为 false。  | 否 |
@@ -67,7 +66,7 @@ Phoenix 链接服务支持以下属性：
     "properties": {
         "type": "Phoenix",
         "typeProperties": {
-            "host" : "<cluster>.azurehdinsight.cn",
+            "host" : "<cluster>.azurehdinsight.net",
             "port" : "443",
             "httpPath" : "/hbasephoenix0",
             "authenticationType" : "WindowsAzureHDInsightService",
@@ -85,7 +84,7 @@ Phoenix 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Phoenix 数据集支持的属性列表。
 
-要从 Phoenix 复制数据，请将数据集的 type 属性设置为“PhoenixObject”。 支持以下属性：
+要从 Phoenix 复制数据，请将数据集的 type 属性设置为“PhoenixObject”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -114,7 +113,7 @@ Phoenix 链接服务支持以下属性：
 
 ### <a name="phoenix-as-source"></a>Phoenix 作为源
 
-要从 Phoenix 复制数据，请将复制活动中的源类型设置为“PhoenixSource”。 复制活动源部分支持以下属性：
+要从 Phoenix 复制数据，请将复制活动中的源类型设置为“PhoenixSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

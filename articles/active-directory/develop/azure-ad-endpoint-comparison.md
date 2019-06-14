@@ -17,10 +17,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962880"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>更新到 Microsoft 标识平台 (v2.0) 的原因？
@@ -36,7 +36,7 @@ ms.locfileid: "65962880"
 
 * v1.0 终结点仅允许使用工作和学校帐户登录到应用程序 (Azure AD)
 * Microsoft 标识平台终结点允许工作和学校帐户从 Azure AD 和个人 Microsoft 帐户 (MSA)，例如 hotmail.com、 outlook.com 和 msn.com，进行登录。
-* 这两个终结点还接受的登录名*[来宾用户](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* 的应用程序配置为 Azure AD 目录*[单租户](single-and-multi-tenant-apps.md)* 或对于*多租户*应用程序配置为指向特定于租户的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`)。
+* 这两个终结点还接受的登录名 *[来宾用户](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* 的应用程序配置为 Azure AD 目录 *[单租户](single-and-multi-tenant-apps.md)* 或对于*多租户*应用程序配置为指向特定于租户的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`)。
 
 Microsoft 标识平台终结点，可编写的应用程序接受从个人 Microsoft 帐户和工作和学校帐户登录。 这样，你便可以编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
 
@@ -95,7 +95,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 
 ### <a name="offline-access"></a>脱机访问
 
-使用 Microsoft 标识平台终结点的应用可能需要针对应用使用新的已知权限 - `offline_access` 范围。 如果应用程序需要长期表示用户访问资源，则所有应用程序都需要请求此权限，即使用户可能不主动使用此应用程序亦然。 在许可对话框中，`offline_access` 范围对用户显示为“随时访问数据”，而用户必须同意。 请求 `offline_access` 权限可让 Web 应用从 Microsoft 标识平台终结点接收 OAuth 2.0 refresh_tokens。 刷新令牌属于长效令牌，可用于交换新的 OAuth 2.0 访问令牌以延长访问期限。
+使用 Microsoft 标识平台终结点的应用可能需要针对应用使用新的已知权限 - `offline_access` 范围。 如果应用程序需要长期表示用户访问资源，则所有应用程序都需要请求此权限，即使用户可能不主动使用此应用程序亦然。 在许可对话框中，`offline_access` 范围对用户显示为“随时访问数据”，而用户必须同意。  请求 `offline_access` 权限可让 Web 应用从 Microsoft 标识平台终结点接收 OAuth 2.0 refresh_tokens。 刷新令牌属于长效令牌，可用于交换新的 OAuth 2.0 访问令牌以延长访问期限。
 
 如果应用不会请求`offline_access`作用域，则收不到刷新令牌。 这意味着，在 OAuth 2.0 授权代码流中兑换授权代码时，只从 `/token` 终结点接收访问令牌。 该访问令牌短时间维持有效（通常是一小时），但最后终将过期。 到时，应用必须将用户重定向回到 `/authorize` 终结点以检索新的授权代码。 在此重定向期间，根据应用程序的类型，用户或许无需再次输入其凭据或重新同意权限。
 

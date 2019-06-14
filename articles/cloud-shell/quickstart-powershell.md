@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
 ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60199497"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
@@ -32,7 +32,7 @@ ms.locfileid: "60199497"
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 
-1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮
+1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮 
 
    ![](media/quickstart-powershell/shell-icon.png)
 

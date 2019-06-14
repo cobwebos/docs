@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60238050"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure 诊断 1.3 及更高版本的配置架构
@@ -564,7 +564,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。  
 
- 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览” -> “资源组” -> “<名称\>”。 单击“属性”磁贴，并从“ID”字段复制值。  
+ 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览”   -> “资源组”   -> “<名称\>”  。 单击“属性”  磁贴，并从“ID”  字段复制值。  
 
 |子元素|描述|  
 |--------------------|-----------------|  
@@ -606,14 +606,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="logs-element"></a>Logs 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Logs*
 
- 在 1.0 和 1.1 版本中提供。 1.2 中不提供。 在 1.3 中重新添加。  
+ 在 1.0 和 1.1 版本中提供。 1\.2 中不提供。 在 1.3 中重新添加。  
 
  定义基本 Azure 日志的缓冲区配置。  
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
-|**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
+|**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”  ，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”  、“信息”  、“警告”  、“错误”  和“严重”  。|  
 |**scheduledTransferPeriod**|**duration**|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
 |**sinks** |**string**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。|  
 
@@ -644,12 +644,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|name|string|标识 sinkname 的字符串。|  
+|**name**|字符串|标识 sinkname 的字符串。|  
 
 |元素|Type|描述|  
 |-------------|----------|-----------------|  
-|**Application Insights**|string|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
-|**通道**|string|每个对应一个流处理的其他筛选|  
+|**Application Insights**|字符串|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
+|**通道**|字符串|每个对应一个流处理的其他筛选|  
 
 ## <a name="channels-element"></a>Channels 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -660,7 +660,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |元素|Type|描述|  
 |-------------|----------|-----------------|  
-|**Channel**|string|在此页的其他位置查看说明。|  
+|**Channel**|字符串|在此页的其他位置查看说明。|  
 
 ## <a name="channel-element"></a>Channel 元素
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
@@ -671,7 +671,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |----------------|----------|-----------------|  
-|**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
+|**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”  ，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”  、“信息”  、“警告”  、“错误”  和“严重”  。|  
 |**name**|**string**|要引用的通道的唯一名称|  
 
 

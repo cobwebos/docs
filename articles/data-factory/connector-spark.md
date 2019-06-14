@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 370da046e5a964d91b668ea80730b8d331065d29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60322866"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>使用 Azure 数据工厂从 Spark 复制数据 
@@ -44,9 +44,9 @@ Spark 链接服务支持以下属性：
 | type | Type 属性必须设置为：**Spark** | 是 |
 | host | Spark 服务器的 IP 地址或主机名  | 是 |
 | port | Spark 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
-| serverType | Spark 服务器的类型。 <br/>允许值包括：SharkServer、SharkServer2、SparkThriftServer | 否 |
-| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP | 否 |
-| authenticationType | 用于访问 Spark 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService | 是 |
+| serverType | Spark 服务器的类型。 <br/>允许值包括：SharkServer、SharkServer2、SparkThriftServer    | 否 |
+| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP    | 否 |
+| authenticationType | 用于访问 Spark 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService     | 是 |
 | username | 用于访问 Spark 服务器的用户名。  | 否 |
 | password | 用户所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | httpPath | 对应于 Spark 服务器的部分 URL。  | 否 |
@@ -82,11 +82,11 @@ Spark 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Spark 数据集支持的属性列表。
 
-要从 Spark 复制数据，请将数据集的 type 属性设置为“SparkObject”。 支持以下属性：
+要从 Spark 复制数据，请将数据集的 type 属性设置为“SparkObject”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：SparkObject | 是 |
+| type | 数据集的 type 属性必须设置为：SparkObject  | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -111,11 +111,11 @@ Spark 链接服务支持以下属性：
 
 ### <a name="spark-as-source"></a>Spark 作为源
 
-要从 Spark 复制数据，请将复制活动中的源类型设置为“SparkSource”。 复制活动源部分支持以下属性：
+要从 Spark 复制数据，请将复制活动中的源类型设置为“SparkSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：SparkSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：SparkSource  | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

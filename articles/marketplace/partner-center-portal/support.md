@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.openlocfilehash: 355694f7f1d5fe0588c6f93bcbdb47f3086aec79
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65958070"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>对合作伙伴中心中的商业市场上程序的支持
@@ -34,11 +34,11 @@ Microsoft 支持各种产品和服务。 查找正确的支持团队是一定要
  
    ![支持下拉列表菜单](./media/commercial-marketplace-support-pane.png)
 
-1. 选择**[文档](../index.md)** 若要查看问题和资源的全面解答。 
+1. 选择 **[文档](../index.md)** 若要查看问题和资源的全面解答。 
 
 1. 选择 **[Marketplace 合作伙伴社区论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** 可利用其他 Microsoft 发布者的知识回答您的问题。 
 
-1. 选择**[更多帮助](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** 以打开**新建支持请求**票证。 
+1. 选择 **[更多帮助](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** 以打开**新建支持请求**票证。 
 
 ## <a name="how-to-open-a-support-ticket"></a>如何开具支持票证
 
@@ -73,7 +73,7 @@ Microsoft 支持各种产品和服务。 查找正确的支持团队是一定要
 在中**联系人信息**部分中，确保你的主要联系人的姓名、 电话号码和电子邮件是否正确。 
 - 更新此信息，如果看到任何内容不正确
 - 您可能需要添加其他联系人从公司到此支持请求如果需要
-- 选择“下一步”
+- 选择“下一步” 
 
 #### <a name="review-and-submit-your-support-request"></a>查看并提交支持请求
 

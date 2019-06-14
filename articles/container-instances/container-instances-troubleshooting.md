@@ -10,10 +10,10 @@ ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 9dc3e19f9429a6055a799f3f013c732538fa370d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65070851"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
@@ -87,7 +87,7 @@ ms.locfileid: "65070851"
 
 ## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>容器不断退出并重启（没有长时间运行的进程）
 
-容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
+容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”  ，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
 在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题，包括如下所示与容器组部署 start 命令，以使容器保持运行。
 
@@ -143,7 +143,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
 ```
 
 > [!NOTE]
-> Linux 分发的大多数容器映像会设置一个 shell（如 bash）作为默认命令。 由于 Shell 本身不是长时间运行的服务，因此如果这些容器配置了“始终”重启策略，会立即退出并不断重启。
+> Linux 分发的大多数容器映像会设置一个 shell（如 bash）作为默认命令。 由于 Shell 本身不是长时间运行的服务，因此如果这些容器配置了“始终”重启策略，会立即退出并不断重启  。
 
 ## <a name="container-takes-a-long-time-to-start"></a>容器启动时间过长
 
@@ -177,7 +177,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 Azure 容器实例使用一种缓存机制来帮助加快容器启动时间的常见构建映像[Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)，其中包括`nanoserver:1809`， `servercore:ltsc2019`，和`servercore:1809`。 常用 Linux 映像如`ubuntu:1604`和`alpine:3.6`也被缓存。 对于缓存的映像和标记的最新列表，请使用[列出缓存映像][ list-cached-images] API。
 
 > [!NOTE]
-> 使用基于 Windows Server 2019 的映像在 Azure 容器实例中处于预览状态。
+> 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows 容器慢速网络准备情况
 

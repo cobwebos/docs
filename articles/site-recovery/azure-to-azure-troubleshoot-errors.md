@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
 ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796430"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
@@ -40,7 +40,7 @@ ms.locfileid: "65796430"
 
 如果 VM 上没有所有最新的受信任根证书，则“启用复制”作业可能会失败。 如果没有证书，来自 VM 的 Site Recovery 服务调用的身份验证和授权会失败。 系统会显示失败的“启用复制”Site Recovery 作业的错误消息：
 
-**错误代码** | 可能的原因 | **建议**
+**错误代码** | 可能的原因  | **建议**
 --- | --- | ---
 151066<br></br>**消息**：Site Recovery 配置失败。 | 计算机上没有授权和身份验证所需的受信任的根证书。 | - 对于运行 Windows 操作系统的 VM，请确保虚拟机上存在受信任的根证书。 有关信息，请参阅[配置受信任的根和不允许的证书](https://technet.microsoft.com/library/dn265983.aspx)。<br></br>- 对于运行 Linux 操作系统的 VM，请按照 Linux 操作系统版本分销商发布的受信任根证书指南操作。
 
@@ -175,7 +175,7 @@ ms.locfileid: "65796430"
       - 如果将来要向 Azure Active Directory (AAD) 添加新地址，则需要创建新的 NSG 规则。
 
 > [!NOTE]
-> 如果虚拟机位于后面**标准**内部负载均衡器，则不会有权访问 O365 Ip，即大于 默认情况下 login.micorsoftonline.com。 可以将其更改为**基本**内部负载均衡器类型或创建出绑定的访问，如中所述[一文](https://aka.ms/lboutboundrulescli)。
+> 如果虚拟机位于**标准**内部负载均衡器之后，则默认情况下无法访问 O365 IP，即 默认情况下 login.micorsoftonline.com。 请将其更改为**基本**内部负载均衡器类型或创建[此文](https://aka.ms/lboutboundrulescli)中提到的出站访问权限。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
 - **可能的原因** </br>
@@ -185,7 +185,7 @@ ms.locfileid: "65796430"
   - Azure Site Recovery 需要根据区域访问 [Site Recovery IP 范围](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)。 请确保可以从虚拟机访问所需的 IP 范围。
 
 
-### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>问题 4：A2A 复制失败时的网络流量会经过的本地代理服务器 (151072)
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>问题 4：当网络流量通过本地代理服务器时 A2A 复制失败 (151072)
 - **可能的原因** </br>
   - 自定义代理设置无效，并且 ASR 移动服务代理未在 IE 中自动检测到代理设置
 
@@ -209,7 +209,7 @@ ms.locfileid: "65796430"
 
 必须初始化附加到 VM 的新磁盘。
 
-**错误代码** | **可能的原因** | 建议
+**错误代码** | **可能的原因** | 建议 
 --- | --- | ---
 150039<br></br>**消息**：Azure data disk (DiskName) (DiskURI) with logical unit number (LUN) (LUNValue) was not mapped to a corresponding disk being reported from within the VM that has the same LUN value.（具有逻辑单元号 (LUN) (LUNValue) 的 Azure 数据磁盘 (DiskName) (DiskURI) 未映射到具有相同 LUN 值的 VM 报告的相应磁盘。） | - 新数据磁盘已附加到 VM，但该磁盘未初始化。</br></br>- VM 内的数据磁盘未正确报告磁盘附加到 VM 时的 LUN 值。| 请确保数据磁盘已初始化，然后重试操作。</br></br>对于 Windows：[附加并初始化新的磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。</br></br>对于 Linux：[在 Linux 中初始化新的数据磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。
 
@@ -221,16 +221,16 @@ ms.locfileid: "65796430"
 
 如果问题持续出现，请联系支持人员。
 
-## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>一个或多个磁盘都可用于保护 （错误代码 153039）
+## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>一个或多个磁盘可用于保护（错误代码 153039）
 - **可能的原因** </br>
-  - 如果一个或多个磁盘保护后最近添加到虚拟机。 
-  - 如果一个或多个磁盘已初始化后的虚拟机的保护。
+  - 如果最近在保护后将一个或多个磁盘添加到虚拟机。 
+  - 如果在保护虚拟机之后初始化了一个或多个磁盘。
 
 ### <a name="fix-the-problem"></a>解决问题
-您可以选择要保护的磁盘或忽略该警告可再次正常运行的 VM 的复制状态。</br>
-1. 若要保护的磁盘。 导航到复制的项 > VM > 磁盘 > 未受保护的磁盘上单击 > 启用复制。
+可以选择保护磁盘或忽略警告，以使 VM 的复制状态再次恢复正常。</br>
+1. 要保护磁盘， 请导航到“复制的项”>“VM”>“磁盘”>单击未受保护的磁盘>“启用复制”。
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
-2. 若要解除该警告。 转到复制的项 > VM > 单击概述部分下取消警报。
+2. 要关闭警告， 请转到“复制的项”>“VM”> 在“概述”部分下单击“关闭警报”。
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
 ## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>无法查看"启用复制"中的选定内容的 Azure VM 或资源组
 
@@ -261,18 +261,18 @@ Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>VM 的预配状态无效（错误代码 150019）
 
-若要在 VM 上启用复制，预配状态应为“已成功”。 可以通过执行以下步骤来检查 VM 状态。
+若要在 VM 上启用复制，预配状态应为“已成功”  。 可以通过执行以下步骤来检查 VM 状态。
 
-1.  从 Azure 门户的“所有服务”中选择“资源浏览器”。
-2.  展开“订阅”列表并选择你的订阅。
+1.  从 Azure 门户的“所有服务”  中选择“资源浏览器”  。
+2.  展开“订阅”  列表并选择你的订阅。
 3.  展开 **ResourceGroups** 列表并选择 VM 的资源组。
-4.  展开“资源”列表并选择你的虚拟机
+4.  展开“资源”  列表并选择你的虚拟机
 5.  在右侧的“实例”视图中检查 **provisioningState** 字段。
 
 ### <a name="fix-the-problem"></a>解决问题
 
-- 如果 **provisioningState** 是“失败”，请联系支持人员并提供详细信息，以便进行故障排除。
-- 如果 **provisioningState** 是“正在更新”，可以部署其他扩展。 检查 VM 上是否有任何正在进行的操作，等待这些操作完成，然后重试失败的 Site Recovery 的“启用复制”作业。
+- 如果 **provisioningState** 是“失败”  ，请联系支持人员并提供详细信息，以便进行故障排除。
+- 如果 **provisioningState** 是“正在更新”  ，可以部署其他扩展。 检查 VM 上是否有任何正在进行的操作，等待这些操作完成，然后重试失败的 Site Recovery 的“启用复制”  作业。
 
 ## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>无法选择目标虚拟网络 - 网络选择选项卡灰显。
 
@@ -311,14 +311,14 @@ Azure Site Recovery 当前源区域的资源组和虚拟机的要求应放置在
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>启用保护失败，因为 GRUB 配置中提到了设备名，而不是 UUID（错误代码 151126）
 
 **可能的原因：** </br>
-GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”）可能包含参数“root”和“resume”的值作为实际设备名而非 UUID。 Site Recovery 要求 UUID 方法，因为设备名可能会在 VM 重启时发生更改，由于故障转移时 VM 可能不会出现相同的名称，从而导致问题。 例如： </br>
+GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”）可能包含参数“root”和“resume”的值作为实际设备名而非 UUID   。 Site Recovery 要求 UUID 方法，因为设备名可能会在 VM 重启时发生更改，由于故障转移时 VM 可能不会出现相同的名称，从而导致问题。 例如： </br>
 
 
-- 以下行来自 GRUB 文件 /boot/grub2/grub.cfg。 <br>
+- 以下行来自 GRUB 文件 /boot/grub2/grub.cfg  。 <br>
   *linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
 
 
-- 以下行来自 GRUB 文件 /boot/grub/menu.lst
+- 以下行来自 GRUB 文件 /boot/grub/menu.lst  
   *kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 
 如果发现上面的粗体字符串，GRUB 具有参数“root”和“resume”的实际设备名，而不是 UUID。
@@ -327,7 +327,7 @@ GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/
 设备名应替换为相应的 UUID。<br>
 
 
-1. 通过执行该命令找到的设备的 UUID"blkid\<设备名称 >"。 例如：<br>
+1. 通过执行命令“blkid \<设备名称>”查找设备的 UUID。 例如：<br>
    ```
    blkid /dev/sda1
    ```<br>

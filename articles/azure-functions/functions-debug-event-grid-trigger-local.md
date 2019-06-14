@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
 ms.openlocfilehash: 96d88fafd6824ed85f1d91bab59374b3490a55b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60428180"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure 函数事件网格触发器本地调试
@@ -30,9 +30,9 @@ ms.locfileid: "60428180"
 
 ## <a name="create-a-new-function"></a>创建新函数
 
-在 Visual Studio 中打开函数应用，在解决方案资源管理器中右键单击项目名称，然后单击“添加”>“新建 Azure 函数”。
+在 Visual Studio 中打开函数应用，在解决方案资源管理器中右键单击项目名称，然后单击“添加”>“新建 Azure 函数”。 
 
-在“新建 Azure 函数”窗口中选择“事件网格触发器”，然后单击“确定”。
+在“新建 Azure 函数”窗口中选择“事件网格触发器”，然后单击“确定”。   
 
 ![创建新的函数](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-function.png)
 
@@ -64,25 +64,25 @@ ngrok http -host-header=localhost 7071
 
 ## <a name="add-a-storage-event"></a>添加存储事件
 
-打开 Azure 门户并导航到存储帐户，然后单击“事件”选项。
+打开 Azure 门户并导航到存储帐户，然后单击“事件”选项。 
 
 ![添加存储帐户事件](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-在“事件”窗口中，单击“事件订阅”按钮。 在“事件订阅”窗口中，单击“终结点类型”下拉列表并选择“Web Hook”。
+在“事件”窗口中，单击“事件订阅”按钮。   在“事件订阅”窗口中，单击“终结点类型”下拉列表并选择“Web Hook”。   
 
 ![选择订阅类型](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
-配置终结点类型后，单击“选择终结点”以配置终结点值。
+配置终结点类型后，单击“选择终结点”以配置终结点值。 
 
 ![选择终结点类型](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-“订阅者终结点”值由三个不同的值构成。 前缀是 *ngrok* 生成的 HTTPS URL。 URL 的剩余部分来自函数代码文件中的 URL，其末尾添加了函数名称。 首先处理函数代码文件中的 URL：将 `http://localhost:7071` 替换为 *ngrok* URL，将 `{functionname}` 替换为函数名称。
+“订阅者终结点”值由三个不同的值构成。  前缀是 *ngrok* 生成的 HTTPS URL。 URL 的剩余部分来自函数代码文件中的 URL，其末尾添加了函数名称。 首先处理函数代码文件中的 URL：将 `http://localhost:7071` 替换为 *ngrok* URL，将 `{functionname}` 替换为函数名称。
 
 以下屏幕截图显示了最终 URL 的形式：
 
 ![终结点选择](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
 
-输入适当的值后，单击“确认选择”。
+输入适当的值后，单击“确认选择”。 
 
 > [!IMPORTANT]
 > 每次启动 *ngrok* 时，都会重新生成 HTTPS URL，并且值会更改。 因此，每次通过 *ngrok* 向 Azure 公开函数时，都必须创建新的事件订阅。
@@ -93,12 +93,12 @@ ngrok http -host-header=localhost 7071
 
 打开[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)并连接到存储帐户。 
 
-- 展开“Blob 容器” 
-- 单击右键并选择“创建 Blob 容器”。
+- 展开“Blob 容器”  
+- 单击右键并选择“创建 Blob 容器”。 
 - 将容器命名为 **test**
 - 选择 *test* 容器
-- 单击“上传”按钮
-- 单击“上传文件”
+- 单击“上传”按钮 
+- 单击“上传文件” 
 - 选择文件并将其上传到 Blob 容器
 
 ## <a name="debug-the-function"></a>调试函数

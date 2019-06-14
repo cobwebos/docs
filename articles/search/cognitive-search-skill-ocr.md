@@ -13,10 +13,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: 6d9b68bda2a6cff533286d9ee944abf1c92cc2bf
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523244"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
@@ -26,7 +26,7 @@ ms.locfileid: "65523244"
 + 当 textExtractionAlgorithm 设置为“handwritten”时，将使用[“RecognizeText”](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md)功能。
 + 当 textExtractionAlgorithm 设置为“printed”时，[“OCR”](../cognitive-services/computer-vision/concept-extracting-text-ocr.md)功能用于英语以外的语言。 对于英语，使用新的[“识别文本”](../cognitive-services/computer-vision/concept-recognizing-text.md)功能输出文本。
 
-OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
+OCR  技能可以从图像文件中提取文本。 支持的文件格式包括：
 
 + .JPEG
 + .JPG
@@ -50,7 +50,7 @@ OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 | detectOrientation | 启用图像方向自动检测。 <br/> 有效值：true / false。|
 |defaultLanguageCode | <p>  输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
 | textExtractionAlgorithm | “打印”或“手写”。 “手写”文本识别 OCR 算法当前处于预览状态，仅支持英语。 |
-|lineEnding | 要使用每个之间的值检测到行。 可能的值：空间，CarriageReturn，换行。  默认为空格 |
+|lineEnding | 要在各个检测到的行之间使用的值。 可能的值：“Space”、“CarriageReturn”、“LineFeed”。  默认值为“Space” |
 
 ## <a name="skill-inputs"></a>技能输入
 
@@ -193,7 +193,7 @@ OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
   ]
 }
 ```
-以上技能集示例假设存在标准化的图像字段。 要生成此字段，请将索引器定义中的 imageAction 配置设置为 generateNormalizedImages，如下所示：
+以上技能集示例假设存在标准化的图像字段。 要生成此字段，请将索引器定义中的 imageAction  配置设置为 generateNormalizedImages  ，如下所示：
 
 ```json
 {

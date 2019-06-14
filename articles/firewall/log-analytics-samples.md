@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
 ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60461499"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>防火墙日志分析的 azure 示例
@@ -22,14 +22,14 @@ ms.locfileid: "60461499"
 
 ## <a name="azure-monitor-logs-view"></a>Azure 监视器将记录视图
 
-下面是如何配置 Azure Monitor 日志可视化效果的示例。 可从 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) 存储库下载可视化示例。 最简单的方法是右键单击此页面上的超链接，然后选择“另存为”，并提供类似“AzureFirewall.omsview”的名称。 
+下面是如何配置 Azure Monitor 日志可视化效果的示例。 可从 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) 存储库下载可视化示例。 最简单的方法是右键单击此页面上的超链接，然后选择“另存为”，并提供类似“AzureFirewall.omsview”的名称   。 
 
 执行以下步骤以将视图添加到 Log Analytics 工作区：
 
 1. 在 Azure 门户中打开 Log Analytics 工作区。
-2. 打开“常规”下的“视图设计器”。
-3. 单击“导入”。
-4. 浏览并选择之前下载的“AzureFirewall.omsview”文件。
+2. 打开“常规”下的“视图设计器”   。
+3. 单击“导入”  。
+4. 浏览并选择之前下载的“AzureFirewall.omsview”文件  。
 5. 单击“ **保存**”。
 
 以下是视图查找应用程序规则日志数据的方式：

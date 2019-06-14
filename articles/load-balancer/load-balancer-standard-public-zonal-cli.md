@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
 ms.openlocfilehash: 7f5aa65b055669a8a4047dffa72d456fed0714f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111583"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>使用 Azure CLI 创建具有区域性前端的标准负载均衡器
@@ -40,7 +40,7 @@ ms.locfileid: "66111583"
 
 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“westeurope”位置创建名为“myResourceGroupLB”的资源组。
+以下示例在“westeurope”  位置创建名为“myResourceGroupLB”  的资源组。
 
 ```azurecli-interactive
 az group create \
@@ -51,7 +51,7 @@ az group create \
 ## <a name="create-a-zonal-public-ip-standard"></a>创建区域公共 IP 标准
 若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 在特定区域中创建的公共 IP 地址始终仅存在于该区域中。 不能更改公共 IP 地址的区域。
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 创建公共 IP 地址。 以下示例在区域 1 中的“myResourceGroupLoadBalancer”资源组中创建名为“myPublicIP”的区域公共 IP 地址。
+使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 创建公共 IP 地址。 以下示例在区域 1 中的“myResourceGroupLoadBalancer”  资源组中创建名为“myPublicIP”  的区域公共 IP 地址。
 
 ```azurecli-interactive
 az network public-ip create \
@@ -83,7 +83,7 @@ az network lb create \
 
 ## <a name="create-health-probe-on-port-80"></a>在端口 80 上创建运行状况探测
 
-运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 使用 az network lb probe create 创建运行状况探测，以监视虚拟机的运行状况。 若要创建 TCP 运行状况探测，请使用 [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create)。 以下示例创建名为“myHealthProbe”的运行状况探测：
+运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 使用 az network lb probe create 创建运行状况探测，以监视虚拟机的运行状况。 若要创建 TCP 运行状况探测，请使用 [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create)。 以下示例创建名为“myHealthProbe”  的运行状况探测：
 
 ```azurecli-interactive
 az network lb probe create \

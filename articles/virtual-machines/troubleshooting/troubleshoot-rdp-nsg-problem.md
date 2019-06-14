@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60318929"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>因为没有在 NSG 中启用 RDP 端口而无法远程连接到 VM
@@ -38,9 +38,9 @@ ms.locfileid: "60318929"
 
 若要在 NSG 中启用 RDP 端口，请执行以下步骤：
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在“虚拟机”中，选择有问题的 VM。 
-3. 在“设置”中，选择“网络”。 
-4. 在“入站端口规则”中，检查是否正确设置了 RDP 的端口。 下面是一个配置示例： 
+2. 在“虚拟机”中，选择有问题的 VM。  
+3. 在“设置”中，选择“网络”。   
+4. 在“入站端口规则”  中，检查是否正确设置了 RDP 的端口。 下面是一个配置示例： 
 
     **优先级**：300 </br>
     **端口**：3389 </br>

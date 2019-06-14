@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60580327"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>通过 StorSimple Device Manager 更改 StorSimple 虚拟阵列设备管理员密码
@@ -38,17 +38,17 @@ ms.locfileid: "60580327"
 
 #### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>通过 Azure 门户更改设备管理员密码
 
-1. 在服务登陆页上，选择服务、双击服务名称，然后在“管理”部分中单击“设备”。 这会打开“设备”边栏选项卡，其中列出了所有 StorSimple 虚拟阵列设备。
+1. 在服务登陆页上，选择服务、双击服务名称，然后在“管理”部分中单击“设备”   。 这会打开“设备”  边栏选项卡，其中列出了所有 StorSimple 虚拟阵列设备。
 
-2. 在“设备”边栏选项卡中，双击需要更改密码的设备。
+2. 在“设备”  边栏选项卡中，双击需要更改密码的设备。
 
-3. 在设备的“设置”边栏选项卡中，单击“安全性”。
+3. 在设备的“设置”  边栏选项卡中，单击“安全性”  。
 
-4. 在“安全设置”边栏选项卡中，执行以下操作：
+4. 在“安全设置”  边栏选项卡中，执行以下操作：
    
-   1. 向下滚动到“设备管理员密码”部分。 提供包含 8 至 15 个字符的管理员密码。
+   1. 向下滚动到“设备管理员密码”部分。  提供包含 8 至 15 个字符的管理员密码。
    2. 确认该密码。
-   3. 单击边栏选项卡顶部的“保存”。
+   3. 单击边栏选项卡顶部的“保存”。 
 
 现在将更新设备管理员密码。 可以使用此修改后的密码在本地访问设备。
 
@@ -60,7 +60,7 @@ ms.locfileid: "60580327"
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>通过本地 Web UI 更改设备管理员密码
 
-1. 在本地 Web UI 中，针对设备单击“维护” > “密码更改”。
+1. 在本地 Web UI 中，针对设备单击“维护” > “密码更改”。  
    
     ![更改 password1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. 输入**当前密码**。
@@ -70,7 +70,7 @@ ms.locfileid: "60580327"
 4. 再次输入密码进行确认。
    
     ![更改 password2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. 在页面的底部，单击“应用”。 现在将应用新密码。 如果密码更改不成功，会看到以下错误：
+5. 在页面的底部，单击“应用”。  现在将应用新密码。 如果密码更改不成功，会看到以下错误：
    
     ![密码错误](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    

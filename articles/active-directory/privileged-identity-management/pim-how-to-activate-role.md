@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa820d6c140251fce6b09110e65b45005b53afcc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289494"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>激活我在 PIM 中的 Azure AD 角色
@@ -35,9 +35,9 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。 有关如何将 PIM 磁贴添加到仪表板的信息，请参阅[开始使用 PIM](pim-getting-started.md)。
+1. 打开“Azure AD Privileged Identity Management”。  有关如何将 PIM 磁贴添加到仪表板的信息，请参阅[开始使用 PIM](pim-getting-started.md)。
 
-1. 单击“Azure AD 角色”。
+1. 单击“Azure AD 角色”。 
 
 1. 单击**我的角色**，列出你有资格接受 Azure AD 角色。
 
@@ -47,17 +47,17 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
     ![Azure AD 角色-我的角色列表](./media/pim-how-to-activate-role/directory-roles-my-roles-activate.png)
 
-1. 单击“激活”打开“角色激活详细信息”窗格。
+1. 单击“激活”打开“角色激活详细信息”窗格。 
 
-1. 如果角色需要多重身份验证 (MFA)，请单击“验证你的身份，然后继续”。 只需在每个会话中执行身份验证一次。
+1. 如果角色需要多重身份验证 (MFA)，请单击“验证你的身份，然后继续”。  只需在每个会话中执行身份验证一次。
 
     ![在激活角色之前先执行 MFA 身份验证](./media/pim-how-to-activate-role/directory-roles-my-roles-mfa.png)
 
-1. 单击“验证我的身份”，并遵照说明提供其他安全验证。
+1. 单击“验证我的身份”，并遵照说明提供其他安全验证。 
 
     ![其他安全验证](./media/pim-how-to-activate-role/additional-security-verification.png)
 
-1. 单击“激活”打开“激活”窗格。
+1. 单击“激活”打开“激活”窗格。 
 
     ![“激活”窗格](./media/pim-how-to-activate-role/directory-roles-activate.png)
 
@@ -65,11 +65,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 指定激活持续时间。
 
-1. 在“激活原因”框中，输入该激活请求的原因。 某些角色要求提供问题票证编号。
+1. 在“激活原因”框中，输入该激活请求的原因。  某些角色要求提供问题票证编号。
 
     ![完成操作后的“激活”窗格](./media/pim-how-to-activate-role/directory-roles-activation-pane.png)
 
-1. 单击“激活”。
+1. 单击“激活”  。
 
     如果角色不需要审批，**激活状态**窗格出现，其中显示的激活状态。
 
@@ -87,9 +87,9 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 打开 Azure AD Privileged Identity Management。
 
-1. 单击“Azure AD 角色”。
+1. 单击“Azure AD 角色”。 
 
-1. 单击“我的请求”查看请求列表。
+1. 单击“我的请求”查看请求列表。 
 
     ![Azure AD 角色-我的请求](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
@@ -101,13 +101,13 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 打开 Azure AD Privileged Identity Management。
 
-1. 单击“Azure AD 角色”。
+1. 单击“Azure AD 角色”。 
 
-1. 单击“我的角色”。
+1. 单击“我的角色”。 
 
-1. 单击“活动角色”，查看活动角色的列表。
+1. 单击“活动角色”，查看活动角色的列表。 
 
-1. 找到已用完的角色，然后单击“停用”。
+1. 找到已用完的角色，然后单击“停用”。 
 
 ## <a name="cancel-a-pending-request"></a>取消挂起的请求
 
@@ -115,11 +115,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 打开 Azure AD Privileged Identity Management。
 
-1. 单击“Azure AD 角色”。
+1. 单击“Azure AD 角色”。 
 
-1. 单击“我的请求”。
+1. 单击“我的请求”。 
 
-1. 针对想要取消的角色，单击“取消”按钮。
+1. 针对想要取消的角色，单击“取消”按钮。 
 
     当您单击取消时，将取消该请求。 若要再次激活该角色，必须提交新的激活请求。
 

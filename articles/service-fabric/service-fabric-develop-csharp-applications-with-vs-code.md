@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 680c141e32333c4747ee69919229bd9381f536a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60393660"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 开发 C# Service Fabric 应用程序
@@ -43,7 +43,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-st
 ## <a name="open-the-application-in-vs-code"></a>在 VS Code 中打开应用程序
 
 ### <a name="windows"></a>Windows
-右键单击“开始”菜单中的 VS Code 图标，并选择“以管理员身份运行”。 若要将调试程序附加到服务，需要以管理员身份运行 VS Code。
+右键单击“开始”菜单中的 VS Code 图标，并选择“以管理员身份运行”  。 若要将调试程序附加到服务，需要以管理员身份运行 VS Code。
 
 ### <a name="linux"></a>Linux
 使用终端导航到应用程序本地克隆到的目录中的 /service-fabric-dotnet-core-getting-started/Services/CounterService 路径。
@@ -59,14 +59,14 @@ sudo code . --user-data-dir='.'
 
 ## <a name="build-the-application"></a>构建应用程序
 1. 在 VS Code 中，按 (Ctrl + Shift + p) 打开**命令面板**。
-2. 搜索并选择“Service Fabric: 生成应用程序”命令。 生成输出将发送到集成式终端。
+2. 搜索并选择“Service Fabric:  生成应用程序”命令。 生成输出将发送到集成式终端。
 
    ![VS Code 中的“生成应用程序”命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
 
 ## <a name="deploy-the-application-to-the-local-cluster"></a>将应用程序部署到本地群集
 生成应用程序后，可将其部署到本地群集。 
 
-1. 从**命令面板**中，选择“Service Fabric: 部署应用程序(Localhost)”命令。 安装过程的输出将发送到集成式终端。
+1. 从**命令面板**中，选择“Service Fabric:  部署应用程序(Localhost)”命令。 安装过程的输出将发送到集成式终端。
 
    ![VS Code 中的“部署应用程序”命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
@@ -83,19 +83,19 @@ sudo code . --user-data-dir='.'
 
 若要设置断点并调试，请完成以下步骤：
 1. 在 Explorer 中打开 */src/CounterServiceApplication/CounterService/CounterService.cs* 文件，并在 `RunAsync` 方法中的第 62 行处设置一个断点。
-3. 单击**活动栏**中的“调试”图标，在 VS Code 中打开调试程序视图。 单击调试程序视图顶部的齿轮图标，从环境下拉菜单中选择“.NET Core”。 此时会打开 launch.json 文件。 可以关闭此文件。 现在，运行按钮（绿色箭头）旁边的调试配置菜单中应会出现配置选项。
+3. 单击**活动栏**中的“调试”图标，在 VS Code 中打开调试程序视图。 单击调试程序视图顶部的齿轮图标，从环境下拉菜单中选择“.NET Core”。  此时会打开 launch.json 文件。 可以关闭此文件。 现在，运行按钮（绿色箭头）旁边的调试配置菜单中应会出现配置选项。
 
    ![VS Code 工作区中的调试图标](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
-2. 在调试配置菜单中选择“.NET Core 附加”。
+2. 在调试配置菜单中选择“.NET Core 附加”。 
 
    ![VS Code 工作区中的调试图标](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. 在浏览器中打开 Service Fabric 资源管理器： http:\//localhost:19080 / 资源管理器。 单击“应用程序”并向下钻取，以确定运行 CounterService 的主节点。 在下图中，CounterService 的主节点是“节点 0”。
+3. 在浏览器中打开 Service Fabric 资源管理器： http:\//localhost:19080 / 资源管理器。 单击“应用程序”并向下钻取，以确定运行 CounterService 的主节点。  在下图中，CounterService 的主节点是“节点 0”。
 
    ![CounterService 的主节点](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 
-4. 在 VS Code 中，单击“.NET Core 附加”调试配置旁边的运行图标（绿色箭头）。 在进程选择对话框中，选择在步骤 4 中识别的主节点上运行的 CounterService 进程。
+4. 在 VS Code 中，单击“.NET Core 附加”调试配置旁边的运行图标（绿色箭头）。  在进程选择对话框中，选择在步骤 4 中识别的主节点上运行的 CounterService 进程。
 
    ![主进程](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
@@ -107,7 +107,7 @@ sudo code . --user-data-dir='.'
    
    ![从调试程序断开连接](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
        
-7. 完成调试后，可以使用“Service Fabric: 删除应用程序”命令从本地群集中删除 CounterService 应用程序。 
+7. 完成调试后，可以使用“Service Fabric:  删除应用程序”命令从本地群集中删除 CounterService 应用程序。 
 
 ## <a name="next-steps"></a>后续步骤
 

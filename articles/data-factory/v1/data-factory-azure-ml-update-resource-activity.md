@@ -13,15 +13,15 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 0c0e0e3983344bba76f5f305ecaf73f91110f3bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567282"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>使用更新资源活动更新 Azure 机器学习模型
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
 > * [MapReduce 活动](data-factory-map-reduce.md)
@@ -59,10 +59,10 @@ ms.locfileid: "60567282"
 使用 **Azure 机器学习更新资源活动**可调用**评分 Web 服务**，以通过新的定型模型更新 Web 服务。 以下示例提供了链接服务定义： 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>评分 Web 服务是经典 Web 服务
-如果评分 Web 服务是经典 Web 服务，请使用 Azure 门户创建第二个“非默认且可更新的终结点”。 请参阅[创建终结点](../../machine-learning/machine-learning-create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
+如果评分 Web 服务是经典 Web 服务，请使用 Azure 门户创建第二个“非默认且可更新的终结点”   。 请参阅[创建终结点](../../machine-learning/machine-learning-create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
 
-* 单击“批处理执行”获取 **mlEndpoint** JSON 属性的 URI 值。
-* 单击“更新资源”链接以获取 **updateResourceEndpoint** JSON 属性的 URI 值。 API 密钥就在终结点页面上（位于右下角）。
+* 单击“批处理执行”  获取 **mlEndpoint** JSON 属性的 URI 值。
+* 单击“更新资源”  链接以获取 **updateResourceEndpoint** JSON 属性的 URI 值。 API 密钥就在终结点页面上（位于右下角）。
 
 ![可更新终结点](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
 
@@ -211,11 +211,11 @@ Azure 存储保留以下数据：
 
 在 **Azure 机器学习工作室**中，执行以下操作以获取 **mlEndpoint** 和 **apiKey** 的值：
 
-1. 在左侧菜单上，单击“Web 服务”。
-2. 在 Web 服务列表中，单击“定型 Web 服务”。
-3. 单击“API 密钥”文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
-4. 在 **Azure 机器学习工作室**中，单击“批处理执行”链接。
-5. 从“请求”分区复制“请求 URI”，然后将其粘贴到数据工厂 JSON 编辑器。   
+1. 在左侧菜单上，单击“Web 服务”  。
+2. 在 Web 服务列表中，单击“定型 Web 服务”  。
+3. 单击“API 密钥”  文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
+4. 在 **Azure 机器学习工作室**中，单击“批处理执行”  链接。
+5. 从“请求”  分区复制“请求 URI”  ，然后将其粘贴到数据工厂 JSON 编辑器。   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Azure 机器学习可更新评分终结点的链接服务：
 以下 JSON 片段定义指向评分 Web 服务的非默认可更新终结点的 Azure 机器学习链接服务。  

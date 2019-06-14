@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.openlocfilehash: dc8c29b1c7d4e5056cb6aeee6335e32687fd547f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60627303"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>如何使用 SDK 中提供的工具来简化预配开发
@@ -59,10 +59,10 @@ SDK 提供带 DICE 仿真器的 X.509 证书生成器，位于 [Java SDK](https:
    cd target
    java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
    ```
-7. 出现提示时，可以选择性地为证书输入“公用名称”。
-8. 此工具在本地生成“客户端证书”、“客户端证书私钥”、“中间证书”和“根证书”。
+7. 出现提示时，可以选择性地为证书输入“公用名称”  。
+8. 此工具在本地生成“客户端证书”、“客户端证书私钥”、“中间证书”和“根证书”     。
 
-“客户端证书”是设备上的分支证书。  设备客户端需要“客户端证书”和关联的“客户端证书私钥”。 根据所选语言，客户端应用程序放置这些内容的机制可能有所不同。  有关详细信息，请参阅有关如何使用 X.509 创建模拟设备的[快速入门](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509)。
+“客户端证书”是设备上的分支证书  。  设备客户端需要“客户端证书”和关联的“客户端证书私钥”   。 根据所选语言，客户端应用程序放置这些内容的机制可能有所不同。  有关详细信息，请参阅有关如何使用 X.509 创建模拟设备的[快速入门](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509)。
 
 根证书或中间证书可用于[以编程方式](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks)或通过[门户](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments)创建注册组或单个注册。
 

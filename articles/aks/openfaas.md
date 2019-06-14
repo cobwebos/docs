@@ -10,10 +10,10 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60464849"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
@@ -132,7 +132,7 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 现在，OpenFaaS 已可运行，使用 OpenFaas 门户创建一个函数。
 
-单击“部署新函数”并搜索 Figlet。 选择 Figlet 函数，然后单击“部署”。
+单击“部署新函数”并搜索 Figlet   。 选择 Figlet 函数，然后单击“部署”  。
 
 ![Figlet](media/container-service-serverless/figlet.png)
 

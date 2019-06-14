@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/14/2019
 ms.openlocfilehash: c96f2dc2b44ea2118d9f0dd6c988017efcba5800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556908"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
@@ -80,7 +80,7 @@ ms.locfileid: "60556908"
 ## <a name="review-the-healthy-state-of-the-application"></a>查看应用程序的健康状态
 启动恢复进程前，请查看应用程序的健康状态。
 
-1. 在 Web 浏览器中打开 Wingtip Tickets 事件中心（ http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net - 请将 &lt;user&gt; 替换为部署的用户值）。
+1. 在 Web 浏览器中打开 Wingtip Tickets 事件中心（ http://events.wingtip-dpt.&lt ;user&gt;.trafficmanager.net - 请将 &lt; user&gt; 替换为部署的用户值）。
     
    滚动到页面底部，注意页脚中的目录服务器名称和位置。 该位置是部署应用的区域。    
 
@@ -200,7 +200,7 @@ ms.locfileid: "60556908"
  
     ![恢复进程](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-  * 如果在租户脱机时直接打开租户的事件页，页面将显示租户脱机通知。 例如，在 Contoso Concert Hall 处于脱机状态时，尝试打开 http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall。
+  * 如果在租户脱机时直接打开租户的事件页，页面将显示租户脱机通知。 例如，在 Contoso Concert Hall 处于脱机状态时，尝试打开 http://events.wingtip-dpt.&lt ;user&gt;.trafficmanager.net/contosoconcerthall。
 
     ![恢复进程](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -266,7 +266,7 @@ ms.locfileid: "60556908"
 
 3. 选择 F5 执行脚本。
 
-4. 刷新 Contoso Concert Hall 事件页 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall)，注意，事件 Seriously Strauss 不见了。
+4. 刷新 Contoso Concert Hall 事件页 (http://events.wingtip-dpt.&lt ;user&gt;.trafficmanager.net/contosoconcerthall)，注意，事件 Seriously Strauss 不见了。
 
 到本教程的此阶段，你已经恢复了应用程序（现在正在恢复区域中运行）。 还在恢复区域中预配了新租户并且修改了其中一个还原租户的数据。  
 
@@ -330,7 +330,7 @@ ms.locfileid: "60556908"
 
     选择 F5，在新的 PowerShell 窗口中运行恢复脚本。 遣返需要几分钟，可在 PowerShell 窗口进行监视。
 
-3. 在脚本运行期间，刷新事件中心页 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall)。
+3. 在脚本运行期间，刷新事件中心页 (http://events.wingtip-dpt.&lt ;user&gt;.trafficmanager.net/contosoconcerthall)。
 
     请注意，所有租户都为联机状态，并且可通过此进程访问。
 
@@ -365,7 +365,7 @@ ms.locfileid: "60556908"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 > [!div class="checklist"]
 > 
 > * 使用租户目录保存定期更新的配置信息，以允许在其他区域中创建镜像恢复环境。

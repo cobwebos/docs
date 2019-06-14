@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 579a47e70f292222914723606d032737b98822bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60498774"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>计算机视觉 API 常见问题解答
@@ -25,7 +25,7 @@ ms.locfileid: "60498774"
 
 -----
 
-**问**：我能否将计算机视觉 API 定型为使用自定义标记？例如，我要提供猫品种图片来“定型”AI，然后通过 AI 请求接收品种值。
+**问**：我能否将计算机视觉 API 定型为使用自定义标记？  例如，我要提供猫品种图片来“定型”AI，然后通过 AI 请求接收品种值。
 
 **答**：此功能目前不可用。 不过，我们的工程师正在努力将此功能引入计算机视觉。
 

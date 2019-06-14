@@ -13,10 +13,10 @@ ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 231f3c44344f4119bab6e1efb5546e6fded0c784
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60473836"
 ---
 # <a name="add-your-work-or-school-account"></a>添加工作或学校帐户
@@ -30,22 +30,22 @@ ms.locfileid: "60473836"
 1. 在计算机上，转到[其他安全性验证](https://aka.ms/mfasetup)页。
 
     >[!Note]
-    >如果看不到“其他安全性验证”页，可能是管理员启用了安全信息（预览）体验。 如果是这种情况，应按照[设置安全信息以使用 Authenticator 应用](security-info-setup-auth-app.md)部分中的说明操作。 否则，请联系组织的技术支持来获得帮助。 有关安全信息的详细信息，请参阅[安全信息 （预览版） 概述](user-help-security-info-overview.md)。
+    >如果看不到“其他安全性验证”  页，可能是管理员启用了安全信息（预览）体验。 如果是这种情况，应按照[设置安全信息以使用 Authenticator 应用](security-info-setup-auth-app.md)部分中的说明操作。 否则，请联系组织的技术支持来获得帮助。 有关安全信息的详细信息，请参阅[安全信息 （预览版） 概述](user-help-security-info-overview.md)。
 
-2. 选中“Authenticator 应用”旁边的复选框，然后选择“配置”。
+2. 选中“Authenticator 应用”旁边的复选框，然后选择“配置”。  
 
-    此时会显示“配置移动应用”页。
+    此时会显示“配置移动应用”  页。
     
     ![提供 QR 码的屏幕](./media/user-help-auth-app-download-install/auth-app-barcode.png)
 
-3. 打开 Microsoft Authenticator 应用，从右上方的“自定义和控制”图标中选择“添加帐户”，然后选择“工作或学校帐户”。
+3. 打开 Microsoft Authenticator 应用，从右上方的“自定义和控制”  图标中选择“添加帐户”  ，然后选择“工作或学校帐户”  。
 
-4. 在计算机上使用设备的摄像头扫描“配置移动应用”屏幕中的 QR 码，然后选择“完成”。
+4. 在计算机上使用设备的摄像头扫描“配置移动应用”屏幕中的 QR 码，然后选择“完成”   。
 
     >[!Note]
     >如果摄像头无法捕获 QR 码，可以手动将帐户信息添加到 Microsoft Authenticator 应用中，以进行双重验证。 有关详细信息以及操作方法，请参阅[手动添加帐户](user-help-auth-app-add-account-manual.md)。
 
-5. 检查设备上应用的“帐户”屏幕，以确保帐户正确，并有关联的六位数验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
+5. 检查设备上应用的“帐户”  屏幕，以确保帐户正确，并有关联的六位数验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
 
     ![帐户屏幕](./media/user-help-auth-app-download-install/auth-app-accounts.png)
 

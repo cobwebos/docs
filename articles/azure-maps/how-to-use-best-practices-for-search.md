@@ -8,15 +8,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 9cb0f89b4a48d7139adb35dcef48c0115b005c57
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205607"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure 地图搜索服务的最佳做法
 
-Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包含使用各种功能，例如中的 Api 的搜索兴趣点 (POI) 数据以某一位置的地址搜索。 在本文中，我们将分享调用通过 Azure Maps 搜索服务的数据的最佳做法。 可以了解如何执行以下操作：
+Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包含使用各种功能，例如中的 Api 的搜索兴趣点 (POI) 数据以某一位置的地址搜索。 在本文中，我们将分享调用通过 Azure Maps 搜索服务的数据的最佳做法。 将了解如何执行以下操作：
 
 * 生成查询，以返回相关的匹配项
 * 限制搜索结果
@@ -286,7 +286,7 @@ C++：
 curl_easy_escape(query)
 ```
 
-PHP:
+PHP：
 ```PHP
 urlencode(query)
 ```
@@ -683,7 +683,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 }
 ```
 
-### <a name="geometry"></a>几何图形
+### <a name="geometry"></a>geometry
 
 当响应类型是**几何图形**，它可以包括在返回的 geometry ID**数据源**"geometry"和"id"下的对象。 例如，[获取多边形服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)可以请求以 GeoJSON 格式，如一组实体的城市或机场轮廓的几何图形数据。 可以使用此边界数据用于[地理围栏](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence)或[的几何图形内搜索 Poi](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。
 

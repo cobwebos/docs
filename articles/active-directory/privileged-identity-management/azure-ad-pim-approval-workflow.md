@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47e9033b33c70a72a1685696f75a442e88eed033
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289673"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>批准或拒绝在 PIM 中的 Azure AD 角色的请求
@@ -35,11 +35,11 @@ ms.locfileid: "60289673"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure AD 角色”。
+1. 单击“Azure AD 角色”。 
 
-1. 单击“审批请求”。
+1. 单击“审批请求”  。
 
     ![PIM Azure AD 角色的角色](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
@@ -47,15 +47,15 @@ ms.locfileid: "60289673"
 
 ## <a name="approve-requests"></a>审批请求
 
-1. 选中要审批的请求，然后单击“审批”以打开审批所选请求窗格。
+1. 选中要审批的请求，然后单击“审批”以打开审批所选请求窗格  。
 
     ![PIM 审批请求列表](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
-1. 在“审批原因”框中，键入原因。
+1. 在“审批原因”框中，键入原因  。
 
     ![PIM 审批所选请求](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. 单击“批准”。
+1. 单击“批准”  。
 
     状态符号将随审批操作更新。
 
@@ -63,15 +63,15 @@ ms.locfileid: "60289673"
 
 ## <a name="deny-requests"></a>拒绝请求
 
-1. 选中要拒绝的请求，然后单击“拒绝”以打开拒绝所选请求窗格。
+1. 选中要拒绝的请求，然后单击“拒绝”以打开拒绝所选请求窗格  。
 
     ![PIM 审批请求列表](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
-1. 在“拒绝原因”框中，键入原因。
+1. 在“拒绝原因”框中，键入原因  。
 
     ![PIM 拒绝所选请求](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. 单击“拒绝”。
+1. 单击“拒绝”  。
 
     状态符号将随拒绝操作更新。
 

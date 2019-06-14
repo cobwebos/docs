@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b860257fd1b3f0897152dc3d48bff0c7e1d3d994
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60469855"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>设置 Azure Active Directory 中的自助服务组管理 
@@ -44,17 +44,17 @@ ms.locfileid: "60469855"
 ## <a name="make-a-group-available-for-user-self-service"></a>使组可用于用户自助服务
 
 1. 使用目录的全局管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
-2. 选择“用户和组”，然后选择“组设置”。
-3. 将“启用自助服务组管理”设置为“是”。
-4. 将“用户可以创建安全组”或“用户可以创建 Office 365 组”设置为“是”。
+2. 选择“用户和组”  ，然后选择“组设置”  。
+3. 将“启用自助服务组管理”  设置为“是”  。
+4. 将“用户可以创建安全组”  或“用户可以创建 Office 365 组”  设置为“是”  。
    * 启用这些设置时，将允许目录中的所有用户创建新的安全组并在这些组中添加成员。 这些新组也会显示在其他所有用户的“访问面板”中。 如果组的策略设置允许，其他用户可以创建加入这些组的请求。 
    * 禁用这些设置时，用户将无法创建组，也无法更改其拥有的现有组。 不过，他们仍然可以管理这些组的成员身份，并审批其他用户加入其组的请求。
 
-还可以使用“可以管理安全组的用户”和“可以管理 Office 365 组的用户”对用户的自助服务组管理功能进行更精细的访问控制。 启用“用户可以创建组”后，将允许租户中的所有用户创建新组并在这些组中添加成员。 不能指定可以创建自己的组的人员。 可以仅为使组所有者的另一个组成员指定的个人。
+还可以使用“可以管理安全组的用户”和“可以管理 Office 365 组的用户”对用户的自助服务组管理功能进行更精细的访问控制   。 启用“用户可以创建组”后，将允许租户中的所有用户创建新组并在这些组中添加成员  。 不能指定可以创建自己的组的人员。 可以仅为使组所有者的另一个组成员指定的个人。
 
 通过设置**可以对安全组使用自助服务用户**并**可以管理 Office 365 组的用户**到**是**，允许你创建新的租户中的所有用户组。
 
-还可以使用“可以管理安全组的组”或“可以管理 Office 365 组的组”来指定其成员可以使用自助服务的单个组。
+还可以使用“可以管理安全组的组”  或“可以管理 Office 365 组的组”  来指定其成员可以使用自助服务的单个组。
 
 ## <a name="next-steps"></a>后续步骤
 

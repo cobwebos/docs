@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60415646"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
@@ -35,9 +35,9 @@ ms.locfileid: "60415646"
 
 此联系人电子邮件按以下顺序发送到以下收件人：
 
-1. 如果已分配“密码管理员”角色，则会通知充当此角色的管理员。
-2. 如果未分配密码管理员，则会通知充当“用户管理员”角色的管理员。
-3. 如果上述两个角色都未分配，则会通知“全局管理员”。
+1. 如果已分配“密码管理员”  角色，则会通知充当此角色的管理员。
+2. 如果未分配密码管理员，则会通知充当“用户管理员”  角色的管理员。
+3. 如果上述两个角色都未分配，则会通知“全局管理员”  。
 
 在所有情况下，最多会向 100 个收件人发送通知。
 
@@ -47,8 +47,8 @@ ms.locfileid: "60415646"
 
 如果组织不希望向管理员通知密码重置请求，可启用以下配置：
 
-* 为所有最终用户启用自助密码重置。 可在“密码重置” > “属性”下面找到此选项。 如果不希望用户重置其自己的密码，可以将访问权限限制为某个空组。 我们不建议使用此选项。
-* 自定义帮助台链接，以提供可让用户获得帮助的 Web URL 或 mailto: 地址。 可在“密码重置” > “自定义” > “自定义支持人员电子邮件或 URL”下面找到此选项。
+* 为所有最终用户启用自助密码重置。 可在“密码重置”   > “属性”  下面找到此选项。 如果不希望用户重置其自己的密码，可以将访问权限限制为某个空组。 我们不建议使用此选项  。
+* 自定义帮助台链接，以提供可让用户获得帮助的 Web URL 或 mailto: 地址。 可在“密码重置”   > “自定义”   > “自定义支持人员电子邮件或 URL”  下面找到此选项。
 
 ## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>为 SSPR 自定义 AD FS 登录页
 
@@ -75,7 +75,7 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 ### <a name="directory-name"></a>目录名称
 
-可以在“Azure Active Directory” > “属性”下更改目录名称属性。 可以在门户中以及在自动通信中显示友好的组织名称。 在自动发送的电子邮件中，此选项以下列形式出现时最显眼：
+可以在“Azure Active Directory”   > “属性”  下更改目录名称属性。 可以在门户中以及在自动通信中显示友好的组织名称。 在自动发送的电子邮件中，此选项以下列形式出现时最显眼：
 
 * 电子邮件中的友好名称，例如“Microsoft 代表 CONTOSO 演示”
 * 电子邮件中的主题行，例如“CONTOSO 演示帐户电子邮件验证码”

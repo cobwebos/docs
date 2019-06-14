@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e70e7b79be7dd4ea55c56898eaf8007d25732366
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60513984"
 ---
 # <a name="troubleshooting-bing-speech"></a>必应语音故障排除
@@ -48,7 +48,7 @@ ms.locfileid: "60513984"
 
 #### <a name="verify-that-your-subscription-key-is-valid"></a>验证订阅密钥是否有效
 
-可运行以下命令进行验证。 请注意将 YOUR_SUBSCRIPTION_KEY 替换为自己的订阅密钥。 如果订阅密钥有效，将在响应中收到 JSON Web 令牌 (JWT) 形式的授权令牌。 否则，响应会出错。
+可运行以下命令进行验证。 请注意将 YOUR_SUBSCRIPTION_KEY 替换为自己的订阅密钥  。 如果订阅密钥有效，将在响应中收到 JSON Web 令牌 (JWT) 形式的授权令牌。 否则，响应会出错。
 
 > [!NOTE]
 > 将 `YOUR_SUBSCRIPTION_KEY` 替换为自己的订阅密钥。

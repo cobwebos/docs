@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.openlocfilehash: 4b3bba1da5238655ca749f6464c539e53ca48f27
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60542775"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
@@ -34,7 +34,7 @@ ms.locfileid: "60542775"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在“美国东部”位置创建一个名为“myResourceGroup”的资源组。
+在“美国东部”  位置创建一个名为“myResourceGroup”  的资源组。
 
 ```bash
 az group create --name myResourceGroup --location eastus
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](/cli/azure/storage/account) 在创建的资源组中创建一个新存储帐户。 此示例创建一个名为存储帐户*mySTORAGEACCT\<随机数字 >* 并将该存储帐户的名称放入变量**STORAGEACCT**。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
+使用 [az storage account create](/cli/azure/storage/account) 在创建的资源组中创建一个新存储帐户。 此示例创建一个名为 *mySTORAGEACCT\<random number>* 的存储帐户，然后将该存储帐户的名称置于变量 **STORAGEACCT** 中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
 
 ```bash
 STORAGEACCT=$(az storage account create \

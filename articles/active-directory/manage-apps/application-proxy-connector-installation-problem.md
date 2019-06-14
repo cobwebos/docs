@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c82bba6ccb1eaa1933176362e34b8c3e30c37f8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783630"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
@@ -68,7 +68,7 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 **若要验证凭据是否正确：**
 
-连接到 <https://login.microsoftonline.com> 并使用相同的凭据。 确保登录成功。 可以通过转到“Azure Active Directory” -&gt;“用户和组” -&gt;“所有用户”来检查用户角色。 
+连接到 <https://login.microsoftonline.com> 并使用相同的凭据。 确保登录成功。 可以通过转到“Azure Active Directory”   -&gt;“用户和组”   -&gt;“所有用户”  来检查用户角色。 
 
 选择用户帐户，并在生成的菜单中选择“目录角色”。 验证所选的角色为"应用程序管理员"。 如果按这些步骤操作无法访问任何页，则表示你不具有所需的角色。
 

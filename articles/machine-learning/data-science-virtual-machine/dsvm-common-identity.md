@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
 ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60502363"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
@@ -43,11 +43,11 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
 
    a. 使用属于目录全局管理员的帐户登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
     
-   b. 选择“Azure Active Directory”，然后选择“用户和组”。
+   b. 选择“Azure Active Directory”，然后选择“用户和组”。  
     
-   c. 在“用户和组”中，选择“所有用户”，然后选择“新建用户”。
+   c. 在“用户和组”中，选择“所有用户”，然后选择“新建用户”    。
    
-      “用户”窗格将打开。
+       “用户”窗格将打开。
       
       ![“用户”窗格](./media/add-user.png)
     
@@ -55,9 +55,9 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
     
    e. 复制或以其他方式记下生成的用户密码，以便在此过程完成后可以提供给用户。
     
-   f. （可选）可以打开“个人资料”、“组”或“目录角色”并在其中填写用户信息。 
+   f. （可选）可以打开“个人资料”、“组”或“目录角色”并在其中填写用户信息    。 
     
-   g. 在“用户”上，选择“创建”。
+   g. 在“用户”上，选择“创建”   。
     
    h. 以安全方式将生成的密码分发给新用户，以便用户可以登录。
 
@@ -70,7 +70,7 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
 
    a. [创建 Azure 文件共享](../../storage/files/storage-how-to-create-file-share.md)。
     
-   b. 将其装载到 Linux DSVM 上。 在 Azure 门户的存储帐户中选择 Azure 文件共享所对应的“连接”按钮时，将会显示可以在 Linux DSVM 的 Bash Shell 中运行的命令。 命令如下所示：
+   b. 将其装载到 Linux DSVM 上。 在 Azure 门户的存储帐户中选择 Azure 文件共享所对应的“连接”  按钮时，将会显示可以在 Linux DSVM 的 Bash Shell 中运行的命令。 命令如下所示：
    
    ```
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp

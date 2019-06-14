@@ -12,29 +12,29 @@ ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
 ms.openlocfilehash: c56aef180f5e16d2ec1931caabe04295ef288ca9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60509761"
 ---
 # <a name="register-your-application"></a>注册应用程序
 
 若要将自定义决策服务用于应用程序，请在门户中注册该应用程序。 本文介绍了如何执行此操作。
 
-1. 转到自定义决策服务的[前端页](https://portal.ds.microsoft.com/)。 在功能区上，单击“我的门户”，如图像中所突出显示：
+1. 转到自定义决策服务的[前端页](https://portal.ds.microsoft.com/)。 在功能区上，单击“我的门户”  ，如图像中所突出显示：
 
     ![我的门户](./media/portal.png)
 
     如果尚未登录，门户将提示你使用 [Microsoft 帐户](https://account.microsoft.com/account)进行登录。 在登录后，门户将在页面右上角显示你的 Microsoft 帐户。
 
-2. 若要注册应用程序，请单击“新建应用”按钮。
+2. 若要注册应用程序，请单击“新建应用”  按钮。
 
 3. 在对话框中，为你的应用程序选择一个应用 ID。 自定义决策服务要求每个应用程序具有唯一的 ID。 如果其他人已占用了此 ID，则系统会要求你另外选择一个。
 
-4. 指定一个操作集 API。 此设置是一个 RSS 或 Atom 馈送，它将你的应用程序的可用内容传送到自定义决策服务。 为该馈送输入一个名称，并输入提供它的 URL。 若要稍后执行此步骤，请单击“馈送”按钮，然后单击“新建馈送”按钮。 下文中介绍了一个创建 RSS 馈送的示例。
+4. 指定一个操作集 API。 此设置是一个 RSS 或 Atom 馈送，它将你的应用程序的可用内容传送到自定义决策服务。 为该馈送输入一个名称，并输入提供它的 URL。 若要稍后执行此步骤，请单击“馈送”  按钮，然后单击“新建馈送”  按钮。 下文中介绍了一个创建 RSS 馈送的示例。
 
-5. 若要注册应用程序，请选择左下角的“自定义应用”复选框。 输入记录你的应用程序数据的 Azure 存储帐户的[连接字符串](../../storage/common/storage-configure-connection-string.md)。 有关如何创建存储帐户的详细信息，请参阅[如何创建、管理或删除存储帐户](../../storage/common/storage-create-storage-account.md)。
+5. 若要注册应用程序，请选择左下角的“自定义应用”  复选框。 输入记录你的应用程序数据的 Azure 存储帐户的[连接字符串](../../storage/common/storage-configure-connection-string.md)。 有关如何创建存储帐户的详细信息，请参阅[如何创建、管理或删除存储帐户](../../storage/common/storage-create-storage-account.md)。
 
 ### <a name="next-steps"></a>后续步骤
 

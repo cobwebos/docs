@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
 ms.openlocfilehash: 153d42bf4ce4322536d6837be3058d1f9bfb49a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607193"
 ---
 # <a name="create-human-reviews-net"></a>创建人工审阅 (.NET)
@@ -38,9 +38,9 @@ ms.locfileid: "60607193"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”  项目。
 
-   在示例代码中，将此项目命名为“CreateReviews”。
+   在示例代码中，将此项目命名为“CreateReviews”  。
 
 1. 将此项目选为解决方案的单一启动项目。
 
@@ -73,7 +73,7 @@ using System.Threading;
 添加以下代码来为订阅创建内容审查器客户端。
 
 > [!IMPORTANT]
-> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
+> 使用区域标识符和订阅密钥的值更新  AzureRegion 和 CMSubscriptionKey  字段。
 
 ```csharp
 /// <summary>
@@ -121,7 +121,7 @@ public static class Clients
 
 ## <a name="create-a-class-to-associate-internal-content-information-with-a-review-id"></a>创建将内部内容信息与审阅 ID 相关联的类
 
-将以下类添加到 Program 类。 此类用于将审阅 ID 与项的内部内容 ID 相关联。
+将以下类添加到 Program  类。 此类用于将审阅 ID 与项的内部内容 ID 相关联。
 
 ```csharp
 /// <summary>
@@ -186,9 +186,9 @@ public static class Clients
 将这些值更新为包含订阅和团队专用信息。
 
 > [!NOTE]
-> 将 TeamName 常数设置为，创建[内容审查器“审阅”工具](https://contentmoderator.cognitive.microsoft.com/)订阅时使用的名称。 从“设置”（齿轮）菜单的“凭据”部分检索 TeamName。
+> 将 TeamName 常数设置为，创建[内容审查器“审阅”工具](https://contentmoderator.cognitive.microsoft.com/)订阅时使用的名称。 从“设置”  （齿轮）菜单的“凭据”  部分检索 TeamName。
 >
-> 团队名称是“API”部分中的“ID”字段值。
+> 团队名称是“API”  部分中的“ID”  字段值。
 
 ```csharp
 /// <summary>
@@ -380,7 +380,7 @@ private static void CreateReviews(ContentModeratorClient client)
 
 ## <a name="add-code-to-create-a-set-of-reviews-and-check-its-status"></a>添加用于创建一组审阅并检查其状态的代码
 
-将以下代码添加到 Main 方法。
+将以下代码添加到 Main  方法。
 
 此代码模拟在定义和管理列表以及使用列表筛查图像时执行的诸多操作。 日志记录功能，可以查看由对内容 mModerator 服务的 SDK 调用生成的响应对象。
 
@@ -427,9 +427,9 @@ Creating reviews for the following images:
     Review 201712i46950138c61a4740b118a43cac33f434 for item ID 0 is Pending.
 ```
 
-登录内容审查器“审阅”工具，查看 sc 标签设置为 true 的待处理图像审阅。 还可以查看默认的 a和 r 标记，以及可能已在“审阅”工具中定义的任何自定义标记。
+登录内容审查器“审阅”工具，查看 sc  标签设置为 true  的待处理图像审阅。 还可以查看默认的 a  和 r  标记，以及可能已在“审阅”工具中定义的任何自定义标记。
 
-按“下一步”按钮，以提交结果。
+按“下一步”  按钮，以提交结果。
 
 ![供人工审查方审阅的图像](images/moderation-reviews-quickstart-dotnet.PNG)
 

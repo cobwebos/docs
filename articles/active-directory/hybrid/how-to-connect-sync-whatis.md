@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3b87f40d75d4045155e7dd953dc76ffd9de2b34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60348733"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect 同步：了解和自定义同步
@@ -28,7 +28,7 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 
 本主题是 **Azure AD Connect 同步**（也称为**同步引擎**）的主页，其中列出了与其相关的所有其他主题的链接。 有关 Azure AD Connect 的链接，请参阅[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
 
-同步服务包括两个组件，本地“Azure AD Connect 同步”组件和 Azure AD 中称为 **Azure AD Connect 同步服务**的服务端组件。
+同步服务包括两个组件，本地“Azure AD Connect 同步”  组件和 Azure AD 中称为 **Azure AD Connect 同步服务**的服务端组件。
 
 ## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect 同步主题
 | 主题 | 涵盖的内容和阅读时机 |

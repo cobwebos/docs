@@ -17,10 +17,10 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 2da6a5c93d4bf4fcf8763be47b9eb629b930e3b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370760"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>为何禁用 Azure 订阅？如何重新激活它？
@@ -55,7 +55,7 @@ Azure 订阅被禁用可能是因为信用已过期、达到了支出限制、�
 
 1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
 1. 选择已取消的订阅。
-1. 单击“重新激活”。
+1. 单击“重新激活”。 
 
     ![屏幕截图，右侧窗格中显示重新激活链接](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
 

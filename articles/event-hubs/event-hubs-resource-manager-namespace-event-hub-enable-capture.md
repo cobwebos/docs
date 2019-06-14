@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/06/2019
 ms.author: shvija
 ms.openlocfilehash: 804ef04f0066a8b8dd9df82aef03fcfc32d7cb43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60343712"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
@@ -278,7 +278,7 @@ ms.locfileid: "60343712"
 
 ## <a name="resources-to-deploy-for-azure-storage-as-destination-to-captured-events"></a>要针对 Azure 存储（作为已捕获事件的目标）进行部署的资源
 
-创建包含一个事件中心的 EventHub 类型的命名空间，并启用“捕获到 Azure Blob 存储”。
+创建包含一个事件中心的  EventHub 类型的命名空间，并启用“捕获到 Azure Blob 存储”。
 
 ```json
 "resources":[  
@@ -340,7 +340,7 @@ ms.locfileid: "60343712"
 
 ## <a name="resources-to-deploy-for-azure-data-lake-store-as-destination"></a>要针对 Azure Data Lake Store（作为目标）进行部署的资源
 
-创建包含一个事件中心的 EventHub 类型的命名空间，并启用“捕获到 Azure Data Lake Store”。
+创建包含一个事件中心的  EventHub 类型的命名空间，并启用“捕获到 Azure Data Lake Store”。
 
 ```json
  "resources": [

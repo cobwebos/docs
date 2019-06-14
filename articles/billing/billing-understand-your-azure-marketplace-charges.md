@@ -17,10 +17,10 @@ ms.date: 06/15/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae9c2c975bf49725be1858ad02a1c4b90ef58a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370454"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>了解外部服务收费的 Azure 计费
@@ -44,10 +44,10 @@ ms.locfileid: "60370454"
 可以在 [Azure 门户](https://portal.azure.com/)中查看每个订阅的外部服务的列表： 
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单中，选择“订阅”。
+2. 在“中心”菜单中，选择“订阅”  。
    
     ![在“中心”菜单中，选择“订阅”](./media/billing-understand-your-azure-marketplace-charges/sub-button.png) 
-3. 在“订阅”边栏选项卡中，选择要查看的订阅，并选择“外部服务”。
+3. 在“订阅”  边栏选项卡中，选择要查看的订阅，并选择“外部服务”  。
    
     ![在计费边栏选项卡中选择订阅](./media/billing-understand-your-azure-marketplace-charges/select-sub-external-services.png)
 4. 此时会看到每个外部服务订单、发布者名称、购买的服务层级、提供给资源的名称，以及当前订单状态。 若要查看过去的帐单，请选择一项外部服务。
@@ -68,16 +68,16 @@ EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要
 > 
 > 
 
-1. 登录到[帐户中心](https://account.windowsazure.com/)，[导航到“市场”选项卡](https://account.windowsazure.com/Store)
+1. 登录到[帐户中心](https://account.windowsazure.com/)，[导航到“市场”  选项卡](https://account.windowsazure.com/Store)
    
     ![在帐户中心选择“市场”](./media/billing-understand-your-azure-marketplace-charges/select-marketplace.png)
 2. 选择要管理的外部服务
    
     ![选择要管理的外部服务](./media/billing-understand-your-azure-marketplace-charges/select-ext-service.png)
-3. 在页面右侧，单击“更改付款方式”。 此链接指向另一管理付款方式的门户。
+3. 在页面右侧，单击“更改付款方式”。  此链接指向另一管理付款方式的门户。
    
     ![订单摘要](./media/billing-understand-your-azure-marketplace-charges/change-payment.PNG)
-4. 单击“编辑信息”，按说明更新付款信息。
+4. 单击“编辑信息”，按说明更新付款信息。 
    
     ![选择“编辑信息”](./media/billing-understand-your-azure-marketplace-charges/edit-info.png)
 

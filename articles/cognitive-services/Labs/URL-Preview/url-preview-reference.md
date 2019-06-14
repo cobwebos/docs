@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60462582"
 ---
 # <a name="project-url-preview-v7-reference"></a>项目 URL 预览 v7 参考
@@ -23,7 +23,7 @@ URL 预览支持对博客文章、论坛讨论、预览页面等 Web 资源的�
 
 使用 URL 预览的应用程序使用 URL 将 Web 请求发送到终结点，以便在查询参数中预览。 请求必须包含 *Ocp-Apim-Subscription-Key* 标头。
 
-可以解析 JSON 响应以获取预览信息：名称、资源描述、isFamilyFriendly 以及链接，通过这些链接可在线访问代表性图像和完整资源。
+可以解析 JSON 响应以获取预览信息：名称、资源描述、isFamilyFriendly 以及链接，通过这些链接可在线访问代表性图像和完整资源  。
 
 必须仅使用来自 URL 预览的数据，通过最终用户在社交媒体、聊天机器人或类似产品/服务上发起的 URL 共享，显示超链接到其源站点的预览片段和缩略图图像。 不得复制、存储或缓存从项目 URL 预览收到的任何数据。 必须按照请求禁用可能从网站或内容所有者处收到的预览。
 
@@ -62,7 +62,7 @@ q - 标识要预览的 URL 的查询
 ## <a name="headers"></a>标头
 下面是请求和响应可能包含的标头。
 
-|标头|描述|
+|Header|描述|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|响应标头。<br /><br /> 请求使用的市场。 形式为 \<languageCode\>-\<countryCode\>。 例如，en-US。|
 |<a name="traceid" />BingAPIs-TraceId|响应标头。<br /><br /> 包含请求详细信息的日志条目 ID。 发生错误时，捕获此 ID。 如果无法确定并解决问题，请纳入此 ID 以及提供给支持团队的其他信息。|
@@ -73,7 +73,7 @@ q - 标识要预览的 URL 的查询
 ## <a name="query-parameters"></a>查询参数
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。 查询必须是使用 http 或 https 方案的绝对 URL；我们不支持相对 URL 或其他方案（如 ftp://）
 
-|Name|Value|Type|需要|
+|Name|值|Type|必选|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** URL 预览 API 目前仅支持美国地理和英语。<br /><br />|String|是|
 |<a name="query" />q|要预览的 URL|String|是|
@@ -102,7 +102,7 @@ q - 标识要预览的 URL 的查询
 ### <a name="errorresponse"></a>ErrorResponse
 请求失败时响应包含的顶级对象。
 
-|Name|Value|Type|
+|Name|值|Type|
 |----------|-----------|----------|
 |_type|类型提示。|String|
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|
@@ -110,16 +110,16 @@ q - 标识要预览的 URL 的查询
 ### <a name="webpage"></a>WebPage
 定义预览版网页的信息。
 
-|Name|Value|Type|
+|Name|值|Type|
 |----------|-----------|----------|
-|名称|页面标题，不一定是 HTML 标题|String|
+|name|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|
 |description|对页面和内容的简要说明|String|
 |isFamilyFriendly|对 Web 索引中的项来说最准确；实时提取完全根据 URL 而非页面内容来执行此检测|boolean|
 |primaryImageOfPage/contentUrl|将包括在预览版中的代表性图像的 URL|String|
 
 ### <a name="identifiable"></a>Identifiable
-|Name|Value|Type|
+|名称|值|Type|
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
 

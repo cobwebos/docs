@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
 ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60533179"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
@@ -38,10 +38,10 @@ ms.locfileid: "60533179"
 
    ![LA 工作区](./media/troubleshooting-general/LA-workspace.png)
 
-   b. 如果已删除迁移项目，请单击 Azure 门户左窗格中的“资源组”，然后转到创建工作区的资源组，然后浏览到该资源组。
+   b. 如果已删除迁移项目，请单击 Azure 门户左窗格中的“资源组”，然后转到创建工作区的资源组，然后浏览到该资源组  。
 2. 按照[本文](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)中的说明删除工作区。
 
-### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>无法创建迁移项目，错误消息为“请求必须包含用户标识头”
+### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>无法创建迁移项目，错误消息为“请求必须包含用户标识头” 
 
 如果用户无权访问组织的 Azure Active Directory (Azure AD) 租户，可能会发生此问题。 首次添加到 Azure AD 租户中时，用户会收到一封电子邮件，邀请其加入租户。 用户需要访问电子邮件并接受邀请，才能被成功添加到租户中。 如果看不到电子邮件，请联系已有权访问租户的用户，让其按照[此处](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)介绍的步骤操作，重新向你发送邀请。
 
@@ -51,7 +51,7 @@ ms.locfileid: "60533179"
 
 如果无法从门户导出评估报告，请尝试使用以下 REST API 来获取评估报告的下载 URL。
 
-1. 在计算机上安装“armclient”（如果尚未安装）：
+1. 在计算机上安装“armclient”（如果尚未安装）  ：
 
    a. 在管理员命令提示符窗口中，运行以下命令：```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
 
@@ -86,7 +86,7 @@ Azure Migrate 持续分析本地环境，以便收集本地 VM 的性能数据�
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>创建迁移项目时，我已指定 Azure 地理位置，如何找到将存储所发现元数据的确切 Azure 区域？
 
-你可以转到项目“概述”页中的“Essentials”部分来标识存储元数据的确切位置。 位置是由 Azure Migrate 在地理位置内随机选择的，你无法进行修改。 如果希望仅在特定区域中创建项目，则可以使用 REST API 来创建迁移项目并传递到所需的区域。
+你可以转到项目“概述”  页中的“Essentials”  部分来标识存储元数据的确切位置。 位置是由 Azure Migrate 在地理位置内随机选择的，你无法进行修改。 如果希望仅在特定区域中创建项目，则可以使用 REST API 来创建迁移项目并传递到所需的区域。
 
    ![项目位置](./media/troubleshooting-general/geography-location.png)
 
@@ -97,7 +97,7 @@ Azure Migrate 持续分析本地环境，以便收集本地 VM 的性能数据�
 1. 通过检查其哈希值，验证是否已正确下载 Azure Migrate 收集器 OVA 文件。 请参阅[本文](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)来验证哈希值。 如果哈希值不匹配，请再次下载 OVA 文件并重试部署。
 2. 如果仍然失败，并且使用的是 VMware vSphere 客户端来部署 OVF，请尝试通过 vSphere Web 客户端对其进行部署。 如果仍然失败，请尝试使用其他 Web 浏览器。
 3. 如果使用的是 vSphere Web 客户端并尝试在 vCenter Server 6.5 或 6.7 上部署，请按照以下步骤尝试直接在 ESXi 主机上部署 OVA：
-   - 使用 Web 客户端（ https://<主机 IP 地址>/ui）直接连接 ESXi 主机（而不是 vCenter Server）
+   - 使用 Web 客户端（ https://<主机 IP 地址>/ui）直接连接 ESXi 主机（而不是 vCenter Server） 
    - 转到“主页”>“库存”
    - 单击“文件”>“部署 OVF 模板”>“浏览到 OVA”，并完成部署
 4. 如果部署仍然失败，请联系 Azure Migrate 支持部门。
@@ -120,16 +120,16 @@ Azure Migrate 持续分析本地环境，以便收集本地 VM 的性能数据�
 
 如果使用拦截代理连接到 Internet，并且尚未将代理证书导入收集器 VM，则可能会发生这种情况。 可以使用[此处](https://docs.microsoft.com/azure/migrate/concepts-collector)详述的步骤导入代理证书。
 
-收集器不能使用从门户复制的项目 ID 和密钥连接到项目。
+收集器不能使用从门户复制的项目 ID 和密钥连接到项目。 
 
 请确保你已复制和粘贴正确信息。 若要进行故障排除，请安装 Microsoft Monitoring Agent (MMA)，并验证 MMA 是否可以连接到该项目，如下所述：
 
 1. 在收集器 VM 上，下载 [MMA](https://go.microsoft.com/fwlink/?LinkId=828603)。
 2. 请双击下载文件，开始安装。
-3. 在设置中的“欢迎”页面上，单击“下一步”。 在“许可条款”页面上，单击“我接受”以接受许可协议。
-4. 在“目标文件夹”中，保留或修改默认安装文件夹，然后选择“下一步”。
-5. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
-6. 单击“添加”以添加 Log Analytics 工作区。 粘贴复制的项目 ID 和密钥。 然后单击“下一步”。
+3. 在设置中的“欢迎”  页面上，单击“下一步”  。 在“许可条款”  页面上，单击“我接受”  以接受许可协议。
+4. 在“目标文件夹”  中，保留或修改默认安装文件夹，然后选择“下一步”  。
+5. 在“代理安装选项”  中，选择“Azure Log Analytics”   > “下一步”  。
+6. 单击“添加”  以添加 Log Analytics 工作区。 粘贴复制的项目 ID 和密钥。 然后单击“下一步”  。
 7. 验证代理是否可以连接到该项目。 如果不能，则验证设置。 如果代理可以连接，但收集器无法连接，请联系支持部门。
 
 
@@ -228,9 +228,9 @@ Azure Migrate 取决于服务映射以获取依赖项可视化效果功能，并
 你安装这些代理后，Azure Migrate 通常需要 15-30 分钟才能显示门户中的依赖项。 如果等待的时间超过 30 分钟，请确保 MMA 代理能够按照以下步骤与 OMS 工作区进行通信：
 
 对于 Windows VM：
-1. 请转到“控制面板”，然后启动 Microsoft Monitoring Agent
-2. 转到“MMA 属性”弹出窗口中的 Azure Log Analytics (OMS) 选项卡
-3. 确保工作区的“状态”为绿色。
+1. 请转到“控制面板”  ，然后启动 Microsoft Monitoring Agent 
+2. 转到“MMA 属性”弹出窗口中的 Azure Log Analytics (OMS)  选项卡
+3. 确保工作区的  “状态”为绿色。
 4. 如果状态不是绿色，请尝试删除工作区，然后再次将其添加到 MMA。
         ![MMA 状态](./media/troubleshooting-general/mma-status.png)
 
@@ -286,7 +286,7 @@ Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 A
 
 ## <a name="collect-logs"></a>收集日志
 
-如何在收集器 VM 上收集日志？
+如何在收集器 VM 上收集日志？ 
 
 日志记录默认处于启用状态。 日志位于以下位置：
 
@@ -297,27 +297,27 @@ Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 A
 若要收集 Windows 事件跟踪，请执行以下操作：
 
 1. 在收集器 VM 上打开 PowerShell 命令窗口。
-2. 运行 Get-EventLog -LogName Application | export-csv eventlog.csv。
+2. 运行 Get-EventLog -LogName Application | export-csv eventlog.csv  。
 
-如何收集门户网络流量日志？
+如何收集门户网络流量日志？ 
 
 1. 打开浏览器，导航并登录到[门户](https://portal.azure.com)。
-2. 按 F12 键启动“开发人员工具”。 如果需要，请清除设置“清除导航上的条目”。
-3. 单击“网络”选项卡，然后开始捕获网络流量：
-   - 在 Chrome 中，选择“保留日志”。 记录应自动启动。 红色圆圈指示正在捕获流量。 如果未显示，单击黑色圆圈启动
+2. 按 F12 键启动“开发人员工具”。 如果需要，请清除设置“清除导航上的条目”  。
+3. 单击“网络”  选项卡，然后开始捕获网络流量：
+   - 在 Chrome 中，选择“保留日志”  。 记录应自动启动。 红色圆圈指示正在捕获流量。 如果未显示，单击黑色圆圈启动
    - 在 Microsoft Edge/IE 中，记录应自动启动。 如果未启动，请单击绿色播放按钮。
 4. 尝试再现该错误。
 5. 在记录过程中遇到错误后，停止记录，并保存一份已记录的活动：
-   - 在 Chrome 中，右键单击并选择“将内容另存为 HAR”。 此操作会将日志压缩并导出为 .har 文件。
-   - 在 Microsoft Edge/IE 中，单击“导出捕获流量”图标。 此操作会压缩并导出文件。
-6. 导航到“控制台”选项卡，以查看任何警告或错误。 保存控制台日志：
-   - 在 Chrome 中，右键单击控制台日志中的任意位置。 选择“另存为”，以导出和压缩日志。
-   - 在 Microsoft Edge/IE 中，右键单击错误并选择“复制所有”。
+   - 在 Chrome 中，右键单击并选择“将内容另存为 HAR”  。 此操作会将日志压缩并导出为 .har 文件。
+   - 在 Microsoft Edge/IE 中，单击“导出捕获流量”图标  。 此操作会压缩并导出文件。
+6. 导航到“控制台”  选项卡，以查看任何警告或错误。 保存控制台日志：
+   - 在 Chrome 中，右键单击控制台日志中的任意位置。 选择“另存为”  ，以导出和压缩日志。
+   - 在 Microsoft Edge/IE 中，右键单击错误并选择“复制所有”  。
 7. 关闭“开发人员工具”。
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>收集器错误代码和建议的操作
 
-| 错误代码 | 错误名称   | 消息   | 可能的原因 | 建议的操作  |
+| 错误代码 | 错误名称   | Message   | 可能的原因 | 建议的操作  |
 | --- | --- | --- | --- | --- |
 | 601       | CollectorExpired               | 收集器已过期。                                                        | 收集器已过期。                                                                                    | 请下载新版本的收集器，然后重试。                                                                                      |
 | 751       | UnableToConnectToServer        | 由于出现错误，无法连接到 vCenter Server“%Name;”: %ErrorMessage;     | 检查错误消息以了解更多详细信息。                                                             | 解决问题，然后重试。                                                                                                           |
@@ -332,5 +332,5 @@ Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 A
 | 801       | PowerCLIError                  | VMware PowerCLI 安装失败。                                          | VMware PowerCLI 安装失败。                                                                  | 请重试操作即可。 如果该问题仍然存在，请手动安装它，然后重试此操作。                                                   |
 | 802       | TimeSyncError                  | 时间未与 Internet 时间服务器同步。                            | 时间未与 Internet 时间服务器同步。                                                    | 请确保计算机上的时间已根据计算机的时区准确设置并重试此操作。                                 |
 | 702       | OMSInvalidProjectKey           | 指定的项目键无效。                                                | 指定的项目键无效。                                                                        | 请用正确的项目键重试此操作。                                                                                              |
-| 703       | OMSHttpRequestException        | 发送请求时出错。 消息: %Message;                                | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题持续出现，请联系 Microsoft 支持。                                                                     |
-| 704       | OMSHttpRequestTimeoutException | HTTP 请求超时。消息: %Message;                                     | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题持续出现，请联系 Microsoft 支持。                                                                     |
+| 703       | OMSHttpRequestException        | 发送请求时出错。 消息: %Message;                                | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题仍然存在，请与 Microsoft 支持部门联系。                                                                     |
+| 704       | OMSHttpRequestTimeoutException | HTTP 请求超时。消息: %Message;                                     | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题仍然存在，请与 Microsoft 支持部门联系。                                                                     |

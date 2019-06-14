@@ -17,10 +17,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1baf4af41fd5dcb6723b6ee2827ae91b43b072d9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780962"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory 中库应用的 SAML 令牌中的高级证书签名选项
@@ -47,14 +47,14 @@ Azure AD 支持两种签名算法或安全哈希算法 (Sha)，来为 SAML 响�
 
 * **SHA-256**。 Azure AD 支持使用此默认算法来为 SAML 响应签名： 它是最新的算法，比 sha-1 更安全。 大多数应用程序支持 SHA-256 算法。 如果应用程序仅支持将 SHA-1 用作签名算法，可以更改算法。 否则，我们建议使用 SHA-256 算法来为 SAML 响应签名。
 
-* **SHA-1**。 此算法是更早版本，并将其视为小于比 SHA-256 安全。 如果应用程序仅支持此签名算法，可以在“签名算法”下拉列表选择此选项。 然后，Azure AD 会使用 SHA-1 算法为 SAML 响应签名。
+* **SHA-1**。 此算法是更早版本，并将其视为小于比 SHA-256 安全。 如果应用程序仅支持此签名算法，可以在“签名算法”下拉列表选择此选项。  然后，Azure AD 会使用 SHA-1 算法为 SAML 响应签名。
 
 ## <a name="change-certificate-signing-options-and-signing-algorithm"></a>更改证书签名选项和签名算法
 
 若要更改应用程序的 SAML 证书签名选项和证书签名算法，请选择相关应用程序：
 
-1. 在中[Azure Active Directory 门户](https://aad.portal.azure.com/)，登录到你的帐户。 **Azure Active Directory 管理中心**页将出现。
-1. 在左窗格中，选择“企业应用程序”。 将显示你的帐户中的企业应用程序的列表。
+1. 在中[Azure Active Directory 门户](https://aad.portal.azure.com/)，登录到你的帐户。 此时会显示“Azure Active Directory 管理中心”页。 
+1. 在左窗格中，选择“企业应用程序”  。 将显示你的帐户中的企业应用程序的列表。
 1. 选择一个应用程序。 应用程序的概览页会显示。
 
    ![应用程序概述页](./media/certificate-signing-options/application-overview-page.png)

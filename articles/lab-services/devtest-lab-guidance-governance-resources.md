@@ -14,10 +14,10 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60561638"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure 开发测试实验室基础结构的监管 - 资源
@@ -76,7 +76,7 @@ ms.locfileid: "60561638"
 如何防止删除实验室中的资源？
 
 ### <a name="answer"></a>Answer
-我们建议在实验室级别设置适当的权限，以便只有经过授权的用户才能删除资源或更改实验室策略。 应将开发人员放置在“开发测试实验室用户”组中。 开发人员主管或基础结构主管应是“开发测试实验室所有者”。 我们建议仅指定两个实验室所有者。 此策略根据代码存储库的扩展而扩展，以避免损坏。 实验室用户有权使用资源，但不能更新实验室策略。 请参阅以下文章，其中列出了每个内置组在实验室中拥有的角色和权限：[在 Azure 开发测试实验室中添加所有者和用户](devtest-lab-add-devtest-user.md)。
+我们建议在实验室级别设置适当的权限，以便只有经过授权的用户才能删除资源或更改实验室策略。 应将开发人员放置在“开发测试实验室用户”组中。  开发人员主管或基础结构主管应是“开发测试实验室所有者”。  我们建议仅指定两个实验室所有者。 此策略根据代码存储库的扩展而扩展，以避免损坏。 实验室用户有权使用资源，但不能更新实验室策略。 请参阅以下文章，其中列出了每个内置组在实验室中拥有的角色和权限：[在 Azure 开发测试实验室中添加所有者和用户](devtest-lab-add-devtest-user.md)。
 
 ## <a name="move-lab-to-another-resource-group"></a>将实验室移到另一个资源组 
 
@@ -84,7 +84,7 @@ ms.locfileid: "60561638"
 是否支持将实验室移到另一个资源组？
 
 ### <a name="answer"></a>Answer
-可以。 从实验室的主页导航到“资源组”页。 然后，在工具栏中选择“移动”，并选择要移到其他资源组的实验室。 创建实验室时，会自动创建一个资源组。 但是，你可能需要将实验室移到遵循企业命名约定的其他资源组。 
+是的。 从实验室的主页导航到“资源组”页。 然后，在工具栏中选择“移动”，并选择要移到其他资源组的实验室。  创建实验室时，会自动创建一个资源组。 但是，你可能需要将实验室移到遵循企业命名约定的其他资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 参阅[管理成本和所有权](devtest-lab-guidance-governance-cost-ownership.md)。

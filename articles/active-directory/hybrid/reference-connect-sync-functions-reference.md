@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381138"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
@@ -82,7 +82,7 @@ ms.locfileid: "60381138"
 | **Program Flow** | | | | |
 | [错误](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
 | [Where](#where) |[With](#with) | | | |
-| **Text** | | | | |
+| **文本** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
 | [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Replace](#replace) | |
@@ -402,7 +402,7 @@ ConvertFromBase64 函数将指定的 base64 编码值转换为规则的字符串
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-这两个示例均返回 "*Hello world!*"
+这两个示例均返回 "*Hello world!* "
 
 - - -
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
@@ -420,7 +420,7 @@ ConvertFromUTF8Hex 函数将指定的 UTF8 Hex 编码值转换为字符串。
 
 **示例：**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-返回 "*Hello world!*"
+返回 "*Hello world!* "
 
 - - -
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -1295,7 +1295,7 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 **说明：**  
 通过使用变量来表示在复杂表达式中出现一次或多次的子表达式，With 函数提供了一种简化复杂表达式的方法。
 
-**语法：**
+**语法：** 
 `With(var variable, exp subExpression, exp complexExpression)`  
 * variable：表示子表达式。
 * subExpression：由变量表示的子表达式。

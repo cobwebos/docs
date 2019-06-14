@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60629299"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
@@ -48,12 +48,12 @@ ms.locfileid: "60629299"
 > 不要将 VMware 工具安装在 StorSimple 虚拟阵列上，这将导致不支持的配置。
 
 ### <a name="virtual-device-requirements"></a>虚拟设备要求
-| 组件 | 要求 |
+| 组件  | 要求  |
 | --- | --- |
 | 虚拟处理器的最小数目（核） |4 |
 | 最小内存 (RAM) |8 GB <br> 对于文件服务器，小于 200 万个文件时为 8 GB，200 万 - 400 万个文件时为 16 GB|
 | 磁盘空间<sup>1</sup> |OS 磁盘 - 80 GB <br></br>数据磁盘 - 500 GB 到 8 TB |
-| 网络接口的最小数目 |1 |
+| 网络接口的最小数目 |第 |
 | Internet 带宽 2<sup></sup> |所需最小带宽：5 Mbps <br> 建议带宽：100 Mbps <br> 数据传输速度与 Internet 带宽成正比。 例如，100 GB 的数据以 5 Mbps 的速度传输 2 天可能导致备份失败，因为每日备份无法在一天内完成。 带宽为 100 Mbps 时，可以在 2.5 小时内传输 100 GB 的数据。   |
 
 <sup>1</sup> - 精简预配
@@ -61,7 +61,7 @@ ms.locfileid: "60629299"
 <sup>2</sup> - 网络要求可能会根据每日数据更改频率而有所不同。 例如，如果设备在一天中需要备份 10 GB 或更多更改，则通过 5 Mbps 连接进行的每日备份可能耗时长达 4.25 小时（如果无法压缩数据或删除重复数据）。
 
 ### <a name="supported-web-browsers"></a>受支持的 Web 浏览器
-| 组件 | **版本** | **其他要求/说明** |
+| 组件  | **版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Microsoft Edge |最新版本 | |
 | Internet Explorer |最新版本 |使用 Internet Explorer 11 测试 |

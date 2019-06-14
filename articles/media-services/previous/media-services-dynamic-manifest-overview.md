@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
 ms.openlocfilehash: 68eeb40e905d089601208d9fc181042c7b434843
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956803"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="选择正在使用的媒体服务的版本："]
 > * [第 2 版](media-services-dynamic-manifest-overview.md)
 > * [第 3 版](../latest/filters-dynamic-manifest-overview.md)
 
@@ -73,14 +73,14 @@ ms.locfileid: "65956803"
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>动态清单
-在客户端需要比默认资产的清单文件中描述的内容更加具有灵活性时，这里具有[方案](media-services-dynamic-manifest-overview.md#scenarios)。 例如:
+在客户端需要比默认资产的清单文件中描述的内容更加具有灵活性时，这里具有[方案](media-services-dynamic-manifest-overview.md#scenarios)。 例如：
 
 * 特定于设备：只传送内容播放设备所支持的指定再现内容和/或指定的语言轨道（“再现内容筛选”）。 
 * 缩小清单以显示实时事件的子剪辑（“子剪辑筛选”）。
 * 修剪视频开头（“修剪视频”）。
 * 调整演播窗口，以便在播放器中提供长度有限的 DVR 窗口（“调整演播窗口”）。
 
-为实现这种灵活性，媒体服务会根据预定义的 **筛选器** 提供 [动态清单](media-services-dynamic-manifest-overview.md#filters)。  在定义筛选器后，客户端会使用筛选器来流式传输视频的特定再现内容或子剪辑。 客户端会在流 URL 中指定筛选器。 筛选器可应用到[动态打包](media-services-dynamic-packaging-overview.md)支持的自适应比特率流式处理协议：HLS、MPEG-DASH 和平滑流式处理。 例如:
+为实现这种灵活性，媒体服务会根据预定义的 **筛选器** 提供 [动态清单](media-services-dynamic-manifest-overview.md#filters)。  在定义筛选器后，客户端会使用筛选器来流式传输视频的特定再现内容或子剪辑。 客户端会在流 URL 中指定筛选器。 筛选器可应用到[动态打包](media-services-dynamic-packaging-overview.md)支持的自适应比特率流式处理协议：HLS、MPEG-DASH 和平滑流式处理。 例如：
 
 包含筛选器的 MPEG DASH URL
 
@@ -176,7 +176,7 @@ ms.locfileid: "65956803"
 2. 还可以修改资产的开始时间和结束时间。 为此，可以创建一个本地筛选器并设置开始/结束时间。 
 3. 希望能够将这些筛选器组合起来（如果不组合的话，则需要将质量筛选添加到进行修改的筛选器上，这会导致筛选器的使用更加困难）。
 
-为了组合筛选器，需要在清单/播放列表 URL 中设置筛选器名称，用分号对名称进行分隔。 假设你有一个名为 MyMobileDevice 的筛选器，用于筛选质量，另外还有一个名为 MyStartTime 的筛选器，用于设置具体的开始时间。 可以将它们组合成下面这样：
+为了组合筛选器，需要在清单/播放列表 URL 中设置筛选器名称，用分号对名称进行分隔。 假设你有一个名为 MyMobileDevice  的筛选器，用于筛选质量，另外还有一个名为 MyStartTime  的筛选器，用于设置具体的开始时间。 可以将它们组合成下面这样：
 
     http://teststreaming.streaming.mediaservices.windows.net/3d56a4d-b71d-489b-854f-1d67c0596966/64ff1f89-b430-43f8-87dd-56c87b7bd9e2.ism/Manifest(filter=MyMobileDevice;MyStartTime)
 

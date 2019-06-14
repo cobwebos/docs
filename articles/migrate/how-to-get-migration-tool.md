@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: raynew
 ms.openlocfilehash: 068b55e40afc96dbcfae26c8bf7da8a1b9ea349a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60598349"
 ---
 # <a name="migrate-machines-after-assessment"></a>在评估后迁移计算机
@@ -37,11 +37,11 @@ ms.locfileid: "60598349"
 ## <a name="review-suggested-migration-methods"></a>查看建议的迁移方法
 
 1. 在可以获取建议的迁移方法之前，需要创建 Azure 迁移项目，发现本地计算机并运行迁移评估。 [了解详细信息](tutorial-assessment-vmware.md)。
-2. 创建评估后，可在项目“项目”>“概述” > “仪表板”中查看该评估。 单击“评估就绪”
+2. 创建评估后，可在项目“项目”>“概述” > “仪表板”中查看该评估。   单击“评估就绪” 
 
     ![评估就绪](./media/tutorial-assessment-vmware/assessment-report.png)  
 
-3. 在“建议的工具”中，查看可用于迁移的工具的建议。
+3. 在“建议的工具”中，查看可用于迁移的工具的建议。 
 
     ![建议的工具](./media/tutorial-assessment-vmware/assessment-suitability.png)
 

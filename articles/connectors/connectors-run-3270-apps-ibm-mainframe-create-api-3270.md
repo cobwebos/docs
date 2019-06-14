@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60538795"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 Azure 逻辑应用和 IBM 3270 连接器与 Azure 集成 IBM 大型机上的 3270 屏幕驱动应用
@@ -186,7 +186,7 @@ ms.locfileid: "60538795"
    | 计划类型 | 描述 |
    |-----------|-------------|
    | **过程** | 独立安装还是计划相结合 |
-   | **连接** | 有关连接计划 |
+   | **“连接”** | 有关连接计划 |
    | **断开连接** | 为断开连接计划 |
    |||
 
@@ -291,7 +291,7 @@ ms.locfileid: "60538795"
 
    | 属性名称 | 可能的值 | 
    |---------------|-----------------|
-   | 数据类型 | 字节，日期时间、 Decimal、 Int、 Long、 简单地说，字符串 |
+   | 数据类型  | 字节，日期时间、 Decimal、 Int、 Long、 简单地说，字符串 |
    | **字段填充方法** | 参数支持以下填充类型，用空格填充，如有必要： <p><p>- **类型**:按顺序的字段中输入字符。 <p>- **填充**:替换字符，用空格根据需要填充字段的内容。 <p>- **EraseEofType**:清除此字段，然后在字段按顺序输入字符。 |
    | **格式字符串** | 某些参数数据类型使用一个格式字符串，指示如何从屏幕的文本转换的.NET 数据类型的 3270 连接器： <p><p>- **DateTime**:日期时间格式字符串之后[.NET 自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 例如，日期`06/30/2019`使用的格式字符串`MM/dd/yyyy`。 <p>- **十进制**:十进制格式字符串使用[COBOL 图片子句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)。 例如，数字`100.35`使用的格式字符串`999V99`。 |
    |||
@@ -355,17 +355,17 @@ ms.locfileid: "60538795"
    ![选择 3270 操作](./media/connectors-create-api-3270/select-3270-action.png)
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。 
 
 1. 如果尚不存在任何连接，提供所需的信息为你的连接，并选择**创建**。
 
    | 属性 | 需要 | Value | 描述 |
    |----------|----------|-------|-------------|
-   | **连接名称** | 是 | <connection-name> | 连接名称 |
-   | **集成帐户 ID** | 是 | <integration-account-name> | 集成帐户的名称 |
+   | **连接名称** | 是 | <connection-name  > | 连接名称 |
+   | **集成帐户 ID** | 是 | <integration-account-name>  | 集成帐户的名称 |
    | **集成帐户 SAS URL** | 是 | <*integration-account-SAS-URL*> | 集成帐户的共享访问签名 (SAS) URL，则可以从 Azure 门户中的集成帐户的设置生成。 <p>1.在你的集成帐户菜单中下,**设置**，选择**回调 URL**。 <br>2.在右侧窗格中，复制**生成回调 URL**值。 |
    | **服务器** | 是 | <*TN3270-server-name*> | TN3270 服务的服务器名称 |
-   | 端口 | 否 | <*TN3270-server-port*> | TN3270 服务器使用的端口。 如果为空，则连接器将使用`23`作为默认值。 |
+   | 端口  | 否 | <*TN3270-server-port*> | TN3270 服务器使用的端口。 如果为空，则连接器将使用`23`作为默认值。 |
    | **设备类型** | 否 | <*IBM-terminal-model*> | 模型名称或编号，以便在 IBM 终端模拟。 如果为空，则连接器将使用默认值。 |
    | **代码页** | 否 | <*code-page-number*> | 主机代码页编号。 如果为空，则连接器将使用`37`作为默认值。 |
    | **逻辑单元名称** | 否 | <*logical-unit-name*> | 要向宿主请求的特定的逻辑单元名称 |

@@ -14,31 +14,31 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487244"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](data-factory-create-datasets.md)
 > * [版本 2（当前版本）](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的数据集](../concepts-datasets-linked-services.md)。
 
-本文介绍了数据集的涵义，采用 JSON 格式定义数据集的方式以及数据集在 Azure 数据工厂管道中的用法。 本文的数据集 JSON 定义中详细介绍了每个部分（例如，结构、可用性和策略）。 本文还提供有关在数据集 JSON 定义中使用 offset、anchorDateTime 和 style 属性的示例。
+本文介绍了数据集的涵义，采用 JSON 格式定义数据集的方式以及数据集在 Azure 数据工厂管道中的用法。 本文的数据集 JSON 定义中详细介绍了每个部分（例如，结构、可用性和策略）。 本文还提供有关在数据集 JSON 定义中使用 offset  、anchorDateTime  和 style  属性的示例。
 
 > [!NOTE]
 > 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](data-factory-introduction.md)了解相关概述。 如果还没有亲身体验如何创建数据工厂，可通过阅读[数据转换教程](data-factory-build-your-first-pipeline.md)和[数据移动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)加深了解。
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从本地 SQL Server 复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，可再使用一个复制活动将输出数据复制到 Azure SQL 数据仓库，基于该仓库构建商业智能 (BI) 报告解决方案。 有关管道和活动的详细信息，请参阅 [Azure 数据工厂中的管道和活动](data-factory-create-pipelines.md)。
+数据工厂可以包含一个或多个数据管道。 “管道”  是共同执行一项任务的活动  的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从本地 SQL Server 复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，可再使用一个复制活动将输出数据复制到 Azure SQL 数据仓库，基于该仓库构建商业智能 (BI) 报告解决方案。 有关管道和活动的详细信息，请参阅 [Azure 数据工厂中的管道和活动](data-factory-create-pipelines.md)。
 
-每个活动可采用零个或多个输入数据集，并生成一个或多个输出数据集。 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Blob 存储中指定供管道读取数据的 Blob 容器和文件夹。
+每个活动可采用零个或多个输入数据集  ，并生成一个或多个输出数据集。 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Blob 存储中指定供管道读取数据的 Blob 容器和文件夹。
 
-创建数据集之前，请创建一个链接服务，将数据存储链接到数据工厂。 链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 数据集可识别链接的数据存储（如 SQL 表、文件、文件夹和文档）中的数据。 例如，Azure 存储链接服务可将存储帐户链接到数据工厂。 Azure Blob 数据集表示 blob 容器以及包含要处理的输入 blob 的文件夹。
+创建数据集之前，请创建一个链接服务  ，将数据存储链接到数据工厂。 链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 数据集可识别链接的数据存储（如 SQL 表、文件、文件夹和文档）中的数据。 例如，Azure 存储链接服务可将存储帐户链接到数据工厂。 Azure Blob 数据集表示 blob 容器以及包含要处理的输入 blob 的文件夹。
 
 下面是一个示例方案。 要将数据从 Blob 存储复制到 SQL 数据库，请创建以下两个链接服务：Azure 存储和 Azure SQL 数据库。 然后创建两个数据集：Azure Blob 数据集（即 Azure 存储链接服务）和 Azure SQL 表数据集（即 Azure SQL 数据库链接服务）。 Azure 存储和 Azure SQL 数据库链接服务分别包含数据工厂在运行时用于连接到 Azure 存储和 Azure SQL 数据库的连接字符串。 Azure Blob 数据集指定 blob 容器和 blob 文件夹，该文件夹包含 Blob 存储中的输入 blob。 Azure SQL 表数据集指定要向其复制数据的 SQL 数据库中的 SQL 表。
 
@@ -90,7 +90,7 @@ ms.locfileid: "60487244"
 | policy |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅[数据集策略](#Policy)部分。 |否 |NA |
 
 ## <a name="dataset-example"></a>数据集示例
-在以下示例中，数据集表示 SQL 数据库中名为 MyTable 的表。
+在以下示例中，数据集表示 SQL 数据库中名为 MyTable  的表。
 
 ```json
 {
@@ -113,12 +113,12 @@ ms.locfileid: "60487244"
 
 请注意以下几点：
 
-* “type”设置为 AzureSqlTable。
-* “tableName”类型属性（特定于 AzureSqlTable 类型）设置为 MyTable。
-* “linkedServiceName”是指 AzureSqlDatabase 类型的链接服务，该类型在下一 JSON 片段中定义。
-* “availability frequency”设置为 Day，而“interval”设置为 1。 这意味着，每日都将生成数据集切片。
+* “type”  设置为 AzureSqlTable。
+* “tableName”  类型属性（特定于 AzureSqlTable 类型）设置为 MyTable。
+* “linkedServiceName”  是指 AzureSqlDatabase 类型的链接服务，该类型在下一 JSON 片段中定义。
+* “availability frequency”  设置为 Day，而“interval”  设置为 1。 这意味着，每日都将生成数据集切片。
 
-AzureSqlLinkedService 定义如下：
+AzureSqlLinkedService  定义如下：
 
 ```json
 {
@@ -135,13 +135,13 @@ AzureSqlLinkedService 定义如下：
 
 在前面的 JSON 片段中：
 
-* “type”设置为 AzureSqlDatabase。
-* “connectionString”类型属性指定连接到 SQL 数据库的信息。
+* “type”  设置为 AzureSqlDatabase。
+* “connectionString”  类型属性指定连接到 SQL 数据库的信息。
 
 如你所见，链接服务用于定义连接到 SQL 数据库的方式。 数据集用于定义将用作管道中活动的输入和输出的表类型。
 
 > [!IMPORTANT]
-> 除非由管道生成数据集，否则应将其标记为“external”。 此设置通常适用于管道中第一个活动的输入。
+> 除非由管道生成数据集，否则应将其标记为“external”  。 此设置通常适用于管道中第一个活动的输入。
 
 ## <a name="Type"></a> 数据集类型
 数据集的类型取决于所用的数据存储。 请参阅下表，获取数据工厂支持的数据存储的列表。 单击数据存储，了解如何创建链接服务和该数据存储的数据集。
@@ -151,7 +151,7 @@ AzureSqlLinkedService 定义如下：
 > [!NOTE]
 > 包含 * 的数据存储可为本地，也可为 Azure 基础结构即服务 (IaaS)。 这些数据存储要求安装[数据管理网关](data-factory-data-management-gateway.md)。
 
-在上一节中的示例中，数据集的类型设置为 AzureSqlTable。 同样，对于 Azure Blob 数据集，数据集的类型设置为 AzureBlob，如以下 JSON 中所示：
+在上一节中的示例中，数据集的类型设置为 AzureSqlTable  。 同样，对于 Azure Blob 数据集，数据集的类型设置为 AzureBlob  ，如以下 JSON 中所示：
 
 ```json
 {
@@ -178,7 +178,7 @@ AzureSqlLinkedService 定义如下：
 ```
 
 ## <a name="Structure"></a> 数据集结构
-“结构”部分是可选部分。 它通过包含列的名称和数据类型的集合来定义数据集架构。 使用结构部分提供用于隐藏类型以及将列从源映射到目标的类型信息。 在下面的示例中，数据集有三列：`slicetimestamp`、`projectname` 和 `pageviews`。 它们的类型分别为 String、String 和 Decimal。
+“结构”  部分是可选部分。 它通过包含列的名称和数据类型的集合来定义数据集架构。 使用结构部分提供用于隐藏类型以及将列从源映射到目标的类型信息。 在下面的示例中，数据集有三列：`slicetimestamp`、`projectname` 和 `pageviews`。 它们的类型分别为 String、String 和 Decimal。
 
 ```json
 structure:
@@ -196,21 +196,21 @@ structure:
 | name |列的名称。 |是 |
 | type |列的数据类型。  |否 |
 | culture |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 |否 |
-| format |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
+| 格式 |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
 
-若要了解何时加入“结构”信息以及在结构部分包含哪些信息，请遵循以下指南。
+若要了解何时加入“结构”信息以及在结构  部分包含哪些信息，请遵循以下指南。
 
-* 对于结构化的数据源，仅在要将源列映射到接收器列且其名称不同时，才指定“结构”部分。 此类结构化的数据源将存储数据架构和类型信息，以及数据本身。 结构化的数据源的示例包括 SQL Server、Oracle 和 Azure 表。
+* 对于结构化的数据源  ，仅在要将源列映射到接收器列且其名称不同时，才指定“结构”部分。 此类结构化的数据源将存储数据架构和类型信息，以及数据本身。 结构化的数据源的示例包括 SQL Server、Oracle 和 Azure 表。
   
     由于类型信息已可用于结构化数据源，因此包含结构部分时不应包含类型信息。
-* 对于读取数据源（尤其是 Blob 存储）的架构，可以选择存储数据但不存储数据的任何架构或类型信息。 对于这些类型的数据源，当希望将源列映射到接收器列时请包括“结构”。 当数据集是复制活动的输入数据集并且需要将源数据集的数据类型转换为接收器的本机类型时，也请将“结构”包括在内。
+* 对于读取数据源（尤其是 Blob 存储）的架构  ，可以选择存储数据但不存储数据的任何架构或类型信息。 对于这些类型的数据源，当希望将源列映射到接收器列时请包括“结构”。 当数据集是复制活动的输入数据集并且需要将源数据集的数据类型转换为接收器的本机类型时，也请将“结构”包括在内。
     
     数据工厂支持使用以下值提供结构中的类型信息：**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 和 Timespan**。 这些值符合公共语言规范 (CLS)，且基于 .NET 的类型值。
 
 将数据从源数据存储移到接收器数据存储时，数据工厂自动执行类型转换。
 
 ## <a name="dataset-availability"></a>数据集可用性
-数据集中的“可用性”部分定义了数据集的处理时段（如每小时、每天和每周）。 有关活动时段的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。
+数据集中的“可用性”  部分定义了数据集的处理时段（如每小时、每天和每周）。 有关活动时段的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。
 
 以下可用性部分指定每小时生成输出数据集或每小时提供输入数据集：
 
@@ -235,11 +235,11 @@ structure:
 
 | 属性 | 说明 | 需要 | 默认 |
 | --- | --- | --- | --- |
-| frequency |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
-| interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”指定为“Minute”，则应将“interval”设置为小于 15 的值。 |是 |NA |
-| style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>若将“frequency”设置为“Month”，将“style”设置为“EndOfInterval”，则会在每月的最后一天生成切片。 若将“style”设置为“StartOfInterval”，则会在每月的第一天生成切片。<br/><br/>若将“frequency”设置为“Day”，将“style”设置为“EndOfInterval”，则会在一天的最后一小时生成切片。<br/><br/>若将 **frequency** 设置为 **Hour**，**style** 设置为 **EndOfInterval**，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
-| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>请注意，是否此属性的日期部分比指定的频率更精细，则忽略更精细部分。 例如，如果“间隔”是“每小时”（frequency：hour 且 interval：1），而 **anchorDateTime** 包含**分钟和秒**，则将忽略 **anchorDateTime** 的分钟和秒部分。 |否 |01/01/0001 |
-| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/>注意：如果同时指定了 anchorDateTime 和 offset，则结果是组合偏移。 |否 |NA |
+| 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
+| interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”  指定为“Minute”  ，则应将“interval”设置为小于 15 的值。 |是 |NA |
+| style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>若将“frequency”  设置为“Month”  ，将“style”  设置为“EndOfInterval”  ，则会在每月的最后一天生成切片。 若将“style”  设置为“StartOfInterval”  ，则会在每月的第一天生成切片。<br/><br/>若将“frequency”  设置为“Day”  ，将“style”  设置为“EndOfInterval”  ，则会在一天的最后一小时生成切片。<br/><br/>若将 **frequency** 设置为 **Hour**，**style** 设置为 **EndOfInterval**，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
+| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>请注意，是否此属性的日期部分比指定的频率更精细，则忽略更精细部分。 例如，如果“间隔”  是“每小时”  （frequency：hour 且 interval：1），而 **anchorDateTime** 包含**分钟和秒**，则将忽略 **anchorDateTime** 的分钟和秒部分。 |否 |01/01/0001 |
+| offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/>注意：如果同时指定了 anchorDateTime  和 offset  ，则结果是组合偏移。 |否 |NA |
 
 ### <a name="offset-example"></a>偏移示例
 默认情况下，日常 (`"frequency": "Day", "interval": 1`) 切片在协调世界时凌晨零点（午夜）开始。 要将开始时间改为 UTC 时间早上 6 点，请按以下片段中所示设置偏移量：
@@ -253,7 +253,7 @@ structure:
 }
 ```
 ### <a name="anchordatetime-example"></a>anchorDateTime 示例
-下例中，每 23 小时生成一次数据集。 第一个切片在 anchorDateTime 指定的时间启动，该时间设置为 `2017-04-19T08:00:00`（UTC 时间）。
+下例中，每 23 小时生成一次数据集。 第一个切片在 anchorDateTime  指定的时间启动，该时间设置为 `2017-04-19T08:00:00`（UTC 时间）。
 
 ```json
 "availability":
@@ -277,12 +277,12 @@ structure:
 ```
 
 ## <a name="Policy"></a> 数据集策略
-数据集定义中的“策略”部分定义了数据集切片必须满足的标准或条件。
+数据集定义中的“策略”  部分定义了数据集切片必须满足的标准或条件。
 
 ### <a name="validation-policies"></a>验证策略
 | 策略名称 | 描述 | 适用对象 | 需要 | 默认 |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |验证 Azure Blob 存储中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |NA |
+| minimumSizeMB |验证 Azure Blob 存储  中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |NA |
 | minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
 
 #### <a name="examples"></a>示例
@@ -299,7 +299,7 @@ structure:
 }
 ```
 
-minimumRows：
+minimumRows： 
 
 ```json
 "policy":
@@ -314,13 +314,13 @@ minimumRows：
 ### <a name="external-datasets"></a>外部数据集
 外部数据集是不由数据工厂中的运行管道生成的数据集。 如果数据集标记为 **external**，则可定义 **ExternalData** 策略来影响数据集切片可用性的行为。
 
-除非由数据工厂生成数据集，否则应将其标记为“external”。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
+除非由数据工厂生成数据集，否则应将其标记为“external”  。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
 | Name | 描述 | 需要 | 默认值 |
 | --- | --- | --- | --- |
-| dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，可使用此设置延迟每小时检查。<br/><br/>该设置仅适用于当前时间。 例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>请注意，此设置不影响过去的切片。 处理包含 Slice End Time + dataDelay < Now 的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间应使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00。 请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
-| retryInterval |失败与下一次尝试之间的等待时间。 此设置适用于当前时间。 如果上一次尝试失败，则在 retryInterval 时间段后进行下一次尝试。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
-| retryTimeout |每次重试尝试的超时。<br/><br/>如果此属性设置为 10 分钟，则验证应在 10 分钟内完成。 如果执行验证所需的时间超过 10 分钟，则重试超时。<br/><br/>如果验证的所有尝试超时，则将切片标记为 TimedOut。 |否 |00:10:00（10 分钟） |
+| dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，可使用此设置延迟每小时检查。<br/><br/>该设置仅适用于当前时间。 例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>请注意，此设置不影响过去的切片。 处理包含 Slice End Time   + dataDelay   < Now  的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间应使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00。 请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
+| retryInterval |失败与下一次尝试之间的等待时间。 此设置适用于当前时间。 如果上一次尝试失败，则在 retryInterval  时间段后进行下一次尝试。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
+| retryTimeout |每次重试尝试的超时。<br/><br/>如果此属性设置为 10 分钟，则验证应在 10 分钟内完成。 如果执行验证所需的时间超过 10 分钟，则重试超时。<br/><br/>如果验证的所有尝试超时，则将切片标记为 TimedOut  。 |否 |00:10:00（10 分钟） |
 | maximumRetry |检查外部数据可用性的次数。 允许的最大值为 10。 |否 |3 |
 
 
@@ -349,7 +349,7 @@ minimumRows：
 可使用 **datasets** 属性创建作用域指定到管道的数据集。 这些数据集只能由此管道中的活动使用，而不能由其他管道中的活动使用。 以下示例使用要用于管道的两个数据集（InputDataset-rdc 和 OutputDataset-rdc）定义管道。
 
 > [!IMPORTANT]
-> 指定了作用域的数据集仅可使用一次性管道（pipelineMode 设置为 OneTime）。 有关详细信息，请参阅[一次性管道](data-factory-create-pipelines.md#onetime-pipeline)。
+> 指定了作用域的数据集仅可使用一次性管道（pipelineMode  设置为 OneTime  ）。 有关详细信息，请参阅[一次性管道](data-factory-create-pipelines.md#onetime-pipeline)。
 >
 >
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9af969700f4f2dfbedc4833badd7e7349696302
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60244581"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>混合 Azure AD 加入所需的配置后任务
@@ -34,7 +34,7 @@ ms.locfileid: "60244581"
 * 编辑并转到：“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”。
 
 >[!NOTE]
->对于 2012R2，请通过“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“工作区加入”>“自动工作区加入客户端计算机”完成策略设置
+>对于 2012R2，请通过“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“工作区加入”>“自动工作区加入客户端计算机”完成策略设置 
 
 * 禁用此设置：“将已加入域的计算机注册为设备”。
 * 依次单击“应用”、“确定”。
@@ -63,7 +63,7 @@ ms.locfileid: "60244581"
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6.为 Windows 下层设备启用 Azure AD 无缝 SSO
 
-如果组织使用密码哈希同步或直通身份验证登录到 Azure AD，请使用该登录方法启用 Azure AD 无缝 SSO，以便对 Windows 下层设备进行身份验证： https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso。 
+如果组织使用密码哈希同步或直通身份验证登录到 Azure AD，请使用该登录方法启用 Azure AD 无缝 SSO，以便对 Windows 下层设备进行身份验证： https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso 。 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7.为 Windows 下层设备设置 Azure AD 策略
 
@@ -82,7 +82,7 @@ ms.locfileid: "60244581"
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9.在 Windows 下层设备上安装 Microsoft 工作区加入
 
-安装程序会在设备系统上创建一个在用户上下文中运行的计划任务。 当用户登录到 Windows 时触发该任务。 使用 Windows 集成身份验证完成身份验证后，该任务将使用用户凭据以静默方式将设备联接到 Azure AD。 下载中心的网址为 https://www.microsoft.com/download/details.aspx?id=53554。 
+安装程序会在设备系统上创建一个在用户上下文中运行的计划任务。 当用户登录到 Windows 时触发该任务。 使用 Windows 集成身份验证完成身份验证后，该任务将使用用户凭据以静默方式将设备联接到 Azure AD。 下载中心的网址为 https://www.microsoft.com/download/details.aspx?id=53554 。 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10.配置组策略以允许设备注册
 
@@ -94,7 +94,7 @@ ms.locfileid: "60244581"
 * 将 GPO 链接到所选的位置（组织单位、安全组或所有设备的域）。
 
 >[!NOTE]
->对于 2012R2，请通过“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“工作区加入”>“自动工作区加入客户端计算机”完成策略设置
+>对于 2012R2，请通过“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“工作区加入”>“自动工作区加入客户端计算机”完成策略设置 
 
 ## <a name="next-steps"></a>后续步骤
 [配置设备写回](how-to-connect-device-writeback.md)

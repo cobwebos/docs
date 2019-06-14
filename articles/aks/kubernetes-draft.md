@@ -2,17 +2,16 @@
 title: 结合使用 Draft 与 AKS 和 Azure 容器注册表
 description: 结合使用 Draft 与 AKS 和 Azure 容器注册表
 services: container-service
-author: rockboyfor
+author: zr-msft
 ms.service: container-service
 ms.topic: article
-origin.date: 08/15/2018
-ms.date: 04/08/2019
-ms.author: v-yeche
+ms.date: 08/15/2018
+ms.author: zarhoads
 ms.openlocfilehash: 462cfd6ec0a6b25f85dda0245dd4f5feed7cb712
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60465134"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>结合使用 Draft 与 Azure Kubernetes 服务 (AKS)
@@ -74,10 +73,10 @@ az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role 
 
 在 AKS 与 ACR 之间建立信任关系后，从 AKS 群集启用 ACR。
 
-1. 设置 Draft 配置注册表值。 在以下命令中，请将 `<acrName>` 替换为 ACR 注册表的名称：
+1. 设置 Draft 配置注册表值。  在以下命令中，请将 `<acrName>` 替换为 ACR 注册表的名称：
 
     ```console
-    draft config set registry <acrName>.azurecr.cn
+    draft config set registry <acrName>.azurecr.io
     ```
 
 1. 使用 [az acr login][az-acr-login] 登录到 ACR 注册表：
@@ -220,7 +219,7 @@ Hello World, I'm Java
 vi src/main/java/helloworld/Hello.java
 ```
 
-更新要显示的输出文本 *Hello World, I'm Java in AKS!*：
+更新要显示的输出文本 *Hello World, I'm Java in AKS!* ：
 
 ```java
 package helloworld;
@@ -271,4 +270,4 @@ Hello World, I'm Java in AKS!
 [aks-helm]: ./kubernetes-helm.md
 [kubernetes-ingress]: ./ingress-basic.md
 [aks-quickstart]: ./kubernetes-walkthrough.md
-[az-acr-login]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest#az-acr-login
+[az-acr-login]: /cli/azure/acr#az-acr-login

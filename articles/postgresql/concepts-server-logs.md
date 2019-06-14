@@ -1,19 +1,19 @@
 ---
-title: 在 Azure Database for PostgreSQL 服务器日志的单个服务器
-description: 本文介绍如何 Azure Database for PostgreSQL-单个服务器生成查询和错误日志和日志保留期的配置方式。
+title: Azure Database for PostgreSQL - 单一服务器中的服务器日志
+description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器如何生成查询和错误日志，以及配置多长时间的保留期。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067393"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL 服务器日志的单个服务器
+# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的服务器日志
 Azure Database for PostgreSQL 生成查询和错误日志。 查询和错误日志可用于识别、排除和修复配置错误和性能不佳问题。 （不包括访问事务日志）。 
 
 ## <a name="configure-logging"></a>配置日志记录 

@@ -14,10 +14,10 @@ ms.date: 02/22/2017
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: d35996b16d615a198b9a6039386f6b295172f388
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615779"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>排查企业成本查看问题
@@ -26,15 +26,15 @@ ms.locfileid: "60615779"
 
 ## <a name="enabling-access-to-costs"></a>启用成本访问
 
-你是否看到消息“未经授权”，或“在注册中已禁用成本查看”。 在寻找成本信息？
+你是否看到消息“未经授权”，或“在注册中已禁用成本查看”  。 在寻找成本信息？
 ![显示订阅当前成本字段中“未经授权”的屏幕截图。](media/billing-enterprise-mgmt-groups/unauthorized.png)
 
 这可能是以下原因之一造成的：
 
 1. 通过企业合作伙伴购买的 Azure，而该合作伙伴尚未发布定价信息。 请与合作伙伴联系，以在[企业门户](https://ea.azure.com)中更新定价设置。
 2. 如果你是 EA Direct 客户，则有以下几种可能性：
-    * 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置。  
-    * 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。
+    * 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置  。  
+    * 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置  。
     * 联系你的注册管理员以获取访问权限。 注册管理员可以在[企业门户](https://ea.azure.com/manage/enrollment)中更新设置。
 
       ![显示 Enterprise Portal 设置以供查看费用的屏幕截图。](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)

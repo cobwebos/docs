@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 704bb409d2b21e2ae258dbb2d627b1c088d80db7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60254637"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 备份的支持矩阵
@@ -75,7 +75,7 @@ Azure 备份可以备份 DPM/MABS 实例正在运行任何以下操作系统。 
 
 **方案** | **DPM/MABS** 
 --- | --- 
-**Azure VM 上的 MABS** |  Windows Server 2012 R2。<br/><br/> Windows 2016 数据中心。<br/><br/> Windows 2019 数据中心。<br/><br/> 我们建议你在 marketplace 中的映像启动。<br/><br/> 最小 A2 标准带两个内核，3.5 GB 的 RAM。 
+**Azure VM 上的 MABS** | Windows Server 2012 R2。<br/><br/> Windows 2016 数据中心。<br/><br/> Windows 2019 数据中心。<br/><br/> 我们建议你在 marketplace 中的映像启动。<br/><br/> 最小 A2 标准带两个内核，3.5 GB 的 RAM。 
 **Azure VM 上的 DPM** | System Center 2012 R2 Update 3 或更高版本。<br/><br/> 符合 [System Center 要求](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)的 Windows 操作系统。<br/><br/> 我们建议你在 marketplace 中的映像启动。<br/><br/> 最小 A2 标准带两个内核，3.5 GB 的 RAM。 
 **本地 MABS** | 支持的 64 位操作系统：<br/><br/> MABS v3 和更高版本：Windows Server 2019 (Standard、 Datacenter、 Essentials)。 <br/><br/> MABS v2 和更高版本：Windows Server 2016 (Standard、 Datacenter、 Essentials)。<br/><br/> 所有 MABS 版本：Windows Server 2012 R2、 Windows Server 2012 (Standard、 Datacenter、 Foundation)。<br/><br/>所有 MABS 版本：Windows Storage Server 2012 R2，Windows Server 2012 （标准版、 工作组）。
 **本地 DPM** | 物理服务器/Hyper-V VM：System Center 2012 SP1 或更高版本。<br/><br/> VMware VM：System Center 2012 R2 Update 5 或更高版本。 
@@ -97,7 +97,7 @@ Azure 备份可以备份 DPM/MABS 实例正在运行任何以下操作系统。 
 
 可以在 Azure Stack VM 上部署 MABS，以便可以从单个位置管理 Azure Stack Vm 和工作负荷的备份。
 
-组件 | **详细信息**
+组件  | **详细信息**
 --- | --- 
 **Azure Stack VM 上的 MABS** | 在最小大小为 A2。 我们建议您开始使用 Windows Server 2012 R2 或 Windows Server 2016 的映像从 Azure Marketplace。<br/><br/> 不安装任何其他 MABS VM 上。
 **MABS 存储** | MABS vm 使用单独的存储帐户。 MABS 上运行的 MARS 代理需要临时存储区，用于缓存位置，用来存储从云中还原数据。

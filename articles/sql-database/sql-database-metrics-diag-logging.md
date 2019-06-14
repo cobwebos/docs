@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库指标和诊断日志记录 | Microsoft Docs
-description: 了解如何在 Azure SQL 数据库来存储有关资源利用率和查询执行统计信息的信息中启用诊断。
+description: 了解如何在 Azure SQL 数据库中启用诊断以存储有关资源利用率和查询执行统计数据的信息。
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -13,15 +13,15 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791892"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
-在本主题中，您将学习如何配置日志记录的诊断遥测数据的 Azure SQL 数据库通过 Azure 门户、 PowerShell、 Azure CLI、 Azure 监视器 REST API 和 Azure 资源管理器模板。 这些诊断可以用于衡量资源利用率和查询执行统计信息。 
+在本主题中，你将了解如何通过 Azure 门户、PowerShell、Azure CLI、Azure Monitor REST API 和 Azure 资源管理器模板配置 Azure SQL 数据库的诊断遥测数据的日志记录。 这些诊断可以用于测量资源利用率和查询执行统计数据。 
 
 单一数据库、弹性池中的共用数据库和托管实例中的实例数据库可以流式传输指标和诊断日志，以便更轻松地进行性能监视。 可以配置数据库，以将资源使用情况、辅助角色和会话以及连接性传输到以下 Azure 资源之一：
 
@@ -54,7 +54,7 @@ ms.locfileid: "65791892"
 - Azure 事件中心
 - Azure 存储
 
-可预配新的 Azure 资源或选择现有资源。 使用“诊断设置”选项选择资源之后，指定要收集的数据。
+可预配新的 Azure 资源或选择现有资源。 使用“诊断设置”选项选择资源之后，指定要收集的数据。 
 
 ## <a name="supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases"></a>Azure SQL 数据库和实例数据库支持的诊断日志记录
 
@@ -79,7 +79,7 @@ ms.locfileid: "65791892"
 > 弹性池和托管的实例都有其自己单独的诊断遥测数据从它们所包含的数据库。 这是必须注意的，因为诊断遥测数据是为每个这样的资源单独配置的，如下所述。
 
 > [!NOTE]
-> （尽管在屏幕上显示），不能从数据库诊断设置来启用安全审核和 SQLSecurityAuditEvents 日志。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
+> 无法从数据库诊断设置启用安全审核和 SQLSecurityAuditEvents 日志（虽然显示在屏幕上）。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -105,17 +105,17 @@ ms.locfileid: "65791892"
 若要为弹性池资源启用诊断遥测流，请执行以下步骤：
 
 1. 转到**弹性池**在 Azure 门户中的资源。
-1. 选择“诊断设置”。
-1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
+1. 选择“诊断设置”  。
+1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置  
 
    ![为弹性池启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-enable.png)
 
 1. 输入设置名称供自己参考。
-1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
+1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。   
 1. 对于 log analytics 中，选择**配置**，并通过选择创建新的工作区 **+ 创建新工作区**，或选择现有的工作区。
 1. 选中弹性池诊断遥测对应的复选框：**基本**指标。
    ![弹性池的配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 此外，配置想要在下一节中所述的以下步骤来监视弹性池内每个数据库的诊断遥测数据的流式处理。
 
 > [!IMPORTANT]
@@ -128,22 +128,22 @@ ms.locfileid: "65791892"
 若要为单一数据库或入池数据库启用诊断遥测数据的流式传输，请执行以下步骤：
 
 1. 转到 Azure **SQL 数据库**资源。
-1. 选择“诊断设置”。
-1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
+1. 选择“诊断设置”  。
+1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置  
    - 最多可以创建三个并行连接用于流式传输诊断遥测数据。
-   - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。
+   - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。 
 
    ![为单一数据库、共用数据库或实例数据库启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 1. 输入设置名称供自己参考。
-1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
-1. 对于标准的基于事件的监视体验，请选中数据库诊断日志遥测对应的以下复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”和“Deadlocks”。
+1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。   
+1. 对于标准的基于事件的监视体验，请选中数据库诊断日志遥测对应的以下复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”和“Deadlocks”。         
 1. 对于高级、 基于 1 分钟的监视体验，选中的复选框**基本**指标。
-   ![单个配置诊断、 共用，或实例数据库](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
-1. 选择“保存”。
+   ![为单一数据库、共用数据库或实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+1. 选择“保存”。 
 1. 针对要监视的每个数据库重复上述步骤。
 
 > [!NOTE]
-> （尽管在屏幕上显示），不能从数据库诊断设置启用安全审核和 SQLSecurityAuditEvents 日志。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
+> 无法从数据库诊断设置启用安全审核和 SQLSecurityAuditEvents 日志（虽然显示在屏幕上）。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
 > [!TIP]
 > 针对要监视的每个 Azure SQL 数据库重复上述步骤。
 
@@ -167,17 +167,17 @@ ms.locfileid: "65791892"
 若要为托管实例资源启用诊断遥测数据的流式传输，请执行以下步骤：
 
 1. 转到**托管的实例**在 Azure 门户中的资源。
-1. 选择“诊断设置”。
-1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
+1. 选择“诊断设置”  。
+1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置  
 
    ![为托管实例启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 1. 输入设置名称供自己参考。
-1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
+1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。   
 1. 对于 log analytics 中，选择**配置**，并通过选择创建新的工作区 **+ 创建新工作区**，或使用现有的工作区。
 1. 选中实例诊断遥测对应的复选框：**ResourceUsageStats**。
    ![托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 此外，配置想要监视在下一节中所述的步骤在托管实例中每个实例数据库的诊断遥测数据的流式处理。
 
 > [!IMPORTANT]
@@ -190,18 +190,18 @@ ms.locfileid: "65791892"
 若要启用流式传输诊断遥测的实例的数据库，请执行以下步骤：
 
 1. 转到**实例数据库**托管实例中的资源。
-1. 选择“诊断设置”。
-1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
+1. 选择“诊断设置”  。
+1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置  
    - 最多可以创建三 (3) 个并行连接用于流式传输诊断遥测数据。
-   - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。
+   - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。 
 
    ![为实例数据库启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
 1. 输入设置名称供自己参考。
-1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
-1. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。
+1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。   
+1. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。    
    ![配置诊断实例数据库](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
-1. 选择“保存”。
+1. 选择“保存”。 
 1. 为你想要监视每个实例数据库重复这些步骤。
 
 > [!TIP]
@@ -312,7 +312,7 @@ Azure SQL Analytics 是一种云解决方案，可跨多个订阅大规模监视
 
 ![Azure SQL Analytics 概述](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
-在门户中使用“诊断设置”选项卡上的内置“发送到 Log Analytics”选项，可将 SQL 数据库指标和诊断日志流式传输到 Azure SQL Analytics。 此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用日志分析。
+在门户中使用“诊断设置”选项卡上的内置“发送到 Log Analytics”选项，可将 SQL 数据库指标和诊断日志流式传输到 Azure SQL Analytics。  此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用日志分析。
 
 ### <a name="installation-overview"></a>安装概述
 
@@ -330,17 +330,17 @@ Azure SQL Analytics 是一种云解决方案，可跨多个订阅大规模监视
 
    ![在门户中搜索 Azure SQL Analytics](./media/sql-database-metrics-diag-logging/sql-analytics-in-marketplace.png)
 
-2. 在解决方案的概述屏幕上选择“创建”。
+2. 在解决方案的概述屏幕上选择“创建”。 
 
 3. 在“Azure SQL Analytics”窗体中填写所需的附加信息：工作区名称、订阅、资源组、位置和定价层。
 
    ![在门户中配置 Azure SQL Analytics](./media/sql-database-metrics-diag-logging/sql-analytics-configuration-blade.png)
 
-4. 选择“确定”以确认，然后选择“创建”。
+4. 选择“确定”以确认，然后选择“创建”   。
 
 ### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>将数据库配置为记录指标和诊断日志
 
-若要配置数据库记录度量值的位置的最简单方法是使用 Azure 门户。 如前所述，在 Azure 门户中转到 SQL 数据库资源，然后选择“诊断设置”。
+使用 Azure 门户配置数据库记录其指标的位置是最简单的方式。 如前所述，在 Azure 门户中转到 SQL 数据库资源，然后选择“诊断设置”  。
 
 如果使用的是弹性池或托管实例，则还需要在这些资源中配置诊断设置，以便将诊断遥测数据流式传输到工作区。
 
@@ -350,7 +350,7 @@ Azure SQL Analytics 是一种云解决方案，可跨多个订阅大规模监视
 
 ## <a name="stream-into-event-hubs"></a>流式传输到事件中心
 
-在 Azure 门户中使用内置的“流式传输到事件中心”选项可将 SQL 数据库指标和诊断日志流式传输到事件中心。 此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用服务总线规则 ID。
+在 Azure 门户中使用内置的“流式传输到事件中心”  选项可将 SQL 数据库指标和诊断日志流式传输到事件中心。 此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用服务总线规则 ID。
 
 ### <a name="what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs"></a>如何处理事件中心内的指标和诊断日志
 
@@ -369,7 +369,7 @@ Azure SQL Analytics 是一种云解决方案，可跨多个订阅大规模监视
 
 ## <a name="stream-into-storage"></a>流式传输到存储
 
-在 Azure 门户中使用内置的“存档到存储帐户”选项，可以在 Azure 存储中存储 SQL 数据库指标和诊断日志。 此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用存储。
+在 Azure 门户中使用内置的“存档到存储帐户”  选项，可以在 Azure 存储中存储 SQL 数据库指标和诊断日志。 此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用存储。
 
 ### <a name="schema-of-metrics-and-diagnostics-logs-in-the-storage-account"></a>存储帐户中指标和诊断日志的架构
 
@@ -405,7 +405,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 如果选择事件中心或存储帐户，可以指定保留策略。 此策略删除早于选定时间段的数据。 如果指定 Log analytics，保留策略将取决于所选的定价层。 在这种情况下，提供的免费数据引入单位每月可免费监视多个数据库。 消耗的诊断遥测量超过免费单位可能会产生费用。 请注意，与空闲数据相比，工作负荷较重的活动数据库越多，引入的数据就越多。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
-如果使用 Azure SQL Analytics，则可以选择 Azure SQL Analytics 导航菜单上的“OMS 工作区”，然后选择“使用情况”和“预估成本”，来监视解决方案中的数据引入消耗量。
+如果使用 Azure SQL Analytics，则可以选择 Azure SQL Analytics 导航菜单上的“OMS 工作区”，然后选择“使用情况”和“预估成本”，来监视解决方案中的数据引入消耗量    。
 
 ## <a name="metrics-and-logs-available"></a>可用的指标和日志
 
@@ -432,7 +432,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ## <a name="basic-logs"></a>基本日志
 
-下表中记录的遥测数据可用于所有日志的详细信息。 请参阅[支持诊断日志记录](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)汇集在一起，了解哪些日志支持的特定数据库 flavor-单一 Azure SQL 或实例数据库。
+下面的表中记录了适用于所有日志的遥测数据的详细信息。 请参阅[支持诊断日志记录](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)汇集在一起，了解哪些日志支持的特定数据库 flavor-单一 Azure SQL 或实例数据库。
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>托管实例的资源使用情况统计信息
 

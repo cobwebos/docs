@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7b28129a3afe9f78d0ef749fa0c7759082c5f758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60520581"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>使用 Resource Manager 模板和 Azure 门户部署资源
@@ -24,11 +24,11 @@ ms.locfileid: "60520581"
 
 ## <a name="create-resource-group"></a>创建资源组
 
-1. 若要创建空资源组，请选择“资源组”。
+1. 若要创建空资源组，请选择“资源组”  。
 
    ![选择资源组](./media/resource-group-template-deploy-portal/select-resource-groups.png)
 
-1. 在“资源组”下，选择“添加”。
+1. 在“资源组”下，选择“添加”  。
 
    ![添加资源组](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
@@ -36,9 +36,9 @@ ms.locfileid: "60520581"
 
    ![设置组的值](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
-   完成属性设置后，选择“创建”。
+   完成属性设置后，选择“创建”  。
 
-1. 若要查看新资源组，选择“刷新”。
+1. 若要查看新资源组，选择“刷新”  。
 
    ![刷新资源组](./media/resource-group-template-deploy-portal/refresh-resource-groups.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "60520581"
 
 创建资源组后，可以从市场将资源部署到资源组。 市场为常见方案提供预定义的解决方案。
 
-1. 若要开始部署，请选择“创建资源”。
+1. 若要开始部署，请选择“创建资源”  。
 
    ![新建资源](./media/resource-group-template-deploy-portal/new-resources.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "60520581"
 
    ![选择“资源类型”](./media/resource-group-template-deploy-portal/select-resource-type.png)
 
-1. 如果看不到想要部署的特定解决方案，可以在市场中搜索。 例如，若要查找 Wordpress 解决方案，开始键入 Wordpress 并选择所需选项。
+1. 如果看不到想要部署的特定解决方案，可以在市场中搜索。 例如，若要查找 Wordpress 解决方案，开始键入 Wordpress  并选择所需选项。
 
    ![在市场中搜索](./media/resource-group-template-deploy-portal/search-resource.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "60520581"
 
    ![创建资源组](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
-   也可以在部署资源时创建资源组。 选择“新建”并为资源组指定名称。
+   也可以在部署资源时创建资源组。 选择“新建”  并为资源组指定名称。
 
    ![新建资源组](./media/resource-group-template-deploy-portal/select-new-group.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "60520581"
 
    ![查看通知](./media/resource-group-template-deploy-portal/view-notification.png)
 
-1. 部署资源后，可以通过选择“添加”将更多资源添加到资源组。
+1. 部署资源后，可以通过选择“添加”  将更多资源添加到资源组。
 
    ![添加资源](./media/resource-group-template-deploy-portal/add-resource.png)
 
@@ -81,15 +81,15 @@ ms.locfileid: "60520581"
 > [!NOTE]
 > 门户界面不支持引用[来自 Key Vault 的密码](resource-manager-keyvault-parameter.md)。 请改用 [PowerShell](resource-group-template-deploy.md) 或 [Azure CLI](resource-group-template-deploy-cli.md)，从本地或从外部 URI 部署模板。
 
-1. 若要通过门户部署自定义模板，请选择“创建资源”，并搜索“模板部署”，直至可以从选项中选择它。
+1. 若要通过门户部署自定义模板，请选择“创建资源”  ，并搜索“模板部署”  ，直至可以从选项中选择它。
 
    ![搜索模板部署](./media/resource-group-template-deploy-portal/search-template.png)
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
    ![选择“创建”](./media/resource-group-template-deploy-portal/show-template-option.png)
 
-1. 此时，会看到用于创建模板的几个选项。 选择“在编辑器中生成自己的模板”。
+1. 此时，会看到用于创建模板的几个选项。 选择“在编辑器中生成自己的模板”  。
 
    ![视图选项](./media/resource-group-template-deploy-portal/see-options.png)
 
@@ -97,19 +97,19 @@ ms.locfileid: "60520581"
 
    ![创建模板](./media/resource-group-template-deploy-portal/blank-template.png)
 
-1. 可以手动编辑 JSON 语法，也可以从[模板库快速入门](https://azure.microsoft.com/resources/templates/)中选择预建模板。 但是，本文使用的是“添加资源”选项。
+1. 可以手动编辑 JSON 语法，也可以从[模板库快速入门](https://azure.microsoft.com/resources/templates/)中选择预建模板。 但是，本文使用的是“添加资源”  选项。
 
    ![编辑模板](./media/resource-group-template-deploy-portal/select-add-resource.png)
 
-1. 选择“存储帐户”并为其提供名称。 完成提供值后，选择“确定”。
+1. 选择“存储帐户”  并为其提供名称。 完成提供值后，选择“确定”  。
 
    ![选择存储帐户](./media/resource-group-template-deploy-portal/add-storage-account.png)
 
-1. 编辑器会自动为资源类型添加 JSON。 请注意，它包含用于定义存储帐户类型的参数。 选择“保存”。
+1. 编辑器会自动为资源类型添加 JSON。 请注意，它包含用于定义存储帐户类型的参数。 选择“保存”。 
 
    ![显示模板](./media/resource-group-template-deploy-portal/show-json.png)
 
-1. 现在，可以选择部署模板中定义的资源。 若要部署，请同意条款和条件，然后选择“购买”。
+1. 现在，可以选择部署模板中定义的资源。 若要部署，请同意条款和条件，然后选择“购买”  。
 
    ![部署模板](./media/resource-group-template-deploy-portal/provide-custom-template-values.png)
 
@@ -117,11 +117,11 @@ ms.locfileid: "60520581"
 
 通过此门户，可将模板保存到 Azure 帐户，以便以后重新部署它。 有关模板的详细信息，请参阅[创建和部署第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。
 
-1. 若要查找已保存模板，请选择“更多服务”。
+1. 若要查找已保存模板，请选择“更多服务”  。
 
    ![其他服务](./media/resource-group-template-deploy-portal/more-services.png)
 
-1. 搜索模板并选择该选项。
+1. 搜索模板  并选择该选项。
 
    ![搜索模板](./media/resource-group-template-deploy-portal/find-templates.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "60520581"
 
    ![已保存模板](./media/resource-group-template-deploy-portal/saved-templates.png)
 
-1. 选择“部署”以重新部署该已保存模板。
+1. 选择“部署”  以重新部署该已保存模板。
 
    ![部署已保存模板](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 

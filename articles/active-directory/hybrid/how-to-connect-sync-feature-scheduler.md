@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65139293"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
@@ -45,7 +45,7 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
-若在运行此 cmdlet 时看到“此同步命令或 cmdlet 不可用”，则 PowerShell 模块未加载。 如果在 PowerShell 限制级别高于默认设置的域控制器或服务器上运行 Azure AD Connect，则可能会发生这种问题。 如果看到此错误，则运行 `Import-Module ADSync` 可使该 cmdlet 可用。
+若在运行此 cmdlet 时看到“此同步命令或 cmdlet 不可用”，则 PowerShell 模块未加载。  如果在 PowerShell 限制级别高于默认设置的域控制器或服务器上运行 Azure AD Connect，则可能会发生这种问题。 如果看到此错误，则运行 `Import-Module ADSync` 可使该 cmdlet 可用。
 
 * **AllowedSyncCycleInterval**。 Azure AD 允许的同步周期间的最短时间间隔。 不能比这种设置更频繁地同步，但仍会支持。
 * **CurrentlyEffectiveSyncCycleInterval**。 当前生效的计划。 如果它不比 AllowedSyncInterval 更频繁，它具有与 CustomizedSyncInterval 相同的值（如果已设置）。 如果使用早于 1.1.281 的版本，且更改了 CustomizedSyncCycleInterval，该更改会在下一个同步周期后生效。 从版本 1.1.281 开始，更改将立即生效。
@@ -158,7 +158,7 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 
 1. 先要使用 PowerShell cmdlet `Stop-ADSyncSyncCycle`指示计划程序停止其当前周期。
 2. 如果使用 1.1.281 之前的版本，停止计划程序并不会使当前连接器停止执行其当前任务。 若要强制停止连接器，请执行以下操作：![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
-   * 从“开始”菜单启动“同步服务”。 转到“连接器”，突出显示状态为“正在运行”的连接器，然后从“操作”中选择“停止”。
+   * 从“开始”菜单启动“同步服务”。  转到“连接器”，突出显示状态为“正在运行”的连接器，然后从“操作”中选择“停止”。   
 
 计划程序仍处于活动状态，并在下次有机会时重新启动。
 

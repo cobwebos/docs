@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60563405"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的备份和还原
@@ -69,7 +69,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 - **集中式管理和监视**：通过 Azure 中的单个仪表板集中管理所有备份，包括 Azure 备份支持的其他工作负荷。
 - **策略驱动备份和保留**：为常规备份创建标准备份策略。 建立保留策略，将备份保留数年之久。
 - **支持 SQL Always On**：检测和保护 SQL Server Always On 配置，并遵循备份可用性组的备份首选项。
-- **15 分钟恢复点目标 (RPO)**：最多可将 SQL 事务日志备份频率配置为每隔 15 分钟备份一次。
+- **15 分钟恢复点目标 (RPO)** ：最多可将 SQL 事务日志备份频率配置为每隔 15 分钟备份一次。
 - **时间点还原**：使用门户将数据库恢复到特定的时间点，无需手动还原多个完整备份、差异备份和日志备份。
 - **合并的故障电子邮件警报**：针对任何故障配置合并的电子邮件通知。
 - **基于角色的访问控制**：确定谁可以通过门户管理备份和还原操作。

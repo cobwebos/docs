@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60516600"
 ---
 # <a name="service-movement-cost"></a>服务移动成本
@@ -76,7 +76,7 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>移动成本的影响
-MoveCost 有四个级别：零、低、中和高。 MoveCost 是相对于彼此的，但零除外。 零移动成本表示移动不会产生成本，不应计入解决方案的分数。 将移动成本设置为“高”并不能保证副本保留在同一个位置。
+MoveCost 有四个级别：零、低、中和高。 MoveCost 是相对于彼此的，但零除外。 零移动成本表示移动不会产生成本，不应计入解决方案的分数。 将移动成本设置为“高”并不能  保证副本保留在同一个位置。
 
 <center>
 

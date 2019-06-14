@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: echuvyrov
 ms.openlocfilehash: 71cf07b227a75e53119f2f35e79ccd7926b551e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60418857"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>安装和配置 Terraform 以在 Azure 中预配 VM 和其他基础结构
@@ -59,7 +59,7 @@ az account show --query "{subscriptionId:id, tenantId:tenantId}"
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-现在，可以创建一个服务主体以与 Terraform 一起使用。 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)，并将“范围”设置为你的订阅，如下所示：
+现在，可以创建一个服务主体以与 Terraform 一起使用。 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)，并将“范围”设置为你的订阅，如下所示  ：
 
 ```azurecli-interactive
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"

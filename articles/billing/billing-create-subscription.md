@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
 ms.openlocfilehash: f907ebcfc1efc2e6eb9b458f83ab11d868871946
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615798"
 ---
 # <a name="create-an-additional-subscription-in-the-azure-portal"></a>在 Azure 门户中创建另外的订阅
@@ -31,7 +31,7 @@ ms.locfileid: "60615798"
 ## <a name="create-an-additional-azure-subscription"></a>创建另外的 Azure 订阅
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索“订阅”。
+1. 搜索“订阅”。 
 
    ![其中显示了在门户中搜索订阅的屏幕截图](./media/billing-create-subscription/billing-search-subscription-portal.png)
 

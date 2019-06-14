@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 907abe3b09f9999b30703281f7e4ff286e2bae14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60242363"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：技术深入了解
@@ -52,7 +52,7 @@ ms.locfileid: "60242363"
 
 在 Web 浏览器上进行登录的流程如下所示：
 
-1. 用户尝试从企业网络内部已加入域的企业设备访问 Web 应用程序（例如，Outlook Web 应用 - https://outlook.office365.com/owa/)）。
+1. 用户尝试从企业网络内部已加入域的企业设备访问 Web 应用程序（例如，Outlook Web 应用 - https://outlook.office365.com/owa/) ）。
 2. 如果用户尚未登录，该用户将被重定向到 Azure AD 登录页面。
 3. 用户在 Azure AD 登录页键入其用户名。
 
@@ -95,7 +95,7 @@ ms.locfileid: "60242363"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
+- [快速入门  ](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
 - [**常见问题**](how-to-connect-sso-faq.md) - 常见问题的解答。
-- [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- [故障排除  ](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [UserVoice  ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

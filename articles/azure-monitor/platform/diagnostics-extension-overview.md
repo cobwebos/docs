@@ -8,10 +8,10 @@ ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236236"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>什么是 Azure 诊断扩展
@@ -52,7 +52,7 @@ Azure 诊断扩展可收集以下类型的数据：
 若要详细了解如何配置此接收器，请参阅 [Azure 诊断架构文档](diagnostics-extension-schema-1dot3.md)。
 
 ## <a name="costs"></a>成本
-每个以上的选项可能会产生成本。 请务必研究它们以避免预期之外的费用。  Application Insights 中，事件中心和 Azure 存储具有与引入相关联的单独成本和存储的时间。 具体而言，Azure 存储将保存任何数据永远因此你可能想要在某段时间内以使成本保持后清除旧数据。    
+上述每个选项都可能产生费用。 一定要研究它们，以避免意外的账单。  Application Insights、事件中心和 Azure 存储具有与引入和存储时间相关联的单独成本。 特别是，Azure 存储将永久保存任何数据，因此你可能希望在一段时间后清除旧数据以降低成本。    
 
 ## <a name="versioning-and-configuration-schema"></a>版本控制和配置架构
 请参阅 [Azure 诊断版本历史记录和架构](diagnostics-extension-schema.md)。

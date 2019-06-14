@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu-msft
 ms.openlocfilehash: 6b4e145a693aabbf1a00d732e2fd602e7c887a03
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956010"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
@@ -74,7 +74,7 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 Azure 存储可装载的多容器应用使用自定义 id。若要查看自定义 id 名称，请运行[ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)。
 
-在你*docker-compose.yml*文件中，映射`volumes`选项设为`custom-id`。 例如:
+在你*docker-compose.yml*文件中，映射`volumes`选项设为`custom-id`。 例如：
 
 ```yaml
 wordpress:

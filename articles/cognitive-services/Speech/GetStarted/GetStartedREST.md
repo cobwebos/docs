@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515135"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>快速入门：使用必应语音识别 REST API
@@ -28,7 +28,7 @@ ms.locfileid: "60515135"
 
 ### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>订阅语音 API，并获得免费试用的订阅密钥
 
-语音 API 是认知服务（之前称为 Project Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
+语音 API 是认知服务（之前称为 Project Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥  。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
 
 > [!IMPORTANT]
 >* 获取订阅密钥。 必须具有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)才能访问 REST API。
@@ -42,7 +42,7 @@ ms.locfileid: "60515135"
 在此示例中，我们使用录制的音频文件来说明如何使用 REST API。 说一个短句并录制一个音频文件。 例如，说“今天天气怎么样？” 或者“查找有趣的电影。” 语音识别 API 还支持外部麦克风输入。
 
 > [!NOTE]
-> 示例要求音频以 PCM 单声道、16 KHz 的 WAV 文件格式进行录制，。
+> 示例要求音频以 PCM 单声道、16 KHz 的 WAV 文件格式进行录制，  。
 
 ## <a name="build-a-recognition-request-and-send-it-to-the-speech-recognition-service"></a>生成识别请求，并将其发送到语音识别服务
 

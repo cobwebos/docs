@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371971"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>为 Microsoft 客户协议创建其他 Azure 订阅
@@ -33,11 +33,11 @@ ms.locfileid: "60371971"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“订阅”。
+2. 搜索“订阅”。 
 
    ![搜索显示在门户中订阅的屏幕截图](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
 
-3. 选择“添加”
+3. 选择“添加” 
 
 4. 如果你有权访问多个计费帐户，选择为 Microsoft 客户协议的计费帐户。
 
@@ -51,7 +51,7 @@ ms.locfileid: "60371971"
 
 8. 输入订阅的名称。 该名称可帮助你轻松地确定在 Azure 门户中的订阅。
 
-9. 选择“创建”。
+9. 选择“创建”  。
 
 ## <a name="give-others-permission-to-create-azure-subscriptions"></a>授予其他人创建的 Azure 订阅的权限
 
@@ -59,7 +59,7 @@ ms.locfileid: "60371971"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 在“成本管理 + 计费”  中进行搜索。
 
    ![搜索显示在门户中订阅的屏幕截图](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "60371971"
 
 4. 选择**访问管理 (IAM)** 从左上方。
 
-5. 在页面顶部选择“添加”。
+5. 在页面顶部选择“添加”。 
 
 6. 选择**Azure 订阅创建者**角色。
 
@@ -75,7 +75,7 @@ ms.locfileid: "60371971"
 
 7. 输入要向其授予访问权限的用户的电子邮件地址。
 
-8. 选择“保存”。
+8. 选择“保存”。 
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

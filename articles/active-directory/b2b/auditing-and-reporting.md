@@ -13,21 +13,21 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 506721a23a5a18eaea76efaca61df49f20dc9228
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65812468"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>审核和报告 B2B 协作用户
 对于来宾用户，具有与成员用户类似的审核功能。 
 
 ## <a name="access-reviews"></a>访问评审
-可以使用访问评审来定期验证来宾用户是否仍需要访问资源。 “访问评审”功能在“Azure Active Directory”中的“管理” > “组织关系”下提供。 （还可以从 Azure 门户中的“所有服务”搜索“访问评审”。）若要了解如何使用访问评审，请参阅[使用 Azure AD 访问评审管理来宾访问权限](../governance/manage-guest-access-with-access-reviews.md)。
+可以使用访问评审来定期验证来宾用户是否仍需要访问资源。 “访问评审”  功能在“Azure Active Directory”  中的“管理”   > “组织关系”  下提供。 （还可以从 Azure 门户中的“所有服务”  搜索“访问评审”。）若要了解如何使用访问评审，请参阅[使用 Azure AD 访问评审管理来宾访问权限](../governance/manage-guest-access-with-access-reviews.md)。
 
 ## <a name="audit-logs"></a>审核日志
 
-Azure AD 审核日志提供系统和用户活动的记录，包括来宾用户发起的活动。 若要访问审核日志，请在“Azure Active Directory”中的“监视”下，选择“审核日志”。 下面是受邀人 Sam Oogle 的邀请和兑换历史记录的示例：
+Azure AD 审核日志提供系统和用户活动的记录，包括来宾用户发起的活动。 若要访问审核日志，请在“Azure Active Directory”  中的“监视”  下，选择“审核日志”  。 下面是受邀人 Sam Oogle 的邀请和兑换历史记录的示例：
 
 ![屏幕截图显示和示例中的审核日志输出](./media/auditing-and-reporting/audit-log.png)
 

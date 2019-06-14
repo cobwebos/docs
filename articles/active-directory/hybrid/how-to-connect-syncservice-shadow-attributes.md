@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 07/13/2017
-ms.date: 04/09/2019
+ms.date: 07/13/2017
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60384693"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同步服务影子属性
@@ -39,11 +38,11 @@ ms.locfileid: "60384693"
 ### <a name="userprincipalname"></a>userPrincipalName
 用户在非已验证域中具有以下属性值：
 
-| 属性 | Value |
+| 特性 | 值 |
 | --- | --- |
 | 本地 userPrincipalName | lee.sperry@fabrikam.com |
 | Azure AD shadowUserPrincipalName | lee.sperry@fabrikam.com |
-| Azure AD userPrincipalName | lee.sperry@fabrikam.partner.onmschina.cn |
+| Azure AD userPrincipalName | lee.sperry@fabrikam.onmicrosoft.com |
 
 userPrincipalName 属性是在使用 PowerShell 时显示的值。
 
@@ -54,7 +53,7 @@ userPrincipalName 属性是在使用 PowerShell 时显示的值。
 
 对于邮箱用户（不管是在本地还是在 Exchange Online 中），仅显示验证域的值。 它可能如下所示：
 
-| 属性 | Value |
+| 特性 | 值 |
 | --- | --- |
 | 本地 proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
@@ -78,5 +77,3 @@ ProxyCalc 可能需要一些时间来处理用户更改，并且不会与 Azure 
 ## <a name="see-also"></a>另请参阅
 * [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
-
-<!-- Update_Description: wording update -->

@@ -3,21 +3,20 @@ title: 使用 Azure 数据工厂从 Azure Database for MariaDB 复制数据 | Mi
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Azure Database for MariaDB 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 02/01/2019
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 02/01/2019
+ms.author: jingwang
 ms.openlocfilehash: cd46e99b89b4081dcf0d67509edaabf168da4ba0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60387878"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure Database for MariaDB 复制数据 
@@ -56,7 +55,7 @@ Azure Database for MariaDB 链接服务支持以下属性：
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Server={your_server}.mariadb.database.azure.cn; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
+                "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
             }
         },
         "connectVia": {
@@ -77,7 +76,7 @@ Azure Database for MariaDB 链接服务支持以下属性：
         "typeProperties": {
             "connectionString": {
                  "type": "SecureString",
-                 "value": "Server={your_server}.mariadb.database.azure.cn; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; SslMode=Preferred;"
+                 "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; SslMode=Preferred;"
             },
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
@@ -100,11 +99,11 @@ Azure Database for MariaDB 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Azure Database for MariaDB 数据集支持的属性列表。
 
-要从 Azure Database for MariaDB 复制数据，请将数据集的 type 属性设置为“MariaDBTable”。 支持以下属性：
+要从 Azure Database for MariaDB 复制数据，请将数据集的 type 属性设置为“MariaDBTable”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：MariaDBTable | 是 |
+| type | 数据集的 type 属性必须设置为：MariaDBTable  | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -129,7 +128,7 @@ Azure Database for MariaDB 链接服务支持以下属性：
 
 ### <a name="azure-database-for-mariadb-as-source"></a>Azure Database for MariaDB 作为源
 
-要从 Azure Database for MariaDB 复制数据，请将复制活动中的源类型设置为“MariaDBSource”。 复制活动源部分支持以下属性：
+要从 Azure Database for MariaDB 复制数据，请将复制活动中的源类型设置为“MariaDBSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

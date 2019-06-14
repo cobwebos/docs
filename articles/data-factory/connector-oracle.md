@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 3fa7612b9e4cd8a714e60879229bd0d39349494f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60405918"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-oracle-connector.md)
 > * [当前版本](connector-oracle.md)
 
@@ -64,11 +64,11 @@ Oracle 链接服务支持以下属性。
 >[!TIP]
 >如果遇到错误消息指出“ORA-01025: UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串并重试。
 
-若要在 Oracle 连接上启用加密，你有两种选择：
+若要在 Oracle 连接上启用加密，你有两种选择： 
 
-1.  若要使用三重 DES 加密 (3DES) 和高级加密标准 (AES)，在 Oracle 服务器端，转到“Oracle 高级安全性 (OAS)”并配置加密设置，请参阅[此处](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)的详细信息。 ADF Oracle 连接器会自动协商加密方法，以便在建立与 Oracle 的连接时使用在 OAS 中配置的加密方法。
+1.  若要使用三重 DES 加密 (3DES) 和高级加密标准 (AES)，在 Oracle 服务器端，转到“Oracle 高级安全性 (OAS)”并配置加密设置，请参阅[此处](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)的详细信息  。 ADF Oracle 连接器会自动协商加密方法，以便在建立与 Oracle 的连接时使用在 OAS 中配置的加密方法。
 
-2.  若要使用 SSL，请执行以下步骤：
+2.  若要使用 SSL，请执行以下步骤  ：
 
     1.  获取 SSL 证书信息。 获取 SSL 证书的 DER 编码证书信息，并将输出 (----- Begin Certificate … End Certificate -----) 另存为文本文件。
 
@@ -76,7 +76,7 @@ Oracle 链接服务支持以下属性。
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
         ```
 
-        示例：从 DERcert.cer 提取证书信息；然后，将输出保存到 cert.txt
+        示例：从 DERcert.cer 提取证书信息；然后，将输出保存到 cert.txt 
 
         ```
         openssl x509 -inform DER -in DERcert.cer -text
@@ -158,11 +158,11 @@ Oracle 链接服务支持以下属性。
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Oracle 数据集支持的属性列表。
 
-若要从/向 OData 复制数据，请将数据集的 type 属性设置为“OracleTable”。 支持以下属性。
+若要从/向 OData 复制数据，请将数据集的 type 属性设置为“OracleTable”  。 支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 OracleTable。 | 是 |
+| type | 数据集的 type 属性必须设置为 OracleTable  。 | 是 |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 | 是 |
 
 **示例：**
@@ -190,11 +190,11 @@ Oracle 链接服务支持以下属性。
 
 ### <a name="oracle-as-a-source-type"></a>以 Oracle 作为源类型
 
-要从 Oracle 复制数据，请将复制活动中的源类型设置为“OracleSource”。 复制活动的 **source** 节支持以下属性。
+要从 Oracle 复制数据，请将复制活动中的源类型设置为“OracleSource”  。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 OracleSource。 | 是 |
+| type | 复制活动源的 type 属性必须设置为 OracleSource  。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否 |
 
 如果未指定“oracleReaderQuery”，则将使用在数据集的“structure”节中定义的列，构建针对 Oracle 数据库运行的查询 (`select column1, column2 from mytable`)。 如果数据集定义没有“structure”，则将从表中选择所有列。
@@ -233,7 +233,7 @@ Oracle 链接服务支持以下属性。
 
 ### <a name="oracle-as-a-sink-type"></a>以 Oracle 作为接收器类型
 
-要向 Oracle 复制数据，请将复制活动中的接收器类型设置为“OracleSink”。 复制活动 **sink** 节支持以下属性。
+要向 Oracle 复制数据，请将复制活动中的接收器类型设置为“OracleSink”  。 复制活动 **sink** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

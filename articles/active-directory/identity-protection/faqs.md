@@ -17,10 +17,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1bea455371938ccc4d512bdb7ffddd72eb9508da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60454503"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection 常见问题解答
@@ -47,6 +47,6 @@ ms.locfileid: "60454503"
 
 ## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>如何对“已标记为存在风险的用户”中的用户进行排序？
 
-**答:** 在“已标记为存在风险的用户”页面顶部单击“下载”，下载“已标记为存在风险的用户”报表 。 然后即可基于可用字段（包括“上次更新时间 [UTC]”），对下载的数据进行排序。
+**答:** 在“已标记为存在风险的用户”页面顶部单击“下载”，下载“已标记为存在风险的用户”报表     。 然后即可基于可用字段（包括“上次更新时间 [UTC]”），对下载的数据进行排序。
 
 ---

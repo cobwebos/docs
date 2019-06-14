@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60477012"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
@@ -53,11 +53,11 @@ SUSE 发布了[这项性能优化设置的详细说明][sles-hana-scale-out-ha-p
 
 如果需要 SUSE 的支持，请按照该[指南][suse-pacemaker-support-log-files]执行操作。 请根据本文所述，收集有关 SAP HANA 高可用性 (HA) 群集的所有信息。 SUSE 支持需要使用此信息执行进一步的分析。
 
-在内部测试期间，通过 Azure 门户正常关闭 VM 时发生了群集设置混淆的问题。 因此，建议通过其他方法测试群集故障转移。 使用强制内核崩溃等方法，或者关闭网络或迁移 msl 资源。 请参阅以下部分的详细信息。 假设有意执行了标准关机过程。 进行维护是有意关闭的最佳示例。 有关详细信息，请参阅[计划内维护](#planned-maintenance)。
+在内部测试期间，通过 Azure 门户正常关闭 VM 时发生了群集设置混淆的问题。 因此，建议通过其他方法测试群集故障转移。 使用强制内核崩溃等方法，或者关闭网络或迁移 msl 资源  。 请参阅以下部分的详细信息。 假设有意执行了标准关机过程。 进行维护是有意关闭的最佳示例。 有关详细信息，请参阅[计划内维护](#planned-maintenance)。
 
-此外，在内部测试期间，当群集处于维护模式时，手动 SAP HANA 接管后发生了群集设置混淆的问题。 建议在结束群集维护模式前，手动将其切换回之前的模式。 另一个选项是在将群集置于维护模式之前触发故障转移。 有关详细信息，请参阅[计划内维护](#planned-maintenance)。 SUSE 的文档介绍了有关如何使用 crm 命令来按此方法重置群集的信息。 但在内部测试期间，上述方法非常可靠，永远不会出现任何意外的负面影响。
+此外，在内部测试期间，当群集处于维护模式时，手动 SAP HANA 接管后发生了群集设置混淆的问题。 建议在结束群集维护模式前，手动将其切换回之前的模式。 另一个选项是在将群集置于维护模式之前触发故障转移。 有关详细信息，请参阅[计划内维护](#planned-maintenance)。 SUSE 的文档介绍了有关如何使用 crm 命令来按此方法重置群集的信息  。 但在内部测试期间，上述方法非常可靠，永远不会出现任何意外的负面影响。
 
-使用 crm migrate 命令时，请确保清理群集配置。 这会添加你可能不易察觉的位置约束。 这些约束会影响群集行为。 有关更多详细信息，请参阅[计划内维护](#planned-maintenance)。
+使用 crm migrate 命令时，请确保清理群集配置  。 这会添加你可能不易察觉的位置约束。 这些约束会影响群集行为。 有关更多详细信息，请参阅[计划内维护](#planned-maintenance)。
 
 
 
@@ -86,7 +86,7 @@ SUSE 发布了[这项性能优化设置的详细说明][sles-hana-scale-out-ha-p
 
 ## <a name="multiple-subnets-and-vnics"></a>多个子网和 vNIC
 
-遵循 SAP HANA 网络建议在一个 Azure 虚拟网络中创建了三个子网。 Azure 上的 SAP HANA 横向扩展必须在非共享模式下安装。 这意味着每个节点对 /hana/data 和 /hana/log 使用本地磁盘卷。 由于节点仅使用本地磁盘卷，因此不需要为存储定义单独的子网：
+遵循 SAP HANA 网络建议在一个 Azure 虚拟网络中创建了三个子网。 Azure 上的 SAP HANA 横向扩展必须在非共享模式下安装。 这意味着每个节点对 /hana/data 和 /hana/log 使用本地磁盘卷   。 由于节点仅使用本地磁盘卷，因此不需要为存储定义单独的子网：
 
 - 10.0.2.0/24 用于 SAP HANA 节点间通信
 - 10.0.1.0/24 用于 SAP HANA 系统复制 (HSR)
@@ -120,7 +120,7 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-例如，若要查找正确的端口号，可以查看 HANA Studio 中的“配置”，或使用 SQL 语句：
+例如，若要查找正确的端口号，可以查看 HANA Studio 中的“配置”，或使用 SQL 语句  ：
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
@@ -128,7 +128,7 @@ select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
 
 若要查找 SAP 软件堆栈（包括 SAP HANA）中使用的每个端口，请搜索[所有 SAP 产品的 TCP/IP 端口][sap-list-port-numbers]。
 
-如果 SAP HANA 2.0 测试系统中的实例编号是 00，则名称服务器的端口号是 30001。 用于 HSR 元数据通信的端口号是 40002。 一种做法是登录到工作节点，然后检查主节点服务。 本文通过尝试连接到站点 2 的主节点来检查站点 2 的工作节点 2。
+如果 SAP HANA 2.0 测试系统中的实例编号是 00，则名称服务器的端口号是 30001   。 用于 HSR 元数据通信的端口号是 40002  。 一种做法是登录到工作节点，然后检查主节点服务。 本文通过尝试连接到站点 2 的主节点来检查站点 2 的工作节点 2。
 
 检查名称服务器端口：
 
@@ -138,8 +138,8 @@ nc -vz 10.0.1.40 30001
 nc -vz 10.0.2.40 30001
 </code></pre>
 
-若要证实节点间通信使用的是子网 10.0.2.0/24，结果应如以下示例输出所示。
-只有通过子网 10.0.2.0/24 才能成功建立连接：
+若要证实节点间通信使用的是子网 10.0.2.0/24，结果应如以下示例输出所示  。
+只有通过子网 10.0.2.0/24 才能成功建立连接  ：
 
 <pre><code>
 nc: connect to 10.0.0.40 port 30001 (tcp) failed: Connection refused
@@ -147,7 +147,7 @@ nc: connect to 10.0.1.40 port 30001 (tcp) failed: Connection refused
 Connection to 10.0.2.40 30001 port [tcp/pago-services1] succeeded!
 </code></pre>
 
-现在检查 HSR 端口 40002：
+现在检查 HSR 端口 40002  ：
 
 <pre><code>
 nc -vz 10.0.0.40 40002
@@ -155,8 +155,8 @@ nc -vz 10.0.1.40 40002
 nc -vz 10.0.2.40 40002
 </code></pre>
 
-若要证实 HSR 通信使用的是子网 10.0.1.0/24，结果应如以下示例输出所示。
-只有通过子网 10.0.1.0/24 才能成功建立连接：
+若要证实 HSR 通信使用的是子网 10.0.1.0/24，结果应如以下示例输出所示  。
+只有通过子网 10.0.1.0/24 才能成功建立连接  ：
 
 <pre><code>
 nc: connect to 10.0.0.40 port 40002 (tcp) failed: Connection refused
@@ -169,11 +169,11 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 ## <a name="corosync"></a>Corosync
 
 
-corosync 配置文件必须在群集中的每个节点（包括多数仲裁节点）上正确。 如果某个节点不能按预期加入群集，请在所有节点上手动创建和/或复制 /etc/corosync/corosync.conf，然后重启服务。 
+corosync 配置文件必须在群集中的每个节点（包括多数仲裁节点）上正确  。 如果某个节点不能按预期加入群集，请在所有节点上手动创建和/或复制 /etc/corosync/corosync.conf，然后重启服务  。 
 
-我们以测试系统中 corosync.conf 的内容作为示例。
+我们以测试系统中 corosync.conf 的内容作为示例  。
 
-第一个节是[群集安装](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)步骤 11 中所述的 totem。 可以忽略 **mcastaddr** 的值。 只需保留现有条目即可。 必须根据 [Microsoft Azure SAP HANA 文档][sles-pacemaker-ha-guide]设置 token 和 consensus 的条目。
+第一个节是[群集安装](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)步骤 11 中所述的 totem  。 可以忽略 **mcastaddr** 的值。 只需保留现有条目即可。 必须根据 [Microsoft Azure SAP HANA 文档][sles-pacemaker-ha-guide]设置 token 和 consensus 的条目   。
 
 <pre><code>
 totem {
@@ -203,7 +203,7 @@ totem {
 }
 </code></pre>
 
-第二个节 logging 与给定的默认值相同：
+第二个节 logging 与给定的默认值相同  ：
 
 <pre><code>
 logging {
@@ -221,7 +221,7 @@ logging {
 }
 </code></pre>
 
-第三个节显示 **nodelist**。 群集的所有节点必须连同其 nodeid 一起显示：
+第三个节显示 **nodelist**。 群集的所有节点必须连同其 nodeid 一起显示  ：
 
 <pre><code>
 nodelist {
@@ -256,7 +256,7 @@ nodelist {
 }
 </code></pre>
 
-在最后一个节 quorum 中，必须正确设置 expected_votes 的值。 它必须是包括多数仲裁节点在内的节点数目。 **two_node** 的值必须是 **0**。 不要彻底删除该条目。 只需将值设置为 **0** 即可。
+在最后一个节 quorum 中，必须正确设置 expected_votes 的值   。 它必须是包括多数仲裁节点在内的节点数目。 **two_node** 的值必须是 **0**。 不要彻底删除该条目。 只需将值设置为 **0** 即可。
 
 <pre><code>
 quorum {
@@ -290,7 +290,7 @@ targetcli ls
 </code></pre>
 
 
-在测试系统上，该命令的输出如以下示例所示。 必须输入类似于 iqn.2006-04.hso-db-0.local:hso-db-0 的 ACL 名称作为 VM 上的相应发起程序名称。 每个 VM 需要不同的名称。
+在测试系统上，该命令的输出如以下示例所示。 必须输入类似于 iqn.2006-04.hso-db-0.local:hso-db-0 的 ACL 名称作为 VM 上的相应发起程序名称  。 每个 VM 需要不同的名称。
 
 <pre><code>
  | | o- sbddbhso ................................................................... [/sbd/sbddbhso (50.0MiB) write-thru activated]
@@ -339,7 +339,7 @@ cat /etc/iscsi/initiatorname.iscsi
 InitiatorName=iqn.2006-04.hso-db-1.local:hso-db-1
 </code></pre>
 
-接下来，验证“发现”是否正常工作。 使用 SBD 服务器 VM 的 IP 地址在每个群集节点上运行以下命令：
+接下来，验证“发现”是否正常工作  。 使用 SBD 服务器 VM 的 IP 地址在每个群集节点上运行以下命令：
 
 <pre><code>
 iscsiadm -m discovery --type=st --portal=10.0.0.19:3260
@@ -390,7 +390,7 @@ sbd -d /dev/sdm list
 </code></pre>
 
 
-另一项 SBD 检查是 sbd 命令的 dump 选项。 在来自于多数仲裁节点的此示例命令和输出中，设备名称为 sdd 而不是 sdm：
+另一项 SBD 检查是 sbd 命令的 dump 选项   。 在来自于多数仲裁节点的此示例命令和输出中，设备名称为 sdd 而不是 sdm   ：
 
 <pre><code>
 sbd -d /dev/sdd dump
@@ -417,15 +417,15 @@ SBD 的另外一项检查是验证能否将消息发送到另一个节点。 若
 sbd -d /dev/sdm message hso-hana-vm-s2-2 test
 </code></pre>
 
-在目标 VM 端（本示例中为 hso-hana-vm-s2-2）上，可在 /var/log/messages 中找到以下条目：
+在目标 VM 端（本示例中为 hso-hana-vm-s2-2）上，可在 /var/log/messages 中找到以下条目   ：
 
 <pre><code>
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-检查 /etc/sysconfig/sbd 中的条目是否对应于[在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) 中的描述。 验证 **/etc/iscsi/iscsid.conf** 中的启动设置是否设置为自动。
+检查 /etc/sysconfig/sbd 中的条目是否对应于[在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) 中的描述  。 验证 **/etc/iscsi/iscsid.conf** 中的启动设置是否设置为自动。
 
-以下条目对于 /etc/sysconfig/sbd 非常重要。 在必要时调整 id 值：
+以下条目对于 /etc/sysconfig/sbd 非常重要  。 在必要时调整 id 值  ：
 
 <pre><code>
 SBD_DEVICE="/dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68;"
@@ -435,7 +435,7 @@ SBD_WATCHDOG=yes
 </code></pre>
 
 
-检查 /etc/iscsi/iscsid.conf 中的启动设置。 下面的 iscsiadm 命令应已指定了所需的设置，如文档中所述。 验证 vi，如果不同，则对其进行手动调整。
+检查 /etc/iscsi/iscsid.conf 中的启动设置  。 下面的 iscsiadm 命令应已指定了所需的设置，如文档中所述  。 验证 vi，如果不同，则对其进行手动调整  。
 
 此命令设置启动行为：
 
@@ -443,7 +443,7 @@ SBD_WATCHDOG=yes
 iscsiadm -m node --op=update --name=node.startup --value=automatic
 </code></pre>
 
-使此条目位于 /etc/iscsi/iscsid.conf 中：
+使此条目位于 /etc/iscsi/iscsid.conf 中  ：
 
 <pre><code>
 node.startup = automatic
@@ -452,15 +452,15 @@ node.startup = automatic
 在测试和验证期间，重启 VM 后，SBD 设备在有些情况下不再可见。 启动设置与 YaST2 显示的信息之间有差异。 若要检查设置，请执行以下步骤：
 
 1. 启动 YaST2。
-2. 在左侧选择“网络服务”。
-3. 在右侧向下滚动到“iSCSI 发起程序”并将其选中。
-4. 在下一个屏幕中的“服务”选项卡上，会看到节点的唯一发起程序名称。
-5. 在发起程序名称的上面，确保“服务启动”值设置为“启动时”。
-6. 如果尚未进行此设置，请将它设置为“启动时”而不是“手动”。
-7. 接下来，将顶部选项卡切换到“连接的目标”。
-8. 在“连接的目标”屏幕中，应会看到 SBD 设备的条目，如以下示例所示：10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso。
-9. 检查“启动”值是否设置为“onboot”。
-10. 如果不是，请选择“编辑”并更改。
+2. 在左侧选择“网络服务”  。
+3. 在右侧向下滚动到“iSCSI 发起程序”并将其选中  。
+4. 在下一个屏幕中的“服务”选项卡上，会看到节点的唯一发起程序名称  。
+5. 在发起程序名称的上面，确保“服务启动”值设置为“启动时”   。
+6. 如果尚未进行此设置，请将它设置为“启动时”而不是“手动”   。
+7. 接下来，将顶部选项卡切换到“连接的目标”  。
+8. 在“连接的目标”屏幕中，应会看到 SBD 设备的条目，如以下示例所示：  10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso  。
+9. 检查“启动”值是否设置为“onboot”   。
+10. 如果不是，请选择“编辑”并更改  。
 11. 保存更改并退出 YaST2。
 
 
@@ -473,7 +473,7 @@ node.startup = automatic
 systemctl status pacemaker
 </code></pre>
 
-输出的顶部应如以下示例所示。 **Active** 后面的状态必须显示为 **loaded** 和 **active (running)**。 “Loaded”后面的状态必须显示为 enabled。
+输出的顶部应如以下示例所示。 **Active** 后面的状态必须显示为 **loaded** 和 **active (running)** 。 “Loaded”后面的状态必须显示为 enabled   。
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -493,7 +493,7 @@ systemctl status pacemaker
            └─4504 /usr/lib/pacemaker/crmd
 </code></pre>
 
-如果设置仍为 disabled，请运行以下命令：
+如果设置仍为 disabled，请运行以下命令  ：
 
 <pre><code>
 systemctl enable pacemaker
@@ -505,7 +505,7 @@ systemctl enable pacemaker
 crm status
 </code></pre>
 
-输出应如以下示例所示。 多数仲裁 VM (hso-hana-dm) 上的 cln 和 msl 资源显示为已停止，这是正常的。 多数仲裁节点上未安装 SAP HANA。 因此 cln 和 msl 资源显示为已停止。 显示的 VM 总数 (7) 必须正确。 群集中所有 VM 的列出状态必须是 Online。 必须正确识别当前的主要主节点。 本示例中为 hso-hana-vm-s1-0：
+输出应如以下示例所示。 多数仲裁 VM (hso-hana-dm) 上的 cln 和 msl 资源显示为已停止，这是正常的    。 多数仲裁节点上未安装 SAP HANA。 因此 cln 和 msl 资源显示为已停止   。 显示的 VM 总数 (7) 必须正确  。 群集中所有 VM 的列出状态必须是 Online  。 必须正确识别当前的主要主节点。 本示例中为 hso-hana-vm-s1-0  ：
 
 <pre><code>
 Stack: corosync
@@ -539,8 +539,8 @@ Full list of resources:
 crm configure property maintenance-mode=true
 </code></pre>
 
-使用 crm status 进行检查时，可发现输出中的所有资源已标记为 unmanaged。 在此状态下，群集不会对任何更改（例如启动或停止 SAP HANA）做出反应。
-以下示例演示群集处于维护模式时 crm status 命令的输出：
+使用 crm status 进行检查时，可发现输出中的所有资源已标记为 unmanaged   。 在此状态下，群集不会对任何更改（例如启动或停止 SAP HANA）做出反应。
+以下示例演示群集处于维护模式时 crm status 命令的输出  ：
 
 <pre><code>
 Stack: corosync
@@ -587,13 +587,13 @@ crm configure property maintenance-mode=false
 </code></pre>
 
 
-另一个 crm 命令可将获取的完整群集配置导入编辑器，以便你可以对其进行编辑。 保存更改后，群集将启动相应的操作：
+另一个 crm 命令可将获取的完整群集配置导入编辑器，以便你可以对其进行编辑  。 保存更改后，群集将启动相应的操作：
 
 <pre><code>
 crm configure edit
 </code></pre>
 
-若要查看完整的群集配置，请使用 crm show 选项：
+若要查看完整的群集配置，请使用 crm show 选项  ：
 
 <pre><code>
 crm configure show
@@ -601,7 +601,7 @@ crm configure show
 
 
 
-群集资源发生故障后，crm status 命令将显示失败操作的列表。 请查看此输出的如下示例：
+群集资源发生故障后，crm status 命令将显示失败操作的列表   。 请查看此输出的如下示例：
 
 
 <pre><code>
@@ -634,7 +634,7 @@ Failed Actions:
     last-rc-change='Wed Sep 12 17:01:28 2018', queued=0ms, exec=277663ms
 </code></pre>
 
-故障后需要执行群集清理。 再次使用 crm 命令，并使用命令选项 cleanup 来清理这些失败操作条目。 为相应的群集资源命名，如下所示：
+故障后需要执行群集清理。 再次使用 crm 命令，并使用命令选项 cleanup 来清理这些失败操作条目   。 为相应的群集资源命名，如下所示：
 
 <pre><code>
 crm resource cleanup rsc_SAPHanaCon_HSO_HDB00
@@ -657,7 +657,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>故障转移或接管
 
-如[重要说明](#important-notes)中所述，不应使用标准的正常关机来测试群集故障转移或 SAP HANA HSR 接管。 我们建议触发内核崩溃或强制资源迁移等操作，或者在 VM 的 OS 级别关闭所有网络。 另一种方法是运行 crm \<node\> standby 命令。 请参阅 [SUSE 文档][sles-12-ha-paper]。 
+如[重要说明](#important-notes)中所述，不应使用标准的正常关机来测试群集故障转移或 SAP HANA HSR 接管。 我们建议触发内核崩溃或强制资源迁移等操作，或者在 VM 的 OS 级别关闭所有网络。 另一种方法是运行 crm \<node\> standby 命令  。 请参阅 [SUSE 文档][sles-12-ha-paper]。 
 
 下面的三个示例命令可以强制群集故障转移：
 
@@ -673,7 +673,7 @@ wicked ifdown eth2
 wicked ifdown eth&ltn&gt
 </code></pre>
 
-如[计划内维护](#planned-maintenance)中所述，监视群集活动的好办法是结合 watch 命令运行 SAPHanaSR-showAttr：
+如[计划内维护](#planned-maintenance)中所述，监视群集活动的好办法是结合 watch 命令运行 SAPHanaSR-showAttr   ：
 
 <pre><code>
 watch SAPHanaSR-showAttr
@@ -681,15 +681,15 @@ watch SAPHanaSR-showAttr
 
 查看来自 SAP Python 脚本的 SAP HANA 布局状态也有帮助。 群集设置将查找此状态值。 思考工作节点故障的原因时，事情会变得明朗。 如果工作节点发生故障，SAP HANA 不会立即对整个横向扩展系统的运行状况返回错误。 
 
-它会重试几次，以避免不必要的故障转移。 仅当状态从“正常”（返回值 4）更改为“错误”（返回值 1）时，群集才会做出反应。 因此，如果 SAPHanaSR showAttr 的输出显示了状态为 offline 的 VM，这便是正常状况。 但是，没有任何活动能够切换主要站点和辅助站点。 只要 SAP HANA 不返回错误，就不会触发群集活动。
+它会重试几次，以避免不必要的故障转移。 仅当状态从“正常”（返回值 4）更改为“错误”（返回值 1）时，群集才会做出反应     。 因此，如果 SAPHanaSR showAttr 的输出显示了状态为 offline 的 VM，这便是正常状况   。 但是，没有任何活动能够切换主要站点和辅助站点。 只要 SAP HANA 不返回错误，就不会触发群集活动。
 
-可按如下所示调用 SAP Python 脚本，以用户 \<HANA SID\>adm 的身份监视 SAP HANA 布局运行状况。 可能必须调整路径：
+可按如下所示调用 SAP Python 脚本，以用户 \<HANA SID\>adm 的身份监视 SAP HANA 布局运行状况  。 可能必须调整路径：
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
 </code></pre>
 
-此命令的输出应如以下示例所示。 “主机状态”列和“总体主机”状态非常重要。 实际输出比较长，因此横跨了其他列。
+此命令的输出应如以下示例所示。 “主机状态”列和“总体主机”状态非常重要   。 实际输出比较长，因此横跨了其他列。
 为使本文档中的输出表更易于阅读，右侧的大多数列已去除：
 
 <pre><code>
@@ -705,7 +705,7 @@ overall host status: ok
 </code></pre>
 
 
-还有另一个命令可以检查当前群集活动。 终止主站点的主节点后，请查看以下命令和输出尾部。 可以看到转换操作的列表，例如，将以前的辅助主节点 (hso-hana-vm-s2-0) 提升为新的主要主节点。 如果一切正常并且所有活动已完成，则此“转换摘要”列表必须为空。
+还有另一个命令可以检查当前群集活动。 终止主站点的主节点后，请查看以下命令和输出尾部。 可以看到转换操作的列表，例如，将以前的辅助主节点 (hso-hana-vm-s2-0) 提升为新的主要主节点   。 如果一切正常并且所有活动已完成，则此“转换摘要”列表必须为空  。
 
 <pre><code>
  crm_simulate -Ls
@@ -754,7 +754,7 @@ Transition Summary:
 
 迁移资源会将一个条目添加到群集配置。 例如，强制故障转移。 必须在结束维护模式之前清理这些条目。 请参阅以下示例。
 
-首先，通过将 msl 资源迁移到当前辅助主节点来强制群集故障转移。 以下命令将发出已创建“移动约束”的警告：
+首先，通过将 msl 资源迁移到当前辅助主节点来强制群集故障转移  。 以下命令将发出已创建“移动约束”的警告  ：
 
 <pre><code>
 crm resource migrate msl_SAPHanaCon_HSO_HDB00 force
@@ -763,13 +763,13 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
 
-通过 SAPHanaSR-showAttr 命令查看故障转移进程。 若要监视群集状态，请打开专用 shell 窗口并结合 watch 启动命令：
+通过 SAPHanaSR-showAttr 命令查看故障转移进程  。 若要监视群集状态，请打开专用 shell 窗口并结合 watch 启动命令  ：
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-输出应显示手动故障转移。 以前的辅助主节点将升级，此示例中为 hso-hana-vm-s2-0。 以前的主站点已停止，以前的主要主节点 hso-hana-vm-s1-0 的 lss值为 1： 
+输出应显示手动故障转移。 以前的辅助主节点将升级，此示例中为 hso-hana-vm-s2-0   。 以前的主站点已停止，以前的主要主节点 hso-hana-vm-s1-0 的 lss值为 1    ： 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -796,19 +796,19 @@ hso-hana-vm-s2-2 DEMOTED     online     slave:slave:worker:slave     -10000 HSOS
 
 完成群集故障转移和 SAP HANA 接管之后，根据 [Pacemaker](#pacemaker) 中所述将群集置于维护模式。
 
-命令 SAPHanaSR-showAttr 和 crm status 不会指示有关资源迁移创建的约束的任何信息。 若要显示这些约束，一种做法是使用以下命令显示完整的群集资源配置：
+命令 SAPHanaSR-showAttr 和 crm status 不会指示有关资源迁移创建的约束的任何信息   。 若要显示这些约束，一种做法是使用以下命令显示完整的群集资源配置：
 
 <pre><code>
 crm configure show
 </code></pre>
 
-在群集配置中，查找以前的手动资源迁移产生的新位置约束。 此示例条目以 location cli- 开头：
+在群集配置中，查找以前的手动资源迁移产生的新位置约束。 此示例条目以 location cli- 开头  ：
 
 <pre><code>
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0
 </code></pre>
 
-遗憾的是，此类约束可能对整个群集行为产生影响。 因此，在将整个系统恢复启动之前，必须再次删除这些约束。 使用 unmigrate 命令可以清理以前创建的位置约束。 命名可能有点让人迷惑。 此命令不会尝试将资源迁移回到原始 VM。 而只是删除位置约束，并在运行命令时返回相应的信息：
+遗憾的是，此类约束可能对整个群集行为产生影响。 因此，在将整个系统恢复启动之前，必须再次删除这些约束。 使用 unmigrate 命令可以清理以前创建的位置约束  。 命名可能有点让人迷惑。 此命令不会尝试将资源迁移回到原始 VM。 而只是删除位置约束，并在运行命令时返回相应的信息：
 
 
 <pre><code>
@@ -823,7 +823,7 @@ INFO: Removed migration constraints for msl_SAPHanaCon_HSO_HDB00
 
 ## <a name="hbreport-to-collect-log-files"></a>使用 hb_report 收集日志文件
 
-若要分析 Pacemaker 群集的问题，运行 hb_report 实用工具会有所帮助，而 SUSE 支持人员也要求这样做。 它会收集分析发生情况时所需的所有重要日志文件。 此示例调用使用特定事件发生的开始时间和结束时间。 另请参阅[重要注意事项](#important-notes)：
+若要分析 Pacemaker 群集的问题，运行 hb_report 实用工具会有所帮助，而 SUSE 支持人员也要求这样做  。 它会收集分析发生情况时所需的所有重要日志文件。 此示例调用使用特定事件发生的开始时间和结束时间。 另请参阅[重要注意事项](#important-notes)：
 
 <pre><code>
 hb_report -f "2018/09/13 07:36" -t "2018/09/13 08:00" /tmp/hb_report_log
@@ -861,7 +861,7 @@ drwxr-xr-x 3 root root   4096 Sep 13 09:01 hso-hana-vm-s2-2
 </code></pre>
 
 
-在指定的时间范围内，当前主节点 hso-hana-vm-s1-0 已终止。 在 journal.log 中，可以找到与以下事件相关的条目：
+在指定的时间范围内，当前主节点 hso-hana-vm-s1-0 已终止  。 在 journal.log 中，可以找到与以下事件相关的条目  ：
 
 <pre><code>
 2018-09-13T07:38:01+0000 hso-hana-vm-s2-1 su[93494]: (to hsoadm) root on none
@@ -883,7 +883,7 @@ drwxr-xr-x 3 root root   4096 Sep 13 09:01 hso-hana-vm-s2-2
 2018-09-13T07:38:03+0000 hso-hana-vm-s2-1 su[93494]: pam_unix(su-l:session): session closed for user hsoadm
 </code></pre>
 
-另一个示例是辅助主节点（现已成为新的主要主节点）上的 Pacemaker 日志文件。 下面的摘录显示已终止的主要主节点的状态已设置为 offline：
+另一个示例是辅助主节点（现已成为新的主要主节点）上的 Pacemaker 日志文件。 下面的摘录显示已终止的主要主节点的状态已设置为 offline  ：
 
 <pre><code>
 Sep 13 07:38:02 [4178] hso-hana-vm-s2-0 stonith-ng:     info: pcmk_cpg_membership:      Node 3 still member of group stonith-ng (peer=hso-hana-vm-s1-2, counter=5.1)
@@ -904,7 +904,7 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 ## <a name="sap-hana-globalini"></a>SAP HANA global.ini
 
 
-下面的摘录来自于群集站点 2 上的 SAP HANA global.ini 文件。 此示例显示了主机名解析条目，用于使用不同的网络进行 SAP HANA 节点间通信和 HSR 通信：
+下面的摘录来自于群集站点 2 上的 SAP HANA global.ini 文件  。 此示例显示了主机名解析条目，用于使用不同的网络进行 SAP HANA 节点间通信和 HSR 通信：
 
 <pre><code>
 [communication]
@@ -946,7 +946,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 群集解决方案还提供浏览器界面，该界面为偏向于使用菜单和图形界面而不是 shell 级所有命令的用户提供 GUI。
-若要使用浏览器界面，请将以下 URL 中的 \<节点\> 替换为实际的 SAP HANA 节点。 然后输入群集（用户群集）的凭据：
+若要使用浏览器界面，请将以下 URL 中的 \<节点\> 替换为实际的 SAP HANA 节点  。 然后输入群集（用户群集）的凭据  ：
 
 <pre><code>
 https://&ltnode&gt:7630
@@ -964,15 +964,15 @@ https://&ltnode&gt:7630
 ![在 Hawk 中列出约束](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-还可以在 Hawk 的“历史记录”下上传 hb_report 输出，如下方所示。 Hb_report 收集日志文件，请参阅： 
+还可以在 Hawk 的“历史记录”下上传 hb_report 输出，如下方所示   。 Hb_report 收集日志文件，请参阅： 
 
 ![在 Hawk 中上传 hb_report 输出](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-然后，可使用“历史记录浏览器”浏览 hb_report 输出中包含的所有群集转换：
+然后，可使用“历史记录浏览器”浏览 hb_report 输出中包含的所有群集转换   ：
 
 ![Hawk 中 hb_report 输出中的转换](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
-下方的最后一张屏幕截图显示单个转换的“详细信息”部分。 群集对主要主节点 hso-hana-vm-s1-0 的崩溃做出反应。 群集现在正在将辅助节点 hso-hana-vm-s2-0 提升为新的主节点：
+下方的最后一张屏幕截图显示单个转换的“详细信息”部分  。 群集对主要主节点 hso-hana-vm-s1-0 的崩溃做出反应  。 群集现在正在将辅助节点 hso-hana-vm-s2-0 提升为新的主节点  ：
 
 ![Hawk 单个转换](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 

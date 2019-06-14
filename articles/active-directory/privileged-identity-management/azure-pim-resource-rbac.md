@@ -17,10 +17,10 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74607f6a746558238ead65036d708b515d370035
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60441301"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>在 PIM 中查看 Azure 资源角色的活动和审核历史记录
@@ -31,13 +31,13 @@ ms.locfileid: "60441301"
 
 若要查看特定用户在各种资源中执行的操作，可以查看与给定激活时段关联的 Azure 资源活动。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure 资源”。
+1. 单击“Azure 资源”  。
 
 1. 单击你要查看其活动和激活的资源。
 
-1. 单击“角色”或“成员”。
+1. 单击“角色”  或“成员”  。
 
 1. 单击某个用户。
 
@@ -53,19 +53,19 @@ ms.locfileid: "60441301"
 
 你可能具有合规性要求，必须向审核者提供角色分配的完整列表。 可以使用 PIM 查询特定资源上的角色分配，这包括针对所有子资源的角色分配。 以前，管理员很难获取某个订阅的角色分配完整列表，他们必须导出每个特定资源的角色分配。 使用 PIM，可以查询某个订阅中所有处于活动状态和符合条件的角色分配，包括针对所有资源组和资源的角色分配。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure 资源”。
+1. 单击“Azure 资源”  。
 
 1. 单击要为其导出角色分配的资源，例如订阅。
 
-1. 单击“成员”。
+1. 单击“成员”  。
 
-1. 单击“导出”以打开“导出成员身份”窗格。
+1. 单击“导出”  以打开“导出成员身份”窗格。
 
     ![“导出成员身份”窗格](media/azure-pim-resource-rbac/export-membership.png)
 
-1. 单击“导出所有成员”以在 CSV 文件中导出所有角色分配。
+1. 单击“导出所有成员”  以在 CSV 文件中导出所有角色分配。
 
     ![导出 CSV 文件](media/azure-pim-resource-rbac/export-csv.png)
 
@@ -73,23 +73,23 @@ ms.locfileid: "60441301"
 
 资源审核提供资源的所有角色活动的视图。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure 资源”。
+1. 单击“Azure 资源”  。
 
 1. 单击要查看其审核历史记录的资源。
 
-1. 单击“资源审核”。
+1. 单击“资源审核”  。
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
     ![筛选资源审核](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
-1. 对于“审核类型”，选择“激活(已分配 + 已激活)”。
+1. 对于“审核类型”  ，选择“激活(已分配 + 已激活)”  。
 
     ![活动详细信息](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
-1. 在“操作”下，单击某个用户的 **（活动）** 可查看该用户在 Azure 资源中的活动详细信息。
+1. 在“操作”  下，单击某个用户的 **（活动）** 可查看该用户在 Azure 资源中的活动详细信息。
 
     ![用户活动详细信息](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "60441301"
 
 使用“我的审核”，可以查看你的个人角色活动。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure 资源”。
+1. 单击“Azure 资源”  。
 
 1. 单击要查看其审核历史记录的资源。
 
-1. 单击“我的审核”。
+1. 单击“我的审核”  。
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 

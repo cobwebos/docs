@@ -17,10 +17,10 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
 ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60578504"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>在 Azure 上预配地理人工智能虚拟机 
@@ -41,7 +41,7 @@ Geo-DSVM 包含用于人工智能的多个工具，包括：
 
 
 1. 在 [Azure 门户](https://ms.portal.azure.com/#create/microsoft-ads.geodsvmwindows)中导航到虚拟机列表。
-2. 选择底部的“创建”按钮来进入向导。
+2. 选择底部的“创建”  按钮来进入向导。
 ![create-geo-ai-dsvm](./media/provision-geo-ai-dsvm/Create-Geo-AI.png)
 3. 用于创建 Geo-DSVM 的向导要求针对上图右侧列举的每个步骤（共有**四个步骤**）提供**输入**。 以下是配置每个步骤所需的输入：
 
@@ -57,16 +57,16 @@ Geo-DSVM 包含用于人工智能的多个工具，包括：
 
       4. **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。
 
-      5. **资源组**：可以创建一个新资源组，也可以使用订阅中现有的空 Azure 资源组。
+      5. **资源组**：可以创建一个新资源组，也可以使用订阅中现有的空 Azure 资源组  。
 
-      6. **位置**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近实际位置以实现最快的网络访问。 如果需要在 GPU 上进行深度学习，必须选择 Azure 中包含 NC 系列 GPU VM 实例的某个位置。 目前拥有 GPU VM 的位置是：美国东部、美国中北部、美国中南部、美国西部2、北欧、西欧。 有关最新列表，请查看[“Azure 产品(按区域)”页](https://azure.microsoft.com/regions/services/)并在“计算”下查找“NC 系列”。 
+      6. **位置**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近实际位置以实现最快的网络访问。 如果需要在 GPU 上进行深度学习，必须选择 Azure 中包含 NC 系列 GPU VM 实例的某个位置。 目前拥有 GPU VM 的位置是：美国东部、美国中北部、美国中南部、美国西部2、北欧、西欧  。 有关最新列表，请查看[“Azure 产品(按区域)”页](https://azure.microsoft.com/regions/services/)并在“计算”  下查找“NC 系列”  。 
 
 
    - **设置**：如果计划在地理 DSVM 上的 GPU 上运行深度学习，请选择 NC 系列 GPU 虚拟机大小之一。 否则，可以选择基于 CPU 的实例之一。  为 VM 创建存储帐户。 
    
    - **汇总**：验证输入的所有信息是否正确。
 
-   - **购买**：单击“购买”开始预配。 此时会显示服务条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
+   - **购买**：单击“购买”开始预配  。 此时会显示服务条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
  
 >[!NOTE]
 > 预配大约需要 20 到 30 分钟。 预配的状态在 Azure 门户上显示。

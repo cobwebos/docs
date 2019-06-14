@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: dcc54b0f67b9bf08df602c3eb9a4bcb0ea699ee7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60405879"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 PayPal 复制数据
@@ -75,7 +75,7 @@ PayPal 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 PayPal 数据集支持的属性列表。
 
-要从 PayPal 复制数据，请将数据集的 type 属性设置为“PayPalObject”。 支持以下属性：
+要从 PayPal 复制数据，请将数据集的 type 属性设置为“PayPalObject”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -104,7 +104,7 @@ PayPal 链接服务支持以下属性：
 
 ### <a name="paypal-as-source"></a>以 PayPal 作为源
 
-要从 PayPal 复制数据，请将复制活动中的源类型设置为“PayPalSource”。 复制活动源部分支持以下属性：
+要从 PayPal 复制数据，请将复制活动中的源类型设置为“PayPalSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

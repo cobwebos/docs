@@ -12,15 +12,15 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: c7f5fda405ca0e5ba9cf1dd0ed44c47cd3ee74b1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65949858"
 ---
 #   <a name="text-split-cognitive-skill"></a>文本拆分认知技能
 
-文本拆分技能将文本分解为文本区块。 你可以指定是要将文件分解为句子还是特定长度的页面。 当其他技能下游有最大文本长度要求时，此技能尤其有用。 
+文本拆分  技能将文本分解为文本区块。 你可以指定是要将文件分解为句子还是特定长度的页面。 当其他技能下游有最大文本长度要求时，此技能尤其有用。 
 
 > [!NOTE]
 > 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
@@ -43,7 +43,7 @@ Microsoft.Skills.Text.SplitSkill
 
 | 参数名称       | 描述      |
 |----------------------|------------------|
-| Text  | 要拆分为子字符串的文本。 |
+| text  | 要拆分为子字符串的文本。 |
 | languageCode  | （可选）文档的语言代码。  |
 
 ## <a name="skill-outputs"></a>技能输出 

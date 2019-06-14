@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391118"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio Azure WebJob 项目中使用 Azure 队列存储。 使用 Visual Studio 中的“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。  
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio Azure WebJob 项目中使用 Azure 队列存储。  使用 Visual Studio 中的“添加连接服务”  对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。  
 
 本文提供了 C# 代码示例，用于演示如何在 Azure 队列存储服务中使用 Azure WebJobs SDK 版本 1.x。
 
@@ -42,7 +42,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 }
 ```
 
-除了 string 以外，参数还可以是字节数组、CloudQueueMessage 对象或定义的 POCO。
+除了 string  以外，参数还可以是字节数组、CloudQueueMessage  对象或定义的 POCO。
 
 ### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 在下面的示例中，队列消息包含 **BlobInformation** 对象的 JSON，该对象包含一个 **BlobName** 属性。 SDK 会自动反序列化该对象。
@@ -190,7 +190,7 @@ public static void GracefulShutdownDemo(
 若要编写创建新队列消息的函数，请使用 **Queue** 属性。 与 **QueueTrigger** 一样，可以传入字符串形式的队列名称，还可以[动态设置队列名称](#how-to-set-configuration-options)。
 
 ### <a name="string-queue-messages"></a>字符串队列消息
-下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请按照本部分稍后将介绍的方法使用 IAsyncCollector<T>。）
+下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请按照本部分稍后将介绍的方法使用 IAsyncCollector<T>  。）
 
 ```csharp
 public static void CreateQueueMessage(
@@ -236,7 +236,7 @@ public static void CreateQueueMessages(
 可对以下参数类型使用 **Queue** 属性：
 
 * **out string**（如果函数结束时参数值非 null，则创建队列消息）
-* **out byte[]**（用法类似于 **string**）
+* **out byte[]** （用法类似于 **string**）
 * **out CloudQueueMessage**（用法类似于 **string**）
 * **out POCO**（一种可序列化类型，如果函数结束时参数为 null，则创建一条包含 null 对象的消息）
 * **ICollector**
@@ -342,7 +342,7 @@ logQueue.AddMessage(queueMessage);
 ### <a name="automatic-poison-message-handling"></a>自动处理有害消息
 SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第五次尝试失败，消息将移到有害队列。 有关如何配置最大重试次数的信息，请参阅[如何设置配置选项](#how-to-set-configuration-options)。
 
-病毒队列的名称为 *{originalqueuename}*-poison。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
+病毒队列的名称为 *{originalqueuename}* -poison。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
 
 在下面的示例中，如果队列消息包含不存在的 blob 名称，则 **CopyBlob** 函数会失败。 在这种情况，消息将从 copyBlobqueue 队列移到 copyBlobqueue-poison 队列。 然后，**ProcessPoisonMessage** 记录有害消息。
 
@@ -442,7 +442,7 @@ static void Main(string[] args)
 ### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>在代码中设置 WebJobs SDK 构造函数参数的值
 有时，要在代码中指定队列名称、Blob 名称、容器或表名称，而不是进行硬编码。 例如，可能要在配置文件或环境变量中指定 **QueueTrigger** 的队列名称。
 
-可以将 NameResolver 对象传递给 JobHostConfiguration 类型来执行该操作。 此时，可以在 WebJobs SDK 属性构造函数参数中包含以百分号 (%) 括住的特殊占位符，NameResolver 代码将指定要用于取代这些占位符的实际值。
+可以将 NameResolver  对象传递给 JobHostConfiguration  类型来执行该操作。 此时，可以在 WebJobs SDK 属性构造函数参数中包含以百分号 (%) 括住的特殊占位符，NameResolver  代码将指定要用于取代这些占位符的实际值。
 
 例如，假设要在测试环境中使用名为 logqueuetest 的队列，并在生产环境中使用名为 logqueueprod 的队列。 希望在具有实际队列名称的 **appSettings** 集合中指定条目名称，而不是硬编码的队列名称。 如果 **appSettings** 键为 logqueue，则函数如以下示例所示。
 
@@ -453,7 +453,7 @@ public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 }
 ```
 
-然后，NameResolver 类可以从 appSettings 获取队列名称，如以下示例所示：
+然后，NameResolver  类可以从 appSettings  获取队列名称，如以下示例所示：
 
 ```csharp
 public class QueueNameResolver : INameResolver
@@ -534,17 +534,17 @@ public static void WriteLog(
 }
 ```
 
-在 WebJobs SDK 仪表板中，转到特定函数调用页面并选择“切换输出”时，会看到 **TextWriter** 对象的输出：
+在 WebJobs SDK 仪表板中，转到特定函数调用页面并选择“切换输出”时，会看到 **TextWriter** 对象的输出： 
 
 ![调用链接](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
 
 ![函数调用页中的日志](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-在 WebJobs SDK 仪表板中，转到 Web 作业（而不是函数调用）页面并选择“切换输出”时，会看到最近的 100 行控制台输出。
+在 WebJobs SDK 仪表板中，转到 Web 作业（而不是函数调用）页面并选择“切换输出”时，会看到最近的 100 行控制台输出。 
 
 ![切换输出](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-在连续的 WebJob 中，应用程序日志显示在 Web 应用文件系统的 /data/jobs/continuous/*{webjobname}*/job_log.txt 中。
+在连续的 WebJob 中，应用程序日志显示在 Web 应用文件系统的 /data/jobs/continuous/ *{webjobname}* /job_log.txt 中。
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

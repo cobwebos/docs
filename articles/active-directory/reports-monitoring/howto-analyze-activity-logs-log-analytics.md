@@ -18,10 +18,10 @@ ms.author: priyamo
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1651bb2898a2bd1e3e0c3fbbce77dc4106d76e7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60438157"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>分析 Azure AD 活动日志与 Azure Monitor 日志
@@ -43,23 +43,23 @@ ms.locfileid: "60438157"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-2. 选择“Azure Active Directory”，然后从“监视”部分选择“日志”以打开 Log Analytics 工作区。 随即工作区打开，并含有默认查询。
+2. 选择“Azure Active Directory”  ，然后从“监视”  部分选择“日志”  以打开 Log Analytics 工作区。 随即工作区打开，并含有默认查询。
 
     ![默认查询](./media/howto-analyze-activity-logs-log-analytics/defaultquery.png)
 
 
 ## <a name="view-the-schema-for-azure-ad-activity-logs"></a>查看 Azure AD 活动日志的架构
 
-日志将推送到工作区中的“AuditLogs”和“SigninLogs”表。 查看这些表的架构：
+日志将推送到工作区中的“AuditLogs”  和“SigninLogs”  表。 查看这些表的架构：
 
-1. 在上一节中的默认查询视图中，选择“架构”并展开工作区。 
+1. 在上一节中的默认查询视图中，选择“架构”  并展开工作区。 
 
-2. 展开“日志管理”部分，然后展开“AuditLogs”或“SignInLogs”以查看日志架构。
+2. 展开“日志管理”  部分，然后展开“AuditLogs”  或“SignInLogs”  以查看日志架构。
     ![审核日志](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png)![登录日志](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>查询 Azure AD 活动日志
 
-现在工作区中已有日志，可以对其运行查询。 例如，若要获取最近一周使用最多的应用程序，将默认查询替换为以下查询并选择“运行”
+现在工作区中已有日志，可以对其运行查询。 例如，若要获取最近一周使用最多的应用程序，将默认查询替换为以下查询并选择“运行” 
 
 ```
 SigninLogs 
@@ -80,19 +80,19 @@ AuditLogs
 
 还可以针对查询设置警报。 例如，若要配置为当最近一周使用的应用程序超过 10 个时发出警报：
 
-1. 在工作区中，选择“设置警报”以打开“创建规则”页面。
+1. 在工作区中，选择“设置警报”  以打开“创建规则”  页面。
 
     ![设置警报](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
 
-2. 选择警报中创建的默认“警报条件”，将默认指标中的“阈值”更新为 10。
+2. 选择警报中创建的默认“警报条件”  ，将默认指标中的“阈值”  更新为 10。
 
     ![警报条件](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
-3. 为警报输入名称和描述，然后选择严重级别。 示例中可将其设置为“信息性”。
+3. 为警报输入名称和描述，然后选择严重级别。 示例中可将其设置为“信息性”  。
 
-4. 选择“操作组”，信号发生时将向其发出警报。 可以选择通过电子邮件或短信来通知团队，或使用 webhook、Azure functions 或逻辑应用来自动执行此操作。 详细了解如何[在 Azure 门户中创建和管理警报组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)。
+4. 选择“操作组”  ，信号发生时将向其发出警报。 可以选择通过电子邮件或短信来通知团队，或使用 webhook、Azure functions 或逻辑应用来自动执行此操作。 详细了解如何[在 Azure 门户中创建和管理警报组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)。
 
-5. 配置警报后，选择“创建警报”来启用它。 
+5. 配置警报后，选择“创建警报”  来启用它。 
 
 ## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>安装并使用用于 Azure AD 活动日志的预建视图
 

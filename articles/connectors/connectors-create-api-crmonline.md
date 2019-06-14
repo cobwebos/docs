@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
 ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60313586"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Dynamics 365 记录
@@ -55,7 +55,7 @@ ms.locfileid: "60313586"
    | **组织名称** | 是 | 要监视的组织 Dynamics 365 实例的名称，例如“Contoso” |
    | **实体名称** | 是 | 要监视的实体的名称，例如“Leads” | 
    | **频率** | 是 | 检查触发器相关的更新时，对时间间隔使用的时间单位 |
-   | 间隔 | 是 | 下一次检查之前所要经过的秒数、分钟数、小时数、天数、周数或月数。 |
+   | 间隔  | 是 | 下一次检查之前所要经过的秒数、分钟数、小时数、天数、周数或月数。 |
    ||| 
 
    ![触发器详细信息](./media/connectors-create-api-crmonline/trigger-details.png)
@@ -64,7 +64,7 @@ ms.locfileid: "60313586"
 
 现在添加 Dynamics 365 操作，用于创建新潜在顾客记录的任务记录。
 
-1. 在触发器下，选择“新建步骤”。
+1. 在触发器下，选择“新建步骤”。 
 
 1. 在搜索框中，输入“Dynamics 365”作为筛选器。 在操作列表中选择此操作：**新建记录**
 
@@ -80,7 +80,7 @@ ms.locfileid: "60313586"
 
    ![操作详细信息](./media/connectors-create-api-crmonline/action-details.png)
 
-1. 操作中显示“主题”框后，请在“主题”框中单击，以显示动态内容列表。 在此列表中，选择要包含在与新潜在顾客记录关联的任务记录中的字段值：
+1. 操作中显示“主题”框后，请在“主题”框中单击，以显示动态内容列表。   在此列表中，选择要包含在与新潜在顾客记录关联的任务记录中的字段值：
 
    | 字段 | 描述 |
    |-------|-------------|
@@ -90,9 +90,9 @@ ms.locfileid: "60313586"
 
    ![任务记录详细信息](./media/connectors-create-api-crmonline/create-record-details.png)
 
-1. 在设计器工具栏上，选择逻辑应用旁边的“保存”。 
+1. 在设计器工具栏上，选择逻辑应用旁边的“保存”。  
 
-1. 若要手动启动逻辑应用，请在设计器工具栏上选择“运行”。
+1. 若要手动启动逻辑应用，请在设计器工具栏上选择“运行”  。
 
    ![运行逻辑应用](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
 
@@ -100,12 +100,12 @@ ms.locfileid: "60313586"
 
 ## <a name="add-filter-or-query"></a>添加筛选器或查询
 
-若要指定如何在 Dynamics 365 操作中筛选数据，请在该操作中选择“显示高级选项”。 然后可以添加筛选器，或按查询排序。
+若要指定如何在 Dynamics 365 操作中筛选数据，请在该操作中选择“显示高级选项”。  然后可以添加筛选器，或按查询排序。
 例如，可以使用筛选器查询来只获取活动帐户，并按帐户名将这些记录排序。 对于此任务，请执行以下步骤：
 
-1. 在“筛选器查询”下，输入以下 OData 筛选器查询：`statuscode eq 1`
+1. 在“筛选器查询”下，输入以下 OData 筛选器查询：`statuscode eq 1` 
 
-2. 显示动态内容列表时，请在“排序依据”下选择“帐户名”。 
+2. 显示动态内容列表时，请在“排序依据”下选择“帐户名”。   
 
    ![指定筛选器和顺序](./media/connectors-create-api-crmonline/advanced-options.png)
 
@@ -140,15 +140,15 @@ ms.locfileid: "60313586"
 | **客户类型** | 必须是查找类型，例如 **accounts** 或 **contacts**。 |
 |||
 
-在本示例中，名为“创建新记录”的操作将创建新的任务记录：
+在本示例中，名为“创建新记录”的操作将创建新的任务记录： 
 
 ![创建具有记录 ID 和查找类型的任务记录](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
-此操作基于“所有者”字段中的记录 ID 以及“所有者类型”字段中的查找类型，将任务记录分配到特定的用户 ID 或团队记录 ID：
+此操作基于“所有者”字段中的记录 ID 以及“所有者类型”字段中的查找类型，将任务记录分配到特定的用户 ID 或团队记录 ID：  
 
 ![所有者记录 ID 和查找类型](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-此操作还会添加与“相关”字段中的记录 ID 以及“相关类型”字段中的查找类型相关联的帐户记录：
+此操作还会添加与“相关”字段中的记录 ID 以及“相关类型”字段中的查找类型相关联的帐户记录：  
 
 ![相关记录 ID 和查找类型](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
@@ -160,8 +160,8 @@ ms.locfileid: "60313586"
 
 2. 在操作工具栏上选择以下步骤之一：
 
-   * 选择“弹出”。![弹出记录](./media/connectors-create-api-crmonline/popout-record.png) 
-   * 选择“通过电子邮件发送链接”，以便将完整的 URL 复制到默认的电子邮件程序中。
+   * 选择“弹出”。![弹出记录](./media/connectors-create-api-crmonline/popout-record.png)  
+   * 选择“通过电子邮件发送链接”，以便将完整的 URL 复制到默认的电子邮件程序中。 
 
    记录 ID 显示在 URL 中的 `%7b` 与 `%7d` 编码字符之间：
 
@@ -171,7 +171,7 @@ ms.locfileid: "60313586"
 
 若要查找并检查逻辑应用中失败的步骤，可以查看逻辑应用的运行历史记录、状态、输入、输出等等。
 
-1. 在 Azure 门户上的逻辑应用主菜单中，选择“概述”。 在显示了逻辑应用的所有运行状态的“运行历史记录”部分，选择一个失败的运行以查看详细信息。
+1. 在 Azure 门户上的逻辑应用主菜单中，选择“概述”。  在显示了逻辑应用的所有运行状态的“运行历史记录”部分，选择一个失败的运行以查看详细信息。 
 
    ![逻辑应用运行状态](./media/connectors-create-api-crmonline/run-history.png)
 

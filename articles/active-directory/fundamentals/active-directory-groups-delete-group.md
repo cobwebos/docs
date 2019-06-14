@@ -14,16 +14,16 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9543908aafbb4ecd8f642f766f656f780706a36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60249152"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>使用 Azure Active Directory 删除组
 可以因为各种原因删除 Azure Active Directory (Azure AD) 组，但通常是因为：
 
-- 错误地将“组类型”设为了错误的选项。
+- 错误地将“组类型”设为了错误的选项  。
 
 - 错误地创建错误或重复组。 
 
@@ -32,13 +32,13 @@ ms.locfileid: "60249152"
 ## <a name="to-delete-a-group"></a>删除组
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“Azure Active Directory”，然后选择“组”。
+2. 选择“Azure Active Directory”，然后选择“组”   。
 
-3. 在“组 - 所有组”页中，搜索并选择要删除的组。 对于这些步骤，我们将使用“MDM 策略 - 东部”。
+3. 在“组 - 所有组”页中，搜索并选择要删除的组。  对于这些步骤，我们将使用“MDM 策略 - 东部”  。
 
     ![“组 - 所有组”页，其中突出显示了组名称](media/active-directory-groups-delete-group/group-all-groups-screen.png)
 
-4. 在“MDM 策略 - 东部概览”页中，选择“删除”。
+4. 在“MDM 策略 - 东部概览”页中，选择“删除”   。
 
     将从 Azure Active Directory 租户中删除组。
 

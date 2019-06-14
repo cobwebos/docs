@@ -11,10 +11,10 @@ tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
 ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60311958"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Excel Online 数据
@@ -43,17 +43,17 @@ ms.locfileid: "60311958"
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 要在其中访问 Excel Online 数据的逻辑应用。 此连接器仅提供操作，因此，若要启动逻辑应用，请选择单独的触发器（例如“重复”触发器）。
+* 要在其中访问 Excel Online 数据的逻辑应用。 此连接器仅提供操作，因此，若要启动逻辑应用，请选择单独的触发器（例如“重复”触发器）。 
 
 ## <a name="add-excel-action"></a>添加 Excel 操作
 
 1. 在 [Azure 门户](https://portal.azure.com)中，在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
 
-1. 在触发器下，选择“新建步骤”。
+1. 在触发器下，选择“新建步骤”。 
 
 1. 在搜索框中，输入“excel”作为筛选器。 在操作列表下，选择所需的操作。
 
-1. 如果系统提示登录到 Office 365 帐户，请选择“登录”。
+1. 如果系统提示登录到 Office 365 帐户，请选择“登录”  。
 
    你的凭据授权逻辑应用创建与 Excel Online 的连接并访问你的数据。
 

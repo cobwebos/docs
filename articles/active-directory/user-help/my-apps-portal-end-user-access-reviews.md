@@ -14,14 +14,14 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 551bbe4e994e15688c59fd395ab762e14927dfda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60482798"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>从我的应用门户中执行访问评审
-可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
+可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，  以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。  如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -38,7 +38,7 @@ ms.locfileid: "60482798"
 
 1.  登录到工作或学校帐户。
 
-2.  打开 web 浏览器并转到 https://myapps.microsoft.com，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com。
+2.  打开 web 浏览器并转到 https://myapps.microsoft.com ，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com 。
 
     **应用**页出现后，显示所有基于云的应用，由你的组织拥有和可供你使用。
 
@@ -63,7 +63,7 @@ ms.locfileid: "60482798"
 
     ![访问评审页面，显示原因框中带示例文本](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. 选择“提交”。
+7. 选择“提交”。 
 
     访问评审已完成并返回到**我的应用**门户。
 

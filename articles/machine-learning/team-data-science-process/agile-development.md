@@ -11,10 +11,10 @@ ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: adf713fc3f875168f99b302b0a9affef88e8414f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60327616"
 ---
 # <a name="agile-development-of-data-science-projects"></a>数据科学项目的敏捷开发
@@ -23,8 +23,8 @@ ms.locfileid: "60327616"
 
 本文包含如何执行以下操作的说明： 
 
-1. 执行项目涉及的工作项的冲刺规划。<br> 如果不了解冲刺规划，可查看详细信息并在[此处](https://en.wikipedia.org/wiki/Sprint_(software_development) "此处")查看常规信息。 
-2. 向冲刺添加工作项。 
+1. 执行项目涉及的工作项的冲刺规划  。<br> 如果不了解冲刺规划，可查看详细信息并在[此处](https://en.wikipedia.org/wiki/Sprint_(software_development) "此处")查看常规信息。 
+2. 向冲刺添加工作项  。 
 
 > [!NOTE]
 > 下面的一组说明概述了使用 Azure DevOps Services 设置 TDSP 团队环境所需的步骤。 它们指定了如何使用 Azure DevOps Services 完成这些任务，因为这是在 Microsoft 中实现 TDSP 的方法。  前面的列表中的第 3 项和第 4 项是选择使用 Azure DevOps Services 后必然会获得的权益。 如果你的组使用了其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。 例如，第 6 部分**将工作项与 Git 分支链接在一起**中的项目可能不会和在 Azure DevOps Services 上的操作一样简单。
@@ -33,12 +33,12 @@ ms.locfileid: "60327616"
 
 下图说明了实现数据科学项目流程中涉及的典型冲刺规划、编码和源代码控制工作流：
 
-![1](./media/agile-development/1-project-execute.png)
+![第](./media/agile-development/1-project-execute.png)
 
 
 ##  1.<a name='Terminology-1'></a>术语 
 
-在 TDSP 冲刺规划框架中，有四种频繁使用的工作项类型：功能、用户情景、任务和 Bug。 每个项目都维护一个针对所有工作项的积压工作。 在项目下的 git 存储库级别没有积压工作。 以下是它们的定义：
+在 TDSP 冲刺规划框架中，有四种频繁使用的工作项类型  ：功能、用户情景、任务和 Bug     。 每个项目都维护一个针对所有工作项的积压工作。 在项目下的 git 存储库级别没有积压工作。 以下是它们的定义：
 
 - **功能**：一个功能对应一个项目协定。 将客户端的不同协定视为不同的功能。 同样，最好将客户端的项目的不同阶段视为不同的功能。 如果选择类似 ClientName-EngagementName 的架构为功能命名，则可以通过名称轻松识别出项目/协定的上下文。
 - **情景**：情景是端到端完成功能（项目）所需的不同工作项。 情景示例包括：
@@ -48,7 +48,7 @@ ms.locfileid: "60327616"
     - 构建模型
     - 实施模型 
     - 重新定型模型
-- **任务**：任务是完成特定情景需要执行的可赋值代码、文档工作项或其他活动。 例如，获取数据情景中的任务可能是：
+- **任务**：任务是完成特定情景需要执行的可赋值代码、文档工作项或其他活动。 例如，获取数据  情景中的任务可能是：
     -  获取 SQL Server 的凭据 
     -  将数据上传到 SQL 数据仓库。 
 - **Bug**：Bug 通常指需要对完成任务时完成的现有代码或文档执行的修复。 如果此 bug 是由缺少阶段或任务引起的，则它可分别升级为情景或任务。 
@@ -72,22 +72,22 @@ ms.locfileid: "60327616"
 
 ## 3.<a name='AddFeature-3'></a>添加功能  
 
-在项目中创建项目存储库后，转到团队“概述”页，然后单击“管理工作”。
+在项目中创建项目存储库后，转到团队“概述”  页，然后单击“管理工作”  。
 
 ![2](./media/agile-development/2-sprint-team-overview.png)
 
-若要在积压工作中包括某个功能，请单击“积压工作” --> “功能” --> “新建”，键入功能“标题”（通常是你的项目名称），然后单击“添加”。
+若要在积压工作中包括某个功能，请单击“积压工作”   --> “功能”   --> “新建”  ，键入功能“标题”  （通常是你的项目名称），然后单击“添加”  。
 
 ![3](./media/agile-development/3-sprint-team-add-work.png)
 
 双击创建的功能。 填写说明，为此功能分配团队成员，并为此功能设置计划参数。 
 
-还可以将此功能链接到项目存储库。 单击“开发”部分下的“添加链接”。 完成编辑功能后，单击“保存并关闭”以退出。
+还可以将此功能链接到项目存储库。 单击“开发”  部分下的“添加链接”  。 完成编辑功能后，单击“保存并关闭”  以退出。
 
 
 ## 4.<a name='AddStoryunderfeature-4'></a>在功能下添加情景 
 
-可以在功能下添加情景，来描述完成（功能）项目所需的主要步骤。 若要添加新情景，请在积压工作视图中单击功能左侧的 + 号。  
+可以在功能下添加情景，来描述完成（功能）项目所需的主要步骤。 若要添加新情景，请在积压工作视图中单击功能左侧的 +  号。  
 
 ![4](./media/agile-development/4-sprint-add-story.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "60327616"
 
 ![5](./media/agile-development/5-sprint-edit-story.png)
 
-通过单击“开发”下的“+ 添加链接”，可以将此情景连接到现有存储库。 
+通过单击“开发”  下的“+ 添加链接”  ，可以将此情景连接到现有存储库。 
 
 ![6](./media/agile-development/6-sprint-link-existing-branch.png)
 
@@ -104,11 +104,11 @@ ms.locfileid: "60327616"
 
 任务是完成各个情景所需的特定详细步骤。 完成一个情景的所有任务后，此情景应也已完成。 
 
-若要向情景添加任务，请单击情景项旁的 + 号，选择“任务”，然后在弹出窗口中填写此任务的详细信息。
+若要向情景添加任务，请单击情景项旁的 +  号，选择“任务”  ，然后在弹出窗口中填写此任务的详细信息。
 
 ![7](./media/agile-development/7-sprint-add-task.png)
 
-创建功能、情景和任务后，可以在“积压工作”或“版块”视图中查看它们，来跟踪它们的状态。
+创建功能、情景和任务后，可以在“积压工作”  或“版块”  视图中查看它们，来跟踪它们的状态。
 
 ![8](./media/agile-development/8-sprint-backlog-view.png)
 
@@ -121,23 +121,23 @@ ms.locfileid: "60327616"
 
 ### <a name="agile-data-science-process-template-setup"></a>敏捷数据科学流程模板设置
 
-1. 导航到服务器主页，选择“配置” -> “流程”。
+1. 导航到服务器主页，选择“配置” -> “流程”。  
 
     ![10](./media/agile-development/10-settings.png) 
 
-2. 导航到“所有流程” -> “流程”，在“敏捷”下面，单击“创建继承流程”。 输入流程名称“AgileDataScienceProcess”，然后单击“创建流程”。
+2. 导航到“所有流程” -> “流程”，在“敏捷”下面，单击“创建继承流程”。     输入流程名称“AgileDataScienceProcess”，然后单击“创建流程”。 
 
     ![11](./media/agile-development/11-agileds.png)
 
-3. 在“AgileDataScienceProcess” -> “工作项类型”选项卡下面，通过单击“配置”->“禁用”来禁用“长篇故事”、“功能”、“用户情景”和“任务”工作项类型
+3. 在“AgileDataScienceProcess” -> “工作项类型”选项卡下面，通过单击“配置”->“禁用”来禁用“长篇故事”、“功能”、“用户情景”和“任务”工作项类型       
 
     ![12](./media/agile-development/12-disable.png)
 
-4. 导航到“AgileDataScienceProcess” -> “积压工作级别”选项卡。单击“配置” -> “编辑/重命名”，将“长篇故事”重命名为“TDSP 项目”。 在同一对话框中，单击“数据科学项目”中的“+新建工作项”，并将“默认工作项类型”设置为“TDSP 项目” 
+4. 导航到“AgileDataScienceProcess” -> “积压工作级别”选项卡。   单击“配置” -> “编辑/重命名”，将“长篇故事”重命名为“TDSP 项目”。   在同一对话框中，单击“数据科学项目”中的“+新建工作项”，并将“默认工作项类型”设置为“TDSP 项目”   
 
     ![13](./media/agile-development/13-rename.png)  
 
-5. 同样，将积压工作名称“功能”更改为“TDSP 阶段”，并将以下内容添加到“新建工作项类型”：
+5. 同样，将积压工作名称“功能”更改为“TDSP 阶段”，并将以下内容添加到“新建工作项类型”： 
 
     - 了解业务
     - 数据采集
@@ -157,13 +157,13 @@ ms.locfileid: "60327616"
 
 创建数据科学流程模板之后，可以创建和跟踪对应于 TDSP 生命周期的数据科学工作项。
 
-1. 创建新项目时，请选择“Agile\AgileDataScienceProcess”作为“工作项流程”：
+1. 创建新项目时，请选择“Agile\AgileDataScienceProcess”作为“工作项流程”： 
 
     ![15](./media/agile-development/15-newproject.png)
 
-2. 导航到新建的项目，单击“工作” -> “积压工作”。
+2. 导航到新建的项目，单击“工作” -> “积压工作”。  
 
-3. 单击“配置团队设置”使“TDSP 项目”可见，并选中“TDSP 项目”；保存设置。
+3. 单击“配置团队设置”使“TDSP 项目”可见，并选中“TDSP 项目”；保存设置。 
 
     ![16](./media/agile-development/16-enabledsprojects.png)
 

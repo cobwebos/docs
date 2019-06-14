@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
 ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60591791"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 语法
 
-SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
+SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
   
  本主题列出了有关 SqlFilter 语法的详细信息。  
   
@@ -239,11 +239,11 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
   `[NOT] LIKE` 中的未知求值：  
   
-- 如果任何操作数的求值结果为“未知”，则结果为“未知”。  
+- 如果任何操作数的求值结果为“未知”  ，则结果为“未知”  。  
   
   `[NOT] IN` 中的未知求值：  
   
-- 如果左侧操作数的求值结果为“未知”，则结果为“未知”。  
+- 如果左侧操作数的求值结果为“未知”  ，则结果为“未知”  。  
   
   **AND** 运算符中的未知求值：  
   

@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
 ms.openlocfilehash: 9955450b468ef38ba456d7ee73d9681de677494d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190713"
 ---
-# <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳实践
-本文介绍数据安全与加密最佳的实践。
+# <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
+本文介绍了针对数据安全和加密的最佳做法。
 
-最佳做法以观点的共识以及 Azure 平台功能和特性集为基础。 随时间变化的观点和技术和定期以反映这些更改更新这篇文章。
+最佳做法以观点的共识以及 Azure 平台功能和特性集为基础。 观点和技术将随着时间改变，本文会定期更新以反映这些更改。
 
 ## <a name="protect-data"></a>保护数据
 为了帮助保护云中的数据，需要考虑数据可能出现的状态以及可用于该状态的控件。 Azure 数据安全与加密的最佳做法与以下数据状态相关：

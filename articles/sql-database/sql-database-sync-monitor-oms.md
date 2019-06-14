@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
 ms.openlocfilehash: 6e94aac47ce5b45e700e2413d2e86d5f36596348
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60614952"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>使用 Azure Monitor 监视 SQL 数据同步日志 
@@ -28,7 +28,7 @@ ms.locfileid: "60614952"
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
-> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例  。
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>监视所有同步组的仪表板 
 
@@ -78,19 +78,19 @@ ms.locfileid: "60614952"
 
 有关创建 runbook 的详细信息，请参阅[我的第一个 PowerShell runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell)。
 
-1.  在 Azure 自动化帐户下，请选择“流程自动化”下的“Runbook”选项卡。
+1.  在 Azure 自动化帐户下，请选择“流程自动化”下的  “Runbook”选项卡。
 
-2.  在 Runbook 页面左上角选择“添加 Runbook”。
+2.  在 Runbook 页面左上角选择  “添加 Runbook”。
 
-3.  选择“导入现有的 Runbook”。
+3.  选择“导入现有的 Runbook”。 
 
-4.  在“Runbook 文件”下，使用给定的 `DataSyncLogPowerShellRunbook` 文件。 将“Runbook 类型”设置为 `PowerShell`。 为 runbook 提供一个名称。
+4.   在“Runbook 文件”下，使用给定的 `DataSyncLogPowerShellRunbook` 文件。 将  “Runbook 类型”设置为 `PowerShell`。 为 runbook 提供一个名称。
 
-5.  选择“创建”。 现在你拥有了一个 runbook。
+5.  选择“创建”  。 现在你拥有了一个 runbook。
 
-6.  在 Azure 自动化帐户下，请选择“共享资源”下的“变量”选项卡。
+6.  在 Azure 自动化帐户下，请选择“共享资源”下的  “变量”选项卡。
 
-7.  在“变量”页上，选择“添加变量”。 创建一个变量来存储 runbook 的上次执行时间。 如果你有多个 runbook，则每个 runbook 都需要一个变量。
+7.  在“变量”  页上，选择“添加变量”。 创建一个变量来存储 runbook 的上次执行时间。 如果你有多个 runbook，则每个 runbook 都需要一个变量。
 
 8.  该变量名称设置为 `DataSyncLogLastUpdatedTime`，并将其类型设置为 DateTime。
 
@@ -108,47 +108,47 @@ ms.locfileid: "60614952"
 
     如果遇到错误，请确保已安装最新的PowerShell 模块。 可以将**模块库**中的最新 PowerShell 模块安装到自动化帐户中。
 
-12. 单击“发布”。
+12. 单击“发布”  。
 
 ### <a name="schedule-the-runbook"></a>计划 runbook。
 
 要计划 runbook，请执行以下操作：
 
-1.  在 runbook 下，选择“资源”下的“计划”选项卡。
+1.  在 runbook 下，选择  “资源”下的“计划”选项卡。
 
-2.  在“计划”页上选择“添加计划”。
+2.  在“计划”  页上选择“添加计划”。
 
-3.  选择“将一个计划链接到你的 Runbook”。
+3.  选择“将一个计划链接到你的 Runbook”。 
 
-4.  选择“创建新计划”。
+4.  选择“创建新计划”  。
 
-5.  将“定期”设置为“重复执行”，并设置所需间隔。 使用相同的时间间隔，在脚本中，并在 Azure Monitor 日志中。
+5.   将“定期”设置为“重复执行”，并设置所需间隔。 使用相同的时间间隔，在脚本中，并在 Azure Monitor 日志中。
 
-6.  选择“创建”。
+6.  选择“创建”  。
 
 ### <a name="check-the-automation"></a>检查自动化
 
-若要监控你的自动化设置是否在按预期方式运行，请在自动化帐户的“概述”下，查找“监控”下的“作业统计信息”视图。 将此视图固定到仪表板以便于查看。 成功运行的 runbook 显示为“已完成”，失败的运行显示为“失败”。
+若要监控你的自动化设置是否在按预期方式运行，请在自动化帐户的  “概述”下，查找“监控”下的“作业统计信息”视图   。 将此视图固定到仪表板以便于查看。 成功运行的 runbook 显示为“已完成”，失败的运行显示为“失败”。
 
 ## <a name="create-an-azure-monitor-reader-alert-for-email-notifications"></a>创建电子邮件通知 Azure 监视读取器警报
 
 若要创建使用 Azure Monitor 日志的警报，请执行以下操作。 作为先决条件，你需要有与 Log Analytics 工作区链接的 Azure Monitor 日志。
 
-1.  在 Azure 门户中，选择“日志搜索”。
+1.  在 Azure 门户中，选择“日志搜索”。 
 
 2.  创建查询，以便在所选的间隔内按同步组选择错误和警告。 例如：
 
     `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
 
-3.  运行查询之后，请选择指示“警报”的钟形图标。
+3.  运行查询之后，请选择指示“警报”的钟形图标  。
 
-4.  在“基于以下项生成警报”中，请选择“指标度量值”。
+4.  在“基于以下项生成警报”中，请选择“指标度量值”   。
 
-    1.  将聚合值设置为“大于”。
+    1.  将聚合值设置为“大于”  。
 
-    2.  在“大于”后，输入接收通知之前等待的阈值。 在数据同步中可能会出现暂时性的错误。若要减少干扰，请将阈值设置为 5。
+    2.  在“大于”  后，输入接收通知之前等待的阈值。 在数据同步中可能会出现暂时性的错误。若要减少干扰，请将阈值设置为 5。
 
-5.  在“操作”下，将“电子邮件通知”设置为“是”。 输入所需的电子邮件收件人。
+5.  在“操作”下，将“电子邮件通知”设置为“是”   。 输入所需的电子邮件收件人。
 
 6.  单击“ **保存**”。 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
 
@@ -166,9 +166,9 @@ ms.locfileid: "60614952"
 
 1.  在 Log Analytics 工作区主页上，选择左侧打开 plus**视图设计器**。
 
-2.  在视图设计器的顶部栏中选择“导入”。 然后选择“DataSyncLogOMSView”示例文件。
+2.  在视图设计器的顶部栏中选择  “导入”。 然后选择“DataSyncLogOMSView”示例文件。
 
-3.  该示例视图用于管理两个同步组。 编辑此视图以适合你的方案。 打开“编辑”并进行以下更改：
+3.  该示例视图用于管理两个同步组。 编辑此视图以适合你的方案。 打开“编辑”  并进行以下更改：
 
     1.  请根据需要从库创建新的“圆环图和列表”对象。
 
@@ -180,7 +180,7 @@ ms.locfileid: "60614952"
 
     3.  在每个磁贴上，根据需要更新磁贴。
 
-4.  单击“保存”，视图即已准备就绪。
+4.  单击  “保存”，视图即已准备就绪。
 
 ## <a name="cost-of-this-solution"></a>此解决方案的成本
 

@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 651dc4efa653e7a4eb77f153280579ffd87fe8f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289909"
 ---
 # <a name="start-using-pim"></a>开始使用 PIM
@@ -48,17 +48,17 @@ ms.locfileid: "60289909"
 
     只有拥有组织帐户（例如 @yourdomain.com）而非 Microsoft 帐户（例如 @outlook.com）的全局管理员才能为目录启用 PIM。
 
-1. 单击“所有服务”，并查找 **Azure AD Privileged Identity Management** 服务。
+1. 单击“所有服务”  ，并查找 **Azure AD Privileged Identity Management** 服务。
 
     ![“所有服务”中的 Azure AD Privileged Identity Management](./media/pim-getting-started/pim-all-services-find.png)
 
 1. 单击此项可打开“PIM 快速入门”。
 
-1. 在列表中单击“许可 PIM”。
+1. 在列表中单击“许可 PIM”。 
 
     ![许可 PIM](./media/pim-getting-started/consent-pim.png)
 
-1. 单击“验证我的身份”，以便通过 Azure MFA 来验证身份。 系统会要求你选取一个帐户。
+1. 单击“验证我的身份”，以便通过  Azure MFA 来验证身份。 系统会要求你选取一个帐户。
 
     ![选取帐户](./media/pim-getting-started/pick-account.png)
 
@@ -70,9 +70,9 @@ ms.locfileid: "60289909"
 
     ![其他安全验证](./media/pim-getting-started/additional-security-verification.png)
 
-1. 完成验证过程以后，请单击“许可”按钮。
+1. 完成验证过程以后，请单击“许可”按钮。 
 
-1. 在出现的消息中单击“是”，对 PIM 服务表示许可。
+1. 在出现的消息中单击“是”，对 PIM 服务表示许可。 
 
     ![许可 PIM 消息](./media/pim-getting-started/consent-pim-message.png)
 
@@ -80,15 +80,15 @@ ms.locfileid: "60289909"
 
 为目录启用 PIM 以后，需注册 PIM，然后才能管理 Azure AD 角色。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure AD 角色”。
+1. 单击“Azure AD 角色”。 
 
     ![为 Azure AD 角色注册 PIM](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
 
-1. 单击“注册”。
+1. 单击“注册”。 
 
-1. 在出现的消息中单击“是”以注册 PIM，以便管理 Azure AD 角色。
+1. 在出现的消息中单击“是”以注册 PIM，以便管理 Azure AD 角色。 
 
     ![“为 Azure AD 角色注册 PIM”消息](./media/pim-getting-started/sign-up-pim-message.png)
 
@@ -117,13 +117,13 @@ ms.locfileid: "60289909"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 单击“所有服务”，并查找 **Azure AD Privileged Identity Management** 服务。
+1. 单击“所有服务”  ，并查找 **Azure AD Privileged Identity Management** 服务。
 
     ![“所有服务”中的 Azure AD Privileged Identity Management](./media/pim-getting-started/pim-all-services-find.png)
 
 1. 单击此项可打开“PIM 快速入门”。
 
-1. 选中“将边栏选项卡固定到仪表板”可将“PIM 快速入门”边栏选项卡固定到仪表板。
+1. 选中“将边栏选项卡固定到仪表板”  可将“PIM 快速入门”边栏选项卡固定到仪表板。
 
     ![将边栏选项卡固定到仪表板](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 

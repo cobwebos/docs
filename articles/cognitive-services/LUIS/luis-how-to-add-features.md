@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
 ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60195887"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>使用短语列表来增强字词列表的信号
@@ -30,30 +30,30 @@ ms.locfileid: "60195887"
 
 LUIS 允许每个应用最多有 10 个短语列表。 
 
-1. 单击“我的应用”页上的名称打开应用，单击“构建”，然后单击应用左侧面板中的“短语列表”。 
+1. 单击“我的应用”页上的名称打开应用，单击“构建”，然后单击应用左侧面板中的“短语列表”    。 
 
-2. 在“短语列表”页上，单击“新建短语列表”。 
+2. 在“短语列表”页上，单击“新建短语列表”   。 
  
-3. 在“添加短语列表”对话框中，键入“城市”作为短语列表的名称。 在“值”框中，键入短语列表的值。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter。
+3. 在“添加短语列表”对话框中，键入“城市”作为短语列表的名称  。 在“值”框中，键入短语列表的值  。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter  。
 
     ![添加短语列表“城市”](./media/luis-add-features/add-phrase-list-cities.png)
 
-4. LUIS 可以建议相关值，用于添加到短语列表。 单击“建议”，获取一组与添加的值在语义上相关的建议值。 可以单击任何建议的值，或单击“全部添加”添加所有值。
+4. LUIS 可以建议相关值，用于添加到短语列表。 单击“建议”，获取一组与添加的值在语义上相关的建议值  。 可以单击任何建议的值，或单击“全部添加”添加所有值  。
 
     ![短语列表建议的值 - 全部添加](./media/luis-add-features/related-values.png)
 
-5. 如果添加的短语列表值是可交换使用的替代值，则单击“这些值可以交换”。
+5. 如果添加的短语列表值是可交换使用的替代值，则单击“这些值可以交换”  。
 
     ![短语列表建议的值 - 选择可互换框](./media/luis-add-features/interchangeable.png)
 
-6. 单击“ **保存**”。 将“城市”短语列表添加到“短语列表”页。
+6. 单击“ **保存**”。 将“城市”短语列表添加到“短语列表”页  。
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> 可以在“短语列表”页上，删除或取消激活上下文工具栏中的短语列表。
+> 可以在“短语列表”  页上，删除或取消激活上下文工具栏中的短语列表。
 
 ## <a name="next-steps"></a>后续步骤
 

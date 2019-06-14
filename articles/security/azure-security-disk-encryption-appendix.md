@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66118605"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>有关 Azure 磁盘加密的附录 
@@ -175,7 +175,7 @@ ms.locfileid: "66118605"
 以下部分介绍了必要操作，让你在 Azure IaaS 中准备将预加密的 Windows VHD 部署为加密 VHD。 使用该信息在 Azure Site Recovery 或 Azure 上准备和启动全新的 Windows VM (VHD)。 有关如何准备和上传 VHD 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](../virtual-machines/windows/upload-generalized-managed.md)。
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>更新组策略以允许使用非 TPM 保护 OS
-在“本地计算机策略” > “计算机设置” > “管理模板” > “Windows 组件”下配置名为“BitLocker 驱动器加密”的 BitLocker 组策略设置。 如下图所示，将此设置更改为“操作系统驱动器” > “启动时需要附加身份验证” > “没有兼容的 TPM 时允许 BitLocker”：
+在“本地计算机策略”   > “计算机设置”   > “管理模板”   > “Windows 组件”  下配置名为“BitLocker 驱动器加密”  的 BitLocker 组策略设置。 如下图所示，将此设置更改为“操作系统驱动器”   > “启动时需要附加身份验证”   > “没有兼容的 TPM 时允许 BitLocker”  ：
 
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-disk-encryption/disk-encryption-fig8.png)
 
@@ -227,7 +227,7 @@ ms.locfileid: "66118605"
 
 3. 注销 SSH 会话。
 
-4. 若要加密 OS，请在启用加密时将 volumeType 指定为“All”或“OS”。
+4. 若要加密 OS，请在启用加密时将 volumeType 指定为“All”或“OS”。  
 
    > [!NOTE]
    > 未作为 `systemd` 服务运行的所有用户空间进程应使用 `SIGKILL` 终止。 重启 VM。 在正在运行的 VM 上启用 OS 磁盘加密时，请计划 VM 停机时间。
@@ -292,7 +292,7 @@ ms.locfileid: "66118605"
 ### <a name="bkmk_Ubuntu"></a>Ubuntu 16
 通过执行以下步骤在分发版安装过程中配置加密：
 
-1. 对磁盘进行分区时选择“配置加密卷”。
+1. 对磁盘进行分区时选择“配置加密卷”  。
 
    ![Ubuntu 16.04 安装 - 配置加密卷](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
@@ -382,7 +382,7 @@ ms.locfileid: "66118605"
 
 ### <a name="bkmk_openSUSE"></a>openSUSE 13.2
 若要在分发版安装期间配置加密，请执行以下步骤：
-1. 对磁盘进行分区时，选择“加密卷组”，并输入密码。 这是要上传到 Key Vault 的密码。
+1. 对磁盘进行分区时，选择“加密卷组”  ，并输入密码。 这是要上传到 Key Vault 的密码。
 
    ![openSUSE 13.2 安装 - 加密卷组](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
@@ -450,11 +450,11 @@ ms.locfileid: "66118605"
 
 ### <a name="bkmk_CentOS"></a>CentOS 7
 若要在分发版安装期间配置加密，请执行以下步骤：
-1. 对磁盘进行分区时，选择“加密我的数据”。
+1. 对磁盘进行分区时，选择“加密我的数据”  。
 
    ![CentOS 7 安装 - 安装目标](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
-2. 确保为根分区选择了“加密”。
+2. 确保为根分区选择了“加密”  。
 
    ![CentOS 7 安装 - 为根分区选择加密](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 

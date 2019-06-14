@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
 ms.openlocfilehash: 8e11b6d5a9c9df10e789c8e0be3a90d94ecf3d23
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60505639"
 ---
 # <a name="add-prebuilt-intents-for-common-intents"></a>为常用意向添加预生成意向 
@@ -24,21 +24,21 @@ LUIS 通过预生成域提供了一组预生成意向，用以快速添加常用
 
 ## <a name="add-a-prebuilt-intent"></a>添加预生成意向
 
-1. 在“我的应用”页面上，选择你的应用。 这将打开你的应用并显示该应用的“生成”部分。 
+1. 在“我的应用”  页面上，选择你的应用。 这将打开你的应用并显示该应用的“生成”部分。  
 
-1. 在“意向”页面上，从意向列表上方的工具栏中选择“添加预生成意向”。 
+1. 在“意向”  页面上，从意向列表上方的工具栏中选择“添加预生成意向”。  
 
-1. 从弹出对话框中选择“Utilities.Cancel”意向。 
+1. 从弹出对话框中选择“Utilities.Cancel”  意向。 
 
     ![添加预生成意向](./media/luis-prebuilt-intents/prebuilt-intents-ddl.png)
 
-1. 选择“完成”按钮。
+1. 选择“完成”按钮。 
 
 ## <a name="train-and-test"></a>训练和测试
 
-1. 添加意向后，通过在右上角的工具栏中选择“训练”来训练应用。 
+1. 添加意向后，通过在右上角的工具栏中选择“训练”来训练应用。  
 
-1. 通过在右侧的工具栏中选择“测试”来测试新意向。 
+1. 通过在右侧的工具栏中选择“测试”来测试新意向。  
 
 1. 在文本框中，输入用于取消的话语：
 

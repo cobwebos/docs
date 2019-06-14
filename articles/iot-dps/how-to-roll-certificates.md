@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626908"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何滚动更新 X.509 设备证书
@@ -54,11 +54,11 @@ ms.locfileid: "60626908"
 
 如果在预配服务中为设备创建了[注册组](concepts-service.md#enrollment-group)，则上述连接尝试可能不会失败。 在这种情况下，如果不是滚动更新设备证书信任链中的根证书或中间证书，并且新证书是注册组中定义的信任链的一部分，则该设备可以识别。 如果在对安全违规做出反应时出现这种情况，至少应将组中被视为违规的特定设备证书加入方块列表。 有关详细信息，请参阅[将注册组中的特定设备加入方块列表](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)。
 
-可在“管理注册”页上更新已滚动更新的证书的注册条目。 若要访问该页，请遵循以下步骤：
+可在“管理注册”页上更新已滚动更新的证书的注册条目。  若要访问该页，请遵循以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，并导航到包含设备注册条目的 IoT 中心设备预配服务实例。
 
-2. 单击“管理注册”。
+2. 单击“管理注册”。 
 
     ![管理注册](./media/how-to-roll-certificates/manage-enrollments-portal.png)
 
@@ -70,9 +70,9 @@ ms.locfileid: "60626908"
 
 如果是为了响应安全违规而滚动更新证书，则应使用以下方法来立即删除当前证书：
 
-1. 单击“单独注册”，然后单击列表中的注册 ID 条目。 
+1. 单击“单独注册”，然后单击列表中的注册 ID 条目。  
 
-2. 单击“删除当前证书”按钮，然后单击文件夹图标选择注册条目的待上传新证书。 完成后单击“保存”。
+2. 单击“删除当前证书”按钮，然后单击文件夹图标选择注册条目的待上传新证书。  完成后单击“保存”  。
 
     如果主要证书和辅助证书同时泄露，应针对这两个证书完成这些步骤。
 
@@ -93,13 +93,13 @@ ms.locfileid: "60626908"
 以后当辅助证书也即将过期，因此需要滚动更新时，可以换用主要证书配置。 以这种方式在主要证书与辅助证书之间轮换可以减少设备尝试预配时造成的停机时间。
 
 
-1. 单击“单独注册”，然后单击列表中的注册 ID 条目。 
+1. 单击“单独注册”，然后单击列表中的注册 ID 条目。  
 
-2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“ **保存**”。
+2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。  单击“ **保存**”。
 
     ![使用辅助证书管理单独注册](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
-3. 以后当主要证书过期时，请返回此处，并单击“删除当前证书”按钮删除该主要证书。
+3. 以后当主要证书过期时，请返回此处，并单击“删除当前证书”按钮删除该主要证书。 
 
 ## <a name="enrollment-groups-and-security-breaches"></a>注册组和安全违规
 
@@ -107,17 +107,17 @@ ms.locfileid: "60626908"
 
 #### <a name="update-compromised-root-ca-certificates"></a>更新已泄露的根 CA 证书
 
-1. 单击设备预配服务实例的“证书”选项卡。
+1. 单击设备预配服务实例的“证书”选项卡  。
 
-2. 在列表中单击已泄露的证书，然后单击“删除”按钮。 输入证书名称确认删除，然后单击“确定”。 针对所有已泄露的证书重复此过程。
+2. 在列表中单击已泄露的证书，然后单击“删除”按钮。  输入证书名称确认删除，然后单击“确定”。  针对所有已泄露的证书重复此过程。
 
     ![删除根 CA 证书](./media/how-to-roll-certificates/delete-root-cert.png)
 
 3. 遵循[配置已验证的 CA 证书](how-to-verify-certificates.md)中所述的步骤，添加并验证新的根 CA 证书。
 
-4. 单击设备预配服务实例的“管理注册”选项卡，然后单击“注册组”列表。 在列表中单击自己的注册组名称。
+4. 单击设备预配服务实例的“管理注册”选项卡，然后单击“注册组”列表   。 在列表中单击自己的注册组名称。
 
-5. 单击“CA 证书”，然后选择新的根 CA 证书。 然后单击“保存”。 
+5. 单击“CA 证书”，然后选择新的根 CA 证书。  然后单击“保存”  。 
 
     ![选择新的根 CA 证书](./media/how-to-roll-certificates/select-new-root-cert.png)
 
@@ -133,9 +133,9 @@ ms.locfileid: "60626908"
 
 #### <a name="update-compromised-intermediate-certificates"></a>更新已泄露的中间证书
 
-1. 单击“注册组”，然后在列表中单击组名称。 
+1. 单击“注册组”，然后在列表中单击组名称。  
 
-2. 依次单击“中间证书”、“删除当前证书”。 单击文件夹图标，导航到注册组的要上传的新中间证书。 完成后单击“保存”。 如果主要证书和辅助证书同时泄露，应针对这两个证书完成这些步骤。
+2. 依次单击“中间证书”、“删除当前证书”。   单击文件夹图标，导航到注册组的要上传的新中间证书。 完成后单击“保存”  。 如果主要证书和辅助证书同时泄露，应针对这两个证书完成这些步骤。
 
     此新中间证书应由已添加到预配服务的已验证根 CA 证书签名。 有关详细信息，请参阅 [X.509 证书](concepts-security.md#x509-certificates)。
 
@@ -161,13 +161,13 @@ ms.locfileid: "60626908"
 
 1. 遵循[配置已验证的 CA 证书](how-to-verify-certificates.md)中所述的步骤，添加并验证新的根 CA 证书。
 
-2. 单击设备预配服务实例的“管理注册”选项卡，然后单击“注册组”列表。 在列表中单击自己的注册组名称。
+2. 单击设备预配服务实例的“管理注册”选项卡，然后单击“注册组”列表   。 在列表中单击自己的注册组名称。
 
-3. 单击“CA 证书”，然后在“辅助证书”配置下选择新的根 CA 证书。 然后单击“保存”。 
+3. 单击“CA 证书”，然后在“辅助证书”配置下选择新的根 CA 证书。   然后单击“保存”  。 
 
     ![选择新的根 CA 证书](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. 以后当主要证书过期时，请单击设备预配服务实例的“证书”选项卡。 在列表中单击已过期的证书，然后单击“删除”按钮。 输入证书名称确认删除，然后单击“确定”。
+4. 以后当主要证书过期时，请单击设备预配服务实例的“证书”选项卡  。 在列表中单击已过期的证书，然后单击“删除”按钮。  输入证书名称确认删除，然后单击“确定”。 
 
     ![删除根 CA 证书](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -176,15 +176,15 @@ ms.locfileid: "60626908"
 #### <a name="update-expiring-intermediate-certificates"></a>更新即将过期的中间证书
 
 
-1. 单击“注册组”，然后在列表中单击组名称。 
+1. 单击“注册组”，然后在列表中单击组名称。  
 
-2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“ **保存**”。
+2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。  单击“ **保存**”。
 
     此新中间证书应由已添加到预配服务的已验证根 CA 证书签名。 有关详细信息，请参阅 [X.509 证书](concepts-security.md#x509-certificates)。
 
    ![使用辅助证书管理单独注册](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
-3. 以后当主要证书过期时，请返回此处，并单击“删除当前证书”按钮删除该主要证书。
+3. 以后当主要证书过期时，请返回此处，并单击“删除当前证书”按钮删除该主要证书。 
 
 
 ## <a name="reprovision-the-device"></a>重新预配设备

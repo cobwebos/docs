@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: xshi
 ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60399506"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio 的 Cloud Explorer 管理 Azure IoT 中心设备
@@ -54,41 +54,41 @@ ms.locfileid: "60399506"
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
-1. 在 Visual Studio 的“Cloud Explorer”窗口中，单击“帐户管理”图标。 Cloud Explorer 窗口可从“视图” > “Cloud Explorer”菜单中打开。
+1. 在 Visual Studio 的“Cloud Explorer”  窗口中，单击“帐户管理”图标。 Cloud Explorer 窗口可从“视图”   > “Cloud Explorer”  菜单中打开。
 
     ![单击“帐户管理”](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
 
-1. 在 Cloud Explorer 中单击“管理帐户”。
-1. 在新窗口中单击“添加帐户...”，以首次登录到 Azure。
-1. 在你登录后，系统将显示 Azure 订阅列表。 选择要查看的 Azure 订阅，然后单击“应用”。
-1. 依次展开“你的订阅” > “IoT 中心” > “你的 IoT 中心”，设备列表将显示在你的 IoT 中心节点下。 右键单击一个设备以访问管理选项。
+1. 在 Cloud Explorer 中单击“管理帐户”  。
+1. 在新窗口中单击“添加帐户...”  ，以首次登录到 Azure。
+1. 在你登录后，系统将显示 Azure 订阅列表。 选择要查看的 Azure 订阅，然后单击“应用”  。
+1. 依次展开“你的订阅”   > “IoT 中心”   > “你的 IoT 中心”  ，设备列表将显示在你的 IoT 中心节点下。 右键单击一个设备以访问管理选项。
 
     ![管理选项](media/iot-hub-device-management-visual-studio/management-options.png)
 
 ## <a name="direct-methods"></a>直接方法
 
-1. 右键单击设备并选择“调用设备直接方法”。
+1. 右键单击设备并选择“调用设备直接方法”  。
 1. 在输入框中输入方法名称和有效负载。
-1. 结果将显示在“IoT 中心”输出窗格中。
+1. 结果将显示在“IoT 中心”  输出窗格中。
 
 ## <a name="read-device-twin"></a>读取设备孪生
 
-1. 右键单击设备并选择“编辑设备孪生”。
-1. 将打开一个 azure-iot-device-twin.json 文件，其中包含设备孪生的内容。
+1. 右键单击设备并选择“编辑设备孪生”  。
+1. 将打开一个 azure-iot-device-twin.json 文件，其中包含设备孪生的内容  。
 
 ## <a name="update-device-twin"></a>更新设备孪生
 
 1. 对 **azure-iot-device-twin.json** 文件中的**标记**或 **properties.desired** 字段进行一些编辑。
 1. 按 **Ctrl + S** 来更新设备孪生。
-1. 结果将显示在“IoT 中心”输出窗格中。
+1. 结果将显示在“IoT 中心”  输出窗格中。
 
 ## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
 
 若要将消息从 IoT 中心发送到设备，请按照以下步骤操作：
 
-1. 右键单击设备，然后选择“发送 C2D 消息”。
+1. 右键单击设备，然后选择“发送 C2D 消息”  。
 1. 在输入框中输入消息。
-1. 结果将显示在“IoT 中心”输出窗格中。
+1. 结果将显示在“IoT 中心”  输出窗格中。
 
 ## <a name="next-steps"></a>后续步骤
 

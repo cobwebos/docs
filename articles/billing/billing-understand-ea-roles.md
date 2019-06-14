@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
 ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370707"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Azure 企业协议管理角色
@@ -76,8 +76,8 @@ ms.locfileid: "60370707"
 |查看使用情况和成本详细信息|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
 |管理 Azure 门户中的资源|✘|✘|✘|✘|✔|
 
-- <sup>4</sup> 要求企业管理员在企业门户中启用“DA 视图费用”策略。 然后，部门管理员就可以查看部门的成本详细信息。
-- <sup>5</sup> 要求企业管理员在企业门户中启用“AO 视图费用”策略。 然后，帐户所有者就可以查看帐户的成本详细信息。
+- <sup>4</sup> 要求企业管理员在企业门户中启用“DA 视图费用”策略。  然后，部门管理员就可以查看部门的成本详细信息。
+- <sup>5</sup> 要求企业管理员在企业门户中启用“AO 视图费用”策略。  然后，帐户所有者就可以查看帐户的成本详细信息。
 
 
 ## <a name="pricing-in-azure-portal"></a>Azure 门户中的定价

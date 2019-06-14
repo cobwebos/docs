@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60593199"
 ---
 # <a name="virtual-network-tap"></a>虚拟网络 TAP
@@ -27,7 +27,7 @@ ms.locfileid: "60593199"
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具由[网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)合作伙伴提供。 有关经验证可与虚拟网络 TAP 一起使用的合作伙伴解决方案列表，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)。
 
 > [!IMPORTANT]
-> 虚拟网络点击当前处于预览状态在所有 Azure 区域。 若要使用虚拟网络点击，您必须注册在预览中通过发送电子邮件至 <azurevnettap@microsoft.com>你的订阅 id。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 此预览版提供，无服务级别协议，不应该用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 请参阅 [Supplemental Terms of Use 针对 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 有关详细信息。
+> 虚拟网络 TAP 目前正在所有 Azure 区域中以预览版提供。 若要使用虚拟网络点击，您必须注册在预览中通过发送电子邮件至 <azurevnettap@microsoft.com>你的订阅 id。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 此预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 请参阅 [Supplemental Terms of Use 针对 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 有关详细信息。
 
 ## <a name="virtual-network-tap-partner-solutions"></a>虚拟网络 TAP 合作伙伴解决方案
 
@@ -40,8 +40,8 @@ ms.locfileid: "60593199"
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>安全分析、网络/应用程序性能管理
 
-- [唤醒状态的安全](https://awakesecurity.com/technology-partners/microsoft-azure/)
-- [Cisco Stealthwatch 云](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Awake Security](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
@@ -57,7 +57,7 @@ ms.locfileid: "60593199"
 
 ## <a name="prerequisites"></a>必备组件
 
-在创建虚拟网络点击之前，你应已收到确认邮件在预览中，注册并有一个或更多虚拟机创建使用[Azure 资源管理器](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)部署模型和合作伙伴用于聚合的同一 azure 区域中的点击流量的解决方案。 如果在虚拟网络中没有合作伙伴解决方案，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)来部署一个解决方案。 你可以使用相同的虚拟网络 TAP 资源来聚合来自相同或不同订阅的多个网络接口的流量。 如果受监视的网络接口位于不同的订阅中，则订阅必须关联到同一 Azure Active Directory 租户。 此外，用于聚合 TAP 流量的受监视网络接口和目标终结点可以位于同一区域中的对等虚拟网络中。 如果你使用的是这种部署模型，请务必在配置虚拟网络 TAP 之前启用[虚拟网络对等互连](virtual-network-peering-overview.md)。
+在创建虚拟网络 TAP 之前，必须已收到你注册预览版的确认邮件，并且已使用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)部署模型和合作伙伴解决方案创建了一个或多个虚拟机，以聚合同一 Azure 区域的 TAP 流量。 如果在虚拟网络中没有合作伙伴解决方案，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)来部署一个解决方案。 你可以使用相同的虚拟网络 TAP 资源来聚合来自相同或不同订阅的多个网络接口的流量。 如果受监视的网络接口位于不同的订阅中，则订阅必须关联到同一 Azure Active Directory 租户。 此外，用于聚合 TAP 流量的受监视网络接口和目标终结点可以位于同一区域中的对等虚拟网络中。 如果你使用的是这种部署模型，请务必在配置虚拟网络 TAP 之前启用[虚拟网络对等互连](virtual-network-peering-overview.md)。
 
 ## <a name="permissions"></a>权限
 

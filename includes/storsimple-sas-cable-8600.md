@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155911"
 ---
 #### <a name="to-attach-the-sas-cables"></a>连接 SAS 电缆
@@ -18,7 +18,7 @@ ms.locfileid: "66155911"
    
     **主机箱与 EBOD 机箱的后视图**
    
-   | 标签 | 描述 |
+   | Label | 描述 |
    |:--- |:--- |
    | 第 |主机箱 |
    | 2 |EBOD 机箱 |
@@ -28,7 +28,7 @@ ms.locfileid: "66155911"
    
     **序号标签位置**
    
-   | 标签 | 描述 |
+   | Label | 描述 |
    |:--- |:--- |
    | 第 |机箱的吊耳 |
 3. 接下来，使用提供的 SAS 电缆连接主机箱与 EBOD 机箱，如下所示：
@@ -41,7 +41,7 @@ ms.locfileid: "66155911"
       
       **SAS 布线**
       
-      | 标签 | 描述 |
+      | Label | 描述 |
       |:--- |:--- |
       | A |主机箱 |
       | B |EBOD 机箱 |

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 1/19/2018
 ms.author: atsenthi
 ms.openlocfilehash: 53cab3591ea11721e36b48438f35df016e2a9f3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60621475"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric 应用程序生命周期
@@ -54,7 +54,7 @@ ms.locfileid: "60621475"
 
 ## <a name="test"></a>测试
 1. 部署到本地开发群集或测试群集后，*服务开发人员*使用 [**FailoverTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) 和 [**FailoverTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario) 类或 [**Invoke ServiceFabricFailoverTestScenario** cmdlet](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps) 运行内置的故障转移测试方案。 故障转移测试方案在重要转换和故障转移中运行指定的服务，以确保其仍然可用并正在工作。
-2. 然后，服务开发者使用 [ChaosTestScenarioParameters](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) 和 [ChaosTestScenario](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) 类或 [Invoke-ServiceFabricChaosTestScenario cmdlet](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps)，运行内置的 Chaos 测试方案。 任意混合测试方案会将多个节点、代码包和副本错误包括到群集中。
+2. 然后，服务开发者  使用 [ChaosTestScenarioParameters  ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) 和 [ChaosTestScenario  ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) 类或 [Invoke-ServiceFabricChaosTestScenario  cmdlet](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps)，运行内置的 Chaos 测试方案。 任意混合测试方案会将多个节点、代码包和副本错误包括到群集中。
 3. *服务开发人员*通过创建围绕群集移动主副本的测试方案，来[测试服务之间的通信](service-fabric-testability-scenarios-service-communication.md)。
 
 有关详细信息，请参阅[故障分析服务简介](service-fabric-testability-overview.md)。

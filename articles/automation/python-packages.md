@@ -10,10 +10,10 @@ ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: b53e07d6086f2a02fd1bbd158ffc09dc95b0c377
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60500074"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>在 Azure 自动化中管理 Python 2 包
@@ -22,15 +22,15 @@ ms.locfileid: "60500074"
 
 ## <a name="import-packages"></a>导入包
 
-在自动化帐户中，选择“共享资源”下的“Python 2 包”。 单击“+ 添加 Python 2 包”。
+在自动化帐户中，选择“共享资源”下的“Python 2 包”   。 单击“+ 添加 Python 2 包”  。
 
 ![添加 Python 包](media/python-packages/add-python-package.png)
 
-在“添加 Python 包”页中，选择要上传的本地包。 包可以是 `.whl` 文件或 `.tar.gz` 文件。 选择后，单击“确定”以上传包。
+在“添加 Python 包”页中，选择要上传的本地包  。 包可以是 `.whl` 文件或 `.tar.gz` 文件。 选择后，单击“确定”以上传包  。
 
 ![添加 Python 包](media/python-packages/upload-package.png)
 
-导入包之后，该包将在自动化帐户中的“Python 2 包”页中列出。 如果需要删除包，请选择包，然后在包页面中选择“删除”。
+导入包之后，该包将在自动化帐户中的“Python 2 包”页中列出  。 如果需要删除包，请选择包，然后在包页面中选择“删除”  。
 
 ![包列表](media/python-packages/package-list.png)
 

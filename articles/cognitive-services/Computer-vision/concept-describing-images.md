@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-origin.date: 02/11/2019
-ms.date: 02/27/2019
-ms.author: v-junlch
+ms.date: 02/11/2019
+ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60368369"
 ---
 # <a name="describe-images-with-human-readable-language"></a>使用人类可读语言描述图像
@@ -60,5 +59,3 @@ ms.locfileid: "60368369"
 ## <a name="next-steps"></a>后续步骤
 
 了解[标记图像](concept-tagging-images.md)和[对图像进行分类](concept-categorizing-images.md)的概念。
-
-<!-- Update_Description: wording update -->

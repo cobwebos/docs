@@ -9,10 +9,10 @@ ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2303d385d3d688050a8d82c07e78a68588f41e88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66142620"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
@@ -25,11 +25,11 @@ ms.locfileid: "66142620"
 
 ## <a name="whats-logged"></a>会记录哪些内容？
 
-可选择“引擎”“服务”和“指标”类别。
+可选择“引擎”  “服务”  和“指标”  类别。
 
 ### <a name="engine"></a>引擎
 
-选择“引擎”将记录所有 [xEvents](https://docs.microsoft.com/sql/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 不能选择单个事件。 
+选择“引擎”  将记录所有 [xEvents](https://docs.microsoft.com/sql/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 不能选择单个事件。 
 
 |XEvent 类别 |事件名称  |
 |---------|---------|
@@ -73,17 +73,17 @@ ms.locfileid: "66142620"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 [Azure 门户](https://portal.azure.com)中找到服务器，单击左侧导航栏中的“诊断日志”，然后单击“启用诊断”。
+1. 在 [Azure 门户](https://portal.azure.com)中找到服务器，单击左侧导航栏中的“诊断日志”，然后单击“启用诊断”   。
 
     ![在 Azure 门户中启用 Azure Cosmos DB 的诊断日志记录](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
-2. 在“诊断设置”中，指定以下选项： 
+2. 在“诊断设置”  中，指定以下选项： 
 
     * **名称**。 为要创建的日志输入名称。
 
     * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)。 按照说明创建一个资源管理器常规用途帐户，然后返回到门户中的此页面来选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 若要了解详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
-    * 发送到 Azure Monitor（Log Analytics 工作区）。 若要使用此选项，可以使用现有工作区或者在门户中[新建工作区](../azure-monitor/learn/quick-create-workspace.md)资源。 有关查看日志的详细信息，请参阅本文中的[在 Log Analytics 工作区中查看日志](#view-logs-in-log-analytics-workspace)。
+    * 发送到 Azure Monitor（Log Analytics 工作区）  。 若要使用此选项，可以使用现有工作区或者在门户中[新建工作区](../azure-monitor/learn/quick-create-workspace.md)资源。 有关查看日志的详细信息，请参阅本文中的[在 Log Analytics 工作区中查看日志](#view-logs-in-log-analytics-workspace)。
 
     * **引擎** 选择此选项以记录 Xevent。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
     * **服务**。 选择此选项以记录服务级别事件。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
@@ -155,11 +155,11 @@ ms.locfileid: "66142620"
 
 在 Log Analytics 工作区资源中，指标和服务器事件与 Xevent 集成，以便并列分析。 Log Analytics 工作区还可配置为接收来自其他 Azure 服务的事件，从而提供整个体系结构的诊断日志记录数据。
 
-若要查看诊断数据，请从 Log Analytics 工作区的左侧菜单中打开“日志”。
+若要查看诊断数据，请从 Log Analytics 工作区的左侧菜单中打开“日志”  。
 
 ![Azure 门户中的“日志搜索”选项](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-在查询生成器中，展开 LogManagement > AzureDiagnostics。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询。 请务必保存查询以便稍后重复使用。
+在查询生成器中，展开 LogManagement > AzureDiagnostics   。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询  。 请务必保存查询以便稍后重复使用。
 
 ### <a name="example-query"></a>示例查询
 此查询对一个模型数据库和服务器的 每个查询结束/刷新结束事件计算并返回 CPU：
@@ -224,7 +224,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 ### <a name="create-a-new-storage-account-for-your-logs"></a>为日志创建新的存储帐户
 
-如果服务器所属订阅中存在现有存储帐户，可对日志使用该帐户。 对本教程而言，需创建专用于 Analysis Services 日志的新存储帐户。 为方便起见，将存储帐户详细信息将存储到名为 sa 的变量中。
+如果服务器所属订阅中存在现有存储帐户，可对日志使用该帐户。 对本教程而言，需创建专用于 Analysis Services 日志的新存储帐户。 为方便起见，将存储帐户详细信息将存储到名为 sa 的变量中  。
 
 还要使用包含 Analysis Services 服务器的资源组。 将 `awsales_resgroup`、`awsaleslogs` 和 `West Central US` 的值替换为自己的值：
 
@@ -235,7 +235,7 @@ $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
 
 ### <a name="identify-the-server-account-for-your-logs"></a>标识用于你的日志的服务器帐户
 
-将帐户名称设置为名为“account”的变量，其中 ResourceName 是帐户的名称。
+将帐户名称设置为名为“account”的变量，其中 ResourceName 是帐户的名称  。
 
 ```powershell
 $account = Get-AzResource -ResourceGroupName awsales_resgroup `
@@ -244,7 +244,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>启用日志记录
 
-若要启用日志记录，请使用新的存储帐户、 服务器帐户，和的类别集 AzDiagnosticSetting cmdlet 并结合变量。 运行以下命令，将“-Enabled”标志设置为“$true”：
+若要启用日志记录，请使用新的存储帐户、 服务器帐户，和的类别集 AzDiagnosticSetting cmdlet 并结合变量。 运行以下命令，将“-Enabled”标志设置为“$true”   ：
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine

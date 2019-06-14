@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 6c4980536eddd0226fac422ae17ddb717e34630d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799469"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义人员模型
@@ -55,12 +55,12 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 
 ### <a name="request-parameters"></a>请求参数 
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|name|string|是|人员模型的名称|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountId|字符串|是|帐户的全局唯一标识符|
+|name|字符串|是|人员模型的名称|
+|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
 
@@ -100,12 +100,12 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|id|string|是|人员模型 ID（在创建人员模型时生成）|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountId|字符串|是|帐户的全局唯一标识符|
+|id|字符串|是|人员模型 ID（在创建人员模型时生成）|
+|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
 
@@ -137,11 +137,11 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountId|字符串|是|帐户的全局唯一标识符|
+|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
 
@@ -192,14 +192,14 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Vide
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|videoId|string|是|要更新的人脸所在视频的 ID。 此项是在上传视频并对其进行索引时创建的。|
+|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountId|字符串|是|帐户的全局唯一标识符|
+|videoId|字符串|是|要更新的人脸所在视频的 ID。 此项是在上传视频并对其进行索引时创建的。|
 |faceId|integer|是|要更新的人脸的 ID。 可以从视频索引中获取 faceId|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-|name|string|是|更新人脸时使用的新名称。|
+|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|name|字符串|是|更新人脸时使用的新名称。|
 
 名称特定于人员模型，因此如果为同一人员模型中的两个不同的人脸提供相同的 **name** 参数值，视频索引器会将这两个人脸视为同一人，并会在完成视频的重新索引后将其聚合在一起。 
 

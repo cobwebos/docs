@@ -1,6 +1,6 @@
 ---
 title: Azure 事件网格容器注册表事件架构
-description: 介绍使用 Azure 事件网格的容器注册表事件提供的属性
+description: 介绍为 Azure 事件网格中的容器注册表事件提供的属性
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60345458"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>容器注册表的 Azure 事件网格事件架构
@@ -27,8 +27,8 @@ Azure 容器注册表发出以下事件类型：
 | ---------- | ----------- |
 | Microsoft.ContainerRegistry.ImagePushed | 推送映像时引发。 |
 | Microsoft.ContainerRegistry.ImageDeleted | 删除映像时引发。 |
-| Microsoft.ContainerRegistry.ChartPushed | 当推送 Helm 图表时引发。 |
-| Microsoft.ContainerRegistry.ChartDeleted | 删除一个 Helm 图表时引发。 |
+| Microsoft.ContainerRegistry.ChartPushed | 推送 Helm 图表时引发。 |
+| Microsoft.ContainerRegistry.ChartDeleted | 删除 Helm 图表时引发。 |
 
 ## <a name="example-event"></a>示例事件
 
@@ -95,7 +95,7 @@ Azure 容器注册表发出以下事件类型：
 }]
 ```
 
-图表推送事件的架构类似于制作映像已推送事件的架构，但它不包含请求对象：
+图表推送事件的架构类似于映像推送事件的架构，但不包括请求对象：
 
 ```json
 [{
@@ -123,7 +123,7 @@ Azure 容器注册表发出以下事件类型：
 }]
 ```
 
-图表中删除事件的架构类似于映像化的已删除事件的架构，但它不包含请求对象：
+图表删除事件的架构类似于映像删除事件的架构，但不包括请求对象：
 
 ```json
 [{

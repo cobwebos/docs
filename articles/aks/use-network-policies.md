@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
 ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65230018"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
@@ -22,7 +22,7 @@ ms.locfileid: "65230018"
 
 ## <a name="before-you-begin"></a>开始之前
 
-你需要 Azure CLI 版本 2.0.61 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 > [!TIP]
 > 如果在预览期间使用的网络策略功能，我们建议您[创建新的群集](#create-an-aks-cluster-and-enable-network-policy)。
@@ -82,11 +82,11 @@ Azure 提供两种方法来实现网络策略。 创建 AKS 群集时选择的�
 
 * 创建虚拟网络和子网。
 * 创建 Azure Active Directory (Azure AD) 与 AKS 群集配合使用的服务主体。
-* 对虚拟网络的 AKS 服务主体授予“参与者”权限。
+* 对虚拟网络的 AKS 服务主体授予“参与者”权限  。
 * 在定义虚拟网络中创建的 AKS 群集并启用网络策略。
     * *Azure*使用网络策略选项。 若要转而使用网络策略选项 Calico，使用`--network-policy calico`参数。
 
-提供自己的安全 SP_PASSWORD。 您可以替换*RESOURCE_GROUP_NAME*并*CLUSTER_NAME*变量：
+提供自己的安全 SP_PASSWORD  。 您可以替换*RESOURCE_GROUP_NAME*并*CLUSTER_NAME*变量：
 
 ```azurecli-interactive
 SP_PASSWORD=mySecurePassword
@@ -155,7 +155,7 @@ kubectl create namespace development
 kubectl label namespace/development purpose=development
 ```
 
-创建运行 NGINX 示例后端 pod。 此后端 pod 可以用于模拟的示例后端的基于 web 的应用程序。 在 development 命名空间中创建此 Pod，并且打开端口 80，以提供 Web 流量。 将 Pod 贴上标签：app=webapp,role=backend，以便我们可在下一节中使用网络策略定向到它：
+创建运行 NGINX 示例后端 pod。 此后端 pod 可以用于模拟的示例后端的基于 web 的应用程序。 在 development 命名空间中创建此 Pod，并且打开端口 80，以提供 Web 流量   。 将 Pod 贴上标签：app=webapp,role=backend，以便我们可在下一节中使用网络策略定向到它  ：
 
 ```console
 kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
@@ -191,7 +191,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>创建并应用网络策略
 
-现在，您可以使用基本的 NGINX 网页上的示例后端 pod 确认后，创建了网络策略来拒绝所有流量。 创建名为 `backend-policy.yaml` 的文件并粘贴以下 YAML 清单。 使用此清单*podSelector*若要将策略附加到具有 pod *app:webapp，角色： 后端*标签，如示例 NGINX pod。 入口下未定义任何规则，因此将拒绝流向 Pod 的所有入站流量：
+现在，您可以使用基本的 NGINX 网页上的示例后端 pod 确认后，创建了网络策略来拒绝所有流量。 创建名为 `backend-policy.yaml` 的文件并粘贴以下 YAML 清单。 使用此清单*podSelector*若要将策略附加到具有 pod *app:webapp，角色： 后端*标签，如示例 NGINX pod。 入口下未定义任何规则，因此将拒绝流向 Pod 的所有入站流量  ：
 
 ```yaml
 kind: NetworkPolicy
@@ -222,7 +222,7 @@ kubectl apply -f backend-policy.yaml
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-在 shell 提示符下，使用`wget`以查看是否可以访问默认 NGINX 网页。 这一次，将超时值设为 2 秒。 网络策略现在阻止所有入站的流量，因此无法加载页面，如下面的示例中所示：
+在 shell 提示符下，使用`wget`以查看是否可以访问默认 NGINX 网页。 这一次，将超时值设为 2 秒  。 网络策略现在阻止所有入站的流量，因此无法加载页面，如下面的示例中所示：
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -240,7 +240,7 @@ exit
 
 在上一节中安排后端 NGINX pod 和创建了网络策略来拒绝所有流量。 让我们创建前端 pod 并更新网络策略以允许来自前端 pod 的流量。
 
-更新网络策略，以允许来自具有标签 app:webapp,role:frontend 的 Pod 和任何命名空间的流量。 编辑以前*后端 policy.yaml*文件，并添加*matchLabels*入口规则，以便你清单看起来如下例所示：
+更新网络策略，以允许来自具有标签 app:webapp,role:frontend 的 Pod 和任何命名空间的流量  。 编辑以前*后端 policy.yaml*文件，并添加*matchLabels*入口规则，以便你清单看起来如下例所示：
 
 ```yaml
 kind: NetworkPolicy
@@ -263,7 +263,7 @@ spec:
 ```
 
 > [!NOTE]
-> 此网络策略使用 namespaceSelector 和 podSelector 元素作为入口规则。 YAML 语法非常重要的入口规则是累加性。 在此示例中，两个元素必须匹配要应用的入口规则。 以前的 Kubernetes 版本*1.12*可能不正确解释这些元素和限制网络流量，正如您期望。 有关此行为的详细信息，请参阅[的行为与选择器][policy-rules]。
+> 此网络策略使用 namespaceSelector 和 podSelector 元素作为入口规则   。 YAML 语法非常重要的入口规则是累加性。 在此示例中，两个元素必须匹配要应用的入口规则。 以前的 Kubernetes 版本*1.12*可能不正确解释这些元素和限制网络流量，正如您期望。 有关此行为的详细信息，请参阅[的行为与选择器][policy-rules]。
 
 使用更新的网络策略应用所[kubectl 适用][ kubectl-apply]命令并指定 YAML 清单的名称：
 
@@ -301,7 +301,7 @@ exit
 
 ### <a name="test-a-pod-without-a-matching-label"></a>测试没有匹配标签的 Pod
 
-网络策略允许来自标记为 app: webapp,role: frontend 的 Pod 的流量，但应拒绝其他所有流量。 让我们测试以查看其他 pod 而无需这些标签是否可以访问后端 NGINX pod。 创建另一个测试 Pod，并附加一个终端会话：
+网络策略允许来自标记为 app: webapp,role: frontend 的 Pod 的流量，但应拒绝其他所有流量  。 让我们测试以查看其他 pod 而无需这些标签是否可以访问后端 NGINX pod。 创建另一个测试 Pod，并附加一个终端会话：
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
@@ -332,7 +332,7 @@ kubectl create namespace production
 kubectl label namespace/production purpose=production
 ```
 
-在具有标签 app=webapp,role=frontend 的 production 命名空间中计划测试 Pod。 附加终端会话：
+在具有标签 app=webapp,role=frontend 的 production 命名空间中计划测试 Pod   。 附加终端会话：
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
@@ -362,7 +362,7 @@ exit
 
 ### <a name="update-the-network-policy"></a>更新网络策略
 
-让我们更新入口规则*namespaceSelector*部分中，仅允许从流量*开发*命名空间。 编辑 backend-policy.yaml 清单文件，如以下示例所示：
+让我们更新入口规则*namespaceSelector*部分中，仅允许从流量*开发*命名空间。 编辑 backend-policy.yaml 清单文件，如以下示例所示  ：
 
 ```yaml
 kind: NetworkPolicy

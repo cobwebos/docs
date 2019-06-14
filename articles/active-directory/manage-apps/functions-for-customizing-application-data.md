@@ -15,10 +15,10 @@ ms.date: 01/21/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824646"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
@@ -29,13 +29,13 @@ ms.locfileid: "65824646"
 
 * 必须定义整个表达式的函数，函数中的名称后跟带括号的参数： <br>
   *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* 函数之间可以相互嵌套。 例如: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* 函数之间可以相互嵌套。 例如： <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * 可以将三种不同类型的参数传递给函数：
   
   1. 属性，必须括在方括号中。 例如：[attributeName]
-  2. 字符串常量必须括在双引号内。 例如:"United States"
-  3. 其他函数。 例如:FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
-* 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如:“Company name:\\"Contoso\\"”
+  2. 字符串常量必须括在双引号内。 例如："United States"
+  3. 其他函数。 例如：FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
+* 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如：“Company name:\\"Contoso\\"”
 
 ## <a name="list-of-functions"></a>函数列表
 [Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
@@ -51,7 +51,7 @@ ms.locfileid: "65824646"
 | 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |通常是来自源对象的属性的名称。 |
-| **suffix** |需要 |String |要附加到源值末尾的字符串。 |
+| **suffix** |必选 |String |要附加到源值末尾的字符串。 |
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -61,11 +61,11 @@ ms.locfileid: "65824646"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **source** |需要 |String |通常是来自源对象的属性的名称。 |
-| **inputFormat** |需要 |String |源值的预期格式。 有关支持的格式，请参阅 [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
-| **outputFormat** |需要 |String |输出日期的格式。 |
+| **source** |必选 |String |通常是来自源对象的属性的名称。 |
+| **inputFormat** |必选 |String |源值的预期格式。 有关支持的格式，请参阅 [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
+| **outputFormat** |必选 |String |输出日期的格式。 |
 
 - - -
 ### <a name="join"></a>Join
@@ -77,9 +77,9 @@ ms.locfileid: "65824646"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **separator** |需要 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
+| **separator** |必选 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
 | **source1  … sourceN** |必选，次数可变 |String |要联接在一起的字符串值。 |
 
 - - -
@@ -90,11 +90,11 @@ ms.locfileid: "65824646"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |通常是属性的名称。 |
-| **start** |需要 |整数 |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
-| **length** |需要 |整数 |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
+| **start** |需要 |integer |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
+| **length** |必选 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
 
 - - -
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -104,9 +104,9 @@ ms.locfileid: "65824646"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **source** |需要 |String | 通常是名字或姓氏属性。 |
+| **source** |必选 |String | 通常是名字或姓氏属性。 |
 
 - - -
 ### <a name="not"></a>Not
@@ -116,12 +116,12 @@ ms.locfileid: "65824646"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **source** |需要 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
+| **source** |必选 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
 - - -
-### <a name="replace"></a>替换
+### <a name="replace"></a>将
 **函数：**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **说明：**<br>
@@ -145,7 +145,7 @@ ms.locfileid: "65824646"
 
 | 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **source** |需要 |String |通常是来自源对象的属性的名称。 |
+| **source** |必选 |String |通常是来自源对象的属性的名称。 |
 | **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
 | **regexPattern** |可选 |String |要在 **source** 中替换的值的正则表达式模式。 或者，当使用 replacementPropertyName 时，从替换属性中提取值的模式。 |
 | **regexGroupName** |可选 |String |**regexPattern** 中的组名称。 仅当使用 replacementPropertyName 时，才会从替换属性中提取此组的值作为 replacementValue。 |
@@ -161,7 +161,7 @@ ms.locfileid: "65824646"
 
 > [!NOTE]
 >1. 这是一个顶级函数，不能嵌套。
->2. 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”属性设置为“仅在创建对象期间”。
+>2. 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”  属性设置为“仅在创建对象期间”。 
 
 
 **参数：**<br> 
@@ -193,8 +193,8 @@ ms.locfileid: "65824646"
 
 | 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **source** |需要 |String |要更新的 **source** 值。 |
-| **delimiter** |需要 |String |指定将用来拆分字符串的字符（示例：“,”） |
+| **source** |必选 |String |要更新的 **source** 值。 |
+| **delimiter** |必选 |String |指定将用来拆分字符串的字符（示例：“,”） |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -206,7 +206,7 @@ ms.locfileid: "65824646"
 
 | 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **source** |需要 |String |要更新的 **source** 值。 |
+| **source** |必选 |String |要更新的 **source** 值。 |
 
 - - -
 ### <a name="switch"></a>Switch
@@ -218,36 +218,36 @@ ms.locfileid: "65824646"
 
 | 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **source** |需要 |String |要更新的 **source** 值。 |
+| **source** |必选 |String |要更新的 **source** 值。 |
 | **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
-| **key** |需要 |String |用来比较 **source** 值的 **key**。 |
+| **key** |必选 |String |用来比较 **source** 值的 **key**。 |
 | **value** |需要 |String |与该 key 匹配的 **source** 的替换值。 |
 
 - - -
 ### <a name="tolower"></a>ToLower
 **函数：**<br> ToLowe（源、区域性）
 
-**说明：**<br> 采用源字符串值并用指定的区域性规则将其转换为小写。 如果没有指定任何区域性信息，则使用固定区域性。
+**说明：**<br> 采用源  字符串值并用指定的区域性规则将其转换为小写。 如果没有指定任何区域性  信息，则使用固定区域性。
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **source** |需要 |String |通常是来自源对象的属性的名称 |
-| **区域性** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **source** |必选 |String |通常是来自源对象的属性的名称 |
+| **区域性** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2  ，其中 languagecode2  是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码  。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 - - -
 ### <a name="toupper"></a>ToUpper
 **函数：**<br> ToUpper（源、区域性）
 
-**说明：**<br> 采用源字符串值并用指定的区域性规则将其转换为大写。 如果没有指定任何区域性信息，则使用固定区域性。
+**说明：**<br> 采用源  字符串值并用指定的区域性规则将其转换为大写。 如果没有指定任何区域性  信息，则使用固定区域性。
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
-| **source** |需要 |String |通常是来自源对象的属性的名称。 |
-| **culture** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **source** |必选 |String |通常是来自源对象的属性的名称。 |
+| **culture** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2  ，其中 languagecode2  是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码  。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ## <a name="examples"></a>示例
 ### <a name="strip-known-domain-name"></a>删除已知域名

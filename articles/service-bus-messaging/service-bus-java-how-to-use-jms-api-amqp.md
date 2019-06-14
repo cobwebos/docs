@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
 ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310955"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>如何将 Java 消息服务 (JMS) API 用于服务总线和 AMQP 1.0
@@ -29,7 +29,7 @@ ms.locfileid: "60310955"
 本文说明了如何使用采用常用 Java 消息服务 (JMS) API 标准的 Java 应用程序中的服务总线消息传送功能（队列和发布/订阅主题）。 此处的[随附文章](service-bus-amqp-dotnet.md)解释如何使用服务总线 .NET API 来执行相同操作的操作。 使用 AMQP 1.0，可以同时使用以下两个指南来了解跨平台消息。
 
 ## <a name="get-started-with-service-bus"></a>服务总线入门
-本指南假定你已具有包含名为 basicqueue 的队列的服务总线命名空间。 如果没有，则可以使用 [Azure 经典门户](https://portal.azure.com)[创建命名空间和队列](service-bus-create-namespace-portal.md)。 有关如何创建服务总线命名空间和队列的详细信息，请参阅[服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)。
+本指南假定你已具有包含名为 basicqueue  的队列的服务总线命名空间。 如果没有，则可以使用 [Azure 经典门户](https://portal.azure.com)[创建命名空间和队列](service-bus-create-namespace-portal.md)。 有关如何创建服务总线命名空间和队列的详细信息，请参阅[服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)。
 
 > [!NOTE]
 > 分区队列和主题也支持 AMQP。 有关详细信息，请参阅[分区消息实体](service-bus-partitioning.md)和[针对服务总线分区队列和主题的 AMQP 1.0 支持](service-bus-partitioned-queues-and-topics-amqp-overview.md)。
@@ -66,7 +66,7 @@ queue.QUEUE = queue1
 
 #### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>设置 JNDI 上下文和配置 ConnectionFactory
 
-在 [Azure 门户](https://portal.azure.com)“主连接字符串”下的 “共享访问策略”中提供了可引用的 ConnectionString
+在 [Azure 门户](https://portal.azure.com)“主连接字符串”  下的 “共享访问策略”中提供了可引用的 ConnectionString 
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
@@ -298,7 +298,7 @@ public class JmsQueueQuickstart {
 ```
 
 ### <a name="run-the-application"></a>运行应用程序
-传递共享访问策略中的“连接字符串”，以运行应用程序。
+传递共享访问策略中的“连接字符串”  ，以运行应用程序。
 以下是通过运行应用程序的表单输出：
 
 ```
@@ -368,12 +368,12 @@ JMS 主题允许客户端动态创建非持久的和持久的订阅者，这样�
 | createDurableConsumer       | 创建移植消息选择器的主题订阅                                 |
 | createSharedConsumer        | 服务总线主题始终可共享，请参阅上述内容                                       |
 | createSharedDurableConsumer | 服务总线主题始终可共享，请参阅上述内容                                       |
-| createTemporaryTopic        | 通过管理 API/工具/门户创建主题（AutoDeleteOnIdle 被设置为过期期间） |
+| createTemporaryTopic        | 通过管理 API/工具/门户创建主题（AutoDeleteOnIdle  被设置为过期期间） |
 | createTopic                 | 通过管理 API/工具/门户创建主题                                           |
 | unsubscribe                 | 删除主题管理 API/工具/门户                                             |
 | createBrowser               | 不受支持。 使用服务总线 API 的 Peek() 功能                         |
 | createQueue                 | 通过管理 API/工具/门户创建队列                                           | 
-| createTemporaryQueue        | 通过管理 API/工具/门户创建队列（AutoDeleteOnIdle 被设置为过期期间） |
+| createTemporaryQueue        | 通过管理 API/工具/门户创建队列（AutoDeleteOnIdle  被设置为过期期间） |
 
 ## <a name="summary"></a>摘要
 本操作方法指南演示了如何通过使用常用 JMS API 和 AMQP 1.0 通过 Java 使用 Service Bus 中转消息传送功能（队列和发布/订阅主题）。

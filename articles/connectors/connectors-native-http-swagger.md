@@ -12,10 +12,10 @@ tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
 ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60448612"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP + Swagger 连接器调用 REST 终结点
@@ -32,20 +32,20 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
 
 以下示例演示如何在逻辑应用中将 HTTP + Swagger 操作用作工作流中的操作。
 
-1. 选择“新步骤”按钮。
-2. 选择“添加操作”。
-3. 在操作搜索框中，键入“swagger”列出 HTTP + Swagger 操作。
+1. 选择“新步骤”  按钮。
+2. 选择“添加操作”  。
+3. 在操作搜索框中，键入“swagger”  列出 HTTP + Swagger 操作。
    
     ![选择 HTTP + Swagger 操作](./media/connectors-native-http-swagger/using-action-1.png)
 4. 键入 Swagger 文档的 URL：
    
    * 若要从逻辑应用设计器工作，URL 必须是 HTTPS 终结点并已启用 CORS。
    * 如果 Swagger 文档不满足此要求，可以使用启用 CORS 的 Azure 存储来存储该文档。
-5. 单击“下一步”从 Swagger 文档读取并呈现。
+5. 单击“下一步”  从 Swagger 文档读取并呈现。
 6. 添加 HTTP 调用所需的任何参数。
    
     ![完成 HTTP 操作](./media/connectors-native-http-swagger/using-action-2.png)
-7. 若要保存并发布逻辑应用，请在设计器工具栏上单击“保存”。
+7. 若要保存并发布逻辑应用，请在设计器工具栏上单击“保存”  。
 
 ### <a name="host-swagger-from-azure-storage"></a>从 Azure 存储托管 Swagger
 可能要引用未托管或者不满足设计器的安全和跨源要求的 Swagger 文档。 要解决此问题，可以将 Swagger 文档存储在 Azure 存储中，并使 CORS 引用该文档。  
@@ -92,22 +92,22 @@ HTTP + Swagger 连接器附带一个可能的操作。 下面是每个操作的�
 在 Swagger 元数据的协助下发出 HTTP 出站请求。
 星号 (*) 表示必填字段。
 
-| 显示名称 | 属性名称 | 描述 |
+| Display name | 属性名称 | 描述 |
 | --- | --- | --- |
-| 方法* |方法 |要使用的 HTTP 谓词。 |
+| 方法* |method |要使用的 HTTP 谓词。 |
 | URI* |uri |HTTP 请求的 URI。 |
 | 标头 |headers |要包含的 HTTP 标头的 JSON 对象。 |
-| Body |body |HTTP 请求正文。 |
+| 正文 |body |HTTP 请求正文。 |
 | Authentication |authentication |要用于请求的身份验证。 有关详细信息，请参阅 [HTTP 连接器](connectors-native-http.md#authentication)。 |
 
 **输出详细信息**
 
 HTTP 响应
 
-| 属性名称 | 数据类型 | 描述 |
+| 属性名 | 数据类型 | 描述 |
 | --- | --- | --- |
 | 标头 |对象 |响应标头 |
-| Body |对象 |响应对象 |
+| 正文 |对象 |响应对象 |
 | 状态代码 |int |HTTP 状态代码 |
 
 ### <a name="http-responses"></a>HTTP 响应

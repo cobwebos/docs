@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
 ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60588014"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS 防护：最佳做法和参考体系结构
@@ -87,7 +87,7 @@ Azure 客户查看 Microsoft 最佳做法，构建采用防故障设计且经过
 
 深层防御的理念是通过多样化的防御策略来掌控风险。 应用程序中的分层安全防御可以减少攻击成功的可能性。 我们建议使用 Azure 平台的内置功能对其应用程序实施安全设计。
 
-例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。 可以使用允许列表关闭负载均衡器（[Azure 负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md)和 [Azure 应用程序网关](../application-gateway/application-gateway-create-probe-portal.md)）上不需要的公开 IP 地址空间和侦听端口，来减少外围应用。 [网络安全组 (NSG)](../virtual-network/security-overview.md) 是缩小受攻击面的另一种方法。
+例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。  可以使用允许列表关闭负载均衡器（[Azure 负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md)和 [Azure 应用程序网关](../application-gateway/application-gateway-create-probe-portal.md)）上不需要的公开 IP 地址空间和侦听端口，来减少外围应用。 [网络安全组 (NSG)](../virtual-network/security-overview.md) 是缩小受攻击面的另一种方法。
 可以使用[服务标记](../virtual-network/security-overview.md#service-tags)和[应用程序安全组](../virtual-network/security-overview.md#application-security-groups)来最大程度地简化安全规则的创建，并将网络安全性配置为应用程序结构的自然扩展。
 
 应尽可能地在[虚拟网络](../virtual-network/virtual-networks-overview.md)中部署 Azure 服务。 这种做法可让服务资源通过专用 IP 地址通信。 来自虚拟网络的 Azure 服务流量默认使用公共 IP 地址作为源 IP 地址。 使用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)时，服务流量会在通过虚拟网络访问 Azure 服务时改用虚拟网络专用地址作为源 IP 地址。
@@ -104,9 +104,9 @@ Azure 具有两个 DDoS 服务产品，提供网络攻击防护（第 3 层和�
 
 ![Azure 网络地图，其中包含文字“全球 DDoS 缓解措施”和“领先的 DDoS 缓解能力”](media/azure-ddos-best-practices/image3.png)
 
-Azure 中的基本 DDoS 防护包括硬件和软件组件。 软件控制平面决定何时、何处的何种流量应该流过用于分析和消除攻击流量的硬件设备。 控制平面根据基础结构范围的 DDoS 防护策略做出此决定。 此策略是静态设置的，将全局应用到所有 Azure 客户。
+Azure 中的基本 DDoS 防护包括硬件和软件组件。 软件控制平面决定何时、何处的何种流量应该流过用于分析和消除攻击流量的硬件设备。 控制平面根据基础结构范围的 DDoS 防护策略做出此决定。  此策略是静态设置的，将全局应用到所有 Azure 客户。
 
-例如，DDoS 防护策略指定在生成多大的流量后应触发保护。 （即，应该通过清理设备路由租户的流量。）然后，策略指定清理设备应以何种方式缓解攻击。
+例如，DDoS 防护策略指定在生成多大的流量后应触发保护。  （即，应该通过清理设备路由租户的流量。）然后，策略指定清理设备应以何种方式缓解攻击。 
 
 Azure DDoS 防护基本服务用于实现基础结构保护和 Azure 平台保护。 当流量速率过大，从而可能影响到多租户环境中的多个客户时，该服务会降低流量。 它不提供警报或者按客户自定义的策略。
 
@@ -116,7 +116,7 @@ Azure DDoS 防护基本服务用于实现基础结构保护和 Azure 平台保�
 
 #### <a name="adaptive-real-time-tuning"></a>自适应实时优化
 
-Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户。 例如，如果为典型的合法传入流量预配了某个服务，并且该流量小于基础结构范围 DDoS 防护策略的触发率，那么，针对该客户资源的 DDoS 攻击可能会被忽略。 一般来说，最近攻击（例如多向量 DDoS）的复杂性，以及租户的应用程序特定行为，要求按客户采用自定义的保护策略。 该服务使用两项见解来实现这种自定义：
+Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户。 例如，如果为典型的合法传入流量预配了某个服务，并且该流量小于基础结构范围 DDoS 防护策略的触发率，那么，针对该客户资源的 DDoS 攻击可能会被忽略。  一般来说，最近攻击（例如多向量 DDoS）的复杂性，以及租户的应用程序特定行为，要求按客户采用自定义的保护策略。 该服务使用两项见解来实现这种自定义：
 
 - 自动学习每个客户（每个 IP）的第 3 层和第 4 层流量模式。
 
@@ -130,9 +130,9 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 
-在 Azure 门户中，选择“监视” > “指标”。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。 DDoS 指标将显示在“可用指标”窗格中。
+在 Azure 门户中，选择“监视” > “指标”。   在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。   DDoS 指标将显示在“可用指标”窗格中。 
 
-标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。
+标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。 
 
 ![可用指标和指标图表](media/azure-ddos-best-practices/image7.png)
 
@@ -140,7 +140,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ##### <a name="metric-for-an-ip-address-under-ddos-attack"></a>受 DDoS 攻击的 IP 地址的指标
 
-如果公共 IP 地址受到攻击，则“是否受 DDoS 攻击”指标的值将切换为 1，因为 DDoS 防护会针对攻击流量执行缓解措施。
+如果公共 IP 地址受到攻击，则“是否受 DDoS 攻击”指标的值将切换为 1，因为 DDoS 防护会针对攻击流量执行缓解措施。 
 
 ![“是否受 DDoS 攻击”指标和图表](media/azure-ddos-best-practices/image8.png)
 
@@ -211,7 +211,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 ### <a name="alerts-during-an-attack"></a>攻击期间的警报
 
-标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护公共 IP 受到的攻击被主动缓解时收到通知，可以针对“是否受 DDoS 攻击”指标[配置警报](../virtual-network/ddos-protection-manage-portal.md)。 可以选择针对其他 DDoS 指标创建警报，以了解攻击规模、丢弃的流量和其他详细信息。
+标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护公共 IP 受到的攻击被主动缓解时收到通知，可以针对“是否受 DDoS 攻击”指标[配置警报](../virtual-network/ddos-protection-manage-portal.md)。  可以选择针对其他 DDoS 指标创建警报，以了解攻击规模、丢弃的流量和其他详细信息。
 
 #### <a name="when-to-contact-microsoft-support"></a>何时与 Microsoft 支持部门联系
 
@@ -219,7 +219,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 - 认为 DDoS 防护服务不按预期方式运行。 
 
-  仅当指标值“触发 DDoS 缓解措施的策略(TCP/TCP SYN/UDP)”低于受保护公共 IP 资源上收到的流量时，DDoS 防护服务才会启动缓解措施。
+  仅当指标值“触发 DDoS 缓解措施的策略(TCP/TCP SYN/UDP)”低于受保护公共 IP 资源上收到的流量时，DDoS 防护服务才会启动缓解措施。 
 
 - 规划的某个病毒事件导致网络流量显著增加。
 

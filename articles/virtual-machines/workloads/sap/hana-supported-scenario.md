@@ -15,10 +15,10 @@ ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60477639"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
@@ -45,7 +45,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 
 派生体系结构设计仅基于对基础结构的考虑，必须咨询 SAP 或实现合作伙伴才能进行 HANA 部署。 如果未列出你的方案，请联系 Microsoft 客户团队，以查看体系结构并为你派生解决方案。
 
-这些体系结构完全符合 TDI（定制数据集成）设计，并且受 SAP 支持。
+这些体系结构完全符合 TDI（定制数据集成）设计，并且受 SAP 支持。 
 
 本文档详细介绍每个受支持体系结构中的两个组件：
 
@@ -238,7 +238,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
 - 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)以获取更多详细信息。
-- SKU 第 I 类级别的启动卷将复制到 DR 节点。
+- SKU 第 I 类级别的启动卷将复制到 DR 节点  。
 
 
 ## <a name="4-single-node-with-dr-multipurpose"></a>4.具有 DR（多用途）的单节点
@@ -288,13 +288,13 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
 - 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)以获取更多详细信息。 
 - 在 DR：为 QA 实例安装配置 QA 的数据、日志备份、日志、共享卷（标记为“QA 实例安装”）。
-- SKU 第 I 类级别的启动卷将复制到 DR 节点。
+- SKU 第 I 类级别的启动卷将复制到 DR 节点  。
 
 ## <a name="5-hsr-with-stonith"></a>5.具有 STONITH 的 HSR
  
 此拓扑支持 HANA 系统复制 (HSR) 配置的两个节点。 此配置仅适用于节点上的单个 HANA 实例。 这意味着，不支持 MCOS 方案。
 
-截至目前，SUSE 操作系统仅支持此体系结构。
+截至目前，SUSE 操作系统仅支持此体系结构。 
 
 
 ### <a name="architecture-diagram"></a>体系结构关系图  
@@ -393,16 +393,16 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分配取决于内存中的数据库大小。 请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)部分，了解多 SID 环境支持的内存中数据库大小。
 - STONITH：为 STONITH 设置配置 SBD。 但是，可选择是否使用 STONITH。
-- 在 DR：主节点和辅助节点复制需要两组存储卷。
+- 在 DR：主节点和辅助节点复制需要两组存储卷  。
 - 在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
 - 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)以获取更多详细信息。 
 - 在 DR：为 QA 实例安装配置 QA 的数据、日志备份、日志、共享卷（标记为“QA 实例安装”）。
-- SKU 第 I 类级别的启动卷将复制到 DR 节点。
+- SKU 第 I 类级别的启动卷将复制到 DR 节点  。
 
 
 ## <a name="7-host-auto-failover-11"></a>7.主机自动故障转移 (1+1)
  
-此拓扑支持主机自动故障转移配置中的两个节点。 其中一个节点具有主/辅助角色，另一个节点作为备用节点。 SAP 仅支持将此方案用于 S/4 HANA。 有关详细信息，请参阅 OSS 注意事项“[2408419 - SAP S/4HANA - 多节点支持](https://launchpad.support.sap.com/#/notes/2408419)”。
+此拓扑支持主机自动故障转移配置中的两个节点。 其中一个节点具有主/辅助角色，另一个节点作为备用节点。 SAP 仅支持将此方案用于 S/4 HANA。  有关详细信息，请参阅 OSS 注意事项“[2408419 - SAP S/4HANA - 多节点支持](https://launchpad.support.sap.com/#/notes/2408419)”。
 
 
 
@@ -560,7 +560,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 -  在 DR：在 DR HLI 单元为生产 HANA 实例安装配置卷和装入点（标记为“HANA 安装所需”）。 
 - 在 DR：通过生产站点的快照复制数据、日志备份和共享卷（标记为“存储复制”）。 这些卷仅在故障转移期间装载。 有关详细信息，请阅读文档[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)以获取更多详细信息。 
-- SKU 第 I 类级别的启动卷将复制到 DR 节点。
+- SKU 第 I 类级别的启动卷将复制到 DR 节点  。
 
 
 ## <a name="next-steps"></a>后续步骤

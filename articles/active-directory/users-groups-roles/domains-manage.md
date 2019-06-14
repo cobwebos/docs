@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60472296"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
@@ -30,12 +30,12 @@ ms.locfileid: "60472296"
 创建目录后，初始域名（例如“contoso.onmicrosoft.com”）也是主域名。 创建新用户时，主域名是新用户的默认域名。 设置主域名简化了管理员在门户中创建新用户的过程。 若要更改主域名，请执行以下操作：
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Azure Active Directory”。
-3. 选择“自定义域名”。
+2. 选择“Azure Active Directory”  。
+3. 选择“自定义域名”  。
   
    ![打开用户管理页面](./media/domains-manage/add-custom-domain.png)
 4. 选择你希望设为主域的域名。
-5. 选择“设置主域”命令。 出现提示时确认所做的选择。
+5. 选择“设置主域”  命令。 出现提示时确认所做的选择。
   
    ![将域名设为主域名](./media/domains-manage/make-primary-domain.png)
 

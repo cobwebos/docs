@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60581233"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>备份 StorSimple 虚拟阵列上的共享或卷
@@ -46,15 +46,15 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
 
 #### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>更改默认备份策略的开始时间
 
-1. 转到“设备”。 将显示已向 StorSimple Device Manager 服务注册的设备列表。 
+1. 转到“设备”  。 将显示已向 StorSimple Device Manager 服务注册的设备列表。 
    
     ![导航到“设备”](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
-2. 选择并单击设备。 将显示“设置”边栏选项卡。 转到“管理”>“备份策略”。
+2. 选择并单击设备。 将显示“设置”  边栏选项卡。 转到“管理”>“备份策略”  。
    
     ![选择设备](./media/storsimple-virtual-array-backup/changebuschedule2.png)
 
-3. 在“备份策略”边栏选项卡中，默认开始时间为 22:30。 可以在设备时区中为每日计划指定新的开始时间。
+3. 在“备份策略”  边栏选项卡中，默认开始时间为 22:30。 可以在设备时区中为每日计划指定新的开始时间。
    
     ![导航到“备份策略”](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
@@ -66,11 +66,11 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
 
 #### <a name="to-create-a-manual-backup"></a>创建手动备份
 
-1. 转到“设备”。 选择设备，并右键单击所选行最右端的“...”。 从上下文菜单中，选择“执行备份”。
+1. 转到“设备”  。 选择设备，并右键单击所选行最右端的“...”  。 从上下文菜单中，选择“执行备份”  。
    
     ![导航“执行备份”](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
-2. 在“执行备份”边栏选项卡中，单击“执行备份”。 这会备份文件服务器上的所有共享或 iSCSI 服务器上的所有卷。 
+2. 在“执行备份”  边栏选项卡中，单击“执行备份”  。 这会备份文件服务器上的所有共享或 iSCSI 服务器上的所有卷。 
    
     ![备份正在启动](./media/storsimple-virtual-array-backup/takebackup2m.png)
    
@@ -82,11 +82,11 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
    
     ![备份作业已创建](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. 若要跟踪备份进度和查看作业详细信息，请单击“通知”。 这会你将带到“作业详细信息”。
+3. 若要跟踪备份进度和查看作业详细信息，请单击“通知”。 这会你将带到“作业详细信息”  。
    
      ![备份作业详细信息](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
-4. 在备份完成后，请转到“管理”>“备份目录”。 会看到设备上所有共享（或卷）的云快照。
+4. 在备份完成后，请转到“管理”>“备份目录”  。 会看到设备上所有共享（或卷）的云快照。
    
     ![已完成的备份](./media/storsimple-virtual-array-backup/takebackup19m.png) 
 
@@ -95,12 +95,12 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
 
 #### <a name="to-view-existing-backups"></a>查看现有备份
 
-1. 转到“设备”边栏选项卡。 选择并单击设备。 在“设置”边栏选项卡中，转到“管理”>“备份目录”。
+1. 转到“设备”  边栏选项卡。 选择并单击设备。 在“设置”  边栏选项卡中，转到“管理”>“备份目录”  。
    
     ![导航到“备份目录”](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. 指定要用于筛选的以下条件：
    
-   - **时间范围** - 可以是“过去 1 小时”、“过去 24 小时”、“过去 7 天”、“过去 30 天”、“过去一年”和“自定义日期”。
+   - **时间范围** - 可以是“过去 1 小时”  、“过去 24 小时”  、“过去 7 天”  、“过去 30 天”  、“过去一年”  和“自定义日期”  。
     
    - **设备** - 从已向 StorSimple Device Manager 服务注册的文件服务器或 iSCSI 服务器的列表中选择。
    
@@ -108,7 +108,7 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
    
      ![筛选备份](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. 单击“应用”。 已筛选的备份列表会显示在“备份目录”边栏选项卡中。 请注意，在给定的时间只能显示 100 个备份元素。
+3. 单击“应用”  。 已筛选的备份列表会显示在“备份目录”  边栏选项卡中。 请注意，在给定的时间只能显示 100 个备份元素。
    
     ![已更新的备份目录](./media/storsimple-virtual-array-backup/viewbackups3.png)
 

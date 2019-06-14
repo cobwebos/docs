@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aee8ac3c2638ede559f8a1f9c51f2d6e62604998
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602292"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>完成在 PIM 中的 Azure 资源角色的访问评审
@@ -28,11 +28,11 @@ ms.locfileid: "65602292"
 访问评审期限结束，或者所有用户已完成其自评审后，请按照本文中的步骤管理评审并查看结果。
 
 ## <a name="manage-access-reviews"></a>管理访问评审
-1. 转到 [Azure 门户](https://portal.azure.com/)。 然后，在仪表板中，选择“Azure 资源”应用程序。
+1. 转到 [Azure 门户](https://portal.azure.com/)。 然后，在仪表板中，选择“Azure 资源”应用程序  。
 
 2. 选择你的资源。
 
-3. 选择仪表板的“访问审阅”部分。
+3. 选择仪表板的“访问审阅”  部分。
 ![访问评审](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
 
 4. 选择要管理的访问审阅。
@@ -42,19 +42,19 @@ ms.locfileid: "65602292"
 ![用于管理评审的选项](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
 
 ### <a name="stop"></a>停止
-所有访问审阅都有结束日期，但可以使用“停止”按钮提前结束。 若用户此时尚未完成审阅，在停止审阅后，用户无法完成审阅。 停止后，无法重新开始审阅。
+所有访问审阅都有结束日期，但可以使用“停止”  按钮提前结束。 若用户此时尚未完成审阅，在停止审阅后，用户无法完成审阅。 停止后，无法重新开始审阅。
 
 ### <a name="reset"></a>重置
 可重置访问评审来删除对其所做的所有决策。 重置访问评审后，所有用户都将被重新标记为未审阅。 
 
 ### <a name="apply"></a>应用
-完成访问评审后，使用“应用”按钮来实现评审结果。 如果在评审中拒绝了用户的访问，则此步骤会删除其角色分配。  
+完成访问评审后，使用“应用”按钮来实现评审结果  。 如果在评审中拒绝了用户的访问，则此步骤会删除其角色分配。  
 
 ### <a name="delete"></a>DELETE
-如果不再想了解审阅，可将其删除。 “删除”按钮可从 PIM 应用程序中删除审阅。
+如果不再想了解审阅，可将其删除。 “删除”  按钮可从 PIM 应用程序中删除审阅。
 
 ## <a name="results"></a>结果
-在“结果”选项卡上查看和下载审阅结果列表。 
+在“结果”选项卡上查看和下载审阅结果列表  。 
 ![“结果”选项卡](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
 
 ## <a name="reviewers"></a>审阅者

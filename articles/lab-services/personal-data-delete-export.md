@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: spelluru
 ms.openlocfilehash: e681652c13e521bd33524e247db65088f47a794c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394858"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>从 Azure 开发测试实验室中导出或删除个人数据
@@ -39,10 +39,10 @@ ms.locfileid: "60394858"
 ### <a name="user-object-id"></a>用户对象 ID
 开发测试实验室使用用户对象 ID 向实验室管理员显示每月成本趋势和资源成本信息。 这样，管理员便可以跟踪成本并管理其实验室的阈值。 
 
-**当前日历月份的估计成本趋势：**
+**当前日历月份的估计成本趋势：** 
 ![当前日历月份的估计成本趋势](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**资源的估计本月至今成本：**
+**资源的估计本月至今成本：** 
 ![资源的估计本月至今成本](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
@@ -55,16 +55,16 @@ ms.locfileid: "60394858"
 例如，如果你删除了 VM 或电子邮件地址，则删除该资源后，开发测试实验室服务会将此数据匿名化 30 天。 删除后保留 30 天的策略旨在确保向实验室管理员提供准确的每月成本预测。
 
 ## <a name="how-can-i-request-an-export-on-my-personal-data"></a>如何请求导出个人数据？
-实验室用户可以请求导出开发测试实验室服务存储的个人数据。 若要请求导出，请在实验室的“概述”页上导航到“个人数据”选项。 选择“请求导出”按钮，开始在实验室管理员的存储帐户中创建可下载的 Excel 文件。 然后，可以联系实验室管理员查看此数据。
+实验室用户可以请求导出开发测试实验室服务存储的个人数据。 若要请求导出，请在实验室的“概述”页上导航到“个人数据”选项。   选择“请求导出”按钮，开始在实验室管理员的存储帐户中创建可下载的 Excel 文件。  然后，可以联系实验室管理员查看此数据。
 
-1. 在左侧菜单中选择“个人数据”。 
+1. 在左侧菜单中选择“个人数据”。  
 
     ![“个人数据”页](./media/personal-data-delete-export/personal-data-page.png)
 2. 选择包含实验室的**资源组**。
 
     ![选择资源组](./media/personal-data-delete-export/select-resource-group.png)
 3. 在该资源组中选择**存储帐户**。
-4. 在“存储帐户”页上，选择“Blob”。
+4. 在“存储帐户”页上，选择“Blob”。  
 
     ![选择“Blob”磁贴](./media/personal-data-delete-export/select-blobs-tile.png)
 5. 在容器列表中选择名为 **labresourceusage** 的容器。

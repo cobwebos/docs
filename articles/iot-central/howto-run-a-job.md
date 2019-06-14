@@ -9,10 +9,10 @@ ms.date: 03/18/2019
 ms.topic: conceptual
 manager: peterpr
 ms.openlocfilehash: ec7033719316bb186408ea78f6dabac43c383491
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60519259"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建并运行作业
@@ -33,7 +33,7 @@ ms.locfileid: "60519259"
 
 1. 选择所需的作业以应用到的设备集。 选择设备设置后，您将看到右侧填充设备组中的设备。 如果选择中断的设备集，没有设备显示，您看到设备集已损坏的消息。
 
-1. 接下来，选择要定义 （设置、 属性或命令） 的作业类型。 选择**+** 旁边的作业类型选择并添加您的操作。
+1. 接下来，选择要定义 （设置、 属性或命令） 的作业类型。 选择 **+** 旁边的作业类型选择并添加您的操作。
 
     ![配置作业](./media/howto-run-a-job/configurejob.png)
 

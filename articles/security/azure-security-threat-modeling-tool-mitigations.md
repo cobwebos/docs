@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611320"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft 威胁建模工具风险缓解
 
 威胁建模工具是 Microsoft 安全开发生命周期 (SDL) 的核心要素。 当潜在安全问题处于无需花费过多成本即可相对容易解决的阶段，软件架构师可以使用威胁建模工具提前识别这些问题。 因此，它能大幅减少开发总成本。 此外，我们设计该工具时考虑到了非安全专家的体验，为他们提供有关创建和分析威胁模型的清晰指导，让所有开发人员都可以更轻松地使用威胁建模。
 
-请访问**[威胁建模工具](./azure-security-threat-modeling-tool.md)** 以立即开始！
+请访问 **[威胁建模工具](./azure-security-threat-modeling-tool.md)** 以立即开始！
 
 ## <a name="mitigation-categories"></a>风险缓解类别
 
@@ -49,8 +49,8 @@ ms.locfileid: "60611320"
 * 最常见的错误发生在哪个位置
 * 可在哪个位置实施可行性最大的改进
 
-因此，可以使用这些类别来重点完成并优化安全工作，以便在输入验证、身份验证和授权类别中出现最流行的安全问题时，可以从这些位置着手。 有关详情，请访问[此专利链接](https://www.google.com/patents/US7818788)
+因此，可以使用这些类别来重点完成并优化安全工作，以便在输入验证、身份验证和授权类别中出现最流行的安全问题时，可以从这些位置着手。 有关详情，请访问[此专利链接](https://www.google.com/patents/US7818788) 
 
 ## <a name="next-steps"></a>后续步骤
 
-请访问[威胁建模工具威胁](./azure-security-threat-modeling-tool-threats.md)，以详细了解有关该工具用于生成可能的设计威胁的威胁类别。
+请访问[威胁建模工具威胁](./azure-security-threat-modeling-tool-threats.md)  ，以详细了解有关该工具用于生成可能的设计威胁的威胁类别。

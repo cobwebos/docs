@@ -11,10 +11,10 @@ ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
 ms.openlocfilehash: 75f04893067d92813207bd656fc3368239ae9303
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142788"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>如何通过 Python 使用队列存储
@@ -85,7 +85,7 @@ for message in messages:
 ```
 
 ## <a name="how-to-dequeue-messages"></a>如何：取消消息的排队
-代码分两步从队列中删除消息。 在调用 **get\_messages** 时，默认情况下会获得队列中的下一条消息。 对于从此队列读取消息的任何其他代码，从 get\_messages 返回的消息将变得不可见。 默认情况下，此消息将持续 30 秒不可见。 若要从队列中删除消息，还必须调用 **delete\_message**。 此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message**。
+代码分两步从队列中删除消息。 在调用 **get\_messages** 时，默认情况下会获得队列中的下一条消息。 对于从此队列读取消息的任何其他代码，从 get\_messages  返回的消息将变得不可见。 默认情况下，此消息将持续 30 秒不可见。 若要从队列中删除消息，还必须调用 **delete\_message**。 此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message**。
 
 ```python
 messages = queue_service.get_messages('taskqueue')

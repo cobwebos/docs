@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60193704"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Azure Front Door 服务中的后端和后端池
@@ -71,7 +71,7 @@ ms.locfileid: "60193704"
 
 - **协议**。 定义是否将从第一道防线服务的运行状况探测请求发送到后端使用 HTTP 或 HTTPS 协议。
 
-- **间隔 （秒）**。 定义后端或在其中每个第一道防线环境发送探测的时间间隔运行状况探测的频率。
+- **间隔 （秒）** 。 定义后端或在其中每个第一道防线环境发送探测的时间间隔运行状况探测的频率。
 
     >[!NOTE]
     >为故障转移更加快速，将间隔设置为较低的值。 越低的值，更高版本的运行状况探测卷后端接收。 例如，如果间隔全局设置为 90 的第一道防线环境或 Pop 30 秒，则每个后端将收到有关 3-5 探测每秒请求数。
@@ -85,7 +85,7 @@ ms.locfileid: "60193704"
 
 - **成功的样本大小**。 定义样本大小按前面所述，成功调用后端的正常运行所需的样本数。 例如，假定第一道防线运行状况探测间隔为 30 秒、 样本大小为 5，且成功的样本大小为 3。 每次我们评估运行状况探测后端，我们看一下最后五个样本超过 150 秒 (5 x 30)。 至少三个成功探测所需声明为正常的后端。
 
-- **延迟敏感性 （额外延迟）**。 定义您是否希望第一道防线，以将请求发送到后端延迟度量敏感度范围内或将请求转发到最接近的后端。
+- **延迟敏感性 （额外延迟）** 。 定义您是否希望第一道防线，以将请求发送到后端延迟度量敏感度范围内或将请求转发到最接近的后端。
 
 有关详细信息，请参阅[最少的延迟基于路由方法](front-door-routing-methods.md#latency)。
 

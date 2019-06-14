@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 03/05/2019
 ms.author: tomfitz
 ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60389570"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
@@ -102,7 +102,7 @@ ms.locfileid: "60389570"
 
 * 请尽量少使用 `allowedValues`。 仅当必须确保允许的选项中不含特定值时使用它。 如果过于广泛地使用 `allowedValues`，可能会因未将列表保持最新而阻碍有效部署。
 
-* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突。 例如，如果在模板中包括一个名为“ResourceGroupName”的参数，则该参数会与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值。
+* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突  。 例如，如果在模板中包括一个名为“ResourceGroupName”  的参数，则该参数会与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”  参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值  。
 
 ### <a name="security-recommendations-for-parameters"></a>有关参数的安全性建议
 
@@ -157,7 +157,7 @@ ms.locfileid: "60389570"
 
 * 请勿为资源上的 `apiVersion` 使用变量。 API 版本决定资源的架构。 通常无法在不更改资源属性的情况下更改版本。
 
-* 不能在模板的“变量”节中使用 [reference](resource-group-template-functions-resource.md#reference) 函数。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
+* 不能在模板的“变量”节中使用 [reference](resource-group-template-functions-resource.md#reference) 函数  。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
 
 * 包含必须具有唯一性的资源名称的变量。
 
@@ -169,7 +169,7 @@ ms.locfileid: "60389570"
 
 在决定要设置的[依赖项](resource-group-define-dependencies.md)时，请遵循以下准则：
 
-* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。
+* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项  。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。
 
 * 将子资源设置为依赖于其父资源。
 
@@ -198,7 +198,7 @@ ms.locfileid: "60389570"
    ]
    ```
 
-* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
+* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码   。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
    
    ```json
    "osDisk": {

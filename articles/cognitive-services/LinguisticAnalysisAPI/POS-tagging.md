@@ -11,10 +11,10 @@ ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0269397b0f8da66d2bafecfb427ba705fdfff001
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394483"
 ---
 # <a name="part-of-speech-tagging"></a>词性标记
@@ -25,8 +25,8 @@ ms.locfileid: "60394483"
 ## <a name="background-and-motivation"></a>背景和动机
 
 将文本拆分成句子和词汇后，分析的下一步就是标识每个字词的词类或词性。
-词类包括诸如“名词”（一般表示人、地点、事物、想法等）和“谓词”（一般表示动作、状态变化等）之类。对于某些字词，词性是明确的（例如，“泥潭”确实只是名词），但对于其他许多字词，词性就很难判断。
-“Table”可以是坐下的位置（或 2D 数字布局），也可以说“table a discussion”（留到以后再讨论）。
+词类包括诸如“名词”  （一般表示人、地点、事物、想法等）和“谓词”  （一般表示动作、状态变化等）之类。对于某些字词，词性是明确的（例如，“泥潭”  确实只是名词），但对于其他许多字词，词性就很难判断。
+“Table”  可以是坐下的位置（或 2D 数字布局），也可以说“table a discussion”（留到以后再讨论）。
 
 ## <a name="list-of-part-of-speech-tags"></a>词性标记列表
 

@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65989284"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>在 Microsoft 标识平台中配置单一登录方式登录到非库应用程序
@@ -125,7 +125,7 @@ Microsoft 标识平台提供了两种机制来注册应用程序。
 
 以下三个字段是可选的：
 
-- **登录 URL (SP 发起仅)**。 此值指示用户在这里登录到此应用程序。 如果应用程序执行 SP 启动的 SSO，然后当用户导航到此 URL，SP 执行必要的重定向到 Azure AD 进行身份验证和登录用户。 如果指定此字段时，Azure AD 将使用此 URL 来启动从 Office 365 和 Azure AD 访问面板应用程序。 如果省略此字段时，Azure AD 会执行 IdP 发起的单一登录从 Office 365、 Azure AD 访问面板或 Azure AD SSO URL 的应用程序启动期间 (其中你可以从复制**仪表板**页)。
+- **登录 URL (SP 发起仅)** 。 此值指示用户在这里登录到此应用程序。 如果应用程序执行 SP 启动的 SSO，然后当用户导航到此 URL，SP 执行必要的重定向到 Azure AD 进行身份验证和登录用户。 如果指定此字段时，Azure AD 将使用此 URL 来启动从 Office 365 和 Azure AD 访问面板应用程序。 如果省略此字段时，Azure AD 会执行 IdP 发起的单一登录从 Office 365、 Azure AD 访问面板或 Azure AD SSO URL 的应用程序启动期间 (其中你可以从复制**仪表板**页)。
 
 - **中继状态**。 在 SAML 指示身份验证后将用户重定向的位置的应用程序中，可以指定中继状态。 值通常是 URL 或 URL 将用户带到应用程序中的特定位置的路径。
 
@@ -141,7 +141,7 @@ Microsoft 标识平台提供了两种机制来注册应用程序。
 
 - 转到**用户属性和声明**标题，然后选择**编辑**图标。 **用户属性和声明**页将出现。
 
-![用户特性和声明](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
+![用户属性和声明](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
 
 您可能需要编辑 SAML 令牌中颁发以下两个原因的声明：
 
@@ -183,10 +183,10 @@ Microsoft 标识平台提供了两种机制来注册应用程序。
 
 1. 在应用程序边栏中，选择**用户和组**。 **\<应用程序名称 >-用户和组**页出现后，它显示了已分配的用户和组的当前列表。
 2. 选择**将用户添加**。 **添加分配**页将出现。
-3. 选择**用户和组 (\<数 > 所选)**。 **用户和组**页出现后，显示可用的用户和组的列表。
+3. 选择**用户和组 (\<数 > 所选)** 。 **用户和组**页出现后，显示可用的用户和组的列表。
 4. 若要查找的用户或组您想要从列表中分配的类型或滚动。
 5. 选择每个用户或组你想要添加，并选择**选择**按钮。 **用户和组**页将消失。
-6. 在中**添加分配**页上，选择**分配**。  **<application name> -用户和组**页将显示在列表中的其他用户显示。
+6. 在中**添加分配**页上，选择**分配**。 **<application name> -用户和组**页将显示在列表中的其他用户显示。
 
    ![应用程序用户和组](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 
@@ -218,7 +218,7 @@ Microsoft 标识平台提供了两种机制来注册应用程序。
 然后执行以下步骤：
 
 1. 输入的 URL。 此字符串必须是包含用户名输入的字段的页。
-2. 选择“保存”。 Azure AD 会尝试分析输入的用户名和密码输入的登录页。
+2. 选择“保存”。  Azure AD 会尝试分析输入的用户名和密码输入的登录页。
 3. 如果 Azure AD 的分析过程中尝试失败，则选择**配置\<应用程序名称 > 密码单一登录设置**以显示**配置单一登录**页。 （如果该尝试成功，你可以忽略此过程的其余部分）。
 4. 选择**手动检测登录字段**。 将显示描述手动检测登录字段的其他说明。
 
@@ -230,9 +230,9 @@ Microsoft 标识平台提供了两种机制来注册应用程序。
 7. 在输入的 URL 与选项卡上，转完成登录过程。 填写用户名和密码字段，并在尝试登录。 （您无需提供正确的密码。）
 
    一个提示，询问你保存捕获登录字段。
-8. 选择“确定”。 选项卡关闭，则浏览器扩展并显示消息更新捕获状态页**元数据已更新的应用程序**，和选项卡也将关闭该浏览器。
+8. 选择“确定”  。 选项卡关闭，则浏览器扩展并显示消息更新捕获状态页**元数据已更新的应用程序**，和选项卡也将关闭该浏览器。
 9. 在 Azure AD**配置单一登录**页上，选择**好了，我就能够登录到应用程序已成功**。
-10. 选择“确定”。
+10. 选择“确定”  。
 
 后的登录页捕获，您可能会为用户和组，并可以设置凭据策略，就像常规[密码 SSO 应用程序](what-is-single-sign-on.md)。
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: 4303b79a7ee69d029504bf6ca2359f6e6070e5b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370104"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>了解 Microsoft Azure 帐单
@@ -48,25 +48,25 @@ ms.locfileid: "60370104"
 |计费周期 | 计费周期 |
  |Name |测定仪类别 |
  |Type |测定仪子类别 |
- |资源 |测定仪名称 |
+ |Resource |测定仪名称 |
  |区域 |测定仪区域 |
  |已耗用 |已耗用数量 |
  |附送 |附送数量 |
  |可计费 |超额数量 |
 
-发票的“使用费”部分包含计费周期内已使用的每种计量的总额。 例如，以下屏幕截图显示的是 Azure 计划程序服务的使用费。
+发票的“使用费”部分包含计费周期内已使用的每种计量的总额  。 例如，以下屏幕截图显示的是 Azure 计划程序服务的使用费。
 
 ![发票使用费](./media/billing-understand-your-bill/1.png)
 
-在使用情况明细 CSV 的“帐目报告”部分也显示了同样的费用。 “已使用”量和“值”都与发票上的数据匹配。
+在使用情况明细 CSV 的“帐目报告”部分也显示了同样的费用  。 “已使用”量和“值”都与发票上的数据匹配   。
 
 ![CSV 使用费](./media/billing-understand-your-bill/2.png)
 
-若要查看此费用的每日明细，请转到 CSV 的“每日使用情况”部分。 筛选*计划程序*下*计量类别*。 可以查看计量的使用日期和使用量。 表中也列出“资源”和“资源组”信息，以供比较。 “已使用”值的总和应与该发票上显示的数据相同。
+若要查看此费用的每日明细，请转到 CSV 的“每日使用情况”部分  。 筛选*计划程序*下*计量类别*。 可以查看计量的使用日期和使用量。 表中也列出“资源”和“资源组”信息，以供比较   。 “已使用”值的总和应与该发票上显示的数据相同  。
 
 ![CSV 的“每日使用情况”部分](./media/billing-understand-your-bill/3.png)
 
-若要获取每日成本，请将“报表”部分中的“已使用”量与“费率”值相乘。
+若要获取每日成本，请将“报表”部分中的“已使用”量与“费率”值相乘    。
 
 若要了解更多信息，请参阅以下文章：
 
@@ -78,8 +78,8 @@ ms.locfileid: "60370104"
 还可以通过 Azure 门户验证费用。 若要快速了解发票上的使用情况和费用，请查看成本管理图表。
 
 1. 在 Azure 门户中，转到 [订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 选择你的订阅 >“成本分析”。
-1. 按“时间范围”筛选。
+1. 选择你的订阅 >“成本分析”。 
+1. 按“时间范围”筛选。 
 1. 若要继续以前的示例，请查看 Azure 计划程序服务的使用费。
 
    ![Azure 门户中成本分析视图](./media/billing-understand-your-bill/4.png)

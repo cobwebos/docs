@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369118"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 门户中查看 Azure 保留项
@@ -32,7 +32,7 @@ ms.locfileid: "60369118"
 若要以所有者或读者身份查看预留，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“预留”中进行搜索。
+2. 在“预留”中进行搜索。 
     ![显示 Azure 门户的搜索的屏幕截图](./media/billing-view-reservation/portal-reservation-search.png)  
 3. 此列表显示所有保留了所有者或读取器角色。 每个保留项显示的最后一个已知的使用率百分比。  
     ![显示的预订列表示例](./media/billing-view-reservation/view-reservations.png)
@@ -44,18 +44,18 @@ ms.locfileid: "60369118"
 
 ## <a name="view-reservation-transactions-for-enterprise-enrollments"></a>查看企业合约的预留交易
 
- 如果你有合作伙伴主导的企业注册，请访问 EA 门户中的“报表”来查看预留。 对于其他企业合约，可以在 EA 门户和 Azure 门户中查看预留。 只有 EA 管理员可以查看预留交易。
+ 如果你有合作伙伴主导的企业注册，请访问 EA 门户中的“报表”来查看预留。  对于其他企业合约，可以在 EA 门户和 Azure 门户中查看预留。 只有 EA 管理员可以查看预留交易。
 
 若要在 Azure 门户中查看预留交易，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/billing-view-reservation/portal-cm-billing-search.png)
 
-1. 选择“预留交易”。
-1. 若要筛选结果，请选择“时间范围”、“类型”或“说明”。
-1. 选择“应用”。
+1. 选择“预留交易”。 
+1. 若要筛选结果，请选择“时间范围”、“类型”或“说明”。   
+1. 选择“应用”。 
 
     ![显示预留交易结果的屏幕截图](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
 

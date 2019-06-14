@@ -1,6 +1,6 @@
 ---
-title: 处理 Azure 数据资源管理器中的数据重复
-description: 本主题将演示各种方法来处理重复的数据时使用 Azure 数据资源管理器。
+title: 在 Azure 数据资源管理器中处理重复数据
+description: 本主题介绍如何在使用 Azure 数据资源管理器时通过各种方法来处理重复数据。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,13 +8,13 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60445764"
 ---
-# <a name="handle-duplicate-data-in-azure-data-explorer"></a>处理 Azure 数据资源管理器中的数据重复
+# <a name="handle-duplicate-data-in-azure-data-explorer"></a>在 Azure 数据资源管理器中处理重复数据
 
 将数据发送到云的设备会维护数据的本地缓存。 根据具体的数据大小，本地缓存可将数据存储数天甚至数月之久。 我们希望能够保护重新发送缓存数据，并导致分析数据库中出现重复数据的有故障设备中的分析数据库。 本主题将概述为此类方案处理重复数据的最佳做法。
 

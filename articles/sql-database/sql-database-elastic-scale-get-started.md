@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 7c2e3b2bea7ddef3dfbf69f85b499d9a60158689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584979"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
@@ -84,11 +84,11 @@ ms.locfileid: "60584979"
 
 1. 从 MSDN 下载 [Elastic DB Tools for Azure SQL - Getting Started sample](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6)（Azure SQL 弹性数据库工具 - 入门示例）。 将示例解压缩到所选位置。
 
-2. 若要创建项目，请从 C# 目录打开 ElasticScaleStarterKit.sln 解决方案。
+2. 若要创建项目，请从 C#  目录打开 ElasticScaleStarterKit.sln  解决方案。
 
-3. 在示例项目的解决方案中打开 app.config 文件。 然后遵循该文件中的说明，添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
+3. 在示例项目的解决方案中打开 app.config  文件。 然后遵循该文件中的说明，添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
 
-4. 构建并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作会从 NuGet 下载最新版本的弹性数据库客户端库。
+4. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作会从 NuGet 下载最新版本的弹性数据库客户端库。
 
 5. 要深入了解客户端库功能，请尝试使用不同的选项。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
    
@@ -101,13 +101,13 @@ ms.locfileid: "60584979"
 
 ## <a name="key-pieces-of-the-code-sample"></a>重要的代码示例片段
 
-* **管理分片和分片映射**：该代码演示如何在“ShardManagementUtils.cs”文件中处理分片、范围和映射。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。  
+* **管理分片和分片映射**：该代码演示如何在“ShardManagementUtils.cs”文件中处理分片、范围和映射  。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。  
 
-* **数据依赖型路由**：“DataDependentRoutingSample.cs”文件演示了如何向正确的分片路由事务。 有关详细信息，请参阅[数据依赖型路由](https://go.microsoft.com/?linkid=9862596)。 
+* **数据依赖型路由**：“DataDependentRoutingSample.cs”文件演示了如何向正确的分片路由事务  。 有关详细信息，请参阅[数据依赖型路由](https://go.microsoft.com/?linkid=9862596)。 
 
-* **跨多个分片进行查询**：“MultiShardQuerySample.cs”文件演示了如何跨多个分片进行查询。 有关详细信息，请参阅[多分片查询](https://go.microsoft.com/?linkid=9862597)。
+* **跨多个分片进行查询**：“MultiShardQuerySample.cs”文件演示了如何跨多个分片进行查询  。 有关详细信息，请参阅[多分片查询](https://go.microsoft.com/?linkid=9862597)。
 
-* **添加空分片**：“CreateShardSample.cs”文件中的代码以迭代方式添加新的空分片。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。
+* **添加空分片**：“CreateShardSample.cs”文件中的代码以迭代方式添加新的空分片  。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。
 
 ## <a name="other-elastic-scale-operations"></a>其他弹性缩放操作
 

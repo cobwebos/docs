@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84a8c2954473401a9e57cba045907c60862ed61f
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546236"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
@@ -51,7 +51,7 @@ Microsoft Azure 访问控制服务 (ACS) 是一种 Azure Active Directory (Azure
 - 管理服务：可用于自动执行门户功能。
 - 令牌转换规则引擎：可用于定义复杂逻辑，控制访问控制颁发的令牌的输出格式。
 
-必须创建一个或多个访问控制命名空间，才能使用这些组件。 命名空间是访问控制的一个专用实例，应用程序和服务要与之进行通信。 命名空间独立于所有其他访问控制客户。 其他访问控制客户使用自己的命名空间。 访问控制中的命名空间具有专用 URL，如下所示：
+必须创建一个或多个访问控制命名空间，才能使用这些组件。 命名空间是访问控制的一个专用实例，应用程序和服务要与之进行通信  。 命名空间独立于所有其他访问控制客户。 其他访问控制客户使用自己的命名空间。 访问控制中的命名空间具有专用 URL，如下所示：
 
 ```HTTP
 https://<mynamespace>.accesscontrol.windows.net
@@ -105,7 +105,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
     例如，如果某个命名空间是 contoso-test，请转到 `https://contoso-test.accesscontrol.windows.net`
 
-1. 在“信任关系”下，选择“信赖方应用”以查看将受 ACS 停用影响的应用列表。
+1. 在“信任关系”  下，选择“信赖方应用”  以查看将受 ACS 停用影响的应用列表。
 1. 对于你拥有的任何其他 ACS 命名空间，重复步骤 1-2。
 
 ## <a name="retirement-schedule"></a>停用计划
@@ -187,7 +187,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 下表对与 Web 应用程序相关的访问控制功能和 Azure AD 中提供的功能进行了比较。 
 
-大致看来，如果只允许用户使用 Microsoft 工作或学校帐户进行登录，那么迁移到 Azure Active Directory 或许是最佳选择。
+大致看来，如果只允许用户使用 Microsoft 工作或学校帐户进行登录，那么迁移到 Azure Active Directory 或许是最佳选择  。
 
 | 功能 | 访问控制支持 | Azure AD 支持 |
 | ---------- | ----------- | ---------------- |
@@ -238,7 +238,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 但是，Azure AD B2C 支持的身份验证协议和令牌格式范围无法满足访问控制客户的全部需求。 也不能使用 Azure AD B2C 从标识提供者、Microsoft 或其他地方获取令牌和查询附加用户信息。
 
-下表对与 Web 应用程序相关的访问控制功能和 Azure AD B2C 中提供的功能进行了比较。 粗略来看，如果应用面向使用者或支持许多不同类型的帐户，那么正确选择可能是迁移到 Azure AD B2C。
+下表对与 Web 应用程序相关的访问控制功能和 Azure AD B2C 中提供的功能进行了比较。 粗略来看，如果应用面向使用者或支持许多不同类型的帐户，那么正确选择可能是迁移到 Azure AD B2C  。
 
 | 功能 | 访问控制支持 | Azure AD B2C 支持 |
 | ---------- | ----------- | ---------------- |
@@ -303,7 +303,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 对于通过访问控制颁发的令牌保护的 Web 服务，访问控制提供以下特性和功能：
 
-- 可以在访问控制命名空间中注册一个或多个服务标识。 服务标识可用于请求令牌。
+- 可以在访问控制命名空间中注册一个或多个服务标识  。 服务标识可用于请求令牌。
 - 通过使用以下类型凭据，支持 OAuth WRAP 和 OAuth 2.0 草案 13 协议请求令牌：
     - 为服务标识创建的简单密码
     - 使用对称密钥或 X509 证书的签名 SWT

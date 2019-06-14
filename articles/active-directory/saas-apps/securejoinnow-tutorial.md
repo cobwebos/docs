@@ -16,10 +16,10 @@ ms.date: 07/06/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b367befb90ec28ece963d67b479749e1c8ad363
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60339642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>教程：Azure Active Directory 与 SecureW2 JoinNow Connector 的集成
@@ -60,19 +60,19 @@ ms.locfileid: "60339642"
 
 **若要从库中添加 SecureW2 JoinNow 连接器，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。 
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 导航到“企业应用程序”。  然后转到“所有应用程序”  。
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“SecureW2 JoinNow 连接器”，从结果面板中选择“SecureW2 JoinNow 连接器”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“SecureW2 JoinNow 连接器”，从结果面板中选择“SecureW2 JoinNow 连接器”，然后单击“添加”按钮添加该应用程序    。
 
     ![结果列表中的 SecureW2 JoinNow 连接器](./media/securejoinnow-tutorial/tutorial_securejoinnow_addfromgallery.png)
 
@@ -96,34 +96,34 @@ ms.locfileid: "60339642"
 
 **若要配置 SecureW2 JoinNow 连接器的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中的“SecureW2 JoinNow 连接器”应用程序集成页上，单击“单一登录”。
+1. 在 Azure 门户中的“SecureW2 JoinNow 连接器”应用程序集成页上，单击“单一登录”   。
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 在“单一登录”  对话框中，选择“基于 SAML 的单一登录”  作为“模式”  以启用单一登录。
  
     ![“单一登录”对话框](./media/securejoinnow-tutorial/tutorial_securejoinnow_samlbase.png)
 
-3. 在“SecureW2 JoinNow 连接器域和 URL”部分，执行以下步骤：
+3. 在“SecureW2 JoinNow 连接器域和 URL”部分，执行以下步骤  ：
 
     ![SecureW2 JoinNow 连接器域和 URL 单一登录信息](./media/securejoinnow-tutorial/tutorial_securejoinnow_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<organization-identifier>-auth.securew2.com/auth/saml/SSO`
+    a. 在“登录 URL”  文本框中，使用以下模式键入 URL： `https://<organization-identifier>-auth.securew2.com/auth/saml/SSO`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<organization-identifier>-auth.securew2.com/auth/saml`
+    b. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<organization-identifier>-auth.securew2.com/auth/saml`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [SecureW2 JoinNow 连接器客户端支持团队](mailto:support@securew2.com)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。  
 
     ![证书下载链接](./media/securejoinnow-tutorial/tutorial_securejoinnow_certificate.png) 
 
-5. 单击“保存”按钮。
+5. 单击“保存”按钮  。
 
     ![配置单一登录“保存”按钮](./media/securejoinnow-tutorial/tutorial_general_400.png)
 
-6. 若要在 SecureW2 JoinNow 连接器端配置单一登录，需要将下载的元数据 XML 发送给 [SecureW2 JoinNow 连接器支持团队](mailto:support@securew2.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+6. 若要在 SecureW2 JoinNow 连接器端配置单一登录，需要将下载的元数据 XML 发送给 [SecureW2 JoinNow 连接器支持团队](mailto:support@securew2.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -133,27 +133,27 @@ ms.locfileid: "60339642"
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。 
 
     ![“Azure Active Directory”按钮](./media/securejoinnow-tutorial/create_aaduser_01.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”   。
 
     ![“用户和组”以及“所有用户”链接](./media/securejoinnow-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”    。
 
     ![“添加”按钮](./media/securejoinnow-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+4. 在“用户”  对话框中，执行以下步骤：
 
     ![“用户”对话框](./media/securejoinnow-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”  框中，键入“BrittaSimon”  。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。 
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
 
     d. 单击**创建**。
  
@@ -169,33 +169,33 @@ ms.locfileid: "60339642"
 
 **若要将 Britta Simon 分配到 SecureW2 JoinNow 连接器，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”  ，并单击“所有应用程序”  。
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“SecureW2 JoinNow 连接器”。
+2. 在应用程序列表中，选择“SecureW2 JoinNow 连接器”  。
 
     ![应用程序列表中的 SecureW2 JoinNow 连接器链接](./media/securejoinnow-tutorial/tutorial_securejoinnow_app.png)  
 
-3. 在左侧菜单中，单击“用户和组”。
+3. 在左侧菜单中，单击“用户和组”  。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加”按钮。  然后在“添加分配”对话框中选择“用户和组”。  
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”  对话框的“用户”列表中，选择“Britta Simon”。 
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+6. 在“用户和组”对话框中单击“选择”按钮。  
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+7. 在“添加分配”对话框中单击“分配”按钮。  
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 **若要测试应用程序，请执行以下步骤：** 
 
-a. 打开 SecureW2 JoinNow 连接器客户端，从列表中选择适当设备并单击“登录”按钮。
+a. 打开 SecureW2 JoinNow 连接器客户端，从列表中选择适当设备并单击“登录”按钮  。
 
 b. 默认浏览器应随即打开，用户应重新定向到 Azure 门户进行身份验证。
 

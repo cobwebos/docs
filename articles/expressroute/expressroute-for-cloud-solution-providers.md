@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: richcar
 ms.custom: seodec18
 ms.openlocfilehash: a03ab7bbdadad2728f54127583583c22bd2ec07a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60367495"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>适用于云解决方案提供商 (CSP) 的 ExpressRoute
@@ -31,7 +31,7 @@ Microsoft Azure 提供越来越多的服务，可以将这些服务提供给客�
 Microsoft 为 CSP 提供管理 Azure 客户订阅所需的 API，允许通过编程方式与自己的服务管理系统集成。 可在 [此处](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx)找到受支持的管理功能。
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure 资源管理
-订阅管理方式将取决于你与客户签署的协定。 可以由 CSP 直接管理资源的创建和维护，也可以始终由客户对 Microsoft Azure 订阅进行控制，并根据需要来创建 Azure 资源。 如果客户在其 Microsoft Azure 订阅中管理资源的创建，他们会使用以下两种模型之一：“Connect-Through”模型或“Direct-To”模型。 将在下面各节中详细介绍这些模型。  
+订阅管理方式将取决于你与客户签署的协定。 可以由 CSP 直接管理资源的创建和维护，也可以始终由客户对 Microsoft Azure 订阅进行控制，并根据需要来创建 Azure 资源。 如果客户在其 Microsoft Azure 订阅中管理资源的创建，他们会使用以下两种模型之一：“Connect-Through”模型或“Direct-To”模型。   将在下面各节中详细介绍这些模型。  
 
 ### <a name="connect-through-model"></a>Connect-Through 模型
 ![替换文字](./media/expressroute-for-cloud-solution-providers/connect-through.png)  

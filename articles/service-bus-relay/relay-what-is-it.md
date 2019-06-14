@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
 ms.openlocfilehash: 47fbce7ea26bcb7224fe2624d593d85cd178d610
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60420295"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
@@ -37,7 +37,7 @@ Azure 中继不同于 VPN 等网络级集成技术。 Azure 中继的范围可�
 1. 本地服务通过出站端口连接到中继服务。 
 2. 该服务创建双向套接字，以便专门为特定的地址进行通信。 
 3. 然后，客户端可以通过将流量发送到针对该地址的中继服务来与本地服务通信。 
-4. 中继服务接着通过客户端专用的双向套接字将数据中继到本地服务。 客户端不需要与本地服务建立直接连接。 它不需要知道该服务的位置。 另外，本地服务不需要在防火墙中打开任何入站端口。
+4. 中继服务接着通过客户端专用的双向套接字将数据中继到本地服务。  客户端不需要与本地服务建立直接连接。 它不需要知道该服务的位置。 另外，本地服务不需要在防火墙中打开任何入站端口。
 
 
 ## <a name="features"></a>功能 

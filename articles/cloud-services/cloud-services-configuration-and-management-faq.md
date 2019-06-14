@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60337419"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
@@ -101,7 +101,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-**Get-AzurePublishSettingsFile** 将在 Azure 门户的“订阅” > “管理证书”中创建新的管理证书。 新证书的名称类似于“YourSubscriptionNam]-[CurrentDate]-credentials”。
+**Get-AzurePublishSettingsFile** 将在 Azure 门户的“订阅”   > “管理证书”  中创建新的管理证书。 新证书的名称类似于“YourSubscriptionNam]-[CurrentDate]-credentials”。
 
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要 SSL 证书 (.pfx) 和中间证书 (.p7b)？
 
@@ -194,7 +194,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 3. 创建名为 **DuoEnabled** 的新 DWORD 值。
 4. 将其值设置为 1。
 5. 重启服务器。
-6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。 
+6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。   
 
 有关详细信息，请参阅：
 
@@ -228,10 +228,10 @@ Microsoft 遵循严格的流程，未经所有者或其被委派者书面许可�
 
 如果从已加入 Azure Active Directory 的计算机使用 RDP 文件，则可能出现此错误。 若要解决此问题，请执行以下步骤：
 
-1. 右键单击下载的 RDP 文件，然后选择“编辑”。
+1. 右键单击下载的 RDP 文件，然后选择“编辑”  。
 2. 在 username 前面添加“&#92;”作为前缀。 例如，使用 **.\username**，而不是 **username**。
 
-## <a name="scaling"></a>扩展
+## <a name="scaling"></a>缩放
 
 ### <a name="i-cannot-scale-beyond-x-instances"></a>无法扩展到 X 个实例以上
 Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用的核心，将无法进行扩展。 例如，如果限制为 100 个核心，则意味着云服务可以有 100 个 A1 大小的虚拟机实例或 50 个 A2 大小的虚拟机实例。
@@ -311,10 +311,10 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
     
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
-|Value|含义|
+|值|含义|
 ------|------
 |0|没有 SNI|
-|1|已启用 SNI |
+|第|已启用 SNI |
 |2 |使用中心证书存储的非 SNI 绑定|
 |3|使用中心证书存储的 SNI 绑定 |
  

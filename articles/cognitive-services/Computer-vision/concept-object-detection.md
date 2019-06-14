@@ -1,7 +1,7 @@
 ---
 title: 对象检测 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 了解概念与对象检测功能的计算机视觉 API 的相关使用情况和限制。
+description: 了解与计算机视觉 API 的对象检测功能相关的概念 - 使用情况和限制。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,17 +12,17 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60368029"
 ---
-# <a name="detect-common-objects-in-images"></a>检测图像中的公共对象
+# <a name="detect-common-objects-in-images"></a>检测图像中的常见对象
 
 对象检测类似于[标记](concept-tagging-images.md)，但是 API 返回找到的每个对象的边框坐标（以像素为单位）。 例如，如果图像包含狗、猫和人，检测操作将列出这些对象及其在图像中的坐标。 可以使用此功能处理图像中对象之间的关系。 还可以确定图像中是否有多个相同标记的实例。
 
-检测 API 根据图像中识别到的对象或生物应用标记。 当前标记的分类和对象检测分类之间没有正式关系。 从概念上讲，检测 API 仅查找对象和生物，而标记 API 还可以包含诸如“室内”等上下文术语，这些术语不能使用边界框进行本地化。
+检测 API 根据图像中识别到的对象或生物应用标记。 目前，标记分类与对象检测分类之间没有正式关系。 从概念上讲，检测 API 仅查找对象和生物，而标记 API 还可以包含诸如“室内”等上下文术语，这些术语不能使用边界框进行本地化。
 
 ## <a name="object-detection-example"></a>对象检测示例
 
@@ -97,7 +97,7 @@ ms.locfileid: "60368029"
 
 ## <a name="use-the-api"></a>使用 API
 
-对象检测功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 包括`Objects`中**visualFeatures**查询参数。 然后，当您获得完整的 JSON 响应，只需分析字符串内容的`"objects"`部分。
+对象检测功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Objects` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"objects"` 部分内容的字符串。
 
 * [快速入门：分析图像 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [快速入门：分析图像 (REST API)](./quickstarts/csharp-analyze.md)

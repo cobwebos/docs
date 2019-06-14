@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8cf8c84120f4c90d3943cfc31ffbf9aafcec0ba3
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873910"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>MSAL.js 的 Internet Explorer 和 Microsoft Edge 浏览器上的已知的问题
@@ -43,15 +43,15 @@ ms.locfileid: "65873910"
 通常情况下部署到生产环境 （例如在 Azure Web 应用） 应用程序正常运行，提供最终用户已接受弹出窗口。 经过测试，它使用 Internet Explorer 11。
 
 ### <a name="running-locally"></a>在本地运行
-如果你想要本地运行和调试在 Internet Explorer 中运行的应用程序，需要注意以下事项 (假设你想要运行应用程序作为*http://localhost:1234*):
+如果你想要本地运行和调试在 Internet Explorer 中运行的应用程序，需要注意以下事项 (假设你想要运行应用程序作为 *http://localhost:1234* ):
 
-- Internet Explorer 具有名为"受保护的模式"，这样可防止 MSAL.js 正常工作的安全机制。 症状，在你登录后页面可重定向到 http://localhost:1234/null。
+- Internet Explorer 具有名为"受保护的模式"，这样可防止 MSAL.js 正常工作的安全机制。 症状，在你登录后页面可重定向到 http://localhost:1234/null 。
 
 - 若要运行和调试本地应用程序，你将需要禁用此"受保护的模式"。 为以下内容：
 
     1. 单击 Internet Explorer**工具**（齿轮图标）。
     1. 选择**Internet 选项**，然后**安全**选项卡。
-    1. 单击**Internet**区域，并取消选中**启用保护模式 （需要重新启动 Internet Explorer）**。 Internet Explorer 会警告您的计算机不再受保护。 单击“确定”。
+    1. 单击**Internet**区域，并取消选中**启用保护模式 （需要重新启动 Internet Explorer）** 。 Internet Explorer 会警告您的计算机不再受保护。 单击“确定”。 
     1. 重新启动 Internet Explorer。
     1. 运行和调试你的应用程序。
 

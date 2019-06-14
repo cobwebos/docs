@@ -14,14 +14,14 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eaed7357221f5b766bfb8b9e1a9031c08854ac9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60477199"
 ---
 # <a name="access-and-use-apps-on-the-my-apps-portal"></a>在我的应用门户的访问和使用应用程序
-可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
+可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，  以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。  如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -84,7 +84,7 @@ ms.locfileid: "60477199"
 
 1.  登录到工作或学校帐户。
 
-2.  打开 web 浏览器并转到 https://myapps.microsoft.com，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com。
+2.  打开 web 浏览器并转到 https://myapps.microsoft.com ，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com 。
 
     **应用**页出现后，显示所有基于云的应用，由你的组织拥有和可供你使用。
 
@@ -97,7 +97,7 @@ ms.locfileid: "60477199"
 
 1. 在移动设备上下载并安装从 Intune Managed Browser 应用[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)并[Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)。
 
-2. 打开 Intune 托管浏览器应用，请转到 https://myapps.microsoft.com，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com。
+2. 打开 Intune 托管浏览器应用，请转到 https://myapps.microsoft.com ，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com 。
 
     **应用**页出现后，显示所有基于云的应用，由你的组织拥有和可供你使用。
 
@@ -110,7 +110,7 @@ ms.locfileid: "60477199"
 
 1. 在移动设备上启动 web 浏览器应用，例如 Safari。
 
-2. 转到 https://myapps.microsoft.com，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com。
+2. 转到 https://myapps.microsoft.com ，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com 。
 
     **应用**页出现后，显示所有基于云的应用，由你的组织拥有和可供你使用。
 
@@ -123,7 +123,7 @@ ms.locfileid: "60477199"
 
 1. 在移动设备上启动 web 浏览器应用，例如 Google Chrome。
 
-2. 转到 https://myapps.microsoft.com，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com。
+2. 转到 https://myapps.microsoft.com ，或使用由你的组织提供的链接。 例如，你可能会定向到自定义页面为你的组织，例如 https://myapps.microsoft.com/contoso.com 。
 
     **应用**页出现后，显示所有基于云的应用，由你的组织拥有和可供你使用。
 

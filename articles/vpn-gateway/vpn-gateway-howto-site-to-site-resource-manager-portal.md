@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
 ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60407496"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
@@ -93,7 +93,7 @@ ms.locfileid: "60407496"
 通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
 - 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的可用密钥。
-- 虚拟网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 要使用 Azure 门户查找 VPN 网关的公共 IP 地址，请导航到“虚拟网关”，并单击网关的名称。
+- 虚拟网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 要使用 Azure 门户查找 VPN 网关的公共 IP 地址，请导航到“虚拟网关”，并单击网关的名称。 
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
@@ -123,10 +123,10 @@ ms.locfileid: "60407496"
 
 可以添加其他连接，前提是连接之间不存在地址空间重叠。
 
-1. 若要添加其他连接，请导航到 VPN 网关，然后单击“连接”打开“连接”页。
-2. 单击“+添加”添加连接。 调整连接类型以反映“VNet 到 VNet”（如果连接到另一个 VNet 网关）或“站点到站点”。
+1. 若要添加其他连接，请导航到 VPN 网关，然后单击“连接”  打开“连接”页。
+2. 单击“+添加”  添加连接。 调整连接类型以反映“VNet 到 VNet”（如果连接到另一个 VNet 网关）或“站点到站点”。
 3. 如果要使用“站点到站点”连接进行连接，并且尚未为要连接到的站点创建本地网络网关，则可以创建一个新的本地网络网关。
-4. 指定要使用的共享密钥，然后单击“确定”以创建连接。
+4. 指定要使用的共享密钥，然后单击“确定”  以创建连接。
 
 ## <a name="next-steps"></a>后续步骤
 

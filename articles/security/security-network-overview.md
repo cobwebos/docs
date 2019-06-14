@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 2aabe3d1fa8a6034c2dab38c8d6fa6da4b00ac1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60444259"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
@@ -314,7 +314,7 @@ Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS �
 ## <a name="azure-ddos-protection"></a>Azure DDoS 防护
 
 分布式拒绝服务 (DDoS) 攻击是将应用程序移动到云的客户所面临的一些最大的可用性和安全性问题。 DDoS 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。
-Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。 此防护功能是免费的，包含针对常见网络级攻击的不间断监视和实时缓解。 除了“基本”DDoS 防护随附的保护以外，还可以启用“标准”选项。 DDoS 保护标准功能包括：
+Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。  此防护功能是免费的，包含针对常见网络级攻击的不间断监视和实时缓解。 除了“基本”DDoS 防护随附的保护以外，还可以启用“标准”选项。   DDoS 保护标准功能包括：
 
 * **本机平台集成：** 以本机方式集成到 Azure 中。 包括通过 Azure 门户进行配置。 DDoS 保护标准了解你的资源和资源配置。
 * **成套保护：** 一旦启用 DDoS 保护标准，简化后的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。

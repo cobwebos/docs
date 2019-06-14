@@ -18,10 +18,10 @@ ms.date: 01/30/2019
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353210"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
@@ -30,7 +30,7 @@ ms.locfileid: "60353210"
 ## <a name="devices-and-endpoints"></a>设备和终结点
 请参阅下表大概了解 Windows 10 中同步、备份和还原框架支持的设备和帐户类型。
 
-| 帐户类型和操作 | 桌面型 | 移动型 |
+| 帐户类型和操作 | 桌面型 | 移动电话 |
 | --- | --- | --- |
 | Azure Active Directory：同步 |是 |否 |
 | Azure Active Directory：备份/还原 |否 |否 |
@@ -77,18 +77,18 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **蓝牙**：所有蓝牙设置 |X |X | |
 | **命令提示符**：命令提示符“Defaults”设置 |sync |X |内部 |
 | **凭据**：凭据保险箱 |sync |sync |password |
-| **日期、时间和区域**：自动时间（Internet 时间同步） |sync |sync |语言 |
-| **日期、时间和区域**：24 小时制 |sync |X |语言 |
-| **日期、时间和区域**：日期和时间 |sync |X |语言 |
-| **日期、时间和区域**：时区 | |X |语言 |
-| **日期、时间和区域**：夏令时 |sync |X |语言 |
-| **日期、时间和区域**：国家/地区 |sync |X |语言 |
-| **日期、时间和区域**：每周的第一天 |sync |X |语言 |
-| **日期、时间和区域**：区域格式（区域设置） |sync |X |语言 |
-| **日期、时间和区域**：简短日期 |sync |X |语言 |
-| **日期、时间和区域**：完整日期 |sync |X |语言 |
+| **日期、时间和区域**：自动时间（Internet 时间同步） |sync |sync |language |
+| **日期、时间和区域**：24 小时制 |sync |X |language |
+| **日期、时间和区域**：日期和时间 |sync |X |language |
+| **日期、时间和区域**：时区 | |X |language |
+| **日期、时间和区域**：夏令时 |sync |X |language |
+| **日期、时间和区域**：国家/地区 |sync |X |language |
+| **日期、时间和区域**：每周的第一天 |sync |X |language |
+| **日期、时间和区域**：区域格式（区域设置） |sync |X |language |
+| **日期、时间和区域**：简短日期 |sync |X |language |
+| **日期、时间和区域**：完整日期 |sync |X |language |
 | **日期、时间和区域**：简短时间 |sync |X |语言 |
-| **日期、时间和区域**：完整时间 |sync |X |语言 |
+| **日期、时间和区域**：完整时间 |sync |X |language |
 | **桌面个性化**：桌面主题（背景、系统颜色、默认系统声音、屏幕保护） |sync |X |主题 |
 | **桌面个性化**：幻灯片放映壁纸 |sync |X |主题 |
 | **桌面个性化**：任务栏设置（位置、自动隐藏等） |sync |X |主题 |

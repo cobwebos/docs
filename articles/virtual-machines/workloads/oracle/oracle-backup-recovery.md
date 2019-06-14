@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60566678"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
@@ -32,7 +32,7 @@ ms.locfileid: "60566678"
 
 ### <a name="step-1-prerequisites"></a>步骤 1：必备组件
 
-*   要执行备份和恢复过程，首先必须创建已安装 Oracle Database 12c 实例的 Linux VM。 用来创建 VM 的市场映像是“Oracle:Oracle-Database-Ee:12.1.0.2:latest”。
+*   要执行备份和恢复过程，首先必须创建已安装 Oracle Database 12c 实例的 Linux VM。 用来创建 VM 的市场映像是“Oracle:Oracle-Database-Ee:12.1.0.2:latest”  。
 
     要了解如何创建 Oracle 数据库，请参阅 [Oracle 创建数据库快速入门](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)。
 
@@ -47,9 +47,9 @@ ms.locfileid: "60566678"
 
 ### <a name="step-3-prepare-the-database"></a>步骤 3：准备数据库
 
-1.  此步骤假定已有在名为“myVM”的 VM 上运行的 Oracle 实例 (cdb1)。
+1.  此步骤假定已有在名为“myVM”  的 VM 上运行的 Oracle 实例 (cdb1)。
 
-    运行“oracle”超级用户根，然后初始化侦听器：
+    运行“oracle”  超级用户根，然后初始化侦听器：
 
     ```bash
     $ sudo su - oracle
@@ -268,48 +268,48 @@ ms.locfileid: "60566678"
 
 ### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>步骤 5：使用 Azure 恢复服务保管库备份 VM
 
-1.  在 Azure 门户中，搜索恢复服务保管库。
+1.  在 Azure 门户中，搜索恢复服务保管库  。
 
     ![恢复服务保管库页](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  要添加新保管库，请在“恢复服务保管库”边栏选项卡上单击“添加”。
+2.  要添加新保管库，请在“恢复服务保管库”边栏选项卡上单击“添加”   。
 
     ![恢复服务保管库“添加”页](./media/oracle-backup-recovery/recovery_service_02.png)
 
-3.  若要继续，请单击“myVault”。
+3.  若要继续，请单击“myVault”  。
 
     ![恢复服务保管库“详细信息”页](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  在“myVault”边栏选项卡上，单击“备份”。
+4.  在“myVault”边栏选项卡上，单击“备份”   。
 
     ![恢复服务保管库“备份”页](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”。 单击“确定”。
+5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”    。 单击“确定”。 
 
     ![恢复服务保管库“详细信息”页](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”。 单击“确定”。
+6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”    。 单击“确定”。 
 
     ![恢复服务保管库“备份策略详细信息”页](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  在“选择虚拟机”边栏选项卡中，选中“myVM1”复选框，然后单击“确定”。 单击“启用备份”按钮。
+7.  在“选择虚拟机”边栏选项卡中，选中“myVM1”复选框，然后单击“确定”    。 单击“启用备份”按钮  。
 
     ![恢复服务保管库“备份项详细信息”页](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > 在单击“启用备份”后，备份过程将不会在计划时间到期前启动。 若要设置即时备份，请完成下一步。
+    > 在单击“启用备份”后，备份过程将不会在计划时间到期前启动  。 若要设置即时备份，请完成下一步。
 
-8.  在“myVault - 备份项”边栏选项卡中，在“备份项计数”下选择备份项计数。
+8.  在“myVault - 备份项”边栏选项卡中，在“备份项计数”下选择备份项计数   。
 
     ![恢复服务保管库“myVault 详细信息”页](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  在“备份项(Azure 虚拟机)”边栏选项卡中，单击页面右侧的省略号 (...) 按钮，然后单击“立即备份”。
+9.  在“备份项(Azure 虚拟机)”边栏选项卡中，单击页面右侧的省略号 (...) 按钮，然后单击“立即备份”    。
 
     ![恢复服务保管库“立即备份”命令](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. 单击“备份”按钮。 等待备份过程结束。 然后，转到[步骤 6:删除数据库文件](#step-6-remove-the-database-files)。
+10. 单击“备份”  按钮。 等待备份过程结束。 然后，转到[步骤 6:删除数据库文件](#step-6-remove-the-database-files)。
 
-    若要查看备份作业的状态，请单击“作业”。
+    若要查看备份作业的状态，请单击“作业”  。
 
     ![恢复服务保管库“作业”页](./media/oracle-backup-recovery/recovery_service_10.png)
 
@@ -343,19 +343,19 @@ ms.locfileid: "60566678"
 ## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>从恢复服务保管库还原已删除文件
 若要还原已删除文件，请完成以下步骤：
 
-1. 在 Azure 门户中，搜索“myVault”恢复服务保管库项。 在“概述”边栏选项卡中，在“备份项”下选择项的数目。
+1. 在 Azure 门户中，搜索“myVault”恢复服务保管库项  。 在“概述”边栏选项卡中，在“备份项”下选择项的数目   。
 
     ![恢复服务保管库 myVault 备份项](./media/oracle-backup-recovery/recovery_service_12.png)
 
-2. 在“备份项计数”下，选择项的数目。
+2. 在“备份项计数”下，选择项的数目  。
 
     ![恢复服务保管库 Azure 虚拟机备份项计数](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. 在“myvm1”边栏选项卡中，单击“文件恢复(预览)”。
+3. 在“myvm1”边栏选项卡中，单击“文件恢复(预览)”   。
 
     ![恢复服务保管库“文件恢复”页的屏幕快照](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. 在“文件恢复(预览)”窗格中，单击“下载脚本”。 然后，将下载的 (.sh) 文件保存到客户端计算机上的文件夹中。
+4. 在“文件恢复(预览)”窗格中，单击“下载脚本”   。 然后，将下载的 (.sh) 文件保存到客户端计算机上的文件夹中。
 
     ![下载脚本文件保存选项](./media/oracle-backup-recovery/recovery_service_15.png)
 
@@ -380,7 +380,7 @@ ms.locfileid: "60566678"
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
-    以下示例显示运行上一脚本后会看到什么。 当系统提示继续时，请输入“Y”。
+    以下示例显示运行上一脚本后会看到什么。 当系统提示继续时，请输入“Y”  。
 
     ```bash
     Microsoft Azure VM Backup - File Recovery
@@ -414,7 +414,7 @@ ms.locfileid: "60566678"
 
 7. 确认访问已安装的卷。
 
-    若要退出，请输入“q”，然后搜索已安装的卷。 若要创建已添加卷的列表，在命令提示符处输入“df -k”。
+    若要退出，请输入“q”  ，然后搜索已安装的卷。 若要创建已添加卷的列表，在命令提示符处输入“df -k”  。
 
     ![df -k 命令](./media/oracle-backup-recovery/recovery_service_16.png)
 
@@ -444,7 +444,7 @@ ms.locfileid: "60566678"
     
 10. 卸载磁盘。
 
-    在 Azure 门户中的“文件恢复(预览)”边栏选项卡上，单击“卸载磁盘”。
+    在 Azure 门户中的“文件恢复(预览)”边栏选项卡上，单击“卸载磁盘”   。
 
     ![卸载磁盘命令](./media/oracle-backup-recovery/recovery_service_17.png)
 
@@ -454,41 +454,41 @@ ms.locfileid: "60566678"
 
 ### <a name="step-1-delete-myvm"></a>步骤 1：删除 myVM
 
-*   在 Azure 门户，转到“myVM1”保管库，然后选择“删除”。
+*   在 Azure 门户，转到“myVM1”保管库，然后选择“删除”   。
 
     ![保管库“删除”命令](./media/oracle-backup-recovery/recover_vm_01.png)
 
 ### <a name="step-2-recover-the-vm"></a>步骤 2：将 VM 恢复
 
-1.  转到“恢复服务保管库”，然后选择“myVault”。
+1.  转到“恢复服务保管库”  ，然后选择“myVault”  。
 
     ![myVault 条目](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  在“概述”边栏选项卡中，在“备份项”下选择项的数目。
+2.  在“概述”边栏选项卡中，在“备份项”下选择项的数目   。
 
     ![myVault 备份项](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  在“备份项(Azure 虚拟机)”边栏选项卡上，选择“myvm1”。
+3.  在“备份项(Azure 虚拟机)”边栏选项卡上，选择“myvm1”   。
 
     ![恢复 VM 页](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  在“myvm1”边栏选项卡中，单击省略号 (...) 按钮，然后单击“还原 VM”。
+4.  在“myvm1”边栏选项卡中，单击省略号 (...) 按钮，然后单击“还原 VM”    。
 
     ![还原 VM 命令](./media/oracle-backup-recovery/recover_vm_05.png)
 
-5.  在“选择还原点”边栏选项卡上，选择想要还原的项，然后单击“确定”。
+5.  在“选择还原点”边栏选项卡上，选择想要还原的项，然后单击“确定”   。
 
     ![选择还原点](./media/oracle-backup-recovery/recover_vm_06.png)
 
     如果已启用应用程序一致性备份，将出现一个竖直蓝条。
 
-6.  在“还原配置”边栏选项卡中，选择虚拟机名称和资源组，然后单击“确定”。
+6.  在“还原配置”边栏选项卡中，选择虚拟机名称和资源组，然后单击“确定”   。
 
     ![还原配置值](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  要还原 VM，请单击“还原”按钮。
+7.  要还原 VM，请单击“还原”按钮  。
 
-8.  若要查看还原过程的状态，请依次单击“作业”和“备份作业”。
+8.  若要查看还原过程的状态，请依次单击“作业”和“备份作业”   。
 
     ![备份作业状态命令](./media/oracle-backup-recovery/recover_vm_08.png)
 
@@ -499,23 +499,23 @@ ms.locfileid: "60566678"
 ### <a name="step-3-set-the-public-ip-address"></a>步骤 3：设置的公共 IP 地址
 还原 VM 后，请设置公共 IP 地址。
 
-1.  在搜索框中输入“公共 IP 地址”。
+1.  在搜索框中输入“公共 IP 地址”  。
 
     ![公共 IP 地址列表](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  在“公共 IP 地址”边栏选项卡中，单击“添加”。 在“创建公共 IP 地址”边栏选项卡的“名称”下，选择公共 IP 名称。 对于“资源组”，请选择“使用现有资源组”。 然后单击“创建”。
+2.  在“公共 IP 地址”边栏选项卡中，单击“添加”   。 在“创建公共 IP 地址”边栏选项卡的“名称”下，选择公共 IP 名称   。 对于“资源组”，请选择“使用现有资源组”。   然后单击“创建”  。
 
     ![创建 IP 地址](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  若要将公共 IP 地址与 VM 的网络接口关联，请搜索并选择“myVMip”。 然后单击“关联”。
+3.  若要将公共 IP 地址与 VM 的网络接口关联，请搜索并选择“myVMip”  。 然后单击“关联”  。
 
     ![关联 IP 地址](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  对于“资源类型”，选择“网络接口”。 选择 myVM 实例使用的网络接口，然后单击“确定”。
+4.  对于“资源类型”，选择“网络接口”   。 选择 myVM 实例使用的网络接口，然后单击“确定”  。
 
     ![选择资源类型和 NIC 值](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  搜索并打开从门户移植的 myVM 实例。 与 VM 关联的 IP 地址显示在 myVM“概述”边栏选项卡上。
+5.  搜索并打开从门户移植的 myVM 实例。 与 VM 关联的 IP 地址显示在 myVM“概述”边栏选项卡上  。
 
     ![IP 地址值](./media/oracle-backup-recovery/create_ip_04.png)
 

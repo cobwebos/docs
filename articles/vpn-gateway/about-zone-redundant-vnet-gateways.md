@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
 ms.openlocfilehash: 0ba818ef3c24d0e88e662adf87b22cc938fe5fab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391036"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>关于 Azure 可用性区域中的区域冗余虚拟网络网关
@@ -57,22 +57,22 @@ ms.locfileid: "60391036"
 
 ## <a name="pipskus"></a>公共 IP SKU
 
-区域冗余网关和区块网关都依赖 Azure 公共 IP 资源标准 SKU。 Azure 公共 IP 资源的配置决定了是部署区域冗余网关，还是部署区块网关。 如果使用基本 SKU 创建公共 IP 资源，网关不会有任何区域冗余，且网关资源具有区域性。
+区域冗余网关和区块网关都依赖 Azure 公共 IP 资源标准  SKU。 Azure 公共 IP 资源的配置决定了是部署区域冗余网关，还是部署区块网关。 如果使用基本  SKU 创建公共 IP 资源，网关不会有任何区域冗余，且网关资源具有区域性。
 
 ### <a name="pipzrg"></a>区域冗余网关
 
-如果使用标准公共 IP SKU 创建公共 IP 地址，但未指定区域，行为因网关是 VPN 网关还是 ExpressRoute 网关而异。 
+如果使用标准  公共 IP SKU 创建公共 IP 地址，但未指定区域，行为因网关是 VPN 网关还是 ExpressRoute 网关而异。 
 
 * 对于 VPN 网关，两个网关实例会部署到这三个区域中的任意两个区域，以实现区域冗余。 
 * 对于 ExpressRoute 网关，由于可以有超过两个实例，因此网关可以跨所有这三个区域部署。
 
 ### <a name="pipzg"></a>区块网关
 
-如果使用标准公共 IP SKU 创建公共 IP 地址，并指定区域（1、2 或 3），所有网关实例都会部署到同一区域中。
+如果使用标准  公共 IP SKU 创建公共 IP 地址，并指定区域（1、2 或 3），所有网关实例都会部署到同一区域中。
 
 ### <a name="piprg"></a>区域网关
 
-如果使用基本公共 IP SKU 创建公共 IP 地址，网关会部署为区域网关，并且不会内置有任何区域冗余。
+如果使用基本  公共 IP SKU 创建公共 IP 地址，网关会部署为区域网关，并且不会内置有任何区域冗余。
 
 ## <a name="faq"></a>常见问题解答
 

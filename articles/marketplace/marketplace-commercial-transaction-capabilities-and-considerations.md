@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65849719"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure 市场‎商业交易功能和注意事项
@@ -131,18 +131,18 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 
 * 如果启用“通过 Azure 销售”选项，则会得到以下成本结构。
 
-|你的许可证费用       | 100.00 美元/月  |
+|你的许可证费用       | 100\.00 美元/月  |
 |--------------|---------|
 |Azure 使用费用（D1/1 核）    | 直接向发布者而不是客户收费 |
-|*由 Microsoft 向客户收费*    |  100.00 美元/月（注意：发布者必须将任何引致的或者转付的基础结构费用考虑到许可证费用中）  |
+|*由 Microsoft 向客户收费*    |  100\.00 美元/月（注意：发布者必须将任何引致的或者转付的基础结构费用考虑到许可证费用中）   |
 
 * 在这种情况下，Microsoft 向你收取 100.00 美元的软件许可证费用，并向发布者支付 80.00 美元。
 * 合作伙伴具有限定为减少 Marketplace 服务费用会减少的事务费用 SaaS 上提供了从年 6 月 2020年直到 2019 年 5。 在此方案中，Microsoft 对您的软件许可证 100.00 美元进行收费和到发布服务器的回报 90.00 美元。
 
-|Microsoft 收费  | 100.00 美元/月  |
+|Microsoft 收费  | 100\.00 美元/月  |
 |---------|---------|
-|Microsoft 将许可证费用的 80% 支付给你 <br> \* Microsoft 支付给你的许可证费用的 90%的任何限定的 SaaS 应用程序   |   80.00 美元/月 <br> \* 每月 90.00 美元    |
-|Microsoft 保留许可证费用的 20% <br> \* Microsoft 保留许可证费用的任何限定的 SaaS 应用程序的 10%。  |  20.00 美元/月 <br> \* $10.00     |
+|Microsoft 将许可证费用的 80% 支付给你 <br> \* Microsoft 支付给你的许可证费用的 90%的任何限定的 SaaS 应用程序   |   80\.00 美元/月 <br> \* 每月 90.00 美元    |
+|Microsoft 保留许可证费用的 20% <br> \* Microsoft 保留许可证费用的任何限定的 SaaS 应用程序的 10%。  |  20\.00 美元/月 <br> \* $10.00     |
 
 * **减少了的 Marketplace 服务费用：** 对于某些我们商业 Marketplace 发布的 SaaS 产品，Microsoft 会减少其 Marketplace 服务费用从 20%（如在 Microsoft 发布方协议中所述） 为 10%。  为了使您的产品来限定，至少一个你的产品必须由 Microsoft 指定为 IP 联合销售就绪或 IP 共同销售设置优先级。 若要为每月接收此简化的 Marketplace 服务费，资格必须满足该日历月结束前的至少五 （5） 个工作日。 减少 Marketplace 服务费用不会应用于 Vm、 管理的应用程序或通过我们的商业应用商店提供的任何其他产品。  这减少了 Marketplace 服务费用将许可证费用，2019 年 5 月 1 日和于 2020 年 6 月 30 日之间的 Microsoft 收集与可供限定产品/服务。  该时间后将返回其正常量 Marketplace 服务费用。
 
@@ -225,7 +225,7 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 * 开发人员中心帐户保存 Microsoft 代表发布者从客户收集费用和向发布者进行转付所需的所有相关财务详情。
 * 尽管你可以跨这两个帐户使用同一组织或 Microsoft 登录详细信息，开发人员中心是从云合作伙伴门户帐户的单独帐户。 若要使用交易发布选项，除注册以访问云合作伙伴门户外，发布者还必须完成开发人员中心帐户注册过程。
 
-有关如何设置这些帐户的详细信息，请参阅[成为云市场发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。
+有关如何设置这些帐户的详细信息，请参阅[成为云市场发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。 
 
 ### <a name="requirements-for-specific-offer-types"></a>特定产品/服务类型的要求
 

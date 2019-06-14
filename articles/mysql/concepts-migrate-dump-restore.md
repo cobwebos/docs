@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/02/2018
 ms.openlocfilehash: e79c83ecb17c4dcd11f7ccbecded59e7d1d13dfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60525615"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
@@ -85,7 +85,7 @@ $ mysqldump -u root -p --all-databases > alldb_backup.sql
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 目标服务器上创建数据库
 在要迁移数据的 Azure Database for MySQL 目标服务器上创建一个空数据库。 使用 MySQL Workbench、Toad 或 Navicat 等工具创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
-若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息。
+若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息  。
 
 ![在 Azure 门户中找到连接信息](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
 
@@ -108,19 +108,19 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 若要导出，可以使用可能已安装在本地环境中的常用工具 phpMyAdmin。 使用 PHPMyAdmin 导出 MySQL 数据库：
 1. 打开 phpMyAdmin。
 2. 选择数据库。 单击左侧列表中的数据库名称。 
-3. 单击“导出”链接。 这将显示一个新页面，可查看数据库转储情况。
-4. 在“导出”区域中，单击“全选”链接，选择数据库中的表。 
+3. 单击“导出”  链接。 这将显示一个新页面，可查看数据库转储情况。
+4. 在“导出”区域中，单击“全选”  链接，选择数据库中的表。 
 5. 在 SQL 选项区域中，单击适当的选项。 
-6. 单击“另存为文件”选项及相应的压缩选项，然后单击“执行”按钮。 将出现一个对话框，提示在本地保存该文件。
+6. 单击“另存为文件”  选项及相应的压缩选项，然后单击“执行”  按钮。 将出现一个对话框，提示在本地保存该文件。
 
 ## <a name="import-using-phpmyadmin"></a>使用 PHPMyAdmin 进行导入
 导入数据库的方法与导出类似。 执行以下操作：
 1. 打开 phpMyAdmin。 
-2. 在 phpMyAdmin 设置页中，单击“添加”可添加 Azure Database for MySQL 服务器。 提供连接详细信息和登录信息。
-3. 创建适当命名的数据库，并在屏幕左侧选中该数据库。 若要重写现有数据库，请单击数据库名称，选中所有表名称旁边的复选框，再选择“删除”以删除现有表。 
-4. 单击“SQL”链接，显示可在其中键入 SQL 命令或上传 SQL 文件的页面。 
-5. 使用“浏览”按钮查找数据库文件。 
-6. 单击“执行”按钮，导出备份、执行 SQL 命令并重新创建数据库。
+2. 在 phpMyAdmin 设置页中，单击“添加”  可添加 Azure Database for MySQL 服务器。 提供连接详细信息和登录信息。
+3. 创建适当命名的数据库，并在屏幕左侧选中该数据库。 若要重写现有数据库，请单击数据库名称，选中所有表名称旁边的复选框，再选择“删除”  以删除现有表。 
+4. 单击“SQL”  链接，显示可在其中键入 SQL 命令或上传 SQL 文件的页面。 
+5. 使用“浏览”  按钮查找数据库文件。 
+6. 单击“执行”  按钮，导出备份、执行 SQL 命令并重新创建数据库。
 
 ## <a name="next-steps"></a>后续步骤
 - [将应用程序连接到 Azure Database for MySQL](./howto-connection-string.md)。

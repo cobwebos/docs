@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
 ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153211"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 >
 > * [版本 1](v1/data-factory-data-movement-security-considerations.md)
 > * [当前版本](data-movement-security-considerations.md)
@@ -46,7 +46,7 @@ ms.locfileid: "66153211"
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - https://aka.ms/AzureCompliance。
+如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - https://aka.ms/AzureCompliance 。
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
@@ -135,7 +135,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表根据混合数据移动的源和目标位置的不同组合，汇总了有关网络和自承载集成运行时的配置建议。
 
-| 源      | 目标                              | 网络配置                    | 集成运行时安装                |
+| source      | 目标                              | 网络配置                    | 集成运行时安装                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 应在虚拟网络中的 Azure 虚拟机上安装自承载的集成运行时。  |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 应在虚拟网络中的 Azure 虚拟机上安装自承载的集成运行时。  |

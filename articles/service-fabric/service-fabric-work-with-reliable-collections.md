@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/22/2019
 ms.author: aljo
 ms.openlocfilehash: bb99e5984f91edb0cf40f3bdc485624b9ec59833
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60506733"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠集合
@@ -112,7 +112,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 }
 ```
 
-同样地，使用常规 .NET 字典时，以上代码以常见的模式正常运行：开发人员使用键查询值。 如果值存在，开发人员将更改属性的值。 不过，使用可靠集合时，此代码将出现前面所述的相同问题：将对象分配给可靠集合后，你不得修改该对象。
+同样地，使用常规 .NET 字典时，以上代码以常见的模式正常运行：开发人员使用键查询值。 如果值存在，开发人员将更改属性的值。 不过，使用可靠集合时，此代码将出现前面所述的相同问题：将对象分配给可靠集合后，你不得修改该对象。 
 
 在可靠集合中更新值的正确方式是获取对现有值的引用，并将此引用所引用的对象视为不可变。 然后创建新的对象，即原始对象的完全相同副本。 现在，可以修改此新对象的状态，将新对象写入集合，以便将它序列化为字节数组、附加到本地文件并发送到副本。 提交更改之后，内存中的对象、本地文件和所有副本都处于完全一致的状态。 大功告成！
 

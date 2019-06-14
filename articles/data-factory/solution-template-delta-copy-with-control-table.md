@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.openlocfilehash: c32592ce539eeb2dec71792e4a6eb31e7d904eff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312379"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>从具有控制表的数据库的增量复制
@@ -108,11 +108,11 @@ ms.locfileid: "60312379"
 
      ![查看管道](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. 选择**存储过程**。 有关**存储过程名称**，选择 **[update_watermark]**。 选择**导入参数**，然后选择**添加动态内容**。  
+9. 选择**存储过程**。 有关**存储过程名称**，选择 **[update_watermark]** 。 选择**导入参数**，然后选择**添加动态内容**。  
 
      ![设置存储的过程活动](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 
-10. 编写的内容 **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}**，然后选择**完成**。  
+10. 编写的内容 **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** ，然后选择**完成**。  
 
      ![编写存储过程的参数的内容](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
      

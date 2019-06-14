@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: bb7d6531da330bcfbf6de786ffb19984cfd1964e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487116"
 ---
 # <a name="use-case---customer-profiling"></a>用例 - 客户分析
@@ -31,24 +31,24 @@ Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交�
 在此解决方案中，Contoso 需要评估其最近启动的市场营销活动的成效。 我们从原始游戏日志着手，对其进行处理并使用地理位置数据将其扩充，加入广告参考数据，最后将其复制到 Azure SQL 数据库，进而分析市场活动的影响。
 
 ## <a name="deploy-solution"></a>部署解决方案
-访问和试用此简单用例所需要的是 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob 存储帐户](../../storage/common/storage-quickstart-create-account.md)和 [Azure SQL 数据库](../../sql-database/sql-database-get-started.md)。 在数据工厂主页上的“示例管道”磁贴上，部署客户分析管道。
+访问和试用此简单用例所需要的是 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob 存储帐户](../../storage/common/storage-quickstart-create-account.md)和 [Azure SQL 数据库](../../sql-database/sql-database-get-started.md)。 在数据工厂主页上的“示例管道”  磁贴上，部署客户分析管道。
 
 1. 创建数据工厂或打开现有数据工厂。 有关创建数据工厂的步骤，请参阅[使用数据工厂将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-2. 在数据工厂的“数据工厂”边栏选项卡中，单击“示例管道”磁贴。
+2. 在数据工厂的“数据工厂”  边栏选项卡中，单击“示例管道”  磁贴。
 
     ![“示例管道”磁贴](./media/data-factory-samples/SamplePipelinesTile.png)
-3. 在“示例管道”边栏选项卡中，单击要部署的“客户分析”。
+3. 在“示例管道”  边栏选项卡中，单击要部署的“客户分析”  。
 
     ![“示例管道”边栏选项卡](./media/data-factory-samples/SampleTile.png)
 4. 指定此示例的配置设置。 例如，Azure 存储帐户名和密钥、Azure SQL server 名称、数据库、用户 ID 和密码。
 
     ![“示例”边栏选项卡](./media/data-factory-samples/SampleBlade.png)
-5. 指定配置设置后，单击“创建”可以创建/部署示例管道和此管道使用的链接服务/表格。
-6. 可在之前在“示例管道”边栏选项卡上单击的“示例”磁贴上看到部署状态。
+5. 指定配置设置后，单击“创建”  可以创建/部署示例管道和此管道使用的链接服务/表格。
+6. 可在之前在“示例管道”  边栏选项卡上单击的“示例”磁贴上看到部署状态。
 
     ![部署状态](./media/data-factory-samples/DeploymentStatus.png)
-7. 在此示例的磁贴上看到“已成功部署”消息时，关闭“示例管道”边栏选项卡。  
-8. 在“数据工厂”边栏选项卡上，将看到链接服务、数据集和管道已添加到数据工厂。  
+7. 在此示例的磁贴上看到“已成功部署”  消息时，关闭“示例管道”  边栏选项卡。  
+8. 在“数据工厂”  边栏选项卡上，将看到链接服务、数据集和管道已添加到数据工厂。  
 
     ![“数据工厂”边栏选项卡](./media/data-factory-samples/DataFactoryBladeAfter.png)
 

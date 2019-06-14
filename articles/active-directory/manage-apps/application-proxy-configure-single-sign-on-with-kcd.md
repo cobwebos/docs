@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 545906af882be6e53297bf7a9ff2cd12e86d55f0
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65859625"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
@@ -55,12 +55,12 @@ ms.locfileid: "65859625"
 根据应用程序代理连接器和应用程序服务器是否位于同一域中，Active Directory 配置有所不同。
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>连接器和应用程序服务器位于同一域中
-1. 在 Active Directory 中，转到“工具” > “用户和计算机”。
+1. 在 Active Directory 中，转到“工具” > “用户和计算机”。  
 2. 选择运行连接器的服务器。
-3. 单击右键，并选择“属性” > “委托”。
-4. 选择“仅信任此计算机来委派指定的服务”。 
+3. 单击右键，并选择“属性” > “委托”。  
+4. 选择“仅信任此计算机来委派指定的服务”。  
 5. 选择**使用任何身份验证协议**。
-6. 在“可以由此帐户提供委托凭据的服务”下面，添加应用程序服务器的 SPN 标识值。 这样，应用程序代理连接器便可以针对列表中定义的应用程序在 AD 中模拟用户。
+6. 在“可以由此帐户提供委托凭据的服务”下面，添加应用程序服务器的 SPN 标识值。  这样，应用程序代理连接器便可以针对列表中定义的应用程序在 AD 中模拟用户。
 
    ![“连接器 SVR 属性”窗口屏幕截图](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 
@@ -79,11 +79,11 @@ Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateT
 `sharepointserviceaccount` 可以是 SPS 计算机帐户，或者是用于运行 SPS 应用池的服务帐户。
 
 ## <a name="configure-single-sign-on"></a>配置单一登录 
-1. 根据[使用应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)中的说明发布应用程序。 请务必选择“Azure Active Directory”作为“预身份验证方法”。
-2. 应用程序显示在企业应用程序列表中之后，选择该应用程序并单击“单一登录”。
-3. 将单一登录模式设置为“集成 Windows 身份验证”。  
+1. 根据[使用应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)中的说明发布应用程序。 请务必选择“Azure Active Directory”作为“预身份验证方法”。  
+2. 应用程序显示在企业应用程序列表中之后，选择该应用程序并单击“单一登录”  。
+3. 将单一登录模式设置为“集成 Windows 身份验证”  。  
 4. 输入应用程序服务器的**内部应用程序 SPN**。 在本示例中，已发布应用程序的 SPN 为 http/www.contoso.com。 此 SPN 需要位于连接器可以向其提供委派的凭据的服务列表中。 
-5. 针对你要代表你的用户使用的连接器选择“委派的登录标识”。 有关详细信息，请参阅[使用不同的本地标识和云标识](#working-with-different-on-premises-and-cloud-identities)
+5. 针对你要代表你的用户使用的连接器选择“委派的登录标识”。  有关详细信息，请参阅[使用不同的本地标识和云标识](#working-with-different-on-premises-and-cloud-identities)
 
    ![高级应用程序配置](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
@@ -112,7 +112,7 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 非 Windows 应用通常使用用户名或 SAM 帐户名而非域电子邮件地址。 如果你的应用程序是这种情况，则需要配置委托的登录标识字段来将云标识连接到应用程序标识。 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>使用不同的本地标识和云标识
-应用程序代理假设用户在云中与本地具有完全相同的标识。 如果没有，仍然可以使用 KCD 进行单一登录。 可以为每个应用程序配置委托的登录标识来指定在执行单一登录时要使用的标识。  
+应用程序代理假设用户在云中与本地具有完全相同的标识。 如果没有，仍然可以使用 KCD 进行单一登录。 可以为每个应用程序配置委托的登录标识  来指定在执行单一登录时要使用的标识。  
 
 此功能可让许多具有不同本地标识与云标识的组织从云单一登录到本地应用程序，而不需要用户输入不同的用户名与密码。 这包括如下所述的组织：
 
@@ -128,7 +128,7 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 如果使用委托的登录标识，则此值在组织中所有域或林中可能不唯一。 可以通过使用两个不同的连接器组两次发布这些应用程序来避免此问题。 由于每个应用程序有不同的用户对象，因此可将其连接器加入不同的域。
 
 ### <a name="configure-sso-for-different-identities"></a>为不同的标识配置 SSO
-1. 配置 Azure AD Connect 设置，使主标识采用电子邮件地址（邮件）。 可以在自定义过程中通过更改同步设置中的“用户主体名称”字段来实现此目的。 这些设置同时确定了用户如何登录到 Office 365、Windows 10 设备以及其他使用 Azure AD 作为标识存储的应用程序。  
+1. 配置 Azure AD Connect 设置，使主标识采用电子邮件地址（邮件）。 可以在自定义过程中通过更改同步设置中的“用户主体名称”字段来实现此目的。  这些设置同时确定了用户如何登录到 Office 365、Windows 10 设备以及其他使用 Azure AD 作为标识存储的应用程序。  
    ![识别用户屏幕截图 -“用户主体名称”下拉列表](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
 2. 在要修改的应用程序的“应用程序配置”设置中，选择要使用的**委托的登录识别**：
 
@@ -140,7 +140,7 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>排查不同标识的 SSO 问题
 如果在 SSO 过程中发生错误，连接器计算机事件日志中会显示该错误，如[故障排除](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)中所述。
-但在某些情况下，请求将成功发送到后端应用程序，同时此应用程序以其他各种 HTTP 响应做出回复。 排查这些问题时，应该先检查连接器计算机上应用程序代理会话事件日志中的事件编号 24029。 用于委托的用户标识出现在事件详细信息的“user”字段中。 若要打开会话记录，请在事件查看器视图菜单中选择“显示分析和调试日志”。
+但在某些情况下，请求将成功发送到后端应用程序，同时此应用程序以其他各种 HTTP 响应做出回复。 排查这些问题时，应该先检查连接器计算机上应用程序代理会话事件日志中的事件编号 24029。 用于委托的用户标识出现在事件详细信息的“user”字段中。 若要打开会话记录，请在事件查看器视图菜单中选择“显示分析和调试日志”。 
 
 ## <a name="next-steps"></a>后续步骤
 

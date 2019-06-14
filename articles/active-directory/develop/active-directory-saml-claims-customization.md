@@ -19,17 +19,17 @@ ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 622525705979cd6a7a088c606ac167d28f8f6482
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65950995"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
 目前，Azure Active Directory (Azure AD) 支持单一登录 (SSO) 与大多数企业应用程序，包括这两个预先集成的 Azure AD 应用库以及自定义应用程序中的应用程序。 当用户通过 Azure AD 使用 SAML 2.0 协议向应用程序进行身份验证时，Azure AD 会将令牌发送到应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关称为用户的信息片段*声明*。
 
-“声明”是标识提供者在为某个用户颁发的令牌中陈述的有关该用户的信息。 在 [SAML 令牌](https://en.wikipedia.org/wiki/SAML_2.0)中，此数据通常包含在 SAML 属性语句中。 用户的唯一 ID（也称为名称标识符）通常显示在 SAML 主题中。
+“声明”  是标识提供者在为某个用户颁发的令牌中陈述的有关该用户的信息。 在 [SAML 令牌](https://en.wikipedia.org/wiki/SAML_2.0)中，此数据通常包含在 SAML 属性语句中。 用户的唯一 ID（也称为名称标识符）通常显示在 SAML 主题中。
 
 默认情况下，Azure AD 颁发 SAML 令牌中包含应用程序到`NameIdentifier`可唯一地标识用户的 Azure AD 中声明的值为用户的用户名 （也称为用户主体名称）。 SAML 令牌还含有其他声明，其中包含用户的电子邮件地址、名字和姓氏。
 
@@ -73,7 +73,7 @@ ms.locfileid: "65950995"
 
 为 `NameIdentifier`（或 NameID）声明选择所需的源。 可以从以下选项中选择。
 
-| 名称 | 描述 |
+| Name | 描述 |
 |------|-------------|
 | Email | 用户的电子邮件地址 |
 | userprincipalName | 用户主体名称 (UPN) 的用户 |
@@ -114,9 +114,9 @@ ms.locfileid: "65950995"
 | **Join()** | 通过联接两个属性创建一个新值。 （可选） 可以使用两个属性之间的分隔符。 |
 | **ToLower()** | 将所选属性的字符转换为小写字符。 |
 | **ToUpper()** | 将所选属性的字符转换为大写字符。 |
-| **Contains()** | 如果输入与匹配指定的值将输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出的声明中，值是用户的电子邮件地址，如果它包含在域"@contoso.com"，否则你想要输出的用户主体名称。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)*: user.email<br/>*值*:"@contoso.com"<br/>参数 2 （输出）： user.email<br/>参数 3 （如果没有匹配项，则为输出）： user.userprincipalname |
-| **EndWith()** | 如果输入结尾的指定值，则输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出的声明中，值是用户的 employeeid 如果 employeeid 结尾"000"，否则你想要输出的扩展属性。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)*: user.employeeid<br/>*值*："000"<br/>参数 2 （输出）： user.employeeid<br/>参数 3 （如果没有匹配项，则为输出）： user.extensionattribute1 |
-| **StartWith()** | 如果输入开头指定的值，则输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出其中的值是用户的 employeeid，如果国家/地区开始使用"美国"的声明，否则你想要输出的扩展属性。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)*: user.country<br/>*值*："我们"<br/>参数 2 （输出）： user.employeeid<br/>参数 3 （如果没有匹配项，则为输出）： user.extensionattribute1 |
+| **Contains()** | 如果输入与匹配指定的值将输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出的声明中，值是用户的电子邮件地址，如果它包含在域"@contoso.com"，否则你想要输出的用户主体名称。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)* : user.email<br/>*值*:"@contoso.com"<br/>参数 2 （输出）： user.email<br/>参数 3 （如果没有匹配项，则为输出）： user.userprincipalname |
+| **EndWith()** | 如果输入结尾的指定值，则输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出的声明中，值是用户的 employeeid 如果 employeeid 结尾"000"，否则你想要输出的扩展属性。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)* : user.employeeid<br/>*值*："000"<br/>参数 2 （输出）： user.employeeid<br/>参数 3 （如果没有匹配项，则为输出）： user.extensionattribute1 |
+| **StartWith()** | 如果输入开头指定的值，则输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出其中的值是用户的 employeeid，如果国家/地区开始使用"美国"的声明，否则你想要输出的扩展属性。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)* : user.country<br/>*值*："我们"<br/>参数 2 （输出）： user.employeeid<br/>参数 3 （如果没有匹配项，则为输出）： user.extensionattribute1 |
 | **Extract （)-之后匹配** | 匹配指定的值后返回的子字符串。<br/>例如，如果输入的值为"Finance_BSimon"，匹配的值为"Finance_"，则声明的输出是"是 bsimon 作为用户名"。 |
 | **Extract （)-之前匹配** | 返回子字符串，直到它与指定的值匹配。<br/>例如，如果输入的值为"BSimon_US"，匹配的值为"_US"，则声明的输出是"是 bsimon 作为用户名"。 |
 | **Extract （)-之间匹配** | 返回子字符串，直到它与指定的值匹配。<br/>例如，如果输入的值为"Finance_BSimon_US"，第一个匹配值是"Finance_"，第二个匹配的值为"_US"，则声明的输出是"是 bsimon 作为用户名"。 |

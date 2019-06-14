@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: a9629cd14c71a163612c2c4ba3c7b109a52b91ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60622433"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>使用开发测试实验室使用 Azure PowerShell 创建虚拟机
@@ -185,7 +185,7 @@ finally {
 2. 选择 **Azure 订阅**。
 3. 输入**实验室的资源组**。
 4. 输入**名称的实验室**。 
-5. 选择“运行”。
+5. 选择“运行”。 
 6. 您看到**映像属性**基于创建的 VM。 
 
 

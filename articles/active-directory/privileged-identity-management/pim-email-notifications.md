@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289136"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以了
 - 电子邮件地址： **azure noreply\@microsoft.com**
 - 显示名称：Microsoft Azure
 
-这些电子邮件在主题行中包括 PIM 前缀。 下面是一个示例：
+这些电子邮件在主题行中包括 PIM  前缀。 下面是一个示例：
 
 - PIM：已为 Alain Charon 永久分配备份读取器角色
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以了
 | 安全管理员</br>（激活/符合条件） | 否 | 是* | 是 |
 | 全局管理员角色</br>（激活/符合条件） | 否 | 是* | 是 |
 
-\* 如果[“通知”设置](pim-how-to-change-default-settings.md#notifications)设置为“启用”。
+\* 如果[“通知”  设置](pim-how-to-change-default-settings.md#notifications)设置为“启用”  。
 
 下面显示了当用户激活虚构 Contoso 组织的 Azure AD 角色时发送的示例电子邮件。
 
@@ -75,7 +75,7 @@ Azure AD 角色的 PIM 摘要电子邮件将发送给启用了 PIM 的特权角�
 | **PIM 中的角色分配** | 在 PIM 中为用户分配符合条件的角色的次数。 |
 | **PIM 之外的角色分配** | 在 PIM 之外（Azure AD 内部）为用户分配永久角色的次数。 |
 
-**热门角色概述**部分根据每个角色的永久和符合条件管理员的总数列出了租户中的前五个角色。 采取措施链接打开 [PIM 向导](pim-security-wizard.md)，可以将永久管理员批量转换为符合条件的管理员。
+**热门角色概述**部分根据每个角色的永久和符合条件管理员的总数列出了租户中的前五个角色。 采取措施  链接打开 [PIM 向导](pim-security-wizard.md)，可以将永久管理员批量转换为符合条件的管理员。
 
 ## <a name="pim-emails-for-azure-resource-roles"></a>用于 Azure 资源角色的 PIM 电子邮件
 

@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60245492"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步：了解用户、组和联系人
@@ -47,7 +47,7 @@ ms.locfileid: "60245492"
 
     * 如果该组的 *proxyAddress* 属性为空，则其 *mail* 属性必须包含一个值
 
-    * 如果组的 *proxyAddress* 属性为非空，则必须至少包含一个 SMTP 代理地址值。 下面是一些示例：
+    * 如果组的 *proxyAddress* 属性为非空，则必须至少包含一个 SMTP 代理地址值。 下面是一些可能的恶意活动：
     
       * 其 proxyAddress 属性包含值 *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* 的 Active Directory 组在 Azure AD 中不会启用邮件。 它没有 SMTP 地址。
       
@@ -71,7 +71,7 @@ ms.locfileid: "60245492"
 这里假设，如果找到已禁用的用户帐户，那么之后我们找不到另一个活动帐户，并且在找到 userPrincipalName 和 sourceAnchor 的情况下，对象会设置到 Azure AD。 如果另一个有效帐户联接到相同的 metaverse 对象，则会使用其 userPrincipalName 和 sourceAnchor。
 
 ## <a name="changing-sourceanchor"></a>更改 sourceAnchor
-当对象已导出到 Azure AD 时，则不再允许更改 sourceAnchor。 当已导出对象时，则采用 Azure AD 接受的 **sourceAnchor** 值设置 metaverse 属性 **cloudSourceAnchor**。 如果更改了 **sourceAnchor**，且不匹配 **cloudSourceAnchor**，规则 **Out to AAD – User Join** 将引发错误“sourceAnchor 属性已更改”。 在这种情况下，必须更正配置或数据，以便相同的 sourceAnchor 再次在 metaverse 中出现，才能再次同步对象。
+当对象已导出到 Azure AD 时，则不再允许更改 sourceAnchor。 当已导出对象时，则采用 Azure AD 接受的 **sourceAnchor** 值设置 metaverse 属性 **cloudSourceAnchor**。 如果更改了 **sourceAnchor**，且不匹配 **cloudSourceAnchor**，规则 **Out to AAD – User Join** 将引发错误“sourceAnchor 属性已更改”  。 在这种情况下，必须更正配置或数据，以便相同的 sourceAnchor 再次在 metaverse 中出现，才能再次同步对象。
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
 ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60373642"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
@@ -63,15 +63,15 @@ ms.locfileid: "60373642"
 
 #### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>导航到资源组或直接导航到该资源本身
 
-从左侧菜单中选择“访问控制 (IAM)”。
+从左侧菜单中选择“访问控制 (IAM)”  。
 
 ![Azure 门户中的访问控制按钮的屏幕截图](./media/resources-roles-access-control/0001-access-control.png)
 
-选择“添加角色分配”
+选择“添加角色分配” 
 
 ![以红色突出显示添加按钮的访问控制菜单的屏幕截图](./media/resources-roles-access-control/0002-add.png)
 
-下面的“添加权限”视图主要特定于 Application Insights 资源，如果从更高级别（如资源组）查看访问控制权限，则将看到其他并非以 Application Insights 为中心的角色。
+下面的“添加权限”  视图主要特定于 Application Insights 资源，如果从更高级别（如资源组）查看访问控制权限，则将看到其他并非以 Application Insights 为中心的角色。
 
 若要查看有关所有基于 Azure 角色的访问控制内置角色的信息，请使用[官方参考内容](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
 

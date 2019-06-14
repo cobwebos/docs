@@ -17,10 +17,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60318691"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure 中 Windows VM 特定 RDP 错误消息故障排除
@@ -103,7 +103,7 @@ ms.locfileid: "60318691"
 
 每台 Windows 计算机都具有远程桌面用户本地组，包含可以远程登录的帐户和组。 本地 Administrators 组的成员也具有访问权限，即使在远程桌面用户本地组中未列出这些帐户。 对于已加入域的计算机，本地 Administrators 组还包含该域的域管理员。
 
-确保用于连接的帐户具有远程桌面登录权限。 解决方法是使用域管理员或本地管理员帐户通过远程桌面建立连接。 若要将所需帐户添加到远程桌面用户本地组，请使用 Microsoft 管理控制台管理单元（“系统工具”>“本地用户和组”>“组”>“远程桌面用户”）。
+确保用于连接的帐户具有远程桌面登录权限。 解决方法是使用域管理员或本地管理员帐户通过远程桌面建立连接。 若要将所需帐户添加到远程桌面用户本地组，请使用 Microsoft 管理控制台管理单元（“系统工具”>“本地用户和组”>“组”>“远程桌面用户”  ）。
 
 ## <a name="next-steps"></a>后续步骤
 如果没有发生这些错误，但在使用 RDP 连接时出现未知问题，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

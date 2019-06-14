@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: cweining
 ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60306458"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
@@ -25,7 +25,7 @@ ms.locfileid: "60306458"
 
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights Profiler 现在可用于 Azure 应用服务上的 Linux 中托管的 ASP.NET Core Web 应用。 本指南提供了有关如何为 ASP.NET Core Linux Web 应用收集探查器跟踪的分步说明。
 
-完成本演练后，你的应用可以收集下图所示的探查器跟踪。 在此示例中，探查器跟踪指明某个特定的 Web 请求较慢，因为时间都花费在等待上。 代码中拖慢了应用的热路径前面带有火焰图标。 **HomeController** 节中的 **About** 方法拖慢了 Web 应用，因为该方法正在调用 **Thread.Sleep** 函数。
+完成本演练后，你的应用可以收集下图所示的探查器跟踪。 在此示例中，探查器跟踪指明某个特定的 Web 请求较慢，因为时间都花费在等待上。 代码中拖慢了应用的热路径前面带有火焰图标。  **HomeController** 节中的 **About** 方法拖慢了 Web 应用，因为该方法正在调用 **Thread.Sleep** 函数。
 
 ![探查器跟踪](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "60306458"
 
 4. 等待 2-5 分钟，以便将事件聚合到 Application Insights。
 
-5. 在 Azure 门户中浏览到 Application Insights 的“性能”窗格。 可以在窗格右下角查看探查器跟踪。
+5. 在 Azure 门户中浏览到 Application Insights 的“性能”窗格。  可以在窗格右下角查看探查器跟踪。
 
     ![查看探查器跟踪](./media/profiler-aspnetcore-linux/view-traces.png)
 

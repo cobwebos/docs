@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
 ms.openlocfilehash: 0641545c10d7f59cb1874659eae9c7e7bf65932e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60532267"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>联机迁移到 Azure DB for MySQL 时存在的已知问题/迁移限制
@@ -30,7 +30,7 @@ ms.locfileid: "60532267"
 - 相同版本的迁移。 不支持将 MySQL 5.6 迁移到 Azure Database for MySQL 5.7。
 - 在 my.ini (Windows) 或 my.cnf (Unix) 中启用二进制日志记录
     - 将 Server_id 设为大于或等于 1 的任意数字，例如 Server_id=1（仅适用于 MySQL 5.6）
-    - 设置日志 bin =\<路径 > （仅适用于 MySQL 5.6)
+    - 设置 log-bin = \<path>（仅适用于 MySQL 5.6）
     - 设置 binlog_format = row
     - Expire_logs_days = 5（建议 - 仅适用于 MySQL 5.6）
 - 用户必须具有 ReplicationAdmin 角色。

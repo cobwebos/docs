@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: ba62d8cff646ce5ef4f4b8a36fdad78ddc354227
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626498"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消预配以前自动预配的设备 
@@ -48,9 +48,9 @@ ms.locfileid: "60626498"
 
 若要查看已通过某个登记组预配的设备列表，可以查看该登记组的详细信息。 这样，便可以轻松了解每个设备已预配到哪个 IoT 中心。 查看设备列表： 
 
-1. 登录到 Azure 门户，单击左侧菜单中的“所有资源”。
+1. 登录到 Azure 门户，单击左侧菜单中的“所有资源”。 
 2. 在资源列表中单击预配服务。
-3. 在预配服务中，单击“管理注册”，然后选择“注册组”选项卡。
+3. 在预配服务中，单击“管理注册”，然后选择“注册组”选项卡   。
 4. 单击登记组将其打开。
 
    ![在门户中查看登记组条目](./media/how-to-unprovision-devices/view-enrollment-group.png)

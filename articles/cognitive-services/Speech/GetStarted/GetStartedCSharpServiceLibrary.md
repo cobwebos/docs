@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 0f445d1fff48ee7a04c0b1c1d64c808f87d824b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515234"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>快速入门：在 C# for .NET Windows 版中使用必应语音识别服务库
@@ -40,7 +40,7 @@ ms.locfileid: "60515234"
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>订阅语音识别 API，并获得免费试用的订阅密钥
 
-语音 API 是认知服务（之前的项目 Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
+语音 API 是认知服务（之前的项目 Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥  。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
 
 > [!IMPORTANT]
 > * 获取订阅密钥。 必须拥有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)才能使用语音客户端库。
@@ -49,25 +49,25 @@ ms.locfileid: "60515234"
 
 ## <a name="step-1-install-the-sample-application"></a>步骤 1：安装示例应用程序
 
-1. 启动 Visual Studio 2015 ，然后选择“文件” > “打开” > “项目/解决方案”。
+1. 启动 Visual Studio 2015 ，然后选择“文件” > “打开” > “项目/解决方案”    。
 
 2. 双击打开名为 SpeechClient.sln 的 Visual Studio 2015 解决方案 (.sln) 文件。 该解决方案随即在 Visual Studio 中打开。
 
 ## <a name="step-2-build-the-sample-application"></a>步骤 2：构建示例应用程序
 
-按 Ctrl+Shift+B 或选择功能区菜单上的“生成”。 然后选择“生成解决方案”。
+按 Ctrl+Shift+B 或选择功能区菜单上的“生成”  。 然后选择“生成解决方案”  。
 
 ## <a name="step-3-run-the-sample-application"></a>步骤 3：运行示例应用程序
 
-1. 生成完成后，按 F5 或选择功能区菜单上的“启动”来运行该示例。
+1. 生成完成后，按 F5 或选择功能区菜单上的“启动”来运行该示例  。
 
-2. 打开示例的输出目录，例如 SpeechClientSample\bin\Debug。 按下 Shift+右键单击，然后选择 “在此处打开命令窗口”。
+2. 打开示例的输出目录，例如 SpeechClientSample\bin\Debug。 按下 Shift+右键单击，然后选择 “在此处打开命令窗口”  。
 
 3. 使用以下参数运行 `SpeechClientSample.exe`：
 
    * Arg[0]：指定输入音频 WAV 文件。
    * Arg[1]：指定音频区域设置。
-   * Arg[2]：指定识别模式：指定“Short”表示 `ShortPhrase` 模式，指定“Long”表示 `LongDictation` 模式。
+   * Arg[2]：指定识别模式：指定“Short”  表示 `ShortPhrase` 模式，指定“Long”  表示 `LongDictation` 模式。
    * Arg[3]：指定用于访问语音识别服务的订阅密钥。
 
 ## <a name="samples-explained"></a>介绍的示例
@@ -100,7 +100,7 @@ SpeechInput 对象包含两个字段：
 
 * **音频**：SDK 从中拉取音频的所选流实现。 它可以是支持读取的任何[流](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)。
    > [!NOTE]
-   > 当流在读取中返回 0 时，SDK 会检测流的结束。
+   > 当流在读取中返回 0 时，SDK 会检测流的结束  。
 
 * **RequestMetadata**：有关语音请求的元数据。 有关详细信息，请参阅[参考](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)。
 

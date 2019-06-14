@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60285491"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 审核活动参考
@@ -42,7 +42,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="access-reviews"></a>访问评审
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |访问评审|访问评审结束|
 |访问评审|向请求审核添加审核者|
@@ -77,7 +77,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="account-provisioning"></a>帐户预配
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |应用程序管理|检索 V2 应用程序授权|
 |应用程序管理|检索当前租户中的 V2 应用程序服务主体|
@@ -89,7 +89,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="application-proxy"></a>应用程序代理
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |应用程序管理|添加应用程序|
 |应用程序管理|将所有者添加到应用程序|
@@ -103,21 +103,21 @@ Azure AD 中的报告体系结构由以下部分组成：
 |目录管理|删除 OAuth2PermissionGrant|
 |目录管理|从服务主体删除应用角色分配|
 |目录管理|从应用程序中删除所有者|
-|资源|从服务主体中删除所有者|
-|资源|从服务主体中删除策略|
-|资源|删除服务主体|
+|Resource|从服务主体中删除所有者|
+|Resource|从服务主体中删除策略|
+|Resource|删除服务主体|
 
 
 ## <a name="automated-password-rollover"></a>自动密码滚动更新
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |应用程序管理|删除服务主体凭据|
 
 
 ## <a name="b2c"></a>B2C
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |应用程序管理|还原应用程序|
 |应用程序管理|吊销许可|
@@ -269,84 +269,84 @@ Azure AD 中的报告体系结构由以下部分组成：
 |密钥|目录已删除|
 |其他|目录已永久删除|
 |其他|目录已计划删除|
-|资源|将公司提升为合作伙伴|
-|资源|清除 Rights Management 属性|
-|资源|从公司中删除合作伙伴|
-|资源|删除未验证的域|
-|资源|删除已验证的域|
-|资源|设置公司信息|
-|资源|设置 DirSync 功能|
-|资源|设置 DirSyncEnabled 标志|
-|资源|设置合作关系|
-|资源|设置意外删除阈值|
-|资源|设置公司允许的数据位置|
-|资源|设置公司跨国功能已启用|
-|资源|在租户上设置目录功能|
-|资源|设置域身份验证|
-|资源|在域中设置联合设置|
-|资源|设置密码策略|
-|资源|设置 Rights Management 属性|
-|资源|更新公司|
-|资源|更新公司设置|
-|资源|更新域|
-|资源|验证域|
-|资源|验证电子邮件验证域|
-|资源|登记|
-|资源|更新警报设置|
-|资源|更新每周摘要设置|
-|资源|对目录禁用密码写回|
-|资源|对目录启用密码写回|
-|资源|向组添加应用角色分配|
-|资源|添加组|
-|资源|将成员添加到组|
-|资源|将所有者添加到组|
-|资源|创建组设置|
-|资源|删除组|
-|资源|删除组设置|
-|资源|完成向用户应用基于组的许可证|
-|资源|硬删除组|
-|资源|从组删除应用角色分配|
-|资源|从组中删除成员|
-|资源|从组中删除所有者|
-|资源|还原组|
-|资源|设置组许可证|
-|资源|已设置要由用户管理的组|
-|资源|开始向用户应用基于组的许可证|
-|资源|触发组许可证重新计算|
-|资源|更新组|
-|资源|更新组设置|
-|资源|添加成员|
-|资源|创建组|
-|资源|删除组|
-|资源|删除成员|
-|资源|更新组|
-|资源|批准要求加入组的挂起请求|
-|资源|取消要求加入组的挂起请求|
-|资源|创建生命周期管理策略|
-|资源|删除要求加入组的挂起请求|
-|资源|拒绝要求加入组的挂起请求|
-|资源|续订组|
-|资源|请求加入组|
-|资源|设置动态组属性|
-|资源|更新生命周期管理策略|
-|资源|将基于 ASCII 机密的密钥添加到 CPIM 密钥容器|
-|资源|将密钥添加到 CPIM 密钥容器|
-|资源|删除 CPIM 密钥容器|
-|资源|删除密钥容器|
-|资源|获取 JWK 格式的密钥容器活动密钥元数据|
-|资源|获取密钥容器元数据|
-|资源|获取 jwk 格式的 CPIM 密钥容器|
-|资源|获取租户中密钥容器的列表|
-|资源|还原 CPIM 密钥容器备份|
-|资源|保存密钥容器|
-|资源|上传 CPIM 加密密钥|
-|资源|向应用程序颁发授权代码|
-|资源|向应用程序颁发 id_token|
+|Resource|将公司提升为合作伙伴|
+|Resource|清除 Rights Management 属性|
+|Resource|从公司中删除合作伙伴|
+|Resource|删除未验证的域|
+|Resource|删除已验证的域|
+|Resource|设置公司信息|
+|Resource|设置 DirSync 功能|
+|Resource|设置 DirSyncEnabled 标志|
+|Resource|设置合作关系|
+|Resource|设置意外删除阈值|
+|Resource|设置公司允许的数据位置|
+|Resource|设置公司跨国功能已启用|
+|Resource|在租户上设置目录功能|
+|Resource|设置域身份验证|
+|Resource|在域中设置联合设置|
+|Resource|设置密码策略|
+|Resource|设置 Rights Management 属性|
+|Resource|更新公司|
+|Resource|更新公司设置|
+|Resource|更新域|
+|Resource|验证域|
+|Resource|验证电子邮件验证域|
+|Resource|登记|
+|Resource|更新警报设置|
+|Resource|更新每周摘要设置|
+|Resource|对目录禁用密码写回|
+|Resource|对目录启用密码写回|
+|Resource|向组添加应用角色分配|
+|Resource|添加组|
+|Resource|将成员添加到组|
+|Resource|将所有者添加到组|
+|Resource|创建组设置|
+|Resource|删除组|
+|Resource|删除组设置|
+|Resource|完成向用户应用基于组的许可证|
+|Resource|硬删除组|
+|Resource|从组删除应用角色分配|
+|Resource|从组中删除成员|
+|Resource|从组中删除所有者|
+|Resource|还原组|
+|Resource|设置组许可证|
+|Resource|已设置要由用户管理的组|
+|Resource|开始向用户应用基于组的许可证|
+|Resource|触发组许可证重新计算|
+|Resource|更新组|
+|Resource|更新组设置|
+|Resource|添加成员|
+|Resource|创建组|
+|Resource|删除组|
+|Resource|删除成员|
+|Resource|更新组|
+|Resource|批准要求加入组的挂起请求|
+|Resource|取消要求加入组的挂起请求|
+|Resource|创建生命周期管理策略|
+|Resource|删除要求加入组的挂起请求|
+|Resource|拒绝要求加入组的挂起请求|
+|Resource|续订组|
+|Resource|请求加入组|
+|Resource|设置动态组属性|
+|Resource|更新生命周期管理策略|
+|Resource|将基于 ASCII 机密的密钥添加到 CPIM 密钥容器|
+|Resource|将密钥添加到 CPIM 密钥容器|
+|Resource|删除 CPIM 密钥容器|
+|Resource|删除密钥容器|
+|Resource|获取 JWK 格式的密钥容器活动密钥元数据|
+|Resource|获取密钥容器元数据|
+|Resource|获取 jwk 格式的 CPIM 密钥容器|
+|Resource|获取租户中密钥容器的列表|
+|Resource|还原 CPIM 密钥容器备份|
+|Resource|保存密钥容器|
+|Resource|上传 CPIM 加密密钥|
+|Resource|向应用程序颁发授权代码|
+|Resource|向应用程序颁发 id_token|
 
 
 ## <a name="core-directory"></a>核心目录
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |管理单元管理|下载单个风险事件类型|
 |管理单元管理|下载选择加入的每周摘要的管理和状态|
@@ -432,18 +432,18 @@ Azure AD 中的报告体系结构由以下部分组成：
 |策略管理|GetIEFPolicies|
 |策略管理|GetIdentityProviders|
 |策略管理|GetTrustFrameworkPolicy|
-|资源|MigrateTenantMetadata|
-|资源|移动资源|
-|资源|修补 IdentityProvider|
-|资源|PutTrustFrameworkPolicy|
-|资源|PutTrustFrameworkpolicy|
-|资源|删除用户旅程|
-|资源|更新自定义 IDP|
-|资源|更新 IDP|
-|资源|更新本地 IDP|
-|资源|更新 B2C 目录资源|
-|资源|更新策略|
-|资源|更新订阅状态|
+|Resource|MigrateTenantMetadata|
+|Resource|移动资源|
+|Resource|修补 IdentityProvider|
+|Resource|PutTrustFrameworkPolicy|
+|Resource|PutTrustFrameworkpolicy|
+|Resource|删除用户旅程|
+|Resource|更新自定义 IDP|
+|Resource|更新 IDP|
+|Resource|更新本地 IDP|
+|Resource|更新 B2C 目录资源|
+|Resource|更新策略|
+|Resource|更新订阅状态|
 |角色管理|更新用户属性|
 |角色管理|验证移动资源|
 |角色管理|添加设备|
@@ -480,7 +480,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="identity-protection"></a>标识保护
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |目录管理|提升|
 |目录管理|已删除|
@@ -499,7 +499,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="invited-users"></a>受邀用户
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |其他|创建请求审核|
 |其他|删除访问评审|
@@ -513,7 +513,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="microsoft-identity-manager-mim"></a>Microsoft Identity Manager (MIM)
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |组管理|评审请求审核请求|
 |组管理|更新访问评审|
@@ -527,7 +527,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |PIM|ActivationAborted|
 |PIM|ActivationApproved|
@@ -554,7 +554,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="self-service-group-management"></a>自助组管理
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |组管理|重置用户密码|
 |组管理|还原用户|
@@ -569,7 +569,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="self-service-password-management"></a>自助服务密码管理
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |目录管理|管理员要求用户重置其密码|
 |目录管理|将外部用户分配到应用程序|
@@ -585,7 +585,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 ## <a name="terms-of-use"></a>使用条款
 
-|审核类别|活动|
+|审核类别|activities|
 |---|---|
 |使用条款|接受使用条款|
 |使用条款|创建使用条款|

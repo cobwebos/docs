@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: genli
 ms.openlocfilehash: 65187c3ef6debfa27c8c4fea62bcd31b857b4171
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60319741"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
@@ -37,17 +37,17 @@ ms.locfileid: "60319741"
 ## <a name="determine-boot-issues"></a>确定启动问题
 检查启动诊断信息和 VM 屏幕截图，确定 VM 不能正常启动的原因。 一个常见的例子是 `/etc/fstab` 中存在无效条目，或底层虚拟硬盘已删除或移动。
 
-在门户中选择 VM，然后向下滚动到“支持 + 故障排除”部分。 单击“启动诊断”，查看从 VM 流式传输的控制台消息。 查看控制台日志，以便了解是否能够确定 VM 遇到问题的原因。 以下示例显示某个 VM 停滞在维护模式，需要人工干预：
+在门户中选择 VM，然后向下滚动到“支持 + 故障排除”部分。  单击“启动诊断”，查看从 VM 流式传输的控制台消息。  查看控制台日志，以便了解是否能够确定 VM 遇到问题的原因。 以下示例显示某个 VM 停滞在维护模式，需要人工干预：
 
 ![查看 VM 启动诊断控制台日志](./media/troubleshoot-recovery-disks-portal-linux/boot-diagnostics-error.png)
 
-也可以单击启动诊断日志顶部的“屏幕截图”，下载 VM 的屏幕截图。
+也可以单击启动诊断日志顶部的“屏幕截图”，下载 VM 的屏幕截图。 
 
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>查看现有虚拟硬盘的详细信息
 在将虚拟硬盘附加到另一个 VM 之前，需要标识虚拟硬盘 (VHD) 的名称。 
 
-在门户中选择资源组，并选择存储帐户。 单击“Blob”，如以下示例中所示：
+在门户中选择资源组，并选择存储帐户。 单击“Blob”，如以下示例中所示： 
 
 ![选择存储 Blob](./media/troubleshoot-recovery-disks-portal-linux/storage-account-overview.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "60319741"
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>将现有虚拟硬盘附加到另一个 VM
 在后续几个步骤中，将使用另一个 VM 进行故障排除。 将现有虚拟硬盘附加到此故障排除 VM，以便浏览和编辑磁盘的内容。 例如，此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。 选择或创建另一个 VM 用于故障排除。
 
-1. 在门户中选择资源组，并选择故障排除 VM。 选择“磁盘”，并单击“附加现有磁盘”：
+1. 在门户中选择资源组，并选择故障排除 VM。 选择“磁盘”，并单击“附加现有磁盘”：  
 
     ![在门户中附加现有磁盘](./media/troubleshoot-recovery-disks-portal-linux/attach-existing-disk.png)
 
@@ -83,11 +83,11 @@ ms.locfileid: "60319741"
 
     ![浏览现有 VHD](./media/troubleshoot-recovery-disks-portal-linux/select-vhd-location.png)
 
-3. 选择存储帐户和容器，并单击现有的 VHD。 单击“选择”按钮确认所做的选择：
+3. 选择存储帐户和容器，并单击现有的 VHD。 单击“选择”按钮确认所做的选择： 
 
     ![选择现有 VHD](./media/troubleshoot-recovery-disks-portal-linux/select-vhd.png)
 
-4. 选择 VHD 后，请单击“确定”附加现有虚拟硬盘：
+4. 选择 VHD 后，请单击“确定”附加现有虚拟硬盘： 
 
     ![确认附加现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal-linux/attach-disk-confirm.png)
 
@@ -152,24 +152,24 @@ ms.locfileid: "60319741"
     sudo umount /dev/sdc1
     ```
 
-2. 现在从 VM 中分离虚拟硬盘。 在门户中选择 VM，然后单击“磁盘”。 选择现有的虚拟硬盘，并单击“分离”：
+2. 现在从 VM 中分离虚拟硬盘。 在门户中选择 VM，然后单击“磁盘”。  选择现有的虚拟硬盘，并单击“分离”： 
 
     ![分离现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal-linux/detach-disk.png)
 
     等到 VM 成功分离数据磁盘，并继续操作。
 
 ## <a name="create-vm-from-original-hard-disk"></a>从原始硬盘创建 VM
-若要从原始虚拟硬盘创建 VM，请使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet)。 该模板使用前面命令中的 VHD URL 将 VM 部署到现有虚拟网络。 单击“部署到 Azure”按钮，如下所示：
+若要从原始虚拟硬盘创建 VM，请使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet)。 该模板使用前面命令中的 VHD URL 将 VM 部署到现有虚拟网络。 单击“部署到 Azure”按钮，如下所示： 
 
 ![从 GitHub 中的模板部署 VM](./media/troubleshoot-recovery-disks-portal-linux/deploy-template-from-github.png)
 
-模板已载入 Azure 门户进行部署。 请输入新 VM 和现有 Azure 资源的名称，并粘贴现有虚拟硬盘的 URL。 若要开始部署，请单击“购买”：
+模板已载入 Azure 门户进行部署。 请输入新 VM 和现有 Azure 资源的名称，并粘贴现有虚拟硬盘的 URL。 若要开始部署，请单击“购买”： 
 
 ![从模板部署 VM](./media/troubleshoot-recovery-disks-portal-linux/deploy-from-image.png)
 
 
 ## <a name="re-enable-boot-diagnostics"></a>重新启用启动诊断
-从现有虚拟硬盘创建 VM 时，启动诊断可能不会自动启用。 要检查启动诊断的状态并根据需要打开启动诊断，请在门户中选择 VM。 在“监视”下面，单击“诊断设置”。 确保状态为“打开”，并检查“启动诊断”旁边的复选标记是否为选中状态。 如果做了任何更改，请单击“保存”：
+从现有虚拟硬盘创建 VM 时，启动诊断可能不会自动启用。 要检查启动诊断的状态并根据需要打开启动诊断，请在门户中选择 VM。 在“监视”下面，单击“诊断设置”。   确保状态为“打开”，并检查“启动诊断”旁边的复选标记是否为选中状态。   如果做了任何更改，请单击“保存”： 
 
 ![更新启动诊断设置](./media/troubleshoot-recovery-disks-portal-linux/reenable-boot-diagnostics.png)
 

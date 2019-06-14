@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
 ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60523488"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>演练：使用 Application Insights 为 Microsoft Dynamics CRM Online 启用遥测
@@ -52,7 +52,7 @@ ms.locfileid: "60523488"
 
     ![“新建 Web 资源”对话框](./media/sample-mscrm/07.png)
 
-    为它指定名称、选择“脚本 (JScript)”，并打开文本编辑器。
+    为它指定名称、选择“脚本 (JScript)”  ，并打开文本编辑器。
 
     ![打开文本编辑器](./media/sample-mscrm/00004.png)
 2. 从之前已配置检测密钥的 Application Insights JavaScript SDK 复制代码。 复制时，请确保忽略脚本标记。 请参阅以下屏幕截图：

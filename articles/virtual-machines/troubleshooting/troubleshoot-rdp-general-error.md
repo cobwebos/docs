@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60319507"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>排查 Azure VM 的常规 RDP 错误
@@ -67,7 +67,7 @@ RDP 侦听器配置不当。
 
 #### <a name="step-1-open-cmd-instance-in-serial-console"></a>步骤 1：在串行控制台中打开 CMD 实例
 
-1. 选择“支持和故障排除” > “串行控制台(预览版)”访问 [串行控制台](serial-console-windows.md) 。 如果在 VM 上启用了该功能，则可以成功连接 VM。
+1. 选择“支持和故障排除” > “串行控制台(预览版)”访问 [串行控制台](serial-console-windows.md) 。   如果在 VM 上启用了该功能，则可以成功连接 VM。
 
 2. 为 CMD 实例创建新通道。 键入 **CMD** 启动通道，以获取通道名称。
 
@@ -178,9 +178,9 @@ RDP 侦听器配置不当。
 
 1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 开始与恢复 VM 建立远程桌面连接。
-3. 确保磁盘在磁盘管理控制台中标记为“联机”。 请注意分配给附加的 OS 磁盘的驱动器号。
+3. 确保磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的 OS 磁盘的驱动器号。
 4. 开始与恢复 VM 建立远程桌面连接。
-5. 打开权限提升的命令提示符会话（“以管理员身份运行”）。 运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
+5. 打开权限提升的命令提示符会话（“以管理员身份运行”）。  运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 

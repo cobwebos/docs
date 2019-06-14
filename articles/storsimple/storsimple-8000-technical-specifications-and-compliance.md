@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 33becd46747f957cce67fb7b2ace170a9aa402ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606932"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
@@ -42,7 +42,7 @@ EBOD 机箱使用 580 W PCM，而主机箱使用 764 W PCM。 下表列出了与
 | 功率因数校正 |>95% 标称输入电压 |>95% 标称输入电压 |
 | 谐波 |符合 EN61000-3-2 |符合 EN61000-3-2 |
 | 输出 |5V 备用电压 \@ 2.0 A |5V 备用电压 \@ 2.7 A |
-| + 5V \@ 42 A |+5V \@ 40 A | |
+| \+ 5V \@ 42 A |+5V \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
 | 可热插拔 |是 |是 |
 | 开关和 LED |交流 ON/OFF 开关和四个状态指示器 LED |交流 ON/OFF 开关和六个状态指示器 LED |

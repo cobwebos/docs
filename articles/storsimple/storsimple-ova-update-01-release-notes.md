@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60629282"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array 更新 0.2 和 0.1 发行说明
@@ -56,7 +56,7 @@ ms.locfileid: "60629282"
 
 | 不。 | Feature | 问题 |
 | --- | --- | --- |
-| 1 |VMDK |在某些 VMware 版本中，OS 磁盘偶尔会引起警报并干扰正常操作。 在此版本中已修复了此问题。 |
+| 第 |VMDK |在某些 VMware 版本中，OS 磁盘偶尔会引起警报并干扰正常操作。 在此版本中已修复了此问题。 |
 | 2 |iSCSI 服务器 |在上一版本中，用户需要为 StorSimple 虚拟设备每个已启用的网络接口指定网关。 此版本中已更改了此行为，使用户只需为所有已启用的网络接口至少配置一个网关即可。 |
 | 3 |支持包 |在软件的早期版本中，当包大小超过 1 GB 时，支持包集合则会失败。 在此版本中已修复了此问题。 |
 | 4 |云访问 |在上一版本中，如果 StorSimple Virtual Array 没有网络连接并且进行了重启，本地 UI 则会出现连接问题。 在此版本中已修复了此问题。 |

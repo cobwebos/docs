@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65228173"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
@@ -97,7 +97,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 创建 MFA 提供程序时，它可以链接到的 Azure Active Directory 或"Azure AD 租户。" 如果当前 MFA 提供程序链接到 Azure AD 租户，可以安全地删除 MFA 提供程序，以及创建一个链接到同一 Azure AD 租户。 或者，如果购买了足够多的 MFA、Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证，可以覆盖启用 MFA 的所有用户，则可以删除整个 MFA 提供程序。
 
-如果 MFA 提供程序未与 Azure AD 租户相关联，或将新的 MFA 提供程序与其他 Azure AD 租户相关联，用户设置和配置选项不会转移到新的 MFA 提供程序。 此外，需要使用通过新 MFA 提供程序生成的激活凭据，重新激活现有 Azure MFA 服务器。 重新激活 MFA 服务器并将其链接到新 MFA 提供程序不会影响电话和短信身份验证，但所有用户不再会收到移动应用通知，除非他们重新激活移动应用。
+如果 MFA 提供程序未  与 Azure AD 租户相关联，或将新的 MFA 提供程序与其他 Azure AD 租户相关联，用户设置和配置选项不会转移到新的 MFA 提供程序。 此外，需要使用通过新 MFA 提供程序生成的激活凭据，重新激活现有 Azure MFA 服务器。 重新激活 MFA 服务器并将其链接到新 MFA 提供程序不会影响电话和短信身份验证，但所有用户不再会收到移动应用通知，除非他们重新激活移动应用。
 
 在 [Azure 多重身份验证提供程序入门](concept-mfa-authprovider.md)中了解有关 MFA 提供程序的详细信息。
 
@@ -107,7 +107,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 如果目录中包含*按用户* Azure 多重身份验证提供程序，则可以添加 MFA 许可证。 拥有许可证的用户不会计入基于使用量的按用户计费。 对于没有许可证的用户，仍可通过 MFA 提供程序启用 MFA。 如果为配置为使用多重身份验证的所有用户购买并分配许可证，可以删除 Azure 多重身份验证提供程序。 如果将来的用户数超过许可证数，始终可以创建另一个按用户的 MFA 提供程序。
 
-如果目录中有按身份验证计费的 Azure 多重身份验证提供程序，始终都会按每次身份验证付费，只要 MFA 提供程序已与订阅相关联。 可以将 MFA 许可证分配给用户，但仍要为每个双重验证请求付费，不管该请求是否来自拥有 MFA 许可证的用户。
+如果目录中有按身份验证计费的  Azure 多重身份验证提供程序，始终都会按每次身份验证付费，只要 MFA 提供程序已与订阅相关联。 可以将 MFA 许可证分配给用户，但仍要为每个双重验证请求付费，不管该请求是否来自拥有 MFA 许可证的用户。
 
 **问：组织是否必须使用并同步标识才能使用 Azure 多重身份验证？**
 
@@ -207,9 +207,9 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 告诉他们按照此过程从移动应用中删除帐户，并重新添加：
 
 1. 转到 [Azure 门户配置文件](https://account.activedirectory.windowsazure.com/profile/)，并使用组织帐户登录。
-2. 选择“其他安全性验证”。
+2. 选择“其他安全性验证”  。
 3. 从移动应用中删除现有帐户。
-4. 单击“配置”，并按照说明重新配置移动应用。
+4. 单击“配置”  ，并按照说明重新配置移动应用。
 
 **问：如果用户在登录非浏览器应用程序时看到 0x800434D4L 错误消息，该怎么办？**
 

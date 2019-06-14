@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 88b066818d53fd92e8238e270b9bc785d4275186
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233951"
 ---
 # <a name="connect-windows-security-events"></a>连接 Windows 安全事件 
@@ -44,7 +44,7 @@ ms.locfileid: "65233951"
 
 1. 在 Azure Sentinel 门户中，选择**数据连接器**，然后单击**Windows 安全事件**磁贴。 
 1. 选择你想要流式传输的数据类型。
-1. 单击“更新”。
+1. 单击“更新”  。
 6. 若要使用 Log Analytics 中的 Windows 安全事件相关的架构，搜索**SecurityEvent**。
 
 ## <a name="validate-connectivity"></a>验证连接

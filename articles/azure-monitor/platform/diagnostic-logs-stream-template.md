@@ -9,14 +9,14 @@ ms.date: 3/26/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: 7edce5175a1dda66abf3316cb8f0eb33e9f64ef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236038"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>在创建资源时使用 Resource Manager 模板自动启用诊断设置
-本文介绍如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这可以自动启动流式处理将诊断日志和指标到事件中心、 将其存档在存储帐户，或将它们发送到 Log Analytics 工作区中，创建一个资源。
+本文介绍如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这样可以让你在创建资源时自动开始将诊断日志和指标流式传输到事件中心、将其存档在存储帐户中，或者发送到 Log Analytics 工作区。
 
 > [!WARNING]
 > 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -40,7 +40,7 @@ ms.locfileid: "60236038"
 ## <a name="non-compute-resource-template"></a>非计算资源模板
 对于非计算资源，需要做两件事：
 
-1. 向存储帐户名称、 事件中心授权规则 ID 和/或 Log Analytics 工作区 ID （允许在存储帐户，日志流式传输到事件中心和/或将日志发送到 Azure Monitor 中存档诊断日志） 的参数 blob 添加参数。
+1. 根据存储帐户名称、事件中心授权规则 ID 和/或 Log Analytics 工作区 ID 向参数 blob 添加参数（允许在存储帐户中存档诊断日志、将日志流式传输到事件中心和/或将日志发送到 Azure Monitor）。
    
     ```json
     "settingName": {

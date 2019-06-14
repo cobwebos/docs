@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610570"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
@@ -40,7 +40,7 @@ ms.locfileid: "60610570"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 计算机信任边界 | 
+| 组件                | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -51,8 +51,8 @@ ms.locfileid: "60610570"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 计算机信任边界 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 计算机信任边界 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -62,7 +62,7 @@ ms.locfileid: "60610570"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 计算机信任边界 | 
+| 组件                | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -73,8 +73,8 @@ ms.locfileid: "60610570"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、Web 窗体、MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -126,8 +126,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [如何：使用 DPAPI 加密 ASP.NET 2.0 中的配置部分](https://msdn.microsoft.com/library/ff647398.aspx)、[指定受保护的配置提供程序](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[使用 Azure Key Vault 保护应用程序机密](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
@@ -137,8 +137,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN：自动完成特性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[在 HTML 中使用自动完成](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML 净化漏洞](https://technet.microsoft.com/security/bulletin/MS10-071)、[又是自动完成？](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
@@ -156,8 +156,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -167,8 +167,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12，SQL 版本 - MsSQL2016 |
 | **参考**              | [动态数据掩码](https://msdn.microsoft.com/library/mt130841) |
@@ -178,8 +178,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [使用 .NET 加密 API 的密码哈希](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
@@ -189,8 +189,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | SQL 版本 - 所有 |
 | **参考**              | [加密 SQL Server 中的敏感数据](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[如何：加密 SQL Server 中数据列](https://msdn.microsoft.com/library/ms179331)、[使用证书进行加密](https://msdn.microsoft.com/library/ms188061) |
@@ -200,8 +200,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [了解 SQL Server 透明数据加密 (TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
@@ -211,8 +211,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12，SQL 版本 - MsSQL2014 |
 | **参考**              | [SQL 数据库备份加密](https://msdn.microsoft.com/library/dn449489) |
@@ -222,8 +222,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC 5、MVC 6 |
 | **属性**              | 标识提供者 - ADFS，标识提供者 - Azure AD |
 | **参考**              | 不适用  |
@@ -246,8 +246,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure Document DB | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure Document DB | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -257,7 +257,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure IaaS VM 信任边界 | 
+| 组件                | Azure IaaS VM 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -268,8 +268,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Service Fabric 信任边界 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Service Fabric 信任边界 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure |
 | **参考**              | [管理 Service Fabric 应用程序中的机密](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
@@ -279,8 +279,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Dynamics CRM | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -290,7 +290,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM | 
+| 组件                | Dynamics CRM | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -301,7 +301,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM | 
+| 组件                | Dynamics CRM | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -312,7 +312,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM | 
+| 组件                | Dynamics CRM | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -323,8 +323,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 存储 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
 | **参考**              | [静态数据的 Azure 存储服务加密（预览版）](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
@@ -334,8 +334,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 存储 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [Microsoft Azure 存储的客户端加密和 Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[教程：在 Microsoft Azure 存储中使用 Azure Key Vault 加密和解密 Blob](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[使用 Azure 加密扩展在 Azure Blob 存储中安全存储数据](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
@@ -345,8 +345,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 移动客户端 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 移动客户端 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 通用、Xamarin  |
 | **属性**              | 不适用  |
 | **参考**              | [使用 Microsoft Intune 策略管理设备上的设置和功能](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
@@ -395,8 +395,8 @@ Allow screen capture
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 移动客户端 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 移动客户端 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [Crypto Obfuscation For .Net](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
@@ -406,8 +406,8 @@ Allow screen capture
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [Fortify](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
@@ -425,8 +425,8 @@ Allow screen capture
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **属性**              | 安全模式 - 传输，安全模式 - 消息 |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF 安全基础知识 - CoDe 杂志](https://www.codemag.com/article/0611051) |

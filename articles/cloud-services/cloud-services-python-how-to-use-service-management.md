@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
 ms.openlocfilehash: 573c6d3ded8fea58e0c9ba1afa7da2d8dd0fce91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60525522"
 ---
 # <a name="use-service-management-from-python"></a>从 Python 使用服务管理
-本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) 中的 ServiceManagementService 类支持以编程方式访问 [Azure 门户][management-portal]中提供的众多与服务管理相关的功能。 此功能可用于创建、更新和删除云服务、部署、数据管理服务和虚拟机。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
+本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) 中的 ServiceManagementService 类支持以编程方式访问 [Azure 门户][management-portal]中提供的众多与服务管理相关的功能  。 此功能可用于创建、更新和删除云服务、部署、数据管理服务和虚拟机。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
 
 ## <a name="WhatIs"> </a>什么是服务管理？
 利用 Azure 服务管理 API，可以编程方式访问通过 [Azure 门户][management-portal]提供的众多服务管理功能。 Azure SDK for Python 可用于管理云服务和存储帐户。
@@ -54,7 +54,7 @@ Azure SDK for Python 可包装[服务管理 API][svc-mgmt-rest-api]，即 REST A
 
 有关 Azure 证书的详细信息，请参阅 [Azure 云服务证书概述](cloud-services-certs-create.md)。 有关 OpenSSL 参数的完整说明，请参阅 [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html) 上的文档。
 
-创建这些文件后，将 `.cer` 文件上传到 Azure。 在 [Azure 门户][management-portal]的“设置”选项卡上，选择“上传”。 请注意 `.pem` 文件的保存位置。
+创建这些文件后，将 `.cer` 文件上传到 Azure。 在 [Azure 门户][management-portal]的“设置”选项卡上，选择“上传”   。 请注意 `.pem` 文件的保存位置。
 
 获取订阅 ID 后，创建一个证书，将 `.cer` 文件上传到 Azure，然后连接到 Azure 管理终结点。 通过将订阅 ID 和 `.pem` 文件的路径传递给 **ServiceManagementService** 进行连接。
 
@@ -69,15 +69,15 @@ Azure SDK for Python 可包装[服务管理 API][svc-mgmt-rest-api]，即 REST A
 在前面的示例中，`sms` 是一个 **ServiceManagementService** 对象。 **ServiceManagementService** 类是用于管理 Azure 服务的主类。
 
 ### <a name="management-certificates-on-windows-makecert"></a>Windows 上的管理证书 (MakeCert)
-可以使用 `makecert.exe` 在计算机上创建自签名管理证书。 以管理员身份打开 Visual Studio 命令提示符并且使用以下命令，将 AzureCertificate 替换为要使用的证书名称：
+可以使用 `makecert.exe` 在计算机上创建自签名管理证书。 以管理员身份打开 Visual Studio 命令提示符并且使用以下命令，将 AzureCertificate 替换为要使用的证书名称    ：
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
-该命令创建 `.cer` 文件，然后将该文件安装到“个人”证书存储中。 有关详细信息，请参阅 [Azure 云服务证书概述](cloud-services-certs-create.md)。
+该命令创建 `.cer` 文件，然后将该文件安装到“个人”证书存储中  。 有关详细信息，请参阅 [Azure 云服务证书概述](cloud-services-certs-create.md)。
 
-创建证书后，将 `.cer` 文件上传到 Azure。 在 [Azure 门户][management-portal]的“设置”选项卡上，选择“上传”。
+创建证书后，将 `.cer` 文件上传到 Azure。 在 [Azure 门户][management-portal]的“设置”选项卡上，选择“上传”   。
 
-获取订阅 ID 后，创建一个证书，将 `.cer` 文件上传到 Azure，然后连接到 Azure 管理终结点。 通过将订阅 ID 和“个人”证书存储中证书的位置传递给 ServiceManagementService 进行连接（同样，将 AzureCertificate 替换为证书名称）。
+获取订阅 ID 后，创建一个证书，将 `.cer` 文件上传到 Azure，然后连接到 Azure 管理终结点。 通过将订阅 ID 和“个人”证书存储中证书的位置传递给 ServiceManagementService 进行连接（同样，将 AzureCertificate 替换为证书名称）    。
 
     from azure import *
     from azure.servicemanagement import *
@@ -119,7 +119,7 @@ Azure SDK for Python 可包装[服务管理 API][svc-mgmt-rest-api]，即 REST A
 * 澳大利亚东南部
 
 ## <a name="CreateCloudService"> </a>创建云服务
-在 Azure 中创建应用程序并运行它时，相关代码和配置统称为 Azure [云服务][cloud service]。 （在早期版本的 Azure中，它称为“托管服务”。）可以使用 **create\_hosted\_service** 方法创建新的托管服务。 通过提供托管服务名称（它在 Azure 中必须是唯一的）、标签（自动编码为 base64）、说明和位置来创建服务。
+在 Azure 中创建应用程序并运行它时，相关代码和配置统称为 Azure [云服务][cloud service]。 （在早期版本的 Azure中，它称为“托管服务”  。）可以使用 **create\_hosted\_service** 方法创建新的托管服务。 通过提供托管服务名称（它在 Azure 中必须是唯一的）、标签（自动编码为 base64）、说明和位置来创建服务。
 
     from azure import *
     from azure.servicemanagement import *

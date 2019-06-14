@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60309107"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [当前版本](connector-sap-business-warehouse.md)
 
@@ -32,8 +32,8 @@ ms.locfileid: "60309107"
 
 具体而言，此 SAP Business Warehouse 连接器支持：
 
-- SAP Business Warehouse 版本 7.x。
-- 使用 MDX 查询从 InfoCubes 和 QueryCubes（包括 BEx 查询）复制数据。
+- SAP Business Warehouse 版本 7.x  。
+- 使用 MDX 查询从 InfoCubes 和 QueryCubes  （包括 BEx 查询）复制数据。
 - 使用基本身份验证复制数据。
 
 ## <a name="prerequisites"></a>必备组件
@@ -41,7 +41,7 @@ ms.locfileid: "60309107"
 若要使用此 SAP Business Warehouse 连接器，需要：
 
 - 设置自承载集成运行时。 有关详细信息，请参阅[自我托管集成运行时](create-self-hosted-integration-runtime.md)一文。
-- 在集成运行时计算机上安装 SAP NetWeaver 库。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”获取最新版本的下载位置。 请确保选取与集成运行时安装匹配的 64 位 SAP NetWeaver 库。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
+- 在集成运行时计算机上安装 SAP NetWeaver 库  。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”  获取最新版本的下载位置。 请确保选取与集成运行时安装匹配的 64 位 SAP NetWeaver 库  。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
 
 >[!TIP]
 >要解决 SAP BW 的连接问题，请确保：
@@ -97,7 +97,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 SAP BW 数据集支持的属性列表。
 
-要从 SAP BW 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 RelationalTable 类型的 SAP BW 数据集不支持任何类型特定的属性。
+要从 SAP BW 复制数据，请将数据集的 type 属性设置为“RelationalTable”  。 RelationalTable 类型的 SAP BW 数据集不支持任何类型特定的属性。
 
 **示例：**
 
@@ -121,7 +121,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 ### <a name="sap-bw-as-source"></a>SAP BW 作为源
 
-要从 SAP BW 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+要从 SAP BW 复制数据，请将复制活动中的源类型设置为“RelationalSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

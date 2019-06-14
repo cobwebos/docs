@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
 ms.openlocfilehash: 9df4be5534a1cbe6aa4ffb9c60bb180fd4587d32
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65551032"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
@@ -227,8 +227,8 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 
 现在，你具有映像后，可以创建或更新主机池。 若要了解有关如何创建和更新主机池的详细信息，请参阅以下文章：
 
-- [使用 Azure 资源管理器模板创建一个主机池](create-host-pools-arm-template.md)
-- [教程：使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace.md)
+- [使用 Azure 资源管理器模板创建主机池](create-host-pools-arm-template.md)
+- [教程：通过 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
 - [设置主机池的用户配置文件共享](create-host-pools-user-profile.md)
 - [配置 Windows 虚拟机负载平衡方法](configure-host-pool-load-balancing.md)

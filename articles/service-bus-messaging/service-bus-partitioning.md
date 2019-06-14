@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/06/2019
 ms.author: aschhab
 ms.openlocfilehash: 699581c7ccd3f36da0cd0c1def623607b7c0a13b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60589674"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区队列和主题
@@ -39,11 +39,11 @@ Azure 服务总线使用多个消息中转站来处理消息，并用多个消�
 
 ### <a name="standard"></a>标准
 
-在标准消息传送层中，可以创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。 已启用分区，服务总线创建 16 个副本 （16 个分区） 的实体，每个指定的相同大小。 因此，如果创建了一个大小为 5 GB 的队列，共有 16 个分区，最大队列大小为 (5 \* 16) = 80 GB。 可通过在 [Azure 门户][Azure portal]中分区队列或主题的“概述”边栏选项卡中查看该实体的条目来了解该队列或主题的最大大小。
+在标准消息传送层中，可以创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。 已启用分区，服务总线创建 16 个副本 （16 个分区） 的实体，每个指定的相同大小。 因此，如果创建了一个大小为 5 GB 的队列，共有 16 个分区，最大队列大小为 (5 \* 16) = 80 GB。 可通过在 [Azure 门户][Azure portal]中分区队列或主题的“概述”  边栏选项卡中查看该实体的条目来了解该队列或主题的最大大小。
 
 ### <a name="premium"></a>高级
 
-在高级层命名空间中，不支持分区实体。 但是，仍然可以创建 1、2、3、4、5、10、20、40 或 80 GB 大小的服务总线队列和主题（默认值为 1 GB）。 可通过在 [Azure 门户][Azure portal]中队列或主题的“概述”边栏选项卡中查看该实体的条目来了解该队列或主题的大小。
+在高级层命名空间中，不支持分区实体。 但是，仍然可以创建 1、2、3、4、5、10、20、40 或 80 GB 大小的服务总线队列和主题（默认值为 1 GB）。 可通过在 [Azure 门户][Azure portal]中队列或主题的“概述”  边栏选项卡中查看该实体的条目来了解该队列或主题的大小。
 
 ### <a name="create-a-partitioned-entity"></a>创建分区实体
 
@@ -57,7 +57,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-或者，可以在 [Azure 门户][Azure portal]中创建分区队列或主题。 在门户中创建队列或主题时，队列或主题的“创建”对话框中的“启用分区”选项是默认选中的。 只能在标准层实体中禁用此选项；在高级层分区中，分区不受支持，该复选框无效。 
+或者，可以在 [Azure 门户][Azure portal]中创建分区队列或主题。 在门户中创建队列或主题时，队列或主题的“创建”  对话框中的“启用分区”  选项是默认选中的。 只能在标准层实体中禁用此选项；在高级层分区中，分区不受支持，该复选框无效。 
 
 ## <a name="use-of-partition-keys"></a>使用分区键
 
@@ -69,11 +69,11 @@ ns.CreateTopic(td);
 
 根据应用场景，将不同的消息属性用作分区键：
 
-**SessionId**：如果消息已设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性，则服务总线会将 SessionID 用作分区键。 这样一来，属于同一会话的所有消息都由同一消息中转站处理。 会话使服务总线得以保证消息顺序以及会话状态的一致性。
+**SessionId**：如果消息已设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性，则服务总线会将 SessionID 用作分区键  。 这样一来，属于同一会话的所有消息都由同一消息中转站处理。 会话使服务总线得以保证消息顺序以及会话状态的一致性。
 
 **PartitionKey**：如果消息已设置 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性但未设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性，则服务总线将 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性值用作分区键。 如果消息同时具有 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 和 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性集，这两个属性必须相同。 如果 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性设置为与 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性不同的值，则服务总线返回无效操作异常。 如果发送方发送非会话感知事务消息，应使用 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性。 分区键可确保事务中所发送的所有消息都由同一个消息传递中转站处理。
 
-**MessageId**：如果队列或主题将 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 属性设置为“true”且未设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 或 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性，则 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性值将充当分区键。 （如果发送应用程序不这样做，Microsoft .NET 和 AMQP 库会自动分配消息 ID。）在这种情况下，同一消息的所有副本都由同一消息中转站处理。 此 ID 使服务总线能够检测并消除重复的消息。 如果 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 属性未设置为“true”，服务总线不考虑将 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性用作分区键。
+**MessageId**：如果队列或主题将 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 属性设置为“true”且未设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 或 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性，则 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性值将充当分区键  。 （如果发送应用程序不这样做，Microsoft .NET 和 AMQP 库会自动分配消息 ID。）在这种情况下，同一消息的所有副本都由同一消息中转站处理。 此 ID 使服务总线能够检测并消除重复的消息。 如果 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 属性未设置为“true”  ，服务总线不考虑将 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性用作分区键。
 
 ### <a name="not-using-a-partition-key"></a>不使用分区键
 

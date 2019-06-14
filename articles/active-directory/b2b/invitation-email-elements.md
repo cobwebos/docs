@@ -13,15 +13,15 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65768369"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
-邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 可使用它们增强收件人的信任。 可在电子邮件中添加合法性与社交证据，确保收件人愿意选择“开始”按钮来接受邀请。 这种信任是减少共享冲突的关键。 同时还要让电子邮件赏心悦目！
+邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 可使用它们增强收件人的信任。 可在电子邮件中添加合法性与社交证据，确保收件人愿意选择“开始”按钮来接受邀请  。 这种信任是减少共享冲突的关键。 同时还要让电子邮件赏心悦目！
 
 ![显示企业间邀请电子邮件的屏幕截图](media/invitation-email-elements/invitation-email.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "65768369"
 行动号召由两个部分组成：解释收件人为什么会收到该邮件，请求收件人采取哪种行动。
 - “为什么”部分可以使用以下模式进行处理：我们已邀请你访问 &lt;tenantname&gt; 组织中的应用程序
 
-- “请求你采取哪种行动”部分可通过提供“开始”按钮来指明。 如果无需发出邀请即会添加收件人，则不显示此按钮。
+- “请求你采取哪种行动”部分可通过提供“开始”按钮来指明。  如果无需发出邀请即会添加收件人，则不显示此按钮。
 
 ### <a name="inviters-information"></a>邀请方的信息
 邀请方的显示名称包含在电子邮件中。 此外，如果为 Azure AD 帐户设置了个人资料图片，邀请电子邮件也会包含该图片。 这两项信息旨在增强收件人对电子邮件的信任。

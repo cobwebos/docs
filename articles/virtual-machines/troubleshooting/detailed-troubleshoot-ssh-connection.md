@@ -17,10 +17,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: aedf06c5a5e225f0cafb81b17923d6c742da69eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60506104"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>对连接到 Azure 中 Linux VM 时出现的问题进行 SSH 故障排除的具体步骤
@@ -34,13 +34,13 @@ ms.locfileid: "60506104"
 以下步骤将帮助用户查明失败的原因，并得出解决方法或应对措施。
 
 1. 在门户中检查 VM 的状态。
-   在 [Azure 门户](https://portal.azure.com)中，选择“虚拟机” > “VM 名称”。
+   在 [Azure 门户](https://portal.azure.com)中，选择“虚拟机” > “VM 名称”。  
 
-   VM 的状态窗格应显示“正在运行”。 向下滚动以显示计算、存储和网络资源的最近活动。
+   VM 的状态窗格应显示“正在运行”。  向下滚动以显示计算、存储和网络资源的最近活动。
 
-2. 选择“设置”检查终结点、IP 地址、网络安全组和其他设置。
+2. 选择“设置”检查终结点、IP 地址、网络安全组和其他设置。 
 
-   VM 必须有为 SSH 流量定义的终结点，可以在“终结点”或“[网络安全组](../../virtual-network/security-overview.md)”查看 SSH 流量。 将 VM 中使用 Resource Manager 创建的终结点存储在网络安全组中。 请验证对网络安全组应用的规则，以及子网中是否引用了这些规则。
+   VM 必须有为 SSH 流量定义的终结点，可以在“终结点”或“[网络安全组](../../virtual-network/security-overview.md)”查看 SSH 流量。   将 VM 中使用 Resource Manager 创建的终结点存储在网络安全组中。 请验证对网络安全组应用的规则，以及子网中是否引用了这些规则。
 
 要验证网络连接，请检查所配置的终结点，并了解是否可通过其他协议（例如 HTTP 或其他服务）连接到该 VM。
 
@@ -103,7 +103,7 @@ ms.locfileid: "60506104"
 
 如果可以与同一虚拟网络中的某个 VM 建立 SSH 连接，请检查以下区域：
 
-* **目标 VM 上 SSH 流量的终结点配置。** 终结点的专用 TCP 端口应该与 VM 上的 SSH 服务正在侦听的 TCP 端口匹配。 （默认端口为 22）。 请在 Azure 门户中选择“虚拟机” > “VM 名称” > “设置” > “终结点”来验证 SSH TCP 端口号。
+* **目标 VM 上 SSH 流量的终结点配置。** 终结点的专用 TCP 端口应该与 VM 上的 SSH 服务正在侦听的 TCP 端口匹配。 （默认端口为 22）。 请在 Azure 门户中选择“虚拟机” > “VM 名称” > “设置” > “终结点”来验证 SSH TCP 端口号。    
 * **目标虚拟机上的 SSH 流量终结点的 ACL。** ACL 允许指定基于源 IP 地址允许或拒绝的从 Internet 传入的流量。 错误配置的 ACL 可能会阻止 SSH 流量传入终结点。 检查 ACL 以确保允许从代理服务器或其他边缘服务器的公共 IP 地址传入的流量。 有关详细信息，请参阅[关于网络访问控制列表 (ACL)](../../virtual-network/virtual-networks-acl.md)。
 
 若要将终结点从问题原因中排除，请删除当前终结点，创建另一个终结点，然后指定 SSH 名称（公共和专用端口号为 TCP 端口 22）。 有关详细信息，请参阅[在 Azure 中的虚拟机上设置终结点](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。

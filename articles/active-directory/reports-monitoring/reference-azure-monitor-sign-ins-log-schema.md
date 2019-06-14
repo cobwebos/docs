@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8ac6c56dca100ea9836158f46881c4eb12213e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60285194"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解释 Azure Monitor 中的 Azure AD 登录日志架构
 
-本文介绍 Azure Monitor 中的 Azure Active Directory (Azure AD) 登录日志架构。 与登录相关的大多数信息都在 `records` 对象的 Properties 属性下提供。
+本文介绍 Azure Monitor 中的 Azure Active Directory (Azure AD) 登录日志架构。 与登录相关的大多数信息都在 `records` 对象的 Properties 属性下提供  。
 
 
 ```json
@@ -145,20 +145,20 @@ ms.locfileid: "60285194"
 
 | 字段名 | 描述 |
 |------------|-------------|
-| 时间 | 日期和时间 (UTC)。 |
-| resourceId | 此值未映射，可以放心地忽略此字段。  |
-| OperationName | 对于登录，此值始终为“登录活动”。 |
+| Time | 日期和时间 (UTC)。 |
+| ResourceId | 此值未映射，可以放心地忽略此字段。  |
+| OperationName | 对于登录，此值始终为“登录活动”  。 |
 | OperationVersion | 客户端请求的 REST API 版本。 |
-| 类别 | 对于登录，此值始终为“登录”。 | 
+| 类别 | 对于登录，此值始终为“登录”  。 | 
 | TenantId | 与日志关联的租户 GUID。 |
-| ResultType | 登录操作的结果，可以是“成功”或“失败”。 | 
+| ResultType | 登录操作的结果，可以是“成功”或“失败”   。 | 
 | ResultSignature | 包含登录操作的错误代码（如果有）。 |
 | ResultDescription | 提供登录操作的错误说明。 |
 | DurationMs |  此值未映射，可以放心地忽略此字段。|
 | CallerIpAddress | 发出请求的客户端的 IP 地址。 | 
 | CorrelationId | 客户端所传递的可选 GUID。 此值可帮助将客户端操作与服务器端操作关联，并且在跟踪跨服务的日志时非常有用。 |
 | 标识 | 发出请求时提供的令牌中的标识。 可以是用户帐户、系统帐户或服务主体。 |
-| 级别 | 提供消息的类型。 对于审核，它始终是“信息”。 |
+| 级别 | 提供消息的类型。 对于审核，它始终是“信息”  。 |
 | Location | 提供登录活动的位置。 |
 | 属性 | 列出与登录关联的所有属性。有关详细信息，请参阅 [Microsoft Graph API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)。 为提高可读性，此架构使用登录资源中的相同属性名。
 

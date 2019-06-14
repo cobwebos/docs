@@ -16,10 +16,10 @@ ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57f0ec91bd5c72b593d9b28f7d47f691181a6a0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60290565"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>使用 Azure 门户在虚拟机规模集上配置 Azure 资源的托管标识
@@ -57,7 +57,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 2. 导航到所需的虚拟机规模集。
 
-3. 在“系统分配”、“状态”下，选择“开启”，然后单击“保存”：
+3. 在“系统分配”  、“状态”  下，选择“开启”  ，然后单击“保存”  ：
 
    ![“配置”页屏幕截图](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
@@ -69,7 +69,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 2. 导航到所需的虚拟机规模集。
 
-3. 在“系统分配”、“状态”下，选择“关闭”，然后单击“保存”：
+3. 在“系统分配”  、“状态”  下，选择“关闭”  ，然后单击“保存”  ：
 
    ![“配置”页屏幕截图](./media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)
 
@@ -86,18 +86,18 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>将用户分配托管标识分配到现有虚拟机规模集
 
 1. 使用与包含虚拟机规模集的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。
-2. 导航到所需的虚拟机规模集，依次单击“标识”、“用户分配”和“添加”。**\+**
+2. 导航到所需的虚拟机规模集，依次单击“标识”、“用户分配”和“添加”。   **\+**
 
    ![向 VMSS 添加用户分配的标识](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
-3. 单击要添加到虚拟机规模集的用户分配的托管标识，然后单击“添加”。
+3. 单击要添加到虚拟机规模集的用户分配的托管标识，然后单击“添加”  。
    
    ![向 VMSS 添加用户分配的标识](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
 
 ### <a name="remove-a-user-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>从虚拟机规模集中删除用户分配的托管标识
 
 1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。
-2. 导航到所需的虚拟机规模集，然后依次单击“标识”、“用户分配”、要删除的用户分配的托管标识，然后单击“删除”（在确认窗格中单击“是”）。
+2. 导航到所需的虚拟机规模集，然后依次单击“标识”  、“用户分配”  、要删除的用户分配的托管标识，然后单击“删除”  （在确认窗格中单击“是”  ）。
 
    ![从 VMSS 中删除用户分配的标识](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vmss-screenshot.png)
 

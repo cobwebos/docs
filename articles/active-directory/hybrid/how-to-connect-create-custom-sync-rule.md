@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60351032"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>如何自定义同步规则
@@ -40,7 +40,7 @@ ms.locfileid: "60351032"
 
 * 请注意，如果修改的属性的计算值在克隆的规则中为 NULL，在默认标准规则中不为 NULL，则中非 NULL 值会胜出并替换 NULL 值。 如果不希望 NULL 值替换为非 NULL 值，则在克隆的规则中分配 AuthoritativeNull。
 
-* 若要修改“出站”规则，请从同步规则编辑器更改筛选器。
+* 若要修改“出站”  规则，请从同步规则编辑器更改筛选器。
 
 ## <a name="recommended-documents"></a>**建议的文档**
 * [Azure AD Connect 同步：技术概念](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)

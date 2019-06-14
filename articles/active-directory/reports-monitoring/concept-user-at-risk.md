@@ -16,17 +16,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 463f5c2d03cd96089342aa9b22ef85ebc05aa909
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60438040"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Azure 门户中标记为存在风险的用户的报表
 
 Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑操作。 每检测到一个可疑操作，就会创建一个名为[“风险事件”](concept-risk-events.md)的记录。
 
-可以从 [Azure 门户](https://portal.azure.com)中通过选择“Azure Active Directory”边栏选项卡并导航到“安全性”部分来访问安全报告。 
+可以从 [Azure 门户](https://portal.azure.com)中通过选择“Azure Active Directory”  边栏选项卡并导航到“安全性”  部分来访问安全报告。 
 
 检测到的风险事件用于计算：
 
@@ -43,11 +43,11 @@ Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑�
 
 所有版本的 Azure Active Directory 都提供标记为存在风险的用户的报表。 但是，各版本的报表粒度级别有所不同： 
 
-- 在“Azure Active Directory 免费版和基本版”中，获取一个列表，其中包含标记为存在风险的用户。 
+- 在“Azure Active Directory 免费版和基本版”中，获取一个列表，其中包含标记为存在风险的用户。  
 
 - 此外，**Azure Active Directory Premium 1** 版本还允许你检查每个报告中检测到的某些底层风险事件。 
 
-- Azure Active Directory Premium 2 版本提供有关所有潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
+-  Azure Active Directory Premium 2 版本提供有关所有潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
 
 
 ## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Azure AD 免费版和基本版的风险用户报告
@@ -93,7 +93,7 @@ Azure AD Premium 版中“标记为风险用户”的用户的报告提供：
 
 ![有风险的登录](./media/concept-user-at-risk/324.png)
 
-若要调查某个风险事件，请从列表中选择一个此类事件，以便打开该风险事件的“详细信息”边栏选项卡。 在“详细信息”边栏选项卡上，可选择手动关闭风险事件或重新激活已手动关闭的风险事件。 
+若要调查某个风险事件，请从列表中选择一个此类事件，以便打开该风险事件的“详细信息”边栏选项卡。  在“详细信息”边栏选项卡上，可选择手动关闭风险事件或重新激活已手动关闭的风险事件  。 
 
 ![有风险的登录](./media/concept-user-at-risk/325.png)
 

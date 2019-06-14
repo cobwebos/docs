@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236199"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>排查 System Center Data Protection Manager 问题
@@ -35,7 +35,7 @@ ms.locfileid: "60236199"
 若要解决此问题，请执行以下操作：
 - 若要消除不一致状态，请手动运行一致性检查，或计划每日一致性检查。
 - 确保使用最新版本的 Microsoft Azure 备份服务器和 Data Protection Manager。
-- 确保启用“自动一致性”设置。
+- 确保启用“自动一致性”设置。 
 - 尝试从命令提示符重启服务。 使用 `net stop dpmra` 命令，后接 `net start dpmra`。
 - 确保符合网络连接和带宽要求。
 - 检查源计算机是否意外关闭。
@@ -60,7 +60,7 @@ ms.locfileid: "60236199"
 若要解决此问题，请执行以下操作：
 - 确保使用最新版本的 Azure 备份代理。
 - 确保在 Data Protection Manager 服务器与受保护服务器之间建立连接（网络/防火墙/代理）。
-- 若要保护 SQL 服务器，请确保“登录属性” > “NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。
+- 若要保护 SQL 服务器，请确保“登录属性” > “NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。   
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>错误：未根据保管库凭据文件中的指定注册服务器
 

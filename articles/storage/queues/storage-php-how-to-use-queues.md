@@ -11,10 +11,10 @@ ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
 ms.openlocfilehash: 4ff54f9ca20c101de55bec2c7acf914c17bd7709
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951212"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>如何通过 PHP 使用队列存储
@@ -45,7 +45,7 @@ ms.locfileid: "65951212"
       }
     }
     ```
-2. 将 [composer.phar][composer-phar] 下载到项目根目录中。
+2. 将 [composer.phar][composer-phar] 下载到项目根目录中  。
 3. 打开命令提示符并在项目根目录中执行以下命令
    
     ```
@@ -60,7 +60,7 @@ ms.locfileid: "65951212"
 1. 通过使用 [require_once] 语句引用 autoloader 文件。
 2. 引用可使用的所有类。
 
-以下示例演示如何添加 autoloader 文件和引用 QueueRestProxy 类。
+以下示例演示如何添加 autoloader 文件和引用 QueueRestProxy 类  。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -84,7 +84,7 @@ DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[your
 UseDevelopmentStorage=true
 ```
 
-若要创建 Azure 队列服务客户端，则需要使用 QueueRestProxy 类。 可以使用以下方法之一：
+若要创建 Azure 队列服务客户端，则需要使用 QueueRestProxy 类  。 可以使用以下方法之一：
 
 * 将连接字符串直接传递给它。
 * 在 Web 应用中使用环境变量来存储连接字符串。 要配置连接字符串，请参阅 [Azure Web 应用配置设置](../../app-service/configure-common.md)文档。
@@ -139,7 +139,7 @@ catch(ServiceException $e){
 > 
 
 ## <a name="add-a-message-to-a-queue"></a>向队列添加消息
-若要将消息添加到队列，请使用 QueueRestProxy->createMessage。 此方法接受队列名称、消息文本和消息选项（这些都是可选的）。
+若要将消息添加到队列，请使用 QueueRestProxy->createMessage  。 此方法接受队列名称、消息文本和消息选项（这些都是可选的）。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -168,7 +168,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="peek-at-the-next-message"></a>扫视下一条消息
-通过调用 QueueRestProxy->peekMessages，可以扫视队列前面的消息，而不会从队列中将其删除。 默认情况下，peekMessage 方法返回单条消息，但可以使用 PeekMessagesOptions->setNumberOfMessages 方法更改该值。
+通过调用 QueueRestProxy->peekMessages  ，可以扫视队列前面的消息，而不会从队列中将其删除。 默认情况下，peekMessage  方法返回单条消息，但可以使用 PeekMessagesOptions->setNumberOfMessages  方法更改该值。
 
 ```php
 require_once 'vendor/autoload.php';

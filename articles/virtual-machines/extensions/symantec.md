@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: roiyz
 ms.openlocfilehash: 65b52c88741e618e8048451370918b06db73a651
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60617871"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Symantec Endpoint Protection
@@ -62,8 +62,8 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 若要验证 Symantec 安全扩展插件是否已安装并处于最新状态：
 
 1. 登录到虚拟机。 有关说明，请参阅[如何登录到运行 Windows Server 的虚拟机][Logon]。
-2. 对于 Windows Server 2008 R2，请单击“开始”>“Symantec Endpoint Protection”。 对于 Windows Server 2012 或 Windows Server 2012 R2，在开始屏幕键入“Symantec”，并单击“Symantec Endpoint Protection”。
-3. 在“状态 - Symantec Endpoint Protection”窗口的“状态”选项卡中，根据需要应用更新或重启。
+2. 对于 Windows Server 2008 R2，请单击“开始”>“Symantec Endpoint Protection”  。 对于 Windows Server 2012 或 Windows Server 2012 R2，在开始屏幕键入“Symantec”，并单击“Symantec Endpoint Protection”   。
+3. 在“状态 - Symantec Endpoint Protection”窗口的“状态”选项卡中，根据需要应用更新或重启   。
 
 ## <a name="additional-resources"></a>其他资源
 [如何登录到运行 Windows Server 的虚拟机][Logon]

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/24/2018
 ms.author: banders
 ms.openlocfilehash: 9b76fa935263904957c87cd062c84d0607771369
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371321"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 客户协议完成您的计费帐户中的企业协议任务
@@ -34,7 +34,7 @@ ms.locfileid: "60371321"
 | 企业协议   | Microsoft 客户协议    |
 |------------------------|--------------------------------------------------------|
 | 注册            | 计费的配置文件用于为你的组织，类似于你的企业协议注册管理计费。 企业管理员成为计费的配置文件的所有者。 若要了解有关计费的配置文件的详细信息，请参阅[了解计费资料](billing-mca-overview.md#understand-billing-profiles)。
-| 部门            | 发票部分用于组织你的成本，类似于在企业协议注册中的部门。 部门变为发票部分，部门管理员成为相应发票部分的所有者。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#understand-invoice-sections)。 |
+| 系            | 发票部分用于组织你的成本，类似于在企业协议注册中的部门。 部门变为发票部分，部门管理员成为相应发票部分的所有者。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#understand-invoice-sections)。 |
 | 帐户               | 在你的企业协议中创建的帐户不支持在新的计费帐户中。 为其院系的相应发票部分属于帐户的订阅。 帐户所有者可以创建和管理其发票的部分的订阅。 |
 
 ## <a name="changes-for-enterprise-administrators-in-the-new-billing-account"></a>在新的计费帐户中的企业管理员的更改

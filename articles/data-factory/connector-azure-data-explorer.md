@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: orspodek
 ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394500"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
@@ -133,7 +133,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 ### <a name="azure-data-explorer-as-source"></a>Azure 数据资源管理器作为源
 
-若要从 Azure 数据资源管理器复制数据，请将复制活动源中的 **type** 属性设置为 **AzureDataExplorerSource**。 复制活动源部分支持以下属性：
+若要从 Azure 数据资源管理器复制数据，请将复制活动源中的 **type** 属性设置为 **AzureDataExplorerSource**。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -179,12 +179,12 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 ### <a name="azure-data-explorer-as-sink"></a>Azure 数据资源管理器作为接收器
 
-若要将数据复制到 Azure 数据资源管理器，请将复制活动接收器中的 type 属性设置为 **AzureDataExplorerSink**。 复制活动接收器部分中支持以下属性：
+若要将数据复制到 Azure 数据资源管理器，请将复制活动接收器中的 type 属性设置为 **AzureDataExplorerSink**。 复制活动接收器部分中支持以下属性  ：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为：**AzureDataExplorerSink** | 是 |
-| ingestionMappingName | 预先创建的名称**[映射](/azure/kusto/management/mappings#csv-mapping)** Kusto 表。 若要将映射到 Azure 数据资源管理器-适用于源中的列**[支持的源存储/格式](copy-activity-overview.md#supported-data-stores-and-formats)** 包括 CSV/JSON/Avro 格式等，则可以使用复制活动[列映射](copy-activity-schema-and-type-mapping.md)（按名称的隐式或显式配置） 和/或 Azure 数据资源管理器映射。 | 否 |
+| ingestionMappingName | 预先创建的名称 **[映射](/azure/kusto/management/mappings#csv-mapping)** Kusto 表。 若要将映射到 Azure 数据资源管理器-适用于源中的列 **[支持的源存储/格式](copy-activity-overview.md#supported-data-stores-and-formats)** 包括 CSV/JSON/Avro 格式等，则可以使用复制活动[列映射](copy-activity-schema-and-type-mapping.md)（按名称的隐式或显式配置） 和/或 Azure 数据资源管理器映射。 | 否 |
 
 **示例：**
 

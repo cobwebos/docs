@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 873863016d6dc54c7439ec1f46180b3c063bda19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60470409"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>使用组来管理对 SaaS 应用程序的访问
@@ -30,12 +30,12 @@ ms.locfileid: "60470409"
 
 **授予用户或组对 SaaS 应用程序的访问权限的具体步骤**
 
-1. 在 [Azure AD 管理中心](https://aad.portal.azure.com)内，选择“企业应用程序”。
+1. 在 [Azure AD 管理中心](https://aad.portal.azure.com)内，选择“企业应用程序”  。
 2. 选择从应用程序库添加的应用程序，即可打开它。
-3. 依次选择“用户和组”和“添加用户”。
-4. 在“添加分配”上，选择“用户和组”，打开“用户和组”选择列表。
-6. 选择任意多个组或用户，再单击或点击“选择”，将它们添加到“添加分配”列表。 还可以在此阶段向用户分配角色。
-7. 选择“分配”，将用户或组分配到选定的企业应用程序。
+3. 依次选择“用户和组”  和“添加用户”  。
+4. 在“添加分配”  上，选择“用户和组”  ，打开“用户和组”  选择列表。
+6. 选择任意多个组或用户，再单击或点击“选择”  ，将它们添加到“添加分配”  列表。 还可以在此阶段向用户分配角色。
+7. 选择“分配”  ，将用户或组分配到选定的企业应用程序。
 
 ### <a name="next-steps"></a>后续步骤
 这些文章提供了有关 Azure Active Directory 的更多信息。

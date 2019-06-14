@@ -10,10 +10,10 @@ ms.date: 04/13/2019
 ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370741"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解如何将预留折扣应用于 Azure Cosmos DB
@@ -39,25 +39,25 @@ ms.locfileid: "60370741"
 
 |计量描述  |区域 |比率  |
 |---------|---------|---------|
-|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东南部  |  亚太东南部    |   1      |
-|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东部 |   亚太东部   |    1     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲北部|  欧洲北部       |    1     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 韩国南部|    韩国南部     |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲西部|    欧洲西部     |      1   |
-|Azure Cosmos DB - 100 RU/秒/小时 - 韩国中部|   韩国中部    |       1  |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部|   英国南部      |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国西部|   英国西部      |    1     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国北部 |   英国北部    |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部 2|   英国南部 2      |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部 2|  美国东部 2     |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中北部|   美国中北部      |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部|   美国西部      |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中部| 美国中部        |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部 2|   美国西部 2      |      1   |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中西部|   美国中西部      |       1  |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部|   美国东部      |  1       |
-|Azure Cosmos DB - 100 RU/秒/小时 - 南非北部|     南非北部    |   1      |
-|Azure Cosmos DB - 100 RU/秒/小时 - 南非西部 |    南非西部      |    1     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东南部  |  亚太东南部    |   第      |
+|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东部 |   亚太东部   |    第     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲北部|  欧洲北部       |    第     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 韩国南部|    韩国南部     |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲西部|    欧洲西部     |      第   |
+|Azure Cosmos DB - 100 RU/秒/小时 - 韩国中部|   韩国中部    |       第  |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部|   英国南部      |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国西部|   英国西部      |    第     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国北部 |   英国北部    |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部 2|   英国南部 2      |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部 2|  美国东部 2     |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中北部|   美国中北部      |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部|   美国西部      |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中部| 美国中部        |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部 2|   美国西部 2      |      第   |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中西部|   美国中西部      |       第  |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部|   美国东部      |  第       |
+|Azure Cosmos DB - 100 RU/秒/小时 - 南非北部|     南非北部    |   第      |
+|Azure Cosmos DB - 100 RU/秒/小时 - 南非西部 |    南非西部      |    第     |
 |Azure Cosmos DB - 100 RU/秒/小时 - 印度南部|    印度南部     |    1.0375    |
 |Azure Cosmos DB - 100 RU/秒/小时 - 加拿大东部|   加拿大东部      |    1.1      |
 |Azure Cosmos DB - 100 RU/秒/小时 - 日本东部|   日本东部      |    1.125     |

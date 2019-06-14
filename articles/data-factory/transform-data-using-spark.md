@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: cdf4dba3996668b3c9fe31df10050ff2cbff6cb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60387819"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-spark.md)
 > * [当前版本](transform-data-using-spark.md)
 
@@ -62,7 +62,7 @@ ms.locfileid: "60387819"
 
 | 属性              | 说明                              | 需要 |
 | --------------------- | ---------------------------------------- | -------- |
-| 名称                  | 管道中活动的名称。    | 是      |
+| name                  | 管道中活动的名称。    | 是      |
 | description           | 描述活动用途的文本。  | 否       |
 | type                  | 对于 Spark 活动，活动类型是 HDInsightSpark。 | 是      |
 | linkedServiceName     | 运行 Spark 程序的 HDInsight Spark 链接服务的名称。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |

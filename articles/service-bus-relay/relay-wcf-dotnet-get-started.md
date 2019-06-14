@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: ee78227f645cbeded7a5c689750db835faf1055f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60420055"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>如何将 Azure Relay WCF 中继与 .NET 配合使用
@@ -28,7 +28,7 @@ ms.locfileid: "60420055"
 
 ## <a name="what-is-wcf-relay"></a>什么是 WCF 中继？
 
-通过 Azure [WCF 中继](relay-what-is-it.md)服务可构建在 Azure 数据中心和自己的本地企业环境中运行的混合应用程序。 中继服务可简化这一过程，它允许安全地向公有云公开位于企业网络内的 Windows Communication Foundation (WCF) 服务，而无需打开防火墙连接，也无需对企业网络基础结构进行彻底的更改。
+通过 Azure [WCF 中继  ](relay-what-is-it.md)服务可构建在 Azure 数据中心和自己的本地企业环境中运行的混合应用程序。 中继服务可简化这一过程，它允许安全地向公有云公开位于企业网络内的 Windows Communication Foundation (WCF) 服务，而无需打开防火墙连接，也无需对企业网络基础结构进行彻底的更改。
 
 ![WCF 中继概念](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
@@ -41,8 +41,8 @@ Azure 中继可用于在现有企业环境中托管 WCF 服务。 然后，可�
 ## <a name="get-the-service-bus-nuget-package"></a>获取服务总线 NuGet 包
 [服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus) 是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。 若要在项目中安装 NuGet 包，请执行以下操作：
 
-1. 在“解决方案资源管理器”中，右键单击“引用”，并单击“管理 NuGet 包”。
-2. 搜索“服务总线”并选择“Microsoft Azure 服务总线”项。 **安装** ”以完成安装，并关闭以下对话框：
+1. 在“解决方案资源管理器”中，右键单击“引用”  ，并单击“管理 NuGet 包”  。
+2. 搜索“服务总线”并选择“Microsoft Azure 服务总线”  项。 **安装** ”以完成安装，并关闭以下对话框：
    
    ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
 
@@ -93,7 +93,7 @@ class ProblemSolver : IProblemSolver
 ```
 
 ### <a name="configure-a-service-host-programmatically"></a>以编程方式配置服务主机
-协定和实施完成后，现在就可以托管服务了。 托管发生在 [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/system.servicemodel.servicehost.aspx) 对象内，该对象负责管理服务实例并托管侦听消息的终结点。 以下代码使用常规的本地终结点和中继终结点配置服务，以便并列展示内部和外部终结点的外观。 将字符串 namespace 替换为命名空间名称，并将 yourKey 替换为前面的设置步骤中获取的 SAS 密钥。
+协定和实施完成后，现在就可以托管服务了。 托管发生在 [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/system.servicemodel.servicehost.aspx) 对象内，该对象负责管理服务实例并托管侦听消息的终结点。 以下代码使用常规的本地终结点和中继终结点配置服务，以便并列展示内部和外部终结点的外观。 将字符串 namespace  替换为命名空间名称，并将 yourKey  替换为前面的设置步骤中获取的 SAS 密钥。
 
 ```csharp
 ServiceHost sh = new ServiceHost(typeof(ProblemSolver));
@@ -129,7 +129,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-终结点定义将移到 App.config 文件中。 NuGet 包已向 App.config 文件添加一系列定义，这些定义是 Azure 中继必需的配置扩展。 以下示例（与前面的代码完全等效）应该紧靠在 **system.serviceModel** 元素的下面。 此代码示例假设项目 C# 命名空间名命名为“Service”。
+终结点定义将移到 App.config 文件中。 NuGet 包已向 App.config 文件添加一系列定义，这些定义是 Azure 中继必需的配置扩展。 以下示例（与前面的代码完全等效）应该紧靠在 **system.serviceModel** 元素的下面。 此代码示例假设项目 C# 命名空间名命名为“Service”  。
 将占位符替换为中继命名空间名称和 SAS 密钥。
 
 ```xml

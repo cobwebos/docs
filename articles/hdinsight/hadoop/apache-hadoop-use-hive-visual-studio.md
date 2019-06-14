@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
 ms.openlocfilehash: 7480dafe435e555bfba81ebd9242bb5724c0bf3f
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65861596"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
@@ -21,11 +21,11 @@ ms.locfileid: "65861596"
 
 ## <a id="prereq"></a>先决条件
 
-* HDInsight 上的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
+* HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
 * Visual Studio（以下版本之一）：
 
-    * Visual Studio 2015 中，2017 （任何版本）
+    * Visual Studio 2015、2017（任何版本）
     * 包含 Update 4 的 Visual Studio 2013 Community/Professional/Premium/Ultimate
 
 * Visual Studio 的 HDInsight 工具或 Visual Studio 的 Azure Data Lake 工具。 请参阅 [Get started using Visual Studio Hadoop tools for HDInsight](apache-hadoop-visual-studio-tools-get-started.md)（开始使用 Visual Studio Hadoop tools for HDInsight），了解如何安装和配置这些工具。
@@ -37,27 +37,27 @@ ms.locfileid: "65861596"
 * 创建即席查询
 * 创建 Hive 应用程序
 
-### <a name="ad-hoc"></a>Ad hoc
+### <a name="ad-hoc"></a>即席
 
-可以在执行即席查询**批处理**或**Interactive**模式。
+即席查询可以**批处理**或**交互式**模式执行。
 
-1. 打开**Visual Studio**。
+1. 打开 **Visual Studio**。
 
-2. 从**服务器资源管理器**，导航到**Azure** > **HDInsight**。
+2. 在“服务器资源管理器”中，导航到“Azure” > “HDInsight”。   
 
-3. 展开**HDInsight**，然后右键单击你想要运行查询，然后选择的群集**编写 Hive 查询**。
+3. 展开“HDInsight”，右键单击要运行查询的群集，然后选择“编写 Hive 查询”   。
 
-4. 输入以下 hive 查询：
+4. 输入以下 Hive 查询：
 
     ```hql
     SELECT * FROM hivesampletable;
     ```
 
-5. 选择“执行”。 请注意，执行模式默认设置为**交互式**。
+5. 选择“执行”  。 请注意，执行模式默认设置为“交互式”  。
 
     ![执行交互式 Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
-6. 在运行相同查询**批处理**模式下，从下拉列表切换列表**Interactive**到**批处理**。 请注意，从执行按钮更改**Execute**到**提交**。
+6. 若要以**批处理**模式下运行同一查询，请将下拉列表从“交互式”  切换到“批处理”  。 请注意，执行按钮将从“执行”  更改为“提交”  。
 
     ![提交 Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-batch-query.png)
 
@@ -67,21 +67,21 @@ ms.locfileid: "65861596"
    
     ![HDInsight Visual Studio Tools IntelliSense 示例 2 的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
 
-7. 选择“提交”或“提交(高级)”。
+7. 选择“提交”或“提交(高级)”。  
 
-   如果选择高级提交选项，请为脚本配置“作业名称”、“参数”、“其他配置”和“状态目录”：
+   如果选择高级提交选项，请为脚本配置“作业名称”、“参数”、“其他配置”和“状态目录”：    
 
     ![HDInsight Hadoop Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/hdinsight.visual.studio.tools.submit.jobs.advanced.png "提交查询")
 
 ### <a name="hive-application"></a>Hive 应用程序
 
-1. 打开**Visual Studio**。
+1. 打开 **Visual Studio**。
 
-2. 从菜单栏中，导航到**文件** > **新建** > **项目**。
+2. 在菜单栏中，导航到“文件” > “新建” > “项目”。   
 
-3. 从**新的项目**窗口中，导航到**模板** > **Azure Data Lake** > **HIVE (HDInsight)**  >  **Hive 应用程序**。 
+3. 在“新建项目”  窗口中，导航至“模板”   > “Azure Data Lake”   > “HIVE (HDInsight)”   > “Hive 应用程序”  。 
 
-4. 为此项目提供一个名称，然后选择**确定**。
+4. 提供此项目的名称，然后选择“确定”  。
 
 5. 打开使用此项目创建的 **Script.hql** 文件，并在其中粘贴以下 HiveQL 语句：
 
@@ -113,23 +113,23 @@ ms.locfileid: "65861596"
 
    * `INPUT__FILE__NAME LIKE '%.log'` - 告诉 Hive，我们只应返回以 .log 结尾的文件中的数据。 此子句将搜索限定为包含数据的 sample.log 文件。
 
-6. 在工具栏中，选择需要用于此查询的“HDInsight 群集”。 选择“提交”，让语句以 Hive 作业的形式运行。
+6. 在工具栏中，选择需要用于此查询的“HDInsight 群集”。  选择“提交”，让语句以 Hive 作业的形式运行。 
 
    ![“提交”栏](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
 
-7. “Hive 作业摘要”将会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
+7. “Hive 作业摘要”  将会出现并显示有关正在运行的作业的信息。 在“作业状态”  更改为“已完成”  之前，使用“刷新”  链接刷新作业信息。
 
    ![作业摘要，显示已完成的作业](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
 
-8. 使用“作业输出”链接查看此作业的输出。 它显示 `[ERROR] 3`，这是此查询返回的值。
+8. 使用“作业输出”  链接查看此作业的输出。 它显示 `[ERROR] 3`，这是此查询返回的值。
 
 ### <a name="additional-example"></a>其他示例
 
-此示例依赖于`log4jLogs`之前步骤中创建表。
+此示例依赖于前一步骤中创建的 `log4jLogs` 表。
 
-1. 从**服务器资源管理器**，右键单击你的群集，然后选择**编写 Hive 查询**。
+1. 在“服务器资源管理器”  中，右键单击群集，然后选择“编写 Hive 查询”  。
 
-2. 输入以下 hive 查询：
+2. 输入以下 Hive 查询：
 
     ```hql
     set hive.execution.engine=tez;
@@ -148,9 +148,9 @@ ms.locfileid: "65861596"
     
     * `INSERT OVERWRITE ... SELECT`：从包含 `[ERROR]` 的 `log4jLogs` 表中选择行，然后将数据插入 `errorLogs` 表中。
 
-3. 执行中的查询**批处理**模式。
+3. 以**批处理**模式执行查询。
 
-4. 若要验证作业是否已创建表，请使用“服务器资源管理器”，然后展开“Azure” > “HDInsight”> 用户的 HDInsight 群集 >“Hive 数据库” > “默认值”。 此时会列出 **errorLogs** 表和 **log4jLogs** 表。
+4. 若要验证作业是否已创建表，请使用“服务器资源管理器”  ，然后展开“Azure”   > “HDInsight”  > 用户的 HDInsight 群集 >“Hive 数据库”   > “默认值”  。 此时会列出 **errorLogs** 表和 **log4jLogs** 表。
 
 ## <a id="nextsteps"></a>后续步骤
 

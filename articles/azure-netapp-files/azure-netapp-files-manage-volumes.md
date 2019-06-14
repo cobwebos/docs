@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: c8ac14f11d7f2eeed050997de42da4f512b46bc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60254744"
 ---
 # <a name="manage-volumes-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理卷
@@ -26,8 +26,8 @@ ms.locfileid: "60254744"
 
 如果要删除卷，必须先删除卷的所有子对象。 
 
-1.  从“管理容量池”边栏选项卡中单击“卷”边栏选项卡。 
-2.  使用“浏览卷”视图来查看、更新或删除现有卷。 
+1.  从“管理容量池”边栏选项卡中单击“卷”边栏选项卡。  
+2.  使用“浏览卷”  视图来查看、更新或删除现有卷。 
 
 
 

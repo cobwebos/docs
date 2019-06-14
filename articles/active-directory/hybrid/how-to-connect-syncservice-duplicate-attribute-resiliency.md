@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60348756"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>标识同步和重复属性复原
 重复属性复原是 Azure Active Directory 的一项功能，可在运行 Microsoft 的同步工具之一时消除 **UserPrincipalName** 和 **ProxyAddress** 冲突所造成的不便。
 
-在给定 Azure Active Directory 租户的所有“用户”、“组”或“联系人”对象中，这两个属性通常必须是唯一的。
+在给定 Azure Active Directory 租户的所有“用户”  、“组”  或“联系人”  对象中，这两个属性通常必须是唯一的。
 
 > [!NOTE]
 > 只有用户可以拥有 UPN。
@@ -166,7 +166,7 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 
 **标识同步错误报告**：
 
-“关于如何解决此问题的步骤”链接不正确：  
+ “关于如何解决此问题的步骤”链接不正确：  
     ![活动用户](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "活动用户")  
 
 它应指向 [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。

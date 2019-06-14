@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.openlocfilehash: f2781e3cc2433f73ba7ff33e5c452e29de746adf
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956204"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>配置 Linux 的 Azure 应用服务的 ASP.NET Core 应用
@@ -124,7 +124,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>使用应用设置
 
-在中<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>，通过运行以下 CLI 命令的应用设置添加到应用服务应用。 替换*\<应用名称 >*， *\<资源组名称 >*，以及*\<项目名称 >* 使用适当的值.
+在中<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>，通过运行以下 CLI 命令的应用设置添加到应用服务应用。 替换 *\<应用名称 >* ， *\<资源组名称 >* ，以及 *\<项目名称 >* 使用适当的值.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"

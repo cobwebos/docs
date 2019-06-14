@@ -16,10 +16,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60469121"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用管理员角色
@@ -39,7 +39,7 @@ ms.locfileid: "60469121"
 3. 打开以下角色之一，以查看它的成员分配：
    * **应用管理员**
    * **云应用管理员**
-4. 在角色的“成员”页上，选择“添加成员”。
+4. 在角色的“成员”  页上，选择“添加成员”  。
 5. 选择一个或多个要添加到角色的成员。 <!--Members can be users or groups.-->
 
 有关这些角色的说明，可以查看[可用角色](directory-assign-admin-roles.md#available-roles)。
@@ -50,8 +50,8 @@ ms.locfileid: "60469121"
 
 1. 使用符合租户中全局管理员角色条件的帐户登录 [Azure AD 租户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 2. 拥有足够权限后，执行以下一个或两个设置：
-   * 在[租户的“用户设置”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)上，将“用户可以注册应用”设置为“否”。
-   * 在[企业应用的“用户设置”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)上，将“用户可以自行同意应用访问公司数据”设置为“否”。
+   * 在[租户的“用户设置”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)上，将“用户可以注册应用”  设置为“否”。
+   * 在[企业应用的“用户设置”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)上，将“用户可以自行同意应用访问公司数据”  设置为“否”。
 3. 然后，根据需要，将需要此权限的用户分配为“应用开发人员”角色的成员。
 
 注册应用后，用户自动添加为应用的第一个所有者。
@@ -87,17 +87,17 @@ ms.locfileid: "60469121"
 ### <a name="to-assign-an-owner-to-an-application"></a>分配应用所有者的具体步骤
 
 1. 使用符合租户中应用管理员或云应用管理员条件的帐户登录 [Azure AD 租户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
-2. 在租户的[“应用注册”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上，选择应用，以打开应用的“概览”页。
-3. 选择“所有者”，以查看应用所有者列表。
-4. 选择“添加”，以选择一个或多个要添加到应用的所有者。
+2. 在租户的[“应用注册”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上，选择应用，以打开应用的“概览”  页。
+3. 选择“所有者”  ，以查看应用所有者列表。
+4. 选择“添加”  ，以选择一个或多个要添加到应用的所有者。
 
 ### <a name="to-assign-an-owner-to-an-application-registration"></a>分配应用注册所有者的具体步骤
 
 1. 使用符合租户中应用管理员或云应用管理员角色条件的帐户登录 [Azure AD 租户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 2. 拥有足够权限后，在租户的[“企业应用”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上，选择应用注册以打开它。
-3. 选择“设置”。
-4. 选择“设置”页上的“所有者”，以查看应用所有者列表。
-5. 选择“添加所有者”，以选择一个或多个要添加到应用的所有者。
+3. 选择“设置”。 
+4. 选择“设置”  页上的“所有者”  ，以查看应用所有者列表。
+5. 选择“添加所有者”  ，以选择一个或多个要添加到应用的所有者。
 
 ## <a name="next-steps"></a>后续步骤
 

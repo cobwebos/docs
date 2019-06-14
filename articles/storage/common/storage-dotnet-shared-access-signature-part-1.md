@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65907184"
 ---
 # <a name="using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS)
@@ -68,7 +68,7 @@ SAS 通常适用于用户需要在存储帐户中读取和写入其数据的服�
 
 ![SAS URI 的组件](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-uri.png)   
 
-SAS 令牌是在客户端侧生成的字符串（请参阅 [SAS 示例](#sas-examples)部分获取代码示例）。 例如，在任何情况下，Azure 存储均不会跟踪使用存储客户端库生成的 SAS 令牌。 可以在客户端上创建不限数量的 SAS 令牌。
+SAS 令牌是在客户端  侧生成的字符串（请参阅 [SAS 示例](#sas-examples)部分获取代码示例）。 例如，在任何情况下，Azure 存储均不会跟踪使用存储客户端库生成的 SAS 令牌。 可以在客户端上创建不限数量的 SAS 令牌。
 
 当客户端将 SAS URI 作为请求的一部分提供到 Azure 存储时，服务会检查 SAS 参数和签名，以验证其对请求进行身份验证的有效性。 如果服务验证签名有效，则对请求进行授权。 否则，将拒绝请求，错误代码为 403（已禁止）。
 

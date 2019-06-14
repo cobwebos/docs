@@ -1,19 +1,19 @@
 ---
-title: 连接 Azure Kubernetes 服务 (AKS) 使用 Azure Database for PostgreSQL-单个服务器
-description: 了解如何连接 Azure Kubernetes 服务使用 Azure Database for PostgreSQL-单个服务器
+title: 将 Azure Kubernetes 服务 (AKS) 与 Azure Database for PostgreSQL - 单一服务器连接
+description: 了解如何将 Azure Kubernetes 服务与 Azure Database for PostgreSQL - 单一服务器连接
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.date: 5/6/2019
 ms.topic: conceptual
 ms.openlocfilehash: a98d9b89db0406d67d1b067c3e53eb5c3dae7957
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65068939"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>连接 Azure Kubernetes 服务和 Azure Database for PostgreSQL-单个服务器
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>将 Azure Kubernetes 服务与 Azure Database for PostgreSQL - 单一服务器连接
 
 Azure Kubernetes 服务 (AKS) 提供可在 Azure 中使用的托管 Kubernetes 群集。 下面是将 AKS 和 Azure Database for PostgreSQL 一起使用以创建应用程序时要考虑的一些选项。
 
@@ -29,7 +29,7 @@ Azure Kubernetes 服务 (AKS) 提供可在 Azure 中使用的托管 Kubernetes �
 3. 复制**基础结构资源组**的名称。
 4. 使用门户搜索栏找到并打开基础结构资源组。
 5. 在该资源组中选择一个 VM。
-6. 转到 VM 的“网络”选项卡。
+6. 转到 VM 的“网络”  选项卡。
 7. 确认是否已启用**加速网络**。
 
 也可以通过 Azure CLI 使用以下两个命令：

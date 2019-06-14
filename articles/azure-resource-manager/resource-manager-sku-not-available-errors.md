@@ -14,15 +14,15 @@ ms.topic: troubleshooting
 ms.date: 10/19/2018
 ms.author: tomfitz
 ms.openlocfilehash: 1dd0532452c3558e53f0236998953d2055ed328c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390730"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
-本文介绍如何解决 SkuNotAvailable 错误。 如果在该区域或满足业务需求的备用区域中找不到合适的 SKU，请将 [SKU 请求](https://aka.ms/skurestriction)提交到 Azure 支持。
+本文介绍如何解决 SkuNotAvailable 错误  。 如果在该区域或满足业务需求的备用区域中找不到合适的 SKU，请将 [SKU 请求](https://aka.ms/skurestriction)提交到 Azure 支持。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -82,7 +82,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 
 要确定区域中可用的 SKU，请使用[门户](https://portal.azure.com)。 登录到门户，并通过接口添加资源。 设置值时，可看到该资源的可用 SKU。 不需要完成部署。
 
-例如，开始创建虚拟机的过程。 若要查看其他可用的大小，请选择“更改大小”。
+例如，开始创建虚拟机的过程。 若要查看其他可用的大小，请选择“更改大小”  。
 
 ![创建 VM](./media/resource-manager-sku-not-available-errors/create-vm.png)
 

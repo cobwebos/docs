@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: raynew
 ms.openlocfilehash: c11d2f22fa08417107b0eecdd902b4521410b358
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60544904"
 ---
 # <a name="group-machines-for-assessment"></a>分组将计算机以进行评估
@@ -23,12 +23,12 @@ ms.locfileid: "60544904"
 ## <a name="create-a-group"></a>创建组
 
 1. 在 Azure Migrate 项目的“概述” **中** ，在“管理  **”下单击“组”**  “+ 组”> ，  **然后指定组名** 。
-2. 将一个或多个计算机添加到组中，然后单击 **“创建”**。
+2. 将一个或多个计算机添加到组中，然后单击 **“创建”** 。
 3. 你可以视情况选择为组运行新评估。
 
     ![创建组](./media/how-to-create-a-group/create-group.png)
 
-创建组后，你可以在“组”页面上选择组并添加或删除计算机，对其进行修改。
+创建组后，你可以在“组”页面上选择组并添加或删除计算机，对其进行修改  。
 
 ## <a name="next-steps"></a>后续步骤
 

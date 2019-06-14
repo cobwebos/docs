@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
 ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611519"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
@@ -120,7 +120,7 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
 
 在 Service Fabric 中，执行组件是在 Reliable Actors 应用程序框架中实现。 此框架以执行组件模式为依据，在 [Service Fabric Reliable Services](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction) 的基础之上构建而成。 编写的每个可靠执行组件服务都是一个已分区的有状态可靠服务。
 
-每个执行组件都定义为执行组件类型的一个实例，类似于 .NET 对象是 .NET 类型的一个实例。 例如，用于实现计算器功能的执行组件类型可能包含此类型的多个执行组件，这些执行组件跨群集中的各个节点进行分布。 分布的每个执行组件都通过执行组件标识符进行唯一标识。
+每个执行组件都定义为执行组件类型的一个实例，类似于 .NET 对象是 .NET 类型的一个实例。 例如，用于实现计算器功能的执行组件类型  可能包含此类型的多个执行组件，这些执行组件跨群集中的各个节点进行分布。 分布的每个执行组件都通过执行组件标识符进行唯一标识。
 
 [复制器安全配置](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration)用于保护在复制过程中使用的信道的安全。 此配置可阻止服务相互窥探复制流量，并确保可用性很高的数据安全。 默认情况下，空的安全配置节会影响复制安全。
 复制器配置用于配置负责使执行组件状态提供程序状态高度可靠的复制器。
@@ -139,10 +139,10 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
 -   证书的使用者名称必须与用于访问云服务的域名匹配。
 
     - 获取用于访问云服务的自定义域名。
-    - 请求从 CA 获取证书，其中使用者名称与服务的自定义域名匹配。 例如，如果自定义域名为 __contoso__.com，CA 颁发的证书应包含使用者名称 .contoso.com 或 __www__.contoso.com。
+    - 请求从 CA 获取证书，其中使用者名称与服务的自定义域名匹配。 例如，如果自定义域名为 __contoso__.com  ，CA 颁发的证书应包含使用者名称 .contoso.com  或 __www__.contoso.com  。
 
     >[!NOTE]
-    >无法从 CA 获取 __cloudapp__.net 域的 SSL 证书。
+    >无法从 CA 获取 __cloudapp__.net  域的 SSL 证书。
 
 -   证书至少必须使用 2,048 位加密。
 

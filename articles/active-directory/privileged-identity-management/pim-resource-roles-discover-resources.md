@@ -15,10 +15,10 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 786b5ed99cce29c7217bfa42446821848ca8e05f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60288105"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>在 PIM 中发现要管理的 Azure 资源
@@ -31,9 +31,9 @@ ms.locfileid: "60288105"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure 资源”。
+1. 单击“Azure 资源”  。
 
     如果这是首次将 PIM 用于 Azure 资源，则会出现“发现”资源窗格。
 
@@ -43,24 +43,24 @@ ms.locfileid: "60288105"
 
     ![“发现资源”窗格](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
-1. 单击“发现资源”以启动发现之旅。
+1. 单击“发现资源”以启动发现之旅  。
 
     ![“发现”窗格](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. 在“发现”窗格上，使用“资源状态筛选器”和“选择资源类型”筛选你对其具有写入权限的管理组或订阅。 最初从“所有”开始可能会最简单。
+1. 在“发现”窗格上，使用“资源状态筛选器”和“选择资源类型”筛选你对其具有写入权限的管理组或订阅   。 最初从“所有”开始可能会最简单  。
 
     只能搜索并选择要使用 PIM 管理的管理组或订阅资源。 在 PIM 中管理管理组或订阅时，还可以管理其子资源。
 
 1. 在要管理的任何非托管资源旁添加复选标记。
 
-1. 单击“管理资源”以开始管理所选资源。
+1. 单击“管理资源”以开始管理所选资源  。
 
     > [!NOTE]
     > 管理组或订阅设为托管后就无法取消托管。 这可防止其他资源管理员删除 PIM 设置。
 
     ![发现 - 管理资源](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. 如果看到确认加入要管理的所选资源的消息，请单击“是”。
+1. 如果看到确认加入要管理的所选资源的消息，请单击“是”  。
 
     ![发现 - 管理资源消息](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 

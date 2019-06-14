@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60194017"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Azure 防火墙威胁智能基于筛选-公共预览版
@@ -47,7 +47,7 @@ ms.locfileid: "60194017"
 }
 ```
 
-## <a name="testing"></a>测试
+## <a name="testing"></a>正在测试
 
 - **出站测试**-出站流量警报应该很少见，因为它意味着您的环境已遭到破坏。 若要帮助测试出站警报正在，将触发警报的测试创建 FQDN。 使用**testmaliciousdomain.eastus.cloudapp.azure.com**为出站测试。
 

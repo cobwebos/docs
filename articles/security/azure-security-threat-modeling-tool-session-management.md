@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: e8f3cf3889b3f79e930630ff0e768a0c4875eec6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611690"
 ---
 # <a name="security-frame-session-management"></a>安全框架：会话管理
@@ -36,8 +36,8 @@ ms.locfileid: "60611690"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure AD | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure AD | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -71,8 +71,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 设备 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -82,8 +82,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure Document DB | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure Document DB | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -93,8 +93,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | ADFS | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | ADFS | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -142,8 +142,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 标识服务器 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 标识服务器 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [IdentityServer3 - 联合注销](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
@@ -153,8 +153,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - OnPrem |
 | **参考**              | [httpCookies 元素（ASP.NET 设置架构）](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、[HttpCookie.Secure 属性](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
@@ -172,8 +172,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | EnvironmentType - OnPrem |
 | **参考**              | 不适用  |
@@ -194,8 +194,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [Secure Cookie 特性](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
@@ -215,8 +215,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | Web 窗体 |
 | **属性**              | 不适用  |
 | **参考**              | [FormsAuthentication.RequireSSL 属性](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
@@ -232,8 +232,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC5 |
 | **属性**              | EnvironmentType - OnPrem |
 | **参考**              | [Windows Identity Foundation (WIF) 配置 – 第 II 部分](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
@@ -257,8 +257,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -266,8 +266,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | [ASP.NET MVC 和网页中的 XSRF/CSRF 预防](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
@@ -352,8 +352,8 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | Web 窗体 |
 | **属性**              | 不适用  |
 | **参考**              | [利用 ASP.NET 内置功能来防范 Web 攻击](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
@@ -372,8 +372,8 @@ void Page_Init (object sender, EventArgs e) {
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [HttpSessionState.Timeout 属性](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
@@ -392,8 +392,8 @@ void Page_Init (object sender, EventArgs e) {
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | Web 窗体 |
 | **属性**              | 不适用  |
 | **参考**              | [身份验证 （ASP.NET 设置架构） 的窗体元素](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
@@ -407,8 +407,8 @@ void Page_Init (object sender, EventArgs e) {
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | EnvironmentType - OnPrem |
 | **参考**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
@@ -442,8 +442,8 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -453,8 +453,8 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -462,8 +462,8 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | [防止 ASP.NET Web API 中的跨站点请求伪造 (CSRF) 攻击](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
@@ -549,8 +549,8 @@ public ViewResult SubmitUpdate()
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 标识提供者 - ADFS，标识提供者 - Azure AD |
 | **参考**              | [在 ASP.NET Web API 2.2 中使用单个帐户和本地登录名保护 Web API](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |

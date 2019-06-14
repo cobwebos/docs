@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60617911"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>查看和下载 Microsoft Azure 发票
@@ -38,11 +38,11 @@ ms.locfileid: "60617911"
 
 1. 选择从你的订阅[订阅页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)在 Azure 门户中，如下[用户有权访问发票](billing-manage-access.md)。
 
-2. 选择“发票”。
+2. 选择“发票”  。
 
     ![屏幕快照，显示“计费和使用情况”选项](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. 单击“下载发票”，查看 PDF 发票的副本。 如果它显示“不可用”，请参阅[为何看不到最后一个计费周期的发票？](#noinvoice)
+3. 单击“下载发票”  ，查看 PDF 发票的副本。 如果它显示“不可用”  ，请参阅[为何看不到最后一个计费周期的发票？](#noinvoice)
 
     ![屏幕快照，显示计费周期、下载选项，以及每个计费周期的总费用](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
 
@@ -55,9 +55,9 @@ ms.locfileid: "60617911"
 每个生成发票[计费配置文件](billing-mca-overview.md#understand-billing-profiles)Microsoft 客户协议中。 您必须是一个计费配置文件所有者、 参与者、 读取器，或发票管理器从 Azure 门户下载发票。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 1. 选择计费的配置文件。 具体取决于您的访问权限，可能需要首先选择计费帐户。
-1. 选择“发票”。
+1. 选择“发票”  。
 1. 在发票网格中，找到你想要下载的发票的行。
 1. 单击省略号 (`...`) 的行的末尾。
     ![显示在行尾的省略号的屏幕截图](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
@@ -73,11 +73,11 @@ ms.locfileid: "60617911"
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>通过电子邮件获取订阅的发票
 
-1. 从[订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择你的订阅。 为拥有的每个订阅执行选择加入操作。 依次单击“发票”、“通过电子邮件发送我的发票”。
+1. 从[订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择你的订阅。 为拥有的每个订阅执行选择加入操作。 依次单击“发票”  、“通过电子邮件发送我的发票”  。
 
     ![显示了“选择加入”流的屏幕截图](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
 
-2. 单击“选择加入”并接受条款。
+2. 单击“选择加入”  并接受条款。
 
     ![显示了“选择加入”流步骤 2 的屏幕截图](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
  
@@ -98,15 +98,15 @@ ms.locfileid: "60617911"
 如果你有 Microsoft 客户协议，你可以选择通过电子邮件获取发票。 所有计费配置文件所有者、 参与者、 读者和发票管理器将通过电子邮件获取发票。 读取器不能更新电子邮件发票首选项。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 1. 选择计费的配置文件。 具体取决于您的访问权限，可能需要首先选择计费帐户。
-1. 在“设置”下，选择“属性”。
+1. 在“设置”下，选择“属性”   。
 1. 下**电子邮件发送发票**，选择**更新电子邮件发票首选项**。
 
     ![屏幕截图，显示电子邮件发票属性](./media/billing-download-azure-invoice/billingprofile-email.png)
 
 1. 选择**参与**。
-1. 单击“更新”。
+1. 单击“更新”  。
 
 ### <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>选择退出电子邮件中获取 Microsoft 客户协议发票
 

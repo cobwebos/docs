@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abfdad1db655c102dbfb300434eac952fe2154dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381841"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
@@ -29,19 +29,19 @@ ms.locfileid: "60381841"
 - 在一些情况下，启用无缝 SSO 最多可能需要 30 分钟。
 - 如果对租户禁用并重新启用无缝 SSO，则用户在其缓存的 Kerberos 票证（通常 10 小时有效）过期前，将不会获得单一登录体验。
 - 不支持 Microsoft Edge 浏览器。
-- 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”。 由于此行为，[SharePoint 和 OneDrive 映射方案](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec)无法正常工作。
+- 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”  。 由于此行为，[SharePoint 和 OneDrive 映射方案](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec)无法正常工作。
 - 使用非交互式流支持版本为 16.0.8730.xxxx 及更高版本的 Office 365 Win32 客户端（Outlook、Word、Excel 等）。 不支持其他版本；在这些版本中，用户需输入用户名而不是密码登录。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
 - 无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。
 - 开启增强保护模式时，无缝 SSO 在 Internet Explorer 中不起作用。
 - 无缝 SSO 在 iOS 和 Android 的移动浏览器上不起作用。
 - 如果某个用户属于 Active Directory 中过多的组，则该用户的 Kerberos 票证可能会太大而无法处理，这会导致无缝 SSO 失败。 Azure AD HTTPS 请求可以具有最大大小为 50 KB 的标头；Kerberos 票证需要远小于该限制，才能容纳其他 Azure AD 项目（通常 2 - 5 KB），比如 cookie。 我们的建议是减少用户的组成员身份，然后重试。
 - 如果你要同步 30 个或更多的 Active Directory 林，则不能通过 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-the-feature)该功能。
-- 将 Azure AD 服务 URL (https://autologon.microsoftazuread-sso.com) 添加到“受信任的站点”区域，而非会阻止用户登录的“本地 Intranet”区域。
-- 无缝 SSO 对 Kerberos 使用 **RC4_HMAC_MD5** 加密类型。 禁止在 Active Directory 设置中使用 **RC4_HMAC_MD5** 加密类型将中断无缝 SSO。 在“组策略管理编辑器”工具中，确保“计算机配置”->“Windows 设置”->“安全设置”->“本地策略”->“安全选项”->“网络安全：配置 Kerberos 允许的加密类型”下 RC4_HMAC_MD5 的策略值为“已启用”。 此外，无缝 SSO 无法使用其他加密类型，因此请确保这些加密类型**已禁用**。
+- 将 Azure AD 服务 URL (https://autologon.microsoftazuread-sso.com) 添加到“受信任的站点”区域，而非会阻止用户登录的“本地 Intranet”区域  。
+- 无缝 SSO 对 Kerberos 使用 **RC4_HMAC_MD5** 加密类型。 禁止在 Active Directory 设置中使用 **RC4_HMAC_MD5** 加密类型将中断无缝 SSO。 在“组策略管理编辑器”工具中，确保“计算机配置”->“Windows 设置”->“安全设置”->“本地策略”->“安全选项”->“网络安全：    配置 Kerberos 允许的加密类型”下 RC4_HMAC_MD5 的策略值为“已启用”。 此外，无缝 SSO 无法使用其他加密类型，因此请确保这些加密类型**已禁用**。
 
 ## <a name="check-status-of-feature"></a>检查功能状态
 
-确保租户上的无缝 SSO 功能仍处于“已启用”状态。 你可以通过转到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)中的“Azure AD Connect”窗格来检查状态。
+确保租户上的无缝 SSO 功能仍处于“已启用”状态  。 你可以通过转到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)中的“Azure AD Connect”  窗格来检查状态。
 
 ![Azure Active Directory 管理中心：“Azure AD Connect”窗格](./media/tshoot-connect-sso/sso10.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "60381841"
 
 ![Azure Active Directory 管理中心：登录报告](./media/tshoot-connect-sso/sso9.png)
 
-浏览到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的“Azure Active Directory” > “登录”，然后选择特定用户的登录活动。 查找“登录错误代码”字段。 通过使用下表将该字段的值映射到某个失败原因和解决方法：
+浏览到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的“Azure Active Directory”   > “登录”  ，然后选择特定用户的登录活动。 查找“登录错误代码”  字段。 通过使用下表将该字段的值映射到某个失败原因和解决方法：
 
 |登录错误代码|登录失败原因|解决方法
 | --- | --- | ---
@@ -77,7 +77,7 @@ ms.locfileid: "60381841"
 - 确保在 Azure AD Connect 中已启用无缝 SSO 功能。 如果无法启用该功能（例如，由于端口被阻止），请确保事先满足所有[先决条件](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)。
 - 如果同时对租户启用了 [Azure AD Join](../active-directory-azureadjoin-overview.md)和无缝 SSO，请确保 Azure AD Join 没有问题。 如果设备同时注册了 Azure AD 并加入了域，则 Azure AD Join 的 SSO 将优先于无缝 SSO。 使用 Azure AD Join 的 SSO，用户将看到显示“已连接到 Windows”的登录磁贴。
 - 确保 Azure AD URL (https://autologon.microsoftazuread-sso.com) 是用户 Intranet 区域设置中的一部分。
-- 确保企业设备已加入 Active Directory 域。 设备不需要[加入 Azure AD](../active-directory-azureadjoin-overview.md)，无缝 SSO 便可工作。
+- 确保企业设备已加入 Active Directory 域。 设备  不需要[加入 Azure AD](../active-directory-azureadjoin-overview.md)，无缝 SSO 便可工作。
 - 确保用户已通过 Active Directory 域帐户登录到设备。
 - 确保用户的帐户来自已设置了无缝 SSO 的 Active Directory 林。
 - 确保已在企业网络中连接该设备。
@@ -86,12 +86,12 @@ ms.locfileid: "60381841"
 - 使用命令提示符中的 `klist` 命令列出设备上的现有 Kerberos 票证。 确保存在针对 `AZUREADSSOACC` 计算机帐户颁发的票证。 通常情况下，用户的 Kerberos 票证的有效期为 10 小时。 你可能在 Active Directory 中有不同的设置。
 - 如果对租户禁用并重新启用无缝 SSO，则用户在其缓存的 Kerberos 票证过期前，将不会获得单一登录体验。
 - 使用 `klist purge` 命令从设备中清除现有的 Kerberos 票证，然后重试。
-- 若要确定是否存在与 JavaScript 相关的问题，请查看浏览器的控制台日志（在“开发人员工具”下）。
+- 若要确定是否存在与 JavaScript 相关的问题，请查看浏览器的控制台日志（在“开发人员工具”  下）。
 - 查看[域控制器日志](#domain-controller-logs)。
 
 ### <a name="domain-controller-logs"></a>域控制器日志
 
-如果在域控制器上成功启用审核，则每当用户通过无缝 SSO 登录时，将在事件日志中记录一个安全条目。 你可以使用以下查询来查找这些安全事件。 （查找与计算机帐户 AzureADSSOAcc$ 相关联的事件 4769。）
+如果在域控制器上成功启用审核，则每当用户通过无缝 SSO 登录时，将在事件日志中记录一个安全条目。 你可以使用以下查询来查找这些安全事件。 （查找与计算机帐户 AzureADSSOAcc$  相关联的事件 4769  。）
 
 ```
     <QueryList>

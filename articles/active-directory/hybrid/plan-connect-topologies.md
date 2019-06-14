@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b1c0d33a7d920f76bcbea6d8d6babc7390003bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60383496"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
@@ -62,7 +62,7 @@ ms.locfileid: "60383496"
 
 如果使用多个林，所有林必须可由单个 Azure AD Connect 同步服务器访问。 不需要将服务器加入域。 如果需要访问所有林，可将服务器放在外围网络（也称为外围网络、外围安全区域或屏蔽子网）中。
 
-Azure AD Connect 安装向导提供多个选项用于合并多个林中显示的用户。 目标是一个用户只在 Azure AD 中显示一次。 可以在安装向导的自定义安装路径中配置某些常见拓扑。 在“唯一标识用户”页上选择表示拓扑的相应选项。 只对用户配置合并。 复制的组不会与默认配置合并。
+Azure AD Connect 安装向导提供多个选项用于合并多个林中显示的用户。 目标是一个用户只在 Azure AD 中显示一次。 可以在安装向导的自定义安装路径中配置某些常见拓扑。 在“唯一标识用户”页上选择表示拓扑的相应选项。  只对用户配置合并。 复制的组不会与默认配置合并。
 
 有关独立的拓扑、[完整网格](#multiple-forests-full-mesh-with-optional-galsync)和[帐户资源拓扑](#multiple-forests-account-resource-forest)的部分讨论了常见拓扑。
 

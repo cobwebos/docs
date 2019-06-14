@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18f7f6588cb4fb3b3b480402c3dad13be4a0ed2c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65781022"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
@@ -121,9 +121,9 @@ MSDN 中的[策略操作](https://msdn.microsoft.com/library/azure/ad/graph/api/
 
 **AccelerateToFederatedDomain** 是可选的。 如果 **AccelerateToFederatedDomain** 为 false，则策略对自动加速不起作用。 如果 **AccelerateToFederatedDomain** 为 true 并且租户中只有一个已验证的联合域，则用户将直接转到联合 IdP 进行登录。 如果此属性为 true 并且租户中有多个已验证的域，则必须指定 **PreferredDomain**。
 
-**PreferredDomain** 是可选的。 “PreferredDomain”应指示需要加速的域。 如果租户仅有一个联合域，可省略此项。  如果在有多个已验证的联合域的情况下省略，则策略无效。
+**PreferredDomain** 是可选的。 “PreferredDomain”应指示需要加速的域  。 如果租户仅有一个联合域，可省略此项。  如果在有多个已验证的联合域的情况下省略，则策略无效。
 
- 如果指定“PreferredDomain”，必须与租户的某个已验证的联合域匹配。 应用程序的所有用户都必须能够登录到该域。
+ 如果指定“PreferredDomain”，必须与租户的某个已验证的联合域匹配  。 应用程序的所有用户都必须能够登录到该域。
 
 **AllowCloudPasswordValidation** 是可选的。 如果 **AllowCloudPasswordValidation** 为 true，则允许应用程序通过直接向 Azure Active Directory 令牌终结点提供用户名/密码凭据，来对联合用户进行身份验证。 仅当已启用密码哈希同步时，才可以做到这一点。
 
@@ -197,7 +197,7 @@ New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPass
 ```
 
 
-若要查看新策略并获取其“ObjectID”，请运行以下命令：
+若要查看新策略并获取其“ObjectID”，请运行以下命令  ：
 
 ``` powershell
 Get-AzureADPolicy
@@ -207,12 +207,12 @@ Get-AzureADPolicy
 若要在创建 HRD 策略后启用该策略，可将它分配到多个应用程序服务主体。
 
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>步骤 2：查找要向其分配策略的服务主体  
-需要要向其分配策略的服务主体的“ObjectID”。 可通过多种方法查找服务主体的“ObjectID”。    
+需要要向其分配策略的服务主体的“ObjectID”  。 可通过多种方法查找服务主体的“ObjectID”  。    
 
 可以使用门户，或查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 还可以转到 [Graph 浏览器工具](https://developer.microsoft.com/graph/graph-explorer)，并登录到 Azure AD 帐户，查看组织的所有服务主体。 你使用的是 PowerShell，因此可使用 get-AzureADServicePrincipal cmdlet 列出服务主体及其 ID。
 
 #### <a name="step-3-assign-the-policy-to-your-service-principal"></a>步骤 3：向服务主体分配策略  
-在获取了要配置自动加速的应用程序的服务主体的“ObjectID”后，请运行以下命令。 该命令将步骤 1 中创建的 HRD 策略与步骤 2 中找到的服务主体关联起来。
+在获取了要配置自动加速的应用程序的服务主体的“ObjectID”后，请运行以下命令  。 该命令将步骤 1 中创建的 HRD 策略与步骤 2 中找到的服务主体关联起来。
 
 ``` powershell
 Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
@@ -223,7 +223,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefOb
 如果已经为应用程序分配了 HomeRealmDiscovery 策略，则无法添加另一个策略。  在这种情况下，请更改分配到应用程序的主领域发现策略的定义，以添加其他参数。
 
 #### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>步骤 4：检查 HRD 策略分配到的应用程序服务主体
-若要检查为其配置了 HRD 策略的应用程序，请使用 **Get-AzureADPolicyAppliedObject** cmdlet。 并向其传递要检查的策略的“ObjectID”。
+若要检查为其配置了 HRD 策略的应用程序，请使用 **Get-AzureADPolicyAppliedObject** cmdlet。 并向其传递要检查的策略的“ObjectID”  。
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
@@ -239,7 +239,7 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 Get-AzureADPolicy
 ```
 
-记下要列出其分配情况的策略的“ObjectID”。
+记下要列出其分配情况的策略的“ObjectID”  。
 
 #### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>步骤 2：列出向其分配了策略的服务主体  
 
@@ -249,7 +249,7 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 
 ### <a name="example-remove-an-hrd-policy-for-an-application"></a>示例：删除应用程序的 HRD 策略
 #### <a name="step-1-get-the-objectid"></a>步骤 1：获取 ObjectID
-使用前一个示例获取策略的“ObjectID”，以及希望从中删除策略的应用程序服务主体的“ObjectID”。 
+使用前一个示例获取策略的“ObjectID”，以及希望从中删除策略的应用程序服务主体的“ObjectID”  。 
 
 #### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>步骤 2：从应用程序服务主体中删除策略分配  
 

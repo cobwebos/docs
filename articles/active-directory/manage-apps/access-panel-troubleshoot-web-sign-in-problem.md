@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7c6a9c3f26c8939176197a2ecf2fcd6026e9928
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65784308"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>登录到访问面板网站时出现问题
@@ -39,7 +39,7 @@ ms.locfileid: "65784308"
 
 ## <a name="general-issues-to-check-first"></a>首先要检查的常规问题 
 
--   确保用户登录到正确的 URL：<https://myapps.microsoft.com>
+-   确保用户登录到正确的 URL  ：<https://myapps.microsoft.com>
 
 -   确保用户的浏览器已将该 URL 添加到其**受信任的站点**
 
@@ -98,15 +98,15 @@ ms.locfileid: "65784308"
 
 若要检查是否存在某个用户帐户，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  在导航菜单中，单击“用户和组”  。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”  。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
@@ -116,41 +116,41 @@ ms.locfileid: "65784308"
 
 若要检查用户帐户的状态，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  在导航菜单中，单击“用户和组”  。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”  。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“配置文件”。
+7.  单击“配置文件”  。
 
-8.  在“设置”下，确保“阻止登录”设置为“否”。
+8.  在“设置”  下，确保“阻止登录”  设置为“否”  。
 
 ### <a name="reset-a-users-password"></a>重置用户的密码
 
 若要重置用户的密码，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  在导航菜单中，单击“用户和组”  。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”  。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击用户窗格顶部的“重置密码”按钮。
+7.  单击用户窗格顶部的“重置密码”  按钮。
 
-8.  在出现的“重置密码”窗格上，单击“重置密码”按钮。
+8.  在出现的“重置密码”  窗格上，单击“重置密码”  按钮。
 
 9.  为用户复制**临时密码**或**输入新密码**。
 
@@ -168,19 +168,19 @@ ms.locfileid: "65784308"
 
 若要检查用户的多重身份验证状态，请执行以下步骤：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4. 在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，单击“用户和组”  。
 
-5. 单击“所有用户”。
+5. 单击“所有用户”  。
 
-6. 单击窗格顶部的“多重身份验证”按钮。
+6. 单击窗格顶部的“多重身份验证”  按钮。
 
-7. 在**多重身份验证管理门户**加载后，确保位于“用户”选项卡上。
+7. 在**多重身份验证管理门户**加载后，确保位于“用户”  选项卡上。
 
 8. 通过搜索、筛选或排序在用户列表中找到用户。
 
@@ -195,21 +195,21 @@ ms.locfileid: "65784308"
 
 若要检查用于多重身份验证、条件访问、Identity Protection 和密码重置的用户身份验证联系信息，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  在导航菜单中，单击“用户和组”  。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”  。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“配置文件”。
+7.  单击“配置文件”  。
 
-8.  向下滚动到“身份验证联系信息”。
+8.  向下滚动到“身份验证联系信息”  。
 
 9.  **查看**为用户注册的数据并根据需要进行更新。
 
@@ -217,63 +217,63 @@ ms.locfileid: "65784308"
 
 若要检查用户的组成员身份，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  在导航菜单中，单击“用户和组”  。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”  。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“组”查看用户所属的组。
+7.  单击“组”  查看用户所属的组。
 
 ### <a name="check-a-users-assigned-licenses"></a>检查用户的已分配许可证
 
 若要检查用户的已分配许可证，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  在导航菜单中，单击“用户和组”  。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”  。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“许可证”查看当前已分配给用户的许可证。
+7.  单击“许可证”  查看当前已分配给用户的许可证。
 
 ### <a name="assign-a-user-a-license"></a>为用户分配许可证 
 
 若要将许可证分配给用户，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  在导航菜单中，单击“用户和组”  。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”  。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“许可证”查看当前已分配给用户的许可证。
+7.  单击“许可证”  查看当前已分配给用户的许可证。
 
-8.  单击“分配”按钮。
+8.  单击“分配”  按钮。
 
 9.  从可用产品列表中选择**一个或多个产品**。
 
-10. **可选**单击“分配选项”项精确分配产品。 完成此操作后，单击“确定”。
+10. **可选**单击“分配选项”  项精确分配产品。 完成此操作后，单击“确定”  。
 
-11. 单击“分配”按钮，将这些许可证分配给此用户。
+11. 单击“分配”  按钮，将这些许可证分配给此用户。
 
 ## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题
 

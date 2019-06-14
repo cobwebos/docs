@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60362231"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>排查 Linux VM 设备名更改问题
@@ -42,7 +42,7 @@ ms.locfileid: "60362231"
 
 若要解决此问题，请使用持久命名。 有四个方法可使用持久命名：按文件系统标签、按 UUID、按 ID 或按路径。 我们建议对 Azure Linux VM 使用文件系统标签或 UUID。
 
-大多数分发都提供 `fstab` nofail 或 nobootwait 参数。 在启动时若无法装载磁盘，这些参数可使系统启动。 有关这些参数的详细信息，请查看分发文档。 有关在添加数据磁盘时如何将 Linux VM 配置为使用 UUID 的信息，请参阅[连接到 Linux VM 以装载新磁盘](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)。
+大多数分发都提供 `fstab` nofail 或 nobootwait 参数   。 在启动时若无法装载磁盘，这些参数可使系统启动。 有关这些参数的详细信息，请查看分发文档。 有关在添加数据磁盘时如何将 Linux VM 配置为使用 UUID 的信息，请参阅[连接到 Linux VM 以装载新磁盘](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
 在 VM 上安装 Azure Linux 代理后，该代理使用 Udev 规则在 /dev/disk/azure 路径下构造一组符号链接。 应用程序和脚本使用 Udev 规则来识别附加到 VM 的磁盘，以及磁盘类型和磁盘 LUN。
 
@@ -154,6 +154,6 @@ Azure Linux 代理 Udev 规则在 /dev/disk/azure 路径下构造一组符号链
 
 - [Ubuntu：使用 UUID](https://help.ubuntu.com/community/UsingUUID)
 - [Red Hat:持久命名](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
-- [Linux:Uuid 可以为您做什么](https://www.linux.com/news/what-uuids-can-do-you)
-- [Udev:新式 Linux 系统中的设备管理简介](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
+- [Linux：UUID 有什么作用](https://www.linux.com/news/what-uuids-can-do-you)
+- [Udev：新式 Linux 系统中的设备管理简介](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
 

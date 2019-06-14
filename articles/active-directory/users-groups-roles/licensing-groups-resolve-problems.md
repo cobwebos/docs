@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dbfbd76d235cedd297a5ad54b51bc4ebb550bb1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65466286"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 ## <a name="how-to-find-license-assignment-errors"></a>如何查找许可证分配错误
 **查找许可证分配错误**
 
-1. 若要查找特定组中处于错误状态的用户，请打开相应组的窗格。 如果有任何用户处于错误状态，会在“许可证”下显示通知。
+1. 若要查找特定组中处于错误状态的用户，请打开相应组的窗格。 如果有任何用户处于错误状态，会在“许可证”  下显示通知。
 
    ![组和错误通知消息](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
    ![许可错误状态的组中的用户的列表](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-3. 若要查找包含至少一个错误的所有组，请在“Azure Active Directory”边栏选项卡上，选择“许可证”，再选择“概述”。 如果有一些组需要关注，则会显示信息框。
+3. 若要查找包含至少一个错误的所有组，请在“Azure Active Directory”  边栏选项卡上，选择“许可证”  ，再选择“概述”  。 如果有一些组需要关注，则会显示信息框。
 
    ![概述和有关处于错误状态的组的信息](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
@@ -52,13 +52,13 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 以下部分提供每个潜在问题的说明及其解决方法。
 
-## <a name="not-enough-licenses"></a>没有足够的许可证
+## <a name="not-enough-licenses"></a>许可证不足
 
 **问题：** 组中指定的某个产品没有足够的可用许可证。 需要为该产品购买更多的许可证，或者释放其他用户或组中未使用的许可证。
 
-若要查看可用的许可证数量，请转到“Azure Active Directory” > “许可证” > “所有产品”。
+若要查看可用的许可证数量，请转到“Azure Active Directory”   > “许可证”   > “所有产品”  。
 
-若要查看哪些用户和组正在使用许可证，请选择某个产品。 在“许可的用户”下面，可以看到直接或者通过一个或多个组向其分配许可证的所有用户的列表。 在“许可的组”下面，可以看到该产品已分配到的所有组。
+若要查看哪些用户和组正在使用许可证，请选择某个产品。 在“许可的用户”下面，可以看到直接或者通过一个或多个组向其分配许可证的所有用户的列表。  在“许可的组”下面，可以看到该产品已分配到的所有组。 
 
 **PowerShell：** PowerShell cmdlet 将此错误报告为 _CountViolation_。
 
@@ -77,7 +77,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 **PowerShell：** PowerShell cmdlet 将此错误报告为 _MutuallyExclusiveViolation_。
 
-## <a name="other-products-depend-on-this-license"></a>依赖于此许可证的其他产品
+## <a name="other-products-depend-on-this-license"></a>其他产品依赖于此许可证
 
 **问题：** 组中指定的某个产品包含的服务计划必须为另一个产品中的另一个服务计划启用才能正常工作。 当 Azure AD 尝试删除基础服务计划时，将出现此错误。 例如，从组中删除用户时，可能会发生此错误。
 
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 ## <a name="usage-location-isnt-allowed"></a>不允许的使用位置
 
-**问题：** 由于当地法律和法规方面的原因，某些 Microsoft 服务不能在所有位置使用。 必须先为用户指定“使用位置”属性，才能将许可证分配给用户。 可以在 Azure 门户中的“用户” > “配置文件” > “设置”部分下指定位置。
+**问题：** 由于当地法律和法规方面的原因，某些 Microsoft 服务不能在所有位置使用。 必须先为用户指定“使用位置”属性，才能将许可证分配给用户。  可以在 Azure 门户中的“用户”   > “配置文件”   > “设置”  部分下指定位置。
 
 当 Azure AD 尝试向使用位置不受支持的用户分配组许可证时，该操作会失败，并且会记录用户发生的此项错误。
 
@@ -133,7 +133,7 @@ Azure AD 会尝试将该组中指定的所有许可证分配给每个用户。 �
 
 ## <a name="how-do-you-manage-licenses-for-products-with-prerequisites"></a>如何为有先决条件的产品管理许可证？
 
-你拥有的某些 Microsoft Online 产品可能是“附加产品”。 附加产品要求先为用户或组启用先决服务计划，才能向其分配许可证。 要使用基于组的许可，系统要求先决条件和附加产品服务计划存在于同一组中。 这是为了确保添加到组的任何用户都能收到功能齐全的产品。 请考虑以下示例：
+你拥有的某些 Microsoft Online 产品可能是“附加产品”。  附加产品要求先为用户或组启用先决服务计划，才能向其分配许可证。 要使用基于组的许可，系统要求先决条件和附加产品服务计划存在于同一组中。 这是为了确保添加到组的任何用户都能收到功能齐全的产品。 请考虑以下示例：
 
 Microsoft Workplace Analytics 是一个附加产品。 它包含同名单一服务计划。 仅当同时分配了以下必备产品之一时，才能将此服务计划分配到用户或组：
 - Exchange Online（计划 1） 
@@ -164,13 +164,13 @@ Microsoft Workplace Analytics 是一个附加产品。 它包含同名单一服�
 
 根据解决错误时采取的措施，可能需要手动触发组的处理来更新用户状态。
 
-例如，如果通过删除用户的直接许可证分配来释放某些许可证，则需要触发以前无法完全为所有用户成员提供许可证的组的处理。 若要重新处理某个组，请转到组窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。
+例如，如果通过删除用户的直接许可证分配来释放某些许可证，则需要触发以前无法完全为所有用户成员提供许可证的组的处理。 若要重新处理某个组，请转到组窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。  
 
 ## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>如何强制用户处理许可证以解决错误？
 
 根据解决错误时采取的措施，可能需要手动触发用户的处理来更新用户状态。
 
-例如，解决受影响用户的重复代理地址问题后，需要触发用户的处理。 若要重新处理某个用户，请转到用户窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。
+例如，解决受影响用户的重复代理地址问题后，需要触发用户的处理。 若要重新处理某个用户，请转到用户窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。  
 
 ## <a name="next-steps"></a>后续步骤
 

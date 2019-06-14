@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60337402"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
@@ -64,7 +64,7 @@ Azure 使用的证书可以包含一个私钥或公钥。 证书具有指纹，�
     > 无法获取 cloudapp.net 域（或与 Azure 相关的任何域）的 SSL 证书；该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，**contoso.net**，而不是 **contoso.cloudapp.net**。
 
 * 至少为 2048 位加密。
-* **仅服务证书**：客户端证书必须驻留在个人证书存储区。
+* **仅服务证书**：客户端证书必须驻留在个人  证书存储区。
 
 有两种简单的方法可在 Windows 上创建证书，即使用 `makecert.exe` 实用程序或 IIS。
 
@@ -82,7 +82,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > 如果要将此证书用于某个 IP 地址而不是域，请在 -DnsName 参数中使用该 IP 地址。
 
 
-如果要将此[证书用于管理门户](../azure-api-management-certs.md)，请将其导出到 .cer 文件：
+如果要将此[证书用于管理门户](../azure-api-management-certs.md)，请将其导出到 .cer  文件：
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer

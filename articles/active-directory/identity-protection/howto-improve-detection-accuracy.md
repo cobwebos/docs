@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7724d69a9294b420ca061d5ad26ad64826372203
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60453203"
 ---
 # <a name="how-to-improve-the-detection-accuracy"></a>如何：提高检测精度 
@@ -42,9 +42,9 @@ Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD �
 
 有三种方法可以提高检测精度：确认遭泄露的登录、确认安全登录和消除用户风险。 可以从下列报告执行操作：
 
-- 有风险的登录报告 - 在“有风险的登录报告”中，你可以确认登录是安全还是有泄露风险
+-  有风险的登录报告 - 在“有风险的登录报告”中，你可以确认登录是安全还是有泄露风险
 
-- 有风险的用户报告 - 在“有风险的用户报告”中，可以消除用户风险 
+-  有风险的用户报告 - 在“有风险的用户报告”中，可以消除用户风险 
 
 你的反馈将由 Azure AD 处理，以提高检测结果的准确性。 通常情况下，可在用户风险或登录风险调查中提供反馈。 有关详细信息，请参阅[如何调查有风险的用户和登录](howto-investigate-risky-users-signins.md)。
 
@@ -63,11 +63,11 @@ Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD �
 
 要确认已泄露的登录：
 
-- 有风险的登录报告 - 此选项使你能够确认一个或多个遭泄露的登录事件。
+-  有风险的登录报告 - 此选项使你能够确认一个或多个遭泄露的登录事件。
 
     ![消除用户风险](./media/howto-improve-detection-accuracy/07.png)
 
-- 有风险的登录报告的详细信息视图 - 此选项使你能够确认有风险的登录报告中所选登录事件的帐户是否遭泄露。 
+-  有风险的登录报告的详细信息视图 - 此选项使你能够确认有风险的登录报告中所选登录事件的帐户是否遭泄露。 
 
     ![消除用户风险](./media/howto-improve-detection-accuracy/04.png)
 
@@ -76,7 +76,7 @@ Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD �
 ## <a name="confirm-safe"></a>确认安全
 
 
-确认登录事件向 Azure AD 发出安全信号，表明该登录已得到相应标识所有者的授权。 在选择“确认安全”时，Azure AD 会：
+确认登录事件向 Azure AD 发出安全信号，表明该登录已  得到相应标识所有者的授权。 在选择“确认安全”时，Azure AD 会：
 
 - 将所选登录的用户风险恢复原样
 
@@ -89,11 +89,11 @@ Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD �
 
 要确认安全登录：
 
-- 有风险的登录报告 - 此选项使你能够确认一个或多个安全登录事件。
+-  有风险的登录报告 - 此选项使你能够确认一个或多个安全登录事件。
 
     ![消除用户风险](./media/howto-improve-detection-accuracy/08.png)
 
-- 有风险的登录报告的详细信息视图 - 此选项使你能够确认有风险的登录报告中所选登录事件是否为安全登录。 
+-  有风险的登录报告的详细信息视图 - 此选项使你能够确认有风险的登录报告中所选登录事件是否为安全登录。 
 
     ![消除用户风险](./media/howto-improve-detection-accuracy/05.png)
 
@@ -107,11 +107,11 @@ Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD �
 
 例如，可以通过以下选项消除报告的用户风险：
 
-- 有风险的用户报告 - 此选项可以消除一个或多个所选用户的用户风险。
+-  有风险的用户报告 - 此选项可以消除一个或多个所选用户的用户风险。
 
     ![消除用户风险](./media/howto-improve-detection-accuracy/02.png)
 
-- 详细信息视图 - 此选项可以消除用户风险报告中所选用户的用户风险。 
+-  详细信息视图 - 此选项可以消除用户风险报告中所选用户的用户风险。 
 
     ![消除用户风险](./media/howto-improve-detection-accuracy/01.png)
 

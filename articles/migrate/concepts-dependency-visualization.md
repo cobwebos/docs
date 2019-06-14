@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
 ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60201531"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
@@ -29,7 +29,7 @@ ms.locfileid: "60201531"
 Azure Migrate 使用[服务映射](../operations-management-suite/operations-management-suite-service-map.md)中的解决方案[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)为依赖项可视化。
 - 若要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。
 - 只能在创建迁移项目的同一订阅中创建或附加工作区。
-- 若要将 Log Analytics 工作区附加到项目，请转到项目“概述”页的“Essentials”部分，单击“需要配置”
+- 若要将 Log Analytics 工作区附加到项目，请转到项目“概述”  页的“Essentials”  部分，单击“需要配置” 
 
     ![关联 Log Analytics 工作区](./media/concepts-dependency-visualization/associate-workspace.png)
 
@@ -40,8 +40,8 @@ Azure Migrate 使用[服务映射](../operations-management-suite/operations-man
   > [!NOTE]
   > 工作区附加到一个项目后，你将无法再对其进行更改。
 
-- 关联的工作区通过“迁移项目”键和“项目名称”值（可用于在 Azure 门户中进行搜索）进行标记。
-- 若要导航到与项目关联的工作区，可以转到项目“概述”页的“Essentials”部分并访问工作区
+- 关联的工作区通过“迁移项目”  键和“项目名称”  值（可用于在 Azure 门户中进行搜索）进行标记。
+- 若要导航到与项目关联的工作区，可以转到项目“概述”  页的“Essentials”  部分并访问工作区
 
     ![导航 Log Analytics 工作区](./media/concepts-dependency-visualization/oms-workspace.png)
 

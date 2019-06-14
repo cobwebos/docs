@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 11d6256fb63452b849a80abab181876d14b3b6a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515058"
 ---
 # <a name="authenticate-to-the-speech-api"></a>对语音 API 进行身份验证
@@ -29,13 +29,13 @@ ms.locfileid: "60515058"
 
 ## <a name="use-a-subscription-key"></a>使用订阅密钥
 
-若要使用语音服务，必须首先订阅作为认知服务（以前称为 Project Oxford）一部分的语音 API。 可从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
+若要使用语音服务，必须首先订阅作为认知服务（以前称为 Project Oxford）一部分的语音 API。 可从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥  。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
 
 若要长期使用或增加配额，请注册 [Azure 帐户](https://azure.microsoft.com/free/)。
 
 若要使用语音 REST API，需要传递请求标头 `Ocp-Apim-Subscription-Key` 字段中的订阅密钥。
 
-Name| 格式| 描述
+名称| 格式| 描述
 ----|-------|------------
 Ocp-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 

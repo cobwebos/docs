@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6cc0b3a9a02c023678691921100443436cdf0011
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66015478"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
@@ -74,7 +74,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 如果在环境中启用并正确配置了 WPAD，连接器会自动发现出站代理服务器并尝试使用它。 但是，可以显式将连接器配置为通过出站代理。
 
-为此，请编辑 C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config 文件并添加 system.net 节，如以下代码示例中所示。 更改 *proxyserver:8080*，反映本地代理服务器的名称或 IP 地址及其侦听的端口。 即使使用 IP 地址，值也必须具有前缀 http://。
+为此，请编辑 C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config 文件并添加 system.net  节，如以下代码示例中所示。 更改 *proxyserver:8080*，反映本地代理服务器的名称或 IP 地址及其侦听的端口。 即使使用 IP 地址，值也必须具有前缀 http://。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -106,7 +106,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 #### <a name="proxy-outbound-rules"></a>代理出站规则
 允许访问以下 URL：
 
-| 代码 | 用途 |
+| URL | 用途 |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | 连接器与应用程序代理云服务之间的通信 |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure 使用以下 URL 来验证证书 |
@@ -152,7 +152,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
    ![services.msc 中的 Azure AD 应用程序代理连接器服务](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
 2. 以管理员身份运行消息分析器。
-3. 选择“启动本地跟踪”。
+3. 选择“启动本地跟踪”  。
 
    ![启动网络捕获](./media/application-proxy-configure-connectors-with-proxy-servers/start-local-trace.png)
 
@@ -165,7 +165,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 如果将应用程序代理连接器配置为绕过代理服务器并直接连接到应用程序代理服务，可通过网络捕获查看失败的 TCP 连接尝试。 
 
-使用“消息分析器”筛选器来标识这些尝试。 在筛选框中输入 `property.TCPSynRetransmit`，选择“应用”。 
+使用“消息分析器”筛选器来标识这些尝试。 在筛选框中输入 `property.TCPSynRetransmit`，选择“应用”  。 
 
 SYN 数据包是为了建立 TCP 连接而发送的第一个数据包。 如果此数据包未返回响应，则重新尝试 SYN。 可以使用上面的筛选器查看任何重新传输的 SYN。 然后，可以检查这些 SYN 是否对应于连接器相关的任何流量。
 
@@ -175,7 +175,7 @@ SYN 数据包是为了建立 TCP 连接而发送的第一个数据包。 如果�
 
 如果将应用程序代理连接器通信流配置为通过代理服务器，可查看指向代理的失败 http 连接。 
 
-若要筛选这些连接尝试的网络捕获，请在“消息分析器”筛选器中输入 `(https.Request or https.Response) and tcp.port==8080`，将 8080 替换为自己的代理服务端口。 选择“应用”可查看筛选结果。 
+若要筛选这些连接尝试的网络捕获，请在“消息分析器”筛选器中输入 `(https.Request or https.Response) and tcp.port==8080`，将 8080 替换为自己的代理服务端口。 选择“应用”可查看筛选结果  。 
 
 上面的筛选器只显示传入/传出代理端口的 HTTP 请求和响应。 假设想要查找显示与代理服务器之间的通信的 CONNECT 请求。 成功后，会获得 HTTP OK (200) 响应。
 

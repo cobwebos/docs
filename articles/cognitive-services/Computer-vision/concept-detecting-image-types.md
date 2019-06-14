@@ -12,10 +12,10 @@ ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60368273"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>使用计算机视觉检测图像类型
@@ -26,10 +26,10 @@ ms.locfileid: "60368273"
 
 计算机视觉可分析图像，并通过 0-3 的量表对图像为剪贴画的可能性进行评级，如下表中所示。
 
-| Value | 含义 |
+| 值 | 含义 |
 |-------|---------|
 | 0 | 非剪贴画 |
-| 1 | 不明确 |
+| 第 | 不明确 |
 | 2 | 正常剪贴画 |
 | 3 | 良好剪贴画 |
 

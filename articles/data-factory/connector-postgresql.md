@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 8515b3f357d77ea4f3d98101f8dd058f13b69206
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60405743"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-postgresql-connector.md)
 > * [当前版本](connector-postgresql.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "60405743"
 
 可以将数据从 PostgreSQL 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 PostgreSQL 连接器支持 PostgreSQL 7.4 及更高版本。
+具体而言，此 PostgreSQL 连接器支持 PostgreSQL 7.4 及更高版本  。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -56,7 +56,7 @@ PostgreSQL 链接的服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 描述 | 选项 | 需要 |
+| 属性 | 描述 | 选项 | 必选 |
 |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| 驱动程序用于加密在驱动程序和数据库服务器之间发送的数据的方法。 例如 `ValidateServerCertificate=<0/1/6>;`| 0 (No Encryption) **(Default)** / 1 (SSL) / 6 (RequestSSL) | 否 |
 | ValidateServerCertificate (VSC) | 启用 SSL 加密后，确定驱动程序是否验证数据库服务器发送的证书（加密方法=1）。 例如 `ValidateServerCertificate=<0/1>;`| 0 (Disabled) **(Default)** / 1 (Enabled) | 否 |
@@ -141,7 +141,7 @@ PostgreSQL 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 PostgreSQL 数据集支持的属性列表。
 
-要从 PostgreSQL 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+要从 PostgreSQL 复制数据，请将数据集的 type 属性设置为“RelationalTable”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -171,7 +171,7 @@ PostgreSQL 链接的服务支持以下属性：
 
 ### <a name="postgresql-as-source"></a>以 PostgreSQL 作为源
 
-要从 PostgreSQL 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+要从 PostgreSQL 复制数据，请将复制活动中的源类型设置为“RelationalSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

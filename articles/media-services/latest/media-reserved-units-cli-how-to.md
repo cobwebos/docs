@@ -15,10 +15,10 @@ ms.date: 04/24/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: b1a79f2798fc98fd7361c47788c79e329e2cb827
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65556189"
 ---
 # <a name="scaling-media-processing"></a>缩放媒体处理能力
@@ -34,8 +34,8 @@ ms.locfileid: "65556189"
 |RU 类型|场景|[7 分钟 1080p 视频](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)的示例结果|
 |---|---|---|
 | **S1**|单比特率编码。 <br/>具有 SD 或更低分辨率的文件，不具有高时效性，成本低。|编码为单比特率 SD 解析 MP4 文件使用"H264 单一比特率标清 16x9"大约需要 7 分钟。|
-| **S2**|单比特率和多比特率编码。<br/>SD 和 HD 编码的正常使用情况。|编码为"H264 单比特率 720p"预设需要大约 6 分钟。<br/><br/>使用编码"H264 多比特率 720p"预设需要约 12 分钟的时间。|
-| **S3**|单比特率和多比特率编码。<br/>全高清和 4K 分辨率视频。 对时间敏感，更快的编码周转。|编码为"H264 单比特率 1080p"预设需要约 3 分钟时间。<br/><br/>使用编码"H264 多比特率 1080p"预设需要大约 8 分钟。|
+| **S2**|单比特率和多比特率编码。<br/>SD 和 HD 编码的正常使用情况。|预设为“H264 单比特率 720p”的编码大约需要 6 分钟。<br/><br/>预设为“H264 多比特率 720p”的编码大约需要 12 分钟。|
+| **S3**|单比特率和多比特率编码。<br/>全高清和 4K 分辨率视频。 对时间敏感，更快的编码周转。|预设为“H264 单比特率 1080p”的编码大约需要 3 分钟。<br/><br/>预设为“H264 多比特率 1080p”的编码大约需要 8 分钟。|
 
 ## <a name="considerations"></a>注意事项
 
@@ -67,7 +67,7 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="billing"></a>计费
 
-根据你进行收费的媒体保留单位预配的分钟数上您的帐户中。 发生这种情况独立于是否有任何在你的帐户中运行的作业。 有关详细说明，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)页的“常见问题”部分。   
+根据在帐户中预配的媒体保留单位的分钟数计费。 这与帐户中是否有作业运行无关。 有关详细说明，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)页的“常见问题”部分。   
 
 ## <a name="next-step"></a>后续步骤
 

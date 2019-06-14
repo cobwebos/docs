@@ -9,10 +9,10 @@ ms.date: 12/07/2018
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: dfa2bbc735a79555da0421f64ca644adbd7a1701
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60363815"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
@@ -58,7 +58,7 @@ ms.locfileid: "60363815"
 * 创建/更新/获取/删除到经典虚拟网络的虚拟网络链接
 * 创建/更新/获取/删除跨订阅连接的虚拟网络链接授权
 
-然而，将 allowClassicOperations 设置为 TRUE 时，无法执行以下经典操作：
+然而，将 allowClassicOperations 设置为 TRUE 时，无法执行以下经典操作  ：
 
 * 创建/更新/获取/删除 Azure 专用对等互连、Azure 公共对等互连和 Microsoft 对等互连的边界网关协议 (BGP) 对等互连
 * 删除 ExpressRoute 线路

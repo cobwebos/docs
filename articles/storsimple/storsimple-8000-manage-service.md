@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60506484"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
@@ -71,21 +71,21 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
 ### <a name="to-delete-a-service"></a>删除服务
 
-1. 搜索要删除的服务。 单击“资源”图标，然后输入要搜索的相应术语。 在搜索结果中，单击要删除的服务。
+1. 搜索要删除的服务。 单击“资源”图标，然后输入要搜索的相应术语。  在搜索结果中，单击要删除的服务。
 
     ![搜索要删除的服务](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. 这将转到 StorSimple 设备管理器服务边栏选项卡。 单击“删除” 。
+2. 这将转到 StorSimple 设备管理器服务边栏选项卡。 单击“删除”  。
 
     ![删除服务](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
-3. 在确认通知中单击“是”。 可能需要花费几分钟时间才能删除服务。
+3. 在确认通知中单击“是”  。 可能需要花费几分钟时间才能删除服务。
 
     ![确认删除](./media/storsimple-8000-manage-service/deletessdevman3.png)
 
 ## <a name="get-the-service-registration-key"></a>获取服务注册密钥
 
-成功创建服务后，需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](storsimple-8000-security.md)。 可以通过访问 StorSimple 设备管理器边栏选项卡上的“密钥”来获取注册密钥。
+成功创建服务后，需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](storsimple-8000-security.md)。 可以通过访问 StorSimple 设备管理器边栏选项卡上的“密钥”来获取注册密钥。 
 
 可以执行以下步骤来获取服务注册密钥。
 
@@ -101,14 +101,14 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 执行以下步骤，重新生成服务注册密钥。
 
 ### <a name="to-regenerate-the-service-registration-key"></a>重新生成服务注册密钥
-1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”&gt;“密钥”。
+1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”&gt;“密钥”    。
     
     ![“密钥”边栏选项卡](./media/storsimple-8000-manage-service/regenregkey2.png)
 
-2. 在“密钥”边栏选项卡中，单击“重新生成”。
+2. 在“密钥”  边栏选项卡中，单击“重新生成”  。
 
     ![单击“重新生成”](./media/storsimple-8000-manage-service/regenregkey3.png)
-3. 在“重新生成服务注册密钥”边栏选项卡中，查看重新生成密钥时所需的操作。 之后注册到此服务的所有设备将使用新的注册密钥。 单击“重新生成”以确认。 重新生成完成后，你将收到通知。
+3. 在“重新生成服务注册密钥”  边栏选项卡中，查看重新生成密钥时所需的操作。 之后注册到此服务的所有设备将使用新的注册密钥。 单击“重新生成”  以确认。 重新生成完成后，你将收到通知。
 
     ![确认重新生成](./media/storsimple-8000-manage-service/regenregkey4.png)
 

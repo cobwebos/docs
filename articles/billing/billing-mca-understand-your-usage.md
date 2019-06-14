@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371302"
 ---
 # <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>了解 Microsoft 客户协议的条款 Azure 使用情况和费用 CSV
@@ -30,7 +30,7 @@ Azure 使用情况和费用 CSV 文件包含当前计费期间的每日和测定
 若要获取 Azure 的使用量和费用文件，请参阅[查看和下载 Azure 使用情况和你的 Microsoft 客户协议的费用](billing-download-azure-daily-usage.md)。
 它以逗号分隔值 (.csv) 文件格式提供，可以在电子表格应用程序中打开它。
 
-使用费是订阅的总“月度”费用。 使用费不考虑任何信用额度或折扣。
+使用费是订阅的总“月度”  费用。 使用费不考虑任何信用额度或折扣。
 
 ## <a name="changes-in-the-enterprise-agreement-azure-usage-and-charges-csv"></a>企业协议 Azure 使用情况和费用 CSV 中的更改
 
@@ -38,30 +38,30 @@ Azure 使用情况和费用 CSV 文件包含当前计费期间的每日和测定
 
 | EA Azure 使用情况 CSV | Microsoft 客户协议 Azure 使用情况和费用 CSV |
 | --- | --- |
-| date | date |
+| Date | date |
 | 月份| date |
 | 日期 | date |
 | 年龄 | date |
 | 产品 | product |
 | 计量 ID | meterID |
-| 计量类别 | meterCategory |
-| 计量子类别 | meterSubCategory |
-| 计量区域 | meterRegion |
-| 计量名称 | meterName |
+| MeterCategory | meterCategory |
+| MeterSubCategory | meterSubCategory |
+| MeterRegion | meterRegion |
+| MeterName | meterName |
 | ConsumedQuantity | quantity |
-| 资源费率 | effectivePrice | <!-- this was highlighted -->
-| 延伸成本 | cost |
-| 资源位置 | resourceLocation |
-| 已使用的服务 | consumedService |
+| ResourceRate | effectivePrice | <!-- this was highlighted -->
+| ExtendedCost | cost |
+| ResourceLocation | resourceLocation |
+| ConsumedService | consumedService |
 | InstanceId | instanceId |
-| 服务信息 1 | serviceInfo1 |
-| 服务信息 2 | serviceInfo2 |
-| 其他信息 | additionalInfo |
+| ServiceInfo1 | serviceInfo1 |
+| ServiceInfo2 | serviceInfo2 |
+| AdditionalInfo | additionalInfo |
 | 标记 | 标记 |
-| 存储服务标识符 | 不适用 |
+| StoreServiceIdentifier | 不适用 |
 | DepartmentName | invoiceSection | <!-- this was highlighted -->
 | CostCenter | costCenter |
-| 度量单位 | unitofMeasure |
+| UnitOfMeasure | unitofMeasure |
 | resourceGroup | resourceGroup |
 | ChargesBilledSeparately | isAzureCreditEligible | <!-- this was highlighted -->
 

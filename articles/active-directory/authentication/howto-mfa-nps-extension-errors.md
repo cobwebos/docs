@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f80ecf02a7e517300c41e84986659a66cfa11c90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414930"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
-如果在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 NPS 扩展日志可以在安装 NPS 扩展的服务器上事件查看器中“自定义视图” > “服务器角色” > “网络策略和访问服务”下找到。
+如果在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 NPS 扩展日志可以在安装 NPS 扩展的服务器上事件查看器中“自定义视图”   > “服务器角色”   > “网络策略和访问服务”  下找到。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>解决常见错误的故障排除步骤
 
@@ -30,11 +30,11 @@ ms.locfileid: "60414930"
 | **CLIENT_CERT_INSTALL_ERROR** | 客户端证书的安装方式或者与租户的关联方式可能有问题。 遵循[排查 MFA NPS 扩展问题](howto-mfa-nps-extension.md#troubleshooting)中的说明调查客户端证书问题。 |
 | **ESTS_TOKEN_ERROR** | 遵循[排查 MFA NPS 扩展问题](howto-mfa-nps-extension.md#troubleshooting)中的说明调查客户端证书和 ADAL 令牌问题。 |
 | **HTTPS_COMMUNICATION_ERROR** | NPS 服务器无法从 Azure MFA 接收响应。 验证防火墙是否双向打开，用于传入和传出 https://adnotifications.windowsazure.com 的流量 |
-| **HTTP_CONNECT_ERROR** | 在运行 NPS 扩展的服务器上，验证是否可访问 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com/。 如果无法加载这些站点，请排查该服务器上的连接问题。 |
-| **适用于 Azure MFA 的 NPS 扩展：** <br> 适用于 Azure MFA 的 NPS 扩展仅对处于 AccessAccept 状态的 Radius 请求执行辅助身份验证。 收到响应状态为 AccessReject 的用户用户名请求，将忽略请求。 | 此错误通常反映了 AD 中的身份验证失败，或者 NPS 服务器无法接收来自 Azure AD 的响应。 使用端口 80 和 443 验证防火墙是否双向打开，以便流量进出 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com。 另外，还要务必检查“网络访问权限”的“拨入”选项卡上的设置是否设置为“通过 NPS 网络策略控制访问”。 |
+| **HTTP_CONNECT_ERROR** | 在运行 NPS 扩展的服务器上，验证是否可访问 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com/ 。 如果无法加载这些站点，请排查该服务器上的连接问题。 |
+| **适用于 Azure MFA 的 NPS 扩展：** <br> 适用于 Azure MFA 的 NPS 扩展仅对处于 AccessAccept 状态的 Radius 请求执行辅助身份验证。 收到响应状态为 AccessReject 的用户用户名请求，将忽略请求。 | 此错误通常反映了 AD 中的身份验证失败，或者 NPS 服务器无法接收来自 Azure AD 的响应。 使用端口 80 和 443 验证防火墙是否双向打开，以便流量进出 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com 。 另外，还要务必检查“网络访问权限”的“拨入”选项卡上的设置是否设置为“通过 NPS 网络策略控制访问”。 |
 | **REGISTRY_CONFIG_ERROR** | 注册表中缺少应用程序的某个项，原因可能是 [PowerShell 脚本](howto-mfa-nps-extension.md#install-the-nps-extension)不是在安装后运行的。 错误消息应包括缺少的项。 请确保在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa 下创建该项。 |
 | **REQUEST_FORMAT_ERROR** <br> Radius 请求缺少必需的 Radius userName\Identifier 属性。请验证 NPS 是否能够接收 RADIUS 请求 | 此错误通常反映了安装问题。 必须在可以接收 RADIUS 请求的 NPS 服务器上安装 NPS 扩展。 安装为 RRAS 和 RDG 等服务的依赖项的 NPS 服务器无法接收 Radius 请求。 安装在此类安装中的 NPS 扩展无法正常工作并会出错，因为它无法读取身份验证请求中的详细信息。 |
-| **REQUEST_MISSING_CODE** | 请确保 NPS 和 NAS 服务器之间密码加密协议支持你正在使用的辅助身份验证方法。 PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码。 **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。 |
+| **REQUEST_MISSING_CODE** | 请确保 NPS 和 NAS 服务器之间密码加密协议支持你正在使用的辅助身份验证方法。 PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码  。 **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。 |
 | **USERNAME_CANONICALIZATION_ERROR** | 验证该用户是否在本地 Active Directory 实例中存在，以及 NPS 服务是否有权访问目录。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
 
 ### <a name="alternate-login-id-errors"></a>备用登录 ID 错误
@@ -102,7 +102,7 @@ ms.locfileid: "60414930"
 
 若要收集支持诊断的调试日志，请在 NPS 服务器上使用以下步骤：
 
-1. 打开注册表编辑器并浏览到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa，将 VERBOSE_LOG 设置为 TRUE
+1. 打开注册表编辑器并浏览到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa，将 VERBOSE_LOG 设置为 TRUE  
 2. 打开管理员命令提示符并运行以下命令：
 
    ```
@@ -126,5 +126,5 @@ ms.locfileid: "60414930"
    Start .
    ```
 
-5. 打开注册表编辑器并浏览到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa，将 VERBOSE_LOG 设置为 FALSE
+5. 打开注册表编辑器并浏览到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa，将 VERBOSE_LOG 设置为 FALSE  
 6. 压缩 C:\NPS 文件夹的内容，并将压缩文件附加到支持案例中。

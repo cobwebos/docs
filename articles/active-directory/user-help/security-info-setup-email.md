@@ -13,14 +13,14 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 720aafac79a67f64b0974dba0dd60c6aa24a8c54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60480555"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>设置安全信息（预览）以使用电子邮件地址
-可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
+可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息  。
 
 设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
 
@@ -38,40 +38,40 @@ ms.locfileid: "60480555"
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
-2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
+2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”     。
 
     ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. 在“添加方法”页上，从下拉列表中选择“电子邮件”，然后选择“添加”。
+3. 在“添加方法”页上，从下拉列表中选择“电子邮件”，然后选择“添加”    。
 
     ![“添加方法”框，已选中“电子邮件”](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. 在“电子邮件”页，键入电子邮件地址（例如 alain@gmail.com）并选择“下一步”。
+4. 在“电子邮件”页，键入电子邮件地址（例如 alain@gmail.com）并选择“下一步”   。
 
     ![添加电话号码并选择电话呼叫](media/security-info/securityinfo-myprofile-emailaddress.png)
 
     >[!Important]
     >此电子邮件地址不能是工作或学校电子邮件。
 
-5. 输入发送到指定电子邮件地址的代码，然后选择“下一步”。
+5. 输入发送到指定电子邮件地址的代码，然后选择“下一步”  。
 
     ![添加电话号码并选择短信](media/security-info/securityinfo-myprofile-emailcode.png)
 
     已更新安全信息，以便在使用密码重置时通过电子邮件地址验证身份。
 
 ## <a name="delete-your-email-address-from-your-security-info-methods"></a>从安全信息方法中删除电子邮件地址
-如果不想再将电子邮件地址用作安全信息方法，可以从“安全信息”页将其删除。
+如果不想再将电子邮件地址用作安全信息方法，可以从“安全信息”页将其删除  。
 
 >[!Important]
 >如果错误地删除了电子邮件地址，则无法撤消该操作。 必须按照本文[设置电子邮件地址](#set-up-your-email-address-from-the-security-info-page)部分中的步骤再次添加该方法。
 
 ### <a name="to-delete-your-email-address"></a>删除电子邮件地址
 
-1. 在“安全信息”页上，选择“电子邮件”选项旁边的“删除”链接。
+1. 在“安全信息”页上，选择“电子邮件”选项旁边的“删除”链接    。
 
     ![从安全信息中删除电话方法的链接](media/security-info/securityinfo-myprofile-emaildelete.png)
 
-2. 从确认框中选择“是”，以删除“电子邮件”帐户。 删除电子邮件帐户后，该帐户将从安全信息中删除，并从“安全信息”页消失。
+2. 从确认框中选择“是”，以删除“电子邮件”帐户   。 删除电子邮件帐户后，该帐户将从安全信息中删除，并从“安全信息”页消失  。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
 基于你想要执行的操作，还可以选择组织如何联系你以验证你的身份的其他选项。 选项包括：

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 04/24/2019
 ms.author: helohr
 ms.openlocfilehash: b7d7b25d0355f2379b90313f17e2b595234df827
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65145988"
 ---
-# <a name="connect-from-windows-10-or-windows-7"></a>从 Windows 10 或 Windows 7 连接
+# <a name="connect-from-windows-10-or-windows-7"></a>从 Windows 10 或 Windows 7 进行连接
 
 > 适用对象：Windows 7 和 Windows 10。
 
@@ -51,7 +51,7 @@ ms.locfileid: "65145988"
 
 订阅之后, 可以通过访问详细信息面板中查看有关源的其他信息。
 
-1. 从客户端的主页上，选择省略号 (**...**) 右侧的源的名称。
+1. 从客户端的主页上，选择省略号 ( **...** ) 右侧的源的名称。
 1. 从下拉列表菜单中选择**详细信息**。
 1. 详细信息面板将显示在右侧的客户端。
 
@@ -68,7 +68,7 @@ ms.locfileid: "65145988"
 
 本部分将介绍如何取消订阅源。 您可以随时取消订阅，以再次订阅与不同的帐户或从系统中删除你的资源。
 
-1. 从客户端的主页上，选择省略号 (**...**) 右侧的源的名称。
+1. 从客户端的主页上，选择省略号 ( **...** ) 右侧的源的名称。
 1. 从下拉列表菜单中选择**Unsubscribe**。
 1. 查看并选择**继续**从对话框。
 

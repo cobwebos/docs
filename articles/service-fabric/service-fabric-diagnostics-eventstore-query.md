@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: facbcd6def7451ca83bdf00fe9b7c7cac2c74945
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60392868"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>查询群集事件的 EventStore API
@@ -178,35 +178,35 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 
 以下是说明如何通过调用事件存储 REST API 来了解群集状态的几个示例。
 
-群集升级：
+群集升级： 
 
 若要查看上周群集最后一次成功或尝试升级的情况，可以通过查询 EventStore 中的“ClusterUpgradeCompleted”事件来查询 API 以查看群集最近完成的升级：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
 
-群集升级问题：
+群集升级问题： 
 
 同样，如果最新的群集升级出现问题，则可以查询群集实体的所有事件。 将会看到各种事件，包括升级启动和成功完成升级的每个 UD。 还将看到回滚开始时的事件和相应的运行状况事件。 以下查询可用于此种情况：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-节点状态更改：
+节点状态更改： 
 
 若要查看过去几天的节点状态更改情况 - 节点上升或下降的时间，或者是处于激活或停用状态（由平台、混沌服务或用户输入导致）的时间 - 请使用以下查询：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-应用程序事件：
+应用程序事件： 
 
 还可以跟踪最近的应用程序部署和升级。 使用以下查询，查看与群集中的所有应用程序事件：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-应用程序的运行状况历史记录：
+应用程序的运行状况历史记录： 
 
 除了仅查看应用程序的生命周期事件，你可能还想查看特定应用程序运行状况的历史记录数据。 可通过指定想收集其数据的应用程序名称来执行此操作。 使用此查询获取所有应用程序历史记录事件：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`。 如果要包括可能已过期的历史记录事件（已过保留时间 (TTL)），请将 `,ApplicationHealthReportExpired` 添加到查询末尾以筛选两种类型的事件。
 
-“myApp”中所有服务的历史记录运行状况：
+“myApp”中所有服务的历史记录运行状况： 
 
 目前，服务的运行状况报告事件在相应的应用程序实体下方显示为 `DeployedServicePackageNewHealthReport` 事件。 若要查看服务如何对“App1”执行操作，请使用以下查询：`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
-分区重新配置：
+分区重新配置： 
 
 若要查看在群集中发生的所有分区移动，请查询 `PartitionReconfigured` 事件。 这有助于在诊断群集中的问题时，找出在特定时间内哪些工作负载在哪些节点上运行。 这是可执行此操作的示例查询：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
-混沌服务：
+混沌服务： 
 
 当混沌服务开始或停止时，群集级别会公开一个事件。 若要查看最近一次使用混沌服务的情况，请使用以下查询：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
 

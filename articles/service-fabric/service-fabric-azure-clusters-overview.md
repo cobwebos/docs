@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: d1681aee9dc11f0dbd3133bced0b919a8c1623b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310906"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上 Service Fabric 群集的概述
@@ -57,7 +57,7 @@ Azure 上的 Service Fabric 群集是一种 Azure 资源，它使用其他 Azure
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 VM 实例在 [Azure 负载均衡器](/azure/load-balancer/load-balancer-overview)后面联接，该负载均衡器与[公共 IP 地址](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)和 DNS 标签相关联。  使用 *&lt;clustername&gt;* 预配群集时，DNS 名称 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* 便是与规模集前面的负载均衡器相关联的 DNS 标签。
 
-群集中的 VM 只有[专用 IP 地址](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)。  管理流量和服务流量通过面向公众的负载均衡器进行路由。  网络流量通过 NAT 规则（客户端连接到特定节点/实例）或负载均衡规则（流量进入 VM 轮循机制）路由到这些计算机。  负载均衡器具有关联的公共 IP，其 DNS 名称的格式为：*&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com*。  公共 IP 是资源组中的另一个 Azure 资源。  如果在群集中定义多个节点类型，则会为每个节点类型/规模集创建一个负载均衡器。 或者，可以为多个节点类型设置单个负载均衡器。  主节点类型具有 DNS 标签 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com*，其他节点类型具有 DNS 标签 *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;location&gt;.cloudapp.azure.com*。
+群集中的 VM 只有[专用 IP 地址](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)。  管理流量和服务流量通过面向公众的负载均衡器进行路由。  网络流量通过 NAT 规则（客户端连接到特定节点/实例）或负载均衡规则（流量进入 VM 轮循机制）路由到这些计算机。  负载均衡器具有关联的公共 IP，其 DNS 名称的格式为： *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com*。  公共 IP 是资源组中的另一个 Azure 资源。  如果在群集中定义多个节点类型，则会为每个节点类型/规模集创建一个负载均衡器。 或者，可以为多个节点类型设置单个负载均衡器。  主节点类型具有 DNS 标签 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com*，其他节点类型具有 DNS 标签 *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;location&gt;.cloudapp.azure.com*。
 
 ### <a name="storage-accounts"></a>存储帐户
 每个群集节点类型均受 [Azure 存储帐户](/azure/storage/common/storage-introduction)和托管磁盘的支持。
@@ -89,7 +89,7 @@ Service Fabric 还支持使用访问控制限制对不同用户组的某些群�
 
 有关详细信息，请阅读[安全组](/azure/virtual-network/security-overview)
 
-## <a name="scaling"></a>扩展
+## <a name="scaling"></a>缩放
 
 应用程序的需求会不断变化。 可能需要增加群集资源来满足更多的应用程序工作负荷或网络流量，或者在需求下降时减少群集资源。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。 随时可以缩放群集，即使该群集上正在运行工作负荷。 在缩放群集的同时，应用程序也会随之自动缩放。
 

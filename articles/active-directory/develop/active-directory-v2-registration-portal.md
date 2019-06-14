@@ -19,10 +19,10 @@ ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec615e1c6229539958f66d0dca15cf7eb788e597
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546095"
 ---
 # <a name="app-registration-reference"></a>应用注册参考
@@ -45,7 +45,7 @@ ms.locfileid: "65546095"
 
 每个应用都能在任何指定时间包含两个有效的应用程序密码。 通过维护两个密码，就能够在应用程序的整个环境中执行定期的密钥滚动更新。 将应用程序的全部内容移迁移到新密码之后，可能会删除旧密码，并预配一个新密码。
 
-目前，应用注册门户中只允许两种类型的应用程序密码。 如果选择“生成新密码”，将生成一个共享密码并存储在各自的数据存储中，可以在应用程序中使用该密码。 如果选择“生成新密钥对”，将创建一个新的公钥/私钥对，可下载并用来向 Azure AD 进行客户端身份验证。 如果选择“上载公钥”，则可以使用自己的公钥对/私钥对。
+目前，应用注册门户中只允许两种类型的应用程序密码。 如果选择“生成新密码”  ，将生成一个共享密码并存储在各自的数据存储中，可以在应用程序中使用该密码。 如果选择“生成新密钥对”  ，将创建一个新的公钥/私钥对，可下载并用来向 Azure AD 进行客户端身份验证。 如果选择“上载公钥”  ，则可以使用自己的公钥对/私钥对。
 你需要上载包含公钥的证书。
 
 ## <a name="profile"></a>配置文件

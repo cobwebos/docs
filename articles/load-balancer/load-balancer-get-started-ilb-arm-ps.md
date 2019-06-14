@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 521f8f29e2f8475ab7308f5646b94c6fc0f6a01f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60398758"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建内部负载均衡器
@@ -92,11 +92,11 @@ New-AzResourceGroup -Name NRP-RG -location "West US"
 
 Azure 资源管理器要求所有资源组指定一个位置。 此位置用作资源组中所有资源的默认值。 对于与创建负载均衡器相关的所有命令，请始终使用同一资源组。
 
-在示例中，我们使用位置“美国西部”创建了名为“NRP-RG”的资源组。
+在示例中，我们使用位置“美国西部”创建了名为“NRP-RG”的资源组。 
 
 ## <a name="create-the-virtual-network-and-ip-address-for-the-front-end-ip-pool"></a>为前端 IP 池创建虚拟网络和 IP 地址
 
-为虚拟网络创建子网，并将其分配给变量 $backendSubnet。
+为虚拟网络创建子网，并将其分配给变量 $backendSubnet。 
 
 ```azurepowershell-interactive
 $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
@@ -108,7 +108,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPre
 $vnet= New-AzVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
 ```
 
-虚拟网络已创建。 LB-Subnet-BE 子网已添加到 NRPVNet 虚拟网络。 这些值已分配给 $vnet 变量。
+虚拟网络已创建。  LB-Subnet-BE 子网已添加到  NRPVNet 虚拟网络。 这些值已分配给  $vnet 变量。
 
 ## <a name="create-the-front-end-ip-pool-and-back-end-address-pool"></a>创建前端 IP 池和后端地址池
 
@@ -175,7 +175,7 @@ $vnet = Get-AzVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
 $backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
 ```
 
-创建第一个网络接口，其名称为 lb-nic1-be。 将接口分配给负载均衡器后端池。 将第一个适用于 RDP 的 NAT 规则与此 NIC 相关联：
+创建第一个网络接口，其名称为  lb-nic1-be。 将接口分配给负载均衡器后端池。 将第一个适用于 RDP 的 NAT 规则与此 NIC 相关联：
 
 ```azurepowershell-interactive
 $backendnic1= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-be -Location "West US" -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
@@ -183,7 +183,7 @@ $backendnic1= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-b
 
 ### <a name="step-2-create-the-second-network-interface"></a>步骤 2：创建第二个网络接口
 
-创建第二个网络接口，其名称为 lb-nic2-be。 将第二个接口分配到第一个接口所分配到的负载均衡器后端池。 将第二个 NIC 与第二个适用于 RDP 的 NAT 规则相关联：
+创建第二个网络接口，其名称为  lb-nic2-be。 将第二个接口分配到第一个接口所分配到的负载均衡器后端池。 将第二个 NIC 与第二个适用于 RDP 的 NAT 规则相关联：
 
 ```azurepowershell-interactive
 $backendnic2= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-be -Location "West US" -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
@@ -251,7 +251,7 @@ $backendnic2= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-b
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>步骤 1：存储负载均衡器资源
 
-将负载均衡器资源存储到变量中（如果还没有这样做）。 我们将使用变量名称 $lb。对于脚本中的属性值，请使用在前述步骤中创建的负载均衡器资源的名称。
+将负载均衡器资源存储到变量中（如果还没有这样做）。 我们将使用变量名称  $lb。对于脚本中的属性值，请使用在前述步骤中创建的负载均衡器资源的名称。
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
@@ -259,7 +259,7 @@ $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
 
 ### <a name="step-2-store-the-back-end-configuration"></a>步骤 2：存储后端配置
 
-将后端配置存储到 $backend 变量中。
+将后端配置存储到  $backend 变量中。
 
 ```azurepowershell-interactive
 $backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
@@ -267,7 +267,7 @@ $backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBala
 
 ### <a name="step-3-store-the-network-interface"></a>步骤 3：存储网络接口
 
-在另一个变量中存储网络接口。 此接口已在“创建网络接口（步骤 1）”中创建。 我们将使用变量名称 $nic1。 请使用前一示例中的网络接口名称。
+在另一个变量中存储网络接口。 此接口已在“创建网络接口（步骤 1）”中创建。 我们将使用变量名称  $nic1。 请使用前一示例中的网络接口名称。
 
 ```azurepowershell-interactive
 $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
@@ -295,7 +295,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 
 ### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>步骤 1：将负载均衡器对象分配给一个变量
 
-使用 `Get-AzLoadBalancer` 命令将负载均衡器对象（取自前一示例）分配到 $slb 变量：
+使用 `Get-AzLoadBalancer` 命令将负载均衡器对象（取自前一示例）分配到  $slb 变量：
 
 ```azurepowershell-interactive
 $slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
@@ -319,14 +319,14 @@ $slb | Set-AzLoadBalancer
 
 ## <a name="remove-an-existing-load-balancer"></a>删除现有的负载均衡器
 
-使用 `Remove-AzLoadBalancer` 命令删除 NRP-RG 资源组中的 NRP-LB 负载均衡器：
+使用 `Remove-AzLoadBalancer` 命令删除  NRP-RG 资源组中的  NRP-LB 负载均衡器：
 
 ```azurepowershell-interactive
 Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
 > [!NOTE]
-> 使用可选的 -Force 开关，防止针对删除操作的确认提示符出现。
+> 使用可选的  -Force 开关，防止针对删除操作的确认提示符出现。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,10 +16,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b32ef37c6d61c88a18acd5ddc80cc6154369ca29
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780526"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
@@ -39,15 +39,15 @@ ms.locfileid: "65780526"
 
 1. 通过注册 Power BI 在非托管租户中创建的用户上下文。 为方便举例，以下步骤假定采用该方式。
 
-2. 打开 [Power BI 网站](https://powerbi.com)并选择“免费开始”。 输入使用组织域名的用户帐户，如 `admin@fourthcoffee.xyz`。 输入验证码后，请检查电子邮件，查看确认代码。
+2. 打开 [Power BI 网站](https://powerbi.com)并选择“免费开始”  。 输入使用组织域名的用户帐户，如 `admin@fourthcoffee.xyz`。 输入验证码后，请检查电子邮件，查看确认代码。
 
-3. 在来自 Power BI 的确认电子邮件中，选择“是，是我”。
+3. 在来自 Power BI 的确认电子邮件中，选择“是，是我”  。
 
-4. 登录到[Microsoft 365 管理中心内](https://admin.microsoft.com)使用 Power BI 用户帐户。 会收到一条消息，指示如何“成为管理员”，即成为已在非托管租户中经过验证的域名的管理员。 选择“是，我想成为管理员”。
+4. 登录到[Microsoft 365 管理中心内](https://admin.microsoft.com)使用 Power BI 用户帐户。 会收到一条消息，指示如何“成为管理员”，即成为已在非托管租户中经过验证的域名的管理员  。 选择“是，我想成为管理员”  。
   
    ![“成为管理员”的首个屏幕截图](./media/domains-admin-takeover/become-admin-first.png)
   
-5. 添加 TXT 记录以证明在域名注册机构拥有域名 fourthcoffee.xyz。 在本示例中，此站点为 GoDaddy.com。
+5. 添加 TXT 记录以证明在域名注册机构拥有域名 fourthcoffee.xyz  。 在本示例中，此站点为 GoDaddy.com。
   
    ![为域名添加 txt 记录](./media/domains-admin-takeover/become-admin-txt-record.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "65780526"
   
 6. 使用 Azure AD 租户的全局管理员帐户登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
   
-7. 选择“自定义域名”，然后添加域名。 需要输入 DNS TXT 记录来验证该域名的所有权。 
+7. 选择“自定义域名”，然后添加域名  。 需要输入 DNS TXT 记录来验证该域名的所有权。 
   
    ![验证为添加到 Azure AD 域](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
@@ -125,10 +125,10 @@ cmdlet | 使用情况
 `connect-msolservice` | 出现提示时，请登录到托管租户。
 `get-msoldomain` | 显示与当前租户关联的域名。
 `new-msoldomain –name <domainname>` | 将域名以“未验证”方式添加到租户（尚未执行 DNS 验证）。
-`get-msoldomain` | 该域名现已包含在与托管租户关联的域名列表中，但被列为“未验证”。
-`get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | 提供信息以将其放入域 (MS=xxxxx) 的新 DNS TXT 记录中。 可能不会立即进行验证，因为 TXT 记录需要花费一些时间传播，所以请等待几分钟，然后再考虑使用“-ForceTakeover”选项。 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>若仍未验证域名，则可使用“-ForceTakeover”选项继续操作。 它验证已创建 TXT 记录并启动接管进程。<li>仅在强制实施外部管理员接管时将“-ForceTakeover”选项添加到 cmdlet，例如，当非托管租户使用 Office 365 服务阻止接管时。
-`get-msoldomain` | 域列表现在将该域名显示为“已验证”。
+`get-msoldomain` | 该域名现已包含在与托管租户关联的域名列表中，但被列为“未验证”  。
+`get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | 提供信息以将其放入域 (MS=xxxxx) 的新 DNS TXT 记录中。 可能不会立即进行验证，因为 TXT 记录需要花费一些时间传播，所以请等待几分钟，然后再考虑使用“-ForceTakeover”选项  。 
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>若仍未验证域名，则可使用“-ForceTakeover”选项继续操作  。 它验证已创建 TXT 记录并启动接管进程。<li>仅在强制实施外部管理员接管时将“-ForceTakeover”选项添加到 cmdlet，例如，当非托管租户使用 Office 365 服务阻止接管时  。
+`get-msoldomain` | 域列表现在将该域名显示为“已验证”  。
 
 ### <a name="powershell-example"></a>PowerShell 示例
 

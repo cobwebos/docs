@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/06/2019
 ms.author: yegu
 ms.openlocfilehash: 4254175955c3560c7bd0fdd08c6b60c318238b76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60552289"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>如何为 Azure Redis 缓存配置异地复制
@@ -56,11 +56,11 @@ ms.locfileid: "60552289"
 
 ## <a name="add-a-geo-replication-link"></a>添加异地复制链接
 
-1. 若要将两个缓存链接到一起以进行异地复制，请先在要用作主链接缓存的缓存的“资源”菜单中单击“异地复制”。 接下来，在“异地复制”边栏选项卡中单击“添加缓存复制链接”。
+1. 若要将两个缓存链接到一起以进行异地复制，请先在要用作主链接缓存的缓存的“资源”菜单中单击“异地复制”。  接下来，在“异地复制”边栏选项卡中单击“添加缓存复制链接”。  
 
     ![添加链接](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. 在“兼容的缓存”列表中，单击所需辅助缓存的名称。 如果列表中未显示辅助缓存，请确认是否符合辅助缓存的[异地复制先决条件](#geo-replication-prerequisites)。 若要按区域筛选缓存，请在地图中单击相应的区域，以便仅显示“兼容的缓存”列表中的缓存。
+2. 在“兼容的缓存”列表中，单击所需辅助缓存的名称。  如果列表中未显示辅助缓存，请确认是否符合辅助缓存的[异地复制先决条件](#geo-replication-prerequisites)。 若要按区域筛选缓存，请在地图中单击相应的区域，以便仅显示“兼容的缓存”列表中的缓存。 
 
     ![异地复制兼容缓存](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
     
@@ -68,19 +68,19 @@ ms.locfileid: "60552289"
 
     ![异地复制上下文菜单](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. 单击“链接”将两个缓存链接在一起并开始复制过程。
+3. 单击“链接”将两个缓存链接在一起并开始复制过程。 
 
     ![链接缓存](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. 可以在“异地复制”边栏选项卡上查看复制过程的进度。
+4. 可以在“异地复制”边栏选项卡上查看复制过程的进度。 
 
     ![链接状态](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    还可以在主缓存和辅助缓存的“概述”边栏选项卡上查看链接状态。
+    还可以在主缓存和辅助缓存的“概述”边栏选项卡上查看链接状态。 
 
     ![缓存状态](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    复制过程完成后，“链接状态”改为“成功”。
+    复制过程完成后，“链接状态”改为“成功”。  
 
     ![缓存状态](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "60552289"
 
 ## <a name="remove-a-geo-replication-link"></a>删除异地复制链接
 
-1. 若要删除两个缓存之间的链接并停止异地复制，请在“异地复制”边栏选项卡中，单击“取消链接缓存”。
+1. 若要删除两个缓存之间的链接并停止异地复制，请在“异地复制”边栏选项卡中，单击“取消链接缓存”。  
     
     ![取消链接缓存](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 

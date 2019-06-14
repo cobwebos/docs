@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626173"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
@@ -29,7 +29,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 
 下表提供了针对协议选取的高水平建议：
 
-| 协议 | 何时应选择此协议 |
+| Protocol | 何时应选择此协议 |
 | --- | --- |
 | MQTT <br> 基于 WebSocket 的 MQTT |用于无需使用相同的 TLS 连接来连接多台设备（各有自己的设备凭据）的所有设备。 |
 | AMQP <br> 基于 WebSocket 的 AMQP |用于利用跨设备连接复用的字段和云网关。 |
@@ -54,7 +54,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 
 设备可在 Azure 中使用各种协议来与 IoT 中心通信。 通常，选择的协议根据解决方案的具体要求而定。 下表列出了必须打开的、使设备能够使用特定协议的出站端口：
 
-| 协议 | 端口 |
+| Protocol | Port |
 | --- | --- |
 | MQTT |8883 |
 | 基于 WebSocket 的 MQTT |443 |

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
 ms.openlocfilehash: 4727c24c603e95aeee6214546e25a273aa652f4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60417312"
 ---
 # <a name="enable-azure-active-directory-domain-services"></a>启用 Azure Active Directory 域服务
@@ -30,7 +30,7 @@ ms.locfileid: "60417312"
 若要更新已启用 Azure Active Directory 域服务的虚拟网络的 DNS 服务器设置，请完成以下步骤：
 
 
-1. “概览”选项卡列出了一组“必需的配置步骤”，这些步骤将在完全预配托管域后执行。 第一个配置步骤是“更新虚拟网络的 DNS 服务器设置”。
+1. “概览”选项卡列出了一组“必需的配置步骤”，这些步骤将在完全预配托管域后执行。   第一个配置步骤是“更新虚拟网络的 DNS 服务器设置”。 
 
     ![域服务 -“概述”选项卡](./media/getting-started/domain-services-provisioned-overview.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "60417312"
     >
     >
 
-2. 单击“配置”按钮以更新虚拟网络的 DNS 服务器设置。
+2. 单击“配置”  按钮以更新虚拟网络的 DNS 服务器设置。
 
 > [!NOTE]
 > 网络中的虚拟机必须重启才能获取新的 DNS 设置。 如果需立即获取更新的 DNS 设置，可通过门户、PowerShell 或 CLI 触发重启。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 66165a196c8b934df948f1d88b09a5859d3e792f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60401470"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>解决共享资源的错误
@@ -25,7 +25,7 @@ ms.locfileid: "60401470"
 
 #### <a name="issue"></a>问题
 
-在 Azure 自动化中导入或更新模块时，某个模块停滞在“正在导入”状态。
+在 Azure 自动化中导入或更新模块时，某个模块停滞在“正在导入”  状态。
 
 #### <a name="cause"></a>原因
 
@@ -33,7 +33,7 @@ ms.locfileid: "60401470"
 
 #### <a name="resolution"></a>解决方法
 
-若要解决此问题，必须使用 [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) cmdlet 删除停滞在“正在导入”状态的模块。 然后，可以重试导入模块。
+若要解决此问题，必须使用 [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) cmdlet 删除停滞在“正在导入”  状态的模块。 然后，可以重试导入模块。
 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -136,7 +136,7 @@ You do not have permissions to create…
 
 若要创建或更新运行方式帐户，必须对运行方式帐户使用的各种资源具有适当的权限。 要了解创建或更新运行方式帐户所需的权限，请参阅[运行方式帐户权限](../manage-runas-account.md#permissions)。
 
-如果该问题是由某个锁引起的，请确保可以删除该锁。 然后导航到锁定的资源，右键单击该锁并选择“删除”以删除该锁。
+如果该问题是由某个锁引起的，请确保可以删除该锁。 然后导航到锁定的资源，右键单击该锁并选择“删除”以删除该锁  。
 
 ### <a name="iphelper"></a>场景：当收到错误"找不到入口点将在 DLL 中的 GetPerAdapterInfo 名为 iplpapi.dll"执行 runbook。
 
@@ -168,4 +168,4 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 

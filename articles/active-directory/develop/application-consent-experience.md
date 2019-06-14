@@ -17,10 +17,10 @@ ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d71bfd5e560bb1509337ac371fbe101b4c6d63b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540645"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
@@ -86,4 +86,4 @@ ms.locfileid: "65540645"
 ## <a name="next-steps"></a>后续步骤
 - 获取有关 [Azure AD 同意框架如何实现同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的分步概述。
 - 有关详细信息，请参阅[多租户应用程序如何使用同意框架](active-directory-devhowto-multi-tenant-overview.md)实现“用户”和“管理员”同意（支持更多高级多层应用程序模式）。
-- 了解[如何配置应用程序的发行者域](howto-configure-publisher-domain.md)。
+- 了解[如何配置应用的发布者域](howto-configure-publisher-domain.md)。

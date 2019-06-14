@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60324074"
 ---
 # <a name="using-azure-cdn-with-sas"></a>将 Azure CDN 与 SAS 一起使用
@@ -52,7 +52,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 此选项最为简单，并且仅使用从 Azure CDN 传递到源服务器的单个 SAS 令牌。
  
-1. 选择一个终结点，选择“缓存规则”，然后从“查询字符串缓存”列表中选择“缓存每个唯一的 URL”。
+1. 选择一个终结点，选择“缓存规则”，然后从“查询字符串缓存”列表中选择“缓存每个唯一的 URL”    。
 
     ![CDN 缓存规则](./media/cdn-sas-storage-support/cdn-caching-rules.png)
 
@@ -69,7 +69,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 ### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>选项 2：使用重写规则隐藏的 CDN SAS 令牌
  
-此选项仅适用于来自 Verizon 的 Azure CDN Premium 配置文件。 使用此选项，可以在源服务器上保护 Blob 存储。 如果不需要对文件进行特定的访问权限限制，但希望阻止用户直接访问存储源以提高 Azure CDN 卸载时间，则需要使用此选项。 若要在源服务器的指定容器中访问文件，必须使用对用户来说不可知的 SAS 令牌。 不过，由于 URL 重写规则的缘故，CDN 终结点上不需要 SAS 令牌。
+此选项仅适用于来自 Verizon 的 Azure CDN Premium 配置文件  。 使用此选项，可以在源服务器上保护 Blob 存储。 如果不需要对文件进行特定的访问权限限制，但希望阻止用户直接访问存储源以提高 Azure CDN 卸载时间，则需要使用此选项。 若要在源服务器的指定容器中访问文件，必须使用对用户来说不可知的 SAS 令牌。 不过，由于 URL 重写规则的缘故，CDN 终结点上不需要 SAS 令牌。
  
 1. 使用[规则引擎](cdn-rules-engine.md)创建 URL 重写规则。 新规则需要 4 小时来传播。
 
@@ -77,7 +77,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
    ![CDN 规则引擎按钮](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   以下示例 URL 重写规则使用包含捕获组和名为 sasstoragedemo 的终结点的正则表达式模式：
+   以下示例 URL 重写规则使用包含捕获组和名为 sasstoragedemo 的终结点的正则表达式模式  ：
    
    源：   
    `(container1\/.*)`
@@ -99,7 +99,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>选项 3：与重写规则使用 CDN 安全令牌身份验证
 
-若要使用 Azure CDN 安全令牌身份验证，必须具有来自 Verizon 的 Azure CDN Premium 配置文件。 此选项最为安全且可进行自定义。 客户端访问基于安全令牌上设置的安全参数。 创建并设置安全令牌以后，所有 CDN 终结点 URL 上都需要该令牌。 不过，由于 URL 重写规则的缘故，CDN 终结点上不需要 SAS 令牌。 如果 SAS 令牌稍后变为无效，Azure CDN 将再也不能通过源服务器来重新验证内容。
+若要使用 Azure CDN 安全令牌身份验证，必须具有来自 Verizon 的 Azure CDN Premium 配置文件  。 此选项最为安全且可进行自定义。 客户端访问基于安全令牌上设置的安全参数。 创建并设置安全令牌以后，所有 CDN 终结点 URL 上都需要该令牌。 不过，由于 URL 重写规则的缘故，CDN 终结点上不需要 SAS 令牌。 如果 SAS 令牌稍后变为无效，Azure CDN 将再也不能通过源服务器来重新验证内容。
 
 1. [创建 Azure CDN 安全令牌](https://docs.microsoft.com/azure/cdn/cdn-token-auth#setting-up-token-authentication)并使用 CDN 终结点的规则引擎和用户可访问文件的路径来激活它。
 
@@ -115,7 +115,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
  
 2. 使用[规则引擎](cdn-rules-engine.md)创建 URL 重写规则以启用对容器中所有 blob 的 SAS 令牌访问。 新规则需要 4 小时来传播。
 
-   以下示例 URL 重写规则使用包含捕获组和名为 sasstoragedemo 的终结点的正则表达式模式：
+   以下示例 URL 重写规则使用包含捕获组和名为 sasstoragedemo 的终结点的正则表达式模式  ：
    
    源：   
    `(container1\/.*)`
@@ -135,9 +135,9 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 | SAS 参数名称 | 描述 |
 | --- | --- |
-| 开始 | Azure CDN 可以开始访问 blob 文件的时间。 由于存在时钟偏差 （当时钟信号在不同时间到达不同组件时），因此，如果希望资产立即可用，请选择一个提早 15 分钟的时间。 |
+| Start | Azure CDN 可以开始访问 blob 文件的时间。 由于存在时钟偏差 （当时钟信号在不同时间到达不同组件时），因此，如果希望资产立即可用，请选择一个提早 15 分钟的时间。 |
 | 结束 | Azure CDN 不可再访问 blob 文件的时间。 之前缓存在 Azure CDN 上的文件仍可访问。 若要控制文件到期时间，请在 Azure CDN 安全令牌上设置适当的到期时间或清除资产。 |
-| 允许的 IP 地址 | 可选。 如果使用的是来自 Verizon 的 Azure CDN，可以将此参数设置为 [Azure CDN from Verizon Edge Server IP Ranges](/azure/cdn/cdn-pop-list-api)（来自 Verizon 的 Azure CDN 边缘服务器 IP 范围）中定义的范围。 如果使用的是来自 Akamai 的 Azure CDN，则不能设置 IP 范围参数，因为这些 IP 地址不是静态的。|
+| 允许的 IP 地址 | 可选。 如果使用的是来自 Verizon 的 Azure CDN，可以将此参数设置为 [Azure CDN from Verizon Edge Server IP Ranges](/azure/cdn/cdn-pop-list-api)（来自 Verizon 的 Azure CDN 边缘服务器 IP 范围）中定义的范围  。 如果使用的是来自 Akamai 的 Azure CDN，则不能设置 IP 范围参数，因为这些 IP 地址不是静态的  。|
 | 允许的协议 | 允许为帐户 SAS 发出的请求使用的协议。 建议使用 HTTPS 设置。|
 
 ## <a name="next-steps"></a>后续步骤

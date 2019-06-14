@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: jingwang
 ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60546523"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-salesforce-connector.md)
 > * [当前版本](connector-salesforce.md)
 
@@ -180,7 +180,7 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="salesforce-as-a-source-type"></a>将 Salesforce 用作源类型
 
-要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”。 复制活动的 **source** 节支持以下属性。
+要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”  。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -230,7 +230,7 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="salesforce-as-a-sink-type"></a>将 Salesforce 用作接收器类型
 
-要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”。 复制活动 **sink** 节支持以下属性。
+要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”  。 复制活动 **sink** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 5458a02c09a3600875c7300b27c5a87a735b2f1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60318865"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
@@ -56,8 +56,8 @@ ms.locfileid: "60318865"
  
 之所以发生此问题，是因为远程桌面服务未在 VM 上运行。 未运行的原因取决于以下情况： 
 
-- TermService 服务设置为“已禁用”。 
-- TermService 服务崩溃或没有响应。 
+- TermService 服务设置为“已禁用”。  
+- TermService 服务崩溃或未响应。 
 - 错误的配置导致 TermService 不启动。
 
 ## <a name="solution"></a>解决方案
@@ -66,7 +66,7 @@ ms.locfileid: "60318865"
 
 ### <a name="use-serial-console"></a>使用串行控制台
 
-1. 选择“支持和故障排除” > “串行控制台”来访问 [串行控制台](serial-console-windows.md)。 如果在 VM 上启用了该功能，则可以成功连接 VM。
+1. 选择“支持和故障排除” > “串行控制台”来访问 [串行控制台](serial-console-windows.md)。   如果在 VM 上启用了该功能，则可以成功连接 VM。
 
 2. 为 CMD 实例创建新通道。 输入 **CMD** 启动通道，并获取通道名称。
 
@@ -84,7 +84,7 @@ ms.locfileid: "60318865"
    sc query TermService
    ```
 
-6. 如果服务状态显示为“已停止”，请尝试启动该服务：
+6. 如果服务状态显示为“已停止”，请尝试启动该服务： 
 
     ```
     sc start TermService
@@ -130,7 +130,7 @@ ms.locfileid: "60318865"
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
    ```
 
-4. 通过启动出现“访问被拒绝”错误的服务来再现问题： 
+4. 通过启动出现“访问被拒绝”错误的服务来再现问题：  
 
    ```
    sc start TermService 
@@ -189,7 +189,7 @@ ms.locfileid: "60318865"
 3. 尝试使用远程桌面连接到 VM。
 
 #### <a name="termservice-service-crashes-or-hangs"></a>TermService 服务崩溃或挂起
-1. 如果服务陷于“正在启动”或“正在停止”状态，请尝试停止服务： 
+1. 如果服务陷于“正在启动”或“正在停止”状态，请尝试停止服务：   
 
         sc stop TermService
 2. 在服务自身的“svchost”容器中隔离该服务：
@@ -205,8 +205,8 @@ ms.locfileid: "60318865"
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
 1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
-2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。 请注意分配给附加的 OS 磁盘的驱动器号。
-3. 打开权限提升的命令提示符实例（“以管理员身份运行”）。 然后运行以下脚本。 假设分配给附加的 OS 磁盘的驱动器号为 **F**。请将它替换为 VM 中的相应值。 
+2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的 OS 磁盘的驱动器号。
+3. 打开权限提升的命令提示符实例（“以管理员身份运行”）。  然后运行以下脚本。 假设分配给附加的 OS 磁盘的驱动器号为 **F**。请将它替换为 VM 中的相应值。 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

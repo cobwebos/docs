@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: lyrana
 ms.openlocfilehash: bfc73a71a0ccda5c135e6a740d6f63bd37522a9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60534051"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure 数字孪生中基于角色的访问控制
 
-Azure 数字孪生支持对空间图中特定数据、资源和操作进行精确的访问控制。 它通过精细的角色和权限管理（称为基于角色的访问控制 (RBAC)）实现。 RBAC 包括“角色”和“角色分配”。 角色标识权限的级别。 角色分配将角色与用户或设备相关联。
+Azure 数字孪生支持对空间图中特定数据、资源和操作进行精确的访问控制。 它通过精细的角色和权限管理（称为基于角色的访问控制 (RBAC)）实现。 RBAC 包括“角色”和“角色分配”。   角色标识权限的级别。 角色分配将角色与用户或设备相关联。
 
 使用 RBAC 可将权限授予：
 
@@ -49,7 +49,7 @@ RBAC 具有唯一性，原因在于权限沿着空间图继承。
 
 ### <a name="role-definitions"></a>角色定义
 
-角色定义是组成权限和构成角色的其他属性的集合。 角色定义列出了允许的操作，包括具有该角色的任何对象可执行的创建、读取、更新和删除操作。 它还指定了权限适用的对象类型。
+角色定义是组成权限和构成角色的其他属性的集合。 角色定义列出了允许的操作，包括具有该角色的任何对象可执行的创建、读取、更新和删除操作     。 它还指定了权限适用的对象类型。
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 

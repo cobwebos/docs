@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60280397"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教程：为 Concur 配置自动用户预配
@@ -63,11 +63,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置文件，并且客户管理员必须将此配置文件用于 Web 服务管理员功能（例如，启用应用）。 这些配置文件必须独立于客户管理员的日常 T&E 管理配置文件（T&E 管理配置文件不应当分配 WSAdmin 角色）。
 
-在创建用于启用应用的配置文件时，需要在用户配置文件字段中输入客户管理员的名称。 这将分配对配置文件的所有权。 创建一个或多个配置文件后，客户必须使用此配置文件登录以在“Web 服务”菜单内针对合作伙伴应用单击“启用”按钮。
+在创建用于启用应用的配置文件时，需要在用户配置文件字段中输入客户管理员的名称。 这将分配对配置文件的所有权。 创建一个或多个配置文件后，客户必须使用此配置文件登录以在“Web 服务”菜单内针对合作伙伴应用单击“启用”按钮  。
 
 出于以下原因，不应当使用用于普通 T&E 管理的配置文件执行此操作。
 
-* 必须由客户在启用应用后显示的对话窗口上单击“是”。 此单击将确认客户同意合作伙伴应用程序访问其数据，因此你或合作伙伴无法单击该“是”按钮。
+* 必须由客户在启用应用后显示的对话窗口上单击“是”。  此单击将确认客户同意合作伙伴应用程序访问其数据，因此你或合作伙伴无法单击该“是”按钮。
 
 * 如果使用 T&E 管理员配置文件启用了应用的客户管理员离开了公司（导致该配置文件停用），则使用该配置文件启用的所有应用都无法正常工作，直到使用另一个活动的 WS 管理员配置文件启用该应用。 这就是建议创建单独的 WS 管理配置文件的原因。
 
@@ -75,49 +75,49 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 
 **若要配置用户设置，请执行以下步骤：**
 
-1. 登录到“Concur”租户。
+1. 登录到“Concur”租户  。
 
-2. 从“管理”菜单中，选择“Web 服务”。
+2. 从“管理”菜单中，选择“Web 服务”。  
    
     ![Concur 租户](./media/concur-provisioning-tutorial/IC721729.png "Concur tenant")
 
-3. 在左侧，从“Web 服务”窗格中，选择“启用合作伙伴应用程序”。
+3. 在左侧，从“Web 服务”窗格中，选择“启用合作伙伴应用程序”。  
    
     ![启用合作伙伴应用程序](./media/concur-provisioning-tutorial/ic721730.png "Enable Partner Application")
 
-4. 从“启用应用程序”列表中，选择“Azure Active Directory”，并单击“启用”。
+4. 从“启用应用程序”列表中，选择“Azure Active Directory”，并单击“启用”。   
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
-5. 单击“是”以关闭“确认操作”对话框。
+5. 单击“是”以关闭“确认操作”对话框。  
    
     ![确认操作](./media/concur-provisioning-tutorial/ic721732.png "Confirm Action")
 
-6. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
+6. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分  。
 
-7. 如果已为 Concur 配置单一登录，请使用搜索字段搜索 Concur 实例。 否则，请选择“添加”并在应用程序库中搜索“Concur”。 从搜索结果中选择 Concur，并将其添加到应用程序列表。
+7. 如果已为 Concur 配置单一登录，请使用搜索字段搜索 Concur 实例。 否则，请选择“添加”并在应用程序库中搜索“Concur”   。 从搜索结果中选择 Concur，并将其添加到应用程序列表。
 
-8. 选择 Concur 实例，然后选择“预配”选项卡。
+8. 选择 Concur 实例，然后选择“预配”选项卡  。
 
-9. 将“预配模式”设置为“自动”。 
+9. 将“预配模式”  设置为“自动”  。 
  
     ![预配](./media/concur-provisioning-tutorial/provisioning.png)
 
-10. 在“管理员凭据”部分，输入 Concur 管理员的“用户名”和“密码”。
+10. 在“管理员凭据”部分，输入 Concur 管理员的“用户名”和“密码”。   
 
-11. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 Concur 应用。 如果连接失败，请确保 Concur 帐户具有团队管理员权限。
+11. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 Concur 应用  。 如果连接失败，请确保 Concur 帐户具有团队管理员权限。
 
-12. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框。
+12. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框  。
 
-13. 单击“保存”。
+13. 单击“保存”  。
 
-14. 在“映射”部分，选择“将 Azure Active Directory 用户同步到 Concur”。
+14. 在“映射”部分，选择“将 Azure Active Directory 用户同步到 Concur”  。
 
-15. 在“属性映射”部分，查看从 Azure AD 同步到 Concur 的用户属性。 选为“匹配”属性的特性用于匹配 Concur 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+15. 在“属性映射”部分，查看从 Azure AD 同步到 Concur 的用户属性  。 选为“匹配”属性的特性用于匹配 Concur 中的用户帐户以执行更新操作  。 选择“保存”按钮以提交任何更改。
 
-16. 若要为 Concur 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+16. 若要为 Concur 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”   
 
-17. 单击“保存”。
+17. 单击“保存”  。
 
 现在可创建测试帐户。 等待最多 20 分钟，验证该帐户是否已同步到 Concur。
 

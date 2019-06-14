@@ -10,10 +10,10 @@ ms.date: 11/05/2018
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 365264d40554f45533e2ddf0aeb9d85f3e8f8d2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60564015"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器实例中装载 Azure 文件共享
@@ -55,7 +55,7 @@ az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STO
 echo $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
-共享名已知（在上述脚本中定义为 acishare），因此剩下的就是找到存储帐户密钥，可使用以下命令：
+共享名已知（在上述脚本中定义为 acishare），因此剩下的就是找到存储帐户密钥，可使用以下命令  ：
 
 ```azurecli-interactive
 STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
@@ -79,7 +79,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-在创建容器实例时所在的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值。
+在创建容器实例时所在的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值  。
 
 ## <a name="manage-files-in-mounted-volume"></a>管理已装载卷中的文件
 
@@ -95,7 +95,7 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 
 若要将多个卷装载到容器实例中，必须使用 [Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)或 YAML 文件进行部署。
 
-若要使用模板，请提供共享详细信息，并通过在模板的 `properties` 部分填充 `volumes` 数组来定义卷。 例如，如果已在存储帐户 myStorageAccount 中创建两个 Azure 文件存储（名为 share1 和 share2），`volumes` 数组将类似于：
+若要使用模板，请提供共享详细信息，并通过在模板的 `properties` 部分填充 `volumes` 数组来定义卷。 例如，如果已在存储帐户 myStorageAccount 中创建两个 Azure 文件存储（名为 share1 和 share2），`volumes` 数组将类似于：   
 
 ```JSON
 "volumes": [{
@@ -116,7 +116,7 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 }]
 ```
 
-接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：
+接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：  
 
 ```JSON
 "volumeMounts": [{

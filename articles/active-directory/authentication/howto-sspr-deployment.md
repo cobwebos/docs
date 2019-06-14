@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c254ef3a71e95b33df2a779c728d47fff3c3759
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190377"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置功能
@@ -40,7 +40,7 @@ ms.locfileid: "65190377"
    * 本文档的以下部分将介绍示例通信、密码门户、如何强制注册和填充身份验证数据。
    * Azure Active Directory 产品组创建了[分步部署计划](https://aka.ms/SSPRDeploymentPlan)，组织可以将该计划与在此站点上找到的文档一起使用，针对自助服务密码重置部署生成业务案例和计划。
 1. 为整个组织启用自助密码重置。
-   * 准备就绪后，为所有用户启用密码重置，方法是将“启用自助密码重置”开关设置为“所有”。
+   * 准备就绪后，为所有用户启用密码重置，方法是将“启用自助密码重置”开关设置为“所有”。  
 
 ## <a name="sample-communication"></a>示例通信
 
@@ -68,9 +68,9 @@ ms.locfileid: "65190377"
 
 ## <a name="use-enforced-registration"></a>使用强制注册
 
-如果想要用户注册密码重置，可要求他们在通过 Azure AD 登录时注册。 可以在“注册”选项卡上启用“要求用户在登录时注册”选项，这样即可从目录的“密码重置”窗格启用此选项。
+如果想要用户注册密码重置，可要求他们在通过 Azure AD 登录时注册。 可以在“注册”选项卡上启用“要求用户在登录时注册”选项，这样即可从目录的“密码重置”窗格启用此选项。   
 
-管理员可以要求用户在特定的一段时间过后重新注册。 他们可以将“用户必须在几天后重新确认其身份验证信息”选项设置为 0-730 天。
+管理员可以要求用户在特定的一段时间过后重新注册。 他们可以将“用户必须在几天后重新确认其身份验证信息”选项设置为 0-730 天。 
 
 启用此选项后，用户在登录时会看到一条消息，指出管理员已要求其验证身份验证信息。
 
@@ -80,7 +80,7 @@ ms.locfileid: "65190377"
 
 ## <a name="disable-self-service-password-reset"></a>禁用自助密码重置
 
-如果你的组织决定禁用自助密码重置，则这是一个简单过程。 打开 Azure AD 租户，转到“密码重置” > “属性”，然后在“启用自助密码重置”下选择“无”。 用户仍将保留其已注册的身份验证方法以供将来使用。
+如果你的组织决定禁用自助密码重置，则这是一个简单过程。 打开 Azure AD 租户，转到“密码重置”   >   “属性”，然后在“启用自助密码重置”下选择“无”。   用户仍将保留其已注册的身份验证方法以供将来使用。
 
 ## <a name="next-steps"></a>后续步骤
 

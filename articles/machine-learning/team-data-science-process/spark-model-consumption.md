@@ -12,10 +12,10 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60253174"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
@@ -43,7 +43,7 @@ ms.locfileid: "60253174"
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>设置：存储位置、库和预设 Spark 上下文
 Spark 能够读取和写入 Azure 存储 Blob (WASB)。 因此，存储在该处的任何现有数据都可以使用 Spark 处理，并将结果再次存储在 WASB 中。
 
-若要在 WASB 中保存模型或文件，需要正确指定路径。 可使用开头为“wasb///”的路径，引用附加到 Spark 群集的默认容器。 以下代码示例指定要读取的数据的位置和模型输出要保存到的模型存储目录的路径。 
+若要在 WASB 中保存模型或文件，需要正确指定路径。 可使用开头为“wasb///”  的路径，引用附加到 Spark 群集的默认容器。 以下代码示例指定要读取的数据的位置和模型输出要保存到的模型存储目录的路径。 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>在 WASB 中为存储位置设置目录路径
 模型保存在：“wasb:///user/remoteuser/NYCTaxi/Models”。 如果未正确设置此路径，则不加载模型用于评分。
@@ -580,7 +580,7 @@ Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理�
 
 如果首选无代码客户端体验，请使用 [Azure 逻辑应用](https://azure.microsoft.com/documentation/services/app-service/logic/)通过在**逻辑应用设计器**上定义一个 HTTP 操作并设置其参数来调用 Spark 批处理评分。 
 
-* 从 Azure 门户，通过依次选择“+新建” -> “Web + 移动” -> “逻辑应用”创建新的逻辑应用。 
+* 从 Azure 门户，通过依次选择“+新建”   -> “Web + 移动”   -> “逻辑应用”  创建新的逻辑应用。 
 * 若要显示**逻辑应用设计器**，请输入逻辑应用和应用服务计划的名称。
 * 选择某个 HTTP 操作并输入下图中显示的参数：
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
 ms.openlocfilehash: 672b06dda41edb18cbf31352188b0fdd2a155782
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60401006"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
@@ -65,7 +65,7 @@ IoT 中心设备流具有以下优点：
 
 - 上述流创建流程完成后，流式处理终结点将充当代理，并通过其各自的 WebSocket 在服务和设备之间传输流量。
 
-- 设备和服务都需要端口 443 上的到 IoT 中心主要终结点和流式处理终结点的出站连接。 IoT 中心门户的“概览”选项卡上提供这些终结点的 URL。
+- 设备和服务都需要端口 443 上的到 IoT 中心主要终结点和流式处理终结点的出站连接。 IoT 中心门户的“概览”选项卡上提供这些终结点的 URL。 
 
 - 已建立的流的可靠性和排序保证与 TCP 的可靠性和排序保证相当。
 
@@ -77,7 +77,7 @@ IoT 中心设备流具有以下优点：
 
 ## <a name="connectivity-requirements"></a>连接要求
 
-设备流的设备端和服务端都必须能够建立到 IoT 中心及其流式处理终结点的启用 TLS 的连接。 这需要在端口 443 上建立到这些终结点的出站连接。 可以在 IoT 中心的“概述”选项卡上找到与这些终结点关联的主机名，如下图所示：![替代文本](./media/iot-hub-device-streams-overview/device-stream-portal.png "设备流终结点")
+设备流的设备端和服务端都必须能够建立到 IoT 中心及其流式处理终结点的启用 TLS 的连接。 这需要在端口 443 上建立到这些终结点的出站连接。 可以在 IoT 中心的“概述”选项卡上找到与这些终结点关联的主机名，如下图所示  ：![替代文本](./media/iot-hub-device-streams-overview/device-stream-portal.png "设备流终结点")
 
 或者，可以使用中心“属性”部分下的 Azure CLI 检索终结点信息，具体而言是 `property.hostname` 和 `property.deviceStreams` 键。
 
@@ -121,16 +121,16 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 请执行以下步骤来配置 Azure Monitor 的 IoT 中心的设备流活动的日志：
 
-1. 导航到 IoT 中心的“诊断设置”选项卡，然后单击“打开诊断”链接。
+1. 导航到 IoT 中心的“诊断设置”选项卡，然后单击“打开诊断”链接   。
 
    ![替代文本](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "启用诊断日志")
 
 
-2. 提供诊断设置的名称，然后选择“发送到 Log Analytics”选项。 将指导你选择现有的 Log Analytics 工作区资源或创建一个新。 此外，在列表中选中“DeviceStreams”。
+2. 提供诊断设置的名称，然后选择“发送到 Log Analytics”选项  。 将指导你选择现有的 Log Analytics 工作区资源或创建一个新。 此外，在列表中选中“DeviceStreams”  。
 
     ![替代文本](./media/iot-hub-device-streams-overview/device-streams-diagnostics.PNG "启用设备流日志")
 
-3. 现在可以在 IoT 中心门户的“日志”选项卡下访问设备流日志。 设备流活动日志将在 `AzureDiagnostics` 表中显示并具有 `Category=DeviceStreams`。
+3. 现在可以在 IoT 中心门户的“日志”选项卡下访问设备流日志  。 设备流活动日志将在 `AzureDiagnostics` 表中显示并具有 `Category=DeviceStreams`。
 
     <p>
 如下所示，日志中还提供目标设备的标识和操作的结果。
@@ -154,7 +154,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 我们发布了两个[快速入门示例](/azure/iot-hub)，演示应用程序如何使用设备流。
 * *Echo*示例演示 （通过直接调用 SDK API） 以编程方式使用的设备流。
-* 本地代理示例演示如何通过设备流以隧道方式连接现成的客户端/服务器应用程序流（例如 SSH、RDP 或 Web）。
+*  本地代理示例演示如何通过设备流以隧道方式连接现成的客户端/服务器应用程序流（例如 SSH、RDP 或 Web）。
 
 这些示例在下面进行更详细的介绍。
 
