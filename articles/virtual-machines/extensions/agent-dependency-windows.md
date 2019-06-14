@@ -79,7 +79,7 @@ ms.locfileid: "65521765"
 | 名称 | 值/示例 |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| 发布者 | Microsoft.Azure.Monitoring.DependencyAgent |
+| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
