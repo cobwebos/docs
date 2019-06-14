@@ -9,10 +9,10 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 50264dfba401f623c4ad14a6310303f2787fc85f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132839"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-by-using-the-azure-portal"></a>使用 Azure 门户检索主机名、端口和访问密钥
@@ -21,11 +21,11 @@ ms.locfileid: "66132839"
 
 #### <a name="to-retrieve-the-access-keys-and-host-name"></a>检索访问密钥和主机名的步骤
 
-1. 若要使用 [Azure 门户](https://portal.azure.com)检索访问密钥，请浏览到缓存，然后选择“访问密钥”。 
+1. 若要使用 [Azure 门户](https://portal.azure.com)检索访问密钥，请浏览到缓存，然后选择“访问密钥”  。 
 
     ![Azure Redis 缓存密钥](media/redis-cache-access-keys/redis-cache-keys.png)
 
-2. 若要检索主机名和端口，请选择“属性”。
+2. 若要检索主机名和端口，请选择“属性”。 
 
     ![Azure Redis 缓存属性](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 

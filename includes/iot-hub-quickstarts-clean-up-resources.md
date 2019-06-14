@@ -9,10 +9,10 @@ ms.date: 06/19/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 94cd178b925b0b55f0ed6ed38ed821820bb1e072
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117401"
 ---
 如果想要继续学习下一篇建议的文章，可以保留已创建的资源，以便重复使用。
@@ -25,12 +25,12 @@ ms.locfileid: "66117401"
 
 若要按名称删除资源组，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
 
-2. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称。 
+2. 在“按名称筛选...”文本框中键入包含 IoT 中心的资源组的名称  。 
 
-3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
+3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”   。
 
     ![删除](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
 
-4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
+4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”  。 片刻之后，将会删除该资源组及其包含的所有资源。

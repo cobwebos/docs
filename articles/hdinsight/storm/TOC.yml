@@ -233,7 +233,5 @@
   items:
     - name: Windows 群集
       items:
-        - name: 将 Windows 群集迁移到 Linux 群集
-          href: ../hdinsight-migrate-from-windows-to-linux.md
         - name: 将 .NET 解决方案迁移到 Linux 群集
           href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md

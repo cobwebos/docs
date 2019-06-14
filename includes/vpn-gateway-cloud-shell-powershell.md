@@ -9,10 +9,10 @@ ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3ef848d12e3a39c3bd83ea44fcb86d67bbdb38dc
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735924"
 ---
 本文使用 PowerShell cmdlet。 若要运行这些 cmdlet，可以使用 Azure Cloud Shell（在 Azure 中托管并通过浏览器使用的交互式 shell 环境）。 Azure Cloud Shell 随预安装的 Azure PowerShell cmdlet 一起提供。

@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 08/17/2018
 ms.author: diberry
 ms.openlocfilehash: a65b075e89180441eecfb420130bfd1e47b277a5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123583"
 ---
 若要在聊天机器人或其他客户端应用程序中接收 LUIS 预测，需要将应用发布到终结点。 
 
-1. 在右上方的导航栏中选择“发布”。
+1. 在右上方的导航栏中选择“发布”。 
 
     ![右上方菜单中的“LUIS 发布到终结点”按钮](./media/cognitive-services-luis/publish-button.png)
 
-2. 选择“生产”槽和“发布”按钮。
+2. 选择“生产”槽和“发布”按钮   。
 
     ![LUIS 发布到终结点](./media/cognitive-services-luis/publish-this-app-popup.png)
 
@@ -31,6 +31,6 @@ ms.locfileid: "66123583"
 
     ![LUIS 发布到终结点](./media/cognitive-services-luis/publish-to-endpoint-success.png)
 
-4. 选择绿色状态栏中的“终结点”链接，转到“密钥和终结点”页。 终结点 URL 列在底部。
+4. 选择绿色状态栏中的“终结点”  链接，转到“密钥和终结点”  页。 终结点 URL 列在底部。
 
     <!-- TBD: add image -->
