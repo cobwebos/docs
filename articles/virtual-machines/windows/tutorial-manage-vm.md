@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/28/2018
+ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 94858a147dc0383376a54bc94685d855d37e12d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6a23ca469aab582fed4b4e72f48bc2dd0b9dafe0
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991199"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807801"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
 
@@ -38,13 +38,13 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
 ## <a name="create-resource-group"></a>创建资源组
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在以下示例中，在“EastUS”区域中创建了名为“myResourceGroupVM”的资源组：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在以下示例中，在“EastUS”  区域中创建了名为“myResourceGroupVM”  的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -95,7 +95,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-在“Windows 安全性”窗口中，依次选择“更多选择”、“使用其他帐户”。 键入针对 VM 创建的用户名和密码，然后单击“确定”。
+在“Windows 安全性”  窗口中，依次选择“更多选择”  、“使用其他帐户”  。 键入针对 VM 创建的用户名和密码，然后单击“确定”。 
 
 ## <a name="understand-marketplace-images"></a>了解市场映像
 
@@ -184,10 +184,10 @@ VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 �
 | Type                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
-| [计算优化](sizes-compute.md)   | Fsv2、Fs、F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
+| [计算优化](sizes-compute.md)   | Fsv2            | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
 | [内存优化](sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
-| [存储优化](sizes-storage.md)      | LS                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
-| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 专门针对大量图形绘制和视频编辑的 VM。       |
+| [存储优化](sizes-storage.md)      | Lsv2、Ls                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
+| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、NDv2、ND   | 专门针对大量图形绘制和视频编辑的 VM。       |
 | [高性能](sizes-hpc.md) | H        | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 |
 
 ### <a name="find-available-vm-sizes"></a>查找可用的 VM 大小

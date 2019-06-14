@@ -18,18 +18,18 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0be7a8b756ee3d1d71b15e10797176e50037a47
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b35d2e21de3da184496da53fdf46d865fdfdf5c7
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540147"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734484"
 ---
 # <a name="what-is-authentication"></a>什么是身份验证？
 
-身份验证是向访问方质询合法凭据的措施，提供创建用于标识和访问控制的安全主体的基础。 简单来说，身份验证就是证明你是你自己的过程。 身份验证有时缩写为 AuthN。
+身份验证是向访问方质询合法凭据的措施，提供创建用于标识和访问控制的安全主体的基础  。 简单来说，身份验证就是证明你是你自己的过程。 身份验证有时缩写为 AuthN。
 
-授权是指授予经过身份验证的安全主体执行某项操作权力的措施。 它指定了可以访问的数据以及使用其可执行的操作。 授权有时缩写为 AuthZ。
+授权是指授予经过身份验证的安全主体执行某项操作权力的措施。  它指定了可以访问的数据以及使用其可执行的操作。 授权有时缩写为 AuthZ。
 
 Microsoft 标识平台通过以下方式简化了对应用程序开发人员的身份验证：将标识提供为一项服务、支持行业标准协议（例如 OAuth 2.0 和 OpenID Connect），并提供用于不同平台的开源库来帮助你快速开始编码。
 
@@ -50,10 +50,10 @@ Microsoft 标识平台通过以下方式简化了对应用程序开发人员的�
 * 要将身份验证外包给 Microsoft 标识平台的应用程序必须在 Azure Active Directory (Azure AD) 中进行注册。 Azure AD 在目录中注册并唯一标识应用。
 * 开发人员可以使用开源 Microsoft 标识平台身份验证库处理协议细节，方便你进行身份验证。 有关详细信息，请参阅 Microsoft 标识平台 [v2.0 身份验证库](reference-v2-libraries.md)和 [v1.0 身份验证库](active-directory-authentication-libraries.md)。
 * 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证是成功的。 可查找各种语言和框架的快速入门、教程和代码示例，了解应用程序必须执行的操作。
-  * 要快速构建应用并添加功能（如获取令牌、刷新令牌、进行用户登录、显示某些用户信息），请参阅文档的“快速入门”部分。
-  * 要深入了解顶级身份验证开发人员任务的案例过程，例如获取访问令牌并在调用 Microsoft Graph API 和其他 API 时使用它们，使用 OpenID Connect 通过传统的基于 Web 浏览器的应用实现 Microsoft 登录等，请参阅文档的“教程”部分。
+  * 要快速构建应用并添加功能（如获取令牌、刷新令牌、进行用户登录、显示某些用户信息），请参阅文档的“快速入门”部分  。
+  * 要深入了解顶级身份验证开发人员任务的案例过程，例如获取访问令牌并在调用 Microsoft Graph API 和其他 API 时使用它们，使用 OpenID Connect 通过传统的基于 Web 浏览器的应用实现 Microsoft 登录等，请参阅文档的“教程”部分  。
   * 要下载代码示例，请转到 [GitHub](https://github.com/Azure-Samples?q=active-directory)。
-* 身份验证过程的请求和响应流是由所使用的身份验证协议（例如 OAuth 2.0、OpenID Connect、WS 联合身份验证或 SAML 2.0）决定的。 有关协议的详细信息，请参阅文档中的“概念”>“协议”部分。
+* 身份验证过程的请求和响应流是由所使用的身份验证协议（例如 OAuth 2.0、OpenID Connect、WS 联合身份验证或 SAML 2.0）决定的。 有关协议的详细信息，请参阅文档中的“概念”>“协议”部分  。
 
 在上面的示例方案中，你可以根据以下两个角色对应用进行分类：
 
@@ -85,14 +85,11 @@ Microsoft 标识平台表示遵循特定模型的应用程序，该模型旨在�
 
 在此预配流程中：
 
-|   |   |
-|---|---|
-| 1 | 来自租户 B 的用户尝试使用该应用登录 |
-| 2 | 获取并验证用户凭据 |
-| 3 | 系统会提示用户同意使用应用以访问租户 B |
-| 4 | Microsoft 标识平台使用 A 中的应用程序对象作为在租户 B 中创建服务主体的蓝图 |
-| 5 | 用户收到请求的令牌 |
-|   |   |
+1. 来自租户 B 的某个用户尝试使用该应用登录，授权终结点请求应用程序的令牌。
+1. 获取并验证用于身份验证的用户凭据
+1. 系统提示用户许可该应用访问租户 B
+1. Microsoft 标识平台使用租户 A 中的应用程序对象作为在租户 B 中创建服务主体的蓝图
+1. 用户收到请求的令牌
 
 你可以根据需要对其他租户（C、D 等）重复此过程。 租户 A 保留了应用（应用程序对象）的蓝图。 应用获得许可的所有其他租户中的用户和管理员通过每个租户中的相应服务主体对象保留对应用程序允许执行的操作的控制权。 有关详细信息，请参阅 [Microsoft 标识平台中的应用程序和服务主体对象](app-objects-and-service-principals.md)。
 

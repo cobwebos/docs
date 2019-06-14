@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: cdf2a1a730be657b41c7a4b2daf2f178661394b4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 2a494b924107baeabbcf412af7e1bbdb1db0f753
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947111"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752019"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure 应用程序网关有哪些新增功能？
 
@@ -27,6 +27,7 @@ Azure 应用程序网关会不断更新。 为了让大家随时了解最新的�
 
 |Feature  |说明  |添加日期  |
 |---------|---------|---------|
+|WAF 自定义规则 |应用程序网关 WAF v2 现在支持创建自定义规则。 请参阅[应用程序网关自定义规则](custom-waf-rules-overview.md)。 |2019 年 7 月 |
 |自动缩放、区域冗余、静态 VIP 支持 GA |v2 SKU 正式版，支持自动缩放、区域冗余、增强性能、静态 VIP、密钥保管库、标头重写。 请参阅[应用程序网关自动缩放文档](application-gateway-autoscaling-zone-redundant.md)。 |2019 年 4 月 |
 |密钥保管库集成 |应用程序网关现在支持与密钥保管库（公共预览版）集成，以获取附加到支持 HTTPS 的侦听器的服务器证书。 请参阅[使用密钥保管库证书实现 SSL 终止](key-vault-certs.md)。 |2019 年 4 月 |
 |标头 CRUD/重写     |现在可以重写 HTTP 标头。 有关分步说明，请参阅[教程：创建应用程序网关和重写 HTTP 标头](tutorial-http-header-rewrite-powershell.md)。|2018 年 12 月|

@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7678415b7ce505da7678a00a4bcf2d933e260530
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 122028217a78463fa2ceaed63248a74257206345
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303977"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808767"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C# IoT Edge 模块
 
@@ -94,7 +94,7 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
 
 2. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 
 
-3. 使用你的凭据用以下格式更新该属性： 
+3. 使用凭据更新该属性，遵循以下格式： 
 
    ```json
    "registryCredentials": {
@@ -104,16 +104,17 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. 保存 deployment.template.json 文件。 
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+默认模块代码在输入队列上接收消息，并通过输出队列传递消息。 让我们添加一些额外的代码，以便模块在将边缘的消息转发到 IoT 中心之前对其进行处理。 更新模块，以便分析每条消息中的温度数据，并且只有在温度超过特定阈值时才将消息发送到 IoT 中心。 
 
-1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+1. 在 Visual Studio 中打开“CSharpModule” > “Program.cs”。  
 
-2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
+2. 在 **CSharpModule** 命名空间的顶部，为稍后要使用的类型添加三个 **using** 语句：
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: ecc63cac56c9aeb3d1dd3875134d53cb481e6a5c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 55bcce3c5a4b0dd00d9217d6cb3cc2cfbe6d5828
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708197"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753802"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric 概述
 Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。 Service Fabric 还解决了开发和管理云本机应用程序面临的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。 Service Fabric 代表了下一代平台，用于生成和管理在容器中运行的企业级单层云规模应用程序。
@@ -29,7 +29,7 @@ Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打�
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>合规性
-Azure Service Fabric 资源提供程序在所有 Azure 区域中都可用，并符合 Azure 所具有的所有合规性证书；这包括以下内容：SOC、ISO、PCI DSS、HIPAA 和 GDRP。 请查看以下内容以获取合规性证书的完整列表：[合规性产品](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+Azure Service Fabric 资源提供程序在所有 Azure 区域中都可用，并符合 Azure 所具有的所有合规性证书；这包括以下内容：SOC、ISO、PCI DSS、HIPAA 和 GDPR。 请查看以下内容以获取合规性证书的完整列表：[合规性产品](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 ## <a name="applications-composed-of-microservices"></a>由微服务组成的应用程序 
 利用 Service Fabric，可以生成和管理可缩放的可靠应用程序，其中包括在计算机的共享池（称为“群集”）中高密度运行的微服务。 它提供了复杂的轻型运行时，用于生成在容器中运行且可缩放的无状态和有状态分布式微服务。 它还提供了全面的应用程序管理功能，用于预配、部署、监视、升级/修补和删除已部署的应用程序（包括容器化服务）。
@@ -48,7 +48,7 @@ Service Fabric 为由这些微服务组成的应用程序提供全面的运行�
 Service Fabric 是跨计算机群集部署微服务的 Microsoft [容器 Orchestrator](service-fabric-cluster-resource-manager-introduction.md)。 微服务的开发方法有多种，包括使用 [Service Fabric 编程模型](service-fabric-choose-framework.md)、[ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 或部署[任意选定代码](service-fabric-guest-executables-introduction.md)。 重要的是，可以在同一应用程序中混合进程中的服务和容器中的服务。 如果只需要[部署和管理容器](service-fabric-containers-overview.md)，Service Fabric 是容器 Orchestrator 理想之选。
 
 ## <a name="any-os-any-cloud"></a>不限 OS 和云
-Service Fabric 可以在所有环境中运行。 可以在许多环境中（例如在 Azure 或本地、Windows Server 或 Linux 中）创建 Service Fabric 群集。 甚至可以在其他公有云上创建群集。 此外，SDK 中的开发环境与生产环境完全相同，都不涉及模拟器。 也就是说，在本地开发群集上运行的内容会部署到其他环境中的群集。
+Service Fabric 可以在所有环境中运行。 可以在许多环境中（例如在 Azure 或本地、Windows Server 或 Linux 中）创建 Service Fabric 群集。 甚至可以在其他公有云上创建群集。 此外，SDK 中的开发环境与生产环境完全相同  ，都不涉及模拟器。 也就是说，在本地开发群集上运行的内容会部署到其他环境中的群集。
 
 ![Service Fabric 平台][Image1]
 

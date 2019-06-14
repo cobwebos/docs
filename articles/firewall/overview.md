@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 6/5/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b1763e7c24ea75a698c3718ab5e205dcc3e0c8c4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 4b33174b20cdf42e29cdb5b4786122513d2c6080
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495804"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753734"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -62,7 +62,7 @@ FQDN 标记使你可以轻松地允许已知的 Azure 服务网络流量通过�
 
 ### <a name="inbound-dnat-support"></a>入站 DNAT 支持
 
-转换到防火墙公共 IP 地址的入站网络流量（目标网络地址转换）并将其筛选到虚拟网络上的专用 IP 地址。 
+转换到防火墙公共 IP 地址的入站网络流量（目标网络地址转换）并将其筛选到虚拟网络上的专用 IP 地址。
 
 ### <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
@@ -82,8 +82,7 @@ Azure 防火墙存在以下已知问题：
 |网络和应用程序规则的端口范围|端口限制为 64,000，因为高端口是为管理和运行状况探测保留的。 |我们正在努力放宽此限制。|
 |威胁智能警报可能会被屏蔽|配置为仅警报模式时，目标为 80/443 的用于出站筛选的网络规则会屏蔽威胁智能警报。|使用应用程序规则为 80/443 创建出站筛选。 或者，将威胁智能模式更改为“提醒和拒绝”  。|
 |Azure 防火墙只将 Azure DNS 用于名称解析|Azure 防火墙只使用 Azure DNS 来解析 FQDN。 不支持自定义 DNS 服务器。 对其他子网上的 DNS 解析没有影响。|我们正在努力放宽此限制。|
-|Azure 防火墙 SNAT/DNAT 不适用于专用 IP 目标|Azure 防火墙 SNAT/DNAT 支持仅限于 Internet 出口/入口。 SNAT/DNAT 目前不适用于专用 IP 目标。 例如，分支到分支。|正在调查此问题。
-
+|Azure 防火墙 SNAT/DNAT 不适用于专用 IP 目标|Azure 防火墙 SNAT/DNAT 支持仅限于 Internet 出口/入口。 SNAT/DNAT 目前不适用于专用 IP 目标。 例如，分支到分支。|将来的更新路线图已安排此功能。
 ## <a name="next-steps"></a>后续步骤
 
 - [教程：使用 Azure 门户部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)

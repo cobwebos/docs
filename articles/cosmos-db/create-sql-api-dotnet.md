@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/20/2019
-ms.openlocfilehash: 432ddf6e0fea0d6de3c24dc853502dca303ce693
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/06/2019
+ms.openlocfilehash: e39440a46228d82b0722f7d9d349d11fb2417b42
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954552"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754609"
 ---
 # <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>快速入门：在 Azure Cosmos DB 中生成一个使用 SQL API 帐户的 .NET Web 应用
 
@@ -52,33 +52,32 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 可以使用 Azure 门户中的数据资源管理器来创建数据库和集合。 
 
-1.  在 Azure Cosmos DB 帐户页上的左侧导航栏中选择“数据资源管理器”，然后选择“新建集合”。   
+1.  在 Azure Cosmos DB 帐户页上的左侧导航栏中选择“数据资源管理器”，然后选择“新建容器”。   
     
-    可能需要向右滚动才能看到“添加集合”区域。 
+    可能需要向右滚动才能看到“添加容器”窗口。 
     
     ![Azure 门户“数据资源管理器”，“添加集合”窗格](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  在“添加集合”  页上，输入新集合的设置。
+1.  在“添加容器”窗格中，输入新集合的设置。 
     
     |设置|建议的值|说明
     |---|---|---|
-    |**数据库 ID**|ToDoList|输入 ToDoList  作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。|
-    |**集合 ID**|Items|输入 *Items* 作为新集合的名称。 集合 ID 与数据库名称的字符要求相同。|
-    |**分区键**| /category| 本文中所述的示例使用 /category  作为分区键。|
+    |**数据库 ID**|ToDoList|输入 ToDoList  作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
     |**吞吐量**|400|将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。| 
+    |**容器 ID**|Items|输入 *Items* 作为新集合的名称。 集合 ID 与数据库名称的字符要求相同。|
+    |**分区键**| /category| 本文中所述的示例使用 /category  作为分区键。|
+
     
     对于本示例，请不要添加“唯一键”。  使用唯一键可将数据完整性层添加到数据库，因为它能确保每个分区键的一个或多个值的唯一性。 有关详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)。
     
-1.  选择“确定”  。 
-    数据资源管理器将显示新的数据库和集合。
+1.  选择“确定”  。 数据资源管理器将显示新建的数据库和容器。
     
-    ![显示新的数据库和集合的 Azure 门户数据资源管理器](./media/create-sql-api-dotnet/azure-cosmos-db-new-collection.png)
 
 ## <a name="add-data-to-your-database"></a>将数据添加到数据库
 
 使用数据资源管理器将数据添加到新的数据库。
 
-1. 在“数据资源管理器”中，新数据库会显示在“集合”窗格中。   依次展开“ToDoList”数据库、“Items”集合，选择“文档”，然后选择“新建文档”。     
+1. 在“数据资源管理器”中展开“ToDoList”数据库，然后展开“项”容器。    接下来，依次选择“项”、“新建项”。   
    
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
@@ -108,7 +107,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 若要了解如何以编程方式轻松处理 Azure Cosmos DB 数据，请克隆 GitHub 中的示例 SQL API .NET Web 应用，更新连接字符串，然后运行该应用以更新数据。 
 
-也可以使用 .NET 示例代码创建数据库和集合。 有关详细信息，请参阅[查看 .NET 代码](#review-the-net-code)。
+也可以使用 .NET 示例代码创建数据库和容器。 有关详细信息，请参阅[查看 .NET 代码](#review-the-net-code)。
 
 ### <a name="clone-the-sample-app"></a>克隆示例应用
 
@@ -148,7 +147,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
       `<add key="authKey" value="19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==" />`
 
        
-1. 确保 *web.config* 中的数据库和集合值与前面创建的名称相匹配。 
+1. 确保 *web.config* 中的数据库和集合（也称为“容器”）值与前面创建的名称相匹配。 
 
    ```csharp
    <add key="database" value="ToDoList"/>
@@ -163,7 +162,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 1. 在 NuGet“浏览”  框中，键入 *DocumentDB*。
 
-1. 从结果中安装 **Microsoft.Azure.DocumentDB** 库（如果尚未安装）。 这会安装 [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 包以及所有依赖项。
+1. 从结果中安装 **Microsoft.Azure.DocumentDB** 库**版本 2.2.3**（如果尚未安装）。 这会安装 [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 包以及所有依赖项。
    
    如果 NuGet 包管理器显示一条消息，指出解决方案中缺少某些包，请选择“还原”以从内部源安装这些包。  
 
@@ -177,7 +176,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 ## <a name="review-the-net-code"></a>查看 .NET 代码
 
-此步骤是可选的。 在本快速入门中，你已使用 Azure 门户创建了一个数据库和一个集合，并使用 .NET 示例添加了示例数据。 但是，也可以使用 .NET 示例创建数据库和集合。 如果你想要了解数据库资源是如何在该代码中创建的，请查看以下代码片段。 这些代码片段全部摘自 **todo** 项目中的 *DocumentDBRepository.cs* 文件。
+此步骤是可选的。 在本快速入门中，你已使用 Azure 门户创建了一个数据库和一个容器，并使用 .NET 示例添加了示例数据。 但是，也可以使用 .NET 示例创建数据库和容器。 如果你想要了解数据库资源是如何在该代码中创建的，请查看以下代码片段。 这些代码片段全部摘自 **todo** 项目中的 *DocumentDBRepository.cs* 文件。
 
 * 此代码初始化 `DocumentClient`： 
 
@@ -230,7 +229,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门已介绍如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建数据库和集合，并运行 .NET Web 应用来更新数据。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。 
+本快速入门已介绍如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建数据库和容器，并运行 .NET Web 应用来更新数据。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。 
 
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)

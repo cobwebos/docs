@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 06/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0411e1ab76d010eae26142d681dc157a1eb776a8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bec4cb17f2d25cd00ef115a78736c95eaf26d95f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481933"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752460"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>教程：将 Otsuka Shokai 与 Azure Active Directory 集成
 
@@ -79,14 +79,7 @@ ms.locfileid: "66481933"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
-
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.otsuka-shokai.co.jp/S000000100`
-
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.otsuka-shokai.co.jp/ResponseOffice365`
-
-    > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Otsuka Shokai 客户端支持团队](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+1. 在“设置 SAML 单一登录”页上，应用程序已预先配置，所需的 URL 中已预先填充“Azure”。  用户需要单击“保存”  按钮来保存配置。
 
 1. Otsuka Shokai 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 与 **user.userprincipalname**相映射。 Otsuka Shokai 应用程序要求将  **nameidentifier** 与  **user.objectid** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射 ****  。
 
@@ -139,7 +132,7 @@ ms.locfileid: "66481933"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -163,7 +156,7 @@ ms.locfileid: "66481933"
 
 ### <a name="create-otsuka-shokai-test-user"></a>创建 Otsuka Shokai 测试用户
 
-在本部分，我们在 Otsuka Shokai 中创建名为 Britta Simon 的用户。 请求助  [Otsuka Shokai 支持团队](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)，将用户添加到 Otsuka Shokai 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 Otsuka Shokai 中创建名为 B.Simon 的用户。 请求助  [Otsuka Shokai 支持团队](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)，将用户添加到 Otsuka Shokai 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-sso"></a>测试 SSO
 

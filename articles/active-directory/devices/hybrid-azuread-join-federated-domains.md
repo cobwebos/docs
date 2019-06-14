@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae4b57d86461526b285e77aa408373b5d7f5aedf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 600d6b9f1eb8d8073e1658dd5b8196a3d8137e42
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513368"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733715"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
@@ -71,7 +71,7 @@ ms.locfileid: "66513368"
 
 从 Windows 10 1803 开始，如果无法在使用 AD FS 的联合环境中实现即时混合 Azure AD 加入，我们将依赖 Azure AD Connect 同步 Azure AD 中的计算机对象，该计算机对象随后用于完成混合 Azure AD 加入的设备注册。 验证 Azure AD Connect 是否已将要加入混合 Azure AD 的设备的计算机对象同步到 Azure AD。 如果这些计算机对象属于特定组织单位 (OU)，则也需要在 Azure AD connect 中配置这些 OU 以进行同步。 若要详细了解如何使用 Azure AD Connect 同步计算机对象，请参阅有关[使用 Azure AD Connect 配置筛选](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering#organizational-unitbased-filtering)的文章。
 
-如果组织需要通过出站代理访问 Internet，Microsoft 建议[实现 Web 代理自动发现 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))，使 Windows 10 计算机能够在 Azure AD 中执行设备注册。 如果在配置和管理 WPAD 时遇到问题，请参阅 [排除自动检测的问题](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)。 
+如果组织需要通过出站代理访问 Internet，Microsoft 建议[实现 Web 代理自动发现 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))，使 Windows 10 计算机能够在 Azure AD 中执行设备注册。 如果在配置和管理 WPAD 时遇到问题，请参阅[排除自动检测的问题](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))。 
 
 如果你未使用 WPAD 并需要在计算机上配置代理设置，可以从 Windows 10 1709 着手，方法是[使用组策略对象 (GPO) 配置 WinHTTP 设置](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。
 
@@ -165,7 +165,7 @@ ms.locfileid: "66513368"
 
 在使用 Get-MSolDevice cmdlet 检查服务详细信息时  ：
 
-- 必须存在其设备 ID 与 Windows 客户端上的 ID 相匹配的对象  。
+- 必须存在其**设备 ID** 与 Windows 客户端上的 ID 相匹配的对象。
 - DeviceTrustType 的值必须是“已加入域”   。 这相当于 Azure AD 门户中“设备”页上的“已加入混合 Azure AD”状态  。
 - 对于采用了条件访问的设备，“已启用”值必须为 True，**DeviceTrustLevel** 必须为 **Managed**   。
 

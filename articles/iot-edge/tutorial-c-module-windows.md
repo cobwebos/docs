@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 79f3b125a4cb88b3555cf13aa4d4bc5c430df166
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 49f853341edab7c7dc92f72472b81f7fb22c0ad8
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303886"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808756"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C IoT Edge 模块
 
@@ -94,7 +94,7 @@ ms.locfileid: "66303886"
 
 2. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 
 
-3. 使用你的凭据用以下格式更新该属性： 
+3. 使用凭据更新该属性，遵循以下格式： 
 
    ```json
    "registryCredentials": {
@@ -104,29 +104,33 @@ ms.locfileid: "66303886"
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. 保存 deployment.template.json 文件。 
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+默认模块代码在输入队列上接收消息，并通过输出队列传递消息。 让我们添加一些额外的代码，以便模块在将边缘的消息转发到 IoT 中心之前对其进行处理。 更新模块，以便分析每条消息中的温度数据，并且只有在温度超过特定阈值时才将消息发送到 IoT 中心。 
 
 
-1. The data from the sensor in this scenario comes in JSON format. To filter messages in JSON format, import a JSON library for C. This tutorial uses Parson.
+1. 在此场景中，来自传感器的数据采用 JSON 格式。 若要筛选 JSON 格式的消息，请导入用于 C 的 JSON 库。本教程使用 Parson。
 
-   1. Download the [Parson GitHub repository](https://github.com/kgabis/parson). Copy the **parson.c** and **parson.h** files into the **CModule** project.
+   1. 下载 [Parson GitHub 存储库](https://github.com/kgabis/parson)。 将 **parson.c** 和 **parson.h** 文件复制到 **CModule** 项目中。
 
-   2. In Visual Studio, open the **CMakeLists.txt** file from the CModule project folder. At the top of the file, import the Parson files as a library called **my_parson**.
+   2. 在 Visual Studio 中，打开 CModule 项目文件夹中的 **CMakeLists.txt** 文件。 在文件顶部，导入名为 **my_parson** 的充当库的 Parson 文件。
 
       ```
-      add_library(my_parson        parson.c        parson.h    )
+      add_library(my_parson
+          parson.c
+          parson.h
+      )
       ```
 
-   3. Add **my_parson** to the list of libraries in the **target_link_libraries** section of the CMakeLists.txt file.
+   3. 将 **my_parson** 添加到 CMakeLists.txt 文件的 **target_link_libraries** 节中的库列表。
 
-   4. Save the **CMakeLists.txt** file.
+   4. 保存 **CMakeLists.txt** 文件。
 
-   5. Open **CModule** > **main.c**. At the bottom of the list of include statements, add a new one to include `parson.h` for JSON support:
+   5. 打开“CModule” > “main.c”。   在 include 语句列表的底部，添加一个新的语句，以便包括适用于 JSON 支持的 `parson.h`：
 
       ```c
       #include "parson.h"

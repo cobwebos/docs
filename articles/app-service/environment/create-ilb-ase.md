@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6f571342b02084ceb8d67fbb889e030194663489
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5b05755502ad5836a21080a122d2e1721825f10c
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493848"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734689"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -109,7 +109,7 @@ ILB ASE 上同时支持函数和 Web 作业，但对于与其配合使用的门�
 
 - 为 *&lt;ASE 名称&gt;.appserviceenvironment.net* 创建一个区域
 - 在该区域中创建一条指向* ILB IP 地址的 A 记录 
-- 在 *&lt;ASE 名称&gt;.appserviceenvironment.net* 中创建名为 scm 的区域
+- 在 *&lt;ASE 名称&gt;.scm.appserviceenvironment.net* 中创建名为 scm 的区域
 - 在 scm 区域中创建一条指向 ILB IP 地址的 A 记录
 
 ## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 发布

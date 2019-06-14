@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: a17461a90a19d775b8c7cac86d0bc6e9a18856bd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: e0d439edc35e70bc8ac477cf56a6bc25e41df083
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860882"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754722"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入门：通过 Azure Cosmos DB SQL API 帐户使用 Xamarin 生成 ToDo 应用
 
@@ -48,7 +48,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>添加集合
+## <a name="add-a-container"></a>添加容器
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -245,7 +245,7 @@ ToDoItems 解决方案中的代码包含：
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门教程已介绍如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建集合，以及构建和部署控制台应用。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。
+本快速入门教程已介绍如何创建 Azure Cosmos 帐户、使用数据资源管理器创建容器，以及生成和部署控制台应用。 现在可将其他数据导入 Azure Cosmos 帐户。
 
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: cb4ad20067783d8d6bd649710950fea51a22a454
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: c97b974919c5aec4c902867604d207cda11e8594
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979145"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754292"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Java 应用程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "65979145"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-本快速入门介绍如何使用 Java 应用程序创建和管理 Azure Cosmos DB [SQL API](sql-api-introduction.md) 帐户的资源。 首先，请使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户，使用 [SQL Java SDK](sql-api-sdk-async-java.md) 创建 Java 应用，使用 Java 应用程序将资源添加到 Cosmos DB 帐户。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 完成本快速入门以后，你就会熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改 Cosmos DB 数据库和集合。
+本快速入门介绍如何使用 Java 应用程序创建和管理 Azure Cosmos DB [SQL API](sql-api-introduction.md) 帐户的资源。 首先，请使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户，使用 [SQL Java SDK](sql-api-sdk-async-java.md) 创建 Java 应用，使用 Java 应用程序将资源添加到 Cosmos DB 帐户。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 完成本快速入门以后，你就会熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改 Cosmos DB 数据库和容器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +48,7 @@ ms.locfileid: "65979145"
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>添加集合
+## <a name="add-a-container"></a>添加容器
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -75,7 +75,7 @@ ms.locfileid: "65979145"
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以跳到[运行应用](#run-the-app)。 
 
-* `AsyncDocumentClient` 初始化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) 为 Azure Cosmos DB 数据库服务提供客户端逻辑表示。 此客户端用于对服务配置和执行请求。
+* `AsyncDocumentClient` 初始化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) 为 Azure Cosmos 数据库服务提供客户端逻辑表示。 此客户端用于对服务配置和执行请求。
 
     ```java
     client = new AsyncDocumentClient.Builder()
@@ -204,7 +204,7 @@ ms.locfileid: "65979145"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何使用数据资源管理器创建 Azure Cosmos DB 帐户、文档数据库和集合，以及如何通过运行应用以编程方式执行同一操作。 现在可以将其他数据导入 Azure Cosmos DB 集合。 
+本快速入门介绍了如何使用数据资源管理器创建 Azure Cosmos 帐户、文档数据库和容器，以及如何通过运行应用以编程方式执行同一操作。 现在可以将其他数据导入 Azure Cosmos 容器。 
 
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)

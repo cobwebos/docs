@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 962955a405d12365f69519b004ea8f95d529a97c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475562"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742852"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -119,7 +119,7 @@ ms.locfileid: "66475562"
 
 #### <a name="create-the-cname-record"></a>创建 CNAME 记录
 
-添加一条 CNAME 记录，以便将子域映射到应用的默认主机名（`<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用的名称）。
+添加一条 CNAME 记录，以便将子域映射到应用的默认域名（`<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用的名称）。
 
 在 `www.contoso.com` 域示例中，添加将名称 `www` 映射到 `<app_name>.azurewebsites.net` 的 CNAME 记录。
 
@@ -129,13 +129,13 @@ ms.locfileid: "66475562"
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>在 Azure 中启用 CNAME 记录映射
 
-在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”  。 
+在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”  。
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 在应用的“自定义域”  页中，将完全限定的自定义 DNS 名称添加到 (`www.contoso.com`) 列表。
 
-选择“添加主机名”  旁边的 **+** 图标。
+选择“添加域名”  旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -143,15 +143,15 @@ ms.locfileid: "66475562"
 
 选择“验证”  。
 
-此时会显示“添加主机名”页。  
+此时会显示“添加自定义域”  页。
 
 确保“主机名记录类型”  设置为“CNAME (www\.example.com 或任何子域)”  。
 
-选择“添加主机名”  。
+选择“添加自定义域”  。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页面中  。 请尝试刷新浏览器来更新数据。
+新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中  。 请尝试刷新浏览器来更新数据。
 
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "66475562"
 若要将 A 记录映射到应用，应用服务需要两个  DNS 记录：
 
 - 要映射到应用 IP 地址的 A  记录。
-- 要映射到应用默认主机名 `<app_name>.azurewebsites.net` 的 TXT  记录。 应用服务仅在配置时使用此记录，以验证你是否拥有自定义域。 自定义域经过验证并且在应用服务中配置后，可以删除此 TXT 记录。
+- 要映射到应用默认域名 `<app_name>.azurewebsites.net` 的 **TXT** 记录。 应用服务仅在配置时使用此记录，以验证你是否拥有自定义域。 自定义域经过验证并且在应用服务中配置后，可以删除此 TXT 记录。
 
 `contoso.com` 域示例根据下表创建 A 和 TXT 记录（`@` 通常表示根域）。
 
@@ -219,23 +219,23 @@ ms.locfileid: "66475562"
 
 在 Azure 门户中返回到应用的“自定义域”  页。将完全限定的自定义 DNS 名称（例如 `contoso.com`）添加到列表。
 
-选择“添加主机名”  旁边的 **+** 图标。
+选择“添加域名”  旁边的 **+** 图标。
 
-![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
+![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 键入已配置 A 记录的完全限定的域名，如 `contoso.com`。
 
 选择“验证”  。
 
-此时会显示“添加主机名”页。  
+此时会显示“添加自定义域”  页。
 
 确保“主机名记录类型”设置为“A 记录 (example.com)”。  
 
-选择“添加主机名”  。
+选择“添加自定义域”  。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页面中  。 请尝试刷新浏览器来更新数据。
+新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中  。 请尝试刷新浏览器来更新数据。
 
 ![已添加 A 记录](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
@@ -258,7 +258,7 @@ ms.locfileid: "66475562"
 
 #### <a name="create-the-cname-record"></a>创建 CNAME 记录
 
-添加一条 CNAME 记录，以便将通配符域名称名映射到应用的默认主机名 (`<app_name>.azurewebsites.net`)。
+添加一条 CNAME 记录，以便将通配符域名称名映射到应用的默认域名 (`<app_name>.azurewebsites.net`)。
 
 在 `*.contoso.com` 域示例中， CNAME 记录将把名称 `*` 映射到 `<app_name>.azurewebsites.net`。
 
@@ -274,23 +274,23 @@ ms.locfileid: "66475562"
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-选择“添加主机名”  旁边的 **+** 图标。
+选择“添加域名”  旁边的 **+** 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 键入与通配符域相匹配的完全限定的域名（例如 `sub1.contoso.com`），然后选择“验证”  。
 
-“添加主机名”  按钮会被激活。 
+“添加自定义域”按钮随即激活。 
 
 确保“主机名记录类型”  设置为“CNAME 记录(www\.example.com 或任何子域)”  。
 
-选择“添加主机名”  。
+选择“添加自定义域”  。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页面中  。 请尝试刷新浏览器来更新数据。
+新的自定义域可能需要经过一段时间后才会反映在应用的“自定义域”页中  。 请尝试刷新浏览器来更新数据。
 
-再次选择 **+** 图标，添加另一个与通配符域匹配的主机名。 例如，添加 `sub2.contoso.com`。
+再次选择 **+** 图标，添加另一个与通配符域匹配的自定义域。 例如，添加 `sub2.contoso.com`。
 
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
@@ -326,7 +326,7 @@ ms.locfileid: "66475562"
 
 ![自定义虚拟目录](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-操作完成后，应用会返回根路径的正确页面（例如， http://contoso.com)。
+操作完成后，应用会返回根路径的正确页面（例如， http://contoso.com) 。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

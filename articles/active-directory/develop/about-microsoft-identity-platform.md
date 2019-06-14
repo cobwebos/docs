@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ead81dfec5c98e810abfe4b88accb9aa9092fc90
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 58136aba278097e9778cc1361ed77a4512e3d51b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472721"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751914"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft 标识平台的发展
 
@@ -58,7 +58,7 @@ Microsoft Graph 中的应用程序 API 当前处于预览阶段  。 使用此 A
 
 ### <a name="msal-libraries"></a>MSAL 库
 
-可以使用 MSAL 库生成对所有 Microsoft 标识进行身份验证的应用程序。 .NET 中的 SAL 库已正式发布。 适用于 JavaScript、iOS 和 Android 的 MSAL 库处于预览阶段，适合用于生产环境。 我们为预览版 MSAL 库提供的生产级别支持与我们为正式版 MSAL 和 ADAL 提供的生产级别支持相同。
+可以使用 MSAL 库生成对所有 Microsoft 标识进行身份验证的应用程序。 .NET 和 JavaScript 中的 MSAL 库已正式发布。 适用于 iOS 和 Android 的 MSAL 库处于预览阶段，适合用于生产环境。 我们为预览版 MSAL 库提供的生产级别支持与我们为正式版 MSAL 和 ADAL 提供的生产级别支持相同。
 
 还可使用 MSAL 库将应用程序与 Azure AD B2C 集成。
 
