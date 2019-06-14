@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 402e3dfe018c94ef068caf918b38aaad00064a49
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62118366"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 中的 Service Fabric Linux 群集事件
@@ -34,8 +34,8 @@ Service Fabric 公开一组平台事件，告知你群集中的重要活动。 �
 每个 Syslog 事件均有 4 个组件
 * 设施
 * 标识
-* 消息
-* 严重性
+* Message
+* Severity
 
 SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 更改 config 配置可更新为任何有效的设施。使用的标识是 `ServiceFabric`。 消息字段包含在 JSON 中序列化的整个事件，以便可通过各种工具查询和使用。 
 
@@ -84,7 +84,7 @@ SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 更改 config �
 ```
 
 下面是需要说明的更改
-1. 在 Common 部分中，有一个名为 `LinuxStructuredTracesEnabled` 的新参数。 这就要求在将 Linux 事件发送到 Syslog 时，将它们组织起来并串行化。
+1. 在 Common 部分中，有一个名为 `LinuxStructuredTracesEnabled` 的新参数。 这就要求在将 Linux 事件发送到 Syslog 时，将它们组织起来并串行化。 
 2. 在 Diagnostics 部分中，添加了一个新的 ConsumerInstance：SyslogConsumer。 这就告诉平台还有另一个事件使用者。 
 3. 新部分 SyslogConsumer 需要将 `IsEnabled` 设为 `true`。 它已配置为自动使用 Local0 设施。 你可以添加另一个参数来替代该设置。
 

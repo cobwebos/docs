@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
 ms.openlocfilehash: 9e1b1953520c5502668fbbae70a37a140253b035
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66241692"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
@@ -27,8 +27,8 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 | 特性 | Type | 描述 |
 | --- | --- | --- |
-| `Display name` |string |策略中用于引用属性的数字字母字符串。 |
-| `Value`        |string |属性的值。 不能为空或只由空格组成。 |
+| `Display name` |字符串 |策略中用于引用属性的数字字母字符串。 |
+| `Value`        |字符串 |属性的值。 不能为空或只由空格组成。 |
 | `Secret`       |boolean|确定值是否为密钥以及是否应加密。|
 | `Tags`         |字符串数组 |可选标记，提供用来筛选属性列表。 |
 
@@ -36,7 +36,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 属性值可以包含文本字符串和[策略表达式](/azure/api-management/api-management-policy-expressions)。 例如，`ExpressionProperty` 的值是一个策略表达式，其返回的字符串包含当前日期和时间。 属性 `ContosoHeaderValue` 被标记为密钥，因此不显示其值。
 
-| 名称 | Value | Secret | Tags |
+| Name | Value | Secret | Tags |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |

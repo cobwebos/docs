@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
 ms.openlocfilehash: a8bfa7c5baa316b4019480bfc146b6cc61eff979
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141303"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名 
@@ -40,7 +40,7 @@ ms.locfileid: "66141303"
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>使用 Azure 门户设置自定义域名
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到你的 APIM 实例。
-1. 选择“自定义域和 SSL”。
+1. 选择“自定义域和 SSL”  。
     
     可以为许多终结点分配自定义域名。 当前有以下终结点可用： 
    + **代理**（默认值为：`<apim-service-name>.azure-api.net`）， 
@@ -52,13 +52,13 @@ ms.locfileid: "66141303"
      > 可以更新所有终结点或者更新其中的一部分。 通常情况下，客户会更新**代理**（此 URL 用来调用通过 API 管理公开的 API）和**门户**（开发人员门户 URL）。 **管理**和 **SCM** 终结点由 APIM 客户在内部使用，因此很少会为其分配自定义域名。
 
 1. 选择要更新的终结点。 
-1. 在右侧窗口中，单击“自定义”。
+1. 在右侧窗口中，单击“自定义”  。
 
-   + 在“自定义域名”中，指定要使用的名称。 例如，`api.contoso.com`。 还支持通配符域名（例如 *.domain.com）。
+   + 在“自定义域名”  中，指定要使用的名称。 例如，`api.contoso.com`。 还支持通配符域名（例如 *.domain.com）。
    + 在**证书**中，从密钥保管库中选择证书。 如果证书受密码保护，你还可以上传有效的 .PFX 文件并提供其**密码**。
 
      > [!TIP]
-     > 如果使用 Azure 密钥保管库来管理自定义域 SSL 证书，请确保该证书[作为证书](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)而不是机密插入到密钥保管库中。 如果证书设置为“自动轮换”，API 管理会自动选取最新版本。
+     > 如果使用 Azure 密钥保管库来管理自定义域 SSL 证书，请确保该证书[作为证书  ](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)而不是机密  插入到密钥保管库中。 如果证书设置为“自动轮换”，API 管理会自动选取最新版本。
 
 1. 单击“应用”。
 

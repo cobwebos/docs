@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 295b64b10f9f78ca6224d60fb84c6d1310aaa42e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60770481"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>快速入门：在虚拟网络中创建 Azure Databricks 工作区
@@ -33,8 +33,8 @@ ms.locfileid: "60770481"
 
     |设置|建议的值|描述|
     |-------|---------------|-----------|
-    |名称|databricks-quickstart|选择虚拟网络的名称。|
-    |地址空间|10.1.0.0/16|用 CIDR 标记来表示的虚拟网络地址范围。|
+    |Name|databricks-quickstart|选择虚拟网络的名称。|
+    |地址空间|10.1.0.0/16|虚拟网络的地址范围用 CIDR 表示法。|
     |订阅|用户的订阅\<\>|选择要使用的 Azure 订阅。|
     |资源组|databricks-quickstart|选择**创建新**并输入你的帐户的新资源组名称。|
     |Location|\<选择离用户最近的区域\>|选择可以在其中托管你的虚拟网络的地理位置。 使用最靠近用户的位置。|
@@ -84,7 +84,7 @@ ms.locfileid: "60770481"
 
 1. 返回到 Azure Databricks 服务，然后选择**启动工作区**上**概述**页。
 
-2. 选择**群集** > **+ 创建群集**。 然后创建一个群集名称，例如*databricks 快速入门群集*，并接受其余默认设置。 选择“创建群集”。
+2. 选择**群集** >  **+ 创建群集**。 然后创建一个群集名称，例如*databricks 快速入门群集*，并接受其余默认设置。 选择“创建群集”。 
 
     ![创建 Azure Databricks 群集](./media/quickstart-create-databricks-workspace-vnet-injection/create-cluster.png)
 
@@ -98,9 +98,9 @@ ms.locfileid: "60770481"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本文后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”。 针对想要终止的群集，将光标移到“操作”列下面的省略号上，选择“终止”图标。 这将停止该群集。
+完成本文后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”。  针对想要终止的群集，将光标移到“操作”  列下面的省略号上，选择“终止”  图标。 这将停止该群集。
 
-如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”  复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 如果不希望重复使用该群集，则可以删除在 Azure 门户中创建的资源组。
 

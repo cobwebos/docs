@@ -12,10 +12,10 @@ author: marthalc
 ms.date: 04/02/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60820226"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>使用 Application Insights 监视 Azure 机器学习模型
@@ -83,31 +83,31 @@ ms.locfileid: "60820226"
 
 1. 在 [Azure 门户](https://portal.azure.com)中打开你的工作区。
 
-1. 在“部署”选项卡上，选择要启用 Application Insights 的服务。
+1. 在“部署”选项卡上，选择要启用 Application Insights 的服务。 
 
    [![“部署”选项卡上的服务列表](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
-3. 选择“编辑”。
+3. 选择“编辑”  。
 
    [![编辑按钮](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-4. 在“高级设置”中，选中“启用 AppInsights 诊断”复选框。
+4. 在“高级设置”中，选中“启用 AppInsights 诊断”复选框   。
 
    [![已选中启用诊断的复选框](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
-1. 选择屏幕底部的“更新”以应用更改。 
+1. 选择屏幕底部的“更新”以应用更改  。 
 
 ### <a name="disable"></a>禁用
 1. 在 [Azure 门户](https://portal.azure.com)中打开你的工作区。
-1. 依次选择“部署”、所需服务、“编辑”。
+1. 依次选择“部署”、所需服务、“编辑”。  
 
    [![使用编辑按钮](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-1. 在“高级设置”中，清除“启用 AppInsights 诊断”复选框。 
+1. 在“高级设置”中，清除“启用 AppInsights 诊断”复选框   。 
 
    [![已清除启用诊断的复选框](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
-1. 选择屏幕底部的“更新”以应用更改。 
+1. 选择屏幕底部的“更新”以应用更改  。 
  
 
 ## <a name="evaluate-data"></a>评估数据
@@ -117,12 +117,12 @@ ms.locfileid: "60820226"
 
     [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. 选择“概述”选项卡可查看服务的一组基本指标。
+1. 选择“概述”  选项卡可查看服务的一组基本指标。
 
    [![概述](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-3. 若要深入查看自定义跟踪，请选择“分析”。
-4. 在架构部分，选择“跟踪”。 然后选择“运行”以运行查询。 数据应以表格格式显示，并且应映射到评分文件中的自定义调用。 
+3. 若要深入查看自定义跟踪，请选择“分析”  。
+4. 在架构部分，选择“跟踪”。  然后选择“运行”以运行查询。  数据应以表格格式显示，并且应映射到评分文件中的自定义调用。 
 
    [![自定义追踪](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
 ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129053"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>如何创建 Azure 支持请求
@@ -96,7 +96,7 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 ![全天候联系信息](./media/how-to-create-azure-support-request/ContactInformation-2.png)
 
 ## <a name="all-support-requests"></a>所有支持请求
-创建支持请求后，可从“所有支持请求”页面查看详细信息。
+创建支持请求后，可从“所有支持请求”  页面查看详细信息。
 
 **从顶部导航栏**
 
@@ -106,7 +106,7 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 
 ![所有支持请求链接](./media/how-to-create-azure-support-request/AllSupportRequest-link.png)
 
-在“所有支持请求”页面上，可查看所有支持请求及其状态。
+在“所有支持请求”  页面上，可查看所有支持请求及其状态。
 
 ![所有支持请求](./media/how-to-create-azure-support-request/AllSupportRequest.png)
 
@@ -116,7 +116,7 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 选择支持请求查看详细信息，包括严重性和支持工程师响应所需的预期时间。
 ![VID](./media/how-to-create-azure-support-request/VID.png)
 
-如果要更改请求的严重性，请单击“业务影响”磁贴。 在之前的示例中，请求当前设置为严重性 C。
+如果要更改请求的严重性，请单击“业务影响”  磁贴。 在之前的示例中，请求当前设置为严重性 C。
 
 单击磁贴会显示可分配到打开的支持请求的严重性列表。
 

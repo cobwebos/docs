@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609493"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure 安全性和符合性蓝图 - 适用于英国官方的三层 IaaS Web 应用程序
@@ -154,7 +154,7 @@ ms.locfileid: "60609493"
 
 **网络安全组**：[NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 包含允许或拒绝 VNet 中流量的访问控制列表。 NSG 可用于在子网或单个 VM 的级别保护流量。
 
-**Active Directory 域服务 (AD DS)**：此体系结构提供专用的 [Active Directory 域服务](https://technet.microsoft.com/library/hh831484.aspx)部署。
+**Active Directory 域服务 (AD DS)** ：此体系结构提供专用的 [Active Directory 域服务](https://technet.microsoft.com/library/hh831484.aspx)部署。
 
 **日志记录和审核**：[Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)捕获针对订阅中的资源执行的操作，例如，操作的发起者、操作发生时间、操作状态，以及可能有助于调查该操作的其他属性值。 Azure 活动日志是一个 Azure 平台服务，可捕获针对订阅执行的所有操作。 可根据需要将日志存档或导出。
 

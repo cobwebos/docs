@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89c76ad0739edea4c0541ace76ca2311453de71d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963023"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
@@ -40,22 +40,22 @@ ms.locfileid: "65963023"
 
 | 错误 | 解决方案 |
 | --- | --- |
-| Azure 门户中的“Azure AD”下面未显示“密码重置”部分。 | 如果未向执行该操作的管理员分配 Azure AD Premium 或 Basic 许可证，可能会发生这种情况。 <br> <br> 请向相关的管理员帐户分配许可证。 可以遵循[分配、验证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)一文中的步骤。|
+| Azure 门户中的“Azure AD”下面未显示“密码重置”部分。  | 如果未向执行该操作的管理员分配 Azure AD Premium 或 Basic 许可证，可能会发生这种情况。 <br> <br> 请向相关的管理员帐户分配许可证。 可以遵循[分配、验证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)一文中的步骤。|
 | 未看到某个特定的配置选项。 | UI 的许多元素都是隐藏的，直到需要它们时才会显示。 如果希望看到它们，请尝试启用所有选项。 |
-| 未看到“本地集成”选项卡。 | 仅已下载 Azure AD Connect 并配置了密码写回时，此选项才可见。 有关详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](../hybrid/how-to-connect-install-express.md)。 |
+| 未看到“本地集成”选项卡。  | 仅已下载 Azure AD Connect 并配置了密码写回时，此选项才可见。 有关详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](../hybrid/how-to-connect-install-express.md)。 |
 
 ## <a name="troubleshoot-password-reset-reporting"></a>排查密码重置报告问题
 
 | 错误 | 解决方案 |
 | --- | --- |
-| “自助密码管理”审核事件类别中未显示任何密码管理活动类型。 | 如果未向执行该操作的管理员分配 Azure AD Premium 或 Basic 许可证，可能会发生这种情况。 <br> <br> 可以通过向相关管理员帐户分配许可证解决此问题。 请遵循[分配、验证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)一文中的步骤。 |
+| “自助密码管理”审核事件类别中未显示任何密码管理活动类型。  | 如果未向执行该操作的管理员分配 Azure AD Premium 或 Basic 许可证，可能会发生这种情况。 <br> <br> 可以通过向相关管理员帐户分配许可证解决此问题。 请遵循[分配、验证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)一文中的步骤。 |
 | 用户注册显示了多次。 | 目前，当用户注册时，我们会将所注册的每个单独的数据片记录为一个单独的事件。 <br> <br> 如果希望聚合此数据并更灵活地查看此数据，可以下载报告并在 excel 中作为数据透视表打开数据。
 
 ## <a name="troubleshoot-the-password-reset-registration-portal"></a>排查密码重置注册门户问题
 
 | 错误 | 解决方案 |
 | --- | --- |
-| 未针对密码重置启用目录。 **管理员没有允许使用此功能。** | 将“自助密码重置已启用”标志切换为“选定”或“全部”，并选择“保存”。 |
+| 未针对密码重置启用目录。 **管理员没有允许使用此功能。** | 将“自助密码重置已启用”  标志切换为“选定”  或“全部”  ，并选择“保存”  。 |
 | 未为用户分配 Azure AD Premium 或 Basic 许可证。 **管理员没有允许使用此功能。** | 如果未向执行该操作的管理员分配 Azure AD Premium 或 Basic 许可证，可能会发生这种情况。 <br> <br> 可以通过向相关管理员帐户分配许可证解决此问题。 请遵循[分配、验证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)一文中的步骤。|
 | 处理请求时出错。 | 许多问题都可能会导致此错误，但此错误通常是由服务中断或者配置问题导致的。 如果看到了此错误并且它影响了业务，请与 Microsoft 支持人员联系，以获得更多的帮助。 |
 
@@ -63,10 +63,10 @@ ms.locfileid: "65963023"
 
 | 错误 | 解决方案 |
 | --- | --- |
-| 未针对密码重置启用目录。 | 将“自助密码重置已启用”标志切换为“选定”或“全部”，并选择“保存”。 |
+| 未针对密码重置启用目录。 | 将“自助密码重置已启用”  标志切换为“选定”  或“全部”  ，并选择“保存”  。 |
 | 未为用户分配 Azure AD Premium 或 Basic 许可证。 | 如果未向执行该操作的管理员分配 Azure AD Premium 或 Basic 许可证，可能会发生这种情况。 <br> <br> 可以通过向相关管理员帐户分配许可证解决此问题。 请遵循[分配、验证和解决许可证问题](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)一文中的步骤。 |
 | 已针对密码重置启用了目录，但用户的身份验证信息缺失或格式错误。 | 在继续之前，请确保用户在目录下的文件中有格式正确的联系人数据。 有关详细信息，请参阅 [Azure AD 自助密码重置使用的数据](howto-sspr-authenticationdata.md)。 |
-| 已针对密码重置启用目录，但用户在文件中只有一个联系人数据片段，而策略要求执行两种验证方法。 | 在继续之前，请确保用户至少有两个正确配置的联系方法。 例如，同时提供了移动电话号码和办公电话号码。 |
+| 已针对密码重置启用目录，但用户在文件中只有一个联系人数据片段，而策略要求执行两种验证方法。 | 在继续之前，请确保用户至少有两个正确配置的联系方法。 例如，同时提供了移动电话号码和办公电话号码。  |
 | 已针对密码重置启用目录并正确配置用户，但无法联系到用户。 | 这可能是因临时服务错误或错误的联系人数据导致的，我们无法正确检测到这些错误。 <br> <br> 如果用户等待 10 秒，将出现“重试”和“联系管理员”链接。 如果用户选择“重试”，则会重试呼叫。 如果用户选择“联系管理员”，则向管理员发送表单电子邮件，请求为该用户帐户执行密码重置。 |
 | 用户一直收不到密码重置短信或电话呼叫。 | 这可能是由于目录中的电话号码格式不正确导致的。 请确保电话号码的格式为“+ccc xxxyyyzzzzXeeee”。 <br> <br> 密码重置不支持分机，即使你在目录中指定了分机。 分机号码在呼叫前被剥离。 使用不带分机的号码，或者在专用交换机 (PBX) 中将分机集成到电话号码中。 |
 | 用户一直收不到密码重置电子邮件。 | 此问题的最常见原因是消息被垃圾邮件筛选器拒绝。 请检查垃圾邮件或已删除邮件文件夹中是否有电子邮件。 <br> <br> 另请确保在正确的电子邮箱帐户中检查是否有该邮件。 |
@@ -82,7 +82,7 @@ ms.locfileid: "65963023"
 | 错误 | 解决方案 |
 | --- | --- |
 | 密码重置服务无法在本地启动。 Azure AD Connect 计算机的应用程序事件日志中出现错误 6800。 <br> <br> 加入后，联合身份验证、直通身份验证或密码哈希同步的用户无法重置其密码。 | 当启用了密码写回时，同步引擎将调用写回库通过与云登记服务进行通信来执行配置（登记）。 在登记期间或者为密码写回启动 Windows Communication Foundation (WCF) 终结点时遇到任何错误都将导致在 Azure AD Connect 计算机的事件日志中生成错误。 <br> <br> 在重启 Azure AD Sync (ADSync) 服务期间，如果配置了写回，则 WCF 终结点将启动。 但是，如果终结点启动失败，我们将记录事件 6800 并允许同步服务启动。 存在此事件意味着密码写回终结点未启动。 此事件 6800 的事件日志详细信息以及 PasswordResetService 组件生成的事件日志条目将指明终结点无法启动的原因。 请查看这些事件日志错误，如果密码写回仍不能正常工作，请尝试重启 Azure AD Connect。 如果问题仍然存在，请尝试禁用并重新启用密码写回。
-| 如果用户尝试重置密码或解锁启用了密码写回功能的帐户，则操作会失败。 <br> <br> 此外，在解锁操作执行后，Azure AD Connect 事件日志中将显示一个事件，其中包含：“同步引擎返回了错误 hr=800700CE，消息=文件名或扩展名太长”。 | 查找用于 Azure AD Connect 的 Active Directory 帐户并重置密码，使其包含不能超过 256 个字符。 然后，从“开始”菜单打开“同步服务”。 浏览到“连接器”并找到“Active Directory 连接器”。 选择它，然后选择“属性”。 浏览到“凭据”页，并输入新密码。 选择“确定”关闭页面。 |
+| 如果用户尝试重置密码或解锁启用了密码写回功能的帐户，则操作会失败。 <br> <br> 此外，在解锁操作执行后，Azure AD Connect 事件日志中将显示一个事件，其中包含：“同步引擎返回了错误 hr=800700CE，消息=文件名或扩展名太长”。 | 查找用于 Azure AD Connect 的 Active Directory 帐户并重置密码，使其包含不能超过 256 个字符。 然后，从“开始”菜单打开“同步服务”。   浏览到“连接器”并找到“Active Directory 连接器”。   选择它，然后选择“属性”。  浏览到“凭据”页，并输入新密码。  选择“确定”关闭页面。  |
 | 在 Azure AD Connect 安装过程的最后一步，看到了一个错误，它指出无法配置密码写回。 <br> <br> Azure AD Connect 应用程序事件日志包含错误 32009，其文本为“获取身份验证令牌时出错”。 | 在以下两种情况下会发生此错误： <br><ul><li>为在 Azure AD Connect 安装过程开始时指定的全局管理员帐户指定了错误的密码。</li><li>试图将联合用户用于在 Azure AD Connect 安装过程开始时指定的全局管理员帐户。</li></ul> 若要解决此问题，请确保未将联合帐户用于在安装过程开始时指定的全局管理员帐户。 另请确保指定的密码正确。 |
 | Azure AD Connect 计算机事件日志包含运行 PasswordResetService 时引发的错误 32002。 <br> <br> 错误内容如下：“连接到 ServiceBus 时出错。 令牌提供程序无法提供安全令牌。” | 本地环境无法连接到云中的 Azure 服务总线终结点。 此错误是由于防火墙规则阻止了到特定端口或 web 地址的出站连接导致的。 有关详细信息，请参阅[连接先决条件](../hybrid/how-to-connect-install-prerequisites.md)。 在更新这些规则后，重新启动 Azure AD Connect 计算机，密码写回应当会再次开始工作。 |
 | 工作一段时间后，联合身份验证、直通身份验证或密码哈希同步的用户无法重置其密码。 | 在某些极少见的情况下，当 Azure AD Connect 已重启时，密码写回服务可能无法重启。 在这些情况下，首先，请检查是否已在本地启用了密码写回。 可以使用 Azure AD Connect 向导或 PowerShell 执行检查（请参阅上面的“操作说明”部分）。 如果此功能显示为已启用，请尝试通过 UI 或 PowerShell 再次启用或禁用此功能。 如果这不起作用，请尝试完全卸载并重新安装 Azure AD Connect。 |
@@ -178,10 +178,10 @@ ms.locfileid: "65963023"
 
 若要解决连接问题或该服务出现的其他暂时性问题，请重启 Azure AD Connect Sync 服务：
 
-1. 在运行 Azure AD Connect 的服务器上以管理员身份选择“开始”。
+1. 在运行 Azure AD Connect 的服务器上以管理员身份选择“开始”。 
 1. 在搜索字段中输入 **services.msc**，按 **Enter**。
-1. 找到“Microsoft Azure AD Sync”条目。
-1. 右键单击该服务条目，选择“重启”，并等待操作完成。
+1. 找到“Microsoft Azure AD Sync”条目。 
+1. 右键单击该服务条目，选择“重启”，并等待操作完成。 
 
    ![重新启动 Azure AD Sync 服务使用 GUI][Service restart]
 
@@ -192,15 +192,15 @@ ms.locfileid: "65963023"
 若要解决连接问题，请禁用再重新启用密码写回功能：
 
    1. 以管理员身份打开 Azure AD Connect 配置向导。
-   1. 在“连接到 Azure AD”中，输入 Azure AD 全局管理员凭据。
-   1. 在“连接到 AD DS”中，输入 AD 域服务管理员凭据。
-   1. 在“唯一标识用户”中，选择“下一步”按钮。
-   1. 在“可选功能”中，清除“密码写回”复选框。
-   1. 选择“下一步”完成剩余的对话框页，而不更改任何内容，直到转到“准备好配置”页。
-   1. 确保“准备好配置”页上的“密码写回”选项显示为“已禁用”，并选择绿色的“配置”按钮提交所做的更改。
-   1. 在“已完成”中，清除“立即同步”选项，并选择“完成”关闭向导。
+   1. 在“连接到 Azure AD”中，输入 Azure AD 全局管理员凭据。 
+   1. 在“连接到 AD DS”中，输入 AD 域服务管理员凭据。 
+   1. 在“唯一标识用户”中，选择“下一步”按钮。  
+   1. 在“可选功能”中，清除“密码写回”复选框。  
+   1. 选择“下一步”完成剩余的对话框页，而不更改任何内容，直到转到“准备好配置”页。  
+   1. 确保“准备好配置”页上的“密码写回”选项显示为“已禁用”，并选择绿色的“配置”按钮提交所做的更改。    
+   1. 在“已完成”中，清除“立即同步”选项，并选择“完成”关闭向导。   
    1. 重新打开 Azure AD Connect 配置向导。
-   1. 重复步骤 2-8，但确保选中“可选功能”页上的“密码写回”选项以重新启用该服务。
+   1. 重复步骤 2-8，但确保选中“可选功能”页上的“密码写回”选项以重新启用该服务。  
 
 这些步骤重新建立与云服务的连接，并解决可能出现的任何中断。
 
@@ -213,7 +213,7 @@ ms.locfileid: "65963023"
 我们建议仅在尝试了上述前两个步骤后再执行此步骤。
 
 > [!WARNING]
-> 如果自定义了现成的同步规则，请先备份这些规则，再继续进行升级，并在完成后手动重新部署这些规则。
+> 如果自定义了现成的同步规则，请先备份这些规则，再继续进行升级，并在完成后手动重新部署这些规则。 
 
 1. 从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?LinkId=615771)下载最新版本的 Azure AD Connect。
 1. 由于已安装 Azure AD Connect，则需要执行就地升级将 Azure AD Connect 安装更新到最新版本。
@@ -225,29 +225,29 @@ ms.locfileid: "65963023"
 
 ## <a name="verify-that-azure-ad-connect-has-the-required-permission-for-password-writeback"></a>验证 Azure AD Connect 是否具有密码写回所需的权限
 
-Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密码写回。 若要了解 Azure AD Connect 是否具有给定本地 Active Directory 用户帐户的所需权限，可使用 Windows 有效权限功能：
+Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密码写回  。 若要了解 Azure AD Connect 是否具有给定本地 Active Directory 用户帐户的所需权限，可使用 Windows 有效权限功能：
 
-1. 登录到 Azure AD Connect 服务器，并选择“开始” > “同步服务”启动“Synchronization Service Manager”。
-1. 在“连接器”选项卡下，选择本地“Active Directory 域服务器”连接器，并选择“属性”。  
+1. 登录到 Azure AD Connect 服务器，并选择“开始”   >   “同步服务”启动“Synchronization Service Manager”。 
+1. 在“连接器”选项卡下，选择本地“Active Directory 域服务器”连接器，并选择“属性”。     
    ![同步服务管理器显示了如何编辑属性](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
-1. 在弹出窗口中，选择“连接到 Active Directory 林”，并记下“用户名”属性。 此属性是 Azure AD Connect 用于执行目录同步的 AD DS 帐户。 若要让 Azure AD Connect 执行密码写回，AD DS 帐户必须具有重置密码权限。  
+1. 在弹出窗口中，选择“连接到 Active Directory 林”，并记下“用户名”属性   。 此属性是 Azure AD Connect 用于执行目录同步的 AD DS 帐户。 若要让 Azure AD Connect 执行密码写回，AD DS 帐户必须具有重置密码权限。  
 
    ![查找同步服务 Active Directory 用户帐户](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
-1. 登录到本地域控制器并启动“Active Directory 用户和计算机”应用程序。
-1. 选择“视图”并确保已启用“高级功能”选项。  
+1. 登录到本地域控制器并启动“Active Directory 用户和计算机”应用程序  。
+1. 选择“视图”并确保已启用“高级功能”选项   。  
 
    ![Active Directory 用户和计算机显示高级功能](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
-1. 查找要验证的 Active Directory 用户帐户。 右键单击帐户名称并选择“属性”。  
-1. 在弹出窗口中，转到“安全”选项卡，并选择“高级”。  
-1. 在“管理员的高级安全设置”弹出窗口中，转到“有效访问权限”选项卡。
-1. 选择“选择用户”并选择 Azure AD Connect 使用的 AD DS 帐户（请参阅步骤 3），然后选择“查看有效访问权限”。
+1. 查找要验证的 Active Directory 用户帐户。 右键单击帐户名称并选择“属性”  。  
+1. 在弹出窗口中，转到“安全”选项卡，并选择“高级”   。  
+1. 在“管理员的高级安全设置”弹出窗口中，转到“有效访问权限”选项卡   。
+1. 选择“选择用户”并选择 Azure AD Connect 使用的 AD DS 帐户（请参阅步骤 3），然后选择“查看有效访问权限”   。
 
    ![显示同步帐户的有效访问选项卡](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
-1. 向下滚动并查找“重置密码”。 如果已选中该条目，则表示 AD DS 帐户有权重置所选 Active Directory 用户帐户的密码。  
+1. 向下滚动并查找“重置密码”  。 如果已选中该条目，则表示 AD DS 帐户有权重置所选 Active Directory 用户帐户的密码。  
 
    ![验证同步帐户具有重置密码权限](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
@@ -264,12 +264,12 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 * **错误的一般描述**：错误是什么？ 看到该错误时出现了哪种行为？ 我们如何再现该错误？ 请尽量提供详尽的信息。
 * **页面**：在哪个页面上看到了该错误？ 请附送页面的 URL（如果可以）和屏幕截图。
 * **支持代码**：用户看到该错误时生成了哪个支持代码？
-   * 若要找到此代码，请再现错误，然后选择屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师。
+   * 若要找到此代码，请再现错误，然后选择屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师  。
 
    ![在屏幕底部查找支持代码][Support code]
 
   * 如果所在页面的底部没有支持代码，请按 F12，搜索 SID 和 CID，然后将这两个结果发送给支持工程师。
-* **日期、时间和时区**：包含发生错误时的确切日期和时间及“时区”。
+* **日期、时间和时区**：包含发生错误时的确切日期和时间及“时区”  。
 * **用户 ID**：哪个用户看到了该错误？ 例如，*用户\@contoso.com*。
    * 是否是联合用户？
    * 是否是直通身份验证用户？

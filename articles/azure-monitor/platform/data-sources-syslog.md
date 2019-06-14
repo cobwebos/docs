@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60240856"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
@@ -30,7 +30,7 @@ Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将�
 
 ![Syslog 收集](media/data-sources-syslog/overview.png)
 
-系统日志收集器支持以下功能：
+Syslog 收集器支持以下功能：
 
 * kern
 * user
@@ -46,7 +46,7 @@ Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将�
 * ftp
 * local0-local7
 
-针对任何其他设施[自定义日志数据源配置](data-sources-custom-logs.md)Azure 监视器中。
+对于任何其他功能，请在 Azure Monitor 中[配置自定义日志数据源](data-sources-custom-logs.md)。
  
 ## <a name="configuring-syslog"></a>配置 Syslog
 针对 Linux 的 Log Analytics 代理将仅收集在其配置中指定设施和严重级别的事件。 通过 Azure 门户或通过管理 Linux 代理的配置文件来配置 Syslog。
@@ -161,7 +161,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
 
 可通过创建两个配置文件来更改端口号：FluentD 配置文件和 rsyslog-or-syslog-ng（取决于已安装的 Syslog 守护程序）。  
 
-* FluentD 配置文件应为新文件（位于 `/etc/opt/microsoft/omsagent/conf/omsagent.d`），同时用自定义端口号替换“端口”条目中的值。
+* FluentD 配置文件应为新文件（位于 `/etc/opt/microsoft/omsagent/conf/omsagent.d`），同时用自定义端口号替换“端口”条目中的值  。
 
         <source>
           type syslog
@@ -186,7 +186,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* 若要修改 syslog-ng 配置，应复制下面显示的示例配置，然后将自定义修改设置添加到 syslog-ng.conf 配置文件（位于 `/etc/syslog-ng/`）的末尾。 不要使用默认标签 %WORKSPACE_ID%_oms 或 %WORKSPACE_ID_OMS，请定义自定义标签，以帮助区分你的更改。  
+* 若要修改 syslog-ng 配置，应复制下面显示的示例配置，然后将自定义修改设置添加到 syslog-ng.conf 配置文件（位于 `/etc/syslog-ng/`）的末尾。 不要使用默认标签 %WORKSPACE_ID%_oms 或 %WORKSPACE_ID_OMS，请定义自定义标签，以帮助区分你的更改。     
 
     > [!NOTE]
     > 如果修改了配置文件中的默认值，代理应用默认配置时将覆盖这些值。

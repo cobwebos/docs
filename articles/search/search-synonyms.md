@@ -11,10 +11,10 @@ manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024318"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure 搜索中的同义词功能
@@ -25,9 +25,9 @@ ms.locfileid: "65024318"
 
 ## <a name="create-synonyms"></a>创建同义词
 
-没有用于创建同义词门户支持，但您可以使用 REST API 或.NET SDK。 若要开始使用 REST，我们建议[使用 Postman](search-fiddler.md)和使用此 API 的请求的表述：[创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 有关C#开发人员，您可以开始使用[将同义词添加在 Azure 搜索中使用C# ](search-synonyms-tutorial-sdk.md)。
+我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议[使用 Postman](search-fiddler.md)，并使用此 API 来表述请求：[创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
 
-（可选） 如果使用的[客户托管密钥](search-security-manage-encryption-keys.md)对服务端加密的静态，可以保护应用于的同义词映射内容。
+另外，如果使用[客户托管密钥](search-security-manage-encryption-keys.md)进行服务端静态加密，则可对同义词映射的内容应用该保护。
 
 ## <a name="use-synonyms"></a>使用同义词
 
@@ -76,14 +76,14 @@ ms.locfileid: "65024318"
 
 ##### <a name="apache-solr-synonym-format"></a>Apache Solr 同义词格式
 
-Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Solr，本文档中所述的开源同义词筛选器规范：[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 下面是等效同义词的示例规则。
+Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Solr 的开源同义词筛选器规范，详情请参阅此文档：[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 下面是等效同义词的示例规则。
 ```
 USA, United States, United States of America
 ```
 
 使用以上规则，搜索查询“USA”会扩展为“USA”、“United States”或“United States of America”。
 
-箭头“=>”表示显式映射。 如果指定匹配的左上方的搜索查询术语序列"= >"将替换为在右侧的替代方法。 给定以下规则，搜索查询“Washington”、“Wash”。 或“WA”全都会重写为“WA”。 显式映射只会按指定方向应用，在此示例中，不会将查询“WA”重写为“Washington”。
+箭头“=>”表示显式映射。 如果指定，与“=>”左侧内容匹配的一系列搜索查询词会被替换为“=>”右侧的替代项。 给定以下规则，搜索查询“Washington”、“Wash”。 或“WA”全都会重写为“WA”。 显式映射只会按指定方向应用，在此示例中，不会将查询“WA”重写为“Washington”。
 ```
 Washington, Wash., WA => WA
 ```

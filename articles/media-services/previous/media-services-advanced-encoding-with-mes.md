@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61230182"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码 
@@ -239,7 +239,7 @@ ms.locfileid: "61230182"
 
   * 帧数（如果为非负整数），例如，"Start":"120"；
   * 相对于源持续时间（如果以 % 为后缀表示），例如："Start":"15%"，或者
-  * 时间戳（如果以 HH:MM:SS...  格式表示），例如："Start":"00:01:00"
+  * 时间戳（如果以 HH:MM:SS... 格式表示），例如："Start":"00:01:00"
 
     可以随意混搭使用表示法。
 
@@ -917,7 +917,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>仅以最低比特率插入视频
 
-假设要使用多比特率编码预设（如[“H264 多比特率 720p”](media-services-mes-preset-h264-multiple-bitrate-720p.md)）对整个输入目录进行编码以实现流式处理，且输入目录中混合了视频文件和仅音频文件。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 为此，需要使用“InsertBlackIfNoVideoBottomLayerOnly”标志。
+假设要使用多比特率编码预设（如[“H264 多比特率 720p”](media-services-mes-preset-h264-multiple-bitrate-720p.md)）对整个输入目录进行编码以实现流式处理，且输入目录中混合了视频文件和仅音频文件。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 为此，需要使用“InsertBlackIfNoVideoBottomLayerOnly”  标志。
 
 可使用[此部分](media-services-mes-presets-overview.md)中所述的任何 MES 预设，并进行以下修改：
 
@@ -933,7 +933,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 #### <a name="xml-preset"></a>XML 预设
 
-使用 XML 时，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly" 作为“H264Video”元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”的属性。
+使用 XML 时，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly" 作为“H264Video”  元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”  的属性。
 
 ```
 . . .
@@ -976,7 +976,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 #### <a name="xml-preset"></a>XML 预设
 
-使用 XML 时，请使用 Condition="InsertBlackIfNoVideo" 作为“H264Video”元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”的属性。
+使用 XML 时，请使用 Condition="InsertBlackIfNoVideo" 作为“H264Video”  元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”  的属性。
 
 ```
 . . .

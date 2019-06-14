@@ -8,20 +8,18 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 778151e401624398b70101a242e4cf0be8e0a1b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3337d0a0159ef5e57ea3bbaba1c6cc2ac8489ff
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485304"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808126"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-using-azure-cli"></a>使用 Azure CLI 检索主机名、端口和访问密钥
 
 若要检索主机名和端口使用 Azure CLI 可以调用[az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show)，并检索的密钥，可调用[az redis 列出密钥](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys)。 以下脚本调用这两个命令，并将主机名、 端口和密钥向控制台回显。
 
 ```azurecli
-#/bin/bash
-
 # Retrieve the hostname, ports, and keys for contosoCache located in contosoGroup
 
 # Retrieve the hostname and ports for an Azure Cache for Redis instance
@@ -39,4 +37,4 @@ echo "Primary Key:" ${keys[0]}
 echo "Secondary Key:" ${keys[1]}
 ```
 
-有关此脚本的详细信息，请参阅[适用于 Redis Azure 缓存获取主机名、 端口和密钥](../articles/azure-cache-for-redis/scripts/cache-keys-ports.md)。 Azure CLI 的详细信息请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)并[开始使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
+有关此脚本的详细信息，请参阅[适用于 Redis Azure 缓存获取主机名、 端口和密钥](../articles/azure-cache-for-redis/scripts/cache-keys-ports.md)。 Azure CLI 的详细信息请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)并[开始使用 Azure CLI](/cli/azure/get-started-with-azure-cli)。

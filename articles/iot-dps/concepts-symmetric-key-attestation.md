@@ -3,16 +3,16 @@ title: Azure IoT 中心设备预配服务 - 对称密钥证明
 description: 本文以概念的方式概述了使用 IoT 设备预配服务的对称密钥证明。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/18/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60746049"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
@@ -26,7 +26,7 @@ ms.locfileid: "60746049"
 
 ## <a name="symmetric-key-creation"></a>对称密钥创建
 
-默认情况下，当保存新注册且启用“自动生成密钥”选项时，设备预配服务会创建默认长度为 32 个字节的新对称密钥。
+默认情况下，当保存新注册且启用“自动生成密钥”选项时，设备预配服务会创建默认长度为 32 个字节的新对称密钥  。
 
 ![自动生成对称密钥](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "60746049"
 
 使用 IoT 中心支持的相同[安全令牌](../iot-hub/iot-hub-devguide-security.md#security-token-structure)来执行含设备预配服务的对称密钥证明，以标识设备。 这些安全令牌都是[共享访问签名 (SAS) 令牌](../service-bus-messaging/service-bus-sas.md)。 
 
-SAS 令牌具有使用对称密钥创建的哈希签名。 设备预配服务会重新创建该签名，以验证在证明期间显示的安全令牌是否可信。
+SAS 令牌具有使用对称密钥创建的哈希签名  。 设备预配服务会重新创建该签名，以验证在证明期间显示的安全令牌是否可信。
 
 SAS 令牌的格式如下：
 
@@ -52,7 +52,7 @@ SAS 令牌的格式如下：
 | {resourceURI} |以设备预配服务实例的范围 ID 开头、可通过此令牌访问的注册终结点的 URI。 例如： `{Scope ID}/registrations/{Registration ID}` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
-| {policyName} |此令牌所引用的共享访问策略名称。 使用对称密钥证明预配时使用的策略名称是“注册”。 |
+| {policyName} |此令牌所引用的共享访问策略名称。 使用对称密钥证明预配时使用的策略名称是“注册”  。 |
 
 当设备使用单个注册进行证明时，设备将使用在单个注册条目中定义的对称密钥创建 SAS 令牌的哈希签名。
 
@@ -102,7 +102,7 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 理想情况下，在中心中派生和安装设备密钥。 此方法可保证不会在部署到设备的任何软件中包含组密钥。 向设备分配 MAC 地址或序列号后，可以派生密钥，并将其注入到设备，而无论制造商选择以何种方式来存储它。
 
-请考虑下图，该图显示了一个设备密钥表，这些设备密钥通过以下方式在中心中生成：通过组注册密钥 (K) 对每个设备注册 ID 进行哈希处理。 
+请考虑下图，该图显示了一个设备密钥表，这些设备密钥通过以下方式在中心中生成：通过组注册密钥 (K) 对每个设备注册 ID 进行哈希处理  。 
 
 ![从中心分配的设备密钥](./media/concepts-symmetric-key-attestation/key-diversification.png)
 

@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c57ed956ec50c8bac26720a27894c07353928336
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873895"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>MSAL.js 的 Internet Explorer 和 Microsoft Edge 浏览器上的已知的问题
@@ -46,7 +46,7 @@ ms.locfileid: "65873895"
     - [Bug 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
     - [Bug 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
 
-### <a name="update-fix-available-in-msaljs-023"></a>更新:MSAL.js 0.2.3 提供修复程序
+### <a name="update-fix-available-in-msaljs-023"></a>更新：MSAL.js 0.2.3 提供修复程序
 修复了在中发布的身份验证重定向循环问题[MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)。 启用标志`storeAuthStateInCookie`MSAL.js 配置才能利用此修补程序中。 默认情况下此标志设置为 false。
 
 当`storeAuthStateInCookie`启用标志，MSAL.js 将使用浏览器 cookie 来存储所需的身份验证流验证的请求状态。
