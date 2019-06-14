@@ -9,15 +9,15 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 16cb27ab330118d1bb59cf4f3d782bf55fa28d43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60517101"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>使用 Azure IoT Central 资源管理器监视设备连接性
 
-本主题适用于构建者和管理员。
+本主题适用于构建者和管理员  。
 
 使用 IoT Central 资源管理器 CLI，了解如何将设备发送到 IoT Central，并观察 IoT 中心孪生中的更改。 此开放源代码工具可用于更深入地了解设备连接状态，并且设备的诊断问题消息不会到达云或者设备不响应孪生更改。
 

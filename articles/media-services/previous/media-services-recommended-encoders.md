@@ -10,10 +10,10 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 373ce1d10af87603b1bdd6339c94891187c35d8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60332646"
 ---
 # <a name="recommended-on-premises-encoders"></a>推荐的本地编码器
@@ -49,7 +49,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 
 直通通道验证
 1. 创建或访问 Azure 媒体服务帐户
-2. 创建并启动“直通”通道
+2. 创建并启动“直通”  通道
 3. 配置编码器推送多比特率实时流。
 4. 创建已发布的实时事件
 5. 运行实时编码器大约 10 分钟
@@ -61,7 +61,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 
 实时编码通道验证
 1. 创建或访问 Azure 媒体服务帐户
-2. 创建并启动“实时编码”通道
+2. 创建并启动“实时编码”  通道
 3. 配置编码器推送单比特率实时流。
 4. 创建已发布的实时事件
 5. 运行实时编码器大约 10 分钟
@@ -73,7 +73,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 
 使用寿命验证
 1. 创建或访问 Azure 媒体服务帐户
-2. 创建并启动“直通”通道
+2. 创建并启动“直通”  通道
 3. 配置编码器推送多比特率实时流。
 4. 创建已发布的实时事件
 5. 运行实时编码器持续一周或更长时间

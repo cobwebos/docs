@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
 ms.openlocfilehash: 5091932989849943f00cb71f72378dd17af23a4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60204533"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>快速入门：手动安装单实例 SAP HANA Azure 虚拟机上
@@ -117,7 +117,7 @@ Azure VM 类型和用于 SAP HANA 的 SAP 支持的工作负荷方案记录在[S
 6. 在附加的磁盘或逻辑卷上创建 XFS 文件系统。
 7. 在 OS 级别装载新的 XFS 文件系统。 例如为所有 SAP 软件使用一个文件系统。 为 /sapmnt 目录和备份使用另一个文件系统。 在 SAP HANA DB 服务器上，在高级存储磁盘上将 XFS 文件系统装载为 /hana 和 /usr/sap。 此过程是防止被填满根文件系统所必需的。 根文件系统不是很大 Linux Azure Vm 上。 
 8. 在 /etc/hosts 文件中输入测试 VM 的本地 IP 地址。
-9. 在 /etc/fstab 文件中输入 nofail 参数。
+9. 在 /etc/fstab 文件中输入 nofail 参数  。
 10. 设置 Linux 内核参数根据您使用的 Linux OS 版本。 有关详细信息，请参阅讨论 HANA 和本指南中的"内核参数"部分的 SAP 说明。
 11. 添加交换空间。
 12. （可选）在测试 VM 上安装图形桌面。 否则，请使用远程 SAPinst 安装。
@@ -139,7 +139,7 @@ Azure VM 类型和用于 SAP HANA 的 SAP 支持的工作负荷方案记录在[S
 6. 在附加的磁盘或逻辑卷上创建 XFS 文件系统。
 7. 在 OS 级别装载新的 XFS 文件系统。 例如为所有 SAP 软件使用一个文件系统。 为 /sapmnt 目录和备份使用另一个文件系统。 在 SAP HANA DB 服务器上，在高级存储磁盘上将 XFS 文件系统装载为 /hana 和 /usr/sap。 此过程是必要的防止根文件系统填满。 根文件系统不是很大 Linux Azure Vm 上。
 8. 在 /etc/hosts 文件中输入测试 VM 的本地 IP 地址。
-9. 在 /etc/fstab 文件中输入 nofail 参数。
+9. 在 /etc/fstab 文件中输入 nofail 参数  。
 10. 设置内核参数根据您使用的 Linux OS 版本。 有关详细信息，请参阅讨论 HANA 和本指南中的"内核参数"部分的 SAP 说明。
 11. 添加交换空间。
 12. （可选）在测试 VM 上安装图形桌面。 否则，请使用远程 SAPinst 安装。
@@ -180,7 +180,7 @@ Azure VM 类型和用于 SAP HANA 的 SAP 支持的工作负荷方案记录在[S
 - 建议
 - 可选
 - Feature
-- 文档
+- Document
 - yast
 
 严重性的常用的值有：
@@ -189,9 +189,9 @@ Azure VM 类型和用于 SAP HANA 的 SAP 支持的工作负荷方案记录在[S
 - 重要说明
 - 中等
 - 低
-- 未设定
+- 未指定
 
-zypper 命令仅查找已安装的程序包的所需更新。 例如，可以使用此命令：
+zypper 命令仅查找已安装的程序包的所需更新  。 例如，可以使用此命令：
 
 `sudo zypper patch  --category=security,recommended --severity=critical,important`
 
@@ -236,23 +236,23 @@ vm-simple-sles 模板是基本模板。 它包含具有额外 100-GB 数据磁�
 ### <a name="kernel-parameters"></a>内核参数
 SAP HANA 要求使用特定 Linux 内核设置。 这些内核设置不属于标准 Azure 库映像，必须手动设置。 参数可能不同，具体取决于使用 SUSE 还是 Red Hat。 以前，列出的 SAP 说明提供有关这些参数的信息。 屏幕截图中使用了 SUSE Linux 12 SP1。 
 
-SLES for SAP Applications 12 正式发布和 SLES for SAP Applications 12 SP1 还可使用新工具 **-tuned-adm**，替换旧**sapconf**工具。 有一个特殊的 SAP HANA 配置文件可用于 tuned-adm。 若要优化 SAP HANA 系统，以根用户身份输入以下配置文件：
+SLES for SAP Applications 12 正式发布和 SLES for SAP Applications 12 SP1 还可使用新工具 **-tuned-adm**，替换旧**sapconf**工具。 有一个特殊的 SAP HANA 配置文件可用于 tuned-adm  。 若要优化 SAP HANA 系统，以根用户身份输入以下配置文件：
 
    `tuned-adm profile sap-hana`
 
-有关 tuned-adm 的详细信息，请参阅[关于 tuned-adm 的 SUSE 文档](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)。
+有关 tuned-adm 的详细信息，请参阅[关于 tuned-adm 的 SUSE 文档](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)  。
 
 在以下屏幕截图中，您可以看到如何 **-tuned-adm**更改`transparent_hugepage`和`numa_balancing`值，根据所需的 SAP HANA 设置：
 
 ![tuned-adm 工具根据所需的 SAP HANA 设置更改值](./media/hana-get-started/image005.jpg)
 
-若要永久保存 SAP HANA 内核设置，在 SLES 12 上请使用 grub2。 有关详细信息**grub2**，请参阅[配置文件结构](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)SUSE 文档的部分。
+若要永久保存 SAP HANA 内核设置，在 SLES 12 上请使用 grub2  。 有关详细信息**grub2**，请参阅[配置文件结构](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)SUSE 文档的部分。
 
-下面的屏幕截图显示了内核设置在配置文件中进行了怎样的更改，然后怎样使用 grub2-mkconfig 进行了编译：
+下面的屏幕截图显示了内核设置在配置文件中进行了怎样的更改，然后怎样使用 grub2-mkconfig 进行了编译  ：
 
 ![配置文件中已更改并使用 grub2-mkconfig 进行了编译的内核设置](./media/hana-get-started/image006.jpg)
 
-另一种选择是通过 YaST 和“启动加载程序” > “内核参数”设置来更改这些设置：
+另一种选择是通过 YaST 和“启动加载程序” > “内核参数”设置来更改这些设置   ：
 
 ![YaST 启动加载程序中的“内核参数”设置选项卡](./media/hana-get-started/image007.jpg)
 
@@ -269,7 +269,7 @@ SLES for SAP Applications 12 正式发布和 SLES for SAP Applications 12 SP1 �
 
 ![在 SAP 应用服务器 VM 上创建的额外文件系统](./media/hana-get-started/image009.jpg)
 
-当您在标准 SLES/SLES for SAP Applications 12 Azure 库映像上安装 SAP NetWeaver 时，则显示一条消息，指出没有交换空间，如以下屏幕截图中所示。 若要消除此消息，可通过使用 dd、mkswap 和 swapon 手动添加交换文件。 若要了解如何操作，请搜索"中的添加交换文件手动[使用 YaST 分区程序](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)SUSE 文档的部分。
+当您在标准 SLES/SLES for SAP Applications 12 Azure 库映像上安装 SAP NetWeaver 时，则显示一条消息，指出没有交换空间，如以下屏幕截图中所示。 若要消除此消息，可通过使用 dd、mkswap 和 swapon 手动添加交换文件    。 若要了解如何操作，请搜索"中的添加交换文件手动[使用 YaST 分区程序](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)SUSE 文档的部分。
 
 另一种选择是使用 Linux VM 代理配置交换空间。 有关详细信息，请参阅 [Azure Linux 代理用户指南](../../extensions/agent-linux.md)。
 
@@ -310,7 +310,7 @@ SLES for SAP Applications 12 正式发布和 SLES for SAP Applications 12 SP1 �
 
    `DEFAULT_WM="gnome"`
 
-4. 运行 chkconfig，确保 xrdp 在重新启动后自动启动：
+4. 运行 chkconfig，确保 xrdp 在重新启动后自动启动  ：
 
    `chkconfig -level 3 xrdp on`
 
@@ -359,7 +359,7 @@ IBM Java 版本和随 SLES/SLES for SAP Applications 12 的 openjdk 包不包含
 
 ![显示应用程序服务器使用一个绿色图标的 VM 上安装的 ASCS 实例的 SAP 管理控制台](./media/hana-get-started/image016.jpg)
 
-在应用服务器 VM 上，共享 /sapmnt 目录是通过 NFS 使用**rw**并**no_root_squash**选项。 默认选项为“ro”和“root_squash”，这在安装数据库实例时可能会导致出现问题。
+在应用服务器 VM 上，共享 /sapmnt 目录是通过 NFS 使用**rw**并**no_root_squash**选项。 默认选项为“ro”和“root_squash”，这在安装数据库实例时可能会导致出现问题   。
 
 ![通过 NFS 并使用 rw 和 no_root_squash 选项共享 /sapmnt 目录](./media/hana-get-started/image017b.jpg)
 

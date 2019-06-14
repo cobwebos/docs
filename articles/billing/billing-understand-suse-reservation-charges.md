@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/12/2019
 ms.author: banders
 ms.openlocfilehash: bcbf5ab48f3476a911fc4ade1eb0c395fb335d43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370215"
 ---
 # <a name="azure-software-plan-discount"></a>Azure 软件计划折扣
@@ -73,7 +73,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID| 比率| 示例 VM 大小|
 | -------| ------------------------| --- |--- |
-|SLES for HPC 1-2 个 vCPU|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
+|SLES for HPC 1-2 个 vCPU|e275a668-ce79-44e2-a659-f43443265e98|第|D2s_v3|
 |SLES for HPC 3-4 个 vCPU|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
 |SLES for HPC 5个及以上的 vCPU|4edcd5a5-8510-49a8-a9fc-c9721f501913|2.6|D8s_v3|
 
@@ -85,7 +85,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- | --- | ------------------------| --- |
-|SLES for HPC 1-2 个 vCPU |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
+|SLES for HPC 1-2 个 vCPU |8c94ad45-b93b-4772-aab1-ff92fcec6610|第|D2s_v3|
 |SLES for HPC 3-4 个 vCPU|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1.92308|D4s_v3|
 |SLES for HPC 5个及以上的 vCPU |907a85de-024f-4dd6-969c-347d47a1bdff|2.92308|D8s_v3|
 
@@ -99,7 +99,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- | --- |
-|SLES for SAP Priority 1-2 个 vCPU|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
+|SLES for SAP Priority 1-2 个 vCPU|497fe0b6-fa3c-4e3d-a66b-836097244142|第|D2s_v3|
 |SLES for SAP Priority 3-4 个 vCPU |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
 |SLES for SAP Priority 5 个及以上的 vCPU |18ae79cd-dfce-48c9-897b-ebd3053c6058|2.41176|D8s_v3|
 
@@ -113,7 +113,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|SLES 1 vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|1|B1ms|
+|SLES 1 vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|第|B1ms|
 |SLES 2-4 个 vCPU |924bee71-5eb8-424f-83ed-a58823c33908|2|D4s_v3|
 |SLES 2-4 个 vCPU |60b3ae9d-e77a-46b2-9cdf-92fa87407969|2|D4s_v3|
 |SLES 6 个 vCPU |e8862232-6131-4dbe-bde4-e2ae383afc6f|3||
@@ -139,7 +139,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|SLES 1-2 核 vCPU |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
+|SLES 1-2 核 vCPU |4b2fecfc-b110-4312-8f9d-807db1cb79ae|第|D2s_v3|
 |SLES 3-4 核 vCPU |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 个及以上的 vCPU |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 

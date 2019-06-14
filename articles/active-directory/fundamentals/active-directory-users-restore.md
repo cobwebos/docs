@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d69bd931f2f8c72fd1e6fc79c16662ea367617d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60248211"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 还原或删除最近删除的用户
@@ -45,7 +45,7 @@ ms.locfileid: "60248211"
 ### <a name="to-view-your-restorable-users"></a>查看可还原的用户
 1. 使用组织的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 依次选择“Azure Active Directory”、“用户”、“已删除的用户”。
+2. 依次选择“Azure Active Directory”、“用户”、“已删除的用户”    。
 
     查看可还原的用户列表。
 
@@ -59,9 +59,9 @@ ms.locfileid: "60248211"
 > 还原用户后，在删除时已分配到该用户的许可证也会还原，即使这些许可证没有可用的席位。 如果随后使用的许可证超过了购买的许可证数目，则你的组织可能暂时不符合许可证的用法规则。
 
 ### <a name="to-restore-a-user"></a>还原用户
-1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户。 例如，Mary Parker。
+1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户  。 例如，Mary Parker  。
 
-2. 选择“还原用户”。
+2. 选择“还原用户”  。
 
     ![“用户 - 已删除的用户”页，其中突出显示“还原用户”选项](media/active-directory-users-restore/users-deleted-users-restore-user.png)
 
@@ -73,9 +73,9 @@ ms.locfileid: "60248211"
 
 ### <a name="to-permanently-delete-a-user"></a>永久删除用户
 
-1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户。 例如，Rae Huff。
+1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户  。 例如，Rae Huff  。
 
-2. 选择“永久删除”。
+2. 选择“永久删除”  。
 
     ![“用户 - 已删除的用户”页，其中突出显示“还原用户”选项](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 

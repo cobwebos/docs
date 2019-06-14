@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/01/2019
 tags: connectors
 ms.openlocfilehash: 5a1bfe8ca38fc23f09b13195fb8ca5bd443a4afd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312523"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>上传和管理文件在 Dropbox 中的使用 Azure 逻辑应用
@@ -35,7 +35,7 @@ ms.locfileid: "60312523"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 在搜索框下，选择“所有”。 在搜索框中，输入“dropbox”作为筛选器。
+1. 在搜索框下，选择“所有”  。 在搜索框中，输入“dropbox”作为筛选器。
 从触发器列表中选择此触发器：**创建文件时**
 
    ![选择 Dropbox 触发器](media/connectors-create-api-dropbox/select-dropbox-trigger.png)
@@ -50,14 +50,14 @@ ms.locfileid: "60312523"
 
 现在，添加任何新文件中获取的内容的操作。
 
-1. 在触发器下，选择“下一步”。 
+1. 在触发器下，选择“下一步”。  
 
-1. 在搜索框下，选择“所有”。 在搜索框中，输入“dropbox”作为筛选器。
+1. 在搜索框下，选择“所有”  。 在搜索框中，输入“dropbox”作为筛选器。
 在操作列表中选择此操作：**使用路径获取文件内容**
 
 1. 如果已尚未获得授权访问 Dropbox 的 Azure 逻辑应用，现在授予访问权限。
 
-1. 若要浏览到你想要使用，旁边的文件路径**文件路径**框中，选择省略号 (**...**) 按钮。 
+1. 若要浏览到你想要使用，旁边的文件路径**文件路径**框中，选择省略号 ( **...** ) 按钮。 
 
    此外可以单击内**文件路径**框中，并从动态内容列表中，选择**文件路径**，其值是可用作输出从上一节中添加的触发器。
 

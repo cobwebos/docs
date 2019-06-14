@@ -17,10 +17,10 @@ ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: cdd9910bfef96f56cfa8c8e81363ff9bdb40f444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60328725"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性区域中创建 Linux 虚拟机
@@ -64,7 +64,7 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 使用 [az group create](/cli/azure/group) 命令创建资源组。  
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus2”区域中创建了名为“myResourceGroupVM”的资源组。 “美国东部 2”是支持可用性区域的 Azure 区域之一。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus2”  区域中创建了名为“myResourceGroupVM”  的资源组。 “美国东部 2”是支持可用性区域的 Azure 区域之一。
 
 ```azurecli 
 az group create --name myResourceGroupVM --location eastus2
@@ -76,7 +76,7 @@ az group create --name myResourceGroupVM --location eastus2
 
 使用 [az vm create](/cli/azure/vm) 命令创建虚拟机。 
 
-创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 在此示例中，创建了一个名为“myVM”的运行 Ubuntu Server 的虚拟机。 在可用性区域 *1* 中创建了一个 VM。 默认情况下，创建的 VM 大小为 *Standard_DS1_v2*。
+创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 在此示例中，创建了一个名为“myVM”  的运行 Ubuntu Server 的虚拟机。 在可用性区域 *1* 中创建了一个 VM。 默认情况下，创建的 VM 大小为 *Standard_DS1_v2*。
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1

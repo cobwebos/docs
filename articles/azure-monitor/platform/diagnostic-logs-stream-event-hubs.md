@@ -9,10 +9,10 @@ ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60237727"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>将 Azure 诊断日志流式传输到事件中心
@@ -51,13 +51,13 @@ ms.locfileid: "60237727"
 > [!NOTE]
 > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
 >
-> 例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
+>  例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
 >
 >
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>使用门户流式传输诊断日志
 
-1. 在门户中，导航到 Azure Monitor 并单击“诊断设置”
+1. 在门户中，导航到 Azure Monitor 并单击“诊断设置” 
 
     ![Azure Monitor 的“监视”部分](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-blade.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "60237727"
 
    ![添加诊断设置 - 现有的设置](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-multiple.png)
 
-3. 为设置命名，选中“流式传输到事件中心”对应的复选框，并选择一个事件中心命名空间。
+3. 为设置命名，选中“流式传输到事件中心”对应的复选框，并选择一个事件中心命名空间。 
 
    ![添加诊断设置 - 现有的设置](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-configure.png)
 

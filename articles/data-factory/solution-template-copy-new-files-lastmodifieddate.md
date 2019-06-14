@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
 ms.openlocfilehash: cae75f4d64c8b3f74cc40e94a675c0f10a6bd9ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312651"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>通过使用 Azure 数据工厂 LastModifiedDate 的新功能和更改文件复制
@@ -60,12 +60,12 @@ ms.locfileid: "60312651"
     ![显示管道](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
 6. 选择**调试**，写入的值**参数**，然后选择**完成**。  在下图中，我们可以将参数设置如下所示。
-   - **FolderPath_Source** = **/source/**
-   - **FolderPath_Destination** = **/destination/**
+   - **FolderPath_Source** =  **/source/**
+   - **FolderPath_Destination** =  **/destination/**
    - **LastModified_From** =  **2019-02-01T00:00:00Z**
    - **LastModified_To** = **2019-03-01T00:00:00Z**
     
-     该示例，它指示的文件的上次修改之间的时间跨度内*2019年-02-01T00:00:00Z*并*2019年-03-01T00:00:00Z*将从文件夹复制 */source/* 的文件夹 */destination/*。  可以将其自己的参数替换为。
+     该示例，它指示的文件的上次修改之间的时间跨度内*2019年-02-01T00:00:00Z*并*2019年-03-01T00:00:00Z*将从文件夹复制 */source/* 的文件夹 */destination/* 。  可以将其自己的参数替换为。
     
      ![运行管道](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "60312651"
 
     ![查看结果](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
-9. 在“添加触发器”窗口中，选择“+ 新建”。
+9. 在“添加触发器”窗口中，选择“+ 新建”。  
 
     ![查看结果](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate9.png)
 
@@ -86,14 +86,14 @@ ms.locfileid: "60312651"
     ![创建触发器](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. 写入的值**触发器运行参数**作为以下内容，然后选择**完成**。
-    - **FolderPath_Source** = **/source/**。  您可以替换为你的源数据存储中的文件夹。
-    - **FolderPath_Destination** = **/destination/**。  您可以替换为你在目标数据存储中的文件夹。
-    - **LastModified_From** =  **@trigger（)。 outputs.windowStartTime**。  它是系统变量确定当最后一次触发管道的时间的触发器中。
-    - **LastModified_To** = **@trigger（)。 outputs.windowEndTime**。  它是系统变量确定管道触发这一次时的时间的触发器中。
+    - **FolderPath_Source** =  **/source/** 。  您可以替换为你的源数据存储中的文件夹。
+    - **FolderPath_Destination** =  **/destination/** 。  您可以替换为你在目标数据存储中的文件夹。
+    - **LastModified_From** =   **@trigger（)。 outputs.windowStartTime**。  它是系统变量确定当最后一次触发管道的时间的触发器中。
+    - **LastModified_To** =  **@trigger（)。 outputs.windowEndTime**。  它是系统变量确定管道触发这一次时的时间的触发器中。
     
     ![输入参数](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
-12. 选择“全部发布”。
+12. 选择“全部发布”。 
     
     ![全部发布](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png)
 

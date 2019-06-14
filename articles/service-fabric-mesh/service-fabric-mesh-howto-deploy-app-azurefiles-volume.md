@@ -16,10 +16,10 @@ ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fa078f17768d4885403f2f3e3d6b91251f0aaced
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60419367"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载基于 Azure 文件的卷 
@@ -73,9 +73,9 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 也可以在 [Azure 门户](https://portal.azure.com)中找到这些值：
-* `<storageAccountName>` - 位于“存储帐户”下，它是在创建文件共享时使用的存储帐户的名称。
-* `<storageAccountKey>` - 在“存储帐户”下选择自己的存储帐户，然后选择“访问密钥”并使用“密钥 1”下面的值。
-* `<fileShareName>` - 在“存储帐户”下选择自己的存储帐户，然后选择“文件”。 要使用的名称是创建的文件共享的名称。
+* `<storageAccountName>` - 位于“存储帐户”下，它是在创建文件共享时使用的存储帐户的名称。 
+* `<storageAccountKey>` - 在“存储帐户”下选择自己的存储帐户，然后选择“访问密钥”并使用“密钥 1”下面的值。   
+* `<fileShareName>` - 在“存储帐户”下选择自己的存储帐户，然后选择“文件”。   要使用的名称是创建的文件共享的名称。
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>声明卷资源并更新服务资源 (JSON)
 
@@ -193,7 +193,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>声明卷资源并更新服务资源 (YAML)
 
-在应用程序的“应用资源”目录中添加新的 volume.yaml 文件。  指定名称和提供程序（“SFAzureFile”，以使用基于 Azure 文件的卷）。 `<fileShareName>`、`<storageAccountName>` 和 `<storageAccountKey>` 是在上一步中找到的值。
+在应用程序的“应用资源”目录中添加新的 volume.yaml 文件。    指定名称和提供程序（“SFAzureFile”，以使用基于 Azure 文件的卷）。 `<fileShareName>`、`<storageAccountName>` 和 `<storageAccountKey>` 是在上一步中找到的值。
 
 ```yaml
 volume:
@@ -208,7 +208,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-更新“服务资源”目录中的 service.yaml 文件，以将卷装载到服务中。  将 `volumeRefs` 元素添加到 `codePackages` 元素。  `name` 是卷的资源 ID（或卷资源的部署模板参数）及在 volume.yaml 资源文件中声明的卷的名称。  `destinationPath` 是卷要装载到的本地目录。
+更新“服务资源”目录中的 service.yaml 文件，以将卷装载到服务中。    将 `volumeRefs` 元素添加到 `codePackages` 元素。  `name` 是卷的资源 ID（或卷资源的部署模板参数）及在 volume.yaml 资源文件中声明的卷的名称。  `destinationPath` 是卷要装载到的本地目录。
 
 ```yaml
 ## Service definition ##

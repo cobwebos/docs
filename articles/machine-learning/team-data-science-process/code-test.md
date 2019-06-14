@@ -12,10 +12,10 @@ ms.date: 05/19/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 10692fcb720be819dcf94a8ecbc541983ffc8853
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60336445"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>在 Azure 上使用 Team Data Science Process 和 Azure DevOps Services 进行数据科学代码测试
@@ -100,7 +100,7 @@ ms.locfileid: "60336445"
     
     ![类中包含一系列测试的 Python 文件](./media/code-test/create_file_test1_class.PNG)
 
-1. 如果将 **codetest.testCase** 置于类名之后，则可自动发现这些测试。 打开右窗格中的测试资源管理器，然后选择“全部运行”。 所有测试都会按顺序运行，并且会告知测试是否成功。
+1. 如果将 **codetest.testCase** 置于类名之后，则可自动发现这些测试。 打开右窗格中的测试资源管理器，然后选择“全部运行”。  所有测试都会按顺序运行，并且会告知测试是否成功。
 
     ![运行测试](./media/code-test/run_tests.PNG)
 
@@ -112,7 +112,7 @@ ms.locfileid: "60336445"
 
 1. 在 Azure DevOps 中设置自动生成和测试：
 
-    a. 在项目存储库中选择“生成并发布”，然后选择“+新建”以创建新的生成过程。
+    a. 在项目存储库中选择“生成并发布”，然后选择“+新建”以创建新的生成过程。  
 
        ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
 
@@ -120,7 +120,7 @@ ms.locfileid: "60336445"
     
        ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
 
-    c. 选择模板。 由于没有 Python 项目模板，请一开始选择“空进程”。 
+    c. 选择模板。 由于没有 Python 项目模板，请一开始选择“空进程”  。 
 
        ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
@@ -128,17 +128,17 @@ ms.locfileid: "60336445"
     
        ![Build and agent selections](./media/code-test/select_agent.PNG)
 
-    e. 在左窗格中选择“+”，添加适合此生成阶段的任务。 由于我们将运行 Python 脚本 **test1.py** 来完成所有检查，因此此任务将使用 PowerShell 命令来运行 Python 代码。
+    e. 在左窗格中选择“+”，  添加适合此生成阶段的任务。 由于我们将运行 Python 脚本 **test1.py** 来完成所有检查，因此此任务将使用 PowerShell 命令来运行 Python 代码。
     
        !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
 
-    f. 在 PowerShell 详细信息中填写所需的信息，例如 PowerShell 的名称和版本。 选择“内联脚本”作为类型。 
+    f. 在 PowerShell 详细信息中填写所需的信息，例如 PowerShell 的名称和版本。 选择“内联脚本”  作为类型。 
     
        In the box under **Inline Script**, you can type **python test1.py**. Make sure the environment variable is set up correctly for Python. If you need a different version or kernel of Python, you can explicitly specify the path as shown in the figure: 
     
        ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
-    g. 选择“保存并排队”，以完成生成管道过程。
+    g. 选择“保存并排队”，以完成生成管道过程。 
 
        !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 

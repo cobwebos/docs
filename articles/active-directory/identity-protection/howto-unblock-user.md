@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d22fa7fd3964f99c426e8e21d34dcfdea6d1b36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60294393"
 ---
 # <a name="how-to-unblock-users"></a>如何：取消阻止用户
@@ -47,7 +47,7 @@ ms.locfileid: "60294393"
 ## <a name="unblocking-suspicious-sign-ins"></a>取消阻止可疑登录
 要取消阻止可疑登录，具有以下选项：
 
-1. 从熟悉的位置或设备登录 - 已阻止可疑登录的常见原因是尝试从不熟悉的位置或设备登录。 用户可通过尝试从熟悉的位置或设备登录来快速确定这是否是阻止原因。
+1.  从熟悉的位置或设备登录 - 已阻止可疑登录的常见原因是尝试从不熟悉的位置或设备登录。 用户可通过尝试从熟悉的位置或设备登录来快速确定这是否是阻止原因。
 2. **从策略中排除** - 如果认为登录策略的当前配置导致特定用户出现问题，可从中排除这些用户。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)。
 3. **禁用** - 如果认为策略配置导致所有用户出现问题，可禁用该策略。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)。
 

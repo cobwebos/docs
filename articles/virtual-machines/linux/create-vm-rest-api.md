@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391355"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
@@ -54,8 +54,8 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 | 请求标头   | 描述 |
 |------------------|-----------------|
-| Content-Type：  | 必需。 设置为 `application/json`。 |
-| Authorization： | 必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+| Content-Type：   | 必需。 设置为 `application/json`。 |
+| Authorization：  | 必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 有关使用 REST API 请求的一般信息，请参阅 [REST API 请求/响应的组件](/rest/api/azure/#components-of-a-rest-api-requestresponse)。
 
@@ -65,14 +65,14 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 | Name                       | 需要 | Type                                                                                | 描述  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| 位置                   | True     | string                                                                              | 资源位置。 |
-| 名称                       |          | string                                                                              | 虚拟机的名称。 |
+| 位置                   | True     | 字符串                                                                              | 资源位置。 |
+| name                       |          | 字符串                                                                              | 虚拟机的名称。 |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | 指定虚拟机的硬件设置。 |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | 指定虚拟机磁盘的存储设置。 |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 指定虚拟机的操作系统设置。 |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | 指定虚拟机的网络接口。 |
 
-下面是一个示例请求正文。 请确保在 `{computerName}` 和 `{name}` 参数中指定 VM 名称，在 `networkInterfaces` 下指定你创建的网络接口的名称，在 `adminUsername` 和 `path` 中指定用户名，在 `keyData` 中指定 SSH 密钥的公共部分（例如位于 `~/.ssh/id_rsa.pub` 中）。 你可能希望更改的其他参数包括 `location` 和 `vmSize`。  
+下面是一个示例请求正文。 请确保在 `{computerName}` 和 `{name}` 参数中指定 VM 名称，在 `networkInterfaces` 下指定你创建的网络接口的名称，在 `adminUsername` 和 `path` 中指定用户名，在 `keyData` 中指定 SSH 密钥的公共  部分（例如位于 `~/.ssh/id_rsa.pub` 中）。 你可能希望更改的其他参数包括 `location` 和 `vmSize`。  
 
 ```json
 {
@@ -131,9 +131,9 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="sending-the-request"></a>发送请求
 
-可以使用你喜欢使用的客户端发送此 HTTP 请求。 还可以通过单击“试用”按钮使用某个[浏览器中工具](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)。
+可以使用你喜欢使用的客户端发送此 HTTP 请求。 还可以通过单击“试用”按钮使用某个[浏览器中工具](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)。 
 
-### <a name="responses"></a>响应
+### <a name="responses"></a>Responses
 
 对于要创建或更新虚拟机的操作，有两个成功响应：
 

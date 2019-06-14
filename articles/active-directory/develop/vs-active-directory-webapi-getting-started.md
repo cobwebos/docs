@@ -9,15 +9,15 @@ ms.prod: visual-studio-dev15
 ms.technology: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-origin.date: 03/12/2018
-ms.date: 09/03/2018
-ms.author: v-junlch
+ms.date: 03/12/2018
+ms.author: ghogen
 ms.custom: aaddev, vs-azure
+ms.collection: M365-identity-device-management
 ms.openlocfilehash: 662d958fc7ef6fe5c9d0e61a1d8e48983d10196f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353799"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Azure Active Directory 入门（WebApi 项目）
@@ -26,7 +26,7 @@ ms.locfileid: "60353799"
 > - [入门](vs-active-directory-webapi-getting-started.md)
 > - [发生了什么情况](vs-active-directory-webapi-what-happened.md)
 
-本文提供通过 Visual Studio 的“项目”>“连接的服务”命令将 Active Directory 添加到 ASP.NET WebAPI 项目后的其他指南。 如果尚未将该服务添加到你的项目，可以随时执行该操作。
+本文提供通过 Visual Studio 的“项目”>“连接的服务”  命令将 Active Directory 添加到 ASP.NET WebAPI 项目后的其他指南。 如果尚未将该服务添加到你的项目，可以随时执行该操作。
 
 请参阅[我的 WebAPI 项目发生了什么情况？](vs-active-directory-webapi-what-happened.md)，了解添加连接服务时对项目所做的更改。
 
@@ -38,5 +38,3 @@ ms.locfileid: "60353799"
 
 - [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
 - [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v1-aspnet-webapp.md)
-
-<!-- Update_Description: link update -->

@@ -1,53 +1,53 @@
 ---
-title: Azure 指标资源管理器的高级的功能
-description: 了解有关 Azure Monitor 指标资源管理器的高级功能
-author: lingliw
+title: Azure 指标资源管理器的高级功能
+description: 了解 Azure Monitor 指标资源管理器的高级功能
+author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/12/19
-ms.author: v-lingwu
+ms.date: 01/22/2019
+ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60256770"
 ---
-# <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级的功能
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
 > [!NOTE]
-> 本文假定你熟悉的指标资源管理器的基本功能。 如果你是新用户并想要了解如何创建第一个度量值图表，请参阅[Azure 指标资源管理器入门](metrics-getting-started.md)。
+> 本文假定使用者熟悉指标资源管理器的基本功能。 如果你是新用户，希望了解如何创建第一个指标图表，请参阅 [Azure 指标资源管理器入门](metrics-getting-started.md)。
 
 ## <a name="metrics-in-azure"></a>Azure 中的指标
 
-[Azure Monitor 中的指标](data-platform-metrics.md)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而由应用程序通过发送到 Azure 的自定义指标[自定义事件和指标的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)， [Windows Azure 诊断 (WAD) 扩展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)，或由[Azure监视 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)。
+[Azure Monitor 中的指标](data-platform-metrics.md)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而自定义指标是由应用程序通过[用于自定义事件和指标的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)、[Windows Azure 诊断 (WAD) 扩展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)或 [Azure Monitor REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) 发送给 Azure 的。
 
-## <a name="create-views-with-multiple-metrics-and-charts"></a>创建具有多个指标和图表视图
+## <a name="create-views-with-multiple-metrics-and-charts"></a>使用多个指标和图表创建视图
 
-你可以创建图表的绘制多个度量值行或同时显示多个指标的图表。 此功能可以：
+可以创建一次绘制多个指标行或显示多个指标图表的图表。 此功能用于：
 
-- 与另一个相关上相同的图形，以查看如何一个值相关联的相关度量值
-- 显示具有不同的邻近的度量单位的指标
-- 以可视方式聚合和比较来自多个资源的指标
+- 将同一图形中的相关指标关联到一起，看一个值如何与另一个值相关联。
+- 显示很临近但具有不同度量单位的指标
+- 以视觉方式聚合和比较来自多个源的指标
 
-例如，如果你有 5 个存储帐户，并且你想要知道它们之间使用总空间量，可以创建 （堆积） 面积图显示的个人和所有值的总和中特定点的时间。
+例如，你有 5 个存储帐户，想要知道在其中消耗了多少总空间，则可创建一个（堆积的）面积图表，以便显示特定时间点的各个值以及所有值的总计。
 
-### <a name="multiple-metrics-on-the-same-chart"></a>同一个图表上的多个指标
+### <a name="multiple-metrics-on-the-same-chart"></a>同一图表上的多个指标
 
-首先，[创建新图表](metrics-getting-started.md#create-your-first-metric-chart)。 单击**添加指标**，重复步骤以在同一图表中添加另一个度量值。
+首先，[创建新图表](metrics-getting-started.md#create-your-first-metric-chart)。 单击“添加指标”，然后通过同样的步骤在同一图表上添加另一指标。 
 
    > [!NOTE]
    > 通常情况下，你不会想要在一个图表上拥有度量单位不同（即“毫秒”和“千字节”）或刻度差异显著的多个指标。 此时，可考虑使用多个图表。 单击“添加图表”按钮，即可在指标资源管理器中创建多个图表。
 
 ### <a name="multiple-charts"></a>多个图表
 
-单击**添加图表**，并使用不同的指标创建另一个图表。
+单击“添加图表”，使用另一指标创建另一图表。 
 
-### <a name="order-or-delete-multiple-charts"></a>排序或删除多个图表
+### <a name="order-or-delete-multiple-charts"></a>将多个图表排序或将其删除
 
-若要排序或删除多个图表，请单击省略号 ( **...** ) 要打开图表菜单，然后选择相应的菜单项的符号**向上移动**，**向下移动**，或**删除**。
+若要将多个图表排序或将其删除，请单击省略号 ( **...** )，以便打开图表菜单并选择适当的菜单项：**向上移动**、**向下移动**或**删除**。
 
 ## <a name="apply-filters-to-charts"></a>向图表应用筛选器
 
@@ -55,7 +55,7 @@ ms.locfileid: "60256770"
 
 ### <a name="to-add-a-filter"></a>添加筛选器
 
-1. 选择图表上方的“添加筛选器”
+1. 选择图表上方的“添加筛选器” 
 
 2. 选择想要筛选的维度（属性）
 
@@ -73,16 +73,16 @@ ms.locfileid: "60256770"
 
 
 
-## <a name="apply-splitting-to-a-chart"></a>将应用到图表拆分
+## <a name="apply-splitting-to-a-chart"></a>对图表应用拆分
 
 可以按维度拆分指标，以直观地显示指标不同部分之间的差异，并标识出某个维度的边远部分。
 
 ### <a name="apply-splitting"></a>应用拆分
 
-1. 单击图表上方的“应用拆分”。
+1. 单击图表上方的“应用拆分”  。
  
    > [!NOTE]
-   > 拆分不能用于具有多个指标的图表。 此外，可以有多个筛选器，但只有一个拆分维度应用于任何单个图表。
+   > 不能对包含多个指标的图表使用拆分。 另外，你可以有多个筛选器，但只能对任何单个图表应用一个拆分维度。
 
 2. 选择想要用于分割图表的维度：
 
@@ -92,7 +92,7 @@ ms.locfileid: "60256770"
 
    ![图表上的](./media/metrics-charts/00012.png)
 
-3. 在“分组选择器”之外单击以将其关闭。
+3. 在“分组选择器”  之外单击以将其关闭。
 
    > [!NOTE]
    > 在同一个维度上同时使用筛选和拆分，可以隐藏与你的方案无关的部分，使图表更易读取。
@@ -105,7 +105,7 @@ ms.locfileid: "60256770"
 
 另一个示例是可用内存的波动，其中的值在技术上永远不会达到 0。 将范围固定到一个较高的值可以使可用内存的降低更容易被发现。 
 
-若要控制 y 轴范围，请使用 “…” 图表菜单，并选择“编辑图表”以访问高级图表设置。 修改“Y 轴范围”部分中的值，或者使用“自动”按钮恢复为默认值。
+若要控制 y 轴范围，请使用 “…” 图表菜单，并选择“编辑图表”  以访问高级图表设置。 修改“Y 轴范围”部分中的值，或者使用“自动”  按钮恢复为默认值。
 
 ![图表上的](./media/metrics-charts/00014-manually-set-granularity.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "60256770"
 
 将配置的图表固定到仪表板：
 
-配置图表后，单击图表右上角的“图表操作”菜单，然后单击“固定到仪表板”。
+配置图表后，单击图表右上角的“图表操作”  菜单，然后单击“固定到仪表板”  。
 
 ![图表上的](./media/metrics-charts/00013.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "60256770"
 
 可以使用设置的条件将指标可视化为基于指标的警报规则的基础。 新的警报规则将包括图表的目标资源、指标、拆分和筛选器维度。 稍后将能够在警报规则创建窗格上修改这些设置。
 
-### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>单击“新建警报规则”，创建新的警报规则
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>单击“新建警报规则”，创建新的警报规则 
 
 ![以红色突出显示的“新建警报规则”按钮](./media/metrics-charts/015.png)
 
@@ -149,3 +149,4 @@ ms.locfileid: "60256770"
 ## <a name="next-steps"></a>后续步骤
 
   请参阅[创建自定义 KPI 仪表板](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards)，了解使用指标创建可操作仪表板的最佳实践。
+

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60333810"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何为 Azure Data Lake Analytics 设置 CI/CD 管道  
@@ -50,7 +50,7 @@ ms.locfileid: "60333810"
 
 MSBuild 不提供对 U-SQL 项目的内置支持。 若要获取此支持，需要将对解决方案的引用添加到添加所需语言服务的 [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet 包。
 
-若要添加 NuGet 包引用，请在 Visual Studio 解决方案资源管理器中右键单击该解决方案，然后选择“管理 NuGet 包”。 也可以在解决方案文件夹中添加一个名为 `packages.config` 的文件并将以下内容添加到其中：
+若要添加 NuGet 包引用，请在 Visual Studio 解决方案资源管理器中右键单击该解决方案，然后选择“管理 NuGet 包”  。 也可以在解决方案文件夹中添加一个名为 `packages.config` 的文件并将以下内容添加到其中：
 
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>
@@ -81,9 +81,9 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 * **USQLSDKPath =\<U-SQL 的 Nuget 包 > \build\runtime**。 此参数引用 U-SQL 语言服务的 NuGet 包的安装路径。
 * **USQLTargetType=Merge 或 SyntaxCheck**：
-    * **Merge**。 Merge 模式编译代码隐藏文件。 示例包括 **.cs**、**.py** 和 **.r** 文件。 它将生成的用户定义代码库内联到 U-SQL 脚本中。 示例包括 dll 库、Python 或 R 代码。
+    * **Merge**。 Merge 模式编译代码隐藏文件。 示例包括 **.cs**、 **.py** 和 **.r** 文件。 它将生成的用户定义代码库内联到 U-SQL 脚本中。 示例包括 dll 库、Python 或 R 代码。
     * **SyntaxCheck**。 SyntaxCheck 模式首先将代码隐藏文件合并到 U-SQL 脚本中。 然后编译 U-SQL 脚本以验证代码。
-* **DataRoot =\<DataRoot 路径 >**。 只有 SyntaxCheck 模式需要 DataRoot。 使用 SyntaxCheck 模式生成脚本时，MSBuild 会检查脚本中对数据库对象的引用。 在生成之前，请设置匹配的本地环境，其中包含生成计算机的 DataRoot 文件夹中 U-SQL 数据库中的引用对象。 你还可以通过[引用 U-SQL 数据库项目](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)管理这些数据库依赖项。 MSBuild 只会检查数据库对象引用，而不检查文件。
+* **DataRoot =\<DataRoot 路径 >** 。 只有 SyntaxCheck 模式需要 DataRoot。 使用 SyntaxCheck 模式生成脚本时，MSBuild 会检查脚本中对数据库对象的引用。 在生成之前，请设置匹配的本地环境，其中包含生成计算机的 DataRoot 文件夹中 U-SQL 数据库中的引用对象。 你还可以通过[引用 U-SQL 数据库项目](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)管理这些数据库依赖项。 MSBuild 只会检查数据库对象引用，而不检查文件。
 * **EnableDeployment=true** 或 **false**。 EnableDeployment 指示是否允许在生成过程中部署引用的 U-SQL 数据库。 如果引用了 U-SQL 数据库项目，并在 U-SQL 脚本中使用了数据库对象，请将此参数设置为 **true**。
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>通过 Azure Pipelines 进行持续集成
@@ -92,7 +92,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 ![U-SQL 项目的 MSBuild 任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
-1.  添加 NuGet 还原任务以获取解决方案引用的包括 `Azure.DataLake.USQL.SDK` 的 NuGet 包，以便 MSBuild 可以找到 U-SQL 语言目标。 若要在步骤 2 中直接使用 MSBuild 参数示例，请将“高级” > “目标目录”设置为 `$(Build.SourcesDirectory)/packages`。
+1.  添加 NuGet 还原任务以获取解决方案引用的包括 `Azure.DataLake.USQL.SDK` 的 NuGet 包，以便 MSBuild 可以找到 U-SQL 语言目标。 若要在步骤 2 中直接使用 MSBuild 参数示例，请将“高级” > “目标目录”   设置为 `$(Build.SourcesDirectory)/packages`。
 
     ![U-SQL 项目的 NuGet 还原任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -302,7 +302,7 @@ UploadResources
 
 MSBuild 不提供对 U-SQL 数据库项目的内置支持。 若要获取此功能，需将对解决方案的引用添加到添加所需语言服务的 [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet 包。
 
-若要添加 NuGet 包引用，请在 Visual Studio 解决方案资源管理器中右键单击该解决方案。 选择“管理 NuGet 包”。 然后搜索并安装该 NuGet 包。 也可以在解决方案文件夹中添加一个名为 **packages.config** 的文件并将以下内容添加到其中：
+若要添加 NuGet 包引用，请在 Visual Studio 解决方案资源管理器中右键单击该解决方案。 选择“管理 NuGet 包”。  然后搜索并安装该 NuGet 包。 也可以在解决方案文件夹中添加一个名为 **packages.config** 的文件并将以下内容添加到其中：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -328,7 +328,7 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
    ![U-SQL 项目的 CI/CD MSBuild 任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
 
-1. 添加 NuGet 还原任务以获取解决方案引用的包括 `Azure.DataLake.USQL.SDK` 的 NuGet 包，以便 MSBuild 可以找到 U-SQL 语言目标。 若要在步骤 2 中直接使用 MSBuild 参数示例，请将“高级” > “目标目录”设置为 `$(Build.SourcesDirectory)/packages`。
+1. 添加 NuGet 还原任务以获取解决方案引用的包括 `Azure.DataLake.USQL.SDK` 的 NuGet 包，以便 MSBuild 可以找到 U-SQL 语言目标。 若要在步骤 2 中直接使用 MSBuild 参数示例，请将“高级” > “目标目录”   设置为 `$(Build.SourcesDirectory)/packages`。
 
    ![U-SQL 项目的 CI/CD NuGet 任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -424,7 +424,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
     copy USQLSDK\build\runtime\*.* $DBDeploymentTool
     ```
 
-2. 在生成或发布管道中添加“命令行任务”并填写调用 `PackageDeploymentTool.exe` 的脚本。 `PackageDeploymentTool.exe` 位于定义的 **$DBDeploymentTool** 文件夹下。 示例脚本如下所示： 
+2. 在生成或发布管道中添加“命令行任务”  并填写调用 `PackageDeploymentTool.exe` 的脚本。 `PackageDeploymentTool.exe` 位于定义的 **$DBDeploymentTool** 文件夹下。 示例脚本如下所示： 
 
     * 在本地部署 U-SQL 数据库：
 
@@ -454,9 +454,9 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 #### <a name="common-parameters"></a>通用参数
 
-| 参数 | 描述 | 默认值 | 需要 |
+| 参数 | 描述 | 默认值 | 必选 |
 |---------|-----------|-------------|--------|
-|程序包|要部署的 U-SQL 数据库部署包的路径。|Null|true|
+|package|要部署的 U-SQL 数据库部署包的路径。|Null|true|
 |数据库|要部署到或创建的数据库名称。|master|false|
 |LogFile|日志记录文件的路径。 默认为标准输出（控制台）。|Null|false|
 |LogLevel|日志级别：详细、正常、警告或错误。|LogLevel.Normal|false|
@@ -469,7 +469,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics 部署的参数
 
-|参数|描述|默认值|需要|
+|参数|描述|默认值|必选|
 |---------|-----------|-------------|--------|
 |帐户|按帐户名称指定部署到哪个 Azure Data Lake Analytics 帐户。|Null|true|
 |resourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|Null|true|

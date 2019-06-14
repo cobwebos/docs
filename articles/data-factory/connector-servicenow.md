@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 234b78a97c2663121d0d585154695887a58b9522
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60203408"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
@@ -43,7 +43,7 @@ ServiceNow 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**ServiceNow** | 是 |
 | endpoint | ServiceNow 服务器的终结点 (`http://<instance>.service-now.com`)。  | 是 |
-| authenticationType | 可使用的身份验证类型。 <br/>允许值包括：**Basic****OAuth2** | 是 |
+| authenticationType | 可使用的身份验证类型。 <br/>允许值包括：**Basic** **OAuth2** | 是 |
 | username | 用户名用于连接到 ServiceNow 服务器，进行基本和 OAuth2 身份验证。  | 是 |
 | password | 基本和 OAuth2 身份验证的用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | clientId | OAuth2 身份验证的客户端 ID。  | 否 |
@@ -76,7 +76,7 @@ ServiceNow 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 ServiceNow 数据集支持的属性列表。
 
-要从 ServiceNow 复制数据，请将数据集的 type 属性设置为“ServiceNowObject”。 支持以下属性：
+要从 ServiceNow 复制数据，请将数据集的 type 属性设置为“ServiceNowObject”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -105,19 +105,19 @@ ServiceNow 链接服务支持以下属性：
 
 ### <a name="servicenow-as-source"></a>以 ServiceNow 作为源
 
-要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”。 复制活动源部分支持以下属性：
+要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**ServiceNowSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Actual.alm_asset"`。 | 否（如果指定了数据集中的“tableName”） |
 
-在查询中指定 ServiceNow 的架构和列时注意以下内容，并且参阅有关复制性能隐含的[性能提示](#performance-tips)。
+在查询中指定 ServiceNow 的架构和列时注意以下内容，并且参阅有关复制性能隐含的[性能提示](#performance-tips)  。
 
 - **架构：** 在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 时可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
-- **列：**`Actual` 架构下实际值的列名是 `[column name]_value`，而 `Display` 架构下显示值的列名为 `[column name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
+- **列：** `Actual` 架构下实际值的列名是 `[column name]_value`，而 `Display` 架构下显示值的列名为 `[column name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
 
-**示例查询：**
+**示例查询：** 
 `SELECT col_value FROM Actual.alm_asset`或  
 `SELECT col_display_value FROM Display.alm_asset`
 
@@ -156,7 +156,7 @@ ServiceNow 链接服务支持以下属性：
 
 ### <a name="schema-to-use"></a>要使用的架构
 
-ServiceNow 有 2 个不同的架构，一个是“实际”，返回实际数据；另一个是“显示”，返回数据的显示值。 
+ServiceNow 有 2 个不同的架构，一个是“实际”，返回实际数据；另一个是“显示”，返回数据的显示值   。 
 
 如果在有查询中筛选器，请使用“实际”架构，此架构具有更好的复制性能。 在针对“实际”架构进行查询时，ServiceNow 在提取数据时将本机支持筛选器以仅返回筛选的结果集，然而在针对“显示”架构进行查询时，ADF 将检索所有数据并在内部应用筛选器。
 

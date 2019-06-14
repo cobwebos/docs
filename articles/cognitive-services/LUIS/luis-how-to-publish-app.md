@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: diberry
 ms.openlocfilehash: 22bed877d853c7023f8efe6bfb3dd21b4aa4c8df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60194402"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
@@ -26,7 +26,7 @@ ms.locfileid: "60194402"
 
 ## <a name="publishing"></a>发布
 
-若要发布到终结点，请在右上方的面板中选择“发布”。 
+若要发布到终结点，请在右上方的面板中选择“发布”  。 
 
 ![右上方的导航栏](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
@@ -40,11 +40,11 @@ ms.locfileid: "60194402"
 
 ![“发布”弹出窗口，其中包含指向终结点的链接](./media/luis-how-to-publish-app/publish-success.png)
 
-如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”，然后在左侧菜单中选择“密钥和终结点”来访问终结点 URL。 
+如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”  ，然后在左侧菜单中选择“密钥和终结点”来访问终结点 URL  。 
 
 ## <a name="configuring-publish-settings"></a>配置发布设置
 
-通过在右上方导航栏中选择“管理”，然后选择“发布设置”来配置发布设置。 
+通过在右上方导航栏中选择“管理”  ，然后选择“发布设置”  来配置发布设置。 
 
 ![发布设置](./media/luis-how-to-publish-app/publish-settings.png)
 

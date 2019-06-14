@@ -14,10 +14,10 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b74049833b055caa112c346b74798893f2c0febf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60476649"
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助
@@ -43,12 +43,12 @@ ms.locfileid: "60476649"
 
 ## <a name="sign-in-using-another-verification-method"></a>使用其他验证方法登录
 
-1. 正常登录帐户，选择“双重验证”页面上的“用其他方法登录”链接。
+1. 正常登录帐户，选择“双重验证”页面上的“用其他方法登录”链接   。
 
     ![更改登录验证方法](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 
     >[!Note]
-    >如果没有看到“用其他方法登录”链接，这表示尚未设置其他验证方法。 必须联系管理员，获取登录帐户的帮助。 登录后，请确保添加其他验证方法。 有关添加验证方法的详细信息，请参阅[管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)一文。<br><br>如果看到链接，但看不到其他验证方法，必须联系管理员，获取登录帐户的帮助。
+    >如果没有看到“用其他方法登录”链接，这表示尚未设置其他验证方法  。 必须联系管理员，获取登录帐户的帮助。 登录后，请确保添加其他验证方法。 有关添加验证方法的详细信息，请参阅[管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)一文。<br><br>如果看到链接，但看不到其他验证方法，必须联系管理员，获取登录帐户的帮助。
 
 2. 选择其他验证方法，继续使用双重验证过程。
 

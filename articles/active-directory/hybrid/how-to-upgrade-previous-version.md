@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347640"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从以前版本升级到最新版本
 本主题介绍可将 Azure Active Directory (Azure AD) Connect 安装升级到最新版本的不同方法。 建议使用最新版本的 Azure AD Connect。 进行重大配置更改时，也可以使用[交叉迁移](#swing-migration)部分所述的步骤。
 
 >[!NOTE]
-> 目前支持从任何版本的 Azure AD Connect 升级到最新版本。 不支持就地升级的 DirSync 或 ADSync 和交叉迁移是必需的。  如果你想要从 DirSync 升级，请参阅[从 Azure AD 同步工具 (DirSync) 升级](how-to-dirsync-upgrade-get-started.md)或[交叉迁移](#swing-migration)部分。  </br>在实践中，很早版本的客户可能会遇到与 Azure AD Connect 不是直接相关的问题。 已在几年中，对于生产环境中的服务器通常具有有几个修补程序应用于它们，并非所有内容都可以得到解决。  通常情况下，在 12-18 个月内未升级的客户应考虑交叉升级而是因为这是最保守估计，至少风险的选项。
+> 当前支持从任何版本的 Azure AD Connect 升级到当前版本。 不支持 DirSync 或 ADSync 的就地升级，必须进行交叉迁移。  如果要从 DirSync 升级，请参阅[从 Azure AD 同步工具 (DirSync) 升级](how-to-dirsync-upgrade-get-started.md)或[交叉迁移](#swing-migration)部分。  </br>实际上，极旧版本的客户可能会遇到不是与 Azure AD Connect 直接相关的问题。 已经投入生产多年的服务器通常都应用了几个修补程序，并非所有这些都能解释清楚。  通常情况下，在 12-18 个月内未升级过的客户应考虑交叉升级，因为这是最保守且风险最低的选项。
 
 如果要从 DirSync 升级，请参阅[从 Azure AD 同步工具 (DirSync) 升级](how-to-dirsync-upgrade-get-started.md)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "60347640"
 
 在就地升级过程中，可能会引入更改，要求在升级完成后执行特定同步活动（包括完全导入步骤和完全同步步骤）。 若要推迟这些活动，请参考[如何在升级后推迟完全同步](#how-to-defer-full-synchronization-after-upgrade)部分。
 
-如果正在将 Azure AD Connect 与非标准连接器（例如泛型 LDAP 连接器和泛型 SQL 连接器）配合使用，则必须在就地升级后，刷新 [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) 中的相应连接器配置。 有关如何刷新连接器配置的详细信息，请参阅文章[连接器版本发行历史记录 - 故障排除](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting)。 如果不刷新配置，针对连接器的导入和导出运行步骤将无法正常工作。 将在应用程序事件日志中接收到如下错误，内容为“AAD 连接器配置 ("X.X.XXX.X") 中的程序集版本低于 "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" 的实际版本 ("X.X.XXX.X")。
+如果正在将 Azure AD Connect 与非标准连接器（例如泛型 LDAP 连接器和泛型 SQL 连接器）配合使用，则必须在就地升级后，刷新 [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) 中的相应连接器配置。 有关如何刷新连接器配置的详细信息，请参阅文章[连接器版本发行历史记录 - 故障排除](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting)。 如果不刷新配置，针对连接器的导入和导出运行步骤将无法正常工作。 将在应用程序事件日志中接收到如下错误，内容为“AAD 连接器配置 ("X.X.XXX.X") 中的程序集版本低于 "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" 的实际版本 ("X.X.XXX.X")  。
 
 ## <a name="swing-migration"></a>交叉迁移
 如果部署复杂或者有多个对象，在活动的系统上进行就地升级可能不切合实际。 对于某些客户来说，此过程可能要花费几天时间，在此期间无法处理任何增量更改。 如果打算对配置进行重大更改，并且希望在将这些更改推送到云之前对其进行测试，则也可以使用此方法。
@@ -92,19 +92,19 @@ ms.locfileid: "60347640"
 **移动自定义同步规则**  
 若要移动自定义同步规则，请执行以下操作：
 
-1. 在活动服务器上打开“同步规则编辑器”。
-2. 选择自定义规则。 单击“导出”。 此时会打开一个记事本窗口。 使用 PS1 扩展名保存临时文件。 这样就可以将它转换为 PowerShell 脚本。 将此 PS1 文件复制到过渡服务器。  
+1. 在活动服务器上打开“同步规则编辑器”。 
+2. 选择自定义规则。 单击“导出”。  此时会打开一个记事本窗口。 使用 PS1 扩展名保存临时文件。 这样就可以将它转换为 PowerShell 脚本。 将此 PS1 文件复制到过渡服务器。  
    ![同步规则导出](./media/how-to-upgrade-previous-version/exportrule.png)
-3. 过渡服务器上的连接器 GUID 不同，因此必须更改。 要获取 GUID，请启动“同步规则编辑器”，选择表示同一个已连接系统的现成规则之一，并单击“导出”。 将 PS1 文件中的 GUID 替换为过渡服务器中的 GUID。
+3. 过渡服务器上的连接器 GUID 不同，因此必须更改。 要获取 GUID，请启动“同步规则编辑器”，选择表示同一个已连接系统的现成规则之一，并单击“导出”。   将 PS1 文件中的 GUID 替换为过渡服务器中的 GUID。
 4. 在 PowerShell 命令提示符下运行 PS1 文件。 这会在过渡服务器上创建自定义同步规则。
 5. 针对所有自定义规则重复此步骤。
 
 ## <a name="how-to-defer-full-synchronization-after-upgrade"></a>如何在升级后推迟完全同步
-在就地升级过程中，可能会引入更改，要求执行特定同步活动（包括完全导入步骤和完全同步步骤）。 例如，在受影响的连接器上，连接器架构更改要求执行“完全导入”步骤，现成同步规则更改要求执行“完全同步”步骤。 升级过程中，Azure AD Connect 确定必需执行哪些同步活动，并将它们记录为“替代”。 在以下同步周期中，同步计划程序将选取并执行这些替代。 成功执行替代后，会将其移除。
+在就地升级过程中，可能会引入更改，要求执行特定同步活动（包括完全导入步骤和完全同步步骤）。 例如，在受影响的连接器上，连接器架构更改要求执行“完全导入”步骤，现成同步规则更改要求执行“完全同步”步骤   。 升级过程中，Azure AD Connect 确定必需执行哪些同步活动，并将它们记录为“替代”  。 在以下同步周期中，同步计划程序将选取并执行这些替代。 成功执行替代后，会将其移除。
 
 在某些情况下，可能不希望在升级后立即执行这些替代。 例如，具有大量已同步对象，并希望在工作时间结束后再执行同步步骤。 若要移除这些替代，请执行以下操作：
 
-1. 在升级过程中，取消选中“在配置完成后启动同步流程”选项。 这将禁用同步计划程序，并防止在替代移除之前自动进入同步周期。
+1. 在升级过程中，取消选中“在配置完成后启动同步流程”选项   。 这将禁用同步计划程序，并防止在替代移除之前自动进入同步周期。
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
@@ -159,7 +159,7 @@ At line:1 char:1
 
 ```
 
-PowerShell cmdlet 将报告错误“找不到指定的 MA”。
+PowerShell cmdlet 将报告错误“找不到指定的 MA”  。
 
 此错误发生的原因是当前 Azure AD Connect 配置不支持升级。 
 

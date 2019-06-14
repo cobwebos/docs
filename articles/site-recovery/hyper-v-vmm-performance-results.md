@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60363465"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>从 Hyper-V 复制到辅助站点的测试结果
@@ -147,11 +147,11 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 | 工作负荷 | # VM | 最小 RAM (GB) | 最大 RAM (GB) | 每个 VM 的逻辑磁盘大小 (GB) | 最大 IOPS |
 | --- | --- | --- | --- | --- | --- |
-| SQL Server |51 |1 |4 |167 |10 |
-| Exchange Server |71 |1 |4 |552 |10 |
-| 文件服务器 |50 |1 |2 |552 |22 |
-| VDI |149 |0.5 |1 |80 |6 |
-| Web 服务器 |149 |0.5 |1 |80 |6 |
+| SQL Server |51 |第 |4 |167 |10 |
+| Exchange Server |71 |第 |4 |552 |10 |
+| 文件服务器 |50 |第 |2 |552 |22 |
+| VDI |149 |0\.5 |第 |80 |6 |
+| Web 服务器 |149 |0\.5 |第 |80 |6 |
 | 总计 |470 | | |96.83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Site Recovery 设置
@@ -163,7 +163,7 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 | --- | --- | --- | --- |
 | PrimaryCloudRpo15m |142 |15 分钟 |无 |
 | PrimaryCloudRpo30s |47 |30 秒 |无 |
-| PrimaryCloudRpo30sArp1 |47 |30 秒 |1 |
+| PrimaryCloudRpo30sArp1 |47 |30 秒 |第 |
 | PrimaryCloudRpo5m |235 |5 分钟 |无 |
 
 ### <a name="performance-metrics"></a>性能指标

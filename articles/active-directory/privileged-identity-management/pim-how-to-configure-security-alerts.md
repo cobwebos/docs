@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60288492"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>在 PIM 中配置 Azure AD 角色的安全警报
@@ -39,7 +39,7 @@ ms.locfileid: "60288492"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 为用户分配他们不需要的特权角色会增大受攻击的可能性。 攻击者更容易忽略不经常使用的帐户。 |
 | **如何修复？** | 检查列表中的用户，并将其从不需要的特权角色中删除。 |
 | **预防** | 仅将特权角色分配给有业务需要的用户。 </br>安排定期的[访问评审](pim-how-to-start-security-review.md)，以确认用户是否仍需要访问权限。 |
@@ -51,7 +51,7 @@ ms.locfileid: "60288492"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 如果不执行 MFA，则遭到入侵的用户可以激活特权角色。 |
 | **如何修复？** | 检查角色列表，并针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。 |
 | **预防** | 针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。  |
@@ -61,7 +61,7 @@ ms.locfileid: "60288492"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 当前租户没有 Azure AD Premium P2。 |
 | **如何修复？** | 查看有关 [Azure AD 版本](../fundamentals/active-directory-whatis.md)的信息。 升级到 Azure AD Premium P2。 |
 
@@ -69,7 +69,7 @@ ms.locfileid: "60288492"
 
 | | |
 | --- | --- |
-| **严重性** | 中型 |
+| **Severity** | 中型 |
 | **为何收到此警报？** | 具有特权角色但在过去 90 天内未更改密码的帐户。 这些帐户可能是未维护且易受攻击者攻击的服务帐户或共享帐户。 |
 | **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
 | **预防** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
@@ -80,7 +80,7 @@ ms.locfileid: "60288492"
 
 | | |
 | --- | --- |
-| **严重性** | 高 |
+| **Severity** | 高 |
 | **为何收到此警报？** | 在 PIM 外部进行的特权角色分配未受到正确的监视，可能表示正遭到攻击。 |
 | **如何修复？** | 检查列表中的用户，并将其从 PIM 外部分配的特权角色中删除。 |
 | **预防** | 调查在 PIM 外部的哪个位置为用户分配了特权角色，并禁止将来在该位置分配角色。 |
@@ -90,7 +90,7 @@ ms.locfileid: "60288492"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 全局管理员是特权最高的角色。 如果全局管理员遭到入侵，则攻击者可以获取其所有访问权限，使整个系统面临风险。 |
 | **如何修复？** | 检查列表中的用户，并删除不是绝对需要全局管理员角色的所有用户。 </br>为这些用户分配特权更低的角色。 |
 | **预防** | 为用户分配他们所需的最低特权角色。 |
@@ -103,7 +103,7 @@ ms.locfileid: "60288492"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 同一用户多次激活同一特权角色是受到攻击的迹象。 |
 | **如何修复？** | 检查列表中的用户，并确保用户特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使他们能够执行任务。 |
 | **预防** | 确保特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使用户能够执行其任务。</br>针对其帐户由多个管理员共享的特权角色[要求执行 MFA](pim-how-to-change-default-settings.md)。 |
@@ -116,11 +116,11 @@ ms.locfileid: "60288492"
 
 可以在 PIM 中自定义某些安全警报，以处理环境和安全目标。 执行以下步骤打开安全警报设置：
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure AD 角色”。
+1. 单击“Azure AD 角色”。 
 
-1. 依次单击“设置”、“警报”。
+1. 依次单击“设置”、“警报”   。
 
     ![导航到安全警报设置](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 

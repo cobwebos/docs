@@ -11,10 +11,10 @@ ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: ebbcbcc3d0934800980b7d8e00895b11ff2747b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310394"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>还原 Azure SQL 数据仓库 
@@ -218,7 +218,7 @@ $GeoRestoredDatabase.status
 
 2. 导航到要为其创建还原点的 SQL 数据仓库。
 
-3. 在“概览”边栏选项卡顶部，选择“+ 新建还原点”。
+3. 在“概览”边栏选项卡顶部，选择“+ 新建还原点”  。
 
     ![新建还原点](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
 
@@ -229,11 +229,11 @@ $GeoRestoredDatabase.status
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>使用 Azure 门户还原活动或暂停的数据库
 1. 登录到 [Azure 门户][Azure portal]。
 2. 导航到要从中进行还原的 SQL 数据仓库。
-3. 在“概览”边栏选项卡顶部，选择“还原”。
+3. 在“概览”边栏选项卡顶部，选择“还原”  。
 
     ![ 还原概述](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
 
-4. 选择“自动还原点”或“用户定义的还原点”。
+4. 选择“自动还原点”或“用户定义的还原点”。  
 
     ![自动还原点](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 

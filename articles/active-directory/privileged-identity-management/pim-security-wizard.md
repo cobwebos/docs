@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6f978612cbbf0c326c3e66f25a0fbf4b749cc73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60286881"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>PIM 中的 Azure AD 角色安全向导
@@ -39,27 +39,27 @@ ms.locfileid: "60286881"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
-1. 单击“Azure AD 角色”，然后单击“向导”。
+1. 单击“Azure AD 角色”  ，然后单击“向导”  。
 
     ![Azure AD 角色 - 向导](./media/pim-security-wizard/wizard-start.png)
 
-1. 单击“1 发现特权角色”。
+1. 单击“1 发现特权角色”  。
 
 1. 查看特权角色列表以查看哪些用户是永久的或符合条件的。
 
     ![发现特权角色用户](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
-1. 单击“下一步”以选择要使其符合条件的成员。
+1. 单击“下一步”  以选择要使其符合条件的成员。
 
     ![将成员转换为符合条件的成员](./media/pim-security-wizard/convert-members-eligible.png)
 
-1. 选择成员后，单击“下一步”。
+1. 选择成员后，单击“下一步”。 
 
     ![查看更改](./media/pim-security-wizard/review-changes.png)
 
-1. 单击“确定”以将永久分配转换为符合条件的。
+1. 单击“确定”  以将永久分配转换为符合条件的。
 
     转换完成后，你将看到一条通知。
 

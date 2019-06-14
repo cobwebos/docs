@@ -15,15 +15,15 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6c313cc654461ea22c126fede317ed230408b82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60291596"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序密码单一登录时遇到的问题
 
-阅读本文有助于了解在配置 Azure AD 库应用程序密码单一登录时经常会遇到的常见问题。
+阅读本文有助于了解在配置 Azure AD 库应用程序密码单一登录  时经常会遇到的常见问题。
 
 ## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>凭据已填写，但扩展却未提交凭据
 
@@ -31,7 +31,7 @@ ms.locfileid: "60291596"
 
 但是，尽管 Microsoft 的技术能够在集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题需要一些时间才能解决。 如果其中一个集成无法正确工作，请打开支持案例以尽快解决这一问题。
 
-如果与该应用程序的供应商联系，请向他们发送我们的方法，这样，Microsoft 就可以与他们合作，将其应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../develop/howto-app-gallery-listing.md)来让他们开始工作。
+ 如果与该应用程序的供应商联系，请向他们发送我们的方法，这样，Microsoft 就可以与他们合作，将其应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../develop/howto-app-gallery-listing.md)来让他们开始工作。
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>凭据已填写并提交，但页面却显示凭据不正确
 
@@ -39,15 +39,15 @@ ms.locfileid: "60291596"
 
 - 先让用户使用为他们保存的凭据尝试**直接登录应用程序网站**。
 
-  * 如果登录有效，再让用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分的“应用程序磁贴”上，单击“更新凭据”，以将凭据更新为最新的已知用户名和密码。
+  * 如果登录有效，再让用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”  部分的“应用程序磁贴”  上，单击“更新凭据”  ，以将凭据更新为最新的已知用户名和密码。
 
-  * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
+  * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”  选项卡、选择分配并单击“更新凭据”  按钮，找到该用户或组的应用程序分配。
 
-- 如果用户自己分配凭据，让用户“检查以确保他们的密码在应用程序中未过期”，如果已经过期，直接登录应用程序**更新过期密码**。
+- 如果用户自己分配凭据，让用户“检查以确保他们的密码在应用程序中未过期”  ，如果已经过期，直接登录应用程序**更新过期密码**。
 
-  * 密码在应用程序中更新好后，要求用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”按钮，以将凭据更新到大家所知的最新有效的用户名和密码。
+  * 密码在应用程序中更新好后，要求用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”  部分中的“应用程序磁贴”  上，单击“更新凭据”  按钮，以将凭据更新到大家所知的最新有效的用户名和密码。
 
-  * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
+  * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”  选项卡、选择分配并单击“更新凭据”  按钮，找到该用户或组的应用程序分配。
 
 - 让用户通过遵循下面的[如何安装访问面板浏览器扩展](#how-to-install-the-access-panel-browser-extension)部分中的步骤更新访问面板浏览器扩展。
 
@@ -67,7 +67,7 @@ ms.locfileid: "60291596"
 
 - 根据 Internet Explorer 中启用的安全设置，如果网站不属于**受信区域**，我们的脚本有时会在执行应用程序时遭到屏蔽。
 
-  *  为了解决这一问题，请指导用户**添加应用程序的网站**到**Internet Explorer 安全设置**内的“受信任的站点”列表。 可以将用户发送到文章[如何将站点添加到受信任的站点列表](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5)，了解指导说明的详细信息。
+  *  为了解决这一问题，请指导用户**添加应用程序的网站**到**Internet Explorer 安全设置**内的“受信任的站点”  列表。 可以将用户发送到文章[如何将站点添加到受信任的站点列表](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5)，了解指导说明的详细信息。
 
 - 在少数情况下，Internet Explorer 的安全验证有时可以导致页面的加载速度慢于脚本的执行速度。
 
@@ -87,17 +87,17 @@ ms.locfileid: "60291596"
 
 若要安装访问面板浏览器扩展，请按照以下步骤操作：
 
-1.  在某个支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”身份登录。
+1.  在某个支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”  身份登录。
 
-2.  在访问面板中单击“密码-SSO 应用程序”。
+2.  在访问面板中单击“密码-SSO 应用程序”  。
 
-3.  在出现询问是否安装该软件的提示时，选择“立即安装”。
+3.  在出现询问是否安装该软件的提示时，选择“立即安装”  。
 
-4.  将根据所用的浏览器将你定向到下载链接。 将扩展“添加”到浏览器中。
+4.  将根据所用的浏览器将你定向到下载链接。 将扩展“添加”  到浏览器中。
 
-5.  如果浏览器出现提示，选择“启用”或“允许”扩展。
+5.  如果浏览器出现提示，选择“启用”  或“允许”  扩展。
 
-6.  安装完成后，“重启”浏览器会话。
+6.  安装完成后，“重启”  浏览器会话。
 
 7.  登录到访问面板，并查看是否可以**启动**密码 - SSO 应用程序
 

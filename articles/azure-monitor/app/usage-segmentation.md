@@ -14,10 +14,10 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372273"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
@@ -54,13 +54,13 @@ ms.locfileid: "60372273"
 ## <a name="saving-and-sharing-reports"></a>保存和共享报表 
 可以将用户报表保存为在“我的报表”部分中专供你使用的报表，或者将其保存为在“共享报表”部分中可供对此 Application Insights 资源具有访问权限的其他所有人访问的共享报表。
 
-若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”，然后复制该链接。
+若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”  ，然后复制该链接。
 
-若要共享“用户”、“会话”或“事件”报表中的数据副本，请单击工具栏中的“共享”，然后单击“Word 图标”使用该数据创建一个 Word 文档。 或者，单击主图表上方的“Word 图标”。
+若要共享“用户”、“会话”或“事件”报表中的数据副本，请单击工具栏中的“共享”  ，然后单击“Word 图标”  使用该数据创建一个 Word 文档。 或者，单击主图表上方的“Word 图标”  。
 
 ## <a name="meet-your-users"></a>了解用户
 
-“了解用户”部分显示与当前查询匹配的五个示例用户的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用应用的实际方式。
+“了解用户”  部分显示与当前查询匹配的五个示例用户的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用应用的实际方式。
 
 ## <a name="next-steps"></a>后续步骤
 

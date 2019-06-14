@@ -12,24 +12,24 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d2c7211831658a18e65e04aa753607f4eb22dac8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515095"
 ---
 # <a name="what-is-bing-speech"></a>必应语音是什么？
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-使用基于云的 Microsoft 必应语音 API，开发人员可以轻松地在其应用程序中创建支持语音的强大功能，例如语音命令控制、使用自然语音聊天的用户对话以及语音听录和听写。 Microsoft 语音 API 支持“语音转文本”和“文本转语音”转换。
+使用基于云的 Microsoft 必应语音 API，开发人员可以轻松地在其应用程序中创建支持语音的强大功能，例如语音命令控制、使用自然语音聊天的用户对话以及语音听录和听写。 Microsoft 语音 API 支持“语音转文本”和“文本转语音”转换   。
 
-- 语音转文本 API 将人类语音转换为可用作控制应用程序的输入或命令的文本。
-- 文本转语音 API 将文本转换为可向应用程序用户播放的音频流。
+- 语音转文本 API 将人类语音转换为可用作控制应用程序的输入或命令的文本  。
+- 文本转语音 API 将文本转换为可向应用程序用户播放的音频流  。
 
 ## <a name="speech-to-text-speech-recognition"></a>语音转文本（语音识别）
 
-Microsoft 语音识别 API 将音频流转录为应用程序可以向用户显示或作为命令输入操作的文本。 它为开发者提供了两种向其应用添加语音的方法：REST API **或**基于 Websocket 的客户端库。
+Microsoft 语音识别 API 将音频流转录为应用程序可以向用户显示或作为命令输入操作的文本  。 它为开发者提供了两种向其应用添加语音的方法：REST API **或**基于 Websocket 的客户端库。
 
 - [REST API](GetStarted/GetStartedREST.md)：开发者可使用从其应用到服务的 HTTP 调用来进行语音识别。
 - [客户端库](GetStarted/GetStartedClientLibraries.md)：对于高级功能，开发者可下载 Microsoft 语音客户端库，并链接到其应用。  客户端库在使用不同语言（C#、Java、JavaScript、ObjectiveC）的多种平台（Windows、Android、iOS）上可用。 与 REST API 不同，客户端库使用基于 Websocket 的协议。
@@ -45,9 +45,9 @@ Microsoft 语音识别 API 将音频流转录为应用程序可以向用户显�
 
 - Cortana、Office 听写、Office 翻译工具和其他 Microsoft 产品中使用的 Microsoft 高级语音识别技术。
 - 实时连续识别。 语音识别 API 使用户能够实时将音频听录为文本，并支持接收目前为止已识别字词的中间结果。 语音服务还支持语音结束检测。 此外，用户可选择其他格式功能，例如大写和标点符号、屏蔽不当字词和文本规范化。
-- 支持已针对交互、对话和听写场景优化的语音识别结果。 对于需要自定义语言模型和声学模型的用户方案，[自定义语音服务](../custom-speech-service/cognitive-services-custom-speech-home.md)允许创建适合应用程序和用户的语音模型。
+- 支持已针对交互、对话和听写场景优化的语音识别结果    。 对于需要自定义语言模型和声学模型的用户方案，[自定义语音服务](../custom-speech-service/cognitive-services-custom-speech-home.md)允许创建适合应用程序和用户的语音模型。
 - 支持多种方言中的多种口语。 有关每种识别模式下支持的语言的完整列表，请参阅[识别语言](api-reference-rest/supportedlanguages.md)。
-- 与语言理解集成。 除了将输入音频转换为文本外，语音转文本还为应用程序提供了理解文本含义的附加功能。 它使用[语言理解智能服务 (LUIS)](../LUIS/what-is-luis.md) 从识别文本中提取意向和实体。
+- 与语言理解集成。 除了将输入音频转换为文本外，语音转文本还为应用程序提供了理解文本含义的附加功能  。 它使用[语言理解智能服务 (LUIS)](../LUIS/what-is-luis.md) 从识别文本中提取意向和实体。
 
 ### <a name="next-steps"></a>后续步骤
 
@@ -57,7 +57,7 @@ Microsoft 语音识别 API 将音频流转录为应用程序可以向用户显�
 
 ## <a name="text-to-speech-speech-synthesis"></a>文本转语音（语音合成）
 
-文本转语音 API 使用 REST 将结构化文本转换为音频流。 API 提供多种语音和语言的文本到语音快速转换。 此外，用户还可以使用 SSML 标签更改发音、音量、音高 等音频特性。
+文本转语音 API 使用 REST 将结构化文本转换为音频流  。 API 提供多种语音和语言的文本到语音快速转换。 此外，用户还可以使用 SSML 标签更改发音、音量、音高 等音频特性。
 
 ### <a name="next-steps"></a>后续步骤
 

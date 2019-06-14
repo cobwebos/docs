@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d47072713c57576abe780134792c3a5cbc27127c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60438261"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
@@ -30,8 +30,8 @@ ms.locfileid: "60438261"
 审核日志报告将关于应用程序活动的多个报告组合到单个视图中以提供基于上下文的报告。 若要访问审核日志报告，请执行以下操作：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。
-3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“审核日志”。 
+2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。 
+3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“审核日志”。   
 
     ![审核日志](./media/howto-find-activity-reports/482.png "审核日志")
 
@@ -91,13 +91,13 @@ ms.locfileid: "60438261"
 
 ## <a name="sign-ins-report"></a>登录报告 
 
-“登录”视图包括所有用户登录，以及“应用程序使用情况”报告。 还可以在“企业应用程序”概述的“管理”部分中查看应用程序使用情况信息。
+“登录”  视图包括所有用户登录，以及“应用程序使用情况”  报告。 还可以在“企业应用程序”概述的“管理”部分中查看应用程序使用情况信息。  
 
 若要访问登录报告，请执行以下操作：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
-2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。
-3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”。 
+2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。 
+3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”。   
 
     ![“登录”视图](./media/howto-find-activity-reports/483.png "“登录”视图")
 
@@ -134,7 +134,7 @@ ms.locfileid: "60438261"
 
 ### <a name="detected-risk-events"></a>检测到的风险事件
 
-在 [Azure 门户](https://portal.azure.com)中，可以在“Azure Active Directory” 边栏选项卡的“安全性”部分中访问有关检测到的风险事件的报告。 可以在以下报告中跟踪检测到的风险事件：   
+在 [Azure 门户](https://portal.azure.com)中，可以在“Azure Active Directory”  边栏选项卡的“安全性”  部分中访问有关检测到的风险事件的报告。 可以在以下报告中跟踪检测到的风险事件：   
 
 - [有风险的用户](concept-user-at-risk.md)
 - [有风险的登录](concept-risky-sign-ins.md)

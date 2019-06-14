@@ -13,10 +13,10 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: 60839fa06d8436d3d2202d1d97735c42c5768e9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331464"
 ---
 # <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>针对单一数据库或共用数据库的 Azure SQL 数据库威胁检测
@@ -30,11 +30,11 @@ ms.locfileid: "60331464"
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>在 Azure 门户中为数据库设置威胁检测
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中启动 Azure 门户。
-2. 导航到要保护的 Azure SQL 数据库服务器的配置页。 在安全设置中，选择“高级数据安全”。
-3. 在“高级数据安全”配置页：
+2. 导航到要保护的 Azure SQL 数据库服务器的配置页。 在安全设置中，选择“高级数据安全”  。
+3. 在“高级数据安全”  配置页：
 
    - 在服务器上启用高级数据安全。
-   - 在“威胁检测设置”中的“发送警报到”文本框中，提供检测到异常数据库活动时收到安全警报的电子邮件列表。
+   - 在“威胁检测设置”中的“发送警报到”文本框中，提供检测到异常数据库活动时收到安全警报的电子邮件列表   。
   
    ![设置威胁检测](./media/sql-database-threat-detection/set_up_threat_detection.png)
 

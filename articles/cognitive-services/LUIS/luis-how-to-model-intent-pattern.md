@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 202b9632b7a7faaf955874a0300edbe5134b7fa1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60196637"
 ---
-# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以改进预测精确性
-LUIS 应用接收终结点语音样本后，使用[模式](luis-concept-patterns.md)以改进预测精确性的语音样本，显示一个图案中单词顺序和 word 的选择。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)以指示的位置：[实体](luis-concept-entity-types.md)，实体[角色](luis-concept-roles.md)，和可选的文本。
+# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以提高预测准确性
+在 LUIS 应用接收到终结点话语后，请使用[模式](luis-concept-patterns.md)提高话语（按字词顺序和字词选择呈现模式）的预测准确性。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)以指示的位置：[实体](luis-concept-entity-types.md)，实体[角色](luis-concept-roles.md)，和可选的文本。
 
 ## <a name="add-template-utterance-to-create-pattern"></a>添加模板表述以创建模式
-1. 通过选择“我的应用”页上的应用名称来打开应用，然后选择“提高应用性能”下左侧面板中的“模式”。
+1. 通过选择“我的应用”页上的应用名称来打开应用，然后选择“提高应用性能”下左侧面板中的“模式”    。
 
     ![模式列表的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
@@ -58,20 +58,20 @@ LUIS 应用接收终结点语音样本后，使用[模式](luis-concept-patterns
 
 ## <a name="use-contextual-toolbar"></a>使用上下文工具栏
 
-上面的模式列表的上下文工具栏中，您可以：
+使用模式列表上方的上下文工具栏可以：
 
 * 搜索模式
 * 编辑模式
 * 为其他意向重新分配一个模式
 * 为其他意向重新分配多个模式
-* 删除一个单模式
+* 删除单个模式
 * 删除多个模式
 * 按实体筛选模式列表
-* Filter-pattern-list-by-intent
+* 按意向筛选模式列表
 * 删除实体或意向筛选器
 * 在意向或实体页上通过现有表述添加模式
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[生成一种模式](luis-tutorial-pattern.md)pattern.any 和教程，说明如何使用角色。
+* 了解如何按照教程[生成模式](luis-tutorial-pattern.md)（使用 pattern.any 和角色）。
 * 了解如何[培训](luis-how-to-train.md)应用。

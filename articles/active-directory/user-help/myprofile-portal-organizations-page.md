@@ -13,16 +13,16 @@ ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60475444"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>从“我的个人资料”（预览版）门户管理组织
-可以从“我的个人资料”门户的“组织”页管理组织。
+可以从“我的个人资料”门户的“组织”页管理组织   。
 
-“组织”页中显示了两种类型的组织：
+“组织”页中显示了两种类型的组织  ：
 
 - **本组织。** 本组织是拥有你的工作或学校帐户的组织。 无法离开本组织。
 
@@ -33,7 +33,7 @@ ms.locfileid: "60475444"
 ## <a name="view-your-organizations"></a>查看组织
 1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
-2. 从左侧导航窗格中选择“组织”，或从“组织”块中选择“管理组织”链接。
+2. 从左侧导航窗格中选择“组织”，或从“组织”块中选择“管理组织”链接    。
 
     ![“我的个人资料”页，显示突出显示的“组织”链接](media/myprofile-portal/myprofile-portal-organizations.png)
 
@@ -49,9 +49,9 @@ ms.locfileid: "60475444"
 >[!Important]
 >如果错误地离开了某个组织，则无法撤销该操作。 必须重新添加该组织。
 
-1. 从“我参与的其他组织”区域登录帐户。
+1. 从“我参与的其他组织”区域登录帐户  。
 
-2. 选择“离开组织”，然后选择“是”来确认想要离开该组织。
+2. 选择“离开组织”，然后选择“是”来确认想要离开该组织   。
 
     ![突出显示“离开组织”链接的“组织”页](media/myprofile-portal/myprofile-portal-organizations-leave.png)
 

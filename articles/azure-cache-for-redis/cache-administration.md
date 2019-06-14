@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 81ef669b62c822e10d8bf5c45e58dd769c5dbeb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60233031"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
@@ -27,11 +27,11 @@ ms.locfileid: "60233031"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="reboot"></a>重新启动
-可通过“重新启动”边栏选项卡重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
+可通过“重新启动”  边栏选项卡重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
 
 ![重新启动](./media/cache-administration/redis-cache-administration-reboot.png)
 
-选择要重新启动的节点，并单击“重新启动” 。
+选择要重新启动的节点，并单击“重新启动”  。
 
 ![重新启动](./media/cache-administration/redis-cache-reboot.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "60233031"
 
 ![重新启动](./media/cache-administration/redis-cache-reboot-cluster.png)
 
-要重新启动缓存的一个或多个节点，请选择所需节点，并单击“重新启动”。 如果高级缓存启用了群集功能，请选择要重新启动的所需分片，并单击“重新启动”。 几分钟后，所选节点将重新启动，再过几分钟后，又会回到联机状态。
+要重新启动缓存的一个或多个节点，请选择所需节点，并单击“重新启动”  。 如果高级缓存启用了群集功能，请选择要重新启动的所需分片，并单击“重新启动”  。 几分钟后，所选节点将重新启动，再过几分钟后，又会回到联机状态。
 
 对客户端应用程序的影响因用户重新启动的节点而有所不同。
 
@@ -83,7 +83,7 @@ ms.locfileid: "60233031"
 所有定价层都可以重新启动。
 
 ## <a name="schedule-updates"></a>计划更新
-使用“计划更新”边栏选项卡可为高级层缓存指定维护时段。 指定维护时段后，会在此时段内进行任何 Redis 服务器更新。 
+使用“计划更新”  边栏选项卡可为高级层缓存指定维护时段。 指定维护时段后，会在此时段内进行任何 Redis 服务器更新。 
 
 > [!NOTE] 
 > 维护时段仅适用于 Redis 服务器更新，不适用于任何 Azure 更新或托管缓存的 VM 的操作系统更新。
@@ -92,7 +92,7 @@ ms.locfileid: "60233031"
 
 ![计划更新](./media/cache-administration/redis-schedule-updates.png)
 
-要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”。 请注意，维护时段使用 UTC 时间。 
+要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”  。 请注意，维护时段使用 UTC 时间。 
 
 更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzRmRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅是否可以使用 PowerShell、CLI 或其他管理工具管理计划的更新？
 

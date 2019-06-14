@@ -13,10 +13,10 @@ ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
 ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60306290"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>使用 Application Insights 探查 Azure 中的生产应用程序
@@ -36,9 +36,9 @@ Profiler 适用于以下 Azure 服务中部署的 .NET 应用程序。 下面提
 
 ## <a name="view-profiler-data"></a>查看 Profiler 数据
 
-要使 Profiler 上传跟踪，应用程序必须主动处理请求。 如果你正在进行试验，可以通过 [Application Insights 性能测试](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)生成针对 Web 应用的请求。 如果最近启用了 Profiler，可以运行简短的负载测试。 运行负载测试时，请选择 [**Profiler 设置页**](profiler-settings.md#profiler-settings-pane)中的“立即探查”按钮。 Profiler 开始运行后，它会每小时随机探查大约一次，持续时间为两分钟。 如果应用程序处理的请求流比较稳定，则 Profiler 会每隔一小时上传跟踪。
+要使 Profiler 上传跟踪，应用程序必须主动处理请求。 如果你正在进行试验，可以通过 [Application Insights 性能测试](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)生成针对 Web 应用的请求。 如果最近启用了 Profiler，可以运行简短的负载测试。 运行负载测试时，请选择 [**Profiler 设置页**](profiler-settings.md#profiler-settings-pane)中的“立即探查”按钮。  Profiler 开始运行后，它会每小时随机探查大约一次，持续时间为两分钟。 如果应用程序处理的请求流比较稳定，则 Profiler 会每隔一小时上传跟踪。
 
-应用程序收到一些流量后，如果 Profiler 有时间上传跟踪，则你应会获得一些可查看的跟踪。 此过程最多可能需要 5 到 10 分钟。 若要查看跟踪，请在“性能”窗格中选择“采取措施”，然后选择“Profiler 跟踪”按钮。
+应用程序收到一些流量后，如果 Profiler 有时间上传跟踪，则你应会获得一些可查看的跟踪。 此过程最多可能需要 5 到 10 分钟。 若要查看跟踪，请在“性能”窗格中选择“采取措施”，然后选择“Profiler 跟踪”按钮。   
 
 ![“Application Insights 性能”窗格预览 Profiler 跟踪][performance-blade]
 
@@ -61,7 +61,7 @@ Microsoft 服务探查器结合使用采样方法和检测来分析应用程序�
 
 ### <a id="jitnewobj"></a>对象分配（clr!JIT\_New 或 clr!JIT\_Newarr1）
 
-**clr!JIT\_New** 和 **clr!JIT\_Newarr1** 是 .NET Framework 中的 helper 函数，用于分配托管堆中的内存。 分配对象时，将调用 clr!JIT\_New。 分配对象数组时，将调用 clr!JIT\_Newarr1。 这两个函数通常速度很快，花费的时间相对较短。 如果时间线中的 **clr!JIT\_New** 或 **clr!JIT\_Newarr1** 花费了很长时间，则可能表示代码分配了很多对象，从而消耗了大量的内存。
+**clr!JIT\_New** 和 **clr!JIT\_Newarr1** 是 .NET Framework 中的 helper 函数，用于分配托管堆中的内存。 分配对象时，将调用 clr!JIT\_New  。 分配对象数组时，将调用 clr!JIT\_Newarr1  。 这两个函数通常速度很快，花费的时间相对较短。 如果时间线中的 **clr!JIT\_New** 或 **clr!JIT\_Newarr1** 花费了很长时间，则可能表示代码分配了很多对象，从而消耗了大量的内存。
 
 ### <a id="theprestub"></a>加载代码 (clr!ThePreStub)
 
@@ -71,11 +71,11 @@ Microsoft 服务探查器结合使用采样方法和检测来分析应用程序�
 
 ### <a id="lockcontention"></a>锁争用（clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker）
 
-clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker 指示当前线程正在等待释放锁。 执行 C# **LOCK** 语句、调用 **Monitor.Enter** 方法或者结合 **MethodImplOptions.Synchronized** 属性调用某个方法时，通常会显示此文本。 如果线程 _A_ 获取了某个锁，而线程 _B_ 在线程 _A_ 释放该锁之前尝试获取同一个锁，此时通常会发生锁争用。
+clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker 指示当前线程正在等待释放锁   。 执行 C# **LOCK** 语句、调用 **Monitor.Enter** 方法或者结合 **MethodImplOptions.Synchronized** 属性调用某个方法时，通常会显示此文本。 如果线程 _A_ 获取了某个锁，而线程 _B_ 在线程 _A_ 释放该锁之前尝试获取同一个锁，此时通常会发生锁争用。
 
 ### <a id="ngencold"></a>加载代码 ([COLD])
 
-如果方法名称包含 **[COLD]**（例如 **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined**），则表示 .NET Framework 运行时首次执行的代码未经过[按配置优化](/cpp/build/profile-guided-optimizations)功能的优化。 对于每个方法，在进程的生存期内，它最多只应显示一次。
+如果方法名称包含 **[COLD]** （例如 **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined**），则表示 .NET Framework 运行时首次执行的代码未经过[按配置优化](/cpp/build/profile-guided-optimizations)功能的优化。 对于每个方法，在进程的生存期内，它最多只应显示一次。
 
 如果针对某个请求加载代码花费的时间很长，则表示这是第一个执行该方法的未优化部分的请求。 请考虑在用户访问该代码部分之前使用执行该代码部分的预热进程。
 
@@ -89,11 +89,11 @@ clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker 指示当前线程正
 
 ### <a id="await"></a>等待 (AWAIT\_TIME)
 
-AWAIT\_TIME 指示代码正在等待另一个任务完成。 这种延迟通常发生在 C# **AWAIT** 语句上。 当代码执行 C# **AWAIT** 时，线程会回退并将控制权返回给线程池，此时，不会有任何阻塞的线程等待 **AWAIT** 完成。 但是，从逻辑上讲，执行 **AWAIT** 的线程会被“阻塞”并等待该操作完成。 AWAIT\_TIME 语句指示等待任务完成的阻塞时间。
+AWAIT\_TIME 指示代码正在等待另一个任务完成  。 这种延迟通常发生在 C# **AWAIT** 语句上。 当代码执行 C# **AWAIT** 时，线程会回退并将控制权返回给线程池，此时，不会有任何阻塞的线程等待 **AWAIT** 完成。 但是，从逻辑上讲，执行 **AWAIT** 的线程会被“阻塞”并等待该操作完成。 AWAIT\_TIME 语句指示等待任务完成的阻塞时间  。
 
 ### <a id="block"></a>阻塞时间
 
-BLOCKED_TIME 指示代码正在等待另一个资源变为可用。 例如，它可能会等待同步对象或线程变为可用，或等待请求完成。
+BLOCKED_TIME 指示代码正在等待另一个资源变为可用  。 例如，它可能会等待同步对象或线程变为可用，或等待请求完成。
 
 ### <a name="unmanaged-async"></a>非托管的异步
 
@@ -113,7 +113,7 @@ CPU 正忙于执行指令。
 
 ### <a id="when"></a>“时间”列
 
-“时间”列是针对节点收集的非独占样本在各个时间发生的变化的可视化效果。 请求的总范围划分成 32 个时间存储桶。 该节点的非独占样本会在这 32 个存储桶中累积。 每个存储桶用一个条形表示。 条形的高度表示缩放后的值。 如果节点带有 **CPU_TIME** 或 **BLOCKED_TIME** 标记，或者跟资源（例如，CPU、磁盘、线程）的消耗存在某种明显关系，则条形表示在该 Bucket 的时间段内消耗了其中的某个资源。 如果消耗多个资源，这些指标的值可能大于 100%。 例如，如果在某个时间间隔内平均使用两个 CPU，则指标值为 200%。
+“时间”列是针对节点收集的非独占样本在各个时间发生的变化的可视化效果  。 请求的总范围划分成 32 个时间存储桶。 该节点的非独占样本会在这 32 个存储桶中累积。 每个存储桶用一个条形表示。 条形的高度表示缩放后的值。 如果节点带有 **CPU_TIME** 或 **BLOCKED_TIME** 标记，或者跟资源（例如，CPU、磁盘、线程）的消耗存在某种明显关系，则条形表示在该 Bucket 的时间段内消耗了其中的某个资源。 如果消耗多个资源，这些指标的值可能大于 100%。 例如，如果在某个时间间隔内平均使用两个 CPU，则指标值为 200%。
 
 ## <a name="limitations"></a>限制
 

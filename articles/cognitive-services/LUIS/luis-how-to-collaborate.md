@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: diberry
 ms.openlocfilehash: f23212a854fb37dda89fd2bf6b223cf0dc69526b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60198691"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>如何管理作者和协作者 
@@ -28,9 +28,9 @@ ms.locfileid: "60198691"
 
 一个应用只有一个作者、所有者，但可以有许多协作者。 若要允许协作者编辑你的 LUIS 应用，必须将他们用来访问 LUIS 门户的电子邮件添加到协作者列表中。 在添加后，应用将显示在他们的 LUIS 门户中。
 
-1. 从右上角的菜单中选择“管理”，然后在左侧菜单中选择“协作者”。
+1. 从右上角的菜单中选择“管理”  ，然后在左侧菜单中选择“协作者”。 
 
-2. 从工具栏中选择“添加协作者”。
+2. 从工具栏中选择“添加协作者”  。
 
     [![添加协作者](./media/luis-how-to-collaborate/add-collaborator.png "添加协作者")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
 

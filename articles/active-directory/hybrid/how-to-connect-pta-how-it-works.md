@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347766"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 传递身份验证：技术深入了解
@@ -35,8 +35,8 @@ ms.locfileid: "60347766"
 
 1. 用户尝试访问某个应用程序，例如 [Outlook Web 应用](https://outlook.office365.com/owa/)。
 2. 如果用户尚未登录，该用户将被重定向到 Azure AD **用户登录**页面。
-3. 用户在 Azure AD 登录页中输入其用户名，然后选择“下一步”按钮。
-4. 用户在 Azure AD 登录页中输入其密码，然后选择“登录”按钮。
+3. 用户在 Azure AD 登录页中输入其用户名，然后选择“下一步”按钮  。
+4. 用户在 Azure AD 登录页中输入其密码，然后选择“登录”按钮  。
 5. 收到登录请求后，Azure AD 将该用户名和密码（已使用身份验证代理的公钥加密）排入队列。
 6. 本地身份验证代理从队列中检索用户名和已加密的密码。 请注意，代理不会频繁地从队列中轮询请求，但会通过预先建立的持久性连接检索请求。
 7. 代理使用其私钥解密密码。

@@ -15,10 +15,10 @@ ms.date: 05/23/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 433c2d712ca4867a5ec59f86c333511070b6d507
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334452"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>管理双重验证设置
@@ -35,13 +35,13 @@ ms.locfileid: "60334452"
 
     ![验证](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
 
-如果单击该链接对你无效，还可以按照以下步骤访问“其他安全性验证”页：
+如果单击该链接对你无效，还可以按照以下步骤访问“其他安全性验证”  页：
 
 1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)  
 
-2. 在右上方选择帐户名称，并选择“配置文件”。
+2. 在右上方选择帐户名称，并选择“配置文件”  。
 
-3. 选择“其他安全性验证”。  
+3. 选择“其他安全性验证”  。  
 
     ![Myapps](./media/multi-factor-authentication-end-user-manage-settings/myapps1.png)
 
@@ -57,21 +57,21 @@ ms.locfileid: "60334452"
 
 **若要更改主电话号码，请执行以下步骤：**  
 
-1. 在“其他安全性验证”页上，选择当前电话号码的文本框，并使用新电话号码编辑。  
-2. 选择“保存”。  
+1. 在“其他安全性验证”  页上，选择当前电话号码的文本框，并使用新电话号码编辑。  
+2. 选择“保存”。   
 3. 如果此电话号码是用于首选验证选项的号码，必须在保存之前验证新号码。  
 
 **若要添加辅助电话号码，请执行以下操作：**  
 
-1. 在“其他安全性验证”页上，单击“备用身份验证电话”旁的复选框。  
+1. 在“其他安全性验证”页上，单击“备用身份验证电话”  旁的复选框。  
 2. 在文本框中输入辅助电话号码。  
-3. 选择“保存”，完成更改。  
+3. 选择“保存”  ，完成更改。  
 
 ## <a name="require-two-step-verification-again-on-a-device-youve-marked-as-trusted"></a>需要在已标记为受信任的设备上重新进行双重验证
 
 在浏览器中执行双重验证时，根据组织设置，可能会有一个复选框显示“**X** 天不再询问”。 如果选中了此复选框，并且丢失了设备或认为帐户受到安全威胁，则应将双重验证还原到所有设备。
 
-1. 在“其他安全验证”页中，选择“在以前受信任的设备上还原多重身份验证”。
+1. 在“其他安全验证”页中，选择“在以前受信任的设备上还原多重身份验证”  。
 2. 下次登录任何设备时，会提示执行双重验证。
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>如何从旧设备清除 Microsoft Authenticator 并将其迁移到新设备？

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f93152ae3db926fb989c219d1e515abaf0281bf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372051"
 ---
 # <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>了解您的 Microsoft 客户协议的发票费用
@@ -46,13 +46,13 @@ ms.locfileid: "60372051"
 
     |列  |定义  |
     |---------|---------|
-    |date     | 交易记录的日期  |
+    |Date     | 交易记录的日期  |
     |发票 ID     | 发票计费事务获取的标识符。 如果你提交支持请求，ID 与 Azure 支持共享加快你的支持请求 |
-    |交易类型     |  如采购、 cancel 和使用情况收费的事务的类型  |
+    |事务类型     |  如采购、 cancel 和使用情况收费的事务的类型  |
     |产品系列     | 虚拟机的计算或 Azure SQL 数据库的数据库这样的产品类别|
     |产品 sku     | 唯一标识您的产品的实例的代码 |
     |金额     |  事务量      |
-    |发票科目     | 事务显示在此部分中的计费配置文件的发票上 |
+    |发票部分     | 事务显示在此部分中的计费配置文件的发票上 |
     |计费配置文件     | 在此计费配置文件的发票上显示事务 |
 
 5. 根据要筛选的事务发票的发票 ID 进行搜索。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60323735"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>排查 CDN 文件压缩问题
@@ -97,7 +97,7 @@ ms.locfileid: "60323735"
 
 使用浏览器的开发人员工具，检查响应标头以确保文件已缓存在提出请求的区域中。
 
-* 检查 **Server** 响应标头。  标头应具有格式**平台（POP/服务器 ID）**，如下例所示。
+* 检查 **Server** 响应标头。  标头应具有格式**平台（POP/服务器 ID）** ，如下例所示。
 * 检查 **X-Cache** 响应标头。  标头应显示 **HIT**。  
 
 ![CDN 响应标头](./media/cdn-troubleshoot-compression/cdn-response-headers.png)

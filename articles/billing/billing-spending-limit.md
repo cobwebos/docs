@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: c234f75ec752ec79e9f2a051f79e91bdde81de15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370998"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>了解 Azure 支出限制以及移除方式
@@ -46,12 +46,12 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 若要移除支出限制，请按照以下步骤操作：
 
 1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
-1. 选择一个订阅。 如果订阅已因达到支出限制而被禁用，请单击此通知：“订阅已达到支出限制并已被禁用以免产生费用。” 否则，请单击“订阅状态”区域中的“移除支出限制”。
+1. 选择一个订阅。 如果订阅已因达到支出限制而被禁用，请单击此通知：“订阅已达到支出限制并已被禁用以免产生费用。” 否则，请单击“订阅状态”区域  中的“移除支出限制”  。
 1. 选择适合选项。
 
 ![选择删除支出限制的选项](./media/billing-spending-limit/remove-spending-limit.PNG)
 
-|选项|效果|
+|Option|效果|
 |-------|-----|
 |永久性移除支出限制|移除支出限制，且在下次计费期开始不自动打开此限制。|
 |移除当前计费期间的支出限制|移除支出限制，使其在下次计费期开始时自动重新打开。|
@@ -72,7 +72,7 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
 1. 单击黄色横幅更改支出限制选项。
-1. 选择“在下一计费周期的\<计费周期的开始日期\>启用支出限制”
+1. 选择“在下一计费周期的\<计费周期的开始日期\>启用支出限制” 
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>如何设置自定义支出限制？
 

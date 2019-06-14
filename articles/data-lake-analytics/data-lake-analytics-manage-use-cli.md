@@ -9,10 +9,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: fa7d46d45c350435c0ffba8f3755ad8bea651c3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60387009"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
@@ -193,7 +193,7 @@ Data Lake Analytics 目前支持以下两个数据源：
 
 ## <a name="pipelines-and-recurrences"></a>管道和重复周期
 
-获取关于管道和重复周期的相关信息
+获取关于管道和重复周期的相关信息 
 
 使用 `az dla job pipeline` 命令查看先前所提交作业的管道信息。
 

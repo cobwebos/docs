@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 940a35d89996b1eb9600fe4214863d2b5304750e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60242122"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置的最佳做法
@@ -66,7 +66,7 @@ Azure AD Connect 同步在安装向导创建的服务帐户下运行。 此服�
 如果需要对现成的规则进行更改，应该复制该现成的规则，并禁用原始规则。 然后对克隆的规则进行更改。 同步规则编辑器会帮助完成这些步骤。 打开现成的规则时，会显示此对话框：  
 ![对现成规则的警告](./media/how-to-connect-sync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
-选择“是”创建规则的副本。 随后会打开克隆的规则。  
+选择“是”  创建规则的副本。 随后会打开克隆的规则。  
 ![克隆的规则](./media/how-to-connect-sync-best-practices-changing-default-configuration/clonedrule.png)
 
 在这个克隆的规则中，对范围、联接和转换进行任何必要的更改。

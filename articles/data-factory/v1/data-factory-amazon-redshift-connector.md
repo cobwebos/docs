@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60335415"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](data-factory-amazon-redshift-connector.md)
 > * [版本 2（当前版本）](../connector-amazon-redshift.md)
 
@@ -62,7 +62,7 @@ ms.locfileid: "60335415"
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
-| type |该属性必须设置为 **AmazonRedshift**。 |是 |
+| **type** |该属性必须设置为 **AmazonRedshift**。 |是 |
 | **server** |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | **port** |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否（默认值为 5439） |
 | **database** |Amazon Redshift 数据库的名称。 |是 |
@@ -81,11 +81,11 @@ ms.locfileid: "60335415"
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 属性可用于所有类型的活动。 typeProperties 节中可用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
+有关可用于定义活动的各部分和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 属性可用于所有类型的活动。 typeProperties  节中可用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
 
 对于复制活动，当源的类型为 **AmazonRedshiftSource** 时，则可在 **typeProperties** 部分中使用以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | **query** | 使用自定义查询读取数据。 |否（如果指定了数据集的 **tableName** 属性） |
 | **redshiftUnloadSettings** | 使用 Redshift **UNLOAD** 命令时包含属性组。 | 否 |
@@ -94,7 +94,7 @@ ms.locfileid: "60335415"
 
 或者，也可将类型 **RelationalSource**（包括 Amazon Redshift）与 **typeProperties** 节中的以下属性配合使用。 请注意，此源类型不支持 Redshift **UNLOAD** 命令。
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | **query** |使用自定义查询读取数据。 | 否（如果指定了数据集的 **tableName** 属性） |
 

@@ -4,23 +4,23 @@ description: 介绍 Azure AD Connect 同步的技术概念
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-origin.date: 01/15/2018
-ms.date: 11/12/2018
-ms.component: hybrid
-ms.author: v-junlch
+ms.topic: conceptual
+ms.date: 01/15/2018
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347562"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同步：技术概念
@@ -34,11 +34,11 @@ Azure Active Directory 同步服务基于 MIIS、ILM 和 FIM 进行构建，它�
 
 以下各部分提供有关 FIM 同步服务的以下方面的更多详细信息：
 
-- 连接器
-- 属性流
-- 连接器空间
-- Metaverse
-- 设置
+* 连接器
+* 属性流
+* 连接器空间
+* Metaverse
+* 设置
 
 ## <a name="connector"></a>连接器
 用于与连接的目录进行通信的代码模块称为连接器（以前称为管理代理 (MA)）。
@@ -87,9 +87,8 @@ metaverse 是相邻连接器空间中的所有已联接标识的合并视图。
 每当某条规则确定需要创建新的连接器空间对象时，它都称为设置。 但是，因为此操作只在连接器空间内发生，所以它不会延续到已连接数据源，直到执行导出。
 
 ## <a name="additional-resources"></a>其他资源
-- [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)
-- [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+* [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)
+* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
-

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/18/2018
 ms.author: aljo
 ms.openlocfilehash: 37d9c17ff10922aa524fa2fe3eb8abff92c83052
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394011"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上创建第一个 Java Service Fabric Reliable Actors 应用程序
@@ -216,7 +216,7 @@ Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service F
 这些命令的参数可以在应用程序包内的已生成清单中找到。
 
 应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。
-然后，展开“应用程序”节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
+然后，展开“应用程序”  节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
 
 > [!IMPORTANT]
 > 必须将证书配置为向 Service Fabric 运行时验证应用程序，才能将应用程序部署到 Azure 中的安全 Linux 群集。 这样可便于 Reliable Actors 服务与基础 Service Fabric 运行时 API 通信。 若要了解详细信息，请参阅[将 Reliable Services 应用程序配置为在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
@@ -247,7 +247,7 @@ Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service F
 
     ![在 Service Fabric Explorer 中查找主副本][sfx-primary]
 
-3. 在“节点”中，单击上一步找到的节点，然后从“操作”菜单中选择“停用(重启)”。 此操作重启运行主要服务副本的节点，并强制故障转移到在其他节点上运行的其中一个次要副本。  该次要副本将提升为主要副本，并在其他节点上创建另一次要副本，然后主要副本开始执行读/写操作。 节点重启时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但计数器仍继续递增。
+3. 在“节点”中，单击上一步找到的节点，然后从“操作”菜单中选择“停用(重启)”   。 此操作重启运行主要服务副本的节点，并强制故障转移到在其他节点上运行的其中一个次要副本。  该次要副本将提升为主要副本，并在其他节点上创建另一次要副本，然后主要副本开始执行读/写操作。 节点重启时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但计数器仍继续递增。
 
 ## <a name="remove-the-application"></a>删除应用程序
 使用模板中提供的卸载脚本可从群集的映像存储区删除应用程序实例、注销应用程序包并删除应用程序包。
@@ -256,10 +256,10 @@ Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service F
 ./uninstall.sh
 ```
 
-在 Service Fabric Explorer 中，可看到应用程序和应用程序类型不再显示在“应用程序”节点中。
+在 Service Fabric Explorer 中，可看到应用程序和应用程序类型不再显示在“应用程序”节点中  。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上的 Service Fabric Java 库
-Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral 提供的 Service Fabric Java 库。 
+Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral  提供的 Service Fabric Java 库。 
 
 ### <a name="actors"></a>执行组件
 

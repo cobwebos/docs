@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: c42c6175512105de38a29be260c370851e152137
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60330867"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
@@ -41,7 +41,7 @@ ms.locfileid: "60330867"
 - 密钥必须包含用于 TDE 的以下特性：
    - 无过期日期
    - 未禁用
-   - 能够执行“获取”、“包装密钥”和“解包密钥”操作
+   - 能够执行“获取”、“包装密钥”和“解包密钥”操作   
 
 ## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>步骤 1。 将 Azure AD 标识分配到服务器 
 
@@ -186,7 +186,7 @@ ms.locfileid: "60330867"
 
 - 如果无法将新密钥添加到服务器，或无法将新密钥更新为 TDE 保护器，请检查以下项：
    - 密钥不应有过期日期
-   - 密钥必须支持“获取”、“包装密钥”和“解包密钥”操作。
+   - 密钥必须支持“获取”、“包装密钥”和“解包密钥”操作。   
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -207,7 +207,7 @@ ms.locfileid: "60330867"
 - 密钥必须包含用于 TDE 的以下特性：
    - 无过期日期
    - 未禁用
-   - 能够执行“获取”、“包装密钥”和“解包密钥”操作
+   - 能够执行“获取”、“包装密钥”和“解包密钥”操作   
    
 ## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>步骤 1。 创建具有 Azure AD 标识的服务器
       cli

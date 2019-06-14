@@ -9,10 +9,10 @@ ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: d2ce6c409ae9cbf99589d11dfc850e2324d1b0c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60320459"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>设置 Azure 导入/导出工具
@@ -25,7 +25,7 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 
 ## <a name="prerequisites"></a>必备组件
 
-若要为导入作业准备驱动器，必须满足以下先决条件：
+若要为导入作业准备驱动器  ，必须满足以下先决条件：
 
 * 必须拥有一个有效的 Azure 订阅。
 * 该订阅必须包含一个存储帐户，其中有足够的可用空间可存储所要导入的文件。
@@ -36,12 +36,12 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 * 需要一个或多个已连接到复制计算机的空 2.5 英寸或 3.5 英寸 SATA II、III 或 SSD 硬盘。
 * 打算导入的文件必须可从复制计算机访问，无论这些文件是位于网络共享还是本地硬盘驱动器上。
 
-若要尝试修复部分失败的导入，需要：
+若要尝试  修复部分失败的导入，需要：
 
 * 复制日志文件
 * 存储帐户密钥
 
-若要尝试修复部分失败的导出，需要：
+若要尝试  修复部分失败的导出，需要：
 
 * 复制日志文件
 * 清单文件（可选）

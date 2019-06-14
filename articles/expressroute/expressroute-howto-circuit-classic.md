@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 1d6fc4a54ca600bd094a68e5eaab1306e7e831ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370254"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 线路（经典）
@@ -127,7 +127,7 @@ get-help get-azurededicatedcircuit -detailed
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
 * 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。 
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
-* 可以启用和禁用允许经典操作。
+* 可以启用和禁用允许经典操作  。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
@@ -228,8 +228,8 @@ At line:1 char:1
 ### <a name="considerations"></a>注意事项
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接，此操作才能成功。 如果此操作失败，请查看是否有虚拟网络链接到了此线路。
-* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
-* 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”），则可以删除线路。 这样就会停止对线路的计费。
+* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”  或“已预配”  ，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
+* 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”  ），则可以删除线路。 这样就会停止对线路的计费。
 
 #### <a name="delete-a-circuit"></a>删除线路
 

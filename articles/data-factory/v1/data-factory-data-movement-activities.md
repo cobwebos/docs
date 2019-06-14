@@ -14,14 +14,14 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60486906"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](data-factory-data-movement-activities.md)
 > * [版本 2（当前版本）](../copy-activity-overview.md)
 
@@ -76,9 +76,9 @@ ms.locfileid: "60486906"
 > 带 * 的数据存储既可位于本地，也可位于 Azure IaaS 上，需要用户在本地/Azure IaaS 计算机上安装[数据管理网关](data-factory-data-management-gateway.md)。
 
 ### <a name="supported-file-formats"></a>支持的文件格式
-可使用“复制活动”在两个基于文件的数据存储之间“按原样复制文件”，可以同时在输入和输出数据集定义中跳过[格式部分](data-factory-create-datasets.md)。 无需任何序列化/反序列化操作即可有效复制数据。
+可使用“复制活动”在两个基于文件的数据存储之间“按原样复制文件”  ，可以同时在输入和输出数据集定义中跳过[格式部分](data-factory-create-datasets.md)。 无需任何序列化/反序列化操作即可有效复制数据。
 
-复制活动还可读取和写入特定格式的文件：支持文本、JSON、Avro、ORC 和 Parquet，以及压缩编解码器 GZip、Deflate、BZip2 和 ZipDeflate。 有关详细信息，请参阅[支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)。
+复制活动还可读取和写入特定格式的文件：支持文本、JSON、Avro、ORC 和 Parquet，以及压缩编解码器 GZip、Deflate、BZip2 和 ZipDeflate   。 有关详细信息，请参阅[支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)。
 
 例如，可执行以下复制活动：
 
@@ -135,7 +135,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 可通过以下几种方法创建包含复制活动的管道：
 
 ### <a name="by-using-the-copy-wizard"></a>使用复制向导
-数据工厂复制向导有助于创建包含复制活动的管道。 使用此管道，无需对链接服务、数据集和管道编写 JSON 定义，即可将数据从支持的源复制到目标源。 有关此向导的详细信息，请参阅[数据工厂复制向导](data-factory-copy-wizard.md)。  
+数据工厂复制向导有助于创建包含复制活动的管道。 使用此管道，无需对链接服务、数据集和管道编写 JSON 定义  ，即可将数据从支持的源复制到目标源。 有关此向导的详细信息，请参阅[数据工厂复制向导](data-factory-copy-wizard.md)。  
 
 ### <a name="by-using-json-scripts"></a>使用 JSON 脚本
 可在 Azure 门户、Visual Studio 或 Azure PowerShell 中使用数据工厂编辑器（通过使用复制活动）为管道创建 JSON 定义。 然后，可对其进行部署以在数据工厂中创建管道。 有关分步说明，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    

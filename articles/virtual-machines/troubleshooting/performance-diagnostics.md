@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: c2089f9f6267f318dafe641a6a5b22e7e87427ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60308065"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虚拟机的性能诊断
@@ -35,9 +35,9 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>在 VM 上安装并运行性能诊断
 性能诊断会安装一个 VM 扩展，该扩展可运行名为 [PerfInsights](https://aka.ms/perfinsights) 的诊断工具。 若要安装并运行性能诊断，请执行以下步骤：
-1.  在左侧的命令列中，选择“虚拟机”。
+1.  在左侧的命令列中，选择“虚拟机”。 
 1.  在 VM 名称列表中，选择要对其运行诊断的 VM。
-1.  在右侧的命令列中，选择“性能诊断”。
+1.  在右侧的命令列中，选择“性能诊断”。 
 
     ![Azure 门户的屏幕截图，其中突出显示了“安装性能诊断”按钮](media/performance-diagnostics/performance-diagnostics-install.png)
 
@@ -45,7 +45,7 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
     > 在此屏幕截图中，VM 名称的边栏选项卡是隐藏的。
 1. 选择存储帐户（可选）
 
-    若要使用单个存储帐户来存储多个 VM 的性能诊断结果，可在工具栏中单击“设置”按钮来选择存储帐户。 选择存储帐户后，单击“确定”按钮。
+    若要使用单个存储帐户来存储多个 VM 的性能诊断结果，可在工具栏中单击“设置”按钮来选择存储帐户。  选择存储帐户后，单击“确定”按钮。 
 
     如果未指定存储帐户，默认会创建一个新存储帐户。
 
@@ -53,8 +53,8 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 
     ![在性能诊断设置边栏选项卡中选择存储帐户的屏幕截图](media/performance-diagnostics/select-storage-account.png)
 
-1. 选择“安装性能诊断”按钮。
-1. 若要在完成安装后运行诊断，请选中“运行诊断”复选框。 如果做出了此项选择，则可以选择性能分析方案和相关选项。
+1. 选择“安装性能诊断”按钮。 
+1. 若要在完成安装后运行诊断，请选中“运行诊断”复选框。  如果做出了此项选择，则可以选择性能分析方案和相关选项。
 
     ![性能诊断安装按钮的屏幕截图](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -100,7 +100,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 ![“性能诊断”边栏选项卡中诊断报告列表的屏幕截图](media/performance-diagnostics/diagnostics-report-list.png)
 
 ## <a name="how-to-change-performance-diagnostics-settings"></a>如何更改性能诊断设置
-使用“设置”工具栏按钮来更改可以存储诊断见解和输出的存储帐户。 可对使用性能诊断的多个 VM 使用同一个存储帐户。 更改存储帐户时，不会删除旧的报告和见解。 但是，它们不再显示在诊断报告列表中。 
+使用“设置”工具栏按钮来更改可以存储诊断见解和输出的存储帐户。  可对使用性能诊断的多个 VM 使用同一个存储帐户。 更改存储帐户时，不会删除旧的报告和见解。 但是，它们不再显示在诊断报告列表中。 
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>查看见解和性能诊断报告
 每个诊断运行包含见解和建议的列表、受影响的资源、日志文件、其他收集的丰富诊断信息，以及供脱机查看的报告。 有关收集的所有诊断数据的完整列表，请参阅 [PerfInsights 收集哪类信息？](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights) 
@@ -123,10 +123,10 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 ![性能诊断见解详细信息的屏幕截图](media/performance-diagnostics/insight-detail.png)
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>下载并查看完整的性能诊断报告
-可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。 其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息，请参阅[查看诊断报告](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report)。
+可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。  其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息，请参阅[查看诊断报告](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report)。
 
 ## <a name="manage-performance-diagnostics-reports"></a>管理性能诊断报告
-可以使用“删除报告”按钮删除一个或多个性能诊断报告。
+可以使用“删除报告”按钮删除一个或多个性能诊断报告。 
 
 ## <a name="how-to-uninstall-performance-diagnostics"></a>如何卸载性能诊断
 可以在 VM 中卸载性能诊断。 此操作会删除 VM 扩展，但不会影响存储帐户中的任何诊断数据。 
@@ -144,17 +144,17 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 可通过多种方式来与 Microsoft 共享诊断报告。
 
 **选项 1：** 自动共享最新的报表  
-向 Microsoft 开具支持票证时，必须共享性能诊断报告。 如果你在运行诊断时已选择与 Microsoft 共享此信息（选中“我同意与 Microsoft 共享诊断信息”复选框），则 Microsoft 可以在从运行日期开始算起的最长 30 天内，使用输出 zip 文件的 SAS 链接从你的存储帐户访问报告。 只会将最新的报告提供给支持工程师。 
+向 Microsoft 开具支持票证时，必须共享性能诊断报告。 如果你在运行诊断时已选择与 Microsoft 共享此信息（选中“我同意与 Microsoft 共享诊断信息”复选框），则 Microsoft 可以在从运行日期开始算起的最长 30 天内，使用输出 zip 文件的 SAS 链接从你的存储帐户访问报告。  只会将最新的报告提供给支持工程师。 
 
 **选项 2：** 生成诊断报告压缩文件的共享访问签名  
 可以使用共享访问签名来共享报告压缩文件的链接。 为此，请执行以下步骤： 
 1.  在 Azure 门户中，浏览到存储了诊断数据的存储帐户。
-1.  在“Blob 服务”部分选择“Blob”。 
-1.  选择“azdiagextnresults”容器。
+1.  在“Blob 服务”部分选择“Blob”。   
+1.  选择“azdiagextnresults”容器。 
 1.  选择要共享的性能诊断输出压缩文件。
-1.  在“生成 SAS”选项卡上，选择共享条件。 
-1.  单击“生成 Blob SAS 令牌和 URL”。
-1.  复制“Blob SAS URL”并与支持工程师共享。 
+1.  在“生成 SAS”选项卡上，选择共享条件。  
+1.  单击“生成 Blob SAS 令牌和 URL”。 
+1.  复制“Blob SAS URL”并与支持工程师共享。  
 
 **选项 3:** 从存储帐户下载报表
 
@@ -170,4 +170,4 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 ## <a name="next-steps"></a>后续步骤
 查看性能诊断见解和报告后，如果仍不能确定问题的原因并需要更多的帮助，可以向 Microsoft 客户支持部门开具支持票证。 
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。  有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

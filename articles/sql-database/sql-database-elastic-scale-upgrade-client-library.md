@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 02c09e5a2ad0c3e23fe641bf445a646477f7db2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60335043"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>升级应用以使用最新的弹性数据库客户端库
@@ -36,7 +36,7 @@ ms.locfileid: "60335043"
 * 在 Visual Studio 解决方案中，选择“**工具**” --> “**Nuget 程序包管理器**” -->  “**管理解决方案的 Nuget 程序包**”。
 * (Visual Studio 2013) 在左侧面板中，选择“**更新**”，并选择窗口中显示的包“**Azure SQL 数据库弹性扩展客户端库**”上的“**更新**”按钮。
 * (Visual Studio 2015) 将“筛选器”框设置为“**可用升级**”。 选择要更新的程序包，并单击“**更新**”按钮。
-* (Visual Studio 2017) 在对话框顶部，选择“更新”。 选择要更新的包，并单击“更新”  按钮。
+* (Visual Studio 2017) 在对话框顶部，选择“更新”。  选择要更新的包，并单击“更新”  按钮。
 * 生成并部署。
 
 **2.升级脚本。** 如果使用 **PowerShell** 脚本来管理分片，请[下载新的库版本](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)并将其复制到从中执行脚本的目录中。

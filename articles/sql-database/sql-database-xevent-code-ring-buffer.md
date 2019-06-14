@@ -13,10 +13,10 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: bb493fc0a9d3a9173ef4faf17b3cdd4e3781a557
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331020"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
@@ -30,7 +30,7 @@ ms.locfileid: "60331020"
 1. 创建一个包含要演示的数据的表。
 2. 创建现有扩展事件的会话，即 **sqlserver.sql_statement_starting**。
    
-   * 此事件仅限于包含特定 Update 字符串的 SQL 语句：**statement LIKE '%UPDATE tabEmployee%'**。
+   * 此事件仅限于包含特定 Update 字符串的 SQL 语句：**statement LIKE '%UPDATE tabEmployee%'** 。
    * 选择要将事件的输出发送给环形缓冲区类型的目标，即 **package0.ring_buffer**。
 3. 启动事件会话。
 4. 发出几个简单的 SQL UPDATE 语句。
@@ -223,7 +223,7 @@ GO
 
 然后，在结果窗格中，我们单击了 **target_data_XML** 列标题下的单元格。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
 
-输出显示在以下块中。 它看起来很长，但它是只使用两个**\<事件 >** 元素。
+输出显示在以下块中。 结果看起来很长，但其实只是两个 **\<event>** 元素。
 
 &nbsp;
 

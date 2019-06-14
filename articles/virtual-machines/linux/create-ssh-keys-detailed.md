@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: danlep
 ms.openlocfilehash: 3784dd701b3ac44971e134f1b160fcfe2de2d9b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60328661"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>详细步骤：创建和管理 Azure 中的 Linux VM 用于身份验证的 SSH 密钥 
@@ -32,7 +32,7 @@ ms.locfileid: "60328661"
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 ### <a name="private-key-passphrase"></a>私钥密码
-SSH 私钥应使用非常安全的密码来保护它。 此密码只用于访问 SSH 私钥文件，不是用户帐户密码。 向 SSH 密钥添加密码时，会使用 128 位 AES 加密私钥，因此在不能通过密码解密的情况下，私钥是没有用的。 如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。 如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
+SSH 私钥应使用非常安全的密码来保护它。 此密码只用于访问 SSH 私钥文件，不是用户帐户密码  。 向 SSH 密钥添加密码时，会使用 128 位 AES 加密私钥，因此在不能通过密码解密的情况下，私钥是没有用的。 如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。 如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -126,7 +126,7 @@ ls -al ~/.ssh
 
 `Enter passphrase (empty for no passphrase):`
 
-强烈建议为私钥添加密码。 如果不使用密码来保护密钥文件，任何人只要拥有该文件，就可以用它登录到拥有相应公钥的任何服务器。 添加密码可提升防护能力以防有人能够访问私钥文件，可让用户有时间更改密钥。
+强烈建议为私钥添加密码  。 如果不使用密码来保护密钥文件，任何人只要拥有该文件，就可以用它登录到拥有相应公钥的任何服务器。 添加密码可提升防护能力以防有人能够访问私钥文件，可让用户有时间更改密钥。
 
 ## <a name="generate-keys-automatically-during-deployment"></a>部署期间自动生成密钥
 
@@ -162,7 +162,7 @@ ssh-keygen \
 ```
 
 ## <a name="ssh-to-your-vm-with-an-ssh-client"></a>使用 SSH 客户端将 SSH 连接到 VM
-凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 将以下命令中的 azureuser 和 myvm.westus.cloudapp.azure.com 替换为管理员用户名和完全限定的域名（或 IP 地址）：
+凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 将以下命令中的 azureuser 和 myvm.westus.cloudapp.azure.com 替换为管理员用户名和完全限定的域名（或 IP 地址）   ：
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com

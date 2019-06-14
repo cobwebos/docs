@@ -15,10 +15,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60247602"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户分配或删除许可证 | Microsoft Docs
@@ -43,13 +43,13 @@ ms.locfileid: "60247602"
 ### <a name="to-find-your-product-and-license-details"></a>查找产品和许可证详细信息
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“Azure Active Directory”，然后选择“许可证”。
+2. 选择“Azure Active Directory”，然后选择“许可证”   。
 
-    “许可证”页随即出现。
+    “许可证”  页随即出现。
 
     ![许可证页上，与已购买的产品和已分配的许可证的数量](media/license-users-groups/license-details-blade.png)
     
-3. 选择“已购买产品”链接可查看“产品”页，以及查看每个特定产品版本的“已分配”、“可用”和“即将过期”详细信息。
+3. 选择“已购买产品”  链接可查看“产品”  页，以及查看每个特定产品版本的“已分配”  、“可用”  和“即将过期”  详细信息。
 
     ![“产品”页，包含产品版本和关联许可证信息](media/license-users-groups/license-products-blade-with-products.png)
 
@@ -62,71 +62,71 @@ ms.locfileid: "60247602"
 >基于组的许可是 Azure AD 的一项公共预览版功能，可通过任何付费 Azure AD 许可证计划获得。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。<br><br>有关如何添加用户的详细信息，请参阅[如何在 Azure Active Directory 中添加或删除用户](add-users-azure-active-directory.md)。 有关如何创建组并添加成员的详细信息，请参阅[创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
 
 ### <a name="to-assign-a-license-to-a-specific-user"></a>向特定用户分配许可证
-1. 在“产品”页上，选择要分配给用户的版本的名称。 例如 Azure Active Directory Premium Plan 2。
+1. 在“产品”  页上，选择要分配给用户的版本的名称。 例如 Azure Active Directory Premium Plan 2  。
 
     ![“产品”页，突出显示了产品版本](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-2. 在“Azure Active Directory Premium 计划 2”页上，选择“分配”。
+2. 在“Azure Active Directory Premium 计划 2”  页上，选择“分配”  。
 
     ![“产品”页，突出显示了“分配”选项](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-3. 在“分配”页上，选择“用户和组”，然后搜索并选择向其分配许可证的用户。 例如，Mary Parker。
+3. 在“分配”  页上，选择“用户和组”  ，然后搜索并选择向其分配许可证的用户。 例如，Mary Parker  。
 
     ![“分配许可证”页，突出显示了搜索和“选择”选项](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-4. 选择“分配选项”，确保打开了相应的许可证选项，然后选择“确定”。
+4. 选择“分配选项”  ，确保打开了相应的许可证选项，然后选择“确定”  。
 
     ![许可证选项页上，使用相应版本中提供的所有选项](media/license-users-groups/license-option-blade-assignments.png)
 
-    “分配许可证”页会进行更新，以显示选择了用户并且配置了分配。
+    “分配许可证”  页会进行更新，以显示选择了用户并且配置了分配。
 
     >[!NOTE]
-    >并非所有 Microsoft 服务都可在所有位置使用。 必须先指定“使用位置”，然后才能将许可证分配给用户。 可以在 Azure AD 的“Azure Active Directory”&gt;“用户”&gt;“配置文件”&gt;“设置”区域中设置此值。
+    >并非所有 Microsoft 服务都可在所有位置使用。 必须先指定“使用位置”  ，然后才能将许可证分配给用户。 可以在 Azure AD 的“Azure Active Directory”&gt;“用户”&gt;“配置文件”&gt;“设置”  区域中设置此值。
 
-5. 选择“分配”。
+5. 选择“分配”。 
 
     用户会添加到已许可用户列表，并有权访问所包含的 Azure AD 服务。
 
 ### <a name="to-assign-a-license-to-an-entire-group"></a>向整个组分配许可证
-1. 在“产品”页上，选择要分配给用户的版本的名称。 例如 Azure Active Directory Premium Plan 2。
+1. 在“产品”  页上，选择要分配给用户的版本的名称。 例如 Azure Active Directory Premium Plan 2  。
 
     ![“产品”边栏选项卡，突出显示了产品版本](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-2. 在“Azure Active Directory Premium 计划 2”页上，选择“分配”。
+2. 在“Azure Active Directory Premium 计划 2”  页上，选择“分配”  。
 
     ![“产品”页，突出显示了“分配”选项](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-3. 在“分配”页上，选择“用户和组”，然后搜索并选择向其分配许可证的组。 例如 MDM policy - West。
+3. 在“分配”  页上，选择“用户和组”  ，然后搜索并选择向其分配许可证的组。 例如 MDM policy - West  。
 
     ![“分配许可证”页，突出显示了搜索和“选择”选项](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-4. 选择“分配选项”，确保打开了相应的许可证选项，然后选择“确定”。
+4. 选择“分配选项”  ，确保打开了相应的许可证选项，然后选择“确定”  。
 
     ![许可证选项页上，使用相应版本中提供的所有选项](media/license-users-groups/license-option-blade-group-assignments.png)
 
-    “分配许可证”页会进行更新，以显示选择了用户并且配置了分配。
+    “分配许可证”  页会进行更新，以显示选择了用户并且配置了分配。
 
     >[!NOTE]
-    >并非所有 Microsoft 服务都可在所有位置使用。 必须先为所有成员指定“使用位置”，然后才能将许可证分配给组。 可以在 Azure AD 的“Azure Active Directory”&gt;“用户”&gt;“配置文件”&gt;“设置”区域中设置此值。 未指定使用位置的任何用户都会继承租户的位置。
+    >并非所有 Microsoft 服务都可在所有位置使用。 必须先为所有成员指定“使用位置”  ，然后才能将许可证分配给组。 可以在 Azure AD 的“Azure Active Directory”&gt;“用户”&gt;“配置文件”&gt;“设置”  区域中设置此值。 未指定使用位置的任何用户都会继承租户的位置。
 
-5. 选择“分配”。
+5. 选择“分配”。 
 
     组会添加到已许可组的列表，所有成员都有权访问所包含的 Azure AD 服务。
 
 ## <a name="remove-a-license"></a>删除许可证
-可以通过“许可证”页从用户或组删除许可证。
+可以通过“许可证”  页从用户或组删除许可证。
 
 ### <a name="to-remove-a-license-from-a-specific-user"></a>从特定用户删除许可证
-1. 在产品版本的“许可的用户”页上，选择应不再具有许可证的用户。 例如，Alain Charon。
+1. 在产品版本的“许可的用户”  页上，选择应不再具有许可证的用户。 例如，Alain Charon  。
 
-2. 选择“删除许可证”。
+2. 选择“删除许可证”  。
 
     ![“许可的用户”页，突出显示了“删除许可证”选项](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
 
 ### <a name="to-remove-a-license-from-a-group"></a>从组删除许可证
-1. 在产品版本的“许可的组”页上，选择应不再具有许可证的组。 例如 MDM policy - West。
+1. 在产品版本的“许可的组”  页上，选择应不再具有许可证的组。 例如 MDM policy - West  。
 
-2. 选择“删除许可证”。
+2. 选择“删除许可证”  。
 
     ![“许可的组”页，突出显示了“删除许可证”选项](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
 

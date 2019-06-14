@@ -18,10 +18,10 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a77cf89b7697b7b6b08dead34339ae50dbba8518
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60296310"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
@@ -30,12 +30,12 @@ ms.locfileid: "60296310"
 ## <a name="what-data-roams"></a>什么样的数据可以漫游？
 **Windows 设置**：内置于 Windows 操作系统的电脑设置。 通常，这些是对电脑进行个性化的设置，包括以下三大类：
 
-* 主题，包括桌面主题和任务栏设置等功能。
-* Internet Explorer 设置，包括最近打开的选项卡和收藏夹。
-* Microsoft Edge 浏览器设置，如收藏夹和阅读列表。
-* 密码，包括 Internet 密码、Wi-fi 配置文件等。
-* 语言首选项，包括键盘布局、系统语言、日期和时间等设置。
-* 轻松访问功能，如高对比度主题、讲述人和放大镜。
+* 主题  ，包括桌面主题和任务栏设置等功能。
+* Internet Explorer 设置  ，包括最近打开的选项卡和收藏夹。
+* Microsoft Edge 浏览器设置，如收藏夹和阅读列表  。
+* 密码  ，包括 Internet 密码、Wi-fi 配置文件等。
+* 语言首选项  ，包括键盘布局、系统语言、日期和时间等设置。
+* 轻松访问功能  ，如高对比度主题、讲述人和放大镜。
 * *其他 Windows 设置*，例如鼠标设置。
 
 **应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[应用数据存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) 和 [Windows 8 应用数据漫游开发人员博客](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
@@ -76,8 +76,8 @@ ms.locfileid: "60296310"
 当同一设备上有来自不同 Azure AD 租户的多个 Azure AD 帐户时，必须更新设备的注册表，才能与每个 Azure AD 租户的 Azure Rights Management 服务进行通信。  
 
 1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 门户并选择 Azure AD 租户。 租户的 GUID 位于所选租户的“属性”页上（ https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) ，标记为**目录 ID**。 
-2. 获取 GUID 后，需要添加注册表项 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>**。
-   从“租户 ID GUID”键中，新建名为 **AllowedRMSServerUrls** 的多字符串值 (REG-MULTI-SZ)。 对于其数据，指定设备访问的其他 Azure 租户的授权分发点 URL。
+2. 获取 GUID 后，需要添加注册表项 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>** 。
+   从“租户 ID GUID”  键中，新建名为 **AllowedRMSServerUrls** 的多字符串值 (REG-MULTI-SZ)。 对于其数据，指定设备访问的其他 Azure 租户的授权分发点 URL。
 3. 可以通过从 AADRM 模块运行 **Get-AadrmConfiguration** cmdlet 找到授权分发点 URL。 如果 **LicensingIntranetDistributionPointUrl** 和 **LicensingExtranetDistributionPointUrl** 的值不同，则指定这两个值。 如果值相同，则指定该值一次。
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>现有 Windows 桌面应用程序的漫游设置选项有哪些？
@@ -106,7 +106,7 @@ Microsoft 致力于保护客户数据。 企业用户的设置数据离开 Windo
 在 Windows 10 中，没有用于禁用单个应用程序漫游的 MDM 或组策略设置。 租户管理员可以在托管设备上禁用所有应用的应用数据同步，但在每个应用或应用内级别没有更精细的控制。
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>如何启用或禁用漫游？
-在“设置”应用中，转到“帐户” > “同步设置”。 可在此页看到正在使用哪个帐户漫游设置，并可以启用或禁用要进行漫游的各设置组。
+在“设置”  应用中，转到“帐户”   > “同步设置”  。 可在此页看到正在使用哪个帐户漫游设置，并可以启用或禁用要进行漫游的各设置组。
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>对于在 Windows 10 中启用漫游，Microsoft 有何建议？
 Microsoft 提供几种不同的设置漫游解决方案，包括漫游用户配置文件、UE-V 和企业状态漫游。  Microsoft 致力于在未来版本的 Windows 中投资企业状态漫游。 如果组织尚未准备就绪或不想将数据移到云中，那么我们建议使用 UE-V 作为主漫游技术。 如果组织需要针对现有 Windows 桌面应用程序的漫游支持，但又很想移动到云中，我们建议同时使用企业状态漫游和 UE-V。 尽管 UE-V 和企业状态漫游是非常相似的技术，但它们并不互斥。 它们相辅相成，帮助组织提供用户所需的漫游服务。  

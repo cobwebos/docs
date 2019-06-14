@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60505453"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
@@ -90,7 +90,7 @@ ms.locfileid: "60505453"
 
 按以下步骤来使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上，启动注册表编辑器，然后转到“文件” > “连接网络注册表”。
+1.  在故障排除 VM 上，启动注册表编辑器，然后转到“文件” > “连接网络注册表”   。
 
 2.  打开  *TARGET MACHINE*\SYSTEM 分支，指定以下值：
 
@@ -104,11 +104,11 @@ ms.locfileid: "60505453"
 
 4.  打开  **Services.msc** 的实例。
 
-5.  单击“服务(本地)”。
+5.  单击“服务(本地)”  。
 
-6.  选择“连接到另一台计算机”。
+6.  选择“连接到另一台计算机”。 
 
-7.  输入问题 VM 的 **专用 IP 地址 (DIP)** 。
+7.  输入问题 VM 的 **专用 IP 地址 (DIP)**  。
 
 8.  重启本地防火墙策略。
 

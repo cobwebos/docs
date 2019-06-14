@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369913"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>了解 Microsoft Azure 发票的条款
@@ -56,7 +56,7 @@ ms.locfileid: "60369913"
 | 帐户所有者电子邮件地址 | 注册 Microsoft Azure 帐户时使用的帐户电子邮件地址。 <br /><br />如何更改电子邮件地址，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](billing-how-to-change-azure-account-profile.md)。 |
 
 ### <a name="understand-the-invoice-summary"></a>了解发票汇总
-发票的“发票摘要”部分汇总了上次计费周期之后的总交易量，以及当前的使用费。
+发票的“发票摘要”部分汇总了上次计费周期之后的总交易量，以及当前的使用费  。
 
 ![发票摘要部分](./media/billing-understand-your-invoice/2.png)
 
@@ -101,13 +101,13 @@ ms.locfileid: "60369913"
 | --- | --- |
 | Name |标识该次使用的最上层服务 |
 | Type |定义 Azure 服务类型，该类型可能会影响费率 |
-| 资源 |标识已使用计量的度量单位 |
+| Resource |标识已使用计量的度量单位 |
 | 区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
 | 已耗用 |计费周期期间使用的计量的量 |
 | 附送 |当前计费周期中免费附送的计量的量 |
 | 可计费 |显示已耗用数量和已包含数量之间的差异。 将根据此数量对你计费。 对于不附送任何数量的即用即付产品/服务，此总数与已耗用数量相同 |
 | 费率 |为每个可付费单位支付的费率 |
-| Value |显示将“超额数量”列与“费率”列相乘的结果。 如果已耗用数量未超过已包含数量，则此列中没有费用。 |
+| 值 |显示将“超额数量”列与“费率”列相乘的结果。 如果已耗用数量未超过已包含数量，则此列中没有费用。 |
 | 小计 |对此计费周期的税前收费总额 |
 | 总计 |对此计费周期的税后收费总额 |
 

@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: ff7af2204f9e05a1ba4ef800c63c3ad462242350
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60368552"
 ---
 # <a name="detect-color-schemes-in-images"></a>检测图像中的配色方案
@@ -30,7 +30,7 @@ ms.locfileid: "60368552"
 
 下面的示例说明了检测示例图像的配色方案时，计算机视觉所返回的 JSON 响应。 在这种情况下，示例图不是黑色和白色的图像，但主导的前景色和背景色为黑色，并且图像的整体主导色为黑色和白色。
 
-![在停止服务，与某个人的轮廓的户外山地](./Images/mountain_vista.png)
+![日落时户外的大山以及人的轮廓](./Images/mountain_vista.png)
 
 ```json
 {

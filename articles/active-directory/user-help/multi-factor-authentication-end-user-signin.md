@@ -16,10 +16,10 @@ ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334386"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>使用 Azure 多重身份验证时的登录体验
@@ -60,7 +60,7 @@ ms.locfileid: "60334386"
 
    ![Microsoft 发送通知](./media/multi-factor-authentication-end-user-signin/notify.png)
 
-3. 打开手机上的通知，选择“验证”键。 如果公司需要 PIN，请在此处输入。
+3. 打开手机上的通知，选择“验证”  键。 如果公司需要 PIN，请在此处输入。
 4. 现在，应该已登录。
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>使用验证码通过 Microsoft Authenticator 应用登录
@@ -78,7 +78,7 @@ ms.locfileid: "60334386"
 有时，没有设为首选验证方法的手机或设备。 由于会有这种情况，因此我们建议为帐户设置备用方法。 以下部分介绍当主要方法不可用时如何使用替代方法进行登录。
 
 1. 使用用户名和密码登录到 Office 365 等应用程序或服务。
-2. 选择“使用其他验证选项”。 此时会显示不同的验证选项，具体将取决于设置了多少个选项。
+2. 选择“使用其他验证选项”  。 此时会显示不同的验证选项，具体将取决于设置了多少个选项。
 3. 选择一种替代方法并登录。
 
    ![使用替代方法](./media/multi-factor-authentication-end-user-signin/alt.png)

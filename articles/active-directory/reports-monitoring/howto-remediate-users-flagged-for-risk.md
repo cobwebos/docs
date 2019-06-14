@@ -16,10 +16,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7209f468f493e226fae22ccd260e8ceb2e570494
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60286671"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
@@ -48,12 +48,12 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 访问**已标记为风险用户**中 Microsoft 365 管理中心内的报表：
 
-1.  在左侧导航菜单中，选择“管理中心”。 
-2.  选择“Azure AD”。
+1.  在左侧导航菜单中，选择“管理中心”  。 
+2.  选择“Azure AD”  。
 3.  登录到 **Azure Active Directory 管理中心**。
-4.  如果页面顶部显示一个横幅，要求“查看新门户”，请选择相应的链接。
-4.  在左侧导航菜单中，选择“Azure Active Directory”。 
-5.  在导航窗格中，从“安全性”部分中选择“已标记为存在风险的用户”。
+4.  如果页面顶部显示一个横幅，要求“查看新门户”，请选择相应的链接。 
+4.  在左侧导航菜单中，选择“Azure Active Directory”。  
+5.  在导航窗格中，从“安全性”部分中选择“已标记为存在风险的用户”。  
 
 ## <a name="remediation-actions"></a>修正操作
 

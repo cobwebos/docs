@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/07/2019
 ms.author: diberry
 ms.openlocfilehash: ba0db22437961a33b0b415ec7cb60ad3df12821c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60195844"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本 
@@ -33,9 +33,9 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 若要在 [LUIS 门户中](https://www.luis.ai)启动迭代过程，首先需要将 LUIS 应用训练至少一次。 在训练之前，请确保每个意向具有至少一个陈述。
 
-1. 在“我的应用”页面上选择应用名称以访问应用。 
+1. 在“我的应用”页面上选择应用名称以访问应用  。 
 
-2. 在应用中，在顶部的面板中选择“训练”。 
+2. 在应用中，在顶部的面板中选择“训练”。  
 
 3. 训练完成后，浏览器顶部会显示一个绿色的通知栏。
 
@@ -44,9 +44,9 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 >[!NOTE]
 >如果应用中有一个或多个意向未包含陈述示例，则无法训练应用。 请为所有意向添加陈述。 有关详细信息，请参阅[添加陈述示例](luis-how-to-add-example-utterances.md)。
 
-## <a name="training-date-and-time"></a>培训日期和时间
+## <a name="training-date-and-time"></a>训练日期和时间
 
-培训日期和时间是 GMT + 2。 
+训练日期和时间是 GMT + 2。 
 
 ## <a name="train-with-all-data"></a>使用所有数据进行训练
 
@@ -58,7 +58,7 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 ## <a name="training-with-the-rest-apis"></a>使用 REST API 进行训练
 
-在 LUIS 门户中进行训练是单个步骤，只需按下“训练”按钮。 使用 REST API 进行训练是一个两步过程。 第一个步骤是通过 HTTP POST [请求训练](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)。 然后通过 HTTP Get 请求[训练状态](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)。 
+在 LUIS 门户中进行训练是单个步骤，只需按下“训练”  按钮。 使用 REST API 进行训练是一个两步过程。 第一个步骤是通过 HTTP POST [请求训练](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)。 然后通过 HTTP Get 请求[训练状态](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)。 
 
 若要了解训练是何时完成的，必须对状态进行轮询，直至所有模型都成功训练。 
 

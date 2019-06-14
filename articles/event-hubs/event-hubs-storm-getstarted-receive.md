@@ -16,10 +16,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60343405"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>使用 Apache Storm 从事件中心接收事件
@@ -29,7 +29,7 @@ ms.locfileid: "60343405"
 有关事件中心接收模式的详细信息，请参阅[事件中心概述][Event Hubs overview]。
 
 ## <a name="prerequisites"></a>必备组件
-使用快速入门中，在开始之前**创建事件中心命名空间和事件中心**。 使用[Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间并获取你的应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 
+开始本快速入门之前，请**创建事件中心命名空间和事件中心**。 使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 
 
 ## <a name="create-project-and-add-code"></a>创建项目并添加代码
 
@@ -42,12 +42,12 @@ ms.locfileid: "60343405"
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. 在 Eclipse 中创建一个新的 Maven 项目（依次单击“文件”、“新建”、“项目”）。
+4. 在 Eclipse 中创建一个新的 Maven 项目（依次单击“文件”、“新建”、“项目”）    。
    
     ![“文件”>“新建”>“项目”][12]
-5. 选择“使用默认工作区位置”，并单击“下一步”
-6. 选择“maven-archetype-quickstart”原型，并单击“下一步”
-7. 插入 **GroupId** 和 **ArtifactId**，并单击“完成”
+5. 选择“使用默认工作区位置”，并单击“下一步”  
+6. 选择“maven-archetype-quickstart”原型，并单击“下一步”  
+7. 插入 **GroupId** 和 **ArtifactId**，并单击“完成” 
 8. 在 **pom.xml** 中的 `<dependency>` 节点内添加以下依赖项。
 
     ```xml  
@@ -80,7 +80,7 @@ ms.locfileid: "60343405"
     </dependency>
     ```
 
-9. 在 src 文件夹中，创建一个名为 Config.properties 的文件，并复制以下内容，替换值 `receive rule key` 和 `event hub name`：
+9. 在 src  文件夹中，创建一个名为 Config.properties  的文件，并复制以下内容，替换值 `receive rule key` 和 `event hub name`：
 
     ```java
     eventhubspout.username = ReceiveRule

@@ -10,10 +10,10 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: dae74e730d6e175fa3e447150adce4caecd3d7a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60237836"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure 诊断 1.2 配置架构
@@ -112,7 +112,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**DiagnosticInfrastructureLogs**|启用收集 Azure 诊断生成的日志。 诊断基础结构日志可用于排查诊断系统本身的故障。 可选属性：<br /><br /> -                     **scheduledTransferLogLevelFilter** - 配置收集的日志的最低严重级别。<br /><br /> -                     **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**Directories**|启用收集目录内容、IIS 失败的访问请求日志和/或 IIS 日志。 可选属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**EtwProviders**|配置从基于 EventSource 和/或 ETW 清单的提供程序收集 ETW 事件。|  
-|**指标**|此元素可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。 必需属性：<br /><br /> **resourceId** - 这是要将 Azure 诊断部署到的虚拟机的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览” -> “资源组” -> “<名称\>”。 单击“属性”磁贴，并从“ID”字段复制值。|  
+|**指标**|此元素可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。 必需属性：<br /><br /> **resourceId** - 这是要将 Azure 诊断部署到的虚拟机的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览”   -> “资源组”   -> “<名称\>”  。 单击“属性”  磁贴，并从“ID”  字段复制值。|  
 |**PerformanceCounters**|启用性能计数器收集。 可选属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**WindowsEventLog**|启用收集 Windows 事件日志。 可选属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 

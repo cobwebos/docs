@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2018
 ms.openlocfilehash: 25ed66fd75301475542dbac8e8a01670ee37563c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60531773"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>将 Azure 计划程序作业迁移到 Azure 逻辑应用
@@ -53,19 +53,19 @@ ms.locfileid: "60531773"
 
 1. 对于请求触发器，可以选择提供 JSON 架构，这有助于逻辑应用设计器了解传入请求的输入结构，使你稍后在工作流中更易选择输出。
 
-   若要指定架构，请在“请求正文 JSON 架构”框中输入架构，例如： 
+   若要指定架构，请在“请求正文 JSON 架构”  框中输入架构，例如： 
 
    ![请求架构](./media/migrate-from-scheduler-to-logic-apps/request-schema.png)
 
    如果你没有架构，但有一个 JSON 格式的示例有效负载，则可以基于该有效负载生成一个架构。
 
-   1. 在请求触发器中，选择“使用示例有效负载生成架构”。
+   1. 在请求触发器中，选择“使用示例有效负载生成架构”。 
 
-   1. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”，例如：
+   1. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”，例如   ：
 
       ![示例有效负载](./media/migrate-from-scheduler-to-logic-apps/sample-payload.png)
 
-1. 在触发器下，选择“下一步”。 
+1. 在触发器下，选择“下一步”。  
 
 1. 在搜索框中，输入“延迟截止时间”作为筛选器。 在操作列表中选择以下操作：**延迟截止时间**
 
@@ -75,7 +75,7 @@ ms.locfileid: "60531773"
 
 1. 输入要启动逻辑应用工作流的时间戳。 
 
-   在“时间戳”框内单击时，会显示动态内容列表，以便根据需要选择触发器的输出。
+   在“时间戳”框内单击时，会显示动态内容列表，以便根据需要选择触发器的输出  。
 
    ![提供“延迟截止时间”详细信息](./media/migrate-from-scheduler-to-logic-apps/delay-until-details.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "60531773"
 
    ![保存逻辑应用](./media/migrate-from-scheduler-to-logic-apps/save-logic-app.png)
 
-   第一次保存逻辑应用时，逻辑应用的请求触发器的终结点 URL 会显示在“HTTP POST URL”框中。 
+   第一次保存逻辑应用时，逻辑应用的请求触发器的终结点 URL 会显示在“HTTP POST URL”框中  。 
    如果要调用逻辑应用并将输入发送到逻辑应用进行处理，请使用此 URL 作为调用目标。
 
    ![保存请求触发器终结点 URL](./media/migrate-from-scheduler-to-logic-apps/request-endpoint-url.png)
@@ -100,22 +100,22 @@ ms.locfileid: "60531773"
 
 若要手动运行或触发一次性作业，请发送对逻辑应用的请求触发器终结点 URL 的调用。 在此调用中，请指定要发送的输入或有效负载，你之前可能已通过指定架构进行了描述。 
 
-例如，通过使用 Postman 应用，可以采用与此示例类似的设置创建 POST 请求，然后选择“发送”以发出请求。
+例如，通过使用 Postman 应用，可以采用与此示例类似的设置创建 POST 请求，然后选择“发送”以发出请求  。
 
-| 请求方法 | 代码 | Body | 标头 |
+| 请求方法 | URL | 正文 | 标头 |
 |----------------|-----|------|---------| 
-| **POST** | <endpoint-URL> | **raw** <p>**JSON(application/json)** <p>在“raw”框中，输入要在请求中发送的有效负载。 <p>**注意**：此设置自动配置**标头**值。 | **密钥**：Content-Type <br>**值**：application/json
+| **POST** | <endpoint-URL  > | **raw** <p>**JSON(application/json)** <p>在“raw”框中，输入要在请求中发送的有效负载  。 <p>**注意**：此设置自动配置**标头**值。 | **密钥**：Content-Type <br>**值**：application/json
  |||| 
 
 ![发送请求以手动触发逻辑应用](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
 
-发送调用后，逻辑应用的响应会显示在“正文”选项卡中的“raw”框下方。 
+发送调用后，逻辑应用的响应会显示在“正文”选项卡中的“raw”框下方   。 
 
 <a name="workflow-run-id"></a>
 
 > [!IMPORTANT]
 >
-> 如果稍后想取消作业，请选择“标头”选项卡。在响应中查找并复制 **x-ms-workflow-run-id** 标头值。 
+> 如果稍后想取消作业，请选择“标头”选项卡  。在响应中查找并复制 **x-ms-workflow-run-id** 标头值。 
 >
 > ![响应](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "60531773"
 
    有关高级计划选项的详细信息，请参阅[使用 Azure 逻辑应用创建和运行重复任务和工作流](../connectors/connectors-native-recurrence.md)
 
-1. 通过从 [200 多个连接器](../connectors/apis-list.md)中进行选择，来添加所需的其他操作。 在触发器下，选择“下一步”。 查找并选择所需的操作。
+1. 通过从 [200 多个连接器](../connectors/apis-list.md)中进行选择，来添加所需的其他操作。 在触发器下，选择“下一步”。  查找并选择所需的操作。
 
    例如，可以包含向 URL 发送请求的 HTTP 操作，或包含处理存储队列、服务总线队列或服务总线主题的操作： 
 
@@ -159,7 +159,7 @@ ms.locfileid: "60531773"
 
 若要控制在出现间歇性失败时操作尝试在逻辑应用中重新运行的方式，可以在每个操作的设置中设置[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)，例如：
 
-1. 打开该操作的 (**...**) 菜单，选择“设置”。
+1. 打开该操作的 ( **...** ) 菜单，选择“设置”  。
 
    ![打开操作设置](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "60531773"
 
 在 Azure 计划程序中，如果默认操作无法运行，则可以运行解决错误情况的替代操作。 在 Azure 逻辑应用中，也可以执行相同的任务。
 
-1. 在逻辑应用设计器中要处理的操作上方，将指针移到各步骤之间的箭头上，然后选择“添加并行分支”。 
+1. 在逻辑应用设计器中要处理的操作上方，将指针移到各步骤之间的箭头上，然后选择“添加并行分支”  。 
 
    ![添加并行分支](./media/migrate-from-scheduler-to-logic-apps/add-parallel-branch.png)
 
@@ -179,15 +179,15 @@ ms.locfileid: "60531773"
 
    ![添加并行操作](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. 在替代操作上，打开 (**...**) 菜单，选择“配置随后运行”。
+1. 在替代操作上，打开 ( **...** ) 菜单，选择“配置随后运行”  。
 
    ![配置随后运行](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
-1. 清除“成功”属性的相应框。 选择以下属性：“失败”、“已跳过”和“已超时”
+1. 清除“成功”属性的相应框  。 选择以下属性：“失败”、“已跳过”和“已超时”   
 
    ![设置“随后运行”属性](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
-1. 完成后，选择“完成”。
+1. 完成后，选择“完成”  。
 
 若要详细了解异常处理，请参阅[处理错误和异常 - RunAfter 属性](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property)。
 
@@ -214,18 +214,18 @@ ms.locfileid: "60531773"
 
 如果 Azure 订阅具有付费支持计划，则可以在 Azure 门户中创建技术支持请求。 如果没有，则可以选择其他支持选项。
 
-1. 在 [Azure 门户](https://portal.azure.com)主菜单中，选择“帮助和支持”。
+1. 在 [Azure 门户](https://portal.azure.com)主菜单中，选择“帮助和支持”  。
 
-1. 在“支持”下，选择“新建支持请求”。 为请求提供以下详细信息：
+1. 在“支持”下，选择“新建支持请求”   。 为请求提供以下详细信息：
 
    | 设置 | 值 |
    |---------|-------|
    | **问题类型** | **技术** | 
    | **订阅** | <*your-Azure-subscription*> | 
-   | **服务** | 在“监视和管理”下，选择“计划程序”。 | 
+   | **服务** | 在“监视和管理”下，选择“计划程序”   。 | 
    ||| 
 
-1. 选择所需的支持选项。 如果有付费支持计划，请选择“下一步”。
+1. 选择所需的支持选项。 如果有付费支持计划，请选择“下一步”  。
 
 **社区**
 
