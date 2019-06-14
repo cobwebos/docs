@@ -14,10 +14,10 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 8925943b0a5d151d55adedcfe3f01b5a14c63c1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60613890"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure 云服务定义 NetworkTrafficRules 架构
@@ -76,7 +76,7 @@ AllowAllTraffic 元素
 ##  <a name="RoleEndpoint"></a> RoleEndpoint 元素
 `RoleEndpoint` 元素描述角色上允许与之进行通信的终结点。 如果角色上有多个终结点，可以指定多个 `RoleEndpoint` 元素。
 
-| 属性      | Type     | 描述 |
+| 特性      | Type     | 描述 |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | 必需。 允许将流量发送到的终结点的名称。|
 | `roleName`     | `string` | 必需。 允许与之进行通信的 web 角色的名称。|
@@ -87,14 +87,14 @@ AllowAllTraffic 元素
 ##  <a name="WhenSource"></a> WhenSource 元素
 `WhenSource` 元素描述可以与 `Destinations` 节点中定义的终结点进行通信的角色的集合。
 
-| 属性 | Type     | 描述 |
+| 特性 | Type     | 描述 |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必需。 指定允许通信时要应用的规则。 目前唯一有效的值是 `AnyRule`。|
   
 ##  <a name="FromRole"></a> FromRole 元素
 `FromRole` 元素指定可以与 `Destinations` 节点中定义的终结点进行通信的角色。 如果有多个可以与终结点进行通信的角色，可以指定多个 `FromRole` 元素。
 
-| 属性  | Type     | 描述 |
+| 特性  | Type     | 描述 |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必需。 允许从中进行通信的角色的名称。|
 

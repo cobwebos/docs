@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
 ms.openlocfilehash: 2687a64bfd952888086862d929a3e5869aee5a4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60583969"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>使用 Azure 容器实例作为 Jenkins 生成代理
@@ -22,9 +22,9 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
 ## <a name="deploy-a-jenkins-server"></a>部署 Jenkins 服务器
 
-1. 在 Azure 门户中，选择“创建资源”并搜索 **Jenkins**。 选择发行商为“Microsoft”的 Jenkins 产品/服务，然后选择“创建”。
+1. 在 Azure 门户中，选择“创建资源”并搜索 **Jenkins**。  选择发行商为“Microsoft”的 Jenkins 产品/服务，然后选择“创建”。  
 
-2. 在“基本信息”窗体中输入以下信息，然后选择“确定”。
+2. 在“基本信息”窗体中输入以下信息，然后选择“确定”。  
 
    - **名称**：输入 Jenkins 部署的名称。
    - **用户名**：输入 Jenkins 虚拟机的管理员用户名。
@@ -35,25 +35,25 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
    ![Jenkins 门户部署的基本设置](./media/container-instances-jenkins/jenkins-portal-01.png)
 
-3. 在“其他设置”窗体中填写以下各项：
+3. 在“其他设置”窗体中填写以下各项： 
 
    - **大小**：选择适合于 Jenkins 虚拟机的调整大小选项。
-   - **VM 磁盘类型**：为 Jenkins 服务器指定“HDD”（机械硬盘）或“SSD”（固态硬盘）。
+   - **VM 磁盘类型**：为 Jenkins 服务器指定“HDD”  （机械硬盘）或“SSD”  （固态硬盘）。
    - **虚拟网络**：若要修改默认设置，请选择箭头。
-   - **子网**：选择箭头，检查信息，然后选择“确定”。
+   - **子网**：选择箭头，检查信息，然后选择“确定”  。
    - **公共 IP 地址**：选择箭头，为公共 IP 地址指定自定义名称，配置 SKU，并设置分配方法。
    - **域名标签**：指定用于创建 Jenkins 虚拟机完全限定 URL 的值。
-   - **Jenkins 发行类型**：从以下选项中选择所需的版本类型：LTS、每周版本，或 Azure 已验证。
+   - **Jenkins 发行类型**：从以下选项中选择所需的版本类型：LTS  、每周版本  ，或 Azure 已验证  。
 
    ![Jenkins 门户部署的其他设置](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. 若要进行服务主体集成，请选择“自动(MSI)”，让[适用于 Azure 资源的托管标识][managed-identities-azure-resources]自动创建 Jenkins 实例的身份验证标识。 选择“手动”可提供自己的服务主体凭据。
+4. 若要进行服务主体集成，请选择“自动(MSI)”  ，让[适用于 Azure 资源的托管标识][managed-identities-azure-resources]自动创建 Jenkins 实例的身份验证标识。 选择“手动”可提供自己的服务主体凭据。 
 
-5. 云代理将为 Jenkins 生成作业配置基于云的平台。 对于本文档，请选择“ACI”。 使用 ACI 云代理时，每个 Jenkins 生成作业将在容器实例中运行。
+5. 云代理将为 Jenkins 生成作业配置基于云的平台。 对于本文档，请选择“ACI”。  使用 ACI 云代理时，每个 Jenkins 生成作业将在容器实例中运行。
 
    ![Jenkins 门户部署的云集成设置](./media/container-instances-jenkins/jenkins-portal-03.png)
 
-6. 完成集成设置后，选择“确定”，然后在验证摘要中再次选择“确定”。 在“使用条款”摘要中选择“创建”。 部署 Jenkins 服务器需要几分钟时间。
+6. 完成集成设置后，选择“确定”，然后在验证摘要中再次选择“确定”。   在“使用条款”摘要中选择“创建”。   部署 Jenkins 服务器需要几分钟时间。
 
 ## <a name="configure-jenkins"></a>配置 Jenkins
 
@@ -73,11 +73,11 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. 让 SSH 会话和隧道保持运行，在浏览器中转到 `http://localhost:8080`。 将初始管理员密码粘贴到字段中，然后选择“继续”。
+5. 让 SSH 会话和隧道保持运行，在浏览器中转到 `http://localhost:8080`。 将初始管理员密码粘贴到字段中，然后选择“继续”。 
 
    ![包含管理员密码输入框的“解锁 Jenkins”屏幕](./media/container-instances-jenkins/jenkins-portal-05.png)
 
-6. 选择“安装建议的插件”以安装所有建议的 Jenkins 插件。
+6. 选择“安装建议的插件”以安装所有建议的 Jenkins 插件。 
 
    ![“自定义 Jenkins”屏幕，其中的“安装建议的插件”已选中](./media/container-instances-jenkins/jenkins-portal-06.png)
 
@@ -85,7 +85,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
    ![“创建第一个管理员用户”屏幕，其中已填写凭据](./media/container-instances-jenkins/jenkins-portal-07.png)
 
-8. 选择“保存并完成”，然后选择“开始使用 Jenkins”以完成配置。
+8. 选择“保存并完成”，然后选择“开始使用 Jenkins”以完成配置。  
 
 现已配置 Jenkins，它可以开始生成和部署代码。 本示例使用一个简单的 Java 应用程序来演示 Azure 容器实例中的 Jenkins 生成过程。
 
@@ -93,25 +93,25 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
 现在，创建 Jenkins 生成作业来演示 Azure 容器实例中的 Jenkins 生成。
 
-1. 选择“新建项”，为生成项目命名（例如 aci-demo），选择“自由风格项目”，然后选择“确定”。
+1. 选择“新建项”，为生成项目命名（例如 aci-demo），选择“自由风格项目”，然后选择“确定”     。
 
    ![用于指定生成作业名称的框，以及项目类型列表](./media/container-instances-jenkins/jenkins-new-job.png)
 
-2. 在“常规”下，确保已选择“限制可以运行此项目的位置”。 为标签表达式输入 **linux**。 此配置可确保此生成作业在 ACI 云中运行。
+2. 在“常规”下，确保已选择“限制可以运行此项目的位置”。   为标签表达式输入 **linux**。 此配置可确保此生成作业在 ACI 云中运行。
 
    ![包含配置详细信息的“常规”选项卡](./media/container-instances-jenkins/jenkins-job-01.png)
 
-3. 在“生成”下，选择“添加生成步骤”并选择“执行 Shell”。 输入 `echo "aci-demo"` 作为命令。
+3. 在“生成”下，选择“添加生成步骤”并选择“执行 Shell”    。 输入 `echo "aci-demo"` 作为命令。
 
    ![包含生成步骤选项的“生成”选项卡](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. 选择“保存”。
+5. 选择“保存”。 
 
 ## <a name="run-the-build-job"></a>运行生成作业
 
 若要测试生成作业并观察用作生成平台的 Azure 容器实例，请手动启动生成。
 
-1. 选择“立即生成”启动生成作业。 启动该作业需要花费几分钟时间。 应会看到类似于下图的状态：
+1. 选择“立即生成”启动生成作业。  启动该作业需要花费几分钟时间。 应会看到类似于下图的状态：
 
    ![包含作业状态的“生成历史记录”信息](./media/container-instances-jenkins/jenkins-job-status.png)
 

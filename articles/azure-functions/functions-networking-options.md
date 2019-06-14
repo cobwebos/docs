@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: a0bb34f8a43199a5d3a18064bce92ef4bec543af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492837"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050645"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 的网络选项
 
@@ -25,13 +25,13 @@ ms.locfileid: "66492837"
 
 * 还有一组具有不同级别的虚拟网络连接和缩放选项的多租户基础结构运行的计划选项：
     * [消耗计划](functions-scale.md#consumption-plan)，其根据负载动态缩放，并提供了最少的网络隔离选项。
-    * [高级版计划](functions-scale.md#premium-plan-public-preview)，这还可以扩展动态，同时还提供更全面的网络隔离。
+    * [高级版计划](functions-scale.md#premium-plan)，这还可以扩展动态，同时还提供更全面的网络隔离。
     * Azure[应用服务计划](functions-scale.md#app-service-plan)，它在固定的比例进行操作，并提供了类似的网络隔离级别提高到高级版计划。
 * 您可以在运行函数[应用服务环境](../app-service/environment/intro.md)。 此方法将函数部署到你的虚拟网络，并提供完全的网络控制和隔离。
 
 ## <a name="matrix-of-networking-features"></a>网络功能矩阵
 
-|                |[消耗计划](functions-scale.md#consumption-plan)|[高级计划 （预览版）](functions-scale.md#premium-plan-public-preview)|[应用服务计划](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
+|                |[消耗计划](functions-scale.md#consumption-plan)|[高级计划 （预览版）](functions-scale.md#premium-plan)|[应用服务计划](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[入站的 IP 限制](#inbound-ip-restrictions)|✅是|✅是|✅是|✅是|
 |[出站 IP 限制](#private-site-access)|❌No| ❌No|❌No|✅是|
@@ -92,7 +92,7 @@ IP 限制可用于定义按优先级顺序排列的 IP 地址的允许/拒绝访
 ## <a name="private-site-access"></a>专用站点访问
 
 专用站点访问指的是使您的应用程序只能从专用网络如从 Azure 虚拟网络中访问。 
-* 专用站点访问现已推出的高级和应用服务计划**服务终结点**配置。有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
+* 专用站点访问现已推出的高级和应用服务计划**服务终结点**配置。 有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
     * 请记住，与服务终结点，你的函数上仍有完整出站访问 internet，即使使用 VNET 集成配置。
 * 专用站点访问位于仅与应用服务环境配置具有内部负载均衡器 (ILB)。 有关详细信息，请参阅[创建和使用具有应用服务环境的内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
 

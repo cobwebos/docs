@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 9dbcfcc832eb694a3dcdf2b67be6eeda8229aa79
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141051"
 ---
 ## <a name="availability"></a>可用性
 
 > [!IMPORTANT]
-> 此功能在 API 管理的“高级”、“标准”、“基本”和“开发人员”层中可用。
+> 此功能在 API 管理的“高级”  、“标准”  、“基本”  和“开发人员”  层中可用。

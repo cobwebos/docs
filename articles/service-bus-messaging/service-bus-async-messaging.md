@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60531111"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>异步消息传送模式和高可用性
@@ -45,7 +45,7 @@ ms.locfileid: "60531111"
 * Azure 数据中心内的服务总线故障。 这是“灾难性故障”，无论故障时间是数分钟还是几小时，在此期间都无法访问系统。
 
 > [!NOTE]
-> “存储”这一术语既能表示 Azure 存储又能表示 SQL Azure。
+> “存储”  这一术语既能表示 Azure 存储又能表示 SQL Azure。
 > 
 > 
 

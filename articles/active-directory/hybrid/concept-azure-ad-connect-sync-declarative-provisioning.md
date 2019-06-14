@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60246288"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步：了解声明性预配
@@ -77,7 +77,7 @@ ms.locfileid: "60246288"
 ![联接定义](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
 此图中的联接会从上到下进行处理。 同步管道首先查看是否有 employeeID 的匹配项。 如果没有，第二个规则会查看是否可以使用帐户名来将对象联接在一起。 如果也不是匹配项，则第三个（最后一个）规则会使用用户名查找更模糊的匹配项。
 
-如果已对所有联接规则进行计算，但没有完全相符的匹配项，则会使用“说明”页上的“链接类型”。 如果此选项设置为“预配”，则会在目标中创建新对象。  
+如果已对所有联接规则进行计算，但没有完全相符的匹配项，则会使用“说明”页上的“链接类型”。   如果此选项设置为“预配”，则会在目标中创建新对象。   
 ![预配或联接](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 一个对象应该只有一个同步规则具有在范围内的联接规则。 如果有多个同步规则定义了联接，那么会出错。 优先级不用于解决联接冲突。 对象必须具有在范围内的联接规则，属性才能以相同的入站/出站方向流动。 如果需要让属性以入站和出站方式流动到同一对象，则联接必须具有入站和出站同步规则。
@@ -87,27 +87,27 @@ ms.locfileid: "60246288"
 新的同步规则进入范围时，只会计算联接模块一次。 如果对象已联接，即使不再满足联接条件，也不会取消联接。 如果想要取消对象的联接，则联接对象的同步规则必须超出范围。
 
 ### <a name="metaverse-delete"></a>Metaverse 删除
-只要有一个在范围内的同步规则，metaverse 对象的“链接类型”就会维持设置为“预配”或“StickyJoin”。 StickyJoin 用于不允许连接器将新对象预配到 metaverse 的情况，但如果已联接，则必须先在源中删除该对象，然后才能删除 metaverse 对象。
+只要有一个在范围内的同步规则，metaverse 对象的“链接类型”就会维持设置为“预配”或“StickyJoin”。    StickyJoin 用于不允许连接器将新对象预配到 metaverse 的情况，但如果已联接，则必须先在源中删除该对象，然后才能删除 metaverse 对象。
 
 删除 metaverse 对象后，所有与标记为“预配”  的出站同步规则关联的对象都会标记为要删除。
 
 ## <a name="transformations"></a>转换
-转换用于定义属性应该如何从源流动到目标。 流可以是以下“流类型”之一：直接、常数或表达式。 直接流会按原样流动属性值，而不进行其他转换。 常数值会设置指定的值。 表达式会使用声明性预配表达式语言来表达应该如何转换。 有关表达式语言的详细信息，请参阅[了解声明性预配表达式语言](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)主题。
+转换用于定义属性应该如何从源流动到目标。 流可以是以下“流类型”之一  ：直接、常数或表达式。 直接流会按原样流动属性值，而不进行其他转换。 常数值会设置指定的值。 表达式会使用声明性预配表达式语言来表达应该如何转换。 有关表达式语言的详细信息，请参阅[了解声明性预配表达式语言](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)主题。
 
 ![预配或联接](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
-“应用一次”复选框定义只应在最初创建对象时设置的属性。 例如，此配置可用于设置新用户对象的初始密码。
+“应用一次”复选框定义只应在最初创建对象时设置的属性。  例如，此配置可用于设置新用户对象的初始密码。
 
 ### <a name="merging-attribute-values"></a>合并属性值
-在属性流中，有一个设置可用于确定是否应从多个不同的连接器合并多值属性。 默认值为“Update”，表示应采用具有最高优先级的同步规则。
+在属性流中，有一个设置可用于确定是否应从多个不同的连接器合并多值属性。 默认值为“Update”  ，表示应采用具有最高优先级的同步规则。
 
 ![合并类型](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
-此外，还有“Merge”和“MergeCaseInsensitive”。 这些选项让用户能够合并来自不同源的值。 例如，它可用于合并来自多个不同林的成员或 proxyAddresses 属性。 使用此选项时，对象范围内的所有同步规则都必须使用相同的合并类型。 不能定义从一个连接器“Update”，从另一个连接器“Merge”。 如果尝试此操作，将收到错误。
+此外，还有“Merge”  和“MergeCaseInsensitive”。  这些选项让用户能够合并来自不同源的值。 例如，它可用于合并来自多个不同林的成员或 proxyAddresses 属性。 使用此选项时，对象范围内的所有同步规则都必须使用相同的合并类型。 不能定义从一个连接器“Update”，从另一个连接器“Merge”。   如果尝试此操作，将收到错误。
 
-“Merge”和“MergeCaseInsensitive”之间的差异在于处理重复属性值的方式。 同步引擎可确保不会将重复的值插入目标属性。 使用“MergeCaseInsensitive” 可防止出现只有大小写差异的重复值。 例如，目标属性中无法同时看到 SMTP:bob@contoso.com 和 smtp:bob@contoso.com。  只会查看仅可能存在大小写差异的确切值和多个值。
+“Merge”和“MergeCaseInsensitive”之间的差异在于处理重复属性值的方式。   同步引擎可确保不会将重复的值插入目标属性。 使用“MergeCaseInsensitive”  可防止出现只有大小写差异的重复值。 例如，目标属性中无法同时看到 SMTP:bob@contoso.com 和 smtp:bob@contoso.com。  只会查看仅可能存在大小写差异的确切值和多个值。
 
-“Replace”选项与“Update”选项相同，但未使用该选项。
+“Replace”选项与“Update”选项相同，但未使用该选项。  
 
 ### <a name="control-the-attribute-flow-process"></a>控制属性流动过程
 多个入站同步规则配置为向同一 metaverse 属性提供值时，会使用优先级确定获得采用的规则。 具有最高优先级（最小数值）的同步规则会提供值。 出站规则的情况一样。 具有最高优先级的同步规则会获得采用，并向已连接的目录提供值。

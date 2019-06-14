@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 2ceb4aeac55bd555a41c29bd41b00c771490e5f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60425665"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 后端连接功能中的互操作性：测试配置详细信息
@@ -23,11 +23,11 @@ ms.locfileid: "60425665"
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 对等互连建立辐射 VNet 连接
 
-下图显示了辐射虚拟网络 (VNet) 的 Azure 虚拟网络对等互连详细信息。 若要了解如何在两个 VNet 之间设置对等互连，请参阅[管理 VNet 对等互连][VNet-Config]。 如果希望辐射 VNet 使用连接到中心 VNet 的网关，请选择“使用远程网关”。
+下图显示了辐射虚拟网络 (VNet) 的 Azure 虚拟网络对等互连详细信息。 若要了解如何在两个 VNet 之间设置对等互连，请参阅[管理 VNet 对等互连][VNet-Config]。 如果希望辐射 VNet 使用连接到中心 VNet 的网关，请选择“使用远程网关”。 
 
 [![1]][1]
 
-下图显示了中心 VNet 的 VNet 对等互连详细信息。 如果希望辐射 VNet 使用中心 VNet 网关，请选择“使用远程网关”。
+下图显示了中心 VNet 的 VNet 对等互连详细信息。 如果希望辐射 VNet 使用中心 VNet 网关，请选择“使用远程网关”。 
 
 [![2]][2]
 

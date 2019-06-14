@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 601f3bf05388406c8f96a7351f7fb3aa4de2650a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60588845"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威胁建模工具功能概述
@@ -28,7 +28,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 > [!NOTE]
 >Threat Modeling Tool 会频繁更新，因此请经常查看本指南，以了解我们的最新功能和改进。
 
-若要打开一个空页面，请选择“创建模型”。
+若要打开一个空页面，请选择“创建模型”  。
 
 ![空页面](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
@@ -50,7 +50,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 | --------------------------------------- | ------------ |
 | **文件** | <ul><li>打开、保存和关闭文件</li><li>登录和注销 OneDrive 帐户。</li><li>共享链接（视图和编辑）。</li><li>查看文件信息。</li><li>将新模板应用于现有模型。</li></ul> |
 | **编辑** | 撤消和重做操作，以及复制、粘贴和删除。 |
-| **视图** | <ul><li>在“分析”和“设计”视图之间进行切换。</li><li>打开已关闭的窗口（例如模具、元素属性和消息）。</li><li>将布局重置为默认设置。</li></ul> |
+| **视图** | <ul><li>在“分析”  和“设计”  视图之间进行切换。</li><li>打开已关闭的窗口（例如模具、元素属性和消息）。</li><li>将布局重置为默认设置。</li></ul> |
 | **关系图** | 添加和删除关系图，及浏览关系图的“选项卡”。 |
 | **报告** | 创建与他人共享的 HTML 报告。 |
 | **帮助** | 查看帮助使用工具的指南。 |
@@ -61,7 +61,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 | --------------------------------------- | ------------ |
 | **打开** | 打开新文件。 |
 | **保存** | 保存当前文件。 |
-| **设计** | 打开设计视图，可以在其中创建模型。 |
+| **设计** | 打开设计  视图，可以在其中创建模型。 |
 | **分析** | 显示已发生的威胁及其属性。 |
 | **添加关系图** | 添加新关系图（类似于 Excel 中的新选项卡）。 |
 | **删除关系图** | 删除当前关系图。 |
@@ -115,11 +115,11 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ## <a name="welcome-screen"></a>欢迎屏幕
 
-打开应用时，将看到“欢迎使用”屏幕。
+打开应用时，将看到“欢迎使用”  屏幕。
 
 ### <a name="open-a-model"></a>打开模型
 
-将鼠标指针悬停在“打开模型”上可显示两个选项：**从此计算机打开**和**从 OneDrive 打开**。 第一个选项将打开“文件打开”屏幕。 第二个选项会将你转到 OneDrive 的登录过程。 身份验证成功后，可以选择文件夹和文件。
+将鼠标指针悬停在“打开模型”  上可显示两个选项：**从此计算机打开**和**从 OneDrive 打开**。 第一个选项将打开“文件打开”  屏幕。 第二个选项会将你转到 OneDrive 的登录过程。 身份验证成功后，可以选择文件夹和文件。
 
 ![打开模型](./media/azure-security-threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -127,13 +127,13 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ### <a name="feedback-suggestions-and-issues"></a>反馈、建议和问题
 
-选择“反馈、建议和问题”后，将转到 SDL 工具的 MSDN 论坛。 可以在其中阅读其他用户对该工具的看法，包括变通方法和新的想法。
+选择“反馈、建议和问题”  后，将转到 SDL 工具的 MSDN 论坛。 可以在其中阅读其他用户对该工具的看法，包括变通方法和新的想法。
 
 ![反馈](./media/azure-security-threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>设计视图
 
-打开或新建模型时，会打开“设计”视图。
+打开或新建模型时，会打开“设计”  视图。
 
 ### <a name="add-elements"></a>添加元素
 
@@ -147,11 +147,11 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 可以使用以下两种方法连接元素：
 
 - **拖放**：将所需的数据流拖至网格中，并将两端连接到相应的元素。
-- **单击 + Shift**：单击第一个元素（发送数据），按住 Shift 键，然后选择第二个元素（接收数据）。 右键单击并选择“连接”。 如果你使用的是双向数据流，顺序就不那么重要了。
+- **单击 + Shift**：单击第一个元素（发送数据），按住 Shift 键，然后选择第二个元素（接收数据）。 右键单击并选择“连接”  。 如果你使用的是双向数据流，顺序就不那么重要了。
 
 ### <a name="properties"></a>属性
 
- 若要查看模具上可供修改的属性，请选择相应的模具，然后会填充相应的信息。 以下示例显示“数据库”模具拖动到关系图前后的情况：
+ 若要查看模具上可供修改的属性，请选择相应的模具，然后会填充相应的信息。 以下示例显示“数据库”  模具拖动到关系图前后的情况：
 
 #### <a name="before"></a>之前
 
@@ -169,11 +169,11 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ### <a name="notes"></a>说明
 
-若要向关系图添加说明，请从“消息”选项卡切换到“说明”选项卡。
+若要向关系图添加说明，请从“消息”  选项卡切换到“说明”  选项卡。
 
 ## <a name="analysis-view"></a>分析视图
 
-生成关系图后，在快捷方式工具栏上选择“分析”符号（放大镜）可切换到“分析”视图。
+生成关系图后，在快捷方式工具栏上选择“分析”  符号（放大镜）可切换到“分析”  视图。
 
 ![分析视图](./media/azure-security-threat-modeling-tool-feature-overview/analysisview.png)
 
@@ -185,7 +185,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 | --------------------------------------- | ------------ |
 | **已读指示器** | <p>将威胁标记为已读，可帮助你跟踪已查看的项。</p><p>![已读/未读指示器](./media/azure-security-threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **交互焦点** | <p>关系图中属于威胁的交互会突出显示。</p><p>![交互焦点](./media/azure-security-threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **威胁属性** | <p>有关威胁的其他信息显示在“威胁属性”窗口中。</p><p>![威胁属性](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **威胁属性** | <p>有关威胁的其他信息显示在“威胁属性”  窗口中。</p><p>![威胁属性](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>优先级更改
 
@@ -201,7 +201,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ## <a name="reports"></a>报告
 
-完成优先级更改并更新每个已发生威胁的状态后，就可以保存文件和/或打印报表。 转到“报表” > “创建完整报表”。 为报表命名，然后应会看到类似于下图的信息：
+完成优先级更改并更新每个已发生威胁的状态后，就可以保存文件和/或打印报表。 转到“报表”   > “创建完整报表”  。 为报表命名，然后应会看到类似于下图的信息：
 
 ![报表](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 

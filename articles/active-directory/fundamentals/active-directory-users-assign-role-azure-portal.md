@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd26fa53c91c53893c7f326afda5158fa430be1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60248148"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>为具有 Azure Active Directory 的用户分配管理员和非管理员角色
@@ -26,37 +26,37 @@ ms.locfileid: "60248148"
 有关可用角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。 有关添加用户的详细信息，请参阅[将新用户添加到 Azure Active Directory](add-users-azure-active-directory.md)。
 
 ## <a name="assign-roles"></a>分配角色
-常用方法是在用户的“目录角色”页面上将 Azure AD 角色分配给用户。
+常用方法是在用户的“目录角色”页面上将 Azure AD 角色分配给用户  。
 
 还可以使用 Privileged Identity Management (PIM) 分配角色。 了解如何使用 PIM 的详细信息，请参阅 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
 
 ### <a name="to-assign-a-role-to-a-user"></a>向用户分配角色
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“Azure Active Directory”，选择“用户”，然后搜索并选择要获得角色分配的用户。 例如，Alain Charon。
+2. 选择“Azure Active Directory”，选择“用户”，然后搜索并选择要获得角色分配的用户   。 例如，Alain Charon  。
 
-3. 在“Alain Charon - 配置文件”页上，选择“目录角色”。
+3. 在“Alain Charon - 配置文件”页上，选择“目录角色”   。
 
-    将出现“Alain Charon - 目录角色”页面。
+    将出现“Alain Charon - 目录角色”页面  。
 
-4. 依次选择“添加角色”、要分配给 Alain 的角色（例如，“应用程序管理员”）和“选择”。
+4. 依次选择“添加角色”、要分配给 Alain 的角色（例如，“应用程序管理员”）和“选择”    。
 
     ![目录角色页面，显示所选角色](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 
-    应用程序管理员角色分配给 Alain Charon，显示在“Alain Charon - 目录角色”页面上。
+    应用程序管理员角色分配给 Alain Charon，显示在“Alain Charon - 目录角色”页面上  。
 
 ## <a name="remove-a-role-assignment"></a>删除角色分配
-如果需要从用户删除角色分配，也可从“Alain Charon - 目录角色”页面执行此操作。
+如果需要从用户删除角色分配，也可从“Alain Charon - 目录角色”页面执行此操作  。
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>从用户删除角色分配
 
-1. 选择“Azure Active Directory”，选择“用户”，然后搜索并选择删除分配了角色的用户。 例如，Alain Charon。
+1. 选择“Azure Active Directory”，选择“用户”，然后搜索并选择删除分配了角色的用户   。 例如，Alain Charon  。
 
-2. 依次选择“目录角色”、“应用程序管理员”和“删除角色”。
+2. 依次选择“目录角色”、“应用程序管理员”和“删除角色”    。
 
     ![目录角色页面，显示所选角色和删除选项](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 
-    应用程序管理员角色已从 Alain Charon 删除，并且不再显示在“Alain Charon - 目录角色”页面上。
+    应用程序管理员角色已从 Alain Charon 删除，并且不再显示在“Alain Charon - 目录角色”页面上  。
 
 ## <a name="next-steps"></a>后续步骤
 - [添加或删除用户](add-users-azure-active-directory.md)

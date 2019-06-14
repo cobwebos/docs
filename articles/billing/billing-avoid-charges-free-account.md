@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/25/2017
 ms.author: banders
 ms.openlocfilehash: 7bb8e4f53dd07a613ab4b9ff05600a22f76a4ba7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60617839"
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>避免 Azure 免费帐户产生费用
@@ -47,7 +47,7 @@ Azure 免费帐户提供 200 美元的 Azure 信用额度（可在前 30 天内�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在左侧的导航区域中，选择“所有服务”。
+2. 在左侧的导航区域中，选择“所有服务”  。
 
 3.  选择 **订阅**。
 

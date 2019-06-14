@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 94f662cea5f20485659a7b93549b758fdd7770f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25e67a5a6c3abebbac2e0489ff636ca1457b62ea
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476264"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807730"
 ---
 当不再需要附加到虚拟机 (VM) 的数据磁盘时，可以轻松地分离它。 从 VM 中分离磁盘时，不会从存储中删除该磁盘。 如果希望再次使用磁盘上的现有数据，可以将其重新附加到相同的 VM 或另一个 VM。  
 
@@ -19,7 +19,7 @@ ms.locfileid: "61476264"
 ## <a name="find-the-disk"></a>找到磁盘
 在从 VM 中分离磁盘之前，需要先确定 LUN 号（要分离的磁盘的标识符）。 为此，请执行以下步骤：
 
-1. 打开 Azure CLI 并[连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。 确保是在 Azure 服务管理模式 (`azure config mode asm`) 下。
+1. 打开 Azure CLI 和[连接到你的 Azure 订阅](/cli/azure/authenticate-azure-cli)。 确保是在 Azure 服务管理模式 (`azure config mode asm`) 下。
 2. 找出哪些磁盘已附加到 VM。 以下示例列出名为 `myVM` 的 VM 的磁盘：
 
     ```azurecli

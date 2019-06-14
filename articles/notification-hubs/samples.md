@@ -9,18 +9,17 @@ editor: spelluru
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.author: v-biyu
-origin.date: 03/28/2019
-ms.date: 05/06/2019
+ms.author: jowargo
+ms.date: 03/28/2019
 ms.openlocfilehash: 1d035513418147b8fae1d8e2f217d20d19f02f2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60559919"
 ---
 # <a name="azure-notification-hubs-samples"></a>Azure 通知中心示例
-本文提供指向演示 Azure 通知中心的主要功能的示例。
+本文提供示例链接，这些示例演示 Azure 通知中心的主要功能。
 
 ## <a name="samples"></a>示例
 
@@ -31,4 +30,4 @@ ms.locfileid: "60559919"
 - [iOS](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples)
 
 ## <a name="next-steps"></a>后续步骤
-在目录 (TOC) 的“教程”部分查看教程。
+在目录 (TOC) 的“教程”部分查看教程。 

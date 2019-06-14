@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: b87fea5120ae09848eef9fcb29ef0912bf17fa0f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c1fedd27f8b5d494972feb96100481d79c302990
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796917"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051578"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>快速入门：使用 Java 将查询发送到必应当地企业搜索 API
 
@@ -22,7 +22,7 @@ ms.locfileid: "65796917"
 
 此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 

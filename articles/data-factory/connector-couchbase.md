@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 27f327493fbf3d7856b9488ecd0dd2509976ccfc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60533957"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Couchbase 复制数据
@@ -102,7 +102,7 @@ Couchbase 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Couchbase 数据集支持的属性列表。
 
-要从 Couchbase 复制数据，请将数据集的 type 属性设置为“CouchbaseTable”。 支持以下属性：
+要从 Couchbase 复制数据，请将数据集的 type 属性设置为“CouchbaseTable”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -132,7 +132,7 @@ Couchbase 链接服务支持以下属性：
 
 ### <a name="couchbasesource-as-source"></a>以 CouchbaseSource 作为源
 
-要从 Couchbase 复制数据，请将复制活动中的源类型设置为“CouchbaseSource”。 复制活动源部分支持以下属性：
+要从 Couchbase 复制数据，请将复制活动中的源类型设置为“CouchbaseSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

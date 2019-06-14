@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
 ms.openlocfilehash: 65ea8622187d0665e4680f4162ddff0bc01e6eb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60306760"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>使用外部授权程序授权请求
@@ -26,7 +26,7 @@ ms.locfileid: "60306760"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Authorize requests using external authorizer.policy.xml)]
 

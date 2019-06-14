@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60245140"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>使用现有 ADSync 数据库安装 Azure AD Connect
@@ -65,34 +65,34 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使�
 > 只有当数据库已包含来自早期 Azure AD Connect 安装的数据时，才应使用 **/UseExistingDatabase** 开关。 例如，当从本地数据库移动到完整 SQL Server 数据库时，或者当重建 Azure AD Connect 服务器并且从早期 Azure AD Connect 安装还原了 ADSync 数据库的 SQL 备份时。 如果数据库为空（即不包含前面的 Azure AD Connect 安装的任何数据），请跳过此步骤。
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
-1. 出现“欢迎使用 Azure AD Connect”屏幕。 同意许可条款和隐私声明后，单击“继续”。
+1. 出现“欢迎使用 Azure AD Connect”屏幕。 同意许可条款和隐私声明后，单击“继续”  。
    ![欢迎使用](./media/how-to-connect-install-existing-database/db3.png)
-1. 在“安装所需组件”屏幕上，“使用现有 SQL Server”选项已启用。 指定托管 ADSync 数据库的 SQL Server 的名称。 如果用于托管 ADSync 数据库的 SQL 引擎实例不是 SQL Server 上的默认实例，则必须指定 SQL 引擎实例名称。 此外，如果没有启用 SQL 浏览，还必须指定 SQL 引擎实例端口号。 例如：         
+1. 在“安装所需组件”屏幕上，“使用现有 SQL Server”选项已启用   。 指定托管 ADSync 数据库的 SQL Server 的名称。 如果用于托管 ADSync 数据库的 SQL 引擎实例不是 SQL Server 上的默认实例，则必须指定 SQL 引擎实例名称。 此外，如果没有启用 SQL 浏览，还必须指定 SQL 引擎实例端口号。 例如：         
    ![欢迎使用](./media/how-to-connect-install-existing-database/db4.png)           
 
-1. 在“连接到 Azure AD”屏幕上，必须提供 Azure AD 目录的全局管理员凭据。 建议使用默认 onmicrosoft.com 域中的帐户。 此帐户仅用于在 Azure AD 中创建服务帐户，在向导完成后将不会使用。
-   ![连接](./media/how-to-connect-install-existing-database/db5.png)
+1. 在“连接到 Azure AD”屏幕上，必须提供 Azure AD 目录的全局管理员凭据  。 建议使用默认 onmicrosoft.com 域中的帐户。 此帐户仅用于在 Azure AD 中创建服务帐户，在向导完成后将不会使用。
+   ![“连接”](./media/how-to-connect-install-existing-database/db5.png)
  
-1. 在“连接目录”屏幕上，为目录同步配置的现有 AD 林旁边显示有红色十字图标。 若要同步本地 AD 林中的更改，需要 AD DS 帐户。 Azure AD Connect 向导无法检索存储在 ADSync 数据库中的 AD DS 帐户凭据，因为凭据已加密，只能由先前的 Azure AD Connect 服务器进行解密。 单击“更改凭据”为 AD 林指定 AD DS 帐户。
+1. 在“连接目录”屏幕上，为目录同步配置的现有 AD 林旁边显示有红色十字图标  。 若要同步本地 AD 林中的更改，需要 AD DS 帐户。 Azure AD Connect 向导无法检索存储在 ADSync 数据库中的 AD DS 帐户凭据，因为凭据已加密，只能由先前的 Azure AD Connect 服务器进行解密。 单击“更改凭据”为 AD 林指定 AD DS 帐户  。
    ![Directories](./media/how-to-connect-install-existing-database/db6.png)
  
  
-1. 在弹出对话框中，可以 (i) 提供企业管理员凭据，并让 Azure AD Connect 为你创建 AD DS 帐户，或 (ii) 自行创建 AD DS 帐户，并将其凭据提供给 Azure AD Connect。 选择一个选项并提供必要凭据后，单击“确定”关闭弹出对话框。
+1. 在弹出对话框中，可以 (i) 提供企业管理员凭据，并让 Azure AD Connect 为你创建 AD DS 帐户，或 (ii) 自行创建 AD DS 帐户，并将其凭据提供给 Azure AD Connect。 选择一个选项并提供必要凭据后，单击“确定”关闭弹出对话框  。
    ![欢迎使用](./media/how-to-connect-install-existing-database/db7.png)
  
  
-1. 提供凭据后，红色十字图标将被替换为绿色钩号图标。 单击“下一步”。
+1. 提供凭据后，红色十字图标将被替换为绿色钩号图标。 单击“下一步”。 
    ![欢迎使用](./media/how-to-connect-install-existing-database/db8.png)
  
  
-1. 在“准备好配置”屏幕上，单击“安装”。
+1. 在“准备好配置”屏幕上，单击“安装”   。
    ![欢迎使用](./media/how-to-connect-install-existing-database/db9.png)
  
  
 1. 安装完成后，Azure AD Connect 服务器自动启用暂存模式。 建议在禁用暂存模式之前，查看服务器配置和意外更改的挂起导出。 
 
 ## <a name="post-installation-tasks"></a>安装后任务
-还原使用低于 1.2.65.0 版本的 Azure AD Connect 创建的数据库备份时，暂存服务器会自动选择登录方法“不配置”。 尽管会还原密码哈希同步和密码写回首选项，但随后必须更改登录方法，以便与活动同步服务器的其他生效策略匹配。  如果不完成这些步骤，当此服务器变为活动状态时，用户可能无法登录。  
+还原使用低于 1.2.65.0 版本的 Azure AD Connect 创建的数据库备份时，暂存服务器会自动选择登录方法“不配置”。  尽管会还原密码哈希同步和密码写回首选项，但随后必须更改登录方法，以便与活动同步服务器的其他生效策略匹配。  如果不完成这些步骤，当此服务器变为活动状态时，用户可能无法登录。  
 
 使用下表来确认是否需要执行其他任何步骤。
 

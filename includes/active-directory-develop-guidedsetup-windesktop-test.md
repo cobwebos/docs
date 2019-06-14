@@ -15,19 +15,19 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66120166"
 ---
 ## <a name="test-your-code"></a>测试代码
 
-要在 Visual Studio 中运行项目，请选择 **F5**. 随即显示应用程序 MainWindow，如下所示：
+要在 Visual Studio 中运行项目，请选择 **F5**. 随即显示应用程序 MainWindow，如下所示： 
 
 ![测试应用程序](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-首次运行该应用程序并选择“调用 Microsoft Graph API”按钮时，系统会提示登录。 使用 Azure Active Directory 帐户（工作或学校帐户）或 Microsoft 帐户（live.com、outlook.com）进行测试。
+首次运行该应用程序并选择“调用 Microsoft Graph API”按钮时，系统会提示登录。  使用 Azure Active Directory 帐户（工作或学校帐户）或 Microsoft 帐户（live.com、outlook.com）进行测试。
 
 ![登录应用程序](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "66120166"
 
 ### <a name="view-application-results"></a>查看应用程序结果
 
-在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中。 有关通过调用 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获取的令牌的基本信息，应当会在“令牌信息”框中显示。 结果包含以下属性：
+在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中  。 有关通过调用 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获取的令牌的基本信息，应当会在“令牌信息”框中显示  。 结果包含以下属性：
 
 |属性  |格式  |说明 |
 |---------|---------|---------|

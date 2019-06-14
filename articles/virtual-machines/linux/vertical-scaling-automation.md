@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d9bf155f24c947f8a27a38af01aedcf0b041b94
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d0d0c3683d8855418bdafa204325525c4cd3943c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966043"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050790"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>使用 Azure 自动化纵向缩放 Azure Linux 虚拟机
 垂直缩放是增加或减少计算机的资源以响应工作负荷的过程。 在 Azure 中，这可以通过更改虚拟机的大小来实现。 这种做法可为以下方案提供方便
@@ -83,6 +83,7 @@ ms.locfileid: "65966043"
 > | Standard_ND6s |Standard_ND24s |
 > | Standard_NV6 |Standard_NV24 |
 > | Standard_NV6s_v2 |Standard_NV24s_v2 |
+> | Standard_NV12s_v3 |Standard_NV48s_v3 |
 
 ## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>将 Azure 自动化设置为访问虚拟机
 要做的第一件事就是创建一个 Azure 自动化帐户来托管用于缩放 VM 缩放集实例的 Runbook。 最近，自动化服务引入了“运行方式帐户”功能，使用该功能可以很轻松地代表用户设置服务主体来自动运行 Runbook。 可以在以下文章中阅读有关此功能的详细信息：

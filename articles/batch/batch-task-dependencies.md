@@ -16,10 +16,10 @@ ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ca6918b809a9b4ede3fffb151c7fa5183ae03b47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60550342"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>创建任务依赖关系，以运行依赖于其他任务的任务
@@ -68,7 +68,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 此代码片段创建任务 ID 为“Flowers”的依赖任务。 “Flowers”任务依赖于“Rain”和“Sun”任务。 “Flowers”任务将计划为仅在“Rain”和“Sun”任务已成功完成后才在计算节点上运行。
 
 > [!NOTE]
-> 默认情况下，当任务处于“已完成”状态并且其“退出代码”为 `0` 时，该任务视为已成功完成。 在 Batch .NET 中，这意味着 [CloudTask][net_cloudtask].[State][net_taskstate] 属性值为 `Completed`，CloudTask 的 [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] 属性值为 `0`。 有关如何更改此设置，请参阅[依赖项操作](#dependency-actions)部分。
+> 默认情况下，当任务处于“已完成”  状态并且其“退出代码”  为 `0` 时，该任务视为已成功完成。 在 Batch .NET 中，这意味着 [CloudTask][net_cloudtask].[State][net_taskstate] 属性值为 `Completed`，CloudTask 的 [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] 属性值为 `0`。 有关如何更改此设置，请参阅[依赖项操作](#dependency-actions)部分。
 > 
 > 
 
@@ -123,7 +123,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 > [!IMPORTANT]
 > 将任务 ID 范围用于依赖项时，只有 ID 表示整数值的任务将由范围选定。 因此范围 `1..10` 将选择任务 `3` 和 `7`，而不是 `5flamingoes`。 
 > 
-> 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 `4`，因此，要完成的第一个任务将满足依赖项。
+> 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 `4`，因此，要完成的第一个任务将满足依赖项  。
 > 
 > 范围内的每个任务必须通过成功完成或者已完成但出现了映射到设置为 **Satisfy** 的某个依赖关系操作的失败，来满足该依赖关系。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
 >
@@ -156,10 +156,10 @@ new CloudTask("4", "cmd.exe /c echo 4")
 依赖关系操作基于父任务的退出条件。 可为以下任一退出条件指定依赖关系操作；对于 .NET，请参阅 [ExitConditions][net_exitconditions] 类了解详细信息：
 
 - 发生预处理错误时。
-- 发生文件上传错误时。 如果任务退出，并返回通过“exitCodes”或“exitCodeRanges”指定的退出代码，然后遇到文件上传错误，则优先执行退出代码指定的操作。
-- 任务退出并返回“ExitCodes”属性定义的退出代码时。
-- 任务退出并返回处于“ExitCodeRanges”属性指定的范围内的退出代码时。
-- 如果任务退出，并返回非由“ExitCodes”或“ExitCodeRanges”定义的退出代码，或者如果任务退出，并返回预处理错误，而“PreProcessingError”属性未设置，或者如果任务失败，并返回文件上传错误，而“FileUploadError”属性未设置，则为默认情况。 
+- 发生文件上传错误时。 如果任务退出，并返回通过“exitCodes”或“exitCodeRanges”指定的退出代码，然后遇到文件上传错误，则优先执行退出代码指定的操作   。
+- 任务退出并返回“ExitCodes”属性定义的退出代码时  。
+- 任务退出并返回处于“ExitCodeRanges”属性指定的范围内的退出代码时  。
+- 如果任务退出，并返回非由“ExitCodes”或“ExitCodeRanges”定义的退出代码，或者如果任务退出，并返回预处理错误，而“PreProcessingError”属性未设置，或者如果任务失败，并返回文件上传错误，而“FileUploadError”属性未设置，则为默认情况     。 
 
 若要在 .NET 中指定依赖关系操作，请为退出条件设置 [ExitOptions][net_exitoptions].[DependencyAction][net_dependencyaction] 属性。 **DependencyAction** 属性采用以下两个值之一：
 

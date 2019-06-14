@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
 ms.openlocfilehash: b90e87310bf6dec505176b7f4d4cb9e15ac57c20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307771"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服务总线消息传送异常
@@ -90,7 +90,7 @@ ConnectionsQuotaExceeded for namespace xxx.
 #### <a name="common-causes"></a>常见原因
 此错误有两个常见的原因：死信队列和无法正常运行的消息接收器。
 
-1. [死信队列](service-bus-dead-letter-queues.md) 读取器无法完成消息，当锁定过期后，消息将返回至队列/主题。 如果读取器发生异常，以致无法调用 [BrokeredMessage.Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete)，就会出现这种情况。 消息读取 10 次后，将默认移至死信队列。 此行为由 [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 属性控制，默认值为 10。 消息堆积在死信队列中会占用空间。
+1. [死信队列](service-bus-dead-letter-queues.md)  读取器无法完成消息，当锁定过期后，消息将返回至队列/主题。 如果读取器发生异常，以致无法调用 [BrokeredMessage.Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete)，就会出现这种情况。 消息读取 10 次后，将默认移至死信队列。 此行为由 [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 属性控制，默认值为 10。 消息堆积在死信队列中会占用空间。
    
     若要解决此问题，请读取并完成死信队列中的消息，就像处理任何其他队列一样。 可以使用 [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) 方法帮助格式化死信队列路径。
 2. **接收方已停止**。 接收方已停止从队列或订阅接收消息。 识别这种情况的方法是查看 [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) 属性，它会显示消息的完整细目。 如果 [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) 属性很高或不断增加，则表示消息写入的速度超过读取的速度。

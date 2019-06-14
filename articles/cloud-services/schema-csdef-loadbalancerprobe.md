@@ -1,9 +1,8 @@
 ---
 title: Azure 云服务定义LoadBalancerProbe 架构 | Microsoft Docs
 ms.custom: ''
-origin.date: 04/14/2015
-ms.date: 11/06/2017
-ms.prod: azure
+ms.date: 04/14/2015
+services: cloud-services
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -11,14 +10,14 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
 caps.latest.revision: 14
-author: thraka
-ms.author: v-yiso
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: de365de7bf93c0a612f102b3ec2b25c79d1c3d18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60613861"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure 云服务定义 LoadBalancerProbe 架构
@@ -60,7 +59,7 @@ Azure 负载均衡器负责将传入流量路由到角色实例。 负载均衡�
 
 下表描述 `LoadBalancerProbe` 元素的属性：
 
-|属性|Type|描述|
+|特性|Type|描述|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | 必需。 负载均衡器探测的名称。 此名称必须唯一。|
 | `protocol`          | `string` | 必需。 指定终结点的协议。 可能的值为 `http` 或 `tcp`。 如果已指定 `tcp`，则需要接收到的 ACK 才可完成进行探测。 如果已指定 `http`，则需要来自指定 URI 的 200 正常响应才可成功完成探测。|

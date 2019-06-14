@@ -9,15 +9,15 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: cd7fc7487a41979f37c9a55baeb0b8e172e808c4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66133174"
 ---
-在 Azure Cloud Shell 中，使用 [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令配置部署凭据。 对 Web 应用进行 FTP 和本地 Git 部署时需要此部署用户。 用户名和密码处于帐户级别。 它们与 Azure 订阅凭据不同。
+在 Azure Cloud Shell 中，使用 [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令配置部署凭据。 对 Web 应用进行 FTP 和本地 Git 部署时需要此部署用户。 用户名和密码处于帐户级别。 它们与 Azure 订阅凭据不同  。
 
-在下例中，将 \<username> 和 \<password>（包括括号）替换为新的用户名和密码。 用户名必须在 Azure 中唯一。 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。 
+在下例中，将 \<username> 和 \<password>（包括括号）替换为新的用户名和密码   。 用户名必须在 Azure 中唯一。 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。 
 
 ```azurecli-interactive
 az webapp deployment user set --user-name <username> --password <password>

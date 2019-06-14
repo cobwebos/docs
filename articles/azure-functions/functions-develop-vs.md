@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: c6104a977a02211dcab17a5f232991d0d9cbb852
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864537"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050718"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -52,7 +52,7 @@ Azure Functions 工具包含的 Azure 开发工作负荷[Visual Studio 2017](htt
 
 ### <a name="check-your-tools-version"></a>检查工具版本
 
-1. 在“工具”菜单中，选择“扩展和更新”。 展开“已安装” > “工具”，选择“Azure Functions 和 Web 作业工具”。
+1. 在“工具”菜单中，选择“扩展和更新”   。 展开“已安装”   > “工具”  ，选择“Azure Functions 和 Web 作业工具”  。
 
     ![验证 Functions 工具版本](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -62,15 +62,15 @@ Azure Functions 工具包含的 Azure 开发工作负荷[Visual Studio 2017](htt
 
 ### <a name="update-your-tools"></a>更新工具
 
-1. 在“扩展和更新”对话框中，展开“更新” > “Visual Studio Marketplace”，依次选择“Azure Functions 和 Web 作业工具”和“更新”。
+1. 在“扩展和更新”  对话框中，展开“更新”   > “Visual Studio Marketplace”  ，依次选择“Azure Functions 和 Web 作业工具”  和“更新”  。
 
     ![更新 Functions 工具版本](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
 2. 下载工具更新后，请关闭 Visual Studio 以触发使用 VSIX 安装程序的工具更新。
 
-3. 在安装程序中，选择“确定”以启动，然后单击“修改”以更新工具。 
+3. 在安装程序中，选择“确定”  以启动，然后单击“修改”  以更新工具。 
 
-4. 更新完成后，请选择“关闭”并重启 Visual Studio。
+4. 更新完成后，请选择“关闭”  并重启 Visual Studio。
 
 ## <a name="create-an-azure-functions-project"></a>创建 Azure Functions 项目
 
@@ -83,19 +83,19 @@ Azure Functions 工具包含的 Azure 开发工作负荷[Visual Studio 2017](htt
 * **local.settings.json**：维护本地运行函数时使用的设置。 Azure 不使用这些设置，它们由 [Azure Functions 核心工具](functions-run-local.md)使用。 使用此文件指定的环境变量所需的函数应用设置。 针对项目中的函数绑定所需的每个连接，将新项添加到 **Values** 数组。 有关详细信息，请参阅“Azure Functions 核心工具”一文中的[本地设置文件](functions-run-local.md#local-settings-file)。
 
     >[!IMPORTANT]
-    >由于 local.settings.json 文件可能包含机密，因此必须将其从项目源代码管理中排除。 此文件的“复制到输出目录”设置应始终为“如果较新则复制”。 
+    >由于 local.settings.json 文件可能包含机密，因此必须将其从项目源代码管理中排除。 此文件的“复制到输出目录”设置应始终为“如果较新则复制”   。 
 
 有关详细信息，请参阅 [Functions 类库项目](functions-dotnet-class-library.md#functions-class-library-project)。
 
 ## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
-Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为 `UseDevelopmentStorage=true`。 在部署之前，必须将此设置更改为实际的存储连接。
+Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)  。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为 `UseDevelopmentStorage=true`  。 此设置更改为在部署之前的实际存储连接。
 
 若要设置存储帐户连接字符串，请执行以下操作：
 
-1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” > “你的存储帐户”，然后选择“属性面板”并复制“主连接字符串”值。
+1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” > “你的存储帐户”，然后选择“属性面板”并复制“主连接字符串”值。     
 
-2. 在项目内，打开 local.settings.json 项目文件，并将“AzureWebJobsStorage”键的值设置为复制的连接字符串。
+2. 在项目内，打开 local.settings.json 项目文件，并将“AzureWebJobsStorage”键的值设置为复制的连接字符串。 
 
 3. 重复上述步骤，将唯一键添加到函数所需的其他任何连接的 **Values** 数组。
 
@@ -103,9 +103,9 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 在预先编译的函数中，可以通过在代码中应用属性来定义函数使用的绑定。 使用 Azure Functions 工具通过提供的模板创建函数时，系统会自动应用这些属性。 
 
-1. 在“解决方案资源管理器”中，右键单击项目节点，然后选择“添加” > “新建项”。 选择“Azure 函数”，键入类的**名称**，然后单击“添加”。
+1. 在“解决方案资源管理器”中，右键单击项目节点，然后选择“添加” > “新建项”。    选择“Azure 函数”，键入类的**名称**，然后单击“添加”。  
 
-2. 选择你的触发器，设置绑定属性，然后单击“创建”。 以下示例显示创建队列存储触发的函数时的设置。 
+2. 选择你的触发器，设置绑定属性，然后单击“创建”。  以下示例显示创建队列存储触发的函数时的设置。 
 
     ![创建队列触发的函数](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
@@ -133,7 +133,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
         }
     }
     ```
-    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。 有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue.md#trigger---c-example)。
+    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数  。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。  有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue.md#trigger---c-example)。
     
 可以使用上述过程向函数应用项目添加更多的函数。 项目中的每个函数可以有不同的触发器，但每个函数的触发器必须刚好一个。 有关详细信息，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
 
@@ -185,19 +185,23 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>Function App 设置
+### <a name="deployment-technology"></a>部署技术
+
+在从 Visual Studio 发布时，两种技术之一用于执行部署：[Web 部署](functions-deployment-technologies.md#web-deploy-msdeploy)并[Zip 运行-从-随包一起部署已启用 （推荐）](functions-deployment-technologies.md#zip-deploy)。
+
+## <a name="function-app-settings"></a>函数应用设置
 
 还必须将在 local.settings.json 中添加的任何设置添加到 Azure 函数应用中。 发布项目时，不会自动上传这些设置。
 
-将所需设置上传到 Azure 中的函数应用的最简单方法是使用“管理应用程序设置...”链接（在成功发布项目之后显示）。
+将所需设置上传到 Azure 中的函数应用的最简单方法是使用“管理应用程序设置...”  链接（在成功发布项目之后显示）。
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings.png)
 
-这会显示用于函数应用的“应用程序设置”对话框，可以在其中添加新应用程序设置或修改现有设置。
+这会显示用于函数应用的“应用程序设置”  对话框，可以在其中添加新应用程序设置或修改现有设置。
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
-**本地**表示 local.settings.json 文件中的设置值，**远程**是 Azure 的函数应用中的当前设置。  选择“添加设置”以创建新的应用设置。 使用“从本地插入值”链接将设置值复制到“远程”字段。 你选择“确定”后，挂起的更改将写入本地设置文件和函数应用。
+**本地**表示 local.settings.json 文件中的设置值，**远程**是 Azure 的函数应用中的当前设置。  选择“添加设置”  以创建新的应用设置。 使用“从本地插入值”  链接将设置值复制到“远程”  字段。 你选择“确定”  后，挂起的更改将写入本地设置文件和函数应用。
 
 还可以采用以下这些其他方法之一来管理应用程序设置：
 

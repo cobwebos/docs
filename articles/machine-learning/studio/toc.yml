@@ -7,8 +7,7 @@
       displayName: overview
       href: what-is-ml-studio.md
     - name: 比较我们的 ML 产品
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-      maintainContext: true
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
 - name: 教程
   items:
     - name: 创建第一个试验

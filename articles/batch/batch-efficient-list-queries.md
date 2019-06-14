@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d9e30bb8b31939b14d347369bbe88e23fcec49c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60778248"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050530"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>创建可高效列出 Batch 资源的查询
 
@@ -89,7 +89,7 @@ expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 
 * 此示例性 expand 字符串指定列表中的每个项都应返回统计信息：`stats`。
 
 > [!NOTE]
-> 构造这三种查询字符串类型（filter、select 和 expand）中的任意一种类型时，必须确保属性名称和大小写与其 REST API 元素的对应项相匹配。 例如，在使用 .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask) 类时，必须指定 **state** 而非 **State**，即使 .NET 属性为 [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask.state)。 请参阅下表中 .NET 和 REST API 之间的属性映射。
+> 构造这三种查询字符串类型（filter、select 和 expand）中的任意一种类型时，必须确保属性名称和大小写与其 REST API 元素的对应项相匹配。 例如，在使用 .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 类时，必须指定 **state** 而非 **State**，即使 .NET 属性为 [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State)。 请参阅下表中 .NET 和 REST API 之间的属性映射。
 > 
 > 
 
@@ -110,7 +110,7 @@ expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 
 * [ODATADetailLevel][odata] [SelectClause][odata_select]：指定随每个项返回的属性值。
 * [ODATADetailLevel][odata].[ExpandClause][odata_expand]：通过单个 API 调用检索所有项的数据，不必针对每个项分别进行调用。
 
-以下代码段使用 Batch .NET API 对 Batch 服务进行有效的查询，查询其中是否存在特定池集的统计信息。 在此方案中，Batch 用户既有测试池又有生产池。 测试池 ID 具有“test”前缀，生产池 ID 具有“prod”前缀。 在代码片段中，*myBatchClient* 是正确初始化的 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient#microsoft_azure_batch_batchclient) 类实例。
+以下代码段使用 Batch .NET API 对 Batch 服务进行有效的查询，查询其中是否存在特定池集的统计信息。 在此方案中，Batch 用户既有测试池又有生产池。 测试池 ID 具有“test”前缀，生产池 ID 具有“prod”前缀。 在代码片段中，*myBatchClient* 是正确初始化的 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) 类实例。
 
 ```csharp
 // First we need an ODATADetailLevel instance on which to set the filter, select,
@@ -139,7 +139,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> 使用 Select 和 Expand 子句配置的 [ODATADetailLevel][odata] 实例也可以传递给相应的 Get 方法（例如 [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__)），以便限制返回的数据量。
+> 使用 Select 和 Expand 子句配置的 [ODATADetailLevel][odata] 实例也可以传递给相应的 Get 方法（例如 [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__)），以便限制返回的数据量。
 > 
 > 
 
@@ -148,7 +148,7 @@ filter、select 和 expand 字符串中的属性名称*必须*反映其 REST API
 
 ### <a name="mappings-for-filter-strings"></a>filter 字符串的映射
 * **.NET 列表方法**：此列中的每个 .NET API 方法都接受 [ODATADetailLevel][odata] 对象作为参数。
-* **REST 列表请求**：此列中的每个 REST API 页面都包含一个表，该表指定了 filter 字符串中允许的属性和操作。 在构造 [ODATADetailLevel.FilterClause][odata_filter] 字符串时，将使用这些属性名称和操作。
+* **REST 列表请求**：此列中的每个 REST API 页面都包含一个表，该表指定了 filter 字符串中允许的属性和操作  。 在构造 [ODATADetailLevel.FilterClause][odata_filter] 字符串时，将使用这些属性名称和操作。
 
 | .NET 列表方法 | REST 列表请求 |
 | --- | --- |

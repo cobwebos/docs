@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 4/03/2019
 ms.author: aahi
 ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60579858"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>向必应视觉搜索 API 发送搜索查询
@@ -73,7 +73,7 @@ ms.locfileid: "60579858"
 
 以下是请求应指定的查询参数。 至少应包括`mkt`查询参数：
 
-| 名称 | 值 | Type | 需要 |
+| 名称 | 值 | Type | 必选 |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | 表示结果是从哪里来的双字符国家/地区代码。<br /><br /> 如果设置此参数，则还必须指定 [Accept-language](#acceptlanguage) 标头。 必应使用从语言列表中找到的第一个受支持语言，并将语言与指定的国家/地区代码相结合以确保从哪个市场返回结果。 如果语言列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场。 或者，可以将聚合或默认市场用于结果，而不是指定一个。<br /><br /> 仅当指定多个语言时，才可以使用此查询参数和 `Accept-Language` 查询参数；否则，应使用 `mkt` 和 `setLang` 查询参数。<br /><br /> 此参数和 [mkt](#mkt) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 否       |
 | <a name="mkt" />mkt   | 产生结果的市场。 <br /><br /> **注意：** 如果已知，应始终指定市场。 指定市场有助于必应路由请求，并返回适当的最佳响应。<br /><br /> 此参数和 [cc](#cc) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 是      |
@@ -84,7 +84,7 @@ ms.locfileid: "60579858"
 
 以下是请求应指定的标头。 `Content-Type`并`Ocp-Apim-Subscription-Key`标头是唯一的必需标头，但还应包括`User-Agent`， `X-MSEdge-ClientID`， `X-MSEdge-ClientIP`，并`X-Search-Location`。
 
-| 标头 | 描述 |
+| Header | 描述 |
 | --- | --- |
 | <a name="acceptlanguage" />Accept-Language  | 可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 [cc](#cc) 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定市场的必应使用，请参阅`BingAPIs-Market`标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。  |
 | <a name="contenttype" />Content-Type  |     |

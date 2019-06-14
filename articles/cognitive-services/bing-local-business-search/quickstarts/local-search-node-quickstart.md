@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: d0760f89eb98955f7ebb503ce59f904192635f7a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 827c94472d3778da338c662691363919f96d4813
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796883"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051545"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>快速入门：使用 Node.js 将查询发送到必应当地企业搜索 API
 
@@ -22,7 +22,7 @@ ms.locfileid: "65796883"
 
 此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 最新版本的 [Node.js](https://nodejs.org/en/download/)。
 

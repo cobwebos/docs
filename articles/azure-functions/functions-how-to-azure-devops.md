@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: 27b5dc9ccee8647d4fbb617063865df18b80bc5d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ce57aae1119261c0545b59a037226fdc12ec115f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990277"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050659"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>使用 Azure DevOps 实现持续交付
 
@@ -36,9 +36,7 @@ ms.locfileid: "65990277"
 下面的示例可用于创建你的 YAML 文件来构建.NET 应用程序。
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: 'VS2017-Win2016'
 steps:
 - script: |
@@ -69,9 +67,7 @@ steps:
 下面的示例可用于创建 YAML 文件以生成 JavaScript 应用程序：
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04 # Use 'VS2017-Win2016' if you have Windows native +Node modules
 steps:
 - bash: |
@@ -99,9 +95,7 @@ steps:
 您可以使用下面的示例创建 YAML 文件构建 Python 应用，Linux Azure Functions 仅支持 Python:
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04
 steps:
 - task: UsePythonVersion@0
@@ -118,6 +112,25 @@ steps:
     source worker_venv/bin/activate
     pip3.6 install setuptools
     pip3.6 install -r requirements.txt
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    name: 'drop'
+```
+#### <a name="powershell"></a>PowerShell
+
+可以使用下面的示例创建你的 YAML 文件，将 PowerShell 应用程序打包，Windows Azure Functions 仅支持 PowerShell:
+
+```yaml
+pool:
+      vmImage: 'VS2017-Win2016'
+steps:
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
@@ -175,6 +188,10 @@ Azure DevOps 中的模板是预定义的生成或部署应用程序的任务组�
 
 ![Azure Functions 生成模板](media/functions-how-to-azure-devops/build-templates.png)
 
+在某些情况下，生成项目具有特定的文件夹结构，并且可能需要检查**预置根文件夹名称，在存档路径**选项。
+
+![在前面添加根文件夹](media/functions-how-to-azure-devops/prepend-root-folder.png)
+
 #### <a name="javascript-apps"></a>JavaScript 应用程序
 
 如果 JavaScript 应用程序具有 Windows 本机模块依赖关系，您需要更新：
@@ -182,10 +199,6 @@ Azure DevOps 中的模板是预定义的生成或部署应用程序的任务组�
 - 代理池版本到**托管 VS2017**
 
   ![更改生成代理 OS](media/functions-how-to-azure-devops/change-agent.png)
-
-- 中的脚本**构建扩展**到模板中的步骤 `IF EXIST *.csproj dotnet build extensions.csproj --output ./bin`
-
-  ![更改脚本](media/functions-how-to-azure-devops/change-script.png)
 
 ### <a name="deploy-your-app"></a>将应用部署
 

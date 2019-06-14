@@ -5,15 +5,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-origin.date: 12/26/2018
-ms.date: 01/21/2019
-author: rockboyfor
-ms.author: v-yeche
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
 ms.openlocfilehash: de037316efa50dd25ea04c370fa0e5878fb52ba1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60448497"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 API for MongoDB 编制索引
@@ -80,14 +79,14 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {
 ## <a name="ttl-indexes"></a>TTL 索引
 
 若要在特定集合中启用文档过期，需创建[“TTL 索引”（生存时间索引）](../cosmos-db/time-to-live.md)。 TTL 索引是 _ts 字段上的索引，其值为“expireAfterSeconds”。
-
+ 
 示例：
 ```JavaScript
 globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 ```
 
 前一命令会导致 ```db.coll``` 集合中未在过去 10 秒内修改的任何文档被删除。 
-
+ 
 > [!NOTE]
 > **_ts** 是特定于 Cosmos DB 的字段，不可从 MongoDB 客户端访问。 它是一个保留（系统）属性，其中包含文档上一次修改的时间戳。
 >
@@ -99,5 +98,3 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 ## <a name="next-steps"></a>后续步骤
 * [Azure Cosmos DB 中的索引](../cosmos-db/index-policy.md)
 * [利用生存时间使 Azure Cosmos DB 中的数据自动过期](../cosmos-db/time-to-live.md)
-
-<!-- Update_Description: update meta properties  -->

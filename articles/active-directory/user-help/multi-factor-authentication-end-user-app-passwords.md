@@ -15,10 +15,10 @@ ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6790fa1cbb10999a751b31bcb27db2edcb67b4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334900"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
@@ -53,19 +53,19 @@ ms.locfileid: "60334900"
 
 1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
 
-2. 选择右上角的姓名，然后选择“个人资料”。
+2. 选择右上角的姓名，然后选择“个人资料”  。
 
-3. 选择“其他安全性验证”。
+3. 选择“其他安全性验证”  。
 
    ![选择“其他安全性验证”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
 
-4. 选择“应用密码”。
+4. 选择“应用密码”  。
 
    ![选择“应用密码”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
 
 5. 单击**创建**。
 
-6. 键入应用密码的名称，然后选择“下一步”。
+6. 键入应用密码的名称，然后选择“下一步”  。
 
 7. 将应用密码复制到剪贴板，并将它粘贴到你的应用。
    
@@ -73,13 +73,13 @@ ms.locfileid: "60334900"
 
 ### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>使用 MyApps 门户删除应用密码
 
-1. 转到个人资料，并选择“其他安全性验证”。
+1. 转到个人资料，并选择“其他安全性验证”。 
 
-2. 选择“应用密码”，然后选择要删除的应用密码旁边的“删除”。
+2. 选择“应用密码”，然后选择要删除的应用密码旁边的“删除”。  
 
    ![删除应用密码](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
 
-3. 选择“是”确认要删除该密码，然后选择“关闭”。
+3. 选择“是”确认要删除该密码，然后选择“关闭”。  
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>使用 Office 365 门户创建和删除应用密码
 
@@ -93,11 +93,11 @@ ms.locfileid: "60334900"
 
     ![Office 门户，其中显示了展开的“其他安全性验证”区域](media/security-info/security-info-o365password.png)
 
-3. 选择带有“创建和管理应用程序密码”字样的文本，打开“应用密码”页。
+3. 选择带有“创建和管理应用程序密码”字样的文本，打开“应用密码”页。  
 
-4. 选择“创建”，键入需要应用密码的应用的友好名称，然后选择“下一步”。
+4. 选择“创建”，键入需要应用密码的应用的友好名称，然后选择“下一步”。  
 
-5. 依次选择“将密码复制到剪贴板”、“关闭”。
+5. 依次选择“将密码复制到剪贴板”、“关闭”。  
 
 6. 使用复制的应用密码登录到非浏览器应用。 只需输入此密码一次，系统会记住它。
 
@@ -107,9 +107,9 @@ ms.locfileid: "60334900"
 
 2. 转到[ https://portal.office.com ](https://portal.office.com)，选择**设置**从右上角的图标**Office 365 门户**页上，并选择**额外的安全验证**。
 
-3. 选择带有“创建和管理应用程序密码”字样的文本，打开“应用密码”页。
+3. 选择带有“创建和管理应用程序密码”字样的文本，打开“应用密码”页。  
 
-4. 选择要删除的应用密码旁边的“删除”，在确认框中选择“是”，然后选择“关闭”。
+4. 选择要删除的应用密码旁边的“删除”，在确认框中选择“是”，然后选择“关闭”。   
 
     应用密码现已成功删除。
 

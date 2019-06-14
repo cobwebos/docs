@@ -9,19 +9,19 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60627263"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 设备预配服务 SDK 管理设备注册
-“设备注册”将创建单台设备或一组设备在某一时刻向设备预配服务进行注册的记录。 注册记录包含注册过程中设备所需的初始配置及所需的 IoT 中心。 这篇文章演示如何使用 Azure IoT 预配服务 SDK 以编程方式管理预配服务的设备注册。  SDK 可从 GitHub 上与 Azure IoT SDK 相同的存储库中获取。
+“设备注册”将创建单台设备或一组设备在某一时刻向设备预配服务进行注册的记录  。 注册记录包含注册过程中设备所需的初始配置及所需的 IoT 中心。 这篇文章演示如何使用 Azure IoT 预配服务 SDK 以编程方式管理预配服务的设备注册。  SDK 可从 GitHub 上与 Azure IoT SDK 相同的存储库中获取。
 
 ## <a name="prerequisites"></a>必备组件
 * 从设备预配服务实例获取连接字符串。
 * 为所使用的[证明机制](concepts-security.md#attestation-mechanism)获取设备安全项目：
-    * [**受信任的平台模块 (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module)：
+    * [**受信任的平台模块 (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module)：
         * 单个注册：来自物理设备或 TPM 模拟器的注册 ID 和 TPM 认可密钥。
         * 注册组不适用于 TPM 证明。
     * [**X.509**](/azure/iot-dps/concepts-security)：
@@ -35,7 +35,7 @@ ms.locfileid: "60627263"
 ## <a name="create-a-device-enrollment"></a>创建设备注册
 可通过两种方法向预配服务注册设备：
 
-* 注册组是共享 X.509 证书的常见证明机制的一组设备的条目，由[根证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)或[中间证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)签名。 建议对共享所需初始配置的大量设备，或者全部转到同一租户的设备使用注册组。 请注意，只能注册使用 X.509 证明机制作为“注册组”的设备。 
+* 注册组是共享 X.509 证书的常见证明机制的一组设备的条目，由[根证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)或[中间证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)签名  。 建议对共享所需初始配置的大量设备，或者全部转到同一租户的设备使用注册组。 请注意，只能注册使用 X.509 证明机制作为“注册组”的设备  。 
 
     可按以下工作流使用 SDK 创建注册组：
 
@@ -43,7 +43,7 @@ ms.locfileid: "60627263"
     1. 使用 ```attestation``` 创建的唯一 ```enrollmentGroupId``` 创建一个新的 ```EnrollmentGroup``` 变量。  （可选）可设置 ```Device ID```、```IoTHubHostName```、```ProvisioningStatus``` 等参数。
     2. 使用 ```EnrollmentGroup``` 在后端应用程序中调用服务 SDK API ```createOrUpdateEnrollmentGroup``` 以创建注册组。
 
-* 单独注册是用于单个设备注册的条目。 个人注册可使用 X.509 证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 对于需要唯一初始配置的设备或仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备，建议为其使用个人注册。 单独注册可能会指定所需 IoT 中心设备 ID。
+* 单独注册是用于单个设备注册的条目  。 个人注册可使用 X.509 证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 对于需要唯一初始配置的设备或仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备，建议为其使用个人注册。 单独注册可能会指定所需 IoT 中心设备 ID。
 
     可按以下工作流使用 SDK 创建单个注册：
     
@@ -73,8 +73,8 @@ ms.locfileid: "60627263"
 
 ## <a name="remove-an-enrollment-entry"></a>删除注册条目
 
-* 可通过使用 ```registrationId``` 调用服务 SDK API ```deleteIndividualEnrollment``` 来删除单个注册。
-* 可通过使用 ```enrollmentGroupId``` 调用服务 SDK API ```deleteEnrollmentGroup``` 来删除组注册。
+* 可通过使用 ```registrationId``` 调用服务 SDK API ```deleteIndividualEnrollment``` 来删除单个注册  。
+* 可通过使用 ```enrollmentGroupId``` 调用服务 SDK API ```deleteEnrollmentGroup``` 来删除组注册  。
 
 [前面提到的](#prerequisites)示例中演示了此工作流。
 

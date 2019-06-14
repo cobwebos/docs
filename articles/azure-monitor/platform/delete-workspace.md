@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
 ms.openlocfilehash: a6542838acba3143123dc90d96746179a2b4469b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236131"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>使用 Azure 门户删除 Azure Log Analytics 工作区
@@ -39,7 +39,7 @@ ms.locfileid: "60236131"
 如果是管理员并且存在多个关联到工作区的用户，则会断开这些用户和该工作区之间的关联。 如果这些用户与其他工作区关联，他们可以继续通过其他工作区使用 Log Analytics。 但是，如果他们未与其他工作区关联，则需要创建工作区才能使用 Log Analytics。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
-3. 在 Log Analytics 订阅窗格中，选择一个工作区，然后从中间窗格的顶端单击“删除”。<br><br> ![从工作区属性窗格中删除选项](media/delete-workspace/log-analytics-delete-workspace.png)<br>  
-4. 显示询问是否确实要删除工作区的确认消息窗口时，单击“是”。<br><br> ![确认删除工作区](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+2. 在 Azure 门户中，单击左下角的“更多服务”  。 在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”  。
+3. 在 Log Analytics 订阅窗格中，选择一个工作区，然后从中间窗格的顶端单击“删除”。 <br><br> ![从工作区属性窗格中删除选项](media/delete-workspace/log-analytics-delete-workspace.png)<br>  
+4. 显示询问是否确实要删除工作区的确认消息窗口时，单击“是”。 <br><br> ![确认删除工作区](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 

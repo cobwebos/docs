@@ -9,10 +9,10 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.openlocfilehash: 6af620f54acb3bf782f05b81f12aca2103cddf47
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123218"
 ---
 >[!IMPORTANT]
@@ -21,12 +21,12 @@ ms.locfileid: "66123218"
 
 如果不打算使用已创建的资源，请删除它们，以免产生任何费用：
 
-1. 在 Azure 门户中，选择最左侧的“资源组”。
+1. 在 Azure 门户中，选择最左侧的“资源组”  。
  
    ![在 Azure 门户中删除](./media/aml-delete-resource-group/delete-resources.png)
 
 1. 从列表中选择已创建的资源组。
 
-1. 选择“删除资源组”。
+1. 选择“删除资源组”  。
 
-1. 输入资源组名称。 然后选择“删除”。
+1. 输入资源组名称。 然后选择“删除”  。

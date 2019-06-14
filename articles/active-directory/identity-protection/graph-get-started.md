@@ -19,10 +19,10 @@ ms.reviewer: sahandle
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3357cfd5e845346534f263c768b5cf6b6a38ea4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60296083"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection 和 Microsoft Graph 入门
@@ -53,12 +53,12 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 1. 以管理员身份[登录](https://portal.azure.com)到 Azure 门户。 
 
-2. 在左侧导航窗格中，单击“Active Directory”。 
+2. 在左侧导航窗格中，单击“Active Directory”  。 
    
     ![创建应用程序](./media/graph-get-started/41.png)
 
 
-3. 在“管理”部分，单击“属性”。
+3. 在“管理”部分，单击“属性”。  
 
     ![创建应用程序](./media/graph-get-started/42.png)
 
@@ -67,63 +67,63 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 ## <a name="create-a-new-app-registration"></a>创建新的应用注册
 
-1. 在“Active Directory”页的“管理”部分，单击“应用注册”。
+1. 在“Active Directory”页的“管理”部分，单击“应用注册”    。
 
     ![创建应用程序](./media/graph-get-started/42.png)
 
 
-2. 在顶部菜单中，单击“新建应用程序注册”。
+2. 在顶部菜单中，单击“新建应用程序注册”  。
    
     ![创建应用程序](./media/graph-get-started/43.png)
 
-3. 在“创建”页中，执行以下步骤：
+3. 在“创建”页中，执行以下步骤： 
    
     ![创建应用程序](./media/graph-get-started/44.png)
 
-    a. 在“名称”文本框中，键入应用程序的名称（例如：AADIP 风险事件 API 应用程序）。
+    a. 在“名称”  文本框中，键入应用程序的名称（例如：AADIP 风险事件 API 应用程序）。
    
-    b. 在“类型”中，选择“Web 应用程序和/或 Web API”。
+    b. 在“类型”中，选择“Web 应用程序和/或 Web API”。  
    
-    c. 在“登录 URL”文本框中，键入 `http://localhost`。
+    c. 在“登录 URL”  文本框中，键入 `http://localhost`。
 
     d. 单击**创建**。
 
-4. 若要打开“设置”页，在应用程序列表中，单击最新创建的应用注册。 
+4. 若要打开“设置”页，在应用程序列表中，单击最新创建的应用注册  。 
 
-5. 复制“应用程序 ID”。
+5. 复制“应用程序 ID”  。
 
 
 ## <a name="grant-your-application-permission-to-use-the-api"></a>授予应用程序使用 API 的权限
 
-1. 在“设置”页中，单击“所需权限”。
+1. 在“设置”页中，单击“所需权限”。  
    
     ![创建应用程序](./media/graph-get-started/15.png)
 
-2. 在“所需权限”页顶部的工具栏中，单击“添加”。
+2. 在“所需权限”页顶部的工具栏中，单击“添加”   。
    
     ![创建应用程序](./media/graph-get-started/16.png)
    
-3. 在“添加 API 访问权限”页中，单击“选择 API”。
+3. 在“添加 API 访问权限”页中，单击“选择 API”   。
    
     ![创建应用程序](./media/graph-get-started/17.png)
 
-4. 在“选择 API”页中，选择“Microsoft Graph”，然后单击“选择”。
+4. 在“选择 API”页中，选择“Microsoft Graph”，然后单击“选择”    。
    
     ![创建应用程序](./media/graph-get-started/18.png)
 
-5. 在“添加 API 访问权限”页中，单击“选择权限”。
+5. 在“添加 API 访问权限”页中，单击“选择权限”   。
    
     ![创建应用程序](./media/graph-get-started/19.png)
 
-6. 在“启用访问权限”页中，单击“读取所有标识风险信息”，再单击“选择”。
+6. 在“启用访问权限”页中，单击“读取所有标识风险信息”，再单击“选择”    。
    
     ![创建应用程序](./media/graph-get-started/20.png)
 
-7. 在“添加 API 访问权限”页中，单击“完成”。
+7. 在“添加 API 访问权限”页中，单击“完成”   。
    
     ![创建应用程序](./media/graph-get-started/21.png)
 
-8. 在“所需的权限”页上，单击“授予权限”，再单击“是”。
+8. 在“所需的权限”页上，单击“授予权限”，再单击“是”。   
    
     ![创建应用程序](./media/graph-get-started/22.png)
 
@@ -131,17 +131,17 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 ## <a name="get-an-access-key"></a>获取访问密钥
 
-1. 在“设置”页上，单击“密钥”。
+1. 在“设置”页上，单击“密钥”   。
    
     ![创建应用程序](./media/graph-get-started/23.png)
 
-2. 在“密钥”页中执行以下步骤：
+2. 在“密钥”页中执行以下步骤： 
    
     ![创建应用程序](./media/graph-get-started/24.png)
 
-    a. 在“密钥说明”文本框中，键入说明（例如，AADIP 风险事件）。
+    a. 在“密钥说明”文本框中，键入说明（例如，AADIP 风险事件）   。
     
-    b. 对于“持续时间”，请选择“1 年内”。
+    b. 对于“持续时间”，请选择“1 年内”   。
 
     c. 单击“ **保存**”。
    
