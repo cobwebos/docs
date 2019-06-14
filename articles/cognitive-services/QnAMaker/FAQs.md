@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 06/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 896680b38d6861b09b133680487aa90ad11dec77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60233867"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064350"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker 常见问题解答
 
@@ -32,7 +32,7 @@ QnA Maker 提供**帮助**QnA Maker 门户，以帮助您的智能机器人应�
 
 ### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>我不小心删除了一部分 QnA Maker，我该怎么办？ 
 
-所有删除操作都是永久性的，包括问题和答案对、文件、URL、自定义问题和答案、知识库或 Azure 资源。 在删除知识库的任何部分之前，请务必从“设置”页导出知识库。 
+所有删除操作都是永久性的，包括问题和答案对、文件、URL、自定义问题和答案、知识库或 Azure 资源。 在删除知识库的任何部分之前，请务必从“设置”  页导出知识库。 
 
 ### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>为什么我的 URL/文件没有提取问答对？
 
@@ -52,7 +52,7 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 ### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>是否可以与不在同一个 AAD 租户中的参与者共享知识库，以修改知识库？ 
 
-共享基于 Azure 基于角色的访问控制 (RBAC)。 如果可与其他用户共享 Azure 中的任何资源，则也可以共享 QnA Maker。
+共享基于 Azure 基于角色的访问控制 (RBAC)。 如果可与其他用户共享 Azure 中的任何资源，则也可以共享 QnA Maker。 
 
 ### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>如果某个应用服务计划具有 5 个 QnAMaker 知识库， 是否可以向 5 个不同的用户分配读/写权限，使得其中每个用户只能访问 1 个 QnAMaker 知识库？
 
@@ -64,7 +64,7 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 - 在 Azure 门户中转到自己的应用服务资源
 
 ![qnamaker 应用服务](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
-- 单击“设置”选项
+- 单击“设置”  选项
 
 ![qnamaker 应用服务设置](./media/qnamaker-faq/qnamaker-appservice-settings.png)
 - 更改 **DefaultAnswer** 设置的值
@@ -78,7 +78,7 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>我对知识库所做的更新没有反映在发布上， 为什么？
 
-每个编辑操作（无论在表更新、测试还是在设置中）需要先保存才能发布。 每次编辑操作后，请确保单击“保存并训练”按钮 **。** 
+每个编辑操作（无论在表更新、测试还是在设置中）需要先保存才能发布。 每次编辑操作后，请确保单击“保存并训练”按钮 **。**  
 
 ### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>知识库是否支持丰富的数据或多媒体？
 
@@ -96,7 +96,7 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 ### <a name="when-should-i-restart-my-app-service"></a>我何时应该重启应用服务？ 
 
-当警告图标位于“用户设置”[页](https://www.qnamaker.ai/UserSettings)上“终结点密钥”表中知识库版本值旁边时，请刷新应用服务。
+当警告图标位于“用户设置”  [页](https://www.qnamaker.ai/UserSettings)上“终结点密钥”  表中知识库版本值旁边时，请刷新应用服务。
 
 ### <a name="when-should-i-refresh-my-endpoint-keys"></a>我应该何时刷新终结点密钥？
 
@@ -114,7 +114,7 @@ Azure 搜索资源的名称是 QnA Maker 资源名称加上在末尾追加的一
 
 ### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>为了使用 QnA Maker，需要使用 Bot Framework 吗？
 
-否，不需要将 Bot Framework 与 QnA Maker 一起使用。 但是，QnA Maker 作为 Azure 机器人服务中的几个模板之一提供。 机器人服务通过 Microsoft Bot Framework 实现快速智能机器人开发，并且它在无服务器的环境中运行。
+否，不需要使用[Bot Framework](https://github.com/Microsoft/botbuilder-dotnet)使用 QnA Maker。 但是，QnA Maker 提供作为中的多个模板之一 [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)。 机器人服务通过 Microsoft Bot Framework 实现快速智能机器人开发，并且它在无服务器的环境中运行。
 
 ### <a name="how-can-i-create-a-bot-with-qna-maker"></a>如何使用 QnA Maker 创建机器人？
 

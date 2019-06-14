@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 17901ad40a48e9ee8d1a8b872b04ad52b75b3a52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515207"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>开始使用 JavaScript 中的语音识别 API
@@ -28,14 +28,14 @@ ms.locfileid: "60515207"
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>订阅语音识别 API，并获得免费试用的订阅密钥
 
-语音 API 是认知服务的一部分。 可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
+语音 API 是认知服务的一部分。 可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥  。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
 
 > [!IMPORTANT]
 > 获取订阅密钥。 必须拥有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)才能使用语音客户端库。
 
 ## <a name="get-started"></a>开始使用
 
-在本节中，我们将逐步介绍加载示例 HTML 页的必要步骤。 示例位于 [GitHub 存储库](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)。 可以从存储库直接打开示例，或从存储库的本地副本打开示例。
+在本节中，我们将逐步介绍加载示例 HTML 页的必要步骤。 示例位于 [GitHub 存储库](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)。 可以从存储库直接打开示例，或从存储库的本地副本打开示例   。
 
 > [!NOTE]
 > 某些浏览器阻止麦克风访问不安全的源。 因此，建议以 https 承载“示例”/“应用”，使其在所有支持的浏览器上正常工作。
@@ -66,7 +66,7 @@ cd SpeechToText-WebSockets-Javascript && npm run bundle
 
 ## <a name="remarks"></a>备注
 
-- 语音识别 API 支持三种[识别模式](../concepts.md#recognition-modes)。 可以通过更新 Sample.html 文件中提供的 Setup() 函数切换模式。 该示例默认将模式设置为 `Interactive`。 若要更改模式，请将参数 `SR.RecognitionMode.Interactive` 更新为另一种模式。 例如，将参数更改为 `SR.RecognitionMode.Conversation`。
+- 语音识别 API 支持三种[识别模式](../concepts.md#recognition-modes)。 可以通过更新 Sample.html 文件中提供的 Setup() 函数切换模式  。 该示例默认将模式设置为 `Interactive`。 若要更改模式，请将参数 `SR.RecognitionMode.Interactive` 更新为另一种模式。 例如，将参数更改为 `SR.RecognitionMode.Conversation`。
 - 有关受支持语言的完整列表，请参阅[支持的语言](../API-Reference-REST/supportedlanguages.md)。
 
 ## <a name="related-topics"></a>相关主题

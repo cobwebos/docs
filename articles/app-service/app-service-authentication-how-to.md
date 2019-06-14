@@ -15,10 +15,10 @@ ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 97764db40807214e756f119ca95fd640164f0cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851416"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
@@ -39,9 +39,9 @@ ms.locfileid: "60851416"
 
 门户配置不会向用户全面提供多个登录提供程序（例如 Facebook 和 Twitter）。 但是，将此功能添加到应用并不困难。 步骤概括如下：
 
-首先，在 Azure 门户中的“身份验证/授权”页上，配置想要启用的每个标识提供者。
+首先，在 Azure 门户中的“身份验证/授权”页上，配置想要启用的每个标识提供者。 
 
-在“请求未经身份验证时需执行的操作”中，选择“允许匿名请求(无操作)”。
+在“请求未经身份验证时需执行的操作”中，选择“允许匿名请求(无操作)”。  
 
 在登录页、导航栏或应用的其他任何位置中，将一个登录链接添加到已启用的每个提供程序 (`/.auth/login/<provider>`)。 例如：
 
@@ -185,16 +185,16 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 - **Twitter**：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/basics/authentication/FAQ)）。
 - **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
 - **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，执行以下步骤：
-    1. 在页面顶部，选择“读/写”。
-    2. 在左侧浏览器中，导航到 **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**。 
-    3. 单击“编辑”。
+    1. 在页面顶部，选择“读/写”。 
+    2. 在左侧浏览器中，导航到 **subscriptions** >  ** _\<subscription\_name_**  > **resourceGroups** >  _ **\<resource\_group\_name>** _ > **providers** > **Microsoft.Web** > **sites** >  _ **\<app\_name>** _ > **config** > **authsettings**。 
+    3. 单击“编辑”。 
     4. 修改以下属性。 将 _\<app\_id>_ 替换为要访问的服务的 Azure Active Directory 应用程序 ID。
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    5. 单击“放置”。 
+    5. 单击“放置”。  
 
 配置提供程序后，可以在令牌存储区[查找刷新令牌和访问令牌的过期时间](#retrieve-tokens-in-app-code)。 
 
@@ -233,9 +233,9 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure Active Directory 允许对登录帐户使用任意数量的自定义域。 对于内部应用，此行为可能不符合需要，因为你不希望具有 _outlook.com_ 帐户的任何人都拥有访问权限。 若要限制登录帐户的域名，请执行以下步骤。
 
-在 [https://resources.azure.com](https://resources.azure.com) 中，导航到 **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**。 
+在 [https://resources.azure.com](https://resources.azure.com) 中，导航到 **subscriptions** >  ** _\< subscription\_ name_**  > **resourceGroups** >  _ **\< resource\_ group\_ name>** _ > **providers** > **Microsoft.Web** > **sites** >  _ **\< app\_ name>** _ > **config** > **authsettings**。 
 
-单击“编辑”，修改以下属性，然后单击“放置”。 请务必将 _\<domain\_name>_ 替换为所需的域。
+单击“编辑”，修改以下属性，然后单击“放置”。   请务必将 _\<domain\_name>_ 替换为所需的域。
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]

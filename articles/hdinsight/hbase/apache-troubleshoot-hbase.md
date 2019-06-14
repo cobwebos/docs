@@ -8,10 +8,10 @@ ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 6ba17a3839390ed5fe503a6fe57b63d8fb119138
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713492"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache HBase 进行故障排除
@@ -219,7 +219,7 @@ HDInsight 群集已减少到很少的节点。 节点数低于或接近于 HDFS 
    ```
 
    > [!Note] 
-   > 可以从 Ambari UI 获取活动 ZooKeeper 节点的 IP 地址。 转到“HBase” > “快速链接” > “ZK (活动)” > “Zookeeper 信息”。**\*** 
+   > 可以从 Ambari UI 获取活动 ZooKeeper 节点的 IP 地址。 转到“HBase” > “快速链接” > “ZK (活动)” > “Zookeeper 信息”。   **\***  
 
 3. 如果 sqlline.py 能够连接到 Phoenix 并且未超时，则运行以下命令来验证 Phoenix 的可用性和运行状况：
 
@@ -248,9 +248,9 @@ HDInsight 群集已减少到很少的节点。 节点数低于或接近于 HDFS 
    ```
 6. 在 Apache Ambari UI 中完成以下步骤，以在所有 ZooKeeper 节点上重启 HMaster 服务：
 
-    1. 在 HBase 的“摘要”部分中，转到“HBase” > “Active HBase Master”。 
-    2. 在“组件”部分中，重启 HBase Master 服务。
-    3. 为所有剩余的“Standby HBase Master”服务重复以上步骤。 
+    1. 在 HBase 的“摘要”部分中，转到“HBase” > “Active HBase Master”。    
+    2. 在“组件”部分中，重启 HBase Master 服务。 
+    3. 为所有剩余的“Standby HBase Master”服务重复以上步骤。  
 
 HBase Master 服务可能需要花费长达五分钟才能稳定下来并完成恢复过程。 几分钟后，重复 sqlline.py 命令以确认 SYSTEM.CATALOG 表已开启并且可以查询。 
 
@@ -330,7 +330,7 @@ HMaster 超时时出现类似于“java.io.IOException:超时 300000 毫秒，�
   
 ### <a name="resolution-steps"></a>解决步骤
 
-1. 在 Apache Ambari UI 中，转到“HBase” > “配置”。 在自定义 hbase-site.xml 文件中添加以下设置： 
+1. 在 Apache Ambari UI 中，转到“HBase” > “配置”   。 在自定义 hbase-site.xml 文件中添加以下设置： 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  

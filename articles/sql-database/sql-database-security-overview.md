@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: af14d5eb521d531f86433712a0d6c325ae7a1cd6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6b9a5ca350377777beebda24e52bc678c976ad19
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258623"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070202"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -100,9 +100,9 @@ SQL 数据库通过使用[传输层安全](https://support.microsoft.com/help/31
 
 SQL Server 始终对所有连接强制要求加密 (SSL/TLS)。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 **Encrypt** 或 **TrustServerCertificate** 设置如何。
 
-作为最佳做法，我们建议在应用程序的连接字符串中指定加密的连接，而不要信任服务器证书。 _ _ 这会强制应用程序验证服务器证书，因此可以防止中间人攻击利用应用程序的漏洞。
+作为最佳做法，我们建议在应用程序的连接字符串中指定加密的连接，而不要信任服务器证书。 _  _ 这会强制应用程序来验证服务器证书，因此会阻止您从易受中间人中间类型攻击的应用程序。
 
-例如，使用 ADO.NET 驱动程序时，可以通过 **Encrypt=True** 和 **TrustServerCertificate=False** 实现此目的。如果从 Azure 门户获取连接字符串，其中会包含正确的设置。
+例如，使用 ADO.NET 驱动程序时实现这一点通过**Encrypt = True**并**TrustServerCertificate = False**。 如果是从 Azure 门户中获取连接字符串，则它将具有正确的设置。
 
 > [!IMPORTANT]
 > 请注意，某些非 Microsoft 驱动程序可能不会默认使用 TLS，或依赖于较旧版本的 TLS (< 1.2) 才能正常工作。 在这种情况下，SQL Server 仍允许连接到数据库。 但是，我们建议评估允许此类驱动程序和应用程序连接到 SQL 数据库所带来的安全风险，尤其是存储敏感数据时。 

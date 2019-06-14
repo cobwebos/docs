@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
 ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787955"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
@@ -42,7 +42,7 @@ ms.locfileid: "65787955"
 - 添加了新的机器学习为改进性能，尤其是在具有挑战性的数据集和精细分类上的后端的高级培训功能。 高级培训，可以指定培训和自定义视觉的计算时间预算呈下降趋式确定最佳的培训和扩充设置。 对于快速迭代，你可以继续使用现有快速的定型。
 - 引入了 3.0 Api。 宣布即将弃用的 pre 3.0 Api 于 2019 年 10 月 1 日。 请参阅的文档快速入门教程[.Net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)， [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)，[节点](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)， [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)，或[转](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial)有关示例有关如何开始。
 - 替换为"默认迭代"使用发布/取消发布在 3.0 中的 Api。
-- 已添加新模型导出目标。 Dockerfile 导出已升级以支持 ARM 的 Raspberry Pi 3。 导出支持添加到[愿景 AI 开发人员工具包](https://visionaidevkit.com/)。
+- 已添加新模型导出目标。 Dockerfile 导出已升级以支持 ARM 的 Raspberry Pi 3。 导出支持添加到[愿景 AI 开发人员工具包。](https://visionaidevkit.com/)。
 - 标记的每个项目为 500 的 S0 级别的增加的限制。 映像的每个项目为 100,000 的 S0 级别的增加的限制。
 - 已删除的成人域。 常规域建议改为。
 - 宣布推出[定价](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)公开上市。  
