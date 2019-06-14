@@ -76,10 +76,10 @@ Service Fabric 虚拟机扩展用于启动 Service Fabric 与 Azure 虚拟机，
 
 | **名称** | **允许的值** | ** --- ** | **指导或简短说明** |
 | --- | --- | --- | --- |
-| 名称 | string | --- | 扩展插件的的唯一名称 |
+| name | string | --- | 扩展插件的的唯一名称 |
 | type | "ServiceFabricLinuxNode"或者"ServiceFabricWindowsNode | --- | 标识 OS Service Fabric 引导到 |
 | autoUpgradeMinorVersion | true 或 false | --- | 启用自动升级的 SF 运行时的次要版本 |
-| 发布者 | Microsoft.Azure.ServiceFabric | --- | Service Fabric 扩展发布服务器的名称 |
+| publisher | Microsoft.Azure.ServiceFabric | --- | Service Fabric 扩展发布服务器的名称 |
 | clusterEndpont | string | --- | URI:PORT 到管理终结点 |
 | nodeTypeRef | string | --- | 节点类型的名称 |
 | durabilityLevel | 铜卡、 silver、 金卡、 白金卡 | --- | 允许暂停不可变的 Azure 基础结构的时间 |
