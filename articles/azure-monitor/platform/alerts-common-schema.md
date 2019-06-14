@@ -9,10 +9,10 @@ ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
 ms.openlocfilehash: c18227a491478d0d8010761440a54fd088344b39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776569"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
@@ -38,7 +38,7 @@ ms.locfileid: "60776569"
 | 操作 | 增强功能|
 |:---|:---|
 | SMS | 用于所有警报类型的一致的 SMS 模板。 |
-| 电子邮件 | 一致且详细的电子邮件模板，从而可以轻松地诊断问题一目了然。 嵌入的深度链接到门户和受影响的资源上的警报实例确保，你可以快速跳转到修正过程。 |
+| Email | 一致且详细的电子邮件模板，从而可以轻松地诊断问题一目了然。 嵌入的深度链接到门户和受影响的资源上的警报实例确保，你可以快速跳转到修正过程。 |
 | Webhook/逻辑应用/Azure 函数/自动化 Runbook | 一致 JSON 结构的所有警报类型，以便您可以轻松地跨不同的警报类型生成集成。 |
 
 新架构还可以实现更丰富的警报消费体验在 Azure 门户和 Azure 移动应用在不久的将来。 

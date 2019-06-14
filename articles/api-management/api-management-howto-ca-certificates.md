@@ -11,14 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 08/20/2018
-ms.date: 03/11/2019
-ms.author: v-yiso
+ms.date: 08/20/2018
+ms.author: apimpm
 ms.openlocfilehash: 5161a35fd52b2f3d8374c76bdab60281e33dacf6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141809"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>如何在 Azure API 管理中添加自定义 CA 证书
@@ -39,9 +38,9 @@ Azure API 管理允许在受信任的根证书和中间证书存储中的计算�
 
 1. 在 Azure 门户中导航到 Azure API 管理服务实例。
 
-2. 从菜单中选择“CA 证书”。
+2. 从菜单中选择“CA 证书”  。
 
-3. 单击“**+ 添加**”按钮。  
+3. 单击“ **+ 添加**”按钮。  
 
     ![添加 CA 证书](media/api-management-howto-ca-certificates/01.png)  
 
@@ -58,7 +57,7 @@ Azure API 管理允许在受信任的根证书和中间证书存储中的计算�
 
 ## <a name="step1a"> </a>删除客户端证书
 
-若要删除证书，请单击上下文菜单“...”并选择该证书旁边的“删除”。
+若要删除证书，请单击上下文菜单“...”  并选择该证书旁边的“删除”  。
 
 ![删除 CA 证书](media/api-management-howto-ca-certificates/04.png)  
 

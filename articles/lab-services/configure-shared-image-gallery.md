@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
-ms.openlocfilehash: fba969b70ae052c928f33888d3c93eb7683ae9f7
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: de857498aeb51c9b3711c90338d983e85b61cb70
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455780"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065438"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置共享映像库
-开发测试实验室现在支持[共享映像库](/virtual-machines/windows/shared-image-galleries.md)功能。 它允许实验室用户在创建实验室资源的同时从共享位置访问映像。 它还可以帮助围绕自定义托管 VM 映像生成结构和组织。 共享映像库功能支持：
+开发测试实验室现在支持[共享映像库](../virtual-machines/windows/shared-image-galleries.md)功能。 它允许实验室用户在创建实验室资源的同时从共享位置访问映像。 它还可以帮助围绕自定义托管 VM 映像生成结构和组织。 共享映像库功能支持：
 
 - 映像的托管全局复制
 - 对映像进行版本控制和分组以简化管理

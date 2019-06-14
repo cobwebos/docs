@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f8fd0b317c17f142664d22291c23442dd49f970
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60898910"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053290"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
 此表列出了从 [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK 发送到门户的遥测属性。
@@ -118,95 +118,95 @@ ms.locfileid: "60898910"
 | --- | --- | --- |
 | context.custom.dimensions [0] |object [ ] |自定义属性参数设置的键-值字符串对。 键的最大长度为 100，值的最大长度为 1024。 如果唯一值超过 100 个，属性可搜索，但不可用于分段。 每个 ikey 最多有 200 个键。 |
 | context.custom.metrics [0] |object [ ] |自定义测量参数和 TrackMetrics 设置的键-值对。 键的最大长度为 100，值可以是数字。 |
-| context.data.eventTime |string |UTC |
+| context.data.eventTime |字符串 |UTC |
 | context.data.isSynthetic |boolean |请求似乎来自 Bot 或 Web 测试。 |
 | context.data.samplingRate |数字 |SDK 生成的、发送到门户的遥测百分比。 范围为 0.0-100.0。 |
 | context.device |对象 |客户端设备 |
-| context.device.browser |string |IE、Chrome... |
-| context.device.browserVersion |string |Chrome 48.0... |
-| context.device.deviceModel |string | |
-| context.device.deviceName |string | |
-| context.device.id |string | |
-| context.device.locale |string |en-GB、de-DE... |
-| context.device.network |string | |
-| context.device.oemName |string | |
-| context.device.os |string | |
-| context.device.osVersion |string |主机 OS |
-| context.device.roleInstance |string |服务器主机的 ID |
-| context.device.roleName |string | |
-| context.device.screenResolution |string | |
-| context.device.type |string |电脑、浏览器... |
+| context.device.browser |字符串 |IE、Chrome... |
+| context.device.browserVersion |字符串 |Chrome 48.0... |
+| context.device.deviceModel |字符串 | |
+| context.device.deviceName |字符串 | |
+| context.device.id |字符串 | |
+| context.device.locale |字符串 |en-GB、de-DE... |
+| context.device.network |字符串 | |
+| context.device.oemName |字符串 | |
+| context.device.os |字符串 | |
+| context.device.osVersion |字符串 |主机 OS |
+| context.device.roleInstance |字符串 |服务器主机的 ID |
+| context.device.roleName |字符串 | |
+| context.device.screenResolution |字符串 | |
+| context.device.type |字符串 |电脑、浏览器... |
 | context.location |对象 |派生自 clientip。 |
-| context.location.city |string |派生自 clientip（如果已知） |
-| context.location.clientip |string |最后一个八边形匿名化为 0。 |
-| context.location.continent |string | |
-| context.location.country |string | |
-| context.location.province |string |州或省 |
-| context.operation.id |string |具有相同操作 ID 的项在门户中显示为相关项。 通常为请求 ID。 |
-| context.operation.name |string |URL 或请求名称 |
-| context.operation.parentId |string |允许嵌套的相关项。 |
-| context.session.id |string |一组来自相同源的操作的 ID。 如果在 30 分钟期限内没有操作，则表示会话结束。 |
+| context.location.city |字符串 |派生自 clientip（如果已知） |
+| context.location.clientip |字符串 |最后一个八边形匿名化为 0。 |
+| context.location.continent |字符串 | |
+| context.location.country |字符串 | |
+| context.location.province |字符串 |州或省 |
+| context.operation.id |字符串 |具有相同操作 ID 的项在门户中显示为相关项。 通常为请求 ID。 |
+| context.operation.name |字符串 |URL 或请求名称 |
+| context.operation.parentId |字符串 |允许嵌套的相关项。 |
+| context.session.id |字符串 |一组来自相同源的操作的 ID。 如果在 30 分钟期限内没有操作，则表示会话结束。 |
 | context.session.isFirst |boolean | |
-| context.user.accountAcquisitionDate |string | |
-| context.user.accountId |string | |
-| context.user.anonAcquisitionDate |string | |
-| context.user.anonId |string | |
-| context.user.authAcquisitionDate |string |[经过身份验证的用户](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
-| context.user.authId |string | |
+| context.user.accountAcquisitionDate |字符串 | |
+| context.user.accountId |字符串 | |
+| context.user.anonAcquisitionDate |字符串 | |
+| context.user.anonId |字符串 | |
+| context.user.authAcquisitionDate |字符串 |[经过身份验证的用户](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |字符串 | |
 | context.user.isAuthenticated |boolean | |
-| context.user.storeRegion |string | |
-| internal.data.documentVersion |string | |
-| internal.data.id |string | 将项引入到 Application Insights 时分配的唯一 ID |
+| context.user.storeRegion |字符串 | |
+| internal.data.documentVersion |字符串 | |
+| internal.data.id |字符串 | 将项引入到 Application Insights 时分配的唯一 ID |
 
-## <a name="events"></a>活动
+## <a name="events"></a>Events
 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) 生成的自定义事件。
 
 | 路径 | Type | 说明 |
 | --- | --- | --- |
 | event [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
-| event [0] name |string |事件名称。  最大长度为 250。 |
-| event [0] url |string | |
-| event [0] urlData.base |string | |
-| event [0] urlData.host |string | |
+| event [0] name |字符串 |事件名称。  最大长度为 250。 |
+| event [0] url |字符串 | |
+| event [0] urlData.base |字符串 | |
+| event [0] urlData.host |字符串 | |
 
 ## <a name="exceptions"></a>例外
 报告服务器和浏览器中发生的[异常](../../azure-monitor/app/asp-net-exceptions.md)。
 
 | 路径 | Type | 说明 |
 | --- | --- | --- |
-| basicException [0] assembly |string | |
+| basicException [0] assembly |字符串 | |
 | basicException [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
-| basicException [0] exceptionGroup |string | |
-| basicException [0] exceptionType |string | |
-| basicException [0] failedUserCodeMethod |string | |
-| basicException [0] failedUserCodeAssembly |string | |
-| basicException [0] handledAt |string | |
+| basicException [0] exceptionGroup |字符串 | |
+| basicException [0] exceptionType |字符串 | |
+| basicException [0] failedUserCodeMethod |字符串 | |
+| basicException [0] failedUserCodeAssembly |字符串 | |
+| basicException [0] handledAt |字符串 | |
 | basicException [0] hasFullStack |boolean | |
-| basicException [0] id |string | |
-| basicException [0] method |string | |
-| basicException [0] message |string |异常消息。 最大长度为 10k。 |
-| basicException [0] outerExceptionMessage |string | |
-| basicException [0] outerExceptionThrownAtAssembly |string | |
-| basicException [0] outerExceptionThrownAtMethod |string | |
-| basicException [0] outerExceptionType |string | |
-| basicException [0] outerId |string | |
-| basicException [0] parsedStack [0] assembly |string | |
-| basicException [0] parsedStack [0] fileName |string | |
+| basicException [0] id |字符串 | |
+| basicException [0] method |字符串 | |
+| basicException [0] message |字符串 |异常消息。 最大长度为 10k。 |
+| basicException [0] outerExceptionMessage |字符串 | |
+| basicException [0] outerExceptionThrownAtAssembly |字符串 | |
+| basicException [0] outerExceptionThrownAtMethod |字符串 | |
+| basicException [0] outerExceptionType |字符串 | |
+| basicException [0] outerId |字符串 | |
+| basicException [0] parsedStack [0] assembly |字符串 | |
+| basicException [0] parsedStack [0] fileName |字符串 | |
 | basicException [0] parsedStack [0] level |integer | |
 | basicException [0] parsedStack [0] line |integer | |
-| basicException [0] parsedStack [0] method |string | |
-| basicException [0] stack |string |最大长度为 10k |
-| basicException [0] typeName |string | |
+| basicException [0] parsedStack [0] method |字符串 | |
+| basicException [0] stack |字符串 |最大长度为 10k |
+| basicException [0] typeName |字符串 | |
 
 ## <a name="trace-messages"></a>跟踪消息
 由 [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) 和[日志记录适配器](../../azure-monitor/app/asp-net-trace-logs.md)发送。
 
 | 路径 | Type | 说明 |
 | --- | --- | --- |
-| message [0] loggerName |string | |
-| message [0] parameters |string | |
-| message [0] raw |string |日志消息，最大长度为 10k。 |
-| message [0] severityLevel |string | |
+| message [0] loggerName |字符串 | |
+| message [0] parameters |字符串 | |
+| message [0] raw |字符串 |日志消息，最大长度为 10k。 |
+| message [0] severityLevel |字符串 | |
 
 ## <a name="remote-dependency"></a>远程依赖项
 由 TrackDependency 发送。 用于报告服务器中[依赖项调用](../../azure-monitor/app/asp-net-dependencies.md)以及浏览器中 AJAX 调用的性能和用法。
@@ -214,20 +214,20 @@ ms.locfileid: "60898910"
 | 路径 | Type | 说明 |
 | --- | --- | --- |
 | remoteDependency [0] async |boolean | |
-| remoteDependency [0] baseName |string | |
-| remoteDependency [0] commandName |string |例如“home/index” |
+| remoteDependency [0] baseName |字符串 | |
+| remoteDependency [0] commandName |字符串 |例如“home/index” |
 | remoteDependency [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
-| remoteDependency [0] dependencyTypeName |string |HTTP、SQL... |
+| remoteDependency [0] dependencyTypeName |字符串 |HTTP、SQL... |
 | remoteDependency [0] durationMetric.value |数字 |从依赖项调用到完成响应花费的时间 |
-| remoteDependency [0] id |string | |
-| remoteDependency [0] name |string |URL。 最大长度为 250。 |
-| remoteDependency [0] resultCode |string |源 HTTP 依赖项 |
+| remoteDependency [0] id |字符串 | |
+| remoteDependency [0] name |字符串 |URL。 最大长度为 250。 |
+| remoteDependency [0] resultCode |字符串 |源 HTTP 依赖项 |
 | remoteDependency [0] success |boolean | |
-| remoteDependency [0] type |string |Http、Sql... |
-| remoteDependency [0] url |string |最大长度为 2000 |
-| remoteDependency [0] urlData.base |string |最大长度为 2000 |
-| remoteDependency [0] urlData.hashTag |string | |
-| remoteDependency [0] urlData.host |string |最大长度为 200 |
+| remoteDependency [0] type |字符串 |Http、Sql... |
+| remoteDependency [0] url |字符串 |最大长度为 2000 |
+| remoteDependency [0] urlData.base |字符串 |最大长度为 2000 |
+| remoteDependency [0] urlData.hashTag |字符串 | |
+| remoteDependency [0] urlData.host |字符串 |最大长度为 200 |
 
 ## <a name="requests"></a>Requests
 由 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 发送。 标准模块使用此属性报告在服务器上测量的服务器响应时间。
@@ -236,14 +236,14 @@ ms.locfileid: "60898910"
 | --- | --- | --- |
 | request [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如：4 =&gt; 25%. |
 | request [0] durationMetric.value |数字 |从请求到响应花费的时间。 1e7 == 1s |
-| request [0] id |string |操作 ID |
-| request [0] name |string |GET/POST + URL 基。  最大长度为 250 |
+| request [0] id |字符串 |操作 ID |
+| request [0] name |字符串 |GET/POST + URL 基。  最大长度为 250 |
 | request [0] responseCode |integer |发送到客户端的 HTTP 响应 |
 | request [0] success |boolean |默认值 == (responseCode &lt; 400) |
-| request [0] url |string |不包括主机 |
-| request [0] urlData.base |string | |
-| request [0] urlData.hashTag |string | |
-| request [0] urlData.host |string | |
+| request [0] url |字符串 |不包括主机 |
+| request [0] urlData.base |字符串 | |
+| request [0] urlData.hashTag |字符串 | |
+| request [0] urlData.host |字符串 | |
 
 ## <a name="page-view-performance"></a>页面视图性能
 由浏览器发送。 测量处理页面花费的时间，从用户发起请求算起，到显示完成（不包括异步 AJAX 调用）为止。
@@ -253,16 +253,16 @@ ms.locfileid: "60898910"
 | 路径 | Type | 说明 |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess.value |integer |从接收 HTML 完成到显示页面花费的时间。 |
-| clientPerformance [0] name |string | |
+| clientPerformance [0] name |字符串 | |
 | clientPerformance [0] networkConnection.value |integer |建立网络连接花费的时间。 |
 | clientPerformance [0] receiveRequest.value |integer |从发送请求结束到在回复中接收 HTML 所花费的时间。 |
 | clientPerformance [0] sendRequest.value |integer |发送 HTTP 请求花费的时间。 |
 | clientPerformance [0] total.value |integer |从开始发送请求到显示页面花费的时间。 |
-| clientPerformance [0] url |string |此请求的 URL |
-| clientPerformance [0] urlData.base |string | |
-| clientPerformance [0] urlData.hashTag |string | |
-| clientPerformance [0] urlData.host |string | |
-| clientPerformance [0] urlData.protocol |string | |
+| clientPerformance [0] url |字符串 |此请求的 URL |
+| clientPerformance [0] urlData.base |字符串 | |
+| clientPerformance [0] urlData.hashTag |字符串 | |
+| clientPerformance [0] urlData.host |字符串 | |
+| clientPerformance [0] urlData.protocol |字符串 | |
 
 ## <a name="page-views"></a>页面视图
 由 trackPageView() 或 [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views) 发送
@@ -271,30 +271,30 @@ ms.locfileid: "60898910"
 | --- | --- | --- |
 | view [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
 | view [0] durationMetric.value |integer |在 trackPageView() 中设置的，或者由 startTrackPage() - stopTrackPage() 设置的可选值。 与 clientPerformance 值不同。 |
-| view [0] name |string |页面标题。  最大长度为 250 |
-| view [0] url |string | |
-| view [0] urlData.base |string | |
-| view [0] urlData.hashTag |string | |
-| view [0] urlData.host |string | |
+| view [0] name |字符串 |页面标题。  最大长度为 250 |
+| view [0] url |字符串 | |
+| view [0] urlData.base |字符串 | |
+| view [0] urlData.hashTag |字符串 | |
+| view [0] urlData.host |字符串 | |
 
 ## <a name="availability"></a>可用性
 报告[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)。
 
 | 路径 | Type | 说明 |
 | --- | --- | --- |
-| availability [0] availabilityMetric.name |string |availability |
+| availability [0] availabilityMetric.name |字符串 |availability |
 | availability [0] availabilityMetric.value |数字 |1.0 或 0.0 |
 | availability [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
-| availability [0] dataSizeMetric.name |string | |
+| availability [0] dataSizeMetric.name |字符串 | |
 | availability [0] dataSizeMetric.value |integer | |
-| availability [0] durationMetric.name |string | |
+| availability [0] durationMetric.name |字符串 | |
 | availability [0] durationMetric.value |数字 |测试持续时间。 1e7==1s |
-| availability [0] message |string |故障诊断 |
-| availability [0] result |string |通过/失败 |
-| availability [0] runLocation |string |http 请求的地域源 |
-| availability [0] testName |string | |
-| availability [0] testRunId |string | |
-| availability [0] testTimestamp |string | |
+| availability [0] message |字符串 |故障诊断 |
+| availability [0] result |字符串 |通过/失败 |
+| availability [0] runLocation |字符串 |http 请求的地域源 |
+| availability [0] testName |字符串 | |
+| availability [0] testRunId |字符串 | |
+| availability [0] testTimestamp |字符串 | |
 
 ## <a name="metrics"></a>度量值
 由 TrackMetric() 生成。

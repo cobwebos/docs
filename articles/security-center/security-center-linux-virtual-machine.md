@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
 ms.openlocfilehash: af9b1ef64944e72a24d76cc555e51841e75401ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60909359"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure 安全中心与 Azure Linux 虚拟机
@@ -50,14 +50,14 @@ ms.locfileid: "60909359"
 * 有关操作系统可支持性的信息，请参阅 [Azure 安全中心常见问题 (FAQ)](security-center-faq.md)。 
 
 ## <a name="set-security-policy"></a>设置安全策略
-需启用数据收集，使 Azure 安全中心能够收集所需信息，以便提供基于所配置的安全策略生成的建议和警报。 在下图中可见，“数据收集”已“打开”。
+需启用数据收集，使 Azure 安全中心能够收集所需信息，以便提供基于所配置的安全策略生成的建议和警报。 在下图中可见，“数据收集”  已“打开”  。
 
 安全策略用于定义一组控制，这些控制是针对指定订阅或资源组中的资源建议的。 启用安全策略之前，必须启用数据收集。安全中心从虚拟机收集数据，以评估其安全状态、提供安全建议和威胁警报。 在安全中心，根据公司的安全需求、应用程序的类型或每个订阅中数据的敏感度，为 Azure 订阅或资源组定义策略。 
 
 ![安全策略](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig1.png)
 
 > [!NOTE]
-> 若要详细了解可用的每个“防护策略”，请参阅[设置安全策略](tutorial-security-policy.md)一文。
+> 若要详细了解可用的每个“防护策略”  ，请参阅[设置安全策略](tutorial-security-policy.md)一文。
 > 
 
 ## <a name="manage-security-recommendations"></a>管理安全建议
@@ -80,7 +80,7 @@ ms.locfileid: "60909359"
 > 
 
 ## <a name="monitor-security-health"></a>监视安全运行状况
-用户为订阅的资源启用[安全策略](tutorial-security-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”磁贴中单击“虚拟机”，“虚拟机”边栏选项卡随即打开，其中包含针对 VM 的建议。 
+用户为订阅的资源启用[安全策略](tutorial-security-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”  边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”  磁贴中单击“虚拟机”  ，“虚拟机”  边栏选项卡随即打开，其中包含针对 VM 的建议。 
 
 ![安全运行状况](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -92,11 +92,11 @@ ms.locfileid: "60909359"
 选择某个安全警报，了解触发该警报的事件详细信息以及修复攻击所需的步骤（如有）。 安全警报按[类型](security-center-alerts-type.md)和日期分组。
 
 ## <a name="monitor-security-health"></a>监视安全运行状况
-用户为订阅的资源启用[安全策略](tutorial-security-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”磁贴中单击“虚拟机”，“虚拟机”边栏选项卡随即打开，其中包含针对 VM 的建议。 
+用户为订阅的资源启用[安全策略](tutorial-security-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”  边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”  磁贴中单击“虚拟机”  ，“虚拟机”  边栏选项卡随即打开，其中包含针对 VM 的建议。 
 
 ![安全运行状况](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig4.png)
 
-如果单击此项建议，会看到解决这些问题应采取的具体措施的更多详细信息。 详细信息显示在边栏选项卡底部的“建议”下面。 
+如果单击此项建议，会看到解决这些问题应采取的具体措施的更多详细信息。 详细信息显示在边栏选项卡底部的“建议”下面。  
 
 ![安全运行状况 2](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig5.png)
 

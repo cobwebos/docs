@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5e9cd4c2a14f94c39c7058f45bf727df8198c053
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 489685485af4e3c8868f7e0281d2f81464a166f6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066183"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark
 
@@ -28,48 +28,69 @@ ms.locfileid: "64691296"
 
 有关适用于装有 HDInsight 群集的 Jupyter 笔记本的自定义内核和 Spark magic 的详细信息，请参阅 [Kernels available for Jupyter notebooks with Apache Spark Linux clusters on HDInsight](apache-spark-jupyter-notebook-kernels.md)（适用于装有 HDInsight 上的 Apache Spark Linux 群集的 Jupyter 笔记本的内核）。
 
-> [!IMPORTANT]  
-> 本文中的步骤仅适用于 Spark 版本 2.1.0。
-
 ## <a name="prerequisites"></a>必备组件
+
 此处所列的先决条件不适用于安装 Jupyter。 这些先决条件适用于安装笔记本之后将 Jupyter 笔记本连接到 HDInsight 群集。
 
-* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight 上的 Apache Spark 群集（2.1.0 或更低版本）。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-
-
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>在计算机上安装 Jupyter 笔记本
 
-必须先安装 Python 才能安装 Jupyter 笔记本。 Python 和 Jupyter 都作为 [Anaconda 分发版](https://www.anaconda.com/download/)的一部分提供。 安装 Anaconda 时，安装的是某个 Python 发行版。 安装 Anaconda 之后，可通过运行相应命令来添加 Jupyter 安装。
+必须先安装 Python 才能安装 Jupyter 笔记本。 [Anaconda 分发版](https://www.anaconda.com/download/)会安装 Python 和 Jupyter Notebook。
 
-1. 下载适用于平台的 [Anaconda 安装程序](https://www.anaconda.com/download/)，并运行安装程序。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。
+下载适用于平台的 [Anaconda 安装程序](https://www.anaconda.com/download/)，并运行安装程序。 运行安装向导时，请确保选择将 Anaconda 添加到 PATH 变量的选项。  此外，请参阅[使用 Anaconda 安装 Jupyter](https://jupyter.readthedocs.io/en/latest/install.html)。
 
-2. 运行以下命令来安装 Jupyter。
+## <a name="install-spark-magic"></a>安装 Spark magic
 
-        conda install jupyter
+1. 输入以下命令以安装 Spark magic 之一。 此外，请参阅[sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)。
 
-    有关安装 Jupyter 的详细信息，请参阅[使用 Anaconda 安装 Jupyter](https://jupyter.readthedocs.io/en/latest/install.html)。
+    |群集版本 | 安装命令 |
+    |---|---|
+    |v3.6 和 3.5 版 |`pip install sparkmagic==0.12.7`|
+    |v3.4|`pip install sparkmagic==0.2.3`|
 
-## <a name="install-the-kernels-and-spark-magic"></a>安装内核和 Spark magic
+1. 确保`ipywidgets`已正确安装通过运行以下命令：
 
-有关如何安装 Spark magic、PySpark 和 Spark 内核的说明，请参阅 GitHub 上的 [sparkmagic 文档](https://github.com/jupyter-incubator/sparkmagic#installation)中的安装说明。 Spark magic 文档中的第一步会要求安装 Spark magic。 使用以下命令替换该链接中的第一步，具体取决于要连接到的 HDInsight 群集的版本。 之后，按照 Spark magic 文档中的剩余步骤进行操作。 如果要安装不同的内核，则必须执行 Spark magic 安装说明部分中的步骤 3。
+    ```cmd
+    jupyter nbextension enable --py --sys-prefix widgetsnbextension
+    ```
 
-* 对于群集 v3.5 和 v3.6，请通过执行 `pip install sparkmagic==0.11.2` 安装 sparkmagic 0.11.2
+## <a name="install-pyspark-and-spark-kernels"></a>安装 PySpark 和 Spark 内核
 
-* 对于群集 v3.4，请通过执行 `pip install sparkmagic==0.2.3` 安装 sparkmagic 0.2.3
+1. 确定位置`sparkmagic`安装通过输入以下命令：
+
+    ```cmd
+    pip show sparkmagic
+    ```
+
+    然后将你的工作目录更改为使用上述命令标识的位置。
+
+1. 从新工作目录中，输入一个或多个以下命令以安装所需的 kernel(s):
+
+    |内核 | 命令 |
+    |---|---|
+    |Spark|`jupyter-kernelspec install sparkmagic/kernels/sparkkernel`|
+    |SparkR|`jupyter-kernelspec install sparkmagic/kernels/sparkrkernel`|
+    |PySpark|`jupyter-kernelspec install sparkmagic/kernels/pysparkkernel`|
+    |PySpark3|`jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel`|
+
+1. 可选。 输入以下命令以启用的服务器扩展插件：
+
+    ```cmd
+    jupyter serverextension enable --py sparkmagic
+    ```
 
 ## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>配置 Spark magic 以连接到 HDInsight Spark 群集
 
-在本部分，我们将配置前面安装的 Spark magic，以连接到 Apache Spark 群集（必须事先在 Azure HDInsight 中创建）。
+在本部分中，你将配置前面安装连接到 Apache Spark 群集的 Spark magic。
 
 1. 使用以下命令启动 Python shell：
 
-    ```
+    ```cmd
     python
     ```
 
-2. Jupyter 配置信息通常存储在用户主目录中。 输入以下命令以标识主目录，然后在该目录中创建名为 **.sparkmagic** 的文件夹。  将输出完整路径。
+2. Jupyter 配置信息通常存储在用户主目录中。 输入以下命令，以标识主目录中，并创建一个名为文件夹 **.sparkmagic**。  将输出完整路径。
 
     ```python
     import os
@@ -100,14 +121,15 @@ ms.locfileid: "64691296"
       "heartbeat_retry_seconds": 1
     }
     ```
+
 4. 对该文件进行以下编辑：
 
     |模板值 | 新值 |
     |---|---|
-    |{USERNAME}|群集登录名，默认为 admin。|
+    |{USERNAME}|群集登录名，默认值是`admin`。|
     |{CLUSTERDNSNAME}|群集名称|
     |{BASE64ENCODEDPASSWORD}|实际密码的 base64 编码密码。  可在 [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) 中生成 base64 密码。|
-    |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用 `sparkmagic 0.11.23`（群集 v3.5 和 v3.6），请保留此值。  如果使用 `sparkmagic 0.2.3`（群集 v3.4），请替换为 `"should_heartbeat": true`。|
+    |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用 `sparkmagic 0.12.7`（群集 v3.5 和 v3.6），请保留此值。  如果使用 `sparkmagic 0.2.3`（群集 v3.4），请替换为 `"should_heartbeat": true`。|
 
     可在[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json) 中查看完整的示例文件。
 
@@ -116,16 +138,18 @@ ms.locfileid: "64691296"
 
 5. 启动 Jupyter。 从命令提示符使用以下命令。
 
-        jupyter notebook
+    ```cmd
+    jupyter notebook
+    ```
 
 6. 验证是否可以使用内核随附的 Spark magic。 执行以下步骤。
 
-    a. 创建新的笔记本。 在右侧一角选择“新建”。 应会看到默认内核 **Python 2** 和 **Python 3**，以及安装的内核。 实际值根据安装时所做的选择而有所不同。  选择“PySpark”。
+    a. 创建新的笔记本。 在右侧一角选择“新建”  。 应会看到默认内核 **Python 2** 和 **Python 3**，以及安装的内核。 实际值根据安装时所做的选择而有所不同。  选择“PySpark”。 
 
     ![Jupyter 笔记本中的内核](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter 笔记本中的内核")
 
     > [!IMPORTANT]  
-    > 选择“新建”后，检查 shell 中是否出现任何错误。  如果看到错误 `TypeError: __init__() got an unexpected keyword argument 'io_loop'`，原因可能是遇到了某些 Tornado 版本中的已知问题。  如果出现此情况，请停止内核，然后使用以下命令降级 Tornado 安装：`pip install tornado==4.5.3`。
+    > 选择“新建”后，检查 shell 中是否出现任何错误。   如果看到错误 `TypeError: __init__() got an unexpected keyword argument 'io_loop'`，原因可能是遇到了某些 Tornado 版本中的已知问题。  如果出现此情况，请停止内核，然后使用以下命令降级 Tornado 安装：`pip install tornado==4.5.3`。
 
     b. 运行以下代码片段。
 
@@ -151,26 +175,8 @@ ms.locfileid: "64691296"
 > [!WARNING]  
 > 在本地计算机上安装 Jupyter 后，多个用户可以同时在同一个 Spark 群集上运行同一个笔记本。 在这种情况下，会创建多个 Livy 会话。 如果遇到问题并想要调试，则跟踪哪个 Livy 会话属于哪个用户将是一项复杂的任务。  
 
-## <a name="seealso"></a>另请参阅
-* [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
+## <a name="next-steps"></a>后续步骤
 
-### <a name="scenarios"></a>方案
+* [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 * [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
-* [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>创建和运行应用程序
-* [使用 Scala 创建独立的应用程序](apache-spark-create-standalone-application.md)
-* [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>工具和扩展
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
-* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
-* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)
-
-### <a name="manage-resources"></a>管理资源
-* [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)

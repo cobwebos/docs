@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62126675"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>在虚拟网络 （预览版） 中部署 Azure Databricks
@@ -121,7 +121,7 @@ Azure Databricks 将资源部署到虚拟网络还允许您充分利用灵活的
 
 如果不使用[Azure 门户](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal)或[Azure 资源管理器模板](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced)若要创建网络安全组，则必须手动以下流量的白名单上您的子网。
 
-|Direction|协议|源|Source Port|目标|Destination Port|
+|Direction|Protocol|source|Source Port|目标|Destination Port|
 |---------|--------|------|-----------|-----------|----------------|
 |入站|\*|VirtualNetwork|\*|\*|\*|
 |入站|\*|控制平面 NAT IP|\*|\*|22|
@@ -164,7 +164,7 @@ Azure Databricks 将资源部署到虚拟网络还允许您充分利用灵活的
 
 ### <a name="workspace-launch-errors"></a>工作区启动错误
 
-启动自定义虚拟网络中的工作区失败，Azure Databricks 上的登录屏幕并出现以下错误：**"我们已经遇到了错误创建工作区。请确保自定义网络配置正确，然后重试。"**
+启动自定义虚拟网络中的工作区失败，Azure Databricks 上的登录屏幕并出现以下错误： **"我们已经遇到了错误创建工作区。请确保自定义网络配置正确，然后重试。"**
 
 不符合要求的网络配置被导致此错误。 确认创建工作区时遵循本主题中的说明。
 

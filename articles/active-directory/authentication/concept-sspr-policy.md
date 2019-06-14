@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f32952dff8f09db5b790818a5f98c527a04c2ef5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65823391"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
@@ -24,11 +24,11 @@ ms.locfileid: "65823391"
 
 ## <a name="administrator-reset-policy-differences"></a>管理员重置策略差异
 
-***Microsoft 对任何 Azure 管理员角色强制实施强大的默认双门密码重置策略***，此策略可能与你为用户定义的策略不同，并且无法更改。 你应始终以未被分配任何 Azure 管理员角色的用户身份测试密码重置功能。
+***Microsoft 对任何 Azure 管理员角色强制实施强大的默认双门密码重置策略*** ，此策略可能与你为用户定义的策略不同，并且无法更改。 你应始终以未被分配任何 Azure 管理员角色的用户身份测试密码重置功能。
 
 使用双门策略，**管理员将无法使用安全问题**。
 
-双门策略需要两条身份验证数据，如“电子邮件地址”、“身份验证应用”或“电话号码”。 双门策略在以下情况下适用：
+双门策略需要两条身份验证数据，如“电子邮件地址”、“身份验证应用”或“电话号码”    。 双门策略在以下情况下适用：
 
 * 以下所有 Azure 管理员角色将受到影响：
   * 支持管理员
@@ -84,8 +84,8 @@ ms.locfileid: "65823391"
 | 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空白区域</li></ul> |
 | 不允许的字符 |<ul><li>Unicode 字符。</li><li> 不能紧靠在“\@\"”符号前面添加句点字符“.”。</li></ul> |
 | 密码限制 |<ul><li>最少 8 个字符，最多 256 个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
-| 密码过期期限 |<ul><li>默认值：“90”天。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
-| 密码过期通知 |<ul><li>默认值：“14”天（密码到期前）。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
+| 密码过期期限 |<ul><li>默认值：“90”天  。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
+| 密码过期通知 |<ul><li>默认值：“14”天（密码到期前）  。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
 | 密码到期 |<ul><li>默认值：**false** 天（指示已启用密码到期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
 | 密码更改历史记录 |用户更改密码时，上一个密码*不能*再次使用。 |
 | 密码重置历史记录 | 用户重置忘记的密码时，上一个密码*可以*再次使用。 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: 88acfebcc6dd8489703014d790f09313ab9302ec
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e4e9ef4f3a50aeac4db4d2cc2f2b6cbafcc47268
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939908"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051639"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -95,12 +95,19 @@ ms.locfileid: "64939908"
 Log Analytics 工作区必须存在于以下区域中：
 - 加拿大中部
 - 美国中西部
+- 美国西部
 - 美国西部 2
+- 美国中南部
+- 美国中部
 - 美国东部
+- 美国东部 2
 - 法国中部
 - 西欧
+- 北欧
 - 英国南部
+- 澳大利亚东部
 - 澳大利亚东南部
+- 东亚
 - 东南亚 
 - 韩国中部
 - 印度中部
@@ -117,7 +124,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
-可以。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[Azure Monitor 记录升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
+是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[Azure Monitor 记录升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，并将 Log Analytics 工作区放在另一个订阅中？
 
@@ -133,7 +140,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>如果在 NSG 流日志页显示“无法加载”状态，该如何解决？
 
-要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的“xxxxx-xxxxx-xxxxxx-xxxx”，并从 PowerShell 运行以下命令：
+要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的“xxxxx-xxxxx-xxxxxx-xxxx”  ，并从 PowerShell 运行以下命令：
 
 ```powershell-interactive
 **Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
@@ -271,13 +278,13 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
         
 ### <a name="keyboard-navigation-on-the-map"></a>地图中的键盘导航
     
-- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点将移至地图视图中某个突出显示的节点（“Azure 数据中心”或“国家/地区”）。
+- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点将移至地图视图中某个突出显示的节点（“Azure 数据中心”或“国家/地区”）   。
 - 若要移至地图中其他突出显示的节点，请使用 `Tab` 或 `Right arrow` 键向前移动。 使用 `Shift+Tab` 或 `Left arrow` 键向后移动。
 - 若要在地图中选择突出显示的任一节点，可以使用 `Enter` 或 `Down arrow` 键。
-- 选择任一此类节点后，焦点会转移到节点的“信息工具框”。 默认情况下，焦点会转移到“信息工具框”中的关闭按钮。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
-- 当焦点位于“信息工具框”时，如果按 `Tab`，则焦点会移至选定节点所在的同一大洲中的终结点。 使用 `Right arrow` 和 `Left arrow` 键可浏览这些终结点。
+- 选择任一此类节点后，焦点会转移到节点的“信息工具框”。  默认情况下，焦点会转移到“信息工具框”中的关闭按钮。  若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动  。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。 
+- 当焦点位于“信息工具框”时，如果按 `Tab`，则焦点会移至选定节点所在的同一大洲中的终结点  。 使用 `Right arrow` 和 `Left arrow` 键可浏览这些终结点。
 - 若要移至其他流终结点或大洲群集，请使用 `Tab` 向前移动，或使用 `Shift+Tab` 向后移动。
-- 焦点位于“大洲群集”时，可以使用 `Enter` 或 `Down` 箭头键突出显示大洲群集中的终结点。 若要在大洲群集的信息框中浏览终结点和使用关闭按钮，可分别使用 `Right arrow` 或 `Left arrow` 键向前或向后移动。 在任一终结点上，可以使用 `Shift+L` 切换到从选定节点到终结点的连接线。 可以再次按 `Shift+L` 以移至所选终结点。
+- 焦点位于“大洲群集”时，可以使用 `Enter` 或 `Down` 箭头键突出显示大洲群集中的终结点  。 若要在大洲群集的信息框中浏览终结点和使用关闭按钮，可分别使用 `Right arrow` 或 `Left arrow` 键向前或向后移动。 在任一终结点上，可以使用 `Shift+L` 切换到从选定节点到终结点的连接线。 可以再次按 `Shift+L` 以移至所选终结点。
         
 ### <a name="keyboard-navigation-at-any-stage"></a>任何阶段的键盘导航
     
@@ -301,10 +308,10 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
         
 ### <a name="keyboard-navigation-on-the-topology"></a>拓扑中的键盘导航
     
-- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点 (VNet)。
+- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点 (VNet)  。
 - 若要移至拓扑视图中其他突出显示的节点，请使用 `Shift+Right arrow` 键向前移动。 
-- 在突出显示的节点上，焦点会移至节点的“信息工具框”。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
-- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。
+- 在突出显示的节点上，焦点会移至节点的“信息工具框”  。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮   。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动  。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。 
+- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”  。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>如何在子网拓扑视图中使用键盘导航？
@@ -323,8 +330,8 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
         
 ### <a name="keyboard-navigation-on-the-topology"></a>拓扑中的键盘导航
     
-- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点（子网）。
+- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点（子网）。 
 - 若要移至拓扑视图中其他突出显示的节点，请使用 `Shift+Right arrow` 键向前移动。 
-- 在突出显示的节点上，焦点会移至节点的“信息工具框”。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
-- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。    
+- 在突出显示的节点上，焦点会移至节点的“信息工具框”  。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮   。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动  。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。 
+- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”  。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。    
 

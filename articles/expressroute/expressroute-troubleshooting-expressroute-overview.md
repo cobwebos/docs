@@ -9,10 +9,10 @@ ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117882"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
@@ -78,12 +78,12 @@ ms.locfileid: "66117882"
 
 ![4][4]    
 
-在 ExpressRoute 的“概要”中，“线路状态”表示 Microsoft 这一侧线路的状态。 “提供商状态”表示线路在服务提供商这一侧的状态是“已预配”还是“未预配”。 
+在 ExpressRoute 的“概要”中，“线路状态”表示 Microsoft 这一侧线路的状态。  “提供商状态”  表示线路在服务提供商这一侧的状态是“已预配”还是“未预配”。  
 
-若要确保 ExpressRoute 线路正常运行，“线路状态”必须为“已启用”，“提供商状态”必须为“已预配”。
+若要确保 ExpressRoute 线路正常运行，“线路状态”必须为“已启用”，“提供商状态”必须为“已预配”。    
 
 > [!NOTE]
-> 如果“线路状态”不是“已启用”，请与 [Microsoft 支持部门][Support]联系。 如果“提供商状态”不是“已预配”，请与服务提供商联系。
+> 如果“线路状态”不是“已启用”  ，请与 [Microsoft 支持部门][Support]联系。 如果“提供商状态”不是“已预配”，请与服务提供商联系。 
 >
 >
 
@@ -132,7 +132,7 @@ ms.locfileid: "66117882"
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> 如果“CircuitProvisioningState”不是“已启用”，请与 [Microsoft 支持部门][Support]联系。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。
+> 如果“CircuitProvisioningState”不是“已启用”  ，请与 [Microsoft 支持部门][Support]联系。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。 
 >
 >
 
@@ -160,7 +160,7 @@ ms.locfileid: "66117882"
 若要确认 ExpressRoute 线路是否正常运行，请特别注意以下字段：ServiceProviderProvisioningState：预配状态：Enabled
 
 > [!NOTE]
-> 如果“状态”不是“已启用”，请与 [Microsoft 支持部门][Support]联系。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。
+> 如果“状态”不是“已启用”  ，请与 [Microsoft 支持部门][Support]联系。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。 
 >
 >
 
@@ -231,7 +231,7 @@ ms.locfileid: "66117882"
 
 
 > [!NOTE]
-> 如果未启用对等互连，请检查分配的主要子网和辅助子网是否符合链接的 PE-MSEE 上的配置。 另请检查是否在 MSEE 上使用了正确的 VlanId、AzureASN 和 PeerASN，以及这些值是否映射到链接的 PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE 对上的共享密钥应相同。 若要更改 MSEE 路由器上的配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
+> 如果未启用对等互连，请检查分配的主要子网和辅助子网是否符合链接的 PE-MSEE 上的配置。 另请检查是否在 MSEE 上使用了正确的 VlanId  、AzureASN  和 PeerASN  ，以及这些值是否映射到链接的 PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE 对上的共享密钥应相同。 若要更改 MSEE 路由器上的配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
 >
 >
 
@@ -271,7 +271,7 @@ ms.locfileid: "66117882"
 >
 
 > [!NOTE]
-> 如果未启用对等互连，请检查分配的主要对等子网和辅助对等子网是否符合链接的 PE-MSEE 上的配置。 另请检查是否在 MSEE 上使用了正确的 VlanId、AzureAsn 和 PeerAsn，以及这些值是否映射到链接的 PE-MSEE 上使用的对应项。 若要更改 MSEE 路由器上的配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。
+> 如果未启用对等互连，请检查分配的主要对等子网和辅助对等子网是否符合链接的 PE-MSEE 上的配置。 另请检查是否在 MSEE 上使用了正确的 VlanId  、AzureAsn  和 PeerAsn  ，以及这些值是否映射到链接的 PE-MSEE 上使用的对应项。 若要更改 MSEE 路由器上的配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。
 >
 >
 
@@ -330,7 +330,7 @@ ms.locfileid: "66117882"
 如以上示例所示，该命令用于确定路由上下文已建立多长时间。 它还指示对等互连的路由器播发的路由前缀的数。
 
 > [!NOTE]
-> 如果状态为“活动”或“空闲”，请检查分配的主要对等子网和辅助对等子网是否符合链接的 PE-MSEE 上的配置。 另请检查是否在 MSEE 上使用了正确的 VlanId、AzureAsn 和 PeerAsn，以及这些值是否映射到链接的 PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE 对上的共享密钥应相同。 若要更改 MSEE 路由器上的配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。
+> 如果状态为“活动”或“空闲”，请检查分配的主要对等子网和辅助对等子网是否符合链接的 PE-MSEE 上的配置。 另请检查是否在 MSEE 上使用了正确的 VlanId  、AzureAsn  和 PeerAsn  ，以及这些值是否映射到链接的 PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE 对上的共享密钥应相同。 若要更改 MSEE 路由器上的配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。
 >
 >
 
@@ -339,7 +339,7 @@ ms.locfileid: "66117882"
 >
 >
 
-对于特定的“专用”路由上下文，若要获取“主要”路径上的 MSEE 提供的完整路由表，请使用以下命令：
+对于特定的“专用”路由上下文，若要获取“主要”路径上的 MSEE 提供的完整路由表，请使用以下命令   ：
 
     Get-AzureDedicatedCircuitPeeringRouteTableInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
 

@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a064fc67bf94ba6aa443e429fe83179d84cada84
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602662"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>在 PIM 中扩展或续订 Azure 资源角色分配
@@ -43,19 +43,19 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 引入了
 
 ### <a name="member-extend"></a>成员延期
 
-角色分配的成员可以直接通过资源的“我的角色”页上的“符合条件”或“活动”选项卡，或者通过 PIM 门户的“我的角色”顶级页延期即将过期的角色分配。 成员可以请求延期在后续 14 天过期的符合条件且处于活动状态（已分配）的角色。
+角色分配的成员可以直接通过资源的“我的角色”页上的“符合条件”或“活动”选项卡，或者通过 PIM 门户的“我的角色”顶级页延期即将过期的角色分配。     成员可以请求延期在后续 14 天过期的符合条件且处于活动状态（已分配）的角色。
 
 ![延期角色](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 
-如果分配结束日期时间在 14 天内，则“延期”按钮将在用户界面中变为有效链接。 以下示例假设当前日期为 3 月 27 日。
+如果分配结束日期时间在 14 天内，则“延期”按钮将在用户界面中变为有效链接。  以下示例假设当前日期为 3 月 27 日。
 
 ![扩展按钮](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-within-14.png)
 
-若要请求延期此角色分配，请选择“延期”打开请求窗体。
+若要请求延期此角色分配，请选择“延期”打开请求窗体。 
 
 ![打开请求窗体](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-role-assignment-request.png)
 
-若要查看有关原始分配的信息，请展开“分配详细信息”。 输入延期请求的原因，然后选择“延期”。
+若要查看有关原始分配的信息，请展开“分配详细信息”。  输入延期请求的原因，然后选择“延期”。 
 
 >[!Note]
 >我们建议详细说明为何有必要延期，以及要同意延期多久（如果知道此信息）。
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 引入了
 
 ![说明错误的通知](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-failed-existing-request.png)
 
-转到左窗格中的“待定的请求”选项卡查看请求状态或取消请求。
+转到左窗格中的“待定的请求”选项卡查看请求状态或取消请求。 
 
 ![挂起的请求](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-cancel-request.png)
 
@@ -74,21 +74,21 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 引入了
 
 当成员提交延期角色分配的请求时，资源管理员会收到一封电子邮件通知，其中包含原始分配的详细信息，以及请求的原因。 此通知还包含一个直接链接，让管理员批准或拒绝该请求。 
 
-除了使用电子邮件中的链接以外，管理员还可以通过转到 PIM 管理门户，并从左窗格中选择“审批请求”来批准或拒绝请求。
+除了使用电子邮件中的链接以外，管理员还可以通过转到 PIM 管理门户，并从左窗格中选择“审批请求”来批准或拒绝请求。 
 
 ![错误的屏幕截图](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-当管理员选择“批准”或“拒绝”时，将显示请求的详细信息，同时会显示一个字段，让管理员提供审核日志的理由。
+当管理员选择“批准”或“拒绝”时，将显示请求的详细信息，同时会显示一个字段，让管理员提供审核日志的理由。  
 
 ![批准角色分配请求](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
-批准延期角色分配的请求时，资源管理员可以选择新的开始日期和结束日期以及分配类型。 如果管理员希望提供受限的访问权限来完成特定的任务（例如，一天的访问权限），则可能需要更改分配类型。 在此示例中，管理员可将分配从“符合条件”更改为“活动”。 这意味着，他们可为请求者提供访问权限，而无需让请求者激活。
+批准延期角色分配的请求时，资源管理员可以选择新的开始日期和结束日期以及分配类型。 如果管理员希望提供受限的访问权限来完成特定的任务（例如，一天的访问权限），则可能需要更改分配类型。 在此示例中，管理员可将分配从“符合条件”更改为“活动”。   这意味着，他们可为请求者提供访问权限，而无需让请求者激活。
 
 ### <a name="admin-extend"></a>管理员延期
 
 如果角色成员忘记或者无法请求角色成员身份延期，管理员可以代表该成员延期分配。 角色成员身份的管理延期不需要审批，但在完成角色延期后，系统会向其他所有管理员发送通知。
 
-若要延期角色成员身份，请浏览到 PIM 中的资源角色或成员视图。 找到需要延期的成员。 在操作列中选择“延期”。
+若要延期角色成员身份，请浏览到 PIM 中的资源角色或成员视图。 找到需要延期的成员。 在操作列中选择“延期”。 
 
 ![延期角色成员资格](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-extend.png)
 
@@ -98,13 +98,13 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 引入了
 
 ### <a name="member-renew"></a>成员续订
 
-不再能够访问资源的成员可以访问最长 30 天的已过期分配历史记录。 为此，他们可以浏览到左窗格中的“我的角色”，并在 Azure 资源角色部分选择“已过期的角色”选项卡。
+不再能够访问资源的成员可以访问最长 30 天的已过期分配历史记录。 为此，他们可以浏览到左窗格中的“我的角色”，并在 Azure 资源角色部分选择“已过期的角色”选项卡。  
 
 ![过期的角色选项卡](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-myroles.png)
 
-显示的角色列表默认为“符合条件的角色”。 使用下拉菜单在“符合条件”与“活动”分配角色之间切换。
+显示的角色列表默认为“符合条件的角色”。  使用下拉菜单在“符合条件”与“活动”分配角色之间切换。
 
-若要请求续订列表中的任何角色分配，请选择“续订”操作。 然后提供请求原因。 建议提供持续时间和任何附加的上下文，以帮助资源管理员做出批准或拒绝的决定。
+若要请求续订列表中的任何角色分配，请选择“续订”操作。  然后提供请求原因。 建议提供持续时间和任何附加的上下文，以帮助资源管理员做出批准或拒绝的决定。
 
 ![续订角色分配](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-request-form.png)
 
@@ -112,11 +112,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 引入了
 
 ### <a name="admin-approves"></a>管理员审批
 
-资源管理员可以通过电子邮件通知中的链接，或者在 Azure 门户中访问 PIM 并从左窗格中选择“审批请求”，来访问续订请求。
+资源管理员可以通过电子邮件通知中的链接，或者在 Azure 门户中访问 PIM 并从左窗格中选择“审批请求”，来访问续订请求。 
 
 ![审批请求](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-当管理员选择“批准”或“拒绝”时，将显示请求的详细信息，同时会显示一个字段，让管理员提供审核日志的理由。
+当管理员选择“批准”或“拒绝”时，将显示请求的详细信息，同时会显示一个字段，让管理员提供审核日志的理由。  
 
 ![批准角色分配](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
@@ -124,9 +124,9 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 引入了
 
 ### <a name="admin-renew"></a>管理员续订
 
-资源管理员可以通过资源左侧导航菜单中的“成员”选项卡，续订已过期的角色分配。 他们也可以在资源角色的“已过期角色”选项卡中续订已过期的角色分配。
+资源管理员可以通过资源左侧导航菜单中的“成员”选项卡，续订已过期的角色分配。  他们也可以在资源角色的“已过期角色”选项卡中续订已过期的角色分配。 
 
-若要查看所有已过期角色分配的列表，请在“成员”屏幕中选择“已过期角色”。
+若要查看所有已过期角色分配的列表，请在“成员”屏幕中选择“已过期角色”。  
 
 ![已过期角色](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-member-blade.png)
 

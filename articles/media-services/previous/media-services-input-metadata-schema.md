@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: fa4487b07f130947ac5da2a5dbae6776b06acbe7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463763"
 ---
 # <a name="input-metadata"></a>输入元数据 
@@ -48,14 +48,14 @@ ms.locfileid: "61463763"
  请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | 描述 |
+| Name | 类型 | 描述 |
 | --- | --- | --- |
-| **名称**<br /><br /> 需要 |**xs:string** |资产文件名。 |
-| **大小**<br /><br /> 需要 |**xs:long** |资产文件的大小（以字节为单位）。 |
+| **名称**<br /><br /> 必选 |**xs:string** |资产文件名。 |
+| **大小**<br /><br /> 必选 |**xs:long** |资产文件的大小（以字节为单位）。 |
 | **持续时间**<br /><br /> 需要 |**xs:duration** |内容播放持续时间。 示例：Duration="PT25M37.757S"。 |
 | **NumberOfStreams**<br /><br /> 需要 |**xs:int** |资产文件中的流数。 |
-| **FormatNames**<br /><br /> 需要 |**xs: string** |格式名。 |
-| **FormatVerboseNames**<br /><br /> 需要 |**xs: string** |格式详细名称。 |
+| **FormatNames**<br /><br /> 必选 |**xs: string** |格式名。 |
+| **FormatVerboseNames**<br /><br /> 必选 |**xs: string** |格式详细名称。 |
 | **StartTime** |**xs:duration** |内容开始时间。 示例：StartTime="PT2.669S"。 |
 | **OverallBitRate** |**xs: int** |资产文件的平均比特率（以 kbps 为单位）。 |
 
@@ -70,15 +70,15 @@ ms.locfileid: "61463763"
 | **节目**<br /><br /> minOccurs=“0” | |资产文件采用 MPEG-TS 格式时，所有[节目元素](media-services-input-metadata-schema.md#Programs)的集合。 |
 | **VideoTracks**<br /><br /> minOccurs=“0” | |每个物理资产文件可包含交错成适当容器格式的零个或多个视频轨道。 此元素包含所有 [VideoTracks](media-services-input-metadata-schema.md#VideoTracks)（属于资产文件）的集合。 |
 | **AudioTracks**<br /><br /> minOccurs=“0” | |每个物理资产文件可包含交错成适当容器格式的零个或多个音频轨。 此元素包含所有 [AudioTracks](media-services-input-metadata-schema.md#AudioTracks)（属于资产文件）的集合。 |
-| **元数据**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |资产文件的元数据表示为键\值字符串。 例如：<br /><br /> &lt;元数据键 ="language" 值="eng" /&gt; |
+| **元数据**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |资产文件的元数据表示为键\值字符串。 例如：<br /><br /> &lt;元数据键 ="language" 值="eng" /&gt;  |
 
 ## <a name="TrackType"></a> TrackType
 请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | 描述 |
+| Name | 类型 | 描述 |
 | --- | --- | --- |
-| **Id**<br /><br /> 需要 |**xs:int** |此音频轨或视频轨从零开始的索引。<br /><br /> 这不一定是 MP4 文件中使用的 TrackID。 |
+| **Id**<br /><br /> 必选 |**xs:int** |此音频轨或视频轨从零开始的索引。<br /><br /> 这不一定是 MP4 文件中使用的 TrackID。 |
 | **编解码器** |**xs:string** |视频轨编解码器字符串。 |
 | **CodecLongName** |**xs: string** |音频或视频轨编解码器长名称。 |
 | **TimeBase**<br /><br /> 需要 |**xs:string** |时间基数。 示例：TimeBase="1/48000" |
@@ -92,10 +92,10 @@ ms.locfileid: "61463763"
 > 
 
 ### <a name="child-elements"></a>子元素
-| 名称 | 类型 | 描述 |
+| Name | 类型 | 描述 |
 | --- | --- | --- |
 | **处置**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |包含演示信息（例如，特定音频轨是否适用于视觉障碍人士）。 |
-| Metadata<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |可用于保存各种信息的通用键/值字符串。 例如，key=”language” 和 value=”eng”。 |
+| Metadata <br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |可用于保存各种信息的通用键/值字符串。 例如，key=”language” 和 value=”eng”。 |
 
 ## <a name="AudioTrackType"></a> AudioTrackType（继承自 TrackType）
  **AudioTrackType** 是继承自 [TrackType](media-services-input-metadata-schema.md#TrackType) 的全局复杂类型。  
@@ -105,12 +105,12 @@ ms.locfileid: "61463763"
  请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | 描述 |
+| Name | 类型 | 描述 |
 | --- | --- | --- |
 | **SampleFormat** |**xs:string** |示例格式。 |
 | **ChannelLayout** |**xs: string** |通道布局。 |
 | **通道**<br /><br /> 需要 |**xs:int** |音频通道数（0 个或多个）。 |
-| **SamplingRate**<br /><br /> 需要 |**xs:int** |音频采样速率（以采样数/秒或 Hz 为单位）。 |
+| **SamplingRate**<br /><br /> 必选 |**xs:int** |音频采样速率（以采样数/秒或 Hz 为单位）。 |
 | **Bitrate** |**xs:int** |由资产文件计算的平均音频比特率（以 bps 为单位）。 只对基本流有效负载进行计算，且不包括打包开销。 |
 | **BitsPerSample** |**xs:int** |wFormatTag 格式类型的每个样本位数。 |
 
@@ -128,14 +128,14 @@ ms.locfileid: "61463763"
 | **配置文件** |**xs: string** |视频轨的配置文件。 |
 | **级别** |**xs: string** |视频轨的级别。 |
 | **PixelFormat** |**xs: string** |视频轨的像素格式。 |
-| Width<br /><br /> 需要 |**xs:int** |编码视频宽度（以像素为单位）。 |
-| **高度**<br /><br /> 需要 |**xs:int** |编码视频高度（以像素为单位）。 |
-| **DisplayAspectRatioNumerator**<br /><br /> 需要 |**xs: double** |视频显示纵横比分子。 |
-| **DisplayAspectRatioDenominator**<br /><br /> 需要 |**xs:double** |视频显示纵横比分母。 |
+| Width <br /><br /> 必选 |**xs:int** |编码视频宽度（以像素为单位）。 |
+| **高度**<br /><br /> 必选 |**xs:int** |编码视频高度（以像素为单位）。 |
+| **DisplayAspectRatioNumerator**<br /><br /> 必选 |**xs: double** |视频显示纵横比分子。 |
+| **DisplayAspectRatioDenominator**<br /><br /> 必选 |**xs:double** |视频显示纵横比分母。 |
 | **DisplayAspectRatioDenominator**<br /><br /> 需要 |**xs: double** |视频采样纵横比分子。 |
 | **SampleAspectRatioNumerator** |**xs: double** |视频采样纵横比分子。 |
 | **SampleAspectRatioNumerator** |**xs:double** |视频采样纵横比分母。 |
-| **FrameRate**<br /><br /> 需要 |**xs:decimal** |采用 .3f 格式测量的视频帧速率。 |
+| **FrameRate**<br /><br /> 必选 |**xs:decimal** |采用 .3f 格式测量的视频帧速率。 |
 | **比特率** |**xs:int** |从资产文件计算的平均视频比特率（以千比特/秒为单位）。 只对基本流有效负载进行计算，且不包括打包开销。 |
 | **MaxGOPBitrate** |**xs: int** |此视频轨道的最大 GOP 平均比特率，以千比特/秒为单位。 |
 | **HasBFrames** |**xs:int** |B 帧的视频轨数量。 |
@@ -148,19 +148,19 @@ ms.locfileid: "61463763"
 ### <a name="attributes"></a>属性
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
-| **键**<br /><br /> 需要 |**xs:string** |键/值对中的键。 |
+| **键**<br /><br /> 必选 |**xs:string** |键/值对中的键。 |
 | **值**<br /><br /> 需要 |**xs:string** |键/值对中的值。 |
 
 ## <a name="ProgramType"></a> ProgramType
 **ProgramType** 是描述节目的全局复杂类型。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | 描述 |
+| Name | 类型 | 描述 |
 | --- | --- | --- |
-| **ProgramId**<br /><br /> 需要 |**xs:int** |节目 ID |
-| **NumberOfPrograms**<br /><br /> 需要 |**xs:int** |节目的数量。 |
-| **PmtPid**<br /><br /> 需要 |**xs:int** |节目映射表 (PMT) 包含有关节目的信息。  有关详细信息，请参阅 [PMt](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT)。 |
-| **PcrPid**<br /><br /> 需要 |**xs: int** |由解码器使用。 有关详细信息，请参阅 [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) |
+| **ProgramId**<br /><br /> 必选 |**xs:int** |节目 ID |
+| **NumberOfPrograms**<br /><br /> 必选 |**xs:int** |节目的数量。 |
+| **PmtPid**<br /><br /> 必选 |**xs:int** |节目映射表 (PMT) 包含有关节目的信息。  有关详细信息，请参阅 [PMt](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT)。 |
+| **PcrPid**<br /><br /> 必选 |**xs: int** |由解码器使用。 有关详细信息，请参阅 [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) |
 | **StartPTS** |**xs: long** |开始演示时间戳。 |
 | **EndPTS** |**xs: long** |结束演示时间戳。 |
 
@@ -170,25 +170,25 @@ ms.locfileid: "61463763"
 请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="attributes"></a>属性
-| 名称 | 类型 | 描述 |
+| Name | 类型 | 描述 |
 | --- | --- | --- |
-| **默认**<br /><br /> 需要 |**xs: int** |将此属性设置为 1，表示此为默认演示。 |
+| **默认**<br /><br /> 必选 |**xs: int** |将此属性设置为 1，表示此为默认演示。 |
 | **复录**<br /><br /> 需要 |**xs:int** |将此属性设置为 1，表示此为译制演示。 |
 | **原始**<br /><br /> 需要 |**xs: int** |将此属性设置为 1，表示此为原始演示。 |
-| **评论**<br /><br /> 需要 |**xs:int** |将此属性设置为 1，表示此轨道包含注释。 |
-| **歌词**<br /><br /> 需要 |**xs:int** |将此属性设置为 1，表示此轨道包含歌词。 |
-| **卡拉 Ok**<br /><br /> 需要 |**xs:int** |将此属性设置为 1，表示此为卡拉 OK 轨道（仅背景音乐，没有歌唱部分）。 |
-| **强制**<br /><br /> 需要 |**xs:int** |将此属性设置为 1，表示此为强制演示。 |
-| **HearingImpaired**<br /><br /> 需要 |**xs:int** |将此属性设置为 1，表示此轨道用于听力不好的用户。 |
+| **评论**<br /><br /> 必选 |**xs:int** |将此属性设置为 1，表示此轨道包含注释。 |
+| **歌词**<br /><br /> 必选 |**xs:int** |将此属性设置为 1，表示此轨道包含歌词。 |
+| **卡拉 Ok**<br /><br /> 必选 |**xs:int** |将此属性设置为 1，表示此为卡拉 OK 轨道（仅背景音乐，没有歌唱部分）。 |
+| **强制**<br /><br /> 必选 |**xs:int** |将此属性设置为 1，表示此为强制演示。 |
+| **HearingImpaired**<br /><br /> 必选 |**xs:int** |将此属性设置为 1，表示此轨道针对听觉障碍人士。 |
 | **VisualImpaired**<br /><br /> 需要 |**xs:int** |将此属性设置为 1，表示此轨道用于视觉障碍人士。 |
-| **CleanEffects**<br /><br /> 需要 |**xs: int** |将此属性设置为 1，表示该轨道有清晰的效果。 |
-| **AttachedPic**<br /><br /> 需要 |**xs: int** |将此属性设置为 1，表示该轨道包含图片。 |
+| **CleanEffects**<br /><br /> 必选 |**xs: int** |将此属性设置为 1，表示该轨道有清晰的效果。 |
+| **AttachedPic**<br /><br /> 必选 |**xs: int** |将此属性设置为 1，表示该轨道包含图片。 |
 
 ## <a name="Programs"></a> Programs 元素
 拥有多个**节目**元素的包装元素。  
 
 ### <a name="child-elements"></a>子元素
-| 名称 | 类型 | 描述 |
+| Name | 类型 | 描述 |
 | --- | --- | --- |
 | **节目**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |对于 MPEG-TS 格式的资产文件，包含有关资产文件中节目的信息。 |
 
@@ -198,7 +198,7 @@ ms.locfileid: "61463763"
  请参阅本文末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
 
 ### <a name="child-elements"></a>子元素
-| 名称 | 类型 | 描述 |
+| Name | 类型 | 描述 |
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[VideoTrackType（继承自 TrackType）](media-services-input-metadata-schema.md#VideoTrackType) |包含有关资产文件中视频轨的信息。 |
 

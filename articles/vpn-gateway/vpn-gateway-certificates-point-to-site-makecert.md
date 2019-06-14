@@ -3,17 +3,16 @@ title: 生成并导出用于点到站点的证书：MakeCert：Azure | Microsoft
 description: 使用 MakeCert 创建自签名根证书、导出公钥和生成客户端证书。
 services: vpn-gateway
 documentationcenter: na
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-origin.date: 09/05/2018
-ms.date: 10/01/2018
-ms.author: v-jay
+ms.date: 09/05/2018
+ms.author: cherylmc
 ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60768100"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>使用 Makecert 为点到站点连接生成并导出证书
@@ -62,8 +61,8 @@ ms.locfileid: "60768100"
  
 1. 在用于创建自签名证书的同一台计算机上，以管理员身份打开命令提示符。
 2. 修改并运行示例，生成客户端证书。
-   * 将“P2SRootCert”更改为生成客户端证书所用的自签名根证书的名称。 确保使用的是根证书的名称，即创建根证书时指定的“CN=”值。
-   * 将 P2SChildCert 更改为生成客户端证书所用的名称。
+   * 将“P2SRootCert”更改为生成客户端证书所用的自签名根证书的名称  。 确保使用的是根证书的名称，即创建根证书时指定的“CN=”值。
+   * 将 P2SChildCert  更改为生成客户端证书所用的名称。
 
    如果未经修改就运行以下示例，则个人证书存储中将有一个从根证书 P2SRootCert 生成的客户端证书，名为 P2SChildcert。
 

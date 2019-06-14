@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 5fbe08bb9ebc355074a790f7732c9de10eaad859
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707100"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
@@ -24,7 +24,7 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 
 ## <a name="two-ways-to-authenticate"></a>进行身份验证的两种方式
 
-**密钥** - 对于所有 Power BI 工作区集合 REST API 调用，可以使用密钥。 在 **Microsoft Azure 门户**中，可以通过依次选择“所有设置”和“访问密钥”来找到密钥。 请始终像对待密码一样对待密钥。 这些密钥有权在特定的工作区集合上执行任何 REST API 调用。
+**密钥** - 对于所有 Power BI 工作区集合 REST API 调用，可以使用密钥。 在 **Microsoft Azure 门户**中，可以通过依次选择“所有设置”和“访问密钥”来找到密钥。   请始终像对待密码一样对待密钥。 这些密钥有权在特定的工作区集合上执行任何 REST API 调用。
 
 若要在 REST 调用中使用密钥，请添加以下授权标头：
 
@@ -39,9 +39,9 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 | 声明 | 描述 |    
 | --- | --- |
 | **ver** |应用令牌的版本。 当前版本为 0.2.0。 |
-| **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，请使用：https:\//analysis.windows.net/powerbi/api。 |
+| **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，请使用：https:\//analysis.windows.net/powerbi/api  。 |
 | **iss** |一个字符串，指示颁发了令牌的应用程序。 |
-| type |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
+| **type** |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
 | **wcn** |要为其颁发令牌的工作区集合名称。 |
 | **wid** |要为其颁发令牌的工作区 ID。 |
 | **rid** |要为其颁发令牌的报表 ID。 |

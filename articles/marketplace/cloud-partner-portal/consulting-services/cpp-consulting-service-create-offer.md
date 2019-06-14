@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
 ms.openlocfilehash: 09b9dce8e30ed3ba5ad0bac58929cd2c6d71793c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942835"
 ---
 # <a name="create-a-consulting-offer"></a>创建咨询产品/服务
@@ -25,14 +25,14 @@ ms.locfileid: "64942835"
 ## <a name="create-a-new-offer"></a>创建新套餐
 
 若要创建新套餐，请执行以下步骤。
-1. 在云合作伙伴门户的主菜单中，选择“新建套餐”。
-1. 在“新建套餐”菜单中，选择“咨询服务”。
+1. 在云合作伙伴门户的主菜单中，选择“新建套餐”。 
+1. 在“新建套餐”菜单中，选择“咨询服务”   。
 
     ![创建新的咨询服务套餐](media/cppselectnewconsultingoffer.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-咨询服务套餐类型的“新建套餐”页提供一组选项卡和表单字段用于创建新的套餐。 以下文章介绍了如何使用选项卡来为新套餐定义套餐设置和店面详细信息：
+咨询服务套餐类型的“新建套餐”页提供一组选项卡和表单字段用于创建新的套餐  。 以下文章介绍了如何使用选项卡来为新套餐定义套餐设置和店面详细信息：
 
 -   [定义产品/服务设置](./cpp-consulting-service-define-offer-settings.md)
 -   [输入店面详细信息，以及是要在 Azure 市场还是 AppSource 中发布](./cpp-consulting-service-storefront-details.md)

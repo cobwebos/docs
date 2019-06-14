@@ -10,10 +10,10 @@ ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
 ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61289168"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js 中的 Azure 搜索入门
@@ -45,7 +45,7 @@ ms.locfileid: "61289168"
 创建服务后，请返回到门户，获取 URL 或 `api-key`。 搜索服务的连接要求具有 URL 和 `api-key` 对调用进行身份验证。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在跳转栏中，单击“搜索服务”，列出为订阅预配的所有 Azure 搜索服务。
+2. 在跳转栏中，单击“搜索服务”  ，列出为订阅预配的所有 Azure 搜索服务。
 3. 选择要使用的服务。
 4. 在服务仪表板中会看到基本信息的磁贴，例如用于访问管理密钥的密钥图标。
 5. 复制服务 URL、管理密钥和查询密钥。 之后将其添加到 config.js 文件时，需要这三项内容。
@@ -54,7 +54,7 @@ ms.locfileid: "61289168"
 使用以下方法之一下载该示例。
 
 1. 转到[搜索节点索引器演示](https://github.com/Azure-Samples/search-node-indexer-demo)。
-2. 单击“下载 ZIP” ，保存该 .zip 文件，并解压缩其包含的所有文件。
+2. 单击“下载 ZIP”  ，保存该 .zip 文件，并解压缩其包含的所有文件。
 
 将对此文件夹中的文件进行所有后续文件修改并运行语句。
 
@@ -85,7 +85,7 @@ ms.locfileid: "61289168"
 4. 将浏览器指向 `http://localhost:8080/index.html`
 
 ## <a name="search-on-usgs-data"></a>搜索 USGS 数据
-USGS 数据集包含罗得岛州的相关记录。 如果在空白搜索框中单击“搜索”，按照默认设置，会获得前 50 个条目。
+USGS 数据集包含罗得岛州的相关记录。 如果在空白搜索框中单击“搜索”  ，按照默认设置，会获得前 50 个条目。
 
 输入搜索词，为搜索引擎提供可搜索的内容。 尝试输入区域名称。 “Roger Williams”是罗得岛的第一任州长。 许多公园、建筑和学校都以他的名字命名。
 

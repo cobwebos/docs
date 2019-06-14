@@ -1,27 +1,27 @@
 ---
 title: Azure Database for MariaDB 驱动程序和管理工具兼容性
-description: 本文介绍的 MariaDB 驱动程序和使用 Azure Database for MariaDB 兼容的管理工具。
+description: 本文介绍与 Azure Database for MariaDB 兼容的 MariaDB 驱动程序和管理工具。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.openlocfilehash: 7a3d9a5f87a565625052fc54e3ecccc99fd928a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61386796"
 ---
-# <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB 驱动程序和管理工具与 Azure Database for MariaDB 兼容
+# <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>与 Azure Database for MariaDB 兼容的 MariaDB 驱动程序和管理工具
 
-本文介绍的驱动程序和使用 Azure Database for MariaDB 兼容的管理工具。
+本文介绍与 Azure Database for MariaDB 兼容的驱动程序和管理工具。
 
 ## <a name="mariadb-drivers"></a>MariaDB 驱动程序
 
-Azure Database for MariaDB 使用 MariaDB server 社区版。 因此，它与多种编程语言和驱动程序兼容。 MariaDB 的 API 和协议都与所使用的 MySQL 兼容。 这意味着工作与 MySQL 配合使用的连接器也应使用 MariaDB。
+Azure Database for MariaDB 使用 MariaDB 服务器社区版。 因此，它与多种编程语言和驱动程序兼容。 MariaDB 的 API 和协议兼容 MySQL 所使用的 API 和协议。 这意味着，兼容 MySQL 的连接器也应兼容 MariaDB。
 
-目标是支持三个最新版本 MariaDB 驱动程序，并与来自开源社区的作者努力不断改进的功能和可用性的 MariaDB 驱动程序继续。 下表中提供了经过测试和使用 Azure Database for MariaDB 10.2 兼容的驱动程序的列表：
+目标是支持三个最新版本的 MariaDB 驱动程序，并且与来自开源社区的创建者共同努力，不断改进 MariaDB 驱动程序的功能和可用性。 下表提供了已测试并确认与 Azure Database for MariaDB 10.2 兼容的驱动程序列表：
 
 **驱动程序** | **链接** | **兼容版本** | **不兼容版本** | **说明**
 ---|---|---|---|---
@@ -35,7 +35,7 @@ Java | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 �
 
 ## <a name="management-tools"></a>管理工具
 
-兼容性优势也适用于数据库管理工具。 现有工具应继续使用 Azure 数据库的 MariaDB，只要数据库操作在范围内的用户权限。 下表列出了三个常见数据库管理工具的已测试并发现要使用 Azure Database for MariaDB 10.2 兼容：
+兼容性优势也适用于数据库管理工具。 只要数据库操作在用户权限范围内，现有工具应继续与 Azure Database for MariaDB 配合使用。 下表列出了已测试并确认与 Azure Database for MariaDB 10.2 兼容的三种常用数据库管理工具：
 
 | | **MySQL Workbench 6.x 及以上版本** | **Navicat 12** | **PHPMyAdmin 4.x 及以上版本**
 ---|---|---|---

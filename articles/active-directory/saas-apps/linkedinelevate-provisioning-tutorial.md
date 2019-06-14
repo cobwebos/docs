@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: adefb0c88e88a8bfb4b896c0788654e478ff4555
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963690"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>教程：为 LinkedIn Elevate 配置自动用户预配
@@ -55,22 +55,22 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 本部分指导完成以下操作：将 Azure AD 连接到 LinkedIn Elevate 的 SCIM 用户帐户预配 API，配置预配服务以便基于 Azure AD 中的用户和组分配在 LinkedIn Elevate 中创建、更新和禁用所分配的用户帐户。
 
-提示：还可以选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 LinkedIn Elevate 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
+ 提示：还可以选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 LinkedIn Elevate 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>若要在 Azure AD 中配置 LinkedIn Elevate 的自动用户帐户预配，请执行以下操作：
 
-第一步是检索 LinkedIn 访问令牌。 如果是企业管理员，则可以自己预配一个访问令牌。 在帐户中心内，转到“设置”&gt;“全局设置”并打开“SCIM 设置”面板。
+第一步是检索 LinkedIn 访问令牌。 如果是企业管理员，则可以自己预配一个访问令牌。 在帐户中心内，转到“设置”&gt;“全局设置”并打开“SCIM 设置”面板。  
 
 > [!NOTE]
 > 如果是要直接（而不是通过某个链接）访问帐户中心，可以使用以下步骤进行访问。
 
 1. 登录到帐户中心。
 
-2. 选择“管理”&gt;“管理设置”。
+2. 选择“管理”&gt;“管理设置”。 
 
-3. 在左侧的边栏中，单击“高级集成”。 将被定向到帐户中心。
+3. 在左侧的边栏中，单击“高级集成”。  将被定向到帐户中心。
 
-4. 单击“+ 添加新的 SCIM 配置”并填写每个字段来完成该过程。
+4. 单击“+ 添加新的 SCIM 配置”并填写每个字段来完成该过程。 
 
     > [!NOTE]
     > 如果未启用自动分配许可证，则意味着只有用户数据是同步的。
@@ -82,41 +82,41 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![LinkedIn Elevate 预配](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
-5. 单击“生成令牌”。 应当可以看到访问令牌显示在“访问令牌”字段下。
+5. 单击“生成令牌”。  应当可以看到访问令牌显示在“访问令牌”字段下。 
 
 6. 离开页面之前将你的访问令牌保存到剪贴板或计算机。
 
-7. 接下来，登录到[Azure 门户](https://portal.azure.com)，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
+7. 接下来，登录到[Azure 门户](https://portal.azure.com)，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”  部分。
 
-8. 如果已为 LinkedIn Elevate 配置了单一登录，请使用搜索字段搜索 LinkedIn Elevate 实例。 否则，请选择“添加”并在应用程序库中搜索“LinkedIn Elevate”。 从搜索结果中选择 LinkedIn Elevate，并将其添加到应用程序列表。
+8. 如果已为 LinkedIn Elevate 配置了单一登录，请使用搜索字段搜索 LinkedIn Elevate 实例。 否则，请选择“添加”  并在应用程序库中搜索“LinkedIn Elevate”  。 从搜索结果中选择 LinkedIn Elevate，并将其添加到应用程序列表。
 
-9. 选择 LinkedIn Elevate 实例，并选择“预配”选项卡。
+9. 选择 LinkedIn Elevate 实例，并选择“预配”  选项卡。
 
-10. 将“预配模式”设置为“自动”。
+10. 将“预配模式”  设置为“自动”  。
 
     ![LinkedIn Elevate 预配](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
-11. 在“管理员凭据”下填写以下字段：
+11. 在“管理员凭据”  下填写以下字段：
 
-    * 在“租户 URL”字段中，输入 `https://api.linkedin.com`。
+    * 在“租户 URL”  字段中，输入 `https://api.linkedin.com`。
 
-    * 在“密钥标记”字段中，输入在第 1 步中生成的访问令牌并单击“测试连接”。
+    * 在“密钥标记”字段中，输入在第 1 步中生成的访问令牌并单击“测试连接”。  
 
     * 应当会在门户的右上端看到一条成功通知。
 
-12. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
+12. 在“通知电子邮件”  字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
 13. 单击“ **保存**”。
 
-14. 在“属性映射”部分中，查看将从 Azure AD 同步到 LinkedIn Elevate 的用户和组属性。 请注意，选为**匹配**属性的属性用于匹配 LinkedIn Elevate 中的用户帐户和组以执行更新操作。 选择“保存”按钮以提交任何更改。
+14. 在“属性映射”  部分中，查看将从 Azure AD 同步到 LinkedIn Elevate 的用户和组属性。 请注意，选为**匹配**属性的属性用于匹配 LinkedIn Elevate 中的用户帐户和组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![LinkedIn Elevate 预配](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
-15. 要为 LinkedIn Elevate 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+15. 要为 LinkedIn Elevate 启用 Azure AD 预配服务，请在“设置”  部分中将“预配状态”更改  为“启用” 
 
 16. 单击“ **保存**”。
 
-这会开始对在“用户和组”部分中分配给 LinkedIn Elevate 的任何用户和/或组进行初始同步。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 LinkedIn Elevate 应用执行的所有操作。
+这会开始对在“用户和组”部分中分配给 LinkedIn Elevate 的任何用户和/或组进行初始同步。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”  部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 LinkedIn Elevate 应用执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 

@@ -15,10 +15,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f54e08e6c3b7b673541f124a90f32dbc860fa44
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65859538"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>应用程序代理和 Qlik Sense 
@@ -38,22 +38,22 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 
 
 1. 以全局管理员身份登录到 Azure 门户。 
-2. 选择“Azure Active Directory” > “企业应用程序”。 
-3. 单击边栏选项卡顶部的“添加”。 
-4. 选择“本地应用程序”。 
+2. 选择“Azure Active Directory” > “企业应用程序”。   
+3. 单击边栏选项卡顶部的“添加”。  
+4. 选择“本地应用程序”。  
 5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置： 
    - **内部 URL**：此应用程序具有的内部 URL 本身应为 QlikSense URL。 例如，**https&#58;//demo.qlikemm.com:4244** 
    - **预身份验证方法**：Azure Active Directory（推荐使用但并非必需项） 
-1. 选择边栏选项卡底部的“添加”。 添加应用程序后，将打开快速启动菜单。 
-2. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。 确保此测试帐户有权访问本地应用程序。 
-3. 选择“分配”，保存测试用户分配。 
-4. （可选）在应用管理边栏选项卡中选择“单一登录”。 从下拉菜单中选择“Kerberos 约束委派”，然后根据 Qlik 配置填写必填字段。 选择“保存”。 
+1. 选择边栏选项卡底部的“添加”。  添加应用程序后，将打开快速启动菜单。 
+2. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。  确保此测试帐户有权访问本地应用程序。 
+3. 选择“分配”，保存测试用户分配。  
+4. （可选）在应用管理边栏选项卡中选择“单一登录”。 从下拉菜单中选择“Kerberos 约束委派”，然后根据 Qlik 配置填写必填字段  。 选择“保存”。  
 
 ### <a name="application-2"></a>应用程序 2： 
 按照应用程序 1 的相同步骤操作，但存在以下例外： 
 
-**步骤 5**：内部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 HTTPS 的默认端口为 4244，HTTP 的默认端口为 4248。 例如：**https&#58;//demo.qlik.com:4244**</br></br> 
-**步骤 10：** 请勿设置 SSO，并禁用“单一登录”****
+**步骤 5**：内部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 HTTPS 的默认端口为 4244，HTTP 的默认端口为 4248  。 例如：**https&#58;//demo.qlik.com:4244**</br></br> 
+**步骤 10：** 请勿设置 SSO，并禁用“单一登录” ****
  
  
 ## <a name="testing"></a>正在测试 

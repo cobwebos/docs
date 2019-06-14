@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 4843828c89b04e36b0bcc73dcedf9c5735b73729
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610857"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>安全框架：审核和日志记录 | 缓解措施 
@@ -26,7 +26,7 @@ ms.locfileid: "60610857"
 | 产品/服务 | 文章 |
 | --------------- | ------- |
 | **Dynamics CRM**    | <ul><li>[识别解决方案中的敏感实体并实现更改审核](#sensitive-entities)</li></ul> |
-| **Web 应用程序** | <ul><li>[确保在应用程序中强制实施审核与日志记录](#auditing)</li><li>[确保实施日志轮转和分离](#log-rotation)</li><li>[确保应用程序不会记录敏感的用户数据](#log-sensitive-data)</li><li>[确保对审核与日志文件限制访问](#log-restricted-access)</li><li>[确保记录用户管理事件](#user-management)</li><li>[确保在系统中针对滥用提供内置防御机制](#inbuilt-defenses)</li><li>[在 Azure 应用服务中启用 Web 应用的诊断日志记录](#diagnostics-logging)</li></ul> |
+| **Web 应用程序** | <ul><li>[确保在应用程序中强制实施审核与日志记录](#auditing)</li><li>[确保实施日志轮转和分离](#log-rotation)</li><li>[确保应用程序不会记录敏感的用户数据](#log-sensitive-data)</li><li>[确保对审核与日志文件限制访问](#log-restricted-access)</li><li>[确保记录用户管理事件](#user-management)</li><li>[确保在系统中针对滥用提供内置防御机制](#inbuilt-defenses)</li><li>[在 Azure 应用服务中为应用启用诊断日志记录](#diagnostics-logging)</li></ul> |
 | **数据库** | <ul><li>[确保在 SQL Server 中启用登录审核](#identify-sensitive-entities)</li><li>[在 Azure SQL 中启用威胁检测](#threat-detection)</li></ul> |
 | **Azure 存储** | <ul><li>[使用 Azure 存储分析来审核对 Azure 存储的访问](#analytics)</li></ul> |
 | **WCF** | <ul><li>[实现充分的日志记录](#sufficient-logging)</li><li>[实现充分的审核失败处理](#audit-failure-handling)</li></ul> |
@@ -38,8 +38,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Dynamics CRM | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -49,8 +49,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -60,8 +60,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -71,8 +71,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -82,8 +82,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -93,8 +93,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -104,8 +104,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -115,8 +115,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
 | **参考**              | 不适用  |
@@ -126,8 +126,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [配置登录审核](https://msdn.microsoft.com/library/ms175850.aspx) |
@@ -137,8 +137,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | SQL Azure |
 | **属性**              | SQL 版本 - V12 |
 | **参考**              | [SQL 数据库威胁检测入门](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
@@ -148,7 +148,7 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
+| 组件                | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用 |
@@ -159,8 +159,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | .NET framework |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
@@ -188,8 +188,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | .NET framework |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
@@ -215,8 +215,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -226,8 +226,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 现场网关 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -237,8 +237,8 @@ ms.locfileid: "60610857"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 云网关 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [IoT 中心操作监视简介](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
 ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65070820"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>手动停止或启动 Azure 容器实例中的容器
@@ -28,7 +28,7 @@ ms.locfileid: "65070820"
 
 停止操作不起如果容器组已终止 （处于 Succeeded 或 Failed 状态）。 例如，包含已成功运行的一次性运行容器任务的容器组终止处于成功状态。 尝试停止组中的状态不会更改状态。 
 
-## <a name="start"></a>开始
+## <a name="start"></a>Start
 
 时已停止的容器组的或者因为靠自己终止容器或手动停止组-你可以启动容器。 例如，使用[az 容器开始][ az-container-start]命令或 Azure 门户在组中，手动启动容器。 如果更新了任何容器的容器映像，则会拉取一个新映像。 
 

@@ -10,10 +10,10 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62120120"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>使用 Azure Monitor 日志跟踪 B2B 消息
@@ -45,31 +45,31 @@ ms.locfileid: "62120120"
 
 Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应用 B2B**解决方案添加到 Azure Monitor 日志。 详细了解如何[将解决方案添加到 Azure Monitor 日志](../azure-monitor/learn/quick-create-workspace.md)。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中查找“log analytics”，并选择“Log Analytics”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。  在搜索框中查找“log analytics”，并选择“Log Analytics”  。
 
    ![选择“Log Analytics”](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
-1. 在“Log Analytics”下，查找并选择你的 Log Analytics 工作区。 
+1. 在“Log Analytics”下  ，查找并选择你的 Log Analytics 工作区。 
 
    ![选择 Log Analytics 工作区](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-1. 在“开始使用 Log Analytics” > “配置监视解决方案”下，选择“查看解决方案”。
+1. 在“开始使用 Log Analytics” > “配置监视解决方案”下，选择“查看解决方案”    。
 
    ![选择“查看解决方案”](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
-1. 在“概述”页上，选择“添加”，这将打开“管理解决方案”列表。 在该列表中，选择“逻辑应用 B2B”。 
+1. 在“概述”页上，选择“添加”  ，这将打开“管理解决方案”列表。  在该列表中，选择“逻辑应用 B2B”  。 
 
    ![选择“逻辑应用 B2B 解决方案”](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   如果未找到此解决方案，请在列表底部选择“加载更多”，直到此解决方案出现。
+   如果未找到此解决方案，请在列表底部选择“加载更多”，直到此解决方案出现。 
 
-1. 选择“创建”，确认要在其中安装解决方案的 Log Analytics 工作区，然后再次选择“创建”。   
+1. 选择“创建”，确认要在其中安装解决方案的 Log Analytics 工作区，然后再次选择“创建”   。   
 
    ![为逻辑应用 B2B 选择“创建”](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
 
    如果不想使用现有工作区，还可以在这次创建新工作区。
 
-1. 完成后，返回工作区的“概述”页面。 
+1. 完成后，返回工作区的“概述”页面  。 
 
    逻辑应用 B2B 解决方案现显示在“概述”页面上。 
    处理 B2B 消息时，此页面上消息计数随之更新。
@@ -78,18 +78,18 @@ Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应�
 
 ## <a name="view-b2b-message-information"></a>查看 B2B 消息信息
 
-在 B2B 消息经过处理后，可以在“逻辑应用 B2B”磁贴上查看这些消息的状态和详细信息。
+在 B2B 消息经过处理后，可以在“逻辑应用 B2B”磁贴上查看这些消息的状态和详细信息  。
 
-1. 转到 Log Analytics 工作区，然后打开“概述”页面。 选择“逻辑应用 B2B”。
+1. 转到 Log Analytics 工作区，然后打开“概述”页面。 选择“逻辑应用 B2B”  。
 
    ![更新后的消息计数](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > 默认情况下，“逻辑应用 B2B”磁贴显示一天的数据。 若要将数据范围更改为其他时间间隔，请选择页面顶部的范围控件：
+   > 默认情况下，“逻辑应用 B2B”磁贴显示一天的数据  。 若要将数据范围更改为其他时间间隔，请选择页面顶部的范围控件：
    > 
    > ![更改时间间隔](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
 
-1. 当消息状态仪表板显示后，可以查看特定消息类型的更多详细信息（显示的也是一天数据）。 选择“AS2”、“X12”或“EDIFACT”磁贴。
+1. 当消息状态仪表板显示后，可以查看特定消息类型的更多详细信息（显示的也是一天数据）。 选择“AS2”  、“X12”  或“EDIFACT”  磁贴。
 
    ![查看消息状态](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
@@ -104,7 +104,7 @@ Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应�
 
    ![查看 AS2 消息](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
 
-3. 若要查看或导出特定消息的的输入和输出内容，请依次选择这些消息和“下载”。 看到提示时，将 .zip 文件保存到本地计算机，再解压缩此文件。 
+3. 若要查看或导出特定消息的的输入和输出内容，请依次选择这些消息和“下载”  。 看到提示时，将 .zip 文件保存到本地计算机，再解压缩此文件。 
 
    在解压缩的文件夹中，选择的每个消息都对应一个文件夹。 
    如果设置了确认信息，消息文件夹中还有包含确认详细信息的文件。 
@@ -121,13 +121,13 @@ Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应�
 
    ![下载消息文件](media/logic-apps-track-b2b-messages-omsportal/download-messages.png)
 
-4. 若要查看运行 ID 相同的所有操作，请在“日志搜索”页上的消息列表中选择一条消息。
+4. 若要查看运行 ID 相同的所有操作，请在“日志搜索”  页上的消息列表中选择一条消息。
 
    可以按列对这些操作进行排序，也可以搜索特定结果。
 
    ![运行 ID 相同的操作](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
 
-   * 若要使用预生成查询搜索结果，请选择“收藏夹”。
+   * 若要使用预生成查询搜索结果，请选择“收藏夹”  。
 
    * 了解[如何通过添加筛选器生成查询](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)。 
    或者详细了解如何[如何在 Azure Monitor 日志中查找使用日志搜索数据](../log-analytics/log-analytics-log-searches.md)。
@@ -148,8 +148,8 @@ Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应�
 
 | 属性 | 描述 |
 | --- | --- |
-| 发送方 | “接收设置”中指定的来宾合作伙伴，或 AS2 协议的“发送设置”中指定的托管合作伙伴 |
-| 接收方 | “接收设置”中指定的托管合作伙伴，或 AS2 协议的“发送设置”中指定的来宾合作伙伴 |
+| 发送方 | “接收设置”  中指定的来宾合作伙伴，或 AS2 协议的“发送设置”  中指定的托管合作伙伴 |
+| 接收方 | “接收设置”  中指定的托管合作伙伴，或 AS2 协议的“发送设置”  中指定的来宾合作伙伴 |
 | 逻辑应用 | 设置了 AS2 操作的逻辑应用 |
 | 状态 | AS2 消息状态 <br>成功 = 收到或发送了有效的 AS2 消息。 未设置 MDN。 <br>成功 = 收到或发送了有效的 AS2 消息。 设置并收到了 MDN，或已发送 MDN。 <br>失败 = 收到的 AS2 消息无效。 未设置 MDN。 <br>挂起 = 收到或发送了有效的 AS2 消息。 已设置 MDN，且 MDN 符合预期。 |
 | Ack | MDN 消息状态 <br>已接受 = 收到或发送了肯定的 MDN。 <br>挂起 = 等待接收或发送 MDN。 <br>已拒绝 = 收到或发送了否定的 MDN。 <br>不需要 = 协议中未设置 MDN。 |
@@ -179,8 +179,8 @@ Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应�
 
 | 属性 | 描述 |
 | --- | --- |
-| 发送方 | “接收设置”中指定的来宾合作伙伴，或 X12 协议的“发送设置”中指定的托管合作伙伴 |
-| 接收方 | “接收设置”中指定的托管合作伙伴，或 X12 协议的“发送设置”中指定的来宾合作伙伴 |
+| 发送方 | “接收设置”  中指定的来宾合作伙伴，或 X12 协议的“发送设置”  中指定的托管合作伙伴 |
+| 接收方 | “接收设置”  中指定的托管合作伙伴，或 X12 协议的“发送设置”  中指定的来宾合作伙伴 |
 | 逻辑应用 | 设置了 X12 操作的逻辑应用 |
 | 状态 | X12 消息状态 <br>成功 = 收到或发送了有效的 X12 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 X12 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送的 X12 消息无效。 <br>挂起 = 收到或发送了有效的 X12 消息。 已设置功能确认，且功能确认符合预期。 |
 | Ack | 功能确认 (997) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
@@ -212,8 +212,8 @@ Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应�
 
 | 属性 | 描述 |
 | --- | --- |
-| 发送方 | “接收设置”中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”中指定的托管合作伙伴 |
-| 接收方 | “接收设置”中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”中指定的来宾合作伙伴 |
+| 发送方 | “接收设置”  中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”  中指定的托管合作伙伴 |
+| 接收方 | “接收设置”  中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”  中指定的来宾合作伙伴 |
 | 逻辑应用 | 设置了 EDIFACT 操作的逻辑应用 |
 | 状态 | EDIFACT 消息状态 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送了的 EDIFACT 消息无效 <br>挂起 = 收到或发送了有效的 EDIFACT 消息。 已设置功能确认，且功能确认符合预期。 |
 | Ack | 功能确认 (997) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |

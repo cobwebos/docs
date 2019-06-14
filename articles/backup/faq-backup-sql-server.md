@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: sachdevaswati
 ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700168"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关在 Azure VM 备份运行的 SQL Server 数据库的常见问题解答
@@ -37,19 +37,19 @@ ms.locfileid: "64700168"
 自动修复为一项功能已启用的所有用户默认设置。但是如果你选择退出它，然后执行下面：
 
   * 在 SQL Server 实例中*C:\Program Files\Azure 工作负荷 Backup\bin*文件夹中，创建或编辑**ExtensionSettingsOverrides.json**文件。
-  * 在中 **ExtensionSettingsOverrides.json**，请设置 *{"EnableAutoHealer": false}*。
-  * 保存所做的更改并关闭该文件。
+  * 在中 **ExtensionSettingsOverrides.json**，请设置 *{"EnableAutoHealer": false}* 。
+  * 保存更改并关闭该文件。
   * 在 SQL Server 实例中，打开**管理任务**，然后重新启动**AzureWLBackupCoordinatorSvc**服务。  
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>可以在 SQL server 上运行的并发备份的数量进行控制
 
-可以。 可以限制备份策略的运行速率，以尽量减少对 SQL Server 实例的影响。 若要更改设置，请执行以下操作：
+是的。 可以限制备份策略的运行速率，以尽量减少对 SQL Server 实例的影响。 若要更改设置，请执行以下操作：
 1. 在 SQL Server 实例中*C:\Program Files\Azure 工作负荷 Backup\bin*文件夹中，创建*ExtensionSettingsOverrides.json*文件。
 2. 在中*ExtensionSettingsOverrides.json*文件中，将**DefaultBackupTasksThreshold**将设置为较低的值 (例如，5)。 <br>
   `{"DefaultBackupTasksThreshold": 5}`
 
-3. 保存所做的更改并关闭该文件。
-4. 在 SQL Server 实例上，打开“任务管理器”。 重启 **AzureWLBackupCoordinatorSvc** 服务。<br/> <br/>
+3. 保存更改并关闭该文件。
+4. 在 SQL Server 实例上，打开“任务管理器”。  重启 **AzureWLBackupCoordinatorSvc** 服务。<br/> <br/>
  虽然此方法可帮助如果备份应用程序正在消耗大量资源，SQL Server[资源调控器](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017)是更通用的方式上的 CPU、 物理 IO 和内存的应用程序的传入请求可以指定限制使用。
 
 > [!NOTE]

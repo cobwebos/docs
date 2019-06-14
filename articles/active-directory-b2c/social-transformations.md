@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c1a718539259a284e1d48fe48a3741a676bd4040
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 37fe192e83c946089e2374f24ae10a756134e45a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66512491"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807865"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帐户声明转换
 
@@ -38,12 +38,12 @@ ms.locfileid: "66512491"
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅 [AlternativeSecurityId 的架构](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType)。
+创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅 [AlternativeSecurityId 的架构](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#alternativesecurityid-type)。
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | key | 字符串 | 用于指定社交标识提供者所用唯一用户标识符的 ClaimType。 |
-| InputClaim | identityProvider | string | 用于指定社交帐户标识提供者名称（例如 facebook.com）的 ClaimType。 |
+| InputClaim | identityProvider | 字符串 | 用于指定社交帐户标识提供者名称（例如 facebook.com）的 ClaimType。 |
 | OutputClaim | alternativeSecurityId | 字符串 | 调用 ClaimsTransformation 后生成的 ClaimType。 包含社交帐户用户的标识信息。 **issuer** 是 `identityProvider` 声明的值。 **issuerUserId** 是 `key` 声明的值，采用 base64 格式。 |
 
 使用此声明转换可以生成 `alternativeSecurityId` ClaimType。 此 ClaimType 由所有社交标识提供者技术配置文件（例如 `Facebook-OAUTH`）使用。 以下声明转换接收用户社交帐户 ID 和标识提供者名称。 此技术配置文件的输出是可在 Azure AD 目录服务中使用的 JSON 字符串格式。

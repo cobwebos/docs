@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: bd53ae3346882cf20ae7464548fa9ef2c0329f05
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957024"
 ---
 # <a name="smart-contract-integration-patterns"></a>智能合约集成模式
@@ -37,7 +37,7 @@ Azure Blockchain Workbench 生成的 Web 应用程序中的功能是通过 REST 
 
 REST API 主要用于 Web、移动和 bot 应用程序等交互式客户端。
 
-本节重点介绍将事务发送到分布式账本的 REST API 方面的模式，以及 Azure Blockchain Workbench 的链外 SQL 数据库查询事务数据的模式。
+本节重点介绍将事务发送到分布式账本的 REST API 方面的模式，以及 Azure Blockchain Workbench 的链外 SQL 数据库查询事务数据的模式  。
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>将事务从外部系统发送到分布式账本
 
@@ -71,7 +71,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 
 消息传递集成简化了无法或者不需要进行交互式登录的系统、服务和设备的交互。 消息集成侧重于两种类型的消息：在分布式账本上执行的消息请求事务，以及事务发生时由该账本公开的事件。
 
-消息传递集成侧重于用户创建、合同创建和合同事务执行相关的事务的执行和监视，主要由无外设后端系统使用。
+消息传递集成侧重于用户创建、合同创建和合同事务执行相关的事务的执行和监视，主要由无外设后端系统使用。 
 
 本部分介绍的模式侧重于可将事务发送到分布式账本的基于消息的 API 功能，以及表示基础分布式账本公开的事件消息的模式。
 
@@ -79,7 +79,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 
 在此方案中，事件（例如，状态更改或特定类型的事务的执行）发生在智能合同中。 此事件通过事件网格广播到下游使用者，然后，这些使用者采取相应的措施。
 
-此方案的一个例子：发生某个事务时，使用者会收到警报并可以采取措施，例如，在 SQL 数据库或 Common Data Service 中记录信息。 此方案与 Workbench 在填充其链外 SQL DB 时所遵循的模式相同。
+此方案的一个例子：发生某个事务时，使用者会收到警报并可以采取措施，例如，在 SQL 数据库或 Common Data Service 中记录信息。 此方案与 Workbench 在填充其链外 SQL DB 时所遵循的模式相同  。
 
 另一个例子是，智能合同转换为特定状态，例如，当合同进入 *OutOfCompliance* 状态。 发生这种状态更改时，可能会触发警报并将其发送到管理员的手机。
 
@@ -191,14 +191,14 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 该过程描述了一种模式：
 
 -   设备直接或通过现场网关与 IoT 中心通信。
--   IoT 中心接收消息，并根据建立的路由评估消息（例如，检查消息的内容）。 传感器是否会报告 50 度以上的温度？
+-   IoT 中心接收消息，并根据建立的路由评估消息（例如，检查消息的内容）。 传感器是否会报告 50 度以上的温度？ 
 -   IoT 中心将符合条件的消息发送到定义的服务总线以进行路由。
 -   逻辑应用或其他代码侦听 IoT 中心为路由建立的服务总线。
 -   逻辑应用或其他代码检索消息并其转换为已知的格式。
 -   已转换的消息（现在为标准格式）发送到 Azure Blockchain Workbench 的服务总线。
 -   Azure Blockchain Workbench 从服务总线订阅事件并接收消息。
 -   Azure Blockchain Workbench 向账本发起调用，并将数据从外部系统发送到特定的合同。
--   收到消息后，合同将评估数据，并可以根据评估结果更改状态，例如，如果温度过高，则会将状态更改为“不合规”。
+-   收到消息后，合同将评估数据，并可以根据评估结果更改状态，例如，如果温度过高，则会将状态更改为“不合规”。 
 
 ## <a name="data-integration"></a>数据集成
 

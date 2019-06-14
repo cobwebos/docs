@@ -17,10 +17,10 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2943a1501e1d81ff4884c21b5aa3861e16523bbb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827703"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>使用 SQL Server 代理扩展 (Resource Manager) 在 Azure 虚拟机上自动完成管理任务
@@ -73,7 +73,7 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 > 目前，Azure 上的 SQL Server FCI 不支持 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 我们建议你从参与 FCI 的 VM 中卸载扩展。 卸载代理后，SQL VM 将无法使用扩展支持的功能。
 
 ## <a name="installation"></a>安装
-预配某个 SQL Server 虚拟机库映像时，系统会自动安装 SQL Server IaaS 代理扩展。 SQL IaaS 扩展提供了有关 SQL Server VM 上的单个实例的可管理性。 如果默认实例，该扩展会使用默认实例，并且它不支持管理其他实例。 如果没有默认实例，但只有一个命名的实例，它将管理该命名的实例。 如果没有默认实例，并且有多个命名的实例，然后该扩展将无法安装。 
+预配某个 SQL Server 虚拟机库映像时，系统会自动安装 SQL Server IaaS 代理扩展。 SQL IaaS 扩展为 SQL Server VM 上的单一实例提供可管理性。 如果有默认实例，则此扩展可以用于该默认实例，不支持对其他实例进行管理。 如果没有默认实例，而是只有一个命名实例，则会管理命名实例。 如果没有默认实例，但是有多个命名实例，则此扩展无法安装。 
 
 
 
@@ -90,17 +90,17 @@ Set-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmnam
 > 尽管就可以安装 SQL Server IaaS 代理扩展到 SQL Server 的自定义映像，此功能是目前仅限于[更改许可证类型](virtual-machines-windows-sql-ahb.md)。 SQL IaaS 扩展提供其他功能仅适用于[SQL Server 虚拟机库映像](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)（即用即付或自带的自己的许可证）。
 
 ### <a name="use-a-single-named-instance"></a>使用单个命名实例
-如果正确，卸载默认实例和 IaaS 扩展重新安装，SQL IaaS 扩展将使用命名实例适用于 SQL Server 映像中。
+如果默认实例未正确卸载，同时 IaaS 扩展已重新安装，则 SQL IaaS 扩展可以与 SQL Server 映像上的命名实例一起使用。
 
-若要使用 SQL Server 的命名的实例，请执行以下操作：
+若要使用 SQL Server 的命名实例，请执行以下操作：
    1. 从市场部署 SQL Server VM。 
-   1. 在卸载 IaaS 扩展[Azure 门户](https://portal.azure.com)。
-   1. 卸载 SQL Server 完全包含在 SQL Server 虚拟机。
-   1. SQL Server VM 内的命名实例安装 SQL Server。 
-   1. 安装从 Azure 门户中的 IaaS 扩展。  
+   1. 在 [Azure 门户](https://portal.azure.com)中卸载 IaaS 扩展。
+   1. 在 SQL Server VM 中彻底卸载 SQL Server。
+   1. 在 SQL Server VM 中将 SQL Server 与命名实例一起安装。 
+   1. 在 Azure 门户中安装 IaaS 扩展。  
 
 ## <a name="status"></a>状态
-验证是否已安装扩展的方法之一是在 Azure 门户中查看代理状态。 在虚拟机窗口中选择“所有设置”，并单击“扩展”。 应看到列出“SqlIaasExtension”扩展。
+验证是否已安装扩展的方法之一是在 Azure 门户中查看代理状态。 在虚拟机窗口中选择“所有设置”，并单击“扩展”。   应看到列出“SqlIaasExtension”扩展。 
 
 ![Azure 门户中的 SQL Server IaaS 代理扩展](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
@@ -115,7 +115,7 @@ Set-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmnam
     $sqlext.AutoBackupSettings
 
 ## <a name="removal"></a>删除
-在 Azure 门户中，可以卸载扩展，通过单击省略号**扩展**窗口中的虚拟机属性。 然后单击“删除”。
+在 Azure 门户中，可以通过单击虚拟机属性的“扩展”窗口中的省略号来卸载扩展。  然后单击“删除”  。
 
 ![在 Azure 门户中卸载 SQL Server IaaS 代理扩展](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
 

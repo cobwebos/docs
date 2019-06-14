@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: 751a3a940dad74cbc8c7343ee70309736b381d5b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ee976f163bdb00511e2a8f85906aa59aaebbfa47
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478871"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056538"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -81,6 +81,7 @@ ms.locfileid: "66478871"
 * **ServiceFabric**（仅限资源管理器）：此标记表示 ServiceFabric 服务的地址前缀。 如果指定 ServiceFabric 作为值，则会允许或拒绝发往 ServiceFabric 的流量  。 
 * **AzureMachineLearning**（仅限资源管理器）：此标记表示 AzureMachineLearning 服务的地址前缀。 如果指定 AzureMachineLearning 作为值，则会允许或拒绝发往 AzureMachineLearning 的流量  。 
 * **BatchNodeManagement**（仅限资源管理器）：此标记表示 Azure BatchNodeManagement 服务的地址前缀。 如果为值指定 *BatchNodeManagement*，则允许或拒绝从 Batch 服务到计算节点的流量。
+* **AzureBackup**（仅限资源管理器）： 此标记表示 AzureBackup 服务的地址前缀。 如果为值指定 AzureBackup，是允许还是拒绝到 AzureBackup 流量。
 
 > [!NOTE]
 > Azure 服务的服务标记表示来自所使用的特定云的地址前缀。 
@@ -96,19 +97,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|优先度|源|源端口|目标|目标端口|Protocol|访问|
+|优先度|source|源端口|目标|目标端口|Protocol|访问|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|全部|允许|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|优先度|源|源端口|目标|目标端口|Protocol|访问|
+|优先度|source|源端口|目标|目标端口|Protocol|访问|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|全部|允许|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|优先度|源|源端口|目标|目标端口|Protocol|访问|
+|优先度|source|源端口|目标|目标端口|Protocol|访问|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|全部|拒绝|
 
@@ -116,19 +117,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|优先度|源|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 全部 | 允许 |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|优先度|源|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 全部 | 允许 |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|优先度|源|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 全部 | 拒绝 |
 
@@ -148,7 +149,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 若要让流量从 Internet 流到 Web 服务器，此规则是必需的。 由于来自 Internet 的入站流量被 [DenyAllInbound](#denyallinbound) 默认安全规则拒绝，因此 *AsgLogic* 或 *AsgDb* 应用程序安全组不需更多规则。
 
-|优先度|源|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | 允许 |
 
@@ -156,7 +157,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 由于 [AllowVNetInBound](#allowvnetinbound) 默认安全规则允许在同一虚拟网络中的资源之间进行的所有通信，因此需要使用此规则来拒绝来自所有资源的流量。
 
-|优先度|源|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | 全部 | 拒绝 |
 
@@ -164,7 +165,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 此规则允许从 *AsgLogic* 应用程序安全组到 *AsgDb* 应用程序安全组的流量。 此规则的优先级高于 *Deny-Database-All* 规则的优先级。 因此，此规则在 *Deny-Database-All* 规则之前处理，这样系统就会允许来自 *AsgLogic* 应用程序安全组的流量，而阻止所有其他流量。
 
-|优先度|源|源端口| 目标 | 目标端口 | Protocol | 访问 |
+|优先度|source|源端口| 目标 | 目标端口 | Protocol | 访问 |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | 允许 |
 

@@ -12,10 +12,10 @@ ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 02111ac90fe97ddaddbd41ad42410e7e76f1c405
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61379221"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>QnA Maker 知识库是什么？
@@ -36,7 +36,7 @@ QnA Maker 知识库包含一组问题/答案 (QnA) 对和与每个 QnA 对关联
 
 向某一知识库引入丰富的内容时，QnA Maker 会尝试将内容转换为 markdown。 阅读[此](https://aka.ms/qnamaker-docs-markdown-support)博客以了解大多数聊天客户端可理解的 markdown 格式。
 
-元数据字段包含由冒号分隔的键值对 **(Product:Shredder)**。 键和值都必须是纯文本。 元数据密钥不得包含任何空格。 元数据支持每个密钥只有一个值。
+元数据字段包含由冒号分隔的键值对 **(Product:Shredder)** 。 键和值都必须是纯文本。 元数据密钥不得包含任何空格。 元数据支持每个密钥只有一个值。
 
 ## <a name="next-steps"></a>后续步骤
 

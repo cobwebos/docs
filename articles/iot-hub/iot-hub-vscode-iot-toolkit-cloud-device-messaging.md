@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
 ms.openlocfilehash: 5b74524a05317cf22160561a4a001e88f9215953
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61440059"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息
@@ -41,42 +41,42 @@ ms.locfileid: "61440059"
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-* [适用于 VS Code 的 azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或[在 Visual Studio Code 中打开此链接](vscode:extension/vsciot-vscode.azure-iot-tools)。
+* [适用于 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或[在 Visual Studio Code 中打开此链接](vscode:extension/vsciot-vscode.azure-iot-tools)。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
-1. 在 VS Code 的“资源管理器”视图中，展开左下角的“Azure IoT 中心设备”部分。
+1. 在 VS Code 的“资源管理器”  视图中，展开左下角的“Azure IoT 中心设备”  部分。
 
-2. 在上下文菜单中单击“选择 IoT 中心”。
+2. 在上下文菜单中单击“选择 IoT 中心”  。
 
 3. 弹出窗口将显示在右下角，以便让你首次登录 Azure。
 
 4. 登录后，将显示 Azure 订阅列表，然后选择“Azure 订阅和 IoT 中心”。
 
-5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”选项卡中。
+5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”  选项卡中。
 
    > [!Note]
-   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。 在弹出窗口中输入 IoT 设备连接到的 IoT 中心的连接字符串。
+   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。  在弹出窗口中输入 IoT 设备连接到的 IoT 中心的连接字符串。
 
 ## <a name="monitor-device-to-cloud-messages"></a>监视设备到云的消息
 
 若要监视设备发送到 IoT 中心的消息，请执行以下步骤：
 
-1. 右键单击设备，然后选择“开始监视 D2C 消息”。
+1. 右键单击设备，然后选择“开始监视 D2C 消息”  。
 
-2. 受监视的消息将显示在“输出” > “Azure IoT 中心工具包”视图中。
+2. 受监视的消息将显示在“输出”   > “Azure IoT 中心工具包”  视图中。
 
-3. 若要停止监视，请右键单击“输出”视图，然后选择“停止监视 D2C 消息”。
+3. 若要停止监视，请右键单击“输出”  视图，然后选择“停止监视 D2C 消息”  。
 
 ## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
 
 要将消息从 IoT 中心发送到设备，请执行以下步骤：
 
-1. 右键单击设备，然后选择“将 C2D 消息发送到设备”。
+1. 右键单击设备，然后选择“将 C2D 消息发送到设备”  。
 
 2. 在输入框中输入消息。
 
-3. 结果将显示在“输出” > “Azure IoT 中心工具包”视图中。
+3. 结果将显示在“输出”   > “Azure IoT 中心工具包”  视图中。
 
 ## <a name="next-steps"></a>后续步骤
 

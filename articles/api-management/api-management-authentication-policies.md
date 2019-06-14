@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708796"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理身份验证策略
@@ -49,13 +49,13 @@ ms.locfileid: "64708796"
   
 ### <a name="elements"></a>元素  
   
-|名称|描述|需要|  
+|Name|描述|必选|  
 |----------|-----------------|--------------|  
 |authentication-basic|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|名称|描述|需要|默认|  
+|Name|描述|需要|默认|  
 |----------|-----------------|--------------|-------------|  
 |username|指定基本凭据的用户名。|是|不适用|  
 |password|指定基本凭据的密码。|是|不适用|  
@@ -78,27 +78,27 @@ ms.locfileid: "64708796"
   
 ### <a name="examples"></a>示例  
   
-在此示例客户端证书由其指纹标识。
+在此示例中，客户端证书是由指纹标识的。
 ```xml  
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />  
 ``` 
-在此示例按资源名称标识客户端证书。
+在此示例中，客户端证书是由资源名称标识的。
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ```  
 
 ### <a name="elements"></a>元素  
   
-|名称|描述|需要|  
+|Name|描述|需要|  
 |----------|-----------------|--------------|  
 |authentication-certificate|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|名称|描述|需要|默认|  
+|Name|描述|需要|默认|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|客户端证书的指纹。|要么`thumbprint`或`certificate-id`必须存在。|不适用|  
-|certificate-id|证书资源名称。|要么`thumbprint`或`certificate-id`必须存在。|不适用|  
+|thumbprint|客户端证书的指纹。|必须提供 `thumbprint` 或 `certificate-id`。|不适用|  
+|certificate-id|证书资源名称。|必须提供 `thumbprint` 或 `certificate-id`。|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
@@ -107,8 +107,8 @@ ms.locfileid: "64708796"
   
 -   **策略范围：** API  
 
-##  <a name="ManagedIdentity"></a> 使用托管的标识进行身份验证  
- 使用`authentication-managed-identity`策略通过使用托管的 API 管理服务标识的后端服务进行身份验证。 此策略有效地使用托管的标识来从 Azure Active Directory 获取访问令牌用于访问指定的资源。 
+##  <a name="ManagedIdentity"></a> 使用托管标识进行身份验证  
+ 使用 `authentication-managed-identity` 策略通过 API 管理服务的托管标识向后端服务进行身份验证。 此策略有效地使用托管标识来从 Azure Active Directory 获取用于访问指定资源的访问令牌。 
   
 ### <a name="policy-statement"></a>策略语句  
   
@@ -124,17 +124,17 @@ ms.locfileid: "64708796"
   
 ### <a name="elements"></a>元素  
   
-|名称|描述|需要|  
+|Name|描述|必选|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|名称|描述|需要|默认|  
+|Name|描述|需要|默认|  
 |----------|-----------------|--------------|-------------|  
-|resource|字符串。 Azure Active Directory 中的目标 web API （受保护的资源） 应用程序 ID URI。|是|不适用|  
-|output-token-variable-name|字符串。 将收到的对象类型的令牌值的上下文变量名称`string`。|否|不适用|  
-|ignore-error|布尔值。 如果设置为`true`，策略管道将继续执行，即使未获取访问令牌。|否|false|  
+|resource|字符串。 Azure Active Directory 中的目标 Web API（受保护的资源）的应用 ID URI。|是|不适用|  
+|output-token-variable-name|字符串。 上下文变量的名称，它将令牌值接收为对象类型 `string`。|否|不适用|  
+|ignore-error|布尔值。 如果设置为 `true`，即使未获得访问令牌，策略管道也将继续执行。|否|false|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  

@@ -12,10 +12,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 94c9c3f997143d72262c1ba3d8dbfea90d6f920c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61347666"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
@@ -45,7 +45,7 @@ Azure 存储帐户中文件的到达或删除就是一个典型的事件。 你�
 
 ### <a name="configure-the-event-trigger"></a>配置事件触发器
 
-使用“Blob 路径开头为”和“Blob路径结尾为”属性，你可以指定要为其接收事件的容器、文件夹和 Blob 的名称。 可以为“Blob 路径开头为”和“Blob路径结尾为”属性使用各种模式，如本文中后面的示例所示。 至少需要这些属性中的一个。
+使用“Blob 路径开头为”  和“Blob路径结尾为”  属性，你可以指定要为其接收事件的容器、文件夹和 Blob 的名称。 可以为“Blob 路径开头为”  和“Blob路径结尾为”  属性使用各种模式，如本文中后面的示例所示。 至少需要这些属性中的一个。
 
 ![配置事件触发器](media/how-to-create-event-trigger/event-based-trigger-image2.png)
 
@@ -67,7 +67,7 @@ Azure 存储帐户中文件的到达或删除就是一个典型的事件。 你�
 
 下表概述了与基于事件的触发器相关的架构元素：
 
-| **JSON 元素** | **说明** | 类型 | **允许的值** | **必需** |
+| **JSON 元素** | **说明** | 类型  | **允许的值** | **必需** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **scope** | 存储帐户的 Azure 资源管理器资源 ID。 | String | Azure 资源管理器 ID | 是 |
 | **events** | 导致此触发器触发的事件的类型。 | Array    | Microsoft.Storage.BlobCreated、Microsoft.Storage.BlobDeleted | 是的，这些值的任意组合。 |

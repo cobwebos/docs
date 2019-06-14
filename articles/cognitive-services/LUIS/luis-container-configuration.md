@@ -3,20 +3,20 @@ title: Docker 容器设置
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用 `docker run` 命令参数配置 LUIS 容器运行时环境。 LUIS 有几个必需的设置以及一些可选设置。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: diberry
-ms.openlocfilehash: afd29c1689d6d467a42a7c3c60f9a1dccd1a66f0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 4a9f7762b7960c74acad8203f70bc1e7c7cbd90f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242614"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063219"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
 
@@ -28,14 +28,14 @@ ms.locfileid: "66242614"
 
 |需要|设置|目的|
 |--|--|--|
-|“是”|[ApiKey](#apikey-setting)|用于跟踪账单信息。|
-|“否”|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
-|“是”|[计费](#billing-setting)|指定 Azure 上服务资源的终结点 URI。|
-|“是”|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
-|“否”|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
-|“否”|[Http 代理](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
-|“否”|[日志记录](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
-|“是”|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
+|是|[ApiKey](#apikey-setting)|用于跟踪账单信息。|
+|否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
+|是|[Billing](#billing-setting)|指定 Azure 上服务资源的终结点 URI。|
+|是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
+|否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
+|否|[Http 代理](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
+|否|[Logging](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
+|是|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-setting)、[`Billing`](#billing-setting) 和 [`Eula`](#eula-setting) 设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](luis-container-howto.md#billing)。
@@ -67,9 +67,9 @@ ms.locfileid: "66242614"
 请记住在 URL 中包括 `luis/v2.0` 路由，如下表所示：
 
 
-|需要| 名称 | 数据类型 | 描述 |
+|需要| Name | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|“是”| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
+|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -99,10 +99,10 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 下表描述了支持的设置。
 
-|需要| 名称 | 数据类型 | 描述 |
+|需要| Name | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
-|“是”| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|“否”| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|是| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
+|否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 

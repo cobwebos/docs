@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 3836eb87516eed546ae6bb69f53bf64e5df00906
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: bd2a594bfd7fbac53deacc767ace3cd44484798e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693209"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058110"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
@@ -164,7 +164,7 @@ namespace SBusADApp
 ```
 
 > [!IMPORTANT]
-> 有关完整示例，请参阅[GitHub 上的.NET 管理示例]((https://github.com/Azure-Samples/service-bus-dotnet-management/))。 
+> 有关完整示例，请参阅[GitHub 上的.NET 管理示例](https://github.com/Azure-Samples/service-bus-dotnet-management/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [Microsoft.Azure.Management.ServiceBus API 参考](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

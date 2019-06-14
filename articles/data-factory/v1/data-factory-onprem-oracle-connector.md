@@ -14,15 +14,15 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61462375"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-oracle-connector.md)
 > * [版本 2（当前版本）](../connector-oracle.md)
 
@@ -55,7 +55,7 @@ ms.locfileid: "61462375"
 
 Oracle 连接器支持两个版本的驱动程序：
 
-- **适用于 Oracle 的 Microsoft 驱动程序（推荐）**：从数据管理网关 2.7 版开始，随网关自动安装适用于 Oracle 的 Microsoft 驱动程序。 无需安装或更新该驱动程序即可建立与 Oracle 的连接。 还可以通过此驱动程序体验更好的复制性能。 支持以下版本的 Oracle 数据库：
+- **适用于 Oracle 的 Microsoft 驱动程序（推荐）** ：从数据管理网关 2.7 版开始，随网关自动安装适用于 Oracle 的 Microsoft 驱动程序。 无需安装或更新该驱动程序即可建立与 Oracle 的连接。 还可以通过此驱动程序体验更好的复制性能。 支持以下版本的 Oracle 数据库：
   - Oracle 12c R1 (12.1)
   - Oracle 11g R1, R2 (11.1, 11.2)
   - Oracle 10g R1, R2 (10.1, 10.2)
@@ -66,12 +66,12 @@ Oracle 连接器支持两个版本的驱动程序：
     > 不支持 Oracle 代理服务器。
 
     > [!IMPORTANT]
-    > 目前，适用于 Oracle 的 Microsoft 驱动程序仅支持从 Oracle 复制数据。 该驱动程序不支持写入 Oracle。 数据管理网关“诊断”选项卡中的测试连接功能不支持此驱动程序。 或者，可以使用复制向导验证连接。
+    > 目前，适用于 Oracle 的 Microsoft 驱动程序仅支持从 Oracle 复制数据。 该驱动程序不支持写入 Oracle。 数据管理网关“诊断”选项卡中的测试连接功能不支持此驱动程序  。 或者，可以使用复制向导验证连接。
     >
 
 - **适用于 .NET 的 Oracle 数据提供程序**：可以使用 Oracle 数据提供程序在 Oracle 中复制或粘贴数据。 该组件包含在[适用于 Windows 的 Oracle 数据访问组件](https://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在装有网关的计算机上安装相关版本（32 位或 64 位）。 [Oracle 数据提供程序 .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可访问 Oracle Database 10g 版本 2 及更高版本。
 
-    如果选择“XCopy 安装”，请完成 readme.htm 文件中所述的步骤。 我们建议选择具有 UI 的安装程序（而不是 XCopy 安装程序）。
+    如果选择“XCopy 安装”，请完成 readme.htm 文件中所述的步骤  。 我们建议选择具有 UI 的安装程序（而不是 XCopy 安装程序）。
 
     安装提供程序后，使用服务小程序或数据管理网关配置管理器在计算机上重启数据管理网关主机服务。
 
@@ -83,13 +83,13 @@ Oracle 连接器支持两个版本的驱动程序：
 
 创建管道最简单的方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)来快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具之一创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具之一创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、 **.NET API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，完成以下步骤都可创建将数据从源数据存储移至接收器数据存储的管道：
 
 1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。
-2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Oracle 数据库复制到 Azure Blob 存储，可创建两个链接服务，将 Oracle 数据库和 Azure 存储帐户链接到数据工厂。 有关特定于 Oracle 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)。
-3. 创建数据集以表示复制操作的输入和输出数据。 在上一步的示例中，创建了一个数据集来指定 Oracle 数据库中包含输入数据的表。 创建了另一个数据集来指定 blob 容器和用于保存从 Oracle 数据库复制的数据的文件夹。 有关特定于 Oracle 的数据集属性，请参阅[数据集属性](#dataset-properties)。
+2. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Oracle 数据库复制到 Azure Blob 存储，可创建两个链接服务，将 Oracle 数据库和 Azure 存储帐户链接到数据工厂。 有关特定于 Oracle 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)。
+3. 创建数据集以表示复制操作的输入和输出数据  。 在上一步的示例中，创建了一个数据集来指定 Oracle 数据库中包含输入数据的表。 创建了另一个数据集来指定 blob 容器和用于保存从 Oracle 数据库复制的数据的文件夹。 有关特定于 Oracle 的数据集属性，请参阅[数据集属性](#dataset-properties)。
 4. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在上一个示例中，对复制活动使用 **OracleSource** 作为源，**BlobSink** 作为接收器。 同样，如果要从 Azure Blob 存储复制到 Oracle 数据库，则在复制活动中使用 **BlobSource** 和 **OracleSink**。 有关特定于 Oracle 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)。 有关如何将数据存储用作源或接收器的详细信息，请选择上一部分中的相应数据存储链接。
 
 使用向导时，会自动创建这些数据工厂实体的 JSON 定义：链接服务、数据集和管道。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关提供用于在本地 Oracle 数据库中复制或粘贴数据的数据工厂实体 JSON 定义的示例，请参阅 JSON 示例。
@@ -149,7 +149,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 在数据集 JSON 文件中，所有数据集类型（例如 Oracle、Azure Blob 存储和 Azure 表存储）的 structure、availability 和 policy 等节均类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **OracleTable** 类型的数据集的 **typeProperties** 节具有以下属性：
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息  。 **OracleTable** 类型的数据集的 **typeProperties** 节具有以下属性：
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
@@ -571,7 +571,7 @@ Oracle 连接器支持两个版本的驱动程序：
     1. 从文件夹 <system disk\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config 中打开 .NET 2.0 的计算机配置文件。
     2. 搜索**用于 .NET 的 Oracle 数据提供程序**。 应该能够在 **system.data** > **DbProviderFactories** 下找到以下示例中所示的条目：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * 将此条目复制到以下 .NET 4.0 文件夹中的 machine.config 文件：<system disk\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然后将版本更改为 4.xxx.x.x。
-* 通过运行 **gacutil /i [provider path]**，在全局程序集缓存 (GAC) 中安装 <ODP.NET Installed Path\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll。
+* 通过运行 **gacutil /i [provider path]** ，在全局程序集缓存 (GAC) 中安装 <ODP.NET Installed Path\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll。
 
 ### <a name="problem-2-datetime-formatting"></a>问题 2：日期/时间格式设置
 
@@ -602,15 +602,15 @@ Oracle 连接器支持两个版本的驱动程序：
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |十进制、字符串（如果精度 > 28） |
-| INTEGER |十进制、字符串（如果精度 > 28） |
+| FLOAT |Decimal, String（如果精度 > 28） |
+| INTEGER |Decimal, String（如果精度 > 28） |
 | INTERVAL YEAR TO MONTH |Int32 |
 | INTERVAL DAY TO SECOND |TimeSpan |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |十进制、字符串（如果精度 > 28） |
+| NUMBER |Decimal, String（如果精度 > 28） |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

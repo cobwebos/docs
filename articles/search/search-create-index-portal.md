@@ -11,10 +11,10 @@ ms.date: 02/16/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 6a2bac71c37cc750eb24e3492ecdcdf0b2333cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60817287"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>在门户中创建 Azure 搜索索引
@@ -25,9 +25,9 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 ## <a name="start-index-designer"></a>启动索引设计器
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，并打开服务仪表板。 可以单击跳转栏中的“所有服务”，搜索当前订阅中的现有“搜索服务”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)，并打开服务仪表板。 可以单击跳转栏中的“所有服务”  ，搜索当前订阅中的现有“搜索服务”。 
 
-2. 单击页面顶部的命令栏中的“添加索引”链接。
+2. 单击页面顶部的命令栏中的“添加索引”链接  。
 
    ![在命令栏中添加索引链接](media/search-create-index-portal/add-index.png "Add index link in the command bar")
 
@@ -39,11 +39,11 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 ## <a name="add-fields"></a>添加字段
 
-索引构成包括一个“字段集合”，它定义了索引中的可搜索数据。 总而言之，字段集合指定了你单独上传的文档的结构。 字段集合包括必需字段和可选字段（已命名和已键入的），并具有决定了字段使用方式的索引属性。
+索引构成包括一个“字段集合”  ，它定义了索引中的可搜索数据。 总而言之，字段集合指定了你单独上传的文档的结构。 字段集合包括必需字段和可选字段（已命名和已键入的），并具有决定了字段使用方式的索引属性。
 
-1. 添加字段来完整指定将要上传的文档，为每个文档设置[数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 例如，如果文档包含 hotel-id、hotel-name、address、city 和 region，请在索引中为每个字段创建对应的字段。 有关设置属性方面的帮助信息，请查看[下一部分中的设计指南](#design)。
+1. 添加字段来完整指定将要上传的文档，为每个文档设置[数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 例如，如果文档包含 hotel-id、hotel-name、address、city 和 region，请在索引中为每个字段创建对应的字段      。 有关设置属性方面的帮助信息，请查看[下一部分中的设计指南](#design)。
 
-2. 指定 Edm.String 类型的 key 字段。 此字段的值必须唯一标识每个文档。 默认情况下，该字段名为 *id*，但可以将其重命名，只要该字符串符合[命名规则](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)即可。 例如，如果字段集合包含 hotel-id，则可以为密钥选择该字段。 对于每个 Azure 搜索索引来说，键字段都是必需的，并且它必须是一个字符串。
+2. 指定 Edm.String 类型的 key 字段  。 此字段的值必须唯一标识每个文档。 默认情况下，该字段名为 *id*，但可以将其重命名，只要该字符串符合[命名规则](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)即可。 例如，如果字段集合包含 hotel-id，则可以为密钥选择该字段  。 对于每个 Azure 搜索索引来说，键字段都是必需的，并且它必须是一个字符串。
 
 3. 在每个字段上设置属性。 索引设计器会排除对数据类型无效的任何属性，但不会建议要包含的内容。 查看下一部分中的指导，以了解属性的用途。
 
@@ -51,7 +51,7 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
     ![酒店演示索引](media/search-create-index-portal/field-definitions.png "Hotels demo index")
 
-4. 完成时，单击“创建”以保存并创建索引。
+4. 完成时，单击“创建”以保存并创建索引  。
 
 <a name="design"></a>
 
@@ -61,18 +61,18 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 在保存索引之前，将分析器和建议器与字段进行关联。 请确保在创建索引定义时将语言分析器或建议器添加到索引定义中。
 
-字符串字段通常标记为“可搜索”和“可检索”。 用来缩小搜索结果范围的字段包括“可排序”、“可筛选”和“可查找”。
+字符串字段通常标记为“可搜索”和“可检索”。   用来缩小搜索结果范围的字段包括“可排序”、“可筛选”和“可查找”。   
 
 字段属性决定了字段的使用方式，例如，是否用于全文搜索、分面导航和排序等操作中。 下表介绍了每个属性。
 
-|属性|描述|  
+|特性|描述|  
 |---------------|-----------------|  
 |**可搜索**|可全文搜索，在编制索引期间遵从语法分析，例如分词。 如果将某个可搜索字段设置为“sunny day”之类的值，在内部它将拆分为单独的标记“sunny”和“day”。 有关详细信息，请参阅[全文搜索工作原理](search-lucene-query-architecture.md)。|  
 |**可筛选**|在 **$filter** 查询中引用。 `Edm.String` 或 `Collection(Edm.String)` 类型的可筛选字段不进行分词，因此，比较仅用于查找完全匹配项。 例如，如果将此类字段 f 设置为“sunny day”，则 `$filter=f eq 'sunny'` 将找不到任何匹配项，但 `$filter=f eq 'sunny day'` 可找到。 |  
-|**可排序**|默认情况下，系统按分数对结果进行排序，但可以配置基于文档中字段的排序。 `Collection(Edm.String)` 类型的字段不能为“可排序”。 |  
+|**可排序**|默认情况下，系统按分数对结果进行排序，但可以配置基于文档中字段的排序。 `Collection(Edm.String)` 类型的字段不能为“可排序”。  |  
 |**可查找**|通常用于包括了按类别（例如特定城市中的宾馆）的命中次数的搜索结果呈现中。 此选项无法与 `Edm.GeographyPoint` 类型的字段一起使用。 `Edm.String` 类型的**可筛选**、**可排序**或**可查找**字段的长度最多可以是 32 千字节。 有关详细信息，请参阅[创建索引 (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)。|  
 |**键**|文档在索引内的唯一标识符。 必须仅选择单个字段作为键字段，并且它必须是 `Edm.String` 类型的。|  
-|**可检索**|决定了是否可以在搜索结果中返回此字段。 当希望将某个字段（例如“利润”）用作筛选器、排序或评分机制，但不希望该字段显示给最终用户时，这很有用。 对于 `key` 字段，此属性必须为 `true`。|  
+|**可检索**|决定了是否可以在搜索结果中返回此字段。 当希望将某个字段（例如“利润”）用作筛选器、排序或评分机制，但不希望该字段显示给最终用户时，这很有用。  对于 `key` 字段，此属性必须为 `true`。|  
 
 ## <a name="next-steps"></a>后续步骤
 

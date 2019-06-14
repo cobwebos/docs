@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.openlocfilehash: 0e6a52ea2fdd05546a4da9f8cd1165b41ed27944
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097644"
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 Always On 可用性组的 ILB 侦听器
@@ -56,9 +56,9 @@ ms.locfileid: "62097644"
 
 1. 在 Azure 门户中，转到每个托管副本的 VM 查看详细信息。
 
-2. 单击每个 VM 的“终结点”选项卡。
+2. 单击每个 VM 的“终结点”选项卡。 
 
-3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。 在本部分的示例中，名称为“MyEndpoint”，端口为“1433”。
+3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。   在本部分的示例中，名称为“MyEndpoint”，端口为“1433”。  
 
 4. 在本地客户端上，下载并安装[最新的 PowerShell 模块](https://azure.microsoft.com/downloads/)。
 
@@ -78,7 +78,7 @@ ms.locfileid: "62097644"
         (Get-AzureVNetConfig).XMLConfiguration
 9. 记下包含副本所在 VM 的子网的 *Subnet* 名称。 脚本中的 $SubnetName 参数将要使用此名称。
 
-10. 记下包含副本所在 VM 的子网的 *VirtualNetworkSite* 名称和起始 *AddressPrefix*。 再通过将这两个值传递给 `Test-AzureStaticVNetIP` 命令并检查 AvailableAddresses 来查找可用的 IP 地址。 例如，如果虚拟网络名为 MyVNet，并包含从 172.16.0.128 开始的子网地址范围，则以下命令将列出可用地址：
+10. 记下包含副本所在 VM 的子网的 *VirtualNetworkSite* 名称和起始 *AddressPrefix*。 再通过将这两个值传递给 `Test-AzureStaticVNetIP` 命令并检查 AvailableAddresses 来查找可用的 IP 地址  。 例如，如果虚拟网络名为 MyVNet，并包含从 172.16.0.128 开始的子网地址范围，则以下命令将列出可用地址   ：
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 11. 选择一个可用地址，并将其用于下一步骤中脚本的 $ILBStaticIP 参数。
@@ -105,7 +105,7 @@ ms.locfileid: "62097644"
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话并运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行。
+13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话并运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行  。
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>如果需要，请验证是否已安装 KB2854082
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ ms.locfileid: "62097644"
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后将文本编辑器中的脚本粘贴到 PowerShell 会话并运行。 如果提示符仍然显示 **>>**，请再次按 Enter，确保脚本开始运行。
+3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后将文本编辑器中的脚本粘贴到 PowerShell 会话并运行。 如果提示符仍然显示 **>>** ，请再次按 Enter，确保脚本开始运行。
 
 4. 针对每个 VM 重复上述步骤。  
     此脚本使用云服务的 IP 地址配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们前面创建的负载均衡终结点在探测端口上的轮询。

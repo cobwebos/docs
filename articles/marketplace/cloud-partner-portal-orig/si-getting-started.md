@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 6c903c87bc153864381a3f1763afaeeb7796090a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943058"
 ---
 <a name="getting-started-with-seller-insights"></a>Seller Insights 入门
@@ -28,7 +28,7 @@ ms.locfileid: "64943058"
 <a name="top-navigation-bar"></a>导航栏
 ------------------
 
-从左侧菜单栏中选择“见解”后，你会在顶部看到一个导航栏，其中指示了你有权访问哪些见解模块。
+从左侧菜单栏中选择“见解”  后，你会在顶部看到一个导航栏，其中指示了你有权访问哪些见解模块。
 
 1.  **摘要** - 此选项卡显示发布者最关心的数据的图形、趋势和值。
 
@@ -43,7 +43,7 @@ ms.locfileid: "64943058"
 6.  **下载** - 使用新的下载体验，可以更容易地下载大数据集，并且破坏性更小。
 
 你可能会发现，你只能看到上面列出的有限的一组模块。
-由于涉及到敏感的客户和公司信息，因此只有具有“所有者”权限的用户才能够看到“支出”和“客户”模块。 如果你需要访问这些模块，请与你的组织内具有“所有者”权限的人员合作来更改你的权限。
+由于涉及到敏感的客户和公司信息，因此只有具有“所有者”  权限的用户才能够看到“支出”  和“客户”  模块。 如果你需要访问这些模块，请与你的组织内具有“所有者”权限的人员合作来更改你的权限。
 
 
 <a name="tips"></a>提示：

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 3c22aab20a9260bfd21869f0b327211e2f3d8894
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62109570"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
@@ -94,11 +94,11 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 请遵循以下说明将本地设置添加到配置中：
 
 1. 登录到 [Azure 门户]
-2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
-3. 单击“工具”
-4. 在“观察”菜单中单击“资源浏览器”，并单击“转到”。  会打开新窗口或选项卡。
-5. 在左侧导航栏中，展开站点的“config”、“authsettings”节点。
-6. 单击“编辑”
+2. 选择“所有资源”  或“应用服务”  ，并单击移动应用的名称。
+3. 单击“工具” 
+4. 在“观察”菜单中单击“资源浏览器”  ，并单击“转到”  。  会打开新窗口或选项卡。
+5. 在左侧导航栏中，展开站点的“config”  、“authsettings”  节点。
+6. 单击“编辑” 
 7. 查找“allowedExternalRedirectUrls”元素。  该元素可能已设置为 null 或值数组。  将该值更改为以下值：
 
          "allowedExternalRedirectUrls": [
@@ -107,19 +107,19 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
          ],
 
     将 URL 替换为自己服务的 URL。  示例包括`http://localhost:3000`（适用于 Node.js 示例服务） 或`http://localhost:4400`（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
-8. 单击屏幕右上角的“读/写”按钮。
-9. 单击绿色的“PUT”按钮。
+8. 单击屏幕右上角的“读/写”  按钮。
+9. 单击绿色的“PUT”  按钮。
 
 此时会保存设置。  在保存完设置之前，请不要关闭浏览器窗口。
 还需要将以下环回 URL 添加到应用服务的 CORS 设置：
 
 1. 登录到 [Azure 门户]
-2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
-3. “设置”边栏选项卡随即自动打开。  如果没有打开，请单击“所有设置”。
-4. 在“API”菜单下单击“CORS”。
+2. 选择“所有资源”  或“应用服务”  ，并单击移动应用的名称。
+3. “设置”边栏选项卡随即自动打开。  如果没有打开，请单击“所有设置”  。
+4. 在“API”菜单下单击“CORS”  。
 5. 在提供的框中输入想要添加的 URL，并按 Enter。
 6. 根据需要输入其他 URL。
-7. 单击“保存”保存这些设置。
+7. 单击“保存”  保存这些设置。
 
 大约需要 10-15 秒时间才能使新设置生效。
 

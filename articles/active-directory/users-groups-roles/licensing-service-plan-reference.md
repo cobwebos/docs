@@ -17,10 +17,10 @@ ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f96a7ad1c67fab9354daaafa129d15dfbff12064
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64729377"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>用于许可的产品名称和服务计划标识符
@@ -31,7 +31,7 @@ ms.locfileid: "64729377"
 - **字符串 ID**：由 PowerShell v1.0 cmdlet 在对许可证执行操作时使用
 - **GUID**：Azure AD Graph 和 Microsoft Graph 使用的 GUID
 - **包含的服务计划**：产品中与字符串 ID 和 GUID 对应的服务计划列表
-- **服务包含的计划 （友好名称）**:服务计划 （友好名称） 在产品中对应的字符串 ID 和 GUID 的列表
+- **服务包含的计划 （友好名称）** :服务计划 （友好名称） 在产品中对应的字符串 ID 和 GUID 的列表
 
 >[!NOTE]
 >此信息是准确 2019 年 4 月 15 日。
@@ -109,7 +109,7 @@ ms.locfileid: "64729377"
 
 ## <a name="service-plans-that-cannot-be-assigned-at-the-same-time"></a>无法同时分配的服务计划
 
-某些产品包含无法同时分配给同一个用户的服务计划。 例如，如果在租户中安装了“Office 365 企业版 E1”和“Office 365 企业版 E3”，并尝试将这两个许可证分配给同一个用户，该操作将会失败。 这是因为，E3 产品包含以下服务计划，而这些服务计划与其 E1 对等计划冲突：
+某些产品包含无法同时分配给同一个用户的服务计划。 例如，如果在租户中安装了“Office 365 企业版 E1”和“Office 365 企业版 E3”，并尝试将这两个许可证分配给同一个用户，该操作将会失败。   这是因为，E3 产品包含以下服务计划，而这些服务计划与其 E1 对等计划冲突：
 
 -   SharePoint Online（计划 2）与 SharePoint Online（计划 1）冲突。
 -   Exchange Online（计划 2）与 Exchange Online（计划 1）冲突。
@@ -139,7 +139,7 @@ ms.locfileid: "64729377"
 | DYN365_ENTERPRISE_TEAM_MEMBERS    | 6a54b05e-4fab-40e7-9828-428db3b336fa |
 | EMPLOYEE_SELF_SERVICE | ba5f0cfa-d54a-4ea0-8cf4-a7e1dc4423d8 |
 
-### <a name="service-exchange-online"></a>服务：Exchange Online
+### <a name="service-exchange-online"></a>服务：Exchange Online 
 
 无法一起分配以下服务计划：
 
@@ -200,7 +200,7 @@ ms.locfileid: "64729377"
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
 | MCOPSTN5  | 54a152dc-90de-4996-93d2-bc47e670fc06 |
 
-### <a name="service-yammer"></a>服务：Yammer
+### <a name="service-yammer"></a>服务：Yammer 
 
 无法一起分配以下服务计划：
 

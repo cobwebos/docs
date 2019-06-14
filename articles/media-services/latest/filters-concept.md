@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66225416"
 ---
 # <a name="filters"></a>筛选器
@@ -47,7 +47,7 @@ ms.locfileid: "66225416"
 
 使用以下属性来描述筛选器。 
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |firstQuality|筛选器的第一个质量比特率。|
 |presentationTimeRange|呈现时间范围。 此属性用于筛选清单起点/终点、呈现窗口长度和直播起始位置。 <br/>有关详细信息，请参阅 [PresentationTimeRange](#presentationtimerange)。|
@@ -57,7 +57,7 @@ ms.locfileid: "66225416"
 
 请将此属性用于**资产筛选器**。 不建议对**帐户筛选器**设置该属性。
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |**endTimestamp**|适用于点播视频 (VoD)。<br/>对于实时流式处理演示中，它是以无提示方式忽略，并且应用时演示结束并且流变为 VoD。<br/>这是一个长值，表示演示文稿，舍入为最接近的下一个 GOP 起始的绝对结束点。 单位为时间刻度，因此 1800000000 endTimestamp 将是 3 分钟内。<br/>使用 startTimestamp 和 endTimestamp 来修剪播放列表 （清单） 中的片段。<br/>例如，startTimestamp = 40000000 和 endTimestamp = 100000000 使用默认时间刻度将生成包含介于 4 秒 （） 和 VoD 演示文稿的 10 秒的片段播放列表。 如果某个段跨越边界，则整个段将包含在清单中。|
 |**forceEndTimestamp**|适用于实时传送视频流仅。<br/>指示是否必须存在 endTimestamp 属性。 如果为 true，则必须指定 endTimestamp 或返回了错误的请求代码。<br/>允许的值：false、true。|
@@ -72,7 +72,7 @@ ms.locfileid: "66225416"
 
 筛选器轨迹属性条件描述轨迹类型、值（如下表所述）和运算（Equal、NotEqual）。 
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |**Bitrate**|使用轨迹的比特率进行筛选。<br/><br/>建议的值为一系列比特率，以比特/秒为单位。 例如“0-2427000”。<br/><br/>注意：尽管可以使用特定的比特率值（例如 250000 比特/秒），但不建议使用此方法，因为确切的比特率可能根据资产的不同而波动。|
 |**FourCC**|使用轨迹的 FourCC 值进行筛选。<br/><br/>该值是 [RFC 6381](https://tools.ietf.org/html/rfc6381) 中指定的编解码器格式的第一个元素。 目前支持以下编解码器： <br/>视频：“avc1”、“hev1”、“hvc1”<br/>音频：“mp4a”、“ec-3”<br/><br/>若要确定资产中的轨道 FourCC 值，获取并检查清单文件。|

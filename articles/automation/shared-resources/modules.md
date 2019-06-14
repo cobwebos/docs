@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: shared-resources
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/13/2019
+ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fa7f5d3fb38eb1dbca51dec9b73dca3c998436aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54ebe7df9523a863ae14bc55c6ae4c9635468755
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60500299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063470"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自动化中管理模块
 
-Azure 自动化提供相应的功能用于将 PowerShell 模块导入到基于 PowerShell 的 Runbook 所用的自动化帐户。 这些模块可以是已创建，从 PowerShell 库的自定义模块或适用于 Azure 的 AzureRM 和 Az 模块。
+Azure 自动化提供相应的功能用于将 PowerShell 模块导入到基于 PowerShell 的 Runbook 所用的自动化帐户。 这些模块可以是已创建，从 PowerShell 库的自定义模块或适用于 Azure 的 AzureRM 和 Az 模块。 创建自动化帐户时一些模块是默认情况下导入。
 
 ## <a name="import-modules"></a>导入模块
 
@@ -37,13 +37,13 @@ New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -Reso
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 Azure 门户中导航到你的自动化帐户，然后选择“共享资源”下的“模块”。 单击“+ 添加模块”。 选择包含你的模块的 **.zip** 文件，然后单击“确定”开始执行导入过程。
+在 Azure 门户中导航到你的自动化帐户，然后选择“共享资源”下的“模块”。   单击“+ 添加模块”。  选择包含你的模块的 **.zip** 文件，然后单击“确定”开始执行导入过程。 
 
 ### <a name="powershell-gallery"></a>PowerShell 库
 
 从 PowerShell 库模块可以是从导入[PowerShell 库](https://www.powershellgallery.com)直接或通过自动化帐户。
 
-若要从 PowerShell 库导入模块，请转到 https://www.powershellgallery.com并搜索你想要导入的模块。 单击**部署到 Azure 自动化**上**Azure 自动化**选项卡上的**安装选项**。 此操作将打开 Azure 门户。 上**导入**页上，选择自动化帐户并单击**确定**。
+若要从 PowerShell 库导入模块，请转到 https://www.powershellgallery.com 并搜索你想要导入的模块。 单击**部署到 Azure 自动化**上**Azure 自动化**选项卡上的**安装选项**。 此操作将打开 Azure 门户。 上**导入**页上，选择自动化帐户并单击**确定**。
 
 ![PowerShell 库导入模块](../media/modules/powershell-gallery.png)
 
@@ -51,9 +51,25 @@ New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -Reso
 
 ![从 Azure 门户的 PowerShell 库导入](../media/modules/gallery-azure-portal.png)
 
+## <a name="delete-modules"></a>删除模块
+
+如果具有模块的问题或需要回滚到以前版本的模块，则可以在自动化帐户中将其删除。 不能删除的原始版本[默认模块](#default-modules)创建自动化帐户时，导入。 如果你想要删除的模块是之一的较新版本[默认模块](#default-modules)安装，它将回滚到与你的自动化帐户并安装的版本。 否则，将删除在自动化帐户中删除任何模块。
+
+### <a name="azure-portal"></a>Azure 门户
+
+在 Azure 门户中导航到你的自动化帐户，然后选择“共享资源”下的“模块”。   选择你想要删除的模块。 上**模块**页上，clcick**删除**。 如果此模块是之一[默认模块](#default-modules)则会将其回滚到已创建自动化帐户时存在的版本。
+
+### <a name="powershell"></a>PowerShell
+
+若要删除通过 PowerShell 模块，请运行以下命令：
+
+```azurepowershell-interactive
+Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName>
+```
+
 ## <a name="internal-cmdlets"></a>内部 cmdlet
 
-下面是导入到每个自动化帐户的内部 `Orchestrator.AssetManagement.Cmdlets` 模块中的 cmdlet 列表。 可在 Runbook 和 DSC 配置中访问这些 cmdlet，使用它们可与自动化帐户中的资产进行交互。 此外，使用内部 cmdlet 还可以从加密的“变量”值、“凭据”和加密的“连接”字段中检索机密。 Azure PowerShell cmdlet 无法检索这些机密。 无需隐式连接到 Azure 即可使用这些 cmdlet。 如果需要使用某个连接（例如运行方式帐户）在 Azure 中进行身份验证，则这些内部 cmdlet 就非常有利。
+下面是导入到每个自动化帐户的内部 `Orchestrator.AssetManagement.Cmdlets` 模块中的 cmdlet 列表。 可在 Runbook 和 DSC 配置中访问这些 cmdlet，使用它们可与自动化帐户中的资产进行交互。 此外，使用内部 cmdlet 还可以从加密的“变量”值、“凭据”和加密的“连接”字段中检索机密。    Azure PowerShell cmdlet 无法检索这些机密。 无需隐式连接到 Azure 即可使用这些 cmdlet。 如果需要使用某个连接（例如运行方式帐户）在 Azure 中进行身份验证，则这些内部 cmdlet 就非常有利。
 
 |Name|描述|
 |---|---|
@@ -209,6 +225,37 @@ PowerShell 模块可导入到 Azure 自动化中，这样其 cmdlet 就可以在
 * 该模块应完全包含在能够进行 xcopy 操作的包中。 需要执行 Runbook 时，Azure 自动化模块将分发到自动化沙盒中。 这些模块需要独立于它们在其上运行的​​主机工作。 你应能够压缩并移动模块包，并在导入到其他主机的 PowerShell 环境时使其正常运行。 为了实现这一点，模块不应该依赖于模块文件夹以外的任何文件。 此文件夹是将模块导入 Azure 自动化时压缩的文件夹。 该模块还不应依赖于主机上的任何唯一注册表设置，例如安装产品时设置的那些设置。 该模块中所有文件的路径长度应小于 140 个字符。 长度超过 140 个字符的任何路径将导致导入 Runbook 时出现问题。 如果不遵循此最佳做法，则无法在 Azure 自动化中使用该模块。  
 
 * 如果在模块中引用 [Azure Powershell Az 模块](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)，请确保没有同时引用 `AzureRM`。 `Az` 模块不能与 `AzureRM` 模块一起使用。 Runbook 支持 `Az`，但默认情况下不会导入。 若要了解 `Az` 模块和需要考虑的注意事项，请参阅 [Azure 自动化中的 Az 模块支持](../az-modules.md)。
+
+## <a name="default-modules"></a>默认模块
+
+下表列出了创建自动化帐户时默认情况下导入的模块。 下面列出的模块可以有较新版本的这些导入，但原始版本可以从你的自动化帐户中删除，即使你删除它们的较新版本。
+
+|模块名称|Version|
+|---|---|
+| AuditPolicyDsc | 1.1.0.0 |
+| Azure | 1.0.3 |
+| Azure.存储 | 1.0.3 |
+| AzureRM.Automation | 1.0.3 |
+| AzureRM.Compute | 1.2.1 |
+| AzureRM.Profile | 1.0.3 |
+| AzureRM.Resources | 1.0.3 |
+| AzureRM.Sql | 1.0.3 |
+| AzureRM.Storage | 1.0.3 |
+| ComputerManagementDsc | 5.0.0.0 |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
+| Microsoft.PowerShell.Utility |  |
+| Microsoft.WSMan.Management |  |
+| Orchestrator.AssetManagement.Cmdlets | 第 |
+| PSDscResources | 2.9.0.0 |
+| SecurityPolicyDsc | 2.1.0.0 |
+| StateConfigCompositeResources | 第 |
+| xDSCDomainjoin | 1.1 |
+| xPowerShellExecutionPolicy | 1.1.0.0 |
+| xRemoteDesktopAdmin | 1.1.0.0 |
 
 ## <a name="next-steps"></a>后续步骤
 

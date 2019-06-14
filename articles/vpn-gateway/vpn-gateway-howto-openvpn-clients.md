@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 5/21/2019
 ms.author: cherylmc
 ms.openlocfilehash: fdfabf328ddfa6b5e4b578be5a1b329cb3219a18
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65989079"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>配置 Azure VPN 网关 OpenVPN 客户端
@@ -124,13 +124,13 @@ ms.locfileid: "65989079"
     sudo openvpn –-config <name and path of your VPN profile file>
     ```
 12. 要使用 GUI 进行连接，请转到系统设置。
-13. 单击 + 添加新的 VPN 连接。
-14. 在“添加 VPN”下，选择“从文件导入...”
-15. 浏览到配置文件，然后双击或选择“打开”。
-16. 单击“添加 VPN”窗口上的“添加”。
+13. 单击 + 添加新的 VPN 连接  。
+14. 在“添加 VPN”下，选择“从文件导入...”  
+15. 浏览到配置文件，然后双击或选择“打开”。 
+16. 单击“添加 VPN”窗口上的“添加”   。
   
     ![从文件导入](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
-17. 可以通过在“网络设置”页面上或在系统托盘中的网络图标下打开 VPN 进行连接。
+17. 可以通过在“网络设置”页面上或在系统托盘中的网络图标下打开 VPN 进行连接   。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: magattus
 ms.openlocfilehash: 954d19fb557540e4fdc6b17f313127e01eba97a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60636296"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>针对内容分发类型优化 Azure CDN
 
-向许多全球受众传送内容时，请务必优化内容传送。 [Azure 内容分发网络 (CDN)](cdn-overview.md) 可以根据内容类型优化分发体验。 内容可以是网站、实时传送视频流、视频或可供下载的大文件。 创建 CDN 终结点时，请在“优化对象”选项中指定方案。 选择哪个方案决定了对通过 CDN 终结点传送的内容应用哪种优化。
+向许多全球受众传送内容时，请务必优化内容传送。 [Azure 内容分发网络 (CDN)](cdn-overview.md) 可以根据内容类型优化分发体验。 内容可以是网站、实时传送视频流、视频或可供下载的大文件。 创建 CDN 终结点时，请在“优化对象”  选项中指定方案。 选择哪个方案决定了对通过 CDN 终结点传送的内容应用哪种优化。
 
 优化选项旨在通过最佳做法行为来提升内容传送性能和改进源卸载。 选择的方案会修改部分缓存、对象区块和源故障重试策略的配置，从而影响性能。 
 
 本文概述了各种优化功能以及何时应使用这些功能。 有关功能和限制的详细信息，请参阅各个优化类型对应的文章。
 
 > [!NOTE]
-> 创建 CDN 终结点时，“优化针对方案”可能根据在其中创建终结点的配置文件的类型而不同。 Azure CDN 提供程序以不同的方式应用增强功能，具体视方案而定。 
+> 创建 CDN 终结点时，“优化针对方案”  可能根据在其中创建终结点的配置文件的类型而不同。 Azure CDN 提供程序以不同的方式应用增强功能，具体视方案而定。 
 
 ## <a name="provider-options"></a>提供程序选项
 
@@ -64,13 +64,13 @@ Microsoft 建议测试不同提供程序的性能差异，以选择最适合分�
 
 ## <a name="select-and-configure-optimization-types"></a>选择并配置优化类型
 
-创建 CDN 终结点时，请选择与方案和要通过终结点传送的内容类型最匹配的优化类型。 系统默认选择“常规 Web 传送”。 只有对于现有的**来自 Akamai 的标准 Azure CDN** 终结点，你可以随时更新优化选项。 此更改不会中断 Azure CDN 内容分发。 
+创建 CDN 终结点时，请选择与方案和要通过终结点传送的内容类型最匹配的优化类型。 系统默认选择“常规 Web 传送”  。 只有对于现有的**来自 Akamai 的标准 Azure CDN** 终结点，你可以随时更新优化选项。 此更改不会中断 Azure CDN 内容分发。 
 
 1. 在**来自 Akamai 的标准 Azure CDN** 配置文件中，选择一个终结点。
 
     ![终结点选择](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. 在“设置”下选择“优化”。 然后，在“优化针对方案”下拉列表中选择一种类型。
+2. 在“设置”下选择“优化”。  然后，在“优化针对方案”  下拉列表中选择一种类型。
 
     ![优化和类型选择](./media/cdn-optimization-overview/02_Select.png)
 
@@ -85,7 +85,7 @@ Microsoft 建议测试不同提供程序的性能差异，以选择最适合分�
 典型网站包含静态和动态内容。 静态内容包括可以缓存并传送给不同用户的图像、JavaScript 库和样式表。 动态内容针对各个用户进行个性化设置，如针对用户配置文件定制的新闻项。 动态内容（例如购物车内容）不会缓存，因为它对于每个用户是唯一的。 常规 Web 传送优化可以优化整个网站。 
 
 > [!NOTE]
-> 如果使用的是**来自 Akamai 的标准 Azure CDN** 配置文件，当平均文件大小小于 10 MB 时，请选择此优化类型。 否则，如果平均文件大小超过 10 MB，请从“优化针对方案”下拉列表中选择“大型文件下载”。
+> 如果使用的是**来自 Akamai 的标准 Azure CDN** 配置文件，当平均文件大小小于 10 MB 时，请选择此优化类型。 否则，如果平均文件大小超过 10 MB，请从“优化针对方案”下拉列表中选择“大型文件下载”   。
 
 ### <a name="general-media-streaming"></a>常规媒体流式处理
 

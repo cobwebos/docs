@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/23/2016
+ms.date: 3/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: ee50a0e9c7fca8f01f12b3508c86d901b5315120
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9cf939b241da01be55c1b2ba5f00a5131ab94c06
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60897108"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061155"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 
@@ -256,7 +256,7 @@ ms.locfileid: "60897108"
 
 ### <a name="3-invoke-your-filter-java-spring"></a>3.调用筛选器 (Java Spring)
 
-对于基于 Spring framework 应用程序，自定义遥测处理器必须在主应用程序类中注册为 bean。 应用程序启动时，它们将在自动匹配。
+对于基于 Spring 框架的应用程序，自定义遥测处理器必须在主应用程序类中注册为 bean。 然后，它们将在应用程序启动时自动连接。
 
 ```Java
 @Bean
@@ -265,12 +265,12 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-将需要创建自己的筛选器参数中`application.properties`并利用 Spring Boot 外部化的配置框架将这些参数传递到自定义筛选器。 
+你将需要在 `application.properties` 中创建自己的筛选器参数，并利用 Spring Boot 的外部化配置框架将这些参数传递到自定义筛选器。 
 
 
 ## <a name="troubleshooting"></a>故障排除
 
-我的筛选器不能正常工作。
+我的筛选器不能正常工作  。
 
 * 请检查提供的参数值是否有效。 例如，持续时间应为整数。 无效值将导致筛选器被忽略。 如果自定义筛选器从构造函数或 set 方法中引发异常，它会被忽略。
 

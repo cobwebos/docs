@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60656660"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的问题模板
@@ -90,7 +90,7 @@ ms.locfileid: "60656660"
 </div>
 ```
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>Controls  
  `Issue list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
@@ -103,7 +103,7 @@ ms.locfileid: "60656660"
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
 |`IsAuthenticated`|boolean|当前用户是否登录到开发人员门户。|  
 |`CanReportIssues`|boolean|当前用户是否有权提出问题。|  
-|`Search`|string|此属性已弃用，不应使用。|  
+|`Search`|字符串|此属性已弃用，不应使用。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

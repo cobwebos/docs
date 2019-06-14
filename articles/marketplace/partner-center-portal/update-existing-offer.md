@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 22490599b6f7a8d87c546cd84ca2fc6fbb2bfa3c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65806156"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>更新商业 Marketplace 中的现有产品/服务
@@ -42,7 +42,7 @@ ms.locfileid: "65806156"
 若要对已发布的现有产品/服务中的计划进行更改：
 
 - 与**产品/服务概述**打开现有产品/服务页上，选择你想要更改的计划。 如果不是从可访问计划**计划概述**列表中，选择**中查看所有计划**。
-- 您可以选择的计划**名称**，**定价模型**，或**可用性**。 *计划目前仅适用于英语 （美国）*。
+- 您可以选择的计划**名称**，**定价模型**，或**可用性**。 *计划目前仅适用于英语 （美国）* 。
 - 选择**保存**后对计划名称、 说明、 定价、 或受众可用性进行任何必要的更改。 
 - 选择**发布**后已准备好将更新发布。 **[评审并将其发布](#review-and-publish-an-updated-offer)** 页将打开并为你的更新提供完成状态。 
 

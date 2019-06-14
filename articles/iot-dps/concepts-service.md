@@ -3,25 +3,25 @@ title: Azure IoT 中心设备预配服务中的服务概念 | Microsoft Docs
 description: 介绍服务预配概念，特定于使用设备预配服务和 IoT 中心的设备
 author: nberdy
 ms.author: nberdy
-ms.date: 03/30/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 4a4f53f991355e634e8139f9e90bec6c508a527d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60745802"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT 中心设备预配服务概念
 
 IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式[自动预配](concepts-auto-provisioning.md)数百万台设备。
 
-设备预配是一个两部分过程。 第一部分是通过注册设备来建立设备和 IoT 解决方案之间的初始连接。 第二部分是根据解决方案的具体要求将适当的配置应用于设备。 在这两个步骤都完成后，设备已完全预配。 设备预配服务自动执行这两个步骤，为设备提供无缝的预配体验。
+设备预配是一个两部分过程。 第一部分是通过注册设备来建立设备和 IoT 解决方案之间的初始连接  。 第二部分是根据解决方案的具体要求将适当的配置应用于设备  。 在这两个步骤都完成后，设备已完全预配  。 设备预配服务自动执行这两个步骤，为设备提供无缝的预配体验。
 
-本文概述了最适用于管理服务的预配概念。 本文与设备部署准备工作的[云设置步骤](about-iot-dps.md#cloud-setup-step)中提及的角色最为相关。
+本文概述了最适用于管理服务的预配概念  。 本文与设备部署准备工作的[云设置步骤](about-iot-dps.md#cloud-setup-step)中提及的角色最为相关。
 
 ## <a name="service-operations-endpoint"></a>服务操作终结点
 

@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 06/07/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78676ac2f2dcff74a27e0260a5d83e924f7c246f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ee49ae56122fe596a4490914677d91d2f0348f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284961"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807519"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory 活动日志内容包错误故障排除 
 
@@ -47,7 +47,7 @@ ms.locfileid: "60284961"
 | 原因 | 如何解决 |
 | ---   | ---        |
 | 当连接到内容包的用户的凭据被重置，但在内容包的连接设置中未更新时，可能会导致刷新失败错误。 | 在 Power BI 中，找到与 Azure AD 活动日志仪表板（**Azure Active Directory 活动日志**）相对应的数据集，选择计划刷新，然后输入你的 Azure AD 凭据。 |
-| 由于基础内容包中的数据问题可能会导致刷新失败。 | [提交一个支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
+| 由于大型数据集，刷新可能会失败。 | 目前，使用 Power BI 的 Azure AD 内容包可以支持仅小型数据集 （小于 500,00 行） 由于 Power BI 服务中的超时方面的一些限制。 如果您遇到的限制错误或者刷新由于超时问题而失败，这可能是由于尝试提取大型数据集。 减少时间段，在查询中的，然后重试。|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>无法更新数据源凭据 

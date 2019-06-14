@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
 ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166209"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
@@ -488,15 +488,15 @@ class Program
 
 使用 Azure 资源运行状况可以监视 IoT 中心是否已启动并正在运行。 此外，还可以了解是否发生了影响 IoT 中心运行状况的区域性服务中断。 若要了解有关 Azure IoT 中心运行状态的具体详细信息，我们建议[使用 Azure Monitor](#use-azure-monitor)。
 
-Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断影响了你的 IoT 中心，则运行状态显示为“未知”。 若要了解详细信息，请参阅[Azure 资源运行状况中的资源类型和运行状况检查](../service-health/resource-health-checks-resource-types.md)。
+Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断影响了你的 IoT 中心，则运行状态显示为“未知”。  若要了解详细信息，请参阅[Azure 资源运行状况中的资源类型和运行状况检查](../service-health/resource-health-checks-resource-types.md)。
 
 若要检查 IoT 中心的运行状况，请遵循以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到“服务运行状况” > “资源运行状况”。
+2. 导航到“服务运行状况” > “资源运行状况”。  
 
-3. 从下拉列表框中，选择你的订阅，然后选择“IoT 中心”作为资源类型。
+3. 从下拉列表框中，选择你的订阅，然后选择“IoT 中心”  作为资源类型。
 
 若要了解有关如何解释运行状况数据的详细信息，请参阅[Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
 

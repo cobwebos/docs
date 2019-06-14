@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd397e879dd76cabd119a3cbedff34041be2d13
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 9e7441ab9503919fbf1d0890ce69f04259f38986
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298486"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065771"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -24,6 +24,51 @@ ms.locfileid: "66298486"
 + Azure 机器学习[数据准备 SDK](https://aka.ms/data-prep-sdk) 
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2019-06-10"></a>2019-06-10
+
+### <a name="azure-machine-learning-sdk-for-python-v1043"></a>Azure Machine Learning SDK for Python v1.0.43
+
++ **新功能**
+  + Azure 机器学习现在提供常用机器学习和数据分析框架 scikit-learn 一流的支持。 使用[`SKLearn`估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)，用户可以轻松地训练和部署 scikit-learn 模型。
+    + 了解如何[运行与 scikit-learn 的超参数优化使用 HyperDrive](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。
+  + 添加了的对在管道以及模块和 ModuleVersion 来管理可重用的类中创建 ModuleStep 计算单元。
+  + ACI web 服务现在支持通过更新持久 scoring_uri。 Scoring_uri 将从 IP 更改为 FQDN。 可以通过设置 deploy_configuration dns_name_label 配置 FQDN 的 Dns 名称标签。 
+  + 自动化的机器学习的新功能：
+    + STL 特征化器来进行预测
+    + 为功能扫描启用了 k 均值聚类分析
+  + 只需 AmlCompute 配额审批变得更快 ！ 我们现在已自动批准你的配额请求的阈值内的过程。 有关配额的工作原理的详细信息，请参阅有关[如何管理配额](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas)。
+ 
+
++ **预览功能**
+    + 与集成[MLflow](https://mlflow.org) 1.0.0 跟踪通过 azureml mlflow 包 ([notebook 示例](https://aka.ms/azureml-mlflow-examples))。
+    + 提交与运行 Jupyter notebook。 [API 参考文档](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
+    + 公共预览版[数据偏差检测器](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py)通过 azureml contrib datadrift 包 ([notebook 示例](https://aka.ms/azureml-datadrift-example))。 数据偏差是主要理由之一，随着时间的推移会降低模型准确性。 它进行数据提供服务时，若要在生产环境中的模型是不同于该模型进行定型的数据。 AML 数据偏差检测程序可帮助监视数据偏差的客户，并发送警报，每当检测到偏差。 
+
++ **重大更改**
+
++ **Bug 修复和改进**
+  + RunConfiguration 加载和保存支持完整后兼容的以前的行为与指定的完整文件路径。
+  + 添加在 ServicePrincipalAuthentication，默认情况下关闭缓存。
+  + 启用日志记录的同一指标名称下的多个绘图。
+  + 类现在从 azureml.core 导入正确的模型 (`from azureml.core import Model`)。
+  + 在管道步骤中，`hash_path`参数现已弃用。 新行为是哈希完整 source_directory，.amlignore 或.gitignore 中列出的文件除外。
+  + 在管道包中各种`get_all`并`get_all_*`方法已弃用的`list`和`list_*`分别。
+  + azureml.core.get_run 不再需要返回原始运行的类型之前，导入的类。
+  + 修复了对 web 服务更新的一些调用未触发更新。
+  + 评分 AKS web 服务超时值应为 5 毫秒之间出现。 允许的最大评分请求 scoring_timeout_ms 具有已解除了一个从 1 分钟到 5 分钟。
+  + LocalWebservice 对象现在具有`scoring_uri`和`swagger_uri`属性。
+  + 输出目录的创建和输出目录上的传用户进程外移动。 启用运行历史记录在每个用户进程中运行的 SDK。 这样应该会解决运行一些分布式培训的经验丰富的同步问题。
+  + （适用于分布式培训仅） 的进程名称和 PID，现在将包括用户进程名称从编写的 azureml 日志的名称。
+
+### <a name="azure-machine-learning-data-prep-sdk-v115"></a>Azure 机器学习数据准备 SDK v1.1.5
+
++ **Bug 修复和改进**
+  + 对于具有两位数年份的格式的已解释的日期时间值，已更新的有效的年范围以匹配 Windows 可能会发布。 到 1950年-2049年，从 1930年 2029 年更改范围。
+  + 读取时中的文件和设置`handleQuotedLineBreaks=True`，`\r`将被视为新行。
+  + 修复了 bug 导致`read_pandas_dataframe`在某些情况下失败。
+  + 改进了的性能`get_profile`。
+  + 改进的错误消息。
 
 ## <a name="2019-05-28"></a>2019-05-28
 

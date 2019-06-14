@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
 ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64698434"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
@@ -45,7 +45,7 @@ ms.locfileid: "64698434"
 
 **前端** + **参数** + **后端池**
 
-出站规则为后端池识别的、要转换为前端的所有虚拟机配置出站 NAT。  参数针对出站 NAT 算法提供更精细的控制。
+出站规则为后端池识别的、要转换为前端的所有虚拟机配置出站 NAT。    参数针对出站 NAT 算法提供更精细的控制。 
 
 API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
@@ -84,7 +84,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
           "allocatedOutboundPorts": 10000
 
-出站规则的所有前端中的每个公共 IP 地址最多提供 51,200 个可用作 SNAT 端口的临时端口。  负载均衡器以 8 的倍数分配 SNAT 端口。 如果提供的值不能被 8 整除，则会拒绝配置操作。  如果尝试分配的 SNAT 端口数超过了可用端口数（基于公共 IP 地址数确定），则会拒绝配置操作。  例如，如果分配 10,000 的端口，每个 VM 和 7 个 Vm 在后端池将共享单个公共 IP 地址，配置已被拒绝 （7 x 10,000 SNAT 端口 > 51,200 SNAT 端口）。  将更多的公共 IP 地址添加到出站规则的前端即可实现该方案。
+出站规则的所有前端中的每个公共 IP 地址最多提供 51,200 个可用作 SNAT 端口的临时端口。  负载均衡器以 8 的倍数分配 SNAT 端口。 如果提供的值不能被 8 整除，则会拒绝配置操作。  如果尝试分配的 SNAT 端口数超过了可用端口数（基于公共 IP 地址数确定），则会拒绝配置操作。  例如，如果为每个 VM 分配 10,000 个端口，并且后端池中的 7 个 VM 共享单个公共 IP 地址，则会拒绝该配置（7 x 10,000 个 SNAT 端口 > 51,200 个 SNAT 端口）。  将更多的公共 IP 地址添加到出站规则的前端即可实现该方案。
 
 可以通过将端口数指定为 0，恢复为[基于后端池大小的自动 SNAT 端口分配](load-balancer-outbound-connections.md#preallocatedports)。
 

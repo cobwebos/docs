@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: a73938c98ebaea310875f0db8b665d0f1aed55e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556189"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
@@ -37,7 +37,7 @@ ms.locfileid: "60556189"
 1. 生成并运行**弹性数据库工具入门**示例应用程序。 一直执行到[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分中的步骤 7。 在步骤 7 结束时，可以看到以下命令提示符：
 
     ![命令提示符][1]
-2. 在命令窗口中键入“1”，并按“Enter”。 这会创建分片映射管理器，并将两个分片添加到服务器。 “然”后“键”入“3”并按“Enter”；重复该操作四次。 这会在分片中插入示例数据行。
+2. 在命令窗口中键入“1”，并按“Enter”  。 这会创建分片映射管理器，并将两个分片添加到服务器。 “然”后“键”入“3”并按“Enter”  ；重复该操作四次。 这会在分片中插入示例数据行。
 3. [Azure 门户](https://portal.azure.com)应显示服务器中的 3 个新数据库：
 
    ![Visual Studio 确认][2]
@@ -112,15 +112,15 @@ ms.locfileid: "60556189"
 
 1. 启动 Excel 2013。
 2. 导航到**数据功**能区。
-3. 单击“从其他源”，并单击“从 SQL Server”。
+3. 单击“从其他源”  ，并单击“从 SQL Server”  。
 
    ![从其他源导入 Excel][5]
-4. 在**数据连接向导**中，键入服务器名称和登录凭据。 然后单击“下一步”。
+4. 在**数据连接向导**中，键入服务器名称和登录凭据。 然后单击“下一步”  。
 5. 在对话框**选择包含所需数据的数据库**中，选择 **ElasticDBQuery** 数据库。
-6. 在列表视图中选择“客户”表并单击“下一步”。 然后单击“完成”。
-7. 在“导入数据”窗体中的“请选择该数据在工作簿中的显示方式”下，选择“表”，并单击“确定”。
+6. 在列表视图中选择“客户”  表并单击“下一步”  。 然后单击“完成”  。
+7. 在“导入数据”  窗体中的“请选择该数据在工作簿中的显示方式”  下，选择“表”  ，并单击“确定”  。
 
-存储在不同分片中、来自“客户”表的所有行将填入 Excel 工作表。
+存储在不同分片中、来自“客户”  表的所有行将填入 Excel 工作表。
 
 现在，可以使用 Excel 的强大数据可视化功能。 可以使用包含服务器名称、数据库名称和凭据的连接字符串，将 BI 和数据集成工具连接到弹性查询数据库。 请确保支持将 SQL Server 用作工具的数据源。 可以引用弹性查询数据库和外部表，就如同使用工具连接的任何其他 SQL Server 数据库和 SQL Server 表一样。
 

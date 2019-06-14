@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: iainfou
 ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752176"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>预览版-有关群集节点和控制对所需的端口和服务在 Azure Kubernetes 服务 (AKS) 的访问限制传出流量
@@ -79,7 +79,7 @@ az provider register --namespace Microsoft.ContainerService
 | *.hcp.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | 此地址是 API 服务器终结点。 替换 *\<位置\>* 与部署 AKS 群集所在的区域。 |
 | *.tun.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | 此地址是 API 服务器终结点。 替换 *\<位置\>* 与部署 AKS 群集所在的区域。 |
 | aksrepos.azurecr.io        | HTTPS:443 | 此地址，则需要访问映像在 Azure 容器注册表 (ACR)。 |
-| * .blob.core.windows.net    | HTTPS:443 | 此地址是映像存储在 ACR 中的后端存储区。 |
+| \* .blob.core.windows.net    | HTTPS:443 | 此地址是映像存储在 ACR 中的后端存储区。 |
 | mcr.microsoft.com          | HTTPS:443 | 此地址，则需要访问映像中 Microsoft 容器注册表 (MCR)。 |
 | *.cdn.mscr.io              | HTTPS:443 | 此地址是必需的支持的 Azure 内容分发网络 (CDN) MCR 存储。 |
 | management.azure.com       | HTTPS:443 | 此地址是 Kubernetes GET/PUT 操作所必需的。 |

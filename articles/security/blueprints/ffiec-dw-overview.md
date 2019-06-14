@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
 ms.openlocfilehash: 3db5068943b88921d90697dd94be18c448e19d50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609154"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-ffiec-financial-services"></a>Azure 安全性与合规性蓝图：数据仓库 FFIEC 金融服务
@@ -76,7 +76,7 @@ SQL 负载均衡器管理 SQL 流量，确保高性能。 此参考体系结构�
 
 **SQL 数据仓库**:[SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)是企业数据仓库 (EDW)，可利用大规模并行处理 (MPP) 为了快速运行复杂查询对千万亿字节的数据，使用户可以有效地标识财务数据。 用户可以使用简单的 PolyBase T-SQL 查询将大数据导入到 SQL 数据仓库中，并利用 MPP 的强大功能来运行高性能分析。
 
-**SQL Server Reporting Services (SSRS)**:[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs)表、 图表、 地图、 仪表、 矩形图，以及更多的 Azure SQL 数据仓库提供快速创建报表。
+**SQL Server Reporting Services (SSRS)** :[SQL Server Reporting Services](https://docs.microsoft.com/sql/reporting-services/report-data/sql-azure-connection-type-ssrs)表、 图表、 地图、 仪表、 矩形图，以及更多的 Azure SQL 数据仓库提供快速创建报表。
 
 **数据目录**:[数据目录](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可针对金融数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将连同数据源位置的引用一起添加到数据目录。 此元数据还会编制索引，方便通过搜索功能轻松发现每个数据源，并让发现数据源的用户理解该数据源。
 

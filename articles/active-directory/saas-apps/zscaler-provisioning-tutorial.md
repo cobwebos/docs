@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 3ea502477cc5b380c99a183d9270c2b2e94375a8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275464"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67049363"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>教程：将 Zscaler 配置自动用户预配
 
@@ -30,7 +30,7 @@ ms.locfileid: "59275464"
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../active-directory-saas-app-provisioning.md)。
 >
 
-> 此连接器当前处于公共预览状态。 有关常规 Microsoft Azure 的使用条款预览版功能的详细信息，请参阅[补充使用条款的 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此连接器目前以公共预览版提供。 有关常规 Microsoft Azure 的使用条款预览版功能的详细信息，请参阅[补充使用条款的 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -49,19 +49,19 @@ ms.locfileid: "59275464"
 
 **若要从 Azure AD 应用程序库添加 Zscaler，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Zscaler”，在结果面板中选择“Zscaler”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Zscaler”，在结果面板中选择“Zscaler”，然后单击“添加”按钮添加该应用程序。   
 
     ![结果列表中的 Zscaler](common/search-new-app.png)
 
@@ -77,7 +77,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * 建议将单个 Azure AD 用户分配到 Zscaler，以测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 如果将用户分配到 Zscaler，必须在分配对话框中选择任何有效的特定于应用程序角色 （如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
+* 如果将用户分配到 Zscaler，必须在分配对话框中选择任何有效的特定于应用程序角色 （如果可用）。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="configuring-automatic-user-provisioning-to-zscaler"></a>配置自动用户预配到 Zscaler
 
@@ -92,15 +92,15 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Zscaler”。
+2. 在应用程序列表中，选择“Zscaler”  。
 
     ![应用程序列表中的 Zscaler 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
 
@@ -120,7 +120,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/test-connection.png)
 
-8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
+8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”   。
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/notification.png)
 
@@ -130,7 +130,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
-11. 查看从 Azure AD 同步到 Zscaler 中的用户属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配 Zscaler 中以执行更新操作的用户帐户。 选择“保存”按钮以提交任何更改。
+11. 查看从 Azure AD 同步到 Zscaler 中的用户属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配 Zscaler 中以执行更新操作的用户帐户。 选择“保存”按钮以提交任何更改  。
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
@@ -138,7 +138,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
-13. 查看从 Azure AD 同步到 Zscaler 中的组属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配 Zscaler 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
+13. 查看从 Azure AD 同步到 Zscaler 中的组属性**属性映射**部分。 为所选的属性**匹配**属性用于匹配 Zscaler 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
 
@@ -152,11 +152,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/scoping.png)
 
-17. 已准备好预配时，单击“保存”。
+17. 已准备好预配时，单击“保存”  。
 
     ![Zscaler 预配](./media/zscaler-provisioning-tutorial/save-provisioning.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用**同步详细信息**部分监视进度并跟踪指向预配活动报告，其中描述了由 Azure AD 预配服务对 Zscaler 执行所有操作。
+此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步   。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用**同步详细信息**部分监视进度并跟踪指向预配活动报告，其中描述了由 Azure AD 预配服务对 Zscaler 执行所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
 

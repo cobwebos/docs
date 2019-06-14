@@ -13,10 +13,10 @@ ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762311"
 ---
 # <a name="media-services-concepts"></a>媒体服务概念
@@ -32,7 +32,7 @@ ms.locfileid: "65762311"
 
 本部分介绍一些常见的行业术语如何映射到媒体服务 v3 API。
 
-### <a name="live-event"></a>直播事件
+### <a name="live-event"></a>实时事件
 
 一个**Live 事件**表示用于引入，转码 （可选） 和打包视频、 音频以及实时元数据的实时流的管道。
 

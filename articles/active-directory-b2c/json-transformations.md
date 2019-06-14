@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 9a026d205d3ab855ecbb51048e7464df6fb4a094
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510754"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
@@ -29,8 +29,8 @@ ms.locfileid: "66510754"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | 由声明转换用于获取项的 ClaimTypes。 |
-| InputParameter | claimToExtract | string | 要提取的 JSON 元素的名称。 |
+| InputClaim | inputJson | 字符串 | 由声明转换用于获取项的 ClaimTypes。 |
+| InputParameter | claimToExtract | 字符串 | 要提取的 JSON 元素的名称。 |
 | OutputClaim | extractedClaim | 字符串 | 调用此声明转换后生成的 ClaimType，即 claimToExtract  输入参数中指定的元素值。 |
 
 在以下示例中，声明转换提取 JSON 数据中的 `emailAddress` 元素：`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
@@ -69,7 +69,7 @@ ms.locfileid: "66510754"
 | InputParameter | errorOnMissingClaims | boolean | 指定如果缺少一个声明是否引发错误。 |
 | InputParameter | includeEmptyClaims | 字符串 | 指定是否包含空声明。 |
 | InputParameter | jsonSourceKeyName | 字符串 | 元素键名称 |
-| InputParameter | jsonSourceValueName | string | 元素值名称 |
+| InputParameter | jsonSourceValueName | 字符串 | 元素值名称 |
 | OutputClaim | 集合 | 字符串、int、布尔值，和日期时间 |要提取的声明列表。 声明名称应等于 jsonSourceClaim  输入声明中指定的名称。 |
 
 在以下示例中，声明转换从 JSON 数据中提取以下声明：email（字符串）、displayName（字符串）、membershipNum (int)、active（布尔值）和 birthdate（日期时间）。

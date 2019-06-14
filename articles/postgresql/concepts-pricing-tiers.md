@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ed534f910fa1e44d3d53ab61ee86378eba788036
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 42f290109ca380464cb07ac9f684cdde25b8fdcd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240385"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063772"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
 
@@ -54,6 +54,26 @@ ms.locfileid: "66240385"
 您可以添加更多存储容量期间和之后创建服务器，并允许系统增长自动根据工作负荷的存储消耗的存储。 “基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
 
 可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
+
+### <a name="large-storage-preview"></a>较大的存储 （预览版）
+
+我们正在我们常规用途和内存优化层中增加的存储限制。 新创建的服务器的选择中加入预览版可以预配最多 16 TB 的存储空间。 IOPS 3:1 比率较多达 20,000 IOPS 进行缩放。 与当前已公开发布存储一样，您可以服务器，在创建后添加更多存储容量，并允许系统增长自动根据工作负荷的存储消耗的存储。
+
+|              | **常规用途** | **内存优化** |
+|:-------------|:--------------------|:---------------------|
+| 存储类型 | Azure 高级存储 | Azure 高级存储 |
+| 存储大小 | 32 GB 到 16 TB| 32 到 16 TB |
+| 存储增量大小 | 1 GB | 1 GB |
+| IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
+
+> [!IMPORTANT]
+> 较大的存储当前处于公共预览版形式在以下区域：美国东部、 美国东部 2、 美国中部、 美国西部、 美国西部 2、 北欧、 西欧、 东南亚、 日本东部、 韩国中部、 澳大利亚东部。
+>
+>较大的存储预览版目前不支持：
+>
+> * 通过虚拟网络服务终结点的传入连接
+> * 异地冗余备份
+> * 跨区域复制
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 

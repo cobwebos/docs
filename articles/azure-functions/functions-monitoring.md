@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
 ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922963"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
@@ -67,7 +67,7 @@ ms.locfileid: "64922963"
 
    ![调用列表](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
-1. 若要查看特定函数调用的日志，选择该调用对应的“日期”列链接。
+1. 若要查看特定函数调用的日志，选择该调用对应的“日期”列链接。 
 
    ![调用详细信息链接](media/functions-monitoring/invocation-details-link-ai.png)
 
@@ -99,9 +99,9 @@ ms.locfileid: "64922963"
 
 | Tab | 描述 |
 | ---- | ----------- |
-| **[失败](../azure-monitor/app/asp-net-exceptions.md)** |  创建图表和基于函数失败和服务器异常的警报。 操作名称是函数名称。 依赖项中的失败不会显示，除非实现依赖项的自定义遥测数据。 |
+| **[失败](../azure-monitor/app/asp-net-exceptions.md)** |  创建图表和基于函数失败和服务器异常的警报。 操作名称  是函数名称。 依赖项中的失败不会显示，除非实现依赖项的自定义遥测数据。 |
 | **[性能](../azure-monitor/app/performance-counters.md)** | 分析性能问题。 |
-| **服务器** | 查看资源利用率和每个服务器的吞吐量。 在函数阻碍基础资源的调试方案下，此数据非常有用。 服务器被称为云角色实例。 |
+| **服务器** | 查看资源利用率和每个服务器的吞吐量。 在函数阻碍基础资源的调试方案下，此数据非常有用。 服务器被称为云角色实例  。 |
 | **[指标](../azure-monitor/app/metrics-explorer.md)** | 创建图表和基于指标的警报。 度量值包括函数调用、 执行时间和成功率的数。 |
 | **[实时指标流](../azure-monitor/app/live-stream.md)** | 创建实时查看指标数据。 |
 
@@ -150,7 +150,7 @@ traces
 
 ### <a name="categories"></a>类别
 
-对于每个日志，Azure Functions 记录器都包含一个类别。 类别指示运行时代码或函数代码的哪个部分编写日志。 
+对于每个日志，Azure Functions 记录器都包含一个类别  。 类别指示运行时代码或函数代码的哪个部分编写日志。 
 
 Functions 运行时创建日志具有类别开头"主机。 "函数已启动，""函数已执行"和"函数已完成"日志具有类别"Host.Executor"。 
 
@@ -650,7 +650,7 @@ Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 
 当启用 Application Insights 时，请禁用使用 Azure 存储的内置日志记录。 内置日志记录对于使用轻工作负荷测试非常有用，但并不是为了高负载生产环境中使用。 对于生产监视，我们建议使用 Application Insights。 如果在生产环境中使用内置日志记录，则日志记录记录可能不完整由于 Azure 存储限制。
 
-若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”部分。 删除应用设置之前，请确保没有现有函数相同的函数应用中使用 Azure 存储触发器或绑定设置。
+若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”  部分。 删除应用设置之前，请确保没有现有函数相同的函数应用中使用 Azure 存储触发器或绑定设置。
 
 ## <a name="next-steps"></a>后续步骤
 

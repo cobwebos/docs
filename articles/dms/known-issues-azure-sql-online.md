@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 04/09/2019
 ms.openlocfilehash: 00ed2f20884c3cd8f49307bd726f14f3007f884f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60534387"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制
@@ -23,7 +23,7 @@ ms.locfileid: "60534387"
 下面描述了从 SQL Server 联机迁移到 Azure SQL 数据库时存在的已知问题和限制。
 
 > [!IMPORTANT]
-> 使用的 SQL Server 到 Azure SQL 数据库的联机迁移，不支持 SQL_variant 数据类型的迁移。
+> 将 SQL Server 联机迁移到 Azure SQL 数据库时，不支持迁移 SQL_variant 数据类型。
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>不支持迁移时态表
 
@@ -43,7 +43,7 @@ ms.locfileid: "60534387"
      ``` 
      select name,temporal_type,temporal_type_desc,* from sys.tables where temporal_type <>0
      ```
-2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。
+2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。 
 
 3. 重新运行迁移活动。
 
@@ -67,7 +67,7 @@ ms.locfileid: "60534387"
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
-2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。
+2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。 
 
 3. 重新运行迁移活动。
 
@@ -109,11 +109,11 @@ DMS 不会迁移源时间戳值；DMS 在目标表中生成新的时间戳值。
 
 如果需要 DMS 迁移源表中存储的确切时间戳值，请联系的工程团队[让 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。
 
-### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>数据迁移错误未提供数据库的详细的状态边栏选项卡上的其他详细信息。
+### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>发生数据迁移错误时，“数据库详细状态”边栏选项卡上不会提供其他详细信息。
 
 **症状**
 
-跨数据库的详细信息状态视图中的迁移失败时，选择**数据的迁移错误**顶部功能区上的链接可能无法提供特定于迁移失败的其他详细信息。
+如果“数据库详细状态”视图中显示迁移失败，选择顶部功能区中的“数据迁移错误”链接可能不会提供特定于该迁移失败的其他详细信息。 
 
 ![发生数据迁移错误时不提供详细信息的示例](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
@@ -125,4 +125,4 @@ DMS 不会迁移源时间戳值；DMS 在目标表中生成新的时间戳值。
 
      ![迁移活动屏幕](media/known-issues-azure-sql-online/dms-migration-activity-screen.png)
 
-2. 选择“查看错误详细信息”以查看可帮助排查迁移错误的具体错误消息。
+2. 选择“查看错误详细信息”以查看可帮助排查迁移错误的具体错误消息。 

@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: 0af6e87d3e0b4b3b40b63db07384d4a33a9d43e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66154189"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
@@ -355,7 +355,7 @@ ssh <publicIpAddress>
 
 1. 从 [Oracle ASM 下载页](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html)下载 Oracle Grid Infrastructure。 
 
-   在下载标题“Oracle Database 12c Release 1 Grid Infrastructure (12.1.0.2.0) for Linux x86-64”的下面，下载这两个 .zip 文件。
+   在下载标题“Oracle Database 12c Release 1 Grid Infrastructure (12.1.0.2.0) for Linux x86-64”的下面，下载这两个 .zip 文件  。
 
 2. 将 .zip 文件下载到客户端计算机后，可以使用安全复制协议 (SCP) 将文件复制到 VM：
 
@@ -429,15 +429,15 @@ ssh <publicIpAddress>
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 在客户端系统上启动 PuTTY。 在“类别”窗格中，转到“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
+6. 在客户端系统上启动 PuTTY。 在“类别”窗格中，转到“连接” > “SSH” > “身份验证”。     在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。 
 
    ![SSH 身份验证选项屏幕截图](./media/oracle-asm/setprivatekey.png)
 
-7. 在“类别”窗格中，转到“连接” > “SSH” > “X11”。 选择“启用 X11 转发”复选框。
+7. 在“类别”窗格中，转到“连接” > “SSH” > “X11”。     选择“启用 X11 转发”复选框  。
 
    ![SSH X11 转发选项屏幕截图](./media/oracle-asm/enablex11.png)
 
-8. 在“类别”窗格中，转到“会话”。 在主机名称对话框中输入 Oracle ASM VM `<publicIPaddress>`，填写新的 `Saved Session` 名称，单击 `Save`。  保存后，单击 `open` 连接到 Oracle ASM 虚拟机。  首次连接时，会出现远程系统未在注册表中缓存的警告。 单击 `yes` 添加系统并继续。
+8. 在“类别”窗格中，转到“会话”。   在主机名称对话框中输入 Oracle ASM VM `<publicIPaddress>`，填写新的 `Saved Session` 名称，单击 `Save`。  保存后，单击 `open` 连接到 Oracle ASM 虚拟机。  首次连接时，会出现远程系统未在注册表中缓存的警告。 单击 `yes` 添加系统并继续。
 
    ![PuTTY 会话选项屏幕截图](./media/oracle-asm/puttysession.png)
 
@@ -457,48 +457,48 @@ ssh <publicIpAddress>
 
    此时会打开 Oracle Grid Infrastructure 12c Release 1 安装程序。 （安装程序可能需要花费几分钟时间来启动。）
 
-2. 在“选择安装选项”页上，选择“安装并配置适用于独立服务器的 Oracle Grid Infrastructure”。
+2. 在“选择安装选项”页上，选择“安装并配置适用于独立服务器的 Oracle Grid Infrastructure”。  
 
    ![安装程序中的“选择安装选项”页屏幕截图](./media/oracle-asm/install01.png)
 
-3. 在“选择产品语言”页上，确保已选择“英语”或所需的语言。  单击`next`。
+3. 在“选择产品语言”页上，确保已选择“英语”或所需的语言。    单击`next`。
 
-4. 在“创建 ASM 磁盘组”页上：
+4. 在“创建 ASM 磁盘组”页上： 
    - 输入磁盘组的名称。
-   - 在“冗余”下面，选择“外部”。
-   - 在“分配单元大小”下面，选择“4”。
-   - 在“添加磁盘”下面，选择“ORCLASMSP”。
+   - 在“冗余”下面，选择“外部”。  
+   - 在“分配单元大小”下面，选择“4”。  
+   - 在“添加磁盘”下面，选择“ORCLASMSP”。  
    - 单击`next`。
 
-5. 在“指定 ASM 密码”页上，选择“对这些帐户使用相同的密码”选项，并输入密码。
+5. 在“指定 ASM 密码”页上，选择“对这些帐户使用相同的密码”选项，并输入密码。  
 
    ![安装程序中的“指定 ASM 密码”页屏幕截图](./media/oracle-asm/install04.png)
 
-6. 在“指定管理选项”页上，可以选择配置 EM 云控件。 我们将跳过此选项 - 请单击 `next` 继续。 
+6. 在“指定管理选项”页上，可以选择配置 EM 云控件。  我们将跳过此选项 - 请单击 `next` 继续。 
 
-7. 在“特权操作系统组”页上，请使用默认设置。 单击 `next` 继续。
+7. 在“特权操作系统组”页上，请使用默认设置。  单击 `next` 继续。
 
-8. 在“指定安装位置”页上，请使用默认设置。 单击 `next` 继续。
+8. 在“指定安装位置”页上，请使用默认设置。  单击 `next` 继续。
 
-9. 在“创建清单”页上，将“清单目录”更改为 `/u01/app/grid/oraInventory`。 单击 `next` 继续。
+9. 在“创建清单”页上，将“清单目录”更改为 `/u01/app/grid/oraInventory`。  单击 `next` 继续。
 
    ![安装程序中的“创建清单”页屏幕截图](./media/oracle-asm/install08.png)
 
-10. 在“Root 脚本执行配置”页上，选中“自动运行配置脚本”复选框。 然后，选择“使用 "root" 用户凭据”选项，并输入 root 用户密码。
+10. 在“Root 脚本执行配置”页上，选中“自动运行配置脚本”复选框   。 然后，选择“使用 "root" 用户凭据”选项，并输入 root 用户密码。 
 
     ![安装程序中的“Root 脚本执行配置”页屏幕截图](./media/oracle-asm/install09.png)
 
-11. 在“执行先决条件检查”页上，当前安装会失败并出错。 这是预期的行为。 选择 `Fix & Check Again`。
+11. 在“执行先决条件检查”页上，当前安装会失败并出错。  这是预期的行为。 选择 `Fix & Check Again`。
 
-12. 在“修正脚本”对话框中，单击 `OK`。
+12. 在“修正脚本”对话框中，单击 `OK`。 
 
-13. 在“摘要”页上查看选定设置，单击 `Install`。
+13. 在“摘要”页上查看选定设置，单击 `Install`。 
 
     ![安装程序中的“摘要”页屏幕截图](./media/oracle-asm/install12.png)
 
 14. 此时会出现警告对话框，告知需要以特权用户的身份运行配置脚本。 单击 `Yes` 继续。
 
-15. 在“完成”页上，单击 `Close` 完成安装。
+15. 在“完成”页上，单击 `Close` 完成安装。 
 
 ## <a name="set-up-your-oracle-asm-installation"></a>设置 Oracle ASM 安装
 
@@ -513,32 +513,32 @@ ssh <publicIpAddress>
 
    此时会打开 Oracle ASM 配置助手。
 
-2. 在“配置 ASM: 磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
+2. 在“配置 ASM:  磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
 
-3. 在“创建磁盘组”对话框中：
+3. 在“创建磁盘组”对话框中  ：
 
    - 输入磁盘组名称 **DATA**。
-   - 在“选择成员磁盘”下面，选择“ORCL_DATA”和“ORCL_DATA1”。
-   - 在“分配单元大小”下面，选择“4”。
+   - 在“选择成员磁盘”下面，选择“ORCL_DATA”和“ORCL_DATA1”。   
+   - 在“分配单元大小”下面，选择“4”。  
    - 单击 `ok` 创建磁盘组。
    - 单击 `ok` 关闭确认窗口。
 
    ![“创建磁盘组”对话框屏幕截图](./media/oracle-asm/asm02.png)
 
-4. 在“配置 ASM: 磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
+4. 在“配置 ASM:  磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
 
-5. 在“创建磁盘组”对话框中：
+5. 在“创建磁盘组”对话框中  ：
 
    - 输入磁盘组名称 **FRA**。
-   - 在“冗余”下面，选择“外部(无)”。
-   - 在“选择成员磁盘”下面，选择“ORCL_FRA”。
-   - 在“分配单元大小”下面，选择“4”。
+   - 在“冗余”下面，选择“外部(无)”。  
+   - 在“选择成员磁盘”下面，选择“ORCL_FRA”。  
+   - 在“分配单元大小”下面，选择“4”。  
    - 单击 `ok` 创建磁盘组。
    - 单击 `ok` 关闭确认窗口。
 
    ![“创建磁盘组”对话框屏幕截图](./media/oracle-asm/asm04.png)
 
-6. 选择“退出”关闭 ASM 配置助手。
+6. 选择“退出”关闭 ASM 配置助手。 
 
    ![“配置 ASM: 磁盘组”对话框的屏幕截图，其中包含“退出”按钮](./media/oracle-asm/asm05.png)
 
@@ -555,23 +555,23 @@ Oracle 数据库软件已安装在 Azure 市场映像中。 若要创建数据�
    ```
    此时会打开配置助手。
 
-2. 在“数据库操作”页上，单击 `Create Database`。
+2. 在“数据库操作”页上，单击 `Create Database`。 
 
-3. 在“创建模式”页上：
+3. 在“创建模式”页上： 
 
    - 输入数据库的名称。
-   - 对于“存储类型”，请确保选择“自动存储管理(ASM)”。
-   - 对于“数据库文件位置”，请使用 ASM 建议的默认位置。
-   - 对于“快速恢复区域”，请使用 ASM 建议的默认位置。
-   - 键入“管理密码”和“确认密码”。
+   - 对于“存储类型”，请确保选择“自动存储管理(ASM)”。  
+   - 对于“数据库文件位置”，请使用 ASM 建议的默认位置。 
+   - 对于“快速恢复区域”，请使用 ASM 建议的默认位置。 
+   - 键入“管理密码”和“确认密码”。  
    - 确保已选择 `create as container database`。
    - 键入 `pluggable database name` 值。
 
-4. 在“摘要”页上查看选定的设置，并单击 `Finish` 创建数据库。
+4. 在“摘要”页上查看选定的设置，并单击 `Finish` 创建数据库  。
 
    ![“摘要”页屏幕截图](./media/oracle-asm/createdb03.png)
 
-5. 数据库已创建。 在“完成”页上，可以选择解锁其他帐户以使用此数据库并更改密码。 如果想要这样做，请选择“密码管理”- 否则请单击 `close`。
+5. 数据库已创建。 在“完成”页上，可以选择解锁其他帐户以使用此数据库并更改密码。  如果想要这样做，请选择“密码管理”- 否则请单击 `close`。 
 
 ## <a name="delete-the-vm"></a>删除 VM
 

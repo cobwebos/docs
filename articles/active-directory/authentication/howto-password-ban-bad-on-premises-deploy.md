@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 4c22c9c202e6de3b31b99803dce4a07d38287a92
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506874"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057280"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -36,6 +36,7 @@ ms.locfileid: "65506874"
 
 ## <a name="deployment-requirements"></a>部署要求
 
+* 可以在文章中找到 Azure AD 密码保护的授权要求[消除组织中的错误密码](concept-password-ban-bad.md#license-requirements)。
 * 获取 DC 代理服务的 Azure AD 密码保护安装必须运行 Windows Server 2012 或更高版本的所有域控制器。 此要求并不表示，Active Directory 域或林还必须在 Windows Server 2012 域或林功能级别。 如中所述[设计原则](concept-password-ban-bad-on-premises.md#design-principles)，没有最小 DFL 或 FFL 所需的 DC 代理或代理软件运行。
 * 安装 DC 代理服务的所有计算机都必须安装了.NET 4.5。
 * 获取代理服务的 Azure AD 密码保护安装必须运行 Windows Server 2012 R2 或更高版本的所有计算机。
@@ -265,7 +266,7 @@ ms.locfileid: "65506874"
 
    可以在尚不是域控制器的计算机上安装 DC 代理服务。 在这种情况下，服务将启动并运行，但保持非活动状态，直到计算机被提升为域控制器。
 
-   您可以通过使用标准的 MSI 过程自动化软件安装。 例如:
+   您可以通过使用标准的 MSI 过程自动化软件安装。 例如：
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
 

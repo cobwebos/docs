@@ -12,18 +12,18 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: b7af4d0a48f002f7523def971a306d1fa2077c70
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952035"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>命名实体识别认知技能
 
-命名实体识别技能可以从文本中提取命名实体。 可用实体包括 `person`、`location` 和 `organization` 类型。
+命名实体识别  技能可以从文本中提取命名实体。 可用实体包括 `person`、`location` 和 `organization` 类型。
 
 > [!IMPORTANT]
-> 替换为命名的实体识别技能现已终止[Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 在 2019 年 2 月 15 日停止支持和 API 已从产品在删除，2019 年 5 月 2 日。 请按照中的建议[不推荐使用认知搜索技能](cognitive-search-skill-deprecated.md)迁移到受支持的一项技能。
+> 已命名的实体识别技能现已弃用，替换为 [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 已于 2019 年 2 月 15 日停止支持，并且已于 2019 年 5 月 2 日将此 API 从产品中删除。 建议按照[已弃用的认知搜索技能](cognitive-search-skill-deprecated.md)来迁移到受支持的技能。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。

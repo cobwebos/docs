@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 6a25444f0207ec5eceb029c5d31d222a31813e22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066824"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>启用安全部署实践与 Azure 部署管理器 （公共预览版）
 
 要跨多个区域部署服务并确保它在每个区域中按预期运行，可以使用 Azure 部署管理器来协调服务的分阶段推出。 与任何 Azure 部署一样，需在[资源管理器模板](resource-group-authoring-templates.md)中为服务定义资源。 创建模板后，使用部署管理器描述服务的拓扑及其推出方式。
 
-部署管理器是资源管理器的一项功能。 它将在部署过程中为你提供帮助。 如果有需要部署到多个区域的复杂服务，请使用部署管理器。 通过分阶段推出服务，你可以在服务已部署到所有区域之前发现潜在的问题。 如果不需要分阶段推出的额外预防措施，请使用资源管理器的标准[部署选项](resource-group-template-deploy-portal.md)。 部署管理器与支持资源管理器部署的所有现有第三方工具无缝集成，例如持续集成和持续交付 (CI/CD) 产品/服务。 
+部署管理器是资源管理器的一项功能。 它将在部署过程中为你提供帮助。 如果有需要部署到多个区域的复杂服务，请使用部署管理器。 通过分阶段推出服务，你可以在服务已部署到所有区域之前发现潜在的问题。 如果不需要分阶段推出的额外预防措施，请使用资源管理器的标准[部署选项](resource-group-template-deploy-portal.md)。 部署管理器与支持资源管理器部署的所有现有第三方工具无缝集成，例如持续集成和持续交付 (CI/CD) 产品/服务。
 
 Azure 部署管理器处于预览状态。 帮助我们改进功能，从而[反馈](https://aka.ms/admfeedback)。
 
@@ -31,7 +31,12 @@ Azure 部署管理器处于预览状态。 帮助我们改进功能，从而[反
 
 请在部署推出模板之前部署拓扑模板。
 
-可以在[此处](https://docs.microsoft.com/rest/api/deploymentmanager/)找到 Azure 部署管理器 REST API 参考。
+其他资源：
+
+- [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+- [教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)。
+- [教程：在 Azure 部署管理器中使用运行状况检查](./deployment-manager-tutorial-health-check.md)。
+- [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
 
 ## <a name="identity-and-access"></a>标识和访问
 
@@ -191,7 +196,7 @@ Azure 部署管理器处于预览状态。 帮助我们改进功能，从而[反
 
 ### <a name="steps"></a>Steps
 
-可以定义在部署操作之前或之后执行的步骤。 目前，仅`wait`步骤和运行状况检查步骤都可用。 
+可以定义在部署操作之前或之后执行的步骤。 目前，仅`wait`步骤和运行状况检查步骤都可用。
 
 wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在部署下一个服务单位之前验证服务是否按预期运行。 以下示例显示了 wait 步骤的一般格式。
 
@@ -262,13 +267,13 @@ wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在�
 
 ## <a name="parameter-file"></a>参数文件
 
-需要创建两个参数文件。 一个参数文件在部署服务拓扑时使用，另一个用于推出部署。 需要确保两个参数文件中的某些值相同。  
+需要创建两个参数文件。 一个参数文件在部署服务拓扑时使用，另一个用于推出部署。 需要确保两个参数文件中的某些值相同。
 
 ## <a name="containerroot-variable"></a>containerRoot 变量
 
 对于已版本控制的部署，项目的路径随每个新版本而发生更改。 首次运行部署时，路径可能为 `https://<base-uri-blob-container>/binaries/1.0.0.0`。 第二次可能为 `https://<base-uri-blob-container>/binaries/1.0.0.1`。 部署管理器使用 `$containerRoot` 变量简化获取当前部署的正确根路径。 此值随每个版本而发生更改，并且在部署前未知。
 
-使用模板参数文件中的 `$containerRoot` 变量部署 Azure 资源。 部署时，此变量将替换为推出的实际值。 
+使用模板参数文件中的 `$containerRoot` 变量部署 Azure 资源。 部署时，此变量将替换为推出的实际值。
 
 例如，在推出期间为二进制项目创建项目源。
 

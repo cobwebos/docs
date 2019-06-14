@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
 ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607496"
 ---
 # <a name="create-human-reviews-rest"></a>创建人工审阅 (REST)
@@ -27,7 +27,7 @@ ms.locfileid: "60607496"
 
 ## <a name="create-a-review"></a>创建评审
 
-若要创建评审，请转到**[查看-创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API 引用页，选择密钥中你所在区域的按钮 (您可以在中找到此终结点 URL 上**凭据**页[审阅工具](https://contentmoderator.cognitive.microsoft.com/))。 这将启动 API 控制台中，您可以轻松地构建和运行的 REST API 调用。
+若要创建评审，请转到 **[查看-创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API 引用页，选择密钥中你所在区域的按钮 (您可以在中找到此终结点 URL 上**凭据**页[审阅工具](https://contentmoderator.cognitive.microsoft.com/))。 这将启动 API 控制台中，您可以轻松地构建和运行的 REST API 调用。
 
 ![复习-Get 区域选择](images/test-drive-region.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "60607496"
 
 ### <a name="submit-your-request"></a>提交请求
   
-选择“发送”。 如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示为评审 ID。 复制此 ID，然后在以下步骤中使用它。
+选择“发送”。  如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示为评审 ID。 复制此 ID，然后在以下步骤中使用它。
 
 ![审查 - 创建控制台响应内容框显示审查 ID](images/test-drive-review-2.PNG)
 
@@ -149,7 +149,7 @@ ms.locfileid: "60607496"
 
 ![审查 - 创建控制台获取结果](images/test-drive-review-3.PNG)
   
-选择“发送”。 如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示查看详细信息以 JSON 格式，如下所示：
+选择“发送”。  如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示查看详细信息以 JSON 格式，如下所示：
 
 ```json
 {  

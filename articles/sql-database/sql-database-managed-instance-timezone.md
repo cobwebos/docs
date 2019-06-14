@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库托管实例的时区 |Microsoft Docs"
-description: 了解 Azure SQL 数据库托管实例的时区具体情况
+title: Azure SQL 数据库托管实例时区 | Microsoft Docs
+description: 了解有关 Azure SQL 数据库托管实例时区的具体信息
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -12,44 +12,44 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 05/22/2019
 ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66016379"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例的时区
 
-协调世界时 (UTC) 是云解决方案的数据层的建议的时间区域。 Azure SQL 数据库托管实例还提供了时区的时间选择，以满足存储日期和时间值和调用日期和时间函数与某个特定时区的隐式上下文的现有应用程序的需求。
+协调世界时 (UTC) 是云解决方案数据层的建议时区。 Azure SQL 数据库托管实例还提供时区的选项，来满足存储日期和时间值以及使用特定时区的隐式上下文调用日期和时间函数的现有应用程序的需求。
 
-[GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) 等 T-SQL 函数或 CLR 代码会观察在实例级别设置的时区。 SQL Server 代理作业按照计划根据实例的时区。
+[GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) 等 T-SQL 函数或 CLR 代码会观察在实例级别设置的时区。 SQL Server 代理作业也会根据实例的时区遵循计划。
 
   >[!NOTE]
   > 托管实例是支持时区设置的 Azure SQL 数据库的唯一部署选项。 其他部署选项始终遵循 UTC。
-使用[AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)中单一数据库与入池 SQL 数据库如果您需要解释非 UTC 时区中的日期和时间信息。
+如果需要解释非 UTC 时区中的日期和时间信息，请在单一和共用 SQL 数据库中使用 [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)。
 
 ## <a name="supported-time-zones"></a>支持的时区
 
-一组受支持的时间区域从托管实例的基础操作系统继承。 它定期进行更新以获取新的时区定义并反映对现有的更改。 
+支持的时区集继承自托管实例的底层操作系统。 它会定期更新，以获取新的时区定义并反映对现有时区所做的更改。 
 
 受支持时区名称的列表是通过 [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) 系统视图公开的。
 
 ## <a name="set-a-time-zone"></a>设置时区
 
-可以只创建实例期间设置的托管实例的时区。 默认时区为 UTC。
+只能在创建实例期间设置托管实例的时区。 默认时区为 UTC。
 
   >[!NOTE]
-  > 不能更改现有的托管实例的时区。
+  > 无法更改现有托管实例的时区。
 
-### <a name="set-the-time-zone-through-the-azure-portal"></a>设置通过 Azure 门户的时区
+### <a name="set-the-time-zone-through-the-azure-portal"></a>通过 Azure 门户设置时区
 
-当新的实例的输入参数时，请从受支持的时间区域的列表中选择时区。 
+输入新实例的参数时，请从受支持时区列表中选择一个时区。 
   
 ![在创建实例期间设置时区](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
 ### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
-指定在 timezoneId 属性您[资源管理器模板](https://aka.ms/sql-mi-create-arm-posh)来创建实例期间设置时区。
+创建实例期间，在[资源管理器模板](https://aka.ms/sql-mi-create-arm-posh)中指定 timezoneId 属性来设置时区。
 
 ```json
 "properties": {
@@ -66,35 +66,35 @@ ms.locfileid: "66016379"
 
 ```
 
-在本文末尾是 timezoneId 属性支持的值的列表。
+本文末尾提供了 timezoneId 属性的支持值列表。
 
-如果未指定，则将时区设置为 UTC。
+如果未指定该属性，时区将设置为 UTC。
 
 ## <a name="check-the-time-zone-of-an-instance"></a>检查实例的时区
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)函数返回的实例的时区的显示名称。
+[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) 函数返回实例时区的显示名称。
 
 ## <a name="cross-feature-considerations"></a>跨功能注意事项
 
 ### <a name="restore-and-import"></a>还原和导入
 
-您可以还原备份文件或数据导入到的托管实例从实例或服务器具有不同的时区设置。 请确保为此，请谨慎。 分析应用程序行为和结果的查询和报表，就像使用不同的时区设置的两个 SQL Server 实例之间传输数据时。
+可以从使用不同时区设置的实例或服务器还原备份文件或者将数据导入托管实例。 请务必谨慎执行此操作。 分析应用程序的行为以及查询和报告的结果，如同在使用不同时区设置的两个 SQL Server 实例之间传输数据时一样。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
-当你执行时点还原时，还原到的时间被解释为 UTC 时间。 此设置可避免由于夏时制和其潜在更改不明确性。
+执行时间点还原时，要还原到的时间将解释为 UTC 时间。 此设置可避免夏时制及其潜在更改造成任何多义性。
 
 ### <a name="auto-failover-groups"></a>自动故障转移组
 
-在故障转移组中的主要和次要实例使用相同的时区不强制性，但我们强烈建议。
+不强制要求在故障转移组中的主要和辅助实例之间使用相同的时区，但我们强烈建议这样做。
 
   >[!WARNING]
-  > 我们强烈建议使用故障转移组中的主要和次要实例相同的时区。 由于某些极少数情况下，在主要和次要实例之间保持相同的时区不是强制执行。 请务必了解，是在手动或自动故障转移，辅助实例将保留其原始时区。
+  > 我们强烈建议对故障转移组中的主要和辅助实例使用相同的时区。 不强制要求在主要和辅助实例之间使用相同的时区，因为这种情况非常罕见。 必须知道，在手动或自动故障转移时，辅助实例将保留其原始时区。
 
 ## <a name="limitations"></a>限制
 
-- 不能更改现有的托管实例的时区。
-- 从 SQL Server 代理作业启动外部进程看不到的实例的时区。
+- 无法更改现有托管实例的时区。
+- 从 SQL Server 代理作业启动的外部进程不会观察实例的时区。
 
 ## <a name="list-of-supported-time-zones"></a>支持的时区列表
 

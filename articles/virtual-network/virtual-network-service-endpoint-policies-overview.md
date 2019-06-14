@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
 ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61033894"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>虚拟网络服务终结点策略（预览版）
@@ -158,7 +158,7 @@ __Azure 存储__：WestCentralUS、 WestUS2、 NorthCentralUS、 SouthCentralUS�
 - 拒绝终结点策略中列出的帐户进行访问
   - 网络安全组或防火墙筛选可能会阻止访问
   - 如果删除/重新应用策略导致连接断开：
-    - 验证 Azure 服务是否配置为允许虚拟网络通过终结点进行访问，或者资源的默认策略是否设置为“全部允许”。
+    - 验证 Azure 服务是否配置为允许虚拟网络通过终结点进行访问，或者资源的默认策略是否设置为“全部允许”。 
       > [!NOTE]      
       > 无需在虚拟网络中保护服务资源即可通过终结点策略进行访问。 但是，作为安全最佳做法，我们建议在受信任的网络（例如 Azure 虚拟网络）中通过服务终结点以及在本地通过 IP 防火墙来保护服务资源。
   
@@ -166,9 +166,9 @@ __Azure 存储__：WestCentralUS、 WestUS2、 NorthCentralUS、 SouthCentralUS�
     - 检查网络安全组流日志是否显示访问活动，以及存储日志是否按预期显示通过服务终结点进行的访问。
     - 联系 Azure 支持部门。
 - 拒绝服务终结点策略中未列出的帐户进行访问
-  - 网络安全组或防火墙筛选可能会阻止访问。 确保终结点区域允许“Azure 存储”服务标记。 有关策略限制，请参阅[限制](#limitations)。
+  - 网络安全组或防火墙筛选可能会阻止访问。 确保终结点区域允许“Azure 存储”服务标记。  有关策略限制，请参阅[限制](#limitations)。
   例如，如果应用了策略，则会拒绝经典存储帐户的访问。
-  - 验证 Azure 服务是否配置为允许虚拟网络通过终结点进行访问，或者资源的默认策略是否设置为“全部允许”。
+  - 验证 Azure 服务是否配置为允许虚拟网络通过终结点进行访问，或者资源的默认策略是否设置为“全部允许”。 
 
 ## <a name="provisioning"></a>设置
 
@@ -182,7 +182,7 @@ __Azure 存储__：WestCentralUS、 WestUS2、 NorthCentralUS、 SouthCentralUS�
 
 对服务终结点策略强制实施以下限制： 
 
- |资源 | 默认限制 |
+ |Resource | 默认限制 |
  |---------|---------------|
  |ServiceEndpointPoliciesPerSubscription |500 |
  |ServiceEndpintPoliciesPerSubnet|100 |

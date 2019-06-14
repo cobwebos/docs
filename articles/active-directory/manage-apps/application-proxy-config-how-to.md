@@ -17,17 +17,17 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc9287aac567c8989564094564b92b82662e603f
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825936"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>如何配置应用程序代理应用程序
 
 本文可帮助你了解如何配置应用程序代理应用程序 Azure AD 中公开你的本地应用程序到云。
 
-## <a name="recommended-documents"></a>推荐文档 
+## <a name="recommended-documents"></a>建议的文档 
 
 若要了解通过管理门户对应用程序代理应用程序进行初始配置和创建，请遵循[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
 

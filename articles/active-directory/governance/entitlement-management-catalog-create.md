@@ -17,16 +17,16 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6d9220cd2162b4c8cb77c1e7abd0372052f5454
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541610"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>创建和管理 Azure AD 授权管理 （预览版） 中的目录
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
+> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "64541610"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**目录**。
 
@@ -64,7 +64,7 @@ ms.locfileid: "64541610"
 
 **必备角色：** 用户管理员或目录所有者
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**目录**，然后打开你想要将资源添加到的目录。
 
@@ -90,7 +90,7 @@ ms.locfileid: "64541610"
 
 **必备角色：** 用户管理员或目录所有者
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**目录**，然后打开你想要删除的资源的目录。
 
@@ -98,7 +98,7 @@ ms.locfileid: "64541610"
 
 1. 选择你想要删除的资源。
 
-1. 单击**删除**(或单击省略号 (**...**)，然后单击**删除资源**)。
+1. 单击**删除**(或单击省略号 ( **...** )，然后单击**删除资源**)。
 
 ## <a name="add-catalog-owners-or-access-package-managers"></a>添加目录所有者或访问包管理器
 
@@ -106,7 +106,7 @@ ms.locfileid: "64541610"
 
 **必备角色：** 用户管理员或目录所有者
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**目录**，然后打开你想要添加到管理员的目录。
 
@@ -122,7 +122,7 @@ ms.locfileid: "64541610"
 
 **必备角色：** 用户管理员或目录所有者
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**目录**，然后打开你想要编辑的目录。
 
@@ -138,13 +138,13 @@ ms.locfileid: "64541610"
 
 **必备角色：** 用户管理员或目录所有者
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**目录**，然后打开你想要删除的目录。
 
 1. 对目录**概述**，单击**删除**。
 
-1. 在出现的消息框中单击“是”。
+1. 在出现的消息框中单击“是”  。
 
 ## <a name="next-steps"></a>后续步骤
 

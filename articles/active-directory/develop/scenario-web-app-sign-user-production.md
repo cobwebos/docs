@@ -16,10 +16,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d41ad2518f885bbaa02dda3b01f0c02e9fc1d217
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074705"
 ---
 # <a name="web-app-that-signs-in-users---move-to-production"></a>登录用户的移动到生产环境的 web 应用
@@ -35,7 +35,7 @@ ms.locfileid: "65074705"
 一次 web 应用登录用户，它可以调用 web Api 代表登录的用户。 从 web 应用调用 web Api 是以下方案中的对象：
 
 > [!div class="nextstepaction"]
-> [调用 web Api 的 web 应用](scenario-web-app-call-api-overview.md)
+> [用于调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
 
 ### <a name="deep-dive---web-app-tutorial"></a>深入探讨-web 应用教程
 

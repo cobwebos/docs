@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 67e54f10074ee566ce974dbd27485904bfe0a653
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411553"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>提升的决策树回归模块
@@ -47,7 +47,7 @@ ms.locfileid: "65411553"
   
 -  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
-    Microsoft Research:从 RankNet 到 lambdarank 再到 LambdaMART:概述。 By J.C. Burges 撰写。
+    Microsoft Research：从 RankNet 到 lambdarank 再到 LambdaMART:概述。 By J.C. Burges 撰写。
 
 渐进提升法也可以对于分类问题划归到回归与适当的损失函数的使用。 有关用于分类任务的提升的树实现的详细信息，请参阅[双类提升决策树](./two-class-boosted-decision-tree.md)。  
 

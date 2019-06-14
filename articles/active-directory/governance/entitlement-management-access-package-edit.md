@@ -17,16 +17,16 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833373"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>编辑和管理 Azure AD 授权管理 （预览版） 中的现有访问包
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
+> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "65833373"
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -71,7 +71,7 @@ ms.locfileid: "65833373"
 
     ![包具有访问权限-添加资源角色-选择的组](./media/entitlement-management-access-package-edit/group-select.png)
 
-1. 单击“选择”。
+1. 单击“选择”  。
 
 1. 在中**角色**列表中，选择**所有者**或**成员**。
 
@@ -79,7 +79,7 @@ ms.locfileid: "65833373"
 
     ![包具有访问权限-添加的组的资源角色](./media/entitlement-management-access-package-edit/group-role.png)
 
-1. 单击“添加”。
+1. 单击“添加”  。
 
     添加时，具有访问包的现有分配的任何用户将自动成为此组的成员。
 
@@ -104,13 +104,13 @@ ms.locfileid: "65833373"
 
     ![包具有访问权限-添加资源角色-选择应用程序](./media/entitlement-management-access-package-edit/application-select.png)
 
-1. 单击“选择”。
+1. 单击“选择”  。
 
 1. 在中**角色**列表中，选择应用程序角色。
 
     ![包具有访问权限-添加应用程序的资源角色](./media/entitlement-management-access-package-edit/application-role.png)
 
-1. 单击“添加”。
+1. 单击“添加”  。
 
     具有访问包的现有分配的任何用户将自动被赋予访问此应用程序时将其添加。
 
@@ -124,13 +124,13 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
     ![包具有访问权限-添加资源角色-选择 SharePoint Online 网站](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
 
-1. 单击“选择”。
+1. 单击“选择”  。
 
 1. 在中**角色**列表中，选择 SharePoint Online 站点角色。
 
     ![包具有访问权限-添加的 SharePoint Online 网站的资源角色](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1. 单击“添加”。
+1. 单击“添加”  。
 
     具有访问包的现有分配的任何用户将自动被赋予访问此 SharePoint Online 站点时将其添加。
 
@@ -138,7 +138,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -146,11 +146,11 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 1. 在资源角色的列表中，找到你想要删除的资源角色。
 
-1. 单击省略号 (**...**)，然后单击**删除资源角色**。
+1. 单击省略号 ( **...** )，然后单击**删除资源角色**。
 
     具有访问包的现有分配的任何用户将自动具有它不再向此资源角色撤消其访问权限。
 
-## <a name="add-a-new-policy"></a>添加新策略
+## <a name="add-a-new-policy"></a>添加新的策略
 
 您指定谁可以请求访问包的方式是创建一个策略。 如果你想要允许不同的用户分配使用不同的审批和过期设置要向其授予集，可以创建为单一访问包的多个策略。 单个策略不能用于将内部和外部用户分配到同一个访问包。 但是，可以创建两个策略中的相同访问包-一个用于内部用户，另一个用于外部用户。 如果有多个应用于用户的策略，将在其请求选择他们想要分配给时提示他们。
 
@@ -160,7 +160,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -180,7 +180,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -202,7 +202,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -230,7 +230,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -250,7 +250,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -262,7 +262,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -282,7 +282,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -298,13 +298,13 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
 1. 在概述页上，复制**我访问门户链接**。
 
-    ![访问包概述-我访问门户链接](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![访问包概述 - 我的访问权限门户链接](./media/entitlement-management-shared/my-access-portal-link.png)
 
 1. 电子邮件或将链接发送给您的外部业务合作伙伴。 它们可以与他们的用户请求访问包共享的链接。
 
@@ -314,7 +314,7 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 
@@ -326,13 +326,13 @@ Azure AD 可以自动将用户分配访问到 SharePoint Online 网站或 ShareP
 
     如果设置为**是**，访问包不会在用户的我访问门户中列出。 用户可以查看访问包的唯一方法是如果它们具有直接**我访问门户链接**到访问包。
 
-## <a name="delete"></a>删除
+## <a name="delete"></a>DELETE
 
 如果不有任何活动的用户分配，仅可以删除访问包。
 
 **必备角色：** 用户管理员、 目录所有者或访问包管理器
 
-1. 在 Azure 门户中，单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**访问包**再打开访问包。
 

@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.openlocfilehash: 62c2ed555fcac56677f4950c10d38ded8fb0649d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65025177"
 ---
-# <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>升级到 Azure 搜索.NET 管理 SDK 版本 
+# <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>升级到 Azure 搜索 .NET 管理 SDK 版本 
 
 > [!Important]
-> 此内容是仍在构建。 NuGet 上提供的 Azure 搜索管理.NET SDK 版本 3.0。 我们正在努力更新本迁移指南说明如何升级到最新版本。 
+> 此内容仍在构建中。 NuGet 上提供了 Azure 搜索管理 .NET SDK 版本 3.0。 我们正在更新本迁移指南来说明如何升级到新版本。 
 >
 
 如果使用的是版本 1.0.2 或更早版本的 [Azure 搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)，本文有助于升级应用程序，以便使用版本 2。

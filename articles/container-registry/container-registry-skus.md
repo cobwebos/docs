@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: danlep
 ms.openlocfilehash: f36b206ff015511dea7369617febe9220282bbe5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65069047"
 ---
 # <a name="azure-container-registry-skus"></a>Azure 容器注册表 SKU
@@ -28,7 +28,7 @@ Azure 容器注册表 (ACR) 分为多个服务层级（称为“SKU”）。 这
 > [!IMPORTANT]
 > 经典注册表 SKU 即将**弃用**，**2019 年 4 月**之后将不可用。 对于所有新的注册表，建议使用基本、标准或高级 SKU。 应在 2019 年 4 月之前升级所有现有的经典注册表。 有关升级信息，请参阅[升级经典注册表][container-registry-upgrade]。
 
-基本、标准和高级 SKU（统称为“托管注册表”）全都提供相同的编程功能。 它们也全都可以从完全由 Azure 托管的[映像存储][container-registry-storage]受益。 选择的 SKU 级别越高，性能和可缩放性就越高。 使用多个服务层级，你可以从“基本”层级开始，然后随着注册表使用量增长转换到“标准”和“高级”层级。
+基本、标准和高级 SKU（统称为“托管注册表”  ）全都提供相同的编程功能。 它们也全都可以从完全由 Azure 托管的[映像存储][container-registry-storage]受益。 选择的 SKU 级别越高，性能和可缩放性就越高。 使用多个服务层级，你可以从“基本”层级开始，然后随着注册表使用量增长转换到“标准”和“高级”层级。
 
 ## <a name="sku-feature-matrix"></a>SKU 功能矩阵
 
@@ -50,7 +50,7 @@ az acr update --name myregistry --sku Premium
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 Azure 门户中的容器注册表“概述”中，选择“更新”，然后从“SKU”下拉列表中选择一个新 SKU。
+在 Azure 门户中的容器注册表“概述”  中，选择“更新”  ，然后从“SKU”下拉列表中选择一个新 SKU  。
 
 ![在 Azure 门户中更新容器注册表 SKU][update-registry-sku]
 

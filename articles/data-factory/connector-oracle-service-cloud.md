@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: b65bcfa5252a150c8101322eaf6d84ce46eef755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60546346"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle 服务云复制数据
@@ -44,7 +44,7 @@ Oracle 服务云链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：OracleServiceCloud | 是 |
+| type | type 属性必须设置为：OracleServiceCloud  | 是 |
 | host | Oracle 服务云实例的 URL。  | 是 |
 | username | 用于访问 Oracle 服务云服务器的用户名。  | 是 |
 | password | 在用户名键中提供的用户名所对应的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
@@ -79,11 +79,11 @@ Oracle 服务云链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Oracle 服务云数据集支持的属性列表。
 
-若要从/向 Oracle 服务云复制数据，请将数据集的 type 属性设置为“OracleServiceCloudObject”。 支持以下属性：
+若要从/向 Oracle 服务云复制数据，请将数据集的 type 属性设置为“OracleServiceCloudObject”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：OracleServiceCloudObject | 是 |
+| type | 数据集的 type 属性必须设置为：OracleServiceCloudObject  | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -109,11 +109,11 @@ Oracle 服务云链接服务支持以下属性：
 
 ### <a name="oracle-service-cloud-as-source"></a>作为源的 Oracle 服务云
 
-若要从 Oracle 服务云复制数据，请将复制活动中的源类型设置为“OracleServiceCloudSource”。 复制活动源部分支持以下属性：
+若要从 Oracle 服务云复制数据，请将复制活动中的源类型设置为“OracleServiceCloudSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：OracleServiceCloudSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：OracleServiceCloudSource  | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**

@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 3897c402e45962836880ccebbeb252d189188d3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39c5efee0958fdfc8fa647f5acaf929f559f7bf7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038540"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065648"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>如何配置 Azure Database for MariaDB 的数据传入复制
 
-本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MariaDB 服务中设置“数据传入复制”。 配置“数据传入复制”后，可让你将在本地或虚拟机中运行的主 MariaDB 服务器或其他云提供程序托管的数据库服务中的数据同步到 Azure Database for MariaDB 服务中的副本。 
+本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MariaDB 服务中设置“数据传入复制”。 配置“数据传入复制”后，可让你将在本地或虚拟机中运行的主 MariaDB 服务器或其他云提供程序托管的数据库服务中的数据同步到 Azure Database for MariaDB 服务中的副本。 我们 recommanded 设置使用的数据复制[全局事务 ID](https://mariadb.com/kb/en/library/gtid/)主服务器的版本时 10.2 或更高版本。
 
 本文假设读者在 MariaDB 服务器和数据库方面有一定的经验。
 
@@ -84,15 +84,15 @@ ms.locfileid: "61038540"
 
    **MySQL Workbench**
 
-   若要在 MySQL Workbench 中创建复制角色，请从“管理”面板打开“用户和特权”面板。 然后单击“添加帐户”。 
+   若要在 MySQL Workbench 中创建复制角色，请从“管理”面板打开“用户和特权”面板。   然后单击“添加帐户”  。 
  
    ![用户和特权](./media/howto-data-in-replication/users_privileges.png)
 
-   在“登录名”字段中键入用户名。 
+   在“登录名”字段中键入用户名。  
 
    ![同步用户](./media/howto-data-in-replication/syncuser.png)
  
-   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属角色”。 然后单击“应用”创建复制角色。
+   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属角色”。    然后单击“应用”创建复制角色。 
 
    ![复制从属角色](./media/howto-data-in-replication/replicationslave.png)
 
@@ -116,7 +116,16 @@ ms.locfileid: "61038540"
    结果应如下所示。 请务必记下二进制文件名，因为需要在后续步骤中用到。
 
    ![主机状态结果](./media/howto-data-in-replication/masterstatus.png)
+   
+6. 获取 GTID 位置 （可选，使用 GTID 复制所需）
+
+   运行此函数[ `BINLOG_GTID_POS` ](https://mariadb.com/kb/en/library/binlog_gtid_pos/)命令获取 GTID 位置以相应 binlog 文件名和偏移量。
+  
+    ```sql
+    select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
+    ```
  
+
 ## <a name="dump-and-restore-master-server"></a>转储并还原主服务器
 
 1. 从主服务器转储所有数据库
@@ -142,10 +151,16 @@ ms.locfileid: "61038540"
 
    所有复制中数据函数均由存储过程执行。 可以在[复制中数据存储过程](reference-data-in-stored-procedures.md)中找到所有过程。 可以在 MySQL shell 或 MySQL Workbench 中运行存储过程。
 
-   若要链接两个服务器并启动复制，请在 Azure DB for MariaDB 服务中登录到目标副本服务器，并将外部实例设置为主服务器。 为此，可在 Azure DB for MariaDB 服务器上使用 `mysql.az_replication_change_master` 存储过程。
+   若要链接两个服务器并启动复制，请在 Azure DB for MariaDB 服务中登录到目标副本服务器，并将外部实例设置为主服务器。 这是通过使用`mysql.az_replication_change_master`或`mysql.az_replication_change_master_with_gtid`Azure DB for MariaDB 服务器上存储过程。
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   ```
+   
+   或
+   
+   ```sql
+   CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
 
    - master_host：主服务器的主机名
@@ -153,6 +168,7 @@ ms.locfileid: "61038540"
    - master_password：主服务器的密码
    - master_log_file：正在运行的 `show master status` 中的二进制日志文件名
    - master_log_pos：正在运行的 `show master status` 中的二进制日志位置
+   - master_gtid_pos:运行 GTID 位置 `select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
    - master_ssl_ca：CA 证书的上下文。 如果不使用 SSL，请传入空字符串。
        - 建议以变量形式传入此参数。 有关详细信息，请参阅以下示例。
 
@@ -199,6 +215,10 @@ ms.locfileid: "61038540"
 
    如果 `Slave_IO_Running` 和 `Slave_SQL_Running` 状态为“yes”，并且 `Seconds_Behind_Master` 的值为“0”，则表示复制正常运行。 `Seconds_Behind_Master` 指示副本的陈旧状态。 如果其值不为“0”，则表示副本正在处理更新。 
 
+4. 更新对应服务器变量以使数据复制更安全 （仅复制所需而无需 GTID）
+    
+    由于 MariaDB 本机复制限制，你需要设置[ `sync_master_info` ](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info)并[ `sync_relay_log_info` ](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info)上的复制不使用 GTID 方案的变量。 我们建议您检查您的从属服务器`sync_master_info`并`sync_relay_log_info`变量并将它们更改 ot`1`如果你想要确保是稳定的数据复制。
+    
 ## <a name="other-stored-procedures"></a>其他存储过程
 
 ### <a name="stop-replication"></a>停止复制

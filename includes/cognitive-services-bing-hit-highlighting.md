@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66124772"
 ---
 必应支持命中词突出显示，此功能会在某些答案的显示字符串中标记查询词（或必应认为相关的其他词）。 例如，网页的 `name`、`displayUrl` 和 `snippet` 字段可能会标记查询词。
@@ -48,7 +48,7 @@ ms.locfileid: "66124772"
 |U+E018|\<sup>|表示上标内容的开头
 |U+E019|\</sup>|表示上标内容的结尾
 
-以下示例显示了一个 `Computation` 答案，其中包含 log(2) 查询词的下标标记。 仅当 `textDecoration` 为 true 时，`expression` 字段才包含这些标记。
+以下示例显示了一个 `Computation` 答案，其中包含 log(2) 查询词的下标标记。 仅当 `textDecoration` 为 true  时，`expression` 字段才包含这些标记。
 
 ![计算标记](./media/cognitive-services-bing-hit-highlighting/bing-markers-computation.PNG) 
 

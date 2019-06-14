@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
 ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64699445"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室分析客户流失
@@ -60,7 +60,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![流失模型交互图](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
-图 4：统一多模型原型  
+图 4：  统一多模型原型  
 
 如果要将整体方法传递到客户保留，那么模型间的交互是关键。 每个模型必然会随时间推移而降低；因此，该体系结构是隐式循环（类似于按照 CRISP-DM 数据挖掘标准 [***3***] 设置的原型）。  
 
@@ -79,7 +79,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![屏幕截图描绘了具有许多互连模块的复杂工作室工作区](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
-图 5：流失建模方法原型  
+图 5：  流失建模方法原型  
 
 以下部分提供了关于原型评分模型（使用机器学习工作室实现）的详细信息。  
 
@@ -98,11 +98,11 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![屏幕截图显示了与原始值一起使用的数据示例](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
-图 6：数据源（模糊处理）摘录  
+图 6：  数据源（模糊处理）摘录  
 
 ![屏幕截图显示了从数据源提取的统计功能](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
-图 7：从数据源中提取的功能
+图 7：  从数据源中提取的功能
  
 
 > 请注意，此数据是私有的，因此不能共享模型和数据。
@@ -124,7 +124,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![工作室试验画布的一小部分的屏幕截图](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
-图 8：在机器学习工作室中创建模型  
+图 8：  在机器学习工作室中创建模型  
 
 ### <a name="scoring-methods"></a>评分方法
 使用标记的训练数据集对四种模型进行评分。  
@@ -141,7 +141,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 ![曲线下面积图比较了 4 种算法的性能](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
-图 9：Passau 原型的曲线下面积
+图 9：  Passau 原型的曲线下面积
 
 ### <a name="using-auc-to-compare-results"></a>使用 AUC 比较结果
 曲线下面积 (AUC) 是表示正值和负值的分数分布之间*可分性*的全局衡量指标。 它类似于传统的受试者工作特征 (ROC) 图，但一个重要的不同点是，AUC 指标不要求选择阈值。 相反，它会汇总**所有**可能选项的结果。 与此相反，传统的 ROC 图会显示垂直轴的阳性率和水平轴的阳性率，以及分类阈值变化。   
@@ -162,14 +162,14 @@ AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根�
 
 ![两个目标。 其中一个目标显示的命中标记分组松散，但靠近标记为“准确率低：正确率高、精确率低”的靶心。 另一个目标分组紧密但远离标记为“准确率低：正确率低、精确率高”的靶心](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
-图 10：准确性和精度之间的权衡
+图 10：  准确性和精度之间的权衡
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>提升决策树模型的准确性和精度结果
 下表显示使用提升决策树模型（恰巧是四种模型中最准确的）的机器学习原型的评分中的原始结果：  
 
 ![表格片段显示了四种算法的准确率、精确率、召回率、F 值、AUC、平均对数损失和训练对数损失](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
-图 11：提升决策树模型特征
+图 11：  提升决策树模型特征
 
 ## <a name="performance-comparison"></a>性能比较
 我们比较了使用机器学习工作室模型评分的数据的速度，以及通过使用桌面版 SAS 企业挖掘程序 12.1 创建的可比较模型。  
@@ -188,7 +188,7 @@ AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根�
 在电信行业中，一些用于分析流失的做法应运而生，包括：  
 
 * 四种基本类别的派生指标：
-  * **实体（例如，订阅）**。 预配关于订阅和/或客户（流失主体）的基本信息。
+  * **实体（例如，订阅）** 。 预配关于订阅和/或客户（流失主体）的基本信息。
   * **活动**。 获取所有与实体相关的可能使用情况信息，例如，登录数量。
   * **客户支持**。 从客户支持日志中获取信息，指示订阅是否有问题或是否与客户支持进行交互。
   * **竞争和业务数据**。 获取有关客户的任何可能信息（例如，不可跟踪或难以跟踪）。
@@ -225,4 +225,4 @@ Azure 机器学习工作室中即将推出的另一项令人兴奋的功能是�
 ## <a name="appendix"></a>附录
 ![关于流失原型的演示文稿屏幕快照](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
-图 12：关于流失原型的演示文稿屏幕快照
+图 12：  关于流失原型的演示文稿屏幕快照

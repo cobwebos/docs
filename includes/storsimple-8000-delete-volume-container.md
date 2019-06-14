@@ -9,10 +9,10 @@ ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156092"
 ---
 若要删除卷容器，则必须
@@ -22,15 +22,15 @@ ms.locfileid: "66156092"
 如果卷容器没有关联的卷、备份策略和云快照，可将其删除。 可以执行以下过程来删除卷容器。
 
 #### <a name="to-delete-a-volume-container"></a>删除卷容器
-1. 转到 StorSimple Device Manager 服务并单击“设备”。 选择并单击“设备”，并转到“设置”>“管理”>“卷容器”。
+1. 转到 StorSimple Device Manager 服务并单击“设备”。  选择并单击“设备”，并转到“设置”>“管理”>“卷容器”。 
 
     ![“卷容器”边栏选项卡](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
 
-2. 从卷容器的表格式列表中，选择要删除的卷容器，右键单击“...”，并选择“删除”。
+2. 从卷容器的表格式列表中，选择要删除的卷容器，右键单击“...”，并选择“删除”。  
 
     ![删除卷容器](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
 
-3. 如果卷容器没有关联的卷、备份策略和云快照，可将其删除。 当提示进行确认时，查看并选中陈述了删除卷容器带来的影响的复选框。 单击“删除”以删除卷容器。
+3. 如果卷容器没有关联的卷、备份策略和云快照，可将其删除。 当提示进行确认时，查看并选中陈述了删除卷容器带来的影响的复选框。 单击“删除”以删除卷容器。 
 
     ![确认删除](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
 

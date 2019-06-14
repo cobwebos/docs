@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: qianw211
 ms.openlocfilehash: e7867d5ea95cd3142a6f617a5554858b7a72cbc9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937668"
 ---
 # <a name="publishing-guide-by-offer-type"></a>发布指南（按产品/服务类型）
 
 [确定发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)以后，即可选择用于呈现产品/服务的产品/服务类型。 
 
-产品/服务是可以在[云合作伙伴门户](https://cloudpartner.azure.com)中创建、发布和管理的发布对象。 “产品/服务类型”定义商品结构，其中包括元数据、项目和其他用于在市场中呈现产品/服务的内容。
+产品/服务是可以在[云合作伙伴门户](https://cloudpartner.azure.com)中创建、发布和管理的发布对象。 “产品/服务类型”定义商品结构，其中包括元数据、项目和其他用于在市场中呈现产品/服务的内容  。
 
 在创建套餐之前，必须选择套餐类型。 套餐类型对应于你要发布的解决方案、应用或服务套餐的类型，并取决于与 Microsoft 产品和服务的匹配情况。 
 

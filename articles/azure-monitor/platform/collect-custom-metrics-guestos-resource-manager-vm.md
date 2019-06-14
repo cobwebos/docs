@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 5647802ff383ce046d108f25384df81bcbd08cd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129650"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
@@ -47,9 +47,9 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 下载这两个文件并在本地保存。
 
 ### <a name="modify-azuredeployparametersjson"></a>修改 azuredeploy.parameters.json
-打开 azuredeploy.parameters.json 文件
+打开 azuredeploy.parameters.json 文件 
 
-1. 输入 VM 的“adminUsername”和“adminPassword”的值。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
+1. 输入 VM 的“adminUsername”和“adminPassword”的值   。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
 
 1. 为 VM 创建唯一 dnsname。
 
@@ -256,7 +256,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 1. 运行以下命令，使用资源管理器模板部署 VM。
    > [!NOTE]
-   > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾。
+   > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾  。
 
    ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
@@ -271,19 +271,19 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 1. 登录到 Azure 门户。
 
-2. 在左侧菜单中，选择“监视”。
+2. 在左侧菜单中，选择“监视”  。
 
-3. 在“监视”页上选择“指标”。
+3. 在“监视”页上选择“指标”  。
 
    ![“指标”页](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
-4. 将聚合时限更改为“过去 30 分钟”。
+4. 将聚合时限更改为“过去 30 分钟”  。
 
-5. 在资源下拉菜单中选择创建的 VM。 如果未更改模板中的名称，则名称应为“SimpleWinVM2”。
+5. 在资源下拉菜单中选择创建的 VM。 如果未更改模板中的名称，则名称应为“SimpleWinVM2”  。
 
-6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”
+6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest” 
 
-7. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”。
+7. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”  。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,18 +5,24 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 4dcbaf159fce6b5f5495a6a25a2a3420cad9e5e8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/11/2019
+ms.openlocfilehash: 0fc4eb90d9bed3877b4618fd839d9e8bf1608718
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65067260"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063735"
 ---
 # <a name="supported-postgresql-database-versions"></a>支持的 PostgreSQL 数据库版本
 Microsoft 致力于 PostgreSQL 的单个服务器在 Azure 数据库中支持 n-2 版本的 PostgreSQL 引擎。 这些版本将是 Azure 上的当前主版本 (n) 和之前的两个主版本 (-2)。
 
 Azure Database for PostgreSQL 目前支持以下版本：
+
+## <a name="postgresql-version-112"></a>PostgreSQL 版本 11.2
+若要详细了解此次要版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/11/static/release-11-2.html)。
+
+>[!NOTE]
+> PostgreSQL 版本 11 目前以预览版提供。 使用 Azure 门户创建支持即将推出，并可能尚不可用你的区域中。 可以使用[Azure CLI](quickstart-create-server-database-azure-cli.md)在任何区域中创建一个 Postgres 11 服务器。 例如，`az postgres server create -g group -n server -u username -p password -l westeurope --sku-name GP_Gen5_2 --version 11`。
 
 ## <a name="postgresql-version-107"></a>PostgreSQL 版本 10.7
 若要详细了解此次要版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/10/static/release-10-7.html)。

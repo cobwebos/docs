@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 07d0866bd697587da170a00e8077a57035989d32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60594021"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>通过 Azure Monitor 日志查询创建图表和关系图
@@ -42,7 +42,7 @@ Heartbeat
 
 ![表](media/charts/table-display.png)
 
-要优化视图效果，请选择“图表”，然后选择“饼图”选项以直观显示结果：
+要优化视图效果，请选择“图表”，然后选择“饼图”选项以直观显示结果   ：
 
 ![饼图](media/charts/charts-and-diagrams-pie.png)
 
@@ -57,7 +57,7 @@ Perf
 | summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
 ```
 
-选择“折线图”显示选项：
+选择“折线图”显示选项  ：
 
 ![折线图](media/charts/charts-and-diagrams-multiSeries.png)
 
@@ -84,7 +84,7 @@ SecurityEvent
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
 ```
 
-将结果看作图表时，它使用 `by` 子句的第一列。 以下示例演示使用 EventID. 的堆积柱形图。 维度必须为 `string` 类型，因此在本例中，EventID 要强制转换为字符串。 
+将结果看作图表时，它使用 `by` 子句的第一列。 以下示例演示使用 EventID. 的堆积柱形图  。 维度必须为 `string` 类型，因此在本例中，EventID 要强制转换为字符串  。 
 
 ![条形图 EventID](media/charts/charts-and-diagrams-multiDimension1.png)
 

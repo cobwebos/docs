@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ff71eb7d1386226e29b3f0846e0894a553f978e5
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0d52e84ba027f902cebf543ae019b5e4b53400b7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754234"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059683"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS 别名记录概述
 
@@ -53,7 +53,7 @@ Azure DNS 区域中的以下记录类型支持别名记录集：
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>在区域顶点托管负载均衡应用程序
 
-DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的域为 contoso.com，则可以为 somelable.contoso.com 创建 CNAME 记录，但无法为 contoso.com 本身创建 CNAME 记录。
+DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的域为 contoso.com;您可以为创建 CNAME 记录 somelabel.contoso.com;但是，不能为 contoso.com 本身创建 CNAME。
 对于在 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)后面具有负载均衡应用程序的应用程序所有者，此限制会带来问题。 使用流量管理器配置文件要求创建 CNAME 记录，因为它不能从区域顶点指向流量管理器配置文件。
 
 使用别名记录解决此问题。 与 CNAME 记录，请在区域顶点创建别名记录和应用程序所有者可以使用它为其区域顶点处记录指向外部终结点的流量管理器配置文件。 应用程序所有者指向用于其 DNS 区域中的任何其他域的同一个流量管理器配置文件。

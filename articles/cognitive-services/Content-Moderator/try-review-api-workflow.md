@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: e150b1321f2fbd348e737222c752203281503643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60605883"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>定义和使用审查工作流 (REST)
@@ -27,7 +27,7 @@ ms.locfileid: "60605883"
 
 ## <a name="create-a-workflow"></a>创建工作流
 
-若要创建或更新的工作流，请转到**[工作流-创建或更新](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** API 引用页，选择密钥中你所在区域的按钮 (您可以在中找到此终结点 URL 上**凭据**页的[审阅工具](https://contentmoderator.cognitive.microsoft.com/))。 这将启动 API 控制台中，您可以轻松地构建和运行的 REST API 调用。
+若要创建或更新的工作流，请转到 **[工作流-创建或更新](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** API 引用页，选择密钥中你所在区域的按钮 (您可以在中找到此终结点 URL 上**凭据**页的[审阅工具](https://contentmoderator.cognitive.microsoft.com/))。 这将启动 API 控制台中，您可以轻松地构建和运行的 REST API 调用。
 
 ![“工作流 - 创建或更新”页上的区域选择](images/test-drive-region.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "60605883"
 
 ### <a name="submit-your-request"></a>提交请求
   
-选择“发送”。 如果操作成功，“响应状态”为“`200 OK`”，且“响应内容”框显示“`true`”。
+选择“发送”。  如果操作成功，“响应状态”  为“`200 OK`”，且“响应内容”  框显示“`true`”。
 
 ### <a name="examine-the-new-workflow"></a>检查新的工作流
 
@@ -94,7 +94,7 @@ ms.locfileid: "60605883"
 
 ## <a name="get-workflow-details"></a>获取工作流详细信息
 
-若要检索有关现有工作流的详细信息，请转到**[工作流-Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)**  API 引用页，选择你所在区域的按钮 （在其中管理你的密钥的区域）。
+若要检索有关现有工作流的详细信息，请转到 **[工作流-Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)**  API 引用页，选择你所在区域的按钮 （在其中管理你的密钥的区域）。
 
 ![“工作流 - 获取”区域选择](images/test-drive-region.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "60605883"
 
 ![“获取”查询参数和请求头](images/workflow-get-default.PNG)
 
-选择“发送”。 如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示在工作流以 JSON 格式，如下所示：
+选择“发送”。  如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示在工作流以 JSON 格式，如下所示：
 
 ```json
 {

@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: kfollis
 ms.openlocfilehash: 693e973fb988a57c15b4ea2fae47f16b4ff39011
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60552527"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
 可以创建多个仪表板，并与对 Azure 订阅有访问权限的其他用户共享。  本文介绍创建、编辑、发布和管理仪表板访问权限的基础知识。
 
 ## <a name="create-a-dashboard"></a>创建仪表板
-若要创建仪表板，请选择当前仪表板名称旁边的“新建仪表板”按钮。  
+若要创建仪表板，请选择当前仪表板名称旁边的“新建仪表板”  按钮。  
 
 ![创建仪表板](./media/azure-portal-dashboards/new-dashboard.png)
 
@@ -69,10 +69,10 @@ ms.locfileid: "60552527"
 
 ![查看磁贴](./media/azure-portal-dashboards/view-tile.png)
 
-完成自定义仪表板后，只需选择“自定义完成”即可退出自定义模式，或右键单击并从上下文菜单中选择“自定义完成”。
+完成自定义仪表板后，只需选择“自定义完成”  即可退出自定义模式，或右键单击并从上下文菜单中选择“自定义完成”  。
 
 ## <a name="publish-a-dashboard-and-manage-access-control"></a>发布仪表板和管理访问控制
-创建仪表板时，默认该仪表板是专用的，这意味着只有你才可以看到它。  若要让其对其他人可见，请使用与其他仪表板命令一起出现的“共享”按钮。
+创建仪表板时，默认该仪表板是专用的，这意味着只有你才可以看到它。  若要让其对其他人可见，请使用与其他仪表板命令一起出现的“共享”  按钮。
 
 ![共享仪表板](./media/azure-portal-dashboards/share-dashboard.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "60552527"
 
 ![将仪表板发布到资源组](./media/azure-portal-dashboards/publish-to-resource-group.png)
 
-仪表板发布后，“共享 + 访问” 控制窗格刷新，并显示有关已发布仪表板的信息，其中包含用于管理仪表板用户访问权限的链接。  此链接将启动用于管理任何 Azure 资源访问权限的基于角色的标准访问控制边栏选项卡。  随时可以通过选择“共享”返回此视图。
+仪表板发布后，“共享 + 访问”  控制窗格刷新，并显示有关已发布仪表板的信息，其中包含用于管理仪表板用户访问权限的链接。  此链接将启动用于管理任何 Azure 资源访问权限的基于角色的标准访问控制边栏选项卡。  随时可以通过选择“共享”  返回此视图。
 
 ![管理访问控制](./media/azure-portal-dashboards/manage-access.png)
 

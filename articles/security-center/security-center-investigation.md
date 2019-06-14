@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 55def52d248babd439227cdcd4170c0a3ca91bb1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60704711"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64569823"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>调查 Azure 安全中心的事件和警报（预览版）
 本文档介绍如何使用 Azure 安全中心的调查功能调查安全事件和警报。
+
+> [!NOTE]
+> 警报和事件调查体验将于 2019 年 7 月 31 日停用。 有关详细信息和备用服务，请参阅用[安全中心功能的停用（2019 年 7 月）](security-center-features-retirement-july2019.md#menu_investigate)。
 
 ## <a name="what-is-investigation-in-security-center"></a>什么是安全中心调查？
 使用安全中心的调查功能，可以对潜在的[安全事件](https://docs.microsoft.com/azure/security-center/security-center-incident)进行会审，了解其范围并跟踪其根本原因。
@@ -32,7 +35,7 @@ ms.locfileid: "60704711"
 
 > [!NOTE]
 > * 安全中心的调查功能不支持[自定义警报](security-center-custom-alert.md)。
-> * 基于从 Windows 服务器收集的数据警报仅支持调查。
+> * 仅支持对基于从 Windows 服务器收集的数据的警报进行调查。
 
 
 ## <a name="how-investigation-works"></a>如何进行调查？
@@ -48,29 +51,29 @@ ms.locfileid: "60704711"
 ![路径](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>常规信息
-在关系图中呈现某个实体时，选项卡会显示该实体的其他信息。 “信息”选项卡提供实体的常规信息，这些信息来自不同的可用信息源。
+在关系图中呈现某个实体时，选项卡会显示该实体的其他信息。 “信息”选项卡提供实体的常规信息，这些信息来自不同的可用信息源。 
 
 ![常规信息](./media/security-center-investigation/security-center-investigation-fig3.png)
 
 信息选项卡显示的信息与映射中选择的事件相关。 事件是一个容器，其中包括调查的结果。 每项调查均在事件上下文中进行。
 
-事件仅在用户针对特定警报单击“开始调查”按钮时创建。 适用于调查者的基本功能是标记各种实体，例如用户、计算机或警报。 将某个实体标记为相关时，会提供原因。 自此以后，该实体就会直接显示在关系图和事件实体列表中的事件下。
+事件仅在用户针对特定警报单击“开始调查”按钮时创建。  适用于调查者的基本功能是标记各种实体，例如用户、计算机或警报。 将某个实体标记为相关时，会提供原因。 自此以后，该实体就会直接显示在关系图和事件实体列表中的事件下。
 
 ### <a name="entities"></a>实体
 
-“实体”选项卡显示按类型分组的所有相关实体。 它适用于两种情况：一是图中要呈现的实体过多，二是实体名称过长，以表格方式检查更容易。
+“实体”选项卡显示按类型分组的所有相关实体。  它适用于两种情况：一是图中要呈现的实体过多，二是实体名称过长，以表格方式检查更容易。
 
 ![实体](./media/security-center-investigation/security-center-investigation-fig4.png)
 
 ### <a name="search"></a>搜索
 
-“搜索”选项卡提供适用于实体的所有日志类型。 可以看到每个日志类型的可用记录数。 单击每个日志类型即可转到搜索屏幕。 可以在搜索屏幕中优化搜索，并使用各种搜索功能，例如设置警报。 在当前版本中，搜索选项卡仅适用于用户和计算机实体。
+“搜索”选项卡提供适用于实体的所有日志类型。  可以看到每个日志类型的可用记录数。 单击每个日志类型即可转到搜索屏幕。 可以在搜索屏幕中优化搜索，并使用各种搜索功能，例如设置警报。 在当前版本中，搜索选项卡仅适用于用户和计算机实体。
 
 ![搜索](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>浏览
 
-“浏览”选项卡允许调查者检查与各种问题相关的数据，而这些问题又与实体相关。 例如，对某台计算机进行调查时，浏览选项卡中会提供在该计算机中执行的进程的列表。某些情况下，浏览选项卡提供的数据可能指示存在可疑问题。 调查者可以在选项卡中检查数据，也可以在搜索屏幕中将其打开，以便检查大型数据集并使用高级搜索选项，例如“筛选”和“导出到 Excel”。
+“浏览”选项卡允许调查者检查与各种问题相关的数据，而这些问题又与实体相关。  例如，对某台计算机进行调查时，浏览选项卡中会提供在该计算机中执行的进程的列表。某些情况下，浏览选项卡提供的数据可能指示存在可疑问题。 调查者可以在选项卡中检查数据，也可以在搜索屏幕中将其打开，以便检查大型数据集并使用高级搜索选项，例如“筛选”和“导出到 Excel”。
 
 ![浏览](./media/security-center-investigation/security-center-investigation-fig6.png)
 
@@ -92,15 +95,15 @@ ms.locfileid: "60704711"
 - 如果事件包含实体，则会呈现该实体。
 
 > [!NOTE]
-> “搜索”和“浏览”选项卡仅显示此时间范围内的记录。
+> “搜索”和“浏览”选项卡仅显示此时间范围内的记录。  
 
 ## <a name="how-to-perform-an-investigation"></a>如何进行调查？
 
-可以从安全事件或警报开始调查，所选选项视需求而变。 遵循的步骤用于从警报开始调查：
+可以从安全事件或警报开始调查，所选选项视需求而变。 以下步骤用于从警报开始调查：
 
-1.  打开“安全中心”仪表板。
-2.  单击“安全警报”，选择要调查的事件。
-3.  在事件的页面中单击“开始调查”按钮，此时会显示“调查”仪表板。
+1.  打开“安全中心”  仪表板。
+2.  单击“安全警报”  ，选择要调查的事件。
+3.  在事件的页面中单击“开始调查”按钮，此时会显示“调查”仪表板。  
 
     ![警报](./media/security-center-investigation/security-center-investigation-fig8.png)
 

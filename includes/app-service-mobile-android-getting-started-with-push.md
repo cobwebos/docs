@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: e66e7d4646b650d2d811d3807db04605dfddeded
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141221"
 ---
 1. 在**应用**项目中，打开文件 `AndroidManifest.xml`。 在 `application` 开始标记之后添加以下代码：
@@ -34,7 +34,7 @@ ms.locfileid: "66141221"
         import com.google.firebase.iid.FirebaseInstanceId;
         ```
 
-    - 将 `MobileServiceClient` 的定义从“专用”更改为“专用静态”，使之现在如以下所示：
+    - 将 `MobileServiceClient` 的定义从“专用”  更改为“专用静态”  ，使之现在如以下所示：
 
         ```java
         private static MobileServiceClient mClient;
@@ -56,13 +56,13 @@ ms.locfileid: "66141221"
         }
         ```
 
-    - 更新 `ToDoActivity` 类的 onCreate 方法。 请确保在 `MobileServiceClient` 实例化之后再添加此代码。
+    - 更新 `ToDoActivity` 类的 onCreate  方法。 请确保在 `MobileServiceClient` 实例化之后再添加此代码。
 
         ```java
         registerPush();
         ```
 
-3. 添加新类以处理通知。 在项目资源管理器中，打开 **app** > **java** > **your-project-namespace** 节点，并右键单击包名称节点。 单击“新建”，并单击“Java 类”。 在“名称”中，键入 `ToDoMessagingService`，然后单击“确认”。 然后将类声明替换为：
+3. 添加新类以处理通知。 在项目资源管理器中，打开 **app** > **java** > **your-project-namespace** 节点，并右键单击包名称节点。 单击“新建”  ，并单击“Java 类”  。 在“名称”中，键入 `ToDoMessagingService`，然后单击“确认”。 然后将类声明替换为：
 
     ```java
     import android.app.Notification;

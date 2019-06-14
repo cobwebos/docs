@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
 ms.openlocfilehash: 251caa840446e75ff13d9b4dcebcbae3a36473c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60657503"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
@@ -44,9 +44,9 @@ ms.locfileid: "60657503"
 
 ### <a name="open-api-v3"> </a>OpenAPI 版本 3
 
-* 如果指定了多个服务器，API 管理将尝试选择第一个 HTTP URL。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
-* 不支持“Examples”，但支持“example”。
-* 不支持“Multipart/form-data”。
+* 如果指定了多个服务器，API 管理将尝试选择第一个 HTTP URL  。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
+* 不支持“Examples”，但支持“example”   。
+* 不支持“Multipart/form-data”  。
 
 > [!IMPORTANT]
 > 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/)。

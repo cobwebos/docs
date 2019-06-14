@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62117314"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
@@ -44,7 +44,7 @@ StorSimple 云设备以两种型号提供：标准 8010（前身为 1100）和�
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3（4 核，7 GB 内存）| Standard_DS3（4 核，14 GB 内存）|
-| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的 Azure 区域<br></br>请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。 |
+| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的 Azure 区域<br></br>请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。   |
 | **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/common/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br> |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案 <br></br>低延迟和更高性能工作负载<br></br>用于灾难恢复的辅助设备 |
 
@@ -189,11 +189,11 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 若要将云设备连接到同一虚拟网络中的主机服务器，需使用云设备的内部或专用 IP 地址。 执行以下步骤，获取云设备的专用 IP 地址
 
-1. 转到云设备的底层虚拟机。 虚拟机名称与云设备名称相同。 转到“所有资源”，提供云设备和订阅的名称，并选择“虚拟机”作为类型。 在提供的虚拟机列表中，选择并单击对应于云设备的虚拟机。
+1. 转到云设备的底层虚拟机。 虚拟机名称与云设备名称相同。 转到“所有资源”，提供云设备和订阅的名称，并选择“虚拟机”作为类型。  在提供的虚拟机列表中，选择并单击对应于云设备的虚拟机。
 
      ![选择云设备的虚拟机](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
 
-2. 转到“设置”>“网络”。 在右窗格中，可看到云设备的专用 IP 地址。 记下该地址。
+2. 转到“设置”>“网络”  。 在右窗格中，可看到云设备的专用 IP 地址。 记下该地址。
 
     ![获取云设备的专用 IP 地址](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 
@@ -229,12 +229,12 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 有关分步过程，请转到 [停用和删除 StorSimple 设备](storsimple-8000-deactivate-and-delete-device.md)。
 
-云设备在 StorSimple 设备管理器服务边栏选项卡上显示为已停用后，可以从“设备”边栏选项卡上的设备列表中删除该云设备。
+云设备在 StorSimple 设备管理器服务边栏选项卡上显示为已停用后，可以从“设备”  边栏选项卡上的设备列表中删除该云设备。
 
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>停止、启动和重新启动云设备
 不同于 StorSimple 物理设备，StorSimple 云设备上没有开机或关机按钮。 但是，有时可能需要停止和重新启动云设备。
 
-若要启动、停止和重启云设备，最简单的方法是使用“虚拟机服务”边栏选项卡。 转到“虚拟机服务”。 从 VM 列表中，找出与云设备对应的 VM（名称相同），并单击该 VM 名称。 在查看虚拟机边栏选项卡时，可以看到云设备状态为“正在运行”，因为它在创建之后已默认启动。 可以随时启动、停止和重新启动虚拟机。
+若要启动、停止和重启云设备，最简单的方法是使用“虚拟机服务”边栏选项卡。 转到“虚拟机服务”。 从 VM 列表中，找出与云设备对应的 VM（名称相同），并单击该 VM 名称。 在查看虚拟机边栏选项卡时，可以看到云设备状态为“正在运行”  ，因为它在创建之后已默认启动。 可以随时启动、停止和重新启动虚拟机。
 
 [!INCLUDE [Stop and restart cloud appliance](../../includes/storsimple-8000-stop-restart-cloud-appliance.md)]
 

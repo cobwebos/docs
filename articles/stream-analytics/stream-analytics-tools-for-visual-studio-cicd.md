@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: f34139dafffe3d4890f17988114dffdd8b480d2d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827317"
 ---
 # <a name="continuously-integrate-and-develop-with-azure-stream-analytics-cicd-nuget-package"></a>持续集成和开发与 Azure Stream Analytics CI/CD NuGet 包
@@ -27,13 +27,13 @@ ms.locfileid: "65827317"
 有关详细信息，请参阅[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)。
 
 ## <a name="msbuild"></a>MSBuild
-同标准 Visual Studio MSBuild 体验一样，可通过两种方式生成项目。 可右键单击该项目，然后选择“生成”。 还可从命令行使用 NuGet 包中的 MSBuild。
+同标准 Visual Studio MSBuild 体验一样，可通过两种方式生成项目。 可右键单击该项目，然后选择“生成”  。 还可从命令行使用 NuGet 包中的 MSBuild  。
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
 ```
 
-成功生成流分析 Visual Studio 项目后，会在 bin/[Debug/Retail]/Deploy 文件夹下生成以下两个 Azure 资源管理器模板文件： 
+成功生成流分析 Visual Studio 项目后，会在 bin/[Debug/Retail]/Deploy 文件夹下生成以下两个 Azure 资源管理器模板文件  ： 
 
 *  资源管理器模板文件
 
@@ -46,7 +46,7 @@ ms.locfileid: "65827317"
 parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 
 > [!NOTE]
-> 对于所有凭据，默认值均设置为 null。 部署到云之前，必须先设置这些值。
+> 对于所有凭据，默认值均设置为 null。 部署到云之前，必须先设置这些值  。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -61,7 +61,7 @@ parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置�
 ## <a name="command-line-tool"></a>命令行工具
 
 ### <a name="build-the-project"></a>生成项目
-NuGet 包具有一个名为 SA.exe 的命令行工具。 该工具支持在任意计算机上生成项目并进行本地测试，可在持续集成和持续交付进程中使用。 
+NuGet 包具有一个名为 SA.exe 的命令行工具  。 该工具支持在任意计算机上生成项目并进行本地测试，可在持续集成和持续交付进程中使用。 
 
 默认情况下，部署文件位于当前目录下。 可通过使用以下 -OutputPath 参数指定输出路径：
 
@@ -71,7 +71,7 @@ NuGet 包具有一个名为 SA.exe 的命令行工具。 该工具支持在任�
 
 ### <a name="test-the-script-locally"></a>在本地测试脚本
 
-如果项目已在 Visual Studio 中指定本地输入文件，则可使用 localrun 命令运行自动化脚本测试。 输出结果位于当前目录下。
+如果项目已在 Visual Studio 中指定本地输入文件，则可使用 localrun 命令运行自动化脚本测试  。 输出结果位于当前目录下。
  
 ```
 localrun -Project [ProjectFullPath]
@@ -79,7 +79,7 @@ localrun -Project [ProjectFullPath]
 
 ### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>生成与流分析 PowerShell API 配合使用的作业定义文件
 
-arm 命令将通过内部版本生成的作业模板和作业模板参数文件视为输入。 然后将其合并为可与流分析 PowerShell API 配合使用的作业定义 JSON 文件。
+ arm 命令将通过内部版本生成的作业模板和作业模板参数文件视为输入。 然后将其合并为可与流分析 PowerShell API 配合使用的作业定义 JSON 文件。
 
 ```powershell
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]

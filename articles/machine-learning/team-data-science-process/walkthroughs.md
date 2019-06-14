@@ -12,15 +12,15 @@ ms.date: 08/17/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 98595ea0ef5b6d9d4cef0f239390b364fb1e4e75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60589056"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>执行 Team Data Science Process 的演练
 
-这些**端到端演练**演示了特定方案的 Team Data Science Process 步骤。 具体展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 这些演练按所使用的**平台**进行分组。
+这些**端到端演练**演示了特定方案的 Team Data Science Process 步骤。 具体展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序  。 这些演练按所使用的**平台**进行分组。
 
 
 ## <a name="walkthrough-descriptions"></a>演练说明

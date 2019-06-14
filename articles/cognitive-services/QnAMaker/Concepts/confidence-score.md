@@ -12,10 +12,10 @@ ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 4fb5d1e20c4c857dedcec2dc4695f82fccd9269d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65792748"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的置信度分数
@@ -50,9 +50,9 @@ ms.locfileid: "65792748"
 
 选择阈值时，请务必平衡“准确度”和“覆盖率”，并根据自己的需求来调整阈值。
 
-- 如果“准确度”（或精准率）对方案更为重要，请提高阈值。 这样，每次返回的答案的置信度都会更高，且更有可能就是用户所要找的答案。 在这种情况下，最终可能会导致更多问题没有答案。 例如，如果将阈值设置为 70，可能会错过一些含糊不清的示例（例如，“什么是保存和定型？”）。
+- 如果“准确度”  （或精准率）对方案更为重要，请提高阈值。 这样，每次返回的答案的置信度都会更高，且更有可能就是用户所要找的答案。 在这种情况下，最终可能会导致更多问题没有答案。 例如，  如果将阈值设置为 70  ，可能会错过一些含糊不清的示例（例如，“什么是保存和定型？”）。
 
-- 如果“覆盖率”（或召回率）更为重要，且希望尽可能多地回答问题（即使答案与用户问题仅部分相关，也不例外），请降低阈值。 也就是说，可能会更多出现以下情况：答案并未回答用户实际查询，而是提供了其他一些相关答案。 *例如：* 如果使阈值**30**，可能会给出答案，查询，例如"可以在其中我编辑知识库？"
+- 如果“覆盖率”  （或召回率）更为重要，且希望尽可能多地回答问题（即使答案与用户问题仅部分相关，也不例外），请降低阈值。 也就是说，可能会更多出现以下情况：答案并未回答用户实际查询，而是提供了其他一些相关答案。 *例如：* 如果使阈值**30**，可能会给出答案，查询，例如"可以在其中我编辑知识库？"
 
 > [!NOTE]
 > 较新版本的 QnA Maker 包括对评分逻辑的改进，并可能影响你的阈值。 每次更新服务时，请务必测试阈值并在必要时调整阈值。 可以在[此处](https://www.qnamaker.ai/UserSettings)查看 QnA 服务版本，并在[此处](../How-To/troubleshooting-runtime.md)了解如何获取最新更新。
@@ -78,11 +78,11 @@ ms.locfileid: "65792748"
 
 1. 转到 [Azure 门户](https://portal.azure.com)并导航到表示所创建的 QnA Maker 服务的资源组。
 
-2. 单击以打开“应用服务”。
+2. 单击以打开“应用服务”  。
 
     ![在 Azure 门户中访问 QnA Maker 的应用服务](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. 单击“应用程序设置”，然后将 **DefaultAnswer** 字段编辑为所需的默认响应。 单击“ **保存**”。
+3. 单击“应用程序设置”  ，然后将 **DefaultAnswer** 字段编辑为所需的默认响应。 单击“ **保存**”。
 
     ![选择“应用程序设置”，然后编辑 QnA Maker 的 DefaultAnswer](../media/qnamaker-concepts-confidencescore/change-response.png)
 

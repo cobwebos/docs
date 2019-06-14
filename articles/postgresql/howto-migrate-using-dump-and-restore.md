@@ -1,16 +1,16 @@
 ---
-title: 如何在转储和还原 Azure Database for PostgreSQL-单个服务器
-description: 介绍如何将 PostgreSQL 数据库解压缩为转储文件以及从 pg_dump 创建的文件在 Azure Database for PostgreSQL-单个服务器还原。
+title: 如何在 Azure Database for PostgreSQL - 单一服务器中进行转储和还原
+description: 介绍了如何在 Azure Database for PostgreSQL - 单一服务器中将 PostgreSQL 数据库解压缩为转储文件，以及如何从 pg_dump 创建的文件进行还原。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: aa9485ec8fcabdc0276e0598bd3e19f04d70dfa1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65066982"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原迁移 PostgreSQL 数据库
@@ -28,7 +28,7 @@ ms.locfileid: "65066982"
 ```bash
 pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> > <database>.dump
 ```
-例如，如果有一个本地服务器，并且该服务器中包含一个名为 testdb 的数据库
+例如，如果有一个本地服务器，并且该服务器中包含一个名为 testdb 的数据库 
 ```bash
 pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
 ```

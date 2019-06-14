@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66252797"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
@@ -43,7 +43,7 @@ IoT 中心消息由以下部分组成：
 
 * 如[控制对 IoT 中心的访问](iot-hub-devguide-security.md)所述，IoT 中心允许基于设备的身份验证和访问控制。
 
-* 可以使用进入应用程序属性的信息来标记消息。 有关详细信息，请参阅[消息正](iot-hub-message-enrichments-overview.md)。
+* 可以使用应用程序属性中的信息对消息进行戳记。 有关详细信息，请参阅[消息扩充](iot-hub-message-enrichments-overview.md)。
 
 有关如何使用不同协议对已发送消息进行编码和解码的详细信息，请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 

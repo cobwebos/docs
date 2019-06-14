@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
 ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66164460"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
@@ -98,7 +98,7 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 美国西部 2 | 13.66.226.202 | |
 ||||
 
-\* **注意：***美国东部 2* 还有第三个 IP 地址，即 `52.167.104.0`。
+\* **注意：** *美国东部 2* 还有第三个 IP 地址，即 `52.167.104.0`。
 
 ## <a name="change-azure-sql-database-connection-policy"></a>更改 Azure SQL 数据库连接策略
 

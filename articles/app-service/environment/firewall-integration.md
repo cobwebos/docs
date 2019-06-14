@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 06/11/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dae2d40650b9fdb8df2d3bdb74b2df78639dc11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766464"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058059"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -30,6 +30,21 @@ ASE 有许多入站依赖项。 无法通过防火墙设备发送入站管理流
 ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着无法使用网络安全组 (NSG) 锁定来自 ASE 的出站流量。 地址会频率更改，用户无法基于当前解析设置规则，然后使用这些规则来创建 NSG。 
 
 保护出站地址的解决方案在于使用可基于域名控制出站流量的防火墙设备。 Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。  
+
+## <a name="system-architecture"></a>系统体系结构
+
+具有出站流量通过防火墙设备来部署 ASE 需要更改在 ASE 子网的路由。 IP 级别操作的路由。 如果您不小心在定义路由，您可以强制 TCP 回复流量，另一个地址作为源。 这称为非对称路由，它会中断 TCP。
+
+必须有定义，以便给 ASE 的入站的流量可以回复返回传入后的相同方式将流量路由。 这适用于入站的管理请求，它是如此的入站应用程序请求。
+
+传入和从 ase 发出的流量必须遵守以下约定
+
+* 使用防火墙设备的使用不支持到 Azure SQL、 存储和事件中心的流量。 此流量必须直接发送到这些服务。 若要使发生的方法是配置上述三个服务的服务终结点。 
+* 路由表规则必须定义入站的管理流量发送从它来自哪里。
+* 路由表规则必须定义入站应用程序流量发送从它来自哪里。 
+* 离开 ASE 的所有其他流量可以发送到路由表规则与防火墙设备。
+
+![使用 Azure 防火墙的 ASE 连接流][5]
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 
@@ -44,7 +59,7 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
    
    ![添加应用程序规则][1]
    
-1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分提供名称，选择“任何”，将源和目标地址设置为 *，将端口设置为 123。 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分提供名称，选择“任何”，将源和目标地址设置为 *，将端口设置为 123。  此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。
 
    ![添加 NTP 网络规则][3]
 
@@ -68,8 +83,6 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 如果应用程序有依赖项，则需要将这些依赖项添加到 Azure 防火墙。 创建允许 HTTP/HTTPS 流量的应用程序规则，并针对其他方面的控制创建网络规则。 
 
 如果你知道应用程序请求流量将来自哪个地址范围，则可将该范围添加到要分配给 ASE 子网的路由表。 如果地址范围很大或未指定，则你可以使用应用程序网关等网络设备来提供一个要添加到路由表的地址。 有关在 ILB ASE 中配置应用程序网关的详细信息，请阅读[将 ILB ASE 与应用程序网关集成](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
-
-![使用 Azure 防火墙的 ASE 连接流][5]
 
 使用应用程序网关只是系统配置方法的一个例子。 如果遵循此路径，则需要将路由添加到 ASE 子网路由表，以便发送到应用程序网关的回复流量直接通过该路由传送。 
 

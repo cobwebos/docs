@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.openlocfilehash: e35e86bee4dfee21d0a98867c3e0d1d7850ed0ec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761994"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>使用 Power Query 将 Excel 连接到 Apache Hadoop
@@ -41,26 +41,26 @@ Power Query 可以导入已输出的数据，或者导入由在 HDInsight 群集
 
    - Excel 2016
 
-     - 单击“数据”菜单，从“获取并转换数据”功能区中单击“获取数据”，单击“从 Azure”，然后单击“从 Azure HDInsight(HDFS)”。
+     - 单击“数据”  菜单，从“获取并转换数据”  功能区中单击“获取数据”  ，单击“从 Azure”  ，然后单击“从 Azure HDInsight(HDFS)”  。
 
        ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
 
    - Excel 2013/2010
 
-     - 依次单击“Power Query”菜单、“来自 Azure”和“来自 Microsoft Azure HDInsight”。
+     - 依次单击“Power Query”  菜单、“来自 Azure”  和“来自 Microsoft Azure HDInsight”  。
    
        ![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
        
-       **注意：** 如果没有看到**Power Query**菜单，请转到**文件** > **选项** > **外接程序**，并选择**COM 加载项**从下拉列表**管理**在页面底部的框。 选择“转到...”按钮，并且确认已选中 Power Query for Excel 外接程序所对应的框。
+       **注意：** 如果没有看到**Power Query**菜单，请转到**文件** > **选项** > **外接程序**，并选择**COM 加载项**从下拉列表**管理**在页面底部的框。 选择“转到...”  按钮，并且确认已选中 Power Query for Excel 外接程序所对应的框。
        
-       **注意：** Power Query 还允许通过单击“来自其他源”从 HDFS 中导入数据。
-4. 对于“帐户名称”，请输入与群集相关联的 Azure Blob 存储帐户名称，并单击“确定”。 此帐户可以是默认存储帐户或链接的存储帐户。  格式为 *https://&lt;StorageAccountName>.blob.core.windows.net/*。
-5. 对于“帐户密钥”，请输入 Blob 存储帐户的密钥，并单击“保存”。 （只有在第一次访问此存储时才需要输入帐户信息。）
+       **注意：** Power Query 还允许通过单击“来自其他源”  从 HDFS 中导入数据。
+4. 对于“帐户名称”  ，请输入与群集相关联的 Azure Blob 存储帐户名称，并单击“确定”  。 此帐户可以是默认存储帐户或链接的存储帐户。  格式为 *https://&lt;StorageAccountName>.blob.core.windows.net/* 。
+5. 对于“帐户密钥”  ，请输入 Blob 存储帐户的密钥，并单击“保存”  。 （只有在第一次访问此存储时才需要输入帐户信息。）
 6. 在“查询编辑器”左侧的“导航器”窗格中，双击 Blob 存储容器名称  。 默认情况下，该容器名称与群集名称相同。
-7. 在“名称”列中找到 **HiveSampleData.txt**（文件夹路径是 **../hive/warehouse/hivesampletable/**），并单击 HiveSampleData.txt 左侧的“二进制”。 HiveSampleData.txt 随所有群集提供。 （可选）可使用自己的文件。
+7. 在“名称”  列中找到 **HiveSampleData.txt**（文件夹路径是 **../hive/warehouse/hivesampletable/** ），并单击 HiveSampleData.txt 左侧的“二进制”  。 HiveSampleData.txt 随所有群集提供。 （可选）可使用自己的文件。
    
     ![HDI.PowerQuery.ImportData][image-hdi-powerquery-importdata]
-8. 如果需要，可以重命名列名称。 准备就绪后，单击“关闭并加载”。  数据已加载到工作簿：
+8. 如果需要，可以重命名列名称。 准备就绪后，单击“关闭并加载”  。  数据已加载到工作簿：
    
     ![HDI.PowerQuery.ImportedTable][image-hdi-powerquery-imported-table]
 

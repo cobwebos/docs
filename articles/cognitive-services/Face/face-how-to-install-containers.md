@@ -3,20 +3,20 @@ title: 安装和运行容器
 titlesuffix: Face - Azure Cognitive Services
 description: 下载、 安装和运行为人脸在此演练教程中的容器。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 26ebeb463f42dce06c29a5bd3f69585430a2ee90
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 4d3f3e64e109d0b1dc010be39b62b4f0bdc0573d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306643"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063600"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -47,7 +47,7 @@ Azure 认知服务人脸检测的人脸在图像中的 docker 提供标准化的
 
 下表显示了为每个人脸 API 容器分配的最小和建议的 CPU 核心数和内存。
 
-| 容器 | 最小值 | 建议 | 每秒创建的事务数<br>（最低配置，最大）|
+| 容器 | 最小值 | 建议 | 每秒事务数<br>（最低配置，最大）|
 |-----------|---------|-------------|--|
 |人脸 | 单核，2 GB 内存 | 单核，4 GB 内存 |10, 20|
 

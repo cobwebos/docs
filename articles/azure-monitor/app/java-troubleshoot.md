@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: eaade5f9ec9db7e8d224305147dafc264916d9c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c55828244d73e612da7a7da2d050252cce04aa2c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899493"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061138"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -95,7 +95,7 @@ ms.locfileid: "60899493"
 **如何更改项目要将数据发送到的 Azure 资源？**
 
 * [获取新资源的检测密钥][java]
-* 如果使用用于 Eclipse 的 Azure 工具包将 Application Insights 添加到项目，请右键单击 Web 项目，选择“Azure”、“配置 Application Insights”，然后更改密钥。
+* 如果使用用于 Eclipse 的 Azure 工具包将 Application Insights 添加到项目，请右键单击 Web 项目，选择“Azure”、“配置 Application Insights”，然后更改密钥。  
 * 如果已将检测密钥配置为环境变量，请使用新 iKey 更新环境变量的值。
 * 否则，请更新项目的 resources 文件夹中 ApplicationInsights.xml 内的密钥。
 
@@ -117,9 +117,9 @@ ms.locfileid: "60899493"
 </SDKLogger>
 ```
 
-### <a name="spring-boot-starter"></a>Spring Boot 起动器
+### <a name="spring-boot-starter"></a>Spring Boot Starter
 
-若要使用 Spring Boot 应用使用应用程序见解 Spring Boot 起动器启用 SDK 日志记录，将以下代码添加到`application.properties`文件。:
+若要使用 Application Insight Spring Boot Starter 启用 Spring Boot 应用的 SDK 日志记录，请将以下内容添加到 `application.properties` 文件中：
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -129,7 +129,7 @@ azure.application-insights.logger.level=trace
 
 ### <a name="java-agent"></a>Java 代理
 
-若要启用日志记录 JVM 代理更新[Ai-agent.xml 文件](java-agent.md)。
+若要启用 JVM 代理日志记录，请更新 [AI-Agent.xml 文件](java-agent.md)。
 
 ```xml
 <AgentLogger type="FILE">

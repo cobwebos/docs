@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.openlocfilehash: 10ec4b55bab741f19adaf193295659b7876fe02c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685224"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户创建 Apache Hadoop 群集
@@ -23,8 +23,8 @@ ms.locfileid: "64685224"
 开始学习本教程之前，必须做好以下准备：
 
 * **Azure 订阅**：若要创建一个月的免费试用帐户，请访问 [azure.microsoft.com/free](https://azure.microsoft.com/free)。
-* 启用安全传输的 Azure 存储帐户。 有关说明，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)和[需要安全传输](../storage/common/storage-require-secure-transfer.md)。
-* 存储帐户中的 Blob 容器。
+*  启用安全传输的 Azure 存储帐户。 有关说明，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)和[需要安全传输](../storage/common/storage-require-secure-transfer.md)。
+*  存储帐户中的 Blob 容器。
 
 ## <a name="create-cluster"></a>创建群集
 
@@ -39,7 +39,7 @@ ms.locfileid: "64685224"
 
 2. 按说明遵循以下规范创建群集： 
 
-    - 指定 HDInsight 版本 3.6。 3.6 或更高版本是必需的。
+    - 指定 HDInsight 版本 3.6。 3\.6 或更高版本是必需的。
     - 指定启用安全传输的存储帐户。
     - 对存储帐户使用短名称。
     - 必须事先创建存储帐户和 blob 容器。

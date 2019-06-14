@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
 ms.openlocfilehash: 4db515a931bc7f423eb11ae31b7304a602f0da46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60925792"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>数据处理和用户定义的函数
@@ -114,7 +114,7 @@ Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、
 
 ### <a name="role-assignment"></a>角色分配
 
-用户定义的函数的操作受 Azure 数字孪生[基于角色的访问控制](./security-role-based-access-control.md)的约束，以保护服务中的数据。 角色分配定义哪些用户定义的函数具有与空间图形及其实体交互的适当权限。 例如，用户定义的函数可能具有在给定空间创建、读取、更新或删除图形数据的功能和权限。 当用户定义的函数向图形请求数据或尝试执行操作时，系统会检查用户定义的函数的访问级别。 有关详细信息，请参阅[基于角色的访问控制](./security-create-manage-role-assignments.md)。
+用户定义的函数的操作受 Azure 数字孪生[基于角色的访问控制](./security-role-based-access-control.md)的约束，以保护服务中的数据。 角色分配定义哪些用户定义的函数具有与空间图形及其实体交互的适当权限。 例如，用户定义的函数可能具有在给定空间创建、读取、更新或删除图形数据的功能和权限。     当用户定义的函数向图形请求数据或尝试执行操作时，系统会检查用户定义的函数的访问级别。 有关详细信息，请参阅[基于角色的访问控制](./security-create-manage-role-assignments.md)。
 
 匹配程序有可能触发没有角色分配的用户定义的函数。 在这种情况下，用户定义的函数无法从图形中读取任何数据。
 

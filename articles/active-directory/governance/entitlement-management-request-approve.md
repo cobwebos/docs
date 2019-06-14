@@ -17,16 +17,16 @@ ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b2d07638f6c6f153ee3640273fbee5e56df0ab2
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541520"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>批准或拒绝访问请求在 Azure AD 授权管理 （预览版）
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
+> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "64541520"
 
 **必备角色：** 审批者
 
-1. 单击**视图**链接以打开访问请求窗格。
+1. 单击“查看”链接打开“访问请求”窗格。 
 
 1. 单击**详细信息**若要查看有关访问请求的详细信息。
 
@@ -70,9 +70,9 @@ ms.locfileid: "64541520"
 
 1. 如有必要，输入原因。
 
-    ![我访问门户的访问请求](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![我的访问权限门户 - 访问请求](./media/entitlement-management-shared/my-access-approve-request.png)
 
-1. 单击**提交**提交你的决定。
+1. 单击“提交”以提交所做的决定。 
 
     如果使用多个审批者配置策略，则只有一个审批者将需要决定如何对挂起的审批。 审批者提交其对访问请求的决策后，请求完成，并且不再可用于其他审批者批准或拒绝该请求。 其他审批者可以看到我访问门户的决策制定者的请求决定。 在此期间，支持仅单阶段审批。
 

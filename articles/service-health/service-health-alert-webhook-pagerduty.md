@@ -1,32 +1,32 @@
 ---
-title: 使用 PagerDuty 配置 Azure 服务运行状况警报 | Microsoft Docs
+title: 使用 PagerDuty 使用 webhook 将发送 Azure 服务运行状况警报
 description: 获取有关发送到 PagerDuty 实例的服务运行状况事件的个性化通知。
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.date: 11/14/2017
-ms.openlocfilehash: b78c155fb2f3a13c27f4ff71c4dd37df2dbd2f36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: ab3bcffb6453b284c3c8bb0d0373c7155fe8ef23
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620963"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067151"
 ---
-# <a name="configure-service-health-alerts-with-pagerduty"></a>使用 PagerDuty 配置服务运行状况警报
+# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>使用 PagerDuty 使用 webhook 将发送 Azure 服务运行状况警报
 
 本文演示如何使用 Webhook 通过 PagerDuty 设置 Azure 服务运行状况通知。 使用 [PagerDuty](https://www.pagerduty.com/) 的自定义 Microsoft Azure 集成类型，可以轻松地将服务运行状况警报添加到新的或现有的 PagerDuty 服务。
 
 ## <a name="creating-a-service-health-integration-url-in-pagerduty"></a>在 PagerDuty 中创建服务运行状况集成 URL
 1.  请确保已注册并登录到 [PagerDuty](https://www.pagerduty.com/) 帐户。
 
-1.  在 PagerDuty 中导航到“服务”部分。
+1.  在 PagerDuty 中导航到“服务”  部分。
 
     ![PagerDuty 中的“服务”部分](./media/webhook-alerts/pagerduty-services-section.png)
 
-1.  选择“添加新服务”或打开已设置的现有服务。
+1.  选择“添加新服务”  或打开已设置的现有服务。
 
-1.  在“集成设置”中，选择以下项：
+1.  在“集成设置”  中，选择以下项：
 
     a. **集成类型**：Microsoft Azure
 
@@ -34,9 +34,9 @@ ms.locfileid: "60620963"
 
     ![PagerDuty 中的“集成设置”](./media/webhook-alerts/pagerduty-integration-settings.png)
 
-1.  填写任何其他必填字段，然后选择“添加”。
+1.  填写任何其他必填字段，然后选择“添加”  。
 
-1.  打开此新集成，复制并保存“集成 URL”。
+1.  打开此新集成，复制并保存“集成 URL”  。
 
     ![PagerDuty 中的“集成 URL”](./media/webhook-alerts/pagerduty-integration-url.png)
 
@@ -44,32 +44,32 @@ ms.locfileid: "60620963"
 ### <a name="for-a-new-action-group"></a>对于新操作组：
 1. 执行[使用 Azure 门户为新操作组创建有关服务运行状况通知的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)中的步骤 1 到步骤 8。
 
-1. 在“操作”列表中定义：
+1. 在“操作”  列表中定义：
 
-    a. **操作类型：***Webhook*
+    a. **操作类型：** *Webhook*
 
     b. **详细信息：** 前面保存的 PagerDuty **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 
-1. 警报创建完成后，选择“保存”。
+1. 警报创建完成后，选择“保存”  。
 
 ### <a name="for-an-existing-action-group"></a>对于现有操作组：
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择“监视”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“监视”  。
 
-1. 在“设置”部分中，选择“操作组”。
+1. 在“设置”  部分中，选择“操作组”  。
 
 1. 找到要编辑的操作组并选择它。
 
-1. 添加到“操作”列表：
+1. 添加到“操作”  列表：
 
-    a. **操作类型：***Webhook*
+    a. **操作类型：** *Webhook*
 
     b. **详细信息：** 前面保存的 PagerDuty **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 
-1. 操作组更新完成后，选择“保存”。
+1. 操作组更新完成后，选择“保存”  。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>通过 HTTP POST 请求测试 Webhook 集成
 1. 创建要发送的服务运行状况有效负载。 可以在 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md) 中找到示例服务运行状况 Webhook 有效负载。

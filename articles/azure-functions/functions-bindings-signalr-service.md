@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: f0d4a607676285ed4f0f91d8ce8c83ddf1313b89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306810"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511137"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions 的 SignalR Service 绑定
 
@@ -595,26 +595,26 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-下表解释了在 function.json 文件和 `SignalRConnectionInfo` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `SignalRConnectionInfo` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type|| 必须设置为 `signalRConnectionInfo`。|
-|direction|| 必须设置为 `in`。|
-|name|| 变量名称，在连接信息对象的函数代码中使用。 |
+|**type**|| 必须设置为 `signalRConnectionInfo`。|
+|**direction**|| 必须设置为 `in`。|
+|**name**|| 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
 |**userId**|**UserId**| 可选：将要在访问密钥令牌中设置的用户标识符声明的值。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 
 ### <a name="signalr"></a>SignalR
 
-下表解释了在 function.json 文件和 `SignalR` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `SignalR` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type|| 必须设置为 `signalR`。|
-|direction|| 必须设置为 `out`。|
-|name|| 变量名称，在连接信息对象的函数代码中使用。 |
+|**type**|| 必须设置为 `signalR`。|
+|**direction**|| 必须设置为 `out`。|
+|**name**|| 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 
@@ -626,4 +626,4 @@ public SignalRGroupAction removeFromGroup(
 > [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Azure Functions 开发和使用 Azure SignalR 服务的配置](../azure-signalr/signalr-concept-serverless-development-config.md)
+> [通过 Azure SignalR 服务进行的 Azure Functions 开发和配置](../azure-signalr/signalr-concept-serverless-development-config.md)

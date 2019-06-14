@@ -12,15 +12,15 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: bbf2e524d626ac17596ded61746c26f20a6caf1b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65021830"
 ---
 #    <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
-文本合并技能会将字段集合中的文本合并到单个字段中。 
+文本合并  技能会将字段集合中的文本合并到单个字段中。 
 
 > [!NOTE]
 > 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
@@ -58,7 +58,7 @@ Microsoft.Skills.Text.MergeSkill
 ```
 
 ##  <a name="sample-output"></a>示例输出
-此示例显示之前输入的输出，假设将 insertPreTag 设置为 `" "`并将 insertPostTag 设置为 `""`。 
+此示例显示之前输入的输出，假设将 insertPreTag  设置为 `" "`并将 insertPostTag  设置为 `""`。 
 
 ```json
 {
@@ -78,7 +78,7 @@ Microsoft.Skills.Text.MergeSkill
 
 使用文本合并的一个常见场景是将图像的文本表示形式（OCR 技能中的文本或图像的描述文字）合并到文档的内容字段中。 
 
-以下示例技能使用 OCR 技能从文档中嵌入的图像中提取文本。 接下来，它会创建 merged_text 字段以包含每个图像的原始和 OCRed 文本。 可在[此处](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)了解有关 OCR 技能的详细信息。
+以下示例技能使用 OCR 技能从文档中嵌入的图像中提取文本。 接下来，它会创建 merged_text  字段以包含每个图像的原始和 OCRed 文本。 可在[此处](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)了解有关 OCR 技能的详细信息。
 
 ```json
 {
@@ -129,7 +129,7 @@ Microsoft.Skills.Text.MergeSkill
   ]
 }
 ```
-以上示例假设存在规范化的图像字段。 要获取规范化的图像字段，请将索引器定义中的 imageAction 配置设置为 generateNormalizedImages，如下所示：
+以上示例假设存在规范化的图像字段。 要获取规范化的图像字段，请将索引器定义中的 imageAction  配置设置为 generateNormalizedImages  ，如下所示：
 
 ```json
 {

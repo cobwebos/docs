@@ -17,16 +17,16 @@ ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39a50240b4360c5b4adcd6020c2b80b0f06315f7
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541550"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>请求对 Azure AD 授权管理 （预览版） 中的访问包
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
+> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -54,9 +54,9 @@ ms.locfileid: "64541550"
 
 1. 单击复选标记以选择访问包。
 
-    ![我访问门户的访问包](./media/entitlement-management-shared/my-access-access-packages.png)
+    ![我的访问权限门户 - 访问包](./media/entitlement-management-shared/my-access-access-packages.png)
 
-1. 单击**请求访问**以打开请求访问面板。
+1. 单击“请求访问”打开“请求访问”面板。 
 
 1. 如果**业务理由**显示框中，键入需要进行访问的理由。
 
@@ -64,7 +64,7 @@ ms.locfileid: "64541550"
 
 1. 如有必要，指定开始日期和结束日期。
 
-    ![我访问门户-请求访问权限](./media/entitlement-management-shared/my-access-request-access.png)
+    ![我的访问权限门户 - 请求访问](./media/entitlement-management-shared/my-access-request-access.png)
 
 1. 完成后，单击**提交**提交请求。
 

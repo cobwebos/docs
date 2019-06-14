@@ -12,10 +12,10 @@ ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922409"
 ---
 # <a name="language-support-for-qna-maker"></a>QnA Maker 的语言支持
@@ -44,7 +44,7 @@ QnA Maker 支持提取任何语言页面中的问题/解答，但对于以下语
 1. 登录到 [Azure 门户](https://portal.azure.com)。  
 1. 查找并选择所需 QnA Maker 的资源的一部分创建的 Azure 搜索资源。 Azure 搜索资源名称将以与 QnA Maker 资源相同的名称开头，并且将具有类型**Search 服务**。 
 1. 从**概述**页的搜索资源中，选择**索引**。 
-1. 选择 testkb 索引。
+1. 选择 testkb  索引。
 1. 选择**字段**选项卡。 
 1. 视图**分析器**的列**问题**并**答案**字段。 
 

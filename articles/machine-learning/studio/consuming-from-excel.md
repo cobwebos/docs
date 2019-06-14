@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60773732"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>从 Excel 使用 Azure 机器学习工作室 Web 服务
@@ -32,23 +32,23 @@ ms.locfileid: "60773732"
 
 **经典 Web 服务**
 
-1. 在 Web 服务的“DASHBOARD”选项卡上有一行“REQUEST/RESPONSE”服务。 如果此服务具有单个输出，应在该行看到“下载 Excel 工作簿”链接。
+1. 在 Web 服务的“DASHBOARD”  选项卡上有一行“REQUEST/RESPONSE”  服务。 如果此服务具有单个输出，应在该行看到“下载 Excel 工作簿”  链接。
 
     ![下载 Excel 工作簿使用工作室 Web 服务门户](./media/consuming-from-excel/excellink.png)
-2. 单击“下载 Excel 工作簿”。
+2. 单击“下载 Excel 工作簿”  。
 
 **新的 Web 服务**
 
-1. 在 Azure 机器学习 Web 服务门户中，选择“使用”。
-2. 在使用页上的“Web 服务使用选项”部分中，单击 Excel 图标。
+1. 在 Azure 机器学习 Web 服务门户中，选择“使用”  。
+2. 在使用页上的“Web 服务使用选项”  部分中，单击 Excel 图标。
 
 **使用工作簿**
 
 1. 打开工作簿。
-2. 系统会显示安全警告；单击“启用编辑”按钮。
+2. 系统会显示安全警告；单击“启用编辑”  按钮。
 
     ![启用编辑若要删除受保护的视图安全警告](./media/consuming-from-excel/enableeditting.png)
-3. 系统会显示安全警告。 单击“启用内容”按钮，在电子表格上运行宏。
+3. 系统会显示安全警告。 单击“启用内容”  按钮，在电子表格上运行宏。
 
     ![使内容能够忽略禁用宏的安全警告](./media/consuming-from-excel/enablecontent.png)
 4. 启用宏后，将生成一个表。 要求将蓝色的列作为 RRS Web 服务的输入或 **PARAMETERS**。 注意，RRS 服务的输出，**PREDICTED VALUES** 为绿色。 给定行的所有列都填满时，工作簿会自动调用评分 API，并显示评分结果。

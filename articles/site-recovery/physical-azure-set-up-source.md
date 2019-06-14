@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62123901"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>设置配置服务器，以便将物理服务器灾难恢复到 Azure
@@ -35,20 +35,20 @@ ms.locfileid: "62123901"
 
 ## <a name="choose-your-protection-goals"></a>选择保护目标
 
-1. 在 Azure 门户中，转到“恢复服务保管库”边栏选项卡，然后选择保管库。
-2. 在保管库的“资源”菜单中，单击“开始使用” > “Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
+1. 在 Azure 门户中，转到“恢复服务保管库”  边栏选项卡，然后选择保管库。
+2. 在保管库的“资源”  菜单中，单击“开始使用”   > “Site Recovery”   > “步骤 1: 准备基础结构”   > “保护目标”  。
 
     ![选择目标](./media/physical-azure-set-up-source/choose-goals.png)
-3. 在“保护目标”中，依次选择“到 Azure”和“未虚拟化/其他”，并单击“确定”。
+3. 在“保护目标”  中，依次选择“到 Azure”  和“未虚拟化/其他”  ，并单击“确定”  。
 
     ![选择目标](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-1. 如果没有配置服务器，请在“准备源”中单击“+配置服务器”添加一个。
+1. 如果没有配置服务器，请在“准备源”  中单击“+配置服务器”  添加一个。
 
    ![设置源](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. 在“添加服务器”边栏选项卡中，检查“配置服务器”是否已出现在“服务器类型”中。
+2. 在“添加服务器”边栏选项卡中，检查“配置服务器”是否已出现在“服务器类型”中。   
 4. 下载站点恢复统一安装程序安装文件。
 5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为 5 天。
 

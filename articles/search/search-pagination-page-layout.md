@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6e627de5b22a67051961e70bab56b2d931129281
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 73f0dc98d7d2c3e7aa77f6414cbd58e58599eae7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244802"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068830"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>如何在 Azure 搜索中使用搜索结果
 本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 
@@ -29,44 +29,47 @@ ms.locfileid: "66244802"
 >
 
 ## <a name="total-hits-and-page-counts"></a>总匹配记录和页面计数
+
 几乎所有搜索页面都以显示从查询返回的结果总数，并以较小的区块返回这些结果为基础。
 
 ![][1]
 
-在 Azure 搜索中，使用 `$count`、`$top` 和 `$skip` 参数返回这些值。 以下示例显示了对名为“onlineCatalog”的索引的总匹配记录的示例请求，其作为 `@OData.count` 返回：
+在 Azure 搜索中，使用 `$count`、`$top` 和 `$skip` 参数返回这些值。 下面的示例演示名为"联机-目录"，对索引命中总计的示例请求返回作为`@odata.count`:
 
-        GET /indexes/onlineCatalog/docs?$count=true
+    GET /indexes/online-catalog/docs?$count=true
 
 检索 15 个组中的记录，同时显示总匹配记录，从第一页开始：
 
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
 
 分页结果需要 `$top` 和 `$skip`，其中 `$top` 指定批量返回的项数，`$skip` 指定要跳过的项数。 在以下示例中，每个页面显示接下来的 15 个项，由 `$skip` 中的增量跳转指示。
 
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
 
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=15&$count=true
+    GET /indexes/online-catalog/docs?search=*$top=15&$skip=15&$count=true
 
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
+    GET /indexes/online-catalog/docs?search=*$top=15&$skip=30&$count=true
 
 ## <a name="layout"></a>布局
+
 在搜索结果页中，你可能想要显示缩略图、字段子集和完整产品页面的链接。
 
  ![][2]
 
-在 Azure 搜索中，使用 `$select` 和查找命令实现这种体验。
+在 Azure 搜索中，您将使用`$select`和一个[搜索 API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)来实现这种体验。
 
 若要返回平铺布局的字段的子集：
 
-        GET /indexes/ onlineCatalog/docs?search=*&$select=productName,imageFile,description,price,rating 
+    GET /indexes/online-catalog/docs?search=*&$select=productName,imageFile,description,price,rating
 
 图像和媒体文件不可直接搜索，它们应存储在其他存储平台（Azure Blob 存储）中以减少成本。 在索引和记录中，定义存储外部内容的 URL 地址的字段。 然后，可以将该字段用作图像引用。 图像的 URL 应在记录中。
 
-若要检索 **onClick** 事件的产品说明页，请使用 [查找记录](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) 传递要检索的记录的密钥。 密钥的数据类型为 `Edm.String`。 在此示例中，它是 *246810*。 
+若要检索 **onClick** 事件的产品说明页，请使用 [查找记录](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) 传递要检索的记录的密钥。 密钥的数据类型为 `Edm.String`。 在此示例中，它是 *246810*。
 
-        GET /indexes/onlineCatalog/docs/246810
+    GET /indexes/online-catalog/docs/246810
 
 ## <a name="sort-by-relevance-rating-or-price"></a>按相关性、分级或价格排序
+
 默认情况下通常按相关性排序顺序，但通常也可以使用现成的备用排序顺序，以便客户可以将现有结果重组到其他排序顺序中。
 
  ![][3]
@@ -84,31 +87,33 @@ ms.locfileid: "66244802"
  ![][5]
 
 > [!NOTE]
-> 虽然默认计分足以处理许多方案，但我们建议使用基于相关性的自定义计分配置文件。 通过自定义计分配置文件，可以增强对业务更有益的项。 有关详细信息，请参阅[添加计分配置文件](index-add-scoring-profiles.md)。 
-> 
-> 
+> 虽然默认计分足以处理许多方案，但我们建议使用基于相关性的自定义计分配置文件。 通过自定义计分配置文件，可以增强对业务更有益的项。 有关详细信息，请参阅[添加计分配置文件](index-add-scoring-profiles.md)。
+>
 
 ## <a name="faceted-navigation"></a>多面导航
+
 搜索导航是搜索页面上的常见功能，通常位于页面侧边或顶部。 在 Azure 搜索中，分面导航基于预定义筛选器提供自定向搜索。 有关详细信息，请参阅 [Azure 搜索中的分面导航](search-faceted-navigation.md)。
 
 ## <a name="filters-at-the-page-level"></a>页面级别的筛选器
-如果解决方案设计包含特定类型内容的专用搜索页（例如，页面顶部列有各个部门的在线零售应用程序），则可以在“onClick”事件旁插入[筛选器表达式](search-filters.md)以预筛选状态的方式打开页面  。 
+
+如果您的解决方案设计包含特定类型的内容 （例如，一个在线零售应用程序在页面顶部列出了部门的） 的专用的搜索页面，您可以插入[筛选器表达式](search-filters.md)一起**onClick**事件来打开的页面中的预筛选状态。
 
 可以发送带有或不带有搜索表达式的筛选器。 例如，将按品牌名称筛选以下请求，以便仅返回与之匹配的记录。
 
-        GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
+    GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
 有关 `$filter` 表达式的详细信息，请参阅[搜索记录（Azure 搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
 ## <a name="see-also"></a>另请参阅
-* [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice)
-* [索引操作](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-* [文档操作](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-* [Azure 搜索中的分面导航](search-faceted-navigation.md)
+
+- [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice)
+- [索引操作](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
+- [文档操作](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
+- [Azure 搜索中的分面导航](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG
 [2]: ./media/search-pagination-page-layout/Pages-2-Tiled.PNG
 [3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
-[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png 
+[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png

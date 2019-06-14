@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70ca1e2f4fd831619cc3cd443d98018a35f4e1ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963080"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：针对自动用户帐户预配进行报告
@@ -50,14 +50,14 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 要获取给定应用程序的预配报告信息，首先请启动 [Azure 管理门户](https://portal.azure.com)，然后浏览到为其配置了预配的企业应用程序。 例如，如果要在 LinkedIn Elevate 中预配用户，应用程序详细信息的导航路径为：
 
-“Azure Active Directory”>“企业应用程序”>“所有应用程序”>“LinkedIn Elevate”
+“Azure Active Directory”>“企业应用程序”>“所有应用程序”>“LinkedIn Elevate” 
 
 在此处可以访问预配摘要报告和预配审核日志，下面对此做了介绍。
 
 
 ## <a name="provisioning-summary-report"></a>预配摘要报告
 
-预配摘要报告显示在给定应用程序的“预配”选项卡中。 它位于“同步详细信息”部分中的“设置”下面，提供以下信息：
+预配摘要报告显示在给定应用程序的“预配”选项卡中。  它位于“同步详细信息”部分中的“设置”下面，提供以下信息   ：
 
 * 已同步并且当前位于源系统与目标系统之间的预配范围内的用户和/或组总数。
 
@@ -72,7 +72,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
  ![摘要报告](./media/check-status-user-account-provisioning/summary_report.PNG)
 
 ## <a name="provisioning-audit-logs"></a>预配审核日志
-预配服务执行的所有活动记录在 Azure AD 审核日志中，可在“审核日志”选项卡中的“帐户预配”类别下面查看这些日志。 记录的活动事件类型包括：
+预配服务执行的所有活动记录在 Azure AD 审核日志中，可在“审核日志”选项卡中的“帐户预配”类别下面查看这些日志。   记录的活动事件类型包括：
 
 * **导入事件** - 每当 Azure AD 预配服务从源系统或目标系统检索有关单个用户或组的信息时，将记录“导入”事件。 在同步期间，将先从源系统检索用户，其结果记录为“导入”事件。 然后，将会针对目标系统查询已检索的用户的匹配 ID，以检查这些 ID 是否存在，其结果也会记录为“导入”事件。 这些事件记录发生相应事件时，Azure AD 预配服务所看到的所有已映射用户属性及其值。 
 
@@ -99,13 +99,13 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 预配审核日志的最常见用例是检查单个用户帐户的预配状态。 若要查找特定用户的最近预配事件，请执行以下操作：
 
-1. 转到“审核日志”部分。
+1. 转到“审核日志”部分。 
 
-2. 在“类别”菜单中，选择“帐户预配”。
+2. 在“类别”菜单中，选择“帐户预配”。  
 
-3. 在“日期范围”菜单中，选择要搜索的日期范围。
+3. 在“日期范围”菜单中，选择要搜索的日期范围  。
 
-4. 在“搜索”栏中，输入要搜索的用户的用户 ID。 ID 值的格式应该与在属性映射配置中选作主要匹配 ID（例如 userPrincipalName 或员工 ID 编号）的任何值相匹配。 所需 ID 值会显示在“目标”列中。
+4. 在“搜索”栏中，输入要搜索的用户的用户 ID。  ID 值的格式应该与在属性映射配置中选作主要匹配 ID（例如 userPrincipalName 或员工 ID 编号）的任何值相匹配。 所需 ID 值会显示在“目标”列中。
 
 5. 按 Enter 开始搜索。 首先会返回最近的预配事件。
 
@@ -119,7 +119,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 ### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>有关查看预配审核日志的提示
 
-为了尽可能方便地在 Azure 门户查看信息，请选择“列”按钮，并选择以下各列：
+为了尽可能方便地在 Azure 门户查看信息，请选择“列”按钮，并选择以下各列： 
 
 * **日期** - 显示事件发生的日期。
 * **目标** - 显示作为事件主题的应用名称和用户 ID。

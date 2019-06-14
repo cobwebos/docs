@@ -12,10 +12,10 @@ ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61401179"
 ---
 # <a name="analyze-method"></a>分析方法
@@ -23,14 +23,14 @@ ms.locfileid: "61401179"
 > [!IMPORTANT]
 > 语言分析预览版已在 2018 年 8 月 9 日停止使用。 我们建议使用 [Azure 机器学习文本分析模块](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)进行文本处理和分析。
 
-“Analyze”REST API 用于分析给定的自然语言输入。
+“Analyze”  REST API 用于分析给定的自然语言输入。
 这可能涉及仅查找[句子和令牌](Sentences-and-Tokens.md)内的输入，查找[一部分的语音标记](POS-tagging.md)，或查找[角色群树](Constituency-Parsing.md)。
 可通过选取相关分析器指定想要的结果。
-要列举所有可用分析器，请查看**[分析器](AnalyzersMethod.md)**。
+要列举所有可用分析器，请查看 **[分析器](AnalyzersMethod.md)** 。
 
 请注意，需要指定输入字符串的语言。
 
-REST 终结点：
+REST 终结点： 
 ```
 https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 ```
@@ -40,9 +40,9 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 名称 | Type | 需要 | 描述
 -----|-------|----------|------------
-**语言**    | string | 是 | 将用于分析的两个字母的 ISO 语言编码。 例如，English 为“en”。
+**语言**    | 字符串 | 是 | 将用于分析的两个字母的 ISO 语言编码。 例如，English 为“en”。
 **analyzerIds** | 字符串列表 | 是 | 要应用的分析器的 GUID 列表。 有关详细信息，请参阅分析器文档。
-**text**        | string | 是 | 要分析的原始输入。 这可能是一个短字符串，如单词或短语、完整的句子或完整的段落或语篇。
+**text**        | 字符串 | 是 | 要分析的原始输入。 这可能是一个短字符串，如单词或短语、完整的句子或完整的段落或语篇。
 
 ## <a name="response-json"></a>响应 (JSON)
 
@@ -50,16 +50,16 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 结果如下：
 
-名称 | 类型 | 描述
+Name | 类型 | 描述
 -----|------|--------------
-analyzerId | string | 指定分析器的 GUID
+analyzerId | 字符串 | 指定分析器的 GUID
 结果 | 对象 | 分析器结果
 
 请注意，结果的类型取决于输入分析器类型。
 
 ### <a name="tokens-response-json"></a>令牌响应 (JSON)
 
-名称 | 类型 | 描述
+Name | 类型 | 描述
 -----|------|-------------
 结果 | 句子对象列表 | 文本内确定的句子边界 |
 result[x].Offset | int | 每个句子的起始字符偏移量 |
@@ -67,8 +67,8 @@ result[x].Len | int | 每个句子的字符长度 |
 result[x].Tokens | 令牌对象列表 | 句子内确定的令牌边界 |
 result[x].Tokens[y].Offset | int | 令牌的起始字符偏移量 |
 result[x].Tokens[y].Len | int | 令牌的字符长度 |
-result[x].Tokens[y].RawToken | string | 规范化前，令牌内的字符 |
-result[x].Tokens[y].NormalizedToken | string | 字符的规范化形式，可在[分析树](Constituency-Parsing.md)中安全使用；例如，左括号字符“(”变为“-LRB-” |
+result[x].Tokens[y].RawToken | 字符串 | 规范化前，令牌内的字符 |
+result[x].Tokens[y].NormalizedToken | 字符串 | 字符的规范化形式，可在[分析树](Constituency-Parsing.md)中安全使用；例如，左括号字符“(”变为“-LRB-” |
 
 示例输入：`This is a test. Hello.'
 示例 JSON 响应：

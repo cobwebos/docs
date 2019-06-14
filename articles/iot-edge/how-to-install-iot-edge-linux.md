@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: b519ed21b4d2e0e258c48bd1dc12750176281c9e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 86ca3080229f2a286e8aa4725fe13c40e2a38549
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054281"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>在 Linux 上安装 Azure IoT Edge 运行时 (x64)
 
@@ -23,7 +23,7 @@ ms.locfileid: "65152855"
 
 若要了解详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-本文列出了在 Ubuntu Linux x64 (Intel/AMD) IoT Edge 设备上安装 Azure IoT Edge 运行时的步骤。 请参阅[Azure IoT Edge 支持系统](support.md#operating-systems)支持 AMD64 的操作系统的列表。
+本文列出了在 Ubuntu Linux x64 (Intel/AMD) IoT Edge 设备上安装 Azure IoT Edge 运行时的步骤。 有关支持的 AMD64 操作系统的列表，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)。
 
 > [!NOTE]
 > Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用包。
@@ -82,6 +82,18 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    ```bash
    sudo apt-get install moby-cli
    ```
+
+### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>验证 Linux 内核的小鲸鱼兼容性
+
+许多嵌入式的设备制造商提供包含可能缺少所需的容器运行时兼容性功能的自定义 Linux 内核的设备映像。 如果安装的推荐时遇到问题[小鲸鱼](https://github.com/moby/moby)容器运行时，您可能能够使用在 Linux 内核配置进行故障排除[检查配置](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh)中提供的脚本官方[小鲸鱼 Github 存储库](https://github.com/moby/moby)通过在设备上运行以下命令。
+
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
+   chmod +x check-config.sh
+   ./check-config.sh
+   ```
+
+这将提供详细的输出，其中包含的小鲸鱼运行时使用的内核功能的状态。 你将想要确保所有项下`Generally Necessary`和`Network Drivers`启用以确保你内核与小鲸鱼运行时完全兼容。  如果您已确定任何缺少的功能，您可能会重新生成源从内核，然后在相应的内核.config 中选择包含关联的模块启用它们。同样，如果使用如 defconfig 或 menuconfig 的内核配置生成器，您需要查找和启用相应功能，并相应地重新生成你的内核。  部署新修改的内核后, 运行检查配置脚本以验证已成功启用标识的功能。
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>安装 Azure IoT Edge 安全守护程序
 

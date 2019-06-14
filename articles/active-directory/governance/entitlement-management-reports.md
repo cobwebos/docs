@@ -17,22 +17,22 @@ ms.author: rolyon
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60a61a581574c77a57939ea23fdadc7b060b82af
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541535"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>查看报表和 Azure AD 授权管理 （预览版） 中的日志
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
+> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="view-resources-a-user-has-access-to"></a>查看用户有权访问的资源
 
-1. 单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 依次单击“Azure Active Directory”、“标识监管”。  
 
 1. 在左侧菜单中，单击**用户分配报表**。
 
@@ -54,7 +54,7 @@ ms.locfileid: "64541535"
 
 1. 在顶部，更改**类别**至任一`EntitlementManagement`或`UserManagement`，取决于所需的审核记录。  
 
-1. 单击“应用”。
+1. 单击“应用”  。
 
 1. 若要下载日志，请单击**下载**。
 
@@ -62,7 +62,7 @@ ms.locfileid: "64541535"
 
 Azure AD 将写入其他审核记录，当请求正在进行，包括：
 
-| 类别 | 活动 | 请求状态 |
+| 类别 | activities | 请求状态 |
 | :---- | :------------ | :------------ |
 | `EntitlementManagement` | `Auto approve access package assignment request` | 请求不需要审批 |
 | `UserManagement` | `Create request approval` | 请求需要审批 |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4a9931fa6e2edf8989036eb8dbfbef3638cbbe0
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 9ae2894f9f442bca1e6029b7e7d8e07824abf7fb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507524"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051738"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
@@ -98,7 +98,7 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 6. `access_token` 和 `refresh_token` 返回到 Web 服务器。
 7. 使用授权标头中的 `access_token` 调用 Web API。
 8. Web API 对令牌进行验证。
-9. 安全数据返回到 Web 服务器。
+9. 安全的数据返回到 web 应用程序。
 
 有关授权代码、刷新令牌的详细信息和获取令牌的步骤，请参阅 [OAuth 2.0 protocol](active-directory-b2c-reference-oauth-code.md)（OAuth 2.0 协议）。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64869462"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 将文件上传到媒体服务帐户 
@@ -274,7 +274,7 @@ ms.locfileid: "64869462"
 
 
 ## <a name="upload-files-using-net-sdk-extensions"></a>使用 .NET SDK 扩展上传文件
-以下示例演示如何使用 .NET SDK 扩展上传单个文件。 在此情况下，将使用 **CreateFromFile** 方法，但也可以使用异步版本 (**CreateFromFileAsync**)。 CreateFromFile 方法支持指定文件名、加密选项和回叫，以便报告文件的上传进度。
+以下示例演示如何使用 .NET SDK 扩展上传单个文件。 在此情况下，将使用 **CreateFromFile** 方法，但也可以使用异步版本 (**CreateFromFileAsync**)。 CreateFromFile 方法支持指定文件名、加密选项和回叫，以便报告文件的上传进度  。
 
 ```csharp
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)

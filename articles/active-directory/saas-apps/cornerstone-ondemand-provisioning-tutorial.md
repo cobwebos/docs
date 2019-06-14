@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: v-ant
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 85ddcf3aff7d15c946230cedb0da190bca6aeab7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127491"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721938"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>教程：为 Cornerstone OnDemand 配置自动用户预配
 
@@ -51,11 +51,11 @@ ms.locfileid: "62127491"
 
     ![Azure Active Directory 图标](common/select-azuread.png)
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。
+2. 转到“企业应用程序”，并选择“所有应用程序”。  
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请在对话框顶部选择“新建应用程序”。
+3. 若要添加新应用程序，请在对话框顶部选择“新建应用程序”  。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
@@ -73,7 +73,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 * 我们建议将分配一个 Azure AD 用户与 Cornerstone OnDemand 以测试自动用户预配配置。 可以稍后分配其他用户或组。
 
-* 当将用户分配到 Cornerstone OnDemand 时，请选择任何有效的特定于应用程序的角色，如果可用，在分配对话框中。 具有“默认访问权限”角色的用户排除在预配之外。
+* 当将用户分配到 Cornerstone OnDemand 时，请选择任何有效的特定于应用程序的角色，如果可用，在分配对话框中。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="configure-automatic-user-provisioning-to-cornerstone-ondemand"></a>配置自动用户预配到 Cornerstone OnDemand
 
@@ -85,15 +85,15 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Cornerstone OnDemand”。
+2. 在应用程序列表中，选择“Cornerstone OnDemand”  。
 
     ![应用程序列表中的 Cornerstone OnDemand 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![Cornerstone OnDemand 预配](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningTab.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![Cornerstone OnDemand 预配模式](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningCredentials.png)
 
@@ -113,13 +113,13 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![Cornerstone OnDemand 通知电子邮件](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
 
-8. 选择“保存”。
+8. 选择“保存”。 
 
-9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Cornerstone OnDemand”。
+9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Cornerstone OnDemand”   。
 
     ![Cornerstone OnDemand 同步](./media/cornerstone-ondemand-provisioning-tutorial/UserMapping.png)
 
-10. 查看从 Azure AD 同步到 Cornerstone OnDemand 中的用户属性**属性映射**部分。 选为“匹配”属性的特性用于匹配 Cornerstone OnDemand 中的用户帐户以执行更新操作。 若要保存任何更改，请选择**保存**。
+10. 查看从 Azure AD 同步到 Cornerstone OnDemand 中的用户属性**属性映射**部分。 选为“匹配”属性的特性用于匹配 Cornerstone OnDemand 中的用户帐户以执行更新操作  。 若要保存任何更改，请选择**保存**。
 
     ![Cornerstone OnDemand 属性映射](./media/cornerstone-ondemand-provisioning-tutorial/UserMappingAttributes.png)
 
@@ -145,7 +145,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 ## <a name="connector-limitations"></a>连接器限制
 
-Cornerstone OnDemand“位置”特性需要一个与 Cornerstone OnDemand 门户上的角色相对应的值。 若要获取的有效列表**位置**值，请转到**编辑用户记录 > 组织结构 > 位置**Cornerstone OnDemand 门户中。
+Cornerstone OnDemand  “位置”特性需要一个与 Cornerstone OnDemand 门户上的角色相对应的值。 若要获取的有效列表**位置**值，请转到**编辑用户记录 > 组织结构 > 位置**Cornerstone OnDemand 门户中。
 
 ![Cornerstone OnDemand 预配编辑用户记录](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png)
 

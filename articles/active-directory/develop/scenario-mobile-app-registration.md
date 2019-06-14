@@ -17,17 +17,17 @@ ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b6ebab0eeca6895e1c7a0f6008972030d81da42
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962409"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>调用 web Api 的应用注册的移动应用
 
 本文包含有关创建移动应用程序的应用程序注册说明。
 
-## <a name="supported-account-types"></a>受支持的帐户类型
+## <a name="supported-account-types"></a>支持的帐户类型
 
 在移动应用程序中支持的帐户类型取决于你想要启用的体验和您的应用程序所面向的用户。
 

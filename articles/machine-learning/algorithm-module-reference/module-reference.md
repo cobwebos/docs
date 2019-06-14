@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ms.openlocfilehash: 8825f1dc3b66a5c4981ba25a90813aec63975b1f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65145139"
 ---
 # <a name="algorithm--module-reference-overview"></a>算法和模块参考概述
@@ -42,7 +42,7 @@ ms.locfileid: "65145139"
 |  | **生成和评估模型**: | |
 | 定型   | 通过算法运行数据。 | [训练模型](train-model.md)  <br/> [训练聚类分析模型](train-clustering-model.md)    |
 | 评估模型 | 度量已训练模型的准确性。 |  [评估模型](evaluate-model.md)
-| Score | 从刚经过训练的模型获取预测。 | [应用转换](apply-transformation.md)<br/>[将分配&nbsp;数据&nbsp;到&nbsp;群集](assign-data-to-clusters.md) <br/>[评分模型](score-model.md)
+| 分数 | 从刚经过训练的模型获取预测。 | [应用转换](apply-transformation.md)<br/>[将分配&nbsp;数据&nbsp;到&nbsp;群集](assign-data-to-clusters.md) <br/>[评分模型](score-model.md)
 
 ## <a name="error-messages"></a>错误消息
 

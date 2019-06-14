@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 3b2b472407175df307c569704d4c7611737c4ea1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60694330"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
@@ -55,7 +55,7 @@ ms.locfileid: "60694330"
     [;]
 
 > [!NOTE]
-> 请确保“\<username\>”中不包括任何“\@servername”后缀。
+> 请确保“\<username\>”  中不包括任何“\@servername”  后缀。
 
 ## <a name="12-create-external-data-sources"></a>1.2 创建外部数据源
 

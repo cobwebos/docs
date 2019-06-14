@@ -17,10 +17,10 @@ ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a62f44783d63131812794a4b55f0e9f9f3b45f27
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66742482"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
@@ -126,7 +126,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 * Microsoft Azure AD 仅使用以下运算符：  
      - `eq`
      - `and`
-* 不需要区分大小写的匹配项中 SCIM，在特定的修补程序的结构化元素上`op`操作的值，如中所定义 https://tools.ietf.org/html/rfc7644#section-3.5.2。 Azure AD 发出操作的值作为`Add`， `Replace`，和`Remove`。
+* 不需要区分大小写的匹配项中 SCIM，在特定的修补程序的结构化元素上`op`操作的值，如中所定义 https://tools.ietf.org/html/rfc7644#section-3.5.2 。 Azure AD 发出操作的值作为`Add`， `Replace`，和`Remove`。
 * Microsoft Azure AD 发出请求以提取一个随机的用户和组，以确保终结点和凭据有效。 它还会作为的一部分**测试连接**流入[Azure 门户](https://portal.azure.com)。 
 * 可以在查询资源的属性应设置为匹配的属性中的应用程序[Azure 门户](https://portal.azure.com)。 有关详细信息，请参阅[自定义用户预配属性映射](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
@@ -665,7 +665,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    ![][2]
    *图 6：在 Azure 门户中配置预配*
     
-1. 在“租户 URL”字段中，输入面向 Internet 的 URL 和 SCIM 终结点的端口  。 该条目类似于 http://testmachine.contoso.com:9000 或 http://\<ip-address>:9000/，其中 \<ip-address> 是 Internet 公开 IP 地址。 
+1. 在“租户 URL”字段中，输入面向 Internet 的 URL 和 SCIM 终结点的端口  。 该条目类似于 http://testmachine.contoso.com:9000 或 http://\< ip-address>:9000/，其中 \< ip-address> 是 Internet 公开 IP 地址。 
 
 1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段  。 
 1. 选择**测试连接**，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果该尝试失败，显示错误信息。  
@@ -823,7 +823,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
    ```
 
 ### <a name="handling-endpoint-authentication"></a>处理终结点身份验证
-来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应将颁发者作为 Azure Active Directory 的所需的 Azure Active Directory 租户，以访问 Azure Active Directory Graph web 服务进行身份验证。  在令牌中，颁发者由一个 iss 声明，例如"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"。  在此示例中，声明值的基址 https://sts.windows.net、 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422、 是为 Azure Active Directory 租户的唯一标识符其颁发的令牌。  如果颁发的令牌用于访问 Azure Active Directory Graph Web 服务，该服务的标识符 00000002-0000-0000-c000-000000000000 应在令牌的 aud 声明值中。  每个在单个租户中注册应用程序可能会收到相同`iss`SCIM 请求声明。
+来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应将颁发者作为 Azure Active Directory 的所需的 Azure Active Directory 租户，以访问 Azure Active Directory Graph web 服务进行身份验证。  在令牌中，颁发者由一个 iss 声明，例如"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ "。  在此示例中，声明值的基址 https://sts.windows.net 、 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422、 是为 Azure Active Directory 租户的唯一标识符其颁发的令牌。  如果颁发的令牌用于访问 Azure Active Directory Graph Web 服务，该服务的标识符 00000002-0000-0000-c000-000000000000 应在令牌的 aud 声明值中。  每个在单个租户中注册应用程序可能会收到相同`iss`SCIM 请求声明。
 
 使用 CLI 库构建 SCIM 服务由 Microsoft 提供的开发人员可以通过执行以下步骤使用 Microsoft.Owin.Security.ActiveDirectory 包的 Azure Active Directory 中的请求进行身份验证： 
 
@@ -1314,7 +1314,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ## <a name="user-and-group-schema-reference"></a>用户和组架构参考
 Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  这些类型的资源是用户和组。  
 
-用户资源由架构标识符`urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`，此协议规范中包括的哪些： https://tools.ietf.org/html/rfc7643。  表 1 中提供了 Azure Active Directory 中用户的用户资源的属性的属性的默认映射。  
+用户资源由架构标识符`urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`，此协议规范中包括的哪些： https://tools.ietf.org/html/rfc7643 。  表 1 中提供了 Azure Active Directory 中用户的用户资源的属性的属性的默认映射。  
 
 组资源由架构标识符 `urn:ietf:params:scim:schemas:core:2.0:Group` 予以标识。 表 2 显示在 Azure Active Directory 中组的属性的默认映射了组中资源的属性。  
 

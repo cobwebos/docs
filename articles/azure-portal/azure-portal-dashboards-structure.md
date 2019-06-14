@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
 ms.openlocfilehash: a7e9acbe78ffdca2e615873cc4c33f86b250a429
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551479"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
@@ -291,7 +291,7 @@ ms.locfileid: "60551479"
 
 ## <a name="common-resource-properties"></a>常见资源属性
 
-现在分别介绍 JSON 的各个相关部分。  顶级属性，即 id、名称、类型、位置和标记属性是所有 Azure 资源类型所共有的属性。 也就是说，它们与仪表板内容没有太大关系。
+现在分别介绍 JSON 的各个相关部分。  顶级属性，即 id、名称、类型、位置和标记属性是所有 Azure 资源类型所共有的属性      。 也就是说，它们与仪表板内容没有太大关系。
 
 ### <a name="the-id-property"></a>Id 属性
 
@@ -301,39 +301,39 @@ Azure 资源 id 服从 [Azure 资源命名约定](https://docs.microsoft.com/azu
 名称是资源 Id 中不包含订阅、资源类型或资源组信息的那部分。 本质上，它是资源 id 的最后一段。
 
 ### <a name="the-type-property"></a>“类型”属性
-所有仪表板均属于 Microsoft.Portal/dashboards 类型。
+所有仪表板均属于 Microsoft.Portal/dashboards 类型  。
 
 ### <a name="the-location-property"></a>“位置”属性
 与其他资源不同，仪表板没有运行时组件。  对于仪表板，location 指示用于存储仪表板 JSON 表示形式的主地理位置。 该值应为可使用[订阅资源上的位置 API](https://docs.microsoft.com/rest/api/resources/subscriptions) 提取的位置代码之一。
 
 ### <a name="the-tags-property"></a>“标记”属性
-标记是 Azure 资源的一项常见功能，可使用它按任意名称-值对来整理资源。 对于仪表板，有一个名为“hidden-title”的特殊标记。 如果仪表板已填充此属性，则它将用作门户中仪表板的显示名称。 Azure 资源 Id 不能重命名，但标记可以。 通过标记可重命名仪表板的显示名称。
+标记是 Azure 资源的一项常见功能，可使用它按任意名称-值对来整理资源。 对于仪表板，有一个名为“hidden-title”的特殊标记  。 如果仪表板已填充此属性，则它将用作门户中仪表板的显示名称。 Azure 资源 Id 不能重命名，但标记可以。 通过标记可重命名仪表板的显示名称。
 
 `"tags": { "hidden-title": "Created via API" }`
 
 ### <a name="the-properties-object"></a>属性对象
-属性对象包含两个属性：可重用功能区和元数据。 “可重用功能区”属性包含有关仪表板上磁贴（也称为 部件）的信息。  “元数据”属性用于将来可能会出现的功能。
+属性对象包含两个属性：可重用功能区和元数据   。 “可重用功能区”属性包含有关仪表板上磁贴（也称为  部件）的信息。  “元数据”属性用于将来可能会出现的功能  。
 
 ### <a name="the-lenses-property"></a>“可重用功能区”属性
-“可重用功能区”属性包含仪表板。 请注意，此示例中的可重用功能区对象包含名为“0”的单个属性。 可重用功能区是一个分组概念，当前未在仪表板中实现。 现在，所有仪表板在可重用功能区对象上具有此单个属性，即“0”。
+“可重用功能区”属性包含仪表板  。 请注意，此示例中的可重用功能区对象包含名为“0”的单个属性。 可重用功能区是一个分组概念，当前未在仪表板中实现。 现在，所有仪表板在可重用功能区对象上具有此单个属性，即“0”。
 
 ### <a name="the-lens-object"></a>可重用功能区对象
-“0”下面的对象包含两个属性：顺序和部件。  在当前版本的仪表板中，顺序始终为 0。 “部件”属性包含定义仪表板上各个部件（也称为 磁贴）的对象。
+“0”下面的对象包含两个属性：顺序和部件   。  在当前版本的仪表板中，顺序始终为 0  。 “部件”属性包含定义仪表板上各个部件（也称为  磁贴）的对象。
 
-部件对象包含每个部件的一个属性，其中属性名称为一个数字。 此数字并不重要。 
+部件对象包含每个部件的一个属性，其中属性名称为一个数字  。 此数字并不重要。 
 
 ### <a name="the-part-object"></a>部件对象
-每个部件对象具有位置和元数据。
+每个部件对象具有位置和元数据   。
 
 ### <a name="the-position-object"></a>位置对象
-“位置”属性包含以 x、y、rowSpan 和 colSpan 表示的部件大小和位置信息。 值以网格单位表示。 仪表板处于自定义模式时，网格单位可见，如下所示。 如果希望磁贴具有两个网格单位的宽度、一个网格单元的高度，且位于仪表板左上角，则位置对象如下所示：
+“位置”属性包含以 x、y、rowSpan 和 colSpan 表示的部件大小和位置信息      。 值以网格单位表示。 仪表板处于自定义模式时，网格单位可见，如下所示。 如果希望磁贴具有两个网格单位的宽度、一个网格单元的高度，且位于仪表板左上角，则位置对象如下所示：
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
 ![网格单元](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>元数据对象
-每个部件都具有一个元数据属性，一个对象仅有一个必需的属性，名为“类型”。 此字符串告知门户要显示的磁贴。 示例仪表板使用这些类型的磁贴：
+每个部件都具有一个元数据属性，一个对象仅有一个必需的属性，名为“类型”  。 此字符串告知门户要显示的磁贴。 示例仪表板使用这些类型的磁贴：
 
 
 1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – 用于显示监视度量值
@@ -341,7 +341,7 @@ Azure 资源 id 服从 [Azure 资源命名约定](https://docs.microsoft.com/azu
 1. `Extension[azure]/HubsExtension/PartType/VideoPart` – 用于显示来自 YouTube、Channel9 的视频，以及使用 HTML 视频标记的任何其他类型的视频。
 1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – 用于显示 Azure 虚拟机的名称和状态。
 
-所有部件类型都有其自己的配置。 可能的配置属性有“输入”、“设置”和“资产”。 
+所有部件类型都有其自己的配置。 可能的配置属性有“输入”、“设置”和“资产”    。 
 
 ### <a name="the-inputs-object"></a>“输入”对象
 输入对象通常包含将磁贴绑定到资源实例的信息。  示例仪表板中的虚拟机部件包含使用 Azure 资源 id 来表达绑定的单个输入。  在所有 Azure 资源中，此资源 id 格式是统一的。
@@ -429,6 +429,6 @@ Azure 资源 id 服从 [Azure 资源命名约定](https://docs.microsoft.com/azu
 ```
 
 ### <a name="the-asset-object"></a>资产对象
-绑定到第一类可管理门户对象（称为“资产”）的磁贴通过资产对象表示此关系。  在示例仪表板中，虚拟机磁贴包含此资产说明。  IdInputName 属性告知门户 id 输入包含资产的唯一标识符（示例中为资源 id）。大多数 Azure 资源类型在门户中定义资产。
+绑定到第一类可管理门户对象（称为“资产”）的磁贴通过资产对象表示此关系。  在示例仪表板中，虚拟机磁贴包含此资产说明。  IdInputName 属性告知门户 id 输入包含资产的唯一标识符（示例中为资源 id）  。大多数 Azure 资源类型在门户中定义资产。
 
 `"asset": {    "idInputName": "id",    "type": "VirtualMachine"    }`

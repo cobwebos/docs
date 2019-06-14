@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: rosh
 ms.openlocfilehash: a65994ffb2fc707c59e507cad71699211b6a64a5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65896274"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>教程：使用适用于 C# 的必应视觉搜索 SDK 裁剪图像
@@ -33,7 +33,7 @@ ms.locfileid: "65896274"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 任何版本的[Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 * 已安装 [NuGet 自定义搜索](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)包。
     - 在 Visual Studio 解决方案资源管理器，右键单击项目，然后选择**管理 NuGet 包**菜单中。 安装 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 包。 安装 NuGet 自定义搜索包还会安装以下程序集：

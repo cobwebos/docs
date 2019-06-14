@@ -8,13 +8,13 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: 38d59fb20776470cb683f2a2146838bb217addf7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64928117"
 ---
-# <a name="tenant-and-host-pool-creation"></a>租户和主机创建池
+# <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
 使用本文配置 Windows 虚拟桌面会话主机虚拟机 (Vm) 时遇到的问题进行疑难解答。
 
@@ -32,7 +32,7 @@ ms.locfileid: "64928117"
 
 ### <a name="error-incorrect-credentials"></a>错误：不正确的凭据
 
-原因：出现拼写错误时输入凭据在 Azure 资源管理器模板界面修补程序。
+原因：  出现拼写错误时输入凭据在 Azure 资源管理器模板界面修补程序。
 
 **解决方法：** 按照这些说明来更正凭据。
 
@@ -42,7 +42,7 @@ ms.locfileid: "64928117"
 
 ### <a name="error-timeout-waiting-for-user-input"></a>错误：等待用户输入时超时
 
-原因：用于完成域加入帐户可能具有多重身份验证 (MFA)。
+原因：  用于完成域加入帐户可能具有多重身份验证 (MFA)。
 
 **解决方法：** 按照这些说明完成域加入。
 
@@ -51,7 +51,7 @@ ms.locfileid: "64928117"
 
 ### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>错误：在预配过程中使用的帐户没有权限完成操作
 
-原因：所使用的帐户没有权限将 Vm 加入到域由于符合性和法规的约束。
+原因：  所使用的帐户没有权限将 Vm 加入到域由于符合性和法规的约束。
 
 **解决方法：** 按照这些说明进行操作。
 
@@ -94,7 +94,7 @@ ms.locfileid: "64928117"
 
 ### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>错误：身份验证失败，错误 C:\Windows\Temp\scriptlogs.log 中
 
-原因：PowerShell DSC 能够执行，但无法连接到 Windows 虚拟桌面。
+原因：  PowerShell DSC 能够执行，但无法连接到 Windows 虚拟桌面。
 
 **解决方法：** 确认以下列表中的项。
 
@@ -110,7 +110,7 @@ ms.locfileid: "64928117"
 
 ![Get RdsSessionHost cmdlet 将状态显示为不可用。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-原因：代理不能自行更新到新版本。
+原因：  代理不能自行更新到新版本。
 
 **解决方法：** 按照以下说明手动更新代理。
 
@@ -123,7 +123,7 @@ ms.locfileid: "64928117"
 
 ## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>错误：Windows 虚拟桌面代理注册表项 IsRegistered 显示值为 0
 
-原因：注册令牌已过期或已生成的 999999 的过期值。
+原因：  注册令牌已过期或已生成的 999999 的过期值。
 
 **解决方法：** 请按照这些说明，修改注册表错误的代理。
 
@@ -197,7 +197,7 @@ ms.locfileid: "64928117"
 
 ![O_REVERSE_CONNECT_STACK_FAILURE 错误代码。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-原因：通过并行堆栈会话主机 VM 上未安装。
+原因：  通过并行堆栈会话主机 VM 上未安装。
 
 **解决方法：** 按照这些说明在会话主机 VM 上安装的并行堆栈。
 
@@ -222,7 +222,7 @@ ms.locfileid: "64928117"
 请按照这些说明从同一子网和域运行修正：
 
 1. 从应用修补程序的位置，与标准远程桌面协议 (RDP) 连接到 VM。
-2. 下载 PsExec 从 https://docs.microsoft.com/sysinternals/downloads/psexec。
+2. 下载 PsExec 从 https://docs.microsoft.com/sysinternals/downloads/psexec 。
 3. 解压缩下载的文件。
 4. 以本地管理员身份启动命令提示符。
 5. 导航到 PsExec 已解压缩的文件夹。

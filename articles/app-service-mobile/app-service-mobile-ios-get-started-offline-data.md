@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62112644"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
@@ -123,7 +123,7 @@ ms.locfileid: "62112644"
    }
    ```
 
-在 Objective-C 版本中的 `syncData` 内，先对同步上下文调用 **pushWithCompletion**。 此方法是 `MSSyncContext`（而不是同步表本身）的成员，因为它会将更改推送到所有表。 只有已在本地以某种方式修改（通过 CUD 操作来完成）的记录才会发送到服务器。 然后将调用 pullData 帮助程序，后者再调用 MSSyncTable.pullWithQuery 以检索远程数据并将其存储在本地数据库中。
+在 Objective-C 版本中的 `syncData` 内，先对同步上下文调用 **pushWithCompletion**。 此方法是 `MSSyncContext`（而不是同步表本身）的成员，因为它会将更改推送到所有表。 只有已在本地以某种方式修改（通过 CUD 操作来完成）的记录才会发送到服务器。 然后将调用 pullData  帮助程序，后者再调用 MSSyncTable.pullWithQuery  以检索远程数据并将其存储在本地数据库中。
 
 在 Swift 版本中，由于推送操作不是绝对必需的，因此不存在对 **pushWithCompletion** 的调用。 如果同步上下文中正在进行推送操作的表存在任何挂起的更改，则提取始终会先发出推送。 但是，如果有多个同步表，则最好显式调用推送，确保所有内容在相关表中保持一致。
 
@@ -147,7 +147,7 @@ ms.locfileid: "62112644"
   * TodoItem：存储待办事项。 系统列 **createdAt**、**updatedAt** 和 **version** 都是可选的系统属性。
 
 > [!NOTE]
-> 移动应用 SDK 会保留以“**``**”开头的列名称。 请不要在系统列以外的其他列中使用此前缀。 否则，在使用远程后端时，列名称会被修改。
+> 移动应用 SDK 会保留以“ **``** ”开头的列名称。 请不要在系统列以外的其他列中使用此前缀。 否则，在使用远程后端时，列名称会被修改。
 >
 >
 
@@ -155,24 +155,24 @@ ms.locfileid: "62112644"
 
 ### <a name="system-tables"></a>系统表
 
-MS_TableOperations  
+MS_TableOperations   
 
 ![MS_TableOperations 表属性][defining-core-data-tableoperations-entity]
 
-| 属性 | Type |
+| 特性 | Type |
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
 | properties | 二进制数据 |
-| 表 | String |
+| table | String |
 | tableKind | 16 位整数 |
 
 
-MS_TableOperationErrors
+MS_TableOperationErrors 
 
  ![MS_TableOperationErrors 表属性][defining-core-data-tableoperationerrors-entity]
 
-| 属性 | Type |
+| 特性 | Type |
 | --- | --- |
 | id |String |
 | operationId |64 位整数 |
@@ -183,7 +183,7 @@ MS_TableOperationErrors
 
  ![][defining-core-data-tableconfig-entity]
 
-| 属性 | Type |
+| 特性 | Type |
 | --- | --- |
 | id |String |
 | key |String |
@@ -195,14 +195,14 @@ MS_TableOperationErrors
 
 **TodoItem**
 
-| 属性 | Type | 注意 |
+| 特性 | Type | 注意 |
 | --- | --- | --- |
 | id | 字符串（标记为必需） |远程存储中的主键 |
 | complete | Boolean | 待办事项字段 |
-| Text |String |待办事项字段 |
-| createdAt | date | （可选）映射到 **createdAt** 系统属性 |
-| updatedAt | date | （可选）映射到 **updatedAt** 系统属性 |
-| 版本 | String | （可选）用于检测冲突，映射到版本 |
+| text |String |待办事项字段 |
+| createdAt | Date | （可选）映射到 **createdAt** 系统属性 |
+| updatedAt | Date | （可选）映射到 **updatedAt** 系统属性 |
+| version | String | （可选）用于检测冲突，映射到版本 |
 
 ## <a name="setup-sync"></a>更改应用的同步行为
 在本部分，将修改应用，以便在应用启动时或插入和更新项时应用不会进行同步。 仅当按刷新手势按钮时，应用才会同步。
@@ -249,7 +249,7 @@ MS_TableOperationErrors
 2. 添加一些待办事项。 退出模拟器（或强行关闭应用），并重新启动它。 验证更改是否已保存。
 
 3. 查看远程 **TodoItem** 表的内容：
-   * 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.com/)，在移动应用后端中单击“简易表” > “TodoItem”。  
+   * 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.com/)，在移动应用后端中单击“简易表”   > “TodoItem”  。  
    * 对于 .NET 后端，请使用 SQL 工具（如 SQL Server Management Studio）或 REST 客户端（如 Fiddler 或 Postman）。  
 
 4. 验证新项是否*未*与服务器同步。

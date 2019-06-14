@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: b0719f6ac2f99f9e665b1265665752dd53ccbaf0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b47e498754bad6917efca5b7f19f8ebce9cf0330
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242658"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062225"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>使用 Azure 创建 Xamarin.Forms 应用
 
@@ -34,43 +34,31 @@ ms.locfileid: "66242658"
 
 * 有效的 Azure 帐户。 如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。 有关详细信息，请参阅 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* Visual Studio Tools for Xamarin，在 Visual Studio 2017 或更高版本或 Visual Studio for mac。 有关说明，请参阅 [Xamarin 安装页][Install Xamarin]。
+* 用于 Xamarin 的 Visual Studio Tools，包含在 Visual Studio 2017 或更高版本或 Visual Studio for Mac 中。 有关说明，请参阅 [Xamarin 安装页][Install Xamarin]。
 
-* （可选）若要生成 iOS 应用，必须使用装有 Xcode 9.0 或更高版本的 Mac。 Visual Studio for Mac 可用于开发 iOS 应用或 Visual Studio 2017 或更高版本可用 （只要 Mac 在网络上可用）。
+* （可选）若要生成 iOS 应用，必须使用装有 Xcode 9.0 或更高版本的 Mac。 可以使用 Visual Studio for Mac 来开发 iOS 应用，也可以使用 Visual Studio 2017 或更高版本（前提是 Mac 在网络上可用）。
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>创建新的移动应用后端
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>创建数据库连接和配置客户端和服务器项目
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>创建数据库连接并配置客户端和服务器项目
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinforms-solution"></a>运行的 Xamarin.Forms 解决方案
+## <a name="run-the-xamarinforms-solution"></a>运行 Xamarin.Forms 解决方案
 
 必须使用用于 Xamarin 的 Visual Studio Tools 来打开解决方案，详见 [Xamarin 安装说明][Install Xamarin]。 如果该工具已安装，请按以下步骤来下载并打开解决方案：
 
-### <a name="visual-studio"></a>Visual Studio
+### <a name="visual-studio-windows-and-mac"></a>Visual Studio （Windows 和 Mac）
 
-1. 转到 [Azure 门户](https://portal.azure.com/)。
+1. 转到 [Azure 门户](https://portal.azure.com/)，并导航到已创建的移动应用。 在 `Overview` 边栏选项卡上，查找作为移动应用公共终结点的 URL。 示例 - 我的应用名称“test123”的站点名将为 https://test123.azurewebsites.net 。
 
-2. 在移动应用的设置边栏选项卡上，单击“快速入门”（在“部署”下）>“Xamarin.Forms”   。 在步骤 3 下，单击“创建新应用”  （如果尚未选择它）。  接下来，单击“下载”  按钮。
+2. 打开此文件夹（xamarin.forms/ZUMOAPPNAME）中的文件 `Constants.cs`。 应用程序名称为 `ZUMOAPPNAME`。
 
-   此操作下载一个项目，其中包含连接到移动应用的客户端应用程序。 将压缩的项目文件保存到本地计算机，并记下保存位置。
-
-3. 解压缩你下载的项目，然后在 Visual Studio 中打开它。
-
-4. 按照下面的说明运行 Android 或 Windows 项目；如果有联网的 Mac 计算机可用，则运行 iOS 项目。
-
-### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
-
-1. 转到[Azure 门户](https://portal.azure.com/)并导航到你创建的移动应用。 在`Overview`边栏选项卡，查找这是你的移动应用的公共终结点的 URL。 示例-将为我的应用程序名称"test123"sitename https://test123.azurewebsites.net。
-
-2. 打开文件`Constants.cs`在此文件夹-xamarin.forms/ZUMOAPPNAME。 应用程序名称是`ZUMOAPPNAME`。
-
-3. 在中`Constants.cs`类中，将为`ZUMOAPPURL`变量更高版本的公共终结点。
+3. 在 `Constants.cs` 类中，将 `ZUMOAPPURL` 变量替换为上面的公共终结点。
 
     `public static string ApplicationURL = @"ZUMOAPPURL";`
 
-    将成为
+    变为
 
     `public static string ApplicationURL = @"https://test123.azurewebsites.net";`
     

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61403047"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 客户端实现开发/测试方案
@@ -53,11 +53,11 @@ ms.locfileid: "61403047"
 ## <a name="check-your-azure-subscription"></a>检查 Azure 订阅
 如果不知道自己的产品 ID，可以使用以下两种方式之一通过 Azure 门户获取：  
 
-- 在“订阅”窗口上：
+- 在“订阅”  窗口上：
 
   ![Azure 门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-portal.png) 
 
-- 或者，单击“计费”，并单击订阅 ID。 产品 ID 会显示在“计费”窗口中。
+- 或者，单击“计费”  ，并单击订阅 ID。 产品 ID 会显示在“计费”  窗口中。
 
 也可以从 Azure 帐户门户的 [订阅](https://account.windowsazure.com/Subscriptions) 选项卡查看产品 ID：
 

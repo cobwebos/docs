@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0899a127566c4d06de7d42443a956c2660a7a6d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956905"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
@@ -80,11 +80,11 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 本地应用程序中有两种常见类型的内部链接：
 
-- 相对内部链接，可指向本地文件结构（如 `/claims/claims.html`）中的共享资源。 这些链接在通过应用程序代理发布的应用中自动运行，并且在有无链接转换时均能继续运行。 
-- 硬编码内部链接，指向其他本地应用（如 `http://expenses`）或已发布文件（如 `http://expenses/logo.jpg`）。 链接转换功能对硬编码内部链接进行操作，并将其更改为指向远程用户需要访问的外部 URL。
+- 相对内部链接，可指向本地文件结构（如 `/claims/claims.html`）中的共享资源。  这些链接在通过应用程序代理发布的应用中自动运行，并且在有无链接转换时均能继续运行。 
+- 硬编码内部链接，指向其他本地应用（如 `http://expenses`）或已发布文件（如 `http://expenses/logo.jpg`）。  链接转换功能对硬编码内部链接进行操作，并将其更改为指向远程用户需要访问的外部 URL。
 
 HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
-* 一个
+* a
 * audio
 * 基本
 * button
@@ -101,16 +101,16 @@ HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
 * 菜单项
 * meta
 * 对象
-* 脚本
+* script
 * source
 * 跟踪
-* 视频
+* video
 
 此外，在 CSS URL 特性还转换。
 
 ### <a name="how-do-apps-link-to-each-other"></a>应用如何彼此链接？
 
-链接转换对每个应用程序均启用，以便可以按应用级别控制用户体验。 如果要将该应用的链接，而不是指向该应用的链接进行转换，请启用应用的链接转换功能。 
+链接转换对每个应用程序均启用，以便可以按应用级别控制用户体验。 如果要将该应用的链接，而不是指向该应用的链接进行转换，请启用应用的链接转换功能。   
 
 例如，假设有三个通过应用程序代理发布的应用程序，这些应用程序均彼此链接：Benefits、Expenses 和 Travel。 还有第四个应用，Feedback，但它不是通过应用程序代理发布的。
 
@@ -134,11 +134,11 @@ HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
 链接转换入门就像单击按钮一样简单：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 转到“Azure Active Directory” > “企业应用程序” > “所有应用程序”选择要管理的应用，再单击“应用程序代理”。
-3. 将“转换应用程序主体中的 URL”改为“是”。
+2. 转到“Azure Active Directory”   > “企业应用程序”   > “所有应用程序”  选择要管理的应用，再单击“应用程序代理”  。
+3. 将“转换应用程序主体中的 URL”改为“是”。  
 
    ![选择“是”可转换应用程序主体中的 URL](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
-4. 单击“保存”应用所做的更改。
+4. 单击“保存”应用所做的更改。 
 
 现在，当用户访问此应用程序时，代理将自动扫描租户上通过应用程序代理发布的内部 URL。
 

@@ -11,10 +11,10 @@ ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61083771"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>使用 Azure Functions 管理 Azure SQL 数据仓库中的计算资源
@@ -45,15 +45,15 @@ ms.locfileid: "61083771"
 
 ## <a name="change-the-compute-level"></a>更改计算级别
 
-1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为 DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。 
+1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为  DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。 
 
    ![使用模板部署的函数](media/manage-compute-with-azure-functions/five-functions.png)
 
-2. 选择 DWScaleDownTrigger 或 DWScaleUpTrigger，具体取决于是否要更改纵向扩展或纵向缩减时间。 在下拉菜单中，选择“集成”。
+2. 选择  DWScaleDownTrigger 或  DWScaleUpTrigger，具体取决于是否要更改纵向扩展或纵向缩减时间。 在下拉菜单中，选择“集成”。
 
    ![选择“集成”作为函数](media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. 目前显示的值应该为 %ScaleDownTime% 或 %ScaleUpTime%。 这些值指示计划基于在[应用程序设置][Application Settings]中定义的值。 目前可以忽略该值，根据后续步骤将计划更改为首选时间。
+3. 目前显示的值应该为  %ScaleDownTime% 或  %ScaleUpTime%。 这些值指示计划基于在[应用程序设置][Application Settings]中定义的值。 目前可以忽略该值，根据后续步骤将计划更改为首选时间。
 
 4. 在计划区域向 CRON 表达式添加所需时间，此时间反映了你所希望的对 SQL 数据仓库进行纵向扩展的频率。 
 
@@ -64,22 +64,22 @@ ms.locfileid: "61083771"
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   例如，“0 30 9 * * 1-5”表示在每个工作日的上午 9:30 触发一次。 有关详细信息，请访问 Azure Functions [计划示例][schedule examples]。
+   例如，“0 30 9 * * 1-5”表示在每个工作日的上午 9:30 触发一次  。 有关详细信息，请访问 Azure Functions [计划示例][schedule examples]。
 
 
 ## <a name="change-the-time-of-the-scale-operation"></a>更改缩放操作的时间
 
-1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为 DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。 
+1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为  DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。 
 
-2. 选择 DWScaleDownTrigger 或 DWScaleUpTrigger，具体取决于是否要更改纵向扩展或纵向缩减计算值。 选择函数以后，窗格会显示 index.js 文件。
+2. 选择  DWScaleDownTrigger 或  DWScaleUpTrigger，具体取决于是否要更改纵向扩展或纵向缩减计算值。 选择函数以后，窗格会显示  index.js 文件。
 
    ![更改函数触发器计算级别](media/manage-compute-with-azure-functions/index-js.png)
 
-3. 将 ServiceLevelObjective 的值更改为所需级别，然后点击“保存”。 此值是根据“集成”部分定义的计划，数据仓库实例应缩放到的计算级别。
+3. 将  ServiceLevelObjective 的值更改为所需级别，然后点击“保存”。 此值是根据“集成”部分定义的计划，数据仓库实例应缩放到的计算级别。
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>使用暂停或继续而非缩放 
 
-目前，默认启用的函数为 DWScaleDownTrigger 和 DWScaleUpTrigger。 若要改用暂停和继续功能，可以启用 DWPauseTrigger 或 DWResumeTrigger。
+目前，默认启用的函数为  DWScaleDownTrigger 和  DWScaleUpTrigger。 若要改用暂停和继续功能，可以启用  DWPauseTrigger 或  DWResumeTrigger。
 
 1. 导航到“函数”窗格。
 
@@ -89,7 +89,7 @@ ms.locfileid: "61083771"
 
 2. 单击要启用的触发器所对应的滑动切换开关。
 
-3. 导航到用于更改计划的各个触发器的“集成”选项卡。
+3. 导航到用于更改计划的各个触发器的“集成”选项卡。 
 
    > [!NOTE]
    > 缩放触发器和暂停/继续触发器之间的功能差异在于发送给队列的消息。 有关详细信息，请参阅[添加新的触发器函数][Add a new trigger function]。
@@ -99,11 +99,11 @@ ms.locfileid: "61083771"
 
 目前，模板中只包括两个缩放函数。 使用这些函数，在一天中只能纵向缩减和纵向扩展各一次。 若要进行更精细的控制，例如每天纵向缩减多次，或者在周末表现出不同的缩放行为，则需添加另一触发器。
 
-1. 创建新的空白函数。 选择靠近“函数”位置的 + 按钮，显示函数模板窗格。
+1. 创建新的空白函数。 选择靠近“函数”位置的 + 按钮，显示函数模板窗格  。
 
    ![创建新的函数](media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. 从“语言”中选择“Javascript”，然后选择“TimerTrigger”。
+2. 从“语言”中选择“Javascript”，然后选择“TimerTrigger”。  
 
    ![创建新的函数](media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "61083771"
 
    ![周六纵向缩减](media/manage-compute-with-azure-functions/scale-down-saturday.png)
 
-4. 从其他触发器函数中的一个复制 index.js 的内容。
+4. 从其他触发器函数中的一个复制  index.js 的内容。
 
    ![复制 index js](media/manage-compute-with-azure-functions/index-js.png)
 

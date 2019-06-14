@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: fc51c1d9d47340da85d42f7c398c8ee21c601beb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65025866"
 ---
-# <a name="deploy-a-custom-model"></a>将自定义模型部署
+# <a name="deploy-a-custom-model"></a>部署自定义模型
 
 已上传和检查数据，评估准确性，并且自定义模型定型后，可以部署自定义的终结点，以用于应用程序、 工具和产品。 在本文档中，将学习如何创建和部署使用自定义语音门户为终结点。
 
@@ -32,7 +32,7 @@ ms.locfileid: "65025866"
 > [!NOTE]
 > 别忘了接受使用条款和定价的详细信息。
 
-接下来，选择“创建”。 此操作将返回到**部署**页。 现在将包括到自定义终结点相对应的条目。 终结点的状态会显示其当前状态。 它可能最多 30 分钟的时间来实例化新的终结点使用自定义模型。 当部署的状态更改为**完成**，终结点是可供使用。
+接下来，选择“创建”。  此操作将返回到**部署**页。 现在将包括到自定义终结点相对应的条目。 终结点的状态会显示其当前状态。 它可能最多 30 分钟的时间来实例化新的终结点使用自定义模型。 当部署的状态更改为**完成**，终结点是可供使用。
 
 部署你的终结点后，终结点名称将显示为链接。 单击链接以向你的终结点，例如终结点密钥、 终结点 URL 和示例代码显示特定的信息。
 

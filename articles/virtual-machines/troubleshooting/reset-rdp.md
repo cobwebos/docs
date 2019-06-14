@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
 ms.openlocfilehash: 0a12cbabc28640283f5a28eb7a83c7d7717e0882
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60921199"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>重置远程桌面服务或其在 Windows VM 中的管理员密码
@@ -33,13 +33,13 @@ ms.locfileid: "60921199"
 
 ## <a name="reset-by-using-the-azure-portal"></a>使用 Azure 门户重置
 
-首先，登录到 [Azure 门户](https://portal.azure.com)，然后在左侧菜单中选择“虚拟机”。 
+首先，登录到 [Azure 门户](https://portal.azure.com)，然后在左侧菜单中选择“虚拟机”  。 
 
 ### <a name="reset-the-local-administrator-account-password"></a>**重置本地管理员帐户密码**
 
-1. 选择 Windows VM，然后在“支持 + 故障排除”下选择“重置密码”。 此时会显示“重置密码”窗口。
+1. 选择 Windows VM，然后在“支持 + 故障排除”下选择“重置密码”。   此时会显示“重置密码”窗口。 
 
-2. 选择“重置密码”，输入用户名和密码，然后选择“更新”。 
+2. 选择“重置密码”，输入用户名和密码，然后选择“更新”。   
 
 3. 尝试重新连接到 VM。
 
@@ -47,9 +47,9 @@ ms.locfileid: "60921199"
 
 此过程将启用 VM 中的远程桌面服务，并为默认 RDP 端口 3389 创建防火墙规则。
 
-1. 选择 Windows VM，然后在“支持 + 故障排除”下选择“重置密码”。 此时会显示“重置密码”窗口。 
+1. 选择 Windows VM，然后在“支持 + 故障排除”下选择“重置密码”。   此时会显示“重置密码”窗口。  
 
-2. 依次选择“仅重置配置”、“更新”。 
+2. 依次选择“仅重置配置”、“更新”。   
 
 3. 尝试重新连接到 VM。
 

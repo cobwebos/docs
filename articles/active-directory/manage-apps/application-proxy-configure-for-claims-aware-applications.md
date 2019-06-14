@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c97729cf7d88ebdeefb44c83eb571bb6d7ebd0ed
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825594"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>在应用程序代理中使用声明感知应用
@@ -31,26 +31,26 @@ ms.locfileid: "65825594"
 ## <a name="publish-your-application"></a>发布应用程序
 
 1. 根据[使用应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)中的说明发布应用程序。
-2. 导航到门户中的应用程序页，选择“单一登录”。
-3. 如果选择“Azure Active Directory”作为“预身份验证方法”，请选择“已禁用 Azure AD 单一登录”作为“身份验证方法”。 如果选择“传递”作为“预身份验证方法”，则无需更改任何内容。
+2. 导航到门户中的应用程序页，选择“单一登录”  。
+3. 如果选择“Azure Active Directory”作为“预身份验证方法”，请选择“已禁用 Azure AD 单一登录”作为“身份验证方法”。     如果选择“传递”作为“预身份验证方法”，则无需更改任何内容。  
 
 ## <a name="configure-adfs"></a>配置 ADFS
 
 可以使用两种方式之一配置声明感知应用的 ADFS。 第一种方式是使用自定义域。 第二种方式是使用 WS 联合身份验证。 
 
-### <a name="option-1-custom-domains"></a>选项 1：加速域名
+### <a name="option-1-custom-domains"></a>选项 1：自定义域
 
 如果应用程序的所有内部 URL 都是完全限定的域名 (FQDN)，则可以配置应用程序的[自定义域](application-proxy-configure-custom-domain.md)。 使用自定义域创建与内部 URL 相同的外部 URL。 外部 URL 匹配内部 URL 时，无论用户是在本地还是远程，STS 重定向都会起作用。 
 
 ### <a name="option-2-ws-federation"></a>选项 2：WS 联合身份验证
 
 1. 打开“ADFS 管理”。
-2. 转到“信赖方信任”，右键单击要使用应用程序代理进行发布的应用，并选择“属性”。  
+2. 转到“信赖方信任”，右键单击要使用应用程序代理进行发布的应用，并选择“属性”。    
 
    ![信赖方信任右键单击应用名称 - 屏幕截图](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. 在“终结点”选项卡的“终结点类型”下，选择“WS-Federation”。
-4. 在“受信任的 URL”下输入 URL（曾在应用程序代理的“外部 URL”下输入过），并单击“确定”。  
+3. 在“终结点”选项卡的“终结点类型”下，选择“WS-Federation”。   
+4. 在“受信任的 URL”下输入 URL（曾在应用程序代理的“外部 URL”下输入过），并单击“确定”。     
 
    ![添加终结点 - 设置受信任的 URL 值 - 屏幕截图](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 

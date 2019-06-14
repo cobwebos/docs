@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: e578b3a6b3905569567b568b0130c1ed1b90d915
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60557670"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-web-table-connector.md)
 > * [当前版本](connector-web-table.md)
 
@@ -82,7 +82,7 @@ Web 表链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Web 表数据集支持的属性列表。
 
-要从 Web 表复制数据，请将数据集的 type 属性设置为“WebTable”。 支持以下属性：
+要从 Web 表复制数据，请将数据集的 type 属性设置为“WebTable”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -115,7 +115,7 @@ Web 表链接的服务支持以下属性：
 
 ### <a name="web-table-as-source"></a>Web 表作为源
 
-要从 Web 表复制数据，请将复制活动中的源类型设置为“WebSource”，不支持任何其他属性。
+要从 Web 表复制数据，请将复制活动中的源类型设置为“WebSource”  ，不支持任何其他属性。
 
 **示例：**
 
@@ -152,22 +152,22 @@ Web 表链接的服务支持以下属性：
 
 若要获取表的索引（需要在[数据集属性](#dataset-properties)中进行配置），可以使用例如 Excel 2016 作为工具，如下所示：
 
-1. 启动 **Excel 2016**，并切换到“数据”选项卡。
-2. 单击工具栏中的“新建查询”，指向“从其他源”，并单击“从 Web”。
+1. 启动 **Excel 2016**，并切换到“数据”  选项卡。
+2. 单击工具栏中的“新建查询”  ，指向“从其他源”  ，并单击“从 Web”  。
 
     ![Power Query 菜单](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/)）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”。
+3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/) ）以及要为数据集指定的路径（例如  ：AFI%27s_100_Years...100_Movies），并单击“确定”  。
 
     ![“从 Web”对话框](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
     此示例中使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. 如果出现“访问 Web 内容”对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”。
+4. 如果出现“访问 Web 内容”  对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”  。
 
    ![“访问 Web 内容”对话框](./media/copy-data-from-web-table/AccessWebContentDialog.png)
-5. 单击树视图中的“表”项，查看表中的内容，并单击底部的“编辑”按钮。  
+5. 单击树视图中的“表”  项，查看表中的内容，并单击底部的“编辑”  按钮。  
 
    ![“导航器”对话框](./media/copy-data-from-web-table/Navigator-DialogBox.png)
-6. 在“查询编辑器”窗口中，单击工具栏上的“高级编辑器”按钮。
+6. 在“查询编辑器”  窗口中，单击工具栏上的“高级编辑器”  按钮。
 
     ![“高级编辑器”按钮](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
 7. 在“高级编辑器”对话框中，“源”旁边的编号为索引。

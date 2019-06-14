@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/12/2019
 ms.author: aljo
 ms.openlocfilehash: 400e4653800d445506d4854e70034a707dcc4629
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161801"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
@@ -79,7 +79,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 按照中的示例/说明[快速入门模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)若要更改每个节点类型中的 Vm 数。 
 
 ### <a name="add-vms-using-powershell-or-cli-commands"></a>添加 Vm 使用 PowerShell 或 CLI 命令
-以下代码按名称获取规模集，并使规模集的容量增加 1。
+以下代码按名称获取规模集，并使规模集的容量增加 1。 
 
 ```powershell
 $scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
@@ -195,7 +195,7 @@ else
 }
 ```
 
-在下面的“sfctl”代码中，使用以下命令获取最近创建的节点 `sfctl node list --query "sort_by(items[*], &name)[-1].name"` 的 “node-name”值：
+在下面的“sfctl”代码中，使用以下命令获取最近创建的节点 `sfctl node list --query "sort_by(items[*], &name)[-1].name"` 的 “node-name”值：  
 
 ```azurecli
 # Inform the node that it is going to be removed
@@ -209,7 +209,7 @@ sfctl node remove-state --node-name _nt1vm_5
 ```
 
 > [!TIP]
-> 使用以下“sfctl”查询检查每个步骤的状态。
+> 使用以下“sfctl”查询检查每个步骤的状态。 
 >
 > **检查停用状态**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`

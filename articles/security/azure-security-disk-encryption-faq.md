@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 149452bd7d43ce46f320b9bae63a6f9cd48d98d4
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: e1583ccf04b68f81a71bd2f63779680427ce3362
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730700"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068780"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -33,7 +33,7 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Azure 磁盘加密支持哪些虚拟机层？
 
-Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和 F](https://azure.microsoft.com/pricing/details/virtual-machines/) 系列 IaaS VM。 在具有高级存储的 VM 上也可用。 它在基本层 VM 上不可用。
+Azure 磁盘加密是可在其中包括标准层 Vm 上[A、 D、 DS、 E、 G、 GS 和 F](https://azure.microsoft.com/pricing/details/virtual-machines/)系列 IaaS Vm。 在具有高级存储的 VM 上也可用。 它在基本层 VM 上不可用。
 
 ## <a name="bkmk_LinuxOSSupport"></a>Azure 磁盘加密支持哪些 Linux 分发版？
 
@@ -121,7 +121,9 @@ Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条�
 使用最新版的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。 Azure SDK 版本 1.1.0 不  支持 Azure 磁盘加密。
 
 > [!NOTE]
-> Linux Azure 磁盘加密预览扩展已弃用。 有关详细信息，请参阅[弃用适用于 Linux IaaS VM 的 Azure 磁盘加密预览扩展](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/)。
+> Linux Azure 磁盘加密预览扩展"Microsoft.OSTCExtension.AzureDiskEncryptionForLinux"已弃用。 此扩展已发布的 Azure 磁盘加密预览版本。 不应在测试或生产部署中使用该扩展的预览版本。
+
+> 对于部署方案等 Azure 资源管理器 (ARM)，其中您需要部署 Azure 磁盘加密适用于 Linux IaaS VM 上启用加密的 Linux VM 的扩展，必须使用 Azure 磁盘加密支持生产扩展"Microsoft.Azure.Security.AzureDiskEncryptionForLinux"。
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>是否可对自定义 Linux 映像应用 Azure 磁盘加密？
 

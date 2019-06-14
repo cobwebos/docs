@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
 ms.openlocfilehash: ec674641991a1b5a1e0ca92c133be235dd91dfae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60703517"
 ---
 # <a name="security-center-settings"></a>安全中心设置
@@ -40,7 +40,7 @@ ms.locfileid: "60703517"
 安全中心使用基于角色的访问控制 (RBAC)，提供可以分配给 Azure 中用户、组和服务的内置角色。 用户打开安全中心时，只能看到其有权访问的资源的相关信息。 这意味着用户将分配的角色*所有者*，*参与者*，或*读取器*资源所属的订阅。 除这些角色外，还有两个特定的安全中心角色：
 
 - **安全读者**：有权查看安全中心，包括建议、警报、策略和运行状况，但无法进行更改。
-- **安全管理员**：拥有与安全读取者相同的查看权限，不同之处在于该角色有权更新安全策略、驳回建议和关闭警报。
+- **安全管理员**：拥有与安全读取者  相同的查看权限，不同之处在于该角色有权更新安全策略、驳回建议和关闭警报。
 
 
 ## <a name="next-steps"></a>后续步骤

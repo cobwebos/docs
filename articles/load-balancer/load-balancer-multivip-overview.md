@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: chkuhtz
 ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60594132"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure 负载均衡器的多个前端
@@ -70,7 +70,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 现在，Azure 负载均衡器的完整映射如下：
 
-| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
+| 规则 | 前端 IP 地址 | protocol | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 第 |65.52.0.1 |TCP |80 |DIP IP 地址 |80 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP 地址 |81 |
@@ -118,9 +118,9 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 下表显示负载均衡器中的完整映射：
 
-| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
+| 规则 | 前端 IP 地址 | protocol | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
-| ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |与前端 (65.52.0.1) 相同 |与前端 (80) 相同 |
+| ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 第 |65.52.0.1 |TCP |80 |与前端 (65.52.0.1) 相同 |与前端 (80) 相同 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |与前端 (65.52.0.2) 相同 |与前端 (80) 相同 |
 
 入站流量的目标是 VM 中环回接口上的前端 IP 地址。 每个规则必须生成具有目标 IP 地址和目标端口唯一组合的流量。 通过改变流量的目标 IP 地址，可以在同一 VM 上重复使用端口。 通过将服务绑定到前端的 IP 地址和相应环回接口的端口，可以向负载均衡器公开服务。

@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb0cfb06e95cadbb549f669e5d59bdb0d795c896
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545859"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>使用 MSAL.NET 特定于 Xamarin Android 的注意事项
@@ -97,7 +97,7 @@ var authResult = AcquireTokenInteractive(scopes)
 
 ### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>错误：当前上下文中不存在 AuthenticationContinuationHelper 名称
 
-这可能是因为 Visual Studio 未正确更新 Android.csproj* 文件。 有时**<HintPath>** filepath 错误地包含而不是 netstandard13 **monoandroid90**。
+这可能是因为 Visual Studio 未正确更新 Android.csproj* 文件。 有时 **<HintPath>** filepath 错误地包含而不是 netstandard13 **monoandroid90**。
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,

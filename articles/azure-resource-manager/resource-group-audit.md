@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7ff45be4eea5c6e8ab83093847164ede0e94579a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606548"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活动日志来监视对资源的操作
@@ -31,11 +31,11 @@ ms.locfileid: "65606548"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 若要通过门户查看活动日志，请选择“监视”。
+1. 若要通过门户查看活动日志，请选择“监视”  。
 
     ![选择“监视”](./media/resource-group-audit/select-monitor.png)
 
-1. 选择“活动日志”。
+1. 选择“活动日志”  。
 
     ![选择“活动日志”](./media/resource-group-audit/select-activity-log.png)
 
@@ -55,11 +55,11 @@ ms.locfileid: "65606548"
 
     ![查看筛选器](./media/resource-group-audit/view-filters.png)
 
-1. 若要专注于特定操作，请更改筛选器或应用新的筛选器。 例如，下图显示了“时间跨度”的新值，且“资源类型”设置为存储帐户。 
+1. 若要专注于特定操作，请更改筛选器或应用新的筛选器。 例如，下图显示了“时间跨度”的新值，且“资源类型”设置为存储帐户   。 
 
     ![设置筛选器选项](./media/resource-group-audit/set-filter.png)
 
-1. 如果稍后需要重新运行该查询，请选择“固定当前筛选器”。
+1. 如果稍后需要重新运行该查询，请选择“固定当前筛选器”  。
 
     ![固定筛选器](./media/resource-group-audit/pin-filters.png)
 

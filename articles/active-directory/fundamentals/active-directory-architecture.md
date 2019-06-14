@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ba36825805ff54165a3e6c4e221550cc30b07d3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: aed332f32fa9fdc154c72e45914e642a9dad4993
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235186"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055714"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什么是 Azure Active Directory 体系结构？
 使用 Azure Active Directory (Azure AD) 可以安全地管理用户对 Azure 服务和资源的访问。 Azure AD 随附了整套标识管理功能。 有关 Azure AD 功能的信息，请参阅[什么是 Azure Active Directory？](active-directory-whatis.md)
@@ -95,7 +95,7 @@ Azure AD 具有以下特征的数据中心内进行操作：
 
 Azure AD 为面向次要副本的应用程序提供读写一致性，为此，它会将写入操作路由到主要副本，然后以异步方式将这些写入操作拉回到次要副本。
 
-使用 Azure AD 图形 API 的应用程序写入操作经过抽象化，可与目录副本保持相关性，实现读写一致性。 Azure AD Graph 服务维护一个逻辑会话，该会话与用于读取的次要副本相关；相关性在 Graph 服务使用分布式缓存缓存的“副本令牌”中捕获。 然后，此令牌可用于同一个逻辑会话中的后续操作。 
+使用 Azure AD 图形 API 的应用程序写入操作经过抽象化，可与目录副本保持相关性，实现读写一致性。 Azure AD Graph 服务维护具有关联的逻辑会话到辅助副本用于读取;graph 服务缓存使用的辅助副本数据中心中的分布式的缓存中的"副本令牌"，捕获关联。 然后，此令牌可用于同一个逻辑会话中的后续操作。 若要继续使用同一个逻辑会话，后续请求必须路由到同一个 Azure AD 数据中心。 不能继续逻辑会话，则目录客户端请求被传送到多个 Azure AD 数据中心;如果发生这种情况在客户端具有多个逻辑会话具有独立的读写一致性。
 
  >[!NOTE]
  >写入操作立即复制到逻辑会话读取操作所颁发到的次要副本。

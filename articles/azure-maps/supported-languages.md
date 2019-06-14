@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686783"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps 中的本地化支持
@@ -25,7 +25,7 @@ Azure Maps 支持各种语言和国家/地区所基于的视图。 本文提供�
 Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供了每项服务支持的语言代码。  
   
 
-| ID         | 名称                   |  地图 | 搜索 | 路由 | 交通事故 | JS 地图控件 | 时区 |
+| ID         | Name                   |  地图 | 搜索 | 路由 | 交通事故 | JS 地图控件 | 时区 |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | 南非荷兰语              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | 阿拉伯语                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -85,7 +85,7 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 
 ## <a name="azure-maps-supported-views"></a>Azure Maps 支持视图
 
-Azure （也称为"用户区域参数"） 的映射视图参数是指定的地缘政治集该国家/地区的正确映射争议边框将显示两字母 ISO 3166 国家/地区代码并在地图上显示标签。  默认情况下查看参数设置为 **"统一"**。  不在视图列表的国家/地区/区域将默认为"Unified"视图。 它由你负责确定你的用户的位置，然后设置该位置正确的视图参数。 Azure Maps 中的视图参数必须采用符合适用的法律，包括那些其中地图、 图像和其他数据和第三方内容，您有权访问通过 Azure Maps 的国家/地区的相关映射将可用。
+Azure （也称为"用户区域参数"） 的映射视图参数是指定的地缘政治集该国家/地区的正确映射争议边框将显示两字母 ISO 3166 国家/地区代码并在地图上显示标签。  默认情况下查看参数设置为 **"统一"** 。  不在视图列表的国家/地区/区域将默认为"Unified"视图。 它由你负责确定你的用户的位置，然后设置该位置正确的视图参数。 Azure Maps 中的视图参数必须采用符合适用的法律，包括那些其中地图、 图像和其他数据和第三方内容，您有权访问通过 Azure Maps 的国家/地区的相关映射将可用。
 
 下表提供了支持的视图。
 

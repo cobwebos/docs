@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65138586"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步：了解体系结构
@@ -42,7 +42,7 @@ ms.locfileid: "65138586"
 
 若要配置连接器，可以指定要同步的对象类型。 指定对象类型可以定义要包含在同步过程中的对象的范围。 下一步是选择要同步的属性，即所谓的属性包含列表。 可以随时更改这些设置，以响应业务规则的更改。 使用 Azure AD Connect 安装向导时，向导将配置这些设置。
 
-要将对象导出到连接的数据源，属性包含列表必须至少包含在连接的数据源中创建特定对象类型所需的最少属性。 例如，必须将 sAMAccountName 属性包含在属性包含列表中才能将用户对象导出到 Active Directory，因为 Active Directory 中的所有用户对象都必须定义 sAMAccountName 属性。 同样，安装向导会自动完成此配置。
+要将对象导出到连接的数据源，属性包含列表必须至少包含在连接的数据源中创建特定对象类型所需的最少属性。 例如，必须将 sAMAccountName 属性包含在属性包含列表中才能将用户对象导出到 Active Directory，因为 Active Directory 中的所有用户对象都必须定义 sAMAccountName 属性。   同样，安装向导会自动完成此配置。
 
 如果连接的数据源使用结构化组件（例如分区或容器）来组织对象，可以限制连接的数据源中用于给定解决方案的区域。
 
@@ -112,7 +112,7 @@ ms.locfileid: "65138586"
 
 每个占位符代表尚未导入同步引擎、但需要构造分层名称的对象的分层名称的组成部分（例如，组织单位）。 占位符填补在连接的数据源中引用不是连接器空间中暂存对象的对象所产生的间距。
 
-同步引擎还使用占位符来存储尚未导入的引用对象。 例如，如果已将同步配置为包含 Abbie Spencer 对象的管理器属性，并且接收的值是尚未导入的对象（例如 CN=Lee Sperry,CN=Users,DC=fabrikam,DC=com），则管理器信息将存储为连接器空间中的占位符。 如果稍后导入管理器对象，则表示此管理器的暂存对象会覆盖占位符对象。
+同步引擎还使用占位符来存储尚未导入的引用对象。 例如，如果已将同步配置为包含 Abbie Spencer  对象的管理器属性，并且接收的值是尚未导入的对象（例如 CN=Lee Sperry,CN=Users,DC=fabrikam,DC=com  ），则管理器信息将存储为连接器空间中的占位符。 如果稍后导入管理器对象，则表示此管理器的暂存对象会覆盖占位符对象。
 
 ### <a name="metaverse-objects"></a>Metaverse 对象
 Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚合视图。 同步引擎使用导入对象中的信息创建 Metaverse 对象。 可将多个连接器空间对象链接到单个 Metaverse 对象，但无法将连接器空间对象链接到多个 Metaverse 对象。
@@ -203,7 +203,7 @@ Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚�
 
 入站同步包括以下过程：
 
-* 预配（也称为投影，如果一定要将此过程与出站同步预配进行区分的话）。 同步引擎根据暂存对象创建新的 Metaverse 对象并链接它们。 预配是对象级的操作。
+* 预配  （也称为投影  ，如果一定要将此过程与出站同步预配进行区分的话）。 同步引擎根据暂存对象创建新的 Metaverse 对象并链接它们。 预配是对象级的操作。
 * **联接**。 同步引擎将暂存对象链接到现有的 Metaverse 对象。 联接是对象级的操作。
 * **导入属性流**。 同步引擎更新 Metaverse 中对象的属性值（称为属性流）。 导入属性流是需要暂存对象与 Metaverse 对象之间的链接的属性级操作。
 

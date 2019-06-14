@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 989c5c1cd9474999400177293d896b96c79c32b7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5333f02edd6a4ff888e28ed36c2b78f75309f4d4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955236"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060905"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 体系结构
 
@@ -45,7 +45,7 @@ Workbench 为可用于验证、测试和查看区块链应用程序的 Web 和�
 * 上传并部署用户自己的智能合约。
 * 在特定角色的上下文中为用户分配智能合约的访问权限。
 
-有关详细信息，请参阅 [GitHub 上的 Azure Blockchain Workbench 示例客户端应用程序](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client)。
+有关详细信息，请参阅 [GitHub 上的 Azure Blockchain Workbench 示例客户端应用程序](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile)。
 
 ## <a name="gateway-service-api"></a>网关服务 API
 
@@ -84,7 +84,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 ## <a name="transaction-builder-and-signer"></a>事务生成器和签名器
 
-如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。 事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。 汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
+如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。  事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。  汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
 
  Blockchain Workbench 从 Key Vault 检索相应的私钥，并对 Key Vault 外部的事务签名。 签名后，事务将发送到事务路由器和账本。
 

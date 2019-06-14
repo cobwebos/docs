@@ -17,10 +17,10 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: beee76bdc443b3a66b4500b83d228075b84eed1e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864772"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
@@ -33,7 +33,7 @@ ms.locfileid: "65864772"
 
 以下是一些用于发布 Web 应用代码的选项：
 
-*   使用 Visual Studio 进行部署。 如果具有 Visual Studio 解决方案，则右键单击 Web 应用程序项目，然后选择“发布”。
+*   使用 Visual Studio 进行部署。 如果具有 Visual Studio 解决方案，则右键单击 Web 应用程序项目，然后选择“发布”  。
 *   使用 FTP 客户端进行部署。 在 Azure 门户中，下载要将代码部署到的 Web 应用的发布配置文件。 然后使用相同的发布配置文件 FTP 凭据将文件上传到 \site\wwwroot。
 
 有关详细信息，请参阅[将应用部署到应用服务](deploy-local-git.md)。
@@ -47,7 +47,7 @@ ms.locfileid: "65864772"
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>如何从 Visual Studio 将 ASP.NET 应用程序部署到应用服务？
 <a id="deployasp"></a>
 
-本教程[5 分钟内创建在 Azure 中的第一个 ASP.NET web 应用](app-service-web-get-started-dotnet.md)演示如何使用 Visual Studio 部署到应用服务中的 web 应用的 ASP.NET web 应用程序。
+教程[五分钟内在 Azure 中创建第一个 ASP.NET Web 应用](app-service-web-get-started-dotnet.md)演示如何使用 Visual Studio 将 ASP.NET Web 应用程序部署到应用服务中的 Web 应用。
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>有哪些不同类型的部署凭据？
 
@@ -73,14 +73,14 @@ ms.locfileid: "65864772"
 
 解决 FTP 问题：
 
-1. 验证您在输入了正确的主机名和凭据。 有关不同类型的凭据以及如何使用它们的详细信息，请参阅[部署凭据](https://github.com/projectkudu/kudu/wiki/Deployment-credentials)。
+1. 验证是否输入了正确的主机名和凭据。 有关不同类型的凭据以及如何使用它们的详细信息，请参阅[部署凭据](https://github.com/projectkudu/kudu/wiki/Deployment-credentials)。
 2. 验证防火墙是否阻止了 FTP 端口。 端口应具有以下这些设置：
     * FTP 控制连接端口：21
     * FTP 数据连接端口：989、10001-10300
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>如何将我的代码发布到应用服务？
 
-Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 若要使用快速入门，请在 Azure 门户中转到应用服务，在“部署”下，选择“快速入门”。
+Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 若要使用快速入门，请在 Azure 门户中转到应用服务，在“部署”  下，选择“快速入门”  。
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>为何我的应用有时在部署到应用服务之后重新启动？
 
@@ -90,7 +90,7 @@ Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 �
 
 使用 Azure DevOps 进行持续部署有两种方法：
 
-*   使用 Git 项目。 使用部署中心连接通过应用服务。
+*   使用 Git 项目。 使用部署中心通过应用服务进行连接。
 *   使用 Team Foundation 版本控制 (TFVC) 项目。 通过对应用服务使用生成代理来进行部署。
 
 这两个选项的持续代码部署都依赖于现有开发人员工作流和签入过程。 有关详细信息，请参阅以下文章： 

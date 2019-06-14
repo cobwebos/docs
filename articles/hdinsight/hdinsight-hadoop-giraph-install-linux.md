@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: aa13d8dfc65f020f3f27183423913933cd0b9404
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64697604"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>在 HDInsight Hadoop 群集上安装 Apache Giraph 并使用 Giraph 处理大型图形
@@ -61,7 +61,7 @@ ms.locfileid: "64697604"
 
 1. 使用[创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤开始创建群集，但是不完成创建。
 
-2. 在“可选配置”部分中，选择“脚本操作”，并提供以下信息：
+2. 在“可选配置”  部分中，选择“脚本操作”  ，并提供以下信息：
 
    * **名称**：输入脚本操作的友好名称。
 
@@ -75,7 +75,7 @@ ms.locfileid: "64697604"
 
    * **参数**：将此字段留空。
 
-3. 在“脚本操作”的底部，使用“选择”按钮保存配置。 最后，使用“可选配置”部分底部的“选择”按钮保存可选配置信息。
+3. 在“脚本操作”  的底部，使用“选择”  按钮保存配置。 最后，使用“可选配置”  部分底部的“选择”  按钮保存可选配置信息。
 
 4. 根据[创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中所述继续创建群集。
 
@@ -113,7 +113,7 @@ ms.locfileid: "64697604"
 
     ![tiny_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
 
-3. 要保存文件，请使用 **Ctrl+X**，然后输入“Y”，最后按 **Enter** 以接受文件名。
+3. 要保存文件，请使用 **Ctrl+X**，然后输入“Y”  ，最后按 **Enter** 以接受文件名。
 
 4. 使用以下命令将数据存储到 HDInsight 群集的主存储中：
 

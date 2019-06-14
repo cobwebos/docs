@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: 5fe5e819c4f1079b6eb1fa8bb19d337ecfed600d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955148"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
@@ -80,7 +80,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 2. 为数据库创建一个目录：
    
         # mkdir -p /opt/pgsql_data
-3. 创建一个非根用户并修改该用户的配置文件。 然后，切换到该新用户（在我们的示例中称为“postgres”）：
+3. 创建一个非根用户并修改该用户的配置文件。 然后，切换到该新用户（在我们的示例中称为“postgres”  ）：
    
         # useradd postgres
    
@@ -137,7 +137,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     # cp linux /etc/init.d/postgresql
 
-修改 /etc/init.d/postgresql 文件中的两个变量。 前缀设置为 PostgreSQL 的安装路径：**/opt/pgsql**。 PGDATA 设置为 PostgreSQL 的数据存储路径：**/opt/pgsql_data**。
+修改 /etc/init.d/postgresql 文件中的两个变量。 前缀设置为 PostgreSQL 的安装路径： **/opt/pgsql**。 PGDATA 设置为 PostgreSQL 的数据存储路径： **/opt/pgsql_data**。
 
     # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 

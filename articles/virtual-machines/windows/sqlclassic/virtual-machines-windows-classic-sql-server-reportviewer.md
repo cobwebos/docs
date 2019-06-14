@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
 ms.openlocfilehash: b554dc1fa33519d87aa0c9c5ba9130b47cbea142
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60580062"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>在 Azure 中托管的网站中使用 ReportViewer
@@ -54,24 +54,24 @@ ms.locfileid: "60580062"
 * **Microsoft.ReportViewer.Common.dll**：包含 ReportViewer 控件在运行时使用的类。 它不会自动添加到项目。
 
 ### <a name="to-add-a-reference-to-microsoftreportviewercommon"></a>添加对 Microsoft.ReportViewer.Common 的引用
-* 右键单击项目的“引用”节点，然后选择“添加引用”、在 .NET 选项卡中选择程序集并单击“确定”。
+* 右键单击项目的“引用”  节点，然后选择“添加引用”  、在 .NET 选项卡中选择程序集并单击“确定”  。
 
 ### <a name="to-make-the-assemblies-locally-accessible-by-your-aspnet-application"></a>使程序集可由 ASP.NET 应用程序从本地访问
 1. 在 **References** 文件夹中，单击 Microsoft.ReportViewer.Common 程序集，使其属性显示在“属性”窗格中。
-2. 在“属性”窗格中，将“复制本地”设置为 True。
+2. 在“属性”窗格中，将“复制本地”  设置为 True。
 3. 为 Microsoft.ReportViewer.WebForms 重复步骤 1 和 2。
 
 ### <a name="to-get-reportviewer-language-pack"></a>获取 ReportViewer 语言包
 1. 安装 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?LinkId=317386)中的适当 Microsoft Report Viewer 2012 Runtime 可再发行组件包。
 2. 从下拉列表中选择语言，页面将重定向到相应的下载中心页面。
-3. 单击“下载”，开始下载 ReportViewerLP.exe。
-4. 下载 ReportViewerLP.exe 后，单击“运行”立即安装，或单击“保存”将其保存到计算机。 如果单击“保存”，请记住保存该文件所在的文件夹的名称。
-5. 找到保存该文件的文件夹。 右键单击 ReportViewerLP.exe、单击“以管理员身份运行”，并单击“是”。
+3. 单击“下载”  ，开始下载 ReportViewerLP.exe。
+4. 下载 ReportViewerLP.exe 后，单击“运行”  立即安装，或单击“保存”  将其保存到计算机。 如果单击“保存”  ，请记住保存该文件所在的文件夹的名称。
+5. 找到保存该文件的文件夹。 右键单击 ReportViewerLP.exe、单击“以管理员身份运行”  ，并单击“是”  。
 6. 在运行 ReportViewerLP.exe 之后，会看到 c:\windows\assembly 具有资源文件 **Microsoft.ReportViewer.Webforms.Resources** 和 **Microsoft.ReportViewer.Common.Resources**。
 
 ### <a name="to-configure-for-localized-reportviewer-control"></a>为本地化 ReportViewer 控件进行配置
 1. 按照上面的指定说明下载并安装 Microsoft Report Viewer 2012 Runtime 可再发行组件包。
-2. 在项目中创建\<语言\>文件夹并将关联的资源程序集文件复制到该位置。 要复制的资源程序集文件为：Microsoft.ReportViewer.Webforms.Resources.dll 和 Microsoft.ReportViewer.Common.Resources.dll。选择资源程序集文件，并在“属性”窗格中将“复制到输出目录”设置为“始终复制”。
+2. 在项目中创建\<语言\>文件夹并将关联的资源程序集文件复制到该位置。 要复制的资源程序集文件为：Microsoft.ReportViewer.Webforms.Resources.dll 和 Microsoft.ReportViewer.Common.Resources.dll。选择资源程序集文件，并在“属性”窗格中将“复制到输出目录”设置为“始终复制”     。
 3. 为 Web 项目设置“区域性和 UI区域性”。 有关如何为 ASP.NET 网页设置“区域性和 UI 区域性”的详细信息，请参阅[如何：为 ASP.NET 网页全球化设置区域性和 UI 区域性](https://go.microsoft.com/fwlink/?LinkId=237461)。
 
 ## <a name="configuring-authentication-and-authorization"></a>配置身份验证和授权

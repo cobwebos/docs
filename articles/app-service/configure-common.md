@@ -17,10 +17,10 @@ ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: bcc970375120f76e4ec8a90f487d251296f92dba
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957905"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
@@ -212,7 +212,7 @@ ms.locfileid: "65957905"
 
 每个应用都具有默认的根路径 (`/`) 映射到`D:\home\site\wwwroot`，默认情况下部署代码的位置。 如果您应用的根位于另一个文件夹，或者如果你的存储库具有多个应用程序，可以编辑或添加虚拟应用程序和目录下面。 单击**新虚拟应用程序或目录**。
 
-若要配置虚拟应用程序和目录，请指定每个虚拟目录和其对应于网站根目录的物理路径 (`D:\home`)。 还可选中“应用程序”复选框，将虚拟目录标记为应用程序。
+若要配置虚拟应用程序和目录，请指定每个虚拟目录和其对应于网站根目录的物理路径 (`D:\home`)。 还可选中“应用程序”复选框，将虚拟目录标记为应用程序。 
 
 ### <a name="containerized-apps"></a>容器化的应用
 

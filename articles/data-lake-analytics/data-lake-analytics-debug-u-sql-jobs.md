@@ -10,17 +10,17 @@ ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615384"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>调试失败 U-SQL 作业的用户定义 C# 代码
 
 U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调用 C# 函数，并执行类似于 SQL 的声明性语言所不支持的分析函数。 若要详细了解 U-SQL 扩展性，请参阅 [U-SQL 可编程性指南](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf)。 
 
-在实践中，任何代码都可能需要调试，但调试在云中包含自定义代码且日志文件有限的分布式作业有一定的难度。 [针对 Visual Studio 的 Azure Data Lake 工具](https://aka.ms/adltoolsvs)提供一项称作“失败顶点调试”的功能，可帮助我们更轻松地调试自定义代码中发生的失败。 当 U-SQL 作业失败时，服务会保留失败状态，该工具可帮助将云故障环境下载到本地计算机进行调试。 本地下载捕获整个云环境，包括任何输入数据和用户代码。
+在实践中，任何代码都可能需要调试，但调试在云中包含自定义代码且日志文件有限的分布式作业有一定的难度。 [针对 Visual Studio 的 Azure Data Lake 工具](https://aka.ms/adltoolsvs)提供一项称作“失败顶点调试”的功能，可帮助我们更轻松地调试自定义代码中发生的失败。  当 U-SQL 作业失败时，服务会保留失败状态，该工具可帮助将云故障环境下载到本地计算机进行调试。 本地下载捕获整个云环境，包括任何输入数据和用户代码。
 
 下面的视频展示了针对 Visual Studio 的 Azure Data Lake 工具中的“失败顶点调试”功能。
 
@@ -35,16 +35,16 @@ U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调�
 
 在针对 Visual Studio 的 Azure Data Lake 工具中打开失败作业时，错误选项卡中会显示含详细错误消息的黄色警报栏。
 
-1. 单击“下载”以下载所有必需资源和输入流。 如果下载未完成，请单击“重试”。
+1. 单击“下载”  以下载所有必需资源和输入流。 如果下载未完成，请单击“重试”  。
 
-2. 下载完成后，单击“打开”，生成本地调试环境。 将打开一个新的调试解决方案，如果在 Visual Studio 中打开了现有的解决方案，请确保在调试之前保存并关闭它。
+2. 下载完成后，单击“打开”  ，生成本地调试环境。 将打开一个新的调试解决方案，如果在 Visual Studio 中打开了现有的解决方案，请确保在调试之前保存并关闭它。
 
 ![Azure Data Lake Analytics U-SQL 调试 Visual Studio 下载顶点](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
 ## <a name="configure-the-debugging-environment"></a>配置调试环境
 
 > [!NOTE]
-> 调试前，请务必检查“异常设置”窗口中的“公共语言运行时异常”(Ctrl+Alt+E)。
+> 调试前，请务必检查“异常设置”窗口中的“公共语言运行时异常”  (Ctrl+Alt+E  )。
 
 ![Azure Data Lake Analytics U-SQL 调试 Visual Studio 设置](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
 
@@ -74,13 +74,13 @@ U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调�
 
 如果用户代码未包含在代码隐藏文件中，或未注册包含**调试信息**的程序集，则源代码不会自动包含在调试解决方案中。 在这种情况下，需要执行额外的步骤来添加源代码：
 
-1. 右键单击“解决方案 'VertexDebug'”，并选择“添加”>“现有项目...”，找到程序集源代码，并将项目添加到调试解决方案。
+1. 右键单击“解决方案 'VertexDebug'”，并选择“添加”>“现有项目...”，找到程序集源代码，并将项目添加到调试解决方案。 
 
     ![Azure Data Lake Analytics U-SQL 调试添加项目](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-add-project-to-debug-solution.png)
 
 2. 获取 **FailedVertexDebugHost** 项目的项目文件夹路径。 
 
-3. 右键单击添加的程序集源代码项目，选择“属性”，选择左侧的“生成”选项卡，将复制的以 \bin\debug 结尾的路径粘贴为“输出”中的“输出路径”。 最终输出路径就像`<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`。
+3. 右键单击添加的程序集源代码项目，选择“属性”，选择左侧的“生成”选项卡，将复制的以 \bin\debug 结尾的路径粘贴为“输出”中的“输出路径”。    最终输出路径就像`<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`。
 
     ![Azure Data Lake Analytics U-SQL调试设置 pdb 路径](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

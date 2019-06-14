@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman;cherylmc
 ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837804"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路
@@ -117,7 +117,7 @@ az network express-route list-service-providers
 
 查看此响应以检查你的连接服务提供商是否已在此处列出。 请记下以下信息，稍后在创建线路时需要用到：
 
-* 名称
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -160,7 +160,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 az network express-route list
 ```
 
-服务密钥会在响应的 ServiceKey 字段中列出。
+服务密钥会在响应的 ServiceKey 字段中列出  。
 
 ```azurecli
 "allowClassicOperations": false,
@@ -281,7 +281,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
 * 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 但不支持对线路的带宽进行降级。 
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 但不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
-* 可以启用和禁用允许经典操作。
+* 可以启用和禁用允许经典操作  。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
 
@@ -349,8 +349,8 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 若要取消预配并删除 ExpressRoute 线路，请确保已了解以下条件：
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请查看是否有虚拟网络链接到了该线路。
-* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们那一端取消预配线路。 在服务提供商取消对线路的预配并通知我们之前，我们会继续保留资源并收费。
-* 如果服务提供商已取消预配线路，则可以删除此线路。 取消预配线路后，服务提供商预配状态将被设置为“未预配”。 这样就会停止对线路的计费。
+* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们那一端取消预配线路   。 在服务提供商取消对线路的预配并通知我们之前，我们会继续保留资源并收费。
+* 如果服务提供商已取消预配线路，则可以删除此线路。 取消预配线路后，服务提供商预配状态将被设置为“未预配”  。 这样就会停止对线路的计费。
 
 可以通过运行以下命令来删除 ExpressRoute 线路：
 

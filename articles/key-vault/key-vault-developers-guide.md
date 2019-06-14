@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 72ec3080658b98376952f72f746c1b53fdf7de77
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704342"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
@@ -155,5 +155,5 @@ ms.locfileid: "64704342"
 
 ## <a name="supporting-libraries"></a>支持库
 
-- [Microsoft Azure Key Vault 核心库](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)提供 IKey 和 IKeyResolver 接口，用于通过标识符查找密钥，以及使用密钥执行操作。
+- [Microsoft Azure Key Vault 核心库](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)提供 IKey  和 IKeyResolver  接口，用于通过标识符查找密钥，以及使用密钥执行操作。
 - [Microsoft Azure 密钥保管库扩展](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions)为 Azure 密钥保管库提供扩展功能。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
 ms.openlocfilehash: cbaaed3fff99778bfab1feeacdab02bf8245a85a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714705"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>查询 Azure 监视器用于监视 HDInsight 群集的日志
@@ -34,7 +34,7 @@ ms.locfileid: "64714705"
 了解如何查找 HDInsight 群集的特定指标。
 
 1. 从 Azure 门户打开关联到 HDInsight 群集的 Log Analytics 工作区。
-2. 选择“日志搜索”磁贴。
+2. 选择“日志搜索”磁贴。 
 3. 键入以下查询在搜索框中搜索所有 HDInsight 群集配置为使用 Azure Monitor 日志，然后选择所有可用度量值的所有指标**运行**。
 
         search *
@@ -45,10 +45,10 @@ ms.locfileid: "64714705"
 
     ![搜索所有指标输出](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "Search all metrics output")
 
-5. 在左窗格的“类型”下选择要深入了解的指标，然后选择“应用”。 以下屏幕快照显示已选定 `metrics_resourcemanager_queue_root_default_CL` 类型。
+5. 在左窗格的“类型”下选择要深入了解的指标，然后选择“应用”   。 以下屏幕快照显示已选定 `metrics_resourcemanager_queue_root_default_CL` 类型。
 
     > [!NOTE]  
-    > 可能需要选择“[+]更多”按钮来查找所需指标。 此外，“应用”按钮位于列表底部，因此必须向下滚动才能看到它。
+    > 可能需要选择“[+]更多”按钮来查找所需指标  。 此外，“应用”按钮位于列表底部，因此必须向下滚动才能看到它  。
 
     请注意，文本框中的查询改为以下屏幕截图中突出显示的框中的内容：
 
@@ -67,7 +67,7 @@ ms.locfileid: "64714705"
 了解如何在特定的时间窗口查找错误消息。 此处的步骤只是演示如何找到感兴趣的错误消息的一个示例。 可以使用任何可用属性来查找要查找的错误。
 
 1. 从 Azure 门户打开关联到 HDInsight 群集的 Log Analytics 工作区。
-2. 选择“日志搜索”磁贴。
+2. 选择“日志搜索”磁贴。 
 3. 键入以下查询以搜索所有 HDInsight 群集配置为使用 Azure Monitor 日志的所有错误消息，然后选择**运行**。 
 
          search "Error"
@@ -76,7 +76,7 @@ ms.locfileid: "64714705"
 
     ![搜索全部错误输出](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "Search all errors output")
 
-4. 在左窗格的“类型”类别下，选择要深入了解的错误类型，然后选择“应用”。  请注意，结果已经过优化，只显示所选类型的错误。
+4. 在左窗格的“类型”类别下，选择要深入了解的错误类型，然后选择“应用”   。  请注意，结果已经过优化，只显示所选类型的错误。
 5. 可通过使用左窗格中的可用选项来深入了解此特定错误。 例如：
 
     - 若要查看来自特定工作节点的错误消息，请执行以下操作：
@@ -87,7 +87,7 @@ ms.locfileid: "64714705"
 
         ![搜索特定错误输出](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-time.png "Search for specific errors output")
 
-6. 查看特定的错误。 可以选择“[+] 显示更多”来查看实际的错误消息。
+6. 查看特定的错误。 可以选择“[+] 显示更多”来查看实际的错误消息  。
 
     ![搜索特定错误输出](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-arrived.png "Search for specific errors output")
 
@@ -96,25 +96,25 @@ ms.locfileid: "64714705"
 创建警报的第一步是到达基于其触发警报的查询。 可以根据需要使用任何查询创建警报。
 
 1. 从 Azure 门户打开关联到 HDInsight 群集的 Log Analytics 工作区。
-2. 选择“日志搜索”磁贴。
-3. 运行用于创建警报的以下查询，然后选择“运行”。
+2. 选择“日志搜索”磁贴。 
+3. 运行用于创建警报的以下查询，然后选择“运行”  。
 
         metrics_resourcemanager_queue_root_default_CL | where AppsFailed_d > 0
 
     查询列出了 HDInsight 群集上运行失败的应用程序。
 
-4. 选择页面顶部的“新建预警规则”。
+4. 选择页面顶部的“新建预警规则”  。
 
     ![输入查询以创建警报](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Enter query to create an alert")
 
-5. 在“创建规则”窗口中，输入用于创建警报的查询和其他详细信息，然后选择“创建预警规则”。
+5. 在“创建规则”窗口中，输入用于创建警报的查询和其他详细信息，然后选择“创建预警规则”   。
 
     ![输入查询以创建警报](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Enter query to create an alert")
 
 若要编辑或删除现有警报，请执行以下操作：
 
 1. 从 Azure 门户打开 Log Analytics 工作区。
-2. 在左侧菜单中，选择“警报”。
+2. 在左侧菜单中，选择“警报”  。
 3. 选择要编辑或删除的警报。
 4. 可以使用以下选项：**保存**、**放弃**、**禁用**和**删除**。
 

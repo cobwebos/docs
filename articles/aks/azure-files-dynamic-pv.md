@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9771c110e277d67bee329fe62434b18a01189476
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ed9be9f3ecc7a14a0aa0210ee34f9323126be085
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65072226"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061094"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -35,7 +35,7 @@ ms.locfileid: "65072226"
 * *Standard_RAGRS* - 标准读取访问异地冗余存储 (RA-GRS)
 
 > [!NOTE]
-> Azure 文件目前仅使用标准存储。 如果使用高级存储，则无法预配该卷。
+> Azure 文件在 AKS 群集中运行 Kubernetes 1.13 或更高版本支持高级存储。
 
 有关 Azure 文件的 Kubernetes 存储类的详细信息，请参阅 [Kubernetes 存储类][kubernetes-storage-classes]。
 
@@ -198,7 +198,7 @@ Volumes:
 
 默认的 *fileMode* 和 *dirMode* 值的 Kubernetes 版本有差异，如下表所述。
 
-| 版本 | value |
+| version | value |
 | ---- | ---- |
 | v1.6.x、v1.7.x | 0777 |
 | v1.8.0-v1.8.5 | 0700 |

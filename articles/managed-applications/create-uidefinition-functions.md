@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587914"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
@@ -526,7 +526,7 @@ ms.locfileid: "60587914"
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>字符串
 将参数转换为字符串。 此函数支持所有 JSON 数据类型的参数。
 
 以下示例返回 `"1"`：

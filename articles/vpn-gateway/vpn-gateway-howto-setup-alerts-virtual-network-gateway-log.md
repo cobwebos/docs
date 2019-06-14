@@ -5,18 +5,26 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptional
-ms.date: 04/22/2019
+ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 3880c847c54136dfd3ba1ecfe0178565091e229f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 48725ed8cdf3df30f8df31966aa632bfb2a4ef1f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510188"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066891"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>从 VPN 网关设置诊断日志事件的警报
 
-本文可帮助你设置基于从 Azure VPN 网关的诊断日志事件的警报。
+本文可帮助你设置基于从 Azure VPN 网关的诊断日志事件的警报。 提供以下日志。
+
+|***名称*** | ***说明*** |
+|---        | ---               |
+|GatewayDiagnosticLog | 包含对网关配置事件、 主要更改和维护事件的诊断日志 |
+|TunnelDiagnosticLog | 包含隧道状态更改事件。 如果适用，隧道连接/断开连接事件具有汇总的状态变化的原因 |
+|RouteDiagnosticLog | 日志更改为静态路由和发生在网关上的 BGP 事件 |
+|IKEDiagnosticLog | 控件的 IKE 消息和在网关事件记录 |
+|P2SDiagnosticLog | 记录点到站点控制消息和在网关事件 |
 
 ## <a name="setup"></a>设置警报
 
@@ -60,7 +68,7 @@ ms.locfileid: "65510188"
 
    ![选择用于自定义日志搜索](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "选择")
 
-10. 在“搜索查询”文本框中输入以下查询。 替换为相应的 <> 中的值。
+10. 在“搜索查询”文本框中输入以下查询。  替换为相应的 <> 中的值。
 
      `AzureDiagnostics |
      where Category  == "TunnelDiagnosticLog" and ResourceId == toupper("<RESOURCEID OF GATEWAY>") and TimeGenerated > ago(5m) and

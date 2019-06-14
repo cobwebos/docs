@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60814475"
 ---
 # <a name="semantic-interpretation"></a>语义解释
@@ -41,7 +41,7 @@ ms.locfileid: "60814475"
 |Int64|64 位带符号整数。 -9.2e18 和 9.2e18|9876543210|
 |Double|双精度浮点。 1.7e+/-308（15 位）|123.456789<br/>1.23456789e2|
 |Guid|全局唯一标识符|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
-|Query|查询表达式，指示索引中的数据对象子集|All()<br/>And(q1, q2)|
+|Query|查询表达式，指示索引中的数据对象子集|All()<br/>And(q1, q2)  |
 
 ## <a name="semantic-functions"></a>语义函数
 
@@ -98,7 +98,7 @@ query = Query(attrName, value)
 query = Query(attrName, value, op)
 ```
 
-根据指定运算 op（默认值为“eq”），返回仅包含其属性 attrName 匹配值 value 的数据对象的查询。  通常情况下，使用 `attrref` 元素基于匹配的输入查询字符串创建查询。  如果给定值或通过其他方式获得值，可使用 Query() 函数创建匹配该值的查询。
+根据指定运算 op（默认值为“eq”），返回仅包含其属性 attrName 匹配值 value 的数据对象的查询    。  通常情况下，使用 `attrref` 元素基于匹配的输入查询字符串创建查询。  如果给定值或通过其他方式获得值，可使用 Query() 函数创建匹配该值的查询。
 
 在下面的示例中，使用 Query() 函数来实现对指定特定十年中的学术出版物的支持。
 
@@ -115,7 +115,7 @@ written in the 90s
 
 `query = Composite(innerQuery);`
 
-返回一个查询，它封装一个由匹配组成的 innerQuery，该 innerQuery 针对常见复合属性 attr 的子属性。  封装要求任何匹配的数据对象的复合属性 attr 至少有一个单独满足 innerQuery 的值。  请注意，复合属性的子属性上的查询必须使用 Composite() 函数封装，然后才能与其他查询结合使用。
+返回一个查询，它封装一个由匹配组成的 innerQuery，该 innerQuery 针对常见复合属性 attr 的子属性   。  封装要求任何匹配的数据对象的复合属性 attr 至少有一个单独满足 innerQuery 的值   。  请注意，复合属性的子属性上的查询必须使用 Composite() 函数封装，然后才能与其他查询结合使用。
 
 例如，以下查询将返回“harry shum”的学术出版物，同时他在“microsoft”：
 ```
@@ -133,7 +133,7 @@ And(Composite(Query("academic#Author.Name", "harry shum"),
 
 `value = GetVariable(name, scope);`
 
-返回变量 name 的值，该值根据指定的 scope 定义。  name 是以字母开头，仅包含字母 (A-Z)、数字 (0-9) 和下划线 (_) 的标识符。  scope 可设置为“请求”或“系统”。  请注意，根据不同作用域定义的变量有别于彼此，包括通过语义函数的输出定义的变量。
+返回变量 name 的值，该值根据指定的 scope 定义   。  name 是以字母开头，仅包含字母 (A-Z)、数字 (0-9) 和下划线 (_) 的标识符  。  scope 可设置为“请求”或“系统”  。  请注意，根据不同作用域定义的变量有别于彼此，包括通过语义函数的输出定义的变量。
 
 请求作用域变量在当前解释请求的所有解释之间共用。  可使用它们来控制通过语法搜索解释。
 
@@ -148,7 +148,7 @@ And(Composite(Query("academic#Author.Name", "harry shum"),
 
 `SetVariable(name, value, scope);`
 
-根据指定的 scope，向变量 name 分配 value。  name 是以字母开头，仅包含字母 (A-Z)、数字 (0-9) 和下划线 (_) 的标识符。  目前 scope 唯一有效的值是“请求”。  没有任何可设置的系统变量。
+根据指定的 scope，向变量 name 分配 value    。  name 是以字母开头，仅包含字母 (A-Z)、数字 (0-9) 和下划线 (_) 的标识符  。  目前 scope 唯一有效的值是“请求”  。  没有任何可设置的系统变量。
 
 请求作用域变量在当前解释请求的所有解释之间共用。  可使用它们来控制通过语法搜索解释。
 
@@ -156,12 +156,12 @@ And(Composite(Query("academic#Author.Name", "harry shum"),
 
 `AssertEquals(value1, value2);`
 
-如果 value1 和 value2 等效，则函数成功，并且没有任何副作用。  否则，函数失败并拒绝解释。
+如果 value1 和 value2 等效，则函数成功，并且没有任何副作用   。  否则，函数失败并拒绝解释。
 
 ### <a name="assertnotequals-function"></a>AssertNotEquals 函数
 
 `AssertNotEquals(value1, value2);`
 
-如果 value1 和 value2 不等效，则函数成功，并且没有任何副作用。  否则，函数失败并拒绝解释。
+如果 value1 和 value2 不等效，则函数成功，并且没有任何副作用   。  否则，函数失败并拒绝解释。
 
 

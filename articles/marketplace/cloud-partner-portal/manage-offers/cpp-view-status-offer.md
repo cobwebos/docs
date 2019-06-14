@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: b8113552edf9dd2f886b5752b2ebc69afc0fda08
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: fff89dd8a17aaf6d45462edeaa22f1d2efc8d02b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942409"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064309"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>查看 Azure 市场和 AppSource 套餐的发布状态
 
@@ -31,15 +31,15 @@ ms.locfileid: "64942409"
 
 ## <a name="publishing-status-details"></a>发布状态详细信息 
 
-在“新建套餐”页的“状态”选项卡中，可以找到有关套餐在经历发布过程时所处的各种状态的更多详细信息。  此页将列出该套餐类型的所有发布步骤。  *请注意，编号和特定的步骤通常根据套餐类型的不同而异。*  此页还会指出 Microsoft 验证和评审步骤所提出的任何未处理问题，通常，发布者需要先对这些问题采取措施，然后发布过程才能继续。  例如，下图显示了某个新虚拟机套餐的“状态”选项卡。 
+在“新建套餐”页的“状态”选项卡中，可以找到有关套餐在经历发布过程时所处的各种状态的更多详细信息。    此页将列出该套餐类型的所有发布步骤。  *请注意，编号和特定的步骤通常根据套餐类型的不同而异。*  此页还会指出 Microsoft 验证和评审步骤所提出的任何未处理问题，通常，发布者需要先对这些问题采取措施，然后发布过程才能继续。  例如，下图显示了某个新虚拟机套餐的“状态”选项卡。  
 
 ![VM 套餐的“状态”选项卡](./media/vm-offer-pub-steps1.png)
 
-下面是某个咨询服务的示例“状态”选项卡，其中显示了潜在顾客管理设置中报告的错误。  由于咨询服务需要潜在顾客管理，必须先更正此错误，发布才能继续。
+下面是某个咨询服务的示例“状态”选项卡，其中显示了潜在顾客管理设置中报告的错误。   由于咨询服务需要潜在顾客管理，必须先更正此错误，发布才能继续。
 
 ![显示了错误的咨询服务“状态”选项卡](./media/consulting-service-error.png)
 
-最后一个 Azure 应用程序状态示例显示严重的 Microsoft 评审问题。  其中显示了包含此评审问题详细信息的 VSTS 项的热链接。  有关详细信息，请参阅 [发布 Azure 应用程序套餐](cpp-publish-offer.md)。
+最后一个 Azure 应用程序状态示例显示严重的 Microsoft 评审问题。  它包含指向包含有关此查看问题的详细的信息的 Azure DevOps 项目的热链接。  有关详细信息，请参阅 [发布 Azure 应用程序套餐](cpp-publish-offer.md)。
 
 ![显示了评审问题的 Azure 应用“状态”选项卡](../azure-applications/media/status-tab-ms-review.png)
 

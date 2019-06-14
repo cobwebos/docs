@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: c98229a28f31ff715f252dc3915ca690e99245ff
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65979513"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
@@ -33,13 +33,13 @@ ms.locfileid: "65979513"
 
 若要通过 Azure 门户注册资源提供程序的来宾配置，请按照下列步骤操作：
 
-1. 启动 Azure 门户，单击“所有服务”。 搜索并选择“订阅”。
+1. 启动 Azure 门户，单击“所有服务”  。 搜索并选择“订阅”  。
 
 1. 找到并单击要启用来宾配置的订阅。
 
-1. 在“订阅”页的左侧菜单中，单击“资源提供程序”。
+1. 在“订阅”  页的左侧菜单中，单击“资源提供程序”  。
 
-1. 筛选或滚动直至找到“Microsoft.GuestConfiguration”，然后在同一行上单击“注册”。
+1. 筛选或滚动直至找到“Microsoft.GuestConfiguration”  ，然后在同一行上单击“注册”  。
 
 #### <a name="registration---powershell"></a>注册 - PowerShell
 
@@ -69,9 +69,9 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|发布服务器|名称|版本|
+|发布者|Name|版本|
 |-|-|-|
-|规范|Ubuntu Server|14.04、16.04、18.04|
+|Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
 |Microsoft|Windows Server|2012 Datacenter、 2012 R2 数据中心、 2016年数据中心、 2019年数据中心|
 |Microsoft|Windows 客户端|Windows 10|
@@ -99,11 +99,11 @@ Windows Server Nano Server 不支持在任何版本。
 
 运行由来宾配置每个审核需要两个策略定义， **DeployIfNotExists**定义和一个**审核**定义。 **DeployIfNotExists**定义用于准备虚拟机的来宾配置代理和其他组件以支持[验证工具](#validation-tools)。
 
-“DeployIfNotExists”策略定义验证并更正以下项目：
+“DeployIfNotExists”策略定义验证并更正以下项目  ：
 
 - 验证虚拟机已分配要评估的配置。 如果当前不存在任何分配，则获取分配并通过以下操作准备虚拟机：
   - 使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)对虚拟机进行身份验证
-  - 安装 Microsoft.GuestConfiguration 扩展的最新版本
+  - 安装 Microsoft.GuestConfiguration  扩展的最新版本
   - 安装[验证工具](#validation-tools)和依赖项（如果需要）
 
 如果**DeployIfNotExists**分配是不符合[修正任务](../how-to/remediate-resources.md#create-a-remediation-task)可用。
@@ -111,12 +111,12 @@ Windows Server Nano Server 不支持在任何版本。
 一次**DeployIfNotExists**分配的符合性，**审核**策略分配使用本地验证工具来确定是否配置分配是符合还是不符合。
 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
 
-Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“符合性”节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/getting-compliance-data.md)。
+Azure Policy 使用来宾配置资源提供程序 complianceStatus  属性在“符合性”  节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/getting-compliance-data.md)。
 
 > [!NOTE]
 > 对于每个来宾配置定义，必须同时存在 **DeployIfNotExists** 和 **Audit** 策略定义。
 
-来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：审核 Linux 和 Windows 虚拟机内的密码安全设置”的内置计划包含 18 个策略。 对于 Windows，有六个 **DeployIfNotExists** 和 **Audit** 对，对于 Linux，有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
+来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：  审核 Linux 和 Windows 虚拟机内的密码安全设置”的内置计划包含 18 个策略。 对于 Windows，有六个 **DeployIfNotExists** 和 **Audit** 对，对于 Linux，有三个对。 在每种情况下，都可使用定义内的逻辑验证仅基于[策略规则](definition-structure.md#policy-rule)定义评估目标操作系统。
 
 ## <a name="client-log-files"></a>客户端日志文件
 
@@ -143,4 +143,4 @@ Linux：`/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<ve
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)。
 - 了解如何[修正的不合规资源](../how-to/remediate-resources.md)。
-- 查看管理组与[使用 Azure 管理组组织资源](../../management-groups/index.md)。
+- 参阅[使用 Azure 管理组来组织资源](../../management-groups/index.md)，了解什么是管理组。

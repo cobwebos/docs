@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
 ms.openlocfilehash: b3357436d068396c5c3c4fae10ed6857759c5aed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61219862"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒体服务零碎的 MP4 实时引入规范 
@@ -44,17 +44,17 @@ ms.locfileid: "61219862"
 ### <a name="live-ingest-format-definitions"></a>实时引入格式定义
 下表列出了适用于 Azure 媒体服务的实时引入的特殊格式定义：
 
-1. “ftyp”、“LiveServerManifestBox”及“moov”框必须连同每个请求 (HTTP POST) 一起发送。 这些框必须在流的开头发送，每当需要恢复流引入时，编码器都必须重新连接。 有关详细信息，请参阅 [1] 中的第 6 节。
-1. [1] 中的第 3.3.2 节定义了实时引入名为“StreamManifestBox”的可选框。 由于 Azure 负载均衡器的路由逻辑，此框已被弃用。 引入到媒体服务时不应出现此框。 如果存在此框，媒体服务会以无提示方式将其忽略。
-1. 每个片段必须有在 [1] 的 3.2.3.2 中定义的“TrackFragmentExtendedHeaderBox”框。
-1. 应使用第 2 版的“TrackFragmentExtendedHeaderBox”框，才能在多个数据中心生成具有相同 URL 的媒体片段。 对于跨数据中心故障转移基于索引的流格式（例如 Apple HLS 和基于索引的 MPEG DASH），片段索引字段是必需的。 若要启用跨数据中心故障转移，片段索引必须在多个编码器之间同步，并且后续的每个媒体片段都必须增加 1，即使跨编码器重新启动或失败。
-1. [1] 中的第 3.3.6 节定义了名为“MovieFragmentRandomAccessBox” (“mfra”) 的框，此框可能会在实时引入结束时发送，表示通道流式传输结束 (EOS)。 媒体服务的引入逻辑使得 EOS 的使用方式已过时，不应发送实时引入的“mfra”框。 如果已发送，媒体服务会以无提示方式将其忽略。 要重置引入点的状态，我们建议你使用[通道重置](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)。 此外，建议使用[程序停止](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs)来结束演播与流。
+1. “ftyp”  、“LiveServerManifestBox”  及“moov”  框必须连同每个请求 (HTTP POST) 一起发送。 这些框必须在流的开头发送，每当需要恢复流引入时，编码器都必须重新连接。 有关详细信息，请参阅 [1] 中的第 6 节。
+1. [1] 中的第 3.3.2 节定义了实时引入名为“StreamManifestBox”  的可选框。 由于 Azure 负载均衡器的路由逻辑，此框已被弃用。 引入到媒体服务时不应出现此框。 如果存在此框，媒体服务会以无提示方式将其忽略。
+1. 每个片段必须有在 [1] 的 3.2.3.2 中定义的“TrackFragmentExtendedHeaderBox”  框。
+1. 应使用第 2 版的“TrackFragmentExtendedHeaderBox”  框，才能在多个数据中心生成具有相同 URL 的媒体片段。 对于跨数据中心故障转移基于索引的流格式（例如 Apple HLS 和基于索引的 MPEG DASH），片段索引字段是必需的。 若要启用跨数据中心故障转移，片段索引必须在多个编码器之间同步，并且后续的每个媒体片段都必须增加 1，即使跨编码器重新启动或失败。
+1. [1] 中的第 3.3.6 节定义了名为“MovieFragmentRandomAccessBox”  (“mfra”  ) 的框，此框可能会在实时引入结束时发送，表示通道流式传输结束 (EOS)。 媒体服务的引入逻辑使得 EOS 的使用方式已过时，不应发送实时引入的“mfra”  框。 如果已发送，媒体服务会以无提示方式将其忽略。 要重置引入点的状态，我们建议你使用[通道重置](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)。 此外，建议使用[程序停止](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs)来结束演播与流。
 1. MP4 片段持续时间应为常量，以减小客户端清单的大小。 常量 MP4 片段持续时间也可以通过使用重复标记来改进客户端下载启发。 持续时间可能会波动，以补偿非整数帧速率。
 1. MP4 片段持续期间应该大约在 2 到 6 秒之间。
-1. MP4 片段时间戳和索引（“TrackFragmentExtendedHeaderBox”、`fragment_ absolute_ time` 和 `fragment_index`）应以递增顺序送达。 尽管媒体服务在复制片段方面很有弹性，但是其根据媒体时间线重新排序片段的功能非常有限。
+1. MP4 片段时间戳和索引（“TrackFragmentExtendedHeaderBox”  、`fragment_ absolute_ time` 和 `fragment_index`）应以递增顺序送达。 尽管媒体服务在复制片段方面很有弹性，但是其根据媒体时间线重新排序片段的功能非常有限。
 
 ## <a name="4-protocol-format--http"></a>4.协议格式 – HTTP
-媒体服务基于 ISO 分片 MP4 的实时引入使用长时间运行的标准 HTTP POST 请求，以将分片 MP4 格式打包的编码媒体数据传输到服务。 每个 HTTP POST 发送一个完整的分片 MP4 位流（“流”），其开头为标头框（“ftyp”、“实时服务器清单框”及 “moov”框），后接一系列片段（“moof”与“mdat”框）。 有关 HTTP POST 请求的 URL 语法，请参阅 [1] 中的第 9.2 节。 以下是 POST URL 的示例： 
+媒体服务基于 ISO 分片 MP4 的实时引入使用长时间运行的标准 HTTP POST 请求，以将分片 MP4 格式打包的编码媒体数据传输到服务。 每个 HTTP POST 发送一个完整的分片 MP4 位流（“流”），其开头为标头框（“ftyp”  、“实时服务器清单框”  及 “moov”框  ），后接一系列片段（“moof”  与“mdat”  框）。 有关 HTTP POST 请求的 URL 语法，请参阅 [1] 中的第 9.2 节。 以下是 POST URL 的示例： 
 
     http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
 
@@ -63,14 +63,14 @@ ms.locfileid: "61219862"
 
 1. 编码器应使用相同的引入 URL 来发送包含空白“正文”（内容长度为零）的 HTTP POST 请求，以此开始广播。 这可有助于编码器快速检测实时引入终结点是否有效，以及是否需要任何身份验证或其他条件。 服务器在收到整个请求（包括 POST 正文）之前，无法对每个 HTTP 协议传回 HTTP 响应。 由于实时事件具有长时间运行的性质，如果不执行此步骤，编码器在完成发送所有数据之前，可能无法检测任何错误。
 1. 编码器必须处理任何因为 (1) 而造成的错误或身份验证质询。 如果 (1) 成功并返回 200 响应，则继续进行。
-1. 编码器必须以分片 MP4 流开始新的 HTTP POST 请求。 有效负载必须以标头框开头后接片段。 请注意，由于上一个请求在流结束前终止，因此，即使编码器必须重新连接，“ftyp”、“实时服务器清单框”及 “moov”框（依此顺序）仍必须连同每个请求一起发送。 
+1. 编码器必须以分片 MP4 流开始新的 HTTP POST 请求。 有效负载必须以标头框开头后接片段。 请注意，由于上一个请求在流结束前终止，因此，即使编码器必须重新连接，“ftyp”  、“实时服务器清单框”  及 “moov”  框（依此顺序）仍必须连同每个请求一起发送。 
 1. 因为无法预测实时事件的整个内容长度，编码器必须使用区块传输编码进行上传。
 1. 当事件结束时，在发送最后一个片段之后，编码器必须正常结束区块传输编码消息序列（大多数 HTTP 客户端堆栈会自动处理）。 编码器必须等候服务返回最终响应代码，然后终止连接。 
 1. 如 [1] 中第 9.2 节所述，编码器不得使用 `Events()` 名词进行实时引入媒体服务。
 1. 如果 HTTP POST 请求在流结束前终止或超时并出现一个 TCP 错误，则编码器必须使用新的连接来发出新的 POST 请求，并按照上述要求操作。 此外，编码器必须在流中为每个轨迹重新发送之前的两个 MP4 片段，并恢复流式传输，而不在媒体时间线上造成中断。 为每个轨迹重新发送最后两个 MP4 片段可确保不会丢失数据。 换句话说，如果流包含音频和视频轨迹，并且当前 POST 请求失败，则编码器必须重新连接，并为音频轨迹重新发送最后两个片段（先前已成功发送），为视频轨迹重新发送最后两个片段（先前已成功发送），以确保不会丢失任何数据。 编码器必须维护媒体片段的“转发”缓冲区，当重新连接时会重新发送此缓冲区。
 
-## <a name="5-timescale"></a>5.时间刻度
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) 描述了 SmoothStreamingMedia（第 2.2.2.1 节）、StreamElement（第 2.2.2.3 节）、StreamFragmentElement（第 2.2.2.6 节）和 LiveSMIL（第 2.2.7.3.1 节）的时间刻度使用情况。 如果没有时间刻度值，则使用默认值 10,000,000 (10 MHz)。 尽管平滑流式处理格式规范不会阻止使用其他时间刻度值，但大多数编码器实现会使用此默认值 (10 MHz) 来生成平滑流式处理引入数据。 由于 [Azure 媒体动态打包](media-services-dynamic-packaging-overview.md)功能的原因，建议为视频流使用 90-KHz 时间刻度，为音频流使用 44.1 KHZ 或 48.1 KHZ 时间刻度。 如果不同的流采用不同的时间刻度值，则必须发送流级时间刻度。 有关详细信息，请参阅 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。     
+## <a name="5-timescale"></a>5.Timescale
+[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) 描述了 SmoothStreamingMedia  （第 2.2.2.1 节）、StreamElement  （第 2.2.2.3 节）、StreamFragmentElement  （第 2.2.2.6 节）和 LiveSMIL  （第 2.2.7.3.1 节）的时间刻度使用情况。 如果没有时间刻度值，则使用默认值 10,000,000 (10 MHz)。 尽管平滑流式处理格式规范不会阻止使用其他时间刻度值，但大多数编码器实现会使用此默认值 (10 MHz) 来生成平滑流式处理引入数据。 由于 [Azure 媒体动态打包](media-services-dynamic-packaging-overview.md)功能的原因，建议为视频流使用 90-KHz 时间刻度，为音频流使用 44.1 KHZ 或 48.1 KHZ 时间刻度。 如果不同的流采用不同的时间刻度值，则必须发送流级时间刻度。 有关详细信息，请参阅 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。     
 
 ## <a name="6-definition-of-stream"></a>6.“流”的定义
 流是指在撰写实时演播内容、处理流故障转移和冗余方案的实时引入中操作的基本单位。 流定义为一个唯一的分片 MP4 位流，其中可包含单个轨迹或多个轨迹。 完整实时演播可能包含一个或多个流，具体要取决于实时编码器的配置。 以下示例演示了使用流撰写完整实时演播内容的各种选项。
@@ -116,7 +116,7 @@ ms.locfileid: "61219862"
 
     b. 新的 HTTP POST URL 必须与初始 POST URL 相同。
   
-    c. 新的 HTTP POST 必须包括与初始 POST 相同的流标头（“ftyp”、“实时服务器清单框”及“moov”框）。
+    c. 新的 HTTP POST 必须包括与初始 POST 相同的流标头（“ftyp”  、“实时服务器清单框”  及“moov”  框）。
   
     d. 必须重新发送为每个轨迹发送的最后两个片段，且必须恢复流式传输，而不在媒体时间线上造成中断。 MP4 片段时间戳必须连续递增，甚至可跨越 HTTP POST 请求。
 1. 如果未以匹配 MP4 片段持续时间的速率发送数据，则编码器应该终止 HTTP POST 请求。  不发送数据的 HTTP POST 请求可以防止媒体服务在服务更新事件中很快与编码器断开连接。 出于此原因，稀疏（广告信号）轨迹的 HTTP POST 应该短暂留存，并在发送疏松片段之后立即终止。
@@ -158,8 +158,8 @@ ms.locfileid: "61219862"
 以下步骤是引入稀疏轨迹的建议实现方式：
 
 1. 创建独立的分片 MP4 位流，其中只包含稀疏轨迹，而不包含音频/视频轨迹。
-1. 在如 [1] 的第 6 节定义的“实时服务器清单框”中，使用“parentTrackName”参数指定父轨迹的名称。有关详细信息，请参阅 [1] 中的 4.2.1.2.1.2 节。
-1. 在“实时服务器清单框”中，“manifestOutput”必须设置为“true”。
+1. 在如 [1] 的第 6 节定义的“实时服务器清单框”  中，使用“parentTrackName”  参数指定父轨迹的名称。有关详细信息，请参阅 [1] 中的 4.2.1.2.1.2 节。
+1. 在“实时服务器清单框”  中，“manifestOutput”  必须设置为“true”  。
 1. 根据信号事件的稀疏性质，建议如下：
    
     a. 实时事件开始时，编码器会将初始标头框发送给服务，使服务可以在客户端清单中注册稀疏轨迹。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 32b0f467f11cf8cb0a04657006cb5a86b11e27e9
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 003a14174ff65bab253f27a458d4f3e2c0a1a6db
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755171"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070004"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>高性能计算虚拟机大小
 
@@ -72,7 +72,7 @@ Azure Marketplace 有支持 RDMA 连接的许多 Linux 分发：
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  有关详细详细了解如何启用 InfiniBand，设置 MPI，请参阅[启用 InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband-with-sriov)。
+  有关详细详细了解如何启用 InfiniBand，设置 MPI，请参阅[启用 InfiniBand](../workloads/hpc/enable-infiniband.md)。
 
 
 ### <a name="cluster-configuration-options"></a>群集配置选项
@@ -107,5 +107,5 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Linux H
 
 ## <a name="next-steps"></a>后续步骤
 
-- 要详细了解如何设置、 优化和缩放[HPC 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc)在 Azure 上。
+- 要详细了解如何设置、 优化和缩放[HPC 工作负荷](../workloads/hpc/configure.md)在 Azure 上。
 - 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。

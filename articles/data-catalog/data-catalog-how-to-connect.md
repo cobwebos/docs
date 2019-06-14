@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001787"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何连接到数据源
@@ -23,7 +23,7 @@ ms.locfileid: "61001787"
 在数据源注册期间，**Azure 数据目录**会接收有关数据源的元数据。 此元数据包括数据源位置的详细信息。 位置的详细信息因数据源而不同，但始终包含连接所需的信息。 例如，SQL Server 表的位置包括服务器名称、数据库名称、架构名称和表名，而 SQL Server Reporting Services 报表的位置包括服务器名称和报表的路径。 其他数据源类型的位置会反映源系统的结构和功能。
 
 ## <a name="integrated-client-tools"></a>集成客户端工具
-要连接到数据源，最简单的方法是使用 “Azure 数据目录”门户中的"打开方式..."菜单。 此菜单会显示一份列表，列表上列有用于连接到所选数据资产的选项。
+要连接到数据源，最简单的方法是使用 “Azure 数据目录”  门户中的"打开方式..."菜单。 此菜单会显示一份列表，列表上列有用于连接到所选数据资产的选项。
 使用默认磁贴视图时，此菜单在每个磁贴上可用。
 
  ![从数据资产磁贴在 Excel 中打开 SQL Server 表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
@@ -45,7 +45,7 @@ ms.locfileid: "61001787"
 | 报表管理器 |http:// |请参阅 [SQL Server Reporting Services 的浏览器要求](https://technet.microsoft.com/library/ms156511.aspx) |
 
 ## <a name="your-data-your-tools"></a>数据，工具
-菜单中可用的选项取决于当前所选的数据资产类型。 当然，并非所有可能的工具都包括在“打开方式...” 菜单中，但仍可以使用任何客户端工具轻松连接到数据源。 在“Azure 数据目录”门户中选中某数据资产时，会在属性窗格中显示其完整位置。
+菜单中可用的选项取决于当前所选的数据资产类型。 当然，并非所有可能的工具都包括在“打开方式...” 菜单中，但仍可以使用任何客户端工具轻松连接到数据源。 在“Azure 数据目录”  门户中选中某数据资产时，会在属性窗格中显示其完整位置。
 
  ![SQL Server 表的连接信息](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "61001787"
  ![包含提供的请求访问指令的连接信息](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
 ## <a name="summary"></a>摘要
-使用 **Azure 数据目录**注册数据源，将结构性元数据和描述性元数据从数据源复制到目录服务，使数据可被发现。 注册并发现数据源后，用户可以从“Azure 数据目录”门户使用“打开方式...”菜单， 或者使用用户自己选择的数据工具连接到数据源。
+使用 **Azure 数据目录**注册数据源，将结构性元数据和描述性元数据从数据源复制到目录服务，使数据可被发现。 注册并发现数据源后，用户可以从“Azure 数据目录”  门户使用“打开方式...”菜单， 或者使用用户自己选择的数据工具连接到数据源。
 
 ## <a name="see-also"></a>另请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程，了解有关如何连接到数据源的分步详细说明。

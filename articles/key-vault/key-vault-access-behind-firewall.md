@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
 ms.openlocfilehash: bc6315f5ab264108369410b73a667fa1e07e1e44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64689941"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙保护下的 Azure 密钥保管库
@@ -55,7 +55,7 @@ ms.locfileid: "64689941"
 
 ## <a name="key-vault-operations"></a>密钥保管库操作
 
-对于所有密钥保管库对象（密钥和密码）管理和加密操作，密钥保管库客户端需要访问密钥保管库终结点。 终结点 DNS 后缀因密钥保管库位置而异。 密钥保管库终结点的格式是 vault-name.region-specific-dns-suffix，如下表所示。  
+对于所有密钥保管库对象（密钥和密码）管理和加密操作，密钥保管库客户端需要访问密钥保管库终结点。 终结点 DNS 后缀因密钥保管库位置而异。 密钥保管库终结点的格式是 vault-name  .region-specific-dns-suffix  ，如下表所示。  
 
 | 操作类型 | 终结点：端口 |
 | --- | --- |

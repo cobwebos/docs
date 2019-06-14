@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: b05a7ce260e8cc1da4ac8a0c186694ae097a3b1e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64721290"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
@@ -31,16 +31,16 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 如果蓝图定义包含顺序，以便将项目部署任何指令或指令为 null，则使用以下顺序：
 
-- 订阅级别“角色分配”项目按项目名称排序
-- 订阅级别“策略分配”项目按项目名称排序
-- 订阅级别“Azure 资源管理器模板”项目按项目名称排序
-- “资源组”项目（包括子项目）按占位符名称排序
+- 订阅级别“角色分配”项目按项目名称排序 
+- 订阅级别“策略分配”项目按项目名称排序 
+- 订阅级别“Azure 资源管理器模板”项目按项目名称排序 
+- “资源组”项目（包括子项目）按占位符名称排序 
 
 在每个**资源组**项目中，将按照以下顺序排列在该资源组中创建的项目：
 
-- 资源组子“角色分配”项目按项目名称排序
-- 资源组子“策略分配”项目按项目名称排序
-- 资源组子“Azure 资源管理器模板”项目按项目名称排序
+- 资源组子“角色分配”项目按项目名称排序 
+- 资源组子“策略分配”项目按项目名称排序 
+- 资源组子“Azure 资源管理器模板”项目按项目名称排序 
 
 > [!NOTE]
 > 利用[artifacts()](../reference/blueprint-functions.md#artifacts)上所引用的项目创建隐式依赖项。
@@ -53,8 +53,8 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ### <a name="example---ordered-resource-group"></a>示例-排序资源组
 
-此示例蓝图定义具有已通过声明的值来定义自定义排序顺序的资源组`dependsOn`，以及标准的资源组。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。
-standard-rg 将按默认排序顺序进行处理。
+此示例蓝图定义具有已通过声明的值来定义自定义排序顺序的资源组`dependsOn`，以及标准的资源组。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理   。
+standard-rg 将按默认排序顺序进行处理  。
 
 ```json
 {

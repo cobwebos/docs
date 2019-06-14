@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/5/2019
+ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 44d5ce3e194c873a564039934f518cb3a0e142e3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 2387f2546afa9d5af2cb909a1e6a2179548e3b5a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497181"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053328"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>迁移 Azure 应用程序网关和 Web 应用程序防火墙从 v1 到 v2
 
@@ -117,11 +117,11 @@ ms.locfileid: "66497181"
 
       若要创建的 PSApplicationGatewayTrustedRootCertificate 对象的列表，请参阅[新建 AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)。
    * **privateIpAddress: [字符串]:可选**。 特定专用 IP 地址，你想要关联到新的 v2 网关。  这必须是从同一个 VNet 分配给新 v2 网关。 如果这未指定，脚本会 v2 网关分配专用 IP 地址。
-    * **publicIpResourceId: [String]:可选**。 在你想要分配给新 v2 网关的订阅中的公共 IP 地址资源的 resourceId。 如果未指定，脚本会分配相同的资源组中的新公共 IP。 名称是 v2 网关的名称与 *-IP*追加。
+    * **publicIpResourceId: [String]:可选**。 你想要分配给新 v2 网关的订阅中的公共 IP 地址 (标准 SKU) 资源的 resourceId。 如果未指定，脚本将分配同一资源组中的新公共 IP。 名称是 v2 网关的名称与 *-IP*追加。
    * **validateMigration: [开关]:可选**。 如果你想要在第 2 版网关创建并配置复制后执行一些基本的配置比较验证的脚本，请使用此参数。 默认情况下不进行任何验证。
    * **enableAutoScale: [开关]:可选**。 如果你想要在新 v2 网关上启用自动缩放，在创建后的脚本，请使用此参数。 默认情况下，禁用自动缩放。 你可以始终手动启用它更高版本上新创建的第 2 版网关。
 
-1. 运行该脚本使用适当的参数。
+1. 运行该脚本使用适当的参数。 可能需要 5 至 7 分钟时间才能完成。
 
     **示例**
 
@@ -176,7 +176,11 @@ ms.locfileid: "66497181"
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>是通过 Azure PowerShell 脚本创建的新 v2 网关大小进行适当调整以处理所有当前由我 v1 的网关的流量？
 
-Azure PowerShell 脚本使用适当的大小来处理您现有的 V1 网关上的流量创建新的 v2 网关。 默认情况下，禁用自动缩放，但在运行该脚本时，可以启用自动缩放。
+Azure PowerShell 脚本使用适当的大小来处理您现有的 v1 网关上的流量创建新的 v2 网关。 默认情况下，禁用自动缩放，但在运行该脚本时，可以启用自动缩放。
+
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>我配置了我 v1 的网关将日志发送到 Azure 存储。 该脚本是否复制 v2 还为此配置？
+
+不。 该脚本不会复制 v2 的此配置。 到已迁移的第 2 版网关必须单独添加日志配置。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我遇到了一些使用此脚本的问题。 如何获得帮助？
   

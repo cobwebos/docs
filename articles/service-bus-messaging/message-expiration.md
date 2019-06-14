@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: fdfd7794961b0254526b124525c6e978d13b0114
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800264"
 ---
 # <a name="message-expiration-time-to-live"></a>消息过期时间（生存时间）
@@ -58,7 +58,7 @@ ms.locfileid: "65800264"
 
 此功能是使用 [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) 属性启用的。 此属性设置为自动删除某个实体之前，该实体必须处于空闲（未使用）状态的持续时间。 此属性的最小值为 5。
  
-必须通过 Azure 资源管理器操作或 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 设置此 autoDeleteOnIdle 属性。 不能在门户中设置此属性。
+必须通过 Azure 资源管理器操作或 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 设置此  autoDeleteOnIdle 属性。 不能在门户中设置此属性。
 
 ## <a name="idleness"></a>空闲
 

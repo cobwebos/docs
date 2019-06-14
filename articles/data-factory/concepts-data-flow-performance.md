@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 46be01c57be0e4f5fa74f8e8b0d91db3d78f441c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d4acc620fb2a4c41615c745516e5ccfafd59d848
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480413"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057950"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据的流性能和优化指南
 
@@ -41,7 +41,7 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>针对 Azure SQL 数据库和 Azure SQL 数据仓库进行优化
 
-![源部件](media/data-flow/sourcepart2.png "源部件")
+![源部件](media/data-flow/sourcepart3.png "源部件")
 
 ### <a name="partition-your-source-data"></a>将源数据分区
 
@@ -122,8 +122,8 @@ Azure 数据工厂映射数据流提供了用于设计、 部署和安排在规�
 * 若要避免耗尽计算节点资源，您可以在 ADF 中，这会针对性能进行优化，保留默认值或显式分区方案，然后再添加合并中的所有部分的管道中的后续复制活动从输出文件夹文件到新的单文件。 从根本上来说，此方法将从文件合并转换的操作，并实现相同的结果与设置"输出到单个文件"。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅其他数据流文章：
+请参阅与性能相关的其他数据流文章：
 
-- [数据流概述](concepts-data-flow-overview.md)
+- [数据流优化选项卡](concepts-data-flow-optimize-tab.md)
 - [数据流活动](control-flow-execute-data-flow-activity.md)
 - [监视数据流性能](concepts-data-flow-monitoring.md)

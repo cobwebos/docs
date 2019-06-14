@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
 ms.openlocfilehash: e4571a8918b7877b728b54129e47ffcf4af9b46a
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65979630"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
@@ -56,7 +56,7 @@ Azure 提供了用于授予对服务总线命名空间的访问权限的内置 R
 
 下一步，[创建服务总线消息传送命名空间](service-bus-create-namespace-portal.md)。
 
-在创建命名空间后，在门户上导航到其“访问控制(IAM)”页面，然后单击“添加角色分配”将 Azure AD 用户帐户添加到“所有者”角色。 如果你使用自己的用户帐户并且已创建了命名空间，则已获得“所有者”角色。 若要向角色添加一个不同的帐户，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。
+在创建命名空间后，在门户上导航到其“访问控制(IAM)”  页面，然后单击“添加角色分配”  将 Azure AD 用户帐户添加到“所有者”角色。 如果你使用自己的用户帐户并且已创建了命名空间，则已获得“所有者”角色。 若要向角色添加一个不同的帐户，请在“添加权限”  面板的“选择”  字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”  。
 
 用户帐户现在已具有对服务总线命名空间和对之前创建的队列的访问权限。
 
@@ -74,7 +74,7 @@ Azure 提供了用于授予对服务总线命名空间的访问权限的内置 R
 
 - `tenantId`：设置为 **TenantId** 值。
 - `clientId`：设置为 **ApplicationId** 值。
-- `clientSecret`：如果希望使用客户端机密进行登录，请在 Azure AD 中创建它。 此外，请使用 Web 应用或 API 而非本机应用。 另外，请在之前创建的命名空间中将该应用添加到“访问控制(IAM)”下。
+- `clientSecret`：如果希望使用客户端机密进行登录，请在 Azure AD 中创建它。 此外，请使用 Web 应用或 API 而非本机应用。 另外，请在之前创建的命名空间中将该应用添加到“访问控制(IAM)”  下。
 - `serviceBusNamespaceFQDN`：设置为新创建的服务总线命名空间的完整 DNS 名称，例如 `example.servicebus.windows.net`。
 - `queueName`：设置为所创建的队列的名称。
 - 执行前面的步骤时在应用中指定的重定向 URI。

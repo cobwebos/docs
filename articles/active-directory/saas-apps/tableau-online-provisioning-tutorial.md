@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2dbebfa5fa7d9b255cc685696bfe8b3f61d5cf6b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123748"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64708929"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>教程：为 Tableau Online 配置自动用户预配
 
@@ -50,11 +50,11 @@ ms.locfileid: "62123748"
 
     ![Azure Active Directory 图标](common/select-azuread.png)
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。
+2. 转到“企业应用程序”，并选择“所有应用程序”。  
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请在对话框顶部选择“新建应用程序”。
+3. 若要添加新应用程序，请在对话框顶部选择“新建应用程序”  。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
@@ -72,7 +72,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 *   我们建议将分配一个 Azure AD 用户与 Tableau Online 测试自动用户预配配置。 可以稍后分配其他用户或组。
 
-*   当将用户分配到 Tableau Online 时，选择任何有效的特定于应用程序的角色，如果可用，在分配对话框中。 具有“默认访问权限”角色的用户排除在预配之外。
+*   当将用户分配到 Tableau Online 时，选择任何有效的特定于应用程序的角色，如果可用，在分配对话框中。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="configure-automatic-user-provisioning-to-tableau-online"></a>配置自动用户预配到 Tableau Online
 
@@ -87,15 +87,15 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Tableau Online”。
+2. 在应用程序列表中，选择“Tableau Online”  。
 
     ![应用程序列表中的 Tableau Online 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/ProvisioningTab.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![Tableau Online 的预配模式](./media/tableau-online-provisioning-tutorial/ProvisioningCredentials.png)
 
@@ -111,7 +111,7 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
 6. 在登录到管理帐户 Tableau Online 后，可以获取的值**域**并**内容 URL**从管理员页的 URL。
 
-    * Tableau Online 帐户的“域”可从 URL 的以下部分复制：
+    * Tableau Online 帐户的“域”可从 URL 的以下部分复制  ：
 
         ![Tableau Online 域](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
 
@@ -130,21 +130,21 @@ Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收�
 
     ![Tableau Online 的通知电子邮件](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-9. 选择“保存”。
+9. 选择“保存”。 
 
-10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Tableau”。
+10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Tableau”   。
 
     ![Tableau Online 用户同步](./media/tableau-online-provisioning-tutorial/UserMappings.png)
 
-11. 查看从 Azure AD 同步到 Tableau Online 中的用户属性**属性映射**部分。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作。 若要保存任何更改，请选择**保存**。
+11. 查看从 Azure AD 同步到 Tableau Online 中的用户属性**属性映射**部分。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作  。 若要保存任何更改，请选择**保存**。
 
     ![Tableau Online 匹配用户属性](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
 
-12. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Tableau”。
+12. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Tableau”   。
 
     ![Tableau Online 的组的同步](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
 
-13. 查看从 Azure AD 同步到 Tableau Online 中的组属性**属性映射**部分。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作。 若要保存任何更改，请选择**保存**。
+13. 查看从 Azure AD 同步到 Tableau Online 中的组属性**属性映射**部分。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作  。 若要保存任何更改，请选择**保存**。
 
     ![Tableau Online 的匹配组属性](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
 

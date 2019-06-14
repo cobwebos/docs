@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.openlocfilehash: e4f567fe727a2ec308cef6f48e33728f7f31c217
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707299"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
@@ -252,7 +252,7 @@ ms.locfileid: "64707299"
    scp target/wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
    ```
 
-使用群集的 SSH 用户名替换 USERNAME。 将“CLUSTERNAME”替换为 HDInsight 群集名。
+使用群集的 SSH 用户名替换 USERNAME  。 将“CLUSTERNAME”  替换为 HDInsight 群集名。
 
 此命令会将两个文件从本地系统复制到头节点。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 

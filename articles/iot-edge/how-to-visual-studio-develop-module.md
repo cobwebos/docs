@@ -1,6 +1,6 @@
 ---
 title: 在 Visual Studio 中开发和调试模块 - Azure IoT Edge | Microsoft Docs
-description: 使用 Visual Studio 2019 来开发和调试适用于 Azure IoT Edge 模块
+description: 使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
 services: iot-edge
 author: shizn
 manager: philmea
@@ -10,15 +10,15 @@ ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 4014827366afc492d73757a0ac5e1acb64262c51
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66474778"
 ---
-# <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge-preview"></a>使用 Visual Studio 2019 来开发和调试模块适用于 Azure IoT Edge （预览版）
+# <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge-preview"></a>使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块（预览）
 
-可以将业务逻辑转变为用于 Azure IoT Edge 的模块。 本文介绍如何使用 Visual Studio 2019 作为主要的工具来开发和调试模块。
+可以将业务逻辑转变为用于 Azure IoT Edge 的模块。 本文介绍如何使用 Visual Studio 2019 作为主要工具来开发和调试模块。
 
 用于 Visual Studio 的 Azure IoT Edge 工具提供以下优势：
 
@@ -27,7 +27,7 @@ ms.locfileid: "66474778"
 - 在 C 或 C# 中编写 Azure IoT 模块的代码，同时兼具 Visual Studio 开发的所有优势。
 - 使用 UI 管理 Azure IoT Edge 设备和模块。
 
-本文介绍如何使用 Azure IoT Edge Tools for Visual Studio 2019 开发 IoT Edge 模块。 你还将了解如何将项目部署到 Azure IoT Edge 设备。
+本文介绍如何使用适用于 Visual Studio 2019 的 Azure IoT Edge 工具开发 IoT Edge 模块。 你还将了解如何将项目部署到 Azure IoT Edge 设备。
 
 > [!TIP]
 > Visual Studio 创建的 IoT Edge 项目结构与 Visual Studio Code 中的不同。
@@ -36,14 +36,14 @@ ms.locfileid: "66474778"
 
 本文假设你使用运行 Windows 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一台物理设备。
 
-本文使用 Visual Studio 2019 作为主要开发工具，因为安装 Visual Studio。 请确保您包括**Azure 开发**并**使用的桌面开发C++**  Visual Studio 2019 安装中的工作负荷。 你可以[修改 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019)添加所需的工作负荷。
+由于本文使用 Visual Studio 2019 作为主要开发工具，因此请安装 Visual Studio。 确保在 Visual Studio 2019 安装中包含“Azure 开发”和“使用 C++ 的桌面开发”工作负荷。   可以[修改 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019) 以添加所需的工作负荷。
 
-在 Visual Studio 2019 准备就绪后，您还需要以下工具和组件：
+Visual Studio 2019 准备就绪后，还需要以下工具和组件：
 
-- 下载并安装[Azure IoT Edge 工具 （预览版）](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)从 Visual Studio marketplace 以在 Visual Studio 2019 中创建的 IoT Edge 项目。
+- 从 Visual Studio 市场中下载并安装 [Azure IoT Edge 工具（预览版）](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)，以在 Visual Studio 2019 中创建 IoT Edge 项目。
 
 > [!TIP]
-> 如果使用 Visual Studio 2017，plrease 下载并安装[Azure IoT Edge 工具 （预览版）](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) VS 2017 从 Visual Studio marketplace
+> 如果使用的是 Visual Studio 2017，请从 Visual Studio 市场下载并安装适用于 VS 2017 的 [Azure IoT Edge 工具（预览版）](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)
 
 - 在开发计算机上下载并安装 [Docker 社区版](https://docs.docker.com/install/)，以生成和运行模块映像。 需要将 Docker CE 设置为在 Linux 容器模式或 Windows 容器模式下运行。
 
@@ -223,7 +223,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 在用于设置 IoT Edge 设备的快速入门文章中，已使用 Azure 门户部署了一个模块。 还可使用 Cloud Explorer for Visual Studio 部署模块。 为方案和 `deployment.json` 文件准备好部署清单后，接下来只需要选择一个设备来接收部署即可。
 
-1. 通过单击“视图” > “Cloud Explorer”打开 Cloud Explorer    。 请确保你已登录到 Visual Studio 2019。
+1. 通过单击“视图” > “Cloud Explorer”打开 Cloud Explorer    。 确保已登录到 Visual Studio 2019。
 
 1. 在 Cloud Explorer 中，展开订阅并找到要部署的 Azure IoT 中心和 Azure IoT Edge 设备  。
 
@@ -236,9 +236,9 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-1. 若要监视 D2C 消息特定设备，在列表中选择设备，然后单击**启动监视的内置事件终结点**中**操作**窗口。
+1. 若要监视特定设备的 D2C 消息，请选择列表中的设备，然后单击“操作”窗口中的“开始监视内置事件终结点”   。
 
-1. 若要停止监视数据，在列表中选择设备，然后选择**停止监视的内置事件终结点**中**操作**窗口。
+1. 若要停止监视数据，请选择列表中的设备，然后选择“操作”窗口中的“停止监视内置事件终结点”   。
 
 ## <a name="next-steps"></a>后续步骤
 

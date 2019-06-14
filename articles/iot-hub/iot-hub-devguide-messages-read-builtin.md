@@ -9,15 +9,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61363955"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
-默认情况下，消息将路由到与[事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容的内置面向服务的终结点 (messages/events) 中。 此终结点目前仅通过端口 5671 上的 [AMQP](https://www.amqp.org/) 协议公开。 IoT 中心公开以下属性，以便用户控制内置的与事件中心兼容的消息传送终结点 **messages/events**。
+默认情况下，消息将路由到与[事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容的内置面向服务的终结点 (messages/events  ) 中。 此终结点目前仅通过端口 5671 上的 [AMQP](https://www.amqp.org/) 协议公开。 IoT 中心公开以下属性，以便用户控制内置的与事件中心兼容的消息传送终结点 **messages/events**。
 
 | 属性            | 描述 |
 | ------------------- | ----------- |
@@ -42,15 +42,15 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
 
-2. 单击“内置终结点”。
+2. 单击“内置终结点”  。
 
-3. “事件”部分包含以下值：“分区”、“与事件中心兼容的名称”、“与事件中心兼容的终结点”、“保留时间”、“使用者组”。
+3. “事件”部分包含以下值：  “分区”、“与事件中心兼容的名称”、“与事件中心兼容的终结点”、“保留时间”、“使用者组”。     
 
     ![设备到云的设置](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
 在门户中，“与事件中心兼容的终结点”字段包含完整的事件中心连接字符串，如下所示：**Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. 如果所用 SDK 需求其他值，则这些值将会是：
 
-| 名称 | 值 |
+| Name | 值 |
 | ---- | ----- |
 | 终结点 | sb://abcd1234namespace.servicebus.windows.net/ |
 | 主机名 | abcd1234namespace.servicebus.windows.net |

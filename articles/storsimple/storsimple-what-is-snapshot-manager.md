@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: v-sharos
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3f7436bb63f52c9c2b697c8e7031922ce89d786b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60789584"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager 简介
@@ -33,7 +33,7 @@ StorSimple Snapshot Manager 是一种 Microsoft 管理控制台 (MMC) 管理单�
 
 > [!NOTE]
 > * 不能使用 StorSimple Snapshot Manager 管理 Microsoft Azure StorSimple 虚拟数组（也称为 StorSimple 本地虚拟设备）。
-> * 如果计划在 StorSimple 设备上安装 StorSimple Update 2，请在安装 StorSimple Update 2 前，务必先下载并安装最新版本的 StorSimple Snapshot Manager。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果使用的是旧版 StorSimple Snapshot Manager，则需要更新（安装新版本前，无需卸载旧版本）。
+> * 如果计划在 StorSimple 设备上安装 StorSimple Update 2，请在安装 StorSimple Update 2 前，  务必先下载并安装最新版本的 StorSimple Snapshot Manager。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果使用的是旧版 StorSimple Snapshot Manager，则需要更新（安装新版本前，无需卸载旧版本）。
 > 
 > 
 

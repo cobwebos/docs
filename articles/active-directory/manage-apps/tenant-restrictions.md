@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a340663a1ec4ddf748c6dc2bc3a4e2ce0c4228e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824386"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制来管理对 SaaS 云应用程序的访问
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) 解决这个难题是名为租户限制的功�
 
 #### <a name="configuration"></a>配置
 
-对于 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的每个传入请求，请插入两个 HTTP 标头：“Restrict-Access-To-Tenants”和“Restrict-Access-Context”。
+对于 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的每个传入请求，请插入两个 HTTP 标头：“Restrict-Access-To-Tenants”和“Restrict-Access-Context”   。
 
 这些标头应包含以下元素：
 
@@ -79,7 +79,7 @@ Azure Active Directory (Azure AD) 解决这个难题是名为租户限制的功�
 - 有关*限制访问权限上下文*，使用单个目录 ID 的值，则声明哪个租户设置租户限制。 例如，要将 Contoso 声明为设置租户限制策略的租户，名称/值对如下所示： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
-> 您可以发现在你的 directory ID [Azure Active Directory 门户](https://aad.portal.azure.com/)。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。
+> 您可以发现在你的 directory ID [Azure Active Directory 门户](https://aad.portal.azure.com/)。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。  
 
 若要防止用户将他们自己的 HTTP 标头插入与未批准的租户，代理需要替换*限制租户访问*标头，如果已传入的请求中存在。
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) 解决这个难题是名为租户限制的功�
 
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。 **Azure Active Directory 管理中心**仪表板将出现。
 
-2. 在左窗格中选择“Azure Active Directory”。 Azure Active Directory 概述页会显示。
+2. 在左窗格中选择“Azure Active Directory”  。 Azure Active Directory 概述页会显示。
 
 3. 在中**其他功能**标题下方，选择**租户限制**。
 
@@ -150,7 +150,7 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 
 3. 配置 Fiddler，使用自定义规则插入 *Restrict-Access-To-Tenants* 和 *Restrict-Access-Context* 标头：
 
-   1. 在 Fiddler Web 调试器工具中选择“规则”菜单，并选择“自定义规则...” 打开 CustomRules 文件。
+   1. 在 Fiddler Web 调试器工具中选择“规则”菜单，并选择“自定义规则...”   打开 CustomRules 文件。
 
    2. 在开头添加以下行`OnBeforeRequest`函数。 替换\<租户域\>与你的租户注册的域 (例如， `contoso.onmicrosoft.com`)。 将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。
 
@@ -166,13 +166,13 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
       }
       ```
 
-      如果需要允许多个租户，请使用逗号分隔租户名称。 例如:
+      如果需要允许多个租户，请使用逗号分隔租户名称。 例如：
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. 保存并关闭 CustomRules 文件。
 
-配置 Fiddler 后，可转到“文件”菜单并选择“捕获流量”来捕获流量。
+配置 Fiddler 后，可转到“文件”菜单并选择“捕获流量”来捕获流量。  
 
 ### <a name="staged-rollout-of-proxy-settings"></a>分阶段部署代理设置
 

@@ -9,10 +9,10 @@ ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478500"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
@@ -40,7 +40,7 @@ WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](../storage-
 
 ### <a name="repairing-a-partially-failed-export-job"></a>修复部分失败的导出作业
 
-- Azure 导入/导出服务在存储帐户与磁盘之间复制数据时生成的副本日志文件。 该文件位于源存储帐户中。
+- Azure 导入/导出服务在存储帐户与磁盘之间复制数据时生成的副本日志文件  。 该文件位于源存储帐户中。
 - **清单文件** - [可选] 位于 Microsoft 返回的已导出驱动器中。
 
 ## <a name="download-and-install-waimportexport"></a>下载并安装 WAImportExport
@@ -78,12 +78,12 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 | 字段 | 描述 |
 | --- | --- |
-| BasePath | **[必需]**<br/>此参数的值表示要导入的数据的源。 此工具将以递归方式复制此路径下的所有数据。<br><br/>允许的值：这必须是本地计算机上的有效路径或者是有效的共享路径，并且应当可以供用户访问。 目录路径必须是绝对路径（而非相对路径）。 如果路径以“\\”结尾，表示的是目录；如果路径不以“\\”结尾，表示的是文件。<br/>不允许在此字段中指定正则表达式。 如果路径包含空格，请将其输入在 "" 中。<br><br/>**示例**："c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
-| DstBlobPathOrPrefix | [必需]<br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。 如果仅指定根，将在目标 Blob 容器中复制源的目录结构。 如果需要不同于源的目录结构，请在 CSV 中添加多行映射<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 blob 名称中不能包含“/”，因此当目标目录为根容器时，不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 BLOB 路径为 https://mystorageaccount.blob.core.windows.net/video，则此字段的值可为 video/  |
-| /BlobType | [可选] block &#124; page<br/>导入/导出服务当前支持 2 种 Blob。 页 Blob 和块 Blob。默认情况下，所有文件以块 Blob 的形式导入。 \*.vhd 和 \*.vhdx 将以页 blob 的形式导入。块 blob 和页 blob 允许的大小有一定限制。 有关详细信息，请参阅 [Storage scalability targets](storage-scalability-targets.md)（存储可伸缩性目标）。  |
-| Disposition | **[可选]** rename &#124; no-overwrite &#124; overwrite <br/> 此字段指定导入期间 （即在将数据从磁盘上传到存储帐户时）发生复制行为。 可用选项包括：rename&#124;overwrite&#124;no-overwrite。如果未指定任何选项，使用默认选项“rename”。 <br/><br/>Rename：若有同名对象，则在目标中创建副本。<br/>Overwrite：将文件覆盖为较新的文件。 最后修改的文件优先。<br/>No-overwrite：如果文件已存在，则跳过写入该文件。|
+| BasePath | **[必需]**<br/>此参数的值表示要导入的数据的源。 此工具将以递归方式复制此路径下的所有数据。<br><br/> 允许的值：这必须是本地计算机上的有效路径或者是有效的共享路径，并且应当可以供用户访问。 目录路径必须是绝对路径（而非相对路径）。 如果路径以“\\”结尾，表示的是目录；如果路径不以“\\”结尾，表示的是文件。<br/>不允许在此字段中指定正则表达式。 如果路径包含空格，请将其输入在 "" 中。<br><br/>**示例**："c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
+| DstBlobPathOrPrefix | [必需] <br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。 如果仅指定根，将在目标 Blob 容器中复制源的目录结构。 如果需要不同于源的目录结构，请在 CSV 中添加多行映射<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 blob 名称中不能包含“/”，因此当目标目录为根容器时，不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 BLOB 路径为 https://mystorageaccount.blob.core.windows.net/video ，则此字段的值可为 video/  |
+| /BlobType | [可选]  block &#124; page<br/>导入/导出服务当前支持 2 种 Blob。 页 Blob 和块 Blob。默认情况下，所有文件以块 Blob 的形式导入。 \*.vhd 和 \*.vhdx 将以页 blob 的形式导入。块 blob 和页 blob 允许的大小有一定限制。 有关详细信息，请参阅 [Storage scalability targets](storage-scalability-targets.md)（存储可伸缩性目标）。  |
+| Disposition | **[可选]** rename &#124; no-overwrite &#124; overwrite <br/> 此字段指定导入期间 （即在将数据从磁盘上传到存储帐户时）发生复制行为。 可用选项包括：rename&#124;overwrite&#124;no-overwrite。如果未指定任何选项，使用默认选项“rename”。 <br/><br/> Rename：若有同名对象，则在目标中创建副本。<br/>Overwrite：将文件覆盖为较新的文件。 最后修改的文件优先。<br/> No-overwrite：如果文件已存在，则跳过写入该文件。|
 | MetadataFile | **[可选]** <br/>此字段的值是用户需要保留对象的元数据或者提供自定义元数据时可提供的元数据文件。 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md) |
-| PropertiesFile | [可选] <br/>目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。 |
+| PropertiesFile | [可选]  <br/>目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。 |
 
 ## <a name="prepare-initialdriveset-or-additionaldriveset-csv-file"></a>准备 InitialDriveSet 或 AdditionalDriveSet CSV 文件
 
@@ -110,9 +110,9 @@ H,Format,SilentMode,Encrypt,
 | 字段 | 值 |
 | --- | --- |
 | DriveLetter | **[必需]**<br/> 作为目标提供给工具的每个驱动器上需有一个简单的 NTFS 卷，并分配有一个驱动器号。<br/> <br/>**示例**：R 或 r |
-| FormatOption | **[必需]** Format &#124; AlreadyFormatted<br/><br/> Format：指定将格式化磁盘上的所有数据。 <br/>AlreadyFormatted：如果指定此值，该工具将跳过格式化。 |
-| SilentOrPromptOnFormat | **[必需]** SilentMode &#124; PromptOnFormat<br/><br/>SilentMode：提供此值可让用户以无提示模式运行该工具。 <br/>PromptOnFormat：该工具在每次格式化时都会提示用户确认是否确实希望执行此操作。<br/><br/>如果未设置，命令将中止并显示错误消息：“SilentOrPromptOnFormat 的错误值：无” |
-| 加密 | **[必需]** Encrypt &#124; AlreadyEncrypted<br/> 此字段的值确定要加密哪个磁盘，不加密哪个磁盘。 <br/><br/>Encrypt：该工具将格式化驱动器。 如果“FormatOption”字段的值为“Format”，则此字段的值必须是“Encrypt”。 如果在此情况下指定了“AlreadyEncrypted”，则会导致错误“指定了 Format 时，也必须指定 Encrypt”。<br/>AlreadyEncrypted：此工具将使用“ExistingBitLockerKey”字段中提供的 BitLockerKey 来加密驱动器。 如果“FormatOption”字段的值为“AlreadyFormatted”，则此字段的值可以是“Encrypt”或“AlreadyEncrypted” |
+| FormatOption | **[必需]** Format &#124; AlreadyFormatted<br/><br/>  Format：指定将格式化磁盘上的所有数据。 <br/> AlreadyFormatted：如果指定此值，该工具将跳过格式化。 |
+| SilentOrPromptOnFormat | **[必需]** SilentMode &#124; PromptOnFormat<br/><br/> SilentMode：提供此值可让用户以无提示模式运行该工具。 <br/> PromptOnFormat：该工具在每次格式化时都会提示用户确认是否确实希望执行此操作。<br/><br/>如果未设置，命令将中止并显示错误消息：“SilentOrPromptOnFormat 的错误值：无” |
+| 加密 | **[必需]** Encrypt &#124; AlreadyEncrypted<br/> 此字段的值确定要加密哪个磁盘，不加密哪个磁盘。 <br/><br/> Encrypt：该工具将格式化驱动器。 如果“FormatOption”字段的值为“Format”，则此字段的值必须是“Encrypt”。 如果在此情况下指定了“AlreadyEncrypted”，则会导致错误“指定了 Format 时，也必须指定 Encrypt”。<br/> AlreadyEncrypted：此工具将使用“ExistingBitLockerKey”字段中提供的 BitLockerKey 来加密驱动器。 如果“FormatOption”字段的值为“AlreadyFormatted”，则此字段的值可以是“Encrypt”或“AlreadyEncrypted” |
 | ExistingBitLockerKey | **[必需]** 如果“Encryption”字段的值为“AlreadyEncrypted”<br/> 此字段的值是与特定磁盘关联的 BitLocker 密钥。 <br/><br/>如果“Encryption”字段的值为“Encrypt”，应将此字段留空。  如果在这种情况下指定 BitLocker 密钥，将导致错误“不应指定 Bitlocker 密钥”。<br/>  **示例**：060456-014509-132033-080300-252615-584177-672089-411631|
 
 ##  <a name="preparing-disk-for-import-job"></a>为导入作业准备磁盘
@@ -202,7 +202,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 | parameters | 描述 |
 | --- | --- |
 |     /j:&lt;JournalFile&gt;  | **必需**<br/> 日记文件的路径。 日记文件跟踪一组驱动器，并记录这些驱动器的准备进度。 必须始终指定日记文件。  |
-|     /logdir:&lt;LogDirectory&gt;  | 可选。 日志目录。<br/> 详细日志文件以及某些临时文件将写入此目录。 如果未指定，则将当前目录用作日志目录。 对于同一个日记文件，只能指定一次日志目录。  |
+|     /logdir:&lt;LogDirectory&gt;  | 可选  。 日志目录。<br/> 详细日志文件以及某些临时文件将写入此目录。 如果未指定，则将当前目录用作日志目录。 对于同一个日记文件，只能指定一次日志目录。  |
 |     /id:&lt;SessionId&gt;  | **必需**<br/> 用于标识复制会话的会话 ID。 它用于确保准确恢复中断的复制会话。  |
 |     /ResumeSession  | 可选。 如果最后一个复制会话异常终止，可以指定此参数来恢复该会话。   |
 |     /AbortSession  | 可选。 如果最后一个复制会话异常终止，可以指定此参数来中止该会话。  |
@@ -214,11 +214,11 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 |     /d:&lt;TargetDirectories&gt; | **必需**。 仅适用于 RepairImport 和 RepairExport。 对于 RepairImport，值为要修复的一个或多个以分号分隔的目录；对于 RepairExport，值为要修复的一个目录，例如驱动器的根目录。  |
 |     /CopyLogFile:&lt;DriveCopyLogFile&gt; | **必需** 仅适用于 RepairImport 和 RepairExport。 驱动器复制日志文件（详细或错误）的路径。  |
 |     /ManifestFile:&lt;DriveManifestFile&gt; | **必需** 仅适用于 RepairExport。<br/> 驱动器清单文件的路径。  |
-|     /PathMapFile:&lt;DrivePathMapFile&gt; | 可选。 仅适用于 RepairImport。<br/> 包含驱动器根目录相对路径与实际文件位置之间的映射的文件（制表符分隔）的路径。 首次指定时，该字段中将填充目标为空的文件路径，也就是说，在 TargetDirectories 中找不到目录、访问目标被拒绝、名称无效，或者目标在多个目录中存在。 可以手动编辑路径映射文件来包含正确的目标路径，并再次为工具指定该文件，以正确解析文件路径。  |
+|     /PathMapFile:&lt;DrivePathMapFile&gt; | 可选  。 仅适用于 RepairImport。<br/> 包含驱动器根目录相对路径与实际文件位置之间的映射的文件（制表符分隔）的路径。 首次指定时，该字段中将填充目标为空的文件路径，也就是说，在 TargetDirectories 中找不到目录、访问目标被拒绝、名称无效，或者目标在多个目录中存在。 可以手动编辑路径映射文件来包含正确的目标路径，并再次为工具指定该文件，以正确解析文件路径。  |
 |     /ExportBlobListFile:&lt;ExportBlobListFile&gt; | **必需**。 仅适用于 PreviewExport。<br/> 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 文件格式与导入/导出服务 REST API 的“放置作业”操作中的 Blob 列表 Blob 格式相同。  |
 |     /DriveSize:&lt;DriveSize&gt; | **必需**。 仅适用于 PreviewExport。<br/>  用于导出的驱动器的大小。 例如，500 GB、1.5 TB。 注意：1 GB = 1,000,000,000 字节，1 TB = 1,000,000,000,000 字节  |
 |     /DataSet:&lt;dataset.csv&gt; | **必需**<br/> 包含要复制到目标驱动器的目录列表和/或列表文件的 CSV 文件。  |
-|     /silentmode  | 可选。<br/> 如果未指定，系统会提醒驱动器的要求，并且需要确认才能继续操作。  |
+|     /silentmode  | 可选  。<br/> 如果未指定，系统会提醒驱动器的要求，并且需要确认才能继续操作。  |
 
 ## <a name="tool-output"></a>工具输出
 
@@ -356,9 +356,9 @@ SessionId 可以包含字母、0~9、下划线 (\_)、短划线 (-) 或井号 (#
 
 若要在 BitLocker 中禁用 TPM，请执行以下步骤：<br/>
 1. 在命令提示符下键入 gpedit.msc，启动**组策略编辑器**。 如果**组策略编辑器**不可用，请先启用 BitLocker。 请参阅前一条常见问题。
-2. 打开“本地计算机策略”&gt;“计算机配置”&gt;“管理模板”&gt;“Windows 组件”&gt;“BitLocker 驱动器加密”&gt;“操作系统驱动器”。
-3. 编辑“启动时需要附加身份验证”策略。
-4. 将该策略设置为“启用”，并确保已选中“没有兼容的 TPM 时允许 BitLocker”。
+2. 打开“本地计算机策略”&gt;“计算机配置”&gt;“管理模板”&gt;“Windows 组件”&gt;“BitLocker 驱动器加密”&gt;“操作系统驱动器”。 
+3. 编辑“启动时需要附加身份验证”策略。 
+4. 将该策略设置为“启用”  ，并确保已选中“没有兼容的 TPM 时允许 BitLocker”  。
 
 ####  <a name="how-to-check-if-net-4-or-higher-version-is-installed-on-my-machine"></a>如何检查计算机上是否已安装 .NET 4 或更高版本？
 

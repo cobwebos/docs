@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 673b1df6094703bebcbfd9d82c1268c01d46e814
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233584"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>连接外部解决方案是使用 Syslog
@@ -44,7 +44,7 @@ Syslog 连接是使用适用于 Linux 的代理来完成。 默认情况下，�
 3. 单击**配置要连接的日志**Syslog 连接器安装程序中返回。 
 4. 单击**以打开配置边栏选项卡，请按此处**。
 1. 选择**数据**，然后**Syslog**。
-   - 请确保要发送的 Syslog 的每个设施的表中。 对于每个设施要监视，将严重性设置。 单击“应用”。
+   - 请确保要发送的 Syslog 的每个设施的表中。 对于每个设施要监视，将严重性设置。 单击“应用”  。
 1. 在你 Syslog 的计算机，请确保要将发送这些功能。 
 
 3. 若要使用 Log Analytics 中的 Syslog 日志相关的架构，搜索**Syslog**。

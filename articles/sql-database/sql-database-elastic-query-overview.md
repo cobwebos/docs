@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 01/19/2019
-ms.openlocfilehash: fad9437a631254d6c60d6d97267ae111d195040f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/13/2019
+ms.openlocfilehash: 2ea1d116de2c435e873c653bbfa0571377c4f5ef
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60585644"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067059"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 
@@ -140,7 +140,7 @@ ms.locfileid: "60585644"
 * 尚不支持从 SSMS 或 SSDT 对外部数据源或外部表进行脚本编写。
 * SQL 数据库的导入/导出尚不支持外部数据源和外部表。 如果需要使用导入/导出，请在导出之前删除这些对象，并在导入后重新创建它们。
 * 弹性查询当前仅支持对外部表进行只读访问。 但是，可以对在其中定义了外部表的数据库使用完整的 T-SQL 功能。 这可能对以下操作很有用：例如，使用（例如）SELECT <column_list> INTO <local_table>持久保存临时结果，或在引用外部表的弹性查询数据库中定义存储过程。
-* 除了 nvarchar (max) 外，外部表定义也不支持 LOB 类型。 一种解决方法是，可以在远程数据库上创建将 LOB 类型强制转换为 nvarchar(max) 的视图，通过该视图（而不是基表）定义外部表，然后在查询中将其强制转换回原始 LOB 类型。
+* 除了 nvarchar （max），外部表定义中不支持 LOB 类型 （包括空间类型）。 一种解决方法是，可以在远程数据库上创建将 LOB 类型强制转换为 nvarchar(max) 的视图，通过该视图（而不是基表）定义外部表，然后在查询中将其强制转换回原始 LOB 类型。
 * 结果集中的 nvarchar(max) 数据类型列禁用弹性查询实现中使用的高级批处理技术，并且在大量非聚合数据正在作为查询的结果进行传输的非规范用例中可能会影响一个数量级甚至两个数量级的查询性能。
 * 当前不支持外部表上的列统计信息。 支持表统计信息，但需要手动创建。
 

@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0bae06d46c2c96ba9dd058e9c2d380379523811c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61065153"
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
@@ -37,22 +37,22 @@ ms.locfileid: "61065153"
 ### <a name="to-connect-with-ssms"></a>连接 SSMS
  使用 SSMS 时，在首次连接到服务器之前，需确保用户名已包含在 Analysis Services 管理员组中。 有关详细信息，请参阅本文后面的[服务器管理员和数据库用户](#server-administrators-and-database-users)。
 
-1. 在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制服务器名称。
+1. 在连接之前，需要获取服务器名称。 在 **Azure 门户**中，单击“服务器”>“概述”   > “服务器名称”  ，并复制服务器名称。
    
     ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
-3. 在“连接到服务器”对话框中，粘贴服务器名称，然后在“身份验证”中选择以下身份验证类型之一：   
+2. 在 SSMS >“对象资源管理器”  中，单击“连接”   > “Analysis Services”  。
+3. 在“连接到服务器”  对话框中，粘贴服务器名称，然后在“身份验证”  中选择以下身份验证类型之一：   
     > [!NOTE]
-    > 建议选择“Active Directory - 通用且具有 MFA 支持”身份验证类型。
+    > 建议选择“Active Directory - 通用且具有 MFA 支持”身份验证类型。 
 
     > [!NOTE]
     > 如果使用 Microsoft 帐户、Live ID、Yahoo、Gmail 等登录，请将密码字段留空。 单击“连接”后，系统将提示你输入密码。
 
-    选择“Windows 身份验证”，以使用 Windows 域\用户名和密码凭据。
+    选择“Windows 身份验证”  ，以使用 Windows 域\用户名和密码凭据。
 
     **Active Directory 密码身份验证**，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
 
-    选择“Active Directory - 通用且具有 MFA 支持”，以使用[非交互式或多重身份验证](../sql-database/sql-database-ssms-mfa-authentication.md)。 
+    选择“Active Directory - 通用且具有 MFA 支持”  ，以使用[非交互式或多重身份验证](../sql-database/sql-database-ssms-mfa-authentication.md)。 
    
     ![在 SSMS 中连接](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

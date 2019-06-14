@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7e97bd50e3d37218e0f88f722387fd1a53167e27
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60534050"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>为 Azure 虚拟网络 (VNet) 上的数据源使用网关
@@ -28,8 +28,8 @@ ms.locfileid: "60534050"
 
 ## <a name="configure-alwaysusegateway-property"></a>配置 AlwaysUseGateway 属性
 
-1. 在“SSMS”>“服务器”>“属性” > “常规”中，选择“显示高级(全部)属性”。
-2. 在“ASPaaS\AlwaysUseGateway”中，选择“true”。
+1. 在“SSMS”>“服务器”>“属性” > “常规”中，选择“显示高级(全部)属性”。   
+2. 在“ASPaaS\AlwaysUseGateway”  中，选择“true”。 
 
     ![始终使用网关属性](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 

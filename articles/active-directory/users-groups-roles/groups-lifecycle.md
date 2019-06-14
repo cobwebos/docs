@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1de17429dfe89506445b2d47999b102f3becb15b
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604396"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
@@ -58,12 +58,12 @@ ms.locfileid: "65604396"
   
    ![组的过期时间设置](./media/groups-lifecycle/expiration-settings.png)
 
-3. 在“过期”边栏选项卡中，可以：
+3. 在“过期”  边栏选项卡中，可以：
 
   * 设置组的生存期（天）。 可以从预设值中任选其一，或自定义一个值（应为 31 天或以上）。 
   * 指定当组没有所有者时续订和过期通知应发送到的电子邮件地址。 
-  * 选择会过期的 Office 365 组。 可以为所有 Office 365 组启用到期，可以选择仅为所选 Office 365 组启用，也可以选择“无”为所有组禁用到期。
-  * 设置完成后，选择“保存”来保存设置。
+  * 选择会过期的 Office 365 组。 可以为所有 Office 365 组启用到期，可以选择仅为所选 Office 365 组启用，也可以选择“无”为所有组禁用到期    。
+  * 设置完成后，选择“保存”来保存设置  。
 
 > [!NOTE]
 > 首次设置过期时，早于过期间隔的所有组将设置为 30 天后过期。 首个续订通知电子邮件将在一天内发出。 例如，组 A 创建于 400 天前，而过期间隔设置为 180 天。 当应用过期策略时，组 A 具有 30 天之后删除，, 除非所有者续订它。
@@ -75,13 +75,13 @@ ms.locfileid: "65604396"
 
 ![过期电子邮件通知](./media/groups-lifecycle/expiration-notification.png)
 
-组所有者可以从“续订组”通知电子邮件直接访问“访问面板”中的组详细信息页。 在此处，用户可以获取更多关于组的信息，例如该组的描述、上次续订时间、到期时间，并且还能续订组。 组详细信息页面现在还包括 Office 365 组资源的链接，因此组所有者可以在组中轻松查看内容和活动。
+组所有者可以从“续订组”通知电子邮件直接访问“访问面板”中的组详细信息页  。 在此处，用户可以获取更多关于组的信息，例如该组的描述、上次续订时间、到期时间，并且还能续订组。 组详细信息页面现在还包括 Office 365 组资源的链接，因此组所有者可以在组中轻松查看内容和活动。
 
 当某个组过期时，它将在到期日期的后一天被删除。 如下电子邮件通知将发送到 Office 365 组所有者，通知其关于 Office 365 组过期及后续删除的信息。
 
 ![组删除电子邮件通知](./media/groups-lifecycle/deletion-notification.png)
 
-可以通过选择“还原组”或使用 PowerShell cmdlet 在删除组后的 30 天内还原组，如[在 Azure Active Directory 中还原已删除的 Office 365 组](groups-restore-deleted.md)中所述。 请注意，30 天的组还原期不可自定义。
+可以通过选择“还原组”或使用 PowerShell cmdlet 在删除组后的 30 天内还原组，如[在 Azure Active Directory 中还原已删除的 Office 365 组](groups-restore-deleted.md)中所述  。 请注意，30 天的组还原期不可自定义。
     
 如果所还原的组包含文档、SharePoint 站点或其他持久对象，可能需要最多 24 小时才能完全还原该组及其内容。
 

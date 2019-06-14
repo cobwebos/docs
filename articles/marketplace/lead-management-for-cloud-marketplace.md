@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
 ms.openlocfilehash: 4055b1a30c1868f701de281b5de8d648d576219e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937906"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>云市场的潜在顾客管理
@@ -145,14 +145,14 @@ title = MSFT_TEST_636573304831318844
 
 每个潜在顾客都会在所选潜在顾客目标的字段中传递数据，潜在顾客将采用以下格式：**源 - 操作|产品/服务** 
 
-  源：
+  源： 
 
     “AzureMarketplace”, 
     “AzurePortal”, 
     “TestDrive”,  
     “SPZA” (acronym for AppSource) 
 
-  操作：
+  操作： 
 
     “INS” – Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
     “PLT” – Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
@@ -164,7 +164,7 @@ title = MSFT_TEST_636573304831318844
     “StartTestDrive” – This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
-  产品/服务：
+  产品/服务： 
 
     “checkpoint.check-point-r77-10sg-byol”, 
     “bitnami.openedxcypress”, 
@@ -172,7 +172,7 @@ title = MSFT_TEST_636573304831318844
 
  
 
-  以下为客户信息示例数据
+  以下为客户信息示例数据 
 
     { 
 

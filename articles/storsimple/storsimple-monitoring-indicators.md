@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630538"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 监视指示器管理设备
@@ -36,7 +36,7 @@ StorSimple 设备包括了发光二极管 (LED) 和警报，可以使用它们�
 本文的剩余部分介绍了各种监视指示器 LED、它们在 StorSimple 设备上的位置、基于 LED 状态的设备状态以及任何关联的有声警报。
 
 ## <a name="front-panel-indicator-leds"></a>前面板指示器 LED
-前面板（也称为*操作面板*）显示系统中所有模块的聚合状态。 StorSimple 主机箱和 EBOD 机箱的前面板是完全相同的，如下图所示。  
+前面板（也称为*操作面板*  ）显示系统中所有模块的聚合状态。 StorSimple 主机箱和 EBOD 机箱的前面板是完全相同的，如下图所示。  
 
    ![设备前面板][1]
 
@@ -219,7 +219,7 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 下表描述了各种警报状况。
 
 ### <a name="alarm-conditions"></a>警报状况
-| 状态 | 严重性 | 警报 | 操作面板 LED |
+| 状态 | Severity | 警报 | 操作面板 LED |
 | --- | --- | --- | --- |
 | PCM 警报 – 单个 PCM 的直流电源断开 |故障 – 未损失冗余 |S1 |模块故障 |
 | PCM 警报 – 单个 PCM 的直流电源断开 |故障 – 损失了冗余 |S1 |模块故障 |

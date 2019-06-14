@@ -1,6 +1,6 @@
 ---
-title: 同义词C#示例-Azure 搜索
-description: 在此C#的示例中，了解如何将同义词功能添加到 Azure 搜索中的索引。 同义词映射是等效术语的列表。 具有同义词支持的字段可扩展查询以包括用户提供的术语和所有相关的同义词。
+title: 同义词 C# 示例 - Azure 搜索
+description: 本 C# 示例介绍如何向 Azure 搜索中的索引添加同义词功能。 同义词映射是等效术语的列表。 具有同义词支持的字段可扩展查询以包括用户提供的术语和所有相关的同义词。
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -10,23 +10,23 @@ ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 5b81e4b9a8773cc8e4cc76582ccf2df88565d3d8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65025173"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>示例：使用 C# 为 Azure 搜索添加同义词
 
 使用同义词进行搜索时，在语义上被视为与输入字词等效的字词也属于匹配项，从而扩展了查询的范围。 例如，使用“car”进行搜索时，也可将包含“automobile”或“vehicle”字词的文档视为匹配项。 
 
-在 Azure 搜索中，同义词在“同义词映射”中通过可将等效字词关联在一起的“映射规则”进行定义。 此示例介绍了用于添加和使用现有索引中使用同义词的基本步骤。 学习如何：
+在 Azure 搜索中，同义词在“同义词映射”中通过可将等效字词关联在一起的“映射规则”进行定义。   本示例介绍了用于添加同义词并将其与现有索引一起使用的基本步骤。 学习如何：
 
 > [!div class="checklist"]
-> * 创建同义词映射使用[SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet)类。 
-> * 设置[SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet)上应支持同义词通过查询扩展字段属性。
+> * 使用 [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 类创建同义词映射。 
+> * 在应该支持通过同义词进行查询扩展的字段上设置 [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) 属性。
 
-像往常一样，您可以查询启用了同义词的字段。 没有访问同义词所需的其他查询语法。
+可以照常查询启用了同义词的字段。 访问同义词不需其他的查询语法。
 
 可以创建多个同义词映射，将其发布为在服务范围内可供任何索引使用的资源，然后引用要在字段级别使用的资源。 在查询时，除了搜索索引，Azure 搜索还会查看同义词映射（如果在查询所用的字段上指定了该映射）。
 
@@ -44,7 +44,7 @@ ms.locfileid: "65025173"
 
 ## <a name="overview"></a>概述
 
-前后比较查询可演示同义词的值。 在此示例中，使用执行查询并针对示例索引返回结果的示例应用程序。 示例应用程序创建了一个名为“hotels”的小索引，其中填充了两个文档。 该应用程序使用未在索引中出现的字词和短语执行搜索查询，接着启用同义词功能，再次进行相同的搜索。 以下代码演示了整个流程。
+前后比较查询可演示同义词的值。 在本示例中，我们使用一个示例应用程序，针对示例索引执行查询并返回结果。 示例应用程序创建了一个名为“hotels”的小索引，其中填充了两个文档。 该应用程序使用未在索引中出现的字词和短语执行搜索查询，接着启用同义词功能，再次进行相同的搜索。 以下代码演示了整个流程。
 
 ```csharp
   static void Main(string[] args)
@@ -163,18 +163,18 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ~~~
 第一个查询根据规则 `five star=>luxury` 查找文档。 第二个查询使用 `internet,wifi` 扩展了搜索，第三个查询在查找匹配的文档时同时使用 `hotel, motel` 和 `economy,inexpensive=>budget`。
 
-添加同义词完全改观了搜索体验。 在此示例中，原始查询无法返回有意义的结果，即使索引中的文档密切相关。 启用同义词可以扩展索引，使之包括常用字词，但不更改索引中的基础数据。
+添加同义词完全改观了搜索体验。 在本示例中，初始查询并没有返回有意义的结果，虽然索引中的文档是相关的。 启用同义词可以扩展索引，使之包括常用字词，但不更改索引中的基础数据。
 
 ## <a name="sample-application-source-code"></a>示例应用程序源代码
 可以在 [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) 上找到本演练中所用示例应用程序的完整源代码。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在示例后清理的速度最快方法是通过删除包含 Azure 搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
+完成本示例后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
 
 ## <a name="next-steps"></a>后续步骤
 
-此示例演示了中的同义词功能C#代码来创建和发布映射规则，然后对查询中调用同义词映射。 可以在 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) 和 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 参考文档中找到更多信息。
+本示例使用 C# 代码演示了同义词功能，创建并发布了映射规则，然后在查询中调用同义词映射。 可以在 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) 和 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 参考文档中找到更多信息。
 
 > [!div class="nextstepaction"]
 > [如何在 Azure 搜索中使用同义词](search-synonyms.md)

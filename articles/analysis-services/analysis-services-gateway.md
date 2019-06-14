@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 190394481f17310784f87c9e2f642eeea0b2597f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141156"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062235"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
 本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 
 
 首次设置网关的过程分为四个部分：
 
-- 下载并运行安装程序 - 这一步会在你组织的计算机上安装网关服务。 还在[租户的](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
+-  下载并运行安装程序 - 这一步会在你组织的计算机上安装网关服务。 还在[租户的](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
 
 - **注册网关** - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。 网关资源可以注册在任何区域中，但我们建议处于与 Analysis Services 服务器位于同一区域。 
 
-- 在 Azure 中创建网关资源 - 在这一步中，在你的 Azure 订阅中创建网关资源。
+-  在 Azure 中创建网关资源 - 在这一步中，在你的 Azure 订阅中创建网关资源。
 
-- 将你的服务器连接到网关资源 - 在订阅中拥有网关资源后，便可以着手将你的服务器连接到该网管资源了。 可以连接多个服务器和其他资源，前提是它们位于同一订阅和同一区域中。
+-  将你的服务器连接到网关资源 - 在订阅中拥有网关资源后，便可以着手将你的服务器连接到该网管资源了。 可以连接多个服务器和其他资源，前提是它们位于同一订阅和同一区域中。
 
 若要立即开始，请参阅[安装和配置本地数据网关](analysis-services-gateway-install.md)。
 
 ## <a name="how-it-works"></a>工作原理
-在你组织中的计算机上安装的网关作为 Windows 服务（本地数据网关）运行。 此本地服务是通过 Azure 服务总线向网关云服务注册的。 然后，为你的 Azure 订阅创建网关资源网关云服务。 然后，将你的 Azure Analysis Services 服务器连接到网关资源。 当你服务器上的模型需要连接到你的本地数据源进行查询或处理时，查询和数据的流将遍历网关资源、Azure 服务总线、本地数据网关服务，以及你的数据源。 
+在你组织中的计算机上安装的网关作为 Windows 服务（本地数据网关）  运行。 此本地服务是通过 Azure 服务总线向网关云服务注册的。 然后，为你的 Azure 订阅创建网关资源网关云服务。 然后，将你的 Azure Analysis Services 服务器连接到网关资源。 当你服务器上的模型需要连接到你的本地数据源进行查询或处理时，查询和数据的流将遍历网关资源、Azure 服务总线、本地数据网关服务，以及你的数据源。 
 
 ![工作原理](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "65141156"
 6. 结果会从数据源返回到网关，并返回到云服务和你的服务器。
 
 ## <a name="windows-service-account"> </a>Windows 服务帐户
-本地数据网关配置为将 NT SERVICE\PBIEgwService 用于 Windows 服务登录凭据。 默认情况下，它有权作为服务登录；这位于正在安装网关的计算机的上下文中。 此凭据与用于连接到本地数据源或 Azure 帐户的帐户不相同。  
+本地数据网关配置为将 NT SERVICE\PBIEgwService  用于 Windows 服务登录凭据。 默认情况下，它有权作为服务登录；这位于正在安装网关的计算机的上下文中。 此凭据与用于连接到本地数据源或 Azure 帐户的帐户不相同。  
 
 如果由于身份验证，代理服务器遇到问题，建议将 Windows 服务帐户更改为域用户或托管服务帐户。
 
@@ -67,8 +67,8 @@ ms.locfileid: "65141156"
 | *.powerbi.com |443 |HTTPS |
 | *.analysis.windows.net |443 |HTTPS |
 | *.login.windows.net |443 |HTTPS |
-| * .servicebus.windows.net |5671-5672 |高级消息队列协议 (AMQP) |
-| * .servicebus.windows.net |443, 9350-9354 |通过 TCP 的服务总线中继上的侦听器（需要 443 来获取访问控制令牌） |
+| \* .servicebus.windows.net |5671-5672 |高级消息队列协议 (AMQP) |
+| \* .servicebus.windows.net |443, 9350-9354 |通过 TCP 的服务总线中继上的侦听器（需要 443 来获取访问控制令牌） |
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
@@ -146,7 +146,7 @@ ms.locfileid: "65141156"
 ## <a name="troubleshooting"></a>故障排除
 
 **问**：尝试在 Azure 中创建网关资源时，为什么在网关实例列表中没看到我的网关？ <br/>
-**答**：有两个可能的原因。 第一种可能性是已在当前订阅或某个其他订阅中为该网关创建了资源。 若要消除该可能性，请从门户枚举“本地数据网关”类型的资源。 枚举所有资源时，请确保选择所有订阅。 创建资源后，该网关将不会出现在“创建网关资源”门户体验的网关实例列表中。 第二种可能性是安装该网关的用户的 Azure AD 标识与登录到 Azure 门户的用户不同。 若要解决此问题，请使用安装该网关的用户帐户登录到门户。
+**答**：有两个可能的原因。 第一种可能性是已在当前订阅或某个其他订阅中为该网关创建了资源。 若要消除该可能性，请从门户枚举“本地数据网关”  类型的资源。 枚举所有资源时，请确保选择所有订阅。 创建资源后，该网关将不会出现在“创建网关资源”门户体验的网关实例列表中。 第二种可能性是安装该网关的用户的 Azure AD 标识与登录到 Azure 门户的用户不同。 若要解决此问题，请使用安装该网关的用户帐户登录到门户。
 
 **问**：如何查看正在发送到本地数据源的查询？ <br/>
 **答**：可以启用查询跟踪，包括要发送的查询。 请记得在完成故障排除后将查询跟踪改回原始值。 一直保持启用查询跟踪会创建大量的日志。
@@ -178,7 +178,7 @@ ms.locfileid: "65141156"
 
 #### <a name="event-logs"></a>事件日志
 
-可在“应用程序和服务日志”下找到数据管理网关和 PowerBIGateway 日志。
+可在“应用程序和服务日志”下找到数据管理网关和 PowerBIGateway 日志。 
 
 ## <a name="next-steps"></a>后续步骤
 * [安装并配置本地数据网关](analysis-services-gateway-install.md)。   

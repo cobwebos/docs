@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 904058c2c98c8ded2ea9c91e8aa7ec595aa49b05
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66481439"
 ---
 # <a name="offer-creation-checklist"></a>产品/服务创建清单
@@ -78,7 +78,7 @@ ms.locfileid: "66481439"
 
 | **字段名称**    | **说明**   |
 | :---------------- | :-----------| 
-| Name  | 必需，最大 50 个字符。 |
+| 名称  | 必需，最大 50 个字符。 |
 | 摘要  | 所需的最大值超过 100 个字符。 | 
 | 描述  | 必需，最大 3000 个字符。 |
 | 入门说明  | 必需，最大 3000 个字符。 |

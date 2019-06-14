@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e408439c4868a9fadfd15ab8ae303b2d881c481e
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 2b0892fb107827cd9060a36855e9b8bf4416463c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494277"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069440"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制 #
 
@@ -48,27 +48,27 @@ ms.locfileid: "66494277"
 
 该列表将显示应用中的所有当前限制。 如果应用中存在 VNet 限制，该表将显示是否为 Microsoft.Web 启用了服务终结点。 如果应用中未定义限制，则可以从任何位置访问应用。  
 
+## <a name="adding-ip-address-rules"></a>添加 IP 地址规则
+
 可单击“[+] 添加”以添加新的访问限制规则  。 规则在添加后会立即生效。 规则会从最小的数字开始往上，按优先级顺序强制执行。 即使仅添加了一个规则，一个隐式的“拒绝所有”也会立即生效。
-
-### <a name="adding-ip-address-rules"></a>添加 IP 地址规则
-
-![添加 IP 访问限制规则](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
 创建规则时，必须选择“允许/拒绝”以及规则的类型。 此时，需要提供优先级值，以及要限制访问的内容。  可以选择性地添加规则的名称和说明。  
 
+![添加 IP 访问限制规则](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
+
 若要设置基于 IP 地址的规则，请选择 IPv4 或 IPv6 类型。 对于 IPv4 和 IPv6 地址，必须在 CIDR 表示法中指定 IP 地址表示法。 若要指定确切的地址，可以使用类似 1.2.3.4/32 的格式，其中前四个八位字节代表自己的 IP 地址，/32 为掩码。 所有地址的 IPv4 CIDR 表示法都为 0.0.0.0/0。 要详细了解 CIDR 表示法，请阅读[无类别域际路由选择](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 
 
-### <a name="service-endpoints"></a>服务终结点
+## <a name="service-endpoints"></a>服务终结点
+
+服务终结点，可限制对所选的 Azure 虚拟网络子网的访问。 若要限制访问特定子网，请使用类型的虚拟网络创建限制规则。 可以选择订阅、 VNet 和子网你想要允许或拒绝访问。 如果尚未为选定子网的 Microsoft.Web 启用服务终结点，系统会自动启用它，除非你选中了不再询问的相应复选框。 有关何时要在应用而不是子网中启用它，在很大程度上取决于你是否有权在子网中启用服务终结点。 如果需要让其他某人在子网中启用服务终结点，可以选中相应的复选框，在预期将来要在子网中启用服务终结点的情况下，为服务终结点配置应用。 
 
 ![添加 VNet 访问限制规则](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
-
-若要限制对选定子网的访问，请选择“虚拟网络”类型。 在“虚拟网络”的下面，可以选择要允许或拒绝访问的订阅、VNet 和子网。 如果尚未为选定子网的 Microsoft.Web 启用服务终结点，系统会自动启用它，除非你选中了不再询问的相应复选框。 有关何时要在应用而不是子网中启用它，在很大程度上取决于你是否有权在子网中启用服务终结点。 如果需要让其他某人在子网中启用服务终结点，可以选中相应的复选框，在预期将来要在子网中启用服务终结点的情况下，为服务终结点配置应用。 
 
 服务终结点不能用于限制对应用服务环境中运行的应用程序的访问。 您的应用程序在应用服务环境时，可以使用 IP 访问规则向应用来控制访问。 
 
 使用服务终结点，可以配置使用应用程序网关或其他 WAF 设备对应用程序。 您还可以使用安全的后端配置多层应用程序。 上的多种可能性的详细信息，请参阅[联网功能和应用服务](networking-features.md)。
 
-### <a name="managing-access-restriction-rules"></a>管理访问限制规则
+## <a name="managing-access-restriction-rules"></a>管理访问限制规则
 
 单击任一行，可编辑现有访问限制规则。 编辑的内容会立即生效，包括在优先级排序方面的变化。
 
@@ -82,7 +82,7 @@ ms.locfileid: "66494277"
 
 ![删除访问限制规则](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
-### <a name="blocking-a-single-ip-address"></a>阻止单个 IP 地址 ##
+## <a name="blocking-a-single-ip-address"></a>阻止单个 IP 地址 ##
 
 在添加第一个 IP 限制规则时，服务会将添加显式**全部拒绝**规则优先级为 2147483647。 在实践中，显式**全部拒绝**规则将执行的最后一条规则，并且将阻止对显式不允许使用任何 IP 地址访问**允许**规则。
 
@@ -90,7 +90,7 @@ ms.locfileid: "66494277"
 
 ![块单个 ip 地址](media/app-service-ip-restrictions/block-single-address.png)
 
-### <a name="scm-site"></a>SCM 站点 
+## <a name="scm-site"></a>SCM 站点 
 
 除了能够控制对应用的访问以外，还可以限制对应用所用的 scm 站点的访问。 scm 站点是 Web 部署终结点，也是 Kudu 控制台。 对于 scm 站点，可以分配不同于应用的访问限制；也可以对应用和 scm 站点使用相同的设置。 选中相应的框来使用与应用相同的限制时，所有设置都会留空。如果取消选中该框，将应用前面针对 scm 站点指定的所有设置。 
 

@@ -19,10 +19,10 @@ ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b820068f7bd59941346c8d2a3e8ede15252d58b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540272"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
@@ -37,10 +37,10 @@ ms.locfileid: "65540272"
 
 ## <a name="multi-tenant-applications"></a>多租户应用程序
 
-多租户应用程序是可接受来自拥有 Azure AD 的任何公司或组织的用户的登录，而无需单独实例、配置或部署的应用程序。 AppSource 建议应用程序实施多租户来启用单击免费试用体验。
+多租户应用程序是可接受来自拥有 Azure AD 的任何公司或组织的用户的登录，而无需单独实例、配置或部署的应用程序。  AppSource 建议应用程序实施多租户来启用单击免费试用体验  。
 
 若要在应用程序中启用多租户，请执行以下操作：
-1. 在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)中，将应用程序注册信息中的 `Multi-Tenanted` 属性设置为 `Yes`。 默认情况下，在 Azure 门户中创建的应用程序将配置为[单租户](#single-tenant-applications)。
+1. 在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)中，将应用程序注册信息中的 `Multi-Tenanted` 属性设置为 `Yes`。 默认情况下，在 Azure 门户中创建的应用程序将配置为[单租户](#single-tenant-applications)。 
 1. 将代码更新为向 `common` 终结点发送请求。 为此，请将终结点从 `https://login.microsoftonline.com/{yourtenant}` 更新为 `https://login.microsoftonline.com/common*`。
 1. 对于某些平台（如 ASP .NET），还需更新代码以接受多个证书颁发者。
 
@@ -48,11 +48,11 @@ ms.locfileid: "65540272"
 
 ### <a name="single-tenant-applications"></a>单租户应用程序
 
-单租户应用程序是仅接受来自定义的 Azure AD 实例的用户登录的应用程序。 将每个用户作为来宾帐户添加到应用程序注册的 Azure AD 实例后，外部用户（包括来自其他组织的工作或学校帐户，或个人帐户）可以登录到单租户应用程序。 
+单租户应用程序是仅接受来自定义的 Azure AD 实例的用户登录的应用程序。  将每个用户作为来宾帐户添加到应用程序注册的 Azure AD 实例后，外部用户（包括来自其他组织的工作或学校帐户，或个人帐户）可以登录到单租户应用程序。 
 
 可以通过 [Azure AD B2B 协作](../b2b/what-is-b2b.md)将用户作为来宾帐户添加到 Azure AD，或者[以编程方式](../../active-directory-b2c/code-samples.md)执行此操作。 使用 B2B 时，用户可以创建自助服务门户，而无需接收登录邀请。 有关详细信息，请参阅 [Azure AD B2B 协作注册的自助服务门户](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal)。
 
-单租户应用程序可启用“与我联系”体验，但若要启用 AppSource 建议的单击/免费试用体验，则请改为在应用程序上启用多租户。
+单租户应用程序可启用“与我联系”体验，但若要启用 AppSource 建议的单击/免费试用体验，则请改为在应用程序上启用多租户  。
 
 ## <a name="appsource-trial-experiences"></a>AppSource 试用体验
 
@@ -75,7 +75,7 @@ ms.locfileid: "65540272"
 
 ### <a name="contact-me-partner-led-trial-experience"></a>与我联系（合作伙伴导向型试用体验）
 
-需要执行手动或长期操作来预配用户/公司（例如，应用程序需要预配虚拟机、数据库实例或耗费大量时间才可完成的操作）时，可以使用合作伙伴试用体验。 在这种情况下，用户选择“请求试用”按钮并填写表单后，AppSource 将向你发送用户的联系信息。 收到此信息后，需预配环境并就如何访问试用体验向用户发送说明：<br/><br/>
+需要执行手动或长期操作来预配用户/公司（例如，应用程序需要预配虚拟机、数据库实例或耗费大量时间才可完成的操作）时，可以使用合作伙伴试用体验。 在这种情况下，用户选择“请求试用”按钮并填写表单后，AppSource 将向你发送用户的联系信息  。 收到此信息后，需预配环境并就如何访问试用体验向用户发送说明：<br/><br/>
 
 <table valign="top">
 <tr>

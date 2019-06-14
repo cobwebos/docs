@@ -1,19 +1,19 @@
 ---
-title: 在 Azure Database for PostgreSQL-单个服务器创建用户
-description: 本文介绍如何创建新的用户帐户以与 Azure Database for PostgreSQL-单个服务器进行交互。
+title: 在 Azure Database for PostgreSQL - 单一服务器中创建用户
+description: 本文介绍了如何创建新的用户帐户，用以与 Azure Database for PostgreSQL - 单一服务器进行交互。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: ce6188732720bc43c5849fa492237c7ab98487c6
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067502"
 ---
-# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL-单个服务器创建用户
+# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中创建用户
 本文介绍了如何在 Azure Database for PostgreSQL 服务器中创建用户。
 
 ## <a name="the-server-admin-account"></a>服务器管理员帐户
@@ -32,7 +32,7 @@ PostgreSQL 引擎使用权限来控制对数据库对象的访问权限，如 [P
 
 ## <a name="how-to-create-additional-admin-users-in-azure-database-for-postgresql"></a>如何在 Azure Database for PostgreSQL 中创建其他管理员用户
 1. 获取连接信息和管理员用户名。
-   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。 
+   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。   
 
 2. 使用管理员帐户和密码连接到你的数据库服务器。 使用你喜欢的客户端工具，例如 pgAdmin 或 psql。
    如果不确定如何连接，请参阅[快速入门](./quickstart-create-server-database-portal.md)
@@ -48,7 +48,7 @@ PostgreSQL 引擎使用权限来控制对数据库对象的访问权限，如 [P
 ## <a name="how-to-create-database-users-in-azure-database-for-postgresql"></a>如何在 Azure Database for PostgreSQL 中创建数据库用户
 
 1. 获取连接信息和管理员用户名。
-   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。 
+   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。   
 
 2. 使用管理员帐户和密码连接到你的数据库服务器。 使用你喜欢的客户端工具，例如 pgAdmin 或 psql。
 

@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 56ceb48be9d5cc9d1cdceed7505e2e3e918a7286
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 6dbaa24df8b2917dd3f68d3851ca4662554ad00a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399664"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053265"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>通过 C# 中的机器人将 LUIS 结果添加到 Application Insights
 
 本教程介绍如何将 LUIS 响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 该数据后，您可以查询它与 Kusto 语言或 Power BI 进行分析，则聚合，和报告目的和实时查询文本的实体。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
-该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。 一个[Bot Framework 4.x LUIS 教程](luis-csharp-tutorial-bf-v4.md)也是可用。
+使用 Bot Framework 生成机器人 4.x 和 Azure Web app 机器人。 一个[Bot Framework 4.x LUIS 教程](luis-csharp-tutorial-bf-v4.md)也是可用。
 
 本教程介绍如何执行下列操作：
 
@@ -33,7 +33,7 @@ ms.locfileid: "66399664"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 使用[上一教程](luis-csharp-tutorial-build-bot-framework-sample.md)中已启用 Application Insights 的 LUIS Web 应用机器人  。
+* 从 LUIS web app 机器人**tutorial](luis-csharp-tutorial-bf-v4.md)** 使用 Application Insights 开启。
 * 计算机上已本地安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
 
 > [!Tip]
@@ -43,7 +43,7 @@ ms.locfileid: "66399664"
 
 ## <a name="review-luis-web-app-bot"></a>检查 LUIS Web 应用机器人
 
-本教程假定你有如下代码或已完成[其他教程](luis-csharp-tutorial-build-bot-framework-sample.md)：
+本教程假定你有如下代码或已完成[其他教程](luis-csharp-tutorial-bf-v4.md)：
 
    [!code-csharp[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs "Web app bot with LUIS")]
 

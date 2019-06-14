@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: ab33feb1ffdbced193afaba8f52719b3c215652f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f9b9fc0a2939f601cbddafb6ac400130e794da2b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511119"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060894"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 
@@ -52,7 +52,7 @@ ms.locfileid: "65511119"
 
 1. 从 Azure 门户获取的语音服务订阅密钥。
 2. 登录到[自定义语音门户](https://aka.ms/custom-speech)。
-3. 选择的订阅需要处理和创建语音项目。
+3. 选择在上运行并创建语音项目所需的订阅。
 4. 如果你想要修改你的订阅，使用**嵌齿**图标位于顶部导航栏中。
 
 ## <a name="how-to-create-a-project"></a>如何创建项目

@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
 ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938260"
 ---
 # <a name="geographic-availability-and-currency-support"></a>上市地区和货币支持
 
 141 地理位置中定义的客户的帐单邮寄地址，可购买 azure Marketplace 产品/服务和 17 种货币，即可完成事务。 下的表列出每个受支持的地理位置，其[ISO 3166 两位数字法典](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)，以及已分配的货币。
 
-|   国家/地区名称               |   ISO-2   |   货币   |
+|   国家/地区名称               |   ISO-2   |   Currency   |
 |-------------------------------------|-----------|--------------|
 | 阿富汗                         | AF        | USD          |
 | 阿尔巴尼亚                             | AL        | USD          |

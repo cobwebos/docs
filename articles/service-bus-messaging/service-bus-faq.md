@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707138"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
@@ -33,7 +33,7 @@ ms.locfileid: "64707138"
 [服务总线队列](service-bus-queues-topics-subscriptions.md)是用于存储消息的实体。 有多个应用程序，或者有多个需要彼此通信的分布式应用程序部分时，队列特别有用。 队列和发行中心的相似之处在于，两者都会接收多个产品（消息），再从该处送出。
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>什么是 Azure 服务总线主题和订阅？
-主题可被视为队列，使用多个订阅时，它将成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
+主题可被视为队列，使用多个订阅时，它将成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub  ）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
 
 ### <a name="what-is-a-partitioned-entity"></a>什么是分区实体？
 传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 仅在基本和标准消息传递层中受支持，[分区队列或主题](service-bus-partitioning.md)由多个消息中转站处理，并存储在多个消息传送存储中。 此功能意味着分区的队列或主题的总吞吐量不再受到单个消息中转站或消息存储的性能限制。 此外，消息传送存储的临时中断不会导致分区的队列或主题不可用。
@@ -43,45 +43,45 @@ ms.locfileid: "64707138"
  [高级 SKU](service-bus-premium-messaging.md) 中不再支持分区实体。 
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
-使用 Azure 服务总线中，可以使用以下协议来发送和接收消息：
+可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
 
 - 高级消息队列协议 (AMQP)
 - 服务总线邮件协议 (SBMP)
 - HTTP
 
-请参阅下表中的所需打开以显示使用这些协议进行通信和 Azure 事件中心的出站端口。 
+请查看下表，了解需要打开哪些出站端口，以便使用这些协议与 Azure 事件中心通信。 
 
 | Protocol | 端口 | 详细信息 | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 和端口 5672 | 请参阅[AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 至 9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
+| SBMP | 9350 到 9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP、HTTPS | 80、443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>哪些 IP 地址需要加入允许列表？
-若要查找你连接到允许列表的正确 IP 地址，请执行以下步骤：
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要将哪些 IP 地址加入允许列表？
+若要找到适合加入连接的允许列表的 IP 地址，请执行以下步骤：
 
 1. 从命令提示符处运行以下命令： 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. 记下中返回的 IP 地址`Non-authoritative answer`。 此 IP 地址是静态的。 它将更改时间的唯一点是如果还原到不同的群集的命名空间。
+2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 此 IP 地址是静态的。 只有在你将命名空间还原到另一群集时，它才会更改。
 
-如果你的命名空间为使用区域冗余，需要执行一些其他步骤： 
+如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
 
-1. 首先，在命名空间上运行 nslookup。
+1. 首先，在命名空间中运行 nslookup。
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. 记下中的名称**非权威应答**部分中，这是采用以下格式之一： 
+2. 记下“非权威回答”  部分中的名称，该名称采用下述格式之一： 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. 为每个后缀 s1、 s2 和 s3 以获取在三个可用性区域中运行的所有三个实例的 IP 地址与运行 nslookup 
+3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
 
 
 ## <a name="best-practices"></a>最佳做法

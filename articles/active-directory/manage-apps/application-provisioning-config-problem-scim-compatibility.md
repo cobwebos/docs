@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963174"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
@@ -38,10 +38,10 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 | **SCIM 2.0 合规性问题** |  **是否已修复？** | **修复日期**  |  
 |---|---|---|
-| Azure AD 要求“/scim”位于应用程序的 SCIM 终结点 URL 的根路径中  | “是”  |  2018 年 12 月 18 日 | 
-| 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  “是”  | 2018 年 12 月 18 日  | 
-|  多值属性的批量请求包含无效路径筛选器语法 | “是”  |  2018 年 12 月 18 日  | 
-|  组创建请求包含无效架构 URI | “是”  |  2018 年 12 月 18 日  |  
+| Azure AD 要求“/scim”位于应用程序的 SCIM 终结点 URL 的根路径中  | 是  |  2018 年 12 月 18 日 | 
+| 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 
+|  多值属性的批量请求包含无效路径筛选器语法 | 是  |  2018 年 12 月 18 日  | 
+|  组创建请求包含无效架构 URI | 是  |  2018 年 12 月 18 日  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>所述服务修补程序是否会自动应用于预先存在的 SCIM 应用？
 

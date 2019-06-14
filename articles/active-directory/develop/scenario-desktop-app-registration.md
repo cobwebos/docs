@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da934709274d90668d94dfea3a9c223e191d032
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5ab2701a82da0b8f7bc4e23a3d947be905593e85
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076055"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057218"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>桌面应用程序调用 web Api 的应用注册
 
@@ -46,12 +46,13 @@ ms.locfileid: "65076055"
 
 再次重定向 Uri 使用桌面应用程序中将取决于你想要使用的流。
 
-- 如果使用交互式身份验证，你将想要使用`https://login.microsoftonline.com/common/oauth2/nativeclient`。 可通过单击相应的 URL 中实现此配置**身份验证**部分，了解你的应用程序
+- 如果您使用的**交互式身份验证**或**设备代码流**，你将想要使用`https://login.microsoftonline.com/common/oauth2/nativeclient`。 可通过单击相应的 URL 中实现此配置**身份验证**部分，了解你的应用程序
   
   > [!IMPORTANT]
   > 今天 MSAL.NET 默认情况下，在 Windows 上运行的桌面应用程序中使用另一个重定向 URI (`urn:ietf:wg:oauth:2.0:oob`)。 将来我们想要更改此默认值，并因此我们建议你使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- 如果您的应用程序仅使用集成 Windows 身份验证，用户名/密码或设备代码流，不需要注册你的应用程序的重定向 URI。 实际上，这些流执行到 Microsoft 标识平台 v2.0 终结点的往返行程，并不会对任何特定的 URI 返回调用你的应用程序。 为了区分从机密客户端应用程序流，其不具有重定向 Uri 是 （客户端凭据流使用在守护程序应用程序中），您需要来表达你的应用程序是一个公共客户端应用程序。 此配置通过转到实现**身份验证**部分，为应用程序，以及在**高级设置**子节中，选择**是**，对问题**视为公共客户端应用程序**(在**默认客户端类型**段落)
+- 如果您的应用程序仅使用集成 Windows 身份验证，用户名/密码，不需要注册你的应用程序的重定向 URI。 实际上，这些流执行到 Microsoft 标识平台 v2.0 终结点的往返行程，并不会对任何特定的 URI 返回调用你的应用程序。 
+- 为了区分设备代码流，集成 Windows 身份验证和用户名/密码机密客户端应用程序流，其不具有从重定向 Uri 是 （客户端凭据流使用在守护程序应用程序中），您需要 express应用程序仍然公共客户端应用程序。 此配置通过转到实现**身份验证**部分，为应用程序，以及在**高级设置**子节中，选择**是**，对问题**视为公共客户端应用程序**(在**默认客户端类型**段落)
 
   ![允许公共客户端](media/scenarios/default-client-type.png)
 

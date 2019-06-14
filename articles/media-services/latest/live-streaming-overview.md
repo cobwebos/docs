@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/11/2019
 ms.author: juliako
 ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65556226"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
@@ -26,7 +26,7 @@ ms.locfileid: "65556226"
 
 - 一个相机，用于捕获实时事件。<br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
 
-    如果您没有对相机的访问，这样的工具[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm)可以使用从视频文件生成的实时源。
+    如果你无法访问摄像机，则可以使用 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 等工具从视频文件生成实时源。
 - 一个实时视频编码器，用于将相机（或其他设备，例如便携式计算机）的信号转换为可发送到媒体服务的贡献源。 贡献源可包括与广告相关的信号，例如 SCTE-35 标记。<br/>有关推荐的实时传送视频流编码器的列表，请参阅[实时传送视频流编码器](recommended-on-premises-live-encoders.md)。 另外，请查看以下博客：[采用 OBS 的实时传送视频流生产](https://link.medium.com/ttuwHpaJeT)。
 - 媒体服务中的组件，用于引入、预览、打包、记录、加密实时事件并将其广播给客户，或者广播给 CDN 进行进一步分发。
 
@@ -80,7 +80,7 @@ ms.locfileid: "65556226"
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。<br/>**实时输出**会将流存档到**资产**中。
 7. 使用内置的**流式处理策略**类型创建**流式处理定位符**。<br/>如果想要加密内容，请查看[内容保护概述](content-protection-overview.md)。
-8. 列出流式处理定位器的路径，以取回要使用的 URL（这些是确定性的）。
+8. 列出流式处理定位器的路径，以取回要使用的 URL（这些是确定性的）  。
 9. 获取的主机名**流式处理终结点**想要从 （源）。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
 11. 如果希望停止查看**实时事件**，则需要停止流式处理事件并删除**流式处理定位符**。

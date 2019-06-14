@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956175"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux Node.js 应用
@@ -71,7 +71,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>运行 npm start
 
-若要开始在应用程序使用`npm start`，只需确保`start`脚本位于*package.json*文件。 例如:
+若要开始在应用程序使用`npm start`，只需确保`start`脚本位于*package.json*文件。 例如：
 
 ```json
 {
@@ -119,7 +119,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 可以调试 Node.js 应用程序中远程[Visual Studio Code](https://code.visualstudio.com/)如果你配置[使用 PM2 运行](#run-with-pm2)，它使用运行时除外 *。 config.js、 *.yml，或 *.yaml*。
 
-在大多数情况下，没有额外的配置都需要为你的应用。 如果您的应用程序运行了*process.json*文件 （默认或自定义），它必须具有`script`JSON 根目录中的属性。 例如:
+在大多数情况下，没有额外的配置都需要为你的应用。 如果您的应用程序运行了*process.json*文件 （默认或自定义），它必须具有`script`JSON 根目录中的属性。 例如：
 
 ```json
 {
@@ -147,7 +147,7 @@ process.env.NODE_ENV
 
 默认情况下，Kudu 运行`npm install --production`时它可以识别部署 Node.js 应用。 如果你的应用需要的任何常用自动化工具，如 Grunt、 Bower 或 Gulp，则需要提供[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)来运行它。
 
-若要启用你的存储库来运行这些工具，您需要将它们添加到中的依赖项*package.json。* 例如:
+若要启用你的存储库来运行这些工具，您需要将它们添加到中的依赖项*package.json。* 例如：
 
 ```json
 "dependencies": {
@@ -226,7 +226,7 @@ fi
 
 在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
-使用常用 Web 框架可以访问采用标准应用模式的 `X-Forwarded-*` 信息。 在中[Express](https://expressjs.com/)，可以使用[信任代理](https://expressjs.com/guide/behind-proxies.html)。 例如:
+使用常用 Web 框架可以访问采用标准应用模式的 `X-Forwarded-*` 信息。 在中[Express](https://expressjs.com/)，可以使用[信任代理](https://expressjs.com/guide/behind-proxies.html)。 例如：
 
 ```javascript
 app.set('trust proxy', 1)
@@ -249,7 +249,7 @@ if (req.secure) {
 当工作的 Node.js 应用程序行为是不同的应用服务中，或有错误时，请尝试以下方法：
 
 - [访问日志流](#access-diagnostic-logs)。
-- 在生产模式下，本地测试应用程序。 应用服务在生产模式下运行 Node.js 应用程序，因此您需要确保你的项目按预期方式在本地生产模式下能够正常工作。 例如:
+- 在生产模式下，本地测试应用程序。 应用服务在生产模式下运行 Node.js 应用程序，因此您需要确保你的项目按预期方式在本地生产模式下能够正常工作。 例如：
     - 具体取决于你*package.json*，可能会为生产模式下安装不同的包 (`dependencies`与`devDependencies`)。
     - 某些 web 框架可以部署在生产模式下以不同的方式的静态文件。
     - 在生产模式下运行时，某些 web 框架可能会使用自定义启动脚本。

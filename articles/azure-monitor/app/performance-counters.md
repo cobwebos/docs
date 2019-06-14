@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
 ms.openlocfilehash: 0ec64a5ae412fb4a1900021fefcb7d9112b1b019
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66255330"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
@@ -153,7 +153,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 * [ASP.NET Core SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本 2.4.1 和上面收集性能计数器 （如果在 Azure Web 应用 (Windows) 中运行应用程序
 
-* SDK 版本 2.7.0-beta3 和上面收集性能计数器 （如果应用程序是 Windows，在运行目标`NETSTANDARD2.0`或更高版本。
+* 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.0-beta3 和更高版本将收集性能计数器。
 * 对于面向.NET Framework 的应用程序，在所有版本的 SDK 支持性能计数器。
 * 添加非 Windows 中的性能计数器支持时，将更新这篇文章。
 

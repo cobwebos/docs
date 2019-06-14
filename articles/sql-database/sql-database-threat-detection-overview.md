@@ -13,10 +13,10 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 03/31/2019
 ms.openlocfilehash: 710a94c919f4262c3f572f28d03c79b77e658287
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60614579"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL 数据库的高级威胁防护
@@ -55,7 +55,7 @@ ms.locfileid: "60614579"
 
 ![异常活动报告](./media/sql-database-threat-detection/anomalous_activity_report.png)
 
-1. 单击电子邮件中“查看最近的 SQL 警报”链接以启动 Azure 门户并显示“Azure 安全中心警报”页，该页面提供在 SQL 数据库上检测到的活动威胁的概述。
+1. 单击电子邮件中“查看最近的 SQL 警报”  链接以启动 Azure 门户并显示“Azure 安全中心警报”页，该页面提供在 SQL 数据库上检测到的活动威胁的概述。
 
    ![活动威胁](./media/sql-database-threat-detection/active_threats.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "60614579"
 
 高级的威胁防护集成其警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。 Azure 门户中“数据库和 SQL ADS”边栏选项卡内的“实时 SQL 高级威胁防护”磁贴会跟踪活动威胁的状态。
 
-单击“高级威胁防护警报”以启动“Azure 安全中心警报”页，并获取在数据库或数据仓库中检测到的活动 SQL 威胁的概述。
+单击“高级威胁防护警报”以启动“Azure 安全中心警报”页，并获取在数据库或数据仓库中检测到的活动 SQL 威胁的概述  。
 
    ![高级威胁防护警报](./media/sql-database-threat-detection/threat_detection_alert.png)
 

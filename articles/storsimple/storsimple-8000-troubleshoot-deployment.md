@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 6bb587de2f0f3ef9c4e8c4a856ee4b7430e9b9cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631539"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64715218"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>排查 StorSimple 设备部署问题
 ## <a name="overview"></a>概述
@@ -82,7 +82,7 @@ ms.locfileid: "60631539"
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>配置可选 Web 代理设置期间的错误
 | 否。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
-| 第 |Invoke-hcssetupwizard:无效的参数 (异常来自 HRESULT:0x80070057) |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式： http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
+| 第 |Invoke-hcssetupwizard:无效的参数 (异常来自 HRESULT:0x80070057) |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式： http:// *\<IP 地址或 web 代理服务器的 FQDN >* : *\<TCP 端口号 >* |
 | 2 |Invoke-hcssetupwizard:RPC 服务器不可用 (异常来自 HRESULT:0x800706ba) |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，需要[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
 | 3 |Invoke-hcssetupwizard:RPC 调用失败 (异常来自 HRESULT:0x800706be) |群集已关闭。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。 |
 | 4 |Invoke-hcssetupwizard:群集资源未找到 (异常来自 HRESULT:0x8007138f) |找不到群集资源。 安装不正确时可能出现这个错误。 |可能需要将设备重置为出厂默认设置。 [联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md) 以创建群集资源。 |
@@ -135,7 +135,7 @@ ms.locfileid: "60631539"
 | 5 |错误 350031:已注册设备。 | |无需执行任何操作。 |
 | 6 |错误 350016:设备注册失败。 | |请确保注册密钥正确。 |
 | 7 |Invoke-hcssetupwizard:注册你的设备; 时出错这可能是由于不正确的 IP 地址或 DNS 名称。 请检查网络设置，然后重试。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 （错误 350050） |确保设备可以 ping 外部网络。 如果没有连接到外部网络，则注册可能会失败并出现此错误。 此错误可能是以下一个或多个原因的组合：<ul><li>IP 不正确</li><li>子网不正确</li><li>网关不正确</li><li>DNS 设置不正确</li></ul> |请参阅[分步故障排除示例](#step-by-step-storsimple-troubleshooting-example)中的步骤。 |
-| 8 |Invoke-hcssetupwizard:由于内部服务错误 [0x1FBE2]，当前操作失败。 请稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |这是为服务或代理中所有用户不可见错误抛出的通用错误。 最常见的原因可能是 ACS 身份验证已失败。 导致此故障的可能原因是 NTP 服务器配置存在问题，并且设备上的时间设置不正确。 |更正时间（如果有问题），然后重试注册操作。 如果使用 Set-HcsSystem -Timezone 命令调整时区，请将时区中的每个单词的首字母大写（例如“Pacific Standard Time”）。  如果此问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
+| 8 |Invoke-hcssetupwizard:由于内部服务错误 [0x1FBE2]，当前操作失败。 请过一段时间后重试该操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |这是为服务或代理中所有用户不可见错误抛出的通用错误。 最常见的原因可能是 ACS 身份验证已失败。 导致此故障的可能原因是 NTP 服务器配置存在问题，并且设备上的时间设置不正确。 |更正时间（如果有问题），然后重试注册操作。 如果使用 Set-HcsSystem -Timezone 命令调整时区，请将时区中的每个单词的首字母大写（例如“Pacific Standard Time”）。  如果此问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
 | 9 |警告：无法激活设备。 设备管理员和 StorSimple Snapshot Manager 密码尚未更改。 |如果注册失败，则设备管理员和 StorSimple Snapshot Manager 密码不会更改。 | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>用于排查 StorSimple 部署问题的工具
@@ -178,7 +178,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 * `Get-HcsRoutingTable`：使用此 cmdlet 显示本地 IP 路由表。
 
 ## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>使用 Get-NetAdapter cmdlet 进行故障排除
-为第一次设备部署配置网络接口时，StorSimple 设备管理器服务 UI 中的硬件状态不可用，因为尚未使用该服务注册此设备。 此外，“硬件运行状况”边栏选项卡可能不会始终正确反映设备的状态，特别是在存在影响服务同步的问题时。 在这些情况下，可以使用 `Get-NetAdapter` cmdlet 确定网络接口的运行状况和状态。
+为第一次设备部署配置网络接口时，StorSimple 设备管理器服务 UI 中的硬件状态不可用，因为尚未使用该服务注册此设备。 此外，“硬件运行状况”边栏选项卡可能不会始终正确反映设备的状态，特别是在存在影响服务同步的问题时。  在这些情况下，可以使用 `Get-NetAdapter` cmdlet 确定网络接口的运行状况和状态。
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>要查看设备上的所有网络适配器的列表
 1. 启动 Windows PowerShell for StorSimple，并键入 `Get-NetAdapter`。 
@@ -339,7 +339,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 
 **示例输出 – 脱机设备** 
 
-此示例来自 Azure 门户中状态为“脱机”的设备。
+此示例来自 Azure 门户中状态为“脱机”的设备。 
 
      Checking device registrationstate: Success
      Device is registered successfully

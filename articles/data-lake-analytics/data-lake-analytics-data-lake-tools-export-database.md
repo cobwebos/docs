@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60628515"
 ---
 # <a name="export-a-u-sql-database"></a>导出 U-SQL 数据库
@@ -31,11 +31,11 @@ ms.locfileid: "60628515"
 你有权访问的所有 Data Lake Analytics 帐户都列在服务器资源管理器中。 若要导出数据库，请执行以下操作：
 
 1. 在服务器资源管理器中，展开包含所要导出的数据库的帐户。
-2. 右键单击该数据库，选择“导出”。 
+2. 右键单击该数据库，选择“导出”。  
    
     ![服务器资源管理器 - 导出数据库](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     如果“导出”菜单选项不可用，需要[将工具更新到最新版本](https://aka.ms/adltoolsvs)。
+     如果“导出”菜单选项不可用，需要[将工具更新到最新版本](https://aka.ms/adltoolsvs)。 
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>步骤 2：配置你想要导出的对象
 
@@ -47,7 +47,7 @@ ms.locfileid: "60628515"
 
 ### <a name="step-3-check-the-objects-list-and-other-configurations"></a>步骤 3：检查对象列表和其他配置
 
-在此步骤中，可以检查“导出对象列表”框中的选定对象。 如果存在任何错误，可以选择“上一步”返回，并正确配置所要导出的对象。
+在此步骤中，可以检查“导出对象列表”框中的选定对象。  如果存在任何错误，可以选择“上一步”返回，并正确配置所要导出的对象。 
 
 还可以配置导出目标的其他设置。 下表列出了配置说明：
 
@@ -69,7 +69,7 @@ ms.locfileid: "60628515"
 
 ## <a name="import-the-exported-database-to-a-local-account"></a>将导出的数据库导入到本地帐户
 
-导入已导出数据库的最便捷方法是在执行导出过程的步骤 3 期间选中“自动导入到本地数据库”复选框。 如果未选中此框，可在导出日志中找到导出的 U-SQL 脚本。 然后，在本地运行该 U-SQL 脚本，将数据库导入到本地帐户。
+导入已导出数据库的最便捷方法是在执行导出过程的步骤 3 期间选中“自动导入到本地数据库”复选框。  如果未选中此框，可在导出日志中找到导出的 U-SQL 脚本。 然后，在本地运行该 U-SQL 脚本，将数据库导入到本地帐户。
 
 ## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>将导出的数据库导入到 Data Lake Analytics 帐户
 
@@ -80,7 +80,7 @@ ms.locfileid: "60628515"
 
 ## <a name="known-limitations"></a>已知限制
 
-目前，如果在步骤 3 中选择了“架构和数据”选项，该工具将运行 U-SQL 作业来导出表中存储的数据。 因此，数据导出过程可能较慢且产生费用。 
+目前，如果在步骤 3 中选择了“架构和数据”选项，该工具将运行 U-SQL 作业来导出表中存储的数据。  因此，数据导出过程可能较慢且产生费用。 
 
 ## <a name="next-steps"></a>后续步骤
 

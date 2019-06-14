@@ -16,13 +16,13 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5bc0075e6604bd1f94531040f2e4a0628e70667
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074885"
 ---
-# <a name="scenario-protected-web-api"></a>场景：受保护的 web API
+# <a name="scenario-protected-web-api"></a>场景：受保护的 Web API
 
 在此方案中，我们将展示如何将公开 web API 和如何保护它，以便只有经过身份验证的用户可以访问 API。 你将想要启用与工作和学校帐户或个人 Microsoft 个人帐户已经过身份验证的用户使用你的 web API。
 

@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd84b44c89c856036640757b7760d7c10bd36173
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824848"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>配置最终用户对 Azure Active Directory 中应用程序的许可方式
@@ -35,27 +35,27 @@ ms.locfileid: "65824848"
 授予对企业应用的管理员许可：
 
 1. 以全局管理员、应用程序管理员或云应用程序管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧导航菜单的顶部单击“所有服务”。 此时会打开“Azure Active Directory 扩展”。
-3. 在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
-4. 在导航菜单中，单击“企业应用程序”。
-5. 单击“授予管理员许可”。 系统将提示你登录以管理应用程序。
+2. 在左侧导航菜单的顶部单击“所有服务”。  此时会打开“Azure Active Directory 扩展”。 
+3. 在筛选器搜索框中键入“Azure Active Directory”  ，然后选择“Azure Active Directory”  项。
+4. 在导航菜单中，单击“企业应用程序”  。
+5. 单击“授予管理员许可”。  系统将提示你登录以管理应用程序。
 6. 使用有权授予对应用程序的管理员许可的帐户登录。 
 7. 许可应用程序权限。
 
 仅当应用程序符合以下条件时，此选项才起作用： 
 
 - 已在租户中注册，或
-- 已在另一个 Azure AD 租户中注册，并且已由至少一个最终用户许可。 最终用户许可应用程序后，Azure AD 将在 Azure 门户中的“企业应用”下列出该应用程序。
+- 已在另一个 Azure AD 租户中注册，并且已由至少一个最终用户许可。 最终用户许可应用程序后，Azure AD 将在 Azure 门户中的“企业应用”下列出该应用程序。 
 
 ## <a name="grant-admin-consent-when-registering-an-app-in-the-azure-portal"></a>在 Azure 门户中注册应用时授予管理员许可
 
 在注册应用时授予管理员许可： 
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 导航到“应用注册”边栏选项卡。
+2. 导航到“应用注册”边栏选项卡。 
 3. 选择要许可的应用程序。
-4. 选择“所需的权限”。
-5. 单击边栏选项卡顶部的“授予权限”。
+4. 选择“所需的权限”。 
+5. 单击边栏选项卡顶部的“授予权限”。 
 
 
 ## <a name="grant-admin-consent-through-a-url-request"></a>通过 URL 请求授予管理员许可

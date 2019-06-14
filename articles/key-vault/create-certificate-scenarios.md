@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 3d86960e726ae18fba8d171ab9f85d7c991b4e40
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64729235"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>监视和管理证书创建
@@ -39,7 +39,7 @@ ms.locfileid: "64729235"
 
 |方法|请求 URI|
 |------------|-----------------|
-|POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
+|发布|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
 以下示例要求在密钥保管库中已经有名称为“mydigicert”且颁发者提供者为 DigiCert 的对象。 证书颁发者是 Azure Key Vault (KV) 中表示为 CertificateIssuer 资源的实体。 它用于提供有关 KV 证书来源的信息，例如颁发者名称、提供者、凭据和其他管理详细信息。
 
@@ -226,7 +226,7 @@ StatusCode: 404, ReasonPhrase: 'Not Found'
 
 |方法|请求 URI|
 |------------|-----------------|
-|POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
+|发布|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
 ### <a name="request"></a>请求
 
@@ -263,7 +263,7 @@ StatusCode: 409, ReasonPhrase: 'Conflict'
 
 |方法|请求 URI|
 |------------|-----------------|
-|POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
+|发布|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
 
 ### <a name="request"></a>请求
 
@@ -332,7 +332,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 |方法|请求 URI|
 |------------|-----------------|
-|删除|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
+|DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>请求
 DELETE `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
@@ -362,7 +362,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 |方法|请求 URI|
 |------------|-----------------|
-|POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
+|发布|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
 ### <a name="request"></a>请求
 
@@ -402,7 +402,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |方法|请求 URI|
 |------------|-----------------|
-|POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
+|发布|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
 
 ### <a name="request"></a>请求
 
@@ -413,7 +413,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|元素名称|需要|Type|Version|描述|
+|元素名称|必选|Type|Version|描述|
 |------------------|--------------|----------|-------------|-----------------|
 |x5c|是|数组|\<引入版本>|Base 64 字符串数组形式的 X509 证书链。|
 

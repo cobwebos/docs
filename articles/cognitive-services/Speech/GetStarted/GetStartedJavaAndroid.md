@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 147042e300e629dd7e354d4e9079cc4855a8146c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515181"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>快速入门：在 Android 上的 Java 中使用必应语音识别 API
@@ -38,9 +38,9 @@ ms.locfileid: "60515181"
 
 #### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>订阅语音 API，并获得免费试用的订阅密钥
 
-语音 API 是认知服务（之前称为 Project Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
+语音 API 是认知服务（之前称为 Project Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥  。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
 
-如果想使用“意向识别”，还需要注册[语言理解智能服务 (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)。
+如果想使用“意向识别”，还需要注册[语言理解智能服务 (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)  。
 
 > [!IMPORTANT]
 >* 获取订阅密钥。 必须拥有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)才能使用语音客户端库。
@@ -139,10 +139,10 @@ void initializeRecoClient()
 * **部分结果事件**：：每次语音服务预测你可能会说的内容时，甚至在你说完（如果使用 `MicrophoneRecognitionClient`）或完成发送数据（如果使用 `DataRecognitionClient`）之前，都会调用此事件。
 * **错误事件**：服务检测到错误时调用。
 * **意向事件**：在最终识别结果被分析为结构化 JSON 意向后，在“WithIntent”客户端上（仅以 `ShortPhrase` 模式）进行调用。
-* 结果事件：
+* 结果事件  ：
   * 在 `ShortPhrase` 模式下，在你说完后调用此事件并返回 n-best 结果。
   * 在 `LongDictation` 模式下，基于服务指示的语句停顿位置，多次调用事件处理程序。
-  * 对于每个最优选择，返回置信度值和几种不同形式的已识别文本。 有关详细信息，请参阅[输出格式](../Concepts.md#output-format)。
+  * 对于每个最优选择  ，返回置信度值和几种不同形式的已识别文本。 有关详细信息，请参阅[输出格式](../Concepts.md#output-format)。
 
 ## <a name="related-topics"></a>相关主题
 

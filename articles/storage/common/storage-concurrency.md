@@ -10,10 +10,10 @@ ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
 ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64728317"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
@@ -21,7 +21,7 @@ ms.locfileid: "64728317"
 通常情况下，基于 Internet 的新型应用程序允许多名用户同时查看和更新数据。 这就要求应用程序开发人员仔细考虑如何为他们的最终用户提供可预测的体验，尤其是在多名用户可以更新相同数据的情况下。 开发人员通常考虑下面三个主要数据并发策略：  
 
 1. 乐观并发 – 执行更新的应用程序在更新过程中要验证数据是否自该应用程序上次读取该数据起已发生更改。 例如，如果两名查看 wiki 页的用户对同一页进行更新，则 wiki 平台必须确保第二次更新不会覆盖第一次更新，并且两名用户都了解他们的更新成功与否。 此策略最常用于 Web 应用程序中。
-2. 悲观并发 – 要执行更新的应用程序将对对象获取一个锁，以防其他用户在该锁释放前更新数据。 例如，在主/从数据复制方案中，仅主对象要执行更新主将通常持有排他锁数据以确保任何其他人可以更新的时间很长一段。
+2. 悲观并发 – 要执行更新的应用程序将对对象获取一个锁，以防其他用户在该锁释放前更新数据。 例如，在主/从数据复制情况下，如果只有主对象要执行更新，则该对象通常会在长时间内对数据持有一个独占锁，以确保其他任何用户都不能更新该数据。
 3. 最后写入者胜出 – 一种方法，即允许任何更新操作继续进行，而不需要验证其他任何应用程序是否自应用程序首次读取数据起已更新该数据。 此策略（或缺乏正式策略）通常用于以下情况：以多名用户不可能访问相同数据的方式对数据进行分区。 该策略可能还适用于正在处理短期数据流的情况。  
 
 本文概述 Azure 存储平台如何通过为所有这三个并发策略提供一类支持来简化开发。  
@@ -193,7 +193,7 @@ catch (StorageException ex)
 
 * [Specifying Conditional Headers for Blob Service Operations](https://msdn.microsoft.com/library/azure/dd179371.aspx)（为 Blob 服务操作指定条件标头）
 * [Lease Container](https://msdn.microsoft.com/library/azure/jj159103.aspx)（租赁容器）
-* [租赁 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [租用 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>在表服务中管理并发
 在处理实体时，表服务使用乐观并发检查作为默认行为，而 Blob 服务不同，必须明确选择执行乐观并发检查。 表服务与 Blob 服务之间的另一个区别在于，使用表服务，只能管理实体的并发行为，而使用 Blob 服务，既可以管理容器的并发，又可以管理 Blob 的并发。  

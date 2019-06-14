@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61482792"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的控制器模块
@@ -78,8 +78,8 @@ ms.locfileid: "61482792"
 
 
 #### <a name="to-remove-a-single-failed-controller-module"></a>拆卸发生故障的单个控制器模块
-1. 在 Azure 门户中，转到“StorSimple Device Manager 服务”，单击“设备”，并单击要监视的设备的名称。
-2. 转到“监视器”>“硬件运行状况”。 控制器 0 或控制器 1 的状态应以红色显示，表明发生了故障。
+1. 在 Azure 门户中，转到“StorSimple Device Manager 服务”，单击“设备”，并单击要监视的设备的名称。 
+2. 转到“监视器”>“硬件运行状况”  。 控制器 0 或控制器 1 的状态应以红色显示，表明发生了故障。
    
    > [!NOTE]
    > 在单控制器更换过程中，发生故障的控制器始终为备用控制器。
@@ -100,7 +100,7 @@ ms.locfileid: "61482792"
 5. 按照[拆卸控制器](#remove-a-controller)中的步骤拆卸发生故障的控制器。
 6. 将厂家更换件安装在拆卸故障控制器后空出的插槽中。 此时会触发单控制器更换逻辑。 有关详细信息，请参阅[单控制器更换逻辑](#single-controller-replacement-logic)。
 7. 单控制器更换逻辑在后台运行时，请重新连接电缆。 小心连接所有电缆，连接方式与更换前的连接方式完全一样。
-8. 控制器重新启动后，在 Azure 门户中检查“控制器状态”和“群集状态”，确认该控制器是否已恢复到正常工作状态，并且处于备用模式。
+8. 控制器重新启动后，在 Azure 门户中检查“控制器状态”和“群集状态”，确认该控制器是否已恢复到正常工作状态，并且处于备用模式。  
 
 > [!NOTE]
 > 如果通过串行控制台监视设备，可以发现在控制器从更换过程恢复时会多次重新启动。 显示串行控制器菜单即表示更换过程已完成。 如果该菜单在开始更换控制器后的 2 小时内未出现，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。
@@ -195,7 +195,7 @@ ms.locfileid: "61482792"
    > [!NOTE]
    > 控制器和 LED 激活最长可能需要 5 分钟时间。
   
-5. 若要验证更换是否成功，请在 Azure 门户中转到设备，导航到“监视器” > “硬件运行状况”，确保“控制器 0”和“控制器 1”运行正常（状态为绿色）。
+5. 若要验证更换是否成功，请在 Azure 门户中转到设备，导航到“监视器”   > “硬件运行状况”  ，确保“控制器 0”和“控制器 1”运行正常（状态为绿色）。
 
 ## <a name="identify-the-active-controller-on-your-device"></a>识别设备的活动控制器
 在很多情况下（例如，首次注册设备或更换控制器时），需要在 StorSimple 设备中找到活动控制器。 活动控制器处理所有磁盘固件和联网操作。 可以使用以下方法识别活动控制器：
@@ -207,7 +207,7 @@ ms.locfileid: "61482792"
 下面介绍了其中的每个过程。
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>使用 Azure 门户识别活动控制器
-在 Azure 门户中，依次导航到设备、“监视器” > “硬件运行状况”，并滚动到“控制器”部分。 可以在此处确认哪个控制器处于活动状态。
+在 Azure 门户中，依次导航到设备、“监视器”   > “硬件运行状况”  ，并滚动到“控制器”  部分。 可以在此处确认哪个控制器处于活动状态。
 
 ![在 Azure 门户中识别活动控制器](./media/storsimple-controller-replacement/IC752072.png)
 

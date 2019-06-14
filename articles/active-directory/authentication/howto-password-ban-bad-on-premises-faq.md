@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3bd117b79c2d103225e8f1f29b63eb6ae341031d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64917665"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
@@ -46,7 +46,7 @@ ms.locfileid: "64917665"
 
 **问：是否支持与其他基于密码筛选器的产品一同安装 Azure AD 密码保护？**
 
-可以。 支持多个已注册的密码筛选器 dll 是一项 Windows 核心功能，并不特定于 Azure AD 密码保护。 在接受密码之前，所有已注册的密码筛选器 dll 必须同意。
+是的。 支持多个已注册的密码筛选器 dll 是一项 Windows 核心功能，并不特定于 Azure AD 密码保护。 在接受密码之前，所有已注册的密码筛选器 dll 必须同意。
 
 **问：在不使用 Azure 的情况下，如何在 Active Directory 环境中部署和配置 Azure AD 密码保护？**
 
@@ -80,7 +80,7 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 **问：是否可与其他服务（例如 Azure AD Connect）一起部署 Azure AD 密码保护代理服务？**
 
-可以。 Azure AD 密码保护代理服务和 Azure AD Connect 永远不会直接相互冲突。
+是的。 Azure AD 密码保护代理服务和 Azure AD Connect 永远不会直接相互冲突。
 
 **问：按什么顺序应 DC 代理和代理服务器必须安装并注册？**
 

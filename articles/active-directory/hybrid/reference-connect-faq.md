@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2caca430de5ad666f4f4341e0723bc3173d6d91a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65137788"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
@@ -28,7 +28,7 @@ ms.locfileid: "65137788"
 
 **问：如何强制执行我的 Azure AD Connect 服务器以减少安全攻击面？**
 
-Microsoft 建议强化你的 Azure AD Connect 服务器以减少您的 IT 环境的此关键组件的安全攻击面。  遵循以下建议将降低你的组织的安全风险。
+Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此关键组件的安全攻击面。  遵循以下建议可降低你的组织的安全风险。
 
 * 部署在加入域的服务器上的 Azure AD Connect，并向域管理员或其他受到严格控制的安全组限制管理访问权限
 
@@ -36,11 +36,11 @@ Microsoft 建议强化你的 Azure AD Connect 服务器以减少您的 IT 环境
 
 * [保护管理员组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [确保内置管理员帐户的安全](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [保护内置的管理员帐户](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [安全改进并减少攻击面 sustainment](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [通过减小攻击面改进并维护安全性](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [减少 Active Directory 攻击面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [减小 Active Directory 攻击面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **问：如果 Azure Active Directory (Azure AD) 全局管理员已启用双重身份验证 (2FA)，安装是否能够正常进行？**  
 2016 年 2 月版开始支持此方案。
@@ -52,7 +52,7 @@ Microsoft 建议强化你的 Azure AD Connect 服务器以减少您的 IT 环境
 2016 年 2 月版开始支持此方案。
 
 **问：Azure Active Directory 域服务 (Azure AD DS) 运行状况代理是否能够在服务器核心上运行？**  
-可以。 安装代理后，可以使用以下 PowerShell cmdlet 完成注册过程： 
+是的。 安装代理后，可以使用以下 PowerShell cmdlet 完成注册过程： 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
@@ -62,7 +62,7 @@ Microsoft 建议强化你的 Azure AD Connect 服务器以减少您的 IT 环境
 **问：是否可对 Azure AD Connect 中的同一个 Active Directory 域使用多个连接器？**  
 不支持对同一个 AD 域使用多个连接器。 
 
-**问：是否可将 Azure AD Connect 数据库从本地数据库移到远程 SQL Server 实例？**   
+**问：是否可将 Azure AD Connect 数据库从本地数据库移到远程 SQL Server 实例？**    
 是的，以下步骤提供了此操作的一般指导。 我们目前正在努力编写更详细的文档。
 1. 备份 LocalDB ADSync 数据库。
 最简单的方法就是使用 Azure AD Connect 所在的同一台计算机上安装的 SQL Server Management Studio。 连接到 *(LocalDb).\ADSync*，然后备份 ADSync 数据库。
@@ -175,10 +175,10 @@ Azure AD Connect 不支持纯 IPv6 环境。
 不。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
 
 **问：是否可以为 Azure 登录页缓存密码，这是否会因为包含一个具有 *autocomplete = "false"* 属性的密码输入元素而阻止此缓存？**  
-目前不支持修改“密码”字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
+目前不支持修改“密码”字段的 HTML 属性，包括 autocomplete 标记。  我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。 
 
 **问：Azure 登录页会显示之前已成功登录的用户的用户名。是否可以关闭此行为？**  
-目前不支持修改“密码”输入字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
+目前不支持修改“密码”输入字段的 HTML 属性，包括 autocomplete 标记。  我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。 
 
 **问：是否有方法来阻止并发会话？**  
 不。
@@ -212,7 +212,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 不需要知道最初用来升级 Azure AD Connect 的用户名和密码。 可以使用任何具有全局管理员角色的 Azure AD 帐户。
 
 **问：如何确定所用 Azure AD Connect 的版本？**  
-若要确定安装在服务器上的 Azure AD Connect 的具体版本，请转到“控制面板”，然后选择“程序” > “程序和功能”并找到已安装的 Microsoft Azure AD Connect 版本，如下所示：
+若要确定安装在服务器上的 Azure AD Connect 的具体版本，请转到“控制面板”，然后选择“程序” > “程序和功能”并找到已安装的 Microsoft Azure AD Connect 版本，如下所示：  
 
 ![控制面板中的 Azure AD Connect 版本](./media/reference-connect-faq/faq1.png)
 

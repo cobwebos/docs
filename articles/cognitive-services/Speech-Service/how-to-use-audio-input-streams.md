@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: fmegen
 ms.openlocfilehash: f34504dddaa21cc162476d1fdb462e7be5c48629
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60697907"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>语音 SDK 的音频输入流 API 简介
 
-语音 SDK 的音频输入流 API 可使流式音频流入识别器，无需使用麦克风或输入文件 API。
+语音 SDK 的音频输入流 API 可使流式音频流入识别器，无需使用麦克风或输入文件 API  。
 
 使用音频输入流时需按以下步骤操作：
 

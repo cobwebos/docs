@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611347"
 ---
 # <a name="the-azure-production-network"></a>Azure 生产网络
@@ -54,7 +54,7 @@ Azure 在各个级别实现可靠的软件安全性和防火墙功能来强制�
 ### <a name="azure-security-features"></a>Azure 安全功能
 Azure 在生产网络内实现基于主机的软件防火墙。 核心 Azure 环境中包含多种核心安全性和防火墙功能。 这些安全功能反映了 Azure 环境中的深层防御策略。 Azure 中的客户数据受以下防火墙的保护：
 
-**虚拟机监控程序防火墙（数据包筛选器）**：在虚拟机监控程序中实现此防火墙并由结构控制器 (FC) 代理配置。 此防火墙可保护在 VM 内运行的租户免受未经授权的访问。 默认情况下，创建 VM 时，将阻止所有流量，然后 FC 代理在筛选器中添加规则和例外，以允许获得授权的流量。
+**虚拟机监控程序防火墙（数据包筛选器）** ：在虚拟机监控程序中实现此防火墙并由结构控制器 (FC) 代理配置。 此防火墙可保护在 VM 内运行的租户免受未经授权的访问。 默认情况下，创建 VM 时，将阻止所有流量，然后 FC 代理在筛选器中添加规则和例外，以允许获得授权的流量。
 
 此处对两类规则进行了编程：
 

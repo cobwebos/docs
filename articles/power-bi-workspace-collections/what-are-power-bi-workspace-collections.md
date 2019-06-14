@@ -11,10 +11,10 @@ ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: rkarlin
 ms.openlocfilehash: 7f23856363b337a361f329ed54e2152842faf26e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64705129"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>什么是 Power BI 工作区集合？
@@ -40,7 +40,7 @@ Power BI 工作区集合是一项 **Azure 服务**，使 ISV 和应用程序开�
 
 ## <a name="workspace-collection"></a>工作区集合
 
-**工作区集合**是一个顶级 Azure 资源容器，包含 0 个或多个**工作区**。  **工作区****集合**具有所有标准 Azure 属性和下列内容：
+**工作区集合**是一个顶级 Azure 资源容器，包含 0 个或多个**工作区**。  **工作区** **集合**具有所有标准 Azure 属性和下列内容：
 
 * **访问密钥** - 安全地调用 Power BI API 时使用的密钥（后面的部分中进行了介绍）。
 * **用户** - 具有管理员权限的 Azure Active Directory (AAD) 用户，通过 Azure 门户或 Azure 资源管理器 API 管理 Power BI 工作区集合。

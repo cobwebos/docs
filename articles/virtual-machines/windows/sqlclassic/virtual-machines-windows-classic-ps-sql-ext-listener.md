@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 89623adbddce07cbc3c3ead811f5174d108c9b0e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62101619"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
@@ -56,8 +56,8 @@ ms.locfileid: "62101619"
 必须为每个托管 Azure 副本的 VM 创建一个负载均衡的终结点。 如果在多个区域中拥有副本，该区域的每个副本必须位于同一个 VNet 的同一个云服务中。 跨越多个 Azure 区域创建可用性组副本需要配置多个 Vnet。 有关配置跨 VNet 连接的详细信息，请参阅[配置 VNet 到 VNet 连接](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
 
 1. 在 Azure 门户中，导航到托管副本的每个 VM 并查看详细信息。
-2. 单击每个 VM 的“终结点”选项卡。
-3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。 在下面的示例中，名称为“MyEndpoint”，端口为“1433”。
+2. 单击每个 VM 的“终结点”选项卡。 
+3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。   在下面的示例中，名称为“MyEndpoint”，端口为“1433”。
 4. 在本地客户端上，下载并安装[最新的 PowerShell 模块](https://azure.microsoft.com/downloads/)。
 5. 启动 **Azure PowerShell**。 随即打开新的 PowerShell 会话，其中加载了 Azure 管理模块。
 6. 运行 **Get-AzurePublishSettingsFile**。 此 cmdlet 会定向到浏览器，以将发布设置文件下载到本地目录。 系统可能会提示输入 Azure 订阅的登录凭据。
@@ -95,8 +95,8 @@ ms.locfileid: "62101619"
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>在 PowerShell 中配置群集资源
-1. 对于外部负载均衡，你必须获取包含副本的云服务的公共虚拟 IP 地址。 登录到 Azure 门户。 导航到包含你的可用性组 VM 的云服务。 打开“仪表板”视图。
-2. 记下“公共虚拟 IP (VIP)地址”下显示的地址。 如果解决方案跨 VNet，请针对包含副本所在 VM 的每个云服务重复此步骤。
+1. 对于外部负载均衡，你必须获取包含副本的云服务的公共虚拟 IP 地址。 登录到 Azure 门户。 导航到包含你的可用性组 VM 的云服务。 打开“仪表板”  视图。
+2. 记下“公共虚拟 IP (VIP)地址”  下显示的地址。 如果解决方案跨 VNet，请针对包含副本所在 VM 的每个云服务重复此步骤。
 3. 在某个 VM 上，将以下 PowerShell 脚本复制到文本编辑器中，将变量设置为之前记下的值。
    
         # Define variables

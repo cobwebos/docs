@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3b4c3bac1a2d62246fa5a7ff3a348c6cb2652ea1
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868167"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059205"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 通过 .NET 监视媒体服务作业通知 
 
@@ -64,22 +64,22 @@ ms.locfileid: "64868167"
 |名称|定义|示例| 
 |---|---|---|
 |SigningKey |签名密钥。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | webhook 终结点地址。 Webhook 函数创建后即可从“获取函数 URL”链接中复制 URL。 | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
+|WebHookEndpoint | webhook 终结点地址。 Webhook 函数创建后即可从“获取函数 URL”链接中复制 URL  。 | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ## <a name="create-a-function"></a>创建函数
 
 部署 Function App 后，可在**应用服务** Azure Functions 中找到它。
 
-1. 选择 Function App，然后单击“新建函数”。
-2. 选择“C#”代码和“API 和 Webhook”方案。 
-3. 选择“通用 Webhook - C#”。
-4. 为 Webhook 命名，然后按“创建”。
+1. 选择 Function App，然后单击“新建函数”。 
+2. 选择“C#”代码和“API 和 Webhook”方案   。 
+3. 选择“通用 Webhook - C#”  。
+4. 为 Webhook 命名，然后按“创建”  。
 
 ### <a name="files"></a>文件
 
-Azure 函数与代码文件以及本部分所述的其他文件相关联。 默认情况下，函数与 **function.json** 和 **run.csx** (C#) 文件相关联。 需要添加 project.json 文件。 本部分的余下内容介绍这些文件的定义。
+Azure 函数与代码文件以及本部分所述的其他文件相关联。 默认情况下，函数与 **function.json** 和 **run.csx** (C#) 文件相关联。 需要添加 project.json  文件。 本部分的余下内容介绍这些文件的定义。
 
-![文件](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
@@ -129,7 +129,7 @@ project.json 文件包含依赖项。
 
 Webhook 需要签名密钥（凭据）以匹配在配置通知终结点时传递的密钥。 签名密钥是 64 字节 Base64 编码值，用于保护来自 Azure 媒体服务的 WebHook 回调的安全。 
 
-在下面的 Webhook 定义代码中，VerifyWebHookRequestSignature 方法对通知消息执行验证。 此验证的用途是确保消息由 Azure 媒体服务发送并且未篡改。 签名对于 Azure Functions 是可选的，因为它将 Code 值作为传输层安全性 (TLS) 上的查询参数。 
+在下面的 Webhook 定义代码中，VerifyWebHookRequestSignature 方法对通知消息执行验证  。 此验证的用途是确保消息由 Azure 媒体服务发送并且未篡改。 签名对于 Azure Functions 是可选的，因为它将 Code 值作为传输层安全性 (TLS) 上的查询参数  。 
 
 >[!NOTE]
 >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
@@ -245,7 +245,7 @@ private static string PublishAndBuildStreamingURLs(String jobID)
 
     // Get a reference to the streaming manifest file from the  
     // collection of files in the asset. 
-    var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+    var manifestFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                 EndsWith(".ism")).
                 FirstOrDefault();
 
