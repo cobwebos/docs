@@ -16,16 +16,16 @@ ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60832525"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动后端和 API 应用提供内置监视功能。
 
-在 Azure 门户中，可以查看应用的配额和指标，查看应用服务计划，以及自动设置基于指标的警报和缩放。
+在 Azure 门户中，可以查看应用的配额和指标，查看应用服务计划，以及自动设置基于指标的警报和缩放。    
 
 ## <a name="understand-quotas"></a>了解配额
 
@@ -33,9 +33,9 @@ ms.locfileid: "60832525"
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-如果应用托管在“免费”或“共享”计划中，则该应用可用资源的限制由配额定义。
+如果应用托管在“免费”或“共享”计划中，则该应用可用资源的限制由配额定义。  
 
-如果应用托管在“基本”、“标准”或“高级”计划中，则该应用可用资源的限制由应用服务计划的大小（小、中、大）和实例计数（1、2、3 等等）设置。
+如果应用托管在“基本”、“标准”或“高级”计划中，则该应用可用资源的限制由应用服务计划的大小（小、中、大）和实例计数（1、2、3 等等）设置。     
 
 “免费”或“共享”应用的配额如下：
 
@@ -47,13 +47,13 @@ ms.locfileid: "60832525"
 | **带宽** | 一天内允许此应用使用的传出带宽总量。 此配额每隔 24 小时在 UTC 午夜时间重置。 |
 | **文件系统** | 允许的存储空间总量。 |
 
-适用于托管在“基本”、“标准”和“高级”计划中的应用的唯一配额是“文件系统”。
+适用于托管在“基本”、“标准”和“高级”计划中的应用的唯一配额是“文件系统”。   
 
 有关各种应用服务 SKU 的特定配额、限制和可用功能的详细信息，请参阅 [Azure 订阅服务限制](../azure-subscription-service-limits.md#app-service-limits)。
 
 ### <a name="quota-enforcement"></a>配额强制执行
 
-如果应用超过“CPU（短期）”、“CPU（天）”或“带宽”配额，则将终止该应用，直到配额重置。 在此期间，所有传入请求都将导致 HTTP 403 错误。
+如果应用超过“CPU（短期）”、“CPU（天）”或“带宽”配额，则将终止该应用，直到配额重置。    在此期间，所有传入请求都将导致 HTTP 403 错误。
 
 ![403 错误消息][http403]
 
@@ -108,7 +108,7 @@ ms.locfileid: "60832525"
 应用服务计划的可用指标包括：
 
 > [!NOTE]
-> 应用服务计划指标仅适用于“基本”、“标准”和“高级”层中的计划。
+> 应用服务计划指标仅适用于“基本”、“标准”和“高级”层中的计划。   
 > 
 
 | 指标 | 描述 |
@@ -132,26 +132,26 @@ ms.locfileid: "60832525"
 ## <a name="metrics-granularity-and-retention-policy"></a>指标粒度和保留策略
 应用和应用服务计划的指标由具有下列粒度和保留策略的服务进行记录和聚合：
 
-* “分钟”粒度级的指标将保留 30 小时。
-* “小时”粒度级的指标将保留 30 天。
-* “天”粒度级的指标将保留 30 天。
+* “分钟”粒度级的指标将保留 30 小时。 
+* “小时”粒度级的指标将保留 30 天。 
+* “天”粒度级的指标将保留 30 天。 
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 门户中监视配额和指标
 若要查看影响应用的各种配额和指标的状态，请转到 [Azure 门户](https://portal.azure.com)。
 
 ![Azure 门户中的“配额”图表][quotas]
 
-若要查找配额，请选择“设置” > “配额”。 在图表中，可以查看： 
+若要查找配额，请选择“设置” > “配额”。   在图表中，可以查看： 
 1. 配额名称。
 1. 配额的重置时间间隔。
 1. 配额的当前限制。
 1. 配额的当前值。
 
-![Azure 门户中的“指标”图表][metrics]可以直接从“资源”页访问指标。 自定义图表： 
+![Azure 门户中的“指标”图表][metrics]可以直接从“资源”页访问指标。  自定义图表： 
 1. 选择该图表。
-1. 选择“编辑图表”。
-1. 编辑“时间范围”。
-1. 编辑“图表类型”。
+1. 选择“编辑图表”。 
+1. 编辑“时间范围”。 
+1. 编辑“图表类型”。 
 1. 编辑要显示的指标。  
 
 若要详细了解指标，请参阅[监视服务指标](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。

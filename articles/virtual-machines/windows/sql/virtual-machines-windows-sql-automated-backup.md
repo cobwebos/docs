@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 99439c2b6bd4fdd271dda7a49850c5b6f44330b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d30d044a26e6a092eba267f223be9b10c3a238b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165607"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075825"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 虚拟机 (Resource Manager) 的自动备份
 
@@ -77,21 +77,19 @@ ms.locfileid: "66165607"
 
 在 Resource Manager 部署模型中创建新的 SQL Server 2014 虚拟机时，可以使用 Azure 门户配置自动备份。
 
-在“SQL Server 设置”窗格中，选择“自动备份”。 下面的 Azure 门户屏幕截图显示了“SQL 自动备份”设置。
+在中**SQL Server 设置**选项卡上，向下滚动到**自动备份**，然后选择**启用**。 此外可以指定保留期和存储帐户，以及启用加密，备份系统数据库和配置备份计划。  下面的 Azure 门户屏幕截图显示了“SQL 自动备份”设置  。
 
 ![Azure 门户中的 SQL 自动备份配置](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 
 ## <a name="configure-existing-vms"></a>配置现有 VM
 
-对于现有的 SQL Server 虚拟机，请选择 SQL Server 虚拟机。 然后选择 VM“设置”的“SQL Server 配置”部分。
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+对于现有的 SQL Server 虚拟机，导航到[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)，然后选择**备份**。 
 
 ![现有 VM 的 SQL 自动备份](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
-在“SQL Server 配置”窗格的“自动备份”部分，单击“编辑”按钮。
-
-![为现有 VM 配置 SQL 自动备份](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-configuration.png)
-
-完成后，单击“SQL Server 配置”设置底部的“确定”按钮保存更改。
+完成后，选择**Apply**底部的按钮**备份**页后，可以保存所做的更改。
 
 首次启用自动备份时，Azure 会在后台配置 SQL Server IaaS 代理。 在此期间，Azure 门户可能不会显示自动备份已配置。 请等待几分钟，以便安装和配置代理。 之后，Azure 门户将反映新设置。
 
@@ -103,12 +101,12 @@ ms.locfileid: "66165607"
 可使用 PowerShell 配置自动备份。 开始之前，必须：
 
 - [下载并安装最新的 Azure PowerShell](https://aka.ms/webpi-azps)。
-- 打开 Windows PowerShell 并使用 Connect-AzAccount 命令将其与帐户关联。
+- 打开 Windows PowerShell 并使用 Connect-AzAccount 命令将其与帐户关联  。
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ### <a name="install-the-sql-iaas-extension"></a>安装 SQL IaaS 扩展
-如果通过 Azure 门户预配了 SQL Server 虚拟机，应已安装 SQL Server IaaS 扩展。 可通过调用 Get-AzVM 命令并检查 Extensions 属性，确定是否为 VM 安装了该扩展。
+如果通过 Azure 门户预配了 SQL Server 虚拟机，应已安装 SQL Server IaaS 扩展。 可通过调用 Get-AzVM 命令并检查 Extensions 属性，确定是否为 VM 安装了该扩展   。
 
 ```powershell
 $vmname = "vmname"
@@ -119,7 +117,7 @@ $resourcegroupname = "resourcegroupname"
 
 如果已安装 SQL Server IaaS 代理扩展，应会看到列出的“SqlIaaSAgent”或“SQLIaaSExtension”。 此外，该扩展的 **ProvisioningState** 应显示“Succeeded”。
 
-如果未安装或未能预配该扩展，可使用以下命令来安装。 除了 VM 名称和资源组以外，还必须指定 VM 所在的区域 (**$region**)。
+如果未安装或未能预配该扩展，可使用以下命令来安装。 除了 VM 名称和资源组以外，还必须指定 VM 所在的区域 ( **$region**)。
 
 ```powershell
 $region = "EASTUS2"
@@ -133,7 +131,7 @@ Set-AzVMSqlServerExtension -VMName $vmname `
 
 ### <a id="verifysettings"></a> 验证当前设置
 
-如果在预配期间启用了自动备份，可以使用 PowerShell 检查当前配置。 运行 Get-AzVMSqlServerExtension 命令并检查 AutoBackupSettings 属性：
+如果在预配期间启用了自动备份，可以使用 PowerShell 检查当前配置。 运行 Get-AzVMSqlServerExtension 命令并检查 AutoBackupSettings 属性：  
 
 ```powershell
 (Get-AzVMSqlServerExtension -VMName $vmname -ResourceGroupName $resourcegroupname).AutoBackupSettings
@@ -194,7 +192,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 可能需要花费几分钟来安装和配置 SQL Server IaaS 代理。
 
 > [!NOTE]
-> 还有仅适用于 SQL Server 2016 和自动备份 v2 的其他 **New-AzVMSqlServerAutoBackupConfig** 设置。 SQL Server 2014 不支持以下设置：BackupSystemDbs、BackupScheduleType、FullBackupFrequency、FullBackupStartHour、FullBackupWindowInHours 和 LogBackupFrequencyInMinutes。 如果尝试在 SQL Server 2014 虚拟机上配置这些设置，则不存在错误，但不会应用这些设置。 若要在 SQL Server 2016 虚拟机上使用这些设置，请参阅[适用于 SQL Server 2016 Azure 虚拟机的自动备份 v2](virtual-machines-windows-sql-automated-backup-v2.md)。
+> 还有仅适用于 SQL Server 2016 和自动备份 v2 的其他 **New-AzVMSqlServerAutoBackupConfig** 设置。 SQL Server 2014 不支持以下设置：BackupSystemDbs  、BackupScheduleType  、FullBackupFrequency  、FullBackupStartHour  、FullBackupWindowInHours  和 LogBackupFrequencyInMinutes  。 如果尝试在 SQL Server 2014 虚拟机上配置这些设置，则不存在错误，但不会应用这些设置。 若要在 SQL Server 2016 虚拟机上使用这些设置，请参阅[适用于 SQL Server 2016 Azure 虚拟机的自动备份 v2](virtual-machines-windows-sql-automated-backup-v2.md)。
 
 要启用加密，请修改上述脚本，使其将 **EnableEncryption** 参数连同 **CertificatePassword** 参数的密码（安全字符串）一起传递。 以下脚本启用上一示例中的自动备份设置，并添加加密。
 
@@ -215,7 +213,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 ### <a name="disable-automated-backup"></a>禁用自动备份
 
-若要禁用自动备份，请运行同一个脚本，但不要为 New-AzVMSqlServerAutoBackupConfig 命令指定 -Enable 参数。 缺少 **-Enable** 参数将向该命令发出指示以禁用此功能。 与安装一样，可能需要花费几分钟时间来禁用自动备份。
+若要禁用自动备份，请运行同一个脚本，但不要为 New-AzVMSqlServerAutoBackupConfig 命令指定 -Enable 参数   。 缺少 **-Enable** 参数将向该命令发出指示以禁用此功能。 与安装一样，可能需要花费几分钟时间来禁用自动备份。
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
@@ -269,11 +267,11 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 首先，可通过调用 [msdb.smart_admin.sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) 轮询状态。 或查询 [msdb.smart_admin.fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) 表值函数。
 
 > [!NOTE]
-> 适用于 SQL Server 2014 中托管备份的架构是 msdb.smart_admin。 在 SQL Server 2016 中，架构需更改为 msdb.managed_backup，且参考主题使用此较新架构。 但对于 SQL Server 2014，必须为所有托管备份对象继续使用 smart_admin 架构。
+> 适用于 SQL Server 2014 中托管备份的架构是 msdb.smart_admin  。 在 SQL Server 2016 中，架构需更改为 msdb.managed_backup，且参考主题使用此较新架构  。 但对于 SQL Server 2014，必须为所有托管备份对象继续使用 smart_admin 架构  。
 
 另一种方式是利用内置的数据库邮件功能进行通知。
 
-1. 调用 [msdb.smart_admin.sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) 存储过程，向 SSMBackup2WANotificationEmailIds 参数分配电子邮件地址。 
+1. 调用 [msdb.smart_admin.sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) 存储过程，向 SSMBackup2WANotificationEmailIds 参数分配电子邮件地址  。 
 1. 启用 [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md)，从 Azure VM 发送电子邮件。
 1. 使用 SMTP 服务器和用户名配置数据库邮件。 可在 SQL Server Management Studio 中或使用 Transact-SQL 命令配置数据库邮件。 有关详细信息，请参阅[数据库邮件](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail)。
 1. [配置 SQL Server 代理以使用数据库邮件](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail)。

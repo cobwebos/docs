@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
 ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123885"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>预览版：迁移到 LUIS 应用的 API 版本 3.x
@@ -56,7 +56,7 @@ V3 API 包含不同的查询字符串参数。
 
 |参数名称|Type|Version|目的|
 |--|--|--|--|
-|`query`|string|仅 V3|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
+|`query`|字符串|仅 V3|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
 |`show-all-intents`|boolean|仅 V3|在 **prediction.intents** 对象中返回包含相应评分的所有意向。 意向将在父 `intents` 对象中作为对象返回。 这样，便可以通过编程方式进行访问，而无需在数组中查找意向：`prediction.intents.give`。 在 V2 中，这些意向在数组中返回。 |
 |`verbose`|boolean|V2 和 V3|**在 V2 中**，如果设置为 true，则返回所有预测意向。 如果需要所有预测的意向，请使用 V3 参数 `show-all-intents`。<br><br>**在 V3 中**，此参数仅提供实体预测的实体元数据详细信息。  |
 
@@ -164,7 +164,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
-在 V2 中，实体由实体名称以及用作对象属性的角色进行标识：
+在 V2 中，实体由实体名称以及用作对象属性的角色进行标识： 
 
 ```JSON
 "entities":[
@@ -179,7 +179,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 ]
 ```
 
-在 V3 中，如果预测针对角色，则实体由实体角色引用：
+在 V3 中，如果预测针对角色，则实体由实体角色引用： 
 
 ```JSON
 "entities":{
@@ -277,7 +277,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 #### <a name="resolution"></a>解决方法
 
-可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。 
+可选的 `resolution` 属性将在预测响应中返回，可让你传入与外部实体关联的元数据，然后在响应中接收该元数据。  
 
 主要目的是扩展预生成实体，但并不局限于该实体类型。 
 

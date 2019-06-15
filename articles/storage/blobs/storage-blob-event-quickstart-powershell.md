@@ -11,10 +11,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.custom: seodec18
 ms.openlocfilehash: cf1b0ba5d70ed0934418a147c09791725b5465bb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143370"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>快速入门：利用 PowerShell 将存储事件路由到 Web 终结点
@@ -41,7 +41,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 Connect-AzAccount
 ```
 
-此示例使用 westus2，并将所选内容存储在变量中以供整个过程使用。
+此示例使用 westus2，并将所选内容存储在变量中以供整个过程使用  。
 
 ```powershell
 $location = "westus2"
@@ -53,7 +53,7 @@ $location = "westus2"
 
 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
-以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。  
+以下示例在“westus2”  位置创建名为“gridResourceGroup”  的资源组。  
 
 ```powershell
 $resourceGroup = "gridResourceGroup"
@@ -62,9 +62,9 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能。 Blob 存储帐户是一个专用存储帐户，用于将非结构化数据作为 Blob（对象）存储到 Azure 存储中。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
+可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能  。 Blob 存储帐户是一个专用存储帐户，用于将非结构化数据作为 Blob（对象）存储到 Azure 存储中  。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
-使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 创建具有 LRS 复制的 Blob 存储帐户，然后检索定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复提供凭据。 本示例创建一个名为 gridstorage 的存储帐户，其中启用了本地冗余存储 (LRS)。 
+使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 创建具有 LRS 复制的 Blob 存储帐户，然后检索定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复提供凭据。 本示例创建一个名为 gridstorage 的存储帐户，其中启用了本地冗余存储 (LRS)  。 
 
 > [!NOTE]
 > 存储帐户名称位于全局命名空间，因此需要向此脚本中提供的名称追加某些随机字符。

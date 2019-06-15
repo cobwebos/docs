@@ -16,10 +16,10 @@ ms.date: 01/15/2019
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 11028561cf6742cfd5e8c0c882de16ff35ebf0ef
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62118878"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
@@ -50,7 +50,7 @@ ms.locfileid: "62118878"
 
 ### <a name="create-a-batch-account"></a>创建批处理帐户
 
-**New-AzBatchAccount** 可在指定的资源组中创建 Batch 帐户。 如果没有资源组，可以运行 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。 例如：
+**New-AzBatchAccount** 可在指定的资源组中创建 Batch 帐户。 如果没有资源组，可以运行 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。  例如：
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"

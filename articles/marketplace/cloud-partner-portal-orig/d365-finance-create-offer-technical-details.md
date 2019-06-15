@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: dbc38fab5bd8e55f6dd280ecc46af1b1a5ae7ede
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935068"
 ---
 <a name="how-to-fill-out-the-technical-info-form"></a>如何填写“技术信息”窗体
 ===========================================
 
-1.  在“选择应用程序类型”部分中，上传你的扩展包文件 (.app) 以及你的扩展所依赖的任何扩展包文件。
+1.  在“选择应用程序类型”  部分中，上传你的扩展包文件 (.app) 以及你的扩展所依赖的任何扩展包文件。
 
     ![应用程序包信息](./media/d365-financials/image015.png)
 
@@ -25,11 +25,11 @@ ms.locfileid: "64935068"
 
 -   **依赖项包文件** -- 如果应用依赖于 AppSource 中发布的其他应用，则为必需的。 此 .app 文件是当前应用所依赖的、AppSource 中已发布的某个扩展。 
 
--   **库包文件** -- 如果应用依赖于未在 AppSource 中发布的其他应用，则为必需的。 此 .app 文件是一个现有应用，但尚未或者不会在 AppSource 中发布。
+-   **库包文件** -- 如果应用依赖于未在 AppSource 中发布的其他应用，则为必需的。  此 .app 文件是一个现有应用，但尚未或者不会在 AppSource 中发布。
 
 -   **应用测试自动化** -- 必需 - 为了对扩展进行自动化测试而必须创建的 VS Code 测试包。
 
-1. 在“扩展的其他信息”部分中，上传你的扩展的其他信息。 在验证过程中将使用此信息。
+1. 在“扩展的其他信息”  部分中，上传你的扩展的其他信息。 在验证过程中将使用此信息。
 
    ![应用扩展的其他信息窗体](./media/d365-financials/image016.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "64935068"
 
 -   **主要使用方案** -- 必需 - 一个文档，其中列出了扩展的分步设置和使用详细信息。 可以在[用户方案文档](https://docs.microsoft.com/dynamics-nav/compliance/apptest-userscenario/)一文中找到示例。
 
--   **目标版本** -- 必需 - 选择要将应用部署到其中的版本。 选择“当前”将在当前市场版本中进行部署。 选择“下一个次版本”将使用要发布的下一个次版本进行部署。 选择“下一个主版本”将使用要发布的下一个主版本进行部署。
+-   **目标版本** -- 必需 - 选择要将应用部署到其中的版本。 选择“当前”  将在当前市场版本中进行部署。 选择“下一个次版本”  将使用要发布的下一个次版本进行部署。 选择“下一个主版本”  将使用要发布的下一个主版本进行部署。
 
 -   **需要高级 SKU** -- 可选 -- 如果应用需要高级 SKU，则选择“高级”按钮。 “服务管理”和“制造”仅在高级版中可用。 可以在[更改显示哪些功能](https://docs.microsoft.com/dynamics365/financials/ui-experiences)一文中找到有关基本版与高级版的详细信息。
 

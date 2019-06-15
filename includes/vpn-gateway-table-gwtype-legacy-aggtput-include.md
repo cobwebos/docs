@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9734859c0bf22201c146e5d8a220f3146f6051c4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66159236"
 ---
 下表按网关 SKU 显示了网关类型和估计的聚合吞吐量。 此表适用于 Resource Manager 和经典部署模型。 
@@ -23,9 +23,9 @@ ms.locfileid: "66159236"
 
 |  | **VPN 网关吞吐量 (1)** | **VPN 网关最大 IPsec 隧道数 (2)** | **ExpressRoute 网关吞吐量** | **VPN 网关和 ExpressRoute 共存** |
 | --- | --- | --- | --- | --- |
-| **基本 SKU (3)(5)(6)** |100 Mbps |10 |500 Mbps (6) |“否” |
-| **标准 SKU (4)(5)** |100 Mbps |10 |1000 Mbps |“是” |
-| **高性能 SKU (4)** |200 Mbps |30 |2000 Mbps |“是” |
+| **基本 SKU (3)(5)(6)** |100 Mbps |10 |500 Mbps (6) |否 |
+| **标准 SKU (4)(5)** |100 Mbps |10 |1000 Mbps |是 |
+| **高性能 SKU (4)** |200 Mbps |30 |2000 Mbps |是 |
 
 
 (1) VPN 吞吐量是根据同一 Azure 区域 VNet 之间的度量进行的粗略估计。 不能保证该吞吐量通过 Internet 跨界连接。 它是可能的最大吞吐量。

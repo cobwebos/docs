@@ -10,10 +10,10 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.openlocfilehash: 3b1872699b8b3ac72424f00cd74bb90b8b7be87f
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873162"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>使用门户和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
@@ -26,7 +26,7 @@ ms.locfileid: "65873162"
 
 1. 如何在门户中创建模块标识。
 
-2. 如何使用.NET 设备 SDK 更新从你的设备的模块孪生。
+2. 如何使用 .NET 设备 SDK 更新设备的模块孪生。
 
 > [!NOTE]
 > 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "65873162"
 
 ## <a name="create-a-module-identity-in-the-portal"></a>在门户中创建模块标识
 
-在一个设备标识中，最多可以创建 20 个模块标识。 单击顶部的“添加模块标识”按钮创建第一个模块标识，名为“myFirstModule”。
+在一个设备标识中，最多可以创建 20 个模块标识。 单击顶部的“添加模块标识”按钮创建第一个模块标识，名为“myFirstModule”   。
 
   ![设备详细信息](./media/iot-hub-portal-csharp-module-twin-getstarted/create-module-id.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "65873162"
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
-在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到现有解决方案。 确保 .NET Framework 版本为 4.6.1 或更高。 将项目命名为“UpdateModuleTwinReportedProperties”。
+在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到现有解决方案  。 确保 .NET Framework 版本为 4.6.1 或更高。 将项目命名为“UpdateModuleTwinReportedProperties”  。
 
   ![创建 Visual Studio 项目](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
 
@@ -83,21 +83,21 @@ ms.locfileid: "65873162"
 
 ## <a name="create-updatemoduletwinreportedproperties-console-app"></a>创建 UpdateModuleTwinReportedProperties 控制台应用
 
-在 Program.cs 文件顶部添加以下 `using` 语句：
+在 Program.cs  文件顶部添加以下 `using` 语句：
 
 ```csharp
 using Microsoft.Azure.Devices.Client;
 using Microsoft.Azure.Devices.Shared;
 ```
 
-将以下字段添加到 Program 类。 将占位符值替换为模块连接字符串。
+将以下字段添加到 Program 类  。 将占位符值替换为模块连接字符串。
 
 ```csharp
 private const string ModuleConnectionString = "<Your module connection string>";
 private static ModuleClient Client = null;
 ```
 
-将以下方法“OnDesiredPropertyChanged”添加到“Program”类：
+将以下方法“OnDesiredPropertyChanged”添加到“Program”类   ：
 
 ```csharp
 private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
@@ -159,7 +159,7 @@ private static void ConnectionStatusChangeHandler(ConnectionStatus status, Conne
 
 ## <a name="run-the-apps"></a>运行应用
 
-现在可以运行应用了。 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目”。 选择“多个启动项目”，然后选择“启动”作为控制台应用的操作。 然后按 F5 启动这两个应用，使其运行。
+现在可以运行应用了。 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目”  。 选择“多个启动项目”，然后选择“启动”作为控制台应用的操作   。 然后按 F5 启动这两个应用，使其运行。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,10 +12,10 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: acc701431afa458efd0768fb3d6898fd1920e333
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60811200"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 进行数据探索和建模
@@ -263,7 +263,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 ![按乘客数的行程频率](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-可通过使用笔记本中的“类型”菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
+可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>绘制小费金额以及小费金额如何随乘客数和车费金额变化的直方图。
 使用 SQL 查询采样数据。

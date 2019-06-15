@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
 ms.openlocfilehash: c8c813a2304797e71499a916e29c18f8bec2b389
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787795"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>示例 2-回归：预测价格和比较算法
@@ -78,7 +78,7 @@ ms.locfileid: "65787795"
 其次，我们将进行比较测试数据集上的两种算法。
 下面是结果：
 
-![比较的结果](media/ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
+![比较结果](media/ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
 这些结果显示，与生成的模型**提升决策树回归**具有较低的根生成的模型比均方根误差**决策林回归**。
 

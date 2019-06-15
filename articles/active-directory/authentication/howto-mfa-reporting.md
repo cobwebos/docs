@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 988e8982b6f06fb1210330c5cafdb696892794fe
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a9cf0b848e551d3c0e7d7275af9eb2c8e970dbd9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235516"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113402"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
@@ -59,7 +59,7 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 
 可以通过 MFA 登录活动报告了解以下信息：
 
-**需要 MFA：** 登录时是否需要 MFA。 由于每用户 MFA、条件访问或其他原因，可能需要 MFA。 可能的值为“是”  或“否”  。
+**需要 MFA：** 登录时是否需要 MFA。 由于每个用户 MFA、 条件性访问或由于其他原因可能需要使用 MFA。 可能的值为“是”  或“否”  。
 
 **MFA 结果：** 有关 MFA 是通过还是未通过的详细信息：
 
@@ -115,7 +115,7 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 
 **MFA 身份验证详细信息：** 清理版的电话号码，例如：+X XXXXXXXX64。
 
-**条件访问** 查找有关影响了登录尝试的条件访问策略的信息，包括：
+**条件性访问**查找有关受影响的登录尝试包括的条件性访问策略的信息：
 
 - 策略名称
 - 授权控制

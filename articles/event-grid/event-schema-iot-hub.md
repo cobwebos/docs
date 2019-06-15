@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: e770beb0470b54d8e13493bca4790323b2e96ce1
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 4e96276a862844cea1d0800eafb952d4a0df97ab
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393190"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076355"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT 中心的 Azure 事件网格事件架构
 
@@ -35,7 +35,7 @@ Azure IoT 中心发出以下事件类型：
 | Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 | 
 | Microsoft.Devices.DeviceTelemetry | 遥测消息发送到 IoT 中心时发布。 |
 
-设备遥测事件的所有设备事件通过事件网格支持的所有区域中都已公开上市。 设备遥测事件处于公共预览状态，在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](/azure-government/documentation-government-welcome.md)， [Azure 中国 21Vianet](/azure/china/china-welcome.md)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+设备遥测事件的所有设备事件通过事件网格支持的所有区域中都已公开上市。 设备遥测事件处于公共预览状态，在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](../azure-government/documentation-government-welcome.md)， [Azure 中国 21Vianet](/azure/china/china-welcome)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="example-event"></a>示例事件
 
@@ -182,7 +182,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | -------- | ---- | ----------- |
 | body | string | 来自设备的消息的内容。 |
 | properties | string | 应用程序属性是用户定义的字符串，可以添加到消息。 这些字段是可选的。 |
-| 系统属性 | string | [系统属性](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)帮助识别内容和消息的源。 设备的遥测消息必须采用有效的 JSON 格式与将 contentType 设置为 JSON 和 contentEncoding 中的消息系统属性设置为 utf-8。 如果未设置，IoT 中心将在基的 64 编码格式中写入消息。  |
+| 系统属性 | string | [系统属性](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)帮助识别内容和消息的源。 设备的遥测消息必须采用有效的 JSON 格式与将 contentType 设置为 JSON 和 contentEncoding 中的消息系统属性设置为 utf-8。 如果未设置此项，则 IoT 中心将以 base 64 编码格式写入消息。  |
 
 对于**设备已创建**和**设备已删除** IoT 中心事件，数据对象包含以下属性：
 

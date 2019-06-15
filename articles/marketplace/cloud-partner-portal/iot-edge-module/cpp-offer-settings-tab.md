@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: 75781f09f4ca1eb2c3dbd176508fb233036e6776
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942255"
 ---
 # <a name="iot-edge-module-offer-settings-tab"></a>IoT Edge 模块“产品/服务设置”选项卡
 
-“IoT Edge 模块”>“新建产品/服务”页面打开时将聚焦在“产品/服务设置”选项卡。 
+“IoT Edge 模块”>“新建产品/服务”  页面打开时将聚焦在“产品/服务设置”选项卡。  
 
 ![IoT Edge 模块的“新建产品/服务”页面](./media/iot-edge-module-offer-settings-tab.png)
 
 
 ## <a name="offer-identity-settings"></a>“产品/服务标识”设置
 
-在“产品/服务标识”下，必须为下表中描述的字段提供信息。 名称旁边附有星号 (*) 的字段表示必填字段。 
+在“产品/服务标识”  下，必须为下表中描述的字段提供信息。 名称旁边附有星号 (*) 的字段表示必填字段。 
 
 |  **字段**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
@@ -33,7 +33,7 @@ ms.locfileid: "64942255"
 |  |  |
 
 
-选择“保存”以保存你的产品/服务设置。
+选择“保存”以保存你的产品/服务设置  。
 
 
 ## <a name="next-steps"></a>后续步骤

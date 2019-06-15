@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8b76e1a168d39d2f39098754f43bae73c21c2049
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ac1a6136eae79700c427b27c8869bc9241c62abc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799821"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717779"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager 模式下的 Azure CLI 命令
 本文提供常用于在 Azure 资源管理器部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。  
@@ -969,6 +969,7 @@ ms.locfileid: "60799821"
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
+
     network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
 从负载均衡器中删除后端 IP 池范围资源。
@@ -1333,7 +1334,9 @@ ms.locfileid: "60799821"
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    network public-ip list [options] <resource-group> 列出资源组中的所有公共 IP 资源。
+
+    network public-ip list [options] <resource-group>
+列出资源组中的所有公共 IP 资源。
 
     azure network public-ip list -g myresourcegroup
 
@@ -1353,7 +1356,9 @@ ms.locfileid: "60799821"
     --json                                 use json output
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
+
 <BR>
+
     network public-ip show [options] <resource-group> <name>
 
 显示资源组中公共 IP 资源的公共 IP 属性。

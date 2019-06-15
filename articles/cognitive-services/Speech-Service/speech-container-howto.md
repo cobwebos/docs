@@ -3,19 +3,19 @@ title: 安装语音容器
 titleSuffix: Azure Cognitive Services
 description: 安装并运行语音容器。 语音转文本可将音频流实时听录为应用程序、工具或设备可以使用或显示的文本。 文本转语音可将输入文本转换为类似人类的合成语音。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 763e7bc9298eee1ab602968360bbc79a58243e5b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 93ae5dd00a7be929f7aa4ac8c35a30b856f0b3ad
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072469"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装并运行语音服务容器
 
@@ -71,14 +71,13 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 
-
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
 **请注意**;最低和推荐基于 Docker 限制*不*主机计算机资源。 例如，语音转文本容器内存映射部分大型语言模型，和它是_建议_整个文件适合在内存中，这是额外的 4-6 GB。 此外，首次运行任一容器可能需要更长时间，因为模型正在换到内存中。
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 获取容器映像
 
-提供了有关语音的容器映像。 
+提供了有关语音的容器映像。
 
 | 容器 | 存储库 |
 |-----------|------------|
@@ -89,7 +88,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ### <a name="language-locale-is-in-container-tag"></a>语言区域设置是在容器标记
 
-`latest`标记拉取`en-us`区域设置和`jessarus`语音。 
+`latest`标记拉取`en-us`区域设置和`jessarus`语音。
 
 #### <a name="speech-to-text-locales"></a>语音转文本区域设置
 
@@ -118,7 +117,6 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |韩语|`ko-kr`|
 |葡萄牙语|`pt-br`|
 |西班牙语|`es-es`<br>`es-mx`|
-
 
 #### <a name="text-to-speech-locales"></a>文本到语音转换的区域设置
 
@@ -171,8 +169,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 一旦容器位于[主计算机](#the-host-computer)上，请通过以下过程使用容器。
 
-1. 使用所需的而不是所用的计费设置来[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](speech-container-configuration.md#example-docker-run-commands)。 
-1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。 
+1. 使用所需的而不是所用的计费设置来[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](speech-container-configuration.md#example-docker-run-commands)。
+1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
@@ -194,7 +192,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 ### <a name="speech-to-text"></a>语音转文本
@@ -204,7 +202,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 此命令：
@@ -212,7 +210,7 @@ ApiKey={BILLING_KEY}
 * 在语音容器运行容器映像
 * 2 个 CPU 内核和 2 千兆字节 (GB) 的内存分配
 * 公开 TCP 端口 5000，并为容器分配伪 TTY
-* 退出后自动删除容器。 容器映像在主计算机上仍然可用。 
+* 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。
@@ -241,7 +239,9 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 更改为使用容器终结点发出此调用：
 
 ```C#
-var config = SpeechConfig.FromEndpoint("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1", "YourSubscriptionKey");
+var config = SpeechConfig.FromEndpoint(
+    new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"),
+    "YourSubscriptionKey");
 ```
 
 #### <a name="for-python"></a>对于 Python
@@ -262,9 +262,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://l
 
 容器提供了 REST 终结点 Api 可找到[这里](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)和可以找到示例[此处](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/)。
 
-
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
-
 
 ## <a name="stop-the-container"></a>停止容器
 
@@ -272,11 +270,11 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://l
 
 ## <a name="troubleshooting"></a>故障排除
 
-运行该容器时，该容器将使用 **stdout** 和 **stderr** 来输出信息，这些信息有助于排查启动或运行容器时发生的问题。 
+运行该容器时，该容器将使用 **stdout** 和 **stderr** 来输出信息，这些信息有助于排查启动或运行容器时发生的问题。
 
 ## <a name="billing"></a>计费
 
-计费到 Azure 的信息，请使用语音容器发送_语音_上你的 Azure 帐户的资源。 
+计费到 Azure 的信息，请使用语音容器发送_语音_上你的 Azure 帐户的资源。
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

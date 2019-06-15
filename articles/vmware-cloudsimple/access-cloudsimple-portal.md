@@ -8,16 +8,20 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 30882899e5be4101ae3d77f9840d8bdef567e53f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 8c7bb080b350742d0722cdb4e07b82a6881ba05b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66676978"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073668"
 ---
 # <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>通过从 Azure 门户的 CloudSimple 门户访问 VMware 解决方案
 
 单一登录支持 CloudSimple 门户的访问权限。 登录到 Azure 门户后，您可以访问 CloudSimple 门户，而无需再次登录。 首次访问 CloudSimple 门户，系统会提示你授权[CloudSimple 服务授权](#consent-to-cloudsimple-service-authorization-application)应用程序。  授权是一次性操作。
+
+## <a name="before-you-begin"></a>开始之前
+
+只有具有内置的用户**所有者**并**参与者**角色可以访问 CloudSimple 门户。  必须在订阅上配置角色。  检查你的角色的详细信息，请参阅[查看角色分配](https://docs.microsoft.com/azure/role-based-access-control/check-access)一文。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

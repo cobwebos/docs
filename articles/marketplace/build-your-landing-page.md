@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
 ms.openlocfilehash: 1b3f987ff54a4b5eeeb1034d1e99302d0d6d43d6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935614"
 ---
 # <a name="build-your-landing-page"></a>生成登陆页
@@ -24,7 +24,7 @@ ms.locfileid: "64935614"
 *   立即获取解决方案
 
 可以通过多种市场营销策略引用登陆页。 可以使用以下市场营销策略： 
-*   活动
+*   Events
 *   网络广播
 *   社交媒体
 *   白皮书

@@ -4,17 +4,17 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: 4f59f68c1598f737ea7cb3a0e8046fc0779ed9d3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 57ba55ce284030a4103077553b0dcfce01a93678
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113808"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125750"
 ---
 Azure 文件同步代理将定期更新，以便添加新功能和解决问题。 建议配置 Microsoft 更新，以便在 Azure 文件同步代理更新发布时获得这些更新。
 
 #### <a name="major-vs-minor-agent-versions"></a>主要与次要代理版本
-* 主要代理版本通常包含新的功能，并且版本号的第一个组成部分会递增。 例如:2.\*.\*\*\*
+* 主要代理版本通常包含新的功能，并且版本号的第一个组成部分会递增。 例如：2.\*.\*\*\*
 * 次要代理版本也称为“修补”，其发布频率高于主要版本。 它们通常包含 bug 修复和小幅的改进，但不包含新功能。 例如：\*\*.3.\*\*
 
 #### <a name="upgrade-paths"></a>升级路径
@@ -31,7 +31,7 @@ Azure 文件同步代理将定期更新，以便添加新功能和解决问题�
 #### <a name="automatic-agent-lifecycle-management"></a>自动代理生命周期管理
 代理版本 6，文件同步团队引入了代理自动升级功能。 可以选择两种模式之一，并在服务器上指定应在其中尝试升级的维护时段。 此功能旨在帮助您通过提供阻止从过期代理护代理生命周期管理或无障碍，从而允许保留当前设置。
 1. **默认设置**将尝试阻止从过期的代理。 在 21 天的代理的已发布的到期日期，代理将尝试自我升级。 它将开始尝试将每周一次在过期之前和在所选的维护时段的 21 天内升级。 **此选项不会消除花常规 Microsoft 更新修补程序的需要。**
-2. 或者，您可以选择，代理将自动升级本身只要新的代理版本变为可用。 这将在选定的维护时段内发生，并且允许你以利用新功能和改进，只要它们已公开发布的服务器。 这是主要代理版本，以及定期更新到服务器的修补程序将提供的建议，无需担心的设置。
+2. （可选） 选择，代理将自动升级本身就立即推出新的代理版本 （当前不适用于群集服务器）。 此更新将在选定的维护时段内发生，并允许你的服务器以利用新功能和改进，只要它们已公开发布。 这是主要代理版本，以及定期更新到服务器的修补程序将提供的建议，无需担心的设置。 发布每个代理是在 GA 质量。 如果选择此选项，Microsoft 将航班给您的最新代理版本。 排除群集的服务器。 外部测试完成后，代理还会提供[Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) aka.ms/AFS/agent。
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>代理生命周期和变更管理保证
 Azure 文件同步是一个云服务，它不断引入了新功能和改进。 这意味着，特定的 Azure 文件同步代理版本只在有限的时间内受到支持。 为了便于您的部署，以下规则保证有足够的时间和通知，以适应代理更新/升级您的更改管理流程：

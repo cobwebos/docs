@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
 ms.openlocfilehash: 7c562e6f0a1358d16b9abef08a5e582e4ff84472
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002042"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
@@ -50,7 +50,7 @@ ms.locfileid: "66002042"
 
 #### <a name="visibility"></a>可见性
 
-如果成本管理的结构合理，这将有助于员工了解其所负责的 Azure 成本以及资金使用情况。 Azure 提供的相关服务可让你了解资金使用方向。 请充分利用这些工具。 它们可以帮助你找到未充分利用的资源、消除浪费并最大程度利用节省成本的机会。
+如果成本管理的结构合理，这将有助于员工了解其所负责的 Azure 成本以及资金使用情况。 Azure 提供的相关服务可让你了解资金使用方向  。 请充分利用这些工具。 它们可以帮助你找到未充分利用的资源、消除浪费并最大程度利用节省成本的机会。
 
 #### <a name="accountability"></a>问责制
 
@@ -175,7 +175,7 @@ VM 大小对于 Azure 总成本具有重大影响。 Azure 中所需的 VM 数�
 
 Azure 提供许多折扣，组织应利用这些折扣节省成本。
 
-#### <a name="azure-reservations"></a>Azure 预订
+#### <a name="azure-reservations"></a>Azure 预留
 
 通过 Azure 预留，可以预付一年或三年的虚拟机或 SQL 数据库计算容量。 通过预付，能够以折扣价购买所用资源。 Azure 预留可大幅度减少虚拟机或 SQL 数据库计算成本，最多可以降低 72% 的即用即付价格，但需提前一年或三年预留。 预留提供计费折扣，且不影响虚拟机或 SQL 数据库的运行时状态。
 

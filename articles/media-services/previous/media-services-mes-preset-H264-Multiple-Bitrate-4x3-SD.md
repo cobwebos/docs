@@ -1,8 +1,8 @@
 ---
 title: H264 多比特率 4x3 SD | Microsoft 文档
-description: 本主题概述了 H264 多比特率 4x3 SD 任务预设。
-author: WenJason
-manager: digimobile
+description: 本主题概述了 H264 多比特率 4x3 SD 任务预设  。
+author: Juliako
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 03/18/2019
-ms.date: 04/01/2019
-ms.author: v-jay
+ms.date: 03/18/2019
+ms.author: juliako
 ms.openlocfilehash: e5a0251ffd7d013a2e90d05609c04cec5c9dc1e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61129578"
 ---
 # <a name="h264-multiple-bitrate-4x3-sd"></a>H264 多比特率 4x3 SD

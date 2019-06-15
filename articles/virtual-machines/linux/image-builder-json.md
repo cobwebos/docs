@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65538297"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
@@ -270,7 +270,7 @@ OS 支持：Windows
  
 自定义属性：
 - **类型**：WindowsRestart
-- **restartCommand** -（可选） 重新启动时执行命令。 默认值为 `'shutdown /r /f /t 0 /c \"packer restart\"'`。
+- **restartCommand** -（可选） 重新启动时执行命令。 默认为 `'shutdown /r /f /t 0 /c \"packer restart\"'`。
 - **restartCheckCommand** – 命令来检查重新启动成功 （可选）。 
 - **restartTimeout** -重新启动超时指定为字符串的大小和单位。 例如， `5m` （5 分钟） 或`2h`（2 小时）。 默认值为：5 分钟
 

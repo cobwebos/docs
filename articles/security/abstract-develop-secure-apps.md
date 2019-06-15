@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/30/2019
 ms.author: terrylan
 ms.openlocfilehash: 710d7a12db3b38a6cecffb33ade6b60eb50d03c7
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66428282"
 ---
 # <a name="develop-secure-cloud-applications-on-azure"></a>开发在 Azure 上的安全的云应用程序

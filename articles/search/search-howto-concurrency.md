@@ -10,15 +10,15 @@ ms.date: 07/21/2017
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 7e569fa30727f2df7411eee5fa6d48f9b9454460
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65025341"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>如何管理 Azure 搜索中的并发
 
-管理索引和数据源等 Azure 搜索资源时，务必安全地更新资源，尤其是应用程序的不同组件并发访问资源的情况下。 当两个客户端在没有协调的情况下并发更新资源时，可能出现争用条件。 为防止此情况，Azure 搜索提供“乐观并发模型”。 对资源没有任何锁定。 相反，每个资源均带有一个 ETag 用于标识资源版本，便于创建避免意外覆盖的请求。
+管理索引和数据源等 Azure 搜索资源时，务必安全地更新资源，尤其是应用程序的不同组件并发访问资源的情况下。 当两个客户端在没有协调的情况下并发更新资源时，可能出现争用条件。 为防止此情况，Azure 搜索提供“乐观并发模型”。  对资源没有任何锁定。 相反，每个资源均带有一个 ETag 用于标识资源版本，便于创建避免意外覆盖的请求。
 
 > [!Tip]
 > [示例 C# 解决方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念代码阐释了并发控制如何在 Azure 搜索中工作。 该代码会创建调用并发控制的条件。 对大多数开发人员而言，读取[以下代码片段](#samplecode)可能就已足够，但若想运行它，请编辑 appsettings.json，以添加服务名称和管理员 API 密钥。 假设服务 URL 为 `http://myservice.search.windows.net`，服务名称是 `myservice`。
@@ -27,7 +27,7 @@ ms.locfileid: "65025341"
 
 乐观并发通过写入索引、索引器、数据源和 synonymMap 资源的 API 调用中的访问条件检查实现。
 
-所有资源均有一个[实体标记 (ETag)](https://en.wikipedia.org/wiki/HTTP_ETag)，它提供对象版本信息。 通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。
+所有资源均有一个[实体标记 (ETag)](https://en.wikipedia.org/wiki/HTTP_ETag)，它提供对象版本信息。  通过先检查 ETag，确保资源的 ETag 与本地副本匹配，可避免典型工作流（获取、本地修改、更新）中的并发更新。
 
 + REST API 在请求头使用 [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)。
 + .NET SDK 通过 accessCondition 对象，对资源设置 [If-Match | If-Match-None 标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 来设置 ETag。 从 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) 继承的任何对象都具有 accessCondition 对象。
@@ -170,7 +170,7 @@ ms.locfileid: "65025341"
 
 用于实现乐观并发的设计模式应包含一个循环用于重试访问条件检查，包含一个访问条件测试，并在尝试重新应用更改前选择性地检索更新后的资源。
 
-此代码片段演示如何向已有的索引添加 synonymMap。 此代码摘自[同义词C#Azure 搜索的示例](search-synonyms-tutorial-sdk.md)。
+此代码片段演示如何向已有的索引添加 synonymMap。 此代码来自 [Azure 搜索的同义词 C# 示例](search-synonyms-tutorial-sdk.md)。
 
 代码片段获取“hotels”索引，检查更新操作上的对象版本，在条件失败时引发异常，然后重试该操作（最多三次），从服务器开始索引检索以获取最新版本。
 

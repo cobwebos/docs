@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6ad8eea21c10726b2c3eaf1e10bfd5efba4d1e48
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 13d698cfbc0241248a77fd5f3b148a9393320c64
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076004"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>在 Azure 虚拟机上配置 SQL Server 的 Azure Key Vault 集成 (Resource Manager)
 
@@ -50,28 +50,24 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://m
 
 ![SQL Azure 密钥保管库集成](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 
-有关预配的详细演练，请参阅[在 Azure 门户中预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)。
+预配的详细演练，请参阅[预配 SQL Server 虚拟机在 Azure 门户中](virtual-machines-windows-portal-sql-server-provision.md)。
 
 ### <a name="existing-vms"></a>现有 VM
-对于现有的 SQL Server 虚拟机，请选择 SQL Server 虚拟机。 然后选择“设置”边栏选项卡的“SQL Server 配置”部分。
+
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+对于现有的 SQL Server 虚拟机，打开你[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)，然后选择**安全**下**设置**。 选择**启用**若要启用 Azure 密钥保管库集成。 
 
 ![现有 VM 的 SQL AKV 集成](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 
-在“SQL Server 配置”边栏选项卡的自动密钥保管库集成部分，单击“编辑”按钮。
-
-![配置现有 VM 的 SQL AKV 集成](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
-
-完成后，单击“SQL Server 配置”边栏选项卡底部的“确定”按钮保存更改。
+完成后，选择**Apply**底部的按钮**安全**页后，可以保存所做的更改。
 
 > [!NOTE]
-> 我们在此处创建的凭据名称将在稍后映射到 SQL 登录名。 这允许 SQL 登录名访问密钥保管库。 
->
->
+> 我们在此处创建的凭据名称会更高版本映射到 SQL 登录名。 这允许 SQL 登录名访问密钥保管库。 
+
 
 > [!NOTE]
 > 还可以使用模板配置 AKV 集成。 有关详细信息，请参阅[用于 Azure 密钥保管库集成的 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update)。
-> 
-> 
+
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
-

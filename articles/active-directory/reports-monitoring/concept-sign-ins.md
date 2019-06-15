@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b69dca5abddd56b29abf3e482e51b3d2a41612e7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 81b7030d0f45222a1641e34b341885d2ecc051e3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864468"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107651"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -55,12 +55,12 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 多少用户超过一周都有登录行为？
 * 这些登录的状态怎样？
 
-可以通过在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”来访问登录报告。 请注意，某些登录记录最多可能需要两个小时才会显示在门户中。
+可以通过在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”  边栏选项卡的“活动”  部分中选择“登录”  来访问登录报告。 请注意，某些登录记录最多可能需要两个小时才会显示在门户中。
 
 ![登录活动](./media/concept-sign-ins/61.png "登录活动")
 
 > [!IMPORTANT]
-> 登录报告仅显示“交互式”登录，即用户使用其用户名和密码进行的手动登录。 登录报告中不会显示服务到服务身份验证等非交互式登录。 
+> 登录报告仅显示“交互式”登录，即用户使用其用户名和密码进行的手动登录  。 登录报告中不会显示服务到服务身份验证等非交互式登录。 
 
 登录日志有一个默认列表视图，用于显示：
 
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![登录活动](./media/concept-sign-ins/01.png "登录活动")
 
-单击工具栏中的“列”即可自定义列表视图。
+单击工具栏中的“列”即可自定义列表视图。 
 
 ![登录活动](./media/concept-sign-ins/19.png "登录活动")
 
@@ -86,7 +86,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 ![登录活动](./media/concept-sign-ins/03.png "登录活动")
 
 > [!NOTE]
-> 客户现在可以通过所有登录报告对条件访问策略进行故障排除。 通过单击登录记录的“条件访问”选项卡，客户可以查看条件访问状态，并深入了解应用于登录的策略的详细信息以及每个策略的结果。
+> 客户现在可以进行条件性访问策略通过单一登录的所有报表故障排除。 通过单击**条件性访问**选项卡在登录记录的客户可以查看的条件性访问状态和深入了解应用于单一登录和每个策略的结果的策略的详细信息。
 > 有关详细信息，请参阅[有关所有登录中 CA 信息的常见问题解答](reports-faq.md#conditional-access)。
 
 ![登录活动](./media/concept-sign-ins/ConditionalAccess.png "登录活动")
@@ -104,24 +104,24 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![登录活动](./media/concept-sign-ins/04.png "登录活动")
 
-“用户”筛选器用于指定所关注的用户的名称或用户主体名称 (UPN)。
+“用户”筛选器用于指定所关注的用户的名称或用户主体名称 (UPN)。 
 
-“应用程序”筛选器用于指定所关注的应用程序的名称。
+“应用程序”  筛选器用于指定所关注的应用程序的名称。
 
-“登录状态”筛选器用于选择：
+“登录状态”筛选器用于选择： 
 
 - All
 - Success
 - 失败
 
-使用“条件访问”筛选器可以选择登录的 CA 策略状态：
+使用“条件访问”  筛选器可以选择登录的 CA 策略状态：
 
 - All
 - 未应用
 - Success
 - 失败
 
-“日期”筛选器用于定义已返回数据的时间范围。  
+“日期”筛选器用于定义已返回数据的时间范围。   
 可能的值包括：
 
 - 1 个月
@@ -131,7 +131,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 选择自定义时间范围时，可以配置开始时间和结束时间。
 
-如果向登录视图添加其他字段，这些字段会自动添加到筛选器列表。 例如，如果向列表添加“客户端应用”字段，则还会获得另一筛选器选项，用于设置以下筛选器：  
+如果向登录视图添加其他字段，这些字段会自动添加到筛选器列表。 例如，如果向列表添加“客户端应用”字段，则还会获得另一筛选器选项，用于设置以下筛选器：   
 ![登录活动](./media/concept-sign-ins/12.png "登录活动")
 
 - **浏览器**  
@@ -205,7 +205,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 > [!NOTE]
 > IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远，这会导致 IP 地址映射变得复杂。 目前，在 Azure AD 报告中，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。
 
-在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。
+在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。   
 
 ![登录活动](./media/concept-sign-ins/08.png "登录活动")
 
@@ -217,7 +217,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 组织中最常用的 3 个应用程序是哪些？
 * 我最近推出了一个应用程序。 它用起来怎样？
 
-该数据的入口点为“概览”部分的“企业应用程序”下面的组织过去 30 天的报告中最常用的 3 个应用程序。
+该数据的入口点为“概览”部分的“企业应用程序”下面的组织过去 30 天的报告中最常用的 3 个应用程序   。
 
 ![登录活动](./media/concept-sign-ins/10.png "登录活动")
 

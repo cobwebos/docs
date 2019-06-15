@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5b53ccdcd33e2542834769baff5b759ff7b170
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 0f007ad1d5bf99136328ec5706f7ccbb5f6593c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962367"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111232"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>场景：移动应用程序调用 web Api
 

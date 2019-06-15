@@ -10,10 +10,10 @@ ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65793624"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 分面查询参数设置为字段，根据数据类型，可通过逗号分隔列表（包括 `count:<integer>`、`sort:<>`、`interval:<integer>` 和 `values:<list>`）对其执行进一步参数化。 设置范围时，数值数据支持值列表。 有关使用情况详细信息，请参阅[搜索记录（Azure 搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
-通过分面，应用程序明确表述的请求还应生成筛选器，以便根据分面值选择缩小候选记录集。 对于自行车商店，分面导航提供了就“有哪些颜色、制造商和类型的自行车”问题的线索， 同时筛选对“在此价格区间，具体有哪些红色的山地自行车”问题的答案。 单击“红色”指示应仅显示红色产品时，应用程序发送的下一条查询将为 `$filter=Color eq ‘Red’`。
+通过分面，应用程序明确表述的请求还应生成筛选器，以便根据分面值选择缩小候选记录集。 对于自行车商店，分面导航提供了就“有哪些颜色、制造商和类型的自行车”问题的线索，  同时筛选对“在此价格区间，具体有哪些红色的山地自行车”问题的答案。  单击“红色”指示应仅显示红色产品时，应用程序发送的下一条查询将为 `$filter=Color eq ‘Red’`。
 
 如果从“职称”分面中选择一个值，源自 `JobsSearch.cs` 页面的以下代码片段会将选定的职称添加到筛选器。
 
@@ -254,7 +254,7 @@ if (businessTitleFacet != "")
 
 回想一下，索引的架构确定哪些字段可用作分面。 假设某个字段可进行分面，该查询可指定分面依据的字段。 分面时依据的字段提供了显示在标签下面的值。 
 
-显示在每个标签下面的值可从索引检索。 例如，如果分面字段为“颜色”，可用于其他筛选的值将是该字段的值（红色、黑色等）。
+显示在每个标签下面的值可从索引检索。 例如，如果分面字段为“颜色”，可用于其他筛选的值将是该字段的值（红色、黑色等）。 
 
 仅可针对 Numeric 和 DateTime 值，在分面字段上显式设置值（例如 `facet=Rating,values:1|2|3|4|5`）。 这些字段类型允许使用值列表，以简化将分面结果分入连续范围（基于数值或时段的范围）操作。 
 
@@ -321,7 +321,7 @@ if (businessTitleFacet != "")
 
 由于分片体系结构，分面计数可能不准确。 每个搜索索引具有多个分片，每个分片报告按记录计数排序的前 N 个分面，并合并到单个结果中。 如果某些分片具有大量匹配值，而其他分片的值很少，你可能会发现某些分面值丢失或未计入结果中。
 
-尽管此行为可能随时更改，如果现在遇到此行为，您可以解决它的人为地都计数：\<数 > 为大型数字以强制从每个分片进行完整报告。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
+尽管此行为可能随时更改，但如果现在遇到此行为，可通过以下方式解决它：人为地将 count:\<number> 扩大到较大的值，以强制从每个分片进行完整报告。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
 
 ### <a name="user-interface-tips"></a>用户界面提示
 **为分面导航中的每个字段添加标签**
@@ -352,7 +352,7 @@ Azure 搜索通过提供两种用于计算范围的方法，简化范围构造�
 ### <a name="build-a-filter-for-a-range"></a>针对范围生成筛选器
 若要根据所选的范围筛选文档，可以在包含两个部分的表达式中使用 `"ge"` 和 `"lt"` 筛选器运算符，该表达式可定义范围的终结点。 例如，如果为 `listPrice` 字段选择范围 10-25，筛选器将为 `$filter=listPrice ge 10 and listPrice lt 25`。 在示例代码中，筛选器表达式使用 **priceFrom** 和 **priceTo** 参数设置终结点。 
 
-  ![一系列值的查询](media/search-faceted-navigation/Facet-6-buildfilter.PNG "一系列值的查询")
+  ![查询值的范围](media/search-faceted-navigation/Facet-6-buildfilter.PNG "查询值的范围")
 
 <a name="geofacets"></a> 
 
@@ -401,5 +401,5 @@ Azure 搜索作业门户演示包含本文中参考的示例。
 有关分面导航设计准则的更多见解，建议查看以下链接：
 
 * [设计模式：分面导航](https://alistapart.com/article/design-patterns-faceted-navigation)
-* [前端问题时实现分面搜索 – 第 1 部分 ](https://articles.uie.com/faceted_search2/)
+* [Front End Concerns When Implementing Faceted Search – Part 1 ](https://articles.uie.com/faceted_search2/)（实现分面搜索时的前端关注 - 第 1 部分）
 

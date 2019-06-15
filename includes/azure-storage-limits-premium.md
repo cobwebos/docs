@@ -9,10 +9,10 @@ ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7b75e24e5d59206ee8330c3ca9eaf86eacbad13d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66114812"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>高级性能数据块 blob 存储
@@ -21,12 +21,12 @@ ms.locfileid: "66114812"
 
 ### <a name="premium-performance-filestorage-preview"></a>文件存储 （预览版） 的高级性能
 
-高级文件使用一个名为唯一的存储帐户**文件存储 （预览版）**。 此帐户类型专为 IOPS 较高的工作负荷、 高吞吐量且一致的低滞后时间。 高级文件存储的可伸缩性与预配的共享大小。
+高级文件使用一个名为唯一的存储帐户**文件存储 （预览版）** 。 此帐户类型专为 IOPS 较高的工作负荷、 高吞吐量且一致的低滞后时间。 高级文件存储的可伸缩性与预配的共享大小。
 
 |区域  |确定目标  |
 |---------|---------|
 |最大预配大小     |100 TiB     |
-|共享   |无限制  |
+|共享   |不受限制  |
 |IOPS     |100,000    |
 |流入量|4,136 MiB/s     |
 |流出量|6,204 MiB/s |

@@ -2,18 +2,18 @@
 title: 将虚拟网络从经典部署迁移到资源管理器部署 - ExpressRoute：Azure：PowerShell | Microsoft Docs
 description: 本页介绍如何在移动线路之后将 ExpressRoute 关联的虚拟网络迁移到 Resource Manager 部署模型。
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.author: ganesr;cherylmc
+ms.date: 06/13/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 2e33454ac0ee97385386043706f4b8b73090f57a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f15431015e847d882e51b8d88c5b8a8c121d0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60363816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115409"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>将 ExpressRoute 关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型
 
@@ -23,7 +23,7 @@ ms.locfileid: "60363816"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* 验证是否安装了最新版本的 Azure PowerShell 模块。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* 验证具有最新版本的 Azure PowerShell 模块。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 若要安装 PowerShell 服务管理模块 （所需的经典部署模型），请参阅[安装 Azure PowerShell 服务管理模块](/powershell/azure/servicemanagement/install-azure-ps)。
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。 请确保完全了解限制和局限性。
 * 验证该线路是否在经典部署模型中完全正常运行。

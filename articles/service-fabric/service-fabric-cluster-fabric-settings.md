@@ -12,17 +12,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/10/2019
+ms.date: 06/12/2019
 ms.author: aljo
-ms.openlocfilehash: e992aae17f1217803b411a49c5d942efc501fbdc
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
-ms.translationtype: MT
+ms.openlocfilehash: fed991193e8d4a1f8e4e2fcf75ef8e2bf0d0a8d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606975"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074291"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
-本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
+本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json  文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
 
 有三种不同的升级策略：
 
@@ -50,7 +50,7 @@ ms.locfileid: "65606975"
 |IgnoreCrlOfflineError|bool，默认值为 TRUE|动态|是否要忽略应用程序/服务证书验证的 CRL 脱机错误。 |
 |IsEnabled |Bool，默认值为 false |Static| 启用/禁用 HttpApplicationGateway。 默认情况下，禁用 HttpApplicationGateway，需要设置此配置以启用 HttpApplicationGateway。 |
 |NumberOfParallelOperations | Uint，默认值为 5000 |Static|要发布到 http 服务器队列的读取数。 此配置控制 HttpGateway 可以满足的并发请求数。 |
-|RemoveServiceResponseHeaders|string，默认值为“Date; Server”|Static|从服务响应中删除的响应标头列表（以分号/逗号分隔），这些标头将子啊转发到客户端之前删除。 如果此值设置为空字符串，则会按原样传递服务返回的所有标头。 例如  不会覆盖日期和服务器 |
+|RemoveServiceResponseHeaders|string，默认值为“Date; Server”|Static|从服务响应中删除的响应标头列表（以分号/逗号分隔），这些标头将子啊转发到客户端之前删除。 如果此值设置为空字符串，则会按原样传递服务返回的所有标头。 例如 不会覆盖日期和服务器 |
 |ResolveServiceBackoffInterval |以秒为单位的时间，默认值为 5 |动态|指定以秒为单位的时间范围。  提供重试失败的解析服务操作之前的默认回退时间间隔。 |
 |SecureOnlyMode|bool，默认值为 FALSE|动态| SecureOnlyMode：true：反向代理只会转发到发布安全终结点的服务。 false：反向代理可以将请求转发到安全/不安全的终结点。 若要了解详细信息，请参阅[反向代理终结点选择逻辑](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints)。  |
 |ServiceCertificateThumbprints|string，默认值为“”|动态|反向代理可以信任的远程证书的指纹的逗号分隔列表。 若要了解详细信息，请参阅[反向代理安全连接](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)。 |
@@ -87,7 +87,7 @@ ms.locfileid: "65606975"
 |MaxDataMigrationTimeout |以秒为单位的时间，默认值为 600 |动态|指定以秒为单位的时间范围。 发生 Fabric 升级后，数据迁移恢复操作的最大超时时间。 |
 |MaxOperationRetryDelay |以秒为单位的时间，默认值为 5|动态| 指定以秒为单位的时间范围。 遇到故障时，内部重试的最大延迟时间。 |
 |MaxOperationTimeout |以秒为单位的时间，默认值为 MaxValue |动态| 指定以秒为单位的时间范围。 用于内部处理 ClusterManager 上的操作的最大全局超时时间。 |
-|MaxTimeoutRetryBuffer | 以秒为单位的时间，默认值为 600 |动态|指定以秒为单位的时间范围。 最大操作超时值时因超时而在内部重试是`<Original Time out> + <MaxTimeoutRetryBuffer>`。 以 MinOperationTimeout 为增量添加额外超时时间。 |
+|MaxTimeoutRetryBuffer | 以秒为单位的时间，默认值为 600 |动态|指定以秒为单位的时间范围。 因超时导致内部重试时，最大操作超时时间是 `<Original Time out> + <MaxTimeoutRetryBuffer>`。 以 MinOperationTimeout 为增量添加额外超时时间。 |
 |MinOperationTimeout | 以秒为单位的时间，默认值为 60 |动态|指定以秒为单位的时间范围。 用于内部处理 ClusterManager 上的操作的最小全局超时时间。 |
 |MinReplicaSetSize |Int，默认值为 3 |不允许|ClusterManager 的 MinReplicaSetSize。 |
 |PlacementConstraints | string，默认值为“” |不允许|ClusterManager 的 PlacementConstraints。 |
@@ -125,14 +125,19 @@ ms.locfileid: "65606975"
 
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
+|AdminOnlyHttpAudit |Bool，默认值为 true | 动态 | 排除 HTTP 请求不会影响从审核群集的状态。 当前;仅"GET"类型的请求会排除;但这可能会发生更改。 |
 |AppDiagnosticStoreAccessRequiresImpersonation |Bool，默认值为 true | 动态 |代表应用程序访问诊断存储时是否需要模拟。 |
 |AppEtwTraceDeletionAgeInDays |Int，默认值为 3 | 动态 |在多少天后删除包含应用程序 ETW 跟踪的旧 ETL 文件。 |
 |ApplicationLogsFormatVersion |Int，默认值为 0 | 动态 |用于应用程序日志格式的版本。 支持的值是 0 和 1. 版本 1 比版本 0 包含更多 ETW 事件记录的字段。 |
+|AuditHttpRequests |Bool，默认值为 false | 动态 | 打开 HTTP 审核打开或关闭。 审核的目的是以查看针对该群集。 已执行的活动包括谁启动了该请求。 请注意，这是最佳的尝试日志记录;和可能丢失跟踪。 使用"用户"身份验证的 HTTP 请求不会记录。 |
+|CaptureHttpTelemetry|Bool，默认值为 false | 动态 | 启用或禁用 HTTP 遥测数据。 遥测数据的目的是适用于 Service Fabric 能够捕获遥测数据，以帮助规划将来的工作和确定问题区域。 遥测数据不会记录任何个人数据或请求正文。 遥测数据捕获所有 HTTP 请求，除非有其他配置。 |
 |ClusterId |String | 动态 |群集的唯一 ID。 于群集创建时生成。 |
 |ConsumerInstances |String | 动态 |DCA 使用者实例列表。 |
 |DiskFullSafetySpaceInMB |Int，默认值为 1024 | 动态 |要避免被 DCA 使用的剩余磁盘空间（以 MB 为单位）。 |
 |EnableCircularTraceSession |Bool，默认值为 false | Static |标志指示是否应使用循环跟踪会话。 |
 |EnableTelemetry |Bool，默认值为 true | 动态 |这会启用或禁用遥测。 |
+|FailuresOnlyHttpTelemetry | Bool，默认值为 true | 动态 | 如果启用了 HTTP 遥测数据捕获;捕获失败的请求。 这是为了帮助减少生成的遥测数据的事件数。 |
+|HttpTelemetryCapturePercentage | Int，默认值为 50 | 动态 | 如果启用了 HTTP 遥测数据捕获;捕获随机百分比的请求。 这是为了帮助减少生成的遥测数据的事件数。 |
 |MaxDiskQuotaInMB |Int，默认值为 65536 | 动态 |Windows Fabric 日志文件的磁盘配额（以 MB 为单位）。 |
 |ProducerInstances |String | 动态 |DCA 生成者实例列表。 |
 
@@ -159,7 +164,7 @@ ms.locfileid: "65606975"
 | --- | --- | --- | --- |
 |ConnectionInitializationTimeout |以秒为单位的时间，默认值为 2 |动态|指定以秒为单位的时间范围。 每次客户端尝试打开网关连接时的连接超时间隔。|
 |HealthOperationTimeout |以秒为单位的时间，默认值为 120 |动态|指定以秒为单位的时间范围。 报告消息发送至运行状况管理器的超时时间。 |
-|HealthReportRetrySendInterval |时间以秒为单位，默认值为 30，最小值为 1 |动态|指定以秒为单位的时间范围。 报告运行状况管理器为报表组件重新发送累积的运行状况的时间间隔。 |
+|HealthReportRetrySendInterval |以秒为单位的时间，默认值为 30，最小值为 1 |动态|指定以秒为单位的时间范围。 报告组件将累积的运行状况报告重新发送至运行状况管理器的时间间隔。 |
 |HealthReportSendInterval |以秒为单位的时间，默认值为 30 |动态|指定以秒为单位的时间范围。 报告组件将累积的运行状况报告发送至运行状况管理器的时间间隔。 |
 |KeepAliveIntervalInSeconds |Int，默认值为 20 |Static|FabricClient 传输向网关发送保持连接消息的时间间隔。 值为 0，表示禁用 keepAlive。 必须是正值。 |
 |MaxFileSenderThreads |Uint，默认值为 10 |Static|并行传输的最大文件数。 |
@@ -345,7 +350,7 @@ ms.locfileid: "65606975"
 |EndpointProviderEnabled| bool，默认值为 FALSE|Static| 启用 Fabric 终结点资源管理。 需要指定 FabricNode 中开始和结尾应用程序端口范围。 |
 |FabricContainerAppsEnabled| bool，默认值为 FALSE|Static| |
 |FirewallPolicyEnabled|bool，默认值为 FALSE|Static| 允许为具有 ServiceManifest 中指定的显式端口的终结点资源打开防火墙端口 |
-|GetCodePackageActivationContextTimeout|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(120)|动态|指定以秒为单位的时间范围。 CodePackageActivationContext 调用的超时时间。 这不是适用于临时服务。 |
+|GetCodePackageActivationContextTimeout|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(120)|动态|指定以秒为单位的时间范围。 CodePackageActivationContext 调用的超时时间。 这不适用于临时服务。 |
 |GovernOnlyMainMemoryForProcesses|bool，默认值为 FALSE|Static|资源治理的默认行为是对进程使用的总内存量（RAM + 交换）施加限制（在 MemoryInMB 中指定）。 如果超出限制，进程会收到 OutOfMemory 异常。 如果此参数设置为 true，则限制只会应用到进程将使用的 RAM 内存量。 如果超出该限制，且此设置为 true，则 OS 会将主内存切换到磁盘。 |
 |IPProviderEnabled|bool，默认值为 FALSE|Static|启用 IP 地址的管理。 |
 |IsDefaultContainerRepositoryPasswordEncrypted|bool，默认值为 FALSE|Static|DefaultContainerRepositoryPassword 是否已加密。|
@@ -395,7 +400,7 @@ ms.locfileid: "65606975"
 |SharedLogId |string，默认值为“” |Static|共享日志容器的唯一 guid。 若要使用 Fabric 数据根目录下的默认路径，请设置为“”。 |
 |SharedLogPath |string，默认值为“” |Static|要放置共享日志容器的位置的路径和文件名。 设置为“”表示使用 Fabric 数据根目录下的默认路径。 |
 |SharedLogSizeInMB |Int，默认值为 8192 |Static|共享日志容器中要分配的 MB 数。 |
-|SharedLogThrottleLimitInPercentUsed|int，默认值为 0 | Static | 将引发限制的共享日志使用百分比。 值应当介于 0 和 100 之间。 值为 0 表示使用默认百分比值。 值为 100 表示根本不进行限制。 介于 1 和 99 之间的值指定的日志使用率更高版本会发生哪些限制; 的百分比例如如果共享的日志是 10 GB 和值为 90，然后使用为 9 GB 后会发生限制。 建议使用默认值。|
+|SharedLogThrottleLimitInPercentUsed|int，默认值为 0 | Static | 将引发限制的共享日志使用百分比。 值应当介于 0 和 100 之间。 值为 0 表示使用默认百分比值。 值为 100 表示根本不进行限制。 1 到 99 之间的值指定一个日志使用百分比，高于该百分比将进行限制；例如，如果共享日志为 10GB 并且该值为 90，则在使用 9GB 后将进行限制。 建议使用默认值。|
 |WriteBufferMemoryPoolMaximumInKB | Int，默认值为 0 |动态|允许写入缓冲区内存池增长到的 KB 数。 使用 0 表示没有限制。 |
 |WriteBufferMemoryPoolMinimumInKB |Int，默认值为 8388608 |动态|最初为写入缓冲区内存池分配的 KB 数。 设置为 0 表示没有限制，默认值应与以下 SharedLogSizeInMB 值保持一致。 |
 
@@ -403,18 +408,18 @@ ms.locfileid: "65606975"
 
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|AutomaticUnprovisionInterval|TimeSpan，默认值是 Common::TimeSpan::FromMinutes(5)|动态|指定以秒为单位的时间范围。 允许使用清理时间间隔的自动应用程序类型清理期间取消注册应用程序类型。|
+|AutomaticUnprovisionInterval|TimeSpan，默认值为 Common::TimeSpan::FromMinutes(5)|动态|指定以秒为单位的时间范围。 清理时间间隔，可以在自动进行的应用程序类型清理过程中用于注销应用程序类型。|
 |AzureStorageMaxConnections | Int，默认值为 5000 |动态|最大并发 Azure 存储连接数。 |
 |AzureStorageMaxWorkerThreads | Int，默认值为 25 |动态|最大并行工作线程数。 |
 |AzureStorageOperationTimeout | 以秒为单位的时间，默认值为 6000 |动态|指定以秒为单位的时间范围。 完成 xstore 操作的超时时间。 |
-|CleanupApplicationPackageOnProvisionSuccess|bool，默认值为 FALSE |动态|启用或禁用上成功预配应用程序包的自动清理。 |
-|CleanupUnusedApplicationTypes|布尔值，默认为 FALSE |动态|此配置如果启用，则允许以自动取消注册未使用的应用程序类型版本正在跳过最新三个未使用的版本，从而剪裁映像存储区占用的磁盘空间。 自动清理将触发成功预配该特定应用类型的末尾，并且还会定期每天运行一次的所有应用程序类型。 未使用的版本要跳过数是可配置使用参数"MaxUnusedAppTypeVersionsToKeep"。 |
+|CleanupApplicationPackageOnProvisionSuccess|bool，默认值为 FALSE |动态|启用或禁用在成功预配后自动清理应用程序包的功能。 |
+|CleanupUnusedApplicationTypes|布尔值，默认为 FALSE |动态|此配置在启用的情况下允许自动注销未使用的应用程序类型版本，跳过最新的三个未使用的版本，因此可以修整映像存储占用的磁盘空间。 对于该特定的应用类型，自动清理会在成功预配结束时触发；对于所有应用程序类型，自动清理也会定期运行（每天一次）。 可以使用参数“MaxUnusedAppTypeVersionsToKeep”配置要跳过的未使用版本的数目。 |
 |DisableChecksumValidation | Bool，默认值为 false |Static| 通过此配置可在应用程序预配过程中启用或禁用校验和验证。 |
 |DisableServerSideCopy | Bool，默认值为 false |Static|此配置可以在应用程序预配过程中启用或禁用 ImageStore 上应用程序包的服务器端副本。 |
 |ImageCachingEnabled | Bool，默认值为 true |Static|通过此配置可启用或禁用缓存。 |
 |ImageStoreConnectionString |SecureString |Static|ImageStore 的根的连接字符串。 |
 |ImageStoreMinimumTransferBPS | Int，默认值为 1024 |动态|群集和 ImageStore 之间的最小传输速率。 此值用于确定访问外部 ImageStore 时的超时时间。 仅当群集和 ImageStore 之间的延迟较高时可更改此值，以允许群集获得更多的时间从外部 ImageStore 进行下载。 |
-|MaxUnusedAppTypeVersionsToKeep | Int，默认值为 3 |动态|此配置中定义的未使用的应用程序类型版本要跳过清理的数目。 启用参数 CleanupUnusedApplicationTypes，此参数才适用。 |
+|MaxUnusedAppTypeVersionsToKeep | Int，默认值为 3 |动态|此配置定义要在清理时跳过的未使用应用程序类型版本的数目。 只有在启用参数 CleanupUnusedApplicationTypes 的情况下，此参数才适用。 |
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
@@ -711,7 +716,7 @@ ms.locfileid: "65606975"
 |InvokeInfrastructureCommand |string，默认值为“Admin” |动态| 用于基础结构任务管理命令的安全性配置。 |
 |InvokeInfrastructureQuery |string，默认值为“Admin\|\|User” | 动态|用于查询基础结构任务的安全性配置。 |
 |列出 |string，默认值为“Admin\|\|User” | 动态|用于映像存储客户端文件列表操作的安全性配置。 |
-|MoveNextFabricUpgradeDomain |string，默认值为“Admin” |动态| 用于恢复群集升级，具有显式升级域的安全配置。 |
+|MoveNextFabricUpgradeDomain |string，默认值为“Admin” |动态| 用于通过显式升级域恢复群集升级的安全配置。 |
 |MoveNextUpgradeDomain |string，默认值为“Admin” |动态| 用于使用显式升级域恢复应用程序升级的安全性配置。 |
 |MoveReplicaControl |string，默认值为“Admin” | 动态|移动副本。 |
 |NameExists |string，默认值为“Admin\|\|User” | 动态|用于检查命名 URI 存在的安全性配置。 |

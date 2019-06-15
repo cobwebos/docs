@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
 ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66476033"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头
@@ -20,7 +20,7 @@ ms.locfileid: "66476033"
 
 HTTP 标头允许客户端和服务器将与请求或响应的附加信息传递。 可以通过重写这些标头，完成重要任务，例如添加如 HSTS / X XSS 保护的与安全相关的标头字段中，删除可能会披露敏感信息的响应标头字段和删除中的端口信息X-转发-对于标头。
 
-应用程序网关，可添加、 删除或更新时请求的 HTTP 请求和响应头和响应数据包的客户端和后端池之间移动。 它允许您添加条件以确保仅在满足某些条件时重新编写的指定标头。
+当请求和响应数据包在客户端与后端池之间移动时，可以通过应用程序网关添加、删除或更新 HTTP 请求和响应标头。 还可以通过它来添加条件，确保只有在满足特定条件的情况下才能重写指定标头。
 
 应用程序网关还支持多个[服务器变量](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables)，可以帮助您将存储有关请求和响应的其他信息。 这使你更轻松地创建功能强大的重写规则。
 

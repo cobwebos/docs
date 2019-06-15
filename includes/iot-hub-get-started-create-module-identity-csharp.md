@@ -9,10 +9,10 @@ ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: e78c9a490d2ad02fb132d62b0ab0b55f15d3d4ed
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166275"
 ---
 ## <a name="create-a-module-identity"></a>创建模块标识
@@ -20,7 +20,7 @@ ms.locfileid: "66166275"
 本部分将创建一个 .NET 控制台应用，用于在 IoT 中心的标识注册表中创建设备标识和模块标识。 设备或模块无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南的“标识注册表”部分](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。 运行此控制台应用时，它会为设备和模块生成唯一的 ID 和密钥。 设备和模块在向 IoT 中心发送设备到云的消息时，使用这些值来标识自身。 ID 区分大小写。
 
 
-1. **创建 Visual Studio 项目** - 在 Visual Studio 中，使用“控制台应用 (.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到新的解决方案。 确保 .NET Framework 版本为 4.6.1 或更高。 将项目命名为 CreateIdentities，将解决方案命名为 IoTHubGetStarted。
+1. **创建 Visual Studio 项目** - 在 Visual Studio 中，使用“控制台应用 (.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到新的解决方案  。 确保 .NET Framework 版本为 4.6.1 或更高。 将项目命名为 CreateIdentities，将解决方案命名为 IoTHubGetStarted   。
 
     ![创建 Visual Studio 解决方案](./media/iot-hub-get-started-create-module-identity-csharp/create-identities-csharp1.JPG)
 
@@ -28,14 +28,14 @@ ms.locfileid: "66166275"
 
     ![安装 Azure IoT 中心 .NET 服务 SDK V1.16.0-preview-001](./media/iot-hub-get-started-create-module-identity-csharp/install-sdk.png)
 
-3. 在 Program.cs 文件顶部添加以下 `using` 语句：
+3. 在 Program.cs  文件顶部添加以下 `using` 语句：
 
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Common.Exceptions;
    ```
 
-4. 将以下字段添加到 Program 类。 将占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串。
+4. 将以下字段添加到 Program 类  。 将占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串。
 
    ```csharp
    const string connectionString = "<replace_with_iothub_connection_string>";
@@ -43,7 +43,7 @@ ms.locfileid: "66166275"
    const string moduleID = "myFirstModule";
    ```
 
-5. 将以下代码添加到 Main 类。
+5. 将以下代码添加到 Main  类。
    
    ```csharp
    static void Main(string[] args)
@@ -53,7 +53,7 @@ ms.locfileid: "66166275"
    }
    ```
 
-6. 将以下方法添加到 Program 类：
+6. 将以下方法添加到 Program  类：
 
     ```csharp
     private static async Task AddDeviceAsync()
@@ -95,9 +95,9 @@ ms.locfileid: "66166275"
     }
     ```
 
-    AddDeviceAsync() 方法创建 ID 为 myFirstDevice 的设备标识。 （如果该设备 ID 已在标识注册表中，代码就只检索现有的设备信息。）然后，应用程序会显示该标识的主密钥。 在模拟设备应用中使用此密钥连接到 IoT 中心。
+    AddDeviceAsync() 方法创建 ID 为 myFirstDevice  的设备标识。 （如果该设备 ID 已在标识注册表中，代码就只检索现有的设备信息。）然后，应用程序会显示该标识的主密钥。 在模拟设备应用中使用此密钥连接到 IoT 中心。
 
-    AddModuleAsync() 方法在设备 myFirstDevice 下创建 ID 为 myFirstModule 的模块标识。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
+    AddModuleAsync() 方法在设备 myFirstDevice 下创建 ID 为 myFirstModule 的模块标识   。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 

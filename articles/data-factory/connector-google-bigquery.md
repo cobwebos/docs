@@ -3,21 +3,20 @@ title: 使用 Azure 数据工厂从 Google BigQuery 复制数据 | Microsoft Doc
 description: 了解如何使用数据工厂管道中的复制活动，将数据从 Google BigQuery 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 12/07/2018
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 12/07/2018
+ms.author: jingwang
 ms.openlocfilehash: c9320c8d0cf512bc9145accc07ab4c79630a7c84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60808886"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
@@ -53,7 +52,7 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="using-user-authentication"></a>使用用户身份验证
 
-将“authenticationType”属性设置为“UserAuthentication”，并指定以下属性及上节所述的泛型属性：
+将“authenticationType”属性设置为“UserAuthentication”  ，并指定以下属性及上节所述的泛型属性：
 
 | 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
@@ -89,7 +88,7 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="using-service-authentication"></a>使用服务身份验证
 
-将“authenticationType”属性设置为“ServiceAuthentication”，并指定以下属性及上节所述的泛型属性。 此身份验证类型只能在自承载 Integration Runtime 上使用。
+将“authenticationType”属性设置为“ServiceAuthentication”  ，并指定以下属性及上节所述的泛型属性。 此身份验证类型只能在自承载 Integration Runtime 上使用。
 
 | 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
@@ -153,7 +152,7 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="googlebigquerysource-as-a-source-type"></a>以 GoogleBigQuerySource 作为源类型
 
-要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”。 复制活动的 **source** 节支持以下属性。
+要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”  。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

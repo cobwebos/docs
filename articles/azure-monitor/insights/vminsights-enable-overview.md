@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 启用的 Vm （预览版） 概述 |Microsoft Docs
-description: 本文介绍如何部署和配置 Azure Monitor 的 Vm 和所需的系统要求。
+description: 了解如何部署和配置 Azure Monitor 的 Vm。 了解系统要求。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: c84c3eb74d214a5c98aabef7b2e2987dfdf67c0f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 3f93318dedb8a4667d32bcc97eb6a697ccebfcc4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122578"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor 启用的 Vm （预览版） 概述
 
-本文概述的选项，可用于安装程序在 Azure Monitor 的 Vm 可以监视运行状况和性能，并发现 Azure 虚拟机和虚拟机规模集上运行的应用程序依赖关系，在本地 Vm，或中托管的 Vm另一个云环境。  
+本文概述可用于为 Vm 设置 Azure Monitor 的选项。 对 Vm 使用 Azure Monitor 监视运行状况和性能。 发现 Azure 虚拟机 (Vm) 运行的应用程序依赖关系和虚拟机规模集，在本地 Vm 或在另一个云环境中托管的 Vm。  
 
-可使用以下方法之一启用用于 VM 的 Azure Monitor：
+若要为 Vm 设置 Azure 监视器：
 
 * 启用单个 Azure 虚拟机或虚拟机规模集通过选择**Insights （预览版）** 直接从 VM 或虚拟机规模集。
-* 启用两个或多个 Azure 虚拟机和虚拟机规模集使用 Azure 策略。 通过此方法中，现有和新的 Vm 和规模集的必需的依赖项安装并正确配置。 不符合的 Vm 和规模集被报告，因此您可以决定是否启用它们，以及你想要修正它们。
+* 启用两个或多个 Azure 虚拟机和虚拟机规模集使用 Azure 策略。 此方法可确保在现有和新的 Vm 和规模集，必需的依赖项是安装并正确配置。 不符合要求的 Vm 和规模集被报告，因此可以确定是否要启用它们，以及修正。
 * 使用 PowerShell 跨指定的订阅或资源组启用两个或更多 Azure VM，或启用虚拟机规模集。
-* 能够监视虚拟机或物理计算机在公司网络或其他云环境中托管。
+* 启用要监视的 Vm 或物理计算机在公司网络或其他云环境中托管的 Vm 的 Azure Monitor。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -50,30 +50,30 @@ ms.locfileid: "66472602"
 <sup>1</sup> 此区域目前不支持用于 VM 的 Azure Monitor 的“运行状况”功能。
 
 >[!NOTE]
->Azure 虚拟机可以从任何区域部署，并且不限于支持 Log Analytics 工作区的区域。
+>你可以部署 Azure Vm 的任何区域。 这些 Vm 并不限于 Log Analytics 工作区支持的区域。
 >
 
-如果没有工作区，则可使用以下方法之一创建一个：
+如果没有工作区，可以创建一个使用这些资源之一：
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
 * [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)
 
-如果要启用单个 Azure VM 或虚拟机规模集在 Azure 门户中进行监视，您可以在此过程中创建工作区。
+要启用单个 Azure 虚拟机或虚拟机规模集在 Azure 门户中监视时，还可以创建一个工作区。
 
-使用 Azure 策略、 Azure PowerShell 或 Azure 资源管理器模板在规模方案中，Log Analytics 工作区首先需要配置以下：
+若要设置 Log Analytics 工作区中使用 Azure 策略、 Azure PowerShell 或 Azure 资源管理器模板的大规模应用场景：
 
-* 安装 ServiceMap 和 InfrastructureInsights 解决方案。 通过使用提供的 Azure 资源管理器模板，或可以完成此安装**配置工作区**上找到选项**开始**选项卡。
+* 安装 ServiceMap 和 InfrastructureInsights 解决方案。 可以使用提供的 Azure 资源管理器模板来完成此安装。 或在**开始**选项卡上，选择**配置工作区**。
 * 配置 Log Analytics 工作区以收集性能计数器。
 
-若要配置你的工作区为大规模方案，可以配置它使用以下方法之一：
+若要配置你的工作区为大规模方案，请使用以下方法之一：
 
-* [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace)
-* 从**配置工作区**Vm 的 Azure monitor 选项[策略覆盖范围](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview)页
+* 使用[Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace)。
+* Vm 的 Azure monitor [**策略覆盖范围**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview)页上，选择**配置工作区**。 
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
-下表列出了用于 VM 的 Azure Monitor 支持的 Windows 和 Linux 操作系统。 本部分稍后将提供详细说明主要和次要 Linux OS 版本以及支持的内核版本的完整列表。
+下表列出了在 Windows 和 Linux 操作系统的 Vm 的 Azure Monitor 支持的。 更高版本在此部分中，您会发现的完整列表，以详细列出主要和次要 Linux OS 版本和支持内核版本。
 
 |OS 版本 |性能 |地图 |运行状况 |
 |-----------|------------|-----|-------|
@@ -89,13 +89,13 @@ ms.locfileid: "66472602"
 |SUSE Linux Enterprise Server (SLES) 11、 12 | X | X | X |
 |Debian 8、 9.4 | X<sup>1</sup> | | X |
 
-<sup>1</sup> 用于 VM 的 Azure Monitor 的“性能”功能仅在 Azure Monitor 中可用。 直接从 Azure VM 的左窗格进行访问时不会提供此功能。
+<sup>1</sup> 用于 VM 的 Azure Monitor 的“性能”功能仅在 Azure Monitor 中可用。 它不是可直接从 Azure VM 的左窗格。
 
 >[!NOTE]
->以下信息适用于 Linux 操作系统的支持：
+>在 Linux 操作系统：
 > - 仅默认版本和 SMP Linux 内核版本受支持。
 > - 任何 Linux 发行版都不支持非标准内核版本（例如物理地址扩展 [PAE] 和 Xen）。 例如，不支持版本字符串为 *2.6.16.21-0.8-xen* 的系统。
-> - 不支持自定义内核（包括标准内核的重新编译）。
+> - 不支持自定义内核，包括标准内核的重新编译。
 > - 支持 CentOSPlus 内核。
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
@@ -113,7 +113,7 @@ ms.locfileid: "66472602"
 | 6.9 | 2.6.32-696 |
 | 6.10 | 2.6.32-754 |
 
-### <a name="centosplus"></a>CentOSPlus
+#### <a name="centosplus"></a>CentOSPlus
 | OS 版本 | 内核版本 |
 |:--|:--|
 | 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
@@ -143,21 +143,21 @@ ms.locfileid: "66472602"
 
 ### <a name="the-microsoft-dependency-agent"></a>Microsoft Dependency Agent
 
-用于 VM 的 Azure Monitor 映射功能从 Microsoft Dependency Agent 获取其数据。 依赖项代理依赖于使用 Log Analytics 代理连接到 Log Analytics。 因此，必须在系统上连同 Dependency Agent 一起安装和配置 Log Analytics 代理。
+适用于 Vm 的 Azure Monitor 中的映射功能从 Microsoft 依赖关系代理获取其数据。 依赖项代理依赖于使用 Log Analytics 代理连接到 Log Analytics。 因此您的系统必须具有使用依赖关系代理安装和配置 Log Analytics 代理。
 
-无论是为单个 Azure VM 启用用于 VM 的 Azure Monitor，还是使用大规模部署方法，都需要在体验过程中使用 Azure VM Dependency Agent 扩展来安装代理。
+是否为 Vm 的 Azure Monitor 启用单个 Azure 虚拟机或使用大规模的部署方法，使用 Azure VM 依赖关系代理扩展将代理安装为体验的一部分。
 
-在混合环境中，您可以下载并在两种方式之一安装依赖关系代理： 手动或通过使用自动的部署方法的虚拟机托管 Azure 外部的。
+在混合环境中，可以下载并手动安装依赖关系代理。 如果 Vm 位于 Azure 外部，使用自动的部署方法。
 
 下表描述了映射功能在混合环境中支持的连接源。
 
 | 连接的源 | 支持 | 描述 |
 |:--|:--|:--|
-| Windows 代理 | 是 | 除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关操作系统版本的完整列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
-| Linux 代理 | 是 | 除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关操作系统版本的完整列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
+| Windows 代理 | 是 | 连同[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)，Windows 代理需要依赖关系代理。 有关详细信息，请参阅[受支持的操作系统](#supported-operating-systems)。 |
+| Linux 代理 | 是 | 连同[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)，Linux 代理需要依赖关系代理。 有关详细信息，请参阅[受支持的操作系统](#supported-operating-systems)。 |
 | System Center Operations Manager 管理组 | 否 | |
 
-可从以下位置下载 Dependency Agent：
+您可以从以下位置下载依赖关系代理：
 
 | 文件 | 操作系统 | 版本 | SHA-256 |
 |:--|:--|:--|:--|
@@ -166,26 +166,22 @@ ms.locfileid: "66472602"
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-若要在用于 VM 的 Azure Monitor 中启用和访问这些功能，需要获得以下访问角色：
-
-- 若要启用它，必须具有*Log Analytics 参与者*角色。
-
-- 若要查看性能、运行状况，以及映射数据，必须拥有 Azure VM 的*监视读取者*角色。 必须为用于 VM 的 Azure Monitor 配置 Log Analytics 工作区。
+若要启用和访问 Vm 的 Azure Monitor 中的功能，必须具有*Log Analytics 参与者*角色。 若要查看的性能，运行状况，并将数据映射，必须具有*监视读取者*Azure 虚拟机角色。 必须为用于 VM 的 Azure Monitor 配置 Log Analytics 工作区。
 
 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../../azure-monitor/platform/manage-access.md)。
 
 ## <a name="how-to-enable-azure-monitor-for-vms-preview"></a>如何为 Vm （预览版） 中启用 Azure Monitor
 
-使用下表中所述的以下方法之一为 Vm 启用 Azure Monitor。
+使用此表中所述的方法之一为 Vm 启用 Azure 监视器：
 
 | 部署状态 | 方法 | 描述 |
 |------------------|--------|-------------|
-| 单个 Azure 虚拟机或虚拟机规模集 | [直接从虚拟机](vminsights-enable-single-vm.md) | 可以通过选择启用单个 Azure 虚拟机**Insights （预览版）** 直接从 VM 或虚拟机规模集。 |
-| 多个 Azure 虚拟机或虚拟机规模集 | [Azure Policy](vminsights-enable-at-scale-policy.md) | 你可以启用多个 Azure Vm 使用 Azure 策略和可用的策略定义。 |
-| 多个 Azure 虚拟机或虚拟机规模集 | [Azure PowerShell 或 Azure 资源管理器模板](vminsights-enable-at-scale-powershell.md) | 在指定的订阅或资源组，将使用 Azure PowerShell 或 Azure 资源管理器模板，可以启用多个 Azure 虚拟机或虚拟机规模集。 |
-| 混合云 | [启用为混合环境](vminsights-enable-hybrid-cloud.md) | 可以在数据中心或其他云环境中部署虚拟机或物理计算机承载。 |
+| 单个 Azure 虚拟机或虚拟机规模集 | [启用从虚拟机](vminsights-enable-single-vm.md) | 可以通过选择启用单个 Azure VM **Insights （预览版）** 直接从 VM 或虚拟机规模集。 |
+| 多个 Azure 虚拟机或虚拟机规模集 | [启用通过 Azure 策略](vminsights-enable-at-scale-policy.md) | 可以使用 Azure 策略和可用的策略定义来启用多个 Azure Vm。 |
+| 多个 Azure 虚拟机或虚拟机规模集 | [启用通过 Azure PowerShell 或 Azure 资源管理器模板](vminsights-enable-at-scale-powershell.md) | 通过使用 Azure PowerShell 或 Azure 资源管理器模板，可以跨指定的订阅或资源组中启用多个 Azure 虚拟机或虚拟机规模集。 |
+| 混合云 | [启用为混合环境](vminsights-enable-hybrid-cloud.md) | 可以在数据中心或其他云环境中部署的 Vm 或物理计算机承载。 |
 
-## <a name="performance-counters-enabled"></a>已启用性能计数器
+## <a name="performance-counters-enabled"></a>已启用性能计数器 
 
 Azure 监视的 Vm 配置要收集的性能计数器，它使用的 Log Analytics 工作区。 下表列出的对象和计数器收集每隔 60 秒。
 
@@ -228,12 +224,16 @@ Azure 监视的 Vm 配置要收集的性能计数器，它使用的 Log Analytic
 
 ## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
 
-Microsoft 使用 Azure Monitor 服务自动收集使用情况和性能数据。 Microsoft 使用此数据提供和改进服务的质量、安全性和完整性。 映射功能的数据包括有关软件配置的信息（例如操作系统和版本、IP 地址、DNS 名称和工作站名称），以提供准确高效的故障排除功能。 Microsoft 不收集姓名、地址或其他联系信息。
+Microsoft 使用 Azure Monitor 服务自动收集使用情况和性能数据。 Microsoft 使用此数据来改进质量、 安全性和完整性服务。 
+
+若要提供准确高效的故障排除功能，映射功能包括有关软件的配置数据。 数据提供了操作系统和版本、 IP 地址、 DNS 名称和工作站名称等信息。 Microsoft 不收集姓名、地址或其他联系信息。
 
 有关数据收集和使用的详细信息，请参阅 [Microsoft Online Services 隐私声明](https://go.microsoft.com/fwlink/?LinkId=512132)。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
+现在，已启用对 VM 的监视，监视信息是可用于 Vm 的 Azure Monitor 中的分析。
+
 ## <a name="next-steps"></a>后续步骤
 
-现已为虚拟机启用监视，可在用于 VM 的 Azure Monitor 中使用此信息进行分析。 若要了解如何使用运行状况功能，请参阅[查看用于 VM 的 Azure Monitor 的运行状况](vminsights-health.md)。 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
+若要了解如何使用运行状况功能，请参阅[查看用于 VM 的 Azure Monitor 的运行状况](vminsights-health.md)。 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。

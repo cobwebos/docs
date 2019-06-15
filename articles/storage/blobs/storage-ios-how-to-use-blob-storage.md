@@ -11,10 +11,10 @@ ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: blobs
 ms.openlocfilehash: 87651aa1fd44a831e94a00b5871faaae51f2f6a7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148297"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何通过 iOS 使用 Blob 存储
@@ -61,7 +61,7 @@ ms.locfileid: "65148297"
 使用库的其他方法是手动生成框架：
 
 1. 首先，下载或克隆 [azure-storage-ios repo](https://github.com/azure/azure-storage-ios)。
-2. 转到“azure-storage-ios” -> “Lib” -> “Azure 存储客户端库”，并在 Xcode 中打开 `AZSClient.xcodeproj`。
+2. 转到“azure-storage-ios”   -> “Lib”   -> “Azure 存储客户端库”  ，并在 Xcode 中打开 `AZSClient.xcodeproj`。
 3. 在 Xcode 的左上方，将活动方案从“Azure 存储客户端库”更改为“Framework”。
 4. 生成项目 (⌘+B)。 这会在桌面上创建 `AZSClient.framework` 文件。
 
@@ -69,9 +69,9 @@ ms.locfileid: "65148297"
 
 1. 在 Xcode 中创建一个新项目或打开现有项目。
 2. 将 `AZSClient.framework` 拖放到 Xcode 项目导航器中。
-3. 选择“需要时复制项”，并单击“完成”。
-4. 单击左侧导航栏中的项目，并在项目编辑器顶部，单击“常规”选项卡。
-5. 在“链接的框架和库”部分下，单击“添加”按钮 (+)。
+3. 选择“需要时复制项”，并单击“完成”。  
+4. 单击左侧导航栏中的项目，并在项目编辑器顶部，单击“常规”  选项卡。
+5. 在“链接的框架和库”  部分下，单击“添加”按钮 (+)。
 6. 在已提供的库的列表中，搜索 `libxml2.2.tbd` 并将其添加到项目。
 
 ## <a name="import-the-library"></a>导入该库 
@@ -83,8 +83,8 @@ ms.locfileid: "65148297"
 如果使用的是 Swift，则需要创建桥接头文件并在其中导入 <AZSClient/AZSClient.h>：
 
 1. 创建头文件 `Bridging-Header.h`，并添加上面的 import 语句。
-2. 转到“生成设置”选项卡，并搜索“Objective-C 桥接头文件”。
-3. 双击“Objective-C 桥接头文件”字段并添加头文件的路径：`ProjectName/Bridging-Header.h`
+2. 转到“生成设置”  选项卡，并搜索“Objective-C 桥接头文件”  。
+3. 双击“Objective-C 桥接头文件”  字段并添加头文件的路径：`ProjectName/Bridging-Header.h`
 4. 生成项目 (⌘+B) 以确认桥接头文件已由 Xcode 选取。
 5. 开始在任何 Swift 文件中直接使用库，不需要 import 语句。
 

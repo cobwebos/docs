@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL-单个服务器配置 SSL 连接性
-description: 若要配置用于 PostgreSQL 的 Azure 数据库，单个服务器和关联应用程序以正确使用 SSL 连接的说明和信息。
+title: 在 Azure Database for PostgreSQL - 单一服务器中配置 SSL 连接
+description: 有关如何配置 Azure Database for PostgreSQL - 单一服务器和关联应用程序以正确使用 SSL 连接的说明和信息。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 56611267872ca79d7d2fe3a08c9b9f49a9b1840b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067408"
 ---
-# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单个服务器配置 SSL 连接性
+# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中配置 SSL 连接
 Azure Database for PostgreSQL 倾向于使用安全套接字层 (SSL) 将客户端应用程序连接到 PostgreSQL 服务。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
 
 默认情况下，PostgreSQL 数据库服务配置为需要 SSL 连接。 （可选）如果客户端应用程序不支持 SSL 连接，则可以禁止要求 SSL 连接到数据库服务。 
@@ -24,17 +24,17 @@ Azure Database for PostgreSQL 倾向于使用安全套接字层 (SSL) 将客户�
 同样，在 Azure 门户中，用户服务器的“连接字符串”设置中预定义了连接字符串，该字符串中包含以通用语言使用 SSL 连接到数据库服务器所需的参数。 SSL 参数因连接器而异，例如“ssl=true”、“sslmode=require”或“sslmode=required”，以及其他变体。
 
 ## <a name="configure-enforcement-of-ssl"></a>配置强制实施 SSL
-（可选）可以禁用强制实施 SSL 连接。 Microsoft Azure 建议始终启用“强制实施 SSL 连接”设置，以增强安全性。
+（可选）可以禁用强制实施 SSL 连接。 Microsoft Azure 建议始终启用“强制实施 SSL 连接”  设置，以增强安全性。
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
-访问 Azure Database for PostgreSQL 服务器，并单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置。 然后，单击“保存”。 
+访问 Azure Database for PostgreSQL 服务器，并单击“连接安全性”  。 使用切换按钮来启用或禁用“强制实施 SSL 连接”  设置。 然后，单击“保存”  。 
 
 ![连接安全性 - 禁用强制实施 SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
-可以通过在“概述”页中查看“SSL 强制实施状态”指示器来确认设置。
+可以通过在“概述”  页中查看“SSL 强制实施状态”  指示器来确认设置。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
-可以通过在 Azure CLI 中分别使用 `Enabled` 或 `Disabled` 值来启用或禁用“ssl-enforcement”参数。
+可以通过在 Azure CLI 中分别使用 `Enabled` 或 `Disabled` 值来启用或禁用“ssl-enforcement”  参数。
 
 ```azurecli
 az postgres server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Enabled

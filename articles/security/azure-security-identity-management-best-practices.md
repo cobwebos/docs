@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 2a669f5b46db4d5de7d1d6863b94e6c117667aee
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2b57ec7727e8f5b648bcb97e5fae26c63724411c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153244"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127210"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 本文介绍一系列 Azure 标识管理和访问控制安全最佳实践。 这些最佳做法衍生自我们的 [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) 经验和客户经验。
@@ -40,7 +40,7 @@ ms.locfileid: "65153244"
 * 集中化标识管理
 * 管理已连接的租户
 * 启用单一登录
-* 启用条件访问
+* 启用条件性访问
 * 启用密码管理
 * 对用户强制执行多重身份验证
 * 使用基于角色的访问控制
@@ -109,14 +109,14 @@ ms.locfileid: "65153244"
 
 如果组织没有通过创建通用标识来为用户和应用程序实现 SSO，那么用户拥有多个密码的情况就更容易出现。 这种情况增加了用户重复使用同一密码或使用弱密码的可能性。
 
-## <a name="turn-on-conditional-access"></a>启用条件访问
+## <a name="turn-on-conditional-access"></a>启用条件性访问
 
 用户可能会从任意位置使用各种设备和应用访问组织的资源。 作为 IT 管理员，你想要确保这些设备符合标准的安全性和符合性。 仅关注谁可以访问资源不再能满足需求。
 
-若要平衡安全性和工作效率，您需要考虑之前您可以决定如何对访问控制访问资源的方式。 使用 Azure AD 条件访问便可处理该需求。 使用条件性访问，可以根据用于访问你的云应用的条件自动的访问控制决策。
+若要平衡安全性和工作效率，您需要考虑之前您可以决定如何对访问控制访问资源的方式。 使用 Azure AD 条件性访问可以解决这一要求。 使用条件性访问，可以根据用于访问你的云应用的条件自动的访问控制决策。
 
 **最佳做法**：管理和控制对公司资源的访问。  
-**详细信息**：根据组、位置和应用程序敏感性为 SaaS 应用和 Azure AD 连接应用配置 Azure AD [条件访问](../active-directory/active-directory-conditional-access-azure-portal.md)。
+**详细信息**：配置 Azure AD[条件性访问](../active-directory/active-directory-conditional-access-azure-portal.md)基于组、 位置和应用程序敏感性为 SaaS 应用和 Azure AD 连接应用程序。
 
 **最佳做法**：阻止旧式身份验证协议。
 **详细信息**：攻击者利用较旧的协议中的弱点每日，特别是对于密码喷射攻击。 配置条件访问阻止旧版协议。 请观看视频[Azure AD:注意事项](https://www.youtube.com/watch?v=wGk0J4z90GI)有关详细信息。
@@ -143,16 +143,16 @@ ms.locfileid: "65153244"
 以下是启用双重验证的选项和优势：
 
 **选项 1**：[通过更改用户状态启用多重身份验证](../active-directory/authentication/howto-mfa-userstates.md)。   
-**优势**：这是要求进行双重验证的传统方法。 它适用于[云中的 Azure 多重身份验证和 Azure 多重身份验证服务器](../active-directory/authentication/concept-mfa-whichversion.md)。 使用此方法要求用户每次登录时都执行双重验证并重写条件访问策略。
+**优势**：这是要求进行双重验证的传统方法。 它适用于[云中的 Azure 多重身份验证和 Azure 多重身份验证服务器](../active-directory/authentication/concept-mfa-whichversion.md)。 使用此方法要求用户每次登录时执行双重验证，并且替代条件性访问策略。
 
 若要确定需要启用多因素身份验证，请参阅[最适合我的组织是哪个版本的 Azure MFA？](../active-directory/authentication/concept-mfa-whichversion.md)。
 
-**选项 2**：[通过条件访问策略启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)。
-**优势**：此选项允许使用[条件访问](../active-directory/active-directory-conditional-access-azure-portal.md)在特定条件下提示进行双重验证。 特定条件可以是用户从不同位置、不受信任的设备或你认为存在风险的应用程序登录。 定义要求双重验证的特定条件可以避免不断提示用户这种令人不快的用户体验。
+**选项 2**：[使用条件性访问策略启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)。
+**优势**：此选项允许你通过使用提示输入在特定条件下的双重验证[条件性访问](../active-directory/active-directory-conditional-access-azure-portal.md)。 特定条件可以是用户从不同位置、不受信任的设备或你认为存在风险的应用程序登录。 定义要求双重验证的特定条件可以避免不断提示用户这种令人不快的用户体验。
 
-这是为用户启用双重验证最灵活的方式。 启用条件访问策略仅适用于云中的 Azure 多重身份验证，并且是 Azure AD 的高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)。
+这是为用户启用双重验证最灵活的方式。 启用条件性访问策略仅适用于在云中 Azure 多重身份验证，Azure AD 的一项高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)。
 
-**选项 3**：通过评估 [Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md) 的用户和登录风险，通过条件访问策略启用多重身份验证。   
+**选项 3**：使用条件性访问策略中启用多重身份验证，通过计算的用户和登录风险[Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md)。   
 **优势**：此选项使你能够：
 
 - 检测影响组织标识的潜在漏洞。
@@ -162,7 +162,7 @@ ms.locfileid: "65153244"
 此方法使用 Azure AD Identity Protection 风险评估来确定是否需要基于所有云应用程序的用户和登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory/identity-protection/overview.md)。
 
 > [!Note]
-> 选项 1 通过更改用户状态启用多重身份验证来替代条件访问策略。 因为选项 2 和 3 使用条件访问策略，所以无法将选项 1 与其他两个选项结合使用。
+> 选项 1，通过更改用户状态，启用多重身份验证可以覆盖条件性访问策略。 选项 2 和 3 使用条件性访问策略，因为您不能与它们使用选项 1。
 
 未添加额外标识保护层（如双重验证）的组织将更容易受到凭据窃取攻击。 凭据窃取攻击可能导致数据泄漏。
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/23/2019
+ms.date: 6/6/2019
 ms.author: b-juche
-ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 657bacc153b5721d5a9f34792eaf4796cb477755
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808876"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建卷
 
@@ -37,7 +37,7 @@ ms.locfileid: "64719437"
 
     ![导航到卷](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
-2.  单击“+ 添加卷”以创建卷。  
+2.  单击“+ 添加卷”  以创建卷。  
     将显示一个卷窗口创建。
 
 3.  在创建卷窗口中，单击**创建**，并提供以下字段的信息：   
@@ -52,7 +52,7 @@ ms.locfileid: "64719437"
     * **配额**  
         指定分配给卷的逻辑存储量。  
 
-        “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
+        “可用配额”  字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
 
     * **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
@@ -63,13 +63,13 @@ ms.locfileid: "64719437"
         指定要用于卷的子网。  
         你指定的子网必须委派给 Azure NetApp 文件。 
         
-        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。 每个 Vnet 中只有一个子网可以委派给 Azure NetApp 文件。   
+        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。  然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”  来为 Azure NetApp 文件委派子网。 每个 Vnet 中只有一个子网可以委派给 Azure NetApp 文件。   
  
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. 单击**协议**，然后选择**NFS**作为该卷的协议类型。   
+4. 单击“协议”  ，然后选择“NFS”  作为该卷的协议类型。   
     * 指定**文件路径**将用于创建新卷导出路径。 导出路径用来装载并访问卷。
 
         文件路径名只能包含字母、数字和连字符 ("-")。 它的长度必须介于 16 到 40 个字符之间。 
@@ -90,34 +90,36 @@ ms.locfileid: "64719437"
 
 Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创建 Active Directory 连接。 
 
+### <a name="requirements-for-active-directory-connections"></a>Active Directory 连接的要求
+
+ Active Directory 连接的要求如下所示： 
+
+* 所使用的管理员帐户必须能够在您将指定的组织单位 (OU) 路径中创建计算机帐户。  
+
+* 必须在适用的 Windows Active Directory (AD) 服务器上打开正确的端口。  
+    所需的端口是按如下所示： 
+
+    |     服务           |     Port     |     Protocol     |
+    |-----------------------|--------------|------------------|
+    |    AD Web 服务    |    9389      |    TCP           |
+    |    DNS                |    53        |    TCP           |
+    |    DNS                |    53        |    UDP           |
+    |    ICMPv4             |    不适用       |    回送答复    |
+    |    Kerberos           |    464       |    TCP           |
+    |    Kerberos           |    464       |    UDP           |
+    |    Kerberos           |    88        |    TCP           |
+    |    Kerberos           |    88        |    UDP           |
+    |    LDAP               |    389       |    TCP           |
+    |    LDAP               |    389       |    UDP           |
+    |    LDAP               |    3268      |    TCP           |
+    |    NetBIOS 名称       |    138       |    UDP           |
+    |    SAM/LSA            |    445       |    TCP           |
+    |    SAM/LSA            |    445       |    UDP           |
+    |    安全 LDAP        |    636       |    TCP           |
+    |    安全 LDAP        |    3269      |    TCP           |
+    |    w32time            |    123       |    UDP           |
+
 ### <a name="create-an-active-directory-connection"></a>创建 Active Directory 连接
-
-1. 请确保满足以下 requiements: 
-
-    * 所使用的管理员帐户必须能够在您将指定的组织单位 (OU) 路径中创建计算机帐户。
-    * 必须在适用的 Windows Active Directory (AD) 服务器上打开正确的端口。  
-        所需的端口是按如下所示： 
-
-        |     服务           |     端口     |     Protocol     |
-        |-----------------------|--------------|------------------|
-        |    AD Web 服务    |    9389      |    TCP           |
-        |    DNS                |    53        |    TCP           |
-        |    DNS                |    53        |    UDP           |
-        |    ICMPv4             |    不适用       |    回送答复    |
-        |    Kerberos           |    464       |    TCP           |
-        |    Kerberos           |    464       |    UDP           |
-        |    Kerberos           |    88        |    TCP           |
-        |    Kerberos           |    88        |    UDP           |
-        |    LDAP               |    389       |    TCP           |
-        |    LDAP               |    389       |    UDP           |
-        |    LDAP               |    3268      |    TCP           |
-        |    NetBIOS 名称       |    138       |    UDP           |
-        |    SAM/LSA            |    445       |    TCP           |
-        |    SAM/LSA            |    445       |    UDP           |
-        |    安全 LDAP        |    636       |    TCP           |
-        |    安全 LDAP        |    3269      |    TCP           |
-        |    w32time            |    123       |    UDP           |
-
 
 1. 在 NetApp 帐户中，单击**Active Directory 连接**，然后单击**加入**。  
 
@@ -125,10 +127,10 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
 
 2. 在加入 Active Directory 窗口中，提供以下信息：
 
-    * **主 DNS**   
-        这是首选 Active Directory 域服务用于与 Azure NetApp 文件的域控制器 IP 地址。 
-    * **辅助 DNS**  
-        这是辅助 Active Directory 域服务用于与 Azure NetApp 文件的域控制器 IP 地址。 
+    * **主 DNS**  
+        这是 Active Directory 域加入和 SMB 身份验证操作所需的 DNS。 
+    * **辅助 DNS**   
+        这是确保冗余名称服务的辅助 DNS 服务器。 
     * **域**  
         这是你想要加入的 Active Directory 域服务的域名。
     * **SMB 服务器 （计算机帐户） 前缀**  
@@ -142,9 +144,9 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
         这是在其中创建 SMB 服务器计算机帐户的组织单位 (OU) 的 LDAP 路径。 也就是说，OU = 第二个级别，OU = 第一个级别。 
     * 凭据，包括你**用户名**和**密码**
 
-    ![加入 Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Join Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
-3. 单击“加入” 。  
+3. 单击“加入”  。  
 
     将显示你创建的 Active Directory 连接。
 
@@ -156,7 +158,7 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
 
     ![导航到卷](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
-2. 单击“+ 添加卷”以创建卷。  
+2. 单击“+ 添加卷”  以创建卷。  
     将显示一个卷窗口创建。
 
 3. 在创建卷窗口中，单击**创建**，并提供以下字段的信息：   
@@ -171,7 +173,7 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
     * **配额**  
         指定分配给卷的逻辑存储量。  
 
-        “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
+        “可用配额”  字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
 
     * **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
@@ -182,7 +184,7 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
         指定要用于卷的子网。  
         你指定的子网必须委派给 Azure NetApp 文件。 
         
-        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。 每个 Vnet 中只有一个子网可以委派给 Azure NetApp 文件。   
+        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。  然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”  来为 Azure NetApp 文件委派子网。 每个 Vnet 中只有一个子网可以委派给 Azure NetApp 文件。   
  
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
@@ -204,5 +206,5 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
 ## <a name="next-steps"></a>后续步骤  
 
 * [装载或卸载 Windows 或 Linux 虚拟机的卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [配置导出策略的 NFS 卷](azure-netapp-files-configure-export-policy.md)
+* [为 NFS 卷配置导出策略](azure-netapp-files-configure-export-policy.md)
 * [了解 Azure 服务的虚拟网络集成](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

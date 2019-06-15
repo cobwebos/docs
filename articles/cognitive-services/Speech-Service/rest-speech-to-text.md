@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: baaa7b1068e13863293e0968cb0bf1ffb198882b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d5bceff004d1cc6ddac4046a2ddcd0b5f0b5e73
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60487225"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072513"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -50,11 +50,11 @@ ms.locfileid: "60487225"
 
 下表列出了语音转文本请求的必需和可选标头。
 
-|标头| 描述 | 必需/可选 |
+|Header| 描述 | 必需/可选 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 你的语音服务的订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 需要 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必选 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务确认初始请求并等待其他数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务提供 JSON 中的结果。 如果未指定默认值，则某些 Web 请求框架会提供不兼容的默认值，因此，最佳做法是始终包含 `Accept`。 | 可选，但建议提供。 |
@@ -164,7 +164,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 > [!NOTE]
 > 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。
 
-`detailed`格式包括相同的数据`simple`格式，以及与`NBest`，一组相同的识别结果的替代解释。 这些结果从最有可能到最不可能进行排名。第一个条目与主要识别结果相同。  使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
+`detailed`格式包括相同的数据`simple`格式，以及与`NBest`，一组相同的识别结果的替代解释。 这些结果按从最有可能到最不可能。 第一个条目与主要识别结果相同。  使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
 
 `NBest` 列表中的每个对象包括：
 

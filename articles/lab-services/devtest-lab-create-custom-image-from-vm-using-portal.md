@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 07f3b60b9218f74bb3a778daa27f31687c4538b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60868403"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>从 VM 创建自定义映像
@@ -31,25 +31,25 @@ ms.locfileid: "60868403"
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 
 1. 从实验室列表，选择所需的实验室。  
 
-1. 在实验室的主窗格中，选择“我的虚拟机”。
+1. 在实验室的主窗格中，选择“我的虚拟机”  。
  
-1. 在“我的虚拟机”窗格中，选择想要从中创建自定义映像的 VM。
+1. 在“我的虚拟机”  窗格中，选择想要从中创建自定义映像的 VM。
 
-1. 在 VM 的管理窗格中，选择“创建自定义映像(VHD)”。
+1. 在 VM 的管理窗格中，选择“创建自定义映像(VHD)”  。
 
     ![创建自定义映像菜单项](./media/devtest-lab-create-template/create-custom-image.png)
 
-1. 在“自定义映像”窗格中，输入自定义映像的名称和说明。 创建 VM 时，此信息显示在基项列表中。 自定义映像将包含 OS 磁盘和所有附加到虚拟机的数据磁盘。
+1. 在“自定义映像”  窗格中，输入自定义映像的名称和说明。 创建 VM 时，此信息显示在基项列表中。 自定义映像将包含 OS 磁盘和所有附加到虚拟机的数据磁盘。
 
     ![“创建自定义映像”窗格](./media/devtest-lab-create-template/create-custom-image-blade.png)
 
 1. 选择是否在 VM 上运行 sysprep。 如果未在 VM 上运行 sysprep，请在创建自定义映像时指定是否要在 VM 上运行 sysprep。
 
-1. 创建自定义映像后，选择“确定”。
+1. 创建自定义映像后，选择“确定”  。
 
 几分钟之后，将创建自定义映像并将其存储在实验室的存储帐户中。 当实验室用户想要创建新 VM 时，可在基础映像的列表中找到该映像。
 

@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7f91e6ab1fb12132068b839e66fafd3ab1bc73
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 061b8a9f16396841c3f0d650ccc2f2c4a907aab3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65543956"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111304"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>在 MSAL.NET 中使用 web 浏览器
 Web 浏览器所需的交互式身份验证。 默认情况下，支持 MSAL.NET[系统 web 浏览器](#system-web-browser-on-xamarinios-and-xamarinandroid)Xamarin.iOS 上和[Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser)。 但是[还可以启用嵌入式 Web 浏览器](#enable-embedded-webviews)具体取决于您的要求 （用户体验，实现单一登录 (SSO)、 安全需要） 进行[Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)并[Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)应用程序。 甚至可以[动态选择](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)哪些 web 浏览器使用基于是否存在 Chrome 或浏览器支持在 Android 中的 Chrome 自定义选项卡。
@@ -33,7 +33,7 @@ Web 浏览器所需的交互式身份验证。 默认情况下，支持 MSAL.NET
 
 - 应用程序，也不身份验证库永远不会存储的密码 （如果其中一个已类型化）。
 - 启用重定向到其他标识提供者 （例如登录名-在与工作学校帐户或个人帐户使用 MSAL，或使用与 Azure AD B2C 的社交帐户）。
-- 允许控制条件性访问，例如，通过让在身份验证阶段 （输入 Windows Hello pin，或在电话上或其手机上的身份验证应用程序调用） 的用户执行多个身份验证 (MFA) 的 STS。 在其中需要的多重身份验证不它尚未设置的情况下，用户可以将其设置恰时相同的对话框中。  用户输入其手机号码，并指导来安装身份验证应用程序和扫描 QR 标记添加他们的帐户。 此服务器驱动的交互是很好的体验 ！
+- 允许 STS 控制条件性访问，例如，通过让在身份验证阶段 （输入 Windows Hello pin，或在电话上或其手机上的身份验证应用程序调用） 的用户执行多个身份验证 (MFA)。 在其中需要的多重身份验证不它尚未设置的情况下，用户可以将其设置恰时相同的对话框中。  用户输入其手机号码，并指导来安装身份验证应用程序和扫描 QR 标记添加他们的帐户。 此服务器驱动的交互是很好的体验 ！
 - 使用户可以更改此相同的对话框中其密码时的密码已过期 （提供旧密码和新密码的其他字段）。
 - 启用受 Azure AD 租户管理员，在租户或应用程序 （映像） 的品牌 / 应用程序所有者。
 - 使用户可以同意允许应用程序访问的资源/范围在身份验证后，只需在它们的名称。

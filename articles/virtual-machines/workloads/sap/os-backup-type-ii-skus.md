@@ -15,15 +15,15 @@ ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c82c5c74fe13bad99528486be69089df5f477457
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60708557"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus"></a>为类型 II Sku 执行 OS 备份和还原
 
-本文档介绍如何为 HANA 大型实例的类型 II SKU 执行操作系统文件级备份和还原。 
+本文档介绍如何为 HANA 大型实例的类型 II SKU 执行操作系统文件级备份和还原  。 
 
 >[!NOTE]
 >OS 备份脚本使用预安装在服务器中的 ReaR 软件。  
@@ -38,7 +38,7 @@ Microsoft 服务管理团队完成预配后，默认情况下，将通过两次�
 ```
 ## <a name="how-to-take-a-manual-backup"></a>如何执行手动备份？
 
-已使用 cron 作业计划操作系统文件系统备份。 但也可以手动执行操作系统文件级备份。 要执行手动备份，请运行以下命令：
+已使用 cron 作业计划操作系统文件系统备份  。 但也可以手动执行操作系统文件级备份。 要执行手动备份，请运行以下命令：
 
 ```
 #rear -v mkbackup
@@ -57,7 +57,7 @@ Microsoft 服务管理团队完成预配后，默认情况下，将通过两次�
 ```
 还原后，文件会在当前工作目录中恢复。
 
-以下命令演示从备份文件 backup.tar.gz 还原文件 /etc/fstab
+以下命令演示从备份文件 backup.tar.gz 还原文件 /etc/fstab  
 ```
 #tar  -xvf  /osbackups/hostname/backup.tar.gz  etc/fstab 
 ```
@@ -70,20 +70,20 @@ Microsoft 服务管理团队完成预配后，默认情况下，将通过两次�
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>如何安装 ReaR 工具并更改配置？ 
 
-Relax-and-Recover (ReaR) 包预安装在 HANA 大型实例的类型 II SKU 中，你不需要执行任何操作。 可以直接开始使用 ReaR 进行操作系统备份。
+Relax-and-Recover (ReaR) 包预安装在 HANA 大型实例的类型 II SKU 中，你不需要执行任何操作   。 可以直接开始使用 ReaR 进行操作系统备份。
 但如果需要自行安装此包，则可以按照列出的步骤安装并配置 ReaR 工具。
 
-若要安装 ReaR 备份包，请使用以下命令：
+若要安装 ReaR 备份包，请使用以下命令  ：
 
-对于 SLES 操作系统，请使用以下命令：
+对于 SLES 操作系统，请使用以下命令  ：
 ```
 #zypper install <rear rpm package>
 ```
-对于 RHEL 操作系统，请使用以下命令： 
+对于 RHEL 操作系统，请使用以下命令  ： 
 ```
 #yum install rear -y
 ```
-若要配置 ReaR 工具，需要在 /etc/rear/local.conf 文件中更新 OUTPUT_URL 和 BACKUP_URL。
+若要配置 ReaR 工具，需要在 /etc/rear/local.conf 文件中更新 OUTPUT_URL 和 BACKUP_URL    。
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso

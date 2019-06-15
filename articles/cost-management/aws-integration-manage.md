@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64870307"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>管理 AWS 成本和在 Azure 中的使用情况
@@ -83,7 +83,7 @@ _在开始之前_:如果已熟悉成本分析，请参阅[探索和分析使用�
 | 计量类别 | lineItem/ProductCode | 全部 |   |
 | 计量子类别 | lineitem/UsageType | 全部 |   |
 | Operation | lineItem/Operation | 全部 |   |
-| 资源 | lineItem/ResourceId | 全部 |   |
+| Resource | lineItem/ResourceId | 全部 |   |
 | 资源类型 | product/instanceType | 全部 | 如果产品/instanceType 为 null，则使用 lineItem/UsageType。 |
 | ResourceGuid | 不适用 | 全部 | Azure 计量 GUID。 |
 | 服务名称 | product/ProductName | 全部 | 如果产品/ProductName 为 null，则使用 lineItem/产品代码。 |
@@ -91,8 +91,8 @@ _在开始之前_:如果已熟悉成本分析，请参阅[探索和分析使用�
 | 订阅 ID | lineItem/UsageAccountId | 合并的帐户和管理组 |   |
 | 订阅名称 | 不适用 | 合并的帐户和管理组 | 帐户名称是使用 AWS 组织 API 收集的。 |
 | 标记 | resourceTags/\* | 全部 | _用户：_ 前缀已从用户定义标记，以允许跨云的标记。 _Aws:_ 前缀将保持不变。 |
-| 结算帐户 ID | bill/PayerAccountId | 管理组 |   |
-| 计费帐户名 | 不适用 | 管理组 | 帐户名称是使用 AWS 组织 API 收集的。 |
+| 计费帐户 ID | bill/PayerAccountId | 管理组 |   |
+| 计费帐户名称 | 不适用 | 管理组 | 帐户名称是使用 AWS 组织 API 收集的。 |
 | 提供程序 | 不适用 | 管理组 | AWS 或 Azure。 |
 
 ## <a name="set-budgets-on-aws-scopes"></a>在 AWS 作用域上的组预算

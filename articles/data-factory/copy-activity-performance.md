@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 81a5f99b0babd79af0034f684c45bfcf1bb25bd8
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3ae6966ed3fa8ee57e0ac85fe34866dcbde0fb9e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66425623"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077253"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-copy-activity-performance.md)
 > * [当前版本](copy-activity-performance.md)
 
@@ -93,7 +93,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 监视活动运行时，可以在复制活动输出中看到每次复制运行实际使用的数据集成单元数。 从[复制活动监视](copy-activity-overview.md#monitoring)中了解详细信息。
 
 > [!NOTE]
-> 设置的 DIUs**大于 4**目前仅适用于您**将多个文件从 Azure 存储 /data Lake 存储/Amazon S3/Google 云存储/云 FTP/云 SFTP 复制到任何其他云数据存储**.
+> 仅当**将多个文件从 Azure 存储/Data Lake Storage/Amazon S3/Google Cloud Storage/云 FTP/云 SFTP 复制到任何其他云数据存储**时，当前**大于 4** 的 DIU 的设置才适用。
 >
 
 **示例：**
@@ -306,7 +306,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 有关 Microsoft 数据存储的信息，请参阅特定于数据存储的[监视和优化主题](#performance-reference)。 这些主题可帮助用户了解数据存储性能特征、了解如何尽量缩短响应时间以及最大化吞吐量。
 
-* 如果将数据**从 Blob 存储复制到 SQL 数据仓库**，请考虑使用 **PolyBase** 来提高性能。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。
+* 如果将数据复制**从任何数据存储到 Azure SQL 数据仓库**，请考虑使用**PolyBase**来提高性能。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。
 * 如果将数据**从 HDFS 复制到 Azure Blob/Azure Data Lake Store**，请考虑使用 **DistCp** 来提高性能。 请参阅[使用 DistCp 从 HDFS 复制数据](connector-hdfs.md#use-distcp-to-copy-data-from-hdfs)了解详细信息。
 * 如果将数据**从 Redshift 复制到 Azure SQL 数据仓库/Azure BLob/Azure Data Lake Store**，请考虑使用 **UNLOAD** 来提高性能。 请参阅[使用 UNLOAD 从 Amazon Redshift 复制数据](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)了解详细信息。
 
@@ -317,10 +317,8 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ### <a name="relational-data-stores"></a>关系数据存储
 
-* **复制行为**：根据已为 sqlSink  设置的属性，复制活动以不同的方式将数据写入目标数据库。
-  * 数据移动服务默认使用大容量复制 API 以追加模式插入数据，这提供最佳性能。
-  * 如果在接收器中配置存储过程，数据库一次会应用一行数据，而不是大容量加载。 性能会大大降低。 如果数据集较大，请考虑切换为使用 **preCopyScript** 属性（如适用）。
-  * 如果为每次复制活动运行配置 **preCopyScript** 属性，该服务会触发脚本，然后使用大容量复制 API 插入数据。 例如，若要使用最新数据覆盖整个表，可指定一个脚本，先删除所有记录，再从源大容量加载新数据。
+* **复制行为和性能的含义**:通过不同的方式将数据写入到的 SQL 接收器，了解详细信息[最佳做法，用于将数据加载到 Azure SQL 数据库](connector-azure-sql-database.md#best-practice-for-loading-data-into-azure-sql-database)。
+
 * **数据模式和批大小**：
   * 表架构会影响复制吞吐量。 复制相同数据量时，较大行大小会比较小行大小提供更好的性能，因为数据库可以更有效地提交较少的数据批次。
   * 复制活动以一系列批次插入数据。 可使用  **writeBatchSize** 属性设置批中的行数。 如果数据的行较小，可设置具有更高值的 **writeBatchSize** 属性，从更低的批开销和更高的吞吐量获益。 如果数据的行大小较大，请谨慎增加  **writeBatchSize**。 较高的值可能会导致复制失败（因为数据库负载过重）。

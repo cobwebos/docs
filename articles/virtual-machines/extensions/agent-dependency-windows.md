@@ -1,6 +1,6 @@
 ---
 title: 适用于 Windows 的 azure 监视器依赖关系的虚拟机扩展 |Microsoft Docs
-description: 部署使用虚拟机扩展的 Windows 虚拟机上的 Azure 监视器依赖关系代理。
+description: 使用虚拟机扩展部署 Windows 虚拟机上的 Azure 监视器依赖关系代理。
 services: virtual-machines-windows
 documentationcenter: ''
 author: mgoedtel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 2cdde2f9dbba9676ba8a4d35ed6b79940668d684
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 34dd872db199a4c10e9f321457188b7f7642944d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521765"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67120221"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>适用于 Windows 的 azure 监视器依赖关系的虚拟机扩展
 
@@ -36,7 +36,7 @@ ms.locfileid: "65521765"
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Azure Windows VM 上的 Azure VM 依赖关系代理扩展的架构。 
+以下 JSON 显示 Azure Windows VM 上的 Azure VM 依赖关系代理扩展的架构。
 
 ```json
 {
@@ -85,11 +85,11 @@ ms.locfileid: "65521765"
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一节中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署期间运行 Azure VM 依赖关系代理扩展。 
+你可以部署使用 Azure 资源管理器模板的 Azure VM 扩展。 中的 Azure 资源管理器模板在上一部分中详细介绍的 JSON 架构可用于 Azure 资源管理器模板部署期间运行的 Azure VM 依赖关系代理扩展。
 
-虚拟机扩展的 JSON 可以嵌套在虚拟机资源内，或放置在 Resource Manager JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)。 
+虚拟机扩展的 JSON 可以嵌套在虚拟机资源内。 或者，可以将其放置在根级别或顶级别的资源管理器 JSON 模板。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)。
 
-下面的示例假定的依赖关系代理扩展嵌套在虚拟机资源内。 嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。
+下面的示例假定的依赖关系代理扩展嵌套在虚拟机资源内。 当嵌套扩展资源时，JSON 放置在`"resources": []`的虚拟机的对象。
 
 
 ```json
@@ -110,7 +110,7 @@ ms.locfileid: "65521765"
 }
 ```
 
-将扩展 JSON 放置在模板的根部时，资源名称包括对父虚拟机的引用，并且类型反映了嵌套的配置。 
+当你将扩展 JSON 放在模板的根时，资源名称包括对父虚拟机的引用。 类型反映了嵌套的配置。
 
 ```json
 {
@@ -132,7 +132,7 @@ ms.locfileid: "65521765"
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-`Set-AzVMExtension`命令可用于将依赖关系代理虚拟机扩展部署到现有的虚拟机。 运行命令之前，需将公共和专用配置存储在 PowerShell 哈希表中。 
+可以使用`Set-AzVMExtension`命令将依赖关系代理虚拟机扩展部署到现有的虚拟机。 在运行该命令之前，将公共和专用配置需要存储在 PowerShell 哈希表中。
 
 ```powershell
 
@@ -149,13 +149,13 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 
 ### <a name="troubleshoot"></a>故障排除
 
-有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令。
+可以从 Azure 门户和使用 Azure PowerShell 模块检索有关扩展部署状态的数据。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令：
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
-扩展执行输出记录到在以下目录中发现的文件：
+扩展执行输出将记录到在以下目录中发现的文件：
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
@@ -163,4 +163,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”  。 有关如何使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

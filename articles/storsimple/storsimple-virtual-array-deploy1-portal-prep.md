@@ -16,10 +16,10 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127134"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
@@ -131,8 +131,8 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 #### <a name="to-get-the-virtual-array-image"></a>获取虚拟阵列映像
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 
-2. 在 Azure 门户中，单击“浏览”>“StorSimple Device Manager”。
-3. 选择现有的 StorSimple Device Manager 服务。 在“StorSimple Device Manager”边栏选项卡中，单击“快速启动”。 
+2. 在 Azure 门户中，单击“浏览”>“StorSimple Device Manager”  。
+3. 选择现有的 StorSimple Device Manager 服务。 在“StorSimple Device Manager”  边栏选项卡中，单击“快速启动”  。 
 4. 单击需要从 Microsoft 下载中心下载的映像的相应链接。 映像文件约为 4.8 GB。
    
    * Windows Server 2012 及更高版本上的适用于 Hyper-V 的 VHDX
@@ -150,18 +150,18 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 
 #### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>添加与 Device Manager 服务具有相同 Azure 订阅的存储帐户凭据
 
-1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”边栏选项卡。
-2. 在“配置”部分中，选择“存储帐户凭据”。
-3. 单击“添加”。
-4. 在“添加存储帐户”边栏选项卡中，执行以下操作：
+1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”  边栏选项卡。
+2. 在“配置”  部分中，选择“存储帐户凭据”  。
+3. 单击“添加”  。
+4. 在“添加存储帐户”  边栏选项卡中，执行以下操作：
    
-   1. 对于“订阅”，选择“当前”。
+   1. 对于“订阅”  ，选择“当前”  。
    
    2. 提供 Azure 存储帐户的名称。
    
-   3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才选择“禁用”。
+   3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。  仅当要在私有云中操作时，才选择“禁用”  。
    
-   4. 单击“添加”。 成功创建存储帐户后，将收到通知。<br></br>
+   4. 单击“添加”  。 成功创建存储帐户后，将收到通知。<br></br>
    
       ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

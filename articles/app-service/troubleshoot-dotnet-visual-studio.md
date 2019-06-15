@@ -16,10 +16,10 @@ ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: cbf6a44f1a3210906ec7ab0d04eecb997bc2c470
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65412817"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
@@ -47,11 +47,11 @@ ms.locfileid: "65412817"
 流式日志功能仅适用于面向 .NET Framework 4 或更高版本的应用程序。
 
 ## <a name="sitemanagement"></a>应用配置和管理
-通过 Visual Studio，用户可以访问 [Azure 门户](https://go.microsoft.com/fwlink/?LinkId=529715)中提供的一部分应用管理功能和配置设置。 本节介绍使用“服务器资源管理器”可以实现的功能。 若要了解最新的 Azure 集成功能，请同时试用**云资源管理器**。 可以从“视图”菜单打开这两个窗口。
+通过 Visual Studio，用户可以访问 [Azure 门户](https://go.microsoft.com/fwlink/?LinkId=529715)中提供的一部分应用管理功能和配置设置。 本节介绍使用“服务器资源管理器”可以实现的功能  。 若要了解最新的 Azure 集成功能，请同时试用**云资源管理器**。 可以从“视图”  菜单打开这两个窗口。
 
-1. 如果还没有登录 Visual Studio 中的 Azure ，右键单击“Azure”，然后选择连接到“服务器资源管理器”中的“Microsoft Azure 订阅”。
+1. 如果还没有登录 Visual Studio 中的 Azure ，右键单击“Azure”，然后选择连接到“服务器资源管理器”中的“Microsoft Azure 订阅”    。
 
-    另一种方法是安装可以访问帐户的管理证书。 如果选择安装证书，请右键单击“服务器资源管理器”中的“Azure”，然后选择上下文菜单中的“管理和筛选订阅”。 在“管理 Microsoft Azure 订阅”对话框中，单击“证书”选项卡，然后单击“导入”。 按照说明为 Azure 帐户下载并导入一个订阅文件（也称为 *.publishsettings* 文件）。
+    另一种方法是安装可以访问帐户的管理证书。 如果选择安装证书，请右键单击“服务器资源管理器”中的“Azure”，然后选择上下文菜单中的“管理和筛选订阅”    。 在“管理 Microsoft Azure 订阅”对话框中，单击“证书”选项卡，然后单击“导入”    。 按照说明为 Azure 帐户下载并导入一个订阅文件（也称为 *.publishsettings* 文件）。
 
    > [!NOTE]
    > 将此订阅文件下载并保存到源代码目录之外的文件夹中（例如，在 Downloads 文件夹中），然后在导入完成后将其删除。 获得此订阅文件访问权的恶意用户可以编辑、创建和删除 Azure 服务。
@@ -59,12 +59,12 @@ ms.locfileid: "65412817"
    >
 
     有关从 Visual Studio 连接至 Azure 资源的详细信息，请参阅[管理帐户、订阅和管理角色](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)。
-2. 在“服务资源管理器”中，展开“Azure”，并展开“应用服务”。
-3. 展开包含在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中创建的应用的资源组，右键单击该应用节点，并单击“查看设置”。
+2. 在“服务资源管理器”  中，展开“Azure”  ，并展开“应用服务”  。
+3. 展开包含在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中创建的应用的资源组，右键单击该应用节点，并单击“查看设置”  。
 
     ![在服务器资源管理器中查看设置](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
-    此时会显示“Azure Web 应用”选项卡，可在此处查看 Visual Studio 中提供的应用管理和配置任务。
+    此时会显示“Azure Web 应用”选项卡，可在此处查看 Visual Studio 中提供的应用管理和配置任务  。
 
     ![“Azure Web 应用”窗口](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configtab.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "65412817"
 
     有关此窗口中“应用设置”框和“连接字符串”框的信息，请参见 [Azure 应用服务：应用程序字符串和连接字符串的工作原理](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。
 
-    如果要执行的应用管理任务无法在此窗口进行，请单击“在管理门户中打开”，以便在浏览器窗口中打开 Azure 门户。
+    如果要执行的应用管理任务无法在此窗口进行，请单击“在管理门户中打开”，以便在浏览器窗口中打开 Azure 门户  。
 
 ## <a name="remoteview"></a>在服务器资源管理器中访问应用文件
 部署 Web 项目时，Web.config 文件中的 `customErrors` 标志通常设置为 `On` 或 `RemoteOnly`，这意味着如果出现问题你不会收到任何有帮助的错误消息。 无论发生何种错误，获得的都是类似如下所示的页面：
@@ -89,12 +89,12 @@ ms.locfileid: "65412817"
 
 ![无用的错误页](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
-找出错误原因的最简捷方法通常是启用详细错误消息，之前保留的屏幕截图中的第一个截图会告诉你如何做。 而实现此目的需要在部署的 Web.config 文件中进行更改。 可以编辑项目中的 *Web.config* 文件，并重新部署该项目，或创建 [Web.config 转换](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)并部署调试版本，但还有一个更快捷的方式：在“解决方案资源管理器”中，可以通过使用*远程视图*功能直接查看并编辑远程应用中的文件。
+找出错误原因的最简捷方法通常是启用详细错误消息，之前保留的屏幕截图中的第一个截图会告诉你如何做。 而实现此目的需要在部署的 Web.config 文件中进行更改。 可以编辑项目中的 *Web.config* 文件，并重新部署该项目，或创建 [Web.config 转换](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)并部署调试版本，但还有一个更快捷的方式：在“解决方案资源管理器”中，可以通过使用*远程视图*功能直接查看并编辑远程应用中的文件  。
 
-1. 在“服务器资源管理器”中，依次展开“Azure”、“应用服务”、应用所在的资源组以及应用的节点。
+1. 在“服务器资源管理器”中，依次展开“Azure”、“应用服务”、应用所在的资源组以及应用的节点    。
 
     可看到允许访问应用的内容文件和日志文件的节点。
-2. 展开“文件”节点，并双击 *Web.config* 文件。
+2. 展开“文件”  节点，并双击 *Web.config* 文件。
 
     ![打开 Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
@@ -136,27 +136,27 @@ public ActionResult About()
 
 1. 在 `ViewBag.Message` 行上[设置一个断点](https://docs.microsoft.com/visualstudio/debugger/)。
 
-1. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。
+1. 在“解决方案资源管理器”  中，右键单击该项目并单击“发布”  。
 
-1. 在“配置文件”下拉列表中，选择在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中使用的相同配置文件。 然后，单击“设置”。
+1. 在“配置文件”下拉列表中，选择在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中使用的相同配置文件  。 然后，单击“设置”。
 
-1. 在“发布”对话框中，单击“设置”选项卡，将“配置”更改为“调试”，然后单击“保存”。
+1. 在“发布”对话框中，单击“设置”选项卡，将“配置”更改为“调试”，然后单击“保存”      。
 
     ![在调试模式下发布](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-1. 单击“发布” 。 部署结束后，浏览器将打开应用的 Azure URL，此时关闭浏览器。
+1. 单击“发布”  。 部署结束后，浏览器将打开应用的 Azure URL，此时关闭浏览器。
 
-1. 在“服务器资源管理器”中，右键单击应用，并单击“附加调试器”。
+1. 在“服务器资源管理器”中，右键单击应用，并单击“附加调试器”   。
 
     ![附加调试程序](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
     浏览器会自动打开运行在 Azure 中的主页。 可能需要等待大约 20 秒，以便 Azure 针对调试设置服务器。 此延迟只在 48 小时内首次于应用上运行调试模式时出现。 如果在同一时段再次开始调试，不会发生延迟。
 
     > [!NOTE] 
-    > 如果启动调试器时出现问题，请尝试使用“云资源管理器”而不是“服务器资源管理器”执行此操作。
+    > 如果启动调试器时出现问题，请尝试使用“云资源管理器”而不是“服务器资源管理器”执行此操作   。
     >
 
-1. 单击菜单中的“关于”。
+1. 单击菜单中的“关于”  。
 
     Visual Studio 会在断点处停止，代码在 Azure 中运行，而不是在本地计算机上。
 
@@ -189,17 +189,17 @@ public ActionResult About()
 
     ![设置断点](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
-4. 在“解决方案资源管理器”中，右键单击该 Web 项目（而非 WebJob 项目），并单击“发布”。
+4. 在“解决方案资源管理器”  中，右键单击该 Web 项目（而非 WebJob 项目），并单击“发布”  。
 
-5. 在“配置文件”下拉列表中，选择与 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)中所用相同的配置文件。
+5. 在“配置文件”  下拉列表中，选择与 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)中所用相同的配置文件。
 
-6. 单击“设置”选项卡，将“配置”更改为“调试”，然后单击“发布”。
+6. 单击“设置”  选项卡，将“配置”  更改为“调试”  ，然后单击“发布”  。
 
     Visual Studio 将部署 Web 和 WebJob 项目，浏览器将打开应用的 Azure URL。
 
-7. 在“服务器资源管理器”中，展开“Azure”>“应用服务”> 你的资源组 > 你的应用 >“WebJobs”>“连续”，然后右键单击“ContosoAdsWebJob”。
+7. 在“服务器资源管理器”中，展开“Azure”>“应用服务”> 你的资源组 > 你的应用 >“WebJobs”>“连续”，然后右键单击“ContosoAdsWebJob”    。
 
-8. 单击“附加调试器”。
+8. 单击“附加调试器”  。
 
     ![附加调试程序](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
 
@@ -221,7 +221,7 @@ public ActionResult About()
 
 13. 在 Visual Studio 中，按 SHIFT+F5 停止调试。
 
-14. 在“服务器资源管理器”中，右键单击 ContosoAdsWebJob 节点，并单击“查看仪表板”。
+14. 在“服务器资源管理器”  中，右键单击 ContosoAdsWebJob 节点，并单击“查看仪表板”  。
 
 15. 使用 Azure 凭据登录，并单击 WebJob 名称转到 WebJob 的页面。
 
@@ -229,13 +229,13 @@ public ActionResult About()
 
      仪表板会显示最近执行的 `GenerateThumbnail` 函数。
 
-     （下次单击“查看仪表板”时无需登录，浏览器会直接转到 WebJob 的页面。）
+     （下次单击“查看仪表板”  时无需登录，浏览器会直接转到 WebJob 的页面。）
 
 16. 单击函数名称可查看有关函数执行的详细信息。
 
      ![函数详细信息](./media/web-sites-dotnet-troubleshoot-visual-studio/funcdetails.png)
 
-如果将函数[写入了日志](https://github.com/Azure/azure-webjobs-sdk/wiki)，可以单击“ToggleOutput”查看日志。
+如果将函数[写入了日志](https://github.com/Azure/azure-webjobs-sdk/wiki)，可以单击“ToggleOutput”  查看日志。
 
 ## <a name="notes-about-remote-debugging"></a>有关远程调试的说明
 
@@ -316,7 +316,7 @@ public ActionResult Contact()
 ### <a name="view-the-tracing-output-locally"></a>本地查看跟踪输出
 1. 按 F5 以调试模式运行应用程序。
 
-    默认跟踪侦听器将所有跟踪输出写入“输出”窗口，同时还有其他调试输出。 下图显示了来自添加到 `Index` 方法的跟踪语句的输出。
+    默认跟踪侦听器将所有跟踪输出写入“输出”  窗口，同时还有其他调试输出。 下图显示了来自添加到 `Index` 方法的跟踪语句的输出。
 
     ![在调试窗口中进行跟踪](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png)
 
@@ -347,11 +347,11 @@ public ActionResult Contact()
 
 1. 按 Ctrl+F5 运行应用程序。
 1. 在浏览器窗口的地址栏中，添加*trace.axd*到 URL，然后按 Enter (URL 类似于`http://localhost:53370/trace.axd`)。
-1. 在“应用程序跟踪”页面上，单击第一行中（非浏览器链接中）的“查看详细信息”。
+1. 在“应用程序跟踪”  页面上，单击第一行中（非浏览器链接中）的“查看详细信息”  。
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
-    “请求细节”页面显示，在“跟踪信息”部分会看到添加到 `Index` 方法的跟踪语句的输出。
+    “请求细节”  页面显示，在“跟踪信息”  部分会看到添加到 `Index` 方法的跟踪语句的输出。
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
@@ -362,20 +362,20 @@ public ActionResult Contact()
     但是，出于安全考虑，不推荐在生产应用中启用 `trace.axd`。 以下部分将介绍一种在应用服务应用中读取跟踪日志的更简单的方法。
 
 ### <a name="view-the-tracing-output-in-azure"></a>在 Azure 中查看跟踪输出
-1. 在“解决方案资源管理器”中，右键单击该 Web 项目，并单击“发布”。
-2. 在“发布 Web”对话框中，单击“发布”。
+1. 在“解决方案资源管理器”  中，右键单击该 Web 项目，并单击“发布”  。
+2. 在“发布 Web”  对话框中，单击“发布”  。
 
-    在 Visual Studio 发布更新后，将打开一个主页的浏览器窗口（假设没有清除“连接”选项卡上的“目标 URL”）。
-3. 在“服务器资源管理器”中，右键单击应用，并选择“查看流式处理日志”。
+    在 Visual Studio 发布更新后，将打开一个主页的浏览器窗口（假设没有清除“连接”  选项卡上的“目标 URL”  ）。
+3. 在“服务器资源管理器”中，右键单击应用，并选择“查看流式处理日志”   。
 
     ![上下文菜单中的查看流式处理日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
 
-    “输出”窗口显示已连接至日志流式传输服务，每过一分钟没有要显示的日志，就添加一个通知行。
+    “输出”  窗口显示已连接至日志流式传输服务，每过一分钟没有要显示的日志，就添加一个通知行。
 
     ![上下文菜单中的查看流式处理日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
-4. 在显示应用程序主页的浏览器窗口，单击“联系人”。
+4. 在显示应用程序主页的浏览器窗口，单击“联系人”  。
 
-    几秒钟内，添加到 `Contact` 方法的错误级跟踪的输出显示在“输出”窗口中。
+    几秒钟内，添加到 `Contact` 方法的错误级跟踪的输出显示在“输出”窗口中  。
 
     ![输出窗口中的错误跟踪](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
 
@@ -383,50 +383,50 @@ public ActionResult Contact()
 
     ![应用程序日志记录关闭](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-apploggingoff.png)
 
-    然而，如果选择“查看流式处理日志”，Visual Studio 会自动将“应用程序日志记录(文件系统)”更改为“错误”，这意味着将报告错误级日志。 为了查看所有跟踪日志，可将该设置更改为“详细”。 如果选择的严重级别低于错误，也将报告所有更高严重级别的日志。 因此，如果选择“详细”，还可查看信息、警告以及错误日志。  
+    然而，如果选择“查看流式处理日志”  ，Visual Studio 会自动将“应用程序日志记录(文件系统)”  更改为“错误”  ，这意味着将报告错误级日志。 为了查看所有跟踪日志，可将该设置更改为“详细”  。 如果选择的严重级别低于错误，也将报告所有更高严重级别的日志。 因此，如果选择“详细”，还可查看信息、警告以及错误日志。  
 
-5. 在“服务器资源管理器”中，右键单击应用，并与之前一样单击“查看设置”。
-6. 将“应用程序日志记录(文件系统)”更改为“详细”，然后单击“保存”。
+5. 在“服务器资源管理器”中，右键单击应用，并与之前一样单击“查看设置”   。
+6. 将“应用程序日志记录(文件系统)”  更改为“详细”  ，然后单击“保存”  。
 
     ![将跟踪级别设置为详细](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-applogverbose.png)
-7. 现在，在显示“联系人”页面的浏览器窗口中，单击“主页”，并依次单击“关于”和“联系人”。
+7. 现在，在显示“联系人”  页面的浏览器窗口中，单击“主页”  ，并依次单击“关于”  和“联系人”  。
 
-    几秒钟内，“输出”窗口会显示所有跟踪输出。
+    几秒钟内，“输出”  窗口会显示所有跟踪输出。
 
     ![详细的跟踪输出](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png)
 
     在本部分中，已通过使用应用设置启用和禁用日志记录。 此外，还可以通过修改 Web.config 文件启用和禁用跟踪侦听器。 然而，修改 Web.config 文件会导致应用域回收，而通过应用配置启用日志记录则不会出此情况。 如果问题重现需要花费较长时间或呈间歇性，回收应用域可能会“修复”该问题并强迫你一直等到其再次出现。 通过启用 Azure 中的诊断，可以立即开始捕获错误信息，并且不需要回收应用域。
 
 ### <a name="output-window-features"></a>输出窗口特性
-“输出”窗口的“Microsoft Azure 日志”选项卡上有若干按钮和一个文本框：
+“输出”窗口的“Microsoft Azure 日志”选项卡上有若干按钮和一个文本框   ：
 
 ![日志选项卡按钮](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
 
 这些控件执行以下功能：
 
-* 清理“输出”窗口。
+* 清理“输出”  窗口。
 * 启用或禁用自动换行。
 * 启动或停止监视日志。
 * 指定要监视的日志。
 * 下载日志。
 * 基于搜索字符串或正则表达式筛选日志。
-* 关闭“输出”窗口。
+* 关闭“输出”  窗口。
 
-如果输入搜索字符串或正则表达式，Visual Studio 会在客户端筛选日志记录信息。 这意味着可以在日志显示在“输出”窗口后输入条件，并可更改筛选条件而不必重新生成日志。
+如果输入搜索字符串或正则表达式，Visual Studio 会在客户端筛选日志记录信息。 这意味着可以在日志显示在“输出”  窗口后输入条件，并可更改筛选条件而不必重新生成日志。
 
 ## <a name="webserverlogs"></a>查看 Web 服务器日志
-Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出”窗口中查看这些日志，必须为应用启用日志并告知 Visual Studio 希望对其进行监视。
+Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出”窗口中查看这些日志，必须为应用启用日志并告知 Visual Studio 希望对其进行监视  。
 
-1. 在通过“服务器资源管理器”打开的“Azure Web 应用配置”选项卡上，将“Web 服务器日志记录”的状态更改为“开启”，然后单击“保存”。
+1. 在通过“服务器资源管理器”  打开的“Azure Web 应用配置”  选项卡上，将“Web 服务器日志记录”的状态更改为“开启”  ，然后单击“保存”  。
 
     ![启用 Web 服务器日志记录](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-webserverloggingon.png)
-2. 在“输出”窗口中，单击“指定要监视的 Microsoft Azure 日志”按钮。
+2. 在“输出”窗口中，单击“指定要监视的 Microsoft Azure 日志”按钮   。
 
     ![指定要监视的 Azure 日志。](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-specifylogs.png)
-3. 在“Microsoft Azure 日志记录选项”对话框中，选择“Web 服务器日志”，然后单击“确定”。
+3. 在“Microsoft Azure 日志记录选项”对话框中，选择“Web 服务器日志”，然后单击“确定”    。
 
     ![监视 Web 服务器日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorwslogson.png)
-4. 在显示应用的浏览器窗口中，依次单击“主页”、“关于”、“联系人”。
+4. 在显示应用的浏览器窗口中，依次单击“主页”、“关于”、“联系人”    。
 
     应用程序日志通常首先显示，其后是 Web 服务器日志。 可能需要等待一段时间才会显示日志。
 
@@ -437,21 +437,21 @@ Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出
 如果使用门户将 Web 服务器日志记录写入 Azure 存储帐户，之后在 Visual Studio 中禁用日志记录，则在 Visual Studio 中重新启用日志记录时，存储帐户设置将还原。
 
 ## <a name="detailederrorlogs"></a>查看详细的错误消息日志
-详细的错误日志提供了有关导致错误响应代码（400 或更大）的 HTTP 请求的一些额外信息。 若要在“输出”窗口中查看这些日志，必须为应用启用日志并告知 Visual Studio 希望对其进行监视。
+详细的错误日志提供了有关导致错误响应代码（400 或更大）的 HTTP 请求的一些额外信息。 若要在“输出”窗口中查看这些日志，必须为应用启用日志并告知 Visual Studio 希望对其进行监视  。
 
-1. 在通过“服务器资源管理器”打开的“Azure Web 应用配置”选项卡上，将“详细的错误消息”的状态更改为“开启”，然后单击“保存”。
+1. 在通过“服务器资源管理器”  打开的“Azure Web 应用配置”  选项卡上，将“详细的错误消息”  的状态更改为“开启”  ，然后单击“保存”  。
 
     ![启用详细的错误消息](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailedlogson.png)
 
-2. 在“输出”窗口中，单击“指定要监视的 Microsoft Azure 日志”按钮。
+2. 在“输出”窗口中，单击“指定要监视的 Microsoft Azure 日志”按钮   。
 
-3. 在“Microsoft Azure 日志记录选项”对话框中，单击“所有日志”，然后单击“确定”。
+3. 在“Microsoft Azure 日志记录选项”对话框中，单击“所有日志”，然后单击“确定”    。
 
     ![监视所有日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorall.png)
 
 4. 在浏览器的地址栏中，向 URL 添加一个额外字符以导致 404 错误（例如 `http://localhost:53370/Home/Contactx`），并按 Enter。
 
-    几秒后，详细的错误日志显示在 Visual Studio 的“输出”窗口中。
+    几秒后，详细的错误日志显示在 Visual Studio 的“输出”窗口中  。
 
     ![详细的错误日志 - 输出窗口](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorlog.png)
 
@@ -460,9 +460,9 @@ Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出
     ![详细的错误日志 - 浏览器窗口](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorloginbrowser.png)
 
 ## <a name="downloadlogs"></a>下载文件系统日志
-任何可在“输出”窗口中监视的日志都可作为 *.zip* 文件进行下载。
+任何可在“输出”  窗口中监视的日志都可作为 *.zip* 文件进行下载。
 
-1. 在“输出”窗口中单击“下载流式处理日志”。
+1. 在“输出”  窗口中单击“下载流式处理日志”  。
 
     ![日志选项卡按钮](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
 
@@ -563,18 +563,18 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 
 应用服务应用使用 IIS 7.0 及更高版本中提供的相同失败请求跟踪功能。 IIS 设置经过配置可记录指定错误，但无法访问该设置。 启用失败请求跟踪后，所有错误都将纳入捕获范围内。
 
-使用 Visual Studio 可启用失败请求跟踪，但却无法在 Visual Studio 中对其进行查看。 这些日志是 XML 文件。 这些流式传输日志服务只监视认为在纯文本模式下可读的文件：*.txt*、*.html* 和 *.log* 文件。
+使用 Visual Studio 可启用失败请求跟踪，但却无法在 Visual Studio 中对其进行查看。 这些日志是 XML 文件。 这些流式传输日志服务只监视认为在纯文本模式下可读的文件： *.txt*、 *.html* 和 *.log* 文件。
 
 可以通过 FTP 直接在浏览器中查看失败请求跟踪日志，或使用 FTP 工具将其下载到本地计算机后进行本地查看。 在本节中，将直接在浏览器中查看这些日志。
 
-1. 在从“服务器资源管理器”打开的“Azure Web 应用”窗口的“配置”选项卡中，将“失败请求跟踪”的状态更改为“开启”，然后单击“保存”。
+1. 在从“服务器资源管理器”  打开的“Azure Web 应用”  窗口的“配置”  选项卡中，将“失败请求跟踪”  的状态更改为“开启”  ，然后单击“保存”  。
 
     ![启用失败请求跟踪](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequeston.png)
 2. 在显示该应用的浏览器窗口的地址栏中，向 URL 添加一个额外字符，单击 Enter 将引发 404 错误。
 
     这会导致创建失败请求跟踪日志，以下步骤介绍如何查看或下载该日志。
 
-3. 在 Visual Studio 中，在“Azure Web 应用”窗口的“配置”选项卡中，单击“在管理门户中打开”。
+3. 在 Visual Studio 中，在“Azure Web 应用”  窗口的“配置”  选项卡中，单击“在管理门户中打开”  。
 
 4. 在中[Azure 门户](https://portal.azure.com)**设置**为您的应用程序页上，单击**部署凭据**，然后输入新用户名和密码。
 
@@ -584,7 +584,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
     > 登录时，必须使用以应用名称为前缀的完整用户名。 例如，如果输入“myid”作为用户名，而站点为“myexample”，请使用“myexample\myid”登录。
     >
 
-5. 在新的浏览器窗口中，转到显示在应用的“概述”页中“FTP 主机名”或“FTPS 主机名”下面的 URL。
+5. 在新的浏览器窗口中，转到显示在应用的“概述”页中“FTP 主机名”或“FTPS 主机名”下面的 URL    。
 
 6. 使用之前创建的 FTP 凭据（包括作为用户名前缀的应用名称）登录。
 
@@ -678,13 +678,13 @@ catch (Exception ex)
 
 对于错误日志记录，若不想编写自己的跟踪代码，可以使用开源日志记录框架，如 [ELMAH](https://nuget.org/packages/elmah/)。 有关详细信息，请参阅 [Scott Hanselman 有关 ELMAH 的博客文章](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)。
 
-此外，不需要使用 ASP.NET 或 `System.Diagnostics` 跟踪来从 Azure 获取流式传输日志。 应用服务应用流式处理日志服务会对其在 *LogFiles* 文件夹中找到的所有 *.txt*、*.html* 或 *.log* 文件进行流式处理。 因此，你可以创建自己的日志记录系统以写入应用的文件系统，文件会自动进行流式处理和下载。 所要做的就是编写在 *d:\home\logfiles* 文件夹中创建文件的应用程序代码。
+此外，不需要使用 ASP.NET 或 `System.Diagnostics` 跟踪来从 Azure 获取流式传输日志。 应用服务应用流式处理日志服务会对其在 *LogFiles* 文件夹中找到的所有 *.txt*、 *.html* 或 *.log* 文件进行流式处理。 因此，你可以创建自己的日志记录系统以写入应用的文件系统，文件会自动进行流式处理和下载。 所要做的就是编写在 *d:\home\logfiles* 文件夹中创建文件的应用程序代码。
 
 ### <a name="analyzing-web-server-logs"></a>分析 Web 服务器日志
 有关分析 Web 服务器日志的详细信息，请参阅以下资源：
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
-  用于查看 Web 服务器日志（*.log* 文件）中的数据的工具。
+  用于查看 Web 服务器日志（ *.log* 文件）中的数据的工具。
 * [解决 IIS 性能问题或使用 logparser 解决应用程序错误](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   可用于分析 Web 服务器日志的 Log Parser 工具介绍。
 * [Robert McMurray 有关 LogParser 使用的博客文章](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>

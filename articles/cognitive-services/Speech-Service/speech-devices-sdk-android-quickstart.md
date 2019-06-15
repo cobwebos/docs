@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: bd0160073898a5a83af2e7b2bba2dba007c04513
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 5bebdd77afb9e9c77624ea4266ca217567dbf143
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66425664"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072391"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>快速入门：在 Android 上运行语音设备 SDK 示例应用
 
@@ -37,7 +37,7 @@ ms.locfileid: "66425664"
 
 * 若要获取[语音服务的 Azure 订阅密钥](get-started.md)
 
-* 如果你打算使用会话脚本必须使用[循环麦克风设备](get-speech-devices-sdk.md)且该服务当前仅适用于"EN-US"和"zh CN"区域"的 centralus"和"东亚"。 若要使用会话听录这些区域之一中必须 speech 注册表项。
+* 如果你打算使用会话脚本必须使用[循环麦克风设备](get-speech-devices-sdk.md)，此功能目前仅适用于"EN-US"和"zh CN"区域"的 centralus"和"东亚"。 若要使用会话听录这些区域之一中必须 speech 注册表项。
 
 * 如果您计划使用的语音服务来从用户查询文本中识别出的意向 （或操作），则需要[语言理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription)订阅。 若要了解有关 LUIS 和意图识别的详细信息，请参阅[使用 LUIS，语音意图识别C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
 

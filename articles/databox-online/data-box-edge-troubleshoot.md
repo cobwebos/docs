@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60756130"
 ---
 # <a name="troubleshoot-your-azure-data-box-edge-issues"></a>排查 Azure Data Box Edge 问题 
@@ -31,7 +31,7 @@ ms.locfileid: "60756130"
 
 若要诊断和排查任何设备错误，可以运行诊断测试。 在设备的本地 Web UI 中执行以下步骤，以运行诊断测试。
 
-1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。 选择要运行的测试，然后单击“运行测试”。 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 你将收到设备正在运行测试的通知。
+1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。  选择要运行的测试，然后单击“运行测试”。  这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 你将收到设备正在运行测试的通知。
 
     ![选择测试](media/data-box-edge-troubleshoot/run-diag-1.png)
  
@@ -50,11 +50,11 @@ ms.locfileid: "60756130"
 
 执行以下步骤收集支持包。 
 
-1. 在本地 Web UI 中，转到“故障排除”>“支持”。 单击“创建支持包”。 系统随即开始收集支持包。 收集包可能需要几分钟时间。
+1. 在本地 Web UI 中，转到“故障排除”>“支持”。  单击“创建支持包”。  系统随即开始收集支持包。 收集包可能需要几分钟时间。
 
     ![单击“添加用户”](media/data-box-edge-troubleshoot/collect-logs-1.png)
  
-2. 创建支持包后，单击“下载支持包”。 压缩包将下载到所选的路径。 可以解压缩该包并查看系统日志文件。
+2. 创建支持包后，单击“下载支持包”。  压缩包将下载到所选的路径。 可以解压缩该包并查看系统日志文件。
 
     ![单击“添加用户”](media/data-box-edge-troubleshoot/collect-logs-2.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "60756130"
 
       ![连接到共享内容并查看](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. 单击“Microsoft Data Box Edge 文件夹”。 此文件夹包含两个子文件夹：
+2. 单击“Microsoft Data Box Edge 文件夹”。  此文件夹包含两个子文件夹：
 
     - Upload 文件夹：包含上传错误的日志文件。
     - Refresh 文件夹：包含刷新期间发生的错误。

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 1108265101f37433860d0112e4e80aee0002ab5c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127219"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>对 Azure 安全中心中的 SQL 数据库启用审核和威胁检测
@@ -34,12 +34,12 @@ Azure 安全中心将建议对所有 SQL 数据库启用审核和威胁检测（
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡中，选择“对 SQL 数据库启用审核和威胁检测”。  这将打开“对 SQL 数据库启用审核和威胁检测”边栏选项卡。
+1. 在“建议”边栏选项卡  中，选择“对 SQL 数据库启用审核和威胁检测”  。  这将打开“对 SQL 数据库启用审核和威胁检测”  边栏选项卡。
 
    ![对 SQL 数据库启用审核][1]
-2. 选择要在其上启用审核的 SQL 数据库。 这将打开“审核和威胁检测”边栏选项卡。
+2. 选择要在其上启用审核的 SQL 数据库。 这将打开“审核和威胁检测”  边栏选项卡。
 
-3. 在“审核和威胁检测”边栏选项卡上，选择“审核”下方的“ON”。
+3. 在“审核和威胁检测”  边栏选项卡上，选择“审核”  下方的“ON”  。
 
    ![启用审核和威胁检测][2]
 4. 请按照 [Azure 门户中 SQL 数据库威胁检测](../sql-database/sql-database-threat-detection-portal.md)一文中的步骤来启用和配置威胁检测，并配置收到有关检测到异常活动的安全警报的电子邮件列表。

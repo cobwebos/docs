@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 5/10/2019
 ms.openlocfilehash: 5d769e2198b714d611b3004e11ccc624d4c6acdf
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546453"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
@@ -165,9 +165,9 @@ ms.locfileid: "65546453"
 
 | 服务等级 | 吞吐量度量值 | 响应时间要求 |
 | --- | --- | --- |
-| 高级 |每秒事务数 |0.5 秒时达到 95% |
-| 标准 |每分钟事务数 |1.0 秒时达到 90% |
-| 基本 |每小时事务数 |2.0 秒时达到 80% |
+| 高级 |每秒事务数 |0\.5 秒时达到 95% |
+| 标准 |每分钟事务数 |1\.0 秒时达到 90% |
+| 基本 |每小时事务数 |2\.0 秒时达到 80% |
 
 ## <a name="next-steps"></a>后续步骤
 

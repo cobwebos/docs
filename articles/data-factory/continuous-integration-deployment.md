@@ -13,17 +13,17 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 ms.openlocfilehash: 76962975705ff53a292f41a0a54e42c5f2991a2c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002557"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
 
 持续集成是这样一种做法：自动地尽早测试对代码库所做的每项更改。 在测试之后进行的持续交付可将更改推送到过渡或生产系统，而测试发生在持续集成期间。
 
-对于 Azure 数据工厂，持续集成和交付意味着将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 若要进行持续集成和交付，可以将数据工厂 UI 集成与 Azure 资源管理器模板配合使用。 选择“ARM 模板”选项时，数据工厂 UI 可以生成资源管理器模板。 选择“导出 ARM 模板”时，门户会为数据工厂生成资源管理器模板，并生成一个包含所有连接字符串和其他参数的配置文件。 然后，需为每个环境（开发、测试、生产）创建一个配置文件。 所有环境的主资源管理器模板文件始终相同。
+对于 Azure 数据工厂，持续集成和交付意味着将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 若要进行持续集成和交付，可以将数据工厂 UI 集成与 Azure 资源管理器模板配合使用。 选择“ARM 模板”选项时，数据工厂 UI 可以生成资源管理器模板。  选择“导出 ARM 模板”时，  门户会为数据工厂生成资源管理器模板，并生成一个包含所有连接字符串和其他参数的配置文件。 然后，需为每个环境（开发、测试、生产）创建一个配置文件。 所有环境的主资源管理器模板文件始终相同。
 
 有关此功能的 9 分钟介绍和演示，请观看以下视频：
 
@@ -32,21 +32,21 @@ ms.locfileid: "66002557"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>为每个环境创建资源管理器模板
-选择“导出 ARM 模板”，在开发环境中导出数据工厂的资源管理器模板。
+选择“导出 ARM 模板”，在开发环境中导出数据工厂的资源管理器模板。 
 
 ![](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-然后转到测试性数据工厂和生产性数据工厂，选择“导入 ARM 模板”。
+然后转到测试性数据工厂和生产性数据工厂，选择“导入 ARM 模板”  。
 
 ![](media/continuous-integration-deployment/continuous-integration-image2.png)
 
-此操作会将你转到 Azure 门户，可以在其中导入已导出的模板。 依次选择“在编辑器中生成自己的模板”、“加载文件”、生成的资源管理器模板。 提供设置，然后数据工厂和整个管道就会导入到生产环境中。
+此操作会将你转到 Azure 门户，可以在其中导入已导出的模板。 依次选择“在编辑器中生成自己的模板”  、“加载文件”、生成的资源管理器模板。  提供设置，然后数据工厂和整个管道就会导入到生产环境中。
 
 ![](media/continuous-integration-deployment/continuous-integration-image3.png)
 
 ![](media/continuous-integration-deployment/continuous-integration-image4.png)
 
-选择“加载文件”，以便选择导出的资源管理器模板并提供所有配置值（例如，链接服务）。
+选择“加载文件”，以便选择导出的资源管理器模板并提供所有配置值（例如，链接服务）。 
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
 
@@ -59,11 +59,11 @@ ms.locfileid: "66002557"
 
 1.  使用 Azure Repos 设置开发数据工厂，以便所有开发人员都能创作数据工厂资源，例如管道、数据集，等等。
 
-1.  然后，开发人员就可以修改管道之类的资源。 进行修改后，开发人员可以选择“调试”来查看在使用最新更改的情况下管道的运行情况。
+1.  然后，开发人员就可以修改管道之类的资源。 进行修改后，开发人员可以选择“调试”来查看在使用最新更改的情况下管道的运行情况。 
 
 1.  对所做的更改满意以后，开发人员可以创建一个拉取请求，将请求从其分支拉取到 master 分支（或 collaboration 分支），让同行来审核他们的更改。
 
-1.  将更改置于 master 分支中以后，即可选择“发布”，将其发布到开发工厂。
+1.  将更改置于 master 分支中以后，即可选择“发布”，将其发布到开发工厂。 
 
 1.  准备将更改提升到测试工厂和生产工厂时，团队可以将资源管理器模板从 master 分支导出，或者在 master 分支需要对实时开发数据工厂提供支持的情况下，从任何其他分支导出。
 
@@ -87,11 +87,11 @@ ms.locfileid: "66002557"
 
 1.  转到使用数据工厂配置的项目中的 Azure Repos 页。
 
-1.  单击顶部菜单“Azure Pipelines”&gt;“发布”&gt;“创建发布定义”。
+1.  单击顶部菜单“Azure Pipelines”  &gt;“发布”  &gt;“创建发布定义”  。
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-1.  选择“空进程”模板。
+1.  选择“空进程”模板  。
 
 1.  输入环境的名称。
 
@@ -101,24 +101,24 @@ ms.locfileid: "66002557"
 
 1.  添加 Azure 资源管理器部署任务：
 
-    a.  创建新的任务，然后搜索并添加“Azure 资源组部署”。
+    a.  创建新的任务，然后搜索并添加“Azure 资源组部署”。 
 
     b.  在部署任务中选择目标数据工厂对应的订阅、资源组和位置，然后根据需要提供凭据。
 
-    c.  选择“创建或更新资源组”操作。
+    c.  选择“创建或更新资源组”操作。 
 
-    d.  在“替代模板参数”字段旁边 选择“…”。 以浏览方式查找在门户中通过发布操作创建的资源管理器模板 (*ARMTemplateForFactory.json*)。 在 `adf_publish` 分支的文件夹 `<FactoryName>` 中查找该文件。
+    d.  在“替代模板参数”字段旁边  选择“…”。  以浏览方式查找在门户中通过发布操作创建的资源管理器模板 (*ARMTemplateForFactory.json*)。 在 `adf_publish` 分支的文件夹 `<FactoryName>` 中查找该文件。
 
     e.  针对参数文件执行相同的操作。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
 
-    f.  在“替代模板参数”字段旁边 选择“…”，然后填充目标数据工厂的信息。 对于来自密钥保管库的凭据，请按以下格式使用机密的名称：假设机密的名称为 `cred1`，请输入 `"$(cred1)"`（使用引号）。
+    f.  在“替代模板参数”字段旁边  选择“…”，然后填充目标数据工厂的信息。  对于来自密钥保管库的凭据，请按以下格式使用机密的名称：假设机密的名称为 `cred1`，请输入 `"$(cred1)"`（使用引号）。
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-    g. 选择“增量”部署模式。
+    g. 选择“增量”  部署模式。
 
     > [!WARNING]
-    > 如果选择“完成”部署模式，则可能会删除现有资源，包括资源管理器模板中未定义的目标资源组中的所有资源。
+    > 如果选择“完成”  部署模式，则可能会删除现有资源，包括资源管理器模板中未定义的目标资源组中的所有资源。
 
 1.  保存发布管道。
 
@@ -157,23 +157,23 @@ ms.locfileid: "66002557"
 
 1.  在上一部分中介绍的 Azure 资源管理器部署之前添加 [Azure Key Vault 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)：
 
-    -   选择“任务”选项卡，创建新的任务，然后搜索并添加“Azure Key Vault”。
+    -   选择“任务”选项卡，创建新的任务，然后搜索并添加“Azure Key Vault”。  
 
     -   在 Key Vault 任务中，选择在其中创建了密钥保管库的订阅，根据需要提供凭据，然后选择密钥保管库。
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
-Azure Key Vault 任务可能会失败并出现拒绝访问错误的 fIntegration 运行时时间。 请下载此发行版的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
+Azure Key Vault 任务可能会失败并出现拒绝访问错误的 fIntegration 运行时时间。 请下载此发行版的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”  和“列出”  是所需的最小权限）。
 
 ### <a name="update-active-triggers"></a>更新活动触发器
 如果尝试更新活动触发器，部署可能会失败。 若要更新活动触发器，需手动将其停止，在部署后再将其启动。 可以为此添加 Azure Powershell 任务，如以下示例所示：
 
-1.  在此发布的“任务”选项卡中，搜索并添加“Azure Powershell”。
+1.  在此发布的“任务”选项卡中，搜索并添加“Azure Powershell”。 
 
-1.  选择“Azure 资源管理器”作为连接类型，然后选择订阅。
+1.  选择“Azure 资源管理器”作为连接类型，然后选择订阅。 
 
-1.  选择“内联脚本”作为脚本类型，然后提供代码。 以下示例停止触发器：
+1.  选择“内联脚本”作为脚本类型，然后提供代码。  以下示例停止触发器：
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -186,7 +186,7 @@ Azure Key Vault 任务可能会失败并出现拒绝访问错误的 fIntegration
 可以在部署后按照类似的步骤并使用类似的代码（通过 `Start-AzDataFactoryV2Trigger` 函数）来重启触发器。
 
 > [!IMPORTANT]
-> 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将集成运行时配置为“链接自承载”。
+> 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有  自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载  。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将集成运行时配置为“链接自承载”  。
 
 ## <a name="sample-deployment-template"></a>示例部署模板
 

@@ -3,18 +3,18 @@ title: 安装和运行容器的异常情况检测程序
 titleSuffix: Azure Cognitive Services
 description: 使用异常检测器 API 的高级的算法来标识时序数据中的异常。
 services: cognitive-services
-author: aahill
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: aahi
-ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 0369e27e7a260c50fc4de690dd3261421356799a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306983"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073327"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>安装和运行异常情况检测程序容器
 
@@ -155,7 +155,7 @@ ApiKey={BILLING_KEY}
 
 容器提供了基于 REST 的查询预测终结点 API。 
 
-使用主机 https://localhost:5000，以获得容器 API。
+使用主机 https://localhost:5000 ，以获得容器 API。
 
 <!--  ## Validate container is running -->
 

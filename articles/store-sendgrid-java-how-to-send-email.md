@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 0cb75c1acb731432ed524560698e3355699b2500
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60931205"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何通过 Java 使用 SendGrid 发送电子邮件
@@ -34,7 +34,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 * 转发客户查询
 * 以电子邮件的形式从应用程序发送通知
 
-有关详细信息，请参阅 <https://sendgrid.com>。
+有关详细信息，请参阅 <https://sendgrid.com> 。
 
 ## <a name="create-a-sendgrid-account"></a>创建 SendGrid 帐户
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -68,7 +68,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
                  // …
 ```
 
-1. 展开 javax.mail.Authenticator 类，然后在对 getPasswordAuthentication 方法的实现中，返回 SendGrid 用户名和密码。  
+1. 展开 javax.mail.Authenticator  类，然后在对 getPasswordAuthentication  方法的实现中，返回 SendGrid 用户名和密码。  
 
        private class SMTPAuthenticator extends javax.mail.Authenticator {
        public PasswordAuthentication getPasswordAuthentication() {
@@ -76,12 +76,12 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
           String password = SMTP_AUTH_PWD;
           return new PasswordAuthentication(username, password);
        }
-2. 通过 javax.mail.Session 对象创建经过身份验证的电子邮件会话。  
+2. 通过 javax.mail.Session  对象创建经过身份验证的电子邮件会话。  
 
        Authenticator auth = new SMTPAuthenticator();
        Session mailSession = Session.getDefaultInstance(properties, auth);
 3. 创建邮件并分配**收件人**、**发件人**、**主题**和内容值。 这一点在[如何：创建一封电子邮件](#how-to-create-an-email)部分。
-4. 通过 javax.mail.Transport 对象发送邮件。 这一点在 [如何：发送一封电子邮件] [# 操作方法-发送-电子] 部分。
+4. 通过 javax.mail.Transport  对象发送邮件。 这一点在 [如何：发送一封电子邮件] [# 操作方法-发送-电子] 部分。
 
 ## <a name="how-to-create-an-email"></a>如何：创建一封电子邮件
 以下代码演示如何为电子邮件指定值。
@@ -131,7 +131,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
     multipart.addBodyPart(attachmentPart);
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>如何：使用筛选器启用页脚、 跟踪和分析
-SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。 有关筛选器的完整列表，请参阅[筛选器设置][Filter Settings]。
+SendGrid 可通过使用筛选器  提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。 有关筛选器的完整列表，请参阅[筛选器设置][Filter Settings]。
 
 * 以下代码演示如何插入使所发送的电子邮件底部显示 HTML 文本的页脚筛选器。
 
@@ -158,7 +158,7 @@ SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些�
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
-可使用“设置属性”覆盖某些电子邮件属性，或使用“添加属性”追加某些电子邮件属性。
+可使用“设置属性”覆盖某些电子邮件属性，或使用“添加属性”追加某些电子邮件属性   。
 
 例如，若要指定 **ReplyTo** 地址，请使用以下代码：
 
@@ -168,7 +168,7 @@ SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些�
 
     message.setReplyTo(addresses);
 
-若要添加“抄送”收件人，请使用以下代码：
+若要添加“抄送”  收件人，请使用以下代码：
 
     message.addRecipient(Message.RecipientType.CC, new
     InternetAddress("john@contoso.com"));

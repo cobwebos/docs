@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
 ms.openlocfilehash: b5f8c853218a1db53f4dd23e7254b35990a7132b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60829168"
 ---
 # <a name="experimentation"></a>试验
@@ -58,7 +58,7 @@ ms.locfileid: "60829168"
   - 其他平台：[获取源代码](https://github.com/JohnLangford/vowpal_wabbit/releases)。
 - Python 3：已安装并在你的路径上。
 - NumPy：使用所选的包管理器。
-- Microsoft/mwt-ds 存储库：[克隆存储库](https://github.com/Microsoft/mwt-ds)。
+- Microsoft/mwt-ds  存储库：[克隆存储库](https://github.com/Microsoft/mwt-ds)。
 - 决策服务 JSON 日志文件：默认情况下，基本命令包括 `--dsjson`，以支持对输入数据文件进行决策服务 JSON 分析。 [获取此格式的示例](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json)。
 
 ## <a name="usage"></a>使用情况
@@ -74,23 +74,23 @@ python Experimentation.py [-h] -f FILE_PATH [-b BASE_COMMAND] [-p N_PROC]
                           [--q_greedy_stop Q_GREEDY_STOP]
 ```
 
-结果日志追加到 mwt-ds/DataScience/experiments.csv 文件。
+结果日志追加到 mwt-ds/DataScience/experiments.csv  文件。
 
 ### <a name="parameters"></a>parameters
 | 输入 | 描述 | 默认 |
 | --- | --- | --- |
-| `-h`、`--help` | 显示帮助消息并退出。 | |
-| `-f FILE_PATH`、`--file_path FILE_PATH` | 数据文件路径（`.json` 或 `.json.gz` 格式- 每行都是 `dsjson`）。 | 需要 |  
-| `-b BASE_COMMAND`、`--base_command BASE_COMMAND` | 基本 Vowpal Wabbit 命令。  | `vw --cb_adf --dsjson -c` |  
-| `-p N_PROC`、`--n_proc N_PROC` | 要使用的并行进程数。 | 逻辑处理器 |  
+| `-h`， `--help` | 显示帮助消息并退出。 | |
+| `-f FILE_PATH`， `--file_path FILE_PATH` | 数据文件路径（`.json` 或 `.json.gz` 格式- 每行都是 `dsjson`）。 | 必选 |  
+| `-b BASE_COMMAND`， `--base_command BASE_COMMAND` | 基本 Vowpal Wabbit 命令。  | `vw --cb_adf --dsjson -c` |  
+| `-p N_PROC`， `--n_proc N_PROC` | 要使用的并行进程数。 | 逻辑处理器 |  
 | `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | 共享功能命名空间（例如，`abc` 意味着命名空间 `a`、`b` 和`c`）。  | 从数据文件自动检测 |  
 | `-a ACTION_NAMESPACES, --action_namespaces ACTION_NAMESPACES` | 操作功能命名空间。 | 从数据文件自动检测 |  
 | `-m MARGINAL_NAMESPACES, --marginal_namespaces MARGINAL_NAMESPACES` | 边际功能命名空间。 | 从数据文件自动检测 |  
 | `--auto_lines AUTO_LINES` | 针对自动检测功能命名空间，要扫描的数据文件的行数。 | `100` |  
 | `--only_hp` | 仅扫描超参数（`learning rate`、`L1 regularization` 和 `power_t`）。 | `False` |  
-| `-l LR_MIN_MAX_STEPS`、`--lr_min_max_steps LR_MIN_MAX_STEPS` | 以正值 `min,max,steps` 表示的学习速率范围。 | `1e-5,0.5,4` |  
-| `-r REG_MIN_MAX_STEPS`、`--reg_min_max_steps REG_MIN_MAX_STEPS` | 以正值 `min,max,steps` 表示的 L1 正则化范围。 | `1e-9,0.1,5` |  
-| `-t PT_MIN_MAX_STEPS`、`--pt_min_max_steps PT_MIN_MAX_STEPS` | 以正值 `min,max,step` 表示的 Power_t 范围。 | `1e-9,0.5,5` |  
+| `-l LR_MIN_MAX_STEPS`， `--lr_min_max_steps LR_MIN_MAX_STEPS` | 以正值 `min,max,steps` 表示的学习速率范围。 | `1e-5,0.5,4` |  
+| `-r REG_MIN_MAX_STEPS`， `--reg_min_max_steps REG_MIN_MAX_STEPS` | 以正值 `min,max,steps` 表示的 L1 正则化范围。 | `1e-9,0.1,5` |  
+| `-t PT_MIN_MAX_STEPS`， `--pt_min_max_steps PT_MIN_MAX_STEPS` | 以正值 `min,max,step` 表示的 Power_t 范围。 | `1e-9,0.5,5` |  
 | `--q_bruteforce_terms Q_BRUTEFORCE_TERMS` | 要在蛮力阶段中测试的二次对数。 | `2` |  
 | `--q_greedy_stop Q_GREEDY_STOP` | 舍入（无需改进），此后暂停二次贪婪搜索阶段。 | `3` |  
 

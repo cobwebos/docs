@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 916c4fae8eed9451080f92e97743876e89bd25ea
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719746"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
@@ -48,7 +48,7 @@ ms.locfileid: "64719746"
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”。
+1. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”  。
 
     ![单机操作](./media/r-server-operationalize/admin-util-one-box-1.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "64719746"
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>在 Apache Spark 上使用 Web 服务时延迟时间很长
 
-如果在尝试使用 Web 服务时遇到长时间的延迟，而这些服务是在 Apache Spark 计算上下文中使用 mrsdeploy 函数创建的，则可能需要添加一些缺失的文件夹。 Spark 应用程序属于名为“rserve2”的用户，不论何时使用 mrsdeploy 函数从 Web 服务调用它。 若要解决此问题，请执行以下操作：
+如果在尝试使用 Web 服务时遇到长时间的延迟，而这些服务是在 Apache Spark 计算上下文中使用 mrsdeploy 函数创建的，则可能需要添加一些缺失的文件夹。 Spark 应用程序属于名为“rserve2”的用户，不论何时使用 mrsdeploy 函数从 Web 服务调用它。  若要解决此问题，请执行以下操作：
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -142,21 +142,21 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 请按照下列步骤解除工作节点的授权：
 
-1. 登录到群集的 Ambari 控制台，并单击“主机”选项卡。
+1. 登录到群集的 Ambari 控制台，并单击“主机”  选项卡。
 
 1. 选择（要解除授权）的工作节点。
 
-1. 单击“操作” > “所选主机” > “主机” > “打开维护模式”。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
+1. 单击“操作”   > “所选主机”   > “主机”   > “打开维护模式”  。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
 
    ![解除辅助节点的授权](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* 选择“操作” > “所选主机” > “DataNodes”> 单击“解除授权”。
-* 选择“操作” > “所选主机” > “NodeManagers”> 单击“解除授权”。
-* 选择“操作” > “所选主机” > “DataNodes”> 单击“停止”。
-* 选择“操作” > “所选主机” > “NodeManagers”> 单击“停止”。
-* 选择“操作” > “所选主机” > “主机”> 单击“停止所有组件”。
+* 选择“操作”   > “所选主机”   > “DataNodes”  > 单击“解除授权”  。
+* 选择“操作”   > “所选主机”   > “NodeManagers”  > 单击“解除授权”  。
+* 选择“操作”   > “所选主机”   > “DataNodes”  > 单击“停止”  。
+* 选择“操作”   > “所选主机”   > “NodeManagers”  > 单击“停止”  。
+* 选择“操作”   > “所选主机”   > “主机”  > 单击“停止所有组件”  。
 * 取消选择辅助角色节点并选择头节点。
-* 选择“操作” > “所选主机”>“主机” > “重启所有组件”。
+* 选择“操作”   > “所选主机”  >“主机”   > “重启所有组件”  。
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步骤 2：在每个已解除授权的辅助角色节点上配置计算节点
 
@@ -166,9 +166,9 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. 输入“1”，选择“配置 ML Server 的操作化”选项。
+1. 输入“1”，选择“配置 ML Server 的操作化”选项   。
 
-1. 输入“C”选择选项 `C. Compute node`。 这将在辅助角色节点上配置计算节点。
+1. 输入“C”选择选项 `C. Compute node`  。 这将在辅助角色节点上配置计算节点。
 
 1. 退出管理实用工具。
 

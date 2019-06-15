@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602727"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的聚合
@@ -32,7 +32,7 @@ ms.locfileid: "65602727"
 ## <a name="counts"></a>计数
 
 ### <a name="count"></a>计数
-在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数。 结果将在名为“count_”的列中返回，除非为其指定特定名称：
+在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数  。 结果将在名为“count_”的列中返回，除非为其指定特定名称  ：
 
 
 ```Kusto
@@ -79,7 +79,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>计算子组
-要在数据中的子组上执行计数或其他聚合，请使用 `by` 关键字。 例如，若要统计非重复每个国家/地区中发送的检测信号的 Linux 计算机的数量：
+要在数据中的子组上执行计数或其他聚合，请使用 `by` 关键字。 例如，要计算每个国家/地区发送检测信号的非重复 Linux 计算机的数量：
 
 ```Kusto
 Heartbeat 
@@ -96,7 +96,7 @@ Heartbeat
 |荷兰      | 2                   |
 
 
-要分析更小的数据子组，请在 `by` 部分中添加其他列名称。 例如，你可能想要统计每个国家/地区每 OSType 从不同的计算机：
+要分析更小的数据子组，请在 `by` 部分中添加其他列名称。 例如，想要根据每个 OSType 来计算来自每个国家/地区的非重复计算机的数量：
 
 ```Kusto
 Heartbeat 

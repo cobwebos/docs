@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: fe726986b3f93ab3bb447b8973727a658ac1c706
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66149306"
 ---
 ### <a name="prerequisites"></a>必备组件
@@ -18,7 +18,7 @@ ms.locfileid: "66149306"
 
 下面介绍授权逻辑应用连接到 GoogleDrive 帐户的步骤：  
 
-1. 要创建与 GoogleDrive 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“GoogleDrive”。 选择要使用的触发器或操作：  
+1. 要创建与 GoogleDrive 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”  ，并在搜索框中输入“GoogleDrive”  。 选择要使用的触发器或操作：  
    ![GoogleDrive 连接创建步骤](./media/connectors-create-api-googledrive/googledrive-1.png)  
 2. 如果以前尚未创建任何与 GoogleDrive 的连接，系统会提示提供 GoogleDrive 凭据。 这些凭据用于授权逻辑应用连接到 GoogleDrive 帐户，然后访问该帐户中的数据：  
    ![GoogleDrive 连接创建步骤](./media/connectors-create-api-googledrive/googledrive-2.png)  

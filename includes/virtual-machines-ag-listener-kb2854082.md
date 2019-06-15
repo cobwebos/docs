@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165465"
 ---
 接下来，如果群集中的任何服务器运行的是 Windows Server 2008 R2 或 Windows Server 2012，则必须验证群集中的每个本地服务器或 Azure VM 上是否安装了修补程序 [KB2854082](https://support.microsoft.com/kb/2854082)。 位于群集中但不在可用性组中的任何服务器或 VM 也应安装此修补程序。

@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/11/2019
 ms.openlocfilehash: c87979760730cbe8f57d8f65463c94d08888aa2b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762759"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>将 Azure SQL 数据库导出到 BACPAC 文件
@@ -43,7 +43,7 @@ ms.locfileid: "65762759"
 > [!NOTE]
 > [托管实例](sql-database-managed-instance.md)当前不支持使用 Azure 门户将数据库导出到 BACPAC 文件。 若要将托管实例导出到 BACPAC 文件，请使用 SQL Server Management Studio 或 SQLPackage。
 
-1. 若要使用 [Azure 门户](https://portal.azure.com)导出数据库，请打开数据库页，并在工具栏上单击“导出”。
+1. 若要使用 [Azure 门户](https://portal.azure.com)导出数据库，请打开数据库页，并在工具栏上单击“导出”  。
 
    ![数据库导出](./media/sql-database-export/database-export1.png)
 
@@ -51,9 +51,9 @@ ms.locfileid: "65762759"
 
     ![数据库导出](./media/sql-database-export/database-export2.png)
 
-3. 单击“确定”。
+3. 单击“确定”。 
 
-4. 若要监视导出操作的进度，请打开包含待导出数据库的 SQL 数据库服务器的相应页面。 向下滚动到“设置”，并单击“导入/导出历史记录”。
+4. 若要监视导出操作的进度，请打开包含待导出数据库的 SQL 数据库服务器的相应页面。 向下滚动到“设置”，并单击“导入/导出历史记录”   。
 
    ![导出历史记录](./media/sql-database-export/export-history.png)
 
@@ -86,7 +86,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-若要检查导出请求的状态，请使用 [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet。 如果在提交请求后立即运行此命令，通常会返回“状态: 正在进行”。 显示“状态: 成功”时，表示导出完毕。
+若要检查导出请求的状态，请使用 [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet。 如果在提交请求后立即运行此命令，通常会返回“状态:  正在进行”。 显示“状态:  成功”时，表示导出完毕。
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

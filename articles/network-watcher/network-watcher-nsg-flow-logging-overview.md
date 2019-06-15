@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 1ec7fd4116aa848a9c431df386997cb23f405f1b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925416"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
@@ -47,7 +47,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 * **time** - 记录事件的时间
 * **systemId** - 网络安全组资源 ID
-* 类别 - 事件的类别。 类别始终是 NetworkSecurityGroupFlowEvent
+* 类别  - 事件的类别。 类别始终是 NetworkSecurityGroupFlowEvent 
 * **resourceid** - NSG 的资源 ID
 * **operationName** - 始终为 NetworkSecurityGroupFlowEvents
 * **properties** - 流属性的集合
@@ -75,15 +75,15 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 版本 2 的日志引入了流状态。 可以配置要接收的流日志的版本。 要了解如何启用流日志，请参阅[启用 NSG 流日志记录](network-watcher-nsg-flow-logging-portal.md)。
 
-启动流时记录流状态 B。 流状态 C 和流状态 E 是分别标记流的延续和终止的状态。 状态 C 和 E 都包含流量带宽信息。
+启动流时记录流状态 B  。 流状态 C 和流状态 E 是分别标记流的延续和终止的状态   。 状态 C 和 E 都包含流量带宽信息   。
 
-对于延续 C 和结束 E 流状态，字节和数据包计数是从上一次流元祖记录时集合的计数。 引用上一示例会话，传输的数据包的总数是 1021+52+8005+47 = 9125。 传输的字节总数是 588096+29952+4610880+27072 = 5256000。
+对于延续 C 和结束 E 流状态，字节和数据包计数是从上一次流元祖记录时集合的计数   。 引用上一示例会话，传输的数据包的总数是 1021+52+8005+47 = 9125。 传输的字节总数是 588096+29952+4610880+27072 = 5256000。
 
 **示例**：介于 185.170.185.105:35370 和 10.2.0.4:23 之间的 TCP 对话中的流元组：
 
 "1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,,,," "1493695838,185.170.185.105,10.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
 
-对于延续 C 和结束 E 流状态，字节和数据包计数是从上一次流元祖记录时集合的计数。 引用上一示例会话，传输的数据包的总数是 1021+52+8005+47 = 9125。 传输的字节总数是 588096+29952+4610880+27072 = 5256000。
+对于延续 C 和结束 E 流状态，字节和数据包计数是从上一次流元祖记录时集合的计数   。 引用上一示例会话，传输的数据包的总数是 1021+52+8005+47 = 9125。 传输的字节总数是 588096+29952+4610880+27072 = 5256000。
 
 以下文本是流日志的示例。 可以看到，有多个记录遵循前一部分描述的属性列表。
 

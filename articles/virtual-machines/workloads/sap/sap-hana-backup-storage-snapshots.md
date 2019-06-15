@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
 ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60936505"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>基于存储快照的 SAP HANA 备份
@@ -32,7 +32,7 @@ ms.locfileid: "60936505"
 
 SAP HANA 中提供了一项用于支持创建存储快照的功能。 仅限于对单容器系统使用该功能。 具有多个租户的 SAP HANA MCS 方案不支持这种类型的 SAP HANA 数据库快照（请参阅[创建存储快照 (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)）。
 
-此功能的工作原理如下：
+其工作原理，如下所示：
 
 - 通过启动 SAP HANA 快照来准备存储快照
 - 运行存储快照（例如 Azure Blob 快照）

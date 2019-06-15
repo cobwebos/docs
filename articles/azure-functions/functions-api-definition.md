@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61341617"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 元数据支持（预览版）
@@ -31,12 +31,12 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 >建议先从[入门教程](./functions-api-definition-getting-started.md)开始，然后返回到本文档，了解有关特定功能的详细信息。
 
 ## <a name="enable"></a>启用 OpenAPI 定义支持
-可在函数应用的“平台功能”的“API 定义”页中配置所有 OpenAPI 设置。
+可在函数应用的“平台功能”的“API 定义”页中配置所有 OpenAPI 设置   。
 
 > [!NOTE]
 > beta 版本运行时当前不支持函数 API 定义功能。
 
-要生成托管的 OpenAPI 定义和快速入门定义，请将“API 定义源”设置为“函数(预览版)”。 外部 URL 允许函数使用托管在其他位置的 OpenAPI 定义。
+要生成托管的 OpenAPI 定义和快速入门定义，请将“API 定义源”设置为“函数(预览版)”   。 外部 URL 允许函数使用托管在其他位置的 OpenAPI 定义。 
 
 ## <a name="generate-definition"></a>通过函数元数据生成 Swagger 框架
 模板可帮助你开始编写第一个 OpenAPI 定义。 定义模板功能通过使用 function.json 文件中的所有元数据，为每个 HTTP 触发器函数创建稀疏的 OpenAPI 定义。 将需要按 [OpenAPI 规范](https://swagger.io/specification/)填写 API 详细信息，如请求和响应模板。
@@ -45,7 +45,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 ### <a name="templates"></a>可用模板
 
-|名称| 描述 |
+|Name| 描述 |
 |:-----|:-----|
 |生成的定义|一个 OpenAPI 定义，内含可从函数的现有元数据中推断出的大量信息。|
 
@@ -55,11 +55,11 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 |Swagger.json|门户 UI|Function.json|
 |:----|:-----|:-----|
-|[主机](https://swagger.io/specification/#fixed-fields-15)|“Function App 设置” > “应用服务设置” > “概述” > “URL”|*不存在*
-|[路径](https://swagger.io/specification/#paths-object-29)|“集成” > “选择 HTTP 方法”|绑定：路由
-|[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” > “路由模板”|绑定：方法
-|[安全性](https://swagger.io/specification/#security-scheme-object-112)|密钥|*不存在*|
-|operationID*|路由 + 允许的动作|路由 + 允许的动作|
+|[主机](https://swagger.io/specification/#fixed-fields-15)|“Function App 设置” > “应用服务设置” > “概述” > “URL”    |*不存在*
+|[路径](https://swagger.io/specification/#paths-object-29)|“集成” > “选择 HTTP 方法”  |绑定：路由
+|[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” > “路由模板”  |绑定：方法
+|[安全性](https://swagger.io/specification/#security-scheme-object-112)|密钥 |*不存在*|
+|operationID*|路由 + 允许的动作 |路由 + 允许的动作|
 
 \*仅与 PowerApps 和 Flow 集成才需要操作 ID。
 > [!NOTE]
@@ -71,9 +71,9 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
  必须先在门户中启用 API 定义托管，然后源控件才能修改其中的 API 定义。 请按照以下说明操作：
 
-1. 浏览到 Function App 设置中的“API 定义(预览)”。
-   1. 将“API 定义源”设置为“函数”。
-   1. 单击“生成 API 定义模板”，然后单击“保存”以创建模板定义供稍后修改。
+1. 浏览到 Function App 设置中的“API 定义(预览)”。 
+   1. 将“API 定义源”设置为“函数”。  
+   1. 单击“生成 API 定义模板”，然后单击“保存”以创建模板定义供稍后修改。  
    1. 记下 API 定义 URL 和密钥。
 1. [设置持续集成/持续部署 (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements)。
 2. 在 \site\wwwroot\.azurefunctions\swagger\swagger.json 处的源控件中修改 swagger.json。

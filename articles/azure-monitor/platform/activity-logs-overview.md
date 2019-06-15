@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 34857108cf7f0580c380ffbd4bbcedb5cd5a807a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6fc00bf0dfb83f349da91989a579f31be2027ff0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245025"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071687"
 ---
 # <a name="overview-of-azure-activity-log"></a>Azure 活动日志概述
 
@@ -30,10 +30,10 @@ ms.locfileid: "66245025"
 
 
 > [!NOTE]
-> Azure 活动日志主要用于在 Azure 资源管理器中发生的活动。 它不跟踪 ugresources 使用经典 /RDFE 模型。 某些经典资源类型在 Azure 资源管理器中具有代理资源提供程序（例如 Microsoft.ClassicCompute）。 如果通过 Azure 资源管理器使用这些代理资源提供程序与经典资源类型进行交互，则操作会显示在活动日志中。 如果在 Azure 资源管理器代理外部与经典资源类型进行交互，则操作只会记录在操作日志中。 可以在门户的一个单独部分中浏览操作日志。
+> Azure 活动日志主要用于在 Azure 资源管理器中发生的活动。 它不跟踪使用经典/RDFE 模型的资源。 某些经典资源类型在 Azure 资源管理器中具有代理资源提供程序（例如 Microsoft.ClassicCompute）。 如果通过 Azure 资源管理器使用这些代理资源提供程序与经典资源类型进行交互，则操作会显示在活动日志中。 如果在 Azure 资源管理器代理外部与经典资源类型进行交互，则操作只会记录在操作日志中。 可以在门户的一个单独部分中浏览操作日志。
 
 ## <a name="activity-log-retention"></a>活动日志保留期
-活动日志事件存储 90 天。 若要将此数据存储，以便延长[收集在 Azure Monitor](activity-log-collect.md)或[将其导出到存储或事件中心](activity-log-export.md)。
+创建后，将不会修改或删除系统活动日志条目。 此外，无法更改它们在界面中或以编程方式。 活动日志事件存储 90 天。 若要将此数据存储，以便延长[收集在 Azure Monitor](activity-log-collect.md)或[将其导出到存储或事件中心](activity-log-export.md)。
 
 ## <a name="view-the-activity-log"></a>查看活动日志
 查看所有资源的活动日志**监视器**在 Azure 门户中的菜单。 查看从特定资源的活动日志**活动日志**该资源的菜单中的选项。 此外可以检索与 PowerShell、 CLI 或 REST API 的活动日志记录。  请参阅[视图和检索 Azure 活动日志事件](activity-log-view.md)。

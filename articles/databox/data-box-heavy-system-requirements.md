@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 数据框大量的系统要求 |Microsoft Docs
-description: 了解有关在 Azure 数据框大量的网络要求的软件
+title: Microsoft Azure Data Box Heavy 系统要求 | Microsoft Docs
+description: 了解 Azure Data Box Heavy 的软件和网络要求
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: b9e249885bd0e930773d4b374f85d72e60abdbdc
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427744"
 ---
-# <a name="azure-data-box-heavy-system-requirements-preview"></a>Azure 数据框大量的系统要求 （预览版）
+# <a name="azure-data-box-heavy-system-requirements-preview"></a>Azure Data Box Heavy 系统要求（预览版）
 
-本文介绍 Azure 数据框大量设备以及用于连接到设备的客户端的重要的系统要求。 我们建议在部署你的数据框重负载，然后返回到它根据需要在过程中引用的部署和后续操作之前仔细查看此信息。
+本文介绍 Azure Data Box Heavy 设备以及连接到该设备的客户端的重要系统要求。 建议在部署 Data Box Heavy 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。
 
 系统需求包括：
 
-* **连接到数据框大量的主机的软件要求**-介绍受支持的平台、 本地 web UI 的浏览器、 SMB 客户端和主机可以连接到 Data Box 的任何其他要求。
-* **数据框大量的网络要求**-提供有关最佳操作的数据框大量设备的网络要求的信息。
+* **连接到 Data Box Heavy 的主机的软件要求** - 介绍支持的平台、本地 Web UI 的浏览器、SMB 客户端以及可连接到 Data Box 的主机的任何其他要求。
+* **Data Box Heavy 的网络要求** - 提供有关 Data Box Heavy 设备最佳操作的网络要求的信息。
 
 ## <a name="software-requirements"></a>软件要求
 
@@ -50,7 +50,7 @@ ms.locfileid: "66427744"
 
 ## <a name="networking-requirements"></a>网络要求
 
-数据中心需要有高速网络。 有关复制速度最快，两个 40 千兆以太网连接可以利用并行 （每个节点一个）。 如果您不具备 40 GbE 可用，我们建议具有至少两个 10 千兆以太网连接 （每个节点一个）。
+数据中心需要有高速网络。 为获得最快的复制速度，可以同时利用两个 40-GbE 连接（在每个节点上使用一个）。 如果没有可用的 40-GbE，我们建议至少开通两个 10-GbE 连接（在每个节点上使用一个）。
 
 ## <a name="next-steps"></a>后续步骤
 

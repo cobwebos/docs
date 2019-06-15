@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: magoedte
 ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66751981"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>使用 Azure Log Analytics 代理收集日志数据
@@ -99,8 +99,8 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 |------|---------|--------|--------|   
 |*.ods.opinsights.azure.com |端口 443 |出站|是 |  
 |*.oms.opinsights.azure.com |端口 443 |出站|是 |  
-|* .blob.core.windows.net |端口 443 |出站|是 |  
-|* .azure-automation.net |端口 443 |出站|是 |  
+|\* .blob.core.windows.net |端口 443 |出站|是 |  
+|\* .azure-automation.net |端口 443 |出站|是 |  
 
 所需的 Azure 政府版的防火墙信息，请参阅[Azure 政府版管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 
 
@@ -131,7 +131,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 ## <a name="install-and-configure-agent"></a>安装并配置代理 
 可以根据要求使用不同的方法，将 Azure 订阅或混合环境中的计算机直接连接到 Azure Monitor 日志。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
 
-|源 | 方法 | 描述|
+|source | 方法 | 描述|
 |-------|-------------|-------------|
 |Azure VM| - 使用 Azure CLI 或 Azure 资源管理器模板通过适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展进行安装<br>- [通过 Azure 门户手动安装](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)。 | 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Azure Monitor 工作区中。|
 | 混合 Windows 计算机|- [手动安装](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |可从命令行或使用自动化方法（如 Azure Automation DSC、[System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)）安装 Microsoft Monitoring Agent，或者，如果已在数据中心部署 Microsoft Azure Stack，则可使用 Azure 资源管理器进行安装。| 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
 ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736660"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>有关 Azure 第一道防线服务常见问题
@@ -24,7 +24,7 @@ ms.locfileid: "60736660"
 
 1. 本文评论部分。
 2. [Azure 的第一道防线服务 UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025)。
-3. **Microsoft 支持部门：** 若要创建新的支持请求，请在 Azure 门户中的“帮助”选项卡上，选择“帮助和支持”按钮，然后选择“新建支持请求”。
+3. **Microsoft 支持部门：** 若要创建新的支持请求，请在 Azure 门户中的“帮助”  选项卡上，选择“帮助和支持”  按钮，然后选择“新建支持请求”  。
 
 ## <a name="general"></a>常规
 

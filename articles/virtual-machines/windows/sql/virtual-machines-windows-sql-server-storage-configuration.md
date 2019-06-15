@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 360ffb3d2c682d6bd2344cb3ae95447ff3df278d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477369"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076886"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -67,24 +67,24 @@ ms.locfileid: "61477369"
 
 ## <a name="existing-vms"></a>现有 VM
 
-对于现有的 SQL Server VM，可以在 Azure 门户中修改某些存储设置。 选择 VM，转到“设置”区域，并选择“SQL Server 配置”。 “SQL Server 配置”边栏选项卡显示了 VM 当前的存储用量。 此图显示了 VM 上存在的所有驱动器。 每个驱动器的存储空间都分四个部分显示：
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+对于现有的 SQL Server VM，可以在 Azure 门户中修改某些存储设置。 打开你[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)，然后选择**概述**。 SQL Server 概述页显示你的 VM 的当前存储使用情况。 此图显示了 VM 上存在的所有驱动器。 每个驱动器的存储空间都分四个部分显示：
 
 * SQL 数据
 * SQL 日志
 * 其他（非 SQL 存储）
 * 可用
 
-![为现有 SQL Server VM 配置存储](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
+若要修改存储设置，请选择**配置**下**设置**。 
 
-若要配置存储以添加新驱动器或扩展现有的驱动器，请单击图表上方的“编辑”链接。
+![为现有 SQL Server VM 配置存储](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
 显示的配置选项会有所不同，这取决于以前是否用过此功能。 首次使用时，可以指定新驱动器的存储要求。 如果以前曾经使用此功能创建了驱动器，可以选择扩展该驱动器的存储。
 
 ### <a name="use-for-the-first-time"></a>首次使用
 
 如果首次使用此功能，可以指定新驱动器的存储大小和性能限制。 这种体验与预配类似。 主要差别在于无法指定工作负荷类型。 此限制可防止中断虚拟机上任何现有的 SQL Server 配置。
-
-![配置 SQL Server 存储滑块](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-usage-sliders.png)
 
 Azure 会根据规范创建新驱动器。 在此方案中，Azure 将执行以下存储配置任务：
 
@@ -99,19 +99,17 @@ Azure 会根据规范创建新驱动器。 在此方案中，Azure 将执行以�
 
 如果已在 SQL Server VM 上配置存储，则展开存储会显示两个新选项。 第一个选项是添加新驱动器以提升 VM 的性能级别。
 
-![将新驱动器添加到 SQL VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
-
 但是，添加驱动器后，必须执行一些附加的手动配置才能提升性能。
 
 ### <a name="extend-the-drive"></a>扩展驱动器
 
-扩展存储的另一个选项是扩展现有驱动器。 此选项会增加驱动器的可用存储，但不提升性能。 对于存储池，在创建存储池后无法更改列数。 列数决定了可跨数据磁盘条带化的并行写入数。 因此，添加的任何数据磁盘均无法提升性能。 它们只能为写入的数据提供更多的存储空间。 这种限制也意味着，在扩展驱动器时，列数决定了可以添加的数据磁盘的最小数目。 因此，如果创建的存储池包含四个数据磁盘，则列数也是四个。 每当扩展存储时，就必须添加至少四个数据磁盘。
+扩展存储的另一个选项是扩展现有驱动器。 此选项会增加驱动器的可用存储，但不提升性能。 对于存储池，在创建存储池后无法更改列数。 列数决定了可跨数据磁盘条带化的并行写入数。 因此，添加的任何数据磁盘均无法提升性能。 它们只能为写入的数据提供更多的存储空间。 这种限制也意味着，在扩展驱动器时，列数决定了可以添加的数据磁盘的最小数目。 因此，如果创建的存储池包含四个数据磁盘，则列数也是四个。 每次扩展存储，必须添加至少四个数据磁盘。
 
 ![扩展 SQL VM 的驱动器](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>存储配置
 
-本部分提供有关在 Azure 门户中预配或配置 SQL VM 期间，Azure 自动执行的存储配置更改的参考信息。
+本部分提供 Azure 自动执行或在 Azure 门户中的配置 SQL VM 预配期间的存储配置更改的引用。
 
 * 如果为 VM 选择的存储小于 2 TB，Azure 不会创建存储池。
 * 如果为 VM 选择了至少 2 TB 的存储，则 Azure 将配置存储池。 本主题的下一部分提供了存储池配置详细信息。

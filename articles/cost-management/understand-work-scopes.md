@@ -11,17 +11,17 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991384"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
 本文可帮助你了解在 Azure 以及如何使用成本管理和 Api 中的作用域中可用的计费和资源管理范围。
 
-## <a name="scopes"></a>范围
+## <a name="scopes"></a>作用域
 
 一个_作用域_是 Azure AD 用户的访问和管理服务的 Azure 资源层次结构中的节点。 大多数 Azure 资源创建和部署到资源组，后者是订阅的一部分。 Microsoft 还提供了具有一定的专业角色来管理帐单数据的 Azure 订阅上的两个层次结构：
 - 帐单数据，如付款和发票
@@ -154,14 +154,14 @@ Azure 订阅都嵌套在发票节，就像它们正在 EA 注册帐户下。 计
 
 使用成本管理 Api 时，了解作用域关键。 使用以下信息的成本管理 Api 生成适当的范围 URI。
 
-### <a name="billing-accounts"></a>结算帐户
+### <a name="billing-accounts"></a>计费帐户
 
 1. 打开 Azure 门户，然后导航到**成本管理 + 计费**在服务列表中。
 2. 选择**属性**计费帐户菜单中。
 3. 复制计费帐户 id。
 4. 你的作用域是： `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
-### <a name="billing-profiles"></a>计费对象信息
+### <a name="billing-profiles"></a>计费配置文件
 
 1. 打开 Azure 门户，然后导航到**成本管理 + 计费**在服务列表中。
 2. 选择**计费配置文件**计费帐户菜单中。
@@ -170,7 +170,7 @@ Azure 订阅都嵌套在发票节，就像它们正在 EA 注册帐户下。 计
 5. 将复制的计费帐户和计费配置文件 Id。
 6. 你的作用域是： `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
-### <a name="invoice-sections"></a>发票科目
+### <a name="invoice-sections"></a>发票部分
 
 1. 打开 Azure 门户，然后导航到**成本管理 + 计费**在服务列表中。
 2. 选择**发票部分**计费帐户菜单中。
@@ -218,7 +218,7 @@ Azure 订阅都嵌套在发票节，就像它们正在 EA 注册帐户下。 计
 4. 将复制的资源 ID 字段值。
 5. 你的作用域是： `"/subscriptions/{id}/resourceGroups/{name}"`
 
-成本的管理中当前支持[Azure 全球](https://management.azure.com)并[Azure 政府版](https://management.usgovcloudapi.net)。 了解 Azure 政府版的详细信息，请参阅[Azure 全局和政府 API 终结点](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_。_
+成本的管理中当前支持[Azure 全球](https://management.azure.com)并[Azure 政府版](https://management.usgovcloudapi.net)。 了解 Azure 政府版的详细信息，请参阅[Azure 全局和政府 API 终结点](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _。_
 
 ## <a name="next-steps"></a>后续步骤
 
