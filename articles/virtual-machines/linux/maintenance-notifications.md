@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
 ms.openlocfilehash: 40ae8f0fb9c0c5980c4db1471b2bbad56a57d486
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410493"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>处理 Linux 虚拟机的计划内维护通知
@@ -33,8 +33,8 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 需要重启的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）。
 
 - 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../../azure-monitor/platform/activity-logs-overview.md)，向通知添加更多收件人和消息传送选项（如电子邮件、短信和 Webhook）。  
-- 在通知时会提供自助时段。 在此窗口中，通常为 30 天，期间可以找到的虚拟机包含在此批中和主动开始根据自己的计划需求的维护。
-- 自助时段过后，就会开始计划内维护时段。 在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于虚拟机。 
+- 在通知时会提供自助时段。  在此窗口中，通常为 30 天，期间可以找到的虚拟机包含在此批中和主动开始根据自己的计划需求的维护。
+- 自助时段过后，就会开始计划内维护时段。  在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于虚拟机。 
 
 设置这两个时段的目的是，在了解 Azure 何时将自动启动维护时，提供足够的时间来启动维护和重新启动虚拟机。
 
@@ -47,7 +47,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 可以先阅读以下指南，然后再决定是否使用此功能按自己的时间来启动维护。 
 
 > [!NOTE] 
-> 自助维护不一定适用于所有 VM。 若要确定是否可以对 VM 进行主动重新部署，请在维护状态中查找“立即启动”。 自助维护目前不适用于云服务（Web/辅助角色）和 Service Fabric。
+> 自助维护不一定适用于所有 VM。 若要确定是否可以对 VM 进行主动重新部署，请在维护状态中查找“立即启动”。  自助维护目前不适用于云服务（Web/辅助角色）和 Service Fabric。
 
 
 使用**可用性集**进行部署时，不建议进行自助维护，因为这些可用性集是高度可用的设置，在任何给定的时间都只会影响一个更新域。 
@@ -116,13 +116,13 @@ az vm perform-maintenance -g rgName -n vmName
 azure config mode asm
 ```
 
-若要获取名为 myVM 的 VM 维护状态，请键入：
+若要获取名为 myVM  的 VM 维护状态，请键入：
 
 ```
 azure vm show myVM 
 ``` 
 
-若要在名为 myVM 的经典 VM 的 myService 服务和 myDeployment 部署中启动维护，请键入：
+若要在名为 myVM  的经典 VM 的 myService  服务和 myDeployment  部署中启动维护，请键入：
 
 ```
 azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
@@ -171,15 +171,15 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 **答:** 有很多原因会导致在 VM 上看不到任何维护信息：
 1.  使用的是标记为“Microsoft 内部”的订阅。
 2.  VM 未计划进行维护。 可能是这次维护已结束、已取消或已修改，因此你的 VM 不再受其影响。
-3.  未将“维护”列添加到 VM 列表视图。 虽然我们已向默认视图添加此列，但配置为查看非默认列的客户必须手动将“维护”列添加到其 VM 列表视图。
+3.  未将“维护”列添加到 VM 列表视图。  虽然我们已向默认视图添加此列，但配置为查看非默认列的客户必须手动将“维护”  列添加到其 VM 列表视图。
 
 **问：我的 VM 已计划进行第二次维护，为什么？**
 
 **答:** 多种用例都会看到在完成维护性重新部署后，VM 仍进行计划性维护：
 1.  我们已取消这次维护，并使用不同的有效负载重新启动它。 可能是我们已检测到出错的有效负载，只需部署其他有效负载。
-2.  由于硬件故障，已在另一个节点上对 VM 进行服务修复。
+2.  由于硬件故障，已在另一个节点上对 VM 进行服务修复  。
 3.  选择了停止（解除分配）VM 并将其重启。
-4.  已经为 VM 启用了自动关闭。
+4.  已经为 VM 启用了自动关闭  。
 
 
 ## <a name="next-steps"></a>后续步骤
