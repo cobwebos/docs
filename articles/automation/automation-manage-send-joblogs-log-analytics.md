@@ -1,6 +1,6 @@
 ---
 title: 将 Azure 自动化作业数据转发到 Azure Monitor 日志
-description: 本文演示如何将作业状态和 runbook 作业流发送到 Azure Monitor 日志，以提供附加见解和管理。
+description: 本文演示如何将作业状态和 Runbook 作业流发送到 Azure Monitor 日志，以提供更多见解和管理信息。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,10 +10,10 @@ ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e0f2d3491db24ecbb49c189232dbc7f698e09fb1
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66430769"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>将作业状态和作业流从自动化转发到 Azure Monitor 日志
@@ -96,7 +96,7 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 | Caller_s |谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。 |
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
-| ResultType |Runbook 作业的状态。 可能的值包括：<br>- New（新）<br>-创建<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Completed（已完成） |
+| ResultType |Runbook 作业的状态。 可能的值包括：<br>- New（新）<br>- Created（已创建）<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Completed（已完成） |
 | 类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
 | OperationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。 |
 | 资源 | 自动化帐户的名称 |
@@ -116,7 +116,7 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
 | Caller_s |谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。 |
-| StreamType_s |作业流的类型。 可能的值包括：<br>- Progress（进度）<br>- Output（输出）<br>- Warning（警告）<br>- Error（错误）<br>- Debug（调试）<br>- Verbose（详细） |
+| StreamType_s |作业流的类型。 可能的值包括：<br>\- Progress（进度）<br>- Output（输出）<br>- Warning（警告）<br>- Error（错误）<br>- Debug（调试）<br>- Verbose（详细） |
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- In Progress |

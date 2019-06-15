@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中的租户之间共享库映像 |Microsoft Docs
-description: 了解如何在使用共享图像库的 Azure 租户间共享的 VM 映像。
+description: 了解如何使用共享映像库跨 Azure 租户共享 VM 映像。
 services: virtual-machines-windows
 author: cynthn
 manager: jeconnoc
@@ -11,13 +11,13 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
 ms.openlocfilehash: 56c0e906203a010a1356beae4b6e5d66e34cfc2b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65159835"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>在 Azure 租户之间共享库的 VM 映像
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "65159835"
 ## <a name="create-a-vm-using-powershell"></a>使用 PowerShell 创建 VM
 
 
-登录到使用的应用程序 ID，这两种租户密钥和租户 id。 
+使用应用程序 ID、机密和租户 ID 登录到两个租户中。 
 
 ```azurepowershell-interactive
 $applicationId = '<App ID>'
@@ -38,7 +38,7 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-在应用注册具有权限的资源组中创建 VM。 在此示例中的信息将替换为自己。
+在有应用注册权限的资源组中创建 VM。 请将此示例中的信息替换为你自己的。
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"

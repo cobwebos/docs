@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
 ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192626"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure 安全中心的自定义警报规则（预览版）
@@ -27,21 +27,21 @@ ms.locfileid: "65192626"
 > [!NOTE]
 > 自定义警报将在 2019 年 6 月 30 日停用。
 
-## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>停用的自定义警报规则在 Azure 安全中心
+## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>停用 Azure 安全中心内的自定义警报规则
 
-自定义警报体验将在停用 2019 年 6 月 30 日，由于它基于对底层基础结构的停用。 在之前不推荐使用时间范围内，用户将能够编辑现有的自定义警报规则，但将不能添加新的。
-建议用户将为：
-- 启用[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)单击一次载入自动迁移其现有的警报并创建新的
-- 重新创建其警报与 Azure Monitor 日志警报
+自定义警报体验将在 2019 年 6 月 30 日停用，因为它所基于的底层基础结构已停用。 在弃用此体验之前的时段内，用户可以编辑现有的自定义警报规则，但无法添加新的自定义警报规则。
+建议用户：
+- 使用一键式加入功能来启用 [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)，以自动迁移其现有警报和创建新的警报
+- 使用 Azure Monitor 日志警报重新创建警报
                                      
-若要保留现有警报并将其迁移到 Azure Sentinel，请[启动 Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview)。 第一步，选择自定义警报的存储位置工作区，然后选择分析菜单项将自动迁移你的警报。
+若要保留现有的警报并将其迁移到 Azure Sentinel，请[启动 Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview)。 第一步是选择存储自定义警报的工作区，然后选择“分析”菜单项以自动迁移警报。
 
 > [!NOTE]
-> 自定义警报迁移到 Azure Sentinel 是所选工作区中所有自定义警报的一次性迁移。 迁移完成后，不会通过 Azure 安全中心可访问该所选工作区的自定义警报。
+> 将自定义警报迁移到 Azure Sentinel 会一次性迁移所选工作区中的所有自定义警报。 完成迁移后，无法通过 Azure 安全中心访问该所选工作区的自定义警报。
 >
-> 使用自定义警报[搜索](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries)或[Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html)语句查询 Azure Sentinel 中不支持和不会迁移。 请执行迁移之前，编辑这些警报。
+> 使用 [Search](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) 或 [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) 语句查询的自定义警报在 Azure Sentinel 中不受支持，且不会迁移。 在执行迁移之前，请编辑这些警报。
 
-若要重新创建你使用 Azure Monitor 日志警报的警报，请参阅：[创建、 查看和管理使用 Azure Monitor 的日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)有关如何创建日志警报的说明。 Azure Monitor 中的日志警报的一般概述，请单击[此处](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)。
+若要使用 Azure Monitor 日志警报重新创建警报，请参阅：[使用 Azure Monitor 创建、查看和管理日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)，获取有关如何创建日志警报的说明。 有关 Azure Monitor 中日志警报的一般概述，请单击[此处](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)。
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>安全中心的自定义警报规则是什么？
 
@@ -56,10 +56,10 @@ ms.locfileid: "65192626"
 
 ## <a name="how-to-create-a-custom-alert-rule-in-security-center"></a>如何在安全中心创建自定义警报规则？
 
-打开“安全中心”仪表板，按以下步骤创建自定义警报规则：
+打开“安全中心”  仪表板，按以下步骤创建自定义警报规则：
 
-1.  在左窗格的“检测”下单击“自定义警报规则(预览版)”。
-2.  在“安全中心 - 自定义警报规则(预览版)”页中单击“新建自定义警报规则”。
+1.  在左窗格的“检测”下单击“自定义警报规则(预览版)”。  
+2.  在“安全中心 - 自定义警报规则(预览版)”页中单击“新建自定义警报规则”。  
 
     ![自定义警报](./media/security-center-custom-alert/security-center-custom-alert-fig1.png)
 
@@ -67,11 +67,11 @@ ms.locfileid: "65192626"
 
     ![创建](./media/security-center-custom-alert/security-center-custom-alert-fig2.png)
 
-4.  在“名称”字段中，键入此自定义规则的名称。
-5.  在“说明”字段中根据该规则的目的键入简要说明。
-6.  在“严重性”字段中根据需要选择严重级别（高、中、低）。
-7.  在“订阅”字段中选择此规则适用的订阅。
-8.  在“工作区”字段中选择要使用此规则进行监视的工作区，并在“搜索查询”字段中选择要用于获取结果的查询。
+4.  在“名称”  字段中，键入此自定义规则的名称。
+5.  在“说明”字段中根据该规则的目的键入简要说明。 
+6.  在“严重性”字段中根据需要选择严重级别（高、中、低）。 
+7.  在“订阅”字段中选择此规则适用的订阅。 
+8.  在“工作区”字段中选择要使用此规则进行监视的工作区，并在“搜索查询”字段中选择要用于获取结果的查询。  
 
     > [!NOTE]
     > 需要在选择用来存储自定义警报的工作区中具有写入权限。
@@ -82,17 +82,17 @@ ms.locfileid: "65192626"
 
     ![Query](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
 
-10. 在“期间”字段中选择执行上述查询的时间范围。 请注意，此字段底部的搜索结果会随所选时间范围而变。
+10. 在“期间”字段中选择执行上述查询的时间范围。  请注意，此字段底部的搜索结果会随所选时间范围而变。
 
     ![周期](./media/security-center-custom-alert/security-center-custom-alert-fig4.png)
 
-11. 在“评估”字段中，选择评估和执行此规则的频率。
-12. 在“结果数”字段中，选择运算符（大于或小于）。
-13. 在“阈值”字段中键入一个数字，该数字将用作此前所选运算符的参考。
-14. 如果需要设置一个等待时间，在该时间过后才通过安全中心发送该规则的另一警报，则启用“阻止警报”选项。
-15. 单击“确定”完成。
+11. 在“评估”字段中，选择评估和执行此规则的频率。 
+12. 在“结果数”字段中，选择运算符（大于或小于）。 
+13. 在“阈值”字段中键入一个数字，该数字将用作此前所选运算符的参考。 
+14. 如果需要设置一个等待时间，在该时间过后才通过安全中心发送该规则的另一警报，则启用“阻止警报”选项。 
+15. 单击“确定”  完成。
 
-创建完新的警报规则以后，该规则会显示在自定义警报规则列表中。 如果符合该规则的条件，则会触发新的警报，显示在“安全警报”仪表板中。
+创建完新的警报规则以后，该规则会显示在自定义警报规则列表中。 如果符合该规则的条件，则会触发新的警报，显示在“安全警报”仪表板中。 
 
 ![警报](./media/security-center-custom-alert/security-center-custom-alert-fig5.png)
 

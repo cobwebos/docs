@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65150740"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步
@@ -74,18 +74,18 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
     - [部署存储同步服务](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service)。 
     - [将 Windows Server 注册到存储同步服务](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service)。 
     - [创建同步组和云终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint)。 对于需要从主机迁移的每个 Windows 文件共享，请创建同步组。
-    - [创建服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint)。 将路径指定为包含文件共享数据的 StorSimple 卷的路径。 例如，如果 StorSimple 卷是驱动器 `J`，而数据驻留在 `J:/<myafsshare>` 中，则将此路径添加为服务器终结点。 将“分层”保留为“已禁用”。
+    - [创建服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint)。 将路径指定为包含文件共享数据的 StorSimple 卷的路径。 例如，如果 StorSimple 卷是驱动器 `J`，而数据驻留在 `J:/<myafsshare>` 中，则将此路径添加为服务器终结点。 将“分层”保留为“已禁用”。  
 2.  等到文件服务器同步完成。 对于给定同步组中的每个服务器，请确保：
     - 上传和下载会话的“上次尝试同步”时间戳是最近的时间。
     - 上传和下载会话的状态为绿色。
-    - “同步活动”显示的要同步的剩余文件数很少或者为零。
-    - 上传和下载会话的“未同步的文件数”值为 0。
+    - “同步活动”显示的要同步的剩余文件数很少或者为零  。
+    - 上传和下载会话的“未同步的文件数”值为 0  。
     有关服务器同步何时完成的详细信息，请转到[排查 Azure 文件同步的问题](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other)。同步所需的时间为几个小时到几天不等，具体取决于数据大小和带宽。 同步完成后，所有数据将安全保存在 Azure 文件共享中。 
-3.  转到 StorSimple 卷上的共享。 选择一个共享，单击右键，然后选择“属性”。 注意“安全性”下面的共享权限。 在稍后的步骤中，需将这些权限手动应用到新共享。
+3.  转到 StorSimple 卷上的共享。 选择一个共享，单击右键，然后选择“属性”。  注意“安全性”下面的共享权限。  在稍后的步骤中，需将这些权限手动应用到新共享。
 4.  根据使用的是相同还是不同的 Windows Server 主机，后续步骤会有所不同。
 
     如果使用不同的 Windows Server 主机，请跳过此步骤并转到下一步骤。 如果对 AFS 使用相同的 Windows 文件服务器，则现在会出现几分钟的停机时间。 
-    - **停机时间开始** - 删除在“步骤 1F”中创建的服务器终结点。 
+    - **停机时间开始** - 删除在“步骤 1F”中创建的服务器终结点。  
     - 使用数据接下来要驻留到的路径创建新的服务器终结点。
     - 当服务器终结点显示为“正常”（这可能需要几分钟时间）后，新位置中会出现这些数据。 现在，可将 Windows Server 主机配置为从此新位置提供文件。 - **停机时间结束**。
 5.  如果对 Azure 文件同步使用另一个 Windows 文件服务器，则不会出现任何停机时间。 
@@ -94,7 +94,7 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
 
     > [!TIP] 
     > 请考虑使用此新文件共享所代替的设备的相同名称和路径来配置此共享，以尽量减少中断时间。 如果使用 DFS-N，可能需要在配置中进行更改。
-6.  根据“步骤 3”中所述重新配置共享权限。
+6.  根据“步骤 3”中所述重新配置共享权限。 
 
 如果在数据迁移期间遇到任何问题，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 
 

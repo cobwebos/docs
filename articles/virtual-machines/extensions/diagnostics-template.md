@@ -17,10 +17,10 @@ ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 00b4a145da9104cab410c5a07f6d7ec5ded5c45d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60800010"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用
@@ -63,7 +63,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
 ]
 ```
 
-另一个常见惯例是在模板的根资源节点处添加扩展配置，而不是在虚拟机的资源节点下进行定义。 使用这个方法时，必须用 name 和 type 值显式指定扩展与虚拟机之间的分层关系。 例如： 
+另一个常见惯例是在模板的根资源节点处添加扩展配置，而不是在虚拟机的资源节点下进行定义。 使用这个方法时，必须用 name  和 type  值显式指定扩展与虚拟机之间的分层关系。 例如： 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -76,16 +76,16 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
 
 值为 **Microsoft.Azure.Diagnostics** 的 *publisher* 属性和值为 **IaaSDiagnostics** 的 *type* 属性可唯一标识 Azure 诊断扩展。
 
-*name* 属性的值可用来引用资源组中的扩展。 特别将其设为 Microsoft.Insights.VMDiagnosticsSettings 后，它可以轻松被 Azure 门户识别，从而确保监视图表在 Azure 门户中正确显示。
+*name* 属性的值可用来引用资源组中的扩展。 特别将其设为 Microsoft.Insights.VMDiagnosticsSettings 后，它可以轻松被 Azure 门户识别，从而确保监视图表在 Azure 门户中正确显示  。
 
-*typeHandlerVersion* 指定要使用的扩展的版本。 将 autoUpgradeMinorVersion 次要版本设置为 true 可确保获得可用的最新扩展次要版本。 强烈建议始终将 *autoUpgradeMinorVersion* 设置为 **true**，这样就可以随时获得并使用具有所有新功能和缺陷修复的最新的可用诊断扩展。 
+*typeHandlerVersion* 指定要使用的扩展的版本。 将 autoUpgradeMinorVersion  次要版本设置为 true  可确保获得可用的最新扩展次要版本。 强烈建议始终将 *autoUpgradeMinorVersion* 设置为 **true**，这样就可以随时获得并使用具有所有新功能和缺陷修复的最新的可用诊断扩展。 
 
-*settings* 元素包含扩展的配置属性（有时称为公共配置），这些属性可以从扩展设置和读回。 xmlcfg 属性包含由诊断代理收集的诊断日志、性能计数器等内容的基于 xml 的配置。 有关 xml 架构本身的详细信息，请参阅[诊断配置架构](https://msdn.microsoft.com/library/azure/dn782207.aspx)。 常见的做法是将实际的 xml 配置存储为 Azure Resource Manager 模板中的变量，然后再进行连接和 base64 编码，以设置 *xmlcfg* 的值。 请参阅[诊断配置变量](#diagnostics-configuration-variables)部分，深入了解如何在变量中存储 xml。 storageAccount 属性指定向其传输诊断数据的存储帐户的名称。 
+*settings* 元素包含扩展的配置属性（有时称为公共配置），这些属性可以从扩展设置和读回。 xmlcfg  属性包含由诊断代理收集的诊断日志、性能计数器等内容的基于 xml 的配置。 有关 xml 架构本身的详细信息，请参阅[诊断配置架构](https://msdn.microsoft.com/library/azure/dn782207.aspx)。 常见的做法是将实际的 xml 配置存储为 Azure Resource Manager 模板中的变量，然后再进行连接和 base64 编码，以设置 *xmlcfg* 的值。 请参阅[诊断配置变量](#diagnostics-configuration-variables)部分，深入了解如何在变量中存储 xml。 storageAccount  属性指定向其传输诊断数据的存储帐户的名称。 
 
-*protectedSettings* 中的属性（有时称为专用配置）可设置，但在设置之后无法读回。 protectedSettings 的只写性质使其非常适合存储类似存储帐户密钥（写入诊断数据的位置）的密码。    
+*protectedSettings* 中的属性（有时称为专用配置）可设置，但在设置之后无法读回。 protectedSettings  的只写性质使其非常适合存储类似存储帐户密钥（写入诊断数据的位置）的密码。    
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>将诊断存储帐户指定为参数
-上述诊断扩展 json 代码片段采用两个参数：existingdiagnosticsStorageAccountName 和 existingdiagnosticsStorageResourceGroup，指定存储诊断数据的诊断存储帐户。 将诊断存储帐户指定为参数可轻松地跨不同环境更改诊断存储帐户，例如，可能想要使用不同诊断存储帐户进行测试，并且使用另外一个进行生产部署。  
+上述诊断扩展 json 代码片段采用两个参数：existingdiagnosticsStorageAccountName  和 existingdiagnosticsStorageResourceGroup  ，指定存储诊断数据的诊断存储帐户。 将诊断存储帐户指定为参数可轻松地跨不同环境更改诊断存储帐户，例如，可能想要使用不同诊断存储帐户进行测试，并且使用另外一个进行生产部署。  
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -129,7 +129,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
 "wadcfgxend": "\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>"
 ```
 
-上述配置中的指标定义 xml 节点是一个重要的配置元素，因为它定义如何聚合和存储之前在 PerformanceCounter 节点中的 xml 中定义的性能计数器。 
+上述配置中的指标定义 xml 节点是一个重要的配置元素，因为它定义如何聚合和存储之前在 PerformanceCounter  节点中的 xml 中定义的性能计数器。 
 
 > [!IMPORTANT]
 > 这些度量值是促使 Azure 门户中生成监视图表和警报的因素。  如果需要在 Azure 门户中查看 VM 监视数据，则必须在诊断配置中包括 **Metrics** 节点以及 *resourceID* 和 **MetricAggregation**。 
@@ -147,7 +147,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
 
 *resourceID* 属性唯一标识订阅中的虚拟机。 请确保使用 subscription() 和 resourceGroup() 函数，使该模板基于要部署到的订阅和资源组自动更新这些值。
 
-如果要在一个循环中创建多个虚拟机，则必须用 copyIndex() 函数填充 resourceID 值，以便正确区分每个 VM。 *xmlCfg* 值可以更新以支持此功能，如下所示：  
+如果要在一个循环中创建多个虚拟机，则必须用 copyIndex() 函数填充 resourceID  值，以便正确区分每个 VM。 *xmlCfg* 值可以更新以支持此功能，如下所示：  
 
 ```json
 "xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
@@ -164,11 +164,11 @@ MetricAggregation 值 *PT1M* 和 *PT1H* 分别表示一分钟的聚合和一小�
 * **V2S**：字符串常数
 * **yyyymmdd**：表开始收集数据的日期
 
-示例：WADMetricsPT1HP10DV2S20151108 包含从 2015 年 11 月 11 日开始 10 天内长达一小时的聚合指标数据    
+示例：WADMetricsPT1HP10DV2S20151108  包含从 2015 年 11 月 11 日开始 10 天内长达一小时的聚合指标数据    
 
 每个 WADMetrics 表都包含以下列：
 
-* **PartitionKey**：分区键基于 resourceID 值构造，用于唯一地标识 VM 资源。 例如： `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **PartitionKey**：分区键基于 resourceID  值构造，用于唯一地标识 VM 资源。 例如： `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
 * **RowKey**：采用 `<Descending time tick>:<Performance Counter Name>` 格式。 递减时间刻度计算公式为最大时间刻度减去聚合期的开始时间。 例如，如果取样期间从 2015 年 11 月 10 日 00:00 (UTC) 开始，则计算公式为 `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`。 对于内存可用字节性能计数器，行键如下所示：`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**：性能计数器的名称。 它与 xml 配置中定义的 *counterSpecifier* 相匹配。
 * **Maximum**：聚合期间性能计数器的最大值。

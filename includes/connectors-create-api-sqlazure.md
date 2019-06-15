@@ -9,11 +9,11 @@ ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
 ms.openlocfilehash: da03c5247b8ebe0a3305b08a05d661264497663f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540781"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67122216"
 ---
 * 如果使用 Azure SQL 数据库，请按照[连接到 Azure SQL 数据库](#connect-azure-sql-db)中的步骤进行操作。 
 
@@ -47,14 +47,14 @@ ms.locfileid: "60540781"
 
    | 属性 | 值 | 详细信息 | 
    |----------|-------|---------| 
-   | 连接名称 | <my-sql-connection> | 连接名称 | 
-   | SQL Server 名称 | <my-sql-server> | SQL Server 名称 |
-   | SQL 数据库名 | <my-sql-database>  | SQL 数据库名称 | 
-   | 用户名 | <my-sql-username> | 用于访问数据库的用户名称 |
-   | 密码 | <my-sql-password> | 用于访问数据库的密码 | 
+   | 连接名称 | <my-sql-connection  > | 连接名称 | 
+   | SQL Server 名称 | <my-sql-server  > | SQL Server 名称 |
+   | SQL 数据库名 | <my-sql-database  >  | SQL 数据库名称 | 
+   | 用户名 | <my-sql-username  > | 用于访问数据库的用户名称 |
+   | 密码 | <my-sql-password  > | 用于访问数据库的密码 | 
    |||| 
 
-2. 完成后，选择“创建”。
+2. 完成后，选择“创建”  。
 
 3. 创建连接后，继续[添加 SQL 触发器](#add-sql-trigger)或[添加 SQL 操作](#add-sql-action)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "60540781"
 
 1. SQL 触发器或操作提示你输入连接信息时，请按照下列步骤操作：
 
-   1. 在触发器或操作中，选择“通过本地数据网关连接”，以便显示 SQL Server 选项。
+   1. 在触发器或操作中，选择“通过本地数据网关连接”  ，以便显示 SQL Server 选项。
 
    2. 创建连接名称。
 
@@ -99,15 +99,15 @@ ms.locfileid: "60540781"
    | 属性 | 值 | 详细信息 | 
    |----------|-------|---------| 
    | 通过本地网关连接 | 首先为 SQL Server 设置选择该选项。 | | 
-   | 连接名称 | <my-sql-connection> | 连接名称 | 
-   | SQL Server 名称 | <my-sql-server> | SQL Server 名称 |
-   | SQL 数据库名 | <my-sql-database>  | SQL 数据库名称 |
-   | 用户名 | <my-sql-username> | 用于访问数据库的用户名称 |
-   | 密码 | <my-sql-password> | 用于访问数据库的密码 | 
+   | 连接名称 | <my-sql-connection  > | 连接名称 | 
+   | SQL Server 名称 | <my-sql-server  > | SQL Server 名称 |
+   | SQL 数据库名 | <my-sql-database  >  | SQL 数据库名称 |
+   | 用户名 | <my-sql-username  > | 用于访问数据库的用户名称 |
+   | 密码 | <my-sql-password  > | 用于访问数据库的密码 | 
    | 身份验证类型 | Windows 或基本 | 可选：使用 SQL server 的身份验证类型 | 
-   | 网关 | <my-data-gateway> | 本地数据网关的名称 | 
+   | 网关 | <my-data-gateway  > | 本地数据网关的名称 | 
    |||| 
 
-2. 完成后，选择“创建”。 
+2. 完成后，选择“创建”  。 
 
 3. 创建连接后，继续[添加 SQL 触发器](#add-sql-trigger)或[添加 SQL 操作](#add-sql-action)。

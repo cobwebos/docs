@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
 ms.openlocfilehash: 5ae0e7855db6bec9f48d2b9511f0d0626d883111
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65561340"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
@@ -37,19 +37,19 @@ ms.locfileid: "65561340"
 转换磁盘后，创建使用转换后磁盘的 VM。 启动并登录到该 VM，完成要上传的 VM 的准备工作。
 
 ### <a name="convert-disk-using-hyper-v-manager"></a>使用 Hyper-V 管理器转换磁盘
-1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，单击“操作” > “编辑磁盘”。
-2. 在“查找虚拟硬盘”屏幕上，找到并选择虚拟磁盘。
-3. 在“选择操作”屏幕上选择“转换”，然后选择“下一步”。
-4. 如果需要从 VHDX 进行转换，请选择“VHD”，并单击“下一步”。
-5. 如果需要从动态扩展磁盘进行转换，请选择“固定大小”，并单击“下一步”。
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，单击“操作” > “编辑磁盘”。  
+2. 在“查找虚拟硬盘”屏幕上，找到并选择虚拟磁盘。 
+3. 在“选择操作”  屏幕上选择“转换”  ，然后选择“下一步”  。
+4. 如果需要从 VHDX 进行转换，请选择“VHD”，并单击“下一步”。  
+5. 如果需要从动态扩展磁盘进行转换，请选择“固定大小”，并单击“下一步”。  
 6. 找到并选择新 VHD 文件的保存路径。
-7. 单击“完成” 。
+7. 单击“完成”  。
 
 >[!NOTE]
 >本文中的命令必须在提升权限的 PowerShell 会话中运行。
 
 ### <a name="convert-disk-by-using-powershell"></a>使用 PowerShell 转换磁盘
-可以使用 Windows PowerShell 中的 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) 命令转换虚拟磁盘。 启动 PowerShell 时，选择“以管理员身份运行”。 
+可以使用 Windows PowerShell 中的 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) 命令转换虚拟磁盘。 启动 PowerShell 时，选择“以管理员身份运行”  。 
 
 以下示例命令从 VHDX 转换为 VHD，从动态扩展磁盘转换为固定大小磁盘：
 
@@ -96,19 +96,19 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
     exit   
     ```
 
-4. 为 Windows 设置协调世界时 (UTC) 时间，并将 Windows 时间 (w32time) 服务的启动类型设置为“自动”：
+4. 为 Windows 设置协调世界时 (UTC) 时间，并将 Windows 时间 (w32time) 服务的启动类型设置为“自动”  ：
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" -Value 1 -Type DWord -force
 
     Set-Service -Name w32time -StartupType Automatic
     ```
-5. 将电源配置文件设置为“高性能”：
+5. 将电源配置文件设置为“高性能”  ：
 
     ```PowerShell
     powercfg /setactive SCHEME_MIN
     ```
-6. 确保将环境变量 TEMP 和 TMP 设为其默认值：
+6. 确保将环境变量 TEMP 和 TMP 设为其默认值   ：
 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
@@ -137,7 +137,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 请确保为远程桌面连接正确配置以下设置：
 
 >[!Note] 
->在这些步骤中运行 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name &lt;对象名称&gt; -value &lt;值&gt; 时，可能会收到错误消息。 可以放心地忽略该错误消息。 它的意思只是域未将该配置推送到组策略对象。
+>在这些步骤中运行 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name &lt;对象名称&gt; -value &lt;值&gt; 时，可能会收到错误消息  。 可以放心地忽略该错误消息。 它的意思只是域未将该配置推送到组策略对象。
 >
 >
 
@@ -296,7 +296,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     ```
     如果存储库已损坏，请参阅 [WMI：存储库是否损坏](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)。
 
-5. 确保任何其他应用程序未使用端口 3389。 此端口用于 Azure 中的 RDP 服务。 可以通过运行 netstat -anob 来查看哪些端口在 VM 上处于使用状态：
+5. 确保任何其他应用程序未使用端口 3389。 此端口用于 Azure 中的 RDP 服务。 可以通过运行  netstat -anob 来查看哪些端口在 VM 上处于使用状态：
 
     ```PowerShell
     netstat -anob
@@ -337,7 +337,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 12. 卸载与物理组件相关的任何其他第三方软件和驱动程序，或卸载任何其他虚拟化技术。
 
 ### <a name="install-windows-updates"></a>安装 Windows 更新
-理想的配置是让计算机的修补程序级别处于最新。 如果这不可能，请确保安装以下更新：
+理想的配置是让计算机的修补程序级别处于最新  。 如果这不可能，请确保安装以下更新：
 
 | 组件               | Binary         | Windows 7 SP1、Windows Server 2008 R2 SP1 | Windows 8、Windows Server 2012               | Windows 8.1、Windows Server 2012 R2 | Windows 10 版本 1607、Windows Server 2016 版本 1607 | Windows 10 版本 1703    | Windows 10 1709、Windows Server 2016 版本 1709 | Windows 10 1803、Windows Server 2016 版本 1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
@@ -379,9 +379,9 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
        
 ### 何时使用 sysprep <a id="step23"></a>    
 
-Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置系统安装，并会删除所有个人数据和重置多个组件，从而为你提供“全新安装体验”。 通常情况下，这样做的前提是，需要创建一个模板，以便通过该模板部署多个具有特定配置的其他 VM。 这称为“通用化映像”。
+Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置系统安装，并会删除所有个人数据和重置多个组件，从而为你提供“全新安装体验”。 通常情况下，这样做的前提是，需要创建一个模板，以便通过该模板部署多个具有特定配置的其他 VM。 这称为“通用化映像”  。
 
-相反，如果只需从一个磁盘创建一个 VM，则不需使用 sysprep。 这种情况下，只需从称之为“专用映像”的磁盘创建 VM 即可。
+相反，如果只需从一个磁盘创建一个 VM，则不需使用 sysprep。 这种情况下，只需从称之为“专用映像”的磁盘创建 VM 即可。 
 
 若要详细了解如何从专用磁盘创建 VM，请参阅：
 
@@ -398,14 +398,14 @@ Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置
 > 按以下步骤运行 sysprep.exe 后，请关闭 VM，在 Azure 中从其创建一个映像，然后再重新打开该 VM。
 
 1. 登录到 Windows VM。
-2. 以管理员身份运行命令提示符。 
-3. 将目录切换到 %windir%\system32\sysprep，并运行 sysprep.exe。
-3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
+2. 以管理员身份运行命令提示符。  
+3. 将目录切换到 %windir%\system32\sysprep，并运行 sysprep.exe   。
+3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。   
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
-4. 在“关机选项”中选择“关机”。
-5. 单击“确定”。
-6. 当 Sysprep 完成后，关闭 VM。 请勿使用“重启”来关闭 VM。
+4. 在“关机选项”中选择“关机”。  
+5. 单击“确定”。 
+6. 当 Sysprep 完成后，关闭 VM。 请勿使用“重启”来关闭 VM。 
 7. 现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](sa-upload-generalized.md)。
 
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 3fcd1e54a8993b2693b169a2c8b4c6e9bca57119
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66393417"
 ---
 # <a name="monitor-cluster-performance"></a>监视群集性能
@@ -30,7 +30,7 @@ ms.locfileid: "66393417"
 | 颜色 | 描述 |
 | --- | --- |
 | 红色 | 主机上至少有一个主组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
-| 橙色 | 在主机上的至少一个辅助组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
+| 橙色 | 主机上至少有一个辅助组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
 | 黄色 | Ambari 服务器已超过 3 分钟没有接收到来自主机的检测信号。 |
 | 绿色 | 正常运行状态。 |
 

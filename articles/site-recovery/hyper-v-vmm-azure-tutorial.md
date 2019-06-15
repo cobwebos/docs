@@ -9,17 +9,17 @@ ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 653db1497fcce5981bba7416f073b0330ca2861f
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66398150"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>设置 VMM 云中的本地 Hyper-V VM 到 Azure 的灾难恢复
 
 本文介绍如何为灾难恢复到 Azure 使用的托管通过 System Center Virtual Machine Manager (VMM)，在本地 HYPER-V Vm 启用复制[Azure Site Recovery](site-recovery-overview.md)服务。 如果不使用 VMM 中，[遵循本教程](hyper-v-azure-tutorial.md)相反。
 
-本文是系列教程的第三篇文章，介绍如何为本地 VMware VM 设置到 Azure 的灾难恢复。 在上一教程中，我们[准备好的本地 HYPER-V 环境](hyper-v-prepare-on-premises-tutorial.md)用于灾难恢复到 Azure。
+本文是系列教程的第三篇文章，介绍如何为本地 VMware VM 设置到 Azure 的灾难恢复。 在上一篇教程中，我们已[准备本地 Hyper-V 环境](hyper-v-prepare-on-premises-tutorial.md)，以便能够灾难恢复到 Azure。
 
 本教程介绍如何执行下列操作：
 
@@ -59,7 +59,7 @@ ms.locfileid: "66398150"
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-在设置源环境时，您在 VMM 服务器上安装 Azure Site Recovery 提供程序和在保管库中注册服务器。 每个 HYPER-V 主机上安装 Azure 恢复服务代理。
+在设置源环境时，您在 VMM 服务器上安装 Azure Site Recovery 提供程序和在保管库中注册服务器。 在每台 Hyper-V 主机上安装 Azure 恢复服务代理。
 
 1. 在中**准备基础结构**，选择**源**。
 2. 在中**准备源**，选择 **+ VMM**添加 VMM 服务器。 在“添加服务器”中，检查“服务器类型”中是否已显示“System Center VMM 服务器”    。
@@ -82,7 +82,7 @@ ms.locfileid: "66398150"
 
 完成注册后，Azure Site Recovery 将检索服务器中的元数据，该 VMM 服务器显示在“Site Recovery 基础结构”  中。
 
-### <a name="install-the-recovery-services-agent-on-hyper-v-hosts"></a>HYPER-V 主机上安装恢复服务代理
+### <a name="install-the-recovery-services-agent-on-hyper-v-hosts"></a>在 Hyper-V 主机上安装恢复服务代理
 
 每个包含想要复制的 Vm 的 HYPER-V 主机上安装代理。
 
@@ -96,7 +96,7 @@ ms.locfileid: "66398150"
 
 1. 选择“准备基础结构” > “目标”。  
 2. 选择在故障转移后要在其中创建 Azure VM 的订阅和资源组 (ContosoRG  )。
-3. 选择**资源管理器**部署模型。
+3. 选择“资源管理器”部署模型  。
 
 Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 

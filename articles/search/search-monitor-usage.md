@@ -12,10 +12,10 @@ ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755057"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>在 Azure 搜索中监视资源使用情况和查询活动
@@ -116,7 +116,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
 | resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
 | operationName |字符串 |“Query.Search” |操作的名称 |
-| operationVersion |string |“2019-05-06” |使用的 api-version |
+| operationVersion |字符串 |“2019-05-06” |使用的 api-version |
 | category |字符串 |“OperationLogs” |常量 |
 | resultType |字符串 |“Success” |可能的值：Success 或 Failure |
 | resultSignature |int |200 |HTTP 结果代码 |
@@ -125,7 +125,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 **属性架构**
 
-| Name | Type | 示例 | 说明 |
+| 名称 | Type | 示例 | 说明 |
 | --- | --- | --- | --- |
 | 描述 |字符串 |“GET /indexes('content')/docs” |操作的终结点 |
 | 查询 |字符串 |"?search=AzureSearch&$count=true&api-version=2019-05-06" |查询参数 |

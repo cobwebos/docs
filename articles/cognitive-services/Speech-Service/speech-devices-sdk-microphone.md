@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237002"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
@@ -31,7 +31,7 @@ ms.locfileid: "65237002"
 |----------|-------------------|-------------------|----------------|----------------|
 |          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
 | \# Mics  | 7                 | 4                 | 4              | 2              |
-| 几何图形 | 6 的外部，1 Center、 半径 = 42.5 mm，均匀分布| 3 个外部，1 Center、 半径 = 42.5 mm，均匀分布 | 长度 = 120 mm 间距 = 40 mm | 间距 = 40 mm |
+| geometry | 6 的外部，1 Center、 半径 = 42.5 mm，均匀分布| 3 个外部，1 Center、 半径 = 42.5 mm，均匀分布 | 长度 = 120 mm 间距 = 40 mm | 间距 = 40 mm |
 
 应根据为每个数组，从 0 增加上面所示的编号排序麦克风通道。  Microsoft 音频堆栈将需要执行回声抵消的音频播放的附加引用流。
 

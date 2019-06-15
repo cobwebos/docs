@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66305057"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
@@ -117,7 +117,7 @@ ms.locfileid: "66305057"
 对于云事件架构中的事件，请使用以下键值：
 
 * EventId
-* 源
+* source
 * EventType
 * EventTypeVersion
 * 事件数据（如 Data.key1）
@@ -129,7 +129,7 @@ ms.locfileid: "66305057"
 值可以是：
 
 * 数字
-* string
+* 字符串
 * boolean
 * 数组
 

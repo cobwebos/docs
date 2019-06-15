@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.openlocfilehash: 8427417c9b579c7dfa21f834ce1ca77099159eb2
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072606"
 ---
 # <a name="voice-first-virtual-assistants-preview-frequently-asked-questions"></a>语音第一个虚拟助手预览：常见问题
@@ -25,7 +25,7 @@ ms.locfileid: "65072606"
 
 **问：什么是直接行语音？**
 
-**答:**`SpeechBotConnector`语音 SDK 中提供了双向的与连接到 Bot Framework 上的直接行语音通道的智能机器人的异步通信。 此通道提供协调的访问语音转文本和文本到语音转换，从 Azure 语音服务，使机器人能够以变得完全中的语音，语音出对话式体验。 与唤醒字词和唤醒 Word 验证的支持，此解决方案使可能生成高度可自定义语音第一个虚拟助理为你的品牌或产品。
+**答:** `SpeechBotConnector`语音 SDK 中提供了双向的与连接到 Bot Framework 上的直接行语音通道的智能机器人的异步通信。 此通道提供协调的访问语音转文本和文本到语音转换，从 Azure 语音服务，使机器人能够以变得完全中的语音，语音出对话式体验。 与唤醒字词和唤醒 Word 验证的支持，此解决方案使可能生成高度可自定义语音第一个虚拟助理为你的品牌或产品。
 
 **问：如何开始使用？**
 

@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 25595127d913d3cd093e0af3d7916e33fc7cb352
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105968"
 ---
 # <a name="get-started-with-the-facebook-connector"></a>Facebook 连接器入门
@@ -31,7 +31,7 @@ ms.locfileid: "62105968"
 将此连接器添加到逻辑应用时，必须授权逻辑应用连接到 Facebook。
 
 1. 登录到 Facebook 帐户
-2. 选择“授权”，允许逻辑应用连接和使用 Facebook。 
+2. 选择“授权”  ，允许逻辑应用连接和使用 Facebook。 
 
 > [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
 > 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 896a5d13279c15f0035f214da3d5a7d7e6f1861f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60758409"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>使用 Jupyter Notebook 和 Kqlmagic 扩展分析 Azure 数据资源管理器中的数据
@@ -42,7 +42,7 @@ Jupyter Notebook 是一种开源 Web 应用程序，可用于创建和共享包�
 
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>连接到 Azure 数据资源管理器 Help 群集
 
-使用以下命令可连接到 Help 群集上托管的 Samples 数据库。 对于非 Microsoft AAD 用户，请将租户名称 `Microsoft.com` 替换为你的 AAD 租户。
+使用以下命令可连接到 Help  群集上托管的 Samples  数据库。 对于非 Microsoft AAD 用户，请将租户名称 `Microsoft.com` 替换为你的 AAD 租户。
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'

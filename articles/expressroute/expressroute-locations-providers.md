@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 06/11/2019
 ms.author: jaredr80
-ms.openlocfilehash: c443d4705da83a43af10763f633f340b1eab69d3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: f7006a8162aab87bc36f3dae034f10daa3f37ac1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478162"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115454"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -92,14 +92,14 @@ ms.locfileid: "66478162"
 | **Dubai2** | du datamena | 阿拉伯联合酋长国北部 | du datamena Orixcom |
 | **都柏林** | Equinix | 北欧 | Colt、eir、Equinix、Interxion、Megaport |
 | **法兰克福** | Interxion | 不适用 | DE CIX、 Interxion |
-| **香港特別行政区** | Equinix | 东亚 | Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
+| **香港特別行政区** | Equinix | 东亚 | Aryaka Networks、 British Telecom、 首席 Telecom、 China Telecom Global、 Equinix、 Megaport、 NTT Communications、 Orange、 PCCW Global Limited、 Tata Communications、 Verizon |
 | **约翰内斯堡** | Teraco | 南非北部 | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
 | **吉隆坡** | TIME dotCom | 不适用 | TIME dotCom |
 | **拉斯维加斯** | 开关 | 不适用 | CenturyLink Cloud Connect、Megaport |
 | **伦敦** | Equinix | 英国南部 | AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telehouse - KDDI、Telenor、Telia Carrier、Verizon、Vodafone、Zayo |
 | **London2** | Telehouse | 英国南部 | IX 市场宣传 Equinix |
 | **洛杉矶** | CoreSite | 不适用 | CoreSite、Equinix、Megaport、Neutrona Networks、NTT、Zayo |
-| **马赛** |Interxion | 法国南部 | Interxion |
+| **马赛** |Interxion | 法国南部 | Interxion、 相机网络 |
 | **墨尔本** | NextDC | 澳大利亚东南部 | AARNet，Devoli，Equinix、 Megaport、 NEXTDC、 Optus、 Telstra Corporation，TPG 电信 |
 | **迈阿密** | Equinix | 不适用 | C3ntro+、Equinix、Megaport、Neutrona Networks |
 | **Montreal** | Cologix | 不适用 | Bell Canada、Cologix、Telus、Zayo |
@@ -180,29 +180,30 @@ ms.locfileid: "66478162"
 | **位置** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
 | **阿姆斯特丹** | Equinix、Telecity | BICS、CloudXpress、Eurofiber、Fastweb S.p.A、Gulf Bridge International、MainOne、Nianet、Post、Proximus、TDC Erhverv、Telecom Italia Sparkle、Telia |
+| **亚特兰大** | Equinix| Crown Castle
 | **开普敦** | Teraco | MTN |
-| **芝加哥** | Equinix | Lightower、 范围企业版、 Windstream |
-| **达拉斯** | Equinix、Megaport | Axtel、c3ntro Telecom、 Cox Business、 Data Foundry 范围企业版、 Transtelco |
+| **芝加哥** | Equinix | Crown 城堡，范围企业版、 Windstream |
+| **达拉斯** | Equinix、Megaport | Axtel、c3ntro Telecom Cox Business、 Crown Castle 数据 Foundry、 范围企业版、 Transtelco |
 | **法兰克福** | Telecity | BICS、Cinia、Nianet、QSC AG |
 | **汉堡** | Equinix | Cinia |
 | **香港特別行政区** | Equinix | Chief、Macroview Telecom |
 | **约翰内斯堡** | Teraco | MTN |
 | **伦敦** | BICS、Equinix、euNetworks、Telecity | Bezeq International Ltd.、 CoreAzure，Telecommunications Limited、 Exponential E、 HSO、 NexGen Networks、 Proximus、 Tamares Telecom、 Zain |
-| **洛杉矶** | Equinix |范围企业版、 Transtelco |
+| **洛杉矶** | Equinix |Crown 城堡，范围企业版、 Transtelco |
 | **马德里** | Level3 | Zertia |
 | **Montreal** | Cologix、Equinix | Airgate Technologies, Inc.Cogeco Peer 1、Rogers、Zirro |
-| **纽约** |Equinix、Megaport | Altice Business、 Lightower、 范围企业版、 Webair |
+| **纽约** |Equinix、Megaport | Altice Business、 Crown Castle 范围企业版、 Webair |
 | **巴黎** | Equinix | Proximus |
 | **魁北克市** | Megaport | Fibrenoire |
 | **圣保罗** | Equinix | Venha Pra Nuvem |
 | **西雅图** |Equinix | Alaska Communications |
-| **硅谷** |Equinix | Cox 业务，范围企业版、 Windstream |
+| **硅谷** |Coresite、 Equinix | Cox Business、 范围企业、 Windstream，X2nsat Inc. |
 | **新加坡** |Equinix |1CLOUDSTAR、BICS、Epsilon Telecommunications Limited、LGA Telecom、United Information Highway (UIH) |
 | **Slough** | Equinix | HSO|
 | **悉尼** | Megaport | Macquarie Telecom Group|
 | **东京** | Equinix | ARTERIA Networks Corporation、BroadBand Tower, Inc. |
-| **多伦多** | Equinix | Airgate Technologies, Inc.Cogeco Peer 1、IVedha Inc、Rogers、Thinktel、Zirro|
-| **华盛顿特区** |Equinix | Altice Business、BICS、Cox Business、Gtt Communications Inc、Epsilon、Telecommunications Limited、Lightower、Masergy、Windstream |
+| **多伦多** | Equinix、Megaport | Airgate Technologies Inc.、 Beanfield Metroconnect、 Cogeco Peer 1、 IVedha Inc、 Rogers、 Thinktel、 Zirro|
+| **华盛顿特区** |Equinix | Altice Business、 BICS，Cox 业务，Crown 城堡，Gtt Communications Inc、 Epsilon Telecommunications Limited、 Masergy、 Windstream |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute 系统集成商
 根据网络的规模，有时，很难启用专用连接来满足需要。 可以与下表中列出的任一系统集成商合作，以帮助将你加入 ExpressRoute。

@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: ed263fec271801ac9c46bbc3125c71ca15b9a330
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153977"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级威胁防护
@@ -34,11 +34,11 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
 1. 在 [https://portal.azure.com](https://portal.azure.com/) 中启动 Azure 门户。
 
-2. 导航到想要保护的 Azure 存储帐户的配置页面。 在“设置”页面中，选择“高级威胁防护”。
+2. 导航到想要保护的 Azure 存储帐户的配置页面。 在“设置”页面中，选择“高级威胁防护”   。
 
-3. 在“高级威胁防护”配置边栏选项卡中
+3. 在“高级威胁防护”配置边栏选项卡中 
     * **打开**高级*威胁防护*
-    * 单击“保存”以保存新的或更新的高级威胁防护策略。 （图中的价格是例如目的。）
+    * 单击“保存”以保存新的或更新的高级威胁防护策略  。 （图中的价格是例如目的。）
 
 ![打开 Azure 存储高级威胁防护](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 

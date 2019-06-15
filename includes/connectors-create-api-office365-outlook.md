@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: b216de0a5094066977467b2899567122d585fb7e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66149736"
 ---
 #### <a name="prerequisites"></a>必备组件
@@ -19,11 +19,11 @@ ms.locfileid: "66149736"
 
 按照以下步骤操作，即可授权逻辑应用连接到 Office 365 帐户：
 
-1. 创建逻辑应用。 在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“office 365”。 选择其中一个触发器或操作：  
+1. 创建逻辑应用。 在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”  ，并在搜索框中输入“office 365”。 选择其中一个触发器或操作：  
     ![Office 365 连接创建步骤](./media/connectors-create-api-office365-outlook/office365-sendemail.png)  
 2. 如果以前尚未创建任何与 Office 365 的连接，系统会提示使用 Office 365 凭据进行登录：  
     ![Office 365 连接创建步骤](./media/connectors-create-api-office365-outlook/office365-signin.png)  
-3. 选择“登录”，并输入用户名和密码。 选择“登录”：  
+3. 选择“登录”  ，并输入用户名和密码。 选择“登录”  ：  
     ![Office 365 连接创建步骤](./media/connectors-create-api-office365-outlook/office365-usernamepassword.png)
    
     这些凭据将用于授权逻辑应用连接到 Office 365 帐户，并访问该帐户。 

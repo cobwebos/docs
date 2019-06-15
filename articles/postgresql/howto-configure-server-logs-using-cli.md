@@ -1,6 +1,6 @@
 ---
-title: 配置和访问 PostgreSQL-使用 Azure CLI 的单个服务器的服务器日志
-description: 本文介绍如何配置和访问 PostgreSQL-使用 Azure CLI 命令行的单个服务器的 Azure 数据库中的服务器日志。
+title: 使用 Azure CLI 配置和访问 PostgreSQL - 单一服务器的服务器日志
+description: 本文介绍了如何使用 Azure CLI 命令行配置和访问 Azure Database for PostgreSQL - 单一服务器中的服务器日志。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4702db31ffeb15481584b9638f5be1aa640ff39e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067211"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
@@ -30,17 +30,17 @@ ms.locfileid: "65067211"
 
 请参阅[自定义服务器配置参数](howto-configure-server-parameters-using-cli.md)，了解详细信息。
 
-## <a name="list-logs"></a>列出的日志
+## <a name="list-logs"></a>列出日志
 若要列出服务器的可用日志文件，请运行 [az postgres server-logs list](/cli/azure/postgres/server-logs) 命令。
 
-可以列出资源组“myresourcegroup”下的服务器“mydemoserver.postgres.database.azure.com”的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件。
+可以列出资源组“myresourcegroup”  下的服务器“mydemoserver.postgres.database.azure.com”  的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件  。
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>从服务器将日志下载到本地
 使用 [az postgres server-logs download](/cli/azure/postgres/server-logs) 命令可下载服务器的单个日志文件。 
 
-使用下列示例，可以将资源组“myresourcegroup”下服务器 mydemoserver.postgres.database.azure.com 的特定日志文件下载到本地环境。
+使用下列示例，可以将资源组“myresourcegroup”下服务器 mydemoserver.postgres.database.azure.com 的特定日志文件下载到本地环境   。
 ```azurecli-interactive
 az postgres server-logs download --name 20170414-mydemoserver-postgresql.log --resource-group myresourcegroup --server mydemoserver
 ```

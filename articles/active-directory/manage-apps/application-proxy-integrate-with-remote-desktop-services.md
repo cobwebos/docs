@@ -16,12 +16,12 @@ ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ca9a7a55f86a92f0c809b6e220245f47dfd39
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233712"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108462"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -29,7 +29,7 @@ ms.locfileid: "66233712"
 
 本文的目标读者为：
 - 想要通过远程桌面服务发布本地应用程序，为最终用户提供更多应用程序的当前应用程序代理客户。
-- 想要使用 Azure AD 应用程序代理减小其部署的受攻击面的当前远程桌面服务客户。 此访问在 RDS 中提供有限的一组双重验证和条件访问控制机制。
+- 想要使用 Azure AD 应用程序代理减小其部署的受攻击面的当前远程桌面服务客户。 这种情况下为 rds 提供了一组有限的双重验证和条件性访问控制
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>应用程序代理如何适应标准 RDS 部署
 
@@ -57,6 +57,8 @@ ms.locfileid: "66233712"
 - 发布 RD Web 时，建议使用相同的内部和外部 FQDN。 如果内部和外部 FQDN 不同，应禁用请求头转换，以免客户端收到无效链接。 
 
 - 在 Internet Explorer 中，启用 RDS ActiveX 外接程序。
+
+- 有关 Azure AD 预身份验证流，用户只能连接到发布给他们中的资源**RemoteApp 和桌面**窗格。 用户无法连接到桌面 using**连接到远程电脑**窗格。
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>部署 RDS 和应用程序代理联合方案
 
@@ -127,7 +129,7 @@ ms.locfileid: "66233712"
 | 预身份验证    | 使用 Internet Explorer 和 RDS ActiveX 外接程序的 Windows 7/10 |
 | 传递 | 支持 Microsoft 远程桌面应用程序的任何其他操作系统 |
 
-相比传递流，预身份验证流可提供更多的安全优势。 使用预身份验证，你可以将单一登录、条件性访问和双重验证等 Azure AD 身份验证功能应用于本地资源。 此外，你还可以确保只有经过身份验证的流量才能访问你的网络。
+相比传递流，预身份验证流可提供更多的安全优势。 使用预身份验证可以为你的本地资源使用单一登录、 条件性访问和双重验证等的 Azure AD 身份验证功能。 此外，你还可以确保只有经过身份验证的流量才能访问你的网络。
 
 若要使用传递身份验证，本文列出的步骤仅有下面两处修改：
 1. 在[发布 RD 主机终结点](#publish-the-rd-host-endpoint)步骤 1 中，将预身份验证方法设置为“传递”  。

@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: e05e2f2d04aeb572307f8114ca80f148b3d50e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61370696"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-mysql-connector.md)
 > * [当前版本](connector-mysql.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "61370696"
 
 可以将数据从 MySQL 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 MySQL 连接器支持 5.6 和5.7 版本的 MySQL。
+具体而言，此 MySQL 连接器支持 5.6 和5.7 版本的 MySQL  。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -141,7 +141,7 @@ MySQL 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 MySQL 数据集支持的属性列表。
 
-要从 MySQL 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+要从 MySQL 复制数据，请将数据集的 type 属性设置为“RelationalTable”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -171,7 +171,7 @@ MySQL 链接的服务支持以下属性：
 
 ### <a name="mysql-as-source"></a>以 MySQL 作为源
 
-要从 MySQL 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+要从 MySQL 复制数据，请将复制活动中的源类型设置为“RelationalSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

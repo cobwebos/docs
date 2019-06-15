@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 3ceaed2b1e27a1f5b910865f6e9d0e70ef347b71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbe6fe25b5ff0cd5148e3bba22dec4648399510d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60515398"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072308"
 ---
 # <a name="webhooks-for-speech-services"></a>语音服务的 Webhook
 
@@ -39,7 +39,7 @@ Webhook 就像允许应用程序接受语音服务中的数据变为可用时的
 
 让我们创建脱机的脚本的 webhook。 方案： 用户已是他们想要使用 Batch 脚本 API 以异步方式转录的长时间运行音频文件。 
 
-若要创建 web 挂钩 POST https://<region>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
+可以通过 https:// 在 POST 请求创建 Webhook\<区域\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks。
 
 请求的配置参数以 JSON 形式提供：
 
@@ -124,19 +124,19 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
 > [!Note] 
 > 在上面的示例中，区域是 'westus'。 这应替换为已在 Azure 门户中创建您的语音服务资源的区域。
 
-开机自检 https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping正文： 空
+开机自检 https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping 正文： 空
 
 将 POST 请求发送到已注册的 URL。 该请求包含`X-MicrosoftSpeechServices-Event`标头值 ping。 如果使用密钥注册 webhook，它将包含`X-MicrosoftSpeechServices-Signature`标头与使用 HMAC 密钥作为机密的有效负载的 SHA256 哈希。 哈希值是 Base64 编码。 
 
-开机自检 https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test正文： 空
+开机自检 https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test 正文： 空
 
 如果订阅的事件类型 （脚本） 的实体在系统中存在并处于相应状态，请将 POST 请求发送到已注册的 URL。 将会调用 web 挂钩的最后一个实体中生成负载。 如果没有实体存在，将使用 204 响应 POST。 如果可以进行测试请求，它将使用 200 响应。 请求正文是形状的相同，如 web 挂钩已订阅 （例如脚本） 的特定实体的 GET 请求中所示。 此请求将具有`X-MicrosoftSpeechServices-Event`和`X-MicrosoftSpeechServices-Signature`根据前面所述的标头。
 
 ### <a name="run-a-test"></a>运行测试
 
-可进行快速测试使用网站 https://bin.webhookrelay.com。 在这里，你可以获取调用后将作为参数传递给用于创建文档中前面所述的 webhook HTTP POST 的 Url。
+可进行快速测试使用网站 https://bin.webhookrelay.com 。 在这里，你可以获取调用后将作为参数传递给用于创建文档中前面所述的 webhook HTTP POST 的 Url。
 
-单击创建存储桶，然后按照屏幕说明进行操作以获取挂钩。 然后使用此页中提供的信息来注册语音服务挂钩。 中继的有效负载消息的响应的脚本看起来完成，如下所示：
+单击创建存储桶，然后按照屏幕说明进行操作以获取挂钩。 然后使用此页中提供的信息来注册语音服务挂钩。 -在脚本完成响应 – 中继消息的负载如下所示：
 
 ```json
 {

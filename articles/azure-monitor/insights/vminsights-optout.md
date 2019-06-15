@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
 ms.openlocfilehash: 0f35ea3e35277ee7f1afd8278a31f45ed20c6995
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522120"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>如何在用于 VM 的 Azure Monitor（预览版）中禁用虚拟机监视
@@ -39,7 +39,7 @@ ms.locfileid: "65522120"
 * 如果使用 Log Analytics 工作区来支持其他监视解决方案以及从其他源收集数据，则可以从工作区中删除用于 VM 的 Azure Monitor 解决方案组件，而不会给工作区造成中断或影响。  
 
 >[!NOTE]
-> 从工作区中删除解决方案组件后，可以继续查看 Azure VM 的运行状况；具体而言，在门户中导航到任一视图时，可以查看性能和映射数据。 一段时间后，数据最终会在“性能”和“映射”视图中停止显示；但是，“运行状况”视图将继续显示 VM 的运行状况。 所选 Azure VM 中会提供“立即试用”选项，让你在将来重新启用监视。  
+> 从工作区中删除解决方案组件后，可以继续查看 Azure VM 的运行状况；具体而言，在门户中导航到任一视图时，可以查看性能和映射数据。 一段时间后，数据最终会在“性能”和“映射”视图中停止显示；但是，“运行状况”视图将继续显示 VM 的运行状况。 所选 Azure VM 中会提供“立即试用”选项，让你在将来重新启用监视。   
 
 ## <a name="complete-removal-of-azure-monitor-for-vms"></a>完全删除用于 VM 的 Azure Monitor
 
@@ -50,11 +50,11 @@ ms.locfileid: "65522120"
 >
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入 Log Analytics。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
+2. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入 Log Analytics。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”  。
 3. 在 Log Analytics 工作区列表中，选择载入用于 VM 的 Azure Monitor 时所选的工作区。
-4. 在左窗格中，选择“解决方案”。  
-5. 在解决方案列表中选择“InfrastructureInsights(工作区名称)”，然后在解决方案的“概述”页上，单击“删除”。  出现确认提示时，请单击“是”。  
-6. 在解决方案列表中选择“ServiceMap(工作区名称)”，然后在解决方案的“概述”页上，单击“删除”。  出现确认提示时，请单击“是”。  
+4. 在左窗格中，选择“解决方案”  。  
+5. 在解决方案列表中选择“InfrastructureInsights(工作区名称)”，然后在解决方案的“概述”页上，单击“删除”。     出现确认提示时，请单击“是”。   
+6. 在解决方案列表中选择“ServiceMap(工作区名称)”，然后在解决方案的“概述”页上，单击“删除”。     出现确认提示时，请单击“是”。   
 
 如果在载入用于 VM 的 Azure Monitor 之前，未为工作区中基于 Windows 或 Linux 的 VM [启用性能计数器收集](vminsights-enable-overview.md#performance-counters-enabled)，则需要遵循[此处](../platform/data-sources-performance-counters.md#configuring-performance-counters)所述的适用于 Windows 和 Linux 的步骤，来禁用这些规则。
 
@@ -66,8 +66,8 @@ ms.locfileid: "65522120"
 >如果虚拟机受 Azure 自动化的管理并用于协调过程、管理配置或管理更新，或者受 Azure 安全中心的管理并用于安全管理和威胁检测，则不应删除 Log Analytics 代理。 否则，会阻止这些服务和解决方案主动管理你的 VM。 
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。 
-2. 在 Azure 门户中，选择“虚拟机”。 
+2. 在 Azure 门户中，选择“虚拟机”  。 
 3. 从列表中选择一个虚拟机。 
-4. 在左窗格中选择“扩展”，然后在“扩展”页中选择“DependencyAgent”。
-5. 在“扩展属性”页中，单击“卸载”。
-6. 在“扩展”页中选择“MicrosoftMonitoringAgent”，然后在“扩展属性”页中单击“卸载”。  
+4. 在左窗格中选择“扩展”，然后在“扩展”页中选择“DependencyAgent”。   
+5. 在“扩展属性”页中，单击“卸载”。 
+6. 在“扩展”页中选择“MicrosoftMonitoringAgent”，然后在“扩展属性”页中单击“卸载”。     

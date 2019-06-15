@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
 ms.openlocfilehash: cb7a13d9abcf7c677d51f03df002ea06b543014e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232476"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>计费和成本管理自动化方案
@@ -52,7 +52,7 @@ ms.locfileid: "65232476"
 | 预留建议 |                           |                  |           X          |                  |                    |           |
 | 预留详细信息         |                           |                  |           X          |         X        |                    |           |
 | 预留摘要       |                           |                  |           X          |         X        |                    |           |
-| 使用情况详细信息               |             X             |         X        |           X          |         X        |          X         |     X     |
+| 使用详情               |             X             |         X        |           X          |         X        |          X         |     X     |
 | 计费周期             |             X             |         X        |           X          |         X        |                    |           |
 | 发票                    |             X             |         X        |           X          |         X        |                    |           |
 | RateCard                    |             X             |                  |           X          |         X        |          X         |           |
@@ -66,11 +66,11 @@ ms.locfileid: "65232476"
 ### <a name="consumption"></a>消耗
 除非另有说明，否则 Web 直连客户和企业客户可使用下面的所有 API：
 
--   [预算 API](https://docs.microsoft.com/rest/api/consumption/budgets)（仅限企业客户）：创建资源、资源组或计费计量的成本预算或使用情况预算。 创建预算后，可以将警报配置为，在超出定义的预算阈值时发出通知。 还可以配置在达到预算金额时采取的操作。
+-   [预算 API](https://docs.microsoft.com/rest/api/consumption/budgets)（仅限企业客户  ）：创建资源、资源组或计费计量的成本预算或使用情况预算。 创建预算后，可以将警报配置为，在超出定义的预算阈值时发出通知。 还可以配置在达到预算金额时采取的操作。
 
 -   [市场费用 API](https://docs.microsoft.com/rest/api/consumption/marketplaces)：获取所有 Azure 市场资源（Azure 合作伙伴产品/服务）的费用和使用情况数据。 使用此数据，可以计算所有市场资源的费用总和，也可以调查特定资源的费用/使用情况。
 
--   [价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet)（仅限企业客户）：获取所有计量的自定义定价。 企业可以将此数据与使用情况详细信息和市场使用情况信息相结合，从而根据使用情况和市场数据来计算费用。 
+-   [价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet)（仅限企业客户  ）：获取所有计量的自定义定价。 企业可以将此数据与使用情况详细信息和市场使用情况信息相结合，从而根据使用情况和市场数据来计算费用。 
 
 -   [预留建议 API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations)：获取与购买虚拟机预留实例相关的建议。 建议有助于分析预期费用节省情况和购买金额。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](billing-reservation-apis.md)。
 

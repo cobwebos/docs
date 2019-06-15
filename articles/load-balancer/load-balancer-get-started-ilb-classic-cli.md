@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 991e6554df62591dea5c126f8ea82704373d6ffd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60781233"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>开始使用 Azure 经典 CLI 创建内部负载均衡器
@@ -75,7 +75,7 @@ azure service internal-load-balancer add --serviceName mytestcloud --internalLBN
 
 有关详细信息，请查看 `azure service internal-load-balancer --help` 。
 
-可以使用命令 `azure service internal-load-balancer list` 云服务名称查看内部负载均衡器属性。
+可以使用命令 `azure service internal-load-balancer list` 云服务名称  查看内部负载均衡器属性。
 
 下面是数据的示例：
 
@@ -98,7 +98,7 @@ azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 
 
 ### <a name="step-3"></a>步骤 3
 
-使用 `azure vm show` 虚拟机名称验证负载均衡器配置
+使用 `azure vm show` 虚拟机名称  验证负载均衡器配置
 
 ```azurecli
 azure vm show DB1

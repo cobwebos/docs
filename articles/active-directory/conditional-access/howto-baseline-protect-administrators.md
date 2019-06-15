@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1ce48126c3e8867ac7f2696d8cf7db992a9a60a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 4f8b7f281ad5ed8424110696544ffdb49e50ce59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003276"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112431"
 ---
 # <a name="baseline-policy-require-mfa-for-admins"></a>基准策略：要求管理员进行 MFA
 
@@ -78,4 +78,4 @@ ms.locfileid: "66003276"
 
 * [条件性访问基线保护策略](concept-baseline-protection.md)
 * [保护标识基础结构的五个步骤](../../security/azure-ad-secure-steps.md)
-* [什么是 Azure Active Directory 中的条件访问？](overview.md)
+* [什么是 Azure Active Directory 中条件性访问？](overview.md)

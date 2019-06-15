@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba9deb00b885dad1d69eb38d4977aafd3d80ab91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 902696e35a2447b67dab74b73794b80ad5e26511
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60468015"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083737"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 ## <a name="overview"></a>概述
@@ -36,13 +36,13 @@ ms.locfileid: "60468015"
 * 要使所有人都能访问新的应用程序，需要向他们分发凭据。
 * 每个共享的应用程序可能都需要唯一的一组共享凭据，而用户必须记住多组凭据。 在用户必须记住许多凭据时，他们会依靠有风险的做法，风险就会随之增加。 （例如写下密码）。
 * 不知道谁有权访问应用程序。
-* 不知道谁访问了应用程序。
+* 不知道谁访问了  应用程序。
 * 需要删除某个应用程序的访问权限时，必须更新凭据，并将凭据重新分发给需要访问该应用程序的所有人。
 
 ## <a name="azure-active-directory-account-sharing"></a>Azure Active Directory 帐户共享
 Azure AD 提供使用共享帐户的新方法，从而可以消除这些缺点。
 
-通过使用访问面板并选择最适合该应用程序的单一登录类型，Azure AD 管理员可以配置用户可访问的应用程序。 在这些类型中，基于密码的单一登录可在登录该应用的过程中，让 Azure AD 充当某种“代理”。
+通过使用访问面板并选择最适合该应用程序的单一登录类型，Azure AD 管理员可以配置用户可访问的应用程序。 在这些类型中，基于密码的单一登录  可在登录该应用的过程中，让 Azure AD 充当某种“代理”。
 
 用户使用他们的组织帐户登录一次即可。 此帐户与他们平时用来访问桌面或电子邮件的帐户相同。 他们只能发现和访问分配给他们的那些应用程序。 使用共享帐户时，此应用程序列表可以包含任意数目的共享凭据。 最终用户不需要记住或写下他们可能要使用的多个帐户。
 

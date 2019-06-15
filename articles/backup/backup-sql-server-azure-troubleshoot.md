@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/27/2019
 ms.author: anuragm
 ms.openlocfilehash: 8459bb451c4ff462ee816b986cafdbf776603917
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66306965"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>排查在 Azure 上备份 SQL Server 的问题
@@ -94,7 +94,7 @@ ms.locfileid: "66306965"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 用于恢复的日志备份包含大容量日志更改。 它不能用于在任意点根据 SQL 指导原则时间停止。 | 如果数据库是在大容量日志的恢复模式下，大容量日志事务和下一个日志事务之间的数据无法恢复。 | 选择一个不同点的恢复时间。 [了解详细信息](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+| 用于恢复的日志备份包含批量记录的更改。 它不能用来按照 SQL 准则随时停止。 | 如果数据库是在大容量日志的恢复模式下，大容量日志事务和下一个日志事务之间的数据无法恢复。 | 选择一个不同点的恢复时间。 [了解详细信息](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
 
 
 ## <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError

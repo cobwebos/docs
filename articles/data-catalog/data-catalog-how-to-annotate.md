@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 18dfd9eb66c1dc71ecb14bb748d9cdd6afeb00a7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953170"
 ---
 # <a name="how-to-annotate-data-sources"></a>如何批注数据源
@@ -41,7 +41,7 @@ ms.locfileid: "65953170"
 | 标记（用户标记） |可在数据资产和属性/列级别中提供标记。 用户标记是用户定义的标签，用于对数据资产或属性进行分类。 |
 | 标记（术语表标记） |可在数据资产和属性/列级别中提供标记。 术语表标记是集中定义的术语表术语，可用于通过常见业务分类对数据资产或属性进行分类。 有关详细信息，请参阅[如何设置受管标记的业务术语表](data-catalog-how-to-business-glossary.md) |
 | 专家 |可在数据资产级别提供专家。 专家会使用数据方面的专业观点来标识用户或用户组，还可作为发现已注册数据源和具有现有批注未解问题的用户的联系点。 |
-| 请求访问 |可在数据资产级别提供请求访问权限信息。 此信息为发现没有访问权限的数据源的用户提供。 用户可输入授予访问权限的用户或用户组的电子邮件地址、用户需要获取访问权限的进程 URL 或工具或以文本格式输入进程本身。 |
+| 请求访问权限 |可在数据资产级别提供请求访问权限信息。 此信息为发现没有访问权限的数据源的用户提供。 用户可输入授予访问权限的用户或用户组的电子邮件地址、用户需要获取访问权限的进程 URL 或工具或以文本格式输入进程本身。 |
 | 文档 |可在数据资产级别提供文档。 资产文档为格式文本信息，可包含连接和图像，提供无法通过描述和标记传达的所有信息。 |
 
 ## <a name="annotating-multiple-assets"></a>对多个资产进行批注

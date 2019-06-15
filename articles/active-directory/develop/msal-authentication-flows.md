@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9a6f162a10408469669cf40b29efc6d2903944
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 612bdd2a5813237f05e9a30a0c90c3b643ece4b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546050"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111451"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -80,7 +80,7 @@ MSAL.js 中的交互式调用的详细信息，请阅读[提示 MSAL.js 交互�
 
 ## <a name="on-behalf-of"></a>上代表的
 
-但 msal 也支持[OAuth 2 上代表的身份验证流](v2-oauth2-on-behalf-of-flow.md)。  当应用程序调用服务/web API，这又需要调用另一个服务/web API 时使用此流。 思路是通过请求链传播委托用户标识和权限。 对于中间层服务将经过身份验证请求发送到下游服务，它需要保护来自 Microsoft 标识平台，代表用户的访问令牌。
+但 msal 也支持[OAuth 2 上代表的身份验证流](v2-oauth2-on-behalf-of-flow.md)。  当应用程序调用服务/web API，这又需要调用另一个服务/web API 时使用此流。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，该服务需要代表用户保护 Microsoft 标识平台提供的访问令牌。
 
 ![代理流](media/msal-authentication-flows/on-behalf-of.png)
 
@@ -126,7 +126,7 @@ MSAL.NET 支持两种类型的客户端凭据。 这些客户端凭据需要注�
 
 ![设备代码流](media/msal-authentication-flows/device-code.png)
 
-1. 每当用户身份验证是必需的应用程序提供的代码并要求用户使用其他设备 （如连接到 internet 的智能手机） 来导航到的 URL (例如， https://microsoft.com/devicelogin)，将提示用户输入的代码。 完成后，web 页面将引导用户完成了正常的身份验证体验，包括许可提示和多重身份验证，如有必要。
+1. 每当用户身份验证是必需的应用程序提供的代码并要求用户使用其他设备 （如连接到 internet 的智能手机） 来导航到的 URL (例如， https://microsoft.com/devicelogin) ，将提示用户输入的代码。 完成后，web 页面将引导用户完成了正常的身份验证体验，包括许可提示和多重身份验证，如有必要。
 
 2. 身份验证成功后的命令行应用将收到通过返回通道所需的标记并将其用于执行其所需的 web API 调用。
 
@@ -152,7 +152,7 @@ MSAL.NET 支持两种类型的客户端凭据。 这些客户端凭据需要注�
 
 用于为.NET Framework、.NET Core 和通用 Windows 平台的平台编写的应用程序是 IWA。
 
-IWA 未跳过 MFA （多重身份验证）。 如果配置了 MFA，IWA 可能会失败，如果需要 MFA 质询，因为 MFA 需要用户交互。 这个是比较棘手。 IWA 是非交互式的但两个身份验证 (2FA) 需要用户交互功能。 您不控制当标识提供者请求使用 2FA 来执行时，租户管理员。 我们观察值，从 2FA 时需要时通过 VPN 未连接到公司网络，并通过 VPN 连接时，有时甚至从不同国家/地区，登录。 不要指望具有确定性的一组规则，Azure Active Directory 使用 AI 来不断了解是否需要使用 2FA。 应回退到用户提示 (https://aka.ms/msal-net-interactive)如果 IWA 失败。
+IWA 未跳过 MFA （多重身份验证）。 如果配置了 MFA，IWA 可能会失败，如果需要 MFA 质询，因为 MFA 需要用户交互。 这个是比较棘手。 IWA 是非交互式的但两个身份验证 (2FA) 需要用户交互功能。 您不控制当标识提供者请求使用 2FA 来执行时，租户管理员。 我们观察值，从 2FA 时需要时通过 VPN 未连接到公司网络，并通过 VPN 连接时，有时甚至从不同国家/地区，登录。 不要指望具有确定性的一组规则，Azure Active Directory 使用 AI 来不断了解是否需要使用 2FA。 应回退到用户提示 (https://aka.ms/msal-net-interactive) 如果 IWA 失败。
 
 颁发机构时构造公共客户端应用程序必须被传递：
 - 租户 (窗体`https://login.microsoftonline.com/{tenant}/`其中`tenant`是 guid 表示的租户 ID 或与租户关联的域。

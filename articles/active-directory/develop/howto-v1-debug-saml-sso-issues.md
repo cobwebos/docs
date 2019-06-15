@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a06aeee1a7d9635d625edbeb2ff57a514a33a84
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 0273a0d35d2b4d69f74b1acd8bc2b1d7174810cb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962731"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111486"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
@@ -46,7 +46,7 @@ ms.locfileid: "65962731"
 1. 在左侧边栏选项卡，选择**Azure Active Directory**，然后选择**企业应用程序**。 
 1. 从企业应用程序列表中，选择应用程序为想要测试单一登录，然后在左侧选择的选项从**单一登录**。
 1. 若要打开的基于 SAML 的单一登录测试体验，请转到**单一登录测试**（步骤 5）。 如果**测试**按钮将灰显，则需要首次填写，然后保存所需的属性**基本 SAML 配置**部分。
-1. 在“测试单一登录”边栏选项卡中，使用企业凭据登录到目标应用程序。 可以当前用户或其他用户的身份登录。 如果以其他用户的身份登录，系统会提示进行身份验证。
+1. 在“测试单一登录”边栏选项卡中，使用企业凭据登录到目标应用程序。  可以当前用户或其他用户的身份登录。 如果以其他用户的身份登录，系统会提示进行身份验证。
 
     ![“测试 SAML”页](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
 
@@ -78,9 +78,9 @@ ms.locfileid: "65962731"
 1. 复制页面右下角的错误消息。 错误消息中包含：
     - CorrelationID 和 Timestamp。 创建 Microsoft 支持案例时，这些值非常重要，因为它们可以帮助工程师识别问题，并提供问题的准确解决方法。
     - 指明问题根本原因的陈述。
-1. 返回 Azure AD 并找到“测试单一登录”边栏选项卡。
-1. 在“获取解决方法指导”上面的文本框中，粘贴该错误消息。
-1. 单击“获取解决方法指导”显示解决问题的步骤。 该指导可能需要 SAML 请求或 SAML 响应中的信息。 如果您不使用我的应用安全登录扩展，则可能需要一种工具如[Fiddler](https://www.telerik.com/fiddler)检索 SAML 请求和响应。
+1. 返回 Azure AD 并找到“测试单一登录”边栏选项卡。 
+1. 在“获取解决方法指导”上面的文本框中，粘贴该错误消息。 
+1. 单击“获取解决方法指导”显示解决问题的步骤。  该指导可能需要 SAML 请求或 SAML 响应中的信息。 如果您不使用我的应用安全登录扩展，则可能需要一种工具如[Fiddler](https://www.telerik.com/fiddler)检索 SAML 请求和响应。
 1. 验证 SAML 请求中的目标对应于 SAML 单一登录服务 URL 从 Azure AD 获取。
 1. 验证 SAML 请求中的颁发者已配置 Azure AD 中应用程序相同的标识符。 Azure AD 使用颁发者在目录中查找应用程序。
 1. 验证 AssertionConsumerServiceURL 是应用程序能够接收来自 Azure AD 的 SAML 令牌。 您可以在 Azure AD 中配置此值，但并不总是这样如果它是 SAML 请求的一部分。
@@ -94,7 +94,7 @@ ms.locfileid: "65962731"
 
 1. 如果应用程序在 Azure AD 库中，验证已按照用于与 Azure AD 集成应用程序的所有步骤。 若要查找应用程序的集成说明，请参阅 [SaaS 应用程序集成教程列表](../saas-apps/tutorial-list.md)。
 1. 检索 SAML 响应。
-    - 如果已安装“我的应用安全登录扩展”，请在“测试单一登录”边栏选项卡中单击“下载 SAML 响应”。
+    - 如果已安装“我的应用安全登录扩展”，请在“测试单一登录”边栏选项卡中单击“下载 SAML 响应”。  
     - 如果未安装该扩展，请使用某种工具（例如 [Fiddler](https://www.telerik.com/fiddler)）来检索 SAML 响应。 
 1. 请注意 SAML 响应令牌中的以下元素：
    - NameID 用户唯一标识符值和格式

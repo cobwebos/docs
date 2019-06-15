@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3f21f552add551ac2434618b184eb18c53ad5be
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 21136046bad8cb58432de367f0de06d1d0457eec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752237"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083786"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -270,7 +270,7 @@ ms.locfileid: "66752237"
 配置身份验证方法 | 全局管理员角色 | 
 读取所有配置 | 全局管理员角色 | 
 
-## <a name="security---conditional-access"></a>安全性 - 条件性访问
+## <a name="security---conditional-access"></a>安全性-条件性访问
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -288,7 +288,7 @@ ms.locfileid: "66752237"
 管理命名位置 | 条件访问管理员 | 安全管理员
 管理使用条款 | 条件访问管理员 | 安全管理员
 读取所有配置 | 安全读取者 | 安全管理员
-读取命名位置 | 安全读取者 | 条件访问管理员、安全管理员
+读取命名位置 | 安全读取者 | 条件性访问管理员、 安全管理员
 
 ## <a name="security---identity-security-score"></a>安全性 - 标识安全分数
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
 ms.openlocfilehash: 49e8fbef7af16e109c1e9f1e0d8c9aab1a008e21
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258008"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
@@ -159,7 +159,7 @@ Ambari Web UI 是 HDInsight 群集上可用`https://CLUSTERNAME.azurehdinsight.n
     |打开维护模式|隐藏主机的警报。 如果正在执行生成了警报的操作，则应当启用此模式。 例如，停止和启动服务。|
     |关闭维护模式|返回主机恢复正常警报功能。|
     |停止|停止主机上的 DataNode 或 NodeManagers。|
-    |开始|启动主机上的 DataNode 或 NodeManagers。|
+    |Start|启动主机上的 DataNode 或 NodeManagers。|
     |重新启动|停止并启动主机上的 DataNode 或 NodeManagers。|
     |解除授权|从群集中删除主机。 **在 HDInsight 群集上不使用此操作。**|
     |重用|以前已停用将主机添加到群集。 **在 HDInsight 群集上不使用此操作。**|

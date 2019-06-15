@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5def46b6c12dc08c273ea7334516b63b7606477f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c371254f344b321969dcc9b3c36212b7536aa95a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452817"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109003"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 术语表
 ### <a name="at-risk-user"></a>有风险（用户）
@@ -35,7 +35,7 @@ ms.locfileid: "60452817"
 Azure Active Directory 的安全模块，提供合并的视图用于洞察影响组织标识的风险事件和潜在漏洞。
 
 ### <a name="conditional-access"></a>条件性访问
-用于保护资源访问的策略。 条件性访问规则存储在 Azure Active Directory 中，在授予资源访问权限之前由 Azure AD 评估。  示例规则包括根据用户的位置、设备运行状况或用户身份验证方法来限制访问。
+用于保护资源访问的策略。 条件性访问规则存储在 Azure Active Directory 中，并授予对资源的访问之前由 Azure AD 进行评估。  示例规则包括根据用户的位置、设备运行状况或用户身份验证方法来限制访问。
 
 ### <a name="credentials"></a>凭据
 包含标识以及用于获取访问本地和网络资源的身份证明的信息。 凭据的示例包括用户名和密码、智能卡与证书。
@@ -146,7 +146,7 @@ Identity Protection 用户手动设置的风险事件状态，指示用户已在
 请参阅“风险级别（登录）”
 
 ### <a name="sign-in-risk-policy"></a>登录风险策略
-一个条件性访问策略，可评估特定登录的风险，根据预先定义的条件和规则来应用缓解措施。
+条件性访问策略的评估特定登录的风险，并根据预先定义的条件和规则应用缓解措施。
 
 ### <a name="user-compromise-risk"></a>用户泄漏风险
 请参阅“风险级别（用户入侵）”
@@ -155,7 +155,7 @@ Identity Protection 用户手动设置的风险事件状态，指示用户已在
 请参阅“风险级别（用户入侵）”。
 
 ### <a name="user-risk-policy"></a>用户风险策略
-一个条件性访问策略，可根据预先定义的条件和规则来评估登录并应用缓解措施。
+条件性访问策略，登录会考虑应用缓解措施根据预先定义的条件和规则。
 
 ### <a name="users-flagged-for-risk"></a>已标记为存在风险的用户
 存在活动或已补救的风险事件的用户

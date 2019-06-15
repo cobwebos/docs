@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
 ms.openlocfilehash: 7f33312d0a5fbe383d438408d471dd9ae09d0332
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156241"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure 中虚拟机的区域和可用性
@@ -40,7 +40,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 区域对的示例包括：
 
-| 主分区 | 辅助 |
+| 基本 | 辅助 |
 |:--- |:--- |
 | 美国西部 |美国东部 |
 | 北欧 |西欧 |
@@ -63,7 +63,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
   * 在创建存储帐户时所在的区域复制数据三次。
 * 区域冗余存储 (ZRS)
   * 在两到三个设施之间复制数据三次（在单个区域内或两个区域之间）。
-* 异地冗余存储(GRS)
+* 异地冗余存储 (GRS)
   * 将数据复制到距主要区域数百英里以外的次要区域。
 * 读取访问异地冗余存储 (RA-GRS)
   * 与 GRS 一样，可将数据复制到次要区域，但此外还提供对次要位置中数据的只读访问权限。
@@ -72,8 +72,8 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 | 复制策略 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 数据在多个设施之间进行复制。 |“否” |是 |是 |“是” |
-| 可以从辅助位置和主位置读取数据。 |“否” |否 |否 |“是” |
+| 数据在多个设施之间进行复制。 |否 |是 |是 |是 |
+| 可以从辅助位置和主位置读取数据。 |否 |否 |否 |是 |
 | 在单独的节点上维护的数据副本数。 |3 |3 |6 |6 |
 
 可以在[此处](../articles/storage/common/storage-redundancy.md)详细了解 Azure 存储复制选项。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../articles/virtual-machines/windows/managed-disks-overview.md)。

@@ -16,12 +16,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be6fc2b7d6da85778524cb8986f399c341370c1
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 4b4f1563aa0437cd45c297b95a83119318a24624
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307046"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109594"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD 标识管理？
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) 标识管理可平衡的正确过程和可见�
 
 组织可以通过[动态组](../users-groups-roles/groups-dynamic-membership.md)等技术，并结合 [SaaS 应用](../saas-apps/tutorial-list.md)的用户预配或者[与 SCIM集成的应用](../manage-apps/use-scim-to-provision-users-and-groups.md)，将访问生命周期过程自动化。  组织还可以控制哪些[来宾用户有权访问本地应用程序](../b2b/hybrid-cloud-to-on-premises.md)。  然后，可以使用 [Azure AD 访问评审](access-reviews-overview.md)定期评审这些访问权限。
 
-当用户尝试访问应用程序时，Azure AD 会实施[条件访问](/azure/active-directory/conditional-access/)策略。 例如，条件访问策略可以显示[使用条款](../conditional-access/terms-of-use.md)，并确保用户在访问应用程序之前[同意这些条款](../conditional-access/require-tou.md)。
+当用户尝试访问应用程序时，Azure AD 强制实施[条件性访问](/azure/active-directory/conditional-access/)策略。 例如，条件性访问策略可以包括显示[使用条款](../conditional-access/terms-of-use.md)并[确保用户已同意这些条款](../conditional-access/require-tou.md)之前无法访问某个应用程序。
 
 ## <a name="privileged-access-lifecycle"></a>特权访问权限生命周期
 
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) 标识管理可平衡的正确过程和可见�
 
 ![特权访问权限生命周期](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azure 和其他 Microsoft Online Services 中的资源访问权限的其他定制控制措施。  Azure AD PIM 提供的实时访问和角色更改警报功能，以及多重身份验证和条件访问，共同提供了一套综合性的监管控制措施，可帮助保护公司的资源（目录、Office 365 和 Azure 资源角色）。 与处理其他形式的访问权限一样，组织可以使用访问评审来针对充当管理员角色的所有用户配置定期的访问权限重新认证。
+Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azure 和其他 Microsoft Online Services 中的资源访问权限的其他定制控制措施。  在实时访问和角色更改警报提供的 Azure AD PIM，除了多重身份验证和条件性访问功能，提供了全面的管理控制，以帮助安全公司资源 （目录中，Office 365 和 Azure 资源角色）。 与处理其他形式的访问权限一样，组织可以使用访问评审来针对充当管理员角色的所有用户配置定期的访问权限重新认证。
 
 ## <a name="getting-started"></a>入门
 

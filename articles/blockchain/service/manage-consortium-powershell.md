@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: 4bb72bc3fe8b85a8d2aed88e02f5f3150abb6899
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66493681"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>使用 PowerShell 管理 Azure 区块链服务中的联盟成员
@@ -89,7 +89,7 @@ $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress 
 
 `Import-ConsortiumManagementContracts -RootContractAddress <String> -Web3Client <IClient>`
 
-| 参数 | 描述 | 需要 |
+| 参数 | 描述 | 必选 |
 |-----------|-------------|:--------:|
 | RootContractAddress | 根协定地址的联盟管理智能协定 | 是 |
 | Web3Client | 获取从新建 Web3Connection Web3Client 对象 | 是 |
@@ -123,7 +123,7 @@ Import-Web3Account -ManagedAccountAddress '<Member account address>'  -ManagedAc
 
 `New-Web3Connection [-RemoteRPCEndpoint <String>]`
 
-| 参数 | 描述 | 必选 |
+| 参数 | 描述 | 需要 |
 |-----------|-------------|:--------:|
 | RemoteRPCEndpoint | 区块链成员终结点地址 | 是 |
 
@@ -143,7 +143,7 @@ New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 
 `Get-BlockchainMember [[-Name] <String>] -Members <IContract> -Web3Client <IClient>`
 
-| 参数 | 描述 | 必选 |
+| 参数 | 描述 | 需要 |
 |-----------|-------------|:--------:|
 | Name | 你想要检索有关其详细信息的区块链服务成员的名称。 输入一个名称，它将返回该成员的详细信息。 当省略名称时，它将返回所有联盟成员的列表。 | 否 |
 | 成员 | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |
@@ -194,9 +194,9 @@ $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $
 `Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <String>] [-Role <String>]
  -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
 
-| 参数 | 描述 | 必选 |
+| 参数 | 描述 | 需要 |
 |-----------|-------------|:--------:|
-| 名称 | 区块链成员的名称 | 是 |
+| Name | 区块链成员的名称 | 是 |
 | DisplayName | 新的显示名称 | 否 |
 | AccountAddress | 帐户地址 | 否 |
 | 成员 | 获取从导入 ConsortiumManagementContracts 成员对象 | 是 |

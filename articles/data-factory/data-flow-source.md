@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 51c1ea7b554178f7fb3f264bf731ffd5872ceea2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5b53819c1d30f6cd62c5941d4b44d70a4996daad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234546"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67117882"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>源映射数据流转换 
 
@@ -65,13 +65,13 @@ ms.locfileid: "66234546"
 
 上**优化**选项卡上的源转换中，你可能会看到**源**分区类型。 仅当您的源是 Azure SQL 数据库时，此选项才可用。 这是因为数据工厂会尝试并行对您的 SQL 数据库源运行大型查询来建立连接。
 
-![源分区设置](media/data-flow/sourcepart2.png "分区")
+![源分区设置](media/data-flow/sourcepart3.png "分区")
 
 你没有对数据进行分区上您的 SQL 数据库源，但分区可用于大型查询。 可以一列或查询基于您的分区。
 
 ### <a name="use-a-column-to-partition-data"></a>使用对数据进行分区的列
 
-从源表中，选择上到分区列。 此外设置最大连接数。
+从源表中，选择上到分区列。 此外设置分区数。
 
 ### <a name="use-a-query-to-partition-data"></a>使用对数据进行分区的查询
 
@@ -84,9 +84,39 @@ ms.locfileid: "66234546"
 ![新的源设置](media/data-flow/source2.png "新设置")
 
 * **通配符路径**:从源文件夹，选择一系列与模式匹配的文件。 此设置将覆盖您的数据集定义中的任何文件。
+
+通配符的示例：
+
+* ```*``` 表示字符的任何组
+* ```**``` 表示递归目录嵌套
+* ```?``` 替换一个字符
+* ```[]``` 与方括号中的多个字符之一相匹配
+
+* ```/data/sales/**/*.csv``` 获取 /data/sales 下的所有 csv 文件
+* ```/data/sales/20??/**``` 在 20 世纪中获取所有文件
+* ```/data/sales/2004/*/12/[XY]1?.csv``` 在 2004 年 12 月开始 X 中获取所有 csv 文件或 Y 为前缀的一个 2 位数字
+
+容器必须在数据集中指定。 通配符路径因此还必须包括您从根文件夹的文件夹路径。
+
 * **文件的列表**:这是文件组。 创建包含要处理的相对路径文件列表的文本文件。 指向此文本文件。
 * **用于存储文件的名称列**:在你的数据中的列中存储源文件的名称。 请在此处输入新名称以存储文件名字符串。
 * **完成后**:选择不执行任何操作与源文件后数据流运行、 删除源文件，或移动的源文件。 要移动的路径是相对的。
+
+若要将源文件移动到另一个位置后处理，首先选择"移动"文件操作。 然后，设置"from"目录。 如果您不将任何通配符来用于你的路径，则"发件人"设置将与源文件夹相同的文件夹。
+
+如果必须将通配符源路径，例如：
+
+```/data/sales/20??/**/*.csv```
+
+您可以指定为"from"
+
+```/data/sales```
+
+和"to"作为
+
+```/backup/priorSales```
+
+在这种情况下，相对于 /backup/priorSales 移动已指明其出处的 /data/sales 下的所有子目录。
 
 ### <a name="sql-datasets"></a>SQL 数据集
 

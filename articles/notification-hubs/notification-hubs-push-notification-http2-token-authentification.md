@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: jowargo
 ms.openlocfilehash: 890577c013a96fc06acf3b05881649ad8202a083
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60872292"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS 的基于令牌的 (HTTP/2) 身份验证
@@ -76,13 +76,13 @@ ms.locfileid: "60872292"
 
 若要在门户中启用基于令牌的身份验证，请登录到 Azure 门户，转到通知中心 >“通知服务”> APNS 面板。
 
-有一项新属性 – 身份验证模式。 选择令牌后可以更新中心的所有相关令牌属性。
+有一项新属性 – 身份验证模式  。 选择令牌后可以更新中心的所有相关令牌属性。
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
 * 输入从 Apple 开发人员帐户检索到的属性
 * 选择应用程序模式（“生产”或“沙盒”）
-* 单击“保存”按钮以更新 APNS 凭据
+* 单击“保存”  按钮以更新 APNS 凭据
 
 ### <a name="configure-via-management-api-rest"></a>通过管理 API (REST) 进行配置
 

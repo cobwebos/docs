@@ -10,10 +10,10 @@ ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 5bb52e0547ed9bc18d67370ffb9db35942212aab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61300257"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
@@ -27,14 +27,14 @@ ms.locfileid: "61300257"
 ### <a name="create-a-runbook-in-the-azure-portal"></a>在 Azure 门户中创建 Runbook
 
 1. 在 Azure 门户中，打开自动化帐户。
-2. 从中心单击“Runbook”，打开 Runbook 的列表。
-3. 单击“添加 Runbook”按钮，并单击“创建新 Runbook”。
+2. 从中心单击“Runbook”  ，打开 Runbook 的列表。
+3. 单击“添加 Runbook”  按钮，并单击“创建新 Runbook”  。
 4. 键入 Runbook 的**名称**，并选择其[类型](automation-runbook-types.md)。 Runbook 名称必须以字母开头，可以使用字母、数字、下划线和短划线。
-5. 单击“创建”以创建 Runbook 并打开编辑器。
+5. 单击“创建”  以创建 Runbook 并打开编辑器。
 
 ### <a name="create-a-runbook-with-powershell"></a>通过 PowerShell 创建 Runbook
 
-可以使用 [New-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/new-azurermautomationrunbook) cmdlet 创建空的 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 使用类型参数指定四种 Runbook 类型之一。
+可以使用 [New-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/new-azurermautomationrunbook) cmdlet 创建空的 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 使用类型参数指定四种 Runbook 类型之一  。
 
 以下示例命令演示了如何创建新的空 Runbook。
 
@@ -59,10 +59,10 @@ New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
 > 请注意，只能通过此门户将 .ps1 文件导入 PowerShell 工作流 Runbook。
 
 1. 在 Azure 门户中，打开自动化帐户。
-2. 从中心单击“Runbook”，打开 Runbook 的列表。
-3. 单击“添加 Runbook”按钮，并单击“导入”。
-4. 单击“Runbook 文件”以选择要导入的文件
-5. 如果“名称”字段已启用，则可以选择更改它。  Runbook 名称必须以字母开头，可以使用字母、数字、下划线和短划线。
+2. 从中心单击“Runbook”  ，打开 Runbook 的列表。
+3. 单击“添加 Runbook”  按钮，并单击“导入”  。
+4. 单击“Runbook 文件”  以选择要导入的文件
+5. 如果“名称”  字段已启用，则可以选择更改它。  Runbook 名称必须以字母开头，可以使用字母、数字、下划线和短划线。
 6. 将自动选择 [Runbook 类型](automation-runbook-types.md)，但可以在考虑适用的限制后更改该类型。 
 7. 新的 runbook 会出现在自动化帐户的 runbook 列表中。
 8. 必须先[发布 Runbook](#publish-a-runbook)，才能运行它。
@@ -96,10 +96,10 @@ Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
 测试每种 [Runbook 类型](automation-runbook-types.md)的过程是相同的，并且在 Azure 门户中文本编辑器和图形编辑器之间进行测试没有区别。  
 
 1. 在[文本编辑器](automation-edit-textual-runbook.md)或[图形编辑器](automation-graphical-authoring-intro.md)中打开 Runbook 的草稿版本。
-1. 单击“测试”按钮以打开“测试”页。
+1. 单击“测试”按钮以打开“测试”页  。
 1. 如果 Runbook 有参数，参数会在左窗格中列出，可以在其中提供用于测试的值。
-1. 如果要在[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)上运行测试，则将“运行设置”更改为“混合辅助角色”并选择目标组的名称。  否则，保留默认值 **Azure**，以在云中运行测试。
-1. 单击“开始”按钮以开始测试。
+1. 如果要在[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)上运行测试，则将“运行设置”  更改为“混合辅助角色”  并选择目标组的名称。  否则，保留默认值 **Azure**，以在云中运行测试。
+1. 单击“开始”  按钮以开始测试。
 1. 如果 Runbook 是 [PowerShell 工作流](automation-runbook-types.md#powershell-workflow-runbooks) Runbook 或[图形](automation-runbook-types.md#graphical-runbooks) Runbook，则在使用“输出”窗格下方的按钮对它进行测试时，可以使其停止或暂停。 暂停 Runbook 时，该 Runbook 会完成它在被暂停之前正在进行的活动。 暂停 Runbook 后，可以将它停止或重启。
 1. 在输出窗格中检查 Runbook 的输出。
 
@@ -110,8 +110,8 @@ Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 在 Azure 门户中打开 Runbook。
-2. 单击“编辑”按钮。
-3. 单击“发布”按钮，并在出现验证消息时单击“是”。
+2. 单击“编辑”  按钮。
+3. 单击“发布”  按钮，并在出现验证消息时单击“是”  。
 
 ### <a name="powershell"></a>PowerShell
 

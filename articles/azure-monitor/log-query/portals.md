@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: bwren
 ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61425924"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>查看和分析 Azure Monitor 中的日志数据
-Log Analytics 是用于在 Azure Monitor 中处理日志数据以及创建查询的主要体验。 从 **Azure Monitor** 菜单中的“日志”打开 Log Analytics。 可以在 [Azure 门户中的 Log Analytics 入门](get-started-portal.md)中了解此门户及其功能。
+Log Analytics 是用于在 Azure Monitor 中处理日志数据以及创建查询的主要体验。 从 **Azure Monitor** 菜单中的“日志”  打开 Log Analytics。 可以在 [Azure 门户中的 Log Analytics 入门](get-started-portal.md)中了解此门户及其功能。
 
 Log Analytics 提供了用于处理日志查询的以下功能。
 
@@ -40,7 +40,7 @@ Log Analytics 提供了用于处理日志查询的以下功能。
 ![Log Analytics](media/portals/log-analytics.png)
 
 ## <a name="resource-logs"></a>资源日志
-Log Analytics 集成了各种 Azure 资源（例如虚拟机）。 这意味着你可以直接通过资源的监控菜单打开 Log Analytics，而无需切换到 Azure Monitor 以致丢失资源上下文。 所有 Azure 资源都尚未启用日志，但日志将开始出现在门户菜单中，记录不同的资源类型。
+Log Analytics 集成了各种 Azure 资源（例如虚拟机）。 这意味着你可以直接通过资源的监控菜单打开 Log Analytics，而无需切换到 Azure Monitor 以致丢失资源上下文。 所有 Azure 资源都尚未启用日志，但日志将开始出现在门户菜单中，记录不同的资源类型  。
 
 在从特定资源打开 Log Analytics 时，它会自动限定为只记录该资源的记录。   如果要编写包含其他记录的查询，则需要从 Azure Monitor 菜单中打开该查询。
 

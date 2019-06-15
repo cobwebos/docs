@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
 ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60735275"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>在 Azure 机器学习工作室中使用本地 SQL Server 数据库执行分析
@@ -33,7 +33,7 @@ ms.locfileid: "60735275"
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>安装数据工厂自承载集成运行时
-若要访问 Azure 机器学习工作室中的本地 SQL Server 数据库，您需要下载并安装数据工厂自承载集成运行时，以前称为数据管理网关。 在机器学习工作室中配置连接时，将有机会使用如下所述的“下载并注册数据网关”对话框下载并安装集成运行时 (IR)。
+若要访问 Azure 机器学习工作室中的本地 SQL Server 数据库，您需要下载并安装数据工厂自承载集成运行时，以前称为数据管理网关。 在机器学习工作室中配置连接时，将有机会使用如下所述的“下载并注册数据网关”对话框下载并安装集成运行时 (IR)  。
 
 
 还可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 安装包来提前安装 IR。MSI 也可用于将现有 IR 升级至最新版本，并会保留所有设置。
@@ -77,41 +77,41 @@ ms.locfileid: "60735275"
 第一步是创建并设置用于访问本地 SQL 数据库的网关。
 
 1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/Home/)，并选择要在其中工作的工作区。
-2. 单击左侧的“设置”边栏选项卡，并单击顶部的“数据网关”选项卡。
-3. 单击屏幕底部的“新建数据网关”按钮。
+2. 单击左侧的“设置”  边栏选项卡，并单击顶部的“数据网关”  选项卡。
+3. 单击屏幕底部的“新建数据网关”  按钮。
 
     ![新数据网关](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
-4. 在“新建数据网关”对话框中，输入“网关名称”，还可添加“说明”。 单击右下角的箭头可转到配置的下一步。
+4. 在“新建数据网关”  对话框中，输入“网关名称”  ，还可添加“说明”  。 单击右下角的箭头可转到配置的下一步。
 
     ![输入网关名称和说明](./media/use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
 5. 在“下载并注册数据网关”对话框中，将网关注册密钥复制到剪贴板。
 
     ![下载并注册数据网关](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
-6. <span id="note-1" class="anchor"></span>如果尚未下载并安装 Microsoft 数据管理网关，则单击“下载数据管理网关”。 这会你将转到 Microsoft 下载中心，可以在其中选择所需网关版本、下载并安装它。 有关安装先决条件、安装步骤和故障排除提示的详细信息，请参阅[使用数据管理网关在本地资源和云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)一文的开头部分。
-7. 网关安装完成后，数据管理网关配置管理器将打开，还会显示“注册网关”对话框。 粘贴已复制到剪贴板的“网关注册密钥”，并单击“注册”。
+6. <span id="note-1" class="anchor"></span>如果尚未下载并安装 Microsoft 数据管理网关，则单击“下载数据管理网关”  。 这会你将转到 Microsoft 下载中心，可以在其中选择所需网关版本、下载并安装它。 有关安装先决条件、安装步骤和故障排除提示的详细信息，请参阅[使用数据管理网关在本地资源和云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)一文的开头部分。
+7. 网关安装完成后，数据管理网关配置管理器将打开，还会显示“注册网关”  对话框。 粘贴已复制到剪贴板的“网关注册密钥”  ，并单击“注册”  。
 8. 如果已安装网关，请运行数据管理网关配置管理器。 单击 **更改密钥** 、粘贴在上一步中已复制到剪贴板的 **网关注册密钥** ，并单击 **确定** 。
-9. 安装完成后，会显示 Microsoft 数据管理网关配置管理器的“注册网关”对话框。 粘贴在上一步中已复制到剪贴板的“网关注册密钥”，并单击 **注册**。
+9. 安装完成后，会显示 Microsoft 数据管理网关配置管理器的“注册网关”  对话框。 粘贴在上一步中已复制到剪贴板的“网关注册密钥”，并单击 **注册**。
 
     ![注册网关](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
-10. 在 Microsoft 数据管理网关配置管理器的“主页”选项卡上设置了以下值后，网关配置即完成：
+10. 在 Microsoft 数据管理网关配置管理器的“主页”  选项卡上设置了以下值后，网关配置即完成：
 
-    * “网关名称”和“实例名称”设置为网关的名称。
-    * “注册”设置为“已注册”。
-    * “状态”设置为“已启动”。
-    * 底部状态栏会显示“已连接到数据管理网关云服务”以及绿色核选标记。
+    * “网关名称”  和“实例名称”  设置为网关的名称。
+    * “注册”  设置为“已注册”  。
+    * “状态”  设置为“已启动”  。
+    * 底部状态栏会显示“已连接到数据管理网关云服务”  以及绿色核选标记。
 
       ![数据管理网关管理器](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
       Azure 机器学习工作室也会在注册完成时进行更新。
 
     ![网关注册成功](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
-11. 在“下载并注册数据网关”对话框中，单击核选标记以完成设置。 “设置”页将网关状态显示为“联机”。 在右侧窗格中，可查看状态和其他有用信息。
+11. 在“下载并注册数据网关”  对话框中，单击核选标记以完成设置。 “设置”  页将网关状态显示为“联机”。 在右侧窗格中，可查看状态和其他有用信息。
 
     ![网关设置](./media/use-data-from-an-on-premises-sql-server/gateway-status.png)
-12. 在 Microsoft 数据管理网关配置管理器中，切换到“证书”选项卡。此选项卡上指定的证书可用于加密/解密在门户上指定的本地数据存储的凭据。 此证书是默认证书。 Microsoft 建议将此证书更改为在证书管理系统中备份的自己的证书。 单击“更改”以改为使用自己的证书。
+12. 在 Microsoft 数据管理网关配置管理器中，切换到“证书”  选项卡。此选项卡上指定的证书可用于加密/解密在门户上指定的本地数据存储的凭据。 此证书是默认证书。 Microsoft 建议将此证书更改为在证书管理系统中备份的自己的证书。 单击“更改”  以改为使用自己的证书。
 
     ![更改网关证书](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. （可选）如果想要启用用于排查网关问题的详细日志记录，请在 Microsoft 数据管理网关配置管理中，切换到“诊断”选项卡，并选中“启用详细日志记录以进行疑难解答”选项。 可在“应用程序和服务日志” -&gt;“数据管理网关”节点下的“Windows 事件查看器”中找到该日志记录信息。 还可以使用“诊断”选项卡对使用网关连接本地数据源进行测试。
+13. （可选）如果想要启用用于排查网关问题的详细日志记录，请在 Microsoft 数据管理网关配置管理中，切换到“诊断”  选项卡，并选中“启用详细日志记录以进行疑难解答”  选项。 可在“应用程序和服务日志”   -&gt;“数据管理网关”  节点下的“Windows 事件查看器”中找到该日志记录信息。 还可以使用“诊断”  选项卡对使用网关连接本地数据源进行测试。
 
     ![启用详细日志记录](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
@@ -121,27 +121,27 @@ ms.locfileid: "60735275"
 可以在工作室中为每个工作区创建并设置多个网关。 例如，可能希望开发期间某个网关与测试数据源连接，而其他网关用于生产数据源。 Azure 机器学习工作室可以灵活地设置取决于您的企业环境的多个网关。 目前，不能在工作区之间共享网关，一台计算机上只能安装一个网关。 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>步骤 2：使用网关从本地数据源读取数据
-在完成设置网关后，可以将“导入数据”模块添加到从本地 SQL Server 数据库输入数据的实验。
+在完成设置网关后，可以将“导入数据”  模块添加到从本地 SQL Server 数据库输入数据的实验。
 
-1. 在机器学习工作室中，选择“实验”选项卡、单击左下角的“+新建”，并选择“空白实验”（或选择提供的多个实验示例中的一个）。
-2. 找到“导入数据”模块并将其拖动到试验画布上。
-3. 单击画布下方的“另存为”。 输入"Azure 机器学习 Studio 在本地 SQL Server 教程"作为实验名称，选择工作区，并单击**确定**复选标记。
+1. 在机器学习工作室中，选择“实验”  选项卡、单击左下角的“+新建”  ，并选择“空白实验”  （或选择提供的多个实验示例中的一个）。
+2. 找到“导入数据”  模块并将其拖动到试验画布上。
+3. 单击画布下方的“另存为”  。 输入"Azure 机器学习 Studio 在本地 SQL Server 教程"作为实验名称，选择工作区，并单击**确定**复选标记。
 
    ![使用新名称保存实验](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
-4. 单击要选取的“导入数据”模块，并在画布右侧的“属性”窗格中，选择“数据源”下拉列表中的“本地 SQL 数据库”。
-5. 选择已安装并注册的“数据网关”。 可以通过选择“(添加新的数据网关…)”来设置其他网关。
+4. 单击要选取的“导入数据”  模块，并在画布右侧的“属性”  窗格中，选择“数据源”  下拉列表中的“本地 SQL 数据库”。
+5. 选择已安装并注册的“数据网关”  。 可以通过选择“(添加新的数据网关…)”来设置其他网关。
 
    ![为导入数据模块选择数据网关](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. 输入 SQL“数据库服务器名称”和“数据库名称”以及要执行的 SQL“数据库查询”。
-7. 单击“用户名和密码”下的“输入值”，并输入你的数据库凭据。 可以使用 Windows 集成身份验证或 SQL Server 身份验证，具体取决于配置本地 SQL Server 的方式。
+6. 输入 SQL“数据库服务器名称”  和“数据库名称”  以及要执行的 SQL“数据库查询”  。
+7. 单击“用户名和密码”  下的“输入值”  ，并输入你的数据库凭据。 可以使用 Windows 集成身份验证或 SQL Server 身份验证，具体取决于配置本地 SQL Server 的方式。
 
    ![输入数据库凭据](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
    消息“必填值”将更改为带有绿色复选标记的“值已设置”。 只需输入凭据一次，除非数据库信息或密码发生更改。 Azure 机器学习工作室使用安装网关来加密在云中的凭据时所提供的证书。 Azure 从不存储未加密的本地凭据。
 
    ![导入数据模块属性](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
-8. 若要运行实验，请单击“运行”。
+8. 若要运行实验，请单击“运行”  。
 
-实验运行结束后，可以可视化从数据库中导入的数据，方法是单击“导入数据”模块的输出端口并选择“可视化”。
+实验运行结束后，可以可视化从数据库中导入的数据，方法是单击“导入数据”  模块的输出端口并选择“可视化”  。
 
-完成实验开发后，即可部署并操作模型。 通过使用 Batch 执行服务，可读取在“导入数据”模块中配置的本地 SQL Server 数据库中的数据，并将该数据用于评分。 尽管可以将请求响应服务用于评分本地数据，但 Microsoft 还是建议使用 [Excel 加载项](excel-add-in-for-web-services.md)。 目前，通过“导出数据”写入本地 SQL Server 数据库在实验和已发布的 Web 服务中都不受支持。
+完成实验开发后，即可部署并操作模型。 通过使用 Batch 执行服务，可读取在“导入数据”  模块中配置的本地 SQL Server 数据库中的数据，并将该数据用于评分。 尽管可以将请求响应服务用于评分本地数据，但 Microsoft 还是建议使用 [Excel 加载项](excel-add-in-for-web-services.md)。 目前，通过“导出数据”  写入本地 SQL Server 数据库在实验和已发布的 Web 服务中都不受支持。

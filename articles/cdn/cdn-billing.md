@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
 ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60782053"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 计费
@@ -32,7 +32,7 @@ ms.locfileid: "60782053"
 
 - 区域 2：亚太（包括日本）
 
-- 区域 3：南美洲
+- 区域 3：南美
 
 - 区域 4：澳大利亚和新西兰
 
@@ -48,7 +48,7 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 例如，如果某位墨西哥用户发出了一个请求，而该请求因受对等互连或通信条件影响而由位于美国 POP 的服务器处理，则计费区域为美国。
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>什么是 Azure CDN 计费事务？
-任何在 CDN 上终止的 HTTP(S) 请求都是计费事件，其中包括所有响应类型：成功、失败或其他。 但是，不同的响应可能生成不同的流量。 例如，“304 未修改”和其他仅标头响应会生成很少的流量，因为它们是小型标头响应；同样，错误响应（例如，“404 未找到”）是计费的，但产生的费用很少，因为响应有效负载很小。
+任何在 CDN 上终止的 HTTP(S) 请求都是计费事件，其中包括所有响应类型：成功、失败或其他。 但是，不同的响应可能生成不同的流量。 例如，“304 未修改”  和其他仅标头响应会生成很少的流量，因为它们是小型标头响应；同样，错误响应（例如，“404 未找到”）是计费的，但产生的费用很少，因为响应有效负载很小。 
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>与 Azure CDN 使用相关联的其他 Azure 费用有哪些？
 使用 Azure CDN 时，还会对用作对象的源的服务造成一些使用费用。 这些费用通常只占全部 CDN 使用费用的一小部分。
@@ -63,7 +63,7 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 
 有关 Azure 存储计费的详细信息，请参阅 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)（了解 Azure 存储计费 - 带宽、事务和容量）。
 
-如果使用托管服务分发，则会产生下述费用：
+如果使用托管服务分发  ，则会产生下述费用：
 
 - Azure 计算时间：充当源的计算实例。
 
@@ -71,7 +71,7 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 
 如果客户端使用字节范围请求（不考虑源服务），请注意以下事项：
 
-- 字节范围请求是 CDN 上的计费事务。 当客户端发出字节范围请求时，该请示是针对一部分（一系列）对象的。 CDN 只使用一部分请求的内容进行响应。 此部分响应是计费事务，传输量以范围响应（加上标头）的大小为限。
+- 字节范围请求是 CDN 上的计费事务。  当客户端发出字节范围请求时，该请示是针对一部分（一系列）对象的。 CDN 只使用一部分请求的内容进行响应。 此部分响应是计费事务，传输量以范围响应（加上标头）的大小为限。
 
 - 当某个到达的请求针对的只是对象的一部分时（通过指定字节范围标头来实现这一点），CDN 可能会将整个对象提取到其缓存中。 因此，即使来自 CDN 的计费事务是针对部分响应的，来自源的计费事务也会涉及完整大小的对象。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b18c4c039b615c7c88268b6e668df9f7fec9fabf
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 414573a90e5a7b7de845b65e6e88715a26024f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66687922"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125784"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>使用 AzCopy 将数据复制从 Amazon S3 存储桶
 
@@ -50,6 +50,9 @@ AzCopy 是一个命令行实用工具，可用于向 / 从存储帐户复制 blo
 
 AzCopy 将使用[放置块从 URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API，因此直接 AWS S3 和存储服务器之间复制数据。 这些复制操作不使用您的计算机的网络带宽。
 
+> [!IMPORTANT]
+> 此功能目前处于预览状态。 如果您决定从 S3 存储桶中删除数据，复制操作之后，请务必验证数据已正确复制到存储帐户之前删除的数据。
+
 ### <a name="copy-an-object"></a>复制对象
 
 |    |     |
@@ -62,7 +65,7 @@ AzCopy 将使用[放置块从 URL](https://docs.microsoft.com/rest/api/storagese
 >
 > 此外可以使用虚拟托管式 Url (例如： `http://bucket.s3.amazonaws.com`)。 
 >
-> 若要了解有关虚拟托管的存储桶的详细信息，请参阅 [虚拟托管的存储桶]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)。
+> 若要了解有关虚拟托管的存储桶的详细信息，请参阅 [虚拟托管的存储桶]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) 。
 
 ### <a name="copy-a-directory"></a>复制目录
 

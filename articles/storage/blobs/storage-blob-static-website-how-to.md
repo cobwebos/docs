@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 7a1aef14a2a32266c893933482527c361f17d7fb
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 61477767c59dd521e3f46db4445238a5a1ea759e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428555"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071436"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>托管在 Azure 存储中的静态网站
 
@@ -181,11 +181,13 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 使用以下命令查找 URL:
 
 ```powershell
-$context = Get-AzSubscription -SubscriptionId <subscription-d>
-Set-AzContext $context
+ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
-替换为`<subscription-id>`占位符值替换你的订阅的 ID。
+* 替换为`<resource-group-name>`占位符值替换资源组的名称。
+
+* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
 <a id="metrics" />
 

@@ -15,10 +15,10 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f7d4f6216b4a57796ab5c0296713316dd97c47a8
-ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64987892"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>灾难恢复故障转移过程
@@ -43,7 +43,7 @@ ms.locfileid: "64987892"
 您可以还测试灾难恢复故障转移，而不会影响实际的复制关系。 若要执行测试故障转移，请按照"执行测试 DR 故障转移-azure_hana_test_dr_failover"中的步骤中[Microsoft Azure 上的 SAP HANA 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)。 
 
 >[!IMPORTANT]
->不要*不*完成的过程在 DR 站点中创建的实例上运行任何生产事务**测试故障转移**。 命令 azure_hana_test_dr_failover 创建一组的卷与主站点没有任何关系。 结果是无法同步回主站点。 
+>不要*不*完成的过程在 DR 站点中创建的实例上运行任何生产事务**测试故障转移**。 命令 azure_hana_test_dr_failover 创建一组的卷与主站点没有任何关系。 结果是无法同步回主站点。  
 
 如果你想要有多个 SAP HANA 实例，若要测试，多次运行该脚本。 请求时，输入想要测试故障转移实例的 SAP HANA SID。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "64987892"
 
       输出应显示 **hdbdaemon** 进程处于停止状态且没有其他 HANA 进程处于运行或已开始状态。
 1. 确定希望将灾难恢复站点还原到的快照名称或 SAP HANA 备份 ID。 在真实的灾难恢复事例中，此快照通常是最新的快照。 如果需要恢复丢失的数据，请选择更早的快照。
-1. 通过高优先级支持请求联系 Azure 支持部门。 请输入的名称与该快照还原和快照发布或在 DR 站点上的 HANA 备份 ID 的日期。 默认情况下，运营团队只会还原 /hana/data 卷。 如果你想要也有/hana/logbackups 卷，需要特意。 不要还原 /hana/shared 卷。 而应选择特定文件，例如 global.ini **.snapshot**及其子目录后你重新装载 PRD 的共享卷。 
+1. 通过高优先级支持请求联系 Azure 支持部门。 请输入的名称与该快照还原和快照发布或在 DR 站点上的 HANA 备份 ID 的日期。 默认情况下，运营团队只会还原 /hana/data 卷。 如果你想要也有/hana/logbackups 卷，需要特意。 不要还原 /hana/shared 卷。  而应选择特定文件，例如 global.ini **.snapshot**及其子目录后你重新装载 PRD 的共享卷。 
 
    在操作端，将执行以下步骤：
 
@@ -84,12 +84,12 @@ ms.locfileid: "64987892"
 
 1. 调整一些默认设置：
 
-      - 清除“使用增量备份”。
-      - 选择“初始化日志区域”。
+      - 清除“使用增量备份”。 
+      - 选择“初始化日志区域”。 
 
    ![设置“初始化日志区域”](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
-1. 选择“完成”。
+1. 选择“完成”。 
 
    ![完成 DR 还原](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 
