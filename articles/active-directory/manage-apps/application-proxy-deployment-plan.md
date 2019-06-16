@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2e9968e8716818637a34adea86de88e1f848c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388310"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108484"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划的 Azure AD 应用程序代理部署
 
@@ -62,9 +62,9 @@ Azure Active Directory (Azure AD) 应用程序代理是在本地应用程序的�
 
 若要配置和实现 Azure AD 应用程序代理，必须满足以下的核心要求。
 
-*  **Azure 载入**:在部署之前应用程序代理，必须从本地目录同步或直接在 Azure AD 租户中创建的用户标识。 标识同步使 Azure AD 进行预身份验证用户，才能授予其访问应用程序代理发布的应用程序和拥有必要的用户标识符信息才能执行单一登录 (SSO)。
+*  **Azure 载入**:在部署之前应用程序代理，必须从本地目录同步或直接在 Azure AD 租户中创建的用户标识。 标识同步允许 Azure AD 在授予用户对应用代理发布的应用程序的访问权限之前对用户进行预身份验证，并获得执行单一登录 (SSO) 所需的用户标识符信息。
 
-* **条件性访问要求**:不建议使用 intranet 访问应用程序代理，因为这会增加将影响用户的延迟。 我们建议使用预身份验证和条件性访问策略的应用程序代理用于从 internet 进行远程访问。  一个方法，以提供 intranet 中使用的条件性访问是更新应用程序，以便他们可以 diretly 使用 AAD 进行身份验证。 请参阅[资源迁移到 AAD 应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)有关详细信息。 
+* **条件性访问要求**:不建议使用 intranet 访问应用程序代理，因为这会增加将影响用户的延迟。 我们建议使用预身份验证和条件性访问策略的应用程序代理，用于从 internet 远程访问。  一个方法，以提供 intranet 中使用的条件性访问是更新应用程序，以便他们可以 diretly 使用 AAD 进行身份验证。 请参阅[资源迁移到 AAD 应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)有关详细信息。 
 
 * **服务限制**:若要防范的各个用户存在资源过度消耗是每个应用程序和租户设置的限制。 若要查看这些限制是指[Azure AD 服务限制和局限性](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。 这些限制基于对远高于典型的用法卷基准，大多数部署提供足够的缓冲区。
 
@@ -82,7 +82,7 @@ Azure Active Directory (Azure AD) 应用程序代理是在本地应用程序的�
 
    * **连接器安装**需要到 Windows 服务器上安装的本地管理员权限。 它还需要最少*应用程序管理员*角色以进行身份验证，并将连接器实例注册到 Azure AD 租户。 
 
-   * **应用程序发布和管理**需要*应用程序管理员*角色。 应用程序管理员可以管理包括注册、 SSO 设置、 用户和组分配和授权、 应用程序代理设置和许可的目录中的所有应用程序。 它不会授予管理条件访问的能力。 *云应用程序管理员*角色具有所有功能的应用程序管理员中，只是它不允许应用程序代理设置的管理。
+   * **应用程序发布和管理**需要*应用程序管理员*角色。 应用程序管理员可以管理包括注册、 SSO 设置、 用户和组分配和授权、 应用程序代理设置和许可的目录中的所有应用程序。 它不能授予管理条件访问的能力。 *云应用程序管理员*角色具有所有功能的应用程序管理员中，只是它不允许应用程序代理设置的管理。
 
 * **许可**：应用程序代理是通过 Azure AD 基本版订阅提供。 请参阅[Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)有关的授权选项和功能的完整列表。  
 
@@ -266,7 +266,7 @@ Azure AD 应用程序代理还可以支持的应用程序已开发出使用我�
 
 * 基于设备的条件性访问：确保只有已注册和批准，并符合要求的设备可以访问企业数据[基于设备的条件性访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)。
 
-* 基于应用程序的条件性访问：不需要时用户不在公司网络上停止工作。 [安全访问公司在本地和云应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)使用条件性访问控制和维护。
+* 基于应用程序的条件性访问：不需要时用户不在公司网络上停止工作。 [安全访问公司在本地和云应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)，并使用条件性访问保持控制。
 
 * 基于风险的条件性访问：保护数据免受恶意黑客[基于风险的条件性访问策略](https://www.microsoft.com/cloud-platform/conditional-access)可应用到所有应用和所有用户，是否在本地或云中。
 

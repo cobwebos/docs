@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 653c175a559f5c0b7dc551b396e91276332df20a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754232"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67120543"
 ---
 你的设备都与存储帐户用作 Azure 中的数据目标相关联。 对存储帐户的访问控制按订阅和两个 512 位存储访问密钥与该存储帐户相关联。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: kumud
 ms.openlocfilehash: 8c8fe6125d9c638fedadc3d299ff0ac0d601fd61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685697"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的基于角色的访问控制权限
@@ -42,7 +42,7 @@ ms.locfileid: "64685697"
 
 ## <a name="connection-troubleshoot"></a>排查连接问题
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectivityCheck/action          | 启动连接故障排除测试
 | Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | 连接故障排除测试的查询结果                |
@@ -50,7 +50,7 @@ ms.locfileid: "64685697"
 
 ## <a name="connection-monitor"></a>连接监视器
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectionMonitors/start/action   | 启动连接监视器                                     |
 | Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | 停止连接监视器                                      |
@@ -61,7 +61,7 @@ ms.locfileid: "64685697"
 
 ## <a name="packet-capture"></a>数据包捕获
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | 查询数据包捕获的状态                           |
 | Microsoft.Network/networkWatchers/packetCaptures/stop/action        | 停止数据包捕获                                          |
@@ -71,7 +71,7 @@ ms.locfileid: "64685697"
 
 ## <a name="ip-flow-verify"></a>IP 流验证
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/ipFlowVerify/action               | 验证 IP 流                                              |
 
@@ -83,13 +83,13 @@ ms.locfileid: "64685697"
 
 ## <a name="network-security-group-view"></a>网络安全组视图
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/securityGroupView/action          | 查看安全组                                           |
 
 ## <a name="topology"></a>拓扑
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | 获取拓扑                                                   |
 

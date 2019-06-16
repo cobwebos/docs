@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 49686e407b2d733c04bad31706c6c4f315bf28bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61075159"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>迁移要扩展的现有数据库
@@ -69,11 +69,11 @@ ms.locfileid: "61075159"
 
 ![列表映射][1]
 
-多租户模型将数个租户分配给单个数据库（可跨多个数据库分布租户组）。 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，使用范围映射将一系列用户分配到数据库。 
+多租户模型将数个租户分配给单个数据库（可跨多个数据库分布租户组）。 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，使用范围映射将一系列用户分配到数据库  。 
 
 ![范围映射][2]
 
-或可以使用列表映射来实现多租户数据库模型，以将多个租户分配给单个数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
+或可以使用列表映射  来实现多租户数据库模型，以将多个租户分配给单个数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
 
 ![单一数据库上的多个租户][3] 
 

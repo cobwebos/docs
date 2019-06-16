@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 5b41af83122d74fc766e6c5179d98803979269f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60704626"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>在 Azure 安全中心中对 SQL Server 启用审核和威胁检测
@@ -34,12 +34,12 @@ Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡中，选择“对 SQL Server 启用审核和威胁检测”。  这将打开“对 SQL Server 启用审核和威胁检测”边栏选项卡。
+1. 在“建议”边栏选项卡  中，选择“对 SQL Server 启用审核和威胁检测”  。  这将打开“对 SQL Server 启用审核和威胁检测”  边栏选项卡。
 
    ![对 SQL 服务器启用审核][1]
-2. 选择一个 SQL Server 以启用审核和威胁检测。 这将打开“审核和威胁检测”边栏选项卡。
+2. 选择一个 SQL Server 以启用审核和威胁检测。 这将打开“审核和威胁检测”  边栏选项卡。
 
-3. 在“审核和威胁检测”边栏选项卡上，选择“审核”下方的“ON”。
+3. 在“审核和威胁检测”  边栏选项卡上，选择“审核”  下方的“ON”  。
 
    ![打开审核设置][2]
 4. 请按照[在 Azure 门户中审核 SQL 数据库](../sql-database/sql-database-auditing-portal.md)中的步骤配置要存储审核日志的存储。 数据收集的订阅存储帐户是默认的存储帐户。

@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62106161"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Trello
@@ -52,12 +52,12 @@ ms.locfileid: "62106161"
 
    -或-
 
-   对于现有逻辑应用，请在要添加操作的最后一个步骤下，选择“新建步骤”。 
+   对于现有逻辑应用，请在要添加操作的最后一个步骤下，选择“新建步骤”  。 
    在搜索框中，输入“trello”作为筛选器。 
    在操作列表下，选择所需的操作。
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。 
 
 1. 如果提示你登录到 Trello，请授权你的逻辑应用进行访问并登录。
 

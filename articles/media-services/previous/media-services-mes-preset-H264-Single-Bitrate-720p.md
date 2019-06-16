@@ -1,8 +1,8 @@
 ---
 title: H264 单比特率 720p Media Encoder Standard 预设 - Azure | Microsoft 文档
 description: 本主题概述 **H264 单比特率 720p** 任务预设。
-author: WenJason
-manager: digimobile
+author: Juliako
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 03/19/2019
-ms.date: 04/01/2019
-ms.author: v-jay
+ms.date: 03/19/2019
+ms.author: juliako
 ms.openlocfilehash: d43b78b83ca1dcb60dc6afb17424354975681494
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61129575"
 ---
 # <a name="h264-single-bitrate-720p"></a>H264 单比特率 720p

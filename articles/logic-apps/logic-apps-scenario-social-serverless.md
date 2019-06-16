@@ -11,10 +11,10 @@ ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
 ms.openlocfilehash: 5dd9d8eac7d65815d7c98a28b0d5af55f19cec47
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464432"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
@@ -48,15 +48,15 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
 若要检测某些文本背后的情绪，可以使用 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)。
 
-1. 在逻辑应用设计器中的触发器下，选择“新步骤”。
+1. 在逻辑应用设计器中的触发器下，选择“新步骤”。 
 
-2. 找到“文本分析”连接器。
+2. 找到“文本分析”连接器。 
 
-3. 选择“检测情感”操作。
+3. 选择“检测情感”操作。 
 
 4. 如果系统提示，请为文本分析服务提供有效的认知服务密钥。
 
-5. 在“请求正文”下选择“推文文本”字段，提供推文作为要分析的文本。
+5. 在“请求正文”下选择“推文文本”字段，提供推文作为要分析的文本。  
 
 获取推文数据以及有关推文的见解后，可以使用其他许多相关的连接器及其操作：
 
@@ -75,17 +75,17 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 在函数末尾，使用一些数据为逻辑应用返回响应，例如，该响应可以是简单的布尔值（如 `containsKeyword`）或复杂的对象。
 
 > [!TIP]
-> 若要从逻辑应用中的函数访问复杂响应，请使用“分析 JSON”操作。
+> 若要从逻辑应用中的函数访问复杂响应，请使用“分析 JSON”操作。 
 
 完成后，请保存函数，然后将其作为操作添加到构建的逻辑应用中。
 
 ## <a name="add-azure-function-to-logic-app"></a>将 Azure 函数添加到逻辑应用
 
-1. 在逻辑应用设计器中的“检测情绪”操作下，选择“新步骤”。
+1. 在逻辑应用设计器中的“检测情绪”操作下，选择“新步骤”。  
 
-2. 找到“Azure Functions”连接器，选择创建的函数。
+2. 找到“Azure Functions”连接器，选择创建的函数。 
 
-3. 在“请求正文”下，选择“推文文本”。
+3. 在“请求正文”下，选择“推文文本”。  
 
 ![配置的 Azure 函数步骤][2]
 
@@ -93,16 +93,16 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
 若要查看逻辑应用的所有当前或以往运行，可以通过 Azure 门户、Visual Studio、Azure REST API 和 SDK 使用 Azure 逻辑应用提供的丰富调试和监视功能。
 
-若要轻松测试逻辑应用，请在逻辑应用设计器中选择“运行触发器”。 触发器将会根据指定的计划轮询推文，直到找到满足条件的推文。 当运行正在进行时，设计器会显示该运行的实时视图。
+若要轻松测试逻辑应用，请在逻辑应用设计器中选择“运行触发器”。  触发器将会根据指定的计划轮询推文，直到找到满足条件的推文。 当运行正在进行时，设计器会显示该运行的实时视图。
 
 在 Visual Studio 或 Azure 门户中查看以往运行的历史记录： 
 
-* 打开 Visual Studio Cloud Explorer。 找到自己的逻辑应用，打开该应用的快捷菜单。 选择“打开运行历史记录”。
+* 打开 Visual Studio Cloud Explorer。 找到自己的逻辑应用，打开该应用的快捷菜单。 选择“打开运行历史记录”。 
 
   > [!NOTE]
   > 有关 Visual Studio 2019，云资源管理器可以打开逻辑应用设计器在 Azure 门户中，但不能尚未打开嵌入的逻辑应用设计器或运行历史记录。
 
-* 在 Azure 门户中，找到自己的逻辑应用。 在逻辑应用的菜单中，选择“概述”。 
+* 在 Azure 门户中，找到自己的逻辑应用。 在逻辑应用的菜单中，选择“概述”  。 
 
 ## <a name="create-automated-deployment-templates"></a>创建自动部署模板
 

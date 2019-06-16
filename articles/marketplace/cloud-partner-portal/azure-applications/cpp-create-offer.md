@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 2eed5ed60d5aed7fb537e886f39b97dfc8257f19
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943005"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
@@ -20,7 +20,7 @@ ms.locfileid: "64943005"
 
 ## <a name="new-offer-form"></a>“新建套餐”窗体
 
-登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”。 在“新建产品/服务”菜单中，选择“Azure 应用程序”以显示“新建产品/服务”表单，并开始为新产品/服务定义资产的过程。
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”  。 在“新建产品/服务”菜单中，选择“Azure 应用程序”  以显示“新建产品/服务”  表单，并开始为新产品/服务定义资产的过程。
 
 ![“新建产品/服务”表单](./media/azure-new-managedapp-offer.png)
 

@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 17fead25840e45f98478a6eb6c146bcc261dfe75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2907b5be7f8d5fda3d510484179e80b065ab64b0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322312"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074896"
 ---
 # <a name="live-event-states-and-billing"></a>实时事件状态和计费
 
 在 Azure 媒体服务中，一旦实时事件的状态转换为**正在运行**，就会开始计费。 若要停止对实时事件的计费，必须停止实时事件。
 
-将[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)上的 **LiveEventEncodingType** 设置为 Standard 后，媒体服务就会自动关闭在输入源丢失 12 小时后仍处于**正在运行**状态但却没有**实时输出**运行的实时事件。 但是，在实时事件处于**正在运行**状态的时间段内，仍会进行计费。
+当**LiveEventEncodingType**上你[Live 事件](https://docs.microsoft.com/rest/api/media/liveevents)设置为标准或 Premium1080p，媒体服务自动关闭任何仍处于的实时事件**运行**状态 12小时后输入的源丢失，并且没有任何**Live 输出**s 运行。 但是，在实时事件处于**正在运行**状态的时间段内，仍会进行计费。
 
 ## <a name="states"></a>States
 

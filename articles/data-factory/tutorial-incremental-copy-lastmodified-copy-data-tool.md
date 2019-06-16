@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
 ms.openlocfilehash: 3865bb10346c4a55adbf94a7df225eacf2c11252
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65519135"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>以增量方式将通过复制数据工具基于 LastModifiedDate 的新功能和更改文件的复制
@@ -51,36 +51,36 @@ ms.locfileid: "65519135"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”： 
+1. 在左侧菜单中，选择“创建资源”   > “数据 + 分析”   > “数据工厂”  ： 
    
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory**。 
+2. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。 
       
      ![新建数据工厂](./media/tutorial-copy-data-tool/new-azure-data-factory.png)
  
-   数据工厂的名称必须全局唯一。 可能会收到以下错误消息：
+   数据工厂的名称必须全局唯一。  可能会收到以下错误消息：
    
    ![新的数据工厂错误消息](./media/tutorial-copy-data-tool/name-not-available-error.png)
 
-   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_ **ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 3. 选择 Azure**订阅**在其中将创建新的数据工厂。 
-4. 对于“资源组”，请执行以下步骤之一：
+4. 对于“资源组”，请执行以下步骤之一： 
      
-    * 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+    * 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
-    * 选择“新建”，并输入资源组的名称。 
+    * 选择“新建”，并输入资源组的名称。  
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
 
 5. 下**版本**，选择**V2**。
-6. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储 （例如，Azure 存储和 SQL 数据库） 和计算资源 (例如，Azure HDInsight) 可以在其他位置和区域。
-7. 选择“固定到仪表板”。 
-8. 选择“创建”。
+6. 在“位置”下选择数据工厂的位置。  下拉列表中仅显示支持的位置。 数据工厂使用的数据存储 （例如，Azure 存储和 SQL 数据库） 和计算资源 (例如，Azure HDInsight) 可以在其他位置和区域。
+7. 选择“固定到仪表板”  。 
+8. 选择“创建”  。
 9. 在仪表板，请参阅**部署数据工厂**磁贴，查看进程状态。
 
     ![部署数据工厂的磁贴](media/tutorial-copy-data-tool/deploying-data-factory.png)
-10. 创建完以后，会显示“数据工厂”主页。
+10. 创建完以后，会显示“数据工厂”  主页。
    
     ![数据工厂主页](./media/tutorial-copy-data-tool/data-factory-home-page.png)
 11. 若要打开 Azure 数据工厂用户界面 (UI) 的单独选项卡上，选择**创作和监视**磁贴。 
@@ -107,7 +107,7 @@ ms.locfileid: "65519135"
 
     ![“属性”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/copy-data-tool-properties-page.png)
     
-3. 在“源数据存储”页上，完成以下步骤：
+3. 在“源数据存储”  页上，完成以下步骤：
 
     a. 选择 **+ 创建新的连接**，若要添加的连接。
     
@@ -125,7 +125,7 @@ ms.locfileid: "65519135"
     
    ![“源数据存储”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
-4. 在“选择输入文件或文件夹”页中完成以下步骤：
+4. 在“选择输入文件或文件夹”页中完成以下步骤： 
     
     a. 浏览并选择**源**文件夹，，然后选择**选择**。
     
@@ -139,11 +139,11 @@ ms.locfileid: "65519135"
     
      ![选择输入文件或文件夹](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
      
-5. 上**目标数据存储区**页上，选择**AzureBlobStorage**。 这是与源数据存储相同的存储帐户。 然后，选择“下一步”。
+5. 上**目标数据存储区**页上，选择**AzureBlobStorage**。 这是与源数据存储相同的存储帐户。 然后，选择“下一步”  。
 
     ![“目标数据存储”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/destination-data-store-page-select-linkedservice.png)
     
-6. 在“选择输出文件或文件夹”页中完成以下步骤：
+6. 在“选择输出文件或文件夹”页中完成以下步骤： 
     
     a. 浏览并选择**目标**文件夹，，然后选择**选择**。
     
@@ -153,7 +153,7 @@ ms.locfileid: "65519135"
     
      ![选择输出文件或文件夹](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/click-next-after-output-folder.png)
     
-7. 在“设置”页中，选择“下一步”。 
+7. 在“设置”页中，选择“下一步”。   
 
     ![“设置”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/settings-page.png)
     
@@ -161,15 +161,15 @@ ms.locfileid: "65519135"
 
     ![“摘要”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png)
     
-9. 在“部署”页中，选择“监视”可以监视管道（任务）。
+9. 在“部署”页中，选择“监视”可以监视管道（任务）   。
 
     ![“部署”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
     
-10. 请注意，界面中已自动选择左侧的“监视”选项卡。 “操作”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接。 选择**刷新**以刷新列表，然后选择**查看活动运行**中的链接**操作**列。 
+10. 请注意，界面中已自动选择左侧的“监视”选项卡。  “操作”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接  。 选择**刷新**以刷新列表，然后选择**查看活动运行**中的链接**操作**列。 
 
     ![刷新列表并选择查看活动运行](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
 
-11. 都只有一个活动 （复制活动） 在管道中，因此您看到只有一个条目。 有关复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。 
+11. 都只有一个活动 （复制活动） 在管道中，因此您看到只有一个条目。 有关复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。   
 
     ![复制活动是管道中](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
     

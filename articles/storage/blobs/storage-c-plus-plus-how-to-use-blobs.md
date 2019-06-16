@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: blobs
 ms.openlocfilehash: 519190b6aeb313f25eddd717bce1a72148c8c518
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148453"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何通过 C++ 使用 Blob 存储
@@ -35,7 +35,7 @@ ms.locfileid: "65148453"
 要安装适用于 C++ 的 Azure 存储客户端库，可以使用以下方法：
 
 * **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。  
-* **Windows**：在 Visual Studio 中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。  
+* **Windows**：在 Visual Studio 中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”。  在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。  
   
      Install-Package wastorage
 
@@ -64,7 +64,7 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-若要启动 Azure 存储模拟器，请选择“开始”按钮或按 **Windows** 键。 开始键入“Azure 存储模拟器”，并从应用程序列表中选择“Microsoft Azure 存储模拟器”。  
+若要启动 Azure 存储模拟器，请选择“开始”  按钮或按 **Windows** 键。 开始键入“Azure 存储模拟器”  ，并从应用程序列表中选择“Microsoft Azure 存储模拟器”  。  
 
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。  
 
@@ -123,7 +123,7 @@ Internet 中的所有人都可以查看公共容器中的 Blob，但是，仅在
 ## <a name="how-to-upload-a-blob-into-a-container"></a>如何：将 Blob 上传到容器中
 Azure Blob 存储支持块 Blob 和页 Blob。 大多数情况下，推荐使用的类型是块 Blob。  
 
-要将文件上传到块 Blob，请获取容器引用，并使用它获取块 Blob 引用。 获取 Blob 引用后，可以通过调用 upload_from_stream 方法将任何数据流上传到其中。 如果之前不存在 Blob，此操作将创建一个；如果存在 Blob，此操作将覆盖它。 下面的示例演示了如何将 Blob 上传到容器中，并假定已创建容器。  
+要将文件上传到块 Blob，请获取容器引用，并使用它获取块 Blob 引用。 获取 Blob 引用后，可以通过调用 upload_from_stream  方法将任何数据流上传到其中。 如果之前不存在 Blob，此操作将创建一个；如果存在 Blob，此操作将覆盖它。 下面的示例演示了如何将 Blob 上传到容器中，并假定已创建容器。  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -156,7 +156,7 @@ blob3.upload_text(U("other text"));
 还可以使用 **upload_from_file** 方法将文件上传到块 Blob。
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>如何：列出容器中的 Blob
-若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 list_blobs 方法来检索其中的 Blob 和/或目录。 若要针对一个返回的 **list_blob_item** 访问其丰富的属性和方法，必须调用 **list_blob_item.as_blob** 方法以获取一个 **cloud_blob** 对象，或调用 **list_blob.as_directory** 方法以获取 cloud_blob_directory 对象。 以下代码演示如何检索和输出 **my-sample-container** 容器中每一项的 URI：
+若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 list_blobs  方法来检索其中的 Blob 和/或目录。 若要针对一个返回的 **list_blob_item** 访问其丰富的属性和方法，必须调用 **list_blob_item.as_blob** 方法以获取一个 **cloud_blob** 对象，或调用 **list_blob.as_directory** 方法以获取 cloud_blob_directory 对象。 以下代码演示如何检索和输出 **my-sample-container** 容器中每一项的 URI：
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -186,7 +186,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 有关列出操作的更多详细信息，请参阅[使用 C++ 列出 Azure 存储资源](../storage-c-plus-plus-enumeration.md)。
 
 ## <a name="how-to-download-blobs"></a>如何：下载 Blob
-要下载 Blob，请首先检索 Blob 引用，然后调用 **download_to_stream** 方法。 以下示例使用 download_to_stream 方法将 Blob 内容传输到一个流对象，用户即可将该对象保存到本地文件。  
+要下载 Blob，请首先检索 Blob 引用，然后调用 **download_to_stream** 方法。 以下示例使用 download_to_stream  方法将 Blob 内容传输到一个流对象，用户即可将该对象保存到本地文件。  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -213,7 +213,7 @@ outfile.write((char *)&data[0], buffer.size());
 outfile.close();  
 ```
 
-也可以使用 download_to_file 方法将 Blob 的内容下载到文件。
+也可以使用 download_to_file  方法将 Blob 的内容下载到文件。
 此外，还可以使用 **download_text** 方法以文本字符串形式下载 Blob 的内容。  
 
 ```cpp

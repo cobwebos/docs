@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 6/7/2019
 ms.author: victorh
 ms.openlocfilehash: f7215c4f35d36486b8dda483f34bc487cc16fc69
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66743062"
 ---
 # <a name="configure-web-application-firewall-with-a-custom-rule-using-azure-powershell"></a>自定义规则使用 Azure PowerShell 配置 Web 应用程序防火墙
@@ -20,7 +20,7 @@ ms.locfileid: "66743062"
 
 自定义规则，可创建您自己的规则评估的每个请求都将传递到 Web 应用程序防火墙 (WAF)。 这些规则中的托管规则集保存的优先级高于其他规则。 自定义规则具有操作 （若要允许或阻止）、 匹配条件和运算符以允许完全自定义。
 
-本文创建使用自定义规则的应用程序网关 WAF。 如果在请求标头包含用户代理的自定义规则将阻止的流量*evilbot*。
+本文创建使用自定义规则的应用程序网关 WAF。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
 若要查看更多自定义规则示例，请参阅[创建和使用自定义 web 应用程序防火墙规则](create-custom-waf-rules.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "66743062"
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell 模块
 
-如果您选择本地安装并使用 Azure PowerShell，此脚本需要 Azure PowerShell 模块版本 2.1.0 或更高版本。
+如果选择在本地安装并使用 Azure PowerShell，则此脚本需要安装 Azure PowerShell 模块 2.1.0 或更高版本。
 
 1. 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 2. 若要创建与 Azure 的连接，请运行 `Connect-AzAccount`。

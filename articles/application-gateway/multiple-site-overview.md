@@ -4,15 +4,14 @@ description: 本文概述了 Azure 应用程序网关的多站点支持。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-origin.date: 01/17/2019
-ms.date: 04/16/2019
-ms.author: v-junlch
+ms.date: 1/17/2019
+ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 335545f86c9c23feefb6ac21ca9cc5c8fcb5e7fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60715833"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
@@ -125,5 +124,3 @@ ms.locfileid: "60715833"
 
 了解多站点托管以后，请转到[创建使用多站点托管的应用程序网关](tutorial-multiple-sites-powershell.md)，以便创建能够支持多个 Web 应用程序的应用程序网关。
 
-
-<!-- Update_Description: update metedata properties -->

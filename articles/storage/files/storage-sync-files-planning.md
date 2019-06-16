@@ -9,10 +9,10 @@ ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597078"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
@@ -159,7 +159,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 | \*.laccdb | Access DB 锁定文件|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | 内部同步文件|
 | \\系统卷信息 | 特定于卷的文件夹 |
-| $RECYCLE.BIN| 文件夹 |
+| $RECYCLE.BIN| Folder |
 | \\SyncShareState | 用于同步的文件夹 |
 
 ### <a name="failover-clustering"></a>故障转移群集
@@ -178,9 +178,9 @@ Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重
 ### <a name="distributed-file-system-dfs"></a>分布式文件系统 (DFS)
 Azure 文件同步支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进行互操作。
 
-**DFS 命名空间 (DFS-N)**：Azure 文件同步在 DFS-N 服务器上完全受支持。 可以在一个或多个 DFS-N 成员上安装 Azure 文件同步代理，以在服务器终结点与云终结点之间同步数据。 有关详细信息，请参阅 [DFS 命名空间概述](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)。
+**DFS 命名空间 (DFS-N)** ：Azure 文件同步在 DFS-N 服务器上完全受支持。 可以在一个或多个 DFS-N 成员上安装 Azure 文件同步代理，以在服务器终结点与云终结点之间同步数据。 有关详细信息，请参阅 [DFS 命名空间概述](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)。
  
-**DFS 复制 (DFS-R)**：因为 DFS-R 和 Azure 文件同步都是复制解决方案，所以在大多数情况下建议将 DFS-R 替换为 Azure 文件同步。不过在以下几个方案中，可能需要同时使用 DFS-R 和 Azure 文件同步：
+**DFS 复制 (DFS-R)** ：因为 DFS-R 和 Azure 文件同步都是复制解决方案，所以在大多数情况下建议将 DFS-R 替换为 Azure 文件同步。不过在以下几个方案中，可能需要同时使用 DFS-R 和 Azure 文件同步：
 
 - 从 DFS-R 部署迁移至 Azure 文件同步部署。 有关详细信息，请参阅[将 DFS 复制 (DFS-R) 部署迁移至 Azure 文件同步](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync)。
 - 并非需要文件数据副本的每个本地服务器都可以直接连接至 Internet。

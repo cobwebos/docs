@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: 5f55228c80142b2a21af585cb04d16f148460af0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65149100"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
@@ -40,7 +40,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 ## <a name="start-and-initialize-the-storage-emulator"></a>启动和初始化存储模拟器
 
 若要启动 Azure 存储模拟器：
-1. 选择“开始”按钮或按“Windows”键。
+1. 选择“开始”  按钮或按“Windows”  键。
 2. 开始键入 `Azure Storage Emulator`。
 3. 从所示应用程序的列表中选择该模拟器。
 
@@ -78,7 +78,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 有关这些命令的详细信息，请参阅[存储模拟器命令行工具参考](#storage-emulator-command-line-tool-reference)。
 
 > [!TIP]
-> 可使用 [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 管理 SQL Server 实例，包括 LocalDB 安装。 在 SMSS“连接到服务器”对话框的“服务器名称:”字段中，指定 `(localdb)\MSSQLLocalDb` 以连接到 LocalDB 实例。
+> 可使用 [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 管理 SQL Server 实例，包括 LocalDB 安装。 在 SMSS“连接到服务器”  对话框的“服务器名称:”  字段中，指定 `(localdb)\MSSQLLocalDb` 以连接到 LocalDB 实例。
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>针对存储模拟器的请求进行身份验证
 安装并启动存储模拟器后，可针对此模拟器测试代码。 与云中的 Azure 存储一样，针对存储模拟器发出的每个请求都必须经过授权，除非它是匿名请求。 可以使用共享密钥身份验证或使用共享访问签名 (SAS) 针对存储模拟器的请求进行授权。
@@ -168,7 +168,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 ### <a name="options"></a>选项
 若要查看选项列表，请在命令提示符下键入 `/help`。
 
-| 选项 | 描述 | 命令 | 参数 |
+| Option | 描述 | 命令 | 参数 |
 | --- | --- | --- | --- |
 | **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*：在当前进程中启动仿真器，而不是创建新的进程。 |
 | **Stop** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |
@@ -259,12 +259,12 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 ### <a name="version-42"></a>版本 4.2
 * 存储模拟器现在支持 Blob、队列和表服务终结点上的 2015-04-05 版本的存储服务。
 
-### <a name="version-41"></a>4.1 版
+### <a name="version-41"></a>4\.1 版
 * 存储模拟器现在支持 Blob、队列和表服务终结点上的 2015-02-21 版本的存储服务，但是新的“追加 Blob”功能例外。
 * 如果使用模拟器尚不支持的存储服务版本，则模拟器会返回一条有意义的错误消息。 建议使用最新版本的模拟器。 如果遇到 VersionNotSupportedByEmulator 错误（HTTP 状态代码 400 - 错误请求），请下载最新版本的存储模拟器。
 * 修复了在并发合并操作期间发生争用情况下导致表实体数据不正确的错误。
 
-### <a name="version-40"></a>4.0 版
+### <a name="version-40"></a>4\.0 版
 * 存储模拟器可执行文件已重命名为 *AzureStorageEmulator.exe*。
 
 ### <a name="version-32"></a>版本 3.2

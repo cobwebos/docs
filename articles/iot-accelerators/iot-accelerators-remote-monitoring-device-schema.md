@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0f9669d491648ecc621aab27d0908dcc3dc84438
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65823328"
 ---
 # <a name="understand-the-device-model-schema"></a>了解设备模型架构
@@ -116,7 +116,7 @@ ms.locfileid: "65823328"
 
 ## <a name="properties"></a>属性
 
-架构的 `Properties` 节定义设备向解决方案报告的属性值。 例如:
+架构的 `Properties` 节定义设备向解决方案报告的属性值。 例如：
 
 ```json
 "Properties": {

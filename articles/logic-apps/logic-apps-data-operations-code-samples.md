@@ -4,18 +4,17 @@ description: 有关 Azure 逻辑应用中数据操作定义的代码示例
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
-ms.author: v-yiso
+ms.author: estfan
 manager: jeconnoc
 ms.topic: reference
-origin.date: 07/25/2018
-ms.date: 12/10/2018
+ms.date: 07/25/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128543"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure 逻辑应用的数据操作代码示例

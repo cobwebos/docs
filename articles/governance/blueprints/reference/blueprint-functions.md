@@ -8,10 +8,10 @@ ms.topic: reference
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: dc72113a8f5ed978d64d35c43e94dc9e19e4cdb1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209413"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>用于 Azure 蓝图函数
@@ -37,7 +37,7 @@ Azure 蓝图提供了生成蓝图定义更动态的函数。 这些函数用于�
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| artifactName |“是” |string |蓝图项目的名称。 |
+| artifactName |是 |字符串 |蓝图项目的名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -109,7 +109,7 @@ Azure 蓝图提供了生成蓝图定义更动态的函数。 这些函数用于�
 
 | 表达式 | Type | 值 |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | 阵列 | \["first", "second"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "第一个" |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | String | "我的字符串值" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | { "myproperty": "my value", "anotherProperty": true } |
@@ -124,10 +124,10 @@ Azure 蓝图提供了生成蓝图定义更动态的函数。 这些函数用于�
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| string1 |“是” |string |串联的第一个值。 |
-| 其他参数 |“否” |string |按顺序排列的串联的其他值 |
+| string1 |是 |字符串 |串联的第一个值。 |
+| 其他参数 |否 |字符串 |按顺序排列的串联的其他值 |
 
 ### <a name="return-value"></a>返回值
 
@@ -151,7 +151,7 @@ Azure Blueprint 函数与不同 Azure 资源管理器模板函数，因为它仅
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| parameterName |“是” |string |要返回的参数名称。 |
+| parameterName |是 |字符串 |要返回的参数名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -272,7 +272,7 @@ Azure Blueprint 函数不同于 Azure 资源管理器模板函数。 `resourceGr
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| placeholderName |“是” |string |要返回的资源组项目的占位符名称。 |
+| placeholderName |是 |字符串 |要返回的资源组项目的占位符名称。 |
 
 ### <a name="return-value"></a>返回值
 

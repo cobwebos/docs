@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 04/24/2019
 ms.author: tomfitz
 ms.openlocfilehash: 21b3972a96c1601b15c403275474d58873753b08
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64712989"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
@@ -47,7 +47,7 @@ ms.locfileid: "64712989"
 | 代理 | 否 | 
 | anonymousapiusers | 否 | 
 | 配置 | 否 | 
-| 日志 | 否 | 
+| logs | 否 | 
 | 报表 | 否 | 
 | services | 否 | 
 
@@ -671,7 +671,7 @@ ms.locfileid: "64712989"
 | extendedDiagnosticSettings | 否 | 
 | logDefinitions | 否 | 
 | logprofiles | 否 | 
-| 日志 | 否 | 
+| logs | 否 | 
 | metricAlerts | 是 |
 | migrateToNewPricingModel | 否 | 
 | myWorkbooks | 否 | 
@@ -733,7 +733,7 @@ ms.locfileid: "64712989"
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | 资源类型 | 完整模式删除 |
 | ------------- | ----------- |
-| 日志 | 否 | 
+| logs | 否 | 
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | 资源类型 | 完整模式删除 |

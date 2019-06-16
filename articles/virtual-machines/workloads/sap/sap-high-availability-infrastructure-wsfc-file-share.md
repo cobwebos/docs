@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409601"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
@@ -231,7 +231,7 @@ ms.locfileid: "65409601"
 
 | SAP \<SID> | SAP ASCS/SCS 实例编号 |
 | --- | --- |
-| PR1 | 0 |
+| PR1 | 00 |
 
 **表 2**:SAP ASCS/SCS 实例详细信息
 
@@ -317,7 +317,7 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 > 在横向扩展文件服务器资源管理器模板 UI 中，必须指定 VM 计数。
 >
 
-### <a name="use-managed-disks"></a>使用托管的磁盘
+### <a name="use-managed-disks"></a>使用托管磁盘
 
 [GitHub][arm-sofs-s2d-managed-disks] 上提供了用于部署使用存储空间直通和 Azure 托管磁盘的横向扩展文件服务器的 Azure 资源管理器模板。
 
@@ -328,10 +328,10 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 _**图 1**:使用托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕_
 
 在模板中，执行以下操作：
-1. 在“Vm 计数”框中，输入最小计数 **2**。
-2. 在“Vm 磁盘计数”框中，输入最小磁盘计数 **3**（2 个磁盘 + 1 个备用磁盘 = 3 个磁盘）。
-3. 在“Sofs 名称”框中，输入 SAP 全局主机网络名称 **sapglobalhost**。
-4. 在“共享名”框中，输入文件共享名 **sapmnt**。
+1. 在“Vm 计数”  框中，输入最小计数 **2**。
+2. 在“Vm 磁盘计数”  框中，输入最小磁盘计数 **3**（2 个磁盘 + 1 个备用磁盘 = 3 个磁盘）。
+3. 在“Sofs 名称”  框中，输入 SAP 全局主机网络名称 **sapglobalhost**。
+4. 在“共享名”  框中，输入文件共享名 **sapmnt**。
 
 ### <a name="use-unmanaged-disks"></a>使用非托管磁盘
 
@@ -341,7 +341,7 @@ _**图 1**:使用托管磁盘的横向扩展文件服务器资源管理器模板
 
 _**图 2**:不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
 
-在“存储帐户类型”框中，选择“高级存储”。 其他所有设置与托管磁盘的设置相同。
+在“存储帐户类型”  框中，选择“高级存储”  。 其他所有设置与托管磁盘的设置相同。
 
 ## <a name="adjust-cluster-timeout-settings"></a>调整群集超时设置
 

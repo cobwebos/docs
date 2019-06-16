@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: d700588f-2d8a-4c92-93eb-e1e6e250e760
 ms.date: 07/08/2016
 ms.openlocfilehash: 8db0dbadd944007ff953f9ea69695bf988ffebb7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60995831"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中验证用于 B2B 企业集成的 XML
@@ -25,17 +25,17 @@ ms.locfileid: "60995831"
 
 1. 创建逻辑应用并[将应用链接到包含用于验证 XML 数据的架构的集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")。
 
-2. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”触发器。
+2. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”  触发器。
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1.png)
 
-3. 若要添加“XML 验证”操作，请选择“添加操作”。
+3. 若要添加“XML 验证”  操作，请选择“添加操作”  。
 
-4. 若要在所有操作中筛选出所需的操作，请在搜索框中输入“xml”。 选择“XML 验证”。
+4. 若要在所有操作中筛选出所需的操作，请在搜索框中输入“xml”  。 选择“XML 验证”  。
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-2.png)
 
-5. 若要指定要验证的 XML 内容，请选择“内容”。
+5. 若要指定要验证的 XML 内容，请选择“内容”  。
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1-5.png)
 

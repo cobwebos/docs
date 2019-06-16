@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sogup
 ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966319"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
@@ -54,7 +54,7 @@ ms.locfileid: "65966319"
 不。 为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我最近在一些 VM 上启用了 Azure 磁盘加密。 我的备份是否继续有效？
-提供 Azure 备份访问 Key Vault 所需的权限。 按照 [Azure 备份 PowerShell](backup-azure-vms-automation.md) 文档中的“启用备份”部分所述，在 PowerShell 中指定权限。
+提供 Azure 备份访问 Key Vault 所需的权限。 按照 [Azure 备份 PowerShell](backup-azure-vms-automation.md) 文档中的“启用备份”部分所述，在 PowerShell 中指定权限  。
 
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>我将 VM 磁盘迁移到了托管磁盘。 我的备份是否继续有效？
 是的，备份可以顺利工作。 没有必要重新配置任何内容。
@@ -66,7 +66,7 @@ ms.locfileid: "65966319"
 是的。 计算机关闭时运行备份。 将恢复点标记为崩溃一致。
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>可以取消正在进行的备份作业吗？
-是的。 可在“拍摄快照”状态中取消备份作业。 如果此作业正在从快照传输数据，则无法取消。
+是的。 可在“拍摄快照”状态中取消备份作业  。 如果此作业正在从快照传输数据，则无法取消。
 
 ### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>我在由 Azure 备份服务创建的资源组（即 `AzureBackupRG_<geo>_<number>`）上启用了锁定，我的备份是否继续有效？
 如果锁定 Azure 备份服务创建的资源组，则由于还原点的最大数目限制为 18 个，备份会开始失败。
@@ -120,7 +120,7 @@ Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排�
 是的。 即使删除了 VM，也可以转到保管库中的相应备份项并从恢复点还原。
 
 ### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>如何将 VM 还原到相同的可用性集？
-对于托管磁盘 Azure VM，通过在还原为托管磁盘时在模板中提供选项来启用还原到可用性集。 此模板具有名为“可用性集”的输入参数。
+对于托管磁盘 Azure VM，通过在还原为托管磁盘时在模板中提供选项来启用还原到可用性集。 此模板具有名为“可用性集”的输入参数  。
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>如何获得更快的还原性能？
 为了获得更快的还原性能，我们正在转到[即时还原](backup-instant-restore-capability.md)功能。

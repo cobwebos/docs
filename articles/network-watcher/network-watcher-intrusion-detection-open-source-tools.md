@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: b5dc885611c6654c1dc1d236e41ed75ef2717cc1
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65605702"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
 数据包捕获是一个重要组件，可以实施网络入侵检测系统 (IDS) 并执行网络安全监视 (NSM)。 可以借助多种开源 IDS 工具来处理数据包捕获，并检查潜在网络入侵和恶意活动的签名。 使用网络观察程序提供的数据包捕获，可以分析网络中是否存在任何有害入侵或漏洞。
 
-Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用规则集来监视网络流量，每当出现可疑事件时，它会触发警报。 Suricata 提供多线程引擎，意味着它能够以更高的速度和效率执行网络流量分析。 有关 Suricata 及其功能的更多详细信息，请访问其网站 https://suricata-ids.org/。
+Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用规则集来监视网络流量，每当出现可疑事件时，它会触发警报。 Suricata 提供多线程引擎，意味着它能够以更高的速度和效率执行网络流量分析。 有关 Suricata 及其功能的更多详细信息，请访问其网站 https://suricata-ids.org/ 。
 
 ## <a name="scenario"></a>场景
 
@@ -245,7 +245,7 @@ tail -f /var/log/suricata/fast.log
 
 1. 在[此处](https://aka.ms/networkwatchersuricatadashboard)下载仪表板文件，在[此处](https://aka.ms/networkwatchersuricatavisualization)下载可视化效果文件，在[此处](https://aka.ms/networkwatchersuricatasavedsearch)下载已保存的搜索文件。
 
-1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“仪表板”选项卡打开并加载示例仪表板。
+1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。   然后，可从“仪表板”  选项卡打开并加载示例仪表板。
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 

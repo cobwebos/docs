@@ -16,21 +16,21 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
 ms.openlocfilehash: 8b75b9898eb767866c0843594a82570cfb65d122
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64868957"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>在 Azure 规模集模板中添加对现有虚拟网络的引用
 
-本文介绍如何修改[基本的规模集模板](virtual-machine-scale-sets-mvss-start.md)将部署到现有而不是创建一个新的虚拟网络。
+本文介绍了如何修改[基本规模集模板](virtual-machine-scale-sets-mvss-start.md)，以便将其部署到现有虚拟网络而非创建新的虚拟网络。
 
 ## <a name="change-the-template-definition"></a>更改模板定义
 
-在中[前一篇文章](virtual-machine-scale-sets-mvss-start.md)我们创建了基本的规模集模板。 我们现在将使用前面的模板并修改它来创建可部署的规模集到现有虚拟网络的模板。 
+在[此前的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了基本的规模集模板。 我们现在将使用这个此前的模板并对其进行修改，以便创建一个模板来将规模集部署到现有的虚拟网络中。 
 
-首先，添加一个 `subnetId` 参数。 此字符串将传递到规模集配置，使得规模集能够识别要将虚拟机部署到的预先创建的子网。 此字符串必须采用以下形式： `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+首先，添加一个 `subnetId` 参数。 此字符串将传递到规模集配置，使得规模集能够识别要将虚拟机部署到的预先创建的子网。 此字符串必须采用以下格式：`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 
 例如，要将规模集部署到具有名称 `myvnet`、子网 `mysubnet`、资源组 `myrg` 和订阅 `00000000-0000-0000-0000-000000000000` 的现有虚拟网络，则 subnetId 将是：`/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`。
 
@@ -89,7 +89,7 @@ ms.locfileid: "64868957"
          "capacity": 2
 ```
 
-最后，传入`subnetId`由用户设置的参数 (而不是使用`resourceId`若要获取同一部署中某个 vnet 的 ID，这是最基本的可行规模集模板执行)。
+最后，传入用户设置的 `subnetId` 参数（而非使用 `resourceId` 获取同一部署中某个 vnet 的 ID，这是基本可行规模集模板执行的操作）。
 
 ```diff
                        "name": "myIpConfig",

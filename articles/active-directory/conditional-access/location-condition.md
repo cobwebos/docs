@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 条件访问中的位置条件是什么？ | Microsoft Docs
+title: 什么是 Azure Active Directory 条件访问中的位置条件？ | Microsoft Docs
 description: 了解如何使用位置条件基于用户的网络位置来控制对云应用的访问。
 services: active-directory
 ms.service: active-directory
@@ -12,16 +12,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98588e0c25439fd4988fe39e06e7042cfa9113cb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 886118614427bea61f745e1ded28824b60225919
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305683"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112293"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件是什么？ 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>什么是 Azure Active Directory 条件访问中的位置条件？ 
 
-使用 [Azure Active Directory (Azure AD) 条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用的方式。 使用条件访问策略的位置条件可将访问控制设置绑定到用户的网络位置。
+与[Azure Active Directory (Azure AD) 条件性访问](../active-directory-conditional-access-azure-portal.md)，可以控制如何授权的用户可以访问你的云应用。 位置条件的条件性访问策略，可将绑定到你的用户的网络位置的访问控制设置。
 
 本文提供配置位置条件所需的信息。
 
@@ -38,7 +38,7 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 
 使用命名位置，可以创建 IP 地址范围或国家/地区和区域的逻辑分组。
 
-可在条件访问页的“管理”部分中访问命名位置  。
+您可以访问在命名的位置**管理**的条件性访问页面的部分。
 
 ![条件访问中的命名的位置](./media/location-condition/02.png)
 
@@ -52,7 +52,7 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
    > [!NOTE]
    > IPv6 地址 rangess 当前不能包含在命名的位置。 不能从条件性访问策略中删除此 measn IPv6 范围。
 
-- **标记为可信位置** - 可为命名位置设置标志，以指示它是可信的位置。 通常，可信位置是由 IT 部门控制的网络区域。 除条件访问以外，Azure Identity Protection 和 Azure AD 安全报告也使用可信命名位置来减少[误报](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)。
+- **标记为可信位置** - 可为命名位置设置标志，以指示它是可信的位置。 通常，可信位置是由 IT 部门控制的网络区域。 条件性访问，除了可信命名的位置也使用 Azure Identity Protection 和 Azure AD 安全报告来减少[假正](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)。
 - **国家/地区** - 使用此选项可以选择一个或多个国家或地区，以定义命名位置。
 - **包含未知的区域**-某些 IP 地址未映射到特定国家或地区。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
@@ -73,7 +73,7 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 
 ### <a name="skipping-multi-factor-authentication"></a>跳过多重身份验证
 
-在多重身份验证服务设置页中，可以通过选择“跳过多重身份验证以适用于我的 Intranet 上的联合用户发出的请求”，来标识企业 Intranet 用户。  此设置指示 AD FS 颁发的内部企业网络声明应受信任，并且应该用于将用户标识为位于企业网络中。 有关详细信息，请参阅[使用条件访问启用受信任的 IP 功能](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)。
+在多重身份验证服务设置页中，可以通过选择“跳过多重身份验证以适用于我的 Intranet 上的联合用户发出的请求”，来标识企业 Intranet 用户。  此设置指示 AD FS 颁发的内部企业网络声明应受信任，并且应该用于将用户标识为位于企业网络中。 有关详细信息，请参阅[使用条件性访问启用受信任的 Ip 功能](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)。
 
 选中此选项之后, 包括命名的位置**MFA 受信任的 IP**选择此选项将应用于任何策略。
 
@@ -113,7 +113,7 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 
 ### <a name="when-is-a-location-evaluated"></a>何时评估位置？
 
-条件访问策略的评估时机：
+条件性访问策略进行评估时：
 
 - 当用户最初登录到 Web 应用、移动应用或桌面应用程序时。
 - 当使用新式身份验证的移动应用或桌面应用程序使用刷新令牌来获取新的访问令牌时。 默认情况下此检查一次为一小时。
@@ -141,9 +141,9 @@ Azure AD 启用单一登录方式登录到设备，应用程序，并从任意�
 
 ### <a name="api-support-and-powershell"></a>API 支持和 PowerShell
 
-API 和 PowerShell 尚不支持命名位置或条件访问策略。
+API 和 PowerShell 尚不支持命名位置或条件性访问策略。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
-- 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。
+- 如果你想要了解如何配置条件性访问策略，请参阅[需要 MFA 的特定应用的 Azure Active Directory 条件性访问](app-based-mfa.md)。
+- 如果你已准备好配置你的环境的条件性访问策略，请参阅[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。

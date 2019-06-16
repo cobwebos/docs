@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
 ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65231427"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
-[命名实体识别 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)采用非结构化的文本，并为每个 JSON 文档，返回一系列消除歧义具有链接的实体的详细信息 （维基百科和必应） 在 web 上。 
+[命名实体识别 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 需要使用非结构化文本，并对每个 JSON 文档返回已消除歧义的实体列表，其中包含网上（维基百科和必应）详细信息的链接。 
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>实体链接和命名实体识别
 
@@ -31,7 +31,7 @@ ms.locfileid: "65231427"
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 命名实体识别 (NER) 是指识别文本中不同实体，并将它们分入预定义类别的能力。 下面列出了受支持的实体类型。
 
-在文本分析[版本 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)，实体链接和命名的实体识别 (NER) 都可用。
+文本分析[版本 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 中同时提供了实体链接和命名实体识别 (NER)。
 
 ### <a name="language-support"></a>语言支持
 
@@ -41,27 +41,27 @@ ms.locfileid: "65231427"
 
 | Type  | SubType | 示例 |
 |:-----------   |:------------- |:---------|
-| 个人        | 暂无\*         | “Jeff”、“Bill Gates”     |
+| 人员        | 暂无\*         | “Jeff”、“Bill Gates”     |
 | Location      | 暂无\*         | “Redmond, Washington”、“Paris”  |
 | 组织  | 暂无\*         | “Microsoft”   |
-| 数量      | 数量        | “6”、“six”     | 
+| 数量      | Number        | “6”、“six”     | 
 | 数量      | 百分比    | “50%”、“fifty percent”| 
 | 数量      | 序号       | “2nd”、“second”     | 
-| 数量      | NumberRange   | “4 to 8”     | 
-| 数量      | 期限           | “90 day old”、“30 years old”    | 
-| 数量      | 货币      | “$10.99”     | 
+| 数量      | 数字范围   | “4 to 8”     | 
+| 数量      | Age           | “90 day old”、“30 years old”    | 
+| 数量      | Currency      | “$10.99”     | 
 | 数量      | 维度     | “10 miles”、“40 cm”     | 
 | 数量      | 温度   | “32 degrees”    |
 | DateTime      | 暂无\*         | “6:30PM February 4, 2012”      | 
-| DateTime      | date          | “May 2nd, 2017”、“05/02/2017”   | 
+| DateTime      | Date          | “May 2nd, 2017”、“05/02/2017”   | 
 | DateTime      | Time          | “8am”、“8:00”  | 
-| DateTime      | DateRange     | “May 2nd to May 5th”    | 
-| DateTime      | TimeRange     | “6pm to 7pm”     | 
-| DateTime      | 持续时间      | “1 minute and 45 seconds”   | 
-| DateTime      | 集合           | “every Tuesday”     | 
+| DateTime      | 日期范围     | “May 2nd to May 5th”    | 
+| DateTime      | 时间范围     | “6pm to 7pm”     | 
+| DateTime      | Duration      | “1 minute and 45 seconds”   | 
+| DateTime      | 设置           | “every Tuesday”     | 
 | DateTime      | TimeZone      |    | 
 | URL           | 暂无\*         | "https:\//www.bing.com"    |
-| 电子邮件         | 暂无\*         | "support@contoso.com" |
+| Email         | 暂无\*         | "support@contoso.com" |
 
 \*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。  列出的所有支持的实体类型都仅可用于英语、 简体中文、 法语、 德语和西班牙语语言。
 
@@ -92,7 +92,7 @@ ms.locfileid: "65231427"
 
 有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求。 查看此请求的 API 文档：[实体链接 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ 创建 POST 请求  。 查看此请求的 API 文档：[实体链接 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
 + 设置用于实体提取的 HTTP 终结点。 它必须包含 `/entities` 资源：`https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
@@ -101,7 +101,7 @@ ms.locfileid: "65231427"
 + 在请求正文中，提供为此分析准备的 JSON 文档集合
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)中的“API 测试控制台”来构造请求并将其 POST 到该服务  。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 

@@ -16,17 +16,17 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66136175"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
 本文列出了为 Azure 应用服务中的 Web 应用配置域或 SSL 证书时可能遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方法。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -96,8 +96,8 @@ ms.locfileid: "66136175"
     **解决方案**；如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)。
-    2. 转到“应用服务证书”，选择该证书。
-    3. 选择“证书配置” > “步骤 2:验证” > “域验证”。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
+    2. 转到“应用服务证书”，选择该证书。 
+    3. 选择“证书配置”   > “步骤 2:  验证” > “域验证”  。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
 
 ## <a name="custom-domain-problems"></a>自定义域问题
 
@@ -197,14 +197,14 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 可以强制同步证书：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。
-2. 依次单击“重新生成密钥和同步”、“同步”。同步过程需要一段时间才能完成。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。 
+2. 依次单击“重新生成密钥和同步”、“同步”。   同步过程需要一段时间才能完成。 
 3. 同步完成后，将看到以下通知：“已成功使用最新的证书更新了所有资源。”
 
 ### <a name="domain-verification-is-not-working"></a>域验证无法进行 
 
 #### <a name="symptom"></a>症状 
-应用服务证书要求先经过域验证，然后该证书才可供使用。 选择“验证”时，验证过程失败。
+应用服务证书要求先经过域验证，然后该证书才可供使用。 选择“验证”时，验证过程失败。 
 
 #### <a name="solution"></a>解决方案
 通过添加 TXT 记录来手动验证域：
@@ -212,13 +212,13 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 1.  转到托管域名的域名服务 (DNS) 提供商站点。
 2.  添加域的 TXT 记录，并在其中使用 Azure 门户中显示的域令牌值。 
 
-等待几分钟以运行 DNS 传播，然后选择“刷新”按钮触发验证。 
+等待几分钟以运行 DNS 传播，然后选择“刷新”按钮触发验证。  
 
 另一种做法是使用 HTML 网页方法来手动验证域。 此方法可让证书颁发机构确认为其颁发证书的域的域所有权。
 
 1.  创建名为 {Domain Verification Token}.html 的 HTML 文件。 此文件的内容应为域验证令牌的值。
 3.  将此文件上传到托管域的 Web 服务器的根目录。
-4.  选择“刷新”检查证书状态。 验证可能需要几分钟才能完成。
+4.  选择“刷新”检查证书状态。  验证可能需要几分钟才能完成。
 
 例如，如果为 azure.com 购买了域验证令牌为 1234abcd 的标准证书，则对 https://azure.com/1234abcd.html 发出的 Web 请求应返回 1234abcd。 
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
 ms.openlocfilehash: a5cedec4937da276a4848498ad29a723f6e41ba3
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073703"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>教程：对相关的数据进行分组和提取
@@ -48,7 +48,7 @@ ms.locfileid: "65073703"
 
 2. 将 JSON 导入到新应用中。
 
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `composite`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+3. 在“管理”  部分的“版本”  选项卡上，克隆版本并将其命名为 `composite`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
 
 ## <a name="composite-entity"></a>复合实体
 
@@ -69,11 +69,11 @@ ms.locfileid: "65073703"
 
 LUIS 为常见数据提取提供多个预生成的实体。 
 
-1. 从顶部导航栏中选择“生成”，然后从左侧导航菜单中选择“实体”。
+1. 从顶部导航栏中选择“生成”  ，然后从左侧导航菜单中选择“实体”  。
 
-1. 选择“管理预生成的实体”按钮。
+1. 选择“管理预生成的实体”按钮  。
 
-1. 从预生成实体的列表中选择 **[PersonName](luis-reference-prebuilt-person.md)**，然后选择“完成”。
+1. 从预生成实体的列表中选择 **[PersonName](luis-reference-prebuilt-person.md)** ，然后选择“完成”  。
 
     ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
@@ -81,27 +81,27 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 ## <a name="create-composite-entity-from-example-utterances"></a>基于示例话语创建复合实体
 
-1. 从左侧导航栏中选择“意向”。
+1. 从左侧导航栏中选择“意向”  。
 
-1. 从意向列表中选择“TransferEmployeeToDepartment”。
+1. 从意向列表中选择“TransferEmployeeToDepartment”  。
 
-1. 在查询文本`place John Jackson in engineering`，选择 personName 实体`John Jackson`，然后选择**将包装在复合实体**以下查询文本的弹出菜单列表中。 
+1. 在话语 `place John Jackson in engineering` 中，选择 personName 实体 `John Jackson`，然后从以下话语的弹出菜单列表中选择“包装进复合实体”  。 
 
-    ![在下拉对话框中选择换行组合的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
+    ![在下拉对话框中选择“包装复合实体”的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
 1. 然后立即选择最后一个实体，话语中的 `engineering`。 在所选字词下面绘制的绿色条指示复合实体。 在弹出菜单中，输入复合名称 `TransferEmployeeInfo`，然后选择 Enter。 
 
-    ![在下拉列表对话框中输入复合名称的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
+    ![在下拉对话框中输入复合名称的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. 在“想要创建哪种类型的实体?”中，所有必需字段都在列表中：`personName` 和 `Department`。 选择“完成”。 请注意，预构建实体 personName 已添加到复合实体中。 如果可能有预构建实体出现在复合实体的开始标记和结束标记之间，则复合实体必须包含那些预构建实体。 如果未包括预构建实体，则不能正确预测复合实体，但可以正确预测每个个体元素。
+1. 在“想要创建哪种类型的实体?”  中，所有必需字段都在列表中：`personName` 和 `Department`。 选择“完成”  。 请注意，预构建实体 personName 已添加到复合实体中。 如果可能有预构建实体出现在复合实体的开始标记和结束标记之间，则复合实体必须包含那些预构建实体。 如果未包括预构建实体，则不能正确预测复合实体，但可以正确预测每个个体元素。
 
-    ![在下拉列表对话框中输入复合名称的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
+    ![在下拉对话框中输入复合名称的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
 ## <a name="label-example-utterances-with-composite-entity"></a>使用复合实体标记示例话语
 
-1. 在每个示例话语中，选择应在复合中的最左侧实体。 然后选择“在复合实体中包装”.
+1. 在每个示例话语中，选择应在复合中的最左侧实体。 然后选择“在复合实体中包装”  .
 
-1. 选择复合实体中的最后一个单词，然后从弹出菜单中选择“TransferEmployeeInfo”。 
+1. 选择复合实体中的最后一个单词，然后从弹出菜单中选择“TransferEmployeeInfo”  。 
 
 1. 验证意向中的所有话语都已使用复合实体进行标记。 
 

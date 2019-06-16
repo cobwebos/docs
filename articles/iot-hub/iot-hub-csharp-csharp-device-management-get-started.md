@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: robinsh
 ms.openlocfilehash: fe548b0e8c791d5e7e3bdbc7bd4612a130ff8168
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873283"
 ---
 # <a name="get-started-with-device-management-netnet"></a>设备管理入门 (.NET/.NET)
@@ -56,24 +56,24 @@ ms.locfileid: "65873283"
 
 在本部分中，你创建一个 .NET 控制台应用（使用 C#）以使用直接方法在设备上启动远程重新启动。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
 
-1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板将 Visual C# Windows 经典桌面项目添加到新解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **TriggerReboot**。
+1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)  ”项目模板将 Visual C# Windows 经典桌面项目添加到新解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **TriggerReboot**。
 
     ![新的 Visual C# Windows 经典桌面项目](./media/iot-hub-csharp-csharp-device-management-get-started/createserviceapp.png)
 
-2. 在“解决方案资源管理器”中，右键单击“TriggerReboot”项目，并单击“管理 NuGet 包”。
+2. 在“解决方案资源管理器”中，右键单击“TriggerReboot”  项目，并单击“管理 NuGet 包”  。
 
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **Microsoft.Azure.Devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
+3. 在“NuGet 包管理器”  窗口中，选择“浏览”  ，搜索 **Microsoft.Azure.Devices**，选择“安装”  以安装 **Microsoft.Azure.Devices** 包，并接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
 
     ![“NuGet 包管理器”窗口](./media/iot-hub-csharp-csharp-device-management-get-started/servicesdknuget.png)
 
-4. 在 Program.cs 文件顶部添加以下 `using` 语句：
+4. 在 Program.cs  文件顶部添加以下 `using` 语句：
    
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Shared;
    ```
         
-5. 将以下字段添加到 Program 类。 将占位符值替换为在“创建 IoT 中心”部分中为中心创建的 IoT 中心连接字符串。 
+5. 将以下字段添加到 Program 类  。 将占位符值替换为在“创建 IoT 中心”部分中为中心创建的 IoT 中心连接字符串。 
    
    ```csharp
    static RegistryManager registryManager;
@@ -137,9 +137,9 @@ ms.locfileid: "65873283"
    
     ![新建 Visual C# Windows 经典设备应用](./media/iot-hub-csharp-csharp-device-management-get-started/createdeviceapp.png)
     
-2. 在“解决方案资源管理器”中，右键单击“SimulateManagedDevice”项目，然后单击“管理 NuGet 包...”。
+2. 在“解决方案资源管理器”中，右键单击“SimulateManagedDevice”  项目，然后单击“管理 NuGet 包...”  。
 
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，然后搜索“Microsoft.Azure.Devices.Client”。 选择“安装”以安装“Microsoft.Azure.Devices.Client”包，并接受使用条款。 该过程将下载、安装 [Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对其的引用。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，然后搜索“Microsoft.Azure.Devices.Client”    。 选择“安装”以安装“Microsoft.Azure.Devices.Client”包，并接受使用条款   。 该过程将下载、安装 [Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对其的引用。
    
     ![“NuGet 包管理器”窗口客户端应用](./media/iot-hub-csharp-csharp-device-management-get-started/clientsdknuget.png)
     
@@ -150,7 +150,7 @@ ms.locfileid: "65873283"
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. 将以下字段添加到 Program 类。 将占位符值替换为上一部分中所述的设备连接字符串。
+5. 将以下字段添加到 Program 类  。 将占位符值替换为上一部分中所述的设备连接字符串。
 
     ```csharp
     static string DeviceConnectionString = 
@@ -218,7 +218,7 @@ ms.locfileid: "65873283"
    }
    ```
         
-8. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”。选择“单个启动项目”，并在下拉菜单中选择“SimulateManagedDevice”项目。 生成解决方案。       
+8. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”  。选择“单个启动项目”  ，并在下拉菜单中选择“SimulateManagedDevice”  项目。 生成解决方案。       
 
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling](/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
@@ -227,9 +227,9 @@ ms.locfileid: "65873283"
 
 现在可以运行应用了。
 
-1. 若要运行 .NET 设备应用 **SimulateManagedDevice**， 右键单击“SimulateManagedDevice”项目，选择“调试”，并选择“启动新实例”。 它应开始侦听来自 IoT 中心的方法调用。 
+1. 若要运行 .NET 设备应用 **SimulateManagedDevice**， 右键单击“SimulateManagedDevice”项目，选择“调试”，并选择“启动新实例”。    它应开始侦听来自 IoT 中心的方法调用。 
 
-2. 现在设备已连接，正在等待方法调用，此时可运行 .NET **TriggerReboot** 应用，调用模拟设备应用中的重新启动方法。 为此，右键单击“TriggerReboot”项目，选择“调试”，并选择“启动新实例”。 应会看到“正在重新启动！” 在 **SimulatedManagedDevice** 控制台中写入，设备的报告属性（包括上次重新启动时间）在 **TriggerReboot** 控制台中写入。
+2. 现在设备已连接，正在等待方法调用，此时可运行 .NET **TriggerReboot** 应用，调用模拟设备应用中的重新启动方法。 为此，右键单击“TriggerReboot”项目，选择“调试”，并选择“启动新实例”。    应会看到“正在重新启动！” 在 **SimulatedManagedDevice** 控制台中写入，设备的报告属性（包括上次重新启动时间）在 **TriggerReboot** 控制台中写入。
    
     ![运行的服务和设备应用](./media/iot-hub-csharp-csharp-device-management-get-started/combinedrun.png)
 

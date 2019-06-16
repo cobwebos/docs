@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 973b0044844fbdf38eefde2072631586a8ace593
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192606"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure 安全中心，IoT 系统必备组件
@@ -45,7 +45,7 @@ ms.locfileid: "65192606"
 
 以下 Azure 区域中的 IoT 中心目前支持适用于 IoT 的 ASC:
   - 美国中部
-  - 欧洲北部
+  - 北欧
   - 东南亚
 
 ## <a name="wheres-my-iot-hub"></a>我的 IoT 中心位于何处？
@@ -53,7 +53,7 @@ ms.locfileid: "65192606"
 检查你的 IoT 中心位置，以便在开始之前验证服务可用性。 
 
 1. 打开 IoT 中心。 
-2. 单击“概览”。 
+2. 单击“概览”。  
 3. 验证是否列出的地点与匹配之一[支持的服务区域](#supported-service-regions)。 
 
 

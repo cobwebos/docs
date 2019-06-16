@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: cc6f822f20da55488c559c081129c3f177367123
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295422"
+ms.locfileid: "67108974"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>如何：在 Azure Active Directory Identity Protection（已刷新）中配置风险策略
 
@@ -114,7 +114,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 ## <a name="what-is-a-user-risk-policy"></a>什么是用户风险策略？
 
-Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录而来的可疑操作。 在 Azure AD 中，系统可以检测到的可疑操作也称为风险事件。 尽管某些风险事件可以实时检测到，但有些风险事件需要更长的时间才能检测到。 例如，若要检测异常位置的不可能行程，系统需要花费 14 天的初始学习期来学习用户的常规行为。 可通过多个选项解决检测到的风险事件。 例如，可以手动解决单个风险事件，也可以使用登录风险或用户风险条件访问策略来解决这些事件。
+Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录而来的可疑操作。 在 Azure AD 中，系统可以检测到的可疑操作也称为风险事件。 尽管某些风险事件可以实时检测到，但有些风险事件需要更长的时间才能检测到。 例如，若要检测异常位置的不可能行程，系统需要花费 14 天的初始学习期来学习用户的常规行为。 可通过多个选项解决检测到的风险事件。 例如，可以手动解决单个风险事件，也可以获取其使用登录风险或用户风险的条件访问策略解析。
 
 已检测到的但尚未解决的所有用户风险事件称为活动风险事件。 与用户关联的活动风险事件称为用户风险。 Azure AD 根据用户风险计算用户遭到入侵的可能性（低、中、高）。 这种可能性称为用户风险级别。
 

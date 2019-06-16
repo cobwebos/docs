@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: 42429f0e8e541d0481f991761ead63e4751fcc3d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719721"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
@@ -27,7 +27,7 @@ ms.locfileid: "64719721"
 
 本部分介绍如何使用 Azure 资源管理器模板在 HDInsight 中创建 Interactive Query 群集。 学习本文不需要有资源管理器模板方面的经验。 
 
-1. 单击下面的“部署到 Azure”按钮以登录到 Azure，并在 Azure 门户中打开资源管理器模板。 
+1. 单击下面的“部署到 Azure”按钮以登录到 Azure，并在 Azure 门户中打开资源管理器模板  。 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-grafana/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -47,14 +47,14 @@ ms.locfileid: "64719721"
     |**订阅**     |  选择 Azure 订阅。 |
     |**资源组**     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
     |**位置**     | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
-    |**群集类型**     | 选择“hadoop”。 |
+    |**群集类型**     | 选择“hadoop”  。 |
     |**群集名称**     | 输入 Apache Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
-    |**群集登录名和密码**     | 默认登录名为“admin”。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”。|
-    |**SSH 用户名和密码**     | 默认用户名为“sshuser”。  可以重命名 SSH 用户名。  SSH 用户密码的要求与群集登录密码的要求相同。|
+    |**群集登录名和密码**     | 默认登录名为“admin”  。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”  。|
+    |**SSH 用户名和密码**     | 默认用户名为“sshuser”  。  可以重命名 SSH 用户名。  SSH 用户密码的要求与群集登录密码的要求相同。|
        
     某些属性已在模板中硬编码。  可以通过模板配置这些值。 有关这些属性的详细说明，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
-3. 依次选择“我同意上述条款和条件”、“固定到仪表板”，并选择“购买”。 门户仪表板上应会出现标题为“提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
+3. 依次选择“我同意上述条款和条件”、“固定到仪表板”，并选择“购买”    。 门户仪表板上应会出现标题为“提交部署”的新磁贴  。 创建群集大约需要 20 分钟时间。
 
     ![模板部署进度](./media/hdinsight-grafana/deployment-progress-tile.png "Azure 模板部署进度")
 
@@ -72,9 +72,9 @@ ms.locfileid: "64719721"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“HDInsight 群集”，然后选择在上一部分中创建的群集名称。
+2. 选择“HDInsight 群集”，然后选择在上一部分中创建的群集名称  。
 
-3. 在“快速链接”下，单击“群集仪表板”。
+3. 在“快速链接”  下，单击“群集仪表板”  。
 
     ![HDInsight 群集仪表板门户](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "门户上的 HDInsight 群集仪表板")
 
@@ -92,17 +92,17 @@ ms.locfileid: "64719721"
 完成本文后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 
 
 > [!NOTE]  
-> 如果立即进行下一教程，了解如何使用 Hadoop on HDInsight 运行 ETL 操作，建议保持群集运行。 这是因为该教程中必须再次创建 Hadoop 群集。 但是，如果不立即学习下一教程，则必须立即删除该群集。
+> 如果立即进行下一教程，了解如何使用 Hadoop on HDInsight 运行 ETL 操作，建议保持群集运行  。 这是因为该教程中必须再次创建 Hadoop 群集。 但是，如果不立即学习下一教程，则必须立即删除该群集。
 
 **删除群集和/或默认存储帐户**
 
-1. 返回到包含 Azure 门户的浏览器选项卡。 你应该在群集概览页上。 如果仅希望删除群集但保留默认的存储帐户，请选择“删除”。
+1. 返回到包含 Azure 门户的浏览器选项卡。 你应该在群集概览页上。 如果仅希望删除群集但保留默认的存储帐户，请选择“删除”  。
 
     ![删除 HDInsight 群集](./media/hdinsight-grafana/hdinsight-delete-cluster.png "删除 HDInsight 群集")
 
 2. 如果希望删除群集和默认存储帐户，请选择资源组名称（之前的屏幕截图中已突出显示），打开资源组页。
 
-3. 选择“删除资源组”，删除资源组（包括群集和默认存储帐户）。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
+3. 选择“删除资源组”，删除资源组（包括群集和默认存储帐户）  。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
 
 ## <a name="next-steps"></a>后续步骤
 本教程已介绍如何使用资源管理器模板创建基于 Linux 的 HDInsight 群集，以及如何执行基本 Apache Hive 查询。 下一篇文章将介绍如何使用 Hadoop on HDInsight 执行提取、转换和加载 (ETL) 操作。

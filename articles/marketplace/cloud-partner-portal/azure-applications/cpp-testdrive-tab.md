@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: 42e533cdcedfb47a46934f77714d61a640a8d7d1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942868"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Azure 应用程序“体验版”选项卡
@@ -34,8 +34,8 @@ ms.locfileid: "64942868"
 
 ### <a name="to-enable-a-test-drive"></a>若要启用体验版，请执行以下操作：
 
-1. 在“新建套餐”下，选择“体验版”选项卡。
-2. 在“体验版”下，对“启用体验版”选项选择“是”。
+1. 在“新建套餐”下，选择“体验版”选项卡。  
+2. 在“体验版”下，对“启用体验版”选项选择“是”。   
 
    ![启用体验版](./media/managed-app-enable-testdrive.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "64942868"
 |  ---------------   |  ---------------  |
 | **说明\***  |  介绍可以在体验版上执行的操作 可以使用基本 HTML 标记来设置此说明的格式。 例如，&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt;、标题。                |
 | **用户手册\***  |  上传客户进行体验版体验时可以使用的用户手册。 此文档必须是 .pdf 文件。    |
-| **体验版演示视频** |  体验版可选视频演练。 客户在进行体验之前，可以观看此视频。 提供在 YouTube 或 Vimeo 上的视频的 URL。 如果选择“+ 添加视频”，系统会提示你提供以下信息：<ul><li>名称</li><li>代码</li><li>缩略图（PNG 格式，533 x 324 像素）</li></ul>  |
+| **体验版演示视频** |  体验版可选视频演练。 客户在进行体验之前，可以观看此视频。 提供在 YouTube 或 Vimeo 上的视频的 URL。 如果选择“+ 添加视频”，系统会提示你提供以下信息： <ul><li>Name</li><li>URL</li><li>缩略图（PNG 格式，533 x 324 像素）</li></ul>  |
 | **实例\***      | 配置需要多少个实例、在哪些区域及客户多久可以获得体验版。 有关更多信息，请参阅[如何发布体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive)。           |
 | **测试驱动器持续时间 （小时）\*** | 输入一个整数来代表小时数。 允许的范围为 1 到 999。 |
 | **测试驱动器 ARM 模板\***     | 上传一个压缩 (.zip) 文件，其中有适用于应用的 Azure 资源管理模板。 有关详细信息，请参阅 [Azure 资源管理器体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)。 |
@@ -68,7 +68,7 @@ ms.locfileid: "64942868"
 | **Azure AD 应用密钥\***            | 为应用创建一个身份验证密钥，然后将其粘贴到此字段中。   |
 |  |  |
 
-提供全部所需的信息后，选择“保存”，完成体验版的设置。
+提供全部所需的信息后，选择“保存”，完成体验版的设置。 
 
 
 ## <a name="next-steps"></a>后续步骤

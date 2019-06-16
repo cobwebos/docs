@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: a9ada25641e2a56beb9083b145a507c8fd41a46f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935114"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>如何通过云合作伙伴门户创建 Dynamics 365 for Operations 套餐
@@ -51,7 +51,7 @@ ms.locfileid: "64935114"
 
 通过此下拉列表，可以选择要在其下发布此产品/服务的发布者个人资料。 此字段在套餐推出后处于锁定状态。
 
-名称
+Name
 
 这是产品/服务的显示名称。 这是显示在 [AppSource](https://appsource.microsoft.com) 中的名称。 该名称不能超过 50 个字符。
 

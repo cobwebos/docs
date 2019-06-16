@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
 ms.openlocfilehash: b6cde8402c699a7477cd0efc79a44b3f5e150ad0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146307"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>将 IoT 中心从操作监视迁移到诊断设置
@@ -34,9 +34,9 @@ ms.locfileid: "66146307"
 
 在工作流中测试新的诊断设置后，可以关闭操作监视功能。 
 
-1. 在 IoT 中心菜单中，选择“操作监视”。
+1. 在 IoT 中心菜单中，选择“操作监视”。 
 
-2. 在每个监视类别下，选择“无”。
+2. 在每个监视类别下，选择“无”。 
 
 3. 保存操作监视更改。
 

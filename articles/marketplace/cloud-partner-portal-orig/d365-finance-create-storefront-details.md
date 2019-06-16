@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pabutler
 ms.openlocfilehash: a22a2ebe870280ddcdf18c037141b92894742400
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935029"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>如何填写“店面详细信息”窗体
@@ -29,7 +29,7 @@ ms.locfileid: "64935029"
 
 ### <a name="offer-description"></a>产品/服务描述
 
-此描述将在 AppSource 的“产品/服务摘要”正下方显示。 介绍解决方案时，不要只关注基础技术或操作功能。 潜在客户可以在后期了解详情。 主要目标是价值转化，这意味着需要刺激潜在客户采取行动。 最好的方法提及他们正在经历的困扰，并指出开始使用你的解决方案后将获得的益处。 清楚阐明有说服力的预期效果和结果。 建议在描述页尾添加应用登录页的链接。 允许的最大长度为 1300 个字符。
+此描述将在 AppSource 的“产品/服务摘要”正下方显示  。 介绍解决方案时，不要只关注基础技术或操作功能。 潜在客户可以在后期了解详情。 主要目标是价值转化，这意味着需要刺激潜在客户采取行动。 最好的方法提及他们正在经历的困扰，并指出开始使用你的解决方案后将获得的益处。 清楚阐明有说服力的预期效果和结果。 建议在描述页尾添加应用登录页的链接。 允许的最大长度为 1300 个字符。
 
 ### <a name="industries"></a>行业
 
@@ -42,7 +42,7 @@ ms.locfileid: "64935029"
 ### <a name="app-type"></a>应用类型
 
 选择应用在 AppSource 中启用的试用类型。
-**免费**：表示应用是免费的。 “试用”表示客户可以在 AppSource 中短期试用该应用。 “申请试用”表示客户可从 AppSource 申请试用应用。
+**免费**：表示应用是免费的。 “试用”表示客户可以在 AppSource 中短期试用该应用  。 “申请试用”表示客户可从 AppSource 申请试用应用  。
 
 ### <a name="help-link-for-your-app"></a>应用的帮助链接
 
@@ -86,7 +86,7 @@ ms.locfileid: "64935029"
 ![视频上传](./media/d365-financials/image009.png)
 
 
-### <a name="document"></a>文档
+### <a name="document"></a>Document
 
 此处上传的文档将在 AppSource 中的“了解详细信息”下显示\"\"。
 最多可以上传三个 PDF 格式的文档。 对于要上传的每个文档，需要填写文档名称，然后上传文档。 文档必须采用 pdf 格式。 若要添加新文档，请单击加号 - 请见下面的屏幕截图

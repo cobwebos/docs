@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: f84e81a5a9e9c9cf6f477adefa0869d776f7dd71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec6a6ea5d00d43f6dffa3aabc367d94ebb8db198
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487335"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075607"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>优化 Lsv2 系列虚拟机上的性能
 
@@ -24,7 +24,7 @@ Lsv2 系列虚拟机支持多种工作负载的需要对多种应用程序和行
 
 Lsv2 系列虚拟机 (Vm) 的设计可最大化 AMD EPYC™ 7551 处理器提供的处理器、 内存、 NVMe 设备以及在 Vm 之间的最佳性能。 除了最大化硬件性能，Lsv2 系列 Vm 都设计成可更好的性能与硬件和软件的 Windows 和 Linux 操作系统的需求。
 
-优化的软件和硬件导致的优化版本[Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview)、 中到 Azure Marketplace Lsv2 系列中的 NVMe 设备支持最大性能年 12 月 2018 年初发布虚拟机。
+优化的软件和硬件导致的优化版本[Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、 中到 Azure Marketplace Lsv2 系列中的 NVMe 设备支持最大性能年 12 月 2018 年初发布虚拟机。
 
 本文提供提示和建议，确保你的工作负荷和应用程序实现设计到的 Vm 的最大性能。 随着更多优化 Lsv2 映像添加到 Azure Marketplace，此页上的信息将不断更新。
 

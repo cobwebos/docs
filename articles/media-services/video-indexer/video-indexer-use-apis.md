@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: ce04e19022a9902c228079e866c192985694134c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799249"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教程：使用视频索引器 API
@@ -64,7 +64,7 @@ ms.locfileid: "65799249"
 
 可以通过指定 **allowEdit=true/false**，来控制这些令牌是只读的还是可编辑的。
 
-对于大多数的服务器到服务器方案，也许可以使用相同的**帐户**令牌，因为它同时涵盖了**帐户**操作和**视频**操作。 但是，若要对视频索引器发出客户端调用（例如，从 javascript），可能需要使用**视频**访问令牌，以防止客户端访问整个帐户。 这也是在客户端中嵌入 VideoIndexer 客户端代码（例如，使用“获取见解小组件”或“获取播放器小组件”）时，必须提供**视频**访问令牌的原因。
+对于大多数的服务器到服务器方案，也许可以使用相同的**帐户**令牌，因为它同时涵盖了**帐户**操作和**视频**操作。 但是，若要对视频索引器发出客户端调用（例如，从 javascript），可能需要使用**视频**访问令牌，以防止客户端访问整个帐户。 这也是在客户端中嵌入 VideoIndexer 客户端代码（例如，使用“获取见解小组件”或“获取播放器小组件”）时，必须提供**视频**访问令牌的原因。  
 
 为简化操作，可以使用**授权** API > **GetAccounts** 来获取帐户，而不是先获取用户令牌。 还可以请求获取具有有效令牌的帐户，以便跳过附加的调用即可获取帐户令牌。
 
@@ -79,7 +79,7 @@ ms.locfileid: "65799249"
 * 使用**视频索引器网站**获取帐户 ID：
 
     1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
-    2. 浏览到“设置”页。
+    2. 浏览到“设置”页。 
     3. 复制帐户 ID。
 
         ![帐户 ID](./media/video-indexer-use-apis/account-id.png)

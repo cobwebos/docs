@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
 ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736766"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>监视指标和 Azure 第一道防线服务中的日志
@@ -69,7 +69,7 @@ ms.locfileid: "60736766"
 
 2. 选择**诊断设置**。
 
-3. 选择“启用诊断”。 存档到存储帐户的指标和诊断日志、 流式传输到事件中心，或将其发送到 Azure Monitor 日志。
+3. 选择“启用诊断”  。 存档到存储帐户的指标和诊断日志、 流式传输到事件中心，或将其发送到 Azure Monitor 日志。
 
 第一道防线服务目前提供诊断日志 （每小时进行批处理）。 诊断日志提供单个 API 请求，其中每个条目具有以下架构：
 

@@ -14,10 +14,10 @@ ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: c9c8c649208cff95f4ee515d39cc8cca3e2c64bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60726836"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>了解如何监视和诊断在反向代理处处理的请求
@@ -37,7 +37,7 @@ ms.locfileid: "60726836"
 
     有效负载包括：
 
-   * **traceId**：可将此 GUID 用于关联与单个请求对应的所有事件。 在下面的两个事件中，traceId = 2f87b722-e254-4ac2-a802-fd315c1a0271 暗示它们属于同一请求。
+   * **traceId**：可将此 GUID 用于关联与单个请求对应的所有事件。 在下面的两个事件中，traceId = 2f87b722-e254-4ac2-a802-fd315c1a0271 暗示它们属于同一请求  。
    * **requestUrl**：请求已发送到的 URL（反向代理 URL）。
    * **verb**：HTTP 谓词。
    * **remoteAddress**：发送请求的客户端地址。
@@ -86,7 +86,7 @@ ms.locfileid: "60726836"
     下面的示例中的反向代理将返回 404，因为找不到匹配的服务终结点。
     此处需要了解的有效负载项为：
    * **processRequestPhase**：指示发生故障时请求处理的阶段，TryGetEndpoint， 即尝试获取要转发到的服务终结点时。 
-   * **errorDetails**：列出终结点搜索条件。 此处，你可看到指定的 listenerName = FrontEndListener，而副本终结点列表仅包含名称为 OldListener 的侦听程序。
+   * **errorDetails**：列出终结点搜索条件。 此处，你可看到指定的 listenerName = FrontEndListener，而副本终结点列表仅包含名称为 OldListener 的侦听程序   。
     
      ```
      {
@@ -104,7 +104,7 @@ ms.locfileid: "60726836"
      }
      }
      ```
-     反向代理返回“404 未找到”的另一个示例为：ApplicationGateway\Http 配置参数 SecureOnlyMode 已设为 true，同时反向代理正在侦听 HTTPS，但所有副本终结点都不安全（侦听 HTTP）。
+     反向代理返回“404 未找到”的另一个示例为：ApplicationGateway\Http 配置参数 SecureOnlyMode 已设为 true，同时反向代理正在侦听 HTTPS，但所有副本终结点都不安全（侦听 HTTP）   。
      反向代理返回 404，因为找不到用于侦听 HTTPS 的终结点来转发请求。 分析事件负载中的参数有助于缩小问题范围：
     
      ```

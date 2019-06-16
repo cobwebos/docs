@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
 ms.openlocfilehash: 9785a09a3ac3e119507b4ac28075d887c7edc619
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60774057"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
@@ -46,7 +46,7 @@ Reliable Collections 支持两种隔离级别：
 Reliable Collections 会在事务创建时根据副本的操作和角色，为指定读取操作自动选择要使用的隔离级别。
 下表描述了用于 Reliable Dictionary 和 Reliable Queue 操作的默认隔离级别。
 
-| 操作\角色 | 主要 | 辅助 |
+| 操作\角色 | 基本 | 辅助 |
 | --- |:--- |:--- |
 | 单个实体读取 |可重复的读取 |快照 |
 | 枚举、计数 |快照 |快照 |

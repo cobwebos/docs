@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本-更新 Azure Cosmos 帐户
-description: Azure PowerShell 脚本示例-更新具有添加了区域的 Azure Cosmos 帐户
+title: Azure PowerShell 脚本 - 更新 Azure Cosmos 帐户
+description: Azure PowerShell 脚本示例 - 使用添加的区域更新 Azure Cosmos 帐户
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: samples
 ms.date: 05/06/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4a695fd569459e6372465273675620cd40d7e6a7
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65078275"
 ---
-# <a name="update-an-azure-cosmos-account-and-add-a-region-using-powershell"></a>更新 Azure Cosmos 帐户并添加使用 PowerShell 的区域
+# <a name="update-an-azure-cosmos-account-and-add-a-region-using-powershell"></a>使用 PowerShell 更新 Azure Cosmos 帐户并添加区域
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

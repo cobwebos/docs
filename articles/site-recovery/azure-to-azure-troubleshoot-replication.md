@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: bf24b2d1395e128dc73361670ea93ac938574146
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258790"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>排查 Azure 到 Azure VM 复制中持续出现的问题
@@ -116,8 +116,8 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 **如何修复**:若要生成应用程序一致性标记，Azure Site Recovery 将使用 Microsoft 卷影复制服务 (VSS)。 它会安装 VSS 提供程序进行其操作来创建应用程序一致性快照。 此 VSS 提供程序安装为服务。 如果禁用 VSS 提供程序服务，则应用程序一致性快照创建将失败并出现错误 id"指定的服务被禁用，不能为 started(0x80070422)"。 </br>
 
-- 如果禁用了 VSS，
-    - 验证 VSS 提供程序服务的启动类型设置为**自动**。
+- 如果已禁用 VSS：
+    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。 
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序
@@ -131,7 +131,7 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 - 卸载现有的提供程序：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
 - 请重新安装：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
  
-验证 VSS 提供程序服务的启动类型设置为**自动**。
+确认 VSS 提供程序服务的启动类型是否设置为“自动”。 
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序

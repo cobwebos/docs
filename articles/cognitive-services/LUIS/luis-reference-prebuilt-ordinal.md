@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 752a26b21854ec9030fc1945024ae461445815a9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65146718"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的序号预生成实体
@@ -61,9 +61,9 @@ ms.locfileid: "65146718"
 }
 ```
 
-### <a name="preview-api-version-3x"></a>预览 API 版本 3.x
+### <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
 
-以下 JSON 是与`verbose`参数设置为`false`:
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 {
@@ -88,7 +88,7 @@ ms.locfileid: "65146718"
 }
 ```
 
-以下 JSON 是与`verbose`参数设置为`true`:
+以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
 {

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
 ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60768644"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
@@ -56,8 +56,8 @@ ms.locfileid: "60768644"
 
 名称 | 描述 | Type | 必需？
 ---- | ----------- | ---- | --------
-dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”部分中获取详细信息。 | 键/值对 | 是
-source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
+dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”  部分中获取详细信息。 | 键/值对 | 是
+source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”  部分中获取详细信息。 | 键/值对 | 是
 firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不。 默认为 `true`。
 
 > [!NOTE]
