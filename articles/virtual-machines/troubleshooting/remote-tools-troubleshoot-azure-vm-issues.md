@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: 513ce98703e67053ab0bcac3e6fc7a3e959f6870
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307355"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717274"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
 
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!Note]
 >* 必须在位于同一 VNET 中的计算机上运行该命令。
->* 可以使用 DIP 或主机名替换\<计算机 >。
+>* 可以使用 DIP 或主机名来替换 \<computer>。
 >* -s 参数确保使用系统帐户（管理员权限）调用命令。
 >* PsExec 使用 TCP 端口 135 和 445。 因此，需要在防火墙中打开这两个端口。
 
@@ -213,7 +213,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. 在同一 VNET 中的另一个 VM 上，打开注册表编辑器 (regedit.exe)。
 
-2. 选择“文件” >“连接网络注册表”。
+2. 选择“文件” >“连接网络注册表”。  
 
    ![远程选项](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
@@ -236,9 +236,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. 在同一 VNET 中的另一个 VM 上，打开 **Services.msc** 的实例。
 
-2. 右键单击“服务(本地)”。
+2. 右键单击“服务(本地)”。 
 
-3. 选择“连接到另一台计算机”。
+3. 选择“连接到另一台计算机”。 
 
    ![远程服务](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 

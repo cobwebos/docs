@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 05/07/2019
 ms.author: banders
 ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66126840"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>获取企业协议保留成本和使用情况
@@ -92,9 +92,9 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 1. 选择计费帐户。
 2. 单击**使用情况 + 费用**。
-3. 单击“下载”。  
+3. 单击“下载”  。  
 ![显示在何处下载 Azure 门户中的 CSV 使用情况数据文件的示例](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. 在中**下载使用情况 + 费用**下**使用情况详细信息版本 2** ，选择 **（使用情况和购买） 的所有费用**，然后单击下载。 重复这些步骤**分摊费用 （使用情况和购买）**。
+4. 在中**下载使用情况 + 费用**下**使用情况详细信息版本 2** ，选择 **（使用情况和购买） 的所有费用**，然后单击下载。 重复这些步骤**分摊费用 （使用情况和购买）** 。
 
 所下载的 CSV 文件包含实际成本和摊销的成本。
 

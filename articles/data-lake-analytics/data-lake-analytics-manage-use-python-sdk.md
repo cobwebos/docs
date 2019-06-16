@@ -10,10 +10,10 @@ ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 82007c780a0c9ff3bb2e1a50a4826499f9df9c9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60811705"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>使用 Python 管理 Azure Data Lake Analytics
@@ -35,7 +35,7 @@ ms.locfileid: "60811705"
 * **azure-mgmt-resource** 模块包括 Active Directory 等的其他 Azure 模块。
 * **azure-datalake-store** 模块包含 Azure Data Lake Store 文件系统操作。 
 * **azure-mgmt-datalake-store** 模块包括 Azure Data Lake Store 帐户管理操作。
-* azure-mgmt-datalake-analytics 模块包含 Azure Data Lake Analytics 操作。 
+* azure-mgmt-datalake-analytics  模块包含 Azure Data Lake Analytics 操作。 
 
 首先，通过运行以下命令来确保具有最新 `pip`：
 

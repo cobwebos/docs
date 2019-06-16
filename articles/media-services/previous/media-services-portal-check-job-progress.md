@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 86c91582256261d701dc3c73b1bdfdcb6002f6e6
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64867219"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>使用 Azure 门户监视编码作业进度
@@ -30,7 +30,7 @@ ms.locfileid: "64867219"
 
 运行作业时，通常需要采用某种方式来跟踪作业进度。 
 
-若要监视编码作业的进度，请单击“设置”（位于页面顶部），然后选择“作业”。
+若要监视编码作业的进度，请单击“设置”（位于页面顶部），然后选择“作业”   。
 
 ![作业](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 

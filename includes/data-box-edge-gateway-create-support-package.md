@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161155"
 ---
 如果遇到任何设备问题，您可以从系统日志中创建支持包。 Microsoft 支持部门使用此包的问题进行疑难解答。 请按照下列步骤以创建支持包：
@@ -31,7 +31,7 @@ ms.locfileid: "66161155"
 
     使用的参数如下所示：
 
-    - `-Path` -指定的网络或本地路径复制到支持包。 (必需)
+    - `-Path` -指定的网络或本地路径复制到支持包。 （需要的）
     - `-Credential` -指定用于访问受保护的路径的凭据。
     - `-Zip` -指定要生成的 zip 文件。
     - `-Include` -指定包含要包括在支持包的组件。 如果未指定，`Default`假定。
