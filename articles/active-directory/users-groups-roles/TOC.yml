@@ -116,7 +116,7 @@
           href: licensing-groups-change-licenses.md
         - name: 其他方案
           href: licensing-group-advanced.md
-        - name: 使用 PowerShell 进行基于组的许可
+        - name: 使用 PowerShell 和 Graph 进行组许可
           href: licensing-ps-examples.md
         - name: 用于许可的服务计划 ID
           href: licensing-service-plan-reference.md

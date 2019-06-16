@@ -2,19 +2,23 @@
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 12/11/2018
+ms.date: 06/05/2019
 ms.topic: include
-ms.openlocfilehash: a956cd1e029371fa7031d262206b0ce10aa8dbff
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 550ace93479278df2a592a87ee34d10f8763d2f6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117106"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133815"
 ---
 > [!IMPORTANT]
 >
-> 使用 PowerShell 的 Azure 功能必须已安装 `AzureRM` 模块。 该模块是旧模块，仅适用于 Windows PowerShell 5.x，它只接收关键更新，但不再获取新功能。 如果已安装 `Az` 模块，则还需要安装 `AzureRM`。 安装 `AzureRM`：
-> 
-> 1. 使用 `Disable-AzAlias` 禁用 `Az`（若已启用）中的 AzureRM 别名。 在没有安装 `Az` 或禁用别名的情况下，也可以运行此命令。
-> 2. 请遵循 [AzureRM 的最新安装说明](/powershell/azure/install-az-ps)。 即使已安装 `AzureRM`，也请将其更新到最新版本。
+> 使用 PowerShell 的 Azure 功能必须已安装 `AzureRM` 模块。 该模块是旧模块，仅适用于 Windows PowerShell 5.1，它不再接收新功能。
+> 针对相同版本的 PowerShell 进行安装时，`Az` 和 `AzureRM` 模块不兼容。 
+> 如果需要两个版本，请执行以下操作：
+>
+> 1. 在 PowerShell 5.1 会话中[卸载 Az 模块](/powershell/azure/uninstall-az-ps)。
+> 2. 在 PowerShell 5.1 会话中[安装 AzureRM 模块](/powershell/azure/azurerm/install-azurerm-ps)。
+> 3. [下载并安装 PowerShell Core 6.x 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)。
+> 4. 在 PowerShell Core 会话中[安装 Az 模块](/powershell/azure/install-az-ps)。
 

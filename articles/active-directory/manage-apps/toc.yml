@@ -83,6 +83,10 @@
           href: plan-sso-deployment.md
     - name: 最终用户门户
       href: end-user-experiences.md
+    - name: 一键式 SSO
+      items:
+        - name: 什么是一键式 SSO
+          href: one-click-sso-tutorial.md
 - name: 操作指南
   items:
     - name: 添加云应用

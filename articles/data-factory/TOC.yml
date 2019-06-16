@@ -486,6 +486,8 @@
           href: control-flow-expression-language-functions.md
         - name: 系统变量
           href: control-flow-system-variables.md
+        - name: 数据流参数
+          href: parameters-data-flow.md
     - name: 安全
       items:
         - name: 数据移动安全注意事项
@@ -516,7 +518,7 @@
       items:
         - name: Azure 集成运行时
           href: create-azure-integration-runtime.md
-        - name: 自我托管集成运行时
+        - name: 自承载集成运行时
           href: create-self-hosted-integration-runtime.md
         - name: Azure-SSIS 集成运行时
           href: create-azure-ssis-integration-runtime.md
@@ -546,6 +548,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: 使用弹性数据库作业清理 SSISDB 日志
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: 在 Azure-SSIS IR 中排查包执行问题
+          href: ssis-integration-runtime-ssis-activity-faq.md
     - name: 创建触发器
       items:
         - name: 创建基于事件的触发器

@@ -51,6 +51,22 @@
           href: tutorial-deploy-custom-vision.md
         - name: 使用 SQL 在本地存储数据
           href: tutorial-store-data-sql-server.md
+    - name: 4. 边缘机器学习的端到端示例
+      items:
+        - name: 介绍
+          href: tutorial-machine-learning-edge-01-intro.md
+        - name: 设置开发计算机和 Azure 服务
+          href: tutorial-machine-learning-edge-02-prepare-environment.md
+        - name: 生成模拟设备数据
+          href: tutorial-machine-learning-edge-03-generate-data.md
+        - name: 训练和部署 Azure 机器学习模型
+          href: tutorial-machine-learning-edge-04-train-model.md
+        - name: 配置透明网关
+          href: tutorial-machine-learning-edge-05-configure-edge-device.md
+        - name: 创建并部署 IoT Edge 模块
+          href: tutorial-machine-learning-edge-06-custom-modules.md
+        - name: 通过透明网关将数据发送到 IoT 中心
+          href: tutorial-machine-learning-edge-07-send-data-to-hub.md
 - name: 概念
   items:
     - name: IoT Edge 运行时
@@ -149,6 +165,8 @@
       items:
         - name: 配置透明网关
           href: how-to-create-transparent-gateway.md
+        - name: 对下游设备进行身份验证
+          href: how-to-authenticate-downstream-device.md
         - name: 连接下游设备
           href: how-to-connect-downstream-device.md
         - name: Modbus 协议网关

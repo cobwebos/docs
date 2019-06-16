@@ -85,9 +85,10 @@
           items:
             - name: 优化性能
               href: storage-performance.md
-        - name: GPU 优化
-          href: sizes-gpu.md
+        - name: 加速计算
           items:
+            - name: GPU 优化
+              href: sizes-gpu.md
             - name: 安装 GPU 驱动程序
               href: n-series-driver-setup.md
         - name: 高性能计算

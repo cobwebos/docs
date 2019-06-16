@@ -205,7 +205,7 @@
           href: iot-accelerators-device-simulation-advanced-device.md
         - name: 使用时序见解对遥测数据进行可视化
           href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: 使用 Protbuf 将遥测数据序列化
+        - name: 使用 Protobuf 将遥测数据序列化
           href: iot-accelerators-device-simulation-protobuf.md
         - name: 部署自定义 Docker 映像
           href: iot-accelerators-device-simulation-deploy-image.md

@@ -74,8 +74,9 @@
     - name: 租户范围可见性
       href: security-center-management-groups.md
     - name: 实施安全建议
-      href: security-center-recommendations.md
       items:
+        - name: 安全建议是什么
+          href: security-center-recommendations.md
         - name: 加强安全态势
           href: security-center-monitoring.md
         - name: 保护计算机和应用
@@ -181,6 +182,8 @@
       href: /learn/browse/?term=securityS
     - name: 管理用户数据
       href: security-center-privacy.md
+    - name: 管理 IoT
+      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: 常见问题解答
       href: security-center-faq.md
     - name: Azure 安全性

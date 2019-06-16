@@ -6,20 +6,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 6fecd2278ddad4de3a2cff9035d60083101e873e
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
-ms.translationtype: MT
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: d24686a094c524c5ce913eee4b711daf1c60100d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393837"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67130622"
 ---
-# <a name="what-is-ml-services-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的机器学习服务
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 ML 服务
 
 可以在 Azure 中创建 HDInsight 群集时选择使用 Microsoft Machine Learning Server 部署。 提供此选项的群集类型名为 ML Services  。 这项功能可让数据科研人员、统计人员和 R 程序员根据需要访问 HDInsight 上可缩放的分布式分析方法。
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 HDInsight 上的 ML Services 提供最新的功能，可针对载入 Azure Blob 或 Data Lake 存储的几乎任何大小的数据集执行基于 R 的分析。 由于 ML Services 群集基于开放源代码 R 构建，因此，构建的基于 R 的应用程序可以利用超过 8000 个任意开放源代码 R 包。 ScaleR 中的例程（Microsoft 的大数据分析包）同样可用。
 
@@ -57,7 +55,7 @@ HDInsight 中的 ML Services 具有下述优势：
 
 HDInsight 上的 ML Services 包含以下功能。
 
-| 功能类别 | 描述 |
+| 功能类别 | 说明 |
 |------------------|-------------|
 | 支持 R | 适用于以 R 编写的解决方案的 [R 包](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference)，R 开源分发版和用于执行脚本的运行时基础结构。 |
 | 支持 Python | 适用于以 Python 编写的解决方案的 [Python 模块](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference)，Python 开源分发版和用于执行脚本的运行时基础结构。

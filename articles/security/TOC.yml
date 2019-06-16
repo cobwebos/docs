@@ -54,8 +54,14 @@
               href: azure-security-disk-encryption-overview.md
             - name: 快速入门
               items:
-                - name: 加密 VM - Azure PowerShell
-                  href: quick-encrypt-vm-powershell.md
+                - name: 使用 Azure CLI 加密 Linux VM
+                  href: azure-disk-encryption-linux-cli-quickstart.md
+                - name: 使用 Azure PowerShell 加密 Linux VM
+                  href: azure-disk-encryption-linux-powershell-quickstart.md
+                - name: 使用 Azure CLI 加密 Windows VM
+                  href: azure-disk-encryption-windows-cli-quickstart.md
+                - name: 使用 Azure PowerShell 加密 Windows VM
+                  href: azure-disk-encryption-windows-powershell-quickstart.md
             - name: Azure 磁盘加密
               items:
                 - name: 磁盘加密先决条件

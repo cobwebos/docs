@@ -1,44 +1,44 @@
 ---
-title: 快速入门：识别数字墨迹的墨迹识别器 REST API 和 Node.js
-description: 使用手写识别器 API 开始认识到数字墨迹笔画。
+title: 快速入门：使用墨迹识别器 REST API 和 Node.js 识别数字墨迹
+description: 使用墨迹识别器 API 来识别数字墨迹笔划。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 651474fd538123e760022ac59efbbaf0b9b83d70
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 0dc672f0efc420ab73fd923191c2bd52fb571a4f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519679"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056847"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>快速入门：识别使用手写识别器 REST API 和 JavaScript 数字墨迹
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>快速入门：使用墨迹识别器 REST API 和 JavaScript 识别数字墨迹
 
-使用本快速入门教程开始使用手写识别器 API 上数字墨迹笔画。 此 JavaScript 应用程序发送包含 JSON 格式的墨迹笔划数据的 API 请求，并显示响应。
+根据本快速入门的说明，开始对数字墨迹笔划使用墨迹识别器 API。 本 JavaScript 应用程序发送包含 JSON 格式墨迹笔划数据的 API 请求，并显示响应。
 
-此应用程序以 Javascript 编写，并在 web 浏览器中运行，而 API 是 RESTful web 服务与大多数编程语言兼容。
+虽然此应用程序采用 JavaScript 编写且在 Web 浏览器中运行，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。
 
-通常你会从数字墨迹书写应用调用 API。 本快速入门将下面的手写示例的墨迹笔划数据发送从 JSON 文件。
+通常会从数字墨迹应用调用此 API。 本快速入门为 JSON 文件中的以下手写示例发送墨迹笔划数据。
 
-![手写文本图像的](../media/handwriting-sample.jpg)
+![手写文本图像](../media/handwriting-sample.jpg)
 
 可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905) 上找到此快速入门的源代码。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Web 浏览器
-- 本快速入门示例墨迹笔划数据都位于[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json)。
+- 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json) 上找到此快速入门的示例墨迹笔划数据。
 
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
 ## <a name="create-a-new-application"></a>创建新应用程序
 
-1. 在你最喜欢的 IDE 或编辑器，创建一个新`.html`文件。 然后将基本 HTML 添加到它，稍后我们将添加的代码。
+1. 在最喜爱的 IDE 或编辑器中创建一个新的 `.html` 文件。 然后，向该文件添加基本的 HTML（适用于我们稍后要添加的代码）。
     
     ```html
     <!DOCTYPE html>
@@ -55,9 +55,9 @@ ms.locfileid: "65519679"
     </html>
     ```
 
-2. 在`<body>`标记中，添加以下 html:
-    1. 用于显示 JSON 请求和响应的两个文本区域。
-    2. 调用一个按钮`recognizeInk()`将更高版本创建的函数。
+2. 在 `<body>` 标记中添加以下 html：
+    1. 两个文本区域，用于显示 JSON 请求和响应。
+    2. 一个按钮，用于调用稍后将创建的 `recognizeInk()` 函数。
     
     ```HTML
     <!-- <body>-->
@@ -73,11 +73,11 @@ ms.locfileid: "65519679"
 
 ## <a name="load-the-example-json-data"></a>加载示例 JSON 数据
 
-1. 在`<script>`标记中，为 sampleJson 创建变量。 然后，创建一个名为的 JavaScript 函数`openFile()`这将打开文件资源管理器，这样您就可以选择 JSON 文件。 当`Recognize ink`单击按钮时，它将调用此函数，并开始读取文件。
-2. 使用`FileReader`对象的`onload()`函数来以异步方式处理该文件。 
-    1. 替换为任何`\n`或`\r`用空字符串文件中的字符。 
-    2. 使用`JSON.parse()`将文本转换为有效的 JSON
-    3. 更新`request`应用程序中的文本框。 使用`JSON.stringify()`要设置格式的 JSON 字符串。 
+1. 在 `<script>` 标记中，为 sampleJson 创建一个变量。 然后创建一个名为 `openFile()` 的 JavaScript 函数，用于打开文件资源管理器，这样你就可以选择 JSON 文件。 单击 `Recognize ink` 按钮时，该按钮会调用此函数并开始读取该文件。
+2. 使用 `FileReader` 对象的 `onload()` 函数以异步方式处理文件。 
+    1. 将文件中的任何 `\n` 或 `\r` 字符替换为空字符串。 
+    2. 使用 `JSON.parse()` 将文本转换为有效的 JSON
+    3. 更新应用程序中的 `request` 文本框。 使用 `JSON.stringify()` 设置 JSON 字符串格式。 
     
     ```javascript
     var sampleJson = "";
@@ -96,7 +96,7 @@ ms.locfileid: "65519679"
 
 ## <a name="send-a-request-to-the-ink-recognizer-api"></a>将请求发送到墨迹识别器 API
 
-1. 内`<script>`标记中，创建一个名为函数`recognizeInk()`。 更高版本，此函数将调用 API，并使用响应更新页面。 此函数中的以下步骤从添加的代码。 
+1. 在 `<script>` 标记中，创建名为 `recognizeInk()` 的函数。 该函数稍后会调用 API 并使用响应来更新页面。 将以下步骤中的代码添加到此函数内。 
         
     ```javascript
     function recognizeInk() {
@@ -104,7 +104,7 @@ ms.locfileid: "65519679"
     }
     ```
 
-    1. 创建终结点 URL、 订阅密钥和示例 JSON 的变量。 然后创建`XMLHttpRequest`发送 API 请求的对象。 
+    1. 为终结点 URL、订阅密钥和示例 JSON 创建变量。 然后创建 `XMLHttpRequest` 对象，用于发送 API 请求。 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
@@ -115,7 +115,7 @@ ms.locfileid: "65519679"
         var SUBSCRIPTION_KEY = "YOUR-SUBSCRIPTION-KEY";
         var xhttp = new XMLHttpRequest();
         ```
-    2. 创建用于返回的函数`XMLHttpRequest`对象。 此函数将分析 API 响应从成功的请求，并显示在应用程序中。 
+    2. 为 `XMLHttpRequest` 对象创建返回函数。 此函数会分析来自成功请求的 API 响应，并将其显示在应用程序中。 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -124,7 +124,7 @@ ms.locfileid: "65519679"
             document.getElementById('response').innerHTML = JSON.stringify(response, null, 2);
         }
         ```
-    3. 创建请求对象的错误函数。 此函数将错误记录到控制台。 
+    3. 为请求对象创建错误函数。 此函数将错误记录到控制台。 
             
         ```javascript
         function errorFunction() {
@@ -132,7 +132,7 @@ ms.locfileid: "65519679"
         }
         ```
 
-    4. 创建请求对象的函数`onreadystatechange`属性。 请求对象的就绪状态更改时，将应用更高版本的返回和 error 函数。
+    4. 为请求对象的 `onreadystatechange` 属性创建函数。 当请求对象的就绪状态更改时，将会应用上述返回函数和错误函数。
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -146,7 +146,7 @@ ms.locfileid: "65519679"
         };
         ```
     
-    5. 发送 API 请求。 添加到你的订阅密钥`Ocp-Apim-Subscription-Key`标头，并设置`content-type`到 `application/json`
+    5. 发送 API 请求。 向 `Ocp-Apim-Subscription-Key` 标头添加订阅密钥，并将 `content-type` 设置为 `application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);

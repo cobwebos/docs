@@ -6,25 +6,24 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 04/19/2019
-ms.openlocfilehash: 0582fa8b26bee05e4d2948037cc39a71ed656fce
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: b7228fdf1bb67ff8029412174a883a3a0b123cfc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126200"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的企业安全性套餐
 
 以前，Azure HDInsight 仅支持一个用户：本地管理员。这种情况对于应用程序团队或部门而言比较有利。 随着基于 Apache Hadoop 的工作负荷在企业部门中越来越普及，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制等企业级功能需求也变得日益重要。 
 
-现可创建已加入 Active Directory 域的企业安全性套餐 (ESP) HDInsight 群集。 然后可以配置可以通过 Azure Active Directory 来登录到 HDInsight 群集进行身份验证从企业员工的列表。 没有人从企业外部的登录或访问 HDInsight 群集。 
+现可创建已加入 Active Directory 域的企业安全性套餐 (ESP) HDInsight 群集。 接下来可配置企业员工的列表，这些员工可通过 Azure Active Directory 进行身份验证并登录到 HDInsight 群集。 企业外部的任何人都无法登录或访问 HDInsight 群集。 
 
-企业管理员可以使用 [Apache Ranger](https://hortonworks.com/apache/ranger/) 配置基于角色的访问控制 (RBAC) 来实现 Apache Hive 安全性。 配置 RBAC 可将数据访问权限限制为仅满足使用需求。 最后，管理员可以审核员工的数据访问权限和对访问控制策略所做的任何更改。 这样，管理员即可实现对其企业资源的高度控制。
+企业管理员可以使用 [Apache Ranger](https://ranger.apache.org/) 配置基于角色的访问控制 (RBAC) 来实现 Apache Hive 安全性。 配置 RBAC 可将数据访问权限限制为仅满足使用需求。 最后，管理员可以审核员工的数据访问权限和对访问控制策略所做的任何更改。 这样，管理员即可实现对其企业资源的高度控制。
 
-> [!NOTE]  
-> Apache Oozie 现已在 ESP 群集上启用。 若要访问 Oozie Web UI，用户应启用[隧道](../hdinsight-linux-ambari-ssh-tunnel.md)。
+Apache Oozie 现已在 ESP 群集上启用。 若要访问 Oozie Web UI，用户应启用[隧道](../hdinsight-linux-ambari-ssh-tunnel.md)。
 
 企业安全性包含四大支柱 - 外围安全性、身份验证、授权和加密。
 
@@ -38,19 +37,19 @@ HDInsight 中的外围安全性通过虚拟网络和 Azure VPN 网关服务实�
 ## <a name="authentication"></a>Authentication
 企业管理员可在[虚拟网络](https://azure.microsoft.com/services/virtual-network/)中创建 ESP HDInsight 群集。 HDInsight 群集的所有节点将加入企业管理的域。 此过程通过使用 [Azure Active Directory 域服务](../../active-directory-domain-services/overview.md)实现。 
 
-通过此设置，企业员工可以登录到群集节点通过使用其域凭据。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Apache Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。 管理员拥有完全控制权，可以限制通过这些终结点与群集交互的用户数目。
+借助这种设置，企业员工可以使用其域凭据登录到群集节点。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Apache Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。 管理员拥有完全控制权，可以限制通过这些终结点与群集交互的用户数目。
 
 ## <a name="authorization"></a>授权
 大多数企业遵循的最佳实践是，确保并非每位员工都有权访问所有企业资源。 同理，管理员可以针对群集资源定义基于角色的访问控制策略。 
 
-例如，管理员可以配置 [Apache Ranger](https://hortonworks.com/apache/ranger/)，为 Hive 设置访问控制策略。 此功能可确保员工最多仅能访问为了成功完成其作业而要访问的数据。 此外，只有管理员能够通过 SSH 访问群集。
+例如，管理员可以配置 [Apache Ranger](https://ranger.apache.org/)，为 Hive 设置访问控制策略。 此功能可确保员工最多仅能访问为了成功完成其作业而要访问的数据。 此外，只有管理员能够通过 SSH 访问群集。
 
 ## <a name="auditing"></a>审核
 若要跟踪对资源的未经授权或非故意的访问，则必须审核对群集资源和数据的所有访问。 这与阻止未经授权的用户访问 HDInsight 群集资源和保护数据具有同等重要性。 
 
 管理员可以查看和报告对 HDInsight 群集资源与数据的所有访问。 管理员还可以查看和报告对在 Apache Ranger 支持的终结点中创建的访问控制策略进行的所有更改。 
 
-ESP HDInsight 群集使用常见的 Apache Ranger UI 来搜索审核日志。 在后端，Ranger 使用 [Apache Solr](https://hortonworks.com/apache/solr/) 来存储和搜索日志。
+ESP HDInsight 群集使用常见的 Apache Ranger UI 来搜索审核日志。 在后端，Ranger 使用 [Apache Solr](http://lucene.apache.org/solr/) 来存储和搜索日志。
 
 ## <a name="encryption"></a>加密
 保护数据对于满足组织安全性和合规性要求具有重要意义。 除了限制未经授权的员工访问数据外，还应对数据加密。 
@@ -62,6 +61,3 @@ HDInsight 群集的两种数据存储（Azure Blob 存储和 Azure Data Lake Sto
 * [HDInsight 群集规划](apache-domain-joined-architecture.md)
 * [配置 ESP HDInsight 群集](apache-domain-joined-configure.md)
 * [管理 ESP HDInsight 群集](apache-domain-joined-manage.md)
-* [为具有 ESP 的 HDInsight 群集配置 Apache Hive 策略](apache-domain-joined-run-hive.md)
-* [将 Pig 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
-

@@ -6,6 +6,11 @@
   href: create-manage-support-requests-using-access-control.md
 - name: 配额增加请求
   href: resource-manager-core-quotas-request.md
+  items:
+    - name: VM 系列 vCPU 限制提高
+      href: per-vm-quota-requests.md
+    - name: 区域性总 vCPU 限制提高
+      href: regional-quota-requests.md
 - name: 排查区域或 SKU 订阅问题
   href: sku-series-unavailable.md
 - name: 引用

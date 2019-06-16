@@ -4,18 +4,18 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2019
-ms.openlocfilehash: c4abc5fa89b48b6fc55637e9ff3b259387d0d410
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4f9300ab1d688e1f5043f5b919e70c5a36c7c0e7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116753"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064008"
 ---
 此容器具有以下配置设置：
 
 |必选|设置|目的|
 |--|--|--|
-|是|[ApiKey](#apikey-configuration-setting)|用于跟踪账单信息。|
+|是|[ApiKey](#apikey-configuration-setting)|跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
 |是|[Billing](#billing-configuration-setting)|指定 Azure 上服务资源的终结点 URI。|
 |是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|

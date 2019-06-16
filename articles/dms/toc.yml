@@ -42,8 +42,10 @@
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: 监视迁移活动
       href: how-to-monitor-migration-activity.md
-    - name: 将 SSIS 包迁移到 Azure
+    - name: 将 SSIS 包迁移到 Azure SQL 数据库
       href: how-to-migrate-ssis-packages.md
+    - name: 将 SSIS 包迁移到 Azure SQL 数据库托管实例
+      href: how-to-migrate-ssis-packages-managed-instance.md
 - name: 资源
   items:
     - name: 数据库迁移方案状态

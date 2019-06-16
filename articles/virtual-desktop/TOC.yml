@@ -16,6 +16,10 @@
       href: manage-app-groups.md
     - name: 5. 创建主机池以验证服务更新
       href: create-validation-host-pool.md
+    - name: 6. 部署管理工具
+      href: manage-resources-using-ui.md
+    - name: 7. 设置服务警报
+      href: set-up-service-alerts.md
 - name: 操作说明
   items:
     - name: 连接到 Windows 虚拟桌面资源
@@ -40,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: 自动缩放会话主机
       href: set-up-scaling-script.md
+    - name: 自定义 RDP 属性
+      href: customize-rdp-properties.md
 - name: 概念
   items:
     - name: Windows 虚拟桌面环境

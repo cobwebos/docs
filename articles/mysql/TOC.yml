@@ -89,12 +89,20 @@
           href: concepts-business-continuity.md
         - name: 备份和还原
           href: concepts-backup.md
-    - name: 监视
+    - name: 监视和优化
       items:
-        - name: 监视
+        - name: 监视和优化
           href: concepts-monitoring.md
-        - name: 服务器日志
+        - name: 慢查询日志
           href: concepts-server-logs.md
+        - name: 审核日志
+          href: concepts-audit-logs.md
+        - name: 查询存储
+          href: concepts-query-store.md
+        - name: 查询性能见解
+          href: concepts-query-performance-insight.md
+        - name: 性能建议
+          href: concepts-performance-recommendations.md
     - name: 开发
       items:
         - name: 驱动程序和工具兼容性
@@ -165,10 +173,16 @@
           href: howto-auto-grow-storage-portal.md
     - name: 访问服务器日志
       items:
-        - name: Azure 门户
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-in-cli.md
+        - name: 慢查询日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-in-cli.md
+        - name: 审核日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-audit-logs-portal.md
     - name: 监视
       items:
         - name: 针对指标创建警报

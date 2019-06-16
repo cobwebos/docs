@@ -1,44 +1,44 @@
 ---
-title: 快速入门：识别数字墨迹的墨迹识别器 REST API 和C#
-description: 使用手写识别器 API 开始认识到数字墨迹笔画。
+title: 快速入门：使用墨迹识别器 REST API 和 C# 识别数字墨迹
+description: 使用墨迹识别器 API 来识别数字墨迹笔划。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 9bb9c23cc1f807cae1d0d22f1652e8f4408f1f91
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: d661d6eca6e4916946944c48cc2e5411aeaf8f14
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518674"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060991"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入门：识别数字墨迹的墨迹识别器 REST API 和C#
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入门：使用墨迹识别器 REST API 和 C# 识别数字墨迹
 
-使用此快速入门，开始将数字墨迹笔画发送到墨迹识别器 API。 此C#应用程序将发送包含 JSON 格式的墨迹笔划数据的 API 请求并获取响应。
+根据本快速入门的说明，开始将数字墨迹笔划发送到墨迹识别器 API。 本 C# 应用程序发送包含 JSON 格式墨迹笔划数据的 API 请求，并获取响应。
 
 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-通常你会从数字墨迹书写应用调用 API。 本快速入门将下面的手写示例的墨迹笔划数据发送从 JSON 文件。
+通常会从数字墨迹应用调用此 API。 本快速入门为 JSON 文件中的以下手写示例发送墨迹笔划数据。
 
-![手写文本图像的](../media/handwriting-sample.jpg)
+![手写文本图像](../media/handwriting-sample.jpg)
 
 可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) 上找到此快速入门的源代码。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - 若要安装 Newtonsoft.Json NuGet 包在 Visual studio 中的形式：
-        1. 右键单击**解决方案管理器**
-        2. 单击“管理 NuGet 包”。
-        3. 搜索`Newtonsoft.Json`和安装包
-- 如果使用的 Linux/MacOS，可以使用运行此应用程序[Mono](https://www.mono-project.com/)。
+    - 若要在 Visual Studio 中以 NuGet 包的形式安装 Newtonsoft.Json，请执行以下操作：
+        1. 右键单击“解决方案管理器” 
+        2. 单击“管理 NuGet 包”。 
+        3. 搜索 `Newtonsoft.Json` 并安装该包
+- 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
-- 本快速入门示例墨迹笔划数据都位于[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json)。
+- 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json) 上找到此快速入门的示例墨迹笔划数据。
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
@@ -59,7 +59,7 @@ ms.locfileid: "65518674"
     using Newtonsoft.Json.Linq;
     ```
 
-2. 为你的订阅密钥和你的终结点创建变量。 下面是可用于手写识别的 URI。 它将追加到你的服务终结点更高版本才能创建 API 请求 URl。
+2. 为订阅密钥和终结点创建变量。 下面是可以用于墨迹识别的 URI。 稍后会将它追加到服务终结点，以便创建 API 请求 URI。
 
     ```csharp
     // Replace the subscriptionKey string with your valid subscription key.
@@ -73,13 +73,13 @@ ms.locfileid: "65518674"
     const string inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 
-## <a name="create-a-function-to-send-requests"></a>创建一个函数来发送请求
+## <a name="create-a-function-to-send-requests"></a>创建用于发送请求的函数
 
-1. 创建一个名为的新异步函数`Request`采用上面创建的变量。
+1. 创建名为 `Request` 的新异步函数，该函数使用上面创建的变量。
 
-2. 设置客户端的安全协议和标头信息使用`HttpClient`对象。 请确保添加到你的订阅密钥`Ocp-Apim-Subscription-Key`标头。 然后创建`StringContent`请求对象。
+2. 使用 `HttpClient` 对象设置客户端的安全协议和标头信息。 请务必将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头中。 然后，为请求创建 `StringContent` 对象。
  
-3. 发送包含请求`PutAsync()`。 如果请求成功，返回的响应。  
+3. 通过 `PutAsync()` 发送请求。 如果请求成功，则返回响应。  
     
     ```csharp
     static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
@@ -103,9 +103,9 @@ ms.locfileid: "65518674"
 
 ## <a name="send-an-ink-recognition-request"></a>发送墨迹识别请求
 
-1. 创建一个名为的新函数`recognizeInk()`。 构造请求并将其发送通过调用`Request()`函数与终结点，订阅密钥 API 和数字墨迹笔划数据的 URL。
+1. 创建名为 `recognizeInk()` 的新函数。 通过终结点、订阅密钥、API 的 URL 以及数字墨迹笔划数据调用 `Request()` 函数，构造请求并将其发送。
 
-2. 反序列化 JSON 对象，并将其写入到控制台。 
+2. 反序列化 JSON 对象，并将其写入控制台。 
     
     ```csharp
     static void recognizeInk(string requestData){
@@ -122,9 +122,9 @@ ms.locfileid: "65518674"
     }
     ```
 
-## <a name="load-your-digital-ink-data"></a>数字墨迹数据加载
+## <a name="load-your-digital-ink-data"></a>加载数字墨迹数据
 
-创建一个名为函数`LoadJson()`加载墨迹数据的 JSON 文件。 使用`StreamReader`并`JsonTextReader`若要创建`JObject`并将其返回。
+创建一个名为 `LoadJson()` 的函数，以便加载墨迹数据 JSON 文件。 使用 `StreamReader` 和 `JsonTextReader` 创建 `JObject` 并将其返回。
     
 ```csharp
 public static JObject LoadJson(string fileLocation){
@@ -141,9 +141,9 @@ public static JObject LoadJson(string fileLocation){
 
 ## <a name="send-the-api-request"></a>发送 API 请求
 
-1. 在应用程序的 main 方法中，将 JSON 数据加载使用上面创建的函数。 
+1. 在应用程序的 main 方法中，使用上面创建的函数加载 JSON 数据。 
 
-2. 调用`recognizeInk()`上面创建的函数。 使用`System.Console.ReadKey()`后运行应用程序保留在控制台窗口打开。
+2. 调用上面创建的 `recognizeInk()` 函数。 使用 `System.Console.ReadKey()`，在运行应用程序后让控制台窗口保持打开状态。
     
     ```csharp
     static void Main(string[] args){
@@ -158,7 +158,7 @@ public static JObject LoadJson(string fileLocation){
 
 ## <a name="run-the-application-and-view-the-response"></a>运行应用程序并查看响应
 
-运行应用程序。 JSON 格式返回成功的响应。 您还可以在找到 JSON 响应[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json)。
+运行应用程序。 成功的响应以 JSON 格式返回。 也可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json) 上找到 JSON 响应。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -64,7 +64,9 @@ landingContent:
         links:
           - text: 配置透明网关
             url: how-to-create-transparent-gateway.md
-          - text: 连接下游设备
+          - text: 通过 Azure IoT 中心对下游设备进行身份验证
+            url: how-to-authenticate-downstream-device.md
+          - text: 将下游设备连接到网关
             url: how-to-connect-downstream-device.md
   - title: 准备生产方案
     linkLists:

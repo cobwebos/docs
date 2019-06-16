@@ -50,6 +50,10 @@
       items:
         - name: 开发测试实验室概念
           href: devtest-lab-concepts.md
+        - name: 分布式和协作式开发最佳做法
+          href: best-practices-distributive-collaborative-development-environment.md
+        - name: 与 Azure DevOps 集成
+          href: devtest-lab-dev-ops.md
         - name: 方案
           items:
             - name: 适合使用开发测试实验室的常见场景
@@ -92,6 +96,8 @@
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: 启用适用于 Linux 的远程桌面连接
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
+            - name: 设置或重置虚拟机的密码
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
     - name: 开发测试实验室
       items:
         - name: 为实验室虚拟机指定资源组
@@ -106,6 +112,8 @@
           href: personal-data-delete-export.md
         - name: 从另一个实验室导入虚拟机
           href: import-virtual-machines-from-another-lab.md
+        - name: 将实验室配置为使用远程桌面网关
+          href: configure-lab-remote-desktop-gateway.md
         - name: 创建映像工厂
           href: image-factory-create.md
           items:

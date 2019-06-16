@@ -59,7 +59,7 @@
       href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
     - name: 添加人脸
       href: Face-API-How-to-Topics/how-to-add-faces.md
-    - name: 使用 HeadPose 来旋转矩形
+    - name: 使用 HeadPose 属性
       href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: 指定人脸识别模型
       href: Face-API-How-to-Topics/specify-recognition-model.md
