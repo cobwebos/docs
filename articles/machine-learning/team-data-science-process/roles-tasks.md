@@ -12,10 +12,10 @@ ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 05fc742bba535ea3968e60cd0f40c80b812c09fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61042989"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和任务
@@ -70,13 +70,13 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 
 组管理员（或指定的 TDSP 系统管理员）需完成以下任务才能采用 TDSP：
 
-- 在代码托管平台（例如 GitHub、Git、Azure DevOps 等）上创建组帐户
-- 在组帐户上创建项目模板存储库，然后通过 Microsoft TDSP 团队开发的项目模板存储库将其设定为种子。 Microsoft 的 TDSP 项目模板存储库
+- 在代码托管平台（例如 GitHub、Git、Azure DevOps 等）上创建组帐户 
+- 在组帐户上创建项目模板存储库，  然后通过 Microsoft TDSP 团队开发的项目模板存储库将其设定为种子。 Microsoft 的 TDSP 项目模板存储库
     - 提供**标准化目录结构**，包括数据、代码和文档的目录，
     - 提供一套**标准化的文档模板**用于引导有效的数据科学过程。
-- 创建实用程序存储库，通过 Microsoft TDSP 团队开发的实用程序存储库将其设定为种子。 Microsoft 的 TDSP 实用工具存储库提供
+- 创建实用程序存储库，通过 Microsoft TDSP 团队开发的实用程序存储库将其设定为种子。  Microsoft 的 TDSP 实用工具存储库提供
     - 一组有用的实用工具来提高数据科学家的工作效率，其中包括用于交互式数据浏览、分析和报告的实用工具，以及用于基线建模和报告的实用工具。
-- 在组帐户上设置这两个存储库的安全控制策略。
+- 在组帐户上设置这两个存储库的安全控制策略。 
 
 有关详细的分步说明，请参阅[数据科学团队的组管理员任务](group-manager-tasks.md)。
 
@@ -85,12 +85,12 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 
 团队主管（或指定的项目管理员）需完成以下任务才能采用 TDSP：
 
-- 如果选择 Azure DevOps 作为代码托管平台来实施版本控制和协作，请在组的 Azure DevOps Services 上创建项目。 否则可以跳过此任务。
-- 在项目下创建项目模板存储库，通过组管理员或管理员委托人设置的组项目模板存储库将其设定为种子。
-- 创建团队实用程序存储库，然后向该存储库添加特定于团队的实用程序。
-- （可选）创建 [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)，用其存储适用于整个团队的数据资产。 其他团队成员可以在其分析桌面上装载这个共享的云文件存储。
-- （可选）将 Azure 文件存储装载到团队主管的 数据科学虚拟机 (DSVM) 并在其上添加数据资产。
-- 设置安全控制，方法是添加团队成员并配置其权限。
+- 如果选择 Azure DevOps 作为代码托管平台来实施版本控制和协作，请在组的 Azure DevOps Services 上创建项目。  否则可以跳过此任务。
+- 在项目下创建项目模板存储库，通过组管理员或管理员委托人设置的组项目模板存储库将其设定为种子。 
+- 创建团队实用程序存储库，然后向该存储库添加特定于团队的实用程序。 
+- （可选）创建  [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)，用其存储适用于整个团队的数据资产。 其他团队成员可以在其分析桌面上装载这个共享的云文件存储。
+- （可选）将 Azure 文件存储装载到团队主管的 数据科学虚拟机 (DSVM) 并在其上添加数据资产。 
+- 设置安全控制，方法是添加团队成员并配置其权限。 
 
 有关详细的分步说明，请参阅[数据科学团队的团队主管任务](team-lead-tasks.md)。
 
@@ -99,10 +99,10 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 
 项目主管需完成以下任务才能采用 TDSP：
 
-- 在项目下创建项目存储库，通过项目模板存储库将其设定为种子。
-- （可选）创建 Azure 文件存储，用其存储项目的数据资产。
-- （可选）将 Azure 文件存储装载到项目主管的 数据科学虚拟机 (DSVM) 并在其上添加项目数据资产。
-- 设置安全控制，方法是添加项目成员并配置其权限。
+- 在项目下创建项目存储库，通过项目模板存储库将其设定为种子。 
+- （可选）创建  Azure 文件存储，用其存储项目的数据资产。
+- （可选）将 Azure 文件存储装载到项目主管的 数据科学虚拟机 (DSVM) 并在其上添加项目数据资产。 
+- 设置安全控制，方法是添加项目成员并配置其权限。 
 
 有关详细的分步说明，请参阅[数据科学团队的项目主管任务](project-lead-tasks.md)。
 
@@ -110,8 +110,8 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 
 项目单独参与者（通常为数据科学家）需完成以下任务，然后才能使用 TDSP 开展数据科学项目：
 
-- 克隆项目主管设置的项目存储库。
-- （可选）在团队和项目的数据科学虚拟机 (DSVM) 上装载共享的 Azure 文件存储。
+- 克隆项目主管设置的项目存储库。 
+- （可选）在团队和项目的数据科学虚拟机 (DSVM) 上装载共享的 Azure 文件存储。  
 - 执行项目。
 
 

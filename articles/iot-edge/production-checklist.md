@@ -10,23 +10,23 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: cb72949c0bb543885498b1b997fa0b4a644c204a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956967"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
 如果已准备好将 IoT Edge 解决方案从开发环境转移到生产环境，请确保对其进行适当的配置，使其持续保持良好的性能。
 
-本文中提供的信息并非面面俱到。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。
+本文中提供的信息并非面面俱到。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。  
 
 ## <a name="device-configuration"></a>设备配置
 
 IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计算机、服务器上运行的虚拟机，等等。 可通过物理方式或虚拟连接来访问设备，而设备也有可能长时间处于隔离状态。 无论设备处于哪种状态，都需要确保对其进行适当的配置，使其保持良好的性能。 
 
-* 重要说明
+* 重要说明 
     * 安装生产证书
     * 创建设备管理计划
     * 使用 Moby 作为容器引擎
@@ -108,7 +108,7 @@ Edge 中心默认已进行性能优化，因此它会尝试分配较大的内存
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-所有三个变量都带有两条下划线，可设置为 true 或 false。 
+所有三个变量都带有两条下划线，可设置为 true 或 false。  
 
 #### <a name="reduce-storage-time-for-messages"></a>减少消息的存储时间
 
@@ -122,7 +122,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ## <a name="container-management"></a>容器管理
 
-* 重要说明
+* 重要说明 
     * 管理对容器注册表的访问
     * 使用标记管理版本
 

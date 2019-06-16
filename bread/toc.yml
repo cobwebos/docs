@@ -581,6 +581,10 @@
     - name: 安全
       tocHref: /azure/security/
       topicHref: /azure/security/
+      items:
+        - name: 开发
+          tocHref: /azure/security/develop/
+          topicHref: /azure/security/develop/
     - name: 安全中心
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/

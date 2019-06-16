@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: juliako
 ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735074"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
@@ -29,7 +29,7 @@ ms.locfileid: "66735074"
 
 **认知见解**小组件包括从视频索引过程中提取的所有视觉见解。 见解小组件支持以下可选的 URL 参数：
 
-|名称|定义|描述|
+|Name|定义|描述|
 |---|---|---|
 |widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 在版本 2 中不支持小组件 URL 参数。 |
 

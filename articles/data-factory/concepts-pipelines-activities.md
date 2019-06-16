@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
 ms.openlocfilehash: 63a86fb9498c7c1b1cd527accca84c83a28e01c3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65788673"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-create-pipelines.md)
 > * [当前版本](concepts-pipelines-activities.md)
 
@@ -96,9 +96,9 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 
 标记 | 描述 | Type | 需要
 --- | ----------- | ---- | --------
-名称 | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
+name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
 description | 指定描述管道用途的文本。 | String | 否
-活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
+activities | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
 parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
 
 ## <a name="activity-json"></a>活动 JSON
@@ -129,7 +129,7 @@ parameters | **参数**部分可在在管道内定义一个或多个参数，使
 
 标记 | 描述 | 需要
 --- | ----------- | ---------
-名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
 linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、Azure 机器学习批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
@@ -168,7 +168,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 }
 ```
 
-JSON 名称 | 描述 | 允许的值 | 需要
+JSON 名称 | 描述 | 允许的值 | 必选
 --------- | ----------- | -------------- | --------
 timeout | 指定活动运行的超时。 | Timespan | 不。 默认超时为 7 天。
 retry | 最大重试次数 | Integer | 不。 默认值为 0
@@ -194,7 +194,7 @@ secureOutput | 当设置为 true 时，来自活动的输出被视为安全的�
 
 标记 | 描述 | 需要
 --- | ----------- | --------
-名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
@@ -207,10 +207,10 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 
 例如，如果管道具有活动 A -> 活动 B，则可能发生的不同情况是：
 
-- 活动 B 对活动 A 具有依赖项条件“成功”：只有活动 A 的最终状态为“成功”，活动 B 才运行
-- 活动 B 对活动 A 具有依赖项条件“失败”：只有活动 A 的最终状态为“失败”，活动 B 才运行
-- 活动 B 对活动 A 具有依赖项条件“完成”：如果活动 A 的最终状态为“成功”或“失败”，则活动 B 运行
-- 活动 B 对活动 A 具有依赖项条件“跳过”：如果活动 A 的最终状态为“跳过”，则活动 B 运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为“跳过”，因为它从不执行。 类似，活动 Z 的状态也为“跳过”。
+- 活动 B 对活动 A 具有依赖项条件“成功”  ：只有活动 A 的最终状态为“成功”，活动 B 才运行
+- 活动 B 对活动 A 具有依赖项条件“失败”  ：只有活动 A 的最终状态为“失败”，活动 B 才运行
+- 活动 B 对活动 A 具有依赖项条件“完成”  ：如果活动 A 的最终状态为“成功”或“失败”，则活动 B 运行
+- 活动 B 对活动 A 具有依赖项条件“跳过”  ：如果活动 A 的最终状态为“跳过”，则活动 B 运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为“跳过”，因为它从不执行。 类似，活动 Z 的状态也为“跳过”。
 
 #### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>示例：活动 2 是否运行取决于活动 1 是否成功运行
 
@@ -347,7 +347,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 - 配置单元脚本文件，**partitionweblogs.hql**，被存储在 Azure 存储帐户中（由 scriptLinkedService 指定，调用 AzureStorageLinkedService），并位于容器 `adfgetstarted` 中的脚本文件夹中。
 - `defines` 部分用于指定以配置单元配置值传递到配置单元脚本的运行时设置（例如，$`{hiveconf:inputtable}`，`${hiveconf:partitionedtable}`）。
 
-每个转换活动的 typeProperties 节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击[数据转换活动](#data-transformation-activities)中的转换活动。
+每个转换活动的 typeProperties  节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击[数据转换活动](#data-transformation-activities)中的转换活动。
 
 有关创建此管道的完整演练，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-powershell.md)。
 

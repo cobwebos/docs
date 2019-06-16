@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
 ms.openlocfilehash: 3bc67d7fdc582b6d45596b152bb5d58e41152a46
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66428118"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
@@ -464,7 +464,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 
 如果应用程序处于 ```Ready``` 状态，则表示它已准备就绪：![就绪][2]
 
-打开浏览器并导航到 http://containercluster.westus2.cloudapp.azure.com:8081。 此时会看到标题“Hello World!” 显示在浏览器中。
+打开浏览器并导航到 http://containercluster.westus2.cloudapp.azure.com:8081 。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ## <a name="clean-up"></a>清理
 

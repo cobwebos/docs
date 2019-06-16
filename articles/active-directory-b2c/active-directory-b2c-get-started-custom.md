@@ -11,10 +11,10 @@ ms.date: 05/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 2929c033b4744ea89f8e3d711a5e2e0df6301c14
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66730007"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
@@ -31,7 +31,7 @@ ms.locfileid: "66730007"
 ## <a name="add-signing-and-encryption-keys"></a>添加签名和加密密钥
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录。 单击**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。 
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 单击**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。 
 3. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
 4. 在“概述”页上选择“标识体验框架”  。
 

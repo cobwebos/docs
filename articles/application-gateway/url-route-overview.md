@@ -10,14 +10,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 04/23/2018
-ms.date: 04/17/2019
-ms.author: v-junlch
+ms.date: 4/23/2018
+ms.author: victorh
 ms.openlocfilehash: ee0267146140d095487b293331a7de493ba151c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61361938"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Azure 应用程序网关基于 URL 路径的路由概述
@@ -101,5 +100,3 @@ PathBasedRouting 规则的代码段：
 ## <a name="next-steps"></a>后续步骤
 
 了解基于 URL 的内容路由之后，请转到[使用基于 URL 的路由创建应用程序网关](tutorial-url-route-powershell.md)，使用 URL 路由规则创建应用程序网关。
-
-<!-- Update_Description: update metedata properties -->

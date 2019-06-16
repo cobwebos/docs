@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 998fcba50636cd92b14bdbe1633c2548e84a6bfc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696416"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>通过 Azure 逻辑应用连接到 SQL Server 或 Azure SQL 数据库
@@ -65,7 +65,7 @@ ms.locfileid: "64696416"
 
    ![选择表](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
 
-4. 设置“时间间隔”和“频率”属性，以便指定逻辑应用检查表的频率。
+4. 设置“时间间隔”和“频率”属性，以便指定逻辑应用检查表的频率。  
 
    此示例仅检查选定表，不检查其他。 
    可以添加执行所需任务的操作，让操作更有意思。 
@@ -73,7 +73,7 @@ ms.locfileid: "64696416"
    例如，若要查看表中的新项，可以添加其他操作（例如创建一个文件，其字段来自表），然后发送电子邮件警报。 
    若要了解此连接器或其他连接器的其他操作，请参阅[逻辑应用连接器](../connectors/apis-list.md)。
 
-5. 完成后，请在设计器工具栏上选择“保存”。 
+5. 完成后，请在设计器工具栏上选择“保存”  。 
 
    此步骤自动在 Azure 中实时启用和发布逻辑应用。 
 
@@ -85,12 +85,12 @@ ms.locfileid: "64696416"
 
 1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在逻辑应用设计器的触发器或操作下，选择“新建步骤” > “添加操作”。
+2. 在逻辑应用设计器的触发器或操作下，选择“新建步骤” > “添加操作”。  
 
    ![选择“新建步骤”>“添加操作”](./media/connectors-create-api-sqlazure/add-action.png)
    
    若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。 
 
 2. 在搜索框中，输入“sql server”作为筛选器。 从操作列表中，选择所需的任意 SQL 操作。 
 
@@ -106,7 +106,7 @@ ms.locfileid: "64696416"
    此示例仅从选定表返回一个行，不返回其他。 
    若要查看此行中的数据，可以添加其他操作，以便使用行中的字段创建一个供以后查看的文件，然后将该文件存储在云存储帐户中。 若要了解此连接器或其他连接器中的其他操作，请参阅[逻辑应用连接器](../connectors/apis-list.md)。
 
-4. 完成后，请在设计器工具栏上选择“保存”。 
+4. 完成后，请在设计器工具栏上选择“保存”  。 
 
 <a name="create-connection"></a>
 
@@ -129,7 +129,7 @@ ms.locfileid: "64696416"
 
   若要组织中所需的方法的结果，可以创建[*存储过程*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine)会在 SQL 实例中运行，并使用**SELECT-ORDER BY**语句。 
   此解决方案可以更好地控制结果的大小和结构。 
-  逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。
+  逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。 
 
   如需解决方案详细信息，请参阅以下文章：
 

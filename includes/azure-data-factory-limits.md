@@ -9,10 +9,10 @@ ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: ac0747dcff4e74363a58dc9aaf6da4dbd4c6a1c7
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427606"
 ---
 Azure 数据工厂是一个具有以下默认限制到位，以确保客户订阅不会受到彼此工作负荷的多租户服务。 若要将提升到你的订阅的最大限制，请联系支持。

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
 ms.openlocfilehash: ede2092be4e4eaf201e15307a7d9934ea267ae37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61481507"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>将 Windows VM 移到其他 Azure 订阅或资源组
@@ -56,7 +56,7 @@ Move-AzResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
 ```
 
 
-系统要求确认是否要移动指定的资源时，请输入“Y”进行确认。
+系统要求确认是否要移动指定的资源时，请输入“Y”进行确认  。
 
 ## <a name="next-steps"></a>后续步骤
 可以在资源组和订阅之间移动许多不同类型的资源。 有关详细信息，请参阅[将资源移到新资源组或订阅](../../resource-group-move-resources.md)。    

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60755128"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure 数据框边缘技术规范
@@ -63,7 +63,7 @@ The following table lists the typical power consumption data (actual values may 
 
 下表列出了以毫米和英寸寄送包裹的维度。
 
-|     程序包     |     毫米     |     英寸     |
+|     package     |     毫米     |     英寸     |
 |-------------------|---------------------|----------------|
 |    高度         |    311.2            |    12.25"          |
 |    宽度          |    642.8          |    25.31"          |

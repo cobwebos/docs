@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.openlocfilehash: b7968de8ad4357241eb8d86d51e991f4bbab959d
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65601573"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
@@ -356,7 +356,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="using-the-wire-data-20-solution"></a>使用 Wire Data 2.0 解决方案
 
-在 Azure 门户的 Log Analytics 工作区的“概览”页中，单击“Wire Data 2.0”磁贴打开 Wire Data 仪表板。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题，运行返回所有记录的日志搜索。
+在 Azure 门户的 Log Analytics 工作区的“概览”页中，单击“Wire Data 2.0”磁贴打开 Wire Data 仪表板   。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”  或单击边栏选项卡标题，运行返回所有记录的日志搜索。
 
 | **边栏选项卡** | **说明** |
 | --- | --- |
@@ -366,15 +366,15 @@ rpm -e dependency-agent dependency-agent-connector
 
 ![Wire Data 仪表板](./media/wire-data/wire-data-dash.png)
 
-可以使用“正在捕获网络流量的代理”边栏选项卡来确定计算机正在消耗多少网络带宽。 可以通过此边栏选项卡轻松找到你的环境中“最健谈的”计算机。 此类计算机可能负载过重，行为异常，或者使用比平时更多的网络资源。
+可以使用“正在捕获网络流量的代理”边栏选项卡来确定计算机正在消耗多少网络带宽。  可以通过此边栏选项卡轻松找到你的环境中“最健谈的”计算机。  此类计算机可能负载过重，行为异常，或者使用比平时更多的网络资源。
 
 ![日志搜索示例](./media/wire-data/log-search-example01.png)
 
-类似地，可以使用“本地子网”边栏选项卡确定有多少网络流量正在通过各个子网移动。 用户通常围绕其应用程序的关键领域定义子网。 可以通过此边栏选项卡查看这些领域。
+类似地，可以使用“本地子网”边栏选项卡确定有多少网络流量正在通过各个子网移动。  用户通常围绕其应用程序的关键领域定义子网。 可以通过此边栏选项卡查看这些领域。
 
 ![日志搜索示例](./media/wire-data/log-search-example02.png)
 
-“应用程序级协议”边栏选项卡很有用，因为它可以帮助你了解正在使用什么协议。 例如，你可能预料网络环境中没有使用 SSH。 查看此边栏选项卡中提供的信息可以快速确认或否定你的预期。
+“应用程序级协议”  边栏选项卡很有用，因为它可以帮助你了解正在使用什么协议。 例如，你可能预料网络环境中没有使用 SSH。 查看此边栏选项卡中提供的信息可以快速确认或否定你的预期。
 
 ![日志搜索示例](./media/wire-data/log-search-example03.png)
 

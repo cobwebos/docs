@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122530"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>指定矩形数据集的结构定义
@@ -18,10 +18,10 @@ ms.locfileid: "66122530"
 
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
-| 名称 |列的名称。 |是 |
-| type |列的数据类型。 有关何时应指定类型信息，请参阅下面的类型转换部分 |“否” |
-| culture |指定类型时要使用的基于 .NET 的区域性，是 .NET 类型的 Datetime 或 Datetimeoffset。 默认值为“en-us”。 |“否” |
-| 格式 |指定类型时要使用的格式字符串，是 .NET 类型的 Datetime 或 Datetimeoffset。 |“否” |
+| name |列的名称。 |是 |
+| type |列的数据类型。 有关何时应指定类型信息，请参阅下面的类型转换部分 |否 |
+| culture |指定类型时要使用的基于 .NET 的区域性，是 .NET 类型的 Datetime 或 Datetimeoffset。 默认值为“en-us”。 |否 |
+| format |指定类型时要使用的格式字符串，是 .NET 类型的 Datetime 或 Datetimeoffset。 |否 |
 
 以下示例演示包含三个列（userid、name、lastlogindate）的表的结构部分 JSON。
 

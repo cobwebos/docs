@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
 ms.openlocfilehash: 956df17c821b86d95b1d87c3c8d8197bab7a95be
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955260"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>使用 Azure 流量管理器跨多个 Azure CDN 终结点设置故障转移
@@ -44,11 +44,11 @@ ms.locfileid: "65955260"
 
 1. 遵循[创建流量管理器配置文件](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile)中的步骤创建 Azure 流量管理器配置文件。 
 
-    对于“路由方法”，请选择“优先级”。
+    对于“路由方法”，请选择“优先级”。  
 
 2. 遵循[添加流量管理器终结点](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)中的步骤，在流量管理器配置文件中添加 CDN 终结点
 
-    对于“类型”，请选择“外部终结点”。 对于“优先级”，请输入一个数字。
+    对于“类型”，请选择“外部终结点”。   对于“优先级”，请输入一个数字。 
 
     例如，创建优先级为 *1* 的 *cdndemo101akamai.azureedge.net*，以及优先级为 *2* 的 *cdndemo101verizon.azureedge.net*。
 
@@ -62,13 +62,13 @@ ms.locfileid: "65955260"
 
     a. 对于第一个 CNAME 条目，请将具有 cdnverify 子域的自定义域映射到 CDN 终结点。 将自定义域注册到在步骤 2 中添加到流量管理器的 CDN 终结点时，需要使用此条目。
 
-      例如: 
+      例如： 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
     b. 对于第二个 CNAME 条目，请将没有 cdnverify 子域的自定义域映射到 CDN 终结点。 此条目将自定义域映射到流量管理器。 
 
-      例如: 
+      例如： 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
@@ -87,7 +87,7 @@ ms.locfileid: "65955260"
 
 3.  返回自定义域提供商的网站，并更新创建的第一个 DNS 映射，以便将自定义域映射到第二个 CDN 终结点。
                              
-    例如: 
+    例如： 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 

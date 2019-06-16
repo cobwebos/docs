@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6a74548d0dc965127c5568708155341f60dbc65
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 618377d532dc932eb21f282ac8ba7f6c07df16f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496743"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113439"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -191,7 +191,7 @@ Azure 多重身份验证的应用密码、受信任 IP、验证选项以及“�
 Microsoft Office 2013 客户端及更高版本支持现代身份验证。 Office 2013 客户端（包括 Outlook）支持现代身份验证协议，并且可以为其启用双重验证。 启用客户端后，客户端即不要求使用应用密码。
 
 >[!NOTE]
->应用密码不适用于基于条件访问的多重身份验证策略和新式身份验证。
+>应用密码不使用条件性访问基于多重身份验证策略和新式身份验证。
 
 ### <a name="considerations-about-app-passwords"></a>有关应用密码的注意事项
 
@@ -259,7 +259,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 托管或联合租户的管理员可使用 Azure 多重身份验证的“受信任 IP”  功能。 此功能将为从公司 Intranet 登录的用户绕过双重验证。 Azure 多重身份验证的完整版本中为管理员提供了此功能，免费版本中没有提供。 有关如何获取 Azure 多重身份验证的完整版本的详细信息，请参阅 [Azure 多重身份验证](multi-factor-authentication.md)。
 
 > [!NOTE]
-> MFA 受信任的 IP 和条件访问已命名的位置仅适用于 IPV4 地址。
+> MFA 受信任 Ip 和命名位置的条件性访问仅适用于 IPV4 地址。
 
 如果你的组织部署 NPS 扩展，向本地应用程序提供 MFA，请注意源 IP 地址将始终显示为身份验证尝试流经的 NPS 服务器。
 
@@ -280,20 +280,20 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 无论是否启用“受信任的 IP”功能，浏览器通信流都需要进行双重验证。 较旧的丰富客户端应用程序需要应用密码。
 
-### <a name="enable-named-locations-by-using-conditional-access"></a>使用条件访问启用命名位置
+### <a name="enable-named-locations-by-using-conditional-access"></a>使用条件性访问启用命名的位置
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧选择“Azure Active Directory” > “条件访问” > “命名位置”。   
+2. 在左侧，选择**Azure Active Directory** > **条件性访问** > **命名位置**。
 3. 选择“新建位置”。 
 4. 输入位置的名称。
 5. 选择“标记为受信任位置”。 
 6. 以 CIDR 表示法输入 IP 范围（例如 192.168.1.1/24）。 
 7. 选择“创建”  。
 
-### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>使用条件访问启用受信任的 IP 功能
+### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>使用条件性访问启用受信任的 Ip 功能
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧选择“Azure Active Directory” > “条件访问” > “命名位置”。   
+2. 在左侧，选择**Azure Active Directory** > **条件性访问** > **命名位置**。
 3. 选择“配置 MFA 受信任的 IP”。 
 4. 在“服务设置”页的“受信任的 IP”下，从以下两个选项中进行选择   ：
 
@@ -367,7 +367,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 非浏览器应用程序上不会显示“X 天内不再询问”  选项，无论该应用是否支持新式身份验证。 这些应用使用每小时提供新访问令牌的刷新令牌。  验证刷新令牌时，Azure AD 会检查上次双重验证是否发生在指定的天数内。
 
-此功能可以减少 Web 应用的身份验证次数，而通常每次使用时都会提示验证。 此功能会增加新式身份验证客户端的身份验证次数（通常每隔 90 天提示一次）。 与条件访问策略结合使用时，还可能会增加身份验证的次数。
+此功能可以减少 Web 应用的身份验证次数，而通常每次使用时都会提示验证。 此功能会增加新式身份验证客户端的身份验证次数（通常每隔 90 天提示一次）。 此外可以增加与条件性访问策略结合使用时的身份验证的次数。
 
 >[!IMPORTANT]
 >当用户通过 Azure 多重身份验证服务器或第三方多重身份验证解决方案对 AD FS 执行双重验证时，“记住多重身份验证”  功能与 AD FS 的“使我保持登录”  功能不兼容。

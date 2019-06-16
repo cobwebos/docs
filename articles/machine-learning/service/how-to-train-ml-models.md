@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 689d7dcd57c513479c7bc08a45094670242ef6a5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075034"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 
@@ -66,7 +66,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 构造函数具有名为 `pip_packages` 的另一个参数，可以将其用于任何所需的 pip 包
 
-创建了 `Estimator` 对象后，请提交要在远程计算上通过调用[实验](concept-azure-machine-learning-architecture.md#experiment)对象 `experiment` 上的 `submit` 函数来运行的训练作业。 
+创建了 `Estimator` 对象后，请提交要在远程计算上通过调用[实验](concept-azure-machine-learning-architecture.md#experiments)对象 `experiment` 上的 `submit` 函数来运行的训练作业。 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -74,7 +74,7 @@ print(run.get_portal_url())
 ```
 
 > [!IMPORTANT]
-> **特殊文件夹**两个文件夹 *outputs* 和 *logs* 接收 Azure 机器学习的特殊处理。 在训练期间，如果将文件写入相对于根目录（分别为 `./outputs` 和 `./logs`）的名为 outputs 和 logs 的文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限。
+> **特殊文件夹**两个文件夹 *outputs* 和 *logs* 接收 Azure 机器学习的特殊处理。 在训练期间，如果将文件写入相对于根目录（分别为 `./outputs` 和 `./logs`）的名为 outputs 和 logs 的文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限   。
 >
 > 要在训练期间创建项目（如模型文件、检查点、数据文件或绘制的图像），请将其写入 `./outputs` 文件夹。
 >
@@ -125,13 +125,13 @@ print(run.get_portal_url())
 启动时运行，其中源目录是本地 Git 存储库的培训，存储库有关的信息存储在运行历史记录。 例如，在存储库的当前提交 ID 记录为历史记录。
 
 ## <a name="examples"></a>示例
-关于显示估算器模式基础的笔记本，请参阅：
+显示估计器模式的基础知识的笔记本，请参阅：
 * [how-to-use-azureml/training-with-deep-learning/how-to-use-estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
-关于使用估算器训练 scikit-learn 模型的笔记本，请参阅：
+训练 scikit notebook-可以通过估算器了解模型，请参阅：
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-关于使用深度学习框架特定评估器训练模型的笔记本，请参阅：
+使用深度学习框架特定房产训练模型的 notebook，请参阅：
 * [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

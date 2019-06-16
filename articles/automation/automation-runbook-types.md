@@ -10,10 +10,10 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 7a3990366814beda83852fc7c07c896445388c23
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60737153"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
@@ -69,7 +69,7 @@ Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  �
 以下是当前 PowerShell Runbook 的已知问题。
 
 * PowerShell Runbook 无法检索未加密且值为 null 的[变量资产](automation-variables.md)。
-* PowerShell Runbook 无法检索名称中包含 ~ 的[变量资产](automation-variables.md)。
+* PowerShell Runbook 无法检索名称中包含 ~ 的[变量资产](automation-variables.md)  。
 * 在 PowerShell Runbook 中，处于循环状态的 Get-Process 在经历大约 80 次迭代后可能会崩溃。
 * 如果 PowerShell Runbook 尝试一次性将大量数据写入输出流中，则可能会发生故障。   通常情况下，在处理大型对象时，可以只输出所需信息，从而避免出现这种问题。  例如，不需要输出 *Get-Process* 这样的内容，只需通过 *Get-Process | Select ProcessName, CPU* 输出所需字段即可。
 

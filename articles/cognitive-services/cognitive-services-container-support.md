@@ -3,19 +3,19 @@ title: 容器支持
 titleSuffix: Azure Cognitive Services
 description: 了解 Docker 容器如何使认知服务深入了解你的数据。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 3d09ee542b98e1c365aceaf86b051d706c7882d4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 8faa524d7d88f09835d26439b772b8d57c84cc73
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304286"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122242"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
@@ -82,7 +82,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft 容器注册表或 Docker 中心拉取 Docker 容器映像。 可以使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从相应注册表下载容器映像。
 
 > [!IMPORTANT]
-> 目前，必须完成注册过程来访问以下容器，在其中填写并提交调查表与你的公司，以及你想要实现容器的用例方面的问题。 授予访问权限并提供凭据后，即可为人脸和识别文本容器从 Azure 容器注册表承载的私有容器注册表中拉取容器映像。
+> 目前，必须完成注册过程来访问以下容器，在其中填写并提交调查表与你的公司，以及你想要实现容器的用例方面的问题。 要授予访问权限，并提供凭据，您可以从专用容器注册表托管的 Azure 容器注册表中提取容器映像。
 > * [异常情况 dectector](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [人脸](Face/face-how-to-install-containers.md)
 > * [表单识别器](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)

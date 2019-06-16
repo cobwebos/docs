@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: geetha
 ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61216879"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>备份和还原已加密的 Azure VM
@@ -70,25 +70,25 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 ## <a name="configure-a-backup-policy"></a>配置备份策略
 
 1. 如果尚未创建恢复服务备份保管库，请遵照[这些说明](backup-azure-arm-vms-prepare.md#create-a-vault)操作
-2. 在门户中打开保管库，在“开始”部分选择“备份”。
+2. 在门户中打开保管库，在“开始”部分选择“备份”。  
 
     ![“备份”边栏选项卡](./media/backup-azure-vms-encryption/select-backup.png)
 
-3. 在“备份目标” > “工作负荷在哪里运行?”中，选择“Azure”。
-4. 在“要备份哪些内容?”中，选择“虚拟机” > “确定”。
+3. 在“备份目标” > “工作负荷在哪里运行?”中，选择“Azure”。   
+4. 在“要备份哪些内容?”中，选择“虚拟机” > “确定”。   
 
       ![“方案”边栏选项卡](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. 在“备份策略” > “选择备份策略”中，选择要与保管库关联的策略。 然后单击“确定”。
+5. 在“备份策略” > “选择备份策略”中，选择要与保管库关联的策略。   然后单击“确定”  。
     - 备份策略指定备份创建时间以及这些备份的存储时长。
     - 默认策略的详细信息会在下拉菜单下列出。
 
     ![打开“方案”边栏选项卡](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
-6. 如果不想要使用默认策略，请选择“新建”，然后[创建自定义策略](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
+6. 如果不想要使用默认策略，请选择“新建”，然后[创建自定义策略](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。 
 
 
-7. 选择要使用所选策略备份的已加密 VM，然后选择“确定”。
+7. 选择要使用所选策略备份的已加密 VM，然后选择“确定”。 
 
       ![选择加密 VM](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
 
@@ -102,19 +102,19 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 
         ![访问警告](./media/backup-azure-vms-encryption/access-warning.png)
 
-9. 单击“启用备份”以在保管库中部署该备份策略，并为选定的 VM 启用备份。
+9. 单击“启用备份”以在保管库中部署该备份策略，并为选定的 VM 启用备份。 
 
 
 ## <a name="trigger-a-backup-job"></a>触发备份作业
 
 初始备份将根据计划运行，但你可以按如下所述手动运行：
 
-1. 在保管库菜单中，单击“备份项”。
-2. 在“备份项”中，单击“Azure 虚拟机”。
-3. 在“备份项”列表中，单击省略号 (...)。
-4. 单击“立即备份”。
-5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然后单击“确定”。
-6. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
+1. 在保管库菜单中，单击“备份项”  。
+2. 在“备份项”  中，单击“Azure 虚拟机”  。
+3. 在“备份项”  列表中，单击省略号 (...)。
+4. 单击“立即备份”  。
+5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期  。 然后单击“确定”  。
+6. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。   创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 
 ## <a name="provide-permissions"></a>提供权限
@@ -126,25 +126,25 @@ Azure VM 需要拥有只读访问权限才能备份密钥和机密以及关联�
 
 设置权限：
 
-1. 在 Azure 门户中，选择“所有服务”并搜索 **Key Vault**。
+1. 在 Azure 门户中，选择“所有服务”并搜索 **Key Vault**。 
 2. 选择与要备份的已加密 VM 相关联的 Key Vault。
-3. 选择“访问策略” > “新增”。
-4. 选择“选择主体”，然后键入“备份管理”。
-5. 选择“备份管理服务” > “选择”。
+3. 选择“访问策略” > “新增”。  
+4. 选择“选择主体”，然后键入“备份管理”   。
+5. 选择“备份管理服务” > “选择”。  
 
     ![备份服务选择](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-6. 在“添加访问策略” > “从模板配置(可选)”中，选择“Azure 备份”。
-    - “密钥权限”和“机密权限”中已预先填充所需的权限。
-    - 如果 VM 是**仅使用 BEK** 加密的，请删除“密钥权限”对应的选择内容，因为只需要机密的权限。
+6. 在“添加访问策略” > “从模板配置(可选)”中，选择“Azure 备份”。   
+    - “密钥权限”和“机密权限”中已预先填充所需的权限。  
+    - 如果 VM 是**仅使用 BEK** 加密的，请删除“密钥权限”对应的选择内容，因为只需要机密的权限。 
 
     ![Azure 备份选择](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-6. 单击“确定”。 “备份管理服务”随即会添加到“访问策略”中。
+6. 单击“确定”。  “备份管理服务”随即会添加到“访问策略”中。  
 
     ![访问策略](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
-7. 单击“保存”，为 Azure 备份提供权限。
+7. 单击“保存”，为 Azure 备份提供权限。 
 
 ## <a name="restore-an-encrypted-vm"></a>还原已加密的 VM
 

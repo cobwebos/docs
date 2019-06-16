@@ -18,10 +18,10 @@ ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60833031"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>排查 Azure 应用服务中出现的 HTTP 错误“502 错误的网关”和“503 服务不可用”
@@ -55,7 +55,7 @@ ms.locfileid: "60833031"
 每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡会显示所有可以添加的指标。
+此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴  。 “指标”边栏选项卡会显示所有可以添加的指标。 
 
 可能想要在应用中监视的一些指标包括
 
@@ -78,7 +78,7 @@ ms.locfileid: "60833031"
 #### <a name="use-the-diagnostics-tool"></a>使用诊断工具
 应用服务提供了智能的交互式体验，可帮助我们排查应用的问题，且无需配置。 如果应用确实出现问题，诊断工具会指出问题所在，并引导你获取适当的信息，以便更轻松快速地排查和解决问题。
 
-若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
+若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。 
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
 应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 *Kudu 控制台*或 *SCM 仪表板*。

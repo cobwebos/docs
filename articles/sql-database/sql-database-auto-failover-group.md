@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 05/06/2019
 ms.openlocfilehash: e999e4d96dcb5a1042806c0905ce331dc0a4dc0b
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522855"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
@@ -40,7 +40,7 @@ ms.locfileid: "65522855"
 
 ## <a name="auto-failover-group-terminology-and-capabilities"></a>自动故障转移组的术语和功能
 
-- **故障转移组 （模糊）**
+- **故障转移组 (FOG)**
 
   故障转移组是由一个 SQL 数据库服务器管理或位于一个托管实例中的一组数据库，当主要区域的服务中断导致所有或部分主要数据库不可用时，这组数据库可作为单元故障转移到另一区域。 故障转移组时创建的托管实例，包含的实例中的所有用户数据库，并因此可以在实例上配置一个故障转移组。
 
@@ -76,11 +76,11 @@ ms.locfileid: "65522855"
 
 - **故障转移组读写侦听器**
 
-  构成的 DNS CNAME 记录，指向当前主要节点的 URL。 它允许读写 SQL 应用程序在故障转移发生后主服务器发生更改时，以透明方式重新连接到主数据库。 SQL 数据库服务器上创建故障转移组后，侦听器 URL 的 DNS CNAME 记录格式为`<fog-name>.database.windows.net`。 托管实例上创建故障转移组后，侦听器 URL 的 DNS CNAME 记录格式为`<fog-name>.zone_id.database.windows.net`。
+  构成的 DNS CNAME 记录，指向当前主要节点的 URL。 它允许读写 SQL 应用程序在故障转移发生后主服务器发生更改时，以透明方式重新连接到主数据库。 在 SQL 数据库服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.database.windows.net`。 托管实例上创建故障转移组后，侦听器 URL 的 DNS CNAME 记录格式为`<fog-name>.zone_id.database.windows.net`。
 
 - **故障转移组只读侦听器**
 
-  构成的 DNS CNAME 记录，指向只读侦听器，后者指向辅助节点的 URL。 它可让只读 SQL 应用程序以透明方式使用指定的负载均衡规则连接到辅助节点。 SQL 数据库服务器上创建故障转移组后，侦听器 URL 的 DNS CNAME 记录格式为`<fog-name>.secondary.database.windows.net`。 托管实例上创建故障转移组后，侦听器 URL 的 DNS CNAME 记录格式为`<fog-name>.zone_id.secondary.database.windows.net`。
+  构成的 DNS CNAME 记录，指向只读侦听器，后者指向辅助节点的 URL。 它可让只读 SQL 应用程序以透明方式使用指定的负载均衡规则连接到辅助节点。 在 SQL 数据库服务器上创建故障转移组时，侦听器 URL 的 DNS CNAME 记录格式为 `<fog-name>.secondary.database.windows.net`。 托管实例上创建故障转移组后，侦听器 URL 的 DNS CNAME 记录格式为`<fog-name>.zone_id.secondary.database.windows.net`。
 
 - **自动故障转移策略**
 
@@ -88,7 +88,7 @@ ms.locfileid: "65522855"
 
 - **只读故障转移策略**
 
-  默认禁用只读侦听器的故障转移功能。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果无法容许只读会话停机，但能够以主数据库的潜在性能降级为代价将主数据库临时用于只读和读写流量，则可以为只读侦听器启用故障转移。 在这种情况下，只读的流量将自动重定向到主副本在辅助数据库不是可用。
+  默认禁用只读侦听器的故障转移功能。 这可确保在辅助数据库脱机时，主数据库的性能不会受到影响。 但是，这也意味辅助数据库恢复前，只读会话将无法连接。 如果无法容许只读会话停机，但能够以主数据库的潜在性能降级为代价将主数据库临时用于只读和读写流量，则可以为只读侦听器启用故障转移。 在这种情况下，如果辅助节点不可用，则会将只读流量自动重定向到主要节点。
 
 - **计划内故障转移**
 
@@ -100,7 +100,7 @@ ms.locfileid: "65522855"
 
 - **计划外故障转移**
 
-   计划外故障转移或强制故障转移立即将辅助角色切换为主要角色，而不与主要节点进行任何同步。 此操作会导致数据丢失。 在服务中断期间当主要节点不可访问时，计划外故障转移将用作恢复方法。 原始的主要副本重新联机时，它将自动重新连接而不进行同步并成为新的辅助数据库。
+   计划外故障转移或强制故障转移立即将辅助角色切换为主要角色，而不与主要节点进行任何同步。 此操作会导致数据丢失。 在服务中断期间当主要节点不可访问时，计划外故障转移将用作恢复方法。 原始主要节点重新联机后，将在不进行同步的情况下自动重新连接，并成为新的辅助节点。
 
 - **手动故障转移**
 
@@ -219,7 +219,7 @@ ms.locfileid: "65522855"
 
 ## <a name="failover-groups-and-network-security"></a>故障转移组和网络安全
 
-对于某些应用程序，安全规则要求只允许特定组件（如 VM、Web 服务等）通过网络访问数据层。此要求对业务连续性设计和故障转移组的使用提出了一些挑战。 实现此类限制的访问时，请考虑以下选项。
+对于某些应用程序，安全规则要求只允许特定组件（如 VM、Web 服务等）通过网络访问数据层。此要求对业务连续性设计和故障转移组的使用提出了一些挑战。 在实施此类受限访问时，请考虑以下选项。
 
 ### <a name="using-failover-groups-and-virtual-network-rules"></a>使用故障转移组和虚拟网络规则
 
@@ -271,7 +271,7 @@ ms.locfileid: "65522855"
 
 无需断开连接任何辅助数据库，即可将主数据库升级或降级到不同的计算大小（在相同的服务层级中，但不在“常规用途”与“业务关键”类型之间）。 升级时，建议先升级所有辅助数据库，再升级主数据库。 降级时，请反转顺序：先降级主数据库，再降级所有辅助数据库。 将数据库升级或降级到不同服务层级时，将强制执行此建议操作。
 
-此序列建议专门来避免此问题，其中在更低版 SKU 辅助数据库变得超负荷并重新设定在升级或降级过程必须种子。 此外，可以通过将主数据库设为只读来避免问题，代价是针对主数据库的所有读写工作负荷会受到影响。 
+具体而言，建议采用此顺序的目的是避免较低 SKU 上的辅助数据库在过载时出现问题，并且必须在升级或降级过程中重新设定种子。 此外，可以通过将主数据库设为只读来避免问题，代价是针对主数据库的所有读写工作负荷会受到影响。 
 
 > [!NOTE]
 > 如果辅助数据库是作为故障转移组配置的一个部分创建的，则不建议对辅助数据库进行降级。 这是为了确保激活故障转移后，数据层有足够的容量来处理常规工作负荷。
@@ -281,7 +281,7 @@ ms.locfileid: "65522855"
 由于广域网的延迟时间较长，连续复制使用了异步复制机制。 在发生故障时，异步复制会不可避免地丢失某些数据。 但是，某些应用程序可能要求不能有数据丢失。 为了保护这些关键更新，应用程序开发人员可以在提交事务后立即调用 [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) 系统过程。 调用 **sp_wait_for_database_copy_sync** 会阻止调用线程，直到将上次提交的事务传输到辅助数据库。 但是，它不会等待传输的事务提交到辅助数据库进行重播。 **sp_wait_for_database_copy_sync** 的作用域是一个具体的连续复制链路。 对主数据库具有连接权限的任何用户都可以调用此过程。
 
 > [!NOTE]
-> sp_wait_for_database_copy_sync 将在故障转移后防止数据丢失，但它不会保证读取访问的完全同步。 **sp_wait_for_database_copy_sync** 过程调用导致的延迟可能很明显，具体取决于调用时的事务日志大小。
+> sp_wait_for_database_copy_sync 将在故障转移后防止数据丢失，但它不会保证读取访问的完全同步  。 **sp_wait_for_database_copy_sync** 过程调用导致的延迟可能很明显，具体取决于调用时的事务日志大小。
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>故障转移组和时间点还原
 

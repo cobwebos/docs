@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户的本地编码器实时传送流 |Microsoft Docs
+title: 在 Azure 门户中使用本地编码器实时传送流 | Microsoft Docs
 description: 本教程指导完成相关步骤，以便创建经配置后可以进行直通传递的“通道”。
 services: media-services
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463253"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 门户中使用的本地编码器实时传送视频
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>在 Azure 门户中使用本地编码器实时传送流
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -52,7 +52,7 @@ ms.locfileid: "61463253"
 以下步骤说明了在创建常用的实时传送视频流应用程序时涉及的任务，这些应用程序使用的通道经配置后可以进行直通传递。 本教程说明了如何创建和管理直通通道和实时事件。
 
 > [!NOTE]
-> 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。 
+> 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。  
     
 1. 将视频摄像机连接到计算机。 <br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
 1. 启动并配置输出多比特率 RTMP 或分段 MP4 流的本地实时编码器接收实时输入流。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>另外，请查看以下博客：[采用 OBS 的实时传送视频流生产](https://link.medium.com/ttuwHpaJeT)。
@@ -109,7 +109,7 @@ ms.locfileid: "61463253"
 有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 在“设置”窗口中，单击“实时传送视频流”。 
+2. 在“设置”  窗口中，单击“实时传送视频流”  。 
    
     ![入门](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
@@ -117,7 +117,7 @@ ms.locfileid: "61463253"
 3. 单击“快速创建”  ，即可使用 RTMP 引入协议创建直通通道。
    
     此时会显示“创建新通道”  窗口。
-4. 为新通道命名，并单击“创建” 。 
+4. 为新通道命名，并单击“创建”  。 
    
     此时会使用 RTMP 引入协议创建直通通道。
 
@@ -148,7 +148,7 @@ ms.locfileid: "61463253"
 ## <a name="view-archived-content"></a>查看存档的内容
 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 
-若要管理资产，请选择“设置”，再单击“资产”。
+若要管理资产，请选择“设置”  ，再单击“资产”  。
 
 ![资产](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

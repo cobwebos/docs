@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
 ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736609"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
@@ -24,7 +24,7 @@ ms.locfileid: "60736609"
 
 一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 可以在实验中通过使用[导入数据][import-data]模块使用这些数据集。
 
-余下的这些示例数据集可在“保存的数据集”下的工作区中使用。 可以在机器学习工作室中试验画布左侧的模块调色板中找到此项。
+余下的这些示例数据集可在“保存的数据集”  下的工作区中使用。 可以在机器学习工作室中试验画布左侧的模块调色板中找到此项。
 通过将其中的任何数据集拖放到实验画布中，即可在自己的实验中使用它们。
 
 ## <a name="datasets"></a>数据集

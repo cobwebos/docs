@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/20/2019
 ms.openlocfilehash: 0e4d87ee0d0d09a84e960d511ded87dc226515ea
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762668"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的单一数据库的资源限制
@@ -58,7 +58,7 @@ ms.locfileid: "65762668"
 
 ### <a name="standard-service-tier-continued"></a>标准服务层（续）
 
-| **计算大小** | **S4** | **S6** | S7 | S9 | S12 |
+| **计算大小** | **S4** | **S6** |  S7 |  S9 |  S12 |
 | :--- |---:| ---:|---:|---:|---:|
 | 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
 | 包含的存储 (GB) | 250 | 250 | 250 | 250 | 250 |

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: danlep
 ms.openlocfilehash: ebbfaba158e7ddb669111f097eb1adde2373aa6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60828641"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>锁定 Azure 容器注册表中的容器映像
@@ -22,9 +22,9 @@ ms.locfileid: "60828641"
 
 ## <a name="scenarios"></a>方案
 
-默认情况下，Azure 容器注册表中带标记的映像是可变的，因此，如果具有相应的权限，你可以反复更新带有相同标记的映像并将其推送到注册表。 还可以根据需要[删除](container-registry-delete.md)容器映像。 开发映像并需要保持注册表的大小时，此行为很有用。
+默认情况下，Azure 容器注册表中带标记的映像是可变的，因此，如果具有相应的权限，你可以反复更新带有相同标记的映像并将其推送到注册表。  还可以根据需要[删除](container-registry-delete.md)容器映像。 开发映像并需要保持注册表的大小时，此行为很有用。
 
-但是，将容器映像部署到生产环境时，可能需要不可变的容器映像。 不可变的映像是指不能意外删除或覆盖的映像。 使用 [az acr repository update][az-acr-repository-update] 命令设置存储库属性，以便可以：
+但是，将容器映像部署到生产环境时，可能需要不可变的容器映像。  不可变的映像是指不能意外删除或覆盖的映像。 使用 [az acr repository update][az-acr-repository-update] 命令设置存储库属性，以便可以：
 
 * 锁定某个映像版本或整个存储库
 

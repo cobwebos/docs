@@ -10,10 +10,10 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: f851fd2857650dd00e365abf71ec5f0199db6d57
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711589"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
@@ -199,7 +199,7 @@ function Get-ContosoFiles
 
 ## <a name="job-statuses"></a>作业状态
 
-下表描述了作业的各种可能状态。 PowerShell 具有两种类型的错误，终止性和非终止性错误。 终止性错误在发生时将 runbook 状态设置为“失败”。 非终止性错误允许在发生错误时继续运行脚本。 非终止错误的示例为：对不存在的路径使用 `Get-ChildItem` cmdlet。 PowerShell 发现路径不存在，然后引发错误，并继续转到下一文件夹。 此错误不会将 runbook 状态设置为“失败”，并且可能标记为“完成”。 若要强制 runbook 在发生非终止性错误时停止，可以使用 `-ErrorAction Stop` cmdlet。
+下表描述了作业的各种可能状态。 PowerShell 具有两种类型的错误，终止性和非终止性错误。 终止性错误在发生时将 runbook 状态设置为“失败”  。 非终止性错误允许在发生错误时继续运行脚本。 非终止错误的示例为：对不存在的路径使用 `Get-ChildItem` cmdlet。 PowerShell 发现路径不存在，然后引发错误，并继续转到下一文件夹。 此错误不会将 runbook 状态设置为“失败”，并且可能标记为“完成”   。 若要强制 runbook 在发生非终止性错误时停止，可以使用 `-ErrorAction Stop` cmdlet。
 
 | 状态 | 描述 |
 |:--- |:--- |
@@ -222,21 +222,21 @@ function Get-ContosoFiles
 
 ### <a name="automation-runbook-jobs-summary"></a>自动化 Runbook 作业摘要
 
-在所选的“自动化帐户”右侧，可在“作业统计信息”磁贴下看到所有 Runbook 作业的摘要。
+在所选的“自动化帐户”右侧，可在“作业统计信息”磁贴下看到所有 Runbook 作业的摘要  。
 
 ![作业统计信息磁贴](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
 此磁贴显示执行的所有作业的作业状态计数和图形表示形式。
 
-单击磁贴可显示“作业”页，此页包括所有已执行作业的摘要列表。 此页显示状态、开始时间和完成时间。
+单击磁贴可显示“作业”页，此页包括所有已执行作业的摘要列表  。 此页显示状态、开始时间和完成时间。
 
 ![自动化帐户作业页](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
-可以通过选择“筛选作业”来筛选作业列表并筛选特定的 runbook 和作业状态，或从下拉列表中的时间范围中进行搜索。
+可以通过选择“筛选作业”来筛选作业列表并筛选特定的 runbook 和作业状态，或从下拉列表中的时间范围中进行搜索  。
 
 ![筛选作业状态](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-或者，可通过从自动化帐户中的“runbook”页上选择特定的 runbook，并选择“作业”磁贴，来查看该 runbook 的作业摘要详情。 此操作将显示“作业”页，在此可以单击作业记录，查看作业详细信息和输出。
+或者，可通过从自动化帐户中的“runbook”页上选择特定的 runbook，并选择“作业”磁贴，来查看该 runbook 的作业摘要详情   。 此操作将显示“作业”页，在此可以单击作业记录，查看作业详细信息和输出  。
 
 ![自动化帐户作业页](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
@@ -246,9 +246,9 @@ function Get-ContosoFiles
 
 可以使用以下步骤查看 Runbook 的作业。
 
-1. 在 Azure 门户中，选择“自动化”，然后选择自动化帐户的名称。
-2. 从中心选择“Runbook”，然后在“Runbook”页的列表中选择一个 Runbook。
-3. 在所选 runbook 的页上，单击“作业”磁贴。
+1. 在 Azure 门户中，选择“自动化”  ，然后选择自动化帐户的名称。
+2. 从中心选择“Runbook”，然后在“Runbook”页的列表中选择一个 Runbook   。
+3. 在所选 runbook 的页上，单击“作业”磁贴  。
 4. 单击列表中的一个作业，然后可在 runbook 作业详细信息页上查看其详细信息和输出。
 
 ## <a name="retrieving-job-status-using-powershell"></a>使用 PowerShell 检索作业状态

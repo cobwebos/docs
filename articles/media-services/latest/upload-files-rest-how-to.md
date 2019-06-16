@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: a241f66adecbab1d0b1462f379d3765d6c1de252
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61466763"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户
@@ -39,8 +39,8 @@ ms.locfileid: "61466763"
 
 本部分介绍如何创建新的资产。
 
-1. 选择“资产” -> “创建或更新资产”。
-2. 按“发送”。
+1. 选择“资产” -> “创建或更新资产”   。
+2. 按“发送”。 
 
     ![创建资产](./media/upload-files/postman-create-asset.png)
 
@@ -50,8 +50,8 @@ ms.locfileid: "61466763"
 
 本部分介绍如何获取通过所创建资产生成的 SAS URL。 所创建的 SAS URL 具有读写权限，可用于将数字文件上传到资产容器。
 
-1. 选择“资产” -> “列出资产 URL”。
-2. 按“发送”。
+1. 选择“资产” -> “列出资产 URL”   。
+2. 按“发送”。 
 
     ![上传文件](./media/upload-files/postman-create-sas-locator.png)
 

@@ -1,8 +1,8 @@
 ---
 title: H264 多比特率 1080p Media Encoder Standard 预设 - Azure | Microsoft 文档
 description: 本主题概述 **H264 多比特率 1080p** 任务预设。
-author: WenJason
-manager: digimobile
+author: Juliako
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 03/19/2019
-ms.date: 04/01/2019
-ms.author: v-jay
+ms.date: 03/19/2019
+ms.author: juliako
 ms.openlocfilehash: e542c6c15f1b23ba3a84b35dd5d712f9481f49de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463696"
 ---
 # <a name="h264-multiple-bitrate-1080p"></a>H264 多比特率 1080p

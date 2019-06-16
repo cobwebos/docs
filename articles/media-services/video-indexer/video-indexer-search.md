@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799093"
 ---
 # <a name="find-exact-moments-within-videos"></a>在视频中查找确切的时刻
@@ -29,7 +29,7 @@ ms.locfileid: "65799093"
     ![搜索](./media/video-indexer-search/video-indexer-search01.png)
 3. 搜索视频的汇总见解。
 
-    然后即可单击视频中的“播放”，在视频中进行搜索。 再然后，可以选择“选择”选项卡，在视频中进行搜索。 
+    然后即可单击视频中的“播放”，在视频中进行搜索。  再然后，可以选择“选择”选项卡，在视频中进行搜索。  
 
     在以下示例中，我们搜索"安全"内所选的视频。
 

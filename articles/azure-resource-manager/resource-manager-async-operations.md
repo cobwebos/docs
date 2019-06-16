@@ -14,10 +14,10 @@ ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: 1b05ed50f08ddbf2eb5da8e08f5bf623596e1f9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61061356"
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
@@ -85,12 +85,12 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 * 已失败
 * 已取消
 
-所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”。
+所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”  。
 
 ## <a name="example-requests-and-responses"></a>示例请求和响应
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>启动虚拟机（Azure-AsyncOperation 标头出现 202 响应）
-此示例演示如何确定虚拟机的“启动”操作的状态。 初始请求采用以下格式：
+此示例演示如何确定虚拟机的“启动”  操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 POST 
@@ -122,7 +122,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>部署资源（Azure-AsyncOperation 标头出现 201 响应）
 
-此示例演示将资源部署到 Azure 时，如何确定“部署”操作的状态。 初始请求采用以下格式：
+此示例演示将资源部署到 Azure 时，如何确定“部署”  操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT
@@ -162,7 +162,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{res
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>创建存储帐户（Location 和 Retry-After 标头出现 202 响应）
 
-此示例演示如何确定存储帐户的“创建”操作的状态。 初始请求采用以下格式：
+此示例演示如何确定存储帐户的“创建”  操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT

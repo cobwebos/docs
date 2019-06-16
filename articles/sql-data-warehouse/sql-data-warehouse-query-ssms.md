@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 64ea7c175b733f974eba6c081ee2c98814cbcda2
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873707"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 SQL 数据仓库
@@ -46,9 +46,9 @@ ms.locfileid: "65873707"
     ![连接到服务器][2]
    
    * **服务器名称**。 输入前面标识的 **服务器名称** 。
-   * “身份验证”。 选择“SQL Server 身份验证”或“Active Directory 集成身份验证”。
-   * “用户名”和“密码”。 如果上面选择了 SQL Server 身份验证，请输入用户名和密码。
-   * 单击“连接”。
+   * “身份验证”  。 选择“SQL Server 身份验证”  或“Active Directory 集成身份验证”  。
+   * “用户名”  和“密码”  。 如果上面选择了 SQL Server 身份验证，请输入用户名和密码。
+   * 单击“连接”  。
 4. 要浏览，请展开 Azure SQL 服务器。 可以查看与服务器关联的数据库。 展开 AdventureWorksDW 以查看示例数据库中的表。
    
     ![浏览 AdventureWorksDW][3]
@@ -57,7 +57,7 @@ ms.locfileid: "65873707"
 现在，已建立了与数据库的连接，接下来让我们编写查询。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”。 此时将打开一个新的查询窗口。
+2. 选择“新建查询”  。 此时将打开一个新的查询窗口。
    
     ![新建查询][4]
 3. 将以下 TSQL 查询复制到查询窗口中：

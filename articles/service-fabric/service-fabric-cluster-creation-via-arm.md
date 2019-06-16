@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
 ms.openlocfilehash: 709b59d257dd974e81d8b4058983f6e264ba0708
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925857"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
@@ -71,10 +71,10 @@ az account set --subscription $subscriptionId
 
 [Azure Service Fabric 模板示例：Windows 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和 [Ubuntu 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)中提供了所用的模板
 
-以下命令可创建 Windows 或 Linux 群集，需指定相应的操作系统。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书，但要确保已创建该证书文件夹。 此命令还采用 VM SKU 等其他参数。
+以下命令可创建 Windows 或 Linux 群集，需指定相应的操作系统。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书，但要确保已创建该证书文件夹  。 此命令还采用 VM SKU 等其他参数。
 
 > [!NOTE]
-> 以下 PowerShell 命令仅适用于 Azure PowerShell`Az`模块。 若要检查当前版本的 Azure 资源管理器 PowerShell 版本，请运行以下 PowerShell 命令"Get-module Az"。 单击[此链接](/powershell/azure/install-Az-ps)升级 Azure 资源管理器 PowerShell 的版本。 
+> 以下 PowerShell 命令仅适用于 Azure PowerShell `Az` 模块。 若要检查 Azure 资源管理器 PowerShell 的当前版本，请运行以下 PowerShell 命令“Get-Module Az”。 单击[此链接](/powershell/azure/install-Az-ps)升级 Azure 资源管理器 PowerShell 的版本。 
 >
 >
 
@@ -170,7 +170,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 如果想要使用证书来保护群集，请使用以下命令创建群集。
 
-如果这是一个同时用于其他目的的 CA 签名证书，则我们建议专门为 Key Vault 提供一个不同的资源组。 建议将密钥保管库置于其资源组中。 这样可在不丢失密钥和机密的情况下删除计算和存储资源组，包括具有 Service Fabric 群集的资源组。 **包含 Key Vault 的资源组必须与正在使用它的群集位于同一区域。**
+如果这是一个同时用于其他目的的 CA 签名证书，则我们建议专门为 Key Vault 提供一个不同的资源组。 建议将密钥保管库置于其资源组中。 这样可在不丢失密钥和机密的情况下删除计算和存储资源组，包括具有 Service Fabric 群集的资源组。 **包含 Key Vault 的资源组必须与正在使用它的群集位于同一区域。** 
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>使用模块中附带的默认“5 Node 1”节点类型模板
 [Azure 示例：Windows 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和 [Ubuntu 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)中提供了所用的模板

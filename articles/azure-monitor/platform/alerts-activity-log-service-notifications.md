@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: 3b3c967cd43745a4ae87fefc578282f5427a5f79
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3157cef6952f01d689d3cb4a30c9d7c843095809
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405702"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071697"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
@@ -42,15 +42,15 @@ ms.locfileid: "65405702"
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="alert-and-new-action-group-using-azure-portal"></a>使用 Azure 门户发出警报和新建操作组
-1. 在[门户](https://portal.azure.com)中，选择“服务运行状况”。
+1. 在[门户](https://portal.azure.com)中，选择“服务运行状况”  。
 
     ![“服务运行状况”服务](media/alerts-activity-log-service-notifications/home-servicehealth.png)
 
-1. 在“警报”部分中，选择“运行状况警报”。
+1. 在“警报”  部分中，选择“运行状况警报”  。
 
     ![“运行状况警报”选项卡](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
-1. 选择“创建服务运行状况警报”，并填写字段。
+1. 选择“创建服务运行状况警报”  ，并填写字段。
 
     ![“创建服务运行状况警报”命令](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
@@ -61,13 +61,13 @@ ms.locfileid: "65405702"
 > [!NOTE]
 > 此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
 
-1. 选择要针对其发出警报的**事件类型**：“服务问题”、“计划内维护”和“运行状况公告” 
+1. 选择要针对其发出警报的**事件类型**：“服务问题”  、“计划内维护”  和“运行状况公告”  
 
 1. 通过输入**警报规则名称**和**说明**定义警报详细信息。
 
 1. 选择要将警报保存到的**资源组**。
 
-1. 通过选择“新建操作组”创建一个新操作组。 在“操作组名称”框中输入名称，然后在“短名称”框中输入名称。 在触发此警报时，将引用已发送通知中的短名称。
+1. 通过选择“新建操作组”  创建一个新操作组。 在“操作组名称”  框中输入名称，然后在“短名称”  框中输入名称。 在触发此警报时，将引用已发送通知中的短名称。
 
     ![创建新的操作组](media/alerts-activity-log-service-notifications/action-group-creation.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "65405702"
 
     c. **详细信息**：根据所选操作类型，输入电话号码、电子邮件地址、Webhook URI 等。
 
-1. 选择“确定”以创建操作组，然后选择“创建警报规则”以完成警报。
+1. 选择“确定”  以创建操作组，然后选择“创建警报规则”  以完成警报。
 
 在几分钟内，警报将处于活动状态，并根据创建期间指定的条件开始触发。
 
@@ -92,11 +92,11 @@ ms.locfileid: "65405702"
 
 ## <a name="alert-with-existing-action-group-using-azure-portal"></a>使用 Azure 门户通过现有操作组发出警报
 
-1. 执行上一节中的步骤 1 至 7 来创建服务运行状况通知。 
+1. 请按照步骤 1 至 6 中要创建服务运行状况通知的上一节。 
 
-1. 在“定义操作组”下，单击“选择操作组”按钮。 选择适当的操作组。
+1. 在“定义操作组”  下，单击“选择操作组”  按钮。 选择适当的操作组。
 
-1. 选择“添加”以添加操作组，然后选择“创建警报规则”以完成警报。
+1. 选择“添加”  以添加操作组，然后选择“创建警报规则”  以完成警报。
 
 在几分钟内，警报将处于活动状态，并根据创建期间指定的条件开始触发。
 
@@ -192,7 +192,7 @@ ms.locfileid: "65405702"
 
 ## <a name="manage-your-alerts"></a>管理警报
 
-创建警报之后，可在“监视”的“警报”部分中查看。 选择要管理的警报：
+创建警报之后，可在“监视”  的“警报”  部分中查看。 选择要管理的警报：
 
 * 编辑它。
 * 删除它。

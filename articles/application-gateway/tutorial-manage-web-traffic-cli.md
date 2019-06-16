@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 5/1/2019
 ms.author: victorh
 ms.openlocfilehash: d60c756fcf0b527731b8a1f31a8d93f108c91665
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65146231"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>通过 Azure CLI 使用应用程序网关管理 Web 流量
@@ -37,7 +37,7 @@ ms.locfileid: "65146231"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组   。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus

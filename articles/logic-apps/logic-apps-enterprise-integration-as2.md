@@ -10,10 +10,10 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 04/22/2019
 ms.openlocfilehash: b494f6524e5105a95bc8a24a6fa2521abcca3f7b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64729396"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
@@ -73,7 +73,7 @@ ms.locfileid: "64729396"
 
 1. 在设计器中，将添加到逻辑应用的新的操作。 
 
-1. 下**选择操作**和搜索框中，选择**所有**。 在搜索框中，输入"编码 as2"，然后选择以下操作：**编码为 AS2 消息**。
+1. 在“选择操作”和搜索框下，选择“全部”   。 在搜索框中，输入"编码 as2"，然后选择以下操作：**编码为 AS2 消息**。
 
    ![选择"编码为 AS2 消息"](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "64729396"
 
 1. 在设计器中，将添加到逻辑应用的新的操作。 
 
-1. 下**选择操作**和搜索框中，选择**所有**。 在搜索框中，输入"解码 as2"，然后选择以下操作：**解码 AS2 消息**
+1. 在“选择操作”和搜索框下，选择“全部”   。 在搜索框中，输入"解码 as2"，然后选择以下操作：**解码 AS2 消息**
 
    ![选择"解码 AS2 消息"](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 

@@ -11,37 +11,37 @@ ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
 ms.openlocfilehash: 7f692c08f8af322bf7e6ab576e2e6f516594a6c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61336511"
 ---
 # <a name="similarity-method"></a>相似性方法
 
-相似性 REST API 用于计算两个字符串之间的学术相似性。 
+ 相似性 REST API 用于计算两个字符串之间的学术相似性。 
 <br>
 
-REST 终结点：
+REST 终结点： 
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ```
 
 ## <a name="request-parameters"></a>请求参数
 
-参数        |数据类型      |需要 | 描述
+参数        |数据类型      |必选 | 描述
 ----------|----------|----------|------------
-s1        |String   |是  |要比较的字符串*
-s2        |String   |是  |要比较的字符串*
+**s1**        |String   |是  |要比较的字符串*
+**s2**        |String   |是  |要比较的字符串*
 
 <sub> *要比较的字符串的最大长度为 1 MB。</sub>
 <br>
 
 ## <a name="response"></a>响应
 
-名称 | 描述
+Name | 描述
 --------|---------
-SimilarityScore        |浮点值表示 s1 和 s2 的余弦相似性，值接近 1.0 表示更相似，值接近 -1.0 表示不那么相似
+ SimilarityScore        |浮点值表示 s1 和 s2 的余弦相似性，值接近 1.0 表示更相似，值接近 -1.0 表示不那么相似
 
 <br>
 
@@ -52,7 +52,7 @@ HTTP 状态 | 原因 | 响应
 **200**         |Success | 浮点数
 **400**         | 错误的请求或请求无效 | 错误消息      
 **500**         |内部服务器错误 | 错误消息
-已超时     | 请求已超时。  | 错误消息
+ 已超时     | 请求已超时。  | 错误消息
 
 <br>
 
@@ -62,7 +62,7 @@ HTTP 状态 | 原因 | 响应
 https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?s1=Using complementary priors, we derive a fast greedy algorithm that can learn deep directed belief networks one layer at a time, provided the top two layers form an undirected associative memory
 &s2=Deepneural nets with a large number of parameters are very powerful machine learning systems. However, overfitting is a serious problem in such networks
 ```
-在此示例中，我们使用相似性 API 生成两个部分摘要之间的相似性得分。
+在此示例中，我们使用  相似性 API 生成两个部分摘要之间的相似性得分。
 #### <a name="response"></a>响应：
 ```
 0.520

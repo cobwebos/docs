@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
 ms.openlocfilehash: 0bf5b71a4b0f51a586febbdaeaf8caba03c5b25a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66387917"
 ---
 # <a name="introduction-to-training"></a>训练简介
@@ -80,7 +80,7 @@ ms.locfileid: "66387917"
 7. 单击“+ 操作”按钮 
     - 这样即可创建一个新的操作，以便机器人用它来进行响应。
 8. 键入机器人的响应“没问题! 祝你愉快!”
-9. 单击“法律条款” 
+9. 单击“法律条款”
 10. 请注意，机器人会立即进行响应。
 11. 单击“保存”按钮。
 

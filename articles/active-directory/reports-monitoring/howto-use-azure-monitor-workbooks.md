@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6ae14ec152975717af5d55780bcc39aa87c4b01a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 6d461725d0d4c86ee7aa5b450d42c01ca77ffb16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406595"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107676"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何使用 Azure Monitor 的工作簿的报表的 Azure Active Directory
 
@@ -72,11 +72,11 @@ ms.locfileid: "65406595"
 
 此工作簿显示了以下登录趋势：
 
-- 所有登录
+- 所有登录名
 
 - Success
 
-- 挂起的用户操作
+- 挂起用户执行任何操作
 
 - 失败
 
@@ -84,7 +84,7 @@ ms.locfileid: "65406595"
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 
@@ -109,7 +109,7 @@ ms.locfileid: "65406595"
 
 此工作簿显示了以下登录趋势：
 
-- 所有登录
+- 所有登录名
 
 - Success
 
@@ -118,7 +118,7 @@ ms.locfileid: "65406595"
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 
@@ -142,11 +142,11 @@ ms.locfileid: "65406595"
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 
-![登录名使用条件性访问](./media/howto-use-azure-monitor-workbooks/49.png)
+![使用条件性访问登录](./media/howto-use-azure-monitor-workbooks/49.png)
 
 
 为已禁用的登录名，可获取细分的条件访问状态。
@@ -179,7 +179,7 @@ ms.locfileid: "65406595"
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 
@@ -198,15 +198,15 @@ ms.locfileid: "65406595"
 使用**登录名失败分析**工作簿以解决以下错误：
 
 - 登录
-- 条件访问策略
-- 旧身份验证 
+- 条件性访问策略
+- 旧式身份验证 
 
 
 若要访问的条件性访问的数据，登录名，在**进行故障排除**部分中，选择**登录名使用旧版身份验证**。 
 
 此工作簿显示了以下登录趋势：
 
-- 所有登录
+- 所有登录名
 
 - Success
 
@@ -219,7 +219,7 @@ ms.locfileid: "65406595"
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 

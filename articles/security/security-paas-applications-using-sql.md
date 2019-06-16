@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 057ec69db300c3ec95cbc63bd5056a78c24d5660
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65601660"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>在 Azure 中保护 PaaS 数据库的最佳做法
@@ -34,9 +34,9 @@ Azure SQL 数据库和 SQL 数据仓库为基于 Internet 的应用程序提供�
 ## <a name="use-a-centralized-identity-repository"></a>使用集中式标识存储库
 可将 Azure SQL 数据库配置为使用以下两种身份验证类型之一：
 
-- SQL 身份验证使用用户名和密码。 在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 借助这些凭据，可以使用数据库所有者的身份通过服务器上任何数据库的身份验证。
+- SQL 身份验证  使用用户名和密码。 在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 借助这些凭据，可以使用数据库所有者的身份通过服务器上任何数据库的身份验证。
 
-- Azure Active Directory 身份验证使用 Azure Active Directory 管理的标识，支持托管域和集成域。 若要使用 Azure Active Directory 身份验证，必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。
+-  Azure Active Directory 身份验证使用 Azure Active Directory 管理的标识，支持托管域和集成域。 若要使用 Azure Active Directory 身份验证，必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。
 
 [Azure Active Directory 身份验证](../active-directory/develop/authentication-scenarios.md)是使用 Azure Active Directory (AD) 中的标识连接到 Azure SQL 数据库和 SQL 数据仓库的一种机制。 Azure AD 为 SQL Server 身份验证提供一种替代方法，使你可以阻止用户标识在数据库服务器之间激增。 使用 Azure AD 身份验证可在一个中心位置集中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供一个单一位置来管理数据库用户，并简化权限管理。  
 

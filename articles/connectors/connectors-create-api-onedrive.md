@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 840a010f8606387a250552d884621a96d0031f90
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62106221"
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>OneDrive 连接器入门
@@ -45,16 +45,16 @@ ms.locfileid: "62106221"
 1. 在逻辑应用中，键入“onedrive”获取触发器列表：  
    
     ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. 选择“修改文件时”。 如果连接已存在，选择“显示选取器”按钮选择文件夹。
+2. 选择“修改文件时”  。 如果连接已存在，选择“显示选取器”按钮选择文件夹。
    
     ![](./media/connectors-create-api-onedrive/sample-folder.png)
    
     如果提示登录，则输入登录详细信息以创建连接。 本文中的[创建连接](connectors-create-api-onedrive.md#create-the-connection)列出了相关步骤。 
    
    > [!NOTE]
-   > 在此示例中，逻辑应用在更新所选文件夹中的文件时运行。 要查看此触发器的结果，请添加另一个向你发送电子邮件的操作。 例如，添加在更新文件时向你发送电子邮件的 Office 365 Outlook“发送电子邮件”操作。 
+   > 在此示例中，逻辑应用在更新所选文件夹中的文件时运行。 要查看此触发器的结果，请添加另一个向你发送电子邮件的操作。 例如，添加在更新文件时向你发送电子邮件的 Office 365 Outlook“发送电子邮件”操作  。 
 
-3. 选择“编辑”按钮并设置“频率”和“间隔”值。 例如，如果希望触发器每 15 分钟轮询一次，将“频率”设置为“分钟”，将“间隔”设置为“15”。 
+3. 选择“编辑”  按钮并设置“频率”  和“间隔”  值。 例如，如果希望触发器每 15 分钟轮询一次，将“频率”  设置为“分钟”  ，将“间隔”  设置为“15”  。 
    
     ![](./media/connectors-create-api-onedrive/trigger-properties.png)
 4. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
@@ -65,18 +65,18 @@ ms.locfileid: "62106221"
 1. 选择加号。 看到多个选项：**添加操作**，**添加条件**，或某个**详细**选项。
    
     ![](./media/connectors-create-api-onedrive/add-action.png)
-2. 选择“添加操作”。
+2. 选择“添加操作”  。
 3. 在文本框中，键入“onedrive”获取所有可用操作的列表。
    
     ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
-4. 在我们的示例中，选择“OneDrive - 创建文件”。 如果连接已存在，选择“文件夹路径”放入文件、输入“文件名”，并选择所需的“文件内容”：  
+4. 在我们的示例中，选择“OneDrive - 创建文件”  。 如果连接已存在，选择“文件夹路径”  放入文件、输入“文件名”  ，并选择所需的“文件内容”  ：  
    
     ![](./media/connectors-create-api-onedrive/sample-action.png)
    
     如果提示提供连接信息，则输入详细信息以创建连接。 本文中的[创建连接](connectors-create-api-onedrive.md#create-the-connection)介绍了这些属性。 
    
    > [!NOTE]
-   > 在此示例中，我们在 OneDrive 文件夹中新建文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”触发器。 然后添加可在 ForEach 内使用“附件”和“内容类型”字段的 OneDrive“创建文件”操作，在 OneDrive 中新建文件。 
+   > 在此示例中，我们在 OneDrive 文件夹中新建文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”  触发器。 然后添加可在 ForEach 内使用“附件”和“内容类型”字段的 OneDrive“创建文件”操作，在 OneDrive 中新建文件  。 
    > 
    > ![](./media/connectors-create-api-onedrive/foreach-action.png)
 

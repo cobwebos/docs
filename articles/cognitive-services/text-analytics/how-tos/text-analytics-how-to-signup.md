@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: 53532a19482a33f8727e71d44ae169225b5b1c98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60829631"
 ---
 # <a name="how-to-sign-up-for-the-text-analytics-api"></a>如何注册文本分析 API
@@ -23,7 +23,7 @@ ms.locfileid: "60829631"
 
 + 从 Azure 订阅着手。 可以创建[免费帐户](https://azure.microsoft.com/free/)进行试验，无需支付任何费用。
 
-+ 创建[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)，选择“文本分析 API”。 密钥在注册时生成。
++ 创建[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)，选择“文本分析 API”  。 密钥在注册时生成。
 
 就文本分析来说，我们提供供用户浏览和评估的“免费”层，以及适用于生产性工作负荷的计费层。 每个订阅中可以有多个注册： 一个免费、 付费，一个，等等。 如果请求量增加，可以切换到提供更多事务的层。
 
@@ -35,11 +35,11 @@ ms.locfileid: "60829631"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，[找到你的服务](text-analytics-how-to-access-key.md)。
 
-2. 单击“价格层”。
+2. 单击“价格层”。 
 
    ![左侧导航菜单中的价格层命令](../media/portal-pricing-tier.png)
 
-3. 选择一个层，然后单击“选择”。  所做的选择得到处理以后，新限制就会生效。 
+3. 选择一个层，然后单击“选择”。   所做的选择得到处理以后，新限制就会生效。 
 
    ![层选择页中的层和“选择”按钮](../media/portal-choose-tier.png)
 

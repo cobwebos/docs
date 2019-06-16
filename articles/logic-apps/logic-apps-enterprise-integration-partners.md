@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
 ms.date: 07/08/2016
 ms.openlocfilehash: 137ed89c276338b534cad8fdf81ec31b5e5610b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845912"
 ---
 # <a name="add-trading-partners-for-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中为集成帐户添加贸易合作伙伴
@@ -33,27 +33,27 @@ ms.locfileid: "60845912"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中输入“集成”，然后选择“集成帐户”。
+2. 在 Azure 主菜单中，选择“所有服务”  。 在搜索框中输入“集成”，然后选择“集成帐户”  。
 
    ![查找集成帐户](./media/logic-apps-enterprise-integration-partners/account-1.png)
 
-3. 在“集成帐户”下，选择要添加合作伙伴的集成帐户。
+3. 在“集成帐户”  下，选择要添加合作伙伴的集成帐户。
 
    ![选择“集成帐户”](./media/logic-apps-enterprise-integration-partners/account-2.png)
 
-4. 选择“合作伙伴”磁贴。
+4. 选择“合作伙伴”  磁贴。
 
    ![选择“合作伙伴”](./media/logic-apps-enterprise-integration-partners/partner-1.png)
 
-5. 在“合作伙伴”下，选择“添加”。
+5. 在“合作伙伴”  下，选择“添加”  。
 
    ![选择“添加”](./media/logic-apps-enterprise-integration-partners/partner-2.png)
 
-6. 为合作伙伴输入名称，并选择“限定符”。 输入**值**以标识应用将接收的文档。 完成后，选择“确定”。
+6. 为合作伙伴输入名称，并选择“限定符”  。 输入**值**以标识应用将接收的文档。 完成后，选择“确定”  。
 
    ![添加合作伙伴详细信息](./media/logic-apps-enterprise-integration-partners/partner-3.png)
 
-7. 再次选择“合作伙伴”磁贴。
+7. 再次选择“合作伙伴”  磁贴。
 
    ![选择“合作伙伴”磁贴](./media/logic-apps-enterprise-integration-partners/partner-5.png)
 
@@ -63,29 +63,29 @@ ms.locfileid: "60845912"
 
 ## <a name="edit-partner"></a>编辑合作伙伴
 
-1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 选择“合作伙伴”磁贴。
+1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 选择“合作伙伴”  磁贴。
 
    ![选择“合作伙伴”磁贴](./media/logic-apps-enterprise-integration-partners/edit.png)
 
-2. 在“合作伙伴”下，选择要编辑的合作伙伴。
+2. 在“合作伙伴”  下，选择要编辑的合作伙伴。
 
    ![选择要删除的合作伙伴](./media/logic-apps-enterprise-integration-partners/edit-1.png)
 
-3. 在“更新合作伙伴”下，进行更改。
-完成后，选择“保存”。 
+3. 在“更新合作伙伴”  下，进行更改。
+完成后，选择“保存”  。 
 
    ![进行更改和保存更改](./media/logic-apps-enterprise-integration-partners/edit-2.png)
 
-   若要取消所做的更改，请选择“放弃”。
+   若要取消所做的更改，请选择“放弃”  。
 
 ## <a name="delete-partner"></a>删除合作伙伴
 
-1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 选择“合作伙伴”磁贴。
+1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 选择“合作伙伴”  磁贴。
 
    ![选择“合作伙伴”磁贴](./media/logic-apps-enterprise-integration-partners/delete.png)
 
-2. 在“合作伙伴”下，选择要删除的合作伙伴。
-选择“删除”。
+2. 在“合作伙伴”  下，选择要删除的合作伙伴。
+选择“删除”  。
 
    ![删除合作伙伴](./media/logic-apps-enterprise-integration-partners/delete-1.png)
 

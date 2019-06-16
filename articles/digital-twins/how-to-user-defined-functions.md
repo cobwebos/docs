@@ -6,15 +6,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 06/06/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5e230f45fd5889e216f2993f58adf6940ef7679
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60921799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072909"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中创建用户定义函数
 
@@ -119,7 +119,7 @@ function process(telemetry, executionContext) {
    - 第一部分包含所需的用户定义的函数元数据。
    - 第二部分包含 JavaScript 计算逻辑。
 
-1. 在“USER_DEFINED_BOUNDARY”部分中，替换“spaceId”(`YOUR_SPACE_IDENTIFIER`) 和“matchers”(`YOUR_MATCHER_IDENTIFIER`) 值。
+1. 在“USER_DEFINED_BOUNDARY”部分中，替换“spaceId”(`YOUR_SPACE_IDENTIFIER`) 和“matchers”(`YOUR_MATCHER_IDENTIFIER`) 值    。
 1. 验证 JavaScript 用户定义的函数是否作为 `Content-Type: text/javascript` 提供。
 
 ### <a name="example-functions"></a>示例函数
@@ -140,7 +140,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-telemetry 参数公开了 SensorId 和 Message 属性（对应于传感器发送的消息）。 **ExecutionContext** 参数公开了以下属性：
+telemetry 参数公开了 SensorId 和 Message 属性（对应于传感器发送的消息）    。 **ExecutionContext** 参数公开了以下属性：
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -202,10 +202,10 @@ function process(telemetry, executionContext) {
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   保留所需的角色 ID。 它将作为下面的 JSON 体属性“roleId”(`YOUR_DESIRED_ROLE_IDENTIFIER`) 传递。
+   保留所需的角色 ID。 它将作为下面的 JSON 体属性“roleId”(`YOUR_DESIRED_ROLE_IDENTIFIER`) 传递  。
 
-1. “objectId”(`YOUR_USER_DEFINED_FUNCTION_ID`) 将是先前创建的用户定义的函数 ID。
-1. 通过使用 `fullpath` 查询你的空间来查找“path”(`YOUR_ACCESS_CONTROL_PATH`) 的值。
+1. “objectId”(`YOUR_USER_DEFINED_FUNCTION_ID`) 将是先前创建的用户定义的函数 ID  。
+1. 通过使用 `fullpath` 查询你的空间来查找“path”(`YOUR_ACCESS_CONTROL_PATH`) 的值  。
 1. 复制返回的 `spacePaths` 值。 稍后你将使用该值。 向以下对象发出经过身份验证的 HTTP GET 请求：
 
     ```plaintext
@@ -216,7 +216,7 @@ function process(telemetry, executionContext) {
     | --- | --- |
     | YOUR_SPACE_NAME | 要使用的空间名称 |
 
-1. 将返回的 `spacePaths` 值粘贴到“路径”，以通过向以下对象发出经过身份验证的 HTTP POST 请求来创建用户定义的函数角色分配：
+1. 将返回的 `spacePaths` 值粘贴到“路径”，以通过向以下对象发出经过身份验证的 HTTP POST 请求来创建用户定义的函数角色分配  ：
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments

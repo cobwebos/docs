@@ -8,10 +8,10 @@ ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 4935e06389266f049b8f7f79ca6fb9380f33c864
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954146"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
@@ -99,7 +99,7 @@ Azure 门户中提供了 Azure Cosmos DB。 首先注册 Azure 订阅。 注册�
 
 ### <a name="what-is-a-master-key"></a>什么是主密钥？
 
-主密钥是用于访问帐户的所有资源的安全令牌。 拥有此密钥的人对数据库帐户中的所有资源具有读取和写入访问权。 分发主密钥时要格外小心。 [Azure 门户][azure-portal]的“密钥”边栏选项卡中提供了主要主密钥和辅助主密钥。 有关密钥的详细信息，请参阅[查看、复制和重新生成访问密钥](manage-with-cli.md#list-account-keys)。
+主密钥是用于访问帐户的所有资源的安全令牌。 拥有此密钥的人对数据库帐户中的所有资源具有读取和写入访问权。 分发主密钥时要格外小心。 [Azure 门户][azure-portal]的“密钥”  边栏选项卡中提供了主要主密钥和辅助主密钥。 有关密钥的详细信息，请参阅[查看、复制和重新生成访问密钥](manage-with-cli.md#list-account-keys)。
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>可以将 PreferredLocations 设置为哪些区域？
 
@@ -207,7 +207,7 @@ Azure Cosmos DB 的 API for MongoDB 是一个线路协议兼容层，允许应�
 
 ### <a name="how-do-i-connect-to-my-database"></a>如何连接到我的数据库？
 
-若要通过 Azure Cosmos DB 的用于 MongoDB 的 API 连接到 Cosmos 数据库，最快捷的方法是使用 [Azure 门户](https://portal.azure.com)。 转到你的帐户，然后在左侧导航菜单上单击“快速启动”。 快速入门是获取连接到数据库的代码片段的最佳方式。
+若要通过 Azure Cosmos DB 的用于 MongoDB 的 API 连接到 Cosmos 数据库，最快捷的方法是使用 [Azure 门户](https://portal.azure.com)。 转到你的帐户，然后在左侧导航菜单上单击“快速启动”  。 快速入门是获取连接到数据库的代码片段的最佳方式。
 
 Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB 帐户需要通过 SSL 进行身份验证和安全通信，因此请确保使用 TLSv1.2。
 
@@ -338,7 +338,7 @@ Azure Cosmos DB 旨在通过横向缩放提供无限的存储。 该服务可以
 
 ### <a name="how-do-i-monitor-the-table-api-offering"></a>如何监视表 API 服务？
 
-可以使用表 API 的“指标”窗格来监视请求和存储使用情况。
+可以使用表 API 的“指标”  窗格来监视请求和存储使用情况。
 
 ### <a name="how-do-i-calculate-the-throughput-i-require"></a>如何计算所需的吞吐量？
 
@@ -410,7 +410,7 @@ Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将�
 
 是，可以提供索引定义来更改索引策略。 需要适当地将这些设置编码并转义。
 
-对于非 .NET SDK，只能在门户中设置索引策略，方法是：打开“数据资源管理器”，导航到想要更改的特定表，转到“缩放和设置”->“索引策略”，进行所需的更改，并单击“保存”。
+对于非 .NET SDK，只能在门户中设置索引策略，方法是：打开“数据资源管理器”，导航到想要更改的特定表，转到“缩放和设置”->“索引策略”，进行所需的更改，并单击“保存”。   
 
 对于 .NET SDK，可以在 app.config 文件中提交更改：
 

@@ -12,14 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-origin.date: 04/14/2018
-ms.date: 02/25/2019
-ms.author: v-biyu
+ms.date: 01/04/2019
+ms.author: jowargo
 ms.openlocfilehash: 0f92b49c9d77029a9624782b49eb23f7083c49aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60872248"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>使用通知中心向用户发送跨平台通知
@@ -38,7 +37,7 @@ ms.locfileid: "60872248"
 
 若要使用模板发送跨平台通知，请执行以下步骤：
 
-1. 在 Visual Studio 的解决方案资源管理器中，展开“控制器”文件夹，然后打开 RegisterController.cs 文件。
+1. 在 Visual Studio 的解决方案资源管理器中，展开“控制器”文件夹，然后打开 RegisterController.cs 文件。 
 
 2. 在 `Put` 方法中找到用于创建新注册的代码块，然后将 `switch` 内容替换为以下代码：
 
@@ -61,6 +60,10 @@ ms.locfileid: "60872248"
         case "apns":
             var alertTemplate = "{\"aps\":{\"alert\":\"$(message)\"}}";
             registration = new AppleTemplateRegistrationDescription(deviceUpdate.Handle, alertTemplate);
+            break;
+        case "fcm":
+            var messageTemplate = "{\"data\":{\"message\":\"$(message)\"}}";
+            registration = new FcmTemplateRegistrationDescription(deviceUpdate.Handle, messageTemplate);
             break;
         default:
             throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -105,10 +108,12 @@ ms.locfileid: "60872248"
 <!-- Images. -->
 
 <!-- URLs. -->
-[Visual Studio 2012 Express for Windows 8]: http://go.microsoft.com/fwlink/?LinkId=257546
+[Push to users ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+[Push to users Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Visual Studio 2012 Express for Windows 8]: https://go.microsoft.com/fwlink/?LinkId=257546
 
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Azure Notification Hubs]: http://go.microsoft.com/fwlink/p/?LinkId=314257
+[Azure Notification Hubs]: https://go.microsoft.com/fwlink/p/?LinkId=314257
 [使用通知中心通知用户]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
-[Notification Hub How to for Windows Store]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
+[Templates]: https://go.microsoft.com/fwlink/p/?LinkId=317339
+[Notification Hub How to for Windows Store]: https://msdn.microsoft.com/library/windowsazure/jj927172.aspx

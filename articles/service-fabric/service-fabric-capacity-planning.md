@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: d7ca566b86ed79aa773d7af2553223c79ed9944a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341994"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64701844"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric 应用程序的容量规划
 本文档介绍如何评估运行 Azure Service Fabric 应用程序所需的资源量（CPU、RAM 和磁盘存储空间）。 资源要求经常会随着时间而变化。 开发/测试服务时需要的资源通常很少，之后进入生产环境且应用程序受欢迎度提高时需要的资源会更多。 设计应用程序时，应仔细规划长期要求并做出选择，以便到时服务可以缩放以应对较高的客户需求。

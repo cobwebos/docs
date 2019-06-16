@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 785cf5159615b4a81740e853f2b513f0e6d74aec
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65198459"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
@@ -36,7 +36,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 |操作系统  |部署类型  |
 |---------|---------|
-|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手动](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Manual](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
@@ -51,7 +51,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 可以从组中删除一个或多个混合 Runbook 辅助角色，或者根据要求删除该组。 若要从本地计算机中删除混合 Runbook 辅助角色，请使用以下步骤：
 
 1. 在 Azure 门户中，转到自动化帐户。
-2. 在“帐户设置”下，选择“密钥”并记下“URL”和“主访问密钥”的值。 下一步需要用到此信息。
+2. 在“帐户设置”下，选择“密钥”并记下“URL”和“主访问密钥”的值     。 下一步需要用到此信息。
 
 ### <a name="windows"></a>Windows
 
@@ -83,15 +83,15 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 要删除某个组，首先需要使用前面所示的过程，从每台计算机中删除属于该组的混合 Runbook 辅助角色。 然后，使用以下步骤删除该组：
 
 1. 在 Azure 门户中打开自动化帐户。
-2. 在“流程自动化”下选择“混合辅助角色组”。 选择要删除的组。 将显示该组的属性页。
+2. 在“流程自动化”  下选择“混合辅助角色组”  。 选择要删除的组。 将显示该组的属性页。
 
    ![“属性”页](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-3. 在所选组的属性页中，选择“删除”。 系统会显示一条消息，要求确认此操作。 如果确定要继续，请选择“是”。
+3. 在所选组的属性页中，选择“删除”  。 系统会显示一条消息，要求确认此操作。 如果确定要继续，请选择“是”  。
 
    ![确认消息](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
-   完成此过程可能需要数秒钟的时间。 可以在菜单中的“通知”下面跟踪操作进度。
+   完成此过程可能需要数秒钟的时间。 可以在菜单中的“通知”下面跟踪操作进度  。
 
 ## <a name="network-planning"></a>配置网络
 
@@ -144,11 +144,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 除了混合 Runbook 辅助角色所需的标准地址和端口以外，更新管理还特别需要以下地址。 与这些地址的通信通过端口 443 完成。
 
-|Azure Public  |Azure Government   |
+|Azure Public  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
 ## <a name="next-steps"></a>后续步骤
 

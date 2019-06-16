@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: 8382884b4ce2965dee4acf191f82eb012b670713
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147476"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>升级到 Azure 搜索 .NET SDK 版本 5
@@ -99,6 +99,6 @@ Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式�
 ## <a name="conclusion"></a>结束语
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅 [.NET 操作指南](search-howto-dotnet-sdk.md)。
 
-我们欢迎你对 SDK 提供反馈。 如果遇到问题，欢迎向我们寻求帮助上[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。
+我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时通过 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) 向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。
 
 感谢使用 Azure 搜索！

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
 ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128645"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数值函数
@@ -47,10 +47,10 @@ Resource Manager 提供以下用于处理整数的函数：
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- | 
-|operand1 |“是” |int |要添加的第一个数。 |
-|operand2 |“是” |int |要添加的第二个数。 |
+|operand1 |是 |int |要添加的第一个数。 |
+|operand2 |是 |int |要添加的第二个数。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -93,7 +93,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
@@ -118,10 +118,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| loopName | “否” | string | 用于获取迭代的循环的名称。 |
-| offset |“否” |int |要添加到从零开始的迭代值的数。 |
+| loopName | 否 | 字符串 | 用于获取迭代的循环的名称。 |
+| offset |否 |int |要添加到从零开始的迭代值的数。 |
 
 ### <a name="remarks"></a>备注
 
@@ -131,7 +131,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
  
 有关如何使用 **copyIndex** 的完整说明，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)。
 
-有关定义变量时使用“copyIndex”的示例，请参阅[变量](resource-group-authoring-templates.md#variables)。
+有关定义变量时使用“copyIndex”的示例  ，请参阅[变量](resource-group-authoring-templates.md#variables)。
 
 ### <a name="example"></a>示例
 
@@ -166,8 +166,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| operand1 |“是” |int |被除数。 |
-| operand2 |“是” |int |除数。 不能为 0。 |
+| operand1 |是 |int |被除数。 |
+| operand2 |是 |int |除数。 不能为 0。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -210,7 +210,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
@@ -228,16 +228,16 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="float" />
 
-## <a name="float"></a>浮点数
+## <a name="float"></a>float
 `float(arg1)`
 
 将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |字符串或整数 |要转换为浮点数的值。 |
+| arg1 |是 |字符串或整数 |要转换为浮点数的值。 |
 
 ### <a name="return-value"></a>返回值
 一个浮点数。
@@ -271,7 +271,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |“是” |string 或 int |要转换为整数的值。 |
+| valueToConvert |是 |string 或 int |要转换为整数的值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -304,7 +304,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
@@ -322,7 +322,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>最大值
+## <a name="max"></a>max
 `max (arg1)`
 
 返回整数数组或逗号分隔的整数列表中的最大值。
@@ -331,7 +331,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
+| arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -386,16 +386,16 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>分钟
+## <a name="min"></a>min
 `min (arg1)`
 
 返回整数数组或逗号分隔的整数列表中的最小值。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
+| arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -457,10 +457,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| operand1 |“是” |int |被除数。 |
-| operand2 |“是” |int |除数，不能为 0。 |
+| operand1 |是 |int |被除数。 |
+| operand2 |是 |int |除数，不能为 0。 |
 
 ### <a name="return-value"></a>返回值
 一个表示余数的整数。
@@ -527,10 +527,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| operand1 |“是” |int |被乘数。 |
-| operand2 |“是” |int |乘数。 |
+| operand1 |是 |int |被乘数。 |
+| operand2 |是 |int |乘数。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -598,10 +598,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| operand1 |“是” |int |被减数。 |
-| operand2 |“是” |int |减数。 |
+| operand1 |是 |int |被减数。 |
+| operand2 |是 |int |减数。 |
 
 ### <a name="return-value"></a>返回值
 一个表示减后结果的整数。
@@ -643,7 +643,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | subResult | Int | 4 |
 

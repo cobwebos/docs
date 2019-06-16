@@ -9,15 +9,15 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 721458c5725e912d801b307ac05f3fde0776580e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708755"
 ---
 # <a name="connect-to-a-data-source"></a>连接到数据源
 
-使用 Power BI 工作区集合，可以在自己的应用中嵌入报表。 在应用中嵌入 Power BI 报表时，可以通过 **导入** 数据的副本或通过使用 **DirectQuery** **直接连接** 到数据源将该报表连接到基础数据。
+使用 Power BI 工作区集合  ，可以在自己的应用中嵌入报表。 在应用中嵌入 Power BI 报表时，可以通过 **导入** 数据的副本或通过使用 **DirectQuery** **直接连接** 到数据源将该报表连接到基础数据。
 
 > [!IMPORTANT]
 > Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
@@ -41,13 +41,13 @@ ms.locfileid: "64708755"
 
 **导入**
 
-可以在 Power BI Desktop 中使用所有可用数据源进行导入。 不能在 Power BI 工作区集合中刷新此类数据。 必须将 PBIX 文件更改上传到 Power BI 工作区集合。 这是因为没有可用网关。
+可以在 Power BI Desktop 中使用所有可用数据源进行导入。 不  能在 Power BI 工作区集合中刷新此类数据。 必须将 PBIX 文件更改上传到 Power BI 工作区集合。 这是因为没有可用网关。
 
 ## <a name="benefits-of-using-directquery"></a>使用 DirectQuery 的优点
 
 使用 **DirectQuery** 具有两个主要优点：
 
-* 使用 DirectQuery，可以根据大型数据集生成可视化效果，这就导致以其他方式先导入所有数据变得不可行。
+* 使用 DirectQuery  ，可以根据大型数据集生成可视化效果，这就导致以其他方式先导入所有数据变得不可行。
 * 基础数据更改可能需要刷新数据，对于一些报表，可能需要执行大型数据传输，才能显示当前数据，这就导致重新导入数据变得不可行。 与此相反，**DirectQuery** 报表始终使用当前数据。
 
 ## <a name="limitations-of-directquery"></a>DirectQuery 的限制
@@ -55,7 +55,7 @@ ms.locfileid: "64708755"
 使用 **DirectQuery** 存在一些限制：
 
 * 所有表必须都来自单一数据库。
-* 如果查询过于复杂，则会出错。 若要修复此错误，则必须重构查询，降低其复杂程度。 如果查询必须很复杂，需要导入数据，而不使用 DirectQuery。
+* 如果查询过于复杂，则会出错。 若要修复此错误，则必须重构查询，降低其复杂程度。 如果查询必须很复杂，需要导入数据，而不使用 DirectQuery  。
 * 关系筛选仅限于单向，而不是双向。
 * 不能更改某列的数据类型。
 * 默认情况下，对度量值中允许使用的 DAX 表达式加以限制。 请参阅 [DirectQuery 和度量值](#measures)。
@@ -63,7 +63,7 @@ ms.locfileid: "64708755"
 <a name="measures"/>
 
 ## <a name="directquery-and-measures"></a>DirectQuery 和度量值
-为了确保发送到基础数据源的查询具有可接受的性能，针对度量值施加了一些限制。 使用 **Power BI Desktop** 时，高级用户可以通过选择“文件”>“选项和设置”>“选项”来选择绕过此限制。 在“选项”对话框中，选择“DirectQuery”，并选择“允许 DirectQuery 模式下的度量值不受限制”选项。 选中该选项后，可以使用对度量值有效的任何 DAX 表达式。 不过，用户必须知道，虽然一些表达式在导入数据时性能很好，但在 DirectQuery 模式下可能会导致对后端源的查询非常缓慢。 
+为了确保发送到基础数据源的查询具有可接受的性能，针对度量值施加了一些限制。 使用 **Power BI Desktop** 时，高级用户可以通过选择“文件”>“选项和设置”>“选项”  来选择绕过此限制。 在“选项”  对话框中，选择“DirectQuery”  ，并选择“允许 DirectQuery 模式下的度量值不受限制”  选项。 选中该选项后，可以使用对度量值有效的任何 DAX 表达式。 不过，用户必须知道，虽然一些表达式在导入数据时性能很好，但在 DirectQuery  模式下可能会导致对后端源的查询非常缓慢。 
 
 ## <a name="see-also"></a>另请参阅
 

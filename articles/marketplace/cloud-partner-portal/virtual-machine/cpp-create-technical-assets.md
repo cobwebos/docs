@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
 ms.openlocfilehash: 6113c10cd152a22bd31e7212d86925b0c2107e58
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938414"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>为虚拟机套餐创建技术资产
 
 本部分引导你为 Azure 市场虚拟机 (VM) 套餐创建并配置技术资产。  VM 包含两个组件：解决方案虚拟硬盘 (VHD)，以及可选的关联数据磁盘。  
 
-- 虚拟硬盘 (VHD) 包含要在 Azure 市场套餐中部署的操作系统和解决方案。 准备 VHD 的过程根据 VM 是基于 Linux、基于 Windows 还是自定义 VM 而有所不同。
-- 数据磁盘代表虚拟机的专用持久性存储。 请不要使用解决方案 VHD（例如 `C:` 驱动器）来存储持久性信息。
+- 虚拟硬盘 (VHD) 包含要在 Azure 市场套餐中部署的操作系统和解决方案。  准备 VHD 的过程根据 VM 是基于 Linux、基于 Windows 还是自定义 VM 而有所不同。
+- 数据磁盘代表虚拟机的专用持久性存储。  请不要使用解决方案 VHD（例如 `C:` 驱动器）来存储持久性信息。 
 
 一个 VM 映像包含一个操作系统磁盘以及零个或更多数据磁盘。 每个磁盘都需要一个 VHD。 即使空白数据磁盘也需要创建 VHD。
 必须配置 VM OS、VM 大小、要打开的端口，以及最多 15 个附加的数据磁盘。
@@ -71,7 +71,7 @@ ms.locfileid: "64938414"
 
 4. [从虚拟硬盘部署虚拟机](./cpp-deploy-vm-vhd.md)介绍了如何从 Azure 部署的 VHD 注册 VM。  其中列出了所需的工具，以及如何使用这些工具创建用户 VM 映像，然后使用 [Microsoft Azure 门户](https://ms.portal.azure.com/)或 PowerShell 脚本将其部署到 Azure。 
 
-5. [认证虚拟机映像](./cpp-certify-vm.md)介绍了如何测试并提交 VM 映像，供 Azure 市场认证。 其中还介绍了可在何处获取“Azure 认证”测试工具，以及如何使用此工具来认证 VM 映像。 
+5. [认证虚拟机映像](./cpp-certify-vm.md)介绍了如何测试并提交 VM 映像，供 Azure 市场认证。 其中还介绍了可在何处获取“Azure 认证”测试工具，以及如何使用此工具来认证 VM 映像。  
 
 6. [获取 SAS URI](./cpp-get-sas-uri.md) 介绍了如何获取 VM 映像的共享访问签名 (SAS) URI。
  

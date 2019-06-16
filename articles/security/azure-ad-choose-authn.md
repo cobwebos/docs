@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 773d4dd28da3165261d75e4f800750c1f54377d0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cc41581232b331368b44fc7190eadb94516824c3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702287"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119311"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
@@ -79,7 +79,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
    * 使用本地 MFA 服务器进行登录。
    * 使用第三方身份验证解决方案进行登录。
    * 多站点本地身份验证解决方案。
-5. 无论你选择了哪种登录方法，Azure AD Identity Protection 都需要使用“密码哈希同步”来提供“凭据泄漏的用户”报告。 如果组织的主要登录方法失败，并且该方法是在发生故障事件之前配置的，则组织可以故障转移到“密码哈希同步”。
+5. 无论你选择了哪种登录方法，Azure AD Identity Protection 都需要使用“密码哈希同步”来提供“凭据泄漏的用户”  报告。 如果组织的主要登录方法失败，并且该方法是在发生故障事件之前配置的，则组织可以故障转移到“密码哈希同步”。
 
 >[!NOTE]
 > Azure AD Identity Protection 需要 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 许可证。
@@ -181,9 +181,9 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 |用户是否可在公司网络内从加入域的设备单一登录到云资源？|是，同时使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|是，同时使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|是|
 |支持哪些登录类型？|UserPrincipalName + 密码<br><br>通过使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 进行的 Windows 集成身份验证<br><br>[备用登录 ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName + 密码<br><br>通过使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 进行的 Windows 集成身份验证<br><br>[备用登录 ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName + 密码<br><br>sAMAccountName + 密码<br><br>Windows 集成身份验证<br><br>[证书和智能卡身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |是否支持 Windows Hello 企业版？|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*需要 Windows Server 2016 域功能级别*|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[证书信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
-|有哪些多重身份验证选项？|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[带条件访问的自定义控件*](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[带条件访问的自定义控件*](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA 服务器](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[第三方 MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[带条件访问的自定义控件*](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|
+|有哪些多重身份验证选项？|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[使用条件性访问 * 的自定义控件](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[使用条件性访问 * 的自定义控件](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA 服务器](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[第三方 MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[使用条件性访问 * 的自定义控件](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)|
 |支持哪些用户帐户状态？|已禁用帐户<br>（最多 30 分钟延迟）|已禁用帐户<br><br>帐户已锁定<br><br>帐户已过期<br><br>密码已过期<br><br>登录小时数|已禁用帐户<br><br>帐户已锁定<br><br>帐户已过期<br><br>密码已过期<br><br>登录小时数|
-|有哪些条件访问选项？|[使用 Azure AD Premium 进行 Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[使用 Azure AD Premium 进行 Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[使用 Azure AD Premium 进行 Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[AD FS 声明规则](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
+|条件性访问选项有哪些？|[使用 Azure AD 高级版的 azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[使用 Azure AD 高级版的 azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[使用 Azure AD 高级版的 azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[AD FS 声明规则](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |是否支持阻止旧协议？|[是](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)|[是](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions)|[是](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |是否可以自定义登录页面的徽标、图像和说明？|[是，可使用 Azure AD Premium](https://docs.microsoft.com/azure/active-directory/customize-branding)|[是，可使用 Azure AD Premium](https://docs.microsoft.com/azure/active-directory/customize-branding)|[是](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
 |支持哪些高级方案？|[智能密码锁定](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)<br><br>[Azure AD Premium P2 的已泄漏凭据报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)|[智能密码锁定](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|多站点低延迟身份验证系统<br><br>[AD FS Extranet 锁定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[与第三方标识系统集成](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|

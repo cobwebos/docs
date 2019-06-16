@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105728"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 SendGrid 中发送电子邮件以及管理邮件列表
@@ -51,18 +51,18 @@ ms.locfileid: "62105728"
 
 1. 选择一个路径： 
 
-   * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
+   * 在要添加操作的最后一个步骤下，选择“新建步骤”。  
 
      -或-
 
    * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。 
 
 1. 在搜索框中，输入“sendgrid”作为筛选器。 在操作列表下，选择所需的操作。
 
 1. 提供连接的名称。 
 
-1. 输入你的 SendGrid API 密钥，然后选择“创建”。
+1. 输入你的 SendGrid API 密钥，然后选择“创建”  。
 
 1. 为所选操作提供必要的详细信息，并继续构建逻辑应用的工作流。
 

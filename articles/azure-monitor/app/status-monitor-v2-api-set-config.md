@@ -1,6 +1,6 @@
 ---
 title: Azure 状态监视器 v2 API 参考：设置配置 |Microsoft Docs
-description: 状态监视器 v2 API 引用。 Set-ApplicationInsightsMonitoringConfig. 监视网站性能，无需重新部署该网站。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
+description: 状态监视器 v2 API 引用。 Set-ApplicationInsightsMonitoringConfig. 无需重新部署网站即可监视网站性能。 适用于 ASP.NET web 应用托管在本地，在虚拟机，或在 Azure 上。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -13,25 +13,25 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
 ms.openlocfilehash: 562ce8a4267370be9b049e3b56f213f82deb89c0
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66734989"
 ---
-# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig-v021-alpha"></a>状态监视器 v2 API:Set-ApplicationInsightsMonitoringConfig (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig-v021-alpha"></a>状态监视器 v2 API：Set-ApplicationInsightsMonitoringConfig (v0.2.1-alpha)
 
 本文档介绍了一个 cmdlet，是的成员[Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)。
 
 > [!IMPORTANT]
-> 状态监视器 v2 目前处于公共预览状态。
+> 状态监视器 v2 目前为公共预览版。
 > 没有附带服务级别协议，提供此预览版本，我们不建议将其用于生产工作负荷。 可能不支持某些功能，以及一些可能会受约束的功能。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="description"></a>描述
 
 设置配置文件而无需执行完全重新安装操作系统。
-重新启动 IIS 以实现所做的更改才会生效。
+重启 IIS 以使更改生效。
 
 > [!IMPORTANT] 
 > 此 cmdlet 需要具有管理员权限的 PowerShell 会话。
@@ -81,10 +81,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
 - **MachineFilter**需要C#的计算机或 VM 名称的正则表达式。
-    - 。 * 将匹配所有
+    - “.*”将匹配所有项
     - ComputerName 将匹配具有指定名称的计算机。
 - **AppFilter**需要C#的计算机或 VM 名称的正则表达式。
-    - 。 * 将匹配所有
+    - “.*”将匹配所有项
     - 应用程序名称将与 IIS 应用仅具有指定名称匹配。
 - **InstrumentationKey**需启用与前面两个筛选器匹配的应用程序监视。
     - 保留此值为 null，如果你想要定义规则以排除监视。
@@ -98,7 +98,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 默认情况下，没有输出。
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>示例详细输出设置-InstrumentationKey 通过配置文件
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>通过 -InstrumentationKey 设置配置文件的示例详细输出
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -110,7 +110,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>示例详细输出设置-InstrumentationKeyMap 通过配置文件
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>通过 -InstrumentationKeyMap 设置配置文件的示例详细输出
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -133,11 +133,11 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
  
  添加更多遥测：
- - [创建 web 测试](monitor-web-app-availability.md)以确保你的站点保持活动状态。
+ - [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
 - [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常，并启用跟踪调用。
 - [将 Application Insights SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)以便插入跟踪和日志调用
  
- 用做更多状态监视器 v2:
+ 使用状态监视器 v2 执行更多操作：
  - 使用指南，了解如何[进行故障排除](status-monitor-v2-troubleshoot.md)状态监视器 v2。
- - [获取配置](status-monitor-v2-api-get-config.md)以确认已正确记录你的设置。
- - [获取状态](status-monitor-v2-api-get-status.md)检查监视。
+ - [获取配置](status-monitor-v2-api-get-config.md)以确认是否正确记录了你的设置。
+ - [获取状态](status-monitor-v2-api-get-status.md)以检查监视。

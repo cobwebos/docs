@@ -17,22 +17,22 @@ ms.date: 04/10/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64dd8067654246f7c9a077d027c068df820f439d
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 54a1c349ae7cdd66c09db412331c344d6512ecd3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688696"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110596"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
-用户类似，设备是你想要保护和使用它来保护你的资源，在任何时间并从任何位置的另一个核心标识。 可以通过自带并使用以下方法之一在 Azure AD 中管理设备标识来实现此目标：
+与用户类似，设备是要保护的，并且随时随时要用来保护资源的另一个核心标识。 若要实现此目的，可以使用下述某种方法将设备标识引入 Azure AD 并对其进行管理：
 
 - Azure AD 加入
 - 混合 Azure AD 加入
 - Azure AD 注册
 
-借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时，可以使用[条件访问](../active-directory-conditional-access-azure-portal.md)保护对云和本地资源的访问。
+借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 一次您可以安全访问你在本地和云资源与[条件性访问](../active-directory-conditional-access-azure-portal.md)。
 
 如果必须在本地 Active Directory (AD) 环境，并且你想要将你的 AD 已加入域的计算机加入到 Azure AD，可以通过执行混合 Azure AD 联接来实现此目的。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
@@ -113,7 +113,7 @@ ms.locfileid: "66688696"
 
 ### <a name="managed-environment"></a>托管环境
 
-可以是托管的环境部署通过[密码哈希同步 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs)或[传递通过身份验证 (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta)与[无缝单一登录](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)。
+可使用[无缝单一登录](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)通过[密码哈希同步 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) 或[直通身份验证 (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) 来部署托管环境。
 
 这些方案不需要配置联合服务器进行身份验证。
 

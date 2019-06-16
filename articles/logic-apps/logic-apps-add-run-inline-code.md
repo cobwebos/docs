@@ -10,10 +10,10 @@ ms.reviewer: derek1ee, LADocs
 ms.topic: article
 ms.date: 05/14/2019
 ms.openlocfilehash: 0bfa98396ee3afb80b486a5a17959664dfbe603c
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602114"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>添加和运行代码片段通过 Azure 逻辑应用中使用内联代码
@@ -38,7 +38,7 @@ ms.locfileid: "65602114"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 想要添加您的代码段，其中包括触发器逻辑应用。 如果您没有逻辑应用，请参阅[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 想要添加您的代码段，其中包括触发器逻辑应用。 如果没有逻辑应用，请参阅[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
    本主题中的示例逻辑应用将使用此 Office 365 Outlook 触发器：**新电子邮件到达时**
 
@@ -52,7 +52,7 @@ ms.locfileid: "65602114"
 
    * 若要在工作流的末尾添加操作，请选择**新步骤**。
 
-   * 若要添加的现有步骤之间的操作，将鼠标指针移动连接这些步骤的箭头。 选择加号 (**+**)，然后选择**添加操作**。
+   * 若要添加的现有步骤之间的操作，将鼠标指针移动连接这些步骤的箭头。 选择加号 ( **+** )，然后选择**添加操作**。
 
    此示例将添加**内联代码**的 Office 365 Outlook 触发器下的操作。
 
@@ -82,7 +82,7 @@ ms.locfileid: "65602114"
 
    ![选择结果](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
-   在中**代码**框中，您的代码段可以使用只读的`workflowContext`对象作为输入。 此对象具有子属性，允许代码访问到结果中的触发器和工作流中的上一操作。
+   在中**代码**框中，您的代码段可以使用只读的`workflowContext`对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。
    有关详细信息，请参阅本主题后面的此部分：[引用在代码中的触发器和操作结果](#workflowcontext)。
 
    > [!NOTE]

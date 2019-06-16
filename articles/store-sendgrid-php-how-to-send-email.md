@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: db3333aa52782ceb949ef3f46a903b618f6e3f2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60931222"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何通过 PHP 使用 SendGrid 电子邮件服务
@@ -52,7 +52,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 
 ### <a name="smtp-api"></a>SMTP API
 
-若要使用 SendGrid SMTP API 发送电子邮件，请使用 Swift Mailer，这是用于从 PHP 应用程序中发送电子邮件的基于组件的库。 可以下载 [Swift Mailer 库](https://swiftmailer.symfony.com/) v5.3.0（使用 [编辑器] 安装 Swift Mailer）。 利用库发送电子邮件涉及创建 `Swift\_SmtpTransport`、`Swift\_Mailer` 和 `Swift\_Message` 类的实例，设置适当的属性以及调用 `Swift\_Mailer::send` 方法。
+若要使用 SendGrid SMTP API 发送电子邮件，请使用 Swift Mailer  ，这是用于从 PHP 应用程序中发送电子邮件的基于组件的库。 可以下载 [Swift Mailer 库](https://swiftmailer.symfony.com/) v5.3.0（使用 [编辑器] 安装 Swift Mailer）。 利用库发送电子邮件涉及创建 `Swift\_SmtpTransport`、`Swift\_Mailer` 和 `Swift\_Message` 类的实例，设置适当的属性以及调用 `Swift\_Mailer::send` 方法。
 
 ```php
 <?php
@@ -298,7 +298,7 @@ SendGrid 的 Web API 与 REST API 非常相似，尽管它不是真正的 RESTfu
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>如何：使用筛选器启用页脚、跟踪和分析
 
-SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。
+SendGrid 可通过使用筛选器  提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。
 
 可使用 filters 属性将筛选器应用于邮件。 每个筛选器均由一个包含特定于筛选器的设置的哈希指定。 下面的示例将启用页脚筛选器并指定将追加到电子邮件底部的短信。 在此示例中，我们将使用 [sendgrid-php 库]。
 

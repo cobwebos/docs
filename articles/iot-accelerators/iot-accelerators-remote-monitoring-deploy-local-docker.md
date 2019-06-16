@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967542"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>在本地部署远程监视解决方案加速器 - Docker
@@ -91,8 +91,8 @@ docker rmi <list_of_images>
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 1. 导航到为解决方案创建的**资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
-1. 在资源列表中单击“流分析作业”。
-1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
+1. 在资源列表中单击“流分析作业”。 
+1. 在流分析作业的“概述”页上，单击“启动”按钮。   然后单击“启动”以立即启动该作业  。
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 

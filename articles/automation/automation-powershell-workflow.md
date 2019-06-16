@@ -4,17 +4,16 @@ description: 本文旨在作为熟悉 PowerShell 创作人员的一个速成教�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: WenJason
-ms.author: v-jay
-origin.date: 12/14/2018
-ms.date: 04/01/2019
+author: georgewallace
+ms.author: gwallace
+ms.date: 12/14/2018
 ms.topic: conceptual
-manager: digimobile
+manager: carmonm
 ms.openlocfilehash: c5764c36a646b9639c0eb6463c39b9f014c4272d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60738326"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解自动化 runbook 的关键 PowerShell 工作流概念
@@ -56,7 +55,7 @@ Workflow Test-Workflow
 
 例如，请注意下面的代码，用于获取所有正在运行的服务。
 
-```powershell
+```azurepowershell-interactive
 Get-Service | Where-Object {$_.Status -eq "Running"}
 ```
 
@@ -73,7 +72,7 @@ Workflow Get-RunningServices
 
 工作流中的对象已反序列化。  这意味着其属性仍然可用，但其方法不再可用。  例如，请注意以下 PowerShell 代码，使用服务对象的 Stop 方法停止一项服务。
 
-```powershell
+```azurepowershell-interactive
 $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
@@ -172,7 +171,7 @@ Parallel
 
 例如，请注意以下将多个文件复制到网络目标的 PowerShell 命令。  这些命令将依次进行，因此必须完成一个文件的复制，然后才能开始复制下一个文件。
 
-```powershell
+```azurepowershell-interactive
 Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
 Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
 Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
@@ -227,7 +226,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>检查点
 
-“检查点”是工作流当前状态的快照，其中包括变量的当前值以及到该点为止生成的任何输出。 如果工作流以错误结束或暂停，则其下次运行时会从其上一个检查点开始，而不是从工作流的起点开始。  可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。 Azure 自动化有一项名叫[公平共享](automation-runbook-execution.md#fair-share)的功能，即系统会卸载任何已运行 3 小时的 runbook，让其他 runbook 有机会运行。 最终，卸载的 runbook 会重新加载，并从上一个检查点处继续执行原来的操作。 为了确保 runbook 最终能够完成，必须按时间间隔（不到 3 小时）添加检查点。 如果在每次运行过程中添加了新的检查点，则当 runbook 在 3 小时后因错误而被系统逐出时，系统会恢复该 runbook，没有限期。
+“检查点”  是工作流当前状态的快照，其中包括变量的当前值以及到该点为止生成的任何输出。 如果工作流以错误结束或暂停，则其下次运行时会从其上一个检查点开始，而不是从工作流的起点开始。  可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。 Azure 自动化有一项名叫[公平共享](automation-runbook-execution.md#fair-share)的功能，即系统会卸载任何已运行 3 小时的 runbook，让其他 runbook 有机会运行。 最终，卸载的 runbook 会重新加载，并从上一个检查点处继续执行原来的操作。 为了确保 runbook 最终能够完成，必须按时间间隔（不到 3 小时）添加检查点。 如果在每次运行过程中添加了新的检查点，则当 runbook 在 3 小时后因错误而被系统逐出时，系统会恢复该 runbook，没有限期。
 
 在以下示例代码中，Activity2 后发生的异常导致工作流结束。 当工作流再次运行时，它会通过运行 Activity2 来启动，因为此活动刚好在设置的上一个检查点之后。
 
@@ -276,19 +275,19 @@ workflow CreateTestVms
         # Do work first to create the VM (code not shown)
 
         # Now add the VM
-        New-AzureRmVm -VM $Vm -Location "ChinaNorth" -ResourceGroupName "ResourceGroup01"
+        New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
 
         # Checkpoint so that VM creation is not repeated if workflow suspends
         $Cred = $null
         Checkpoint-Workflow
         $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-        $null = Connect-AzureRmAccount -EnvironmentName AzureChinaCloud -Credential $Cred
+        $null = Connect-AzureRmAccount -Credential $Cred
         }
 }
 ```
 
 > [!IMPORTANT]
-> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块。
+> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名   。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块   。
 
 此外，如果使用配置了服务主体的运行方式帐户进行身份验证，则不需要此处理。
 

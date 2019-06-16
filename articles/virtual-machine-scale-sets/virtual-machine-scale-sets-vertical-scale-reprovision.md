@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: manayar
 ms.openlocfilehash: 3846815dabdc9e351f3d8449feb88affb9c6efdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60803518"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 
 本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 有关不在规模集中的 VM 的垂直缩放，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-垂直缩放，也称为*纵向扩展*和*纵向缩减*，即增大或减小虚拟机 (VM) 大小，以响应工作负荷。 将此行为与[水平缩放](virtual-machine-scale-sets-autoscale-overview.md)（也称为扩大和缩小，其中 VM 数目的更改取决于工作负荷）进行比较。
+垂直缩放，也称为*纵向扩展*和*纵向缩减*，即增大或减小虚拟机 (VM) 大小，以响应工作负荷。 将此行为与[水平缩放](virtual-machine-scale-sets-autoscale-overview.md)（也称为扩大  和缩小  ，其中 VM 数目的更改取决于工作负荷）进行比较。
 
 重新设置意味着删除现有 VM 并将其替换为新的 VM。 增加或减少虚拟机规模集中 VM 的大小时，某些情况下需要调整现有 VM 的大小并保留数据，而在其他情况下则需要部署新大小的新 VM。 本文档介绍这两种情况。
 

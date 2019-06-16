@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 11d409f904c43c0df4bbbd44fdb24531f2f989f6
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399597"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
@@ -68,7 +68,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 要求  | **详细信息**
 --- | ---
 **Azure 订阅帐户** | 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-**Azure 帐户权限** | 使用的 Azure 帐户需以下权限：<br/><br/> - 创建恢复服务保管库<br/><br/> - 在用于方案的资源组和虚拟网络中创建虚拟机<br/><br/> - 向指定的存储帐户进行写入<br/><br/> 请注意：<br/><br/> - 如果创建帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> - 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> - 如需更加细化的权限，请查看[此文](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control)。 
+**Azure 帐户权限** | 使用的 Azure 帐户需以下权限：<br/><br/> - 创建恢复服务保管库<br/><br/> - 在用于方案的资源组和虚拟网络中创建虚拟机<br/><br/> - 向指定的存储帐户进行写入<br/><br/> 请注意：<br/><br/> \- 如果创建帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> - 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> - 如需更加细化的权限，请查看[此文](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control)。 
 **Azure Stack VM** | 需要租户订阅中的 Azure Stack VM，该 VM 将部署为 Site Recovery 配置服务器。 
 
 

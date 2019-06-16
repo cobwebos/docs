@@ -12,10 +12,10 @@ ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 92ca09040836dfc55a9d709b12a0ee01192d6bac
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957394"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
@@ -26,27 +26,27 @@ ms.locfileid: "65957394"
 
 ![Azure 门户中 Function App 的概述](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-您可以导航到特别从概述页中，管理 function app 所需的一切**[应用程序设置](#settings)** 并**[平台功能](#platform-features)**.
+可以从概述页导航到管理函数应用所需的所有内容，特别是 **[应用程序设置](#settings)** 和 **[平台功能](#platform-features)** 。
 
 ## <a name="settings"></a>应用程序设置
 
-**应用程序设置**选项卡上维护函数应用使用的设置。
+“应用程序设置”  选项卡维护函数应用使用的设置。
 
-![在 Azure 门户中 function app 设置。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+![Azure 门户中的函数应用设置。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-这些设置存储加密，并且你必须选择**显示值**若要查看在门户中的值。
+这些设置是加密存储的，必须选择“显示值”  才能查看门户中的值。
 
-若要添加的设置，请选择**新的应用程序设置**并添加新的键 / 值对。
+若要添加设置，请选择“新建应用程序设置”  并添加新的键值对。
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-当开发函数应用本地时，这些值会维护 local.settings.json 项目文件中。
+在本地开发函数应用时，这些值将保留在 local.setings.json 项目文件中。
 
 ## <a name="platform-features"></a>平台功能
 
 ![Function App 平台功能选项卡。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
-Function App 运行于 Azure 应用服务平台，并由该平台维护。 在这种情况下，Function App 有权访问 Azure 核心 Web 托管平台的大多数功能。 可在“平台功能”选项卡中访问应用服务平台中许多可用于 Function App 的功能。 
+Function App 运行于 Azure 应用服务平台，并由该平台维护。 在这种情况下，Function App 有权访问 Azure 核心 Web 托管平台的大多数功能。 可在“平台功能”  选项卡中访问应用服务平台中许多可用于 Function App 的功能。 
 
 > [!NOTE]
 > Function App 运行于消耗托管计划中时，并非所有应用服务功能均可用。
@@ -83,7 +83,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 | | |
 |-|-|
-| ![Azure 门户中的 Function App Kudu](./media/functions-how-to-use-azure-function-app-settings/function-app-advanced-tools.png) | 应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.azurewebsites.net/`），启动 Kudu |
+| ![Azure 门户中的 Function App Kudu](./media/functions-how-to-use-azure-function-app-settings/function-app-advanced-tools.png) | 应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.azurewebsites.net/`），启动 Kudu  |
 
 ![配置 Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.openlocfilehash: 6ccb9afb528edf67b29c781217ca1de97b81e017
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969215"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
@@ -178,9 +178,9 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 若要将 Azure Cosmos DB 帐户读者访问权限添加到用户帐户，请让订阅所有者在 Azure 门户执行以下步骤。
 
 1. 打开 Azure 门户，并选择 Azure Cosmos DB 帐户。
-2. 单击“访问控制(IAM)”选项卡，然后单击“+ 添加角色分配”。
-3. 在“添加角色分配”窗格中的“角色”框中，选择“Cosmos DB 帐户读者角色”。
-4. 在“分配其访问权限”框中，选择“Azure AD 用户、组或应用程序”。
+2. 单击“访问控制(IAM)”  选项卡，然后单击“+ 添加角色分配”  。
+3. 在“添加角色分配”  窗格中的“角色”  框中，选择“Cosmos DB 帐户读者角色”  。
+4. 在“分配其访问权限”  框中，选择“Azure AD 用户、组或应用程序”  。
 5. 在你想要授予访问权限的目录中选择用户、组或应用程序。  可以通过显示名称、电子邮件地址或对象标识符搜索目录。
     所选用户、组或应用程序会显示在所选成员列表中。
 6. 单击“ **保存**”。

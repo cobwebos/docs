@@ -50,7 +50,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要为 Azure VM 备份创建策略，需在请求正文中包含以下组成部分。
 
-|Name  |必选  |Type  |描述  |
+|名称  |必选  |Type  |描述  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
 |标记     |         | Object        |  资源标记       |

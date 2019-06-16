@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60755694"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
@@ -36,21 +36,21 @@ ms.locfileid: "60755694"
 
 在 Azure 门户中执行以下步骤，以创建共享。
 
-1. 在 Azure 门户中，转到自己的 Data Box Gateway 资源，然后导航到“概述”。 单击命令栏上的“+ 添加共享”。
-2. 在“添加共享”中指定共享设置。 提供共享的唯一名称。
+1. 在 Azure 门户中，转到自己的 Data Box Gateway 资源，然后导航到“概述”。  单击命令栏上的“+ 添加共享”  。
+2. 在“添加共享”中指定共享设置。  提供共享的唯一名称。
 
     ![单击“添加共享”](media/data-box-gateway-manage-shares/add-share-1.png)
 
     共享名称只能包含数字、小写字母和连字符。 共享名称必须为 3 到 63 个字符长，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。
 
-3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。 SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
+3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
 
 4. 提供共享所在的**存储帐户**。 如果还没有容器，则使用共享名称在存储帐户中创建一个容器。 如果该容器已存在，则使用现有容器。
 
-5. 从块 Blob、页 Blob 或文件中选择“存储服务”。 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
+5. 从块 Blob、页 Blob 或文件中选择“存储服务”。  所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。  如果选择“页 Blob”，必须确保数据按 512 字节对齐。  例如，VHDX 始终按 512 字节对齐。
 
 6. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
-    - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。 如果创建新的本地用户，请提供**用户名**、**密码**和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
+    - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。    如果创建新的本地用户，请提供**用户名**、**密码**和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
 
         ![添加 SMB 共享](media/data-box-gateway-manage-shares/add-share-2.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "60755694"
 
         ![添加 NFS 共享](media/data-box-gateway-manage-shares/add-share-3.png)
 
-7. 单击“创建”以创建共享。 将通知你“正在创建共享”。 使用指定的设置创建共享后，“共享”边栏选项卡会更新以反映新共享。
+7. 单击“创建”  以创建共享。 将通知你“正在创建共享”。 使用指定的设置创建共享后，“共享”  边栏选项卡会更新以反映新共享。
  
 ## <a name="delete-a-share"></a>删除共享
 
@@ -69,11 +69,11 @@ ms.locfileid: "60755694"
 
     ![选择共享](media/data-box-gateway-manage-shares/delete-1.png)
 
-2. 单击“删除” 。 
+2. 单击“删除”  。 
 
     ![单击“删除”](media/data-box-gateway-manage-shares/delete-2.png)
 
-3. 出现确认提示时，单击“是”。
+3. 出现确认提示时，单击“是”  。
 
     ![确认删除](media/data-box-gateway-manage-shares/delete-3.png)
 
@@ -89,15 +89,15 @@ ms.locfileid: "60755694"
 
 在 Azure 门户中执行以下步骤，以刷新共享。
 
-1.  在 Azure 门户中转到“共享”。 选择并单击要刷新的共享。
+1.  在 Azure 门户中转到“共享”。  选择并单击要刷新的共享。
 
     ![选择共享](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.  单击“刷新”。 
+2.  单击“刷新”。  
 
     ![单击“刷新”](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.  出现确认提示时，单击“是”。 此时会启动一个作业来刷新本地共享的内容。 
+3.  出现确认提示时，单击“是”  。 此时会启动一个作业来刷新本地共享的内容。 
 
     ![确认刷新](media/data-box-gateway-manage-shares/refresh-3.png)
  
@@ -118,12 +118,12 @@ ms.locfileid: "60755694"
 
 在 Azure 门户中执行以下步骤，以同步存储访问密钥。
 
-1. 在资源中转到“概述”。 
-2. 在共享列表中，选择并单击与需要同步的存储帐户相关联的共享。单击“同步存储密钥”。 
+1. 在资源中转到“概述”。  
+2. 在共享列表中，选择并单击与需要同步的存储帐户相关联的共享。单击“同步存储密钥”。  
 
      ![同步存储密钥 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
-3. 当系统提示确认时，请单击“是”。 同步完成后，请退出对话框。
+3. 当系统提示确认时，请单击“是”。  同步完成后，请退出对话框。
 
      ![同步存储密钥 1](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
 

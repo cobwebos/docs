@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 339183dabf67abb43d6fc99bbe5258a39f12b14a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122287"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用模板创建内部负载均衡器
@@ -36,7 +36,7 @@ ms.locfileid: "66122287"
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>通过单击部署方式部署模板
 
-公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，单击“部署至 Azure”，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
+公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，单击“部署至 Azure”  ，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
 
 ## <a name="deploy-the-template-by-using-powershell"></a>使用 PowerShell 部署模板
 

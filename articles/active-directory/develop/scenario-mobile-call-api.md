@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b6c203583a082228c2ba1f4c5f6fdb04d059be
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7fc8c21db0f42bbb6804c00e27e82f840d7038c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962384"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111173"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>调用 web Api-移动应用程序调用 web API
 
@@ -131,7 +131,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 如果你需要调用相同的 API 几次，或如果您需要调用多个 Api，在生成您的应用程序时请考虑以下因素：
 
 - **增量许可**:Microsoft 标识平台允许应用程序获得用户同意的情况下，随着权限是必需的而不是所有开头。 每次您的应用程序已准备好调用 API，它应请求仅需要使用作用域。
-- **条件性访问**:在某些情况下，您可能会收到其他条件性访问要求进行多个 API 请求时。 如果第一个请求具有没有应用的条件性访问策略，并且您的应用程序尝试以静默方式访问需要条件性访问的新 API，可以发生这种情况。 若要处理这种情况，请确保捕获错误与无提示请求并准备好进行交互式请求。  若要了解详细信息，请参阅[条件性访问指南](conditional-access-dev-guide.md)。
+- **条件性访问**:在某些情况下，可能会进行多个 API 请求时收到条件性访问的其他要求。 如果第一个请求具有没有应用的条件性访问策略，并且您的应用程序尝试以静默方式访问需要条件性访问的新 API，可以发生这种情况。 若要处理这种情况，请确保捕获错误与无提示请求并准备好进行交互式请求。  若要了解详细信息，请参阅[条件性访问指南](conditional-access-dev-guide.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

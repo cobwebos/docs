@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e55d11fa44aca65e2d4e487852bd242a4ba75a5f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 43b5a051913ac762fe6b5a0ad11776ae911df864
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474179"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110370"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -146,7 +146,7 @@ Azure AD 域服务在 Azure 门户中提供有关托管域配置错误或问题�
 **服务类别：** 我的应用  
 **产品功能：** SSO
 
-查看适用于“我的应用”访问面板的新部署计划 (https://aka.ms/deploymentplans)。
+查看适用于“我的应用”访问面板的新部署计划 (https://aka.ms/deploymentplans) 。
 “我的应用”访问面板为用户提供查找和访问其应用的单一位置。 此门户还为用户提供自助服务功能，例如，请求访问应用和组，或代表他人管理对这些资源的访问。
 
 有关详细信息，请参阅[什么是“我的应用”门户？](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)
@@ -177,7 +177,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>新批准的客户端应用，适用于基于 Azure AD 应用的条件访问
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>新批准的客户端应用程序的 Azure AD 基于应用的条件性访问
 
 **类型：** 更改计划  
 **服务类别：** 条件性访问  
@@ -439,7 +439,7 @@ Azure AD 活动日志现已推出适用于 Azure Monitor（Azure 的平台级监
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>已将条件访问信息添加到 Azure AD 登录报告
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>条件性访问的信息添加到 Azure AD 登录报告
 
 **类型：** 新功能  
 **服务类别：** 报告  
@@ -707,13 +707,13 @@ Azure AD Connect 的最新版本包括：
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>在条款使用创建过程中创建新的"自定义"条件性访问策略模板
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>在条款使用创建过程中创建的新"自定义"条件性访问策略模板
 
 **类型：** 新功能  
 **服务类别：** 使用条款  
 **产品功能：** 调控
 
-在你的使用条款的创建，还会创建一个新的"自定义"条件性访问策略模板。 通过此新策略模板可创建 ToU，然后立即转到条件访问策略创建边栏选项卡，无需手动浏览门户。
+在你的使用条款的创建，还会创建一个新的"自定义"条件性访问策略模板。 此新策略模板允许您创建 tou 的约束，然后立即转到条件访问策略创建边栏选项卡，而无需在门户中手动导航。
 
 有关详细信息，请参阅 [Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
 
@@ -891,7 +891,7 @@ Azure AD Connect 的最新版本包括：
 **服务类别：** 其他  
 **产品功能：** Directory
  
-有关如何部署 Azure Active Directory (Azure AD) 的全新分步指南，包括自助服务密码重置 (SSPR)、单一登录 (SSO)、条件访问 (CA)、应用代理、用户预配、Active Directory 联合身份验证服务 (ADFS) 以及传递身份验证 (PTA)、ADFS 和密码哈希同步 (PHS)。
+有关如何部署 Azure Active Directory (Azure AD)，包括自助服务密码重置 (SSPR)、 单一登录 (SSO)，条件性访问 (CA) 的新的分步指导应用程序代理服务器上，用户预配，Active Directory 联合身份验证服务 (ADFS) 到直通身份验证 (PTA) 和 ADFS 到密码哈希同步 (PHS)。
 
 若要查看部署指南，请转到 GitHub 上的[身份部署指南](https://aka.ms/DeploymentPlans)存储库。 若要提供有关部署指南的反馈，请使用[部署计划反馈表](https://aka.ms/deploymentplanfeedback)。 如对部署指南有任何疑问，请通过 [IDGitDeploy](mailto:idgitdeploy@microsoft.com) 与我们联系。
 
@@ -1034,7 +1034,7 @@ Azure AD 使用条款已从公共预览版移动到已公开发布。
 
 这可帮助你控制对资源的访问，同时可使获得批准的用户的体验更流畅。
 
-此 B2B 协作功能可供所有 Azure Active Directory 客户使用，并可与 Azure AD Premium 功能（如条件访问和标识保护）结合使用，以更精细地控制外部业务用户注册和获得访问权限的时间和方式。
+此 B2B 协作功能适用于所有 Azure Active Directory 客户并可以在与 Azure AD 高级功能，如条件性访问和标识保护结合使用进行更细致的控制何时以及如何外部业务用户登录在中并获取访问权限。
 
 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list)。
 
@@ -1137,7 +1137,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
  
 ---
 
-### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>将 Intune Managed Browser 与基于 Azure AD 应用程序的条件访问配合使用限制 iOS 和 Android 的浏览器访问
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>限制浏览器访问 Intune 托管浏览器中使用 Azure AD 基于应用程序的条件性访问适用于 iOS 和 Android
 
 **类型：** 新功能  
 **服务类别：** 条件性访问  
@@ -1147,13 +1147,13 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 
 **Intune Managed Browser SSO：** 员工可以将跨本机客户端（如 Microsoft Outlook）的单一登录和 Intune Managed Browser 用于 Azure AD 连接的所有应用。
 
-**Intune Managed Browser 条件访问支持：** 现在可以要求员工通过基于应用程序的条件访问策略使用 Intune Managed Browser。
+**Intune Managed Browser 条件访问支持：** 现在可以要求员工使用使用基于应用程序的条件性访问策略的 Intune 托管浏览器。
 
 有关详细信息，请阅读我们的[博客文章](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)。
 
 有关详细信息，请参阅：
 
-- [设置基于应用程序的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [设置基于应用程序的条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 - [配置 Managed browser 策略](https://aka.ms/managedbrowser)  
 
@@ -1494,13 +1494,13 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 
 ---
  
-### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>添加了支持 Intune 应用保护策略的应用程序以便在基于 Azure AD 应用程序的条件访问中使用
+### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>应用程序支持 Intune 应用保护策略添加的用于 Azure AD 基于应用程序的条件性访问
 
 **类型：** 已更改的功能  
 **服务类别：** 条件性访问  
 **产品功能：** 标识安全性和保护
 
-我们添加了更多支持基于应用程序的条件访问的应用程序。 现在，可以使用这些批准的客户端应用来访问 Office 365 和其他已连接到 Azure AD 的云应用。
+我们添加了更多支持基于应用程序的条件性访问的应用程序。 现在，可以使用这些批准的客户端应用来访问 Office 365 和其他已连接到 Azure AD 的云应用。
 
 在 2 月底之前将添加以下应用程序：
 
@@ -1783,7 +1783,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 可以使用 Intune 托管浏览器作为批准的应用，限制对 Office 365 以及其他已连接 Azure AD 的云应用的浏览器访问。 
 
-现在，可为基于应用程序的条件访问配置以下条件：
+现在可以配置基于应用程序的条件性访问的以下条件：
 
 **客户端应用：** 浏览器
 
@@ -1793,11 +1793,11 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 可在即将发布的博客和发行说明中了解此功能和详细信息。 
 
-有关详细信息，请参阅 [Azure AD 中的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)。
+有关详细信息，请参阅[Azure AD 中的条件性访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)。
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>新批准的客户端应用，适用于基于 Azure AD 应用的条件访问
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>新批准的客户端应用程序的 Azure AD 基于应用的条件性访问
 
 **类型：** 更改计划  
 **服务类别：** 条件性访问  
@@ -1848,11 +1848,11 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 **服务类别：** Azure AD  
 **产品功能：** 标识安全性和保护
 
-现在可将对 Office 365 和其他已连接 Azure AD 的云应用的访问权限限于[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)，这些应用支持使用[基于 Azure AD 的应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)的 Intune 应用保护策略。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
+现在可以限制对 Office 365 和其他 Azure AD 连接的云应用的访问[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)通过使用支持 Intune 应用保护策略[Azure AD 基于应用的条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
 
-通过组合[基于应用](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)的条件访问策略和[基于设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)的条件访问策略，可以灵活地保护个人和公司设备的数据。
+通过组合[基于应用](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)与[基于设备的](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)条件性访问策略，可以灵活地保护个人数据和公司设备。
 
-以下条件和控制现可用于基于应用的条件访问：
+以下条件和控制现可与基于应用的条件性访问一起使用：
 
 **支持的平台条件**
 
@@ -1867,7 +1867,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 - 需要批准的客户端应用
 
-有关详细信息，请参阅[基于 Azure AD 应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。
+有关详细信息，请参阅[Azure AD 基于应用的条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。
  
 ---
 
@@ -1879,7 +1879,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 现在可在一个位置找到连接到 Azure AD 的所有设备以及与设备相关的活动。 在 Azure 门户中管理所有设备标识和设置有新的管理体验。 在此版本中，可以：
 
-- 查看可用于 Azure AD 中的条件访问的所有设备。
+- 查看所提供的条件性访问在 Azure AD 中的所有设备。
 - 查看属性，包括已加入混合 Azure AD 的设备。
 - 查找已加入 Azure AD 的设备的 BitLocker 密钥、使用 Intune 管理设备，等等。
 - 管理与 Azure AD 设备相关的设置。
@@ -1888,22 +1888,22 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 ---
 
-### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>支持将 macOS 作为 Azure AD 条件访问的设备平台 
+### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>支持将 macOS 作为设备平台的 Azure AD 条件访问 
 
 **类型：** 新功能    
 **服务类别：** 条件性访问  
 **产品功能：** 标识安全性和保护 
 
-现在可以包含（或排除）macOS 作为 Azure AD 条件访问策略中的设备平台条件。 通过将 macOS 添加到支持的设备平台，可以：
+你现在可以包括 （或排除） macOS 作为 Azure AD 条件访问策略中的设备平台条件。 通过将 macOS 添加到支持的设备平台，可以：
 
 - **使用 Intune 登记和管理 macOS 设备。** 类似于 iOS 和 Android 等其他平台，macOS 可通过公司门户应用程序执行统一注册。 可以使用适用于 macOS 的新公司门户应用，通过 Intune 登记设备并将其注册到 Azure AD。
 - **确保 macOS 设备符合组织在 Intune 中定义的符合性策略。** 可以在 Azure 门户上的 Intune 中设置 macOS 设备的符合性策略。 
-- **只允许符合条件的 macOS 设备访问 Azure AD 中的应用程序。** 条件访问策略创作将 macOS 用作单独的设备平台选项。 现在，可以针对 Azure 中设置的目标应用程序创作特定于 macOS 的条件访问策略。
+- **只允许符合条件的 macOS 设备访问 Azure AD 中的应用程序。** 条件性访问策略创作将 macOS 用作单独的设备平台选项。 现在您可以编写在 Azure 中的目标应用程序集的特定于 macOS 的条件性访问策略。
 
 有关详细信息，请参阅：
 
 - [使用 Intune 创建适用于 macOS 设备的设备符合性策略](https://aka.ms/macoscompliancepolicy)
-- [Azure AD 中的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+- [Azure AD 中的条件性访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
  
 ---
 
@@ -1942,7 +1942,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>新批准的客户端应用，适用于基于 Azure AD 应用的条件访问
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>新批准的客户端应用程序的 Azure AD 基于应用的条件性访问
  
 **类型：** 已更改的功能  
 **服务类别：** 条件性访问  
@@ -1960,15 +1960,15 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 ---
 
-### <a name="use-or-between-controls-in-a-conditional-access-policy"></a>在条件访问策略中的控制条件之间使用“OR” 
+### <a name="use-or-between-controls-in-a-conditional-access-policy"></a>使用"OR"条件性访问策略中控制之间 
 
 **类型：** 已更改的功能    
 **服务类别：** 条件性访问  
 **产品功能：** 标识安全性和保护
  
-现在，可对条件访问控制使用“OR”（需要一个选定控制条件）。 可以使用此功能创建在访问控制条件之间包含“OR”的策略。 例如，可以使用此功能创建一个策略，要求用户使用多重身份验证登录，或要求用户在符合条件的设备上操作。
+你现在可以使用"或者"（需要一个选定控制） 的条件性访问控制。 可以使用此功能创建在访问控制条件之间包含“OR”的策略。 例如，可以使用此功能创建一个策略，要求用户使用多重身份验证登录，或要求用户在符合条件的设备上操作。
 
-有关详细信息，请参阅 [Azure AD 条件访问中的控制](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls)。
+有关详细信息，请参阅[Azure AD 条件访问中的控制](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls)。
  
 ---
 

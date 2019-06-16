@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 140f2ec6252eac2958f236b2ffb48225fa16fe2b
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: fea9e79986e45127ad4918ed62bd8bf8dc782133
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688060"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125808"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -191,10 +191,10 @@ AzCopy 将使用[放置块从 URL](https://docs.microsoft.com/rest/api/storagese
 
 ## <a name="synchronize-files"></a>同步的文件
 
-你可以同步到 blob 容器的本地文件系统的内容。 你还可以在计算机上同步到本地文件系统的 blob 容器。 同步是单向的。 换而言之，你选择哪个这些两个终结点是源，哪个订阅是目标。
+可以通过 blob 容器中同步本地文件系统的内容。 同步是单向的。 换而言之，你选择哪个这些两个终结点是源，哪个订阅是目标。
 
 > [!NOTE]
-> 当前版本的 AzCopy 不会同步其他源和目标之间 (例如：文件存储或 Amazon Web Services (AWS) S3 存储桶）。
+> 目前，只能用于帐户没有分层命名空间支持此方案。 当前版本的 AzCopy 不会同步其他源和目标之间 (例如：文件存储或 Amazon Web Services (AWS) S3 存储桶）。
 
 `sync`命令比较文件的名称和上次修改时间戳。 设置`--delete-destination`的值的可选标志`true`或`prompt`若要删除的目标目录中的文件，如果这些文件不存在于源目录。
 
@@ -203,26 +203,24 @@ AzCopy 将使用[放置块从 URL](https://docs.microsoft.com/rest/api/storagese
 > [!NOTE]
 > 若要防止意外删除，请确保启用[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能在使用之前`--delete-destination=prompt|true`标志。
 
-### <a name="synchronize-a-container-to-a-local-file-system"></a>同步到本地文件系统容器
+### <a name="update-a-container-with-changes-to-a-local-file-system"></a>更新具有对本地文件系统的更改的容器
 
-在这种情况下，本地文件系统将成为源，并且该容器是目标。
+在这种情况下，容器是目标，并且本地文件系统是源。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy sync "<local-directory-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive` |
 | **示例** | `azcopy sync "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
-| **示例**（层次结构命名空间） | `azcopy sync "C:\myDirectory" "https://<storage-account-name>.dfs.core.windows.net/mycontainer" --recursive` |
 
+### <a name="update-a-local-file-system-with-changes-to-a-container"></a>对容器进行的更改更新本地文件系统
 
-### <a name="synchronize-a-local-file-system-to-a-container"></a>同步到容器的本地文件系统
-
-在这种情况下，容器将成为源和本地文件系统是目标。
+在这种情况下，本地文件系统是目标，而容器是源。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy sync "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" "C:\myDirectory" --recursive` |
 | **示例** | `azcopy sync "https://mystorageaccount.blob.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
-| **示例**（层次结构命名空间） | `azcopy sync "https://mystorageaccount.dfs.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
+|
 
 ## <a name="next-steps"></a>后续步骤
 

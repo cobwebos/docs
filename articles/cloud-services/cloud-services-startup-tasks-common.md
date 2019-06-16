@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1d78ab917589af0eae72eb70e3cdc2cc751072eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406389"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076445"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
 本文提供了一些可能需要在云服务中执行的常见启动任务示例。 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。 
@@ -58,22 +58,22 @@ ms.locfileid: "60406389"
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>使用 AppCmd.exe 配置 IIS 启动
-[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。 AppCmd.exe 对要在 Azure 上的启动任务中使用的配置设置提供方便的命令行访问。 使用 AppCmd.exe，可以为应用程序和站点添加、修改或删除网站设置。
+[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。 AppCmd.exe  对要在 Azure 上的启动任务中使用的配置设置提供方便的命令行访问。 使用 AppCmd.exe  ，可以为应用程序和站点添加、修改或删除网站设置。
 
-但是，在使用 AppCmd.exe 作为启动任务时有几点需要注意：
+但是，在使用 AppCmd.exe  作为启动任务时有几点需要注意：
 
 * 启动任务在重新启动之间可以运行多次。 例如，当角色回收时。
-* 如果多次执行 *AppCmd.exe* 操作，则可能会生成错误。 例如，尝试将某个节添加到 Web.config 中两次会生成错误。
-* 如果启动任务返回非零退出代码或 **errorlevel**，则为失败。 例如，AppCmd.exe 生成错误时。
+* 如果多次执行 *AppCmd.exe* 操作，则可能会生成错误。 例如，尝试将某个节添加到 Web.config  中两次会生成错误。
+* 如果启动任务返回非零退出代码或 **errorlevel**，则为失败。 例如，AppCmd.exe  生成错误时。
 
-比较明智的做法通常是在调用 AppCmd.exe 之后检查 **errorlevel**，如果使用 .cmd 文件包装对 AppCmd.exe 的调用，则很容易做到这一点。 如果检测到已知的 **errorlevel** 响应，可以将其忽略，否则将其返回。
+比较明智的做法通常是在调用 AppCmd.exe  之后检查 **errorlevel**，如果使用 .cmd  文件包装对 AppCmd.exe  的调用，则很容易做到这一点。 如果检测到已知的 **errorlevel** 响应，可以将其忽略，否则将其返回。
 
 *AppCmd.exe* 返回的 errorlevel 在 winerror.h 文件中列出，并且还可以在 [MSDN](/windows/desktop/Debug/system-error-codes--0-499-) 上看到。
 
 ### <a name="example-of-managing-the-error-level"></a>管理错误级别的示例
-此示例将 JSON 的压缩节和压缩条目添加到 Web.config 文件，其中包含错误处理和日志记录。
+此示例将 JSON 的压缩节和压缩条目添加到 Web.config  文件，其中包含错误处理和日志记录。
 
-此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task) 属性设为 `elevated` 以为 AppCmd.exe 提供足够的权限来更改 *Web.config* 文件中的设置：
+此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) 属性设为 `elevated` 以为 AppCmd.exe  提供足够的权限来更改 *Web.config* 文件中的设置：
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -86,7 +86,7 @@ ms.locfileid: "60406389"
 </ServiceDefinition>
 ```
 
-Startup.cmd 批处理文件使用 AppCmd.exe 将 JSON 的压缩节和压缩条目添加到 Web.config 文件。 使用 VERIFY.EXE 命令行程序将预期的 **errorlevel** 183 设为零。 意外的 errorlevel 将记录到 StartupErrorLog.txt 中。
+Startup.cmd  批处理文件使用 AppCmd.exe  将 JSON 的压缩节和压缩条目添加到 Web.config  文件。 使用 VERIFY.EXE 命令行程序将预期的 **errorlevel** 183 设为零。 意外的 errorlevel 将记录到 StartupErrorLog.txt 中。
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -159,7 +159,7 @@ EXIT /B %errorlevel%
 ## <a name="block-a-specific-ip-address"></a>阻止特定 IP 地址
 可以通过修改 IIS **web.config** 文件来限制某个 Azure Web 角色对一组指定的 IP 地址的访问权限。 还需要使用一个用于解锁 **ApplicationHost.config** 文件的 **ipSecurity** 节的命令文件。
 
-若要解锁 **ApplicationHost.config** 文件的 **ipSecurity** 节，请先创建角色启动时运行的命令文件。 在 Web 角色的根级别创建一个名为 **startup** 的文件夹，并在该文件夹中创建一个名为 **startup.cmd** 的批处理文件。 将此文件添加到 Visual Studio 项目并将属性设置为“始终复制”以确保此文件包括在包中。
+若要解锁 **ApplicationHost.config** 文件的 **ipSecurity** 节，请先创建角色启动时运行的命令文件。 在 Web 角色的根级别创建一个名为 **startup** 的文件夹，并在该文件夹中创建一个名为 **startup.cmd** 的批处理文件。 将此文件添加到 Visual Studio 项目并将属性设置为“始终复制”  以确保此文件包括在包中。
 
 将以下启动任务添加到 [ServiceDefinition.csdef] 文件。
 
@@ -306,7 +306,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 
 可以通过在 [ServiceDefinition.csdef] 文件中创建一个环境变量来实现在计算模拟器中和云中执行不同操作的能力。 然后，会在启动任务中测试该环境变量的值。
 
-若要创建环境变量，请添加 [变量]/[RoleInstanceValue] 元素并创建 `/RoleEnvironment/Deployment/@emulated` 的 XPath 值。 在计算模拟器中运行时，**%ComputeEmulatorRunning%** 环境变量的值为 `true`，而在云中运行时，该值为 `false`。
+若要创建环境变量，请添加 [变量]/[RoleInstanceValue] 元素并创建 `/RoleEnvironment/Deployment/@emulated` 的 XPath 值。 在计算模拟器中运行时， **%ComputeEmulatorRunning%** 环境变量的值为 `true`，而在云中运行时，该值为 `false`。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -383,15 +383,15 @@ EXIT /B 0
 以下是在配置 web 角色或辅助角色的任务时应遵循的一些最佳做法。
 
 ### <a name="always-log-startup-activities"></a>始终记录启动活动
-Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（**stdout** 和 **stderr**），可以在尝试调试和修复批处理文件时提供重要信息。 若要记录 %TEMP% 环境变量指向的目录中 StartupLog.txt 文件的 stdout 和 stderr，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，若要在 **%PathToApp1Install%** 目录中执行 setup.exe，请执行以下操作：
+Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（**stdout** 和 **stderr**），可以在尝试调试和修复批处理文件时提供重要信息。 若要记录 %TEMP%  环境变量指向的目录中 StartupLog.txt 文件的 stdout  和 stderr  ，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，若要在 **%PathToApp1Install%** 目录中执行 setup.exe，请执行以下操作：
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
-若要简化 xml，可以创建一个包装器 cmd 文件，使该文件调用所有启动任务以及日志记录并确保每个子任务共享相同的环境变量。
+若要简化 xml，可以创建一个包装器 cmd  文件，使该文件调用所有启动任务以及日志记录并确保每个子任务共享相同的环境变量。
 
 你可能会发现在每个启动任务的末尾都使用 `>> "%TEMP%\StartupLog.txt" 2>&1` 很是恼人。 可以通过创建一个包装器来处理日志记录以强制执行任务日志记录。 此包装器调用要运行的实际批处理文件。 来自目标批处理文件的任何输出都会重定向到 *Startuplog.txt* 文件。
 
-以下示例展示了如何重定向来自某个启动批处理文件的所有输出。 在此示例中，ServerDefinition.csdef 文件将创建调用 logwrap.cmd 的启动任务。 logwrap.cmd 调用 Startup2.cmd，并将所有输出都重定向到 %TEMP%**\\StartupLog.txt**。
+以下示例展示了如何重定向来自某个启动批处理文件的所有输出。 在此示例中，ServerDefinition.csdef 文件将创建调用 logwrap.cmd  的启动任务。 logwrap.cmd  调用 Startup2.cmd  ，并将所有输出都重定向到 %TEMP% **\\StartupLog.txt**。
 
 ServiceDefinition.cmd：
 
@@ -465,7 +465,7 @@ EXIT %ERRORLEVEL%
 ```
 
 > [!TIP]
-> **StartupLog.txt** 文件位于 C:\Resources\temp\\{role identifier}\RoleTemp 文件夹中。
+> **StartupLog.txt** 文件位于 C:\Resources\temp\\{role identifier}\RoleTemp  文件夹中。
 > 
 > 
 
@@ -481,7 +481,7 @@ EXIT %ERRORLEVEL%
 
 使用 **simple** 启动任务，可以设置顺序，让任务按照它们在 ServiceDefinition.csdef 文件中的列出顺序运行。 如果 **simple** 任务以非零退出代码结束，则启动过程将停止，并且角色不会启动。
 
-**background** 启动任务和 **foreground** 启动任务之间的区别在于 **foreground** 任务使角色一直运行，直到 **foreground** 任务结束为止。 这也意味着，如果 foreground 任务挂起或崩溃，角色将不会回收，直到 foreground 任务被强制关闭。 因此，对于异步启动任务建议使用 **background** 任务，除非需要 **foreground** 任务的功能。
+**background** 启动任务和 **foreground** 启动任务之间的区别在于 **foreground** 任务使角色一直运行，直到 **foreground** 任务结束为止。 这也意味着，如果 foreground 任务挂起或崩溃，角色将不会回收，直到 foreground 任务被强制关闭   。 因此，对于异步启动任务建议使用 **background** 任务，除非需要 **foreground** 任务的功能。
 
 ### <a name="end-batch-files-with-exit-b-0"></a>以 EXIT /B 0 结束批处理文件
 仅当每个 simple 启动任务的 **errorlevel** 均为零时，角色才会启动。 并非所有程序都正确设置 **errorlevel**（退出代码），因此如果一切正常运行，批处理文件应以 `EXIT /B 0` 结束。

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
 ms.openlocfilehash: ccc0399b6ac886ec8d9ef7d207c3539f1d078070
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951981"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
@@ -34,9 +34,9 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 
 修补业务流程应用提供以下功能：
 
-- 自动的操作系统更新安装。 自动下载并安装操作系统更新。 可根据需要重新启动群集节点，且无需让群集停机。
+- 自动的操作系统更新安装  。 自动下载并安装操作系统更新。 可根据需要重新启动群集节点，且无需让群集停机。
 
-- 群集感知修补和运行状况集成。 在应用更新时，修补业务流程应用会监视群集节点的运行状况。 群集节点的升级方式为一次一个节点，或一次一个升级域。 如果群集的运行状况由于修补进程而恶化，此时修补将停止以防止问题加重。
+- 群集感知修补和运行状况集成  。 在应用更新时，修补业务流程应用会监视群集节点的运行状况。 群集节点的升级方式为一次一个节点，或一次一个升级域。 如果群集的运行状况由于修补进程而恶化，此时修补将停止以防止问题加重。
 
 ## <a name="internal-details-of-the-app"></a>应用的内部详细信息
 
@@ -72,7 +72,7 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 银级持久层中的 Azure 群集默认启用修复管理器服务。 黄金级耐久层中的 Azure 群集可能启用或不启用修复管理器服务，具体取决于这些群集的创建时间。 铜级持久层中的 Azure 群集默认不启用修复管理器服务。 如果已启用该服务，可以看到它在 Service Fabric Explorer 的系统服务部分中运行。
 
 ##### <a name="azure-portal"></a>Azure 门户
-在设置群集时，可以从 Azure 门户启用修复管理器。 在配置群集时选择“附加功能”下的“包含修复管理器”选项。
+在设置群集时，可以从 Azure 门户启用修复管理器。 在配置群集时选择“附加功能”  下的“包含修复管理器”  选项。
 ![从 Azure 门户启用修复管理器的映像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-deployment-model"></a>Azure 资源管理器部署模型
@@ -147,7 +147,7 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 
 可配置修补业务流程应用的行为来满足需求。 在创建或更新应用程序的过程中，通过传入应用程序参数来替代默认值。 可以通过在 cmdlet `Start-ServiceFabricApplicationUpgrade` 或 `New-ServiceFabricApplication` 中指定 `ApplicationParameter` 来提供应用程序参数。
 
-|**Parameter**        |类型                          | **详细信息**|
+|**Parameter**        |类型                           | **详细信息**|
 |:-|-|-|
 |MaxResultsToCache    |Long                              | 应缓存的 Windows 更新结果的最大数。 <br>在假定以下情况时，默认值为 3000： <br> - 节点数为 20。 <br> - 节点上每月发生的更新次数为 5。 <br> - 每个操作的结果数可为 10。 <br> - 过去三个月的结果应已存储。 |
 |TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装 Windows 更新的策略。<br>                         允许值包括： <br>                                                           <b>NodeWise</b>。 每次在一个节点上安装 Windows 更新。 <br>                                                           <b>UpgradeDomainWise</b>。 每次在一个升级域上安装 Windows 更新。 （在最大程度情况下，属于升级域的所有节点都可进行 Windows 更新。）<br> 请参阅[常见问题解答](#frequently-asked-questions)部分，了解如何确定最适合你的群集的策略。
@@ -335,11 +335,11 @@ Nodeagentntservice 已创建[修复任务](https://docs.microsoft.com/dotnet/api
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-问： 为什么在修补业务流程应用运行时，我发现群集处于错误状态？
+问： 为什么在修补业务流程应用运行时，我发现群集处于错误状态？ 
 
 A. 在安装过程中，修补业务流程应用会禁用或重新启动节点，这可能会暂时导致群集的运行状况变差。
 
-根据应用程序的策略，执行修补操作期间可以有一个节点关闭，或者整个升级域同时关闭。
+根据应用程序的策略，执行修补操作期间可以有一个节点关闭，或者整个升级域同时关闭。 
 
 在 Windows 更新安装结束时，重新启动后节点将会重新启用。
 
@@ -349,11 +349,11 @@ A. 在安装过程中，修补业务流程应用会禁用或重新启动节点�
 
 如果问题持续出现，请参阅“故障排除”部分。
 
-问： 修补业务流程应用处于警告状态
+问： 修补业务流程应用处于警告状态 
 
 A. 检查针对应用程序发布的运行状况报告是否是根本原因。 通常，警告中会包含问题的详细信息。 如果该问题是暂时性的，则应用程序应该会自动从此状态中恢复。
 
-问： 如果群集运行不正常，而我需要进行紧急的操作系统更新，该怎么办？
+问： 如果群集运行不正常，而我需要进行紧急的操作系统更新，该怎么办？ 
 
 A. 群集运行不正常时，修补业务流程应用不会安装更新。 请尝试将群集恢复正常状态，消除修补业务流程应用工作流的阻碍。
 
@@ -414,17 +414,17 @@ A. 修补业务流程应用程序禁用重新启动意向的停止/重新分配�
 
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>节点无法恢复启动状态
 
-节点可能会卡在“正在禁用”状态，因为：
+节点可能会卡在“正在禁用”状态，因为  ：
 
 安全检查处于挂起中。 若要纠正此情况，请确保有足够多的节点处于正常状态。
 
-节点可能会卡在“已禁用”状态，因为：
+节点可能会卡在“已禁用”状态，因为  ：
 
 - 节点已被手动禁用。
 - 某个正在进行的 Azure 基础结构作业导致节点被禁用。
 - 修补节点的修补业务流程应用暂时禁用了节点。
 
-节点可能会卡在关闭状态，因为：
+节点可能会卡在关闭状态，因为  ：
 
 - 已手动将节点置于关闭状态。
 - 节点正在重新启动（可能由修补业务流程应用触发）。

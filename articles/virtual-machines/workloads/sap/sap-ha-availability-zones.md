@@ -18,10 +18,10 @@ ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125302"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
@@ -119,7 +119,7 @@ SAP 应用层部署在一个 Azure [可用性集](https://docs.microsoft.com/azu
 
 
 ## <a name="activepassive-deployment"></a>主动/被动部署
-如果发现一个区域中的网络延迟与跨区域网络流量的网络延迟差不可接受，可部署的体系结构从 SAP 应用层的角度来看应该具有主动/被动特征。 定义一个主动区域，在其中部署完整的应用层，并尝试运行主动 DBMS 实例和主动 SAP Central Services 实例。 使用此类配置时，需要根据作业是否在主动 DBMS 实例所在区域中运行，确保业务事务与批处理作业的运行时差异不会过大。
+如果发现一个区域中的网络延迟与跨区域网络流量的网络延迟差不可接受，可部署的体系结构从 SAP 应用层的角度来看应该具有主动/被动特征。 定义一个主动区域，在其中部署完整的应用层，并尝试运行主动 DBMS 实例和主动 SAP Central Services 实例  。 使用此类配置时，需要根据作业是否在主动 DBMS 实例所在区域中运行，确保业务事务与批处理作业的运行时差异不会过大。
 
 该体系结构的基本布局如下所示：
 

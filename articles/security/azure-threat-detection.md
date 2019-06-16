@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a6a0e6219a45821e2a4416a4e563aa6edb86eba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611041"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127171"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
@@ -37,11 +37,11 @@ Identity Protection 使用自适应机器学习算法和启发式学习法来检
 
 Azure Active Directory Identity Protection 不只是一个监视和报告工具。 Identity Protection 根据风险事件计算每个用户的用户风险级别，以便可以配置基于风险的策略来自动保护组织的标识。
 
-除了 Azure Active Directory 与 [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) 提供的其他[条件性访问控制](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)以外，这些基于风险的策略可以自动阻止或提供自适应补救措施，包括重置密码和强制实施多重身份验证。
+这些基于风险的策略，以及其他[条件访问控制](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)提供的 Azure Active Directory 和[EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)，可以自动阻止或提供自适应补救措施，包括重置密码和强制实施多重身份验证。
 
 ### <a name="identity-protection-capabilities"></a>Identity Protection 功能
 
-Azure Active Directory Identity Protection 不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 除了 Azure Active Directory 与 EMS 提供的条件性访问控制以外，这些策略也可以自动阻止或启用自适应补救措施，包括密码重置和强制实施多重身份验证。
+Azure Active Directory Identity Protection 不只是一个监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，该策略可在达到指定风险级别时自动响应检测到的问题。 这些策略，除了 Azure Active Directory 与 EMS，提供的其他条件性访问控制可以自动阻止或启动自适应补救措施包括密码重置和强制实施多重身份验证。
 
 Azure Identity Protection 可帮助保护帐户和标识的一些示例包括：
 
@@ -95,7 +95,7 @@ Log Analytics 安全和审核仪表板有四个主要类别：
 
 -   **值得注意的问题**：可快速识别未解决的问题数和问题的严重性。
 
--   **检测（预览版）**：当针对资源的攻击出现时显示安全警报，以便用户识别攻击模式。
+-   **检测（预览版）** ：当针对资源的攻击出现时显示安全警报，以便用户识别攻击模式。
 
 -   **威胁智能**：显示具有出站恶意 IP 通信的服务器总数、恶意威胁类型和 IP 位置的地图，以便用户识别攻击模式。
 
@@ -193,7 +193,7 @@ Microsoft 可访问大量的全球威胁情报。
 
 ### <a name="anomaly-detection"></a>异常检测
 
-Azure 安全中心也通过异常检测确定威胁。 与行为分析（依赖于已知的从大型数据集派生的模式）相比，异常检测更“个性化”，注重特定于用户部署的基线。 运用机器学习确定部署的正常活动，并生成规则，以定义可能表示安全事件的异常条件。 下面是一个示例：
+Azure 安全中心也通过异常检测确定威胁。 与行为分析（依赖于已知的从大型数据集派生的模式）相比，异常检测更“个性化”，注重特定于用户部署的基线。 运用机器学习确定部署的正常活动，并生成规则，以定义可能表示安全事件的异常条件。 以下是一个示例：
 
 -   **入站 RDP/SSH 暴力破解攻击**：部署中的有些虚拟机可能很忙，每天需要处理大量的登录，而其他虚拟机可能只有寥寥数个登录。 Azure 安全中心可以确定这些虚拟机的基线登录活动，并通过机器学习定义正常登录活动。 如果与为登录相关特性定义的基线之间存在任何差异，则可能会生成警报。 同样，是否具有显著性由机器学习决定。
 

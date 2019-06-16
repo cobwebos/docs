@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: robinsh
 ms.openlocfilehash: f21f1eed6babee52f30c6eccc79f88dc7bee5d58
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864484"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>计划和广播作业 (.NET/.NET)
@@ -37,15 +37,15 @@ ms.locfileid: "65864484"
 
 本教程演示如何：
 
-* 创建一个设备应用，用于实现名为 LockDoor、可由后端应用调用的直接方法。
+* 创建一个设备应用，用于实现名为 LockDoor、可由后端应用调用的直接方法  。
 
-* 创建一个后端应用，用于创建一个作业在多个设备上调用 LockDoor 直接方法。 另一个作业将所需的属性更新发送到多个设备。
+* 创建一个后端应用，用于创建一个作业在多个设备上调用 LockDoor 直接方法  。 另一个作业将所需的属性更新发送到多个设备。
 
 在本教程结束时，会获得两个 .NET (C#) 控制台应用：
 
-SimulateDeviceMethods，该应用连接到 IoT 中心并实现 LockDoor 直接方法。
+SimulateDeviceMethods，该应用连接到 IoT 中心并实现 LockDoor 直接方法   。
 
-ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多个设备上更新设备孪生的所需属性。
+ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多个设备上更新设备孪生的所需属性   。
 
 要完成本教程，需要以下各项：
 
@@ -72,9 +72,9 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
    
     ![新建 Visual C# Windows 经典设备应用](./media/iot-hub-csharp-csharp-schedule-jobs/create-device-app.png)
     
-2. 在解决方案资源管理器中，右键单击“SimulateDeviceMethods”项目，并单击“管理 NuGet 包...”。
+2. 在解决方案资源管理器中，右键单击“SimulateDeviceMethods”项目，并单击“管理 NuGet 包...”。  
 
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，然后搜索“Microsoft.Azure.Devices.Client”。 选择“安装”以安装“Microsoft.Azure.Devices.Client”包，并接受使用条款。 该过程将下载、安装 [Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对其的引用。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，然后搜索“Microsoft.Azure.Devices.Client”    。 选择“安装”以安装“Microsoft.Azure.Devices.Client”包，并接受使用条款   。 该过程将下载、安装 [Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对其的引用。
    
     ![“NuGet 包管理器”窗口客户端应用](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
@@ -86,7 +86,7 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
     using Newtonsoft.Json;
     ```
 
-5. 将以下字段添加到 Program 类。 将占位符值替换为上一部分中所述的设备连接字符串：
+5. 将以下字段添加到 Program 类  。 将占位符值替换为上一部分中所述的设备连接字符串：
 
     ```csharp
     static string DeviceConnectionString = "<yourDeviceConnectionString>";
@@ -153,19 +153,19 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a>计划用于调用直接方法和发送设备孪生更新的作业
 
-本部分使用 C# 创建一个 .NET 控制台应用，该应用使用作业来调用 LockDoor 直接方法，并将所需属性更新发送到多个设备。
+本部分使用 C# 创建一个 .NET 控制台应用，该应用使用作业来调用 LockDoor 直接方法，并将所需属性更新发送到多个设备  。
 
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将该项目命名为 **ScheduleJob**。
 
     ![新的 Visual C# Windows 经典桌面项目](./media/iot-hub-csharp-csharp-schedule-jobs/createnetapp.png)
 
-2. 在“解决方案资源管理器”中，右键单击“ScheduleJob”项目，并单击“管理 NuGet 包...”。
+2. 在“解决方案资源管理器”中，右键单击“ScheduleJob”  项目，并单击“管理 NuGet 包...”  。
 
-3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **Microsoft.Azure.Devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，并接受使用条款。 此步骤将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
+3. 在“NuGet 包管理器”  窗口中，选择“浏览”  ，搜索 **Microsoft.Azure.Devices**，选择“安装”  以安装 **Microsoft.Azure.Devices** 包，并接受使用条款。 此步骤将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
 
     ![“NuGet 包管理器”窗口](./media/iot-hub-csharp-csharp-schedule-jobs/servicesdknuget.png)
 
-4. 在 Program.cs 文件顶部添加以下 `using` 语句：
+4. 在 Program.cs  文件顶部添加以下 `using` 语句：
     
     ```csharp
     using Microsoft.Azure.Devices;
@@ -179,7 +179,7 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
     using System.Threading.Tasks;
     ```
 
-6. 将以下字段添加到 Program 类。 将占位符替换为在上一部分为中心创建的 IoT 中心连接字符串以及设备的名称。
+6. 将以下字段添加到 Program 类  。 将占位符替换为在上一部分为中心创建的 IoT 中心连接字符串以及设备的名称。
 
     ```csharp
     static JobClient jobClient;
@@ -222,7 +222,7 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
     }
     ```
 
-9. 向 Program 类添加其他方法：
+9. 向 Program 类添加其他方法  ：
 
     ```csharp
     public static async Task StartTwinUpdateJob(string jobId)
@@ -279,9 +279,9 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
 
 现在可以运行应用了。
 
-1. 在 Visual Studio 的“解决方案资源管理器”中，右键单击解决方案，再单击“生成”。 **多个启动项目**。 请确保 `SimulateDeviceMethods` 位于列表顶部且后接 `ScheduleJob`。 将这两项的操作均设置为“启动”，然后单击“确定”。
+1. 在 Visual Studio 的“解决方案资源管理器”中，右键单击解决方案，再单击“生成”  。 **多个启动项目**。 请确保 `SimulateDeviceMethods` 位于列表顶部且后接 `ScheduleJob`。 将这两项的操作均设置为“启动”，然后单击“确定”   。
 
-2. 单击“启动”以运行项目或转到“调试”菜单，然后单击“启动调试”。
+2. 单击“启动”以运行项目或转到“调试”菜单，然后单击“启动调试”    。
 
 3. 会出现设备和后端应用的输出。
 
@@ -291,6 +291,6 @@ ScheduleJob，该应用使用作业来调用 LockDoor 直接方法，并在多�
 
 在本教程中，使用了作业来安排用于设备的直接方法以及设备孪生属性的更新。
 
-若要继续开始使用 IoT 中心和设备管理模式，如远程无线固件更新，请参阅[教程：如何进行固件更新](tutorial-firmware-update.md)。
+若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请阅读[教程：如何执行固件更新](tutorial-firmware-update.md)。
 
 若要了解如何将 AI 部署到具有 Azure IoT Edge 的边缘设备，请参阅 [IoT Edge 入门](../iot-edge/tutorial-simulate-device-linux.md)。

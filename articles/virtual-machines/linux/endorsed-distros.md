@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: szark
 ms.openlocfilehash: a1be0b6870882d3c7b0281dec7933e87c50e49de
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65834556"
 ---
-# <a name="endorsed-linux-distributions-on-azure"></a>认可的 Azure 上的 Linux 分发
+# <a name="endorsed-linux-distributions-on-azure"></a>Azure 认可的 Linux 分发版
 合作伙伴在 Azure 市场中提供了 Linux 映像。 我们正积极与各大 Linux 社区合作，争取为认可分发列表添加更多成员。 在此期间，对于市场未提供的分发，用户始终可以按照[创建并上传包含 Linux 操作系统的虚拟硬盘](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)中的准则安装自己的 Linux。
 
 ## <a name="supported-distributions-and-versions"></a>支持的分发和版本
@@ -33,7 +33,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序是 Microsoft 直接�
 Azure Linux 代理已预安装在 Azure 市场映像中，通常可从分发的包存储库中获得。 源代码可在 [GitHub](https://github.com/azure/walinuxagent)上找到。
 
 
-| 分发组 | Version | 驱动程序 | 代理 |
+| 分发 | Version | 驱动程序 | 代理 |
 | --- | --- | --- | --- |
 | CentOS |CentOS 6.3+、7.0+ |CentOS 6.3：[LIS 下载](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+：在内核中 |包：在“WALinuxAgent”下的[存储库](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |在内核中 |源代码：[GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
@@ -48,21 +48,21 @@ Azure Linux 代理已预安装在 Azure 市场映像中，通常可从分发的�
 
 
 ## <a name="image-update-cadence"></a>映像的更新节奏
-Azure 要求的认可的 Linux 分发版的发布者定期使用的最新修补程序和安全修补程序，以每季度或速度更快的节奏更新其在 Azure Marketplace 中的映像。 更新后的映像在 Azure Marketplace 中映像 SKU 的新版本的形式自动向客户提供。 有关如何查找 Linux 映像的详细信息：[在 Azure Marketplace 中查找 Linux VM 映像](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage)。
+Azure 要求受认可 Linux 分发版的发布者在每个季度或以更快的节奏，定期使用最新修补程序和安全修复程序，更新其在 Azure 市场中的映像。 在 Azure 市场中更新的映像将自动以新版映像 SKU 的形式提供给客户使用。 有关如何查找 Linux 映像的详细信息：[在 Azure 市场中查找 Linux VM 映像](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage)。
 
 ### <a name="additional-links"></a>其他链接
- - [SUSE 公有云映像的生命周期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
+ - [SUSE 公有云映像生命周期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
 
 ## <a name="azure-tuned-kernels"></a>Azure 优化的内核
 
-Azure 与各种认可的 Linux 分发，以优化其发布到 Azure Marketplace 的映像紧密合作。 这种协作的一个方面是针对 Azure 平台进行了优化并作为完全受支持的 Linux 分发版的组件提供"关注"Linux 内核的开发。 Azure 优化内核 （通常每季度） 更快的节奏相比为默认值或泛型内核提供的分发和合并新功能和性能改进。
+Azure 与众多认可的 Linux 分发商密切合作，以优化他们在 Azure 市场中发布的映像。 这种协作的一个方面体现在：开发针对 Azure 平台优化的 Linux 内核，并以完全受支持组件的形式交付 Linux 分发版。 Azure 优化的内核整合了新的功能和性能改进，并且与分发版中提供的默认或常规内核相比，其发布节奏更快（通常每季度发布一次）。
 
-在大多数情况下，您会发现这些内核时预安装在 Azure Marketplace 中的默认图像，因此 Azure 客户将立即获得这些优化内核的好处。 可以在以下链接中找到有关这些 Azure 优化的内核的详细信息：
+在大多数情况下，你会发现这些内核已预装在 Azure 市场中的默认映像内，因此，Azure 客户可以立即获得这些优化内核的优势。 可在以下链接中找到有关这些 Azure 优化内核的详细信息：
 
- - CentOS Azure 优化内核-可通过 CentOS 虚拟化 SIG-[的详细信息](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
- - Debian 云内核-适用于 Debian 10 和 azure 的 Debian 9"backports"映像[详细信息](https://wiki.debian.org/Cloud/MicrosoftAzure)
- - SLES Azure 优化内核-[的详细信息](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
- - Ubuntu Azure 优化内核-[的详细信息](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+ - CentOS Azure 优化内核 - 通过 CentOS 虚拟化 SIG 提供 - [详细信息](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+ - Debian 云内核 - 适用于 Azure 上的 Debian 10 和 Debian 9“后向移植”映像 - [详细信息](https://wiki.debian.org/Cloud/MicrosoftAzure)
+ - SLES Azure 优化内核 - [详细信息](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+ - Ubuntu Azure 优化内核 - [详细信息](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 
 ## <a name="partners"></a>合作伙伴
@@ -94,7 +94,7 @@ Oracle 的策略是为公有云和私有云提供广泛的解决方案， 让客
 
 Azure 上的 SUSE Linux Enterprise Server 是一个已验证的平台，该平台为云计算提供了高级可靠性和安全性。 SUSE 的通用 Linux 平台可与 Azure 云服务无缝集成，以便交付易于管理的云环境。 借助 1,800 多个独立软件供应商提供的适用于 SUSE Linux Enterprise Server 的 9,200 多个认证应用程序，SUSE 可确保满怀信心地在 Azure 上部署数据中心内支持的运行负载。
 
-### <a name="canonical"></a>规范
+### <a name="canonical"></a>Canonical
 [https://www.ubuntu.com/cloud/azure](https://www.ubuntu.com/cloud/azure)
 
 Canonical 工程和开放社区监管对 Ubuntu 在客户端、服务器和云计算（包括用户的个人云服务）方面获得成功起到了推动作用。 Canonical 期望使用 Ubuntu 开发一个统一的免费平台（从手机到云），该平台带有一系列适用于手机、平板电脑、TV 和桌面的相关接口， 从而使 Ubuntu 成为各种机构（从公有云提供商到消费类电子产品制造商）的首选以及各个技术专家的最爱。

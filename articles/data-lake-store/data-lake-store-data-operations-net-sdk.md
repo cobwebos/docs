@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0771c9c5311e264fb996bbac1c540f9ed11873cb
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65908069"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的文件系统操作
@@ -42,21 +42,21 @@ ms.locfileid: "65908069"
 [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) 上的代码示例逐步讲解了在存储中创建文件、连接文件、下载文件以及在存储中删除某些文件的过程。 本文的此部分演练代码的主要组成部分。
 
 1. 在 Visual Studio 中，选择**文件**菜单中，**新建**，然后**项目**。
-2. 选择**控制台应用 (.NET Framework)**，然后选择**下一步**。
+2. 选择**控制台应用 (.NET Framework)** ，然后选择**下一步**。
 3. 在中**项目名称**，输入`CreateADLApplication`，然后选择**创建**。
 
 4. 将 NuGet 包添加到项目。
 
-   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包” 。
-   2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。
+   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包”  。
+   2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。    
    3. 搜索并安装以下 NuGet 包：
 
       * `Microsoft.Azure.DataLake.Store` - 本教程使用 v1.0.0。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.3.1。
     
-      关闭“NuGet 包管理器”。
+      关闭“NuGet 包管理器”  。
 
-5. 打开“Program.cs” ，删除现有代码，并包含以下语句，添加对命名空间的引用。
+5. 打开“Program.cs”  ，删除现有代码，并包含以下语句，添加对命名空间的引用。
 
         using System;
         using System.IO;using System.Threading;

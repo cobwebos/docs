@@ -8,10 +8,10 @@ ms.author: lahugh
 ms.date: 03/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: 84b2ca30f1ccd49e18e2f9d42133f8672d3f8ad6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776163"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>在渲染 VM 映像上预安装的应用程序
@@ -22,7 +22,7 @@ ms.locfileid: "60776163"
 
 某些应用程序仅支持 Windows，但大多数应用程序在 Windows 和 Linux 上都受支持。
 
-## <a name="applications-on-centos-7-rendering-images"></a>在 CentOS 7 呈现图像的应用程序
+## <a name="applications-on-centos-7-rendering-images"></a>CentOS 7 上的应用程序（渲染图像）
 
 * Autodesk Maya I/O 2017 更新 5 (cut 201708032230)
 * Autodesk Maya I/O 2018 更新 2 (cut 201711281015)
@@ -44,8 +44,8 @@ ms.locfileid: "60776163"
 * Autodesk Arnold for Maya 2018（Arnold 版本 5.2.0.1）MtoA-3.1.0.1-2018
 * Autodesk Arnold for 3ds Max（Arnold 版本 5.0.2.4）（版本 1.2.926）
 * Chaos Group V-ray Maya 2018 年 （版本 3.52.03）
-* Chaos Group V-ray 3ds Max 2018 年 （版本 3.60.02）
-* Chaos Group V-ray 用于 Maya 2019 （版本 3.52.03）
+* Chaos Group V-Ray for 3ds Max 2018（版本 3.60.02）
+* Chaos Group V-Ray for Maya 2019（版本 3.52.03）
 * Chaos Group V-ray 的 3ds Max 2019 （版本 4.10.01）
 * Blender (2.79)
 
@@ -54,7 +54,7 @@ ms.locfileid: "60776163"
 
 ## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>在以前的 Windows Server 2016 呈现图像的应用程序
 
-以下列表适用于 Windows Server 2016 中，版本 1.3.2 呈现图像。
+以下列表适用于 Windows Server 2016 版本 1.3.2（渲染图像）。
 
 * Autodesk Maya I/O 2017 更新 5（版本 17.4.5459）
 * Autodesk Maya I/O 2018 更新 4（版本 18.4.0.7622）  
@@ -63,8 +63,8 @@ ms.locfileid: "60776163"
 * Autodesk Arnold for Maya 2017（Arnold 版本 5.2.0.1）MtoA-3.1.0.1-2017
 * Autodesk Arnold for Maya 2018（Arnold 版本 5.2.0.1）MtoA-3.1.0.1-2018
 * Autodesk Arnold for 3ds Max（Arnold 版本 5.0.2.4）（版本 1.2.926）
-* Chaos Group V-ray 用于 Maya 2019 （版本 3.52.03）
-* Chaos Group V-ray 3ds Max 2018 年 （版本 3.60.02）
+* Chaos Group V-Ray for Maya 2019（版本 3.52.03）
+* Chaos Group V-Ray for 3ds Max 2018（版本 3.60.02）
 * Blender (2.79)
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: lahugh
-ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b6b28b9f55623fbdff6ab80c889141c8815600f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616851"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071534"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>配置或禁用对 Azure Batch 池中计算节点的远程访问
 
@@ -27,7 +27,7 @@ ms.locfileid: "60616851"
 每个 NAT 池配置包括一个或多个[网络安全组 (NSG) 规则](/rest/api/batchservice/pool/add#networksecuritygrouprule)。 每个 NSG 规则允许或拒绝特定的网络流量流向终结点。 可以选择允许或拒绝所有流量、由[服务标记](../virtual-network/security-overview.md#service-tags)（例如“Internet”）标识的流量，或者来自特定 IP 地址或子网的流量。
 
 ### <a name="considerations"></a>注意事项
-* 池终结点配置是池的[网络配置](/rest/api/batchservice/pool/add#NetworkConfiguration)的一部分。 网络配置可以选择性地包含用于将池加入 [Azure 虚拟网络](batch-virtual-network.md)的设置。 如果在虚拟网络中设置池，可以创建使用虚拟网络中的地址设置的 NSG 规则。
+* 池终结点配置是池的[网络配置](/rest/api/batchservice/pool/add#networkconfiguration)的一部分。 网络配置可以选择性地包含用于将池加入 [Azure 虚拟网络](batch-virtual-network.md)的设置。 如果在虚拟网络中设置池，可以创建使用虚拟网络中的地址设置的 NSG 规则。
 * 配置 NAT 池时，可以配置多个 NSG 规则。 将按优先顺序检查规则。 一旦应用某个规则，不再检查其他规则的匹配情况。
 
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
 ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122972"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)
@@ -41,19 +41,19 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
 ### <a name="create-an-mvc-controller"></a>创建 MVC 控制器 
 
-1. 在“解决方案资源管理器”中右键单击“控制器”，然后从上下文菜单中选择“添加”->“控制器”。
+1. 在“解决方案资源管理器”  中右键单击“控制器”  ，然后从上下文菜单中选择“添加”->“控制器”  。
 
     ![将控制器添加到 ASP.NET MVC 应用](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
 
-1. 在“添加基架”对话框中选择“MVC 5 控制器 - 空”，然后选择“添加”。
+1. 在“添加基架”  对话框中选择“MVC 5 控制器 - 空”  ，然后选择“添加”  。
 
     ![指定 MVC 控制器类型](./media/vs-storage-aspnet-getting-started-tables/add-controller.png)
 
-1. 在“添加控制器”对话框中，将控制器命名为“TablesController”，然后选择“添加”。
+1. 在“添加控制器”  对话框中，将控制器命名为“TablesController”  ，然后选择“添加”  。
 
     ![命名 MVC 控制器](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
 
-1. 将以下 using 指令添加到 `TablesController.cs` 文件：
+1. 将以下 using  指令添加到 `TablesController.cs` 文件：
 
     ```csharp
     using Microsoft.Azure;
@@ -66,9 +66,9 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
 本文中的许多示例使用名为 **CustomerEntity** 的 **TableEntity** 派生类。 以下步骤逐步指导用户将此类声明为模型类：
 
-1. 在“解决方案资源管理器”中，右键单击“模型”，然后从上下文菜单中选择“添加”->“类”。
+1. 在“解决方案资源管理器”  中，右键单击“模型”  ，然后从上下文菜单中选择“添加”->“类”  。
 
-1. 在“添加新项”对话框中，将类命名为 CustomerEntity。
+1. 在“添加新项”  对话框中，将类命名为 CustomerEntity  。
 
 1. 打开 `CustomerEntity.cs` 文件并添加以下 **using** 指令：
 
@@ -133,7 +133,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. 如果表不存在，则调用 **CloudTable.CreateIfNotExists** 方法来创建表。 如果该表不存在但已成功创建，CloudTable.CreateIfNotExists 方法将返回 true。 否则，将返回 **false**。    
+1. 如果表不存在，则调用 **CloudTable.CreateIfNotExists** 方法来创建表。 如果该表不存在但已成功创建，CloudTable.CreateIfNotExists  方法将返回 true  。 否则，将返回 **false**。    
 
     ```csharp
     ViewBag.Success = table.CreateIfNotExists();
@@ -145,9 +145,9 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     ViewBag.TableName = table.Name;
     ```
 
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。    
 
-1. 在“添加视图”对话框中，输入 CreateTable 作为视图名称，然后选择“添加”。
+1. 在“添加视图”  对话框中，输入 CreateTable  作为视图名称，然后选择“添加”  。
 
 1. 打开 `CreateTable.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -161,7 +161,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”  中，展开“Views”->“Shared”  文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -248,9 +248,9 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     ViewBag.Result = result.HttpStatusCode;
     ```
 
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。    
 
-1. 在“添加视图”对话框中，输入 AddEntity 作为视图名称，然后选择“添加”。
+1. 在“添加视图”  对话框中，输入 AddEntity  作为视图名称，然后选择“添加”  。
 
 1. 打开 `AddEntity.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -263,7 +263,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
     Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
     ```
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”  中，展开“Views”->“Shared”  文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -352,9 +352,9 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     return View(results);
     ```
 
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。    
 
-1. 在“添加视图”对话框中，输入 AddEntities 作为视图名称，然后选择“添加”。
+1. 在“添加视图”  对话框中，输入 AddEntities  作为视图名称，然后选择“添加”  。
 
 1. 打开 `AddEntities.cshtml`并对其进行修改，使之看起来如下所示。
 
@@ -383,7 +383,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     </table>
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”  中，展开“Views”->“Shared”  文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -455,9 +455,9 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     return View(result);
     ```
 
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。    
 
-1. 在“添加视图”对话框中，输入 GetSingle 作为视图名称，然后选择“添加”。
+1. 在“添加视图”  对话框中，输入 GetSingle  作为视图名称，然后选择“添加”  。
 
 1. 打开 `GetSingle.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -485,7 +485,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     </table>
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”  中，展开“Views”->“Shared”  文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -564,9 +564,9 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     return View(customers);
     ```
 
-1. 在“解决方案资源管理器”中展开“Views”文件夹，右键单击“表”，然后从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”  中展开“Views”  文件夹，右键单击“表”  ，然后从上下文菜单中选择“添加”->“视图”  。
 
-1. 在“添加视图”对话框中，输入 GetPartition 作为视图名称，然后选择“添加”。
+1. 在“添加视图”  对话框中，输入 GetPartition  作为视图名称，然后选择“添加”  。
 
 1. 打开 `GetPartition.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -595,7 +595,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     </table>
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”  中，展开“Views”->“Shared”  文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -666,9 +666,9 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     return View(result);
     ```
 
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“表”，并从上下文菜单中选择“添加”->“视图”。    
 
-1. 在“添加视图”对话框中，输入 DeleteEntity 作为视图名称，然后选择“添加”。
+1. 在“添加视图”  对话框中，输入 DeleteEntity  作为视图名称，然后选择“添加”  。
 
 1. 打开 `DeleteEntity.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -695,7 +695,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”  中，展开“Views”->“Shared”  文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60803242"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
@@ -62,9 +62,9 @@ pip install -I sfctl==1.1.0
 
 2. 启动安装程序。
 
-3. 在提示的底部，选择“将 Python 3.7 添加到路径”。
+3. 在提示的底部，选择“将 Python 3.7 添加到路径”  。
 
-4. 选择“立即安装”，并完成安装。
+4. 选择“立即安装”  ，并完成安装。
 
 现在可以打开新的命令窗口，获取 Python 和 pip 的版本。
 
@@ -124,7 +124,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-如需对安装进行测试，可参阅“适用于 Linux 的 Ubuntu 和 Windows 子系统”部分中提到的步骤
+如需对安装进行测试，可参阅“适用于 Linux 的 Ubuntu 和 Windows 子系统”  部分中提到的步骤
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS

@@ -11,10 +11,10 @@ ms.date: 4/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 02591185914f3b04a70af3b7c5d607f4a2865806
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154268"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>排查 Azure SQL 数据仓库问题
@@ -33,7 +33,7 @@ ms.locfileid: "65154268"
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Visual Studio 对象资源管理器缺少 AAD 用户           | 这是已知问题。  解决方法是在 [sys.database_principals][sys.database_principals] 中查看这些用户。  要了解有关将 Azure Active Directory 用于 SQL 数据仓库的详细信息，请参阅[向 Azure SQL 数据仓库进行身份验证][Authentication to Azure SQL Data Warehouse]。 |
-| 手动编写脚本、 使用脚本向导，或通过 SSMS 连接速度较慢，没有响应，或者生成错误 | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure SQL 数据仓库版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
+| 使用脚本向导进行手动脚本编写或通过 SSMS 进行连接时出现缓慢、不响应或产生错误的情况 | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure SQL 数据仓库版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
 | 在 SSMS 中生成脚本失败                             | 如果将“为从属对象生成脚本”选项设置为“True”，则为 SQL 数据仓库生成脚本失败。 解决方法是，用户必须手动转到“工具”->“选项”->“SQL Server 对象资源管理器”->“为从属选项生成脚本”并设置为 false |
 
 ## <a name="performance"></a>性能
@@ -57,7 +57,7 @@ ms.locfileid: "65154268"
 ## <a name="polybase"></a>Polybase
 | 问题                                           | 解决方法                                                   |
 | :---------------------------------------------- | :----------------------------------------------------------- |
-| 导出失败，并 TINYINT 和日期类型             | Parquet 和 ORC 文件格式，日期类型值之间必须 1970年-01-01 00:00:01 UTC 和 2038年-01-19 日 03:14:07。 TINYINT 类型值必须介于 0 到 127 之间。    |
+| 使用 TINYINT 和 DATE 类型时导出失败             | 对于 Parquet 和 ORC 文件格式，DATE 类型的值必须介于 1970-01-01 00:00:01 UTC 和 2038-01-19 03:14:07 之间。 TINYINT 类型的值必须介于 0-127 之间。    |
 | Parquet 十进制类型的问题： 从 Spark 编写键入 DecimalType(18,4) 和双精度或实际导入到类型的列的为提供"错误： java.base/java.lang.Long 无法强制转换为 java.base/java.lang.Float"。 | 您必须导入到 bigint 以及将多个使用大于等于 10000 [Databricks] SQL DW 连接器。 |
 | Parquet 问题日期类型： 编写从 Spark 日期类型和导入的列中键入日期或日期时间为提供"错误： java.base/java.lang.Integer 无法强制转换为 parquet.io.api.Binary"。 | 您必须使用不同的 Spark 类型 (int) 和计算日期或使用[Databricks] SQL DW 连接器。 |
 

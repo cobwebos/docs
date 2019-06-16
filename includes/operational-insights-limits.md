@@ -5,37 +5,53 @@ services: log-analytics
 author: MGoedtel
 ms.service: log-analytics
 ms.topic: include
-ms.date: 05/16/2018
+ms.date: 06/10/2019
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 34f2ab8f7ccafb8b30e298cd71e09171ad8c87cb
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c5fedc59c80c68fc222693a67664ef60ddd210a9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238178"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133696"
 ---
-以下限制适用于每个订阅的 Azure Log Analytics 资源。
+以下限制适用于当前基于消费的定价层中引入了在 2018 年 4 月中每个 Log Analytics 工作区：
 
-| Resource | 默认限制 | 注释
-| --- | --- | --- |
-| 每个订阅的免费工作区数目 | 10 | 不能增加此限制。 |
-| 每个订阅的付费工作区数目 | 不适用 | 限制是资源组中的资源数和每个订阅的资源组的数目。 | 
+|     | 每 GB 2018 |
+| --- | --- | 
+| 每天收集的数据量 | 无 |
+| 数据保留期 | 30 到 730 天<sup>1</sup> |
+
+以下限制可适用于每个 Log Analytics 工作区定价层的最新旧：
+
+|  | 免费 | 独立 （按 gb 计） | 每个节点 (OMS) |
+| --- | --- | --- | --- | --- | --- |--- |
+| 每天收集的数据量 |500 MB<sup>2</sup> |无 |无 |
+| 数据保留期 |7 天 | 30 到 730 天<sup>1</sup> | 30 到 730 天<sup>1</sup> |
+
+以下限制可适用于每个 Log Analytics 工作区的最早的旧的定价层：
+
+|  | 标准 | 高级 | 
+| --- | --- | --- | --- | --- | --- |--- |
+| 每天收集的数据量 | 无 | 无 | 
+| 数据保留期 |30 天 | 365 天 |
+
+<sup>1</sup>数据保留 31 天以上是可用的附加费用。 详细了解 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
+
+<sup>2</sup>时你的工作区达到每日数据传输限制时 500 MB，数据分析将停止，并在恢复的下一天开始。 日期基于 UTC。
 
 >[!NOTE]
->截至 2018 年 4 月 2 日，新的订阅中的新工作区自动使用*每个 GB*定价计划。 对于在 4 月 2 日之前创建的现有订阅或绑定到现有企业协议注册的订阅，可以继续从新的工作区的三个定价层中进行选择。 
+>具体取决于多长时间，已使用 Log Analytics，你可能有权旧的定价层。 详细了解如何[定价层的 Log Analytics 旧版](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)。 
 >
 
-以下限制适用于每个 Log Analytics 工作区。
+以下限制适用于每个订阅的 Azure Log Analytics 资源 （工作区）。
 
-|  | 免费 | 标准 | 高级 | 独立 | OMS | 每 GB |
-| --- | --- | --- | --- | --- | --- |--- |
-| 每天收集的数据量 |500 MB<sup>1</sup> |无 |无 | 无 | 无 | 无
-| 数据保留期 |7 天 |1 个月 |12 个月 | 1 个月<sup>2</sup> | 1 个月<sup>2</sup>| 1 个月<sup>2</sup>|
+| 定价层    | 每个订阅的工作区数 | 注释
+| --- | --- | --- |
+| 免费层  | 10 | 不能增加此限制。 |
+| 所有免费层以外层 | 不适用 | 限制是资源组中的资源数和每个订阅的资源组的数目。 | 
 
-<sup>1</sup>当客户达到其 500 MB 每日数据传输限制、 数据分析将停止，并在恢复第二天的开始。 日期基于 UTC。
-
-<sup>2</sup>独立、 OMS 和定价计划的每个 GB 的数据保留期可以增加到 730 天。
+以下限制适用于 Log Analytics Api:
 
 | 类别 | 限制 | 注释
 | --- | --- | --- |

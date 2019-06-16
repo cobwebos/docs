@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: b8239688000f0ce32ca2c2be054b1443bbb698b5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65069137"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的存在时间预生成实体
@@ -52,9 +52,9 @@ ms.locfileid: "65069137"
 }
 ```
 
-### <a name="preview-api-version-3x"></a>预览 API 版本 3.x
+### <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
 
-以下 JSON 是与`verbose`参数设置为`false`:
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 {
@@ -79,7 +79,7 @@ ms.locfileid: "65069137"
 }
 ```
 
-以下 JSON 是与`verbose`参数设置为`true`:
+以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
 {

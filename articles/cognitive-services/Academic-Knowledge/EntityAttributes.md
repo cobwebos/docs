@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: 485775660ecfdf2291365ab98c9188295ea2cbde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61340173"
 ---
 # <a name="entity-attributes"></a>实体属性
@@ -22,13 +22,13 @@ ms.locfileid: "61340173"
 Academic Graph 包含 7 类实体。 所有实体会都将一个实体 ID 和实体类型。
 
 ## <a name="common-entity-attributes"></a>常见实体属性
-名称    |描述                |Type       | 操作
+Name    |描述                |Type       | 操作
 ------- | ------------------------- | --------- | ----------------------------
-ID      |实体 ID                  |Int64      |等于
-Ty      |实体类型                |枚举   |等于
+Id      |实体 ID                  |Int64      |等于
+Ty      |实体类型                |enum   |等于
 
 ## <a name="entity-type-enum"></a>实体类型枚举
-名称                                                            |value
+Name                                                            |value
 ----------------------------------------------------------------|-----
 [论文](PaperEntityAttributes.md)                               |0
 [作者](AuthorEntityAttributes.md)                             |第

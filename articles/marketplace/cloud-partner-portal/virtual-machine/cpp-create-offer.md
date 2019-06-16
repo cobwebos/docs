@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
 ms.openlocfilehash: 4cd635c6f664a5260b79e62ea72bbb86fc4e1e4f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938361"
 ---
 # <a name="create-virtual-machine-offer"></a>创建虚拟机产品/服务
@@ -33,18 +33,18 @@ ms.locfileid: "64938361"
 
 ## <a name="new-offer-form"></a>“新建产品/服务”窗体
 
-登录到[云合作伙伴门户](https://cloudpartner.azure.com/)后，在左侧菜单栏上单击“+ 新建产品/服务”项。 在结果菜单中，单击“虚拟机”以显示“新建产品/服务”窗体，并启动为新的 VM 产品/服务定义资产的过程。 
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)后，在左侧菜单栏上单击“+ 新建产品/服务”项。  在结果菜单中，单击“虚拟机”  以显示“新建产品/服务”  窗体，并启动为新的 VM 产品/服务定义资产的过程。 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
 ![新建虚拟机产品/服务用户界面选择](./media/publishvm_003.png)
 
 > [!WARNING]
-> 如果“虚拟机”选项未显示或未启用，则表明你的帐户没有权限创建此产品/服务类型。  请检查是否已满足此产品/服务类型的所有[先决条件](./cpp-prerequisites.md)，包括开发人员帐户注册。
+> 如果“虚拟机”  选项未显示或未启用，则表明你的帐户没有权限创建此产品/服务类型。  请检查是否已满足此产品/服务类型的所有[先决条件](./cpp-prerequisites.md)，包括开发人员帐户注册。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-本部分中的后续主题提供了“新建产品/服务”页面（对于 VM 产品/服务类型）中的选项卡的镜像。  每篇文章都介绍了如何使用关联的选项卡来为新的 VM 产品/服务定义资产组和支持服务。
+本部分中的后续主题提供了“新建产品/服务”  页面（对于 VM 产品/服务类型）中的选项卡的镜像。  每篇文章都介绍了如何使用关联的选项卡来为新的 VM 产品/服务定义资产组和支持服务。
 
 - [“产品/服务设置”选项卡](./cpp-offer-settings-tab.md)
 - [“SKU”选项卡](./cpp-skus-tab.md)

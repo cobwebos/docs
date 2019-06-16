@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 90190f426419e65bd580b9004ae76a2c6b0c12e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463136"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>在 Azure 门户中使用 Media Encoder Standard 对资产进行编码
@@ -41,14 +41,14 @@ ms.locfileid: "61463136"
 要使用 Media Encoder Standard 对内容进行编码，请执行以下操作：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 选择“设置” > “资产”。 选择要编码的资产。
-3. 选择“编码”按钮。
-4. 在“对资产进行编码”窗格中，选择“Media Encoder Standard”处理器和预设。 有关预设的信息，请参阅[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)和 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。 请务必选择最适合输入视频的预设。 例如，如果知道输入视频的分辨率为 1920 &#215; 1080 像素，则可选择“H264 多比特率 1080p”预设。 如果视频的分辨率低 (640 &#215; 360)，则不应使用“H264 多比特率 1080p”预设。
+2. 选择“设置”   > “资产”  。 选择要编码的资产。
+3. 选择“编码”按钮  。
+4. 在“对资产进行编码”窗格中，选择“Media Encoder Standard”处理器和预设   。 有关预设的信息，请参阅[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)和 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。 请务必选择最适合输入视频的预设。 例如，如果知道输入视频的分辨率为 1920 &#215; 1080 像素，则可选择“H264 多比特率 1080p”预设  。 如果视频的分辨率低 (640 &#215; 360)，则不应使用“H264 多比特率 1080p”预设  。
    
    可以编辑输出资产名称和作业名称，以便管理资源。
    
    ![对资产进行编码](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. 选择“创建”。
+5. 选择“创建”  。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

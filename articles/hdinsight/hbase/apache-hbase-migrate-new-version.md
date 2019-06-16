@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: ashishth
 ms.openlocfilehash: a152b815daeefa4c199af9b159eee8e5783971e2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143320"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
@@ -178,13 +178,13 @@ ms.locfileid: "65143320"
     
 4. 停止引入到旧 HBase 群集。
 5. 为确保刷新 memstore 中的所有最新数据，请再次运行前面的脚本。
-6. 登录到[Apache Ambari](https://ambari.apache.org/)旧群集上 (https://OLDCLUSTERNAME.azurehdidnsight.net)并停止 HBase 服务。 当系统提示您确认要停止服务时，选中复选框为 HBase 启用维护模式。 有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
+6. 登录到[Apache Ambari](https://ambari.apache.org/)旧群集上 (https://OLDCLUSTERNAME.azurehdidnsight.net) 并停止 HBase 服务。 当系统提示您确认要停止服务时，选中复选框为 HBase 启用维护模式。 有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
 
     ![在 Ambari 中，单击服务 > HBase > 服务操作下停止](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
 
     ![选中“为 HBase 启用维护模式”复选框，然后确认](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-7. 新的 HDInsight 群集上登录到 Ambari。 将 `fs.defaultFS` HDFS 设置更改为指向原始群集所用的容器名称。 此设置位于“HDFS”>“配置”>“高级”>“高级 core-site”下。
+7. 新的 HDInsight 群集上登录到 Ambari。 将 `fs.defaultFS` HDFS 设置更改为指向原始群集所用的容器名称。 此设置位于“HDFS”>“配置”>“高级”>“高级 core-site”下。 
 
     ![在 Ambari 中，单击服务 > HDFS > 配置 > 高级](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 

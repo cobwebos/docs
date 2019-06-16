@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60829576"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>在 ACR 任务中运行多步骤生成、测试和修补任务
@@ -30,7 +30,7 @@ ms.locfileid: "60829576"
 1. 如果测试通过，则生成 Helm 图表存档包
 1. 使用新的 Helm 图表存档包执行 `helm upgrade`
 
-所有步骤在 Azure 中执行，可将工作卸载到 Azure 的计算资源，并消除基础结构的管理工作。 除了 Azure 容器注册表费用以外，只需为所用的资源付费。 有关定价信息，请参阅 [Azure 容器注册表定价][pricing]中的“容器生成”部分。
+所有步骤在 Azure 中执行，可将工作卸载到 Azure 的计算资源，并消除基础结构的管理工作。 除了 Azure 容器注册表费用以外，只需为所用的资源付费。 有关定价信息，请参阅 [Azure 容器注册表定价][pricing]中的“容器生成”部分。 
 
 
 ## <a name="common-task-scenarios"></a>常见任务方案

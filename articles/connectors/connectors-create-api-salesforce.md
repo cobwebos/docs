@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 292d517f2c99974f4674a4c94472a0a320320ce4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62106009"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 Salesforce 资源
@@ -50,7 +50,7 @@ ms.locfileid: "62106009"
 
      -或-
 
-   * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”。 在搜索框中，输入“salesforce”作为筛选器。 在操作列表下，选择所需的操作。
+   * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”  。 在搜索框中，输入“salesforce”作为筛选器。 在操作列表下，选择所需的操作。
 
 1. 如果系统提示你登录 Salesforce，请立即登录并允许访问。
 

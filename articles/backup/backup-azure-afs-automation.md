@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: pullabhk
 ms.openlocfilehash: 986414d0bac24d0c7e37b34df473346742fa97fd
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204182"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>备份和还原 Azure 文件和 PowerShell
@@ -66,7 +66,7 @@ ms.locfileid: "65204182"
 4. 在显示 web 页上，系统会提示输入你的帐户凭据。
 
     - 或者，可以将帐户凭据包含作为参数传入**Connect AzAccount** cmdlet 并结合 **-凭据**。
-    - 如果你是代表租户的 CSP 合作伙伴，请将客户指定为使用其 tenantID 或租户主域名对租户。 例如，Connect-AzAccount -Tenant fabrikam.com。
+    - 如果你是代表租户的 CSP 合作伙伴，请将客户指定为使用其 tenantID 或租户主域名对租户。 例如，Connect-AzAccount -Tenant fabrikam.com  。
 
 4. 你想要使用的帐户，因为一个帐户可以有多个订阅的订阅关联。
 
@@ -74,7 +74,7 @@ ms.locfileid: "65204182"
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. 首次使用 Azure 备份时，请使用 Register-AzResourceProvider cmdlet 将 Azure 恢复服务提供程序注册到订阅。
+5. 首次使用 Azure 备份时，请使用 Register-AzResourceProvider cmdlet 将 Azure 恢复服务提供程序注册到订阅  。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -93,7 +93,7 @@ ms.locfileid: "65204182"
 
 请按照以下步骤创建恢复服务保管库。
 
-- 恢复服务保管库是一种资源管理器资源，因此必须将其放在资源组中。 可以使用现有资源组，也可以使用 New-AzResourceGroup cmdlet 创建资源组。 创建资源组时，请指定资源组的名称和位置。 
+- 恢复服务保管库是一种资源管理器资源，因此必须将其放在资源组中。 可以使用现有资源组，也可以使用 New-AzResourceGroup cmdlet 创建资源组  。 创建资源组时，请指定资源组的名称和位置。 
 
 1. 保管库位于资源组中。 如果您不具备现有的资源组中，创建一个具有新[新建 AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0)。 在此示例中，我们将创建新的资源组在美国西部区域中。
 
@@ -143,7 +143,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 - 保管库上下文是在保管库中受保护的数据的类型。 使用设置该[集 AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0)。 设置的上下文后，它适用于所有后续 cmdlet。
 
 
-以下示例为 testvault 设置保管库上下文。
+以下示例为 testvault 设置保管库上下文  。
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -166,7 +166,7 @@ $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Nam
 - 默认备份策略计划使用的视图[Get AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0)。
 -  您使用[新建 AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) cmdlet 创建新的备份策略。 输入计划和保留策略对象。
 
-以下示例将计划策略和保留策略存储在变量中。 然后，它使用这些变量作为参数的新策略 (**NewAFSPolicy**)。 “NewAFSPolicy”进行每日备份，并将其保留 30 天。
+以下示例将计划策略和保留策略存储在变量中。 然后，它使用这些变量作为参数的新策略 (**NewAFSPolicy**)。 “NewAFSPolicy”进行每日备份，并将其保留 30 天  。
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"
@@ -208,11 +208,11 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 dailyafs             AzureFiles         AzureStorage         1/10/2018 12:30:00 AM
 ```
 > [!NOTE]
-> PowerShell 中“BackupTime”字段的时区是通用协调时间 (UTC)。 在 Azure 门户中显示备份时间时，该时间会根据本地时区进行调整。
+> PowerShell 中“BackupTime”字段的时区是通用协调时间 (UTC)  。 在 Azure 门户中显示备份时间时，该时间会根据本地时区进行调整。
 
 ### <a name="retrieve-a-specific-policy"></a>检索特定的策略
 
-以下策略检索名为“dailyafs”的备份策略。
+以下策略检索名为“dailyafs”的备份策略  。
 
 ```powershell
 $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
@@ -266,7 +266,7 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 若要更改用于备份 Azure 文件共享所使用的策略，请使用[启用 AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)。 指定相关备份项和新的备份策略。
 
-以下示例将“testAzureFS”保护策略从“dailyafs”更改为“monthlyafs”。
+以下示例将“testAzureFS”保护策略从“dailyafs”更改为“monthlyafs”    。
 
 ```powershell
 $monthlyafsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "monthlyafs"
@@ -286,9 +286,9 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 在下面的脚本：
 
 - 在变量 **$rp**是在过去七天从所选备份项的恢复点的数组。
-- 该数组按时间进行反向排序，以最新的恢复点作为索引 0。
+- 该数组按时间进行反向排序，以最新的恢复点作为索引 0  。
 - 使用标准 PowerShell 数组索引选取恢复点。
-- 在示例中，$rp[0] 选择最近的恢复点。
+- 在示例中，$rp[0] 选择最近的恢复点  。
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -322,7 +322,7 @@ BackupManagementType : AzureStorage
 - **TargetStorageAccountName**：要将备份内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
 - **TargetFileShareName**：目标存储帐户中要将备份内容还原到的文件共享。
 - **TargetFolder**：文件共享中要将数据还原到的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
-- **ResolveConflict**：与还原的数据发生冲突时提供的说明。 接受“覆盖”或“跳过”。
+- **ResolveConflict**：与还原的数据发生冲突时提供的说明。 接受“覆盖”或“跳过”   。
 
 使用参数运行该 cmdlet，如下所示：
 
@@ -345,9 +345,9 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 * **TargetStorageAccountName**：要将备份内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
 * **TargetFileShareName**：目标存储帐户中要将备份内容还原到的文件共享。
 * **TargetFolder**：文件共享中要将数据还原到的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
-* **SourceFilePath**：文件共享中要还原的文件的绝对路径，字符串格式。 此路径与 Get-AzStorageFile PowerShell cmdlet 中使用的路径相同。
-* **SourceFileType**：选择的是目录还是文件。 接受“目录”或“文件”。
-* **ResolveConflict**：与还原的数据发生冲突时提供的说明。 接受“覆盖”或“跳过”。
+* **SourceFilePath**：文件共享中要还原的文件的绝对路径，字符串格式。 此路径与 Get-AzStorageFile PowerShell cmdlet 中使用的路径相同  。
+* **SourceFileType**：选择的是目录还是文件。 接受“目录”或“文件”   。
+* **ResolveConflict**：与还原的数据发生冲突时提供的说明。 接受“覆盖”或“跳过”   。
 
 其他参数 （SourceFilePath 和 SourceFileType） 被与你想要还原单个文件。
 
@@ -359,7 +359,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccount
 
 ### <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>将 Azure 文件共享和文件还原到原始位置
 
-在还原到原始位置时，不需要指定目标和目标相关的参数。 仅“ResolveConflict”必须提供。
+在还原到原始位置时，不需要指定目标和目标相关的参数。 仅“ResolveConflict”必须提供  。
 
 #### <a name="overwrite-an-azure-file-share"></a>覆盖 Azure 文件共享
 

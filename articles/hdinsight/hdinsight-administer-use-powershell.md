@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: tylerfox
 ms.openlocfilehash: a7e129f43b957b271c77f451ab198a9068bb0797
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718999"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 在本文中，您将了解如何管理[Apache Hadoop](https://hadoop.apache.org/)通过使用 Azure PowerShell Az 模块在 Azure HDInsight 群集。 有关 HDInsight PowerShell cmdlet 的列表，请参阅[Az.HDInsight 引用](https://docs.microsoft.com/powershell/module/az.hdinsight)。
+Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 本文介绍了如何使用 Azure PowerShell Az 模块管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 有关 HDInsight PowerShell cmdlet 的列表，请查看 [Az.HDInsight 参考](https://docs.microsoft.com/powershell/module/az.hdinsight)。
 
 ## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-* PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/overview)安装。
+* 已安装 PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="create-clusters"></a>创建群集
 请参阅[使用 Azure PowerShell 在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -151,7 +151,7 @@ Grant-AzHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $c
 以下 PowerShell 脚本演示了如何获取群集的默认存储帐户名称和相关信息：
 
 > [!IMPORTANT]  
-> 值`DefaultStorageAccount`，并`DefaultStorageContainer`不会返回从[Get AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster)时[安全传输](../storage/common/storage-require-secure-transfer.md)的存储帐户上启用。
+> 在存储帐户上启用[安全传输](../storage/common/storage-require-secure-transfer.md)时，不会从 [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) 返回 `DefaultStorageAccount` 和 `DefaultStorageContainer` 的值。
 
 
 ```powershell

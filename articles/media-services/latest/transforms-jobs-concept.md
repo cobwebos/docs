@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: juliako
 ms.openlocfilehash: 01b386c820a09af0e616698aabc58a886c30bb09
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65550931"
 ---
 # <a name="transforms-and-jobs"></a>转换和作业
@@ -49,7 +49,7 @@ ms.locfileid: "65550931"
 **转换**可帮助你一次性创建脚本（步骤 1），然后使用该脚本提交作业（步骤 2）。
 
 > [!NOTE]
-> 属于日期/时间类型的转换和作业的属性始终采用 UTC 格式。
+> 属于日期/时间类型的转换  和作业  的属性始终采用 UTC 格式。
 
 ## <a name="transforms"></a>转换
 
@@ -91,7 +91,7 @@ ms.locfileid: "65550931"
 
 ### <a name="updating-jobs"></a>正在更新作业
 
-对[作业](https://docs.microsoft.com/rest/api/media/jobs)实体进行的更新操作可以用于在作业提交之后修改说明或优先级。 仅当作业仍处于排队状态时，对优先级属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
+对[作业](https://docs.microsoft.com/rest/api/media/jobs)实体进行的更新操作可以用于在作业提交之后修改说明  或优先级  。 仅当作业仍处于排队状态时，对优先级  属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
 
 ### <a name="job-object-diagram"></a>作业对象关系图
 

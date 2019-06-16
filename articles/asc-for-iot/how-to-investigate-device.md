@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/18/2019
 ms.author: mlottner
 ms.openlocfilehash: 15e65c155a98ae12c156587735d34a16ed2c9109
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192661"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>调查可疑的 IoT 设备
@@ -50,8 +50,8 @@ ASC for IoT 默认将安全警报和建议存储在 Log Analytics 工作区中�
 根据配置执行以下操作，以访问 Log Analytics 工作区中存储的数据：
 
 1. 在 IoT 中心选择并单击某个 ASC for IoT 警报。 
-1. 单击“进一步调查”。 
-1. 选择“若要查看哪些设备生成了此警报，请单击此处并查看 DeviceId 列”。
+1. 单击“进一步调查”。  
+1. 选择“若要查看哪些设备生成了此警报，请单击此处并查看 DeviceId 列”。 
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>可疑 IoT 设备的调查步骤
 

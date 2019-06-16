@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
 ms.openlocfilehash: 822cbc7401de90d63f9079561ced0dfbb911fa2c
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65989444"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点连接：PowerShell
@@ -49,13 +49,13 @@ ms.locfileid: "65989444"
   * **子网地址范围：192.168.1.0/24**
 * **子网名称：BackEnd**
   * **子网地址范围：10.254.1.0/24**
-* **子网名称：GatewaySubnet**<br>要使 VPN 网关正常工作，必须使用子网名称 GatewaySubnet。
+* **子网名称：GatewaySubnet**<br>要使 VPN 网关正常工作，必须使用子网名称 GatewaySubnet  。
   * **GatewaySubnet 地址范围：192.168.200.0/24** 
 * **VPN 客户端地址池：172.16.201.0/24**<br>使用此点到站点连接连接到 VNet 的 VPN 客户端接收来自 VPN 客户端地址池的 IP 地址。
 * **订阅：** 如果有多个订阅，请验证是否正在使用正确的订阅。
 * **资源组：TestRG**
 * **位置：美国东部**
-* **DNS 服务器：** 要用于名称解析的 DNS 服务器的 IP 地址。 (可选)
+* **DNS 服务器：** 要用于名称解析的 DNS 服务器的 IP 地址。 （可选）
 * **GW 名称：Vnet1GW**
 * **公共 IP 名称：VNet1GWPIP**
 * **VpnType：RouteBased** 
@@ -97,7 +97,7 @@ ms.locfileid: "65989444"
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG -Location $Location
    ```
-2. 为虚拟网络创建子网配置，并将其命名为 FrontEnd、BackEnd 和 GatewaySubnet。 这些前缀必须是已声明的 VNet 地址空间的一部分。
+2. 为虚拟网络创建子网配置，并将其命名为 FrontEnd  、BackEnd  和 GatewaySubnet  。 这些前缀必须是已声明的 VNet 地址空间的一部分。
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
@@ -117,7 +117,7 @@ ms.locfileid: "65989444"
    $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
    $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
    ```
-5. VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 VPN 网关当前仅支持动态公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
+5. VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 VPN 网关当前仅支持动态  公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 
    请求动态分配的公共 IP 地址。
 
@@ -211,8 +211,8 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 >
 >
 
-1. 若要连接到 VNet，请在客户端计算机上导航到 VPN 连接，找到创建的 VPN 连接。 其名称与虚拟网络的名称相同。 单击“连接”。 可能会出现与使用证书相关的弹出消息。 单击“继续”使用提升的权限。 
-2. 在“连接”状态页上，单击“连接”以启动连接。 如果看到“选择证书”屏幕，请确保所显示的客户端证书是要用来连接的证书。 如果不是，请使用下拉箭头选择正确的证书，并单击“确定”。
+1. 若要连接到 VNet，请在客户端计算机上导航到 VPN 连接，找到创建的 VPN 连接。 其名称与虚拟网络的名称相同。 单击“连接”  。 可能会出现与使用证书相关的弹出消息。 单击“继续”  使用提升的权限。 
+2. 在“连接”  状态页上，单击“连接”  以启动连接。 如果看到“选择证书”  屏幕，请确保所显示的客户端证书是要用来连接的证书。 如果不是，请使用下拉箭头选择正确的证书，并单击“确定”  。
 
    ![VPN 客户端连接到 Azure](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
 3. 连接已建立。
@@ -225,7 +225,7 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>从 Mac VPN 客户端进行连接
 
-在“网络”对话框中，找到要使用的客户端配置文件，单击“连接”。
+在“网络”对话框中，找到要使用的客户端配置文件，单击“连接”。 
 请查看[安装 - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) 获取详细说明。 如果连接有问题，请验证虚拟网络网关是否未使用基本 SKU。 Mac 客户端不支持基本 SKU。
 
   ![Mac 连接](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)

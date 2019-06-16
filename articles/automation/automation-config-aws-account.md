@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 419d5643981083c8e06a68e780e95db8ba5ee2c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61073997"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>使用 Amazon Web Services 进行 Runbook 身份验证
@@ -30,10 +30,10 @@ ms.locfileid: "61073997"
 
 要让 Azure 自动化与 AWS 通信，首先需要检索 AWS 凭据并在 Azure 自动化中将其存储为资产。 执行 AWS 文档 [Managing Access Keys for your AWS Account](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html)（管理 AWS 帐户的访问密钥）中所述的以下步骤来创建访问密钥，并复制**访问密钥 ID** 和**密码访问密钥**（选择性地下载密钥文件以将其保存到某个安全位置）。
 
-创建并复制 AWS 安全密钥后，需要使用 Azure 自动化帐户创建一个凭据资产，以安全地将其保存并使用 Runbook 对其进行引用。 按照 [Azure 自动化中的凭据资产](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal)一文中“创建新的凭据”部分的步骤进行操作，并输入以下信息：
+创建并复制 AWS 安全密钥后，需要使用 Azure 自动化帐户创建一个凭据资产，以安全地将其保存并使用 Runbook 对其进行引用。 按照 [Azure 自动化中的凭据资产](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal)一文中“创建新的凭据”  部分的步骤进行操作，并输入以下信息：
 
-1. 在“名称”框中，输入“AWScred”或符合命名标准的适当值。
-2. 在“用户名”框中，键入**访问 ID**，并在“密码”和“确认密码”框中键入**机密访问密钥**。
+1. 在“名称”框中，输入“AWScred”或符合命名标准的适当值   。
+2. 在“用户名”框中，键入**访问 ID**，并在“密码”和“确认密码”框中键入**机密访问密钥**    。
 
 ## <a name="next-steps"></a>后续步骤
 

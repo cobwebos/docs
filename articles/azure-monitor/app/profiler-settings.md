@@ -13,24 +13,24 @@ ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
 ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922989"
 ---
 # <a name="configure-application-insights-profiler"></a>配置 Application Insights Profiler
 
 ## <a name="profiler-settings-pane"></a>Profiler 设置窗格
 
-打开 Azure Application Insights Profiler 设置窗格中，请转到“Application Insights 性能”窗格中，然后选择“Profiler”按钮。
+打开 Azure Application Insights Profiler 设置窗格中，请转到“Application Insights 性能”窗格中，然后选择“Profiler”按钮  。
 
 ![配置 Profiler 窗格][configure-profiler-entry]
 
-“配置 Application Insights Profiler”窗格包含四项功能： 
+“配置 Application Insights Profiler”窗格包含四项功能  ： 
 * **立即探查**：启动与此 Application Insights 实例链接的所有应用的分析会话。
 * **链接的应用**：列出将分析数据发送到此 Application Insights 资源的应用程序。
-* **正在进行的会话**：显示选中“立即探查”时的会话状态。 
+* **正在进行的会话**：显示选中“立即探查”时的会话状态  。 
 * **最新的分析会话**：显示有关最近分析会话的信息。
 
 ![按需 Profiler][profiler-on-demand]
@@ -41,7 +41,7 @@ ms.locfileid: "64922989"
 ## <a id="profileondemand"></a> 手动触发 Profiler
 
 ### <a name="minimum-requirements"></a>最低要求 
-若要手动触发探查器会话的用户他们需要最小值"写入"访问 Application Insights 组件及其角色。 在大多数情况下，可获得此自动和所需任何额外工作。 如果遇到问题，要添加的订阅作用域角色将是"Application Insights 组件参与者"角色。 [查看更多有关角色的访问控制与 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)。
+用户若要手动触发探查器会话，他们至少需要对其 Application Insights 组件角色具有“写入”访问权限。 在大多数情况下，你可以自动获得此访问权限，不需要额外的工作。 如果遇到问题，则要添加的订阅范围角色将是“Application Insights 组件参与者”角色。 [详细了解如何使用 Azure 监视进行角色访问控制](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)。
 
 只需单击一下，即可手动触发 Profiler。 假设要运行 Web 性能测试。 你将需要跟踪来帮助了解 Web 应用在负载下的性能如何。 控制何时捕获跟踪至关重要，因为知道负载测试何时将运行。 但是随机采样间隔可能会错过捕获。
 
@@ -51,17 +51,17 @@ ms.locfileid: "64922989"
 
 如果 Web 应用已有传入流量或者你就是希望手动生成流量，请跳过本部分并转到步骤 2。
 
-1. 在 Application Insights 门户中，选择“配置” > “性能测试”。 
+1. 在 Application Insights 门户中，选择“配置” > “性能测试”   。 
 
-1. 若要启动新的性能测试，请选择“新建”按钮。
+1. 若要启动新的性能测试，请选择“新建”按钮  。
 
    ![创建新的性能测试][create-performance-test]
 
-1. 在“新建性能测试”窗格中，配置测试目标 URL。 接受所有默认设置，然后选择“运行测试”开始运行负载测试。
+1. 在“新建性能测试”  窗格中，配置测试目标 URL。 接受所有默认设置，然后选择“运行测试”开始运行负载测试  。
 
     ![配置负载测试][configure-performance-test]
 
-    新测试的状态最先为“已排队”，随后状态变为“正在进行”。
+    新测试的状态最先为“已排队”，随后状态变为“正在进行”  。
 
     ![负载测试已提交并排队][load-test-queued]
 
@@ -71,7 +71,7 @@ ms.locfileid: "64922989"
 
 1. 负载测试运行时，启动 Profiler 以在 Web 应用接收负载期间捕获该应用上的跟踪。
 
-1. 转到“配置 Profiler”窗格。
+1. 转到“配置 Profiler”窗格  。
 
 
 ### <a name="step-3-view-traces"></a>步骤 3：查看跟踪
@@ -94,33 +94,33 @@ ms.locfileid: "64922989"
 
   如果之前启用了 Application Insights Profiler，则可能需要更新 Profiler 代理以开始使用按需功能。
   
-转到应用服务的“应用设置”窗格并检查以下设置：
+转到应用服务的“应用设置”窗格并检查以下设置  ：
 * **APPINSIGHTS_INSTRUMENTATIONKEY**：替换为 Application Insights 的正确检测密钥。
 * **APPINSIGHTS_PORTALINFO**：ASP.NET
 * **APPINSIGHTS_PROFILERFEATURE_VERSION**：1.0.0
 
 如果未设置任何前述值，请执行以下操作安装最新的站点扩展：
 
-1. 转到应用服务门户中的“Application Insights”窗格。
+1. 转到应用服务门户中的“Application Insights”窗格  。
 
     ![从应用服务门户中启用 Application Insights][enable-app-insights]
 
-1. 如果“Application Insights”窗格显示“更新”按钮，请选择该按钮以更新 Application Insights 站点扩展，这将安装最新的 Profiler 代理。
+1. 如果“Application Insights”窗格显示“更新”按钮，请选择该按钮以更新 Application Insights 站点扩展，这将安装最新的 Profiler 代理   。
 
     ![更新站点扩展][update-site-extension]
 
-1. 若要确保已启用 Profiler，请选择“更改”，然后选择“确定”保存所做的更改。
+1. 若要确保已启用 Profiler，请选择“更改”，然后选择“确定”保存所做的更改   。
 
     ![更改并保存 App Insights][change-and-save-appinsights]
 
-1. 返回到应用服务的“应用设置”窗格，确保设置了以下值：
+1. 返回到应用服务的“应用设置”窗格，确保设置了以下值  ：
    * **APPINSIGHTS_INSTRUMENTATIONKEY**：替换为 Application Insights 的正确检测密钥。
    * **APPINSIGHTS_PORTALINFO**：ASP.NET 
    * **APPINSIGHTS_PROFILERFEATURE_VERSION**：1.0.0
 
      ![Profiler 的应用设置][app-settings-for-profiler]
 
-1. （可选）选择“扩展”，然后检查扩展版本并确定更新是否可用。
+1. （可选）选择“扩展”，然后检查扩展版本并确定更新是否可用  。
 
     ![检查是否有扩展更新][check-for-extension-update]
 

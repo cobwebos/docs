@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: eb024e11b78d13d5ab4544c634acef2ade8141c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60730780"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
@@ -26,7 +26,7 @@ ms.locfileid: "60730780"
 
 ## <a name="wait-for-events"></a>等待事件
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) 方法允许业务流程协调程序函数以异步方式等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。
+[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) 方法允许业务流程协调程序函数以异步方式等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
 
 ### <a name="c"></a>C#
 
@@ -114,7 +114,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-前面的示例侦听多个事件中的“任何一个”。 还可以等待“所有”事件。
+前面的示例侦听多个事件中的“任何一个”。  还可以等待“所有”事件。 
 
 #### <a name="c"></a>C#
 
@@ -191,7 +191,7 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-在内部，`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 将正在等待的业务流程协调程序函数选取的消息排入队列。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列。 如果业务流程实例稍后开始侦听该事件名称，它将检查队列中的事件消息。
+在内部，`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 将正在等待的业务流程协调程序函数选取的消息排入队列。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列  。 如果业务流程实例稍后开始侦听该事件名称，  它将检查队列中的事件消息。
 
 > [!NOTE]
 > 如果没有具有指定*实例 ID* 的业务流程实例，则丢弃事件消息。 有关此行为的详细信息，请参阅 [GitHub 问题](https://github.com/Azure/azure-functions-durable-extension/issues/29)。 

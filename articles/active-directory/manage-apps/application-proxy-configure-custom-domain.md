@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cc742a6b1a7f3fc78e8639206e06c2937f00c30
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: bae13de156d502cdd731005d460641ca452448d5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956912"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108671"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
-通过 Azure Active Directory 应用程序代理发布应用程序时，会创建可让用户在远程工作时访问的外部 URL。 此 URL 的默认域为 yourtenant.msappproxy.net。 例如，如果发布了一个名为 Expenses 的应用且租户名为 Contoso，则外部 URL 为 `https://expenses-contoso.msappproxy.net`。 如果想要使用自己的域名，请为应用程序配置自定义域。 
+通过 Azure Active Directory 应用程序代理发布应用程序时，会创建可让用户在远程工作时访问的外部 URL。 此 URL 的默认域为 yourtenant.msappproxy.net  。 例如，如果发布了一个名为 Expenses 的应用且租户名为 Contoso，则外部 URL 为 `https://expenses-contoso.msappproxy.net`。 如果想要使用自己的域名，请为应用程序配置自定义域。 
 
 我们建议尽可能地为应用程序设置自定义域。 自定义域的部分优点包括：
 
@@ -48,18 +48,18 @@ ms.locfileid: "65956912"
 做好这三项准备后，请遵循以下步骤设置自定义域：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 导航到“Azure Active Directory” > “企业应用程序” > “所有应用程序”，选择要管理的应用。
-3. 选择“应用程序代理”。 
+2. 导航到“Azure Active Directory”   > “企业应用程序”   > “所有应用程序”  ，选择要管理的应用。
+3. 选择“应用程序代理”  。 
 4. 在“外部 URL”字段中，使用下拉列表选择自己的自定义域。 如果列表中未显示该域，则表示它尚未验证。 
-5. 选择“保存”
-5. 已禁用的“证书”字段将会启用。 选择此字段。 
+5. 选择“保存” 
+5. 已禁用的“证书”字段将会启用。  选择此字段。 
 
    ![单击以上传证书](./media/application-proxy-configure-custom-domain/certificate.png)
 
    如果已经为此域上传了证书，则“证书”字段将显示证书信息。 
 
 6. 上传 PFX 证书，并输入证书的密码。 
-7. 选择“保存”以保存更改。 
+7. 选择“保存”  以保存更改。 
 8. 添加用于将新外部 URL 重定向到 msappproxy.net 域的 [DNS 记录](../../dns/dns-operations-recordsets-portal.md)。
 9. 检查通过使用正确配置的 DNS 记录[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx)命令查看外部 URL 是可访问 msapproxy.net 域显示为一个别名。
 
@@ -87,7 +87,7 @@ ms.locfileid: "65956912"
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Azure AD 身份验证对已发布应用[启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)。
-* 对已发布应用[启用条件访问](application-proxy-integrate-with-sharepoint-server.md)。
+* [启用条件性访问](application-proxy-integrate-with-sharepoint-server.md)对已发布应用。
 * [将自定义域名添加到 Azure AD](../fundamentals/add-custom-domain.md)
 
 

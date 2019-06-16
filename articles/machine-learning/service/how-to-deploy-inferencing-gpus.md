@@ -11,10 +11,10 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.openlocfilehash: ec71165553a1d65ff133d605bf94255100f74e6e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66388921"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>部署用于推断具有 GPU 的深度学习模型

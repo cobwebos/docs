@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60882372"
 ---
 # <a name="replicas-and-instances"></a>副本和实例 
 本文概述了有状态服务副本和无状态服务实例的生命周期。
 
 ## <a name="instances-of-stateless-services"></a>无状态服务的实例
-无状态服务的实例是在其中一个群集节点上运行的服务逻辑的副本。 分区内的实例由其 InstanceId 唯一标识。 实例的生命周期可在以下图表中进行建模：
+无状态服务的实例是在其中一个群集节点上运行的服务逻辑的副本。 分区内的实例由其 InstanceId 唯一标识  。 实例的生命周期可在以下图表中进行建模：
 
 ![实例生命周期](./media/service-fabric-concepts-replica-lifecycle/instance.png)
 
@@ -35,7 +35,7 @@ ms.locfileid: "60882372"
 如果此实例的应用程序主机或节点发生故障，它将转换为已删除状态。
 
 ### <a name="ready-rd"></a>就绪 (RD)
-在就绪状态下，实例已启动并且正在节点上运行。 如果此实例是可靠的服务，则已调用 RunAsync。 
+在就绪状态下，实例已启动并且正在节点上运行。 如果此实例是可靠的服务，则已调用 RunAsync。  
 
 如果此实例的应用程序主机或节点发生故障，它将转换为已删除状态。
 
@@ -46,7 +46,7 @@ ms.locfileid: "60882372"
 在已删除状态下，实例不再在节点上运行。 此时，Service Fabric 维护关于此实例的元数据，该元数据最终也将被删除。
 
 > [!NOTE]
-> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换。
+> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换  。
 >
 
 ## <a name="replicas-of-stateful-services"></a>有状态服务的副本
@@ -106,21 +106,21 @@ InBuild 副本是创建或准备加入副本集的副本。 根据副本角色�
 副本角色在备用状态下不相关。
 
 > [!NOTE]
-> 任何未关闭或删除的副本将被视为可启动的副本。
+> 任何未关闭或删除的副本将被视为可启动  的副本。
 >
 
 > [!NOTE]
-> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换。
+> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换  。
 >
 
 ## <a name="replica-role"></a>副本角色 
 副本的角色确定其在副本集内的功能：
 
-- **主要 (P)**:还有一个主要副本集，它负责执行读取和写入操作。 
-- **次要 (S)**:这些是从主接收状态更新、 应用它们，并发送回确认的副本。 副本集内有多个活动的次要副本。 这些活动次要副本的数量确定服务可以处理的错误数量。
-- **空闲的次要副本 (I)**:这些副本正在生成的主数据库。 在将其升级到活动次要副本之前，它们接收来自主要副本的状态。 
-- **无 (N)**:这些副本在副本集内没有责任。
-- **未知 (U)**:这是一个副本的初始角色接收任何之前**ChangeRole**从 Service Fabric API 调用。
+- **主要 (P)** :还有一个主要副本集，它负责执行读取和写入操作。 
+- **次要 (S)** :这些是从主接收状态更新、 应用它们，并发送回确认的副本。 副本集内有多个活动的次要副本。 这些活动次要副本的数量确定服务可以处理的错误数量。
+- **空闲的次要副本 (I)** :这些副本正在生成的主数据库。 在将其升级到活动次要副本之前，它们接收来自主要副本的状态。 
+- **无 (N)** :这些副本在副本集内没有责任。
+- **未知 (U)** :这是一个副本的初始角色接收任何之前**ChangeRole**从 Service Fabric API 调用。
 
 以下图表说明了副本角色转换以及可能发生此类转换的一些示例方案：
 

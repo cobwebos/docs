@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/18/2019
 ms.author: mayg
 ms.openlocfilehash: a793de302eb0833c959f2486fc2cda1f2eec4674
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65149112"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>关于用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
@@ -73,7 +73,7 @@ Azure Site Recovery 部署规划器是一个命令行工具，适用于 Hyper-V 
 | | **VMware 到 Azure** |**Hyper-V 到 Azure**|**Azure 到 Azure**|**Hyper-V 到辅助站点**|**VMware 到辅助站点**
 --|--|--|--|--|--
 支持的方案 |是|是|否|是*|否
-支持的版本 | vCenter 6.7、 6.5、 6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
+支持的版本 | vCenter 6.7、6.5、6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
 支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|NA|Hyper-V 群集、Hyper-V 主机|NA|
 可以按 Azure Site Recovery 部署规划器的运行实例进行分析的服务器数 |单个（一次只能分析属于一个 vCenter Server 或一个 ESXi 服务器的 VM）|多个（一次可以分析多个主机或主机群集的 VM）| NA |多个（一次可以分析多个主机或主机群集的 VM）| NA
 
@@ -121,7 +121,7 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>更新至最新版本的部署规划器
 
-最新的更新汇总了部署规划器[版本历史记录](site-recovery-deployment-planner-history.md)。
+最新更新汇总在部署规划器[版本历史记录](site-recovery-deployment-planner-history.md)中。
 
 如果部署规划器为旧版，请执行以下操作之一：
  * 如果最新版不包含分析修补程序且分析已在当前版本的 Planner 上进行，请继续该分析。
@@ -136,7 +136,7 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ## <a name="version-history"></a>版本历史记录
 最新的 Azure Site Recovery 部署规划器工具版本为 2.4。
-请参阅[Azure 站点恢复部署规划器版本历史记录](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)了解每个更新中增加的修补程序页。
+请参阅 [Azure Site Recovery 部署规划器版本历史记录](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)页，了解每个更新中增加的修补程序。
 
 
 ## <a name="next-steps"></a>后续步骤

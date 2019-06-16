@@ -15,10 +15,10 @@ ms.reviewer: maghan
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 5f2627932eb2fd427d934eba322230222b5e6958
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002936"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>排查数据工厂问题
@@ -60,13 +60,13 @@ ms.locfileid: "66002936"
     如果使用 Chrome，请转到 [Chrome 网上应用店](https://chrome.google.com/webstore/)，使用“ClickOnce”关键字进行搜索，选择 ClickOnce 扩展之一并安装它。
 
     对于 Firefox，请执行相同的操作（安装外接程序）。 在工具栏上单击“打开菜单”按钮（右上角的三条横线），单击“扩展程序”，使用“ClickOnce”关键字进行搜索，选择一个 ClickOnce 扩展并安装它。
-* 使用门户中同一边栏选项卡上所示的“手动安装”链接。 使用此方法手动下载和运行安装文件。 安装成功后，会看到“数据管理网关配置”对话框。 从门户屏幕中复制**密钥**，并在配置管理器中使用该密钥将网关手动注册到服务。  
+* 使用门户中同一边栏选项卡上所示的“手动安装”  链接。 使用此方法手动下载和运行安装文件。 安装成功后，会看到“数据管理网关配置”对话框。 从门户屏幕中复制**密钥**，并在配置管理器中使用该密钥将网关手动注册到服务。  
 
 ### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>问题：无法连接到本地 SQL Server
-在网关计算机上启动“数据管理网关”，并使用“疑难解答”选项卡测试从网关计算机到 SQL Server 的链接。 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。   
+在网关计算机上启动“数据管理网关”  ，并使用“疑难解答”  选项卡测试从网关计算机到 SQL Server 的链接。 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。   
 
 ### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>问题：输入切片始终处于 Waiting 状态
-切片处于“等待”状态的原因有多种。 其中一个常见原因是 **external** 属性未设置为 **true**。 在 Azure 数据工厂范围外部生成的任何数据集都应标记为 **external** 属性。 此属性表示该数据是外部的，且不由数据工厂内的任何管道提供支持。 当数据出现在相应的存储中后，数据切片将标记为 **Ready**。
+切片处于“等待”  状态的原因有多种。 其中一个常见原因是 **external** 属性未设置为 **true**。 在 Azure 数据工厂范围外部生成的任何数据集都应标记为 **external** 属性。 此属性表示该数据是外部的，且不由数据工厂内的任何管道提供支持。 当数据出现在相应的存储中后，数据切片将标记为 **Ready**。
 
 有关 **external** 属性的用法，请参阅以下示例。 将 external 设置为 true 时，可以选择指定 **externalData** \*。
 

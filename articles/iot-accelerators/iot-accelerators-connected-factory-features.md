@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 25812e10b4c2b90aa4f40c38610c30a26ab11d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61449985"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080451"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>什么是连接的工厂 IoT 解决方案加速器？
 
@@ -65,7 +65,4 @@ ms.locfileid: "61449985"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过阅读下列文章，详细了解连接的工厂预配置解决方案：
-
-* [连接的工厂预配置解决方案演练](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [为连接的工厂部署网关]( iot-accelerators-connected-factory-gateway-deployment.md)
+若要了解有关连接工厂解决方案加速器的详细信息，请参阅快速入门[尝试基于云的解决方案来管理我的工业 IoT 设备](quickstart-connected-factory-deploy.md)。

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60958556"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
@@ -47,7 +47,7 @@ ms.locfileid: "60958556"
 
 在 Azure 逻辑应用中，每个逻辑应用都必须从[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例并开始运行应用的工作流。
 
-此示例演示了如何在存储容器中添加或更新 Blob 的属性时，使用“Azure Blob 存储 - 添加或修改 Blob 时(仅属性)”触发器来启动逻辑应用工作流。 
+此示例演示了如何在存储容器中添加或更新 Blob 的属性时，使用“Azure Blob 存储 - 添加或修改 Blob 时(仅属性)”  触发器来启动逻辑应用工作流。 
 
 1. 在 Azure 门户或 Visual Studio 中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 此示例使用 Azure 门户。
 
@@ -61,7 +61,7 @@ ms.locfileid: "60958556"
 
    对于此示例，请选择要监视的容器和文件夹。
 
-   1. 在“容器”框中，选择文件夹图标。
+   1. 在“容器”框中，选择文件夹图标。 
 
    2. 在文件夹列表中选择右尖括号 ( **>** )，然后以浏览方式查找并选择所需的文件夹。
 
@@ -69,7 +69,7 @@ ms.locfileid: "60958556"
 
    3. 选择你希望触发器以多大时间间隔和频率来检查文件夹中的更改。
 
-4. 完成后，请在设计器工具栏上选择“保存”。
+4. 完成后，请在设计器工具栏上选择“保存”  。
 
 5. 现在请继续向逻辑应用添加一个或多个操作，以便完成需对触发器结果执行的任务。
 
@@ -81,12 +81,12 @@ ms.locfileid: "60958556"
 
 1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在逻辑应用设计器的触发器或操作下，选择“新建步骤” > “添加操作”。
+2. 在逻辑应用设计器的触发器或操作下，选择“新建步骤” > “添加操作”。  
 
    ![添加操作](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
    若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。 
 
 3. 在搜索框中，输入“azure blob”作为筛选器。 从操作列表中选择所需的操作。
 
@@ -98,13 +98,13 @@ ms.locfileid: "60958556"
 
    对于此示例，请选择所需的文件。
 
-   1. 从“Blob”框中选择文件夹图标。
+   1. 从“Blob”框中选择文件夹图标。 
   
       ![选择文件夹](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
-   2. 根据 Blob 的 **ID** 号查找并选择所需的文件。 可以在 Blob 的元数据中找到此 ID 号，该元数据是由前述 Blob 存储触发器返回的。
+   2. 根据 Blob 的 **ID** 号查找并选择所需的文件。 可以在 Blob 的元数据中找到此 ID  号，该元数据是由前述 Blob 存储触发器返回的。
 
-5. 完成后，请在设计器工具栏上选择“保存”。
+5. 完成后，请在设计器工具栏上选择“保存”  。
 若要测试逻辑应用，请确保所选文件夹包含一个 Blob。
 
 此示例仅获取 Blob 的内容。 若要查看这些内容，请使用另一连接器添加另一操作，以便创建包含此 Blob 的文件。 例如，添加一个 OneDrive 操作，以便根据 Blob 内容创建文件。

@@ -12,10 +12,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967960"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
@@ -63,7 +63,7 @@ ms.locfileid: "65967960"
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>使用自承载 IR 的注意事项
 
 - 单个自承载集成运行时可用于多个本地数据源。 单个自承载集成运行时可与同一 Azure Active Directory 租户中的另一个数据工厂共享。 有关详细信息，请参阅[共享自承载集成运行时](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)。
-- 在一台计算机上只能安装一个自承载集成运行时实例。 如果您有两个数据工厂需要访问本地数据源，或者使用[自我托管 IR 共享功能](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)共享自承载的集成运行时，或对两个安装自承载的集成运行时在本地计算机，另一个用于每个数据工厂。  
+- 在一台计算机上只能安装一个自承载集成运行时实例。 如果有两个数据工厂需要访问本地数据源，请使用[自托管 IR 共享功能](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)共享自承载集成运行时，或者在两台本地计算机上安装自承载集成运行时，每个数据工厂一台。  
 - 自承载集成运行时不需要位于数据源所在的计算机上。 但是，使自承载集成运行时更接近于数据源会减少自承载集成运行时连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装自承载集成运行时。 当自承载集成运行时和数据源位于不同的计算机上时，自承载集成运行时不会与数据源竞争资源。
 - 可将不同计算机上的多个自承载集成运行时连接到同一本地数据源。 例如，可以让两个自承载集成运行时服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
 - 如果已在计算机中安装了为 Power BI 方案提供服务的网关，那么在其他计算机上安装用于 Azure 数据工厂的单独自承载集成运行时。
@@ -90,39 +90,39 @@ ms.locfileid: "65967960"
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>从下载中心安装并注册自承载 IR
 
 1. 转到 [Microsoft 集成运行时下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
-2. 选择“下载”，然后选择 64 位版本（不支持 32 位版本），再选择“下一步”。
+2. 选择“下载”，然后选择 64 位版本（不支持 32 位版本），再选择“下一步”   。
 3. 直接运行 MSI 文件或将其保存到硬盘再运行。
-4. 在“欢迎”页上选择语言，然后选择“下一步”。
-5. 接受 Microsoft 软件许可条款，然后选择“下一步”。
-6. 选择用于安装自承载集成运行时的**文件夹**，然后选择“下一步”。
-7. 在“准备安装”页上，选择“安装”。
-8. 单击“完成”，完成安装。
+4. 在“欢迎”页上选择语言，然后选择“下一步”   。
+5. 接受 Microsoft 软件许可条款，然后选择“下一步”。 
+6. 选择用于安装自承载集成运行时的**文件夹**，然后选择“下一步”  。
+7. 在“准备安装”页上，选择“安装”。  
+8. 单击“完成”  ，完成安装。
 9. 使用 Azure PowerShell 获取身份验证密钥。 下面是检索身份验证密钥的 PowerShell 示例：
 
     ```powershell
     Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
-11. 在计算机上运行的 Microsoft Integration Runtime Configuration Manager 的“注册集成运行时(自承载)”页上，执行以下步骤：
+11. 在计算机上运行的 Microsoft Integration Runtime Configuration Manager 的“注册集成运行时(自承载)”  页上，执行以下步骤：
 
     a. 将身份验证密钥粘贴到文本区域。
 
-    b. 或者选择“显示身份验证密钥”，以查看密钥文本。
+    b. 或者选择“显示身份验证密钥”  ，以查看密钥文本。
 
-    c. 选择“注册”。
+    c. 选择“注册”  。
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
-自承载的集成运行时可以具有多个本地计算机上或在 Azure 中的虚拟机相关联。 这些计算机称为节点。 最多可将 4 个节点与一个自承载集成运行时相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下：
+一个自承载集成运行时可以与 Azure 中的多个本地计算机或虚拟机相关联。 这些计算机称为节点。 最多可将 4 个节点与一个自承载集成运行时相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下：
 * 更高的自承载集成运行时可用性，使其不再是大数据解决方案或与 Azure 数据工厂集成的云数据中的单点故障，从而确保最多 4 个节点的连续性。
 * 在本地和云数据存储之间移动数据期间提高了性能和吞吐量。 获取有关[性能比较](copy-activity-performance.md)的更多信息。
 
-可以通过从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时来关联多个节点。 然后，它通过使用任一身份验证密钥从获取的注册**新建 AzDataFactoryV2IntegrationRuntimeKey** cmdlet，如中所述[教程](tutorial-hybrid-copy-powershell.md)。
+可以通过从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时来关联多个节点。 然后，根据此[教程](tutorial-hybrid-copy-powershell.md)中所述，使用通过 **New-AzDataFactoryV2IntegrationRuntimeKey** cmdlet 获取的任一身份验证密钥来注册自承载集成运行时。
 
 > [!NOTE]
 > 不需要为关联每个节点而创建新的自承载集成运行时。 可以在另一台计算机上安装自承载集成运行时，并使用同一身份验证密钥注册它。 
 
 > [!NOTE]
-> 在添加另一个节点以实现高可用性和可伸缩性之前，请确保已在第 1 个节点上启用“远程访问 Intranet”选项（Microsoft Integration Runtime Configuration Manager > “设置” > “远程访问 Intranet”）。 
+> 在添加另一个节点以实现高可用性和可伸缩性之前，请确保已在第 1 个节点上启用“远程访问 Intranet”选项（Microsoft Integration Runtime Configuration Manager > “设置” > “远程访问 Intranet”）。     
 
 ### <a name="scale-considerations"></a>扩展注意事项
 
@@ -147,7 +147,7 @@ ms.locfileid: "65967960"
 - 不支持使用 CNG 密钥的证书。  
 
 > [!NOTE]
-> 使用此证书来加密使用的自承载 IR 节点上的端口**节点到节点通信**（有关状态同步，其中包括链接的服务凭据在节点之间的同步） 和 while **使用 PowerShell cmdlet 为链接的服务凭据设置**从本地网络中。 如果拥有的专用网络环境不安全或同时想要确保专用网络内部节点之间通信的安全性，建议使用此证书。 自承载 IR 至其他数据存储的数据移动始终会使用加密通道，无论是否设置此证书均是如此。 
+> 此证书用于加密自承载 IR 节点上的端口，以实现**节点到节点通信**（用于状态同步，这包括跨节点的链接服务凭据同步），同时从本地网络内部**将 PowerShell cmdlet 用于链接服务凭据设置**。 如果拥有的专用网络环境不安全或同时想要确保专用网络内部节点之间通信的安全性，建议使用此证书。 自承载 IR 至其他数据存储的数据移动始终会使用加密通道，无论是否设置此证书均是如此。 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>与多个数据工厂共享自承载集成运行时
 
@@ -206,7 +206,7 @@ ms.locfileid: "65967960"
 
 * 共享功能仅适用于同一 Azure Active Directory 租户中的数据工厂。
 
-* 对于 Active Directory [来宾用户](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)，UI 中的搜索功能（使用搜索关键字列出所有数据工厂）[不起作用](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 但只要来宾用户是数据工厂的“所有者”，则无需搜索功能也能共享 IR，方法是在“分配权限”文本框中直接键入需要共享 IR 的数据工厂的 MSI，然后在 Azure 数据工厂 UI 中选择“添加”。 
+* 对于 Active Directory [来宾用户](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)，UI 中的搜索功能（使用搜索关键字列出所有数据工厂）[不起作用](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 但只要来宾用户是数据工厂的“所有者”，则无需搜索功能也能共享 IR，方法是在“分配权限”文本框中直接键入需要共享 IR 的数据工厂的 MSI，然后在 Azure 数据工厂 UI 中选择“添加”。   
 
   > [!NOTE]
   > 此功能只能在 Azure 数据工厂 V2 中使用。 
@@ -218,20 +218,20 @@ ms.locfileid: "65967960"
 ![通知区域中的通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>端口和防火墙
-需要考虑两个防火墙：在组织的中央路由器上运行的企业防火墙和在安装了自承载集成运行时的本地计算机上配置为守护程序的 Windows 防火墙。
+需要考虑两个防火墙：在组织的中央路由器上运行的企业防火墙和在安装了自承载集成运行时的本地计算机上配置为守护程序的 Windows 防火墙。  
 
 ![防火墙](media/create-self-hosted-integration-runtime/firewall.png)
 
-在企业防火墙级别，需配置以下域和出站端口：
+在企业防火墙级别，需配置以下域和出站端口： 
 
 域名 | 端口 | 描述
 ------------ | ----- | ------------
-* .servicebus.windows.net | 443 | 用来与后端数据移动服务通信
+\* .servicebus.windows.net | 443 | 用来与后端数据移动服务通信
 *.core.windows.net | 443 | 用于通过 Azure Blob 存储（如果已配置）进行临时复制
 *.frontend.clouddatahub.net | 443 | 用来与后端数据移动服务通信
 download.microsoft.com | 443 | 用于下载更新
 
-在 Windows 防火墙级别（计算机级别），通常已启用这些出站端口。 如果没有，可以在自承载集成运行时计算机上相应地配置域和端口。
+在 Windows 防火墙级别（计算机级别），通常已启用这些出站端口。  如果没有，可以在自承载集成运行时计算机上相应地配置域和端口。
 
 > [!NOTE]
 > 根据源和接收器，可能需要在企业防火墙或 Windows 防火墙中将其他域和出站端口加入允许列表。
@@ -255,7 +255,7 @@ download.microsoft.com | 443 | 用于下载更新
 
 ![指定代理](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-自承载的集成运行时配置时，使用代理服务器连接到云服务、 源 / 目标 (使用 HTTP / HTTPS 协议)。 这是选择**更改链接**在初始安装过程。 此时会出现代理设置对话框。
+配置后，自承载集成运行时使用代理服务器连接到云服务、源/目标（使用 HTTP/HTTPS 协议的源/目标）。 在初始设置期间选择“更改”链接。  此时会出现代理设置对话框。
 
 ![设置代理](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
@@ -263,15 +263,15 @@ download.microsoft.com | 443 | 用于下载更新
 
 - **不使用代理**：自承载集成运行时不显式使用任何代理来连接到云服务。
 - **使用系统代理**：自承载集成运行时使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未配置代理，则自承载集成运行时无需通过代理，可直接连接到云服务。
-- **使用自定义代理**：配置用于自承载集成运行时的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。必须输入“地址”和“端口”。 “用户名”和“密码”是可选的，具体取决于代理的身份验证设置。 所有设置都使用 Windows DPAPI 在自承载集成运行时进行加密，并存储在本地计算机上。
+- **使用自定义代理**：配置用于自承载集成运行时的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。必须输入“地址”和“端口”。   “用户名”和“密码”是可选的，具体取决于代理的身份验证设置。   所有设置都使用 Windows DPAPI 在自承载集成运行时进行加密，并存储在本地计算机上。
 
 保存更新的代理设置之后，集成运行时主机服务会自动重启。
 
 成功注册自承载集成运行时后，如果想要查看或更新代理设置，请使用 Integration Runtime Configuration Manager。
 
-1. 打开“Microsoft Integration Runtime Configuration Manager”。
-2. 切换到“设置”选项卡。
-3. 在“HTTP 代理”部分选择“更改”链接，打开“设置 HTTP 代理”对话框。
+1. 打开“Microsoft Integration Runtime Configuration Manager”。 
+2. 切换到“设置”  选项卡。
+3. 在“HTTP 代理”部分选择“更改”链接，打开“设置 HTTP 代理”对话框。   
 4. 选择“**下一步**”。 此时会出现警告，询问是否允许保存代理设置和重启集成运行时主机服务。
 
 可以使用 Configuration Manager 工具查看和更新 HTTP 代理。
@@ -283,7 +283,7 @@ download.microsoft.com | 443 | 用于下载更新
 
 ### <a name="configure-proxy-server-settings"></a>配置代理服务器设置
 
-如果为 HTTP 代理选择“使用系统代理”设置，则自承载集成运行时使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则自承载集成运行时无需通过代理，可直接连接到云服务。 以下过程说明如何更新 diahost.exe.config 文件：
+如果为 HTTP 代理选择“使用系统代理”  设置，则自承载集成运行时使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则自承载集成运行时无需通过代理，可直接连接到云服务。 以下过程说明如何更新 diahost.exe.config 文件：
 
 1. 在文件资源管理器中，生成 C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config 的安全副本，以备份原始文件。
 2. 打开以管理员身份运行的 Notepad.exe，并打开文本文件 C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config。找到 system.net 的默认标记，如以下代码中所示：
@@ -310,7 +310,7 @@ download.microsoft.com | 443 | 用于下载更新
     ```
 3. 将配置文件保存在原始位置。 然后重启自承载集成运行时主机服务，以拾取更改。 
 
-   若要重启服务，请从控制面板使用服务小程序。 或在“Integration Runtime Configuration Manager”中依次选择“停止服务”按钮和“启动服务”。 
+   若要重启服务，请从控制面板使用服务小程序。 或在“Integration Runtime Configuration Manager”中依次选择“停止服务”按钮和“启动服务”。   
    
    如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。
 
@@ -323,7 +323,7 @@ download.microsoft.com | 443 | 用于下载更新
 如果遇到类似于以下的错误，可能是由于防火墙或代理服务器配置错误，阻止了自承载集成运行时连接到数据工厂进行自身身份验证。 若要确保正确配置防火墙和代理服务器，请参阅上一部分。
 
 * 尝试注册自承载集成运行时的时候，会收到以下错误：“无法注册此 Integration Runtime 节点！ 请确认身份验证密钥有效，且集成服务主机服务在此计算机上运行。”
-* 打开 Integration Runtime Configuration Manager 时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器” > “应用程序和服务日志” > “Microsoft Integration Runtime”下，会看到错误消息，例如以下错误：
+* 打开 Integration Runtime Configuration Manager 时，将看到状态为“已断开连接”  或“正在连接”  。 查看 Windows 事件日志时，在“事件查看器” > “应用程序和服务日志” > “Microsoft Integration Runtime”下，会看到错误消息，例如以下错误：   
 
     ```
     Unable to connect to the remote server
@@ -331,11 +331,11 @@ download.microsoft.com | 443 | 用于下载更新
     ```
 
 ### <a name="enabling-remote-access-from-an-intranet"></a>从 Intranet 启用远程访问  
-如果使用 PowerShell 从 （网络） 中安装自承载的集成运行时以外的另一台计算机的凭据进行加密，则可以启用**从 Intranet 进行远程访问**选项。 如果您运行 PowerShell 来加密凭据的同一计算机上安装自承载的集成运行时，不能启用**从 Intranet 进行远程访问**。
+如果使用 PowerShell 加密网络中未安装自承载集成运行时的另一台计算机上的凭据，则可以启用“从 Intranet 进行远程访问”选项。  如果运行 PowerShell 来加密已安装自承载集成运行时的同一台计算机上的凭据，则无法启用“从 Intranet 进行远程访问”。 
 
-在添加另一个节点以实现高可用性和可伸缩性之前，应启用“从 Intranet 进行远程访问”。  
+在添加另一个节点以实现高可用性和可伸缩性之前，应启用“从 Intranet 进行远程访问”。   
 
-在自承载集成运行时安装（版本 3.3.xxxx.x 以上）期间，默认情况下，自承载集成运行时安装将在自承载集成运行时计算机上禁用“从 Intranet 进行远程访问”。
+在自承载集成运行时安装（版本 3.3.xxxx.x 以上）期间，默认情况下，自承载集成运行时安装将在自承载集成运行时计算机上禁用“从 Intranet 进行远程访问”  。
 
 如果使用的是第三方防火墙，则可以手动打开端口 8060（或用户配置的端口）。 如果在安装自承载集成运行时期间防火墙出现问题，请尝试使用以下命令在不配置防火墙的情况下安装自承载集成运行时。
 
@@ -343,7 +343,7 @@ download.microsoft.com | 443 | 用于下载更新
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ``` 
 
-如果选择不打开自承载集成运行时计算机上的端口 8060，请使用除“设置凭据”应用程序以外的机制来配置数据存储凭据。 例如，可以使用**新建 AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell cmdlet。
+如果选择不打开自承载集成运行时计算机上的端口 8060，请使用除“设置凭据”应用程序以外的机制来配置数据存储凭据。 例如，可以使用 **New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell cmdlet。
 
 
 ## <a name="next-steps"></a>后续步骤

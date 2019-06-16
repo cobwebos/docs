@@ -9,10 +9,10 @@ ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 086c7d303fd199090de3be77b2456c4ebcd053a8
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66726938"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>从 Azure PowerShell 管理 IoT Central
@@ -68,7 +68,7 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |ResourceGroupName |包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
 |Location |此 cmdlet 默认使用资源组中的位置。 目前，可以在**美国东部**、**美国西部**、**北欧**或**西欧**区域创建 IoT Central 应用程序。 |
 |Name              |应用程序在 Azure 门户中的名称。 |
-|子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com。 |
+|子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com 。 |
 |SKU               |目前，唯一的值是 **S1**（标准层）。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 |模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
 |DisplayName       |UI 中显示的应用程序名称。 |

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/29/2019
 ms.author: mlottner
 ms.openlocfilehash: 7efe32039f926ea9b5be3c24fa967dede72cd081
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192509"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure 安全中心简介 iot
@@ -41,15 +41,15 @@ ms.locfileid: "65192509"
 
 ### <a name="unified-visibility-and-control"></a>统一的可见性和控制
 
-安全的全面了解跨所有本地和云工作负荷，包括 Azure IoT 解决方案。 自动发现并载入新设备和各种工作负荷 （叶设备，边缘设备，IOT 中心），以确保符合性应用安全策略，具有安全标准。
+跨所有本地和云工作负载（包括 Azure IoT 解决方案）获得统一的安全视图。 自动发现和载入新设备，同时在所有工作负载（叶设备、Edge 设备、IOT 中心）中应用安全策略，确保符合安全标准。
 
 ### <a name="adaptive-threat-prevention"></a>自适应威胁防护
 
-使用适用于 IoT 的 ASC 持续监控计算机、 网络和 Azure 服务，包括 Azure IoT 解决方案从边缘设备对应用程序的安全性。 您可以选择使用来自数百个内置安全评估或创建自己的 IoT 中心仪表板中心 ASC 中。 优化您的安全设置，并提高虚拟机、 网络、 应用和数据安全分数与可行的建议。 使用新添加的 IoT 功能，现在可以为你的 Azure IoT 解决方案减少受攻击面并可被利用前修复问题。
+使用适用于 IoT 的 ASC 持续监控计算机、 网络和 Azure 服务，包括 Azure IoT 解决方案从边缘设备对应用程序的安全性。 您可以选择使用来自数百个内置安全评估或创建自己的 IoT 中心仪表板中心 ASC 中。 按照可操作的建议跨虚拟机、网络、应用和数据优化安全设置并提高安全功能分数。 借助新增的 IoT 功能，现可减小 Azure IoT 解决方案的受攻击面，同时在问题遭人利用之前解决它们。
 
 ### <a name="intelligent-threat-detection-and-response"></a>智能威胁检测和响应
 
-使用高级的分析和 Microsoft Intelligent Security Graph，获得针对不断演变的网络攻击。 内置行为分析和机器学习识别攻击和零时差攻击。 监视你的 IoT 解决方案的传入攻击和入侵后的活动。 简化设备的调查和修正与交互式工具和上下文威胁智能。
+使用高级的分析和 Microsoft Intelligent Security Graph，获得针对不断演变的网络攻击。 内置行为分析和机器学习识别攻击和零时差攻击。 监视 IoT 解决方案中即将发生的攻击和信息泄露后进行的活动。 简化设备的调查和修正与交互式工具和上下文威胁智能。
 
 ## <a name="next-steps"></a>后续步骤
 

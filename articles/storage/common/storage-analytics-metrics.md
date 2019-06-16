@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: f0dfed10190685c1d51822b8bec2b3c80cea7bb2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153945"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标（经典）
@@ -67,11 +67,11 @@ ms.locfileid: "65153945"
 请按照下列步骤在 [Azure 门户](https://portal.azure.com)中启用指标：
 
 1. 导航到存储帐户。
-1. 在“菜单”窗格中选择“诊断设置(经典)”。
-1. 确保“状态”设置为“打开”。
+1. 在“菜单”  窗格中选择“诊断设置(经典)”  。
+1. 确保“状态”  设置为“打开”  。
 1. 选择希望监视的服务的度量值。
 1. 指定用来指示保留度量值和日志数据的时间长度的保留期策略。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 [Azure 门户](https://portal.azure.com)目前不允许在存储帐户中配置分钟指标；必须通过 PowerShell 或编程方式启用分钟指标。
 
@@ -130,11 +130,11 @@ queueClient.SetServiceProperties(serviceProperties);
 在将存储分析度量值配置为监视存储帐户后，存储分析将使用存储帐户在一组已知表中记录度量值。 可以将图表配置为每小时查看 [Azure 门户](https://portal.azure.com)中的指标：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)中的存储帐户。
-1. 在要查看其指标的服务的“菜单”边栏选项卡中，选择“指标(经典)”。
+1. 在要查看其指标的服务的“菜单”边栏选项卡中，选择“指标(经典)”   。
 1. 单击要配置的图表。
-1. 在“编辑图表”边栏选项卡中，选择“时间范围”、“图表类型”，以及想要在图表中显示的指标。
+1. 在“编辑图表”  边栏选项卡中，选择“时间范围”  、“图表类型”  ，以及想要在图表中显示的指标。
 
-在 Azure 门户中存储帐户菜单边栏选项卡的“监视(经典)”部分，可以配置[警报规则](#metrics-alerts)，例如，当特定的指标达到某个值时，通过电子邮件警报来接收通知。
+在 Azure 门户中存储帐户菜单边栏选项卡的“监视(经典)”部分，可以配置[警报规则](#metrics-alerts)，例如，当特定的指标达到某个值时，通过电子邮件警报来接收通知。 
 
 如果要为长期存储下载指标或在本地分析这些指标，则必须使用工具或编写一些代码来读取表。 必须下载分析用的分钟度量值。 如果在存储帐户中列出所有表，则这些表不会显示，但可以按名称直接访问它们。 很多存储浏览工具都识别这些表，并允许直接查看它们（有关可用工具的列表，请参阅 [Azure 存储客户端工具](/azure/storage/storage-explorers)）。
 
@@ -164,7 +164,7 @@ queueClient.SetServiceProperties(serviceProperties);
 上面的示例数据显示一分钟的所有记录（从上午 11:00 开始），因此 **QueryEntities** 请求数加 **QueryEntity** 请求数再加 **UpdateEntity** 请求数的和为 7，这是显示在 **user:All** 行上的总数。 同样，通过计算 ((143.8 * 5) + 3 + 9)/7，可以在 **user:All** 行得到平均端到端延迟为 104.4286。  
 
 ## <a name="metrics-alerts"></a>度量警报
-应考虑在 [Azure 门户](https://portal.azure.com)中设置警报，以便在存储服务的行为发生重要更改时，会自动收到通知。 如果使用存储资源管理器工具下载这种采用分隔格式的指标数据，则可以使用 Microsoft Excel 分析数据。 有关可用存储资源管理器工具的列表，请参阅 [Azure 存储客户端工具](/azure/storage/storage-explorers)。 可以在“警报(经典)”边栏选项卡（可在存储帐户菜单边栏选项卡中的“监视(经典)”下进行访问）配置警报。
+应考虑在 [Azure 门户](https://portal.azure.com)中设置警报，以便在存储服务的行为发生重要更改时，会自动收到通知。 如果使用存储资源管理器工具下载这种采用分隔格式的指标数据，则可以使用 Microsoft Excel 分析数据。 有关可用存储资源管理器工具的列表，请参阅 [Azure 存储客户端工具](/azure/storage/storage-explorers)。 可以在“警报(经典)”边栏选项卡（可在存储帐户菜单边栏选项卡中的“监视(经典)”下进行访问）配置警报   。
 
 > [!IMPORTANT]
 > 在存储事件与记录对应每小时或分钟度量数据的时间之间可能存在延迟。 对于分钟度量，可能会一次写入几分钟的数据。 这可能会导致将前面几分钟的事务聚合到当前分钟的事务中。 发生此情况时，警报服务可能没有已配置警报间隔内的所有可用度量数据，这可能会导致意外触发警报。

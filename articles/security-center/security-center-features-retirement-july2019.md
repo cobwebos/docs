@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
 ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952136"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>停用的安全中心功能 (2019 年 7 月)
@@ -100,7 +100,7 @@ Log Analytics 仪表板在单个工作区上介绍了见解。 但是，安全�
 
 当选择**转到安全事件映射**按钮，打开威胁智能仪表板。 我们即将退休威胁智能仪表板。  
 
-![威胁智能仪表板][11]
+![“威胁智能”仪表板][11]
 
 当选择一个工作区以查看其威胁智能仪表板时，Log Analytics 中打开安全警报映射 （预览版） 屏幕。 我们正在停用此屏幕。
 
@@ -110,7 +110,7 @@ Log Analytics 仪表板在单个工作区上介绍了见解。 但是，安全�
 
 ### <a name="security-events-map---the-new-experience"></a>安全事件映射的新体验
 
-我们鼓励您使用内置到安全中心的警报映射功能：**安全警报映射 （预览版）**。 此功能提供了优化的体验，并跨所有订阅和关联的工作区。 它在你的环境之间提供的高级视图，并不侧重于单个工作区。
+我们鼓励您使用内置到安全中心的警报映射功能：**安全警报映射 （预览版）** 。 此功能提供了优化的体验，并跨所有订阅和关联的工作区。 它在你的环境之间提供的高级视图，并不侧重于单个工作区。
 
 ## 自定义警报规则 （预览版）<a name="menu_customalerts"></a>
 

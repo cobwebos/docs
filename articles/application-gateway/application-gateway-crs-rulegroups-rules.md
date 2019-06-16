@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.date: 4/11/2019
 ms.author: victorh
 ms.openlocfilehash: 0ad5cc76c0f4631fd60eea7d0a57e4740b6a9db3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60832908"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
-出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这是通过定义根据 OWASP 核心规则集 3.0 或 2.2.9 的规则。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
+出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这种保护是由根据 OWASP 核心规则集 3.0 或 2.2.9 定义的规则实现的。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
 
-使用 web 应用程序防火墙的应用程序网关时，以下规则组和规则都可用。
+将应用程序网关与 Web 应用程序防火墙结合使用时可以使用以下规则组和规则。
 
 # <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
 
@@ -52,7 +52,7 @@ ms.locfileid: "60832908"
 |---|---|
 |920100|无效的 HTTP 请求行|
 |920130|未能分析请求正文。|
-|920140|多部分请求正文未通过严格的验证|
+|920140|多部分请求正文无法通过严格的验证|
 |920160|Content-Length HTTP 标头不是数字。|
 |920170|包含正文内容的 GET 或 HEAD 请求。|
 |920180|POST 请求缺少 Content-Length 标头。|
@@ -90,7 +90,7 @@ ms.locfileid: "60832908"
 |920202|范围 = pdf 请求的字段在多（6 个或以上）|
 |920273|请求中的字符无效（不属于极严格集）|
 |920274|请求标头中的字符无效（不属于极严格集）|
-|920460|异常转义字符|
+|920460|转义字符异常|
 
 ### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
@@ -162,17 +162,17 @@ ms.locfileid: "60832908"
 |941140|XSS 筛选器 - 类别 4 = Javascript URI 向量|
 |941150|XSS 筛选器 - 类别 5 = 不允许的 HTML 属性|
 |941180|节点验证器方块列表关键字|
-|941190|XSS 使用样式表|
-|941200|XSS 使用 VML 帧|
-|941210|XSS 使用经过模糊处理的 Javascript|
-|941220|XSS 使用经过模糊处理的 VB 脚本|
-|941230|使用 XSS 嵌入标记|
-|941240|使用导入或 implementation 特性的 XSS|
-|941260|使用 meta 标记的 XSS|
-|941270|使用链接 href XSS|
-|941280|XSS 使用 'base' 标记|
-|941290|使用小程序标记的 XSS|
-|941300|使用 object 标记的 XSS|
+|941190|使用样式表的 XSS|
+|941200|使用 VML 帧的 XSS|
+|941210|使用经过模糊处理的 Javascript 的 XSS|
+|941220|使用经过模糊处理的 VB Script 的 XSS|
+|941230|使用“embed”标记的 XSS|
+|941240|使用“import”或“implementation”属性的 XSS|
+|941260|使用“meta”标记的 XSS|
+|941270|使用“link”href 的 XSS|
+|941280|使用“base”标记的 XSS|
+|941290|使用“applet”标记的 XSS|
+|941300|使用“object”标记的 XSS|
 |941310|US-ASCII 格式错误编码 XSS 筛选器 - 检测到攻击。|
 |941330|IE XSS 筛选器 - 检测到攻击。|
 |941340|IE XSS 筛选器 - 检测到攻击。|
@@ -229,7 +229,7 @@ ms.locfileid: "60832908"
 |960911|无效的 HTTP 请求行|
 |981227|Apache 错误 = 请求中的 URI 无效。|
 |960912|未能分析请求正文。|
-|960914|多部分请求正文未通过严格的验证|
+|960914|多部分请求正文无法通过严格的验证|
 |960915|多部分分析器检测到可能的不匹配边界。|
 |960016|Content-Length HTTP 标头不是数字。|
 |960011|包含正文内容的 GET 或 HEAD 请求。|

@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: e5acb8e0f8805da7f14bbce58b4bfd2acdc24f23
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166318"
 ---
 # <a name="secure-your-internet-of-things-iot-deployment"></a>保护物联网 (IoT) 部署
@@ -21,11 +21,11 @@ ms.locfileid: "66166318"
 
 保护 Azure IoT 部署可分为以下三个安全区域：
 
-* **设备安全**:在现实部署时，请保护 IoT 设备。
+* **设备安全**：在现实中部署 IoT 设备时，保护 IoT 设备安全。
 
-* **连接安全性**:确保 IoT 设备与 IoT 中心之间传输的所有数据是机密和篡改。
+* **连接安全**：确保 IoT 设备和 IoT 中心之间传输的所有数据的机密性和防篡改性。
 
-* **云安全**:提供一种方法来保护数据，而它移动或存储在云中。
+* **云安全**：数据移动或存储在云中时，提供一种数据保护方式。
 
 ![三个安全区域](./media/iot-secure-your-deployment/overview.png)
 
@@ -53,11 +53,11 @@ IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在�
 
 [IoT 中心支持 MQTT、AMQP 和 HTTP 等协议](../articles//iot-hub/iot-hub-devguide-security.md)。 每个协议使用 IoT 设备到 IoT 中心的安全令牌的方式不同：
 
-* AMQP：SASL PLAIN 和基于 AMQP 声明的安全性 (`{policyName}@sas.root.{iothubName}`与 IoT 中心级别令牌;`{deviceId}`与设备范围令牌)。
+* AMQP：基于 SASL PLAIN 和 AMQP 声明的安全性（若是 IoT 中心级别令牌，则为 `{policyName}@sas.root.{iothubName}`；若是设备范围令牌，则为 `{deviceId}`）。
 
-* MQTT：使用连接数据包`{deviceId}`作为`{ClientId}`，`{IoThubhostname}/{deviceId}`中**用户名**字段和一个 SAS 令牌中**密码**字段。
+* MQTT：CONNECT 数据包使用 `{deviceId}` 作为 `{ClientId}`、“用户名”  字段中的 `{IoThubhostname}/{deviceId}` 以及“密码”  字段中的 SAS 令牌。
 
-* HTTP:有效令牌位于授权请求标头。
+* HTTP：有效令牌位于授权请求标头中。
 
 IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控制。 但是，如果 IoT 解决方案已大幅投资于[自定义设备标识注册表和/或身份验证方案](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)，则可通过创建令牌服务，将该解决方案集成到具有 IoT 中心的现有基础结构中。
 

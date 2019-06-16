@@ -9,10 +9,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 7f2abbb355513c175329d01b9d5ed8884f2c27ef
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64715948"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>在 macOS 中通过 SMB 装载 Azure 文件共享
@@ -38,7 +38,7 @@ ms.locfileid: "64715948"
 1. **打开 Finder**：默认情况下，Finder 在 macOS 中处于打开状态，但你可以通过单击 Dock 中的“macOS 笑脸图标”来确保它是当前选定的应用程序：  
     ![macOS 笑脸图标](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **在“前往”菜单中选择“连接到服务器”**：使用先决条件中的 UNC 路径，将开头的双反斜杠 (`\\`) 转换为 `smb://`，将所有其他的反斜杠 (`\`) 转换为斜杠 (`/`)。 链接应如下所示：![“连接到服务器”对话框](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **在“前往”菜单中选择“连接到服务器”** ：使用先决条件中的 UNC 路径，将开头的双反斜杠 (`\\`) 转换为 `smb://`，将所有其他的反斜杠 (`\`) 转换为斜杠 (`/`)。 链接应如下所示：![“连接到服务器”对话框](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **当系统提示你输入用户名和密码时，使用存储帐户名称和存储帐户密钥**：单击“连接到服务器”对话框中的“连接”时，系统会提示你输入用户名和密码（系统会使用你的 macOS 用户名自动填充此用户名字段）。 可以选择将存储帐户名称/存储帐户密钥置于 macOS 密钥链中。
 

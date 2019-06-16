@@ -7,12 +7,12 @@ ms.author: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: b5048266fe17bc16fba8228f7cc17d0ee9f3bc0b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4d391c095495a3d0e34a2111d7b4564e6f4f2b8d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714777"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071990"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集升级到更新版本
 要利用最新的 HDInsight 功能，我们建议将 HDInsight 群集升级到最新版本。 遵循以下准则升级 HDInsight 群集版本。
@@ -27,9 +27,8 @@ ms.locfileid: "64714777"
 
 1. 请阅读本文档的每个部分，了解在升级 HDInsight 群集时可能需要进行的更改。
 2. 创建群集作为测试/质量保证环境。 有关创建群集的详细信息，请参阅[了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
-3. 将现有作业、数据源及接收器复制到新环境。 有关详细信息，请参阅[将数据复制到测试环境](hdinsight-migrate-from-windows-to-linux.md#copy-data-to-the-test-environment) 。
+3. 将现有作业、数据源及接收器复制到新环境。
 4. 执行验证测试，以确保作业在新群集上按预期工作。
-
 
 验证一切都按预期工作后，请为迁移安排停机时间。 在此停机期间，请执行以下操作：
 

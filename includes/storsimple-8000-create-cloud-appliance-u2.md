@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d1ca6d37d6133786aff7ad3156fea2a0c22dfb97
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66159687"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>创建云设备
 
-1. 在 Azure 门户中，转到“StorSimple Device Manager”服务。
-2. 转到“设备”边栏选项卡。 从“服务摘要”边栏选项卡中的命令栏中，单击“创建云设备”。
+1. 在 Azure 门户中，转到“StorSimple Device Manager”  服务。
+2. 转到“设备”边栏选项卡。  从“服务摘要”边栏选项卡中的命令栏中，单击“创建云设备”。 
     ![StorSimple 创建云设备](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
-3. 在“创建云设备”边栏选项卡中，指定以下详细信息。
+3. 在“创建云设备”边栏选项卡中，指定以下详细信息。 
    
     ![StorSimple 创建云设备](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
@@ -34,7 +34,7 @@ ms.locfileid: "66159687"
        * 仅使用物理设备时，加密密钥将保存在设备中，因此 Microsoft 无法解密。
 
        * 使用云设备时，加密密钥和解密密钥都存储在 Microsoft Azure 中。 有关详细信息，请参阅[使用云设备的安全注意事项](../articles/storsimple/storsimple-security.md)。
-   8. 单击“创建”以预配云设备。 设备可能需要 30 分钟左右的时间来预配。 成功创建云设备后，将收到通知。 转到“设备”边栏选项卡，设备列表将刷新以显示云设备。 设备状态为“就绪可设置”。
+   8. 单击“创建”  以预配云设备。 设备可能需要 30 分钟左右的时间来预配。 成功创建云设备后，将收到通知。 转到“设备”边栏选项卡，设备列表将刷新以显示云设备。 设备状态为“就绪可设置”。 
       
       ![StorSimple 云设备就绪可设置](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
 

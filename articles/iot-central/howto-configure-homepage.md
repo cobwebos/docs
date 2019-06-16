@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467607"
 ---
 # <a name="configure-the-application-dashboard"></a>配置应用程序仪表板
@@ -32,7 +32,7 @@ ms.locfileid: "65467607"
 
 ![仪表板库](media/howto-configure-homepage/image2a.png)
 
-例如，您可以添加**的设备设置和属性**磁贴以显示选择的设备的当前设置和属性值。 为此，请先选择“设备模板”，然后选择“设备实例”。 之后，为磁贴添加标题，然后选择要显示的**设置**或**属性**。 以下屏幕截图显示了设置和选择要添加到磁贴的属性。 选择**完成**若要将更改保存到仪表板。
+例如，您可以添加**的设备设置和属性**磁贴以显示选择的设备的当前设置和属性值。 为此，请先选择“设备模板”  ，然后选择“设备实例”  。 之后，为磁贴添加标题，然后选择要显示的**设置**或**属性**。 以下屏幕截图显示了设置和选择要添加到磁贴的属性。 选择**完成**若要将更改保存到仪表板。
 
 ![带有设置和属性详细信息的“配置设备详细信息”窗体](media/howto-configure-homepage/image3a.png)
 

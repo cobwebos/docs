@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 871294703a4be36e274df1e34b9cc9bee7d19783
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657486"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071938"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies（API 管理跨域策略）
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -54,7 +54,7 @@ ms.locfileid: "60657486"
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|名称|描述|必选|
 |----------|-----------------|--------------|
 |cross-domain|根元素。 子元素必须符合 [Adobe 跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。|是|
 
@@ -136,7 +136,7 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 ### <a name="attributes"></a>属性
 
-|名称|描述|需要|默认|
+|Name|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|预检响应中的 `Access-Control-Allow-Credentials` 标头将设置为此属性的值，并且会影响客户端在跨域请求中提交凭据的功能。|否|false|
 |preflight-result-max-age|预检响应中的 `Access-Control-Max-Age` 标头将设置为此属性的值，并且会影响用户代理缓存预检响应的功能。|否|0|
@@ -145,7 +145,7 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 - **策略段：** 入站
-- **策略范围：** 全局、API、操作
+- **策略范围：** 全局、产品、API、操作
 
 ## <a name="JSONP"></a> JSONP
 `jsonp` 策略向操作或 API 添加填充型 JSON (JSONP) 支持，以便从基于 JavaScript 浏览器的客户端执行跨域调用。 JSONP 是 JavaScript 程序中使用的方法，用于从不同域中的服务器请求数据。 JSONP 规避了大多数 Web 浏览器强制实施的只能在同一域中访问网页的限制。
@@ -168,7 +168,7 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 ### <a name="elements"></a>元素
 
-|名称|描述|需要|
+|Name|描述|必选|
 |----------|-----------------|--------------|
 |jsonp|根元素。|是|
 

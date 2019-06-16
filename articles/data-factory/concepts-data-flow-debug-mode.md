@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.openlocfilehash: a50778db5fd57202c17f05407045259371912586
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66239196"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
@@ -20,7 +20,7 @@ ms.locfileid: "66239196"
 
 Azure 数据工厂映射数据流有调试模式下，这可以设计图面顶部的调试流数据按钮切换。 设计数据流时，通过将调试模式设置为打开，可在生成和调试数据流时以交互方式观察数据形状转换。 在数据流设计会话以及管道的数据流的调试执行期间，可以使用调试会话。
 
-![调试按钮](media/data-flow/debugbutton.png "调试按钮")
+![“调试”按钮](media/data-flow/debugbutton.png "“调试”按钮")
 
 ## <a name="overview"></a>概述
 在调试模式下时，您将以交互方式生成数据的流与活动的 Spark 群集。 在 Azure 数据工厂中关闭调试后，会话将关闭。 你应该了解 Azure Databricks 在打开调试会话期间产生的每小时费用。

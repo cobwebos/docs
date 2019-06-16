@@ -7,12 +7,12 @@ ms.service: cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: dab0b11a350a10a209d67ddc69db5531a2cc292c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 3dcce64d86574a3e898531b2e2587b81d04f098d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481469"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080773"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>来自 Verizon 的高级规则引擎功能的 azure CDN
 
@@ -24,7 +24,7 @@ ms.locfileid: "66481469"
 
 以下功能旨在控制对内容的访问。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [拒绝访问 (403)](#deny-access-403) | 通过“403 禁止访问”响应确定是否拒绝了所有请求。
 [令牌身份验证](#token-auth) | 确定是否会向请求应用基于令牌的身份验证。
@@ -36,7 +36,7 @@ ms.locfileid: "66481469"
 
 这些功能旨在自定义内容的缓存时间和方式。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [带宽参数](#bandwidth-parameters) | 确定是否会启用带宽限制参数（例如 ec_rate 和 ec_prebuf）。
 [带宽限制](#bandwidth-throttling) | 限制接入点 (POP) 提供的响应的带宽。
@@ -86,7 +86,7 @@ Name | 目的
 
 这些功能旨在自定义存储在原始日志文件中的数据。
 
-Name | 目的
+名称 | 目的
 -----|--------
 [自定义日志字段 1](#custom-log-field-1) | 确定分配给原始日志文件中自定义日志字段的格式和内容。
 [日志查询字符串](#log-query-string) | 确定是否将查询字符串和 URL 一起存储在访问日志中。
@@ -140,7 +140,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 以下功能旨在控制 CDN 与源服务器的通信方式。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [最大 Keep-Alive 请求数](#maximum-keep-alive-requests) | 定义 Keep-Alive 连接在关闭前的最大请求数。
 [代理特殊标头](#proxy-special-headers) | 定义一组特定于 CDN 的请求标头，这些标头将从 POP 转发给源服务器。
@@ -338,7 +338,7 @@ Type|描述
 
 此功能的以下示例用法提供了示例请求和默认的 cache-key：
 
-- **示例请求：** http://wpc.0001.&lt;Domain&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
+- **示例请求：** http://wpc.0001.&lt ;Domain&gt; /800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 - **默认 cache-key：** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>包括
@@ -516,8 +516,8 @@ application/javascript|Javascript
 
 标头类型|格式|示例
 -|-|-
-请求标头|%{[RequestHeader]()}[i]() | %{Accept-Encoding}i <br/> {Referrer}i <br/> %{Authorization}i
-响应标头|%{[ResponseHeader]()}[o]()| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
+请求标头|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {Referrer}i <br/> %{Authorization}i
+响应标头|`%{[ResponseHeader]()}[o]()`| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
 
 重要信息：
 

@@ -15,7 +15,7 @@ ms.author: sumeet.mittal
 ms.custom: ''
 ms.openlocfilehash: 73621c3bbab7f0c49feacab29e1e5de1792b80e4
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "61032565"

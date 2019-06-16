@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: sajagtap
 ms.openlocfilehash: 006f7d6691b8872aaa7ff8ccacff484585761d00
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61271035"
 ---
 # <a name="define-and-use-moderation-workflows"></a>定义和使用审查工作流
@@ -23,7 +23,7 @@ ms.locfileid: "61271035"
 
 ## <a name="create-a-new-workflow"></a>创建新的工作流
 
-转到[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)并登录。 在“设置”选项卡中，选择“工作流”。
+转到[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)并登录。 在“设置”  选项卡中，选择“工作流”  。
 
 ![“工作流”设置](images/2-workflows-0.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "61271035"
 
 在下一个屏幕上转到**如果**部分。 在顶部的下拉列表菜单中，选择**条件**。 这将允许你配置工作流将在其执行操作的条件。 如果你想要使用多个条件，请选择**组合**相反。 
 
-接下来，选择一个连接器。 本示例使用“内容审查器”。 具体取决于您选择的连接器，你将获得不同的数据输出选项。 请参阅[连接器](./configure.md#connectors)评审工具设置指南，了解如何设置其他连接器的部分。
+接下来，选择一个连接器。 本示例使用“内容审查器”  。 具体取决于您选择的连接器，你将获得不同的数据输出选项。 请参阅[连接器](./configure.md#connectors)评审工具设置指南，了解如何设置其他连接器的部分。
 
 ![选择工作流连接器](images/image-workflow-connect-to.PNG)
 

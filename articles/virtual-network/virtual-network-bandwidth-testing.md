@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
 ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60743066"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
@@ -128,7 +128,7 @@ ntttcp -s10.0.0.4 -t 300
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>测试在 Windows 和 Linux 之间运行的 VM：
 
-在此方案中，我们应启用非同步模式，以便可以运行测试。 通过对 Linux 使用“-N 标志”，对 Windows 使用“-ns 标志”完成操作。
+在此方案中，我们应启用非同步模式，以便可以运行测试。 通过对 Linux 使用“-N 标志”  ，对 Windows 使用“-ns 标志”  完成操作。
 
 #### <a name="from-linux-to-windows"></a>从 Linux 到 Windows：
 

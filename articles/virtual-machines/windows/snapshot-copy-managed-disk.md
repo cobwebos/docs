@@ -16,10 +16,10 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: b3b9095cd7ee3fa12523b14f59cc06820b9e4382
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64692221"
 ---
 # <a name="create-a-snapshot"></a>创建快照
@@ -31,14 +31,14 @@ ms.locfileid: "64692221"
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中，选择“创建资源”，然后搜索并选择“快照”。
-3. 在“快照”窗口，选择“创建”。 此时将显示“创建快照”窗口。
-4. 输入快照的“名称”。
+2. 在左侧菜单中，选择“创建资源”，然后搜索并选择“快照”   。
+3. 在“快照”窗口，选择“创建”   。 此时将显示“创建快照”窗口  。
+4. 输入快照的“名称”  。
 5. 选择现有的[资源组](../../azure-resource-manager/resource-group-overview.md#resource-groups)，或键入新资源组的名称。 
 6. 选择 Azure 数据中心的**位置**。  
 7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
-8. 选择用于存储快照的“帐户类型”。 选择“Standard_HDD”，除非需要将快照存储在高性能磁盘上。
-9. 选择“创建”。
+8. 选择用于存储快照的“帐户类型”  。 选择“Standard_HDD”，除非需要将快照存储在高性能磁盘上  。
+9. 选择“创建”  。
 
 ## <a name="use-powershell"></a>使用 PowerShell
 

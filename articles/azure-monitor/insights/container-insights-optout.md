@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2018
 ms.author: magoedte
 ms.openlocfilehash: 0e4268cb3a8d6ac62da12f689560338eee7e6935
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65071819"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用用于容器的 Azure Monitor 监视 Azure Kubernetes 服务 (AKS)
@@ -90,7 +90,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
     }
     ```
 
-2. 将此文件以“OptOutTemplate.json”文件名保存到本地文件夹。
+2. 将此文件以“OptOutTemplate.json”文件名保存到本地文件夹  。
 3. 将以下 JSON 语法粘贴到文件中：
 
     ```json
@@ -108,13 +108,13 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
     }
     ```
 
-4. 使用可在选定群集的“属性”页面上找到的 AKS 群集的值，编辑 **aksResourceId** 和 **aksResourceLocation** 的值。
+4. 使用可在选定群集的“属性”页面上找到的 AKS 群集的值，编辑 **aksResourceId** 和 **aksResourceLocation** 的值  。
 
     ![容器属性页面](media/container-insights-optout/container-properties-page.png)
 
-    位于“属性”页时，还请复制“工作区资源 ID”。 如果决定稍后删除 Log Analytics 工作区，则需要此值。 不在此流程中执行删除 Log Analytics 工作区的操作。 
+    位于“属性”页时，还请复制“工作区资源 ID”   。 如果决定稍后删除 Log Analytics 工作区，则需要此值。 不在此流程中执行删除 Log Analytics 工作区的操作。 
 
-5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹。
+5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹  。
 6. 已做好部署此模板的准备。 
 
 ### <a name="remove-the-solution-using-azure-cli"></a>使用 Azure CLI 删除解决方案
@@ -150,5 +150,5 @@ New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupNam
 ProvisioningState       : Succeeded
 ```
 
-如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果不熟悉如何删除工作区，请参阅[使用 Azure 门户删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。 不要忘记之前在步骤 4 中复制的“工作区资源 ID”，稍后将会需要。 
+如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果不熟悉如何删除工作区，请参阅[使用 Azure 门户删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。 不要忘记之前在步骤 4 中复制的“工作区资源 ID”，稍后将会需要  。 
 

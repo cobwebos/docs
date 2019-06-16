@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: da0e393dc2ae0d93ecc49745a42ffac4669ed74b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61386916"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>如何使用 Docker Machine 在 Azure 中创建主机
@@ -31,9 +31,9 @@ ms.locfileid: "61386916"
 sub=$(az account show --query "id" -o tsv)
 ```
 
-通过指定 Azure 作为驱动程序，在 Azure 中使用 `docker-machine create` 创建 Docker 主 VM。 有关详细信息，请参阅 [Docker Azure 驱动程序文档](https://docs.docker.com/machine/drivers/azure/)
+通过指定 Azure  作为驱动程序，在 Azure 中使用 `docker-machine create` 创建 Docker 主 VM。 有关详细信息，请参阅 [Docker Azure 驱动程序文档](https://docs.docker.com/machine/drivers/azure/)
 
-以下示例基于“标准 D2 v2”计划创建一个名为“myVM”的 VM，创建一个名为“azureuser”的用户帐户，并在主 VM 上打开端口 *80*。 按照任何提示登录你的 Azure 帐户，并授予 Docker Machine 创建和管理资源的权限。
+以下示例基于“标准 D2 v2”计划创建一个名为“myVM”  的 VM，创建一个名为“azureuser”  的用户帐户，并在主 VM 上打开端口 *80*。 按照任何提示登录你的 Azure 帐户，并授予 Docker Machine 创建和管理资源的权限。
 
 ```bash
 docker-machine create -d azure \

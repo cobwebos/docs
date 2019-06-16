@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606901"
 ---
 <a name="seller-insights-definitions"></a>Seller Insights 定义
@@ -81,7 +81,7 @@ ms.locfileid: "65606901"
 | **付款状态：即将到来的付款**                   | 交易已做好付款的准备，将包含在下一次应付款计算中。                      |
 | **价格 (CC)**                                   | 给定 SKU 的一个使用单位的价格（采用客户的货币）。                                                                  |
 | **提供程序的电子邮件**                                 | Microsoft 和最终客户之间的关系中涉及的提供程序的电子邮件地址。 如果客户是通过经销商的企业，它将为该分销商。  如果涉及到云解决方案提供商 (CSP)，它将为 CSP。                                                                 |
-| 提供者名称                                 | Microsoft 和最终客户之间的关系中涉及的提供程序的名称。 如果客户是通过经销商的企业，它将为该分销商。  如果涉及到云解决方案提供商 (CSP)，它将为 CSP。                                                                 |
+| 提供者名称                                  | Microsoft 和最终客户之间的关系中涉及的提供程序的名称。 如果客户是通过经销商的企业，它将为该分销商。  如果涉及到云解决方案提供商 (CSP)，它将为 CSP。                                                                 |
 | **资源 URI**                                  | 其中已部署的部署项目的路径。                                            |
 | **SKU**                                           | 在发布过程中定义的 SKU 名称。 产品/服务可能有多个 Sku，但 SKU 只能与单个产品/服务相关联。              |
 | **SKU 计费类型**                                 | SKU 的计费方法。                                                                                                             |

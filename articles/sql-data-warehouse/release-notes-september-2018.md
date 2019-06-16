@@ -11,17 +11,17 @@ ms.date: 10/08/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 5041458fdc3c6a49c59f2c4c476db71098531419
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65912155"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 9 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 9 月发行的版本中所引入的新功能和所做的更改。
 
 ## <a name="new-lower-entry-point-for-sql-data-warehouse-gen2"></a>适用于 SQL 数据仓库 Gen2 的较低新入口点
-2018 年 4 月，[Microsoft 公布了](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL 数据仓库 Gen2，可提供 5 倍的性能、5 倍的计算规模、4 倍的并发，以及无限的存储空间。 如 Gigaom 撰写的[云基准中的数据仓库](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)中所述，SQL 数据仓库 Gen2 的性能比 Amazon Redshif 高 42%。
+2018 年 4 月，[Microsoft 公布了](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL 数据仓库 Gen2，可提供 5 倍的性能、5 倍的计算规模、4 倍的并发，以及无限的存储空间。 如 Gigaom 撰写的[云基准中的数据仓库](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)中所述，SQL 数据仓库 Gen2 的性能比 Amazon Redshif 高 42%  。
 
 Gen2 现在采用较低的入口点 DWU500c，使用户能够运行较小的数据仓库或包含所有最新服务改进的开发/测试环境。 新的入口点保留了所有 Gen2 功能，包括[自适应缓存](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/)、[极速数据缓冲](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/)和对[实时数据仓库](https://azure.microsoft.com/blog/enabling-real-time-data-warehousing-with-azure-sql-data-warehouse/)的支持。
 
@@ -99,11 +99,11 @@ Commands completed successfully.
 
 ## <a name="bug-fixes"></a>Bug 修复
 
-| 职务 | 描述 |
+| 标题 | 描述 |
 |:---|:---|
 | **修复了有关创建唯一约束分发的统计信息的问题** | 此修补程序解决了运行仅指定表（表已定义约束）的 UPDATE STATISTICS 时遇到的错误。 |
 | **修复了有关对外部表编译查询的问题** | 此修补程序解决了影响涉及外部表的查询编译时间的缺陷。|
-| **修复了有关包含大型类型的语句的问题** | 解决了使用声明为大型类型之一（nvarchar(max)、varchar(max) 和 varbinary(max)）的参数的准备语句编译的缺陷。 |
+| **修复了有关包含大型类型的语句的问题** | 解决了使用声明为大型类型之一（nvarchar(max)、varchar(max) 和 varbinary(max)）的参数的准备语句编译的缺陷  。 |
 | **修复了有关深度嵌套查询的错误** | 当深度嵌套的查询超过系统限制时，提供清楚的错误消息。|
 | **修复了语句包含相关子查询和执行时间常量时的编译时错误** |解决了包含特定相关子查询和执行时间常量（例如 GETDATE()）组合的查询的编译时错误。|
 | **解决了获取 PDW 对象锁定和 autostats 的并发槽时的超时** |修补程序添加了锁定超时，防止 autostat 请求长时间阻止发起请求。|

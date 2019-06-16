@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
-ms.openlocfilehash: bac61342f39821b6181a6a0e61bf0b11fb311007
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 06a7623fed0205d927fca9406469737faeda3a4b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239341"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076792"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -70,6 +70,9 @@ ms.locfileid: "66239341"
  创建保管库后，它会显示在恢复服务保管库列表中。 如果未看到创建的保管库，请选择“刷新”  。
 
 ![备份保管库列表](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
+
+> [!NOTE]
+> Azure 备份服务创建单独的资源组 （而不是 VM 资源组） 来存储快照，使用的命名格式**AzureBackupRG_geography_number** (示例：AzureBackupRG_northeurope_1）。 此资源组中的数据将保留以天为单位中指定的持续时间*保留即时恢复快照*部分中的 Azure 虚拟机备份策略。  对此资源组应用锁可能会导致备份失败。
 
 ### <a name="modify-storage-replication"></a>修复存储复制
 

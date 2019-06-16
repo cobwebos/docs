@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
 ms.openlocfilehash: 479b810c5a66917bde5754d32991fb489ea26c9b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66299276"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
@@ -35,8 +35,8 @@ ms.locfileid: "66299276"
 |WCF 调用| 如果使用基于 Http 的绑定将只跟踪自动。|
 |SQL | 使用进行的调用`SqlClient`。 请参阅[这](##advanced-sql-tracking-to-get-full-sql-query)用于捕获 SQL 查询。  |
 |[Azure 存储 （Blob、 表、 队列）](https://www.nuget.org/packages/WindowsAzure.Storage/) | 使用 Azure 存储客户端进行的调用。 |
-|[事件中心客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 版及更高版本。 |
-|[ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3.0.0 版及更高版本。 |
+|[事件中心客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1\.1.0 版及更高版本。 |
+|[ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3\.0.0 版及更高版本。 |
 |Azure Cosmos DB | 如果使用 HTTP/HTTPS，仅跟踪自动。 Application Insights 不会捕获 TCP 模式。 |
 
 

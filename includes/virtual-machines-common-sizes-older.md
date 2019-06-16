@@ -8,26 +8,26 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 7196a2ea794c1d17a2c55c05accb447d83929972
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5c35cbfbd2e9d0a1655d05c1116d293fb78c9eb7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145734"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133268"
 ---
-本部分提供上一代虚拟机大小的信息。 这些大小仍受支持，但不是会收到更多的容量。 有更高版本或替代已公开发布的大小。 请参阅[大小的 Windows Azure 中的虚拟机](../articles/virtual-machines/windows/sizes.md)或[在 Azure 中 Linux 虚拟机的大小](../articles/virtual-machines/linux/sizes.md)若要选择的 VM 大小最适合需要。  
+本部分提供了有关先前几代虚拟机大小的信息。 这些大小仍受支持，但无法接收更多的容量。 有更新的或备用的大小，这些大小已公开发布。 请参阅 [Azure 中 Windows 虚拟机的大小](../articles/virtual-machines/windows/sizes.md)或 [Azure 中 Linux 虚拟机的大小](../articles/virtual-machines/linux/sizes.md)，以便选择最适合自己需求的 VM 大小。  
 
-调整 Linux VM 大小的详细信息，请参阅[调整大小使用 Azure CLI 为 Linux 虚拟机](../articles/virtual-machines/linux/change-vm-size.md)。 如果您使用的 Windows Vm，并更愿意使用 PowerShell，请参阅[调整 Windows VM 的大小](../articles/virtual-machines/windows/resize-vm.md)。  
+若要详细了解如何重设 Linux VM 大小，请参阅[使用 Azure CLI 重设 Linux 虚拟机大小](../articles/virtual-machines/linux/change-vm-size.md)。 如果你使用 Windows VM，且首选使用 PowerShell，请参阅[重设 Windows VM 大小](../articles/virtual-machines/windows/resize-vm.md)。  
 
 <br>
 
 ### <a name="basic-a"></a>基本 A  
 
-**较新的大小建议**:[Av2 系列](../articles/virtual-machines/windows/sizes-general.md#av2-series)
+**更新的大小建议**：[Av2 系列](../articles/virtual-machines/windows/sizes-general.md#av2-series)
 
-高级存储：不受支持
+高级存储：不支持
 
-高级存储缓存：不受支持
+高级存储缓存：不支持
 
 基本层大小主要用于开发工作负荷，以及其他不需要负载均衡、自动缩放或内存密集型虚拟机的应用程序。
 
@@ -43,13 +43,13 @@ ms.locfileid: "66145734"
 
 ### <a name="a-series"></a>A 系列  
 
-**较新的大小建议**:[Av2 系列](../articles/virtual-machines/windows/sizes-general.md#av2-series)
+**更新的大小建议**：[Av2 系列](../articles/virtual-machines/windows/sizes-general.md#av2-series)
 
 ACU：50-100
 
-高级存储：不受支持
+高级存储：不支持
 
-高级存储缓存：不受支持
+高级存储缓存：不支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (HDD)：GiB | 最大数据磁盘数 | 数据磁盘最大吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps)  |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -68,15 +68,15 @@ ACU：50-100
 
 ### <a name="a-series---compute-intensive-instances"></a>A 系列 - 计算密集型实例  
 
-**较新的大小建议**:[Av2 系列](../articles/virtual-machines/windows/sizes-general.md#av2-series)
+**更新的大小建议**：[Av2 系列](../articles/virtual-machines/windows/sizes-general.md#av2-series)
 
 ACU：225
 
-高级存储：不受支持
+高级存储：不支持
 
-高级存储缓存：不受支持
+高级存储缓存：不支持
 
-A8-A11 和 H 系列大小也称为“计算密集型实例”。 运行这些大小的硬件专为计算密集型和网络密集型应用程序而设计和优化，包括高性能计算 (HPC) 群集应用程序、建模和模拟。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。  
+A8-A11 和 H 系列大小也称为“计算密集型实例”。  运行这些大小的硬件专为计算密集型和网络密集型应用程序而设计和优化，包括高性能计算 (HPC) 群集应用程序、建模和模拟。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。  
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (HDD)：GiB | 最大数据磁盘数 | 数据磁盘最大吞吐量：IOPS | 最大 NIC 数|
 | --- | --- | --- | --- | --- | --- | --- |
@@ -91,13 +91,13 @@ A8-A11 和 H 系列大小也称为“计算密集型实例”。 运行这些大
 
 ### <a name="d-series"></a>D 系列  
 
-**较新的大小建议**:[Dv3 系列](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
+**更新的大小建议**：[Dv3 系列](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
 
 ACU：160-250 <sup>1</sup>
 
-高级存储：不受支持
+高级存储：不支持
 
-高级存储缓存：不受支持
+高级存储缓存：不支持
 
 | 大小         | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -106,19 +106,19 @@ ACU：160-250 <sup>1</sup>
 | Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 16/16x500                         | 4 / 2000                     |
 | Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 4000                     |
 
-<sup>1</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)  
+<sup>1</sup> VM 系列可以在下述 CPU 之一上运行：2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)  
 
 <br>
 
 ### <a name="d-series---memory-optimized"></a>D 系列 - 内存优化  
 
-**较新的大小建议**:[Dv3 系列](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
+**更新的大小建议**：[Dv3 系列](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
 
 ACU：160-250 <sup>1</sup>
 
-高级存储：不受支持
+高级存储：不支持
 
-高级存储缓存：不受支持
+高级存储缓存：不支持
 
 | 大小         | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -127,13 +127,13 @@ ACU：160-250 <sup>1</sup>
 | Standard_D13 | 8         | 56          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 4000                     |
 | Standard_D14 | 16        | 112         | 800            | 48000/750/375                                        | 64/64x500                       | 8 / 8000                |
 
-<sup>1</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)  
+<sup>1</sup> VM 系列可以在下述 CPU 之一上运行：2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)  
 
 <br>
 
 ### <a name="ds-series"></a>DS 系列  
 
-**较新的大小建议**:[DSv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
+**更新的大小建议**：[DSv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 
 ACU：160-250 <sup>1</sup>
 
@@ -148,13 +148,13 @@ ACU：160-250 <sup>1</sup>
 | Standard_DS3 |4 |14 |28 |16 |16,000 / 128 (172) |12,800 / 128 |4 / 2000 |
 | Standard_DS4 |8 |28 |56 |32 |32,000 / 256 (344) |25,600 / 256 |8 / 4000 |
 
-<sup>1</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)  
+<sup>1</sup> VM 系列可以在下述 CPU 之一上运行：2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)  
 
 <br>
 
 ### <a name="ds-series---memory-optimized"></a>DS 系列 - 内存优化  
 
-**较新的大小建议**:[DSv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
+**更新的大小建议**：[DSv3 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 
 ACU：160-250 <sup>1,2</sup>
 
@@ -170,6 +170,49 @@ ACU：160-250 <sup>1,2</sup>
 | Standard_DS14 |16 |112 |224 |64 |64,000 / 512 (576) |51,200 / 512 |8 / 8000 |
 
 <sup>1</sup> DS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。   
-<sup>2</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)  
+<sup>2</sup> VM 系列可以在下述 CPU 之一上运行：2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)  
 
+<br>
+
+### <a name="gs-series"></a>GS 系列 
+
+ACU：180 - 240 <sup>1</sup>
+
+高级存储：支持
+
+高级存储缓存：支持
+
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+|---|---|---|---|---|---|---|---|
+| Standard_GS1 |2 |28 |56 |8 |10,000 / 100 (264) |5,000 / 125 |2 / 2000 |
+| Standard_GS2 |4 |56 |112 |16 |20,000 / 200 (528) |10,000 / 250 |2 / 4000 |
+| Standard_GS3 |8 |112 |224 |32 |40,000 / 400 (1,056) |20,000 / 500 |4 / 8000 |
+| Standard_GS4&nbsp;<sup>3</sup> |16 |224 |448 |64 |80,000 / 800 (2,112) |40,000 / 1,000 |8 / 16000 |
+| Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> |32 |448 |896 |64 |160,000 / 1,600 (4,224) |80,000 / 2,000 |8 / 20000 |
+
+<sup>1</sup> GS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
+
+<sup>2</sup> 实例对于专用于单个客户的硬件独立。
+
+<sup>3</sup> 受约束的可用核心大小。
+
+<br>
+
+### <a name="g-series"></a>G 系列
+
+ACU：180 - 240
+
+高级存储：不支持
+
+高级存储缓存：不支持
+
+| 大小         | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_G1  | 2         | 28          | 384            | 6000/93/46                                           | 8/8 x 500                       | 2 / 2000                     |
+| Standard_G2  | 4         | 56          | 768            | 12000/187/93                                         | 16/16 x 500                       | 2 / 4000                     |
+| Standard_G3  | 8         | 112         | 1,536          | 24000/375/187                                        | 32/32 x 500                     | 4 / 8000                |
+| Standard_G4  | 16        | 224         | 3,072          | 48000/750/375                                        | 64/64 x 500                     | 8 / 16000          |
+| Standard_G5&nbsp;<sup>1</sup> | 32        | 448         | 6,144          | 96000 / 1500 / 750                                       | 64/64 x 500                     | 8 / 20000           |
+
+<sup>1</sup> 实例对于专用于单个客户的硬件独立。
 <br>

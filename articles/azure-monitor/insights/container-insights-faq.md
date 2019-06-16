@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: afa332b40884a79b5114b3b8093cd27108c39984
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780012"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>用于容器的 Azure Monitor 常见问题解答
@@ -71,7 +71,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>启用实时日志时，如何解决 Azure AD 错误？ 
 
-你可能会看到以下错误：**答复请求中指定的 url 与应用程序配置的答复 url 不匹配: < 应用程序 ID\>**。 若要解决此问题的解决方案可以在文章中找到[如何查看容器日志实时 Azure monitor 容器](container-insights-live-logs.md#configure-aks-with-azure-active-directory)。 
+你可能会看到以下错误：**答复请求中指定的 url 与应用程序配置的答复 url 不匹配: < 应用程序 ID\>** 。 若要解决此问题的解决方案可以在文章中找到[如何查看容器日志实时 Azure monitor 容器](container-insights-live-logs.md#configure-aks-with-azure-active-directory)。 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>为什么不能升级群集载入后？
 

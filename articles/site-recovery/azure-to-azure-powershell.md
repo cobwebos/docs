@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
 ms.openlocfilehash: c585b300a65091bee3320a21b7bce7ba94d269ec
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258805"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
@@ -44,16 +44,16 @@ ms.locfileid: "66258805"
 开始之前：
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
-- 已将 Azure PowerShell`Az`模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
+- 设置 Azure PowerShell `Az` 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>登录到 Microsoft Azure 订阅
 
-登录到 Azure 订阅使用 Connect AzAccount cmdlet
+使用 Connect-AzAccount cmdlet 登录到 Azure 订阅
 
 ```azurepowershell
 Connect-AzAccount
 ```
-选择 Azure 订阅。 使用 Get AzSubscription cmdlet 有权访问的有 Azure 订阅的列表。 选择要与选择 AzSubscription cmdlet 配合使用的 Azure 订阅。
+选择 Azure 订阅。 使用 Get-AzSubscription cmdlet 获取你有权访问的 Azure 订阅的列表。 使用 Select-AzSubscription cmdlet 选择要使用的 Azure 订阅。
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -586,7 +586,7 @@ Errors           : {}
 
 ## <a name="reprotect-and-failback-to-source-region"></a>重新保护和故障回复到源区域
 
-故障转移后，当准备好返回到原始区域，开始使用更新 AzRecoveryServicesAsrProtectionDirection cmdlet 复制保护项的反向复制。
+故障转移后，准备好恢复到原始区域时，请使用 Update-AzRecoveryServicesAsrProtectionDirection cmdlet 对复制保护项启动反向复制。
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
@@ -602,4 +602,4 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 重新保护完成后，可以启动反方向 （到美国东部的美国西部） 和故障回复到源区域中的故障转移。
 
 ## <a name="next-steps"></a>后续步骤
-视图[Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/az.RecoveryServices)若要了解如何执行其他任务，如创建恢复计划和测试通过 PowerShell 恢复计划的故障转移。
+查看 [Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/az.RecoveryServices)来了解如何通过 PowerShell 执行其他任务，例如创建恢复计划，以及对恢复计划执行测试性故障转移。

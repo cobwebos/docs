@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06112361434a8217df6714a70d0059c175e98ac8
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: df20c8b863a6abb1cdb4d53c0057b223fe9fdaf5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521723"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110428"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -95,7 +95,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：Azure AD 是否可以帮助我管理本地基础结构？**
 
-**答:** 可以。 Azure AD Premium Edition 提供 Azure AD Connect Health。 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  
+**答:** 是的。 Azure AD Premium Edition 提供 Azure AD Connect Health。 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  
 
 有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](../hybrid/whatis-hybrid-identity-health.md)。  
 
@@ -196,7 +196,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：如何要求访问特定应用程序的用户进行多重身份验证？**
 
-**答:** 使用 Azure AD 条件访问，可以针对每个应用程序分配独特的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
+**答:** 使用 Azure AD 条件性访问，可以分配每个应用程序的独特的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
 
 有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](../active-directory-conditional-access-azure-portal.md)。
 

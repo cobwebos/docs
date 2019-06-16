@@ -10,10 +10,10 @@ ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e79f4b58582ab6643a7a13ffee25503060a2208c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60929249"
 ---
 # <a name="my-first-python-runbook"></a>我的第一个 Python Runbook
@@ -39,16 +39,16 @@ ms.locfileid: "60929249"
 
 ## <a name="create-a-new-runbook"></a>创建新的 Runbook
 
-首先创建一个输出文本 Hello World 的简单 Runbook。
+首先创建一个输出文本 Hello World 的简单 Runbook  。
 
 1. 在 Azure 门户中，打开自动化帐户。
 
     通过自动化帐户页面可快速查看此帐户中的资源。 应该已拥有某些资产。 大多数此类资产都是自动包括在新的自动化帐户中的模块。 还应具有在 [“先决条件”](#prerequisites)中提到的凭证资产。<br>
 
-1. 在“进程管理”下选择“Runbook”，打开 Runbook 的列表。
-1. 选择“+ 添加 Runbook”创建新的 Runbook。
-1. 将该 Runbook 命名为 MyFirstRunbook-Python。
-1. 在此示例中，将要创建一个 [Python Runbook](automation-runbook-types.md#python-runbooks)，因此请选择“Python 2”作为“Runbook 类型”。
+1. 在“进程管理”下选择“Runbook”，打开 Runbook 的列表。  
+1. 选择“+ 添加 Runbook”创建新的 Runbook  。
+1. 将该 Runbook 命名为 MyFirstRunbook-Python  。
+1. 在此示例中，将要创建一个 [Python Runbook](automation-runbook-types.md#python-runbooks)，因此请选择“Python 2”作为“Runbook 类型”   。
 1. 单击“创建”以创建 Runbook 并打开文本编辑器  。
 
 ## <a name="add-code-to-the-runbook"></a>将代码添加到 Runbook
@@ -59,17 +59,17 @@ ms.locfileid: "60929249"
 print("Hello World!")
 ```
 
-单击“保存”保存 runbook。
+单击“保存”保存 runbook  。
 
 ## <a name="test-the-runbook"></a>测试 Runbook
 
-在发布 Runbook 使其可在生产中使用之前，需对其进行测试以确保其能正常工作。 测试 Runbook 时，可以运行其“草稿”版本并以交互方式查看其输出。
+在发布 Runbook 使其可在生产中使用之前，需对其进行测试以确保其能正常工作。 测试 Runbook 时，可以运行其“草稿”版本并以交互方式查看其输出  。
 
 1. 单击“测试窗格”  打开测试窗格。
 1. 单击“启动”以启动测试  。 这应该是唯一的已启用选项。
 1. 将创建一个 [Runbook 作业](automation-runbook-execution.md) 并显示其状态。
-   作业状态一开始为“排队”，表示正在等待云中的 Runbook 辅助角色变为可用状态。 在某个辅助角色认领此作业后，作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，此状态将变为“正在运行”。
-1. Runbook 作业完成后，会显示其输出。 在此示例中，应会显示 Hello World。
+   作业状态一开始为“排队”，表示正在等待云中的 Runbook 辅助角色变为可用状态  。 在某个辅助角色认领此作业后，作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，此状态将变为“正在运行”   。
+1. Runbook 作业完成后，会显示其输出。 在此示例中，应会显示 Hello World  。
 1. 关闭测试窗格以返回到画布。
 
 ## <a name="publish-and-start-the-runbook"></a>发布和启动 Runbook
@@ -78,16 +78,16 @@ print("Hello World!")
 当发布 Runbook 时，可以用草稿版本覆盖现有的已发布版本。
 在此示例中，因此才创建了 Runbook，因此还没有已发布版本。
 
-1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是”。
-1. 如果向左滚动以在“Runbook”窗格中查看该 Runbook，它会显示“已发布”的“创作状态”。
-1. 向右滚动查看“MyFirstRunbook-Python”窗格。
+1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是”   。
+1. 如果向左滚动以在“Runbook”窗格中查看该 Runbook，它会显示“已发布”的“创作状态”    。
+1. 向右滚动查看“MyFirstRunbook-Python”  窗格。
    顶部的选项允许我们启动 Runbook、查看 Runbook、计划其在将来的某个时刻启动。
-2. 如果想要启动 Runbook，请单击“启动”，并在“启动 Runbook”边栏选项卡打开时单击“确定”。
+2. 如果想要启动 Runbook，请单击“启动”，并在“启动 Runbook”边栏选项卡打开时单击“确定”   。
 3. 此时会为你创建的 Runbook 作业打开作业窗格。 可以关闭此窗格，但在此示例中，将它保持打开状态，以便查看该作业的进度。
-1. 作业状态显示在“作业摘要”中并且与测试该 Runbook 时看到的状态相匹配。
-2. 一旦此 Runbook 状态显示“已完成”，单击“输出”。 “输出”窗格打开后，可以看到 Hello World。
+1. 作业状态显示在“作业摘要”中并且与测试该 Runbook 时看到的状态相匹配  。
+2. 一旦此 Runbook 状态显示“已完成”，单击“输出”   。 “输出”窗格打开后，可以看到 Hello World  。
 3. 关闭“输出”窗格。
-4. 单击“所有日志”打开 Runbook 作业的“流”窗格。 应该只会在输出流中看到 *Hello World*，但此窗格也可以显示 Runbook 作业的其他流，例如，“详细”和“错误”（如果 Runbook 向其写入）。
+4. 单击“所有日志”打开 Runbook 作业的“流”窗格  。 应该只会在输出流中看到 *Hello World*，但此窗格也可以显示 Runbook 作业的其他流，例如，“详细”和“错误”（如果 Runbook 向其写入）。
 5. 关闭“流”窗格和“作业”窗格以返回到“MyFirstRunbook-Python”窗格。
 6. 单击“作业”打开此 Runbook 的“作业”窗格  。 这会列出此 Runbook 创建的所有作业。 由于只运行该作业一次，应该只会看到一个列出的作业。
 7. 可以单击此作业，打开在启动 Runbook 时查看过的“作业”窗格。 这样便可以回溯并查看为特定 Runbook 创建的任何作业的详细信息。
@@ -101,7 +101,7 @@ print("Hello World!")
 > 创建的自动化帐户必须包含服务主体功能，以存在一个 Run As 证书。
 > 如果创建的自动化帐户没有服务主体，则可以使用[使用用于 Python 的 Azure 管理库进行身份验证](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate)中所述的方法进行身份验证。
 
-1. 通过单击 MyFirstRunbook-Python 窗格上的“编辑”打开文本编辑器。
+1. 通过单击 MyFirstRunbook-Python 窗格上的“编辑”打开文本编辑器  。
 
 2. 添加以下代码以对 Azure 进行身份验证：
 
@@ -163,7 +163,7 @@ async_vm_start = compute_client.virtual_machines.start("MyResourceGroup", "TestV
 async_vm_start.wait()
 ```
 
-其中 MyResourceGroup 是包含 VM 的资源组的名称，TestVM 是要启动的 VM 的名称。
+其中 MyResourceGroup  是包含 VM 的资源组的名称，TestVM  是要启动的 VM 的名称。
 
 再次测试并运行 Runbook，以便看到它启动 VM。
 
@@ -192,7 +192,7 @@ async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_n
 async_vm_start.wait()
 ```
 
-启动 Python Runbook（在“测试”页上启动或将其作为已发布的 Runbook 启动）时，可以在“启动 Runbook”页的“参数”下输入参数的值。
+启动 Python Runbook（在“测试”  页上启动或将其作为已发布的 Runbook 启动）时，可以在“启动 Runbook”  页的“参数”  下输入参数的值。
 
 开始在第一个框中输入值时，将出现第二个框，以此类推，这样可以根据需要输入任意数量的参数值。
 
@@ -202,7 +202,7 @@ async_vm_start.wait()
 
 ![输入参数值](media/automation-first-runbook-textual-python/runbook-python-params.png)
 
-单击“确定”启动 Runbook。 Runbook 运行，并启动指定的 VM。
+单击“确定”  启动 Runbook。 Runbook 运行，并启动指定的 VM。
 
 ## <a name="next-steps"></a>后续步骤
 
