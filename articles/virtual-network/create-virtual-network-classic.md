@@ -17,10 +17,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
 ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62098110"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>创建包含多个子网的虚拟网络（经典）
@@ -40,35 +40,35 @@ ms.locfileid: "62098110"
 ## <a name="portal"></a>门户
 
 1. 在 Internet 浏览器中，转到 [Azure 门户](https://portal.azure.com)。 使用 [Azure 帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果没有 Azure 帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
-2. 在门户中，单击“创建资源”。
-3. 在显示的“新建”窗格顶部的“在市场中搜索”中输入“虚拟网络”。 单击搜索结果中出现的“虚拟网络”。
-4. 在显示的“虚拟网络”窗格的“选择部署模型”框中选择“经典”，然后单击“创建”。 
-5. 在“创建虚拟网络(经典)”窗格中输入以下值，然后单击“创建”：
+2. 在门户中，单击“创建资源”  。
+3. 在显示的“新建”窗格顶部的“在市场中搜索”中输入“虚拟网络”。    单击搜索结果中出现的“虚拟网络”  。
+4. 在显示的“虚拟网络”窗格的“选择部署模型”框中选择“经典”，然后单击“创建”。     
+5. 在“创建虚拟网络(经典)”  窗格中输入以下值，然后单击“创建”  ：
 
     |设置|值|
     |---|---|
-    |名称|myVnet|
+    |Name|myVnet|
     |地址空间|10.0.0.0/16|
     |子网名称|公共|
     |子网地址范围|10.0.0.0/24|
-    |资源组|保留选中“新建”，输入 **myResourceGroup**。|
+    |资源组|保留选中“新建”，输入 **myResourceGroup**。 |
     |订阅和位置|选择订阅和位置。
 
-    如果不熟悉 Azure，请详细了解[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)、[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和[位置](https://azure.microsoft.com/regions)（也称为“区域”）。
-4. 在创建虚拟网络时，只能在门户中创建一个子网。 在本教程中，将在创建虚拟网络之后创建第二个子网。 随后可在“公共”子网中创建可通过 Internet 访问的资源。 还可以在“专用”子网中创建无法通过 Internet 访问的资源。 若要创建第二个子网，请在页面顶部的“搜索资源”框中输入 **myVnet**。 单击显示在搜索结果中的“myVnet”。
-5. 在显示的“创建虚拟网络(经典)”窗格中单击“子网”（在“设置”部分中）。
-6. 在显示的“myVnet - 子网”窗格中单击“+添加”。
-7. 在“添加子网”窗格中，为“名称”输入“专用”。 为“地址范围”输入 **10.0.1.0/24**。  单击“确定”。
-8. 在“myVnet - 子网”窗格中，可以看到已创建的“公共”和“专用”子网。
+    如果不熟悉 Azure，请详细了解[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)、[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和[位置](https://azure.microsoft.com/regions)（也称为“区域”  ）。
+4. 在创建虚拟网络时，只能在门户中创建一个子网。 在本教程中，将在创建虚拟网络之后创建第二个子网。 随后可在“公共”子网中创建可通过 Internet 访问的资源。  还可以在“专用”子网中创建无法通过 Internet 访问的资源。  若要创建第二个子网，请在页面顶部的“搜索资源”框中输入 **myVnet**。  单击显示在搜索结果中的“myVnet”  。
+5. 在显示的“创建虚拟网络(经典)”窗格中单击“子网”（在“设置”部分中）。   
+6. 在显示的“myVnet - 子网”窗格中单击“+添加”。  
+7. 在“添加子网”窗格中，为“名称”输入“专用”。    为“地址范围”输入 **10.0.1.0/24**。   单击“确定”。 
+8. 在“myVnet - 子网”窗格中，可以看到已创建的“公共”和“专用”子网。   
 9. **可选**：完成本教程后，可能想要删除创建的资源，以免产生使用费：
-    - 在“myVnet”窗格中单击“概述”。
-    - 在“myVnet”窗格中单击“删除”图标。
-    - 若要确认删除，请单击“删除虚拟网络”框中的“是”。
+    - 在“myVnet”窗格中单击“概述”。  
+    - 在“myVnet”窗格中单击“删除”图标。  
+    - 若要确认删除，请单击“删除虚拟网络”框中的“是”   。
 
 ## <a name="azure-cli"></a>Azure CLI
 
 1. 可以[安装并配置 Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，或者在 Azure Cloud Shell 中使用 CLI。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要获取 CLI 命令的帮助，请键入 `azure <command> --help`。 
-2. 在 CLI 会话中，使用以下命令登录到 Azure。 如果在下框中单击“试用”，则会打开 Cloud Shell。 无法输入以下命令即可登录到 Azure 订阅：
+2. 在 CLI 会话中，使用以下命令登录到 Azure。 如果在下框中单击“试用”，则会打开 Cloud Shell。  无法输入以下命令即可登录到 Azure 订阅：
 
     ```azurecli-interactive
     azure login

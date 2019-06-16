@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: aschhab
 ms.openlocfilehash: af67b27dacf3bb86c2dd5c878a2751e027a53acb
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003121"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 
-Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)”的辅助子队列。 死信队列不需要显式创建，并且不能删除或以其他方式独立于主实体进行管理。
+Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)”的辅助子队列  。 死信队列不需要显式创建，并且不能删除或以其他方式独立于主实体进行管理。
 
 本文介绍服务总线中的死信队列。 GitHub 上的[死信队列示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/DeadletterQueue)对很多讨论进行了说明。
  

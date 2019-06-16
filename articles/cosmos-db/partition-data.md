@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.openlocfilehash: 30290652044499ff8e537adc90689f562e1489d2
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953767"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区和水平缩放
@@ -27,7 +27,7 @@ ms.locfileid: "65953767"
 
 ## <a name="physical-partitions"></a>物理分区
 
-通过将数据和吞吐量分配到大量逻辑分区上来缩放 Azure Cosmos 容器。 在内部，一个或多个逻辑分区将映射到由一组副本（也称为[副本集](global-dist-under-the-hood.md)）构成的物理分区。 每个副本集托管 Azure Cosmos DB 数据库引擎的一个实例。 副本集使物理分区中存储的数据具有持久性、高可用性和一致性。 物理分区支持最大数量的存储和请求单位 (RU)。 构成物理分区的每个副本均继承该分区的存储配额。 物理分区的所有副本共同支持分配给物理分区的吞吐量。 
+通过将数据和吞吐量分配到大量逻辑分区上来缩放 Azure Cosmos 容器。 在内部，一个或多个逻辑分区将映射到由一组副本（也称为[副本集](global-dist-under-the-hood.md)）构成的物理分区。  每个副本集托管 Azure Cosmos DB 数据库引擎的一个实例。 副本集使物理分区中存储的数据具有持久性、高可用性和一致性。 物理分区支持最大数量的存储和请求单位 (RU)。 构成物理分区的每个副本均继承该分区的存储配额。 物理分区的所有副本共同支持分配给物理分区的吞吐量。 
 
 下图显示了逻辑分区如何映射到全局分配的物理分区：
 

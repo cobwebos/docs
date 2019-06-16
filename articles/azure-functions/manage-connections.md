@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
 ms.openlocfilehash: 69425129d5f049254a60032283ddc6ca2ab84d5c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65872698"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
@@ -21,7 +21,7 @@ ms.locfileid: "65872698"
 
 ## <a name="connection-limit"></a>连接限制
 
-可用连接数量受到限制，部分原因是函数应用在[沙盒环境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中运行。 沙箱对代码施加的限制之一是这当前是 600 每个实例的活动 （1,200 总计） 连接上的出站连接数限制。 当达到此限制时，则 functions 运行时将显示以下消息写入日志： `Host thresholds exceeded: Connections`。 有关详细信息，请参阅[函数的服务限制](functions-scale.md#service-limits)。
+可用连接数量受到限制，部分原因是函数应用在[沙盒环境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中运行。 沙盒对代码施加的限制之一是对出站连接数量进行限制，目前每个实例的活动连接数上限为 600 个（总共 1,200 个连接）。 达到此限制时，函数运行时会将以下消息写入日志：`Host thresholds exceeded: Connections`。 有关详细信息，请参阅 [Functions 服务限制](functions-scale.md#service-limits)。
 
 此限制是按实例施加的。 [缩放控制器添加函数应用实例](functions-scale.md#how-the-consumption-and-premium-plans-work)以处理更多请求时，每个实例都有单独的连接限制。 这意味着没有全局连接限制，你可以跨所有活动实例建立比 600 个活动连接多得多的连接。
 
@@ -34,9 +34,9 @@ ms.locfileid: "65872698"
 
 在 Azure Functions 应用程序中使用特定于服务的客户端时，请遵循以下准则：
 
-- 不要在每次调用函数时创建新的客户端。
-- 应创建一个可在每次调用函数时使用的静态客户端。
-- 如果不同的函数使用相同的服务，请考虑在共享帮助程序类中创建单个静态客户端。
+-  不要在每次调用函数时创建新的客户端。
+-  应创建一个可在每次调用函数时使用的静态客户端。
+- 如果不同的函数使用相同的服务，请考虑  在共享帮助程序类中创建单个静态客户端。
 
 ## <a name="client-code-examples"></a>客户端代码示例
 
@@ -135,7 +135,7 @@ module.exports = async function (context) {
 ) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 > [!TIP]
-> 某些数据框架（例如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中。
+> 某些数据框架（例如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中  。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中  。
 
 ## <a name="next-steps"></a>后续步骤
 

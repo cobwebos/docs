@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: jhakulin
-ms.openlocfilehash: 80ec606fee30c239d47bca94188d3b9cbb7c82d5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: f0838d345abfcfdf69ca6ea44d3206c23010b457
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604411"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073090"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>转录语音 SDK 与多个参与者对话
 
@@ -43,7 +43,7 @@ Speech SDK **ConversationTranscriber** API 允许你能够添加、 删除和标
 * 创建语音签名的输入音频波形文件应是 16 位样本、 16 kHz 采样率和单通道 (Mono) 格式。
 * 每个音频采样的推荐的长度为 30 秒到两分钟。
 
-下面的示例演示两种不同方式创建语音签名 [使用 REST API]。(https://aka.ms/cts/signaturegenservice)从C#:
+下面的示例演示两种不同方式创建通过语音签名[使用 REST API](https://aka.ms/cts/signaturegenservice)从C#:
 
 ```csharp
 class Program

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑 | Microsoft Docs
-description: 了解数据库迁移服务的源和目标配置。
+title: 网络拓扑使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例 |Microsoft Docs
+description: 了解 Azure 数据库迁移服务的源和目标配置。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,59 +10,67 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: d12d6b1274a756bfb13761ab999a1539bcee3657
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/07/2019
+ms.openlocfilehash: 74613599903f7cde606295a1e2d9eaaa0924cf50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61097775"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808421"
 ---
-# <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑
-本文介绍 Azure SQL 数据库迁移服务可使用的各种网络拓扑，以提供从本地 SQL Server 到 Azure SQL 数据库托管实例的全面迁移体验。
+# <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-azure-database-migration-service"></a>使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑
+
+本文讨论了各种 Azure 数据库迁移服务可以使用来提供全面的迁移体验从本地 SQL 服务器到 Azure SQL 数据库托管实例的网络拓扑。
 
 ## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>为混合工作负载配置的 Azure SQL 数据库托管实例 
+
 如果 Azure SQL 数据库托管实例与本地网络连接，请使用此拓扑。 此方法提供最简化的网络路由，并在迁移过程中提供最大数据吞吐量。
 
 ![混合工作负载的网络拓扑](media/resource-network-topologies/hybrid-workloads.png)
 
 **要求**
-- 在此方案中，Azure SQL 数据库托管实例和 Azure 数据库迁移服务实例都创建在同一 Azure VNET 中，但他们使用不同的子网。  
-- 本方案中使用的 VNET 还通过使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 与本地网络连接。
+
+- 在此方案中，在相同的 Azure VNet 中创建 Azure SQL 数据库托管实例和 Azure 数据库迁移服务实例，但它们使用不同的子网。  
+- 此方案中使用的 VNet 还通过使用连接到本地网络[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
 
 ## <a name="azure-sql-database-managed-instance-isolated-from-the-on-premises-network"></a>Azure SQL 数据库托管实例与本地网络隔离
+
 如果环境要求以下的一种或多种方案，则使用此网络拓扑：
-- Azure SQL 数据库托管实例与本地连接分离，但是 Azure 数据库迁移服务实例与本地网络连接。
-- 如果基于角色的访问控制 (RBAC) 策略已到位，而且你需要限制用户对托管 Azure SQL 数据库托管实例的同一订阅的访问权限。
-- 用于 Azure SQL 数据库托管实例和 Azure 数据库迁移服务的 VNET 在不同的订阅中。
+
+- Azure SQL 数据库托管的实例都独立于本地连接，但你的 Azure 数据库迁移服务实例连接到本地网络。
+- 如果角色基于访问控制 (RBAC) 策略已到位，你需要限制用户对访问 Azure SQL 数据库托管的实例的宿主的同一个订阅。
+- 用于 Azure SQL 数据库托管实例和 Azure 数据库迁移服务的 Vnet 属于不同订阅。
 
 ![托管实例的网络拓扑与本地网络分离](media/resource-network-topologies/mi-isolated-workload.png)
 
 **要求**
-- Azure 数据库迁移服务针对本方案使用的 VNET 还需通过使用 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 连接到本地网络。
-- 在用于 Azure SQL 数据库托管实例的 VNET 和 Azure 数据库迁移服务之间设置 [VNET 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
 
+- Azure 数据库迁移服务针对本方案使用的 VNet 必须还连接到本地网络使用 (https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
+- 设置[VNet 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)之间 VNet 用于 Azure SQL 数据库托管实例和 Azure 数据库迁移服务。
 
-## <a name="cloud-to-cloud-migrations-shared-vnet"></a>云到云的迁移：共享的 VNET
+## <a name="cloud-to-cloud-migrations-shared-vnet"></a>云到云迁移： 共享的 VNet
 
-如果源 SQL Server 托管在 Azure VM 中，且与 Azure SQL 数据库托管实例以及 Azure 数据库迁移服务共享同一个 VNET，请使用此拓扑。
+如果源 SQL Server Azure VM 中托管，并且与 Azure SQL 数据库托管实例和 Azure 数据库迁移服务共享同一个 VNET，请使用此拓扑。
 
-![共享 VNET 的云到云迁移的网络拓扑](media/resource-network-topologies/cloud-to-cloud.png)
+![使用共享 VNet 的云到云迁移的网络拓扑](media/resource-network-topologies/cloud-to-cloud.png)
 
 **要求**
+
 - 没有其他要求。
 
-## <a name="cloud-to-cloud-migrations-isolated-vnet"></a>云到云的迁移：独立的 VNET
+## <a name="cloud-to-cloud-migrations-isolated-vnet"></a>云到云的迁移： 独立的 VNet
 
 如果环境要求以下的一种或多种方案，则使用此网络拓扑：
-- Azure SQL 数据库托管实例所在的 VNET 是独立的。
-- 如果基于角色的访问控制 (RBAC) 策略已到位，而且你需要限制用户对托管 Azure SQL 数据库托管实例的同一订阅的访问权限。
-- 用于 Azure SQL 数据库托管实例和 Azure 数据库迁移服务的 VNET 在不同的订阅中。
 
-![独立 VNET 的云到云迁移的网络拓扑](media/resource-network-topologies/cloud-to-cloud-isolated.png)
+- Azure SQL 数据库托管的实例 VNet 是独立的预配。
+- 如果角色基于访问控制 (RBAC) 策略已到位，你需要限制用户对访问 Azure SQL 数据库托管的实例的宿主的同一个订阅。
+- 用于 Azure SQL 数据库托管实例和 Azure 数据库迁移服务的 Vnet 属于不同订阅。
+
+![使用 VNet 是独立的云到云迁移的网络拓扑](media/resource-network-topologies/cloud-to-cloud-isolated.png)
 
 **要求**
-- 在用于 Azure SQL 数据库托管实例的 VNET 和 Azure 数据库迁移服务之间设置 [VNET 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
+
+- 设置[VNet 网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)之间 VNet 用于 Azure SQL 数据库托管实例和 Azure 数据库迁移服务。
 
 ## <a name="inbound-security-rules"></a>入站安全规则
 
@@ -82,10 +90,12 @@ ms.locfileid: "61097775"
 | DMS_subnet                | 任意                                                   | 任意          | 任意        | DMS_Subnet                | 允许      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>另请参阅
+
 - [将 SQL Server 迁移到 Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
 - [使用 Azure 数据库迁移服务的先决条件概述](https://docs.microsoft.com/azure/dms/pre-reqs)
 - [使用 Azure 门户创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
 ## <a name="next-steps"></a>后续步骤
-- 有关 Azure 数据库迁移服务的概述，请参阅[什么是 Azure 数据库迁移服务？](dms-overview.md)一文。
-- 有关 Azure 数据库迁移服务区域可用性的当前信息，请参阅[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration) 页面。
+
+- Azure 数据库迁移服务的概述，请参阅文章[什么是 Azure 数据库迁移服务？](dms-overview.md)。
+- Azure 数据库迁移服务的区域可用性的当前信息，请参阅[区域的可用产品](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration)页。

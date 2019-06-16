@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: fa5a57afa379c6bbe027be80f400fc176800d289
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158510"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-cicd-npm-package"></a>持续集成和开发与 Stream Analytics CI/CD npm 包
@@ -45,7 +45,7 @@ Stream Analytics Visual Studio Code 项目成功生成，当它生成以下两�
 Parameters.json 文件中的默认参数是从你的 Visual Studio 代码项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 
 > [!NOTE]
-> 对于所有凭据，默认值均设置为 null。 部署到云之前，必须先设置这些值。
+> 对于所有凭据，默认值均设置为 null。 部署到云之前，必须先设置这些值  。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {

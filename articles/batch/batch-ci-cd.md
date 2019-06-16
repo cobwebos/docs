@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.openlocfilehash: a811a9cb1b124aff7c64d25cf71a1b84bff0c173
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65541751"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure 管道来生成和部署的 HPC 解决方案
@@ -302,7 +302,7 @@ Azure 管道用于生成、 部署、 测试和监视软件提供了一系列新
 * **Arm 模板**将我们的基础结构存储为代码的文件夹
 * **Hpc 应用程序**包含 ffmpeg 的二进制文件的文件夹
 * **管道**包含为我们生成的管道定义的文件夹。
-* 可选：**客户端应用程序**将存储为.NET 应用程序代码的文件夹。 我们不要使用这在示例中，但在您自己的项目，你可能想要执行的 HPC 批处理应用程序通过客户端应用程序的运行。
+* 可选  ：**客户端应用程序**将存储为.NET 应用程序代码的文件夹。 我们不要使用这在示例中，但在您自己的项目，你可能想要执行的 HPC 批处理应用程序通过客户端应用程序的运行。
 
 > [!NOTE]
 > 这只是一个示例结构的代码库。 这种方法用于演示应用程序、 基础架构和管道代码存储在同一个存储库的目的。
@@ -418,13 +418,13 @@ Azure 管道还用于部署应用程序和底层基础结构。 [发布管道](h
     * **操作**：创建或更新资源组
     * **资源组**: $(resourceGroupName)
     * **位置**: $(location)
-    * **模板**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/storageAccount.json
+    * **模板**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
     * **替代模板参数**:-accountName $(storageAccountName)
 
 1. 将从源代码管理项目上传到存储帐户。 没有要执行此操作的 Azure 管道的任务。 作为此任务的一部分，存储帐户容器 URL 和 SAS 令牌可以输出到 Azure 管道中的变量。 这意味着整个此代理阶段可以重复使用。
 
     添加**Azure 文件复制**任务并设置以下属性：
-    * **源：** $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates /
+    * **源：** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates /
     * **Azure 连接类型**:Azure 资源管理器
     * **Azure 订阅：** 选择相应的 Azure 订阅
     * **目标类型**:Azure Blob
@@ -441,7 +441,7 @@ Azure 管道还用于部署应用程序和底层基础结构。 [发布管道](h
     * **操作**：创建或更新资源组
     * **资源组**: $(resourceGroupName)
     * **位置**: $(location)
-    * **模板**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/deployment.json
+    * **模板**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
     * **替代模板参数**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 一种常见做法是使用 Azure 密钥保管库任务。 如果服务主体 （连接到 Azure 订阅） 的设置适当的访问策略，它可以从 Azure 密钥保管库下载机密，并使用为你的管道中的变量。 将与相关联的值设置的机密的名称。 例如，可以使用 $(sshPassword) 发布定义中引用 sshPassword 的机密。

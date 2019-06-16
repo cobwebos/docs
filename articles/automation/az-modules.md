@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a076c924d57aadfae477a5df0d128aad8e67af60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a45a1fbe0d7a99c970d6f8f5626c1349f9d8b1ca
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61305382"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67123700"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自动化中的 Az 模块支持
 
@@ -53,17 +53,17 @@ Azure 自动化支持在 runbook 中使用 [Azure Powershell Az 模块](/powersh
 
 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) 模块是其他 `Az.*` 模块的依赖项。 因此，需要先将此模块导入自动化帐户，然后才能导入任何其他模块。
 
-在自动化帐户中，选择“共享资源”下的“模块”。 单击“浏览库”，打开“浏览库”页。  在搜索栏中，输入模块名称（例如 `Az.Accounts`）。 在 PowerShell 模块页，单击“导入”，将模块导入自动化帐户。
+在自动化帐户中，选择“共享资源”下的“模块”   。 单击“浏览库”，打开“浏览库”页   。  在搜索栏中，输入模块名称（例如 `Az.Accounts`）。 在 PowerShell 模块页，单击“导入”，将模块导入自动化帐户  。
 
 ![从自动化帐户导入模块](media/az-modules/import-module.png)
 
-还可以通过搜索模块，使用 [PowerShell 库](https://www.powershellgallery.com)完成此导入过程。 找到模块后，选择该模块，然后在“Azure 自动化”选项卡下，单击“部署到 Azure 自动化”。
+还可以通过搜索模块，使用 [PowerShell 库](https://www.powershellgallery.com)完成此导入过程。 找到模块后，选择该模块，然后在“Azure 自动化”选项卡下，单击“部署到 Azure 自动化”   。
 
 ![直接从库中导入模块](media/az-modules/import-gallery.png)
 
 ## <a name="test-your-runbooks"></a>测试 runbook
 
-在自动化帐户中导入 `Az` 模块后，现在可以开始编辑 runbook，以改为使用 Az 模块。 除 `AzureRM` 已更改为 `Az` 外，大多数 cmdlet 的名称不变。 有关不遵循此过程的模块的列表，请参阅[例外列表](/powershell/azure/migrate-from-azurerm-to-az?view=azps-1.1.0#change-module-imports-and-cmdlet-names)。
+在自动化帐户中导入 `Az` 模块后，现在可以开始编辑 runbook，以改为使用 Az 模块。 除 `AzureRM` 已更改为 `Az` 外，大多数 cmdlet 的名称不变。 有关不遵循此过程的模块的列表，请参阅[例外列表](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)。
 
 在修改 runbook 以使用新的 cmdlet 前测试 runbook 的一种方法是，在 runbook 的开头使用 `Enable-AzureRMAlias -Scope Process`。 通过将其添加到 runbook，runbook 无需更改即可运行。
 

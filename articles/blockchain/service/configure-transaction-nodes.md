@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
 ms.openlocfilehash: dffeb81ae1eb244c38639a1241c0581e6fcdf94a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027955"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>配置 Azure 区块链服务事务节点
@@ -32,9 +32,9 @@ ms.locfileid: "65027955"
 若要查看的默认事务节点详细信息：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到 Azure 区块链服务成员。 选择**事务节点**。
+1. 导航到你的 Azure 区块链服务成员。 选择**事务节点**。
 
-    ![选择的默认事务节点](./media/configure-transaction-nodes/nodes.png)
+    ![选择默认事务节点](./media/configure-transaction-nodes/nodes.png)
 
     概述详细信息包括公共终结点地址和公共密钥。
 
@@ -54,9 +54,9 @@ ms.locfileid: "65027955"
     | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com`。 在创建后无法更改节点名称。 |
     | 密码 | 设置强密码。 使用密码来访问事务节点终结点使用基本身份验证。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
-    预配新的事务节点需要约 10 分钟。 其他事务节点会产生费用。 有关成本的详细信息，请参阅[Azure 定价](https://aka.ms/ABSPricing)。
+    预配新的事务节点大约需要 10 分钟时间。 其他事务节点会产生费用。 有关成本的详细信息，请参阅[Azure 定价](https://aka.ms/ABSPricing)。
 
 ## <a name="endpoints"></a>终结点
 
@@ -93,13 +93,13 @@ Azure AD 访问控制的详细信息，请参阅[管理使用 RBAC 和 Azure 门
 
 有关如何使用 Azure AD 身份验证进行连接的详细信息，请参阅[连接到你使用 AAD 身份验证的节点](configure-aad.md)。
 
-### <a name="basic-authentication"></a>基本身份验证
+### <a name="basic-authentication"></a>基本验证
 
 对于 HTTPS 基本身份验证，用户名和密码凭据到终结点传递请求的 HTTPS 标头。
 
 可以在 Azure 门户中查看事务节点的基本身份验证终结点详细信息。 导航到某个 Azure 区块链服务成员事务节点并选择**基本身份验证**设置中。
 
-![基本身份验证](./media/configure-transaction-nodes/basic.png)
+![基本验证](./media/configure-transaction-nodes/basic.png)
 
 用户名称是你的节点的名称，并且不能更改。
 

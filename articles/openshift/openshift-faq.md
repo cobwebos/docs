@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 2001b849e9c43d552889475ca237c52b141f3f04
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 32eb2c47ed46aed8e2e3755a83437a21391295c5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306265"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122970"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -49,7 +49,11 @@ ms.locfileid: "66306265"
 
 默认情况下是静态加密。 Azure 存储平台保留它，并解密之前检索数据之前自动加密数据。 请参阅[静态数据的 Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)有关详细信息。
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-containers-and-manage-capacity"></a>可以使用 Prometheus/Grafana 监视容器和管理容量？
+## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>可以使用 Prometheus/Grafana 来监视我的应用程序？
+
+是的你可以部署 Prometheus 在命名空间和监视器应用程序在你的命名空间中。
+
+## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>可以使用 Prometheus/Grafana 来监视与相关的群集运行状况和容量指标？
 
 否，不是在当前时间。
 
@@ -80,3 +84,7 @@ Docker 注册表可用于从`https://docker-registry.apps.<clustername>.<region>
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>是 Open Service Broker for Azure (OSBA) 支持？
 
 是的。 您可以使用 OSBA 与 Azure Red Hat OpenShift。 请参阅[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template)有关详细信息。
+
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>我正在尝试建立到不同订阅中的虚拟网络对等互连，但获取`Failed to get vnet CIDR`错误。
+
+在订阅中具有虚拟网络，请确保注册`Microsoft.ContainerService`与提供程序 `az provider register -n Microsoft.ContainerService --wait` 

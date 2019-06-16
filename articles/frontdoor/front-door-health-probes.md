@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736575"
 ---
 # <a name="health-probes"></a>运行状况探测
@@ -29,7 +29,7 @@ Front Door 支持通过 HTTP 或 HTTPS 协议发送探测。 这些探测通过�
 
 ## <a name="health-probe-responses"></a>运行状况探测响应
 
-| 响应  | 描述 | 
+| Responses  | 描述 | 
 | ------------- | ------------- |
 | 确定运行状况  |  200 OK 状态代码指示后端运行状况良好。 所有其他状态均视为失败。 如果出于任何原因（包括网络失败），探测未接收到有效的 HTTP 响应，则探测被视为失败。|
 | 测量延迟  | 延迟是指从我们发送探测请求前的一刻到我们收到响应的最后一个字节的一刻所测得的时钟时间。 我们为每个请求都使用新的 TCP 连接，因此，此测量不会偏向使用现有热连接的后端。  |
@@ -41,11 +41,11 @@ Azure Front Door 服务在所有算法中均使用下面相同的三步过程来
 1. 排除已禁用的后端。
 
 2. 排除具有运行状况探测错误的后端：
-    * 此选择是通过查看最后 n 个运行状况探测响应来完成的。 如果至少有 x 个运行状况良好，则后端将被视为运行状况良好。
+    * 此选择是通过查看最后 n  个运行状况探测响应来完成的。 如果至少有 x  个运行状况良好，则后端将被视为运行状况良好。
 
-    * 通过更改负载平衡设置中的 SampleSize 属性配置 n 值。
+    * 通过更改负载平衡设置中的 SampleSize 属性配置 n  值。
 
-    * 通过更改负载平衡设置中的 SuccessfulSamplesRequired 属性配置 x 值。
+    * 通过更改负载平衡设置中的 SuccessfulSamplesRequired 属性配置 x  值。
 
 3. 从后端池的一组运行状况良好的后端中，Front Door 还将测量和维护每个后端的延迟（往返时间）。
 

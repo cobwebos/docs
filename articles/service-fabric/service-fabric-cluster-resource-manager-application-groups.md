@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7e90dc00a8e042e48d8016e25dda04c15ce9f619
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62114067"
 ---
 # <a name="introduction-to-application-groups"></a>应用程序组简介
@@ -110,10 +110,10 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 
 为应用程序实例保留资源需要指定两个附加参数：*MinimumNodes* 和 *NodeReservationCapacity*
 
-- MinimumNodes - 定义应用程序实例应在其上运行的最小节点数。  
-- NodeReservationCapacity - 此设置是应用程序的各项指标。 应用程序中的服务在节点上运行，该值是为该节点上的该应用程序保留的该指标的量。
+- MinimumNodes  - 定义应用程序实例应在其上运行的最小节点数。  
+- NodeReservationCapacity  - 此设置是应用程序的各项指标。 应用程序中的服务在节点上运行，该值是为该节点上的该应用程序保留的该指标的量。
 
-结合使用 MinimumNodes 和 NodeReservationCapacity 可以保证为群集中的应用程序保留最小负载。 如果群集中存在的剩余容量比所需要的总保留容量小，则无法创建应用程序。 
+结合使用 MinimumNodes 和 NodeReservationCapacity 可以保证为群集中的应用程序保留最小负载   。 如果群集中存在的剩余容量比所需要的总保留容量小，则无法创建应用程序。 
 
 下面是容量保留的一个示例：
 

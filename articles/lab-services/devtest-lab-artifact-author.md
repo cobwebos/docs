@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399203"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
@@ -78,7 +78,7 @@ ms.locfileid: "66399203"
 
 | 元素名称 | 必需？ | 描述 |
 | --- | --- | --- |
-| type |是 |参数值的类型。 请参阅以下允许类型列表。 |
+| 类型 |是 |参数值的类型。 请参阅以下允许类型列表。 |
 | displayName |是 |在实验室中显示给用户的参数的名称。 |
 | description |是 |实验室中显示的参数的说明。 |
 

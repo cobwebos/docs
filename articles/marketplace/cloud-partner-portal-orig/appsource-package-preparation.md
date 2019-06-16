@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935645"
 ---
 # <a name="appsource-package-preparation"></a>AppSource 包准备
@@ -133,4 +133,4 @@ AppSource 包需要几个附加的文件。
 
 ![CRMScreenShot6](media/CRMScreenShot6.png)
 
-将文件重命名为适合应用的名称。 最好是包括公司名称和应用名称。 例如：**_Microsoft_SamplePackage.zip**。
+将文件重命名为适合应用的名称。 最好是包括公司名称和应用名称。 例如： **_Microsoft_SamplePackage.zip**。

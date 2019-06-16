@@ -10,10 +10,10 @@ ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 847c928681451b4fef93198e2f2272d5bb04b1b8
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919799"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>在 Automation State Configuration 中编译 DSC 配置
@@ -41,11 +41,11 @@ ms.locfileid: "64919799"
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>使用 Azure 门户编译 DSC 配置
 
-1. 从自动化帐户中，单击“State Configuration (DSC)”。
-1. 单击“配置”选项卡，然后单击要编译的配置名称。
-1. 单击“编译”。
-1. 如果该配置没有参数，系统会提示确认是否要进行编译。 如果该配置有参数，则会打开“编译配置”边栏选项卡让用户提供参数值。 有关参数的更多详细信息，请参阅下面的[**基本参数**](#basic-parameters)部分。
-1. “编译作业”页面随即打开，用户可跟踪编译作业的状态，并可将由于此作业引起的节点配置（MOF 配置文档）放在 Azure Automation State Configuration“拉”服务器上。
+1. 从自动化帐户中，单击“State Configuration (DSC)”  。
+1. 单击“配置”选项卡，然后单击要编译的配置名称。 
+1. 单击“编译”  。
+1. 如果该配置没有参数，系统会提示确认是否要进行编译。 如果该配置有参数，则会打开“编译配置”  边栏选项卡让用户提供参数值。 有关参数的更多详细信息，请参阅下面的[**基本参数**](#basic-parameters)部分。
+1. “编译作业”  页面随即打开，用户可跟踪编译作业的状态，并可将由于此作业引起的节点配置（MOF 配置文档）放在 Azure Automation State Configuration“拉”服务器上。
 
 ## <a name="compiling-a-dsc-configuration-with-windows-powershell"></a>使用 Windows PowerShell 编译 DSC 配置
 
@@ -109,7 +109,7 @@ Configuration ParametersExample
 
 ### <a name="portal"></a>门户
 
-在门户中，可在单击“编译”后输入参数值。
+在门户中，可在单击“编译”  后输入参数值。
 
 ![配置编译参数](./media/automation-dsc-compile/DSC_compiling_1.png)
 
@@ -235,7 +235,7 @@ Azure Automation State Configuration 和 Runbook 中的资产引用是相同的�
 
 ### <a name="credential-assets"></a>凭据资产
 
-Azure 自动化中的 DSC 配置可以使用 `Get-AutomationPSCredential` cmdlet 引用自动化凭据资产。 如果配置具有包含 PSCredential 类型的参数，则可以通过将 Azure 自动化凭据资产的字符串名称传递给 cmdlet 来检索凭据，从而使用 `Get-AutomationPSCredential` cmdlet。 然后可以将该对象用于需要 PSCredential 对象的参数。 在后台将检索具有该名称的 Azure 自动化凭据资产并将其传递给配置。 以下示例在操作中演示了这一点。
+Azure 自动化中的 DSC 配置可以使用 `Get-AutomationPSCredential` cmdlet 引用自动化凭据资产。 如果配置具有包含 PSCredential 类型的参数，则可以通过将 Azure 自动化凭据资产的字符串名称传递给 cmdlet 来检索凭据，从而使用 `Get-AutomationPSCredential` cmdlet  。 然后可以将该对象用于需要 PSCredential  对象的参数。 在后台将检索具有该名称的 Azure 自动化凭据资产并将其传递给配置。 以下示例在操作中演示了这一点。
 
 要在节点配置（MOF 配置文档）中保持凭据的安全，需要在节点配置 MOF 文件中为凭据加密。 不过，目前必须告知 PowerShell DSC 在节点配置 MOF 生成期间以纯文本形式输出凭据是可行的，因为 PowerShell DSC 并不知道在通过编译作业生成 MOF 文件之后 Azure 自动化将加密整个文件。
 
@@ -283,7 +283,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 ```
 
 > [!NOTE]
-> 编译完成后，可能会收到一条错误消息：由于已导入“Microsoft.PowerShell.Management”管理单元，因此未导入“Microsoft.PowerShell.Management”模块。 可以安全地忽略此警告。
+> 编译完成后，可能会收到一条错误消息：由于已导入“Microsoft.PowerShell.Management”管理单元，因此未导入“Microsoft.PowerShell.Management”模块  。 可以安全地忽略此警告。
 
 ## <a name="partial-configuration"></a>部分配置
 
@@ -307,14 +307,14 @@ Azure 自动化状态配置支持使用[部分配置](https://docs.microsoft.com
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>在 Azure 门户中导入节点配置
 
-1. 在“自动化帐户”中的“配置管理”下，单击“State Configuration (DSC)”。
-1. 在“State Configuration (DSC)”页中，依次单击“配置”选项卡、“+ 添加”。
-1. 在“导入”页中，单击“节点配置文件”文本框旁边的文件夹图标，在本地计算机上浏览节点配置文件 (MOF)。
+1. 在“自动化帐户”中的“配置管理”下，单击“State Configuration (DSC)”。  
+1. 在“State Configuration (DSC)”页中，依次单击“配置”选项卡、“+ 添加”。   
+1. 在“导入”  页中，单击“节点配置文件”  文本框旁边的文件夹图标，在本地计算机上浏览节点配置文件 (MOF)。
 
    ![浏览本地文件](./media/automation-dsc-compile/import-browse.png)
 
-1. 在“配置名称”文本框中，输入名称。 此名称必须与编译节点配置的配置名称匹配。
-1. 单击“确定”。
+1. 在“配置名称”  文本框中，输入名称。 此名称必须与编译节点配置的配置名称匹配。
+1. 单击“确定”。 
 
 ### <a name="importing-a-node-configuration-with-powershell"></a>使用 PowerShell 导入节点配置
 

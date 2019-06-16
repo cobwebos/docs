@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 1bcadc18172535649a0ceb482939ca6a75477e25
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ab74c331bdc8b72612aa848688e1de080314337a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170722"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133122"
 ---
 ### <a name="what-is-expressroute-direct"></a>什么是 ExpressRoute Direct？
 
@@ -25,14 +25,13 @@ ms.locfileid: "66170722"
 
 ### <a name="what-locations-currently-support-expressroute-direct"></a>哪些位置当前支持 ExpressRoute Direct？ 
 
-可用端口将为动态端口，并且将由 PowerShell 用于查看容量。 位置包括以下区域并且将基于可用性而有所更改：
+可用端口将为动态端口，并且将由 PowerShell 用于查看容量。 位置包括以下区域并且将基于可用性而有所更改  ：
 
 * 阿姆斯特丹
-* 堪培拉
 * 芝加哥
 * 华盛顿特区
 * 达拉斯 
-* 香港特别行政区
+* 中国香港特别行政区
 * 伦敦
 * 洛杉矶
 * New York City
@@ -41,7 +40,7 @@ ms.locfileid: "66170722"
 * 多伦多
 * San Antonio
 * 西雅图
-* Seoul
+* 首尔
 * 硅谷
 * 新加坡 
 * 悉尼

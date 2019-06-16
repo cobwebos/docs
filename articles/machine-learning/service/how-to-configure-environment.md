@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7be6c9eda6d0a70d929efe4c00f661eb67105820
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606427"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
@@ -74,7 +74,7 @@ Notebook 都是 VM:
 
   如果到代码中，VM 将包括教程和示例，帮助您探索和了解如何使用 Azure 机器学习服务。 示例 notebook 存储在你的工作区使它们可共享跨 Vm 的 Azure Blob 存储帐户。 当运行时，它们还具有访问权限的数据存储和计算资源的工作区。 
 
-+ **简单安装**:创建一个随时从 Azure 机器学习工作区中。 提供的名称并指定 Azure VM 类型。 与此立即试用[快速入门：使用基于云的 notebook 服务器来开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md)。
++ **简单安装**:创建一个随时从 Azure 机器学习工作区中。 提供的名称并指定 Azure VM 类型。 与此立即试用[快速入门：通过基于云的 Notebook 服务器开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md)。
 
 + **可自定义**。 产品/服务的托管和安全 VM，同时保留对硬件功能的完全访问权限并进行自定义你心中所想的愿望。 例如，快速创建最新版本 NVidia V100 提供支持的 VM 执行新颖的神经网络体系结构的分步调试。
 
@@ -208,7 +208,7 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
 
 1. 安装机器学习试验的其他包。
 
-    使用以下命令之一和替换*\<新的包 >* 与你想要安装的包。 安装包通过`conda install`需要包是 （Anaconda 云中可以添加新的通道） 的当前通道的一部分。
+    使用以下命令之一和替换 *\<新的包 >* 与你想要安装的包。 安装包通过`conda install`需要包是 （Anaconda 云中可以添加新的通道） 的当前通道的一部分。
 
     ```shell
     conda install <new package>
@@ -263,7 +263,7 @@ Visual Studio Code 是跨平台代码编辑器。 它依赖于本地 Python 3 �
 1. 若要了解如何使用 Visual Studio Code 进行 Python 开发，请参阅 [VSCode 中的 Python 入门](https://code.visualstudio.com/docs/python/python-tutorial)。
 
 1. 若要选择 Conda 环境，请打开 VS Code，然后按 Ctrl-Shift-P（Linux 和 Windows）或 Command-Shift-P (Mac)。
-    此时会打开“命令面板”。
+    此时会打开“命令面板”。 
 
 1. 输入 Python:__Select Interpreter__，然后选择 Conda 环境。
 
@@ -311,7 +311,7 @@ Azure Databricks 的工作原理与 Azure 机器学习服务：
 
 1. 选择**只有一个**选项 （支持任何其他 SDK 安装）
 
-   |SDK&nbsp;包&nbsp;其他功能|源|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK&nbsp;包&nbsp;其他功能|source|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Databricks| 上传 Python Egg 或 PyPI | azureml-sdk[databricks]|
    |具有的-databricks<br> 自动化机器学习功能| 上传 Python Egg 或 PyPI | azureml-sdk[automl_databricks]|
@@ -325,9 +325,9 @@ Azure Databricks 的工作原理与 Azure 机器学习服务：
 1. 监视错误，直到状态变为**附加**，这可能需要几分钟时间。  如果此步骤失败，请检查以下项： 
 
    请尝试重新启动的群集：
-   1. 在左窗格中，选择“群集”。
+   1. 在左窗格中，选择“群集”  。
    1. 在表中选择你的群集名称。
-   1. 在“库”选项卡上，选择“重启”。
+   1. 在“库”选项卡上，选择“重启”。  
       
    另请考虑：
    + 在 Automl 的配置来说，当使用 Azure Databricks 请添加以下参数：
@@ -378,9 +378,9 @@ SDK databricks **WITH**自动执行机器学习![SDK 自动安装在 Databricks 
 
 可通过三种方式创建配置文件：
 
-* **按照中的步骤[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)**:将在 Azure Notebooks 库中创建一个 *config.json* 文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
+* **按照中的步骤[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)** :将在 Azure Notebooks 库中创建一个 *config.json* 文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
 
-* **下载文件**:在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”部分中的“下载 config.json”。
+* **下载文件**:在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”  部分中的“下载 config.json”  。
 
      ![Azure 门户](./media/how-to-configure-environment/configure.png)
 

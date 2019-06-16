@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935776"
 ---
 <a name="retrieve-operations"></a>检索操作
@@ -37,14 +37,14 @@ ms.locfileid: "64935776"
 |  offerId           |  产品/服务标识符                                                                                              |  String       |
 |  operationId       |  唯一标识针对产品/服务的操作的 GUID。 可以使用此 API 检索 operationId，并且对于任何长时间运行的操作（如[发布产品/服务](./cloud-partner-portal-api-publish-offer.md) API），也会在响应的 HTTP 标头中返回 operationId。  |   Guid   |
 |  filteredStatus    | 可选的查询参数，用于对此 API 返回的集合按状态（例如 `running`）进行筛选。  |   String |
-|  api-version       | API 的最新版本                                                                                           |    date      |
+|  api-version       | API 的最新版本                                                                                           |    Date      |
 |  |  |  |
 
 
-<a name="header"></a>标头
+<a name="header"></a>Header
 ------
 
-|  **名称**          |  **值**           |
+|  **名称**          |  **ReplTest1**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  授权     | `Bearer YOUR_TOKEN`  |

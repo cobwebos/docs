@@ -15,10 +15,10 @@ ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b80f872c82061c0cb87f4f1e2714183e71cf02cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794030"
 ---
 # <a name="available-skus-for-hli"></a>对 HLI 可用的 SKU
@@ -52,7 +52,7 @@ ms.locfileid: "60794030"
 
 | SKU|CPU | 内存 | 存储 | 可用性 |
 | ---| --- | --- | --- | --- |
-| S96 | Azure 上的 SAP HANA S96<br /> - 2 x Intel® Xeon® 处理器 E7-8890 v4<br /> 48 CPU 内核和 96 CPU 线程 |  768 GB |  3 TB | 可用 |
+| S96 | Azure 上的 SAP HANA S96<br /> \- 2 x Intel® Xeon® 处理器 E7-8890 v4<br /> 48 CPU 内核和 96 CPU 线程 |  768 GB |  3 TB | 可用 |
 
 
 | 可在内存中 <br /> 扩展的原始 SKU | CPU | 内存 | 存储 | 可用性 |

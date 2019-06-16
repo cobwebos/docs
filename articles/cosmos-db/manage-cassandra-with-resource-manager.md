@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
 ms.openlocfilehash: db754adbe60acfa155400910c47de556db793eef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968912"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>管理 Azure Cosmos DB Cassandra API 使用 Azure 资源管理器模板的资源
@@ -23,7 +23,7 @@ ms.locfileid: "65968912"
 
 ## <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
 
-若要部署使用 Azure CLI 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 Azure CLI 资源管理器模板**副本**脚本，并选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurecli-interactive
 
@@ -55,7 +55,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ### <a name="deploy-keyspace-template-via-azure-cli"></a>部署通过 Azure CLI 的密钥空间模板
 
-若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -76,7 +76,7 @@ az group deployment create --resource-group $resourceGroupName \
 
 ### <a name="deploy-table-template-via-azure-cli"></a>部署通过 Azure CLI 的表模板
 
-若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+若要部署使用 Azure CLI 资源管理器模板，请选择**试试**打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  ：
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName

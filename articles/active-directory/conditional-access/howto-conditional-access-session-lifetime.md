@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: e15cf9b2e10a581c72a5035b52be47c3e2c9dfda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988580"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112324"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件性访问配置身份验证会话管理
 
@@ -50,14 +50,14 @@ ms.locfileid: "65988580"
 
 ## <a name="configuring-authentication-session-controls"></a>配置身份验证会话控件
 
-条件性访问是 Azure AD Premium 功能，需要 premium 许可证。 若要了解有关条件访问的详细信息，请参阅[什么是 Azure Active Directory 中的条件访问？](overview.md#license-requirements)
+条件性访问是 Azure AD Premium 功能，需要 premium 许可证。 如果你想要了解有关条件性访问的详细信息，请参阅[什么是 Azure Active Directory 中条件访问？](overview.md#license-requirements)
 
 > [!WARNING]
-> 如果使用的[可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)功能目前处于公共预览状态，请注意，我们不支持创建具有相同的用户或应用程序组合两个不同的策略： 一个具有此功能，使用另一个可配置令牌生存期功能。 Microsoft 计划在年 10 月 15 日停用的可配置令牌生存期功能，并将其替换为条件性访问身份验证会话管理功能。  
+> 如果使用的[可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)功能目前处于公共预览状态，请注意，我们不支持创建具有相同的用户或应用程序组合两个不同的策略： 一个具有此功能，使用另一个可配置令牌生存期功能。 Microsoft 计划在 11 月 1 日停用可配置令牌生存期功能，并将其替换为条件性访问身份验证会话管理功能。  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>策略 1：在登录频率控件
 
-1. 创建新策略
+1. 创建新的策略
 1. 选择所需的所有客户的环境，包括目标云应用的条件。
 
    > [!NOTE]
@@ -74,9 +74,9 @@ ms.locfileid: "65988580"
 
 如果已配置为在同一个浏览器会话中运行的另一个 web 应用的不同登录频率，最严格的策略将应用于这两个应用因为在同一个浏览器会话中运行的所有应用都共享一个会话令牌。
 
-### <a name="policy-2-persistent-browser-session"></a>策略 2：持久性浏览器会话
+### <a name="policy-2-persistent-browser-session"></a>策略 2：持久的浏览器会话
 
-1. 创建新策略
+1. 创建新的策略
 1. 选择所有所需的条件。
 
    > [!NOTE]
@@ -86,7 +86,7 @@ ms.locfileid: "65988580"
 1. 从下拉列表中选择一个值
 1. 保存策略
 
-![为持久的浏览器配置的条件性访问策略](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
+![配置为持久的浏览器的条件性访问策略](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
 
 > [!NOTE]
 > Azure AD 条件访问中的永久性浏览器会话配置将覆盖"保持登录？" 公司品牌为同一用户在 Azure 门户中的窗格中，如果已配置这两个策略中的设置。
@@ -95,13 +95,13 @@ ms.locfileid: "65988580"
 
 使用假设工具模拟用户的登录名，以目标应用程序和基于策略的配置方式的其他条件。 身份验证会话管理控件将显示在该工具的结果。
 
-![如果工具结果的条件性访问](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
+![条件性访问什么如果工具结果](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
 ## <a name="policy-deployment"></a>策略部署
 
-若要确保你的策略按预期工作，建议的最佳做法是在将其推广到生产环境之前对其进行测试。 理想情况下，使用一个测试租户来验证新策略是否按预期方式工作。 有关详细信息，请参阅文章[Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。
+若要确保你的策略按预期工作，建议的最佳做法是在将其推广到生产环境之前对其进行测试。 理想情况下，使用一个测试租户来验证新策略是否按预期方式工作。 有关详细信息，请参阅文章[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如果你想要知道如何配置条件性访问策略，请参阅文章[使用 Azure Active Directory 条件性访问的特定应用的要求使用 MFA](app-based-mfa.md)。
-* 如果你已准备好配置你的环境的条件性访问策略，请参阅文章[Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。
+* 如果你想要知道如何配置条件性访问策略，请参阅文章[需要 MFA 的特定应用的 Azure Active Directory 条件性访问](app-based-mfa.md)。
+* 如果你已准备好配置你的环境的条件性访问策略，请参阅文章[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。

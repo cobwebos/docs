@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
 ms.openlocfilehash: 376df206d75780a4b814873d72d9c56554f6b0b8
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956609"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>为 Windows IaaS VM 启用 Azure 磁盘加密
@@ -122,9 +122,9 @@ ms.locfileid: "65956609"
 可以通过使用[资源管理器模板加密正在运行的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)，在 Azure 中现有或正在运行的 IaaS Windows VM 上启用磁盘加密。
 
 
-1. 在 Azure 快速入门模板中，单击“部署到 Azure”。
+1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
 
-2. 选择订阅、资源组、位置、设置、法律条款和协议。 单击“购买”，在现有或正在运行的 IaaS VM 上启用加密。
+2. 选择订阅、资源组、位置、设置、法律条款和协议。 单击“购买”，在现有或正在运行的 IaaS VM 上启用加密。 
 
 下表列出了现有或正在运行的 VM 的资源管理器模板参数：
 
@@ -133,8 +133,8 @@ ms.locfileid: "65956609"
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | BitLocker 密钥应上传到的 Key Vault 的名称。 可使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroup"` 获取该名称|
 | keyVaultResourceGroup | 包含密钥保管库的资源组的名称|
-|  keyEncryptionKeyURL | 用于加密所生成 BitLocker 密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”，则必须输入 _keyEncryptionKeyURL_ 值。 |
-| volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”、“Data”和“All”。 
+|  keyEncryptionKeyURL | 用于加密所生成 BitLocker 密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”  ，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”  ，则必须输入 _keyEncryptionKeyURL_ 值。 |
+| volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”  、“Data”  和“All”  。 
 | forceUpdateTag | 每次操作需要强制运行时，传入一个像 GUID 这样的唯一值。 |
 | resizeOSDisk | 在拆分系统卷之前，是否应调整 OS 分区大小以占用整个 OS VHD。 |
 | 位置 | 所有资源的位置。 |
@@ -225,9 +225,9 @@ ms.locfileid: "65956609"
 - [在 Windows 虚拟机规模集上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 - [在 Windows 虚拟机规模集上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
-     1. 单击 **“部署到 Azure”**。
+     1. 单击 **“部署到 Azure”** 。
      2. 填写必填字段，然后同意条款和条件。
-     3. 单击“购买”以部署模板。
+     3. 单击“购买”以部署模板。 
 
 ## <a name="bkmk_VHDpre"></a>通过客户加密的 VHD 和加密密钥新建的 IaaS VM
 
@@ -326,9 +326,9 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
      ```
 - **使用资源管理器模板禁用加密：** 
 
-    1. 单击[在正在运行的 Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)模板中的“部署到 Azure”。
+    1. 单击[在正在运行的 Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)模板中的“部署到 Azure”。 
     2. 选择订阅、资源组、位置、VM、卷类型、法律条款和协议。
-    3.  单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。 
+    3.  单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。  
 
 ## <a name="next-steps"></a>后续步骤
 

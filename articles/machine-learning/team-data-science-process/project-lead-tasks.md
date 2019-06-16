@@ -11,10 +11,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 00b1b58a39724951f2d5e4e688df8eb178654bbb
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952836"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Team Data Science Process 中项目主管的任务
@@ -35,7 +35,7 @@ ms.locfileid: "65952836"
 
 本教程使用存储库和目录的缩写名称。 使用这些名称，更易于跟踪存储库和目录之间的操作。 以下部分使用了此表示法（R 表示 Git 存储库，D 表示 DSVM 上的本地目录）：
 
-- **R3**：团队主管在 Git 上设置的团队 ProjectTemplate 存储库。
+- **R3**：团队主管在 Git 上设置的团队 ProjectTemplate 存储库  。
 - **R5**：在 Git 上为项目设置的项目存储库。
 - **D3**：从 R3 克隆的本地目录。
 - **D5**：从 R5 克隆的本地目录。
@@ -51,35 +51,35 @@ ms.locfileid: "65952836"
 - 团队主管已在计划使用的代码托管平台上你的组帐户下设置了 **TeamProjectTemplate 存储库** (R3)。
 - 团队主管**已授权**你在团队的组帐户中创建存储库。
 - 计算机上必须安装 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。  
-- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 随后会转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。 
+- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”  部分，然后单击“最新安装程序”  。 随后会转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。 
 - 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 Azure DevOps Services。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
 
 
 ## <a name="1-create-a-project-repository-r5"></a>1.创建项目存储库 (R5)
 
 - 登录到你的组 Azure DevOps Services，网址为 *https://\<Azure DevOps Services 名称\>.visualstudio.com*。 
-- 在“最近的项目和团队”下面单击“浏览”。 此时会弹出一个窗口，其中列出了 Azure DevOps Services 上的所有项目。 
+- 在“最近的项目和团队”下面单击“浏览”。   此时会弹出一个窗口，其中列出了 Azure DevOps Services 上的所有项目。 
 
     ![2](./media/project-lead-tasks/project-leads-2-create-project-repo.png)
 
-- 单击要在其中创建项目存储库的项目名称。 在本示例中，请单击“MyTeam”。 
-- 然后单击“导航”，定向到项目 **MyTeam** 的主页：
+- 单击要在其中创建项目存储库的项目名称。 在本示例中，请单击“MyTeam”  。 
+- 然后单击“导航”，定向到项目 **MyTeam** 的主页： 
 
     ![3](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
 
-- 单击“围绕代码开展协作”，定向到项目的 git 主页。  
+- 单击“围绕代码开展协作”，定向到项目的 git 主页。   
 
     ![4](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
 
-- 单击左上角的向下箭头，选择“+ 新建存储库”。 
+- 单击左上角的向下箭头，选择“+ 新建存储库”。  
     
     ![5](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
 
-- 在“创建新存储库”窗口中，输入项目 git 存储库的名称。 确保选择“Git”作为存储库的类型。 本示例使用名称 *DSProject1*。 
+- 在“创建新存储库”窗口中，输入项目 git 存储库的名称。  确保选择“Git”作为存储库的类型。  本示例使用名称 *DSProject1*。 
 
     ![6](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
 
-- 若要创建 ***DSProject1*** 项目 git 存储库，请单击“创建”。
+- 若要创建 ***DSProject1*** 项目 git 存储库，请单击“创建”。 
 
 
 ## <a name="2-seed-the-dsproject1-project-repository"></a>2.设定 DSProject1 项目存储库的种子
@@ -108,7 +108,7 @@ ms.locfileid: "65952836"
             
     git clone <the HTTPS URL of the TeamProjectTemplate repository>
     
-如果使用 Azure DevOps 作为代码托管平台，则项目模板存储库的 HTTPS URL 通常为：
+如果使用 Azure DevOps 作为代码托管平台，则项目模板存储库的 HTTPS URL 通常为： 
 
  ***https://\<Azure DevOps Services 名称\>.visualstudio.com/\<项目名称\>/_git/\<项目模板存储库名称\>***。 
 
@@ -124,7 +124,7 @@ ms.locfileid: "65952836"
         
 ![8](./media/project-lead-tasks/project-leads-8-clone-team-project-template-linux.png)
 
-如果使用 Azure DevOps 作为代码托管平台，项目模板存储库的 SSH URL 通常为：
+如果使用 Azure DevOps 作为代码托管平台，项目模板存储库的 SSH URL 通常为： 
 
 ***ssh://\<Azure DevOps Services 名称\>\@\<Azure DevOps Services 名称\>.visualstudio.com:22/\<项目名称>/_git/\<项目模板存储库名称\>.*** 
 
@@ -142,7 +142,7 @@ ms.locfileid: "65952836"
 
 ![9](./media/project-lead-tasks/project-leads-9-clone-project-repository.png)
 
-如果使用 Azure DevOps 作为代码托管平台，项目存储库的 HTTPS URL 通常为 ***https://\<Azure DevOps Services 名称\>.visualstudio.com/\<项目名称>/_git/<项目存储库名称\>***。 本示例使用 ***https://mysamplegroup.visualstudio.com/MyTeam/_git/DSProject1***。
+如果使用 Azure DevOps 作为代码托管平台，项目存储库的 HTTPS URL 通常为 ***https://\<Azure DevOps Services 名称\>.visualstudio.com/\<项目名称>/_git/<项目存储库名称\>***。  本示例使用 ***https://mysamplegroup.visualstudio.com/MyTeam/_git/DSProject1***。
 
 **Linux**
 

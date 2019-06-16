@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
 ms.date: 04/05/2019
 ms.openlocfilehash: 26d653b873e959f0804e0456ed87ee68c39413e5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64720670"
 ---
 # <a name="create-and-manage-trading-partner-agreements-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>创建和使用 Azure 逻辑应用和 Enterprise Integration Pack 中管理贸易合作伙伴协议
@@ -41,7 +41,7 @@ ms.locfileid: "64720670"
 ## <a name="create-agreements"></a>创建协议
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-在 Azure 主菜单中，选择“所有服务”。 在搜索框中，输入作为筛选器"集成"。 从结果中，选择此资源：**集成帐户**
+在 Azure 主菜单中，选择“所有服务”  。 在搜索框中，输入作为筛选器"集成"。 从结果中，选择此资源：**集成帐户**
 
    ![查找集成帐户](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "64720670"
 
    ![选择"协议"](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-1. 在“协议”下，选择“添加”。 在中**添加**窗格中，提供有关你的协议的信息，例如：
+1. 在“协议”  下，选择“添加”  。 在中**添加**窗格中，提供有关你的协议的信息，例如：
 
    ![选择“添加”](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 

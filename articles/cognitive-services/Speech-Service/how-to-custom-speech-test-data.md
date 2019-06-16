@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 04da6b7a904bed8fa0990afe77b7fc81bec5a76e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3e77a8ec46ae18cb9daa855d842969cc2ba4bb9
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064031"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137246"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备数据以自定义语音
 
@@ -138,11 +138,11 @@ ms.locfileid: "67064031"
 
 这包括用于每个语音的样本和自定义发音的示例：
 
-| 口头形式 | 识别显示窗体 |
+| 识别显示窗体 | 口头形式 |
 |--------------|--------------------------|
-| 三个 c p o | 3CPO |  
-| c n t k | CNTK |
-| i 三重 e | IEEE |
+| 3CPO | 三个 c p o |  
+| CNTK | c n t k |
+| IEEE | i 三重 e |
 
 口头的形式是拼写的拼音序列。它可以包含字母、 单词、 音节或所有这三个的组合。
 

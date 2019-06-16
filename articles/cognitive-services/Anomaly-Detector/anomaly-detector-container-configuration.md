@@ -3,18 +3,18 @@ title: 配置容器-异常情况检测程序
 titleSuffix: Azure Cognitive Services
 description: 使用配置的异常情况检测程序容器运行时环境`docker run`命令参数。 此容器有多个必需设置，以及一些可选设置。
 services: cognitive-services
-author: aahill
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/07/2019
-ms.author: aahi
-ms.openlocfilehash: 0d09ce29aa5431de3eb82e5d9fe7440d4e3352e1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 8e6f7e33bf8bae3bc76074093167650813d76a8b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026386"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073346"
 ---
 # <a name="configure-anomaly-detector-containers"></a>配置异常情况检测程序容器
 
@@ -24,15 +24,15 @@ ms.locfileid: "65026386"
 
 此容器具有以下配置设置：
 
-|需要|设置|目的|
+|必选|设置|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
-|是|[计费](#billing-configuration-setting)|指定 Azure 上服务资源的终结点 URI。|
+|是|[Billing](#billing-configuration-setting)|指定 Azure 上服务资源的终结点 URI。|
 |是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
 |否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
 |否|[Http 代理](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
-|否|[日志记录](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
+|否|[Logging](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
 |否|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
 
 > [!IMPORTANT]
@@ -58,7 +58,7 @@ ms.locfileid: "65026386"
 
 * Azure 门户：**异常情况检测器**概述，标记为 `Endpoint`
 
-|需要| 名称 | 数据类型 | 描述 |
+|必选| Name | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 
@@ -87,7 +87,7 @@ ms.locfileid: "65026386"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](anomaly-detector-container-howto.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 描述 |
+|可选| Name | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 异常情况检测器容器请勿使用此功能。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -96,7 +96,7 @@ ms.locfileid: "65026386"
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](anomaly-detector-container-howto.md#stop-the-container)它。
 
-* **行继续符**：以下各节中的 Docker 命令使用反斜杠， `\`，作为行延续字符，bash shell。 根据主机操作系统的要求替换或删除字符。 例如，适用于 windows 的行延续字符是插入符号， `^`。 将插入符号替换为反斜杠。 
+* **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为 bash shell 的行继续符。 根据主机操作系统的要求替换或删除字符。 例如，Windows 的行继续符是插入符号 `^`。 将反斜杠替换为插入符号。 
 * **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
 将在方括号中，值为`{}`，使用你自己的值：

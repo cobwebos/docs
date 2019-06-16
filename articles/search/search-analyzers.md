@@ -10,15 +10,15 @@ manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
 ms.openlocfilehash: f76d944f614f07a4428d4e4100f6a08a375d96dc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65795798"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>用于 Azure 搜索中文本处理的分析器
 
-分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
+分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理  。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
 
 语言分析器是用得最多的类型，Azure 搜索索引中的每个可搜索字段都分配有默认的语言分析器。 下面是文本分析过程中的典型语言转换：
 
@@ -40,10 +40,10 @@ Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https
 
 下表描述了 Azure 搜索中可用的分析器。
 
-| Category | 描述 |
+| 类别 | 描述 |
 |----------|-------------|
 | [标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
-| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
+| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace       。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
 |[自定义分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 称为结合了现有元素的用户定义配置，由一个 tokenizer（必需）和可选的筛选器（字符或词元）组成。|
 
 某些预定义分析器（例如 **Pattern** 或 **Stop**）支持有限的一组配置选项。 若要设置这些选项，请有效地创建一个自定义分析器，其中包括某个预定义分析器，以及[预定义分析器参考](index-add-custom-analyzers.md#AnalyzerTable)中所述的一个替代选项。 对于任何自定义配置，请为新配置提供一个名称，例如 *myPatternAnalyzer*，以便将它与 Lucene Pattern 分析器区分开来。
@@ -272,22 +272,22 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
   }
 ~~~~
 
-## <a name="c-examples"></a>C#示例
+## <a name="c-examples"></a>C# 示例
 
-如果使用.NET SDK 代码示例，可以将附加这些示例以使用或配置分析器。
+如果使用 .NET SDK 代码示例，则可追加这些示例，以便使用或配置分析器。
 
 + [分配内置分析器](#Assign-a-language-analyzer)
 + [配置分析器](#Define-a-custom-analyzer)
 
 <a name="Assign-a-language-analyzer"></a>
 
-### <a name="assign-a-language-analyzer"></a>将指定语言分析器
+### <a name="assign-a-language-analyzer"></a>分配语言分析器
 
-用作任何分析器的是，而无需配置，为字段定义中指定。 不没有用于创建分析器构造任何要求。 
+任何按原样使用且没有任何配置的分析器都是在字段定义中指定的。 没有创建分析器构造的要求。 
 
-此示例将 Microsoft 英语和法语分析器分配到描述字段。 它是从更大的 hotels 索引，创建的 hotels.cs 文件中使用酒店类定义的代码段[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)示例。
+此示例将 Microsoft 英语和法语分析器分配给说明字段。 它是从更大的酒店索引定义中提取的代码片段，使用 [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 示例的 hotels.cs 文件中的酒店类进行创建。
 
-调用[分析器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，并指定[AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)提供一个文本分析器，Azure 搜索支持的类型。
+调用[分析器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，指定 [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 类型，提供在 Azure 搜索中受支持的文本分析器。
 
 ```csharp
     public partial class Hotel
@@ -311,9 +311,9 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 ### <a name="define-a-custom-analyzer"></a>定义自定义分析器
 
-当需要自定义或配置时，需要将分析器构造添加到索引。 你如何定义，您可以将它添加的字段定义中前面的示例所示。
+如果需要自定义或配置，则需向索引添加分析器构造。 定义以后，即可将其添加到字段定义，如上一示例所示。
 
-创建[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)对象。 有关更多示例，请参阅[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs)。
+创建 [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) 对象。 如需更多示例，请参阅 [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs)。
 
 ```csharp
 {

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: szark
 ms.openlocfilehash: 9d5e9c6c8a104c16d1ff4e96929ff47ed6fd5ff6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966107"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
@@ -32,7 +32,7 @@ ms.locfileid: "65966107"
 
 **RHEL 安装说明**
 
-* Azure 不支持 VHDX 格式。 Azure 仅支持固定 VHD。 可使用 Hyper-V 管理器将磁盘转换为 VHD 格式，也可以使用 convert-vhd cmdlet。 如果使用 VirtualBox，则选择“固定大小”，而不是在创建磁盘时默认动态分配选项。
+* Azure 不支持 VHDX 格式。 Azure 仅支持固定 VHD。 可使用 Hyper-V 管理器将磁盘转换为 VHD 格式，也可以使用 convert-vhd cmdlet。 如果使用 VirtualBox，则选择“固定大小”  ，而不是在创建磁盘时默认动态分配选项。
 * Azure 仅支持第 1 代虚拟机。 可以将第 1 代虚拟机从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 但无法更改虚拟机的代次。 有关详细信息，请参阅[是否应在 Hyper-V 中创建第 1 代或第 2 代虚拟机？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 * VHD 允许的最大大小为 1,023 GB。
 * 支持逻辑卷管理器 (LVM)，该管理器可以在 Azure 虚拟机中的 OS 磁盘或数据磁盘上使用。 但是，通常建议在 OS 磁盘上使用标准分区而不是 LVM。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 另请参阅 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 和 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文档。
@@ -44,7 +44,7 @@ ms.locfileid: "65966107"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-1. 单击“连接”打开该虚拟机的控制台窗口。
+1. 单击“连接”打开该虚拟机的控制台窗口。 
 
 1. 在 RHEL 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
    
@@ -132,14 +132,14 @@ ms.locfileid: "65966107"
 
         # logout
 
-1. 在 Hyper-V 管理器中单击“操作” > “关闭”。 Linux VHD 现已准备好上传到 Azure。
+1. 在 Hyper-V 管理器中单击“操作”   > “关闭”  。 Linux VHD 现已准备好上传到 Azure。
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备 RHEL 7 虚拟机
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-1. 单击“连接”打开该虚拟机的控制台窗口。
+1. 单击“连接”打开该虚拟机的控制台窗口。 
 
 1. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
    
@@ -217,7 +217,7 @@ ms.locfileid: "65966107"
 
         # logout
 
-1. 在 Hyper-V 管理器中单击“操作” > “关闭”。 Linux VHD 现已准备好上传到 Azure。
+1. 在 Hyper-V 管理器中单击“操作”   > “关闭”  。 Linux VHD 现已准备好上传到 Azure。
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>从 KVM 准备基于 Red Hat 的虚拟机
@@ -346,7 +346,7 @@ ms.locfileid: "65966107"
 1. 将 qcow2 映像转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -497,7 +497,7 @@ ms.locfileid: "65966107"
 1. 将 qcow2 映像转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -529,7 +529,7 @@ ms.locfileid: "65966107"
 
 * 在安装 Linux 操作系统时，建议使用标准分区而不是 LVM，这通常是许多安装的默认设置。 这种做法可以避免 LVM 名称与克隆的虚拟机名称冲突，尤其是在需要将操作系统磁盘附加到另一台虚拟机进行故障排除时。 如果需要，可以在数据磁盘上使用 LVM 或 RAID。
 * 不要在操作系统磁盘上配置交换分区。 可将 Linux 代理配置为在临时资源磁盘上创建交换文件。 可以在下面的步骤中找到有关此操作的详细信息。
-* 创建虚拟硬盘时，选择“将虚拟磁盘存储为单个文件”。
+* 创建虚拟硬盘时，选择“将虚拟磁盘存储为单个文件”  。
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>从 VMware 准备 RHEL 6 虚拟机
 1. 在 RHEL 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
@@ -626,7 +626,7 @@ ms.locfileid: "65966107"
 1. 关闭虚拟机，并将 VMDK 文件转换为 .vhd 文件。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -742,7 +742,7 @@ ms.locfileid: "65966107"
 1. 关闭虚拟机，将 VMDK 文件转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -894,11 +894,11 @@ ms.locfileid: "65966107"
 
 1. 将 kickstart 文件放在安装系统可以访问的位置。
 
-1. 在 Hyper-V 管理器中，创建新的虚拟机。 在“连接虚拟硬盘”页上，选择“稍后附加虚拟硬盘”，并完成新建虚拟机向导。
+1. 在 Hyper-V 管理器中，创建新的虚拟机。 在“连接虚拟硬盘”页上，选择“稍后附加虚拟硬盘”，并完成新建虚拟机向导   。
 
 1. 打开虚拟机设置：
 
-    a.  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”。
+    a.  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”   。
 
     b.  将安装 ISO 附加到 DVD 光驱。
 

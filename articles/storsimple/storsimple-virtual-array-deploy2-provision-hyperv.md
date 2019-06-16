@@ -16,10 +16,10 @@ ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61415945"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
@@ -85,68 +85,68 @@ ms.locfileid: "61415945"
 
 #### <a name="to-provision-a-virtual-array"></a>预配虚拟阵列
 1. 在 Windows Server 主机上，将虚拟阵列映像复制到本地驱动器。 通过 Azure 门户已下载该映像（VHD 或 VHDX）。 记下复制映像的位置，因为在以后的过程中将使用此映像。
-2. 打开“服务器管理器”。 单击右上角的“工具”，并选择“Hyper-V 管理器”。
+2. 打开“服务器管理器”。  单击右上角的“工具”，并选择“Hyper-V 管理器”。  
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
-   如果运行的是 Windows Server 2008 R2，请打开 Hyper-V 管理器。 在服务器管理器中，单击“角色 > Hyper-V > Hyper-V 管理器”。
-3. 在“Hyper-V 管理器”的作用域窗格中，右键单击系统节点打开上下文菜单，并单击“新建” > “虚拟机”。
+   如果运行的是 Windows Server 2008 R2，请打开 Hyper-V 管理器。 在服务器管理器中，单击“角色 > Hyper-V > Hyper-V 管理器”。 
+3. 在“Hyper-V 管理器”的作用域窗格中，右键单击系统节点打开上下文菜单，并单击“新建” > “虚拟机”。   
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
-4. 在新建虚拟机向导的“准备工作”页上，单击“下一步”。
-5. 在“指定名称和位置”页上，提供虚拟阵列的“名称”。 单击“下一步”。
+4. 在新建虚拟机向导的“准备工作”页上，单击“下一步”。  
+5. 在“指定名称和位置”页上，提供虚拟阵列的“名称”。   单击“下一步”。 
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
-6. 在“指定代数”页上选择设备映像类型，并单击“下一步”。 如果使用的是 Windows Server 2008 R2，则不显示此页。
+6. 在“指定代数”页上选择设备映像类型，并单击“下一步”。   如果使用的是 Windows Server 2008 R2，则不显示此页。
 
-   * 如果已为 Windows Server 2012 或更高版本下载了 .vhdx 映像，请选择“第 2 代”。
-   * 如果已为 Windows Server 2008 R2 或更高版本下载了 .vhd 映像，请选择“第 1 代”。
+   * 如果已为 Windows Server 2012 或更高版本下载了 .vhdx 映像，请选择“第 2 代”。 
+   * 如果已为 Windows Server 2008 R2 或更高版本下载了 .vhd 映像，请选择“第 1 代”。 
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image5.png)
-7. 在“分配内存”页上，将“启动内存”指定为至少“8192 MB”，且不启用动态内存，然后单击“下一步”。
+7. 在“分配内存”页上，将“启动内存”指定为至少“8192 MB”，且不启用动态内存，然后单击“下一步”。    
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image6.png)  
-8. 在“配置网络”页上，指定连接到 Internet 的虚拟交换机，并单击“下一步”。
+8. 在“配置网络”页上，指定连接到 Internet 的虚拟交换机，并单击“下一步”。  
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image7.png)
-9. 在“连接虚拟硬盘”页上，选择“使用现有虚拟硬盘”，指定虚拟阵列映像（.vhdx 或 .vhd）的位置，并单击“下一步”。
+9. 在“连接虚拟硬盘”页上，选择“使用现有虚拟硬盘”，指定虚拟阵列映像（.vhdx 或 .vhd）的位置，并单击“下一步”。   
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image8m.png)
-10. 查看“摘要”，并单击“完成”创建虚拟机。
+10. 查看“摘要”，并单击“完成”创建虚拟机。  
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image9.png)
-11. 满足最低要求需 4 个核心。 若要添加 4 个虚拟处理器，请在“Hyper-V 管理器”窗口中选择主机系统。 在“虚拟机”列表下的右窗格中，找到刚创建的虚拟机。 选择计算机名称，右键单击该名称后选择“设置”。
+11. 满足最低要求需 4 个核心。 若要添加 4 个虚拟处理器，请在“Hyper-V 管理器”  窗口中选择主机系统。 在“虚拟机”  列表下的右窗格中，找到刚创建的虚拟机。 选择计算机名称，右键单击该名称后选择“设置”。 
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. 在“设置”页的左窗格中，单击“处理器”。 在右窗格中，将“虚拟处理器数目”设置为 4（或 4 以上）。 单击“应用”。
+12. 在“设置”页的左窗格中，单击“处理器”。   在右窗格中，将“虚拟处理器数目”设置为 4（或 4 以上）。  单击“应用”  。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
-13. 若要满足最低要求，还需添加 500 GB 的虚拟数据磁盘。 在“设置”页中：
+13. 若要满足最低要求，还需添加 500 GB 的虚拟数据磁盘。 在“设置”页中： 
 
-    1. 在左窗格中，选择“SCSI 控制器”。
-    2. 在右窗格中，选择“硬盘驱动器”，并单击“添加”。
+    1. 在左窗格中，选择“SCSI 控制器”。 
+    2. 在右窗格中，选择“硬盘驱动器”，并单击“添加”。  
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image12.png)
-14. 在“硬盘驱动器”页上，选择“虚拟硬盘”选项，并单击“新建”。 此时会启动“新建虚拟硬盘向导”。
+14. 在“硬盘驱动器”页上，选择“虚拟硬盘”选项，并单击“新建”。    此时会启动“新建虚拟硬盘向导”。 
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
-15. 在新建虚拟硬盘向导的“准备工作”页上，单击“下一步”。
-16. 在“选择磁盘格式”页上，接受默认选项：“VHDX”格式。 单击“下一步”。 如果运行的是 Windows Server 2008 R2，则不会显示此屏幕。
+15. 在新建虚拟硬盘向导的“准备工作”页上，单击“下一步”。  
+16. 在“选择磁盘格式”页上，接受默认选项：“VHDX”格式。   单击“下一步”。  如果运行的是 Windows Server 2008 R2，则不会显示此屏幕。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. 在“选择磁盘类型”页上，将虚拟硬盘类型设置为“动态扩展”（推荐）。 也可以选择“固定大小”磁盘，但可能需等待很长时间。 建议不要使用“差异”选项。 单击“下一步”。 在 Windows Server 2012 R2 和 Windows Server 2012 中，“动态扩展”是默认选项，而在 Windows Server 2008 R2 中，默认值是“固定大小”。
+17. 在“选择磁盘类型”页上，将虚拟硬盘类型设置为“动态扩展”（推荐）。   也可以选择“固定大小”磁盘，但可能需等待很长时间。  建议不要使用“差异”选项。  单击“下一步”。  在 Windows Server 2012 R2 和 Windows Server 2012 中，“动态扩展”  是默认选项，而在 Windows Server 2008 R2 中，默认值是“固定大小”  。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
-18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。 单击“下一步”。
+18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。    单击“下一步”。 
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 单击“下一步”。
+19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。    500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 单击“下一步”。 
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
-20. 在“摘要”页上查看虚拟数据磁盘的详细信息，如果一切符合要求，则请单击“完成”创建该磁盘。 此时会关闭向导并向虚拟机添加虚拟硬盘。
+20. 在“摘要”页上查看虚拟数据磁盘的详细信息，如果一切符合要求，则请单击“完成”创建该磁盘。   此时会关闭向导并向虚拟机添加虚拟硬盘。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image19.png)
-21. 返回到“设置”页。 单击“确定”关闭“设置”页，返回到“Hyper-V 管理器”窗口。
+21. 返回到“设置”页。  单击“确定”关闭“设置”页，返回到“Hyper-V 管理器”窗口。  
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image20.png)
 
@@ -157,10 +157,10 @@ ms.locfileid: "61415945"
 1. 启动虚拟阵列。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image21.png)
-2. 设备运行后，选择该设备，右键单击后选择“连接”。
+2. 设备运行后，选择该设备，右键单击后选择“连接”。 
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. 可能需要等待 5-10 分钟设备才能准备就绪。 控制台会显示指示进度的状态消息。 设备就绪后，转到“操作”。 按 `Ctrl + Alt + Delete` 登录到虚拟阵列。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
+3. 可能需要等待 5-10 分钟设备才能准备就绪。 控制台会显示指示进度的状态消息。 设备就绪后，转到“操作”。  按 `Ctrl + Alt + Delete` 登录到虚拟阵列。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. 出于安全原因，设备管理员密码在第一次登录后过期。 系统会提示用户更改密码。

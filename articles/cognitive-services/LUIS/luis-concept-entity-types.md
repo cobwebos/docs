@@ -1,7 +1,7 @@
 ---
 title: 实体类型
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 实体从查询文本中提取数据。 实体类型提供可预测的数据提取。 有两种类型的实体： 机器学习的内容和机器学习。 请务必知道哪种类型的查询文本中使用的实体。
+description: 实体从话语中提取数据。 实体类型为你提供可预测的数据提取。 有两种类型的实体：机器学习的和非机器学习的。 请务必知道你在话语中使用的是哪种类型的实体。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,27 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141043"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080038"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>实体类型及其在 LUIS 中的目的
 
-实体从查询文本中提取数据。 实体类型提供可预测的数据提取。 有两种类型的实体： 机器学习的内容和机器学习。 请务必知道哪种类型的查询文本中使用的实体。 
+实体从话语中提取数据。 实体类型为你提供可预测的数据提取。 有两种类型的实体：机器学习的和非机器学习的。 请务必知道你在话语中使用的是哪种类型的实体。 
 
 ## <a name="entity-compared-to-intent"></a>实体与意向
 
-实体表示要提取的话语中的字词或短语。 话语可包括多个实体，也可不包含任何实体。 客户端应用程序可能需要执行其任务，或将其用作多个选项的指南来向用户显示的实体。 
+实体表示要提取的话语中的字词或短语。 话语可包括多个实体，也可不包含任何实体。 客户端应用程序可能需要此实体来执行其任务，或者使用它作为指南来确定提供给用户的多个选项。 
 
 实体：
 
-* 表示包括一系列类似对象 （位置、 内容、 人员、 事件或概念） 的类。 
-* 描述与意图相关的信息
+* 表示一种类，包含相似对象（位置、事项、人员、事件或概念）的集合。 
+* 介绍与意向相关的信息
 
 
 例如，新闻搜索应用可能包括“主题”、“源”、“关键字”和“发布日期”等实体，这些是用于搜索新闻的关键数据。 在旅行预订应用中，“位置”、“日期”、“航空公司”、“舱位等级”和“机票”均为航班预订（与“Bookflight”意向相关）的关键信息。
@@ -109,6 +109,30 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 
 混合实体使用实体检测方法的组合。
 
+## <a name="machine-learned-entities-use-context"></a>机器学习的内容的实体使用上下文
+
+将语音样本中的上下文从学习，机器学习的内容的实体。 这使得放置的变体的示例查询文本中有意义。 
+
+## <a name="non-machine-learned-entities-dont-use-context"></a>非机器学习实体不使用上下文
+
+以下非-机器学习的内容匹配的实体时实体做考虑需要查询文本上下文： 
+
+* [预生成实体](#prebuilt-entity)
+* [正则表达式的实体](#regular-expression-entity)
+* [列表实体](#list-entity) 
+
+这些实体不需要标签或定型模型。 一旦添加或配置实体，提取实体。 弊端是，这些实体可以 overmatched 好，其中如果上下文考虑在内，则匹配将不进行了。 
+
+发生这种情况列表实体与新模型上频繁。 生成和测试您的模型与列表实体但时您将模型发布并从终结点收到的查询，您意识到您的模型 overmatching 上下文所致。 
+
+如果你想要匹配单词或短语，并考虑到上下文，您有两个选项。 第一种是使用简单实体搭配短语列表。 短语列表不会用于匹配，但改为将帮助信号相对相似的单词 （可互换列表）。 如果必须完全匹配而不是短语列表的变体，使用列表实体与一个角色，如下所述。
+
+### <a name="context-with-non-machine-learned-entities"></a>使用机器学习实体上下文
+
+如果所需的查询文本以进行非机器学习实体上下文，则应使用[角色](luis-concept-roles.md)。
+
+如果您有机器学习的实体，如[预生成的实体](#prebuilt-entity)，[正则表达式](#regular-expression-entity)实体或[列表](#list-entity)超出所需的实例匹配的实体，请考虑创建一个实体具有两个角色。 一个角色将捕获的要查找的内容，一个角色将捕获不查找的内容。 这两个版本都需要标记为中的示例查询文本。  
+
 ## <a name="composite-entity"></a>复合实体
 
 复合实体由组成的其他实体，如预生成的实体，简单，正则表达式和列表实体。 各种单独的实体构成整个实体。 
@@ -128,13 +152,14 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 
 ## <a name="list-entity"></a>列表实体
 
-列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 
+列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议  。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 
 
 如果文本数据具有以下特征，则非常适合使用该实体：
 
 * 是已知的集。
+* 不经常更改。 如果需要经常更改的列表或者想要自助展开的列表，提升的短语列表的简单实体是更好的选择。 
 * 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
-* 话语中的文本是同义项或规范名称的完全匹配。 LUIS 不会使用除文本完全匹配项之外的列表。 使用列表实体无法解析词干、复数形式和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance)。
+* 话语中的文本是同义项或规范名称的完全匹配。 LUIS 不会使用除文本完全匹配项之外的列表。 模糊匹配、 区分大小写属性、 词干分析、 复数形式和其他变体未解析列表实体中。 若要管理变体，请考虑使用带有可选文本语法的[模式](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance)。
 
 ![列表实体](./media/luis-concept-entities/list-entity.png)
 
@@ -158,10 +183,11 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 |话语|
 |--|
-|已 Man 谁误认为。 他的妻子 Hat 和其他由美国编写本年度的临床故事？<br>《错把太太当成帽子的男人与其他医疗故事》是某位美国人在今年撰写的吗？|
-|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
+|《错把太太当成帽子的男人与其他医疗故事》是某位美国人在今年撰写的吗？<br><br>《错把太太当成帽子的男人与其他医疗故事》是某位美国人在今年撰写的吗？ |
+|《在宽大睡衣中半梦半睡》是某位美国人在今年撰写的吗？<br><br>《在宽大睡衣中半梦半睡》是某位美国人在今年撰写的吗？ |
+|《小说：柠檬蛋糕的特种忧伤》是某位美国人在今年撰写的吗？<br><br>《小说：柠檬蛋糕的特种忧伤》  是某位美国人在今年撰写的吗？|
+|《口袋里的毛怪！》 是某位美国人在今年撰写的吗？<br><br>《口袋里的毛怪！》  是某位美国人在今年撰写的吗？|
+||
 
 ## <a name="prebuilt-entity"></a>预生成实体
 
@@ -180,41 +206,41 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。 
 
-### <a name="troubleshooting-prebuilt-entities"></a>故障排除预生成的实体
+### <a name="troubleshooting-prebuilt-entities"></a>排查预生成实体问题
 
-在 LUIS 门户中，如果预生成的实体标记而不是自定义实体，则将必须如何解决此问题几个的选择。
+在 LUIS 门户中，如果标记了预生成实体而非你的自定义实体，则可以使用多种方法来纠正此问题。
 
-将添加到应用程序的预建的实体_始终_返回，即使查询文本应该提取自定义实体的相同的文本。 
+“始终”  会返回添加到应用的预生成实体，即使话语应当提取同一文本的自定义实体。 
 
-#### <a name="change-tagged-entity-in-example-utterance"></a>示例查询文本中的标记更改实体
+#### <a name="change-tagged-entity-in-example-utterance"></a>更改示例话语中标记的实体
 
-如果预生成的实体作为自定义实体是相同的文本或标记，选择示例查询文本中的文本，并更改标记查询文本。 
+如果预生成实体具有与自定义实体相同的文本或标记，请选择示例话语中的文本并更改标记的话语。 
 
-如果预生成的实体标记有更多文本或比自定义实体的令牌，则有两个选项如何修复此问题：
+如果为预生成实体标记了比自定义实体多的文本或标记，则可以使用多种方法来纠正此问题：
 
-* [删除示例查询文本](#remove-example-utterance-to-fix-tagging)方法
-* [删除预建的实体](#remove-prebuilt-entity-to-fix-tagging)方法
+* [删除示例话语](#remove-example-utterance-to-fix-tagging)方法
+* [删除预生成实体](#remove-prebuilt-entity-to-fix-tagging)方法
 
-#### <a name="remove-example-utterance-to-fix-tagging"></a>删除示例查询文本以修复标记 
+#### <a name="remove-example-utterance-to-fix-tagging"></a>删除示例话语来纠正标记 
 
-第一个选择是要删除的示例查询文本。 
+你的第一选择是删除示例话语。 
 
-1. 删除示例查询文本。
-1. 重新训练的应用。 
-1. 重新添加只是单词或短语，它是实体，这将被标记为预生成的实体，作为完整的示例查询文本。 词或短语仍将被标记为预生成的实体。 
-1. 在选择的示例查询文本中的实体**意向**页上，并将更改为自定义实体和重新定型。 这应防止 LUIS 将此确切文本标记为任何使用该文本的示例查询文本中的预建实体。 
-1. 将整个原始示例语音样本添加回意图。 自定义的实体应继续标记而不是预生成的实体。 如果未标记的自定义实体，你需要在查询文本中添加该文本的更多示例。
+1. 删除示例话语。
+1. 重新训练应用。 
+1. 仅将是实体的字词或短语（标记为预生成实体）作为完整的示例话语添加回来。 字词或短语仍然标记为预生成实体。 
+1. 在“意向”  页面上的示例话语中选择实体，更改为你的自定义实体并重新训练。 这应当会阻止 LUIS 将此确切文本在使用该文本的任何示例话语中标记为预生成实体。 
+1. 将整个原始示例话语添加回意向。 应当会继续标记自定义实体而非预生成实体。 如果未标记自定义实体，则你需要在话语中添加该文本的更多示例。
 
-#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>删除预建的实体，以修复标记
+#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>删除预生成实体来纠正标记
 
-1. 从应用中删除预生成的实体。 
-1. 上**意向**页上，将标记的示例查询文本中的自定义实体。
+1. 从应用中删除预生成实体。 
+1. 在“意向”  页面上，在示例话语中标记自定义实体。
 1. 将应用定型。
-1. 返回到应用中添加预生成的实体并定型应用。 此修补程序假定预生成的实体不是复合实体的一部分。
+1. 将预生成实体添加回应用并训练应用。 此纠正假定预生成实体不是复合实体的一部分。
 
 ## <a name="regular-expression-entity"></a>正则表达式实体 
 
-正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 使用部件，但不是所有[.NET 正则表达式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)库。 
+正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 使用部分但并非全部 [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) 库。 
 
 在以下情况下，非常适合使用该实体：
 
@@ -225,6 +251,18 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 [教程](luis-quickstart-intents-regex-entity.md)<br>
 [实体的 JSON 响应示例](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
+
+正则表达式可能与您希望匹配更匹配。 此示例是匹配如数值字`one`和`two`。 例如，以下正则表达式，与匹配`one`以及其他数字：
+
+```javascript
+(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
+``` 
+
+此正则表达式的表达式还匹配任何单词，如结尾这些数字`phone`。 若要解决此类问题，请确保正则表达式匹配将帐户词的边界。 以下正则表达式中使用正则表达式要用于此示例中的词的边界：
+
+```javascript
+\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
+```
 
 ## <a name="simple-entity"></a>简单实体 
 
@@ -251,7 +289,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 LUIS 还提供非机器学习的列表实体类型，可让 LUIS 应用指定固定的值列表。 请参阅 [LUIS 边界](luis-boundaries.md)参考内容，查看列表实体类型的限制。 
 
-如果您已考虑过这些实体，并仍需要更多限制，请联系支持。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
+如果您已考虑过这些实体，并仍需要更多限制，请联系支持。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”  。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
 
 ## <a name="next-steps"></a>后续步骤
 

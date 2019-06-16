@@ -10,17 +10,17 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: 6d91f5e61dfd7c3cb4d1869edf0c6cb8c2c85190
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827504"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>使用资源提供程序 REST API 创建 IoT 中心 (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-可以使用[IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)来创建和以编程方式管理 Azure IoT 中心。 本教程介绍如何使用 IoT 中心资源提供程序 REST API 通过 C# 程序创建 IoT 中心。
+可以通过编程方式使用 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 创建和管理 Azure IoT 中心。 本教程介绍如何使用 IoT 中心资源提供程序 REST API 通过 C# 程序创建 IoT 中心。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -36,11 +36,11 @@ ms.locfileid: "65827504"
 
 ## <a name="prepare-your-visual-studio-project"></a>准备 Visual Studio 项目
 
-1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板创建 Visual C# Windows 经典桌面项目。 将该项目命名为 **CreateIoTHubREST**。
+1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”  项目模板创建 Visual C# Windows 经典桌面项目。 将该项目命名为 **CreateIoTHubREST**。
 
 2. 在解决方案资源管理器中右键单击项目，然后单击“**管理 NuGet 包**”。
 
-3. 在 NuGet 包管理器中，选中“包括预发行版”，并在“浏览”页上搜索 **Microsoft.Azure.Management.ResourceManager**。 选择该包，单击“安装”，在“审阅更改”中单击“确定”，并单击“我接受”以接受许可证。
+3. 在 NuGet 包管理器中，选中“包括预发行版”，并在“浏览”页上搜索 **Microsoft.Azure.Management.ResourceManager**   。 选择该包，单击“安装”  ，在“审阅更改”  中单击“确定”  ，并单击“我接受”  以接受许可证。
 
 4. 在 NuGet 包管理器中，搜索 **Microsoft.IdentityModel.Clients.ActiveDirectory**。  单击“**安装**”，在“**审阅更改**”中单击“**确定**”，并单击“**我接受**”以接受许可证。
 
@@ -60,7 +60,7 @@ ms.locfileid: "65827504"
     using System.Threading;
     ```
 
-6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 资源组名称是创建 IoT 中心时要使用的资源组名称。 可以使用现有的资源组或新资源组。 “IoT 中心名称”是你创建的 IoT 中心的名称，例如“MyIoTHub”。 IoT 中心的名称必须是全局唯一的。 **部署名称**是部署的名称，例如 **Deployment_01**。
+6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 资源组名称  是创建 IoT 中心时要使用的资源组名称。 可以使用现有的资源组或新资源组。 “IoT 中心名称”  是你创建的 IoT 中心的名称，例如“MyIoTHub”  。 IoT 中心的名称必须是全局唯一的。 **部署名称**是部署的名称，例如 **Deployment_01**。
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -153,7 +153,7 @@ ms.locfileid: "65827504"
 
 ## <a name="complete-and-run-the-application"></a>完成并运行应用程序
 
-现在，可以调用 CreateIoTHub 方法来完成应用程序，然后生成并运行该应用程序。
+现在，可以调用 CreateIoTHub  方法来完成应用程序，然后生成并运行该应用程序。
 
 1. 将以下代码添加到 **Main** 方法末尾：
 

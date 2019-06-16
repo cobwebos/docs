@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
 ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464628"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>将数据导出到 Azure Blob 存储
 
 *本主题适用于管理员。*
 
-本文介绍如何在 Azure IoT Central 中使用连续数据导出功能，以定期将数据导出到您**Azure Blob 存储帐户**。 可以将“度量”、“设备”和“设备模板”导出到 Apache Avro 格式的文件中。 导出的数据可用于冷路径分析，例如 Azure 机器学习中的训练模型或 Microsoft Power BI 中的长期趋势分析。
+本文介绍如何在 Azure IoT Central 中使用连续数据导出功能，以定期将数据导出到您**Azure Blob 存储帐户**。 可以将“度量”  、“设备”  和“设备模板”  导出到 Apache Avro 格式的文件中。 导出的数据可用于冷路径分析，例如 Azure 机器学习中的训练模型或 Microsoft Power BI 中的长期趋势分析。
 
 > [!Note]
 > 同样，启用连续数据导出时，只能获得从那时之后的数据。 目前，关闭连续数据导出后将暂时无法检索数据。 若要保留更多的历史数据，请及早启用连续数据导出。
@@ -37,13 +37,13 @@ ms.locfileid: "65464628"
 ## <a name="create-storage-account"></a>创建存储帐户
 
 1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以在 [Azure 存储文档](https://aka.ms/blobdocscreatestorageaccount)中进行详细的了解。
-2. 对于帐户类型，选择“常规用途”或“Blob 存储”。
-3. 请选择订阅。 
+2. 对于帐户类型，选择“常规用途”  或“Blob 存储”  。
+3. 选择订阅。 
 
     > [!Note] 
     > 可以将数据导出到其他订阅，此类订阅**不同于**那些适用于即用即付 IoT Central 应用程序的订阅。 在此示例中，将使用连接字符串进行连接。
 
-4. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”。 选择 **+ 容器**顶部创建一个新的容器
+4. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”   。 选择 **+ 容器**顶部创建一个新的容器
 
 
 ## <a name="set-up-continuous-data-export"></a>设置连续数据导出
@@ -66,26 +66,26 @@ ms.locfileid: "65464628"
 
     ![创建新的连续数据导出](media/howto-export-data/export_new1.png)
 
-4. 在下拉列表框中，选择你**存储帐户命名空间**。 也可选取列表中的最后一个选项，即“输入连接字符串”。 
+4. 在下拉列表框中，选择你**存储帐户命名空间**。 也可选取列表中的最后一个选项，即“输入连接字符串”。  
 
     > [!NOTE] 
-    > 您将只看到存储帐户中的命名空间**与你的 IoT Central 应用相同的订阅**。 若要导出到此订阅外部的某个目标，请选择“输入连接字符串”，然后参阅步骤 5。
+    > 您将只看到存储帐户中的命名空间**与你的 IoT Central 应用相同的订阅**。 若要导出到此订阅外部的某个目标，请选择“输入连接字符串”，然后参阅步骤 5。 
 
     > [!NOTE] 
     > 若要通过 7 天试用期的应用来配置连续事件导出，则唯一的方式是使用连接字符串。 这是因为 7 天试用期的应用没有关联的 Azure 订阅。
 
     ![创建新的 cde 事件中心](media/howto-export-data/export-create-blob.png)
 
-5. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。 若要获取连接字符串，请执行以下操作：
+5. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。  若要获取连接字符串，请执行以下操作：
     - 存储帐户，请转到 Azure 门户中的存储帐户。
         - 下**设置**，选择**访问密钥**
         - 复制 key1 连接字符串或 key2 连接字符串
  
 6. 从下拉列表框中选择一个容器。
 
-7. 在“要导出的数据”下，通过将类型设置为“打开”来指定要导出的各类数据。
+7. 在“要导出的数据”  下，通过将类型设置为“打开”  来指定要导出的各类数据。
 
-6. 若要启用连续数据导出，请确保将“数据导出”设置为“打开”。 选择“保存”。
+6. 若要启用连续数据导出，请确保将“数据导出”  设置为“打开”  。 选择“保存”。 
 
    ![配置连续数据导出](media/howto-export-data/export-list-blob.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "65464628"
 导出的度量数据包含 IoT Central 在此期间从所有设备接收的所有新消息。 导出的文件所用格式与通过 [IoT 中心消息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c)导出到 Blob 存储中的消息文件格式相同。
 
 > [!NOTE]
-> 发送度量的设备由设备 ID 表示（请参阅以下部分）。 若要获取设备名称，请导出设备快照。 使用与设备记录的 deviceId 匹配的 connectionDeviceId 来关联每条消息记录。
+> 发送度量的设备由设备 ID 表示（请参阅以下部分）。 若要获取设备名称，请导出设备快照。 使用与设备记录的 deviceId 匹配的 connectionDeviceId   来关联每条消息记录。
 
 以下示例显示了已解码的 Avro 文件中的记录：
 

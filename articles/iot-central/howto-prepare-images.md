@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: a20662c2fc9b416fefce89a6ebe706307ee71bb7
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236481"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>准备图像并将其上传到 Azure IoT Central 应用程序
@@ -88,7 +88,7 @@ ms.locfileid: "65236481"
 
 ### <a name="device-template"></a>设备模板
 
-若要将图像上传到设备模板中，请导航到“设备模板”，选择设备模板。 必须是开发者才能完成此任务：
+若要将图像上传到设备模板中，请导航到“设备模板”，选择设备模板  。 必须是开发者才能完成此任务：
 
 ![上传设备模板图像](media/howto-prepare-images/uploaddevicetemplate.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "65236481"
 
 ### <a name="device-dashboard"></a>设备仪表板
 
-若要将图像上传到设备仪表板中，请导航到“设备模板”，选择设备模板。 然后选择“仪表板”选项卡。必须是开发者才能完成此任务：
+若要将图像上传到设备仪表板中，请导航到“设备模板”，选择设备模板  。 然后选择“仪表板”选项卡  。必须是开发者才能完成此任务：
 
 ![上传设备仪表板图像](media/howto-prepare-images/uploaddevicedashboard.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "65236481"
 
 ### <a name="device-set-dashboard"></a>设备集仪表板
 
-若要在设备集仪表板中上传图像，请导航到“设备集”，选择设备集和设备。 然后选择**仪表板**页，然后选择**编辑**:
+若要在设备集仪表板中上传图像，请导航到“设备集”，选择设备集和设备。  然后选择**仪表板**页，然后选择**编辑**:
 
 ![上传设备集仪表板图像](media/howto-prepare-images/uploaddevicesetdashboard.png)
 

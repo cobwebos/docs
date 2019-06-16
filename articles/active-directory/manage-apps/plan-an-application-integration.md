@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8db7ac63aaf9ae5b1b16bb233e87ace06867309
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 11453ad9132664313df2b56cb3664512628a16ba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824320"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108240"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
 
@@ -91,11 +91,11 @@ ms.locfileid: "65824320"
 * [共享帐户](../active-directory-sharing-accounts.md)
 
 ## <a name="next-steps"></a>后续步骤
-若要了解详细信息，可以从 [GitHub](https://aka.ms/deploymentplans) 下载 Azure Active Directory 部署计划。 对于库应用程序，你可以通过 [Azure 门户](https://portal.azure.com)下载适用于单一登录、条件性访问和用户预配的部署计划。 
+若要了解详细信息，可以从 [GitHub](https://aka.ms/deploymentplans) 下载 Azure Active Directory 部署计划。 对于库应用程序，您可以下载上单一登录、 条件性访问和用户通过预配的部署计划[Azure 门户](https://portal.azure.com)。 
 
 若要从 Azure 门户下载部署计划，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“企业应用程序” | “选取应用” | “部署计划”。
+2. 选择“企业应用程序” | “选取应用” | “部署计划”。   
 
 通过完成[部署计划调查](https://aka.ms/DeploymentPlanFeedback)来提供有关部署计划的反馈。

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 980dc850537b7419e4ee48391acd5ba971fb3fed
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 03cb3f2339dda1bf1dbb510b686882e924a98d74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118706"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -194,7 +194,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 * 如果必须通过代理工作，则须将网络工具配置为通过代理连接。
 * 检查网络工具使用的端口号。
-* 在存储资源管理器中，输入本地主机 URL和网络工具的端口号作为代理设置。 如果操作无误，网络工具将开始记录存储资源管理器向管理和服务终结点发出的网络请求。 例如，输入 https://cawablobgrs.blob.core.windows.net/的 blob 终结点在浏览器中，并且您将收到类似以下内容，表示资源存在，尽管不能访问它的响应。
+* 在存储资源管理器中，输入本地主机 URL和网络工具的端口号作为代理设置。 如果操作无误，网络工具将开始记录存储资源管理器向管理和服务终结点发出的网络请求。 例如，输入 https://cawablobgrs.blob.core.windows.net/ 的 blob 终结点在浏览器中，并且您将收到类似以下内容，表示资源存在，尽管不能访问它的响应。
 
 ![代码示例](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 

@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 6b4ddcadfe63f74d115c155354a276e45c6b53f9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: cd37638b9bac2a1b48f0ef0abb7b18da440049f0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544494"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080744"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入门：使用异常检测器 REST API 和 Python 时序数据中检测异常
 
@@ -49,7 +49,7 @@ ms.locfileid: "59544494"
     import json
     ```
 
-2. 为你的订阅密钥和你的终结点创建变量。 下面是可用于异常情况检测的 Uri。 这些将追加到你的服务终结点更高版本才能创建 API 请求 Url。
+2. 为订阅密钥和终结点创建变量。 下面是可用于异常情况检测的 Uri。 这些将追加到你的服务终结点更高版本才能创建 API 请求 Url。
 
     |检测方法  |URI  |
     |---------|---------|
@@ -72,9 +72,9 @@ ms.locfileid: "59544494"
     json_data = json.load(file_handler)
     ```
 
-## <a name="create-a-function-to-send-requests"></a>创建一个函数来发送请求
+## <a name="create-a-function-to-send-requests"></a>创建用于发送请求的函数
 
-1. 创建一个名为的新函数`send_request()`采用上面创建的变量。 然后，执行以下步骤。
+1. 创建名为 `send_request()` 的新函数，该函数使用上面创建的变量。 然后，执行以下步骤。
 
 2. 创建的请求标头的字典。 设置`Content-Type`到`application/json`，并添加你的订阅密钥的`Ocp-Apim-Subscription-Key`标头。
 
@@ -89,7 +89,7 @@ def send_request(endpoint, url, subscription_key, request_data):
 
 ## <a name="detect-anomalies-as-a-batch"></a>作为一批中检测异常
 
-1. 创建一个名为方法`detect_batch()`来检测异常在整个数据作为一个批。 调用`send_request()`上面创建的终结点、 url、 订阅密钥和 json 数据的方法。
+1. 创建一个名为方法`detect_batch()`来检测异常在整个数据作为一个批。 调用在上面使用终结点、URL、订阅密钥和 JSON 数据创建的 `send_request()` 方法。
 
 2. 调用`json.dumps()`上要设置其格式，并将其打印到控制台的结果。
 
@@ -142,7 +142,7 @@ detect_latest(json_data)
 
 ### <a name="example-response"></a>示例响应
 
-JSON 格式返回成功的响应。 单击以下链接，查看 GitHub 上的 JSON 响应：
+成功的响应以 JSON 格式返回。 单击以下链接，查看 GitHub 上的 JSON 响应：
 * [示例批处理检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [示例最新点检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 

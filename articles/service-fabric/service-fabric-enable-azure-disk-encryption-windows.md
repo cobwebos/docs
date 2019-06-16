@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
 ms.openlocfilehash: c31fc43729bcb58c755959db0c8bc5185b8197f4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66471411"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>为 Azure Service Fabric 群集节点，在 Windows 中启用磁盘加密 
@@ -61,7 +61,7 @@ ms.locfileid: "66471411"
 2. 安装最新版本[Azure CLI](/cli/azure/install-azure-cli)，其中包含新的加密命令。
 3. 安装最新版本[从 Azure PowerShell 的 Azure SDK](https://github.com/Azure/azure-powershell/releases)发布。 以下是虚拟机规模集启用 Azure 磁盘加密 cmdlet ([设置](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) 加密，检索 ([获取](/powershell/module/az.compute/get-azvmssvmdiskencryption)) 加密状态和删除 ([禁用](/powershell/module/az.compute/disable-azvmssdiskencryption))在刻度上的加密设置实例。
 
-| 命令 | Version |  源  |
+| 命令 | Version |  source  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |

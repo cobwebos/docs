@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: include file
 ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157913"
 ---
 > [!NOTE]
@@ -33,6 +33,6 @@ ms.locfileid: "66157913"
 > * 由 **Content-Type** 和/或 **Content-Disposition** 声明的 Blob 元数据（例如关联的 MIME 类型）
 > * 包括要上传的文件的非结构化内容的 Blob 内容
 >
-> 对于 PATCH 请求，上述两个部分都不是必需的。 对于 **POST** 请求或 create 操作，两者都是必需的。
+> 对于 PATCH  请求，上述两个部分都不是必需的。 对于 **POST** 请求或 create 操作，两者都是必需的。
 
 [采用快速入门源代码](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs)包含完整的 C# 示例，其中展示了如何针对 Azure 数字孪生管理 API 进行多部分请求。

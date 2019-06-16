@@ -6,14 +6,13 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-origin.date: 08/15/2018
-ms.date: 03/12/2019
-ms.author: v-junlch
+ms.date: 8/15/2018
+ms.author: victorh
 ms.openlocfilehash: 90200f7be6c71346441922365fc4439111dd8701
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66133698"
 ---
 # <a name="renew-application-gateway-certificates"></a>续订应用程序网关证书
@@ -24,11 +23,11 @@ ms.locfileid: "66133698"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-若要从门户续订侦听器证书，请导航到应用程序网关侦听器。 单击具有需要续订的证书的侦听器，然后单击“续订或编辑所选证书”。
+若要从门户续订侦听器证书，请导航到应用程序网关侦听器。 单击具有需要续订的证书的侦听器，然后单击“续订或编辑所选证书”  。
 
-![续订证书](./media/renew-certificate/ssl-cert.png)
+![续订证书](media/renew-certificate/ssl-cert.png)
 
-上传新的 PFX 证书，为其命名，输入密码，然后单击“保存”。
+上传新的 PFX 证书，为其命名，输入密码，然后单击“保存”  。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -36,7 +35,7 @@ ms.locfileid: "66133698"
 
 若要使用 Azure PowerShell 续订证书，请使用以下脚本：
 
-```azurepowershell
+```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
   -ResourceGroupName <ResourceGroup> `
   -Name <AppGatewayName>
@@ -53,17 +52,15 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 ## <a name="azure-cli"></a>Azure CLI
 
-```azurecli
-az network application-gateway ssl-cert update `
-  -n "<CertName>" `
-  --gateway-name "<AppGatewayName>" `
-  -g "ResourceGroupName>" `
-  --cert-file <PathToCerFile> `
+```azurecli-interactive
+az network application-gateway ssl-cert update \
+  -n "<CertName>" \
+  --gateway-name "<AppGatewayName>" \
+  -g "ResourceGroupName>" \
+  --cert-file <PathToCerFile> \
   --cert-password "<password>"
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何通过 Azure 应用程序网关来配置 SSL 卸载，请参阅[配置 SSL 卸载](application-gateway-ssl-portal.md)
-
-<!-- Update_Description: code update -->

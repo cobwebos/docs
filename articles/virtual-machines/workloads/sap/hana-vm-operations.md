@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/05/2019
+ms.date: 06/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 156bb4cbf43dc71627f9db785dba574f25139285
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: b1591f4f1e96bbb2bffb80a2c652963faa5dca5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733831"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077642"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -66,6 +66,11 @@ ms.locfileid: "66733831"
 - Azure CLI。
 
 还可通过 [SAP 云平台](https://cal.sap.com/)在 Azure VM 服务上部署整个已安装的 SAP HANA 平台。 [在 Azure 上部署 SAP S/4HANA 或 BW/4HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) 中介绍了安装过程，也可以使用[此处](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)所述的自动化功能完成安装。
+
+>[!IMPORTANT]
+> 若要使用 M208xx_v2 Vm，需要小心，从 Azure VM 映像库中选择 SUSE Linux 映像。 若要读取的详细信息，阅读文章[内存优化的虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)。 Red Hat 尚不支持在 Mv2 系列 Vm 上使用 HANA 中。 当前计划是在第 4 季度/CY2019 Mv2 VM 系列上运行 HANA 的 Red Hat 版本提供支持 
+> 
+
 
 ### <a name="storage-configuration-for-sap-hana"></a>SAP HANA 的存储配置
 有关存储配置和存储类型用于在 Azure 中，SAP HANA，请阅读文档[SAP HANA Azure 虚拟机的存储配置](./hana-vm-operations-storage.md)

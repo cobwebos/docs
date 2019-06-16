@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 287e4ee53a108d1e2b83d4a8b11a98a2c7727721
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 10ac2f4ac83240acf644fc1529c9c14f5e9631a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545591"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111292"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>身份验证和授权错误代码
 
@@ -53,7 +53,7 @@ ms.locfileid: "65545591"
 | AADSTS50001 | InvalidResource - 资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。  |
 | AADSTS50002 | NotAllowedTenant - 由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。 |
 | AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 请查看 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) 中所述的解决方法。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
-| AADSTS50005 | DevicePolicyError - 用户尝试从条件访问策略目前不支持的平台登录到设备。 |
+| AADSTS50005 | DevicePolicyError-用户尝试从一个平台，目前不支持条件性访问策略通过登录到设备。 |
 | AADSTS50006 | InvalidSignature - 由于签名无效，签名验证失败。 |
 | AADSTS50007 | PartnerEncryptionCertificateMissing - 未找到此应用的合作伙伴加密证书。 请向 Microsoft [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。 |
 | AADSTS50008 | InvalidSamlToken - SAML 断言在令牌中缺失或配置错误。 请联系联合提供者。 |
@@ -105,7 +105,7 @@ ms.locfileid: "65545591"
 | AADSTS50127 | BrokerAppNotInstalled - 用户需要安装中转站应用才能访问此内容。 |
 | AADSTS50128 | 域名无效 - 未在请求中找到或提供的任何凭据均未暗示任何租户标识信息。 |
 | AADSTS50129 | DeviceIsNotWorkplaceJoined - 需要加入工作区才能注册设备。 |
-| AADSTS50131 | ConditionalAccessFailed - 表示各种情形下的访问错误，例如，Windows 设备状态不正确，请求因活动、访问策略和安全策略决策可疑而被阻止。 |
+| AADSTS50131 | ConditionalAccessFailed-指示各种条件性访问错误，例如错误的 Windows 设备状态，由于可疑活动、 访问策略或安全策略决策而被阻止的请求。 |
 | AADSTS50132 | SsoArtifactInvalidOrExpired - 会话由于密码过期或最近更改了密码而无效。 |
 | AADSTS50133 | SsoArtifactRevoked - 会话由于密码过期或最近更改了密码而无效。 |
 | AADSTS50134 | DeviceFlowAuthorizeWrongDatacenter - 错误的数据中心。 若要授权 OAuth 2.0 设备流中的应用发起的请求，授权方必须与原始请求位于同一数据中心。 |
@@ -134,10 +134,10 @@ ms.locfileid: "65545591"
 | AADSTS51005 | TemporaryRedirect - 等效于 HTTP 状态 307，表示请求的信息位于 location 标头中指定的 URI 处。 如果收到此状态，请遵循与响应关联的 location 标头操作。 如果原始请求方法是 POST，则重定向的请求也会使用 POST 方法。 |
 | AADSTS51006 | ForceReauthDueToInsufficientAuth - 需要 Windows 集成身份验证。 用户已使用缺少 Windows 集成身份验证声明的会话令牌登录。 请求用户重新登录。 |
 | AADSTS52004 | DelegationDoesNotExistForLinkedIn - 用户未许可访问 LinkedIn 资源。 |
-| AADSTS53000 | DeviceNotCompliant - 条件访问策略需要合规的设备，该设备不合规。 用户必须使用已批准的 MDM 提供程序（例如 Intune）注册其设备。 |
-| AADSTS53001 | DeviceNotDomainJoined - 条件访问策略需要已加入域的设备，而该设备未加入域。 让用户使用已加入域的设备。 |
-| AADSTS53002 | ApplicationUsedIsNotAnApprovedApp - 使用的应用不是批准用于条件访问的应用。 用户需使用可用的获批准应用列表中的某个应用才能获取访问权限。 |
-| AADSTS53003 | BlockedByConditionalAccess - 条件访问策略已阻止访问。 访问策略不允许令牌颁发。 |
+| AADSTS53000 | DeviceNotCompliant 的条件性访问策略要求兼容设备和设备不合规。 用户必须使用已批准的 MDM 提供程序（例如 Intune）注册其设备。 |
+| AADSTS53001 | DeviceNotDomainJoined 的条件性访问策略需要加入的域的设备，并且设备未加入域。 让用户使用已加入域的设备。 |
+| AADSTS53002 | ApplicationUsedIsNotAnApprovedApp-使用该应用不是条件性访问的已批准的应用。 用户需使用可用的获批准应用列表中的某个应用才能获取访问权限。 |
+| AADSTS53003 | BlockedByConditionalAccess-访问已被阻止的条件性访问策略。 访问策略不允许令牌颁发。 |
 | AADSTS53004 | ProofUpBlockedDueToRisk - 在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - 用户或管理员尚未许可将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 |
@@ -201,7 +201,7 @@ ms.locfileid: "65545591"
 | AADSTS90043 | NationalCloudAuthCodeRedirection - 已禁用该功能。 |
 | AADSTS90051 | InvalidNationalCloudId - 国家云标识符包含无效的云标识符。 |
 | AADSTS90055 | TenantThrottlingError - 传入的请求过多。 此异常是针对阻止的租户引发的。 |
-| AADSTS90056 | BadResourceRequest - 若要兑换访问令牌的代码，应用应该向 `/token` 终结点发送 POST 请求。 另外，在此之前，应该提供授权代码，并在发往 `/token` 终结点的 POST 请求中发送此代码。 请参阅以下文章中有关 OAuth 2.0 授权代码流的概述：[https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)。 将用户定向到 `/authorize` 终结点，该终结点会返回 authorization_code。 通过向 `/token` 终结点发布请求，用户可以获取访问令牌。 在 Azure 门户中登录，并检查“应用注册”>“终结点”以确认是否正确配置了两个终结点。 |
+| AADSTS90056 | BadResourceRequest - 若要兑换访问令牌的代码，应用应该向 `/token` 终结点发送 POST 请求。 另外，在此之前，应该提供授权代码，并在发往 `/token` 终结点的 POST 请求中发送此代码。 请参阅以下文章中有关 OAuth 2.0 授权代码流的概述：[https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)。 将用户定向到 `/authorize` 终结点，该终结点会返回 authorization_code。 通过向 `/token` 终结点发布请求，用户可以获取访问令牌。 在 Azure 门户中登录，并检查“应用注册”>“终结点”以确认是否正确配置了两个终结点。  |
 | AADSTS90072 | PassThroughUserMfaError - 用户登录时所用的外部帐户在其登录到的租户中不存在；因此，该用户无法满足该租户的 MFA 要求。 必须先将该帐户作为外部用户添加到该租户中。 请注销并使用其他 Azure AD 用户帐户登录。 |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid - 服务尝试处理 WS 联合身份验证消息时出错。 消息无效。 |
 | AADSTS90082 | OrgIdWsFederationNotSupported - 目前不支持对该请求使用所选的身份验证策略。 |

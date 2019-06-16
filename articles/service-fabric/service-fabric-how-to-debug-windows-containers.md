@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo, mikhegn
 ms.openlocfilehash: 15f288d5400b49ec05c9ffb936fd2097cc61bae8
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66428146"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>如何：调试 Azure Service Fabric 使用 Visual Studio 2019 中的 Windows 容器

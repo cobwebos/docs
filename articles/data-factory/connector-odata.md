@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: jingwang
 ms.openlocfilehash: eeab0311519d7e3410ddb625c1801101ad63ad18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61400108"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-odata-connector.md)
 > * [当前版本](connector-odata.md)
 
@@ -48,11 +48,11 @@ OData 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 OData。 |是 |
+| type | type 属性必须设置为 OData   。 |是 |
 | url | OData 服务的根 URL。 |是 |
-| authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为“Anonymous”、“Basic”、“Windows”、“AadServicePrincipal”和“ManagedServiceIdentity”。 不支持基于用户的 OAuth。 | 是 |
-| userName | 如果使用 Basic 或 Windows 身份验证，请指定用户名。 | 否 |
-| password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
+| authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为“Anonymous”  、“Basic”  、“Windows”  、“AadServicePrincipal”  和“ManagedServiceIdentity”  。 不支持基于用户的 OAuth。 | 是 |
+| userName | 如果使用 Basic 或 Windows 身份验证，请指定用户名  。 | 否 |
+| password | 指定为 userName 指定的用户帐户的密码   。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 否 |
 | aadServicePrincipalCredentialType | 指定要用于服务主体身份验证的凭据类型。 允许值为：`ServicePrincipalKey` 或 `ServicePrincipalCert`。 | 否 |
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -193,11 +193,11 @@ OData 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 
 
-要从 OData 复制数据，请将数据集的 type 属性设置为“ODataResource”。 支持以下属性：
+要从 OData 复制数据，请将数据集的 type 属性设置为“ODataResource”   。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 ODataResource。 | 是 |
+| type | 数据集的 type 属性必须设置为 ODataResource   。 | 是 |
 | path | OData 资源的路径。 | 是 |
 
 **示例**
@@ -228,11 +228,11 @@ OData 链接的服务支持以下属性：
 
 ### <a name="odata-as-source"></a>以 OData 作为源
 
-要从 OData 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动 **source** 节支持以下属性：
+要从 OData 复制数据，请将复制活动中的源类型设置为“RelationalSource”   。 复制活动 **source** 节支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 RelationalSource。 | 是 |
+| type | 复制活动源的 type 属性必须设置为 RelationalSource   。 | 是 |
 | query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：OData 连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 
 **示例**
@@ -290,7 +290,7 @@ OData 链接的服务支持以下属性：
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]
-> 不支持 OData 复杂数据类型，例如对象。
+> 不支持 OData 复杂数据类型，例如对象  。
 
 
 ## <a name="next-steps"></a>后续步骤

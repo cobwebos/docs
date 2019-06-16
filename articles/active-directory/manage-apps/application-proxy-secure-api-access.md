@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 47f6678f8d18d734176d964f18a6febecea957ab
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c2b99525e3d0a61c02dc502fcd0927ea65993e5b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481409"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108512"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>安全地访问本地 Api 使用 Azure AD 应用程序代理
 
@@ -36,7 +36,7 @@ ms.locfileid: "66481409"
 
 Azure AD 应用程序代理窗体的主干的解决方案，充当 API 访问权限的公共终结点和提供身份验证和授权。 可以从大量的平台访问你的 Api，通过使用[ADAL](/azure/active-directory/develop/active-directory-authentication-libraries)库。 
 
-由于 Azure AD 每生成 Azure AD 应用程序代理身份验证和授权，可以使用 Azure AD 条件访问以确保仅受信任的设备可以访问通过应用程序代理发布的 Api。 使用 Azure AD Join 或适用于桌面，Azure AD 混合加入和 Intune 托管的设备。 此外可以充分利用 Azure 多重身份验证等 Azure Active Directory Premium 功能和机器学习提供支持的安全性[Azure Identity Protection](/azure/active-directory/active-directory-identityprotection)。
+由于 Azure AD 每生成 Azure AD 应用程序代理身份验证和授权，可以使用 Azure AD 条件性访问以确保仅受信任的设备可以访问通过应用程序代理发布的 Api。 使用 Azure AD Join 或适用于桌面，Azure AD 混合加入和 Intune 托管的设备。 此外可以充分利用 Azure 多重身份验证等 Azure Active Directory Premium 功能和机器学习提供支持的安全性[Azure Identity Protection](/azure/active-directory/active-directory-identityprotection)。
 
 ## <a name="prerequisites"></a>必备组件
 

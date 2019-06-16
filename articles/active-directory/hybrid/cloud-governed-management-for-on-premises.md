@@ -13,12 +13,12 @@ ms.date: 06/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7e54f6acfe1cbbe6e46fe92d132ebdaa91ff33
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 510a5562740260eb2946ded074a5c37804c55375
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742343"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109524"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>云如何提供 Azure AD 管理本地工作负荷的管理
 
@@ -93,7 +93,7 @@ Azure AD 可以[自动在 AD 中的来宾用户创建帐户](https://docs.micros
 
 ![Azure AD 演变](media/cloud-governed-management-for-on-premises/image5.png)
 
-若要开始迁移联合应用程序到 Azure AD 作为标识提供者，请参阅 https://aka.ms/migrateapps包含链接：
+若要开始迁移联合应用程序到 Azure AD 作为标识提供者，请参阅 https://aka.ms/migrateapps 包含链接：
 
 * 白皮书[您的应用程序迁移到 Azure Active Directory](https://aka.ms/migrateapps/whitepaper)，该显示迁移的好处，并介绍了如何在四个明确列出阶段中进行迁移规划： 发现、 分类、 迁移和正在进行管理。 本教程介绍如何在过程的看法和分解成易于使用的部分项目。 整个文档为指向重要资源的链接，可全程为你提供帮助。
 

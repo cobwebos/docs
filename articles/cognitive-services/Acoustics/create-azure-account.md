@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 7a7f5f6738b4bc96b6248deb062c7b3f63048148
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61335580"
 ---
 # <a name="project-acoustics-azure-batch-account-setup"></a>项目噪声 Azure 批处理帐户设置
@@ -41,13 +41,13 @@ Azure 需要花费几分钟时间来部署帐户。 在门户右上角查看完�
   ![屏幕截图显示 Azure 门户仪表板，其中显示 Batch 和存储帐户](media/azure-portal-dashboard.png)
 
 ## <a name="set-up-acoustics-bake-ui-with-azure-credentials"></a>使用 Azure 凭据设置音响效果制作 UI
-单击仪表板上的 Batch 帐户链接，然后单击 Batch 帐户页上的“密钥”链接以访问凭据。
+单击仪表板上的 Batch 帐户链接，然后单击 Batch 帐户页上的“密钥”链接以访问凭据  。
   
   ![具有突出显示密钥页的链接的屏幕截图的 Azure Batch 帐户](media/batch-access-keys.png)
 
   ![使用访问密钥屏幕截图的 Azure Batch 帐户密钥页](media/batch-keys-info.png)
 
-单击页面上的“存储帐户”链接，以访问 Azure 存储帐户凭据。
+单击页面上的“存储帐户”链接，以访问 Azure 存储帐户凭据  。
   
   ![使用访问密钥屏幕截图的 Azure 存储帐户密钥页](media/storage-keys-info.png)
 
@@ -58,7 +58,7 @@ Azure 需要花费几分钟时间来部署帐户。 在门户右上角查看完�
 ![显示按区域的 Azure 虚拟机的屏幕截图](media/azure-regions.png) 
 
 ## <a name="upgrading-your-quota"></a>升级配额
-创建帐户时，将预配 Azure Batch 帐户，并且其计算核心限制为 20 个。 我们可能需要增加此限制的更快的制作时间，因为可以跨多个节点，您的场景中的探测点的数目可高达并行噪声工作负荷。 可以通过单击 Azure Batch 门户页上的“配额”链接并单击“请求增加配额”来请求增加配额：
+创建帐户时，将预配 Azure Batch 帐户，并且其计算核心限制为 20 个。 我们可能需要增加此限制的更快的制作时间，因为可以跨多个节点，您的场景中的探测点的数目可高达并行噪声工作负荷。 可以通过单击 Azure Batch 门户页上的“配额”链接并单击“请求增加配额”   来请求增加配额：
 
 ![Azure 配额的屏幕截图页](media/azure-quotas.png)
 

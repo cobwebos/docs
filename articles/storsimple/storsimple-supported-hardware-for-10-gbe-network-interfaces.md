@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 8303195f0f3228ee145cbba9e322ea4e5e4c1264
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302528"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726962"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple 设备上支持的适用于 10 GbE 网络接口的硬件
 ## <a name="overview"></a>概述
@@ -51,7 +51,7 @@ Microsoft 已测试以下小型可插拔 (SFP) 收发器、电缆和交换机，
 ## <a name="list-of-devices-tested-in-the-field"></a>已在现场测试的设备列表
 本部分包含 StorSimple 客户已在现场成功部署的设备的列表。 这些设备尚未经过 Microsoft 测试，但可能可以与 StorSimple 设备一起使用。
 
-| 参数 | Value |
+| 参数 | 值 |
 | --- | --- |
 | 交换机制造商 |Juniper |
 | 交换机型号 |ex4550-32F |

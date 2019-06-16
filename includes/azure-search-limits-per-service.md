@@ -9,17 +9,17 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: b298c87d802314bd865bd6f38c35e4361eb69f3f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160503"
 ---
 存储受磁盘空间限制，或者受索引、文档或其他高级资源的*最大数目*的硬性限制，具体取决于哪一个限制先实施。 下表描述了存储限制。 有关索引、 文档和其他对象的最大限制，请参阅[按资源限制](../articles/search/search-limits-quotas-capacity.md#index-limits)。
 
 | Resource | 免费 | 基本<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> | L1 | L2 |
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 服务级别协议 (SLA)<sup>3</sup>  |“否” |是 |是 |是 |是 |是 |是 |“是” |
+| 服务级别协议 (SLA)<sup>3</sup>  |否 |是 |是 |是 |是 |是 |是 |是 |
 | 每个分区的存储 |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
 | 每个服务的分区数 |不适用 |第 |12 |12 |12 |3 |12 |12 |
 | 分区大小 |不适用 |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |

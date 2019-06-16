@@ -9,10 +9,10 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 899bf4bbf201ae785a4f49c7f278de75fb48945e
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926262"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
@@ -185,11 +185,11 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. 打开文件资源管理器。 若要执行此操作，可从“开始”菜单打开，或者按 Win+E 快捷方式。
 
-2. 导航到窗口左侧的“此电脑”项。 这样会更改功能区中的可用菜单。 在“计算机”菜单中，选择“映射网络驱动器”。
+2. 导航到窗口左侧的“此电脑”项。  这样会更改功能区中的可用菜单。 在“计算机”菜单中，选择“映射网络驱动器”。 
     
     ![“映射网络驱动器”下拉菜单的屏幕截图](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. 从 Azure 门户的“连接”窗格中复制 UNC 路径。 
+3. 从 Azure 门户的“连接”窗格中复制 UNC 路径。  
 
     ![Azure 文件“连接”窗格中的 UNC 路径](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
@@ -205,26 +205,26 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![Azure 文件共享现已装载](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. 做好卸载 Azure 文件共享的准备以后，即可在文件资源管理器中右键单击“网络位置”下对应于共享的条目，然后选择“断开连接”。
+7. 做好卸载 Azure 文件共享的准备以后，即可在文件资源管理器中右键单击“网络位置”下对应于共享的条目，然后选择“断开连接”。  
 
 ### <a name="accessing-share-snapshots-from-windows"></a>从 Windows 访问共享快照
 如果已手动或通过脚本或 Azure 备份等服务自动获取共享快照，则可以从 Windows 上的文件共享查看以前版本的共享、目录或特定文件。 可以通过 [Azure 门户](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md) 和 [Azure CLI](storage-how-to-use-files-cli.md) 获取共享快照。
 
 #### <a name="list-previous-versions"></a>列出以前版本
-浏览到需要还原的项或父项。 通过双击转到所需的目录。 右键单击，然后从菜单中选择“属性”。
+浏览到需要还原的项或父项。 通过双击转到所需的目录。 右键单击，然后从菜单中选择“属性”。 
 
 ![所选目录的右键单击菜单](./media/storage-how-to-use-files-windows/snapshot-windows-previous-versions.png)
 
-选择"以前版本”，以查看此目录的共享快照列表。 列表可能需要几秒钟才能加载，具体要取决于网速和目录中共享快照的数量。
+选择"以前版本”  ，以查看此目录的共享快照列表。 列表可能需要几秒钟才能加载，具体要取决于网速和目录中共享快照的数量。
 
 ![“以前版本”选项卡](./media/storage-how-to-use-files-windows/snapshot-windows-list.png)
 
-可以选择“打开”以打开特定快照。 
+可以选择“打开”  以打开特定快照。 
 
 ![打开的快照](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
 
 #### <a name="restore-from-a-previous-version"></a>从以前版本还原
-选择“还原”，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
+选择“还原”  ，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
  ![警告消息中的“还原”按钮](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>保护 Windows/Windows Server

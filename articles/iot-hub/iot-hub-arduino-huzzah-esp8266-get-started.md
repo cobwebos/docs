@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
 ms.openlocfilehash: 00d0e3a749c4af8faacfed5f725ce16e0492c399
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409078"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>将 Adafruit Feather HUZZAH ESP8266 连接到云中的 Azure IoT 中心
@@ -162,11 +162,11 @@ ms.locfileid: "65409078"
 
 7. 类型**Arduino** ，然后选择**arduino 开发：Board Manager**。
 
-8. 在“Arduino 开发板管理器”选项卡中，单击“其他 URL”。
+8. 在“Arduino 开发板管理器”选项卡中，单击“其他 URL”   。
 
    ![VS Code Arduino 开发板管理器](media/iot-hub-arduino-huzzah-esp8266-get-started/11_vscode-arduino-board-manager.png)
 
-9. 在“用户设置”窗口，在文件末尾复制并粘贴以下内容
+9. 在“用户设置”窗口，在文件末尾复制并粘贴以下内容 
 
    ```json
    "arduino.additionalUrls": "https://arduino.esp8266.com/stable/package_esp8266com_index.json"
@@ -174,11 +174,11 @@ ms.locfileid: "65409078"
 
    ![在 VS Code 中配置 Arduino 包 URL](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
 
-10. 保存文件并关闭“用户设置”选项卡。
+10. 保存文件并关闭“用户设置”选项卡  。
 
-11. 单击“刷新包索引”。 完成刷新后，搜索 esp8266。
+11. 单击“刷新包索引”  。 完成刷新后，搜索 esp8266  。
 
-12. 单击 esp8266 的“安装”按钮。
+12. 单击 esp8266 的“安装”按钮  。
 
     Boards Manager 指示 ESP8266 安装了版本 2.2.0 或更高版本。
 
@@ -186,7 +186,7 @@ ms.locfileid: "65409078"
 
 13. 输入`F1`，然后键入**Arduino** ，然后选择**arduino 开发：板配置**。
 
-14. 单击“所选开发板:”旁边的框，键入“esp8266”，然后选择“Adafruit HUZZAH ESP8266 (esp8266)”。
+14. 单击“所选开发板:”旁边的框，键入“esp8266”，然后选择“Adafruit HUZZAH ESP8266 (esp8266)”    。
 
     ![选择 esp8266 开发板](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
@@ -194,7 +194,7 @@ ms.locfileid: "65409078"
 
 1. 在 Visual Studio Code 中，输入`F1`，然后键入**Arduino** ，然后选择**arduino 开发：库管理器**。
 
-2. 逐个搜索以下库名称。 对于找到的每个库，单击“安装”。
+2. 逐个搜索以下库名称。 对于找到的每个库，单击“安装”  。
    * `AzureIoTHub`
    * `AzureIoTUtility`
    * `AzureIoTProtocol_MQTT`
@@ -220,23 +220,23 @@ ms.locfileid: "65409078"
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>将示例应用程序部署到 Feather HUZZAH ESP8266
 
-1. 在 Visual Studio Code 中，单击**\<选择串行端口 >** 状态栏，并单击 Feather HUZZAH ESP8266 的串行端口。
+1. 在 Visual Studio Code 中，单击 **\<选择串行端口 >** 状态栏，并单击 Feather HUZZAH ESP8266 的串行端口。
 
 2. 输入`F1`，然后键入**Arduino** ，然后选择**arduino 开发：上传**生成和部署到 Feather HUZZAH ESP8266 的示例应用程序。
 
-### <a name="enter-your-credentials"></a>输入您的凭据
+### <a name="enter-your-credentials"></a>输入凭据
 
 上传成功完成后，按照以下步骤输入凭据：
 
-1. 打开 Arduino IDE，单击“工具” > “串行监视器”。
+1. 打开 Arduino IDE，单击“工具” > “串行监视器”   。
 
 2. 在串行监视器窗口的右下角，可以看到两个下拉列表。
 
-3. 在左侧下拉列表中选择“No line ending”（无行尾）。
+3. 在左侧下拉列表中选择“No line ending”（无行尾）。 
 
-4. 在右侧下拉列表中选择“115200 baud”（115200 波特率）。
+4. 在右侧下拉列表中选择“115200 baud”（115200 波特率）。 
 
-5. 在串行监视器窗口顶部的输入框中输入以下信息（如果系统要求提供），并单击“Send”（发送）。
+5. 在串行监视器窗口顶部的输入框中输入以下信息（如果系统要求提供），并单击“Send”（发送）。 
 
    * Wi-Fi SSID
    * Wi-Fi 密码
@@ -251,11 +251,11 @@ ms.locfileid: "65409078"
 
 ![Arduino IDE 中的最终输出](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>读取中心收到的消息
+## <a name="read-the-messages-received-by-your-hub"></a>读取 IoT 中心收到的消息
 
-若要监视 IoT 中心从设备收到的消息的一种方法是使用用于 Visual Studio Code 的 Azure IoT 工具。 若要了解详细信息，请参阅[使用针对 Visual Studio Code 进行发送和接收消息在设备与 IoT 中心之间的 Azure IoT 工具](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+若要监视 IoT 中心从设备收到的消息，一种方法是使用适用于 Visual Studio Code 的 Azure IoT Tools。 若要了解详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure IoT Tools 在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
-有关更多方法来处理设备发送的数据，继续学习下一节。
+若要了解如何通过更多方式来处理设备发送的数据，请转到下一部分。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1e47939913435b5b7040c0e6d01b1208d709d3
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 355e61fdfd9847e54a4bd13ac3b0f2d416c05812
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962899"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111963"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -34,7 +34,7 @@ ms.locfileid: "65962899"
 请参阅以下部分，了解资源如何验证和使用访问令牌中的声明。
 
 > [!IMPORTANT]
-> 访问令牌是根据令牌的受众（即，拥有令牌中范围的应用程序）创建的。  如果在[应用清单](reference-app-manifest.md#manifest-reference)中将资源设置 `accessTokenAcceptedVersion` 指定为 `2`，则允许客户端调用 v1.0 终结点来接收 v2.0 访问令牌。  同样，这就是原因更改访问令牌[可选声明](active-directory-optional-claims.md)对于在客户端，请执行更改的访问令牌时收到的请求一个令牌`user.read`，归 MS Graph 资源。  
+> 访问令牌是根据令牌的受众（即，拥有令牌中范围的应用程序）创建的。   如果在[应用清单](reference-app-manifest.md#manifest-reference)中将资源设置 `accessTokenAcceptedVersion` 指定为 `2`，则允许客户端调用 v1.0 终结点来接收 v2.0 访问令牌。  同样，这就是原因更改访问令牌[可选声明](active-directory-optional-claims.md)对于在客户端，请执行更改的访问令牌时收到的请求一个令牌`user.read`，归 MS Graph 资源。  
 > 出于相同原因，测试与个人帐户 （例如 hotmail.com 或 outlook.com），在客户端应用程序时可能会发现您的客户端收到的访问令牌是不透明的字符串。 这是因为正在访问的资源已请求的已加密，因此不能理解的客户端的旧 MSA （Microsoft 帐户） 票证。
 
 ## <a name="sample-tokens"></a>示例令牌
@@ -204,7 +204,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 * 使用 `appidacr` 验证调用方客户端的身份验证状态 - 如果不允许公共客户端调用你的 API，则值不应该是 0。
 * 根据以往的 `nonce` 声明列表进行检查，以验证令牌是否未重放。
 * 检查 `tid` 是否与允许调用该 API 的租户相匹配。
-* 使用 `acr` 声明验证已执行 MFA 的用户。 应使用[条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)强制实施此步骤。
+* 使用 `acr` 声明验证已执行 MFA 的用户。 应使用强制这[条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)。
 * 如果在访问令牌中请求了 `roles` 或 `groups` 声明，请验证用户是否在允许执行此操作的组中。
   * 对于使用隐式流检索的令牌，可能需要在 [Microsoft Graph](https://developer.microsoft.com/graph/) 中查询此数据，因为该数据通常很庞大，无法放到令牌中。
 

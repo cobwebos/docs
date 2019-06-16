@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 61821caa2450096bdbdde3461316ad21a82f6f18
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304298"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
@@ -101,7 +101,7 @@ ms.locfileid: "66304298"
 
 - 每个事件域 100,000 主题 
 - 每个 Azure 订阅的 100 事件域 
-- 每个事件域中的主题的 500 事件订阅
+- 事件域中的每个主题 500 个事件订阅
 - 域作用域的 50 个订阅 
 - 每秒 （到域） 的引入速率 5000 个事件
 

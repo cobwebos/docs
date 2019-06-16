@@ -3,21 +3,20 @@ title: 使用 Azure 数据工厂从 Greenplum 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Greenplum 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 02/01/2019
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 02/01/2019
+ms.author: jingwang
 ms.openlocfilehash: cdd1810ec1120e9918974e0978880aa894ff62e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60927568"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>使用 Azure 数据工厂从 Greenplum 复制数据
@@ -100,7 +99,7 @@ Greenplum 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Greenplum 数据集支持的属性列表。
 
-要从 Greenplum 复制数据，请将数据集的 type 属性设置为 GreenplumTable。 支持以下属性：
+要从 Greenplum 复制数据，请将数据集的 type 属性设置为 GreenplumTable  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -129,7 +128,7 @@ Greenplum 链接服务支持以下属性：
 
 ### <a name="greenplumsource-as-source"></a>以 GreenplumSource 作为源
 
-要从 Greenplum 复制数据，请将复制活动中的源类型设置为“GreenplumSource”。 复制活动源部分支持以下属性：
+要从 Greenplum 复制数据，请将复制活动中的源类型设置为“GreenplumSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

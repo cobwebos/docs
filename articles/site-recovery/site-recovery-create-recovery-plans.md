@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 866374df7d3a6973cfc5995afd5cc3c4b0145c48
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66400001"
 ---
 # <a name="create-and-customize-recovery-plans"></a>创建和自定义恢复计划
@@ -70,15 +70,15 @@ ms.locfileid: "66400001"
     Hyper-V 站点到 Azure | Runbook | NA
     从 VMM 到辅助 VMM | 脚本 | 脚本
 
-1. 在恢复计划中，单击的步骤所属的操作应添加，以及指定何时应执行的操作：
+1. 在恢复计划中，单击应当将操作添加到的步骤，并指定操作应在何时发生：
     1. 如果希望操作在故障转移后在组中的计算机启动之前发生，请选择“添加预操作”  。
     1. 如果希望操作在故障转移后在组中的计算机启动之后发生，请选择“添加后操作”  。 若要移动操作的位置，请选择“上移”或“下移”按钮   。
 2. 在“插入操作”中，选择“脚本”或“手动操作”    。
-3. 如果你想要添加手动操作，请执行以下操作：
+3. 如果要添加手动操作，请执行以下操作：
     1. 为操作键入一个名称，然后键入操作说明。 运行故障转移的人员将会看到这些说明。
     1. 指定是否要为所有类型的故障转移（测试、故障转移、计划内故障转移（如果相关））添加手动操作。 然后单击“确定”  。
-4. 如果你想要添加脚本，请执行以下操作：
-    1. 如果要添加 VMM 脚本，请选择“故障转移到 VMM 脚本”  ，并在“脚本路径”  中键入共享的相对路径。 例如，如果共享位于\\ \<VMMServerName > \MSSCVMMLibrary\RPScripts，请指定路径： \RPScripts\RPScript.PS1。
+4. 如果要添加脚本，请执行以下操作：
+    1. 如果要添加 VMM 脚本，请选择“故障转移到 VMM 脚本”  ，并在“脚本路径”  中键入共享的相对路径。 例如，如果共享位于 \\\<VMMServerName>\MSSCVMMLibrary\RPScripts，请指定以下路径：\RPScripts\RPScript.PS1。
     1. 如果要添加 Azure 自动化 Runbook，请指定该 Runbook 所在的 **Azure 自动化帐户**，并选择相应的 **Azure Runbook 脚本**。
 5. 运行恢复计划的测试故障转移，以确保脚本按预期运行。
 

@@ -13,10 +13,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60860978"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Jar 活动转换数据
@@ -58,7 +58,7 @@ ms.locfileid: "60860978"
 
 |属性|说明|需要|
 |:--|---|:-:|
-|名称|管道中活动的名称。|是|
+|name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
 |type|对于 Databricks Jar 活动，活动类型是 DatabricksSparkJar。|是|
 |linkedServiceName|Databricks 链接服务的名称，Jar 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
@@ -68,7 +68,7 @@ ms.locfileid: "60860978"
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks 活动支持的库
 
-在以上 Databricks 活动定义中，指定这些库类型：jar、egg、maven、pypi、cran。
+在以上 Databricks 活动定义中，指定这些库类型：jar、egg、maven、pypi、cran      。
 
 ```json
 {
@@ -110,11 +110,11 @@ ms.locfileid: "60860978"
 
 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [Databricks CLI（安装）](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)。 
 
-使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 列出所有库：databricks fs ls dbfs:/FileStore/job-jars 
+使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 列出所有库：databricks fs ls dbfs:/FileStore/job-jars  
 
 
 
 #### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[使用 Databricks CLI 复制库](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 使用 Databricks CLI[（安装步骤）](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)。 
 
-示例 - 将 JAR 复制到 dbfs：dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar
+示例 - 将 JAR 复制到 dbfs：dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 266e487a7c345f75e966afbde567c5bc4683b5c0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233759"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>威胁智能提供商处从连接的数据 
@@ -46,7 +46,7 @@ ms.locfileid: "65233759"
 
 2. 在 Azure Sentinel，选择**数据连接器**，然后单击**威胁智能**磁贴。
 
-3. 单击“连接”。 
+3. 单击“连接”  。 
 
 4. 若要在 Log Analytics 中相关的架构用于威胁情报馈送，搜索**ThreatIntelligenceIndicator**。 
 

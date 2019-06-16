@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 56dc87b1cdf36d761c46133004a05f8fa225a091
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254852"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808296"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>与对文件和文件夹进行备份相关的常见问题 
 
@@ -83,11 +83,11 @@ ms.locfileid: "66254852"
 - 如果需要恢复备份到采用旧服务器名称的保管库的数据，请使用“恢复数据”向导中用于还原到其他位置的选项。 [了解详细信息](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。 
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>用于备份的最大文件路径长度是多少？
-MARS 代理依赖于 NTFS，并使用受 [Windows API](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths) 限制的文件路径长度规范。 如果你要保护的文件长于所允许的值，请备份父文件夹或磁盘驱动器。  
+MARS 代理依赖于 NTFS，并使用受 [Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths) 限制的文件路径长度规范。 如果你要保护的文件长于所允许的值，请备份父文件夹或磁盘驱动器。  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>文件路径中允许什么字符？
 
-MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](/windows/desktop/FileIO/naming-a-file#naming_conventions)。
+MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](/windows/desktop/FileIO/naming-a-file#naming-conventions)。
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>出现“尚未为此服务器配置 Azure 备份”警告。
 当本地服务器上存储的备份计划设置与备份保管库中存储的设置不同时，可能会出现此警告，即使你已配置了备份策略也是如此。

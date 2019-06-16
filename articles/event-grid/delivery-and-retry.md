@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
 ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952880"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
@@ -32,14 +32,14 @@ ms.locfileid: "65952880"
 - 5 分钟
 - 10 分钟
 - 30 分钟
-- 1 小时	
-- 每小时的最多 24 小时
+- 1 小时
+- 按小时论的话，最多 24 小时
 
 如果终结点响应 3 分钟内，事件网格会尝试从上最大努力来重试队列中删除该事件，但仍可能会收到重复项。
 
-事件网格将略微随机添加到重试的所有步骤，并可以适时地跳过某些重试如果终结点不一致地正常，向下长一段，或可能过载。
+事件网格为所有重试步骤添加小的随机性，在某个终结点持续运行不正常、停机很长时间，或者看起来已过载的情况下，会适时跳过某些重试。
 
-对于具有确定性行为设置生存事件时间和最大传送尝试中[订阅重试策略](manage-event-delivery.md)。
+对于确定性行为，请在[订阅重试策略](manage-event-delivery.md)中设置事件生存时间和最大传递尝试次数。
 
 默认情况下，事件网格会使所有在 24 小时内未送达的事件过期。 创建事件订阅时，可[自定义重试策略](manage-event-delivery.md)。 提供最大传递尝试次数（默认值为 30）和事件生存时间（默认为 1440 分钟）。
 

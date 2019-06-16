@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pabutler
 ms.openlocfilehash: 8a03ce94971d704aa38c1be5d7cfbb3c24bd2f82
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943355"
 ---
 # <a name="manage-azure-and-appsource-marketplace-offers"></a>管理 Azure 和 AppSource 市场产品/服务
@@ -27,7 +27,7 @@ ms.locfileid: "64943355"
 |     ---------      |  -----------                                           |
 | [创建产品/服务](./cpp-create-offer.md)   | 在载入存储库的过程中创建挂起的产品/服务条目，但不自动将其发布到 Microsoft 市场 | 
 | [查看产品/服务状态](./cpp-view-status-offer.md)   | 提供产品/服务的发布状态。  门户中有多个位置都会显示状态信息。 |
-| [发布产品/服务](./cpp-publish-offer.md) | 验证已完成的产品/服务条目，然后将其发布到相应的 Microsoft 市场。  该产品/服务即可称为已“在线”。 |
+| [发布产品/服务](./cpp-publish-offer.md) | 验证已完成的产品/服务条目，然后将其发布到相应的 Microsoft 市场。  该产品/服务即可称为已“在线”  。 |
 | [更新产品/服务](./cpp-update-offer.md)   | 允许修改现有产品/服务的某些特征。  适用于挂起的和已发布的产品/服务。 |
 | [删除产品/服务](./cpp-delete-offer.md)   | 删除现有挂起的或在线的产品/服务。  | 
 |  |  |

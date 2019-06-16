@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
 ms.openlocfilehash: 624539557b0bf57e9d919a3a46337f1cf93a4f07
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128594"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>使用 Azure 资源管理器模板部署逻辑应用
@@ -174,13 +174,13 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 
 1. 在“解决方案资源管理器”中，打开 `<template>.json` 文件。
 
-2. 在“视图”菜单中，选择“其他窗口” > “JSON 大纲”。
+2. 在“视图”菜单中，选择“其他窗口” > “JSON 大纲”。   
 
-3. 若要将资源添加到模板文件，请在“JSON 大纲”窗口顶部选择“添加资源”。 或者在“JSON 大纲”窗口中，右键单击“资源”，并选择“添加新资源”。
+3. 若要将资源添加到模板文件，请在“JSON 大纲”窗口顶部选择“添加资源”  。 或者在“JSON 大纲”窗口中，右键单击“资源”  ，并选择“添加新资源”  。
 
    ![“JSON 大纲”窗口](./media/logic-apps-create-deploy-template/jsonoutline.png)
 
-4. 在“添加资源”对话框中，找到并选择“逻辑应用”。 为逻辑应用命名，并选择“添加”。
+4. 在“添加资源”  对话框中，找到并选择“逻辑应用”  。 为逻辑应用命名，并选择“添加”  。
 
    ![添加资源](./media/logic-apps-create-deploy-template/addresource.png)
 

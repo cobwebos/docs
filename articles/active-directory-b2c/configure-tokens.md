@@ -1,5 +1,5 @@
 ---
-title: 配置令牌-Azure Active Directory B2C |Microsoft Docs
+title: 配置令牌 - Azure Active Directory B2C | Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中配置令牌生存期和兼容性设置。
 services: active-directory-b2c
 author: mmacy
@@ -11,15 +11,15 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: e1163c88a100ebb7500607475ab5740557904137
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511337"
 ---
-# <a name="configure-tokens-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的令牌
+# <a name="configure-tokens-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置令牌
 
-在本文中，您将学习如何配置[生存期和令牌的兼容性](active-directory-b2c-reference-tokens.md)Azure Active Directory (Azure AD) B2C 中。
+本文介绍如何在 Azure Active Directory (Azure AD) B2C 中配置[令牌的生存期和兼容性](active-directory-b2c-reference-tokens.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -30,12 +30,12 @@ ms.locfileid: "66511337"
 可以在任何用户流上配置令牌生存期。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的 Azure AD B2C 租户的目录。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录和订阅筛选器”，然后选择包含 Azure AD B2C 租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 选择**用户流 （策略）** 。
+4. 选择“用户流(策略)”  。
 5. 打开之前创建的用户流。 
 6. 选择“属性”  。
-7. 下**令牌生存期**，调整以满足你的应用程序需要的以下属性：
+7. 在“令牌生存期”  下，调整以下属性以满足应用程序的需要：
 
     ![配置令牌生存期](./media/configure-tokens/token-lifetime.png)
 
@@ -43,10 +43,10 @@ ms.locfileid: "66511337"
 
 ## <a name="configure-token-compatibility"></a>配置令牌兼容性
 
-1. 选择**用户流 （策略）** 。
+1. 选择“用户流(策略)”  。
 2. 打开之前创建的用户流。 
 3. 选择“属性”  。
-4. 下**令牌兼容性设置**，调整以满足你的应用程序需要的以下属性：
+4. 在“令牌兼容性设置”  下，调整以下属性以满足应用程序的需要：
 
     ![配置令牌兼容性](./media/configure-tokens/token-compatibility.png)
 

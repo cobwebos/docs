@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory 条件访问中的模拟工具是什么？
-description: 了解如何理解条件访问策略对环境的影响。
+title: 什么是什么如果工具在 Azure Active Directory 条件性访问？
+description: 了解在您的环境，您就可以了解条件性访问策略的影响。
 services: active-directory
-keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
+keywords: 条件访问应用，Azure AD 中，安全地访问公司资源，条件性访问策略的条件性访问
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,28 +18,28 @@ ms.date: 11/20/2018
 ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6271c7a99e82fb1fff2815167b0149c74212f260
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a0f1fa0630a58054a138b730141b982af427475
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111925"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的模拟工具是什么？
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>什么是什么如果工具在 Azure Active Directory 条件性访问？
 
-[条件访问](../active-directory-conditional-access-azure-portal.md)是 Azure Active Directory (Azure AD) 中的一项功能，用于控制已获授权的用户如何访问云应用。 如何知道环境中的条件访问策略的构成成分？ 若要回答此问题，可以使用“条件访问模拟工具”。
+[条件性访问](../active-directory-conditional-access-azure-portal.md)是一项功能的 Azure Active Directory (Azure AD)，可用于控制如何授权用户访问你的云应用。 如何得知出现窗体的情况的条件访问策略在环境中？ 若要回答此问题，可以使用**条件访问模拟工具**。
 
-本文介绍如何使用此工具来测试条件访问策略。
+本文介绍如何使用此工具来测试你的条件性访问策略。
 
 ## <a name="what-it-is"></a>作用
 
-通过“条件访问模拟策略工具”，可了解条件访问策略对环境的影响。 通过此工具，可以评估模拟的用户登录，而不是通过手动执行多个登录来驱动策略的测试。 该模拟会估计此登录对策略的影响并生成模拟报表。 报表不仅列出应用的条件访问策略，还列出[经典策略](policy-migration.md#classic-policies)（如果存在）。    
+**条件访问模拟策略工具**，您可以了解在条件性访问策略对环境的影响。 通过此工具，可以评估模拟的用户登录，而不是通过手动执行多个登录来驱动策略的测试。 该模拟会估计此登录对策略的影响并生成模拟报表。 报表不会仅列出应用的条件性访问策略，但还[经典策略](policy-migration.md#classic-policies)如果它们存在。    
 
 此外，模拟工具还提供一种方法，用于快速确定应用于特定用户的策略。 如果需要解决问题等，则可以使用此信息。  
 
 ## <a name="how-it-works"></a>工作原理
 
-在“条件访问模拟工具”中，首先需要配置想要模拟的登录方案的设置。 这些设置包括：
+在中**条件访问模拟工具**，首先需要配置你想要模拟的登录方案的设置。 这些设置包括：
 
 - 想要测试的用户 
 
@@ -56,9 +56,9 @@ ms.locfileid: "60354281"
 
 ## <a name="running-the-tool"></a>运行此工具
 
-可以在 Azure 门户中的“[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)”页上找到“模拟”工具。
+您可以找到**怎么办**上 **[条件访问-策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** 在 Azure 门户中的页。
 
-若要启动此工具，在策略列表上方的工具栏中单击“模拟”。
+若要启动此工具，在策略列表上方的工具栏中单击“模拟”  。
 
 ![模拟](./media/what-if-tool/01.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "60354281"
 
 ### <a name="cloud-apps"></a>云应用
 
-此设置的默认值为“所有云应用”。 默认设置执行对环境中所有可用策略的评估。 可以将范围缩小到影响特定云应用的策略。
+此设置的默认值为“所有云应用”  。 默认设置执行对环境中所有可用策略的评估。 可以将范围缩小到影响特定云应用的策略。
 
 
 ### <a name="ip-address"></a>IP 地址
@@ -86,15 +86,15 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 ### <a name="device-platforms"></a>设备平台
 
-此设置模拟[设备平台条件](conditions.md#device-platforms)及表示所有平台（包括不受支持的平台）的等效项。 
+此设置模拟[设备平台条件](conditions.md#device-platforms)及表示所有平台（包括不受支持的平台）  的等效项。 
 ### <a name="client-apps"></a>客户端应用
 
 此设置模拟[客户端应用条件](conditions.md#client-apps)。
-默认情况下，此设置会导致对同时选中“浏览器”和“移动应用和桌面客户端”或其中之一的所有策略进行评估。 此外，此设置还检测强制实施“Exchange ActiveSync (EAS)”的策略。 可以通过选择以下内容缩小此设置的范围：
+默认情况下，此设置会导致对同时选中“浏览器”  和“移动应用和桌面客户端”  或其中之一的所有策略进行评估。 此外，此设置还检测强制实施“Exchange ActiveSync (EAS)”  的策略。 可以通过选择以下内容缩小此设置的范围：
 
-- 浏览器：评估至少选择了“浏览器”的所有策略。 
+- 浏览器  ：评估至少选择了“浏览器”  的所有策略。 
 
-- 移动应用和桌面客户端：评估至少选择了“移动应用和桌面客户端”的所有策略。 
+- 移动应用和桌面客户端  ：评估至少选择了“移动应用和桌面客户端”  的所有策略。 
 
 
 ### <a name="sign-in-risk"></a>登录风险
@@ -104,7 +104,7 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 ## <a name="evaluation"></a>计算 
 
-通过单击“模拟”启动评估。 评估结果提供包含以下内容的报表： 
+通过单击“模拟”  启动评估。 评估结果提供包含以下内容的报表： 
 
 ![模拟](./media/what-if-tool/03.png)
 
@@ -123,8 +123,8 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
+- 如果你想要了解如何配置条件性访问策略，请参阅[需要 MFA 的特定应用的 Azure Active Directory 条件性访问](app-based-mfa.md)。
 
-- 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。 
+- 如果你已准备好配置你的环境的条件性访问策略，请参阅[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。 
 
 - 如果想要迁移经典策略，请参阅[在 Azure 门户中迁移经典策略](policy-migration.md)  

@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 200433d95d62edf2e878e58e5089a6baff290775
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65850587"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的存储过程
 有关在开发解决方案时实现 Azure SQL 数据仓库中的存储过程的技巧。
 
-## <a name="what-to-expect"></a>预期结果
+## <a name="what-to-expect"></a>期望
 
 SQL 数据仓库支持 SQL Server 中使用的许多 T-SQL 功能。 更重要的是，可使用特定的横向扩展功能将解决方案的性能最大化。
 

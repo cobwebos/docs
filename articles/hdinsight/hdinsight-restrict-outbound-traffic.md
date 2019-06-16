@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/30/2019
-ms.openlocfilehash: 4ce3ca31163c286f54b9630e5d4779e2e47a032f
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 542813e0f82a1a52142a2b82bea3fdb101fdec28
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754585"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077178"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>配置出站网络流量的 Azure HDInsight 群集使用的防火墙 （预览版）
 
@@ -52,20 +52,22 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 
 在“添加应用程序规则集合”屏幕上完成以下步骤： 
 
-1. 输入**名称**和**优先级**，然后单击“操作”下拉菜单中的“允许”。  
-1. 添加以下规则：
-    1. 一个允许 HDInsight 和 Windows 更新流量的规则：
-        1. 在“FQDN 标记”部分提供**名称**，并将“源地址”设置为 `*`。  
-        1. 从“FQDN 标记”下拉菜单中选择“HDInsight”和“Windows 更新”。   
-    1. 一个允许 Windows 登录活动的规则：
-        1. 在“目标 FQDN”部分提供**名称**，并将“源地址”设置为 `*`。  
-        1. 在“协议:端口”下输入 `https:443`，在“目标 FQDN”下输入 `login.windows.net`。  
-    1. 如果群集由 WASB 提供支持，然后添加一条规则为 WASB:
-        1. 在“目标 FQDN”部分提供**名称**，并将“源地址”设置为 `*`。  
-        1. 输入`http:80,https:443`下**协议： 端口**和存储帐户 url 下的**目标 FQDN**。 将类似于 < storage_account_name.blob.core.windows.net > 格式。 若要使用仅 https 连接请确保["需要安全传输"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)的存储帐户上启用。
+1. 输入**名称**，**优先级**，然后单击**允许**从**操作**下拉列表菜单，然后按输入以下规则**FQDN 标记部分**:
+
+   | **名称** | **源地址** | **FQDN 标记** | **说明** |
+   | --- | --- | --- | --- |
+   | Rule_1 | * | HDInsight 和 WindowsUpdate | 所需的 HDI 服务 |
+
+1. 添加以下规则，用于**目标 Fqdn 部分**:
+
+   | **名称** | **源地址** | **Protocol:Port** | **目标 FQDN** | **说明** |
+   | --- | --- | --- | --- | --- |
+   | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
+   | Rule_3 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | 如果你的群集由 WASB 提供支持，然后为 WASB 添加规则。 若要使用仅 https 连接请确保["需要安全传输"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)的存储帐户上启用。 |
+
 1. 单击“添加”  。
 
-![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>使用网络规则配置防火墙
 
@@ -74,37 +76,24 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 1. 在 Azure 门户中选择新防火墙 **Test-FW01**。
 1. 单击“设置” > “网络规则集合” > “添加网络规则集合”下的“规则”。    
 1. 在“添加网络规则集合”屏幕上输入**名称**和**优先级**，然后单击“操作”下拉菜单中的“允许”。   
-1. 创建以下规则：
-    1. 使群集能够执行使用 NTP 的时钟同步的 IP 地址部分中的网络规则。
-        1. 在中**规则**部分中，提供**名称**，然后选择**UDP**从**协议**下拉列表。
-        1. 将“源地址”和“目标地址”设置为 `*`。  
-        1. 将“目标端口”设置为 123。 
-    1. 如果使用企业安全包 (ESP)，然后在允许与 AAD DS ESP 群集通信的 IP 地址部分中添加网络规则。
-        1. 确定域控制器的两个 IP 地址。
-        1. 在“规则”部分的下一行中提供**名称**，然后从“协议”下拉菜单中选择“任何”。   
-        1. 将“源地址”设置为 `*`。 
-        1. 在“目标地址”中输入域控制器的所有 IP 地址并以逗号分隔。 
-        1. 将“目标端口”设置为 `*`。 
-    1. 如果使用 Azure Data Lake 存储，然后可以在 IP 地址部分来解决 ADLS Gen1 和第 2 代的 SNI 问题添加网络规则。 此选项会将流量路由到防火墙，这可能会导致大量数据负载的成本较高，但此通信是记录，并且在防火墙日志可审核。
-        1. 确定 Data Lake Storage 帐户的 IP 地址。 可以使用 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` 等 PowerShell 命令将 FQDN 解析成 IP 地址。
-        1. 中的下一行**规则**部分中，提供**名称**，然后选择**TCP**从**协议**下拉列表。
-        1. 将“源地址”设置为 `*`。 
-        1. 在“目标地址”中输入存储帐户的 IP 地址。 
-        1. 将“目标端口”设置为 `*`。 
-    1. （可选）如果使用 Log Analytics，然后在要启用与 Log Analytics 工作区的通信的 IP 地址部分中创建的网络规则。
-        1. 中的下一行**规则**部分中，提供**名称**，然后选择**TCP**从**协议**下拉列表。
-        1. 将“源地址”设置为 `*`。 
-        1. 将“目标地址”设置为 `*`。 
-        1. 将“目标端口”设置为 `12000`。 
-    1. 为 SQL，您可以记录和审核 SQL 流量，除非你为 SQL Server 中配置服务终结点上的 HDInsight 子网，这将绕过防火墙，在服务标记部分中配置网络规则。
-        1. 中的下一行**规则**部分中，提供**名称**，然后选择**TCP**从**协议**下拉列表。
-        1. 将“源地址”设置为 `*`。 
-        1. 将“目标地址”设置为 `*`。 
-        1. 从“服务标记”下拉列表中选择“SQL”。  
-        1. 将“目标端口”设置为 `1433,11000-11999,14000-14999`。 
+1. 创建中的以下规则**IP 地址**部分：
+
+   | **名称** | 协议  | **源地址** | **目标地址** | **目标端口** | **说明** |
+   | --- | --- | --- | --- | --- | --- |
+   | Rule_1 | UDP | * | * | `123` | 时间服务 |
+   | Rule_2 | 任意 | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | 如果使用企业安全包 (ESP)，然后在允许与 AAD DS ESP 群集通信的 IP 地址部分中添加网络规则。 可以在门户中找到的 AAD DS 部分上的域控制器的 IP 地址 | 
+   | Rule_3 | TCP | * | Data Lake 存储帐户的 IP 地址 | `*` | 如果使用 Azure Data Lake 存储，然后可以在 IP 地址部分来解决 ADLS Gen1 和第 2 代的 SNI 问题添加网络规则。 此选项会将流量路由到防火墙，这可能会导致大量数据负载的成本较高，但此通信是记录，并且在防火墙日志可审核。 确定 Data Lake Storage 帐户的 IP 地址。 可以使用 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` 等 PowerShell 命令将 FQDN 解析成 IP 地址。|
+   | Rule_4 | TCP | * | * | `12000` | （可选）如果使用 Log Analytics，然后在要启用与 Log Analytics 工作区的通信的 IP 地址部分中创建的网络规则。 |
+
+1. 创建中的以下规则**服务标记**部分：
+
+   | **名称** | 协议  | **源地址** | **服务标记** | **目标端口** | **说明** |
+   | --- | --- | --- | --- | --- | --- |
+   | Rule_7 | TCP | * | * | `1433,11000-11999,14000-14999` | 为 SQL，您可以记录和审核 SQL 流量，除非你为 SQL Server 中配置服务终结点上的 HDInsight 子网，这将绕过防火墙，在服务标记部分中配置网络规则。 |
+
 1. 单击“添加”以完成网络规则集合的创建。 
 
-![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>创建并配置路由表
 
@@ -162,7 +151,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以通过[在 Azure Monitor 中分析日志数据](../azure-monitor/log-query/log-query-overview.md)详细了解 Azure Monitor 日志
 
 ## <a name="access-to-the-cluster"></a>对群集的访问
-之后的防火墙设置已成功，可以使用内部终结点 (`https://<clustername>-int.azurehdinsight.net`) 来访问 VNET 中的从 Ambari。 若要使用的公共终结点 (`https://<clustername>.azurehdinsight.net`) 或 ssh 终结点 (`<clustername>-ssh.azurehdinsight.net`)，请确保正确路由在路由表和 NSG 规则设置以避免 asymetric 路由问题所述[此处](https://docs.microsoft.com/azure/firewall/integrate-lb)。
+之后的防火墙设置已成功，可以使用内部终结点 (`https://<clustername>-int.azurehdinsight.net`) 来访问 VNET 中的从 Ambari。 若要使用的公共终结点 (`https://<clustername>.azurehdinsight.net`) 或 ssh 终结点 (`<clustername>-ssh.azurehdinsight.net`)，请确保正确路由在路由表和 NSG 规则设置以避免非对称路由问题所述[此处](https://docs.microsoft.com/azure/firewall/integrate-lb)。
 
 ## <a name="configure-another-network-virtual-appliance"></a>配置另一个网络虚拟设备
 

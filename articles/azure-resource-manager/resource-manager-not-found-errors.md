@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0dfbfa73009b5fa47dd7bb0804b612d0c2ad0a5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61062231"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>解决找不到 Azure 资源的错误
@@ -47,7 +47,7 @@ group {resource group name} was not found.
 
 ## <a name="solution-1---set-dependencies"></a>解决方案 1 - 设置依赖关系
 
-如果尝试在模板中部署缺少的资源，请检查是否需要添加依赖关系。 如果可能，Resource Manager 将通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 通过在 Web 应用中设置依赖关系可避免此错误。
+如果尝试在模板中部署缺少的资源，请检查是否需要添加依赖关系。 如果可能，Resource Manager 将通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素  。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 通过在 Web 应用中设置依赖关系可避免此错误。
 
 ```json
 {
@@ -68,7 +68,7 @@ group {resource group name} was not found.
 
    ![选择部署历史记录](./media/resource-manager-not-found-errors/select-deployment.png)
 
-2. 从历史记录中选择一个部署，并选择“事件” 。
+2. 从历史记录中选择一个部署，并选择“事件”  。
 
    ![选择部署事件](./media/resource-manager-not-found-errors/select-deployment-events.png)
 

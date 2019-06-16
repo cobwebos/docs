@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e641025d49dd42125aa692925c0697235489b1db
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 2b3f4cf4099459b655fc0e370935ddc8079de810
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307147"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073946"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>身份验证和授权 Azure 空间的定位点
 
@@ -56,7 +56,7 @@ this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
 
 ## <a name="azure-ad-user-authentication"></a>Azure AD 用户身份验证
 
-对于面向 Azure Active Directory 用户的应用程序，建议的方法是为了让用户，你可以获取以下文档中所述，使用 ADAL 库使用的 Azure AD 令牌： https://docs.microsoft.com/azure/active-directory/develop/v1-overview; 应按照列出的步骤在"快速启动"，其中包括：
+对于面向 Azure Active Directory 用户的应用程序，建议的方法是为了让用户，你可以获取以下文档中所述，使用 ADAL 库使用的 Azure AD 令牌： [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); 您应遵循下列出"快速启动"，其中包括的步骤：
 
 1. 在 Azure 门户中的配置
     1.  在 Azure AD 中注册你的应用程序**本机应用程序**。 作为注册的一部分，需要确定你的应用程序是否应为多租户，并提供允许应用程序的 Url 的重定向。  
@@ -89,7 +89,7 @@ this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
 
 此处，假定您的应用程序使用其自身的机制 (例如：Microsoft 帐户，PlayFab、 Facebook、 Google ID、 自定义用户名/密码，等等。）若要对其的后端服务进行身份验证。 一旦你的用户进行身份验证到后端服务，服务可以检索的 Azure AD 令牌，交换访问令牌 Azure 空间的定位点，并返回到客户端应用程序。
 
-以下文档中所述，使用 ADAL 库中检索 Azure AD 访问令牌： https://docs.microsoft.com/azure/active-directory/develop/v1-overview; 应遵循下列出"快速启动"，其中包括的步骤：
+以下文档中所述，使用 ADAL 库中检索 Azure AD 访问令牌： [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); 应遵循下列出"快速启动"，其中包括的步骤：
 
 1.  在 Azure 门户中的配置：
     1.  在 Azure AD 中注册你的应用程序：

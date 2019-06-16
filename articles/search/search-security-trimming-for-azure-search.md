@@ -10,10 +10,10 @@ ms.author: brjohnst
 manager: jlembicz
 ms.custom: seodec2018
 ms.openlocfilehash: a222b9e506988929c25a560361611b8f78142053
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024370"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>用于在 Azure 搜索中修整结果的安全筛选器
@@ -152,7 +152,7 @@ api-key: [admin or query key]
 ```
 ## <a name="conclusion"></a>结束语
 
-本文介绍了如何基于用户标识和 Azure 搜索 `search.in()` 函数筛选结果。 此函数可用于传入请求的用户可以与每个目标文档关联的主体标识符匹配的主体标识符。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
+本文介绍了如何基于用户标识和 Azure 搜索 `search.in()` 函数筛选结果。 可以使用此函数传入请求用户的主体标识符，以将其与每个目标文档关联的主体标识符进行匹配。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
  
 ## <a name="see-also"></a>另请参阅
 

@@ -9,10 +9,10 @@ ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
 ms.openlocfilehash: 51754021f5029a751be90bfc4194ac6347c1e278
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772125"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护文件服务器 
@@ -64,7 +64,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 ### <a name="site-recovery-support"></a>Site Recovery 支持
 由于 Site Recovery 复制不区分应用程序，因此这些建议应该也适用于以下场景。
 
-| 源    |到辅助站点    |到 Azure
+| source    |到辅助站点    |到 Azure
 |---------|---------|---------|
 |Azure| -|是|
 |Hyper-V|   是 |是
@@ -159,10 +159,10 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
 1. 转到 Azure 门户并选择恢复服务保管库。
 2. 选择为文件服务器环境创建的恢复计划。
-3. 选择“测试故障转移”。
+3. 选择“测试故障转移”  。
 4. 选择恢复点和 Azure 虚拟网络，启动测试故障转移过程。
 5. 辅助环境启动后，请执行验证。
-6. 完成验证后，在恢复计划中单击“清理测试故障转移”，这样即可清理测试故障转移环境。
+6. 完成验证后，在恢复计划中单击“清理测试故障转移”，这样即可清理测试故障转移环境。 
 
 有关如何执行测试故障转移的详细信息，请参阅[到 Site Recovery 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 
@@ -172,7 +172,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
 1. 转到 Azure 门户并选择恢复服务保管库。
 2. 选择为文件服务器环境创建的恢复计划。
-3. 选择“故障转移”。
+3. 选择“故障转移”。 
 4. 选择恢复点启动故障转移过程。
 
 有关如何执行故障转移的详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。

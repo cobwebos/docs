@@ -11,10 +11,10 @@ ms.date: 04/02/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475025"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>向 Azure SQL 数据仓库进行身份验证
@@ -33,7 +33,7 @@ ms.locfileid: "61475025"
 * 密码
 * 默认数据库（可选）
 
-默认情况下，连接连接到 master 数据库而不是用户数据库。 若要连接到用户数据库，可以选择执行以下两项操作之一：
+默认情况下，连接连接到 master  数据库而不是用户数据库。 若要连接到用户数据库，可以选择执行以下两项操作之一：
 
 * 在 SSDT、SSMS 或应用程序连接字符串中将服务器注册到 SQL Server 对象资源管理器时指定默认数据库。 例如，包含 ODBC 连接的 InitialCatalog 参数。
 * 在 SSDT 中创建会话之前先突出显示用户数据库。

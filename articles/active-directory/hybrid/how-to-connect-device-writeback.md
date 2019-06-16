@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 977b599c26e8bb586cc47bd2f0aac80034f22834
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 632f6f80184c6ba3409bd30ae070cbaefc77f036
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785714"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109502"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
 > [!NOTE]
@@ -32,9 +32,9 @@ ms.locfileid: "65785714"
 以下文档提供有关如何在 Azure AD Connect 中启用设备写回功能的信息。 设备写回用于以下方案：
 
 * 启用[Windows hello 企业版使用混合证书信任部署](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
-* 对 ADFS（2012 R2 或更高版本）保护的应用程序（信赖方信任），启用基于设备的条件性访问。
+* 启用基于 ADFS 的设备的条件性访问 (2012 R2 或更高版本) 保护的应用程序 （信赖方信任）。
 
-这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件性访问的详细信息，请参阅[使用条件性访问管理风险](../active-directory-conditional-access-azure-portal.md)和[使用 Azure Active Directory Device Registration 设置本地的条件性访问](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
+这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件性访问的详细信息，请参阅[使用条件性访问管理风险](../active-directory-conditional-access-azure-portal.md)并[设置本地条件性访问使用 Azure Active Directory 设备注册](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
 
 > [!IMPORTANT]
 > <li>设备必须位于用户所在的同一个林中。 由于设备必须写回到单个林，此功能当前不支持具有多个用户林的部署。</li>
@@ -44,20 +44,20 @@ ms.locfileid: "65785714"
 使用自定义或快速设置安装 Azure AD Connect。 Microsoft 建议在启用设备写回之前，首先让所有用户和组成功完成同步。
 
 ## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>第 2 部分：在 Azure AD Connect 中启用设备写回
-1. 再次运行安装向导。 从“其他任务”页中选择“配置设备选项”，并单击“下一步”。 
+1. 再次运行安装向导。 从“其他任务”页中选择“配置设备选项”，并单击“下一步”。   
 
     ![配置设备选项](./media/how-to-connect-device-writeback/deviceoptions.png)
 
     >[!NOTE]
     > 新的配置设备选项仅在版本 1.1.819.0 及更新版本中可用。
 
-2. 在设备选项页上，选择“配置设备写回”。 选项“禁用设备写回”将不可用，直到启用“设备写回”。 单击“下一步”移到向导中的下一页。
+2. 在设备选项页上，选择“配置设备写回”  。 选项“禁用设备写回”  将不可用，直到启用“设备写回”。 单击“下一步”  移到向导中的下一页。
     ![选择设备操作](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
 
 3. 在写回页中，会看到提供的域是默认的设备写回林。
    ![自定义安装 - 设备写回目标林](./media/how-to-connect-device-writeback/writebackforest.png)
 
-4. “设备容器”页提供了使用以下两个可用选项之一准备活动目录的选项：
+4. “设备容器”  页提供了使用以下两个可用选项之一准备活动目录的选项：
 
     a. **提供企业管理员凭据**：如果为需要设备写回的林提供企业管理员凭据，Azure AD Connect 将在配置设备写回期间自动准备林。
 
@@ -94,11 +94,11 @@ ms.locfileid: "65785714"
 * 设备所在的林必须将林架构升级到 Windows 2012 R2 级别，以便显示设备对象和相关属性。
 * 如果安装向导已在运行，则不会检测到任何更改。 在此情况下，请先完成安装向导，再试一次。
 * 确保在初始化脚本中提供的帐户是 Active Directory 连接器实际使用的正确用户。 若要验证，请执行以下步骤：
-  * 从“开始”菜单打开“同步服务”。
-  * 打开“连接器”选项卡。
+  * 从“开始”菜单打开“同步服务”。 
+  * 打开“连接器”选项卡。 
   * 查找类型为 Active Directory 域服务的连接器并选择它。
-  * 在“操作”下面，选择“属性”。
-  * 转到“连接到 Active Directory 林”。 检查此屏幕上指定的域和用户名是否与提供给脚本的帐户匹配。
+  * 在“操作”下面，选择“属性”。  
+  * 转到“连接到 Active Directory 林”。  检查此屏幕上指定的域和用户名是否与提供给脚本的帐户匹配。
     ![同步服务管理器中的连接器帐户](./media/how-to-connect-device-writeback/connectoraccount.png)
 
 在 Active Directory 中验证配置：

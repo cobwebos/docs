@@ -8,10 +8,10 @@ ms.date: 05/30/2019
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: 601124aef37d2b285db71130f5c63b3620c7768f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735641"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>对 Azure 应用程序配置事件做出反应
@@ -39,14 +39,14 @@ Azure 应用程序配置事件包含响应你的数据中的更改所需的所�
 
 > |属性|Type|描述|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |主题|字符串|发出该事件的应用配置的完整 Azure 资源管理器 id。|
-> |subject|string|事件的使用者密钥值的 URI。|
-> |EventTime|字符串|生成事件，将日期/时间以 ISO 8601 格式。|
+> |topic|字符串|发出该事件的应用配置的完整 Azure 资源管理器 id。|
+> |subject|字符串|事件的使用者密钥值的 URI。|
+> |eventTime|字符串|生成事件，将日期/时间以 ISO 8601 格式。|
 > |eventType|字符串|"Microsoft.AppConfiguration.KeyValueModified"或者"Microsoft.AppConfiguration.KeyValueDeleted"。|
 > |Id|字符串|此事件的唯一标识符。|
-> |dataVersion|字符串|数据对象的架构版本。|
+> |dataVersion|string|数据对象的架构版本。|
 > |metadataVersion|字符串|顶级属性的架构版本。|
-> |数据|对象|Azure 应用程序配置特定的事件数据的集合|
+> |data|对象|Azure 应用程序配置特定的事件数据的集合|
 > |data.key|字符串|已修改或删除的密钥值的键。|
 > |data.label|字符串|该标签，如果任何已修改或删除的密钥值。|
 > |data.etag|字符串|有关`KeyValueModified`新密钥值的 etag。 有关`KeyValueDeleted`已删除的密钥值的 etag。|

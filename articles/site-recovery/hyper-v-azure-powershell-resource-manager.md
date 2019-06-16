@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 5fbe4fd5f85026cd62f1bd10e36561b312464054
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64690573"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
@@ -38,7 +38,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 确保已满足以下先决条件：
 
 * 一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 此外，可以阅读 [Azure Site Recovery Manager 定价](https://azure.microsoft.com/pricing/details/site-recovery/)。
-* Azure PowerShell。 有关此版本及其安装方法的信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
+* Azure PowerShell。 若要深入了解此版本及其安装方法，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 此外，本文中提及的特定示例要求满足以下先决条件：
 
@@ -58,7 +58,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-4. 验证命令输出中是否将“RegistrationState”设置为“已注册”，如果是，则可继续执行步骤 2。 否则，需要通过运行以下命令注册订阅中缺失的提供程序：
+4. 验证命令输出中是否将“RegistrationState”设置为“已注册”，如果是，则可继续执行步骤 2   。 否则，需要通过运行以下命令注册订阅中缺失的提供程序：
 
     `Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
@@ -72,12 +72,12 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
     `New-AzResourceGroup -Name $ResourceGroupName -Location $Geo`
 
-2. 若要获取运行在订阅中的资源组的列表**Get AzResourceGroup** cmdlet。
+2. 若要获取订阅中的资源组列表，请运行 **Get-AzResourceGroup** cmdlet。
 2. 创建如下所示的新的 Azure 恢复服务保管库：
 
         $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
 
-    您可以检索现有保管库列表**Get AzRecoveryServicesVault** cmdlet。
+    可使用 **Get-AzRecoveryServicesVault** cmdlet 检索现有保管库的列表。
 
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>步骤 3：设置恢复服务保管库上下文

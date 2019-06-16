@@ -11,10 +11,10 @@ ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024642"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
@@ -29,7 +29,7 @@ ms.locfileid: "65024642"
 + **存储优化**具有更多的总存储、 存储带宽和内存比专用计算机上运行**标准**。 存储优化有两个级别：L1 和 L2
 
 > [!NOTE]
-> 当前以折扣价格，目的是收集反馈的测试和实验目的在预览版的形式提供存储优化服务层。 确定最终定价将在以后宣布这些层通常不可用时。 建议不要对生产应用程序使用这些层。
+> 当前以折扣价格，目的是收集反馈的测试和实验目的在预览版的形式提供存储优化服务层。 这些层推出正式版后，我们将公布最终定价。 不建议对生产应用程序使用这些层。
 
   S3 高密度 (S3 HD) 是针对特定工作负荷设计的：[多租户](search-modeling-multitenant-saas-applications.md)和大量的小索引（每个索引一百万个文档，每个服务三千个索引）。 此层未提供[索引器功能](search-indexer-overview.md)。 在 S3 HD 上，数据引入必须利用推送方式，使用 API 调用将数据从源推送到索引。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "65024642"
 
 ## <a name="index-limits"></a>索引限制
 
-| 资源 | 免费 | 基本&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| Resource | 免费 | 基本&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | 最大索引数 |3 |5 或 15 |50 |200 |200 |每个分区 1000，或者每个服务 3000 |10 |10 |
 | 每个索引的最大简单字段 |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -105,7 +105,7 @@ ms.locfileid: "65024642"
 最大运行时间存在是为了向余额和稳定性到服务作为一个整体，但更大的数据集可能需要更多索引的时间超出允许的最大值。 如果在允许的最长时间内无法完成索引作业，请尝试按计划运行。 计划程序将跟踪索引的状态。 如果计划的索引作业因某种原因而中断，则索引器可以在下一次计划运行时从它上次停止的位置重新开始。
 
 
-| 资源 | 免费&nbsp;<sup>1</sup> | 基本&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
+| Resource | 免费&nbsp;<sup>1</sup> | 基本&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | 最大索引器数 |3 |5 或 15|50 |200 |200 |不适用 |10 |10 |
 | 最大数据源数 |3 |5 或 15 |50 |200 |200 |不适用 |10 |10 |

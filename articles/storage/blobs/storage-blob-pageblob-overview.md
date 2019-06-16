@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.openlocfilehash: 88bf81852a4501f4fc5807d865214d57dbc0aab3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65794493"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
@@ -46,7 +46,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>创建指定大小的空页 Blob
 
-为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例展示了如何先创建对 CloudBlobContainer 对象的引用，再创建容器 (testvhds)（如果它尚未存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 blob，请调用[CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，并传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
+为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例展示了如何先创建对 CloudBlobContainer 对象的引用，再创建容器 (testvhds)（如果它尚未存在）   。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 blob，请调用[CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，并传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
 
 ```csharp
 using Microsoft.Azure;

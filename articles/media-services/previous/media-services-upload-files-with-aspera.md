@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: e522883da7fddad44741599107f2dbc4c99aace6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60826859"
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>使用 Azure 上的 Aspera Server On-Demand 服务将文件上传到媒体服务帐户 
@@ -42,7 +42,7 @@ ms.locfileid: "60826859"
 要完成本教程，需要：
 
 * 一个 Windows Live ID
-* 一个 [Azure 帐户](https://azure.microsoft.com)。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
+* 一个 [Azure 帐户](https://azure.microsoft.com)。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。 
 * 一个 [Azure 媒体服务帐户](media-services-portal-create-account.md)。
 
 ## <a name="purchase-aspera-on-demand-for-azure"></a>购买 Aspera On Demand for Azure
@@ -61,15 +61,15 @@ ms.locfileid: "60826859"
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera003.png)
 
-4. 单击“定价层”，并在子面板中选择所需的每月用量。 在“计划详细信息”面板中选择“确定”。 然后，在“选择定价层”面板中单击“选择”。
+4. 单击“定价层”，并在子面板中选择所需的每月用量。  在“计划详细信息”面板中选择“确定”。   然后，在“选择定价层”面板中单击“选择”。  
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera004.png)
 
-5. 在子面板中单击“法律条款”，查看并接受法律条款。 查看法律条款后，单击“购买”。
+5. 在子面板中单击“法律条款”，查看并接受法律条款。  查看法律条款后，单击“购买”。 
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera005.png)
 
-6. 单击“创建”完成购买。
+6. 单击“创建”完成购买。 
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera006.png)
 
@@ -113,9 +113,9 @@ ms.locfileid: "60826859"
    3. 使用 [Azure 门户](https://portal.azure.com/)检索与 Azure 媒体帐户关联的存储帐户的某些信息。 具体而言，请检查帐户名称和密钥，以及要将内容存放到的存储 Blob 容器名称。 
 
        * 要从门户获取存储信息，请找到存储帐户，单击“访问密钥”，并复制帐户的名称和密钥。
-       * 要获取容器名称，请找到你的存储帐户，选择“Blob”，并选择要将内容上载到的容器的名称。 
+       * 要获取容器名称，请找到你的存储帐户，选择“Blob”，并选择要将内容上载到的容器的名称。  
 
-      下面是 Aspera 客户端“连接管理器”的屏幕截图，必须在其中指定“Azure”存储类型和凭据以及 Blob 容器。
+      下面是 Aspera 客户端“连接管理器”的屏幕截图，必须在其中指定“Azure”存储类型和凭据以及 Blob 容器。 
 
       ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
