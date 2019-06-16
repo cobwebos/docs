@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
 ms.openlocfilehash: 169ec7a8ef407af3f754046aa8e3b06793a7e962
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65028165"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>在 Azure 区块链服务中的限制
@@ -27,7 +27,7 @@ Azure 区块链服务提供服务和功能限制，例如成员可以具有的�
 
 | 定价层 | 节点的最大事务 | 验证程序节点的最大 |
 |:---|:---:|:---:|
-| 基本 | 10 | 1 |
+| 基本 | 10 | 第 |
 | 标准 | 10 | 2 |
 
 不支持成员的创建后更改定价层之间基本和标准。

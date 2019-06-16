@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399580"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
@@ -131,10 +131,10 @@ Site Recovery 按如下所述创建快照：
 
 | **URL** | **详细信息** |
 | ------- | ----------- |
-| * .blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| \* .blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | login.microsoftonline.com | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | *.hypervrecoverymanager.windowsazure.com | 允许 VM 与 Site Recovery 服务进行通信。 |
-| * .servicebus.windows.net | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
+| \* .servicebus.windows.net | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 

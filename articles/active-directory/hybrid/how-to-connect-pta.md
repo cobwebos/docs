@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e84324456aef12070cf9355fb17e132f9f99b80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb5733f43a2b2800d5eb5031dddaaeb7d59aadc2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60383299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109417"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -43,7 +43,7 @@ ms.locfileid: "60383299"
   - 用户使用同样的密码登录本地和基于云的应用程序。
   - 用户花费在联系 IT 支持人员解决密码相关问题上的时间更少。
   - 用户可以完成云中的[自助服务密码管理](../authentication/active-directory-passwords-overview.md)任务。
-- 易于部署和管理
+- 易于部署和管理 
   - 无需复杂的本地部署或网络配置。
   - 仅需在本地安装一个轻型代理。
   - 无管理开销。 代理会自动获得改进和 bug 修复。
@@ -52,14 +52,14 @@ ms.locfileid: "60383299"
   - 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../conditional-access/conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
   - 代理只从网络内部建立出站连接。 因此，无需在外围网络（也称为 DMZ）中安装代理。
   - 使用基于证书的身份验证保护代理与 Azure AD 之间的通信。 这些证书每隔几个月由 Azure AD 自动续订。
-- 高可用性
+- 高可用性 
   - 可在多台本地服务器上安装其他代理，提供登录请求的高可用性。
 
 ## <a name="feature-highlights"></a>功能特点
 
 - 支持用户登录到所有基于 Web 浏览器的应用程序和使用[新式身份验证](https://aka.ms/modernauthga)的 Microsoft Office 客户端应用程序。
 - 登录用户名可以是本地默认用户名 (`userPrincipalName`)，也可以是 Azure AD Connect 中配置的另一个属性（称为 `Alternate ID`）。
-- 该功能可与[条件性访问](../active-directory-conditional-access-azure-portal.md)功能（例如多重身份验证 (MFA)）进行无缝配合使用，帮助保护用户安全。
+- 该功能与无缝配合[条件性访问](../active-directory-conditional-access-azure-portal.md)功能如多重身份验证 (MFA) 来帮助保护你的用户。
 - 与基于云的[自助密码管理](../authentication/active-directory-passwords-overview.md)集成，包括本地 Active Directory 的密码写回和通过禁止常用密码的密码保护。
 - 如果 AD 林之间存在信任关系并且正确配置了名称后缀路由，则支持多林环境。
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。

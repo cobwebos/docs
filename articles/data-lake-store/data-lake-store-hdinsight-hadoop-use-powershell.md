@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: f78ad8d58bb1bc760a31b792b44a4a39ed25e1f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161401"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 创建将 Azure Data Lake Storage Gen1 用作额外存储的 HDInsight 群集
@@ -28,7 +28,7 @@ ms.locfileid: "66161401"
 >
 >
 
-了解如何使用 Azure PowerShell 来配置包含 Azure Data Lake Storage Gen1（用作额外存储）的 HDInsight 群集。 有关如何创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集的说明，请参阅[创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)。
+了解如何使用 Azure PowerShell 来配置包含 Azure Data Lake Storage Gen1（用作额外存储）的 HDInsight 群集  。 有关如何创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集的说明，请参阅[创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)。
 
 > [!NOTE]
 > 若要将 Data Lake Storage Gen1 用作 HDInsight 群集的额外存储，强烈建议在创建群集时按本文说明进行操作。 向现有 HDInsight 群集添加 Data Lake Storage Gen1 作为额外存储是很复杂的过程，容易出现错误。
@@ -155,7 +155,7 @@ ms.locfileid: "66161401"
 
 此部分中将执行以下用于创建 Azure Active Directory 应用程序的服务主体、将角色分配给服务主体，通过提供证书作为服务主体进行身份验证的步骤。 运行以下命令在 Azure Active Directory 中创建应用程序。
 
-1. 将以下 cmdlet 粘贴到 PowerShell 控制台窗口中。 请确保为 **-DisplayName** 属性指定的值唯一。 此外，**-HomePage** 和 **-IdentiferUris** 的值是占位符值，且未进行验证。
+1. 将以下 cmdlet 粘贴到 PowerShell 控制台窗口中。 请确保为 **-DisplayName** 属性指定的值唯一。 此外， **-HomePage** 和 **-IdentiferUris** 的值是占位符值，且未进行验证。
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
@@ -230,7 +230,7 @@ ms.locfileid: "66161401"
 1. 连接后，请使用以下命令启动 Hive 命令行界面 (CLI)。
 
         hive
-2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表：
+2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表  ：
 
         DROP TABLE vehicles;
         CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestoragegen1>.azuredatalakestore.net:443/';

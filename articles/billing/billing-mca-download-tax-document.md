@@ -16,10 +16,10 @@ ms.date: 02/21/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 245e5ca6e2d7d1f48951d63ba6539180a35f1358
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604158"
 ---
 # <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>为 Microsoft 客户协议查看税务文档
@@ -31,9 +31,9 @@ ms.locfileid: "65604158"
 您必须是所有者、 参与者、 读取器或计费的配置文件的发票管理器查看和下载税务文档。 若要了解 Microsoft 客户协议计费角色的详细信息，请参阅[计费的配置文件角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
 <!-- TO DO: add link to manage access doc for MCA -->
 
-1. 在“成本管理 + 计费”中进行搜索。
+1. 在“成本管理 + 计费”  中进行搜索。
 2. 选择计费的配置文件。
-3. 选择“发票”。
+3. 选择“发票”  。
 4. 在发票网格中，查找你想要下载的税务文档相对应的发票。
 5. 单击省略号 (`...`) 的行的末尾。
 6. 选择**税务文档**。 具体取决于你的账单资料国家/地区，可能会看到多个每张发票的税务文档。

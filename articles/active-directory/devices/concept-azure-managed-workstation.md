@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7e9ca9fa26e9744eb0a9bfafe692a096825b0b5
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 05d21910d1b3601346fbd038cbc25f8f2be61f99
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357055"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110699"
 ---
 # <a name="building-secure-workstations"></a>构建安全的工作站
 
 受保护的独立的工作站是极为重要的安全敏感的角色，如管理员、 开发人员和运算符的关键服务。 许多其他安全控制和保证操作会失败或不不起任何作用，如果基础客户端工作站安全已遭到破坏。
 
 本文档介绍如何生成详细的分步说明，包括如何设置启动安全控制的安全客户端工作站。 此类型的工作站有时被称为特权的访问工作站 (PAW)，它使用，并基于此引用。 但是的指南为基于云的技术来管理服务，看起来和引入了安全功能引入了从 Windows 10RS5、 Microsoft Defender ATP、 Azure Active Directory 和 Intune。
+
+> [!NOTE]
+> 此文章介绍了安全的工作站和其重要性的概念。 如果您已熟悉这一概念，并且想要跳过部署，请阅读[如何部署安全工作站](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation)。
 
 ## <a name="why-securing-workstation-access-is-important"></a>保护工作站访问为何重要
 

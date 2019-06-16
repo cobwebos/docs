@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146912"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
@@ -17,7 +17,7 @@ ms.locfileid: "66146912"
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**AzureStorage** |是 |
-| connectionString |为 connectionString 属性指定连接到 Azure 存储所需的信息。 |“是” |
+| connectionString |为 connectionString 属性指定连接到 Azure 存储所需的信息。 |是 |
 
 请参阅以下部分的步骤来查看/复制帐户密钥的 Azure 存储：[访问密钥](../articles/storage/common/storage-account-manage.md#access-keys)。
 
@@ -69,6 +69,6 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 创建 **SAS URI** 时，请注意以下事项：  
 
 * 根据链接服务（读取、写入、读/写）在数据工厂中的用法，设置针对对象的适当读/写**权限**。
-* 根据需要设置“到期时间”。 确保 Azure 存储对象的访问权限不会在管道的活动期限内过期。
+* 根据需要设置“到期时间”  。 确保 Azure 存储对象的访问权限不会在管道的活动期限内过期。
 * 应该根据需要在正确的容器/Blob 或表级别创建 URI。 数据工厂服务可以使用 Azure Blob 的 SAS URI 访问特定的 Blob。 数据工厂服务可以使用 Azure Blob 容器的 SAS URI 迭代该容器中的 Blob。 如果稍后需要提供更多/更少对象的访问权限或需要更新 SAS URI，请记得使用新 URI 更新链接服务。   
 

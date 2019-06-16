@@ -4,14 +4,14 @@ description: 使用 Azure 资源管理器将资源移到新的资源组或订阅
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 046b8e75be0247f335bcf1d29117f5900b70aeb6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477250"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083542"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -88,7 +88,6 @@ ms.locfileid: "66477250"
 * 逻辑应用
 * 机器学习 - 机器学习工作室 Web 服务可以移动到同一订阅中的资源组，但不能移动到不同订阅中。 其他机器学习资源可以跨订阅进行移动。
 * 托管磁盘-托管磁盘的可用性区域不能移动到其他订阅
-* 托管标识 - 用户分配
 * 媒体服务
 * 监视器 - 确保移动到新订阅时，不会超出[订阅配额](../azure-subscription-service-limits.md#monitor-limits)
 * 通知中心
@@ -141,6 +140,7 @@ ms.locfileid: "66477250"
 * ExpressRoute
 * 实验室服务-教室实验室不能移动到新的资源组或订阅。 开发测试实验室可以移动到新的资源组在同一订阅中，但不是能跨订阅。
 * 托管应用程序
+* 托管标识 - 用户分配
 * Microsoft 基因组学
 * 安全
 * Site Recovery

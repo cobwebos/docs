@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
 ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991421"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure 服务总线标准命名空间迁移到高级层
@@ -118,7 +118,7 @@ ms.locfileid: "65991421"
     ![命名空间的切换菜单切换][]迁移完成时，会显示确认页。
     ![开关命名空间-成功][]
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 ### <a name="what-happens-when-the-migration-is-committed"></a>提交迁移时，会发生什么情况？
 

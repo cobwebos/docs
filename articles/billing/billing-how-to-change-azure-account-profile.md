@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65850767"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>更改你的 Azure 帐户的配置文件信息
@@ -29,7 +29,7 @@ Microsoft 帐户用户不是帐户管理员，才能发送与服务相关的通�
 ## <a name="change-your-profile-information"></a>更改个人资料信息
 
 1. 登录到 [Azure 帐户中心](https://account.azure.com/Profile)。
-1. 选择“编辑详细信息”按钮，并更新“个人资料”信息。
+1. 选择“编辑详细信息”按钮，并更新“个人资料”信息。  
 
    ![Azure 配置文件信息的示例](./media/billing-how-to-change-azure-account-profile/profile.png)
 
@@ -76,7 +76,7 @@ Microsoft 帐户用户不是帐户管理员，才能发送与服务相关的通�
 
 * 转到[联系信息](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)区域在 Azure 门户中的，输入电子邮件地址。 你提供的地址会收到服务和市场营销的通信。 Azure 帐户中心配置文件中的电子邮件地址将更新以自动匹配。 正在更新你的配置文件的电子邮件地址不会更新登录电子邮件地址。
 
-* 在中[Azure 门户](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)中，选择您的姓名缩写的图标或图片。 然后，选择上下文菜单 (**...**).接下来，选择**我的联系信息**菜单中，输入电子邮件地址。 你提供的地址会收到服务和市场营销的通信。 在 Azure 帐户中心配置文件中的电子邮件地址将更新以自动匹配。 正在更新你的配置文件的电子邮件地址不会更新登录电子邮件地址。
+* 在中[Azure 门户](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)中，选择您的姓名缩写的图标或图片。 然后，选择上下文菜单 ( **...** ).接下来，选择**我的联系信息**菜单中，输入电子邮件地址。 你提供的地址会收到服务和市场营销的通信。 在 Azure 帐户中心配置文件中的电子邮件地址将更新以自动匹配。 正在更新你的配置文件的电子邮件地址不会更新登录电子邮件地址。
 
 ![更新电子邮件地址在 Azure 中的示例](./media/billing-how-to-change-azure-account-profile/azure-contact-information.png)
 

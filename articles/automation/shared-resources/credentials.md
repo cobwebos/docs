@@ -10,10 +10,10 @@ ms.date: 04/12/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: bb34c3f04302e6a2b5cc307b98bafe93e09fcf2f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66734696"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
@@ -27,7 +27,7 @@ ms.locfileid: "66734696"
 
 ## <a name="azure-classic-powershell-cmdlets"></a>Azure 经典 PowerShell cmdlet
 
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  它们作为的一部分提供[Azure PowerShell 模块](/powershell/azure/overview)，这是可在自动化 runbook 和 DSC 配置中使用。
+下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
 | Cmdlet | 描述 |
 |:--- |:--- |
@@ -42,7 +42,7 @@ ms.locfileid: "66734696"
 
 | Cmdlet | 描述 |
 |:--- |:--- |
-| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |检索有关凭据资产的信息。 这不会返回一个 PSCredential 对象。  |
+| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |检索有关凭据资产的信息。 此 cmdlet 不会返回 PSCredential 对象。  |
 | [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential) |创建新的自动化凭据。 |
 | [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |删除自动化凭据。 |
 | [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |设置现有自动化凭据的属性。 |
@@ -96,7 +96,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 在 Runbook 或 DSC 配置中使用 **Get-AutomationPSCredential** 活动检索凭据资产。 此操作将返回 [PSCredential 对象](/dotnet/api/system.management.automation.pscredential)，可将其用于需要 PSCredential 参数的活动或 cmdlet。 还可以检索要单独使用的凭据对象的属性。 该对象具有一个用于用户名和安全密码的属性，或者可以使用 **GetNetworkCredential** 方法返回 [NetworkCredential](/dotnet/api/system.net.networkcredential) 对象，该对象将提供该密码的不安全版本。
 
 > [!NOTE]
-> **Get-azurermautomationcredential**不会返回**PSCredential** ，可以用于身份验证。 它仅提供的凭据的信息。 如果你需要在 runbook 中使用的凭据必须使用**Get-automationpscredential**检索**PSCredential**对象。
+> **Get-AzureRmAutomationCredential** 不会返回可用于身份验证的 **PSCredential**。 它仅提供有关凭据的信息。 如果需要在 runbook 中使用凭据，则必须使用 **Get-AutomationPSCredential** 检索 **PSCredential** 对象。
 
 ### <a name="textual-runbook-sample"></a>文本 Runbook 示例
 

@@ -9,18 +9,18 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: a815ec4ac97f8476403f773aeedb19ff84092b03
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0b35ef5ca3aaa7ad4169f99e2830ebea76d2759e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752967"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074945"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标 
 
-使用 Azure 机器学习服务可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-target)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
+使用 Azure 机器学习服务可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
 
 您可以创建和管理使用 Azure 机器学习 SDK，Azure 门户、 Azure CLI 或 Azure 机器学习 VS 代码扩展的计算目标。 如果通过其他服务（例如 HDInsight 群集）创建了计算目标，可以通过将其附加到 Azure 机器学习服务工作区来使用它们。
  
@@ -31,7 +31,7 @@ ms.locfileid: "66752967"
 
 
 >[!NOTE]
-> 使用 Azure 机器学习 SDK 版本 1.0.39 测试的这篇文章中的代码。
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.39 进行测试。
 
 ## <a name="compute-targets-for-training"></a>训练的计算目标
 
@@ -75,7 +75,7 @@ Azure 机器学习服务为不同的计算目标提供不同的支持。 典型�
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
   
-## <a name="set-up-compute-targets-with-python"></a>使用 Python 设置计算目标
+## <a name="set-up-in-python"></a>在 Python 中进行设置
 
 使用以下部分配置这些计算目标：
 
@@ -271,7 +271,7 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-compute-in-the-azure-portal"></a>在 Azure 门户中设置计算
+## <a name="set-up-in-azure-portal"></a>在 Azure 门户中进行设置
 
 可以在 Azure 门户中访问与工作区关联的计算目标。  可以使用门户执行以下操作：
 
@@ -357,7 +357,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 1. 选择“附加”。  
 1. 通过在列表中选择计算目标来查看附加操作的状态。
 
-## <a name="set-up-compute-with-the-cli"></a>使用 CLI 设置计算
+## <a name="set-up-with-cli"></a>使用 CLI 设置
 
 可以使用适用于 Azure 机器学习服务的 [CLI 扩展](reference-azure-machine-learning-cli.md)访问与工作区关联的计算目标。  可以使用 CLI 执行以下操作：
 
@@ -367,7 +367,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 有关详细信息，请参阅[资源管理](reference-azure-machine-learning-cli.md#resource-management)。
 
-## <a name="set-up-compute-with-vs-code"></a>设置计算使用 VS Code
+## <a name="set-up-with-vs-code"></a>使用 VS Code 设置
 
 您可以访问、 创建和管理与你的工作区使用相关联的计算目标[VS Code 扩展](how-to-vscode-tools.md#create-and-manage-compute-targets)Azure 机器学习服务。
 
@@ -384,7 +384,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 >
 > 若要防止文件被包含在快照中，创建[.gitignore](https://git-scm.com/docs/gitignore)或`.amlignore`文件的目录中，并向其中添加文件。 `.amlignore`文件使用相同的语法，作为模式[.gitignore](https://git-scm.com/docs/gitignore)文件。 如果这两个文件存在，`.amlignore`文件具有优先权。
 > 
-> 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshot)。
+> 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
 ### <a name="create-an-experiment"></a>创建试验
 

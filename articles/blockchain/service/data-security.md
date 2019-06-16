@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
 ms.openlocfilehash: dd0a33364ed9395a85478798e47352c533bd47dc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65028195"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure 区块链服务安全性
@@ -39,7 +39,7 @@ Azure 区块链服务资源上被隔离的专用虚拟网络中。 每个事务�
 
 有三种 RPC 访问的身份验证模式。
 
-### <a name="basic-authentication"></a>基本身份验证
+### <a name="basic-authentication"></a>基本验证
 
 基本身份验证使用 HTTP 身份验证标头包含用户名和密码。 用户名称是区块链节点的名称。 在成员或节点的预配期间设置密码。 可以使用 Azure 门户或 CLI 更改密码。
 

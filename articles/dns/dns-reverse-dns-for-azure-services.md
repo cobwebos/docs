@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
 ms.openlocfilehash: e162d838cb4895841428a827b56bec28e3e16b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160925"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
@@ -45,8 +45,8 @@ Azure 应用服务目前不支持反向 DNS。
 例如：假定 PublicIpAddress 资源的 DNS 名称为 contosoapp1.northus.cloudapp.azure.com，IP 地址为 23.96.52.53。 PublicIpAddress 的 ReverseFqdn 可指定为：
 * PublicIpAddress 的 DNS 名称 contosoapp1.northus.cloudapp.azure.com
 * 同一订阅中另一个 PublicIpAddress 的 DNS 名称，如 contosoapp2.westus.cloudapp.azure.com
-* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 contosoapp1.northus.cloudapp.azure.com 或同一订阅中另一个 PublicIpAddress 的 CNAME。
-* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 IP 地址 23.96.52.53 或同一订阅中另一个 PublicIpAddress 的 IP 地址的 A 记录。
+* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 contosoapp1.northus.cloudapp.azure.com 或同一订阅中另一个 PublicIpAddress 的 CNAME  。
+* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 IP 地址 23.96.52.53 或同一订阅中另一个 PublicIpAddress 的 IP 地址的 A 记录  。
 
 相同的约束也适用于云服务的反向 DNS。
 

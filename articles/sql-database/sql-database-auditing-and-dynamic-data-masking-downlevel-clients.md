@@ -13,17 +13,17 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 02/25/2019
 ms.openlocfilehash: 2c95ec4d88e55af0becc73719bcc6126501267db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61416520"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL 数据库 - 针对表审核的下层客户端支持和 IP 终结点更改
 
 > [!IMPORTANT]
-> 本文档仅适用于表审核，现已弃用。<br>
-> 请使用新的 [Blob 审核](sql-database-auditing.md)方法，该方法不需要修改下层客户端的连接字符串。 Blob 审核的附加信息可在 [SQL 数据库审核入门](sql-database-auditing.md)中找到。
+> 本文档仅适用于表审核，现已弃用  。<br>
+> 请使用新的 [Blob 审核](sql-database-auditing.md)方法，该方法不  需要修改下层客户端的连接字符串。 Blob 审核的附加信息可在 [SQL 数据库审核入门](sql-database-auditing.md)中找到。
 
 对于支持 TDS 重定向的 SQL 客户端，可以自动使用[数据库审核](sql-database-auditing.md)。 请注意，使用 Blob 审核方法时，重定向不适用。
 
@@ -33,9 +33,9 @@ ms.locfileid: "61416520"
 
 对于“下层客户端”，即支持 TDS 7.3 版和更低版本的客户端 — 应修改连接字符串中的服务器 FQDN：
 
-连接字符串中的原始服务器 FQDN：<服务器名称>.database.windows.net
+连接字符串中的原始服务器 FQDN：<服务器名称>  .database.windows.net
 
-连接字符串中的修改后的服务器 FQDN：<服务器名称>.database.**secure**.windows.net
+连接字符串中的修改后的服务器 FQDN：<服务器名称>  .database.**secure**.windows.net
 
 “下层客户端”的部分列表包括：
 

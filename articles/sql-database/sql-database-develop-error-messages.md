@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/06/2019
 ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723486"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题
@@ -216,7 +216,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 | 40652 |16 |无法移动或创建服务器。 订阅 (subscription-id) 将超过服务器配额。 |
 | 40671 |17 |网关与管理服务之间的通信失败。 请稍后重试。 |
 | 40852 |16 |无法在服务器“%.\*ls”中打开登录请求的数据库“%.\*ls”。 仅允许使用已启用安全性的连接字符串访问数据库。 要访问此数据库，请将连接字符串修改为在服务器 FQDN 中包含“secure”。也就是说，'server name'.database.windows.net 应修改为 'server name'.database`secure`.windows.net。 |
-| 40914 | 16 | 无法打开登录时请求的服务器‘[服务器-名称]’。 不允许客户端访问服务器。<br /><br />若要修复，请考虑添加[虚拟网络规则](sql-database-vnet-service-endpoint-rule-overview.md)。 |
+| 40914 | 16 | 无法打开登录时请求的服务器‘[服务器-名称]  ’。 不允许客户端访问服务器。<br /><br />若要修复，请考虑添加[虚拟网络规则](sql-database-vnet-service-endpoint-rule-overview.md)。 |
 | 45168 |16 |SQL Azure 系统负载过小，正在设置单个 SQL 数据库服务器的并发数据库 CRUD 操作（例如创建数据库）数的上限。 在错误消息中指定的服务器已超过最大并发连接数。 请稍后重试。 |
 | 45169 |16 |SQL Azure 系统负载过小，正在设置单个订阅的并发服务器 CRUD 操作（例如创建服务器）数的上限。 在错误消息中指定的订阅已超过最大并发连接数，已拒绝请求。 请稍后重试。 |
 
