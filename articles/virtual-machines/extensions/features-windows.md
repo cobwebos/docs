@@ -17,10 +17,10 @@ ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160270"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
@@ -62,14 +62,14 @@ Azure VM 代理可管理 Azure VM 与 Azure 结构控制器之间的交互。 VM
 Windows 来宾代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加限制。 有关详细信息，请参阅[此文章](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
 )。
 
-某些扩展并非在所有 OS 上均受支持，可能会发出错误代码 51“不受支持的 OS”。 请查看相应的扩展文档来了解支持情况。
+某些扩展并非在所有 OS 上均受支持，可能会发出错误代码 51“不受支持的 OS”  。 请查看相应的扩展文档来了解支持情况。
 
 #### <a name="network-access"></a>网络访问
 
 从 Azure 存储扩展存储库下载扩展包，将扩展状态上传内容发布到 Azure 存储。 如果使用[受支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)版本的代理，则不需要允许对 VM 区域中 Azure 存储的访问，因为可以使用代理将通信重定向到 Azure 结构控制器，以进行代理通信。 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
 
 > [!IMPORTANT]
-> 如果已使用来宾防火墙阻止对 168.63.129.16 的访问，则不管采用上述哪种方法，扩展都会失败。
+> 如果已使用来宾防火墙阻止对 168.63.129.16 的访问，则不管采用上述哪种方法，扩展都会失败  。
 
 代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储的扩展，可以使用[存储](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)的 Azure NSG 服务标记来允许访问。
 
@@ -93,7 +93,7 @@ Azure VM 扩展在现有 VM 上运行，需要在已部署的 VM 上进行配置
 
 ### <a name="powershell"></a>PowerShell
 
-存在多个用于运行单个扩展的 PowerShell 命令。 若要查看列表，请使用 [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) 并根据“扩展”筛选：
+存在多个用于运行单个扩展的 PowerShell 命令。 若要查看列表，请使用 [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) 并根据“扩展”筛选： 
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -143,7 +143,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可通过 Azure 门户将 VM 扩展应用到现有 VM。 在门户中，依次选择该 VM、“扩展”、“添加”。 从可用扩展的列表中选择所需扩展，并按向导中的说明操作。
+可通过 Azure 门户将 VM 扩展应用到现有 VM。 在门户中，依次选择该 VM、“扩展”、“添加”   。 从可用扩展的列表中选择所需扩展，并按向导中的说明操作。
 
 以下示例演示如何从 Azure 门户安装 Microsoft 反恶意软件扩展。
 
@@ -221,7 +221,7 @@ VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程�
 }
 ```
 
-将“要执行的命令”属性移到“受保护的”配置可以保护执行字符串，如以下示例中所示：
+将“要执行的命令”属性移到“受保护的”配置可以保护执行字符串，如以下示例中所示   ：
 
 ```json
 {
@@ -283,15 +283,15 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>代理更新
 
-Windows 来宾代理仅包含扩展处理代码，Windows 预配代码需要单独获取。 可以卸载 Windows 来宾代理。 无法禁用 Windows 来宾代理自动更新。
+Windows 来宾代理仅包含扩展处理代码，Windows 预配代码需要单独获取。   可以卸载 Windows 来宾代理。 无法禁用 Windows 来宾代理自动更新。
 
-扩展处理代码负责与 Azure 结构通信，并处理各种 VM 扩展操作，例如安装、报告状态、更新单个扩展，以及删除扩展。 更新包含扩展处理代码的安全修复程序、bug 修复程序和增强功能。
+扩展处理代码负责与 Azure 结构通信，并处理各种 VM 扩展操作，例如安装、报告状态、更新单个扩展，以及删除扩展。  更新包含扩展处理代码的安全修复程序、bug 修复程序和增强功能。 
 
 若要检查运行的是哪个版本，请参阅[检测安装的 Windows 来宾代理](agent-windows.md#detect-the-vm-agent)。
 
 #### <a name="extension-updates"></a>扩展更新
 
-有扩展更新可用时，Windows 来宾代理会下载并升级扩展。 自动扩展更新以次要版本或修补程序的形式提供。 预配扩展时，可以选择安装或不安装扩展的次要版本更新。 以下示例演示如何在资源管理器模板中使用 autoUpgradeMinorVersion": true,' 自动升级次要版本：
+有扩展更新可用时，Windows 来宾代理会下载并升级扩展。 自动扩展更新以次要版本或修补程序的形式提供。   预配扩展时，可以选择安装或不安装扩展的次要版本更新  。 以下示例演示如何在资源管理器模板中使用 autoUpgradeMinorVersion": true,' 自动升级次要版本  ：
 
 ```json
     "properties": {
@@ -319,7 +319,7 @@ Windows 来宾代理仅包含扩展处理代码，Windows 预配代码需要单�
  $vm.Extensions
 ```
 
-以下示例输出显示 autoUpgradeMinorVersion 设置为 true：
+以下示例输出显示 autoUpgradeMinorVersion 设置为 true   ：
 
 ```powershell
 ForceUpdateTag              :
@@ -342,7 +342,7 @@ AutoUpgradeMinorVersion     : True
 
 ## <a name="agent-permissions"></a>代理权限
 
-若要执行任务，代理需要作为本地系统运行。
+若要执行任务，代理需要作为本地系统运行。 
 
 ## <a name="troubleshoot-vm-extensions"></a>排查 VM 扩展的问题
 
@@ -368,7 +368,7 @@ AutoUpgradeMinorVersion     : True
 
 ### <a name="view-extension-status"></a>查看扩展状态
 
-针对 VM 运行 VM 扩展后，请使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 (*Substatuses[1]*)。
+针对 VM 运行 VM 扩展后，请使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 (*Substatuses[1]* )。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -400,7 +400,7 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-此外，还可以在 Azure 门户中找到扩展执行状态。 若要查看扩展的状态，请依次选择 VM、“扩展”、所需的扩展。
+此外，还可以在 Azure 门户中找到扩展执行状态。 若要查看扩展的状态，请依次选择 VM、“扩展”、所需的扩展  。
 
 ### <a name="rerun-vm-extensions"></a>重新运行 VM 扩展
 
@@ -413,9 +413,9 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 也可以在 Azure 门户中删除扩展，如下所示：
 
 1. 选择 VM。
-2. 选择“扩展”。
+2. 选择“扩展”。 
 3. 选择所需的扩展。
-4. 选择“卸载”。
+4. 选择“卸载”。 
 
 ## <a name="common-vm-extensions-reference"></a>常见 VM 扩展参考
 | 扩展名称 | 描述 | 详细信息 |

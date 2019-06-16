@@ -10,10 +10,10 @@ ms.reviewer: deli, klam, LADocs
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 44944955019fcf81fb0d296592577e2b00a15928
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66299497"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-sliding-window-trigger-in-azure-logic-apps"></a>创建、 安排和使用 Azure 逻辑应用中的滑动窗口触发器运行重复任务和工作流
@@ -62,7 +62,7 @@ ms.locfileid: "66299497"
    有关更多的重复周期选项，打开**添加新参数**列表。 
    所选内容后触发器显示您选择任何选项。
 
-   | 属性 | 需要 | JSON 名称 | Type | 描述 |
+   | 属性 | 必选 | JSON 名称 | Type | 描述 |
    |----------|----------|-----------|------|-------------|
    | **Delay** | 否 | delay | String | 每个重复使用的延迟的持续时间[ISO 8601 日期时间格式](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
    | **时区** | 否 | timezone | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 |

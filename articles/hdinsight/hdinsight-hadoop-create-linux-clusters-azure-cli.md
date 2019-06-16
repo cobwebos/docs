@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: hrasheed
 ms.openlocfilehash: 0a278cd98b0dd6c6d8f0fe9bfee81e5bafd4f543
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597674"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-本文介绍了创建使用 Azure CLI 在 HDInsight 3.6 群集中的步骤。
+本文介绍了使用 Azure CLI 创建 HDInsight 3.6 群集的相关步骤。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -27,13 +27,13 @@ ms.locfileid: "65597674"
 
 ## <a name="prerequisites"></a>必备组件
 
-Azure CLI。 如果你尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)的步骤。
+Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 来了解步骤。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-cluster"></a>创建群集
 
-1. 登录到你的 Azure 订阅。 如果你打算使用 Azure Cloud Shell，然后只需选择**试试**代码块右上角。 否则，请输入以下命令：
+1. 登录到 Azure 订阅。 如果你打算使用 Azure Cloud Shell，则只需要在代码块的右上角选择“尝试”  。 否则，请输入以下命令：
 
     ```azurecli-interactive
     az login
@@ -42,16 +42,16 @@ Azure CLI。 如果你尚未安装 Azure CLI，请参阅[安装 Azure CLI](https
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. 设置环境变量。 使用本文中的变量基于 Bash。 将需要其他环境的细微的变体。 请参阅[az hdinsight 创建](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)有关用于创建群集的可能参数的完整列表。
+2. 设置环境变量。 本文中的变量用法基于 Bash。 在其他环境中需要进行细微的更改。 有关用于群集创建的可能参数的完整列表，请参见 [az-hdinsight-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
 
     |参数 | 描述 |
     |---|---|
-    |`--size`| 在群集中的辅助角色节点数。 本文使用了变量`clusterSizeInNodes`作为值传递给`--size`。 |
-    |`--version`| HDInsight 群集版本。 本文使用了变量`clusterVersion`作为值传递给`--version`。 另请参阅：[支持的 HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
-    |`--type`| 如的 HDInsight 群集类型： hadoop、 interactivehive，hbase、 kafka、 storm、 spark、 rserver、 mlservices。  本文使用了变量`clusterType`作为值传递给`--type`。 另请参阅：[群集类型和配置](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。|
-    |`--component-version`|中的空格分隔版本中的不同 Hadoop 组件版本组件 = 版本格式。 本文使用了变量`componentVersion`作为值传递给`--component-version`。 另请参阅：[Hadoop 组件](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。|
+    |`--size`| 群集中的工作器节点数。 本文使用变量 `clusterSizeInNodes` 作为传递给 `--size` 的值。 |
+    |`--version`| HDInsight 群集版本。 本文使用变量 `clusterVersion` 作为传递给 `--version` 的值。 另请参阅：[支持的 HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
+    |`--type`| HDInsight 群集的类型，如：hadoop、interactivehive、hbase、Kafka、storm、spark、rserver、mlservices。  本文使用变量 `clusterType` 作为传递给 `--type` 的值。 另请参阅：[群集类型和配置](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。|
+    |`--component-version`|各种 Hadoop 组件的版本，采用“component=version”格式的空格分隔版本。 本文使用变量 `componentVersion` 作为传递给 `--component-version` 的值。 另请参阅：[Hadoop 组件](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。|
 
-    替换`RESOURCEGROUPNAME`， `LOCATION`， `CLUSTERNAME`， `STORAGEACCOUNTNAME`，和`PASSWORD`与所需的值。 更改为所需的其他变量的值。 然后输入 CLI 命令。
+    将 `RESOURCEGROUPNAME`、`LOCATION`、`CLUSTERNAME`、`STORAGEACCOUNTNAME` 和 `PASSWORD` 替换为所需的值。 根据需要更改其他变量的值。 然后输入 CLI 命令。
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -68,7 +68,7 @@ Azure CLI。 如果你尚未安装 Azure CLI，请参阅[安装 Azure CLI](https
     export componentVersion=Hadoop=2.7
     ```
 
-3. [创建资源组](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)通过输入以下命令：
+3. 输入以下命令来[创建资源组](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)：
 
     ```azurecli-interactive
     az group create \
@@ -76,9 +76,9 @@ Azure CLI。 如果你尚未安装 Azure CLI，请参阅[安装 Azure CLI](https
         --name $resourceGroupName
     ```
 
-    有关有效位置的列表，使用`az account list-locations`命令，并使用从位置之一`name`值。
+    有关有效位置的列表，请使用 `az account list-locations` 命令，并使用 `name` 值中的位置之一。
 
-4. [创建 Azure 存储帐户](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)通过输入以下命令：
+4. 输入以下命令来[创建 Azure 存储帐户](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)：
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -91,7 +91,7 @@ Azure CLI。 如果你尚未安装 Azure CLI，请参阅[安装 Azure CLI](https
         --sku Standard_LRS
     ```
 
-5. [从 Azure 存储帐户中提取的主键](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)并将其存储在变量中，通过输入以下命令：
+5. 通过输入以下命令[从 Azure 存储帐户中提取主密钥](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)，然后将其存储在一个变量中：
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -100,7 +100,7 @@ Azure CLI。 如果你尚未安装 Azure CLI，请参阅[安装 Azure CLI](https
         --query [0].value -o tsv)
     ```
 
-6. [创建 Azure 存储容器](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)通过输入以下命令：
+6. 输入以下命令来[创建 Azure 存储容器](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)：
 
     ```azurecli-interactive
     az storage container create \
@@ -109,7 +109,7 @@ Azure CLI。 如果你尚未安装 Azure CLI，请参阅[安装 Azure CLI](https
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. [创建 HDInsight 群集](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)通过输入以下命令：
+7. 输入以下命令来[创建 HDInsight 群集](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)：
 
     ```azurecli-interactive
     az hdinsight create \
@@ -138,7 +138,7 @@ Azure CLI。 如果你尚未安装 Azure CLI，请参阅[安装 Azure CLI](https
 
 完成本文后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
 
-输入全部或部分的以下命令删除资源：
+输入以下命令中的全部或部分来删除资源：
 
 ```azurecli-interactive
 # Remove cluster

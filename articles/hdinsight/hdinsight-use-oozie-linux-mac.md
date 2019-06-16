@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142831"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
@@ -37,7 +37,7 @@ ms.locfileid: "65142831"
 
 * **Azure SQL 数据库**。  请参阅[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started.md)。  本文使用名为 `oozietest` 的数据库。
 
-* 群集主存储的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这将是`wasb://`适用于 Azure 存储`abfs://`有关 Azure 数据湖存储第 2 代或`adl://`的 Azure 数据湖存储 Gen1。 如果为 Azure 存储或数据湖存储第 2 代启用了安全传输，则 URI 将为`wasbs://`或`abfss://`分别另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 将是 `wasbs://` 或 `abfss://`。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 
 ## <a name="example-workflow"></a>示例工作流
@@ -508,11 +508,11 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 2. 创建隧道后，在 Web 浏览器中使用 URI `http://headnodehost:8080` 打开 Ambari Web UI。
 
-3. 在页面左侧，选择“Oozie” > “快速链接” > “Oozie Web UI”。
+3. 在页面左侧，选择“Oozie” > “快速链接” > “Oozie Web UI”。   
 
     ![菜单图像](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
 
-4. Oozie Web UI 默认显示正在运行的工作流作业。 若要查看所有工作流作业，请选择“所有作业”。
+4. Oozie Web UI 默认显示正在运行的工作流作业。 若要查看所有工作流作业，请选择“所有作业”  。
 
     ![显示了所有作业](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
 
@@ -520,9 +520,9 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
     ![作业信息](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
 
-6. 可以在“作业信息”选项卡中查看基本作业信息，以及作业中的各个操作。 可以使用顶部的选项卡查看“作业定义”和“作业配置”，访问“作业日志”，或者在“作业 DAG”下查看作业的有向无环图 (DAG)。
+6. 可以在“作业信息”选项卡中查看基本作业信息，以及作业中的各个操作。  可以使用顶部的选项卡查看“作业定义”和“作业配置”，访问“作业日志”，或者在“作业 DAG”下查看作业的有向无环图 (DAG)。    
 
-   * **作业日志**：选择“获取日志”按钮获取作业的所有日志，或使用“输入搜索条件”字段来筛选日志。
+   * **作业日志**：选择“获取日志”  按钮获取作业的所有日志，或使用“输入搜索条件”  字段来筛选日志。
 
        ![作业日志](./media/hdinsight-use-oozie-linux-mac/joblog.png)
 
@@ -530,11 +530,11 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
        ![作业 DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
 
-7. 如果在“作业信息”选项卡中选择一个操作，会显示有关该操作的信息。 例如，选择 **RunSqoopExport** 操作。
+7. 如果在“作业信息”  选项卡中选择一个操作，会显示有关该操作的信息。 例如，选择 **RunSqoopExport** 操作。
 
     ![操作信息](./media/hdinsight-use-oozie-linux-mac/action.png)
 
-8. 可以看到操作的详细信息，例如指向“控制台 URL”的链接。 使用此链接可查看作业的作业跟踪器信息。
+8. 可以看到操作的详细信息，例如指向“控制台 URL”的链接  。 使用此链接可查看作业的作业跟踪器信息。
 
 ## <a name="schedule-jobs"></a>计划作业
 
@@ -564,7 +564,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
     > * `${coordFrequency}`：运行作业实例的间隔时间。
     > * `${coordStart}`：作业开始时间。
     > * `${coordEnd}`：作业结束时间。
-    > * `${coordTimezone}`：在没有夏时制的固定时区（通常用 UTC 表示）处理协调器作业。 此时区被称为“Oozie 处理时区”。
+    > * `${coordTimezone}`：在没有夏时制的固定时区（通常用 UTC 表示）处理协调器作业。 此时区被称为“Oozie 处理时区”。 
     > * `${wfPath}`：workflow.xml 的路径。
 
 2. 若要保存文件，请按 Ctrl+X，输入 `Y`，再按 **Enter**。
@@ -630,18 +630,18 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
     oozie job -config job.xml -run
     ```
 
-7. 如果转到 Oozie Web UI 并选择“协调器作业”选项卡，会看到下图所示的信息：
+7. 如果转到 Oozie Web UI 并选择“协调器作业”选项卡，会看到下图所示的信息  ：
 
     ![“协调器作业”选项卡](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
 
-    “下一次具体化”条目包含下次运行作业的时间。
+    “下一次具体化”条目包含下次运行作业的时间  。
 
 8. 与前面的工作流作业一样，在 Web UI 中选择作业条目会显示有关该作业的信息：
 
     ![协调器作业信息](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
     > [!NOTE]  
-    > 此图像只显示了作业的成功运行结果，而未显示计划工作流中的单个操作。 若要查看单个操作，请选择某个“操作”条目。
+    > 此图像只显示了作业的成功运行结果，而未显示计划工作流中的单个操作。 若要查看单个操作，请选择某个“操作”条目。 
 
     ![操作信息](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
@@ -651,7 +651,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
    1. 在 Oozie Web UI 中查看作业。
 
-   2. 如果特定的操作出错或失败，请选择该操作，以查看“错误消息”字段是否提供了有关失败的详细信息。
+   2. 如果特定的操作出错或失败，请选择该操作，以查看“错误消息”  字段是否提供了有关失败的详细信息。
 
    3. 如果已提供，请使用操作中的 URL 查看该操作的更多详细信息（例如 JobTracker 日志）。
 
@@ -659,7 +659,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009:无法初始化群集
 
-**症状**：作业状态变为“SUSPENDED”。 作业详细信息中的 `RunHiveScript` 状态显示为“START_MANUAL”。 选择该操作会显示以下错误消息：
+**症状**：作业状态变为“SUSPENDED”  。 作业详细信息中的 `RunHiveScript` 状态显示为“START_MANUAL”。  选择该操作会显示以下错误消息：
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
@@ -669,13 +669,13 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002:不允许 Oozie 模拟 &lt;USER&gt;
 
-**症状**：作业状态变为“SUSPENDED”。 作业详细信息中的 `RunHiveScript` 状态显示为“START_MANUAL”。 选择操作会显示以下错误消息：
+**症状**：作业状态变为“SUSPENDED”  。 作业详细信息中的 `RunHiveScript` 状态显示为“START_MANUAL”。  选择操作会显示以下错误消息：
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
 **原因**：当前的权限设置不允许 Oozie 模拟指定的用户帐户。
 
-**解决方法**：允许 Oozie 模拟“用户”组中的用户。 使用 `groups USERNAME` 查看用户帐户所属的组。 如果该用户不是“用户”组的成员，请使用以下命令将该用户添加到该组：
+**解决方法**：允许 Oozie 模拟“用户”  组中的用户。 使用 `groups USERNAME` 查看用户帐户所属的组。 如果该用户不是“用户”  组的成员，请使用以下命令将该用户添加到该组：
 
     sudo adduser USERNAME users
 
@@ -684,7 +684,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 ### <a name="launcher-error-sqoop"></a>启动器错误 (Sqoop)
 
-**症状**：作业状态变为“KILLED”。 作业详细信息中的 `RunSqoopExport` 状态显示为“ERROR”。 选择操作会显示以下错误消息：
+**症状**：作业状态变为“KILLED”  。 作业详细信息中的 `RunSqoopExport` 状态显示为“ERROR”。  选择操作会显示以下错误消息：
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 

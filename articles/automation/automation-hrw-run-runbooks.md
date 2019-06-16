@@ -10,10 +10,10 @@ ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: fab886de55cc524390093f7e7913c79f7af3fe78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60738496"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
@@ -26,7 +26,7 @@ ms.locfileid: "60738496"
 
 [在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md) 介绍了用于启动 Runbook 的不同方法。 混合 Runbook 辅助角色增加了一个 **RunOn** 选项，可以在其中指定混合 Runbook 辅助角色组的名称。 指定组时，会由该组中的辅助角色检索和运行 runbook。 如果未指定此选项，则会在 Azure 自动化中正常运行 runbook。
 
-在 Azure 门户中启动 runbook 时，会看到一个“运行位置”选项，可以在其中选择“Azure”或“混合辅助角色”。 如果选择“混合辅助角色”，则可以从下拉列表中选择该组。
+在 Azure 门户中启动 runbook 时，会看到一个“运行位置”选项，可以在其中选择“Azure”或“混合辅助角色”    。 如果选择“混合辅助角色”  ，则可以从下拉列表中选择该组。
 
 使用 **RunOn** 参数。 可以使用以下命令，通过 Windows PowerShell 在名为 MyHybridGroup 的混合 Runbook 辅助角色组中启动一个名为 Test-Runbook 的 Runbook。
 
@@ -71,10 +71,10 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 1. 创建具有本地资源访问权限的[凭据资产](automation-credentials.md)。
 2. 在 Azure 门户中打开自动化帐户。
-3. 选择“混合辅助角色组”磁贴，并选择组。
-4. 选择“所有设置”，并选择“混合辅助角色组设置”。
-5. 将“运行身份”从“默认”更改为“自定义”。
-6. 选择凭据，并单击“保存”。
+3. 选择“混合辅助角色组”  磁贴，并选择组。
+4. 选择“所有设置”  ，并选择“混合辅助角色组设置”  。
+5. 将“运行身份”  从“默认”  更改为“自定义”  。
+6. 选择凭据，并单击“保存”  。
 
 ### <a name="managed-identities-for-azure-resources"></a>Azure 资源的托管标识
 
@@ -179,7 +179,7 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 ```
 
 > [!IMPORTANT]
-> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块。
+> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名   。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块   。
 
 将 *Export-RunAsCertificateToHybridWorker* Runbook 保存到装有 `.ps1` 扩展的计算机。 将其导入自动化帐户中，对 Runbook 进行编辑，将变量 `$Password` 的值更改成自己的密码。 发布并运行 runbook。 以混合辅助角色组为目标，该组使用运行方式帐户运行 runbook 并对其进行身份验证。 作业流会汇报某个操作尝试将证书导入本地计算机存储，并尾随多个行。 此行为取决于订阅中定义的自动化帐户数以及身份验证是否成功。
 

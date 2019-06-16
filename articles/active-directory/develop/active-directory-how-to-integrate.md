@@ -1,6 +1,6 @@
 ---
 title: 如何与 Azure Active Directory 集成 | Microsoft Docs
-description: 了解将你的应用程序与 Azure Active Directory 集成的优势和获取资源的功能，如简化登录、 身份管理、 多重身份验证和访问控制。
+description: 了解将你的应用程序与 Azure Active Directory 进行集成的优势，并获取诸如简化登录、标识管理、多重身份验证和访问控制等功能的资源。
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,18 +18,18 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8804988387ba4a6cdc8dff5d93077de42ea2051
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4af8cdc1072678de7e34458fc4b54d52aae9eff1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546180"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111598"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-在本文中，将了解如何将你的应用程序集成与 Azure Active Directory (Azure AD) 的好处和获取资源的集成。 Azure AD 提供云应用程序的企业级标识管理的组织。 Azure AD 集成可以简化用户登录体验，并帮助应用程序符合 IT 策略。
+在本文中，你将了解将你的应用程序与 Azure Active Directory (Azure AD) 进行集成的优势，并获取用于集成的资源。 Azure AD 为组织的云应用程序提供企业级标识管理。 Azure AD 集成可以简化用户登录体验，并帮助应用程序符合 IT 策略。
 
 ## <a name="how-to-integrate"></a>如何集成
 
@@ -81,13 +81,13 @@ ms.locfileid: "65546180"
 
 **异常登录检测。**  Azure AD 每天要处理十亿次以上的登录，同时，使用机器学习算法来检测可疑活动，并通知 IT 管理员可能存在的问题。 通过支持 Azure AD 登录，应用程序将从这种保护中受益。 深入了解如何[查看 Azure Active Directory 访问报告](../active-directory-view-access-usage-reports.md)。
 
-**条件性访问。**  除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。 可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。 深入了解 [Azure Active Directory 条件访问](../active-directory-conditional-access-azure-portal.md)。
+**条件性访问。**  除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。 可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。 详细了解如何[Azure Active Directory 条件性访问](../active-directory-conditional-access-azure-portal.md)。
 
 ### <a name="easy-development"></a>易于开发
 
-**行业标准协议。**  Microsoft 承诺支持行业标准。 Microsoft 标识平台支持行业标准 OAuth 2.0 和 OpenID Connect 1.0 协议。 详细了解如何[Microsoft 标识平台身份验证协议](active-directory-v2-protocols.md)。
+**行业标准协议。**  Microsoft 承诺支持行业标准。 Microsoft 标识平台支持行业标准协议 OAuth 2.0 和 OpenID Connect 1.0。 详细了解 [Microsoft 标识平台身份验证协议](active-directory-v2-protocols.md)。
 
-**开放源代码库。**  Microsoft 为主流语言和平台提供完全受支持的开放源代码库以加速开发。 这些源代码已获 Apache 2.0 的授权，可以在项目中任意衍生和改写。 详细了解如何[Microsoft 身份验证库 (MSAL)](reference-v2-libraries.md)。
+**开放源代码库。**  Microsoft 为主流语言和平台提供完全受支持的开放源代码库以加速开发。 这些源代码已获 Apache 2.0 的授权，可以在项目中任意衍生和改写。 详细了解 [Microsoft 身份验证库 (MSAL)](reference-v2-libraries.md)。
 
 ### <a name="worldwide-presence-and-high-availability"></a>全球存在和高可用性
 
@@ -97,5 +97,5 @@ ms.locfileid: "65546180"
 
 [开始编写代码](v2-overview.md#getting-started)。
 
-[使用 Microsoft 标识平台登录用户](authentication-scenarios.md)
+[使用 Microsoft 标识平台将用户登录](authentication-scenarios.md)
 

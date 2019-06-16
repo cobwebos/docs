@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61295925"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>从 VHD 文件创建自定义映像
@@ -35,15 +35,15 @@ ms.locfileid: "61295925"
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 
 1. 从实验室列表，选择所需的实验室。  
 
-1. 在实验室的主窗格中，选择“配置和策略”。 
+1. 在实验室的主窗格中，选择“配置和策略”  。 
 
-1. 在“配置和策略”窗格中，选择“自定义映像”。
+1. 在“配置和策略”窗格中，选择“自定义映像”   。
 
-1. 在“自定义映像”窗格中，选择“+添加”。
+1. 在“自定义映像”  窗格中，选择“+添加”  。
 
     ![添加自定义映像](./media/devtest-lab-create-template/add-custom-image.png)
 
@@ -51,12 +51,12 @@ ms.locfileid: "61295925"
 
 1. 键入自定义映像的说明。 说明显示在基础映像的列表中。
 
-1. 对于“OS 类型”：选择“Windows”或“Linux”。
+1. 对于“OS 类型”  ：选择“Windows”或“Linux”   。
 
     - 如果选择 **Windows**，请通过复选框指定 *sysprep* 是否已在计算机上运行。 
     - 如果选择 **Linux**，请通过复选框指定 *deprovision* 是否已在计算机上运行。 
 
-1. 从下拉菜单中选择“VHD”。 此 VHD 将用于创建新的自定义映像。 如有必要，请选择“使用 PowerShell 上传 VHD”。
+1. 从下拉菜单中选择“VHD”  。 此 VHD 将用于创建新的自定义映像。 如有必要，请选择“使用 PowerShell 上传 VHD”  。
 
 1. 如果用于创建自定义映像的映像不是已授权映像（由 Microsoft 发布），还可以输入计划名称、计划套餐和计划发布服务器。
 
@@ -69,7 +69,7 @@ ms.locfileid: "61295925"
    >
    >
 
-1. 选择“确定”以创建自定义映像。
+1. 选择“确定”  以创建自定义映像。
 
 几分钟之后，将创建自定义映像并将其存储在实验室的存储帐户中。 当实验室用户想要创建新 VM 时，可在基础映像的列表中找到该映像。
 

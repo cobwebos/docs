@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
 ms.openlocfilehash: bec9be627937913c268d65bb6cdadcf68c7a3fb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60909207"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>管理在 Azure 安全中心调查中找到的用户数据
@@ -27,9 +27,9 @@ ms.locfileid: "60909207"
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>搜索并标识个人数据
-在 Azure 门户中，可以使用安全中心的[调查功能](../security-center/security-center-investigation.md)搜索个人数据。 调查功能在“安全警报”下提供。
+在 Azure 门户中，可以使用安全中心的[调查功能](../security-center/security-center-investigation.md)搜索个人数据。 调查功能在“安全警报”  下提供。
 
-调查功能在“实体”选项卡下显示所有实体、用户信息和数据。
+调查功能在“实体”  选项卡下显示所有实体、用户信息和数据。
 
 ## <a name="securing-and-controlling-access-to-personal-information"></a>保护和控制对个人信息的访问
 分配了读者、所有者、参与者或帐户管理员角色的安全中心用户可以访问该工具中的客户数据。
@@ -54,7 +54,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ```
 
 ## <a name="exporting-personal-data"></a>导出个人数据
-分配了所有者、参与者或帐户管理员角色的安全中心用户可以导出调查信息。 若要导出调查信息，请转到“实体”选项卡复制和粘贴相关信息。
+分配了所有者、参与者或帐户管理员角色的安全中心用户可以导出调查信息。 若要导出调查信息，请转到“实体”  选项卡复制和粘贴相关信息。
 
 ## <a name="next-steps"></a>后续步骤
 有关管理用户数据的详细信息，请参阅[管理 Azure 安全中心的用户数据](security-center-privacy.md)。

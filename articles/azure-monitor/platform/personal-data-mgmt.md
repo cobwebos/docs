@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
 ms.openlocfilehash: 0cf5a80e3eedbe7efb8463162b5b3ed489ac08c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61087218"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
@@ -67,7 +67,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
 * *用户 ID*：默认情况下，Application Insights 会使用为用户随机生成的 ID，以便进行会话跟踪。 不过，这些字段常常会被替代，改为存储与应用程序更相关的 ID。 例如：用户名、AAD GUID 等。这些 ID 通常会被视为范围内的个人数据，因此应处理得当。 我们的建议始终是尝试对这些 ID 进行混淆或匿名处理。 通常可以在其中发现这些值的字段包括：session_Id、user_Id、user_AuthenticatedId、user_AccountId、customDimensions。
-* *自定义数据*：Application Insights 允许向任何数据类型追加一组自定义维度。 这些维度可以是任何数据。 使用以下查询来确定在过去 24 小时内收集的任何自定义维度：
+* *自定义数据*：Application Insights 允许向任何数据类型追加一组自定义维度。 这些维度可以是任何数据。  使用以下查询来确定在过去 24 小时内收集的任何自定义维度：
     ```
     search * 
     | where isnotempty(customDimensions)
@@ -90,7 +90,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 > [!IMPORTANT]
 >  虽然大多数的清除操作可能会比 SLA，更快的速度完成**形参在 30 天内设置的清除操作完成的 SLA**由于大量使用的数据平台影响。 这是一个自动化的过程;没有方法来请求更快地处理操作。
 
-### <a name="delete"></a>删除
+### <a name="delete"></a>DELETE
 
 > [!WARNING]
 > Log Analytics 中的删除操作具有破坏性且不可逆！ 执行时请特别小心。

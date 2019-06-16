@@ -3,22 +3,21 @@ title: Azure Media Indexer 的任务预设
 description: 本主题概述 Azure Media Indexer 的任务预设。
 services: media-services
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: Asolanki
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 02/08/2019
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 03/14/2019
+ms.author: adsolank;juliako;
 ms.openlocfilehash: 8ce3ea3847e4c8c022f17375676d8415372dec85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61466300"
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer 的任务预设 
@@ -31,7 +30,7 @@ Azure Media Indexer 是用于执行以下任务的媒体处理器：使媒体文
 
 下表说明了配置 XML 的元素和属性。
 
-|名称|必需|描述|
+|Name|必需|描述|
 |---|---|---|
 |输入|true|要编制索引的资产文件。<br/>Azure Media Indexer 支持以下格式的媒体文件：MP4、MOV、WMV、MP3、M4A、WMA、AAC、WAV。 <br/><br/>可以在 **input** 元素的 **name** 或 **list** 属性中指定文件名（如下所示）。 如果未指定要编制索引的资产文件，系统会选择主文件。 如果未设置主资产文件，则为输入资产中的第一个文件编制索引。<br/><br/>若要显式指定资产文件名，请执行：<br/>```<input name="TestFile.wmv" />```<br/><br/>还可以一次为多个资产文件编制索引（最多 10 个文件）。 为此，请按以下步骤操作：<br/>- 创建一个文本文件（清单文件），并为其指定扩展名 .lst。<br/>- 将输入资产中所有资产文件名的列表添加到此清单文件。<br/>- 将该清单文件添加（上传）到资产。<br/>- 在输入的列表属性中指定清单文件的名称。<br/>```<input list="input.lst">```<br/><br/>**注意：** 如果在清单文件中添加了 10 个以上的文件，则索引作业会失败并显示 2006 错误代码。|
 |metadata|false|指定的资产文件的元数据。<br/>```<metadata key="..." value="..." />```<br/><br/>可以提供预定义键的值。 <br/><br/>当前支持以下键：<br/><br/>**title** 和 **description** - 用于更新语言模型，以改进语音识别准确性。<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**username** 和 **password** - 在通过 http 或 https 下载 Internet 文件时用于身份验证。<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>username 和 password 值应用到输入清单中的所有媒体 URL。|

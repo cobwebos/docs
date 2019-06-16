@@ -1,10 +1,15 @@
 ---
+author: jasonwhowell
+ms.service: hdinsight
+ms.topic: include
+ms.date: 10/25/2018
+ms.author: jasonh
 ms.openlocfilehash: f42705902257e0284a3b316f3b1572627aa27f7a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124674"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67078307"
 ---
 > [!div class="op_single_selector"]
 > * [概述](../articles/hdinsight/hadoop/hdinsight-use-mapreduce.md)
@@ -14,4 +19,5 @@ ms.locfileid: "62124674"
 > * [.NET SDK](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md)
 > * [远程桌面](../articles/hdinsight/hadoop/apache-hadoop-use-mapreduce-remote-desktop.md)
 > 
->
+> 
+

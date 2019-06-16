@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
 ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64705815"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 网络观察程序中排查连接问题功能的简介
@@ -48,7 +48,7 @@ ms.locfileid: "64705815"
 |Hops[].Issues | 在该跃点上检查期间遇到的问题集合。 如果未出现任何问题，则该值为空。|
 |Hops[].Issues[].Origin | 当前跃点上出现问题的位置。 可能的值包括：<br/> **Inbound** - 问题出现在从前一跃点到当前跃点的链接上<br/>**Outbound** - 问题出现在从当前跃点到下一跃点的链接上<br/>**Local** - 问题出现在当前跃点上。|
 |Hops[].Issues[].Severity | 检测到的问题的严重性。 可能的值为 **Error** 和 **Warning**。 |
-|Hops[].Issues[].Type |所发现问题的类型。 可能的值包括： <br/>CPU<br/>**内存**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Type |所发现问题的类型。 可能的值包括： <br/>CPU <br/>**内存**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |有关发现的问题的详细信息。|
 |Hops[].Issues[].Context[].key |返回的键值对中的键。|
 |Hops[].Issues[].Context[].value |返回的键值对中的值。|

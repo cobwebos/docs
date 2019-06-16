@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
 ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60868202"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>跟踪与 Azure 开发测试实验室中的实验室相关的成本
@@ -30,14 +30,14 @@ ms.locfileid: "60868202"
 若要查看月评估成本趋势图表，请按以下步骤操作： 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+2. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 3. 在实验室列表中，选择实验室。  
 4. 选择**配置和策略**在左侧菜单中。  
 4. 选择**成本趋势**中**成本跟踪**在左侧菜单中的部分。 以下屏幕截图显示了为成本图表示例。 
    
     ![成本图表](./media/devtest-lab-configure-cost-management/graph.png)
 
-    “评估成本”值为当前日历月中截止目前的成本。 “预计成本”值是当前整个日历月的评估成本，使用前五天的实验室成本计算得出。
+    “评估成本”  值为当前日历月中截止目前的成本。 “预计成本”  值是当前整个日历月的评估成本，使用前五天的实验室成本计算得出。
 
     成本金额会进位到下一个证书。 例如： 
 
@@ -45,7 +45,7 @@ ms.locfileid: "60868202"
    * 5.50 将计为 6
    * 5.99 将计为 6
 
-     如以上图表所述，图表中默认看到的成本是使用[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)优惠率的估算成本。 还可以通过[管理实验室的成本目标](#managing-cost-targets-for-your-lab)设置在图表中显示的自身支出目标。
+     如以上图表所述，图表中默认看到的成本是使用[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)优惠率的估算成本。  还可以通过[管理实验室的成本目标](#managing-cost-targets-for-your-lab)设置在图表中显示的自身支出目标。
 
      以下成本*不*成本计算中包括：
 
@@ -68,16 +68,16 @@ ms.locfileid: "60868202"
    - 选择要跟踪成本目标的时间段。
       - **每月**：每月进行成本目标跟踪。
       - **固定**： 指定在开始和结束日期的日期范围内进行成本目标跟踪。 通常情况下，这些值表示你的项目计划多长时间运行。
-   - 指定目标成本。 例如，多少您计划在此实验室上花费您定义的时间段中。
-   - 选择启用或禁用任何需报告的阈值 - 增量为 25% - 高达指定目标成本的 125%。
+   - 指定目标成本。  例如，多少您计划在此实验室上花费您定义的时间段中。
+   - 选择启用或禁用任何需报告的阈值 - 增量为 25% - 高达指定目标成本的 125%。 
       - **通知**:达到此阈值时，你会收到通知你指定的 webhook url。
       - **显示在图表上**:达到此阈值时，结果将绘制在可以查看的成本趋势图上，查看月评估成本趋势图表中所述。
-   - 如果选择达到阈值时接收通知，须指定 Webhook URL。 在成本集成区域中，选择“单击此处”可添加集成。 输入**Webhook URL**中配置通知窗格，然后选择**确定**。
+   - 如果选择达到阈值时接收通知，须指定 Webhook URL。  在成本集成区域中，选择“单击此处”可添加集成。  输入**Webhook URL**中配置通知窗格，然后选择**确定**。
 
        ![“配置通知”窗格](./media/devtest-lab-configure-cost-management/configure-notification.png)
 
-     - 如果指定“通知”，须定义 Webhook URL。
-     - 同样，如果定义 Webhook URL，则须在“成本阈值”窗格中将“通知”设置为“开”。
+     - 如果指定“通知”，须定义 Webhook URL。 
+     - 同样，如果定义 Webhook URL，则须在“成本阈值”窗格中将“通知”设置为“开”。  
      - 须在将 Webhook 输入此处之前创建 Webhook。  
 
        有关 Webhook 的详细信息，请参阅[创建 Webhook 或 API Azure 函数](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
@@ -86,12 +86,12 @@ ms.locfileid: "60868202"
 在实验室中的每月成本趋势功能，可查看你有多少花费在当前日历月中。 它还显示花费数月，根据在过去七天内支出结束前的投影。 若要帮助你了解为何花费在实验室中达到阈值在早期，您可以使用**的资源费用**功能，它会显示的月份日期成本**每个资源**表中。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+2. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 3. 从实验室列表，选择所需的实验室。  
 4. 选择**配置和策略**在左侧菜单中。
 5. 选择**的资源费用**中**成本跟踪**在左侧菜单中的部分。 请参阅与实验室关联的每个资源相关的成本。 
 
-    ![按资源计费](./media/devtest-lab-configure-cost-management/cost-by-resource.png)
+    ![按资源划分的成本](./media/devtest-lab-configure-cost-management/cost-by-resource.png)
 
 此功能可帮助你轻松识别的资源的成本最多，以便您可以采取的措施来减少实验室支出。 例如，VM 的成本取决于 VM 的大小。 更大的更多的 VM 大小是成本。 以便可以与要了解为什么需要这种 VM 大小的 VM 所有者可以轻松地找到的 VM 和所有者、 大小以及是否有机会来减小的大小。
 

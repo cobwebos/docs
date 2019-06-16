@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121196"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
@@ -37,8 +37,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -48,8 +48,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -59,19 +59,19 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | <p>使用禁止的加密算法会给产品安全性带来重大风险，因此必须避免使用。 产品必须只使用经过组织加密委员会明确批准的加密算法和关联的密钥长度和填充。</p><ul><li>**RSA-** 可用于加密、密钥交换和签名。 RSA 加密必须只使用 OAEP 或 RSA-KEM 填充模式。 现有代码只能出于兼容目的使用 PKCS #1 v1.5 填充模式。 null 填充已被明确禁止使用。 对于新代码，要求使用 >= 2048 位的密钥。 现有代码只能出于兼容目的，在经得组织加密委员会的评审后，支持 < 2048 位的密钥。 < 1024 位的密钥只能用于解密/验证旧数据，对于加密或签名操作，必须改用其他密钥。</li><li>**ECDSA-** 只能用于签名。 对于新代码，要求使用密钥 >= 256 位的 ECDSA。 基于 ECDSA 的签名必须使用 NIST 批准的三种曲线算法之一（P-256、P-384 或 P521）。 经过全面分析的曲线算法只能在经得组织加密委员会的评审后使用。</li><li>**ECDH-** 只能用于密钥交换。 对于新代码，要求使用密钥 >= 256 位的 ECDH。 基于 ECDH 的密钥交换必须使用 NIST 批准的三种曲线算法之一（P-256、P-384 或 P521）。 经过全面分析的曲线算法只能在经得组织加密委员会的评审后使用。</li><li>在经得组织加密委员会的评审和批准后，可接受 **DSA-**。 请与安全顾问联系，安排组织加密委员会的评审。 如果使用 DSA 已获得批准，请注意，需要禁止使用长度小于 2048 位的密钥。 从 Windows 8 和更高版本开始，CNG 支持 2048 位和更长的密钥。</li><li>**Diffie-Hellman-** 只能用于会话密钥管理。 对于新代码，要求密钥长度 >= 2048 位。 现有代码只能出于向后兼容目的，在经得组织加密委员会的评审后，支持密钥长度 < 2048 位。 不可使用 < 1024 位的密钥。</li><ul>
+| **步骤** | <p>使用禁止的加密算法会给产品安全性带来重大风险，因此必须避免使用。 产品必须只使用经过组织加密委员会明确批准的加密算法和关联的密钥长度和填充。</p><ul><li>**RSA-** 可用于加密、密钥交换和签名。 RSA 加密必须只使用 OAEP 或 RSA-KEM 填充模式。 现有代码只能出于兼容目的使用 PKCS #1 v1.5 填充模式。 null 填充已被明确禁止使用。 对于新代码，要求使用 >= 2048 位的密钥。 现有代码只能出于兼容目的，在经得组织加密委员会的评审后，支持 < 2048 位的密钥。 < 1024 位的密钥只能用于解密/验证旧数据，对于加密或签名操作，必须改用其他密钥。</li><li>**ECDSA-** 只能用于签名。 对于新代码，要求使用密钥 >= 256 位的 ECDSA。 基于 ECDSA 的签名必须使用 NIST 批准的三种曲线算法之一（P-256、P-384 或 P521）。 经过全面分析的曲线算法只能在经得组织加密委员会的评审后使用。</li><li>**ECDH-** 只能用于密钥交换。 对于新代码，要求使用密钥 >= 256 位的 ECDH。 基于 ECDH 的密钥交换必须使用 NIST 批准的三种曲线算法之一（P-256、P-384 或 P521）。 经过全面分析的曲线算法只能在经得组织加密委员会的评审后使用。</li><li>在经得组织加密委员会的评审和批准后，可接受 **DSA-** 。 请与安全顾问联系，安排组织加密委员会的评审。 如果使用 DSA 已获得批准，请注意，需要禁止使用长度小于 2048 位的密钥。 从 Windows 8 和更高版本开始，CNG 支持 2048 位和更长的密钥。</li><li>**Diffie-Hellman-** 只能用于会话密钥管理。 对于新代码，要求密钥长度 >= 2048 位。 现有代码只能出于向后兼容目的，在经得组织加密委员会的评审后，支持密钥长度 < 2048 位。 不可使用 < 1024 位的密钥。</li><ul>
 
 ## <a id="numgen"></a>使用批准的随机数生成器
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -81,8 +81,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -92,8 +92,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -103,8 +103,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -114,8 +114,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [选择加密算法](https://technet.microsoft.com/library/ms345262(v=sql.130).aspx) |
@@ -125,8 +125,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [使用数字签名标识包源](https://msdn.microsoft.com/library/ms141174.aspx)、[威胁和漏洞缓解措施（集成服务）](https://msdn.microsoft.com/library/bb522559.aspx) |
@@ -136,8 +136,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
@@ -147,8 +147,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [SQL Server 可扩展密钥管理 (EKM)](https://msdn.microsoft.com/library/bb895340)、[使用 Azure Key Vault (SQL Server) 可扩展密钥管理](https://msdn.microsoft.com/library/dn198405) |
@@ -158,8 +158,8 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12、MsSQL2016 |
 | **参考**              | [Always Encrypted（数据库引擎）](https://msdn.microsoft.com/library/mt163865) |
@@ -169,12 +169,12 @@ ms.locfileid: "62121196"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 设备 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 设备 OS - Windows IoT Core、设备连接、Azure IoT 设备 SDK |
 | **参考**              | [Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[设置 Windows IoT Core 上的 TPM](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT 设备 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM： https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
+| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM： https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm 。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
 
 ### <a name="example"></a>示例
 ```
@@ -192,8 +192,8 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 云网关 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
 | **参考**              | 不适用  |
@@ -203,7 +203,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM 移动客户端 | 
+| 组件                | Dynamics CRM 移动客户端 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -214,8 +214,8 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM Outlook 客户端 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Dynamics CRM Outlook 客户端 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -225,7 +225,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 标识服务器 | 
+| 组件                | 标识服务器 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -236,8 +236,8 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 标识服务器 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 标识服务器 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |

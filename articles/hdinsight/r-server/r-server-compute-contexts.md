@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 9dac7aa19e428c964bd10c3ef62df949393e8d1f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64681770"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>适用于 HDInsight 上的 ML Services 的计算上下文选项
@@ -27,12 +27,12 @@ Azure HDInsight 上的 ML Services 可设置计算上下文，从而控制执行
 ## <a name="compute-contexts-for-an-edge-node"></a>边缘节点的计算上下文
 一般而言，在边缘节点上的 ML Services 群集中运行的 R 脚本会在该节点上的 R 解释器内运行。 但是，调用 RevoScaleR 函数的步骤例外。 RevoScaleR 调用会在计算环境中运行，而计算环境取决于如何设置 RevoScaleR 计算上下文。  从边缘节点运行 R 脚本时，计算上下文的值可能有：
 
-- 本地顺序 (local)
-- 本地并行 (localpar)
+- 本地顺序 (local) 
+- 本地并行 (localpar) 
 - Map Reduce
 - Spark
 
-local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式。 这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 RevoScaleR **numCoresToUse** 选项另外指定，例如，`rxOptions(numCoresToUse=6)`。 并行执行选项提供最佳性能。
+local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式    。 这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 RevoScaleR **numCoresToUse** 选项另外指定，例如，`rxOptions(numCoresToUse=6)`。 并行执行选项提供最佳性能。
 
 下表总结了用于设置调用执行方式的各个计算上下文选项：
 
@@ -56,11 +56,11 @@ local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式。 �
 鉴于这些原则，有一些用于选择计算上下文的常规经验规则，如下面部分所示。
 
 ### <a name="local"></a>Local
-* 如果要分析的数据量较小，并且不需要重复的分析，则直接将其流式处理为分析例程，并使用 local 或 localpar。
-* 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 local 或 localpar 进行分析。
+* 如果要分析的数据量较小，并且不需要重复的分析，则直接将其流式处理为分析例程，并使用 local 或 localpar   。
+* 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 local 或 localpar 进行分析   。
 
 ### <a name="apache-spark"></a>Apache Spark
-* 如果要分析的数据量较大，可使用 RxHiveData 或 RxParquetData 将它导入到 Spark DataFrame，或导入到 HDFS 中的 XDF（除非存储有问题），然后通过 Spark 计算上下文进行分析。
+* 如果要分析的数据量较大，可使用 RxHiveData 或 RxParquetData 将它导入到 Spark DataFrame，或导入到 HDFS 中的 XDF（除非存储有问题），然后通过 Spark 计算上下文进行分析   。
 
 ### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Map Reduce
 * 仅当使用 Spark 计算上下文遇到无法解决的问题时才使用 Map Reduce 计算上下文，因为它的速度通常较慢。  

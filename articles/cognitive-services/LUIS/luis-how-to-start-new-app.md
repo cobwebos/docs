@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148202"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 门户中创建新的 LUIS 应用
@@ -42,7 +42,7 @@ ms.locfileid: "65148202"
 
 ## <a name="create-new-app-in-luis"></a>在 LUIS 中创建新应用
 
-1. 在“我的应用”页，选择“创建新应用”。
+1. 在“我的应用”页，选择“创建新应用”   。
 
     ![LUIS 应用列表](./media/luis-create-new-app/apps-list.png)
 
@@ -51,41 +51,41 @@ ms.locfileid: "65148202"
 
     ![“创建新应用”对话框](./media/luis-create-new-app/create-app.png)
 
-3. 选择应用程序区域性（对于 TravelAgent 应用，请选择英语），然后选择“完成”。 
+3. 选择应用程序区域性（对于 TravelAgent 应用，请选择英语），然后选择“完成”  。 
 
     > [!NOTE]
     > 创建应用程序后将无法更改区域性。 
 
 ## <a name="import-an-app-from-file"></a>从文件导入应用
 
-1. 在“我的应用”页，选择“导入新应用”。
-1. 在弹出对话框中，选择一个有效的应用 JSON 文件，并选择**完成**。
+1. 在“我的应用”页，选择“导入新应用”   。
+1. 在弹出对话框中，选择一个有效的应用 JSON 文件，然后选择“完成”  。
 
 ### <a name="import-errors"></a>导入错误
 
 可能的错误为： 
 
-* 已存在具有该名称的应用。 重新导入应用程序中，并设置**可选名称**为新名称。 
+* 已存在具有该名称的应用。 重新导入应用，并将“可选名称”  设置为新名称。 
 
-## <a name="export-app-for-backup"></a>导出应用备份
+## <a name="export-app-for-backup"></a>导出用于备份的应用
 
-1. 上**我的应用**页上，选择**导出**。
-1. 选择**导出为 JSON**。 在浏览器下载活动版本的应用。
-1. 将此文件添加到您的备份系统进行存档该模型。
+1. 在“我的应用”页上，选择“导出”   。
+1. 选择“导出为 JSON”。  浏览器下载应用的有效版本。
+1. 将此文件添加到备份系统，对模型存档。
 
-## <a name="export-app-for-containers"></a>导出用于容器的应用
+## <a name="export-app-for-containers"></a>导出容器的应用
 
-1. 上**我的应用**页上，选择**导出**。
-1. 选择**导出为容器**然后选择你想要导出的已发布的槽 （生产或阶段）。
-1. 使用此文件和你[LUIS 容器](luis-container-howto.md)。 
+1. 在“我的应用”页上，选择“导出”   。
+1. 选择“导出为容器”，  然后选择要导出的已发布槽（生产或过渡）。
+1. 将此文件与 [LUIS 容器](luis-container-howto.md)配合使用。 
 
-    如果您感兴趣但不是导出一个训练的但要使用 LUIS 容器使用的已发布的模型，请转到**版本**页和从中导出。 
+    若要导出一个已训练但尚未发布的模型，以便将其与 LUIS 容器配合使用，请转到“版本”页，从该处导出。  
 
 ## <a name="delete-app"></a>删除应用
 
-1. 在“我的应用”页，选中应用所在行末尾的三个点 (...)。
-1. 从菜单中选择“删除”。
-1. 在确认消息窗口中，选择“确定”。
+1. 在“我的应用”页，选中应用所在行末尾的三个点 (...)  。
+1. 从菜单中选择“删除”  。
+1. 在确认消息窗口中，选择“确定”  。
 
 ## <a name="next-steps"></a>后续步骤
 

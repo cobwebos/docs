@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878346"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的数据加密
@@ -59,8 +59,8 @@ Data Lake Storage Gen1 提供两种管理主加密密钥 (MEK) 的模式。 现�
 |是否可以在 Key Vault 外部存储明文形式的加密密钥？ |否|否|
 |能否通过 Key Vault 检索 MEK？|不。 存储在 Key Vault 中以后，MEK 就只能用于加密和解密。|不。 存储在 Key Vault 中以后，MEK 就只能用于加密和解密。|
 |谁拥有 Key Vault 实例和 MEK？|Data Lake Storage Gen1 服务|拥有 Key Vault 实例，该实例属于自己的 Azure 订阅。 Key Vault 中的 MEK 可以通过软件或硬件进行管理。|
-|能否撤消对 Data Lake Storage Gen1 服务的 MEK 的访问权限？|否|可以。 可以管理 Key Vault 中的访问控制列表，删除 Data Lake Storage Gen1 服务的服务标识的访问控制项。|
-|能否永久删除 MEK？|否|可以。 如果从 Key Vault 中删除 MEK，则任何人（包括 Data Lake Storage Gen1 服务）都不能解密 Data Lake Storage Gen1 帐户中的数据。 <br><br> 如果在将 MEK 从 Key Vault 中删除以前对其进行了显式备份，则可将 MEK 还原，然后对数据进行恢复。 但是，如果在将 MEK 从 Key Vault 中删除以前未对其进行备份，则再也不能在以后解密 Data Lake Storage Gen1 帐户中的数据。|
+|能否撤消对 Data Lake Storage Gen1 服务的 MEK 的访问权限？|否|是的。 可以管理 Key Vault 中的访问控制列表，删除 Data Lake Storage Gen1 服务的服务标识的访问控制项。|
+|能否永久删除 MEK？|否|是的。 如果从 Key Vault 中删除 MEK，则任何人（包括 Data Lake Storage Gen1 服务）都不能解密 Data Lake Storage Gen1 帐户中的数据。 <br><br> 如果在将 MEK 从 Key Vault 中删除以前对其进行了显式备份，则可将 MEK 还原，然后对数据进行恢复。 但是，如果在将 MEK 从 Key Vault 中删除以前未对其进行备份，则再也不能在以后解密 Data Lake Storage Gen1 帐户中的数据。|
 
 
 除了该差异（即谁管理 MEK 及其所在的 Key Vault 实例），该设计的其余部分对两种模式来说都是相同的。
@@ -116,7 +116,7 @@ Data Lake Storage Gen1 提供两种管理主加密密钥 (MEK) 的模式。 现�
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>如何在 Data Lake Storage Gen1 中轮换 MEK
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 浏览到 Key Vault 实例，该实例用于存储与 Data Lake Storage Gen1 帐户关联的密钥。 选择“密钥”。
+2. 浏览到 Key Vault 实例，该实例用于存储与 Data Lake Storage Gen1 帐户关联的密钥。 选择“密钥”。 
 
     ![Key Vault 的屏幕截图](./media/data-lake-store-encryption/keyvault.png)
 
@@ -124,11 +124,11 @@ Data Lake Storage Gen1 提供两种管理主加密密钥 (MEK) 的模式。 现�
 
    ![“密钥”窗口的屏幕截图，突出显示“新版”](./media/data-lake-store-encryption/keynewversion.png)
 
-4. 浏览到 Data Lake Storage Gen1 帐户，并选择“加密”。
+4. 浏览到 Data Lake Storage Gen1 帐户，并选择“加密”。 
 
    ![Data Lake Storage Gen1 帐户窗口的屏幕截图，突出显示“加密”](./media/data-lake-store-encryption/select-encryption.png)
 
-5. 系统会通过消息通知你，新版密钥已可使用。 单击“轮换密钥”即可将密钥更新为新版密钥。
+5. 系统会通过消息通知你，新版密钥已可使用。 单击“轮换密钥”即可将密钥更新为新版密钥。 
 
    ![Data Lake Storage Gen1 窗口的屏幕截图，突出显示消息和“轮换密钥”](./media/data-lake-store-encryption/rotatekey.png)
 

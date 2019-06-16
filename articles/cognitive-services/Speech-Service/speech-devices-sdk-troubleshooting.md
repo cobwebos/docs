@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wellsi
 ms.openlocfilehash: 87fb35f06dcb1d1e3fb8c3ae3be64c7448162f14
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65026152"
 ---
-# <a name="troubleshoot-the-speech-devices-sdk"></a>排查语音设备 SDK
+# <a name="troubleshoot-the-speech-devices-sdk"></a>排查语音设备 SDK 问题
 
 本文提供信息以帮助你解决问题时使用语音设备 SDK 可能会遇到。
 
@@ -25,11 +25,11 @@ ms.locfileid: "65026152"
 
 如果使用语音服务时，则会出现证书故障，，请确保你的设备具有正确的日期和时间：
 
-1. 转到“设置”。 在“系统”下选择“日期和时间”。
+1. 转到“设置”  。 在“系统”下选择“日期和时间”。  
 
     ![在“设置”下选择“日期和时间”](media/speech-devices-sdk/qsg-12.png)
 
-1. 将“自动日期和时间”选项保持选中状态。 在“选择时区”下，选择你的当前时区。
+1. 将“自动日期和时间”选项保持选中状态。  在“选择时区”下，选择你的当前时区。 
 
     ![选择日期和时区选项](media/speech-devices-sdk/qsg-13.png)
 

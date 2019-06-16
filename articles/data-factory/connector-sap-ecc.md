@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
 ms.openlocfilehash: 7c75793a696137a1d4cc24fa94877a7fb4e4247a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243923"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP ECC 复制数据
@@ -34,7 +34,7 @@ ms.locfileid: "66243923"
 - 使用基本身份验证复制数据。
 
 >[!TIP]
->若要通过 SAP 表/视图从 SAP ECC 复制数据，可以使用[SAP 表](connector-sap-table.md)连接器是更高的性能和可缩放。
+>若要通过 SAP 表/视图从 SAP ECC 复制数据，可以使用性能更高且可扩展的 [SAP 表](connector-sap-table.md)连接器。
 
 ## <a name="prerequisites"></a>必备组件
 

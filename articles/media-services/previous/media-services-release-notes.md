@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991917"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
@@ -192,9 +192,9 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 有关详细信息，请参阅：
 
 * 以下[代码示例](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)可帮助你快速入门：
-  * vodworkflow_aes.php：此 PHP 文件演示如何使用 AES-128 动态加密和密钥传送服务。 它基于[使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)中所述的 .NET 示例。
-  * vodworkflow_aes.php：此 PHP 文件演示如何使用 PlayReady 动态加密和许可证传送服务。 它基于[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)中所述的 .NET 示例。
-  * scale_encoding_units.php：此 PHP 文件演示如何缩放编码预留单位。
+  * vodworkflow_aes.php  ：此 PHP 文件演示如何使用 AES-128 动态加密和密钥传送服务。 它基于[使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)中所述的 .NET 示例。
+  * vodworkflow_aes.php  ：此 PHP 文件演示如何使用 PlayReady 动态加密和许可证传送服务。 它基于[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)中所述的 .NET 示例。
+  * scale_encoding_units.php  ：此 PHP 文件演示如何缩放编码预留单位。
 
 ## <a id="nov_changes_15"></a>2015 年 11 月版本
  媒体服务现已在云中提供 Widevine 许可证传送服务。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)。 另请参阅[此教程](media-services-protect-with-playready-widevine.md)和 [GitHub 存储库](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)。 
@@ -399,7 +399,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 
 ## <a id="jan_feb_changes_14"></a>2014 年 1/2 月版本
 ### <a name="jan_fab_14_donnet_changes"></a>媒体服务 .NET SDK 3.0.0.1、3.0.0.2 和 3.0.0.3
-3.0.0.1 和 3.0.0.2 中的更改包括：
+3\.0.0.1 和 3.0.0.2 中的更改包括：
 
 * 修复了与具有 OrderBy 语句的 LINQ 查询的使用相关的问题。
 * 将 [GitHub] 中的测试解决方案拆分为了基于单位的测试和基于方案的测试。
@@ -409,12 +409,12 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 版本 3.0.0.3 中进行了以下更改：
 
 * Azure 存储依赖项已升级为使用版本 3.0.3.0。
-* 修复了 3.0.*.* 的后向兼容性问题 版本的向后兼容性问题。
+* 修复了 3.0. *.* 的后向兼容性问题 版本的向后兼容性问题。
 
 ## <a id="december_changes_13"></a>2013 年 12 月版本
 ### <a name="dec_13_donnet_changes"></a>媒体服务 .NET SDK 3.0.0.0
 > [!NOTE]
-> 3.0.x.x 版本不后向兼容 2.4.x.x 版本。
+> 3\.0.x.x 版本不后向兼容 2.4.x.x 版本。
 > 
 > 
 
@@ -506,7 +506,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 
 * 资产
   
-    * IAsset.Create(assetName) 是唯一的资产创建函数。 IAsset.Create 不再在方法调用中上传文件。 使用 IAssetFile 进行上传。
+    * IAsset.Create(assetName) 是唯一的资产创建函数。  IAsset.Create 不再在方法调用中上传文件。 使用 IAssetFile 进行上传。
     * IAsset.Publish 方法和 AssetState.Publish 枚举值已从媒体服务 SDK 中删除。 必须重写依赖于此值的任何代码。
 * FileInfo
   

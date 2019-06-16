@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 10/05/2018
+ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0199d8f0c4a76a10fffcab7cf2819643d0ac2d68
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60902241"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075347"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
 
@@ -27,7 +27,7 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 
 | Azure Functions                       | V1                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | 2.5.0       | **2.9.1**         |
+| **Application Insights .NET SDK**   | 2\.5.0        | **2.9.1**         |
 | | | | 
 | **自动集合**        |                 |                   |               
 | &bull; 请求                     | 是             | 是               | 
@@ -66,9 +66,9 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 
 Azure Functions 默认在其配置中启用采样功能。 有关详细信息，请参阅[配置采样](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)。
 
-如果你的项目依赖于 Application Insights SDK 以执行手动跟踪的遥测数据，可能会遇到奇怪的行为，则不同于 Functions 的采样配置采样配置时。 
+如果你的项目依赖 Application Insights SDK 进行手动遥测跟踪，则当采样配置与 Functions 的采样配置不同时，可能会遇到奇怪的行为。 
 
-我们建议为函数使用相同的配置。 与**Functions v2**，可以获取在构造函数中使用依赖关系注入的相同配置：
+我们建议使用与 Functions 相同的配置。 使用 **Functions v2**，可以在构造函数中使用依赖注入获得相同的配置：
 
 ```csharp
 using Microsoft.ApplicationInsights;

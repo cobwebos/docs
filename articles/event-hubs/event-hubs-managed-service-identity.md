@@ -12,10 +12,10 @@ ms.custom: seodec18
 ms.date: 05/20/2019
 ms.author: shvija
 ms.openlocfilehash: 4e6f16a15547583baab63f452504d36eb2e43b85
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978472"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>具有事件中心的 Azure 资源托管标识
@@ -27,28 +27,28 @@ ms.locfileid: "65978472"
 与托管标识关联后，事件中心客户端可以执行所有经授权的操作。 授权是通过将托管标识与事件中心角色相关联来授予的。 
 
 ## <a name="event-hubs-roles-and-permissions"></a>事件中心角色和权限
-您可以添加到托管的标识**事件中心数据所有者**角色的事件中心命名空间。 此角色授予的标识，命名空间中的所有实体的完全控制 （适用于管理和数据操作）。
+可以将托管标识添加到事件中心命名空间的“事件中心数据所有者”  角色。 此角色授予标识、对命名空间中所有实体的完全控制权限（用于管理和数据操作）。
 
 >[!IMPORTANT]
-> 更早版本支持添加到托管的标识**所有者**或**参与者**角色。 但是，数据访问权限**所有者**并**参与者**角色不再起作用。 如果使用的**所有者**或**参与者**角色，切换到使用**事件中心数据所有者**角色。
+> 我们之前已支持向“所有者”  或“参与者”  角色添加托管标识。 但是，不再授予“所有者”  和“参与者”  角色的数据访问权限。 如果使用是“所有者”  或“参与者”  角色，请切换到使用“事件中心数据所有者”  角色。
 
 若要使用新的内置角色，请执行以下步骤： 
 
 1. 导航到 [Azure 门户](https://portal.azure.com)
 2. 导航到事件中心命名空间。
-3. 上**事件中心 Namespace**页上，选择**访问控制 （iam)** 从左侧菜单中。
-4. 上**访问控制 (IAM)** 页上，选择**添加**中**添加的角色分配**部分。 
+3. 在“事件中心命名空间”  页上，从左侧菜单中选择“访问控制(IAM)”  。
+4. 在“访问控制(IAM)”  页上的“添加角色分配”  部分中，选择“添加”  。 
 
-    ![添加角色分配按钮](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
-5. 上**添加的角色分配**页上，执行以下步骤： 
-    1. 有关**角色**，选择**Azure 事件中心数据所有者**。 
-    2. 选择**标识**若要添加到角色。
-    3. 选择“保存”。 
+    ![“添加角色分配”按钮](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
+5. 在“添加角色分配”  页上，执行以下步骤： 
+    1. 对于“角色”  ，选择“Azure 事件中心数据所有者”  。 
+    2. 选择要添加到角色的**标识**。
+    3. 选择“保存”。  
 
-        ![事件中心数据所有者角色](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
-6. 切换到**角色分配**页上，确认用户已添加到**Azure 事件中心数据所有者**角色。 
+        ![“事件中心数据所有者”角色](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
+6. 切换到“角色分配”  页，并确认用户已添加到“Azure 事件中心数据所有者”  角色。 
 
-    ![确认用户添加到角色](./media/event-hubs-managed-service-identity/role-assignments.png)
+    ![确认用户已添加到角色](./media/event-hubs-managed-service-identity/role-assignments.png)
  
 ## <a name="use-event-hubs-with-managed-identities-for-azure-resources"></a>将事件中心与 Azure 资源托管标识结合使用
 
@@ -66,7 +66,7 @@ ms.locfileid: "65978472"
 
 ### <a name="set-up-the-managed-identity"></a>设置托管标识
 
-创建应用程序后，在 Azure 门户中导航到新创建的 Web 应用（也显示在操作说明中），然后导航到“托管服务标识”页面并启用此功能： 
+创建应用程序后，在 Azure 门户中导航到新创建的 Web 应用（也显示在操作说明中），然后导航到“托管服务标识”  页面并启用此功能： 
 
 ![托管服务标识页面](./media/event-hubs-managed-service-identity/msi1.png)
  
@@ -74,15 +74,15 @@ ms.locfileid: "65978472"
 
 ### <a name="create-a-new-event-hubs-namespace"></a>创建新的事件中心命名空间
 
-下一步，[创建事件中心命名空间](event-hubs-create.md)。 
+接下来，[创建事件中心命名空间](event-hubs-create.md)。 
 
-在门户上导航到命名空间“访问控制(IAM)”页面，然后单击“添加角色分配”将托管标识添加到“所有者”角色。 为此，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。 Web 应用程序的托管标识现在已具有对事件中心命名空间和对之前创建的事件中心的访问权限。 
+在门户上导航到命名空间“访问控制(IAM)”  页面，然后单击“添加角色分配”  将托管标识添加到“所有者”  角色。 为此，请在“添加权限”  面板的“选择”  字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”  。 Web 应用程序的托管标识现在已具有对事件中心命名空间和对之前创建的事件中心的访问权限。 
 
 ### <a name="run-the-app"></a>运行应用
 
 现在，修改所创建的 ASP.NET 应用程序的默认页面。 还可以使用[此 GitHub 存储库](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp)中的 Web 应用程序代码。 
 
-启动应用后，将浏览器指向 EventHubsMSIDemo.aspx。 还可以将其设置为起始页。 可以在 EventHubsMSIDemo.aspx.cs 文件中找到代码。 结果是一个最小的 Web 应用程序，其中包含几个输入字段以及用来连接到事件中心以发送或接收事件的“发送”和“接收”按钮。 
+启动应用后，将浏览器指向 EventHubsMSIDemo.aspx。 还可以将其设置为起始页。 可以在 EventHubsMSIDemo.aspx.cs 文件中找到代码。 结果是一个最小的 Web 应用程序，其中包含几个输入字段以及用来连接到事件中心以发送或接收事件的“发送”  和“接收”  按钮。 
 
 注意 [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 对象是如何初始化的。 此代码通过 `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` 调用为托管标识创建令牌提供程序，而不是使用共享访问令牌 (SAS) 令牌提供程序。 因此，不需要保存和使用任何机密。 从托管标识上下文到事件中心的流以及授权握手都是由令牌提供程序自动处理的，该令牌提供程序是一个比使用 SAS 更简单的模型。
 

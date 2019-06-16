@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60879430"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
@@ -35,58 +35,58 @@ ms.locfileid: "60879430"
 
 本部分在要在其中捕获事件中心的数据的帐户内创建文件夹。 还将向事件中心分配权限，以便其可将数据写入 Data Lake Storage Gen1 帐户。 
 
-1. 打开要在其中捕获事件中心的数据的 Data Lake Storage Gen1 帐户，然后单击“数据资源管理器”。
+1. 打开要在其中捕获事件中心的数据的 Data Lake Storage Gen1 帐户，然后单击“数据资源管理器”  。
 
     ![Data Lake Storage Gen1 数据资源管理器](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Data Lake Storage Gen1 数据资源管理器")
 
-1.  单击“新建文件夹”，然后为要在其中捕获数据的文件夹输入名称。
+1.  单击“新建文件夹”，然后为要在其中捕获数据的文件夹输入名称  。
 
     ![在 Data Lake Storage Gen1 中新建文件夹](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "在 Data Lake Storage Gen1 中新建文件夹")
 
 1. 分配 Data Lake Storage Gen1 根目录的权限。 
 
-    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户的根目录，然后单击“访问”。
+    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户的根目录，然后单击“访问”   。
 
     ![分配 Data Lake Storage Gen1 根目录的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "分配 Data Lake Storage Gen1 根目录的权限")
 
-    b. 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`。 
+    b. 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`    。 
 
     ![分配 Data Lake Storage Gen1 根目录的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "分配 Data Lake Storage Gen1 根目录的权限")
     
-    单击“选择”。
+    单击“选择”  。
 
-    c. 在“分配权限”下，单击“选择权限”。 将“权限”设为“执行”。 将“添加到”设为“此文件夹和所有子文件夹”。 将“添加为”设为“一个访问权限入口和一个默认权限入口”。
+    c. 在“分配权限”下，单击“选择权限”   。 将“权限”设为“执行”   。 将“添加到”设为“此文件夹和所有子文件夹”   。 将“添加为”设为“一个访问权限入口和一个默认权限入口”   。
 
     > [!IMPORTANT]
     > 创建用于捕获 Azure 事件中心接收的数据的新文件夹层次结构时，这是确保可以访问目标文件夹的简便方法。  但是，如果顶层文件夹具有许多子文件和文件夹，则添加对顶层文件夹的所有子代的权限时，可能需要花费很长时间。  如果根文件夹包含大量文件和文件夹，则分别对最终目标文件夹的路径中的每个文件夹添加对 `Microsoft.EventHubs` 的**执行**权限可能更快。 
 
     ![分配 Data Lake Storage Gen1 根目录的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "分配 Data Lake Storage Gen1 根目录的权限")
 
-    单击“确定”。
+    单击“确定”。 
 
 1. 为 Data Lake Storage Gen1 帐户下要在其中捕获数据的文件夹分配权限。
 
-    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户中的文件夹，然后单击“访问”。
+    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户中的文件夹，然后单击“访问”   。
 
     ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
 
-    b. 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`。 
+    b. 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`    。 
 
     ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击“选择”。
+    单击“选择”  。
 
-    c. 在“分配权限”下，单击“选择权限”。 将“权限”设为“读取”、“写入”和“执行”。 将“添加到”设为“此文件夹和所有子文件夹”。 最后，将“添加为”设为“一个访问权限入口和一个默认权限入口”。
+    c. 在“分配权限”下，单击“选择权限”   。 将“权限”设为“读取”、“写入”和“执行”    。 将“添加到”设为“此文件夹和所有子文件夹”   。 最后，将“添加为”设为“一个访问权限入口和一个默认权限入口”   。
 
     ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击“确定”。 
+    单击“确定”。  
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>配置事件中心，将数据捕获到 Data Lake Storage Gen1
 
 本部分在事件中心命名空间内创建事件中心。 还可配置事件中心，将数据捕获到 Azure Data Lake Storage Gen1 帐户。 本部分假设已创建事件中心命名空间。
 
-1. 在事件中心命名空间的“概述”窗格中，单击“+ 事件中心”。
+1. 在事件中心命名空间的“概述”窗格中，单击“+ 事件中心”   。
 
     ![创建事件中心](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Create Event Hub")
 
@@ -96,13 +96,13 @@ ms.locfileid: "60879430"
 
     a. 为事件中心提供一个名称。
     
-    b. 本教程将“分区计数”和“消息保留期”均设为默认值。
+    b. 本教程将“分区计数”和“消息保留期”均设为默认值   。
     
-    c. 将“捕获”设为“开”。 设置“时间窗口”（捕获频率）和“大小窗口”（捕获的数据大小）。 
+    c. 将“捕获”设为“开”   。 设置“时间窗口”（捕获频率）和“大小窗口”（捕获的数据大小）   。 
     
-    d. 对于“捕获提供程序”，选择“Azure Data Lake Store”，然后选择之前创建的 Data Lake Storage Gen1 帐户。 对于“Data Lake 路径”，输入之前在 Data Lake Storage Gen1 帐户中创建的文件夹的名称。 只需提供文件夹的相对路径。
+    d. 对于“捕获提供程序”，选择“Azure Data Lake Store”，然后选择之前创建的 Data Lake Storage Gen1 帐户   。 对于“Data Lake 路径”，输入之前在 Data Lake Storage Gen1 帐户中创建的文件夹的名称  。 只需提供文件夹的相对路径。
 
-    e. 将“示例捕获文件名格式”保留为默认值。 此选项用于管理在捕获文件夹下创建的文件夹结构。
+    e. 将“示例捕获文件名格式”保留为默认值  。 此选项用于管理在捕获文件夹下创建的文件夹结构。
 
     f. 单击**创建**。
 

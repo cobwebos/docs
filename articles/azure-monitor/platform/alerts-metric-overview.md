@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ce65d87142df64a9f0c27f3acdb4d6f25e86fb8a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244912"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071631"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -36,6 +36,8 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 阈值：70
 
 从创建警报规则的时间开始，监视器将每隔 1 分钟运行，查看过去 5 分钟的指标值，并检查这些值的平均值是否超过 70。 如果符合条件（即，过去 5 分钟的平均 CPU 百分比超过 70），则警报规则将激发激活的通知。 如果在与警报规则关联的操作组中配置了电子邮件或 Webhook，则两者都会收到激活的通知。
+
+当您正在使用多个条件在一个规则中，规则"ands"条件在一起。  也就是说，在警报触发时的警报中的所有条件为 true，则评估和解决不再满足时将条件之一。 和就是这种类型的警报的示例时发出警报"CPU 高于 90%"和"队列长度是 300 多个项"。 
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>使用动态条件类型的警报规则
 

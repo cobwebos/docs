@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 11ebaec75b1220f39fe059ea7825cdccafda2f5d
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735611"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps 移动性覆盖率
@@ -47,7 +47,7 @@ Azure Maps 不具有相同级别的信息和所有城市和国家/地区的准�
 | 波多黎各 | 圣胡安 |
 | 乌拉圭 | 蒙得维的亚，蓬塔阿雷 del Este |
 | 美国 | <p>Albany (NY)、 新墨西哥州阿尔布克 (NM)、 Anchorage (AK) Appleton Oshkosh Neenah (WI)、 Asheville (NC)、 （俄亥俄州） 雅典、 亚特兰大 (GA)、 奥斯汀 （德克萨斯州）、 Bakersfield (CA)、 Baltimore)，贝尔维尤 (WA)、 berkshire 地区县 (MA)、 Birmingham (AL)、 卢明 (IN)、 博伊西 (ID)、 波士顿 （MA)，博尔德县 (CO) 该县 （佛罗里达州）、 Buffalo (NY)、 Butte (MT)、 佛得角 Cod)，中心县 (PA) 花束和 Urbana (IL)、 Charleston (SC)、 Charleston （西弗吉尼亚州）、 Charlotte (NC)、 Charlottesville (VA)、 Chattanooga (TN)、 Cheyenne (WY)，芝加哥 (IL)、 辛辛那提 （哦）柑橘县 （佛罗里达州）、 克利夫兰 （俄亥俄州）、 Coachella Valley (CA)、 科罗拉多州弹簧 (CO)、 哥伦比亚 (TN)、 哥伦布 （俄亥俄州）、 语料库 Christi （德克萨斯州）、 达拉斯/等值得 （德克萨斯州）、 代顿 （俄亥俄州）、 州，丹佛 (CO)、 Des Moines (IA)、 底特律 (MI)、 德卢斯 (MN)、 El Paso （德克萨斯州）、 Eugene （或)，Fairbanks (AK)、 Fargo (ND)、 Fayetteville (NC)、 旗杆 (AZ)、 Flint (MI) Fort Collins (CO)、 Fort Wayne (IN)、 弗雷期诺 (CA)、 盖恩斯维尔 （佛罗里达州）、 Grand 分叉 (ND) Grand Rapids (MI)，绿色 Bay (WI)、 Greensboro (NC)、 Greenville (SC)、 Gunnison (CO)、 Hampton 道路 (VA)，汉福德 (CA)、 Hartford (CT)、 Hernando 县 (FL)、 Honolulu (HI)、 （德克萨斯州休斯顿）、 Humboldt 县 (CA)、 亚拉巴马 (AL)、 Indianapolis (IN)、 伊萨卡 （纽约州）、 Jackson （毫秒）、 Jackson (TN)、 维尔-圣约翰县 （佛罗里达州）、 Johnson 城市 (TN) Jonesboro (AR)Joplin （月）、 Juneau (AK)、 Kalamazoo (MI)、 堪萨斯城 （月）、 Kauai (HI)、 Ketchum (ID)、 Knoxville (TN)、 斐 (IN)、 兰卡斯特 (PA)、 Lansing (MI)、 拉斯维加斯 (NV)、 Lawrence (KS)、 Lee 县 （佛罗里达州）、 Lexington （肯塔基州）、 Lincoln 县 (OR)、 阿肯色 Rock (AR) Los Angeles (CA) (路易斯维尔 （肯塔基州）、 Madison (WI)、 McAllen （德克萨斯州）、 孟斐斯 (TN)、 迈阿密 （佛罗里达州）、 密尔沃基/Waukesha (WI)、 明尼阿波利斯 St.Paul (MN)、 Missoula (MT)、 Modesto （美国）、 Moline (IL)，门罗县 (PA)、 Montgomery (AL)、 Morgantown （西弗吉尼亚州）、 纳什维尔 (TN)、 印地安国家/地区)，新 Haven (CT)、 新奥尔良 (LA)，NYC NJ） Ocala （佛罗里达州）、 Okaloosa 县 （佛罗里达州）、 俄克拉何马市/县 （正常）、 奥马 (NE)、 奥兰多 （佛罗里达州）、 巴拿马市/县 （佛罗里达州）、 Pensacola （佛罗里达州）、 皮奥里亚 (IL)、 费城 (PA)、 Phoenix (AZ)、 匹兹堡 (PA)、 Portland (ME)、 Portland (OR)、 Racine (WI)罗利 (NC)、 Redding (CA)、 Reno & Lake 塔霍湖 (NV)、 Roanoke Valley (VA-Lynchburg)，罗彻斯特 (NY) Rocky Mountain 国家公园），恶意 Valley (OR)、 堡 (OR)、 Roseville (CA)、 Sacramento (CA)、 Salem (OR)、 盐湖城 (UT)、 San Antonio （德克萨斯州），San Diego (CA)，San Luis Obispo (CA)、 圣 Barbara (CA)、 圣 Fe (NM)、 Sarasota （佛罗里达州）、 Savannah (GA)、 Seacoast 区域 (NH) 西雅图塔科马 Bellevue (WA) SF 托架区域 (CA)、 Sioux 市/县 (IA)、 Sioux 介于 (SD)、 Sitka (AK)、 Spokane (WA)、 Springfield (IL)、 Springfield （批量）St.George (UT)、 圣路易斯 （月）、 Stockton (CA) Syracuse Utica (NY)、 塔拉哈西 （佛罗里达州）、 坦帕-圣彼得堡阀 （佛罗里达州）、 Terre Haute (IN)、 极了 （俄亥俄州）、 托皮卡 (KS)、 遍历市/县 (MI)、 图森市 (AZ)、 俄克拉荷马 （正常）、 佛蒙特 Victorville (CA)、 Volusia 县 （佛罗里达州）、 Waco （德克萨斯州）华盛顿州 (DC)、 Waterbury (CT)、 Wichita (KS)、 Wilmington (NC)、 Yakima (WA)、 York 县 (PA)、 Yuma 县 (AZ)</p>|
-| + 美国美属维尔京群岛 | 美国美属维尔京群岛 * |
+| \+ 美国美属维尔京群岛 | 美国美属维尔京群岛 * |
 
 
 ## <a name="asia-pacific"></a>亚太区
@@ -90,8 +90,8 @@ Azure Maps 不具有相同级别的信息和所有城市和国家/地区的准�
 | 爱沙尼亚   | 爱沙尼亚 * |   
 | 芬兰   | Hämeenlinna、 赫尔辛基、 Joensuu、 Jyväskylä、 Kajaani、 Kouvola-Kotka，Kuopio，Lappeenranta Mikkeli、 Oulu、 Seinäjoki、 Tampere、 库西、 Vaasa|
 | 法国    | <p>Amberieu en Bugey、 Amiens、 Angers、 Annecy、 Annonay、 Arras、 Aubenas、 Bayonne、 Besançon、 Blois、 Bordeaux，Boulogne sur Mer、 Brest、 Briançon、 cannes，Châlons en 香槟、 Chartres、 Clermont-Ferrand、 Colmar、 Dax、 学位、 格勒诺布尔、 Haguenau、 La Rochelle、 LeMans，可重用功能区、 Lille、 Lorient、 Lyon、 MAC、 马赛 & Provence、 Metz、 Millau，Mont de Marsan、 蒙彼利埃、 Mulhouse、 Nancy，Nantes，很好，Nimes，Normandy、 Nyons、 巴黎、 Poitiers、 Privas、 Quimper、 Rennes、 圣 Malo、 圣 Étienne，Saint-Nazaire，Saintes、 Sarrebourg、 Sete，则、 Tarbes、 Toulouse，教程</P> | 
-| + 法属圭亚那 | 卡宴 |
-| + 新喀里多尼亚 | Nouméa  |
+| \+ 法属圭亚那 | 卡宴 |
+| \+ 新喀里多尼亚 | Nouméa  |
 | 格鲁吉亚 | 第比利斯 | 
 | 德国 | <p>柏林、 勃兰登堡、 Bremen & Niedersachsen、 科隆、 Eisenach、 法兰克福、 汉堡、 Karlsruhe、 Mainz、 München-慕尼黑工厂 Rhein Neckar 区域 Rhein Ruhr 区域，斯图加特，Titisee-Neustadt，Ulm</P> | 
 | 希腊 | <p>雅典、 Arta、 Amorgos、 Chania、 Corfu、 Chios Kos、 Heraklion、 Ioannina、 Kavala、 Kalamata、 Komotini、 Kos、 Larissa、 Meganisi、 Mykonos、 Patra、 Rethimno、 罗兹、 圣托里尼、 Serres、 Syros、 Tinos、 Thessaloniki、 Veria、 Volos、 Xanthi </P> |

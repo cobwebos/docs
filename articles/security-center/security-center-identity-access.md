@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: monhaber
-ms.openlocfilehash: 16548ae75567fa3ba6f8c9135d61945bd28d2db8
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: a30bc55c564f852a5fef6e71aad9e607e6aa1065
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428416"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083673"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>在 Azure 安全中心监视标识和访问（预览版）
 本文介绍如何使用 Azure 安全中心监视用户的标识和访问活动。

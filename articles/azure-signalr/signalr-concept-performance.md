@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: zhshang
 ms.openlocfilehash: f7cc05c8c2a299d809c4386d119fef58fa2548d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61269400"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR 服务的性能指南
@@ -159,7 +159,7 @@ WebSocket 是一个双向和全双工通信协议通过单个 TCP 连接。 服�
 
 | 广播  | 消息大小 | 每秒入站的消息 | 连接 | 发送的时间间隔 |
 |---|---------------------|--------------------------|-------------|-------------------------|
-| 1 | 20 KB                | 第                        | 100,000     | 5 秒                      |
+| 第 | 20 KB                | 第                        | 100,000     | 5 秒                      |
 | 2 | 256 KB               | 第                        | 8,000       | 5 秒                      |
 
 下面的公式是可以轻松推断出基于前面的公式：
@@ -434,5 +434,5 @@ Azure SignalR 服务提供了 ASP.NET SignalR 的相同的性能容量。
 
 若要获取有关的服务和缩放以便其内部结构的详细信息，请阅读以下指南：
 
-* [Azure SignalR 服务内部机制](signalr-concept-internals.md)
+* [Azure SignalR 服务内部](signalr-concept-internals.md)
 * [Azure SignalR 服务缩放](signalr-howto-scale-multi-instances.md)

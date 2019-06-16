@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711452"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-odbc-connector.md)
 > * [当前版本](connector-odbc.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "60711452"
 
 可将数据从 ODBC 源复制到任何受支持的接收器数据存储，或者从任何受支持的源数据存储复制到 ODBC 接收器。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 ODBC 连接器支持使用 **Basic** 或 **Anonymous** 身份验证从/向任何与 ODBC 兼容的数据存储复制数据。
+具体而言，此 ODBC 连接器支持使用 **Basic** 或 **Anonymous** 身份验证从/向任何与 ODBC 兼容的数据存储  复制数据。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -116,7 +116,7 @@ ODBC 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 ODBC 数据集支持的属性列表。
 
-要从/向与 ODBC 兼容的数据存储复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+要从/向与 ODBC 兼容的数据存储复制数据，请将数据集的 type 属性设置为“RelationalTable”  。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -147,7 +147,7 @@ ODBC 链接服务支持以下属性：
 
 ### <a name="odbc-as-source"></a>ODBC 作为源
 
-要从与 ODBC 兼容的数据存储复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+要从与 ODBC 兼容的数据存储复制数据，请将复制活动中的源类型设置为“RelationalSource”  。 复制活动源  部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -188,7 +188,7 @@ ODBC 链接服务支持以下属性：
 
 ### <a name="odbc-as-sink"></a>ODBC 作为接收器
 
-要向与 ODBC 兼容的数据存储复制数据，请将复制活动中的接收器类型设置为“OdbcSink”。 复制活动接收器部分中支持以下属性：
+要向与 ODBC 兼容的数据存储复制数据，请将复制活动中的接收器类型设置为“OdbcSink”  。 复制活动接收器部分中支持以下属性  ：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -349,13 +349,13 @@ ODBC 链接服务支持以下属性：
 
 ## <a name="troubleshoot-connectivity-issues"></a>解决连接问题
 
-若要解决连接问题，请使用“集成运行时配置管理器”的“诊断”选项卡。
+若要解决连接问题，请使用“集成运行时配置管理器”  的“诊断”  选项卡。
 
-1. 启动集成运行时配置管理器。
-2. 切换到“诊断”选项卡。
-3. 在“测试连接”部分下，选择数据存储的“类型”（链接服务）。
-4. 指定用于连接数据存储的“连接字符串”，选择“身份验证”并输入“用户名”、“密码”和/或“凭据”。
-5. 单击“测试连接”以测试数据存储的连接。
+1. 启动集成运行时配置管理器  。
+2. 切换到“诊断”  选项卡。
+3. 在“测试连接”部分下，选择数据存储的“类型”  （链接服务）。
+4. 指定用于连接数据存储的“连接字符串”  ，选择“身份验证”  并输入“用户名”  、“密码”  和/或“凭据”  。
+5. 单击“测试连接”  以测试数据存储的连接。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

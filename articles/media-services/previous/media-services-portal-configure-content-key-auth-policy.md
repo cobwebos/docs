@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: b046ce5a8647abe601a6327667241d98445ce1e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61130538"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
@@ -45,7 +45,7 @@ ms.locfileid: "61130538"
 * 媒体服务流式处理终结点将预检响应中 CORS Access-Control-Allow-Origin 标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dash.js 的播放器，因为将凭据模式设置为“包含”之后，dash.js 中的 XMLHttpRequest 不允许将通配符“\*”作为 Access-Control-Allow-Origin 的值。 作为 dash.js 中这一限制的解决办法，如果你将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户打开支持票证。
 
 ## <a name="configure-the-key-authorization-policy"></a>配置密钥授权策略
-若要配置密钥授权策略，请选择“内容保护”页。
+若要配置密钥授权策略，请选择“内容保护”  页。
 
 媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 内容密钥授权策略可以具有“开放”、“令牌”或 IP 授权限制。 （可以使用 REST 或 .NET SDK 配置 IP。）
 
@@ -55,7 +55,7 @@ ms.locfileid: "61130538"
 ![OpenPolicy][open_policy]
 
 ### <a name="token-restriction"></a>令牌限制
-若要选择令牌限制策略，请选择“令牌”按钮。
+若要选择令牌限制策略，请选择“令牌”  按钮。
 
 令牌受限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 格式和 JSON Web 令牌 (JWT) 格式的令牌。 有关详细信息，请参阅 [JWT 身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
 
@@ -78,7 +78,7 @@ ms.locfileid: "61130538"
           </LicenseTemplates>
         </PlayReadyLicenseResponseTemplate>
 
-可以选择“导入策略 xml”按钮并提供遵循在[媒体服务 PlayReady 许可证模板概述](media-services-playready-license-template-overview.md)中定义的 XML 架构的一个不同 XML。
+可以选择“导入策略 xml”  按钮并提供遵循在[媒体服务 PlayReady 许可证模板概述](media-services-playready-license-template-overview.md)中定义的 XML 架构的一个不同 XML。
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

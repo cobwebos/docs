@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 776f79d7f32cf23943ecab4133e055993d30c7cd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075058"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -89,7 +89,7 @@ Azure 逻辑应用将所有成功和不成功的操作作为执行进行计量�
 
 ## <a name="integration-accounts"></a>集成帐户
 
-使用定价适用于[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)可以在其中浏览、 开发和测试[B2B 和 EDI](logic-apps-enterprise-integration-b2b.md)并[XML 处理](logic-apps-enterprise-integration-xml.md)功能在 Azure 逻辑应用中的，无需额外付费。
+固定定价模型适用于[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)可以在其中浏览、 开发和测试[B2B 和 EDI](logic-apps-enterprise-integration-b2b.md)并[XML 处理](logic-apps-enterprise-integration-xml.md)无 Azure 逻辑应用中的功能需额外付费。
 您可以在每个 Azure 区域中有个集成帐户。 每个集成帐户最多可存储特定[数量的项目](../logic-apps/logic-apps-limits-and-config.md)，其中包含贸易合作伙伴、协议、映射、架构、程序集、证书、批处理配置等。
 
 Azure 逻辑应用提供了免费、 基本和标准集成帐户。 基本和标准层支持的逻辑应用的服务级别协议 (SLA)，而免费层不支持的 sla 保证，而有限制对吞吐量和使用情况。

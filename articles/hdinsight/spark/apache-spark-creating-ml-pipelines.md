@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: c539460177a0a85938b886d161803e1fdf0e9e68
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64730198"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>创建 Apache Spark 机器学习管道
 
-Apache Spark 的可缩放机器学习库 (MLlib) 向分布式环境引入了建模功能。 Spark 包 [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) 是一套基于数据帧的高级 API。 借助这些 API，可创建和调整实际的机器学习管道。  Spark 机器学习引用此基于 MLlib 数据帧的 API，而不是旧的基于 RDD 的管道 API。
+Apache Spark 的可缩放机器学习库 (MLlib) 向分布式环境引入了建模功能。 Spark 包 [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) 是一套基于数据帧的高级 API。 借助这些 API，可创建和调整实际的机器学习管道。  Spark 机器学习  引用此基于 MLlib 数据帧的 API，而不是旧的基于 RDD 的管道 API。
 
 机器学习 (ML) 管道是结合了多种机器学习算法的完整工作流。 处理和了解数据需要许多步骤，需要一系列算法。 管道定义机器学习过程的阶段和顺序。 在 MLlib 中，管道的阶段由特定的 PipelineStages 序列表示，其中转换器和估算器各自执行任务。
 
@@ -29,7 +29,7 @@ Apache Spark 的可缩放机器学习库 (MLlib) 向分布式环境引入了建�
 
 ## <a name="pipeline-example"></a>管道示例
 
-为了演示 ML 管道的实际用途，此示例使用预加载在 HDInsight 群集默认存储（Azure 存储或 Data Lake Storage）上的示例 `HVAC.csv` 数据文件。 若要查看文件的内容，导航到 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目录。 `HVAC.csv` 包含一组时间和各种建筑物中 HVAC（供暖、通风和空调）系统的目标温度和实际温度。 其目标是使用数据来训练模型，并生成给定建筑物的预测温度。
+为了演示 ML 管道的实际用途，此示例使用预加载在 HDInsight 群集默认存储（Azure 存储或 Data Lake Storage）上的示例 `HVAC.csv` 数据文件。 若要查看文件的内容，导航到 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目录。 `HVAC.csv` 包含一组时间和各种建筑物中 HVAC（供暖、通风和空调  ）系统的目标温度和实际温度。 其目标是使用数据来训练模型，并生成给定建筑物的预测温度。
 
 以下代码：
 

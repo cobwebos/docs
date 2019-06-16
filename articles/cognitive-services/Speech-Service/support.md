@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: fc03db268ab05c6718fb323bc30574a36d0ca092
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4099bc7bfce6de620504e03be3afc5392281d8d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138155"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072379"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
 你刚开始探索语音服务的功能？ 你是否正在为你的应用程序实现一项新功能？ 下面是一些提示，作为开发人员你可以从中获得帮助。
 
 > [!div class="checklist"]
-> * 随时获取 Azure 认知服务中新开发的最新消息或查找与语音服务相关的最新消息。
+> * 随时获取 Azure 认知服务中新开发的最新消息或查找与语音服务相关的最新消息   。
 > * 发行说明包含的所有发布的信息。
 > * 搜索以查看社区是否讨论你的问题，或者是否已存在有关要实现的功能的现有文档。
-> * 如果未找到满意答案，请在 Stack Overflow 上提问。
-> * 如果发现 GitHub 上的某个示例有问题，请提交 GitHub 问题。
-> * 在 UserVoice 论坛中搜索解决方案。
+> * 如果未找到满意答案，请在 Stack Overflow 上提问。 
+> * 如果发现 GitHub 上的某个示例有问题，请提交 GitHub 问题  。
+> * 在 UserVoice 论坛中搜索解决方案  。
 
 ## <a name="stay-informed"></a>随时获取最新信息
 
@@ -49,7 +49,7 @@ ms.locfileid: "65138155"
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples)
 ```
 
-其中，*{Your Search Terms}* 是搜索关键字。
+其中， *{Your Search Terms}* 是搜索关键字。
 
 ## <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 
@@ -80,12 +80,12 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 
-示例通常发布为开放源代码。 若有疑问和问题，请在相应的 GitHub 存储库中创建问题。 你也可以提交拉取请求。 下面的列表包含了示例存储库的链接：
+示例通常发布为开放源代码。 若有疑问和问题，请在相应的 GitHub 存储库中创建问题  。 你也可以提交拉取请求。 下面的列表包含了示例存储库的链接：
 
 * [语音 SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [设备 SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [语音设备 SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
-你可以创建一个 bug 报告、功能请求，或者提出一般问题并共享最佳做法。 对于 bug 报告，请遵循所提供的模板：
+可以创建一个 bug 报告，功能请求或提出的常规问题并共享最佳实践。 对于 bug 报告，请遵循所提供的模板：
 
 **描述 bug**
 

@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
 ms.openlocfilehash: 616e342f1d52179c40c225c5dafc9de13ce85e06
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65028210"
 ---
 # <a name="how-to-configure-azure-active-directory-access"></a>如何配置 Azure Active Directory 访问权限
@@ -47,7 +47,7 @@ Azure AD 提供基于云的标识管理，并允许您在整个企业和访问�
 
     ![添加角色分配](./media/configure-aad/add-role-assignment.png)
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
 ### <a name="grant-node-level-access"></a>授予节点级别的访问权限
 

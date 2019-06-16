@@ -11,10 +11,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 85a4aca0c4b80eaab1f43bcbec33dc9cf37aa655
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65950097"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>数据科学团队项目的组管理员应执行的任务
@@ -52,7 +52,7 @@ ms.locfileid: "65950097"
 ### <a name="pre-requisites-for-cloning-repositories-and-checking-code-in-and-out"></a>克隆存储库及签入和签出代码的先决条件
 
 - 计算机上必须安装有 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
-- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 此步骤会将你转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。
+- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”  部分，然后单击“最新安装程序”  。 此步骤会将你转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。
 - 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 Azure DevOps Services。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。
 
 
@@ -67,39 +67,39 @@ Azure DevOps Services 承载以下存储库：
 
 ### <a name="setting-up-the-azure-devops-services-sign-into-your-microsoft-account"></a>设置 Azure DevOps Services 并登录到 Microsoft 帐户
 
-转到 [Visual Studio Online](https://www.visualstudio.com/)，单击右上角的“登录”，然后登录到 Microsoft 帐户。
+转到 [Visual Studio Online](https://www.visualstudio.com/)，单击右上角的“登录”  ，然后登录到 Microsoft 帐户。
 
 ![第](./media/group-manager-tasks/login.PNG)
 
-如果没有 Microsoft 帐户，请单击“立即注册”创建一个 Microsoft 帐户，然后使用此帐户登录。
+如果没有 Microsoft 帐户，请单击“立即注册”  创建一个 Microsoft 帐户，然后使用此帐户登录。
 
-如果你的组织有 Visual Studio/MSDN 订阅，请单击绿色的“使用你的工作或学校帐户登录”框，并使用与此订阅关联的凭据登录。
+如果你的组织有 Visual Studio/MSDN 订阅，请单击绿色的“使用你的工作或学校帐户登录”  框，并使用与此订阅关联的凭据登录。
 
 ![2](./media/group-manager-tasks/signin.PNG)
 
 
 
-登录后，按下图所示单击右上角的“创建新帐户”：
+登录后，按下图所示单击右上角的“创建新帐户”  ：
 
 ![3](./media/group-manager-tasks/create-account-1.PNG)
 
-在“创建帐户”向导中使用以下值填写想要创建的 Azure DevOps Services 的信息：
+在“创建帐户”  向导中使用以下值填写想要创建的 Azure DevOps Services 的信息：
 
 - **服务器 URL**：将 *mysamplegroup* 替换为你自己的*服务器名称*。 服务器 URL 应为：*https://\<servername\>.visualstudio.com*。
-- **使用以下方式管理代码:** 选择“Git”。
+- **使用以下方式管理代码:** 选择“Git”。  
 - **项目名称:** 输入 *GroupCommon*。
-- **使用以下项组织工作:** 选择“Agile”。
+- **使用以下项组织工作:** 选择“Agile”。 
 - **将你的项目托管在:** 选择一个地理位置。 在此示例中，我们选择*美国中南部*。
 
 ![4](./media/group-manager-tasks/fill-in-account-information.png)
 
 > [!NOTE] 
-> 如果在单击“创建新帐户”后看到以下弹出窗口，则需要单击“更改详细信息”以显示逐项列出的所有字段。
+> 如果在单击“创建新帐户”  后看到以下弹出窗口，则需要单击“更改详细信息”  以显示逐项列出的所有字段。
 
 ![5](./media/group-manager-tasks/create-account-2.png)
 
 
-单击 **“继续”**。
+单击 **“继续”** 。
 
 ## <a name="2-groupcommon-project"></a>2.GroupCommon 项目
 
@@ -111,15 +111,15 @@ Azure DevOps Services 承载以下存储库：
 
 若要在 Azure DevOps Services 下创建 **GroupUtilities** (R2) 存储库，请执行以下操作：
 
-- 若要打开“创建新的存储库”向导，请在项目的“版本控制”选项卡上单击“新建存储库”。
+- 若要打开“创建新的存储库”  向导，请在项目的“版本控制”  选项卡上单击“新建存储库”  。
 
   ![7](./media/group-manager-tasks/create-grouputilities-repo-1.png)
 
-- 选择“Git”作为“类型”，并输入“GroupUtilities”作为“名称”，然后单击“创建”。
+- 选择“Git”  作为“类型”  ，并输入“GroupUtilities”  作为“名称”  ，然后单击“创建”  。
 
   ![8](./media/group-manager-tasks/create-grouputilities-repo-2.png)
 
-现在，在“版本控制”页的左侧列中会看到两个 Git 存储库 **GroupProjectTemplate** 和 **GroupUtilities**：
+现在，在“版本控制”  页的左侧列中会看到两个 Git 存储库 **GroupProjectTemplate** 和 **GroupUtilities**：
 
 ![9](./media/group-manager-tasks/two-repo-under-groupCommon.PNG)
 
@@ -137,20 +137,20 @@ Azure DevOps 组服务器的存储库安装包括两个任务：
 
 要将默认 **GroupCommon** 存储库重命名为 *GroupProjectTemplate*（在本教程中称为 **R1**）：
 
-- 单击 **GroupCommon** 项目页上的“协作代码”。 这会将你转到项目 **GroupCommon** 的默认 Git 存储库页。 目前，此 Git 存储库为空。
+- 单击 **GroupCommon** 项目页上的“协作代码”  。 这会将你转到项目 **GroupCommon** 的默认 Git 存储库页。 目前，此 Git 存储库为空。
 
   ![10](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
 
-- 单击 **GroupCommon** 的 Git 存储库页左上角的“GroupCommon”（在下图中用红色方框突出显示），然后选择“管理存储库”（在下图中用绿色方框突出显示）。 此过程将打开“控制面板”。
-- 选择项目的“版本控制”选项卡。
+- 单击 **GroupCommon** 的 Git 存储库页左上角的“GroupCommon”  （在下图中用红色方框突出显示），然后选择“管理存储库”  （在下图中用绿色方框突出显示）。 此过程将打开“控制面板”  。
+- 选择项目的“版本控制”  选项卡。
 
   ![11](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
 
-- 单击左侧面板上 **GroupCommon** 存储库右侧的“...”，然后选择“重命名存储库”。
+- 单击左侧面板上 **GroupCommon** 存储库右侧的“...”  ，然后选择“重命名存储库”  。
 
   ![12](./media/group-manager-tasks/rename-groupcommon-repo-5.png)
 
-- 在弹出的“重命名 GroupCommon 存储库”向导中，在“存储库名称”框中输入 *GroupProjectTemplate*，然后单击“重命名”。
+- 在弹出的“重命名 GroupCommon 存储库”  向导中，在“存储库名称”  框中输入 *GroupProjectTemplate*，然后单击“重命名”  。
 
   ![13](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
@@ -197,8 +197,8 @@ Azure DevOps 组服务器的存储库安装包括两个任务：
 在此步骤中，将在 DSVM 上 **GitRepos\GroupCommon** 下的本地目录（分别称为 LR1 和 LR2）中克隆 GroupProjectTemplate 存储库 (R1) 和 GroupUtilities 存储库 (R2)。
 
 - 若要获取 R1 和 R2 存储库的 URL，请转至 Azure DevOps Services 上的 **GroupCommon** 主页。 这通常具有 URL *https://\<你的 Azure DevOps Services 名称\>.visualstudio.com/GroupCommon*。
-- 单击“代码”。
-- 选择“GroupProjectTemplate”和“GroupUtilities”存储库。 复制并保存“克隆URL”元素中的每个 URL（Windows 为 HTTPS；Linux 为 SSH），依次用于以下脚本：
+- 单击“代码”  。
+- 选择“GroupProjectTemplate”  和“GroupUtilities”  存储库。 复制并保存“克隆URL”  元素中的每个 URL（Windows 为 HTTPS；Linux 为 SSH），依次用于以下脚本：
 
   ![15](./media/group-manager-tasks/find_https_ssh_2.PNG)
 
@@ -308,7 +308,7 @@ Azure DevOps 组服务器的存储库安装包括两个任务：
 
 ## <a name="6-add-group-members-to-the-group-server"></a>6.将组成员添加到组服务器
 
-在组 Azure DevOps Services 的主页上，单击右上角用户名旁边的**齿轮图标**，然后选择“安全性”选项卡。可以通过各种权限将成员添加到组。
+在组 Azure DevOps Services 的主页上，单击右上角用户名旁边的**齿轮图标**，然后选择“安全性”  选项卡。可以通过各种权限将成员添加到组。
 
 ![24](./media/group-manager-tasks/add_member_to_group.PNG)
 

@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
 ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001756"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
@@ -251,10 +251,10 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 筛选器包括：
 
-| 筛选器名称 | 筛选类型 | 说明 | 必需 |
+| 筛选器名称 | 筛选器类型 | 说明 | 是否必需 |
 |-------------|-------------|-------|-------------|
-| blobTypes   | 预定义枚举值的数组。 | 当前版本支持`blockBlob`。 | “是” |
-| prefixMatch | 要匹配的前缀字符串数组。 每个规则可以定义最多 10 个前缀。 前缀字符串必须以容器名称开头。 例如，如果您希望匹配下的所有 blob`https://myaccount.blob.core.windows.net/container1/foo/...`的规则是 prefixMatch `container1/foo`。 | 如果未定义 prefixMatch，规则将适用于存储帐户中的所有 blob。  | “否” |
+| blobTypes   | 预定义枚举值的数组。 | 当前版本支持`blockBlob`。 | 是 |
+| prefixMatch | 要匹配的前缀字符串数组。 每个规则可以定义最多 10 个前缀。 前缀字符串必须以容器名称开头。 例如，如果您希望匹配下的所有 blob`https://myaccount.blob.core.windows.net/container1/foo/...`的规则是 prefixMatch `container1/foo`。 | 如果未定义 prefixMatch，规则将适用于存储帐户中的所有 blob。  | 否 |
 
 ### <a name="rule-actions"></a>规则操作
 

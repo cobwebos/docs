@@ -13,16 +13,33 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: f929369030b6f0a634eb2c84e33eee24af8cb6a2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ee3aeb9f44d1b98d6307c6a72d1e4786ea1ec664
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787513"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076900"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure 虚拟机上的 SQL Server 发行说明
 
 Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总了 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 的最新版本中的新功能和改进。 本文还列出了不与此版本直接相关但在同一时间范围内发布的值得注意的内容更新。 有关对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)
+
+## <a name="may-2019"></a>2019 年 5 月
+
+### <a name="service-improvements"></a>服务改进
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+| **在 Azure 门户中的新 SQL VM 管理** | 现在是管理 SQL Server VM 在 Azure 门户中的新方法。 有关详细信息，请参阅[在 Azure 门户中管理 SQL Server VM](virtual-machines-windows-sql-manage-portal.md)。  | 
+| &nbsp; | &nbsp; |
+
+### <a name="documentation-improvements"></a>文档改进
+
+| 文档 | 详细信息 |
+| --- | --- |
+| **新 SQL VM 门户管理** | 大约十几个文章已更新到新的 SQL VM 管理门户体验。 | 
+| &nbsp; | &nbsp; |
+
 
 ## <a name="april-2019"></a>2019 年 4 月
 
@@ -33,9 +50,6 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 | **扩展支持的 SQL Server 2008/2008R2** | [扩展支持](virtual-machines-windows-sql-server-2008-eos-extend-support.md)对于 SQL Server 2008 和 SQL Server 2008 R2 迁移*作为-是*到 Azure VM。 | 
 | &nbsp; | &nbsp; |
 
-### <a name="documentation-improvements"></a>文档改进
-
-无
 
 ## <a name="march-2019"></a>2019 年 3 月
 
@@ -60,7 +74,7 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-| **新的 SQL 群集组资源提供程序** | 新增了一个资源提供程序 (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups)，用于定义 Windows 故障转移群集的元数据。 将 SQL Server VM 加入到 SqlVirtualMachineGroups，会启动 Windows 故障转移群集服务，并将该 VM 加入到群集。  |
+| **新的 SQL 群集组资源提供程序** | 新增了一个资源提供程序 (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups)，用于定义 Windows 故障转移群集的元数据。 将 SQL Server VM 加入到 SqlVirtualMachineGroups  ，会启动 Windows 故障转移群集服务，并将该 VM 加入到群集。  |
 |**使用 Azure 快速入门模板自动设置可用性组部署** |现在，可以使用两个 Azure 快速入门模板创建 Windows 故障转移群集、将 SQL Server VM 加入到该群集、创建侦听器并配置内部负载均衡器。 有关详细信息，请参阅[使用 Azure 快速入门模板为 Azure VM 上的 SQL Server 中配置 Always On 可用性组](virtual-machines-windows-sql-availability-group-quickstart-template.md)。 | 
 | **SQL VM 资源提供程序的自动注册** | 在本月之后部署的 SQL Server VM 会自动注册到新的 SQL Server 资源提供程序。 在本月之前部署的 SQL Server VM 仍然需要手动注册。 有关详细信息，请参阅[使用 SQL VM 资源提供程序注册现有的 SQL VM](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)。|
 | &nbsp; | &nbsp; |

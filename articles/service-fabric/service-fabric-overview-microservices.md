@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/25/2019
 ms.author: atsenthi
 ms.openlocfilehash: feb82d2abb756d636aeb77042cc817b7b05f6b0c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233654"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>为什么通过微服务的方法构建应用程序？
@@ -168,7 +168,7 @@ Service Fabric 允许重用现有代码，可以通过新的微服务对现有�
 
 ![迁移到微服务][Image3]
 
-有必要再次强调，可以在其中任一阶段启动和停止。 并不强求继续执行到下一阶段。 现在，让我们来看看每个阶段的示例。
+有必要再次强调，可以在其中任一阶段启动和停止  。 并不强求继续执行到下一阶段。 现在，让我们来看看每个阶段的示例。
 
 **直接迁移**  
 许多公司都出于两个原因，将现有单一式应用程序直接迁移到容器中：

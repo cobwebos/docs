@@ -8,42 +8,43 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6eeca062bdc17ec207910b9ba4aa8cea4048f849
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61451289"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080508"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 孪生部署到现有项目
 
-OPC 孪生模块在 IoT Edge 上运行，并提供多个边缘服务到 OPC 孪生和注册表服务。 
+OPC 孪生模块在 IoT Edge 上运行，并提供多个边缘服务到 OPC 孪生和注册表服务。
 
 OPC 孪生微服务促进工厂运算符和 OPC 孪生 IoT Edge 模块通过在工厂车间的 OPC UA 服务器设备之间通信。 微服务公开通过其 REST API 的 OPC UA 服务 （浏览、 读取、 写入和执行）。 
 
 OPC UA 设备注册表微服务提供对已注册的 OPC UA 应用程序和其终结点的访问。 操作员和管理员可以注册和取消注册新的 OPC UA 应用程序和浏览现有的包括其终结点。 除了应用程序和终结点管理，注册表服务还编录已注册的 OPC 孪生 IoT Edge 模块。 服务 API 将帮助您控制的边缘模块功能，例如，启动或停止服务器发现 （扫描服务），或激活可使用 OPC 孪生微服务访问的新终结点孪生。
 
-模块的核心是监督程序标识。 监督程序管理终结点孪生，对应于使用相应的 OPC UA 注册表 API 激活的 OPC UA 服务器终结点。 此终结点孪生转换来自 OPC 孪生微服务在云中运行到 OPC UA 二进制消息，通过有状态安全通道发送到托管终结点的 OPC UA JSON。 监督程序还提供了设备发现事件发送到 OPC UA 设备载入服务进行处理，在更新到 OPC UA 注册表导致这些事件的发现服务。  本文介绍如何将 OPC 孪生模块部署到现有项目。 
+模块的核心是监督程序标识。 监督程序管理终结点孪生，对应于使用相应的 OPC UA 注册表 API 激活的 OPC UA 服务器终结点。 此终结点孪生转换来自 OPC 孪生微服务在云中运行到 OPC UA 二进制消息，通过有状态安全通道发送到托管终结点的 OPC UA JSON。 监督程序还提供了设备发现事件发送到 OPC UA 设备载入服务进行处理，在更新到 OPC UA 注册表导致这些事件的发现服务。  本文介绍如何将 OPC 孪生模块部署到现有项目。
 
 > [!NOTE]
 > 部署详细信息和说明的详细信息，请参阅 GitHub[存储库](https://github.com/Azure/azure-iiot-opc-twin-module)。
 
 ## <a name="prerequisites"></a>必备组件
 
-请确保有 PowerShell 并[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)安装扩展。   如果你不执行此操作，克隆此 GitHub 存储库。  打开命令提示符或终端并运行：
+请确保有 PowerShell 并[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)安装扩展。 如果你已经不这样做，克隆此 GitHub 存储库。 在 PowerShell 中运行以下命令：
 
-```bash
-git clone --recursive https://github.com/Azure/azure-iiot-components 
+```powershell
+git clone --recursive https://github.com/Azure/azure-iiot-components.git
 cd azure-iiot-components
 ```
 
 ## <a name="deploy-industrial-iot-services-to-azure"></a>将工业 IoT 服务部署到 Azure
 
-1. 打开命令提示符或终端中运行：
+1. 在 PowerShell 会话中，运行：
 
-   ```bash
-   deploy
-   ```
+    ```powershell
+    set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
+    .\deploy.cmd
+    ```
 
 2. 按照提示将对部署的资源组的名称和一个名称分配给网站。   该脚本部署微服务和到 Azure 订阅中的资源组及其 Azure 平台依赖项。  该脚本还会以支持基于 OAUTH 的身份验证在 Azure Active Directory (AAD) 租户中注册应用程序。  部署将需要几分钟的时间。  已成功部署解决方案后将看到的示例：
 
@@ -77,11 +78,12 @@ cd azure-iiot-components
 
 而不是只是服务和依赖项也可以部署-一体演示。  一个演示中的所有包含三个 OPC UA 服务器、 OPC 孪生模块、 所有微服务和 Web 应用程序的示例。  它被用于演示目的。
 
-1. 请确保你拥有的存储库 （见上文） 克隆。 打开命令提示符或终端运行的存储库的根目录中：
+1. 请确保你拥有的存储库 （见上文） 克隆。 打开 PowerShell 提示符下运行的存储库的根目录中：
 
-   ```bash
-   deploy -type demo
-   ```
+    ```powershell
+    set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
+    .\deploy -type demo
+    ```
 
 2. 按照提示操作以将新的名称分配给资源组和将名称传递给该网站。  一旦成功部署，脚本将显示 web 应用程序终结点的 URL。
 
@@ -89,49 +91,49 @@ cd azure-iiot-components
 
 该脚本采用以下参数：
 
-```bash
+```powershell
 -type
 ```
 
 类型的部署 （虚拟机，本地，演示）
 
-```bash
+```powershell
 -resourceGroupName
 ```
 
 可以是一个现有或新的资源组的名称。
 
-```bash
+```powershell
 -subscriptionId
 ```
 
 也可选择将在其中部署资源的订阅 ID。
 
-```bash
+```powershell
 -subscriptionName
 ```
 
 或订阅名称。
 
-```bash
+```powershell
 -resourceGroupLocation
 ```
 
 选择资源组位置。 如果指定，将尝试在此位置创建新的资源组。
 
-```bash
+```powershell
 -aadApplicationName
 ```
 
-若要注册 AAD 应用程序的名称。 
+若要注册 AAD 应用程序的名称。
 
-```bash
+```powershell
 -tenantId
 ```
 
 若要使用的 AAD 租户。
 
-```bash
+```powershell
 -credentials
 ```
 

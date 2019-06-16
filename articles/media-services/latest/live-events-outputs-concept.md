@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/12/2019
 ms.author: juliako
-ms.openlocfilehash: f04ae727957d988e75ea0984d0005a6a140ca63f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.openlocfilehash: 49ab52f031e24ac77a534c86061fe831bbec39ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66732985"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67114674"
 ---
 # <a name="live-events-and-live-outputs"></a>实时事件和实时输出
 
@@ -54,14 +54,14 @@ ms.locfileid: "66732985"
 
 ![实时编码](./media/live-streaming/live-encoding.svg)
 
-将实时编码与媒体服务配合使用时，需配置本地实时编码器，以便将单比特率视频作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 实时事件会将该传入的单比特率流编码为[多比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，使其可通过 MPEG-DASH、HLS 和平滑流式处理等协议传送到播放设备。 创建此类实时事件时，请将编码类型指定为“标准”(LiveEventEncodingType.Standard)  。
+将实时编码与媒体服务配合使用时，需配置本地实时编码器，以便将单比特率视频作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 然后，您设置实时事件，以便将编码该传入的单比特率流式传输到[多个比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，并使输出可供交付来播放设备通过协议，如 MPEG DASH、 HLS 和平滑流式处理。
 
-发送的贡献源的最高分辨率可为 1080p，帧速率可为 30 帧/秒，采用 H.264/AVC 视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。 有关详细信息，请参阅[实时事件类型比较](live-event-types-comparison.md)一文。
+如果你使用实时编码，可以发送贡献源仅在解决方法，到 30 帧的/第二，替换 H.264/AVC 视频编解码器和 AAC 帧速率在分辨率为 1080p （AAC LC、 HE-AACv1 或 He-aacv2） 音频编解码器。 请注意传递实时事件，可以支持分辨率不超过 4 K 在 60 帧/秒。 有关详细信息，请参阅[实时事件类型比较](live-event-types-comparison.md)一文。
 
-使用实时编码（实时事件设置为**标准**）时，编码预设定义了如何将传入的流编码为多个比特率或图层。 有关信息，请参阅[系统预设](live-event-types-comparison.md#system-presets)。
+分辨率和比特率从实时编码器输出中包含由预设确定。 如果使用**标准**实时编码器 (LiveEventEncodingType.Standard)，则*Default720p*预设指定一组 6 解析/位率对，将从在到 200 kbps 192 p 3.5Mbps 720p。 否则为如果使用**Premium1080p**实时编码器 (LiveEventEncodingType.Premium1080p)，则*Default1080p*预设指定一组 6 解析/位率对，将从在 3.5Mbps 1080p到 200 kbps 的 180 p。 有关信息，请参阅[系统预设](live-event-types-comparison.md#system-presets)。
 
 > [!NOTE]
-> 当前，实时事件的标准类型唯一允许的预设值为 *Default720p*。 如果你需要使用自定义的实时编码预设，请联系 amshelp@microsoft.com。 你应当指定所需的分辨率和比特率的表。 请确认只有一个 720p 的图层，最多有 6 个图层。
+> 如果需要自定义实时编码预设，请打开支持票证，通过 Azure 门户。 你应当指定所需的分辨率和比特率的表。 不要验证只有一个图层在 （如果请求的标准的实时编码器的预设值） 720p 或 1080p （如果请求 Premium1080p 实时编码器的预设值），并最多 6 层。
 
 ## <a name="live-event-creation-options"></a>实时事件创建选项
 
@@ -93,6 +93,14 @@ ms.locfileid: "66732985"
 
     访问令牌需要在数据中心保持唯一。 如果你的应用程序需要使用虚构的 URL，建议始终创建访问令牌 （而不是重复使用现有的任何 GUID） 的新 GUID 实例。 
 
+    使用以下 Api 来启用虚 URL 和访问令牌设置为有效的 GUID (例如`"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`):
+    
+    |语言|启用虚 URL|设置访问令牌|
+    |---|---|---|
+    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |CLI|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    
 ### <a name="live-ingest-url-naming-rules"></a>实时引入 URL 命名规则
 
 下面的随机  字符串是一个 128 位的十六进制数字（由 32 个 0-9 a-f 字符组成）。<br/>

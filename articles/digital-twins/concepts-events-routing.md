@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: b7ace0718ea0fad0b746a40c90acff487ae314d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7dfda00aca403f7f95f0c56d1db28c3c609bebd2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926240"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080664"
 ---
 # <a name="routing-events-and-messages"></a>路由事件和消息
 
@@ -21,7 +21,7 @@ IoT 解决方案通常将多种强大的服务（包括存储和分析等）结�
 
 ## <a name="route-types"></a>路由类型  
 
-Azure 数字孪生提供两种方法用于将 IoT 事件集成到其他 Azure 服务或商业应用程序：
+Azure 的数字孪生提供两种方法来将 IoT 事件连接与其他 Azure 服务或业务应用程序：
 
 * **路由 Azure 数字孪生事件**：当空间图中的对象发生更改、收到遥测数据或用户定义的函数根据预定义的条件创建通知时，可以触发 Azure 数字孪生事件。 用户可以将这些事件发送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)、[Azure 服务总线主题](https://azure.microsoft.com/services/service-bus/)或 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)以进一步进行处理。
 
@@ -35,13 +35,13 @@ Azure 数字孪生提供两种方法用于将 IoT 事件集成到其他 Azure �
 
 ## <a name="route-implementation"></a>路由实现
 
-Azure 数字孪生服务当前支持以下 EndpointTypes：
+Azure 数字孪生服务当前支持以下 EndpointTypes  ：
 
 * **EventHub** 是事件中心连接字符串终结点。
 * **ServiceBus** 是服务总线连接字符串终结点。
 * **EventGrid** 是事件网格连接字符串终结点。
 
-Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes：
+Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes  ：
 
 * **DeviceMessages** 是从用户的设备发送并由系统转发的遥测消息。
 * **TopologyOperation** 是更改图或图的元数据的操作。 例如，添加或删除实体（如空间）。
@@ -50,7 +50,7 @@ Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes：
 * **UdfCustom** 是来自用户定义的函数的自定义通知。
 
 > [!IMPORTANT]  
-> 不是所有 EndpointTypes 都支持所有 EventTypes。
+> 不是所有 EndpointTypes 都支持所有 EventTypes   。
 > 请参阅下表了解每个 **EndpointType** 允许的 **EventTypes**。
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |

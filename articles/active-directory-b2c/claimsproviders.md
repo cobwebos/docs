@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 8d2570af6abb34a87ac4c69dd63408c8ec2e8005
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511526"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
@@ -55,7 +55,7 @@ ClaimsProvider  元素包含以下子元素：
 | DisplayName | 0:1 | 一个字符串，其中包含可以向用户显示的声明提供程序的名称。 |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | 声明提供程序支持的一组技术配置文件 |
 
-**ClaimsProvider**组织技术配置文件如何与声明提供程序相关联。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：
+**ClaimsProvider** 可组织技术配置文件与声明提供程序的关联方式。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：
 
 ```XML
 <ClaimsProvider>

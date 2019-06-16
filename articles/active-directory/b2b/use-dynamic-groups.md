@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f3cbdfa590583da59a5083f52595d54cc7f4f86
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b4e3f64cb6aefb35c3f85bafc2bb408f998626d9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65767218"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112822"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>动态组和 Azure Active Directory B2B 协作
 
@@ -26,13 +26,13 @@ Azure Active Directory (Azure AD) 的安全组成员身份动态配置在 [Azure
 创建和使用动态组需要相应的 [Azure AD Premium P1 或 P2 授权](https://azure.microsoft.com/pricing/details/active-directory/)。 有关详细信息，请参阅[在 Azure Active Directory 中为动态组成员身份创建基于属性的规则](../users-groups-roles/groups-dynamic-membership.md)一文。
 
 ## <a name="what-are-the-built-in-dynamic-groups"></a>什么是内置动态组？
-“所有用户”动态组使租户管理员只需一次单击即可创建包含租户中所有用户的组。 默认情况下，“所有用户”组包含目录中的所有用户，其中包括成员和来宾。
-在新的 Azure Active Directory 管理门户中，可以在“组设置”视图中选择启用“所有用户”组。
+“所有用户”  动态组使租户管理员只需一次单击即可创建包含租户中所有用户的组。 默认情况下，“所有用户”  组包含目录中的所有用户，其中包括成员和来宾。
+在新的 Azure Active Directory 管理门户中，可以在“组设置”视图中选择启用“所有用户”  组。
 
 ![显示将“启用‘所有用户’组”设置为“是”](media/use-dynamic-groups/enable-all-users-group.png)
 
 ## <a name="hardening-the-all-users-dynamic-group"></a>强化“所有用户”动态组
-默认情况下，“所有用户”组也包含 B2B 协作（来宾）用户。 可以使用规则删除来宾用户，进一步保护“所有用户”组。 下图显示修改后不包括来宾的“所有用户”组。
+默认情况下，“所有用户”  组也包含 B2B 协作（来宾）用户。 可以使用规则删除来宾用户，进一步保护“所有用户”  组。 下图显示修改后不包括来宾的“所有用户”  组。
 
 ![显示用户类型不等于“来宾”的规则](media/use-dynamic-groups/exclude-guest-users.png)
 
@@ -45,5 +45,5 @@ Azure Active Directory (Azure AD) 的安全组成员身份动态配置在 [Azure
 
 - [B2B 协作用户属性](user-properties.md)
 - [将 B2B 协作用户添加到角色](add-guest-to-role.md)
-- [B2B 协作用户的条件访问](conditional-access.md)
+- [B2B 协作用户的条件性访问](conditional-access.md)
 

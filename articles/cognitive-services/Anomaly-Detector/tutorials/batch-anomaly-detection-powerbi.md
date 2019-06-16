@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/30/2019
 ms.author: aahi
 ms.openlocfilehash: de353c946da46b2bbe4e755e21e355f6bd18725b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827137"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：可视化使用批处理检测和 Power BI 的异常
@@ -131,7 +131,7 @@ Power BI 会将转换到的第一列中的时间戳`Date/Time`数据类型。 �
 
 ![显示指定访问凭据的请求的图像](../media/tutorials/edit-credentials-message.png)
 
-若要解决此问题，请单击**编辑凭据**消息中。 对话框的显示后，请选择**Anonymous**以匿名方式连接到 API。 然后单击“连接”。 
+若要解决此问题，请单击**编辑凭据**消息中。 对话框的显示后，请选择**Anonymous**以匿名方式连接到 API。 然后单击“连接”  。 
 
 然后，单击**关闭并应用**中**主页**功能区应用所做的更改。
 

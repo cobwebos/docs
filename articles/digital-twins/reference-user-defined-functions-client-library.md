@@ -6,15 +6,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 06/06/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: d309765e6c4b0b0cc8a7e92977134d4135a69a13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be05cec8e3d755f1b04e5ecc5ec7c740053a74d4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60535577"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073038"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>用户定义函数客户端库参考
 
@@ -221,7 +221,7 @@ ms.locfileid: "60535577"
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
-| *值*  | `string` | Value |
+| *值*  | `string` | 值 |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
@@ -233,7 +233,7 @@ ms.locfileid: "60535577"
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *dataType* | `string` | 数据类型 |
-| *值* | `string` | Value |
+| *值* | `string` | 值 |
 
 ### <a name="logmessage"></a>log(message)
 
@@ -243,7 +243,7 @@ ms.locfileid: "60535577"
 
 | 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
-| *message* | `string` | 要记录的消息 |
+| message  | `string` | 要记录的消息 |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
 
@@ -420,7 +420,7 @@ ms.locfileid: "60535577"
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
-### <a name="value"></a>Value
+### <a name="value"></a>值
 
 ```JSON
 {

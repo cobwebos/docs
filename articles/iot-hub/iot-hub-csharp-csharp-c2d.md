@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
 ms.openlocfilehash: 0d83bdc3fd3f644013a2d2b80128839658524db9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864445"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到设备
@@ -32,11 +32,11 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * 在设备上接收云到设备的消息。
 
-* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈）。
+* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈  ）。
 
 可以在 [IoT 中心的 D2C 和 C2D 消息传送](iot-hub-devguide-messaging.md)中找到有关“云到设备”消息的详细信息。
 
-在本教程结束时，会运行两个.NET 控制台应用。
+在本教程结束时，会运行 2 个 .NET 控制台应用。
 
 * **SimulatedDevice**（[从设备将遥测数据发送到 IoT 中心...](quickstart-send-telemetry-dotnet.md) 中创建的应用的修改版本），它连接到 IoT 中心并接收云到设备的消息。
 
@@ -79,7 +79,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
    在设备收到消息时，`ReceiveAsync` 方法以异步方式返回收到的消息。 它在可指定的超时期限过后返回 *null*（在本例中，使用的是默认值一分钟）。 当应用收到 *null* 时，它应继续等待新消息。 此要求是使用 `if (receivedMessage == null) continue` 行的原因。
 
-    对 `CompleteAsync()` 的调用通知 IoT 中心，指出已成功处理消息。 可以安全地从设备队列中删除该消息。 如果因故导致设备应用无法完成消息处理操作，IoT 中心将重新传送该消息。 因此设备应用中的消息处理逻辑必须是幂等的，以便多次接收同一消息会生成相同的结果。 
+    对 `CompleteAsync()` 的调用通知 IoT 中心，指出已成功处理消息。 可以安全地从设备队列中删除该消息。 如果因故导致设备应用无法完成消息处理操作，IoT 中心将重新传送该消息。 因此设备应用中的消息处理逻辑必须是幂等的  ，以便多次接收同一消息会生成相同的结果。 
 
     应用程序也可以暂时放弃消息，让 IoT 中心将消息保留在队列中以供将来使用。 或者，应用程序可以拒绝消息，以永久性从队列中删除该消息。 有关云到设备消息生命周期的详细信息，请参阅 [IoT 中心的 D2C 和 C2D 消息传送](iot-hub-devguide-messaging.md)。
 
@@ -95,33 +95,33 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-首先，从门户中检索的 IoT 中心连接字符串。
+首先，从门户检索 IoT 中心连接字符串。
 
-1. 登录到[Azure 门户](https://portal.azure.com)，选择**资源组**。
+1. 登录到 [Azure 门户](https://portal.azure.com)，选择“资源组”  。
 
-2. 选择将用于本操作说明的资源组。
+2. 选择将要用于本操作说明的资源组。
 
-3. 选择正在使用的 IoT 中心。
+3. 选择要使用的 IoT 中心。
 
-4. 在中心窗格中，选择**共享访问策略**。
+4. 在中心的窗格中，选择“共享访问策略”  。
 
-5. 选择“iothubowner”。 它显示在连接字符串**iothubowner**面板。 选择复制图标**连接字符串-主键**。 保存连接字符串供以后使用。
+5. 选择“iothubowner”。  它会在 **iothubowner** 面板上显示连接字符串。 选择“连接字符串 - 主密钥”的复制图标  。 保存连接字符串供以后使用。
 
    ![获取 IoT 中心连接字符串](./media/iot-hub-csharp-csharp-c2d/get-iot-hub-connection-string.png)
 
 ## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
 
-现在，您编写一个.NET 控制台应用，向设备应用发送云到设备的消息。
+现在，请编写 .NET 控制台应用，以向设备应用发送云到设备消息。
 
-1. 在当前的 Visual Studio 解决方案中，右键单击解决方案并选择添加 > 新项目。 选择**Windows 桌面**，然后**控制台应用 (.NET Framework)**。 将项目命名**SendCloudToDevice**并选择最新版本的.NET Framework 中，然后选择**确定**创建项目。
+1. 在当前的 Visual Studio 解决方案中，右键单击解决方案，然后选择“添加”>“新建项目”。 选择“Windows 桌面”，然后选择“控制台应用(.NET Framework)”。   将项目命名为 **SendCloudToDevice**，选择最新版本的 .NET Framework，然后选择“确定”以创建项目。 
 
    ![Visual Studio 中的新项目](./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png)
 
-2. 在“解决方案资源管理器”中，右键单击该解决方案，并单击“为解决方案管理 NuGet 包...” 。
+2. 在“解决方案资源管理器”中，右键单击该解决方案，并单击“为解决方案管理 NuGet 包...”  。
 
-   此操作将打开“管理 NuGet 包”窗口。
+   此操作将打开“管理 NuGet 包”  窗口。
 
-3. 搜索**Microsoft.Azure.Devices**，选择浏览选项卡。找到包，请单击**安装**，并接受使用条款。
+3. 搜索 **Microsoft.Azure.Devices**，然后选择“浏览”选项卡。找到包以后，请单击“安装”并接受使用条款。 
 
    这会下载、安装 [Azure IoT 服务 SDK NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Devices/)并添加对它的引用。
 
@@ -131,14 +131,14 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    using Microsoft.Azure.Devices;
    ```
 
-5. 将以下字段添加到 Program 类。 在本部分中以前保存的 IoT 中心连接字符串占位符值替换。 
+5. 将以下字段添加到 Program 类  。 将占位符值替换为以前在此部分保存的 IoT 中心连接字符串。 
 
    ``` csharp
    static ServiceClient serviceClient;
    static string connectionString = "{iot hub connection string}";
    ```
 
-6. 将以下方法添加到 **Program** 类。 将设备名称设置为定义中的设备时使用的什么[向 IoT 中心从设备发送遥测数据...](quickstart-send-telemetry-dotnet.md).
+6. 将以下方法添加到 **Program** 类。 将设备名称设置为在[将遥测数据从设备发送到 IoT 中心...](quickstart-send-telemetry-dotnet.md)中定义设备时使用的名称。
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
@@ -163,7 +163,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    Console.ReadLine();
    ```
 
-8. 在 Visual Studio 中，右键单击解决方案并选择“**设置启动项目...**”。选择“多个启动项目”，并同时针对 **ReadDeviceToCloudMessages**、**SimulatedDevice** 和 **SendCloudToDevice** 选择“启动”操作。
+8. 在 Visual Studio 中，右键单击解决方案并选择“**设置启动项目...** ”。选择“多个启动项目”  ，  并同时针对 **ReadDeviceToCloudMessages**、**SimulatedDevice** 和 **SendCloudToDevice** 选择“启动”操作。
 
 9. 按 **F5**。 这三个应用程序应该都会启动。 选择“**SendCloudToDevice**”窗口并按 **Enter**。 应会看到设备应用正在接收的消息。
 

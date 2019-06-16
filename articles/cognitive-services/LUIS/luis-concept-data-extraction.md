@@ -1,7 +1,7 @@
 ---
 title: 数据提取
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 从与意图和实体的查询文本文本中提取数据。 了解可以提取的数据类型从语言理解 (LUIS)。
+description: 从包含意向和实体的话语文本中提取数据。 了解可以从语言理解智能服务 (LUIS) 中提取什么类型的数据。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65150682"
 ---
-# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从与意图和实体的查询文本文本中提取数据
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
 
 最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所需的数据。
@@ -75,7 +75,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 意向按评分从高到低排序。
 
-|数据对象|数据类型|数据位置|值|Score|
+|数据对象|数据类型|数据位置|值|分数|
 |--|--|--|--|:--|
 |意向|String|intents[0].intent|"GetStoreInfo"|0.984749258|
 |意向|String|intents[1].intent|"None"|0.0168218873|
@@ -106,7 +106,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-|域|数据对象|数据类型|数据位置|值|
+|Domain|数据对象|数据类型|数据位置|值|
 |--|--|--|--|--|
 |实用程序|意向|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
 |通信|意向|String|intents[1].intent|<b>Communication</b>.StartOver"|
@@ -231,7 +231,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 |数据对象|实体名称|值|
 |--|--|--|
 |预构建实体 - 数量|"builtin.number"|"2"|
-|Prebuilt Entity - GeographyV2|"Location::ToLocation"|"paris"|
+|预生成实体 - GeographyV2|"Location::ToLocation"|"paris"|
 
 ## <a name="list-entity-data"></a>列表实体数据
 
@@ -241,7 +241,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 |列表项|项同义词|
 |---|---|
-|`Seattle`|`sea-tac`、`sea`、`98101`、`206`、`+1` |
+|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
 |`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
 
 `book 2 tickets to paris`
@@ -410,11 +410,11 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用任一预构建 **[personName](luis-reference-prebuilt-person.md)** 实体或 **[简单实体](luis-concept-entity-types.md#simple-entity)** 与[角色](luis-concept-roles.md)的第一个和最后一个名称。 
 
-如果您使用简单的实体，请确保提供跨所有意图包括无使用语音样本，在不同长度的查询文本和语音样本中的不同部分中的第一个和最后一个名称的示例意向。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+如果使用简单实体，请确保给出的示例在话语的不同部分、在不同长度的话语中以及在所有意向（包括“None”意向）的话语中使用姓氏和名字。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ### <a name="names-of-places"></a>地名
 
-设置和城市、 县、 状态、 省和国家/地区等的已知位置名称。 使用预生成的实体 **[geographyV2](luis-reference-prebuilt-geographyv2.md)** 提取位置信息。
+地名是固定且已知的，例如市、县、州、省和国家/地区。 使用预生成的实体 **[geographyV2](luis-reference-prebuilt-geographyv2.md)** 提取位置信息。
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
 
