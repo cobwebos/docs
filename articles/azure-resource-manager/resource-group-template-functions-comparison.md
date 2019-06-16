@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128686"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的比较函数
@@ -40,10 +40,10 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |int、string、array 或 object |要检查是否相等的第一个值。 |
-| arg2 |“是” |int、string、array 或 object |要检查是否相等的第二个值。 |
+| arg1 |是 |int、string、array 或 object |要检查是否相等的第一个值。 |
+| arg2 |是 |int、string、array 或 object |要检查是否相等的第二个值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -135,7 +135,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | True |
@@ -196,10 +196,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |int 或 string |用于大于比较的第一个值。 |
-| arg2 |“是” |int 或 string |用于大于比较的第二个值。 |
+| arg1 |是 |int 或 string |用于大于比较的第一个值。 |
+| arg2 |是 |int 或 string |用于大于比较的第二个值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -272,10 +272,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |int 或 string |用于大于或等于比较的第一个值。 |
-| arg2 |“是” |int 或 string |用于大于或等于比较的第二个值。 |
+| arg1 |是 |int 或 string |用于大于或等于比较的第一个值。 |
+| arg2 |是 |int 或 string |用于大于或等于比较的第二个值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -324,7 +324,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
@@ -341,17 +341,17 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
 ```
 
-## <a name="less"></a>更少
+## <a name="less"></a>less
 `less(arg1, arg2)`
 
 检查第一个值是否小于第二个值。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |int 或 string |用于小于比较的第一个值。 |
-| arg2 |“是” |int 或 string |用于小于比较的第二个值。 |
+| arg1 |是 |int 或 string |用于小于比较的第一个值。 |
+| arg2 |是 |int 或 string |用于小于比较的第二个值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -426,8 +426,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |“是” |int 或 string |用于小于或等于比较的第一个值。 |
-| arg2 |“是” |int 或 string |用于小于或等于比较的第二个值。 |
+| arg1 |是 |int 或 string |用于小于或等于比较的第一个值。 |
+| arg2 |是 |int 或 string |用于小于或等于比较的第二个值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -476,7 +476,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| Name | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | False |

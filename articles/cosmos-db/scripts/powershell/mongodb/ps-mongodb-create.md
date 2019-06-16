@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 创建 MongoDB API 数据库和集合
-description: Azure PowerShell 脚本-Azure Cosmos DB 创建 MongoDB API 数据库和集合
+title: Azure PowerShell 脚本 - Azure Cosmos DB 创建 MongoDB API 数据库和集合
+description: Azure PowerShell 脚本 - Azure Cosmos DB 创建 MongoDB API 数据库和集合
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: samples
 ms.date: 05/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 9263df4b803d60fa0bfdf5bdc30f62e732e774b9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66247449"
 ---
-# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>创建数据库和 Azure Cosmos DB 的 MongoDB API 的集合
+# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>为 Azure Cosmos DB 创建数据库和集合 - MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

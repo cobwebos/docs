@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c922556417ac92cc3667927fc8f846ace960a14a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935885"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
@@ -45,7 +45,7 @@ ms.locfileid: "64935885"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 计算机信任边界 | 
+| 组件                | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -56,7 +56,7 @@ ms.locfileid: "64935885"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 计算机信任边界 | 
+| 组件                | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -67,7 +67,7 @@ ms.locfileid: "64935885"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 计算机信任边界 | 
+| 组件                | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -78,8 +78,8 @@ ms.locfileid: "64935885"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -89,8 +89,8 @@ ms.locfileid: "64935885"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -100,8 +100,8 @@ ms.locfileid: "64935885"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -111,8 +111,8 @@ ms.locfileid: "64935885"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -130,8 +130,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -141,8 +141,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [SQL 数据库权限层次结构](https://msdn.microsoft.com/library/ms191465)、[SQL 数据库安全对象](https://msdn.microsoft.com/library/ms190401) |
@@ -152,8 +152,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | SQL 版本 - V12，SQL 版本 - MsSQL2016 |
 | **参考**              | [SQL Server 行级别安全性 (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
@@ -165,8 +165,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [SQL 数据库权限层次结构](https://msdn.microsoft.com/library/ms191465)、[SQL 数据库安全对象](https://msdn.microsoft.com/library/ms190401) |
@@ -176,7 +176,7 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 云网关 | 
+| 组件                | IoT 云网关 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
@@ -187,8 +187,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 事件中心 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 事件中心 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [事件中心身份验证和安全模型概述](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -198,8 +198,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 事件中心 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 事件中心 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [事件中心身份验证和安全模型概述](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -209,8 +209,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 事件中心 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 事件中心 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [事件中心身份验证和安全模型概述](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -220,8 +220,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure Document DB | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure Document DB | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -231,8 +231,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 信任边界 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 信任边界 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [使用角色分配管理对 Azure 订阅资源的访问权限](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/)  |
@@ -242,7 +242,7 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Service Fabric 信任边界 | 
+| 组件                | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 环境 - Azure |
@@ -253,8 +253,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Dynamics CRM | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -264,8 +264,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Dynamics CRM 门户 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Dynamics CRM 门户 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -275,8 +275,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 存储 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - 表 |
 | **参考**              | [如何使用 SAS 来委派对 Azure 存储帐户中对象的访问权限](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
@@ -286,8 +286,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Azure 存储 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 存储 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
@@ -297,8 +297,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | 移动客户端 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 移动客户端 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -308,8 +308,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
@@ -345,8 +345,8 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、NET Framework 3 |
 | **属性**              | 不适用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
@@ -393,8 +393,8 @@ return result;
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、MVC5 |
 | **属性**              | 不适用，标识提供者 - ADFS，标识提供程序 - Azure AD |
 | **参考**              | [ASP.NET Web API 中的身份验证和授权](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
@@ -444,8 +444,8 @@ public class CustomController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 设备 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 设备 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
@@ -455,8 +455,8 @@ public class CustomController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | IoT 现场网关 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 现场网关 | 
+| **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |

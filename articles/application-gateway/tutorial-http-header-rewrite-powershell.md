@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 4/30/2019
 ms.author: absha
 ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64947086"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>创建应用程序网关和重写 HTTP 标头
@@ -68,7 +68,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>创建保留的公共 IP
 
-将 PublicIPAddress 的分配方法指定为 Static。 自动缩放应用程序网关 VIP 只能为静态。 不支持动态 IP。 只支持标准 PublicIpAddress SKU。
+将 PublicIPAddress 的分配方法指定为 Static  。 自动缩放应用程序网关 VIP 只能为静态。 不支持动态 IP。 只支持标准 PublicIpAddress SKU。
 
 ```azurepowershell
 #Create static public IP
@@ -112,8 +112,8 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 - **RequestHeaderConfiguration**：此对象用于指定要重写的请求标头字段以及需要重写的原始标头的新值。
 - **ResponseHeaderConfiguration**：此对象用于指定要重写的响应标头字段以及需要重写的原始标头的新值。
 - **ActionSet**：此对象包含上面指定的请求和响应标头的配置。 
-- **RewriteRule**：此对象包含上面指定的所有“actionSets”。 
-- **RewriteRuleSet** - 此对象包含所有 rewriteRules，并且需要附加到（基本或基于路径的）请求路由规则。
+- **RewriteRule**：此对象包含上面指定的所有“actionSets”  。 
+- **RewriteRuleSet** - 此对象包含所有 rewriteRules，并且需要附加到（基本或基于路径的）请求路由规则  。
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"

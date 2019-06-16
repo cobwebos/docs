@@ -11,10 +11,10 @@ ms.date: 05/10/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: de5649498dddcec8c65f2cfca6dcb39fa20a9267
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242250"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>为 Azure SQL 数据仓库设计 PolyBase 数据加载策略
@@ -62,10 +62,10 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 |         float         |                             real                             |
 |        double         |                            money                             |
 |        double         |                          smallmoney                          |
-|        string         |                            nchar                             |
-|        string         |                           nvarchar                           |
-|        string         |                             char                             |
-|        string         |                           varchar                            |
+|        字符串         |                            nchar                             |
+|        字符串         |                           nvarchar                           |
+|        字符串         |                             char                             |
+|        字符串         |                           varchar                            |
 |        binary         |                            binary                            |
 |        binary         |                          varbinary                           |
 |       timestamp       |                             date                             |

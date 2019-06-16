@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66136985"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
@@ -29,8 +29,8 @@ ms.locfileid: "66136985"
 本主题介绍如何为应用服务和 Azure Functions 应用程序创建托管标识，以及如何使用它来访问其他资源。 借助 Azure Active Directory 的托管标识，应用可以轻松访问其他受 AAD 保护的资源（如 Azure Key Vault）。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关 AAD 中的托管标识的详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 你的应用程序可以被授予两种类型的标识： 
-- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除。 一个应用只能具有一个系统分配的标识。 已正式发布适用于 Windows 应用的系统分配的标识支持。 
-- 用户分配的标识是可以分配给应用的独立 Azure 资源。 一个应用可以具有多个用户分配的标识。 适用于所有应用类型的用户分配的标识支持现提供预览版。
+- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除  。 一个应用只能具有一个系统分配的标识。 已正式发布适用于 Windows 应用的系统分配的标识支持。 
+- 用户分配的标识是可以分配给应用的独立 Azure 资源  。 一个应用可以具有多个用户分配的标识。 适用于所有应用类型的用户分配的标识支持现提供预览版。
 
 ## <a name="adding-a-system-assigned-identity"></a>添加系统分配的标识
 
@@ -42,11 +42,11 @@ ms.locfileid: "66136985"
 
 1. 按常规在门户中创建应用。 在门户中导航到该应用。
 
-2. 如果使用函数应用，请导航到“平台功能”。 对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。
+2. 如果使用函数应用，请导航到“平台功能”。  对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。 
 
-3. 选择“托管标识”。
+3. 选择“托管标识”  。
 
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击“ **保存**”。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”    。 单击“ **保存**”。
 
 ![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-system.png)
 
@@ -175,13 +175,13 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 2. 按常规在门户中创建应用。 在门户中导航到该应用。
 
-3. 如果使用函数应用，请导航到“平台功能”。 对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。
+3. 如果使用函数应用，请导航到“平台功能”。  对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。 
 
-4. 选择“托管标识”。
+4. 选择“托管标识”  。
 
-5. 在“用户分配的(预览版)”选项卡中，单击“添加”。
+5. 在“用户分配的(预览版)”选项卡中，单击“添加”   。
 
-6. 搜索之前创建的标识并选择它。 单击“添加”。
+6. 搜索之前创建的标识并选择它。 单击“添加”  。
 
 ![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-user.png)
 
@@ -283,13 +283,13 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 - MSI_ENDPOINT - 本地令牌服务的 URL。
 - MSI_SECRET - 用于帮助缓解服务器端请求伪造 (SSRF) 攻击的标头。 该值由平台轮换。
 
-“MSI_ENDPOINT”是一本地 URL，应用可向其请求令牌。 若要获取资源的令牌，请对此终结点发起 HTTP GET 请求，并包括以下参数：
+“MSI_ENDPOINT”是一本地 URL，应用可向其请求令牌。  若要获取资源的令牌，请对此终结点发起 HTTP GET 请求，并包括以下参数：
 
 > |参数名称|In|描述|
 > |-----|-----|-----|
-> |资源|Query|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
+> |resource|Query|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
 > |api-version|Query|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
-> |密|页眉|MSI_SECRET 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。|
+> |secret|Header|MSI_SECRET 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。|
 > |clientid|Query|（可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
 
 成功的 200 OK 响应包括具有以下属性的 JSON 正文：
@@ -298,7 +298,7 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 > |-------------|----------|
 > |access_token|请求的访问令牌。 调用 Web 服务可以使用此令牌向接收 Web 服务进行身份验证。|
 > |expires_on|访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。|
-> |资源|接收 Web 服务的应用 ID URI。|
+> |resource|接收 Web 服务的应用 ID URI。|
 > |token_type|指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。|
 
 此响应与 [AAD 服务到服务访问令牌请求的响应](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。

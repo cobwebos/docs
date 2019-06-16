@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: kumud,steveesp, mareat
 ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153728"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虚拟机网络带宽
@@ -35,37 +35,37 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 
 ## <a name="expected-network-throughput"></a>预期的网络吞吐量
 
-若要详细了解每种 VM 大小支持的预期出站吞吐量和网络接口数，请查看 Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小。 选择一个类型（例如“通用”），然后在生成的页面上选择一个大小系列（例如“Dv2 系列”）。 每个系统都有一个表，在最后一列（名为“最大 NIC 数/预期网络性能(Mbps)”）中包含网络规格。 
+若要详细了解每种 VM 大小支持的预期出站吞吐量和网络接口数，请查看 Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小。 选择一个类型（例如“通用”），然后在生成的页面上选择一个大小系列（例如“Dv2 系列”）。 每个系统都有一个表，在最后一列（名为“最大 NIC 数/预期网络性能(Mbps)”）中包含网络规格。  
 
 吞吐量限制适用于虚拟机。 吞吐量不受以下因素影响：
-- **网络接口数**:带宽限制都是累积的所有出站流量从虚拟机。
-- **加速网络**:尽管该功能可以有助于流量达到已发布的限制，它不会更改此限制。
-- **流量目标**:所有目标都计入出站限制。
-- **协议**：所有协议的所有出站流量将计入此限制。
+- **网络接口数**：带宽限制是源自虚拟机的所有出站流量的累积。
+- **加速网络**：尽管此功能有助于流量达到已发布的限制，但不会更改限制。
+- **流量目标**：所有目标都计入出站限制。
+- **协议**：基于所有协议的所有出站流量都计入限制。
 
 ## <a name="network-flow-limits"></a>网络流限制
 
-除了带宽，在任何给定时间在 VM 上存在网络连接数可能会影响其网络性能。 Azure 网络堆栈维护每个方向的名为流的数据结构中的 TCP/UDP 连接的状态。 典型的 TCP/UDP 连接将有 2 个流创建，另一个用于入站和出站方向的另一个。 
+除了带宽，VM 上任意给定时间存在的网络连接数目也可能影响其网络性能。 Azure 网络堆栈维护每个方向的名为流的数据结构中的 TCP/UDP 连接的状态。 典型的 TCP/UDP 连接将创建 2 个流，一个对应于入站方向，另一个对应于出站方向。 
 
-终结点之间的数据传输，需要创建多个流，除了执行数据传输。 一些示例为创建的 DNS 解析的流和创建负载均衡器运行状况探测的流。 此外请注意，网络如网关、 代理、 防火墙和虚拟设备 (Nva) 将看到正在终止在设备和由设备发起的连接创建的流。 
+在终结点之间进行数据传输时，除了那些执行数据传输的流，还必须创建多个流。 例如，为 DNS 解析创建的流，以及为负载均衡器运行状况探测创建的流。 另请注意，网关、代理、防火墙之类的网络虚拟设备 (NVA) 会看到为在设备上终止的连接创建的流，以及为设备所发起的连接创建的流。 
 
-![通过转发设备的 TCP 会话的流数](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+![通过转发设备进行的 TCP 对话的流计数](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
 ## <a name="flow-limits-and-recommendations"></a>流限制和建议
 
-目前，Azure 网络堆栈支持具有良好的性能 250k 个总网络流的 Vm 使用大于 8 个 CPU 内核和良好性能的 Vm 使用少于 8 个 CPU 内核的 100 k 总流。 超过此限制网络性能下降正常的最大为 1 M 硬限制的其他流的总流，50 万个入站和 500 K 出站、 后的其他流将被删除。
+目前，Azure 网络堆栈支持网络流总计为 250K 且为 CPU 核心数大于 8 的 VM 提供良好性能的方案，以及网络流总计为 100k 且为 CPU 核心数小于 8 的 VM 提供良好性能的方案。 超过此限制时，网络性能会逐渐下降，且额外增加的流会有一个流总计为 1M（500K 入站和 500K 出站）的硬性上限，然后额外的流数会下降。
 
-||使用 Vm < 8 个 CPU 内核|具有 8 个 CPU 内核的 Vm|
+||CPU 核心数 <8 的 VM|CPU 核心数 >8 的 VM|
 |---|---|---|
-|<b>良好的性能</b>|10 万个流 |250k 个流|
-|<b>性能下降</b>|上面 100k 为单位的流|上面 250k 流|
-|<b>流限制</b>|1 百万的流|1 百万的流|
+|<b>性能良好</b>|100K 流 |250K 流|
+|<b>性能下降</b>|大于 100k 流|大于 250K 流|
+|<b>流限制</b>|1M 流|1M 流|
 
-度量值位于[Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)用于跟踪 VM 或 VMSS 实例上的网络流和流创建速率。
+[Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 中提供的指标用于跟踪 VM 或 VMSS 实例上的网络流数和流创建速率。
 
 ![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
-连接建立和终止速率也会影响网络性能作为连接建立和终止共享 CPU 与数据包处理例程。 我们建议，都设为基准根据预期的流量模式和横向扩展工作负荷的工作负荷适当地以满足性能需求。 
+连接建立速度和终止速度也可能影响网络性能，因为连接的建立和终止与包处理例程共享 CPU。 建议针对预期的流量模式对工作负荷进行基准测试，并根据性能需要对工作负荷进行相应的横向扩展。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,21 +16,21 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
 ms.openlocfilehash: 8cd665ffd82547c4f554eb4a515a8da7dc5b3f5f
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64868993"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>使用 Linux 规模集模板中的来宾指标执行自动缩放
 
-有两种广义类型的 Azure 中，从 Vm 收集和规模集的度量值：主机指标和来宾指标。 在高级别中，如果你想要使用标准 CPU、 磁盘和网络跃点值，然后主机指标非常适合。 但是，如果您需要更大选度量值，应为查看来宾指标。
+在 Azure 中，会从 VM 和规模集收集两类广泛的指标：主机指标和来宾指标。 粗略地讲，若要使用标准 CPU、磁盘和网络指标，则主机指标非常适合。 不过，如果需要更多指标，则应考虑使用来宾指标。
 
-主机指标不需要进行其他安装程序由于它们由主机 VM 收集而来宾指标则需要你安装[Windows Azure 诊断扩展](../virtual-machines/windows/extensions-diagnostics-template.md)或[Linux Azure 诊断扩展](../virtual-machines/linux/diagnostic-extension.md)来宾 VM 中。 使用来宾指标而不是主机指标的一个常见原因是，与主机指标相比，来宾指标提供更大的指标选择范围。 内存消耗指标就是这样一个例子，它们只会通过来宾指标提供。 [此处](../azure-monitor/platform/metrics-supported.md)列出了支持的主机指标，[此处](../azure-monitor/platform/autoscale-common-metrics.md)列出了常用的来宾指标。 本文介绍如何修改[基本的可行规模集模板](virtual-machine-scale-sets-mvss-start.md)若要使用基于 Linux 规模集的来宾指标的自动缩放规则。
+主机指标不需要进行其他安装程序由于它们由主机 VM 收集而来宾指标则需要你安装[Windows Azure 诊断扩展](../virtual-machines/windows/extensions-diagnostics-template.md)或[Linux Azure 诊断扩展](../virtual-machines/linux/diagnostic-extension.md)来宾 VM 中。 使用来宾指标而不是主机指标的一个常见原因是，与主机指标相比，来宾指标提供更大的指标选择范围。 内存消耗指标就是这样一个例子，它们只会通过来宾指标提供。 [此处](../azure-monitor/platform/metrics-supported.md)列出了支持的主机指标，[此处](../azure-monitor/platform/autoscale-common-metrics.md)列出了常用的来宾指标。 本文介绍如何修改[基本可行规模集模板](virtual-machine-scale-sets-mvss-start.md)，以根据 Linux 规模集的来宾指标使用自动缩放规则。
 
 ## <a name="change-the-template-definition"></a>更改模板定义
 
-在中[前一篇文章](virtual-machine-scale-sets-mvss-start.md)我们创建了基本的规模集模板。 我们现在将使用前面的模板并修改它来创建可部署的 Linux 规模集具有来宾指标基于自动缩放功能的模板。
+在[此前的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了基本的规模集模板。 我们现在将使用这个此前的模板并对其进行修改，以便创建一个模板来部署其自动缩放功能基于来宾指标的 Linux 规模集。
 
 首先，添加 `storageAccountName` 和 `storageAccountSasToken` 的参数。 诊断代理将指标数据存储在此存储帐户中的某个[表](../cosmos-db/table-storage-how-to-use-dotnet.md)内。 从 Linux 诊断代理版本 3.0 开始，不再支持使用存储访问密钥。 改为使用 [SAS 令牌](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: b753b565b7dae6cdc244d05d051df964eda3c6f2
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65620490"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
@@ -27,7 +27,7 @@ ms.locfileid: "65620490"
 
 [Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
-## <a name="version-181"></a>1.8.1 版
+## <a name="version-181"></a>1\.8.1 版
 5/13/2019
 
 ### <a name="download-azure-storage-explorer-181"></a>下载 Azure 存储资源管理器 1.8.1
@@ -210,7 +210,7 @@ ms.locfileid: "65620490"
 * 在 Blob 编辑器中，不再能够按剩余保留天数或状态进行排序。 此问题已解决。 #1106
 * 在版本 1.5.0 之后，存储资源管理器不再会先等待服务器端复制完成，然后在重命名或复制/粘贴操作期间报告成功结果。 此问题已解决。 #976
 * 使用试验性的 AzCopy 功能时，单击“将命令复制到剪贴板”后复制的命令本身不一定始终可运行。 现在，将会复制手动运行传输所需的所有命令。 #1079
-* 以前，如果在代理后面操作，则无法访问 ADLS Gen2 Blob。 这是因为存储 SDK 使用的新网络库中存在一个 bug。 1.7.0 会尝试缓解此问题，但有些人仍可能会遇到问题。 在将来的更新中会发布完整修复措施。 #1090
+* 以前，如果在代理后面操作，则无法访问 ADLS Gen2 Blob。 这是因为存储 SDK 使用的新网络库中存在一个 bug。 1\.7.0 会尝试缓解此问题，但有些人仍可能会遇到问题。 在将来的更新中会发布完整修复措施。 #1090
 * 在 1.7.0 中，“保存文件”对话框现在会正确记住文件的上次保存位置。 #16
 * 在“属性”窗格中，存储帐户的 SKU 层显示为帐户类型。 此问题已解决。 #654
 * 有时，即使正确输入 Blob 的名称，也无法中断该 Blob 的租约。 此问题已解决。 #1070

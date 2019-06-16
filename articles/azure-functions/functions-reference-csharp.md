@@ -12,17 +12,17 @@ ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
 ms.openlocfilehash: 44a9368f82e95641d3df893ba0958c6bf8cf696f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64724960"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-dotnet-class-library.md -->
 
-本文介绍了如何使用 C# 脚本 (*.csx*) 开发 Azure Functions。
+本文介绍了如何使用 C# 脚本 ( *.csx*) 开发 Azure Functions。
 
 Azure Functions 支持 C# 和 C# 脚本编程语言。 如需[在 Visual Studio 类库项目中使用 C#](functions-develop-vs.md) 方面的指南，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md)。
 
@@ -122,7 +122,7 @@ POCO 类必须为每个属性定义 getter 和 setter。
 
 ## <a name="reusing-csx-code"></a>重用.csx 代码
 
-可以在 *run.csx* 文件中使用其他 *run.csx* 文件中定义的类和方法。 为此，需使用 run.csx 文件中的 `#load` 指令。 在下面的实例中，在 myLogger.csx 中共享了名为 `MyLogger` 的日志记录例程，并使用 `#load` 指令将其加载到 run.csx：
+可以在 *run.csx* 文件中使用其他 *run.csx* 文件中定义的类和方法。 为此，需使用 run.csx  文件中的 `#load` 指令。 在下面的实例中，在 myLogger.csx  中共享了名为 `MyLogger` 的日志记录例程，并使用 `#load` 指令将其加载到 run.csx  ：
 
 示例 *run.csx*：
 
@@ -147,9 +147,9 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-若要使用 POCO 对象强类型化在函数间传递的数据，常见模式是使用共享的 .csx 文件。 在下面的简化示例中，一个 HTTP 触发器和队列触发器共享名为 `Order` 的 POCO 对象以强类型化顺序数据：
+若要使用 POCO 对象强类型化在函数间传递的数据，常见模式是使用共享的 .csx  文件。 在下面的简化示例中，一个 HTTP 触发器和队列触发器共享名为 `Order` 的 POCO 对象以强类型化顺序数据：
 
-HTTP 触发器的示例 run.csx：
+HTTP 触发器的示例 run.csx  ：
 
 ```cs
 #load "..\shared\order.csx"
@@ -175,7 +175,7 @@ public static async Task<HttpResponseMessage> Run(Order req, IAsyncCollector<Ord
 }
 ```
 
-队列触发器的示例 run.csx：
+队列触发器的示例 run.csx  ：
 
 ```cs
 #load "..\shared\order.csx"
@@ -192,7 +192,7 @@ public static void Run(Order myQueueItem, out Order outputQueueItem, ILogger log
 }
 ```
 
-示例 order.csx：
+示例 order.csx  ：
 
 ```cs
 public class Order
@@ -363,7 +363,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 
 ## <a name="referencing-custom-assemblies"></a>引用自定义程序集
 
-若要引用自定义程序集，可使用共享程序集或私有程序集：
+若要引用自定义程序集，可使用共享程序集或私有程序集   ：
 
 * 共享程序集在函数应用内的所有函数中共享。 若要引用自定义程序集，请将程序集上传到[函数应用根文件夹`bin` (wwwroot) 中名为 ](functions-reference.md#folder-structure) 的文件夹。
 
@@ -376,7 +376,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 自动监视包含函数脚本文件的目录的程序集更改。 若要监视其他目录中的程序集更改，请将其添加到 [host.json](functions-host-json.md) 中的 `watchDirectories` 列表中。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 包
-若要在 2.x C# 函数中使用 NuGet 包，请将 *function.proj* 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
+若要在 2.x C# 函数中使用 NuGet 包，请将 *function.proj* 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用   ：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -390,7 +390,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 </Project>
 ```
 
-若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。 
+若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源  。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。 
 
 > [!NOTE]
 > 在 1.x C# 函数中，NuGet 包是通过 *project.json* 文件而非 *function.proj* 文件引用的。
@@ -454,7 +454,7 @@ public static string GetEnvironmentVariable(string name)
 
 如下所示定义命令性绑定：
 
-- 对于所需的命令性绑定，**不要**包含 function.json 中的条目。
+- 对于所需的命令性绑定，**不要**包含 function.json  中的条目。
 - 传递输入参数 [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) 或 [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
 - 使用下面的 C# 模式执行数据绑定。
 
